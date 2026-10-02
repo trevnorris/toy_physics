@@ -60,6 +60,32 @@ def run():
         fragment=namespace['assignment_source'](c2,name,target)
         compile(fragment,'native_assignment','exec');check('unique native assignment '+target,target in fragment)
     check('missing native function refused',_raises(lambda:namespace['function_source']('def present(): pass','absent')))
+    # Full-row inspection is syntax only. No symbolic constructor is evaluated.
+    census=namespace['pressure_census']
+    synthetic="Add(Symbol('unrelated'), Mul(Integer(2), Symbol('delta_p_plus')), Symbol('d_w_delta_p_minus'))"
+    observed=census(synthetic)
+    check('complete synthetic pressure census',observed['totalChildren']==3 and len(observed['selected'])==2
+          and observed['occurrenceCounts']['delta_p_plus']==1 and observed['maximumPressureDegree']==1)
+    check('nonaffine pressure term detected',census("Pow(Symbol('delta_p_plus'), Integer(2))")['maximumPressureDegree']==2)
+    check('pressure reciprocal refused',_raises(lambda:census("Pow(Symbol('delta_p_plus'), Integer(-1))")))
+    check('unknown pressure function refused',_raises(lambda:census("Function('delta_p_extra')(Symbol('x'))")))
+    source_contract=namespace['fourier_contract']
+    contract=source_contract(c2)
+    check('native executable Fourier factors',contract['profileForwardPower']==-3 and contract['sourceInversePower']==-3
+          and contract['coordinates']==3 and contract['nativeProfileDimension']==[3,0,0])
+    changed=c2.replace('phase*local_field/(2*sp.pi)**3','phase*local_field/(2*sp.pi)**2')
+    check('altered profile measure refused',changed!=c2 and _raises(lambda:source_contract(changed)))
+    changed=c2.replace('phase1 * second * local_source / (2*sp.pi)**3','phase1 * second * local_source / (2*sp.pi)**2')
+    check('altered second-slot measure refused',changed!=c2 and _raises(lambda:source_contract(changed)))
+    changed=c2.replace('NEW_DIMENSIONS[function]=(3,0,0)','NEW_DIMENSIONS[function]=(2,0,0)')
+    check('altered profile dimension refused',changed!=c2 and _raises(lambda:source_contract(changed)))
+    with tempfile.TemporaryDirectory() as directory:
+        present=Path(directory)/'present';present.write_text('ordinary fixture')
+        missing=Path(directory)/'missing'
+        pins={str(missing):'unavailable',str(present):namespace['sha'](present)}
+        records=namespace['posthash_records'](pins)
+        check('missing pin preserves subsequent hash',records[str(missing)]['actual'] is None
+              and records[str(missing)]['error'] and records[str(present)]['actual']==pins[str(present)])
     return {'status':'PASS_STDLIB_TOOLING_ONLY','tests':tests,'count':len(tests),'scientificImport':False,'scientificPayloadRestoration':False,'physicsValidated':False}
 
 

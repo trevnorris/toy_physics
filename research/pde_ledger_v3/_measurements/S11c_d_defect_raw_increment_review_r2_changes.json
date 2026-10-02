@@ -1,0 +1,33 @@
+{
+  "status": "SUBSTANTIVE_VALIDATION_REVISION_PREPARED_NOT_AUTHOR_CLEAR",
+  "priorReviewedCommit": "b13aff4d",
+  "oldLiteralVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS BOUNDED RAW-INCREMENT BUILD"
+  },
+  "scopeChanged": false,
+  "physicalInputsChanged": false,
+  "scientificWorkExecuted": false,
+  "oldReportsIncludedInPacket": false,
+  "corrections": [
+    "Join native lower face_shift height and face_normal slope/orientation before lower construction.",
+    "Inspect every pressure occurrence in pinned full native expanded row text; enforce affine slot census and saved raw/bound equality. Correct slot-sum label and scalar packet addresses.",
+    "Join each native velocity/chemical amplitude and combined source, then its regular zero-grade restriction to the saved face-specific source00.",
+    "Parse actual native Fourier phases, factors, dimensions, plain middle measure and argument routing; make edge-delta reduction explicit.",
+    "Emit all four shared-sheet-bound physical row densities and compare to direct physical slot insertion.",
+    "Use consistent nonzero-input physical momenta for equation/sheet controls; lower omission/doubling enters original rows before retained derivative.",
+    "Retain unevaluated physical domain predicates and reject unsupported dispersion-numerator powers.",
+    "Collect missing-pin errors without abandoning remaining posthashes/checks."
+  ],
+  "notes": [
+    "Native text files have exactly one terminal newline; strip only that storage terminator before comparison with the saved constructor hash.",
+    "Existing saved raw consumer operands are pressure-slot sums, not full slab rows.",
+    "No complete upper/profile/consumer restriction function is replayed. New equalities join existing operands to missing native provenance.",
+    "Exact-match/grazing applicability is still unresolved. No finite matrix, integral or production change."
+  ],
+  "workerSha256": "e38038da5b795f8b31e7ead758f9a8652e80b5d8e80dd0971fe40d1ec02af5af",
+  "manifestSha256": "f3b8fc3d1d8b48fb4ff66c3f52cc646f492e8784fd236cc8042ee94139a2e46d",
+  "packetSha256": "1e6781d227d37c5559ca6a4fe5b7a31c94781672beb3631bd8bf2c957a32b3d4",
+  "toolingTests": 23,
+  "independentBuildClearance": false
+}

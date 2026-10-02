@@ -1,0 +1,991 @@
+{
+  "scope": "Both-face nongrazing raw direct eta*sigma increment; rest-bulk LAB_HELD/RHO4_CONSTANT omega3 saved edges effective cs family; no integral/finite solve/production edits",
+  "records": [
+    {
+      "packetPath": "method.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_operator_applicability.md",
+      "sourceSha256": "5aa308131e055d24f9e6f15fdc3a616801da8c99fdd4a8910043e797330bf833",
+      "packetSha256": "5aa308131e055d24f9e6f15fdc3a616801da8c99fdd4a8910043e797330bf833",
+      "bytes": 18262,
+      "kind": "complete file",
+      "role": "Proposed method and next-action decision, not computed correction"
+    },
+    {
+      "packetPath": "source/native-c2.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "packetSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "bytes": 102548,
+      "kind": "complete file",
+      "role": "Complete original source; inspect only, never run producer"
+    },
+    {
+      "packetPath": "source/native-c1.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "sourceSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "packetSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "bytes": 101082,
+      "kind": "complete file",
+      "role": "Complete original source; inspect only, never run producer"
+    },
+    {
+      "packetPath": "source/native-geometry.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "sourceSha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "packetSha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "bytes": 101558,
+      "kind": "complete file",
+      "role": "Complete original source; inspect only, never run producer"
+    },
+    {
+      "packetPath": "source/bare-worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh.py",
+      "sourceSha256": "de783e3d09f58db8075a115edf4ed584f28d2a090cc7a3eef150e98befd30373",
+      "packetSha256": "de783e3d09f58db8075a115edf4ed584f28d2a090cc7a3eef150e98befd30373",
+      "bytes": 25972,
+      "kind": "complete file",
+      "role": "Exact consumed source/worker; no process or source-only verdict is result acceptance"
+    },
+    {
+      "packetPath": "source/trace-worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace.py",
+      "sourceSha256": "b5c7a0a6785ba93f498ec3d0f1690818a9d3ad4d876e274e9b23311b86e02313",
+      "packetSha256": "b5c7a0a6785ba93f498ec3d0f1690818a9d3ad4d876e274e9b23311b86e02313",
+      "bytes": 23288,
+      "kind": "complete file",
+      "role": "Exact consumed source/worker; no process or source-only verdict is result acceptance"
+    },
+    {
+      "packetPath": "source/consumer-worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer.py",
+      "sourceSha256": "f8ca7d735551495918e8a5d35a64e9e06edc36573588a01a6e21a5846286ad84",
+      "packetSha256": "f8ca7d735551495918e8a5d35a64e9e06edc36573588a01a6e21a5846286ad84",
+      "bytes": 35724,
+      "kind": "complete file",
+      "role": "Exact consumed source/worker; no process or source-only verdict is result acceptance"
+    },
+    {
+      "packetPath": "source/consumer-continue-worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue.py",
+      "sourceSha256": "d94ee245e659ae79ce11f315a3d033b3e3ee5fa649f40c9dd2acabff18ceccd7",
+      "packetSha256": "d94ee245e659ae79ce11f315a3d033b3e3ee5fa649f40c9dd2acabff18ceccd7",
+      "bytes": 22419,
+      "kind": "complete file",
+      "role": "Exact consumed source/worker; no process or source-only verdict is result acceptance"
+    },
+    {
+      "packetPath": "source/source-extractor.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_source.py",
+      "sourceSha256": "19452677bdc296e3456b545ae87fb33a544a617437730a4606cea485016be870",
+      "packetSha256": "19452677bdc296e3456b545ae87fb33a544a617437730a4606cea485016be870",
+      "bytes": 14787,
+      "kind": "complete file",
+      "role": "Exact consumed source/worker; no process or source-only verdict is result acceptance"
+    },
+    {
+      "packetPath": "source/finite.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_finite.py",
+      "sourceSha256": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411",
+      "packetSha256": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411",
+      "bytes": 10923,
+      "kind": "complete file",
+      "role": "Exact consumed source/worker; no process or source-only verdict is result acceptance"
+    },
+    {
+      "packetPath": "source/balance.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance.py",
+      "sourceSha256": "1e8e5f9c32ba81fbc46e7ebc785bd1bbfdd68acc80a35a6622877cb8a284992e",
+      "packetSha256": "1e8e5f9c32ba81fbc46e7ebc785bd1bbfdd68acc80a35a6622877cb8a284992e",
+      "bytes": 14596,
+      "kind": "complete file",
+      "role": "Exact consumed source/worker; no process or source-only verdict is result acceptance"
+    },
+    {
+      "packetPath": "source/integration.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration.py",
+      "sourceSha256": "12ec61260d977c59716332c8f962d9ed37589e1f74444c4f50580723271c1573",
+      "packetSha256": "12ec61260d977c59716332c8f962d9ed37589e1f74444c4f50580723271c1573",
+      "bytes": 30297,
+      "kind": "complete file",
+      "role": "Exact consumed source/worker; no process or source-only verdict is result acceptance"
+    },
+    {
+      "packetPath": "native-selected.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_native.json",
+      "sourceSha256": "441c580e56bd426bc098af6589776384f275401373cddd5c8fd5479707e5915e",
+      "packetSha256": "441c580e56bd426bc098af6589776384f275401373cddd5c8fd5479707e5915e",
+      "bytes": 904500,
+      "kind": "complete file",
+      "role": "Complete selected native source/pressure-consumer census with original constructor provenance"
+    },
+    {
+      "packetPath": "physical-input.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "packetSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "bytes": 1884,
+      "kind": "complete file",
+      "role": "Original development inputs; worker explicitly changes frequency to omega3"
+    },
+    {
+      "packetPath": "native-rows/U_BODY_BALANCE-0.txt",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_b_exports.py",
+      "sourceSha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "packetSha256": "2be4d3f6333ad32d034a02b4e405ac6ec1283eface906bd0b6cc3d86e646fca0",
+      "bytes": 118566,
+      "kind": "exact selected expanded constructor",
+      "address": [
+        "slab_operator",
+        [
+          "LAB_HELD",
+          "RHO4_CONSTANT"
+        ],
+        "VALUE",
+        "U_BODY_BALANCE",
+        "EXPANDED",
+        0
+      ],
+      "role": "Exact full native expanded row constructor, preserved selected address"
+    },
+    {
+      "packetPath": "native-rows/U_BODY_BALANCE-1.txt",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_b_exports.py",
+      "sourceSha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "packetSha256": "be7e7e4a32fef68f498f2f4344ba648f4e9136c2df66195011d02d0cdb651a1d",
+      "bytes": 118566,
+      "kind": "exact selected expanded constructor",
+      "address": [
+        "slab_operator",
+        [
+          "LAB_HELD",
+          "RHO4_CONSTANT"
+        ],
+        "VALUE",
+        "U_BODY_BALANCE",
+        "EXPANDED",
+        1
+      ],
+      "role": "Exact full native expanded row constructor, preserved selected address"
+    },
+    {
+      "packetPath": "native-rows/U_BODY_BALANCE-2.txt",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_b_exports.py",
+      "sourceSha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "packetSha256": "cef1a1351606de912b3bfb34a16381ad5b8b0decb6ca882bc12f9094e2764c25",
+      "bytes": 118566,
+      "kind": "exact selected expanded constructor",
+      "address": [
+        "slab_operator",
+        [
+          "LAB_HELD",
+          "RHO4_CONSTANT"
+        ],
+        "VALUE",
+        "U_BODY_BALANCE",
+        "EXPANDED",
+        2
+      ],
+      "role": "Exact full native expanded row constructor, preserved selected address"
+    },
+    {
+      "packetPath": "native-rows/THETA_BALANCE-0.txt",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_b_exports.py",
+      "sourceSha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "packetSha256": "f68aeec7625765e35fb90ce450e1dc475333d16e5dfec291cc53b309d69d4405",
+      "bytes": 199689,
+      "kind": "exact selected expanded constructor",
+      "address": [
+        "slab_operator",
+        [
+          "LAB_HELD",
+          "RHO4_CONSTANT"
+        ],
+        "VALUE",
+        "THETA_BALANCE",
+        "EXPANDED"
+      ],
+      "role": "Exact full native expanded row constructor, preserved selected address"
+    },
+    {
+      "packetPath": "native-rows/E_W_BALANCE-0.txt",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_b_exports.py",
+      "sourceSha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "packetSha256": "9bffb7fd7412c8de8b64066a2bb60fba1d211f89ae3a07eddd106f42284bdd8f",
+      "bytes": 340240,
+      "kind": "exact selected expanded constructor",
+      "address": [
+        "slab_operator",
+        [
+          "LAB_HELD",
+          "RHO4_CONSTANT"
+        ],
+        "VALUE",
+        "E_W_BALANCE",
+        "EXPANDED"
+      ],
+      "role": "Exact full native expanded row constructor, preserved selected address"
+    },
+    {
+      "packetPath": "bare/boundary-before-guards.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-before-guards.json",
+      "sourceSha256": "2f2e1fa5fa0ab8b3532fb9a77d324e66f59fdf53a4118df8a18cb9a9c6c5a8cb",
+      "packetSha256": "2f2e1fa5fa0ab8b3532fb9a77d324e66f59fdf53a4118df8a18cb9a9c6c5a8cb",
+      "bytes": 8404,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/boundary-coefficient-input.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-coefficient-input.json",
+      "sourceSha256": "086c2939471bbdfb6165e9587aac5e7d40e5f267f3ca11c970695862632bd2b8",
+      "packetSha256": "086c2939471bbdfb6165e9587aac5e7d40e5f267f3ca11c970695862632bd2b8",
+      "bytes": 1529,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/boundary-coefficient-return.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-coefficient-return.json",
+      "sourceSha256": "a6b4ac7b601fcc794d12391b668d2f36259831510aea44a6a8c3edc46b5124bb",
+      "packetSha256": "a6b4ac7b601fcc794d12391b668d2f36259831510aea44a6a8c3edc46b5124bb",
+      "bytes": 4119,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/boundary-residual-0.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-residual-0.json",
+      "sourceSha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "packetSha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "bytes": 141,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/boundary-residual-1.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-residual-1.json",
+      "sourceSha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "packetSha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "bytes": 141,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/boundary-residual-2.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-residual-2.json",
+      "sourceSha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "packetSha256": "7651315000de882136d6972cada89e0cb5f3d1bcc0b9afa2e1fd1e0c18144382",
+      "bytes": 141,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/boundary-residual-3.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-residual-3.json",
+      "sourceSha256": "a90198336e746b20cd4caec46075b16dc9100e4e9899e015e810e35f1f80d277",
+      "packetSha256": "a90198336e746b20cd4caec46075b16dc9100e4e9899e015e810e35f1f80d277",
+      "bytes": 1548,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/physical-point.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/physical-point.json",
+      "sourceSha256": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "packetSha256": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "bytes": 2560,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/native-graph-normal.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-graph-normal.json",
+      "sourceSha256": "73b028380e0bc2f5e4127948d2240e9e8a7294f536f48cdbb96f7c97640d62f9",
+      "packetSha256": "73b028380e0bc2f5e4127948d2240e9e8a7294f536f48cdbb96f7c97640d62f9",
+      "bytes": 608,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/native-height-coefficient.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-height-coefficient.json",
+      "sourceSha256": "9123c5b0a6ce7a27e380abe4fc2b47e33962b0a0fc23853b21452f354760a8d3",
+      "packetSha256": "9123c5b0a6ce7a27e380abe4fc2b47e33962b0a0fc23853b21452f354760a8d3",
+      "bytes": 1370,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/native-slope-coefficient.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-slope-coefficient.json",
+      "sourceSha256": "b3b2c600a268b7e96ed0a2791e31994a114f8870ffd8b1d1ef3b59f42f7c91d0",
+      "packetSha256": "b3b2c600a268b7e96ed0a2791e31994a114f8870ffd8b1d1ef3b59f42f7c91d0",
+      "bytes": 574,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/native-profile-factor-routing.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-profile-factor-routing.json",
+      "sourceSha256": "bda7983020232e3de00bc132de64867771182f96b1f249a5d23f686158b8c5ae",
+      "packetSha256": "bda7983020232e3de00bc132de64867771182f96b1f249a5d23f686158b8c5ae",
+      "bytes": 3008,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/profile-transform-return.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-transform-return.json",
+      "sourceSha256": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "packetSha256": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "bytes": 2211,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/profile-action-return.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-action-return.json",
+      "sourceSha256": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "packetSha256": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "bytes": 5109,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/sign-ingredients.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/sign-ingredients.json",
+      "sourceSha256": "594f6cafa20722ca7399f77e4eb971df896ea60e16e84f16aea6f4522d78eec5",
+      "packetSha256": "594f6cafa20722ca7399f77e4eb971df896ea60e16e84f16aea6f4522d78eec5",
+      "bytes": 4029,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/responsive-controls.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/responsive-controls.json",
+      "sourceSha256": "4f068d341ec9ac6ea4a99058b2e03d916de0f4c3aba01a9fbaf7e9f9990c29bb",
+      "packetSha256": "4f068d341ec9ac6ea4a99058b2e03d916de0f4c3aba01a9fbaf7e9f9990c29bb",
+      "bytes": 1392,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "bare/dimensions.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/dimensions.json",
+      "sourceSha256": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "packetSha256": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "bytes": 1000,
+      "kind": "complete file",
+      "role": "Actual saved generic-boundary or selected tanh evidence; not arbitrary-momentum completion"
+    },
+    {
+      "packetPath": "trace/closure-input.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/closure-input.json",
+      "sourceSha256": "a33cd21b3d6bc5316bf696185ffa091162bbfd8bcb520b48cba3281f1cbe7ca1",
+      "packetSha256": "a33cd21b3d6bc5316bf696185ffa091162bbfd8bcb520b48cba3281f1cbe7ca1",
+      "bytes": 6741,
+      "kind": "complete file",
+      "role": "Actual selected one-face closure/trace operands and returned evidence"
+    },
+    {
+      "packetPath": "trace/closed-response-return.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/closed-response-return.json",
+      "sourceSha256": "a817f74defda66b03d5c52dcf94c310a87b29e32510c85e257661065fa6c3258",
+      "packetSha256": "a817f74defda66b03d5c52dcf94c310a87b29e32510c85e257661065fa6c3258",
+      "bytes": 31884,
+      "kind": "complete file",
+      "role": "Actual selected one-face closure/trace operands and returned evidence"
+    },
+    {
+      "packetPath": "trace/physical-factors.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/physical-factors.json",
+      "sourceSha256": "70445aaed5424729d66c8bcb53b3d12f2fc7f0db8eab9ba4890bf5cdf8c102fb",
+      "packetSha256": "70445aaed5424729d66c8bcb53b3d12f2fc7f0db8eab9ba4890bf5cdf8c102fb",
+      "bytes": 5420,
+      "kind": "complete file",
+      "role": "Actual selected one-face closure/trace operands and returned evidence"
+    },
+    {
+      "packetPath": "trace/reference-before-guards.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/reference-before-guards.json",
+      "sourceSha256": "9e1fbf59c12d0aacc45b721191f9a23cb0b32a4a1c69e185201f905b8686ad70",
+      "packetSha256": "9e1fbf59c12d0aacc45b721191f9a23cb0b32a4a1c69e185201f905b8686ad70",
+      "bytes": 44699,
+      "kind": "complete file",
+      "role": "Actual selected one-face closure/trace operands and returned evidence"
+    },
+    {
+      "packetPath": "trace/reference-pressure-return.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/reference-pressure-return.json",
+      "sourceSha256": "53ad1834c0ac2a1969013d4db7cbf7e705e5b2dc2dbac47411ce5e296a2961d8",
+      "packetSha256": "53ad1834c0ac2a1969013d4db7cbf7e705e5b2dc2dbac47411ce5e296a2961d8",
+      "bytes": 1635,
+      "kind": "complete file",
+      "role": "Actual selected one-face closure/trace operands and returned evidence"
+    },
+    {
+      "packetPath": "trace/controls.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/controls.json",
+      "sourceSha256": "ef5af829d021c82184a99b3ebf7af52985676ad999038499331e11cc2201c9cd",
+      "packetSha256": "ef5af829d021c82184a99b3ebf7af52985676ad999038499331e11cc2201c9cd",
+      "bytes": 1766,
+      "kind": "complete file",
+      "role": "Actual selected one-face closure/trace operands and returned evidence"
+    },
+    {
+      "packetPath": "trace/kernel-measure.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/kernel-measure.json",
+      "sourceSha256": "961bb8fd857ed25e3e70843bf9e7dfe7a247b0c28d4eba9f96818dd896e2e22a",
+      "packetSha256": "961bb8fd857ed25e3e70843bf9e7dfe7a247b0c28d4eba9f96818dd896e2e22a",
+      "bytes": 802,
+      "kind": "complete file",
+      "role": "Actual selected one-face closure/trace operands and returned evidence"
+    },
+    {
+      "packetPath": "trace/middle-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/middle-domain.json",
+      "sourceSha256": "c1b9f7d2280f42ed25d6960741169ff670fd6c55b78eccb22161db25bc77c021",
+      "packetSha256": "c1b9f7d2280f42ed25d6960741169ff670fd6c55b78eccb22161db25bc77c021",
+      "bytes": 1379,
+      "kind": "complete file",
+      "role": "Actual selected one-face closure/trace operands and returned evidence"
+    },
+    {
+      "packetPath": "consumer/binding-context.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/binding-context.json",
+      "sourceSha256": "9216e51151937a0b815643ee2b958869b530c2bf775d6b5e848b0ebe241eae68",
+      "packetSha256": "9216e51151937a0b815643ee2b958869b530c2bf775d6b5e848b0ebe241eae68",
+      "bytes": 10950,
+      "kind": "complete file",
+      "role": "Preserved published partial observations from original failed run; not a completed top-level science return"
+    },
+    {
+      "packetPath": "consumer/chemical-amplitude-grade-split.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/chemical-amplitude-grade-split.json",
+      "sourceSha256": "165b7d7eb650841077f1d057d221b7178d1a8a6cf3aa53df5cf7b696379c5434",
+      "packetSha256": "165b7d7eb650841077f1d057d221b7178d1a8a6cf3aa53df5cf7b696379c5434",
+      "bytes": 34595,
+      "kind": "complete file",
+      "role": "Preserved published partial observations from original failed run; not a completed top-level science return"
+    },
+    {
+      "packetPath": "consumer/plus-source-input.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-input.json",
+      "sourceSha256": "78828307da0b0def1a2de27b59afb65168f214536a8315ad3e62a040273ae374",
+      "packetSha256": "78828307da0b0def1a2de27b59afb65168f214536a8315ad3e62a040273ae374",
+      "bytes": 66907,
+      "kind": "complete file",
+      "role": "Preserved published partial observations from original failed run; not a completed top-level science return"
+    },
+    {
+      "packetPath": "consumer/minus-source-input.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-input.json",
+      "sourceSha256": "3dc8276d0c591d5869aa8467accbd7b12ebd89c6110ee7f7548adedce1216208",
+      "packetSha256": "3dc8276d0c591d5869aa8467accbd7b12ebd89c6110ee7f7548adedce1216208",
+      "bytes": 66911,
+      "kind": "complete file",
+      "role": "Preserved published partial observations from original failed run; not a completed top-level science return"
+    },
+    {
+      "packetPath": "consumer/plus-source-restrictions.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-restrictions.json",
+      "sourceSha256": "a3f081200a90f3dd8d46b6ef4458085a0dbf885dbaa1e417d684b74de0b1d9b1",
+      "packetSha256": "a3f081200a90f3dd8d46b6ef4458085a0dbf885dbaa1e417d684b74de0b1d9b1",
+      "bytes": 28039,
+      "kind": "complete file",
+      "role": "Preserved published partial observations from original failed run; not a completed top-level science return"
+    },
+    {
+      "packetPath": "consumer/minus-source-restrictions.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-restrictions.json",
+      "sourceSha256": "a3f081200a90f3dd8d46b6ef4458085a0dbf885dbaa1e417d684b74de0b1d9b1",
+      "packetSha256": "a3f081200a90f3dd8d46b6ef4458085a0dbf885dbaa1e417d684b74de0b1d9b1",
+      "bytes": 28039,
+      "kind": "complete file",
+      "role": "Preserved published partial observations from original failed run; not a completed top-level science return"
+    },
+    {
+      "packetPath": "consumer/selected-fourier-contraction.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/selected-fourier-contraction.json",
+      "sourceSha256": "961648675f6c371fc2e185b025c1a6197c8b0a70020a8dcecb1b0d4b06115644",
+      "packetSha256": "961648675f6c371fc2e185b025c1a6197c8b0a70020a8dcecb1b0d4b06115644",
+      "bytes": 4861,
+      "kind": "complete file",
+      "role": "Preserved published partial observations from original failed run; not a completed top-level science return"
+    },
+    {
+      "packetPath": "consumer/zero-grade-jet-consumers.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/zero-grade-jet-consumers.json",
+      "sourceSha256": "18f0ce6ff5cdb1e9c60dd19de680dbfa113fddff7f82fe74db718bf85bcc597a",
+      "packetSha256": "18f0ce6ff5cdb1e9c60dd19de680dbfa113fddff7f82fe74db718bf85bcc597a",
+      "bytes": 610,
+      "kind": "complete file",
+      "role": "Preserved published partial observations from original failed run; not a completed top-level science return"
+    },
+    {
+      "packetPath": "consumer/weak-directions.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/weak-directions.json",
+      "sourceSha256": "c79c24b0ba2ea46c9480dfd353a602eaddd3cce5488439f0558621268dc5e5be",
+      "packetSha256": "c79c24b0ba2ea46c9480dfd353a602eaddd3cce5488439f0558621268dc5e5be",
+      "bytes": 2637,
+      "kind": "complete file",
+      "role": "Preserved published partial observations from original failed run; not a completed top-level science return"
+    },
+    {
+      "packetPath": "consumer/end-to-end-controls-input.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/end-to-end-controls-input.json",
+      "sourceSha256": "101f2fb224f29dee8f4d6eef91557a0abfc5787593f5ee515dc714ae7c4439d3",
+      "packetSha256": "101f2fb224f29dee8f4d6eef91557a0abfc5787593f5ee515dc714ae7c4439d3",
+      "bytes": 14921,
+      "kind": "complete file",
+      "role": "Preserved published partial observations from original failed run; not a completed top-level science return"
+    },
+    {
+      "packetPath": "continued/prior-argument-joins.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/prior-argument-joins.json",
+      "sourceSha256": "31026ba7d0caf3b7f88ae37440aeb2d11e7b57a435b00fd35b9fdd2d8618859a",
+      "packetSha256": "31026ba7d0caf3b7f88ae37440aeb2d11e7b57a435b00fd35b9fdd2d8618859a",
+      "bytes": 186,
+      "kind": "complete file",
+      "role": "Actual completed continuation evidence; no independent result verdict"
+    },
+    {
+      "packetPath": "continued/resumed-context.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/resumed-context.json",
+      "sourceSha256": "038d99fbd63707c29d2835448b4edd815c18a4272e06e3fcaa62c3bcb1a5d888",
+      "packetSha256": "038d99fbd63707c29d2835448b4edd815c18a4272e06e3fcaa62c3bcb1a5d888",
+      "bytes": 8090,
+      "kind": "complete file",
+      "role": "Actual completed continuation evidence; no independent result verdict"
+    },
+    {
+      "packetPath": "continued/resumed-source-tail.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/resumed-source-tail.json",
+      "sourceSha256": "422aa45e52d8529835ab7eefa8d5433e111e7851bbdd25e160e0cb553d641a6a",
+      "packetSha256": "422aa45e52d8529835ab7eefa8d5433e111e7851bbdd25e160e0cb553d641a6a",
+      "bytes": 9494,
+      "kind": "complete file",
+      "role": "Actual completed continuation evidence; no independent result verdict"
+    },
+    {
+      "packetPath": "continued/source-omissions-through-consumers.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/source-omissions-through-consumers.json",
+      "sourceSha256": "c2b87dc7fc5e7e7281339700a7cfa3c4f352f9f0541eae6d48a9be5bcd3e7dc5",
+      "packetSha256": "c2b87dc7fc5e7e7281339700a7cfa3c4f352f9f0541eae6d48a9be5bcd3e7dc5",
+      "bytes": 117994,
+      "kind": "complete file",
+      "role": "Actual completed continuation evidence; no independent result verdict"
+    },
+    {
+      "packetPath": "continued/native-pressure-consumer-omission.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/native-pressure-consumer-omission.json",
+      "sourceSha256": "94fe0394137574dd6729b2bfc368b8db205fc6e72404fd7aa924729810c01b34",
+      "packetSha256": "94fe0394137574dd6729b2bfc368b8db205fc6e72404fd7aa924729810c01b34",
+      "bytes": 15596,
+      "kind": "complete file",
+      "role": "Actual completed continuation evidence; no independent result verdict"
+    },
+    {
+      "packetPath": "continued/routing-control.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/routing-control.json",
+      "sourceSha256": "dd6549f7bb5c79bf38fd2542dec5da3025a19c6a3b832a68c08a297576bef5f8",
+      "packetSha256": "dd6549f7bb5c79bf38fd2542dec5da3025a19c6a3b832a68c08a297576bef5f8",
+      "bytes": 5012,
+      "kind": "complete file",
+      "role": "Actual completed continuation evidence; no independent result verdict"
+    },
+    {
+      "packetPath": "continued/consumer-unit-joins.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/consumer-unit-joins.json",
+      "sourceSha256": "520b3a356a7faf019e3da7286d457a5c1f38142ccab447aa5bdd2f6934063ca3",
+      "packetSha256": "520b3a356a7faf019e3da7286d457a5c1f38142ccab447aa5bdd2f6934063ca3",
+      "bytes": 8912,
+      "kind": "complete file",
+      "role": "Actual completed continuation evidence; no independent result verdict"
+    },
+    {
+      "packetPath": "continued/resumed-operator-000-raw-reconstruction.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/resumed-operator-000-raw-reconstruction.json",
+      "sourceSha256": "e499008616aee47e1474a4859d8e96db44a53e60c3e60923d4a59b05698406a7",
+      "packetSha256": "e499008616aee47e1474a4859d8e96db44a53e60c3e60923d4a59b05698406a7",
+      "bytes": 6499,
+      "kind": "complete file",
+      "role": "Actual reconstruction operands and exact residual, including unnormalized raw form"
+    },
+    {
+      "packetPath": "continued/resumed-operator-000-exact-residual.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/resumed-operator-000-exact-residual.json",
+      "sourceSha256": "d540c945f406ce3fedfc0c41f28c088b435a41c113204d03506fea702ed45f27",
+      "packetSha256": "d540c945f406ce3fedfc0c41f28c088b435a41c113204d03506fea702ed45f27",
+      "bytes": 200,
+      "kind": "complete file",
+      "role": "Actual reconstruction operands and exact residual, including unnormalized raw form"
+    },
+    {
+      "packetPath": "continued/resumed-operator-001-raw-reconstruction.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/resumed-operator-001-raw-reconstruction.json",
+      "sourceSha256": "8ca83ff2ae297fad4a44f4551ad6dbe847c9fa725b1ae2cfdb35c8540fa7e58c",
+      "packetSha256": "8ca83ff2ae297fad4a44f4551ad6dbe847c9fa725b1ae2cfdb35c8540fa7e58c",
+      "bytes": 6497,
+      "kind": "complete file",
+      "role": "Actual reconstruction operands and exact residual, including unnormalized raw form"
+    },
+    {
+      "packetPath": "continued/resumed-operator-001-exact-residual.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/resumed-operator-001-exact-residual.json",
+      "sourceSha256": "d540c945f406ce3fedfc0c41f28c088b435a41c113204d03506fea702ed45f27",
+      "packetSha256": "d540c945f406ce3fedfc0c41f28c088b435a41c113204d03506fea702ed45f27",
+      "bytes": 200,
+      "kind": "complete file",
+      "role": "Actual reconstruction operands and exact residual, including unnormalized raw form"
+    },
+    {
+      "packetPath": "continued/resumed-operator-002-raw-reconstruction.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/resumed-operator-002-raw-reconstruction.json",
+      "sourceSha256": "22869e3b2a5ef76ba15842fa07b943c142f0ddeacd68eda3a1b2f031c7b90a22",
+      "packetSha256": "22869e3b2a5ef76ba15842fa07b943c142f0ddeacd68eda3a1b2f031c7b90a22",
+      "bytes": 6499,
+      "kind": "complete file",
+      "role": "Actual reconstruction operands and exact residual, including unnormalized raw form"
+    },
+    {
+      "packetPath": "continued/resumed-operator-002-exact-residual.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/resumed-operator-002-exact-residual.json",
+      "sourceSha256": "d540c945f406ce3fedfc0c41f28c088b435a41c113204d03506fea702ed45f27",
+      "packetSha256": "d540c945f406ce3fedfc0c41f28c088b435a41c113204d03506fea702ed45f27",
+      "bytes": 200,
+      "kind": "complete file",
+      "role": "Actual reconstruction operands and exact residual, including unnormalized raw form"
+    },
+    {
+      "packetPath": "continued/resumed-operator-003-raw-reconstruction.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/resumed-operator-003-raw-reconstruction.json",
+      "sourceSha256": "acec961e0fddc6b758d790d35f70c2569302f50387402cbcb8e1aeff04045b7b",
+      "packetSha256": "acec961e0fddc6b758d790d35f70c2569302f50387402cbcb8e1aeff04045b7b",
+      "bytes": 9563,
+      "kind": "complete file",
+      "role": "Actual reconstruction operands and exact residual, including unnormalized raw form"
+    },
+    {
+      "packetPath": "continued/resumed-operator-003-exact-residual.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/resumed-operator-003-exact-residual.json",
+      "sourceSha256": "abc4b4fbd96de89587b348002d06f8c3a1facc896119ff828472f2cc6fc493f4",
+      "packetSha256": "abc4b4fbd96de89587b348002d06f8c3a1facc896119ff828472f2cc6fc493f4",
+      "bytes": 1400,
+      "kind": "complete file",
+      "role": "Actual reconstruction operands and exact residual, including unnormalized raw form"
+    },
+    {
+      "packetPath": "continued/resumed-operator-004-raw-reconstruction.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/resumed-operator-004-raw-reconstruction.json",
+      "sourceSha256": "a37fb5d5b230f820c07729da0e3dc14f8843a875f76d298433faf5a823364ba7",
+      "packetSha256": "a37fb5d5b230f820c07729da0e3dc14f8843a875f76d298433faf5a823364ba7",
+      "bytes": 9565,
+      "kind": "complete file",
+      "role": "Actual reconstruction operands and exact residual, including unnormalized raw form"
+    },
+    {
+      "packetPath": "continued/resumed-operator-004-exact-residual.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/resumed-operator-004-exact-residual.json",
+      "sourceSha256": "8f0e1538081794210233ee9d310569f0f1c34cd6170496f3d027d1f4834cf7f1",
+      "packetSha256": "8f0e1538081794210233ee9d310569f0f1c34cd6170496f3d027d1f4834cf7f1",
+      "bytes": 1400,
+      "kind": "complete file",
+      "role": "Actual reconstruction operands and exact residual, including unnormalized raw form"
+    },
+    {
+      "packetPath": "continued/resumed-operator-005-raw-reconstruction.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/resumed-operator-005-raw-reconstruction.json",
+      "sourceSha256": "05caa6df16ad1250728e9ea64513403979097447861c63950afd16647bf5ceac",
+      "packetSha256": "05caa6df16ad1250728e9ea64513403979097447861c63950afd16647bf5ceac",
+      "bytes": 9563,
+      "kind": "complete file",
+      "role": "Actual reconstruction operands and exact residual, including unnormalized raw form"
+    },
+    {
+      "packetPath": "continued/resumed-operator-005-exact-residual.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/resumed-operator-005-exact-residual.json",
+      "sourceSha256": "da596f787aa019a3cbe021f1fc92dcaf0308bbb906df9cfe71415e3939332d46",
+      "packetSha256": "da596f787aa019a3cbe021f1fc92dcaf0308bbb906df9cfe71415e3939332d46",
+      "bytes": 1400,
+      "kind": "complete file",
+      "role": "Actual reconstruction operands and exact residual, including unnormalized raw form"
+    },
+    {
+      "packetPath": "continued/units-and-scope-selected.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/units-and-scope.json",
+      "sourceSha256": "d69056300c1e6c1d021b9556f887092c28df04c03c1ab252894de87bb8d82b8b",
+      "packetSha256": "31304e8c737fa8e6fbe8a39f70f9f956b7e9cb7fa9e456b6c4be61213c977538",
+      "bytes": 974,
+      "kind": "exact top-level JSON key selection",
+      "selectedKeys": [
+        "inheritedReducedKernelDimension",
+        "normalizedSourceDimension",
+        "reducedPressureFourierDimension",
+        "declarationStatus",
+        "note",
+        "scopes",
+        "deferred"
+      ],
+      "role": "Exact selected unit/scope fields; full native dimensions supplied separately in original source"
+    },
+    {
+      "packetPath": "uniform-context.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_completion.json",
+      "sourceSha256": "ff960746958d7954531d94b8eba36748d6bb35b838777a84f6d877c3c8cd3c6f",
+      "packetSha256": "cd38a1b5cd5d178e4bbecd14d72468ee29772783aa0a5c996031f844c569df5c",
+      "bytes": 36516,
+      "kind": "exact top-level JSON key selection",
+      "selectedKeys": [
+        "scientificStatus",
+        "coverage",
+        "acceptanceBoundary",
+        "savedPointEvidence"
+      ],
+      "role": "Author inspection summary for context only, not primary uniform revalidation or peer report; no new uniform claim sought"
+    },
+    {
+      "packetPath": "worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py",
+      "sourceSha256": "e38038da5b795f8b31e7ead758f9a8652e80b5d8e80dd0971fe40d1ec02af5af",
+      "packetSha256": "e38038da5b795f8b31e7ead758f9a8652e80b5d8e80dd0971fe40d1ec02af5af",
+      "bytes": 45490,
+      "kind": "complete file",
+      "role": "Actual bounded instrument/readiness source; no result clearance"
+    },
+    {
+      "packetPath": "tooling-test.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_test.py",
+      "sourceSha256": "f18c4e28e68a1520f9a5065e08a217a944a353e51c220815ab416eca0afd7ed4",
+      "packetSha256": "f18c4e28e68a1520f9a5065e08a217a944a353e51c220815ab416eca0afd7ed4",
+      "bytes": 6646,
+      "kind": "complete file",
+      "role": "Actual bounded instrument/readiness source; no result clearance"
+    },
+    {
+      "packetPath": "plan.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_plan.md",
+      "sourceSha256": "b0cecc17ab71903a05896f280a6f653d5dcabcd94e4ff47e3cb5b3e5622261cc",
+      "packetSha256": "b0cecc17ab71903a05896f280a6f653d5dcabcd94e4ff47e3cb5b3e5622261cc",
+      "bytes": 5252,
+      "kind": "complete file",
+      "role": "Actual bounded instrument/readiness source; no result clearance"
+    },
+    {
+      "packetPath": "review-prompt.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_review_prompt.md",
+      "sourceSha256": "ad310db519fb37915563b4189a5b0eefa5dcd2c245fcdf1720e653052944121d",
+      "packetSha256": "ad310db519fb37915563b4189a5b0eefa5dcd2c245fcdf1720e653052944121d",
+      "bytes": 3811,
+      "kind": "complete file",
+      "role": "Actual bounded instrument/readiness source; no result clearance"
+    },
+    {
+      "packetPath": "input-manifest.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_inputs.json",
+      "sourceSha256": "f3b8fc3d1d8b48fb4ff66c3f52cc646f492e8784fd236cc8042ee94139a2e46d",
+      "packetSha256": "f3b8fc3d1d8b48fb4ff66c3f52cc646f492e8784fd236cc8042ee94139a2e46d",
+      "bytes": 16317,
+      "kind": "complete file",
+      "role": "Actual bounded instrument/readiness source; no result clearance"
+    },
+    {
+      "packetPath": "tooling-checks.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_tooling_checks.json",
+      "sourceSha256": "5a3ea20d3efbfe323e2e5a1e7479d7ab2d6d898c88ebb03f1992723f74d6cdf1",
+      "packetSha256": "5a3ea20d3efbfe323e2e5a1e7479d7ab2d6d898c88ebb03f1992723f74d6cdf1",
+      "bytes": 1266,
+      "kind": "complete file",
+      "role": "Actual bounded instrument/readiness source; no result clearance"
+    },
+    {
+      "packetPath": "saved/bare.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-coefficient-return.json",
+      "sourceSha256": "a6b4ac7b601fcc794d12391b668d2f36259831510aea44a6a8c3edc46b5124bb",
+      "packetSha256": "a6b4ac7b601fcc794d12391b668d2f36259831510aea44a6a8c3edc46b5124bb",
+      "bytes": 4119,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/modes.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/boundary-coefficient-input.json",
+      "sourceSha256": "086c2939471bbdfb6165e9587aac5e7d40e5f267f3ca11c970695862632bd2b8",
+      "packetSha256": "086c2939471bbdfb6165e9587aac5e7d40e5f267f3ca11c970695862632bd2b8",
+      "bytes": 1529,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/point.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/physical-point.json",
+      "sourceSha256": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "packetSha256": "35a4a2ea10f4bafdfe4517305d26aa04d6945d8fcd6f75ce459ce22d362e5321",
+      "bytes": 2560,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/transform.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-transform-return.json",
+      "sourceSha256": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "packetSha256": "fff546e7a76fdb66b3059627a54d3c008d456fc5acd9d971fe45140add36a099",
+      "bytes": 2211,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/action.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/profile-action-return.json",
+      "sourceSha256": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "packetSha256": "e9965881768a9e823976a4ab1920ff0ea18bf98b2166e69f886b552c2b7efebf",
+      "bytes": 5109,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/dimensions.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/dimensions.json",
+      "sourceSha256": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "packetSha256": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "bytes": 1000,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/trace_factors.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/physical-factors.json",
+      "sourceSha256": "70445aaed5424729d66c8bcb53b3d12f2fc7f0db8eab9ba4890bf5cdf8c102fb",
+      "packetSha256": "70445aaed5424729d66c8bcb53b3d12f2fc7f0db8eab9ba4890bf5cdf8c102fb",
+      "bytes": 5420,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/binding.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/binding-context.json",
+      "sourceSha256": "9216e51151937a0b815643ee2b958869b530c2bf775d6b5e848b0ebe241eae68",
+      "packetSha256": "9216e51151937a0b815643ee2b958869b530c2bf775d6b5e848b0ebe241eae68",
+      "bytes": 10950,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/source_plus.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-restrictions.json",
+      "sourceSha256": "a3f081200a90f3dd8d46b6ef4458085a0dbf885dbaa1e417d684b74de0b1d9b1",
+      "packetSha256": "a3f081200a90f3dd8d46b6ef4458085a0dbf885dbaa1e417d684b74de0b1d9b1",
+      "bytes": 28039,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/source_minus.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-restrictions.json",
+      "sourceSha256": "a3f081200a90f3dd8d46b6ef4458085a0dbf885dbaa1e417d684b74de0b1d9b1",
+      "packetSha256": "a3f081200a90f3dd8d46b6ef4458085a0dbf885dbaa1e417d684b74de0b1d9b1",
+      "bytes": 28039,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/input_plus.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-input.json",
+      "sourceSha256": "78828307da0b0def1a2de27b59afb65168f214536a8315ad3e62a040273ae374",
+      "packetSha256": "78828307da0b0def1a2de27b59afb65168f214536a8315ad3e62a040273ae374",
+      "bytes": 66907,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/input_minus.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-input.json",
+      "sourceSha256": "3dc8276d0c591d5869aa8467accbd7b12ebd89c6110ee7f7548adedce1216208",
+      "packetSha256": "3dc8276d0c591d5869aa8467accbd7b12ebd89c6110ee7f7548adedce1216208",
+      "bytes": 66911,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/consumer_U0.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U0-consumer-input.json",
+      "sourceSha256": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+      "packetSha256": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+      "bytes": 625,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/consumer_U1.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U1-consumer-input.json",
+      "sourceSha256": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+      "packetSha256": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+      "bytes": 625,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/consumer_U2.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-consumer-input.json",
+      "sourceSha256": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+      "packetSha256": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
+      "bytes": 625,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/consumer_THETA_BALANCE.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-consumer-input.json",
+      "sourceSha256": "28b18c00fa5e2028c216f1ba890895e0005c143ec93a85f793ce001e18b66453",
+      "packetSha256": "28b18c00fa5e2028c216f1ba890895e0005c143ec93a85f793ce001e18b66453",
+      "bytes": 5509,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "saved/consumer_E_W_BALANCE.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-consumer-input.json",
+      "sourceSha256": "d24e6e389d182884b7d8caf786e9a02b08bcb0f753dd4fd99e3b498a8375f86f",
+      "packetSha256": "d24e6e389d182884b7d8caf786e9a02b08bcb0f753dd4fd99e3b498a8375f86f",
+      "bytes": 5473,
+      "kind": "complete file",
+      "role": "Exact published saved operand used by the worker; functions not replayed"
+    },
+    {
+      "packetPath": "runtime-source/shared-guard.py",
+      "sourcePath": "scripts/s11c_guarded_run.py",
+      "sourceSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "packetSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "bytes": 21340,
+      "kind": "complete file",
+      "role": "Actual runtime helper source; read only, no scientific execution enabled"
+    },
+    {
+      "packetPath": "runtime-source/supervisor.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "sourceSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "packetSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "bytes": 4837,
+      "kind": "complete file",
+      "role": "Actual runtime helper source; read only, no scientific execution enabled"
+    },
+    {
+      "packetPath": "runtime-source/completion-hook.py",
+      "sourcePath": "scripts/codex_job_watch.py",
+      "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "packetSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "bytes": 4301,
+      "kind": "complete file",
+      "role": "Actual runtime helper source; read only, no scientific execution enabled"
+    }
+  ],
+  "excluded": [
+    "All earlier independent reports and verdicts",
+    "outside commentary",
+    "credentials",
+    "binary science payloads",
+    "full large exports"
+  ],
+  "scientificToolsEnabled": false,
+  "note": "Source/build review only. Original export hashes and exact native constructor excerpts give provenance; scientific execution is disabled."
+}

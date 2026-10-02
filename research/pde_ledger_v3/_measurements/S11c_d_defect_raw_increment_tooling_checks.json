@@ -14,12 +14,21 @@
     "unique native normal source",
     "native snippet same-namespace execution",
     "unique native assignment three_inverse",
-    "missing native function refused"
+    "missing native function refused",
+    "complete synthetic pressure census",
+    "nonaffine pressure term detected",
+    "pressure reciprocal refused",
+    "unknown pressure function refused",
+    "native executable Fourier factors",
+    "altered profile measure refused",
+    "altered second-slot measure refused",
+    "altered profile dimension refused",
+    "missing pin preserves subsequent hash"
   ],
-  "count": 14,
+  "count": 23,
   "scientificImport": false,
   "scientificPayloadRestoration": false,
   "physicsValidated": false,
-  "workerSha256": "536f89b55a955ea80fb931728631dd9306c88cfb833008b24aae72ccbd4b0488",
-  "testSha256": "cb241f5617d180baf175ca764a69862222661f2915d10452d96318d5f83aec8e"
+  "workerSha256": "e38038da5b795f8b31e7ead758f9a8652e80b5d8e80dd0971fe40d1ec02af5af",
+  "testSha256": "f18c4e28e68a1520f9a5065e08a217a944a353e51c220815ab416eca0afd7ed4"
 }

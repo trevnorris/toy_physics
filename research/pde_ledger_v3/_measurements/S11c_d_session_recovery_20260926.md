@@ -1,3 +1,18 @@
+**CORRECTED RAW-INCREMENT BUILD READY FOR FRESH REVIEW (2026-10-01):**
+First build and literal Claude NEEDS REVISION/Grok CLEAR preserved atb13aff4d;
+all563 packet/source/private/archive/receipt checks passed. No author CLEAR.
+Corrected instrument adds native lower geometry, both source grade/binding joins,
+full-row affine pressure census, executable Fourier contracts, physical-sheet row
+outputs and responsive nonzero-momentum/original-row controls. Missing-pin
+persistence is tooling-only.23stdlib tests pass; no scientific import/restoration.
+New102file/3347934byte packet SHA256
+1e6781d227d37c5559ca6a4fe5b7a31c94781672beb3631bd8bf2c957a32b3d4.
+No old peer reports included. Standing user consent covers the necessary pair;
+no repeated permission question. See raw_increment_review_r2_preparation/changes.
+No science gate/job yet. Preserve exact sources during review; adjudicate both
+literal reports before edits. Nongrazing raw increment only; closed matching
+limit/local bound, integral, finite matrix and defect sweep remain outside it.
+
 **BOTH-FACE RAW-INCREMENT BUILD REVIEWS RUNNING (2026-10-01):**
 Prepared implementation and exact packet preserved at844d8be7. Standing user
 consent used for the necessary Claude/Grok build pair; no repeated question.

@@ -119,10 +119,10 @@
     "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/U2-consumer-input.json": "bf07aa02c9b031aaca958d0fbd91d721f80fe5a4d9355c52b5194b1798360478",
     "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/THETA_BALANCE-consumer-input.json": "28b18c00fa5e2028c216f1ba890895e0005c143ec93a85f793ce001e18b66453",
     "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/E_W_BALANCE-consumer-input.json": "d24e6e389d182884b7d8caf786e9a02b08bcb0f753dd4fd99e3b498a8375f86f",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py": "536f89b55a955ea80fb931728631dd9306c88cfb833008b24aae72ccbd4b0488",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_test.py": "cb241f5617d180baf175ca764a69862222661f2915d10452d96318d5f83aec8e",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_plan.md": "57c19d4fdb6f3040495ae0cc813ee125b42ae2e9ecc51fc039827052a6f58cd3",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_review_prompt.md": "f121f549c632200b05a45346fb5ba0fa2d64bbaac1e89c7784123384243c93d8",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py": "e38038da5b795f8b31e7ead758f9a8652e80b5d8e80dd0971fe40d1ec02af5af",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_test.py": "f18c4e28e68a1520f9a5065e08a217a944a353e51c220815ab416eca0afd7ed4",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_plan.md": "b0cecc17ab71903a05896f280a6f653d5dcabcd94e4ff47e3cb5b3e5622261cc",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_review_prompt.md": "ad310db519fb37915563b4189a5b0eefa5dcd2c245fcdf1720e653052944121d",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_native.json": "441c580e56bd426bc098af6589776384f275401373cddd5c8fd5479707e5915e",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
     "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
@@ -137,7 +137,12 @@
     "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
     "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
     "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
-    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472"
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/U_BODY_BALANCE-0.txt": "2be4d3f6333ad32d034a02b4e405ac6ec1283eface906bd0b6cc3d86e646fca0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/U_BODY_BALANCE-1.txt": "be7e7e4a32fef68f498f2f4344ba648f4e9136c2df66195011d02d0cdb651a1d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/U_BODY_BALANCE-2.txt": "cef1a1351606de912b3bfb34a16381ad5b8b0decb6ca882bc12f9094e2764c25",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/THETA_BALANCE-0.txt": "f68aeec7625765e35fb90ce450e1dc475333d16e5dfec291cc53b309d69d4405",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/E_W_BALANCE-0.txt": "9bffb7fd7412c8de8b64066a2bb60fba1d211f89ae3a07eddd106f42284bdd8f"
   },
   "resources": {
     "memoryBytes": 4294967296,
@@ -153,5 +158,90 @@
   },
   "futureGateRequired": true,
   "productionWrites": false,
-  "scienceRuns": 0
+  "scienceRuns": 0,
+  "nativeRows": {
+    "U0": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/U_BODY_BALANCE-0.txt",
+      "sha256": "2be4d3f6333ad32d034a02b4e405ac6ec1283eface906bd0b6cc3d86e646fca0",
+      "address": [
+        "slab_operator",
+        [
+          "LAB_HELD",
+          "RHO4_CONSTANT"
+        ],
+        "VALUE",
+        "U_BODY_BALANCE",
+        "EXPANDED",
+        0
+      ],
+      "expandedConstructorSha256": "a4aa2afc2a090ede33fc3e7d58ce930752839fec05406bd506df5493c3be6b95",
+      "fileTerminator": "one newline"
+    },
+    "U1": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/U_BODY_BALANCE-1.txt",
+      "sha256": "be7e7e4a32fef68f498f2f4344ba648f4e9136c2df66195011d02d0cdb651a1d",
+      "address": [
+        "slab_operator",
+        [
+          "LAB_HELD",
+          "RHO4_CONSTANT"
+        ],
+        "VALUE",
+        "U_BODY_BALANCE",
+        "EXPANDED",
+        1
+      ],
+      "expandedConstructorSha256": "84fef7865597d1aeb591f5a4e46dd0bf2e5aeb0baf16a63c34b0c74cf826fc88",
+      "fileTerminator": "one newline"
+    },
+    "U2": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/U_BODY_BALANCE-2.txt",
+      "sha256": "cef1a1351606de912b3bfb34a16381ad5b8b0decb6ca882bc12f9094e2764c25",
+      "address": [
+        "slab_operator",
+        [
+          "LAB_HELD",
+          "RHO4_CONSTANT"
+        ],
+        "VALUE",
+        "U_BODY_BALANCE",
+        "EXPANDED",
+        2
+      ],
+      "expandedConstructorSha256": "6d96a705d30f237f90e1110f488efb699aeef7309d77bb2b1b0cd210686275f2",
+      "fileTerminator": "one newline"
+    },
+    "THETA_BALANCE": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/THETA_BALANCE-0.txt",
+      "sha256": "f68aeec7625765e35fb90ce450e1dc475333d16e5dfec291cc53b309d69d4405",
+      "address": [
+        "slab_operator",
+        [
+          "LAB_HELD",
+          "RHO4_CONSTANT"
+        ],
+        "VALUE",
+        "THETA_BALANCE",
+        "EXPANDED"
+      ],
+      "expandedConstructorSha256": "bd680a1bafe0394c90d38d265867d8f3d93c53017f1eec7f1fc4ae0b85beefe6",
+      "fileTerminator": "one newline"
+    },
+    "E_W_BALANCE": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/E_W_BALANCE-0.txt",
+      "sha256": "9bffb7fd7412c8de8b64066a2bb60fba1d211f89ae3a07eddd106f42284bdd8f",
+      "address": [
+        "slab_operator",
+        [
+          "LAB_HELD",
+          "RHO4_CONSTANT"
+        ],
+        "VALUE",
+        "E_W_BALANCE",
+        "EXPANDED"
+      ],
+      "expandedConstructorSha256": "9a91c6a2c3c3cace9ace8692a26e094b5fdc926f899f928fb3791b2dba6ee09e",
+      "fileTerminator": "one newline"
+    }
+  }
 }

@@ -18,7 +18,8 @@ Check the executable code, not the prose alone:
   have complete address provenance. A hash alone is not a mathematical join.
 - Lower normal, signed lab height/slope and depth use the same positive outgoing
   rule as the upper face. Verify triangular boundary equations, exact residuals,
-  native flat/linear joins and addressed wrong-height/slope controls. The
+  actual native minus-face height/normal joins, native flat/linear joins and
+  nonzero-input-momentum wrong-height/slope controls. The
   outward mirror comparison is not the sole derivation.
 - One ordered convolution, four distinct physical depths including q(k+Q-t),
   exact H-factorization modulo both dispersion identities, complete contact/PV
@@ -29,10 +30,15 @@ Check the executable code, not the prose alone:
   jet; explicit external depth cancellation is necessary but not a uniform
   grazing result. Check the source/resolvent/trace definitions and all actual
   symbolic assumptions, grade/epsilon conventions and dimension joins.
-- The full published consumer rows receive both direct slots before grade
-  extraction. Output raw row densities must correspond to those substitutions.
+- The full expanded row syntax must establish a complete affine pressure-slot
+  census. The saved operand is that slot sum, not the entire slab row. Check
+  raw-to-bound equality and per-face combined-source/zero-grade joins. Both
+  slots enter before grade extraction. Check the shared-sheet physical row
+  density against the direct physical insertion.
   Actual lower omission/doubling controls must respond in THETA and E_W; a
-  trace-only sign control is not a nonzero unused jet-consumer claim.
+  trace-only sign control is not a nonzero unused jet-consumer claim. Check the
+  executable native Fourier factor/phase/measure contract and explicit edge
+  reduction; syntactic contracts do not constitute executed integrals.
 - Persistence before risky operations and failed checks, no duplicate filenames,
   compatible native namespaces, immutable returns, all posthashes, strict
   stderr/stdout identity and gate joins. Scientific imports only after actual

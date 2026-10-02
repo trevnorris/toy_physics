@@ -61,6 +61,110 @@ def assignment_source(source, function, target):
     return ast.get_source_segment(fragment, nodes[0])
 
 
+def posthash_records(pins):
+    records={}
+    for path,expected in pins.items():
+        try: records[path]={'expected':expected,'actual':sha(path),'error':None}
+        except OSError as error:
+            records[path]={'expected':expected,'actual':None,'error':str(error)}
+    return records
+
+
+def pressure_census(text):
+    """Inspect every native constructor; never evaluate full-row science here."""
+    tree=ast.parse(text,mode='eval').body
+    names={'delta_p_plus','delta_p_minus','d_w_delta_p_plus','d_w_delta_p_minus'}
+    def hits(node):
+        found=[]
+        for n in ast.walk(node):
+            if (isinstance(n,ast.Call) and isinstance(n.func,ast.Name)
+                and n.func.id in ('Symbol','Function') and n.args
+                and isinstance(n.args[0],ast.Constant) and isinstance(n.args[0].value,str)
+                and 'delta_p' in n.args[0].value):
+                require(n.func.id=='Symbol' and n.args[0].value in names,'unknown native pressure slot')
+                found.append(n.args[0].value)
+        return found
+    def degree(node):
+        if not hits(node):return 0
+        require(isinstance(node,ast.Call) and isinstance(node.func,ast.Name),'pressure constructor')
+        if node.func.id=='Symbol':return 1
+        if node.func.id=='Add':return max(map(degree,node.args))
+        if node.func.id=='Mul':return sum(map(degree,node.args))
+        if node.func.id=='Pow':
+            power=node.args[1]
+            require(isinstance(power,ast.Call) and isinstance(power.func,ast.Name)
+                    and power.func.id=='Integer' and len(power.args)==1,'pressure integer power')
+            n=ast.literal_eval(power.args[0]);require(type(n) is int and n>=0,'pressure polynomial')
+            return n*degree(node.args[0])
+        raise ValueError('nonaffine/unknown pressure operation')
+    children=tree.args if isinstance(tree,ast.Call) and isinstance(tree.func,ast.Name) and tree.func.id=='Add' else [tree]
+    selected=[];covered=[]
+    for index,node in enumerate(children):
+        occurrences=hits(node);covered.extend(occurrences)
+        if occurrences:
+            value=ast.get_source_segment(text,node)
+            selected.append({'childIndex':index,'constructorText':value,
+                'constructorSha256':hashlib.sha256(value.encode()).hexdigest(),
+                'occurrences':occurrences,'pressureDegree':degree(node)})
+    all_hits=hits(tree)
+    require(sorted(covered)==sorted(all_hits),'complete native slot coverage')
+    return {'totalChildren':len(children),'selected':selected,'occurrenceCounts':{n:all_hits.count(n) for n in sorted(names)},
+            'maximumPressureDegree':max([0]+[r['pressureDegree'] for r in selected])}
+
+
+def fourier_contract(source):
+    """Exact executable AST contract, not a convention inferred from comments."""
+    def same(node,text):return ast.dump(node,include_attributes=False)==ast.dump(ast.parse(text,mode='eval').body,include_attributes=False)
+    def assignment(function,name):
+        tree=ast.parse(function_source(source,function))
+        found=[n.value for n in ast.walk(tree) if isinstance(n,ast.Assign)
+               and any(isinstance(t,ast.Name) and t.id==name for t in n.targets)]
+        require(len(found)==1,'unique measure assignment '+name);return found[0]
+    definition=assignment('profile_bindings','definition')
+    require(isinstance(definition,ast.Call) and same(definition.func,'sp.Integral'),'native profile integral')
+    require(same(definition.args[0],'phase*local_field/(2*sp.pi)**3'),'native normalized profile forward')
+    require(len(definition.args)==2 and isinstance(definition.args[1],ast.Starred),'profile starred limit shape')
+    require(ast.unparse(definition.args[1])=='*((y, -sp.oo, sp.oo) for y in Y)','native profile Y limits')
+    records={}
+    for name,numerator in [('p0','phase0*diagonal*local_source'),('p1','phase1*off_diagonal*local_source'),('p2','phase1*second*local_source')]:
+        node=assignment('kernel_apply',name)
+        require(isinstance(node,ast.Call) and same(node.func,'integral'),'native source apply integral')
+        require(len(node.args)==(3 if name=='p2' else 2) and not node.keywords,'native integration arity')
+        require(same(node.args[0],numerator+'/(2*sp.pi)**3'),'native inverse normalization '+name)
+        records[name]=ast.unparse(node)
+    require(ast.unparse(assignment('kernel_apply','p2').args[1])=='*limits1','native second source limits')
+    require(ast.unparse(assignment('kernel_apply','p2').args[2])=='*((v, -sp.oo, sp.oo) for v in MIDDLE)','plain second middle measure')
+    require(same(assignment('kernel_apply','local_source'),'inputs.at_source(source)'),'native unnormalized source forward')
+    require(same(assignment('kernel_apply','phase1'),'sp.exp(sp.I*(sum(k*x for k,x in zip(kout,X))-sum(k*y for k,y in zip(kin,Y))))'),'native source phase sign')
+    require(same(assignment('profile_bindings','phase'),'sp.exp(-sp.I*sum((a-b)*y for a,b,y in zip(ko,ki,Y)))'),'native profile phase sign')
+    globals_=ast.parse(source).body
+    declarations={name:next(n.value for n in globals_ if isinstance(n,ast.Assign) and any(isinstance(a,ast.Name) and a.id==name for a in n.targets)) for name in ('Y','MIDDLE')}
+    counts={}
+    for name,node in declarations.items():
+        generator=node.args[0];require(isinstance(generator,ast.GeneratorExp),'native coordinate generator')
+        iterator=generator.generators[0].iter
+        require(same(iterator,'range(1,4)'),'native three-dimensional coordinate count')
+        start,stop=map(ast.literal_eval,iterator.args);counts[name]=stop-start
+    require(counts['Y']==counts['MIDDLE'],'same source/middle dimensions')
+    dimensions=[n.value for n in ast.walk(ast.parse(function_source(source,'fourier_profiles'))) if isinstance(n,ast.Assign)
+                and any(isinstance(a,ast.Subscript) and isinstance(a.value,ast.Name) and a.value.id=='NEW_DIMENSIONS' for a in n.targets)]
+    require(len(dimensions)==1 and ast.literal_eval(dimensions[0])==(3,0,0),'native profile Fourier dimensions')
+    profile_tree=ast.parse(function_source(source,'fourier_profiles'))
+    spectral=[n for n in ast.walk(profile_tree) if isinstance(n,ast.Assign)
+              and any(isinstance(a,ast.Subscript) and isinstance(a.value,ast.Name)
+                      and a.value.id=='spectral' for a in n.targets)]
+    require(len(spectral)==1 and same(spectral[0].value,'function(*(a-b for a,b in zip(kout,kin)))'),'native profile transfer arguments')
+    returned=[n.value for n in ast.walk(profile_tree) if isinstance(n,ast.Return)]
+    require(len(returned)==1 and same(returned[0],'expression.xreplace(spectral)'),'native profile transfer insertion')
+    return {'profileForwardPower':-3,'sourceInversePower':-3,'sourceForwardPower':0,
+        'coordinates':counts['Y'],'invariantEdgeCoordinates':counts['Y']-1,'nativeProfileDimension':list(ast.literal_eval(dimensions[0])),
+        'profileDefinition':ast.unparse(definition),'nativeSourceIntegrals':records,
+        'sourcePhase':ast.unparse(assignment('kernel_apply','phase1')),
+        'profilePhase':ast.unparse(assignment('profile_bindings','phase')),
+        'middleMeasure':'plain three-dimensional; one-dimensional after both edge deltas',
+        'scope':'Syntactic executable-factor contract; no native integral called or evaluated.'}
+
+
 def containment():
     memory = 4*1024**3
     group = next(v[3:] for v in Path('/proc/self/cgroup').read_text().splitlines() if v.startswith('0::'))
@@ -214,7 +318,7 @@ def scientific_work(manifest,J):
     J.emit('physical-depth-bindings',{'bindings':{str(a):v for a,v in physical_depth_bindings.items()},'outgoingPrescription':'same positive root; zeros are excluded from raw evaluation'})
     J.emit('physical-sheet',{'frequency':freq,'cs':cs,'edge':edge,'input':q(k),'heightRoute':q(k+t),
         'slopeRoute':q(k+Q-t),'output':q(k+Q),'zeroRule':'not pointwise evaluated; limiting omega+i0+ prescription remains uncomputed',
-        'externalDomain':[sp.Ne(qi,0),sp.Ne(qo,0)],'reflectedRoute':'k+k_out-m; separate from native MIDDLE_Q'})
+        'externalDomain':[sp.Ne(physical_depth_bindings[x],0,evaluate=False) for x in (qi,qo)],'reflectedRoute':'k+k_out-m; separate from native MIDDLE_Q'})
     qpoint={qi:saved['point']['inputDepth'],qo:saved['point']['outputDepth']}
     for name,p,v in [('input',0,qpoint[qi]),('output',sp.Rational(1,10),qpoint[qo])]:
         J.zero('saved-sheet-'+name,q(sp.sympify(p)).subs(cs,values['c_s0']),v)
@@ -226,6 +330,25 @@ def scientific_work(manifest,J):
                and any(isinstance(x,ast.Name) and x.id=='normal_exact' for x in n.targets)
                and 'grad_h' in ast.get_source_segment(geom,n)]
         require(len(nodes)==1,'native graph normal address');lower_normal_source=ast.get_source_segment(geom,nodes[0])
+    # Join actual native lower geometry before constructing its new boundary.
+    native_normals={int(r['case'][1]):sp.sympify(r['valueConstructorText'],locals={'Str':Str})
+                    for r in native['geometry']['face_normal']['cases']}
+    native_traces={int(r['case'][1]):sp.sympify(r['valueConstructorText'],locals={'Str':Str})
+                   for r in native['geometry']['face_shift']['cases']}
+    lower_trace=native_traces[-1][0]/eps
+    lower_jet=one_symbol([lower_trace],'d_w_delta_p_minus')
+    width=one_symbol([lower_trace],'W_0');profile=one_symbol([lower_trace],'w1_profile')
+    lab_height=sp.diff(lower_trace,lower_jet)
+    J.zero('native-lower-lab-height',lab_height,-width*eta*profile/2)
+    normal0=native_normals[-1][0]
+    profile_jet=one_symbol([normal0],'w1_profile_d1')
+    nc={'__builtins__':{},'tuple':tuple,'face':-1,'grad_h':(-s,sp.S.Zero,sp.S.Zero),'denominator':sp.sqrt(1+s*s)}
+    exec(lower_normal_source,nc)
+    normal_derivative=sp.diff(nc['normal_exact'][0],s).subs(s,0)
+    J.emit('native-lower-geometry-operands',{'trace':lower_trace,'labHeight':lab_height,
+        'nativeNormal':normal0,'graphNormal':nc['normal_exact'],'outwardSlopeDefinition':sigma*profile_jet/2})
+    J.zero('native-lower-normal-slope',sp.diff(normal0[0],sigma),normal_derivative*profile_jet/2)
+    J.zero('native-lower-normal-orientation',normal0[3],sp.Integer(-1))
     def lower_boundary(label,height_face=-1,slope_multiplier=1):
         face=-1;normal_context={'grad_h':(face*s,sp.S.Zero,sp.S.Zero),'face':face,'denominator':sp.sqrt(1+s*s)}
         normal_context.update(__builtins__={},tuple=tuple)
@@ -274,7 +397,11 @@ def scientific_work(manifest,J):
         rules={qh**2:qi**2-H*(H+2*k),qs**2:qo**2+H*(2*k+2*Q-H)}
         J.emit('factorization-before-reduction',{'original':mixed,'candidateB':Br,'rawDifference':delta,'numerator':num,'denominator':den,
             'identities':{str(a):v for a,v in rules.items()},'domain':'qi qo qh (qh+qi) (qs+qo) nonzero; common positive physical sheet'})
-        reduced=sp.expand(sp.expand(num).subs(rules,simultaneous=True))
+        expanded=sp.expand(num)
+        for term in sp.Add.make_args(expanded):
+            powers=term.as_powers_dict()
+            require(all(powers.get(x,0) in (0,1,2) for x in (qh,qs)),'quadratic dispersion reduction domain')
+        reduced=sp.expand(expanded.subs(rules,simultaneous=True))
         J.zero('factorization-physical-numerator',reduced,sp.S.Zero)
         contact=mixed.subs({H:0,qh:qi,qs:qo},simultaneous=True)
         J.zero('upper-complete-contact',contact,sp.S.Zero)
@@ -313,18 +440,30 @@ def scientific_work(manifest,J):
         if v.is_Pow and v.exp.is_Rational:return tuple(x*v.exp for x in dim(v.base))
         raise ValueError('unjoined dimension '+str(v))
     coefficient_dimension=dim(mixed)
-    height_hat_dimension=tuple(a+b for a,b in zip(schema['W_0'],(1,0,0)))
-    jet_hat_dimension=(1,0,0);transfer_measure_dimension=(-1,0,0)
+    measure=fourier_contract(c2);J.emit('native-fourier-contract',measure)
+    edge_count=measure['invariantEdgeCoordinates']
+    reduced_hat_dimension=tuple(a-b for a,b in zip(measure['nativeProfileDimension'],(edge_count,0,0)))
+    height_hat_dimension=tuple(a+b for a,b in zip(schema['W_0'],reduced_hat_dimension))
+    jet_hat_dimension=reduced_hat_dimension;transfer_measure_dimension=(-(measure['coordinates']-edge_count),0,0)
+    J.zero('edge-reduced-profile-factor',(2*sp.pi)**measure['profileForwardPower']*(2*sp.pi)**edge_count,(2*sp.pi)**-1)
+    J.emit('edge-delta-reduction',{'sourceDimension':measure['coordinates'],'invariantCoordinates':edge_count,
+        'profileDependsOnlyOnCoordinate':1,'deltaFactors':[sp.DiracDelta(sp.Symbol('increment_edge_transfer_'+str(i),real=True)) for i in range(2,measure['coordinates']+1)],
+        'normalizedOneDimensionalFactor':(2*sp.pi)**-1,'plainReducedMiddleMeasure':True,
+        'identity':'integral exp(-i*d*y) dy = 2*pi*delta(d) in each invariant edge coordinate',
+        'nativeFirstAndSecondSourceInverseSame':measure['sourceInversePower']})
     computed=[sum(v[i] for v in (coefficient_dimension,height_hat_dimension,jet_hat_dimension,transfer_measure_dimension)) for i in range(3)]
     J.emit('dimension-and-measure-join',{'C':coefficient_dimension,'heightHat':height_hat_dimension,'jetHat':jet_hat_dimension,'dt':transfer_measure_dimension,'nativeRhoDimension':schema['rho_m'],'nativeOmegaDimension':schema['omega'],
-        'computedReduced':computed,'savedReduced':reduced,'savedNative':full,'factoredEdges':2,
+        'computedReduced':computed,'savedReduced':reduced,'savedNative':full,'factoredEdges':edge_count,
         'profiles':function_source(c2,'profile_bindings'),'kernelApply':function_source(c2,'kernel_apply'),
-        'fourierProfiles':function_source(c2,'fourier_profiles'),'sourceForwardNormalized':False,'profileForwardNormalized':True})
+        'fourierProfiles':function_source(c2,'fourier_profiles'),'executableContract':measure})
     require(computed==reduced and all(x==[computed[0]+2,*computed[1:]] for x in full),'native reduced/full dimensions')
     # Restore actual both-face source and full consumer observations; cs absence above allows reuse.
     responses={int(r['case'][1]):sp.sympify(r['valueConstructorText'],locals={'Str':Str}) for r in native['faceResponseSources']['cases']}
     traces={int(r['case'][1]):sp.sympify(r['valueConstructorText'],locals={'Str':Str}) for r in native['geometry']['face_shift']['cases']}
-    objects=[*responses.values(),*traces.values(),S0,SM,saved['binding']['density'],mixed]
+    native_velocities={int(r['case'][1]):sp.sympify(r['valueConstructorText'],locals={'Str':Str}) for r in native['geometry']['face_velocity']['cases']}
+    native_chemical=sp.sympify(native['chemicalSource']['valueConstructorText'],locals={'Str':Str})[1]/eps
+    objects=[*responses.values(),*traces.values(),*native_velocities.values(),native_chemical,S0,SM,saved['binding']['density'],mixed,*restored_raw]
+    objects += [saved['input_'+label]['combined'] for label in ('plus','minus')]
     symbols=set().union(*(v.atoms(sp.Symbol) for v in objects));atom=lambda name:one_symbol(objects,name)
     numbind={a:values[a.name] for a in symbols if a.name in values and a.name not in ('eta_bg','sigma_W','epsilon_shape','c_s0')}
     densitymap={atom(name):v for name,v in saved['binding']['densityMap'].items()}
@@ -345,7 +484,19 @@ def scientific_work(manifest,J):
         a0=sp.cancel(bind(a).subs({eta:0,sigma:0},simultaneous=True))
         J.zero(label+'-native-resolvent-affine',definition,identity+a*z)
         source=named(resp,'DELTA_P').subs({named(resp,'RESOLVENT'):1,z:1},simultaneous=True)/eps
-        J.zero(label+'-saved-source-argument',source,saved['input_'+label]['raw'])
+        source_input=saved['input_'+label]
+        J.zero(label+'-saved-source-argument',source,source_input['raw'])
+        native_velocity=bind(native_velocities[face]/eps);native_mu=bind(native_chemical)
+        J.zero(label+'-saved-velocity-amplitude',native_velocity,source_input['velocityAmplitude'])
+        J.zero(label+'-saved-chemical-amplitude',native_mu,source_input['chemicalAmplitude'])
+        V=atom('s11cc1_V_lab_held_'+label);M=atom('s11cc1_mu_theta_lab_held_'+label)
+        reconstructed=bind(source.subs({V:native_velocity,M:native_mu},simultaneous=True))
+        J.zero(label+'-saved-combined-source',reconstructed,source_input['combined'])
+        reduced_source=sp.cancel(source_input['combined']);den0=sp.fraction(reduced_source)[1].subs({eta:0,sigma:0},simultaneous=True)
+        J.emit(label+'-source-zero-grade-operands',{'combined':source_input['combined'],'reduced':reduced_source,'denominatorAtZero':den0})
+        require(den0.is_finite is True and den0.is_zero is False,'regular saved source grade')
+        source0=reduced_source.subs({eta:0,sigma:0},simultaneous=True)
+        J.zero(label+'-saved-source-zero-grade',source0,saved['source_'+label]['source00'])
         # New general external-leg identity keeps existing first-shape symbols once.
         z01,z12,D=sp.symbols(label+'_z01 '+label+'_z12 '+label+'_raw_direct')
         Z=sp.Matrix([[mass*freq/qo,z01,D],[0,mass*freq/qh,z12],[0,0,mass*freq/qi]])
@@ -359,6 +510,7 @@ def scientific_work(manifest,J):
         trace=bind(traces[face][0]/eps);pp=atom('delta_p_'+label);jj=atom('d_w_delta_p_'+label)
         vc=sp.diff(trace,pp);height=sp.diff(trace,jj);constant=trace.subs({pp:0,jj:0},simultaneous=True)
         J.zero(label+'-trace-reconstruction',trace,vc*pp+height*jj+constant)
+        J.zero(label+'-bound-native-height',height,bind(face*atom('W_0')*eta*atom('w1_profile')/2))
         vc0=vc.subs({eta:0,sigma:0},simultaneous=True);ht0=height.subs({eta:0,sigma:0},simultaneous=True)
         trace0=vc0+sp.I*face*qo*ht0
         J.emit(label+'-trace-domain',{'trace':trace,'valueCoefficient':vc,'height':height,'zeroTrace':trace0,'normalJet':sp.I*face*qo})
@@ -379,39 +531,68 @@ def scientific_work(manifest,J):
     for label,D in [('plus',Dplus),('minus',Dminus)]:
         replacements[atom('delta_p_'+label)]=eta*sigma*D*factors[label][0]*sources[label]
         replacements[atom('d_w_delta_p_'+label)]=eta*sigma*D*factors[label][1]*sources[label]
-    increments={}
+    increments={};consumer_bases={}
     for row in manifest['rowNames']:
         old=saved['consumer_'+row]
         native_row=next(r for r in native['slabConsumers']['rows'] if (('U'+str(r['address'][-1])) if r['address'][-2]=='EXPANDED' else r['address'][-2])==row)
         native_expr=sp.Add(*(sp.sympify(c['constructorText'],locals={'Str':Str}) for c in native_row['selectedPressureJetChildren']))
         J.zero(row+'-native-raw-consumer-join',old['raw'],native_expr)
-        base=old['bound'];new=base.subs(replacements,simultaneous=True)
+        record=manifest['nativeRows'][row];full_file=Path(record['path']).read_text()
+        require(full_file.endswith('\n') and not full_file.endswith('\n\n'),'one row-file terminator')
+        full_text=full_file[:-1]
+        require(sha(record['path'])==record['sha256'],'actual expanded row pin')
+        require(hashlib.sha256(full_text.encode()).hexdigest()==native_row['expandedConstructorSha256'],'native expanded row identity')
+        census=pressure_census(full_text);J.emit(row+'-executed-native-census',census)
+        require(census['totalChildren']==native_row['totalChildren'],'native row child count')
+        require(census['occurrenceCounts']==native_row['pressureSymbolOccurrenceCounts'],'all native slot occurrences')
+        expected=[(r['childIndex'],r['constructorSha256']) for r in native_row['selectedPressureJetChildren']]
+        actual=[(r['childIndex'],r['constructorSha256']) for r in census['selected']]
+        require(actual==expected and census['maximumPressureDegree']<=1,'complete affine native slot sum')
+        base=old['bound'];J.zero(row+'-saved-bound-join',bind(old['raw']),base)
+        consumer_bases[row]=base;new=base.subs(replacements,simultaneous=True)
         zero=base.subs({x:0 for x in replacements},simultaneous=True)
         J.emit(row+'-full-increment-input',{'sourceAddress':native_row['address'],'completeCensus':native_row['allPressureOccurrencesCovered'],
-            'fullPublishedBoundRow':base,'slotInsertion':{str(a):v for a,v in replacements.items()},'ungradedDifference':new-zero})
+            'completePublishedBoundPressureSlotSum':base,'slotInsertion':{str(a):v for a,v in replacements.items()},'ungradedDifference':new-zero})
         require(native_row['allPressureOccurrencesCovered'] is True,'complete row slot census')
         increment=sp.cancel(sp.diff(new-zero,eta,sigma).subs({eta:0,sigma:0},simultaneous=True))
+        raw_density=increment.xreplace({Dplus:raw,Dminus:raw_lower})
+        physical_density=raw_density.xreplace(physical_depth_bindings)
+        physical_replacements={slot:value.xreplace({Dplus:raw.xreplace(physical_depth_bindings),Dminus:raw_lower.xreplace(physical_depth_bindings)}).xreplace(physical_depth_bindings) for slot,value in replacements.items()}
+        physical_inserted=base.subs(physical_replacements,simultaneous=True)-zero
+        physical_retained=sp.diff(physical_inserted,eta,sigma).subs({eta:0,sigma:0},simultaneous=True)
+        J.zero(row+'-physical-row-sheet-join',physical_density,physical_retained)
         J.emit(row+'-retained-increment',{'mixedCoefficient':increment,'grades':[1,1],'epsilon':eps,
-            'rawKernelPlus':raw,'rawKernelMinus':raw_lower,'rawRowDensity':increment.xreplace({Dplus:raw,Dminus:raw_lower}),'sourcePlus':S0,'sourceMinus':SM,
+            'rawKernelPlus':raw,'rawKernelMinus':raw_lower,'rawRowDensity':raw_density,'physicalRowDensity':physical_density,'sourcePlus':S0,'sourceMinus':SM,
             'wholeConvolutionInserted':False,'middleIntegralEvaluated':False})
+        if row in ('U0','U1','U2'):require(increment==0,'native empty U pressure increment')
         increments[row]=increment
     # Controls use the actual new lower equation and actual row insertions.
     wrongheight=J.stage('lower-wrong-height-control',{'labHeightSign':1,'required':-1},lambda:lower_boundary('lower-wrong-height',height_face=1))
     omitted=J.stage('lower-slope-omission-control',{'slopeMultiplier':0},lambda:lower_boundary('lower-slope-omitted',slope_multiplier=0))
-    sample={k:0,H:sp.Rational(1,20),qi:sp.Rational(1,5),qo:sp.sqrt(3)/10,qh:sp.sqrt(15)/20,qs:sp.sqrt(15)/20,om:freq,rho:mass}
+    control_k=sp.Rational(1,20);control_H=sp.Rational(1,25);control_Q=sp.Rational(1,10)
+    control_depths={qi:q(control_k),qh:q(control_k+control_H),qs:q(control_k+control_Q-control_H),qo:q(control_k+control_Q)}
+    sample={k:control_k,H:control_H,Q:control_Q,om:freq,rho:mass,**{a:v.subs(cs,values['c_s0']) for a,v in control_depths.items()}}
+    J.emit('nonzero-input-control-point',{'sample':{str(a):v for a,v in sample.items()},'cs':values['c_s0'],'depths':control_depths})
+    J.zero('control-height-dispersion',(qh**2-qi**2+H*(H+2*k)).subs(sample,simultaneous=True),sp.S.Zero)
+    J.zero('control-slope-dispersion',(qo**2-qs**2+H*(2*k+2*Q-H)).subs(sample,simultaneous=True),sp.S.Zero)
     baseline=mixed.subs(sample,simultaneous=True)
     J.nonzero('wrong-lab-face-response',baseline,wrongheight[3].subs(sample,simultaneous=True))
     J.nonzero('native-slope-omission-response',baseline,omitted[3].subs(sample,simultaneous=True))
     J.nonzero('wrong-sheet-response',baseline,mixed.subs(qh,-qh).subs(sample,simultaneous=True))
-    J.nonzero('double-insertion-response',baseline,2*baseline)
     for row in ('THETA_BALANCE','E_W_BALANCE'):
         expr=increments[row];probe={a:0 for a in expr.free_symbols if a.name in ('theta','e_W_t') or a.name.startswith(('u_','e_W_d','theta_d'))}
         probe.update({a:1 for a in expr.free_symbols if a.name=='e_W'})
-        probe.update({Dplus:1,Dminus:1,eps:1,**qpoint})
+        probe.update({Dplus:1,Dminus:1,eps:1,qi:sample[qi],qo:sample[qo]})
         good=sp.cancel(expr.subs(probe,simultaneous=True))
-        without=sp.cancel(expr.subs(Dminus,0).subs(probe,simultaneous=True))
+        base=consumer_bases[row]
+        def changed_insertion(multiplier):
+            changed={slot:value.xreplace({Dminus:multiplier*Dminus}) for slot,value in replacements.items()}
+            difference=base.subs(changed,simultaneous=True)-base.subs({slot:0 for slot in changed},simultaneous=True)
+            J.emit(row+'-changed-insertion-'+str(multiplier),{'replacements':{str(a):v for a,v in changed.items()},'ungradedDifference':difference})
+            return sp.cancel(sp.diff(difference,eta,sigma).subs({eta:0,sigma:0},simultaneous=True))
+        without=sp.cancel(changed_insertion(0).subs(probe,simultaneous=True))
         J.nonzero(row+'-actual-lower-row-control',good,without)
-        doubled=sp.cancel(expr.subs(Dminus,2*Dminus).subs(probe,simultaneous=True))
+        doubled=sp.cancel(changed_insertion(2).subs(probe,simultaneous=True))
         J.nonzero(row+'-actual-double-row-control',good,doubled)
     J.nonzero('lower-reference-jet-sign',factors['minus'][1].subs(qpoint),(-factors['minus'][1]).subs(qpoint))
     # No endpoint integration is smuggled into a raw-kernel job.
@@ -426,6 +607,7 @@ def scientific_work(manifest,J):
     for label,C in [('plus',mixed),('minus',lower[3])]:J.zero(label+'-constant-end-increment',(h*s*C).subs(s,0),sp.S.Zero)
     return {'candidateRawIncrementConstructed':True,'bothFaces':True,'nongrazingDomainOnly':True,
             'exactMatchApplicability':'UNRESOLVED','computedIntegral':False,'finiteSolves':0,
+            'U012IncrementStatus':'literal zero required by empty native pressure census',
             'productionChanges':False,'physicalLossSupplied':False,'replayedCompletedFunctions':False}
 
 
@@ -447,7 +629,7 @@ def main():
         result={'executionStatus':'FAILED_PRESERVED','traceback':traceback.format_exc(),'incompleteOperation':None if J is None else J.active,'automaticRetry':False}
         save(args.out/'failure.json',result)
     finally:
-        post={p:{'expected':h,'actual':sha(p)} for p,h in manifest['sourcePins'].items()};save(args.out/'posthashes.json',post)
+        post=posthash_records(manifest['sourcePins']);save(args.out/'posthashes.json',post)
         if any(v['expected']!=v['actual'] for v in post.values()):result['integrityFailure']=True;code=1
         if J is not None:replace_json(args.out/'operation-index.json',J.completed)
         result.update(wallSeconds=time.monotonic()-start,scientificAcceptance=False)

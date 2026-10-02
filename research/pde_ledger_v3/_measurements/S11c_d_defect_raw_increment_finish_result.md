@@ -1,0 +1,15 @@
+# Both-face raw increment: bounded diagnostic complete
+
+The saved-control finish supports the **nongrazing both-face direct mixed increment** and all eight addressed response controls. It does not evaluate the convolution, establish its grazing limit, correct a finite matrix, or measure loss. The scope remains strict-rest-bulk LAB_HELD/RHO4_CONSTANT, omega=3, the saved edge momenta, independent eta/sigma grades, and the actual tanh profile.
+
+The four completed nested returns and five passed checks were restored without calling their functions. The previously saved THETA omission movement was certified finite without recomputing it. Its original `is_finite=None` remains in the evidence. An exact constant-fraction certificate establishes a finite numerator and a finite, nonzero denominator through its real/imaginary components and literal-zero reconstruction. The same certificate resolves the remaining four finite flags; no numerical tolerance or equation changed.
+
+Wrong-height, omitted-slope and wrong-sheet controls retain their prior finite, nonzero responses. Actual THETA and E_W lower-row omission/doubling and the lower reference-jet sign controls also respond. Both final constant-end increments are exactly zero. These are sensitivity and source-join checks, not independent derivations of the physics. The inherited whole convolution enters once; the first-shape iteration remains distinct.
+
+The finish took 7.172 worker seconds (8.197 guard seconds), with peak memory 79,159,296 bytes, zero swap and zero memory events. Actual 4 GiB native/cgroup containment, the 16 GiB pool, one assigned CPU/thread and no deadlines were verified. Scientific stderr is empty and stdout matches checks byte-for-byte. All 1,051 posthashes, 715 snapshots and 336 copied prior files are intact. The complete result tree contains 379 files / 11,365,813 bytes. All 2,917 metadata/receipt/resource/evidence inspection checks passed; no scientific payload was restored during completion inspection.
+
+The original formatter failure (fcc3ee32) and first continuation's unresolved finite flag (67e8a09d) remain preserved. Prepared finish source is d304bbbd. Literal build reports remain Claude CLEAR FOR THIS BOUNDED RAW-INCREMENT BUILD / Grok NEEDS REVISION; authorized local tooling repairs do not create a new independent CLEAR. The corrected method assessment at dbebfd44 was for the nongrazing scope.
+
+The clear next question is whether the **closed** direct kernel has a physical two-sided grazing limit with a locally integrable bound. External resolvent cancellation alone does not establish that. Prepare a source-bound method for independent assessment, reusing these results and deriving only that missing limit/bound. Exact-match applicability remains unresolved until then. No defect sweep or finite solve is authorized by this diagnostic's completion alone.
+
+Evidence: `S11c_d_defect_raw_increment_finish_completion.json`, `S11c_d_defect_raw_increment_finish_files.json`, and `_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete`.

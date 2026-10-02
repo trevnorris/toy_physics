@@ -1,3 +1,19 @@
+**BOTH-FACE RAW INCREMENT COMPLETE; CLOSED GRAZING METHOD NEXT (2026-10-01):**
+Finish prepared at d304bbbd completed and was inspected: all8 response controls,
+2 dispersion identities and both constant-end zeros supported. Four nested
+returns and5passed checks restored; saved THETA movement certified without
+recompute. Exact constant-fraction finite certificates resolve5None flags;
+original flags preserved, no tolerance/equation change.7.172worker seconds,
+peak79159296bytes,zero swap/events;1051posthashes,715snapshots,336copies intact.
+379files/11365813bytes;2917inspection checks pass, strict stderr empty and
+stdout/checks identical. See raw_increment_finish_completion/files/result.
+Literal build CLEAR/NEEDS remains, prior failures fcc3ee32/67e8a09d intact.
+Nongrazing raw scope only: no evaluated integral,finite matrix or loss. Latest
+user explicitly directs continued work whenever a clear next step exists.
+Prepare source-bound closed-kernel grazing-limit/local-integrability method for
+fresh independent Claude/Grok assessment under standing consent. No routine
+approval question; no immediate defect sweep. Preserve all pinned science.
+
 **SAVED FINITE CERTIFICATE / RAW CONTROL FINISH PREPARED (2026-10-01):**
 User renewed broad continuation: keep working while there is a clear next step;
 no routine stage prompts. Prior finite=None failure preserved at67e8a09d.

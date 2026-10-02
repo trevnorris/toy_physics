@@ -1,0 +1,1883 @@
+{
+  "status": "PAIRED_INDEPENDENT_BUILD_CLEARANCE_SOURCE_ONLY",
+  "recordedUtc": "2026-10-02T08:24:20.012630+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-reference-grazing-20261002/build-review-r2",
+  "preparedCommit": "3ba8d316",
+  "launchCommit": "92f20546",
+  "packetSha256": "942bb881f4b598aac074705f3761552af0f282ecd8573e68f24ba69ebabaedd9",
+  "archiveSha256": "16f9e6cf71fb212921cab5558eb6eeb4565d7e97f100aa345af9f25ba4dc0b96",
+  "files": 84,
+  "bytes": 1548545,
+  "reports": {
+    "claude": {
+      "literalVerdict": "CLEAR FOR THIS BOUNDED REFERENCE-GRAZING BUILD",
+      "sessionId": "b49cc095-34e7-4245-be2c-9a83c7ee1820",
+      "receiptPath": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-reference-grazing-20261002/build-review-r2/claude-run.json",
+      "receiptSha256": "4ade19e70a251515b9f5ccafe5fc08d0d2082d9928477d53d03b36236ff7ac5e",
+      "rawPath": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-reference-grazing-20261002/build-review-r2/claude.json",
+      "rawSha256": "3079b31a3ed2dc3c2835e30c52ec65449e29a6d0983c6dd118cbd4ef3023b282",
+      "literalReport": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_build_r2_review_claude.md",
+      "literalReportSha256": "d621dbda09524cf47d504c7f07c24275cd8296dfa428e98ac1bd630a2faf2564",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrBytes": 0,
+      "wallSeconds": 655.4068989648949,
+      "exitStatus": 0
+    },
+    "grok": {
+      "literalVerdict": "CLEAR FOR THIS BOUNDED REFERENCE-GRAZING BUILD",
+      "sessionId": "60526277-6559-4af4-8d55-8982d2b5e911",
+      "receiptPath": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-reference-grazing-20261002/build-review-r2/grok-run.json",
+      "receiptSha256": "d43597b8dd14b2a24cd8e7ab8accacba899709b1a5c69646ec04011428a803e2",
+      "rawPath": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-reference-grazing-20261002/build-review-r2/grok.json",
+      "rawSha256": "bfa7c250a205b452a641cb8f266db96751b777fc8a6f22ea4bf84a92662b9b8c",
+      "literalReport": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_build_r2_review_grok.md",
+      "literalReportSha256": "e65879bcb27d21ba2309127aaed5199eea63cc68b7687a0a2b1fe2b9e38207e7",
+      "stderrSha256": "abb2922ee343934a59ba1de1f9353c9356bbff8889d4ca8b8d86515d3b9cb87a",
+      "stderrBytes": 2863,
+      "wallSeconds": 1493.4245903129922,
+      "exitStatus": 0
+    }
+  },
+  "checks": [
+    {
+      "name": "both attempts completed",
+      "passed": true
+    },
+    {
+      "name": "coordinator outcome",
+      "passed": true
+    },
+    {
+      "name": "standing fixed packet authority",
+      "passed": true
+    },
+    {
+      "name": "authority bytes",
+      "passed": true
+    },
+    {
+      "name": "packetSha256",
+      "passed": true
+    },
+    {
+      "name": "archiveSha256",
+      "passed": true
+    },
+    {
+      "name": "reviewers",
+      "passed": true
+    },
+    {
+      "name": "aggregate packet",
+      "passed": true
+    },
+    {
+      "name": "archive bytes",
+      "passed": true
+    },
+    {
+      "name": "packet file census",
+      "passed": true
+    },
+    {
+      "name": "review_run.py",
+      "passed": true
+    },
+    {
+      "name": "review_launch.py",
+      "passed": true
+    },
+    {
+      "name": "completion_message.txt",
+      "passed": true
+    },
+    {
+      "name": "archive census",
+      "passed": true
+    },
+    {
+      "name": "packet evidence-guide.md",
+      "passed": true
+    },
+    {
+      "name": "archive evidence-guide.md",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/beta-denominator-gap-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/beta-denominator-gap-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/beta-denominator-gap-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/beta-denominator-gap-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/beta-real-lower-bound-identity-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/beta-real-lower-bound-identity-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/beta-real-lower-bound-identity-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/beta-real-lower-bound-identity-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/binding-frequency-and-domain.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/binding-frequency-and-domain.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/collision-and-L1-conclusion.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/collision-and-L1-conclusion.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/complex-frequency-identities-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/complex-frequency-identities-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/complex-frequency-identities-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/complex-frequency-identities-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/continued-beta-components-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/continued-beta-components-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/continued-beta-components-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/continued-beta-components-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/domain-bound-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/domain-bound-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/heightRoute-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/heightRoute-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/input-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/input-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/minus-complex-contact-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/minus-complex-contact-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/minus-complex-contact-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/minus-complex-contact-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/minus-face-domain.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/minus-face-domain.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/output-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/output-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/plus-complex-contact-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/plus-complex-contact-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/plus-complex-contact-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/plus-complex-contact-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/plus-face-domain.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/plus-face-domain.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/quadrant-sum-gain-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/quadrant-sum-gain-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/tail-antiderivative-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/tail-antiderivative-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/tail-antiderivative-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/tail-antiderivative-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet grazing/uniform-tail-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "archive grazing/uniform-tail-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "packet implementation-plan.md",
+      "passed": true
+    },
+    {
+      "name": "archive implementation-plan.md",
+      "passed": true
+    },
+    {
+      "name": "packet inputs.json",
+      "passed": true
+    },
+    {
+      "name": "archive inputs.json",
+      "passed": true
+    },
+    {
+      "name": "packet launch.py",
+      "passed": true
+    },
+    {
+      "name": "archive launch.py",
+      "passed": true
+    },
+    {
+      "name": "packet method.md",
+      "passed": true
+    },
+    {
+      "name": "archive method.md",
+      "passed": true
+    },
+    {
+      "name": "packet native/function-routes.json",
+      "passed": true
+    },
+    {
+      "name": "archive native/function-routes.json",
+      "passed": true
+    },
+    {
+      "name": "packet native/selected-consumer.json",
+      "passed": true
+    },
+    {
+      "name": "archive native/selected-consumer.json",
+      "passed": true
+    },
+    {
+      "name": "packet native/selected-trace.json",
+      "passed": true
+    },
+    {
+      "name": "archive native/selected-trace.json",
+      "passed": true
+    },
+    {
+      "name": "packet packet-index.json",
+      "passed": true
+    },
+    {
+      "name": "archive packet-index.json",
+      "passed": true
+    },
+    {
+      "name": "packet physical-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive physical-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet prior-direct-method.md",
+      "passed": true
+    },
+    {
+      "name": "archive prior-direct-method.md",
+      "passed": true
+    },
+    {
+      "name": "packet raw/dimension-and-measure-join.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/dimension-and-measure-join.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/edge-delta-reduction.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/edge-delta-reduction.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/effective-speed-reuse-domain.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/effective-speed-reuse-domain.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/inherited-kernel-dimensions.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/inherited-kernel-dimensions.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/lower-boundary-operands.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/lower-boundary-operands.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/lower-boundary-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/lower-boundary-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/lower-native-height-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/lower-native-height-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/lower-native-height-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/lower-native-height-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/lower-native-slope-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/lower-native-slope-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/lower-native-slope-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/lower-native-slope-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/minus-closure-operands.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/minus-closure-operands.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/minus-iteration-unchanged-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/minus-iteration-unchanged-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/minus-iteration-unchanged-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/minus-iteration-unchanged-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/minus-native-resolvent-affine-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/minus-native-resolvent-affine-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/minus-native-resolvent-affine-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/minus-native-resolvent-affine-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/minus-trace-domain.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/minus-trace-domain.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/native-fourier-contract.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/native-fourier-contract.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/native-lower-geometry-operands.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/native-lower-geometry-operands.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/physical-depth-bindings.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/physical-depth-bindings.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/physical-sheet.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/physical-sheet.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/plus-closure-operands.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/plus-closure-operands.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/plus-iteration-unchanged-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/plus-iteration-unchanged-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/plus-iteration-unchanged-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/plus-iteration-unchanged-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/plus-native-resolvent-affine-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/plus-native-resolvent-affine-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/plus-native-resolvent-affine-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/plus-native-resolvent-affine-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet raw/plus-trace-domain.json",
+      "passed": true
+    },
+    {
+      "name": "archive raw/plus-trace-domain.json",
+      "passed": true
+    },
+    {
+      "name": "packet review-prompt.md",
+      "passed": true
+    },
+    {
+      "name": "archive review-prompt.md",
+      "passed": true
+    },
+    {
+      "name": "packet runtime-source/shared-guard.py",
+      "passed": true
+    },
+    {
+      "name": "archive runtime-source/shared-guard.py",
+      "passed": true
+    },
+    {
+      "name": "packet runtime-source/supervisor.py",
+      "passed": true
+    },
+    {
+      "name": "archive runtime-source/supervisor.py",
+      "passed": true
+    },
+    {
+      "name": "packet saved/closed-density.json",
+      "passed": true
+    },
+    {
+      "name": "archive saved/closed-density.json",
+      "passed": true
+    },
+    {
+      "name": "packet saved/inverse-cs-bound-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive saved/inverse-cs-bound-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet saved/inverse-cs-bound-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive saved/inverse-cs-bound-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet saved/kappa-lower-gap-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive saved/kappa-lower-gap-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet saved/kappa-lower-gap-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive saved/kappa-lower-gap-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet saved/raw-ordered-before-cancel.json",
+      "passed": true
+    },
+    {
+      "name": "archive saved/raw-ordered-before-cancel.json",
+      "passed": true
+    },
+    {
+      "name": "packet source/closed-worker.py",
+      "passed": true
+    },
+    {
+      "name": "archive source/closed-worker.py",
+      "passed": true
+    },
+    {
+      "name": "packet source/finite.py",
+      "passed": true
+    },
+    {
+      "name": "archive source/finite.py",
+      "passed": true
+    },
+    {
+      "name": "packet source/native-c1.py",
+      "passed": true
+    },
+    {
+      "name": "archive source/native-c1.py",
+      "passed": true
+    },
+    {
+      "name": "packet source/native-c2.py",
+      "passed": true
+    },
+    {
+      "name": "archive source/native-c2.py",
+      "passed": true
+    },
+    {
+      "name": "packet source/raw-worker.py",
+      "passed": true
+    },
+    {
+      "name": "archive source/raw-worker.py",
+      "passed": true
+    },
+    {
+      "name": "packet tooling-tests.json",
+      "passed": true
+    },
+    {
+      "name": "archive tooling-tests.json",
+      "passed": true
+    },
+    {
+      "name": "packet tooling-tests.py",
+      "passed": true
+    },
+    {
+      "name": "archive tooling-tests.py",
+      "passed": true
+    },
+    {
+      "name": "packet trace/kernel-measure.json",
+      "passed": true
+    },
+    {
+      "name": "archive trace/kernel-measure.json",
+      "passed": true
+    },
+    {
+      "name": "packet trace/native-trace-source-join.json",
+      "passed": true
+    },
+    {
+      "name": "archive trace/native-trace-source-join.json",
+      "passed": true
+    },
+    {
+      "name": "packet trace/normal-jet-identity.json",
+      "passed": true
+    },
+    {
+      "name": "archive trace/normal-jet-identity.json",
+      "passed": true
+    },
+    {
+      "name": "packet trace/reference-pressure-input.json",
+      "passed": true
+    },
+    {
+      "name": "archive trace/reference-pressure-input.json",
+      "passed": true
+    },
+    {
+      "name": "packet trace/reference-pressure-return.json",
+      "passed": true
+    },
+    {
+      "name": "archive trace/reference-pressure-return.json",
+      "passed": true
+    },
+    {
+      "name": "packet trace/trace-difference-identity.json",
+      "passed": true
+    },
+    {
+      "name": "archive trace/trace-difference-identity.json",
+      "passed": true
+    },
+    {
+      "name": "packet worker.py",
+      "passed": true
+    },
+    {
+      "name": "archive worker.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_method.md",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_evidence_guide.md",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_native_routes.json",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_native.json",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_native.json",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_method.md",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_finite.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/native-fourier-contract.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/edge-delta-reduction.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/dimension-and-measure-join.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/inherited-kernel-dimensions.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/native-lower-geometry-operands.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-boundary-operands.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-boundary-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-native-height-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-native-height-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-native-slope-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-native-slope-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/physical-depth-bindings.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/physical-sheet.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/effective-speed-reuse-domain.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-closure-operands.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-trace-domain.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-iteration-unchanged-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-iteration-unchanged-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-native-resolvent-affine-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-native-resolvent-affine-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-closure-operands.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-trace-domain.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-iteration-unchanged-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-iteration-unchanged-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-native-resolvent-affine-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-native-resolvent-affine-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/reference-pressure-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/reference-pressure-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/native-trace-source-join.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/trace-difference-identity.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/kernel-measure.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/normal-jet-identity.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/binding-frequency-and-domain.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/complex-frequency-identities-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/complex-frequency-identities-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/continued-beta-components-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/continued-beta-components-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/beta-real-lower-bound-identity-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/beta-real-lower-bound-identity-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/beta-denominator-gap-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/beta-denominator-gap-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/quadrant-sum-gain-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/domain-bound-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/input-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/heightRoute-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/output-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/plus-face-domain.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/minus-face-domain.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/uniform-tail-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/tail-antiderivative-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/tail-antiderivative-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/collision-and-L1-conclusion.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/plus-complex-contact-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/plus-complex-contact-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/minus-complex-contact-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/minus-complex-contact-return.json",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_test.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_launch.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_plan.md",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_tooling_tests.json",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_build_r2_prompt.md",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/raw-ordered-before-cancel.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/closed-density.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/kappa-lower-gap-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/kappa-lower-gap-return.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/inverse-cs-bound-input.json",
+      "passed": true
+    },
+    {
+      "name": "source _scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/inverse-cs-bound-return.json",
+      "passed": true
+    },
+    {
+      "name": "source scripts/s11c_guarded_run.py",
+      "passed": true
+    },
+    {
+      "name": "source research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "passed": true
+    },
+    {
+      "name": "claude finished receipt",
+      "passed": true
+    },
+    {
+      "name": "claude packet prompt",
+      "passed": true
+    },
+    {
+      "name": "claude raw bytes",
+      "passed": true
+    },
+    {
+      "name": "claude stderr",
+      "passed": true
+    },
+    {
+      "name": "claude session",
+      "passed": true
+    },
+    {
+      "name": "claude delivered result",
+      "passed": true
+    },
+    {
+      "name": "claude literal verdict",
+      "passed": true
+    },
+    {
+      "name": "claude source only",
+      "passed": true
+    },
+    {
+      "name": "claude private census",
+      "passed": true
+    },
+    {
+      "name": "claude private evidence-guide.md",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/beta-denominator-gap-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/beta-denominator-gap-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/beta-real-lower-bound-identity-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/beta-real-lower-bound-identity-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/binding-frequency-and-domain.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/collision-and-L1-conclusion.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/complex-frequency-identities-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/complex-frequency-identities-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/continued-beta-components-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/continued-beta-components-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/domain-bound-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/heightRoute-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/input-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/minus-complex-contact-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/minus-complex-contact-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/minus-face-domain.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/output-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/plus-complex-contact-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/plus-complex-contact-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/plus-face-domain.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/quadrant-sum-gain-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/tail-antiderivative-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/tail-antiderivative-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private grazing/uniform-tail-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "claude private implementation-plan.md",
+      "passed": true
+    },
+    {
+      "name": "claude private inputs.json",
+      "passed": true
+    },
+    {
+      "name": "claude private launch.py",
+      "passed": true
+    },
+    {
+      "name": "claude private method.md",
+      "passed": true
+    },
+    {
+      "name": "claude private native/function-routes.json",
+      "passed": true
+    },
+    {
+      "name": "claude private native/selected-consumer.json",
+      "passed": true
+    },
+    {
+      "name": "claude private native/selected-trace.json",
+      "passed": true
+    },
+    {
+      "name": "claude private packet-index.json",
+      "passed": true
+    },
+    {
+      "name": "claude private physical-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private prior-direct-method.md",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/dimension-and-measure-join.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/edge-delta-reduction.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/effective-speed-reuse-domain.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/inherited-kernel-dimensions.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/lower-boundary-operands.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/lower-boundary-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/lower-native-height-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/lower-native-height-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/lower-native-slope-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/lower-native-slope-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/minus-closure-operands.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/minus-iteration-unchanged-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/minus-iteration-unchanged-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/minus-native-resolvent-affine-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/minus-native-resolvent-affine-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/minus-trace-domain.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/native-fourier-contract.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/native-lower-geometry-operands.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/physical-depth-bindings.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/physical-sheet.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/plus-closure-operands.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/plus-iteration-unchanged-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/plus-iteration-unchanged-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/plus-native-resolvent-affine-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/plus-native-resolvent-affine-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private raw/plus-trace-domain.json",
+      "passed": true
+    },
+    {
+      "name": "claude private review-prompt.md",
+      "passed": true
+    },
+    {
+      "name": "claude private runtime-source/shared-guard.py",
+      "passed": true
+    },
+    {
+      "name": "claude private runtime-source/supervisor.py",
+      "passed": true
+    },
+    {
+      "name": "claude private saved/closed-density.json",
+      "passed": true
+    },
+    {
+      "name": "claude private saved/inverse-cs-bound-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private saved/inverse-cs-bound-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private saved/kappa-lower-gap-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private saved/kappa-lower-gap-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private saved/raw-ordered-before-cancel.json",
+      "passed": true
+    },
+    {
+      "name": "claude private source/closed-worker.py",
+      "passed": true
+    },
+    {
+      "name": "claude private source/finite.py",
+      "passed": true
+    },
+    {
+      "name": "claude private source/native-c1.py",
+      "passed": true
+    },
+    {
+      "name": "claude private source/native-c2.py",
+      "passed": true
+    },
+    {
+      "name": "claude private source/raw-worker.py",
+      "passed": true
+    },
+    {
+      "name": "claude private tooling-tests.json",
+      "passed": true
+    },
+    {
+      "name": "claude private tooling-tests.py",
+      "passed": true
+    },
+    {
+      "name": "claude private trace/kernel-measure.json",
+      "passed": true
+    },
+    {
+      "name": "claude private trace/native-trace-source-join.json",
+      "passed": true
+    },
+    {
+      "name": "claude private trace/normal-jet-identity.json",
+      "passed": true
+    },
+    {
+      "name": "claude private trace/reference-pressure-input.json",
+      "passed": true
+    },
+    {
+      "name": "claude private trace/reference-pressure-return.json",
+      "passed": true
+    },
+    {
+      "name": "claude private trace/trace-difference-identity.json",
+      "passed": true
+    },
+    {
+      "name": "claude private worker.py",
+      "passed": true
+    },
+    {
+      "name": "claude preserved literal",
+      "passed": true
+    },
+    {
+      "name": "grok finished receipt",
+      "passed": true
+    },
+    {
+      "name": "grok packet prompt",
+      "passed": true
+    },
+    {
+      "name": "grok raw bytes",
+      "passed": true
+    },
+    {
+      "name": "grok stderr",
+      "passed": true
+    },
+    {
+      "name": "grok session",
+      "passed": true
+    },
+    {
+      "name": "grok delivered result",
+      "passed": true
+    },
+    {
+      "name": "grok literal verdict",
+      "passed": true
+    },
+    {
+      "name": "grok source only",
+      "passed": true
+    },
+    {
+      "name": "grok private census",
+      "passed": true
+    },
+    {
+      "name": "grok private evidence-guide.md",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/beta-denominator-gap-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/beta-denominator-gap-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/beta-real-lower-bound-identity-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/beta-real-lower-bound-identity-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/binding-frequency-and-domain.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/collision-and-L1-conclusion.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/complex-frequency-identities-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/complex-frequency-identities-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/continued-beta-components-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/continued-beta-components-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/domain-bound-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/heightRoute-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/input-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/minus-complex-contact-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/minus-complex-contact-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/minus-face-domain.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/output-native-sheet-operands.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/plus-complex-contact-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/plus-complex-contact-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/plus-face-domain.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/quadrant-sum-gain-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/tail-antiderivative-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/tail-antiderivative-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private grazing/uniform-tail-certificate.json",
+      "passed": true
+    },
+    {
+      "name": "grok private implementation-plan.md",
+      "passed": true
+    },
+    {
+      "name": "grok private inputs.json",
+      "passed": true
+    },
+    {
+      "name": "grok private launch.py",
+      "passed": true
+    },
+    {
+      "name": "grok private method.md",
+      "passed": true
+    },
+    {
+      "name": "grok private native/function-routes.json",
+      "passed": true
+    },
+    {
+      "name": "grok private native/selected-consumer.json",
+      "passed": true
+    },
+    {
+      "name": "grok private native/selected-trace.json",
+      "passed": true
+    },
+    {
+      "name": "grok private packet-index.json",
+      "passed": true
+    },
+    {
+      "name": "grok private physical-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private prior-direct-method.md",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/dimension-and-measure-join.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/edge-delta-reduction.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/effective-speed-reuse-domain.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/inherited-kernel-dimensions.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/lower-boundary-operands.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/lower-boundary-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/lower-native-height-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/lower-native-height-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/lower-native-slope-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/lower-native-slope-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/minus-closure-operands.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/minus-iteration-unchanged-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/minus-iteration-unchanged-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/minus-native-resolvent-affine-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/minus-native-resolvent-affine-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/minus-trace-domain.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/native-fourier-contract.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/native-lower-geometry-operands.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/physical-depth-bindings.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/physical-sheet.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/plus-closure-operands.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/plus-iteration-unchanged-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/plus-iteration-unchanged-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/plus-native-resolvent-affine-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/plus-native-resolvent-affine-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private raw/plus-trace-domain.json",
+      "passed": true
+    },
+    {
+      "name": "grok private review-prompt.md",
+      "passed": true
+    },
+    {
+      "name": "grok private runtime-source/shared-guard.py",
+      "passed": true
+    },
+    {
+      "name": "grok private runtime-source/supervisor.py",
+      "passed": true
+    },
+    {
+      "name": "grok private saved/closed-density.json",
+      "passed": true
+    },
+    {
+      "name": "grok private saved/inverse-cs-bound-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private saved/inverse-cs-bound-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private saved/kappa-lower-gap-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private saved/kappa-lower-gap-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private saved/raw-ordered-before-cancel.json",
+      "passed": true
+    },
+    {
+      "name": "grok private source/closed-worker.py",
+      "passed": true
+    },
+    {
+      "name": "grok private source/finite.py",
+      "passed": true
+    },
+    {
+      "name": "grok private source/native-c1.py",
+      "passed": true
+    },
+    {
+      "name": "grok private source/native-c2.py",
+      "passed": true
+    },
+    {
+      "name": "grok private source/raw-worker.py",
+      "passed": true
+    },
+    {
+      "name": "grok private tooling-tests.json",
+      "passed": true
+    },
+    {
+      "name": "grok private tooling-tests.py",
+      "passed": true
+    },
+    {
+      "name": "grok private trace/kernel-measure.json",
+      "passed": true
+    },
+    {
+      "name": "grok private trace/native-trace-source-join.json",
+      "passed": true
+    },
+    {
+      "name": "grok private trace/normal-jet-identity.json",
+      "passed": true
+    },
+    {
+      "name": "grok private trace/reference-pressure-input.json",
+      "passed": true
+    },
+    {
+      "name": "grok private trace/reference-pressure-return.json",
+      "passed": true
+    },
+    {
+      "name": "grok private trace/trace-difference-identity.json",
+      "passed": true
+    },
+    {
+      "name": "grok private worker.py",
+      "passed": true
+    },
+    {
+      "name": "grok preserved literal",
+      "passed": true
+    },
+    {
+      "name": "empty coordinator stderr",
+      "passed": true
+    }
+  ],
+  "allChecksPassed": true,
+  "independentBuildClearance": true,
+  "scientificRun": false,
+  "reviewedSourceChanged": false,
+  "workerSha256": "c9a701bfd1ca62a7f5c78293bafa67fe1b608dcdea93c55a83240a9d6491d58e",
+  "manifestSha256": "a4f7cdebeb6c3460952b9be9a1458706563173e69b91102a929174ccb09d71ae",
+  "sharedGuardSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+  "supervisorSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+  "launcherSha256": "a825c2046803ab86c200d67cf36d0331d5d432ab473215c4c1137d80a92a00aa",
+  "methodRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_review_record.json",
+  "methodRecordSha256": "b71b55b7b2ad668ea8e960d2ef71b413b64e2c4e738813acd5c7e71f7405ffe2",
+  "authoritySha256": "d2ad83fc7aa49d081932087744eded89bddc7e5297a82a5555333fd6075c0e8f",
+  "indexSha256": "cb45c01b833079785b04c86030d3397fa548bb0bb4234269432726a787938618",
+  "nonblockingObservations": {
+    "dependentFinalSlot": "Already disclosed; separate trace and closed-form checks remain. No optional edit.",
+    "linearLowerControl": "Actual trace entry negation is consumed; source reviewer confirms linear equivalence. No optional replay.",
+    "physicalRule": "Common dispersion and native middle-sheet checks remain; no stronger machine-proof claim.",
+    "degreeGuard": "Possible representation-sensitive degree refusal remains fail-closed; no actual failure established. Preserve any runtime failure; no speculative edit or automatic retry.",
+    "gateHardening": "Readiness will explicitly join command helper paths/hashes and record hook identity without editing reviewed worker.",
+    "directTag": "Argument-mapped restored density and whole tag only; no new algebraic/full-operator acceptance.",
+    "analyticBounds": "Elementary monotonicity and L1/distributional arguments remain assessed mathematics, not machine theorem proving."
+  },
+  "stderrDisposition": "Claude empty. Grok 2863 bytes CLI/plugin/hook diagnostics preserved, distinct from scientific stderr.",
+  "next": "Fresh exact readiness and one guarded bounded instrument under standing authority. Source clearance is not runtime acceptance."
+}

@@ -1,0 +1,296 @@
+{
+  "status": "READY_REVISED_SOURCE_METHOD_REVIEW_ONLY",
+  "recordedUtc": "2026-10-02T10:05:02.803121+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/method-review-r3",
+  "priorVerdictCommit": "f9e60e3a",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-02T10:05:02.803121+00:00",
+    "packetSha256": "87f1e943cbda8e42b2e5ec94b20038fac62be0528ee2c3174524084c8c919352",
+    "archiveSha256": "545d8b7b61ceede26fa73c35246b4815da207ddbace2877f68b68d057736824f",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 133,
+    "bytes": 5631374,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing review-submission and bounded-continuation authorization; required explicit native-c2 versus direct-augmentation provenance and new formal routing recipe after both completed reports",
+    "scope": "Proposed both-face ordered retained source/consumer Fourier and grade inventory; no evaluated integral, global grazing-action claim, finite matrix or defect sweep",
+    "noAutomaticRetry": true,
+    "noPeerReportsIncluded": true
+  },
+  "static": {
+    "status": "STATIC_SOURCE_AND_PACKET_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "c1dee9f78bdb3216aa610fc128783bed2e71b83ffcd6aac69e08d634be9680a8",
+    "packetSha256": "87f1e943cbda8e42b2e5ec94b20038fac62be0528ee2c3174524084c8c919352",
+    "archiveSha256": "545d8b7b61ceede26fa73c35246b4815da207ddbace2877f68b68d057736824f",
+    "files": 133,
+    "bytes": 5631374,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 132,
+    "payloadRestored": false,
+    "transportIdenticalToPrior": true,
+    "noReviewVerdict": true
+  },
+  "checks": {
+    "allSourcePacketArchiveHashesMatch": true,
+    "changedExistingPacketPaths": [
+      "evidence-guide.md",
+      "method.md",
+      "packet-index.json",
+      "review-prompt.md"
+    ],
+    "addedEvidenceFiles": 24,
+    "allOldEvidenceSourcesUnchanged": true,
+    "newPriorResultReceiptsChecked": 23,
+    "transportIdenticalToPrior": true,
+    "noScientificImportsOrRestoration": true,
+    "noPeerReports": true,
+    "noScienceRun": true,
+    "newTrackedFilesOver1MiB": []
+  },
+  "changedSourceHashes": [
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition_method.md",
+      "packetPath": "method.md",
+      "oldSha256": "39308aa778c0514dd788ba515b0f496a7444e06e46dafb4c479099727378929c",
+      "newSha256": "9b8cdf7e1f00b2ca71e02e4328fcaca18361f06825525f1573160c71fb272533"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition_review_prompt.md",
+      "packetPath": "review-prompt.md",
+      "oldSha256": "5d482bfd1e97a3f6f2961a5564cfe392cc446fe47416914c8479cdd635a3cd2f",
+      "newSha256": "470ca770ab64adf4c6f03f42462cf4b69f0d53a674497aaa59068665532af485"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition_evidence_guide.md",
+      "packetPath": "evidence-guide.md",
+      "oldSha256": "d375cb9f76e4b22a55819e498e74f41007f8d70aeb2f800217b4ce1405727a68",
+      "newSha256": "e888f603284441eafc8faa9c06459365fffe2f88b4473c3211253f9c094393a6"
+    }
+  ],
+  "addedSourceHashes": [
+    {
+      "packetPath": "reference/unrestricted-closure-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-reference-grazing-20261002/diagnostic-01/complete/unrestricted-closure-operands.json",
+      "sourceSha256": "fa55a8cd196f5c80a3c1d50077d4dbe1536f36a95c03de95e89369c0704e4508",
+      "packetSha256": "fa55a8cd196f5c80a3c1d50077d4dbe1536f36a95c03de95e89369c0704e4508",
+      "bytes": 6524,
+      "kind": "complete file",
+      "role": "Previously completed augmented closure or direct argument observation; not a new result"
+    },
+    {
+      "packetPath": "reference/plus-closure-restoration.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-reference-grazing-20261002/diagnostic-01/complete/plus-closure-restoration.json",
+      "sourceSha256": "46d2dcbdd3974051e2e039544b655bfe63bcd9f43d761341b93236d534a39973",
+      "packetSha256": "46d2dcbdd3974051e2e039544b655bfe63bcd9f43d761341b93236d534a39973",
+      "bytes": 12431,
+      "kind": "complete file",
+      "role": "Previously completed augmented closure or direct argument observation; not a new result"
+    },
+    {
+      "packetPath": "reference/minus-closure-restoration.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-reference-grazing-20261002/diagnostic-01/complete/minus-closure-restoration.json",
+      "sourceSha256": "bf65d5ae4500aa32e67c9e48182a8786ed5d1f812e606a211579657a481ccc37",
+      "packetSha256": "bf65d5ae4500aa32e67c9e48182a8786ed5d1f812e606a211579657a481ccc37",
+      "bytes": 12463,
+      "kind": "complete file",
+      "role": "Previously completed augmented closure or direct argument observation; not a new result"
+    },
+    {
+      "packetPath": "reference/restored-direct-argument-join.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-reference-grazing-20261002/diagnostic-01/complete/restored-direct-argument-join.json",
+      "sourceSha256": "9dd47dbac7ac5e18a7c8ab177c4bcf0c9a6317276536a25874654ec5f5aed81d",
+      "packetSha256": "9dd47dbac7ac5e18a7c8ab177c4bcf0c9a6317276536a25874654ec5f5aed81d",
+      "bytes": 10193,
+      "kind": "complete file",
+      "role": "Previously completed augmented closure or direct argument observation; not a new result"
+    },
+    {
+      "packetPath": "direct/saved-source-transport.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/saved-source-transport.json",
+      "sourceSha256": "0c28587c2f42fee8bdcab2a840ec5ecf8668edeffe83171545439a40e21cf24b",
+      "packetSha256": "0c28587c2f42fee8bdcab2a840ec5ecf8668edeffe83171545439a40e21cf24b",
+      "bytes": 5431,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/plus-face-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/plus-face-domain.json",
+      "sourceSha256": "f85217bccfe057a1ce15a418fac8fa92c267850ee98107d2a3c15c8be3dc5721",
+      "packetSha256": "f85217bccfe057a1ce15a418fac8fa92c267850ee98107d2a3c15c8be3dc5721",
+      "bytes": 2074,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/plus-actual-closed-reference-original-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/plus-actual-closed-reference-original-input.json",
+      "sourceSha256": "9f8825bfad9f6d02709764cb452d640a81735fab4f982487befe51ef69819afe",
+      "packetSha256": "9f8825bfad9f6d02709764cb452d640a81735fab4f982487befe51ef69819afe",
+      "bytes": 17995,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/plus-actual-closed-reference-canonical-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/plus-actual-closed-reference-canonical-return.json",
+      "sourceSha256": "d5fbf1516c98e84ff7675210bfc32cf68074f8535b1a7a844564089e4b3f3cfc",
+      "packetSha256": "d5fbf1516c98e84ff7675210bfc32cf68074f8535b1a7a844564089e4b3f3cfc",
+      "bytes": 18079,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/plus-actual-closed-normalJet-original-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/plus-actual-closed-normalJet-original-input.json",
+      "sourceSha256": "953168dfdb9cd69eb9067e1c1911e3d3655bee7afa1384f9ab92f01e17e065c9",
+      "packetSha256": "953168dfdb9cd69eb9067e1c1911e3d3655bee7afa1384f9ab92f01e17e065c9",
+      "bytes": 18783,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/plus-actual-closed-normalJet-canonical-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/plus-actual-closed-normalJet-canonical-return.json",
+      "sourceSha256": "2e04061fc41c1c61f3aa52b284877862b3e062510424712e277c968c01f3dbaa",
+      "packetSha256": "2e04061fc41c1c61f3aa52b284877862b3e062510424712e277c968c01f3dbaa",
+      "bytes": 18867,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/plus-reference-factor-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/plus-reference-factor-input.json",
+      "sourceSha256": "a2868dfc6816592bb6464f3e0738554ed03db1176e62241cda65e98e09350382",
+      "packetSha256": "a2868dfc6816592bb6464f3e0738554ed03db1176e62241cda65e98e09350382",
+      "bytes": 886,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/plus-reference-factor-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/plus-reference-factor-return.json",
+      "sourceSha256": "cd604ceb2b89e409852908428414305cf23b7a37ed8dc2ca187156718b778d88",
+      "packetSha256": "cd604ceb2b89e409852908428414305cf23b7a37ed8dc2ca187156718b778d88",
+      "bytes": 923,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/minus-face-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/minus-face-domain.json",
+      "sourceSha256": "6e5b40f5444e862e1703eb9ce49d2ce9e79b68600abd15a2dad73c26959ae6ca",
+      "packetSha256": "6e5b40f5444e862e1703eb9ce49d2ce9e79b68600abd15a2dad73c26959ae6ca",
+      "bytes": 2102,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/minus-actual-closed-reference-original-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/minus-actual-closed-reference-original-input.json",
+      "sourceSha256": "9f8825bfad9f6d02709764cb452d640a81735fab4f982487befe51ef69819afe",
+      "packetSha256": "9f8825bfad9f6d02709764cb452d640a81735fab4f982487befe51ef69819afe",
+      "bytes": 17995,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/minus-actual-closed-reference-canonical-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/minus-actual-closed-reference-canonical-return.json",
+      "sourceSha256": "d5fbf1516c98e84ff7675210bfc32cf68074f8535b1a7a844564089e4b3f3cfc",
+      "packetSha256": "d5fbf1516c98e84ff7675210bfc32cf68074f8535b1a7a844564089e4b3f3cfc",
+      "bytes": 18079,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/minus-actual-closed-normalJet-original-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/minus-actual-closed-normalJet-original-input.json",
+      "sourceSha256": "0101cd25d478215c191b5ee10b3f6ffcce202cadef7f155252da904f58f59339",
+      "packetSha256": "0101cd25d478215c191b5ee10b3f6ffcce202cadef7f155252da904f58f59339",
+      "bytes": 18747,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/minus-actual-closed-normalJet-canonical-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/minus-actual-closed-normalJet-canonical-return.json",
+      "sourceSha256": "c5476c3cbdce20b1a4c70b66f729e654994645774522cdf6ad059ff89a9e98bb",
+      "packetSha256": "c5476c3cbdce20b1a4c70b66f729e654994645774522cdf6ad059ff89a9e98bb",
+      "bytes": 18831,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/minus-reference-factor-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/minus-reference-factor-input.json",
+      "sourceSha256": "a2868dfc6816592bb6464f3e0738554ed03db1176e62241cda65e98e09350382",
+      "packetSha256": "a2868dfc6816592bb6464f3e0738554ed03db1176e62241cda65e98e09350382",
+      "bytes": 886,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/minus-reference-factor-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/minus-reference-factor-return.json",
+      "sourceSha256": "cd604ceb2b89e409852908428414305cf23b7a37ed8dc2ca187156718b778d88",
+      "packetSha256": "cd604ceb2b89e409852908428414305cf23b7a37ed8dc2ca187156718b778d88",
+      "bytes": 923,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/THETA_BALANCE-actual-closed-row-density-original-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/THETA_BALANCE-actual-closed-row-density-original-input.json",
+      "sourceSha256": "0f383eb838f7deb55ff3972f8ade7420601b8b9ad71e55f00aa2cfa26ed924ba",
+      "packetSha256": "0f383eb838f7deb55ff3972f8ade7420601b8b9ad71e55f00aa2cfa26ed924ba",
+      "bytes": 111163,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/THETA_BALANCE-actual-closed-row-density-canonical-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/THETA_BALANCE-actual-closed-row-density-canonical-return.json",
+      "sourceSha256": "1eb2046af13a56387de87aa4ca8845d7f6f74456165a02907f254056ce7de162",
+      "packetSha256": "1eb2046af13a56387de87aa4ca8845d7f6f74456165a02907f254056ce7de162",
+      "bytes": 111311,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/E_W_BALANCE-actual-closed-row-density-original-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/E_W_BALANCE-actual-closed-row-density-original-input.json",
+      "sourceSha256": "302c636e213dd2e7a16f98ac4ab2607f13dd1cf344e2fd387cb69b2fed06143c",
+      "packetSha256": "302c636e213dd2e7a16f98ac4ab2607f13dd1cf344e2fd387cb69b2fed06143c",
+      "bytes": 111675,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "direct/E_W_BALANCE-actual-closed-row-density-canonical-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/E_W_BALANCE-actual-closed-row-density-canonical-return.json",
+      "sourceSha256": "9be4debcd26fd5ebc15154f6f1ab8db7ed7fc2039be3097417d829c6a9c1ec2c",
+      "packetSha256": "9be4debcd26fd5ebc15154f6f1ab8db7ed7fc2039be3097417d829c6a9c1ec2c",
+      "bytes": 111823,
+      "kind": "complete file",
+      "role": "Completed closed direct density/face/row operand or exact-return evidence; restore without recomputing"
+    },
+    {
+      "packetPath": "source/closed-worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing.py",
+      "sourceSha256": "ac635133417b0caf48674307b467790a29bd87184eeba6120b63080fa7b2a383",
+      "packetSha256": "ac635133417b0caf48674307b467790a29bd87184eeba6120b63080fa7b2a383",
+      "bytes": 32730,
+      "kind": "complete file",
+      "role": "Exact existing closed-density worker source; reference only, never call completed functions"
+    }
+  ]
+}

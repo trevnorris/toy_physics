@@ -15,12 +15,29 @@ source derivative order, output lab-normal multiplier, direct/iteration counts,
 and real applicability of the proposed controls. Check native final routing,
 not merely the hand-written formula.
 
+Inspect the two provenance families separately: original native c2 iteration,
+and the independently derived direct correction absent from native z_three[0,2].
+The method proposes a NEW formal direct routing check through actual build_face
+assignment text with a declared off-diagonal linear adapter; it is not native
+execution or an evaluated convolution. Assess section 4a against BOTH raw closure
+operands/closed-before-cancel files, raw/*-retained-increment.json, the actual
+native build_face/kernel_apply text, saved new native trace and final-slot files,
+and direct/closed-density.json. Open those operands rather than relying only on
+worker summaries. Check grade (2,1) exclusion, both normal signs, no second middle
+integration and no duplicate external resolvent factors on the already closed
+Dwhole. A source-only proposal cannot substitute for the new runtime joins.
+
 Inspect especially the separate flat-diagonal address: delta(l-k) identifies
 both the prefactor and pole at q(l), matching the saved flat jet, without
 identifying off-diagonal depths. Check whole-tag signatures/source maps, use of
 saved total mixed entries only as sum checks, and explicit exclusion of the old
 unprojected (2,1) normal-slot remainder. Controls must respect delta support and
 distinguish formal tagged-coefficient sensitivity from an evaluated convolution.
+
+All composed addresses bind the response, source and consumer to real omega=3;
+no positive-regulator source/consumer composition is claimed. Check the broad
+pressure-name scan before four-slot filtering and full rational source grade
+extraction, including separate lower-face runtime joins.
 
 The response certificate has compact internal momenta [-3,3]; multiplying by
 nonconstant profiles spreads momenta outside it. The proposal intentionally

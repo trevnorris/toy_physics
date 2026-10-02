@@ -5,7 +5,10 @@ operator, worker clearance or a new integral. The bounded reference-response
 evidence is completed at 5c00aff7. The next missing object is the composition of
 that response with the actual native source amplitudes and pressure/normal-jet
 consumers. The earlier selected direct (1,1)*(0,0)*(0,0) check does not supply
-the other retained cross grades.
+the other retained cross grades. The target is the native c2 pressure contribution
+PLUS the independently derived direct mixed correction. The direct correction
+is absent from the original native c2 second slot; it must not be described as
+an original native c2 term or as natively executed by this inventory.
 
 ## 1. Scope and permitted outputs
 
@@ -15,6 +18,12 @@ positive permeability and memory, and effective bulk speed cs in [1,2]. This
 is an effective-speed family, not a primitive calibration or live drain model.
 The native source/consumer coefficients are not changed to tune cs. Any actual
 cs occurrence in them must be inventoried rather than assumed absent.
+
+All composed source/consumer addresses in this instrument use real omega=3.
+Saved response-only certificates may display unrestricted Omega or Omega=3+i*delta;
+that does not analytically continue the saved source, consumer or -i*omega wave
+factors. Bind the response to real 3 before making a composed address. No
+delta>0 composed operator or delta->0 limit of it is claimed here.
 
 Compute a complete, source-addressed both-face composition inventory for the
 retained eta/sigma rectangle G={(0,0),(1,0),(0,1),(1,1)}. Each entry includes
@@ -36,6 +45,11 @@ reuse old cutoffs 4/6, or extrapolate the response bound to all real momenta.
 Use the pinned native constructor-text census of both c1 responses, live density,
 both geometry velocities and shifts, chemical amplitude and all five slab rows.
 Recheck its complete pressure-name occurrence coverage against source text.
+Scan every top-level native row child for every Symbol/Function name containing
+`delta_p` OR `d_w_`, before filtering the four known pressure names. Preserve all
+hits and their child hashes. Any additional derivative/pressure name is a refusal,
+not a silently unselected child. Keep non-pressure child hashes and row addresses
+so the full native row partitions into unchanged local data plus the affine part.
 Scientific restoration occurs only within the guarded instrument. No producer,
 Inputs constructor, build_face/build_case, triangular solve or old response
 function is called. The original native functions are source references only.
@@ -95,6 +109,12 @@ in this instrument). Check every grade-dependent denominator at eta=sigma=0
 for a finite nonzero value using exact facts; unknown remains unresolved.
 Use the existing recursive rectangular Taylor algebra on the small restored
 source/consumer operands, with exact reconstruction in the quotient ring.
+The saved higherGrades is an unsplit remainder, not the three missing grades.
+Obtain those grades from the actual saved full rational quotient; preserve its
+exact numerator, denominator and zero-grade domain certificate. Reuse the saved
+grade-zero value by an actual operand join. Extract the excluded pure (2,0) and
+(0,2) coefficients only to label the truncation, and preserve the full higher
+remainder without claiming it is exhausted by those two entries.
 Persist discarded grades as excluded data. Negative grades, singular expansions
 or unexplained leftover background atoms fail closed. No pure eta^2 or sigma^2
 term is promoted to full second-order accuracy.
@@ -109,13 +129,78 @@ orders and dimensions, rather than selecting only expected jet names.
 
 ## 4. Ordered rectangular composition and a complete address census
 
-Let F_f,h be the saved reference-pressure response at grade h. Keep its pieces
-separate: flat diagonal; first height with contact/PV; first slope; the two
-mixed iteration assignments including trace subtraction; and the closed direct
-whole convolution. For h != (0,0), the native jet response is
-N_f,h=i*f*q(l) F_f,h with independent input and output depths preserved.
+Let F_f,h denote the proposed corrected reference-pressure response at grade h.
+It has two explicitly distinct provenance families:
 
-For h=(0,0), the saved pressure coefficient is F00(qi)=mu/(qi+beta), while
+- Native c2: flat diagonal, first height with contact/PV, first slope, and the
+  two mixed first-shape iteration assignments including trace subtraction.
+- Independently derived correction: the saved closed direct whole convolution
+  at (1,1). Native kernel_bridge has a literal zero at z_three[0,2], so this
+  addend is NOT an original native c2 route. Its separate off-diagonal address
+  is new; it is not inserted into native kernel_apply's second/middle slot.
+
+For the native nonflat pieces, the saved jet response is i*f*q(l) F_f,h with
+independent input and output depths. For the new direct address this same factor
+is a REQUIRED NEW algebraic routing check through the actual native assignments,
+not an already observed native execution. Do not accept it from a hand-formed
+mixed jet in the saved census alone.
+
+### 4a. Direct provenance and new formal native-assignment join
+
+Restore each face's raw closure operands: its independent `plus_raw_direct` or
+`minus_raw_direct` entry at [0,2], the saved closed matrix, and its external
+factor. Keep the original matrix, coefficient and assumptions. Join its linear
+coefficient in that independent bare symbol to R(qo)*R(qi), where
+R(q)=q/[q+beta], beta=omega/(10-i*omega). Do not rerun the triangular solve.
+The bare symbol belongs to the independently augmented closure, not the original
+native kernel_bridge matrix. Connect its actual raw kernel to rawKernelPlus or
+rawKernelMinus in raw/*-retained-increment.json and to the saved both-face
+closed-before-cancel reference/jet factors. The restored direct/closed-density.json
+is the final closed density: it already includes these two external resolvents.
+Its whole tag Dwhole must NOT receive them a second time. Restore the completed
+closed-density joins and their saved parameter/depth maps; do not rederive the
+raw boundary, the factorization, the profile transform or the closure.
+
+For a new formal routing check, introduce an independent bare placeholder D
+with grade eta*sigma and form the missing physical increment
+
+    DeltaP = eta*sigma * R(qo) * D * R(qi).
+
+Use each face's saved affine equation solution (target-H*jet)/valueCoefficient,
+its actual native height, and its actual valueCoefficient (joined to 1). Extract
+and pin the original build_face assignments for extension, jet_transfer,
+normal_jet and reference_pressure. Evaluate ONLY those expressions in a declared
+formal adapter: reference_matrix[0,1] is the new DeltaP address,
+jet_diagonal=jet_second=0, and composed_source is a new unit source placeholder.
+The adapter for kernel_apply returns an addressed linear off-diagonal action;
+it accepts exactly the native call order
+(inputs, diagonal, off_diagonal, source, kout, kin, second=0), refuses nonzero
+diagonal or second/middle entries for this direct address, and performs no
+integral. Record every adapter
+binding and the original assignment text. This is not calling kernel_apply,
+reference_pressure_kernels or build_face, and is not native producer execution.
+
+The normal derivative must give i*f*qo*DeltaP. Pass that formal action and the
+same physical DeltaP action through the actual reference_pressure assignment,
+then select the eta/sigma rectangle. Preserve the unprojected height correction,
+which has grade (2,1), and show the retained direct pressure remains DeltaP.
+In the ordered three-leg representation, restore the saved native trace matrix
+and show that an increment confined to [0,2] has no [1,2] direct contribution:
+the existing T01*reference12 subtraction is unchanged. These are distinct
+algebraic routing checks of the same added address, not independent physics.
+Join the resulting real-3 reference and normal factors to both saved raw factors
+and to the independently certified closed-density maps. Persist all inputs and
+residuals before requiring literal exact zero. Unknown or mismatch stops.
+
+The new direct address type is `INHERITED_DIRECT_WHOLE_OFF_DIAGONAL`: plain dl dk
+for its new source/consumer composition, no new middle integral, and Dwhole with
+its already-bound internal transfer. The original native mixed iteration remains
+a separate component once. Only the complete final corrected contribution, with
+this explicit augmentation label, is the composition target below.
+
+### 4b. Diagonal support and ordered grade inventory
+
+For the native h=(0,0) piece, the saved pressure coefficient is F00(qi)=mu/(qi+beta), while
 the saved flat normal-jet coefficient uses qo in its prefactor AND denominator.
 Use the native diagonal support, not independent-depth rational equality:
 
@@ -131,7 +216,7 @@ not an assertion qi=qo for height, slope or mixed kernels. Native kernel_apply
 p0 is the already reduced single-output-momentum route. Do not insert a second
 diagonal delta into it or move a bare flat rational coefficient to p1.
 
-The retained pressure-dependent contribution is the ORDERED composition
+The proposed augmented retained pressure-dependent contribution is the ORDERED composition
 
     Delta R_r,g = sum_f sum_{a+b+c=g}
         [ M_{c_rf,a^p} F_f,b S_f,c
@@ -178,9 +263,11 @@ An address records: native row and child/hash; face; pressure or normal slot;
 target/consumer/response/source grades; source channel and exact wave-jet name;
 profile coefficient and arguments; response component and saved operand hash;
 all integration variables and their role; dimension and epsilon count; zero,
-available or unresolved status; applicability obligations. Reconstruct the full
+available or unresolved status; applicability obligations. Reconstruct the proposed augmented
 retained pressure part as a formal noncommuting operator expression and compare
 to direct substitution of independent response placeholders in the actual row.
+The row consumer is native; the direct placeholder route is the new explicit
+augmentation certified by the algebraic checks in section 4a.
 This is an algebraic consistency check, not independent derivation of physics.
 
 ## 5. One-dimensional Fourier map with separate momenta
@@ -262,10 +349,15 @@ pressure-slot consumer00 contributes there; the normal consumer begins at10.
 Preserve the old labels and flags as history and distinguish unprojected versus
 retained entries in the new inventory. Do not infer a new lower-face correction
 from the old upper-face witness. Both-face source equality is native inheritance
-until joined by the new instrument's actual operands.
+until joined by the new instrument's actual operands. The lower source-velocity
+normalization and lower pressure-slot omission must be joined separately; an
+upper-face record does not discharge them.
 
 New evidence must include:
 
+- The independent-direct provenance and formal native-assignment join in 4a,
+  with both face signs, no middle integral, no second external resolvent pair,
+  and explicit non-native augmentation labels.
 - Complete source/jet and pressure/consumer censuses, regularity and all four
   coefficient grades, with exact row/source reconstruction and native units.
 - All ordered grade triples, both faces, both slots, independent epsilon count,

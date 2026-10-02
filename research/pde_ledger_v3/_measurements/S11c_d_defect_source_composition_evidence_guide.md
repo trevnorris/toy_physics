@@ -43,3 +43,34 @@ not be relabelled global composition regularity or finite-inverse control.
 
 Each packet-index entry identifies its original path, exact bytes and hash.
 Read the operands relevant to a claim; source hashes alone are not correctness.
+
+
+## Native iteration versus inherited direct correction
+
+The original `source/native-c2.py` has zero at `kernel_bridge`'s three-leg
+direct entry. The proposed inventory augments that native object; it is not
+a literal export of the original c2 operator. For this distinction inspect:
+
+- `raw/plus-closure-operands.json` and `raw/minus-closure-operands.json`: the
+  independent augmented `*_raw_direct` entry, saved closed matrix, and factor.
+- `reference/unrestricted-closure-operands.json` and both
+  `reference/*-closure-restoration.json`: saved algebraic augmented closure and
+  its real-frequency anchors. The original triangular solve was not repeated.
+- `raw/*-closed-before-cancel.json` and `raw/*-retained-increment.json`: the raw
+  kernels, separate reference/jet factors, and actual both-face row insertions.
+- `direct/saved-source-transport.json`, `direct/closed-density.json`, both
+  `direct/*-face-domain.json`, and the added original-input/exact-return records
+  for the reference, jet and scalar-row joins: completed evidence, not new work.
+- `reference/restored-direct-argument-join.json`: actual density argument map.
+- `reference/*-new-native-trace.json` and `reference/*-final-native-slot-routing.json`:
+  native iteration trace and slot joins. Those prior slot joins set the direct
+  placeholder to zero; they do not discharge the new direct-routing obligation.
+- `source/closed-worker.py` gives the exact source behind the inherited density
+  records. `source/reference-worker.py` distinguishes restored direct density
+  from its new iteration derivation. No old worker is to be called again.
+
+The method now requires a new independent-placeholder check through selected
+`build_face` assignment text, with a declared formal off-diagonal adapter. This
+is a proposed algebraic check, not native execution. The closed Dwhole already
+contains its resolvents and must not acquire them twice. No middle integral is
+performed. Sources and consumers compose only at real frequency 3.

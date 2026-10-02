@@ -1,0 +1,1 @@
+I'll assess this bounded full-weak build from the fixed packet: first the method and build guide, then the worker, launcher, helpers, manifest, and saved operands. No scientific code will be run and no other review will be consulted.The review is source-and-evidence only: I'll locate the packet and read the method, build guide, and implementation before judging coverage.

@@ -1,3 +1,21 @@
+**CORRECTED DEFECT INCREMENT METHOD READY; EXACT EXPORT CONSENT PENDING (2026-10-01):**
+First reviewed draft/literal pair/disposition preserved at ba1a2923. Corrected
+method specifies one ordered convolution, full H-factored contact/PV expression
+on its regular physical domain, four-depth outgoing sheet, native lower-face
+lab/outward signs, executable Fourier/edge normalization, closed external factors
+and unresolved-grazing stop. No new symbolic computation or computed integral.
+Only method/prompt/index changed;74 source/evidence files byte-identical.
+Fresh source-method packet77files/2995866bytes, SHA256
+18534026279d992c02c446e33dd1fc455361c941f2cf04232fa291d5650b9ade;
+archive47d8ab14383baa38b8009a0bbf847c6622f6a3c3e90ed30184ac3b40730660cb.
+All239 source/archive/preparation checks pass; no old peer report supplied.
+See applicability_review_r2_preparation.json and review_r2_sources.json.
+No new export or science; exact consent still needed for this changed packet.
+After substantive assessment/readiness, continuing user authority covers bounded
+raw-increment implementation, without repeated science-stage approval. No extra
+formal-grade job, production overwrite, completed-work replay or defect sweep.
+All old verdicts/failures/accepted sources and no-deadline pooled guard retained.
+
 **DEFECT APPLICABILITY PAIR ADJUDICATED; METHOD REVISION REQUIRED (2026-10-01):**
 Both delivered reports support the selected evidence and say finite-pilot reuse
 NOT ESTABLISHED. Next method literals: Claude CLEAR FOR BOUNDED IMPLEMENTATION

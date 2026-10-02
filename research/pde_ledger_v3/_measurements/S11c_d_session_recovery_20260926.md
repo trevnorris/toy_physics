@@ -1,3 +1,20 @@
+**RAW CONTROL CONTINUATION: THREE RESPONSES PASSED, FINITE FLAG UNRESOLVED (2026-10-01):**
+Prepared781fad05 ran once after renewed Continue. Four completed nested returns
+restored without their functions; all306prior files/10406596bytes copied exactly.
+Actual arguments/symbols/grades/input joins and two dispersion identities pass.
+Wrong-height, slope-omission and wrong-sheet responses are nonzero/finite.
+THETA lower omission gives nonzero movement but SymPy finite=None; unchanged
+strict guard stops. Saved denominator real part240sqrt105+720sqrt7+720sqrt15>0:
+author reading establishes finite value, but is not a guarded certificate or
+runtime acceptance. Lower omission halves the saved baseline. Preserve literal
+failed status; no numerical relaxation. No automatic retry/new job after failure.
+4.234s,peak77631488bytes,zero swap/events;4GiB limits,no deadlines verified.
+674posthashes,368snapshots,306copies,23new artifacts intact. Failed tree336files/
+10793607bytes. See raw_increment_continue_completion/result/failed_files.
+Remaining: exact finite certificate on saved movement, THETA doubling,E_W
+omission/doubling,jet sign,constant-end/applicability. Reuse completed work in any
+later continuation. No integral,finite matrix,defect sweep or loss claim.
+
 **RAW-INCREMENT CONTROL CONTINUATION PREPARED (2026-10-01):**
 User renewed execution with Continue after fcc3ee32. New saved-evidence worker
 restores all4complete nested returns and306prior files/10406596bytes, joins

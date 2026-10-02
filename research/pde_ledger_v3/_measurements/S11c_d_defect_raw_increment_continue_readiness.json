@@ -1,5 +1,5 @@
 {
-  "status": "READY_ONE_RENEWED_SAVED_CONTROL_CONTINUATION",
+  "status": "FAILED_INDETERMINATE_FINITE_FLAG_SAVED_CONTROLS_PRESERVED",
   "preparedUtc": "2026-10-02T04:04:25.518788+00:00",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/continuation-01",
   "workerSha256": "8e904aa22c522aa7bd1c3f0b919359ec03d00953ddd5d900b6dd2e88041abeba",
@@ -24,5 +24,7 @@
   ],
   "independentBuildClearance": false,
   "scientificImportsOrRestorationDuringPreparation": false,
-  "next": "Commit prepared version, arm hook and launch exactly once under pooled guard. No repeated science permission required."
+  "next": "Preserve failed finite-flag result. No automatic retry. Remaining controls require a separate saved-evidence continuation with an exact finite certificate; do not repeat completed controls.",
+  "scientificExecutionReady": false,
+  "completionRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_continue_completion.json"
 }

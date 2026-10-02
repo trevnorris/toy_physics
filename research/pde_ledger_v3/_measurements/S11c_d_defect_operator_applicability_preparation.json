@@ -1,5 +1,5 @@
 {
-  "status": "BOTH_APPROVED_FRESH_REVIEWS_RUNNING",
+  "status": "BOTH_REPORTS_PRESERVED_FOCUSED_METHOD_REVISION_REQUIRED",
   "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review",
   "packetDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review/packet",
   "packetFiles": 77,
@@ -30,12 +30,13 @@
     "transportCompileOnly": true,
     "freshUnlaunchedRoot": true
   },
-  "next": "After exact consent submit this pair with hook first; if substantively clear continue bounded implementation under standing user scope; no producer restart or defect sweep from source review alone.",
+  "next": "Prepare explicit convolution/contact/root/face and measure rules. No automatic new export or science; exact corrected-packet consent remains required.",
   "approvalPath": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review/explicit-packet-approval.json",
   "approvalSha256": "c2d31dbba78c94859fe7ae46eda055ff66e2f44a88d214ccecdd42604f575b1b",
   "approvalRecordedUtc": "2026-10-02T00:32:36.245120+00:00",
   "prelaunchAllHashesVerified": true,
   "reviewLaunchRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_operator_applicability_review_launch.json",
   "hookStatus": "waiting",
-  "startupVerified": true
+  "startupVerified": true,
+  "reviewRecord": "research/pde_ledger_v3/_measurements/S11c_d_defect_operator_applicability_review_record.json"
 }

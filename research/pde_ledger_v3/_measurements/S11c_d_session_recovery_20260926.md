@@ -1,3 +1,20 @@
+**DEFECT APPLICABILITY PAIR ADJUDICATED; METHOD REVISION REQUIRED (2026-10-01):**
+Both delivered reports support the selected evidence and say finite-pilot reuse
+NOT ESTABLISHED. Next method literals: Claude CLEAR FOR BOUNDED IMPLEMENTATION
+with acceptance rules; Grok NEEDS REVISION. No paired clearance. All485 packet,
+archive/private/source/receipt/consent checks pass. Reports preserved verbatim;
+Grok one read_file diagnostic error retained, no retry. See applicability
+review_record and review_disposition. Correct explicit ordered-convolution
+weighting, full contact/PV algebra, physical four-leg root/lower-face rule and
+Fourier/grazing conditions. General regular H=0 contact cancels in the complete
+upper coefficient; isolated summands do not establish a surviving contact.
+This hand source check is not a guarded computed result and not a grazing limit.
+No source-only permission to label old finite matrices corrected; no separate
+formal-grade job, completed-work replay or immediate defect sweep. Preserve this
+baseline before edits; prepare a focused corrected packet, then exact export
+consent. No science has run. Standing continuing-work authority and no-deadline
+pooled containment remain. All historical verdicts/results/protected files intact.
+
 **DEFECT-OPERATOR APPLICABILITY REVIEWS RUNNING (2026-10-01):**
 User explicitly replied Approve to the prepared77file/2986536byte packet for fresh
 Claude and Grok, SHA2560ee336fbe5e6ea301454564004ab0434d78b798431f0cac3a1d286af113bb8d3.

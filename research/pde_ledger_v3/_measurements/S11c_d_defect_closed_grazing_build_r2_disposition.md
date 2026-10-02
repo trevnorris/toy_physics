@@ -1,0 +1,9 @@
+# Corrected closed-grazing build assessment
+
+Both delivered reports literally say **CLEAR FOR THIS BOUNDED CLOSED-GRAZING BUILD**. All 531 packet/archive/private/source/receipt checks passed before adjudication. The exact worker and manifest remain those reviewed at `ecac627a`; no optional source edits or review rerun were made. The original Claude NEEDS REVISION/Grok CLEAR pair and rejected build remain at `13e8808a` and the first packet.
+
+The corrected controls now use the actual saved outgoing roots and per-face jet/reference ratios, act on the new closed density, and require nonzero responses. Each face's saved mixed/raw coefficient and the retained raw-row density are joined explicitly. Source inspection supports these changes and the unchanged kernel/limit/bound assignments. Neither reviewer identified a substantive blocker. Grok's two Read errors and CLI diagnostics did not prevent a complete delivered assessment; they remain in the literal run record.
+
+Readiness is for one bounded contained instrument, not acceptance of its future output. Its exact identities and constants support the independently assessed analytic L1 argument only if the runtime joins and controls pass. Constant sign decisions use SymPy's installed predicates; the instrument introduces no numerical tolerance or unknown-to-true fallback. Restoration, cancellation cost and memory remain runtime questions. Optional comments do not justify another edit/review cycle.
+
+The strongest prospective result concerns the both-face direct (1,1) closed kernel, on the declared compact effective-speed/momentum domain, multiplied by finite real-frequency-3 formal (0,0) source jets. There is no new general/lower-face Fourier map, incoming mode, evaluated integral, finite matrix, full operator, production change, calibrated/draining model or loss claim. All earlier failures and literal review debts remain intact.

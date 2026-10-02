@@ -1,0 +1,81 @@
+{
+  "status": "RUNNING_INDEPENDENT_SOURCE_BUILD_REVIEWS",
+  "preparedCommit": "6c4bc461",
+  "recordedUtc": "2026-10-02T05:08:14.351346+00:00",
+  "packetSha256": "f6d0b4538763ac6eeb88303892d95662feba084e876a3fe7f7bd84d62fb796bc",
+  "archiveSha256": "4a483f4e23f75d367bcae22639e667fc6a5e9c1031845d6f807ff1cd973feef0",
+  "launch": {
+    "jobPid": 1777113,
+    "watcherPid": 1777114,
+    "packetSha256": "f6d0b4538763ac6eeb88303892d95662feba084e876a3fe7f7bd84d62fb796bc",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "watcherStatus": "waiting",
+  "legs": {
+    "claude": {
+      "pid": 1777126,
+      "sessionId": "6a55c5c6-5042-46b9-b2ec-12966b6ce76a",
+      "allPrivateHashesMatch": true,
+      "privateFiles": 102,
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "6a55c5c6-5042-46b9-b2ec-12966b6ce76a"
+      ],
+      "scientificExecutionEnabled": false
+    },
+    "grok": {
+      "pid": 1777125,
+      "sessionId": "adbe6c14-de47-42b8-9d38-a3206e543d74",
+      "allPrivateHashesMatch": true,
+      "privateFiles": 102,
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/build-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/build-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "adbe6c14-de47-42b8-9d38-a3206e543d74"
+      ],
+      "scientificExecutionEnabled": false
+    }
+  },
+  "reportsReadOrShared": false,
+  "scientificExecution": false,
+  "noAutomaticRetry": true
+}

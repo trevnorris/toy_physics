@@ -15,6 +15,13 @@ source derivative order, output lab-normal multiplier, direct/iteration counts,
 and real applicability of the proposed controls. Check native final routing,
 not merely the hand-written formula.
 
+Inspect especially the separate flat-diagonal address: delta(l-k) identifies
+both the prefactor and pole at q(l), matching the saved flat jet, without
+identifying off-diagonal depths. Check whole-tag signatures/source maps, use of
+saved total mixed entries only as sum checks, and explicit exclusion of the old
+unprojected (2,1) normal-slot remainder. Controls must respect delta support and
+distinguish formal tagged-coefficient sensitivity from an evaluated convolution.
+
 The response certificate has compact internal momenta [-3,3]; multiplying by
 nonconstant profiles spreads momenta outside it. The proposal intentionally
 does not claim global composition/grazing convergence or insert a cutoff.

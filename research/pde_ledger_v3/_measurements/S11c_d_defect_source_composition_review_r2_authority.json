@@ -1,0 +1,17 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-02T09:32:26.746470+00:00",
+  "packetSha256": "18371f3e4df37ab58e8a910c0574240140bb7c6366eabdf885f3c982ed9f4a1d",
+  "archiveSha256": "1ab6adb26c445600517147c1044cc3bfb2b9bfcfe82036b0d5589aafa0e3fcf2",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 109,
+  "bytes": 4927450,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing review-submission and bounded-continuation authorization; substantive flat-diagonal routing correction after both completed reviews",
+  "scope": "Proposed both-face ordered retained source/consumer Fourier and grade inventory; no evaluated integral, global grazing-action claim, finite matrix or defect sweep",
+  "noAutomaticRetry": true,
+  "noPeerReportsIncluded": true
+}

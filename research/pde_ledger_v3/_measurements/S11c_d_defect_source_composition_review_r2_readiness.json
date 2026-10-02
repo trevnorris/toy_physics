@@ -1,0 +1,70 @@
+{
+  "status": "READY_CORRECTED_SOURCE_METHOD_REVIEW_ONLY",
+  "recordedUtc": "2026-10-02T09:32:26.746470+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/method-review-r2",
+  "priorVerdictCommit": "afc36659",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-02T09:32:26.746470+00:00",
+    "packetSha256": "18371f3e4df37ab58e8a910c0574240140bb7c6366eabdf885f3c982ed9f4a1d",
+    "archiveSha256": "1ab6adb26c445600517147c1044cc3bfb2b9bfcfe82036b0d5589aafa0e3fcf2",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 109,
+    "bytes": 4927450,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing review-submission and bounded-continuation authorization; substantive flat-diagonal routing correction after both completed reviews",
+    "scope": "Proposed both-face ordered retained source/consumer Fourier and grade inventory; no evaluated integral, global grazing-action claim, finite matrix or defect sweep",
+    "noAutomaticRetry": true,
+    "noPeerReportsIncluded": true
+  },
+  "static": {
+    "status": "STATIC_SOURCE_AND_PACKET_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "60c06205699a568bca3bd589ff857d8d59bec6b8ce67bab338eee4511badb2dd",
+    "packetSha256": "18371f3e4df37ab58e8a910c0574240140bb7c6366eabdf885f3c982ed9f4a1d",
+    "archiveSha256": "1ab6adb26c445600517147c1044cc3bfb2b9bfcfe82036b0d5589aafa0e3fcf2",
+    "files": 109,
+    "bytes": 4927450,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 108,
+    "payloadRestored": false,
+    "transportIdenticalToPrior": true,
+    "noReviewVerdict": true
+  },
+  "checks": {
+    "allSourcePacketArchiveHashesMatch": true,
+    "samePacketCensus": true,
+    "changedPacketPaths": [
+      "method.md",
+      "packet-index.json",
+      "review-prompt.md"
+    ],
+    "allEvidenceSourcesUnchanged": true,
+    "transportIdenticalToPrior": true,
+    "noScientificImportsOrRestoration": true,
+    "noPeerReports": true,
+    "noScienceRun": true,
+    "newTrackedFilesOver1MiB": []
+  },
+  "changedSourceHashes": [
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition_method.md",
+      "packetPath": "method.md",
+      "oldSha256": "bffb4ce182fe46a414844a8b91c5c415073a01359c01913609a49e93a9bcd8db",
+      "newSha256": "39308aa778c0514dd788ba515b0f496a7444e06e46dafb4c479099727378929c"
+    },
+    {
+      "path": "research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition_review_prompt.md",
+      "packetPath": "review-prompt.md",
+      "oldSha256": "4972c95f3d6fff89e1c3469930552454cab95d62af00aab87643f97b27260c7b",
+      "newSha256": "5d482bfd1e97a3f6f2961a5564cfe392cc446fe47416914c8479cdd635a3cd2f"
+    }
+  ]
+}

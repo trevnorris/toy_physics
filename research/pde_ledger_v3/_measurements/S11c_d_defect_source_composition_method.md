@@ -50,8 +50,10 @@ a published partial observation is not a completed top-level function return.
 
 Reuse the saved flat, first-height, first-slope, mixed-iteration/reference-trace
 and separately tagged direct response operands for each face. Reference pressure
-is already trace-converted. Apply no second trace inverse. Its normal jet is
-i*f*q(l) times reference pressure, f=+1 or -1 in LAB normal coordinates.
+is already trace-converted. Apply no second trace inverse. Its off-diagonal
+normal jet is i*f*q(l) times reference pressure, f=+1 or -1 in LAB normal
+coordinates. The flat diagonal requires the explicit support binding below;
+its saved input-depth coefficient is not an independent two-momentum density.
 The physical source velocity is not assigned an extra outward-normal sign.
 Its actual both-face native equality, if present, must be joined rather than
 inferred from the sign of the lab-normal pressure jet.
@@ -110,7 +112,24 @@ orders and dimensions, rather than selecting only expected jet names.
 Let F_f,h be the saved reference-pressure response at grade h. Keep its pieces
 separate: flat diagonal; first height with contact/PV; first slope; the two
 mixed iteration assignments including trace subtraction; and the closed direct
-whole convolution. The native jet response is N_f,h=i*f*q(l) F_f,h.
+whole convolution. For h != (0,0), the native jet response is
+N_f,h=i*f*q(l) F_f,h with independent input and output depths preserved.
+
+For h=(0,0), the saved pressure coefficient is F00(qi)=mu/(qi+beta), while
+the saved flat normal-jet coefficient uses qo in its prefactor AND denominator.
+Use the native diagonal support, not independent-depth rational equality:
+
+    F_f,00(l,k) = delta(l-k) mu/[q(l)+beta],
+    N_f,00(l,k) = delta(l-k) i*f*q(l)*mu/[q(l)+beta].
+
+The equivalent input representation is delta(l-k)*mu/[q(k)+beta]. Record the
+support substitution k=l and qi=qo=q(l), applied to the whole flat coefficient,
+before matching the saved jetKernels[f].flat. At positive regulator the common
+sheet makes this identification ordinary; real-frequency diagonal extension
+uses the saved bounded multiplier prescription. This is a delta reduction,
+not an assertion qi=qo for height, slope or mixed kernels. Native kernel_apply
+p0 is the already reduced single-output-momentum route. Do not insert a second
+diagonal delta into it or move a bare flat rational coefficient to p1.
 
 The retained pressure-dependent contribution is the ORDERED composition
 
@@ -132,6 +151,28 @@ iteration is also included once; no extra symmetrization or second full-weight
 transfer assignment. No whole convolution is passed through the native second
 slot's middle integral. The internal middle variable in the original response
 is distinct from new source/consumer momentum convolutions.
+
+The saved taggedTotalMixed and jetKernels[f].mixed already contain the direct
+whole addend. Use them only as reconstruction targets after assembling the
+separated pieces, never as additional summands. Promote each saved bare whole
+tag to an argument-bearing record, with the original saved tag/hash retained:
+
+    H(l-k;W,L)                         [whole height*slope convolution],
+    Jwhole_f(l,k;Omega,cs,edges,...)    [whole iterated density integral],
+    Dwhole_f(l,k;Omega,cs,edges,...)    [whole closed direct convolution].
+
+For H, preserve both its contact and subtracted-PV definition. For Jwhole the
+bound variable is t with middle momentum m=k+t. For Dwhole use an independent
+bound transfer td, with input k, output l, height-route momentum k+td and
+slope-route momentum l-td. Map grazing_unrestricted_frequency to Omega,
+grazing_output to l, the saved k to k, grazing_transfer to td,
+grazing_qi to q(k), grazing_qo to q(l), grazing_qh to q(k+td), and grazing_qs
+to q(l-td), with the same physical sheet and parameters. Retain all symbol
+assumptions and the saved density provenance. Check per-face source/normal
+joins separately before sharing a mapped density. These signatures are a new
+inventory of saved definitions, not values of their integrals. No bound middle
+variable becomes a free argument of a whole tag, and no response-depth binding
+is inferred merely from equal printed names.
 
 An address records: native row and child/hash; face; pressure or normal slot;
 target/consumer/response/source grades; source channel and exact wave-jet name;
@@ -167,10 +208,26 @@ explicit rather than replaced by sampled values.
 Let p be the original incident wave momentum, k the face-response input,
 l its output and r the final row-output momentum. For a source jet D^alpha,
 its wave multiplier d_alpha(p) uses (p,1/5,1/10) and temporal factor -i*omega.
+Explicitly, with exp(i*p*x+i*x2/5+i*x3/10-i*omega*time), a spatial derivative
+in direction j contributes +i times the corresponding component; each time
+derivative contributes -i*omega. Multiple derivatives multiply those factors.
 The Fourier route of an address is
 
     integral dl dk c_hat(r-l) F_f,b(l,k)
                     s_hat(k-p) d_alpha(p).
+
+For the flat grade the displayed distribution includes delta(l-k). Store and
+check its native reduced route as a separate address type:
+
+    integral dl c_hat(r-l) mu/[q(l)+beta] s_hat(l-p) d_alpha(p),
+
+with an extra i*f*q(l) for the normal slot. All occurrences of the old input
+depth in the FLAT coefficient are mapped to q(l). Match both face flat jets
+exactly to their saved output-depth forms. Check a deliberately unbound input
+pole against that target at unequal independent diagnostic depths, as a route
+control only; those unequal depths are not a physical point on the diagonal.
+No such identification is applied to any off-diagonal response. Contacts in
+other response grades retain their own explicit support rules.
 
 For the normal slot, put i*f*q(l) immediately before F, not q(r) or q(p).
 Keep the native normalized inverse/edge-delta convention: compositions above
@@ -196,15 +253,28 @@ The new both-face direct(1,1)/source00/consumer00 block must match the saved
 general both-face raw-row and closed-response factors where their domains meet;
 the old kin=0/kout=.1 upper witness is a selected check, not a general Fourier map.
 
+In particular, the older pressure-omission record saves an UNPROJECTED
+selectedIncrement with a normal-slot eta^2*sigma remainder. Its separately
+saved mixedPerSource is zero, as is its ablatedRowPerD: the old function did
+project before returning the retained coefficient. Keep that remainder as
+excluded (2,1) data, not a match target for the new direct(1,1) block. Only the
+pressure-slot consumer00 contributes there; the normal consumer begins at10.
+Preserve the old labels and flags as history and distinguish unprojected versus
+retained entries in the new inventory. Do not infer a new lower-face correction
+from the old upper-face witness. Both-face source equality is native inheritance
+until joined by the new instrument's actual operands.
+
 New evidence must include:
 
 - Complete source/jet and pressure/consumer censuses, regularity and all four
   coefficient grades, with exact row/source reconstruction and native units.
 - All ordered grade triples, both faces, both slots, independent epsilon count,
   tagged direct multiplicity one and both mixed-iteration assignments.
-- Actual Fourier derivative/edge/normal-momentum routing at distinct rational
-  p,k,l,r away from branch/contact points; use only algebraic multipliers and
-  unevaluated transform atoms, not numerical integrals or a fictitious mode.
+- Actual Fourier derivative/edge/normal-momentum routing at rational momenta
+  satisfying each address's delta supports, away from other branch/contact
+  points. Momenta may be distinct only where the address permits it. Use
+  algebraic multipliers and tagged unevaluated transforms, not numerical
+  integrals or a fictitious mode.
 - A source cross-grade omission and a consumer cross-grade omission through an
   actual nonzero addressed scalar row. If no such native entry exists, record
   exact absence and use an applicable existing cross-grade entry; do not count
@@ -217,6 +287,26 @@ New evidence must include:
 - Restored constant-end/zero-profile reductions where already available, and
   new exact grade/Fourier identities only where genuinely missing. Do not rerun
   the uniform scan or old source/closure/trace constructions.
+
+Concrete control supports: use consumer00/response00/source10 with a spatial
+source jet for p->k, so k=l=r while p may differ. It would be inert on source00.
+For q(l)->q(r), use normal consumer10/response01/source00 at target11, with
+k=p and r!=l on the nonconstant consumer transform; keep input/output response
+depths independent. A candidate common propagating point is cs=sqrt(10/7),
+p=k=3/2, l=2, r=30/13, where q(k)=2, q(l)=3/2 and q(r)=25/26. These source
+coefficients and control applicability must still be verified, not assumed.
+For the source-jet control one may instead use p=3/2,k=l=r=2 at that same cs.
+The lower-jet sign control can use normal consumer10/response00/source00,
+with k=l=p and a nonzero consumer transfer. Respect the flat identification
+there; the separate unbound-pole diagnostic is not that physical route.
+
+For controls containing an unevaluated coefficient transform or whole response
+tag, report the exact nonzero algebraic coefficient of that tagged route. This
+is formal routing sensitivity, not a computed nonzero convolution or physical
+response. Do not set all tags to one and describe the result as a field value.
+Persist the full tag signature and the coefficient movement separately. If a
+required nonzero addressed coefficient or grade is actually absent, record the
+exact absence and choose an applicable retained entry without inventing one.
 
 Potentially zero summed face contributions must be preserved as actual
 cancellations, not forced nonzero for a control. Control applicability is judged

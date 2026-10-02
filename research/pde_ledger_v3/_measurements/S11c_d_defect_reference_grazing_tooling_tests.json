@@ -1,0 +1,18 @@
+{
+  "status": "PASSED_STDLIB_TOOLING_TESTS_ONLY",
+  "workerSha256": "c73291135548e54435b86df4ceeebb358d0e1a6a8502c1507dfb163dd80d63f9",
+  "testsSha256": "bae69045dde6009c641adc748ffb6087f9b78b95119536169eb2800cef268f29",
+  "unittestMethods": 17,
+  "identityMismatchSubcases": 10,
+  "runtimeScientificAcceptance": false,
+  "scientificImportsOrRestoration": false,
+  "checks": [
+    "gate/source/helper/authority/literal-method/build joins",
+    "no-deadline and no-author-clear refusal",
+    "exact unchanged helper ASTs",
+    "no scientific top-level import or integration/solve calls",
+    "saved mode selection rejects missing/duplicate grades",
+    "actual native assignment namespaces execute on non-scientific stand-ins",
+    "launcher AST and evidence string-key schemas"
+  ]
+}

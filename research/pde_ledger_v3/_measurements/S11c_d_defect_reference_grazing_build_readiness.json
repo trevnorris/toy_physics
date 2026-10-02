@@ -1,0 +1,48 @@
+{
+  "status": "READY_FOR_BUILD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-reference-grazing-20261002/build-review",
+  "static": {
+    "status": "STATIC_SOURCE_PACKET_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "231cd0fb1d5779a2343ccd7be0276acaa380882db2527fd64c99dfd17af08ad4",
+    "packetSha256": "09b5c903bbd817622e5e221752795b2488bdead69c24e39fc556d7115e42e656",
+    "archiveSha256": "8ed05aa3d3c58dc1b33adb2c2ce086c27c79f0c29c8d0542b4c6ed269e68a64a",
+    "files": 80,
+    "bytes": 1530672,
+    "workerSha256": "c73291135548e54435b86df4ceeebb358d0e1a6a8502c1507dfb163dd80d63f9",
+    "manifestSha256": "d2eda0a72779f21bd78813f104871b8265f574c50f94e273e88717fdb3c6a3c1",
+    "sharedGuardSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+    "supervisorSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+    "scientificImportsOrRestoration": false,
+    "reviewers": [
+      "claude",
+      "grok"
+    ]
+  },
+  "toolingTests": {
+    "status": "PASSED_STDLIB_TOOLING_TESTS_ONLY",
+    "workerSha256": "c73291135548e54435b86df4ceeebb358d0e1a6a8502c1507dfb163dd80d63f9",
+    "testsSha256": "bae69045dde6009c641adc748ffb6087f9b78b95119536169eb2800cef268f29",
+    "unittestMethods": 17,
+    "identityMismatchSubcases": 10,
+    "runtimeScientificAcceptance": false,
+    "scientificImportsOrRestoration": false,
+    "checks": [
+      "gate/source/helper/authority/literal-method/build joins",
+      "no-deadline and no-author-clear refusal",
+      "exact unchanged helper ASTs",
+      "no scientific top-level import or integration/solve calls",
+      "saved mode selection rejects missing/duplicate grades",
+      "actual native assignment namespaces execute on non-scientific stand-ins",
+      "launcher AST and evidence string-key schemas"
+    ]
+  },
+  "methodCommit": "80ce20c0",
+  "savedFiles": 17,
+  "sourcePins": 32,
+  "noScienceGate": true,
+  "noScientificRun": true,
+  "noNewTrackedGeneratedFilesOver1MiB": true,
+  "allSourceAndPacketHashesChecked": true
+}

@@ -1,0 +1,49 @@
+{
+  "status": "READY_SOURCE_METHOD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/method-review",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-02T09:06:24.486727+00:00",
+    "packetSha256": "a86855ad1998e91e76d1b13dee1e2efa229c0bd4a8a35535ffa9c5c62a4bc8e9",
+    "archiveSha256": "9e32a95eeec0c14a37d8676837e21ebda57444d9ac427d56a0baa28706865b0f",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 109,
+    "bytes": 4921202,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "AGENTS.md standing review-submission authorization and continued bounded research direction",
+    "latestUserQuote": "K. I'm heading to bed. Looking forward to some good news in the morning. Please continue to work on this.",
+    "scope": "Proposed both-face ordered retained source/consumer Fourier and grade inventory; no evaluated integral, global grazing-action claim, finite matrix or defect sweep",
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_SOURCE_AND_PACKET_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "b94c49b6fb7fb3c068edb6dc2ba02566bebc5a6c72ef87ac2332689694a6dd75",
+    "packetSha256": "a86855ad1998e91e76d1b13dee1e2efa229c0bd4a8a35535ffa9c5c62a4bc8e9",
+    "archiveSha256": "9e32a95eeec0c14a37d8676837e21ebda57444d9ac427d56a0baa28706865b0f",
+    "files": 109,
+    "bytes": 4921202,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 108,
+    "payloadRestored": false,
+    "transportIdenticalToPrior": true,
+    "noReviewVerdict": true
+  },
+  "checks": {
+    "allSourceAndPacketHashesMatch": true,
+    "allArchiveMembersMatch": true,
+    "transportIdenticalToPrior": true,
+    "nativeRouteCount": 10,
+    "noScientificImportsOrRestoration": true,
+    "noPeerReports": true,
+    "noScienceRun": true,
+    "newTrackedFilesOver1MiB": []
+  }
+}

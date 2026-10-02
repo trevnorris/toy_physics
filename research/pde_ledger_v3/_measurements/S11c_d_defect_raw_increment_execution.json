@@ -1,5 +1,5 @@
 {
-  "status": "RUNNING_STARTUP_VERIFIED",
+  "status": "FAILED_FORMATTER_PARTIAL_CONSTRUCTION_PRESERVED",
   "recordedUtc": "2026-10-02T03:10:19.031750+00:00",
   "preparedCommit": "3448e86a",
   "reviewBaselineCommit": "ba418f6f",
@@ -84,5 +84,10 @@
   "localToolingRepairAccepted": true,
   "scientificAcceptance": false,
   "automaticRetry": false,
-  "waitingUsesLocalHookOnly": true
+  "waitingUsesLocalHookOnly": true,
+  "startupRecordPreservedAtCommit": "ebaed4aa",
+  "completionRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_completion.json",
+  "finishedUtc": "2026-10-02T03:15:03.612761+00:00",
+  "result": "Partial construction preserved; final controls not reached because evidence formatter rejected symbolic dictionary keys.",
+  "scientificExecutionReady": false
 }

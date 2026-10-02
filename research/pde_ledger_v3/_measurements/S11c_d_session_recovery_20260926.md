@@ -1,3 +1,24 @@
+**RAW-INCREMENT PARTIAL CONSTRUCTION PRESERVED; FINAL CONTROLS UNFINISHED (2026-10-01):**
+Diagnostic-01 stopped at a JSON formatter, before nonzero response controls:
+`control_depths` used symbolic keys; the encoder requires strings. Actual source
+and an inert stdlib reproduction establish that cause. No physical guard failed.
+342.464 worker seconds, peak305152000bytes (291.02MiB), zero swap/memory events;
+actual4GiB native/cgroup, no deadlines, host reserve intact. All68posthashes,
+51snapshots,17copied operands and283artifact receipts verified.306result files/
+10406596bytes preserved, with4complete nested stages and68literal-zero equality
+returns. Source/JSON/hash inspection only, no science restored outside containment.
+Both-face native boundary/closure/source/grade/row and four-depth sheet evidence
+saved; final wrong-height/slope/sheet and actual-row omission/doubling/jet-sign
+controls were NOT reached. No diagnostic acceptance or loss claim. The sinh
+argument expansion was a no-op on actual operands; its exact saved identity passed.
+See raw_increment_completion.json, failed_files.json and result.md. Literal build
+ClaudeCLEAR/GrokNEEDS and all old failures remain. Original worker/pins unchanged.
+No automatic retry or new validator launched. Remaining bounded work would restore
+saved construction and perform only unfinished controls after a string-key repair;
+never rerun construction. Exact-match limits/local bound, integrals,finite matrices,
+production changes and defect sweep remain outside this diagnostic. Standing
+consent does not turn a partial run into acceptance or erase the failure stop.
+
 **BOTH-FACE RAW-INCREMENT DIAGNOSTIC RUNNING (2026-10-01):**
 Prepared code/gate/local repair at3448e86a; literal second build CLEAR/NEEDS
 preserved atba418f6f. One authorized run launched hook-first: coordinator1678650,

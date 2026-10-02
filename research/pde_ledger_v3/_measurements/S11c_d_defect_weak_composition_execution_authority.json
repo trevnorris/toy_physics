@@ -1,0 +1,30 @@
+{
+  "boundedInstrumentAuthorized": true,
+  "automaticScientificRetry": false,
+  "authority": "Standing user continued bounded research and AGENTS review authorization",
+  "scienceExecutionsAuthorized": 1,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": [
+      1,
+      2
+    ],
+    "internalMomenta": "all real, polynomial weights",
+    "target": "Schwartz weak retained pressure contribution",
+    "sourceFrequencyContinued": false,
+    "responseRegularization": "3+i delta, delta in [0,1/10], auxiliary only",
+    "noEvaluatedResponseIntegral": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true
+  },
+  "methodClearanceIsNotBuildClearance": true,
+  "noDeadline": true
+}

@@ -1,0 +1,16 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-02T16:56:53.138377+00:00",
+  "packetSha256": "ad1be7c06ef0399ef1bf7e01eed8680cbcdc1da78dd5815be7cd7da6acdfd9dd",
+  "archiveSha256": "d3e7e03dfe95ebe9707df023e537af28598ea8a219ef3e0f3b8a86455d04b2e1",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 429,
+  "bytes": 15669910,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "AGENTS.md standing review-submission authority and continued bounded research direction",
+  "scope": "Concrete global weak-composition certificate build; all-field/global bounds/weak order, no evaluated response integral or finite solve",
+  "noAutomaticRetry": true
+}

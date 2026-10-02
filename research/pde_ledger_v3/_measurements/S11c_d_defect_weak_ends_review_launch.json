@@ -1,0 +1,92 @@
+{
+  "status": "INDEPENDENT_METHOD_PAIR_RUNNING_NO_SCIENCE",
+  "recordedUtc": "2026-10-02T21:04:26.967475+00:00",
+  "preparedCommit": "53aa40fe",
+  "completedFullWeakCommit": "2b82558f",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/method-review",
+  "packetSha256": "4dac84d0d8bce5bddef1fe3b556a896a4875cc0d2e5e8a2aec9455fd8a41cbda",
+  "archiveSha256": "7c664f3277b090fea9aabc52eef7cb7b9114c9b3da3be0e790fce3602f410f25",
+  "files": 70,
+  "bytes": 11092702,
+  "launch": {
+    "jobPid": 2756651,
+    "watcherPid": 2756652,
+    "packetSha256": "4dac84d0d8bce5bddef1fe3b556a896a4875cc0d2e5e8a2aec9455fd8a41cbda",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "legs": {
+    "claude": {
+      "sessionId": "7dd127f0-4c11-4ff8-898d-803a3424bf56",
+      "pid": 2756674,
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "7dd127f0-4c11-4ff8-898d-803a3424bf56"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/method-review/claude/work",
+      "startedUtc": "2026-10-02T21:03:51.415670+00:00",
+      "packetSha256": "4dac84d0d8bce5bddef1fe3b556a896a4875cc0d2e5e8a2aec9455fd8a41cbda",
+      "promptSha256": "bc7f98a2317977559f193913bee787bc495101279fd41aedad8df4ddb3fdec85"
+    },
+    "grok": {
+      "sessionId": "b7b1a26e-ca55-4762-b929-11bfe1caf628",
+      "pid": 2756675,
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/method-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/method-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "b7b1a26e-ca55-4762-b929-11bfe1caf628"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/method-review/grok/work",
+      "startedUtc": "2026-10-02T21:03:51.425366+00:00",
+      "packetSha256": "4dac84d0d8bce5bddef1fe3b556a896a4875cc0d2e5e8a2aec9455fd8a41cbda",
+      "promptSha256": "bc7f98a2317977559f193913bee787bc495101279fd41aedad8df4ddb3fdec85"
+    }
+  },
+  "privatePacketHashesAllMatch": true,
+  "hookStatus": "waiting",
+  "hookFirst": true,
+  "noPeerSharing": true,
+  "reportsReadBeforeBothFinished": false,
+  "scienceCalls": 0,
+  "automaticRetry": false,
+  "noDeadline": true,
+  "noMethodVerdictYet": true
+}

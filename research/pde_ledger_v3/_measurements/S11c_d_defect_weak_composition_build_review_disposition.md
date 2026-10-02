@@ -1,0 +1,9 @@
+The first concrete build received literal Claude **NEEDS REVISION** and Grok **CLEAR FOR THIS GLOBAL WEAK-COMPOSITION BUILD**. Both reports and the exact packet remain preserved. All 2,597 packet, archive, private-copy, source and receipt checks passed. No scientific run or READY gate exists.
+
+Both reports support the proposed mathematics. Accept the missing explicit whole-tag/typed-factor and complete grade/face/address validation, and exact four-control row/face identity checks. These change scientific validation and will receive independent assessment. Add constancy to control selection and an explicit flat-support point map; actual supplied representatives already satisfy the intended applicability, so this is not evidence of a failed calculation. Bind the new execution-authority path, scope, one-run count and no-deadline policy.
+
+The claim that containment was only recorded is refuted by the actual pinned helper: it asserts 4 GiB cgroup memory, zero swap, 32 tasks, one CPU affinity and all thread variables, requires pooled containment, refuses CPU limits, and sets the native 4 GiB address-space cap before returning. Keep this helper unchanged. Optional cleanup and wording are not a new review cycle.
+
+Claude disclosed reading no saved evidence or helper, and described it as absent. Those files were present and verified in both private packets. Grok read control-critical representatives, source fields and helpers; it did not inspect all 13,260 addresses. These coverage differences are preserved without treating either report as a runtime result. Grok stderr contains CLI diagnostics and five Read errors; its literal final report was delivered.
+
+The next build will retain the same equations, physical inputs, method, 202 saved files, global-bound expressions and six new formal controls. It adds explicit joins before execution; no response integral, finite solve, production change or loss claim is authorized.

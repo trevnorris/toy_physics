@@ -1,0 +1,62 @@
+{
+  "status": "STARTED_CONTAINMENT_VERIFIED_RESULT_PENDING",
+  "recordedUtc": "2026-10-02T20:42:27.333317+00:00",
+  "preparedCommit": "3e5c788a",
+  "buildReviewCommit": "4a53c696",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01",
+  "jobPid": 2748670,
+  "watcherPid": 2748671,
+  "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "gateSha256": "23f95d96c9a88df8ea41942a6be72c4141ee8fb30f62f62c3ac5fc6f2ef3982a",
+  "workerSha256": "ea1726dd7cc28bca6c85c06276c03941ad3b17de5e6d752e53a8cc487d77d738",
+  "manifestSha256": "2a202a423a6b64077e6540bc1f81ab808bcaf532473aee5e8c65219465e80cbe",
+  "launcherSha256": "e565699eb97ecdf94b535a5fcfa823a0ff725398c9f6f7c2f2d547517ae002f1",
+  "independentBuildClearance": false,
+  "localToolingRepairAccepted": true,
+  "actualSystemd": {
+    "Restart": "no",
+    "RuntimeMaxUSec": "infinity",
+    "MemoryMax": "4294967296",
+    "MemorySwapMax": "0",
+    "TasksMax": "32",
+    "CPUAffinity": "15",
+    "ActiveState": "active"
+  },
+  "nativeContainment": {
+    "memory.max": "4294967296",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "cgroup": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-8ae98c8613ff.service",
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpace": 4294967296,
+    "durationLimits": null
+  },
+  "sourceSnapshotCount": 629,
+  "allSnapshotAndSourceHashesMatch": true,
+  "additionalIdentityPins": 16,
+  "actualCommandJoins": true,
+  "hookStatus": "waiting",
+  "hookFirstLauncherHandshake": true,
+  "noAutomaticRetry": true,
+  "noDeadline": true,
+  "runtimeResultAccepted": false,
+  "receipts": {
+    "launch.json": "364dac8670d2f57fccefcab13d1702d09246c7830f02e2679604cc2cad79ec3e",
+    "stage-start.json": "c6c9450c85a09c237ae99337e8e4918939a8a979cc39c48c70904419921dad2e",
+    "resource-guard/invocation.json": "e85f2d5861bdbae7382351aae77c607e47da8718cb61fe79d3a6807d2d2f6423",
+    "resource-guard/limit-validation.json": "55cea656acfe38706b156c0b54f31ed0ed51b891eb590b9938102fe65277150f",
+    "resource-guard/duration-validation.json": "b7b9c58dd0ec33f07067967dd624c44127d7066971a4006f06ad57656809d244",
+    "complete/containment.json": "0eed0bf6e071faaec6e44ebdaafa91dbe892f3d8fbd033eff55a54d2b6916c79",
+    "source-snapshots.json": "8b477b6e536523274eb00d306b12b14b1cc682ee2bb154dc4afa74a4f346afb0"
+  }
+}

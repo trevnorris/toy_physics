@@ -1,0 +1,16 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-02T18:39:36.987304+00:00",
+  "packetSha256": "a68e018cd497da25633c355930daed4fd9ea194ecf7c32cea9b10bdd19452cd0",
+  "archiveSha256": "583c2e1ab61d8c39ec4a86fb7dcdda7806f2f75abb34d975819afa4964cf9ccb",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 45,
+  "bytes": 9021858,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "AGENTS.md standing review-submission authorization and repeated user direction to continue clear bounded research without routine prompts",
+  "scope": "Proposed native-local join and complete retained Schwartz weak operator; no evaluated integrals, matrix/inverse, plane-wave or loss",
+  "noAutomaticRetry": true
+}

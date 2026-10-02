@@ -1,0 +1,426 @@
+{
+  "scope": "Proposed native-local join and complete retained Schwartz weak operator; no evaluated integrals, matrix/inverse, plane-wave or loss",
+  "records": [
+    {
+      "packetPath": "method.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_method.md",
+      "sourceSha256": "d24083ac01df581f2c11c6027866f7fe3d605a9e80e4c1d1c362819f4872964a",
+      "packetSha256": "d24083ac01df581f2c11c6027866f7fe3d605a9e80e4c1d1c362819f4872964a",
+      "bytes": 12652,
+      "kind": "complete file",
+      "role": "New unexecuted proposed method"
+    },
+    {
+      "packetPath": "review-prompt.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_review_prompt.md",
+      "sourceSha256": "75a36be22e5159027b837d97ec867711b473f9285b3ec4421d1b514ebe543723",
+      "packetSha256": "75a36be22e5159027b837d97ec867711b473f9285b3ec4421d1b514ebe543723",
+      "bytes": 2236,
+      "kind": "complete file",
+      "role": "New unexecuted proposed method"
+    },
+    {
+      "packetPath": "evidence-guide.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_evidence_guide.md",
+      "sourceSha256": "a60f5c1a4cd32c1ea3086843b1d284920a07fb5d02efd7d2e42921771f9e8038",
+      "packetSha256": "a60f5c1a4cd32c1ea3086843b1d284920a07fb5d02efd7d2e42921771f9e8038",
+      "bytes": 2980,
+      "kind": "complete file",
+      "role": "New unexecuted proposed method"
+    },
+    {
+      "packetPath": "native/partitions/U0.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U0-full-native-partition.json",
+      "sourceSha256": "e8ddcbb04ab53d8eae6c12e97511d0c95553ba5f6b4a85d7f3b9fbec89a1f6ef",
+      "packetSha256": "e8ddcbb04ab53d8eae6c12e97511d0c95553ba5f6b4a85d7f3b9fbec89a1f6ef",
+      "bytes": 404106,
+      "kind": "complete file",
+      "role": "Complete saved native row/child source-text partition; local part not previously interpreted as science"
+    },
+    {
+      "packetPath": "native/partitions/U1.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U1-full-native-partition.json",
+      "sourceSha256": "5717671f740ac41da99b53887b4f8bd25f89157c8a84077c92290839a31fd38c",
+      "packetSha256": "5717671f740ac41da99b53887b4f8bd25f89157c8a84077c92290839a31fd38c",
+      "bytes": 404106,
+      "kind": "complete file",
+      "role": "Complete saved native row/child source-text partition; local part not previously interpreted as science"
+    },
+    {
+      "packetPath": "native/partitions/U2.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U2-full-native-partition.json",
+      "sourceSha256": "1a073706e00811968d41d5ed5364c67e243a480ac2f36fff5819477cb3031288",
+      "packetSha256": "1a073706e00811968d41d5ed5364c67e243a480ac2f36fff5819477cb3031288",
+      "bytes": 404106,
+      "kind": "complete file",
+      "role": "Complete saved native row/child source-text partition; local part not previously interpreted as science"
+    },
+    {
+      "packetPath": "native/partitions/THETA_BALANCE.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/THETA_BALANCE-full-native-partition.json",
+      "sourceSha256": "8071d84d74ab5e2b2cd8b9c8c89fc2612d374b0ce90e8a874bea53597183a87a",
+      "packetSha256": "8071d84d74ab5e2b2cd8b9c8c89fc2612d374b0ce90e8a874bea53597183a87a",
+      "bytes": 522630,
+      "kind": "complete file",
+      "role": "Complete saved native row/child source-text partition; local part not previously interpreted as science"
+    },
+    {
+      "packetPath": "native/partitions/E_W_BALANCE.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-full-native-partition.json",
+      "sourceSha256": "e0420071d1abb4eec0d7207e431986cd1b2540c9778b79fccbc6fd73abd612e1",
+      "packetSha256": "e0420071d1abb4eec0d7207e431986cd1b2540c9778b79fccbc6fd73abd612e1",
+      "bytes": 1000220,
+      "kind": "complete file",
+      "role": "Complete saved native row/child source-text partition; local part not previously interpreted as science"
+    },
+    {
+      "packetPath": "native/binding-context.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/actual-binding-context.json",
+      "sourceSha256": "a14783bbed960feba7a16cf8c13dd1d4815b46c854773bee01ce212fd3fdbe89",
+      "packetSha256": "a14783bbed960feba7a16cf8c13dd1d4815b46c854773bee01ce212fd3fdbe89",
+      "bytes": 11759,
+      "kind": "complete file",
+      "role": "Actual saved material and density/profile bindings; shared subset only"
+    },
+    {
+      "packetPath": "native/profile-scale-join.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/native-profile-scale-join.json",
+      "sourceSha256": "63c91663717a7d9981e196c99ce95096d84981dbb73972545262c793fb11c00d",
+      "packetSha256": "63c91663717a7d9981e196c99ce95096d84981dbb73972545262c793fb11c00d",
+      "bytes": 346,
+      "kind": "complete file",
+      "role": "Saved actual L and native profile rule"
+    },
+    {
+      "packetPath": "physical-input.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "packetSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "bytes": 1884,
+      "kind": "complete file",
+      "role": "Unchanged physical development input; proposed omega3/effective speed scope explicit"
+    },
+    {
+      "packetPath": "native/c2.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "packetSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "bytes": 102548,
+      "kind": "complete file",
+      "role": "Original wave/profile/dimension rules; no producer call"
+    },
+    {
+      "packetPath": "source/composition-worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition.py",
+      "sourceSha256": "b94aa6579f6334d65f7a3306c84109b6fa4496237e5eef363b1da02bebfbbca8",
+      "packetSha256": "b94aa6579f6334d65f7a3306c84109b6fa4496237e5eef363b1da02bebfbbca8",
+      "bytes": 82003,
+      "kind": "complete file",
+      "role": "Executed pressure inventory, source extraction, partition and grade conventions"
+    },
+    {
+      "packetPath": "legacy/numerical-binding.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py",
+      "sourceSha256": "dc154817f13f05d436abebb708556778dc397775c57af6f56818103e12827058",
+      "packetSha256": "dc154817f13f05d436abebb708556778dc397775c57af6f56818103e12827058",
+      "bytes": 31020,
+      "kind": "complete file",
+      "role": "Old post-reduction local collection, not a new operator result"
+    },
+    {
+      "packetPath": "legacy/reduced-action-excerpt.json",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "startLine": 699,
+      "endLine": 782,
+      "packetSha256": "af0deb07318d1862d1fe10206a3fe707fbf6afe911d5b8111e6252d37f28fb0e",
+      "bytes": 5233,
+      "kind": "exact AST source excerpt",
+      "role": "Collection stage must not be assumed equal to native pre-pressure partition"
+    },
+    {
+      "packetPath": "native/local-source-census.json",
+      "sources": [
+        {
+          "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U0-full-native-partition.json",
+          "sourceSha256": "e8ddcbb04ab53d8eae6c12e97511d0c95553ba5f6b4a85d7f3b9fbec89a1f6ef"
+        },
+        {
+          "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U1-full-native-partition.json",
+          "sourceSha256": "5717671f740ac41da99b53887b4f8bd25f89157c8a84077c92290839a31fd38c"
+        },
+        {
+          "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U2-full-native-partition.json",
+          "sourceSha256": "1a073706e00811968d41d5ed5364c67e243a480ac2f36fff5819477cb3031288"
+        },
+        {
+          "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/THETA_BALANCE-full-native-partition.json",
+          "sourceSha256": "8071d84d74ab5e2b2cd8b9c8c89fc2612d374b0ce90e8a874bea53597183a87a"
+        },
+        {
+          "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-full-native-partition.json",
+          "sourceSha256": "e0420071d1abb4eec0d7207e431986cd1b2540c9778b79fccbc6fd73abd612e1"
+        }
+      ],
+      "packetSha256": "37e4e3dd62e6fe65cdd3636d68b1bc4478e3f044a6c68c0a3ad65be948a2b2d6",
+      "bytes": 1134425,
+      "kind": "stdlib AST metadata census",
+      "role": "Complete raw symbol/call/child routes, not coefficient evaluation"
+    },
+    {
+      "packetPath": "pressure/analytic-conclusion.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/analytic-conclusion.json",
+      "sourceSha256": "732bfaa4fb2fa32d8eec627c930143968712814edeaef8a14037804d9ab5bac7",
+      "packetSha256": "732bfaa4fb2fa32d8eec627c930143968712814edeaef8a14037804d9ab5bac7",
+      "bytes": 782,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/checks.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/checks.json",
+      "sourceSha256": "93d71208e4359b9e4bf3eba8da946fd2c794c60f6d0dc57d4c4b037d29631163",
+      "packetSha256": "93d71208e4359b9e4bf3eba8da946fd2c794c60f6d0dc57d4c4b037d29631163",
+      "bytes": 560,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/all-coefficient-certificates.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/all-coefficient-certificates.json",
+      "sourceSha256": "3a3210148a6e05bb4f69585745510f2dbe7f15d39d0e952dea3dc78676079f41",
+      "packetSha256": "3a3210148a6e05bb4f69585745510f2dbe7f15d39d0e952dea3dc78676079f41",
+      "bytes": 26752,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/grade-route-certificate.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/grade-route-certificate.json",
+      "sourceSha256": "136c2da4eb3dfc14321ce56a2a9ac48e52841f9632c18dddc6ffe2816a0f8975",
+      "packetSha256": "136c2da4eb3dfc14321ce56a2a9ac48e52841f9632c18dddc6ffe2816a0f8975",
+      "bytes": 91,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/new-weak-duality-and-order.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/new-weak-duality-and-order.json",
+      "sourceSha256": "fab68ca5e7b96d0c37636ee1c878133e525d3b44456d273d9e0c289f7d60b2d9",
+      "packetSha256": "fab68ca5e7b96d0c37636ee1c878133e525d3b44456d273d9e0c289f7d60b2d9",
+      "bytes": 1677,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/whole-definition-certificate.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/whole-definition-certificate.json",
+      "sourceSha256": "aabe0cf5b51ef231e49b06215c53c3b1fafc128ab05d6f18a4e78b64a9968e3d",
+      "packetSha256": "aabe0cf5b51ef231e49b06215c53c3b1fafc128ab05d6f18a4e78b64a9968e3d",
+      "bytes": 164,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/actual-global-density-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/actual-global-density-operands.json",
+      "sourceSha256": "7ba592815c528a70fbcff472171aba9b71ad10a2c320a59657fe90f6874e64f4",
+      "packetSha256": "7ba592815c528a70fbcff472171aba9b71ad10a2c320a59657fe90f6874e64f4",
+      "bytes": 9611,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/global-parameter-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/global-parameter-domain.json",
+      "sourceSha256": "bbcc322ea8424bae56de5428010bd86dd03f55ccbf46b41c52e73c09c44118c6",
+      "packetSha256": "bbcc322ea8424bae56de5428010bd86dd03f55ccbf46b41c52e73c09c44118c6",
+      "bytes": 1015,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/global-profile-envelope.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/global-profile-envelope.json",
+      "sourceSha256": "d090884e23ac2a460bc2d2532e1e36eae659d4585ab931d4d32b7de2cdf90a75",
+      "packetSha256": "d090884e23ac2a460bc2d2532e1e36eae659d4585ab931d4d32b7de2cdf90a75",
+      "bytes": 574,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/shift-uniform-square-root-bound.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/shift-uniform-square-root-bound.json",
+      "sourceSha256": "8129dc2773f0e910d7e9997f3a942aaa2fc6077dbc06912755557ff8b1ea4c86",
+      "packetSha256": "8129dc2773f0e910d7e9997f3a942aaa2fc6077dbc06912755557ff8b1ea4c86",
+      "bytes": 754,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/global-whole-kernel-envelopes.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/global-whole-kernel-envelopes.json",
+      "sourceSha256": "4e7035849d15bbfaecd04daef7eddd36782583cfd068ed1f1bd98017acf44171",
+      "packetSha256": "4e7035849d15bbfaecd04daef7eddd36782583cfd068ed1f1bd98017acf44171",
+      "bytes": 925,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/plus-global-height-PV-certificate.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/plus-global-height-PV-certificate.json",
+      "sourceSha256": "39ce24a4e6643aaf803fc64c210b8e11d891f8b3989bad8df164f88316b62d27",
+      "packetSha256": "39ce24a4e6643aaf803fc64c210b8e11d891f8b3989bad8df164f88316b62d27",
+      "bytes": 1660,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/minus-global-height-PV-certificate.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/minus-global-height-PV-certificate.json",
+      "sourceSha256": "ff5c0be627593f580cdfba92e894df552c395db0da57d47efb4342cbf55b6c04",
+      "packetSha256": "ff5c0be627593f580cdfba92e894df552c395db0da57d47efb4342cbf55b6c04",
+      "bytes": 1674,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/normal-polynomial-growth.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/normal-polynomial-growth.json",
+      "sourceSha256": "aa96363493263cb78a60b6a87db677c90b3a1a10f42f3b8b6523d66d3d857c1d",
+      "packetSha256": "aa96363493263cb78a60b6a87db677c90b3a1a10f42f3b8b6523d66d3d857c1d",
+      "bytes": 787,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/actual-source-jets.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/actual-source-jets.json",
+      "sourceSha256": "08326dc7a4ae14b7a74980e02ce9675dc94aaa124483ba24bad0990d969ca41e",
+      "packetSha256": "08326dc7a4ae14b7a74980e02ce9675dc94aaa124483ba24bad0990d969ca41e",
+      "bytes": 5037,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/new-formal-controls.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/new-formal-controls.json",
+      "sourceSha256": "840b7d3b49e693e4f5636b89d748a8cefa23fd285f8e784fdbbe9caaca063ec2",
+      "packetSha256": "840b7d3b49e693e4f5636b89d748a8cefa23fd285f8e784fdbbe9caaca063ec2",
+      "bytes": 5924,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/restored-normal-controls.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/restored-normal-controls.json",
+      "sourceSha256": "f5d2cdc4a7a131c46d5982bf74f374c575c2a945598f1b06e1b98b975ad6d25e",
+      "packetSha256": "f5d2cdc4a7a131c46d5982bf74f374c575c2a945598f1b06e1b98b975ad6d25e",
+      "bytes": 2110,
+      "kind": "complete file",
+      "role": "Completed bounded global weak pressure evidence; restore results without recomputing"
+    },
+    {
+      "packetPath": "pressure/method.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition_method.md",
+      "sourceSha256": "98c295d4f275094dc77762f24845868d2f61f1485fe6bbec6ee7f21f2103d045",
+      "packetSha256": "98c295d4f275094dc77762f24845868d2f61f1485fe6bbec6ee7f21f2103d045",
+      "bytes": 15405,
+      "kind": "complete file",
+      "role": "Existing global analytic method and executed source; no old verdict"
+    },
+    {
+      "packetPath": "pressure/worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition.py",
+      "sourceSha256": "77ec3fa030b5a5a839c31b2be1d8dd76b392b06f3cbf5b859870a6f20b56740c",
+      "packetSha256": "77ec3fa030b5a5a839c31b2be1d8dd76b392b06f3cbf5b859870a6f20b56740c",
+      "bytes": 45761,
+      "kind": "complete file",
+      "role": "Existing global analytic method and executed source; no old verdict"
+    },
+    {
+      "packetPath": "inventory/grade-coverage.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/grade-coverage.json",
+      "sourceSha256": "505c36940ae9c96b7b06731f6e7b62c6a92281e73fbb1d2b71bb241b2fca768c",
+      "packetSha256": "505c36940ae9c96b7b06731f6e7b62c6a92281e73fbb1d2b71bb241b2fca768c",
+      "bytes": 100483,
+      "kind": "complete file",
+      "role": "Completed source/consumer/Fourier and direct-whole provenance"
+    },
+    {
+      "packetPath": "inventory/whole-tag-definitions.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/whole-tag-definitions.json",
+      "sourceSha256": "acfbe9f32b96698ba178fcea798c953ad24ad95b83a31a47ae71d905d77df9a1",
+      "packetSha256": "acfbe9f32b96698ba178fcea798c953ad24ad95b83a31a47ae71d905d77df9a1",
+      "bytes": 18489,
+      "kind": "complete file",
+      "role": "Completed source/consumer/Fourier and direct-whole provenance"
+    },
+    {
+      "packetPath": "inventory/fourier-and-unit-provenance.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/fourier-and-unit-provenance.json",
+      "sourceSha256": "79c9b175e2048931f9cea2826b72ec1c39138cc110f2f4c87ad5052e498cf917",
+      "packetSha256": "79c9b175e2048931f9cea2826b72ec1c39138cc110f2f4c87ad5052e498cf917",
+      "bytes": 19833,
+      "kind": "complete file",
+      "role": "Completed source/consumer/Fourier and direct-whole provenance"
+    },
+    {
+      "packetPath": "inventory/typed-direct-objects.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/typed-direct-objects.json",
+      "sourceSha256": "1408df33a3f3abd135e1cd2ae98841b762b18235e7521b6b7cacf57ae21b2f0a",
+      "packetSha256": "1408df33a3f3abd135e1cd2ae98841b762b18235e7521b6b7cacf57ae21b2f0a",
+      "bytes": 6002,
+      "kind": "complete file",
+      "role": "Completed source/consumer/Fourier and direct-whole provenance"
+    },
+    {
+      "packetPath": "inventory/actual-whole-density-argument-maps.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/actual-whole-density-argument-maps.json",
+      "sourceSha256": "307a5599034a0354d7a1303742db3e8e3318536afe6aae55d356c83d690c14c0",
+      "packetSha256": "307a5599034a0354d7a1303742db3e8e3318536afe6aae55d356c83d690c14c0",
+      "bytes": 18136,
+      "kind": "complete file",
+      "role": "Completed source/consumer/Fourier and direct-whole provenance"
+    },
+    {
+      "packetPath": "inventory/whole-coefficient-transforms.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/whole-coefficient-transforms.json",
+      "sourceSha256": "668e35319e5e0fe3bb4e925f2cb94e4ff0277290a7c8a6e592189b944dac51b8",
+      "packetSha256": "668e35319e5e0fe3bb4e925f2cb94e4ff0277290a7c8a6e592189b944dac51b8",
+      "bytes": 25583,
+      "kind": "complete file",
+      "role": "Completed source/consumer/Fourier and direct-whole provenance"
+    },
+    {
+      "packetPath": "inventory/address-representatives.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/method-review/packet/inventory/address-representatives.json",
+      "sourceSha256": "aff2f46bdd6387920eedeca27de4688d49c6811d5ca593c194734edb26f461e4",
+      "packetSha256": "aff2f46bdd6387920eedeca27de4688d49c6811d5ca593c194734edb26f461e4",
+      "bytes": 4541435,
+      "kind": "complete file",
+      "role": "Complete actual representative records by field/jet/grade/face/slot/component, selected in earlier metadata packet"
+    },
+    {
+      "packetPath": "inventory/address-metadata.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/method-review/packet/inventory/address-metadata.json",
+      "sourceSha256": "543f15f1a8e4d6635c0b2f02feb973ee06b8b9dccfc3ad50ea92b298d0ddde9d",
+      "packetSha256": "543f15f1a8e4d6635c0b2f02feb973ee06b8b9dccfc3ad50ea92b298d0ddde9d",
+      "bytes": 15794,
+      "kind": "complete file",
+      "role": "Selection provenance and original complete address hashes"
+    },
+    {
+      "packetPath": "pressure/address-coverage-metadata.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/weak-address-coverage.json",
+      "sourceSha256": "bb51d2af07f2c084c0c50084af44870913e60e7e4eefb94224228a7a233d9d6a",
+      "packetSha256": "0952fd7085bf93918ad2067d5dcf570e3e9f7d4d5285824144cb5d2344488904",
+      "bytes": 8418,
+      "kind": "stdlib JSON metadata summary",
+      "role": "Metadata coverage only; actual future worker joins original complete records"
+    }
+  ],
+  "oldPeerReportsIncluded": false,
+  "payloadRestoredDuringPreparation": false,
+  "noScienceRun": true
+}

@@ -1,18 +1,20 @@
 {
   "status": "PASSED_STDLIB_TOOLING_TESTS_ONLY",
-  "workerSha256": "c73291135548e54435b86df4ceeebb358d0e1a6a8502c1507dfb163dd80d63f9",
-  "testsSha256": "bae69045dde6009c641adc748ffb6087f9b78b95119536169eb2800cef268f29",
-  "unittestMethods": 17,
-  "identityMismatchSubcases": 10,
+  "workerSha256": "c9a701bfd1ca62a7f5c78293bafa67fe1b608dcdea93c55a83240a9d6491d58e",
+  "testsSha256": "81d7dac145d1834e834102c4a57e5ae14b0b631e969e62d5f0a4d34a9840b9fb",
+  "unittestMethods": 23,
+  "identityMismatchSubcases": 11,
   "runtimeScientificAcceptance": false,
   "scientificImportsOrRestoration": false,
   "checks": [
-    "gate/source/helper/authority/literal-method/build joins",
+    "gate/source/helper/launcher/authority/literal-method/build joins",
     "no-deadline and no-author-clear refusal",
     "exact unchanged helper ASTs",
     "no scientific top-level import or integration/solve calls",
     "saved mode selection rejects missing/duplicate grades",
     "actual native assignment namespaces execute on non-scientific stand-ins",
-    "launcher AST and evidence string-key schemas"
+    "launcher AST and evidence string-key schemas",
+    "actual saved middle-symbol metadata census and old H defect rejection",
+    "actual corrupt trace coefficient consumption and saved height constant routing"
   ]
 }

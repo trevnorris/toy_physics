@@ -86,6 +86,26 @@
       "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/uniform-tail-certificate.json",
       "sha256": "e1da502db44688a8f2fcb537412340898ff732f3c89337943fb17e985f4f1421",
       "bytes": 1539
+    },
+    "kappa-lower-gap-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/kappa-lower-gap-input.json",
+      "sha256": "732640a1affd26c33b910ace21f2f75ed9dc643c7aa571fa04cfe1116de84b8f",
+      "bytes": 750
+    },
+    "kappa-lower-gap-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/kappa-lower-gap-return.json",
+      "sha256": "3f3664e19a356591c9b2ae1b47c68e2747fa878315514cb05495dffd8dfc63ff",
+      "bytes": 728
+    },
+    "inverse-cs-bound-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/inverse-cs-bound-input.json",
+      "sha256": "7a574564f30427c86d55ef182cc6440340dc651f99a25363562a1e3260f7b9db",
+      "bytes": 555
+    },
+    "inverse-cs-bound-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/inverse-cs-bound-return.json",
+      "sha256": "acbd40bb3840d62ff1085459d935ab1c7f8442aa4a270177281a9c4fbf42e3b3",
+      "bytes": 587
     }
   },
   "helperSource": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py",
@@ -93,6 +113,7 @@
   "c2Source": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
   "methodPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_method.md",
   "methodRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_review_record.json",
+  "launcher": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_launch.py",
   "sourcePins": {
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_native.json": "06c0e757bf412c51972b803238ed246ef89259bd59156de6e785206e7447d524",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_native_routes.json": "a19325d7f3dbd9f3b6f46da4f492067ec483998d072610e609169f3a5aae59c0",
@@ -111,11 +132,15 @@
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/domain-bound-certificate.json": "286b205a87a4b3c2419931d392dd41d2f4795630dc2a546a595ebc1da1515cfe",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/quadrant-sum-gain-certificate.json": "151095214b24d7f5f9d41185115da6805ed80456caa926c850e60561229cc6f9",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/uniform-tail-certificate.json": "e1da502db44688a8f2fcb537412340898ff732f3c89337943fb17e985f4f1421",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing.py": "c73291135548e54435b86df4ceeebb358d0e1a6a8502c1507dfb163dd80d63f9",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_test.py": "bae69045dde6009c641adc748ffb6087f9b78b95119536169eb2800cef268f29",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_launch.py": "aa1a36880a32a038bcbcff4269e9f7a1b3243fb20a11015a78a4e0875ae09689",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/kappa-lower-gap-input.json": "732640a1affd26c33b910ace21f2f75ed9dc643c7aa571fa04cfe1116de84b8f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/kappa-lower-gap-return.json": "3f3664e19a356591c9b2ae1b47c68e2747fa878315514cb05495dffd8dfc63ff",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/inverse-cs-bound-input.json": "7a574564f30427c86d55ef182cc6440340dc651f99a25363562a1e3260f7b9db",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/inverse-cs-bound-return.json": "acbd40bb3840d62ff1085459d935ab1c7f8442aa4a270177281a9c4fbf42e3b3",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing.py": "c9a701bfd1ca62a7f5c78293bafa67fe1b608dcdea93c55a83240a9d6491d58e",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_test.py": "81d7dac145d1834e834102c4a57e5ae14b0b631e969e62d5f0a4d34a9840b9fb",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_launch.py": "a825c2046803ab86c200d67cf36d0331d5d432ab473215c4c1137d80a92a00aa",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_method.md": "6aff863bd79a59db49f64d2dacc4ad7012b785b8dff15cf9ca669c0014c3f3a1",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_plan.md": "7b38705d4a4bed9e5f39769fb5130d286e592ce3a163838a81b67e7c592f3991",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_plan.md": "db666b8af51f8d6df3370880eabd649b57c53da8a61c74bb932dfc6bb5dca6e6",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_review_record.json": "b71b55b7b2ad668ea8e960d2ef71b413b64e2c4e738813acd5c7e71f7405ffe2",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_completion.json": "926b247669a0425624ba1819bcf19a0a398c745bac65b4cb82245a65424462c2",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",

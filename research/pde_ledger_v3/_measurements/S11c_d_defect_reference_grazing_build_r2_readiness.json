@@ -1,0 +1,50 @@
+{
+  "status": "READY_FOR_BUILD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-reference-grazing-20261002/build-review-r2",
+  "static": {
+    "status": "STATIC_SOURCE_PACKET_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "c375dbf423e0dde25c4642d056e8716c278fad5be926be38b6c9c1f41d8932f3",
+    "packetSha256": "942bb881f4b598aac074705f3761552af0f282ecd8573e68f24ba69ebabaedd9",
+    "archiveSha256": "16f9e6cf71fb212921cab5558eb6eeb4565d7e97f100aa345af9f25ba4dc0b96",
+    "files": 84,
+    "bytes": 1548545,
+    "workerSha256": "c9a701bfd1ca62a7f5c78293bafa67fe1b608dcdea93c55a83240a9d6491d58e",
+    "manifestSha256": "a4f7cdebeb6c3460952b9be9a1458706563173e69b91102a929174ccb09d71ae",
+    "sharedGuardSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+    "supervisorSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+    "scientificImportsOrRestoration": false,
+    "reviewers": [
+      "claude",
+      "grok"
+    ]
+  },
+  "toolingTests": {
+    "status": "PASSED_STDLIB_TOOLING_TESTS_ONLY",
+    "workerSha256": "c9a701bfd1ca62a7f5c78293bafa67fe1b608dcdea93c55a83240a9d6491d58e",
+    "testsSha256": "81d7dac145d1834e834102c4a57e5ae14b0b631e969e62d5f0a4d34a9840b9fb",
+    "unittestMethods": 23,
+    "identityMismatchSubcases": 11,
+    "runtimeScientificAcceptance": false,
+    "scientificImportsOrRestoration": false,
+    "checks": [
+      "gate/source/helper/launcher/authority/literal-method/build joins",
+      "no-deadline and no-author-clear refusal",
+      "exact unchanged helper ASTs",
+      "no scientific top-level import or integration/solve calls",
+      "saved mode selection rejects missing/duplicate grades",
+      "actual native assignment namespaces execute on non-scientific stand-ins",
+      "launcher AST and evidence string-key schemas",
+      "actual saved middle-symbol metadata census and old H defect rejection",
+      "actual corrupt trace coefficient consumption and saved height constant routing"
+    ]
+  },
+  "methodCommit": "80ce20c0",
+  "savedFiles": 21,
+  "sourcePins": 36,
+  "allSourceAndPacketHashesChecked": true,
+  "noScienceGate": true,
+  "noScientificRun": true,
+  "noNewTrackedGeneratedFilesOver1MiB": true
+}

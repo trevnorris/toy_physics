@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""One standing-authorized guarded raw increment; hook first, no retry."""
+"""One standing-authorized reference-response instrument; hook first, no retry."""
 from datetime import datetime, timezone
 import hashlib,json,os,select,shutil,subprocess,sys,time,traceback,runpy
 from pathlib import Path
@@ -22,6 +22,7 @@ def verify():
     gate,manifest=read(GATE),read(MANIFEST)
     assert gate['status']=='READY_FOR_ONE_REFERENCE_GRAZING_INSTRUMENT'
     assert gate['independentBuildClearance'] is True and gate['pooledExecution'] is True
+    assert gate['launcher']==manifest['launcher']==str(Path(__file__).resolve())
     assert gate['launcherSha256']==sha(__file__)
     assert gate['sourcePins']==manifest['sourcePins']
     assert gate['completionMessageSha256']==hashlib.sha256(MESSAGE.encode()).hexdigest()

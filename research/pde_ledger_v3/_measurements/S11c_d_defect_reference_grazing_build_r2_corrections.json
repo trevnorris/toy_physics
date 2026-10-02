@@ -1,0 +1,58 @@
+{
+  "status": "CORRECTED_IMPLEMENTATION_PENDING_FRESH_BUILD_ASSESSMENT",
+  "baselineCommit": "30d4a90c",
+  "baselineWorkerSha256": "c73291135548e54435b86df4ceeebb358d0e1a6a8502c1507dfb163dd80d63f9",
+  "correctedWorkerSha256": "c9a701bfd1ca62a7f5c78293bafa67fe1b608dcdea93c55a83240a9d6491d58e",
+  "oldLiteralVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "NEEDS REVISION"
+  },
+  "independentBuildClearance": false,
+  "methodChanged": false,
+  "physicalInputChanged": false,
+  "scientificRun": false,
+  "scientificPayloadRestored": false,
+  "unchangedCoreAssignmentASTs": [
+    "Zh",
+    "Zj",
+    "Z",
+    "F",
+    "D3",
+    "phs",
+    "psh",
+    "tracehs",
+    "C",
+    "firstref",
+    "sloperef",
+    "physical12",
+    "physical01",
+    "physical02",
+    "Jdensity",
+    "psh_t",
+    "originalPV",
+    "transformed_psh",
+    "Q",
+    "contact",
+    "Hsub",
+    "reducedKernel",
+    "omittedTrace",
+    "omittedMiddle",
+    "wrongRoot",
+    "point"
+  ],
+  "acceptedCorrections": {
+    "B1": "Actual saved middle transfer maps by increment_transfer; complete and unique symbol census required. Stdlib metadata AST test reproduces H refusal.",
+    "N2": "Native constant height comes from saved expression and is joined to exact zero.",
+    "N3": "Actual launcher route/hash joins manifest, gate and independent build record.",
+    "V4": "Same native trace-subtraction function computes the corrupted lower-height coefficient, which is consumed in the response control.",
+    "V5": "Restore published gap operands/returns and join arguments without rerunning functions; require saved external-depth bound; add missing derivative identities; distinguish assessed elementary proofs.",
+    "N6": "Both first-order entries joined; dependent final-slot identity and reflected direct tag scope explicitly disclosed."
+  },
+  "toolingTests": {
+    "passedMethods": 23,
+    "identityMismatchSubcases": 11,
+    "additionalLauncherCases": 4,
+    "scienceImported": false
+  },
+  "reviewRationale": "Transport and launcher corrections are tooling. Native control routing and certificate joins change validation and receive one fresh applicable independent build pair; no optional-wording loop."
+}

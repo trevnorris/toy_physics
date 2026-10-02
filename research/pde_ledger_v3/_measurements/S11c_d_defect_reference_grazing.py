@@ -52,8 +52,9 @@ def verify_gate(path,manifest_path,manifest):
     require(g['workerSha256']==sha(__file__) and g['manifestSha256']==sha(manifest_path),'worker/manifest pins')
     require(g['sourcePins']==manifest['sourcePins'],'source pin census')
     for p,h in g['sourcePins'].items():require(sha(p)==h,'source pin '+p)
-    for key in ('sharedGuard','supervisor','methodRecord','buildReviewRecord','authority'):
+    for key in ('sharedGuard','supervisor','launcher','methodRecord','buildReviewRecord','authority'):
         require(sha(g[key])==g[key+'Sha256'],'gate '+key)
+    require(g['launcher']==manifest['launcher'],'actual launcher source route')
     require(g['methodRecord']==manifest['methodRecord'],'method source route')
     method=json.loads(Path(g['methodRecord']).read_text());build=json.loads(Path(g['buildReviewRecord']).read_text())
     authority=json.loads(Path(g['authority']).read_text())
@@ -62,7 +63,7 @@ def verify_gate(path,manifest_path,manifest):
     require(method['methodSha256']==sha(manifest['methodPath']),'exact method source')
     require(build['independentBuildClearance'] is True and build['allChecksPassed'] is True,'actual substantive build clearance')
     require(all(build['reports'][e]['literalVerdict']=='CLEAR FOR THIS BOUNDED REFERENCE-GRAZING BUILD' for e in ('claude','grok')),'literal fresh build verdicts')
-    for key in ('workerSha256','manifestSha256','sharedGuardSha256','supervisorSha256'):
+    for key in ('workerSha256','manifestSha256','sharedGuardSha256','supervisorSha256','launcherSha256'):
         require(build[key]==g[key],'review/gate '+key)
     require(authority['boundedInstrumentAuthorized'] is True and authority['automaticScientificRetry'] is False,'standing bounded authority')
     require(g['scope']==manifest['scope'] and g['scientificRunsAuthorized']==1 and g['durationLimits'] is None,'one bounded no-deadline job')
@@ -120,6 +121,18 @@ def mode_value(modes,values,grade):
     hits=[v for m,v in zip(modes,values) if tuple(m[:2])==grade]
     require(len(hits)==1,'unique actual saved mode grade')
     return hits[0]
+
+
+def exact_named_map(symbols,bindings):
+    """Refuse an unbound or ambiguous saved symbol instead of preserving it silently."""
+    names=[s.name for s in symbols]
+    require(len(names)==len(set(names)),'unique saved symbol names')
+    require(set(names)==set(bindings),'complete exact saved symbol census')
+    return {s:bindings[s.name] for s in symbols}
+
+
+def trace_subtraction_coefficient(trace_entry,slope_entry,eta):
+    return sp.cancel(-trace_entry*slope_entry/eta)
 
 
 def run_science(manifest,J,helpers):
@@ -206,8 +219,12 @@ def run_science(manifest,J,helpers):
         labheight=tr['height'].subs(htmap,simultaneous=True)
         J.zero(label+'-height-binding',labheight,face*eta*h(l-k))
         J.zero(label+'-normal-binding',normal_output,sp.I*face*qo)
+        saved_profile=one([tr['height']],'w1_profile')
+        height_constant=tr['height'].subs(saved_profile,0)
+        J.emit(label+'-native-height-constant',{'savedHeight':tr['height'],'profileSymbol':saved_profile,'constant':height_constant})
+        J.zero(label+'-height-constant',height_constant,sp.S.Zero)
         n={'sp':sp,'qo':qo,'qi':qi,'MIDDLE_Q':qm,'normal_output':normal_output,'value_coefficient':tr['valueCoefficient'],
-            'height_constant':sp.S.Zero,'height_hat':labheight,'height_kernel':labheight,'left':{k:m,qi:qm},'right':{l:m,qo:qm}}
+            'height_constant':height_constant,'height_hat':labheight,'height_kernel':labheight,'left':{k:m,qi:qm},'right':{l:m,qo:qm}}
         for target in ['normal_input','normal_middle','trace_two','trace_three']:
             fragment=helpers['assignment_source'](c2,'reference_pressure_kernels',target)
             nativeTraceAssignments[label+'-'+target]=fragment;exec(fragment,n)
@@ -242,6 +259,8 @@ def run_science(manifest,J,helpers):
             for col in range(3):J.zero(label+'-reference-equation-'+str(row)+str(col),remainder[row,col],sp.S.Zero)
         J.zero(label+'-reference-height',ref[1,2].coeff(eta).subs({m:l,qm:qo},simultaneous=True),firstref)
         J.zero(label+'-reference-slope',ref[1,2].coeff(sigma).subs({m:l,qm:qo},simultaneous=True),sloperef)
+        J.zero(label+'-reference-height-output-leg',ref[0,1].coeff(eta),firstref.xreplace({k:m,qi:qm}))
+        J.zero(label+'-reference-slope-output-leg',ref[0,1].coeff(sigma),sloperef.xreplace({k:m,qi:qm}))
         mixed=sp.expand(ref[0,2]).coeff(eta).coeff(sigma)
         J.zero(label+'-reference-mixed',mixed,C*h(l-m)*j(m-k)+psh*j(l-m)*h(m-k))
         # Use the actual affine trace coefficient and native final assignment with
@@ -260,14 +279,14 @@ def run_science(manifest,J,helpers):
                'jet_slot':jet_slot,'normal_jet':sp.I*face*qm*ref[1,col]}
             exec(fragment,n);final=retained(n['reference_pressure'].subs(H,action),eta,sigma)
             J.zero(label+'-native-final-slot-'+str(col),final,ref[0,col]);slotchecks.append(final)
-        J.emit(label+'-final-native-slot-routing',{'source':fragment,'affineHeight':H,'savedHeight':faces[label]['height'],'valueCoefficient':v,'equationSolution':solve_form,'joinedColumns':slotchecks,'perUnitSource':True,'sourceCompositionPerformed':False})
+        J.emit(label+'-final-native-slot-routing',{'source':fragment,'affineHeight':H,'savedHeight':faces[label]['height'],'valueCoefficient':v,'equationSolution':solve_form,'joinedColumns':slotchecks,'perUnitSource':True,'sourceCompositionPerformed':False,'evidenceDependence':'Final-slot identity is algebraically dependent on the reference definition; separate defining-equation and closed-form joins supply its substantive content.'})
         refs[label]=ref
     # Existing certified direct density is restored, not recomputed from its displayed formula.
     direct=load('closed-density.json')
     qr=sp.Symbol('reference_reflected_q')
     directMap={x:({'grazing_unrestricted_frequency':omega,'k':k,'grazing_output':l,'grazing_transfer':t,'grazing_qi':qi,'grazing_qh':qm,'grazing_qs':qr,'grazing_qo':qo}.get(x.name,x)) for x in direct['density'].atoms(sp.Symbol)}
     mappedDirect=direct['density'].subs(directMap,simultaneous=True)
-    J.emit('restored-direct-argument-join',{'savedDensity':direct,'map':[[x,y] for x,y in directMap.items()],'transported':mappedDirect,'depthArguments':[[qi,k],[qm,k+t],[qr,l-t],[qo,l]],'measure':'dt; whole-convolution tag below represents this density integrated exactly once; value not evaluated'})
+    J.emit('restored-direct-argument-join',{'savedDensity':direct,'map':[[x,y] for x,y in directMap.items()],'transported':mappedDirect,'depthArguments':[[qi,k],[qm,k+t],[qr,l-t],[qo,l]],'measure':'dt; whole-convolution tag below represents this density integrated exactly once; value not evaluated','reflectedDepthScope':'qr transports the previously certified reflected-depth argument for the direct tag. This instrument does not repeat its sheet proof or consume it in the new native iteration.'})
     require(mappedDirect.free_symbols <= {omega,k,l,t,qi,qm,qr,qo},'complete direct parameter map')
     J.zero('restored-direct-beta',direct['beta'].subs(directMap,simultaneous=True),beta)
     directTag=sp.Symbol('certified_closed_direct_whole_convolution')
@@ -312,7 +331,9 @@ def run_science(manifest,J,helpers):
     J.zero('removed-PV-odd',(A(-s)/(-s)),-A(s)/s)
     J.zero('left-height-profile-subtraction',A(s)*(L/2*A(Q-s))/s,Hsub+A(s)*(L/2*A(Q))/s)
     # Native sheet for the actual middle leg; originals retain zero-radicand refusal.
-    oldroot=sheet['heightRoute'];rootmap={x:({'k':k,'H':m-k,'increment_effective_bulk_speed':cs}.get(x.name,x)) for x in oldroot.atoms(sp.Symbol)}
+    oldroot=sheet['heightRoute'];rootbindings={'k':k,'increment_transfer':m-k,'increment_effective_bulk_speed':cs}
+    J.emit('native-middle-map-operands',{'saved':oldroot,'symbols':list(oldroot.atoms(sp.Symbol)),'namedBindings':rootbindings})
+    rootmap=exact_named_map(oldroot.atoms(sp.Symbol),rootbindings)
     native_middle=oldroot.subs(rootmap,simultaneous=True)
     require(isinstance(native_middle,sp.Piecewise) and len(native_middle.args)==3,'native middle branch census')
     J.emit('native-middle-sheet',{'saved':oldroot,'map':[[x,y] for x,y in rootmap.items()],'transported':native_middle,'complexRadicand':O**2/cs**2-edge2-m*m})
@@ -330,6 +351,21 @@ def run_science(manifest,J,helpers):
     J.zero('reused-beta-actual-law',dbeta.xreplace(dmap),beta.subs(omega,O))
     J.zero('reused-beta-minimum',domain['betaMinimum'],b0);J.zero('reused-radius-minimum',domain['kappaMinimum'],kmin)
     J.emit('reused-domain-certificates',{'domain':domain,'quadrant':load('quadrant-sum-gain-certificate.json'),'priorTail':load('uniform-tail-certificate.json'),'sourceArgumentJoin':'Same cs/delta/edge domain; new middle p=k+t joined explicitly above. Original direct two-route envelope is not reused as the new J envelope.'})
+    require(domain['qMagnitudeBound']==5,'saved external depth magnitude bound')
+    J.zero('reused-external-depth-triangle',domain['qSquareTriangleUpper'],freq**2+sp.Rational(1,100)+edge2+9)
+    require((25-domain['qSquareTriangleUpper']).is_positive is True,'saved external depth triangle fits bound')
+    # Restore the published gap identities; only their arguments are joined here.
+    gapTargets={'kappa-lower-gap':(kd**2-kmin**2,(freq**2-delta**2)*(1/cs**2-sp.Rational(1,4))+(sp.Rational(1,100)-delta**2)/4),
+        'inverse-cs-bound':(1/cs**2-sp.Rational(1,4),(2-cs)*(2+cs)/(4*cs**2))}
+    for name,targets in gapTargets.items():
+        operands=load(name+'-input.json');prior=load(name+'-return.json')
+        symbols=operands['left'].atoms(sp.Symbol)|operands['right'].atoms(sp.Symbol)
+        bindings={s.name:{'grazing_delta':delta,'grazing_effective_speed':cs}[s.name] for s in symbols}
+        mapping=exact_named_map(symbols,bindings)
+        J.emit('restored-'+name,{'operands':operands,'return':prior,'map':[[x,y] for x,y in mapping.items()],'newArgumentTargets':list(targets),'oldFunctionCalled':False})
+        require(prior['cancelled']==0,'saved exact gap residual '+name)
+        for side,target in zip(('left','right'),targets):J.zero(name+'-'+side+'-argument-join',operands[side].subs(mapping,simultaneous=True),target)
+    J.emit('reused-radius-domain-argument',{'cs':[1,2],'delta':[0,sp.Rational(1,10)],'positiveDenominator':4*cs**2,'nonnegativeFactors':[2-cs,2+cs,freq**2-delta**2,sp.Rational(1,100)-delta**2],'conclusion':'Joined saved gap gives kappa_delta^2 >= kmin^2 > 0 on the stated domain. Positivity uses the explicit interval assumptions, not a new parameter solve.'})
     J.zero('new-a-denominator-modulus',sp.expand((1+tau*delta)**2+(freq*tau)**2-1),2*tau*delta+tau**2*delta**2+(freq*tau)**2)
     require((sp.Rational(4,25)-(rho**2*(freq**2+sp.Rational(1,100)))).is_positive is True,'new mu upper bound')
     J.zero('new-prefactor-constant',sp.Rational(4,25)*W*L/4,sp.Rational(2,5))
@@ -341,6 +377,9 @@ def run_science(manifest,J,helpers):
     J.zero('Holder-quadrant-gap',(xx+uu)**2+(yy+vv)**2-((xx-uu)**2+(yy-vv)**2),4*(xx*uu+yy*vv))
     J.zero('Holder-radicand-difference',(O**2/cs**2-edge2-(k+s)**2)-(O**2/cs**2-edge2-k*k),-s*(2*k+s))
     p=sp.Symbol('reference_profile_nonnegative_argument',nonnegative=True)
+    derivativeNumerator=p*sp.cosh(p)-sp.sinh(p)
+    J.zero('profile-derivative-numerator-at-zero',derivativeNumerator.subs(p,0),sp.S.Zero)
+    J.zero('profile-derivative-numerator-derivative',sp.diff(derivativeNumerator,p),p*sp.sinh(p))
     gap=sp.sinh(p)**2-p*sp.cosh(p)+sp.sinh(p)
     J.zero('profile-derivative-gap',sp.diff(gap,p),sp.sinh(p)*(2*sp.cosh(p)-p))
     J.zero('profile-derivative-gap-at-zero',gap.subs(p,0),sp.S.Zero)
@@ -362,7 +401,7 @@ def run_science(manifest,J,helpers):
             collision_records.append({'sign':sign,'outputRelation':relation,'input':ki,'output':lo,'contactTransfers':[sp.S.Zero,lo-ki],'iteratedLimit':'C=0 and J=0 in its L1 class; isolated internal points are not assigned values'})
     J.emit('actual-collision-certificates',collision_records)
     J.zero('H-local-bound-constant',1/(2*sp.pi)*L**2/8,L**2/(16*sp.pi))
-    J.emit('profile-bound-reasoning',{'evenProfile':A(s),'removableValue':1/(2*sp.pi),'sinhBound':'sinh(x)>=x for x>=0 gives |A|<=1/(2pi)','derivativeGap':gap,'gapDerivative':sp.sinh(p)*(2*sp.cosh(p)-p),'positiveRemainder':(p-sp.Rational(1,2))**2+sp.Rational(7,4),'coshBound':'cosh(x)>=1+x^2/2; therefore 2cosh(x)-x>=x^2-x+2>0','tailCondition':'|s|>=1 and L=10 imply 1-exp(-pi L |s|)>1/2','proofKind':'Source-bound exact expressions plus the independently assessed elementary inequalities, not an automatic theorem prover'})
+    J.emit('profile-bound-reasoning',{'evenProfile':A(s),'removableValue':1/(2*sp.pi),'sinhBound':'sinh(x)>=x for x>=0 gives |A|<=1/(2pi)','derivativeNumerator':derivativeNumerator,'numeratorSignArgument':'Value zero at zero and derivative x sinh(x)>=0 on x>=0 imply x cosh(x)-sinh(x)>=0.','derivativeGap':gap,'gapDerivative':sp.sinh(p)*(2*sp.cosh(p)-p),'positiveRemainder':(p-sp.Rational(1,2))**2+sp.Rational(7,4),'coshBound':'cosh(x)>=1+x^2/2; therefore 2cosh(x)-x>=x^2-x+2>0','tailCondition':'|s|>=1 and L=10 imply 1-exp(-pi L |s|)>1/2','assessedElementarySteps':['pi>3 and exp(x)>=1+x imply exp(-10pi)<1/31<1/2.','The reused profileProof gives A(t)A(Q-t)<=150 exp(30pi)|t|^2 exp(-10pi|t|) for |Q|<=6, |t|>=12.','Monotonicity from the displayed nonnegative derivatives and elementary sinh/cosh inequalities is assessed mathematics.'],'proofKind':'Exact residuals certify algebraic joins only. Elementary inequalities, monotonicity and L1/distribution limits are independently assessed mathematics, not machine theorem proofs.'})
 
     # Native Fourier/units are inherited operands; compare exact source text before dimensional arithmetic.
     dimensions=load('dimension-and-measure-join.json');contract=load('native-fourier-contract.json')
@@ -386,15 +425,20 @@ def run_science(manifest,J,helpers):
     require(A((m-k).subs(point)).is_positive is True and A((l-m).subs(point)).is_positive is True,'actual nonzero tanh profile factors')
     reducedKernel=(C/(l-m)+psh/(m-k))
     omittedTrace=phs/(l-m)+psh/(m-k)
-    wrongLower=(phs-tracehs)/(l-m)+psh/(m-k)
     omittedMiddle=(phs/R(qm)+tracehs)/(l-m)+(psh/R(qm))/(m-k)
     wrongRoot=reducedKernel.subs(qm,-qm)
     # The trace changes are obtained from the actual restored lower trace T01.
     lowerT=faces['minus']['T'][0,1];lowerNormal=sp.I*(-1)*qm
     # Actual Fj(m,k) uses INPUT k, not the middle output m.
-    nativeTraceCoefficient=sp.cancel(-lowerT*(mu*k/((qm+beta)*(qi+beta))*j(m-k))/eta)
+    actualSlope=mu*k/((qm+beta)*(qi+beta))*j(m-k)
+    nativeTraceCoefficient=trace_subtraction_coefficient(lowerT,actualSlope,eta)
+    corruptLowerT=-lowerT
+    corruptTraceCoefficient=trace_subtraction_coefficient(corruptLowerT,actualSlope,eta)
+    corruptTraceScalar=sp.cancel(corruptTraceCoefficient/(h(l-m)*j(m-k)))
+    wrongLower=(phs+corruptTraceScalar)/(l-m)+psh/(m-k)
+    J.emit('control-actual-native-trace',{'height':faces['minus']['height'],'normal':lowerNormal,'T01':lowerT,'corruptHeight':-faces['minus']['height'],'corruptT01':corruptLowerT,'actualSlope':actualSlope,'physicalMixedCoefficients':[phs,psh],'nativeTraceCoefficient':nativeTraceCoefficient,'corruptTraceCoefficient':corruptTraceCoefficient,'corruptTraceScalar':corruptTraceScalar,'consumedWrongLowerKernel':wrongLower})
     J.zero('native-control-trace-coefficient',nativeTraceCoefficient,tracehs*h(l-m)*j(m-k))
-    J.emit('control-actual-native-trace',{'height':faces['minus']['height'],'normal':lowerNormal,'T01':lowerT,'corruptHeight':-faces['minus']['height'],'corruptT01':-lowerT,'physicalMixedCoefficients':[phs,psh],'nativeTraceCoefficient':nativeTraceCoefficient})
+    J.zero('native-corrupt-trace-coefficient',corruptTraceCoefficient,corruptTraceScalar*h(l-m)*j(m-k))
     controls={}
     for name,corrupt in [('omit-trace',omittedTrace),('wrong-lower-height',wrongLower),('omit-middle-resolvent',omittedMiddle),('wrong-middle-root',wrongRoot)]:
         baseline=reducedKernel.subs(point,simultaneous=True);changed=corrupt.subs(point,simultaneous=True);move=sp.cancel(changed-baseline)

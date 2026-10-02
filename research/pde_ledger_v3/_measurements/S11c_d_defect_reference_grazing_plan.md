@@ -39,6 +39,10 @@ The new work is:
 The tagged direct addend is the restored certified density, with an explicit
 symbol/argument map and one whole-convolution tag. It is never treated as an
 entry already present in native `second`, nor put through another integral.
+Its reflected-depth argument is carried as previously certified tag provenance;
+this instrument does not repeat that depth's sheet proof. The final native slot
+identity is algebraically dependent on the reference definition; the separate
+defining equation and closed-form joins provide its substantive content.
 The result keeps the flat delta, first-height PV distribution, ordinary slope
 kernel, continuous height/slope convolution and ordinary mixed density distinct.
 Normal jets use the actual separate face signs.
@@ -62,3 +66,19 @@ does not supply full source/consumer composition, a new Fourier map, arbitrary
 input-field action, a finite inverse, old cutoff 4/6 coverage, numerical
 quadrature, a defect sweep or a loss claim. Prior method and result limitations,
 all failed attempts and all literal review history remain intact.
+
+The corrected implementation binds every actual saved middle-sheet symbol by
+name, refusing an incomplete or ambiguous mapping. Both constant heights are
+extracted from their saved expressions. Both first-order matrix entries join
+their declared closed forms. The wrong lower-height control computes its
+corrupted coefficient through the same native trace-subtraction function as the
+baseline, and that coefficient enters the tested response.
+
+The previous radius-gap and inverse-speed certificates are restored with their
+actual operands and exact zero returns; new argument joins connect them to this
+instrument's variables. The saved external-depth bound is explicitly required.
+New derivative identities support the profile bound. Elementary exponential,
+hyperbolic and monotonicity inequalities remain assessed mathematics, explicitly
+labelled separately from exact algebraic residuals. No completed certificate
+function is replayed. The review record, gate and actual file must agree on the
+launcher hash as well as the worker, manifest and runtime helpers.

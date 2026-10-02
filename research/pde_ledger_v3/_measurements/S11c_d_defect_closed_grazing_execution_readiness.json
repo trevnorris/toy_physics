@@ -1,0 +1,25 @@
+{
+  "status": "READY_FOR_ONE_GUARDED_RUN",
+  "recordedUtc": "2026-10-02T06:03:23.326543+00:00",
+  "gateSha256": "43942ec957693bb3c6084debdc3cac26bf060ce347e739d1e08826c32f2bf9f5",
+  "gatePath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_gate.json",
+  "reviewRecordSha256": "fdcb08653198c89f35986bf4bc9a93d53a99d36f9b900a1894acf54524f5853c",
+  "methodRecordSha256": "0f8bc3a31da113b5d4fa196607d08a748a3c5f62d9c4dc569efef9400287c641",
+  "authoritySha256": "e36c2629300b347e09c514ae5e1493c279ae32806628ef0f69538cb9d3b05517",
+  "reviewedWorkerAndManifestUnchanged": true,
+  "actualGateAndLauncherVerificationPassed": true,
+  "sourcePinsChecked": 32,
+  "savedFilesChecked": 22,
+  "additionalIdentityPins": {
+    "/var/projects/toy_physics/AGENTS.md": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "/var/projects/toy_physics/scripts/codex_job_watch.py": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_build_r2_record.json": "fdcb08653198c89f35986bf4bc9a93d53a99d36f9b900a1894acf54524f5853c",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_execution_authority.json": "e36c2629300b347e09c514ae5e1493c279ae32806628ef0f69538cb9d3b05517",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_build_r2_claude.md": "3cbabd901640af1376d669fe621cd3e0dfd5fb37afd1f39172dfcf9444aa5618",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_build_r2_grok.md": "81f5fd9de2dfd9e9cee7abdf17a8e76f279acdf27c192ff0907b62b9edbb3dee",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_build_r2_disposition.md": "82a094ef0dfe0c9f6d53559c8e8f477c4197eef05456831ccd00232f88cfac99"
+  },
+  "scientificImportsOrRestoration": false,
+  "durationLimits": null,
+  "runtimeAcceptance": false
+}

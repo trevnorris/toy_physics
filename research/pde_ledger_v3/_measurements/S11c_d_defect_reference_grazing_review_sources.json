@@ -1,0 +1,628 @@
+{
+  "scope": "Proposed bounded zero/first/mixed-iteration reference-response grazing method; no integral, finite operator or loss claim",
+  "records": [
+    {
+      "packetPath": "method.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_method.md",
+      "sourceSha256": "6aff863bd79a59db49f64d2dacc4ad7012b785b8dff15cf9ca669c0014c3f3a1",
+      "packetSha256": "6aff863bd79a59db49f64d2dacc4ad7012b785b8dff15cf9ca669c0014c3f3a1",
+      "bytes": 17409,
+      "kind": "complete file",
+      "role": "New proposed method or exact native source extraction, not executed science"
+    },
+    {
+      "packetPath": "review-prompt.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_review_prompt.md",
+      "sourceSha256": "70ea5346f525982ee8cbea4391720b24f56cf964b20d11b16fb0ec0135d67e39",
+      "packetSha256": "70ea5346f525982ee8cbea4391720b24f56cf964b20d11b16fb0ec0135d67e39",
+      "bytes": 2841,
+      "kind": "complete file",
+      "role": "New proposed method or exact native source extraction, not executed science"
+    },
+    {
+      "packetPath": "evidence-guide.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_evidence_guide.md",
+      "sourceSha256": "8f6bf0f7478c750a764c6231fb78dcbd7e4f849d981a53f4d64556fb5e9323b2",
+      "packetSha256": "8f6bf0f7478c750a764c6231fb78dcbd7e4f849d981a53f4d64556fb5e9323b2",
+      "bytes": 2955,
+      "kind": "complete file",
+      "role": "New proposed method or exact native source extraction, not executed science"
+    },
+    {
+      "packetPath": "native/function-routes.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing_native_routes.json",
+      "sourceSha256": "a19325d7f3dbd9f3b6f46da4f492067ec483998d072610e609169f3a5aae59c0",
+      "packetSha256": "a19325d7f3dbd9f3b6f46da4f492067ec483998d072610e609169f3a5aae59c0",
+      "bytes": 19121,
+      "kind": "complete file",
+      "role": "New proposed method or exact native source extraction, not executed science"
+    },
+    {
+      "packetPath": "physical-input.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "packetSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "bytes": 1884,
+      "kind": "complete file",
+      "role": "Complete original source/input; prior scope retained; no execution or peer report"
+    },
+    {
+      "packetPath": "native/selected-trace.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_upstream_mixed_trace_native.json",
+      "sourceSha256": "06c0e757bf412c51972b803238ed246ef89259bd59156de6e785206e7447d524",
+      "packetSha256": "06c0e757bf412c51972b803238ed246ef89259bd59156de6e785206e7447d524",
+      "bytes": 11452,
+      "kind": "complete file",
+      "role": "Complete original source/input; prior scope retained; no execution or peer report"
+    },
+    {
+      "packetPath": "native/selected-consumer.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_native.json",
+      "sourceSha256": "441c580e56bd426bc098af6589776384f275401373cddd5c8fd5479707e5915e",
+      "packetSha256": "441c580e56bd426bc098af6589776384f275401373cddd5c8fd5479707e5915e",
+      "bytes": 904500,
+      "kind": "complete file",
+      "role": "Complete original source/input; prior scope retained; no execution or peer report"
+    },
+    {
+      "packetPath": "source/raw-worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py",
+      "sourceSha256": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+      "packetSha256": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+      "bytes": 48444,
+      "kind": "complete file",
+      "role": "Complete original source/input; prior scope retained; no execution or peer report"
+    },
+    {
+      "packetPath": "source/closed-worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing.py",
+      "sourceSha256": "ac635133417b0caf48674307b467790a29bd87184eeba6120b63080fa7b2a383",
+      "packetSha256": "ac635133417b0caf48674307b467790a29bd87184eeba6120b63080fa7b2a383",
+      "bytes": 32730,
+      "kind": "complete file",
+      "role": "Complete original source/input; prior scope retained; no execution or peer report"
+    },
+    {
+      "packetPath": "prior-direct-method.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_method.md",
+      "sourceSha256": "f3b2c6c1e14ebab560c87de6330a7dd6ccb1ef372c504add77604a9ea0cdb7ec",
+      "packetSha256": "f3b2c6c1e14ebab560c87de6330a7dd6ccb1ef372c504add77604a9ea0cdb7ec",
+      "bytes": 12051,
+      "kind": "complete file",
+      "role": "Complete original source/input; prior scope retained; no execution or peer report"
+    },
+    {
+      "packetPath": "source/finite.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_finite.py",
+      "sourceSha256": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411",
+      "packetSha256": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411",
+      "bytes": 10923,
+      "kind": "complete file",
+      "role": "Complete original source/input; prior scope retained; no execution or peer report"
+    },
+    {
+      "packetPath": "source/native-c1.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "sourceSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "packetSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "bytes": 101082,
+      "kind": "complete file",
+      "role": "Complete native source; no producer replay"
+    },
+    {
+      "packetPath": "source/native-c2.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "packetSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "bytes": 102548,
+      "kind": "complete file",
+      "role": "Complete native source; no producer replay"
+    },
+    {
+      "packetPath": "raw/native-fourier-contract.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/native-fourier-contract.json",
+      "sourceSha256": "88a43e88c4c035a1c5033162a5a526373ca71e9aaf1d72193a4b6b732dc7383a",
+      "packetSha256": "88a43e88c4c035a1c5033162a5a526373ca71e9aaf1d72193a4b6b732dc7383a",
+      "bytes": 1020,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/edge-delta-reduction.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/edge-delta-reduction.json",
+      "sourceSha256": "eac260fb707a9c872ddbba6f551802bd83976313d53dd1b8b8664934089d36c3",
+      "packetSha256": "eac260fb707a9c872ddbba6f551802bd83976313d53dd1b8b8664934089d36c3",
+      "bytes": 706,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/dimension-and-measure-join.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/dimension-and-measure-join.json",
+      "sourceSha256": "c494c4f3f787c17a797d46924ce8c1a55cc5551641a147bc30e4140c058ce677",
+      "packetSha256": "c494c4f3f787c17a797d46924ce8c1a55cc5551641a147bc30e4140c058ce677",
+      "bytes": 5039,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/inherited-kernel-dimensions.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/inherited-kernel-dimensions.json",
+      "sourceSha256": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "packetSha256": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "bytes": 1000,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/native-lower-geometry-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/native-lower-geometry-operands.json",
+      "sourceSha256": "8e839287a81abae3853f1f16b040ddd7f1308ece457ec3bdc46e7a06dee05de7",
+      "packetSha256": "8e839287a81abae3853f1f16b040ddd7f1308ece457ec3bdc46e7a06dee05de7",
+      "bytes": 1660,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/lower-boundary-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-boundary-operands.json",
+      "sourceSha256": "aaba14f1ff3f911c0b10dbd7084cc2c345e12260dd05941776223792ff018f72",
+      "packetSha256": "aaba14f1ff3f911c0b10dbd7084cc2c345e12260dd05941776223792ff018f72",
+      "bytes": 4825,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/lower-boundary-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-boundary-return.json",
+      "sourceSha256": "8fc6b10cd56f4347ce4949cc1a44744534f6865396917d92f81d9ab3fd2f71cb",
+      "packetSha256": "8fc6b10cd56f4347ce4949cc1a44744534f6865396917d92f81d9ab3fd2f71cb",
+      "bytes": 1857,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/lower-native-height-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-native-height-input.json",
+      "sourceSha256": "693d6f0d9d59e5d15ede4eab38c3c45e97acb04badb6e0f036c73ba39b8dbb2f",
+      "packetSha256": "693d6f0d9d59e5d15ede4eab38c3c45e97acb04badb6e0f036c73ba39b8dbb2f",
+      "bytes": 1266,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/lower-native-height-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-native-height-return.json",
+      "sourceSha256": "3bf25ff60c6e1b42e792590da8f21f4c63036b272b1226abcd8a4c721be4285e",
+      "packetSha256": "3bf25ff60c6e1b42e792590da8f21f4c63036b272b1226abcd8a4c721be4285e",
+      "bytes": 1312,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/lower-native-slope-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-native-slope-input.json",
+      "sourceSha256": "313d06bbc1f868b4be9b5f7c1557399211358d31d95e8ef4a0e91d5822ab6af9",
+      "packetSha256": "313d06bbc1f868b4be9b5f7c1557399211358d31d95e8ef4a0e91d5822ab6af9",
+      "bytes": 510,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/lower-native-slope-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-native-slope-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/physical-depth-bindings.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/physical-depth-bindings.json",
+      "sourceSha256": "36dcd5b048a6a58518dd01f5b101068802a82688ef066f49d688a3cdaca62972",
+      "packetSha256": "36dcd5b048a6a58518dd01f5b101068802a82688ef066f49d688a3cdaca62972",
+      "bytes": 5811,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/physical-sheet.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/physical-sheet.json",
+      "sourceSha256": "ea87e43a191e0a4db3d3dd9c6df4ca9138f3417bfb829ee41c0da536e038bdc4",
+      "packetSha256": "ea87e43a191e0a4db3d3dd9c6df4ca9138f3417bfb829ee41c0da536e038bdc4",
+      "bytes": 8821,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/effective-speed-reuse-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/effective-speed-reuse-domain.json",
+      "sourceSha256": "340cdcfd03116b4deccbfff86f766f33eacf81dbf3e25af9fb957dd2bf926244",
+      "packetSha256": "340cdcfd03116b4deccbfff86f766f33eacf81dbf3e25af9fb957dd2bf926244",
+      "bytes": 749,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/plus-closure-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-closure-operands.json",
+      "sourceSha256": "8c580760eb56dc468117d4434d153a7658112a61a0dae310e9b730b8a3b73dfd",
+      "packetSha256": "8c580760eb56dc468117d4434d153a7658112a61a0dae310e9b730b8a3b73dfd",
+      "bytes": 6436,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/plus-trace-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-trace-domain.json",
+      "sourceSha256": "d255651a74e1d872509eb3d38f66e8ed2666f39c6e5f2b10635793aa8686c3d5",
+      "packetSha256": "d255651a74e1d872509eb3d38f66e8ed2666f39c6e5f2b10635793aa8686c3d5",
+      "bytes": 624,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/plus-iteration-unchanged-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-iteration-unchanged-input.json",
+      "sourceSha256": "242aa2cbb8d76e24f4cfa28b13f31e0f18adb5ee5033599a592a87465ab0ae95",
+      "packetSha256": "242aa2cbb8d76e24f4cfa28b13f31e0f18adb5ee5033599a592a87465ab0ae95",
+      "bytes": 2691,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/plus-iteration-unchanged-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-iteration-unchanged-return.json",
+      "sourceSha256": "e25581cbeb5f64fd38069876c18e7896e814054c78211abdb91e9e5d9882226f",
+      "packetSha256": "e25581cbeb5f64fd38069876c18e7896e814054c78211abdb91e9e5d9882226f",
+      "bytes": 2724,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/plus-native-resolvent-affine-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-native-resolvent-affine-input.json",
+      "sourceSha256": "ca5d191ceb4199d873b39e36785776b4cdeb485eb65d07383634bdd830b9f70b",
+      "packetSha256": "ca5d191ceb4199d873b39e36785776b4cdeb485eb65d07383634bdd830b9f70b",
+      "bytes": 1007,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/plus-native-resolvent-affine-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-native-resolvent-affine-return.json",
+      "sourceSha256": "99c31d3f78648eecd09476e89803e5be01319fe6d40d39990088f5a5caae4565",
+      "packetSha256": "99c31d3f78648eecd09476e89803e5be01319fe6d40d39990088f5a5caae4565",
+      "bytes": 1046,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/minus-closure-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-closure-operands.json",
+      "sourceSha256": "50013b975936e79cc31181581babcf5026f821ead152a338053200e4989e394b",
+      "packetSha256": "50013b975936e79cc31181581babcf5026f821ead152a338053200e4989e394b",
+      "bytes": 6464,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/minus-trace-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-trace-domain.json",
+      "sourceSha256": "eba7d15956dc35fc380db007588a81c08b8a8a3ae55a7ee17dd95a15342e0d77",
+      "packetSha256": "eba7d15956dc35fc380db007588a81c08b8a8a3ae55a7ee17dd95a15342e0d77",
+      "bytes": 670,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/minus-iteration-unchanged-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-iteration-unchanged-input.json",
+      "sourceSha256": "412a3c0a2dc7fecc5463a910497053ac5fb7bc850c03e3682be1e69a5faa64cf",
+      "packetSha256": "412a3c0a2dc7fecc5463a910497053ac5fb7bc850c03e3682be1e69a5faa64cf",
+      "bytes": 2705,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/minus-iteration-unchanged-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-iteration-unchanged-return.json",
+      "sourceSha256": "0a632933dc092efd72ee5a289357211f376827e1489326488512a997a3857f63",
+      "packetSha256": "0a632933dc092efd72ee5a289357211f376827e1489326488512a997a3857f63",
+      "bytes": 2738,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/minus-native-resolvent-affine-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-native-resolvent-affine-input.json",
+      "sourceSha256": "37855b4c8420d09ee77669e7cce0d28ca6b1e4717960b15abaacfb98fa680651",
+      "packetSha256": "37855b4c8420d09ee77669e7cce0d28ca6b1e4717960b15abaacfb98fa680651",
+      "bytes": 1011,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "raw/minus-native-resolvent-affine-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-native-resolvent-affine-return.json",
+      "sourceSha256": "93baa781aff664ee844127ee6a7ecd231f8db8493b24194c656bba7aefa117ce",
+      "packetSha256": "93baa781aff664ee844127ee6a7ecd231f8db8493b24194c656bba7aefa117ce",
+      "bytes": 1050,
+      "kind": "complete file",
+      "role": "Exact saved both-face closure/geometry/first-shape operand or return; not new first-iteration grazing evidence"
+    },
+    {
+      "packetPath": "trace/reference-pressure-input.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/reference-pressure-input.json",
+      "sourceSha256": "0252ea6c7c899848ce500fe3a5cdd54984d98ce920c789b796e6a16e0898c514",
+      "packetSha256": "0252ea6c7c899848ce500fe3a5cdd54984d98ce920c789b796e6a16e0898c514",
+      "bytes": 978,
+      "kind": "complete file",
+      "role": "Saved selected direct increment trace evidence; not general mixed iteration"
+    },
+    {
+      "packetPath": "trace/reference-pressure-return.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/reference-pressure-return.json",
+      "sourceSha256": "53ad1834c0ac2a1969013d4db7cbf7e705e5b2dc2dbac47411ce5e296a2961d8",
+      "packetSha256": "53ad1834c0ac2a1969013d4db7cbf7e705e5b2dc2dbac47411ce5e296a2961d8",
+      "bytes": 1635,
+      "kind": "complete file",
+      "role": "Saved selected direct increment trace evidence; not general mixed iteration"
+    },
+    {
+      "packetPath": "trace/native-trace-source-join.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/native-trace-source-join.json",
+      "sourceSha256": "6f1ea961f7f66b5cb0a79ae6ffc8267ce2291cab7be965e0cb4475ea5cc4e682",
+      "packetSha256": "6f1ea961f7f66b5cb0a79ae6ffc8267ce2291cab7be965e0cb4475ea5cc4e682",
+      "bytes": 4426,
+      "kind": "complete file",
+      "role": "Saved selected direct increment trace evidence; not general mixed iteration"
+    },
+    {
+      "packetPath": "trace/trace-difference-identity.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/trace-difference-identity.json",
+      "sourceSha256": "80e06995b25c87627393f89d4a46f7465da514fef2037a45433c5235acdc227a",
+      "packetSha256": "80e06995b25c87627393f89d4a46f7465da514fef2037a45433c5235acdc227a",
+      "bytes": 1514,
+      "kind": "complete file",
+      "role": "Saved selected direct increment trace evidence; not general mixed iteration"
+    },
+    {
+      "packetPath": "trace/kernel-measure.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/kernel-measure.json",
+      "sourceSha256": "961bb8fd857ed25e3e70843bf9e7dfe7a247b0c28d4eba9f96818dd896e2e22a",
+      "packetSha256": "961bb8fd857ed25e3e70843bf9e7dfe7a247b0c28d4eba9f96818dd896e2e22a",
+      "bytes": 802,
+      "kind": "complete file",
+      "role": "Saved selected direct increment trace evidence; not general mixed iteration"
+    },
+    {
+      "packetPath": "trace/normal-jet-identity.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-trace-20261001/diagnostic-01/complete/normal-jet-identity.json",
+      "sourceSha256": "c61081cc6ca3f2efe1e58facd123b532af2b6c16f5d734b769eb9983aa4c50a8",
+      "packetSha256": "c61081cc6ca3f2efe1e58facd123b532af2b6c16f5d734b769eb9983aa4c50a8",
+      "bytes": 1650,
+      "kind": "complete file",
+      "role": "Saved selected direct increment trace evidence; not general mixed iteration"
+    },
+    {
+      "packetPath": "grazing/binding-frequency-and-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/binding-frequency-and-domain.json",
+      "sourceSha256": "de60a5900e87d5cb6da96d2f1ac1134dfcc2fe482c2dd0295ca2dd4bb7945b1d",
+      "packetSha256": "de60a5900e87d5cb6da96d2f1ac1134dfcc2fe482c2dd0295ca2dd4bb7945b1d",
+      "bytes": 817,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/complex-frequency-identities-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/complex-frequency-identities-input.json",
+      "sourceSha256": "b78562cba556226beb7fdf3d2f498b93f34d89960e681d15c5500f3092c33bfa",
+      "packetSha256": "b78562cba556226beb7fdf3d2f498b93f34d89960e681d15c5500f3092c33bfa",
+      "bytes": 2042,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/complex-frequency-identities-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/complex-frequency-identities-return.json",
+      "sourceSha256": "c8de6e48236c41100c33ef7227b6ee759140c1a6a9d10056faf178edda2d0e34",
+      "packetSha256": "c8de6e48236c41100c33ef7227b6ee759140c1a6a9d10056faf178edda2d0e34",
+      "bytes": 215,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/continued-beta-components-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/continued-beta-components-input.json",
+      "sourceSha256": "7ffc3045cfdb225f2985f61aec11559a21d9993b47974ba74cf0432ab65c0ca4",
+      "packetSha256": "7ffc3045cfdb225f2985f61aec11559a21d9993b47974ba74cf0432ab65c0ca4",
+      "bytes": 1018,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/continued-beta-components-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/continued-beta-components-return.json",
+      "sourceSha256": "cccd9b13afca189540b43927e802ee711474caedcfadba5c67367a93c48251a7",
+      "packetSha256": "cccd9b13afca189540b43927e802ee711474caedcfadba5c67367a93c48251a7",
+      "bytes": 1063,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/beta-real-lower-bound-identity-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/beta-real-lower-bound-identity-input.json",
+      "sourceSha256": "d42c02142170432af957f10009214b9db7ce407f19d39db6e059f2c5da004dea",
+      "packetSha256": "d42c02142170432af957f10009214b9db7ce407f19d39db6e059f2c5da004dea",
+      "bytes": 794,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/beta-real-lower-bound-identity-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/beta-real-lower-bound-identity-return.json",
+      "sourceSha256": "0404b58a8348cf76d100e83a3c339a36f3cddd6d7c260d25c861ec26b7b2bec0",
+      "packetSha256": "0404b58a8348cf76d100e83a3c339a36f3cddd6d7c260d25c861ec26b7b2bec0",
+      "bytes": 826,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/beta-denominator-gap-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/beta-denominator-gap-input.json",
+      "sourceSha256": "709bdac5ef446a9b94cb8d25c28c02950d851e03018a28e4ac18bac9a2d2fd5b",
+      "packetSha256": "709bdac5ef446a9b94cb8d25c28c02950d851e03018a28e4ac18bac9a2d2fd5b",
+      "bytes": 534,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/beta-denominator-gap-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/beta-denominator-gap-return.json",
+      "sourceSha256": "62a0d60133c55d7d7eafa3056f5674b9ffdf9fad5947b7a48cbc5502cd9abc75",
+      "packetSha256": "62a0d60133c55d7d7eafa3056f5674b9ffdf9fad5947b7a48cbc5502cd9abc75",
+      "bytes": 567,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/quadrant-sum-gain-certificate.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/quadrant-sum-gain-certificate.json",
+      "sourceSha256": "151095214b24d7f5f9d41185115da6805ed80456caa926c850e60561229cc6f9",
+      "packetSha256": "151095214b24d7f5f9d41185115da6805ed80456caa926c850e60561229cc6f9",
+      "bytes": 2228,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/domain-bound-certificate.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/domain-bound-certificate.json",
+      "sourceSha256": "286b205a87a4b3c2419931d392dd41d2f4795630dc2a546a595ebc1da1515cfe",
+      "packetSha256": "286b205a87a4b3c2419931d392dd41d2f4795630dc2a546a595ebc1da1515cfe",
+      "bytes": 2453,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/input-native-sheet-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/input-native-sheet-operands.json",
+      "sourceSha256": "da406cff96c5c39cdac2212f85a63a3c2e1f5516acc43e7ff8e49da00ed69598",
+      "packetSha256": "da406cff96c5c39cdac2212f85a63a3c2e1f5516acc43e7ff8e49da00ed69598",
+      "bytes": 4397,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/heightRoute-native-sheet-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/heightRoute-native-sheet-operands.json",
+      "sourceSha256": "d3011fb1dc21e0af5983480ee9980c2b882c7ec2e356fb2ac49c25557626c6e0",
+      "packetSha256": "d3011fb1dc21e0af5983480ee9980c2b882c7ec2e356fb2ac49c25557626c6e0",
+      "bytes": 4996,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/output-native-sheet-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/output-native-sheet-operands.json",
+      "sourceSha256": "59e257d4a62b69986e16348cb004371e06ab10eb707aee30b5ed2451c19c3fe4",
+      "packetSha256": "59e257d4a62b69986e16348cb004371e06ab10eb707aee30b5ed2451c19c3fe4",
+      "bytes": 4819,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/plus-face-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/plus-face-domain.json",
+      "sourceSha256": "f85217bccfe057a1ce15a418fac8fa92c267850ee98107d2a3c15c8be3dc5721",
+      "packetSha256": "f85217bccfe057a1ce15a418fac8fa92c267850ee98107d2a3c15c8be3dc5721",
+      "bytes": 2074,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/minus-face-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/minus-face-domain.json",
+      "sourceSha256": "6e5b40f5444e862e1703eb9ce49d2ce9e79b68600abd15a2dad73c26959ae6ca",
+      "packetSha256": "6e5b40f5444e862e1703eb9ce49d2ce9e79b68600abd15a2dad73c26959ae6ca",
+      "bytes": 2102,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/uniform-tail-certificate.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/uniform-tail-certificate.json",
+      "sourceSha256": "e1da502db44688a8f2fcb537412340898ff732f3c89337943fb17e985f4f1421",
+      "packetSha256": "e1da502db44688a8f2fcb537412340898ff732f3c89337943fb17e985f4f1421",
+      "bytes": 1539,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/tail-antiderivative-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/tail-antiderivative-input.json",
+      "sourceSha256": "399d2d192a81e6143b467c81f9f261b7ff2e5371ba9472f12c0da842cb5300f0",
+      "packetSha256": "399d2d192a81e6143b467c81f9f261b7ff2e5371ba9472f12c0da842cb5300f0",
+      "bytes": 1189,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/tail-antiderivative-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/tail-antiderivative-return.json",
+      "sourceSha256": "7cdbeaa508230f5ee4c9f352f7bdaa22be52aaf7123b52b309d2d059d57562bf",
+      "packetSha256": "7cdbeaa508230f5ee4c9f352f7bdaa22be52aaf7123b52b309d2d059d57562bf",
+      "bytes": 1194,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/collision-and-L1-conclusion.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/collision-and-L1-conclusion.json",
+      "sourceSha256": "258bd35d55a6462fbe3914afda98b0bb8d7db419ade3bbc555cda9b38c34c3fb",
+      "packetSha256": "258bd35d55a6462fbe3914afda98b0bb8d7db419ade3bbc555cda9b38c34c3fb",
+      "bytes": 5433,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/plus-complex-contact-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/plus-complex-contact-input.json",
+      "sourceSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "packetSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "bytes": 124,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/plus-complex-contact-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/plus-complex-contact-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/minus-complex-contact-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/minus-complex-contact-input.json",
+      "sourceSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "packetSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "bytes": 124,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    },
+    {
+      "packetPath": "grazing/minus-complex-contact-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-closed-grazing-20261001/diagnostic-01/complete/minus-complex-contact-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "kind": "complete file",
+      "role": "Actual prior direct-kernel certificate and scope; new source/route applicability must join"
+    }
+  ],
+  "oldPeerReportsIncluded": false,
+  "payloadRestoredDuringPreparation": false
+}

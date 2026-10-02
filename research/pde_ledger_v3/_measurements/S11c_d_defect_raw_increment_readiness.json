@@ -1,5 +1,5 @@
 {
-  "status": "CANDIDATE_BUILD_PREPARED_AND_STANDING_AUTHORIZED_FOR_REVIEW",
+  "status": "INDEPENDENT_BUILD_REVIEWS_RUNNING_HOOK_ARMED",
   "methodCommit": "dbebfd44",
   "workerSha256": "536f89b55a955ea80fb931728631dd9306c88cfb833008b24aae72ccbd4b0488",
   "manifestSha256": "a39bd98ad701db7bead88cdb992bba1b99999c1bfcda5de1d7690d3579170c65",
@@ -30,5 +30,7 @@
     "noPeerReports": true,
     "noScienceGateOrLaunch": true
   },
-  "next": "Submit this one independent build pair with hook first under standing user authorization. Actual gate/readiness only after substantive build assessment."
+  "next": "Submit this one independent build pair with hook first under standing user authorization. Actual gate/readiness only after substantive build assessment.",
+  "launchRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_review_launch.json",
+  "preparedCommit": "844d8be7"
 }

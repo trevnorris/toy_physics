@@ -1,3 +1,16 @@
+**BOTH-FACE RAW-INCREMENT BUILD REVIEWS RUNNING (2026-10-01):**
+Prepared implementation and exact packet preserved at844d8be7. Standing user
+consent used for the necessary Claude/Grok build pair; no repeated question.
+Hook armed before submission. One startup check verified coordinator1651239,
+watcher1651240 and both reviewers alive in distinct fresh sessions; all102
+private packet hashes per reviewer match. No report content read or peer sharing.
+See raw_increment_review_launch.json and readiness.json. No scientific gate or
+job has launched. Wait silently for the existing completion hook, then read both
+literal reports/receipts/stderr/packet hashes before assessment or source edits.
+Continue authorized bounded work after substantive assessment and actual guarded
+readiness; no routine stage approval. No exact-match, finite-matrix, production
+or defect-sweep claim. Preserve all historical bytes/verdicts and safeguards.
+
 **BOTH-FACE RAW-INCREMENT BUILD PREPARED FOR REVIEW (2026-10-01):**
 Corrected method pair preserved at dbebfd44, both CLEAR FOR BOUNDED
 IMPLEMENTATION. New worker reuses 17 saved upper/profile/source/consumer operands

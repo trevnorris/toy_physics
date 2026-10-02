@@ -1,0 +1,27 @@
+{
+  "recordedUtc": "2026-10-02T08:53:13.384897+00:00",
+  "savedEvidenceContinuationAuthorized": true,
+  "automaticScientificRetry": false,
+  "userDirection": [
+    "K. Then please keep going. You keep pausing after steps, but you have my permission to keep hammering on this as long as you have a clear next step",
+    "K. I'm heading to bed. Looking forward to some good news in the morning. Please continue to work on this."
+  ],
+  "standingInstructions": "/var/projects/toy_physics/AGENTS.md",
+  "standingInstructionsSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "scope": "One saved-evidence continuation completing the observed finite rational zero decision and unchanged unfinished reference-grazing bounds and controls. No completed prefix replay.",
+  "priorResultCommit": "8da2de5f",
+  "localToolingAuthority": true,
+  "freshIndependentBuildClearance": false,
+  "scientificRunsAuthorized": 1,
+  "durationLimits": null,
+  "exclusions": [
+    "integral",
+    "full source/consumer assembly",
+    "finite matrix",
+    "production overwrite",
+    "defect sweep",
+    "loss",
+    "drain",
+    "calibration"
+  ]
+}

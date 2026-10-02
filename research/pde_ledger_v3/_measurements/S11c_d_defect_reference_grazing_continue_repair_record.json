@@ -1,0 +1,80 @@
+{
+  "status": "TESTED_LOCAL_EXACT_CONSTANT_AND_SAVED_EVIDENCE_REPAIR",
+  "recordedUtc": "2026-10-02T08:53:13.384897+00:00",
+  "baseFailureCommit": "8da2de5f",
+  "baseWorkerSha256": "c9a701bfd1ca62a7f5c78293bafa67fe1b608dcdea93c55a83240a9d6491d58e",
+  "baseFailure": {
+    "executionStatus": "FAILED_PRESERVED",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing.py\", line 472, in main\n    result=J.stage('reference-grazing-certificates',{'manifestSha256':gate['manifestSha256'],'methodRecordSha256':gate['methodRecordSha256']},lambda:run_science(manifest,J,ns));code=0\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py#unchanged-helpers\", line 243, in stage\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing.py\", line 472, in <lambda>\n    result=J.stage('reference-grazing-certificates',{'manifestSha256':gate['manifestSha256'],'methodRecordSha256':gate['methodRecordSha256']},lambda:run_science(manifest,J,ns));code=0\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing.py\", line 373, in run_science\n    nonnegative_polynomial(J,'new-tail-root-gap',(u-3)**2-9-u**2/2,[z])\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing.py\", line 87, in nonnegative_polynomial\n    J.zero(name+'-reconstruction',expression,sum(x['coefficient']*sp.prod(v**n for v,n in zip(variables,x['powers'])) for x in terms))\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py#unchanged-helpers\", line 253, in zero\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py#unchanged-helpers\", line 27, in require\nValueError: new-tail-root-gap-reconstruction\n",
+    "incompleteOperation": "new-tail-root-gap-reconstruction",
+    "automaticRetry": false
+  },
+  "failedSavedReturn": {
+    "raw": {
+      "text": "-reference_tail_offset**2/2 - 6*reference_tail_offset + (reference_tail_offset + 9)**2 - (reference_tail_offset + 12)**2/2 - 9",
+      "srepr": "Add(Mul(Integer(-1), Rational(1, 2), Pow(Symbol('reference_tail_offset', nonnegative=True), Integer(2))), Mul(Integer(-1), Integer(6), Symbol('reference_tail_offset', nonnegative=True)), Pow(Add(Symbol('reference_tail_offset', nonnegative=True), Integer(9)), Integer(2)), Mul(Integer(-1), Rational(1, 2), Pow(Add(Symbol('reference_tail_offset', nonnegative=True), Integer(12)), Integer(2))), Integer(-9))"
+    },
+    "cancelled": {
+      "text": "-9 + 9",
+      "srepr": "Add(Integer(-9), Integer(9))"
+    }
+  },
+  "classification": "Exact finite rational constant decision and saved-evidence continuation; no equation, tolerance, scientific method or original-tail assignment change. No fresh independent build clearance.",
+  "residualConstructionCause": "UNESTABLISHED",
+  "constructorGrammar": [
+    "Integer",
+    "Rational",
+    "Add",
+    "Mul",
+    "Pow with integer exponent -16..16"
+  ],
+  "rejects": [
+    "symbols",
+    "floats",
+    "unknowns",
+    "infinities",
+    "arbitrary calls",
+    "noninteger powers",
+    "zero denominators",
+    "nonzero exact result"
+  ],
+  "syntheticObservedConstructorCertificate": {
+    "constructor": "Add(Integer(-9),Integer(9))",
+    "steps": [
+      {
+        "constructor": "Integer(-9)",
+        "numerator": -9,
+        "denominator": 1
+      },
+      {
+        "constructor": "Integer(9)",
+        "numerator": 9,
+        "denominator": 1
+      },
+      {
+        "constructor": "Add(Integer(-9), Integer(9))",
+        "numerator": 0,
+        "denominator": 1
+      }
+    ],
+    "numerator": 0,
+    "denominator": 1,
+    "exactZero": true
+  },
+  "tests": {
+    "methods": 20,
+    "returnCode": 0,
+    "stdout": "",
+    "stderr": "....................\n----------------------------------------------------------------------\nRan 20 tests in 0.146s\n\nOK\n",
+    "scientificImportsOrRestoration": false
+  },
+  "originalTailStatements": 70,
+  "originalTailAstSha256": "9cf1805c2b636f1099634eea8cd64adc054089d2c45d10ef66b45d3ad621a6e2",
+  "originalPrefixFunctionsCalled": false,
+  "priorFiles": 454,
+  "priorBytes": 1251934,
+  "publishedZeroReturnsToRestore": 129,
+  "completedTopLevelStage": false,
+  "continuationIndependentBuildClearance": false,
+  "scientificResultAcceptance": false
+}

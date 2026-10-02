@@ -1,0 +1,82 @@
+{
+  "status": "RUNNING_CORRECTED_INDEPENDENT_SOURCE_BUILD_REVIEWS",
+  "preparedCommit": "ecac627a",
+  "recordedUtc": "2026-10-02T05:43:01.441225+00:00",
+  "packetSha256": "1f7274e44793e5672703f13a30cb6bed1d83723c8a01b83fd6bb7f905209b4fc",
+  "archiveSha256": "22522bc5934e4e70aacba30ef651b1b719c6d6d2c340fe4feea67982803a2519",
+  "launch": {
+    "jobPid": 1791569,
+    "watcherPid": 1791570,
+    "packetSha256": "1f7274e44793e5672703f13a30cb6bed1d83723c8a01b83fd6bb7f905209b4fc",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "watcherStatus": "waiting",
+  "legs": {
+    "claude": {
+      "pid": 1791578,
+      "sessionId": "96caabdc-53ea-4a39-ba0b-f1cb78fb077d",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "96caabdc-53ea-4a39-ba0b-f1cb78fb077d"
+      ],
+      "scientificExecutionEnabled": false,
+      "allPrivateHashesMatch": true,
+      "privateFiles": 102
+    },
+    "grok": {
+      "pid": 1791580,
+      "sessionId": "55cd5a14-37ed-4c24-b85f-66449309e8c5",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/build-review-r2/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/build-review-r2/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "55cd5a14-37ed-4c24-b85f-66449309e8c5"
+      ],
+      "scientificExecutionEnabled": false,
+      "allPrivateHashesMatch": true,
+      "privateFiles": 102
+    }
+  },
+  "reportsReadOrShared": false,
+  "scientificExecution": false,
+  "noAutomaticRetry": true,
+  "standingConsent": "AGENTS.md ongoing research/review authorization; no new recipient or scope expansion"
+}

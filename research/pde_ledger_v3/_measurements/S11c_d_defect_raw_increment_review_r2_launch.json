@@ -1,0 +1,42 @@
+{
+  "status": "CORRECTED_BUILD_REVIEWS_RUNNING_HOOK_ARMED",
+  "checkedUtc": "2026-10-02T02:40:23.991214+00:00",
+  "preparedCommit": "e60ce093",
+  "previousReviewedCommit": "b13aff4d",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/build-review-r2",
+  "launch": {
+    "jobPid": 1664392,
+    "watcherPid": 1664393,
+    "packetSha256": "1e6781d227d37c5559ca6a4fe5b7a31c94781672beb3631bd8bf2c957a32b3d4",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
+    "launcherSha256": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5"
+  },
+  "hookStatus": "waiting",
+  "reviewers": {
+    "claude": {
+      "pid": 1664402,
+      "sessionId": "22b10f01-f4d6-425a-8626-28bf000ae90e",
+      "privateFilesChecked": 102,
+      "literalReportRead": false,
+      "scientificExecutionEnabled": false
+    },
+    "grok": {
+      "pid": 1664403,
+      "sessionId": "25d1a2b2-d2b0-49fa-a99c-dbbd1d347c26",
+      "privateFilesChecked": 102,
+      "literalReportRead": false,
+      "scientificExecutionEnabled": false
+    }
+  },
+  "standingConsent": true,
+  "peerSharing": false,
+  "scienceLaunched": false,
+  "startupChecksOnly": true,
+  "noFurtherModelPolling": true
+}

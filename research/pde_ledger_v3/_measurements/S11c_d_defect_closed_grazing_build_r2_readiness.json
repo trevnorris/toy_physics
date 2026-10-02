@@ -1,0 +1,41 @@
+{
+  "status": "READY_FOR_BUILD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-closed-grazing-20261001/build-review-r2",
+  "static": {
+    "status": "STATIC_PACKET_SOURCE_CHECKED",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "f704e1679ebc77b6dd62a86bdef35b8672749b374bb5712d2a42fce529208ac4",
+    "packetSha256": "1f7274e44793e5672703f13a30cb6bed1d83723c8a01b83fd6bb7f905209b4fc",
+    "archiveSha256": "22522bc5934e4e70aacba30ef651b1b719c6d6d2c340fe4feea67982803a2519",
+    "files": 102,
+    "bytes": 7545261,
+    "workerSha256": "ac635133417b0caf48674307b467790a29bd87184eeba6120b63080fa7b2a383",
+    "manifestSha256": "836a8f33d1c9af0a7b69add890de2aaf129ae4da385b15722749c909decb0f2e",
+    "sharedGuardSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+    "supervisorSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+    "scientificImports": false
+  },
+  "toolingTests": {
+    "status": "PASSED_STDLIB_TOOLING_TESTS_ONLY",
+    "workerSha256": "ac635133417b0caf48674307b467790a29bd87184eeba6120b63080fa7b2a383",
+    "testsSha256": "57b4d210847727ce5e383f3ded1428e351dd55476dc659e8654e6a1f36510284",
+    "unittestMethods": 14,
+    "identityMismatchSubcases": 10,
+    "runtimeScientificAcceptance": false,
+    "scientificImportsOrRestoration": false,
+    "checks": [
+      "exact helpers",
+      "no top-level science",
+      "no integral/solver/producer calls",
+      "gate matching and missing/mismatched identities",
+      "literal paired verdict requirement",
+      "native/helper review join",
+      "authority and no-deadline refusal",
+      "launcher AST"
+    ]
+  },
+  "noScienceGate": true,
+  "noScientificRun": true,
+  "methodCommit": "d800c8ab"
+}

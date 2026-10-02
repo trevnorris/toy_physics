@@ -1,0 +1,43 @@
+{
+  "status": "CORRECTED_VALIDATION_PENDING_INDEPENDENT_BUILD_REVIEW",
+  "unchangedKernelAssignments": [
+    "mass",
+    "tau",
+    "lam",
+    "freq",
+    "L",
+    "W",
+    "edge2",
+    "beta",
+    "Bc",
+    "R",
+    "pref",
+    "G",
+    "O",
+    "betaD",
+    "D",
+    "bre",
+    "bim",
+    "bm",
+    "km",
+    "kn",
+    "Ctail",
+    "primitive",
+    "limit_i",
+    "limit_o",
+    "limit_both"
+  ],
+  "allKernelAssignmentsIdentical": true,
+  "scientificImportsOrRestoration": false,
+  "changes": [
+    "Actual native slope/output roots used in changed closed-density sign control",
+    "Saved per-face jets/reference ratios used in nonzero lower-sign response",
+    "Exact numerator/denominator component certificates and nonzero profile factors",
+    "Grade-labelled lower selection and each face own mixed-coefficient join",
+    "Actual raw D-slot kernel and full raw-row density reconstruction",
+    "Explicit finite-formal-jet scope; no general/lower Fourier map or incoming-mode binding"
+  ],
+  "toolingTests": 14,
+  "noEquationOrPhysicalInputChange": true,
+  "notIndependentClearance": true
+}

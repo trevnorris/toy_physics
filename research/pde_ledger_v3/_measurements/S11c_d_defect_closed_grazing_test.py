@@ -63,4 +63,16 @@ class ToolingTests(unittest.TestCase):
   self.assertFalse(calls&forbidden)
   self.assertFalse(any('alarm' in x or 'setitimer' in x for x in calls))
  def test_launch_syntax(self):ast.parse((M/'S11c_d_defect_closed_grazing_launch.py').read_text())
+ def test_grade_selection_tracks_actual_order(self):
+  select=NS['grade_coefficient']
+  self.assertEqual(select([[1,1,'mixed'],[0,0,'flat']],['answer','other'],(1,1)),'answer')
+  for modes,values in [([[0,0]],['missing']),([[1,1],[1,1]],['a','b']),([[1,1]],[])]:
+   with self.subTest(modes=modes,values=values):
+    with self.assertRaises(ValueError):select(modes,values,(1,1))
+ def test_new_control_evidence_uses_serializable_keys(self):
+  tree=ast.parse(W.read_text());run=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='run_science')
+  # Actual literal-key dictionaries are safe; symbol maps are saved as pair lists.
+  for n in ast.walk(run):
+   if isinstance(n,ast.Call) and ast.unparse(n.func)=='J.emit' and len(n.args)>1 and isinstance(n.args[1],ast.Dict):
+    self.assertTrue(all(isinstance(k,ast.Constant) and isinstance(k.value,str) for k in n.args[1].keys))
 if __name__=='__main__':unittest.main()

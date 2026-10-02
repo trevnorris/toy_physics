@@ -1,6 +1,6 @@
 {
   "status": "PREPARED_PENDING_BUILD_ASSESSMENT_NO_SCIENCE_GATE",
-  "scope": "Both-face source-bound closed direct (1,1) kernel grazing/L1 certificate with (0,0) source/consumer; no integral, finite solve, production overwrite or defect sweep",
+  "scope": "Both-face source-bound closed direct (1,1) kernel grazing/L1 certificate with finite formal (0,0) source/consumer jets; no general or lower-face Fourier map; no integral, finite solve, production overwrite or defect sweep",
   "savedFiles": {
     "physical-factorization-input.json": {
       "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/physical-factorization-input.json",
@@ -111,11 +111,6 @@
       "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/E_W_BALANCE-retained-increment.json",
       "sha256": "93646c5c2c3b208ffaf3b990a6b6fe55a7bed0503606bd8c01b36e6496dfa471",
       "bytes": 1187062
-    },
-    "fourier-convention.json": {
-      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/selected-fourier-contraction.json",
-      "sha256": "961648675f6c371fc2e185b025c1a6197c8b0a70020a8dcecb1b0d4b06115644",
-      "bytes": 4861
     }
   },
   "rows": [
@@ -151,12 +146,11 @@
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/U2-retained-increment.json": "085846ec88caf8bc114d52803622fadbe6278edb5d1c8fdbeef77887e3414694",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/THETA_BALANCE-retained-increment.json": "0153bd249483d01ef9fe3d8c5423a9d8ead50596af29200587abdcee2e1a0729",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/E_W_BALANCE-retained-increment.json": "93646c5c2c3b208ffaf3b990a6b6fe55a7bed0503606bd8c01b36e6496dfa471",
-    "/var/projects/toy_physics/_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/selected-fourier-contraction.json": "961648675f6c371fc2e185b025c1a6197c8b0a70020a8dcecb1b0d4b06115644",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing.py": "a7a828728f4ef7bf11d2a0be8b6eea98ba1c0a02ce113872f9ff8cde160f25c2",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_test.py": "a459fc8aa9d88bcfa93f6e33211c1c329008cec0d717898965f407e036262058",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_launch.py": "04f1ce95a2f6f65e61ce7e18be66d99aaed133d6ba6e525413a7d9d6d8c87ffb",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing.py": "ac635133417b0caf48674307b467790a29bd87184eeba6120b63080fa7b2a383",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_test.py": "57b4d210847727ce5e383f3ded1428e351dd55476dc659e8654e6a1f36510284",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_launch.py": "cb23d223c63b3aa1388fd6bb918f4771913644e3a1ca4a93ed4497db18a70dac",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_method.md": "f3b2c6c1e14ebab560c87de6330a7dd6ccb1ef372c504add77604a9ea0cdb7ec",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_plan.md": "65a584b8fdeba6a2dd6eaa1f6bfb70df1a626462e9b65e99fb5c792a5422b256",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_plan.md": "6f3602d3e869037548c8556cd1117abe7664a25da037efaf0b7ec5a38e49a91e",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_review_record.json": "0f8bc3a31da113b5d4fa196607d08a748a3c5f62d9c4dc569efef9400287c641",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",

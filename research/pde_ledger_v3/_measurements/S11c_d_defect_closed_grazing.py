@@ -84,6 +84,32 @@ def finite_number(J,name,value):
     require(not value.free_symbols and real.is_real is True and imag.is_real is True and real.is_finite is True and imag.is_finite is True,name+' exact finite scalar')
 
 
+
+def grade_coefficient(modes,coefficients,grade):
+    """Join a saved return to its actual mode grade, never a magic index."""
+    require(len(modes)==len(coefficients),'mode/return length')
+    hits=[value for mode,value in zip(modes,coefficients) if tuple(mode[:2])==tuple(grade)]
+    require(len(hits)==1,'unique saved mode grade')
+    return hits[0]
+
+
+def exact_nonzero_number(J,name,value):
+    """Exact finite fraction with signed nonzero numerator/denominator components."""
+    J.emit(name+'-input',{'value':value})
+    num,den=sp.fraction(sp.cancel(value))
+    parts=[[sp.cancel(c) for c in z.as_real_imag()] for z in (num,den)]
+    J.emit(name+'-fraction',{'numerator':num,'denominator':den,'components':parts,
+        'finite':[[c.is_finite for c in row] for row in parts],
+        'signedNonzero':[[c.is_positive is True or c.is_negative is True for c in row] for row in parts]})
+    require(not value.free_symbols,'constant nonzero certificate '+name)
+    for label,z,row in zip(('numerator','denominator'),(num,den),parts):
+        J.zero(name+'-'+label+'-components',z,row[0]+sp.I*row[1])
+        require(all(c.is_real is True and c.is_finite is True for c in row),'finite components '+name)
+        require(any(c.is_positive is True or c.is_negative is True for c in row),'signed nonzero component '+name)
+    J.zero(name+'-fraction-reconstruction',value*den,num)
+    return {'finiteNonzero':True,'numerator':num,'denominator':den,'components':parts}
+
+
 def run_science(manifest,J,helpers):
     copies={};cache={};used={}
     for name,r in manifest['savedFiles'].items():
@@ -125,10 +151,10 @@ def run_science(manifest,J,helpers):
         for term in sp.Add.make_args(expanded):
             require(all(term.as_powers_dict().get(x,0) in (0,1,2) for x in (qh,qs)),'quadratic reduction domain')
         reduced=sp.expand(expanded.subs(rules,simultaneous=True));J.zero('complex-frequency-factorization',reduced,sp.S.Zero)
-        for face in ('plus','minus'):
-            cf=C if face=='plus' else load('lower-boundary-return.json')[3]
-            transported=cf.subs(mapping,simultaneous=True)
-            J.zero(face+'-unrestricted-source-join',transported,Cu)
+        lowerMixed=grade_coefficient(load('lower-boundary-operands.json','modes'),load('lower-boundary-return.json'),(1,1))
+        lowerTransported=lowerMixed.subs(mapping,simultaneous=True)
+        J.zero('minus-unrestricted-source-join',lowerTransported,Cu)
+        for face,transported in [('plus',Cu),('minus',lowerTransported)]:
             J.zero(face+'-complex-contact',transported.subs({t:0,qh:qi,qs:qo},simultaneous=True),sp.S.Zero)
         return {'factorizationResidual':reduced,'complexContactZero':True,'scope':'Unrestricted-frequency algebra from saved coefficients, not repeated boundary construction'}
     J.stage('complex-frequency-identities',{'savedC':C,'savedB':B,'frequencyMap':[oldomega,omega]},algebra)
@@ -138,7 +164,7 @@ def run_science(manifest,J,helpers):
     pref=W*L/(4*sp.I)*A(t)*A(l-k-t);G=pref*Bc
     J.zero('closed-factor-rearrangement',Bu*R,Bc)
     J.emit('closed-density',{'Bc':Bc,'density':G,'prefactor':pref,'beta':beta,'ordinaryMeasure':'dt','endpointsNotAssignedPointwise':True})
-    numericMap={omega:freq};newfromold={Q:l-k,oldomega:freq,rho:mass,**depthmap}
+    numericMap={omega:freq};newfromold={H:t,Q:l-k,oldomega:freq,rho:mass,**depthmap}
     rawPre=load('raw-ordered-before-cancel.json');oldTransfer=one([rawPre['heightNumerator']],'increment_transfer');newfromold[oldTransfer]=t
     J.sinh_zero('actual-ordered-prefactor',rawPre['heightScale']*rawPre['heightNumerator'].subs(newfromold,simultaneous=True)*rawPre['jet'].subs(newfromold,simultaneous=True)/rawPre['phaseDivisor'],pref)
     measure=load('edge-delta-reduction.json');require(measure['plainReducedMiddleMeasure'] is True,'plain middle measure')
@@ -147,9 +173,12 @@ def run_science(manifest,J,helpers):
     normal=geometry['nativeNormal'];sigma=one([normal],'sigma_W');slope=one([normal],'w1_profile_d1')
     J.zero('native-lower-outward-sign',normal[3],-sp.S.One)
     J.zero('native-lower-slope-sign',normal[0],-sigma*slope/2)
-    factors={}
+    factors={};faceJets={};faceRaw={}
     for face,label in [(1,'plus'),(-1,'minus')]:
         closure=load(label+'-closure-operands.json');tr=load(label+'-trace-domain.json');oldclosed=load(label+'-closed-raw-increment.json');before=load(label+'-closed-before-cancel.json')
+        J.zero(label+'-own-saved-mixed-coefficient',before['mixed'].subs(newfromold,simultaneous=True),Cu.subs(omega,freq))
+        faceRaw[label]=before['raw'].subs(newfromold,simultaneous=True)
+        J.sinh_zero(label+'-actual-raw-kernel',faceRaw[label],(pref*Bu).subs(omega,freq))
         native=closure['nativeDefinition'];z=one([native],'s11cc1_dtn_operator_lab_held_'+label)
         law=sp.expand(native).coeff(z);nativeMap={one([law],'omega'):omega,one([law],'rho_m'):mass,one([law],'Lambda_A_0'):lam,one([law],'tau_A'):tau}
         J.zero(label+'-continued-native-law',law.subs(nativeMap,simultaneous=True),lam/(mass**2*(1-sp.I*omega*tau)))
@@ -164,13 +193,17 @@ def run_science(manifest,J,helpers):
         J.zero(label+'-reference-factor',before['reference'].xreplace(depthmap),R.subs(omega,freq))
         J.zero(label+'-jet-factor',before['jet'].xreplace(depthmap),sp.I*face*qo*before['reference'].xreplace(depthmap))
         factors[label]=before['reference'].xreplace(depthmap)
+        faceJets[label]=sp.cancel(before['jet'].xreplace(depthmap)/factors[label])
+        J.zero(label+'-saved-jet-ratio',faceJets[label],tr['normalJet'].xreplace(depthmap))
         J.emit(label+'-face-domain',{'nativeLaw':law,'continuedMap':[[a,b] for a,b in nativeMap.items()],'height':tr['height'],'referenceTrace':tr['zeroTrace'],'jet':tr['normalJet'],'fullLowerNormal':normal,'scope':'Direct (1,1) increment only; full normal/slope provenance saved, first-shape iteration not revalidated'})
     # Join each original physical route before using its analytic outgoing continuation.
+    nativeRoots={}
     for label,momentum in [('input',k),('heightRoute',k+t),('slopeRoute',l-t),('output',l)]:
         savedRoot=load('physical-sheet.json',label)
         oldCs=one([savedRoot],'increment_effective_bulk_speed')
         rootMap={**newfromold,oldCs:cs}
         transported=savedRoot.subs(rootMap,simultaneous=True)
+        nativeRoots[label]=transported
         J.emit(label+'-native-sheet-operands',{'saved':savedRoot,'actualMap':[[a,b] for a,b in rootMap.items()],'transported':transported,'momentum':momentum})
         require(isinstance(transported,sp.Piecewise) and len(transported.args)==3,'native three-branch outgoing sheet')
         positive,negative,zero=transported.args
@@ -225,32 +258,14 @@ def run_science(manifest,J,helpers):
     J.zero('opposite-momentum-radicand-identity',(l-t)**2-(k+t)**2, (l+k)*(l-k-2*t))
     J.zero('opposite-routes-coincide',((l-t)**2-(k+t)**2).subs(l,-k),sp.S.Zero)
     J.emit('collision-and-L1-conclusion',{'internalEndpoints':[-k+sp.sqrt(kn),-k-sp.sqrt(kn),l+sp.sqrt(kn),l-sp.sqrt(kn)],'sameMomentumAtGrazing':[0,-2*k,2*k,0],'oppositeMomentumAtGrazing':[0,-2*k,0,-2*k],'signedCases':'For k=-kappa the signs of 2k reverse. In l=-k, qs=qh as functions, not merely at endpoints.','inputLimit':limit_i,'outputLimit':limit_o,'bothLimit':limit_both,'reasoning':'Pointwise continuity away from the finite limiting endpoint set plus the certified uniformly integrable moving-root envelope and tight tail gives L1 convergence. At delta>0 contact is exactly zero and C=tB; t PV(1/t)=1. L1 convergence excludes a concentrated Dirac mass. Applies to the kernel only; no differentiation or rate in parameters is asserted.','proofStatus':'Exact source/algebraic certificates plus independently assessed analytic argument; not automated measure-theory proof.','pointwiseEndpointValuesAssigned':False})
-    # Source/consumer coefficients: new applicability joins, not replaying row construction.
-    amplitudes={n:sp.Symbol('grazing_amplitude_'+n) for n in ['theta','e_W','u_1','u_2','u_3']}
-    fourierConventions=load('fourier-convention.json')
-    J.emit('source-fourier-convention',fourierConventions)
-    require(fourierConventions['omega']==freq and fourierConventions['kin'][1:]==edges,'saved Fourier frequency/edge')
-    def jet_symbol(symbol):
-        name=symbol.name
-        for base,amplitude in amplitudes.items():
-            if name==base:return amplitude
-            if name.startswith(base+'_'):
-                suffix=name[len(base)+1:];factor=sp.S.One
-                while suffix:
-                    if suffix.startswith('t'):factor*= -sp.I*freq;suffix=suffix[1:]
-                    elif len(suffix)>=2 and suffix[:2] in ('d1','d2','d3'):
-                        factor*=sp.I*{'d1':k,'d2':edges[0],'d3':edges[1]}[suffix[:2]];suffix=suffix[2:]
-                    else:raise ValueError('unknown source jet '+name)
-                return factor*amplitude
-        raise ValueError('unjoined source symbol '+name)
+    # Formal source-jet scope only. The old k=0 upper Fourier witness does not
+    # establish a general or lower-face Fourier binding; no new one is asserted.
+    sourceJets={}
     for side in ('Plus','Minus'):
         source00=load('THETA_BALANCE-retained-increment.json','source'+side)
-        sourceMap={x:jet_symbol(x) for x in source00.free_symbols}
-        newSymbol=sp.expand(source00.subs(sourceMap,simultaneous=True))
-        savedAmplitude=fourierConventions['sourceAmplitude']
-        ampMap={one([savedAmplitude],'amplitude_'+name):a for name,a in amplitudes.items() if any(x.name=='amplitude_'+name for x in savedAmplitude.free_symbols)}
-        J.zero(side+'-saved-Fourier-convention-join',newSymbol.subs(k,fourierConventions['kin'][0]),savedAmplitude.xreplace(ampMap))
-        J.emit(side+'-general-source-symbol',{'savedSource':source00,'jetMap':[[a,b] for a,b in sourceMap.items()],'symbol':newSymbol,'newWork':'General k applicability joined to published selected Fourier result; original function not called.'})
+        sourceJets[side.lower()]=source00.free_symbols
+        J.emit(side+'-source-jet-domain',{'savedSource':source00,'formalJets':sorted(source00.free_symbols,key=str),
+            'scope':'Finite formal source jets; no general/lower-face Fourier convention or incoming eigenmode is certified.'})
     matches=[('LEFT',sp.sqrt(sp.Rational(3,2)),sp.sqrt(595)/10),('RIGHT',sp.sqrt(sp.Rational(150,101)),sp.sqrt(601)/10)]
     for name,speed,normalMomentum in matches:
         J.zero(name+'-modal-match',freq**2/speed**2-edge2,normalMomentum**2)
@@ -263,26 +278,35 @@ def run_science(manifest,J,helpers):
         eps=load(row+'-retained-increment.json','epsilon');dplus=one([inc],'increment_raw_plus');dminus=one([inc],'increment_raw_minus')
         multipliers={}
         for label,dslot in [('plus',dplus),('minus',dminus)]:
-            rawCoefficient=sp.diff(inc,dslot);mult=sp.cancel(rawCoefficient/factors[label]/eps)
+            rawCoefficient=sp.diff(inc,dslot)
+            J.emit(row+'-'+label+'-before-slot-division',{'coefficient':rawCoefficient,'reference':factors[label],'epsilon':eps})
+            mult=sp.cancel(rawCoefficient/factors[label]/eps)
             J.emit(row+'-'+label+'-slot-operands',{'actualIncrement':inc,'slot':dslot,'epsilon':eps,'rawSlotCoefficient':rawCoefficient,'savedReferenceFactor':factors[label],'multiplier':mult})
             J.zero(row+'-'+label+'-slot-join',rawCoefficient,eps*mult*factors[label])
             require(not any(x in mult.free_symbols for x in (qi,qh,qs,qo,Q,H,oldomega,rho)),'no depth/old input dependence in multiplier')
             require(all(not x.name.startswith('increment_') for x in mult.free_symbols),'no transfer dependence')
-            jetmap={x:jet_symbol(x) for x in mult.free_symbols}
-            symbol=sp.expand(mult.subs(jetmap,simultaneous=True));basis=list(amplitudes.values());coeffs=[sp.diff(symbol,a) for a in basis]
-            J.zero(row+'-'+label+'-linear-symbol',symbol,sum(a*c for a,c in zip(basis,coeffs)))
+            basis=sorted(sourceJets[label],key=str)
+            require(mult.free_symbols<=set(basis),'actual source jets only')
+            coeffs=[sp.diff(mult,a) for a in basis]
+            J.zero(row+'-'+label+'-linear-source-jets',mult,sum(a*c for a,c in zip(basis,coeffs)))
             for j,c in enumerate(coeffs):
-                require(not(set(basis)&c.free_symbols),'linear source amplitudes')
-                # All coefficients must be finite polynomials in the input momentum.
-                for term in sp.Add.make_args(sp.expand(c)):
-                    power=term.as_powers_dict().get(k,sp.S.Zero);constant=sp.cancel(term/k**power)
-                    require(power.is_integer is True and power.is_nonnegative is True and not constant.free_symbols,'polynomial source coefficient')
-                    finite_number(J,row+'-'+label+'-coefficient-'+str(j)+'-'+str(len(J.artifacts)),constant)
-                for end,speed,normalMomentum in matches:
-                    for sign in (-1,1):finite_number(J,row+'-'+label+'-'+end+'-'+str(sign)+'-'+str(j),c.subs(k,sign*normalMomentum))
-            J.emit(row+'-'+label+'-finite-symbol',{'actualMap':[[a,b] for a,b in jetmap.items()],'symbol':symbol,'coefficients':coeffs,'tIndependent':True,'omegaHeld':freq,'csIndependent':True,'domain':'finite source amplitudes and compact external momenta; not an incident eigenmode'})
+                finite_number(J,row+'-'+label+'-formal-jet-coefficient-'+str(j),c)
+            J.emit(row+'-'+label+'-finite-formal-multiplier',{'basis':basis,'coefficients':coeffs,
+                'multiplier':mult,'tIndependent':True,'omegaHeld':freq,'csIndependent':True,
+                'domain':'Fixed finite formal jets. Any later physical Fourier/mode binding needs its own source/sign joins.',
+                'generalFourierMapCertified':False,'lowerFaceFourierMapCertified':False})
             multipliers[label]=mult
         J.zero(row+'-both-slot-reconstruction',inc,eps*sum(d*multipliers[label]*factors[label] for label,d in [('plus',dplus),('minus',dminus)]))
+        for label,side in [('plus','Plus'),('minus','Minus')]:
+            rawKernel=load(row+'-retained-increment.json','rawKernel'+side).subs(newfromold,simultaneous=True)
+            J.sinh_zero(row+'-'+label+'-raw-slot-normalization',rawKernel,faceRaw[label])
+        rawDensity=load(row+'-retained-increment.json','rawRowDensity').subs(newfromold,simultaneous=True)
+        target=eps*sum(multipliers[label] for label in ('plus','minus'))*G.subs(omega,freq)
+        J.sinh_zero(row+'-actual-closed-row-density',rawDensity,target)
+        J.emit(row+'-row-applicability-scope',{'actualRawRowDensity':rawDensity,'target':target,
+            'expandedPhysicalRowRevalidated':False,'rootJoin':'All four native root routes checked separately; no old physical-row construction is replayed.',
+            'scope':'L1 closed-kernel factor with finite formal source-jet coefficients, not a physical excitation map.'})
+
     # New controls with predeclared responses, on the new closed kernel only.
     speed=matches[0][1];kap=matches[0][2];testt=sp.Rational(1,10)
     test_qo=kap;test_qs=sp.sqrt(kap**2-testt**2)
@@ -297,16 +321,41 @@ def run_science(manifest,J,helpers):
     require(A(testt).is_positive is True and A(kap+testt).is_positive is True,'nonzero full-density control profile')
     J.emit('missing-external-factor-control',{'bareCoefficient':Bu,'poleResidue':pole,'physicalPoint':{'cs':speed,'k':kap,'l':0,'t':testt,'qo':test_qo,'qs':test_qs},'physicalResidue':physicalPole,'residueOverI':residueReal,'positive':residueReal.is_positive,'expectedResponse':'nonzero simple qi pole without closure; not a numerical infinity sample'})
     require(residueReal.is_positive is True,'responsive missing-factor pole')
-    outgoing=sp.sqrt(kap**2-testt**2);wrong=-outgoing
-    J.emit('wrong-sheet-control',{'radicand':kap**2-testt**2,'outgoing':outgoing,'wrong':wrong,'outgoingPositive':outgoing.is_positive,'wrongNonnegative':wrong.is_nonnegative,'route':'qs at the same input-grazing k=kap,l=0,t=1/10 point','expectedResponse':'fails first-quadrant certificate, not necessarily finiteness'})
-    require(outgoing.is_positive is True and wrong.is_nonnegative is False,'responsive wrong-quadrant predicate')
-    limitPoint=limit_i.subs({omega:freq,k:kap,l:0,t:testt,qo:test_qo,qs:test_qs},simultaneous=True)
-    actualJet=-sp.I*test_qo*profilePoint*limitPoint;wrongJet=sp.I*test_qo*profilePoint*limitPoint
-    normalized=sp.cancel((wrongJet-actualJet)/(2*sp.I*test_qo*profilePoint*limitPoint))
-    J.emit('lower-jet-sign-control',{'inputGrazingClosedFactor':limitPoint,'profileFactor':profilePoint,'actualJet':actualJet,'wrongJet':wrongJet,'residual':wrongJet-actualJet,'normalizedResidual':normalized,'nonzeroReason':'Input-only grazing with k>0,t>0,l=0, qo>0,qs>0,beta nonzero in first quadrant; every displayed numerator/denominator factor is nonzero.'})
-    require(normalized==1 and test_qo.is_positive is True and testt.is_positive is True,'responsive native lower jet sign')
+    controlPoint={cs:speed,k:kap,l:0,t:testt}
+    outgoing=nativeRoots['slopeRoute'].subs(controlPoint,simultaneous=True)
+    outputDepth=nativeRoots['output'].subs(controlPoint,simultaneous=True)
+    J.zero('control-native-slope-depth',outgoing,test_qs)
+    J.zero('control-native-output-depth',outputDepth,test_qo)
+    wrong=-outgoing
+    limitMap={omega:freq,k:kap,l:0,t:testt,qo:outputDepth,qs:outgoing}
+    limitPoint=limit_i.subs(limitMap,simultaneous=True)
+    wrongMap={**limitMap,qs:wrong}
+    wrongLimit=limit_i.subs(wrongMap,simultaneous=True)
+    fullPoint=profilePoint*limitPoint;wrongFull=profilePoint*wrongLimit
+    J.emit('wrong-sheet-control',{'savedRoute':nativeRoots['slopeRoute'],'point':[[a,b] for a,b in controlPoint.items()],
+        'actualMap':[[a,b] for a,b in limitMap.items()],'corruptMap':[[a,b] for a,b in wrongMap.items()],
+        'outgoing':outgoing,'wrong':wrong,'actualClosedDensity':fullPoint,'wrongClosedDensity':wrongFull,
+        'densityMovement':wrongFull-fullPoint,'movementPerNonzeroProfile':wrongLimit-limitPoint,
+        'outgoingPositive':outgoing.is_positive,'wrongNonnegative':wrong.is_nonnegative,
+        'expectedResponse':'Nonzero new closed-density movement AND refusal of native first-quadrant predicate.'})
+    require(outgoing.is_positive is True and wrong.is_nonnegative is False,'native wrong-quadrant predicate')
+    exact_nonzero_number(J,'actual-closed-limit-nonzero',limitPoint)
+    exact_nonzero_number(J,'wrong-sheet-movement-nonzero',wrongLimit-limitPoint)
+    J.zero('wrong-sheet-full-response-factor',wrongFull-fullPoint,profilePoint*(wrongLimit-limitPoint))
+    # Use saved minus jet/reference for actual response; saved plus ratio is the
+    # deliberately wrong lower sign. Both ratios joined their own native traces.
+    actualRatio=faceJets['minus'].subs(qo,outputDepth)
+    wrongRatio=faceJets['plus'].subs(qo,outputDepth)
+    actualJet=actualRatio*fullPoint;wrongJet=wrongRatio*fullPoint
+    jetMovement=(wrongRatio-actualRatio)*limitPoint
+    J.emit('lower-jet-sign-control',{'savedMinusRatio':faceJets['minus'],'savedPlusRatio':faceJets['plus'],
+        'outputDepthFromNativeSheet':outputDepth,'inputGrazingClosedFactor':limitPoint,'profileFactor':profilePoint,
+        'actualJet':actualJet,'wrongJet':wrongJet,'residual':wrongJet-actualJet,
+        'movementPerNonzeroProfile':jetMovement,'expectedResponse':'Saved upper sign substituted for saved lower sign yields nonzero actual jet response.'})
+    exact_nonzero_number(J,'lower-jet-movement-nonzero',jetMovement)
+    J.zero('lower-jet-full-response-factor',wrongJet-actualJet,profilePoint*jetMovement)
     J.emit('restored-field-index',{'fields':used,'completedFunctionsReplayed':False})
-    return {'executionStatus':'COMPLETED_CLOSED_GRAZING_CERTIFICATES','kernelL1ScopeSupported':True,'bothFaces':True,'complexFrequencyContactCertified':True,'sourceRowFrequency':3,'physicalParametersChanged':False,'middleIntegralEvaluated':False,'finiteSolves':0,'productionChanges':False,'physicalLossClaim':False,'completedFunctionsReplayed':False,'analyticArgument':'Reviewed uniform-integrability/tail proof joined to actual expressions; not a formal theorem prover.','exclusions':['kappa=0','beta=0','first-shape iteration grazing','whole operator','untruncated inverse','loss','drain','primitive calibration','pointwise endpoint values','parameter differentiability']}
+    return {'executionStatus':'COMPLETED_CLOSED_GRAZING_CERTIFICATES','kernelL1ScopeSupported':True,'bothFaces':True,'complexFrequencyContactCertified':True,'sourceRowFrequency':3,'sourceRowScope':'Finite formal jets only; general/lower Fourier and incoming-mode binding not certified','physicalParametersChanged':False,'middleIntegralEvaluated':False,'finiteSolves':0,'productionChanges':False,'physicalLossClaim':False,'completedFunctionsReplayed':False,'analyticArgument':'Reviewed uniform-integrability/tail proof joined to actual expressions; not a formal theorem prover.','exclusions':['kappa=0','beta=0','first-shape iteration grazing','whole operator','untruncated inverse','loss','drain','primitive calibration','pointwise endpoint values','parameter differentiability']}
 
 
 def main():

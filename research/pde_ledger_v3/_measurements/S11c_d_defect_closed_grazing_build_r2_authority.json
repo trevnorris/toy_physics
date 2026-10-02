@@ -1,0 +1,16 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-02T05:41:37.075435+00:00",
+  "packetSha256": "1f7274e44793e5672703f13a30cb6bed1d83723c8a01b83fd6bb7f905209b4fc",
+  "archiveSha256": "22522bc5934e4e70aacba30ef651b1b719c6d6d2c340fe4feea67982803a2519",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 102,
+  "bytes": 7545261,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing research/review authorization; user asks continued work overnight through clear next steps.",
+  "newRecipients": false,
+  "automaticRetry": false
+}

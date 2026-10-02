@@ -1,0 +1,917 @@
+{
+  "scope": "Both-face source-bound closed direct (1,1) kernel grazing/L1 certificate with finite formal (0,0) source/consumer jets; no general or lower-face Fourier map; no integral, finite solve, production overwrite or defect sweep",
+  "records": [
+    {
+      "packetPath": "method.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_method.md",
+      "sourceSha256": "f3b2c6c1e14ebab560c87de6330a7dd6ccb1ef372c504add77604a9ea0cdb7ec",
+      "packetSha256": "f3b2c6c1e14ebab560c87de6330a7dd6ccb1ef372c504add77604a9ea0cdb7ec",
+      "bytes": 12051,
+      "kind": "complete file",
+      "role": "New proposed method/review framing, not executed science"
+    },
+    {
+      "packetPath": "evidence-guide.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_evidence_guide.md",
+      "sourceSha256": "b900f25842427cfa5bd5d7d6162ccf1b173eef6dccf2a9b00fab2be05363a24b",
+      "packetSha256": "b900f25842427cfa5bd5d7d6162ccf1b173eef6dccf2a9b00fab2be05363a24b",
+      "bytes": 3502,
+      "kind": "complete file",
+      "role": "New proposed method/review framing, not executed science"
+    },
+    {
+      "packetPath": "physical-input.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "packetSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "bytes": 1884,
+      "kind": "complete file",
+      "role": "Complete original source/input; source inspection only"
+    },
+    {
+      "packetPath": "native-selected.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_native.json",
+      "sourceSha256": "441c580e56bd426bc098af6589776384f275401373cddd5c8fd5479707e5915e",
+      "packetSha256": "441c580e56bd426bc098af6589776384f275401373cddd5c8fd5479707e5915e",
+      "bytes": 904500,
+      "kind": "complete file",
+      "role": "Complete original source/input; source inspection only"
+    },
+    {
+      "packetPath": "source/raw-worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py",
+      "sourceSha256": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+      "packetSha256": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+      "bytes": 48444,
+      "kind": "complete file",
+      "role": "Complete original source/input; source inspection only"
+    },
+    {
+      "packetPath": "source/control-continue-worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_continue.py",
+      "sourceSha256": "8e904aa22c522aa7bd1c3f0b919359ec03d00953ddd5d900b6dd2e88041abeba",
+      "packetSha256": "8e904aa22c522aa7bd1c3f0b919359ec03d00953ddd5d900b6dd2e88041abeba",
+      "bytes": 16076,
+      "kind": "complete file",
+      "role": "Complete original source/input; source inspection only"
+    },
+    {
+      "packetPath": "source/control-finish-worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment_finish.py",
+      "sourceSha256": "0b8cf38f25c80a0864f0b8bc5dee678d70c58459534043b17a6e0c9c9339dda9",
+      "packetSha256": "0b8cf38f25c80a0864f0b8bc5dee678d70c58459534043b17a6e0c9c9339dda9",
+      "bytes": 18582,
+      "kind": "complete file",
+      "role": "Complete original source/input; source inspection only"
+    },
+    {
+      "packetPath": "source/finite.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_finite.py",
+      "sourceSha256": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411",
+      "packetSha256": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411",
+      "bytes": 10923,
+      "kind": "complete file",
+      "role": "Complete original source/input; source inspection only"
+    },
+    {
+      "packetPath": "source/native-c1.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "sourceSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "packetSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "bytes": 101082,
+      "kind": "complete file",
+      "role": "Complete native source; do not run producer"
+    },
+    {
+      "packetPath": "source/native-c2.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "packetSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "bytes": 102548,
+      "kind": "complete file",
+      "role": "Complete native source; do not run producer"
+    },
+    {
+      "packetPath": "source/native-geometry.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "sourceSha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "packetSha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "bytes": 101558,
+      "kind": "complete file",
+      "role": "Complete native source; do not run producer"
+    },
+    {
+      "packetPath": "uniform-context.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review-r2/packet/uniform-context.json",
+      "sourceSha256": "cd38a1b5cd5d178e4bbecd14d72468ee29772783aa0a5c996031f844c569df5c",
+      "packetSha256": "cd38a1b5cd5d178e4bbecd14d72468ee29772783aa0a5c996031f844c569df5c",
+      "bytes": 36516,
+      "kind": "complete file",
+      "role": "Exact prior selected uniform context, no defect claim"
+    },
+    {
+      "packetPath": "raw/physical-factorization-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/physical-factorization-input.json",
+      "sourceSha256": "843ec0c9bb5403250f8df7e2749519e2af5db4b6efbeaf058d856edc5a04e19b",
+      "packetSha256": "843ec0c9bb5403250f8df7e2749519e2af5db4b6efbeaf058d856edc5a04e19b",
+      "bytes": 1336,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/physical-factorization-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/physical-factorization-return.json",
+      "sourceSha256": "38a9303d56fa4b2cba72ad7b39b6ab52a57a912e8f668fa4b453fbb9b45c0899",
+      "packetSha256": "38a9303d56fa4b2cba72ad7b39b6ab52a57a912e8f668fa4b453fbb9b45c0899",
+      "bytes": 1481,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/factorization-before-reduction.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/factorization-before-reduction.json",
+      "sourceSha256": "d0ea137ca5a4d646fb95f1eac2a6de91f2397f272afd08d6c82386d9b0fe86d7",
+      "packetSha256": "d0ea137ca5a4d646fb95f1eac2a6de91f2397f272afd08d6c82386d9b0fe86d7",
+      "bytes": 6357,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/factorization-physical-numerator-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/factorization-physical-numerator-input.json",
+      "sourceSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "packetSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "bytes": 124,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/factorization-physical-numerator-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/factorization-physical-numerator-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/raw-ordered-before-cancel.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/raw-ordered-before-cancel.json",
+      "sourceSha256": "5da5c9f7c71bcab840a06e02edf81fce35820549f574f506c46b51e6c694a7a8",
+      "packetSha256": "5da5c9f7c71bcab840a06e02edf81fce35820549f574f506c46b51e6c694a7a8",
+      "bytes": 2106,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/raw-ordered-kernel.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/raw-ordered-kernel.json",
+      "sourceSha256": "290f04754b783cc109f4df1e1910282cbe676d3d3c37a05b2858b3e64215560c",
+      "packetSha256": "290f04754b783cc109f4df1e1910282cbe676d3d3c37a05b2858b3e64215560c",
+      "bytes": 103399,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/native-fourier-contract.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/native-fourier-contract.json",
+      "sourceSha256": "88a43e88c4c035a1c5033162a5a526373ca71e9aaf1d72193a4b6b732dc7383a",
+      "packetSha256": "88a43e88c4c035a1c5033162a5a526373ca71e9aaf1d72193a4b6b732dc7383a",
+      "bytes": 1020,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/edge-delta-reduction.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/edge-delta-reduction.json",
+      "sourceSha256": "eac260fb707a9c872ddbba6f551802bd83976313d53dd1b8b8664934089d36c3",
+      "packetSha256": "eac260fb707a9c872ddbba6f551802bd83976313d53dd1b8b8664934089d36c3",
+      "bytes": 706,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/dimension-and-measure-join.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/dimension-and-measure-join.json",
+      "sourceSha256": "c494c4f3f787c17a797d46924ce8c1a55cc5551641a147bc30e4140c058ce677",
+      "packetSha256": "c494c4f3f787c17a797d46924ce8c1a55cc5551641a147bc30e4140c058ce677",
+      "bytes": 5039,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/inherited-kernel-dimensions.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/inherited-kernel-dimensions.json",
+      "sourceSha256": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "packetSha256": "bc97a9534f452eedfa96bc87aab9ee5d12bbdd19e28587c7888efb9782a403ae",
+      "bytes": 1000,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/physical-depth-bindings.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/physical-depth-bindings.json",
+      "sourceSha256": "36dcd5b048a6a58518dd01f5b101068802a82688ef066f49d688a3cdaca62972",
+      "packetSha256": "36dcd5b048a6a58518dd01f5b101068802a82688ef066f49d688a3cdaca62972",
+      "bytes": 5811,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/physical-sheet.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/physical-sheet.json",
+      "sourceSha256": "ea87e43a191e0a4db3d3dd9c6df4ca9138f3417bfb829ee41c0da536e038bdc4",
+      "packetSha256": "ea87e43a191e0a4db3d3dd9c6df4ca9138f3417bfb829ee41c0da536e038bdc4",
+      "bytes": 8821,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/lower-boundary-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-boundary-input.json",
+      "sourceSha256": "c07dad85b251d4d917771b72aa7b6f3c6ea324280932b199a30f31c9bd2b0c6d",
+      "packetSha256": "c07dad85b251d4d917771b72aa7b6f3c6ea324280932b199a30f31c9bd2b0c6d",
+      "bytes": 944,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/lower-boundary-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-boundary-return.json",
+      "sourceSha256": "8fc6b10cd56f4347ce4949cc1a44744534f6865396917d92f81d9ab3fd2f71cb",
+      "packetSha256": "8fc6b10cd56f4347ce4949cc1a44744534f6865396917d92f81d9ab3fd2f71cb",
+      "bytes": 1857,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/lower-boundary-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-boundary-operands.json",
+      "sourceSha256": "aaba14f1ff3f911c0b10dbd7084cc2c345e12260dd05941776223792ff018f72",
+      "packetSha256": "aaba14f1ff3f911c0b10dbd7084cc2c345e12260dd05941776223792ff018f72",
+      "bytes": 4825,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/native-lower-geometry-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/native-lower-geometry-operands.json",
+      "sourceSha256": "8e839287a81abae3853f1f16b040ddd7f1308ece457ec3bdc46e7a06dee05de7",
+      "packetSha256": "8e839287a81abae3853f1f16b040ddd7f1308ece457ec3bdc46e7a06dee05de7",
+      "bytes": 1660,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/lower-upper-outward-mirror-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-upper-outward-mirror-input.json",
+      "sourceSha256": "3deb5402f220b6d72768fb7335ccb326be84f3629936532019af1f0f621634e5",
+      "packetSha256": "3deb5402f220b6d72768fb7335ccb326be84f3629936532019af1f0f621634e5",
+      "bytes": 1906,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/lower-upper-outward-mirror-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-upper-outward-mirror-return.json",
+      "sourceSha256": "f9d657ad55fbdf8e6da17b58dd1cb487f14adc509da5694d29afa2c4d8a386f9",
+      "packetSha256": "f9d657ad55fbdf8e6da17b58dd1cb487f14adc509da5694d29afa2c4d8a386f9",
+      "bytes": 1944,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/effective-speed-reuse-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/effective-speed-reuse-domain.json",
+      "sourceSha256": "340cdcfd03116b4deccbfff86f766f33eacf81dbf3e25af9fb957dd2bf926244",
+      "packetSha256": "340cdcfd03116b4deccbfff86f766f33eacf81dbf3e25af9fb957dd2bf926244",
+      "bytes": 749,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/plus-closure-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-closure-operands.json",
+      "sourceSha256": "8c580760eb56dc468117d4434d153a7658112a61a0dae310e9b730b8a3b73dfd",
+      "packetSha256": "8c580760eb56dc468117d4434d153a7658112a61a0dae310e9b730b8a3b73dfd",
+      "bytes": 6436,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/plus-closed-before-cancel.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-closed-before-cancel.json",
+      "sourceSha256": "71176a381be215289ed9da49c97224120570830320826008afffab93c1dbdada",
+      "packetSha256": "71176a381be215289ed9da49c97224120570830320826008afffab93c1dbdada",
+      "bytes": 10418,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/plus-closed-raw-increment.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-closed-raw-increment.json",
+      "sourceSha256": "1ed1418e25bb808b1c2d18d167166f6b3cd466b2c1e5f66e415f5fc892e7a766",
+      "packetSha256": "1ed1418e25bb808b1c2d18d167166f6b3cd466b2c1e5f66e415f5fc892e7a766",
+      "bytes": 46241,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/plus-external-depth-cancellation-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-external-depth-cancellation-input.json",
+      "sourceSha256": "e372d19a1830deb955e605b53ba9db863d7f3f730caaf9dbdb6ee62dad9c94cd",
+      "packetSha256": "e372d19a1830deb955e605b53ba9db863d7f3f730caaf9dbdb6ee62dad9c94cd",
+      "bytes": 2233,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/plus-external-depth-cancellation-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-external-depth-cancellation-return.json",
+      "sourceSha256": "02c4efbf39dd40c90bf6a382a7571d631527566313c514aa165b4d031e4cf677",
+      "packetSha256": "02c4efbf39dd40c90bf6a382a7571d631527566313c514aa165b4d031e4cf677",
+      "bytes": 2270,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/plus-trace-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-trace-domain.json",
+      "sourceSha256": "d255651a74e1d872509eb3d38f66e8ed2666f39c6e5f2b10635793aa8686c3d5",
+      "packetSha256": "d255651a74e1d872509eb3d38f66e8ed2666f39c6e5f2b10635793aa8686c3d5",
+      "bytes": 624,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/plus-iteration-unchanged-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-iteration-unchanged-return.json",
+      "sourceSha256": "e25581cbeb5f64fd38069876c18e7896e814054c78211abdb91e9e5d9882226f",
+      "packetSha256": "e25581cbeb5f64fd38069876c18e7896e814054c78211abdb91e9e5d9882226f",
+      "bytes": 2724,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/plus-source-zero-grade-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-source-zero-grade-operands.json",
+      "sourceSha256": "74bf98eadd1b7308cedfee659f9afd3e50fa08d40ff1b49913dac73cc0ce9e3a",
+      "packetSha256": "74bf98eadd1b7308cedfee659f9afd3e50fa08d40ff1b49913dac73cc0ce9e3a",
+      "bytes": 39624,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/plus-saved-source-zero-grade-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-saved-source-zero-grade-input.json",
+      "sourceSha256": "3df688d07a4fb6c842fd742f44a2c3d25634bef79d561c93692dc6c86650e9d4",
+      "packetSha256": "3df688d07a4fb6c842fd742f44a2c3d25634bef79d561c93692dc6c86650e9d4",
+      "bytes": 2028,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/plus-saved-source-zero-grade-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/plus-saved-source-zero-grade-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/minus-closure-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-closure-operands.json",
+      "sourceSha256": "50013b975936e79cc31181581babcf5026f821ead152a338053200e4989e394b",
+      "packetSha256": "50013b975936e79cc31181581babcf5026f821ead152a338053200e4989e394b",
+      "bytes": 6464,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/minus-closed-before-cancel.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-closed-before-cancel.json",
+      "sourceSha256": "b554e2b74b2b4354c003525797a10599adc832f69f104dcb0ed9f92395c02f1f",
+      "packetSha256": "b554e2b74b2b4354c003525797a10599adc832f69f104dcb0ed9f92395c02f1f",
+      "bytes": 10432,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/minus-closed-raw-increment.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-closed-raw-increment.json",
+      "sourceSha256": "f557644b5b3921c9cf494ebef530afae049eb3b3d9ed8999d0a411facf6d1335",
+      "packetSha256": "f557644b5b3921c9cf494ebef530afae049eb3b3d9ed8999d0a411facf6d1335",
+      "bytes": 46219,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/minus-external-depth-cancellation-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-external-depth-cancellation-input.json",
+      "sourceSha256": "e372d19a1830deb955e605b53ba9db863d7f3f730caaf9dbdb6ee62dad9c94cd",
+      "packetSha256": "e372d19a1830deb955e605b53ba9db863d7f3f730caaf9dbdb6ee62dad9c94cd",
+      "bytes": 2233,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/minus-external-depth-cancellation-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-external-depth-cancellation-return.json",
+      "sourceSha256": "02c4efbf39dd40c90bf6a382a7571d631527566313c514aa165b4d031e4cf677",
+      "packetSha256": "02c4efbf39dd40c90bf6a382a7571d631527566313c514aa165b4d031e4cf677",
+      "bytes": 2270,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/minus-trace-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-trace-domain.json",
+      "sourceSha256": "eba7d15956dc35fc380db007588a81c08b8a8a3ae55a7ee17dd95a15342e0d77",
+      "packetSha256": "eba7d15956dc35fc380db007588a81c08b8a8a3ae55a7ee17dd95a15342e0d77",
+      "bytes": 670,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/minus-iteration-unchanged-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-iteration-unchanged-return.json",
+      "sourceSha256": "0a632933dc092efd72ee5a289357211f376827e1489326488512a997a3857f63",
+      "packetSha256": "0a632933dc092efd72ee5a289357211f376827e1489326488512a997a3857f63",
+      "bytes": 2738,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/minus-source-zero-grade-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-source-zero-grade-operands.json",
+      "sourceSha256": "74bf98eadd1b7308cedfee659f9afd3e50fa08d40ff1b49913dac73cc0ce9e3a",
+      "packetSha256": "74bf98eadd1b7308cedfee659f9afd3e50fa08d40ff1b49913dac73cc0ce9e3a",
+      "bytes": 39624,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/minus-saved-source-zero-grade-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-saved-source-zero-grade-input.json",
+      "sourceSha256": "3df688d07a4fb6c842fd742f44a2c3d25634bef79d561c93692dc6c86650e9d4",
+      "packetSha256": "3df688d07a4fb6c842fd742f44a2c3d25634bef79d561c93692dc6c86650e9d4",
+      "bytes": 2028,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/minus-saved-source-zero-grade-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/minus-saved-source-zero-grade-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/upper-complete-contact-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/upper-complete-contact-input.json",
+      "sourceSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "packetSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "bytes": 124,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/upper-complete-contact-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/upper-complete-contact-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/lower-complete-contact-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-complete-contact-input.json",
+      "sourceSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "packetSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "bytes": 124,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/lower-complete-contact-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/lower-complete-contact-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/U0-retained-increment.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/U0-retained-increment.json",
+      "sourceSha256": "085846ec88caf8bc114d52803622fadbe6278edb5d1c8fdbeef77887e3414694",
+      "packetSha256": "085846ec88caf8bc114d52803622fadbe6278edb5d1c8fdbeef77887e3414694",
+      "bytes": 18941,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/U0-executed-native-census.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/U0-executed-native-census.json",
+      "sourceSha256": "808a836d4af388ba398d888c407c03b6922e296f453ceaed61844937521aec23",
+      "packetSha256": "808a836d4af388ba398d888c407c03b6922e296f453ceaed61844937521aec23",
+      "bytes": 205,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/U0-physical-row-sheet-join-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/U0-physical-row-sheet-join-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/U1-retained-increment.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/U1-retained-increment.json",
+      "sourceSha256": "085846ec88caf8bc114d52803622fadbe6278edb5d1c8fdbeef77887e3414694",
+      "packetSha256": "085846ec88caf8bc114d52803622fadbe6278edb5d1c8fdbeef77887e3414694",
+      "bytes": 18941,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/U1-executed-native-census.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/U1-executed-native-census.json",
+      "sourceSha256": "808a836d4af388ba398d888c407c03b6922e296f453ceaed61844937521aec23",
+      "packetSha256": "808a836d4af388ba398d888c407c03b6922e296f453ceaed61844937521aec23",
+      "bytes": 205,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/U1-physical-row-sheet-join-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/U1-physical-row-sheet-join-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/U2-retained-increment.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/U2-retained-increment.json",
+      "sourceSha256": "085846ec88caf8bc114d52803622fadbe6278edb5d1c8fdbeef77887e3414694",
+      "packetSha256": "085846ec88caf8bc114d52803622fadbe6278edb5d1c8fdbeef77887e3414694",
+      "bytes": 18941,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/U2-executed-native-census.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/U2-executed-native-census.json",
+      "sourceSha256": "808a836d4af388ba398d888c407c03b6922e296f453ceaed61844937521aec23",
+      "packetSha256": "808a836d4af388ba398d888c407c03b6922e296f453ceaed61844937521aec23",
+      "bytes": 205,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/U2-physical-row-sheet-join-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/U2-physical-row-sheet-join-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/THETA_BALANCE-retained-increment.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/THETA_BALANCE-retained-increment.json",
+      "sourceSha256": "0153bd249483d01ef9fe3d8c5423a9d8ead50596af29200587abdcee2e1a0729",
+      "packetSha256": "0153bd249483d01ef9fe3d8c5423a9d8ead50596af29200587abdcee2e1a0729",
+      "bytes": 1185277,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/THETA_BALANCE-executed-native-census.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/THETA_BALANCE-executed-native-census.json",
+      "sourceSha256": "7b1bd780c342be2af5c6f59d58059b5f49d01a99f719307ac64467eaf80f165d",
+      "packetSha256": "7b1bd780c342be2af5c6f59d58059b5f49d01a99f719307ac64467eaf80f165d",
+      "bytes": 2472,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/THETA_BALANCE-physical-row-sheet-join-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/THETA_BALANCE-physical-row-sheet-join-return.json",
+      "sourceSha256": "02201d4be5a116ae28dab4b732b848414704edafa0564134c4847a118dc102cd",
+      "packetSha256": "02201d4be5a116ae28dab4b732b848414704edafa0564134c4847a118dc102cd",
+      "bytes": 1152027,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/E_W_BALANCE-retained-increment.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/E_W_BALANCE-retained-increment.json",
+      "sourceSha256": "93646c5c2c3b208ffaf3b990a6b6fe55a7bed0503606bd8c01b36e6496dfa471",
+      "packetSha256": "93646c5c2c3b208ffaf3b990a6b6fe55a7bed0503606bd8c01b36e6496dfa471",
+      "bytes": 1187062,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/E_W_BALANCE-executed-native-census.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/E_W_BALANCE-executed-native-census.json",
+      "sourceSha256": "33f5575d83251e7ff41a7e11411a5216dcf51f85f5f86d6e5249901a1e2ffbbe",
+      "packetSha256": "33f5575d83251e7ff41a7e11411a5216dcf51f85f5f86d6e5249901a1e2ffbbe",
+      "bytes": 4169,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "raw/E_W_BALANCE-physical-row-sheet-join-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/diagnostic-01/complete/E_W_BALANCE-physical-row-sheet-join-return.json",
+      "sourceSha256": "20090df048b31c85c91cafb0635ff10a85c61fa382ffcfa3a16678519dd5df72",
+      "packetSha256": "20090df048b31c85c91cafb0635ff10a85c61fa382ffcfa3a16678519dd5df72",
+      "bytes": 1152503,
+      "kind": "complete file",
+      "role": "Saved raw construction operand/return; exact-match applicability not established"
+    },
+    {
+      "packetPath": "finish/E_W_BALANCE-actual-double-row-control-finite-certificate.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/E_W_BALANCE-actual-double-row-control-finite-certificate.json",
+      "sourceSha256": "806b02eaf331895a03701747584dab483ecbc25b27323af7d9e6d4cfac322ff9",
+      "packetSha256": "806b02eaf331895a03701747584dab483ecbc25b27323af7d9e6d4cfac322ff9",
+      "bytes": 2008,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "finish/E_W_BALANCE-actual-double-row-control-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/E_W_BALANCE-actual-double-row-control-return.json",
+      "sourceSha256": "059abcfb091284e620f02cef3f10b92836dfc6844c8c103fb4d24d7a746437d1",
+      "packetSha256": "059abcfb091284e620f02cef3f10b92836dfc6844c8c103fb4d24d7a746437d1",
+      "bytes": 567,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "finish/E_W_BALANCE-actual-lower-row-control-finite-certificate.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/E_W_BALANCE-actual-lower-row-control-finite-certificate.json",
+      "sourceSha256": "24da4d7139f98779178c4c98f7de135882123a995e4f3dac77e2d8c962684e74",
+      "packetSha256": "24da4d7139f98779178c4c98f7de135882123a995e4f3dac77e2d8c962684e74",
+      "bytes": 2038,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "finish/E_W_BALANCE-actual-lower-row-control-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/E_W_BALANCE-actual-lower-row-control-return.json",
+      "sourceSha256": "2aeeed8d3624f113736874fca3d72d37b5c94709ff3057932f1e81d81a02c13b",
+      "packetSha256": "2aeeed8d3624f113736874fca3d72d37b5c94709ff3057932f1e81d81a02c13b",
+      "bytes": 582,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "finish/THETA_BALANCE-actual-double-row-control-finite-certificate.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/THETA_BALANCE-actual-double-row-control-finite-certificate.json",
+      "sourceSha256": "1088ec79ab0ea83ffa6950c6da28898154506131b51acf1ff1215c70b80bfbc3",
+      "packetSha256": "1088ec79ab0ea83ffa6950c6da28898154506131b51acf1ff1215c70b80bfbc3",
+      "bytes": 1936,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "finish/THETA_BALANCE-actual-double-row-control-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/THETA_BALANCE-actual-double-row-control-return.json",
+      "sourceSha256": "6bda838e69180a676adc3608e27bde882bd2bf026c88b24bcb36e749b1df2b61",
+      "packetSha256": "6bda838e69180a676adc3608e27bde882bd2bf026c88b24bcb36e749b1df2b61",
+      "bytes": 533,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "finish/THETA_BALANCE-actual-lower-row-control-finite-certificate.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/THETA_BALANCE-actual-lower-row-control-finite-certificate.json",
+      "sourceSha256": "a933f68e1e1b627a5f139bded7ffc25cf856946ed0e577161a582c512650ff9d",
+      "packetSha256": "a933f68e1e1b627a5f139bded7ffc25cf856946ed0e577161a582c512650ff9d",
+      "bytes": 1908,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "finish/applicability.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/applicability.json",
+      "sourceSha256": "df93573576efdae344e7e2085bd574b003441af30b30f3bbe6c405416fc8614e",
+      "packetSha256": "df93573576efdae344e7e2085bd574b003441af30b30f3bbe6c405416fc8614e",
+      "bytes": 2158,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "finish/lower-reference-jet-sign-finite-certificate.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/lower-reference-jet-sign-finite-certificate.json",
+      "sourceSha256": "3a6ee985ea17fa30843b73a391e841eecc1744dc574d15fab815da5459775557",
+      "packetSha256": "3a6ee985ea17fa30843b73a391e841eecc1744dc574d15fab815da5459775557",
+      "bytes": 1263,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "finish/lower-reference-jet-sign-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/lower-reference-jet-sign-return.json",
+      "sourceSha256": "aea9d8afa47a7d4bdeb01cc629db7cf682759357b2d218074444da4ee3d4b7d9",
+      "packetSha256": "aea9d8afa47a7d4bdeb01cc629db7cf682759357b2d218074444da4ee3d4b7d9",
+      "bytes": 330,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "finish/minus-constant-end-increment-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/minus-constant-end-increment-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "finish/plus-constant-end-increment-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/plus-constant-end-increment-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "finish/reuse-native-slope-omission-response.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/reuse-native-slope-omission-response.json",
+      "sourceSha256": "b23ffbf910e568f005c412ba3e987c8f2b36c49adf2c4c57ad5b3cff8208bdb3",
+      "packetSha256": "b23ffbf910e568f005c412ba3e987c8f2b36c49adf2c4c57ad5b3cff8208bdb3",
+      "bytes": 1017,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "finish/reuse-wrong-lab-face-response.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/reuse-wrong-lab-face-response.json",
+      "sourceSha256": "2f7d51f6f9909f0591e5ad6f64a881d03a2a23762b06997dbd54d957c0af2cf4",
+      "packetSha256": "2f7d51f6f9909f0591e5ad6f64a881d03a2a23762b06997dbd54d957c0af2cf4",
+      "bytes": 1432,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "finish/reuse-wrong-sheet-response.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01/complete/reuse-wrong-sheet-response.json",
+      "sourceSha256": "5a7d42e7fb6cdd7d334aea4fbf56bb9451efb51ac681dec44097289502a2fa68",
+      "packetSha256": "5a7d42e7fb6cdd7d334aea4fbf56bb9451efb51ac681dec44097289502a2fa68",
+      "bytes": 1159,
+      "kind": "complete file",
+      "role": "Actual saved control/limit-of-scope evidence, not independent correctness"
+    },
+    {
+      "packetPath": "native-rows/U_BODY_BALANCE-0.txt",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/U_BODY_BALANCE-0.txt",
+      "sourceSha256": "2be4d3f6333ad32d034a02b4e405ac6ec1283eface906bd0b6cc3d86e646fca0",
+      "packetSha256": "2be4d3f6333ad32d034a02b4e405ac6ec1283eface906bd0b6cc3d86e646fca0",
+      "bytes": 118566,
+      "kind": "complete file",
+      "role": "Complete native expanded row with address ['slab_operator', ['LAB_HELD', 'RHO4_CONSTANT'], 'VALUE', 'U_BODY_BALANCE', 'EXPANDED', 0]"
+    },
+    {
+      "packetPath": "native-rows/U_BODY_BALANCE-1.txt",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/U_BODY_BALANCE-1.txt",
+      "sourceSha256": "be7e7e4a32fef68f498f2f4344ba648f4e9136c2df66195011d02d0cdb651a1d",
+      "packetSha256": "be7e7e4a32fef68f498f2f4344ba648f4e9136c2df66195011d02d0cdb651a1d",
+      "bytes": 118566,
+      "kind": "complete file",
+      "role": "Complete native expanded row with address ['slab_operator', ['LAB_HELD', 'RHO4_CONSTANT'], 'VALUE', 'U_BODY_BALANCE', 'EXPANDED', 1]"
+    },
+    {
+      "packetPath": "native-rows/U_BODY_BALANCE-2.txt",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/U_BODY_BALANCE-2.txt",
+      "sourceSha256": "cef1a1351606de912b3bfb34a16381ad5b8b0decb6ca882bc12f9094e2764c25",
+      "packetSha256": "cef1a1351606de912b3bfb34a16381ad5b8b0decb6ca882bc12f9094e2764c25",
+      "bytes": 118566,
+      "kind": "complete file",
+      "role": "Complete native expanded row with address ['slab_operator', ['LAB_HELD', 'RHO4_CONSTANT'], 'VALUE', 'U_BODY_BALANCE', 'EXPANDED', 2]"
+    },
+    {
+      "packetPath": "native-rows/THETA_BALANCE-0.txt",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/THETA_BALANCE-0.txt",
+      "sourceSha256": "f68aeec7625765e35fb90ce450e1dc475333d16e5dfec291cc53b309d69d4405",
+      "packetSha256": "f68aeec7625765e35fb90ce450e1dc475333d16e5dfec291cc53b309d69d4405",
+      "bytes": 199689,
+      "kind": "complete file",
+      "role": "Complete native expanded row with address ['slab_operator', ['LAB_HELD', 'RHO4_CONSTANT'], 'VALUE', 'THETA_BALANCE', 'EXPANDED']"
+    },
+    {
+      "packetPath": "native-rows/E_W_BALANCE-0.txt",
+      "sourcePath": "_scratch/s11c/s11c-defect-raw-increment-20261001/build-review/packet/native-rows/E_W_BALANCE-0.txt",
+      "sourceSha256": "9bffb7fd7412c8de8b64066a2bb60fba1d211f89ae3a07eddd106f42284bdd8f",
+      "packetSha256": "9bffb7fd7412c8de8b64066a2bb60fba1d211f89ae3a07eddd106f42284bdd8f",
+      "bytes": 340240,
+      "kind": "complete file",
+      "role": "Complete native expanded row with address ['slab_operator', ['LAB_HELD', 'RHO4_CONSTANT'], 'VALUE', 'E_W_BALANCE', 'EXPANDED']"
+    },
+    {
+      "packetPath": "worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing.py",
+      "sourceSha256": "ac635133417b0caf48674307b467790a29bd87184eeba6120b63080fa7b2a383",
+      "packetSha256": "ac635133417b0caf48674307b467790a29bd87184eeba6120b63080fa7b2a383",
+      "bytes": 32730,
+      "kind": "complete file",
+      "role": "New bounded instrument or implementation specification; no runtime result"
+    },
+    {
+      "packetPath": "launch.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_launch.py",
+      "sourceSha256": "cb23d223c63b3aa1388fd6bb918f4771913644e3a1ca4a93ed4497db18a70dac",
+      "packetSha256": "cb23d223c63b3aa1388fd6bb918f4771913644e3a1ca4a93ed4497db18a70dac",
+      "bytes": 8126,
+      "kind": "complete file",
+      "role": "New bounded instrument or implementation specification; no runtime result"
+    },
+    {
+      "packetPath": "tooling-tests.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_test.py",
+      "sourceSha256": "57b4d210847727ce5e383f3ded1428e351dd55476dc659e8654e6a1f36510284",
+      "packetSha256": "57b4d210847727ce5e383f3ded1428e351dd55476dc659e8654e6a1f36510284",
+      "bytes": 5899,
+      "kind": "complete file",
+      "role": "New bounded instrument or implementation specification; no runtime result"
+    },
+    {
+      "packetPath": "inputs.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_inputs.json",
+      "sourceSha256": "836a8f33d1c9af0a7b69add890de2aaf129ae4da385b15722749c909decb0f2e",
+      "packetSha256": "836a8f33d1c9af0a7b69add890de2aaf129ae4da385b15722749c909decb0f2e",
+      "bytes": 13812,
+      "kind": "complete file",
+      "role": "New bounded instrument or implementation specification; no runtime result"
+    },
+    {
+      "packetPath": "implementation-plan.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_plan.md",
+      "sourceSha256": "6f3602d3e869037548c8556cd1117abe7664a25da037efaf0b7ec5a38e49a91e",
+      "packetSha256": "6f3602d3e869037548c8556cd1117abe7664a25da037efaf0b7ec5a38e49a91e",
+      "bytes": 6347,
+      "kind": "complete file",
+      "role": "New bounded instrument or implementation specification; no runtime result"
+    },
+    {
+      "packetPath": "tooling-tests.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_tooling_tests.json",
+      "sourceSha256": "ead1d5705b34c826e5f074fc9aea841d6368d02b7eeb42a2e117103bf14ba75c",
+      "packetSha256": "ead1d5705b34c826e5f074fc9aea841d6368d02b7eeb42a2e117103bf14ba75c",
+      "bytes": 663,
+      "kind": "complete file",
+      "role": "New bounded instrument or implementation specification; no runtime result"
+    },
+    {
+      "packetPath": "review-prompt.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_closed_grazing_build_r2_prompt.md",
+      "sourceSha256": "caa316a97279e778fe0304396144c5e6ead42d91f8f366f165e062c31d95b3c3",
+      "packetSha256": "caa316a97279e778fe0304396144c5e6ead42d91f8f366f165e062c31d95b3c3",
+      "bytes": 4212,
+      "kind": "complete file",
+      "role": "New bounded instrument or implementation specification; no runtime result"
+    },
+    {
+      "packetPath": "runtime-source/shared-guard.py",
+      "sourcePath": "scripts/s11c_guarded_run.py",
+      "sourceSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "packetSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "bytes": 21340,
+      "kind": "complete file",
+      "role": "Actual shared no-deadline pooled containment"
+    },
+    {
+      "packetPath": "runtime-source/supervisor.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "sourceSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "packetSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "bytes": 4837,
+      "kind": "complete file",
+      "role": "Actual unchanged normalization supervisor"
+    },
+    {
+      "packetPath": "fourier-convention.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/selected-fourier-contraction.json",
+      "sourceSha256": "961648675f6c371fc2e185b025c1a6197c8b0a70020a8dcecb1b0d4b06115644",
+      "packetSha256": "961648675f6c371fc2e185b025c1a6197c8b0a70020a8dcecb1b0d4b06115644",
+      "bytes": 4861,
+      "kind": "complete file",
+      "role": "Historical upper k=0 Fourier witness explains explicit exclusion of a general/lower-face Fourier claim; not a runtime operand"
+    }
+  ],
+  "oldPeerReportsIncluded": false,
+  "sciencePerformed": false,
+  "methodRecordInManifest": "Hash/path identifies runtime prerequisite only; no peer report content is supplied."
+}

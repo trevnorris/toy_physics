@@ -1,0 +1,29 @@
+# Closed-grazing instrument specification
+
+This implements the proposed closed direct-kernel method, including its required execution obligations, on the existing saved both-face raw increment. No convolution is evaluated and no finite matrix, production export or defect sweep is constructed. The kernel alone uses the analytic outgoing-frequency device; source/row coefficients remain at the actual real construction frequency 3. The output combines exact algebraic certificates with the independently assessed analytic L1 argument. It is not a machine proof of measure theory or a loss result.
+
+Restore selected complete JSON operands from their pinned source files, copy them byte-for-byte, and keep exact assumptions/argument maps. Do not invoke the original raw worker, boundary constructor, factorization function, profile transform, row construction or completed controls. Import only its unchanged persistence/decoder/containment helpers after verifying source hashes, and import scientific libraries only inside containment. The new work is the missing unrestricted-frequency algebra, closed-density joins, domain/bound/limit certificates and associated controls.
+
+The unrestricted-frequency certificate transports the already saved generic coefficient and B to a new complex frequency symbol. It reduces their new difference by the two common-dispersion identities, saves the original numerator and reduction, and checks contact zero with nonzero complex-frequency depths. This does not repeat the boundary derivation. Both faces use their actual saved coefficient and their own closure/reference/jet objects. Join the native coefficient law to its saved value, then to its continued beta. Retain all profile half factors and ordinary middle measure. Verify saved native lower normal/location signs, not merely the mirror equality.
+
+Build (1), join its density at real frequency 3 to each actual saved closed physical/reference/jet density, and save exact residuals. For coefficient finiteness, divide the actual retained D-plus/D-minus slot by the respective saved external reference factor, then certify the resulting finite polynomial in formal source jets. Use the recorded Fourier sign convention to display its input-momentum symbol at frequency 3, and check each scalar coefficient at both signed modal matches. U-row zeros are saved evidence. Unknown, transfer/depth dependence or non-polynomial source factors stop.
+
+The bound certificates use fresh positive real variables and exact nonnegative-polynomial decompositions, not numerical samples or symbolic unknown-to-true decisions. They include the beta components/lower bound, quadrant sum identity, radicand imaginary part and inverse-root comparison, compact-domain constants, endpoint enclosure and collisions. For l=-k the two internal routes coincide identically and remain a sum in the envelope. The proposed L1 conclusion combines these checked identities with the written uniform-integrability/tail proof.
+
+For the tail, take T>=12. Comparison endpoints have magnitude at most 6, so inverse-depth envelopes are bounded by 2 sqrt(2)/(sqrt(kappa_min) sqrt(|t|)). For |Q|<=6 and |t|>=12, both profile arguments have magnitude >=1, and
+
+    |A(t)A(Q-t)| <= (3 L^2/2) |t|^2 exp[-5 pi(2|t|-6)].
+
+The sum of the two polynomial coefficients in the Bc envelope is 61+6|t|<=12|t|. Replacing sqrt(|t|) by |t| gives a conservative density bound C exp(30pi)|t|^3 exp(-10pi|t|), with
+
+    C=(WL/4)(3L^2/2)(4 rho_m/beta_min^2)(24 sqrt(2)/sqrt(kappa_min)).
+
+The two-sided tail is at most 2 C exp(30pi) exp(-10pi T) times
+
+    T^3/(10pi) + 3T^2/(10pi)^2 + 6T/(10pi)^3 + 6/(10pi)^4.
+
+The instrument checks the antiderivative identity and positive constants but does not call an integral evaluator. The sinh estimate follows from 1-exp(-10pi)>=1/2; retain its elementary proof using pi>3 and exp(x)>=1+x. The local measurable-set bound is 2 sqrt(2m) per endpoint, which tends to zero uniformly. This rules out concentrated mass only when combined with the exact finite-delta contact identity and the assessed L1 argument.
+
+The instrument checks qi-only, qo-only and both-grazing rational limits away from internal endpoints, plus same/opposite-momentum collision identities. It does not assign values at singular t points. Predeclared new controls: the bare coefficient without external closure has a nonzero qi-pole residue at a source-bound input-grazing point; flipping a positive outgoing depth violates the actual quadrant predicate; flipping the lower jet makes its joined residual nonzero at input-only grazing. Each control has actual operands and explicit applicability. Old response controls are preserved but not rerun.
+
+One 4 GiB native/cgroup worker in the 16 GiB pool, zero swap, one CPU/thread, 32 tasks, 4 GiB host reserve, desktop priority, no deadlines. Fresh reviewed worker/manifest/helper/method identities and a hook-first gate are required before execution. No automatic scientific retry. Persist operands before guards and keep all failures. Applicable source review does not itself accept runtime results.

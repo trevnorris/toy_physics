@@ -1,3 +1,16 @@
+**CLOSED-GRAZING INSTRUMENT PREPARED FOR BUILD REVIEW (2026-10-01):**
+New task-local worker reuses selected actual raw operands, transports BOTHreal
+frequency/depth assumptions to unrestricted symbols, joins actual closed/root/
+face/row objects and derives missing complexcontact/domain/limit/tail controls.
+No boundary/profile/source/row producer replay, no integral/finite solve.12stdlib
+methods (10identity subcases) pass on exact source; no scientific imports or
+restoration in preparation. Newproof uses exact identities plus assessedanalytic
+argument, not automated measure theory. Source/packet/archive preflight checked.
+Frozen102files/7540228bytes,packetf6d0b4538763ac6eeb88303892d95662feba084e876a3fe7f7bd84d62fb796bc.
+FreshClaude/Grok BUILD assessment next under standingconsent; no READYgate or
+science run exists. Methodpair atd800c8ab is not worker/result clearance. No
+routinepermission; keep working after substantiveassessment/readiness.
+
 **CLOSED-GRAZING METHOD BOTH CLEAR; INSTRUMENT NEXT (2026-10-01):**
 Both delivered applicability SUPPORTED WITH STATED LIMITS and method CLEAR FOR
 BOUNDED CLOSED-GRAZING IMPLEMENTATION.486receipt/source/archive/private checks

@@ -1,0 +1,19 @@
+{
+  "status": "PASSED_STDLIB_TOOLING_TESTS_ONLY",
+  "workerSha256": "a7a828728f4ef7bf11d2a0be8b6eea98ba1c0a02ce113872f9ff8cde160f25c2",
+  "testsSha256": "a459fc8aa9d88bcfa93f6e33211c1c329008cec0d717898965f407e036262058",
+  "unittestMethods": 12,
+  "identityMismatchSubcases": 10,
+  "runtimeScientificAcceptance": false,
+  "scientificImportsOrRestoration": false,
+  "checks": [
+    "exact helpers",
+    "no top-level science",
+    "no integral/solver/producer calls",
+    "gate matching and missing/mismatched identities",
+    "literal paired verdict requirement",
+    "native/helper review join",
+    "authority and no-deadline refusal",
+    "launcher AST"
+  ]
+}

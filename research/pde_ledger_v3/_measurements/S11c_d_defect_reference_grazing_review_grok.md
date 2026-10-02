@@ -1,0 +1,45 @@
+I'll review the bounded grazing-face method from the supplied packet only, starting with the method text, evidence guide, and packet index.The packet index is in place. Next I’ll read the native route map and the source functions the method actually cites.The route map shows the native kernels. I’ll now check those formulas against the saved closure, trace, and Fourier operands.The review was mid-verdict when the session compacted. I am re-reading the method and the load-bearing source identities before writing the verdict.The method text is in hand. Next I am checking the native face route, both-face signs, and the saved closure operands against formulas (1)–(10).CLEAR FOR THIS BOUNDED REFERENCE-GRAZING METHOD
+
+No substantive scientific blocker. The proposed formulas match the native face route, both-face signs, closure factorization, and the stated constants. This is a source review of an author derivation. It is not worker clearance, not an executed identity, and not a result.
+
+## What the source supports
+
+Native ordering is output on the left. `dtn_first_kernel` in the Eulerian route, as exported in `native/selected-trace.json` `FIRST_SHAPE`, is
+
+\[
+I\mu\frac{\text{height}\,q_o q_i+\text{height}(|k_{\mathrm{in}}|^2-\omega^2/c_s^2)-I\,(\mathrm{tilt}\cdot k_{\mathrm{in}})}{q_o q_i}.
+\]
+
+`shape_source` sets height to \(\eta W_0\widehat{w}_1/2\) and tilt to \(\sigma_W\) times the jet over 2. On the physical sheet \(|k_{\mathrm{in}}|^2-\omega^2/c_s^2=-q(k)^2\), with the edge sum \((1/5)^2+(1/10)^2=1/20\), this is formula (1): height \(I\mu(q_o-q_i)/q_o\) and slope \(\mu k/(q_o q_i)\). The slope momentum is the input profile momentum. Edge jets drop because those profile derivatives are absent. `kernel_bridge` substitutes \(q_i^2\) and \(q_o^2\), but `FIRST_SHAPE` does not contain those factors, so that substitution does not perform the reduction. The method already requires the dispersion join, and the saved lower height difference in `raw/lower-native-height-return.json` is the algebraic zero of that reduction, including the \(1/20\) terms. The lower slope coefficient in `raw/lower-native-slope-input.json` is \(k\,\omega\rho/(q_i q_s)\) on both sides.
+
+`build_face` builds physical pressure by `kernel_apply` of `pmat` and the mixed second scattering, then builds the normal jet by differentiating \(\exp(I f q_o(N-W f/2))\) on the reference kernels, and returns `REFERENCE_VALUE_SOLVE` with that physical pressure as target. The returned slot is one affine trace solve. Upper trace height is \(+\eta w_1/2\) with jet \(+I q_o\); lower trace height is \(-\eta w_1/2\) with jet \(-I q_o\) (`raw/plus-trace-domain.json`, `raw/minus-trace-domain.json`). The product is face-independent, so \(T_1(l,k)=I q(k) h(Q)\) uses the input depth and does not negate the outgoing root. The field jet uses the output depth. Flat reference pressure stays \(\mu/(q+\beta)\). Pure slope is unchanged by the trace. The height trace subtraction produces (5).
+
+The three-leg physical cross terms reduce to the first two lines of (7). Because \(\beta=a\mu\), the height-left/slope-right term plus the trace subtraction \(T_1 F_j\) cancel in the middle depth and leave (8). At \(m=l\) the physical piece has \(q_o-q_m=0\), so the contact \(C(l,k)(W/4)j(Q)\) comes from the trace subtraction. Removing that subtraction changes the contact to zero and also changes the first-height kernel, which is the control the method states. The other assignment has factor \(q_m-q_i\), so its \(t=0\) contact is zero, including in the limit \(q_i\to 0\). On the common sheet \(q_m-q_i=-t(m+k)/(q_m+q_i)\). Cancelling \(t\) against the principal-value profile produces (10) with the positive sign: the \(-I\) in (7), the \(1/I\) in \(h\), and the minus in the root difference multiply to \(+1\). The factor \(q_i/(q_m+q_i)\) has to stay together. The direct \((1,1)\) piece factors as raw times the two external resolvent weights only (`raw/plus-iteration-unchanged-input.json`) and is added once, outside (2). Grade \((1,1)\) does not include \(T_1^2\), height-height, slope-slope, or trace acting again on the direct block.
+
+The constants hold on the stated domain. \(b_0=3000/11101\) is \(\operatorname{Re}\beta\) at \(\delta=1/10\), and \(|q+\beta|\ge b_0\) for first-quadrant depths. \(|a|\le 1\) and \(|\mu|\le 2/5\) give \(|a\mu^2 WL/4|\le 2/5\), so (11) is right. \(\kappa_{\min}^2=879/400\). For \(|t|\ge 12\), \(|q(k+t)|\ge|t|/\sqrt{2}\) holds, with equality almost met at \(|t|=12\), \(|k|=3\), because the edge \(1/20\) lifts \(81-9=72\) to \(1441/20\). The profile bound \(150 e^{30\pi}|t|^2 e^{-10\pi|t|}\) matches \(|Q-t|\ge|t|-6\) in the exponential and \(|Q-t|\le 3|t|/2\) in the prefactor. The resulting coefficient is \(112.5\sqrt{2}\approx 159.1\), so the stated \(200/b_0^3\) in (12) is a valid loose bound. Local integrability is one sum of two inverse square roots, integrated by at most \(4\sqrt{2u}/\sqrt{\kappa_{\min}}\). The quadrant comparison \(|u+v|\ge|u-v|\) gives (14), \(|C|\le 6/(5 b_0)\), jet supremum at most 2, and jet variation \((4\sqrt{7}/(5 b_0^2))|Q|^{1/2}\). \(|A'|\le L/4\) follows from \(0\le x\cosh x-\sinh x\le\sinh^2 x\), and the local integrand of (9) is at most \(L^2/(16\pi)\).
+
+Edge reduction supplies the normalized one-dimensional factor \(1/(2\pi)\) and a plain middle measure (`raw/edge-delta-reduction.json`, `raw/native-fourier-contract.json`). Formulas (4) and (6) are ordinary or diagonal. Formula (5) and the contact part of (9) stay delta-plus-principal-value. Dominated convergence on \(C_c^1((-3,3))\) output tests is the right limiting statement for the height. Same-momentum and opposite-momentum endpoint collisions remain integrable. No omitted retained rectangle term invalidates the split: direct \((1,1)\), both iteration orders, and one trace subtraction.
+
+The controls are tied to those operations. A wrong middle resolvent or a wrong middle outgoing root changes (8) and (10). A lower-height sign change at fixed normal changes \(T_1\).
+
+## Wording, not a blocker
+
+Displayed (1) and (5)–(10) strip \(\eta\) from height and \(\sigma_W\) from slope. Line 65 says so, and section 6 requires the instrument to put those factors back and to keep them independent. The surviving contact of the mixed block is the grade \((1,1)\) multiple of \(C(W/4)j(Q)\). Writing the monomials on the displays would make that harder to miss.
+
+Displayed (14) replaces \(|\mu q_i|\) by 2. That uniform bound is valid. The prose already keeps \(|q_i|\) so the height action vanishes as \(q_i\to 0\). The certificate should record the \(|q_i|\) form.
+
+\(|a|\le 1\) and \(|\mu|\le 2/5\) are elementary from the saved law and from \(|\Omega|^2\le 901/100\). They are not separate named fields in `grazing/domain-bound-certificate.json`. The inequalities themselves hold. \(|q|\le 5\) is only for the external momenta in \([-3,3]\).
+
+## Persistence, not a scientific correction
+
+`plus_raw_direct` is stored as a symbol in the closure matrices. The expanded direct density is stated in `prior-direct-method.md` and constructed in `source/closed-worker.py`; the emitted closed-density record is not one of the JSON files in this packet. The instrument should load that certified direct convolution from the completed direct-kernel store and add it once. It should not integrate it again and should not expect it inside `build_face`.
+
+Saved depth symbols carry `nonzero=True`, and the sheet returns `nan` on a zero radicand. Continuation has to rebind unrestricted \(Z_0=\mu/q\) and \(I+aZ\), then match the numeric \(\omega=3\) anchor coefficient by coefficient.
+
+## If the instrument is executed
+
+It would establish the retained response kernels per unit native source on this compact family: grades \((0,0)\), \((1,0)\), \((0,1)\), and \((1,1)\); both faces; reference slot and normal jet \(I f q(l)\); an \(L^1\) limit for the ordinary density \(J\); and a distributional limit for the height, including \(q_i=0\), \(q_o=0\), both external matches, and contact-endpoint coincidence. The direct block stays the already certified addend.
+
+Outside this method: full source and consumer assembly, slab-row composition, finite inverse, quadrature, defect sweep, physical loss, \(\eta^2\) and \(\sigma_W^2\), \(\kappa=0\), and \(\beta=0\). `source/finite.py` uses momentum cutoffs 4 and 6 and marks the loss interpretation unresolved. No transfer to those settings is claimed, and none is supported here. Generic nonzero symbolic depths and finite samples do not establish the grazing limit.
+
+Runtime evidence that has to be produced, with operands before guards, is: unrestricted joins of (1)–(10) to `FIRST_SHAPE`, both trace signs, and the final affine slot; the dispersion identity rather than independent formal depths; \(\eta\) and \(\sigma_W\) restored; the direct convolution added once; recorded inequalities for (11)–(14), the tail at \(|t|\ge 12\), the one-route local integral, and the jet Hölder bound; separate certificates that the \(C\) contact survives and the other assignment’s contact is zero; and the four sensitivity controls on nongrazing nonzero momenta.

@@ -1,0 +1,17 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-02T04:34:59.562365+00:00",
+  "packetSha256": "6d416736f7bde0ab10ae8d10761d4415757bbf3e23fa004441ebc8175200d2be",
+  "archiveSha256": "d930278ce82e2b2f9429f88ce58c020f90f809526274bf86288f2d94a14daa70",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 93,
+  "bytes": 7441124,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "AGENTS.md Standing review-submission authorization; latest user directs continued work whenever there is a clear next step",
+  "latestUserQuote": "K. Then please keep going. You keep pausing after steps, but you have my permission to keep hammering on this as long as you have a clear next step",
+  "scope": "Necessary method/source assessment within ongoing rest-bulk near-unity preparation; no new reviewer or unrelated disclosure",
+  "noAutomaticRetry": true
+}

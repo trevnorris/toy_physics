@@ -1,0 +1,825 @@
+{
+  "status": "SUPPORTED_SOURCE_JOINED_FULL_RETAINED_WEAK_OPERATOR",
+  "recordedUtc": "2026-10-02T20:52:34.133371+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01",
+  "gateCommit": "3e5c788a",
+  "buildReviewCommit": "4a53c696",
+  "workerSha256": "ea1726dd7cc28bca6c85c06276c03941ad3b17de5e6d752e53a8cc487d77d738",
+  "manifestSha256": "2a202a423a6b64077e6540bc1f81ab808bcaf532473aee5e8c65219465e80cbe",
+  "gateSha256": "23f95d96c9a88df8ea41942a6be72c4141ee8fb30f62f62c3ac5fc6f2ef3982a",
+  "inspectionChecks": 85611,
+  "allInspectionChecksPassed": true,
+  "acceptanceScope": "Complete retained complex-bilinear Schwartz weak operator, joining the native local complement with inherited global pressure evidence; conditional on assessed analytic continuity and inherited dependencies. No evaluated response integral, finite inverse, plane-wave/current/loss acceptance.",
+  "cost": {
+    "workerSeconds": 251.14057336200494,
+    "guardSeconds": 252.06057128496468,
+    "peakBytes": 751026176,
+    "swapBytes": 0,
+    "memoryEvents": 0,
+    "resourceSamples": 127
+  },
+  "coverage": {
+    "completedStages": 186,
+    "artifacts": 473,
+    "journalLiteralZeroReturns": 20,
+    "exactEvidenceRecords": 113410,
+    "exactEvidenceKinds": {
+      "zero-input": 16010,
+      "zero-return": 16010,
+      "pressure-assembly-input": 5,
+      "constant-input": 28623,
+      "constant-components": 28623,
+      "polynomial-input": 12035,
+      "polynomial-return": 12035,
+      "memory-domain-input": 23,
+      "memory-domain-return": 23,
+      "memory-sign-operands": 21,
+      "mixed-control": 1,
+      "Leibniz-control-coefficients": 1
+    },
+    "newLiteralZeros": 16030,
+    "inheritedZeroReturns": 103,
+    "newFormalResponsiveControls": 3,
+    "localChildren": 2908,
+    "localCells": 400,
+    "nonzeroLocalCells": 158,
+    "localWaveJets": 110,
+    "maximumLocalXOrder": 3,
+    "maximumCoefficientDegree": 6,
+    "memoryDenominatorBases": 23,
+    "timeSignPowers": {
+      "1": 13,
+      "2": 8
+    },
+    "savedCopies": 380,
+    "sourcePosthashes": 1009,
+    "sourceSnapshots": 629,
+    "additionalIdentityCopies": 16,
+    "files": 861,
+    "bytes": 222747664
+  },
+  "controls": [
+    {
+      "name": "omit-native-mixed-child",
+      "row": "U0",
+      "childIndex": 3,
+      "cell": {
+        "fieldColumn": 4,
+        "xOrder": 0,
+        "grade": [
+          1,
+          1
+        ]
+      },
+      "baseline": {
+        "text": "14*full_weak_tanh_variable**6/2525 + 107*full_weak_tanh_variable**5/25250 - 1441*full_weak_tanh_variable**4/50500 + 1917*full_weak_tanh_variable**3/202000 + 11797*full_weak_tanh_variable**2/202000 - 2773*full_weak_tanh_variable/202000 - 7153/202000",
+        "srepr": "Add(Mul(Rational(14, 2525), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(6))), Mul(Rational(107, 25250), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(5))), Mul(Integer(-1), Rational(1441, 50500), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(4))), Mul(Rational(1917, 202000), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(3))), Mul(Rational(11797, 202000), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Integer(-1), Rational(2773, 202000), Symbol('full_weak_tanh_variable', real=True)), Rational(-7153, 202000))"
+      },
+      "corrupt": {
+        "text": "14*full_weak_tanh_variable**6/2525 + 107*full_weak_tanh_variable**5/25250 - 1441*full_weak_tanh_variable**4/50500 + 7271*full_weak_tanh_variable**3/101000 + 12211*full_weak_tanh_variable**2/101000 - 7699*full_weak_tanh_variable/101000 - 9889/101000",
+        "srepr": "Add(Mul(Rational(14, 2525), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(6))), Mul(Rational(107, 25250), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(5))), Mul(Integer(-1), Rational(1441, 50500), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(4))), Mul(Rational(7271, 101000), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(3))), Mul(Rational(12211, 101000), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Integer(-1), Rational(7699, 101000), Symbol('full_weak_tanh_variable', real=True)), Rational(-9889, 101000))"
+      },
+      "movement": {
+        "original": {
+          "text": "full_weak_tanh_variable**3/16 + full_weak_tanh_variable**2/16 - full_weak_tanh_variable/16 - 1/16",
+          "srepr": "Add(Mul(Rational(1, 16), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(3))), Mul(Rational(1, 16), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Integer(-1), Rational(1, 16), Symbol('full_weak_tanh_variable', real=True)), Rational(-1, 16))"
+        },
+        "polynomial": {
+          "text": "full_weak_tanh_variable**3/16 + full_weak_tanh_variable**2/16 - full_weak_tanh_variable/16 - 1/16",
+          "srepr": "Add(Mul(Rational(1, 16), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(3))), Mul(Rational(1, 16), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Integer(-1), Rational(1, 16), Symbol('full_weak_tanh_variable', real=True)), Rational(-1, 16))"
+        },
+        "denominator": {
+          "value": {
+            "text": "1",
+            "srepr": "Integer(1)"
+          },
+          "real": {
+            "text": "1",
+            "srepr": "Integer(1)"
+          },
+          "imaginary": {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          "finite": true,
+          "nonzero": true
+        },
+        "coefficients": [
+          {
+            "order": 0,
+            "value": {
+              "text": "-1/16",
+              "srepr": "Rational(-1, 16)"
+            }
+          },
+          {
+            "order": 1,
+            "value": {
+              "text": "-1/16",
+              "srepr": "Rational(-1, 16)"
+            }
+          },
+          {
+            "order": 2,
+            "value": {
+              "text": "1/16",
+              "srepr": "Rational(1, 16)"
+            }
+          },
+          {
+            "order": 3,
+            "value": {
+              "text": "1/16",
+              "srepr": "Rational(1, 16)"
+            }
+          }
+        ],
+        "coefficientCertificates": [
+          {
+            "value": {
+              "text": "-1/16",
+              "srepr": "Rational(-1, 16)"
+            },
+            "real": {
+              "text": "-1/16",
+              "srepr": "Rational(-1, 16)"
+            },
+            "imaginary": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "finite": true,
+            "nonzero": true
+          },
+          {
+            "value": {
+              "text": "-1/16",
+              "srepr": "Rational(-1, 16)"
+            },
+            "real": {
+              "text": "-1/16",
+              "srepr": "Rational(-1, 16)"
+            },
+            "imaginary": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "finite": true,
+            "nonzero": true
+          },
+          {
+            "value": {
+              "text": "1/16",
+              "srepr": "Rational(1, 16)"
+            },
+            "real": {
+              "text": "1/16",
+              "srepr": "Rational(1, 16)"
+            },
+            "imaginary": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "finite": true,
+            "nonzero": true
+          },
+          {
+            "value": {
+              "text": "1/16",
+              "srepr": "Rational(1, 16)"
+            },
+            "real": {
+              "text": "1/16",
+              "srepr": "Rational(1, 16)"
+            },
+            "imaginary": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "finite": true,
+            "nonzero": true
+          }
+        ],
+        "degree": 3,
+        "zero": false,
+        "bound": {
+          "text": "1/4",
+          "srepr": "Rational(1, 4)"
+        }
+      },
+      "formalCoefficientOnly": true
+    },
+    {
+      "name": "omit-native-profile-L",
+      "row": "U0",
+      "childIndex": 3,
+      "grade": [
+        1,
+        1
+      ],
+      "actualProfileRule": {
+        "name": "w1_profile_d1",
+        "directions": [
+          "1"
+        ],
+        "order": 1,
+        "L": {
+          "text": "10",
+          "srepr": "Integer(10)"
+        },
+        "unscaled": {
+          "text": "1/20 - full_weak_tanh_variable**2/20",
+          "srepr": "Add(Rational(1, 20), Mul(Integer(-1), Rational(1, 20), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))))"
+        },
+        "value": {
+          "text": "1/2 - full_weak_tanh_variable**2/2",
+          "srepr": "Add(Rational(1, 2), Mul(Integer(-1), Rational(1, 2), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))))"
+        },
+        "initial": {
+          "text": "full_weak_tanh_variable/2 + 1/2",
+          "srepr": "Add(Mul(Rational(1, 2), Symbol('full_weak_tanh_variable', real=True)), Rational(1, 2))"
+        },
+        "transverseProfileDerivative": false,
+        "identities": [
+          {
+            "name": "actual-profile-derivative",
+            "left": {
+              "text": "1/20 - tanh(full_weak_x/10)**2/20",
+              "srepr": "Add(Rational(1, 20), Mul(Integer(-1), Rational(1, 20), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2))))"
+            },
+            "right": {
+              "text": "1/20 - tanh(full_weak_x/10)**2/20",
+              "srepr": "Add(Rational(1, 20), Mul(Integer(-1), Rational(1, 20), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2))))"
+            },
+            "raw": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "cancelled": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          },
+          {
+            "name": "left-profile-jet",
+            "left": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "right": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "raw": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "cancelled": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          },
+          {
+            "name": "right-profile-jet",
+            "left": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "right": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "raw": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "cancelled": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          }
+        ]
+      },
+      "baselineChild": {
+        "text": "-full_weak_tanh_variable**3/16 - full_weak_tanh_variable**2/16 + full_weak_tanh_variable/16 + 1/16",
+        "srepr": "Add(Mul(Integer(-1), Rational(1, 16), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(3))), Mul(Integer(-1), Rational(1, 16), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Rational(1, 16), Symbol('full_weak_tanh_variable', real=True)), Rational(1, 16))"
+      },
+      "corruptChild": {
+        "text": "-full_weak_tanh_variable**3/160 - full_weak_tanh_variable**2/160 + full_weak_tanh_variable/160 + 1/160",
+        "srepr": "Add(Mul(Integer(-1), Rational(1, 160), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(3))), Mul(Integer(-1), Rational(1, 160), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Rational(1, 160), Symbol('full_weak_tanh_variable', real=True)), Rational(1, 160))"
+      },
+      "baselineCell": {
+        "text": "14*full_weak_tanh_variable**6/2525 + 107*full_weak_tanh_variable**5/25250 - 1441*full_weak_tanh_variable**4/50500 + 1917*full_weak_tanh_variable**3/202000 + 11797*full_weak_tanh_variable**2/202000 - 2773*full_weak_tanh_variable/202000 - 7153/202000",
+        "srepr": "Add(Mul(Rational(14, 2525), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(6))), Mul(Rational(107, 25250), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(5))), Mul(Integer(-1), Rational(1441, 50500), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(4))), Mul(Rational(1917, 202000), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(3))), Mul(Rational(11797, 202000), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Integer(-1), Rational(2773, 202000), Symbol('full_weak_tanh_variable', real=True)), Rational(-7153, 202000))"
+      },
+      "corruptCell": {
+        "text": "14*full_weak_tanh_variable**6/2525 + 107*full_weak_tanh_variable**5/25250 - 1441*full_weak_tanh_variable**4/50500 + 26559*full_weak_tanh_variable**3/404000 + 46319*full_weak_tanh_variable**2/404000 - 28271*full_weak_tanh_variable/404000 - 37031/404000",
+        "srepr": "Add(Mul(Rational(14, 2525), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(6))), Mul(Rational(107, 25250), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(5))), Mul(Integer(-1), Rational(1441, 50500), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(4))), Mul(Rational(26559, 404000), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(3))), Mul(Rational(46319, 404000), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Integer(-1), Rational(28271, 404000), Symbol('full_weak_tanh_variable', real=True)), Rational(-37031, 404000))"
+      },
+      "movement": {
+        "original": {
+          "text": "9*full_weak_tanh_variable**3/160 + 9*full_weak_tanh_variable**2/160 - 9*full_weak_tanh_variable/160 - 9/160",
+          "srepr": "Add(Mul(Rational(9, 160), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(3))), Mul(Rational(9, 160), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Integer(-1), Rational(9, 160), Symbol('full_weak_tanh_variable', real=True)), Rational(-9, 160))"
+        },
+        "polynomial": {
+          "text": "9*full_weak_tanh_variable**3/160 + 9*full_weak_tanh_variable**2/160 - 9*full_weak_tanh_variable/160 - 9/160",
+          "srepr": "Add(Mul(Rational(9, 160), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(3))), Mul(Rational(9, 160), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Integer(-1), Rational(9, 160), Symbol('full_weak_tanh_variable', real=True)), Rational(-9, 160))"
+        },
+        "denominator": {
+          "value": {
+            "text": "1",
+            "srepr": "Integer(1)"
+          },
+          "real": {
+            "text": "1",
+            "srepr": "Integer(1)"
+          },
+          "imaginary": {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          "finite": true,
+          "nonzero": true
+        },
+        "coefficients": [
+          {
+            "order": 0,
+            "value": {
+              "text": "-9/160",
+              "srepr": "Rational(-9, 160)"
+            }
+          },
+          {
+            "order": 1,
+            "value": {
+              "text": "-9/160",
+              "srepr": "Rational(-9, 160)"
+            }
+          },
+          {
+            "order": 2,
+            "value": {
+              "text": "9/160",
+              "srepr": "Rational(9, 160)"
+            }
+          },
+          {
+            "order": 3,
+            "value": {
+              "text": "9/160",
+              "srepr": "Rational(9, 160)"
+            }
+          }
+        ],
+        "coefficientCertificates": [
+          {
+            "value": {
+              "text": "-9/160",
+              "srepr": "Rational(-9, 160)"
+            },
+            "real": {
+              "text": "-9/160",
+              "srepr": "Rational(-9, 160)"
+            },
+            "imaginary": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "finite": true,
+            "nonzero": true
+          },
+          {
+            "value": {
+              "text": "-9/160",
+              "srepr": "Rational(-9, 160)"
+            },
+            "real": {
+              "text": "-9/160",
+              "srepr": "Rational(-9, 160)"
+            },
+            "imaginary": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "finite": true,
+            "nonzero": true
+          },
+          {
+            "value": {
+              "text": "9/160",
+              "srepr": "Rational(9, 160)"
+            },
+            "real": {
+              "text": "9/160",
+              "srepr": "Rational(9, 160)"
+            },
+            "imaginary": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "finite": true,
+            "nonzero": true
+          },
+          {
+            "value": {
+              "text": "9/160",
+              "srepr": "Rational(9, 160)"
+            },
+            "real": {
+              "text": "9/160",
+              "srepr": "Rational(9, 160)"
+            },
+            "imaginary": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            },
+            "finite": true,
+            "nonzero": true
+          }
+        ],
+        "degree": 3,
+        "zero": false,
+        "bound": {
+          "text": "9/40",
+          "srepr": "Rational(9, 40)"
+        }
+      },
+      "formalCoefficientOnly": true
+    },
+    {
+      "name": "local-Leibniz-interchange",
+      "cell": {
+        "row": "U0",
+        "fieldColumn": 0,
+        "xOrder": 1,
+        "grade": [
+          0,
+          1
+        ]
+      },
+      "coefficient": {
+        "text": "-42*full_weak_tanh_variable**5/2525 + 99*full_weak_tanh_variable**4/5050 + 17*full_weak_tanh_variable**3/303 - 1523*full_weak_tanh_variable**2/20200 - 299*full_weak_tanh_variable/7575 + 1127/20200",
+        "srepr": "Add(Mul(Integer(-1), Rational(42, 2525), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(5))), Mul(Rational(99, 5050), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(4))), Mul(Rational(17, 303), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(3))), Mul(Integer(-1), Rational(1523, 20200), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Integer(-1), Rational(299, 7575), Symbol('full_weak_tanh_variable', real=True)), Rational(1127, 20200))"
+      },
+      "movements": [
+        {
+          "trialDerivative": 0,
+          "coefficient": {
+            "text": "21*full_weak_tanh_variable**6/2525 - 99*full_weak_tanh_variable**5/12625 - 127*full_weak_tanh_variable**4/5050 + 463*full_weak_tanh_variable**3/20200 + 787*full_weak_tanh_variable**2/37875 - 1523*full_weak_tanh_variable/101000 - 299/75750",
+            "srepr": "Add(Mul(Rational(21, 2525), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(6))), Mul(Integer(-1), Rational(99, 12625), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(5))), Mul(Integer(-1), Rational(127, 5050), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(4))), Mul(Rational(463, 20200), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(3))), Mul(Rational(787, 37875), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Integer(-1), Rational(1523, 101000), Symbol('full_weak_tanh_variable', real=True)), Rational(-299, 75750))"
+          },
+          "certificate": {
+            "original": {
+              "text": "21*full_weak_tanh_variable**6/2525 - 99*full_weak_tanh_variable**5/12625 - 127*full_weak_tanh_variable**4/5050 + 463*full_weak_tanh_variable**3/20200 + 787*full_weak_tanh_variable**2/37875 - 1523*full_weak_tanh_variable/101000 - 299/75750",
+              "srepr": "Add(Mul(Rational(21, 2525), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(6))), Mul(Integer(-1), Rational(99, 12625), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(5))), Mul(Integer(-1), Rational(127, 5050), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(4))), Mul(Rational(463, 20200), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(3))), Mul(Rational(787, 37875), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Integer(-1), Rational(1523, 101000), Symbol('full_weak_tanh_variable', real=True)), Rational(-299, 75750))"
+            },
+            "polynomial": {
+              "text": "21*full_weak_tanh_variable**6/2525 - 99*full_weak_tanh_variable**5/12625 - 127*full_weak_tanh_variable**4/5050 + 463*full_weak_tanh_variable**3/20200 + 787*full_weak_tanh_variable**2/37875 - 1523*full_weak_tanh_variable/101000 - 299/75750",
+              "srepr": "Add(Mul(Rational(21, 2525), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(6))), Mul(Integer(-1), Rational(99, 12625), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(5))), Mul(Integer(-1), Rational(127, 5050), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(4))), Mul(Rational(463, 20200), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(3))), Mul(Rational(787, 37875), Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Integer(-1), Rational(1523, 101000), Symbol('full_weak_tanh_variable', real=True)), Rational(-299, 75750))"
+            },
+            "denominator": {
+              "value": {
+                "text": "1",
+                "srepr": "Integer(1)"
+              },
+              "real": {
+                "text": "1",
+                "srepr": "Integer(1)"
+              },
+              "imaginary": {
+                "text": "0",
+                "srepr": "Integer(0)"
+              },
+              "finite": true,
+              "nonzero": true
+            },
+            "coefficients": [
+              {
+                "order": 0,
+                "value": {
+                  "text": "-299/75750",
+                  "srepr": "Rational(-299, 75750)"
+                }
+              },
+              {
+                "order": 1,
+                "value": {
+                  "text": "-1523/101000",
+                  "srepr": "Rational(-1523, 101000)"
+                }
+              },
+              {
+                "order": 2,
+                "value": {
+                  "text": "787/37875",
+                  "srepr": "Rational(787, 37875)"
+                }
+              },
+              {
+                "order": 3,
+                "value": {
+                  "text": "463/20200",
+                  "srepr": "Rational(463, 20200)"
+                }
+              },
+              {
+                "order": 4,
+                "value": {
+                  "text": "-127/5050",
+                  "srepr": "Rational(-127, 5050)"
+                }
+              },
+              {
+                "order": 5,
+                "value": {
+                  "text": "-99/12625",
+                  "srepr": "Rational(-99, 12625)"
+                }
+              },
+              {
+                "order": 6,
+                "value": {
+                  "text": "21/2525",
+                  "srepr": "Rational(21, 2525)"
+                }
+              }
+            ],
+            "coefficientCertificates": [
+              {
+                "value": {
+                  "text": "-299/75750",
+                  "srepr": "Rational(-299, 75750)"
+                },
+                "real": {
+                  "text": "-299/75750",
+                  "srepr": "Rational(-299, 75750)"
+                },
+                "imaginary": {
+                  "text": "0",
+                  "srepr": "Integer(0)"
+                },
+                "finite": true,
+                "nonzero": true
+              },
+              {
+                "value": {
+                  "text": "-1523/101000",
+                  "srepr": "Rational(-1523, 101000)"
+                },
+                "real": {
+                  "text": "-1523/101000",
+                  "srepr": "Rational(-1523, 101000)"
+                },
+                "imaginary": {
+                  "text": "0",
+                  "srepr": "Integer(0)"
+                },
+                "finite": true,
+                "nonzero": true
+              },
+              {
+                "value": {
+                  "text": "-127/5050",
+                  "srepr": "Rational(-127, 5050)"
+                },
+                "real": {
+                  "text": "-127/5050",
+                  "srepr": "Rational(-127, 5050)"
+                },
+                "imaginary": {
+                  "text": "0",
+                  "srepr": "Integer(0)"
+                },
+                "finite": true,
+                "nonzero": true
+              },
+              {
+                "value": {
+                  "text": "-99/12625",
+                  "srepr": "Rational(-99, 12625)"
+                },
+                "real": {
+                  "text": "-99/12625",
+                  "srepr": "Rational(-99, 12625)"
+                },
+                "imaginary": {
+                  "text": "0",
+                  "srepr": "Integer(0)"
+                },
+                "finite": true,
+                "nonzero": true
+              },
+              {
+                "value": {
+                  "text": "21/2525",
+                  "srepr": "Rational(21, 2525)"
+                },
+                "real": {
+                  "text": "21/2525",
+                  "srepr": "Rational(21, 2525)"
+                },
+                "imaginary": {
+                  "text": "0",
+                  "srepr": "Integer(0)"
+                },
+                "finite": true,
+                "nonzero": true
+              },
+              {
+                "value": {
+                  "text": "463/20200",
+                  "srepr": "Rational(463, 20200)"
+                },
+                "real": {
+                  "text": "463/20200",
+                  "srepr": "Rational(463, 20200)"
+                },
+                "imaginary": {
+                  "text": "0",
+                  "srepr": "Integer(0)"
+                },
+                "finite": true,
+                "nonzero": true
+              },
+              {
+                "value": {
+                  "text": "787/37875",
+                  "srepr": "Rational(787, 37875)"
+                },
+                "real": {
+                  "text": "787/37875",
+                  "srepr": "Rational(787, 37875)"
+                },
+                "imaginary": {
+                  "text": "0",
+                  "srepr": "Integer(0)"
+                },
+                "finite": true,
+                "nonzero": true
+              }
+            ],
+            "degree": 6,
+            "zero": false,
+            "bound": {
+              "text": "15761/151500",
+              "srepr": "Rational(15761, 151500)"
+            }
+          }
+        }
+      ],
+      "formalCoefficientOnly": true,
+      "identities": [
+        {
+          "name": "actual-Leibniz-identity",
+          "left": {
+            "text": "(-1523*(1/5 - tanh(full_weak_x/10)**2/5)*tanh(full_weak_x/10)/20200 + 17*(3/10 - 3*tanh(full_weak_x/10)**2/10)*tanh(full_weak_x/10)**2/303 + 99*(2/5 - 2*tanh(full_weak_x/10)**2/5)*tanh(full_weak_x/10)**3/5050 - 42*(1/2 - tanh(full_weak_x/10)**2/2)*tanh(full_weak_x/10)**4/2525 + 299*tanh(full_weak_x/10)**2/75750 - 299/75750)*full_weak_trial(full_weak_x)",
+            "srepr": "Mul(Add(Mul(Integer(-1), Rational(1523, 20200), Add(Rational(1, 5), Mul(Integer(-1), Rational(1, 5), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2)))), tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True)))), Mul(Rational(17, 303), Add(Rational(3, 10), Mul(Integer(-1), Rational(3, 10), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2)))), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2))), Mul(Rational(99, 5050), Add(Rational(2, 5), Mul(Integer(-1), Rational(2, 5), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2)))), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(3))), Mul(Integer(-1), Rational(42, 2525), Add(Rational(1, 2), Mul(Integer(-1), Rational(1, 2), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2)))), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(4))), Mul(Rational(299, 75750), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2))), Rational(-299, 75750)), Function('full_weak_trial')(Symbol('full_weak_x', real=True)))"
+          },
+          "right": {
+            "text": "(21*tanh(full_weak_x/10)**6/2525 - 99*tanh(full_weak_x/10)**5/12625 - 127*tanh(full_weak_x/10)**4/5050 + 463*tanh(full_weak_x/10)**3/20200 + 787*tanh(full_weak_x/10)**2/37875 - 1523*tanh(full_weak_x/10)/101000 - 299/75750)*full_weak_trial(full_weak_x)",
+            "srepr": "Mul(Add(Mul(Rational(21, 2525), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(6))), Mul(Integer(-1), Rational(99, 12625), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(5))), Mul(Integer(-1), Rational(127, 5050), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(4))), Mul(Rational(463, 20200), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(3))), Mul(Rational(787, 37875), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2))), Mul(Integer(-1), Rational(1523, 101000), tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True)))), Rational(-299, 75750)), Function('full_weak_trial')(Symbol('full_weak_x', real=True)))"
+          },
+          "raw": {
+            "text": "(-1523*(1/5 - tanh(full_weak_x/10)**2/5)*tanh(full_weak_x/10)/20200 + 17*(3/10 - 3*tanh(full_weak_x/10)**2/10)*tanh(full_weak_x/10)**2/303 + 99*(2/5 - 2*tanh(full_weak_x/10)**2/5)*tanh(full_weak_x/10)**3/5050 - 42*(1/2 - tanh(full_weak_x/10)**2/2)*tanh(full_weak_x/10)**4/2525 + 299*tanh(full_weak_x/10)**2/75750 - 299/75750)*full_weak_trial(full_weak_x) - (21*tanh(full_weak_x/10)**6/2525 - 99*tanh(full_weak_x/10)**5/12625 - 127*tanh(full_weak_x/10)**4/5050 + 463*tanh(full_weak_x/10)**3/20200 + 787*tanh(full_weak_x/10)**2/37875 - 1523*tanh(full_weak_x/10)/101000 - 299/75750)*full_weak_trial(full_weak_x)",
+            "srepr": "Add(Mul(Add(Mul(Integer(-1), Rational(1523, 20200), Add(Rational(1, 5), Mul(Integer(-1), Rational(1, 5), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2)))), tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True)))), Mul(Rational(17, 303), Add(Rational(3, 10), Mul(Integer(-1), Rational(3, 10), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2)))), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2))), Mul(Rational(99, 5050), Add(Rational(2, 5), Mul(Integer(-1), Rational(2, 5), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2)))), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(3))), Mul(Integer(-1), Rational(42, 2525), Add(Rational(1, 2), Mul(Integer(-1), Rational(1, 2), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2)))), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(4))), Mul(Rational(299, 75750), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2))), Rational(-299, 75750)), Function('full_weak_trial')(Symbol('full_weak_x', real=True))), Mul(Integer(-1), Add(Mul(Rational(21, 2525), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(6))), Mul(Integer(-1), Rational(99, 12625), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(5))), Mul(Integer(-1), Rational(127, 5050), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(4))), Mul(Rational(463, 20200), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(3))), Mul(Rational(787, 37875), Pow(tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True))), Integer(2))), Mul(Integer(-1), Rational(1523, 101000), tanh(Mul(Rational(1, 10), Symbol('full_weak_x', real=True)))), Rational(-299, 75750)), Function('full_weak_trial')(Symbol('full_weak_x', real=True))))"
+          },
+          "cancelled": {
+            "text": "0",
+            "srepr": "Integer(0)"
+          }
+        }
+      ]
+    }
+  ],
+  "limits": {
+    "memory.max": "4294967296",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-8ae98c8613ff.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      4294967296,
+      4294967296
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  },
+  "duration": {
+    "verified": true,
+    "actual": {
+      "RuntimeMaxUSec": "infinity",
+      "Restart": "no"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "coordinator": {
+    "exitCode": 0,
+    "wallSeconds": 252.12742134404834,
+    "scientificAcceptance": "PENDING_ACTUAL_INSPECTION"
+  },
+  "outcome": {
+    "exitCode": 0,
+    "wallSeconds": 252.06057128496468,
+    "unit": "s11c-guard-8ae98c8613ff",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 251.9779007070465,
+      "childPid": 2748685
+    }
+  },
+  "independentBuildClearance": false,
+  "localToolingRepairAccepted": true,
+  "literalBuildVerdicts": {
+    "claude": "CLEAR FOR THIS BOUNDED FULL-WEAK BUILD",
+    "grok": "NEEDS REVISION"
+  },
+  "limitations": {
+    "status": "SOURCE_JOINED_FULL_RETAINED_WEAK_OPERATOR",
+    "testSpace": "S(R)^5 x S(R)^5, complex bilinear",
+    "localSourceChildren": 2908,
+    "pressureSourceChildren": 12,
+    "localCells": 400,
+    "pressureAddresses": 13260,
+    "maximumLocalXOrder": 3,
+    "nativeEpsilonOnce": true,
+    "independentGrades": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "pressureConclusionInherited": {
+      "status": "SOURCE_JOINED_GLOBAL_WEAK_PRESSURE_CERTIFICATE",
+      "testSpace": "S(R) x S(R), complex bilinear",
+      "ordinaryGrowthDegreeAtMost": 3,
+      "heightAction": "subtracted PV plus contact; Holder 1/2 bound, weighted by Pk^(3/2)",
+      "assessment": "Analytic induction, uniform integrability and dominated convergence independently assessed; not machine measure theory",
+      "scope": "real omega3 source/consumer; response-only outgoing regularization; strict rest bulk LAB_HELD/RHO4; cs[1,2]; all real internal momenta",
+      "wholeDirectOnce": true,
+      "nativeIterationOnce": true,
+      "hiddenProjection": false,
+      "planeWaveScattering": false,
+      "finiteInverse": false,
+      "loss": false,
+      "sourceDimensions": "inherited/required, not reconstructed",
+      "localSlabPartIncluded": false
+    },
+    "sourceRows": [
+      "U0",
+      "U1",
+      "U2",
+      "THETA_BALANCE",
+      "E_W_BALANCE"
+    ],
+    "fields": [
+      "u_1",
+      "u_2",
+      "u_3",
+      "theta",
+      "e_W"
+    ],
+    "wholeDirectOnce": true,
+    "nativeIterationOnce": true,
+    "oldReducedLocalObjectUsed": false,
+    "analyticArgument": "Finite sum of local continuous Schwartz pairings (bound 2 C_a p_2,0(v) p_0,n(u)) and the inherited continuous pressure form; not machine measure theory.",
+    "derivativeRecurrence": "P[n+1]=(1-T^2)*P[n]\u2032/10",
+    "localEndpointsOnly": true,
+    "physicalPositiveRegulatorComposition": false,
+    "planeWaveScattering": false,
+    "finiteInverse": false,
+    "loss": false,
+    "calibration": false,
+    "drain": false
+  },
+  "noScientificRestorationDuringInspection": true,
+  "scientificValidationJobLaunched": false,
+  "protectedSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "next": "Source/metadata preparation of the next bounded applicability step; no immediate finite solve, defect sweep or loss claim."
+}

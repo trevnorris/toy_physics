@@ -2559,8 +2559,8 @@
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/field-fa0ddf2b17ed3658971337ce4746ce9b61a6e02a401b7fd5c2dfd9bcaf23fd59-reconstruction-input.json": "c2ef7e7c7ea53b5c68a3fd6c359a8876dee61f0a3c99e2a01b9c556a23a37ec2",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/field-fa0ddf2b17ed3658971337ce4746ce9b61a6e02a401b7fd5c2dfd9bcaf23fd59-reconstruction-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition_inputs.json": "d6797efd88af2bb08535072031d4d1ffc4218d87929535158b7015a652278fd8",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak.py": "7bcf9b69c9abd07ad6e49415f8720eed56b71ce29121eaac284d004f951434a1",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_launch.py": "c24f78c7fc7de45a92acb2df544cdffab1ce5d87b3fff908b85ef5036f7272ab",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak.py": "ea1726dd7cc28bca6c85c06276c03941ad3b17de5e6d752e53a8cc487d77d738",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_launch.py": "e565699eb97ecdf94b535a5fcfa823a0ff725398c9f6f7c2f2d547517ae002f1",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_method.md": "d24083ac01df581f2c11c6027866f7fe3d605a9e80e4c1d1c362819f4872964a",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_review_record.json": "e6ee6885385196abba47db8615e805ac6ad93cb3df85d6100690c8a9c6ced3bd",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_execution_authority.json": "3562331eca248310a9b853c0f8e1b1b3136c65e3e46f6d50c5ce3b3954cac1c8"

@@ -59,6 +59,65 @@ def verify_invocation(args, gate, argv):
     require(list(argv)==expected,'actual worker argv')
     require(gate['command'][-len(expected):]==expected,'gate worker command tail')
 
+def memory_domain_certificate(den, bind, constant, terms, zero_record, emit, sp):
+    """Exact native time-sign recognition including bound prefactors and powers."""
+    rec={'raw':den,'bound':bind(den)}
+    emit('memory-domain-input',rec)
+    rec['certificate']=constant(rec['bound'],False)
+    symbols=list(den.free_symbols);names=[s.name for s in symbols]
+    require(len(names)==len(set(names)),'unique native denominator symbols')
+    taus=[s for s in symbols if s.name in ('tau_A','tau_V','tau_X')]
+    if taus:
+        require(len(taus)==1 and set(names)<={'omega','rho_br','W_0','L_W',taus[0].name}
+                and 'omega' in names,'native local memory denominator form')
+        om=next(s for s in symbols if s.name=='omega');tau=taus[0]
+        powers=terms(den,om,sp.Symbol('full_weak_memory_unused'))
+        require(powers and all(j==0 and type(i) is int and i>=0 for i,j in powers),
+                'native memory polynomial powers')
+        degree=max(i for (i,j),v in powers.items() if v!=0)
+        require(degree in (1,2),'source-censused native memory power')
+        scale=sp.cancel(den.subs(om,0))
+        rec.update(omega=om,tau=tau,power=degree,prefactor=scale,
+                   coefficients=[{'power':i,'value':v} for (i,j),v in powers.items()],
+                   expected=scale*(1-sp.I*om*tau)**degree)
+        emit('memory-sign-operands',rec)
+        require({s.name for s in scale.free_symbols}<={'rho_br','W_0','L_W'},
+                'frequency-independent native memory prefactor')
+        rec['prefactorCertificate']=constant(bind(scale),False)
+        zero_record(rec,'time-memory-sign',den,rec['expected'])
+    emit('memory-domain-return',rec)
+    return rec
+
+
+def verify_build_assessment(gate, review):
+    require(review['methodAssessed'] is True and review['allChecksPassed'] is True,
+            'actual completed build assessment')
+    if review['independentBuildClearance'] is True:
+        require(gate['independentBuildClearance'] is True,'honest paired build clearance')
+        for engine in ('claude','grok'):
+            require(review['reports'][engine]['literalVerdict']==
+                    'CLEAR FOR THIS BOUNDED FULL-WEAK BUILD','literal build verdict')
+        for key in ('workerSha256','manifestSha256','launcherSha256'):
+            require(review[key]==gate[key],'review/gate '+key)
+    else:
+        require(gate['independentBuildClearance'] is False and
+                gate['localToolingRepairAccepted'] is True,'honest tested local repair authority')
+        require(review['reports']['claude']['literalVerdict']=='CLEAR FOR THIS BOUNDED FULL-WEAK BUILD'
+                and review['reports']['grok']['literalVerdict']=='NEEDS REVISION','preserved literal build pair')
+        require(sha(gate['repairRecord'])==gate['repairRecordSha256'],'local repair record pin')
+        repair=json.loads(Path(gate['repairRecord']).read_text())
+        require(repair['toolingOnly'] is True and repair['testsPassed'] is True
+                and repair['noScientificPayloadRestored'] is True,'tested exact-predicate repair')
+        require(repair['reviewRecordSha256']==gate['buildReviewRecordSha256'], 'actual assessed baseline')
+        for key in ('workerSha256','manifestSha256','launcherSha256'):
+            require(repair[key]==gate[key] and repair['reviewed'][key]==review[key],
+                    'reviewed/repaired identity '+key)
+        require(repair['methodSha256']==review['methodSha256'],'unchanged assessed method')
+        for p,h in repair['evidencePins'].items():require(sha(p)==h,'repair evidence '+p)
+    for key in ('sharedGuardSha256','supervisorSha256'):
+        require(review[key]==gate[key],'review/gate '+key)
+
+
 def verify_gate(path, manifest_path, manifest):
     gate = json.loads(Path(path).read_text())
     verify_helper_paths(gate)
@@ -73,14 +132,7 @@ def verify_gate(path, manifest_path, manifest):
     require(gate['launcher']==manifest['launcher'], 'launcher route')
     require(gate['buildReviewRecord']==manifest['reviewRecordWillBe'],'manifest review route')
     review=json.loads(Path(gate['buildReviewRecord']).read_text())
-    require(review['independentBuildClearance'] is True and
-            review['methodAssessed'] is True and review['allChecksPassed'] is True,
-            'substantive implementation and corrected-method assessment')
-    for engine in ('claude','grok'):
-        require(review['reports'][engine]['literalVerdict']==
-                'CLEAR FOR THIS BOUNDED FULL-WEAK BUILD','literal build verdict')
-    for key in ('workerSha256','manifestSha256','sharedGuardSha256','supervisorSha256','launcherSha256'):
-        require(review[key]==gate[key], 'review/gate '+key)
+    verify_build_assessment(gate,review)
     require(review['methodSha256']==sha(manifest['methodPath']), 'exact corrected method')
     authority=json.loads(Path(gate['authority']).read_text())
     require(gate['authority']==manifest['executionAuthority'] and
@@ -506,14 +558,7 @@ def run_science(manifest,J,ns,unused_exact_helper):
     # Bind and certify actual original denominator bases. Memory phases retain the native sign.
     domain=[]
     for i,den in enumerate(raw_denominators.values()):
-        rec={'raw':den,'bound':bind(den)};rec['certificate']=constant(rec['bound'],False)
-        taus=[s for s in den.free_symbols if s.name in ('tau_A','tau_V','tau_X')]
-        if taus:
-            require(len(taus)==1 and {s.name for s in den.free_symbols}<={'omega','rho_br',taus[0].name},'native local memory denominator form')
-            om=next(s for s in den.free_symbols if s.name=='omega');rho=next(s for s in den.free_symbols if s.name=='rho_br')
-            scale=sp.cancel(den.subs(om,0)/(sp.I*rho));constant(scale,False)
-            zero_record(rec,'time-memory-sign',den,scale*sp.I*rho*(1-sp.I*om*taus[0]))
-        domain.append(rec)
+        domain.append(memory_domain_certificate(den,bind,constant,terms,zero_record,audit.append,sp))
     J.emit('native-denominator-and-time-sign-joins',domain)
     cell_records=[];max_order=max(k[2] for k in cells)
     for row,column,n,g in itertools.product(ROWS,range(5),range(max_order+1),G):

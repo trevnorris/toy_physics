@@ -1,0 +1,12 @@
+{
+  "stdlibTestsPassed": 48,
+  "existingTests": 33,
+  "newTests": 15,
+  "scienceImports": false,
+  "scientificPayloadRestored": false,
+  "tested": "Exact Gaussian rational polynomial stand-ins for prefactors/first+second powers, wrong sign/mixture/unknown/zero/unbound/nonfinite refusal; actual extracted gate function identity-corruption tests; AST body unchanged except denominator predicate call. No scientific result is implied.",
+  "oldGuardReproduced": true,
+  "workerSha256": "ea1726dd7cc28bca6c85c06276c03941ad3b17de5e6d752e53a8cc487d77d738",
+  "testsSha256": "f0a885a6a3444b89dba744f4fe0882b8cfc377b3171c1a2ffbfc7beea5b9f288",
+  "existingTestsSha256": "5b524f3e015a9d2842071a27b8ad4e3c5dd35900f19511e99696fe6acca9e7c7"
+}

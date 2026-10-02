@@ -1,0 +1,46 @@
+{
+  "status": "TESTED_LOCAL_EXACT_MEMORY_DOMAIN_PREDICATE_REPAIR",
+  "recordedUtc": "2026-10-02T20:37:53.864059+00:00",
+  "reviewedBaselineCommit": "9656b74d",
+  "literalReviewCommit": "4a53c696",
+  "reviewRecordSha256": "1c69f9fdc68666723d106bfd938863535af4a5919cc98797694d5ba30ba68cee",
+  "reviewed": {
+    "workerSha256": "7bcf9b69c9abd07ad6e49415f8720eed56b71ce29121eaac284d004f951434a1",
+    "manifestSha256": "7662c3308f53da87166ec21e9c19ba5314945985a1a6e24a0cc46f67e78f8f2e",
+    "launcherSha256": "c24f78c7fc7de45a92acb2df544cdffab1ce5d87b3fff908b85ef5036f7272ab"
+  },
+  "workerSha256": "ea1726dd7cc28bca6c85c06276c03941ad3b17de5e6d752e53a8cc487d77d738",
+  "manifestSha256": "2a202a423a6b64077e6540bc1f81ab808bcaf532473aee5e8c65219465e80cbe",
+  "launcherSha256": "e565699eb97ecdf94b535a5fcfa823a0ff725398c9f6f7c2f2d547517ae002f1",
+  "methodSha256": "d24083ac01df581f2c11c6027866f7fe3d605a9e80e4c1d1c362819f4872964a",
+  "toolingOnly": true,
+  "testsPassed": true,
+  "noScientificPayloadRestored": true,
+  "independentBuildClearance": false,
+  "noNewReview": true,
+  "literalVerdicts": {
+    "claude": "CLEAR FOR THIS BOUNDED FULL-WEAK BUILD",
+    "grok": "NEEDS REVISION"
+  },
+  "authority": "Standing user continued work and AGENTS.md pure-tooling corrections with local tests; no routine stage question. One existing bounded instrument, no retry.",
+  "reason": "The rejected forms are already in the native local equations and assessed method: constant material/profile prefactors, first/second powers, and tau_V without rho_br. The old guard wrongly assumed one rho-containing first power. Correction checks the same exact native (1-i omega tau) sign with actual first/second power and actual constant prefactor; it does not add or modify an equation.",
+  "persistence": "Raw/bound denominator saved before finite guard; actual power/coefficients/prefactor/reconstruction operands saved before exact identity. Failure remains fatal.",
+  "unchanged": [
+    "all local coefficient and quotient formulas",
+    "pressure assembly and inherited proofs",
+    "physical input",
+    "method",
+    "resources",
+    "all 380 saved files",
+    "all other source pins",
+    "all tolerances and acceptance except exact memory form recognition"
+  ],
+  "gateChange": "Exact reviewed/repaired worker+manifest+launcher ancestry and helper hashes; literal CLEAR/NEEDS remains; independentBuildClearance=false. No author CLEAR.",
+  "evidencePins": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_memory_denominator_census.json": "e2671af122b9ecb38ee6aeff37d9eb6d293752f3fed17069fd71b9b2ca45b5e7",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_memory_repair_checks.json": "46e23af4828b252135745a985758044eafad715976adbbda23166375b4662637",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_memory_tests.py": "f0a885a6a3444b89dba744f4fe0882b8cfc377b3171c1a2ffbfc7beea5b9f288",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_tests.py": "5b524f3e015a9d2842071a27b8ad4e3c5dd35900f19511e99696fe6acca9e7c7",
+    "/var/projects/toy_physics/AGENTS.md": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf"
+  }
+}

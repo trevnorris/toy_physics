@@ -1,0 +1,45 @@
+{
+  "status": "READY_FOR_ONE_ASSESSED_BOUNDED_INSTRUMENT_WITH_TESTED_LOCAL_REPAIR",
+  "recordedUtc": "2026-10-02T20:39:42.954301+00:00",
+  "buildReviewCommit": "4a53c696",
+  "independentBuildClearance": false,
+  "literalBuildVerdicts": {
+    "claude": "CLEAR FOR THIS BOUNDED FULL-WEAK BUILD",
+    "grok": "NEEDS REVISION"
+  },
+  "localToolingRepairAccepted": true,
+  "gatePath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_gate.json",
+  "gateSha256": "23f95d96c9a88df8ea41942a6be72c4141ee8fb30f62f62c3ac5fc6f2ef3982a",
+  "workerSha256": "ea1726dd7cc28bca6c85c06276c03941ad3b17de5e6d752e53a8cc487d77d738",
+  "manifestSha256": "2a202a423a6b64077e6540bc1f81ab808bcaf532473aee5e8c65219465e80cbe",
+  "launcherSha256": "e565699eb97ecdf94b535a5fcfa823a0ff725398c9f6f7c2f2d547517ae002f1",
+  "sourcePins": 627,
+  "savedFiles": 380,
+  "savedBytes": 105417462,
+  "allSourceHashesMatch": true,
+  "actualStdlibLaunchWorkerGateAndInvocationPassed": true,
+  "actualCommandHelpersEqualReviewedPinnedHelpers": true,
+  "additionalIdentityPins": 16,
+  "hookArmsBeforeScientificStart": true,
+  "preflightHost": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/execution-preparation/host-preflight.json",
+  "preflightHostSha256": "3003e7848c5379e9d63df8c620b80afe0092a24cd8c7493c3c67589a762812d4",
+  "toolingTests": {
+    "methodsPassed": 48,
+    "record": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_memory_repair_checks.json",
+    "scope": "Stdlib tests only, no scientific imports or restoration during readiness"
+  },
+  "scientificRunStarted": false,
+  "resourceLimits": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "runtimeResultAcceptance": false,
+  "newTrackedDataOver1MiB": []
+}

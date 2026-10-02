@@ -1,0 +1,357 @@
+{
+  "scope": "Stdlib AST source census only; no scientific construction, simplification, or runtime identity inferred",
+  "sourcePins": {
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U0-full-native-partition.json": "e8ddcbb04ab53d8eae6c12e97511d0c95553ba5f6b4a85d7f3b9fbec89a1f6ef",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U1-full-native-partition.json": "5717671f740ac41da99b53887b4f8bd25f89157c8a84077c92290839a31fd38c",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U2-full-native-partition.json": "1a073706e00811968d41d5ed5364c67e243a480ac2f36fff5819477cb3031288",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/THETA_BALANCE-full-native-partition.json": "8071d84d74ab5e2b2cd8b9c8c89fc2612d374b0ce90e8a874bea53597183a87a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-full-native-partition.json": "e0420071d1abb4eec0d7207e431986cd1b2540c9778b79fccbc6fd73abd612e1"
+  },
+  "uniqueBases": 23,
+  "records": {
+    "a2ee095b3649e814a158e985439744465f96ffd2ea26885ecd2b2c14ba91e0a1": {
+      "baseConstructor": "Symbol('W_0', positive=True)",
+      "names": [
+        "W_0"
+      ],
+      "firstAddress": {
+        "row": "U0",
+        "childIndex": 7,
+        "childSha256": "ec252c3203b333e13ab3ad8c9ea94b992629e30e9593a542cb77167d720df7c8"
+      },
+      "occurrences": 1080
+    },
+    "15bed7d511e93ea053691f111bfa757af82d198e4771ead6bce2f5ff6a06e8aa": {
+      "baseConstructor": "Symbol('L_W', positive=True)",
+      "names": [
+        "L_W"
+      ],
+      "firstAddress": {
+        "row": "U0",
+        "childIndex": 223,
+        "childSha256": "7308e9134738beb1071d1691ada11650f3426b0a05c67cc921eb3ac23bb25c3a"
+      },
+      "occurrences": 1158
+    },
+    "91d1e220de279196c57e4ccdd5de6a1127e45fcdf1fdec478ba3f3cf2a0e0517": {
+      "baseConstructor": "Add(Mul(Symbol('W_0', positive=True), Symbol('omega', real=True), Symbol('rho_br', positive=True), Symbol('tau_A', nonnegative=True)), Mul(I, Symbol('W_0', positive=True), Symbol('rho_br', positive=True)))",
+      "names": [
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_A"
+      ],
+      "firstAddress": {
+        "row": "THETA_BALANCE",
+        "childIndex": 0,
+        "childSha256": "81386ae138942f1c3c15fe8aecc3f289fd10cf03ca92a0989c0e220eee1edf44"
+      },
+      "occurrences": 91
+    },
+    "8a48428ea774427407d691b8b29fbdacc1f774e8caa3bf1be470e47d89762c3d": {
+      "baseConstructor": "Add(Mul(Symbol('omega', real=True), Symbol('rho_br', positive=True), Symbol('tau_A', nonnegative=True)), Mul(I, Symbol('rho_br', positive=True)))",
+      "names": [
+        "omega",
+        "rho_br",
+        "tau_A"
+      ],
+      "firstAddress": {
+        "row": "THETA_BALANCE",
+        "childIndex": 1,
+        "childSha256": "f7abf5f7c5fb33ab81452885e7075a3b8132c93632b7506e58765b577193a0b4"
+      },
+      "occurrences": 74
+    },
+    "03fe04acb0c6a7d4579eb0f7b53166304f57f94a35ec9bf33a4659983f6e3353": {
+      "baseConstructor": "Add(Mul(Pow(Symbol('L_W', positive=True), Integer(2)), Pow(Symbol('W_0', positive=True), Integer(4)), Pow(Symbol('omega', real=True), Integer(2)), Pow(Symbol('rho_br', positive=True), Integer(2)), Pow(Symbol('tau_A', nonnegative=True), Integer(2))), Mul(Integer(2), I, Pow(Symbol('L_W', positive=True), Integer(2)), Pow(Symbol('W_0', positive=True), Integer(4)), Symbol('omega', real=True), Pow(Symbol('rho_br', positive=True), Integer(2)), Symbol('tau_A', nonnegative=True)), Mul(Integer(-1), Pow(Symbol('L_W', positive=True), Integer(2)), Pow(Symbol('W_0', positive=True), Integer(4)), Pow(Symbol('rho_br', positive=True), Integer(2))))",
+      "names": [
+        "L_W",
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_A"
+      ],
+      "firstAddress": {
+        "row": "THETA_BALANCE",
+        "childIndex": 9,
+        "childSha256": "060fbc7dd910e88752ea362bd946f3b531e7c3458c7fceb39a078892a2f513fa"
+      },
+      "occurrences": 6
+    },
+    "d944457022c714be2fcb199a3699b22dade69d2322858023c33d2e47c615d38f": {
+      "baseConstructor": "Add(Mul(Pow(Symbol('L_W', positive=True), Integer(2)), Pow(Symbol('W_0', positive=True), Integer(2)), Pow(Symbol('omega', real=True), Integer(2)), Pow(Symbol('rho_br', positive=True), Integer(2)), Pow(Symbol('tau_A', nonnegative=True), Integer(2))), Mul(Integer(2), I, Pow(Symbol('L_W', positive=True), Integer(2)), Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('omega', real=True), Pow(Symbol('rho_br', positive=True), Integer(2)), Symbol('tau_A', nonnegative=True)), Mul(Integer(-1), Pow(Symbol('L_W', positive=True), Integer(2)), Pow(Symbol('W_0', positive=True), Integer(2)), Pow(Symbol('rho_br', positive=True), Integer(2))))",
+      "names": [
+        "L_W",
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_A"
+      ],
+      "firstAddress": {
+        "row": "THETA_BALANCE",
+        "childIndex": 15,
+        "childSha256": "7004c9dc1cdf74f88f8fd832e77204de8a226d3d762d0a05b0ae4019b691dfed"
+      },
+      "occurrences": 12
+    },
+    "f95d5dd106dcc7c8ed70643804a88936b2cb9a344469e67020a199b144897286": {
+      "baseConstructor": "Add(Mul(Pow(Symbol('W_0', positive=True), Integer(4)), Pow(Symbol('omega', real=True), Integer(2)), Pow(Symbol('rho_br', positive=True), Integer(2)), Pow(Symbol('tau_A', nonnegative=True), Integer(2))), Mul(Integer(2), I, Pow(Symbol('W_0', positive=True), Integer(4)), Symbol('omega', real=True), Pow(Symbol('rho_br', positive=True), Integer(2)), Symbol('tau_A', nonnegative=True)), Mul(Integer(-1), Pow(Symbol('W_0', positive=True), Integer(4)), Pow(Symbol('rho_br', positive=True), Integer(2))))",
+      "names": [
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_A"
+      ],
+      "firstAddress": {
+        "row": "THETA_BALANCE",
+        "childIndex": 27,
+        "childSha256": "4d2607ae9b23b8ceed8f58463eda04ee94951f6f6133a357484f37d3ba88305b"
+      },
+      "occurrences": 6
+    },
+    "fd25ccc6b1d1e981f9be6e9ba5219150b49eb6e542330f060b3bc4c866b511f2": {
+      "baseConstructor": "Add(Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Pow(Symbol('omega', real=True), Integer(2)), Pow(Symbol('rho_br', positive=True), Integer(2)), Pow(Symbol('tau_A', nonnegative=True), Integer(2))), Mul(Integer(2), I, Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('omega', real=True), Pow(Symbol('rho_br', positive=True), Integer(2)), Symbol('tau_A', nonnegative=True)), Mul(Integer(-1), Pow(Symbol('W_0', positive=True), Integer(2)), Pow(Symbol('rho_br', positive=True), Integer(2))))",
+      "names": [
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_A"
+      ],
+      "firstAddress": {
+        "row": "THETA_BALANCE",
+        "childIndex": 33,
+        "childSha256": "35bd67696cd322d92a02a5fccd56c6d25263f4c5fba6f937ff60edfb48c4870e"
+      },
+      "occurrences": 30
+    },
+    "56aa603283ec543edb7f64f3dcf5e9b517cb7eceb285b1e4de8f9714e45af3a6": {
+      "baseConstructor": "Add(Mul(Symbol('L_W', positive=True), Symbol('W_0', positive=True), Symbol('omega', real=True), Symbol('rho_br', positive=True), Symbol('tau_A', nonnegative=True)), Mul(I, Symbol('L_W', positive=True), Symbol('W_0', positive=True), Symbol('rho_br', positive=True)))",
+      "names": [
+        "L_W",
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_A"
+      ],
+      "firstAddress": {
+        "row": "THETA_BALANCE",
+        "childIndex": 53,
+        "childSha256": "5c62a6a3928f4adecc06b456f0c71442ae9850f78015ca40055cd46cbdd28af9"
+      },
+      "occurrences": 72
+    },
+    "5625094207c95b3777fe3a03388d30bd5b44548a44e70674af52debc0bb5b813": {
+      "baseConstructor": "Add(Mul(Symbol('L_W', positive=True), Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('omega', real=True), Symbol('rho_br', positive=True), Symbol('tau_A', nonnegative=True)), Mul(I, Symbol('L_W', positive=True), Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('rho_br', positive=True)))",
+      "names": [
+        "L_W",
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_A"
+      ],
+      "firstAddress": {
+        "row": "THETA_BALANCE",
+        "childIndex": 56,
+        "childSha256": "3b6641c3345fcb7e038b0050c8aac8ad20a64c308dd015edb0c263fe688579bf"
+      },
+      "occurrences": 6
+    },
+    "549628de98ef9df827a10de0e1e8df86c6bba25df58588ce49911fa861b66021": {
+      "baseConstructor": "Add(Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('omega', real=True), Symbol('rho_br', positive=True), Symbol('tau_A', nonnegative=True)), Mul(I, Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('rho_br', positive=True)))",
+      "names": [
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_A"
+      ],
+      "firstAddress": {
+        "row": "THETA_BALANCE",
+        "childIndex": 71,
+        "childSha256": "f6080c62caf8ca079d78b9e4d6451e41e11572c12d53623fd70863436fd53e4d"
+      },
+      "occurrences": 6
+    },
+    "220c90b8e2f8b71ac74fc6541f70c35fad978acac74f65cce611a34d7e6d8336": {
+      "baseConstructor": "Add(Mul(Symbol('L_W', positive=True), Symbol('omega', real=True), Symbol('rho_br', positive=True), Symbol('tau_A', nonnegative=True)), Mul(I, Symbol('L_W', positive=True), Symbol('rho_br', positive=True)))",
+      "names": [
+        "L_W",
+        "omega",
+        "rho_br",
+        "tau_A"
+      ],
+      "firstAddress": {
+        "row": "THETA_BALANCE",
+        "childIndex": 184,
+        "childSha256": "af24885b6dbc9ada7acfb661c0747748c6efc90bc549c765bd504b7447b8aba6"
+      },
+      "occurrences": 60
+    },
+    "fff4f813a044f6faebce4cae3f3603c08b7699fdf597d10ecbb8fe62fd44df0f": {
+      "baseConstructor": "Add(Mul(Symbol('omega', real=True), Symbol('tau_V', nonnegative=True)), I)",
+      "names": [
+        "omega",
+        "tau_V"
+      ],
+      "firstAddress": {
+        "row": "THETA_BALANCE",
+        "childIndex": 367,
+        "childSha256": "c2bd936a84ef1e357c475e19376bbc76b8609c6fdec60cb658443417563c539f"
+      },
+      "occurrences": 1
+    },
+    "f661d9f20b1c8ac59ebf52c613e8d7a8824e88b90a12268170eff17b20e68168": {
+      "baseConstructor": "Add(Mul(Symbol('omega', real=True), Symbol('rho_br', positive=True), Symbol('tau_X', nonnegative=True)), Mul(I, Symbol('rho_br', positive=True)))",
+      "names": [
+        "omega",
+        "rho_br",
+        "tau_X"
+      ],
+      "firstAddress": {
+        "row": "E_W_BALANCE",
+        "childIndex": 0,
+        "childSha256": "1f0b77043a6341fa925cc36192f56ee658cea3d8b4a79cf4bb5dc8849eddfd48"
+      },
+      "occurrences": 135
+    },
+    "3ec061fac98039f6787a9150358ab398cbf3a4d02eb3615be8bbcb74e329a629": {
+      "baseConstructor": "Add(Mul(Pow(Symbol('L_W', positive=True), Integer(2)), Pow(Symbol('W_0', positive=True), Integer(4)), Pow(Symbol('omega', real=True), Integer(2)), Pow(Symbol('rho_br', positive=True), Integer(2)), Pow(Symbol('tau_X', nonnegative=True), Integer(2))), Mul(Integer(2), I, Pow(Symbol('L_W', positive=True), Integer(2)), Pow(Symbol('W_0', positive=True), Integer(4)), Symbol('omega', real=True), Pow(Symbol('rho_br', positive=True), Integer(2)), Symbol('tau_X', nonnegative=True)), Mul(Integer(-1), Pow(Symbol('L_W', positive=True), Integer(2)), Pow(Symbol('W_0', positive=True), Integer(4)), Pow(Symbol('rho_br', positive=True), Integer(2))))",
+      "names": [
+        "L_W",
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_X"
+      ],
+      "firstAddress": {
+        "row": "E_W_BALANCE",
+        "childIndex": 25,
+        "childSha256": "46c72437552d15be2a5f98f01c1cb48c61a91a920c8c22b0ea41f83e0b2db986"
+      },
+      "occurrences": 6
+    },
+    "706234a80c4f4aae95b8d009f4e795d675805cd95cfc26ed51c62b283a063ea0": {
+      "baseConstructor": "Add(Mul(Pow(Symbol('L_W', positive=True), Integer(2)), Pow(Symbol('W_0', positive=True), Integer(2)), Pow(Symbol('omega', real=True), Integer(2)), Pow(Symbol('rho_br', positive=True), Integer(2)), Pow(Symbol('tau_X', nonnegative=True), Integer(2))), Mul(Integer(2), I, Pow(Symbol('L_W', positive=True), Integer(2)), Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('omega', real=True), Pow(Symbol('rho_br', positive=True), Integer(2)), Symbol('tau_X', nonnegative=True)), Mul(Integer(-1), Pow(Symbol('L_W', positive=True), Integer(2)), Pow(Symbol('W_0', positive=True), Integer(2)), Pow(Symbol('rho_br', positive=True), Integer(2))))",
+      "names": [
+        "L_W",
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_X"
+      ],
+      "firstAddress": {
+        "row": "E_W_BALANCE",
+        "childIndex": 31,
+        "childSha256": "6c0dde05273a07d6434364d5970c0a3158dc0e4f43c4cfefb538a19a0ec17a55"
+      },
+      "occurrences": 12
+    },
+    "25947a39808877e02f0e79575e0c01c9830611190adcdd76b1506c4b06438c6d": {
+      "baseConstructor": "Add(Mul(Pow(Symbol('W_0', positive=True), Integer(4)), Pow(Symbol('omega', real=True), Integer(2)), Pow(Symbol('rho_br', positive=True), Integer(2)), Pow(Symbol('tau_X', nonnegative=True), Integer(2))), Mul(Integer(2), I, Pow(Symbol('W_0', positive=True), Integer(4)), Symbol('omega', real=True), Pow(Symbol('rho_br', positive=True), Integer(2)), Symbol('tau_X', nonnegative=True)), Mul(Integer(-1), Pow(Symbol('W_0', positive=True), Integer(4)), Pow(Symbol('rho_br', positive=True), Integer(2))))",
+      "names": [
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_X"
+      ],
+      "firstAddress": {
+        "row": "E_W_BALANCE",
+        "childIndex": 43,
+        "childSha256": "1182bdb71ce6b6358a6b255b8c14e09ef5c61c1369be01ed8abc17aa89617001"
+      },
+      "occurrences": 6
+    },
+    "febb9cf1d84f37eae227e4944261bd5f9efad8c8f817588770cda6b1a33c87ce": {
+      "baseConstructor": "Add(Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Pow(Symbol('omega', real=True), Integer(2)), Pow(Symbol('rho_br', positive=True), Integer(2)), Pow(Symbol('tau_X', nonnegative=True), Integer(2))), Mul(Integer(2), I, Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('omega', real=True), Pow(Symbol('rho_br', positive=True), Integer(2)), Symbol('tau_X', nonnegative=True)), Mul(Integer(-1), Pow(Symbol('W_0', positive=True), Integer(2)), Pow(Symbol('rho_br', positive=True), Integer(2))))",
+      "names": [
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_X"
+      ],
+      "firstAddress": {
+        "row": "E_W_BALANCE",
+        "childIndex": 49,
+        "childSha256": "683a5afc69ab7273d9a41faa9f9031a66d741719645b0f6373e2c1b1eab15f24"
+      },
+      "occurrences": 30
+    },
+    "ce11910e20c1429092ba12db6e1232af9a2742ba10b0262686a815b8d686f283": {
+      "baseConstructor": "Add(Mul(Symbol('L_W', positive=True), Symbol('W_0', positive=True), Symbol('omega', real=True), Symbol('rho_br', positive=True), Symbol('tau_X', nonnegative=True)), Mul(I, Symbol('L_W', positive=True), Symbol('W_0', positive=True), Symbol('rho_br', positive=True)))",
+      "names": [
+        "L_W",
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_X"
+      ],
+      "firstAddress": {
+        "row": "E_W_BALANCE",
+        "childIndex": 69,
+        "childSha256": "5cac68a9e667adfd1628f059dffb1414c96f7eb4a439d8c3cc3998235acc4afb"
+      },
+      "occurrences": 12
+    },
+    "c7faac66b8e88cbb1f44a2b44b039ccf74cadef34292a31a0461accfd574957b": {
+      "baseConstructor": "Add(Mul(Symbol('L_W', positive=True), Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('omega', real=True), Symbol('rho_br', positive=True), Symbol('tau_X', nonnegative=True)), Mul(I, Symbol('L_W', positive=True), Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('rho_br', positive=True)))",
+      "names": [
+        "L_W",
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_X"
+      ],
+      "firstAddress": {
+        "row": "E_W_BALANCE",
+        "childIndex": 72,
+        "childSha256": "2434e752d7b7dc353cc1ba0545d2617cbd8c3a8761e14e9dbedc84135adb7290"
+      },
+      "occurrences": 6
+    },
+    "024ed534f204755341957ebde94a5a80ed79e6080da4949e57f2cd1ffd72ddb9": {
+      "baseConstructor": "Add(Mul(Symbol('W_0', positive=True), Symbol('omega', real=True), Symbol('rho_br', positive=True), Symbol('tau_X', nonnegative=True)), Mul(I, Symbol('W_0', positive=True), Symbol('rho_br', positive=True)))",
+      "names": [
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_X"
+      ],
+      "firstAddress": {
+        "row": "E_W_BALANCE",
+        "childIndex": 85,
+        "childSha256": "6658d62faa1b1bc02ea81b0a8f911256544a8d7980cfaeb3a60c507c0db9adf7"
+      },
+      "occurrences": 30
+    },
+    "064925884d0279b82912cee423731de5cd2f3280781024733dea2fdb779d166b": {
+      "baseConstructor": "Add(Mul(Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('omega', real=True), Symbol('rho_br', positive=True), Symbol('tau_X', nonnegative=True)), Mul(I, Pow(Symbol('W_0', positive=True), Integer(2)), Symbol('rho_br', positive=True)))",
+      "names": [
+        "W_0",
+        "omega",
+        "rho_br",
+        "tau_X"
+      ],
+      "firstAddress": {
+        "row": "E_W_BALANCE",
+        "childIndex": 87,
+        "childSha256": "4604d15fb78c02f7739b9fa4727fb84011d6c3d89ab6f4d45b33cfdddb3e7e0d"
+      },
+      "occurrences": 6
+    },
+    "17f8cd866c95ba87f6e0737dcf3eeac24e6bdfe66ea210a3262463e656ebfe5b": {
+      "baseConstructor": "Add(Mul(Symbol('L_W', positive=True), Symbol('omega', real=True), Symbol('rho_br', positive=True), Symbol('tau_X', nonnegative=True)), Mul(I, Symbol('L_W', positive=True), Symbol('rho_br', positive=True)))",
+      "names": [
+        "L_W",
+        "omega",
+        "rho_br",
+        "tau_X"
+      ],
+      "firstAddress": {
+        "row": "E_W_BALANCE",
+        "childIndex": 140,
+        "childSha256": "2533b0040bb7d79c2e3e5b8bccce15908fc805c7aeed258d36bce7d7cccfb797"
+      },
+      "occurrences": 120
+    }
+  },
+  "runtimeRequirements": "Bound denominator and prefactor finite/nonzero; actual power1/2, unique one tau, exact reconstruction of the SAME negative time-carrier memory factor. Unknown dependence refuses."
+}

@@ -76,3 +76,11 @@ Fourier contraction is context evidence only; its frequency/edges are joined
 without replaying it or claiming a new general transform. Check evidence precedes
 failure and that no successful density claim occurs before the native joins.
 Also verify helper paths, hashes and actual launch command are joined.
+
+Check the computed pre-binding speed-symbol inventory across native raw source,
+chemical, velocity and pressure-consumer operands, including its explicit name
+rule and refusal of unaccounted hits. Inspect the saved/physical L_W identity and
+native at_source AST scale rule, with that same length driving profile and
+certificate maps. Verify worker argv/output and review-record route join the
+pinned gate before output creation or scientific imports. These are additional
+validation/execution checks; source equations and physical inputs are unchanged.

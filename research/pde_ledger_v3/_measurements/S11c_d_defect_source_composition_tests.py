@@ -7,12 +7,13 @@ import itertools
 import json
 from pathlib import Path
 import re
+from types import SimpleNamespace
 import unittest
 
 HERE=Path(__file__).resolve().parent
 WORKER=HERE/'S11c_d_defect_source_composition.py'
-NAMES={'require','triples','jet_spec','broad_row_census','quotient_recurrence','definitions','native_jet_dimensions','select_certified_candidate','epsilon_power','address_sum_for','complete_factor_map','join_source_input','verify_helper_paths'}
-NS={'ast':ast,'hashlib':hashlib,'itertools':itertools,'re':re,
+NAMES={'require','triples','jet_spec','broad_row_census','quotient_recurrence','definitions','native_jet_dimensions','select_certified_candidate','epsilon_power','address_sum_for','complete_factor_map','join_source_input','verify_helper_paths','verify_invocation','speed_symbol_inventory','native_profile_scale_rule'}
+NS={'ast':ast,'hashlib':hashlib,'itertools':itertools,'re':re,'Path':Path,'__file__':str(WORKER),
     'ROOT':Path('/var/projects/toy_physics'),
     'G':((0,0),(1,0),(0,1),(1,1))}
 TREE=ast.parse(WORKER.read_text())
@@ -50,6 +51,40 @@ class SourceFixture:
         NS['join_source_input'](self,self.face,self.inp,self.chemical,self.normalization,self.bind,self.one,Fraction(2))
 
 class Tests(unittest.TestCase):
+    def test_prebinding_speed_inventory_detects_names(self):
+        class Symbol:
+            def __init__(self,name):self.name=name
+        operands={'raw':SimpleNamespace(free_symbols={Symbol(n) for n in ('c_s0','phase_speed','CS_1','cs','theta')}),
+                  'ordinary':SimpleNamespace(free_symbols={Symbol('omega'),Symbol('e_W')})}
+        records=NS['speed_symbol_inventory'](operands)
+        self.assertEqual(records[0]['speedSymbols'],[])
+        self.assertEqual(records[1]['speedSymbols'],['CS_1','c_s0','cs','phase_speed'])
+    def test_speed_inventory_precedes_any_binding(self):
+        text=WORKER.read_text()
+        self.assertLess(text.index("J.emit('prebinding-native-speed-inventory'"),text.index('    def bind(value):'))
+        self.assertNotIn("'csOnlyInDepth':True",text)
+        self.assertIn("'csOnlyInDepth':speed_absent",text)
+    def test_actual_native_profile_rule_and_corruption(self):
+        text=(HERE.parent/'scripts/S11c_c2_selfenergy_fold_sympy_audit.py').read_text()
+        result=NS['native_profile_scale_rule'](text)
+        self.assertIn("self.values['L_W']**len(indices)",result['source'])
+        self.assertFalse(result['functionExecuted'])
+        with self.assertRaises(ValueError):NS['native_profile_scale_rule'](text.replace("self.values['L_W']**len(indices)","self.values['L_W']**(len(indices)+1)"))
+    def test_invocation_rejects_changed_output_and_argument_routes(self):
+        args=SimpleNamespace(out=Path('/tmp/declared-output'),inputs=Path('/tmp/inputs.json'),gate=Path('/tmp/gate.json'))
+        argv=[str(WORKER),'--out',str(args.out),'--inputs',str(args.inputs),'--gate',str(args.gate)]
+        gate={'outputDirectory':str(args.out),'command':['python','-u']+argv}
+        NS['verify_invocation'](args,gate,argv)
+        with self.assertRaises(ValueError):NS['verify_invocation'](args,{**gate,'outputDirectory':'/tmp/other'},argv)
+        for index in (0,2,4,6):
+            changed=list(argv);changed[index]='/tmp/other'
+            with self.assertRaises(ValueError):NS['verify_invocation'](args,gate,changed)
+            with self.assertRaises(ValueError):NS['verify_invocation'](args,{**gate,'command':['python','-u']+changed},argv)
+        with self.assertRaises(ValueError):NS['verify_invocation'](args,gate,argv+['--extra'])
+    def test_gate_review_route_and_invocation_precede_output(self):
+        text=WORKER.read_text()
+        self.assertIn("gate['buildReviewRecord']==manifest['reviewRecordWillBe']",text)
+        self.assertLess(text.index('verify_invocation(args,gate,sys.argv)'),text.index('args.out.mkdir(exist_ok=False)'))
     def test_source_join_routes_both_faces_and_saves_before_checks(self):
         for face in ('plus','minus'):
             fixture=SourceFixture(face);fixture.run()

@@ -1,0 +1,47 @@
+{
+  "recordedUtc": "2026-10-02T14:13:01.216246+00:00",
+  "status": "LOCAL_SOURCE_AND_SYNTHETIC_CHECKS_ONLY",
+  "workerSha256": "b94aa6579f6334d65f7a3306c84109b6fa4496237e5eef363b1da02bebfbbca8",
+  "manifestSha256": "4b1974169acb0b341f1694eb2d5b008404c1d9b98c13c390fec5eee585c33f70",
+  "testsSha256": "abc43a5a7dc6ab9e95b5acb41efea242389e285b956b5c6206c66996f0dce573",
+  "testOutput": "......................................\n----------------------------------------------------------------------\nRan 38 tests in 0.311s\n\nOK\n",
+  "testsPassed": true,
+  "testCount": 38,
+  "scienceImports": false,
+  "payloadRestored": false,
+  "savedFilesUnchanged": 122,
+  "sourcePinsChecked": 138,
+  "changedPacketFiles": [
+    {
+      "packetPath": "worker.py",
+      "reviewedSha256": "1337088e8d22df805c7b613669cb6da0509a64634dfd80e03ab3810e54b9642c",
+      "newSha256": "b94aa6579f6334d65f7a3306c84109b6fa4496237e5eef363b1da02bebfbbca8"
+    },
+    {
+      "packetPath": "inputs.json",
+      "reviewedSha256": "91e20f055ff294cfd1c07b932a8fa657f516c7813c42cb853bc0c469757958b7",
+      "newSha256": "4b1974169acb0b341f1694eb2d5b008404c1d9b98c13c390fec5eee585c33f70"
+    },
+    {
+      "packetPath": "tooling-tests.py",
+      "reviewedSha256": "aabf702e433166261215bad396d582ebfebb046983830ee7d05066869d908680",
+      "newSha256": "abc43a5a7dc6ab9e95b5acb41efea242389e285b956b5c6206c66996f0dce573"
+    },
+    {
+      "packetPath": "review-prompt.md",
+      "reviewedSha256": "ba911224de427a31f15e2ce60cf18c58626a29d7adfe4999cbc69b89b55448d4",
+      "newSha256": "5ab1bde8d36822b3223aaaf10477c5413ff1f01381cec7fe3ac54b18ebbb6f2c"
+    },
+    {
+      "packetPath": "implementation-guide.md",
+      "reviewedSha256": "773ec1b03bfeac2e19fb000f75714b9181b06ce4241587e4dd1301ec522b827e",
+      "newSha256": "1742cb122665f1948341adc1c7203ea5d069938fb5cba9a0ae9f7e08e6021eae"
+    }
+  ],
+  "methodUnchanged": true,
+  "guardSupervisorUnchanged": true,
+  "launcherUnchanged": true,
+  "priorReviewedPacketIntact": true,
+  "independentBuildClearance": false,
+  "newTrackedDataOver1MiB": []
+}

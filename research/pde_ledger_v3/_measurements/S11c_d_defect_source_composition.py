@@ -60,6 +60,14 @@ def verify_helper_paths(gate):
             'actual supervisor route')
 
 
+def verify_invocation(args, gate, argv):
+    require(args.out.resolve()==Path(gate['outputDirectory']).resolve(),'gate output route')
+    expected=[str(Path(__file__).resolve()),'--out',str(args.out),
+              '--inputs',str(args.inputs),'--gate',str(args.gate)]
+    require(list(argv)==expected,'actual worker argv')
+    require(gate['command'][-len(expected):]==expected,'gate worker command tail')
+
+
 def verify_gate(path, manifest_path, manifest):
     gate = json.loads(Path(path).read_text())
     verify_helper_paths(gate)
@@ -72,6 +80,7 @@ def verify_gate(path, manifest_path, manifest):
     for key in ('sharedGuard','supervisor','launcher','buildReviewRecord','authority'):
         require(sha(gate[key])==gate[key+'Sha256'],'gate '+key)
     require(gate['launcher']==manifest['launcher'], 'launcher route')
+    require(gate['buildReviewRecord']==manifest['reviewRecordWillBe'],'manifest review route')
     review=json.loads(Path(gate['buildReviewRecord']).read_text())
     require(review['independentBuildClearance'] is True and
             review['correctedMethodAssessed'] is True and review['allChecksPassed'] is True,
@@ -108,6 +117,29 @@ def join_source_input(J, face, inp, chemical, normalization, bind, one, epsilon)
     J.zero(face+'-native-chemical-epsilon-join',bind(chemical['raw'][1]/epsilon),chemical['amplitude'])
     J.zero(face+'-inherited-velocity-normalization-join',inp['velocityCoefficient'],normalization['velocityCoefficient'])
     J.zero(face+'-raw-stage2-live-density-join',bound,inp['combined'])
+
+
+def speed_symbol_inventory(operands):
+    records=[]
+    for address,expression in sorted(operands.items()):
+        names=sorted({s.name for s in expression.free_symbols})
+        hits=[n for n in names if n.lower().startswith('c_s') or 'speed' in n.lower()
+              or n.lower()=='cs' or n.lower().startswith('cs_')]
+        records.append({'address':address,'freeSymbolNames':names,'speedSymbols':hits})
+    return records
+
+
+def native_profile_scale_rule(text):
+    classes=[n for n in ast.parse(text).body if isinstance(n,ast.ClassDef) and n.name=='Inputs']
+    require(len(classes)==1,'native Inputs source identity')
+    methods=[n for n in classes[0].body if isinstance(n,ast.FunctionDef) and n.name=='at_source']
+    require(len(methods)==1,'native at_source source identity')
+    expected=ast.parse("if base in ('w1_profile','m1_profile'):\n    value*=self.values['L_W']**len(indices)").body[0]
+    matches=[n for n in ast.walk(methods[0]) if isinstance(n,ast.If)
+             and ast.dump(n.test)==ast.dump(expected.test)]
+    require(len(matches)==1 and ast.dump(matches[0])==ast.dump(expected),'native profile jet scale rule')
+    return {'source':ast.get_source_segment(text,matches[0]),
+            'rule':'L_W**number_of_native_spatial_indices','functionExecuted':False}
 
 
 def triples(target):
@@ -254,6 +286,27 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
     require(context['frequency']==3, 'real-frequency3 binding')
     physical=json.loads(Path(manifest['physicalInput']).read_text())
     require(context['physicalInput']==physical,'actual physical input join')
+    # Inventory native operands before any density/profile/numeric binding.
+    speed_operands={'chemical/raw':load('consumer/native-chemical-amplitude.json')['raw'][1]}
+    for face in ('plus','minus'):
+        source_input=load('consumer/'+face+'-source-input.json')
+        for key in ('raw','nativeVelocity'):
+            speed_operands[face+'/source/'+key]=source_input[key]
+    for rowname in ROWS:
+        speed_operands[rowname+'/consumer/raw']=load('consumer/'+rowname+'-consumer-input.json')['raw']
+    speed_inventory=speed_symbol_inventory(speed_operands)
+    speed_absent=all(not item['speedSymbols'] for item in speed_inventory)
+    J.emit('prebinding-native-speed-inventory',{'operands':speed_operands,'inventory':speed_inventory,
+        'noNativeSpeedSymbols':speed_absent,'nameRule':'case-insensitive c_s*, cs, cs_*, *speed*',
+        'scope':'Raw source, chemical, velocity and pressure-consumer operands; before binding',
+        'legacyPhysicalCs':physical['parameters']['c_s0'],'legacyCsRetuned':False})
+    require(speed_absent,'unaccounted native source/consumer speed dependency')
+    profile_length=context['numeric']['L_W']
+    scale_rule=native_profile_scale_rule(c2)
+    J.emit('native-profile-scale-join',{'savedLength':profile_length,
+        'physicalLength':physical['parameters']['L_W'],'nativeRule':scale_rule,'declaredLength':10})
+    require(profile_length==10 and profile_length==sp.Rational(physical['parameters']['L_W']),
+            'native saved physical profile length')
     def bind(value):
         syms=value.atoms(sp.Symbol);named={s.name:s for s in syms}
         require(len(named)==len(syms),'no ambiguous raw symbol assumptions')
@@ -270,7 +323,8 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
         require(not any(s in mapping for s in (eta,sigma,eps)),'independent grades/epsilon')
         return value.xreplace(mapping)
     J.emit('actual-binding-context',{'restored':context,'fixedFrequency':3,'densityStatus':'RESTORED_PENDING_SOURCE_JOINS',
-        'regulatedCompositionClaim':False,'noSigmaEtaIdentification':True,'csOnlyInDepth':True})
+        'regulatedCompositionClaim':False,'noSigmaEtaIdentification':True,'csOnlyInDepth':speed_absent,
+        'speedScopeEvidence':'prebinding-native-speed-inventory'})
     require(context['numeric']['omega']==3 and context['numeric']['W_0']==1 and
             context['numeric']['Lambda_X_0']==0,'material/frequency settings')
     native=load('native/consumer-census.json')
@@ -353,17 +407,17 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
         nonzero(J,'historical-'+h['row']+'-excluded21-scalar',scalar)
         J.zero('historical-'+h['row']+'-native-join',bind(h['native']),native_rows[h['row']])
     sources={};source_jets={};source_full={};x=sp.Symbol('composition_x',real=True)
-    w=(1+sp.tanh(x/10))/2;m=(1-sp.tanh(x/10)**2)/3
+    w=(1+sp.tanh(x/profile_length))/2;m=(1-sp.tanh(x/profile_length)**2)/3
     def profile(expr):
         mapping={}
         for s in expr.free_symbols:
             hit=re.fullmatch(r'([wm])1_profile((?:_?d[123])*)',s.name)
             if hit:
                 base,suffix=hit.groups();directions=re.findall('d([123])',suffix)
-                mapping[s]=sp.S.Zero if any(d!='1' for d in directions) else 10**len(directions)*sp.diff(w if base=='w' else m,x,len(directions))
+                mapping[s]=sp.S.Zero if any(d!='1' for d in directions) else profile_length**len(directions)*sp.diff(w if base=='w' else m,x,len(directions))
         result=sp.cancel(expr.xreplace(mapping))
         J.emit('profile-map-'+str(len(J.artifacts)),{'original':expr,'map':[[a,b] for a,b in mapping.items()],
-            'oneDimensional':result,'L':10,'independentSigma':True,'profileTransformEvaluated':False})
+            'oneDimensional':result,'L':profile_length,'independentSigma':True,'profileTransformEvaluated':False})
         require(result.free_symbols<={x},'coefficient field fully bound')
         return result
     for face in ('plus','minus'):
@@ -856,9 +910,9 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
     def nonconstant_profile(name,field):
         # Exact polynomial in the already-bound tanh profile; no Fourier value is inferred.
         tau=sp.Symbol('composition_tanh_variable',real=True)
-        rational=sp.cancel(field.xreplace({sp.tanh(x/10):tau}))
+        rational=sp.cancel(field.xreplace({sp.tanh(x/profile_length):tau}))
         numerator,denominator=sp.fraction(rational)
-        initial={'field':field,'profileVariable':tau,'map':[[sp.tanh(x/10),tau]],
+        initial={'field':field,'profileVariable':tau,'map':[[sp.tanh(x/profile_length),tau]],
             'rational':rational,'numerator':numerator,'denominator':denominator,
             'transformValue':'NOT_EVALUATED_OR_CERTIFIED_NONZERO','pointwiseProfileProbeUsed':False}
         J.emit(name+'-input',initial)
@@ -876,7 +930,7 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
             J.emit(name+'-decision',result);return result
         nonzero(J,name+'-denominator',denominator)
         power,coefficient=eligible[-1];nonzero(J,name+'-positive-degree-coefficient',coefficient)
-        J.zero(name+'-field-reconstruction',field,(sum(v*tau**n for n,v in coefficients.items())/denominator).subs(tau,sp.tanh(x/10)))
+        J.zero(name+'-field-reconstruction',field,(sum(v*tau**n for n,v in coefficients.items())/denominator).subs(tau,sp.tanh(x/profile_length)))
         result={'status':'NONCONSTANT_POLYNOMIAL_IN_TANH_CERTIFIED','positivePower':power,
             'nonzeroCoefficient':coefficient,'constantDenominator':denominator,
             'argument':'tanh(x/10) ranges over an interval; a polynomial with a nonzero positive-degree coefficient is nonconstant',
@@ -987,6 +1041,7 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--inputs',type=Path,required=True);p.add_argument('--gate',type=Path,required=True);p.add_argument('--out',type=Path,required=True);args=p.parse_args()
     manifest=json.loads(args.inputs.read_text());gate=verify_gate(args.gate,args.inputs,manifest)
+    verify_invocation(args,gate,sys.argv)
     pins={**manifest['sourcePins'],str(args.inputs):sha(args.inputs),str(args.gate):sha(args.gate)}
     args.out.resolve().relative_to(ROOT/'_scratch/s11c');args.out.mkdir(exist_ok=False)
     J=None;result={};code=1;started=time.monotonic()

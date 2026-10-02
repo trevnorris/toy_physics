@@ -139,3 +139,23 @@ response factors and physical inputs remain unchanged.
 The gate also requires guard and supervisor paths to equal the actual fixed
 launch-command paths, in addition to byte hashes. This is a local execution
 identity check and changes neither the guard nor supervisor.
+
+## Pre-binding speed and profile-scale evidence
+
+Before the first binding, the instrument inventories free-symbol names of both
+raw c1 sources and native velocities, the raw chemical expression, and every
+raw pressure-consumer row. It saves operands, all names and speed-name hits
+(case-insensitive c_s*, cs, cs_* and *speed*), refusing an unaccounted dependency.
+The speed-scope flag comes from this inventory. The historic c_s0 in the physical
+input is recorded separately; it is not used to tune source/consumer coefficients.
+
+The profile length is taken from the saved numeric context and must equal both
+10 and the physical input's L_W. An AST identity check reads the actual native
+Inputs.at_source profile-jet scale rule, L_W**len(indices), without executing
+Inputs or at_source. That joined length supplies tanh's argument, derivative
+scaling and the nonconstancy-certificate map. Values and equations are unchanged.
+
+Before creating output or importing scientific libraries, the worker checks
+its output path and exact argv against the pinned gate command. The review-record
+path must also equal the manifest's declared route. Local synthetic mismatch
+tests validate these execution checks; they are not scientific results.

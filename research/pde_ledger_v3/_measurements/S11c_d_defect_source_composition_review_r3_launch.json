@@ -1,0 +1,55 @@
+{
+  "status": "SOURCE_METHOD_REVIEW_PAIR_RUNNING_HOOK_ARMED",
+  "recordedUtc": "2026-10-02T10:06:28.421939+00:00",
+  "preparedCommit": "9dbda905",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/method-review-r3",
+  "packetSha256": "87f1e943cbda8e42b2e5ec94b20038fac62be0528ee2c3174524084c8c919352",
+  "archiveSha256": "545d8b7b61ceede26fa73c35246b4815da207ddbace2877f68b68d057736824f",
+  "files": 133,
+  "bytes": 5631374,
+  "launch": {
+    "jobPid": 1888174,
+    "watcherPid": 1888175,
+    "packetSha256": "87f1e943cbda8e42b2e5ec94b20038fac62be0528ee2c3174524084c8c919352",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "reviewers": {
+    "claude": {
+      "sessionId": "f82423c0-1ab0-4e23-b1c7-cc734e3eabe7",
+      "pid": 1888188,
+      "startedUtc": "2026-10-02T10:05:55.119241+00:00",
+      "promptSha256": "470ca770ab64adf4c6f03f42462cf4b69f0d53a674497aaa59068665532af485",
+      "scientificExecutionEnabled": false
+    },
+    "grok": {
+      "sessionId": "5ce0c8aa-4fc3-4e04-be11-34316deffd09",
+      "pid": 1888187,
+      "startedUtc": "2026-10-02T10:05:55.092443+00:00",
+      "promptSha256": "470ca770ab64adf4c6f03f42462cf4b69f0d53a674497aaa59068665532af485",
+      "scientificExecutionEnabled": false
+    }
+  },
+  "checks": {
+    "state": true,
+    "hook": true,
+    "authority": true,
+    "science": true,
+    "claude private bytes": true,
+    "claude receipt": true,
+    "grok private bytes": true,
+    "grok receipt": true,
+    "independent sessions": true,
+    "current source pins": true,
+    "no coordinator error": true
+  },
+  "noReportsReadBeforeBothFinish": true,
+  "scienceCalls": 0,
+  "continuedOnLocalHook": true
+}

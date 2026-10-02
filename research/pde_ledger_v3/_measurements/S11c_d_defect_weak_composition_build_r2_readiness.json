@@ -1,0 +1,56 @@
+{
+  "status": "READY_FOR_INDEPENDENT_BUILD_ASSESSMENT_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/build-review-r2",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-02T17:48:29.420619+00:00",
+    "packetSha256": "777d5638300ff88aafbb36ef144808261a850bb8a72926d17a8dca8342cff298",
+    "archiveSha256": "b5e9dd7a6c22728c814332f231d63fcc51edd0884ec7096ff4d2331ea9a779e6",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 429,
+    "bytes": 15690871,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "AGENTS.md standing review-submission authority and continued bounded research direction",
+    "scope": "Concrete global weak-composition certificate build; all-field/global bounds/weak order, no evaluated response integral or finite solve",
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_BUILD_PACKET_ONLY_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "14c3d1cf33703a5d3a536876f2fdd28ccc87c6ae4c1926a95a0c9a3c35cd8979",
+    "packetSha256": "777d5638300ff88aafbb36ef144808261a850bb8a72926d17a8dca8342cff298",
+    "archiveSha256": "b5e9dd7a6c22728c814332f231d63fcc51edd0884ec7096ff4d2331ea9a779e6",
+    "workerSha256": "77ec3fa030b5a5a839c31b2be1d8dd76b392b06f3cbf5b859870a6f20b56740c",
+    "manifestSha256": "d6797efd88af2bb08535072031d4d1ffc4218d87929535158b7015a652278fd8",
+    "scienceLauncherSha256": "d471924724bb41777861d8af2c3e3b2c5b0779bdd4081814cf103571ca519e32",
+    "methodSha256": "98c295d4f275094dc77762f24845868d2f61f1485fe6bbec6ee7f21f2103d045",
+    "files": 429,
+    "bytes": 15690871,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 427,
+    "payloadRestored": false,
+    "scienceCalls": 0,
+    "localTests": {
+      "command": "python /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition_tests.py",
+      "tests": 18,
+      "passed": true,
+      "scientificEvidence": false
+    },
+    "omittedRuntimeInputs": 8
+  },
+  "checks": {
+    "allSourcePrivateArchiveHashesMatch": true,
+    "JSONSelectionsExact": true,
+    "noScientificPayloadRestored": true,
+    "noGateOrScienceRun": true,
+    "noOldPeerReports": true,
+    "newTrackedGeneratedFilesOver1MiB": []
+  }
+}

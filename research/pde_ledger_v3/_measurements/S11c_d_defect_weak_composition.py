@@ -92,8 +92,12 @@ def verify_gate(path, manifest_path, manifest):
         require(review[key]==gate[key], 'review/gate '+key)
     require(review['methodSha256']==sha(manifest['methodPath']), 'exact corrected method')
     authority=json.loads(Path(gate['authority']).read_text())
+    require(gate['authority']==manifest['executionAuthority'] and
+            manifest['sourcePins'][gate['authority']]==gate['authoritySha256'], 'actual authority route and pin')
     require(authority['boundedInstrumentAuthorized'] is True and
-            authority['automaticScientificRetry'] is False, 'standing bounded authority')
+            authority['automaticScientificRetry'] is False and
+            authority['scienceExecutionsAuthorized']==1 and authority['noDeadline'] is True and
+            authority['scope']==manifest['scope'], 'standing bounded authority')
     require(gate['durationLimits'] is None and gate['scientificRunsAuthorized']==1 and
             gate['scope']==manifest['scope'], 'one bounded no-deadline job')
     method_record=json.loads(Path(manifest['methodRecord']).read_text())
@@ -108,6 +112,124 @@ def select_control_address(addresses, component, face, slot, source_grade, consu
         and a['status']=='FORMAL_ADDRESS_AVAILABLE_NONZERO_NOT_ASSERTED' and predicate(a)]
     require(bool(candidates),'applicable saved control address')
     return min(candidates,key=lambda a:a['addressId'])
+
+
+def grade_key(a):
+    return (a['row'],a['face'],a['slot'],tuple(a['targetGrade']),
+            tuple(a['consumerGrade']),tuple(a['responseGrade']),tuple(a['sourceGrade']))
+
+
+def validate_grade_routes(coverage, addresses):
+    triples=[(c,r,s,tuple(c[i]+r[i]+s[i] for i in range(2)))
+             for c,r,s in itertools.product(G,repeat=3)
+             if tuple(c[i]+r[i]+s[i] for i in range(2)) in G]
+    expected={(row,face,slot,target,c,r,s) for row in ROWS for face in ('plus','minus')
+              for slot in ('pressure','normal') for c,r,s,target in triples}
+    actual={grade_key(a):a for a in coverage}
+    require(len(triples)==16 and len(actual)==len(coverage)==320 and set(actual)==expected,
+            'complete independent-grade row/face/slot coverage')
+    components={(0,0):('NATIVE_FLAT',),(1,0):('NATIVE_HEIGHT',),(0,1):('NATIVE_SLOPE',),
+                (1,1):('NATIVE_MIXED_ITERATION','INHERITED_DIRECT_WHOLE_OFF_DIAGONAL')}
+    jets={};cells=set()
+    for a in addresses:
+        key=grade_key(a);require(key in actual,'address exact grade-coverage membership')
+        require(a['component'] in components[tuple(a['responseGrade'])],'component response grade')
+        if actual[key]['status']=='EXACT_ZERO_CONSUMER':
+            require(a['status']=='EXACT_ZERO_CONSUMER','preserved zero consumer grade')
+        name=a['jet']['name'];require(jets.setdefault(name,a['jet'])==a['jet'],'consistent source jet specification')
+        cell=(key,a['component'],name);require(cell not in cells,'unique ordered grade/component/jet');cells.add(cell)
+    require(len(jets)==39 and all(a['sourceJets']==39 for a in coverage),'saved complete jet census')
+    expected_cells={(key,component,jet) for key in expected
+                    for component in components[key[5]] for jet in jets}
+    require(cells==expected_cells,'every ordered grade/component/jet address, including zeros')
+    return {'gradeTriples':len(triples),'coverageCells':len(actual),'addresses':len(cells),'sourceJets':len(jets)}
+
+
+def constructor_tree(record):
+    return ast.parse(record['srepr'],mode='eval').body
+
+
+def tree_id(node):
+    return ast.dump(node,include_attributes=False)
+
+
+def function_tag(node):
+    if (isinstance(node,ast.Call) and isinstance(node.func,ast.Call)
+        and isinstance(node.func.func,ast.Name) and node.func.func.id=='Function'
+        and len(node.func.args)==1 and isinstance(node.func.args[0],ast.Constant)):
+        return node.func.args[0].value
+    return None
+
+
+def named_call(node, name):
+    return isinstance(node,ast.Call) and isinstance(node.func,ast.Name) and node.func.id==name
+
+
+def validate_address_tags(a):
+    """Read constructor metadata only; no expression evaluation or old calculation."""
+    args="Symbol('composition_l', real=True), Symbol('composition_k', real=True), Integer(3), Symbol('composition_cs', positive=True), Rational(1, 5), Rational(1, 10), Integer(1), Integer(10)"
+    H=ast.parse("Function('Hwhole')(Add(Mul(Integer(-1), Symbol('composition_k', real=True)), Symbol('composition_l', real=True)), Integer(1), Integer(10))",mode='eval').body
+    direct=ast.parse("Function('Dwhole_"+a['face']+"')("+args+")",mode='eval').body
+    iteration=ast.parse("Function('Jwhole_"+a['face']+"')("+args+")",mode='eval').body
+    component=a['component'];counts=[]
+    for label in ('responseOriginal','responseCoefficient'):
+        node=constructor_tree(a[label]);tags=[n for n in ast.walk(node)
+            if isinstance(function_tag(n),str) and
+            (function_tag(n).startswith(('Dwhole','Jwhole')) or function_tag(n)=='Hwhole')]
+        require(not any(named_call(n,'Integral') for n in ast.walk(node)),'whole objects are not integrated again')
+        if component=='INHERITED_DIRECT_WHOLE_OFF_DIAGONAL':
+            require(tree_id(node)==tree_id(direct) and len(tags)==1,'single complete direct signature, no resolvent or bare factor')
+        elif component=='NATIVE_MIXED_ITERATION':
+            require(named_call(node,'Add') and len(node.args)==2 and len(tags)==2,'one H plus one native iteration')
+            require(sum(tree_id(n)==tree_id(iteration) for n in node.args)==1,'iteration unit coefficient and face signature')
+            hterm=next(n for n in node.args if tree_id(n)!=tree_id(iteration))
+            require(named_call(hterm,'Mul') and sum(tree_id(n)==tree_id(H) for n in hterm.args)==1,'single linear H and own transfer signature')
+            require(sorted(tree_id(n) for n in tags)==sorted([tree_id(H),tree_id(iteration)]),'no extra whole tag')
+        else:
+            require(not tags,'no whole tag outside mixed response grade')
+        counts.append({'operand':label,'tagCount':len(tags)})
+    return counts
+
+
+def validate_whole_definitions(tags, typed, reference, definitions_by_tag, saved_inputs):
+    require(set(tags)=={'H','Jwhole','Dwhole'},'complete whole definition census')
+    signatures={'H':(['l-k'],{'text':'reference_left_height_transfer','srepr':"Symbol('reference_left_height_transfer', real=True)"},None,None),
+                'Jwhole':(['l','k'],'t','k+t',None),'Dwhole':(['l','k'],'td','k+td','l-td')}
+    for tag,(alias,definition) in definitions_by_tag.items():
+        v=tags[tag];require(v['savedDefinition']==definition and v['sha256']==saved_inputs[alias]['sha256'],'actual saved whole definition '+tag)
+        require((v['freeMomenta'],v['boundVariable'],v['middleMomentum'],v['reflectedMomentum'])==signatures[tag]
+                and v['valueEvaluated'] is False,'whole argument signature '+tag)
+    require(tags['H']['integrationNotSameAsJwhole'] is True,'separate H and J middle variables')
+    require(typed['closedDensity']==definitions_by_tag['Dwhole'][1]==reference['certifiedDirectDensityRestored'],
+            'complete density identity across typed/source/reference records')
+    require(typed['barePlaceholderIsWholeTag'] is False and typed['multiplyWholeTagByResolvents'] is False,
+            'bare, factored and complete types remain distinct')
+    bare=constructor_tree(typed['bareClosureFactor']);factored=constructor_tree(typed['factoredDensityExternalDenominator'])
+    qi=tree_id(ast.parse("Symbol('reference_qi')",mode='eval').body);qo=tree_id(ast.parse("Symbol('reference_qo')",mode='eval').body)
+    require(named_call(bare,'Mul') and named_call(factored,'Mul'),'typed scalar-product representations')
+    ids=[tree_id(n) for n in bare.args];require(ids.count(qi)==ids.count(qo)==1,'bare numerator has both external depths once')
+    require(sorted(n for n in ids if n not in (qi,qo))==sorted(tree_id(n) for n in factored.args),'typed Rprod=qi*qo*E constructor identity')
+    total=constructor_tree(reference['taggedTotalMixed']);native=constructor_tree(reference['mixedIteration']);whole=constructor_tree(typed['wholeTag'])
+    require(named_call(total,'Add') and named_call(native,'Add') and
+            sorted(tree_id(n) for n in total.args)==sorted([tree_id(whole),*(tree_id(n) for n in native.args)]),
+            'saved total is native mixed plus complete direct exactly once')
+    require(reference['directMultiplicity']==1 and reference['directNotNativeSecond'] is True and
+            reference['middleIntegrationOfWholeDirect'] is False,'saved no duplicate direct integration')
+    return {'savedDefinitionsJoined':['H','Jwhole','Dwhole'],'typedFactorsDistinct':True,'wholeDirectOnce':True,'nativeIterationOnce':True}
+
+
+def validate_normal_control_names(controls):
+    names=[r['name'] for r in controls if r['name'].endswith('normal-q-l-to-r')]
+    expected={row+'-'+face+'-normal-q-l-to-r' for row in ('THETA_BALANCE','E_W_BALANCE') for face in ('plus','minus')}
+    require(len(names)==4 and set(names)==expected,'exact four reused row/face controls without duplicates')
+
+
+def validate_normal_control_route(name, a, normal_jets):
+    expected=a['row']+'-'+a['face']+'-normal-q-l-to-r'
+    require(name==expected and a['row'] in ('THETA_BALANCE','E_W_BALANCE') and
+            a['face'] in ('plus','minus') and a['slot']=='normal','reused control row/face/name')
+    require(a['normalOriginal']==normal_jets[a['face']],'reused control native face normal factor')
+    return {'row':a['row'],'face':a['face'],'sign':1 if a['face']=='plus' else -1,'normalJet':normal_jets[a['face']]}
 
 
 def coefficient_polynomial(expr, x, T):
@@ -149,6 +271,16 @@ def run_science(manifest,J,ns,exact_nonzero):
     require(sorted(a['addressId'] for a in addresses)==list(range(13260)),'complete address ID census')
     require({a['slot'] for a in addresses}=={'pressure','normal'},'no tangential response consumer')
     byid={a['addressId']:a for a in addresses}
+    J.emit('grade-route-inputs',{'coverage':coverage,'addressIds':[a['addressId'] for a in addresses],
+        'completeOperands':'saved/inventory/*-ordered-addresses.json','independentGrades':G})
+    J.emit('grade-route-certificate',validate_grade_routes(coverage,addresses))
+    tags=take('inventory/whole-tag-definitions.json');typed=take('inventory/typed-direct-objects.json')
+    reference_raw=take('saved/reference/retained-response-census.json')
+    definitions_by_tag={name:(alias,take(alias)) for name,alias in [
+        ('H','saved/reference/left-height-subtracted-PV.json'),('Jwhole','saved/reference/right-height-PV-operands.json'),
+        ('Dwhole','saved/direct/closed-density.json')]}
+    J.emit('whole-definition-inputs',{'tags':tags,'typedDirect':typed,'savedReference':reference_raw})
+    J.emit('whole-definition-certificate',validate_whole_definitions(tags,typed,reference_raw,definitions_by_tag,manifest['savedInputs']))
     scale=take('inventory/native-profile-scale-join.json');require(scale['savedLength']['srepr']=='Integer(10)' and scale['physicalLength']=='10' and scale['declaredLength']==10,'actual L=10')
     speed=take('inventory/prebinding-native-speed-inventory.json');require(speed['noNativeSpeedSymbols'] and not speed['legacyCsRetuned'],'prebinding speed independence')
     require(all(not v['speedSymbols'] for v in speed['inventory']),'actual empty speed hits')
@@ -171,11 +303,13 @@ def run_science(manifest,J,ns,exact_nonzero):
         J.emit('field-'+fid+'-derivative-class',{'recurrence':'P[n+1]=(1-T**2)*dP[n]/dT/10','P0':pexpr,'P1':nextpoly,
             'zerothDerivativeBound':bound,'argument':'Induction: finite polynomials at each n; |T|<=1 bounds every derivative by a finite coefficient sum.',
             'allOrdersComputed':False,'analyticInductionNotMachineTheorem':True,'schwartzMultiplierClass':'smooth with all derivatives bounded'})
-        polys[fid]=pexpr;fieldcert[fid]={'degree':degree,'polynomial':pexpr,'constant':degree==0,'derivativeClass':'bounded at every finite order by assessed induction'}
+        polys[fid]=pexpr;fieldcert[fid]={'degree':degree,'polynomial':pexpr,'constant':degree==0,
+            'constantNonzero':degree==0 and expr.is_zero is False,'derivativeClass':'bounded at every finite order by assessed induction'}
     J.emit('all-coefficient-certificates',fieldcert)
     # Restore complete factor proofs once; attach the new envelope class at every address.
     proofset=set();route=[];jets={};component_degrees={'NATIVE_FLAT':(0,0),'NATIVE_HEIGHT':('PV_Pk^(3/2)','PV_Pk^(3/2)'),
         'NATIVE_SLOPE':(1,2),'NATIVE_MIXED_ITERATION':(2,3),'INHERITED_DIRECT_WHOLE_OFF_DIAGONAL':(2,3)}
+    tag_cache={}
     for a in addresses:
         source=fields[a['sourceTransform']['coefficientId']]['field'];consumer=fields[a['consumerTransform']['coefficientId']]['field']
         require(source==a['sourceField'] and consumer==a['consumerField'],'actual field IDs at address')
@@ -192,14 +326,17 @@ def run_science(manifest,J,ns,exact_nonzero):
         require(all(operands['actualResponseMap'][key]==a['responseMap'][key] for key in map_keys),'saved factor map actual arguments')
         require(operands['addressNormalOriginal']==a['normalOriginal'] and operands['requiredMap']==a['fullFactorProof']['completeNormalMap'],'actual inherited normal role map')
         require(a['component'] in component_degrees and not a['wholeValueEvaluated'],'whole object inventory')
+        tag_key=(a['face'],a['component'],a['responseOriginal']['srepr'],a['responseCoefficient']['srepr'])
+        if tag_key not in tag_cache:
+            J.emit('tag-route-'+str(len(tag_cache))+'-inputs',{'address':a,'definitions':'whole-definition-inputs'})
+            tag_cache[tag_key]=validate_address_tags(a)
         if a['component']=='INHERITED_DIRECT_WHOLE_OFF_DIAGONAL':
             require(a['responseGrade']==[1,1] and a['sourceGrade']==a['consumerGrade']==[0,0],'direct grade isolation')
-            require(a['responseCoefficient']['text'].startswith('Dwhole_'+a['face']+'('),'actual whole direct tag')
-        jets[a['jet']['name']]=a['jet']
+        require(jets.setdefault(a['jet']['name'],a['jet'])==a['jet'],'same named jet specification')
         route.append({'addressId':a['addressId'],'face':a['face'],'slot':a['slot'],'component':a['component'],
             'gradeTriple':[a[k] for k in ('consumerGrade','responseGrade','sourceGrade')],
             'sourceFieldId':a['sourceTransform']['coefficientId'],'consumerFieldId':a['consumerTransform']['coefficientId'],
-            'sourceJet':a['jet'],'status':a['status'],'inheritedFactorProof':proof,
+            'sourceJet':a['jet'],'status':a['status'],'inheritedFactorProof':proof,'wholeTagCheck':tag_cache[tag_key],
             'newEnvelopeClass':component_degrees[a['component']][a['slot']=='normal'],'kernelValueComputed':False})
     J.emit('weak-address-coverage',route);J.emit('actual-source-jets',list(jets.values()))
     # Constants and source law are new global-certificate inputs; old compact proofs remain saved.
@@ -306,10 +443,13 @@ def run_science(manifest,J,ns,exact_nonzero):
         'argument':'Fourier inversion and bilinear duality with forward 1/(2pi); coefficient multiplication preserves S by all-field induction.'})
     # Restore identical q(r) controls; no function call or scalar recomputation.
     oldcontrols=take('inventory/responsive-formal-controls.json');restored=[]
+    J.emit('normal-control-name-inputs',{'names':[r['name'] for r in oldcontrols],'nativeNormals':reference_raw['normalJet']})
+    validate_normal_control_names(oldcontrols)
     for r in oldcontrols:
         if not r['name'].endswith('normal-q-l-to-r'):continue
         op=take('inventory/'+r['name']+'-control-operands.json');a=byid[op['context']['addressId']]
         J.emit(r['name']+'-reused-arguments',{'actualAddress':a,'savedControlOperands':op,'savedReturn':r})
+        normal_route=validate_normal_control_route(r['name'],a,reference_raw['normalJet'])
         require(a['slot']=='normal' and a['component']=='NATIVE_SLOPE' and a['consumerGrade']==[1,0],'reused normal control address')
         require(a['consumerTransform']['coefficientId']==op['context']['consumerTransform']['coefficientId'] and not fieldcert[a['consumerTransform']['coefficientId']]['constant'],'nonconstant actual consumer')
         require(a['jet']==op['context']['sourceJet']['spec'] and a['sourceField']==op['context']['sourceJet']['field'],'actual source arguments for reused normal control')
@@ -319,7 +459,7 @@ def run_science(manifest,J,ns,exact_nonzero):
         for tail in ['-numerator-components-return.json','-denominator-components-return.json','-fraction-reconstruction-return.json']:
             inherit_zero('inventory/'+r['name']+'-movement'+tail)
 
-        restored.append({'name':r['name'],'addressId':a['addressId'],'functionCalled':False,'movement':r['movement'],'status':'RESTORED_PRIOR_CONTROL_RETURN'})
+        restored.append({'name':r['name'],'addressId':a['addressId'],'nativeRoute':normal_route,'functionCalled':False,'movement':r['movement'],'status':'RESTORED_PRIOR_CONTROL_RETURN'})
     require(len(restored)==4,'all four identical normal controls reused');J.emit('restored-normal-controls',restored)
     controls=[]
     def control(name,baseline,corrupt,context):
@@ -327,19 +467,26 @@ def run_science(manifest,J,ns,exact_nonzero):
         cert=exact_nonzero(J,name+'-movement',movement);controls.append({'name':name,'movement':movement,'certificate':cert,'formalCoefficientOnly':True})
     for face in ('plus','minus'):
         a=select_control_address(addresses,'NATIVE_FLAT',face,'pressure',(1,0),(0,0),lambda v:
-            v['jet']['spatialOrders'][0]>0 and fieldcert[v['sourceTransform']['coefficientId']]['degree']==1)
+            v['jet']['spatialOrders'][0]>0 and fieldcert[v['sourceTransform']['coefficientId']]['degree']==1
+            and fieldcert[v['consumerTransform']['coefficientId']]['constantNonzero'])
         field=transforms[a['sourceTransform']['coefficientId']];n=a['jet']['spatialOrders'][0];U=sp.Function('weak_trial')(x)
         comm=sp.expand(sp.diff(field*U,x,n)-field*sp.diff(U,x,n));expected=sum(sp.binomial(n,jj)*sp.diff(field,x,jj)*sp.diff(U,x,n-jj) for jj in range(1,n+1))
         J.emit(face+'-Leibniz-control-input',{'address':a,'actualField':field,'actualDerivativeOrder':n,'commutator':comm,'jetFormula':expected,'notFourierValue':True})
         J.zero(face+'-Leibniz-reconstruction',comm,expected)
         local_movement=n*sp.diff(field,x).subs(x,0)
-        flat_actual=lift(D(a['responseOriginal']),refmap);flat_point=flat_actual.subs(qo,sp.Rational(3,2))
+        flat_actual=lift(D(a['responseOriginal']),refmap)
+        flat_point_map={omega:sp.Integer(3),qi:sp.Rational(3,2),qo:sp.Rational(3,2),k:sp.Integer(2),l:sp.Integer(2)}
+        flat_point=flat_actual.subs(flat_point_map,simultaneous=True)
+        J.emit(face+'-Leibniz-flat-point-input',{'actualFlat':flat_actual,'support':'k=l=2; qi=qo=3/2',
+            'map':[[a,b] for a,b in flat_point_map.items()],'point':flat_point,'freeSymbols':list(flat_point.free_symbols)})
+        require(not flat_point.free_symbols and flat_point.is_finite is True,'complete finite flat-support control point')
         actual_consumer=D(a['consumerField']);require(not actual_consumer.free_symbols,'constant addressed pressure consumer')
         movement=local_movement*flat_point*actual_consumer
         control(face+'-Leibniz-interchange',sp.S.Zero,movement,{'addressId':a['addressId'],'coefficient':'independent trial derivative of order n-1; coefficient field at x=0',
             'fieldIsNotFourierTransform':True,'localCoefficientMovement':local_movement,'actualFlatResponse':flat_actual,'responsePoint':flat_point,
             'actualConsumer':actual_consumer,'responsePointDomain':{'l':2,'csSquared':'10/7','qo':'3/2'},'formalCoefficientSensitivityOnly':True})
-        haddr=select_control_address(addresses,'NATIVE_MIXED_ITERATION',face,'pressure',(0,0),(0,0),lambda v:v['jet']['name']=='e_W')
+        haddr=select_control_address(addresses,'NATIVE_MIXED_ITERATION',face,'pressure',(0,0),(0,0),lambda v:
+            v['jet']['name']=='e_W' and all(fieldcert[v[z+'Transform']['coefficientId']]['constantNonzero'] for z in ('source','consumer')))
         expr=D(haddr['responseOriginal']);Hs=[a for a in expr.atoms(sp.Function) if a.func.__name__=='Hwhole'];require(len(Hs)==1,'actual H tag')
         actualC=sp.expand(expr).coeff(Hs[0]);C=-sp.I*mu*k*qo/((qo+beta)*(qi+beta))
         mappedC=lift(actualC,refmap);J.zero(face+'-H-contact-actual-address-coefficient',mappedC,C.subs(omega,3))
@@ -357,7 +504,8 @@ def run_science(manifest,J,ns,exact_nonzero):
         'corruptedRadicandResidual':qhp**2-rad(lp-tp),'profileFactorsStripped':'A(1/2)A(0), both nonzero removable/positive factors; no convolution value'})
     J.zero('new-control-qi-dispersion',qip**2,rad(kp));J.zero('new-control-qo-dispersion',qop**2,rad(lp));J.zero('new-control-qh-dispersion',qhp**2,rad(kp+tp));J.zero('new-control-qs-dispersion',qsp**2,rad(lp-tp))
     for face in ('plus','minus'):
-        ad=select_control_address(addresses,'INHERITED_DIRECT_WHOLE_OFF_DIAGONAL',face,'pressure',(0,0),(0,0),lambda v:v['jet']['name']=='e_W')
+        ad=select_control_address(addresses,'INHERITED_DIRECT_WHOLE_OFF_DIAGONAL',face,'pressure',(0,0),(0,0),lambda v:
+            v['jet']['name']=='e_W' and all(fieldcert[v[z+'Transform']['coefficientId']]['constantNonzero'] for z in ('source','consumer')))
         src=D(ad['sourceField']);cons=D(ad['consumerField']);require(not src.free_symbols and not cons.free_symbols,'actual direct control source/consumer constants')
         control(face+'-wrong-reflected-root',baseline*src*cons,wrong*src*cons,{'addressId':ad['addressId'],'savedObject':'direct Bc',
             'actualSource':src,'actualConsumer':cons,'correct':'q(l-t)','corrupt':'q(k+t)','notIterationMiddleControl':True,'perCommonNonzeroProfileFactor':True})

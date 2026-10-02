@@ -37,8 +37,8 @@ class Tests(unittest.TestCase):
  def test_gate_fixture_and_mutations(self):
   with tempfile.TemporaryDirectory() as td:
    td=Path(td);manifest={'sourcePins':{},'launcher':str(M/'S11c_d_defect_weak_composition_launch.py'),'methodPath':str(M/'S11c_d_defect_weak_composition_method.md'),'methodRecord':str(M/'S11c_d_defect_weak_composition_review_record.json'),'reviewRecordWillBe':str(td/'synthetic-review.json'),'scope':{'syntheticTestOnly':True}}
-   authority=td/'authority.json';authority.write_text(json.dumps({'boundedInstrumentAuthorized':True,'automaticScientificRetry':False}))
-   mp=td/'manifest.json';mp.write_text(json.dumps(manifest));g={'status':'READY_FOR_ONE_WEAK_COMPOSITION_INSTRUMENT','workerSha256':sha(W),'manifestSha256':sha(mp),'sourcePins':{},'sharedGuard':str(R/'scripts/s11c_guarded_run.py'),'supervisor':str(M/'S11c_d_end_normalization_run.py'),'launcher':manifest['launcher'],'buildReviewRecord':manifest['reviewRecordWillBe'],'authority':str(authority),'durationLimits':None,'scientificRunsAuthorized':1,'scope':manifest['scope']}
+   authority=td/'authority.json';authority.write_text(json.dumps({'boundedInstrumentAuthorized':True,'automaticScientificRetry':False,'scienceExecutionsAuthorized':1,'noDeadline':True,'scope':manifest['scope']}));manifest['executionAuthority']=str(authority);manifest['sourcePins'][str(authority)]=sha(authority)
+   mp=td/'manifest.json';mp.write_text(json.dumps(manifest));g={'status':'READY_FOR_ONE_WEAK_COMPOSITION_INSTRUMENT','workerSha256':sha(W),'manifestSha256':sha(mp),'sourcePins':manifest['sourcePins'],'sharedGuard':str(R/'scripts/s11c_guarded_run.py'),'supervisor':str(M/'S11c_d_end_normalization_run.py'),'launcher':manifest['launcher'],'buildReviewRecord':manifest['reviewRecordWillBe'],'authority':str(authority),'durationLimits':None,'scientificRunsAuthorized':1,'scope':manifest['scope']}
    for k in ['sharedGuard','supervisor','launcher','authority']:g[k+'Sha256']=sha(g[k])
    review={'syntheticTestFixtureNotClearance':True,'independentBuildClearance':True,'methodAssessed':True,'allChecksPassed':True,'reports':{e:{'literalVerdict':'CLEAR FOR THIS GLOBAL WEAK-COMPOSITION BUILD'} for e in ['claude','grok']},'methodSha256':sha(manifest['methodPath'])}
    for k in ['workerSha256','manifestSha256','sharedGuardSha256','supervisorSha256','launcherSha256']:review[k]=g[k]
@@ -49,6 +49,72 @@ class Tests(unittest.TestCase):
    for key in ['independentBuildClearance','methodAssessed','allChecksPassed','workerSha256','manifestSha256','sharedGuardSha256','supervisorSha256','launcherSha256','methodSha256']:
     rr=copy.deepcopy(review);rr[key]=False if isinstance(rr[key],bool) else '0'*64;rp.write_text(json.dumps(rr));gg={**g,'buildReviewRecordSha256':sha(rp)};gp.write_text(json.dumps(gg))
     with self.subTest(reviewKey=key),self.assertRaises(ValueError):ns['verify_gate'](gp,mp,manifest)
+   rp.write_text(json.dumps(review));g['buildReviewRecordSha256']=sha(rp)
+   original_authority=json.loads(authority.read_text())
+   for key,value in [('scope',{}),('scienceExecutionsAuthorized',2),('noDeadline',False),('boundedInstrumentAuthorized',False),('automaticScientificRetry',True)]:
+    authority.write_text(json.dumps({**original_authority,key:value}));manifest['sourcePins'][str(authority)]=sha(authority);mp.write_text(json.dumps(manifest))
+    gg={**g,'sourcePins':manifest['sourcePins'],'manifestSha256':sha(mp),'authoritySha256':sha(authority)}
+    rr={**review,'manifestSha256':sha(mp)};rp.write_text(json.dumps(rr));gg['buildReviewRecordSha256']=sha(rp);gp.write_text(json.dumps(gg))
+    with self.subTest(authorityKey=key),self.assertRaises(ValueError):ns['verify_gate'](gp,mp,manifest)
+ def test_authority_fields_are_required(self):
+  t=W.read_text()
+  for field in ["manifest['executionAuthority']","authority['scienceExecutionsAuthorized']==1","authority['noDeadline'] is True","authority['scope']==manifest['scope']"]:self.assertIn(field,t)
+ def metadata(self):
+  man=json.loads((M/'S11c_d_defect_weak_composition_inputs.json').read_text());raw={n:json.loads(Path(v['path']).read_text()) for n,v in man['savedInputs'].items()};addresses=[a for row in ns['ROWS'] for a in raw['inventory/'+row+'-ordered-addresses.json']]
+  return man,raw,addresses
+ def test_complete_grade_routes_and_corruption(self):
+  _,raw,aa=self.metadata();g=raw['inventory/grade-coverage.json'];self.assertEqual(ns['validate_grade_routes'](g,aa)['addresses'],13260)
+  for modified in [g[:-1],g+[g[0]],[*g[:-1],g[0]]]:
+   with self.assertRaises(ValueError):ns['validate_grade_routes'](modified,aa)
+  for key,value in [('face','wrong'),('row','missing'),('slot','other'),('consumerGrade',[1,1]),('targetGrade',[2,0]),('component','NATIVE_HEIGHT')]:
+   bad=copy.deepcopy(aa[0]);bad[key]=value
+   with self.subTest(key=key),self.assertRaises(ValueError):ns['validate_grade_routes'](g,[bad,*aa[1:]])
+  with self.assertRaises(ValueError):ns['validate_grade_routes'](g,[aa[0],*aa[2:],aa[0]])
+ def test_actual_tag_signatures_and_corruption(self):
+  _,_,aa=self.metadata();unique={}
+  for a in aa:
+   key=(a['face'],a['component'],a['responseOriginal']['srepr'],a['responseCoefficient']['srepr'])
+   if key not in unique:unique[key]=ns['validate_address_tags'](a)
+  self.assertEqual(len(unique),10)
+  direct=next(a for a in aa if a['component']=='INHERITED_DIRECT_WHOLE_OFF_DIAGONAL')
+  for operand in ['responseOriginal','responseCoefficient']:
+   for mutate in [lambda s:'Mul(Integer(2), '+s+')',lambda s:s.replace('Dwhole_plus','Dwhole_minus'),lambda s:s.replace('Integer(10)','Integer(11)'),lambda s:'Pow('+s+', Integer(2))']:
+    bad=copy.deepcopy(direct);bad[operand]['srepr']=mutate(bad[operand]['srepr'])
+    with self.assertRaises(ValueError):ns['validate_address_tags'](bad)
+  mixed=next(a for a in aa if a['component']=='NATIVE_MIXED_ITERATION')
+  for before,after in [('Hwhole','Hwhole_wrong'),('Jwhole_plus','Jwhole_minus'),('Integer(10)','Integer(11)')]:
+   bad=copy.deepcopy(mixed);bad['responseCoefficient']['srepr']=bad['responseCoefficient']['srepr'].replace(before,after)
+   with self.assertRaises(ValueError):ns['validate_address_tags'](bad)
+ def test_whole_definition_joins_and_corruption(self):
+  man,r,_=self.metadata();tags=r['inventory/whole-tag-definitions.json'];typed=r['inventory/typed-direct-objects.json'];ref=r['saved/reference/retained-response-census.json']
+  definitions={name:(alias,r[alias]) for name,alias in [('H','saved/reference/left-height-subtracted-PV.json'),('Jwhole','saved/reference/right-height-PV-operands.json'),('Dwhole','saved/direct/closed-density.json')]}
+  ns['validate_whole_definitions'](tags,typed,ref,definitions,man['savedInputs'])
+  for tag,key,value in [('H','boundVariable','t'),('Jwhole','middleMomentum','l-t'),('Dwhole','reflectedMomentum','k+t'),('Dwhole','valueEvaluated',True),('Dwhole','sha256','0'*64)]:
+   bad=copy.deepcopy(tags);bad[tag][key]=value
+   with self.subTest(tag=tag,key=key),self.assertRaises(ValueError):ns['validate_whole_definitions'](bad,typed,ref,definitions,man['savedInputs'])
+  for key,value in [('multiplyWholeTagByResolvents',True),('barePlaceholderIsWholeTag',True),('closedDensity',{})]:
+   bad=copy.deepcopy(typed);bad[key]=value
+   with self.assertRaises(ValueError):ns['validate_whole_definitions'](tags,bad,ref,definitions,man['savedInputs'])
+ def test_four_control_routes_and_corruption(self):
+  _,r,aa=self.metadata();cs=r['inventory/responsive-formal-controls.json'];normal=r['saved/reference/retained-response-census.json']['normalJet'];chosen=[c for c in cs if c['name'].endswith('normal-q-l-to-r')];ns['validate_normal_control_names'](cs)
+  for bad in [chosen[:-1],chosen+[chosen[0]],chosen[:-1]+[chosen[0]]]:
+   with self.assertRaises(ValueError):ns['validate_normal_control_names'](bad)
+  ids={a['addressId']:a for a in aa}
+  for c in chosen:
+   a=ids[r['inventory/'+c['name']+'-control-operands.json']['context']['addressId']];ns['validate_normal_control_route'](c['name'],a,normal)
+   for key,value in [('face','minus' if a['face']=='plus' else 'plus'),('row','U0'),('slot','pressure'),('normalOriginal',{'text':'1','srepr':'Integer(1)'})]:
+    bad=copy.deepcopy(a);bad[key]=value
+    with self.assertRaises(ValueError):ns['validate_normal_control_route'](c['name'],bad,normal)
+ def test_control_selection_skips_ineligible_first_address(self):
+  base={'addressId':1,'component':'NATIVE_MIXED_ITERATION','face':'plus','slot':'pressure','sourceGrade':[0,0],'consumerGrade':[0,0],'status':'FORMAL_ADDRESS_AVAILABLE_NONZERO_NOT_ASSERTED','constant':False};good={**base,'addressId':2,'constant':True}
+  a=ns['select_control_address']([base,good],base['component'],'plus','pressure',(0,0),(0,0),lambda a:a['constant']);self.assertEqual(a['addressId'],2)
+ def test_flat_control_full_map_before_guard(self):
+  s=W.read_text();self.assertIn("qi:sp.Rational(3,2),qo:sp.Rational(3,2)",s);self.assertIn("flat_actual.subs(flat_point_map,simultaneous=True)",s)
+  self.assertLess(s.index("'-Leibniz-flat-point-input'"),s.index("require(not flat_point.free_symbols"))
+ def test_actual_containment_helper_enforces_limits(self):
+  helper=ast.parse((M/'S11c_d_defect_raw_increment.py').read_text());node=next(n for n in helper.body if isinstance(n,ast.FunctionDef) and n.name=='containment');code=ast.unparse(node)
+  for term in ['memory.max','memory.swap.max','pids.max','affinity','threads','RLIMIT_AS','RLIMIT_CPU','S11C_POOLED_GUARD_MANIFEST']:self.assertIn(term,code)
+  self.assertIn('require(',code)
  def test_actual_metadata_contracts_no_restoration(self):
   man=json.loads((M/'S11c_d_defect_weak_composition_inputs.json').read_text());raw={n:json.loads(Path(v['path']).read_text()) for n,v in man['savedInputs'].items()};keys=('sha256','original','mapped','map','symbolAssumptions','flatSupport','frequency','positiveRegulatorContinuation');count=0
   for n,v in raw.items():

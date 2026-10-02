@@ -1,0 +1,72 @@
+{
+  "status": "CORRECTED_VALIDATION_PREPARED_NO_SCIENCE",
+  "reviewedBaselineCommit": "6b890254",
+  "literalHistory": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS GLOBAL WEAK-COMPOSITION BUILD"
+  },
+  "oldWorkerSha256": "4b229fa5283a6acc2f1de23ea4cefdaf89d8d25f7e3dcad66b8fc734a54acbf2",
+  "newWorkerSha256": "77ec3fa030b5a5a839c31b2be1d8dd76b392b06f3cbf5b859870a6f20b56740c",
+  "oldManifestSha256": "4d5009fa610c93d84f9d1acfd5e09f50d2f26784ad43dd9d07b182be39aa2a8a",
+  "newManifestSha256": "d6797efd88af2bb08535072031d4d1ffc4218d87929535158b7015a652278fd8",
+  "methodUnchanged": true,
+  "savedInputsUnchanged": 202,
+  "physicalScopeUnchanged": true,
+  "newScientificExecution": false,
+  "payloadRestored": false,
+  "unchangedExistingRunAssignmentGroups": 127,
+  "changedAssignmentTargets": [
+    "Subscript(value=Name(id='fieldcert', ctx=Load()), slice=Name(id='fid', ctx=Load()), ctx=Store())",
+    "Subscript(value=Name(id='jets', ctx=Load()), slice=Subscript(value=Subscript(value=Name(id='a', ctx=Load()), slice=Constant(value='jet'), ctx=Load()), slice=Constant(value='name'), ctx=Load()), ctx=Store())",
+    "Name(id='tags', ctx=Store())",
+    "Name(id='a', ctx=Store())",
+    "Name(id='flat_point', ctx=Store())",
+    "Name(id='haddr', ctx=Store())",
+    "Name(id='ad', ctx=Store())"
+  ],
+  "globalAndControlEquationAssignmentsUnchanged": [
+    "Jformula",
+    "Bformula",
+    "Dformula",
+    "B",
+    "Bi",
+    "BN",
+    "BNi",
+    "b",
+    "amin",
+    "cs2",
+    "kp",
+    "lp",
+    "tp",
+    "rad",
+    "qip",
+    "qop",
+    "qhp",
+    "qsp",
+    "baseline",
+    "wrong",
+    "local_movement",
+    "comm",
+    "expected",
+    "cpoint",
+    "actualC",
+    "C",
+    "physical"
+  ],
+  "validation": [
+    "Full independent grade/row/face/slot/jet coverage, explicit zeros and unique addresses",
+    "Actual saved whole definitions, typed factors, complete density, native mixed plus direct once; original/mapped signatures on both faces",
+    "Exact four restored normal control names, row/face/native normal joins",
+    "Constant coefficient eligibility before new-control selection; full flat-support point persisted and guarded",
+    "New authority exact path/hash/scope/one-run/no-deadline joins"
+  ],
+  "containment": "Existing helper already asserts actual limits; unchanged",
+  "localTests": {
+    "tests": 18,
+    "passed": true,
+    "onlyStdlibMetadataASTAndSyntheticFixtures": true,
+    "scientificResult": false
+  },
+  "next": "Fresh independent bounded build assessment; no author CLEAR or runtime gate",
+  "reviewerCoverage": "First Claude report did not read supplied saved data/helpers; all were present. New packet explicitly identifies evidence routes without supplying old reports."
+}

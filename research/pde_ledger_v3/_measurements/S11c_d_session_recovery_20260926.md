@@ -1,3 +1,20 @@
+**DEFECT-OPERATOR APPLICABILITY REVIEWS RUNNING (2026-10-01):**
+User explicitly replied Approve to the prepared77file/2986536byte packet for fresh
+Claude and Grok, SHA2560ee336fbe5e6ea301454564004ab0434d78b798431f0cac3a1d286af113bb8d3.
+All packet/archive/original-source hashes matched. Hook armed before review launch;
+one host startup check verified coordinator1620983,watcher1620984,Claude1620992 and
+Grok1620993 alive in fresh distinct sessions. Both private77file copies match exactly.
+See defect_operator_applicability_review_launch.json and preparation.json for approval,
+receipts and checks. No report content read or peer sharing; no scientific execution.
+Wait silently for the existing session hook,not model polling. Both actual reports
+must finish before joint adjudication or method/source edits. Preserve literal verdicts,
+private snapshots and stderr; exit status is not a delivered verdict or science result.
+Standing user direction covers continued bounded implementation after substantive
+assessment/readiness,without routine stage permission. New external packets retain
+exact-consent requirements; no automatic retry or optional review loop. No producer
+restart or immediate defect sweep. Shared guard/no-deadline pooled science policy and
+all protected sources,accepted work,failures and incident/review history stay intact.
+
 **DEFECT-OPERATOR APPLICABILITY PACKET READY; EXACT EXPORT CONSENT PENDING (2026-10-01):**
 User renewed: Great. Let's keep going. Please stop stopping unless you need my input.
 Local source assessment identifies the material distinction: c2 truncates the

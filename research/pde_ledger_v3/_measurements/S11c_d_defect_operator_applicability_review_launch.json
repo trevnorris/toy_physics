@@ -1,0 +1,72 @@
+{
+  "status": "BOTH_APPROVED_FRESH_REVIEWS_RUNNING",
+  "checkedUtc": "2026-10-02T00:33:31.641764+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review",
+  "preparedCommit": "5e970bc6",
+  "launch": {
+    "jobPid": 1620983,
+    "watcherPid": 1620984,
+    "packetSha256": "0ee336fbe5e6ea301454564004ab0434d78b798431f0cac3a1d286af113bb8d3",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "30ed68e2d751f5c85399fcdf99384d9ef095376983da0b1bf91b89aef62e5b62",
+    "launcherSha256": "d7dd71850300818294a1218ecaf59c5576f63884457eb12b87d69d8b0c7df2a5"
+  },
+  "reviewers": {
+    "claude": {
+      "pid": 1620992,
+      "sessionId": "daf81a10-b941-4bda-9341-4a92f1c995f8",
+      "startedUtc": "2026-10-02T00:32:51.309370+00:00",
+      "runReceipt": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review/claude-run.json",
+      "privateFiles": 77,
+      "allPrivateHashesMatched": true,
+      "aliveAtStartup": true,
+      "scientificExecutionEnabled": false
+    },
+    "grok": {
+      "pid": 1620993,
+      "sessionId": "41c34b47-ea18-463b-b077-ff0dba599c67",
+      "startedUtc": "2026-10-02T00:32:51.309403+00:00",
+      "runReceipt": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-operator-applicability-20261001/method-review/grok-run.json",
+      "privateFiles": 77,
+      "allPrivateHashesMatched": true,
+      "aliveAtStartup": true,
+      "scientificExecutionEnabled": false
+    }
+  },
+  "approval": {
+    "status": "EXPLICITLY_APPROVED_FIXED_PACKET",
+    "recordedUtc": "2026-10-02T00:32:36.245120+00:00",
+    "userText": "Approve",
+    "context": "Direct reply to the exact 77-file, 2,986,536-byte packet question for fresh Claude and Grok, and the final response requesting that export approval.",
+    "packetSha256": "0ee336fbe5e6ea301454564004ab0434d78b798431f0cac3a1d286af113bb8d3",
+    "archiveSha256": "d87a322e19dbf288e7d585f4c9f3833f5b7e0e19a7a6e0fe759d873ba678177e",
+    "packetFiles": 77,
+    "packetBytes": 2986536,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "currentThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "scienceAuthorizedBySubmission": false,
+    "authority": "One fresh source/evidence method-review pair on this unchanged packet; no peer sharing, automatic retry or future export."
+  },
+  "approvalSha256": "c2d31dbba78c94859fe7ae46eda055ff66e2f44a88d214ccecdd42604f575b1b",
+  "checks": {
+    "coordinatorAlive": true,
+    "watcherAlive": true,
+    "hookArmedFirst": true,
+    "bothFreshIndependentSessions": true,
+    "allPrivatePacketHashesMatched": true,
+    "noScienceStarted": true,
+    "packetUnchanged": true
+  },
+  "reviewOutputsInspected": false,
+  "peerSharing": false,
+  "automaticRetry": false,
+  "waitingPolicy": "Silent local completion hook; no model polling. Both reports must finish before joint adjudication/source edits."
+}

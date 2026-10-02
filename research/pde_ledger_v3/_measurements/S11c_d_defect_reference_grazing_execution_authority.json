@@ -1,0 +1,30 @@
+{
+  "recordedUtc": "2026-10-02T08:27:36.103238+00:00",
+  "boundedInstrumentAuthorized": true,
+  "automaticScientificRetry": false,
+  "scientificRunsAuthorized": 1,
+  "scope": "Both-face per-unit-native-source retained reference-response grazing certificates, zero/height/slope/mixed iteration and one restored direct addend; no integral/full source-consumer/finite inverse/defect sweep",
+  "standingUserDirection": "Continue clear bounded steps overnight without routine approval; necessary reviews authorized in AGENTS.md.",
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "sourceReviewCommit": "85fa4e72",
+  "durationLimits": null,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolBytes": 17179869184,
+    "swapBytes": 0,
+    "cpus": 1,
+    "threads": 1,
+    "tasks": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "notAuthorized": [
+    "integral evaluation",
+    "full source/consumer assembly",
+    "finite matrix",
+    "production overwrite",
+    "defect sweep",
+    "loss interpretation"
+  ]
+}

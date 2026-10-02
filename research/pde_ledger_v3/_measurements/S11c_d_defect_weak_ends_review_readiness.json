@@ -1,0 +1,50 @@
+{
+  "status": "READY_SOURCE_METHOD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/method-review",
+  "completedDependencyCommit": "2b82558f",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-02T21:02:23.799065+00:00",
+    "packetSha256": "4dac84d0d8bce5bddef1fe3b556a896a4875cc0d2e5e8a2aec9455fd8a41cbda",
+    "archiveSha256": "7c664f3277b090fea9aabc52eef7cb7b9114c9b3da3be0e790fce3602f410f25",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 70,
+    "bytes": 11092702,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "AGENTS standing review-submission authorization and repeated user direction to continue clear bounded research without routine prompts",
+    "scope": "Translated Schwartz weak end limits and formal retained diagonal symbols; no response integral evaluation, roots, finite matrix/inverse, scattering or loss",
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_SOURCE_AND_PACKET_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "86c6e67c7b7aa9470bb093b06850f20da88943c10ff259257a2d9b20d819fbef",
+    "packetSha256": "4dac84d0d8bce5bddef1fe3b556a896a4875cc0d2e5e8a2aec9455fd8a41cbda",
+    "archiveSha256": "7c664f3277b090fea9aabc52eef7cb7b9114c9b3da3be0e790fce3602f410f25",
+    "files": 70,
+    "bytes": 11092702,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 69,
+    "payloadRestored": false,
+    "transportIdenticalToPrior": true,
+    "noReviewVerdict": true
+  },
+  "checks": {
+    "sourceCopiesByteIdentical": true,
+    "JSONMetadataOnly": true,
+    "archiveMembersMatch": true,
+    "transportIdentical": true,
+    "noPeerReports": true,
+    "noScientificImportsRestoration": true,
+    "newScienceRuns": 0,
+    "localCellsCopied": 400,
+    "newTrackedDataOver1MiB": []
+  }
+}

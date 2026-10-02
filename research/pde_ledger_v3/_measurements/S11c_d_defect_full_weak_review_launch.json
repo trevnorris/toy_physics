@@ -1,0 +1,107 @@
+{
+  "status": "FROZEN_METHOD_PAIR_LAUNCHED_HOOK_FIRST",
+  "recordedUtc": "2026-10-02T18:42:03.013696+00:00",
+  "preparedCommit": "c507f88e",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/method-review",
+  "packetSha256": "a68e018cd497da25633c355930daed4fd9ea194ecf7c32cea9b10bdd19452cd0",
+  "archiveSha256": "583c2e1ab61d8c39ec4a86fb7dcdda7806f2f75abb34d975819afa4964cf9ccb",
+  "launch": {
+    "jobPid": 2704350,
+    "watcherPid": 2704351,
+    "packetSha256": "a68e018cd497da25633c355930daed4fd9ea194ecf7c32cea9b10bdd19452cd0",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 2704351,
+    "jobPid": 2704350,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-02T18:40:18.108303+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "473ba23eead0512a8aebe624320deb1fa05756ffb6f838afb79d4e84ca5111f0",
+    "notifications": {}
+  },
+  "receiptsAtStartup": {
+    "claude": {
+      "engine": "claude",
+      "sessionId": "6f6d26e5-4003-4ced-9f0e-1dadeb9a1ea9",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "6f6d26e5-4003-4ced-9f0e-1dadeb9a1ea9"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/method-review/claude/work",
+      "startedUtc": "2026-10-02T18:40:18.298075+00:00",
+      "packetSha256": "a68e018cd497da25633c355930daed4fd9ea194ecf7c32cea9b10bdd19452cd0",
+      "promptSha256": "75a36be22e5159027b837d97ec867711b473f9285b3ec4421d1b514ebe543723",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 2704359
+    },
+    "grok": {
+      "engine": "grok",
+      "sessionId": "87e6a174-c59f-4ad0-8fbd-26c4f0146475",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/method-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/method-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "87e6a174-c59f-4ad0-8fbd-26c4f0146475"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/method-review/grok/work",
+      "startedUtc": "2026-10-02T18:40:18.300940+00:00",
+      "packetSha256": "a68e018cd497da25633c355930daed4fd9ea194ecf7c32cea9b10bdd19452cd0",
+      "promptSha256": "75a36be22e5159027b837d97ec867711b473f9285b3ec4421d1b514ebe543723",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 2704360
+    }
+  },
+  "privateFilesChecked": 90,
+  "coordinatorStderrEmpty": true,
+  "reportsReadBeforeBothFinish": false,
+  "scientificExecutionEnabled": false,
+  "startupInspection": true,
+  "startupInspectionCorrection": {
+    "firstRead": "Sandbox could not see host reviewer PID via /proc; assertion failed before writing launch record. No reviewer was interrupted/retried and no report was read.",
+    "resolution": "Host-side receipt/process check sees both original PIDs, same sessions, no exit or coordinator error; private inputs verified."
+  },
+  "automaticRetry": false,
+  "modelPolling": false
+}

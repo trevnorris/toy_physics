@@ -1,0 +1,52 @@
+{
+  "status": "INDEPENDENT_METHOD_PAIR_LAUNCHED_HOOK_FIRST",
+  "recordedUtc": "2026-10-02T16:07:40.887827+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/method-review",
+  "preparationCommit": "eeec17bd",
+  "completedInventoryCommit": "7455ee78",
+  "packetSha256": "8778601d9f6b4f35d2a8f61d1dd1da3cd7a23d0525ef486069da5086d432d415",
+  "archiveSha256": "4cbbc6d170ff56de2cc63646c17c55af65b334692147ec1f2a57299e7678d4f3",
+  "files": 226,
+  "bytes": 11953296,
+  "launch": {
+    "jobPid": 2650832,
+    "watcherPid": 2650833,
+    "packetSha256": "8778601d9f6b4f35d2a8f61d1dd1da3cd7a23d0525ef486069da5086d432d415",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "receipts": {
+    "claude": {
+      "sessionId": "432dd719-f420-4b40-8c03-c9d61002a5b7",
+      "pid": 2650850,
+      "startedUtc": "2026-10-02T16:07:01.332908+00:00",
+      "promptSha256": "62f098b090b7e66f5771c7bad62534dc86a370968b3b9ad06479dbb3541ab5b4",
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/method-review/claude/work",
+      "scientificExecutionEnabled": false
+    },
+    "grok": {
+      "sessionId": "25011c6c-dd94-4387-9e08-8582ff83600e",
+      "pid": 2650849,
+      "startedUtc": "2026-10-02T16:07:01.332622+00:00",
+      "promptSha256": "62f098b090b7e66f5771c7bad62534dc86a370968b3b9ad06479dbb3541ab5b4",
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/method-review/grok/work",
+      "scientificExecutionEnabled": false
+    }
+  },
+  "hookStartedUtc": "2026-10-02T16:07:01.070638+00:00",
+  "reviewStartUtc": "2026-10-02T16:07:01.219514+00:00",
+  "hookSession": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "allPacketPrivateHashesIntact": true,
+  "scienceCalls": 0,
+  "noPeerReportsShared": true,
+  "reviewOutputsRead": false,
+  "automaticRetry": false,
+  "standingAuthoritySha256": "44588a2418d9a1b5f59a60938abccdda112a922af8be6d068ab73e6e42ee31cc",
+  "noNewTrackedGeneratedFilesOver1MiB": true
+}

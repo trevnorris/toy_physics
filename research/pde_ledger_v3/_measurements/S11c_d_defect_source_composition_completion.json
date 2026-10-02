@@ -1,0 +1,1197 @@
+{
+  "status": "SUPPORTED_BOUNDED_SOURCE_CONSUMER_COMPOSITION_INVENTORY",
+  "recordedUtc": "2026-10-02T15:54:26.390317+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01",
+  "gateCommit": "e12b4a58",
+  "launchCommit": "a24b4557",
+  "workerSha256": "b94aa6579f6334d65f7a3306c84109b6fa4496237e5eef363b1da02bebfbbca8",
+  "manifestSha256": "4b1974169acb0b341f1694eb2d5b008404c1d9b98c13c390fec5eee585c33f70",
+  "gateSha256": "e4d2f58878c4a9db848b3500834b26666246231c678af948abb7551881cb543b",
+  "inspectionChecks": 125119,
+  "allInspectionChecksPassed": true,
+  "acceptanceScope": "Complete retained rectangular ordered source/response/consumer inventory with exact native and saved-operand joins. Formal unevaluated response tags only; no full-operator or loss acceptance.",
+  "cost": {
+    "workerSeconds": 2002.080082244007,
+    "guardSeconds": 2003.983796313987,
+    "peakBytes": 397389824,
+    "swapBytes": 0,
+    "memoryEvents": 0,
+    "resourceSamples": 1003
+  },
+  "coverage": {
+    "completedStages": 1,
+    "artifacts": 3757,
+    "literalZeroReturns": 915,
+    "formalResponsiveControls": 26,
+    "gradeCoverage": {
+      "EXACT_ZERO_CONSUMER": 272,
+      "ADDRESSED": 48
+    },
+    "addresses": {
+      "EXACT_ZERO_CONSUMER": 11232,
+      "FORMAL_ADDRESS_AVAILABLE_NONZERO_NOT_ASSERTED": 608,
+      "EXACT_ZERO_SOURCE_JET": 1420
+    },
+    "responsePlaceholders": 1560,
+    "wholeCoefficientFields": 34,
+    "savedCopies": 122,
+    "sourcePosthashes": 262,
+    "sourceSnapshots": 140,
+    "files": 3885,
+    "bytes": 126446349
+  },
+  "controls": [
+    {
+      "name": "THETA_BALANCE-plus-source-p-to-k",
+      "movement": {
+        "text": "7/255 + 7*I/1020",
+        "srepr": "Add(Rational(7, 255), Mul(Rational(7, 1020), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "7/255 + 7*I/1020",
+          "srepr": "Add(Rational(7, 255), Mul(Rational(7, 1020), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "7/255",
+              "srepr": "Rational(7, 255)"
+            },
+            {
+              "text": "7/1020",
+              "srepr": "Rational(7, 1020)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "THETA_BALANCE-plus-omit-source10",
+      "movement": {
+        "text": "-3/85 - 3*I/340",
+        "srepr": "Add(Rational(-3, 85), Mul(Integer(-1), Rational(3, 340), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-3/85 - 3*I/340",
+          "srepr": "Add(Rational(-3, 85), Mul(Integer(-1), Rational(3, 340), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-3/85",
+              "srepr": "Rational(-3, 85)"
+            },
+            {
+              "text": "-3/340",
+              "srepr": "Rational(-3, 340)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "THETA_BALANCE-plus-normal-q-l-to-r",
+      "movement": {
+        "text": "371/1248650 - 539*I/384200",
+        "srepr": "Add(Rational(371, 1248650), Mul(Integer(-1), Rational(539, 384200), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "371/1248650 - 539*I/384200",
+          "srepr": "Add(Rational(371, 1248650), Mul(Integer(-1), Rational(539, 384200), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "371/1248650",
+              "srepr": "Rational(371, 1248650)"
+            },
+            {
+              "text": "-539/384200",
+              "srepr": "Rational(-539, 384200)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "THETA_BALANCE-plus-omit-consumer10",
+      "movement": {
+        "text": "159/192100 - 3003*I/768400",
+        "srepr": "Add(Rational(159, 192100), Mul(Integer(-1), Rational(3003, 768400), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "159/192100 - 3003*I/768400",
+          "srepr": "Add(Rational(159, 192100), Mul(Integer(-1), Rational(3003, 768400), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "159/192100",
+              "srepr": "Rational(159, 192100)"
+            },
+            {
+              "text": "-3003/768400",
+              "srepr": "Rational(-3003, 768400)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "THETA_BALANCE-plus-omit-direct",
+      "movement": {
+        "text": "91/47524 + 15*I/11881",
+        "srepr": "Add(Rational(91, 47524), Mul(Rational(15, 11881), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "91/47524 + 15*I/11881",
+          "srepr": "Add(Rational(91, 47524), Mul(Rational(15, 11881), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "91/47524",
+              "srepr": "Rational(91, 47524)"
+            },
+            {
+              "text": "15/11881",
+              "srepr": "Rational(15, 11881)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "THETA_BALANCE-plus-double-direct",
+      "movement": {
+        "text": "-91/47524 - 15*I/11881",
+        "srepr": "Add(Rational(-91, 47524), Mul(Integer(-1), Rational(15, 11881), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-91/47524 - 15*I/11881",
+          "srepr": "Add(Rational(-91, 47524), Mul(Integer(-1), Rational(15, 11881), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-91/47524",
+              "srepr": "Rational(-91, 47524)"
+            },
+            {
+              "text": "-15/11881",
+              "srepr": "Rational(-15, 11881)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "THETA_BALANCE-minus-source-p-to-k",
+      "movement": {
+        "text": "7/255 + 7*I/1020",
+        "srepr": "Add(Rational(7, 255), Mul(Rational(7, 1020), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "7/255 + 7*I/1020",
+          "srepr": "Add(Rational(7, 255), Mul(Rational(7, 1020), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "7/255",
+              "srepr": "Rational(7, 255)"
+            },
+            {
+              "text": "7/1020",
+              "srepr": "Rational(7, 1020)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "THETA_BALANCE-minus-omit-source10",
+      "movement": {
+        "text": "-3/85 - 3*I/340",
+        "srepr": "Add(Rational(-3, 85), Mul(Integer(-1), Rational(3, 340), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-3/85 - 3*I/340",
+          "srepr": "Add(Rational(-3, 85), Mul(Integer(-1), Rational(3, 340), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-3/85",
+              "srepr": "Rational(-3, 85)"
+            },
+            {
+              "text": "-3/340",
+              "srepr": "Rational(-3, 340)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "THETA_BALANCE-minus-normal-q-l-to-r",
+      "movement": {
+        "text": "-371/1248650 + 539*I/384200",
+        "srepr": "Add(Rational(-371, 1248650), Mul(Rational(539, 384200), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-371/1248650 + 539*I/384200",
+          "srepr": "Add(Rational(-371, 1248650), Mul(Rational(539, 384200), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-371/1248650",
+              "srepr": "Rational(-371, 1248650)"
+            },
+            {
+              "text": "539/384200",
+              "srepr": "Rational(539, 384200)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "THETA_BALANCE-minus-omit-consumer10",
+      "movement": {
+        "text": "-159/192100 + 3003*I/768400",
+        "srepr": "Add(Rational(-159, 192100), Mul(Rational(3003, 768400), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-159/192100 + 3003*I/768400",
+          "srepr": "Add(Rational(-159, 192100), Mul(Rational(3003, 768400), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-159/192100",
+              "srepr": "Rational(-159, 192100)"
+            },
+            {
+              "text": "3003/768400",
+              "srepr": "Rational(3003, 768400)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "THETA_BALANCE-minus-omit-direct",
+      "movement": {
+        "text": "91/47524 + 15*I/11881",
+        "srepr": "Add(Rational(91, 47524), Mul(Rational(15, 11881), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "91/47524 + 15*I/11881",
+          "srepr": "Add(Rational(91, 47524), Mul(Rational(15, 11881), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "91/47524",
+              "srepr": "Rational(91, 47524)"
+            },
+            {
+              "text": "15/11881",
+              "srepr": "Rational(15, 11881)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "THETA_BALANCE-minus-double-direct",
+      "movement": {
+        "text": "-91/47524 - 15*I/11881",
+        "srepr": "Add(Rational(-91, 47524), Mul(Integer(-1), Rational(15, 11881), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-91/47524 - 15*I/11881",
+          "srepr": "Add(Rational(-91, 47524), Mul(Integer(-1), Rational(15, 11881), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-91/47524",
+              "srepr": "Rational(-91, 47524)"
+            },
+            {
+              "text": "-15/11881",
+              "srepr": "Rational(-15, 11881)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "THETA_BALANCE-lower-jet-sign",
+      "movement": {
+        "text": "-9/2825 + 69*I/5650",
+        "srepr": "Add(Rational(-9, 2825), Mul(Rational(69, 5650), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-9/2825 + 69*I/5650",
+          "srepr": "Add(Rational(-9, 2825), Mul(Rational(69, 5650), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-9/2825",
+              "srepr": "Rational(-9, 2825)"
+            },
+            {
+              "text": "69/5650",
+              "srepr": "Rational(69, 5650)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "E_W_BALANCE-plus-source-p-to-k",
+      "movement": {
+        "text": "-301/2040 + 7*I/1020",
+        "srepr": "Add(Rational(-301, 2040), Mul(Rational(7, 1020), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-301/2040 + 7*I/1020",
+          "srepr": "Add(Rational(-301, 2040), Mul(Rational(7, 1020), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-301/2040",
+              "srepr": "Rational(-301, 2040)"
+            },
+            {
+              "text": "7/1020",
+              "srepr": "Rational(7, 1020)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "E_W_BALANCE-plus-omit-source10",
+      "movement": {
+        "text": "129/680 - 3*I/340",
+        "srepr": "Add(Rational(129, 680), Mul(Integer(-1), Rational(3, 340), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "129/680 - 3*I/340",
+          "srepr": "Add(Rational(129, 680), Mul(Integer(-1), Rational(3, 340), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "129/680",
+              "srepr": "Rational(129, 680)"
+            },
+            {
+              "text": "-3/340",
+              "srepr": "Rational(-3, 340)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "E_W_BALANCE-plus-normal-q-l-to-r",
+      "movement": {
+        "text": "371/1248650 - 539*I/384200",
+        "srepr": "Add(Rational(371, 1248650), Mul(Integer(-1), Rational(539, 384200), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "371/1248650 - 539*I/384200",
+          "srepr": "Add(Rational(371, 1248650), Mul(Integer(-1), Rational(539, 384200), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "371/1248650",
+              "srepr": "Rational(371, 1248650)"
+            },
+            {
+              "text": "-539/384200",
+              "srepr": "Rational(-539, 384200)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "E_W_BALANCE-plus-omit-consumer10",
+      "movement": {
+        "text": "159/192100 - 3003*I/768400",
+        "srepr": "Add(Rational(159, 192100), Mul(Integer(-1), Rational(3003, 768400), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "159/192100 - 3003*I/768400",
+          "srepr": "Add(Rational(159, 192100), Mul(Integer(-1), Rational(3003, 768400), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "159/192100",
+              "srepr": "Rational(159, 192100)"
+            },
+            {
+              "text": "-3003/768400",
+              "srepr": "Rational(-3003, 768400)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "E_W_BALANCE-plus-omit-direct",
+      "movement": {
+        "text": "-5/436 - 3*I/872",
+        "srepr": "Add(Rational(-5, 436), Mul(Integer(-1), Rational(3, 872), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-5/436 - 3*I/872",
+          "srepr": "Add(Rational(-5, 436), Mul(Integer(-1), Rational(3, 872), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-5/436",
+              "srepr": "Rational(-5, 436)"
+            },
+            {
+              "text": "-3/872",
+              "srepr": "Rational(-3, 872)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "E_W_BALANCE-plus-double-direct",
+      "movement": {
+        "text": "5/436 + 3*I/872",
+        "srepr": "Add(Rational(5, 436), Mul(Rational(3, 872), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "5/436 + 3*I/872",
+          "srepr": "Add(Rational(5, 436), Mul(Rational(3, 872), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "5/436",
+              "srepr": "Rational(5, 436)"
+            },
+            {
+              "text": "3/872",
+              "srepr": "Rational(3, 872)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "E_W_BALANCE-minus-source-p-to-k",
+      "movement": {
+        "text": "-301/2040 + 7*I/1020",
+        "srepr": "Add(Rational(-301, 2040), Mul(Rational(7, 1020), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-301/2040 + 7*I/1020",
+          "srepr": "Add(Rational(-301, 2040), Mul(Rational(7, 1020), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-301/2040",
+              "srepr": "Rational(-301, 2040)"
+            },
+            {
+              "text": "7/1020",
+              "srepr": "Rational(7, 1020)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "E_W_BALANCE-minus-omit-source10",
+      "movement": {
+        "text": "129/680 - 3*I/340",
+        "srepr": "Add(Rational(129, 680), Mul(Integer(-1), Rational(3, 340), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "129/680 - 3*I/340",
+          "srepr": "Add(Rational(129, 680), Mul(Integer(-1), Rational(3, 340), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "129/680",
+              "srepr": "Rational(129, 680)"
+            },
+            {
+              "text": "-3/340",
+              "srepr": "Rational(-3, 340)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "E_W_BALANCE-minus-normal-q-l-to-r",
+      "movement": {
+        "text": "-371/1248650 + 539*I/384200",
+        "srepr": "Add(Rational(-371, 1248650), Mul(Rational(539, 384200), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-371/1248650 + 539*I/384200",
+          "srepr": "Add(Rational(-371, 1248650), Mul(Rational(539, 384200), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-371/1248650",
+              "srepr": "Rational(-371, 1248650)"
+            },
+            {
+              "text": "539/384200",
+              "srepr": "Rational(539, 384200)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "E_W_BALANCE-minus-omit-consumer10",
+      "movement": {
+        "text": "-159/192100 + 3003*I/768400",
+        "srepr": "Add(Rational(-159, 192100), Mul(Rational(3003, 768400), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-159/192100 + 3003*I/768400",
+          "srepr": "Add(Rational(-159, 192100), Mul(Rational(3003, 768400), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-159/192100",
+              "srepr": "Rational(-159, 192100)"
+            },
+            {
+              "text": "3003/768400",
+              "srepr": "Rational(3003, 768400)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "E_W_BALANCE-minus-omit-direct",
+      "movement": {
+        "text": "-5/436 - 3*I/872",
+        "srepr": "Add(Rational(-5, 436), Mul(Integer(-1), Rational(3, 872), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-5/436 - 3*I/872",
+          "srepr": "Add(Rational(-5, 436), Mul(Integer(-1), Rational(3, 872), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-5/436",
+              "srepr": "Rational(-5, 436)"
+            },
+            {
+              "text": "-3/872",
+              "srepr": "Rational(-3, 872)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "E_W_BALANCE-minus-double-direct",
+      "movement": {
+        "text": "5/436 + 3*I/872",
+        "srepr": "Add(Rational(5, 436), Mul(Rational(3, 872), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "5/436 + 3*I/872",
+          "srepr": "Add(Rational(5, 436), Mul(Rational(3, 872), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "5/436",
+              "srepr": "Rational(5, 436)"
+            },
+            {
+              "text": "3/872",
+              "srepr": "Rational(3, 872)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    },
+    {
+      "name": "E_W_BALANCE-lower-jet-sign",
+      "movement": {
+        "text": "-9/2825 + 69*I/5650",
+        "srepr": "Add(Rational(-9, 2825), Mul(Rational(69, 5650), I))"
+      },
+      "certificate": {
+        "finiteNonzero": true,
+        "numerator": {
+          "text": "-9/2825 + 69*I/5650",
+          "srepr": "Add(Rational(-9, 2825), Mul(Rational(69, 5650), I))"
+        },
+        "denominator": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "components": [
+          [
+            {
+              "text": "-9/2825",
+              "srepr": "Rational(-9, 2825)"
+            },
+            {
+              "text": "69/5650",
+              "srepr": "Rational(69, 5650)"
+            }
+          ],
+          [
+            {
+              "text": "1",
+              "srepr": "Integer(1)"
+            },
+            {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          ]
+        ]
+      },
+      "formalTagCoefficientOnly": true
+    }
+  ],
+  "limits": {
+    "memory.max": "4294967296",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-fce87dfbabb8.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      4294967296,
+      4294967296
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  },
+  "duration": {
+    "verified": true,
+    "actual": {
+      "RuntimeMaxUSec": "infinity",
+      "Restart": "no"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "coordinator": {
+    "exitCode": 0,
+    "wallSeconds": 2004.1656258460134,
+    "scientificAcceptance": "PENDING_ACTUAL_INSPECTION"
+  },
+  "outcome": {
+    "exitCode": 0,
+    "wallSeconds": 2003.983796313987,
+    "unit": "s11c-guard-fce87dfbabb8",
+    "stderrBytes": 0,
+    "limitsVerified": true,
+    "childOutcome": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 2003.7728798820172,
+      "childPid": 2635038
+    }
+  },
+  "independentBuildClearance": true,
+  "methodHistory": "Earlier method CLEAR/NEEDS, NEEDS/CLEAR, CLEAR/NEEDS preserved. Concrete r5 build pair CLEAR/CLEAR covers typed-factor clarification; no retroactive relabeling.",
+  "limitations": {
+    "globalComposition": "UNRESOLVED",
+    "globalTestSpace": "UNRESOLVED",
+    "composedGrazingLimit": "UNRESOLVED",
+    "sourceRegulatorContinuation": "NOT_CLAIMED",
+    "sourceCoefficientDimensionAudit": "NOT_RECONSTRUCTED_AFTER_NUMERICAL_BINDING; required units recorded, source unit inherited",
+    "internalCertifiedDomain": {
+      "cs": [
+        1,
+        2
+      ],
+      "k/l": [
+        -3,
+        3
+      ]
+    },
+    "hiddenCutoff": false,
+    "oldCutoffs4and6Reused": false,
+    "currentOrPowerComputed": false,
+    "savedWorkReplayed": false
+  },
+  "nonblockingReviewLimitations": [
+    "Excluded21 arithmetic is not a new independent native-height proof.",
+    "Assembled tagged back-map is bookkeeping; use complete source/factor/row joins.",
+    "Units inherited/required, not a fresh source coefficient dimension proof.",
+    "Nonconstant field support is not a certified nonzero Fourier value."
+  ],
+  "noScientificRestorationDuringInspection": true,
+  "scientificValidationJobLaunched": false,
+  "protectedSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "next": "Source-only proposal for polynomial-weighted global response bounds and Schwartz weak composition using the completed inventory. No evaluated integral or finite solve.",
+  "additionalIdentityPosthashes": 9,
+  "additionalIdentityCopiesIntact": true
+}

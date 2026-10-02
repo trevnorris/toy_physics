@@ -1,3 +1,19 @@
+**SAVED FINITE CERTIFICATE / RAW CONTROL FINISH PREPARED (2026-10-01):**
+User renewed broad continuation: keep working while there is a clear next step;
+no routine stage prompts. Prior finite=None failure preserved at67e8a09d.
+New finish worker restores4complete nested returns,5passed checks,saved THETA
+movement and all336prior files. It does not repeat construction/baseline/omission
+or completed response calculations. Exact constant-fraction certificate proves
+finite numerator and finite nonzero denominator via real/imaginary components
+and zero reconstruction; unknown/zero/nonfinite refuses. No tolerance or equation
+change; local predicate implementation, not new independent clearance.25stdlib
+tests and10gate refusal cases pass. Original remaining control assignments and
+acceptance meaning retained.713source pins, fresh gate,4GiB pooled,no deadlines,
+hook-first launch next. See raw_increment_finish_readiness/repair_record/authority.
+After actual results inspection continue supported bounded work without routine
+approval questions; no blind retry or immediate defect sweep. Exact-match closed
+limits/local integrable bound remain unresolved and need applicable assessment.
+
 **RAW CONTROL CONTINUATION: THREE RESPONSES PASSED, FINITE FLAG UNRESOLVED (2026-10-01):**
 Prepared781fad05 ran once after renewed Continue. Four completed nested returns
 restored without their functions; all306prior files/10406596bytes copied exactly.

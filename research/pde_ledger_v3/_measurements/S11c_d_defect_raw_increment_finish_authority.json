@@ -1,0 +1,16 @@
+{
+  "status": "STANDING_CONTINUED_BOUNDED_WORK",
+  "userDirection": "K. Then please keep going. You keep pausing after steps, but you have my permission to keep hammering on this as long as you have a clear next step",
+  "continuedBoundedWorkAuthorized": true,
+  "automaticScientificRetry": false,
+  "scope": "Certify the saved finite control value and finish only untouched nongrazing raw-increment controls. Preserve and reuse all completed work.",
+  "durationLimits": null,
+  "memoryBytes": 4294967296,
+  "poolBudgetBytes": 17179869184,
+  "routineStageQuestionsRequired": false,
+  "stopFor": [
+    "Genuine user decision",
+    "Material scope expansion",
+    "Substantive scientific method failure without supported bounded next step"
+  ]
+}

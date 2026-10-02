@@ -1,0 +1,27 @@
+{
+  "status": "READY_SAVED_CONTROL_FINISH",
+  "preparedUtc": "2026-10-02T04:20:48.719004+00:00",
+  "workerSha256": "0b8cf38f25c80a0864f0b8bc5dee678d70c58459534043b17a6e0c9c9339dda9",
+  "manifestSha256": "4a8b6578839f3507be0ae714c6b18f1a8c394d5d0bb882e1e3c32958a240c981",
+  "gateSha256": "fa9eb5dc0d6eccde94daeb70a3862b816a2562f66221aebe158edc54ffc7d92b",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-raw-increment-20261001/control-finish-01",
+  "sourcePins": 713,
+  "tests": 25,
+  "gateMatchingPass": true,
+  "gateRefusals": [
+    "workerSha256",
+    "manifestSha256",
+    "sharedGuardSha256",
+    "supervisorSha256",
+    "authoritySha256",
+    "repairRecordSha256",
+    "priorCompletionSha256",
+    "priorGateSha256",
+    "buildReviewRecordSha256",
+    "methodRecordSha256"
+  ],
+  "priorTreeFiles": 336,
+  "priorTreeBytes": 10793607,
+  "scienceRestoredDuringPreparation": false,
+  "independentBuildClearance": false
+}

@@ -1,0 +1,104 @@
+{
+  "status": "BUILD_REVIEWS_SUBMITTED_WITH_ARMED_COMPLETION_HOOK",
+  "recordedUtc": "2026-10-02T19:30:40.369864+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/build-review",
+  "preparedCommit": "4cf32a59",
+  "methodDispositionCommit": "c9e548ac",
+  "packetSha256": "8e1075039930a448cf109296ccbc4114ae2f1ba70e6b19441d18908c248ba76a",
+  "archiveSha256": "55a082105ab8b44500cd256e2c6b3a4f0087fdacd3ab2f72b8257d2ddd7ca158",
+  "launch": {
+    "jobPid": 2722349,
+    "watcherPid": 2722350,
+    "packetSha256": "8e1075039930a448cf109296ccbc4114ae2f1ba70e6b19441d18908c248ba76a",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "reviewers": {
+    "claude": {
+      "sessionId": "f71b8051-97e4-4b0d-a863-27cdf999ba25",
+      "pid": 2722360,
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "f71b8051-97e4-4b0d-a863-27cdf999ba25"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/build-review/claude/work",
+      "packetSha256": "8e1075039930a448cf109296ccbc4114ae2f1ba70e6b19441d18908c248ba76a",
+      "scientificExecutionEnabled": false
+    },
+    "grok": {
+      "sessionId": "cfc5fb25-766b-419c-85f1-caa502249a75",
+      "pid": 2722359,
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/build-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/build-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "cfc5fb25-766b-419c-85f1-caa502249a75"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/build-review/grok/work",
+      "packetSha256": "8e1075039930a448cf109296ccbc4114ae2f1ba70e6b19441d18908c248ba76a",
+      "scientificExecutionEnabled": false
+    }
+  },
+  "watcher": {
+    "status": "waiting",
+    "watcherPid": 2722350,
+    "jobPid": 2722349,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-02T19:29:05.209741+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "f4382452a6dead42f121a8043e6d07a47c853770962c5847152d5c4798721dcf",
+    "notifications": {}
+  },
+  "processObservations": {
+    "coordinator": "present",
+    "watcher": "present",
+    "claude": "present",
+    "grok": "finished receipt"
+  },
+  "startupChecks": {
+    "privatePacketBytesMatch": true,
+    "hookArmed": true,
+    "bothReportsNotInspectedBeforeCompletion": true,
+    "scientificRunNotLaunched": true
+  },
+  "inspectionNote": "The first process-presence check raced with Grok finishing. Its completed receipt exists; no rerun, no report adjudication before both reports finish.",
+  "modelPolling": false,
+  "automaticRetry": false
+}

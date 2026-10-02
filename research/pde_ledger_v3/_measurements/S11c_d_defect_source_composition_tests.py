@@ -11,13 +11,81 @@ import unittest
 
 HERE=Path(__file__).resolve().parent
 WORKER=HERE/'S11c_d_defect_source_composition.py'
-NAMES={'require','triples','jet_spec','broad_row_census','quotient_recurrence','definitions','native_jet_dimensions','select_certified_candidate','epsilon_power','address_sum_for','complete_factor_map'}
+NAMES={'require','triples','jet_spec','broad_row_census','quotient_recurrence','definitions','native_jet_dimensions','select_certified_candidate','epsilon_power','address_sum_for','complete_factor_map','join_source_input','verify_helper_paths'}
 NS={'ast':ast,'hashlib':hashlib,'itertools':itertools,'re':re,
+    'ROOT':Path('/var/projects/toy_physics'),
     'G':((0,0),(1,0),(0,1),(1,1))}
 TREE=ast.parse(WORKER.read_text())
 exec(compile(ast.Module(body=[n for n in TREE.body if isinstance(n,ast.FunctionDef) and n.name in NAMES],type_ignores=[]),'stdlib-worker-functions','exec'),NS)
 
+
+class SourceFixture:
+    """Synthetic scalar substitution model, not a restored scientific payload."""
+    class Raw:
+        def __init__(self,face,density=2):self.face,self.density=face,density
+        def subs(self,mapping,simultaneous=False):
+            assert simultaneous
+            return ('identified',mapping['s11cc1_V_lab_held_'+self.face],
+                    mapping['s11cc1_mu_theta_lab_held_'+self.face],self.density)
+    def __init__(self,face):
+        self.events=[];self.face=face
+        self.inp={'raw':self.Raw(face),'velocityAmplitude':Fraction(5),'chemicalAmplitude':Fraction(7),
+                  'velocityCoefficient':Fraction(2),'combined':Fraction(41,2)}
+        self.chemical={'raw':('mu',Fraction(14)),'amplitude':Fraction(7)}
+        self.normalization={'velocityCoefficient':Fraction(2)}
+    def emit(self,name,value):self.events.append(('input',name,value))
+    def zero(self,name,left,right):
+        self.events.append(('zero',name,(left,right)))
+        if left!=right:raise ValueError(name)
+    def bind(self,value):
+        if isinstance(value,tuple):
+            _,v,m,d=value
+            return 2*v+3*m/d
+        return value
+    def one(self,objects,name):
+        if name not in ('s11cc1_V_lab_held_'+self.face,'s11cc1_mu_theta_lab_held_'+self.face,'rho_br_bg_rho4_constant'):
+            raise ValueError('wrong native face atom')
+        return name
+    def run(self):
+        NS['join_source_input'](self,self.face,self.inp,self.chemical,self.normalization,self.bind,self.one,Fraction(2))
+
 class Tests(unittest.TestCase):
+    def test_source_join_routes_both_faces_and_saves_before_checks(self):
+        for face in ('plus','minus'):
+            fixture=SourceFixture(face);fixture.run()
+            self.assertEqual([v[0] for v in fixture.events],['input','input','zero','zero','zero','zero'])
+            self.assertIn('stage2Map',fixture.events[0][2])
+            self.assertEqual(fixture.events[1][2]['bound'],Fraction(41,2))
+    def test_source_join_rejects_native_chemical_corruption(self):
+        fixture=SourceFixture('plus');fixture.chemical['raw']=('mu',Fraction(16))
+        with self.assertRaisesRegex(ValueError,'chemical-epsilon'):fixture.run()
+        self.assertEqual(fixture.events[0][0],'input')
+    def test_source_join_rejects_disconnected_chemical_amplitude(self):
+        fixture=SourceFixture('minus');fixture.inp['chemicalAmplitude']=Fraction(9)
+        with self.assertRaisesRegex(ValueError,'chemical-amplitude'):fixture.run()
+    def test_source_join_rejects_missing_live_density_binding(self):
+        fixture=SourceFixture('minus');fixture.inp['raw'].density=1
+        with self.assertRaisesRegex(ValueError,'live-density'):fixture.run()
+    def test_source_join_rejects_wrong_normalization_and_combined(self):
+        for key in ('velocityCoefficient','combined'):
+            fixture=SourceFixture('plus');fixture.inp[key]+=1
+            with self.assertRaises(ValueError):fixture.run()
+    def test_helper_paths_must_match_actual_command(self):
+        paths={'sharedGuard':str(NS['ROOT']/'scripts/s11c_guarded_run.py'),
+               'supervisor':str(HERE/'S11c_d_end_normalization_run.py')}
+        NS['verify_helper_paths'](paths)
+        for key in paths:
+            with self.assertRaises(ValueError):NS['verify_helper_paths']({**paths,key:'/tmp/hash-matching-copy.py'})
+            missing=dict(paths);missing.pop(key)
+            with self.assertRaises(KeyError):NS['verify_helper_paths'](missing)
+        gate=next(n for n in TREE.body if isinstance(n,ast.FunctionDef) and n.name=='verify_gate')
+        self.assertTrue(any(isinstance(n,ast.Call) and getattr(n.func,'id',None)=='verify_helper_paths' for n in ast.walk(gate)))
+    def test_saved_source_dependencies_are_consumed(self):
+        calls={n.args[0].value for n in ast.walk(TREE) if isinstance(n,ast.Call)
+               and getattr(n.func,'id',None)=='load' and n.args and isinstance(n.args[0],ast.Constant)}
+        for name in ('native-chemical-amplitude','chemical-amplitude-domain','inherited-source-normalization','selected-fourier-contraction'):
+            self.assertIn('consumer/'+name+'.json',calls)
+        self.assertNotIn("'densityRestored':True",WORKER.read_text())
     def test_grade_counts(self):
         self.assertEqual([len(NS['triples'](g)) for g in NS['G']],[1,3,3,9])
     def test_direct_support(self):

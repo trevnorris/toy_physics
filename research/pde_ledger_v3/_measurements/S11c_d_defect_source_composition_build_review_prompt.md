@@ -65,3 +65,14 @@ and inherited two-assignment/trace provenance. Source coefficient dimensions
 inferred after binding are required units only; no new source dimensional audit
 is asserted. Evaluate whether these explicitly limited checks support this
 inventory. Do not infer a computed field or global operator result from them.
+
+Inspect the per-face native chemical/raw-source/live-density joins before grading:
+actual saved c1 velocity and chemical symbols, stage2 substitutions, epsilon
+normalization, full native chemical and density scalar leaves, restored binding
+context, chemical fraction/domain record and inherited velocity normalization.
+The new exact residuals must connect those inputs to the saved combined source,
+not merely compare its internally consistent parts. The historical selected
+Fourier contraction is context evidence only; its frequency/edges are joined
+without replaying it or claiming a new general transform. Check evidence precedes
+failure and that no successful density claim occurs before the native joins.
+Also verify helper paths, hashes and actual launch command are joined.

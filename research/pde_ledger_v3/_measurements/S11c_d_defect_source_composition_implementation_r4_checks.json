@@ -1,0 +1,52 @@
+{
+  "recordedUtc": "2026-10-02T13:20:38.303447+00:00",
+  "status": "LOCAL_SOURCE_AND_SYNTHETIC_CHECKS_ONLY",
+  "workerSha256": "1337088e8d22df805c7b613669cb6da0509a64634dfd80e03ab3810e54b9642c",
+  "manifestSha256": "91e20f055ff294cfd1c07b932a8fa657f516c7813c42cb853bc0c469757958b7",
+  "testsSha256": "aabf702e433166261215bad396d582ebfebb046983830ee7d05066869d908680",
+  "testOutput": ".................................\n----------------------------------------------------------------------\nRan 33 tests in 0.252s\n\nOK\n",
+  "testsPassed": true,
+  "testCount": 33,
+  "scienceImports": false,
+  "payloadRestored": false,
+  "savedFilesUnchanged": 122,
+  "sourcePinsChecked": 138,
+  "changedPacketFiles": [
+    {
+      "packetPath": "worker.py",
+      "reviewedSha256": "1e269ca42dcdebcf1f5e7e069fbda48d6de26535fe1bdf56477d8732b7180bc7",
+      "newSha256": "1337088e8d22df805c7b613669cb6da0509a64634dfd80e03ab3810e54b9642c"
+    },
+    {
+      "packetPath": "inputs.json",
+      "reviewedSha256": "4e7e7a31d7753f681a7fd4b329e307b4001c4d881149ebca830b712aeced0b28",
+      "newSha256": "91e20f055ff294cfd1c07b932a8fa657f516c7813c42cb853bc0c469757958b7"
+    },
+    {
+      "packetPath": "runtime-source/launcher.py",
+      "reviewedSha256": "acbd287478be6e224523bc86a8818b4fae48614ee8dd16303ccd6b63f0577c8d",
+      "newSha256": "7b68a5ef46576bb240e0ef42c83f6f5e16d5b802677f50d9b240d6a3c1f8b979"
+    },
+    {
+      "packetPath": "tooling-tests.py",
+      "reviewedSha256": "5bbc53246362d8074c62163faa4381afa65d7f21c777d56ad9ef01770b528ba8",
+      "newSha256": "aabf702e433166261215bad396d582ebfebb046983830ee7d05066869d908680"
+    },
+    {
+      "packetPath": "review-prompt.md",
+      "reviewedSha256": "cb5a0f94e9dd8f57eb1dab15d78d57429b8c9fff5500239eb2e410e50a436ae9",
+      "newSha256": "ba911224de427a31f15e2ce60cf18c58626a29d7adfe4999cbc69b89b55448d4"
+    },
+    {
+      "packetPath": "implementation-guide.md",
+      "reviewedSha256": "0f2e0373d69e77274a22585e90fe2ec95e0d2855acd4011a7844b92e3867af75",
+      "newSha256": "773ec1b03bfeac2e19fb000f75714b9181b06ce4241587e4dd1301ec522b827e"
+    }
+  ],
+  "methodUnchanged": true,
+  "guardSupervisorUnchanged": true,
+  "launcherChange": "Explicit guard/supervisor path equality; command and resource limits unchanged",
+  "priorReviewedPacketIntact": true,
+  "independentBuildClearance": false,
+  "newTrackedDataOver1MiB": []
+}

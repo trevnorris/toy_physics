@@ -54,8 +54,15 @@ def definitions(text, names):
     return ast.Module(body=nodes, type_ignores=[])
 
 
+def verify_helper_paths(gate):
+    require(gate['sharedGuard']==str(ROOT/'scripts/s11c_guarded_run.py'), 'actual guard route')
+    require(gate['supervisor']==str(ROOT/'research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py'),
+            'actual supervisor route')
+
+
 def verify_gate(path, manifest_path, manifest):
     gate = json.loads(Path(path).read_text())
+    verify_helper_paths(gate)
     require(gate['status']=='READY_FOR_ONE_SOURCE_COMPOSITION_INSTRUMENT','gate status')
     require(gate['workerSha256']==sha(__file__) and
             gate['manifestSha256']==sha(manifest_path), 'worker/manifest')
@@ -81,6 +88,26 @@ def verify_gate(path, manifest_path, manifest):
     require(gate['durationLimits'] is None and gate['scientificRunsAuthorized']==1 and
             gate['scope']==manifest['scope'], 'one bounded no-deadline job')
     return gate
+
+
+def join_source_input(J, face, inp, chemical, normalization, bind, one, epsilon):
+    """New argument joins on restored operands; no prior source function call."""
+    velocity_atom=one([inp['raw']], 's11cc1_V_lab_held_'+face)
+    chemical_atom=one([inp['raw']], 's11cc1_mu_theta_lab_held_'+face)
+    density_atom=one([inp['raw']], 'rho_br_bg_rho4_constant')
+    stage2={velocity_atom:inp['velocityAmplitude'], chemical_atom:chemical['amplitude']}
+    J.emit(face+'-native-source-join-operands', {'saved':inp,'nativeChemical':chemical,
+        'inheritedNormalization':normalization,'epsilon':epsilon,
+        'stage2Map':[[a,b] for a,b in stage2.items()],'liveDensityAtom':density_atom,
+        'previousSourceFunctionCalled':False})
+    identified=inp['raw'].subs(stage2, simultaneous=True)
+    bound=bind(identified)
+    J.emit(face+'-native-source-join-bound', {'identified':identified,'bound':bound,
+        'target':inp['combined'],'densityBindingContext':'actual-binding-context'})
+    J.zero(face+'-native-chemical-amplitude-join',inp['chemicalAmplitude'],chemical['amplitude'])
+    J.zero(face+'-native-chemical-epsilon-join',bind(chemical['raw'][1]/epsilon),chemical['amplitude'])
+    J.zero(face+'-inherited-velocity-normalization-join',inp['velocityCoefficient'],normalization['velocityCoefficient'])
+    J.zero(face+'-raw-stage2-live-density-join',bound,inp['combined'])
 
 
 def triples(target):
@@ -242,7 +269,7 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
         mapping={s:context['numeric'][s.name] for s in value.atoms(sp.Symbol) if s.name in context['numeric']}
         require(not any(s in mapping for s in (eta,sigma,eps)),'independent grades/epsilon')
         return value.xreplace(mapping)
-    J.emit('actual-binding-context',{'restored':context,'fixedFrequency':3,'densityRestored':True,
+    J.emit('actual-binding-context',{'restored':context,'fixedFrequency':3,'densityStatus':'RESTORED_PENDING_SOURCE_JOINS',
         'regulatedCompositionClaim':False,'noSigmaEtaIdentification':True,'csOnlyInDepth':True})
     require(context['numeric']['omega']==3 and context['numeric']['W_0']==1 and
             context['numeric']['Lambda_X_0']==0,'material/frequency settings')
@@ -341,6 +368,29 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
         return result
     for face in ('plus','minus'):
         inp=load('consumer/'+face+'-source-input.json');saved=load('consumer/'+face+'-source-grade-split.json')
+        chemical=load('consumer/native-chemical-amplitude.json')
+        chemical_domain=load('consumer/chemical-amplitude-domain.json')
+        normalization=load('consumer/inherited-source-normalization.json')
+        # The complete native records are already saved; restore scalar leaves only.
+        mu_text=text_helpers['tuple_arguments'](native['chemicalSource']['valueConstructorText'])[1]
+        density_text=text_helpers['tuple_arguments'](native['geometry']['background_density_map']['cases'][0]['valueConstructorText'])[1]
+        native_mu=sp.sympify(mu_text);native_density=sp.sympify(density_text)
+        J.emit(face+'-chemical-density-source-operands',{'nativeChemicalConstructor':mu_text,
+            'nativeChemical':native_mu,'savedChemical':chemical,'chemicalDomain':chemical_domain,
+            'nativeDensityConstructor':density_text,'nativeDensity':native_density,
+            'savedDensity':context['density'],'densityMap':context['densityMap']})
+        J.zero(face+'-native-chemical-raw-join',native_mu,chemical['raw'][1])
+        J.zero(face+'-native-density-raw-join',native_density,context['density'][1])
+        J.zero(face+'-native-density-map-join',context['densityMap']['rho_br_bg_rho4_constant'],native_density)
+        J.zero(face+'-chemical-domain-original-join',chemical_domain['original'],chemical['amplitude'])
+        J.zero(face+'-chemical-domain-reduced-join',chemical_domain['reduced'],chemical['amplitude'])
+        J.zero(face+'-chemical-domain-fraction-join',chemical_domain['numerator'],chemical_domain['denominator']*chemical_domain['reduced'])
+        J.zero(face+'-chemical-domain-zero-grade-join',chemical_domain['denominator'].subs({eta:0,sigma:0},simultaneous=True),chemical_domain['denominatorAtZero'])
+        nonzero(J,face+'-chemical-domain-denominator',chemical_domain['denominatorAtZero'])
+        join_source_input(J,face,inp,chemical,normalization,bind,one,eps)
+        J.emit(face+'-native-source-join-status',{'densityRestoredAndJoined':True,
+            'chemicalAmplitudeJoined':True,'inheritedNormalizationJoined':True,
+            'scope':'Exact restored-operand joins, not independent revalidation of the source producer'})
         J.zero(face+'-saved-source-parts',saved['full'],inp['parts']['velocity']+inp['parts']['chemical'])
         J.zero(face+'-own-velocity-normalization',bind(inp['nativeVelocity']/eps),inp['velocityAmplitude'])
         J.zero(face+'-own-velocity-coefficient',inp['parts']['velocity'],inp['velocityCoefficient']*inp['velocityAmplitude'])
@@ -367,6 +417,16 @@ def run_science(manifest,J,helpers,text_helpers,nonzero):
             J.zero(face+'-source-jet-reconstruction-'+str(g[0])+str(g[1]),expr,reconstruction)
             source_jets[face][g]=jetrows
     J.zero('both-face-source-equality',source_full['plus'],source_full['minus'])
+    selected_fourier=load('consumer/selected-fourier-contraction.json')
+    J.emit('inherited-selected-fourier-context',{'saved':selected_fourier,
+        'sourceZeroGrades':{f:sources[f][0,0] for f in ('plus','minus')},
+        'scope':'Historical upper off-shell source context only; plane-wave contraction is not replayed or promoted to a general Fourier map'})
+    J.zero('selected-fourier-frequency-context',selected_fourier['omega'],context['frequency'])
+    for axis,key in ((1,'s11cdTangentialMomentum1'),(2,'s11cdTangentialMomentum2')):
+        for label in ('kin','kout'):
+            J.zero('selected-fourier-'+label+'-edge-'+str(axis),selected_fourier[label][axis],sp.Rational(physical['parameters'][key]))
+    require(selected_fourier['incidentTransverseMode'] is False and
+            selected_fourier['lowerFaceCorrectionConstructed'] is False,'historical selected Fourier scope')
     # Response pieces are copied, not reconstructed by the old response producers.
     rc=load('reference/retained-response-census.json');objects=[rc[n] for n in ('flat','heightCoefficient','slopeCoefficient','mixedIteration','taggedTotalMixed')]
     omega=one(objects,'reference_unrestricted_frequency');qi=one(objects,'reference_qi');qo=one(objects,'reference_qo')

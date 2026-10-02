@@ -23,6 +23,8 @@ def verify():
     assert gate['status']=='READY_FOR_ONE_SOURCE_COMPOSITION_INSTRUMENT'
     assert gate['independentBuildClearance'] is True and gate['pooledExecution'] is True
     assert gate['launcher']==manifest['launcher']==str(Path(__file__).resolve())
+    assert gate['sharedGuard']==str(ROOT/'scripts/s11c_guarded_run.py')
+    assert gate['supervisor']==str(M/'S11c_d_end_normalization_run.py')
     assert gate['launcherSha256']==sha(__file__)
     assert gate['sourcePins']==manifest['sourcePins']
     assert gate['completionMessageSha256']==hashlib.sha256(MESSAGE.encode()).hexdigest()

@@ -108,3 +108,34 @@ records join the current mixed census without replaying their prior proofs.
 Native jet dimensions and saved consumer totals are checked; required source
 coefficient dimensions after numerical binding remain inferred expectations,
 not independently verified units. The normalized source unit is inherited.
+
+## Native source identity before grading
+
+The saved chemical amplitude, its domain record, inherited velocity normalization
+and selected Fourier context are now consumed explicitly. For each face, scalar
+leaves of the pinned native chemical and density records join the saved raw
+chemical expression and live density map. The native chemical expression divided
+by the saved epsilon, with the actual binding context, must equal the saved
+chemical amplitude. Its saved reduced form, fraction and zero-grade denominator
+are joined exactly; the denominator must be certified nonzero.
+
+The source join locates the actual face-specific c1 velocity and chemical symbols
+and the live density atom in the saved raw source. It substitutes the saved
+velocity amplitude and joined chemical amplitude simultaneously, then applies
+the restored live-density/profile/numeric bindings. This must equal the saved
+combined source before any grade inventory is accepted. Each face also joins
+its velocity coefficient to the inherited normalization. Full operands, maps and
+bound expressions are persisted before the residual checks. A successful density
+join is recorded only after these checks, never inferred from symbol absence.
+These are new argument/identity checks on saved operands, not new source
+production or independent revalidation of that production.
+
+The selected Fourier record supplies historical upper-face off-shell context:
+its frequency and both edge momenta must match the current source context.
+Its plane-wave contraction is preserved without replay and is not claimed as
+a new general Fourier or lower-face map. Source/consumer equations, grades,
+response factors and physical inputs remain unchanged.
+
+The gate also requires guard and supervisor paths to equal the actual fixed
+launch-command paths, in addition to byte hashes. This is a local execution
+identity check and changes neither the guard nor supervisor.

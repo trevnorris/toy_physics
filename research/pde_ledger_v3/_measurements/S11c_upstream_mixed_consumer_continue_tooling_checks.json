@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_continue_test.py"
+  ],
+  "exitStatus": 0,
+  "stdout": "",
+  "stderr": "........\n----------------------------------------------------------------------\nRan 8 tests in 0.147s\n\nOK\n",
+  "count": 8,
+  "scientificImports": false,
+  "scope": "Source equivalence, saved-constructor routing, persistence and containment metadata only."
+}

@@ -1,3 +1,20 @@
+**SOURCE/CONSUMER SAVED-EVIDENCE CONTINUATION READY (2026-10-01):**
+User renewed work after preserved failure747fd8cc. One continuation finishes only
+unpublished controls from saved operands; all130 prior files/2914095bytes pinned
+and copied, old top-level operation index empty. No source/grade/kernel replay.
+Exact raw reconstruction and cancel(together(raw)) are both persisted before a
+literal-zero decision; independent-jet coefficients required. This is algebraic
+representation/persistence tooling with unchanged equations/tolerances, not an
+established explanation of the old failure. Every control saves its input/result.
+Eight stdlib tests and actual gate/hash checks pass; no payload restored during
+preparation. See continue_repair_record/readiness/gate. Literal Claude NEEDS
+REVISION/Grok CLEAR stay unchanged; no fresh review or external export.
+Shared pooled guard/supervisor,4GiB native/cgroup,one CPU/thread,zero swap,tasks32,
+4GiB host reserve,no deadlines; hook must arm before science. Source pins204,
+worker d94ee245e659ae79ce11f315a3d033b3e3ee5fa649f40c9dd2acabff18ceccd7.
+Stop with selected diagnostic evidence before production/defect work; no automatic
+retry. Previous results/failures/incident/review history and protected sources intact.
+
 **SOURCE/CONSUMER DIAGNOSTIC FAILED; PARTIAL EVIDENCE PRESERVED, STOP (2026-10-01):**
 Worker612.727s,peak304.6MiB,zero swap/memory events,no time/resource stop.
 Actual native source/census/grade/row algebra saved: source(0,0) annihilates

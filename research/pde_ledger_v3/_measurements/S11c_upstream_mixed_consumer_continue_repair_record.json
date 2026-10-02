@@ -1,0 +1,27 @@
+{
+  "status": "LOCAL_CONTINUATION_TOOLING_TESTED_NO_FRESH_INDEPENDENT_CLEAR",
+  "originalWorkerSha256": "f8ca7d735551495918e8a5d35a64e9e06edc36573588a01a6e21a5846286ad84",
+  "workerSha256": "d94ee245e659ae79ce11f315a3d033b3e3ee5fa649f40c9dd2acabff18ceccd7",
+  "failureCommit": "747fd8cc",
+  "reviewedBaselineCommit": "3f1193e7",
+  "independentBuildClearance": false,
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS SELECTED SOURCE/CONSUMER INSTRUMENT"
+  },
+  "authority": "Renewed user continuation direction plus standing local tooling-fix policy.",
+  "physicsOrInputsChanged": false,
+  "sourceGradeKernelReplay": false,
+  "scientificPayloadRestoredDuringPreparation": false,
+  "priorTopLevelCompleteStages": 0,
+  "priorFiles": 130,
+  "priorBytes": 2914095,
+  "tests": {
+    "exitCode": 0,
+    "count": 8,
+    "sha256": "880793e8cfd70d0f90d6e6f8eb8be2d49d208c23d22c0faa3e52e91a811c17e7"
+  },
+  "correction": "Persist all failed reconstruction operands; exact together/cancel before the same literal-zero linearity decision; require coefficients independent of trial jets. New result lists publish records immediately.",
+  "cause": "Unconfirmed until raw/cancelled runtime residual is inspected.",
+  "authorSourceAudit": "Author helper source/JSON-only advice, not an independent review; no scientific tools or edits."
+}

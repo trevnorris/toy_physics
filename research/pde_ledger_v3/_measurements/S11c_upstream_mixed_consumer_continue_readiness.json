@@ -1,0 +1,24 @@
+{
+  "status": "READY_FOR_ONE_AUTHORIZED_SAVED_EVIDENCE_CONTINUATION",
+  "gateSha256": "86dc00fa5a01dac1987ed684dd4f02c8bcffa07bcafc34dfcde047fd70224c5a",
+  "checks": {
+    "actualGateVerification": true,
+    "freshOutputDirectory": true,
+    "sourcePins": 204,
+    "scienceImports": false,
+    "rejectChanged:workerSha256": true,
+    "rejectChanged:manifestSha256": true,
+    "rejectChanged:reviewRecordSha256": true,
+    "rejectChanged:authoritySha256": true,
+    "rejectChanged:completionMessageSha256": true,
+    "rejectChanged:repairRecordSha256": true,
+    "compileOnly": true
+  },
+  "independentBuildClearance": false,
+  "scientificJobLaunched": false,
+  "scientificAcceptance": false,
+  "noExtraSmokeJob": true,
+  "priorFiles": 130,
+  "priorBytes": 2914095,
+  "stop": "This selected diagnostic evidence only; no automatic retry, production repair or defect sweep."
+}

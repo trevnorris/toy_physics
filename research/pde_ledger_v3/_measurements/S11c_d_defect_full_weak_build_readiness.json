@@ -1,0 +1,60 @@
+{
+  "status": "READY_FOR_INDEPENDENT_BUILD_ASSESSMENT_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/build-review",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-02T19:27:25.387231+00:00",
+    "packetSha256": "8e1075039930a448cf109296ccbc4114ae2f1ba70e6b19441d18908c248ba76a",
+    "archiveSha256": "55a082105ab8b44500cd256e2c6b3a4f0087fdacd3ab2f72b8257d2ddd7ca158",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 244,
+    "bytes": 10224912,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "AGENTS.md standing review-submission authority and continued bounded research direction",
+    "scope": "Concrete native pre-pressure local coefficients plus inherited retained pressure weak form; no evaluated integral or finite solve",
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_BUILD_PACKET_ONLY_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "f4382452a6dead42f121a8043e6d07a47c853770962c5847152d5c4798721dcf",
+    "packetSha256": "8e1075039930a448cf109296ccbc4114ae2f1ba70e6b19441d18908c248ba76a",
+    "archiveSha256": "55a082105ab8b44500cd256e2c6b3a4f0087fdacd3ab2f72b8257d2ddd7ca158",
+    "workerSha256": "55f009b3325d100a26f333f69ccbc19167b9d8aebfa06f1d50908c255704c49d",
+    "manifestSha256": "475ede21dbc5dea6a7c2917bb2d8c05a25553aa2396b7a30fbc40d2822497085",
+    "scienceLauncherSha256": "05343300a46ede4a513140b384a82e6ee668619c95c7078bdf4ef66f91cf0790",
+    "methodSha256": "d24083ac01df581f2c11c6027866f7fe3d605a9e80e4c1d1c362819f4872964a",
+    "files": 244,
+    "bytes": 10224912,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 242,
+    "payloadRestored": false,
+    "scienceCalls": 0,
+    "localTests": {
+      "command": "python /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_tests.py",
+      "tests": 20,
+      "passed": true,
+      "scientificEvidence": false
+    },
+    "omittedRuntimeInputs": 6
+  },
+  "checks": {
+    "allSourcePrivateArchiveHashesMatch": true,
+    "SavedAliasBytesExact": true,
+    "noScientificPayloadRestored": true,
+    "noGateOrScienceRun": true,
+    "noOldPeerReports": true,
+    "newTrackedGeneratedFilesOver1MiB": []
+  },
+  "preservedTestFindings": [
+    "During preparation a metadata test distinguished saved polynomial numerator from the actual P0 quotient. Worker now inherits actual derivative-class P0 and its completed reconstruction inputs/zero return; no pressure polynomial is recomputed. No science had run."
+  ],
+  "evidencePersistence": "Append-only chained JSONL inputs/returns, fsync before scalar guards; partial batch returns on failure"
+}

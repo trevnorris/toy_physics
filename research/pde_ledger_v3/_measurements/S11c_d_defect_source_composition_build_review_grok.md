@@ -1,0 +1,66 @@
+I'll review the bounded source composition from the private packet only: method, implementation guide, worker, inputs, and the saved source they cite.The packet pins a source-only review. I’ll read the worker and the saved evidence it cites, without running anything.The worker is in the packet. Next I’ll read the native assignments, helpers, and the saved joins it actually uses.The remaining source reads are the minus-face trace and slot routing, the canonical-return cancelled field, and the rest of the omission record. I will finish those before locking a verdict.Minus-face routing matches the plus pattern, and the omission file ends after two upper-face records. I am checking the worker joins against those saved objects before writing the verdict.NEEDS REVISION
+
+The worker is a bounded inventory of native c2 pressure response plus one inherited direct correction. It is not yet faithful enough to clear. This is a source reading only: nothing here was executed, and source structure is not a result.
+
+## Scientific blockers
+
+1. Three-leg trace confinement is not emitted.  
+   Location: `input/worker.py` lines 337–339; saved matrices in `input/reference/plus-new-native-trace.json` and `input/reference/minus-new-native-trace.json`. Both `newTrace` matrices are diagonal ones, with `[0,2] = 0` and a nonzero `[0,1]` entry `I*eta_bg*reference_qm*reference_height_hat(reference_l-reference_m)`.  
+   The residual named `unchanged-native-T01-direct-subtraction` compares `(T*delta)[0,2]` with `P` when `delta` has only `[0,2] = P`. With `T[0,0] = 1` and `T[0,2] = 0`, that identity holds while `T[0,1]` stays outside the residual. `(T*delta)[1,2]` is never written. A nonzero `T[1,0]` would still pass and carry `P` into output slot `[1,2]`. Method lines 200–202 ask for both the absent `[1,2]` image and the existing `T[0,1]*reference[1,2]` term.  
+   Correction: for each face, emit `(T*delta)[1,2]` for a pure `[0,2]` increment, and emit `T[0,1]*R[1,2]` against a reference `[1,2]` that does not contain the new `P`. Require the saved below-diagonal entries to be zero and the diagonal to be 1. Write those operands before the zero guard.
+
+2. The isolated reference-factor pairs are not inherited beside the full-density pairs.  
+   Location: `input/worker.py` lines 318–333 loads `direct/{face}-actual-closed-{reference,normalJet}-{original-input,canonical-return}.json` and joins the right operand to the complete density at real 3. It never loads `direct/{face}-reference-factor-{input,return}.json`.  
+   The factor input is two writings of `Rprod = qi*qo/((qi+beta)(qo+beta))` at `beta = 30/109+9I/109`. Its return is that difference with saved `cancelled = 0` (sha `cd604ceb…`, 923 bytes, same bytes on both faces). The full reference canonical return is a different object: the closed density, saved `cancelled = 0` (sha `d5fbf151…`, 18079 bytes, same bytes on both faces). The raw closure join uses the already simplified factor in `raw/{face}-closure-operands.json`. The unsimplified factor identity is never an emitted residual, so a later reading can treat the density cancellation or the simplified raw factor as that identity.  
+   Correction: load each face’s factor input and return, keep the saved `cancelled = 0` as an inherited observation, and join those operands to typed `Rprod` on a residual that contains neither the closed density nor a second `Rprod`, `E`, or `qi*qo`.
+
+3. Named raw-kernel and row-density operands are pinned and never joined.  
+   Location: method lines 156–158 and 356–359. `input/worker.py` has no `load` of `raw/*-retained-increment.json` or `direct/{THETA_BALANCE,E_W_BALANCE}-actual-closed-row-density-*`. Those files are only byte-copied with the rest of `savedFiles`.  
+   The bare symbol’s linear closure coefficient is joined to `Rprod`, and the closed-before-cancel reference and jet factors are joined. `rawKernelPlus` / `rawKernelMinus`, and the saved general row-density pairs, never enter a residual. The expression bodies of those large files were not expanded in this reading; the gap is the missing join.  
+   Correction: load each retained-increment file and join its raw-kernel entries to the same bare direct symbol used in the closure residual, without a triangular solve. Inherit each row-density original-input and canonical return as a completed observation and join it to the new direct `(1,1)` address on the saved domain.
+
+4. The excluded pressure-omission history is not in the inventory.  
+   Location: `input/consumer-finish/native-pressure-consumer-omission.json` is never loaded. The file ends after two records, `THETA_BALANCE` and `E_W_BALANCE`, both with `removedSlot = delta_p_plus`. `selectedIncrement` is proportional to `eta_bg**2*sigma_W*epsilon_shape*w1_profile*inherited_whole_bare_mixed_kernel`. `mixedPerSource` and `ablatedRowPerD` are integer 0. `nonzeroEvidence.finite` is null and `decision` is true by `direct-symbolic-flag`. There is no `delta_p_minus` record.  
+   Method lines 361–372 keep that unprojected `(2,1)` normal remainder as excluded history, distinct from the new direct `(1,1)` block, and require a separate lower pressure-slot omission. The upper-face witness is not loaded, and the lower-slot absence is not recorded. Per-face velocity normalization from each `*-source-input.json` is present and does not fill this gap.  
+   Correction: load the file and emit `selectedIncrement`, `mixedPerSource`, and `ablatedRowPerD` as excluded history. Record that this file has no `delta_p_minus` omission. Keep the new `exact_nonzero_number` path; do not revive `direct-symbolic-flag`.
+
+5. Every address stores `epsilonCount: 1`, including exact zeros.  
+   Location: `input/worker.py` lines 251–253 and 467. For every grade, including zeros, the worker requires `v == eps*cancel(v/eps)` and that `eps` is absent from `cancel(v/eps)`. The zero polynomial satisfies both, and the address field is then the constant 1. `U0`, `U1`, and `U2` are required to have identically zero pressure grades, so those addresses would claim one epsilon on a zero coefficient.  
+   Correction: store count 0 when the grade coefficient is identically zero. Require power exactly 1 only after `exact_nonzero_number` has accepted that coefficient, and store that count.
+
+6. The ordered grade check never meets the actual row.  
+   Location: `input/worker.py` lines 242 and 485–496. Line 242 reconstructs the native row as the sum of the four slot coefficients times the slot symbols. Lines 485–496 expand abstract noncommuting symbols `Mconsumer`, `Fresponse`, and `MsourceWave` and require the grade component to match the 16 triples. Method lines 284–288 ask for that formal expression to be compared with direct substitution of independent response placeholders into the actual row, including explicit zeros and the direct whole tag.  
+   The abstract product can match while the summed addresses differ from the row.  
+   Correction: for each row and face, emit the residual between the summed address expression and the row after independent response placeholders are substituted, including explicit zeros, before the zero guard.
+
+7. The direct omit/double control names the wrong support.  
+   Location: `input/worker.py` lines 528–531. The movement is `cp*sourceval` against `0` or `2*cp*sourceval`, with `formalTagCoefficientOnly: true` and `externalResolventMultiplier: 1`. The context tag is the string `Dwhole_f(2, 3/2)`. Constant consumer `(0,0)` and source `(0,0)` only force the deltas `k = p` and `r = l`. They leave `l` free. The point `(l,k) = (2, 3/2)` is the slope-control support, not this route. The address builder at lines 447–450 already has the full signature `(l, k, Omega=3, cs, edges 1/5 and 1/10, W=1, L=10)`.  
+   Correction: persist that full `Dwhole_f` signature and the delta support `k = p`, `r = l`, with `l` free. Keep the movement as the coefficient of the unevaluated tag.
+
+8. The height whole tag is labeled with the iteration middle variable.  
+   Location: `input/worker.py` lines 411–416. `H` is loaded from `input/reference/left-height-subtracted-PV.json`, whose change of variable is `reference_m = reference_l - reference_left_height_transfer`. The worker sets every non-direct tag’s `boundVariable` to `t`, then clears only `H`’s `middleMomentum` and sets its free momentum to `l-k`. `boundVariable` remains `t`, which is `Jwhole`’s middle momentum `k+t`. The contact and subtracted-PV expressions are stored in `savedDefinition`; the bound-variable label still identifies `H` with the iteration transfer.  
+   Correction: set `H`’s bound variable to `reference_left_height_transfer`, keep `middleMomentum` null, and keep the free argument `l-k`.
+
+## Present in the source
+
+Typed objects are separated: `Rprod = qi*qo*E` with `E = 1/((qi+beta)(qo+beta))`, the closed density is joined from `direct/closed-density.json`, and the address coefficient at grade `(1,1)` is the argument-bearing `Dwhole_f` function. The adapter physical injection `P = eta*sigma*Rprod*D` stays on the formal routing path. Census flat and slope writings match the control prefactors at the stated rational points by reading the printed rationals: flat reduces to `(3/10)/(q(l)+beta)` at `omega = 3`, and the slope control coefficient is `k*omega/10` over `(q(k)+beta)(q(l)+beta)` at `k = 3/2`, `q(k) = 2`, `q(l) = 3/2`. The normal corrupt replaces `q(l) = 3/2` by `q(r) = 25/26`. Those residuals were not run.
+
+The broad `delta_p` / `d_w_` scan walks every native row child before the four-slot filter. All four slots enter the affine sum; pressure-slot ablation is emitted for `delta_p_plus` and `delta_p_minus`. Quotient grades come from the cancelled numerator and denominator, the saved zero grade is joined, pure `(2,0)` and `(0,2)` are stored separately from `full-retained`, and `exact_nonzero_number` refuses a component whose sign is unknown. Sixteen triples are enumerated per row, face, and slot, with explicit zero statuses. Flat addresses bind `k = l` and `qi = qo = q(l)` on the whole flat coefficient; the unbound pole control keeps `qi = 2`, `qo = 3/2`. Profile translation uses `w = (1+tanh(x/10))/2` and `m = (1-tanh(x/10)**2)/3`. `profileEqualities` leaves `sigma_W` independent of `eta_bg`. Fourier transforms stay unevaluated, with the constant rule `b*delta` and `plainReducedMiddleMeasure` required. The direct adapter execs only the four `build_face` assignment texts, refuses a nonzero diagonal or second slot, and checks the normal image `I*sign*qo*P` on both faces. Saved slot solutions are `target - affineHeight*jet_slot` with value coefficient 1; plus height is `eta_bg*height_hat(l-k)` and minus height is the negative of that. No old producer, triangular solve, or `kernel_apply` body is called.
+
+`Journal.zero` and `sinh_zero` write the input and the raw residual before `cancel`. The worker’s nonzero callback is `exact_nonzero_number`, not `Journal.nonzero`. Saved inputs are hashed, copied, and rehashed. `scientificAcceptance` is forced false. `verify_gate` refuses a run until a future record has both literal clear verdicts and `independentBuildClearance`. Inputs status is `PROPOSED_BUILD_NOT_EXECUTION_READY`. The launcher is hook-first. The guard requires `RuntimeMaxUSec=infinity` and `Restart=no`, a 4 GiB job inside the 16 GiB pool, zero swap, one CPU, tasks 32, and a 4 GiB host reserve. The worker resets `RLIMIT_AS` to 4 GiB and requires an infinite CPU rlimit.
+
+## Tooling, separate from the science list
+
+The launcher’s `select` waits 30 seconds for the hook byte (`input/runtime-source/launcher.py` lines 44–47). That bound is the arming handshake. The scientific child is waited without a CPU or wall-clock job cap. The guard’s two-second `wait` is a memory sample interval; two consecutive host readings below 4 GiB stop the child with code 124. That is the existing host-memory protection.
+
+`main` handles `BaseException`, writes `failure.json`, and returns 1, including `SystemExit` and `KeyboardInterrupt` (`input/worker.py` lines 567–569). The failure record is kept and acceptance stays false. Re-raising after that record would make an abort visible to the parent as well as in `failure.json`.
+
+## Optional wording
+
+`input/evidence-guide.md` still describes a method-only packet. The worker and the typed-factor method are the objects of this review. No wording loop is requested.
+
+## Coverage and runtime evidence still required
+
+Plus and minus full reference pairs share their hashes; the normal-jet pairs differ and are both named by the worker. Standalone `consumer/native-chemical-amplitude.json`, its domain, and its grade split are manifest copies. The per-face chemical join uses the amplitude stored inside each `*-source-input.json`. Global composition, test space, and composed grazing remain unresolved. Scope stays real `omega = 3`, rest bulk `LAB_HELD` / `RHO4`, edges `1/5` and `1/10`, `W = 1`, `L = 10`, and effective `cs` in `[1,2]`.
+
+No gate file exists yet. A later guarded run still has to emit the corrected residuals, the quotient tables, both adapter returns, the 16-triple addresses, exact nonzero control certificates, containment, and posthashes. `scientificAcceptance` remains false on that path. This reading supplies none of those outputs and accepts no restored value.

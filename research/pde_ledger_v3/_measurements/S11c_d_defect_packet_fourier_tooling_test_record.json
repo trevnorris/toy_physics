@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/usr/bin/python",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_tooling_tests.py"
+  ],
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": "........................\n----------------------------------------------------------------------\nRan 24 tests in 0.585s\n\nOK\n",
+  "tests": 24,
+  "scientificImportsOrPayloadRestoration": false,
+  "testSourceSha256": "d63760ea353b3950e5d42a191a5b80546cf2d43a71953546f72f3559d109c1eb",
+  "utc": "2026-10-03T17:41:23.317067+00:00"
+}

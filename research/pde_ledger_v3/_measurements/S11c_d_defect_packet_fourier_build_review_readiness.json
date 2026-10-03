@@ -1,0 +1,95 @@
+{
+  "status": "READY_FOR_INDEPENDENT_FOURIER_BUILD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-build-review",
+  "dependencyCommit": "ccb35e8c",
+  "methodAssessmentCommit": "3df5a3bf",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-03T17:42:38.177890+00:00",
+    "packetSha256": "db6a3455d69f88267c5bddddc3159d1f41465b6fc3011cd6b656d80192d4be97",
+    "archiveSha256": "533cd9acdbe340f0c350af760c1dbe72597b93ae389372d01e29e978dbab10b7",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 895,
+    "bytes": 42869478,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing AGENTS permission for necessary fixed source/evidence packets to established Claude/Grok within ongoing authorized research. Concrete Fourier prerequisite of the cleared packet method; no routine approval needed.",
+    "scope": "Only 190 source-bound Fourier requests on the 19 actual native families, independent GL24/48 and adaptiveG7/K15. No response integral, packet value, inverse, current or loss.",
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_SOURCE_AND_PACKET_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "29fae70728e4ce6d84f084fad3ea561a37bab24eae9d473c8c8095b2427d2532",
+    "packetSha256": "db6a3455d69f88267c5bddddc3159d1f41465b6fc3011cd6b656d80192d4be97",
+    "archiveSha256": "533cd9acdbe340f0c350af760c1dbe72597b93ae389372d01e29e978dbab10b7",
+    "files": 895,
+    "bytes": 42869478,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 894,
+    "payloadRestored": false,
+    "transportIdenticalToPrior": true,
+    "noReviewVerdict": true
+  },
+  "workerSha256": "f9b3d8e97d876b677167030549ac26c16636eaa1170b510c1a51959c13dbc164",
+  "manifestSha256": "7356d1066a79b9a55beed056c246a4ff0f80e3f9afb4b5632d935183996b40e6",
+  "librarySha256": "8541ed87d588888daf642ff632ecf0a5780c8f4a47db7a3a53d50b2c36941fe0",
+  "launcherSha256": "5f2c596e7a7be1d191693c1aa659046d02c8f79467dd2a496c8dabadacee55bb",
+  "sharedGuardSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+  "supervisorSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+  "methodSha256": "79f1459596c84d0f4fbca2c45b51977ff338bce1a55a66c6214e850793eaf45a",
+  "toolingTests": {
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_tooling_tests.py"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "........................\n----------------------------------------------------------------------\nRan 24 tests in 0.585s\n\nOK\n",
+    "tests": 24,
+    "scientificImportsOrPayloadRestoration": false,
+    "testSourceSha256": "d63760ea353b3950e5d42a191a5b80546cf2d43a71953546f72f3559d109c1eb",
+    "utc": "2026-10-03T17:41:23.317067+00:00"
+  },
+  "savedInputFiles": 826,
+  "savedInputBytes": 40127547,
+  "runtimeSourceFiles": 51,
+  "reviewIsIndependent": true,
+  "peerReportsIncluded": false,
+  "newScientificOperations": 0,
+  "readyGateExists": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "190 fixed Fourier requests for all 19 actual source/test/test-derivative families; no response integral or packet action",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "numericalFourierRequests": 190,
+    "families": 19
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-03T17:42:38.177890+00:00",
+  "packetSha256": "db6a3455d69f88267c5bddddc3159d1f41465b6fc3011cd6b656d80192d4be97",
+  "archiveSha256": "533cd9acdbe340f0c350af760c1dbe72597b93ae389372d01e29e978dbab10b7",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 895,
+  "bytes": 42869478,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing AGENTS permission for necessary fixed source/evidence packets to established Claude/Grok within ongoing authorized research. Concrete Fourier prerequisite of the cleared packet method; no routine approval needed.",
+  "scope": "Only 190 source-bound Fourier requests on the 19 actual native families, independent GL24/48 and adaptiveG7/K15. No response integral, packet value, inverse, current or loss.",
+  "noAutomaticRetry": true
+}

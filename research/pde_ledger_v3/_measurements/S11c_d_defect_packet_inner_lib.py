@@ -3,6 +3,7 @@
 The old Fourier rules are restored as exact MP tuples, never constructed again.
 """
 from fractions import Fraction as F
+import heapq
 
 
 def require(v,message):
@@ -39,6 +40,14 @@ def exact_cuts(k,l,T):
         for v in [F(-4,5),F(-2,5),F(-1,5),F(-1,10),F(1,10),F(1,5),F(2,5),F(4,5)]:
             add(a,v,label+'-profile-offset-'+str(v))
     return [{'a':str(a),'b':str(b),'labels':labels} for (a,b),labels in sorted(cuts.items())]
+
+
+def partition_interval(a,b,n):
+    require(type(n)==int and n>=1 and a<b,'valid finite partition')
+    # Preserve original endpoint objects. a+(b-a)*n/n may round away from b.
+    points=[a]+[a+(b-a)*i/n for i in range(1,n)]+[b]
+    require(all(x<y for x,y in zip(points,points[1:])),'distinct open partition')
+    return points
 
 
 def kernel_components(k,l,t,qi,qo,qh,qs,A1,A2,a,mu,beta,W,L,I):
@@ -117,7 +126,7 @@ class InnerEvaluator:
         panels=[]
         for (a,ra),(b,rb) in zip(cuts,cuts[1:]):
             n=int(c.ceil(2*(b-a)));require(n>=1,'nonempty interval')
-            points=[a+(b-a)*i/n for i in range(n+1)]
+            points=partition_interval(a,b,n)
             for i in range(n):panels.append((points[i],points[i+1]))
         require(all(a<b for a,b in panels) and all(panels[i][1]==panels[i+1][0] for i in range(len(panels)-1)),'open coverage')
         return panels,{'exactCuts':raw,'resolvedCuts':cuts,'maxPhysicalWidth':'1/2'}
@@ -143,31 +152,57 @@ class InnerEvaluator:
         total=[c.fsum(v[j] for v in sums) for j in range(len(sums[0]))]
         self.emit(c,key+'/return',{'value':total,'panels':len(panels),'squareSubstitution':True,'order':order});return total
 
+    def adaptive_panel(self,key,c,a,b,f,label):
+        nodes,weights,gauss=self.krule;mid=(a+b)/2;half=(b-a)/2
+        require(a<mid<b,'physical adaptive precision stagnation')
+        points=[mid+half*x for x in nodes]
+        require(all(a<x<b for x in points),'physical adaptive open nodes')
+        pairs=[]
+        for x in points:
+            try:pairs.append(f(x))
+            except BaseException:
+                self.emit(c,key+'/failed-panel',{'bounds':[a,b],'label':label,'failedNode':x,'points':points,'completePrefix':pairs});raise
+        v=[p[0] for p in pairs];extra=[p[1] for p in pairs]
+        K=[half*c.fsum(w*z[j] for w,z in zip(weights,v)) for j in range(len(v[0]))]
+        G=[half*c.fsum(w*v[i][j] for i,w in gauss.items()) for j in range(len(v[0]))]
+        error=[abs(x-y) for x,y in zip(K,G)]
+        self.emit(c,key+'/panel/'+label,{'bounds':[a,b],'points':points,'values':v,'kernelOperands':extra,'K':K,'G':G,'error':error,'disposition':'ACTIVE_LEAF_UNTIL_REPLACED','localTolerance':None})
+        return {'a':a,'b':b,'K':K,'error':error}
+
     def adaptive(self,key,c,panels,f,budget):
-        nodes,weights,gauss=self.krule;stack=[];values=[];errors=[];count=0
-        for i,(a,b) in reversed(list(enumerate(panels))):stack.append((a,b,budget/len(panels),'p'+str(i)))
-        while stack:
-            a,b,tol,label=stack.pop();mid=(a+b)/2;half=(b-a)/2
+        # One global empirical target per component. A singular endpoint leaf is
+        # never assigned a shrinking tol/2. Its error may decrease as sqrt(h).
+        require(budget>0 and len(panels)>0,'positive global empirical budget')
+        leaves={};heap=[];sequence=0;count=0;refinements=0
+        def push(label,record):
+            nonlocal sequence
+            require(all(e>=0 for e in record['error']),'nonnegative embedded errors')
+            leaves[label]=record;heapq.heappush(heap,(-max(record['error']),sequence,label));sequence+=1
+        for i,(a,b) in enumerate(panels):
+            label='p'+str(i);push(label,self.adaptive_panel(key,c,a,b,f,label));count+=1
+        components=len(next(iter(leaves.values()))['error'])
+        estimated=[c.fsum(v['error'][j] for v in leaves.values()) for j in range(components)]
+        self.emit(c,key+'/global-initial',{'budgetPerComponent':budget,'activeLeaves':list(leaves),'summedEmpiricalErrors':estimated,'localToleranceHalving':False})
+        while True:
+            # Recompute the sum from all actual leaves before accepting, and
+            # periodically to avoid drift in incremental bookkeeping. This is
+            # an operation-count check, not a time limit or a refinement cap.
+            if refinements%64==0 or any(e<0 for e in estimated) or all(e<=budget for e in estimated):
+                error=[c.fsum(v['error'][j] for v in leaves.values()) for j in range(components)]
+                self.emit(c,key+'/global-sum/'+str(refinements),{'activeLeaves':list(leaves),'summedEmpiricalErrors':error,'budgetPerComponent':budget,'recomputedFromLeaves':True})
+                if all(e<=budget for e in error):break
+                estimated=error
+            _,_,label=heapq.heappop(heap);parent=leaves[label];a,b=parent['a'],parent['b'];mid=(a+b)/2
             require(a<mid<b,'physical adaptive precision stagnation')
-            points=[mid+half*x for x in nodes]
-            require(all(a<x<b for x in points),'physical adaptive open nodes')
-            pairs=[]
-            for x in points:
-                try:pairs.append(f(x))
-                except BaseException:
-                    self.emit(c,key+'/failed-panel',{'bounds':[a,b],'label':label,'failedNode':x,'points':points,'completePrefix':pairs});raise
-            v=[p[0] for p in pairs];extra=[p[1] for p in pairs]
-            K=[half*c.fsum(w*z[j] for w,z in zip(weights,v)) for j in range(len(v[0]))]
-            G=[half*c.fsum(w*v[i][j] for i,w in gauss.items()) for j in range(len(v[0]))]
-            err=[abs(x-y) for x,y in zip(K,G)];accepted=all(x<=tol for x in err)
-            self.emit(c,key+'/panel/'+label,{'bounds':[a,b],'tolerancePerComponent':tol,'points':points,'values':v,'kernelOperands':extra,'K':K,'G':G,'error':err,'accepted':accepted})
-            count+=1
-            if accepted:values.append(K);errors.append(err)
-            else:stack.extend([(mid,b,tol/2,label+'R'),(a,mid,tol/2,label+'L')])
-        total=[c.fsum(v[j] for v in values) for j in range(len(values[0]))]
-        error=[c.fsum(v[j] for v in errors) for j in range(len(errors[0]))]
-        self.emit(c,key+'/return',{'value':total,'summedEmpiricalErrors':error,'budgetPerComponent':budget,'panels':count,'physicalVariable':True})
-        require(all(e<=budget for e in error),'summed empirical budget');return total
+            left=self.adaptive_panel(key,c,a,mid,f,label+'L')
+            right=self.adaptive_panel(key,c,mid,b,f,label+'R');count+=2
+            require(len(left['error'])==len(right['error'])==components,'consistent vector components')
+            del leaves[label];push(label+'L',left);push(label+'R',right);refinements+=1
+            estimated=[c.fsum([estimated[j],-parent['error'][j],left['error'][j],right['error'][j]]) for j in range(components)]
+            self.emit(c,key+'/refinement/'+str(refinements),{'replacedLeaf':label,'children':[label+'L',label+'R'],'parentError':parent['error'],'childErrors':[left['error'],right['error']],'estimatedGlobalErrors':estimated,'budgetPerComponent':budget,'selection':'largest maximum component error'})
+        total=[c.fsum(v['K'][j] for v in leaves.values()) for j in range(components)]
+        self.emit(c,key+'/return',{'value':total,'summedEmpiricalErrors':error,'budgetPerComponent':budget,'panelsEvaluated':count,'activeLeaves':list(leaves),'refinements':refinements,'physicalVariable':True,'errorCriterion':'global sum of actual leaf errors; empirical, not a proof'})
+        require(all(e<=budget for e in error),'global empirical budget');return total
 
     def compare(self,key,reference,candidates):
         c=self.B;ref=[c.make_mpc(v._mpc_) if hasattr(v,'_mpc_') else c.make_mpf(v._mpf_) for v in reference]
@@ -193,7 +228,7 @@ class InnerEvaluator:
         cuts=sorted(set([c.zero,c.mpf(T),abs(Q)]+[c.mpf(i)/10 for i in range(1,9)]))
         panels=[]
         for a,b in zip(cuts,cuts[1:]):
-            n=int(c.ceil(2*(b-a)));p=[a+(b-a)*i/n for i in range(n+1)];panels.extend(zip(p,p[1:]))
+            n=int(c.ceil(2*(b-a)));p=partition_interval(a,b,n);panels.extend(zip(p,p[1:]))
         contact=5*self.profile(c,Q)/4
         self.emit(c,key+'/input',{'QCoefficient':Qcoeff,'Q':Q,'T':T,'panels':panels,'contact':contact})
         a24=[contact+self.gauss(key+'/A24',c,panels,fa,24)[0]]
@@ -206,7 +241,7 @@ class InnerEvaluator:
         def fb(x):
             h=(1+c.tanh(x/10))/4;j=1/(4*c.cosh(x/10)**2)
             return [h*j*c.exp(-c.j*Q*x)/(2*c.pi)],{'h':h,'j':j,'phase':c.exp(-c.j*Q*x)}
-        n=int(c.ceil(4*R));p=[-R+2*R*i/n for i in range(n+1)];panels=list(zip(p,p[1:]))
+        n=int(c.ceil(4*R));p=partition_interval(-R,R,n);panels=list(zip(p,p[1:]))
         self.emit(c,key+'/B/input',{'QCoefficient':Qcoeff,'Q':Q,'radiusTrials':trials,'panels':panels,'profileScale':10,'FourierNormalization':'1/(2pi)'})
         b=self.adaptive(key+'/B',c,panels,fb,c.mpf('1e-11')/(4*38))
         analytic=[5*self.profile(c,Q)*(c.mpf(1)/4-10*c.j*Q/8)]

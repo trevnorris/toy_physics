@@ -21,6 +21,13 @@ input/formula/normalization or stored rule mismatch silently pass? Check that
 nothing claims a packet value, scattering/current/loss or global quadrature bound.
 
 The new analysis and numerical choices are part of this concrete assessment.
+The concrete physical adaptive routine now refines the largest active-leaf error
+against a global sum-of-leaf target; it does not halve a local allowance. Assess
+termination on integrable root endpoints, componentwise accounting, partition
+replacement and precision-stagnation refusal. Exact subdivision endpoints and
+the saved native profile-scale rule are explicit runtime joins. These are
+substantive numerical/validation changes; no peer report is supplied.
+
 Give one literal verdict: CLEAR FOR THIS PACKET-ACTION INNER BUILD or NEEDS
 REVISION. Identify substantive blockers with exact source lines/operands and
 required corrections. Separate optional improvements and coverage limitations.

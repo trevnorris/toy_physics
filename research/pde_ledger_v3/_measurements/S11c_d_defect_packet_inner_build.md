@@ -26,7 +26,10 @@ Native per-face lab heights, original w=(1+tanh(xi))/2 and native lower outward
 slope join h=(1+tanh(x/10))/4 and j=(1-tanh(x/10)^2)/4. Independent eta/sigma
 coefficients are selected before this physical-product adapter; no relation
 between those formal grades is used to recompute a source. The physical x
-scale is the same saved L=10. These joins precede using h*j as an independent
+scale joins the saved native `L_W**number_of_native_spatial_indices` rule, its
+original source fragment, declared/saved length and physical input length. The
+new one-index adapter is derived as L times the x derivative of the actual
+profile; no slope formula is inserted by assumption. These joins precede using h*j as an independent
 H reference. The inherited Fourier convention is 1/(2pi), after the two edge
 deltas; product-to-convolution factor is one. Full summand units remain future.
 
@@ -68,7 +71,9 @@ Each route independently resolves cuts t=+/-kappa-k, l+/-kappa, 0, l-k and
 Profile cuts 0,l-k plus offsets +/-0.1,0.2,0.4,0.8 and a maximum physical
 interval width 1/2 are fixed in advance. Exact coincidences merge; distinct
 exact cuts that alias at working precision refuse, with saved operands.
-No hole or diagonal strip is dropped. Roots use the common positive-real /
+Every subdivided interval retains its original first and last endpoint objects;
+rounded reconstruction of the last endpoint is not used. No hole or diagonal
+strip is dropped. Roots use the common positive-real /
 positive-imaginary outgoing sheet. Reflected q(l-t) stays distinct from q(k+t).
 
 Route A uses the saved GL24 and GL48 rules at 30 digits. Every finite interval
@@ -87,8 +92,21 @@ Every primitive and the sum must satisfy the unchanged method comparison
     |candidate-A48| <= 1e-9 + 1e-7 |A48|.
 
 Compare A24, physical adaptive B and A48T124. No cancellation may hide a failing
-primitive. B gets absolute empirical error allocation 1e-11/(4*38) per primitive,
-split across initial intervals and halved on subdivision. This is an empirical
+primitive. B gets a global absolute empirical target 1e-11/(4*38) per primitive. It first
+evaluates all initial physical intervals, then refines the active leaf with
+the largest maximum component error. Each parent is replaced by its two
+physical half-interval children. Acceptance requires the actual sum of current
+leaf error magnitudes to be within the target for EVERY component. No local
+allowance is halved with interval width. Thus a square-root endpoint error
+that decreases as sqrt(width) is not required to beat an allowance decreasing
+as width. This is a numerical allocation correction, not an integrand or
+coordinate change, and no execution failure is being inferred from source.
+
+The heap contains one entry per active leaf. Parent and child values/errors,
+replacements and intermediate totals are recorded. Incremental sums are
+recomputed from all actual leaves every 64 refinements and before any acceptance;
+64 is a bookkeeping interval, not a computation cap. Both total quadrature and
+error sums use the final leaf partition. The error remains an empirical
 adaptive estimator, not an analytic quadrature proof. Precision stagnation or
 an absolute-comparison miss preserves results and stops, with no order retry.
 
@@ -141,6 +159,11 @@ without OOM or swap; no process/cache split was recorded. The same memory guard
 stays in force. This bank streams panel records and retains only small sums;
 it does not infer that the historical cap events were harmless. No wall,
 CPU, native alarm or inactivity deadline is added.
+
+The additional standard-library regression uses a manufactured endpoint-error
+oracle with square-root scaling, independent of any native integrand or numerical
+rules. It verifies the actual global refinement routine terminates and retains
+its error sum; it is not a scientific quadrature result.
 
 A pass would establish only this finite inner-kernel bank. Future work still
 needs every actual outer-node Fourier request, full summand-unit and local-tail

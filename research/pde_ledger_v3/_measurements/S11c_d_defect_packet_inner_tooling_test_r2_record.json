@@ -1,0 +1,19 @@
+{
+  "status": "STDLIB_METADATA_AND_SYNTHETIC_TESTS_PASSED",
+  "recordedUtc": "2026-10-03T20:09:52.232979+00:00",
+  "command": [
+    "python",
+    "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_tooling_tests.py"
+  ],
+  "exitCode": 0,
+  "tests": 34,
+  "reportedTestSeconds": 0.565,
+  "combinedToolOutput": "..................................\n----------------------------------------------------------------------\nRan 34 tests in 0.565s\n\nOK\n",
+  "testSourceSha256": "cdbb6738ffbc7d5272585bded5a6e6b3fbcdf5a660eddbd6e0612b8e8cf52e12",
+  "workerSha256": "9a417c0dfa4a00e5d8a6ebc15fcd0baaccf69e5192a75b1d6b7e75b9f28db7b9",
+  "librarySha256": "be91df601b15477a6a884e8531600007359b1481b1526267417aed822fa9707e",
+  "manifestSha256": "ceb06cb90c114e2cbb0ba3a297cef4ad45f05b928c077c7518cf2f1b47eef6ba",
+  "scientificImportsOrRestoration": false,
+  "newScientificOperations": 0,
+  "syntheticOnly": "Fraction-valued manufactured endpoint-error oracle exercises the actual global allocation routine; constant toy routing and Decimal endpoint tests use no native kernel, scientific library or saved numerical restoration."
+}

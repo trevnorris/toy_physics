@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Stdlib metadata and synthetic routing tests. No scientific restoration."""
 import ast
+from decimal import Decimal, localcontext
 from fractions import Fraction as F
 import hashlib
 import json
@@ -57,6 +58,60 @@ class MetadataTests(unittest.TestCase):
             return [F(1)],{'toy':x}
         with self.assertRaises(ValueError):obj.gauss('toy',FakeContext(),[(F(0),F(1))],failing,24)
         self.assertTrue(records[-1][0].endswith('/failed-panel'));self.assertEqual(len(records[-1][1]['valuesPrefix']),1)
+    def test_global_singular_error_oracle_terminates(self):
+        cls=L['InnerEvaluator'];obj=object.__new__(cls);records=[]
+        obj.emit=lambda c,n,v:records.append((n,v))
+        # Manufactured bookkeeping oracle, not a quadrature rule or native kernel.
+        def panel(key,c,a,b,f,label):
+            width=b-a;depth=width.denominator.bit_length()-1
+            error=F(1,2**(depth//2)) if a==0 else F(0)
+            return {'a':a,'b':b,'K':[width,2*width],'error':[error,error/2]}
+        obj.adaptive_panel=panel;budget=F(1,256)
+        value=obj.adaptive('toy-root',FakeContext(),[(F(0),F(1))],None,budget)
+        self.assertEqual(value,[1,2]);last=records[-1][1]
+        self.assertTrue(all(e<=budget for e in last['summedEmpiricalErrors']))
+        self.assertEqual(last['refinements'],16);self.assertEqual(len(last['activeLeaves']),17)
+        self.assertTrue(any(n.endswith('/global-sum/16') for n,_ in records))
+    def test_old_local_halving_cannot_meet_manufactured_root_budget(self):
+        for depth in range(33):self.assertGreater(F(1,2**(depth//2)),F(1,256*2**depth))
+    def test_global_vector_budget_and_final_partition(self):
+        cls=L['InnerEvaluator'];obj=object.__new__(cls);records=[];evaluated={}
+        obj.emit=lambda c,n,v:records.append((n,v))
+        def panel(key,c,a,b,f,label):
+            width=b-a;depth=width.denominator.bit_length()-1
+            record={'a':a,'b':b,'K':[width],'error':[F(1,2**(depth//2)) if a==0 else F(0),width**2/100]}
+            # Error component count and K component count must agree in real vector panels.
+            record['K']=[width,width];evaluated[label]=record;return record
+        obj.adaptive_panel=panel;budget=F(1,256)
+        self.assertEqual(obj.adaptive('toy-vector',FakeContext(),[(F(0),F(1,2)),(F(1,2),F(1))],None,budget),[1,1])
+        final=records[-1][1];active=[evaluated[n] for n in final['activeLeaves']];ordered=sorted(active,key=lambda v:v['a'])
+        self.assertEqual(ordered[0]['a'],0);self.assertEqual(ordered[-1]['b'],1)
+        self.assertTrue(all(a['b']==b['a'] for a,b in zip(ordered,ordered[1:])))
+        sums=[sum((v['error'][j] for v in active),F(0)) for j in range(2)]
+        self.assertEqual(sums,final['summedEmpiricalErrors']);self.assertTrue(all(v<=budget for v in sums))
+    def test_global_zero_budget_refused(self):
+        obj=object.__new__(L['InnerEvaluator'])
+        with self.assertRaises(ValueError):obj.adaptive('toy',FakeContext(),[(F(0),F(1))],None,F(0))
+    def test_subdivision_preserves_original_endpoints_under_rounding(self):
+        with localcontext() as ctx:
+            ctx.prec=10;a=Decimal('-1e20');b=Decimal('0.1');n=3
+            self.assertNotEqual(a+(b-a)*n/n,b)
+            points=L['partition_interval'](a,b,n)
+            self.assertIs(points[0],a);self.assertIs(points[-1],b)
+            self.assertTrue(all(x<y for x,y in zip(points,points[1:])))
+    def test_subdivision_bad_inputs_refuse(self):
+        for a,b,n in [(F(1),F(1),2),(F(2),F(1),2),(F(0),F(1),0),(F(0),F(1),True)]:
+            with self.assertRaises(ValueError):L['partition_interval'](a,b,n)
+    def test_native_profile_scale_actual_operand(self):
+        r=raw('inventory/native-profile-scale-join.json');self.assertEqual(W['native_profile_scale'](r,'10'),10)
+    def test_native_profile_scale_mutations_refuse(self):
+        baseline=raw('inventory/native-profile-scale-join.json')
+        for key,value in [('physicalLength','1'),('declaredLength',1),('savedLength',{'text':'1','srepr':'Integer(1)'})]:
+            changed=json.loads(json.dumps(baseline));changed[key]=value
+            with self.assertRaises(ValueError):W['native_profile_scale'](changed,'10')
+        for key,value in [('rule','L_W**0'),('source',"value*=1"),('functionExecuted',True)]:
+            changed=json.loads(json.dumps(baseline));changed['nativeRule'][key]=value
+            with self.assertRaises(ValueError):W['native_profile_scale'](changed,'10')
     def test_require_exact_true(self):
         L['require'](True,'ok')
         for value in [1,None,False,'true']:
@@ -95,7 +150,7 @@ class MetadataTests(unittest.TestCase):
 
 class SourceTests(unittest.TestCase):
     def test_inert_top_imports(self):
-        allowed={'argparse','ast','hashlib','itertools','json','math','os','pathlib','resource','shutil','sys','time','traceback','fractions'}
+        allowed={'argparse','ast','hashlib','itertools','json','math','os','pathlib','resource','shutil','sys','time','traceback','fractions','heapq'}
         for name in [P+'.py',P+'_lib.py']:
             for n in ast.parse((M/name).read_text()).body:
                 if isinstance(n,ast.Import):self.assertTrue(all(a.name in allowed for a in n.names))

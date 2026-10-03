@@ -7,6 +7,9 @@ No peer reports or prior review commentary are supplied.
 Start with build.md and method.md. worker.py establishes source/proof joins and
 new physical-product/tail algebra; numerical-library.py defines exact request and
 cut metadata, restored-rule transport and two independent quadrature routes.
+Its physical adaptive route uses global componentwise active-leaf error sums
+and largest-error refinement; complete replacements and totals are persisted.
+The actual native scale operand is saved/inventory/native-profile-scale-join.json.
 original-fourier-library.py is reused only for storage/encoding; its evaluator
 and rule constructors are never called. launcher.py is inert until a fresh
 pinned READY gate, with unchanged guarded no-deadline resources and hook first.

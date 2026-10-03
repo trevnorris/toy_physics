@@ -80,6 +80,15 @@ def verify_invocation(args,g,argv):
 
 
 
+def native_profile_scale(record,physical_length):
+    require(record['nativeRule']['rule']=='L_W**number_of_native_spatial_indices','saved native profile scale rule')
+    require(record['nativeRule']['source']=="if base in ('w1_profile','m1_profile'):\n                    value*=self.values['L_W']**len(indices)",'actual saved native at_source scale code')
+    require(record['nativeRule']['functionExecuted'] is False,'original source was inspected, not replayed')
+    require(record['physicalLength']==physical_length=='10' and record['declaredLength']==10 and
+        record['savedLength']=={'text':'10','srepr':'Integer(10)'},'actual saved and physical scale')
+    return record['declaredLength']
+
+
 def run_science(m,J,ns):
     D=ns['decode'];raw={};copies={}
     for alias,r in m['savedInputs'].items():
@@ -148,9 +157,14 @@ def run_science(m,J,ns):
         J.zero('new-'+face+'-physical-height-join',height.subs({symbols['eta_bg']:1,symbols['w1_profile']:w},simultaneous=True),sign*hp)
     geom=D(raw['native/lower-geometry.json']);slope=geom['outwardSlopeDefinition'];symbols={z.name:z for z in slope.free_symbols}
     require(set(symbols)=={'sigma_W','w1_profile_d1'},'native slope free-symbol contract')
-    # w_xi prime is the declared derivative of the actual dimensionless tanh profile;
-    # physical x derivative carries 1/L. This derives only the new physical-product join.
-    J.zero('new-physical-slope-join',slope.subs({symbols['sigma_W']:1,symbols['w1_profile_d1']:(1-sp.tanh(x/10)**2)/2},simultaneous=True),jp)
+    scale_record=raw['inventory/native-profile-scale-join.json']
+    J.emit('new-native-slope-scale-operands',{'savedScale':scale_record,'physicalLength':params['L_W'],'originalProfile':source['profiles']['w'],'physicalProfile':w,'nativeSlope':slope})
+    length=sp.Integer(native_profile_scale(scale_record,params['L_W']))
+    # The actual saved native rule supplies one L factor for the one native
+    # spatial index. This new physical adapter is not an old source replay.
+    physical_jet=sp.diff(w,x);native_jet=length*physical_jet
+    J.emit('new-native-slope-scale-return',{'nativeJet':native_jet,'physicalDerivative':physical_jet,'length':length,'nativeSpatialIndices':1,'sourceRule':scale_record['nativeRule']})
+    J.zero('new-physical-slope-join',slope.subs({symbols['sigma_W']:1,symbols['w1_profile_d1']:native_jet},simultaneous=True),jp)
     J.zero('new-physical-product-derivative',hp*jp,jp/4-sp.Rational(10,8)*sp.diff(jp,x))
     hop=inherit('preflight/new-H-contact-adapter');hsop=inherit('preflight/new-H-subtracted-adapter')
     J.zero('new-runtime-H-contact',D(hop['right']),5*A(l-k)/4)

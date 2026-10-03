@@ -1,0 +1,104 @@
+{
+  "status": "READY_FOR_INDEPENDENT_INNER_BUILD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/inner-build-review-r2",
+  "dependencyCommits": [
+    "ccb35e8c",
+    "2bebec95"
+  ],
+  "preservedReviewCommit": "cc7e37d3",
+  "methodAssessmentCommit": "3df5a3bf",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-03T20:09:53.710165+00:00",
+    "packetSha256": "1243079921b1e3eaf4c906831bfeaff0aba71c2678c06ad5cb0b0e3689c5b153",
+    "archiveSha256": "9856734c18f86f9805c9d0d5a8df1961e000fbaa5934151b14651be2e9f4a2ad",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 383,
+    "bytes": 41697704,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing AGENTS permission for necessary fixed source/evidence packets to established Claude/Grok within ongoing authorized research. This is a concrete inner-kernel prerequisite of the cleared two-packet method. No routine approval needed.",
+    "scope": "Only 38 fixed H/J/direct inner kernel points, physical H reference, exact native joins and conditional inner tails; no outer packet value, inverse, current or loss.",
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_SOURCE_AND_PACKET_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "1cfd0ac49bf2c573695713403f76e39604b11381a6b24bca9ddb8bec64417d29",
+    "packetSha256": "1243079921b1e3eaf4c906831bfeaff0aba71c2678c06ad5cb0b0e3689c5b153",
+    "archiveSha256": "9856734c18f86f9805c9d0d5a8df1961e000fbaa5934151b14651be2e9f4a2ad",
+    "files": 383,
+    "bytes": 41697704,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 382,
+    "payloadRestored": false,
+    "transportIdenticalToPrior": true,
+    "noReviewVerdict": true
+  },
+  "workerSha256": "9a417c0dfa4a00e5d8a6ebc15fcd0baaccf69e5192a75b1d6b7e75b9f28db7b9",
+  "manifestSha256": "ceb06cb90c114e2cbb0ba3a297cef4ad45f05b928c077c7518cf2f1b47eef6ba",
+  "librarySha256": "be91df601b15477a6a884e8531600007359b1481b1526267417aed822fa9707e",
+  "launcherSha256": "417e28f0e057f7d4969f7e6ceb3acb295426d238f429a134bf37c18095b1c5db",
+  "sharedGuardSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+  "supervisorSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+  "methodSha256": "79f1459596c84d0f4fbca2c45b51977ff338bce1a55a66c6214e850793eaf45a",
+  "toolingTests": {
+    "status": "STDLIB_METADATA_AND_SYNTHETIC_TESTS_PASSED",
+    "recordedUtc": "2026-10-03T20:09:52.232979+00:00",
+    "command": [
+      "python",
+      "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_tooling_tests.py"
+    ],
+    "exitCode": 0,
+    "tests": 34,
+    "reportedTestSeconds": 0.565,
+    "combinedToolOutput": "..................................\n----------------------------------------------------------------------\nRan 34 tests in 0.565s\n\nOK\n",
+    "testSourceSha256": "cdbb6738ffbc7d5272585bded5a6e6b3fbcdf5a660eddbd6e0612b8e8cf52e12",
+    "workerSha256": "9a417c0dfa4a00e5d8a6ebc15fcd0baaccf69e5192a75b1d6b7e75b9f28db7b9",
+    "librarySha256": "be91df601b15477a6a884e8531600007359b1481b1526267417aed822fa9707e",
+    "manifestSha256": "ceb06cb90c114e2cbb0ba3a297cef4ad45f05b928c077c7518cf2f1b47eef6ba",
+    "scientificImportsOrRestoration": false,
+    "newScientificOperations": 0,
+    "syntheticOnly": "Fraction-valued manufactured endpoint-error oracle exercises the actual global allocation routine; constant toy routing and Decimal endpoint tests use no native kernel, scientific library or saved numerical restoration."
+  },
+  "savedInputFiles": 312,
+  "savedInputBytes": 39490632,
+  "runtimeSourceFiles": 51,
+  "peerReportsIncluded": false,
+  "newScientificOperations": 0,
+  "readyGateExists": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "38 fixed inner H/J/direct kernel points and native template sensitivity only; no complete packet action",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": false,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "innerPoints": 38,
+    "noCompletePacketAction": true
+  }
+}

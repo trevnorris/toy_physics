@@ -410,3 +410,18 @@ retry. Exact panel endpoints and the actual saved native profile-scale rule
 will also be joined explicitly. The formulas, fixed points, physical inputs,
 completed results and numerical tolerances remain unchanged. No optional
 wording loop or author clearance is claimed.
+
+The corrected inner build passed **34** standard-library metadata/synthetic
+tests. The actual global-error routine terminates on a manufactured square-root
+endpoint-error oracle and checks the final componentwise leaf sums; this is not
+a native quadrature result. A Decimal counterexample verifies preservation of
+original subdivision endpoints. Missing/mutated native scale rules are refused.
+All 312 saved files, eight core kernel/point/comparison function ASTs, physical
+inputs, method, launcher and comparison tolerances remain unchanged.
+
+The substantive revised packet has 383 files / 41,697,704 bytes, packet SHA256
+`1243079921b1e3eaf4c906831bfeaff0aba71c2678c06ad5cb0b0e3689c5b153`, archive SHA256
+`9856734c18f86f9805c9d0d5a8df1961e000fbaa5934151b14651be2e9f4a2ad`.
+No old peer report or commentary is included. The previous literal NEEDS/CLEAR
+pair remains at **cc7e37d3**. No scientific worker or READY gate exists; independent
+assessment of this numerical and validation correction is the next gate.

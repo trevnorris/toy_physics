@@ -1,0 +1,57 @@
+{
+  "status": "SUBSTANTIVE_ADAPTIVE_ALLOCATION_AND_NATIVE_SCALE_VALIDATION_CORRECTION_PREPARED",
+  "recordedUtc": "2026-10-03T20:10:32.837334+00:00",
+  "preservedBaselineCommit": "cc7e37d3",
+  "oldPacketSha256": "3da318fea91a0426a63fd00c252560baddf29720c1907c93b79d2592db3f51d2",
+  "oldLiteralVerdicts": [
+    "Claude NEEDS REVISION",
+    "Grok CLEAR FOR THIS PACKET-ACTION INNER BUILD"
+  ],
+  "oldWorkerSha256": "82cb6bc2fc8eae7339658aad973c1cf575c4702b6df7d0ab6ad13b971c2face1",
+  "newWorkerSha256": "9a417c0dfa4a00e5d8a6ebc15fcd0baaccf69e5192a75b1d6b7e75b9f28db7b9",
+  "oldLibrarySha256": "efc10abea58bc4b379effcd68053197151979fcfdb9b6782796e061c4acd771e",
+  "newLibrarySha256": "be91df601b15477a6a884e8531600007359b1481b1526267417aed822fa9707e",
+  "savedInputsByteReceiptsUnchanged": 312,
+  "unchangedFunctionASTs": {
+    "point_plan": true,
+    "exact_cuts": true,
+    "kernel_components": true,
+    "q": true,
+    "profile": true,
+    "middle": true,
+    "compare": true,
+    "run": true
+  },
+  "methodUnchanged": true,
+  "launcherUnchanged": true,
+  "physicalInputsChanged": false,
+  "comparisonTolerancesChanged": false,
+  "scienceRun": false,
+  "readyGateExists": false,
+  "independentBuildClearance": false,
+  "changes": {
+    "algorithm": "Physical-variable B now evaluates all initial leaves and refines maximum component error against the unchanged global sum-of-active-leaf target. No local tol/2, no coordinate substitution, no scientific retry. Component sums recomputed before acceptance and every64refinements.",
+    "endpoints": "All three finite panel constructors preserve actual first/last objects; synthetic Decimal roundoff reproduces the old mismatch.",
+    "nativeScale": "Actual saved native rule/source fragment, physical/saved/declared length join before L times physical derivative supplies the one-index native jet."
+  },
+  "tests": {
+    "status": "STDLIB_METADATA_AND_SYNTHETIC_TESTS_PASSED",
+    "recordedUtc": "2026-10-03T20:09:52.232979+00:00",
+    "command": [
+      "python",
+      "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_tooling_tests.py"
+    ],
+    "exitCode": 0,
+    "tests": 34,
+    "reportedTestSeconds": 0.565,
+    "combinedToolOutput": "..................................\n----------------------------------------------------------------------\nRan 34 tests in 0.565s\n\nOK\n",
+    "testSourceSha256": "cdbb6738ffbc7d5272585bded5a6e6b3fbcdf5a660eddbd6e0612b8e8cf52e12",
+    "workerSha256": "9a417c0dfa4a00e5d8a6ebc15fcd0baaccf69e5192a75b1d6b7e75b9f28db7b9",
+    "librarySha256": "be91df601b15477a6a884e8531600007359b1481b1526267417aed822fa9707e",
+    "manifestSha256": "ceb06cb90c114e2cbb0ba3a297cef4ad45f05b928c077c7518cf2f1b47eef6ba",
+    "scientificImportsOrRestoration": false,
+    "newScientificOperations": 0,
+    "syntheticOnly": "Fraction-valued manufactured endpoint-error oracle exercises the actual global allocation routine; constant toy routing and Decimal endpoint tests use no native kernel, scientific library or saved numerical restoration."
+  },
+  "interpretation": "The defect in local error allocation is source-level and demonstrated with a manufactured bookkeeping oracle. No prediction of which native point would fail, or actual numerical/physics failure, is asserted. Other optional review notes remain limitations without an optional-review loop. New assessment is required for the substantive correction."
+}

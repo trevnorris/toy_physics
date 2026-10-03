@@ -1,0 +1,39 @@
+{
+  "status": "READY_FOR_ONE_REVIEWED_BOUNDED_INSTRUMENT",
+  "recordedUtc": "2026-10-03T08:49:18.197881+00:00",
+  "buildReviewCommit": "0ee013c8",
+  "gatePath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_gate.json",
+  "gateSha256": "a404e25d8168b78c5b76e0c244051711c98c1dfca18acf6a462d527d9f1774af",
+  "workerSha256": "e2350d3cf1ce697aaec60c60e60d1a5cf945d00f36cb26be7ea3b3915b406c73",
+  "manifestSha256": "62ef34d34fa17c24f904a59d011c23fe5ef59e3114209e2b88f935aaa9f0b113",
+  "launcherSha256": "ff213189d1e20d0145369dbcd88ca96f631123ca9205d679916bbd6532b0aa92",
+  "sourcePins": 675,
+  "savedFiles": 422,
+  "allSourceHashesMatch": true,
+  "actualStdlibLaunchWorkerGateAndInvocationPassed": true,
+  "actualCommandHelpersEqualReviewedPinnedHelpers": true,
+  "additionalIdentityPins": 12,
+  "hookArmsBeforeScientificStart": true,
+  "preflightHost": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/execution-preparation/host-preflight.json",
+  "preflightHostSha256": "79cdcdc7c78e6529eb834815cab852eb0f305fb1d3841e7937809d357f1e82be",
+  "toolingTests": {
+    "methodsPassed": 35,
+    "record": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_build_r3_correction.json",
+    "scope": "Prior passed stdlib tests; no scientific imports/restoration during readiness"
+  },
+  "scientificRunStarted": false,
+  "resourceLimits": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "noOptionalEditsAfterBuildReview": true,
+  "runtimeResultAcceptance": false,
+  "newTrackedDataOver1MiB": []
+}

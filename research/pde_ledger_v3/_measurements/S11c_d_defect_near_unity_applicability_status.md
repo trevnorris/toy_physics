@@ -36,10 +36,15 @@ clean process acceptance. The earlier exact-true predicate failure at ac9b919a
 also remains preserved; its actual SymPy true-atom cause is now recorded.
 
 The next bounded proposal compares these source-joined translated end symbols
-with the earlier uniform selected-subspace operands. It must distinguish a
-retained grade identity from equality after finite physical binding, preserve
-all coordinate/row/unit and outgoing-depth joins, and report any mismatch.
-No automatic old-mode/current acceptance, producer replay or defect sweep.
+with the earlier uniform selected-subspace operands. Its first literal method
+pair was Claude NEEDS REVISION / Grok CLEAR, preserved at 1e0763ee. The revised
+proposal requires raw-source/finite-origin joins and explicit retained-grade
+versus excluded-remainder attribution. It binds the positive harmonic trial,
+native equation rows and bilinear Fourier duality, records A/R as dependent
+views of one equation check, and uses closed grazing residuals with all four
+saved limit joins. This remains a proposal: no comparison worker, READY gate or
+new science exists. No automatic old-mode/current acceptance, producer replay
+or defect sweep.
 
 Strict rest bulk, LAB_HELD/RHO4_CONSTANT, one tanh profile and saved direction
 remain explicit. Drain flow, primitive speed derivation, full Green/FORM/A11/A12

@@ -1,0 +1,30 @@
+{
+  "status": "SUBSTANTIVE_METHOD_REVISION_PREPARED_NO_SCIENCE",
+  "preservedPriorReviewCommit": "1e0763ee",
+  "priorLiterals": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS BOUNDED WEAK-END UNIFORM-COMPARISON METHOD"
+  },
+  "packetSha256": "d5e6f4441144bf9c0d470d0fb81fc16268198ec558297efac587556544242d29",
+  "scopeUnchanged": true,
+  "requiredChanges": [
+    "Source-correct raw pencil and finite origin join before required grade/remainder attribution",
+    "Explicit positive harmonic trial, native residual rows, bilinear Fourier duality and actual coordinate maps",
+    "Dependent R-A=I_old consistency; closed grazing R0 and four inherited limit inputs/returns",
+    "Mutated-minus-baseline response controls with point and denominator evidence"
+  ],
+  "sourceEvidenceAdded": [
+    "source/full-weak-worker.py",
+    "source/pressure-weak-worker.py",
+    "native/native-wave-profile-contract.json",
+    "native/weak-duality-and-order.json"
+  ],
+  "unchangedPriorPacketFiles": 40,
+  "sciencePayloadsDecoded": 0,
+  "newScientificOperations": 0,
+  "newWorkerOrGate": false,
+  "peerReportsShared": false,
+  "independentClearanceClaimed": false,
+  "transportRetry": false,
+  "authority": "Standing AGENTS consent; no new recipient or scope."
+}

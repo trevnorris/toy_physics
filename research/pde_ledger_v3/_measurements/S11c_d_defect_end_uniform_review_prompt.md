@@ -16,15 +16,19 @@ without rerunning their constructors or inferring scattering or current.
 Please assess concretely:
 
 1. Actual row/field/coordinate/unit, epsilon/Fourier, material/end, memory and
-   physical-versus-algebraic outgoing-depth joins. Is the proposed comparison
-   sufficient to avoid matching unrelated representations by fitted scales?
+   outgoing-depth joins. In particular join the native positive trial carrier,
+   CLOSED_PENCIL_LEGS[0], bilinear hat(v)(-p), and weak pairing with derivatives
+   left on the trial. A power map or reduced variational weak matrix is a
+   different object. Assess the source-derived row/field map and its domains.
 2. Independent eta/sigma assembly followed by finite physical binding; full
-   Delta versus the five-row selected A/R residuals. A retained identity must
-   not stand in for equality to an untruncated finite law. Nonzero or unknown
-   is a possible result, not an instruction to modify the physics.
+   Delta versus selected A/R, with R-A=I_old explicitly dependent. Required raw
+   source/finite-origin join, grade coefficients J_ab and exact excluded H
+   distinguish retained mismatch from finite truncation. Missing raw evidence
+   is attribution unavailable, not permission to infer a cause. Assess the
+   rational regularity, source provenance and possible outcomes.
 3. Exact rational wave-surface certificates with preserved denominators and
-   selected grazing comparison through closed expressions and inherited limit
-   operands. No raw singular substitution or branch-blind nonzero claim.
+   selected grazing R0 through closed E, regular L/D and four inherited limit
+   operands; separate symbolic domain from point/path coverage. No raw singular substitution or branch-blind nonzero claim.
 4. Scope of a successful real-omega3 selected-equation correspondence. It does
    not deliver a frequency neighborhood, a new current identity, a full mode
    census, plane-wave action of the nonuniform weak operator or loss.

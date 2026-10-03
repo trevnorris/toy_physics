@@ -382,3 +382,10 @@ No peer report is included. Read literal delivered reports and all actual
 receipts/hashes before adjudication; no author clearance or automatic retry.
 The unchanged no-deadline pooled guard and historical resource/incident records
 remain in force. Prior Fourier cgroup cap events are recorded, not erased.
+
+The prepared inner build was committed at **e2c6a553** and both independent
+reviews are now running. The hook was armed before reviewer start; actual host
+PIDs and both private 383-file copies were checked once. No unfinished report
+was read, no scientific worker launched and no READY gate created. The local
+completion hook will request adjudication after both attempts finish; waiting
+does not invoke the model. See `S11c_d_defect_packet_inner_build_review_launch.json`.

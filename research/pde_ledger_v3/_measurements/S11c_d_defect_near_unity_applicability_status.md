@@ -136,6 +136,18 @@ The next bounded task is a numerical Schwartz-action method for the corrected
 weak operator, with contact/PV, moving endpoints, tails and independent numerical
 controls assessed before a worker is built. No defect sweep is started.
 
+The prospective packet-action method now selects e_W input into THETA_BALANCE
+for two Gaussian carrier settings, at the single saved LEFT matching speed
+sqrt(6)/2. It retains all 544 selected pressure addresses (102 formal and 442
+saved zeros), all 16 local cells and both faces. The proposal includes numerical
+height/H contact and PV rules, independent reflected-root quadrature, all-real
+tail envelopes, independent transform/action routes and numerical controls.
+These are new method proposals, not computed actions or new analytic acceptance.
+The 38-file, 4,694,356-byte independent review packet is frozen with SHA256
+0369ec02b916d833fa97f378ab9209bcedf8bf26d1599ffe5efbbebaa1bdc809.
+Standing AGENTS consent covers submission to the same Claude/Grok reviewers;
+no worker, science gate, finite inverse or loss interpretation exists.
+
 Independent preparation at 0798c4b5 mapped the legacy Gaussian/matrix route and
 verified 131 selected opaque input/return receipts. It is preparation only:
 old cs10 arrays do not validate the corrected near-unity operator, and no

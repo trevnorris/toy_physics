@@ -1,0 +1,16 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-03T15:04:56.430298+00:00",
+  "packetSha256": "0369ec02b916d833fa97f378ab9209bcedf8bf26d1599ffe5efbbebaa1bdc809",
+  "archiveSha256": "566e08d01c14d5eb5b6d068c7280d25958c008f75ff2c3be3c50d8e8d952f672",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 38,
+  "bytes": 4694356,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing AGENTS review-submission authorization and user direction to continue clear bounded research without routine prompts. Same established Claude/Grok recipients, no new model input or scattering run.",
+  "scope": "Two selected e_W-to-THETA Schwartz packet actions at one saved effective matching speed; retained grades, both faces, contact/PV/branch/tail numerical method only. No scattering, current, inverse, defect sweep or loss.",
+  "noAutomaticRetry": true
+}

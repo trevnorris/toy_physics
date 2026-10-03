@@ -504,3 +504,15 @@ Proceed with the exact reviewed source after free-space/resource readiness,
 fresh pinned gate and hook-first launch. No optional review loop, scientific
 retry, completed preflight/Fourier/rule replay, outer action or loss claim.
 Prior reports at **cc7e37d3** and **75b2daf1** remain unchanged.
+
+
+The exact reviewed inner worker is now pinned READY for **one** guarded run.
+Host readiness found about 19.5 GiB available memory and 350.3 GiB free disk,
+no live guarded service and no pool reservation. The actual guard will make
+its own fresh admission decision. The unchanged reviewed worker, launcher,
+manifest, method, both reports, authority and helpers are pinned; fourteen
+additional complete identity copies are retained outside the future run.
+Launcher metadata verification passed without scientific imports/restoration.
+No result is implied by readiness. Use 4 GiB native/cgroup, zero swap, one
+assigned CPU/thread, 32 tasks, 4 GiB host reserve and no deadlines. The existing
+completion hook must arm before scientific start.

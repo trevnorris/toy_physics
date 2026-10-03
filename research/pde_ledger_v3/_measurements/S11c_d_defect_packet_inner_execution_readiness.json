@@ -1,0 +1,63 @@
+{
+  "status": "PINNED_READY_FOR_ONE_GUARDED_PACKET_INNER_BANK",
+  "createdUtc": "2026-10-03T21:23:35.314035+00:00",
+  "gate": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_gate.json",
+  "gateSha256": "04c5386346ed69f6757fa2d5c2348c7007e6942fea7eaa972cf08aeb2ed3bfaa",
+  "reviewCommit": "ef63ee63",
+  "buildCommit": "f509899b",
+  "sourcePinsChecked": 377,
+  "additionalIdentityCopies": 14,
+  "additionalIndexSha256": "a5881007e766c98c53cde5f694bfe818015e16ca5614186f2edcedab3da6a464",
+  "actualLauncherVerifyPassed": true,
+  "scientificImportsOrRestoration": false,
+  "workerLaunched": false,
+  "noDeadline": true,
+  "scienceRunsAuthorized": 1,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "automaticRetry": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "38 fixed inner H/J/direct kernel points and native template sensitivity only; no complete packet action",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": false,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "innerPoints": 38,
+    "noCompletePacketAction": true
+  },
+  "remainingBeforeResultAcceptance": [
+    "Actual guard no-deadline/resource enforcement and supervisor invocation",
+    "Every native profile/adapter/factor argument, restored numerical rule, inner node/panel/tail/request/primitive/sum operand and return",
+    "Strict stderr and stdout/checks identity",
+    "All source/copy/additional-identity posthashes",
+    "No complete packet action/current/loss or uniform quadrature error claim from fixed inner bank"
+  ]
+}

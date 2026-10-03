@@ -330,3 +330,27 @@ zero swap,32tasks,one thread, RuntimeMaxUSec=infinity and Restart=no. All 891
 source snapshots and 13 additional identity copies match. The existing-session
 completion hook was armed before the stage. The worker was running at inspection;
 no numerical acceptance is inferred. Waiting is silent and does not poll the model.
+
+All 190 declared Fourier requests completed and their actual evidence has been
+inspected. The largest recorded absolute comparison was 5.95633007469e-15
+(including constant analytic references), against the unchanged 1e-12 allowance.
+The largest A48/B difference was 2.24313361496e-15; A24/A48 was below4.94e-30.
+These are empirical absolute comparisons at the declared requests, not relative
+accuracy or a uniform transform-error theorem. The bank supplies no packet value.
+
+Inspection checked all467,110 immutable SQLite records/4,961,550,336bytes,
+667JSONartifacts,113new exact coefficient-transport zeros,826savedcopies,
+1717posthashes,891snapshots and13additionalidentitycopies. The3,113,090 metadata/
+receipt checks passed; no scientific expression was restored or quadrature rerun
+outside containment. Strict scientific stderr is empty,stdout/checks bytes match.
+The worker took2769.674s. Cgroup peak reached4GiB and memory.events.max reached5385;
+there was zero swap,no OOM,no kill,and host available memory stayed above20.45GB.
+No process-RSS/file-cache breakdown was saved,so their contributions are not
+inferred. Actual RuntimeMaxUSec=infinity and Restart=no remained enforced.
+
+Next is the source-bound inner H/J/direct-kernel comparison, including the
+prescribed branch/collision samples and missing physical-profile joins. Completed
+rule nodes/weights and transform returns must be reused by exact argument identity;
+no rule construction,preflight,source/response producer or finished transform
+is to be replayed. Full action collision assembly,paired-height/source-unit/local-tail
+joins,numerical controls,and the final two complete packet actions remain open.

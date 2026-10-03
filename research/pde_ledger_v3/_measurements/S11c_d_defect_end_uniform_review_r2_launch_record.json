@@ -1,0 +1,98 @@
+{
+  "status": "BOTH_INDEPENDENT_SOURCE_REVIEW_ATTEMPTS_STARTED",
+  "recordedUtc": "2026-10-03T10:06:33.091317+00:00",
+  "preparedCommit": "3b53fede",
+  "preservedPriorReviewCommit": "1e0763ee",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/method-review-r2",
+  "packetSha256": "d5e6f4441144bf9c0d470d0fb81fc16268198ec558297efac587556544242d29",
+  "archiveSha256": "2b635e176c7df2122812bb9df9db3b31afff31a5ce0fed63f325629d178ab03d",
+  "files": 49,
+  "bytes": 8333274,
+  "launch": {
+    "jobPid": 3772342,
+    "watcherPid": 3772343,
+    "packetSha256": "d5e6f4441144bf9c0d470d0fb81fc16268198ec558297efac587556544242d29",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "reviewers": {
+    "claude": {
+      "sessionId": "3a527a71-e6de-4f04-92cd-da2885714bef",
+      "pid": 3772354,
+      "startedUtc": "2026-10-03T10:05:55.539678+00:00",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "3a527a71-e6de-4f04-92cd-da2885714bef"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/method-review-r2/claude/work",
+      "scientificExecutionEnabled": false,
+      "promptSha256": "d61c6625b1612b5862fa21f5905399364b2369eecfaf73f4dd43875528d3f2cb",
+      "privateSourceFiles": 49,
+      "privateSourceHashesMatch": true
+    },
+    "grok": {
+      "sessionId": "4bc05f29-fe71-4c0c-83eb-5c6f95b523ea",
+      "pid": 3772355,
+      "startedUtc": "2026-10-03T10:05:55.543579+00:00",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/method-review-r2/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/method-review-r2/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "4bc05f29-fe71-4c0c-83eb-5c6f95b523ea"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/method-review-r2/grok/work",
+      "scientificExecutionEnabled": false,
+      "promptSha256": "d61c6625b1612b5862fa21f5905399364b2369eecfaf73f4dd43875528d3f2cb",
+      "privateSourceFiles": 49,
+      "privateSourceHashesMatch": true
+    }
+  },
+  "hook": {
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "status": "waiting",
+    "armedBeforeReviews": true
+  },
+  "noScience": true,
+  "noReportsRead": true,
+  "peerSharing": false,
+  "automaticRetry": false,
+  "standingAuthority": "Standing review-submission authorization and repeated user direction to continue clear bounded research without routine prompts; no new disclosure beyond established Claude/Grok reviewers",
+  "resultAcceptance": false
+}

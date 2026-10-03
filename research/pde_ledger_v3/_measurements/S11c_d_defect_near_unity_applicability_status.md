@@ -268,3 +268,21 @@ pins; 11 additional authority/review/host records are copied and hashed. Host
 metadata shows a running user manager and enough available memory; the guard
 will make the fresh pooled reservation and enforce actual limits at launch.
 There is no time deadline and no automatic scientific retry.
+
+The unchanged preflight completed and its actual evidence is accepted within
+scope: 726 new literal-zero returns, 68 inherited zero returns, 20 complete
+numerical factor adapters, 544 address joins and 16 local cells. All 11,885
+completion-inspection checks passed. The 222 saved copies, 456 posthashes,
+234 snapshots and 11 additional identity copies are intact. Strict scientific
+stderr is empty and stdout matches checks byte-for-byte. The worker took
+38.560 seconds, peaked at 257,044,480 bytes, used no swap and recorded no memory
+events. The actual runtime limit was infinity with Restart=no.
+
+The positive conditional pressure-tail allocation selected K=27, U=75 and
+T=122 for both planned carriers within the unchanged 1e-11 budget. These are
+integration radii, not execution deadlines. No Fourier transform, response
+integral or packet action was evaluated. The next concrete preparation is the
+shared Fourier evaluator and its bounded source-bound transform checks, then
+the full collision-aware independent action routes. The physical profile join,
+paired-height identity, local tails, full summand units and numerical controls
+remain mandatory before accepting a packet value.

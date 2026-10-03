@@ -177,6 +177,10 @@ It retains 34 prior packet files byte-identically and adds one existing source
 binding record. No reviewer reports are in the packet. The first NEEDS/CLEAR
 pair and exact first proposal remain at f5ee8150; this is necessary substantive
 method assessment, not an optional wording or transport retry.
+Submitted from c79ef567 with the existing-session hook armed first. Both
+reviewer processes started independently, and all 39 private files per reviewer
+match the frozen packet. No report has been read early or shared. The durable
+completion hook will resume adjudication; no model polling or science launch.
 
 Independent preparation at 0798c4b5 mapped the legacy Gaussian/matrix route and
 verified 131 selected opaque input/return receipts. It is preparation only:

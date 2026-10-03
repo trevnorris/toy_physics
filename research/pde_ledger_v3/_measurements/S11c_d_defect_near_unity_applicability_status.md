@@ -252,3 +252,13 @@ No unfinished report was read or shared. The initial read-only command inspector
 incorrectly discarded a legitimate empty CLI argument; the corrected inspector
 preserved it and verified the complete ordered argument tail. Neither review
 was changed or restarted. Joint adjudication will resume from the event hook.
+
+Both delivered preflight reports literally say CLEAR FOR THIS PACKET-ACTION
+PREFLIGHT BUILD. All 1,940 completion-inspection checks passed, including the
+archive, both private snapshots, original source pins and exact receipts. Both
+reviewers state partial data coverage; every runtime join remains mandatory.
+Their optional observations are recorded without another wording review or
+changes to the reviewed worker. In particular the future evaluator still needs
+the physical h/j/half-height join and the explicit chi-to-paired-height identity,
+as well as local tails, full units and actual numerical routes/controls.
+The unchanged bounded preflight can now proceed to pinned guarded readiness.

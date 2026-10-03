@@ -197,6 +197,55 @@ def source_statement_join(source,statement):
     return {'statement':statement,'actualSourceSha256':hashlib.sha256(source.encode()).hexdigest(),'functionCalled':False}
 
 
+def native_phase_exponent(expression, bindings, imaginary_unit):
+    """Bind only the actual native exp/arithmetic/sum(zip()) grammar; never eval."""
+    root=ast.parse(expression,mode='eval').body
+    def dotted(node,name):
+        return isinstance(node,ast.Attribute) and isinstance(node.value,ast.Name) and node.value.id=='sp' and node.attr==name
+    require(isinstance(root,ast.Call) and dotted(root.func,'exp') and len(root.args)==1 and not root.keywords,
+            'native scalar exponential grammar')
+    def scalar(node,env):
+        if isinstance(node,ast.Name):
+            require(node.id in env,'bound native phase name');return env[node.id]
+        if isinstance(node,ast.Constant):
+            require(type(node.value) is int,'integer native phase literal');return node.value
+        if dotted(node,'I'):return imaginary_unit
+        if isinstance(node,ast.UnaryOp) and isinstance(node.op,ast.USub):return -scalar(node.operand,env)
+        if isinstance(node,ast.BinOp):
+            left=scalar(node.left,env);right=scalar(node.right,env)
+            if isinstance(node.op,ast.Add):return left+right
+            if isinstance(node.op,ast.Sub):return left-right
+            if isinstance(node.op,ast.Mult):return left*right
+            raise ValueError('unsupported native phase arithmetic')
+        require(isinstance(node,ast.Call) and isinstance(node.func,ast.Name) and node.func.id=='sum'
+                and len(node.args)==1 and not node.keywords,'native phase sum')
+        generator=node.args[0]
+        require(isinstance(generator,ast.GeneratorExp) and len(generator.generators)==1,'native phase generator')
+        clause=generator.generators[0];iterator=clause.iter
+        require(isinstance(clause.target,ast.Tuple) and len(clause.target.elts) in (2,3) and
+                all(isinstance(n,ast.Name) for n in clause.target.elts) and not clause.ifs and not clause.is_async,
+                'native phase pair target')
+        require(isinstance(iterator,ast.Call) and isinstance(iterator.func,ast.Name) and iterator.func.id=='zip'
+                and len(iterator.args)==len(clause.target.elts) and not iterator.keywords and all(isinstance(n,ast.Name) for n in iterator.args),
+                'native phase paired coordinates')
+        sequences=[env[n.id] for n in iterator.args]
+        require(all(len(s)==3 for s in sequences),'actual native three-dimensional phase')
+        names=[n.id for n in clause.target.elts];require(len(set(names))==len(names),'distinct native phase dummy names')
+        return sum(scalar(generator.elt,{**env,**dict(zip(names,values))}) for values in zip(*sequences))
+    return scalar(root.args[0],bindings)
+
+
+def control_eligible(address,kind):
+    """Eligibility only. Actual endpoint nonzero/finite checks occur under guard."""
+    if address['status']!='FORMAL_ADDRESS_AVAILABLE_NONZERO_NOT_ASSERTED':return False
+    if kind in ('omit-height-contact','reverse-translation-phase'):
+        return tuple(address['responseGrade'])==(1,0) and address['component']=='NATIVE_HEIGHT'
+    if kind=='omit-lower-normal-sign':
+        return (address['face']=='minus' and address['slot']=='normal' and
+                tuple(address['responseGrade'])==(0,0) and address['component']=='NATIVE_FLAT')
+    raise ValueError('unknown addressed control')
+
+
 def run_science(manifest,J,ns):
     raw={};copies={};used=set();D=ns['decode'];audit=EvidenceLog(J.out/'exact-evidence.jsonl',J.encode)
     for alias,v in manifest['savedInputs'].items():
@@ -317,18 +366,53 @@ def run_science(manifest,J,ns):
     pA=profile['heightNumerator'];gA=global_profile['A']
     zero('actual-profile-numerator-argument',pA.xreplace({symbol(pA,'reference_t'):Q}),
          gA.xreplace({symbol(gA,'weak_t'):Q}))
-    original_phase=l*x-k*y;shifted_phase=original_phase.subs({x:x+a,y:y+a},simultaneous=True)
-    phase=zero('native-translation-phase',shifted_phase-original_phase,(l-k)*a)
     duality=take('weak/new-weak-duality-and-order.json');native=Path(manifest['c2Source']).read_text()
     Fourier=duality['inheritedConvention'];source_statement_join(native,'phase1 = '+Fourier['sourcePhase'])
     source_statement_join(native,'phase = '+Fourier['profilePhase'])
     require(duality['sourceDerivativeBeforeMultiplication'] is True and duality['normalVariable']=='response output l'
             and Fourier['profileForwardPower']==-3 and Fourier['invariantEdgeCoordinates']==2,'inherited Fourier/jet order')
+    x2,x3,y2,y3=sp.symbols('weak_end_x2 weak_end_x3 weak_end_y2 weak_end_y3',real=True)
+    coordinate_bindings={'kout':(l,*edge),'kin':(k,*edge),'ko':(l,*edge),'ki':(k,*edge),
+                         'X':(x,x2,x3),'Y':(y,y2,y3)}
+    native_source_exponent=native_phase_exponent(Fourier['sourcePhase'],coordinate_bindings,sp.I)
+    native_profile_exponent=native_phase_exponent(Fourier['profilePhase'],coordinate_bindings,sp.I)
+    shifted_source=native_source_exponent.subs({x:x+a,y:y+a},simultaneous=True)
+    phase_increment=sp.expand(shifted_source-native_source_exponent)
+    phase_coefficient=sp.cancel(phase_increment/(sp.I*(l-k)*a))
+    profile_coefficient=sp.cancel(native_profile_exponent/(-sp.I*(l-k)*y))
+    audit.append('native-phase-operands',{'native':Fourier,'bindings':coordinate_bindings,'sourceExponent':native_source_exponent,
+        'profileExponent':native_profile_exponent,'shiftedSourceExponent':shifted_source,'increment':phase_increment,
+        'sourceSignCoefficient':phase_coefficient,'profileSignCoefficient':profile_coefficient})
+    phase=zero('native-translation-phase',phase_increment,sp.I*(l-k)*a)
+    zero('native-profile-forward-phase',native_profile_exponent,-sp.I*(l-k)*y)
+    zero('native-source-profile-sign-join',phase_coefficient,profile_coefficient)
+    # The new translated Q phase is derived from the bound native source sign.
+    translated_exponent=sp.I*phase_coefficient*Q*a
+    flipped_profile=native_phase_exponent(Fourier['profilePhase'],coordinate_bindings,-sp.I)
+    flipped_profile_coefficient=sp.cancel(flipped_profile/(-sp.I*(l-k)*y))
+    phase_sign_movement=sp.cancel(flipped_profile_coefficient-phase_coefficient)
+    phase_sign_certificate=constant(phase_sign_movement,True)
+    J.emit('new-native-phase-argument-join',{'sourceExpression':Fourier['sourcePhase'],'profileExpression':Fourier['profilePhase'],
+        'bindings':coordinate_bindings,'sourceExponent':native_source_exponent,'profileExponent':native_profile_exponent,
+        'shiftedSource':shifted_source,'phaseIncrement':phase_increment,'newTransferExponent':translated_exponent,
+        'profileSignMutation':{'actualExpressionExponent':native_profile_exponent,'flippedExponent':flipped_profile,
+            'movement':phase_sign_movement,'certificate':phase_sign_certificate},
+        'nativeFunctionsCalled':False,'commonEdgesCancelInProfileAndTranslation':True})
     f,fzero,A,chi=sp.symbols('weak_end_f weak_end_fzero weak_end_A weak_end_chi')
-    E=sp.exp(sp.I*Q*a);subtracted=E*A*(f-fzero*chi)/Q;diagonal=E*A*fzero*chi/Q
+    E=sp.exp(translated_exponent);subtracted=E*A*(f-fzero*chi)/Q;diagonal=E*A*fzero*chi/Q
     decomposition=zero('translated-PV-complete-decomposition',subtracted+diagonal,E*A*f/Q)
-    limits={side:sp.cancel(W/4+W/(2*sp.I)*(sp.I*sp.pi*A0*s)) for side,s in [('minus',-1),('plus',1)]}
+    limits={side:sp.cancel(W/4+W/(2*sp.I)*(sp.I*sp.pi*A0*s*phase_coefficient)) for side,s in [('minus',-1),('plus',1)]}
     for side in H:zero('native-half-height-'+side,limits[side],H[side])
+    reversed_exponent=-translated_exponent
+    reversed_sign=sp.cancel(reversed_exponent/(sp.I*Q*a))
+    reversed_scalar={side:sp.I*sp.pi*A0*s*reversed_sign for side,s in [('minus',-1),('plus',1)]}
+    reversed_limits={side:sp.cancel(W/4+W/(2*sp.I)*value) for side,value in reversed_scalar.items()}
+    zero('reversed-phase-left-height-exchange',reversed_limits['minus'],limits['plus'])
+    zero('reversed-phase-right-height-exchange',reversed_limits['plus'],limits['minus'])
+    J.emit('new-reversed-native-phase-limits',{'originalExponent':translated_exponent,'reversedExponent':reversed_exponent,
+        'reversedPVScalarLimits':reversed_scalar,'contact':W/4,'originalHeightLimits':limits,'reversedHeightLimits':reversed_limits,
+        'samePVSubtraction':'Reverse E in BOTH subtracted and oscillatory diagonal terms; ordinary L1 terms still vanish weakly',
+        'argument':'Reviewed Dirichlet limit is odd under reversal of the actual native phase; no integral evaluated'})
     for face,sign in [('plus',1),('minus',-1)]:
         pv=load('weak/'+face+'-global-height-PV-certificate.json')
         require(pv['normalCoefficientBoundedDirectly'] is True,'normal Holder certificate, no C1(qY) assumption')
@@ -406,7 +490,8 @@ def run_science(manifest,J,ns):
             group['local'].append(term);group['localAncestry'].append({'row':c['row'],'field':c['field'],'xOrder':c['xOrder'],'grade':c['grade']})
         local_records.append(rec)
     J.emit('restored-local-endpoints-new-symbol-terms',local_records)
-    address_records=[];join_records=[];seen=set();response_cache={};possible_controls=[]
+    address_records=[];join_records=[];seen=set();response_cache={};possible_controls={kind:[] for kind in
+        ('omit-height-contact','reverse-translation-phase','omit-lower-normal-sign')}
     assembly_by_row={r['row']:r for r in assembly}
     for row in ROWS:
         addresses=take('inventory/'+row+'-ordered-addresses.json')
@@ -448,8 +533,10 @@ def run_science(manifest,J,ns):
                     record['endContributions'][side]=term
                     group=groups[(side,row,ar['jet']['channel'],tuple(ar['targetGrade']))]
                     group['pressure'].append(term);group['addressIds'].append(idx)
-                    if side=='plus' and rg==(1,0) and term!=0:
-                        possible_controls.append((ar,source[side]*consumer[side]*wave,rr,term))
+                    if side=='plus' and term!=0:
+                        for kind in possible_controls:
+                            if control_eligible(ar,kind):
+                                possible_controls[kind].append((ar,source,consumer,wave,rr,record['endContributions']))
                 audit.append('address-end-return',record);row_results.append(record)
         except BaseException:
             J.emit(row+'-partial-end-address-returns',row_results);raise
@@ -477,24 +564,32 @@ def run_science(manifest,J,ns):
     require(cs2>1 and cs2<4,'control speed in scoped interval')
     for kind in ('omit-height-contact','reverse-translation-phase','omit-lower-normal-sign'):
         chosen=None
-        for ar,base,rr,term in possible_controls:
-            if kind=='omit-lower-normal-sign' and (ar['face']!='minus' or ar['slot']!='normal'):continue
-            mutated=term- base*rr['normal']*W*Bh/4 if kind=='omit-height-contact' else (sp.S.Zero if kind=='reverse-translation-phase' else -term)
-            movement=sp.cancel(mutated-term);actual=sp.cancel(movement.subs(point))
-            audit.append('control-candidate-input',{'kind':kind,'address':ar,'base':base,'response':rr,
-                'original':term,'mutated':mutated,'movement':movement,'point':list(point.items()),'actual':actual})
-            if actual==0:continue
-            cert=constant(actual,True);key=('plus',ar['row'],ar['jet']['channel'],tuple(ar['targetGrade']))
-            cell=next(s for s in symbols if (s['side'],s['row'],s['field'],tuple(s['grade']))==key)
-            mutated_cell=sp.cancel(cell['symbol']-term+mutated)
-            identity=zero('control-full-row-movement-'+kind,mutated_cell-cell['symbol'],movement)
-            chosen={'kind':kind,'actualAddressId':ar['addressId'],'actualAddress':ar,'originalTerm':term,'mutatedTerm':mutated,
-                'actualOriginalCell':cell['symbol'],'actualMutatedCell':mutated_cell,'cellMovement':movement,
-                'point':{'p':1,'q':2,'csSquared':cs2,'outgoing':True},'movementCertificate':cert,'rowIdentity':identity,
+        for ar,source,consumer,wave,rr,end_terms in possible_controls[kind]:
+            per_side={};right_nonzero=False
+            for side in (('minus','plus') if kind=='reverse-translation-phase' else ('plus',)):
+                base=source[side]*consumer[side]*wave;term=end_terms[side]
+                if kind=='omit-height-contact':mutated=term-base*rr['normal']*W*Bh/4
+                elif kind=='reverse-translation-phase':mutated=base*rr['normal']*reversed_limits[side]*Bh
+                else:mutated=-term
+                movement=sp.cancel(mutated-term);actual=sp.cancel(movement.subs(point))
+                audit.append('control-candidate-input',{'kind':kind,'side':side,'address':ar,'base':base,'response':rr,
+                    'original':term,'mutated':mutated,'movement':movement,'point':list(point.items()),'actual':actual,
+                    'reversedPhaseLimits':reversed_limits if kind=='reverse-translation-phase' else None})
+                cert=constant(actual,False);right_nonzero=right_nonzero or (side=='plus' and cert['nonzero'])
+                key=(side,ar['row'],ar['jet']['channel'],tuple(ar['targetGrade']))
+                cell=next(s for s in symbols if (s['side'],s['row'],s['field'],tuple(s['grade']))==key)
+                mutated_cell=sp.cancel(cell['symbol']-term+mutated)
+                identity=zero('control-full-row-movement-'+kind+'-'+side,mutated_cell-cell['symbol'],movement)
+                per_side[side]={'originalTerm':term,'mutatedTerm':mutated,'actualOriginalCell':cell['symbol'],
+                    'actualMutatedCell':mutated_cell,'cellMovement':movement,'movementCertificate':cert,'rowIdentity':identity}
+            if not right_nonzero:continue
+            if kind=='reverse-translation-phase' and not per_side['minus']['movementCertificate']['nonzero']:continue
+            chosen={'kind':kind,'actualAddressId':ar['addressId'],'actualAddress':ar,'endCells':per_side,
+                'point':{'p':1,'q':2,'csSquared':cs2,'outgoing':True},
                 'interpretation':'formal coefficient sensitivity, not computed field or power',
-                'reversePhaseEffect':'height minus/plus exchange: right height becomes zero' if kind=='reverse-translation-phase' else None}
+                'reversePhaseEvidence':'new-reversed-native-phase-limits.json' if kind=='reverse-translation-phase' else None}
             break
-        J.emit('new-control-'+kind,{'selected':chosen,'availableSurvivingAddresses':len(possible_controls)})
+        J.emit('new-control-'+kind,{'selected':chosen,'availableSurvivingAddresses':len(possible_controls[kind])})
         require(chosen is not None,'responsive applicable actual-row control '+kind);controls.append(chosen)
     J.emit('inherited-address-argument-joins',join_records)
     J.emit('consumed-inputs',{'usedAliases':sorted(used),'allCopiedAliases':sorted(copies),'oldFunctionsCalled':False})

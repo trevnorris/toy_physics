@@ -10,7 +10,7 @@ import unittest
 M=Path(__file__).resolve().parent
 WORKER=M/'S11c_d_defect_weak_ends.py'
 MAN=json.loads((M/'S11c_d_defect_weak_ends_inputs.json').read_text())
-NAMES=('require','inherit_zero','cell_key','address_metadata_join','literal_field_joins','source_statement_join','verify_build_assessment','verify_helper_paths','verify_invocation')
+NAMES=('require','inherit_zero','cell_key','address_metadata_join','literal_field_joins','source_statement_join','verify_build_assessment','verify_helper_paths','verify_invocation','native_phase_exponent','control_eligible')
 ns={'ast':ast,'hashlib':hashlib,'Path':Path,'ROOT':Path('/var/projects/toy_physics'),'__file__':str(WORKER),'G':((0,0),(1,0),(0,1),(1,1)),
     'ROWS':('U0','U1','U2','THETA_BALANCE','E_W_BALANCE'),'FIELDS':('u_1','u_2','u_3','theta','e_W'),'ZERO':{'text':'0','srepr':'Integer(0)'}}
 tree=ast.parse(WORKER.read_text());nodes=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in NAMES]
@@ -85,6 +85,50 @@ class TestMetadata(unittest.TestCase):
   with self.assertRaises(ValueError):ns['literal_field_joins'](fid,FIELDS,cert,*v)
  def test_grade_triples(self):
   triples={tuple(tuple(a[k]) for k in ('consumerGrade','responseGrade','sourceGrade')) for a in ADDRESSES};self.assertEqual(len(triples),16)
+ def test_all_control_candidate_metadata(self):
+  counts={}
+  for kind in ('omit-height-contact','reverse-translation-phase','omit-lower-normal-sign'):
+   candidates=[a for a in ADDRESSES if ns['control_eligible'](a,kind)];self.assertTrue(candidates,kind);counts[kind]=len(candidates)
+   for a in candidates:self.assertEqual(a['status'],'FORMAL_ADDRESS_AVAILABLE_NONZERO_NOT_ASSERTED')
+  lower=next(a for a in ADDRESSES if a['addressId']==10062)
+  self.assertTrue(ns['control_eligible'](lower,'omit-lower-normal-sign'));self.assertEqual(lower['responseGrade'],[0,0])
+  height=next(a for a in ADDRESSES if a['addressId']==8034)
+  self.assertTrue(ns['control_eligible'](height,'reverse-translation-phase'))
+ def test_old_empty_selector_reproduced_without_algebra(self):
+  old=[a for a in ADDRESSES if a['face']=='minus' and a['slot']=='normal' and a['responseGrade']==[1,0]
+       and a['status']=='FORMAL_ADDRESS_AVAILABLE_NONZERO_NOT_ASSERTED']
+  self.assertEqual(old,[])
+  present=[a for a in ADDRESSES if a['face']=='minus' and a['slot']=='normal' and a['responseGrade']==[1,0]]
+  self.assertTrue(present);self.assertTrue(all(a['status']=='EXACT_ZERO_CONSUMER' for a in present))
+ def test_control_selector_rejects_wrong_slots_and_unknown(self):
+  a=copy.deepcopy(next(a for a in ADDRESSES if a['addressId']==10062));a['slot']='pressure'
+  self.assertFalse(ns['control_eligible'](a,'omit-lower-normal-sign'))
+  with self.assertRaises(ValueError):ns['control_eligible'](a,'invented-control')
+ def test_native_phase_binding_on_synthetic_coordinates(self):
+  conv=read('weak/new-weak-duality-and-order.json')['inheritedConvention']
+  b={'kout':(5,7,11),'kin':(2,7,11),'ko':(5,7,11),'ki':(2,7,11),'X':(3,4,5),'Y':(1,4,5)}
+  bind=ns['native_phase_exponent'];self.assertEqual(bind(conv['sourcePhase'],b,1),13)
+  self.assertEqual(bind(conv['profilePhase'],b,1),-3)
+  moved={**b,'X':(7,4,5),'Y':(5,4,5)}
+  self.assertEqual(bind(conv['sourcePhase'],moved,1)-bind(conv['sourcePhase'],b,1),12)
+  self.assertEqual(bind(conv['profilePhase'],b,-1),3)
+ def test_phase_grammar_rejects_new_functions(self):
+  for text in ['sp.exp(__import__("os"))','sp.exp(sp.sin(1))','sp.exp(1/2)','sp.exp(unknown)','sp.exp(1,2)']:
+   with self.assertRaises((ValueError,KeyError)):ns['native_phase_exponent'](text,{},1)
+ def test_native_zip_refuses_silent_truncation(self):
+  source=read('weak/new-weak-duality-and-order.json')['inheritedConvention']['sourcePhase']
+  b={'kout':(1,2),'kin':(1,2,3),'X':(1,2,3),'Y':(1,2,3)}
+  with self.assertRaises(ValueError):ns['native_phase_exponent'](source,b,1)
+ def test_reversed_phase_code_uses_both_derived_limits(self):
+  run=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='run_science');src=ast.get_source_segment(WORKER.read_text(),run)
+  self.assertIn('reversed_exponent=-translated_exponent',src)
+  self.assertIn("reversed_limits['minus'],limits['plus']",src);self.assertIn("reversed_limits['plus'],limits['minus']",src)
+  self.assertIn("base*rr['normal']*reversed_limits[side]*Bh",src)
+  self.assertIn("('minus','plus') if kind=='reverse-translation-phase'",src)
+ def test_proof_cache_groups_do_not_mix_grades(self):
+  groups={}
+  for a in ADDRESSES:groups.setdefault((a['fullFactorProof']['proof'],a['face'],a['slot']),set()).add(tuple(a['responseGrade']))
+  self.assertTrue(all(len(v)==1 for v in groups.values()))
  def test_no_science_at_module_level(self):
   for n in tree.body:
    if isinstance(n,ast.Import):self.assertTrue(all(x.name not in ('sympy','numpy','scipy') for x in n.names))

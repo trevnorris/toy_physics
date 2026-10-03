@@ -91,8 +91,10 @@ Every primitive and the sum must satisfy the unchanged method comparison
 
     |candidate-A48| <= 1e-9 + 1e-7 |A48|.
 
-Compare A24, physical adaptive B and A48T124. No cancellation may hide a failing
-primitive. B gets a global absolute empirical target 1e-11/(4*38) per primitive. It first
+Compare A24, physical adaptive B and A48T124. Persist all reference/candidate
+operands and component counts first. Empty comparisons and unequal vector
+lengths refuse before comparing every required index; no truncated prefix may
+pass. No cancellation may hide a failing primitive. B gets a global absolute empirical target 1e-11/(4*38) per primitive. It first
 evaluates all initial physical intervals, then refines the active leaf with
 the largest maximum component error. Each parent is replaced by its two
 physical half-interval children. Acceptance requires the actual sum of current
@@ -133,8 +135,14 @@ has modulus at least b. With |a|<=1, mu=3/10, W=1,L=10, conservative bounds are
     D_quadratic_tail <= (3/4)*121/b^2 * 2e^-T * (K^2+9).
 
 Each derives from its own numerator, with no cancellation. The direct tail is
-the sum. The saved H bound is (55/3)exp(-T). The worker uses the larger exact
-2^-T and requires every tail positive and <1e-11 before integration. These
+the sum. The existing H bound is (55/3)exp(-T). Its paired density has the
+absolute majorant (5/2)*2*121 exp(-t)/t = 605 exp(-t)/t. For t>=T>=33,
+integrating the exponential and using 1/t<=1/T gives at most
+(605/T)exp(-T) <= (55/3)exp(-T). The actual saved profile bound, factors,
+T and exact coefficient inequality are persisted before the T>=33 gate.
+This makes the existing constant's provenance explicit; it is not an evaluated
+response integral. The worker uses the larger exact 2^-T and requires every
+tail positive and <1e-11 before integration. These
 are absolute kernel-tail bounds in the saved reference coordinates, not a
 composed packet error or a flux uncertainty. Analytic inequalities are assessed
 mathematics; exact rational arithmetic alone is not a measure-theory proof.
@@ -142,11 +150,23 @@ mathematics; exact rational arithmetic alone is not a measure-theory proof.
 ## Controls, preservation and limits
 
 At the fixed nonzero point (kappa/5,2kappa/5), check three actual changes:
-omit the surviving H contact; replace reflected qs by qh in the actual direct
-reflected density at t=1/10; flip the lower native normal factor multiplying
-the completed whole direct integral. Persist baseline, mutation and movement
-before requiring finite absolute movement >1e-12. These are kernel/template
-sensitivity checks, not full addressed packet controls or independent physics.
+omit the surviving H contact from the actual A48 momentum assembly; replace
+reflected qs by qh in the actual direct reflected density at t=1/10; flip the
+lower native normal factor multiplying the completed whole direct integral.
+
+Both momentum H baselines call the same assembly routine. Retain the completed
+A48 integral part, its immutable quadrature record/selector, contact, actual
+baseline, exact Q and panel/rule/precision settings. The contact control calls
+that same assembly with the contact switch disabled on the identical completed
+integral, at its original precision. It does not rerun a quadrature or subtract
+a typed formula from physical route B. Persist both assembled values and their
+actual mutated-minus-baseline difference; the gate reads that difference. If
+the baseline assembly already omitted the contact, the mutation is silent and
+must refuse. The independently integrated physical product remains unchanged
+as H's reference. Synthetic tests exercise that silent-mutation refusal, not
+a physical response. Persist all three controls before requiring finite
+absolute movement >1e-12. These are kernel/template sensitivity checks, not
+full addressed packet controls or independent physics.
 
 Full numerical operands, open nodes, weights through rule receipts, values,
 root/shape operands, Jacobians, subdivisions, partial failed-panel prefixes and

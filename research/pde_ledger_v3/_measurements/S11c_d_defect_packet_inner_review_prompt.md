@@ -28,6 +28,17 @@ replacement and precision-stagnation refusal. Exact subdivision endpoints and
 the saved native profile-scale rule are explicit runtime joins. These are
 substantive numerical/validation changes; no peer report is supplied.
 
+The contact control now ablates the actual shared A48 momentum assembly using
+its completed integral part and original precision. Inspect full operands and
+immutable quadrature references: the gate must read mutant minus the actual
+baseline, with no completed-integral replay or typed subtraction from physical
+route B. A coordinated missing contact must cause silent-control refusal.
+Vector comparisons persist full operands/counts before refusing any empty or
+unequal-length request, then compare every index. Inspect the explicit H-tail
+coefficient argument 605/T<=55/3 for T>=33 against the saved profile bound.
+These are substantive validation corrections; all kernels, points, inputs,
+method, comparison tolerances, saved files and numerical routes are unchanged.
+
 Give one literal verdict: CLEAR FOR THIS PACKET-ACTION INNER BUILD or NEEDS
 REVISION. Identify substantive blockers with exact source lines/operands and
 required corrections. Separate optional improvements and coverage limitations.

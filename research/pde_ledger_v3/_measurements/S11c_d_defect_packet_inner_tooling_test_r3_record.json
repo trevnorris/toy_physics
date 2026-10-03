@@ -1,0 +1,19 @@
+{
+  "status": "STDLIB_METADATA_AND_SYNTHETIC_TESTS_PASSED",
+  "recordedUtc": "2026-10-03T20:48:18.222522+00:00",
+  "command": [
+    "python",
+    "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_tooling_tests.py"
+  ],
+  "exitCode": 0,
+  "tests": 45,
+  "reportedTestSeconds": 0.593,
+  "combinedToolOutput": ".............................................\n----------------------------------------------------------------------\nRan 45 tests in 0.593s\n\nOK\n",
+  "testSourceSha256": "1162d3410bf8936fdbc8cdec7c7d414e80edfb9cc78e88a4a31b7c7e66ed4bce",
+  "workerSha256": "eee0f6d19d1b0ad1552961f431ba1c2c5e7a58b487a7802d5c2e69971b24422c",
+  "librarySha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+  "manifestSha256": "d439edb5c6c763b35e761a1d9f65ca811201b07379e33b21f50d08983a68eba9",
+  "scientificImportsOrRestoration": false,
+  "newScientificOperations": 0,
+  "syntheticOnly": "Exact synthetic scalars exercise full vector comparison and actual shared H assembly control, including coordinated contact omission refusal without any quadrature; existing synthetic global-error and endpoint tests remain. No native kernel, scientific library or saved numerical restoration."
+}

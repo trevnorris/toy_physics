@@ -454,3 +454,22 @@ scalar provenance: 605/T <= 55/3 for T >= 33. Equations, original inputs,
 38 points, tolerances and completed work stay unchanged. This substantive
 control correction will receive independent assessment; local disposition is
 not paired clearance and no optional wording loop is authorized.
+
+
+The corrected validation passed **45** standard-library metadata/synthetic tests.
+Both momentum H baselines and the contact ablation now use the same assembly
+routine. The ablation reuses the exact completed A48 integral and gates on
+mutant minus actual baseline; a synthetic coordinated contact omission is
+refused. Empty/short/long comparisons preserve operands and fail before any
+numerical tolerance check. The existing H-tail domination now records its
+actual coefficient factors and T condition. Fourteen kernel, numerical-route
+and request function ASTs, all 312 saved files, inputs, method and tolerances
+are unchanged. These tests do not establish scientific accuracy.
+
+The necessary corrected independent review packet is frozen: **383 files,
+41,707,167 bytes**, packet SHA256
+`cca98ef5cdd1ed47052726eaa6b5e1e70e0a07a6efe68fe554dcc50cbd385122`,
+archive SHA256
+`636f1e3f940aad47b564059e883ffc09a03d5a223d1d2db159cb7eda4a179ad9`.
+No peer reports are included. Prior literal CLEAR/NEEDS and exact reviewed
+bytes remain at **75b2daf1**. No scientific run or READY gate exists.

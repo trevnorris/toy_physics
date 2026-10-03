@@ -183,6 +183,11 @@ def run_science(m,J,ns):
     Jtail=sp.Rational(9,40)*121/b**3*2*ex*(T*T+2*T+2+3*K*(T+1)+2*K*K)
     Dref=sp.Rational(3,4)*121/b**2*2*ex*K*(T+1+2*K)
     Dquad=sp.Rational(3,4)*121/b**2*2*ex*(K*K+9)
+    # Two profile products, each <=121 exp(-t), in 5/(2t) times
+    # their difference. For t>=T>=33, integrate exp(-t)/t using 1/t<=1/T.
+    Hcoeff=sp.Rational(5,2)*2*121;Hdeclared=sp.Rational(55,3)
+    J.emit('new-H-tail-domination',{'actualProfileBound':raw['preflight/saved-global-bound-inputs.json']['profile'],'pairedDensityCoefficient':sp.Rational(5,2),'absoluteProductCount':2,'productCoefficient':121,'densityCoefficient':Hcoeff,'T':T,'integratedCoefficientUpper':Hcoeff/T,'declaredCoefficient':Hdeclared,'minimumT':33,'inequalities':['|paired H density| <= 605 exp(-t)/t','integral_T^infinity exp(-t)/t dt <= exp(-T)/T','T>=33 implies 605/T<=55/3','exp(-T)<=2^-T'],'assessedAnalyticInequalities':True,'evaluatedIntegral':False})
+    require(T>=33 and Hcoeff/T<=Hdeclared,'H tail coefficient domination')
     tails={'J':Jtail,'Dreflected':Dref,'Dheight':Dref,'Dquadratic':Dquad,'Dsum':2*Dref+Dquad,'H':sp.Rational(55,3)*ex}
     J.emit('new-inner-tail-certificates',{'K':K,'T':T,'b':b,'actualBounds':raw['preflight/saved-global-bound-inputs.json'],'tails':tails,'inequalities':['T>=K+4, kappa<3 imply both internal depth moduli>1 outside |t|<=T','quadrant |qh+qi|>=|qh| and >=|qi|; each q+beta has modulus>=b','J uses (|t|+K)(|t|+2K); direct uses SUM K(|t|+2K),K(|t|+2K),K^2+9','2^-T overestimates exp(-T), with exact polynomial exponential-tail moments'],'evaluatedIntegral':False,'noCancellationPaysTail':True})
     require(T>=K+4 and all(v.is_positive is True and v<sp.Rational(1,10**11) for v in tails.values()),'positive per-component tail certificates')

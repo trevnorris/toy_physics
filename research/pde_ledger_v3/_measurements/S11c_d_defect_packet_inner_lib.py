@@ -60,12 +60,18 @@ def kernel_components(k,l,t,qi,qo,qh,qs,A1,A2,a,mu,beta,W,L,I):
     return [J,reflected,height,quadratic]
 
 
+def assemble_H(integral,contact,include_contact=True):
+    """The same momentum assembly supplies the baseline and contact ablation."""
+    require(type(include_contact)==bool,'literal contact switch')
+    return integral+contact if include_contact else integral
+
+
 class InnerEvaluator:
     def __init__(self,store,oldlib,rules):
         import mpmath
         self.A=mpmath.mp.clone();self.A.dps=30
         self.B=mpmath.mp.clone();self.B.dps=50
-        self.store=store;self.encode=oldlib.encode;self.cache={};self.rules={}
+        self.store=store;self.encode=oldlib.encode;self.cache={};self.rules={};self.Hmomentum={}
         for order in [24,48]:
             r=rules['A-GL'+str(order)];c=self.A
             self.rules[order]=([self.restore(c,v) for v in r['nodes']],[self.restore(c,v) for v in r['weights']])
@@ -205,16 +211,30 @@ class InnerEvaluator:
         require(all(e<=budget for e in error),'global empirical budget');return total
 
     def compare(self,key,reference,candidates):
-        c=self.B;ref=[c.make_mpc(v._mpc_) if hasattr(v,'_mpc_') else c.make_mpf(v._mpf_) for v in reference]
+        c=self.B
+        self.emit(c,key+'/operands',{'reference':reference,'candidates':candidates,'referenceComponents':len(reference),'candidateComponents':{name:len(v) for name,v in candidates.items()}})
+        require(len(reference)>0 and bool(candidates),'nonempty comparison vectors')
+        require(all(len(v)==len(reference) for v in candidates.values()),'complete comparison component counts')
+        ref=[c.make_mpc(v._mpc_) if hasattr(v,'_mpc_') else c.make_mpf(v._mpf_) for v in reference]
         comparisons=[]
         for label,vals in candidates.items():
-            for i,(a,b) in enumerate(zip(ref,vals)):
+            for i in range(len(ref)):
+                a,b=ref[i],vals[i]
                 value=c.make_mpc(b._mpc_) if hasattr(b,'_mpc_') else c.make_mpf(b._mpf_)
                 tolerance=c.mpf('1e-9')+c.mpf('1e-7')*abs(a);delta=abs(value-a)
                 comparisons.append({'route':label,'component':i,'reference':a,'other':value,'difference':delta,'tolerance':tolerance,'passed':bool(delta<=tolerance)})
         receipt=self.emit(c,key,comparisons)
         require(all(x['passed'] for x in comparisons),'unchanged numerical comparison miss; no retry')
         return receipt
+
+    def H_contact_control(self,point,Qcoeff):
+        Qcoeff=str(F(Qcoeff));c=self.A;saved=self.Hmomentum[Qcoeff]
+        # Use the completed integral at its original precision; no quadrature
+        # replay and no subtraction from the independent physical-x route.
+        mutated=assemble_H(saved['integral'],saved['contact'],False)
+        baseline=saved['baseline'];movement=mutated-baseline
+        self.emit(c,'controls/H-contact',{'point':point,'exactQCoefficient':Qcoeff,'savedMomentum':saved,'baseline':baseline,'mutated':mutated,'movement':movement,'includeContact':False,'completedIntegralReused':True,'newQuadratureCalls':0})
+        require(c.isfinite(baseline) and c.isfinite(mutated) and c.isfinite(movement) and abs(movement)>c.mpf('1e-12'),'responsive H-contact control')
 
     def H(self,Qcoeff):
         Qcoeff=str(F(Qcoeff))
@@ -231,8 +251,13 @@ class InnerEvaluator:
             n=int(c.ceil(2*(b-a)));p=partition_interval(a,b,n);panels.extend(zip(p,p[1:]))
         contact=5*self.profile(c,Q)/4
         self.emit(c,key+'/input',{'QCoefficient':Qcoeff,'Q':Q,'T':T,'panels':panels,'contact':contact})
-        a24=[contact+self.gauss(key+'/A24',c,panels,fa,24)[0]]
-        a48=[contact+self.gauss(key+'/A48',c,panels,fa,48)[0]]
+        integral24=self.gauss(key+'/A24',c,panels,fa,24)[0]
+        integral48=self.gauss(key+'/A48',c,panels,fa,48)[0]
+        a24=[assemble_H(integral24,contact)]
+        a48=[assemble_H(integral48,contact)]
+        momentum={'exactQCoefficient':Qcoeff,'Q':Q,'T':T,'precision':30,'order':48,'integral':integral48,'contact':contact,'baseline':a48[0],'includeContact':True,'integralRecord':key+'/A48/return','integralSelector':'value[0]','panelInputRecord':key+'/input'}
+        momentumReceipt=self.emit(c,key+'/momentum-assembly',momentum)
+        self.Hmomentum[Qcoeff]={**momentum,'assemblyReceipt':momentumReceipt}
         c=self.B;Q=self.rat(c,Qcoeff)*c.sqrt(595)/10;trials=[]
         for m in range(1,4097):
             R=c.mpf(10*m);tail=10/(4*c.pi)*c.exp(-2*R/10);trials.append({'R':R,'tail':tail})
@@ -246,8 +271,7 @@ class InnerEvaluator:
         b=self.adaptive(key+'/B',c,panels,fb,c.mpf('1e-11')/(4*38))
         analytic=[5*self.profile(c,Q)*(c.mpf(1)/4-10*c.j*Q/8)]
         compare=self.compare(key+'/comparison',a48,{'A24':a24,'Bphysical':b,'analyticProduct':analytic})
-        omission=-5*self.profile(c,Q)/4
-        receipt=self.emit(c,key+'/complete',{'A24':a24,'A48':[self.B.make_mpc(a48[0]._mpc_)],'B':b,'analyticProduct':analytic,'comparison':compare,'contactOmissionMovement':omission,'tTailBound':c.mpf(55)/3*c.power(2,-T)})
+        receipt=self.emit(c,key+'/complete',{'A24':a24,'A48':[self.B.make_mpc(a48[0]._mpc_)],'B':b,'analyticProduct':analytic,'comparison':compare,'momentumAssembly':momentumReceipt,'tTailBound':c.mpf(55)/3*c.power(2,-T)})
         self.cache[Qcoeff]=(b[0],receipt);return self.cache[Qcoeff]
 
     def run(self,plan):
@@ -277,8 +301,6 @@ class InnerEvaluator:
                 self.emit(c,'controls/lower-normal',{'point':point,'baseline':normal['minus'][1],'mutated':-normal['minus'][1],'movement':normalMove,'wholeDirectValue':results['B'][-1]})
                 require(c.isfinite(movement) and abs(movement)>c.mpf('1e-12'),'responsive reflected-root control')
                 require(c.isfinite(normalMove) and abs(normalMove)>c.mpf('1e-12'),'responsive lower-normal control')
-                Q=l-k;omission=-5*self.profile(c,Q)/4
-                self.emit(c,'controls/H-contact',{'point':point,'baseline':H,'mutated':H+omission,'movement':omission})
-                require(c.isfinite(omission) and abs(omission)>c.mpf('1e-12'),'responsive H-contact control')
+                self.H_contact_control(point,F(point['l'])-F(point['k']))
         self.store.put('complete-point-receipts',summaries)
         return {'points':len(summaries),'distinctHRequests':len(self.cache),'exactHReuses':self.reuses,'controls':3}

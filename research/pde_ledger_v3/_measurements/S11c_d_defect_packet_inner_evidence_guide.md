@@ -10,6 +10,10 @@ cut metadata, restored-rule transport and two independent quadrature routes.
 Its physical adaptive route uses global componentwise active-leaf error sums
 and largest-error refinement; complete replacements and totals are persisted.
 The actual native scale operand is saved/inventory/native-profile-scale-join.json.
+The actual A48 H assembly and its disabled-contact call share one function and
+one completed integral; their saved difference drives the control. Component
+count guards precede every comparison. The H-tail certificate records the two
+profile products, the paired coefficient and T>=33 domination explicitly.
 original-fourier-library.py is reused only for storage/encoding; its evaluator
 and rule constructors are never called. launcher.py is inert until a fresh
 pinned READY gate, with unchanged guarded no-deadline resources and hook first.

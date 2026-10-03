@@ -1,0 +1,16 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-03T20:48:19.730355+00:00",
+  "packetSha256": "cca98ef5cdd1ed47052726eaa6b5e1e70e0a07a6efe68fe554dcc50cbd385122",
+  "archiveSha256": "636f1e3f940aad47b564059e883ffc09a03d5a223d1d2db159cb7eda4a179ad9",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 383,
+  "bytes": 41707167,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing AGENTS permission for necessary fixed source/evidence packets to established Claude/Grok within ongoing authorized research. This is a concrete inner-kernel prerequisite of the cleared two-packet method. No routine approval needed.",
+  "scope": "Only 38 fixed H/J/direct inner kernel points, physical H reference, exact native joins and conditional inner tails; no outer packet value, inverse, current or loss.",
+  "noAutomaticRetry": true
+}

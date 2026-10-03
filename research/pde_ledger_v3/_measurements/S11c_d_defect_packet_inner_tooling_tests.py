@@ -20,6 +20,70 @@ class FakeContext:
     @staticmethod
     def fsum(values):return sum(values,F(0))
 
+class ToyComparisonContext:
+    # Synthetic exact scalars; no MP tuples or scientific payload restored.
+    mpf=staticmethod(F)
+    make_mpf=staticmethod(lambda v:v)
+    isfinite=staticmethod(lambda v:isinstance(v,F))
+
+class ToyNumber:
+    def __init__(self,value):self._mpf_=F(value)
+
+class ValidationTests(unittest.TestCase):
+    def comparison(self,reference,candidates):
+        obj=object.__new__(L['InnerEvaluator']);obj.B=ToyComparisonContext();self.records=[]
+        obj.emit=lambda c,n,v:self.records.append((n,v))
+        return obj.compare('toy',reference,candidates)
+    def test_compare_short_candidate_preserved_and_refused(self):
+        with self.assertRaisesRegex(ValueError,'component counts'):
+            self.comparison([ToyNumber(1),ToyNumber(2)],{'short':[ToyNumber(1)]})
+        self.assertEqual(self.records[0][1]['candidateComponents'],{'short':1})
+        self.assertEqual(len(self.records),1)
+    def test_compare_long_candidate_preserved_and_refused(self):
+        with self.assertRaisesRegex(ValueError,'component counts'):
+            self.comparison([ToyNumber(1)],{'long':[ToyNumber(1),ToyNumber(2)]})
+        self.assertEqual(self.records[0][1]['referenceComponents'],1)
+    def test_compare_empty_candidates_refused(self):
+        with self.assertRaisesRegex(ValueError,'nonempty'):self.comparison([ToyNumber(1)],{})
+        self.assertEqual(self.records[0][1]['candidates'],{})
+    def test_compare_empty_reference_refused(self):
+        with self.assertRaisesRegex(ValueError,'nonempty'):self.comparison([],{'empty':[]})
+    def test_compare_all_five_components(self):
+        self.comparison([ToyNumber(i) for i in range(5)],{'toy':[ToyNumber(i) for i in range(5)]})
+        self.assertEqual([r['component'] for r in self.records[-1][1]],list(range(5)))
+    def test_compare_last_component_miss_preserved(self):
+        with self.assertRaisesRegex(ValueError,'numerical comparison miss'):
+            self.comparison([ToyNumber(i) for i in range(5)],{'toy':[ToyNumber(i) for i in [0,1,2,3,9]]})
+        self.assertFalse(self.records[-1][1][-1]['passed'])
+    def test_shared_contact_assembly_literal_switch(self):
+        f=L['assemble_H'];self.assertEqual(f(F(7),F(3)),10);self.assertEqual(f(F(7),F(3),False),7)
+        for switch in [0,1,None,'false']:
+            with self.assertRaises(ValueError):f(F(7),F(3),switch)
+    def contact_control(self,baseline,contact=F(3)):
+        obj=object.__new__(L['InnerEvaluator']);obj.A=ToyComparisonContext();self.records=[]
+        saved={'integral':F(7),'contact':contact,'baseline':baseline,'assemblyReceipt':{'record':'toy/assembly'},'integralRecord':'toy/return'}
+        obj.Hmomentum={'1/5':saved};obj.emit=lambda c,n,v:self.records.append((n,v))
+        # No gauss/adaptive context exists: any integral replay fails this test.
+        obj.H_contact_control({'label':'toy'},'2/10');return saved
+    def test_contact_ablation_uses_saved_assembly(self):
+        saved=self.contact_control(L['assemble_H'](F(7),F(3)))
+        r=self.records[-1][1];self.assertIs(r['savedMomentum'],saved)
+        self.assertEqual((r['baseline'],r['mutated'],r['movement']),(10,7,-3));self.assertEqual(r['newQuadratureCalls'],0)
+    def test_contact_already_absent_in_baseline_refuses(self):
+        # A coordinated missing contact gives identical baseline and mutant.
+        with self.assertRaisesRegex(ValueError,'responsive H-contact'):self.contact_control(F(7))
+        self.assertEqual(self.records[-1][1]['movement'],0)
+    def test_contact_zero_movement_refuses(self):
+        with self.assertRaisesRegex(ValueError,'responsive H-contact'):self.contact_control(F(7),F(0))
+    def test_momentum_baselines_and_mutation_share_assembly(self):
+        tree=ast.parse((M/(P+'_lib.py')).read_text())
+        h=next(n for n in ast.walk(tree) if isinstance(n,ast.FunctionDef) and n.name=='H')
+        calls=[n for n in ast.walk(h) if isinstance(n,ast.Call) and ast.unparse(n.func)=='assemble_H']
+        self.assertEqual(len(calls),2)
+        control=next(n for n in ast.walk(tree) if isinstance(n,ast.FunctionDef) and n.name=='H_contact_control')
+        calls={ast.unparse(n.func) for n in ast.walk(control) if isinstance(n,ast.Call)}
+        self.assertIn('assemble_H',calls);self.assertFalse(calls&{'self.gauss','self.adaptive','self.profile','self.H'})
+
 class MetadataTests(unittest.TestCase):
     def test_declared_point_census(self):
         p=L['point_plan']();self.assertEqual(len(p),38);self.assertEqual(len({(x['k'],x['l']) for x in p}),38)

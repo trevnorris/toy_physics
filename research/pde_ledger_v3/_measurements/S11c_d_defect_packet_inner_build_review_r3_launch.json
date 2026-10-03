@@ -1,0 +1,83 @@
+{
+  "status": "INDEPENDENT_CORRECTED_INNER_BUILD_REVIEWS_RUNNING",
+  "recordedUtc": "2026-10-03T20:49:35.353359+00:00",
+  "buildCommit": "f509899b",
+  "packetSha256": "cca98ef5cdd1ed47052726eaa6b5e1e70e0a07a6efe68fe554dcc50cbd385122",
+  "archiveSha256": "636f1e3f940aad47b564059e883ffc09a03d5a223d1d2db159cb7eda4a179ad9",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/inner-build-review-r3",
+  "launch": {
+    "jobPid": 566840,
+    "watcherPid": 566841,
+    "packetSha256": "cca98ef5cdd1ed47052726eaa6b5e1e70e0a07a6efe68fe554dcc50cbd385122",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hookStatus": "waiting",
+  "reviewers": {
+    "claude": {
+      "pid": 566854,
+      "sessionId": "deb02cae-8911-4d50-a792-b255e9beb5b1",
+      "runReceipt": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/inner-build-review-r3/claude-run.json",
+      "actualCommand": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "--disable-slash-commands",
+        "--session-id",
+        "deb02cae-8911-4d50-a792-b255e9beb5b1"
+      ],
+      "privateFilesChecked": 383,
+      "startedUtc": "2026-10-03T20:49:05.790101+00:00",
+      "status": "RUNNING_NO_REPORT_READ"
+    },
+    "grok": {
+      "pid": 566853,
+      "sessionId": "5cf8873f-1f5a-4824-99ba-bf0723eac585",
+      "runReceipt": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/inner-build-review-r3/grok-run.json",
+      "actualCommand": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/inner-build-review-r3/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/inner-build-review-r3/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "5cf8873f-1f5a-4824-99ba-bf0723eac585"
+      ],
+      "privateFilesChecked": 383,
+      "startedUtc": "2026-10-03T20:49:05.789960+00:00",
+      "status": "RUNNING_NO_REPORT_READ"
+    }
+  },
+  "scienceCalls": 0,
+  "readyGateExists": false,
+  "automaticRetry": false
+}

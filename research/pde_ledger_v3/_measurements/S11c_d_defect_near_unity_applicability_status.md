@@ -432,3 +432,25 @@ copies were checked once. No partial report was read and no scientific worker
 was launched. The unchanged event hook will request adjudication after both
 attempts finish, without model polling. Startup receipts are in
 `S11c_d_defect_packet_inner_build_review_r2_launch.json`.
+
+
+## 2026-10-03 — corrected inner review: actual control and completeness gaps
+
+Both corrected independent reviews finished: **Claude CLEAR FOR THIS
+PACKET-ACTION INNER BUILD / Grok NEEDS REVISION**. The 3,016 packet, archive,
+private-source, receipt and hook checks passed. Claude stderr was empty;
+Grok's 6,631-byte CLI stderr includes twelve read-file errors, followed by a
+complete delivered verdict. Exact reviewed bytes and both literal reports are
+preserved. No scientific run or READY gate exists.
+
+Both support the global adaptive allocation, exact endpoints and native scale
+join. Two remaining validation findings are accepted: the H-contact control
+must gate on the actual momentum-route assembly with its contact disabled,
+using the identical completed integral, and every route must have the full
+component count before numerical comparison. The current call paths return
+complete vectors; no missing numerical component or scientific failure is
+established. The H tail's existing 55/3 constant will also receive explicit
+scalar provenance: 605/T <= 55/3 for T >= 33. Equations, original inputs,
+38 points, tolerances and completed work stay unchanged. This substantive
+control correction will receive independent assessment; local disposition is
+not paired clearance and no optional wording loop is authorized.

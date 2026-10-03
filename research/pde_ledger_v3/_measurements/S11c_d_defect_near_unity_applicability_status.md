@@ -299,3 +299,7 @@ The frozen 895-file / 42,869,478-byte packet has SHA256
  db6a3455d69f88267c5bddddc3159d1f41465b6fc3011cd6b656d80192d4be97.
 This finite request bank cannot replace comparisons at every future actual
 argument or the complete-action controls. No numerical worker is READY yet.
+The fixed Fourier build was submitted from bbaee435. Both actual reviewer
+commands were verified running on the host, with all 895 private files per
+reviewer and 889 source pins intact. The local hook is armed for this session;
+no unfinished report was read or shared. Review waiting uses no model polling.

@@ -1,0 +1,153 @@
+{
+  "status": "BOTH_INDEPENDENT_BUILD_REVIEWERS_STARTED_HOOK_ARMED",
+  "recordedUtc": "2026-10-03T17:44:06.686462+00:00",
+  "preparedCommit": "bbaee435",
+  "packetSha256": "db6a3455d69f88267c5bddddc3159d1f41465b6fc3011cd6b656d80192d4be97",
+  "archiveSha256": "533cd9acdbe340f0c350af760c1dbe72597b93ae389372d01e29e978dbab10b7",
+  "launch": {
+    "jobPid": 511467,
+    "watcherPid": 511468,
+    "packetSha256": "db6a3455d69f88267c5bddddc3159d1f41465b6fc3011cd6b656d80192d4be97",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hookStatus": "waiting",
+  "hostProcessEvidence": {
+    "coordinator": {
+      "pid": 511467,
+      "argv": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-build-review/review_run.py"
+      ],
+      "hostExists": true
+    },
+    "watcher": {
+      "pid": 511468,
+      "argv": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/codex_job_watch.py",
+        "--pid",
+        "511467",
+        "--thread",
+        "01a0e01b-ef84-7192-817f-584cda5d339b",
+        "--directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-build-review/completion-watcher",
+        "--message-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-build-review/completion_message.txt",
+        "--error-log",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-build-review/issues.log"
+      ],
+      "hostExists": true
+    },
+    "claude": {
+      "pid": 511499,
+      "sessionId": "dc577527-dd01-40f0-aa5b-fd9cea49512f",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "dc577527-dd01-40f0-aa5b-fd9cea49512f"
+      ],
+      "actualArgv": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "dc577527-dd01-40f0-aa5b-fd9cea49512f"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-build-review/claude/work",
+      "noReportRead": true
+    },
+    "grok": {
+      "pid": 511498,
+      "sessionId": "b051c499-4cf5-4e8f-b042-7267ec35f461",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-build-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-build-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "b051c499-4cf5-4e8f-b042-7267ec35f461"
+      ],
+      "actualArgv": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-build-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-build-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "b051c499-4cf5-4e8f-b042-7267ec35f461"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-build-review/grok/work",
+      "noReportRead": true
+    }
+  },
+  "privateFilesChecked": {
+    "claude": 895,
+    "grok": 895
+  },
+  "sourcePinsChecked": 889,
+  "newScientificExecutions": 0,
+  "reportsReadOrShared": false,
+  "noDeadline": true,
+  "noAutomaticRetry": true,
+  "completionHookContinuesExistingSession": "01a0e01b-ef84-7192-817f-584cda5d339b"
+}

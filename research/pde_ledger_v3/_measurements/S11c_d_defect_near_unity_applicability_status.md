@@ -595,3 +595,5 @@ existing completion hook,4GiB native/cgroup within16GiBpool,zero swap,oneCPU/thr
 32tasks,4GiBhostreserve and no deadlines. Actual runtime operand/unit/numerical
 controls and evidence inspection remain required. No pressure or complete packet
 value, current or loss is claimed.
+
+The local-01 run is launched from f262339d. Actual guard/supervisor/native commands and limits were verified, including133source snapshots and18additionalidentitycopies,4GiB native/cgroup,zero swap,CPU15,one thread,32tasks,RuntimeMaxUSec=infinity,Restart=no. Hook armed before stage start. No runtime result is accepted yet; no model polling while healthy.

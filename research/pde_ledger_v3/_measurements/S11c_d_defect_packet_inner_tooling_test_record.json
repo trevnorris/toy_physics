@@ -1,0 +1,19 @@
+{
+  "status": "STDLIB_METADATA_AND_SYNTHETIC_TESTS_PASSED",
+  "recordedUtc": "2026-10-03T19:31:20.594670+00:00",
+  "command": [
+    "python",
+    "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_tooling_tests.py"
+  ],
+  "exitCode": 0,
+  "tests": 26,
+  "reportedTestSeconds": 0.572,
+  "combinedToolOutput": "..........................\n----------------------------------------------------------------------\nRan 26 tests in 0.572s\n\nOK\n",
+  "testSourceSha256": "4d1e9097cf8611fb038c7e1aaf3716e5a5056e2dfd35338a80b4365af80cc114",
+  "workerSha256": "82cb6bc2fc8eae7339658aad973c1cf575c4702b6df7d0ab6ad13b971c2face1",
+  "librarySha256": "efc10abea58bc4b379effcd68053197151979fcfdb9b6782796e061c4acd771e",
+  "manifestSha256": "e6c30f08305b63acc46daac6c50c5a0ce58478ed9cb6c86cc5cbdd2d75ff9a96",
+  "scientificImportsOrRestoration": false,
+  "newScientificOperations": 0,
+  "syntheticOnly": "Fraction-valued constant toy integration tests routing and failed-panel persistence; no native kernel called."
+}

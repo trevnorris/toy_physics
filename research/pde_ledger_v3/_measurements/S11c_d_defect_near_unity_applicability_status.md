@@ -389,3 +389,24 @@ PIDs and both private 383-file copies were checked once. No unfinished report
 was read, no scientific worker launched and no READY gate created. The local
 completion hook will request adjudication after both attempts finish; waiting
 does not invoke the model. See `S11c_d_defect_packet_inner_build_review_launch.json`.
+
+## 2026-10-03 — inner build review found a numerical allocation blocker
+
+Both independent attempts finished. The literal verdicts are **Claude NEEDS
+REVISION / Grok CLEAR FOR THIS PACKET-ACTION INNER BUILD**. All 3,016 packet,
+archive, original/private source, receipt and hook checks passed. Claude stderr
+was empty; Grok's 6,317-byte CLI stderr includes plugin/hook diagnostics and 11
+read-file errors, followed by a complete delivered final report. Those records
+are preserved. No science or execution gate exists.
+
+Claude's substantive finding is accepted: on an inverse-square-root endpoint,
+the embedded quadrature error falls like the square root of the interval width,
+while the current per-leaf allowance halves with width. Refining that leaf can
+therefore fail to reach its allowance. The correction will keep Route B in the
+physical variable but allocate its unchanged empirical target over the global
+sum of active leaves, refining the largest error. This requires assessment of
+the changed numerical algorithm; it is not a physics failure or a scientific
+retry. Exact panel endpoints and the actual saved native profile-scale rule
+will also be joined explicitly. The formulas, fixed points, physical inputs,
+completed results and numerical tolerances remain unchanged. No optional
+wording loop or author clearance is claimed.

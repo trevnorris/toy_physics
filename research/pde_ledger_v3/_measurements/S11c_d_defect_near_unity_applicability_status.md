@@ -153,6 +153,18 @@ private packet files per reviewer match the frozen hashes. No reports have
 been read early or shared, and no scientific execution is enabled. The local
 hook will resume joint assessment after completion/error; no model polling.
 
+The first packet-action method pair has now delivered literal Claude NEEDS
+REVISION / Grok CLEAR FOR THIS BOUNDED PACKET-ACTION METHOD. All 251 inspection
+checks passed, including frozen archive, both private source trees, original
+metadata projections and receipts; both reports declare partial coverage.
+There is no paired method clearance or numerical result. The needed amendment
+specifies outer integration cuts where the moving middle endpoints coincide:
+k+l=0,+/-2*kappa, together with external grazing and k=l. The collision geometry
+is valid, but the report's suggested logarithmic pinch is not established:
+the saved direct density is a sum of the two root routes, and J has only the
+middle route. Preserve the original reports literally and assess the corrected
+numerical prescription independently before building a worker. No science ran.
+
 Independent preparation at 0798c4b5 mapped the legacy Gaussian/matrix route and
 verified 131 selected opaque input/return receipts. It is preparation only:
 old cs10 arrays do not validate the corrected near-unity operator, and no

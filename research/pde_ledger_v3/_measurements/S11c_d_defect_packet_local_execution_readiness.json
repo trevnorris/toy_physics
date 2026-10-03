@@ -1,0 +1,65 @@
+{
+  "status": "PINNED_READY_FOR_ONE_GUARDED_LOCAL_PACKET_ACTION",
+  "createdUtc": "2026-10-03T23:49:38.188352+00:00",
+  "gate": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_gate.json",
+  "gateSha256": "2d1642f7a178df303ccb5894e90c013a4676bfc4a6135327529d4ed54a5de9f5",
+  "reviewCommit": "abc6c012",
+  "buildCommit": "ba956761",
+  "sourcePinsChecked": 131,
+  "additionalIdentityCopies": 18,
+  "additionalIndexSha256": "bb585a974c117049f1b667c6201210d4fda8e7dfcb079234bbd1c1cb07b1287a",
+  "actualLauncherVerifyPassed": true,
+  "scientificImportsOrRestoration": false,
+  "workerLaunched": false,
+  "noDeadline": true,
+  "scienceRunsAuthorized": 1,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "automaticRetry": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Two local Gaussian weak actions from16saved native cells; pressure/full action pending",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": false,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "noCompletePacketAction": true,
+    "localActions": 2,
+    "noPressureAction": true
+  },
+  "remainingBeforeResultAcceptance": [
+    "Actual guard no-deadline/resource enforcement and supervisor invocation",
+    "Every original cell/child/unit/summand, actual certificate match/components and numeric adapter argument",
+    "All local node/panel/tail/reference/comparison/control operands and returns",
+    "Strict stderr and stdout/checks identity",
+    "All source/copy/additional-identity posthashes",
+    "No pressure/full packet action/current/loss or uniform quadrature error claim from local values"
+  ]
+}

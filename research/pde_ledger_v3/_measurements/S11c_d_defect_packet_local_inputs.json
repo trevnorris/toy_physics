@@ -489,9 +489,9 @@
     "local/batches/THETA_BALANCE-local-batch-023-return.json"
   ],
   "sourcePins": {
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local.py": "1edd55f9ad0def1439413795f0ccf937dbc824f28ef80918797e53fabe060844",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_launch.py": "addb4b7ba5f46b484da477e77e39ef033b3c6553b9fa0d46a999647116f93297",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_lib.py": "c0bfd256e4a054be9f18864600ea962d650bc0af601bc290ad26c642308c8e44",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local.py": "f4d052a98f549f0c274787d67871ae093fec16552d5b524108ee385fa3e403b8",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_launch.py": "8f6e31766391068abce099771028c3118c95c9504f83bc4ca702f07419ae4469",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_lib.py": "f04df93c0bc80acae3715fb2219321d88f08cfd26c30f3be1de20e06847eb3f0",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_lib.py": "8541ed87d588888daf642ff632ecf0a5780c8f4a47db7a3a53d50b2c36941fe0",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
@@ -626,5 +626,6 @@
     "32 cell/carrier records including exact zeros; new local scalar integrals only",
     "Gaussian moment tails and constant analytic references, independent quadrature and actual local controls"
   ],
-  "pressureWorkInherited": "No pressure work is called or recomputed; pressure action remains pending"
+  "pressureWorkInherited": "No pressure work is called or recomputed; pressure action remains pending",
+  "localToolingRepairRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_tooling_repair_record.json"
 }

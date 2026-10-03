@@ -59,11 +59,18 @@ def verify_gate(path,manifest_path,m):
         require(sha(g[key])==g[key+'Sha256'],'gate '+key)
     require(g['launcher']==m['launcher'] and g['buildReviewRecord']==m['reviewRecordWillBe'] and g['authority']==m['executionAuthority'],'exact document routes')
     r=json.loads(Path(g['buildReviewRecord']).read_text())
-    require(r['independentBuildClearance'] is True and r['allChecksPassed'] is True,'actual substantive build assessment')
-    for e in ('claude','grok'):
-        require(r['reports'][e]['literalVerdict']=='CLEAR FOR THIS PACKET-ACTION LOCAL BUILD','literal build report')
-    for key in ('workerSha256','manifestSha256','sharedGuardSha256','supervisorSha256','launcherSha256'):
-        require(r[key]==g[key],'review/gate '+key)
+    require(r['independentBuildClearance'] is False and g['independentBuildClearance'] is False and r['allChecksPassed'] is True,'honest literal build disposition')
+    require(r['reports']['claude']['literalVerdict']=='NEEDS REVISION' and
+        r['reports']['grok']['literalVerdict']=='CLEAR FOR THIS PACKET-ACTION LOCAL BUILD','literal source reports')
+    require(g['localToolingRepairRecord']==m['localToolingRepairRecord'] and
+        sha(g['localToolingRepairRecord'])==g['localToolingRepairRecordSha256'],'exact tooling record')
+    repair=json.loads(Path(g['localToolingRepairRecord']).read_text())
+    require(g['localToolingExecutionAuthority'] is True and repair['localToolingExecutionAuthority'] is True and
+        repair['independentBuildClearance'] is False and repair['testsPassed'] is True,'standing tested tooling authority, not author CLEAR')
+    for key in ('workerSha256','manifestSha256','librarySha256','launcherSha256'):
+        require(repair['reviewed'][key]==r[key] and repair['current'][key]==g[key],'review/repair/gate '+key)
+    for key in ('sharedGuardSha256','supervisorSha256'):
+        require(r[key]==g[key],'unchanged containment '+key)
     method=json.loads(Path(m['methodRecord']).read_text())
     require(method['jointIndependentMethodClearance'] is True and method['methodSha256']==sha(m['methodPath'])==r['methodSha256'],'exact method')
     a=json.loads(Path(g['authority']).read_text())
@@ -78,6 +85,19 @@ def verify_invocation(args,g,argv):
     require(list(argv)==tail and g['command'][-len(tail):]==tail,'worker argv')
     require(args.out.resolve()==Path(g['outputDirectory']).resolve(),'output route')
 
+
+
+def certificate_match_indices(coefficients,certificates):
+    """Exact saved-value multiset matching; list order is not scientific content."""
+    require(len(coefficients)==len(certificates),'coefficient/certificate multiplicity')
+    require(all(v['finite'] is True for v in certificates),'all coefficient certificates finite')
+    remaining=list(range(len(certificates)));indices=[]
+    for coefficient in coefficients:
+        matches=[i for i in remaining if certificates[i]['value']==coefficient['value']]
+        require(bool(matches),'missing exact coefficient certificate')
+        index=matches[0];remaining.remove(index);indices.append(index)
+    require(not remaining,'unused certificate')
+    return indices
 
 
 def dimension_of(expr,dimensions):
@@ -154,8 +174,15 @@ def run_science(m,J,ns):
             expect=tuple(rowunit[i]-fieldunit[i]+(ev['xOrder'] if i==0 else 0) for i in range(3))
             J.emit('new-unit-child-'+str(ev['childIndex']),{'originalChild':ev,'rawCoefficientUnit':d0,'savedWaveUnit':waveunit,'mappedCoefficientUnit':mapped,'expected':expect,'rowUnit':rowunit,'noCoefficientRecalculation':True})
             require(tuple(d0[i]+waveunit[i] for i in range(3))==rowunit and mapped==expect,'actual native raw unit and mapped jet unit')
-        poly=cell['polynomial'];coeff=D(poly['coefficients']);cert=D(poly['coefficientCertificates'])
-        require(len(coeff)==len(cert) and all(v['finite'] is True and v['value']==c['value'] for c,v in zip(coeff,cert)),'actual quotient coefficient certificates')
+        poly=cell['polynomial']
+        J.emit('cell-'+str(index)+'-certificate-originals',{'coefficients':poly['coefficients'],'certificates':poly['coefficientCertificates'],'matching':'exact saved values with multiplicity, never list position'})
+        matching=certificate_match_indices(poly['coefficients'],poly['coefficientCertificates'])
+        J.emit('cell-'+str(index)+'-certificate-match',{'certificateIndicesInCoefficientOrder':matching,'originalCertificatesUnchanged':True})
+        coeff=D(poly['coefficients']);cert=D(poly['coefficientCertificates'])
+        for ci,vi in enumerate(matching):
+            v=cert[vi]
+            J.zero('new-cell-'+str(index)+'-certificate-components-'+str(ci),v['value'],v['real']+sp.I*v['imaginary'])
+            require(v['value']==coeff[ci]['value'] and v['finite'] is True,'actual decoded certificate equality')
         degree=max([c['order'] for c in coeff],default=0);vector=[sp.S.Zero]*(degree+1)
         for c in coeff:vector[c['order']]=c['value']
         pairs=[]

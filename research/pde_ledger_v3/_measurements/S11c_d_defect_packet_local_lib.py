@@ -91,7 +91,9 @@ class LocalEvaluator:
         for radius in range(8,4097,8):
             R=c.mpf(radius);tail=self.tail(c,spec,R,mutant);trials.append({'R':R,'tail':tail})
             if tail<=c.mpf('1e-14'):break
-        else:raise ValueError('local tail radius capacity unavailable; no retry')
+        else:
+            self.emit(c,key+'/failed-tail-capacity',{'spec':spec,'carrier':carrier,'mutant':mutant,'radiusTrials':trials,'automaticRetry':False})
+            raise ValueError('local tail radius capacity unavailable; no retry')
         self.emit(c,key+'/input',{'spec':spec,'carrier':carrier,'mutant':mutant,'radiusTrials':trials,'tailRule':'2 C sum M_j I_j; exp(-25/256) discarded upward','majorant':[[str(v) for v in majorant(n)] for n in range(4)],'R':R,'centers':['-5/2','5/2'],'width':8,'length':10,'nativeTimeTangentsAlreadyAbsorbed':True,'fullPairingUnit':'U_dual_THETA * M_ref * L_ref^-2 * T_ref^-1'})
         values={};tails={}
         for name,ctx,order,rad in [('A24',self.A,24,radius),('A48',self.A,48,radius),('A48Rplus8',self.A,48,radius+8),('B',self.B,None,radius)]:

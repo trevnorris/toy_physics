@@ -1,0 +1,306 @@
+{
+  "status": "TESTED_LOCAL_CERTIFICATE_STORAGE_REPAIR",
+  "utc": "2026-10-03T23:48:41.515653+00:00",
+  "preservedReviewCommit": "abc6c012",
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS PACKET-ACTION LOCAL BUILD"
+  },
+  "localToolingExecutionAuthority": true,
+  "independentBuildClearance": false,
+  "authorClearanceSubstitute": false,
+  "testsPassed": true,
+  "tests": {
+    "count": 28,
+    "exitCode": 0,
+    "seconds": 0.476,
+    "command": [
+      "python",
+      "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_tooling_tests.py"
+    ],
+    "sourceSha256": "5400fb6ab305d2a92ea5cf38accb111acafdf5ba798d084e384012e501e31aa8",
+    "scientificImportsOrRestoration": false
+  },
+  "reviewed": {
+    "workerSha256": "1edd55f9ad0def1439413795f0ccf937dbc824f28ef80918797e53fabe060844",
+    "manifestSha256": "fa6675068e428ecdc800d21d410aab88555d5ceafdbfd490f7188e8a60ead84f",
+    "librarySha256": "c0bfd256e4a054be9f18864600ea962d650bc0af601bc290ad26c642308c8e44",
+    "launcherSha256": "addb4b7ba5f46b484da477e77e39ef033b3c6553b9fa0d46a999647116f93297"
+  },
+  "current": {
+    "workerSha256": "f4d052a98f549f0c274787d67871ae093fec16552d5b524108ee385fa3e403b8",
+    "manifestSha256": "42bde5bb68d3062e1e4e49c3a994d910796f19857b84e76ea203b7b67731c977",
+    "librarySha256": "f04df93c0bc80acae3715fb2219321d88f08cfd26c30f3be1de20e06847eb3f0",
+    "launcherSha256": "8f6e31766391068abce099771028c3118c95c9504f83bc4ca702f07419ae4469"
+  },
+  "actualSavedMetadataMappings": [
+    {
+      "cellIndex": 0,
+      "xOrder": 0,
+      "grade": [
+        0,
+        0
+      ],
+      "originalPositionalPredicate": true,
+      "certificateIndicesInCoefficientOrder": [
+        0
+      ]
+    },
+    {
+      "cellIndex": 1,
+      "xOrder": 0,
+      "grade": [
+        1,
+        0
+      ],
+      "originalPositionalPredicate": true,
+      "certificateIndicesInCoefficientOrder": [
+        0,
+        1
+      ]
+    },
+    {
+      "cellIndex": 2,
+      "xOrder": 0,
+      "grade": [
+        0,
+        1
+      ],
+      "originalPositionalPredicate": false,
+      "certificateIndicesInCoefficientOrder": [
+        0,
+        3,
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "cellIndex": 3,
+      "xOrder": 0,
+      "grade": [
+        1,
+        1
+      ],
+      "originalPositionalPredicate": false,
+      "certificateIndicesInCoefficientOrder": [
+        0,
+        2,
+        4,
+        5,
+        3,
+        1
+      ]
+    },
+    {
+      "cellIndex": 4,
+      "xOrder": 1,
+      "grade": [
+        0,
+        0
+      ],
+      "originalPositionalPredicate": true,
+      "certificateIndicesInCoefficientOrder": [
+        0
+      ]
+    },
+    {
+      "cellIndex": 5,
+      "xOrder": 1,
+      "grade": [
+        1,
+        0
+      ],
+      "originalPositionalPredicate": true,
+      "certificateIndicesInCoefficientOrder": [
+        0
+      ]
+    },
+    {
+      "cellIndex": 6,
+      "xOrder": 1,
+      "grade": [
+        0,
+        1
+      ],
+      "originalPositionalPredicate": false,
+      "certificateIndicesInCoefficientOrder": [
+        0,
+        3,
+        1,
+        2
+      ]
+    },
+    {
+      "cellIndex": 7,
+      "xOrder": 1,
+      "grade": [
+        1,
+        1
+      ],
+      "originalPositionalPredicate": false,
+      "certificateIndicesInCoefficientOrder": [
+        0,
+        1,
+        3,
+        4,
+        2
+      ]
+    },
+    {
+      "cellIndex": 8,
+      "xOrder": 2,
+      "grade": [
+        0,
+        0
+      ],
+      "originalPositionalPredicate": true,
+      "certificateIndicesInCoefficientOrder": [
+        0
+      ]
+    },
+    {
+      "cellIndex": 9,
+      "xOrder": 2,
+      "grade": [
+        1,
+        0
+      ],
+      "originalPositionalPredicate": true,
+      "certificateIndicesInCoefficientOrder": [
+        0,
+        1
+      ]
+    },
+    {
+      "cellIndex": 10,
+      "xOrder": 2,
+      "grade": [
+        0,
+        1
+      ],
+      "originalPositionalPredicate": true,
+      "certificateIndicesInCoefficientOrder": [
+        0
+      ]
+    },
+    {
+      "cellIndex": 11,
+      "xOrder": 2,
+      "grade": [
+        1,
+        1
+      ],
+      "originalPositionalPredicate": true,
+      "certificateIndicesInCoefficientOrder": [
+        0
+      ]
+    },
+    {
+      "cellIndex": 12,
+      "xOrder": 3,
+      "grade": [
+        0,
+        0
+      ],
+      "originalPositionalPredicate": true,
+      "certificateIndicesInCoefficientOrder": [
+        0
+      ]
+    },
+    {
+      "cellIndex": 13,
+      "xOrder": 3,
+      "grade": [
+        1,
+        0
+      ],
+      "originalPositionalPredicate": true,
+      "certificateIndicesInCoefficientOrder": [
+        0
+      ]
+    },
+    {
+      "cellIndex": 14,
+      "xOrder": 3,
+      "grade": [
+        0,
+        1
+      ],
+      "originalPositionalPredicate": true,
+      "certificateIndicesInCoefficientOrder": [
+        0
+      ]
+    },
+    {
+      "cellIndex": 15,
+      "xOrder": 3,
+      "grade": [
+        1,
+        1
+      ],
+      "originalPositionalPredicate": true,
+      "certificateIndicesInCoefficientOrder": [
+        0
+      ]
+    }
+  ],
+  "allSavedFilesUnchanged": 69,
+  "allSavedBytesUnchanged": 12060076,
+  "originalRunBodyAssignmentASTsRetained": 63,
+  "allNumericalLibraryAssignmentASTsUnchanged": true,
+  "mathematicalFormulasTolerancePhysicalInputsUnchanged": true,
+  "methodSha256": "79f1459596c84d0f4fbca2c45b51977ff338bce1a55a66c6214e850793eaf45a",
+  "corrections": [
+    "Match actual encoded saved coefficient values as an exact multiset, preserving original lists and index permutation. No coefficient or certificate rewritten.",
+    "Inside guarded execution, require each unchanged certificate value to reconstruct exactly from its original real/imaginary components and to equal the actual decoded coefficient.",
+    "Persist existing radius trial prefix on capacity failure before raising; no quadrature rule, radius schedule or budget changed.",
+    "Gate/launcher explicitly require literal NEEDS/CLEAR, exact reviewed/current hashes and tested standing tooling authority, not paired independent clearance."
+  ],
+  "scientificOperationsExecuted": 0,
+  "noAutomaticRetry": true,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Two local Gaussian weak actions from16saved native cells; pressure/full action pending",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": false,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "noCompletePacketAction": true,
+    "localActions": 2,
+    "noPressureAction": true
+  },
+  "limitations": [
+    "Gamma origin receipts are copied and pinned; native values are inherited from the earlier joined four-way registry evidence, not newly rederived from original opaque producer objects.",
+    "Full local coefficient-to-polynomial equality remains inherited through original cancelled-zero proofs. Summand sums and old endpoint/producer calculations must not replay.",
+    "Profile-derivative control construction shares its coefficient vector; its actual numerical responsiveness remains required.",
+    "Local units do not establish pressure-summand units. Raw speed absence is a named-symbol/source-map condition, not a primitive speed calibration.",
+    "Independent numerical routes share coefficient values and generic polynomial helpers. Empirical error estimates are not a quadrature theorem.",
+    "A nonzero flag with all-zero coefficients is not excluded generically; actual saved flags agree. Radius-capacity failure must preserve the actual trial prefix before raising.",
+    "No pressure/full action, current, scattering inverse or loss follows."
+  ],
+  "runtimeObligations": [
+    "Actual complete certificate matching, real/imaginary reconstruction and unchanged coefficients",
+    "All original native units, operand/summand/source/grade joins",
+    "Both packets, zero cells, numerical route/tail/reference comparisons and two actual controls",
+    "Complete strict stderr/stdout-checks/hash/resource evidence before acceptance"
+  ]
+}

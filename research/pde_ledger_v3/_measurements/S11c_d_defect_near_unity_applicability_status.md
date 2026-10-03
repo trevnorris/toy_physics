@@ -571,3 +571,27 @@ Standing AGENTS consent applies; no peer report is included. Concrete analytic
 tails and unit joins remain subject to actual independent assessment/runtime.
 
 Both independent local-action BUILD reviews are now running on byte-identical private142-file copies. The existing-session completion hook is armed; no scientific execution or verdict is claimed. Source build ba956761.
+
+
+## 2026-10-03 — local-action reviews assessed and tooling repaired
+
+Both fixed-packet reviews completed and were verified before edits (1081checks).
+Literal Claude NEEDS REVISION / Grok CLEAR remain atabc6c012. Both support the
+selected mathematics; Claude identified a real positional certificate-list bug
+that Grok missed. Actual saved cells2,3,6,7have permuted certificate order.
+
+The local tooling correction matches exact saved values with multiplicity, saves
+original lists and index maps, and requires exact stored real/imaginary
+reconstruction under containment. The numerical library only gains persistence
+of its existing radius prefix on capacity failure. All69files/12060076bytes and
+all numerical assignment ASTs are unchanged; all63original run-body assignment
+ASTs remain. Twenty-eight stdlib/source/metadata/synthetic tests pass. No science
+ran in preparation, no optional review loop, no new independent CLEAR.
+
+The fresh gate records independentBuildClearance=false and tested standing local
+tooling execution authority, pins131sources and18additionalidentitycopies, and
+passes the actual launcher check. It authorizes one guarded local run with the
+existing completion hook,4GiB native/cgroup within16GiBpool,zero swap,oneCPU/thread,
+32tasks,4GiBhostreserve and no deadlines. Actual runtime operand/unit/numerical
+controls and evidence inspection remain required. No pressure or complete packet
+value, current or loss is claimed.

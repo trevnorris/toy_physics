@@ -59,4 +59,34 @@ class Tooling(unittest.TestCase):
   for suffix in ['.py','_lib.py','_launch.py']:ast.parse((M/(P+suffix)).read_text())
  def test_20_review_path_and_stage(self):
   self.assertEqual(self.m['reviewRecordWillBe'],str(M/(P+'_build_review_record.json')));s=(M/(P+'_launch.py')).read_text();self.assertIn("'defect_packet_local'",s);self.assertIn('01a0e01b-ef84-7192-817f-584cda5d339b',s)
+ def matcher(self):
+  return runpy.run_path(str(M/(P+'.py')),run_name='tooling_only')['certificate_match_indices']
+ def test_21_saved_certificate_permutations(self):
+  cells=load(self.m['savedInputs']['selected/local-cells.json']['path'])['selected'];match=self.matcher()
+  for cell in cells:
+   p=cell['polynomial'];idx=match(p['coefficients'],p['coefficientCertificates'])
+   self.assertEqual(sorted(idx),list(range(len(idx))))
+   self.assertEqual([p['coefficientCertificates'][i]['value'] for i in idx],[v['value'] for v in p['coefficients']])
+ def test_22_original_predicate_refuses_cell2(self):
+  p=load(self.m['savedInputs']['selected/local-cells.json']['path'])['selected'][2]['polynomial']
+  self.assertFalse(all(v['finite'] is True and v['value']==c['value'] for c,v in zip(p['coefficients'],p['coefficientCertificates'])))
+ def test_23_matching_duplicate_multiplicity(self):
+  match=self.matcher();a={'value':'syntheticA'};b={'value':'syntheticB'}
+  self.assertEqual(match([a,a,b],[dict(b,finite=True),dict(a,finite=True),dict(a,finite=True)]),[1,2,0])
+  with self.assertRaises(ValueError):match([a,a,b],[dict(b,finite=True),dict(a,finite=True),dict(b,finite=True)])
+ def test_24_certificate_refusals(self):
+  match=self.matcher();a={'value':'syntheticA'}
+  for cert in [[],[{'value':'wrong','finite':True}],[dict(a,finite=False)],[dict(a,finite=None)],[dict(a,finite=1)]]:
+   with self.assertRaises(ValueError):match([a],cert)
+ def test_25_library_math_assignments_unchanged(self):
+  old=ast.parse((R/'_scratch/s11c/s11c-defect-packet-action-20261003/local-build-review/packet/numerical-library.py').read_text())
+  assignments=lambda t:[ast.dump(n,include_attributes=False) for n in ast.walk(t) if isinstance(n,(ast.Assign,ast.AugAssign,ast.Return))]
+  self.assertEqual(assignments(old),assignments(self.lib))
+ def test_26_saved_inputs_unchanged(self):
+  old=load(R/'_scratch/s11c/s11c-defect-packet-action-20261003/local-build-review/packet/manifest.json')
+  self.assertEqual(old['savedInputs'],self.m['savedInputs']);self.assertEqual(old['scope'],self.m['scope']);self.assertEqual(old['resources'],self.m['resources'])
+ def test_27_tail_failure_prefix_persisted(self):
+  s=(M/(P+'_lib.py')).read_text();self.assertLess(s.index("key+'/failed-tail-capacity'"),s.index("raise ValueError('local tail radius capacity"))
+ def test_28_exact_component_and_original_storage(self):
+  s=(M/(P+'.py')).read_text();self.assertLess(s.index("'-certificate-originals'"),s.index('matching=certificate_match_indices('));self.assertIn("v['real']+sp.I*v['imaginary']",s);self.assertIn("g['independentBuildClearance'] is False",s)
 if __name__=='__main__':unittest.main()

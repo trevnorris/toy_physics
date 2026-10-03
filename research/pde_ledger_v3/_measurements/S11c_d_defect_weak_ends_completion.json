@@ -1,0 +1,124 @@
+{
+  "status": "PARTIAL_WEAK_END_SYMBOLS_PRESERVED_CONTROLS_UNVISITED",
+  "recordedUtc": "2026-10-03T09:02:21.359427+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01",
+  "workerSha256": "e2350d3cf1ce697aaec60c60e60d1a5cf945d00f36cb26be7ea3b3915b406c73",
+  "manifestSha256": "62ef34d34fa17c24f904a59d011c23fe5ef59e3114209e2b88f935aaa9f0b113",
+  "gateSha256": "a404e25d8168b78c5b76e0c244051711c98c1dfca18acf6a462d527d9f1774af",
+  "inspectionChecks": 100033,
+  "allInspectionChecksPassed": true,
+  "scientificAcceptance": false,
+  "failure": {
+    "executionStatus": "FAILED_PRESERVED",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py\", line 639, in main\n    result=J.stage('translated-weak-ends',{'manifestSha256':gate['manifestSha256'],'reviewSha256':gate['buildReviewRecordSha256']},lambda:run_science(manifest,J,ns));code=0\n  File \"unchanged-inert-helpers\", line 243, in stage\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py\", line 639, in <lambda>\n    result=J.stage('translated-weak-ends',{'manifestSha256':gate['manifestSha256'],'reviewSha256':gate['buildReviewRecordSha256']},lambda:run_science(manifest,J,ns));code=0\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py\", line 584, in run_science\n    require(cs2>1 and cs2<4,'control speed in scoped interval')\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py\", line 26, in require\n    raise ValueError(message)\nValueError: control speed in scoped interval\n",
+    "incompleteOperation": "translated-weak-ends",
+    "automaticRetry": false
+  },
+  "cost": {
+    "workerSeconds": 286.15400756220333,
+    "guardSeconds": 287.90827563102357,
+    "peakBytes": 831467520,
+    "swapBytes": 0,
+    "memoryEvents": 0,
+    "resourceSamples": 145
+  },
+  "coverage": {
+    "completedNestedStages": 34,
+    "topLevelComplete": false,
+    "artifacts": 85,
+    "exactEvidenceRecords": 27796,
+    "exactEvidenceKinds": {
+      "field-endpoint-input": 34,
+      "field-restored-proof-argument": 34,
+      "constant-input": 70,
+      "constant-components": 70,
+      "zero-input": 333,
+      "zero-return": 333,
+      "native-phase-operands": 1,
+      "native-first-shape-grade-operands": 1,
+      "address-end-input": 13260,
+      "address-end-return": 13260,
+      "end-symbol-input": 200,
+      "end-symbol-return": 200
+    },
+    "literalZeroReturns": 333,
+    "fieldEndpoints": 34,
+    "pressureAddresses": 13260,
+    "localCells": 400,
+    "savedEndSymbolCells": 200,
+    "nonzeroEndSymbolCells": 69,
+    "grazingValuesSaved": 200,
+    "completedResponseControls": 0,
+    "metadataSurvivingControlCandidates": {
+      "height": 48,
+      "lowerFlatNormal": 24
+    },
+    "savedCopies": 422,
+    "sourcePosthashes": 1099,
+    "sourceSnapshots": 677,
+    "additionalIdentityCopies": 12,
+    "files": 516,
+    "bytes": 418445633
+  },
+  "lastCompletedIdentity": {
+    "name": "control-outgoing-physical-dispersion",
+    "left": {
+      "text": "4",
+      "srepr": "Integer(4)"
+    },
+    "right": 4,
+    "cancelled": {
+      "text": "0",
+      "srepr": "Integer(0)"
+    }
+  },
+  "failureScope": "Source uses require(v is True) on cs2>1 and cs2<4, with cs2 declared Rational(180,101). Actual comparison object was not persisted. No new control was computed; no physics failure or acceptance inferred.",
+  "bounds": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": [
+      1,
+      2
+    ],
+    "internalMomenta": "all real with inherited polynomial weights",
+    "target": "Translated retained Schwartz bilinear weak ends and formal diagonal symbols",
+    "independentGrades": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "sourceFrequencyContinued": false,
+    "responseRegularization": "auxiliary only; new symbols at real3",
+    "noEvaluatedResponseIntegral": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true
+  },
+  "literalBuildVerdicts": {
+    "claude": "CLEAR FOR THIS TRANSLATED WEAK-END BUILD",
+    "grok": "CLEAR FOR THIS TRANSLATED WEAK-END BUILD"
+  },
+  "noScientificRestorationDuringInspection": true,
+  "newScientificJobLaunched": false,
+  "protectedSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "next": "Preserve this failure and all operands. Inspect and locally test the exact-true representation interface, then prepare only a saved-evidence continuation of the unfinished controls under standing authority; no prefix replay, method change or automatic rerun."
+}

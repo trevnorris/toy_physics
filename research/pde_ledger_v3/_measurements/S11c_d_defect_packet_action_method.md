@@ -39,7 +39,13 @@ units are the original e_W unit and a declared dual THETA row unit, respectively
 report all results in that fixed pairing unit, never as power. Reconstruct the
 same unit from every contributing local and pressure term before summing.
 After reporting each independent grade, an optional display combines it as
-B00+(1/100)B10+(1/1000)B01+(1/100000)B11. Do not perform an untruncated inverse
+B00+(1/100)B10+(1/1000)B01+(1/100000)B11. These are the actual saved LEFT
+finite-origin values in `ends/left-source-binding.json`, key `origin`:
+eta_bg=1/100 and sigma_W=1/1000. Sigma is not a separate parameter in the
+original physical-input file. A worker must join this saved origin and its
+original source receipt before making the optional display; no new grade
+binding is inferred from a name or from a numerical result. Keep the independent
+grade tables even when displaying that sum. Do not perform an untruncated inverse
 or add eta^2/sigma^2 terms. The coefficient of epsilon is extracted once.
 
 Restore the completed local cells, pressure fields, address maps, factor/normal
@@ -58,6 +64,9 @@ polynomial certificate. The actual jet gives
     D_j=(-3i)^n_t (i/5)^n_2 (i/10)^n_3 partial_x^n_1.
 
 Compute Gaussian derivatives as finite polynomials times the same Gaussian.
+Local terms use their actual saved x-derivative cells in the direct pairing
+integral v(x) a_g(x) partial_x^n u(x) dx, with independent Gaussian/adaptive
+x-space rules and the same declared accuracy and tail accounting below.
 The source is b(x) D_j u(x), not D_j[b(x)u(x)]. Use the actual inherited
 profile scale and physical x throughout. Keep the 16 ordered source/response/
 consumer grade triples and all explicit zeros; grade weighting occurs last.
@@ -133,10 +142,63 @@ Evaluate removable A values by a stable sinhc series near zero. Do not evaluate
 a 0/0 depth ratio by assigning zero. Such a value requires the saved closed
 limit, or an unsampled endpoint and a valid transformed integrable limit.
 
-The outer real k,l integrations split at ±kappa. The positive-Q height rule also
-splits at Q=|±kappa-k|. Record external/inner endpoint collisions explicitly,
-including k=l and k=-l. No branch node, Jacobian or reflected-root contribution
-may be lost through panel assembly.
+The outer panel geometry must include all middle endpoint coincidences, not
+only the axis-parallel external branch cuts. Equating t=s1*kappa-k with
+t=l+s2*kappa gives k+l=(s1-s2)*kappa. The required line set is
+
+    k=±kappa, l=±kappa, k+l=0, k+l=±2*kappa, l=k.
+
+The first two pairs are external grazing. The next three lines are coincidences
+of the two labelled middle root routes; l=k is the removable-profile-point
+coincidence t=0=l-k. Root/profile coincidences with t=0 or t=l-k reduce to
+k=±kappa or l=±kappa. Retain all labels at every intersection.
+
+This geometry does not establish a logarithmic pinch. The actual saved J has
+only qm=q(k+t). In saved direct Bc, k(2l-t)/(qs+qo),
+k(t+2k)*qi/[qh*(qh+qi)] and qi^2/qh are ADDED, with qh=q(k+t), qs=q(l-t).
+There is no product 1/(qh*qs) in that expression. Restore this actual sum and
+the separate numerator/envelope joins; the inherited compact-parameter
+continuity argument uses a sum of integrable simple-root envelopes. It does
+not prove differentiability at a collision. No logarithmic subtraction or
+new singular factor is introduced. Resolving the geometry also prevents the
+panel ordering from changing unseen inside a numerical cell.
+
+For the finite square [-K,K]^2, implement a nested affine arrangement. The
+l-boundary lines are -K, K, -kappa, kappa, -k, -k+2*kappa, -k-2*kappa and k.
+Add the ordinary carrier/profile resolution lines specified in section 4.
+Split the k interval at ±kappa and EVERY in-box pairwise intersection of the
+l-boundary lines, including intersections with l=±K; include ordinary k
+resolution cuts. Parallel lines need no intersection. On each open k slab,
+sort the l lines at an interior point, clip them to [-K,K], and integrate the
+nonempty intervals between adjacent lines. Check that their order is constant
+on that slab. Keep exact/high-precision line coefficients, intersection
+coordinates, labels and all coalescing receipts. Check disjoint interiors and
+complete coverage of the square; no diagonal strip may be discarded.
+
+Route A uses open interior Gauss rules on each such cell. For each finite
+one-dimensional interval [a,b], split at its midpoint c and use x=a+(c-a)z^2
+and x=b-(b-c)z^2, 0<z<1, with the positive integration Jacobians. Apply this
+first to k and then to each l interval with its actual k-dependent bounds.
+Persist both Jacobians and the cell orientation. This avoids endpoint sampling
+and resolves one-sided square-root behaviour without asserting a smooth
+integrand or supplying a fictitious value at a collision. It is also valid on
+ordinary finite intervals. The existing interior middle rules still split at
+the full labelled t set for every actual outer node.
+
+Route B uses the SAME geometric line set but independently constructs nested
+open adaptive Gauss-Kronrod integration in the original physical k,l variables,
+at the declared higher precision, with its own subdivisions and error estimates.
+It shares no Route A cell samples, transformed nodes, weights, Fourier arrays
+or inner integral values. Both implementations must reconstruct the geometry
+from the actual kappa and K and retain source/coordinate joins; their agreement
+alone is not proof that the common analytic geometry is correct.
+
+The positive-Q height rule separately splits at Q=|±kappa-k|. Its Q=0 and
+coincident cuts retain their labels; outer k is split wherever those cut orders
+change or meet the finite Q limit, as well as at ±kappa and ordinary resolution
+cuts. The contact stays separate. The finite-domain and all-real tail accounting
+must describe this k,Q domain explicitly rather than substituting the k,l square
+by name. No branch node, Jacobian or reflected-root contribution may be lost.
 
 ## 4. Fourier, tail and precision controls
 
@@ -148,6 +210,16 @@ nodes, weights or transform arrays between these references. Compare all
 distinct actual source/test products required by the selected block, including
 their derivative factors and both carrier settings. Constant-coefficient
 Gaussian transforms additionally have an analytic reference.
+At every actual Fourier request used by either route, compare base/refined
+Route A and the independent Route B value, including any requested Y derivatives.
+Require absolute differences below 1e-12 in the corresponding fixed transform
+unit, with Route B's internal target at most 1e-13 there. The analytic constant
+Gaussian checks obey the same absolute criterion. Record large-|nu| requests
+explicitly: contour damping does not prove relative accuracy or sufficient
+Gauss-Hermite resolution. A failed transform criterion stops the action; no
+automatic extra orders or replacement transform algorithm. These pointwise
+numerical checks do not supply a uniform analytic transform-error bound; the
+complete-action comparisons and tail certificates remain independently required.
 
 The strip shift is allowed because every actual coefficient is a finite
 polynomial in tanh(x/10), whose nearest poles are at |Im x|=5pi. For |Im x|<=5,
@@ -190,6 +262,11 @@ Add deterministic panel cuts at the packet carrier and offsets ±1/s, ±2/s,
 ±4/L, ±8/L, wherever inside the relevant integration interval. Keep these
 ordinary resolution cuts distinct from branch singularities. This prevents a
 large interval from hiding a narrow Gaussian or profile peak between nodes.
+For the outer k,l arrangement these include fixed carrier-offset k and l lines
+and l=k+d for the stated profile offsets d. Include all their intersections
+with the other l lines and the finite box in the k-slab construction, so a
+resolution line cannot silently change the cell ordering. For a fixed inner
+integration, add the offsets to the actual t or Q profile points instead.
 Adaptive route B uses its own subdivision decisions on the original physical
 variables, with explicit integrable branch/PV subtraction; it does not reuse
 route A's transformed nodes or response values. Its internal error target is
@@ -198,8 +275,19 @@ library error estimate or convergence flag fails, preserve it and stop.
 
 First compare the inner H/J/GD pieces at actual outer nodes selected in advance:
 zero transfer, both external grazing approaches, nonzero reflected momentum,
-and collision k=±l. A literal endpoint is tested by the saved closed expression
-or two-sided limit; never divide at it. These point tests alone do not clear
+and all collision lines above. The additional exact nongrazing collision pairs
+are (k,l)=(kappa/3,-kappa/3), (kappa/3,5*kappa/3),
+(-kappa/3,-5*kappa/3), and (kappa/3,kappa/3). For each, also use l shifted by
+±kappa/64 and ±kappa/128 with k fixed. These test k+l=0,±2*kappa and k=l
+without conflating them with external grazing. Compare the independently
+computed middle integrals at each same pair using the component tolerance
+below, retain the separate reflected and height-route terms, and record the
+two-sided approach values. Finite-offset values need not equal the on-line
+value; no derivative, convergence rate or extrapolated value is inferred from
+these few samples. On a collision line the whole middle integral uses the
+merged labelled panels and open nodes, not pointwise inverse-root evaluation.
+A literal singular density endpoint requires the saved closed expression
+or valid transformed one-sided limit; never divide at it. These tests alone do not clear
 the full packet action. Compare the assembled weak integrals with independent
 outer adaptive integration, all source/consumer factors included. Refinement
 and a predeclared enlargement K→K+2, T→T+2 must be checked on the assembled
@@ -229,7 +317,9 @@ source coefficient inside a nonzero spatial derivative (Leibniz corruption).
 Select applicable addresses from saved metadata before looking at numerical
 values. If a control is silent in both declared packet settings, report that
 coverage as unestablished; do not use a formal symbolic movement as a numerical
-success. Require each nonzero numerical response to exceed ten times the sum
+success. Classify the actual response separately for each carrier. Neither
+p0=0 nor slow variation alone establishes exact silence of a Gaussian derivative
+control. Require each nonzero numerical response to exceed ten times the sum
 of its baseline/mutant empirical envelopes. Mutants that produce an invalid
 domain are recorded as domain refusals, not finite numerical response controls.
 

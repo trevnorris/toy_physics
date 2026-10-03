@@ -22,7 +22,9 @@ native local/pressure partition. `physical-input.json` remains the original
 development input; no primitive speed calibration is inferred.
 `ends/left-match.json` is the actual saved positive matching point and closed
 comparison. Its inherited current objects are historical; this proposal does
-not transfer them. `ends/correspondence-summary.json` is a compact source/result
+not transfer them. `ends/left-source-binding.json` preserves the full actual
+saved source binding, including the independent finite `origin` weights used
+only for an optional grade-table display. `ends/correspondence-summary.json` is a compact source/result
 metadata projection with all reviewer material omitted.
 
 `background/pressure-weak-method.md` and `background/full-weak-method.md` contain
@@ -32,6 +34,14 @@ and `source/weak-ends.py` are original instruments for source interfaces only;
 none is to be executed or replayed. `source/legacy-integration.py` and
 `source/legacy-finite.py` are comparison-route background: the old cs=10 numerical
 arrays do not become near-unity references. No old full matrix is proposed.
+
+For the middle collision geometry, inspect `pressure/typed-direct.json`,
+`pressure/whole-definitions.json` and section 4 of the pressure weak method.
+The direct density contains a sum of the reflected and height root routes;
+native J contains only the middle route. Separate branch-envelope records
+support integrability, not differentiability or a claimed logarithmic pinch.
+The proposed affine cut arrangement and on/near-line tests are new numerical
+prescriptions requiring this assessment, not previously executed certificates.
 
 This packet is method-only. There is no new worker, manifest, execution gate or
 computed weak action. A clear verdict supports bounded build preparation, not

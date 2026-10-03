@@ -165,6 +165,19 @@ the saved direct density is a sum of the two root routes, and J has only the
 middle route. Preserve the original reports literally and assess the corrected
 numerical prescription independently before building a worker. No science ran.
 
+The substantive revised proposal now explicitly partitions every affine
+collision line, its box intersections and ordinary resolution lines; both
+numerical routes use that geometry with independent samples and subdivisions.
+On-line and two-sided probes cover k+l=0,+/-2*kappa and k=l. The actual summed
+root structure remains unchanged. Large-offset Fourier comparisons have an
+absolute stopping criterion; optional grade weights join the complete saved
+LEFT source origin. The frozen revision is 39 files / 4,821,304 bytes, SHA256
+d43840e8d93bc74e951e33c7fd0188cb435cdb58b1cf6b3262b4238d704eb003.
+It retains 34 prior packet files byte-identically and adds one existing source
+binding record. No reviewer reports are in the packet. The first NEEDS/CLEAR
+pair and exact first proposal remain at f5ee8150; this is necessary substantive
+method assessment, not an optional wording or transport retry.
+
 Independent preparation at 0798c4b5 mapped the legacy Gaussian/matrix route and
 verified 131 selected opaque input/return receipts. It is preparation only:
 old cs10 arrays do not validate the corrected near-unity operator, and no

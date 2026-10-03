@@ -27,12 +27,19 @@ Assess in particular:
   independent reflected root. Typed bare/factored/whole objects are distinct.
 - Real outgoing branch quadrature, external/internal collisions, no dropped
   holes or invented 0/0 values, both native signs and independent references.
+  In particular check the full affine outer arrangement, all k+l=0,±2*kappa
+  lines, l=k and box/resolution-line intersections; check the labelled inner
+  endpoints and the two-sided test pairs. Distinguish actual summed root terms
+  from a product/pinch assumption using the original J and direct definitions.
 - The complex-strip Fourier envelope, derivative/moment constants, all-real
   outer/middle/PV tail bounds, and whether the required numerical prescription
   is sufficiently concrete to proceed to a separately reviewed implementation.
 - The two Fourier and complete action routes, actual independence and declared
   tolerances/refinement/tail settings. Error estimates are empirical except for
   separately justified truncation bounds; no flux error or leakage bound follows.
+  Check the absolute transform stopping criterion at large offsets, rather than
+  inferring accuracy from the contour damping factor. Grade-display weights
+  must join the saved origin, not be treated as new physical calibration.
 - Actual addressed numerical controls and their applicability. Numerical or
   formal silence must remain explicit; no hand-selected favourable outcome.
 

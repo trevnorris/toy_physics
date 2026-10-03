@@ -1,0 +1,125 @@
+{
+  "status": "READY_FOR_INDEPENDENT_REVISED_METHOD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/method-review-r2",
+  "priorReviewCommit": "f5ee8150",
+  "dependencyCommit": "0fc0283d",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-03T15:25:06.734120+00:00",
+    "packetSha256": "d43840e8d93bc74e951e33c7fd0188cb435cdb58b1cf6b3262b4238d704eb003",
+    "archiveSha256": "ea07bd07b53e278a407067f43e7fff64f71a3995e3facf58a34ab3c66a97909e",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 39,
+    "bytes": 4821304,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing AGENTS review-submission authorization and user direction to continue clear bounded research without routine prompts. Substantive collision-aware numerical-method revision, established recipients only. No worker or scientific execution.",
+    "scope": "Two selected e_W-to-THETA Schwartz packet actions at one saved effective matching speed; retained grades, both faces, contact/PV/branch/tail numerical method only. No scattering, current, inverse, defect sweep or loss.",
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_SOURCE_AND_PACKET_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "069f948a9a5502677ea70e50a683443cffb1fc288ee108e5659af34395a68ef5",
+    "packetSha256": "d43840e8d93bc74e951e33c7fd0188cb435cdb58b1cf6b3262b4238d704eb003",
+    "archiveSha256": "ea07bd07b53e278a407067f43e7fff64f71a3995e3facf58a34ab3c66a97909e",
+    "files": 39,
+    "bytes": 4821304,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 38,
+    "payloadRestored": false,
+    "transportIdenticalToPrior": true,
+    "noReviewVerdict": true
+  },
+  "revision": "Full collision-aware outer geometry and numerical checks; no new operator equations or physical inputs. Not a transport retry.",
+  "checks": {
+    "everySourceCopyHashChecked": true,
+    "allArchiveMembersChecked": true,
+    "unchangedPriorPacketFiles": [
+      "selected/pressure-addresses.json",
+      "selected/local-cells.json",
+      "pressure/fields.json",
+      "pressure/whole-tags.json",
+      "pressure/typed-direct.json",
+      "pressure/coefficient-certificates.json",
+      "pressure/whole-definitions.json",
+      "pressure/global-parameter-domain.json",
+      "pressure/profile-envelope.json",
+      "pressure/whole-envelopes.json",
+      "pressure/normal-growth.json",
+      "pressure/H-bound.json",
+      "pressure/J-numerator-envelope.json",
+      "pressure/D-height-envelope.json",
+      "pressure/D-reflected-envelope.json",
+      "pressure/shift-root-bound.json",
+      "pressure/plus-height-PV.json",
+      "pressure/minus-height-PV.json",
+      "pressure/Fourier-order.json",
+      "pressure/source-jets.json",
+      "local/context.json",
+      "local/assembly.json",
+      "physical-input.json",
+      "ends/left-match.json",
+      "ends/correspondence-summary.json",
+      "background/pressure-weak-method.md",
+      "background/full-weak-method.md",
+      "source/composition.py",
+      "source/pressure-weak.py",
+      "source/full-weak.py",
+      "source/weak-ends.py",
+      "source/legacy-integration.py",
+      "source/legacy-finite.py",
+      "background/numerical-route-inventory.json"
+    ],
+    "unchangedCount": 34,
+    "changedMethodPromptGuide": [
+      "evidence-guide.md",
+      "method.md",
+      "review-prompt.md"
+    ],
+    "additionalCompleteSavedEvidence": "ends/left-source-binding.json",
+    "exactSavedOriginReadAsJSON": {
+      "mappingPairs": [
+        [
+          {
+            "text": "eta_bg",
+            "srepr": "Symbol('eta_bg', real=True)"
+          },
+          {
+            "text": "1/100",
+            "srepr": "Rational(1, 100)"
+          }
+        ],
+        [
+          {
+            "text": "sigma_W",
+            "srepr": "Symbol('sigma_W', real=True)"
+          },
+          {
+            "text": "1/1000",
+            "srepr": "Rational(1, 1000)"
+          }
+        ]
+      ]
+    },
+    "selectedAddresses": 544,
+    "selectedLocalCells": 16,
+    "scientificImports": false,
+    "newScientificOperations": 0,
+    "newWorkerOrGate": false,
+    "oldPeerReportsIncluded": false,
+    "newTrackedDataOver1MiB": []
+  },
+  "methodNotes": [
+    "J has one middle root; direct Bc contains a sum of reflected and height terms. New line geometry makes no logarithmic singularity assertion.",
+    "All line/box/resolution intersections enter the arrangement; no thin collision strip is discarded.",
+    "Large-offset Fourier checks are absolute empirical stopping criteria, not relative accuracy or rigorous propagated flux bounds.",
+    "Actual optional grade origin is restored; both independent grade tables remain primary."
+  ]
+}

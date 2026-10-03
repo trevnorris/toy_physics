@@ -1,0 +1,63 @@
+{
+  "status": "STARTED_CONTAINMENT_VERIFIED_RESULT_PENDING",
+  "recordedUtc": "2026-10-03T08:52:09.433006+00:00",
+  "preparedCommit": "02c6a9c5",
+  "buildReviewCommit": "0ee013c8",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01",
+  "jobPid": 3730563,
+  "watcherPid": 3730564,
+  "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "gateSha256": "a404e25d8168b78c5b76e0c244051711c98c1dfca18acf6a462d527d9f1774af",
+  "workerSha256": "e2350d3cf1ce697aaec60c60e60d1a5cf945d00f36cb26be7ea3b3915b406c73",
+  "manifestSha256": "62ef34d34fa17c24f904a59d011c23fe5ef59e3114209e2b88f935aaa9f0b113",
+  "launcherSha256": "ff213189d1e20d0145369dbcd88ca96f631123ca9205d679916bbd6532b0aa92",
+  "independentBuildClearance": true,
+  "actualSystemd": {
+    "Restart": "no",
+    "RuntimeMaxUSec": "infinity",
+    "MemoryMax": "4294967296",
+    "MemorySwapMax": "0",
+    "TasksMax": "32",
+    "CPUAffinity": "15",
+    "ActiveState": "active"
+  },
+  "systemdReadExitStatus": 0,
+  "systemdReadStderr": "",
+  "nativeContainment": {
+    "memory.max": "4294967296",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "cgroup": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-1433e3e64616.service",
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpace": 4294967296,
+    "durationLimits": null
+  },
+  "sourceSnapshotCount": 677,
+  "allSnapshotAndSourceHashesMatch": true,
+  "additionalIdentityPins": 12,
+  "actualCommandJoins": true,
+  "hookStatusAtRead": "waiting",
+  "hookFirstLauncherHandshake": true,
+  "noAutomaticRetry": true,
+  "noDeadline": true,
+  "runtimeResultAccepted": false,
+  "receipts": {
+    "launch.json": "772c8fd15f9ee05e9649fe519f14d1ee24aba380e8e0bb51cf33d97be031abc0",
+    "stage-start.json": "90678022771026c3c228872fedc9d8ec90fe8d43a6c7deef842abf414c46a984",
+    "resource-guard/invocation.json": "a4b41768821e9535fa8a37786a38ff8ddd6aba19f90a0cb7f745bdc1b9bc58ba",
+    "resource-guard/limit-validation.json": "409788cd69a96673ad92d0740d166852ac0e67f7132e9e9134162d01f4094cf7",
+    "resource-guard/duration-validation.json": "b7b9c58dd0ec33f07067967dd624c44127d7066971a4006f06ad57656809d244",
+    "complete/containment.json": "28ca052d0869f9c06a2b3878218338c27803897bd6c52f0c82e4f7c735e1c2c1",
+    "source-snapshots.json": "ab96cf39e8631ef27c2688a07ca7d6c0b32a96c83e30c800f7dafd836818c1a9"
+  }
+}

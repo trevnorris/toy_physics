@@ -319,3 +319,8 @@ remain empirical. Host metadata confirms a running user manager, about 381.5 GB
 free disk and about 21 GB available memory. Full per-panel evidence may consume
 tens of GB and substantial runtime. The fresh guard will enforce the pooled
 reservation and existing resource limits; no elapsed-time cap is introduced.
+The unchanged Fourier worker is now pinned READY for one guarded run after
+assessment 745d3522. Its actual launcher verification passed against all 889
+source pins; 13 additional review/authority/host/result records are copied and
+hashed. This is permission for the bounded 190-request bank only. Actual rule,
+transform, resource and integrity results remain to be inspected after execution.

@@ -1,0 +1,63 @@
+{
+  "status": "PINNED_READY_FOR_ONE_GUARDED_PACKET_FOURIER_BANK",
+  "createdUtc": "2026-10-03T18:07:22.486962+00:00",
+  "gate": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_gate.json",
+  "gateSha256": "fe9eabcb98862fe222ee45a82900bc2ba1d94d430d519841ea5c3fb1902af4ee",
+  "reviewCommit": "745d3522",
+  "buildCommit": "bbaee435",
+  "sourcePinsChecked": 889,
+  "additionalIdentityCopies": 13,
+  "additionalIndexSha256": "b72a0c21b1ca8ebd0f4a3e5ae8442a3855dea646752251b9fe05ffd710cfdf4a",
+  "actualLauncherVerifyPassed": true,
+  "scientificImportsOrRestoration": false,
+  "workerLaunched": false,
+  "noDeadline": true,
+  "scienceRunsAuthorized": 1,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "automaticRetry": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "190 fixed Fourier requests for all 19 actual source/test/test-derivative families; no response integral or packet action",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "numericalFourierRequests": 190,
+    "families": 19
+  },
+  "remainingBeforeResultAcceptance": [
+    "Actual guard no-deadline/resource enforcement and supervisor invocation",
+    "Every native source/vector/jet argument, numerical rule/panel/tail/request operand and return",
+    "Strict stderr and stdout/checks identity",
+    "All source/copy/additional-identity posthashes",
+    "No complete action/current/loss or uniform transform-error claim from finite bank"
+  ]
+}

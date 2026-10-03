@@ -1,0 +1,46 @@
+{
+  "status": "TESTED_LOCAL_EXACT_TRUE_INTERFACE_AND_SAVED_CONTROL_CONTINUATION",
+  "recordedUtc": "2026-10-03T09:13:30.704263+00:00",
+  "baseFailureCommit": "ac9b919a",
+  "baseWorkerSha256": "e2350d3cf1ce697aaec60c60e60d1a5cf945d00f36cb26be7ea3b3915b406c73",
+  "baseFailure": {
+    "executionStatus": "FAILED_PRESERVED",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py\", line 639, in main\n    result=J.stage('translated-weak-ends',{'manifestSha256':gate['manifestSha256'],'reviewSha256':gate['buildReviewRecordSha256']},lambda:run_science(manifest,J,ns));code=0\n  File \"unchanged-inert-helpers\", line 243, in stage\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py\", line 639, in <lambda>\n    result=J.stage('translated-weak-ends',{'manifestSha256':gate['manifestSha256'],'reviewSha256':gate['buildReviewRecordSha256']},lambda:run_science(manifest,J,ns));code=0\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py\", line 584, in run_science\n    require(cs2>1 and cs2<4,'control speed in scoped interval')\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py\", line 26, in require\n    raise ValueError(message)\nValueError: control speed in scoped interval\n",
+    "incompleteOperation": "translated-weak-ends",
+    "automaticRetry": false
+  },
+  "predicateEvidencePath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_continue_predicate_evidence.json",
+  "predicateEvidenceSha256": "122a56bdf0efcac721b818ec1fbc21a2ed3668a0b86c87f966be74db45a25c1f",
+  "classification": "Exact-true atom recognition and saved-evidence restoration only. Same two strict inequalities and exact Rational(180,101), unchanged control mathematics and acceptance rules. No tolerance, equation or method change.",
+  "actualOldComparisonObjectPersisted": false,
+  "actualContinuationComparisonMustBePersisted": true,
+  "tests": {
+    "methods": 16,
+    "returnCode": 0,
+    "stdout": "",
+    "stderr": "................\n----------------------------------------------------------------------\nRan 16 tests in 2.296s\n\nOK\n",
+    "scientificImportsOrRestoration": false,
+    "preparationTestCorrection": "Initial namespace test omitted built-in list from its allowed globals. Added it to the test; worker unchanged."
+  },
+  "originalTailAstSha256": "eb5c5e1cade1f1c099778d65bff2647174be3dbb489966072a810c7cc756d0da",
+  "originalTailStatements": 6,
+  "originalPointSetup": [
+    "controls = []",
+    "point = {p: sp.Integer(1), q: sp.Integer(2)}",
+    "cs2 = sp.Rational(180, 101)"
+  ],
+  "originalScalarHelpers": [
+    "zero",
+    "constant"
+  ],
+  "completedPrefixFunctionsCalled": false,
+  "priorFiles": 516,
+  "priorBytes": 418445633,
+  "completedReturnsToRestore": 34,
+  "exactReturnsWithOperandsToRestore": 333,
+  "addressReturnsToReuse": 13260,
+  "symbolCellsToReuse": 200,
+  "newWork": "Only failed interval decision and three unfinished addressed controls; original dispersion result restored, not recomputed.",
+  "continuationIndependentBuildClearance": false,
+  "scientificAcceptance": false
+}

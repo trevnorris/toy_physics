@@ -1,0 +1,54 @@
+{
+  "recordedUtc": "2026-10-03T09:13:30.704263+00:00",
+  "savedEvidenceContinuationAuthorized": true,
+  "automaticScientificRetry": false,
+  "authority": "Standing AGENTS tooling-fix authority and user direction to keep working through clear bounded steps without routine permission",
+  "standingInstructions": "/var/projects/toy_physics/AGENTS.md",
+  "standingInstructionsSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "priorFailureCommit": "ac9b919a",
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": [
+      1,
+      2
+    ],
+    "internalMomenta": "all real with inherited polynomial weights",
+    "target": "Translated retained Schwartz bilinear weak ends and formal diagonal symbols",
+    "independentGrades": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "sourceFrequencyContinued": false,
+    "responseRegularization": "auxiliary only; new symbols at real3",
+    "noEvaluatedResponseIntegral": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true
+  },
+  "localToolingAuthority": true,
+  "freshIndependentBuildClearance": false,
+  "scientificRunsAuthorized": 1,
+  "durationLimits": null,
+  "authorizedWork": "One saved-evidence exact-true decision and original unfinished weak-end control tail; no prefix replay or method change"
+}

@@ -1,0 +1,32 @@
+{
+  "status": "SOURCE_AND_SYNTHETIC_EXACT_TRUE_INTERFACE_EVIDENCE",
+  "originalPredicate": "require(cs2>1 and cs2<4,'control speed in scoped interval')",
+  "originalRequire": "if value is not True: raise ValueError(message)",
+  "declaredCsSquaredConstructor": "Rational(180, 101)",
+  "installedSourceExcerpts": [
+    {
+      "path": "/home/trevnorris/.local/lib/python3.10/site-packages/sympy/logic/boolalg.py",
+      "sha256": "1aac4bb6a51a9e01a84a3b2770a0f394b104ee26157b9aac32d3e1ced9e223d7",
+      "firstLine": 281,
+      "lastLine": 306,
+      "source": "class BooleanTrue(BooleanAtom, metaclass=Singleton):\n    \"\"\"\n    SymPy version of ``True``, a singleton that can be accessed via ``S.true``.\n\n    This is the SymPy version of ``True``, for use in the logic module. The\n    primary advantage of using ``true`` instead of ``True`` is that shorthand Boolean\n    operations like ``~`` and ``>>`` will work as expected on this class, whereas with\n    True they act bitwise on 1. Functions in the logic module will return this\n    class when they evaluate to true.\n\n    Notes\n    =====\n\n    There is liable to be some confusion as to when ``True`` should\n    be used and when ``S.true`` should be used in various contexts\n    throughout SymPy. An important thing to remember is that\n    ``sympify(True)`` returns ``S.true``. This means that for the most\n    part, you can just use ``True`` and it will automatically be converted\n    to ``S.true`` when necessary, similar to how you can generally use 1\n    instead of ``S.One``.\n\n    The rule of thumb is:\n\n    \"If the boolean in question can be replaced by an arbitrary symbolic\n    ``Boolean``, like ``Or(x, y)`` or ``x > 1``, use ``S.true``.\n    Otherwise, use ``True``\""
+    },
+    {
+      "path": "/home/trevnorris/.local/lib/python3.10/site-packages/sympy/logic/boolalg.py",
+      "sha256": "1aac4bb6a51a9e01a84a3b2770a0f394b104ee26157b9aac32d3e1ced9e223d7",
+      "firstLine": 360,
+      "lastLine": 376,
+      "source": "    ========\n\n    sympy.logic.boolalg.BooleanFalse\n\n    \"\"\"\n    def __bool__(self):\n        return True\n\n    def __hash__(self):\n        return hash(True)\n\n    def __eq__(self, other):\n        if other is True:\n            return True\n        if other is False:\n            return False\n        return super().__eq__(other)"
+    },
+    {
+      "path": "/home/trevnorris/.local/lib/python3.10/site-packages/sympy/core/relational.py",
+      "sha256": "86d6c64f4bafce8603d3b43afe1753d220c3b27b343432366a69745bc9ad0203",
+      "firstLine": 510,
+      "lastLine": 525,
+      "source": "    def _eval_trigsimp(self, **opts):\n        from sympy.simplify.trigsimp import trigsimp\n        return self.func(trigsimp(self.lhs, **opts), trigsimp(self.rhs, **opts))\n\n    def expand(self, **kwargs):\n        args = (arg.expand(**kwargs) for arg in self.args)\n        return self.func(*args)\n\n    def __bool__(self) -> bool:\n        raise TypeError(\n            LazyExceptionMessage(\n                lambda: f\"cannot determine truth value of Relational: {self}\"\n            )\n        )\n\n    def _eval_as_set(self):"
+    }
+  ],
+  "finding": "SymPy BooleanTrue is a distinct singleton with __bool__ returning Python True. Python and returns an operand. A strict identity-to-Python-True requirement therefore rejects the symbolic true singleton. The original comparison object was not persisted; the continuation must record actual types/values before deciding.",
+  "repair": "Accept only identity to Python True or the exact SymPy true singleton; no coercion/equality/numeric tolerance. Reject false, unknown, numbers and strings.",
+  "scientificImportsOrRestoration": false
+}

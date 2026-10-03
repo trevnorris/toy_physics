@@ -1,0 +1,29 @@
+{
+  "status": "PASSED_STDLIB_TOOLING_ONLY",
+  "utc": "2026-10-03T16:37:14.674791+00:00",
+  "command": [
+    "/usr/bin/python",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight_tooling_tests.py"
+  ],
+  "exitCode": 0,
+  "tests": 22,
+  "stderr": "......................\n----------------------------------------------------------------------\nRan 22 tests in 1.209s\n\nOK\n",
+  "stdout": "",
+  "sourceSha256": "bcde596139ab92cc00dbca5bf23bd844471e4714a322c58dc73de947af782064",
+  "launcherSha256": "d88eb5249418349e2d41405c7f61ab4be30721d751a784c648e115b1607c23f2",
+  "testSha256": "6185d699d820b27ed29ca27d34535c85c693415f1c4c9a5b969955158d780559",
+  "scientificImports": false,
+  "scientificPayloadRestoration": false,
+  "scientificAcceptance": false,
+  "checks": [
+    "exact complete input byte receipts and metadata projections",
+    "all field/factor proof schemas",
+    "original physical/match/profile metadata",
+    "exact predicate refusal and known-true atom stand-in",
+    "fail-closed gate/argv/output routing",
+    "exclusive evidence writes and partial tail persistence",
+    "scientific import only after containment",
+    "no computational deadline or integral call"
+  ],
+  "runtimeStillRequired": true
+}

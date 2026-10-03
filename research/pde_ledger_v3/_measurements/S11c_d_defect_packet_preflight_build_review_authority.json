@@ -1,0 +1,16 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-03T16:39:22.266391+00:00",
+  "packetSha256": "d4679660d3fd3c1926e244072e3837b340978bcb680c70e28a5f4494c95613de",
+  "archiveSha256": "13b7a40ed8b2952eaedf70609159f6af43f50498b834ce7467f31865f5d81138",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 243,
+  "bytes": 39683437,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing AGENTS permission for necessary fixed source/evidence packets to established Claude/Grok within the ongoing authorized research. Concrete preflight implementation of the cleared two-packet method; no routine approval needed.",
+  "scope": "Packet-action exact adapters and conditional analytic truncation preflight only; no numerical action, transform, response integral, inverse, current or loss.",
+  "noAutomaticRetry": true
+}

@@ -1,0 +1,35 @@
+{
+  "boundedInstrumentAuthorized": true,
+  "automaticScientificRetry": false,
+  "authority": "Standing user continued bounded research and AGENTS submission/execution authorization; prerequisite of the assessed two-packet method. No routine stage approval required.",
+  "scienceExecutionsAuthorized": 1,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Saved packet-action adapters and conditional analytic tail planning only",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true
+  },
+  "methodClearanceIsNotBuildClearance": true,
+  "noDeadline": true,
+  "futureEvaluatorRequiresConcreteBuild": true
+}

@@ -1,0 +1,109 @@
+{
+  "status": "READY_FOR_INDEPENDENT_PREFLIGHT_BUILD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/preflight-build-review",
+  "dependencyCommit": "0fc0283d",
+  "methodAssessmentCommit": "3df5a3bf",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-03T16:39:22.266391+00:00",
+    "packetSha256": "d4679660d3fd3c1926e244072e3837b340978bcb680c70e28a5f4494c95613de",
+    "archiveSha256": "13b7a40ed8b2952eaedf70609159f6af43f50498b834ce7467f31865f5d81138",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 243,
+    "bytes": 39683437,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing AGENTS permission for necessary fixed source/evidence packets to established Claude/Grok within the ongoing authorized research. Concrete preflight implementation of the cleared two-packet method; no routine approval needed.",
+    "scope": "Packet-action exact adapters and conditional analytic truncation preflight only; no numerical action, transform, response integral, inverse, current or loss.",
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_SOURCE_AND_PACKET_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "b8b8eada13db2411df6965db696df3430d8f75e993b565bea26e69c5a8b0eaa7",
+    "packetSha256": "d4679660d3fd3c1926e244072e3837b340978bcb680c70e28a5f4494c95613de",
+    "archiveSha256": "13b7a40ed8b2952eaedf70609159f6af43f50498b834ce7467f31865f5d81138",
+    "files": 243,
+    "bytes": 39683437,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 242,
+    "payloadRestored": false,
+    "transportIdenticalToPrior": true,
+    "noReviewVerdict": true
+  },
+  "workerSha256": "bcde596139ab92cc00dbca5bf23bd844471e4714a322c58dc73de947af782064",
+  "manifestSha256": "146981f984250fd107baccd575bbe611c79f320fed936212fa6b1f2dcc6b7eb1",
+  "launcherSha256": "d88eb5249418349e2d41405c7f61ab4be30721d751a784c648e115b1607c23f2",
+  "sharedGuardSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+  "supervisorSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+  "methodSha256": "79f1459596c84d0f4fbca2c45b51977ff338bce1a55a66c6214e850793eaf45a",
+  "toolingTests": {
+    "status": "PASSED_STDLIB_TOOLING_ONLY",
+    "utc": "2026-10-03T16:37:14.674791+00:00",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight_tooling_tests.py"
+    ],
+    "exitCode": 0,
+    "tests": 22,
+    "stderr": "......................\n----------------------------------------------------------------------\nRan 22 tests in 1.209s\n\nOK\n",
+    "stdout": "",
+    "sourceSha256": "bcde596139ab92cc00dbca5bf23bd844471e4714a322c58dc73de947af782064",
+    "launcherSha256": "d88eb5249418349e2d41405c7f61ab4be30721d751a784c648e115b1607c23f2",
+    "testSha256": "6185d699d820b27ed29ca27d34535c85c693415f1c4c9a5b969955158d780559",
+    "scientificImports": false,
+    "scientificPayloadRestoration": false,
+    "scientificAcceptance": false,
+    "checks": [
+      "exact complete input byte receipts and metadata projections",
+      "all field/factor proof schemas",
+      "original physical/match/profile metadata",
+      "exact predicate refusal and known-true atom stand-in",
+      "fail-closed gate/argv/output routing",
+      "exclusive evidence writes and partial tail persistence",
+      "scientific import only after containment",
+      "no computational deadline or integral call"
+    ],
+    "runtimeStillRequired": true
+  },
+  "savedInputFiles": 222,
+  "savedInputBytes": 39002056,
+  "reviewIsIndependent": true,
+  "peerReportsIncluded": false,
+  "newScientificOperations": 0,
+  "readyGateExists": false,
+  "futureEvaluatorRequired": true,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Saved packet-action adapters and conditional analytic tail planning only",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true
+  },
+  "newTrackedDataOver1MiB": []
+}

@@ -230,3 +230,18 @@ numerical action, matrix or solve was run.
 Strict rest bulk, LAB_HELD/RHO4_CONSTANT, one tanh profile and saved direction
 remain explicit. Drain flow, primitive speed derivation, full Green/FORM/A11/A12
 and physical loss remain open. No production export has been overwritten.
+
+The concrete packet-action preflight is now prepared for independent build
+assessment. It will restore 222 complete saved files (39,002,056 bytes), join
+all 544 selected addresses and 16 local cells, and derive only the missing
+numerical adapters and conditional analytic truncation plan. The completed
+source, response, grade and endpoint calculations are not replayed. Its new
+rational contour and outer/height/middle tail bounds require substantive build
+assessment and actual guarded execution. Twenty-two stdlib source/metadata/
+synthetic tests passed; no scientific expression was restored or action run.
+The frozen 243-file / 39,683,437-byte build packet has SHA256
+d4679660d3fd3c1926e244072e3837b340978bcb680c70e28a5f4494c95613de.
+No READY gate exists. Preflight completion will not itself establish a packet
+value: the future evaluator still needs independent Fourier/action routes,
+collision quadrature, local tails, full summand-unit joins and actual numerical
+control responses. The established reviewer pair is the next authorized step.

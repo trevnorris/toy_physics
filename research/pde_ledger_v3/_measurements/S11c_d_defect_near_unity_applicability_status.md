@@ -182,6 +182,18 @@ reviewer processes started independently, and all 39 private files per reviewer
 match the frozen packet. No report has been read early or shared. The durable
 completion hook will resume adjudication; no model polling or science launch.
 
+The corrected packet-action pair delivered Claude NEEDS REVISION / Grok CLEAR,
+with all 260 packet/receipt/source inspection checks passing. Both accept the
+collision geometry and the actual summed root structure. Claude's remaining
+blocker concerns fixed Fourier Gauss-Hermite orders 96/160 at large momentum;
+this is a prospective resolution concern, not an observed numerical failure.
+The next substantive correction is a predeclared wavelength-resolved composite
+Fourier rule on the same contour, with unchanged accuracy requirements. Both
+reports remain literal and explicitly partial. Grok's two incidental claims
+are not adopted: the 16 pressure grade triples differ from the 16 local cells,
+and all 48 selected normal-height entries have zero consumer, so that family
+does not establish a live depth-swap control. No worker or science gate exists.
+
 Independent preparation at 0798c4b5 mapped the legacy Gaussian/matrix route and
 verified 131 selected opaque input/return receipts. It is preparation only:
 old cs10 arrays do not validate the corrected near-unity operator, and no

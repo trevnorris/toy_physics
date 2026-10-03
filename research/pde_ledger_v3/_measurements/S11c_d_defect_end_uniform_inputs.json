@@ -13,7 +13,7 @@
   "endsWorker": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py",
   "fullWeakWorker": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak.py",
   "methodRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_review_r2_record.json",
-  "reviewRecordWillBe": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_build_review_r2_record.json",
+  "reviewRecordWillBe": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_build_review_r3_record.json",
   "executionAuthority": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_execution_authority.json",
   "scope": {
     "frequency": 3,
@@ -123,6 +123,31 @@
       "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-full-native-partition.json",
       "sha256": "e0420071d1abb4eec0d7207e431986cd1b2540c9778b79fccbc6fd73abd612e1",
       "bytes": 1000220
+    },
+    "normalization/local-cells.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/all-local-cells.json",
+      "sha256": "6ff2534c6fdcce7303f36e940e9cd2fda642a939cdca5ff3d18cd6fec9f542ba",
+      "bytes": 3597097
+    },
+    "normalization/local-end-terms.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/restored-local-endpoints-new-symbol-terms.json",
+      "sha256": "3f69a5822a1b3fd5fbd9039ce8703729a3c097f656eba6fdabb3b665a82d6725",
+      "bytes": 3936001
+    },
+    "normalization/batch-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U0-local-batch-007-input.json",
+      "sha256": "1730b0afc26f4241b2749d99b3a627167758741e3c42a30a92741d8391817d8c",
+      "bytes": 7488
+    },
+    "normalization/batch-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U0-local-batch-007-return.json",
+      "sha256": "cebf1764199d5bd2b7849cd07d4d183316647e6ec73113e5357b7cdf70a58821",
+      "bytes": 215980
+    },
+    "normalization/operation-index.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/operation-index.json",
+      "sha256": "20aaf462a9eade17210a16438bba4902621f07e58b5cdb4d70b78f06cfbd9d37",
+      "bytes": 75435
     }
   },
   "originalPackets": {
@@ -835,10 +860,10 @@
     ]
   },
   "sourcePins": {
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py": "ab7521a97482dc2dafdba8fb87a222872d87c34bbca0501849051c8144990465",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py": "578ca96df98ee2bee26800396f93a46ef6dde91caa97e777c73f68b161d3ad87",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_launch.py": "545762eef9a689cea905e72583d805cdcb6ce308543166b0f8158b6634a77fab",
     "/var/projects/toy_physics/AGENTS.md": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_execution_authority.json": "4b879bb1c5d12032c702626bcb12a61c927a1fe62aa1e85a79ddb58086ed6621",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_execution_authority.json": "d124d88b1232125db213b94297805f5c20cc8c66aa09f39fece3bc1db5a63418",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_method.md": "fa899606cf76f7af9e09ee1fbad3a0a6615b87523f92f8de2a2f3f1480ea86d1",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_review_r2_record.json": "ede6477303940b03ced1dbc275cbbfb1daaffed2637cd40053911c3bddba0d33",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
@@ -869,6 +894,11 @@
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U2-full-native-partition.json": "1a073706e00811968d41d5ed5364c67e243a480ac2f36fff5819477cb3031288",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/THETA_BALANCE-full-native-partition.json": "8071d84d74ab5e2b2cd8b9c8c89fc2612d374b0ce90e8a874bea53597183a87a",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-full-native-partition.json": "e0420071d1abb4eec0d7207e431986cd1b2540c9778b79fccbc6fd73abd612e1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/all-local-cells.json": "6ff2534c6fdcce7303f36e940e9cd2fda642a939cdca5ff3d18cd6fec9f542ba",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/restored-local-endpoints-new-symbol-terms.json": "3f69a5822a1b3fd5fbd9039ce8703729a3c097f656eba6fdabb3b665a82d6725",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U0-local-batch-007-input.json": "1730b0afc26f4241b2749d99b3a627167758741e3c42a30a92741d8391817d8c",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U0-local-batch-007-return.json": "cebf1764199d5bd2b7849cd07d4d183316647e6ec73113e5357b7cdf70a58821",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/operation-index.json": "20aaf462a9eade17210a16438bba4902621f07e58b5cdb4d70b78f06cfbd9d37",
     "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/uniform-source.pickle": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
     "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
     "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a",
@@ -893,6 +923,7 @@
   },
   "oldFunctionsCalled": false,
   "newWork": [
+    "actual native child/local-cell/end-symbol normalization joins",
     "actual native chart covariance and units",
     "raw source to finite origin join",
     "full and selected residuals with independent grade attribution",

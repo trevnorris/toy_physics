@@ -1,0 +1,67 @@
+{
+  "status": "READY_FOR_INDEPENDENT_BUILD_ASSESSMENT_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/build-review-r3",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-03T12:26:47.850996+00:00",
+    "packetSha256": "1475fc188462760ca67cf3a6137870c235f8f76dfbbe2eeb891269b1d8342efe",
+    "archiveSha256": "10b1dde6d79f8f0adad669e5ca242bbf0f3753002795a5d7d8121d9658f7e597",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 79,
+    "bytes": 21929576,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "AGENTS standing review-submission authorization and repeated continued bounded research direction",
+    "scope": "Bounded corrected weak-end / saved uniform equation comparison; no roots, frequency/current transfer, integral, finite solve, defect sweep or loss",
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_BUILD_PACKET_ONLY_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "755d5c494f2fff47c3d8e5e2d8ace776a7b336810b7ebd265360b67097c0558e",
+    "packetSha256": "1475fc188462760ca67cf3a6137870c235f8f76dfbbe2eeb891269b1d8342efe",
+    "archiveSha256": "10b1dde6d79f8f0adad669e5ca242bbf0f3753002795a5d7d8121d9658f7e597",
+    "workerSha256": "578ca96df98ee2bee26800396f93a46ef6dde91caa97e777c73f68b161d3ad87",
+    "manifestSha256": "5a123d2fa3d662cabad039545d28de17a01fcf3ebd964e8b177f2ee61e71c978",
+    "scienceLauncherSha256": "545762eef9a689cea905e72583d805cdcb6ce308543166b0f8158b6634a77fab",
+    "methodSha256": "fa899606cf76f7af9e09ee1fbad3a0a6615b87523f92f8de2a2f3f1480ea86d1",
+    "files": 79,
+    "bytes": 21929576,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "payloadRestored": false,
+    "scienceCalls": 0,
+    "localTests": {
+      "command": "python /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_tests.py",
+      "tests": 37,
+      "passed": true,
+      "scientificEvidence": false
+    },
+    "completeSavedJSONAliases": 19,
+    "opaqueBlobReceipts": 58,
+    "completeOldOperations": 18
+  },
+  "checks": {
+    "packetSourceArchiveHashesMatch": true,
+    "allSavedJSONAliasesIncluded": true,
+    "noScientificPayloadRestored": true,
+    "noGateOrScienceRun": true,
+    "noOldPeerReports": true,
+    "newTrackedGeneratedFilesOver1MiB": []
+  },
+  "newMissingDerivations": [
+    "actual saved native-child/local-cell/end-symbol normalization joins",
+    "native cyclic source covariance and unbound unit homogeneity",
+    "original positive harmonic source and finite origin",
+    "independent retained grades and exact excluded remainder attribution",
+    "closed grazing comparisons and saved path joins",
+    "selected-cell coverage and mutated-minus-baseline controls"
+  ],
+  "inheritedReportingFailurePreserved": true,
+  "noOldScienceReplay": true
+}

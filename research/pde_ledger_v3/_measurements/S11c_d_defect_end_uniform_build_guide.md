@@ -8,7 +8,7 @@ reports or their commentary are supplied.
   storage/containment helpers and the original SavedCodec definitions; it never
   imports an old scientific worker module. launcher.py enforces the eventual
   exact gate command and arms the local completion hook before science.
-- inputs.json pins all sources, 14 JSON operands, original packet files, the old
+- inputs.json pins all sources, 19 JSON operands, original packet files, the old
   SQLite database/journal and the 58 selected opaque blobs. It names a FUTURE
   build assessment and gate; those files are not present yet. Execution authority
   is conditional on assessment/readiness, not a clearance substitute.
@@ -21,6 +21,15 @@ reports or their commentary are supplied.
   q domain and original phase convention. Source/consumer cross grades stay live.
   The old weak-end final JSON reporting error and authoritative encoded return
   remain in the inherited method packet's controls/ directory.
+- saved-inputs/normalization/* contains the complete published 400 local cells,
+  their complete saved endpoint-term records, the full 16-child U0 batch 007
+  input/return, and its original completion index. normalization_routes checks
+  exact raw ancestry without symbolic decoding. saved_normalization_joins then
+  checks all cell/end routes and actual sums under containment. Fixed children
+  122 (time), 113 and 114 (unequal tangent derivatives) link the actual original
+  epsilon extraction, material/jet map, mapped grade and cell summand. No
+  coefficient is chosen or scaled from a comparison residual. New joins inherit
+  the old zero proofs and endpoints; they never call old scientific producers.
 - uniform/input-manifest.json and source/uniform-worker.py show the original
   restore/selected-lift/restriction/native-reconstruction/limit interfaces.
   inputs.json extends uniform/opaque-interface-receipts.json with the needed
@@ -31,7 +40,7 @@ reports or their commentary are supplied.
   weak derivative and Fourier ordering. Native source text helpers are in
   runtime-source/text-helpers.py. All saved definitions/returns are reused;
   no call to a completed scientific constructor, producer or limit is allowed.
-- tests.py has 26 stdlib metadata/stand-in checks. It checks independent cross
+- tests.py has 37 stdlib metadata/stand-in checks. It checks independent cross
   grades, tensor-name routing/refusal, exact-array comparison, encoded final
   JSON, append-only evidence, actual pins, source-only imports and receipts.
   These are tooling checks, not runtime or independent scientific validation.
@@ -52,4 +61,8 @@ containing old limit calls are inspected as syntax only; none is executed.
 Source mismatches remain fatal. Unsupported bounded polynomial dependence,
 unavailable attribution and nonfinite grazing operands are saved classifications
 so other independent comparisons remain available. Scalar reconstruction and
-integrity failures are never converted into successful evidence.
+integrity failures are never converted into successful evidence. An actual
+nonzero or unresolved nonzero on-wave attribution reconstruction stops; only
+explicit unsupported depth dependence has an unavailable status there.
+SourceStage consistently saves source-coordinate/classifier/unit/binding
+failures as SOURCE_MAP_UNRESOLVED and raises; it never accepts the failure.

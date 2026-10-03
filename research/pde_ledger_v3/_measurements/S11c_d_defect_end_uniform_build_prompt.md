@@ -28,8 +28,17 @@ Assess whether this implementation faithfully executes the bounded method:
    normalization argument: original strong_matrix single derivative, native
    coefficient division by eps*wave, saved local/pressure symbol sum, original
    unscaled positive pencil route and edge-reduced Fourier factors. These source
-   statement checks and formal extraction identity must actually join the saved
-   epsilon-free symbols; they are not a replay of source/response constructors.
+   statement checks are joined to actual saved operands: all 400 local cells and
+   endpoint terms, all 200 complete end-cell local and pressure sums, and the
+   complete saved U0 batch containing native children 122, 113 and 114. These
+   fixed temporal and unequal tangential derivative witnesses are bound to the
+   same physical materials and carrier rates, differentiated once in their
+   actual epsilon symbol, and joined to the saved mapped grade and local-cell
+   summand. No fresh-symbol extraction identity substitutes for these joins.
+   Native reconstruction and endpoint proofs are inherited with actual operands;
+   no old local producer, grade or endpoint function is replayed. The new witness
+   is per unit carrier under the actual source phase/extraction contracts. It is
+   not an independent recomputation of every pressure normalization proof.
 3. Restore the 18 specified completed old operations and exact input/return
    blobs; join actual source, lift, restriction, units, finite origin, physical
    versus algebraic depth and four limit paths. A hash is not an argument join.
@@ -41,7 +50,11 @@ Assess whether this implementation faithfully executes the bounded method:
    finite truncation difference and attribution unavailable. Attribution uses
    the same wave reduction as the source-origin join. Unsupported coefficient
    dependence and unestablished grazing finiteness remain recorded statuses;
-   integrity and failed algebraic reconstruction still stop. A/R are dependent
+   integrity and failed algebraic reconstruction still stop. In particular a
+   nonzero or unresolved nonzero on-wave attribution remainder is fatal. Only
+   unsupported depth dependence or an otherwise exact join with a new-law
+   remainder can produce attribution unavailable. Source-chart, classifier,
+   unit and raw-source-binding failures all preserve SOURCE_MAP_UNRESOLVED. A/R are dependent
    via the restored RAW invariant; its separately saved zero is on-wave only.
 5. Small q-polynomial reduction, original denominators and restricted domains,
    concrete positive-sheet witnesses, closed grazing R0 with regular L/D and
@@ -58,7 +71,7 @@ Assess whether this implementation faithfully executes the bounded method:
    return receipts before guards. The old 8GiB module body is never imported.
 
 The original uniform blobs are opaque here. Source interfaces, full method
-packet, all 14 JSON runtime inputs and a 58-blob opcode/receipt census are supplied;
+packet, all 19 JSON runtime inputs and a 58-blob opcode/receipt census are supplied;
 no symbolic input was decoded in preparation. The actual source/native-unit and
 argument checks must succeed at runtime before interpreting a residual. A
 complete or nonzero result is not permission to repair the equations, find new
@@ -78,4 +91,4 @@ bytes total across five rows. That is distinct from the complete producer
 export size. Duplicate full-row serialization has been removed from the chart
 record; original row copies and each actual covariance input/return remain.
 Memory fit is not claimed before execution; containment stays unchanged.
-Twenty-six stdlib checks pass; no payload was restored or science run.
+Thirty-seven stdlib checks pass; no payload was restored or science run.

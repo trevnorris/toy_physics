@@ -1,0 +1,76 @@
+{
+  "status": "SUBSTANTIVE_VALIDATION_REVISION_FOR_INDEPENDENT_BUILD_ASSESSMENT",
+  "recordedUtc": "2026-10-03T12:28:07.863961+00:00",
+  "priorLiteralReports": "Claude NEEDS REVISION / Grok NEEDS REVISION",
+  "priorReportCommit": "8b5d43da",
+  "priorPacketSha256": "3f69f433dfc2af0a503e929dd583b75bceee2ad1479040c489c515d008660911",
+  "changes": [
+    "Remove fresh-symbol epsilon identity; derive only new actual saved child/material/carrier/epsilon-to-mapped-grade joins for three fixed native witnesses.",
+    "Join all 400 actual local cells to their published endpoint terms and all 200 end-cell local/pressure sum arguments. Inherit old coefficient and endpoint proofs; no producer or completed function replay.",
+    "Require exact on-wave attribution reconstruction. A certified or unresolved nonzero remainder is fatal; unsupported depth dependence remains unavailable.",
+    "Classify all source/chart/jet/unit/raw-binding failures consistently as SOURCE_MAP_UNRESOLVED while preserving operands and raising."
+  ],
+  "newSavedFiles": {
+    "normalization/local-cells.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/all-local-cells.json",
+      "sha256": "6ff2534c6fdcce7303f36e940e9cd2fda642a939cdca5ff3d18cd6fec9f542ba",
+      "bytes": 3597097
+    },
+    "normalization/local-end-terms.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/restored-local-endpoints-new-symbol-terms.json",
+      "sha256": "3f69a5822a1b3fd5fbd9039ce8703729a3c097f656eba6fdabb3b665a82d6725",
+      "bytes": 3936001
+    },
+    "normalization/batch-input.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U0-local-batch-007-input.json",
+      "sha256": "1730b0afc26f4241b2749d99b3a627167758741e3c42a30a92741d8391817d8c",
+      "bytes": 7488
+    },
+    "normalization/batch-return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U0-local-batch-007-return.json",
+      "sha256": "cebf1764199d5bd2b7849cd07d4d183316647e6ec73113e5357b7cdf70a58821",
+      "bytes": 215980
+    },
+    "normalization/operation-index.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/operation-index.json",
+      "sha256": "20aaf462a9eade17210a16438bba4902621f07e58b5cdb4d70b78f06cfbd9d37",
+      "bytes": 75435
+    }
+  },
+  "unchanged": {
+    "method": true,
+    "equations": true,
+    "physicalInputs": true,
+    "original14JSONInputs": true,
+    "uniform58BlobReceipts": true,
+    "scope": true,
+    "resourcePolicy": true,
+    "scienceLauncher": true,
+    "ASTIdenticalFunctions": [
+      "convolution",
+      "rotated_name",
+      "polynomial",
+      "coefficients",
+      "finite_constant",
+      "wave_test",
+      "inspect_matrix",
+      "Evidence",
+      "exact_structure"
+    ]
+  },
+  "workerSha256": "578ca96df98ee2bee26800396f93a46ef6dde91caa97e777c73f68b161d3ad87",
+  "manifestSha256": "5a123d2fa3d662cabad039545d28de17a01fcf3ebd964e8b177f2ee61e71c978",
+  "tests": {
+    "command": "python research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_tests.py",
+    "passed": 37,
+    "failed": 0,
+    "kind": "stdlib metadata, source and stand-ins only"
+  },
+  "scientificPayloadRestored": false,
+  "scienceCalls": 0,
+  "readyGateExists": false,
+  "independentBuildClearance": false,
+  "newPeerReportsIncluded": false,
+  "newTrackedFilesOver1MiB": [],
+  "nextAction": "One necessary independent assessment of the fixed revised packet under standing AGENTS/user authority."
+}

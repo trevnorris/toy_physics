@@ -42,21 +42,21 @@ literally CLEAR FOR THIS BOUNDED WEAK-END UNIFORM-COMPARISON METHOD are preserve
 at e41557f0. This is method assessment, not a computed comparison.
 
 The first concrete build received literal NEEDS REVISION from both reviewers,
-preserved at b00fff3f. The corrected worker is prepared for fresh independent
-build assessment. It requires
-actual native cyclic coordinate and unit joins before comparing the weak
-profile direction with the old uniform normal. Raw-source/finite-origin joins
-and independent retained-grade extraction keep an excluded finite remainder
-separate from a retained mismatch. A/R remain dependent views of one equation;
-closed grazing residuals use all four saved limit paths. Per-cell lift weights
-identify pressure/direct entries that selected agreement cannot test. All 200
-end cells and 18 completed old uniform operations are reused without calling
-their functions. It now checks the actual phase/tangent/time/side and amplitude/
-Fourier normalization before residual interpretation, uses the wave relation
-for attribution, and records unavailable outcomes and silent control gaps.
-Twenty-six stdlib checks and a 58-blob opaque opcode census are
-preparation evidence only. No scientific payload was restored, READY gate made,
-or new science run. No old-current transfer, producer replay or defect sweep.
+preserved at b00fff3f. The corrected pair also returned literal NEEDS REVISION,
+preserved at 8b5d43da after all 606 completion checks passed. The remaining
+common blocker was that a formal epsilon identity did not join the actual
+saved coefficient normalization. Those verdicts and exact packets remain intact.
+
+The next concrete revision joins 400 published local cells and their endpoint
+terms, all 200 end-cell sums, and three fixed native time/tangent derivative
+children through actual physical binding, epsilon extraction and saved mapped
+summands. A failed attribution reconstruction now stops; source-coordinate,
+classifier, unit and binding failures preserve SOURCE_MAP_UNRESOLVED. Equations,
+physical inputs and method are unchanged. All 18 completed uniform operations
+and 58 opaque blobs remain reused without their functions. Thirty-seven stdlib
+metadata/stand-in tests pass; this is preparation evidence, not scientific
+acceptance. Fresh independent build assessment is required before a READY gate
+or execution. No old-current transfer, producer replay or defect sweep.
 
 Strict rest bulk, LAB_HELD/RHO4_CONSTANT, one tanh profile and saved direction
 remain explicit. Drain flow, primitive speed derivation, full Green/FORM/A11/A12

@@ -5,7 +5,7 @@ from fractions import Fraction
 from pathlib import Path
 from types import SimpleNamespace
 M=Path(__file__).resolve().parent;P=M/'S11c_d_defect_end_uniform.py';source=P.read_text();tree=ast.parse(source)
-names=('require','convolution','rotated_name','definitions','exact_structure','save','sha','Evidence','source_fragment')
+names=('require','convolution','rotated_name','definitions','exact_structure','save','sha','Evidence','source_fragment','SourceStage','SourceMapUnresolved','attribution_usable','local_key','normalization_routes')
 class Basic:pass
 class Matrix:pass
 class FunctionClass:pass
@@ -20,7 +20,7 @@ class NpFloat(float):
 class NpBool:pass
 np=SimpleNamespace(ndarray=Array,complexfloating=complex,integer=NpInt,bool_=NpBool,floating=NpFloat)
 sp=SimpleNamespace(Basic=Basic,MatrixBase=Matrix,S=SimpleNamespace(true=object()),srepr=lambda v:'Integer(0)')
-ns={'re':re,'np':np,'sp':sp,'FunctionClass':FunctionClass,'Path':Path,'json':json,'hashlib':hashlib,'os':__import__('os'),'base64':__import__('base64'),'ast':ast}
+ns={'re':re,'np':np,'sp':sp,'FunctionClass':FunctionClass,'Path':Path,'json':json,'hashlib':hashlib,'os':__import__('os'),'base64':__import__('base64'),'ast':ast,'traceback':__import__('traceback'),'ROWS':('U0','U1','U2','THETA_BALANCE','E_W_BALANCE'),'FIELDS':('u_1','u_2','u_3','theta','e_W'),'G':((0,0),(1,0),(0,1),(1,1))}
 exec(compile(ast.Module(body=[n for n in tree.body if getattr(n,'name',None) in names],type_ignores=[]),'stdlib-standins','exec'),ns)
 MAN=json.loads((M/'S11c_d_defect_end_uniform_inputs.json').read_text())
 class Checks(unittest.TestCase):
@@ -126,4 +126,57 @@ class Checks(unittest.TestCase):
  def test_raw_invariant_and_grazing_scope(self):
   self.assertIn("Iold=map(old",source);self.assertIn("inv['rawResidual']",source);self.assertIn("R['onWaveInvariant']",source)
   self.assertIn("g=C*LL-LL*DD",source);self.assertIn("UNAVAILABLE_NO_NEW_REMAINDER_LIMIT_COMPUTED",source)
+ def test_actual_saved_normalization_routes(self):
+  raw={a:json.loads(Path(v['path']).read_text()) for a,v in MAN['savedInputs'].items() if a.startswith('normalization/') or a=='native/U0.json'}
+  local,ends,returns=ns['normalization_routes'](raw)
+  self.assertEqual((len(local),len(ends),len(returns)),(400,400,16))
+  self.assertEqual([returns[i]['mappedGrades'][0]['value']['srepr'] for i in (122,113,114)],['Integer(-9)','Rational(1, 25)','Rational(1, 100)'])
+ def test_changed_saved_coefficient_is_refused(self):
+  raw={a:json.loads(Path(v['path']).read_text()) for a,v in MAN['savedInputs'].items() if a.startswith('normalization/') or a=='native/U0.json'}
+  raw['normalization/local-cells.json'][0]['coefficient']={'text':'-357/20','srepr':'Rational(-357, 20)'}
+  with self.assertRaisesRegex(ValueError,'actual saved cell'):ns['normalization_routes'](raw)
+ def test_changed_native_witness_is_refused(self):
+  raw={a:json.loads(Path(v['path']).read_text()) for a,v in MAN['savedInputs'].items() if a.startswith('normalization/') or a=='native/U0.json'}
+  raw['normalization/batch-return.json'][1]['sourceConstructor']='Integer(1)'
+  with self.assertRaisesRegex(ValueError,'actual child'):ns['normalization_routes'](raw)
+ def test_saved_batch_receipts_are_exact(self):
+  raw=json.loads(Path(MAN['savedInputs']['normalization/operation-index.json']['path']).read_text());r=next(x for x in raw if x['name']=='U0-local-batch-007')
+  for slot,alias in [('input','batch-input'),('result','batch-return')]:
+   pin=MAN['savedInputs']['normalization/'+alias+'.json'];self.assertEqual(r[slot],{'path':Path(pin['path']).name,'sha256':pin['sha256'],'bytes':pin['bytes']})
+ def test_all_actual_end_local_terms_have_saved_ancestry(self):
+  local=json.loads(Path(MAN['savedInputs']['normalization/local-end-terms.json']['path']).read_text());ends=json.loads(Path(MAN['savedInputs']['ends/symbols.json']['path']).read_text())
+  lm={ns['local_key'](x['savedCell']):x for x in local}
+  for c in ends:
+   keys=[(c['row'],c['field'],n,tuple(c['grade'])) for n in range(4)]
+   self.assertEqual(c['local'],[lm[k]['newTerms'][c['side']] for k in keys])
+   self.assertEqual(c['localAncestry'],[{'row':k[0],'field':k[1],'xOrder':k[2],'grade':list(k[3])} for k in keys])
+ def test_witness_uses_actual_original_epsilon_derivative(self):
+  t=ast.unparse(next(n for n in tree.body if getattr(n,'name',None)=='saved_normalization_joins'))
+  self.assertIn("original = v['original']",t);self.assertIn('bound_child = original.xreplace(',t);self.assertIn('extracted = sp.diff(bound_child, eps)',t)
+  self.assertIn("cell['summands'][position]",t);self.assertNotIn('normalization_trial',source)
+ def test_nonzero_attribution_is_fatal(self):
+  for status in ('NONZERO_CERTIFIED','UNRESOLVED_NONZERO_SYMBOLIC_REMAINDER','UNKNOWN'):
+   for remainder in (True,False):
+    with self.assertRaisesRegex(ValueError,'reconstruction failed'):ns['attribution_usable'](status,remainder)
+ def test_only_declared_attribution_unavailability_survives(self):
+  self.assertFalse(ns['attribution_usable']('UNRESOLVED_UNSUPPORTED_DEPTH_DEPENDENCE',True))
+  self.assertFalse(ns['attribution_usable']('ZERO',False));self.assertTrue(ns['attribution_usable']('ZERO',True))
+ def test_source_failure_classification_preserves_exception(self):
+  class Journal:
+   active='source';records=[]
+   def emit(self,name,record):self.records.append((name,record))
+  j=Journal()
+  with self.assertRaises(ns['SourceMapUnresolved']):
+   with ns['SourceStage'](j,'units'):raise ValueError('unit mismatch')
+  self.assertEqual(j.records[-1][1]['status'],'SOURCE_MAP_UNRESOLVED');self.assertEqual(j.records[-1][1]['exceptionType'],'ValueError')
+ def test_source_stage_does_not_swallow_resource_failure(self):
+  with self.assertRaises(MemoryError):
+   with ns['SourceStage'](SimpleNamespace(),'units'):raise MemoryError('cap')
+ def test_source_native_checks_are_inside_classifying_stage(self):
+  f=next(n for n in tree.body if getattr(n,'name',None)=='run_science')
+  blocks=[ast.unparse(n) for n in ast.walk(f) if isinstance(n,ast.With)]
+  main=next(t for t in blocks if "'native-source-chart-units'" in t)
+  self.assertIn('rotated_name(',main);self.assertIn('rowunits =',main);self.assertIn("'actual native unit schema'",main)
+  raw=next(t for t in blocks if "'-native-source-binding-units'" in t);self.assertIn('originjoin =',raw);self.assertIn("'strong native row/field units'",raw)
+
 if __name__=='__main__':unittest.main()

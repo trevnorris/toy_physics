@@ -1,7 +1,7 @@
 {
   "status": "STATIC_OPCODE_CENSUS_ONLY",
-  "recordedUtc": "2026-10-03T11:43:52.625209+00:00",
-  "manifestSha256": "01f27225f90b40638a727024c13709fb959c30e7bbee850f4f508ec02e8b7eb2",
+  "recordedUtc": "2026-10-03T12:25:43.035887+00:00",
+  "manifestSha256": "5a123d2fa3d662cabad039545d28de17a01fcf3ebd964e8b177f2ee61e71c978",
   "results": [
     {
       "member": "LEFT/exact-limits/-1/input.pickle",
@@ -3458,5 +3458,5 @@
   "scientificImports": 0,
   "payloadsRestored": 0,
   "reducersExecuted": 0,
-  "wallSeconds": 3.6701518399640918
+  "wallSeconds": 6.184697617776692
 }

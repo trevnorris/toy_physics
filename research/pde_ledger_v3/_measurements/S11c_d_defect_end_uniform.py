@@ -126,9 +126,7 @@ def source_chart_and_scale(m,J,D,raw,physical,context,depth,U,L,profile):
     contract(full,('run_science','derive'),"zero_record(ev,'native-child-reconstruction',original,eps*wave*raw_coefficient)")
     contract(ends,('run_science',),"rec['symbol'] = sp.cancel(rec['localSum']+rec['pressureSum'])")
     contract(ends,('run_science',),"rec['sumIdentity'] = zero('new-end-symbol-sum',rec['symbol'],sum(v['local']+v['pressure'],sp.S.Zero))")
-    eps=context['context']['epsilon'];carrier,coefficient=sp.symbols('normalization_trial normalization_coefficient')
-    extraction=sp.diff(eps*carrier*coefficient,eps)/carrier;division=sp.cancel(eps*carrier*coefficient/(eps*carrier))
-    J.zero('single-epsilon-extraction-correspondence',extraction,division)
+    eps=context['context']['epsilon']
     dual=D(raw['native/weak-duality.json']);J.join('inherited-source-order',dual['source'],'X(k)=hat[b D_j u](k)');J.join('inherited-consumer-order',dual['consumer'],'Y(l)=2pi hat[c v](-l)')
     require(dual['inheritedConvention']['profileForwardPower']==-3 and dual['inheritedConvention']['sourceInversePower']==-3 and dual['inheritedConvention']['sourceForwardPower']==0 and dual['inheritedConvention']['invariantEdgeCoordinates']==2,'inherited Fourier factors')
     # Two invariant edge integrations cancel two of the three inverse factors.
@@ -136,8 +134,105 @@ def source_chart_and_scale(m,J,D,raw,physical,context,depth,U,L,profile):
     J.zero('one-dimensional-forward-normalization',edge_reduced,1/(2*sp.pi))
     J.zero('bilinear-Fourier-dual-normalization',(2*sp.pi)*edge_reduced,1)
     require(U['constantFourierMass']==2*sp.pi,'actual original uniform Fourier mass')
-    J.emit('actual-scalar-normalization',{'epsilon':eps,'nativeExtraction':extraction,'nativeDivision':division,'coefficientFactor':sp.S.One,'weakPairingExternalFactor':2*sp.pi,'uniformConstantFourierMass':U['constantFourierMass'],'edgeReducedForwardFactor':edge_reduced,'duality':dual,'sourceContracts':checks,'inheritedNormalizationProofs':True,'noFieldOrTransformEvaluated':True})
+    J.emit('actual-scalar-normalization',{'epsilon':eps,'coefficientFactor':sp.S.One,'weakPairingExternalFactor':2*sp.pi,'uniformConstantFourierMass':U['constantFourierMass'],'edgeReducedForwardFactor':edge_reduced,'duality':dual,'sourceContracts':checks,'savedCoefficientNormalization':'REQUIRES saved_normalization_joins before comparison','noFieldOrTransformEvaluated':True})
     return S,side_map
+
+
+class SourceStage:
+    """Classify source correspondence failures consistently; never soften them."""
+    def __init__(self,J,name):self.J,self.name=J,name
+    def __enter__(self):return self
+    def __exit__(self,kind,value,tb):
+        if kind and issubclass(kind,(ValueError,KeyError,StopIteration,TypeError)):
+            self.J.emit(self.name+'-unresolved',{'status':'SOURCE_MAP_UNRESOLVED','reason':str(value),'exceptionType':kind.__name__,'activeOperation':self.J.active,'traceback':traceback.format_exc()})
+            raise SourceMapUnresolved(self.name+': '+str(value)) from value
+        return False
+
+
+def attribution_usable(status,new_remainder_zero):
+    if status=='UNRESOLVED_UNSUPPORTED_DEPTH_DEPENDENCE':return False
+    require(status=='ZERO','required on-wave attribution reconstruction failed: '+status)
+    return new_remainder_zero
+
+
+def local_key(cell):return (cell['row'],cell['field'],cell['xOrder'],tuple(cell['grade']))
+
+
+def normalization_routes(raw):
+    """Metadata join only: exact saved cell identities, full coverage, native child receipts."""
+    local=raw['normalization/local-cells.json'];ends=raw['normalization/local-end-terms.json']
+    lm={local_key(c):c for c in local};em={local_key(c['savedCell']):c for c in ends}
+    expected={(r,f,n,g) for r in ROWS for f in FIELDS for n in range(4) for g in G}
+    require(len(local)==len(ends)==len(lm)==len(em)==400 and set(lm)==set(em)==expected,'normalization full local coverage')
+    for k,c in lm.items():require(c==em[k]['savedCell'],'actual saved cell to endpoint arguments')
+    inp=raw['normalization/batch-input.json'];ret=raw['normalization/batch-return.json']
+    im={r['childIndex']:r for r in inp['children']};rm={r['childIndex']:r for r in ret}
+    native={c['childIndex']:c for c in raw['native/U0.json']['children']}
+    require(len(im)==len(rm)==16 and set(im)==set(rm),'complete saved local batch')
+    for i,c in im.items():
+        require(c==native[i] and rm[i]['sourceConstructor']==c['constructorText'] and rm[i]['sourceSha256']==c['sha256'],'actual child input/return source')
+        require(hashlib.sha256(c['constructorText'].encode()).hexdigest()==c['sha256'] and rm[i]['completed'] is True,'completed native child receipt')
+    return lm,em,rm
+
+
+def saved_normalization_joins(m,J,D,raw,cells,context,p,params):
+    """New cross-stage joins from published operands; no local producer or endpoint replay."""
+    lm,em,rm=normalization_routes(raw)
+    receipt=next(r for r in raw['normalization/operation-index.json'] if r['name']=='U0-local-batch-007')
+    for slot,alias in [('input','batch-input'),('result','batch-return')]:
+        pin=m['savedInputs']['normalization/'+alias+'.json'];r=receipt[slot]
+        require(r['path']==Path(pin['path']).name and r['sha256']==pin['sha256'] and r['bytes']==pin['bytes'],'actual completed normalization batch receipt')
+    J.emit('normalization-inherited-batch-receipt',receipt)
+    decoded={};terms={}
+    for index,(k,c) in enumerate(lm.items()):
+        n='normalization-local-%03d'%index;v=D(c);e=D(em[k]['newTerms']);decoded[k]=v;terms[k]=e
+        proof=next(x for x in v['identities'] if x['name']=='cell-source-sum')
+        J.join(n+'-sum-left',proof['left'],v['coefficient'])
+        J.zero(n+'-saved-sum-argument',proof['right'],sum(v['summands'],sp.S.Zero))
+        require(proof['cancelled']==0 and len(v['sourceChildren'])==len(v['summands']),'inherited local sum proof and ancestry')
+        for side,endpoint in [('minus','leftEndpoint'),('plus','rightEndpoint')]:
+            J.zero(n+'-'+side+'-new-term-join',e[side],v[endpoint]*(sp.I*p)**v['xOrder'])
+        J.emit(n+'-inherited-proof',{'key':k,'coefficient':v['coefficient'],'sourceChildren':v['sourceChildren'],'sumProof':proof,'endpoints':(v['leftEndpoint'],v['rightEndpoint']),'newTerms':e,'oldFunctionCalled':False})
+    for index,c in enumerate(cells):
+        n='normalization-end-cell-%03d'%index
+        keys=[(c['row'],c['field'],order,tuple(c['grade'])) for order in range(4)]
+        expected=[{'row':k[0],'field':k[1],'xOrder':k[2],'grade':list(k[3])} for k in keys]
+        J.join(n+'-ancestry',c['localAncestry'],expected)
+        J.join(n+'-local-terms',c['local'],[terms[k][c['side']] for k in keys])
+        J.zero(n+'-local-sum',c['localSum'],sum(c['local'],sp.S.Zero))
+        J.zero(n+'-pressure-sum',c['pressureSum'],sum(c['pressure'],sp.S.Zero))
+        J.zero(n+'-sum-proof-argument',c['sumIdentity']['right'],c['localSum']+c['pressureSum'])
+        J.join(n+'-symbol-proof-left',c['sumIdentity']['left'],c['symbol'])
+        require(c['sumIdentity']['cancelled']==0,'inherited actual symbol-sum return')
+    eps=context['context']['epsilon'];witnesses=[]
+    # Fixed temporal and two unequal tangential native children, chosen before residuals.
+    for child in (122,113,114):
+        v=D(rm[child]);n='normalization-native-child-'+str(child);spec=v['jet']
+        original=v['original'];atoms={s.name:s for s in original.free_symbols}
+        require(atoms['epsilon_shape']==eps and v['row']=='U0' and spec['channel']=='u_1' and v['fieldColumn']==0 and v['xOrder']==spec['spatialOrders'][0]==0,'actual normalization witness route')
+        wave=atoms[spec['name']];proof=next(x for x in v['identities'] if x['name']=='native-child-reconstruction')
+        J.join(n+'-original-proof-left',proof['left'],original)
+        J.zero(n+'-original-proof-right-join',proof['right'],eps*wave*v['nativeCoefficient'])
+        require(proof['cancelled']==0 and v['profileMaps']==[],'inherited native coefficient proof, constant witness')
+        material={s:params[s.name] for s in original.free_symbols-{eps,wave}}
+        J.join(n+'-material-bound',v['nativeCoefficient'].xreplace(material),v['boundCoefficient'])
+        multiplier=(-sp.I*3)**spec['timeOrder']*(sp.I/5)**spec['spatialOrders'][1]*(sp.I/10)**spec['spatialOrders'][2]
+        J.join(n+'-native-wave-factor',multiplier,v['waveMultiplier'])
+        # Extract epsilon from the actual saved native child after the actual
+        # material/plane-wave jet map, per unit carrier. No fresh trial scalar.
+        bound_child=original.xreplace({**material,wave:multiplier})
+        extracted=sp.diff(bound_child,eps)
+        mapped=next(g for g in v['mappedGrades'] if g['grade']==[0,0])
+        grade=next(g for g in v['grade']['table'] if g['grade']==[0,0])
+        require(v['grade']['excludedRemainder']==0 and not v['boundCoefficient'].free_symbols and mapped['profileMap']==[],'witness has only constant zero grade')
+        J.zero(n+'-grade-bound-join',grade['coefficient'],v['boundCoefficient'])
+        J.zero(n+'-actual-epsilon-normalization',extracted,mapped['value'])
+        cell=decoded[('U0','u_1',0,(0,0))];position=cell['sourceChildren'].index(child)
+        J.join(n+'-mapped-to-actual-summand',mapped['value'],cell['summands'][position])
+        rec={'childIndex':child,'nativeSource':original,'materialMap':material,'jet':spec,'waveMultiplier':multiplier,'boundNativeChild':bound_child,'epsilon':eps,'singleDerivative':extracted,'savedMappedValue':mapped['value'],'cellKey':('U0','u_1',0,(0,0)),'summandPosition':position,'inheritedNativeProof':proof,'endTerms':terms[('U0','u_1',0,(0,0))]}
+        J.emit(n+'-evidence',rec);witnesses.append(rec)
+    result={'actualNativeWitnesses':witnesses,'localCellsJoined':len(decoded),'endCellsJoined':len(cells),'inheritedEndpointValuesRecomputed':False,'inheritedLocalOrPressureProducerCalled':False,'scope':'Actual temporal/spatial native epsilon witnesses and all local-cell/end-symbol ancestry joins; pressure normalization remains inherited from the saved source/consumer proofs, not an independent new pressure derivation.'}
+    J.emit('saved-normalization-conclusion',result);return result
 
 def exact_structure(a,b):
     if type(a) is not type(b):return False
@@ -362,75 +457,75 @@ def run_science(m,J,ns,codec):
     require(br==sp.Rational(30,109) and bi==sp.Rational(9,109) and depth['range']==[1,2],'actual beta/domain arguments')
     lift_input,L=operation('selected-lift');U=restored['uniformSource'];common=restored['uniformCommon'];response=restored['uniformResponse']
     profile=blobs['profiles/constant-end-and-zero-jets']
-    try:S,side_map=source_chart_and_scale(m,J,D,raw,physical,context,depth,U,L,profile)
-    except (ValueError,KeyError,StopIteration,TypeError) as exc:
-        J.emit('source-map-unresolved',{'reason':str(exc),'activeOperation':J.active,'traceback':traceback.format_exc()})
-        raise SourceMapUnresolved(str(exc)) from exc
-    # Native coordinate covariance is new missing evidence, never a producer replay.
-    tex={'ast':ast,'hashlib':hashlib,'Path':Path}
-    exec(compile(definitions(Path(m['textHelperSource']).read_text(),('require','text_sha','literal_record','tuple_arguments','literal_key','named','selected_case')),'inert-source-text-only','exec'),tex)
-    original_text,provenance=tex['literal_record'](Path(m['bSource']),'slab_operator')
-    _,case_text=tex['selected_case'](original_text,('LAB_HELD','RHO4_CONSTANT'));value_text=tex['named'](case_text,'VALUE')
-    actual_rows={}
-    for key in ('U_BODY_BALANCE','THETA_BALANCE','E_W_BALANCE'):
-        part=tex['named'](tex['named'](value_text,key),'EXPANDED')
-        if key=='U_BODY_BALANCE':actual_rows.update({'U'+str(i):v for i,v in enumerate(tex['tuple_arguments'](part))})
-        else:actual_rows[key]=part
-    for row in ROWS:
-        require(raw['native/'+row+'.json']['source']==provenance and raw['native/'+row+'.json']['fullConstructor']==actual_rows[row],'actual native raw source row '+row)
-    J.emit('native-source-text-joins',{'provenance':provenance,'rowHashes':{k:hashlib.sha256(v.encode()).hexdigest() for k,v in actual_rows.items()},'sourceConstructorCalled':False})
-    contracts=D(raw['native/wave-profile.json'])
-    c2_text=Path(m['c2Source']).read_text();c2_tree=ast.parse(c2_text)
-    assignments={t.id:n.value for n in c2_tree.body if isinstance(n,ast.Assign) for t in n.targets if isinstance(t,ast.Name)}
-    require(contracts['dimensions']==ast.literal_eval(assignments['DIMENSION_SCHEMA']),'actual native unit schema')
-    wave_node=next(n for n in c2_tree.body if isinstance(n,ast.FunctionDef) and n.name=='wave_jet')
-    require(contracts['waveSource']==ast.get_source_segment(c2_text,wave_node),'actual native wave/derivative convention')
-    native={row:D({'text':'native source operand','srepr':raw['native/'+row+'.json']['fullConstructor']}) for row in ROWS}
-    atoms=set().union(*(v.free_symbols for v in native.values()));byname={s.name:s for s in atoms};require(len(byname)==len(atoms),'unique native assumptions')
-    scalar_names=set(physical['parameters'])|{'epsilon_shape','sigma_W','delta_p_plus','delta_p_minus','d_w_delta_p_plus','d_w_delta_p_minus'}
-    rotation={}
-    for atom in atoms:
-        name=rotated_name(atom.name,scalar_names);require(name in byname,'mapped native atom present '+name)
-        target=byname[name];require(atom.assumptions0==target.assumptions0,'rotation assumptions');rotation[atom]=target
-    rowmap={'U0':'U2','U1':'U0','U2':'U1','THETA_BALANCE':'THETA_BALANCE','E_W_BALANCE':'E_W_BALANCE'}
-    J.emit('native-constructor-footprint',{'constructorBytes':{r:len(actual_rows[r].encode()) for r in ROWS},'totalConstructorBytes':sum(len(v.encode()) for v in actual_rows.values()),'peakRssKiBBeforeCovariance':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,'prospectiveMemoryGuarantee':False})
-    J.emit('source-chart-operands',{'weakMomentum':(p,sp.Rational(1,5),sp.Rational(1,10)),'uniformMomentum':(sp.Rational(1,5),sp.Rational(1,10),p),'rotation':rotation,'rowMap':rowmap,'sourceRowCopies':{row:copied['native/'+row+'.json'] for row in ROWS},'nativeContract':contracts,'uniformChart':source_method(Path(m['engineSource']).read_text(),'EdgeReduction','__init__')})
-    for row in ROWS:
-        try:J.zero('source-cyclic-covariance-'+row,native[row].xreplace(rotation),native[rowmap[row]])
-        except ValueError as exc:raise SourceMapUnresolved('native covariance '+row) from exc
-    S=sp.ImmutableMatrix([[0,0,1,0,0],[1,0,0,0,0],[0,1,0,0,0],[0,0,0,1,0],[0,0,0,0,1]])
-    require(S.det()==1 and S.T*S==sp.eye(5),'proper orthonormal chart map')
-    # Dimensions are checked on unbound native operands, not guessed after binding.
-    dimensions=contracts['dimensions'];zero_dim=(sp.S.Zero,)*3
-    def dimension(expr):
-        if expr.is_Number or expr==sp.I:return zero_dim
-        if expr.is_Symbol:
-            require(expr.name in dimensions,'native dimensions '+expr.name);return tuple(map(sp.Rational,dimensions[expr.name]))
-        if expr.is_Add:
-            ds=[dimension(v) for v in expr.args if v!=0];require(not ds or all(d==ds[0] for d in ds),'native additive dimensions');return ds[0] if ds else zero_dim
-        if expr.is_Mul:
-            ds=[dimension(v) for v in expr.args];return tuple(map(sum,zip(*ds)))
-        if expr.is_Pow and expr.exp.is_Rational:return tuple(expr.exp*d for d in dimension(expr.base))
-        raise ValueError('unsupported native dimension node '+str(type(expr)))
-    rowunits=[dimension(native[r]) for r in ROWS];fieldunits=[tuple(dimensions[f]) for f in FIELDS]
-    J.emit('source-units',{'nativeRows':rowunits,'nativeFields':fieldunits,'frame':physical['unit_frame'],'unitMap':'proper permutation only, scalar factor one from strong epsilon coefficient; no power map'})
-    lift_input,L=operation('selected-lift');U=restored['uniformSource'];common=restored['uniformCommon'];response=restored['uniformResponse']
-    native_hashes=[h for path,h in U['sourceFiles'].items() if path.endswith('/S11c_b_exports.py')]
-    require(native_hashes==[sha(m['bSource'])],'same original physical slab export across old/new sources')
-    J.join('lift-input-curl',lift_input['uniform'],U['curl']);J.join('lift-input-common',lift_input['common'],common);J.join('lift-input-parameters',lift_input['parameters'],params)
-    require(lift_input['source']==sha(m['engineSource']),'actual original lift source version')
-    L={**L,'fieldUnits':response['fieldUnits'],'currentUnit':response['currentUnit']}
-    J.join('lift-source-evidence',L['source'],blobs['lift/source-joins'])
-    require(not any(s.name in ('eta_bg','sigma_W') for s in L['lift'].free_symbols),'grade-independent lift')
-    require(tuple(L['source']['fieldOrder'])==('u1','u2','u3','theta','eW'),'source field order')
-    expected_units=[fieldunits[i] for i in (1,2,0,3,4)];require(list(map(tuple,L['fieldUnits']))==expected_units,'native field unit permutation')
-    J.emit('source-scalar-normalization',{'strongMatrixSource':source_method(Path(m['engineSource']).read_text(),'ConstantEndPencil','strong_matrix'),'pairingSource':source_method(Path(m['engineSource']).read_text(),'ClosedCurrentPairing','construct'),'epsilonCount':1,'factor':1,'excludedPowerMap':'PLUS_ROW_POWER_MAP','weakDuality':raw['native/weak-duality.json']})
-    require(context['fullAssembly']['sourceRows']==list(ROWS) and context['fullAssembly']['fields']==list(FIELDS),'native weak row field identities')
+    with SourceStage(J,'native-source-chart-units'):
+        S,side_map=source_chart_and_scale(m,J,D,raw,physical,context,depth,U,L,profile)
+        # Native coordinate covariance is new missing evidence, never a producer replay.
+        tex={'ast':ast,'hashlib':hashlib,'Path':Path}
+        exec(compile(definitions(Path(m['textHelperSource']).read_text(),('require','text_sha','literal_record','tuple_arguments','literal_key','named','selected_case')),'inert-source-text-only','exec'),tex)
+        original_text,provenance=tex['literal_record'](Path(m['bSource']),'slab_operator')
+        _,case_text=tex['selected_case'](original_text,('LAB_HELD','RHO4_CONSTANT'));value_text=tex['named'](case_text,'VALUE')
+        actual_rows={}
+        for key in ('U_BODY_BALANCE','THETA_BALANCE','E_W_BALANCE'):
+            part=tex['named'](tex['named'](value_text,key),'EXPANDED')
+            if key=='U_BODY_BALANCE':actual_rows.update({'U'+str(i):v for i,v in enumerate(tex['tuple_arguments'](part))})
+            else:actual_rows[key]=part
+        for row in ROWS:
+            require(raw['native/'+row+'.json']['source']==provenance and raw['native/'+row+'.json']['fullConstructor']==actual_rows[row],'actual native raw source row '+row)
+        J.emit('native-source-text-joins',{'provenance':provenance,'rowHashes':{k:hashlib.sha256(v.encode()).hexdigest() for k,v in actual_rows.items()},'sourceConstructorCalled':False})
+        contracts=D(raw['native/wave-profile.json'])
+        c2_text=Path(m['c2Source']).read_text();c2_tree=ast.parse(c2_text)
+        assignments={t.id:n.value for n in c2_tree.body if isinstance(n,ast.Assign) for t in n.targets if isinstance(t,ast.Name)}
+        require(contracts['dimensions']==ast.literal_eval(assignments['DIMENSION_SCHEMA']),'actual native unit schema')
+        wave_node=next(n for n in c2_tree.body if isinstance(n,ast.FunctionDef) and n.name=='wave_jet')
+        require(contracts['waveSource']==ast.get_source_segment(c2_text,wave_node),'actual native wave/derivative convention')
+        native={row:D({'text':'native source operand','srepr':raw['native/'+row+'.json']['fullConstructor']}) for row in ROWS}
+        atoms=set().union(*(v.free_symbols for v in native.values()));byname={s.name:s for s in atoms};require(len(byname)==len(atoms),'unique native assumptions')
+        scalar_names=set(physical['parameters'])|{'epsilon_shape','sigma_W','delta_p_plus','delta_p_minus','d_w_delta_p_plus','d_w_delta_p_minus'}
+        rotation={}
+        for atom in atoms:
+            name=rotated_name(atom.name,scalar_names);require(name in byname,'mapped native atom present '+name)
+            target=byname[name];require(atom.assumptions0==target.assumptions0,'rotation assumptions');rotation[atom]=target
+        rowmap={'U0':'U2','U1':'U0','U2':'U1','THETA_BALANCE':'THETA_BALANCE','E_W_BALANCE':'E_W_BALANCE'}
+        J.emit('native-constructor-footprint',{'constructorBytes':{r:len(actual_rows[r].encode()) for r in ROWS},'totalConstructorBytes':sum(len(v.encode()) for v in actual_rows.values()),'peakRssKiBBeforeCovariance':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,'prospectiveMemoryGuarantee':False})
+        J.emit('source-chart-operands',{'weakMomentum':(p,sp.Rational(1,5),sp.Rational(1,10)),'uniformMomentum':(sp.Rational(1,5),sp.Rational(1,10),p),'rotation':rotation,'rowMap':rowmap,'sourceRowCopies':{row:copied['native/'+row+'.json'] for row in ROWS},'nativeContract':contracts,'uniformChart':source_method(Path(m['engineSource']).read_text(),'EdgeReduction','__init__')})
+        for row in ROWS:
+            try:J.zero('source-cyclic-covariance-'+row,native[row].xreplace(rotation),native[rowmap[row]])
+            except ValueError as exc:raise SourceMapUnresolved('native covariance '+row) from exc
+        S=sp.ImmutableMatrix([[0,0,1,0,0],[1,0,0,0,0],[0,1,0,0,0],[0,0,0,1,0],[0,0,0,0,1]])
+        require(S.det()==1 and S.T*S==sp.eye(5),'proper orthonormal chart map')
+        # Dimensions are checked on unbound native operands, not guessed after binding.
+        dimensions=contracts['dimensions'];zero_dim=(sp.S.Zero,)*3
+        def dimension(expr):
+            if expr.is_Number or expr==sp.I:return zero_dim
+            if expr.is_Symbol:
+                require(expr.name in dimensions,'native dimensions '+expr.name);return tuple(map(sp.Rational,dimensions[expr.name]))
+            if expr.is_Add:
+                ds=[dimension(v) for v in expr.args if v!=0];require(not ds or all(d==ds[0] for d in ds),'native additive dimensions');return ds[0] if ds else zero_dim
+            if expr.is_Mul:
+                ds=[dimension(v) for v in expr.args];return tuple(map(sum,zip(*ds)))
+            if expr.is_Pow and expr.exp.is_Rational:return tuple(expr.exp*d for d in dimension(expr.base))
+            raise ValueError('unsupported native dimension node '+str(type(expr)))
+        rowunits=[dimension(native[r]) for r in ROWS];fieldunits=[tuple(dimensions[f]) for f in FIELDS]
+        J.emit('source-units',{'nativeRows':rowunits,'nativeFields':fieldunits,'frame':physical['unit_frame'],'unitMap':'proper permutation only, scalar factor one from strong epsilon coefficient; no power map'})
+        lift_input,L=operation('selected-lift');U=restored['uniformSource'];common=restored['uniformCommon'];response=restored['uniformResponse']
+        native_hashes=[h for path,h in U['sourceFiles'].items() if path.endswith('/S11c_b_exports.py')]
+        require(native_hashes==[sha(m['bSource'])],'same original physical slab export across old/new sources')
+        J.join('lift-input-curl',lift_input['uniform'],U['curl']);J.join('lift-input-common',lift_input['common'],common);J.join('lift-input-parameters',lift_input['parameters'],params)
+        require(lift_input['source']==sha(m['engineSource']),'actual original lift source version')
+        L={**L,'fieldUnits':response['fieldUnits'],'currentUnit':response['currentUnit']}
+        J.join('lift-source-evidence',L['source'],blobs['lift/source-joins'])
+        require(not any(s.name in ('eta_bg','sigma_W') for s in L['lift'].free_symbols),'grade-independent lift')
+        require(tuple(L['source']['fieldOrder'])==('u1','u2','u3','theta','eW'),'source field order')
+        expected_units=[fieldunits[i] for i in (1,2,0,3,4)];require(list(map(tuple,L['fieldUnits']))==expected_units,'native field unit permutation')
+        J.emit('source-scalar-normalization',{'strongMatrixSource':source_method(Path(m['engineSource']).read_text(),'ConstantEndPencil','strong_matrix'),'pairingSource':source_method(Path(m['engineSource']).read_text(),'ClosedCurrentPairing','construct'),'epsilonCount':1,'factor':1,'excludedPowerMap':'PLUS_ROW_POWER_MAP','weakDuality':raw['native/weak-duality.json']})
+        require(context['fullAssembly']['sourceRows']==list(ROWS) and context['fullAssembly']['fields']==list(FIELDS),'native weak row field identities')
     # Restore old proof operands and source profile values rather than calculating limits.
     profile=blobs['profiles/constant-end-and-zero-jets']
     for item in profile['profileJoins']:
         require(item['residual']==0 and all(v==0 for v in item['jets']),'inherited profile returns')
         require(item['supplied']==U['profileEndpoints'][item['source'][2]],'actual profile endpoint operand')
+    with SourceStage(J,'saved-scalar-normalization'):
+        saved_normalization_joins(m,J,D,raw,cells,context,p,params)
     groups={side:{g:sp.zeros(5) for g in G} for side in ('minus','plus')};closed={side:{g:sp.zeros(5) for g in G} for side in groups}
     coverage=[];seen=set()
     for index,c in enumerate(cells):
@@ -465,26 +560,27 @@ def run_science(m,J,ns,codec):
         E=sum((eta**a*sigma**b*Egrades[a,b] for a,b in G),sp.zeros(5));Ephys=E.subs(finite_origin)
         Eg0=sum((eta**a*sigma**b*Ezero[a,b] for a,b in G),sp.zeros(5)).subs(finite_origin)
         # Raw binding is a missing new comparison; no old EndBinding method called.
-        source=r['CLOSED_PENCIL_LEGS'][0].xreplace(U['profileEndpoints'])
-        wl,wr=r['FREQUENCY_LEGS'];kl,kr=r['NORMAL_LEGS'];ql,qr=r['BULK_LEGS']
-        mapping={wl:sp.Integer(3),wr:sp.Integer(3),kr:p,qr:q}
-        for s in source.free_symbols-set(mapping):
-            if s.name=='eta_bg':mapping[s]=eta
-            elif s.name=='sigma_W':mapping[s]=sigma
-            elif s.name=='c_s0':mapping[s]=cs
-            elif s.name in ('omega','s11cdFrequency'):mapping[s]=sp.Integer(3)
-            elif s.name in params:mapping[s]=params[s.name]
-            else:raise ValueError('raw source binding unavailable '+s.name)
-        Praw=source.xreplace(mapping);J.emit(end+'-raw-source-binding',{'nativeSource':r['CLOSED_PENCIL_LEGS'][0],'endpoints':U['profileEndpoints'],'source':source,'map':mapping,'raw':Praw,'origin':finite_origin,'oldPhysical':Pold,'halfHeights':raw['controls/conclusion.json']['heights']})
-        require(not any(s.name=='epsilon_shape' for s in Praw.free_symbols|r['CLOSED_PENCIL_LEGS'][0].free_symbols),'positive equation pencil already coefficient of single epsilon')
-        require(not Praw.atoms(sp.Integral,sp.Derivative,sp.Limit,sp.Subs),'no unjoined original source operator')
-        require(Praw.free_symbols<=set((p,q,cs,eta,sigma)),'complete raw binding')
-        originjoin=inspect_matrix(Praw.subs(finite_origin)-Pold,p,q,cs,J,end+'/raw-origin')
-        require(all(x['status']=='ZERO' for row in originjoin for x in row),'raw finite origin/source join')
-        # Entry units derive from the unbound native rows and the inherited field frame.
-        roworder=(1,2,0,3,4);native_entry_units=[[tuple(a-b for a,b in zip(rowunits[i],fieldunits[j])) for j in roworder] for i in roworder]
-        require([[tuple(U['units']['strong'][(5*i+j,)]) for j in range(5)] for i in range(5)]==native_entry_units,'strong native row/field units')
-        J.emit(end+'-unit-join',{'native':native_entry_units,'old':U['units']['strong'],'restoredRestrictionUnits':R['units'],'factor':1})
+        with SourceStage(J,end+'-native-source-binding-units'):
+            source=r['CLOSED_PENCIL_LEGS'][0].xreplace(U['profileEndpoints'])
+            wl,wr=r['FREQUENCY_LEGS'];kl,kr=r['NORMAL_LEGS'];ql,qr=r['BULK_LEGS']
+            mapping={wl:sp.Integer(3),wr:sp.Integer(3),kr:p,qr:q}
+            for s in source.free_symbols-set(mapping):
+                if s.name=='eta_bg':mapping[s]=eta
+                elif s.name=='sigma_W':mapping[s]=sigma
+                elif s.name=='c_s0':mapping[s]=cs
+                elif s.name in ('omega','s11cdFrequency'):mapping[s]=sp.Integer(3)
+                elif s.name in params:mapping[s]=params[s.name]
+                else:raise ValueError('raw source binding unavailable '+s.name)
+            Praw=source.xreplace(mapping);J.emit(end+'-raw-source-binding',{'nativeSource':r['CLOSED_PENCIL_LEGS'][0],'endpoints':U['profileEndpoints'],'source':source,'map':mapping,'raw':Praw,'origin':finite_origin,'oldPhysical':Pold,'halfHeights':raw['controls/conclusion.json']['heights']})
+            require(not any(s.name=='epsilon_shape' for s in Praw.free_symbols|r['CLOSED_PENCIL_LEGS'][0].free_symbols),'positive equation pencil already coefficient of single epsilon')
+            require(not Praw.atoms(sp.Integral,sp.Derivative,sp.Limit,sp.Subs),'no unjoined original source operator')
+            require(Praw.free_symbols<=set((p,q,cs,eta,sigma)),'complete raw binding')
+            originjoin=inspect_matrix(Praw.subs(finite_origin)-Pold,p,q,cs,J,end+'/raw-origin')
+            require(all(x['status']=='ZERO' for row in originjoin for x in row),'raw finite origin/source join')
+            # Entry units derive from the unbound native rows and the inherited field frame.
+            roworder=(1,2,0,3,4);native_entry_units=[[tuple(a-b for a,b in zip(rowunits[i],fieldunits[j])) for j in roworder] for i in roworder]
+            require([[tuple(U['units']['strong'][(5*i+j,)]) for j in range(5)] for i in range(5)]==native_entry_units,'strong native row/field units')
+            J.emit(end+'-unit-join',{'native':native_entry_units,'old':U['units']['strong'],'restoredRestrictionUnits':R['units'],'factor':1})
         action=Ephys*lift;A=(Ephys-Pold)*lift;Rnew=action-lift*Dold;Delta=Ephys-Pold
         for i in range(5):
             for j in range(2):J.zero(end+'-raw-AR-consistency-%d-%d'%(i,j),Rnew[i,j]-A[i,j],Iold[i,j])
@@ -499,7 +595,7 @@ def run_science(m,J,ns,codec):
                 jt={g:wave_test(v,p,q,cs,J,nm+'-J-%d%d'%g) for g,v in joins.items()}
                 attrib=sum(eta**a*sigma**b*joins[a,b] for a,b in G)-oldc['remainder']
                 attribution=wave_test(A[i,j]-attrib.subs(finite_origin),p,q,cs,J,nm+'-attribution')
-                if attribution['status']!='ZERO' or newc['remainder']!=0:
+                if not attribution_usable(attribution['status'],newc['remainder']==0):
                     grade.append({'row':i,'column':j,'status':'ATTRIBUTION_UNAVAILABLE','finite':selected[i][j]['status'],'waveAttribution':attribution,'newLawRemainder':newc['remainder'],'oldRemainder':oldc['remainder']});continue
                 retained='AGREEMENT' if all(v['status']=='ZERO' for v in jt.values()) else ('RETAINED_MISMATCH' if any(v['status']=='NONZERO_CERTIFIED' for v in jt.values()) else 'UNRESOLVED')
                 finite=selected[i][j]['status'];classification='FINITE_TRUNCATION_DIFFERENCE' if retained=='AGREEMENT' and finite=='NONZERO_CERTIFIED' else retained

@@ -1,0 +1,124 @@
+{
+  "status": "BOTH_INDEPENDENT_BUILD_REVIEWERS_STARTED_HOOK_ARMED",
+  "recordedUtc": "2026-10-03T12:30:29.004822+00:00",
+  "preparedCommit": "81e6296d",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/build-review-r3",
+  "packetSha256": "1475fc188462760ca67cf3a6137870c235f8f76dfbbe2eeb891269b1d8342efe",
+  "archiveSha256": "10b1dde6d79f8f0adad669e5ca242bbf0f3753002795a5d7d8121d9658f7e597",
+  "files": 79,
+  "launch": {
+    "jobPid": 3987893,
+    "watcherPid": 3987895,
+    "packetSha256": "1475fc188462760ca67cf3a6137870c235f8f76dfbbe2eeb891269b1d8342efe",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "reviewerStarts": {
+    "claude": {
+      "engine": "claude",
+      "sessionId": "e51b2fe3-bbc3-4260-ab4c-c8cdd7c02388",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "e51b2fe3-bbc3-4260-ab4c-c8cdd7c02388"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/build-review-r3/claude/work",
+      "startedUtc": "2026-10-03T12:28:31.493888+00:00",
+      "packetSha256": "1475fc188462760ca67cf3a6137870c235f8f76dfbbe2eeb891269b1d8342efe",
+      "promptSha256": "55ecfdc8ff9ca555ac9c2eddaac55c42b0fff9dafbd8e2064921a70c71f11d32",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 3988315
+    },
+    "grok": {
+      "engine": "grok",
+      "sessionId": "2f9c0bcf-adf8-40a0-ab62-aa5d01935e45",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/build-review-r3/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/build-review-r3/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "2f9c0bcf-adf8-40a0-ab62-aa5d01935e45"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/build-review-r3/grok/work",
+      "startedUtc": "2026-10-03T12:28:31.486315+00:00",
+      "packetSha256": "1475fc188462760ca67cf3a6137870c235f8f76dfbbe2eeb891269b1d8342efe",
+      "promptSha256": "55ecfdc8ff9ca555ac9c2eddaac55c42b0fff9dafbd8e2064921a70c71f11d32",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 3988308
+    }
+  },
+  "startupChecks": {
+    "hookBeforeReviewAuthorization": true,
+    "packetIntact": true,
+    "archiveIntact": true,
+    "coordinatorStderrEmpty": true,
+    "claudePrivateInput": true,
+    "claudeNoScience": true,
+    "claudeSamePacket": true,
+    "claudePromptHash": true,
+    "grokPrivateInput": true,
+    "grokNoScience": true,
+    "grokSamePacket": true,
+    "grokPromptHash": true,
+    "distinctSessions": true,
+    "distinctPrivateInputs": true
+  },
+  "hostProcessVerification": {
+    "claude": {
+      "pid": 3988315,
+      "present": true,
+      "finishedUtc": null
+    },
+    "grok": {
+      "pid": 3988308,
+      "present": true,
+      "finishedUtc": null
+    },
+    "source": "One escalated read-only /proc inspection after sandbox namespace did not expose host PIDs",
+    "sandboxCheck": "Both PID presence predicates false; no failure/retry of reviewers inferred. Host verification confirmed both live. The premature canonical-record git add failed because the record had not yet been written; no commit or file loss."
+  },
+  "hookObservedWaiting": true,
+  "stateObservedRunning": true,
+  "scienceCalls": 0,
+  "noResultsReadBeforeBothFinish": true,
+  "noModelPollingOrRecurringTask": true,
+  "scope": "Bounded actual saved normalization / end-uniform source comparison build only",
+  "noAutoRetry": true
+}

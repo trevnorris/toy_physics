@@ -1,0 +1,49 @@
+{
+  "recordedUtc": "2026-10-03T07:31:24.620936+00:00",
+  "status": "BOTH_CORRECTED_INDEPENDENT_BUILD_REVIEWS_LAUNCHED",
+  "reviewedSourceCommit": "be3b7f2b",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/build-review-r2",
+  "launch": {
+    "jobPid": 3627691,
+    "watcherPid": 3627692,
+    "packetSha256": "c3c73f334e1f610b9e1d24dfac499d10fe966b3e4f54ebd09500be1510167313",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hookStatus": "waiting",
+  "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "privateCopiesIntact": true,
+  "privateFileHashChecks": 1008,
+  "reviewers": {
+    "claude": {
+      "engine": "claude",
+      "sessionId": "7b0235fe-351d-468b-95b9-7bc622087b16",
+      "pid": 3627709,
+      "startedUtc": "2026-10-03T07:30:49.206993+00:00",
+      "packetSha256": "c3c73f334e1f610b9e1d24dfac499d10fe966b3e4f54ebd09500be1510167313",
+      "promptSha256": "1e9e8f26c2e1518f28850d0a9a49d2f92c7ebc15ece3ea96d315286707012e32",
+      "scientificExecutionEnabled": false
+    },
+    "grok": {
+      "engine": "grok",
+      "sessionId": "3d03509d-becd-4608-9752-5e5fec4e99f2",
+      "pid": 3627708,
+      "startedUtc": "2026-10-03T07:30:49.205518+00:00",
+      "packetSha256": "c3c73f334e1f610b9e1d24dfac499d10fe966b3e4f54ebd09500be1510167313",
+      "promptSha256": "1e9e8f26c2e1518f28850d0a9a49d2f92c7ebc15ece3ea96d315286707012e32",
+      "scientificExecutionEnabled": false
+    }
+  },
+  "deliveredReportsRead": false,
+  "methodClearanceIsNotBuildClearance": true,
+  "scienceCalls": 0,
+  "noModelPolling": true,
+  "noAutomaticRetry": true,
+  "otherUserWorkPreserved": true
+}

@@ -1,0 +1,121 @@
+{
+  "recordedUtc": "2026-10-03T08:04:23.270091+00:00",
+  "status": "INDEPENDENT_CORRECTED_BUILD_REVIEWS_RUNNING",
+  "preparedCommit": "0784c666",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/build-review-r3",
+  "launch": {
+    "jobPid": 3698694,
+    "watcherPid": 3698695,
+    "packetSha256": "83bd3c77b0e411da332193299bfd4a63ff04ec60d161e8a02a16f5c566782ee2",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "initialReviewerReceipts": {
+    "claude": {
+      "engine": "claude",
+      "sessionId": "9e3221c4-b51c-413f-9efb-f6f62ac5bc57",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "9e3221c4-b51c-413f-9efb-f6f62ac5bc57"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/build-review-r3/claude/work",
+      "startedUtc": "2026-10-03T08:03:40.789055+00:00",
+      "packetSha256": "83bd3c77b0e411da332193299bfd4a63ff04ec60d161e8a02a16f5c566782ee2",
+      "promptSha256": "39cf847bf594aef738b40b87a80c4cb01becf6eef89576cedbdf069b501b06ab",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 3698803
+    },
+    "grok": {
+      "engine": "grok",
+      "sessionId": "77b7e235-1c0b-450a-a0fe-ebef70bd507e",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/build-review-r3/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/build-review-r3/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "77b7e235-1c0b-450a-a0fe-ebef70bd507e"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/build-review-r3/grok/work",
+      "startedUtc": "2026-10-03T08:03:40.848821+00:00",
+      "packetSha256": "83bd3c77b0e411da332193299bfd4a63ff04ec60d161e8a02a16f5c566782ee2",
+      "promptSha256": "39cf847bf594aef738b40b87a80c4cb01becf6eef89576cedbdf069b501b06ab",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 3698807
+    }
+  },
+  "completionHook": {
+    "status": "waiting",
+    "watcherPid": 3698695,
+    "jobPid": 3698694,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-03T08:03:35.687377+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "25357dbbb3810f6ae49712bf626ef0a1d38008ca56b31c3f0684a12df5d20b79",
+    "notifications": {}
+  },
+  "packetSha256": "83bd3c77b0e411da332193299bfd4a63ff04ec60d161e8a02a16f5c566782ee2",
+  "archiveSha256": "aff6b563a26bb0892b7dacf53c386a67432a2bce15cba4b9168755d4738681d7",
+  "approval": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-03T08:02:37.355611+00:00",
+    "packetSha256": "83bd3c77b0e411da332193299bfd4a63ff04ec60d161e8a02a16f5c566782ee2",
+    "archiveSha256": "aff6b563a26bb0892b7dacf53c386a67432a2bce15cba4b9168755d4738681d7",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 504,
+    "bytes": 146510506,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "AGENTS standing review-submission authorization and repeated continued bounded research direction",
+    "scope": "Concrete translated retained Schwartz weak ends; no integral, finite matrix, roots, current or loss",
+    "noAutomaticRetry": true
+  },
+  "privateCopyChecks": 1008,
+  "startupChecksPassed": true,
+  "reviewersKeptSeparate": true,
+  "reportsReadBeforeBothFinish": false,
+  "scienceCalls": 0,
+  "scientificPayloadRestored": false,
+  "noRetry": true,
+  "noModelPolling": true,
+  "next": "Local completion hook returns to this session after both reports finish; then inspect literal reports and exact bytes before adjudication. No science until actual substantive assessment/readiness."
+}

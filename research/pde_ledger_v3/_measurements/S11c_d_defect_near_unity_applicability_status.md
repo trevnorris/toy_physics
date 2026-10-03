@@ -114,6 +114,28 @@ source snapshots and ten additional identity copies match. The startup record
 is S11c_d_defect_end_uniform_continue_launch_record.json; result inspection is
 pending its completion hook.
 
+Completion inspection now supports the bounded selected equation correspondence
+at both ends. The saved-evidence continuation completed in 66.854 seconds,
+peaking at 840,445,952 bytes with zero swap or memory events. All 28,209
+inspection checks passed: 13,845 posthashes, 75 snapshots and 6,885 prior copies
+remain intact. The formerly unpublished RIGHT pairing join now has actual
+unchanged-predicate evidence, with complete typed operand receipts. RIGHT's two
+closed grazing residuals are zero and its three controls respond; together with
+LEFT this gives four grazing targets, eight inherited approach paths and six
+response controls. The full 200-cell participation record identifies 80 cells
+with zero selected lift weight; selected agreement does not test those entries.
+All completed prior equation/grade/source work was reused, not recalculated.
+
+The restored summary prints 75 instances of the original explicit Ne(1,0)
+domain as True. Inspection checked that this is the only scalar-summary
+representation change; every original condition and operand is preserved.
+No threshold or scientific criterion changed. The original MemoryError and
+literal NEEDS/CLEAR build history remain. A and R are dependent comparisons,
+and neither current normalization nor a scattering inverse/loss result follows.
+The next bounded task is a numerical Schwartz-action method for the corrected
+weak operator, with contact/PV, moving endpoints, tails and independent numerical
+controls assessed before a worker is built. No defect sweep is started.
+
 Independent preparation at 0798c4b5 mapped the legacy Gaussian/matrix route and
 verified 131 selected opaque input/return receipts. It is preparation only:
 old cs10 arrays do not validate the corrected near-unity operator, and no

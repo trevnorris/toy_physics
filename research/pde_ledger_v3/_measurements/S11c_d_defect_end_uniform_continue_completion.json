@@ -1,0 +1,132 @@
+{
+  "status": "BOUNDED_SELECTED_END_UNIFORM_EQUATION_CORRESPONDENCE_SUPPORTED",
+  "utc": "2026-10-03T14:53:04.028691+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/continuation-01",
+  "inspectionChecks": 28209,
+  "allInspectionChecksPassed": true,
+  "cleanProcess": true,
+  "acceptedScope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": [
+      1,
+      2
+    ],
+    "target": "Saved-evidence continuation of unfinished RIGHT pairing/grazing/controls only",
+    "independentGrades": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "noFrequencyDerivativeTransfer": true,
+    "noCurrentOrLoss": true,
+    "noRoots": true,
+    "noFiniteSolve": true,
+    "noDefectSweep": true
+  },
+  "cost": {
+    "workerSeconds": 66.85435487306677,
+    "guardSeconds": 68.12823112681508,
+    "peakCgroupBytes": 840445952,
+    "swapBytes": 0,
+    "memoryEvents": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0,
+      "sock_throttled": 0
+    },
+    "minimumHostAvailableBytes": 20205780992
+  },
+  "coverage": {
+    "newArtifacts": 36,
+    "newLiteralZeros": 2,
+    "newExactTypedJoins": 4,
+    "reusedIdenticalTypedJoins": 2,
+    "restoredEvidenceArtifacts": 6796,
+    "restoredLiteralZeroReturns": 2281,
+    "restoredOldOperations": 18,
+    "newTopCompleteOperations": 1,
+    "rightGrazingTargets": 2,
+    "rightInheritedPaths": 4,
+    "newResponsiveControls": 3,
+    "totalBothEndResponsiveControls": 6,
+    "participationCells": 200,
+    "zeroWeightCells": 80,
+    "posthashes": 13845,
+    "snapshots": 75,
+    "priorCopies": 6885,
+    "additionalIdentityCopies": 10,
+    "files": 6929,
+    "bytes": 550907206
+  },
+  "results": {
+    "LEFT": {
+      "retainedStatuses": [
+        "AGREEMENT"
+      ],
+      "finiteStatuses": [
+        "ZERO"
+      ],
+      "controlCoverage": {
+        "omit-cell": true,
+        "reverse-lift-normal": true,
+        "opposite-sheet": true
+      }
+    },
+    "RIGHT": {
+      "retainedStatuses": [
+        "AGREEMENT"
+      ],
+      "finiteStatuses": [
+        "ZERO"
+      ],
+      "controlCoverage": {
+        "omit-cell": true,
+        "reverse-lift-normal": true,
+        "opposite-sheet": true
+      }
+    }
+  },
+  "summaryDomainRepresentation": {
+    "count": 75,
+    "exactCase": "Unequality(Integer(1),Integer(0)) restored and rendered as true",
+    "originalDomainOperandsPreserved": true
+  },
+  "interpretation": "Both selected end-equation comparisons agree in all independent retained grades on declared wave/denominator domains; finite selected A/R and both closed grazing targets per end are zero. A/R are dependent through inherited raw I_old. All six response controls are responsive; they establish sensitivity only. Selected zero-weighted pressure/direct entries remain untested by selected agreement. No frequency/current transfer, plane-wave action, inverse, finite solve or loss follows.",
+  "literalBuildVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS BOUNDED END-UNIFORM BUILD"
+  },
+  "continuationIndependentBuildClearance": false,
+  "oldFailurePreserved": {
+    "path": "prior/failure.json",
+    "sha256": "7999640ba6654b96b342cfd6e9e951d0ebf08aed10b3f58c79f4332d662b48b4",
+    "bytes": 2644
+  },
+  "noScientificRestorationDuringInspection": true,
+  "noNewScientificValidator": true,
+  "protectedSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "next": "Prepare the next bounded numerical-action method from the corrected retained weak operator and saved Gaussian/matrix route inventory, with independent assessment before implementation. No defect sweep or current/loss interpretation."
+}

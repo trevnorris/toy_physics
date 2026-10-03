@@ -140,3 +140,4 @@ _scratch/s11c/s11c-d-two-asymptote-20260927/saved-inspection/complete/operations
 # Pinned inputs for the user-approved right-end memory continuation.
 research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_inputs.json -diff
 research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_files.json -diff
+research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_continue_files.json -diff

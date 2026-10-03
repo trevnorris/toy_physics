@@ -107,6 +107,13 @@ LEFT result, source construction or selected comparison is rerun. Readiness
 records continuationIndependentBuildClearance=false; no new independent CLEAR
 or scientific acceptance is claimed.
 
+The continuation launched from a6982bf2 with its local completion hook armed
+first. Actual enforcement is verified: RuntimeMaxUSec=infinity, Restart=no,
+4 GiB native/cgroup memory, zero swap, CPU 15, one thread and 32 tasks. All 75
+source snapshots and ten additional identity copies match. The startup record
+is S11c_d_defect_end_uniform_continue_launch_record.json; result inspection is
+pending its completion hook.
+
 Independent preparation at 0798c4b5 mapped the legacy Gaussian/matrix route and
 verified 131 selected opaque input/return receipts. It is preparation only:
 old cs10 arrays do not validate the corrected near-unity operator, and no

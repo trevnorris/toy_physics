@@ -69,8 +69,33 @@ The bounded comparison was launched from prepared commit 273b2b34 with its
 completion hook armed first. Actual host enforcement was verified: 4 GiB native
 and cgroup memory, zero swap, CPU 15, one thread, 32 tasks, RuntimeMaxUSec=infinity
 and Restart=no. All 65 source snapshots and 10 additional identity copies match.
-The result is pending; startup containment is not scientific acceptance. The
-canonical S11c_d_defect_end_uniform_launch_record.json records actual receipts.
+The run stopped after 4,916.114 worker seconds with MemoryError while
+materializing JSON for the RIGHT native-pairing evidence. No equation guard or
+time cutoff caused the recorded stop. The completed source/chart/unit joins,
+30 restored gamma units, all 400 local/200 end normalization joins and both
+ends' conditional on-wave scalar/retained-grade comparisons are preserved.
+Both selected A and R have zero saved entries and all four selected retained
+grade differences are zero; A/R remain dependent through raw I_old. All 25
+full-difference entries per end also have conditional on-wave zero certificates.
+LEFT completed both grazing targets, four inherited path joins and three
+responsive controls. RIGHT grazing and controls remain unfinished, so this is
+partial evidence, not full comparison acceptance. The unsaved RIGHT pairing
+join is not accepted from the traceback.
+
+Completion inspection passed 14,807 metadata/operand/receipt checks: 6,796
+evidence artifacts, 2,281 literal-zero returns, 240 wave certificates, 1,085
+exact structure joins, 146 intact posthashes, 65 snapshots and 81 saved
+JSON/opaque copies. All 6,885 files/540,133,852 bytes remain intact. Peak cgroup
+memory was 4,236,333,056 bytes, zero swap or memory events; native allocation
+failure is preserved. No retry or new validator was run. A saved-evidence
+continuation must resume only the unfinished RIGHT joins/grazing/controls and
+avoid materializing huge duplicate symbolic JSON. The canonical completion
+record is S11c_d_defect_end_uniform_completion.json.
+
+Independent preparation at 0798c4b5 mapped the legacy Gaussian/matrix route and
+verified 131 selected opaque input/return receipts. It is preparation only:
+old cs10 arrays do not validate the corrected near-unity operator, and no
+numerical action, matrix or solve was run.
 
 Strict rest bulk, LAB_HELD/RHO4_CONSTANT, one tanh profile and saved direction
 remain explicit. Drain flow, primitive speed derivation, full Green/FORM/A11/A12

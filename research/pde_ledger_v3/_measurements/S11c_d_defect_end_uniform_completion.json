@@ -1,0 +1,254 @@
+{
+  "status": "PARTIAL_END_UNIFORM_AGREEMENT_PRESERVED_RIGHT_GRAZING_CONTROLS_UNFINISHED",
+  "recordedUtc": "2026-10-03T14:31:14.291146+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01",
+  "gateSha256": "e885903e868743cd33693981524390bb4cf266d2e129574391d519cd1bf746e1",
+  "workerSha256": "4449a61cda79b075d1e182cb5b6ada0c9cac52398ebbb2356496657911880d4f",
+  "manifestSha256": "40c28c3b5bc4c2e70dfdc595b23475c6c237f4914fb49773de338a006d81eb81",
+  "inspectionChecks": 14807,
+  "allInspectionChecksPassed": true,
+  "cleanProcessAcceptance": false,
+  "scientificOverallAcceptance": false,
+  "failure": {
+    "executionStatus": "FAILED_PRESERVED",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py\", line 748, in main\n    J=Evidence(args.out);result=J.stage('end-uniform-comparison',{'manifest':g['manifestSha256'],'build':g['buildReviewRecordSha256']},lambda:run_science(m,J,ns,codec_ns['decode']));code=0\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py\", line 338, in stage\n    value=callback();out=self.emit(name+'-return',value)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py\", line 748, in <lambda>\n    J=Evidence(args.out);result=J.stage('end-uniform-comparison',{'manifest':g['manifestSha256'],'build':g['buildReviewRecordSha256']},lambda:run_science(m,J,ns,codec_ns['decode']));code=0\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py\", line 664, in run_science\n    J.join(end+'-native-%d-pairing'%sign,native_args['pairing'],pairing)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py\", line 343, in join\n    self.emit(name,{'actual':a,'expected':b,'join':'exact typed structure','passed':exact_structure(a,b)})\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py\", line 329, in emit\n    p=self.out/(name+'.json');save(p,self.encode(value))\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py\", line 27, in save\n    raw=(json.dumps(value,indent=2,allow_nan=False)+'\\n').encode()\n  File \"/usr/lib/python3.10/json/__init__.py\", line 238, in dumps\n    **kw).encode(obj)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 201, in encode\n    chunks = list(chunks)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 431, in _iterencode\n    yield from _iterencode_dict(o, _current_indent_level)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 405, in _iterencode_dict\n    yield from chunks\n  File \"/usr/lib/python3.10/json/encoder.py\", line 405, in _iterencode_dict\n    yield from chunks\n  File \"/usr/lib/python3.10/json/encoder.py\", line 405, in _iterencode_dict\n    yield from chunks\n  File \"/usr/lib/python3.10/json/encoder.py\", line 325, in _iterencode_list\n    yield from chunks\n  File \"/usr/lib/python3.10/json/encoder.py\", line 385, in _iterencode_dict\n    yield _encoder(value)\nMemoryError\n",
+    "incompleteOperation": "end-uniform-comparison",
+    "automaticRetry": false
+  },
+  "failureClassification": "MemoryError while materializing a JSON string for RIGHT native pairing join evidence. No failed equation guard is reported. The unsaved join result is not accepted. No wall-time limit or cgroup kill.",
+  "cost": {
+    "workerSeconds": 4916.114381392021,
+    "supervisedSeconds": 4916.852821856039,
+    "guardSeconds": 4916.990873440867,
+    "peakCgroupBytes": 4236333056,
+    "swapBytes": 0,
+    "memoryEvents": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0,
+      "sock_throttled": 0
+    },
+    "minimumHostAvailableBytes": 13257379840,
+    "resourceSamples": 2459
+  },
+  "coverage": {
+    "evidenceArtifacts": 6796,
+    "literalZeroReturns": 2281,
+    "waveCertificates": 240,
+    "exactStructureJoins": 1085,
+    "independentGradeExtractions": 40,
+    "oldCompleteOperationsAvailableRestored": 18,
+    "newTopLevelCompleteOperations": 0,
+    "sourcePosthashes": 146,
+    "sourceSnapshots": 65,
+    "savedJSONCopies": 23,
+    "oldOpaqueCopies": 58,
+    "additionalIdentityCopies": 10,
+    "files": 6885,
+    "bytes": 540133852,
+    "newGammaEntries": 30,
+    "unitRegistryMatchesPerEntry": 4,
+    "localNormalizationCells": 400,
+    "endNormalizationCells": 200,
+    "normalizationWitnesses": 3,
+    "leftGrazingTargets": 2,
+    "leftInheritedPaths": 4,
+    "leftResponsiveControls": 3,
+    "rightGrazingTargets": 0,
+    "rightResponsiveControls": 0
+  },
+  "partialResults": {
+    "LEFT": {
+      "savedScalarStatuses": {
+        "raw-origin": {
+          "ZERO": 25
+        },
+        "selected-A": {
+          "ZERO": 10
+        },
+        "selected-R": {
+          "ZERO": 10
+        },
+        "full-Delta": {
+          "ZERO": 25
+        }
+      },
+      "savedGradeCells": [
+        {
+          "row": 0,
+          "column": 0,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 4,
+          "column": 0,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        }
+      ],
+      "grazingAndControlsComplete": true
+    },
+    "RIGHT": {
+      "savedScalarStatuses": {
+        "raw-origin": {
+          "ZERO": 25
+        },
+        "selected-A": {
+          "ZERO": 10
+        },
+        "selected-R": {
+          "ZERO": 10
+        },
+        "full-Delta": {
+          "ZERO": 25
+        }
+      },
+      "savedGradeCells": [
+        {
+          "row": 0,
+          "column": 0,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 0,
+          "column": 1,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 1,
+          "column": 0,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 1,
+          "column": 1,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 2,
+          "column": 0,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 2,
+          "column": 1,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 3,
+          "column": 0,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 4,
+          "column": 0,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "retained": "AGREEMENT",
+          "finite": "ZERO",
+          "excludedOldRemainderZero": true
+        }
+      ],
+      "grazingAndControlsComplete": false
+    }
+  },
+  "interpretation": "On the declared wave and original nonzero-denominator domains, both ends have saved zero A/R entries, all four selected retained-grade differences and their finite-origin attribution joins. All 25 full-difference entries per end are also saved as conditional on-wave zeros. LEFT has both closed grazing comparisons and three responsive controls. RIGHT has no completed grazing comparison/control; no global/current/scattering/loss acceptance follows. A and R are dependent via restored raw I_old; selected zero-weighted entries remain untested by selected agreement.",
+  "literalBuildVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS BOUNDED END-UNIFORM BUILD"
+  },
+  "independentBuildClearance": false,
+  "noScientificRestorationDuringInspection": true,
+  "newScientificJobLaunched": false,
+  "automaticRetry": false,
+  "protectedSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "next": "Preserve the failed worker and all operands. A local evidence-serialization repair may prepare a saved-evidence continuation of only unfinished RIGHT joins/grazing/controls, with exact operand receipts and no source/LEFT/completed RIGHT replay. No science is relaunched by this completion record."
+}

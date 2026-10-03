@@ -1,0 +1,1696 @@
+{
+  "status": "SOURCE_AND_OPAQUE_RECEIPT_PREPARATION_ONLY_NOT_EXECUTION_READY",
+  "recordedUtc": "2026-10-03T14:22:59.783186+00:00",
+  "authority": "User asks for useful independent work while the end/uniform script runs; standing authority covers bounded preparation. No new scientific run or review is launched by this inventory.",
+  "purpose": "Prepare exact reuse and missing-check inventory for future numerical action validation without depending on the pending selected end/uniform result.",
+  "sourceFragments": [
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py",
+        "sha256": "dc154817f13f05d436abebb708556778dc397775c57af6f56818103e12827058",
+        "bytes": 31020
+      },
+      "definition": "radiating_class.Radiating.prepare_gaussian",
+      "line": 216,
+      "endLine": 228,
+      "astSha256": "ed07b997ccbb58a37b7b99d0ac5cd5ab38372c8be2dcc1621cf0ff00bb5e9124"
+    },
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py",
+        "sha256": "dc154817f13f05d436abebb708556778dc397775c57af6f56818103e12827058",
+        "bytes": 31020
+      },
+      "definition": "radiating_class.Radiating.row_integral",
+      "line": 237,
+      "endLine": 255,
+      "astSha256": "85fc75f6c21937cb175e55323addc0bfc76849dc09de0de8be728c47dc05856a"
+    },
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py",
+        "sha256": "dc154817f13f05d436abebb708556778dc397775c57af6f56818103e12827058",
+        "bytes": 31020
+      },
+      "definition": "radiating_class.Radiating.rule",
+      "line": 181,
+      "endLine": 200,
+      "astSha256": "3d46e1fd86bae584af8477922dca71132b5f80c8cc4c83ea5652c805011c4d57"
+    },
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py",
+        "sha256": "dc154817f13f05d436abebb708556778dc397775c57af6f56818103e12827058",
+        "bytes": 31020
+      },
+      "definition": "uniform_gaussian",
+      "line": 341,
+      "endLine": 388,
+      "astSha256": "75f1067d2b7e9f2fdb1bb88bdd5b1f654fad409b7a0fe1b8cb5afa64e8c2250c"
+    },
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_integration_v3.py",
+        "sha256": "dc154817f13f05d436abebb708556778dc397775c57af6f56818103e12827058",
+        "bytes": 31020
+      },
+      "definition": "middle_check",
+      "line": 291,
+      "endLine": 334,
+      "astSha256": "3c1c4710e09889406486b0cf26b7f7ea2b582f85694328157689de565657ffc7"
+    },
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_finite.py",
+        "sha256": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411",
+        "bytes": 10923
+      },
+      "definition": "matrix_group",
+      "line": 33,
+      "endLine": 54,
+      "astSha256": "3c03144ec1b167399e878ee42f5da5cd7952fb159c91986d2491a3be46ff8bca"
+    },
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_finite.py",
+        "sha256": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411",
+        "bytes": 10923
+      },
+      "definition": "matrices",
+      "line": 57,
+      "endLine": 74,
+      "astSha256": "0eb9342214062a19663b140c9602fb79284c76cebf6f3e104798e73965155754"
+    },
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_finite.py",
+        "sha256": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411",
+        "bytes": 10923
+      },
+      "definition": "solve",
+      "line": 77,
+      "endLine": 107,
+      "astSha256": "49a234b61645ad54792d7a1dffa545377dab17f3f41a9df2ba368e530a852980"
+    },
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_finite.py",
+        "sha256": "61ff6cdd6c5c89d3bd1c432b840ebaddc2c62e1f84aad91a4f74fb4157210411",
+        "bytes": 10923
+      },
+      "definition": "control_report",
+      "line": 110,
+      "endLine": 131,
+      "astSha256": "212350fce00e506108a003acff5dca7b52c5aa2efd254e62f9098f5644096abd"
+    },
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_v2.py",
+        "sha256": "fbc751179e447de05ad37eb46ea5f74e730e9b909cc300f56024e653d32edbca",
+        "bytes": 15064
+      },
+      "definition": "matrix_group_setting",
+      "line": 30,
+      "endLine": 33,
+      "astSha256": "1c192c196f54f0a0aa7c1bf439c42802ea1119cd86eba8315cdc4fa0f69b0058"
+    },
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_finite_scattering.py",
+        "sha256": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+        "bytes": 30252
+      },
+      "definition": "BasisMomentum",
+      "line": 225,
+      "endLine": 319,
+      "astSha256": "5643c8187727d737c1e613ffa33aa03f667ac1d16e54790aa7d043522f163ea0"
+    },
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_finite_scattering.py",
+        "sha256": "f187d9426be8069342a363a0466c175d32a8cb46101e32a14c433ccb9118e469",
+        "bytes": 30252
+      },
+      "definition": "BasisMomentum.source_basis",
+      "line": 240,
+      "endLine": 252,
+      "astSha256": "39b02835f6e427aefbe93a6233627e88307915ca7c65bbe62440b7ba2e5fb202"
+    },
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_uniform_refinement_v2.py",
+        "sha256": "42c51a15652486d4376cd9241822a473c203b9214304d2262ec2322e96e23313",
+        "bytes": 15343
+      },
+      "definition": "run",
+      "line": 58,
+      "endLine": 128,
+      "astSha256": "74af1e9cead528184fa8347ccba0c00019e061124e442d27d5db66c0d53f1ef5"
+    },
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_uniform_refinement_v2.py",
+        "sha256": "42c51a15652486d4376cd9241822a473c203b9214304d2262ec2322e96e23313",
+        "bytes": 15343
+      },
+      "definition": "reference_identity",
+      "line": 52,
+      "endLine": 55,
+      "astSha256": "adadb0882ac31f46cd38d9335aeba208d065017acf09e2721f2ead350564d44f"
+    },
+    {
+      "source": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+        "sha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+        "bytes": 545480
+      },
+      "definition": "BoundedSourceFourierQuadrature.ThreeMomentum.batches",
+      "line": 1548,
+      "endLine": 1570,
+      "astSha256": "5a0f17296577f6318e9a517df065fa2e72fb6edd843860bf98bb33533f65ba13"
+    }
+  ],
+  "backgroundRecords": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_replacement_review_disposition.md",
+      "sha256": "f1081641a6f007eb97813db3f09680dc33256eadaab312cb7d1416560957ef34",
+      "bytes": 5383
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_report.md",
+      "sha256": "a75577ab28534dfa48e4cb44738e34e80ba29f2f83b46418ce777b49c8e08d14",
+      "bytes": 9809
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_matrix_path_test.py",
+      "sha256": "1c0981c8af4328a8d623c1a918db9135fa78978165d69e00c232e23608c5c840",
+      "bytes": 4171
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_near_unity_applicability_status.md",
+      "sha256": "30e66094ddba8c05aef761d2850c1a1c6fcb929e84257f837d8027a586526824",
+      "bytes": 8623
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition_method.md",
+      "sha256": "98c295d4f275094dc77762f24845868d2f61f1485fe6bbec6ee7f21f2103d045",
+      "bytes": 15405
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak_method.md",
+      "sha256": "d24083ac01df581f2c11c6027866f7fe3d605a9e80e4c1d1c362819f4872964a",
+      "bytes": 12652
+    }
+  ],
+  "savedMetadata": [
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operation-index.jsonl",
+      "sha256": "d4a059ce6869fde893f618005cb18a5b96c388dc768335254c858c8dafaacbf9",
+      "bytes": 28617
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/checks.json",
+      "sha256": "ee9d078ae369be6b20c0e9504792998fba3c76cb6573e5829cb80fe5cac159cb",
+      "bytes": 1814
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/numerical-settings.json",
+      "sha256": "af02564ce249af62771c466af3b0a179eb329591b8f7e0fe2d662f9ecf688b94",
+      "bytes": 1666
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/middle-integration-comparison.json",
+      "sha256": "600c67dd7a8ec1c4b1879d5b89b24b2e37d332359b73434c27f09bdd5af0ff87",
+      "bytes": 1429
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/uniform-Gaussian-0.0-column-3.json",
+      "sha256": "2af1598a68eff83107d6a6c4ab5fc7adc7ec065eacca9575ec2228d5098d38ab",
+      "bytes": 4741
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/uniform-Gaussian-0.0-column-4.json",
+      "sha256": "cdd82779eed3678c968b6c94b4e4c9e7a8287cf2c108511fd11c9ac2df3c31bc",
+      "bytes": 4667
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operation-index.jsonl",
+      "sha256": "2f15e64403dea08266c91c49901c4ca66345f3d80d4e3646fe58f9b5b6ba8edf",
+      "bytes": 34772
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/checks.json",
+      "sha256": "620601ed9266799671780985cef8946dd3b956d6817df646a05bff4c0628de9c",
+      "bytes": 1587
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/source-context-joins.json",
+      "sha256": "9a66e16fcb0447443986584bb406524ae1e4a2be29afc0d11ab0c0167341998b",
+      "bytes": 1208
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operation-index.jsonl",
+      "sha256": "cf08894cbb6986e8375b347e4c2e106a08ed31186732724c616044dcf83c528f",
+      "bytes": 54328
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/checks.json",
+      "sha256": "95d77c5e58313342ee61f1c820e9c20a3a3cd0fc0f78b6b47d007a61e40caaee",
+      "bytes": 23864
+    },
+    {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/numerical-settings.json",
+      "sha256": "2886101d9a0eb5366b55fe29368f37fe3efd22d4c2d793181eac25420944dc8b",
+      "bytes": 1922
+    }
+  ],
+  "selectedOperations": {
+    "central-pilot-v4": [
+      {
+        "name": "restore/frequency",
+        "recordedStatus": "RESTORED_PRIOR_COMPLETE_RETURN",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "restore/frequency/input.pickle",
+          "sha256": "6c6d3052e7b7a7e53ca07f5ea70f2e2379c21b2801e38d7a35d8c386ef303cf8",
+          "bytes": 432,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "restore/frequency/return.pickle",
+          "sha256": "ec9f4148aed6299d4a0c07f369e782e370a73890328b41418cc104a6f91f4a72",
+          "bytes": 9581255,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "restore/native",
+        "recordedStatus": "RESTORED_PRIOR_COMPLETE_RETURN",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "restore/native/input.pickle",
+          "sha256": "02accebb1ec5f3ea40ac9600f83d3c30594be80c9f915752e8c1424b109726a8",
+          "bytes": 243,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "restore/native/return.pickle",
+          "sha256": "fb3a9bd3a290eacfb5434c3e6f5135428bcc02432f388fe6d91ab9d0377f0f3d",
+          "bytes": 620176,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "bind/contrast-0.0",
+        "recordedStatus": "RESTORED_PRIOR_COMPLETE_RETURN",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "bind/contrast-0.0/input.pickle",
+          "sha256": "e819f6d99431da6f2fc5c783a57e7ad8258599d95ebd521b0b88e3edb5b31ead",
+          "bytes": 1105,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "bind/contrast-0.0/return.pickle",
+          "sha256": "5d43051c9673d44d60cf809a71d1d94fc52c7078d5156cf236cf94dd112c05b6",
+          "bytes": 475881,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "integration/radical-inventory",
+        "recordedStatus": "RESTORED_PRIOR_COMPLETE_RETURN",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/radical-inventory/input.pickle",
+          "sha256": "5fb83b43767d9f68e9c2299842492d6c3dec55d987105858f68cbe45fe590d03",
+          "bytes": 5412,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/radical-inventory/return.pickle",
+          "sha256": "d931b3b510bb9a5aaabdc05d48f19edcca1845c048a590902b97a1cbc553a602",
+          "bytes": 766,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "discretization/coverage",
+        "recordedStatus": "RESTORED_PRIOR_COMPLETE_RETURN",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "discretization/coverage/input.pickle",
+          "sha256": "1b698267496b9a64ccc6ce75f6dbab6be9783161511dfa9b4fb03d6587115301",
+          "bytes": 463858,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "discretization/coverage/return.pickle",
+          "sha256": "4f2867532f32a2a1d48812329eddd7b152f1beddc05f11ae9b94d6e9447a8bca",
+          "bytes": 650,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "integration/Gaussian-source",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/Gaussian-source/input.pickle",
+          "sha256": "5e517fa3fd8251174a5e6c2f20f943e9df55e18b420971135e4060c7707eec2c",
+          "bytes": 6761,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/Gaussian-source/return.pickle",
+          "sha256": "0bb8fc01990d0ab8210199c71947cc98dd5f5f38bd61867dc48ebd3285686d20",
+          "bytes": 646,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "integration/middle/row-70/transformed-base",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/middle/row-70/transformed-base/input.pickle",
+          "sha256": "489b034f7053b9d8aefef1c000db02da3a2a2b7f3d633a589b1ce61f15d3b8cf",
+          "bytes": 7871,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/middle/row-70/transformed-base/return.pickle",
+          "sha256": "0aa1d120929c91a670b5d61833644bd9db95ff6af7da00d485996baeca2cb5a6",
+          "bytes": 200,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "integration/middle/row-70/direct-part-0",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/middle/row-70/direct-part-0/input.pickle",
+          "sha256": "d17c84fce4e360dd195be22269d622df979700a7bf7f8c959606120d1fd11c11",
+          "bytes": 7920,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/middle/row-70/direct-part-0/return.pickle",
+          "sha256": "392b8c306419e558598f2c5c1446b169dfef40d7a4719d81e7026caf7286c3f5",
+          "bytes": 1701,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "integration/middle/row-70/direct-part-1",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/middle/row-70/direct-part-1/input.pickle",
+          "sha256": "e6a16d14130a5208ad05c8811b632b847fe67c62791f4e49569423cc2b4214f4",
+          "bytes": 7920,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/middle/row-70/direct-part-1/return.pickle",
+          "sha256": "2b9c7a7da91a8e0b01adeb1a7817d97edaf4758a17c36343870981846e1ff9ab",
+          "bytes": 2349,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "integration/middle/row-70/direct-part-2",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/middle/row-70/direct-part-2/input.pickle",
+          "sha256": "b8ce078d4cfe061e99e026859e46da81c34098fb7e74a24c369b50b7645e1c6d",
+          "bytes": 7920,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/middle/row-70/direct-part-2/return.pickle",
+          "sha256": "eee5b6007915b7d77460dd572e156bd7ba2d73b0932595b8bd561d868a7a6355",
+          "bytes": 1701,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "integration/middle/row-70/transformed-refined",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/middle/row-70/transformed-refined/input.pickle",
+          "sha256": "a64ed02f0a73ca9d39c5dc3e163789e5fc20315174621f61cadb4db484713b5b",
+          "bytes": 7871,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/middle/row-70/transformed-refined/return.pickle",
+          "sha256": "ec069afe38828ab991020bdf4f8a47b136856ec26cabfda1d5f0c1b591bc57b5",
+          "bytes": 200,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "integration/middle/row-70/wrong-middle-sheet",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/middle/row-70/wrong-middle-sheet/input.pickle",
+          "sha256": "ff377e333e1575587a56c7733e87b48001271571d7d87ff5873b7298a3dab77b",
+          "bytes": 7887,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/middle/row-70/wrong-middle-sheet/return.pickle",
+          "sha256": "efc3549bfed8097a90c12b224ab2d206c67053d342802bee62a8a181a8cdcd48",
+          "bytes": 200,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "integration/middle/row-70/omitted-transformed-jacobians",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/middle/row-70/omitted-transformed-jacobians/input.pickle",
+          "sha256": "3bb560b13bb1df62e2862e7238cb559667d73e439498ad405ebab3d8302c99aa",
+          "bytes": 7871,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/middle/row-70/omitted-transformed-jacobians/return.pickle",
+          "sha256": "60fe5fd851abae12b52d732bfbf4e04fb073d3413608269f68419e4d88e64d3a",
+          "bytes": 200,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "uniform-Gaussian/0.0/row-14",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.0/row-14/input.pickle",
+          "sha256": "cf1cc25e84e7c3b09ab114d78fb7067747902ec860113029f25430513395f7f9",
+          "bytes": 2634,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.0/row-14/return.pickle",
+          "sha256": "a810959696ab2116e5eb0943016cbd02d3f95ecf846e192fad01d73fd7fa743f",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "uniform-Gaussian/0.0/row-27",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.0/row-27/input.pickle",
+          "sha256": "e8b5ce9c7b5f5b188bfa8f7963e51343d3fa71d80ec8937d73609caed65fa0de",
+          "bytes": 2522,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.0/row-27/return.pickle",
+          "sha256": "1e63b1c4070650dfd4215d6054500ad3ed8551eae63249444452c91693ebf593",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "uniform-Gaussian/0.0/row-29",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.0/row-29/input.pickle",
+          "sha256": "b59361a17d4470ae367e0c775bacc837e25f918debedd26a57010390d02cce51",
+          "bytes": 2455,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.0/row-29/return.pickle",
+          "sha256": "01e8d4bc3e1316d22e068b326fc4ead47dcf80beb9047b42309702ea8ecb0343",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "uniform-Gaussian/0.0/row-35",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.0/row-35/input.pickle",
+          "sha256": "5e35ff040768c43ec4e454d6ddd45f6b29b66c6ed3517a48b77bad7ebe153c15",
+          "bytes": 2451,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.0/row-35/return.pickle",
+          "sha256": "0bc78516b7bd7b7c43bb181e909266d0fb0c20fb9e4da80de0b77227475ea4ae",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "uniform-Gaussian/0.0/row-36",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.0/row-36/input.pickle",
+          "sha256": "26a8864172a38525ffb221aab62ac5e5aca927aab9f9b3e0df59614deebd0cb1",
+          "bytes": 2451,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.0/row-36/return.pickle",
+          "sha256": "9929120332223736d49fe38e7844f73113f06650474bc5823c7dac02a851c480",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "uniform-Gaussian/0.0/reference-column-3",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.0/reference-column-3/input.pickle",
+          "sha256": "a2e76b594924ed4c35186794ab9047bf777381b92ca5f20ce9f475fd812e6939",
+          "bytes": 1966,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.0/reference-column-3/return.pickle",
+          "sha256": "4278ebe18e4783a0430bd179440406a170768d4fd1d3ab46ee253be36b7c69ff",
+          "bytes": 1398,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "uniform-Gaussian/0.0/reference-column-4",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.0/reference-column-4/input.pickle",
+          "sha256": "fdbc0949394ca09cae9acaa49bdeef8ac1faf57ea749cb89565b14ad15bc644c",
+          "bytes": 1966,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.0/reference-column-4/return.pickle",
+          "sha256": "ad5841f0b67bd91b421678b9d04dcbf07c541249126cc4ebbc8689a9ffa5723d",
+          "bytes": 1398,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "uniform-Gaussian/0.6000000000000001/row-14",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.6000000000000001/row-14/input.pickle",
+          "sha256": "29cd5874dc18044c5eca63ea3e80309284e9e9a8810ab07ccb63e71e5c305cfe",
+          "bytes": 2634,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.6000000000000001/row-14/return.pickle",
+          "sha256": "426fc24d312cf39d24e3d4575f5cd1a9e0c8bb5de8ba9f5dab22aafc4957c3c8",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "uniform-Gaussian/0.6000000000000001/row-27",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.6000000000000001/row-27/input.pickle",
+          "sha256": "6c4159e3c45abc3d3deb60bde047e4127e8704f04a571f62daafd9e762ba9977",
+          "bytes": 2522,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.6000000000000001/row-27/return.pickle",
+          "sha256": "42204bbb3588da2d628772a8e14b5e6a75d1f105fe4f48002d092c5f19de3045",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "uniform-Gaussian/0.6000000000000001/row-29",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.6000000000000001/row-29/input.pickle",
+          "sha256": "692cbeab8a69ab7e1bc8aa34707e7fb92d24f80a7ecbc67a34a1a0f0b3a16555",
+          "bytes": 2455,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.6000000000000001/row-29/return.pickle",
+          "sha256": "148ea084dae90be3a88d46017af4fa5fe213e65d5340f441fbaf655489c3b429",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "uniform-Gaussian/0.6000000000000001/row-35",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.6000000000000001/row-35/input.pickle",
+          "sha256": "027d9a3efe1df48bc4a3b1f651364418bcca9be2aba09e64707bcc808e6bb66b",
+          "bytes": 2451,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.6000000000000001/row-35/return.pickle",
+          "sha256": "87a50558f6105992a2fc1cc10268d960b04afd0280f61327a6af12cd948e57d6",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "uniform-Gaussian/0.6000000000000001/row-36",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.6000000000000001/row-36/input.pickle",
+          "sha256": "432ca7955efb874f50fa39a8b9a183435d4c733f3e9c142b5802db00986ace43",
+          "bytes": 2451,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.6000000000000001/row-36/return.pickle",
+          "sha256": "ce67e1526aa7dd9616da3a4491ba568b20355a8fbc9b5fd19afe95feeaae88b6",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "uniform-Gaussian/0.6000000000000001/reference-column-3",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.6000000000000001/reference-column-3/input.pickle",
+          "sha256": "60c189d9725aa9e75dc26bdc4b71dc367cafb27d8434eb2a3750745fd65b7438",
+          "bytes": 1966,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.6000000000000001/reference-column-3/return.pickle",
+          "sha256": "d3e98566147193d7a441887ae1ba0cd248dec282d0a1eca957846dee7b2697bb",
+          "bytes": 1398,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "uniform-Gaussian/0.6000000000000001/reference-column-4",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.6000000000000001/reference-column-4/input.pickle",
+          "sha256": "e21036985d8bbc1c156863e39f9d93b9fcd4abadd246a4ae885a9d53aa36eb36",
+          "bytes": 1966,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "uniform-Gaussian/0.6000000000000001/reference-column-4/return.pickle",
+          "sha256": "508c11e1e292c7e37129d861a94196df0ac3a0993868d9f366bc5ba56ebc463c",
+          "bytes": 1398,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "published-Gaussian-source-arrays",
+        "artifact": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-pilot-v4/complete/operations.sqlite",
+          "member": "integration/Gaussian-source-arrays.pickle",
+          "sha256": "5aa389132a05f2690778d2b2d8b2ab31bdb9fb83cad035e621d4bfbcf9655ddd",
+          "bytes": 1181738,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "recordedStatus": "PUBLISHED_ARTIFACT_NOT_A_NEW_COMPLETE_FUNCTION"
+      }
+    ],
+    "uniform-refinement-v2": [
+      {
+        "name": "reference-identity/column-3",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "reference-identity/column-3/input.pickle",
+          "sha256": "0b0a13733e9265fa64ef84233e93ea13f422d13772ef87b15332394754533429",
+          "bytes": 2681,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "reference-identity/column-3/return.pickle",
+          "sha256": "2033d95e68d531a700adc2669596f1b6b75e8debb5a50c84df4b12819040024c",
+          "bytes": 2671,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "reference-identity/column-4",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "reference-identity/column-4/input.pickle",
+          "sha256": "2edec22d9fc8bff9ee10ca611a039d7567aec3bd45cc9e03603f88aa7feaf839",
+          "bytes": 2681,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "reference-identity/column-4/return.pickle",
+          "sha256": "2033d95e68d531a700adc2669596f1b6b75e8debb5a50c84df4b12819040024c",
+          "bytes": 2671,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "source-setup/512",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "source-setup/512/input.pickle",
+          "sha256": "38a3266c946f0e9201a58306f31bdd6af49563c26b8959f53e10fe7034ad88c9",
+          "bytes": 6761,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "source-setup/512/return.pickle",
+          "sha256": "4df54f9385c324ef0cefd72df018dcd2ecea1ec5591d150956f3736c9b4d09c8",
+          "bytes": 1181867,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-48-source-512/row-14",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-48-source-512/row-14/input.pickle",
+          "sha256": "f304d30b668e414f9d8eae2967a88458a4cf9809291b7ce534e5ceaec43e5c30",
+          "bytes": 2765,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-48-source-512/row-14/return.pickle",
+          "sha256": "811c44f53079edaec1a6538edd6f8cc0ba0d58b17c48b7eba3c7ee88630386db",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-48-source-512/row-27",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-48-source-512/row-27/input.pickle",
+          "sha256": "84215bb0c3561249b320e8b905c533d15bf7f6b81bd8468c6df291c896622f48",
+          "bytes": 2653,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-48-source-512/row-27/return.pickle",
+          "sha256": "cdbe7ed3767541bb42371c1ac8cbd995840da5049121d422fb3944a3628ef6d7",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-48-source-512/row-29",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-48-source-512/row-29/input.pickle",
+          "sha256": "4fc12c360671727d11e7fd82239025aba0710c5446456edca515f865250f9960",
+          "bytes": 2586,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-48-source-512/row-29/return.pickle",
+          "sha256": "2eb15175366906a1e916571fc5fc037a37e67e04ced115e035a7a78310fcc1d2",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-48-source-512/row-35",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-48-source-512/row-35/input.pickle",
+          "sha256": "a6c463cf98deedc5162d8d1ddcffca2690c602844e217a0ea16be92c8a3c56c4",
+          "bytes": 2582,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-48-source-512/row-35/return.pickle",
+          "sha256": "86f4fc456e83d6c7da3be2467e64651131b85269f002c61323c567edce4eb5ef",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-48-source-512/row-36",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-48-source-512/row-36/input.pickle",
+          "sha256": "e1bb59ba1a44d5417f8eb3187f4c881cf26c1424490f9a8f431a1f60b2a801e2",
+          "bytes": 2582,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-48-source-512/row-36/return.pickle",
+          "sha256": "a2001877e0790ab3870e60b7e29e47eed4f739ef560394146d42b36f25d6c9d4",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-48-source-512/assemble-column-3",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-48-source-512/assemble-column-3/input.pickle",
+          "sha256": "251f0639cefc50c7e00b190b758397365e85c848c0c957f1eef56e04625f1caa",
+          "bytes": 1027,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-48-source-512/assemble-column-3/return.pickle",
+          "sha256": "0020afe83793be6b13a2f29da9b8c1bddbbf53eda4ded1f6bb607f66aa774f32",
+          "bytes": 369,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-48-source-512/assemble-column-4",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-48-source-512/assemble-column-4/input.pickle",
+          "sha256": "47978d073bf99a890be27db853012d6c2f63b6a318235b732254121152c98b55",
+          "bytes": 1027,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-48-source-512/assemble-column-4/return.pickle",
+          "sha256": "88615ea67699ceedaab97618f5cb8af84685f267da3187052785a4176af144cf",
+          "bytes": 369,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-64-source-512/row-14",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-512/row-14/input.pickle",
+          "sha256": "18d8ca79c7073dd44ce41090b7d4380b25f3e79665448ee09fc1f5e157140a44",
+          "bytes": 2765,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-512/row-14/return.pickle",
+          "sha256": "8fc16364e9e88d7738b2276fdc8574741c75772ef5148b2a39039d2ddaf0d2fa",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-64-source-512/row-27",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-512/row-27/input.pickle",
+          "sha256": "a3f806419b2fbd5430bc11388bd8f8d11966f157c01c96a0ace5ca24cbee46f9",
+          "bytes": 2653,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-512/row-27/return.pickle",
+          "sha256": "94efef115efdb3cd9e5db514e1d4336b0bacabc51a4ebcdb90173dc8b2de3d16",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-64-source-512/row-29",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-512/row-29/input.pickle",
+          "sha256": "c2da8465b6d771fac1b7b1083d56fcbf1c2ba2e449af8377028a374f336eff44",
+          "bytes": 2586,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-512/row-29/return.pickle",
+          "sha256": "aca42c07e47ea6c8857ab6ea5020cddb1737937c7a1c9e8ffc991e1c638c6ab5",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-64-source-512/row-35",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-512/row-35/input.pickle",
+          "sha256": "5a990c2f24e0f4460670a72dc7aeb6114930dfda72e8f3214199b8738d92f30c",
+          "bytes": 2582,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-512/row-35/return.pickle",
+          "sha256": "f6028df3e55147c363b72eb845570404c455c4126e7222c3a5471cc7ee5a6752",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-64-source-512/row-36",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-512/row-36/input.pickle",
+          "sha256": "920b646813479aac7734dd5454a65f6f9aaa3eacf5d6cedf51734c4eadf2326a",
+          "bytes": 2582,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-512/row-36/return.pickle",
+          "sha256": "b2a65b738b564d0a68124a3bf02eec2c4b241b12c2f5ec8a2c32260e9f059113",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-64-source-512/assemble-column-3",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-512/assemble-column-3/input.pickle",
+          "sha256": "1ee015afe9144cdf9b999d2d7655e1b88730caec958e675fb00d167ee8a17a7e",
+          "bytes": 1027,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-512/assemble-column-3/return.pickle",
+          "sha256": "e292b890f5bbd260b9f615261fcb5714c92bf91e45ecaa874ec084ef84256fe1",
+          "bytes": 369,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-64-source-512/assemble-column-4",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-512/assemble-column-4/input.pickle",
+          "sha256": "7bdcd764a17da7a35f5fed13644c7f96adfb84253f3854787e15cce148f7a21a",
+          "bytes": 1027,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-512/assemble-column-4/return.pickle",
+          "sha256": "ce8d2353aa411e4c752e57576491656dbaf6ea441b75a00e4476fcdca1ebe754",
+          "bytes": 369,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "source-setup/768",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "source-setup/768/input.pickle",
+          "sha256": "0b1172ec2c5160cb7f5e1fe878ab0be1f3cd6c682ff8a639faf990a1baa8edf2",
+          "bytes": 6761,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "source-setup/768/return.pickle",
+          "sha256": "503766626f163079736020b1f05646b70af74dce56548d2d4e499602caa5fd2a",
+          "bytes": 1771691,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-64-source-768/row-14",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-768/row-14/input.pickle",
+          "sha256": "2f4ed3a3f7a67d4faab1f8e9a6006592ad6d75eb4dff6c89c8ac6433f52820c2",
+          "bytes": 2765,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-768/row-14/return.pickle",
+          "sha256": "ef58f40a8caad1a9aca72f72e81d741f48c2bd1fe73b6aba9a021b886a3793ba",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-64-source-768/row-27",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-768/row-27/input.pickle",
+          "sha256": "b94133e5d90d70a951dc9053e31bc3790dcaf4e8d16e991771e23937578c1f6e",
+          "bytes": 2653,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-768/row-27/return.pickle",
+          "sha256": "87fa442f35f48cc130ebc966958fcdfcae45fd911e4711bf60c198b13c3bfac1",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-64-source-768/row-29",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-768/row-29/input.pickle",
+          "sha256": "5b911cbeda9363253af5affff6497c1a60389052363a74c3be9d9cba22e4c05f",
+          "bytes": 2586,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-768/row-29/return.pickle",
+          "sha256": "098ce40d6b11dbafded644bee5736d426562b9f5fbca90a52c0584e3e1170667",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-64-source-768/row-35",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-768/row-35/input.pickle",
+          "sha256": "8d6eb4a1d5a2b9cd6e3dad4c43ffbc6134832bff77c6dd205c8276cfa205188a",
+          "bytes": 2582,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-768/row-35/return.pickle",
+          "sha256": "6fbc67af1a7c051e3a31da652c8982c9bb71a57fe88662660a6a1636fdaa4969",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-64-source-768/row-36",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-768/row-36/input.pickle",
+          "sha256": "4d8a501a7ce4fc31a1dffc2e2e4184b7e50298c3469a9a02b47b08196ff1aeec",
+          "bytes": 2582,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-768/row-36/return.pickle",
+          "sha256": "60f0ce5f8184f63def35a157dd10c424ffdcaf147edea37f7d7bdcdd47829603",
+          "bytes": 197,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-64-source-768/assemble-column-3",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-768/assemble-column-3/input.pickle",
+          "sha256": "569048a43c043ed062c74cc65b239cd8226b290f44062db91606baa74d5dcee6",
+          "bytes": 1027,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-768/assemble-column-3/return.pickle",
+          "sha256": "16d649bff7cc17b202953af0ee8244b9cac02da417a9fc53ba23f8524f3f48ee",
+          "bytes": 369,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "outer-64-source-768/assemble-column-4",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-768/assemble-column-4/input.pickle",
+          "sha256": "fba3d15e3e89c7622bf12a9348d6c2123a5847bbb6f655fc0f2dbd4c16f8dfb5",
+          "bytes": 1027,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/uniform-refinement-v2/complete/operations.sqlite",
+          "member": "outer-64-source-768/assemble-column-4/return.pickle",
+          "sha256": "afb8721c5ea3d84ff6de1fd9e1cf0faaa1e83daeda10474a0590482802d3e24d",
+          "bytes": 369,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      }
+    ],
+    "central-balance-v2": [
+      {
+        "name": "restore/completed-uniform-refinement",
+        "recordedStatus": "RESTORED_PRIOR_COMPLETE_RETURN",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "restore/completed-uniform-refinement/input.pickle",
+          "sha256": "ab205d4dc4647146af13143cd20479ba4ae49a8246db56251cbcd58be83aa1ab",
+          "bytes": 410,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "restore/completed-uniform-refinement/return.pickle",
+          "sha256": "6e6eb987c14e7abf9450c3693a272e7cf06d85159b4b0aa3048660eff2969e2c",
+          "bytes": 12599,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "base/group-0",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "base/group-0/input.pickle",
+          "sha256": "58d18d5cbf3c583434534121fc8ba1f9ba66f201267ffcf8e518319d4dbfee9e",
+          "bytes": 33012,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "base/group-0/return.pickle",
+          "sha256": "ebea93b87b534b81f6a9c51d30bee131c35192e41a8c67a33b7d560f15e6a97a",
+          "bytes": 414027,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "base/group-1",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "base/group-1/input.pickle",
+          "sha256": "b543434cf5282eb158d71b5aceae623ce77369f238578d6ac24d5c8670daebe2",
+          "bytes": 49146,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "base/group-1/return.pickle",
+          "sha256": "1fd505274f867ec269d922c5045d69ce51ec02fb3b9d135c688ae6cd97c2c5fe",
+          "bytes": 312013,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "base/group-2",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "base/group-2/input.pickle",
+          "sha256": "3d030b525bb38bc82a8dc58e3b1553f41d6628b1ec28c80f8ecd591972ca5dfc",
+          "bytes": 48468,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "base/group-2/return.pickle",
+          "sha256": "c0fb2a79253297af50f02f561d80935e81964355f46e0b106e379189bb08ae3a",
+          "bytes": 107923,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "refinement/group-0",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "refinement/group-0/input.pickle",
+          "sha256": "24d0ab1103425988c589a3bf6e9917bbda73f238ee59d988f925035b8c1b200e",
+          "bytes": 34276,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "refinement/group-0/return.pickle",
+          "sha256": "d3f30e7b21b6bd07c7d850b395ef4086d572c31ee3f21bd2a0cf9e75397c0043",
+          "bytes": 619035,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "refinement/group-1",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "refinement/group-1/input.pickle",
+          "sha256": "1058f398b6eb01a4dbe0dfdfd7c448cc74cdd5240a8d87424dd01f7523eb88f8",
+          "bytes": 50410,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "refinement/group-1/return.pickle",
+          "sha256": "d02b184f73d223a619dc1a1cf173ee2bc2ccda87a0a9b1412cf0ecfa22109c36",
+          "bytes": 466401,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "refinement/group-2",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "refinement/group-2/input.pickle",
+          "sha256": "0732148edffabf1814aec130275740334c45685bf69368e9f456c53c70b19b16",
+          "bytes": 49732,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "refinement/group-2/return.pickle",
+          "sha256": "f0e659d914c418b81224ef352d5bd93aeebe3498e939cad5e5e9a90d1fcdb148",
+          "bytes": 161082,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "domain/group-0",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "domain/group-0/input.pickle",
+          "sha256": "cb368c0b72e9783e4f6fe8ccbf64a718323fd20124c444b3daf36e015497780d",
+          "bytes": 34276,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "domain/group-0/return.pickle",
+          "sha256": "1d5c1f8c517ea85e6348338481b2526591775d7e1a6e952dca5523081a9f3ea3",
+          "bytes": 618875,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "domain/group-1",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "domain/group-1/input.pickle",
+          "sha256": "f3bd40c0cbc73ad6d7f8f31396650b5bf60579c8ba27865962cd9552f22e7b6e",
+          "bytes": 50410,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "domain/group-1/return.pickle",
+          "sha256": "4ec865d604d80a19f506589bf4ec75c033083a92e1ae7043bc7d06825dda8c88",
+          "bytes": 466281,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "domain/group-2",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "domain/group-2/input.pickle",
+          "sha256": "1c58f53a0447b880266a02a3e02c9cba8530aaffa73d1b3eefe070ac7c5a9a9d",
+          "bytes": 49732,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "domain/group-2/return.pickle",
+          "sha256": "b2d0fa92bb82bf153932135e791225204b921f0c954fd3b8984921f5a89c23b0",
+          "bytes": 161042,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "regulator/group-0",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "regulator/group-0/input.pickle",
+          "sha256": "0f6fb355f85678e1455ff7685a85f842188fd90d9196c5999613671cb154fa6d",
+          "bytes": 34276,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "regulator/group-0/return.pickle",
+          "sha256": "051ba75d3171568ef06117ceecf6826a1e69d3ed3e5f128e133744ea5f7383ff",
+          "bytes": 618995,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "regulator/group-1",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "regulator/group-1/input.pickle",
+          "sha256": "fadcd3faae96647654391f4b43034d4785274cca5f6648f4d290519c5a1ea2ff",
+          "bytes": 50410,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "regulator/group-1/return.pickle",
+          "sha256": "240f8e5990beeca51512ee8df3343cce8fedde908cca3fc7c0e5c941992a3b2d",
+          "bytes": 466371,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      },
+      {
+        "name": "regulator/group-2",
+        "recordedStatus": "COMPLETE",
+        "input": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "regulator/group-2/input.pickle",
+          "sha256": "3f67c0b293b3a93b9da8ce1ea623d2964cab25b748f8bf77322f6e9a6ed4e678",
+          "bytes": 49732,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        },
+        "return": {
+          "database": "/var/projects/toy_physics/_scratch/s11c/s11c-d-numerical-radiating-20260929/central-balance-v2/complete/operations.sqlite",
+          "member": "regulator/group-2/return.pickle",
+          "sha256": "4643d077f686484463f00bb280edbbbc3be46077ae6d2d32539a29f4db900499",
+          "bytes": 161072,
+          "actualOpaqueBytesVerified": true,
+          "payloadDecoded": false
+        }
+      }
+    ]
+  },
+  "opaqueInspection": {
+    "blobReceiptsChecked": 131,
+    "bytesReadIncludingRepeatedReferences": 20589811,
+    "scientificPayloadsDecoded": 0,
+    "wholeDatabaseRehash": false,
+    "meaning": "Selected immutable blob bytes match their published journal receipts. No scientific values or complete database integrity are newly accepted."
+  },
+  "sourceFindings": [
+    {
+      "id": "dispatch",
+      "finding": "ThreeMomentum.batches calls self.rule; BasisMomentum inherits batches unchanged; Radiating supplies the transformed rule. The prior stdlib dispatch test already addresses this source question; no duplicate test or rewrite was added.",
+      "newScientificFinding": false
+    },
+    {
+      "id": "small-action",
+      "finding": "Radiating.prepare_gaussian produces size=1 amplitudes. The actual numerical_radiating_finite.matrix_group uses worker.size, worker.batches, coefficient_value and source_basis, so a one-column Gaussian matrix-route action is a concrete source-supported test design. It need not construct a full Chebyshev scattering matrix or call solve. Runtime equivalence and accuracy remain unperformed.",
+      "newScientificFinding": false
+    },
+    {
+      "id": "shared-action-control",
+      "finding": "matrix_group actionResidual compares result@vector with direct accumulated from the same coefficient/source/weight batches. It checks assembly consistency but is not the requested Gaussian comparison to independently obtained saved references.",
+      "newScientificFinding": false
+    },
+    {
+      "id": "saved-zero-momentum-arrays",
+      "finding": "The published integration/Gaussian-source-arrays.pickle exists, matches its opaque receipt, and its producer saves source nodes, weights, amplitudes and boundary values immediately after the zero-momentum width-8 setup. Runtime joins must confirm all operands before reuse; do not reconstruct a published array merely because it was absent from a later operation return.",
+      "newScientificFinding": false
+    },
+    {
+      "id": "two-scopes",
+      "finding": "Legacy saved Gaussian references belong to cs=10 benchmark source/kernel. They can validate that legacy assembly route after actual joins, not the corrected cs in [1,2] operator. The corrected whole direct addend, PV/contact terms and address inventory require a separately assessed numerical adapter.",
+      "newScientificFinding": false
+    }
+  ],
+  "pendingLegacyChecks": [
+    {
+      "id": "trial-operand-joins",
+      "scope": "same saved legacy kernel only",
+      "work": "Restore actual input/return pairs, assert row dimensionality and ordered trials (32,512),(48,512),(64,512),(64,768), all row/source/position/width/pencil/scale/unit identities; preserve old returns without calling functions.",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "id": "single-leg-matrix-route",
+      "scope": "same saved legacy kernel only",
+      "work": "Use the actual matrix_group on exact Gaussian size=1 source arrays and saved rows 14,27,29,35,36. Match each setting exactly before comparison with saved row_integral returns. Assemble both native source columns 3 and 4 through original coefficient/units and compare to saved independent references. Existing original tolerance stays unchanged.",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "id": "zero-momentum-adopted-order",
+      "scope": "same saved legacy kernel only",
+      "work": "Reuse published zero-momentum source arrays and independent references. Only missing matrix-route actions at adopted single-leg orders 48 and 64 may be new; do not repeat saved order-24 row integrals or independent references. Record domain/source differences separately rather than claiming identical operands.",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "id": "row70-nested-path",
+      "scope": "same saved legacy kernel only",
+      "work": "Match saved zero-momentum Gaussian arrays, selected row 70, positions, roots and complete base/refined nested settings. Compare actual size=1 matrix-route action with saved transformed-base/refined and physical-middle part returns; do not recompute completed row_integral or independent physical-middle integrals. Shared inner rules remain a limit.",
+      "status": "NOT_EXECUTED"
+    }
+  ],
+  "correctedOperatorPrerequisites": [
+    {
+      "id": "operator-adapter",
+      "independentOfPendingEndComparison": true,
+      "requirement": "Design and assess a numerical Schwartz action adapter for completed corrected local cells and pressure addresses. Preserve real-frequency sources, source derivative momentum p, output normal depth l, all ordered retained grades and complete whole-tag arguments. Whole direct addend once; native iteration once; no extra resolvents or second middle integral."
+    },
+    {
+      "id": "distribution-and-tail",
+      "independentOfPendingEndComparison": true,
+      "requirement": "Specify numerical treatment of the surviving contact, subtracted height PV, reflected roots and all-real momentum tails; original cutoffs 4/6 are not inherited from analytic weak continuity. No numerical error bound follows solely from that continuity."
+    },
+    {
+      "id": "test-function-entry",
+      "independentOfPendingEndComparison": true,
+      "requirement": "A Gaussian trial/test pair is compatible with the assessed Schwartz test space. Choosing an actual quadrature/reference and an error criterion is new numerical method work requiring assessment, not a cleared worker from this source inventory."
+    },
+    {
+      "id": "scattering-entry",
+      "independentOfPendingEndComparison": false,
+      "requirement": "Inspect the pending selected end comparison, then separately establish any required exterior modes, current normalization, boundary approximation, finite inverse and convergence controls. Selected equation agreement does not transfer frequency derivatives/current or a complete mode census."
+    }
+  ],
+  "executionDecision": {
+    "newScientificJob": false,
+    "newExternalPacket": false,
+    "workerPrepared": false,
+    "READYGate": false,
+    "oldFiniteBenchmarkRerun": false,
+    "oldNumericArraysAcceptedAtNewSpeed": false,
+    "newMethodClearance": false
+  },
+  "nextUsefulIndependentWork": "Use this exact source/receipt inventory to prepare the corrected Schwartz numerical-action method and its validation budget before any new finite-scattering build; do not spend a full matrix assembly merely to test dispatch.",
+  "activeJobPreservation": {
+    "manifest": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_inputs.json",
+      "sha256": "40c28c3b5bc4c2e70dfdc595b23475c6c237f4914fb49773de338a006d81eb81",
+      "bytes": 50118
+    },
+    "pinnedPathsVerified": 63,
+    "allPinnedBytesUnchangedBeforeAndAfter": true,
+    "processSignalsSent": false,
+    "activeSourcesEdited": false
+  },
+  "limits": [
+    "No science computed or decoded.",
+    "No loss, current, calibration or drain result.",
+    "No automatic legacy benchmark validator or retry authorized by this preparation.",
+    "All future scientific execution remains no-deadline, resource-contained, checkpointed and hook-first."
+  ]
+}

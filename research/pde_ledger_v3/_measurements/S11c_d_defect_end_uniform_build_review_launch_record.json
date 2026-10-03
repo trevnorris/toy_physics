@@ -1,0 +1,63 @@
+{
+  "status": "BOTH_INDEPENDENT_BUILD_REVIEWS_STARTED_HOOK_ARMED",
+  "recordedUtc": "2026-10-03T11:03:49.828826+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/build-review",
+  "preparedCommit": "220af747",
+  "methodClearanceCommit": "e41557f0",
+  "packetSha256": "60d1a9450c557b5a92ea865f6525e65817c6e38e822388aa290277f952ba280a",
+  "archiveSha256": "09fae5a6acc78f9ebac2da0e97f974d49bfe9254d4331ae6144b8355b5661c33",
+  "files": 74,
+  "bytes": 14056440,
+  "launch": {
+    "jobPid": 3802299,
+    "watcherPid": 3802300,
+    "packetSha256": "60d1a9450c557b5a92ea865f6525e65817c6e38e822388aa290277f952ba280a",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "reviewers": {
+    "claude": {
+      "sessionId": "7c34ee33-46c5-4667-8e99-10de2ff1a1f2",
+      "pid": 3802309,
+      "startedUtc": "2026-10-03T11:03:12.826140+00:00",
+      "receiptSha256AtStartup": "4cf25b0ddcc336639ab5d31bb58af284d0ca66f72acab492e04447e7455d40f2",
+      "privatePacketFilesVerified": 74,
+      "deliveredVerdict": "NOT_READ_OR_ADJUDICATED"
+    },
+    "grok": {
+      "sessionId": "4a40452f-dc29-47a6-bea9-5f52c141eace",
+      "pid": 3802310,
+      "startedUtc": "2026-10-03T11:03:12.826521+00:00",
+      "receiptSha256AtStartup": "165e3970d86888a0d3a9d773a9b19f822b2c2c68da3a5a1b33f7e3ad4b6539ee",
+      "privatePacketFilesVerified": 74,
+      "deliveredVerdict": "NOT_READ_OR_ADJUDICATED"
+    }
+  },
+  "watcherStateAtInspection": {
+    "status": "waiting",
+    "watcherPid": 3802300,
+    "jobPid": 3802299,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-03T11:03:12.603833+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "7fb0aa0648457e7b436463ce9e2af42e7d106665627cf77d40022c8ead05cef9",
+    "notifications": {}
+  },
+  "sourceReviewOnly": true,
+  "scienceCalls": 0,
+  "noGateOrScientificRun": true,
+  "peerReportsShared": false,
+  "automaticRetry": false,
+  "routinePolling": false,
+  "startupInspectionOnly": true,
+  "authoritySha256": "993d35d9d1a9e17e9420ce9d984eac3ce2266d23adb39328a84c3add5745b003",
+  "staticSha256": "3a9ace6961529ed62baff1b51b6f60f3f5157f79ba8c0e61ccb464128a7c9b6f",
+  "completionMessageSha256": "7fb0aa0648457e7b436463ce9e2af42e7d106665627cf77d40022c8ead05cef9",
+  "outcome": "AWAIT_BOTH_LITERAL_REPORTS_AND_COMPLETION_HOOK"
+}

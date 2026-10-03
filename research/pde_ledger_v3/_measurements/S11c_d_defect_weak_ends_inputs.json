@@ -1,6 +1,6 @@
 {
   "status": "PREPARED_NO_SCIENCE_OR_GATE",
-  "createdUtc": "2026-10-03T07:24:57.637131+00:00",
+  "createdUtc": "2026-10-03T07:59:59.833585+00:00",
   "worker": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py",
   "launcher": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_launch.py",
   "helperSource": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py",
@@ -8,7 +8,7 @@
   "physicalInput": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
   "methodPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_method.md",
   "methodRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_review_record.json",
-  "reviewRecordWillBe": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_build_review_r2_record.json",
+  "reviewRecordWillBe": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_build_review_r3_record.json",
   "executionAuthority": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_execution_authority.json",
   "scope": {
     "frequency": 3,
@@ -2832,7 +2832,7 @@
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/global-q-triangle-gap.json": "9420c987a97ca30c4caf7cef49c2f01c8a6f2a318a6d71586b542ff7bbc833f1",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/actual-global-density-operands.json": "7ba592815c528a70fbcff472171aba9b71ad10a2c320a59657fe90f6874e64f4",
     "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/normal-polynomial-growth.json": "aa96363493263cb78a60b6a87db677c90b3a1a10f42f3b8b6523d66d3d857c1d",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py": "5236bd9ef0970b206a9ea157abd09555e3f126cf9c6d8aeb49f2bf75debd427f",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py": "e2350d3cf1ce697aaec60c60e60d1a5cf945d00f36cb26be7ea3b3915b406c73",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_launch.py": "ff213189d1e20d0145369dbcd88ca96f631123ca9205d679916bbd6532b0aa92",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_method.md": "71f7d7346e05bbe310acef40870941ab5d3f277baf2c889047fd87d56a948e16",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_review_record.json": "11cc099912ceba108679455a99f819e4ee517409ce3aa0dd7a22c6919d68662e",

@@ -25,6 +25,15 @@ def require(v, message):
     if v is not True:
         raise ValueError(message)
 
+def first_shape_grade_parts(first, eta, sigma, expand):
+    """Select independent linear grades; callers save and check reconstruction."""
+    expanded=expand(first)
+    height_coefficient=expanded.coeff(eta,1).coeff(sigma,0)
+    slope_coefficient=expanded.coeff(sigma,1).coeff(eta,0)
+    return {'expandedOriginal':expanded,'heightCoefficient':height_coefficient,
+            'slopeCoefficient':slope_coefficient,'height':eta*height_coefficient,
+            'slope':sigma*slope_coefficient}
+
 def sha(path):
     h = hashlib.sha256()
     with Path(path).open('rb') as f:
@@ -433,12 +442,23 @@ def run_science(manifest,J,ns):
         'parameterScope':'Real3 source/local; delta auxiliary in inherited response proof only. New symbols at delta=0.',
         'analyticTheoremsMachineProved':False,'integralsEvaluated':False,'decayRateOrFiniteBoxError':False})
 
-    # Independent constant-height specialization of saved native trace and first shape.
+    # Select the independent height grade; slope remains live and is not pointwise zero.
     first=load('reference/native-first-shape-input.json')['right']
+    first_parts=first_shape_grade_parts(first,eta,sigma,sp.expand)
+    audit.append('native-first-shape-grade-operands',{'savedOriginal':first,'eta':eta,'sigma':sigma,'parts':first_parts})
+    first_reconstruction=zero('native-first-shape-independent-grade-reconstruction',
+                              first,first_parts['height']+first_parts['slope'])
+    require(not (first_parts['heightCoefficient'].free_symbols | first_parts['slopeCoefficient'].free_symbols)
+            & {eta,sigma},'independent first-shape coefficient grades')
     first_bindings={'reference_unrestricted_frequency':sp.Integer(3),'reference_qi':q,'reference_qo':q,
-                    'reference_k':p,'reference_l':p,eta.name:eta,sigma.name:sp.S.Zero}
-    first_diag=first.xreplace(named_map(first,first_bindings))
-    # h and j functions carry zero transfer now; j is multiplied by sigma=0.
+                    'reference_k':p,'reference_l':p,eta.name:eta,sigma.name:sigma}
+    height_diag=first_parts['height'].xreplace(named_map(first_parts['height'],first_bindings))
+    slope_diag=first_parts['slope'].xreplace(named_map(first_parts['slope'],first_bindings))
+    J.emit('new-native-first-shape-grade-join',{'savedOriginal':first,'parts':first_parts,
+        'reconstruction':first_reconstruction,'bindings':first_bindings,'heightOnCommonDepthSupport':height_diag,
+        'slopeOnCommonDepthSupport':slope_diag,'slopePointwiseZeroAsserted':False,
+        'slopeWeakLimit':'Inherited ordinary-kernel translated Riemann-Lebesgue argument, not j(0)=0 or sigma=0',
+        'domain':'First-height comparison on common nongrazing depth; eta and sigma stay independent'})
     new_native={}
     for face,sign in [('plus',1),('minus',-1)]:
         tr=load('reference/'+face+'-new-native-trace.json');slot=load('reference/'+face+'-final-native-slot-routing.json')
@@ -456,8 +476,8 @@ def run_science(manifest,J,ns):
         for side,endpoint in [('minus',0),('plus',1)]:
             lab=height.subs(hsymbol,endpoint);product=sp.cancel(lab*normal_q)
             zero('constant-height-trace-factor-'+face+'-'+side,product,sp.I*q*eta*H[side])
-            dtn=first_diag.replace(lambda z:getattr(z,'is_Function',False) and z.func.__name__=='reference_height_hat',lambda z:H[side])
-            zero('constant-height-physical-first-shape-'+face+'-'+side,dtn,0)
+            dtn=height_diag.replace(lambda z:getattr(z,'is_Function',False) and z.func.__name__=='reference_height_hat',lambda z:H[side])
+            zero('constant-height-physical-first-height-grade-'+face+'-'+side,dtn,0)
             trace=1+product;inverse_retained=1-product
             excluded=zero('constant-height-retained-inverse-'+face+'-'+side,trace*inverse_retained,1-product**2)
             candidate=sp.expand(inverse_retained*F0)
@@ -472,7 +492,7 @@ def run_science(manifest,J,ns):
                 'closedGrazingNormal':sp.cancel((normal_q*candidate).subs(q,0))}
         new_native[face]=record
         J.emit('new-native-constant-height-'+face,{'restoredTrace':tr,'nativeSlot':slot,'heightContext':hc,
-            'actualNewConstantSpecializations':record,'domain':'raw first shape specialized for q!=0; closed response extended continuously to q=0',
+            'actualNewConstantSpecializations':record,'domain':'raw first-height grade specialized for q!=0; closed response extended continuously to q=0',
             'noOldTraceOrClosureFunctionCalled':True})
 
     # Every address is joined to its published source, factor, wave and whole-tag record.

@@ -1,0 +1,28 @@
+{
+  "recordedUtc": "2026-10-03T08:01:52.216214+00:00",
+  "status": "INDEPENDENT_GRADE_VALIDATION_CORRECTED_PENDING_ASSESSMENT",
+  "reviewedBaselineCommit": "d6707084",
+  "priorPacketSha256": "c3c73f334e1f610b9e1d24dfac499d10fe966b3e4f54ebd09500be1510167313",
+  "literalPriorVerdicts": {
+    "claude": "CLEAR FOR THIS TRANSLATED WEAK-END BUILD",
+    "grok": "NEEDS REVISION"
+  },
+  "methodAndEquationsUnchanged": true,
+  "all422SavedInputsByteIdentical": true,
+  "launcherAndSharedHelpersUnchanged": true,
+  "newScientificValidationRequiresAssessment": true,
+  "correction": "Select actual saved independent (10) height and (01) slope terms without setting sigma to zero; persist original/parts before exact reconstruction and grade-free coefficient guards. Zero comparison applies only to height at common nongrazing depth; save live slope with no pointwise-zero claim. Its weak translated limit remains the inherited ordinary-kernel argument.",
+  "unchangedRegionChecks": {
+    "allOtherFunctionASTs": true,
+    "allAddressAssemblyAndControlsByteIdentical": true,
+    "nativeTraceClosureAndSymbolAssignmentsASTIdenticalExceptSelectedDtnOperand": true
+  },
+  "testCount": 35,
+  "testsAreStdlibSourceMetadataAndSyntheticOnly": true,
+  "scientificPayloadRestored": false,
+  "scienceCalls": 0,
+  "newGateOrScienceRun": false,
+  "noPeerReportInCorrectedPacket": true,
+  "independentBuildClearance": false,
+  "noAuthorClearance": true
+}

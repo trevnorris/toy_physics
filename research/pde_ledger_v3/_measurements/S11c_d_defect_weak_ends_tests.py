@@ -10,7 +10,7 @@ import unittest
 M=Path(__file__).resolve().parent
 WORKER=M/'S11c_d_defect_weak_ends.py'
 MAN=json.loads((M/'S11c_d_defect_weak_ends_inputs.json').read_text())
-NAMES=('require','inherit_zero','cell_key','address_metadata_join','literal_field_joins','source_statement_join','verify_build_assessment','verify_helper_paths','verify_invocation','native_phase_exponent','control_eligible')
+NAMES=('require','inherit_zero','cell_key','address_metadata_join','literal_field_joins','source_statement_join','verify_build_assessment','verify_helper_paths','verify_invocation','native_phase_exponent','control_eligible','first_shape_grade_parts')
 ns={'ast':ast,'hashlib':hashlib,'Path':Path,'ROOT':Path('/var/projects/toy_physics'),'__file__':str(WORKER),'G':((0,0),(1,0),(0,1),(1,1)),
     'ROWS':('U0','U1','U2','THETA_BALANCE','E_W_BALANCE'),'FIELDS':('u_1','u_2','u_3','theta','e_W'),'ZERO':{'text':'0','srepr':'Integer(0)'}}
 tree=ast.parse(WORKER.read_text());nodes=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in NAMES]
@@ -20,7 +20,66 @@ def read(alias):return json.loads(Path(MAN['savedInputs'][alias]['path']).read_t
 FIELDS=read('inventory/fields.json');COVER={r['addressId']:r for r in read('weak/weak-address-coverage.json')};FACTORS=read('full/new-pressure-factor-arguments.json');WAVES=read('full/new-pressure-wave-arguments.json')
 ADDRESSES=sum([read('inventory/'+r+'-ordered-addresses.json') for r in ns['ROWS']],[])
 def join(a):return ns['address_metadata_join'](a,COVER[a['addressId']],FIELDS,FACTORS,WAVES)
+class SyntheticPolynomial:
+ """Integer-only two-variable stand-in; never interprets saved science."""
+ def __init__(self,terms):self.terms={g:c for g,c in terms.items() if c}
+ def coeff(self,var,power):
+  axis=0 if var.terms=={(1,0):1} else 1
+  if var.terms not in ({(1,0):1},{(0,1):1}):raise ValueError('synthetic variable')
+  return SyntheticPolynomial({tuple(0 if i==axis else n for i,n in enumerate(g)):c
+                              for g,c in self.terms.items() if g[axis]==power})
+ def __mul__(self,other):
+  result={}
+  for g,c in self.terms.items():
+   for h,d in other.terms.items():
+    key=tuple(a+b for a,b in zip(g,h));result[key]=result.get(key,0)+c*d
+  return SyntheticPolynomial(result)
+ def __add__(self,other):
+  result=self.terms.copy()
+  for g,c in other.terms.items():result[g]=result.get(g,0)+c
+  return SyntheticPolynomial(result)
+ def __eq__(self,other):return isinstance(other,SyntheticPolynomial) and self.terms==other.terms
+
 class TestMetadata(unittest.TestCase):
+ def test_independent_first_shape_selection(self):
+  eta=SyntheticPolynomial({(1,0):1});sigma=SyntheticPolynomial({(0,1):1})
+  first=SyntheticPolynomial({(1,0):7,(0,1):11})
+  parts=ns['first_shape_grade_parts'](first,eta,sigma,lambda x:x)
+  self.assertEqual(parts['height'],SyntheticPolynomial({(1,0):7}))
+  self.assertEqual(parts['slope'],SyntheticPolynomial({(0,1):11}))
+  self.assertEqual(parts['height']+parts['slope'],first)
+ def test_unselected_first_shape_grades_fail_reconstruction(self):
+  eta=SyntheticPolynomial({(1,0):1});sigma=SyntheticPolynomial({(0,1):1})
+  for g in ((0,0),(1,1),(2,0),(0,2),(2,1)):
+   first=SyntheticPolynomial({(1,0):7,(0,1):11,g:13})
+   parts=ns['first_shape_grade_parts'](first,eta,sigma,lambda x:x)
+   self.assertNotEqual(parts['height']+parts['slope'],first)
+ def test_common_depth_height_zero_does_not_erase_slope(self):
+  eta=SyntheticPolynomial({(1,0):1});sigma=SyntheticPolynomial({(0,1):1})
+  first=SyntheticPolynomial({(0,1):11})
+  parts=ns['first_shape_grade_parts'](first,eta,sigma,lambda x:x)
+  self.assertEqual(parts['height'],SyntheticPolynomial({}))
+  self.assertEqual(parts['slope'],first)
+ def test_saved_first_shape_has_two_independent_addends(self):
+  # Syntax inspection only: retain the exact saved constructor tree, do not evaluate it.
+  expr=ast.parse(read('reference/native-first-shape-input.json')['right']['srepr'],mode='eval').body
+  self.assertIsInstance(expr,ast.Call);self.assertEqual(expr.func.id,'Add');self.assertEqual(len(expr.args),2)
+  names=[]
+  for term in expr.args:
+   labels=[n.args[0].value for n in ast.walk(term) if isinstance(n,ast.Call)
+           and isinstance(n.func,ast.Name) and n.func.id=='Symbol']
+   names.append((labels.count('eta_bg'),labels.count('sigma_W')))
+  self.assertEqual(sorted(names),[(0,1),(1,0)])
+ def test_first_height_scope_and_persistence(self):
+  run=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='run_science')
+  source=ast.get_source_segment(WORKER.read_text(),run)
+  self.assertNotIn('sigma.name:sp.S.Zero',source)
+  self.assertIn('sigma.name:sigma',source)
+  self.assertLess(source.index("audit.append('native-first-shape-grade-operands'"),
+                  source.index("zero('native-first-shape-independent-grade-reconstruction'"))
+  self.assertIn("'slopePointwiseZeroAsserted':False",source)
+  self.assertIn('dtn=height_diag.replace',source)
+  self.assertNotIn('constant-height-physical-first-shape-',source)
  def test_all_actual_addresses(self):
   for a in ADDRESSES:join(a)
   self.assertEqual(len(ADDRESSES),13260)

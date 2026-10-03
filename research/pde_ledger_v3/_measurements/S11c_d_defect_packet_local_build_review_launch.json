@@ -1,0 +1,88 @@
+{
+  "status": "INDEPENDENT_LOCAL_BUILD_REVIEWS_RUNNING",
+  "recordedUtc": "2026-10-03T23:09:39.388682+00:00",
+  "buildCommit": "ba956761",
+  "acceptedInnerCommit": "0e58e991",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/local-build-review",
+  "launch": {
+    "jobPid": 605557,
+    "watcherPid": 605558,
+    "packetSha256": "3ce5f5b9b8120ecbd6754c980597fcaed8bbae89ec0fdc19a51d9d29d1ed79e3",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hookStatus": "waiting",
+  "packetSha256": "3ce5f5b9b8120ecbd6754c980597fcaed8bbae89ec0fdc19a51d9d29d1ed79e3",
+  "archiveSha256": "fa6a32489e04bfd70b0c484835571469b163492883f1c50fc1b65d71923c3b80",
+  "reports": {
+    "claude": {
+      "sessionId": "2277c1ed-82d7-433a-9207-82c6ffc85289",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "2277c1ed-82d7-433a-9207-82c6ffc85289"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/local-build-review/claude/work",
+      "startedUtc": "2026-10-03T23:09:01.951343+00:00",
+      "privateInputFilesChecked": 142,
+      "reportRead": false,
+      "status": "RUNNING_NOT_ADJUDICATED"
+    },
+    "grok": {
+      "sessionId": "75dbe72a-1582-4e01-960c-737c93926dc7",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/local-build-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/local-build-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "75dbe72a-1582-4e01-960c-737c93926dc7"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/local-build-review/grok/work",
+      "startedUtc": "2026-10-03T23:09:01.952680+00:00",
+      "privateInputFilesChecked": 142,
+      "reportRead": false,
+      "status": "RUNNING_NOT_ADJUDICATED"
+    }
+  },
+  "sourceOnly": true,
+  "newScientificOperations": 0,
+  "verdict": null,
+  "routinePermissionNeeded": false,
+  "automaticRetry": false,
+  "scope": "Only bounded local contributions of the two already declared Gaussian packets; pressure/full action remains pending"
+}

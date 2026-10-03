@@ -1,0 +1,900 @@
+{
+  "status": "PREPARED_NO_SCIENCE_OR_GATE",
+  "worker": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py",
+  "launcher": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_launch.py",
+  "helperSource": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py",
+  "textHelperSource": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_source.py",
+  "bSource": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py",
+  "c2Source": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+  "uniformWorker": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py",
+  "engineSource": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+  "physicalInput": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+  "methodPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_method.md",
+  "methodRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_review_r2_record.json",
+  "reviewRecordWillBe": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_build_review_record.json",
+  "executionAuthority": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_execution_authority.json",
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": [
+      1,
+      2
+    ],
+    "target": "Source-joined retained and finite selected weak-end equation comparison",
+    "independentGrades": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "noFrequencyDerivativeTransfer": true,
+    "noCurrentOrLoss": true,
+    "noRoots": true,
+    "noFiniteSolve": true,
+    "noDefectSweep": true
+  },
+  "savedInputs": {
+    "ends/symbols.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/new-complete-retained-weak-end-symbols.json",
+      "sha256": "82ffbe9f95f1cfa78aaa7327d11050a1063c8b1da043e60dae0ab96a2d7fe37e",
+      "bytes": 2621734
+    },
+    "ends/local-context.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/inherited-local-context.json",
+      "sha256": "d3bc5148b0d952e3bf78bda38442ac95a8734ea104afba84caceb9623e46fddc",
+      "bytes": 24779
+    },
+    "ends/depth-domain.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/new-closed-depth-domain.json",
+      "sha256": "e73227d8536f13261df25518502f95005564c7492fc29c211416519a89600bb5",
+      "bytes": 2249
+    },
+    "ends/phase-arguments.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/new-native-phase-argument-join.json",
+      "sha256": "4b4b1b0e16fda86fd7ae9195cb0e12327318f7c5574ad11dc0392c5cc429ab3a",
+      "bytes": 5225
+    },
+    "controls/conclusion.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/translated-weak-end-conclusion.json",
+      "sha256": "b34851024d195cea36efdf1a953fd652d161d2520e8d53b11e56c27512f3c3fa",
+      "bytes": 1753
+    },
+    "controls/return.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/saved-weak-end-controls-return.json",
+      "sha256": "a44307309729b3dc5582cba9f27761f65439fef8b5f24caf3312d24dce45e777",
+      "bytes": 2020
+    },
+    "controls/operation-index.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/operation-index.json",
+      "sha256": "82fd92ee7e7c63241c2308098967d151b782dc14e677d86b0974954d4f4276b7",
+      "bytes": 407
+    },
+    "native/wave-profile.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/native-wave-profile-contract.json",
+      "sha256": "a74785e2446e1448acdf6cee32b939d2818191fac1fafee4cb597ed3dfddf911",
+      "bytes": 53178
+    },
+    "native/weak-duality.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/new-weak-duality-and-order.json",
+      "sha256": "fab68ca5e7b96d0c37636ee1c878133e525d3b44456d273d9e0c289f7d60b2d9",
+      "bytes": 1677
+    },
+    "native/U0.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U0-full-native-partition.json",
+      "sha256": "e8ddcbb04ab53d8eae6c12e97511d0c95553ba5f6b4a85d7f3b9fbec89a1f6ef",
+      "bytes": 404106
+    },
+    "native/U1.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U1-full-native-partition.json",
+      "sha256": "5717671f740ac41da99b53887b4f8bd25f89157c8a84077c92290839a31fd38c",
+      "bytes": 404106
+    },
+    "native/U2.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U2-full-native-partition.json",
+      "sha256": "1a073706e00811968d41d5ed5364c67e243a480ac2f36fff5819477cb3031288",
+      "bytes": 404106
+    },
+    "native/THETA_BALANCE.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/THETA_BALANCE-full-native-partition.json",
+      "sha256": "8071d84d74ab5e2b2cd8b9c8c89fc2612d374b0ce90e8a874bea53597183a87a",
+      "bytes": 522630
+    },
+    "native/E_W_BALANCE.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-full-native-partition.json",
+      "sha256": "e0420071d1abb4eec0d7207e431986cd1b2540c9778b79fccbc6fd73abd612e1",
+      "bytes": 1000220
+    }
+  },
+  "originalPackets": {
+    "uniformSource": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/uniform-source.pickle",
+      "bytes": 109308,
+      "sha256": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571"
+    },
+    "uniformResponse": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle",
+      "bytes": 543796,
+      "sha256": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f"
+    },
+    "LEFTFrequency": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle",
+      "bytes": 9470,
+      "sha256": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a"
+    },
+    "RIGHTFrequency": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/right-frequency-pencil.pickle",
+      "bytes": 23826,
+      "sha256": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d"
+    },
+    "LEFTPairing": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left/complete.pickle",
+      "bytes": 318441,
+      "sha256": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259"
+    },
+    "RIGHTPairing": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right/complete.pickle",
+      "bytes": 1065916,
+      "sha256": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628"
+    },
+    "uniformCommon": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/common.pickle",
+      "bytes": 152330,
+      "sha256": "f05e16309a6b1d2aa841703092be69408f2a57247aca020ea92383d011a38ebb"
+    },
+    "LEFTNativeSource": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_left/objects.pickle",
+      "bytes": 187054,
+      "sha256": "f3409cc92263880f0d0e2c941f1884ed5ae0aa984f8bf6ea97b169060edcd51d"
+    },
+    "RIGHTNativeSource": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_right/objects.pickle",
+      "bytes": 764140,
+      "sha256": "56825f670042c21e56ac6b02ce553b90227158704b4fb40c6b9f8f8c03071b1a"
+    }
+  },
+  "uniformDatabase": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/operations.sqlite",
+  "uniformJournal": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/operation-index.jsonl",
+  "uniformReceipts": {
+    "completedOperations": [
+      {
+        "name": "restore/uniformSource",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/uniformSource/input.pickle",
+          "sha256": "84484435422b657141f76e5fccd4fd561e54367259f0b8153bbc336e8322a612",
+          "bytes": 411
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/uniformSource/return.pickle",
+          "sha256": "9377a8a2596a7d875a011014dd986ca4a894a0b82ccd6494da93f4f1b01d7c65",
+          "bytes": 94161
+        },
+        "seconds": 1.0703285910421982
+      },
+      {
+        "name": "restore/uniformResponse",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/uniformResponse/input.pickle",
+          "sha256": "63d3ae679e5c7436e92d15c6d1a91782dd21aeab7347abba251d569498be7f7b",
+          "bytes": 417
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/uniformResponse/return.pickle",
+          "sha256": "42dfb6b858797281736bd20fe49c8d73ee4077bfa3da99e76181766b0012429f",
+          "bytes": 158
+        },
+        "seconds": 0.03991530498024076
+      },
+      {
+        "name": "restore/uniformCommon",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/uniformCommon/input.pickle",
+          "sha256": "e398ca1985e610ba9bee6c099311d3ecd02783ac33bad80de30f8449b3288f43",
+          "bytes": 403
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/uniformCommon/return.pickle",
+          "sha256": "740dd0cbf9fc3ae7ed696baaa2ed59d4dfc76b311fc6e6ab37ca13e51f216c81",
+          "bytes": 139090
+        },
+        "seconds": 2.5493032640079036
+      },
+      {
+        "name": "restore/LEFTFrequency",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/LEFTFrequency/input.pickle",
+          "sha256": "9cb6b86bbcbbf9a8eef0505302586fad195471acc743d35f22022593044cc204",
+          "bytes": 415
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/LEFTFrequency/return.pickle",
+          "sha256": "2dfdee76511b6f5e03a42cad7f4766e4daef8f9721448cd8d42ea3cefb2f4803",
+          "bytes": 9277
+        },
+        "seconds": 0.04948961699847132
+      },
+      {
+        "name": "restore/RIGHTFrequency",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/RIGHTFrequency/input.pickle",
+          "sha256": "7accbaac36b22eaf00f277f40012836700e901289c19227e3b5c5a2887b1213e",
+          "bytes": 417
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/RIGHTFrequency/return.pickle",
+          "sha256": "c6fb8c8633fde748dbfc9dc533a9e4445f73dc143ccc75270f567a14d6c03d20",
+          "bytes": 23414
+        },
+        "seconds": 0.09428244701121002
+      },
+      {
+        "name": "restore/LEFTPairing",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/LEFTPairing/input.pickle",
+          "sha256": "48f5cb077c870d8cb0132c182a087346ef933a7cc740510722f85d1e5ccbf4fc",
+          "bytes": 406
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/LEFTPairing/return.pickle",
+          "sha256": "e67a49ca846ce77e9ec5e8c8539c60df3c0ca20369e75462b0b63c1651dda20a",
+          "bytes": 249033
+        },
+        "seconds": 1.044807592057623
+      },
+      {
+        "name": "restore/RIGHTPairing",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/RIGHTPairing/input.pickle",
+          "sha256": "3c8c8c661c54250a3901eea53bb3dac7a4b520b98694e88c4f389ddd5d35dce7",
+          "bytes": 408
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/RIGHTPairing/return.pickle",
+          "sha256": "cb285a8bdd745cdf48c529e306260534e031551d3da4778b70a69a083de75ee0",
+          "bytes": 901117
+        },
+        "seconds": 4.08773986401502
+      },
+      {
+        "name": "restore/LEFTNativeSource",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/LEFTNativeSource/input.pickle",
+          "sha256": "669d8085a911b74fa468c3d1cfb86b8dbce31abc147f60224a6b8fa3d53278f2",
+          "bytes": 409
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/LEFTNativeSource/return.pickle",
+          "sha256": "096a10d18eb1d2475399250ef02aa0b6d40d56486036daa8c8ea2f08bab5619a",
+          "bytes": 168131
+        },
+        "seconds": 0.9747484320541844
+      },
+      {
+        "name": "restore/RIGHTNativeSource",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "restore/RIGHTNativeSource/input.pickle",
+          "sha256": "82c9c7508845ab75d06e9c0cb4cf9a88a49a033a67698fe76b8e939c5ca8e389",
+          "bytes": 411
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "restore/RIGHTNativeSource/return.pickle",
+          "sha256": "54e0a988432d57d6e625ea0fd66839f14a51718b6198ed8031463f27cf618741",
+          "bytes": 620290
+        },
+        "seconds": 2.907358509954065
+      },
+      {
+        "name": "selected-lift",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "selected-lift/input.pickle",
+          "sha256": "eac0dc00441fb2ffd5896c5a14d9044ccec31d8970f7df96ab7cdfe79416f119",
+          "bytes": 141999
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "selected-lift/return.pickle",
+          "sha256": "82d1c59cf19060b154e6a9650be0d3f4d3c48405f05b50f734c8542129b9f348",
+          "bytes": 4133
+        },
+        "seconds": 0.13908805104438215
+      },
+      {
+        "name": "LEFT/restriction",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "LEFT/restriction/input.pickle",
+          "sha256": "20f5f14fecc4be9c99420e74bb7c4183d3cf47493830ce38a1c577d9be4a6990",
+          "bytes": 20567
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "LEFT/restriction/return.pickle",
+          "sha256": "650df545e3a82f77c26a82841bfd83fbcf58c3804b30d5ab626026a40cc08bec",
+          "bytes": 7128
+        },
+        "seconds": 1.094987173913978
+      },
+      {
+        "name": "LEFT/native-reconstruction",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "LEFT/native-reconstruction/input.pickle",
+          "sha256": "f84e76382920f01be37bc20d842a98def8974060e5f6947e9e7d37c200faefa6",
+          "bytes": 404607
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "LEFT/native-reconstruction/return.pickle",
+          "sha256": "70fa60b653eaf0ca61b615ec681ce81aac5da441e874c45568051581d5f8fd57",
+          "bytes": 95863
+        },
+        "seconds": 54.49453360203188
+      },
+      {
+        "name": "RIGHT/restriction",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "RIGHT/restriction/input.pickle",
+          "sha256": "cb8f95f0f645c5120a225c85fd9bc466b53205d80291cd76d722d36d54fb5a11",
+          "bytes": 46664
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "RIGHT/restriction/return.pickle",
+          "sha256": "465425676fefc891aad68c0085d7199ce442defca7f03d075bdd02fae3596621",
+          "bytes": 14009
+        },
+        "seconds": 2.633726842002943
+      },
+      {
+        "name": "RIGHT/native-reconstruction",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "RIGHT/native-reconstruction/input.pickle",
+          "sha256": "f3680916a52b550c053290d72f2ed0929958c942523dbe92de86c740087dc0e4",
+          "bytes": 1486348
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "RIGHT/native-reconstruction/return.pickle",
+          "sha256": "c4b7d702516fabb5d172e206aa3a0776b1203bf1cd0848b87f82dc7b3dd6aaa1",
+          "bytes": 179840
+        },
+        "seconds": 152.36509369092528
+      },
+      {
+        "name": "LEFT/exact-limits/-1",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "LEFT/exact-limits/-1/input.pickle",
+          "sha256": "11dfbada6661eac0319adbabba8dc06bdbc8beb4229d61904a2be663ed7b7c73",
+          "bytes": 102416
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "LEFT/exact-limits/-1/return.pickle",
+          "sha256": "b72c076bffbd151a3d82c3c8595ab40ba8da04bb9bad5889e56a94fba6153aba",
+          "bytes": 192860
+        },
+        "seconds": 21.97086187102832
+      },
+      {
+        "name": "LEFT/exact-limits/1",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "LEFT/exact-limits/1/input.pickle",
+          "sha256": "4c327ca51100c8be1ed6170ea07ea2b48439a4edc5a96c70033da5ff0f98a231",
+          "bytes": 102413
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "LEFT/exact-limits/1/return.pickle",
+          "sha256": "c53d711f053c698f54edda98e37e406968141cb3d6409a2babf21f585a33496b",
+          "bytes": 189815
+        },
+        "seconds": 24.881934677017853
+      },
+      {
+        "name": "RIGHT/exact-limits/-1",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "RIGHT/exact-limits/-1/input.pickle",
+          "sha256": "2940fea5b4ffccc16dacddb7a714bd7a488b5712ec89a3aa0d2d89d684608d9b",
+          "bytes": 191859
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "RIGHT/exact-limits/-1/return.pickle",
+          "sha256": "10df239cc04692aef051331ef40cbe46fbc3a3d533565bb9c7b3126025384442",
+          "bytes": 379916
+        },
+        "seconds": 72.73979998601135
+      },
+      {
+        "name": "RIGHT/exact-limits/1",
+        "status": "COMPLETE",
+        "input": {
+          "storage": "sqlite",
+          "member": "RIGHT/exact-limits/1/input.pickle",
+          "sha256": "cdbe21c2dc1be583f3db624ddac8e91a27785ca9814d0c909d53be4520369055",
+          "bytes": 191856
+        },
+        "result": {
+          "storage": "sqlite",
+          "member": "RIGHT/exact-limits/1/return.pickle",
+          "sha256": "1b6fc1bfe2e5249237a864defff278a885a6a39f46b3e7c7dc831f30047a1516",
+          "bytes": 356257
+        },
+        "seconds": 68.96790516399778
+      }
+    ],
+    "blobReceipts": [
+      {
+        "member": "LEFT/exact-limits/-1/input.pickle",
+        "sha256": "11dfbada6661eac0319adbabba8dc06bdbc8beb4229d61904a2be663ed7b7c73",
+        "bytes": 102416,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/exact-limits/-1/return.pickle",
+        "sha256": "b72c076bffbd151a3d82c3c8595ab40ba8da04bb9bad5889e56a94fba6153aba",
+        "bytes": 192860,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/exact-limits/1/input.pickle",
+        "sha256": "4c327ca51100c8be1ed6170ea07ea2b48439a4edc5a96c70033da5ff0f98a231",
+        "bytes": 102413,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/exact-limits/1/return.pickle",
+        "sha256": "c53d711f053c698f54edda98e37e406968141cb3d6409a2babf21f585a33496b",
+        "bytes": 189815,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/limits/sign--1/EVANESCENT/wave-path",
+        "sha256": "f51b09c0a6466be969dedb6bc0b2e04fdedf5a687f277c25ab452528119a96a1",
+        "bytes": 835,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/limits/sign--1/RADIATING/wave-path",
+        "sha256": "8bc1ff2066c83331fa8e1a039d6be47f22575ba22493b67ecff18fb4c86603e8",
+        "bytes": 707,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/limits/sign-1/EVANESCENT/wave-path",
+        "sha256": "c9c4f53e32773a4f23d2144d903c4d6708bf73bb4337e7d107c8be51d1d75c80",
+        "bytes": 832,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/limits/sign-1/RADIATING/wave-path",
+        "sha256": "018dcc045460baf22ae32d5fcfaf8d566d8978e33e67bf18863fa8a7c6155233",
+        "bytes": 704,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/native-reconstruction/input.pickle",
+        "sha256": "f84e76382920f01be37bc20d842a98def8974060e5f6947e9e7d37c200faefa6",
+        "bytes": 404607,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/native-reconstruction/return.pickle",
+        "sha256": "70fa60b653eaf0ca61b615ec681ce81aac5da441e874c45568051581d5f8fd57",
+        "bytes": 95863,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/restriction/doublet-dispersion",
+        "sha256": "d333fa89f2dff513934b5d551444015cf513e0031d6dd03ec98578736ec1bd0b",
+        "bytes": 482,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/restriction/full-five-row-invariance",
+        "sha256": "e9484ca286f8dfe4e983d388201d0ff84fb28bbd613511cd3729b048e0a29993",
+        "bytes": 2929,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/restriction/input.pickle",
+        "sha256": "20f5f14fecc4be9c99420e74bb7c4183d3cf47493830ce38a1c577d9be4a6990",
+        "bytes": 20567,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/restriction/physical-algebraic-joins",
+        "sha256": "075656c6bea30efca176c9f761c914c1594166615371a60526cdda2969c5532f",
+        "bytes": 6354,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/restriction/return.pickle",
+        "sha256": "650df545e3a82f77c26a82841bfd83fbcf58c3804b30d5ab626026a40cc08bec",
+        "bytes": 7128,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/restriction/selected-branch",
+        "sha256": "9fca5a783b566875c743cdfec301fbaf847c9f86ef04ba36b9d9f7d6b8efad26",
+        "bytes": 591,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/restriction/units",
+        "sha256": "b8958a9ad5b384aa7cd5520631456a845480f1dc4595b21d0440ed698d6b0a67",
+        "bytes": 571,
+        "payloadRestored": false
+      },
+      {
+        "member": "LEFT/restriction/wave-schema",
+        "sha256": "012401e2aef386c8c06a06241ce65086850495d96dab4d81e60cd3406c372a8a",
+        "bytes": 575,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/exact-limits/-1/input.pickle",
+        "sha256": "2940fea5b4ffccc16dacddb7a714bd7a488b5712ec89a3aa0d2d89d684608d9b",
+        "bytes": 191859,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/exact-limits/-1/return.pickle",
+        "sha256": "10df239cc04692aef051331ef40cbe46fbc3a3d533565bb9c7b3126025384442",
+        "bytes": 379916,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/exact-limits/1/input.pickle",
+        "sha256": "cdbe21c2dc1be583f3db624ddac8e91a27785ca9814d0c909d53be4520369055",
+        "bytes": 191856,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/exact-limits/1/return.pickle",
+        "sha256": "1b6fc1bfe2e5249237a864defff278a885a6a39f46b3e7c7dc831f30047a1516",
+        "bytes": 356257,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/limits/sign--1/EVANESCENT/wave-path",
+        "sha256": "611648746ae2c33685b7ea786920b12577c557ffb6ea3a47fe9689ca91e36abe",
+        "bytes": 870,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/limits/sign--1/RADIATING/wave-path",
+        "sha256": "3374679df4385973de6eb490a5cacca1be9441707922371183b4d4063d7e8604",
+        "bytes": 719,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/limits/sign-1/EVANESCENT/wave-path",
+        "sha256": "ce9f8dc460222c0e8e99bca4de52cb36278a7403234257f89f1d4a69e774a0f3",
+        "bytes": 867,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/limits/sign-1/RADIATING/wave-path",
+        "sha256": "3abe0d93e9b2546f64076bdf3a1d20d36531970619725566c58a7950ec1e2143",
+        "bytes": 716,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/native-reconstruction/input.pickle",
+        "sha256": "f3680916a52b550c053290d72f2ed0929958c942523dbe92de86c740087dc0e4",
+        "bytes": 1486348,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/native-reconstruction/return.pickle",
+        "sha256": "c4b7d702516fabb5d172e206aa3a0776b1203bf1cd0848b87f82dc7b3dd6aaa1",
+        "bytes": 179840,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/restriction/doublet-dispersion",
+        "sha256": "12a86355a14dd452a3c7ee605e20769fe7cbe445561a84d8115f2f4a06dd7a09",
+        "bytes": 474,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/restriction/full-five-row-invariance",
+        "sha256": "7423f67c61f1e91244f44b060c63e654398c29b08cd9e55b21d1d6cc3115dc33",
+        "bytes": 4856,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/restriction/input.pickle",
+        "sha256": "cb8f95f0f645c5120a225c85fd9bc466b53205d80291cd76d722d36d54fb5a11",
+        "bytes": 46664,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/restriction/physical-algebraic-joins",
+        "sha256": "e3c8995788da12d34fe889d0abfdb636f2db94f1cc68e23812a8becaa8b3c7b9",
+        "bytes": 13203,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/restriction/return.pickle",
+        "sha256": "465425676fefc891aad68c0085d7199ce442defca7f03d075bdd02fae3596621",
+        "bytes": 14009,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/restriction/selected-branch",
+        "sha256": "6564550e061a87664e23cd7301b8481e67748974ce0af944fe9225ae6fd19393",
+        "bytes": 620,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/restriction/units",
+        "sha256": "b8958a9ad5b384aa7cd5520631456a845480f1dc4595b21d0440ed698d6b0a67",
+        "bytes": 571,
+        "payloadRestored": false
+      },
+      {
+        "member": "RIGHT/restriction/wave-schema",
+        "sha256": "012401e2aef386c8c06a06241ce65086850495d96dab4d81e60cd3406c372a8a",
+        "bytes": 575,
+        "payloadRestored": false
+      },
+      {
+        "member": "lift/source-joins",
+        "sha256": "d1343972cfd60b1d250cef87b8582ee770b091efbd895fd49f24bac1de6420f1",
+        "bytes": 3904,
+        "payloadRestored": false
+      },
+      {
+        "member": "profiles/constant-end-and-zero-jets",
+        "sha256": "c80a9f55ba631dab396886b479cc1f54688586b88745d7283bffb06a3dbb0330",
+        "bytes": 1182,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/LEFTFrequency/input.pickle",
+        "sha256": "9cb6b86bbcbbf9a8eef0505302586fad195471acc743d35f22022593044cc204",
+        "bytes": 415,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/LEFTFrequency/return.pickle",
+        "sha256": "2dfdee76511b6f5e03a42cad7f4766e4daef8f9721448cd8d42ea3cefb2f4803",
+        "bytes": 9277,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/LEFTNativeSource/input.pickle",
+        "sha256": "669d8085a911b74fa468c3d1cfb86b8dbce31abc147f60224a6b8fa3d53278f2",
+        "bytes": 409,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/LEFTNativeSource/return.pickle",
+        "sha256": "096a10d18eb1d2475399250ef02aa0b6d40d56486036daa8c8ea2f08bab5619a",
+        "bytes": 168131,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/LEFTPairing/input.pickle",
+        "sha256": "48f5cb077c870d8cb0132c182a087346ef933a7cc740510722f85d1e5ccbf4fc",
+        "bytes": 406,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/LEFTPairing/return.pickle",
+        "sha256": "e67a49ca846ce77e9ec5e8c8539c60df3c0ca20369e75462b0b63c1651dda20a",
+        "bytes": 249033,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/RIGHTFrequency/input.pickle",
+        "sha256": "7accbaac36b22eaf00f277f40012836700e901289c19227e3b5c5a2887b1213e",
+        "bytes": 417,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/RIGHTFrequency/return.pickle",
+        "sha256": "c6fb8c8633fde748dbfc9dc533a9e4445f73dc143ccc75270f567a14d6c03d20",
+        "bytes": 23414,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/RIGHTNativeSource/input.pickle",
+        "sha256": "82c9c7508845ab75d06e9c0cb4cf9a88a49a033a67698fe76b8e939c5ca8e389",
+        "bytes": 411,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/RIGHTNativeSource/return.pickle",
+        "sha256": "54e0a988432d57d6e625ea0fd66839f14a51718b6198ed8031463f27cf618741",
+        "bytes": 620290,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/RIGHTPairing/input.pickle",
+        "sha256": "3c8c8c661c54250a3901eea53bb3dac7a4b520b98694e88c4f389ddd5d35dce7",
+        "bytes": 408,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/RIGHTPairing/return.pickle",
+        "sha256": "cb285a8bdd745cdf48c529e306260534e031551d3da4778b70a69a083de75ee0",
+        "bytes": 901117,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/uniformCommon/input.pickle",
+        "sha256": "e398ca1985e610ba9bee6c099311d3ecd02783ac33bad80de30f8449b3288f43",
+        "bytes": 403,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/uniformCommon/return.pickle",
+        "sha256": "740dd0cbf9fc3ae7ed696baaa2ed59d4dfc76b311fc6e6ab37ca13e51f216c81",
+        "bytes": 139090,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/uniformResponse/input.pickle",
+        "sha256": "63d3ae679e5c7436e92d15c6d1a91782dd21aeab7347abba251d569498be7f7b",
+        "bytes": 417,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/uniformResponse/return.pickle",
+        "sha256": "42dfb6b858797281736bd20fe49c8d73ee4077bfa3da99e76181766b0012429f",
+        "bytes": 158,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/uniformSource/input.pickle",
+        "sha256": "84484435422b657141f76e5fccd4fd561e54367259f0b8153bbc336e8322a612",
+        "bytes": 411,
+        "payloadRestored": false
+      },
+      {
+        "member": "restore/uniformSource/return.pickle",
+        "sha256": "9377a8a2596a7d875a011014dd986ca4a894a0b82ccd6494da93f4f1b01d7c65",
+        "bytes": 94161,
+        "payloadRestored": false
+      },
+      {
+        "member": "selected-lift/input.pickle",
+        "sha256": "eac0dc00441fb2ffd5896c5a14d9044ccec31d8970f7df96ab7cdfe79416f119",
+        "bytes": 141999,
+        "payloadRestored": false
+      },
+      {
+        "member": "selected-lift/return.pickle",
+        "sha256": "82d1c59cf19060b154e6a9650be0d3f4d3c48405f05b50f734c8542129b9f348",
+        "bytes": 4133,
+        "payloadRestored": false
+      }
+    ]
+  },
+  "sourcePins": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py": "ab979f4912e61c3dfad6edd7a56d5cf2db1c85a9bd02492a188768af1628316f",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_launch.py": "545762eef9a689cea905e72583d805cdcb6ce308543166b0f8158b6634a77fab",
+    "/var/projects/toy_physics/AGENTS.md": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_execution_authority.json": "f7bf29fd26cab769d8e7534c4f975e587ccb55e8a12fdfad860419cb976b88d1",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_method.md": "fa899606cf76f7af9e09ee1fbad3a0a6615b87523f92f8de2a2f3f1480ea86d1",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_review_r2_record.json": "ede6477303940b03ced1dbc275cbbfb1daaffed2637cd40053911c3bddba0d33",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_source.py": "19452677bdc296e3456b545ae87fb33a544a617437730a4606cea485016be870",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py": "49506203cb214572f712b023ba71c620f9f13ae75d144827726f03220fc2ff4e",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py": "e2350d3cf1ce697aaec60c60e60d1a5cf945d00f36cb26be7ea3b3915b406c73",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak.py": "ea1726dd7cc28bca6c85c06276c03941ad3b17de5e6d752e53a8cc487d77d738",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_composition.py": "77ec3fa030b5a5a839c31b2be1d8dd76b392b06f3cbf5b859870a6f20b56740c",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+    "/var/projects/toy_physics/scripts/s11c_guarded_run.py": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+    "/var/projects/toy_physics/scripts/codex_job_watch.py": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/operations.sqlite": "ae1c00d82b440c75a6c998bd6fba388a5c4f7744e83be637885a5ec0fd5bb7b9",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/operation-index.jsonl": "350b4f8c52a6d72fc57724b593b48316b80623240e1e9abe89793b73c095be2b",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/new-complete-retained-weak-end-symbols.json": "82ffbe9f95f1cfa78aaa7327d11050a1063c8b1da043e60dae0ab96a2d7fe37e",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/inherited-local-context.json": "d3bc5148b0d952e3bf78bda38442ac95a8734ea104afba84caceb9623e46fddc",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/new-closed-depth-domain.json": "e73227d8536f13261df25518502f95005564c7492fc29c211416519a89600bb5",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/new-native-phase-argument-join.json": "4b4b1b0e16fda86fd7ae9195cb0e12327318f7c5574ad11dc0392c5cc429ab3a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/translated-weak-end-conclusion.json": "b34851024d195cea36efdf1a953fd652d161d2520e8d53b11e56c27512f3c3fa",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/saved-weak-end-controls-return.json": "a44307309729b3dc5582cba9f27761f65439fef8b5f24caf3312d24dce45e777",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/operation-index.json": "82fd92ee7e7c63241c2308098967d151b782dc14e677d86b0974954d4f4276b7",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/native-wave-profile-contract.json": "a74785e2446e1448acdf6cee32b939d2818191fac1fafee4cb597ed3dfddf911",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-composition-20261002/diagnostic-01/complete/new-weak-duality-and-order.json": "fab68ca5e7b96d0c37636ee1c878133e525d3b44456d273d9e0c289f7d60b2d9",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U0-full-native-partition.json": "e8ddcbb04ab53d8eae6c12e97511d0c95553ba5f6b4a85d7f3b9fbec89a1f6ef",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U1-full-native-partition.json": "5717671f740ac41da99b53887b4f8bd25f89157c8a84077c92290839a31fd38c",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U2-full-native-partition.json": "1a073706e00811968d41d5ed5364c67e243a480ac2f36fff5819477cb3031288",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/THETA_BALANCE-full-native-partition.json": "8071d84d74ab5e2b2cd8b9c8c89fc2612d374b0ce90e8a874bea53597183a87a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-full-native-partition.json": "e0420071d1abb4eec0d7207e431986cd1b2540c9778b79fccbc6fd73abd612e1",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/uniform-source.pickle": "a482c5023d16558f52b20d0a347d6e38f33f0f06f780abd256c5220f922b5571",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle": "1d5bd9967d08c5ad01eab8707ea25af01cfb9bf61bfd83073ed898c9d76a772f",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle": "67148025b209f7171b7679249c075c6e68b76882ac6ac5adfffed4eb2766211a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/right-frequency-pencil.pickle": "0fe2cccd0b9c08f57666530b2519dff26e8dee633058aae85d3d7f4b89ec029d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left/complete.pickle": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right/complete.pickle": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/common.pickle": "f05e16309a6b1d2aa841703092be69408f2a57247aca020ea92383d011a38ebb",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_left/objects.pickle": "f3409cc92263880f0d0e2c941f1884ed5ae0aa984f8bf6ea97b169060edcd51d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_right/objects.pickle": "56825f670042c21e56ac6b02ce553b90227158704b4fb40c6b9f8f8c03071b1a",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084"
+  },
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "hostReserveBytes": 4294967296,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "tasksMax": 32,
+    "nativeThreads": 1,
+    "priority": "desktop-managed",
+    "durationLimits": null
+  },
+  "oldFunctionsCalled": false,
+  "newWork": [
+    "actual native chart covariance and units",
+    "raw source to finite origin join",
+    "full and selected residuals with independent grade attribution",
+    "closed grazing comparison and actual inherited path joins",
+    "addressed controls and selected-cell participation"
+  ]
+}

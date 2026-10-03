@@ -1,0 +1,48 @@
+{
+  "status": "STANDING_AUTHORITY_FOR_ONE_BOUNDED_INSTRUMENT_AFTER_ASSESSMENT",
+  "recordedUtc": "2026-10-03T10:55:06.483120+00:00",
+  "boundedInstrumentAuthorized": true,
+  "scienceExecutionsAuthorized": 1,
+  "automaticScientificRetry": false,
+  "noDeadline": true,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": [
+      1,
+      2
+    ],
+    "target": "Source-joined retained and finite selected weak-end equation comparison",
+    "independentGrades": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "noFrequencyDerivativeTransfer": true,
+    "noCurrentOrLoss": true,
+    "noRoots": true,
+    "noFiniteSolve": true,
+    "noDefectSweep": true
+  },
+  "basis": "User requests clear bounded continued work without routine permission; AGENTS standing execution/review rules remain. No current/defect sweep expansion.",
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf"
+}

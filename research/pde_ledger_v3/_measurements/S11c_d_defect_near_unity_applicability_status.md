@@ -1,7 +1,7 @@
 # Corrected near-unity defect calculation: applicability status
 
-Updated 2026-10-03 after inspection of the translated weak-end control
-continuation launched from a5feba42. Native local/full weak evidence remains
+Updated 2026-10-03 after paired end/uniform method assessment and concrete
+comparison build preparation. Native local/full weak evidence remains
 at 2b82558f; global pressure evidence remains at 98a6d50c.
 This is an author-maintained dependency record, not an independent verdict or
 authorization for a defect sweep.
@@ -35,16 +35,23 @@ result. The completion record distinguishes supported scoped evidence from
 clean process acceptance. The earlier exact-true predicate failure at ac9b919a
 also remains preserved; its actual SymPy true-atom cause is now recorded.
 
-The next bounded proposal compares these source-joined translated end symbols
-with the earlier uniform selected-subspace operands. Its first literal method
-pair was Claude NEEDS REVISION / Grok CLEAR, preserved at 1e0763ee. The revised
-proposal requires raw-source/finite-origin joins and explicit retained-grade
-versus excluded-remainder attribution. It binds the positive harmonic trial,
-native equation rows and bilinear Fourier duality, records A/R as dependent
-views of one equation check, and uses closed grazing residuals with all four
-saved limit joins. This remains a proposal: no comparison worker, READY gate or
-new science exists. No automatic old-mode/current acceptance, producer replay
-or defect sweep.
+The next bounded comparison uses these translated end symbols and the earlier
+uniform selected-subspace operands. Its first literal method pair was Claude
+NEEDS REVISION / Grok CLEAR, preserved at 1e0763ee. Both revised method reports
+literally CLEAR FOR THIS BOUNDED WEAK-END UNIFORM-COMPARISON METHOD are preserved
+at e41557f0. This is method assessment, not a computed comparison.
+
+The concrete worker is prepared for independent build assessment. It requires
+actual native cyclic coordinate and unit joins before comparing the weak
+profile direction with the old uniform normal. Raw-source/finite-origin joins
+and independent retained-grade extraction keep an excluded finite remainder
+separate from a retained mismatch. A/R remain dependent views of one equation;
+closed grazing residuals use all four saved limit paths. Per-cell lift weights
+identify pressure/direct entries that selected agreement cannot test. All 200
+end cells and 18 completed old uniform operations are reused without calling
+their functions. Eighteen stdlib checks and a 58-blob opaque opcode census are
+preparation evidence only. No scientific payload was restored, READY gate made,
+or new science run. No old-current transfer, producer replay or defect sweep.
 
 Strict rest bulk, LAB_HELD/RHO4_CONSTANT, one tanh profile and saved direction
 remain explicit. Drain flow, primitive speed derivation, full Green/FORM/A11/A12

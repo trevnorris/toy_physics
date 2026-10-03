@@ -65,6 +65,13 @@ inferred. The unit predicate and comparison formula ASTs are unchanged; 44
 stdlib tests pass. A fresh execution gate records local tooling authority and
 independentBuildClearance=false; no new independent CLEAR is claimed. No old-current transfer, producer replay or defect sweep.
 
+The bounded comparison was launched from prepared commit 273b2b34 with its
+completion hook armed first. Actual host enforcement was verified: 4 GiB native
+and cgroup memory, zero swap, CPU 15, one thread, 32 tasks, RuntimeMaxUSec=infinity
+and Restart=no. All 65 source snapshots and 10 additional identity copies match.
+The result is pending; startup containment is not scientific acceptance. The
+canonical S11c_d_defect_end_uniform_launch_record.json records actual receipts.
+
 Strict rest bulk, LAB_HELD/RHO4_CONSTANT, one tanh profile and saved direction
 remain explicit. Drain flow, primitive speed derivation, full Green/FORM/A11/A12
 and physical loss remain open. No production export has been overwritten.

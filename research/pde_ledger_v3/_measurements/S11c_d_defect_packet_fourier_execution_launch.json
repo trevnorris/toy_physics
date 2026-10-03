@@ -1,0 +1,185 @@
+{
+  "status": "GUARDED_FOURIER_LAUNCH_AND_ENFORCEMENT_VERIFIED",
+  "utc": "2026-10-03T18:08:05.194706+00:00",
+  "readyCommit": "38768b7b",
+  "reviewCommit": "745d3522",
+  "gateSha256": "fe9eabcb98862fe222ee45a82900bc2ba1d94d430d519841ea5c3fb1902af4ee",
+  "launch": {
+    "jobPid": 519821,
+    "watcherPid": 519822,
+    "gateSha256": "fe9eabcb98862fe222ee45a82900bc2ba1d94d430d519841ea5c3fb1902af4ee",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "4",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-01/resource-guard",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-01",
+      "--stage",
+      "defect_packet_fourier",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_gate.json"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "guardInvocation": {
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-01",
+      "--stage",
+      "defect_packet_fourier",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_gate.json"
+    ],
+    "cwd": "/var/projects/toy_physics",
+    "unit": "s11c-guard-471aef277f31",
+    "seconds": 0,
+    "requestedSecondsArgumentIgnored": 0,
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null,
+    "cpu": 15,
+    "memoryMax": 4294967296,
+    "swapMax": 0,
+    "tasksMax": 32,
+    "minimumHostAvailableBytes": 4294967296,
+    "startedUtc": "2026-10-03T18:07:50.767016+00:00",
+    "pool": "s11c-near-unity",
+    "priorityPolicy": "desktop-managed",
+    "logDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-01/resource-guard",
+    "affinityEnforcement": "systemd-and-inherited-process",
+    "reservedBeforeBytes": 0,
+    "outstandingHeadroomBytes": 0,
+    "hostAvailableBytes": 20729151488,
+    "poolMemoryMax": 17179869184,
+    "poolMaxJobs": 6,
+    "activeUnits": [],
+    "owner": {
+      "pid": 519831,
+      "startTicks": "109217704",
+      "bootId": "c8304a64-451a-49f4-b454-d113d706e731"
+    }
+  },
+  "limitValidation": {
+    "verified": true,
+    "actual": {
+      "memory.max": "4294967296",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-471aef277f31.service",
+      "nice": 0,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "nativeAddressSpaceBytes": [
+        4294967296,
+        4294967296
+      ],
+      "systemd.CPUAffinity": "15",
+      "affinityEnforcement": "systemd-and-inherited-process"
+    }
+  },
+  "durationValidation": {
+    "verified": true,
+    "actual": {
+      "RuntimeMaxUSec": "infinity",
+      "Restart": "no"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "nativeContainment": {
+    "memory.max": "4294967296",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "cgroup": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-471aef277f31.service",
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpace": 4294967296,
+    "durationLimits": null
+  },
+  "supervisorStage": {
+    "stage": "defect_packet_fourier",
+    "command": [
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_gate.json"
+    ],
+    "prerequisiteLock": "shared-read",
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-01/defect_packet_fourier.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-01/defect_packet_fourier.stderr",
+    "startedUtc": "2026-10-03T18:07:50.902900+00:00",
+    "childPid": 519839,
+    "status": "running"
+  },
+  "hostWorkerArgv": [
+    "/usr/bin/python",
+    "-u",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier.py",
+    "--out",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/fourier-01/complete",
+    "--inputs",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_inputs.json",
+    "--gate",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_gate.json"
+  ],
+  "hookArmedBeforeStage": true,
+  "hookStatusAtInspection": "waiting",
+  "sourceSnapshotsChecked": 891,
+  "additionalIdentityCopiesChecked": 13,
+  "scientificAcceptance": "PENDING_COMPLETE_OUTPUT_INSPECTION",
+  "noPolling": true,
+  "automaticRetry": false
+}

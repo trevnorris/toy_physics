@@ -324,3 +324,9 @@ assessment 745d3522. Its actual launcher verification passed against all 889
 source pins; 13 additional review/authority/host/result records are copied and
 hashed. This is permission for the bounded 190-request bank only. Actual rule,
 transform, resource and integrity results remain to be inspected after execution.
+The Fourier bank launched from 38768b7b. Host startup inspection confirms the
+actual worker/supervisor command and pooled containment: CPU15,4GiB native/cgroup,
+zero swap,32tasks,one thread, RuntimeMaxUSec=infinity and Restart=no. All 891
+source snapshots and 13 additional identity copies match. The existing-session
+completion hook was armed before the stage. The worker was running at inspection;
+no numerical acceptance is inferred. Waiting is silent and does not poll the model.

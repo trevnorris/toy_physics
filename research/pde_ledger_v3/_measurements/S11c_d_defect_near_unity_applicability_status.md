@@ -41,7 +41,9 @@ NEEDS REVISION / Grok CLEAR, preserved at 1e0763ee. Both revised method reports
 literally CLEAR FOR THIS BOUNDED WEAK-END UNIFORM-COMPARISON METHOD are preserved
 at e41557f0. This is method assessment, not a computed comparison.
 
-The concrete worker is prepared for independent build assessment. It requires
+The first concrete build received literal NEEDS REVISION from both reviewers,
+preserved at b00fff3f. The corrected worker is prepared for fresh independent
+build assessment. It requires
 actual native cyclic coordinate and unit joins before comparing the weak
 profile direction with the old uniform normal. Raw-source/finite-origin joins
 and independent retained-grade extraction keep an excluded finite remainder
@@ -49,7 +51,10 @@ separate from a retained mismatch. A/R remain dependent views of one equation;
 closed grazing residuals use all four saved limit paths. Per-cell lift weights
 identify pressure/direct entries that selected agreement cannot test. All 200
 end cells and 18 completed old uniform operations are reused without calling
-their functions. Eighteen stdlib checks and a 58-blob opaque opcode census are
+their functions. It now checks the actual phase/tangent/time/side and amplitude/
+Fourier normalization before residual interpretation, uses the wave relation
+for attribution, and records unavailable outcomes and silent control gaps.
+Twenty-six stdlib checks and a 58-blob opaque opcode census are
 preparation evidence only. No scientific payload was restored, READY gate made,
 or new science run. No old-current transfer, producer replay or defect sweep.
 

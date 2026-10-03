@@ -10,8 +10,10 @@
   "engineSource": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
   "physicalInput": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
   "methodPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_method.md",
+  "endsWorker": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py",
+  "fullWeakWorker": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak.py",
   "methodRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_review_r2_record.json",
-  "reviewRecordWillBe": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_build_review_record.json",
+  "reviewRecordWillBe": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_build_review_r2_record.json",
   "executionAuthority": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_execution_authority.json",
   "scope": {
     "frequency": 3,
@@ -833,10 +835,10 @@
     ]
   },
   "sourcePins": {
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py": "ab979f4912e61c3dfad6edd7a56d5cf2db1c85a9bd02492a188768af1628316f",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py": "ab7521a97482dc2dafdba8fb87a222872d87c34bbca0501849051c8144990465",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_launch.py": "545762eef9a689cea905e72583d805cdcb6ce308543166b0f8158b6634a77fab",
     "/var/projects/toy_physics/AGENTS.md": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_execution_authority.json": "f7bf29fd26cab769d8e7534c4f975e587ccb55e8a12fdfad860419cb976b88d1",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_execution_authority.json": "4b879bb1c5d12032c702626bcb12a61c927a1fe62aa1e85a79ddb58086ed6621",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_method.md": "fa899606cf76f7af9e09ee1fbad3a0a6615b87523f92f8de2a2f3f1480ea86d1",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_review_r2_record.json": "ede6477303940b03ced1dbc275cbbfb1daaffed2637cd40053911c3bddba0d33",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",

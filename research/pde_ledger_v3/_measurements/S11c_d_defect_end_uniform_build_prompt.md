@@ -10,18 +10,26 @@ exists yet. Do not request a rerun of completed calculations.
 
 Assess whether this implementation faithfully executes the bounded method:
 
-1. Actual source chart: native weak profile direction is slot 1; old uniform
+1. Executed source chart and side joins: native weak profile direction is slot 1; old uniform
    normal is slot 3. The worker proposes the proper cyclic permutation
    weak(1,2,3)=old(3,1,2), checks the complete original raw native row covariance,
    unit homogeneity and source file identity, then applies S^T E S. Inspect its
    conservative jet/scalar classifier, derivative order, material/gamma roles,
    original source extraction, field/row ordering and side identification.
-   No map may be fitted to residuals. Any failed covariance/join stops.
+   The concrete AST contracts bind the old normal/tangent slots, positive
+   spatial/negative time carrier and actual restored phase/profile records.
+   Both tanh end values and positive L join the actual old native limits to
+   half-heights 0/W2 before the side map is used. No map may be fitted to
+   residuals. A failed source convention/covariance join stops as unresolved.
 2. All 200 inherited cells, sum returns, source/consumer cross grades, closed
    values, once-only epsilon and bilinear Fourier normalization. Derivatives
    remain on trial; CLOSED_PENCIL_LEGS[0] is separate from PLUS_ROW_POWER_MAP
    and from the reduced six-potential weak_matrix. Inspect the actual scalar
-   normalization argument, not merely a declared factor one.
+   normalization argument: original strong_matrix single derivative, native
+   coefficient division by eps*wave, saved local/pressure symbol sum, original
+   unscaled positive pencil route and edge-reduced Fourier factors. These source
+   statement checks and formal extraction identity must actually join the saved
+   epsilon-free symbols; they are not a replay of source/response constructors.
 3. Restore the 18 specified completed old operations and exact input/return
    blobs; join actual source, lift, restriction, units, finite origin, physical
    versus algebraic depth and four limit paths. A hash is not an argument join.
@@ -30,7 +38,10 @@ Assess whether this implementation faithfully executes the bounded method:
 4. P_raw and its exact finite origin join, independent eta/sigma extraction,
    rational regularity and exact remainder H. Reconstruction is P_raw L minus
    retained minus H; H itself need not vanish. Distinguish retained mismatch,
-   finite truncation difference and attribution unavailable. A/R are dependent
+   finite truncation difference and attribution unavailable. Attribution uses
+   the same wave reduction as the source-origin join. Unsupported coefficient
+   dependence and unestablished grazing finiteness remain recorded statuses;
+   integrity and failed algebraic reconstruction still stop. A/R are dependent
    via the restored RAW invariant; its separately saved zero is on-wave only.
 5. Small q-polynomial reduction, original denominators and restricted domains,
    concrete positive-sheet witnesses, closed grazing R0 with regular L/D and
@@ -39,7 +50,8 @@ Assess whether this implementation faithfully executes the bounded method:
 6. Full-cell/grade omission, normal-sign or actual curl-entry ablation, and
    pressure-column sheet control. Compare changed minus baseline, retain both
    finite operands and actual ancestry. A silent control is a coverage gap.
-   Per-cell selected weights show which pressure/direct entries the lift does
+   A silent curl-entry fallback also has an explicit gap record. Per-cell
+   selected weights show which pressure/direct entries the lift does
    not test. Such entries remain untested even if the selected equation agrees.
 7. Gate/authority/helper identities, actual 4GiB no-deadline pooled containment,
    strict source/copy posthashes, encoded final summary, and append-only operand/
@@ -60,3 +72,10 @@ Finish with exactly one literal verdict:
 
 - CLEAR FOR THIS BOUNDED END-UNIFORM BUILD
 - NEEDS REVISION
+
+Concrete preparation also inventories actual native constructor text: 895,622
+bytes total across five rows. That is distinct from the complete producer
+export size. Duplicate full-row serialization has been removed from the chart
+record; original row copies and each actual covariance input/return remain.
+Memory fit is not claimed before execution; containment stays unchanged.
+Twenty-six stdlib checks pass; no payload was restored or science run.

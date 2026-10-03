@@ -31,7 +31,7 @@ reports or their commentary are supplied.
   weak derivative and Fourier ordering. Native source text helpers are in
   runtime-source/text-helpers.py. All saved definitions/returns are reused;
   no call to a completed scientific constructor, producer or limit is allowed.
-- tests.py has 18 stdlib metadata/stand-in checks. It checks independent cross
+- tests.py has 26 stdlib metadata/stand-in checks. It checks independent cross
   grades, tensor-name routing/refusal, exact-array comparison, encoded final
   JSON, append-only evidence, actual pins, source-only imports and receipts.
   These are tooling checks, not runtime or independent scientific validation.
@@ -44,3 +44,12 @@ unavailable without an actual matched H limit. The primary missing comparison
 is the selected equation at real omega3. It does not transfer old current or
 frequency derivatives, test zero-weighted columns, establish full plane-wave
 scattering or compute loss.
+
+The source_chart_and_scale routine binds 20 exact native AST statement
+contracts to original engine, uniform, local and end workers, then checks the
+actual restored phase, endpoint, epsilon and Fourier operands. The statements
+containing old limit calls are inspected as syntax only; none is executed.
+Source mismatches remain fatal. Unsupported bounded polynomial dependence,
+unavailable attribution and nonfinite grazing operands are saved classifications
+so other independent comparisons remain available. Scalar reconstruction and
+integrity failures are never converted into successful evidence.

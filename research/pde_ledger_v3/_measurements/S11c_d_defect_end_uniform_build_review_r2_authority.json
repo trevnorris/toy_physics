@@ -1,0 +1,16 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-03T11:44:57.564910+00:00",
+  "packetSha256": "3f69f433dfc2af0a503e929dd583b75bceee2ad1479040c489c515d008660911",
+  "archiveSha256": "ff617f522ef76a706b4f82654b796e16739909f64d30ad10abe870e7716e15b6",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 74,
+  "bytes": 14076011,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "AGENTS standing review-submission authorization and repeated continued bounded research direction",
+  "scope": "Bounded corrected weak-end / saved uniform equation comparison; no roots, frequency/current transfer, integral, finite solve, defect sweep or loss",
+  "noAutomaticRetry": true
+}

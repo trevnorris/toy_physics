@@ -5,7 +5,7 @@ from fractions import Fraction
 from pathlib import Path
 from types import SimpleNamespace
 M=Path(__file__).resolve().parent;P=M/'S11c_d_defect_end_uniform.py';source=P.read_text();tree=ast.parse(source)
-names=('require','convolution','rotated_name','definitions','exact_structure','save','sha','Evidence')
+names=('require','convolution','rotated_name','definitions','exact_structure','save','sha','Evidence','source_fragment')
 class Basic:pass
 class Matrix:pass
 class FunctionClass:pass
@@ -74,8 +74,9 @@ class Checks(unittest.TestCase):
   self.assertEqual(len([r for r in MAN['uniformReceipts']['completedOperations'] if '/exact-limits/' in r['name']]),4)
  def test_only_inert_codec_extracted(self):
   self.assertIn("('SavedCodec','decode')",source);self.assertNotIn('EndBinding(',source)
-  for forbidden in ['sp.Poly','sp.solve(','sp.limit(','signal.alarm','setitimer','lambdify']:
-   self.assertNotIn(forbidden,source)
+  executed_calls={ast.unparse(n.func) for n in ast.walk(tree) if isinstance(n,ast.Call)}
+  for forbidden in ['sp.Poly','sp.solve','sp.limit','signal.alarm','setitimer','lambdify']:
+   self.assertNotIn(forbidden,executed_calls)
  def test_imports_follow_containment(self):
   main=ast.get_source_segment(source,next(n for n in tree.body if getattr(n,'name',None)=='main'))
   self.assertLess(main.index("ns['containment']()"),main.index('import sympy'))
@@ -88,6 +89,40 @@ class Checks(unittest.TestCase):
   method=json.loads(Path(MAN['methodRecord']).read_text());self.assertTrue(method['jointIndependentMethodClearance'])
   authority=json.loads(Path(MAN['executionAuthority']).read_text());self.assertEqual(authority['scope'],MAN['scope']);self.assertTrue(authority['noDeadline']);self.assertFalse(authority['automaticScientificRetry'])
   self.assertEqual(MAN['resources']['memoryBytes'],4*1024**3);self.assertIsNone(MAN['resources']['durationLimits'])
+ def test_all_executable_native_contract_fragments(self):
+  sources={'engine':Path(MAN['engineSource']).read_text(),'uniform':Path(MAN['uniformWorker']).read_text(),'ends':Path(MAN['endsWorker']).read_text(),'full':Path(MAN['fullWeakWorker']).read_text()}
+  function=next(n for n in tree.body if getattr(n,'name',None)=='source_chart_and_scale');calls=[n for n in ast.walk(function) if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='contract']
+  self.assertEqual(len(calls),20)
+  for n in calls:ns['source_fragment'](sources[n.args[0].id],ast.literal_eval(n.args[1]),ast.literal_eval(n.args[2]))
+ def test_source_contract_refuses_changed_time_or_factor(self):
+  src='class C:\n def f(self):\n  return x / 2\n'
+  ns['source_fragment'](src,('C','f'),'return x / 2')
+  with self.assertRaises(ValueError):ns['source_fragment'](src,('C','f'),'return x')
+  src='def f():\n phase = -3j * t\n'
+  with self.assertRaises(ValueError):ns['source_fragment'](src,('f',),'phase = 3j * t')
+ def test_actual_phase_metadata_joins(self):
+  phase=json.loads(Path(MAN['savedInputs']['ends/phase-arguments.json']['path']).read_text());duality=json.loads(Path(MAN['savedInputs']['native/weak-duality.json']['path']).read_text())
+  self.assertEqual(phase['sourceExpression'],duality['inheritedConvention']['sourcePhase']);self.assertEqual(phase['profileExpression'],duality['inheritedConvention']['profilePhase'])
+  for k in ('kout','kin','ko','ki'):self.assertEqual([x['srepr'] for x in phase['bindings'][k][1:]],['Rational(1, 5)','Rational(1, 10)'])
+ def test_coordinate_cycle_discriminates_tangent_swap(self):
+  old=(Fraction(1,5),Fraction(1,10),Fraction(7));expected=(Fraction(7),Fraction(1,5),Fraction(1,10))
+  self.assertEqual((old[2],old[0],old[1]),expected);self.assertNotEqual((old[2],old[1],old[0]),expected);self.assertNotEqual((-old[2],old[0],old[1]),expected)
+ def test_half_height_side_bijection(self):
+  heights={'minus':Fraction(0),'plus':Fraction(1,2)};old={'LEFT':Fraction(0),'RIGHT':Fraction(1)}
+  self.assertEqual({e:next(s for s,h in heights.items() if h==v/2) for e,v in old.items()},{'LEFT':'minus','RIGHT':'plus'})
+  self.assertNotEqual({e:next(s for s,h in heights.items() if h==(1-v)/2) for e,v in old.items()},{'LEFT':'minus','RIGHT':'plus'})
+ def test_attribution_uses_wave_not_offwave_zero(self):
+  f=next(n for n in tree.body if getattr(n,'name',None)=='run_science');text=ast.unparse(f)
+  self.assertIn('attribution = wave_test(',text);self.assertNotIn("J.zero(nm + '-attribution'",text)
+  self.assertIn("'newLawRemainder': newc['remainder']",text)
+ def test_unavailable_results_and_fallback_are_persisted(self):
+  self.assertIn("UNRESOLVED_UNSUPPORTED_DEPTH_DEPENDENCE",source);self.assertIn("UNRESOLVED_OPERAND_FINITE_DOMAIN",source);self.assertIn("INAPPLICABLE_NO_CERTIFIED_MOVEMENT",source)
+  self.assertIn("J.emit(end + '/control-curl-entry-ablation'",ast.unparse(tree))
+  self.assertNotIn("require(regular,",source)
+ def test_memory_evidence_uses_actual_constructor_sizes(self):
+  sizes=[len(json.loads(Path(MAN['savedInputs']['native/'+r+'.json']['path']).read_text())['fullConstructor'].encode()) for r in ('U0','U1','U2','THETA_BALANCE','E_W_BALANCE')]
+  self.assertEqual(sizes,[118565,118565,118565,199688,340239]);self.assertEqual(sum(sizes),895622)
+  self.assertNotIn("'sourceRows': native",ast.unparse(tree));self.assertIn('peakRssKiBBeforeCovariance',source)
  def test_raw_invariant_and_grazing_scope(self):
   self.assertIn("Iold=map(old",source);self.assertIn("inv['rawResidual']",source);self.assertIn("R['onWaveInvariant']",source)
   self.assertIn("g=C*LL-LL*DD",source);self.assertIn("UNAVAILABLE_NO_NEW_REMAINDER_LIMIT_COMPUTED",source)

@@ -39,6 +39,106 @@ def source_method(text,cls,name):
     return ast.unparse(next(n for n in c.body if isinstance(n,ast.FunctionDef) and n.name==name))
 
 
+class ExpectedUnavailable(ValueError):
+    """A bounded representation/domain classification, never an integrity waiver."""
+
+
+class SourceMapUnresolved(ValueError):pass
+
+
+def source_fragment(source,scope,expected):
+    node=ast.parse(source)
+    for name in scope:
+        found=[n for n in ast.walk(node) if n is not node and isinstance(n,(ast.ClassDef,ast.FunctionDef)) and n.name==name]
+        require(len(found)==1,'unique native source scope '+name);node=found[0]
+    want=ast.parse(expected).body[0];dump=ast.dump(want,include_attributes=False)
+    found=[n for n in ast.walk(node) if isinstance(n,type(want)) and ast.dump(n,include_attributes=False)==dump]
+    require(len(found)==1,'native source contract '+expected)
+    return {'scope':list(scope),'statement':ast.unparse(found[0]),'sourceSha256':hashlib.sha256(source.encode()).hexdigest()}
+
+
+def source_chart_and_scale(m,J,D,raw,physical,context,depth,U,L,profile):
+    """New convention joins only. No old source, lift, limit or symbol call."""
+    engine=Path(m['engineSource']).read_text();uniform=Path(m['uniformWorker']).read_text()
+    ends=Path(m['endsWorker']).read_text();full=Path(m['fullWeakWorker']).read_text()
+    checks=[]
+    def contract(text,scope,statement):
+        r=source_fragment(text,scope,statement);checks.append(r);J.emit('native-contract-%03d'%len(checks),r)
+    contract(engine,('EdgeReduction','__init__'),"self.normal_map = {self.x[2]: self.z, self.y[2]: self.zp}")
+    contract(engine,('EdgeReduction','__init__'),"self.tangent_momenta = tuple(k for group in self.momentum_groups for k in group[:2])")
+    contract(engine,('EdgeReduction','wave_phase'),"return sp.exp(sp.I * (sum(k*x for k,x in zip(self.tangents,point[:2]))-self.omega*self.t))")
+    contract(engine,('ReducedPencil','trial_ansatz','displacement','derivative'),"return self.tangent_derivatives[j]*value if j < 2 else sp.diff(value,z)")
+    contract(uniform,('selected_lift',),"phase = sp.exp(sp.I*(t1*x1+t2*x2+k*z))")
+    contract(full,('run_science','derive'),"multiplier = (-sp.I*3)**spec['timeOrder']*(sp.I/5)**spec['spatialOrders'][1]*(sp.I/10)**spec['spatialOrders'][2]")
+    contract(ends,('run_science',),"H = {'minus':sp.S.Zero,'plus':W/2}")
+    contract(ends,('run_science',),"for side,endkey in [('minus','leftEndpoint'),('plus','rightEndpoint')]:\n    val=D(c[endkey]);require(not val.free_symbols,'saved local endpoint constant')\n    term=val*(sp.I*p)**c['xOrder'];rec['newTerms'][side]=term\n    group=groups[(side,c['row'],c['field'],tuple(c['grade']))]\n    group['local'].append(term);group['localAncestry'].append({'row':c['row'],'field':c['field'],'xOrder':c['xOrder'],'grade':c['grade']})")
+    contract(uniform,('science',),"for label,end in (('LEFT',-sp.oo),('RIGHT',sp.oo)):\n    operands=restored['uniformSource']['records'][label]['background']['profileLimitOperands']\n    for original,limit,endpoint in operands:\n        name=next(name for name in profiles if original.func.__name__=='s11cd'+name.upper()+'Profile')\n        evaluated=sp.limit(profiles[name],xi,end)\n        jets=tuple(sp.limit(sp.diff(profiles[name],xi,order),xi,end) for order in (1,2))\n        supplied=restored['uniformSource']['profileEndpoints'][endpoint]\n        profile_joins.append(dict(end=label,source=(original,limit,endpoint),definition=profiles[name],actualEnd=evaluated,supplied=supplied,residual=evaluated-supplied,jets=jets))")
+    phase=D(raw['ends/phase-arguments.json']);bindings=phase['bindings'];p=depth['p'];edge=tuple(sp.Rational(physical['parameters']['s11cdTangentialMomentum'+str(i)]) for i in (1,2))
+    J.join('phase-source-contract',phase['sourceExpression'],raw['native/weak-duality.json']['inheritedConvention']['sourcePhase'])
+    J.join('phase-profile-contract',phase['profileExpression'],raw['native/weak-duality.json']['inheritedConvention']['profilePhase'])
+    kout,kin,ko,ki,X,Y=(bindings[k] for k in ('kout','kin','ko','ki','X','Y'))
+    J.join('actual-weak-output-tangents',tuple(kout[1:]),edge);J.join('actual-weak-input-tangents',tuple(kin[1:]),edge)
+    J.join('actual-profile-output',ko,kout);J.join('actual-profile-input',ki,kin)
+    require(kout[0].name=='weak_end_l' and kin[0].name=='weak_end_k' and len(set(X+Y))==6,'actual phase coordinate names')
+    J.zero('source-phase-argument',phase['sourceExponent'],sp.I*(sum(k*x for k,x in zip(kout,X))-sum(k*y for k,y in zip(kin,Y))))
+    J.zero('profile-phase-argument',phase['profileExponent'],-sp.I*sum((a-b)*y for a,b,y in zip(ko,ki,Y)))
+    profile_rates=tuple(sp.diff(phase['profileExponent'],y) for y in Y)
+    J.join('profile-normal-direction',profile_rates,(-sp.I*(ko[0]-ki[0]),sp.S.Zero,sp.S.Zero))
+    # Tangent order and sign are distinguished by unequal actual tangents.
+    S=sp.ImmutableMatrix([[0,0,1,0,0],[1,0,0,0,0],[0,1,0,0,0],[0,0,0,1,0],[0,0,0,0,1]])
+    weak_mom=sp.ImmutableMatrix((p,*edge));old_mom=sp.ImmutableMatrix((*edge,p));mapping=S[:3,:3]
+    J.join('actual-carrier-momentum-map',mapping*old_mom,weak_mom)
+    J.join('actual-carrier-inverse-map',mapping.T*weak_mom,old_mom)
+    require(mapping.det()==1 and mapping.T*mapping==sp.eye(3),'oriented coordinate chart')
+    J.join('restored-lift-native-method',L['source']['sourceMethod'],source_method(engine,'ReducedPencil','trial_ansatz'))
+    J.join('restored-lift-native-field-method',L['source']['sourceFieldLift'],source_method(engine,'ConstantEndPencil','field_lift'))
+    contract(engine,('ClosedCurrentPairing','construct'),"phases = tuple(sp.exp(sign*sp.I*(sum(k*x for k,x in zip(r.tangents,r.x[:2]))+momentum*r.z-frequency*r.t+c.phase_coordinate)) for sign,momentum,frequency in ((1,kright,omega_right),(-1,kleft,omega_left)))")
+    require(context['context']['numeric']['omega']==3 and raw['native/wave-profile.json']['pressureTimeRule']=="(-sp.I * 3) ** spec['timeOrder']",'same negative temporal rate')
+    J.emit('actual-source-chart',{'matrixWeakFromUniform':S,'weakCarrier':weak_mom,'uniformCarrier':old_mom,'timeRate':-3*sp.I,'profileRates':profile_rates,'sourceContracts':checks,'noResidualUsedToChooseMap':True})
+    heights=D(raw['controls/conclusion.json']['heights']);W=sp.Rational(physical['parameters']['W_0']);length=sp.Rational(physical['parameters']['L_W'])
+    J.join('actual-half-heights',heights,{'minus':sp.S.Zero,'plus':W/2});require(length==10 and length.is_positive is True,'orientation preserving profile length')
+    side_map={};side_evidence=[]
+    for end in ('LEFT','RIGHT'):
+        records=[r for r in profile['profileJoins'] if r['end']==end];require(len(records)==2,'two actual profile records per end')
+        expected_limit=-sp.oo if end=='LEFT' else sp.oo
+        for r in records:
+            original,limit,endpoint=r['source'];J.emit('side-'+end+'-'+original.func.__name__,r)
+            require((original,limit,endpoint) in U['records'][end]['background']['profileLimitOperands'],'actual old endpoint argument')
+            require(isinstance(limit,sp.Limit),'native endpoint is Limit')
+            require(limit.args[2]==expected_limit and limit.args[0]==original,'native profile orientation')
+            name=next(n for n in ('w','m') if original.func.__name__=='s11cd'+n.upper()+'Profile')
+            xi=next(iter(r['definition'].free_symbols));definition=sp.sympify(physical['profiles'][name],locals={'xi':xi,'tanh':sp.tanh})
+            J.join('side-'+end+'-'+name+'-profile',r['definition'],definition)
+            require(r['actualEnd']==r['supplied']==U['profileEndpoints'][endpoint] and r['residual']==0 and all(z==0 for z in r['jets']),'inherited exact endpoint facts')
+            require(r['actualEnd']==(0 if name=='m' or end=='LEFT' else 1),'actual tanh endpoint value')
+            if name=='w':
+                candidates=[side for side,h in heights.items() if h==W*r['actualEnd']/2];require(len(candidates)==1,'unique native weak side')
+                side_map[end]=candidates[0];side_evidence.append({'end':end,'nativeLimit':limit,'profileEnd':r['actualEnd'],'weakSide':candidates[0],'halfHeight':heights[candidates[0]],'profileLength':length})
+    J.emit('actual-end-side-map',side_evidence);require(set(side_map.values())=={'minus','plus'},'bijection of native sides')
+    # Join the extraction paths, not a guessed factor inferred from A or R.
+    contract(engine,('ConstantEndPencil','strong_matrix','strip_phase'),"terms = self.phase_terms(sp.diff(expression,epsilon),self.r.z)")
+    contract(engine,('ConstantEndPencil','strong_matrix','strip_phase'),"return terms.get(self.kn,sp.S.Zero)")
+    contract(engine,('ConstantEndPencil','strong_matrix'),"return sp.ImmutableMatrix.hstack(*(sp.ImmutableMatrix(c) for c in columns))")
+    contract(engine,('ClosedCurrentPairing','construct'),"algebraic,relation,joins = self.modes.analytic(a.strong)")
+    contract(engine,('ClosedCurrentPairing','construct'),"physical_q = algebraic.subs(self.modes.q,a.qlegs[1]/acoustic['ACOUSTIC_RADICAL_SCALE'])")
+    contract(engine,('ClosedCurrentPairing','construct'),"pencils = tuple(physical_q.xreplace(mapping) for mapping in leg_maps)")
+    contract(full,('run_science','derive'),"raw_coefficient = sp.cancel(original/(eps*wave))")
+    contract(full,('run_science','derive'),"zero_record(ev,'native-child-reconstruction',original,eps*wave*raw_coefficient)")
+    contract(ends,('run_science',),"rec['symbol'] = sp.cancel(rec['localSum']+rec['pressureSum'])")
+    contract(ends,('run_science',),"rec['sumIdentity'] = zero('new-end-symbol-sum',rec['symbol'],sum(v['local']+v['pressure'],sp.S.Zero))")
+    eps=context['context']['epsilon'];carrier,coefficient=sp.symbols('normalization_trial normalization_coefficient')
+    extraction=sp.diff(eps*carrier*coefficient,eps)/carrier;division=sp.cancel(eps*carrier*coefficient/(eps*carrier))
+    J.zero('single-epsilon-extraction-correspondence',extraction,division)
+    dual=D(raw['native/weak-duality.json']);J.join('inherited-source-order',dual['source'],'X(k)=hat[b D_j u](k)');J.join('inherited-consumer-order',dual['consumer'],'Y(l)=2pi hat[c v](-l)')
+    require(dual['inheritedConvention']['profileForwardPower']==-3 and dual['inheritedConvention']['sourceInversePower']==-3 and dual['inheritedConvention']['sourceForwardPower']==0 and dual['inheritedConvention']['invariantEdgeCoordinates']==2,'inherited Fourier factors')
+    # Two invariant edge integrations cancel two of the three inverse factors.
+    edge_reduced=(2*sp.pi)**dual['inheritedConvention']['invariantEdgeCoordinates']*(2*sp.pi)**dual['inheritedConvention']['profileForwardPower']
+    J.zero('one-dimensional-forward-normalization',edge_reduced,1/(2*sp.pi))
+    J.zero('bilinear-Fourier-dual-normalization',(2*sp.pi)*edge_reduced,1)
+    require(U['constantFourierMass']==2*sp.pi,'actual original uniform Fourier mass')
+    J.emit('actual-scalar-normalization',{'epsilon':eps,'nativeExtraction':extraction,'nativeDivision':division,'coefficientFactor':sp.S.One,'weakPairingExternalFactor':2*sp.pi,'uniformConstantFourierMass':U['constantFourierMass'],'edgeReducedForwardFactor':edge_reduced,'duality':dual,'sourceContracts':checks,'inheritedNormalizationProofs':True,'noFieldOrTransformEvaluated':True})
+    return S,side_map
+
 def exact_structure(a,b):
     if type(a) is not type(b):return False
     if isinstance(a,dict):return a.keys()==b.keys() and all(exact_structure(a[k],b[k]) for k in a)
@@ -150,15 +250,19 @@ def polynomial(expr,x,y):
         base=polynomial(expr.base,x,y);out={(0,0):sp.S.One}
         for _ in range(int(expr.exp)):out=convolution(out,base,False)
         return out
-    raise ValueError('unsupported polynomial dependence; no EX domain inference')
+    raise ExpectedUnavailable('unsupported polynomial dependence; no EX domain inference')
 
 
 def coefficients(value,eta,sigma,J,name):
     J.emit(name+'-input',{'value':value,'eta':eta,'sigma':sigma})
     numerator,denominator=sp.fraction(sp.together(value))
-    n=polynomial(numerator,eta,sigma);d=polynomial(denominator,eta,sigma);d0=sp.cancel(d.get((0,0),0))
+    try:n=polynomial(numerator,eta,sigma);d=polynomial(denominator,eta,sigma)
+    except ExpectedUnavailable as exc:
+        out={'status':'ATTRIBUTION_UNAVAILABLE','reason':str(exc),'numerator':numerator,'denominator':denominator};J.emit(name+'-return',out);return out
+    d0=sp.cancel(d.get((0,0),0))
     J.emit(name+'-domain',{'numerator':numerator,'denominator':denominator,'originDenominator':d0,'regularityCondition':sp.Ne(d0,0,evaluate=False)})
-    if d0==0:return {'status':'REGULARITY_UNAVAILABLE','originDenominator':d0}
+    if d0==0:
+        out={'status':'REGULARITY_UNAVAILABLE','originDenominator':d0};J.emit(name+'-return',out);return out
     c={}
     for i,j in G:
         accum=sum(v*c[i-a,j-b] for (a,b),v in d.items() if (a,b)!=(0,0) and a<=i and b<=j and (i-a,j-b) in c)
@@ -185,7 +289,10 @@ def finite_constant(expr):
 
 def wave_test(value,p,q,cs,J,name):
     J.emit(name+'-input',{'value':value,'wave':q**2-(9/cs**2-p**2-sp.Rational(1,20))})
-    n,d=sp.fraction(sp.together(value));terms=polynomial(n,q,sp.Dummy('unused_q_coefficient'))
+    n,d=sp.fraction(sp.together(value))
+    try:terms=polynomial(n,q,sp.Dummy('unused_q_coefficient'))
+    except ExpectedUnavailable as exc:
+        out={'status':'UNRESOLVED_UNSUPPORTED_DEPTH_DEPENDENCE','reason':str(exc),'value':value,'numerator':n,'denominator':d};J.emit(name+'-return',out);return out
     require(all(b==0 for a,b in terms),'only physical depth reduced')
     radical=9/cs**2-p**2-sp.Rational(1,20);a=sp.S.Zero;b=sp.S.Zero
     for (order,_),v in terms.items():
@@ -234,6 +341,7 @@ def run_science(m,J,ns,codec):
     finally:
         conn.close();save(J.out/'opaque-copy-index.json',opaque_copies)
     operations={r['name']:r for r in receipts['completedOperations']}
+    require(len(operations)==len(receipts['completedOperations'])==18,'exact completed operation census')
     def operation(name):
         r=operations[name];return blobs[r['input']['member']],blobs[r['result']['member']]
     restored={}
@@ -252,6 +360,12 @@ def run_science(m,J,ns,codec):
     beta=depth['beta'];br,bi=sp.expand_complex(beta).as_real_imag()
     J.emit('actual-closed-depth-domain',{'source':depth,'betaReal':br,'betaImaginary':bi,'argument':'For outgoing real q>=0, Re(q+beta)>=Re(beta)>0; for q=i*y with y>=0, Re(q+beta)=Re(beta)>0.','newRootOrLimit':False})
     require(br==sp.Rational(30,109) and bi==sp.Rational(9,109) and depth['range']==[1,2],'actual beta/domain arguments')
+    lift_input,L=operation('selected-lift');U=restored['uniformSource'];common=restored['uniformCommon'];response=restored['uniformResponse']
+    profile=blobs['profiles/constant-end-and-zero-jets']
+    try:S,side_map=source_chart_and_scale(m,J,D,raw,physical,context,depth,U,L,profile)
+    except (ValueError,KeyError,StopIteration,TypeError) as exc:
+        J.emit('source-map-unresolved',{'reason':str(exc),'activeOperation':J.active,'traceback':traceback.format_exc()})
+        raise SourceMapUnresolved(str(exc)) from exc
     # Native coordinate covariance is new missing evidence, never a producer replay.
     tex={'ast':ast,'hashlib':hashlib,'Path':Path}
     exec(compile(definitions(Path(m['textHelperSource']).read_text(),('require','text_sha','literal_record','tuple_arguments','literal_key','named','selected_case')),'inert-source-text-only','exec'),tex)
@@ -279,8 +393,11 @@ def run_science(m,J,ns,codec):
         name=rotated_name(atom.name,scalar_names);require(name in byname,'mapped native atom present '+name)
         target=byname[name];require(atom.assumptions0==target.assumptions0,'rotation assumptions');rotation[atom]=target
     rowmap={'U0':'U2','U1':'U0','U2':'U1','THETA_BALANCE':'THETA_BALANCE','E_W_BALANCE':'E_W_BALANCE'}
-    J.emit('source-chart-operands',{'weakMomentum':(p,sp.Rational(1,5),sp.Rational(1,10)),'uniformMomentum':(sp.Rational(1,5),sp.Rational(1,10),p),'rotation':rotation,'rowMap':rowmap,'sourceRows':native,'nativeContract':contracts,'uniformChart':source_method(Path(m['engineSource']).read_text(),'EdgeReduction','__init__')})
-    for row in ROWS:J.zero('source-cyclic-covariance-'+row,native[row].xreplace(rotation),native[rowmap[row]])
+    J.emit('native-constructor-footprint',{'constructorBytes':{r:len(actual_rows[r].encode()) for r in ROWS},'totalConstructorBytes':sum(len(v.encode()) for v in actual_rows.values()),'peakRssKiBBeforeCovariance':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,'prospectiveMemoryGuarantee':False})
+    J.emit('source-chart-operands',{'weakMomentum':(p,sp.Rational(1,5),sp.Rational(1,10)),'uniformMomentum':(sp.Rational(1,5),sp.Rational(1,10),p),'rotation':rotation,'rowMap':rowmap,'sourceRowCopies':{row:copied['native/'+row+'.json'] for row in ROWS},'nativeContract':contracts,'uniformChart':source_method(Path(m['engineSource']).read_text(),'EdgeReduction','__init__')})
+    for row in ROWS:
+        try:J.zero('source-cyclic-covariance-'+row,native[row].xreplace(rotation),native[rowmap[row]])
+        except ValueError as exc:raise SourceMapUnresolved('native covariance '+row) from exc
     S=sp.ImmutableMatrix([[0,0,1,0,0],[1,0,0,0,0],[0,1,0,0,0],[0,0,0,1,0],[0,0,0,0,1]])
     require(S.det()==1 and S.T*S==sp.eye(5),'proper orthonormal chart map')
     # Dimensions are checked on unbound native operands, not guessed after binding.
@@ -320,11 +437,12 @@ def run_science(m,J,ns,codec):
         side,row,col,g=c['side'],ROWS.index(c['row']),FIELDS.index(c['field']),tuple(c['grade']);key=(side,row,col,g)
         require(key not in seen and side in groups and g in G,'unique end cell');seen.add(key)
         require(c['sumIdentity']['cancelled']==0 and c['sumIdentity']['left']==c['symbol'],'saved sum proof actual argument')
+        require(not any(s.name=='epsilon_shape' for s in c['symbol'].free_symbols),'weak symbol already coefficient of single epsilon')
         require(c['weakPairingFactor']==2*sp.pi and c['epsilonPower']==(0 if c['symbol']==0 else 1),'epsilon and Fourier contract')
         groups[side][g][row,col]=c['symbol'];closed[side][g][row,col]=c['closedGrazingValue']
     require(len(seen)==200,'all end cells')
     results={}
-    for end,side in (('LEFT','minus'),('RIGHT','plus')):
+    for end,side in side_map.items():
         inp,R=operation(end+'/restriction');freq=restored[end+'Frequency'];pairing,dims=restored[end+'Pairing'];r=pairing['result']
         J.join(end+'-restriction-source',inp['actualSource'],r['CLOSED_PENCIL_LEGS']);J.join(end+'-restriction-frequency',inp['frequency'],freq)
         J.join(end+'-restriction-lift',inp['lift'],L);J.join(end+'-restriction-parameters',inp['parameters'],params)
@@ -358,6 +476,7 @@ def run_science(m,J,ns,codec):
             elif s.name in params:mapping[s]=params[s.name]
             else:raise ValueError('raw source binding unavailable '+s.name)
         Praw=source.xreplace(mapping);J.emit(end+'-raw-source-binding',{'nativeSource':r['CLOSED_PENCIL_LEGS'][0],'endpoints':U['profileEndpoints'],'source':source,'map':mapping,'raw':Praw,'origin':finite_origin,'oldPhysical':Pold,'halfHeights':raw['controls/conclusion.json']['heights']})
+        require(not any(s.name=='epsilon_shape' for s in Praw.free_symbols|r['CLOSED_PENCIL_LEGS'][0].free_symbols),'positive equation pencil already coefficient of single epsilon')
         require(not Praw.atoms(sp.Integral,sp.Derivative,sp.Limit,sp.Subs),'no unjoined original source operator')
         require(Praw.free_symbols<=set((p,q,cs,eta,sigma)),'complete raw binding')
         originjoin=inspect_matrix(Praw.subs(finite_origin)-Pold,p,q,cs,J,end+'/raw-origin')
@@ -379,8 +498,9 @@ def run_science(m,J,ns,codec):
                 joins={g:newc['coefficients'][g]-oldc['coefficients'][g] for g in G}
                 jt={g:wave_test(v,p,q,cs,J,nm+'-J-%d%d'%g) for g,v in joins.items()}
                 attrib=sum(eta**a*sigma**b*joins[a,b] for a,b in G)-oldc['remainder']
-                J.zero(nm+'-attribution',A[i,j],attrib.subs(finite_origin))
-                require(newc['remainder']==0,'new retained law has no excluded remainder')
+                attribution=wave_test(A[i,j]-attrib.subs(finite_origin),p,q,cs,J,nm+'-attribution')
+                if attribution['status']!='ZERO' or newc['remainder']!=0:
+                    grade.append({'row':i,'column':j,'status':'ATTRIBUTION_UNAVAILABLE','finite':selected[i][j]['status'],'waveAttribution':attribution,'newLawRemainder':newc['remainder'],'oldRemainder':oldc['remainder']});continue
                 retained='AGREEMENT' if all(v['status']=='ZERO' for v in jt.values()) else ('RETAINED_MISMATCH' if any(v['status']=='NONZERO_CERTIFIED' for v in jt.values()) else 'UNRESOLVED')
                 finite=selected[i][j]['status'];classification='FINITE_TRUNCATION_DIFFERENCE' if retained=='AGREEMENT' and finite=='NONZERO_CERTIFIED' else retained
                 grade.append({'row':i,'column':j,'retained':retained,'finite':finite,'classification':classification,'J':jt,'H':oldc['remainder'],'regularity':oldc['originDenominator']})
@@ -417,8 +537,7 @@ def run_science(m,J,ns,codec):
                 J.emit(end+'-grazing-%d-'%sign+route+'-path',ev)
             require(all(v==0 for v in limits['selectedJoin']['pencil']),'inherited two-sided selected pencil join')
             J.emit(end+'-grazing-%d'%sign,{'point':mp,'closedE':C,'lift':LL,'D':DD,'residual':g,'entryCertificates':entries,'regular':regular,'savedSelectedPencilLimits':paths,'savedSelectedJoin':limits['selectedJoin'],'gradeAttribution':'UNAVAILABLE_NO_NEW_REMAINDER_LIMIT_COMPUTED','oldFunctionsCalled':False})
-            require(regular,'closed grazing operands finite')
-            grazing.append({'sign':sign,'point':mp,'R0':entries,'grazingGradeAttribution':'UNAVAILABLE'})
+            grazing.append({'sign':sign,'point':mp,'status':'COMPARED' if regular else 'UNRESOLVED_OPERAND_FINITE_DOMAIN','R0':entries,'grazingGradeAttribution':'UNAVAILABLE'})
         # Three controls use full changed-minus-baseline row movements.
         point={p:sp.S.One,q:sp.Integer(2),cs:sp.sqrt(sp.Rational(180,101))};controls=[]
         choices=[(g,i,j,(eta**g[0]*sigma**g[1]*Egrades[g][i,j]).subs(finite_origin)) for g in G for i in range(5) for j in range(5) if Egrades[g][i,j]!=0 and any(lift[j,c]!=0 for c in range(2))]
@@ -439,14 +558,19 @@ def run_science(m,J,ns,codec):
         else:controls.append({'name':'omit-cell','responsive':False,'status':'INAPPLICABLE'})
         bad=lift.xreplace({p:-p});responsive=record_control('reverse-lift-normal',Rnew,Ephys*bad-bad*Dold,{'normalSignHeldInEquation':True})
         if not responsive:
+            fallback=False
             for i,j in ((i,j) for i in range(5) for j in range(2) if lift[i,j]!=0):
                 bad=sp.MutableDenseMatrix(lift);bad[i,j]=0;movement=Ephys*bad-bad*Dold-Rnew
                 if any(finite_constant(x.subs(point))['status']=='NONZERO_CERTIFIED' for x in movement):
-                    record_control('curl-entry-ablation',Rnew,Ephys*bad-bad*Dold,{'row':i,'column':j,'directionProof':False});break
+                    record_control('curl-entry-ablation',Rnew,Ephys*bad-bad*Dold,{'row':i,'column':j,'directionProof':False});fallback=True;break
+            if not fallback:
+                rec={'name':'curl-entry-ablation','responsive':False,'status':'INAPPLICABLE_NO_CERTIFIED_MOVEMENT','searchedEntries':[(i,j) for i in range(5) for j in range(2) if lift[i,j]!=0]};J.emit(end+'/control-curl-entry-ablation',rec);controls.append(rec)
         sheet_choice=None
         for j in (3,4):
             baseline=Ephys[:,j];changed=Ephys.xreplace({q:-q})[:,j]
-            require(all(not Egrades[g][i,j].has(q) or any(c['side']==side and c['field']==FIELDS[roworder[j]] and c['pressureSum']!=0 for c in cells) for g in G for i in range(5)),'sheet movement has actual pressure ancestry')
+            applicable=all(not Egrades[g][i,j].has(q) or any(c['side']==side and c['field']==FIELDS[roworder[j]] and c['pressureSum']!=0 for c in cells) for g in G for i in range(5))
+            if not applicable:
+                J.emit(end+'/control-opposite-sheet-inapplicable-column-'+str(j),{'column':j,'status':'UNRESOLVED_PRESSURE_ANCESTRY','baseline':baseline,'changed':changed});continue
             if any(finite_constant(x.subs(point))['status']=='NONZERO_CERTIFIED' for x in changed-baseline):sheet_choice=(j,baseline,changed);break
         if sheet_choice:
             j,baseline,changed=sheet_choice;record_control('opposite-sheet',baseline,changed,{'unitColumn':j,'isMode':False,'pressureAncestry':[c for c in cells if c['side']==side and c['field']==FIELDS[roworder[j]] and c['pressureSum']!=0]})
@@ -477,8 +601,8 @@ def main():
         codec_ns={'pickle':pickle,'OrderedDict':OrderedDict,'builtins':builtins,'np':np,'sp':sp,'importlib':importlib,'io':io,'require':require}
         exec(compile(definitions(Path(m['uniformWorker']).read_text(),('SavedCodec','decode')),'saved-codec-only-no-old-guard','exec'),codec_ns)
         J=Evidence(args.out);result=J.stage('end-uniform-comparison',{'manifest':g['manifestSha256'],'build':g['buildReviewRecordSha256']},lambda:run_science(m,J,ns,codec_ns['decode']));code=0
-    except BaseException:
-        result={'executionStatus':'FAILED_PRESERVED','traceback':traceback.format_exc(),'incompleteOperation':None if J is None else J.active,'automaticRetry':False};save(args.out/'failure.json',result)
+    except BaseException as exc:
+        result={'executionStatus':'SOURCE_MAP_UNRESOLVED' if isinstance(exc,SourceMapUnresolved) else 'FAILED_PRESERVED','traceback':traceback.format_exc(),'incompleteOperation':None if J is None else J.active,'automaticRetry':False};save(args.out/'failure.json',result)
     finally:
         for index_name in ('saved-copy-index.json','opaque-copy-index.json'):
             if (args.out/index_name).exists():

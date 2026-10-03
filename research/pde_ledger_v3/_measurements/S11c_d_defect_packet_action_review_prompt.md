@@ -38,7 +38,11 @@ Assess in particular:
   tolerances/refinement/tail settings. Error estimates are empirical except for
   separately justified truncation bounds; no flux error or leakage bound follows.
   Check the absolute transform stopping criterion at large offsets, rather than
-  inferring accuracy from the contour damping factor. Grade-display weights
+  inferring accuracy from the contour damping factor. In particular assess the
+  declared composite Fourier panel widths versus wavelength/profile/Gaussian
+  scales, per-panel 24/48 orders, carrier derivative recurrence, signed offsets
+  for X and Y, and Gaussian-moment finite-contour tails on both independent
+  routes. No fixed global Gauss-Hermite order is used. Grade-display weights
   must join the saved origin, not be treated as new physical calibration.
 - Actual addressed numerical controls and their applicability. Numerical or
   formal silence must remain explicit; no hand-selected favourable outcome.

@@ -194,6 +194,19 @@ are not adopted: the 16 pressure grade triples differ from the 16 local cells,
 and all 48 selected normal-height entries have zero consumer, so that family
 does not establish a live depth-swap control. No worker or science gate exists.
 
+The next method revision replaces the fixed global Fourier node counts with
+24/48-point composite panels sized by actual wavelength, Gaussian width and
+profile scale. Each route chooses its finite contour radius from explicit
+Gaussian tail moments before quadrature; the independent reference remains
+on the real axis at 50 digits. The strip height, kernels, physical inputs,
+collision prescription and accuracy thresholds are unchanged. All 35 source
+and evidence files are byte-identical to the prior packet. The new frozen
+39-file / 4,826,416-byte packet has SHA256
+9966fe0f511f577dc425eae0459b20e8a6c3fe1eea2fd4cdc05e3e30164c9f71.
+The r2 literal reports and source baseline remain at 096a0af8. This is necessary
+assessment of a numerical-method change, not a claim that a Fourier calculation
+has failed or that a worker is cleared.
+
 Independent preparation at 0798c4b5 mapped the legacy Gaussian/matrix route and
 verified 131 selected opaque input/return receipts. It is preparation only:
 old cs10 arrays do not validate the corrected near-unity operator, and no

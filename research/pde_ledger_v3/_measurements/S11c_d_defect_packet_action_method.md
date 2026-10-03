@@ -63,7 +63,11 @@ polynomial certificate. The actual jet gives
 
     D_j=(-3i)^n_t (i/5)^n_2 (i/10)^n_3 partial_x^n_1.
 
-Compute Gaussian derivatives as finite polynomials times the same Gaussian.
+Compute Gaussian derivatives as finite polynomials times the same Gaussian,
+including the carrier: Q_0(z)=1 and
+Q_(n+1)(z)=Q_n'(z)+(i*p0-(z-x_u)/s^2)*Q_n(z) for the input packet.
+The test packet uses its own center and carrier -p0. These are new numerical
+adapter polynomials, not a rederivation of the saved source coefficients.
 Local terms use their actual saved x-derivative cells in the direct pairing
 integral v(x) a_g(x) partial_x^n u(x) dx, with independent Gaussian/adaptive
 x-space rules and the same declared accuracy and tail accounting below.
@@ -202,10 +206,11 @@ by name. No branch node, Jacobian or reflected-root contribution may be lost.
 
 ## 4. Fourier, tail and precision controls
 
-Two Fourier routes are proposed. Route A uses Gauss-Hermite integration of the
-polynomial-Gaussian source/test products, with an analytic contour shift within
-the common strip |Im x|<=5 to damp large Fourier momentum. Route B uses an
-independent real-axis adaptive rule at higher precision. Do not share sample
+Two Fourier routes are proposed for a polynomial in tanh times a finite
+polynomial times a carrier Gaussian. Route A uses composite Gauss-Legendre
+integration on a shifted straight contour, with panels resolved for the actual
+Fourier wavelength. The contour stays in the same strip |Im x|<=5. Route B uses
+an independent real-axis adaptive rule at higher precision. Do not share sample
 nodes, weights or transform arrays between these references. Compare all
 distinct actual source/test products required by the selected block, including
 their derivative factors and both carrier settings. Constant-coefficient
@@ -216,7 +221,7 @@ Require absolute differences below 1e-12 in the corresponding fixed transform
 unit, with Route B's internal target at most 1e-13 there. The analytic constant
 Gaussian checks obey the same absolute criterion. Record large-|nu| requests
 explicitly: contour damping does not prove relative accuracy or sufficient
-Gauss-Hermite resolution. A failed transform criterion stops the action; no
+resolution. A failed transform criterion stops the action; no
 automatic extra orders or replacement transform algorithm. These pointwise
 numerical checks do not supply a uniform analytic transform-error bound; the
 complete-action comparisons and tail certificates remain independently required.
@@ -232,6 +237,66 @@ phase and the corresponding real-axis moment translation. Save the resulting
 explicit C_(field,jet) exp(-5|nu|) envelopes, including Fourier/jet prefactors.
 The same construction with factors x supplies Y derivatives where needed.
 These inequalities are proposed analytic tail certificates, not executed ones.
+
+For each actual transform request, define nu as its Fourier argument minus
+the carrier of THAT product. Thus X(k) has nu=k-p0, whereas the transform
+inside Y(l)=2pi*hat[c*v](-l) has nu=p0-l. Keep the signed shift, Fourier sign,
+center phase, carrier derivative polynomial and normalization factors in the
+saved request. Put z=x_0+y-i*c*sign(nu), c=5 (sign(0)=0).
+Route A integrates over real y; this formula moves the contour, not the
+coefficient field or the physical source. The actual shifted integrand remains
+the full analytic product evaluated at z with its original Fourier exponential.
+Retain the carrier/shift factors together to avoid artificial exponential
+overflow or loss of the damping factor.
+
+Before its quadrature, bound each product outside |y|<=R by
+
+    C0 * exp(c^2/(2*s^2)-c*abs(nu))
+       * integral_(|y|>R) Pabs(|y|) exp(-y^2/(2*s^2)) dy,
+
+where C0 includes the actual Fourier, amplitude, coefficient and native-jet
+constants. Pabs has nonnegative coefficients obtained from the absolute
+coefficients of the actual shifted Gaussian-derivative polynomial and any
+additional x powers (for Y derivatives); include x_0 and the imaginary shift
+when forming it. The bound on the tanh polynomial is the same finite absolute
+coefficient sum used above. Save the polynomial, constants, moment integrals
+and reconstruction/inequality arguments for every distinct request family.
+Use Gaussian tail moments (erfc for order zero and the usual integration-by-
+parts recurrence for higher orders), not a sampled-tail estimate. Choose the
+smallest positive integer m with R=m*s whose two-tail bound is <=1e-14 in the
+fixed transform unit. This is an analytic pre-quadrature selection rule, not a
+retry after a numerical miss. Include these transform truncation bounds in the
+error report; they do not replace the separate outer/middle tail certificates.
+
+Partition [-R,R] at y=0 and at y=-x_0 (the physical profile center, when in
+range), then subdivide EVERY remaining interval so its length is at most
+
+    h_A(nu)=min(L/8, s/8, pi/[4*(1+abs(nu))]).
+
+Use open Gauss-Legendre orders 24 and 48 on each such panel for the declared
+base/refined Route A transforms. The phase advance per panel is at most pi/4;
+both Gaussian and profile scales are resolved even at nu=0. Save the actual
+widths, node/weight receipts, phase increments, tail radii and totals. No fixed
+global number of Gaussian nodes is assumed to resolve an arbitrary offset.
+The wavelength rule is a resolution prescription, not a proof of a 1e-12
+quadrature error: the absolute transform and full-action tests remain mandatory.
+
+Route B independently chooses its real-axis radius by the same tail-moment
+procedure with c=0 and its actual real-axis polynomial bound, again <=1e-14.
+At 50 decimal digits it integrates the ORIGINAL real integrand on that interval
+with open adaptive Gauss-Kronrod rules. Its initial subdivision contains its
+own center/profile cuts and has maximum length
+
+    h_B(nu)=min(L/5, s/5, pi/[3*(1+abs(nu))]).
+
+It then uses its own adaptive subdivisions and a summed error target <=1e-13
+per transform. It does not use Route A samples, complex-contour values, weights
+or transforms. The same known coefficients and analytic constant-Gaussian
+reference may be shared, with exact argument joins. Both routes keep and
+compare absolute complex values; a tiny true transform does not justify a
+relative-accuracy claim. If finite practical radii/panel counts are unavailable
+under containment, preserve that preflight limitation; do not silently replace
+the prescribed rule. There is no extra order campaign after failure.
 
 Use the inherited global polynomial pressure/normal bounds with these exponential
 Fourier envelopes to bound omitted outer k/l tails. For the height term use
@@ -256,7 +321,10 @@ equate a change on enlarging a box to a proven all-real tail bound.
 
 After method assessment, the concrete build must fix the complete quadrature
 settings before its review: base/refined Gauss orders 24/48, Fourier orders
-96/160 for route A, and independent adaptive route B at 50 decimal digits.
+24/48 PER WAVELENGTH-RESOLVED PANEL for route A as specified above, and
+independent adaptive route B at 50 decimal digits. The transform radii and panel
+counts follow the declared operand-dependent rules before evaluating a request;
+they are not adjusted in response to an accuracy miss.
 Add deterministic panel cuts at the packet carrier and offsets ±1/s, ±2/s,
 ±4/s, ±8/s, and at each removable profile point with offsets ±1/L, ±2/L,
 ±4/L, ±8/L, wherever inside the relevant integration interval. Keep these

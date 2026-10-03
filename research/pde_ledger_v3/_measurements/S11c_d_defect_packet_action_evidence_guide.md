@@ -43,6 +43,16 @@ support integrability, not differentiability or a claimed logarithmic pinch.
 The proposed affine cut arrangement and on/near-line tests are new numerical
 prescriptions requiring this assessment, not previously executed certificates.
 
+The new Fourier prescription uses composite panels sized from each actual
+offset, with separately chosen Gaussian-moment tail radii on the shifted and
+real contours. Its carrier derivative recurrence, signed X/Y offsets and
+panel-width rules are proposed numerical adapter work; no transform has run.
+The strip and physical coefficients are unchanged. Accuracy still requires
+the independent transform and complete-action comparisons, not a phase-width
+claim alone. The 16 pressure grade triples are distinct from the also-16 local
+derivative/grade cells. Actual address status, not a generic normal-height
+response map, determines control applicability.
+
 This packet is method-only. There is no new worker, manifest, execution gate or
 computed weak action. A clear verdict supports bounded build preparation, not
 automatic result acceptance or a scattering/loss claim.

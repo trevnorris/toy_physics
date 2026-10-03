@@ -1,0 +1,102 @@
+{
+  "status": "READY_FOR_INDEPENDENT_REVISED_METHOD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/method-review-r3",
+  "priorReviewCommit": "096a0af8",
+  "dependencyCommit": "0fc0283d",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-03T15:43:33.492139+00:00",
+    "packetSha256": "9966fe0f511f577dc425eae0459b20e8a6c3fe1eea2fd4cdc05e3e30164c9f71",
+    "archiveSha256": "0614ae82fc60a73d7699b13d24d096ecaae2d1f9c7a9cee125d65f464464556a",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 39,
+    "bytes": 4826416,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing AGENTS review-submission authorization and user direction to continue clear bounded research without routine prompts. Substantive wavelength-resolved Fourier method revision to established recipients only. No worker or scientific execution.",
+    "scope": "Two selected e_W-to-THETA Schwartz packet actions at one saved effective matching speed; retained grades, both faces, contact/PV/branch/tail numerical method only. No scattering, current, inverse, defect sweep or loss.",
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_SOURCE_AND_PACKET_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "deb78884b40723f4fb8b35992a1daf828fc8caf9596dac3aeb2504087799a4a8",
+    "packetSha256": "9966fe0f511f577dc425eae0459b20e8a6c3fe1eea2fd4cdc05e3e30164c9f71",
+    "archiveSha256": "0614ae82fc60a73d7699b13d24d096ecaae2d1f9c7a9cee125d65f464464556a",
+    "files": 39,
+    "bytes": 4826416,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 38,
+    "payloadRestored": false,
+    "transportIdenticalToPrior": true,
+    "noReviewVerdict": true
+  },
+  "revision": "Declared wavelength-resolved composite Fourier quadrature on the same strip with Gaussian tail moments. Substantive numerical settings, not a tooling or transport retry.",
+  "checks": {
+    "everySourceCopyHashChecked": true,
+    "allArchiveMembersChecked": true,
+    "unchangedPriorPacketFiles": [
+      "selected/pressure-addresses.json",
+      "selected/local-cells.json",
+      "pressure/fields.json",
+      "pressure/whole-tags.json",
+      "pressure/typed-direct.json",
+      "pressure/coefficient-certificates.json",
+      "pressure/whole-definitions.json",
+      "pressure/global-parameter-domain.json",
+      "pressure/profile-envelope.json",
+      "pressure/whole-envelopes.json",
+      "pressure/normal-growth.json",
+      "pressure/H-bound.json",
+      "pressure/J-numerator-envelope.json",
+      "pressure/D-height-envelope.json",
+      "pressure/D-reflected-envelope.json",
+      "pressure/shift-root-bound.json",
+      "pressure/plus-height-PV.json",
+      "pressure/minus-height-PV.json",
+      "pressure/Fourier-order.json",
+      "pressure/source-jets.json",
+      "local/context.json",
+      "local/assembly.json",
+      "physical-input.json",
+      "ends/left-match.json",
+      "ends/correspondence-summary.json",
+      "background/pressure-weak-method.md",
+      "background/full-weak-method.md",
+      "source/composition.py",
+      "source/pressure-weak.py",
+      "source/full-weak.py",
+      "source/weak-ends.py",
+      "source/legacy-integration.py",
+      "source/legacy-finite.py",
+      "background/numerical-route-inventory.json",
+      "ends/left-source-binding.json"
+    ],
+    "unchangedCount": 35,
+    "changedMethodPromptGuide": [
+      "evidence-guide.md",
+      "method.md",
+      "review-prompt.md"
+    ],
+    "additionalSavedEvidence": [],
+    "selectedAddresses": 544,
+    "selectedLocalCells": 16,
+    "scientificImports": false,
+    "newScientificOperations": 0,
+    "newWorkerOrGate": false,
+    "oldPeerReportsIncluded": false,
+    "newTrackedDataOver1MiB": []
+  },
+  "methodNotes": [
+    "Same physical source coefficients, strip height, outer/middle geometry, contact/PV/root formulas, accuracy thresholds and scope.",
+    "No numeric Gauss-Hermite failure was executed. No universal hard resolution threshold is asserted as a theorem.",
+    "Per-request finite radii and panel widths are predeclared functions of actual operands; no post-miss order campaign.",
+    "Independent absolute transform and full-action controls remain; panel phase width is not a rigorous total error bound."
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "status": "INDEPENDENT_REVISED_PACKET_METHOD_REVIEWS_STARTED",
+  "utc": "2026-10-03T15:44:33.720663+00:00",
+  "preparedCommit": "f79b2493",
+  "priorReviewCommit": "096a0af8",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/method-review-r3",
+  "packetSha256": "9966fe0f511f577dc425eae0459b20e8a6c3fe1eea2fd4cdc05e3e30164c9f71",
+  "archiveSha256": "0614ae82fc60a73d7699b13d24d096ecaae2d1f9c7a9cee125d65f464464556a",
+  "files": 39,
+  "bytes": 4826416,
+  "sourceReviewOnly": true,
+  "scienceCalls": 0,
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "launch": {
+    "jobPid": 472837,
+    "watcherPid": 472838,
+    "packetSha256": "9966fe0f511f577dc425eae0459b20e8a6c3fe1eea2fd4cdc05e3e30164c9f71",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "actualReviewers": {
+    "claude": {
+      "sessionId": "0647ada9-07e4-404a-968d-b49016f73da0",
+      "pid": 472846,
+      "startedUtc": "2026-10-03T15:44:06.873680+00:00",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "0647ada9-07e4-404a-968d-b49016f73da0"
+      ],
+      "privateCopiesVerified": 39,
+      "receiptSha256": "aabf2be8434a9020e79b68a97d0623739c2312a4705a2fd9a657536113feb06f",
+      "reportRead": false,
+      "hostProcessCommand": "/home/trevnorris/.local/bin/claude --print --output-format json --safe-mode --restricted --tools Read,Glob,Grep --allowedTools Read,Glob,Grep --permission-mode dontAsk --strict-mcp-config --mcp-config {\"mcpServers\":{}} --setting-sources  --disable-slash-commands --session-id 0647ada9-07e4-404a-968d-b49016f73da0 "
+    },
+    "grok": {
+      "sessionId": "e1a17981-656d-4a2c-8582-924a707714f7",
+      "pid": 472847,
+      "startedUtc": "2026-10-03T15:44:06.873356+00:00",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/method-review-r3/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/method-review-r3/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "e1a17981-656d-4a2c-8582-924a707714f7"
+      ],
+      "privateCopiesVerified": 39,
+      "receiptSha256": "7fd17c197ce70eff6414e24c6a4142d08930e084c9b4395e2f31a8f33d3d28ce",
+      "reportRead": false,
+      "hostProcessCommand": "/home/trevnorris/.local/bin/grok --cwd /var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/method-review-r3/grok/work --prompt-file /var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/method-review-r3/grok/work/input/review-prompt.md --output-format json --permission-mode dontAsk --no-plan --tools Read --no-subagents --disable-web-search --verbatim --session-id e1a17981-656d-4a2c-8582-924a707714f7 "
+    }
+  },
+  "hookFirst": true,
+  "hookState": "waiting",
+  "peerReportsShared": false,
+  "verdictsRead": false,
+  "automaticRetry": false,
+  "standingAuthorization": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-03T15:43:33.492139+00:00",
+    "packetSha256": "9966fe0f511f577dc425eae0459b20e8a6c3fe1eea2fd4cdc05e3e30164c9f71",
+    "archiveSha256": "0614ae82fc60a73d7699b13d24d096ecaae2d1f9c7a9cee125d65f464464556a",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 39,
+    "bytes": 4826416,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing AGENTS review-submission authorization and user direction to continue clear bounded research without routine prompts. Substantive wavelength-resolved Fourier method revision to established recipients only. No worker or scientific execution.",
+    "scope": "Two selected e_W-to-THETA Schwartz packet actions at one saved effective matching speed; retained grades, both faces, contact/PV/branch/tail numerical method only. No scattering, current, inverse, defect sweep or loss.",
+    "noAutomaticRetry": true
+  },
+  "workerOrGateExists": false
+}

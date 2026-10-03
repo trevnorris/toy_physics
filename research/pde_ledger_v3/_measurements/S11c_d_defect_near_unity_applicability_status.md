@@ -206,6 +206,10 @@ and evidence files are byte-identical to the prior packet. The new frozen
 The r2 literal reports and source baseline remain at 096a0af8. This is necessary
 assessment of a numerical-method change, not a claim that a Fourier calculation
 has failed or that a worker is cleared.
+Submitted from f79b2493 with the existing-session completion hook armed first.
+Both actual reviewer commands were confirmed on the host and all 39 private
+files per reviewer match the frozen packet. No unfinished report was read or
+shared. The hook will resume joint assessment without model polling.
 
 Independent preparation at 0798c4b5 mapped the legacy Gaussian/matrix route and
 verified 131 selected opaque input/return receipts. It is preparation only:

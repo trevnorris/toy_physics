@@ -1,0 +1,131 @@
+{
+  "status": "READY_FOR_INDEPENDENT_LOCAL_BUILD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/local-build-review",
+  "methodAssessmentCommit": "3df5a3bf",
+  "dependencyCommits": [
+    "2b82558f",
+    "0fc0283d",
+    "ccb35e8c",
+    "2bebec95",
+    "0e58e991"
+  ],
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-03T23:07:56.758332+00:00",
+    "packetSha256": "3ce5f5b9b8120ecbd6754c980597fcaed8bbae89ec0fdc19a51d9d29d1ed79e3",
+    "archiveSha256": "fa6a32489e04bfd70b0c484835571469b163492883f1c50fc1b65d71923c3b80",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 142,
+    "bytes": 14110297,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing AGENTS/user authorization for necessary source/evidence assessment by the established Claude/Grok reviewers within continued bounded research. Local actions implement the already approved two-packet method.",
+    "scope": {
+      "frequency": 3,
+      "anchoring": "LAB_HELD",
+      "density": "RHO4_CONSTANT",
+      "drain": 0,
+      "edges": [
+        "1/5",
+        "1/10"
+      ],
+      "effectiveCs": "sqrt(6)/2",
+      "plannedCarriers": [
+        "sqrt(595)/10",
+        "0"
+      ],
+      "target": "Two local Gaussian weak actions from16saved native cells; pressure/full action pending",
+      "sourceFrequencyContinued": false,
+      "responseRegulator": 0,
+      "selectedPressureAddresses": 544,
+      "selectedLocalCells": 16,
+      "pressureCoefficientFields": 34,
+      "noEvaluatedResponseIntegral": true,
+      "noNumericalPacketAction": false,
+      "noFiniteSolve": true,
+      "noProductionOverwrite": true,
+      "noDefectSweep": true,
+      "noCompletePacketAction": true,
+      "localActions": 2,
+      "noPressureAction": true
+    },
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_SOURCE_AND_PACKET_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "27e1f633a00851ebb2cee790f8ac442b388184fcdb8022c956c8d37f4e3685d0",
+    "packetSha256": "3ce5f5b9b8120ecbd6754c980597fcaed8bbae89ec0fdc19a51d9d29d1ed79e3",
+    "archiveSha256": "fa6a32489e04bfd70b0c484835571469b163492883f1c50fc1b65d71923c3b80",
+    "files": 142,
+    "bytes": 14110297,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 141,
+    "payloadRestored": false,
+    "transportIdenticalToPrior": true,
+    "noReviewVerdict": true
+  },
+  "workerSha256": "1edd55f9ad0def1439413795f0ccf937dbc824f28ef80918797e53fabe060844",
+  "librarySha256": "c0bfd256e4a054be9f18864600ea962d650bc0af601bc290ad26c642308c8e44",
+  "manifestSha256": "fa6675068e428ecdc800d21d410aab88555d5ceafdbfd490f7188e8a60ead84f",
+  "launcherSha256": "addb4b7ba5f46b484da477e77e39ef033b3c6553b9fa0d46a999647116f93297",
+  "sharedGuardSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+  "supervisorSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+  "methodSha256": "79f1459596c84d0f4fbca2c45b51977ff338bce1a55a66c6214e850793eaf45a",
+  "toolingTests": {
+    "status": "STDLIB_METADATA_SOURCE_SYNTHETIC_TESTS_PASSED",
+    "utc": "2026-10-03T23:07:56.758332+00:00",
+    "command": [
+      "python",
+      "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_tooling_tests.py"
+    ],
+    "tests": 20,
+    "exitCode": 0,
+    "reportedSeconds": 0.422,
+    "scienceImportsOrPayloadRestoration": false,
+    "workerSha256": "1edd55f9ad0def1439413795f0ccf937dbc824f28ef80918797e53fabe060844",
+    "librarySha256": "c0bfd256e4a054be9f18864600ea962d650bc0af601bc290ad26c642308c8e44",
+    "manifestSha256": "fa6675068e428ecdc800d21d410aab88555d5ceafdbfd490f7188e8a60ead84f",
+    "testSourceSha256": "774f8cc62eb56369a1dc93d6e931451bcb0d05578b9c5950b7181599c9e18a62"
+  },
+  "savedInputFiles": 69,
+  "savedInputBytes": 12060076,
+  "peerReportsIncluded": false,
+  "newScientificOperations": 0,
+  "readyGateExists": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Two local Gaussian weak actions from16saved native cells; pressure/full action pending",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": false,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "noCompletePacketAction": true,
+    "localActions": 2,
+    "noPressureAction": true
+  }
+}

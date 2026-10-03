@@ -1,0 +1,16 @@
+{
+  "status": "STDLIB_METADATA_SOURCE_SYNTHETIC_TESTS_PASSED",
+  "utc": "2026-10-03T23:07:56.758332+00:00",
+  "command": [
+    "python",
+    "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_tooling_tests.py"
+  ],
+  "tests": 20,
+  "exitCode": 0,
+  "reportedSeconds": 0.422,
+  "scienceImportsOrPayloadRestoration": false,
+  "workerSha256": "1edd55f9ad0def1439413795f0ccf937dbc824f28ef80918797e53fabe060844",
+  "librarySha256": "c0bfd256e4a054be9f18864600ea962d650bc0af601bc290ad26c642308c8e44",
+  "manifestSha256": "fa6675068e428ecdc800d21d410aab88555d5ceafdbfd490f7188e8a60ead84f",
+  "testSourceSha256": "774f8cc62eb56369a1dc93d6e931451bcb0d05578b9c5950b7181599c9e18a62"
+}

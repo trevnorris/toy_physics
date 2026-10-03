@@ -1,0 +1,1304 @@
+{
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Two local Gaussian weak actions from16saved native cells; pressure/full action pending",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": false,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "noCompletePacketAction": true,
+    "localActions": 2,
+    "noPressureAction": true
+  },
+  "records": [
+    {
+      "packetPath": "worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local.py",
+      "sourceSha256": "1edd55f9ad0def1439413795f0ccf937dbc824f28ef80918797e53fabe060844",
+      "packetSha256": "1edd55f9ad0def1439413795f0ccf937dbc824f28ef80918797e53fabe060844",
+      "bytes": 17106,
+      "kind": "complete file",
+      "role": "New bounded local adapter; no scientific execution"
+    },
+    {
+      "packetPath": "numerical-library.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_lib.py",
+      "sourceSha256": "c0bfd256e4a054be9f18864600ea962d650bc0af601bc290ad26c642308c8e44",
+      "packetSha256": "c0bfd256e4a054be9f18864600ea962d650bc0af601bc290ad26c642308c8e44",
+      "bytes": 9183,
+      "kind": "complete file",
+      "role": "New local numerical actions, tails, references and controls"
+    },
+    {
+      "packetPath": "quadrature-library.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "sourceSha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+      "packetSha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+      "bytes": 20289,
+      "kind": "complete file",
+      "role": "Unchanged generic rule restoration and new-argument quadrature only"
+    },
+    {
+      "packetPath": "storage-library.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_lib.py",
+      "sourceSha256": "8541ed87d588888daf642ff632ecf0a5780c8f4a47db7a3a53d50b2c36941fe0",
+      "packetSha256": "8541ed87d588888daf642ff632ecf0a5780c8f4a47db7a3a53d50b2c36941fe0",
+      "bytes": 15578,
+      "kind": "complete file",
+      "role": "Unchanged storage/encoding and polynomial helpers only"
+    },
+    {
+      "packetPath": "launcher.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_launch.py",
+      "sourceSha256": "addb4b7ba5f46b484da477e77e39ef033b3c6553b9fa0d46a999647116f93297",
+      "packetSha256": "addb4b7ba5f46b484da477e77e39ef033b3c6553b9fa0d46a999647116f93297",
+      "bytes": 8360,
+      "kind": "complete file",
+      "role": "New hook-first guarded launch; no READY gate"
+    },
+    {
+      "packetPath": "manifest.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_inputs.json",
+      "sourceSha256": "fa6675068e428ecdc800d21d410aab88555d5ceafdbfd490f7188e8a60ead84f",
+      "packetSha256": "fa6675068e428ecdc800d21d410aab88555d5ceafdbfd490f7188e8a60ead84f",
+      "bytes": 58617,
+      "kind": "complete file",
+      "role": "All input hashes, scope and runtime pins"
+    },
+    {
+      "packetPath": "execution-authority.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_execution_authority.json",
+      "sourceSha256": "059e5c77ee32625d50b7f77b4175a8c6a93a28529fd289380afaec335eee0786",
+      "packetSha256": "059e5c77ee32625d50b7f77b4175a8c6a93a28529fd289380afaec335eee0786",
+      "bytes": 1185,
+      "kind": "complete file",
+      "role": "Standing authority after concrete assessment"
+    },
+    {
+      "packetPath": "build.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_build.md",
+      "sourceSha256": "dc33726df849c76428d9e97f7b4e1789791b32fe6d7fd91b978efaa5876710d6",
+      "packetSha256": "dc33726df849c76428d9e97f7b4e1789791b32fe6d7fd91b978efaa5876710d6",
+      "bytes": 7399,
+      "kind": "complete file",
+      "role": "Concrete local prescription and analytic tails/units for assessment"
+    },
+    {
+      "packetPath": "method.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_action_method.md",
+      "sourceSha256": "79f1459596c84d0f4fbca2c45b51977ff338bce1a55a66c6214e850793eaf45a",
+      "packetSha256": "79f1459596c84d0f4fbca2c45b51977ff338bce1a55a66c6214e850793eaf45a",
+      "bytes": 26187,
+      "kind": "complete file",
+      "role": "Unchanged assessed two-packet method"
+    },
+    {
+      "packetPath": "review-prompt.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_review_prompt.md",
+      "sourceSha256": "7e964e754a9294bdcd930d00423ebeab0576c1412a652882105b86f43f093eb4",
+      "packetSha256": "7e964e754a9294bdcd930d00423ebeab0576c1412a652882105b86f43f093eb4",
+      "bytes": 1975,
+      "kind": "complete file",
+      "role": "Independent assessment request"
+    },
+    {
+      "packetPath": "evidence-guide.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_evidence_guide.md",
+      "sourceSha256": "35f60a52e8aa4d55da9ecb075e1530cfe7e59becccbda462494955e6e52c8c42",
+      "packetSha256": "35f60a52e8aa4d55da9ecb075e1530cfe7e59becccbda462494955e6e52c8c42",
+      "bytes": 1722,
+      "kind": "complete file",
+      "role": "Source navigation"
+    },
+    {
+      "packetPath": "tooling-tests.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_tooling_tests.py",
+      "sourceSha256": "774f8cc62eb56369a1dc93d6e931451bcb0d05578b9c5950b7181599c9e18a62",
+      "packetSha256": "774f8cc62eb56369a1dc93d6e931451bcb0d05578b9c5950b7181599c9e18a62",
+      "bytes": 5264,
+      "kind": "complete file",
+      "role": "Stdlib tooling tests only"
+    },
+    {
+      "packetPath": "tooling-test-record.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_local_tooling_test_record.json",
+      "sourceSha256": "0be38076a0c9d8d60435b5634103b70f690d960859641d6a16caa81253f305fc",
+      "packetSha256": "0be38076a0c9d8d60435b5634103b70f690d960859641d6a16caa81253f305fc",
+      "bytes": 688,
+      "kind": "complete file",
+      "role": "Tooling receipt, not scientific acceptance"
+    },
+    {
+      "packetPath": "source/full-weak.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak.py",
+      "sourceSha256": "ea1726dd7cc28bca6c85c06276c03941ad3b17de5e6d752e53a8cc487d77d738",
+      "packetSha256": "ea1726dd7cc28bca6c85c06276c03941ad3b17de5e6d752e53a8cc487d77d738",
+      "bytes": 55567,
+      "kind": "complete file",
+      "role": "Original child/cell source interface, never run"
+    },
+    {
+      "packetPath": "source/end-uniform.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py",
+      "sourceSha256": "4449a61cda79b075d1e182cb5b6ada0c9cac52398ebbb2356496657911880d4f",
+      "packetSha256": "4449a61cda79b075d1e182cb5b6ada0c9cac52398ebbb2356496657911880d4f",
+      "bytes": 65777,
+      "kind": "complete file",
+      "role": "Original native unit source interface, never run"
+    },
+    {
+      "packetPath": "source/native-c2.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "packetSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "bytes": 102548,
+      "kind": "complete file",
+      "role": "Original DIM schema and wave/profile convention, never executed"
+    },
+    {
+      "packetPath": "runtime-source/raw-helper.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py",
+      "sourceSha256": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+      "packetSha256": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+      "bytes": 48444,
+      "kind": "complete file",
+      "role": "Only named inert helper definitions"
+    },
+    {
+      "packetPath": "runtime-source/shared-guard.py",
+      "sourcePath": "scripts/s11c_guarded_run.py",
+      "sourceSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "packetSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "bytes": 21340,
+      "kind": "complete file",
+      "role": "Unchanged containment"
+    },
+    {
+      "packetPath": "runtime-source/supervisor.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "sourceSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "packetSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "bytes": 4837,
+      "kind": "complete file",
+      "role": "Unchanged supervisor"
+    },
+    {
+      "packetPath": "runtime-source/completion-hook.py",
+      "sourcePath": "scripts/codex_job_watch.py",
+      "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "packetSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "bytes": 4301,
+      "kind": "complete file",
+      "role": "Existing event-only hook"
+    },
+    {
+      "packetPath": "runtime-source/AGENTS.md",
+      "sourcePath": "AGENTS.md",
+      "sourceSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+      "packetSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+      "bytes": 5617,
+      "kind": "complete file",
+      "role": "Standing scope/review/execution policy"
+    },
+    {
+      "packetPath": "saved/local/context.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/extended-binding-context.json",
+      "sourceSha256": "fd473063c0a8b26966f0b1c780e5cc4583a19a9ff7ca1b2388f91e9c64c48997",
+      "packetSha256": "fd473063c0a8b26966f0b1c780e5cc4583a19a9ff7ca1b2388f91e9c64c48997",
+      "bytes": 19272,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/assembly.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/complete-weak-assembly.json",
+      "sourceSha256": "db1c9b44e68e82c8d5b86969256f61d73a80004784145609113c1d29caa419e6",
+      "packetSha256": "db1c9b44e68e82c8d5b86969256f61d73a80004784145609113c1d29caa419e6",
+      "bytes": 1972,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/selected/local-cells.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/method-review-r3/packet/selected/local-cells.json",
+      "sourceSha256": "f64da931f9de10f36307105943960ad8a610720898b3041af24ad3a52fd1a489",
+      "packetSha256": "f64da931f9de10f36307105943960ad8a610720898b3041af24ad3a52fd1a489",
+      "bytes": 228112,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/all-local-cells.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/all-local-cells.json",
+      "sourceSha256": "6ff2534c6fdcce7303f36e940e9cd2fda642a939cdca5ff3d18cd6fec9f542ba",
+      "packetSha256": "6ff2534c6fdcce7303f36e940e9cd2fda642a939cdca5ff3d18cd6fec9f542ba",
+      "bytes": 3597097,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/physical-input.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "packetSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "bytes": 1884,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/preflight/physical-plan.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/preflight-01/complete/physical-plan.json",
+      "sourceSha256": "6a2feca464f4de41ca9a135a93b2c1129763e460136ccc4744275db6337ef92a",
+      "packetSha256": "6a2feca464f4de41ca9a135a93b2c1129763e460136ccc4744275db6337ef92a",
+      "bytes": 1137,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/rules/extraction.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/inner-preparation/rule-extraction.json",
+      "sourceSha256": "80468058d5bd3818cd8f3603227ed6c71456c0d57804b0f9a97a90db96081c85",
+      "packetSha256": "80468058d5bd3818cd8f3603227ed6c71456c0d57804b0f9a97a90db96081c85",
+      "bytes": 1255,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/rules/A-GL24.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/inner-preparation/A-GL24.json",
+      "sourceSha256": "d945bc7d5def067cedf24a16fd771790487cd492dced45ca1470e1ee208337db",
+      "packetSha256": "d945bc7d5def067cedf24a16fd771790487cd492dced45ca1470e1ee208337db",
+      "bytes": 9100,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/rules/A-GL48.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/inner-preparation/A-GL48.json",
+      "sourceSha256": "e5cf49ba485682022431729bc38051e1c427fbd975a576a6628b4a5675c9258f",
+      "packetSha256": "e5cf49ba485682022431729bc38051e1c427fbd975a576a6628b4a5675c9258f",
+      "bytes": 18271,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/rules/B-G7-K15.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/inner-preparation/B-G7-K15.json",
+      "sourceSha256": "9dd1f51ff8c7778c7d3f187e44878f00fa9c6b7b7f590c56efabce47541f1bb6",
+      "packetSha256": "9dd1f51ff8c7778c7d3f187e44878f00fa9c6b7b7f590c56efabce47541f1bb6",
+      "bytes": 9131,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/fourier/journal-receipt.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/fourier-01/complete/numerical-journal-receipt.json",
+      "sourceSha256": "b415df62434e5f441aa69db0974fd2722050ecd6a5791964248f1e096585e714",
+      "packetSha256": "b415df62434e5f441aa69db0974fd2722050ecd6a5791964248f1e096585e714",
+      "bytes": 143,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/native-wave-profile-contract.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/native-wave-profile-contract.json",
+      "sourceSha256": "a74785e2446e1448acdf6cee32b939d2818191fac1fafee4cb597ed3dfddf911",
+      "packetSha256": "a74785e2446e1448acdf6cee32b939d2818191fac1fafee4cb597ed3dfddf911",
+      "bytes": 53178,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/native/THETA-partition.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/THETA_BALANCE-full-native-partition.json",
+      "sourceSha256": "8071d84d74ab5e2b2cd8b9c8c89fc2612d374b0ce90e8a874bea53597183a87a",
+      "packetSha256": "8071d84d74ab5e2b2cd8b9c8c89fc2612d374b0ce90e8a874bea53597183a87a",
+      "bytes": 522630,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/native/THETA-row.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/THETA_BALANCE-full-native-partition.json",
+      "sourceSha256": "8071d84d74ab5e2b2cd8b9c8c89fc2612d374b0ce90e8a874bea53597183a87a",
+      "packetSha256": "8071d84d74ab5e2b2cd8b9c8c89fc2612d374b0ce90e8a874bea53597183a87a",
+      "bytes": 522630,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/units/source-text-joins.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/native-source-text-joins.json",
+      "sourceSha256": "8e2293b893f473422da14a9fb4262d25ad9e4d77ce400698fc727e1bc43f78c6",
+      "packetSha256": "8e2293b893f473422da14a9fb4262d25ad9e4d77ce400698fc727e1bc43f78c6",
+      "bytes": 993,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/units/source-units.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/source-units.json",
+      "sourceSha256": "03577ea130bd4ef9f535b0192e4721f9d109f3532c940595958c8f3f8c26db7a",
+      "packetSha256": "03577ea130bd4ef9f535b0192e4721f9d109f3532c940595958c8f3f8c26db7a",
+      "bytes": 1505,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/units/merged.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/unit-registry-merged.json",
+      "sourceSha256": "85aecd82fe391fbf302070929e8ebdf40bf0af006d3e7ff72a0359c3d745d2c2",
+      "packetSha256": "85aecd82fe391fbf302070929e8ebdf40bf0af006d3e7ff72a0359c3d745d2c2",
+      "bytes": 60653,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/units/LEFTNativeSource-origin.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/unit-registry-LEFTNativeSource-origin.json",
+      "sourceSha256": "9c53cc45c635da50304c0ab118b021fcc1819e08d281e61a7c7c70aee2d87497",
+      "packetSha256": "9c53cc45c635da50304c0ab118b021fcc1819e08d281e61a7c7c70aee2d87497",
+      "bytes": 8465,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/units/RIGHTNativeSource-origin.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/unit-registry-RIGHTNativeSource-origin.json",
+      "sourceSha256": "40b630b47bccf77bc86657c444338ade559821bcefa3e34fbf8c63f104078f3b",
+      "packetSha256": "40b630b47bccf77bc86657c444338ade559821bcefa3e34fbf8c63f104078f3b",
+      "bytes": 8467,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/units/LEFTPairing-origin.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/unit-registry-LEFTPairing-origin.json",
+      "sourceSha256": "f8c6ac101293be3c2a593ca7800cbb1320e9280c5f97420fd64bc6649e8f6c60",
+      "packetSha256": "f8c6ac101293be3c2a593ca7800cbb1320e9280c5f97420fd64bc6649e8f6c60",
+      "bytes": 9633,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/units/RIGHTPairing-origin.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/unit-registry-RIGHTPairing-origin.json",
+      "sourceSha256": "6de84dbef5f04d87c772ac848b5c94bc9c9eb41ad99e7a3567db467926e78edc",
+      "packetSha256": "6de84dbef5f04d87c772ac848b5c94bc9c9eb41ad99e7a3567db467926e78edc",
+      "bytes": 9640,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-000-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-000-return.json",
+      "sourceSha256": "318e06357f1913e24d6f6ba652a88c731ddf6881e224ffc39090892db52ef944",
+      "packetSha256": "318e06357f1913e24d6f6ba652a88c731ddf6881e224ffc39090892db52ef944",
+      "bytes": 300077,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-000-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-000-input.json",
+      "sourceSha256": "60efbf7eb17f758f99f3b9f617fceee6a7d04e3609e9ada8957d37e72a523a0a",
+      "packetSha256": "60efbf7eb17f758f99f3b9f617fceee6a7d04e3609e9ada8957d37e72a523a0a",
+      "bytes": 15564,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-001-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-001-return.json",
+      "sourceSha256": "086d804b64c034112b37963a3ebca6eef429fb40aadfd99115105d73576f55e8",
+      "packetSha256": "086d804b64c034112b37963a3ebca6eef429fb40aadfd99115105d73576f55e8",
+      "bytes": 368081,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-001-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-001-input.json",
+      "sourceSha256": "5be97f03e274f161da20d8d3154de24ba80a1ccf51fcaaf19e702579fddd883e",
+      "packetSha256": "5be97f03e274f161da20d8d3154de24ba80a1ccf51fcaaf19e702579fddd883e",
+      "bytes": 21206,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-002-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-002-return.json",
+      "sourceSha256": "d964417c12b193c8914574a8001892e2a6604a3f1bd27ecced40db4c1f019ac0",
+      "packetSha256": "d964417c12b193c8914574a8001892e2a6604a3f1bd27ecced40db4c1f019ac0",
+      "bytes": 343356,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-002-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-002-input.json",
+      "sourceSha256": "aa6bd280f2a7de460c78cf30eaeb07530b42e3867299ac38a0328a1926ee13e6",
+      "packetSha256": "aa6bd280f2a7de460c78cf30eaeb07530b42e3867299ac38a0328a1926ee13e6",
+      "bytes": 19018,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-003-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-003-return.json",
+      "sourceSha256": "e0d39cdf2e1cc3663932d2e51c35d52a827b61127e0999bdb14bcad4c2e622fb",
+      "packetSha256": "e0d39cdf2e1cc3663932d2e51c35d52a827b61127e0999bdb14bcad4c2e622fb",
+      "bytes": 313349,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-003-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-003-input.json",
+      "sourceSha256": "09897a934855c4ea7d7f97860359bc8d5beadf7b3880996be05e238e2bc6614e",
+      "packetSha256": "09897a934855c4ea7d7f97860359bc8d5beadf7b3880996be05e238e2bc6614e",
+      "bytes": 15280,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-004-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-004-return.json",
+      "sourceSha256": "84b5ab7efab41c39273ceb3662fc481cc957fc14714a6cb6e7ad010d29559b67",
+      "packetSha256": "84b5ab7efab41c39273ceb3662fc481cc957fc14714a6cb6e7ad010d29559b67",
+      "bytes": 332304,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-004-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-004-input.json",
+      "sourceSha256": "de22935297984526619c568831223fea3906763523007911d8a3d233c178ded7",
+      "packetSha256": "de22935297984526619c568831223fea3906763523007911d8a3d233c178ded7",
+      "bytes": 15712,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-005-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-005-return.json",
+      "sourceSha256": "a91eb1261de8359f1f9fbd0484f1bd271fc9dbd98f14f573929e7166071da69b",
+      "packetSha256": "a91eb1261de8359f1f9fbd0484f1bd271fc9dbd98f14f573929e7166071da69b",
+      "bytes": 286799,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-005-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-005-input.json",
+      "sourceSha256": "30cffd529c962acfb785aa7e4f043ab9ffa59ede9040a6ed49119b45f2b63f47",
+      "packetSha256": "30cffd529c962acfb785aa7e4f043ab9ffa59ede9040a6ed49119b45f2b63f47",
+      "bytes": 14493,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-006-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-006-return.json",
+      "sourceSha256": "febca29cefcef3e235b01b004a60faed66a70810706b34c1a15c222337094d78",
+      "packetSha256": "febca29cefcef3e235b01b004a60faed66a70810706b34c1a15c222337094d78",
+      "bytes": 286014,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-006-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-006-input.json",
+      "sourceSha256": "8fb985e7f885460db762a5dde6abecb7fafb366c056ab8fb96e02da1c3e3b696",
+      "packetSha256": "8fb985e7f885460db762a5dde6abecb7fafb366c056ab8fb96e02da1c3e3b696",
+      "bytes": 13076,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-007-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-007-return.json",
+      "sourceSha256": "c3ca8eab819e67443c0d05f45c7c21dbb289fa5876cda86dea2156d40963b81d",
+      "packetSha256": "c3ca8eab819e67443c0d05f45c7c21dbb289fa5876cda86dea2156d40963b81d",
+      "bytes": 292606,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-007-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-007-input.json",
+      "sourceSha256": "fdce4efd2770e1358cd85cdd768cc28fe55b0158724be950cd1b1d1c3603b231",
+      "packetSha256": "fdce4efd2770e1358cd85cdd768cc28fe55b0158724be950cd1b1d1c3603b231",
+      "bytes": 13430,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-008-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-008-return.json",
+      "sourceSha256": "30941a5f47b509bc5672090c018d1bc320bfda0a1de44c3b82bb1d9a5d033c84",
+      "packetSha256": "30941a5f47b509bc5672090c018d1bc320bfda0a1de44c3b82bb1d9a5d033c84",
+      "bytes": 292660,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-008-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-008-input.json",
+      "sourceSha256": "e05cccaea63b73f4e0f54bd3680464d74d139b991647a67ea38d3cef3dcae40c",
+      "packetSha256": "e05cccaea63b73f4e0f54bd3680464d74d139b991647a67ea38d3cef3dcae40c",
+      "bytes": 13661,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-009-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-009-return.json",
+      "sourceSha256": "67a203d5e3ccb587b886d62759e29345f58f9cb4f42bac22bdad5f40d235959d",
+      "packetSha256": "67a203d5e3ccb587b886d62759e29345f58f9cb4f42bac22bdad5f40d235959d",
+      "bytes": 292714,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-009-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-009-input.json",
+      "sourceSha256": "d170b6d0b504e48a5bb941c21e4a8512ac4ed3318325e92743ef42fc4ec57232",
+      "packetSha256": "d170b6d0b504e48a5bb941c21e4a8512ac4ed3318325e92743ef42fc4ec57232",
+      "bytes": 13661,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-010-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-010-return.json",
+      "sourceSha256": "5d1ab903bcb7f1917b8bd1d1366b954123d94f853191b5dec3ec6d652b812ac5",
+      "packetSha256": "5d1ab903bcb7f1917b8bd1d1366b954123d94f853191b5dec3ec6d652b812ac5",
+      "bytes": 293017,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-010-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-010-input.json",
+      "sourceSha256": "9321b3d6a876ebe1e354ac18527d4d8c0accf6ecb5a2f8e144a81c3f67285af9",
+      "packetSha256": "9321b3d6a876ebe1e354ac18527d4d8c0accf6ecb5a2f8e144a81c3f67285af9",
+      "bytes": 13806,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-011-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-011-return.json",
+      "sourceSha256": "f4252cf7f422fcb2e60f5603837bc8034d0557404933754bf2b4289e11820311",
+      "packetSha256": "f4252cf7f422fcb2e60f5603837bc8034d0557404933754bf2b4289e11820311",
+      "bytes": 287209,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-011-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-011-input.json",
+      "sourceSha256": "19295f5130a0a7f7efd69ad3e19a0feafad9f8592211d4072ecc6ceb2c3ef06f",
+      "packetSha256": "19295f5130a0a7f7efd69ad3e19a0feafad9f8592211d4072ecc6ceb2c3ef06f",
+      "bytes": 12340,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-012-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-012-return.json",
+      "sourceSha256": "77f791e0dc6239c1edcc34b2c41dbb6746a6762512122fb7d94354469e43dc77",
+      "packetSha256": "77f791e0dc6239c1edcc34b2c41dbb6746a6762512122fb7d94354469e43dc77",
+      "bytes": 277699,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-012-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-012-input.json",
+      "sourceSha256": "5f44137896f20d5385701b4618dc5d161e2fc4652dbd786fc7bd1c5d5b680ab7",
+      "packetSha256": "5f44137896f20d5385701b4618dc5d161e2fc4652dbd786fc7bd1c5d5b680ab7",
+      "bytes": 12294,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-013-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-013-return.json",
+      "sourceSha256": "529885574ae547e5656b6898499d26819e1b055f78292a33008def006909041e",
+      "packetSha256": "529885574ae547e5656b6898499d26819e1b055f78292a33008def006909041e",
+      "bytes": 287174,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-013-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-013-input.json",
+      "sourceSha256": "a93f65104d41d77f33aa9b7b7bb93a1707a690177b644b61ac9dbee6a1d9770d",
+      "packetSha256": "a93f65104d41d77f33aa9b7b7bb93a1707a690177b644b61ac9dbee6a1d9770d",
+      "bytes": 12294,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-014-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-014-return.json",
+      "sourceSha256": "f707edd92618d3e59e5b2dcadcf17619b83f04fc40388b35f450a8dbf3e4c5d3",
+      "packetSha256": "f707edd92618d3e59e5b2dcadcf17619b83f04fc40388b35f450a8dbf3e4c5d3",
+      "bytes": 278766,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-014-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-014-input.json",
+      "sourceSha256": "9804aa13ecac5558b963996390b03cb41e39864ff92ae6964165cc75a49ae6c0",
+      "packetSha256": "9804aa13ecac5558b963996390b03cb41e39864ff92ae6964165cc75a49ae6c0",
+      "bytes": 12108,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-015-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-015-return.json",
+      "sourceSha256": "8ed1a1d878e5aa851c7f47eabc15c641fdcec79a9ed1be19fc8e726c8271f1a5",
+      "packetSha256": "8ed1a1d878e5aa851c7f47eabc15c641fdcec79a9ed1be19fc8e726c8271f1a5",
+      "bytes": 261277,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-015-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-015-input.json",
+      "sourceSha256": "8ecd01bc948c980c4a4b86b3f579434f500c30042fdaf05b3634b6fea945bfa5",
+      "packetSha256": "8ecd01bc948c980c4a4b86b3f579434f500c30042fdaf05b3634b6fea945bfa5",
+      "bytes": 12823,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-016-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-016-return.json",
+      "sourceSha256": "27a87511d2eefa7192becd8a7c5881fd7f6018446ab11294c93fc83fb6b6a68b",
+      "packetSha256": "27a87511d2eefa7192becd8a7c5881fd7f6018446ab11294c93fc83fb6b6a68b",
+      "bytes": 259557,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-016-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-016-input.json",
+      "sourceSha256": "e8ba14fe13af2f5065dc8f19521e4d49e973d5759585edd1de1209f52fa4af43",
+      "packetSha256": "e8ba14fe13af2f5065dc8f19521e4d49e973d5759585edd1de1209f52fa4af43",
+      "bytes": 12877,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-017-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-017-return.json",
+      "sourceSha256": "da702ac52d2006644a846355c0a29f9f91d59017a6cd92eb5d42b33f97fcdb7c",
+      "packetSha256": "da702ac52d2006644a846355c0a29f9f91d59017a6cd92eb5d42b33f97fcdb7c",
+      "bytes": 266653,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-017-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-017-input.json",
+      "sourceSha256": "389863f0504f102cd5e84df9ac7479b0f8bb4f6bed9c070d85c1271ee43e7112",
+      "packetSha256": "389863f0504f102cd5e84df9ac7479b0f8bb4f6bed9c070d85c1271ee43e7112",
+      "bytes": 12877,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-018-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-018-return.json",
+      "sourceSha256": "4c8263c7e03829e374a141753295ce6fa61fe720958cfca8ad3632ebc2d65f0c",
+      "packetSha256": "4c8263c7e03829e374a141753295ce6fa61fe720958cfca8ad3632ebc2d65f0c",
+      "bytes": 254818,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-018-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-018-input.json",
+      "sourceSha256": "3fef05a58df12869fe85883825d0b1a2ce15aad79d3eb187a96471e6009749e5",
+      "packetSha256": "3fef05a58df12869fe85883825d0b1a2ce15aad79d3eb187a96471e6009749e5",
+      "bytes": 12602,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-019-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-019-return.json",
+      "sourceSha256": "67e57ff2abc23ffd714a129cedb2e5cf08e584f50b28bdb59196b24db49715d5",
+      "packetSha256": "67e57ff2abc23ffd714a129cedb2e5cf08e584f50b28bdb59196b24db49715d5",
+      "bytes": 248166,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-019-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-019-input.json",
+      "sourceSha256": "e7d566c65d1b0b2ca9c29771846f565673b05e4ea8357465048d14bd953dd81b",
+      "packetSha256": "e7d566c65d1b0b2ca9c29771846f565673b05e4ea8357465048d14bd953dd81b",
+      "bytes": 11510,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-020-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-020-return.json",
+      "sourceSha256": "7b845032ce426c7cd8969bac2b3a25da5c8c0889962b218d3993ddc819c06e0a",
+      "packetSha256": "7b845032ce426c7cd8969bac2b3a25da5c8c0889962b218d3993ddc819c06e0a",
+      "bytes": 250202,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-020-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-020-input.json",
+      "sourceSha256": "977a538820cd083a114166dd93d4a54f1cfe7addd825e65255eee4d7fab34809",
+      "packetSha256": "977a538820cd083a114166dd93d4a54f1cfe7addd825e65255eee4d7fab34809",
+      "bytes": 11510,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-021-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-021-return.json",
+      "sourceSha256": "203af25f202fff314163422e7ae56bc97e62b2ae1438ea2f824960bc2428c10b",
+      "packetSha256": "203af25f202fff314163422e7ae56bc97e62b2ae1438ea2f824960bc2428c10b",
+      "bytes": 252405,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-021-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-021-input.json",
+      "sourceSha256": "08ada7e7bdd644a0fd1c16ddb86673fbf3b5cca772ad3fe69e6387a2715ef3c0",
+      "packetSha256": "08ada7e7bdd644a0fd1c16ddb86673fbf3b5cca772ad3fe69e6387a2715ef3c0",
+      "bytes": 11450,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-022-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-022-return.json",
+      "sourceSha256": "8615e31831de52abc906ad122311469c8a244c361d61eeeaf79c264f6b423e0c",
+      "packetSha256": "8615e31831de52abc906ad122311469c8a244c361d61eeeaf79c264f6b423e0c",
+      "bytes": 232797,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-022-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-022-input.json",
+      "sourceSha256": "2f783bf606b4fa48d55f017a9c9b7e1d139c090496ecb3f918c7360bcc58a6c7",
+      "packetSha256": "2f783bf606b4fa48d55f017a9c9b7e1d139c090496ecb3f918c7360bcc58a6c7",
+      "bytes": 10060,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-023-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-023-return.json",
+      "sourceSha256": "046e9ab18f5f0e3c68e7da2cac28b03b3373796fecc1a5e3283f01265b173a8f",
+      "packetSha256": "046e9ab18f5f0e3c68e7da2cac28b03b3373796fecc1a5e3283f01265b173a8f",
+      "bytes": 99940,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "saved/local/batches/THETA_BALANCE-local-batch-023-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-local-batch-023-input.json",
+      "sourceSha256": "6782ba72778e45042cbb7723dfdcb0d789c2ed602ae6c5fc5ed9703954710ed8",
+      "packetSha256": "6782ba72778e45042cbb7723dfdcb0d789c2ed602ae6c5fc5ed9703954710ed8",
+      "bytes": 3616,
+      "kind": "complete file",
+      "role": "Complete published operands/returns; scientific restoration only in guard"
+    },
+    {
+      "packetPath": "numerical-runtime/__init__.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/__init__.py",
+      "sourceSha256": "b241584d2c1fc0304b0a1015ea923749d7b0800411dd406dcab7c82bf25d9fe8",
+      "packetSha256": "b241584d2c1fc0304b0a1015ea923749d7b0800411dd406dcab7c82bf25d9fe8",
+      "bytes": 8765,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/calculus/__init__.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/calculus/__init__.py",
+      "sourceSha256": "500802209d5899a7b24eaa4dce306509919e2332ed51930412997df5558d8eeb",
+      "packetSha256": "500802209d5899a7b24eaa4dce306509919e2332ed51930412997df5558d8eeb",
+      "bytes": 162,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/calculus/approximation.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/calculus/approximation.py",
+      "sourceSha256": "bf2ceedd823aafadceab52851eb433d369865c0707db77a6a8d62126e51a159e",
+      "packetSha256": "bf2ceedd823aafadceab52851eb433d369865c0707db77a6a8d62126e51a159e",
+      "bytes": 8817,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/calculus/calculus.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/calculus/calculus.py",
+      "sourceSha256": "034812a748714b21037ee80956263709e59a945faf2bbd3561fb73ae3490cd0e",
+      "packetSha256": "034812a748714b21037ee80956263709e59a945faf2bbd3561fb73ae3490cd0e",
+      "bytes": 112,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/calculus/differentiation.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/calculus/differentiation.py",
+      "sourceSha256": "d8be82063f31b57f628a9f7c34f6cab0bb70b518f18b9ef5c1899330715e2fdd",
+      "packetSha256": "d8be82063f31b57f628a9f7c34f6cab0bb70b518f18b9ef5c1899330715e2fdd",
+      "bytes": 20226,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/calculus/extrapolation.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/calculus/extrapolation.py",
+      "sourceSha256": "c4cd2bbe4d83144178891d49865f98dda4bdde25bd555257ef2f481a99b30be0",
+      "packetSha256": "c4cd2bbe4d83144178891d49865f98dda4bdde25bd555257ef2f481a99b30be0",
+      "bytes": 73306,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/calculus/inverselaplace.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/calculus/inverselaplace.py",
+      "sourceSha256": "e7ea67f0dfedd0fb600535e2c6c5d9e31c6b8a12b6279818b157d329f0f1e200",
+      "packetSha256": "e7ea67f0dfedd0fb600535e2c6c5d9e31c6b8a12b6279818b157d329f0f1e200",
+      "bytes": 36056,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/calculus/odes.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/calculus/odes.py",
+      "sourceSha256": "81a1e2c3b2098ec38d35301aea2cc53d9a66720f6ec93a7c3142e719dcd3206a",
+      "packetSha256": "81a1e2c3b2098ec38d35301aea2cc53d9a66720f6ec93a7c3142e719dcd3206a",
+      "bytes": 9908,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/calculus/optimization.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/calculus/optimization.py",
+      "sourceSha256": "6ca9d285712504e9953883a515e92c0ec602a7d7d84a66302a65c3b74cf6e8c3",
+      "packetSha256": "6ca9d285712504e9953883a515e92c0ec602a7d7d84a66302a65c3b74cf6e8c3",
+      "bytes": 32856,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/calculus/polynomials.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/calculus/polynomials.py",
+      "sourceSha256": "0f5e81854fd21db562d3a2313700011d1f87efb23296774db0dde6b8f4ee158b",
+      "packetSha256": "0f5e81854fd21db562d3a2313700011d1f87efb23296774db0dde6b8f4ee158b",
+      "bytes": 7877,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/calculus/quadrature.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/calculus/quadrature.py",
+      "sourceSha256": "9fe6afb52f04e377e857ee6daf99687e03816a2314604f0026341c588f5070a9",
+      "packetSha256": "9fe6afb52f04e377e857ee6daf99687e03816a2314604f0026341c588f5070a9",
+      "bytes": 42432,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/ctx_base.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/ctx_base.py",
+      "sourceSha256": "adf8e67ccc80e79c7c47f716148354c165531257d99b2c797ab28375ab92115c",
+      "packetSha256": "adf8e67ccc80e79c7c47f716148354c165531257d99b2c797ab28375ab92115c",
+      "bytes": 15985,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/ctx_fp.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/ctx_fp.py",
+      "sourceSha256": "72d523c7f3685348855a4d397170d808bd99b4b64e956b359fa65aa37a5b1b68",
+      "packetSha256": "72d523c7f3685348855a4d397170d808bd99b4b64e956b359fa65aa37a5b1b68",
+      "bytes": 6572,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/ctx_iv.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/ctx_iv.py",
+      "sourceSha256": "b6a74cafe1837e4664d4486819e0806a3cbba50bfe456b6b56a8588df23caf88",
+      "packetSha256": "b6a74cafe1837e4664d4486819e0806a3cbba50bfe456b6b56a8588df23caf88",
+      "bytes": 17211,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/ctx_mp.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/ctx_mp.py",
+      "sourceSha256": "777af8b7bc4736a485b66aac03d06dab5369cb759333ea5c336fe3782c840b16",
+      "packetSha256": "777af8b7bc4736a485b66aac03d06dab5369cb759333ea5c336fe3782c840b16",
+      "bytes": 49452,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/ctx_mp_python.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/ctx_mp_python.py",
+      "sourceSha256": "de89585a8e259354a743403f21a675f35aaa1bcbb9a7119ab7fbfe2f842d9f76",
+      "packetSha256": "de89585a8e259354a743403f21a675f35aaa1bcbb9a7119ab7fbfe2f842d9f76",
+      "bytes": 37815,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/function_docs.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/function_docs.py",
+      "sourceSha256": "8383cff27e882d798770bc80e74b312ba4e6a7f678fe944dfb00c4ad4f03d62e",
+      "packetSha256": "8383cff27e882d798770bc80e74b312ba4e6a7f678fe944dfb00c4ad4f03d62e",
+      "bytes": 283512,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/functions/__init__.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/functions/__init__.py",
+      "sourceSha256": "61755d86abfee8b2a6e9caf9c71b53353b6e0fdcc33ca19097c1a64b4c73db1a",
+      "packetSha256": "61755d86abfee8b2a6e9caf9c71b53353b6e0fdcc33ca19097c1a64b4c73db1a",
+      "bytes": 330,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/functions/bessel.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/functions/bessel.py",
+      "sourceSha256": "7543cbbbc7eb94afaf99fdfe8ab5ffeeebf0cb0e3171cbfa1088b398867cf243",
+      "packetSha256": "7543cbbbc7eb94afaf99fdfe8ab5ffeeebf0cb0e3171cbfa1088b398867cf243",
+      "bytes": 37938,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/functions/elliptic.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/functions/elliptic.py",
+      "sourceSha256": "ab3d3254c6f895611e3930cbfc35b3e6ee5ac261883ca02cb991495e0c0724d5",
+      "packetSha256": "ab3d3254c6f895611e3930cbfc35b3e6ee5ac261883ca02cb991495e0c0724d5",
+      "bytes": 42237,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/functions/expintegrals.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/functions/expintegrals.py",
+      "sourceSha256": "ef95ff31175873517f5fbddb80d88e26ac11952da1a80cdc14b97744cdad0837",
+      "packetSha256": "ef95ff31175873517f5fbddb80d88e26ac11952da1a80cdc14b97744cdad0837",
+      "bytes": 11644,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/functions/factorials.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/functions/factorials.py",
+      "sourceSha256": "f3fea4091edee24d46c31880389bb435169d785e23036f2ac78862761bb820b9",
+      "packetSha256": "f3fea4091edee24d46c31880389bb435169d785e23036f2ac78862761bb820b9",
+      "bytes": 5273,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/functions/functions.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/functions/functions.py",
+      "sourceSha256": "b9bd89131beacc258b926e72026ef616be9f756999654927abdff7c3d3048a02",
+      "packetSha256": "b9bd89131beacc258b926e72026ef616be9f756999654927abdff7c3d3048a02",
+      "bytes": 18100,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/functions/hypergeometric.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/functions/hypergeometric.py",
+      "sourceSha256": "67438c00c0b8ca52b8da7fd29da9b21559d4c7acc72f208b0a8243499d49ac76",
+      "packetSha256": "67438c00c0b8ca52b8da7fd29da9b21559d4c7acc72f208b0a8243499d49ac76",
+      "bytes": 51570,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/functions/orthogonal.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/functions/orthogonal.py",
+      "sourceSha256": "15a6e4c4a7c1a12b1e0397e55aed5adeb7bed8161a7b0f5aba0a88b13f0b68bc",
+      "packetSha256": "15a6e4c4a7c1a12b1e0397e55aed5adeb7bed8161a7b0f5aba0a88b13f0b68bc",
+      "bytes": 16097,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/functions/qfunctions.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/functions/qfunctions.py",
+      "sourceSha256": "6b710718a42dfe331de31f48efbd89cfe4c6167198f9aad6a8fbd91b3f5049ed",
+      "packetSha256": "6b710718a42dfe331de31f48efbd89cfe4c6167198f9aad6a8fbd91b3f5049ed",
+      "bytes": 7633,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/functions/rszeta.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/functions/rszeta.py",
+      "sourceSha256": "cae515a788a52320e65f21375930710c38f07c424dca92676cf4bec4f1f91e8c",
+      "packetSha256": "cae515a788a52320e65f21375930710c38f07c424dca92676cf4bec4f1f91e8c",
+      "bytes": 46184,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/functions/signals.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/functions/signals.py",
+      "sourceSha256": "10ba2dc10696d420e9bfe79e273399e5cdb73617da65c8fdfc691bde9b2f4b44",
+      "packetSha256": "10ba2dc10696d420e9bfe79e273399e5cdb73617da65c8fdfc691bde9b2f4b44",
+      "bytes": 703,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/functions/theta.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/functions/theta.py",
+      "sourceSha256": "2a080ea1c733a0c1bafc73286a5e2810fee267848a3a8bbd24513e5b3636af73",
+      "packetSha256": "2a080ea1c733a0c1bafc73286a5e2810fee267848a3a8bbd24513e5b3636af73",
+      "bytes": 37320,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/functions/zeta.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/functions/zeta.py",
+      "sourceSha256": "b9eec963b197034a17f2ad3cb10265d82491ad9ee43adf07b1fb695639d3c2b1",
+      "packetSha256": "b9eec963b197034a17f2ad3cb10265d82491ad9ee43adf07b1fb695639d3c2b1",
+      "bytes": 36410,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/functions/zetazeros.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/functions/zetazeros.py",
+      "sourceSha256": "baae93572641718d8c2d7ed549d55f9f44ce928c012ccf5f5ed9f2484c1a373c",
+      "packetSha256": "baae93572641718d8c2d7ed549d55f9f44ce928c012ccf5f5ed9f2484c1a373c",
+      "bytes": 30858,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/identification.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/identification.py",
+      "sourceSha256": "eda31d9e044069e2ff31a7c350d6e61089464129251c367ca663c5b7e38b824c",
+      "packetSha256": "eda31d9e044069e2ff31a7c350d6e61089464129251c367ca663c5b7e38b824c",
+      "bytes": 29253,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/libmp/__init__.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/libmp/__init__.py",
+      "sourceSha256": "5020e32d9c386eb6e495a0a64a2c4270f74b747933f2c17ffba17fc2bd1db808",
+      "packetSha256": "5020e32d9c386eb6e495a0a64a2c4270f74b747933f2c17ffba17fc2bd1db808",
+      "bytes": 3790,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/libmp/backend.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/libmp/backend.py",
+      "sourceSha256": "dba03ca5491a1a8bf6eafaeb14d415c962792c3b4af2c977507ad82de71a4e30",
+      "packetSha256": "dba03ca5491a1a8bf6eafaeb14d415c962792c3b4af2c977507ad82de71a4e30",
+      "bytes": 3360,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/libmp/gammazeta.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/libmp/gammazeta.py",
+      "sourceSha256": "5ea770e8f328b300da49c6bfb0eb3e220951ba4ddf6fc73da78dccfe56dcae57",
+      "packetSha256": "5ea770e8f328b300da49c6bfb0eb3e220951ba4ddf6fc73da78dccfe56dcae57",
+      "bytes": 71469,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/libmp/libelefun.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/libmp/libelefun.py",
+      "sourceSha256": "8e80593f814e7713df89e5aca352cfb52afa747c9da46fcb42217f6d841858c8",
+      "packetSha256": "8e80593f814e7713df89e5aca352cfb52afa747c9da46fcb42217f6d841858c8",
+      "bytes": 43861,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/libmp/libhyper.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/libmp/libhyper.py",
+      "sourceSha256": "27d7e674317abb6ec472cb045af06e55a01ade11633ef3cdd5281182ed5d11b7",
+      "packetSha256": "27d7e674317abb6ec472cb045af06e55a01ade11633ef3cdd5281182ed5d11b7",
+      "bytes": 36624,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/libmp/libintmath.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/libmp/libintmath.py",
+      "sourceSha256": "688453d2b91467fb1d1907f74cd08b77ea4132fb505a3b2c6ef14b7caed4d237",
+      "packetSha256": "688453d2b91467fb1d1907f74cd08b77ea4132fb505a3b2c6ef14b7caed4d237",
+      "bytes": 16688,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/libmp/libmpc.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/libmp/libmpc.py",
+      "sourceSha256": "2819dd523b396154b7dbe21dddf7e50df620a5d5b53ebc7acdfa3c133e506ebb",
+      "packetSha256": "2819dd523b396154b7dbe21dddf7e50df620a5d5b53ebc7acdfa3c133e506ebb",
+      "bytes": 26875,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/libmp/libmpf.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/libmp/libmpf.py",
+      "sourceSha256": "be93f490d56449c6c2568668809e166ad97823b09ed1de1dcc75637d57b9eeca",
+      "packetSha256": "be93f490d56449c6c2568668809e166ad97823b09ed1de1dcc75637d57b9eeca",
+      "bytes": 45021,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/libmp/libmpi.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/libmp/libmpi.py",
+      "sourceSha256": "bb4239122c24a9afb8f9d5c44e2e64eccb9ac417996ef0803c5b65f7753d605d",
+      "packetSha256": "bb4239122c24a9afb8f9d5c44e2e64eccb9ac417996ef0803c5b65f7753d605d",
+      "bytes": 27622,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/math2.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/math2.py",
+      "sourceSha256": "3b90e0960f354ac5b4c1f1c3509717383f3e70268bbdb548bf2c34b159916e92",
+      "packetSha256": "3b90e0960f354ac5b4c1f1c3509717383f3e70268bbdb548bf2c34b159916e92",
+      "bytes": 18561,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/matrices/__init__.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/matrices/__init__.py",
+      "sourceSha256": "113cc60dc8986eaf5fb622b068c6c9d79108f8a3571ebcd16fe6477a186a163b",
+      "packetSha256": "113cc60dc8986eaf5fb622b068c6c9d79108f8a3571ebcd16fe6477a186a163b",
+      "bytes": 94,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/matrices/calculus.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/matrices/calculus.py",
+      "sourceSha256": "3cd46afa9da7c604fe7f30b9e0ad9d7a98bc75d85dc7a43ce86f2aa548877946",
+      "packetSha256": "3cd46afa9da7c604fe7f30b9e0ad9d7a98bc75d85dc7a43ce86f2aa548877946",
+      "bytes": 18609,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/matrices/eigen.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/matrices/eigen.py",
+      "sourceSha256": "19b0d72370a2c7311d5f1af51bceae5169009e002f77ed39326490f93b2eff99",
+      "packetSha256": "19b0d72370a2c7311d5f1af51bceae5169009e002f77ed39326490f93b2eff99",
+      "bytes": 24394,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/matrices/eigen_symmetric.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/matrices/eigen_symmetric.py",
+      "sourceSha256": "14f28f790af5706630e98e9e6b7d9ad587445900cb3fa265407100d967cd2d88",
+      "packetSha256": "14f28f790af5706630e98e9e6b7d9ad587445900cb3fa265407100d967cd2d88",
+      "bytes": 58534,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/matrices/linalg.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/matrices/linalg.py",
+      "sourceSha256": "d380b78a3ccc1689bba1be5f5c10837f23cf768dc121ba08784f31d80eafa85d",
+      "packetSha256": "d380b78a3ccc1689bba1be5f5c10837f23cf768dc121ba08784f31d80eafa85d",
+      "bytes": 26958,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/matrices/matrices.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/matrices/matrices.py",
+      "sourceSha256": "a3bf04abad841d09f172c4742c1a160c419110ea0de0bda20ccd6addd42bc34a",
+      "packetSha256": "a3bf04abad841d09f172c4742c1a160c419110ea0de0bda20ccd6addd42bc34a",
+      "bytes": 32331,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/rational.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/rational.py",
+      "sourceSha256": "eb8779e9fbd95e7818653ee73801de151517efb789d40d11deba5f58153e992a",
+      "packetSha256": "eb8779e9fbd95e7818653ee73801de151517efb789d40d11deba5f58153e992a",
+      "bytes": 5976,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/usertools.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/usertools.py",
+      "sourceSha256": "6be4c3c3b5d246c3dd0447dfc4ea280d5e160c57ee5e73b9f0fef975c003f3b2",
+      "packetSha256": "6be4c3c3b5d246c3dd0447dfc4ea280d5e160c57ee5e73b9f0fef975c003f3b2",
+      "bytes": 3029,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    },
+    {
+      "packetPath": "numerical-runtime/visualization.py",
+      "sourcePath": "/home/trevnorris/.local/lib/python3.10/site-packages/mpmath/visualization.py",
+      "sourceSha256": "a679db8dc77d02115544165abd85f9823c78cad2bf917a030e2b1847a1295e1b",
+      "packetSha256": "a679db8dc77d02115544165abd85f9823c78cad2bf917a030e2b1847a1295e1b",
+      "bytes": 10627,
+      "kind": "complete file",
+      "role": "Exact pinned public numerical source"
+    }
+  ],
+  "projections": "69 complete saved JSON files. The original native THETA full constructor/child partition is complete, with original line provenance and identical saved unit-source hash; the61MB producer export is pinned, inspected by native row evidence and never re-executed. All24completeTHETAchildinput/returnpairs supplied.",
+  "oldPeerReportsIncluded": false
+}

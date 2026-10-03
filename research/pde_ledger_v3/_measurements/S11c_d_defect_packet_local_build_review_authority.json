@@ -1,0 +1,44 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-03T23:07:56.758332+00:00",
+  "packetSha256": "3ce5f5b9b8120ecbd6754c980597fcaed8bbae89ec0fdc19a51d9d29d1ed79e3",
+  "archiveSha256": "fa6a32489e04bfd70b0c484835571469b163492883f1c50fc1b65d71923c3b80",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 142,
+  "bytes": 14110297,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing AGENTS/user authorization for necessary source/evidence assessment by the established Claude/Grok reviewers within continued bounded research. Local actions implement the already approved two-packet method.",
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Two local Gaussian weak actions from16saved native cells; pressure/full action pending",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": false,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "noCompletePacketAction": true,
+    "localActions": 2,
+    "noPressureAction": true
+  },
+  "noAutomaticRetry": true
+}

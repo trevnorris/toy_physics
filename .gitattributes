@@ -142,3 +142,6 @@ research/pde_ledger_v3/_measurements/S11c_d_transverse_face_right_finish_inputs.
 research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_files.json -diff
 research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_continue_files.json -diff
 research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight_result_record.json -diff
+
+# Complete fixed-inner comparison ledger; keep the concise status/source reviewable.
+research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_result_record.json -diff

@@ -1,0 +1,38 @@
+{
+  "boundedInstrumentAuthorized": true,
+  "automaticScientificRetry": false,
+  "authority": "Standing user and AGENTS continued bounded research: local contribution required by cleared two-packet method. No routine stage approval needed.",
+  "scienceExecutionsAuthorized": 1,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Two local Gaussian weak actions from16saved native cells; pressure/full action pending",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": false,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "noCompletePacketAction": true,
+    "localActions": 2,
+    "noPressureAction": true
+  },
+  "methodClearanceIsNotBuildClearance": true,
+  "noDeadline": true,
+  "futureEvaluatorRequiresConcreteBuild": true
+}

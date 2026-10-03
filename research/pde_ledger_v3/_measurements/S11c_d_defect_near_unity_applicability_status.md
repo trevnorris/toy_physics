@@ -245,3 +245,10 @@ No READY gate exists. Preflight completion will not itself establish a packet
 value: the future evaluator still needs independent Fourier/action routes,
 collision quadrature, local tails, full summand-unit joins and actual numerical
 control responses. The established reviewer pair is the next authorized step.
+The preflight build packet was submitted from 15ee1683. Both actual reviewer
+commands are running on separate private copies; all 243 files per reviewer
+and 232 source pins match. The local completion hook is armed for this session.
+No unfinished report was read or shared. The initial read-only command inspector
+incorrectly discarded a legitimate empty CLI argument; the corrected inspector
+preserved it and verified the complete ordered argument tail. Neither review
+was changed or restarted. Joint adjudication will resume from the event hook.

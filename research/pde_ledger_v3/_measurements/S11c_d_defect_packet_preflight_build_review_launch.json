@@ -1,0 +1,159 @@
+{
+  "status": "BOTH_INDEPENDENT_BUILD_REVIEWERS_STARTED_HOOK_ARMED",
+  "recordedUtc": "2026-10-03T16:42:24.715155+00:00",
+  "preparedCommit": "15ee1683",
+  "packetSha256": "d4679660d3fd3c1926e244072e3837b340978bcb680c70e28a5f4494c95613de",
+  "archiveSha256": "13b7a40ed8b2952eaedf70609159f6af43f50498b834ce7467f31865f5d81138",
+  "launch": {
+    "jobPid": 491022,
+    "watcherPid": 491023,
+    "packetSha256": "d4679660d3fd3c1926e244072e3837b340978bcb680c70e28a5f4494c95613de",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hookStatus": "waiting",
+  "hostProcessEvidence": {
+    "coordinator": {
+      "pid": 491022,
+      "argv": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/preflight-build-review/review_run.py"
+      ],
+      "hostExists": true
+    },
+    "watcher": {
+      "pid": 491023,
+      "argv": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/codex_job_watch.py",
+        "--pid",
+        "491022",
+        "--thread",
+        "01a0e01b-ef84-7192-817f-584cda5d339b",
+        "--directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/preflight-build-review/completion-watcher",
+        "--message-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/preflight-build-review/completion_message.txt",
+        "--error-log",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/preflight-build-review/issues.log"
+      ],
+      "hostExists": true
+    },
+    "claude": {
+      "pid": 491033,
+      "sessionId": "83aa4ccf-c2e3-4f2d-a040-f4932473754e",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "83aa4ccf-c2e3-4f2d-a040-f4932473754e"
+      ],
+      "actualArgv": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "83aa4ccf-c2e3-4f2d-a040-f4932473754e"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/preflight-build-review/claude/work",
+      "noReportRead": true
+    },
+    "grok": {
+      "pid": 491034,
+      "sessionId": "2f276ae8-0762-4b38-a0da-b8fcb99c579e",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/preflight-build-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/preflight-build-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "2f276ae8-0762-4b38-a0da-b8fcb99c579e"
+      ],
+      "actualArgv": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/preflight-build-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/preflight-build-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "2f276ae8-0762-4b38-a0da-b8fcb99c579e"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/preflight-build-review/grok/work",
+      "noReportRead": true
+    }
+  },
+  "privateFilesChecked": {
+    "claude": 243,
+    "grok": 243
+  },
+  "sourcePinsChecked": 232,
+  "newScientificExecutions": 0,
+  "reportsReadOrShared": false,
+  "noDeadline": true,
+  "noAutomaticRetry": true,
+  "completionHookContinuesExistingSession": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "inspectionToolingNote": {
+    "earlierAttempt": "The read-only cmdline inspector discarded empty argv entries and refused the legitimate --setting-sources empty-string argument. No review failed or was retried.",
+    "correction": "Preserve internal empty argv entries and remove only the trailing NUL. Compare the complete ordered argument tail, including empty strings.",
+    "priorError": "AssertionError: claude argv --setting-sources empty value missing only from the inspectors filtered list",
+    "reviewSourcesChanged": false
+  }
+}

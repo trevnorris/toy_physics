@@ -516,3 +516,14 @@ Launcher metadata verification passed without scientific imports/restoration.
 No result is implied by readiness. Use 4 GiB native/cgroup, zero swap, one
 assigned CPU/thread, 32 tasks, 4 GiB host reserve and no deadlines. The existing
 completion hook must arm before scientific start.
+
+
+The bounded inner bank is **running** from readiness **ca0969f6**. The hook
+armed before stage start. One actual startup inspection verified the guard
+and supervisor commands, 4 GiB native and cgroup limits, zero swap, 32 tasks,
+one thread on assigned CPU 15, aggregate 16 GiB pool and desktop priority.
+Systemd reports RuntimeMaxUSec=infinity and Restart=no. All 379 snapshots
+and fourteen additional identity copies joined their pinned source bytes.
+No numerical result is accepted yet. Logs and full operands remain durable;
+the local completion hook will request inspection, without model polling.
+See `S11c_d_defect_packet_inner_execution_launch.json`.

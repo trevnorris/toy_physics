@@ -425,3 +425,10 @@ The substantive revised packet has 383 files / 41,697,704 bytes, packet SHA256
 No old peer report or commentary is included. The previous literal NEEDS/CLEAR
 pair remains at **cc7e37d3**. No scientific worker or READY gate exists; independent
 assessment of this numerical and validation correction is the next gate.
+
+Both corrected-build reviews are running from **4af65347**. The local completion
+hook was armed first; actual host reviewer sessions and both private 383-file
+copies were checked once. No partial report was read and no scientific worker
+was launched. The unchanged event hook will request adjudication after both
+attempts finish, without model polling. Startup receipts are in
+`S11c_d_defect_packet_inner_build_review_r2_launch.json`.

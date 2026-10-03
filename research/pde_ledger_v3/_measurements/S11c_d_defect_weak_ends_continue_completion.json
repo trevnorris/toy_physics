@@ -1,0 +1,301 @@
+{
+  "status": "SCOPED_TRANSLATED_WEAK_END_EVIDENCE_SUPPORTED_WITH_LATE_REPORTING_FAILURE",
+  "recordedUtc": "2026-10-03T09:27:02.506380+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01",
+  "preparedCommit": "a5feba42",
+  "launchCommit": "7bc0a60c",
+  "priorFailureCommit": "ac9b919a",
+  "workerSha256": "c7c97726fd3e044124e04f16f68753e0b8fb12ed3c8bed5a5a64572d07f2b999",
+  "gateSha256": "cb5b71952e7eb7349119fe44a562836c74b382a0073c453d13b6fb0e6daa94b7",
+  "manifestSha256": "fa568ee619174cef91a425bc078fecfe9876211b80f932371565375198a7acbf",
+  "inspectionChecks": 32181,
+  "allInspectionChecksPassed": true,
+  "cleanProcessAcceptance": false,
+  "strictStderrEmpty": false,
+  "stdoutChecksIdentity": false,
+  "summaryJsonValid": false,
+  "lateFailure": {
+    "classification": "Final summary JSON encoding after complete journal return, evidence receipt and posthashes. No scientific operation failed in this continuation.",
+    "stderr": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_continue.py\", line 239, in <module>\n    if __name__=='__main__':sys.exit(main())\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_continue.py\", line 236, in main\n    result.update(wallSeconds=time.monotonic()-started,scientificAcceptance=False);save(args.out/'checks.json',result);sys.stdout.write((args.out/'checks.json').read_text())\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_continue.py\", line 37, in save\n    json.dump(value, f, indent=2, allow_nan=False)\n  File \"/usr/lib/python3.10/json/__init__.py\", line 179, in dump\n    for chunk in iterable:\n  File \"/usr/lib/python3.10/json/encoder.py\", line 431, in _iterencode\n    yield from _iterencode_dict(o, _current_indent_level)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 405, in _iterencode_dict\n    yield from chunks\n  File \"/usr/lib/python3.10/json/encoder.py\", line 405, in _iterencode_dict\n    yield from chunks\n  File \"/usr/lib/python3.10/json/encoder.py\", line 438, in _iterencode\n    o = _default(o)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 179, in default\n    raise TypeError(f'Object of type {o.__class__.__name__} '\nTypeError: Object of type Zero is not JSON serializable\n",
+    "stderrSha256": "053d08aaab4626483de05b66522d5f996dade741e8917f7ccc3cae0f4ef4f1cf",
+    "partialChecksSha256": "bfec6b03a3afbec3346e83dd69e4aaa3762364de6509ef707a7a3257881fcb2a",
+    "partialChecksBytes": 358,
+    "exitCode": 1,
+    "originalFilesRewritten": false,
+    "scientificRetryNeeded": false
+  },
+  "scopedEvidenceAccepted": true,
+  "acceptanceBasis": "Actual completed operation return plus inspected operands, eight new literal zero returns, four finite nonzero scalar movements in three full-cell controls, preserved previously inspected prefix, intact sources/copies and resources. Not exit status or a reconstructed success receipt.",
+  "durableResultReceipt": {
+    "path": "saved-weak-end-controls-return.json",
+    "sha256": "a44307309729b3dc5582cba9f27761f65439fef8b5f24caf3312d24dce45e777",
+    "bytes": 2020
+  },
+  "durableResult": {
+    "executionStatus": "COMPLETE_PENDING_INSPECTION",
+    "allChecksPassed": true,
+    "status": "SOURCE_JOINED_TRANSLATED_RETAINED_WEAK_ENDS",
+    "localCells": 400,
+    "pressureFields": 34,
+    "addresses": 13260,
+    "endSymbolCells": 200,
+    "orderedGradeTriples": 16,
+    "controls": 3,
+    "testSpace": "S(R)^5 x S(R)^5, complex bilinear",
+    "heights": {
+      "minus": {
+        "text": "0",
+        "srepr": "Integer(0)"
+      },
+      "plus": {
+        "text": "1/2",
+        "srepr": "Rational(1, 2)"
+      }
+    },
+    "pairing": "B_end,g(v,u)=2pi integral hat(v)(-p)^T E_end,g(p) hat(u)(p) dp",
+    "scope": {
+      "frequency": 3,
+      "anchoring": "LAB_HELD",
+      "density": "RHO4_CONSTANT",
+      "drain": 0,
+      "edges": [
+        "1/5",
+        "1/10"
+      ],
+      "effectiveCs": [
+        1,
+        2
+      ],
+      "internalMomenta": "all real with inherited polynomial weights",
+      "target": "Translated retained Schwartz bilinear weak ends and formal diagonal symbols",
+      "independentGrades": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "sourceFrequencyContinued": false,
+      "responseRegularization": "auxiliary only; new symbols at real3",
+      "noEvaluatedResponseIntegral": true,
+      "noFiniteSolve": true,
+      "noProductionOverwrite": true,
+      "noDefectSweep": true
+    },
+    "analyticArgument": "Assessed Schwartz convergence, uniform translated response bounds, Riemann-Lebesgue and PV/Dirichlet limits; finite checks are not machine functional analysis.",
+    "localPressureCoefficientFunctionsReplayed": false,
+    "integralEvaluated": false,
+    "finiteMatrixBuilt": false,
+    "scatteringOrCurrent": false,
+    "loss": false,
+    "oldModeAcceptance": false,
+    "decayRateOrFiniteBoxError": false,
+    "primitiveCalibration": false,
+    "drain": false,
+    "savedEvidenceContinuation": true,
+    "priorCompleteOperationsRestored": 34,
+    "priorLiteralZeroReturnsRestored": 333,
+    "priorSavedCellsReused": 200,
+    "completedPrefixReplayed": false
+  },
+  "controls": [
+    {
+      "kind": "omit-height-contact",
+      "addressId": 8034,
+      "row": "THETA_BALANCE",
+      "field": "e_W",
+      "grade": [
+        1,
+        0
+      ],
+      "face": "plus",
+      "slot": "pressure",
+      "movements": {
+        "plus": {
+          "real": "387/4926800",
+          "imaginary": "-159/1231700",
+          "exactReconstructionZero": true,
+          "fullCellMovementZeroResidual": true
+        }
+      },
+      "interpretation": "formal coefficient sensitivity, not computed field or power"
+    },
+    {
+      "kind": "reverse-translation-phase",
+      "addressId": 8034,
+      "row": "THETA_BALANCE",
+      "field": "e_W",
+      "grade": [
+        1,
+        0
+      ],
+      "face": "plus",
+      "slot": "pressure",
+      "movements": {
+        "minus": {
+          "real": "-387/2463400",
+          "imaginary": "159/615850",
+          "exactReconstructionZero": true,
+          "fullCellMovementZeroResidual": true
+        },
+        "plus": {
+          "real": "387/2463400",
+          "imaginary": "-159/615850",
+          "exactReconstructionZero": true,
+          "fullCellMovementZeroResidual": true
+        }
+      },
+      "interpretation": "formal coefficient sensitivity, not computed field or power"
+    },
+    {
+      "kind": "omit-lower-normal-sign",
+      "addressId": 10062,
+      "row": "THETA_BALANCE",
+      "field": "e_W",
+      "grade": [
+        1,
+        0
+      ],
+      "face": "minus",
+      "slot": "normal",
+      "movements": {
+        "plus": {
+          "real": "-387/1231700",
+          "imaginary": "159/307925",
+          "exactReconstructionZero": true,
+          "fullCellMovementZeroResidual": true
+        }
+      },
+      "interpretation": "formal coefficient sensitivity, not computed field or power"
+    }
+  ],
+  "actualTruePredicate": {
+    "csSquared": {
+      "text": "180/101",
+      "srepr": "Rational(180, 101)"
+    },
+    "lowerEndpoint": 1,
+    "upperEndpoint": 4,
+    "lowerComparison": {
+      "text": "True",
+      "srepr": "true"
+    },
+    "upperComparison": {
+      "text": "True",
+      "srepr": "true"
+    },
+    "lowerType": "sympy.logic.boolalg.BooleanTrue",
+    "upperType": "sympy.logic.boolalg.BooleanTrue",
+    "oldFinalComparisonIsPythonTrue": false,
+    "exactTrueAtom": {
+      "text": "True",
+      "srepr": "true"
+    },
+    "lowerAccepted": true,
+    "upperAccepted": true,
+    "savedDispersion": {
+      "name": "control-outgoing-physical-dispersion",
+      "left": {
+        "text": "4",
+        "srepr": "Integer(4)"
+      },
+      "right": 4,
+      "cancelled": {
+        "text": "0",
+        "srepr": "Integer(0)"
+      }
+    },
+    "originalPredicateSource": "require(cs2>1 and cs2<4,'control speed in scoped interval')"
+  },
+  "cost": {
+    "workerSeconds": null,
+    "workerSecondsWhyUnavailable": "Final checks persistence failed before wallSeconds was serialized; no invented exact worker duration.",
+    "supervisedSeconds": 54.14989111595787,
+    "guardSeconds": 54.26952848187648,
+    "peakBytes": 701849600,
+    "swapBytes": 0,
+    "memoryEvents": 0,
+    "resourceSamples": 29
+  },
+  "coverage": {
+    "restoredCompleteStages": 34,
+    "restoredLiteralZeros": 333,
+    "reusedAddressReturns": 13260,
+    "reusedEndSymbolCells": 200,
+    "newCompleteStages": 1,
+    "newLiteralZeros": 8,
+    "formalControls": 3,
+    "scalarControlMovements": 4,
+    "newEvidenceRecords": 28,
+    "newEvidenceKinds": {
+      "control-candidate-input": 4,
+      "constant-input": 4,
+      "constant-components": 4,
+      "zero-input": 8,
+      "zero-return": 8
+    },
+    "sourcePosthashes": 1728,
+    "sourceSnapshots": 1212,
+    "priorCopies": 516,
+    "artifacts": 14,
+    "files": 538,
+    "bytes": 423449763
+  },
+  "bounds": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": [
+      1,
+      2
+    ],
+    "internalMomenta": "all real with inherited polynomial weights",
+    "target": "Translated retained Schwartz bilinear weak ends and formal diagonal symbols",
+    "independentGrades": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "sourceFrequencyContinued": false,
+    "responseRegularization": "auxiliary only; new symbols at real3",
+    "noEvaluatedResponseIntegral": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true
+  },
+  "pairedContinuationBuildClearance": false,
+  "originalMethodBuildPairedClearancePreserved": true,
+  "noScientificRestorationDuringInspection": true,
+  "newScientificJobLaunched": false,
+  "protectedSuffixSha256": "f01024512c9a028e7e524e5a95b5c455be42e125d10c36f94e20493109b013c2",
+  "next": "Use complete retained translated-end symbols to propose the next bounded source-based end-symbol/transverse comparison under applicable assessment. Do not replay controls to repair final serialization; preserve reporting failure. No defect sweep or old mode acceptance."
+}

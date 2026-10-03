@@ -234,6 +234,49 @@ def saved_normalization_joins(m,J,D,raw,cells,context,p,params):
     result={'actualNativeWitnesses':witnesses,'localCellsJoined':len(decoded),'endCellsJoined':len(cells),'inheritedEndpointValuesRecomputed':False,'inheritedLocalOrPressureProducerCalled':False,'scope':'Actual temporal/spatial native epsilon witnesses and all local-cell/end-symbol ancestry joins; pressure normalization remains inherited from the saved source/consumer proofs, not an independent new pressure derivation.'}
     J.emit('saved-normalization-conclusion',result);return result
 
+def merge_native_dimensions(base,atoms,registries,J):
+    """Restore omitted generated units; never infer, guess or exempt a symbol."""
+    dimensions={name:tuple(unit) for name,unit in base.items()};added={}
+    for atom in sorted(atoms,key=lambda s:s.name):
+        if atom.name in dimensions:continue
+        matches=[{'registry':name,'symbol':next(k for k in values if k==atom),'unit':values[atom]}
+                 for name,values in registries.items() if atom in values]
+        J.emit('unit-registry-'+atom.name,{'nativeSymbol':atom,'savedMatches':matches,'staticTableMissing':True})
+        require(atom.name.startswith('gamma_'),'unaccounted non-generated native unit '+atom.name)
+        require(bool(matches),'missing actual saved generated unit '+atom.name)
+        units=[]
+        for match in matches:
+            unit=match['unit']
+            require(isinstance(unit,(tuple,list)) and len(unit)==3,'saved generated unit vector')
+            require(all((type(v) is int) or (getattr(v,'is_Rational',False) is True) for v in unit),'saved generated exact rational unit')
+            units.append(tuple(unit))
+        require(all(v==units[0] for v in units),'conflicting actual saved generated unit '+atom.name)
+        dimensions[atom.name]=units[0];added[atom.name]=matches
+    require(all(a.name in dimensions for a in atoms),'complete actual native unit coverage')
+    J.emit('unit-registry-merged',{'staticEntries':len(base),'generatedEntries':added,'completeRequiredSymbols':[a.name for a in sorted(atoms,key=lambda s:s.name)],'newDimensionInference':False})
+    return dimensions
+
+
+def restored_unit_registries(m,J,raw,restored):
+    registries={}
+    for name,origin in m['unitRegistryOrigins'].items():
+        checks=raw[origin['checksAlias']];pin=m['originalPackets'][name]
+        require(checks['objectsSha256']==pin['sha256'],'actual unit registry object receipt '+name)
+        require(checks['provenance']['producerSources']['scripts/S11c_b_exports.py']==sha(m['bSource']),'actual unit registry native slab source '+name)
+        expected=checks.get('sourceFiles',checks['provenance'].get('sourceFiles',{}))
+        require(expected[origin['producerRelativePath']]==sha(origin['producerSource']),'actual unit registry producer snapshot '+name)
+        body=Path(origin['producerSource']).read_text()
+        contract=source_fragment(body,tuple(origin['scope']),origin['statement'])
+        if name.endswith('Pairing'):
+            packet,registry=restored[name]
+            J.join('unit-registry-'+name+'-source-summary',packet['summary']['sourceFiles'],checks['sourceFiles'])
+        else:registry=restored[name]['knownDimensions']
+        require(isinstance(registry,dict),'actual saved unit registry dictionary '+name)
+        registries[name]=registry
+        J.emit('unit-registry-'+name+'-origin',{'objectReceipt':pin,'sourceChecks':checks,'producerContract':contract,'registryEntries':len(registry),'sourceReexecuted':False})
+    return registries
+
+
 def exact_structure(a,b):
     if type(a) is not type(b):return False
     if isinstance(a,dict):return a.keys()==b.keys() and all(exact_structure(a[k],b[k]) for k in a)
@@ -316,9 +359,14 @@ def verify_gate(path,manifest_path,m):
         require(sha(gate[key])==gate[key+'Sha256'],'gate '+key)
     require(gate['launcher']==m['launcher'] and gate['buildReviewRecord']==m['reviewRecordWillBe'] and gate['authority']==m['executionAuthority'],'actual manifest routes')
     review=json.loads(Path(gate['buildReviewRecord']).read_text())
-    require(review['independentBuildClearance'] is True and gate['independentBuildClearance'] is True and review['allChecksPassed'] is True,'independent concrete build assessment')
-    for name in ('claude','grok'):require(review['reports'][name]['literalVerdict']=='CLEAR FOR THIS BOUNDED END-UNIFORM BUILD','literal build verdict')
-    for key in ('workerSha256','manifestSha256','launcherSha256','sharedGuardSha256','supervisorSha256'):require(review[key]==gate[key],'build identity '+key)
+    require(review['independentBuildClearance'] is False and gate['independentBuildClearance'] is False and review['allChecksPassed'] is True,'literal review disposition')
+    require(review['reports']['claude']['literalVerdict']=='NEEDS REVISION' and review['reports']['grok']['literalVerdict']=='CLEAR FOR THIS BOUNDED END-UNIFORM BUILD','preserved build verdicts')
+    repair=json.loads(Path(gate['toolingRepairRecord']).read_text())
+    require(gate['toolingRepairRecord']==m['toolingRepairRecord'] and sha(gate['toolingRepairRecord'])==m['sourcePins'][gate['toolingRepairRecord']]==gate['toolingRepairRecordSha256'],'exact tooling repair record')
+    require(gate['localToolingExecutionAuthority'] is True and repair['localToolingExecutionAuthority'] is True and repair['independentBuildClearance'] is False,'standing tooling authority without author CLEAR')
+    require(repair['reviewRecordSha256']==gate['buildReviewRecordSha256'] and repair['reviewedPacketSha256']==review['packetSha256'],'actual preserved review relation')
+    require(repair['workerSha256']==gate['workerSha256'] and repair['launcherSha256']==gate['launcherSha256'] and repair['dimensionPredicateASTUnchanged'] is True and repair['scientificComparisonASTUnchanged'] is True,'tested exact metadata-loading correction')
+    require(repair['testsPassed']>0 and repair['equationsChanged'] is False and repair['scienceRunsSoFar']==0,'tooling-only preparation')
     method=json.loads(Path(m['methodRecord']).read_text())
     require(method['jointIndependentMethodClearance'] is True and method['methodSha256']==sha(m['methodPath'])==review['methodSha256'],'actual cleared method')
     authority=json.loads(Path(gate['authority']).read_text())
@@ -494,7 +542,8 @@ def run_science(m,J,ns,codec):
         S=sp.ImmutableMatrix([[0,0,1,0,0],[1,0,0,0,0],[0,1,0,0,0],[0,0,0,1,0],[0,0,0,0,1]])
         require(S.det()==1 and S.T*S==sp.eye(5),'proper orthonormal chart map')
         # Dimensions are checked on unbound native operands, not guessed after binding.
-        dimensions=contracts['dimensions'];zero_dim=(sp.S.Zero,)*3
+        registries=restored_unit_registries(m,J,raw,restored)
+        dimensions=merge_native_dimensions(contracts['dimensions'],atoms,registries,J);zero_dim=(sp.S.Zero,)*3
         def dimension(expr):
             if expr.is_Number or expr==sp.I:return zero_dim
             if expr.is_Symbol:

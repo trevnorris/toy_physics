@@ -1,0 +1,31 @@
+{
+  "status": "TESTED_LOCAL_UNIT_REGISTRY_LOADING_REPAIR",
+  "recordedUtc": "2026-10-03T13:01:22.989071+00:00",
+  "reviewedPacketSha256": "1475fc188462760ca67cf3a6137870c235f8f76dfbbe2eeb891269b1d8342efe",
+  "reviewRecordSha256": "7a6faaa2bc6851010acb744223c6b28c2d23c99ad15cc75f3333a22df1bcf71b",
+  "reviewedWorkerSha256": "578ca96df98ee2bee26800396f93a46ef6dde91caa97e777c73f68b161d3ad87",
+  "workerSha256": "4449a61cda79b075d1e182cb5b6ada0c9cac52398ebbb2356496657911880d4f",
+  "launcherSha256": "3b72934a078688c4cec36ee9502238e6369dcfaf73bd2974c319530526d00a38",
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS BOUNDED END-UNIFORM BUILD"
+  },
+  "independentBuildClearance": false,
+  "localToolingExecutionAuthority": true,
+  "authority": "Standing user and AGENTS direction allows tested pure tooling corrections without another physics-review cycle; one bounded comparison after readiness. No automatic retry.",
+  "rationale": "The existing unit predicate requires generated gamma units. The static table omits them, while the same already-restored original end-source/pairing returns contain the native complete registries. Supply only exact-symbol saved gamma entries; persist their original receipt/source joins; require exact rational vectors and agreement of every found entry. No missing or conflicting unit is accepted and no dimension is inferred.",
+  "equationsChanged": false,
+  "methodChanged": false,
+  "physicalInputsChanged": false,
+  "dimensionPredicateASTUnchanged": true,
+  "scientificComparisonASTUnchanged": true,
+  "ASTComparison": "The entire run_science AST equals reviewed after removing one restored-registry assignment and restoring the original dimensions table assignment. The dimension function AST is identical.",
+  "all19PriorJSONAnd58OpaqueReceiptsUnchanged": true,
+  "newJSONReceiptInputs": 4,
+  "scientificPayloadRestoredInPreparation": false,
+  "scienceRunsSoFar": 0,
+  "testsPassed": 44,
+  "testsScope": "Stdlib source/metadata/stand-ins; reproduces old gamma refusal, exercises the actual unchanged dimension walker over all actual native symbol names using explicitly synthetic saved dimensions, rejects missing/conflicting/inexact/assumption-mismatched values, joins actual four producer receipts and ASTs. No runtime science proof.",
+  "newIndependentReview": false,
+  "newExternalPacket": false
+}

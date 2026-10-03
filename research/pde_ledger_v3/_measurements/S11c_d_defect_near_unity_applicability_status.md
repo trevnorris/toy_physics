@@ -55,8 +55,15 @@ classifier, unit and binding failures preserve SOURCE_MAP_UNRESOLVED. Equations,
 physical inputs and method are unchanged. All 18 completed uniform operations
 and 58 opaque blobs remain reused without their functions. Thirty-seven stdlib
 metadata/stand-in tests pass; this is preparation evidence, not scientific
-acceptance. Fresh independent build assessment is required before a READY gate
-or execution. No old-current transfer, producer replay or defect sweep.
+acceptance. The following pair returned literal Claude NEEDS REVISION / Grok CLEAR at
+3803e3fb. Both accepted normalization; Claude found that the static unit table
+omitted the generated gamma units already present in saved native registries.
+The tested local correction restores exact symbol/unit entries from the same
+four accepted end-source/pairing returns, with original object and frozen source
+receipts, and refuses missing, conflicting or inexact units. No dimension is
+inferred. The unit predicate and comparison formula ASTs are unchanged; 44
+stdlib tests pass. A fresh execution gate records local tooling authority and
+independentBuildClearance=false; no new independent CLEAR is claimed. No old-current transfer, producer replay or defect sweep.
 
 Strict rest bulk, LAB_HELD/RHO4_CONSTANT, one tanh profile and saved direction
 remain explicit. Drain flow, primitive speed derivation, full Green/FORM/A11/A12

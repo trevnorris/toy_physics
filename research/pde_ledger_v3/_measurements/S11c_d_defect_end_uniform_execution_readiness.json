@@ -1,0 +1,42 @@
+{
+  "status": "READY_FOR_ONE_BOUNDED_COMPARISON_WITH_TESTED_UNIT_METADATA_REPAIR",
+  "utc": "2026-10-03T13:02:35.735868+00:00",
+  "gatePath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_gate.json",
+  "gateSha256": "e885903e868743cd33693981524390bb4cf266d2e129574391d519cd1bf746e1",
+  "workerSha256": "4449a61cda79b075d1e182cb5b6ada0c9cac52398ebbb2356496657911880d4f",
+  "manifestSha256": "40c28c3b5bc4c2e70dfdc595b23475c6c237f4914fb49773de338a006d81eb81",
+  "launcherSha256": "3b72934a078688c4cec36ee9502238e6369dcfaf73bd2974c319530526d00a38",
+  "sourcePins": 63,
+  "savedJSON": 23,
+  "oldOpaqueBlobs": 58,
+  "completeOldOperations": 18,
+  "allSourceAndSavedHashesMatch": true,
+  "stdlibLaunchWorkerGatePassed": true,
+  "literalBuildVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS BOUNDED END-UNIFORM BUILD"
+  },
+  "independentBuildClearance": false,
+  "localToolingExecutionAuthority": true,
+  "runtimeResultAccepted": false,
+  "scientificRunStarted": false,
+  "scientificPayloadRestoredInPreparation": false,
+  "testsPassed": 44,
+  "hostPreflight": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/execution-preparation/host-preflight.json",
+  "hostPreflightSha256": "ccf1317dc99d7a9f7bf43ecdc2cd01da63472d453daeee7a783f513be396a37d",
+  "noDeadline": true,
+  "resourceLimits": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "hostReserveBytes": 4294967296,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "tasksMax": 32,
+    "nativeThreads": 1,
+    "priority": "desktop-managed",
+    "durationLimits": null
+  },
+  "noAutomaticRetry": true,
+  "noOldFunctionsCalled": true,
+  "newTrackedGeneratedFilesOver1MiB": []
+}

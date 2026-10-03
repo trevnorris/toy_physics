@@ -5,7 +5,7 @@ from fractions import Fraction
 from pathlib import Path
 from types import SimpleNamespace
 M=Path(__file__).resolve().parent;P=M/'S11c_d_defect_end_uniform.py';source=P.read_text();tree=ast.parse(source)
-names=('require','convolution','rotated_name','definitions','exact_structure','save','sha','Evidence','source_fragment','SourceStage','SourceMapUnresolved','attribution_usable','local_key','normalization_routes')
+names=('require','convolution','rotated_name','definitions','exact_structure','save','sha','Evidence','source_fragment','SourceStage','SourceMapUnresolved','attribution_usable','local_key','normalization_routes','merge_native_dimensions')
 class Basic:pass
 class Matrix:pass
 class FunctionClass:pass
@@ -178,5 +178,51 @@ class Checks(unittest.TestCase):
   main=next(t for t in blocks if "'native-source-chart-units'" in t)
   self.assertIn('rotated_name(',main);self.assertIn('rowunits =',main);self.assertIn("'actual native unit schema'",main)
   raw=next(t for t in blocks if "'-native-source-binding-units'" in t);self.assertIn('originjoin =',raw);self.assertIn("'strong native row/field units'",raw)
+
+ def unit_fixture(self):
+  class Atom:
+   is_Number=False;is_Symbol=True
+   def __init__(self,name):self.name=name
+  class Journal:
+   def __init__(self):self.records=[]
+   def emit(self,n,v):self.records.append((n,v))
+  return Atom,Journal
+ def test_old_dimension_walker_refuses_actual_gamma_atom(self):
+  Atom,Journal=self.unit_fixture();fn=next(n for n in ast.walk(tree) if isinstance(n,ast.FunctionDef) and n.name=='dimension')
+  scope={'sp':SimpleNamespace(I=complex(0,1),Rational=Fraction),'dimensions':{'epsilon_shape':(0,0,0)},'zero_dim':(0,0,0),'require':ns['require']}
+  exec(compile(ast.Module(body=[fn],type_ignores=[]),'unchanged-unit-predicate','exec'),scope)
+  with self.assertRaisesRegex(ValueError,'native dimensions gamma_'):scope['dimension'](Atom('gamma_s11cb_mu_r_bg_05'))
+ def test_unit_merge_covers_actual_names_without_guessing_values(self):
+  Atom,Journal=self.unit_fixture();base=json.loads(Path(MAN['savedInputs']['native/wave-profile.json']['path']).read_text())['dimensions'];names=set()
+  for row in ('U0','U1','U2','THETA_BALANCE','E_W_BALANCE'):
+   raw=json.loads(Path(MAN['savedInputs']['native/'+row+'.json']['path']).read_text());names.update(n.args[0].value for n in ast.walk(ast.parse(raw['fullConstructor'],mode='eval')) if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='Symbol')
+  missing=names-set(base);self.assertTrue(missing);self.assertTrue(all(n.startswith('gamma_') for n in missing))
+  atoms=[Atom(n) for n in sorted(names)];units={a:(i+1,-2,3) for i,a in enumerate(atoms) if a.name in missing};j=Journal()
+  merged=ns['merge_native_dimensions'](base,atoms,{'saved1':units,'saved2':dict(units)},j)
+  fn=next(n for n in ast.walk(tree) if isinstance(n,ast.FunctionDef) and n.name=='dimension');scope={'sp':SimpleNamespace(I=complex(0,1),Rational=Fraction),'dimensions':merged,'zero_dim':(0,0,0),'require':ns['require']};exec(compile(ast.Module(body=[fn],type_ignores=[]),'unchanged-unit-predicate','exec'),scope)
+  for a in atoms:self.assertEqual(scope['dimension'](a),tuple(units[a] if a.name in missing else base[a.name]))
+  self.assertEqual(len(j.records),len(missing)+1)
+ def test_unit_merge_missing_or_assumption_mismatch_refuses(self):
+  Atom,Journal=self.unit_fixture();a=Atom('gamma_x');b=Atom('gamma_x')
+  for registry in ({},{b:(1,2,3)}):
+   with self.assertRaisesRegex(ValueError,'missing actual saved'):ns['merge_native_dimensions']({},[a],{'saved':registry},Journal())
+ def test_unit_merge_conflicting_or_inexact_refuses(self):
+  Atom,Journal=self.unit_fixture();a=Atom('gamma_x')
+  with self.assertRaisesRegex(ValueError,'conflicting'):ns['merge_native_dimensions']({},[a],{'left':{a:(1,2,3)},'right':{a:(2,2,3)}},Journal())
+  for v in ((1.0,2,3),(True,2,3),(1,2),None):
+   with self.assertRaises(ValueError):ns['merge_native_dimensions']({},[a],{'saved':{a:v}},Journal())
+ def test_no_unknown_non_gamma_exemption(self):
+  Atom,Journal=self.unit_fixture();a=Atom('unknown_material')
+  with self.assertRaisesRegex(ValueError,'non-generated'):ns['merge_native_dimensions']({},[a],{'saved':{a:(1,2,3)}},Journal())
+ def test_actual_saved_unit_registry_receipts_and_source_routes(self):
+  for name,o in MAN['unitRegistryOrigins'].items():
+   d=json.loads(Path(MAN['savedInputs'][o['checksAlias']]['path']).read_text());self.assertEqual(d['objectsSha256'],MAN['originalPackets'][name]['sha256'])
+   source=Path(o['producerSource']).read_text();ns['source_fragment'](source,o['scope'],o['statement'])
+   self.assertEqual(d['provenance']['producerSources']['scripts/S11c_b_exports.py'],ns['sha'](MAN['bSource']))
+ def test_dimension_predicate_and_comparison_functions_unchanged(self):
+  old=ast.parse((Path(MAN['worker']).parents[3]/'_scratch/s11c/s11c-defect-end-uniform-20261003/build-review-r3/packet/worker.py').read_text())
+  for name in ('dimension','polynomial','coefficients','wave_test','finite_constant','inspect_matrix','saved_normalization_joins'):
+   a=next(n for n in ast.walk(old) if isinstance(n,ast.FunctionDef) and n.name==name);b=next(n for n in ast.walk(tree) if isinstance(n,ast.FunctionDef) and n.name==name)
+   self.assertEqual(ast.dump(a,include_attributes=False),ast.dump(b,include_attributes=False))
 
 if __name__=='__main__':unittest.main()

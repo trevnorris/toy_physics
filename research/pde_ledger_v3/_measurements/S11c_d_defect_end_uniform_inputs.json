@@ -148,6 +148,26 @@
       "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/operation-index.json",
       "sha256": "20aaf462a9eade17210a16438bba4902621f07e58b5cdb4d70b78f06cfbd9d37",
       "bytes": 75435
+    },
+    "units/LEFTNativeSource-checks.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_left/checks.json",
+      "sha256": "d410c836fa2bcdf35e55054db8aec079ddf6ff23194869d785abd901b94e2f54",
+      "bytes": 7395
+    },
+    "units/RIGHTNativeSource-checks.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_right/checks.json",
+      "sha256": "feba65dbe23d961994b740f32ef830a3408e1dbe7b880d52ea0120480f8d3564",
+      "bytes": 7396
+    },
+    "units/LEFTPairing-checks.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left/checks.json",
+      "sha256": "8c771b0aa43ef673da49d6910102756f79692731acb3bef581075d525120b562",
+      "bytes": 8522
+    },
+    "units/RIGHTPairing-checks.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right/checks.json",
+      "sha256": "9eefd3de0e952dd4250e4f2d4a63eed6d784e62f24bc270d7a640a1ef98f3e25",
+      "bytes": 8527
     }
   },
   "originalPackets": {
@@ -860,8 +880,8 @@
     ]
   },
   "sourcePins": {
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py": "578ca96df98ee2bee26800396f93a46ef6dde91caa97e777c73f68b161d3ad87",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_launch.py": "545762eef9a689cea905e72583d805cdcb6ce308543166b0f8158b6634a77fab",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py": "4449a61cda79b075d1e182cb5b6ada0c9cac52398ebbb2356496657911880d4f",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_launch.py": "3b72934a078688c4cec36ee9502238e6369dcfaf73bd2974c319530526d00a38",
     "/var/projects/toy_physics/AGENTS.md": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_execution_authority.json": "d124d88b1232125db213b94297805f5c20cc8c66aa09f39fece3bc1db5a63418",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_method.md": "fa899606cf76f7af9e09ee1fbad3a0a6615b87523f92f8de2a2f3f1480ea86d1",
@@ -908,7 +928,21 @@
     "/var/projects/toy_physics/_scratch/s11c/s11c-uniform-source-20260919/production/complete/common.pickle": "f05e16309a6b1d2aa841703092be69408f2a57247aca020ea92383d011a38ebb",
     "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_left/objects.pickle": "f3409cc92263880f0d0e2c941f1884ed5ae0aa984f8bf6ea97b169060edcd51d",
     "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_right/objects.pickle": "56825f670042c21e56ac6b02ce553b90227158704b4fb40c6b9f8f8c03071b1a",
-    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084"
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_left/checks.json": "d410c836fa2bcdf35e55054db8aec079ddf6ff23194869d785abd901b94e2f54",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_left/source/_measurements/S11c_d_end_current_resumable.py": "f7e2bcdfcaee6a0c190daaca1f1a268b1a9757addefb834e9c386de647047e98",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_right/checks.json": "feba65dbe23d961994b740f32ef830a3408e1dbe7b880d52ea0120480f8d3564",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_right/source/_measurements/S11c_d_end_current_resumable.py": "f7e2bcdfcaee6a0c190daaca1f1a268b1a9757addefb834e9c386de647047e98",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left/checks.json": "8c771b0aa43ef673da49d6910102756f79692731acb3bef581075d525120b562",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left/source/_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right/checks.json": "9eefd3de0e952dd4250e4f2d4a63eed6d784e62f24bc270d7a640a1ef98f3e25",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right/source/_measurements/S11c_d_end_pairing_check.py": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_build_review_r3_record.json": "7a6faaa2bc6851010acb744223c6b28c2d23c99ad15cc75f3333a22df1bcf71b",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_build_review_r3_claude.md": "1e731f805e72463864628e7f845a5e36f4a8caa63705046228b0b4bc7277d9f0",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_build_review_r3_grok.md": "ab64ee752c44dfd236c8a104e192a62aab753838d407851abf84751110125230",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_tooling_repair_record.json": "9ff4824638f5fc96fe683354e1ca5f4e213bcf7b25d8abcaefff4d8f4c3ec50d",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_tests.py": "693ca29c1190b7c8ccf9caea077d0686d0d920db8b0939fd55d60ab19378fa1a",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/execution-preparation/host-preflight.json": "ccf1317dc99d7a9f7bf43ecdc2cd01da63472d453daeee7a783f513be396a37d"
   },
   "resources": {
     "memoryBytes": 4294967296,
@@ -929,5 +963,48 @@
     "full and selected residuals with independent grade attribution",
     "closed grazing comparison and actual inherited path joins",
     "addressed controls and selected-cell participation"
-  ]
+  ],
+  "unitRegistryOrigins": {
+    "LEFTNativeSource": {
+      "checksAlias": "units/LEFTNativeSource-checks.json",
+      "producerSource": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_left/source/_measurements/S11c_d_end_current_resumable.py",
+      "producerRelativePath": "_measurements/S11c_d_end_current_resumable.py",
+      "scope": [
+        "main"
+      ],
+      "statement": "payload = {'conservative': source, 'slab': slab, 'acoustic': bulk, 'strong': strong, 'profileBindings': inputs.limits, 'knownDimensions': engine.PHYSICAL_METADATA.dimensions.known, 'cancellationProof': proof}",
+      "registryField": "knownDimensions"
+    },
+    "RIGHTNativeSource": {
+      "checksAlias": "units/RIGHTNativeSource-checks.json",
+      "producerSource": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_right/source/_measurements/S11c_d_end_current_resumable.py",
+      "producerRelativePath": "_measurements/S11c_d_end_current_resumable.py",
+      "scope": [
+        "main"
+      ],
+      "statement": "payload = {'conservative': source, 'slab': slab, 'acoustic': bulk, 'strong': strong, 'profileBindings': inputs.limits, 'knownDimensions': engine.PHYSICAL_METADATA.dimensions.known, 'cancellationProof': proof}",
+      "registryField": "knownDimensions"
+    },
+    "LEFTPairing": {
+      "checksAlias": "units/LEFTPairing-checks.json",
+      "producerSource": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left/source/_measurements/S11c_d_end_pairing_check.py",
+      "producerRelativePath": "_measurements/S11c_d_end_pairing_check.py",
+      "scope": [
+        "run"
+      ],
+      "statement": "atomic(destination / 'complete.pickle', pickle.dumps((packet, engine.PHYSICAL_METADATA.dimensions.known), protocol=5))",
+      "registryField": "tuple item 1"
+    },
+    "RIGHTPairing": {
+      "checksAlias": "units/RIGHTPairing-checks.json",
+      "producerSource": "/var/projects/toy_physics/_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right/source/_measurements/S11c_d_end_pairing_check.py",
+      "producerRelativePath": "_measurements/S11c_d_end_pairing_check.py",
+      "scope": [
+        "run"
+      ],
+      "statement": "atomic(destination / 'complete.pickle', pickle.dumps((packet, engine.PHYSICAL_METADATA.dimensions.known), protocol=5))",
+      "registryField": "tuple item 1"
+    }
+  },
+  "toolingRepairRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_tooling_repair_record.json"
 }

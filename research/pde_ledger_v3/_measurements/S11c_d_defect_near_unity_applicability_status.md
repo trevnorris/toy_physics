@@ -527,3 +527,29 @@ and fourteen additional identity copies joined their pinned source bytes.
 No numerical result is accepted yet. Logs and full operands remain durable;
 the local completion hook will request inspection, without model polling.
 See `S11c_d_defect_packet_inner_execution_launch.json`.
+
+
+## 2026-10-03 — fixed inner-kernel bank accepted
+
+The inner-01 bank completed all38declared collision/grazing-approach points,
+37distinct H requests and one exact H reuse. All per-primitive/sum comparisons
+passed; the maximum stored route difference was3.4722524879e-15, about
+3.4723e-6of its unchanged tolerance. All three actual contact/reflected-root/
+lower-normal controls responded. Nineteen new literal-zero joins and26inherited
+zero returns remain saved. This is fixed-point numerical evidence, not a uniform
+quadrature theorem, a complete packet action or a loss result.
+
+Metadata-only completion inspection checked197615complete SQLite records
+(12338020352bytes),636JSON artifacts,312saved copies,691posthashes,379snapshots
+and14additionalidentitycopies, with6809077checks. Actual no-deadline guard and
+supervisor commands, empty scientificstderr/stdout-checks identity, nodes, panels,
+adaptive leaf partitions, returns, controls and all byte identities passed.
+Wall4371.411s. Peak cgroup memory4294967296bytes; max-limit events27262,
+OOM/kill/swap0. No process/cache split is inferred. All prior failures and source
+review history remain unchanged.
+
+Next bounded work prepares the two local Gaussian actions from the16saved cells,
+including native local summand units, Gaussian tails, independent quadrature and
+actual numerical controls. Source/grade/endpoints, Fourier requests and the inner
+bank will not replay. Full pressure-summand units and collision-aware outer
+pressure actions remain prerequisites to a complete packet value.

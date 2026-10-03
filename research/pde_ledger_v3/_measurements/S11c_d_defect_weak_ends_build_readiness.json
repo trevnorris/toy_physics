@@ -1,0 +1,63 @@
+{
+  "status": "READY_FOR_INDEPENDENT_BUILD_ASSESSMENT_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-weak-ends-20261002/build-review",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-02T21:44:52.372757+00:00",
+    "packetSha256": "f711c085365501ff136d035069ea73c9c6e9857e099f38156bd3dad2ebe3351a",
+    "archiveSha256": "08b92b0e41381f4a448255f4964aa097172665f4cbde10ba08b1892070d5325d",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 503,
+    "bytes": 146458265,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "AGENTS standing review-submission authorization and repeated continued bounded research direction",
+    "scope": "Concrete translated retained Schwartz weak ends; no integral, finite matrix, roots, current or loss",
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_BUILD_PACKET_ONLY_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "030e1cb6eed50c8798cb8ce42fcaadfcd2b58e9066c9b8f4271d040444009c43",
+    "packetSha256": "f711c085365501ff136d035069ea73c9c6e9857e099f38156bd3dad2ebe3351a",
+    "archiveSha256": "08b92b0e41381f4a448255f4964aa097172665f4cbde10ba08b1892070d5325d",
+    "workerSha256": "8ef4615f0b7ae64478014eaa167957e66084da6759074b22f69c8f4dc48402fd",
+    "manifestSha256": "02ad3e73f11c3fa0ecad862fe3047c378da4c50dc4110338465413236d5bdf60",
+    "scienceLauncherSha256": "ff213189d1e20d0145369dbcd88ca96f631123ca9205d679916bbd6532b0aa92",
+    "methodSha256": "71f7d7346e05bbe310acef40870941ab5d3f277baf2c889047fd87d56a948e16",
+    "files": 503,
+    "bytes": 146458265,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "payloadRestored": false,
+    "scienceCalls": 0,
+    "localTests": {
+      "command": "python /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_tests.py",
+      "tests": 22,
+      "passed": true,
+      "scientificEvidence": false
+    },
+    "completeSavedAliases": 422,
+    "addressMetadataRecords": 13260,
+    "fullAddressRepresentatives": 1232
+  },
+  "checks": {
+    "packetSourceArchiveHashesMatch": true,
+    "allSavedAliasesIncluded": true,
+    "noScientificPayloadRestored": true,
+    "noGateOrScienceRun": true,
+    "noOldPeerReports": true,
+    "newTrackedGeneratedFilesOver1MiB": []
+  },
+  "preparationTestFindings": [
+    "Saved pressure polynomial files store numerator/denominator; full P0/certificate supplies quotient. Exact inherited proof uses original field and physical-tanh map.",
+    "Local polynomial T and physical tanh identities retain their distinct original operands; all previous zero returns remain inherited.",
+    "Both exact-zero source and consumer addresses have epsilonCount0; raw speed absence uses actual speedAbsent and symbol-name census."
+  ],
+  "noMethodChange": true
+}

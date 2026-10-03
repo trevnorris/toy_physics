@@ -1,0 +1,25 @@
+{
+  "recordedUtc": "2026-10-03T07:04:57.609615+00:00",
+  "status": "RESUMED_READY_FOR_PREPARED_BUILD_REVIEW",
+  "userInstruction": "You're free to proceed. Something else is running on this machine, so it'll eat some of the CPU, but you should be good to keep doing what you have been doing.",
+  "pausedBeforeReviewLaunch": true,
+  "packetUnchanged": true,
+  "packetSha256": "f711c085365501ff136d035069ea73c9c6e9857e099f38156bd3dad2ebe3351a",
+  "archiveSha256": "08b92b0e41381f4a448255f4964aa097172665f4cbde10ba08b1892070d5325d",
+  "sourcePinsChecked": 675,
+  "metadataHashChecks": 2182,
+  "reviewsLaunched": false,
+  "scientificRunLaunched": false,
+  "memoryAvailable": "18075272 kB",
+  "otherUserWorkPreserved": true,
+  "resourcePolicyUnchanged": {
+    "nativeAndCgroupMemoryGiB": 4,
+    "aggregatePoolGiB": 16,
+    "jobSwap": 0,
+    "oneAssignedCPU": true,
+    "threads": 1,
+    "hostReserveGiB": 4,
+    "deadlines": null
+  },
+  "next": "Submit the frozen concrete build to the established independent Claude/Grok reviewers; assess both actual reports before edits or science readiness."
+}

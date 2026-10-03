@@ -1,0 +1,16 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-02T21:44:52.372757+00:00",
+  "packetSha256": "f711c085365501ff136d035069ea73c9c6e9857e099f38156bd3dad2ebe3351a",
+  "archiveSha256": "08b92b0e41381f4a448255f4964aa097172665f4cbde10ba08b1892070d5325d",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 503,
+  "bytes": 146458265,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "AGENTS standing review-submission authorization and repeated continued bounded research direction",
+  "scope": "Concrete translated retained Schwartz weak ends; no integral, finite matrix, roots, current or loss",
+  "noAutomaticRetry": true
+}

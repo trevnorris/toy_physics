@@ -1,0 +1,47 @@
+{
+  "status": "READY_FOR_ONE_SAVED_EVIDENCE_RIGHT_CONTINUATION",
+  "utc": "2026-10-03T14:45:52.392818+00:00",
+  "gatePath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_continue_gate.json",
+  "gateSha256": "6e6d78de8102cb6669ee853189a4ef6adba9c213fec51998877e3805df648327",
+  "workerSha256": "e6fe0fd8a5f9421ff2e01e27a37756253b642165951cee3db10126c57ff5f0f9",
+  "manifestSha256": "7e43cf3962ab855277ef6066340c0e99f8cd05258217a47662f0d84c55b334b0",
+  "launcherSha256": "b77f84f0ec13b35cb67417295c3ebbc07108158a3f8cd8a3ea1ded705bfc6bbb",
+  "sourcePins": 73,
+  "priorFiles": 6885,
+  "priorBytes": 540133852,
+  "priorEvidenceArtifacts": 6796,
+  "completeOldOperations": 18,
+  "allSourceAndSavedHashesMatch": true,
+  "stdlibWorkerAndLauncherGatePassed": true,
+  "originalFragmentHashes": {
+    "grazingFull": "4699155d4d11e0092249379b469f34a1df22b1bd3c7032d1136dc4df25e08abb",
+    "grazingPending": "df4d1a908de4f7f3bf01c163a7b72232fc3c0d8b507abb5f14e0fa80da1caaf4",
+    "controls": "202fa6bcaccba6161b82ce27804761dc9c0b5c01aa9ddf6c68468a41340c15f6",
+    "coverage": "ba3084dc59a6022978ef9fa603d474dca7adc19670958c0840b0793f252c5f9b"
+  },
+  "literalBuildVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS BOUNDED END-UNIFORM BUILD"
+  },
+  "continuationIndependentBuildClearance": false,
+  "localToolingRepairAuthorized": true,
+  "runtimeResultAccepted": false,
+  "scientificRunStarted": false,
+  "scientificPayloadRestoredDuringPreparation": false,
+  "testsPassed": 14,
+  "hostPreflight": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/continuation-preparation/host-preflight.json",
+  "noDeadline": true,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "hostReserveBytes": 4294967296,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "tasksMax": 32,
+    "nativeThreads": 1,
+    "priority": "desktop-managed",
+    "durationLimits": null
+  },
+  "noAutomaticRetry": true,
+  "noCompletedPrefixReplay": true
+}

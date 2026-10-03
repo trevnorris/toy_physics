@@ -1,0 +1,38 @@
+{
+  "status": "TESTED_LOCAL_EVIDENCE_STORAGE_AND_SAVED_RETURN_CONTINUATION",
+  "utc": "2026-10-03T14:44:30.371351+00:00",
+  "failureCommit": "4c33c471",
+  "baseWorker": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform.py",
+  "baseWorkerSha256": "4449a61cda79b075d1e182cb5b6ada0c9cac52398ebbb2356496657911880d4f",
+  "workerSha256": "e6fe0fd8a5f9421ff2e01e27a37756253b642165951cee3db10126c57ff5f0f9",
+  "launcherSha256": "b77f84f0ec13b35cb67417295c3ebbc07108158a3f8cd8a3ea1ded705bfc6bbb",
+  "testsSha256": "6a52918a3a488be64051324424f562832fe34d118e8321f66236a7885eded701",
+  "testsPassed": 14,
+  "scientificRestorationInPreparation": false,
+  "newIndependentReview": false,
+  "continuationIndependentBuildClearance": false,
+  "localToolingRepairAuthorized": true,
+  "literalBuildVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS BOUNDED END-UNIFORM BUILD"
+  },
+  "originalFragmentHashes": {
+    "grazingFull": "4699155d4d11e0092249379b469f34a1df22b1bd3c7032d1136dc4df25e08abb",
+    "grazingPending": "df4d1a908de4f7f3bf01c163a7b72232fc3c0d8b507abb5f14e0fa80da1caaf4",
+    "controls": "202fa6bcaccba6161b82ce27804761dc9c0b5c01aa9ddf6c68468a41340c15f6",
+    "coverage": "ba3084dc59a6022978ef9fa603d474dca7adc19670958c0840b0793f252c5f9b"
+  },
+  "changes": [
+    "Streaming JSON dump avoids allocating a second whole serialized string.",
+    "Large join and limit-input evidence uses original typed opaque blob receipts plus literal selectors; exact operands already copied byte-identically.",
+    "Unchanged exact_structure predicate runs after operand receipts; actual Boolean result is persisted before requiring it.",
+    "An identical newly completed join reuses its return only for the same original operand objects.",
+    "Restore completed evidence/LEFT results and reconstruct only unpublished small RIGHT argument context; execute original unfinished RIGHT tail ASTs."
+  ],
+  "unchanged": [
+    "Every old worker/source/result/report byte.",
+    "All equation assignments, finite_constant helper, original acceptance predicate and tolerances.",
+    "Scientific resources, no-deadline guard and supervisor."
+  ],
+  "notScienceAcceptance": true
+}

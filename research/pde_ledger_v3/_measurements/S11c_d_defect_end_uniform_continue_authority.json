@@ -1,0 +1,54 @@
+{
+  "status": "STANDING_AUTHORITY_FOR_ONE_SAVED_EVIDENCE_CONTINUATION",
+  "utc": "2026-10-03T14:44:30.371054+00:00",
+  "savedEvidenceContinuationAuthorized": true,
+  "scientificRunsAuthorized": 1,
+  "automaticScientificRetry": false,
+  "durationLimits": null,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": [
+      1,
+      2
+    ],
+    "target": "Saved-evidence continuation of unfinished RIGHT pairing/grazing/controls only",
+    "independentGrades": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "noFrequencyDerivativeTransfer": true,
+    "noCurrentOrLoss": true,
+    "noRoots": true,
+    "noFiniteSolve": true,
+    "noDefectSweep": true
+  },
+  "basis": [
+    "User: Please stop stopping unless you need my input.",
+    "User: You have my permission to keep hammering on this as long as you have a clear next step.",
+    "AGENTS standing local tooling and safeguarded continued research authority."
+  ],
+  "preservedFailureCommit": "4c33c471",
+  "noOldFunctionsOrCompletedPrefixReplay": true,
+  "noScopeExpansion": true
+}

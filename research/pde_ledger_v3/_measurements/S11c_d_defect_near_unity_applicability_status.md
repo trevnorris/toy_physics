@@ -92,6 +92,21 @@ continuation must resume only the unfinished RIGHT joins/grazing/controls and
 avoid materializing huge duplicate symbolic JSON. The canonical completion
 record is S11c_d_defect_end_uniform_completion.json.
 
+A separate saved-evidence RIGHT continuation is prepared under standing local
+tooling authority. It copies all 6,885 prior files unchanged and restores the
+18 old complete operations and published prefix evidence. Large join operands
+are identified by their complete original raw-blob receipts and literal
+selectors; the unchanged exact-structure predicate still decides equality.
+Streaming JSON avoids a second whole-string allocation. Fourteen stdlib tests
+cover the old allocation path, unchanged mismatch refusal, persistence before
+failure, immutable operand provenance and exact unfinished-tail ASTs. The new
+worker starts at the unpublished RIGHT minus pairing join, then executes only
+the remaining grazing comparisons and controls. Small unpublished argument and
+participation context is reconstituted from saved cells. No original worker,
+LEFT result, source construction or selected comparison is rerun. Readiness
+records continuationIndependentBuildClearance=false; no new independent CLEAR
+or scientific acceptance is claimed.
+
 Independent preparation at 0798c4b5 mapped the legacy Gaussian/matrix route and
 verified 131 selected opaque input/return receipts. It is preparation only:
 old cs10 arrays do not validate the corrected near-unity operator, and no

@@ -147,6 +147,11 @@ The 38-file, 4,694,356-byte independent review packet is frozen with SHA256
 0369ec02b916d833fa97f378ab9209bcedf8bf26d1599ffe5efbbebaa1bdc809.
 Standing AGENTS consent covers submission to the same Claude/Grok reviewers;
 no worker, science gate, finite inverse or loss interpretation exists.
+The pair was submitted from 08da6ef9 with the existing-session completion hook
+armed first. Both actual reviewer processes started independently; all 38
+private packet files per reviewer match the frozen hashes. No reports have
+been read early or shared, and no scientific execution is enabled. The local
+hook will resume joint assessment after completion/error; no model polling.
 
 Independent preparation at 0798c4b5 mapped the legacy Gaussian/matrix route and
 verified 131 selected opaque input/return receipts. It is preparation only:

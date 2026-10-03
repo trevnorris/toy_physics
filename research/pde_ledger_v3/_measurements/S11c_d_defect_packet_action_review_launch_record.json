@@ -1,0 +1,108 @@
+{
+  "status": "INDEPENDENT_FIXED_PACKET_METHOD_REVIEWS_STARTED",
+  "utc": "2026-10-03T15:06:25.018745+00:00",
+  "preparedCommit": "08da6ef9",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/method-review",
+  "packetSha256": "0369ec02b916d833fa97f378ab9209bcedf8bf26d1599ffe5efbbebaa1bdc809",
+  "archiveSha256": "566e08d01c14d5eb5b6d068c7280d25958c008f75ff2c3be3c50d8e8d952f672",
+  "files": 38,
+  "bytes": 4694356,
+  "sourceReviewOnly": true,
+  "scienceCalls": 0,
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "launch": {
+    "jobPid": 456815,
+    "watcherPid": 456816,
+    "packetSha256": "0369ec02b916d833fa97f378ab9209bcedf8bf26d1599ffe5efbbebaa1bdc809",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "actualReviewers": {
+    "claude": {
+      "sessionId": "eb914e7a-c0ca-4a05-8ba5-65f9ca6f31f3",
+      "pid": 456833,
+      "startedUtc": "2026-10-03T15:05:56.336716+00:00",
+      "privateCopiesVerified": 38,
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "eb914e7a-c0ca-4a05-8ba5-65f9ca6f31f3"
+      ],
+      "receiptSha256": "8ca29d57bc34d80b663e2f03e9f8408a9121c877a0cebc897766d9fd3fa9dcb6",
+      "reportRead": false
+    },
+    "grok": {
+      "sessionId": "73e38ba0-57fe-45b6-aaa1-650a522d5301",
+      "pid": 456835,
+      "startedUtc": "2026-10-03T15:05:56.337040+00:00",
+      "privateCopiesVerified": 38,
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/method-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/method-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "73e38ba0-57fe-45b6-aaa1-650a522d5301"
+      ],
+      "receiptSha256": "b8c2821b71d01985c77324c5ea8c833410028bc367de916b4fb9811ba495d60e",
+      "reportRead": false
+    }
+  },
+  "hookFirst": true,
+  "hookState": "waiting",
+  "peerReportsShared": false,
+  "verdictsRead": false,
+  "automaticRetry": false,
+  "standingAuthorization": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-03T15:04:56.430298+00:00",
+    "packetSha256": "0369ec02b916d833fa97f378ab9209bcedf8bf26d1599ffe5efbbebaa1bdc809",
+    "archiveSha256": "566e08d01c14d5eb5b6d068c7280d25958c008f75ff2c3be3c50d8e8d952f672",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 38,
+    "bytes": 4694356,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing AGENTS review-submission authorization and user direction to continue clear bounded research without routine prompts. Same established Claude/Grok recipients, no new model input or scattering run.",
+    "scope": "Two selected e_W-to-THETA Schwartz packet actions at one saved effective matching speed; retained grades, both faces, contact/PV/branch/tail numerical method only. No scattering, current, inverse, defect sweep or loss.",
+    "noAutomaticRetry": true
+  },
+  "workerOrGateExists": false
+}

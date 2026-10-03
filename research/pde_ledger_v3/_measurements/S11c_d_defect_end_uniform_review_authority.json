@@ -1,0 +1,16 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-03T09:37:00.221878+00:00",
+  "packetSha256": "33565b31753a04430b5bfb233fb3b87c5f74a04c4f01e41b59562e9f62f74019",
+  "archiveSha256": "f897b27ece72470d0f81474f6ffb4a659aa638e10bb78704f0d3c1bff63ecb04",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 45,
+  "bytes": 8163832,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing review-submission authorization and repeated user direction to continue clear bounded research without routine prompts; no new disclosure beyond established Claude/Grok reviewers",
+  "scope": "Bounded corrected translated-end versus saved uniform selected-equation comparison; no new roots, currents, integrals, finite inverse or defect sweep",
+  "noAutomaticRetry": true
+}

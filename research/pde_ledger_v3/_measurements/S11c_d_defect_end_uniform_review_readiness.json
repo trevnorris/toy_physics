@@ -1,0 +1,52 @@
+{
+  "status": "READY_SOURCE_METHOD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-end-uniform-20261003/method-review",
+  "completedDependencyCommit": "5b3e4570",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-03T09:37:00.221878+00:00",
+    "packetSha256": "33565b31753a04430b5bfb233fb3b87c5f74a04c4f01e41b59562e9f62f74019",
+    "archiveSha256": "f897b27ece72470d0f81474f6ffb4a659aa638e10bb78704f0d3c1bff63ecb04",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 45,
+    "bytes": 8163832,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing review-submission authorization and repeated user direction to continue clear bounded research without routine prompts; no new disclosure beyond established Claude/Grok reviewers",
+    "scope": "Bounded corrected translated-end versus saved uniform selected-equation comparison; no new roots, currents, integrals, finite inverse or defect sweep",
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_SOURCE_AND_PACKET_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "3f40a3cfd32d198a4a5ed7732fa562349dcc0ef1a847c89a51a45356cd879608",
+    "packetSha256": "33565b31753a04430b5bfb233fb3b87c5f74a04c4f01e41b59562e9f62f74019",
+    "archiveSha256": "f897b27ece72470d0f81474f6ffb4a659aa638e10bb78704f0d3c1bff63ecb04",
+    "files": 45,
+    "bytes": 8163832,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 44,
+    "payloadRestored": false,
+    "transportIdenticalToPrior": true,
+    "noReviewVerdict": true
+  },
+  "checks": {
+    "sourceCopiesByteIdentical": true,
+    "JSONAndOpaqueBytesOnly": true,
+    "archiveMembersMatch": true,
+    "transportIdentical": true,
+    "noPeerReports": true,
+    "noScientificImportsRestoration": true,
+    "newScienceRuns": 0,
+    "opaqueBlobsHashChecked": 37,
+    "priorEncodedResultJsonRoundtrip": true,
+    "plainJsonNonprimitiveRefusalReproducedWithStandin": true,
+    "newTrackedDataOver1MiB": []
+  }
+}

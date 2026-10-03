@@ -1,0 +1,404 @@
+{
+  "scope": "Bounded corrected translated-end versus saved uniform selected-equation comparison; no new roots, currents, integrals, finite inverse or defect sweep",
+  "records": [
+    {
+      "packetPath": "method.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_method.md",
+      "sourceSha256": "0f64c0e5014bf799964006d40ad7858da0f9f9563a11b07c18536a8db4388d36",
+      "packetSha256": "0f64c0e5014bf799964006d40ad7858da0f9f9563a11b07c18536a8db4388d36",
+      "bytes": 12775,
+      "kind": "complete file",
+      "role": "New prospective bounded method; no science"
+    },
+    {
+      "packetPath": "review-prompt.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_review_prompt.md",
+      "sourceSha256": "ed461a44ca0e00fe85ddca6a9e5b83363844eb65bb0312a9fb76fe22fd7ee831",
+      "packetSha256": "ed461a44ca0e00fe85ddca6a9e5b83363844eb65bb0312a9fb76fe22fd7ee831",
+      "bytes": 3091,
+      "kind": "complete file",
+      "role": "New prospective bounded method; no science"
+    },
+    {
+      "packetPath": "evidence-guide.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_end_uniform_evidence_guide.md",
+      "sourceSha256": "fffc3185b820963c1c4b1a2db29e6ba984f305b11dabea83ae57de88b13f7760",
+      "packetSha256": "fffc3185b820963c1c4b1a2db29e6ba984f305b11dabea83ae57de88b13f7760",
+      "bytes": 2806,
+      "kind": "complete file",
+      "role": "New prospective bounded method; no science"
+    },
+    {
+      "packetPath": "ends/symbols.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/new-complete-retained-weak-end-symbols.json",
+      "sourceSha256": "82ffbe9f95f1cfa78aaa7327d11050a1063c8b1da043e60dae0ab96a2d7fe37e",
+      "packetSha256": "82ffbe9f95f1cfa78aaa7327d11050a1063c8b1da043e60dae0ab96a2d7fe37e",
+      "bytes": 2621734,
+      "kind": "complete file",
+      "role": "Completed original weak-end operands and exact returns; no replay"
+    },
+    {
+      "packetPath": "ends/local-context.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/inherited-local-context.json",
+      "sourceSha256": "d3bc5148b0d952e3bf78bda38442ac95a8734ea104afba84caceb9623e46fddc",
+      "packetSha256": "d3bc5148b0d952e3bf78bda38442ac95a8734ea104afba84caceb9623e46fddc",
+      "bytes": 24779,
+      "kind": "complete file",
+      "role": "Completed original weak-end operands and exact returns; no replay"
+    },
+    {
+      "packetPath": "ends/depth-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/new-closed-depth-domain.json",
+      "sourceSha256": "e73227d8536f13261df25518502f95005564c7492fc29c211416519a89600bb5",
+      "packetSha256": "e73227d8536f13261df25518502f95005564c7492fc29c211416519a89600bb5",
+      "bytes": 2249,
+      "kind": "complete file",
+      "role": "Completed original weak-end operands and exact returns; no replay"
+    },
+    {
+      "packetPath": "ends/native-constant-height-plus.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/new-native-constant-height-plus.json",
+      "sourceSha256": "6c95adb7b53d8ad1c8f6c8538f3750ccb67e2bb70ac74e21e512752bed5c2d31",
+      "packetSha256": "6c95adb7b53d8ad1c8f6c8538f3750ccb67e2bb70ac74e21e512752bed5c2d31",
+      "bytes": 44806,
+      "kind": "complete file",
+      "role": "Completed original weak-end operands and exact returns; no replay"
+    },
+    {
+      "packetPath": "ends/native-constant-height-minus.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/new-native-constant-height-minus.json",
+      "sourceSha256": "a6fb01b37c1e8a1f8dac59be3bac931349421d398cef16cb9a3736f09e98554f",
+      "packetSha256": "a6fb01b37c1e8a1f8dac59be3bac931349421d398cef16cb9a3736f09e98554f",
+      "bytes": 44960,
+      "kind": "complete file",
+      "role": "Completed original weak-end operands and exact returns; no replay"
+    },
+    {
+      "packetPath": "ends/first-shape-grade.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/new-native-first-shape-grade-join.json",
+      "sourceSha256": "5ac7b433cea2a1b0e5fef6db943bbf0b4bd0389de80468432d7be816e788f654",
+      "packetSha256": "5ac7b433cea2a1b0e5fef6db943bbf0b4bd0389de80468432d7be816e788f654",
+      "bytes": 8614,
+      "kind": "complete file",
+      "role": "Completed original weak-end operands and exact returns; no replay"
+    },
+    {
+      "packetPath": "ends/phase-arguments.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/new-native-phase-argument-join.json",
+      "sourceSha256": "4b4b1b0e16fda86fd7ae9195cb0e12327318f7c5574ad11dc0392c5cc429ab3a",
+      "packetSha256": "4b4b1b0e16fda86fd7ae9195cb0e12327318f7c5574ad11dc0392c5cc429ab3a",
+      "bytes": 5225,
+      "kind": "complete file",
+      "role": "Completed original weak-end operands and exact returns; no replay"
+    },
+    {
+      "packetPath": "ends/translation-response.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/new-translated-response-argument.json",
+      "sourceSha256": "fcb0f081f4d8ee894cf91071b01aa5384c1fbda52f4e6c0e5608522134544a98",
+      "packetSha256": "fcb0f081f4d8ee894cf91071b01aa5384c1fbda52f4e6c0e5608522134544a98",
+      "bytes": 6283,
+      "kind": "complete file",
+      "role": "Completed original weak-end operands and exact returns; no replay"
+    },
+    {
+      "packetPath": "ends/reversed-limits.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/new-reversed-native-phase-limits.json",
+      "sourceSha256": "e15f9c7df1e6889812ee3a8b72a0db7c3a2c26b8f7011791597fec73ccd88ec6",
+      "packetSha256": "e15f9c7df1e6889812ee3a8b72a0db7c3a2c26b8f7011791597fec73ccd88ec6",
+      "bytes": 1200,
+      "kind": "complete file",
+      "role": "Completed original weak-end operands and exact returns; no replay"
+    },
+    {
+      "packetPath": "ends/flat-defining-equation.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/diagnostic-01/complete/inherited-flat-defining-equation.json",
+      "sourceSha256": "a55c328839aa2d205296566c1dcf94fa2295d31f162f0dda76372b24c83ed408",
+      "packetSha256": "a55c328839aa2d205296566c1dcf94fa2295d31f162f0dda76372b24c83ed408",
+      "bytes": 3239,
+      "kind": "complete file",
+      "role": "Completed original weak-end operands and exact returns; no replay"
+    },
+    {
+      "packetPath": "controls/new-control-omit-height-contact.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/new-control-omit-height-contact.json",
+      "sourceSha256": "101b1732503697df87930a3e31489cec52d731f3e480caf22f83975871ace18d",
+      "packetSha256": "101b1732503697df87930a3e31489cec52d731f3e480caf22f83975871ace18d",
+      "bytes": 14864,
+      "kind": "complete file",
+      "role": "Completed original control operands/returns; sensitivity only"
+    },
+    {
+      "packetPath": "controls/new-control-reverse-translation-phase.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/new-control-reverse-translation-phase.json",
+      "sourceSha256": "622bdb7b0bb950cd86433136494fc6a83f02e3a081556f7badff4c62fdae84b9",
+      "packetSha256": "622bdb7b0bb950cd86433136494fc6a83f02e3a081556f7badff4c62fdae84b9",
+      "bytes": 17491,
+      "kind": "complete file",
+      "role": "Completed original control operands/returns; sensitivity only"
+    },
+    {
+      "packetPath": "controls/new-control-omit-lower-normal-sign.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/new-control-omit-lower-normal-sign.json",
+      "sourceSha256": "ed8ef48552eda6d6e437c784f06b364f4a5f31c1b94fd509e0b55e2c55a42acf",
+      "packetSha256": "ed8ef48552eda6d6e437c784f06b364f4a5f31c1b94fd509e0b55e2c55a42acf",
+      "bytes": 10755,
+      "kind": "complete file",
+      "role": "Completed original control operands/returns; sensitivity only"
+    },
+    {
+      "packetPath": "controls/interval-predicate-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/interval-predicate-operands.json",
+      "sourceSha256": "05214864e2d13245914ffabde38fd1037566c00723d75bfe67da7cfb5dd6446d",
+      "packetSha256": "05214864e2d13245914ffabde38fd1037566c00723d75bfe67da7cfb5dd6446d",
+      "bytes": 849,
+      "kind": "complete file",
+      "role": "Completed original control operands/returns; sensitivity only"
+    },
+    {
+      "packetPath": "controls/restored-control-context.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/restored-control-context.json",
+      "sourceSha256": "cfc9400c554a9caa7c7819951ad3cafd44656887f9e30230b0e8425152add284",
+      "packetSha256": "cfc9400c554a9caa7c7819951ad3cafd44656887f9e30230b0e8425152add284",
+      "bytes": 1668,
+      "kind": "complete file",
+      "role": "Completed original control operands/returns; sensitivity only"
+    },
+    {
+      "packetPath": "controls/saved-weak-end-controls-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/saved-weak-end-controls-input.json",
+      "sourceSha256": "f15b584cca34d1ec88e8e24e96123970dbb839485c5831b2f80616346da01381",
+      "packetSha256": "f15b584cca34d1ec88e8e24e96123970dbb839485c5831b2f80616346da01381",
+      "bytes": 298,
+      "kind": "complete file",
+      "role": "Completed original control operands/returns; sensitivity only"
+    },
+    {
+      "packetPath": "controls/saved-weak-end-controls-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/saved-weak-end-controls-return.json",
+      "sourceSha256": "a44307309729b3dc5582cba9f27761f65439fef8b5f24caf3312d24dce45e777",
+      "packetSha256": "a44307309729b3dc5582cba9f27761f65439fef8b5f24caf3312d24dce45e777",
+      "bytes": 2020,
+      "kind": "complete file",
+      "role": "Completed original control operands/returns; sensitivity only"
+    },
+    {
+      "packetPath": "controls/translated-weak-end-conclusion.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/translated-weak-end-conclusion.json",
+      "sourceSha256": "b34851024d195cea36efdf1a953fd652d161d2520e8d53b11e56c27512f3c3fa",
+      "packetSha256": "b34851024d195cea36efdf1a953fd652d161d2520e8d53b11e56c27512f3c3fa",
+      "bytes": 1753,
+      "kind": "complete file",
+      "role": "Completed original control operands/returns; sensitivity only"
+    },
+    {
+      "packetPath": "controls/operation-index.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/operation-index.json",
+      "sourceSha256": "82fd92ee7e7c63241c2308098967d151b782dc14e677d86b0974954d4f4276b7",
+      "packetSha256": "82fd92ee7e7c63241c2308098967d151b782dc14e677d86b0974954d4f4276b7",
+      "bytes": 407,
+      "kind": "complete file",
+      "role": "Completed original control operands/returns; sensitivity only"
+    },
+    {
+      "packetPath": "controls/exact-evidence.jsonl",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/exact-evidence.jsonl",
+      "sourceSha256": "1dd98577fd22c15d8dc661b7378e7a8160bb5bbb16199e48ed89815182b55ef2",
+      "packetSha256": "1dd98577fd22c15d8dc661b7378e7a8160bb5bbb16199e48ed89815182b55ef2",
+      "bytes": 53679,
+      "kind": "complete file",
+      "role": "Completed original control operands/returns; sensitivity only"
+    },
+    {
+      "packetPath": "controls/exact-evidence-final-receipt.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/exact-evidence-final-receipt.json",
+      "sourceSha256": "b8e963f6517d36225c0eaaa36774e22829e004efd920f4e31e259a07930cb68b",
+      "packetSha256": "b8e963f6517d36225c0eaaa36774e22829e004efd920f4e31e259a07930cb68b",
+      "bytes": 163,
+      "kind": "complete file",
+      "role": "Completed original control operands/returns; sensitivity only"
+    },
+    {
+      "packetPath": "controls/partial-final-checks.txt",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/complete/checks.json",
+      "sourceSha256": "bfec6b03a3afbec3346e83dd69e4aaa3762364de6509ef707a7a3257881fcb2a",
+      "packetSha256": "bfec6b03a3afbec3346e83dd69e4aaa3762364de6509ef707a7a3257881fcb2a",
+      "bytes": 358,
+      "kind": "complete file",
+      "role": "Exact preserved incomplete final JSON bytes; not success evidence"
+    },
+    {
+      "packetPath": "controls/final-serialization.stderr",
+      "sourcePath": "_scratch/s11c/s11c-defect-weak-ends-20261002/continuation-01/defect_weak_ends_continue.stderr",
+      "sourceSha256": "053d08aaab4626483de05b66522d5f996dade741e8917f7ccc3cae0f4ef4f1cf",
+      "packetSha256": "053d08aaab4626483de05b66522d5f996dade741e8917f7ccc3cae0f4ef4f1cf",
+      "bytes": 1382,
+      "kind": "complete file",
+      "role": "Exact late reporting traceback after complete durable operation"
+    },
+    {
+      "packetPath": "source/ends-worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends.py",
+      "sourceSha256": "e2350d3cf1ce697aaec60c60e60d1a5cf945d00f36cb26be7ea3b3915b406c73",
+      "packetSha256": "e2350d3cf1ce697aaec60c60e60d1a5cf945d00f36cb26be7ea3b3915b406c73",
+      "bytes": 49023,
+      "kind": "complete file",
+      "role": "Source definitions and preserved scientific implementation; no old reviewer report"
+    },
+    {
+      "packetPath": "source/ends-control-continuation.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_continue.py",
+      "sourceSha256": "c7c97726fd3e044124e04f16f68753e0b8fb12ed3c8bed5a5a64572d07f2b999",
+      "packetSha256": "c7c97726fd3e044124e04f16f68753e0b8fb12ed3c8bed5a5a64572d07f2b999",
+      "bytes": 18238,
+      "kind": "complete file",
+      "role": "Source definitions and preserved scientific implementation; no old reviewer report"
+    },
+    {
+      "packetPath": "ends/method.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_weak_ends_method.md",
+      "sourceSha256": "71f7d7346e05bbe310acef40870941ab5d3f277baf2c889047fd87d56a948e16",
+      "packetSha256": "71f7d7346e05bbe310acef40870941ab5d3f277baf2c889047fd87d56a948e16",
+      "bytes": 14027,
+      "kind": "complete file",
+      "role": "Source definitions and preserved scientific implementation; no old reviewer report"
+    },
+    {
+      "packetPath": "source/uniform-worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py",
+      "sourceSha256": "49506203cb214572f712b023ba71c620f9f13ae75d144827726f03220fc2ff4e",
+      "packetSha256": "49506203cb214572f712b023ba71c620f9f13ae75d144827726f03220fc2ff4e",
+      "bytes": 73677,
+      "kind": "complete file",
+      "role": "Source definitions and preserved scientific implementation; no old reviewer report"
+    },
+    {
+      "packetPath": "source/uniform-continuation.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue.py",
+      "sourceSha256": "ae3bdfa9fe96a4c700d39f988b26a3420687a46e29e8d92950b990a022742d29",
+      "packetSha256": "ae3bdfa9fe96a4c700d39f988b26a3420687a46e29e8d92950b990a022742d29",
+      "bytes": 20079,
+      "kind": "complete file",
+      "role": "Source definitions and preserved scientific implementation; no old reviewer report"
+    },
+    {
+      "packetPath": "uniform/plan.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan_v2.md",
+      "sourceSha256": "0d1eb443689f07558526bdf06f64d02072778376b0754096e60e6337ec2336a8",
+      "packetSha256": "0d1eb443689f07558526bdf06f64d02072778376b0754096e60e6337ec2336a8",
+      "bytes": 15589,
+      "kind": "complete file",
+      "role": "Source definitions and preserved scientific implementation; no old reviewer report"
+    },
+    {
+      "packetPath": "source/uniform-source.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_source.py",
+      "sourceSha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+      "packetSha256": "2a135aea365c7b5e57bfff7683c7b927cda52c0d37f6a9bad3c961eb6205a2b2",
+      "bytes": 14588,
+      "kind": "complete file",
+      "role": "Source definitions and preserved scientific implementation; no old reviewer report"
+    },
+    {
+      "packetPath": "source/uniform-response.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_uniform_response.py",
+      "sourceSha256": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4",
+      "packetSha256": "b65749ab0eaaeed372a5bf01077a030971fc3e05f05a11543443bd1de3f157d4",
+      "bytes": 21153,
+      "kind": "complete file",
+      "role": "Source definitions and preserved scientific implementation; no old reviewer report"
+    },
+    {
+      "packetPath": "source/frequency-source.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_frequency_source.py",
+      "sourceSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+      "packetSha256": "9be20be462bc10bfcaa7af643b9301948dd79bc2e08eb24ebcd1386a81efcdac",
+      "bytes": 29576,
+      "kind": "complete file",
+      "role": "Source definitions and preserved scientific implementation; no old reviewer report"
+    },
+    {
+      "packetPath": "source/current-source.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_end_current_source_check.py",
+      "sourceSha256": "88f93d9b29a094ccc38e3579f0cf630b267e096e07b92810c4e30751b4da1d7b",
+      "packetSha256": "88f93d9b29a094ccc38e3579f0cf630b267e096e07b92810c4e30751b4da1d7b",
+      "bytes": 5733,
+      "kind": "complete file",
+      "role": "Source definitions and preserved scientific implementation; no old reviewer report"
+    },
+    {
+      "packetPath": "source/pairing-check.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_end_pairing_check.py",
+      "sourceSha256": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+      "packetSha256": "1fcf86b0be819e2c7e9a2127d8330c907bcaccf58d1d15c3f1534d594d926dee",
+      "bytes": 10885,
+      "kind": "complete file",
+      "role": "Source definitions and preserved scientific implementation; no old reviewer report"
+    },
+    {
+      "packetPath": "source/engine.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "packetSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "bytes": 545480,
+      "kind": "complete file",
+      "role": "Actual native source conventions; do not execute producers"
+    },
+    {
+      "packetPath": "source/c1.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "sourceSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "packetSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "bytes": 101082,
+      "kind": "complete file",
+      "role": "Actual native source conventions; do not execute producers"
+    },
+    {
+      "packetPath": "source/c2.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "packetSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "bytes": 102548,
+      "kind": "complete file",
+      "role": "Actual native source conventions; do not execute producers"
+    },
+    {
+      "packetPath": "physical-input.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "packetSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "bytes": 1884,
+      "kind": "complete file",
+      "role": "Unchanged physical materials; explicit omega3 and cs-family maps remain required"
+    },
+    {
+      "packetPath": "uniform/input-manifest.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_inputs.json",
+      "sourceSha256": "afb408e2e65de714a34fc1c90ca0302c7ca62d0e1c69b56ec7079581aae60cf3",
+      "packetSha256": "fe956d2ec81954d7421e1b160630e5f8e381a63fc94c508962c844c3a56b2aab",
+      "bytes": 3589,
+      "kind": "stdlib metadata projection",
+      "role": "Exact original source packet metadata; review pointers/authority omitted"
+    },
+    {
+      "packetPath": "uniform/selected-result.json",
+      "sourcePath": "_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/checks.json",
+      "sourceSha256": "3d04ab7b2c08ba7f0e4bf2ec2302ddcd925fda55bb1e8a6163d3c8ca7c448358",
+      "packetSha256": "11fcab094d82f7f455d68cd4a6c1a0cc2600648baf637d3b6c83983645885b73",
+      "bytes": 4212345,
+      "kind": "stdlib metadata projection",
+      "role": "Saved completed uniform table; correspondence only, no source review summaries"
+    },
+    {
+      "packetPath": "uniform/opaque-interface-receipts.json",
+      "sourcePath": "_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/operations.sqlite",
+      "sourceSha256": "ae1c00d82b440c75a6c998bd6fba388a5c4f7744e83be637885a5ec0fd5bb7b9",
+      "packetSha256": "43d0381b6d1e1daff5177fc2473e2fede7654c327a901585a523b2b99221bd32",
+      "bytes": 14839,
+      "kind": "stdlib metadata projection",
+      "role": "Verified opaque bytes and original complete operation input/return metadata"
+    }
+  ],
+  "oldPeerReportsIncluded": false,
+  "payloadRestoredDuringPreparation": false,
+  "noScienceRun": true
+}

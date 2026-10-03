@@ -262,3 +262,9 @@ changes to the reviewed worker. In particular the future evaluator still needs
 the physical h/j/half-height join and the explicit chi-to-paired-height identity,
 as well as local tails, full units and actual numerical routes/controls.
 The unchanged bounded preflight can now proceed to pinned guarded readiness.
+The unchanged preflight is pinned READY for one guarded execution after build
+assessment 60268a3f. The actual launcher/gate check passed against 232 source
+pins; 11 additional authority/review/host records are copied and hashed. Host
+metadata shows a running user manager and enough available memory; the guard
+will make the fresh pooled reservation and enforce actual limits at launch.
+There is no time deadline and no automatic scientific retry.

@@ -1,0 +1,61 @@
+{
+  "status": "PINNED_READY_FOR_ONE_GUARDED_PACKET_PREFLIGHT",
+  "createdUtc": "2026-10-03T17:22:12.657500+00:00",
+  "gate": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight_gate.json",
+  "gateSha256": "699df35cf1bd101fcfaab108fcb79b043bf42758141b36bf84064f1cc11d796e",
+  "reviewCommit": "60268a3f",
+  "buildCommit": "15ee1683",
+  "sourcePinsChecked": 232,
+  "additionalIdentityCopies": 11,
+  "additionalIndexSha256": "a35b88a931711e09883f75df1941fedd1c941b1b5a5da529943cad7586b8a710",
+  "actualLauncherVerifyPassed": true,
+  "scientificImportsOrRestoration": false,
+  "workerLaunched": false,
+  "noDeadline": true,
+  "scienceRunsAuthorized": 1,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "automaticRetry": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Saved packet-action adapters and conditional analytic tail planning only",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true
+  },
+  "remainingBeforeResultAcceptance": [
+    "Actual guard no-deadline/resource enforcement and supervisor invocation",
+    "Every scientific operand/return and exact source/array/grade/control-metadata join",
+    "Strict stderr and stdout/checks identity",
+    "All source/copy/additional-identity posthashes",
+    "No action/value/response-control claim from preflight alone"
+  ]
+}

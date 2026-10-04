@@ -1,0 +1,29 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T20:55:06.665039+00:00",
+  "packetSha256": "bda0acc369e615e46a39651cbb212f1a8394250f6e852ac4026921ba88f8db49",
+  "archiveSha256": "43135f804be1408bd0b4f497601990cab7498deb6de7e1c29282c779857130ec",
+  "reviewers": [
+    "claude"
+  ],
+  "files": 2072,
+  "bytes": 52716211,
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "authority": "Standing user physics refocus and applicable Claude-only build review; no routine permission and no scientific execution authorized by review launch.",
+  "scope": {
+    "target": "Explicit full-source projection, native opposite-leg current and exact C3 real-axis polynomial regularity",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalInputUnchanged": true,
+    "arbitraryDoublet": true,
+    "newFieldOrIntegral": false,
+    "fullFiveFieldInverse": false,
+    "physicalPowerBalancePending": true,
+    "leakageFactor": null,
+    "nonzeroPoleOrResidue": "STOP_NO_FALLBACK",
+    "recoveryParked": true
+  },
+  "noAutomaticRetry": true,
+  "noPeerReportsShared": true,
+  "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+}

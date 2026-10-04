@@ -1,0 +1,30 @@
+{
+  "status": "PASS_STDLIB_TOOLING_ONLY",
+  "command": [
+    "python",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_test.py"
+  ],
+  "exitStatus": 0,
+  "tests": 28,
+  "workerSha256": "f9d4dccc1990a3f7170e8e3a46b0e9df2062af4e95c82ae4e06cad8bbb2db073",
+  "manifestSha256": "25e2c279ef778376596002b7fc5c2765bd6001b5d8347e7c20b31a8e595afbeb",
+  "testSha256": "8bf390d0b7ccf8741e0ca07d6e3188d0794204c6e4be477ec2986e08a0af4cff",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "3335fe23185e38d7977a8b336649091e25b417a7a9d6c14911de3d7da8b5ccc0",
+  "scientificImports": false,
+  "scientificRestoration": false,
+  "scienceCalls": 0,
+  "previousToolingAttempts": [
+    {
+      "prefix": "S11c_d_first_order_receiving_regular_test_r2_attempt1",
+      "status": "ONE_METADATA_TEST_FAILURE_MUTABLE_VS_IMMUTABLE_MATRIX_CONSTRUCTOR",
+      "scientificFailure": false,
+      "correction": "Compare exact saved element constructor arrays and retain both original matrix class names; no science reader or predicate changed."
+    },
+    {
+      "prefix": "S11c_d_first_order_receiving_regular_test_r2_attempt2",
+      "status": "28_TESTS_PASS_BEFORE_EXPLICIT_MEMORY_RATIO_JOIN"
+    }
+  ],
+  "unsubmittedPreparationPreserved": "_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-build-review-r2-unsubmitted-01"
+}

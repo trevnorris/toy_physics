@@ -105,11 +105,62 @@ class Tooling(unittest.TestCase):
         self.assertLess(s.index("certificates=[exclude_ray"),s.index('adj=Cq.adjugate'))
         self.assertIn('REAL_AXIS_RECEIVING_POLE_OR_ENDPOINT_ROOT',s)
         self.assertIn('UNRESOLVED_EXACT_SIGN',s)
-        self.assertIn('chart_extra=1',s)
+        self.assertIn('forcing_power=max(',s);self.assertIn('chart_extra=max(',s)
         self.assertNotIn('.inv(',s)
     def test_method_build_execution_separation(self):
         m=manifest();r=json.loads(Path(m['methodRecord']).read_text());self.assertTrue(r['methodAssessed'])
         self.assertEqual(r['literalVerdict'],'CLEAR FOR THIS REAL-AXIS RECEIVING AND CROSS-FLUX METHOD')
         self.assertTrue(m['scope']['physicalPowerBalancePending']);self.assertIsNone(m['scope']['leakageFactor'])
         self.assertFalse((HERE/(PREFIX+'_gate.json')).exists())
+    def test_actual_inherited_end_step_family(self):
+        m=raw('receiving/both-column-end-step-matrix-operands.json')
+        a=ast.parse(m['left']['srepr'],mode='eval').body;b=ast.parse(m['right']['srepr'],mode='eval').body
+        self.assertEqual(ast.dump(a.args[0]),ast.dump(b.args[0])) # saved matrices differ only in mutability class
+        for i in range(5):
+            for j in range(2):
+                self.assertEqual(raw('receiving/both-column-end-step-'+str(i)+'-'+str(j)+'-return.json')['cancelled']['srepr'],'Integer(0)')
+    def test_speed_comes_from_actual_selected_context(self):
+        point=raw('source/incident-columns.json')['selectedPoint']['mapping']
+        self.assertEqual(point['uniformSoundSpeed'],manifest()['scope']['effectiveCs'])
+        self.assertEqual(point['uniformFrequency'],'3')
+        self.assertEqual(raw('original/source/physical-input.json')['parameters']['c_s0'],'10')
+        s=(HERE/(PREFIX+'.py')).read_text();self.assertIn("cs=sp.sympify(incident['selectedPoint']['mapping']['uniformSoundSpeed'])",s)
+        self.assertNotIn('omega**2/sp.Rational(3,2)',s)
+    def test_native_A_memory_return_origin(self):
+        inp=raw('receiving/native-memory-A-substitution-input.json')
+        native=raw('original/native/LEFT-original.json')['actual']['acoustic']
+        self.assertEqual(inp['expression'],native['MEMORY_KERNELS']['A'])
+        self.assertEqual(raw('receiving/native-memory-A-substitution-return.json')['remaining'],[])
+    def test_completed_current_assignment_contracts_are_literal(self):
+        source=Path(manifest()['nativeFluxSource']).read_text();fn=next(n for n in ast.parse(source).body if isinstance(n,ast.FunctionDef) and n.name=='scientific_work')
+        expected={'JL':"JL=bound['LEFT']['path']['slab'].subs(lam,0)",'Bminus':'Bminus=B.subs(l,-p)','J0':'J0=JL.subs({km:p,kp:p})','Jminus':'Jminus=JL.subs({km:-p,kp:-p})','G0':'G0=clean(U.H*J0*U)','Gref':'Gref=clean(-Bminus.H*Jminus*Bminus)'}
+        for name,text in expected.items():
+            nodes=[n for n in fn.body if isinstance(n,ast.Assign) and len(n.targets)==1 and isinstance(n.targets[0],ast.Name) and n.targets[0].id==name]
+            self.assertEqual(len(nodes),1);self.assertEqual(ast.dump(nodes[0],include_attributes=False),ast.dump(ast.parse(text).body[0],include_attributes=False))
+    def test_native_C3_constructor_domain_census(self):
+        data=raw('receiving/grazing-plus-determinant-and-domains.json')['originalBlock']
+        t=ast.parse(data['srepr'],mode='eval').body;self.assertEqual(t.func.id,'MutableDenseMatrix')
+        rows=t.args[0].elts;self.assertEqual(len(rows),3);count=0
+        for row in rows:
+            self.assertEqual(len(row.elts),3)
+            for entry in row.elts:
+                for node in ast.walk(entry):
+                    if isinstance(node,ast.Call) and isinstance(node.func,ast.Name) and node.func.id=='Pow' and ast.unparse(node.args[1])=='Integer(-1)':
+                        count+=1;self.assertIn('receiving_block_q',ast.unparse(node.args[0]))
+        self.assertEqual(count,6) # syntax census, not scientific domain clearance
+    def test_original_bases_and_raw_det_precede_adjugate(self):
+        s=(HERE/(PREFIX+'.py')).read_text();self.assertIn('sp.preorder_traversal(entry)',s)
+        for call in ["domain_certificate('chart-K2'","domain_certificate('raw-determinant-denominator'","domain_certificate('cancelled-determinant-denominator'"]:
+            self.assertLess(s.index(call),s.index('adj=Cq.adjugate'))
+        self.assertNotIn('UNSUPPORTED_ORIGINAL_DENOMINATOR_FACTOR',s)
+    def test_explicit_fields_do_not_swallow_unknown_momentum(self):
+        s=(HERE/(PREFIX+'.py')).read_text();self.assertIn('mapping={oldl:l,oldq:q}',s)
+        self.assertIn('FOREIGN_RECEIVING_ARGUMENT',s)
+        self.assertNotIn("zero_field={v:sp.S.Zero for v in psi}",s)
+        self.assertIn("zero_field={v:sp.S.Zero for v in field_symbols}",s)
+        self.assertIn('JL.free_symbols<={km,kp}',s)
+    def test_complete_moving_distribution_and_forcing_weights(self):
+        s=(HERE/(PREFIX+'.py')).read_text()
+        for name in ['new-both-column-delta-prime-coefficient','new-both-column-T1-delta-coefficient','declared-derivative-control-entry','complete-source-and-chart-growth-ledger','sufficientSchwartzDecayExponentForL1']:self.assertIn(name,s)
+        self.assertIn("sourceGrowthPower':forcing_power",s)
 if __name__=='__main__':unittest.main()

@@ -1,0 +1,25 @@
+F...........................
+======================================================================
+FAIL: test_actual_inherited_end_step_family (__main__.Tooling)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_test.py", line 117, in test_actual_inherited_end_step_family
+    self.assertEqual(m['left'],m['right'])
+AssertionError: {'tex[91 chars]r': 'MutableDenseMatrix([[Mul(Rational(9, 5), [217 chars]]])'} != {'tex[91 chars]r': 'ImmutableDenseMatrix([[Mul(Rational(9, 5)[219 chars]]])'}
+- {'srepr': 'MutableDenseMatrix([[Mul(Rational(9, 5), I), Integer(0)], '
+?            ^
+
++ {'srepr': 'ImmutableDenseMatrix([[Mul(Rational(9, 5), I), Integer(0)], '
+?            ^^^
+
+            '[Mul(Integer(-1), Rational(9, 10), Pow(Integer(595), Rational(1, '
+            '2)), I), Mul(Rational(9, 10), I)], [Integer(0), Mul(Integer(-1), '
+            'Rational(9, 5), I)], [Integer(0), Integer(0)], [Integer(0), '
+            'Integer(0)]])',
+   'text': 'Matrix([[9*I/5, 0], [-9*sqrt(595)*I/10, 9*I/10], [0, -9*I/5], [0, '
+           '0], [0, 0]])'}
+
+----------------------------------------------------------------------
+Ran 28 tests in 1.558s
+
+FAILED (failures=1)

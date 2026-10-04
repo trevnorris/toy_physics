@@ -1,5 +1,5 @@
 Finite source projection, opposite-leg current and real-axis receiving build
-2026-10-04. No scientific execution or READY gate exists.
+Revision2, 2026-10-04. No scientific execution or READY gate exists.
 
 The physical question is whether the actual three-field receiving block has
 an outgoing real-axis pole and whether its projected forcing is localized in
@@ -42,9 +42,12 @@ Compute BOTH opposite-leg contractions and conjugacy, preserve exp(+-2ipx).
 The wrong-bra sign control changes that same contraction at a declared entry.
 7. Compute the new global determinant from the complete C3 after evenness and
 s=l^2 substitution. Save/check every original denominator before cancellation.
-The existing denominators are required to factor into nonzero constants and
-linear q factors whose roots have strictly negative real and imaginary parts;
-unsupported factors stop, without an alternative domain heuristic.
+Every original negative-power base is retained before together/cancel and
+transported onto the physical q sheet. The same exact two-ray polynomial test
+checks each base, joined entry denominator, chart K2, raw determinant denominator
+and cancelled determinant denominator. A denominator need not have its roots
+in the negative quadrant: roots outside the admitted rays are harmless.
+Unknown coefficients, signs or in-ray roots still stop.
 8. Map the physical sheet to q=t,0<=t<=p and q=i*r,r>=0. Exact rational real/imag
 polynomials feed gcdex and a persisted Euclidean chain. Nonconstant gcds require
 square-free Sturm sequences, exact signs and endpoint checks, including p and
@@ -52,7 +55,9 @@ positive infinity. A pole/unknown sign stops. No sampled roots or floating test.
 9. Join q=0 determinant to BOTH saved threshold operands and returns. A fixed
 full-block off-diagonal deletion is a sensitivity control. Only after domain
 and root clearance derive both adjugate identities and rational growth degrees.
-Include one additional momentum power from E3. This does not compute a field.
+Compute the actual rational degrees of R3, every pressure/normal/consumer
+factor, the eta multiplier and E3, adding positive growth exponents without
+buying decay through cancellation. This does not compute a field.
 
 Claims remain conditional on actual execution and subsequent inspection. The
 analytic all-derivative induction, weighted integrability and Riemann-Lebesgue
@@ -69,9 +74,34 @@ still needs that identity or second-order transverse amplitudes. Reflected
 transverse waves remain survival. No current/loss/flux number is guessed from a
 coordinate projector or Im(f-dagger G f).
 
-20 stdlib tooling/JSON/source tests pass. No SymPy import, scientific restoration,
+28 stdlib tooling/JSON/source tests pass. The initial metadata test compared
+mutable and immutable matrix wrappers; its failure and correction are preserved.
+This was not a scientific execution or a change to scientific equality. No SymPy import, scientific restoration,
 source projection, determinant, current contraction or native unit computation
 ran. The existing shared guard, supervisor, journal and no-deadline policy are
 unchanged. A future gate must pin actual worker/manifest/helpers/method/build/
 authority, with hook FIRST and the same pooled4GiB job limit. No retry/fallback,
 scheduler changes, generic verifier work or parked numerical recovery.
+
+Revision2 binds both old source momentum and depth at every pressure transport,
+refuses foreign symbols and uses an explicit five-field zero map. Actual B,
+Bprime, U, T1 and JL symbol sets are checked. Effective cs comes from the saved
+selectedPoint mapping (distinct from original input c_s0=10), and the actual
+saved native A-memory kernel is joined before A/rho transports chemical tags.
+Right=9U is restored with its original complete ten scalar proof operands and
+returns. New distribution checks cover both delta-prime and U*T1 columns,
+with the omitted R3prime control entry declared before the strict nonzero guard.
+
+The completed G0/Gref contractions are NOT repeated. Their actual diagonal
+argument frames are joined through the six original source assignments, the
+same live U/B/JL/epsilon/chart objects and published weight returns. The original
+source assignment AST is matched literally and never executed. This dependence
+on the previously accepted guarded execution is explicit, not a fresh baseline
+current computation. Both new cross contractions still use the actual current
+and both momenta. The native source remains supplied for reviewer assessment.
+
+Literal C3 constructor views for all9entries are supplied beside the complete
+matrix, without scientific decoding. They expose six original negative-power
+bases in the stored entries. This census is not a denominator clearance; the
+full exact domain checks remain future guarded science. No equation, physical
+input, method, old result, tolerance, shared helper or launcher changed.

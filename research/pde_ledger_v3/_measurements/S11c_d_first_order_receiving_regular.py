@@ -128,11 +128,16 @@ def scientific_work(manifest,J,decode):
     incident=get('source/incident-columns.json');U=incident['columns'];S=incident['chart']['matrixWeakFromUniform']
     require(incident['fieldOrder']==list(FIELDS),'original field order')
     p=sp.sympify(incident['selectedPoint']['mapping']['uniformNormal'])
+    cs=sp.sympify(incident['selectedPoint']['mapping']['uniformSoundSpeed'])
+    require(cs==sp.sympify(manifest['scope']['effectiveCs']) and sp.sympify(incident['selectedPoint']['mapping']['uniformFrequency'])==omega,'actual selected speed and held frequency')
+    J.emit('selected-physical-speed-context',{'selectedMapping':incident['selectedPoint']['mapping'],'effectiveCs':cs,'originalInputCs0':physical['parameters']['c_s0'],'effectiveScope':manifest['scope']['effectiveCs'],'physicalInput':physical,'notOriginalInputSpeedFallback':True})
     full=get('receiving/complete-transformed-operator.json');E5,D5,transformed=full['chart'],full['dual'],full['matrix']
     l=symbol(E5,'receiving_block_l');q=symbol(transformed,'receiving_block_q');C=transformed[2:5,2:5];R3=D5[2:5,:];E3=E5[:,2:5]
     H2=h1*h1+h2*h2;K2=l*l+H2;end=get('receiving/end-matching-prerequisite.json');B=end['B'];Bp=end['BprimeAtIncident'];delta=end['deltaP']
     matched=get('matching/matched-transverse-amplitudes.json')
     require(matched['B']==B and matched['Bprime']==Bp and matched['deltaP']==delta,'actual saved moving basis')
+    J.emit('moving-basis-symbol-identities',{'B':B,'Bprime':Bp,'T1':matched['T1'],'U':U,'receivingMomentum':l,'BFreeSymbols':sorted(B.free_symbols,key=str)})
+    require(B.free_symbols<={l} and not Bp.free_symbols and not U.free_symbols and not matched['T1'].free_symbols,'foreign moving-basis or incident symbol')
     old_matrix('receiving','geometric-dual',right=sp.eye(5))
     old_matrix('receiving','transverse-to-scalars-coupling',transformed[2:5,:2],sp.zeros(3,2))
     old_matrix('receiving','scalars-to-transverse-coupling',transformed[:2,2:5],sp.zeros(2,3))
@@ -151,8 +156,15 @@ def scientific_work(manifest,J,decode):
     # Join the existing chart multiplication operands; do not rerun the old whole operator transformation.
     require(full['chart']==E5 and full['dual']==D5,'actual chart and dual operands retained with accepted product proof')
     sheet=get('source/receiving-sheet.json');oldl,oldq=sheet['momentum'],sheet['depth'];beta=sheet['beta'];rho=values['rho_m']
-    zero('new-normal-depth-law',sheet['depthSquared'].xreplace({oldl:l}),omega**2/(sp.Rational(3,2))-H2-l*l)
-    zero('new-normal-vs-total-momentum',p*p,omega**2/sp.Rational(3,2)-H2)
+    def transport(name,expr,allowed):
+        expr=sp.sympify(expr);mapping={oldl:l,oldq:q}
+        J.emit(name+'-argument-input',{'original':expr,'mapping':list(mapping.items()),'allowed':sorted(allowed,key=str),'oldMomentumEqualsNew':oldl==l,'oldDepthEqualsNew':oldq==q})
+        result=expr.xreplace(mapping)
+        J.emit(name+'-argument-return',{'result':result,'freeSymbols':sorted(result.free_symbols,key=str)})
+        require(result.free_symbols<=allowed,'FOREIGN_RECEIVING_ARGUMENT '+name)
+        return result
+    zero('new-normal-depth-law',sheet['depthSquared'].xreplace({oldl:l}),omega**2/(cs*cs)-H2-l*l)
+    zero('new-normal-vs-total-momentum',p*p,omega**2/(cs*cs)-H2)
     zero('new-native-closure-beta',beta,omega*values['Lambda_A_0']/(rho*(1-sp.I*omega*values['tau_A'])))
     domain=get('receiving/outgoing-domain.json')
     require(domain['qSquared']==p*p-l*l and domain['beta']==beta,'actual outgoing domain operands')
@@ -180,6 +192,7 @@ def scientific_work(manifest,J,decode):
     zero('new-full-five-row-eta-table',projection,table)
     right=sp.Matrix.hstack(*(f['localRight'] for f in forces))
     zero('new-right-step-projection',R3.subs(l,p)*right,sp.zeros(3,2))
+    old_matrix('receiving','both-column-end-step',right,9*U)
     J.emit('new-full-projection-before-selection',{'Feta':Feta,'Fsigma':Fsigma,'D5':D5,'allEtaRows':projection,'allSigmaRows':D5*Fsigma/10,'R3':R3,'rightStep':right,'nonlocalizedTransverseRows':projection[:2,:],'physicalGradePath':'eta=lambda,sigma=lambda/10','noTransverseStepDiscarded':True})
     # NEW combined smooth derivative, not a replay of old source/profile or moment routines.
     Aprime=sp.diff(A,T)*(1-T*T)/L
@@ -198,15 +211,27 @@ def scientific_work(manifest,J,decode):
     assembly=get('source/first-order-pressure-assembly.json');require(len(assembly)==10 and len(pressure['entries'])==20,'full original pressure row/slot census')
     native=selected('original/native/LEFT-original.json',['actual','acoustic'])
     require(native==get('receiving/native-face-original-operands.json'),'same original native face bodies')
-    pressure_force=sp.zeros(5,2);face_maps={};tag_envelopes={};face_records=[]
+    pressure_force=sp.zeros(5,2);face_maps={};tag_envelopes={};face_records=[];forcing_factors=[]
+    field_symbols=set(sp.symbols('receiving_field_0:5'))
+    memory_input=get('receiving/native-memory-A-substitution-input.json');memory_return=get('receiving/native-memory-A-substitution-return.json')
+    J.emit('inherited-native-memory-A-arguments',{'input':memory_input,'return':memory_return,'originalKernel':native['MEMORY_KERNELS']['A']})
+    require(memory_input['expression']==native['MEMORY_KERNELS']['A'],'actual unbound memory A kernel')
+    A_memory=memory_return['value'];require(not A_memory.free_symbols,'fully bound native memory kernel')
+    zero('new-native-memory-A-physical-binding',A_memory,values['Lambda_A_0']/(1-sp.I*omega*values['tau_A']))
+    coefficient=clean(A_memory/rho)
+    J.emit('native-normalization-multiplier',{'savedMemory':A_memory,'rho':rho,'rawRatio':A_memory/rho,'canonicalRatio':coefficient})
     for face,sign in [('plus',1),('minus',-1)]:
         nativeface=[f for f in native['FACE_RECORDS'] if f['ORIENTATION']==sign];require(len(nativeface)==1,'original face selection')
         closure=old_scalar('receiving',face+'-native-affine-closure-homogeneous')
-        normal=get('source/'+face+'-normal-flat-arguments.json')['factor'].xreplace({oldq:q})
+        normal=transport('normal-'+face,get('source/'+face+'-normal-flat-arguments.json')['factor'],{l,q})
         old_scalar('receiving',face+'-original-lab-normal-join',normal)
         for col in range(2):
             aff=get('receiving/'+face+'-affine-face-column-'+str(col)+'.json');face_maps[(face,col)]=aff
-            require(aff['nativeFace']==nativeface[0] and aff['transformArgument']==Q,'native face/original Fourier argument')
+            require(aff['nativeFace']==nativeface[0],'native face identity')
+            for key in ['mu00','V00','totalMu','totalV','pressure','labPressureDerivative']:
+                allowed={l,q,*field_symbols}|({aff['directChemicalTag']} if aff['directChemicalTag']!=0 else set())
+                aff[key]=transport(face+'-'+str(col)+'-'+key,aff[key],allowed)
+            require(transport(face+'-'+str(col)+'-transfer',aff['transformArgument'],{l})==Q,'actual Fourier transfer')
             norm=aff['inheritedSourceNormalization'];source=get('source/'+face+'-source-01-column-'+str(col)+'-return.json')
             require(norm['operands']['left']==source['value'] and norm['return']['cancelled']==0,'actual source normalization inherited return')
             proof=old_scalar('receiving',face+'-native-normalization-argument-'+str(col),norm['operands']['right'])
@@ -215,11 +240,11 @@ def scientific_work(manifest,J,decode):
             require(aff['totalMu']==aff['mu00']+aff['directChemicalTag'],'actual affine chemical addition')
             require(aff['totalV']==aff['V00'],'actual held-profile zero direct velocity')
             velocity=get('receiving/'+face+'-restored-direct-velocity.json');require(velocity['value']==0 and velocity['return']['cancelled']==0,'inherited held velocity')
-            coefficient=values['Lambda_A_0']/(rho*(1-sp.I*omega*values['tau_A']))
-            require(proof['right']==coefficient*chemical['independentSigmaCoefficient'],'original actual normalization right argument')
+            zero('new-'+face+'-memory-normalization-argument-'+str(col),proof['right'],coefficient*chemical['independentSigmaCoefficient'])
             # New transport from complete physical affine pressure to the source-force tag.
-            psi=sorted(aff['mu00'].free_symbols-{l},key=str);zero_field={v:sp.S.Zero for v in psi}
-            direct=aff['pressure'].subs(zero_field);tag=aff['directChemicalTag'];response=sheet['flatResponse'].xreplace({oldq:q})
+            require(aff['mu00'].free_symbols<={l,*field_symbols},'only explicit five field leaves and receiving momentum')
+            zero_field={v:sp.S.Zero for v in field_symbols}
+            direct=aff['pressure'].subs(zero_field);tag=aff['directChemicalTag'];response=transport('response-'+face+'-'+str(col),sheet['flatResponse'],{l,q})
             zero('new-'+face+'-direct-pressure-count-'+str(col),direct,response*coefficient*tag)
             face_records.append({'face':face,'column':col,'affine':aff,'source':source,'chemical':chemical,'normalizationProof':proof,'nativeClosureProof':closure,'directPressure':direct,'sameNativeUnits':get('flux/LEFT-field-unit-join.json')})
     for col in range(2):
@@ -239,17 +264,19 @@ def scientific_work(manifest,J,decode):
                 require(piece['epsilon']==eps,'native epsilon once')
                 original_tag=piece['transformTag'];tag=original_tag if piece['source01Envelope']!=0 else sp.S.Zero
                 tag_envelopes[(face,col)]=(tag,piece['source01Envelope'])
-                factor=piece['flatNormalFactor'].xreplace({oldq:q});term=piece['consumers']['00']*factor*tag
+                factor=transport('factor-'+str(col)+'-'+row+'-'+face+'-'+slot,piece['flatNormalFactor'],{l,q});term=piece['consumers']['00']*factor*tag
+                require(not piece['consumers']['00'].free_symbols and factor.free_symbols<={q},'constant consumer and q-only native flat factor')
+                forcing_factors.append({'row':row,'rowIndex':ri,'column':col,'face':face,'slot':slot,'consumer':piece['consumers']['00'],'factor':factor,'coefficient':piece['consumers']['00']*factor/10})
                 # This is a new receiving transport; old pressure source functions remain uncalled.
                 require(piece['transformConvention']=='integral exp(-i(l-p)x) envelope(x) dx; inverse dl/(2pi); not evaluated','exact Fourier convention')
-                zero('new-pressure-piece-transport-'+str(col)+'-'+row+'-'+face+'-'+slot,sp.sympify(piece['pressure01']).xreplace({oldq:q}),term)
-                affine_direct=aff['pressure'].subs({v:sp.S.Zero for v in aff['mu00'].free_symbols-{l}})
+                zero('new-pressure-piece-transport-'+str(col)+'-'+row+'-'+face+'-'+slot,transport('piece-'+str(col)+'-'+row+'-'+face+'-'+slot,piece['pressure01'],{l,q,original_tag}),term)
+                affine_direct=aff['pressure'].subs({v:sp.S.Zero for v in field_symbols})
                 normal_sign=1 if face=='plus' else -1
                 from_affine=piece['consumers']['00']*affine_direct*(normal_sign*sp.I*q if slot=='normal' else 1)
                 normalized_tag_map={original_tag:10*coefficient*aff['directChemicalTag']}
                 zero('new-affine-force-transport-'+str(col)+'-'+row+'-'+face+'-'+slot,term.xreplace(normalized_tag_map)/10,from_affine)
                 total+=term;details.append({'originalPiece':piece,'receivingBaselineEntry':base,'flatArguments':args,'receivingTerm':term,'affineChemicalMap':aff['inheritedSourceNormalization']})
-            zero('new-pressure-row-transport-'+str(col)+'-'+row,sp.sympify(rec['pressure01']).xreplace({oldq:q}),total)
+            zero('new-pressure-row-transport-'+str(col)+'-'+row,transport('row-'+str(col)+'-'+row,rec['pressure01'],{l,q,*[v['transformTag'] for v in rec['pieces']]}),total)
             pressure_force[ri,col]=-total/10
             J.emit('new-complete-pressure-row-'+str(col)+'-'+row,{'saved':rec,'pieces':details,'force':pressure_force[ri,col],'sign':'minus native operator action','sourceDerivativeAt':p,'normalDepthAt':q})
     J.emit('native-affine-source-transport',face_records)
@@ -279,6 +306,9 @@ def scientific_work(manifest,J,decode):
     Rprime=R3.diff(l).subs(l,p);moving=delta*(R3.subs(l,p)*Bp+Rprime*U)
     J.emit('moving-projector-distribution-operands',{'R3':R3,'B':B,'Bprime':Bp,'U':U,'deltaP':delta,'R3primeAtP':Rprime,'matchedT1':matched['T1'],'deltaCoefficient':moving,'deltaPrimeCoefficient':-delta*R3.subs(l,p)*U,'fourierJet':'2pi*[U delta+lambda*((deltaP Bprime+U T1)delta-deltaP U delta-prime)]','homogeneousRightEndOnly':True})
     zero('new-moving-projector-delta-prime-cancellation',moving,sp.zeros(3,2))
+    zero('new-both-column-delta-prime-coefficient',-delta*R3.subs(l,p)*U,sp.zeros(3,2))
+    zero('new-both-column-T1-delta-coefficient',R3.subs(l,p)*U*matched['T1'],sp.zeros(3,2))
+    J.emit('declared-derivative-control-entry',{'row':0,'column':0,'projector':R3.subs(l,p),'basisDerivative':Bp,'rawEntry':(R3.subs(l,p)*Bp)[0,0],'baseline':moving[0,0],'mutant':(delta*R3.subs(l,p)*Bp)[0,0],'deltaP':delta})
     J.nonzero('drop-moving-projector-derivative-control',moving[0,0],(delta*R3.subs(l,p)*Bp)[0,0])
     # Actual opposite-leg native current; no current constructor, G0, Gref or K1 replay.
     flux=get('flux/physical-linear-survival-operands.json');JL=flux['leftUnboundCurrent']
@@ -292,8 +322,27 @@ def scientific_work(manifest,J,decode):
     # New explicit transport join from the saved epsilon-stripped uniform-chart operand.
     zero('new-native-current-chart-join',epsilonproof['right'],eps**2*S.T*JL*S)
     units=get('flux/LEFT-field-unit-join.json');require(tuple(units['currentUnit'])==(0,-3,1),'actual inherited physical current units')
-    km=symbol(JL,'flux_left_momentum');kp=symbol(JL,'flux_right_momentum');Bm=B.subs(l,-p);Bp_inc=B.subs(l,p)
+    km=symbol(JL,'flux_left_momentum');kp=symbol(JL,'flux_right_momentum')
+    require(JL.free_symbols<={km,kp},'foreign native current momentum')
+    Bm=B.subs(l,-p);Bp_inc=B.subs(l,p)
     require(get('receiving/incident-chart-match-matrix-operands.json')['left']==Bp_inc,'actual incoming leg restoration')
+    original_flux_source=Path(manifest['nativeFluxSource']).read_text()
+    original_function=next(n for n in ast.parse(original_flux_source).body if isinstance(n,ast.FunctionDef) and n.name=='scientific_work')
+    requested_assignments={
+        'JL':"JL=bound['LEFT']['path']['slab'].subs(lam,0)",
+        'Bminus':'Bminus=B.subs(l,-p)',
+        'J0':'J0=JL.subs({km:p,kp:p})',
+        'Jminus':'Jminus=JL.subs({km:-p,kp:-p})',
+        'G0':'G0=clean(U.H*J0*U)',
+        'Gref':'Gref=clean(-Bminus.H*Jminus*Bminus)'}
+    assignment_receipts=[]
+    for name,expected in requested_assignments.items():
+        actual=[n for n in original_function.body if isinstance(n,ast.Assign) and len(n.targets)==1 and isinstance(n.targets[0],ast.Name) and n.targets[0].id==name]
+        require(len(actual)==1 and ast.dump(actual[0],include_attributes=False)==ast.dump(ast.parse(expected).body[0],include_attributes=False),'actual completed diagonal-current source assignment '+name)
+        assignment_receipts.append({'name':name,'originalSource':ast.get_source_segment(original_flux_source,actual[0]),'line':actual[0].lineno})
+    # These are explicit old argument frames and saved returns, NOT another evaluation
+    # of U.H*J0*U or -Bminus.H*Jminus*Bminus. Original execution provenance is inherited.
+    J.emit('inherited-diagonal-current-argument-frames',{'sourcePath':manifest['nativeFluxSource'],'sourceSha256':sha(manifest['nativeFluxSource']),'assignments':assignment_receipts,'sameOriginalIncident':incident,'sameOriginalMovingBasis':end,'sameCurrentInput':currentproof,'frames':[{'name':'G0','bra':Bp_inc,'ket':Bp_inc,'current':JL,'momentumLegs':[[km,p],[kp,p]],'outwardSign':1,'savedReturn':flux['G0']},{'name':'Gref','bra':Bm,'ket':Bm,'current':JL,'momentumLegs':[[km,-p],[kp,-p]],'outwardSign':-1,'savedReturn':flux['Gref']}],'noDiagonalContractionReplayed':True,'provenance':'Exact completed source assignments plus live original operand identity and published weight returns; conditional on preserved original guarded execution, not a new numerical weight proof.'})
     minusplus=Bm.H*JL.subs({km:-p,kp:p})*Bp_inc;plusminus=Bp_inc.H*JL.subs({km:p,kp:-p})*Bm
     x=sp.Symbol('receiving_cross_flux_x',real=True)
     J.emit('opposite-leg-native-current-operands',{'JL':JL,'braMinus':Bm,'ketPlus':Bp_inc,'km':km,'kp':kp,'minusPlus':minusplus,'plusMinus':plusminus,'minusPlusPhase':sp.exp(2*sp.I*p*x),'plusMinusPhase':sp.exp(-2*sp.I*p*x),'inheritedG0':flux['G0'],'inheritedGref':flux['Gref'],'inheritedK1':flux['K1'],'harmonicAndEpsilonConvention':flux['epsilonConvention'],'units':units,'physicalPowerBalance':False})
@@ -310,37 +359,11 @@ def scientific_work(manifest,J,decode):
     require(not C_s.has(l),'UNRESOLVED_EVEN_BLOCK_REDUCTION')
     zero('new-even-block-reconstruction',C_s.subs(s,l*l),C)
     Cq=C_s.subs(s,p*p-q*q)
-    # Original denominators are checked BEFORE determinant cancellation.
-    original_denominators=[sp.fraction(v)[1] for v in C]
-    def domain_certificate(name,den):
-        J.emit(name+'-denominator-input',{'denominator':den,'q':q,'rays':['q=t,0<=t<=p','q=i*r,r>=0']})
-        constant,factors=sp.factor_list(den,q,extension=sp.I)
-        details=[];product=constant
-        require(constant.is_zero is False and constant.is_finite is True,'nonzero constant denominator prefactor')
-        for factor,multiplicity in factors:
-            poly=sp.Poly(factor,q,extension=sp.I);require(poly.degree()==1,'UNSUPPORTED_ORIGINAL_DENOMINATOR_FACTOR')
-            root=-poly.nth(0)/poly.nth(1);root=sp.expand_complex(sp.cancel(root));re,im=root.as_real_imag()
-            details.append({'factor':factor,'multiplicity':multiplicity,'coefficients':poly.all_coeffs(),'root':root,'realPart':re,'imaginaryPart':im,'excludedBy':'strictly negative real and imaginary parts'})
-            product*=factor**multiplicity
-        J.emit(name+'-denominator-return',{'constant':constant,'factors':details,'reconstruction':product})
-        zero(name+'-denominator-reconstruction',den,product)
-        require(all(v['realPart'].is_negative is True and v['imaginaryPart'].is_negative is True for v in details),'OUTGOING_DENOMINATOR_NOT_EXCLUDED')
-    for i,den in enumerate(original_denominators):domain_certificate('original-entry-'+str(i),den)
-    J.emit('new-determinant-input',{'C3':C,'Cq':Cq,'originalEntryDenominators':original_denominators,'K2':K2,'physicalDepthLaw':domain['qSquared'],'fullFiveFieldHasTransversePoles':True})
-    rawdet=Cq.det(method='berkowitz');joined=sp.together(rawdet);rawnum,rawden=sp.fraction(joined);det=sp.cancel(joined);N,D=sp.fraction(det)
-    J.emit('new-determinant-return',{'rawDeterminant':rawdet,'joined':joined,'rawNumerator':rawnum,'rawDenominator':rawden,'cancelled':det,'numerator':N,'denominator':D,'numeratorCoefficients':sp.Poly(N,q,extension=sp.I).all_coeffs(),'denominatorCoefficients':sp.Poly(D,q,extension=sp.I).all_coeffs()})
-    zero('new-determinant-rational-reconstruction',rawnum*D,N*rawden)
-    domain_certificate('determinant',D)
-    for side,sign in [('minus',-1),('plus',1)]:
-        threshold=get('receiving/grazing-'+side+'-determinant-and-domains.json')
-        require(threshold['originalBlock']==C and dict(threshold['point'])=={l:sign*p,q:sp.S.Zero},'actual original threshold arguments')
-        J.emit('inherited-'+side+'-threshold',threshold)
-        zero('new-'+side+'-threshold-join',det.subs(q,0),threshold['determinant'])
-    def exclude_ray(name,substitution,upper):
-        r=sp.Symbol('receiving_ray_'+name,real=True);expr=sp.expand(N.subs(q,substitution(r)))
+    def exclude_ray(name,polynomial,substitution,upper):
+        r=sp.Symbol('receiving_ray_'+name,real=True);expr=sp.expand(polynomial.subs(q,substitution(r)))
         realpart,imagpart=sp.expand_complex(expr).as_real_imag();a=sp.Poly(realpart,r,domain=sp.QQ);b=sp.Poly(imagpart,r,domain=sp.QQ)
-        J.emit(name+'-real-imag-input',{'originalN':N,'substitution':substitution(r),'expression':expr,'real':a.as_expr(),'imaginary':b.as_expr(),'realCoefficients':a.all_coeffs(),'imaginaryCoefficients':b.all_coeffs(),'interval':[0,upper]})
-        require(not(a.is_zero and b.is_zero),'IDENTICALLY_ZERO_RECEIVING_DETERMINANT')
+        J.emit(name+'-real-imag-input',{'originalPolynomial':polynomial,'substitution':substitution(r),'expression':expr,'real':a.as_expr(),'imaginary':b.as_expr(),'realCoefficients':a.all_coeffs(),'imaginaryCoefficients':b.all_coeffs(),'interval':[0,upper]})
+        require(not(a.is_zero and b.is_zero),'IDENTICALLY_ZERO_OUTGOING_DOMAIN_POLYNOMIAL')
         # Save the exact Euclidean operands and every remainder, including zero components.
         aa,bb=a,b;euclid=[]
         while not bb.is_zero:
@@ -366,7 +389,53 @@ def scientific_work(manifest,J,decode):
         J.emit(name+'-root-exclusion',{'lowerSigns':lo,'upperSigns':hi,'lowerVariations':variations(lo),'upperVariations':variations(hi),'openIntervalRoots':count,'endpointGcdValues':endpoints,'upper':upper})
         require(all(v.is_zero is False for v in endpoints) and count==0,'REAL_AXIS_RECEIVING_POLE_OR_ENDPOINT_ROOT '+name)
         return {'ray':name,'gcd':g,'count':count,'certificate':'exact square-free Sturm and endpoints'}
-    certificates=[exclude_ray('propagating',lambda r:r,p),exclude_ray('evanescent',lambda r:sp.I*r,sp.oo)]
+    denominator_certificates=[]
+    def domain_certificate(name,expr):
+        J.emit(name+'-domain-input',{'expression':expr,'q':q,'allowedRays':['q=t,0<=t<=p','q=i*r,r>=0']})
+        require(expr.free_symbols<={q},'FOREIGN_OR_UNREDUCED_DOMAIN_ARGUMENT '+name)
+        joined=sp.together(expr);n,d=sp.fraction(joined)
+        # No cancel: both the numerator and denominator of this original base
+        # must be defined/nonzero before any later rational cancellation.
+        J.emit(name+'-domain-rational-pair',{'original':expr,'joined':joined,'numerator':n,'denominator':d})
+        group=[]
+        for tag,poly in [('numerator',n),('denominator',d)]:
+            require(sp.Poly(poly,q,extension=sp.I).as_expr()==sp.expand(poly),'exact Gaussian-rational denominator polynomial')
+            for ray,sub,upper in [('propagating',lambda r:r,p),('evanescent',lambda r:sp.I*r,sp.oo)]:
+                group.append(exclude_ray(name+'-'+tag+'-'+ray,poly,sub,upper))
+        denominator_certificates.append({'name':name,'original':expr,'rationalPair':[n,d],'certificates':group})
+    # Retain every original negative-power base even when together/cancel would
+    # erase it. Domains are transported onto q with the same physical sheet.
+    original_denominators=[]
+    for i,entry in enumerate(C):
+        bases=[]
+        for position,node in enumerate(sp.preorder_traversal(entry)):
+            if node.is_Pow and node.exp.is_negative is True:
+                J.emit('entry-'+str(i)+'-base-'+str(len(bases))+'-input',{'entry':entry,'treePosition':position,'negativePower':node,'base':node.base,'exponent':node.exp})
+                require(node.exp.is_Integer is True,'NONRATIONAL_ORIGINAL_DENOMINATOR_POWER')
+                transported=node.base.xreplace({l*l:s}).subs(s,p*p-q*q)
+                require(not transported.has(l),'original denominator even-sheet map')
+                bases.append({'position':position,'base':node.base,'exponent':node.exp,'transported':transported})
+        joined=sp.together(Cq[i]);n,d=sp.fraction(joined)
+        J.emit('entry-'+str(i)+'-full-domain-operands',{'original':entry,'sheetEntry':Cq[i],'originalNegativePowers':bases,'joinedEntry':joined,'joinedNumerator':n,'joinedDenominator':d})
+        for j,base in enumerate(bases):domain_certificate('entry-'+str(i)+'-base-'+str(j),base['transported'])
+        domain_certificate('entry-'+str(i)+'-joined-denominator',d)
+        original_denominators.append({'original':entry,'negativePowers':bases,'joinedDenominator':d})
+    # The receiving chart has its own domain even if simplified C3 has lost K2.
+    domain_certificate('chart-K2',p*p+H2-q*q)
+    J.emit('new-determinant-input',{'C3':C,'Cq':Cq,'originalEntryDenominators':original_denominators,'K2':K2,'physicalDepthLaw':domain['qSquared'],'fullFiveFieldHasTransversePoles':True})
+    rawdet=Cq.det(method='berkowitz');joined=sp.together(rawdet);rawnum,rawden=sp.fraction(joined)
+    J.emit('new-raw-determinant-before-cancel',{'rawDeterminant':rawdet,'joined':joined,'rawNumerator':rawnum,'rawDenominator':rawden})
+    domain_certificate('raw-determinant-denominator',rawden)
+    det=sp.cancel(joined);N,D=sp.fraction(det)
+    J.emit('new-determinant-return',{'rawDeterminant':rawdet,'joined':joined,'rawNumerator':rawnum,'rawDenominator':rawden,'cancelled':det,'numerator':N,'denominator':D,'numeratorCoefficients':sp.Poly(N,q,extension=sp.I).all_coeffs(),'denominatorCoefficients':sp.Poly(D,q,extension=sp.I).all_coeffs()})
+    zero('new-determinant-rational-reconstruction',rawnum*D,N*rawden)
+    domain_certificate('cancelled-determinant-denominator',D)
+    for side,sign in [('minus',-1),('plus',1)]:
+        threshold=get('receiving/grazing-'+side+'-determinant-and-domains.json')
+        require(threshold['originalBlock']==C and dict(threshold['point'])=={l:sign*p,q:sp.S.Zero},'actual original threshold arguments')
+        J.emit('inherited-'+side+'-threshold',threshold)
+        zero('new-'+side+'-threshold-join',det.subs(q,0),threshold['determinant'])
+    certificates=[exclude_ray('determinant-propagating',N,lambda r:r,p),exclude_ray('determinant-evanescent',N,lambda r:sp.I*r,sp.oo)]
     # The off-diagonal control is fixed before any outcome, never searched/fitted.
     mutant=Cq.copy();mutant[0,1]=sp.S.Zero;mutant[1,0]=sp.S.Zero
     J.emit('delete-coupling-control-input',{'baseline':Cq,'mutant':mutant,'deletedPositions':[[0,1],[1,0]],'q':0})
@@ -383,9 +452,30 @@ def scientific_work(manifest,J,decode):
         J.emit('large-momentum-entry-'+str(i),entry)
         require(not pd.is_zero and pd.LC().is_zero is False,'actual nonzero leading denominator')
         entry['growthPower']=0 if pn.is_zero else max(0,int(pn.degree()-pd.degree()));growth.append(entry)
-    chart_extra=1;power=max(v['growthPower'] for v in growth)+chart_extra
-    J.emit('conditional-three-field-response-class',{'symbolicMultiplier':multiplier,'entryGrowth':growth,'physicalChart':E3,'chartAdditionalPower':chart_extra,'sufficientReceivingPolynomialWeight':power,'rootCertificates':certificates,'profileCertificates':profile_records,'compactArgument':'Actual denominator and determinant nonvanishing give continuity on each compact outgoing ray including grazing; rational large-r degrees give polynomial growth. No numerical norm bound.','FourierArgument':'Aprime, every sigma and direct source envelope have endpoint-zero polynomial factors and hence Schwartz transforms. R3 and all flat normal factors have at most polynomial growth. Choose weights larger than the displayed receiving/chart growth for ordinary L1 and weighted L2.','conclusion':'Conditional outgoing weighted-L2 three-field uniqueness and Riemann-Lebesgue decay of E3 times the three-field contribution only. Analytic induction/measure arguments assessed, not machine theorem proofs.','notClaimed':['total matched field decay','decay rate','far-bulk angular flux','threshold-supported distribution uniqueness','nonuniform work balance','quadratic leakage coefficient'],'powerIdentityRequiredNext':True})
-    return {'executionStatus':'COMPLETED_FINITE_SOURCE_PROJECTION_CROSS_FLUX_AND_REAL_AXIS_RECEIVING','inheritedZeros':len(inherited),'projectedUBThreeRowsZero':True,'crossCurrentZero':True,'realAxisC3PoleExclusion':certificates,'conditionalGrowthPowerIncludingChart':power,'newControls':3,'fullFiveFieldInverse':False,'fieldComputed':False,'FourierIntegralEvaluated':False,'powerBalanceDerived':False,'leakageFactor':None,'oldFunctionsCalled':False,'scientificAcceptance':False}
+    def degree_record(name,expr,var):
+        require(expr.free_symbols<={var},'foreign growth argument '+name)
+        value=sp.cancel(expr);n,d=sp.fraction(value);pn=sp.Poly(n,var,extension=[sp.I,sp.sqrt(595)]);pd=sp.Poly(d,var,extension=[sp.I,sp.sqrt(595)])
+        record={'name':name,'actualCoefficient':expr,'variable':var,'numerator':n,'denominator':d,'numeratorDegree':pn.degree(),'denominatorDegree':pd.degree(),'leadingNumerator':pn.LC(),'leadingDenominator':pd.LC(),'zeroNumerator':pn.is_zero,'growthPower':0 if pn.is_zero else max(0,int(pn.degree()-pd.degree()))}
+        J.emit('forcing-growth-'+name,record)
+        require(not pd.is_zero and pd.LC().is_zero is False,'actual forcing denominator leading coefficient')
+        physical_denominator=d if var==q else d.xreplace({l*l:p*p-q*q})
+        domain_certificate('forcing-'+name+'-denominator',physical_denominator)
+        return record
+    projection_growth=[degree_record('R3-'+str(i),v,l) for i,v in enumerate(R3)]
+    eta_growth=degree_record('Aprime-multiplier',1/(5*K2),l)
+    pressure_growth=[]
+    for i,term in enumerate(forcing_factors):
+        factor_growth=degree_record('pressure-'+str(i),term['coefficient'],q)
+        # Product bounds add positive exponents. No cancellation buys decay.
+        row_power=max(projection_growth[j*R3.cols+term['rowIndex']]['growthPower'] for j in range(R3.rows))
+        pressure_growth.append({'operand':term,'factor':factor_growth,'receivingProjectionGrowth':row_power,'productGrowth':row_power+factor_growth['growthPower']})
+    chart_growth=[degree_record('E3-'+str(i),v,l) for i,v in enumerate(E3)]
+    forcing_power=max([eta_growth['growthPower']]+[v['growthPower'] for v in projection_growth]+[v['productGrowth'] for v in pressure_growth])
+    chart_extra=max(v['growthPower'] for v in chart_growth)
+    power=max(v['growthPower'] for v in growth)+chart_extra+forcing_power
+    J.emit('complete-source-and-chart-growth-ledger',{'eta':eta_growth,'sigmaProjection':projection_growth,'pressure':pressure_growth,'chart':chart_growth,'sourceGrowthPower':forcing_power,'chartPower':chart_extra,'receivingGrowthPower':max(v['growthPower'] for v in growth),'totalPower':power,'sufficientSchwartzDecayExponentForL1':power+2,'analyticRelation':'On evanescent rays r=sqrt(l^2-p^2) is asymptotic to |l|; finite compact portions are bounded by the established domains. Arbitrarily stronger Schwartz weights give all required weighted L2 classes.','domainCertificates':denominator_certificates,'noUniformNormOrRate':True})
+    J.emit('conditional-three-field-response-class',{'symbolicMultiplier':multiplier,'entryGrowth':growth,'physicalChart':E3,'chartAdditionalPower':chart_extra,'forcingAdditionalPower':forcing_power,'sufficientCombinedPolynomialWeight':power,'rootCertificates':certificates,'profileCertificates':profile_records,'compactArgument':'Actual denominator and determinant nonvanishing give continuity on each compact outgoing ray including grazing; rational large-r degrees give polynomial growth. No numerical norm bound.','FourierArgument':'Aprime, every sigma and direct source envelope have endpoint-zero polynomial factors and hence Schwartz transforms. R3 and all flat normal factors have at most polynomial growth. Choose weights larger than the displayed receiving/chart growth for ordinary L1 and weighted L2.','conclusion':'Conditional outgoing weighted-L2 three-field uniqueness and Riemann-Lebesgue decay of E3 times the three-field contribution only. Analytic induction/measure arguments assessed, not machine theorem proofs.','notClaimed':['total matched field decay','decay rate','far-bulk angular flux','threshold-supported distribution uniqueness','nonuniform work balance','quadratic leakage coefficient'],'powerIdentityRequiredNext':True})
+    return {'executionStatus':'COMPLETED_FINITE_SOURCE_PROJECTION_CROSS_FLUX_AND_REAL_AXIS_RECEIVING','inheritedZeros':len(inherited),'projectedUBThreeRowsZero':True,'crossCurrentZero':True,'realAxisC3PoleExclusion':certificates,'conditionalGrowthPowerIncludingForcingAndChart':power,'newControls':3,'fullFiveFieldInverse':False,'fieldComputed':False,'FourierIntegralEvaluated':False,'powerBalanceDerived':False,'leakageFactor':None,'oldFunctionsCalled':False,'scientificAcceptance':False}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--inputs',type=Path,required=True);p.add_argument('--gate',type=Path,required=True);p.add_argument('--out',type=Path,required=True);args=p.parse_args()

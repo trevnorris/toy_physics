@@ -1,0 +1,170 @@
+{
+  "status": "CLAUDE_ONLY_EXPLICIT_NUMERICAL_PREFIX_RECOVERY_METHOD_REVIEW_LAUNCHED",
+  "recordedUtc": "2026-10-04T15:45:08.301678+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-prefix-recovery-method-review",
+  "failureCommit": "9d91cbf7",
+  "preparedCommit": "e241dc29",
+  "launch": {
+    "jobPid": 1702868,
+    "watcherPid": 1702869,
+    "packetSha256": "10e54a5882a830efa38a1ef56639baec4bee68d1b399aa0fd4cf5bc994b4f652",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 1702869,
+    "jobPid": 1702868,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T15:44:53.565516+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "dfcedb33e96fdcaa201cc14e019f48ca084cf6676b9d28b3b2f027bd31347878",
+    "notifications": {}
+  },
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-04T15:42:36.174612+00:00",
+    "packetSha256": "10e54a5882a830efa38a1ef56639baec4bee68d1b399aa0fd4cf5bc994b4f652",
+    "archiveSha256": "f43446bfa156f6b13cac8dabfab7daca1f5b2c2114bd4cdf083a1a7420a48a70",
+    "reviewers": [
+      "claude"
+    ],
+    "files": 25478,
+    "bytes": 529134237,
+    "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+    "authority": "Standing user/AGENTS direction and temporary Claude-only policy authorize this necessary explicit unfinished-parent recovery assessment to established Claude without a routine question. No execution of science, automatic retry or disclosure to a new recipient.",
+    "scope": {
+      "target": "Explicit one-parent numerical-prefix recovery method and stdlib storage prototype only",
+      "ordinaryJAndThreeAddedDirectOnly": true,
+      "realOmega": 3,
+      "sameOriginalPhysicalInputs": true,
+      "sameRulesWindowsAndTolerances": true,
+      "noNumericalWorkerExists": true,
+      "scientificGateExists": false,
+      "scienceCalls": 0,
+      "completeNumericalRequestsToPreserve": 434,
+      "pendingParents": 1,
+      "originalDatabaseRecords": 1450,
+      "originalFailureCommit": "9d91cbf7",
+      "unsavedParentScalarReconstructionExplicit": true,
+      "fullPacketAction": false,
+      "leakageFactor": null
+    },
+    "noAutomaticRetry": true,
+    "scienceExecutionsAuthorizedByThisReviewLaunch": 0,
+    "noPeerReportsShared": true
+  },
+  "reviewReceipt": {
+    "engine": "claude",
+    "sessionId": "7acd510d-2fe9-416f-9704-dfbe46fa4539",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "7acd510d-2fe9-416f-9704-dfbe46fa4539"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-prefix-recovery-method-review/claude/work",
+    "startedUtc": "2026-10-04T15:45:00.930602+00:00",
+    "packetSha256": "10e54a5882a830efa38a1ef56639baec4bee68d1b399aa0fd4cf5bc994b4f652",
+    "promptSha256": "cff04758a1c161df371c7766e5e01b384a17fee0038adbde9a676ab2b34f1daf",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1702925
+  },
+  "processes": {
+    "claude": {
+      "pid": 1702925,
+      "finishedBeforeSnapshot": false,
+      "actualCommand": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "--disable-slash-commands",
+        "--session-id",
+        "7acd510d-2fe9-416f-9704-dfbe46fa4539"
+      ],
+      "receiptCommand": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "7acd510d-2fe9-416f-9704-dfbe46fa4539"
+      ],
+      "sourceOnlyTools": true,
+      "reportNotRead": true,
+      "privateFilesChecked": 25478
+    },
+    "coordinator": {
+      "pid": 1702868,
+      "presentAtSnapshot": true
+    },
+    "completionWatcher": {
+      "pid": 1702869,
+      "presentAtSnapshot": true
+    }
+  },
+  "inspectionChecks": 76433,
+  "allSourceAndPrivateHashesIntact": true,
+  "reportsRead": false,
+  "noPeerSharing": true,
+  "selectedReviewers": [
+    "claude"
+  ],
+  "noGrokLaunched": true,
+  "reviewPolicyCommit": "2dc38b0d",
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "scientificWorkerExists": false,
+  "automaticRetry": false,
+  "noElapsedReviewLimit": true,
+  "continuation": "Existing-session local completion hook waits for the one Claude attempt. No model polling or recurring task."
+}

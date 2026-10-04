@@ -879,3 +879,28 @@ the unchanged guard must still make its own fresh reservation and enforce limits
 Gate7d628759e3d78f8874015ea465988f5d34269d647a2bab326dec8b98697a8aa8
 authorizes one4GiB pooled native unit bridge without deadlines or retries.
 No native scientific unit work ran during preparation.
+
+## 2026-10-03 — native pressure source and closure unit bridge accepted
+
+The unchanged paired-clear instrument completed25operations:14unit certificates
+with1922saved node decisions, six original case joins, the DTN export-key join
+and four actual mutant refusals. Both faces have normalized source units L/T,
+flat impedance M/(L^3 T), dimensionless inverse operand and pressure M/(L^2 T^2).
+Wrong opaque-Z and brane-as-bulk density assignments refuse in the original
+Adds on each face. All30generated registry symbols are available across the
+four inherited registries; their original inference dependence remains.
+
+2388completion checks cover168chain records,15saved copies,39source posthashes,
+37source snapshots and16additional identity copies. Strict scientific stderr is
+empty and stdout equals checks bytes. The run used1.873s under the unchanged
+guard, peaked155992064bytes, and recorded zero limit/OOM/swap events with actual
+RuntimeMaxUSec=infinity and Restart=no. The metadata inspector initially expected
+guard stdout to be scientific stdout; the guard actually carries the supervisor
+summary. Both actual streams were then joined to their correct records. That
+inspection assumption and correction are preserved; no science was repeated.
+
+This accepts only native unbound source/closure homogeneity. Complete substitution,
+grade/jet/field/profile and H/J/direct/measure transport into544pressure summands
+is still required, followed by exact storage/sharing and evaluator readiness.
+No pressure integral, action, current or loss has been calculated. The clear next
+work reuses these14returns and the saved source transport index without replay.

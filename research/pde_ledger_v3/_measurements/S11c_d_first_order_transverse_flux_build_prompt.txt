@@ -1,0 +1,38 @@
+Review the actual bounded native transverse end-flux worker against section5
+of method-plan.txt and the supplied original science/source operands. We need
+a physics judgment on the proposed finite calculation, not a leakage number.
+Please read worker.py, build-notes.txt and method-plan.txt in full. Inspect the
+actual saved matching/end/current arguments, native source conventions, both
+momentum legs, epsilon/units and original opaque restoration path. Every runtime
+input is supplied completely. Do not execute code, unpickle scientific objects,
+run a producer/validator or use external files. No old reviewer report or peer
+commentary is supplied. State coverage limitations honestly.
+
+The new question is whether actual physical flux normalization makes the
+matched amplitude change a linear survival deficit. Inspect full RIGHT native
+end dependence and changing polarizations; reflected waves count as survival.
+Native current is from SlabEnergyBalance, not a coordinate Gram or frequency
+derivative. Check that the original harmonic normalization, mass-rate correction,
+source/chart/physical bindings and unbound RIGHT object joins support this use.
+Does this implementation correctly form G0/Gref/G1/K1, detect bad current signs,
+handle gauge/origin covariance, and stop an unjustified quadratic-loss route?
+Do any missing physical arguments prevent even this finite conditional flux
+prerequisite? Full other-channel radiation, all-real coupled regularity and
+held-profile external work remain open and are not accepted by K1=0.
+
+Inspect source and runtime obligations substantively. In particular, original
+RIGHT opaque objects are supplied with original producer/source/receipt and
+literal selectors, but no native restoration has yet run. An immutable receipt
+is not a scientific equality. Source-only findings cannot certify runtime.
+The worker may not replay T1/moments/receiving/source/current constructors.
+No solver, field/power integral or leakage calculation is proposed.
+
+Return exactly one literal first-line verdict:
+CLEAR FOR THIS NATIVE TRANSVERSE END-FLUX BUILD
+or
+NEEDS REVISION
+Then identify any concrete blocking error and its physical/source consequence.
+Distinguish a blocker from limitations that this finite prerequisite explicitly
+retains. Do not request optional wording changes as another review cycle.
+A CLEAR verdict authorizes only subsequent readiness for this bounded worker,
+not a computed result, complete scattering/current balance or leakage factor.

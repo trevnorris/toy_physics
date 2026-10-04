@@ -1,0 +1,36 @@
+{
+  "status": "FIXED_TRANSVERSE_FLUX_BUILD_PACKET_VERIFIED",
+  "packetSha256": "0178d02c28d9e2cb1f70ac5d70f2a2bbe6694ae62d77d163fe87491ab5d0e541",
+  "archiveSha256": "9a2e6a6ce7d5df4d9f860812e8cebe29897e5adc241c0019797951a58833c654",
+  "files": 364,
+  "bytes": 15864151,
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "completionMessageSha256": "b3e47abf955ff4b7609f1163162605964f72822b603d6b6be8718dc011c07c68",
+  "sourceHashesChecked": 363,
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "existingReviewerRunnerReusedUnchanged": true,
+  "workerSha256": "a5fd75e43a897bba2728b56c827dca37b4e5a5dc2de816ba62f88f86903d9e6c",
+  "manifestSha256": "c84129145234921b07697457239df01f75ba3f5e73cb271b5682c6b087d1e437",
+  "scientificLauncherSha256": "260580c82a4caf27b6975eaa7333321f7e3ce3dbd5ae5649a383c14234e68547",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-build-review",
+  "scope": {
+    "target": "Native transverse end-flux G0/Gref/G1/K1 with inherited finite T1",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalPath": "eta=lambda,sigma_W=lambda/10",
+    "incomingColumns": 2,
+    "nativePhysicalCurrent": true,
+    "bothMomentumAndBasisDerivatives": true,
+    "originAndGaugeChecks": true,
+    "receivingField": false,
+    "numericalIntegrals": false,
+    "fullWorkAndRegularityPending": true,
+    "leakageFactor": null,
+    "recoveryParked": true
+  }
+}

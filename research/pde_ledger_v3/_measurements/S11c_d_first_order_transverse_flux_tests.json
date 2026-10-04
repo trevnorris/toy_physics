@@ -1,0 +1,11 @@
+{
+  "tests": 12,
+  "passed": true,
+  "scienceCalls": 0,
+  "kind": "stdlib packaging, gate and saved byte checks; no native restoration or math executed",
+  "workerSha256": "a5fd75e43a897bba2728b56c827dca37b4e5a5dc2de816ba62f88f86903d9e6c",
+  "manifestSha256": "c84129145234921b07697457239df01f75ba3f5e73cb271b5682c6b087d1e437",
+  "testSourceSha256": "504247052c6d3d8b254902d44724a8ad34bdcbdb693fddf117b4a67e90d0c0ec",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "496bbcf79614842c9d190cd9446f5ca0a728063974595567338f1e4c28a53c3a"
+}

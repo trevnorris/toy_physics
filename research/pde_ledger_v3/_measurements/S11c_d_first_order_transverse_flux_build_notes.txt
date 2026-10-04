@@ -1,0 +1,77 @@
+Native transverse end flux: one finite physical prerequisite
+
+The physical question is whether the matched transmitted wave changes the
+native transverse flux at first order in lambda. The existing method section5
+requires G0, Gref, G1 and K1. No receiving field or leakage coefficient is
+computed here. The previously computed T1, moment and end matching are restored.
+Reflection remains an UNEVALUATED integral representation and counts as survival.
+
+The worker restores the complete original LEFT native bundle and the original
+unbound RIGHT bundle from immutable opaque objects. RIGHT is joined as a live
+object to the old native-reconstruction input, the saved restore return and the
+original producer object; exact hashes alone do not decide the scientific join.
+The original frozen engine/producer and producer receipt are supplied. Its
+closed pencil in the same old reconstruction input joins the actual saved raw
+RIGHT end source. The existing SavedCodec and exact_structure are reused in
+containment; no old constructor or validator is called. RIGHT remains opaque
+before guarded execution. The review must distinguish source inspection from
+future runtime restoration coverage.
+
+Actual SLAB_CURRENT_MATRIX, conservative current, mass-rate correction,
+HARMONIC_VARIATION_NORMALIZATION and original decomposition/polarization zeros
+are retained. A new matrix-level decomposition joins these actual operands.
+Original profile bindings, physical inputs, omega3 override, independent
+eta/sigma and proper cyclic field chart are explicit. Epsilon_shape^2 is
+extracted once, with a full reconstruction identity. The native real-field
+harmonic1/4 is already inside the current and is not divided out. Reported
+weights are the coefficients of this common epsilon^2, which cancels in the
+conditional survival ratio. The inherited physical current unit is M/T^3,
+with displacement/scalar field units restored from actual original objects and
+joined to native amplitude registries. This is not a new general dimension
+inference or proof framework.
+
+The native negative harmonic already determines the left/bra momentum label;
+we do not negate its stored physical momentum a second time. Independent
+left/right momenta stay distinct until evaluation at (+p,+p) or (-p,-p).
+Gref includes the outward minus sign. Native mass constraints, chemical rows and
+both face pressure-amplitude/outward-velocity maps are checked on B(+-k),
+using the actual fixed physical inputs. Zero transverse scalar entries and
+inherited full five-row endpoint matching mean no extra endpoint scalar
+correction is required by that finite matching. This does not settle decay or
+interference of other radiating channels in a full stationary solution.
+
+The RIGHT weight uses B(p+lambda delta_p) on both sides and the unbound native
+current at both shifted momenta. G1 has five saved pieces: explicit native
+end derivative, two momentum derivatives, and two basis derivatives. A direct
+first derivative of the full expression is an additional new chain-rule join.
+The native mass-rate correction is projected on the actual end bases; it is
+not discarded based on a description. G0/Gref require exact Hermiticity and
+positive principal minors. Unknown/nonpositive signs stop. Original current
+source conventions, not an old numeric orientation decision, determine signs.
+
+K1=G1+T1.H*G0+G0*T1 is persisted before classification. A derivative of the
+complete asymptotic transmitted current checks the same linear coefficient.
+A nonzero K1 is evidence and blocks the assumed quadratic-deficit route.
+A zero K1 removes one necessary obstruction, without proving zero leakage,
+all-real coupled regularity, other-channel asymptotics or held-profile work.
+No quadratic reflected number or complete quadratic balance is computed.
+
+Coordinate checks use the ACTUAL native current path:
+* BR -> BR(I+lambda X) for an arbitrary complex2x2 X, with T1 -> T1-X.
+  A direct current derivative yields the changed G1. A full field derivative
+  and K1 identity test covariance, not just the formal cancellation formula.
+* Active profile translation by b gives exp(i(p-pR)b) on transmission and
+  exp(2ipb) on reflection, after fixing the incoming wave coefficient. Thus
+  T1 changes by -i delta_p b I and K1 stays unchanged. No source/moment is rerun.
+
+Four controls change actual complete expressions: omit G1, reverse reflected
+orientation, omit one native momentum derivative, and change the amplitude
+coordinates without the corresponding current change. They require nonzero
+finite scalar movements. These are sensitivity checks, not physical loss values.
+
+All344 complete runtime inputs (including7 opaque files and2 frozen source
+files) are supplied. Twelve stdlib tests cover only packaging/source/gate and
+persistence contracts. They execute no native science. Exact gate and source
+pins, hook-first launch, unchanged shared4GiB/native4GiB no-deadline containment
+and posthashes are required before a future run. There is no READY gate yet.
+Mixed numerical recovery remains parked. No general verifier expansion.

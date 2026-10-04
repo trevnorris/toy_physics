@@ -1,0 +1,38 @@
+{
+  "boundedInstrumentAuthorized": true,
+  "automaticScientificRetry": false,
+  "authority": "Standing user/AGENTS continued research: native source-unit subset of cleared pressure-readiness method. No routine stage permission.",
+  "scienceExecutionsAuthorized": 1,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Native unbound pressure-source/closure unit homogeneity bridge only; grade/field/kernel-measure/all-address transport remains required",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": false,
+    "addressUnitCertificatesProduced": 0,
+    "noGeometryReplay": true
+  },
+  "methodClearanceIsNotBuildClearance": true,
+  "noDeadline": true,
+  "futureEvaluatorRequiresConcreteBuild": true
+}

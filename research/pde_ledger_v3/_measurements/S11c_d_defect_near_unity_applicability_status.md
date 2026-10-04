@@ -760,3 +760,25 @@ no full integration is launched from this count. Required native pressure-unit
 certificates are the next bounded preparation using the332-record source map.
 No pressure value/current/loss follows. Original paired build CLEAR and tested
 local bookkeeping repair remain distinct from this runtime acceptance.
+
+## 2026-10-03 — native pressure-unit bridge build prepared
+
+The first missing dimensional prerequisite is now a concrete unbound native
+source/closure instrument. It joins original chemical/live-density/velocity/c1
+source cases, the original flat coefficient and C2 dynamic Z-unit override before
+numeric bindings erase dimensions. A strict constructor-text unit interpreter
+executes no symbolic constructor and derives no coefficients or responses.
+Four inherited gamma registries retain their original inference dependence;
+missing/nonrational units refuse if used. Actual wrong-density and opaque-Z
+controls act on native expressions on both faces. Completed consumer unit
+operands/returns are inherited, not recomputed.
+
+Fifteen complete JSON inputs and4opaque original registry receipts are pinned.
+Twenty-eight stdlib synthetic tests pass; no native unit calculation has run.
+The independent build packet contains41files/66482013bytes, SHA256
+6bb80b5df845267b404562690f01192e8d4ed8a441e24a9ad457cedfca269a0f.
+Both reviewers get the same frozen source, without peer reports or comments.
+No READY gate exists. This prerequisite still leaves complete source-grade/field,
+profile/H/J/direct/measure and544address dimensional transport required. The
+complete evaluator additionally needs exact sharing/storage and independent
+numerical-route readiness. No pressure value/current/loss or new physical scope.

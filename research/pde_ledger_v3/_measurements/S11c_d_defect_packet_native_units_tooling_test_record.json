@@ -1,0 +1,25 @@
+{
+  "status": "STDLIB_SYNTHETIC_CONSTRUCTOR_UNIT_TOOLING_TESTS_PASSED",
+  "utc": "2026-10-04T02:10:07.956696+00:00",
+  "command": [
+    "python",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "research/pde_ledger_v3/_measurements",
+    "-p",
+    "S11c_d_defect_packet_native_units_test.py",
+    "-v"
+  ],
+  "tests": 28,
+  "exitCode": 0,
+  "reportedSeconds": 0.04,
+  "actualNativeUnitScienceOrPayloadRestoration": false,
+  "workerSha256": "4e9e35a2d51ed1bfb49c70515baaa41c5847817b2abc39ff7870b79e59e96d3f",
+  "librarySha256": "9f460a8bc2ec4531d325824e36a49af927ec121e7532590b0847a0f846f21318",
+  "manifestSha256": "744639a0e0f319a9f39fcc9eff651ac8969099a94d0ff0bfe9fa440c6d64ec47",
+  "testSourceSha256": "654f7847f948921de76c36d071a956aebebfc5c5444e3398817bf409f2c27df5",
+  "logSha256": "17fde73d4588feae83df2de50625ca10885a5f1117244604cf353fe299429d14"
+}

@@ -1,0 +1,134 @@
+{
+  "status": "READY_FOR_INDEPENDENT_NATIVE_PRESSURE_UNIT_BUILD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/native-units-build-review",
+  "methodAssessmentCommit": "823eefe6",
+  "geometryResultCommit": "8326373c",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-04T02:10:07.956696+00:00",
+    "packetSha256": "6bb80b5df845267b404562690f01192e8d4ed8a441e24a9ad457cedfca269a0f",
+    "archiveSha256": "c86136f2749729b4f372e28e0cbf596d7005ca2e180f2d1c1410b27d48cb1a4a",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 41,
+    "bytes": 66482013,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing AGENTS/user authorization for necessary independent established-Claude/Grok source assessment. Native unbound pressure-source unit subset of approved pressure readiness.",
+    "scope": {
+      "frequency": 3,
+      "anchoring": "LAB_HELD",
+      "density": "RHO4_CONSTANT",
+      "drain": 0,
+      "edges": [
+        "1/5",
+        "1/10"
+      ],
+      "effectiveCs": "sqrt(6)/2",
+      "plannedCarriers": [
+        "sqrt(595)/10",
+        "0"
+      ],
+      "target": "Native unbound pressure-source/closure unit homogeneity bridge only; grade/field/kernel-measure/all-address transport remains required",
+      "sourceFrequencyContinued": false,
+      "responseRegulator": 0,
+      "selectedPressureAddresses": 544,
+      "selectedLocalCells": 16,
+      "pressureCoefficientFields": 34,
+      "noEvaluatedResponseIntegral": true,
+      "noNumericalPacketAction": true,
+      "noFiniteSolve": true,
+      "noProductionOverwrite": true,
+      "noDefectSweep": true,
+      "pressureSummandUnitsComplete": false,
+      "addressUnitCertificatesProduced": 0,
+      "noGeometryReplay": true
+    },
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_SOURCE_PACKET_HASHES_AND_SYNTHETIC_TESTS_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "18e48d4a100f8b3b0b14e137d468fcd6feef7ca9de90ae567a6d65b6282de493",
+    "packetSha256": "6bb80b5df845267b404562690f01192e8d4ed8a441e24a9ad457cedfca269a0f",
+    "archiveSha256": "c86136f2749729b4f372e28e0cbf596d7005ca2e180f2d1c1410b27d48cb1a4a",
+    "files": 41,
+    "bytes": 66482013,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 40,
+    "nativeUnitScienceExecuted": false,
+    "transportIdenticalToPrior": true,
+    "noReviewVerdict": true
+  },
+  "workerSha256": "4e9e35a2d51ed1bfb49c70515baaa41c5847817b2abc39ff7870b79e59e96d3f",
+  "librarySha256": "9f460a8bc2ec4531d325824e36a49af927ec121e7532590b0847a0f846f21318",
+  "manifestSha256": "744639a0e0f319a9f39fcc9eff651ac8969099a94d0ff0bfe9fa440c6d64ec47",
+  "launcherSha256": "8f5881e63366a11bef3b8ea16ce5c7ce4be5c838d6c20048e512c03c2a9e827c",
+  "sharedGuardSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+  "supervisorSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+  "methodSha256": "16b96e2c1a518e3e0cf3d5eba0ae05d1c24cf7c3b37334b26ed2743efee78a68",
+  "toolingTests": {
+    "status": "STDLIB_SYNTHETIC_CONSTRUCTOR_UNIT_TOOLING_TESTS_PASSED",
+    "utc": "2026-10-04T02:10:07.956696+00:00",
+    "command": [
+      "python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "research/pde_ledger_v3/_measurements",
+      "-p",
+      "S11c_d_defect_packet_native_units_test.py",
+      "-v"
+    ],
+    "tests": 28,
+    "exitCode": 0,
+    "reportedSeconds": 0.04,
+    "actualNativeUnitScienceOrPayloadRestoration": false,
+    "workerSha256": "4e9e35a2d51ed1bfb49c70515baaa41c5847817b2abc39ff7870b79e59e96d3f",
+    "librarySha256": "9f460a8bc2ec4531d325824e36a49af927ec121e7532590b0847a0f846f21318",
+    "manifestSha256": "744639a0e0f319a9f39fcc9eff651ac8969099a94d0ff0bfe9fa440c6d64ec47",
+    "testSourceSha256": "654f7847f948921de76c36d071a956aebebfc5c5444e3398817bf409f2c27df5",
+    "logSha256": "17fde73d4588feae83df2de50625ca10885a5f1117244604cf353fe299429d14"
+  },
+  "savedInputFiles": 15,
+  "opaqueOriginals": 4,
+  "peerReportsIncluded": false,
+  "newScientificOperations": 0,
+  "readyGateExists": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Native unbound pressure-source/closure unit homogeneity bridge only; grade/field/kernel-measure/all-address transport remains required",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": false,
+    "addressUnitCertificatesProduced": 0,
+    "noGeometryReplay": true
+  }
+}

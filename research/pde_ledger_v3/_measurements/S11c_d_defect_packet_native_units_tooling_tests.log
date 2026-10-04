@@ -1,0 +1,33 @@
+test_bad_exp (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_delta (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_duplicate_tag (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_exp (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_guard_before_work (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_heterogeneous_add (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_homogeneous_add (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_invalid_restore_line (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_inverse (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_nan_unresolved (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_no_executable_constructor (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_no_float (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_no_scientific_imports (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_no_symbolic_exponent (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_nonliteral_assumption (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_persist_failure_trace (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_persist_success (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_product (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_rational_power (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_restore_line (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_symbol_assumptions (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_tag_selector (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_unit_registry_rationals (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_unknown (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_zero_add (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_zero_does_not_hide_unknown (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_zero_pole (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+test_zero_unspecified (S11c_d_defect_packet_native_units_test.UnitsTest) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.040s
+
+OK

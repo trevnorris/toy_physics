@@ -1,0 +1,12 @@
+{
+  "status": "PASSED_STDLIB_TOOLING_ONLY",
+  "tests": 14,
+  "scientificImports": false,
+  "scientificRestoration": false,
+  "nativeScienceExecuted": false,
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "20c6672dab381c15f1539c4689d345eccf756f1bb94786c11b5704021fa044f6",
+  "testSourceSha256": "57a47d9ec1344bdc7f1fc0b0bc67cadcdc7e84c32933dbdfd3bcf44d3eb4dd31",
+  "workerSha256": "9bd26b957d3682a6bf513c603a931a071cbab1e9c64c3fe0b43317e92fa8e29e",
+  "launcherSha256": "5024af4f878ef34e2084b78896bcb183c10f3febe793fdd7d40122730ddd2bda"
+}

@@ -1,0 +1,42 @@
+{
+  "status": "FIXED_RECEIVING_BLOCKS_BUILD_PACKET_VERIFIED",
+  "packetSha256": "b946ea494195819e9968db3b7dd46dac86a6ba3e90abafdce45ad34e9b9db29e",
+  "archiveSha256": "2b7a94d206231f066fa2f9fb6f0f227091c917bd5c6dd52bbf66f1884c8b7397",
+  "files": 965,
+  "bytes": 46502366,
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "completionMessageSha256": "3c4a632ae322be710d23341228cf9213f164d99e418d99f8b510e1812e6404f0",
+  "sourceHashesChecked": 964,
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "existingReviewerRunnerReusedUnchanged": true,
+  "workerSha256": "9bd26b957d3682a6bf513c603a931a071cbab1e9c64c3fe0b43317e92fa8e29e",
+  "manifestSha256": "6291bfcfcb2eaca2c8f4a275d63b77af6f795b93e2a0fa6f24d26c99f4004af5",
+  "scientificLauncherSha256": "5024af4f878ef34e2084b78896bcb183c10f3febe793fdd7d40122730ddd2bda",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-blocks-build-review",
+  "scope": {
+    "target": "Receiving-block, end-sign and native affine-face finite prerequisite of the assessed matched method",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalInputUnchanged": true,
+    "incomingColumns": 2,
+    "receivingMomentumIndependent": true,
+    "grazingThresholds": 2,
+    "transverseCouplingPolicy": "STOP_IF_NONZERO_OR_UNKNOWN_NO_SCHUR_FALLBACK",
+    "affineFaceColumns": 4,
+    "sourceStageReplay": false,
+    "transverseSolvabilityPending": true,
+    "T1R1Pending": true,
+    "G1K1Pending": true,
+    "reflectedFluxWeightPending": true,
+    "asymptoticProjectionPending": true,
+    "fullWorkAndRegularityPending": true,
+    "integralsEvaluated": false,
+    "leakageFactor": null,
+    "recoveryParked": true
+  }
+}

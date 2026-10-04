@@ -1,0 +1,37 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T18:37:58.983347+00:00",
+  "packetSha256": "b946ea494195819e9968db3b7dd46dac86a6ba3e90abafdce45ad34e9b9db29e",
+  "archiveSha256": "2b7a94d206231f066fa2f9fb6f0f227091c917bd5c6dd52bbf66f1884c8b7397",
+  "reviewers": [
+    "claude"
+  ],
+  "files": 965,
+  "bytes": 46502366,
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "authority": "Standing user-directed physics refocus and Claude-only build assessment. No routine permission; this review launch enables no scientific execution.",
+  "scope": {
+    "target": "Receiving-block, end-sign and native affine-face finite prerequisite of the assessed matched method",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalInputUnchanged": true,
+    "incomingColumns": 2,
+    "receivingMomentumIndependent": true,
+    "grazingThresholds": 2,
+    "transverseCouplingPolicy": "STOP_IF_NONZERO_OR_UNKNOWN_NO_SCHUR_FALLBACK",
+    "affineFaceColumns": 4,
+    "sourceStageReplay": false,
+    "transverseSolvabilityPending": true,
+    "T1R1Pending": true,
+    "G1K1Pending": true,
+    "reflectedFluxWeightPending": true,
+    "asymptoticProjectionPending": true,
+    "fullWorkAndRegularityPending": true,
+    "integralsEvaluated": false,
+    "leakageFactor": null,
+    "recoveryParked": true
+  },
+  "noAutomaticRetry": true,
+  "noPeerReportsShared": true,
+  "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+}

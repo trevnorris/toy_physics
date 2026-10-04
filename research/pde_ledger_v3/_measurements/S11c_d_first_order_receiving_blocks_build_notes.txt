@@ -1,0 +1,73 @@
+Bounded receiving-block, end-sign and affine-face prerequisite
+
+This is the first finite prerequisite of the assessed matched receiving method.
+It is not the complete transverse matching, flux or leakage calculation. There
+is no scientific run or READY gate. Fourteen stdlib tests check tooling and
+metadata only; they did not restore scientific objects or evaluate these equations.
+
+Actual new calculations in worker.py:
+1. Reuse the 400 original local cells. Assemble their baseline receiving symbol
+   at an independent l from existing coefficients and x-order labels; no old
+   source, local-cell, grade, profile or endpoint producer is called. Apply the
+   saved full source00 expressions at the same receiving l, then all five rows
+   and both faces/slots of C00 R00 S00. Compare the complete five-by-five symbol
+   with the full saved native LEFT pencil through the original cyclic chart.
+   This off-wave correspondence is new; a selected old on-wave zero is not used
+   as its proof. All original source inputs and all source-stage artifacts are
+   copied byte-for-byte; only operands consumed here are decoded, lazily.
+2. Transform into geometric t,b,k,theta,e_W coordinates. Save every entry and
+   require both coupling directions to vanish identically. Nonzero/unknown
+   coupling stops this specific route; no automatic Schur-complement inverse.
+   Cancel the original rational block at generic q, save its denominators, and
+   check finite nonzero determinants at q=0,l=+/-p. This is continuous outgoing
+   threshold extension, not a real-axis census, radiation-field proof or loss.
+3. Bind actual RIGHT raw source with independent eta/sigma replaced by
+   lambda/lambda10, not the old finite1% origin. Check its baseline against LEFT.
+   The new derivative of this end symbol must give minus the already published
+   end-force columns. Derive delta_p from that sign and verify all five rows of
+   the corrected end polarization including B'(p). No old root or mode is fitted.
+4. Join the saved native chemical affinity driver, outward velocities, memory
+   kernels, closed pressures, relative fluxes, affinities and total mechanical
+   loads to the new receiving arguments. Compare native mu00 with saved chemical
+   source00, and native R with the whole saved flat factor. Original body fields
+   are mapped through the actual cyclic chart, not assumed by names. Pressure
+   stays in the mechanical load even when X=0. Both lab normal signs join the
+   already published flat-factor operands. Direct chemical source01 is an
+   unevaluated forward-transform tag with its complete saved envelope and the
+   physical sigma/lambda=1/10. Its published normalization RIGHT operand joins
+   the actual native A/rho map; the completed old residual is not recomputed.
+   Direct V1 restores its actual zero operands/return and incident/source context.
+   Chemical forcing enters total pressure exactly once. No field
+   or transform is evaluated and no local profile is passed off as its transform.
+5. Three actual formal-map sensitivity controls omit the chemical source, reverse
+   the lab normal derivative, and replace receiving with incident polarization.
+   They use actual maps and a live saved envelope at a declared algebraic point.
+   Their movements are formal sensitivity, not measured response/field values.
+
+The journal, scalar exact-zero routine, constructor decoder and containment are
+unchanged existing helpers, selected by name. Matrix checks use scalar entries
+so zero matrices are not tested against a scalar zero. Full operands precede
+new residual/return checks. Every declared input is posthashed, even if a failure
+occurs before it is consumed. No scientific imports occur before actual pooled
+containment and native address-space enforcement. Gate and exact argv/output
+checks precede output creation. The original guard, supervisor and hook are
+unchanged and no deadline or fallback is added.
+
+All runtime inputs are supplied as complete JSON bytes: 783 source-result files
+(781 artifacts plus both indexes), 127 original saved inputs, the full original
+LEFT native face object and original RIGHT raw end binding. The total is 912.
+Original current objects are present within the native face object, but no
+current constructor, flux projection or RIGHT opaque object is decoded/called
+by this worker. Scope does not require the opaque RIGHT current until the later
+matching/current stage. No output from the old source screen is re-computed;
+only receiving-argument/source/end/affine joins absent from that screen are new.
+
+Pending, explicitly outside this prerequisite:
+- Actual scalar radiation/matched half-line evaluation, forward moments, T1/R1,
+  complete branch-tail/asymptotic projection and reflected physical flux weight.
+- RIGHT current restoration, both-leg/basis/material G1 and the complete K1 test,
+  including origin/gauge controls and any nontransverse endpoint interference.
+- All-real coupled regularity and conservative/memory/held-profile work balance.
+A passed prerequisite is NOT the completed matched method, a quadratic-leading
+loss result or zero leakage. No new parameter choice, numerical inverse, Fourier
+or power integral, defect sweep, calibration, drain or mixed-integral recovery.

@@ -1411,3 +1411,10 @@ inputs. No peer report is included and no READY gate exists. The worker is only
 ordinary J plus three added direct contributions; H and other pressure terms
 remain pending. No full packet or leakage factor follows. All previous completed
 calculations and literal reviews are preserved without replay.
+
+2026-10-04 — Submitted the frozen contracted numerical build at 580a19f4.
+Both independent reviewer processes and the completion hook were live at the
+one launch-admission inspection; all 6,482 private packet file hashes matched.
+The hook was armed before coordinator release for the existing session. Pending
+reports were not read. No science launched and no automatic retry or model polling
+is scheduled. Exact launch receipts are preserved in the canonical build record.

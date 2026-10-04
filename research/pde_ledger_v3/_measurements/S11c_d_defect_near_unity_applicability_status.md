@@ -646,3 +646,5 @@ peer reports; old full numerical banks have opaque receipts only. No new science
 worker or READY execution gate exists. Standing AGENTS/user authorization applies.
 After substantive assessment, prepare the concrete missing certificate/geometry
 instrument; source-only clearance cannot accept its future result.
+
+Both pressure-readiness method reviews are running on verified identical411-file private packets. The existing-session completion hook was armed before review start. No scientific computation, worker or source verdict is claimed. Prepared source commit5921b978.

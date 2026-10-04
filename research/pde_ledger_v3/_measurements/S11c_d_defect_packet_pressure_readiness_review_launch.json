@@ -1,0 +1,82 @@
+{
+  "status": "TWO_INDEPENDENT_PRESSURE_READINESS_METHOD_REVIEWS_RUNNING",
+  "utc": "2026-10-04T00:19:13.639134+00:00",
+  "sourceCommit": "5921b978",
+  "launch": {
+    "jobPid": 627488,
+    "watcherPid": 627489,
+    "packetSha256": "4025226dde108d7612f33697a951fbca7518ad8f60e3fc12a74e5a2410d5adcc",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hookArmedFirst": true,
+  "hookThread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+  "reviewers": {
+    "claude": {
+      "sessionId": "fdfd8f85-9f1b-40dd-b484-683a23921ad8",
+      "pid": 627499,
+      "startedUtc": "2026-10-04T00:18:37.447346+00:00",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "fdfd8f85-9f1b-40dd-b484-683a23921ad8"
+      ],
+      "privateFiles": 411,
+      "privateHashesVerified": true
+    },
+    "grok": {
+      "sessionId": "146cd805-f059-4989-a6d4-8e6b2ac31fa3",
+      "pid": 627498,
+      "startedUtc": "2026-10-04T00:18:37.446042+00:00",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/pressure-readiness-method-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/pressure-readiness-method-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "146cd805-f059-4989-a6d4-8e6b2ac31fa3"
+      ],
+      "privateFiles": 411,
+      "privateHashesVerified": true
+    }
+  },
+  "packetSha256": "4025226dde108d7612f33697a951fbca7518ad8f60e3fc12a74e5a2410d5adcc",
+  "archiveSha256": "7fc4489db6b1fdcb11c67038ea998c669a73f633ef430b830d85176cc918f00b",
+  "scientificCalls": 0,
+  "verdictsNotYetDelivered": true,
+  "noModelPolling": true
+}

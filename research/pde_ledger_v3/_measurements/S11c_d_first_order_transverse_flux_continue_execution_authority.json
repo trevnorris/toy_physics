@@ -1,0 +1,54 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_ONE_SAVED_PREFIX_NATIVE_FLUX_CONTINUATION",
+  "createdUtc": "2026-10-04T19:48:38.299721+00:00",
+  "scope": {
+    "target": "Native transverse end-flux G0/Gref/G1/K1 with inherited finite T1",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalPath": "eta=lambda,sigma_W=lambda/10",
+    "incomingColumns": 2,
+    "nativePhysicalCurrent": true,
+    "bothMomentumAndBasisDerivatives": true,
+    "originAndGaugeChecks": true,
+    "receivingField": false,
+    "numericalIntegrals": false,
+    "fullWorkAndRegularityPending": true,
+    "leakageFactor": null,
+    "recoveryParked": true
+  },
+  "scienceExecutionsAuthorized": 1,
+  "reviewers": [
+    "claude"
+  ],
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "authority": "Standing continued physics work and AGENTS local tooling exception after actual failure inspection. One exact saved-prefix continuation, not an automatic retry. Original Claude source assessment remains literal; no fresh independent clearance.",
+  "independentBuildClearance": false,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolGiB": 16,
+    "zeroSwap": true,
+    "cpuCount": 1,
+    "threads": 1,
+    "tasksMax": 32,
+    "hostReserveGiB": 4,
+    "durationLimits": null
+  },
+  "noAutomaticScientificRetry": true,
+  "noFallback": true,
+  "noSchedulerChange": true,
+  "additionalIdentityPins": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_build_record.json": "3a906f339a740a2880066edefcf173166eab8219b9cb558a928e19424fb0fa31",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_build_claude.md": "543ef4312c2f606feacbee6e5b4b850bf1473105f51f4c1fbaa2b87747b10526",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_20261004_r2_review_record.json": "8bfe5fe227565e89df1a877ac3cd1da54d8b469c9c3623743fd192dd9c4622f4",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_20261004_r2_claude.md": "021435bb7cadcc81cb813962105920ef4cc665747fc5a5ca5d75b470f743d3e9",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_failure_record.json": "4f6092aa07f6caadd9b79b2023e343738d34d1828bdc16d41c68c9cf6b02e0c0",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_continue_tooling_repair.json": "d65e89af383d8f50b2ce753befccb27e5ca986c3976a6049a8ab5ef5cc9ab6c6",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_continue_test.py": "879ad848ca0a31a79051439499a18d274866e3b37cd164f92de2276cf8430042",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_continue_test.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_continue_test.stderr": "70bc2b7412a6c693b856fe247cbc6e0142a060a850ca6892749650aa8d99cc2d",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_gate.json": "9b592d115149e839142914476ced16d0bd24c8119b01ff504bbdaf8bc727ab1d",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_build_readiness.json": "95749f448ee31894ccf009ba6256661fa54ba885979fb68edb2839fca2b20585",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_run_launch.json": "1004d9571f673674bdd9fae32b6af8ab68ccdb7cad7eec61c24e68520ccb7b6e",
+    "/var/projects/toy_physics/AGENTS.md": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c"
+  }
+}

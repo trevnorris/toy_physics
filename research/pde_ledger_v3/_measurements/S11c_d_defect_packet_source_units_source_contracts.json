@@ -1,4 +1,19 @@
 {
+  "profileDefinitions": {
+    "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition.py",
+    "statements": [
+      {
+        "line": 410,
+        "column": 4,
+        "text": "w=(1+sp.tanh(x/profile_length))/2"
+      },
+      {
+        "line": 410,
+        "column": 38,
+        "text": "m=(1-sp.tanh(x/profile_length)**2)/3"
+      }
+    ]
+  },
   "fragments": [
     {
       "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition.py",

@@ -949,3 +949,26 @@ with one provably nonzero part suffices for complex nonzero; all relevant saved
 domain records are complete. No result or physics failure has been inferred.
 The next work is a substantive source-bound validation correction and independent
 assessment, without replaying any accepted source/grade/profile computation.
+
+## 2026-10-03 — corrected source unit transport build prepared
+
+The revision joins actual saved mapped-profile polynomials to the native
+scale-covariance recurrence, with pinned base definitions and saved lower-order
+maps. The missing-L mutation enters the same checker. New exact constructor
+assembly joins both normalization LEFT operands, actual stage2/binding arguments
+and complete stored higher/quotient remainders. These are new missing provenance
+certificates, not restored results; no old producer, quotient recurrence or
+profile function is called. Exact selected pointer and address-ID coverage is
+required. Physical coefficient records distinguish original-unit quantities from
+stored numerical magnitudes; a bound numeric sum is not given invented units.
+
+50synthetic tests pass. Three strict collection predicates now receive explicit
+booleans, a local tooling correction. All932original saved scientific JSON files,
+equations, method, physical inputs, launcher and shared helpers are unchanged;
+only source-contract metadata adds the original profile base assignments.
+No transport science or READY gate exists. The corrected independent packet has
+956files/12229415bytes, SHA256
+f7aa12b043c03c98648c5fc83dceaa6ea656cd5dbe9959bb82a977cea2979de0,
+archivee89e551a326f9cd3ae83ca9a07f719667870aedc75c0910ee335ec45687800d7.
+No peer reports or author clearance were included. Complete wave/kernel/measure
+and pressure summand units remain open; no pressure value/current/loss follows.

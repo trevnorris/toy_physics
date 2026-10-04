@@ -1,27 +1,35 @@
-Independently assess this concrete bounded SOURCE UNIT-TRANSPORT build. Use only
-the frozen packet, no peer reports, external review or scientific execution.
-Source-only assessment is not a runtime certificate. Preserve unknowns.
-
+Independently assess this concrete bounded SOURCE UNIT-TRANSPORT build using the
+frozen packet only. No peer reports, external review or scientific execution.
 Return CLEAR FOR THIS BOUNDED SOURCE UNIT-TRANSPORT BUILD or NEEDS REVISION,
-with concrete blockers, exact file/line/operand references, and actual coverage.
-Read build.md and the worker/library, then the full relevant saved inputs via
-evidence-guide.md and inputs.json. The original pressure-readiness method is
-unchanged. Native unit evidence and all algebraic data are saved results,
-not permission to replay those computations.
+with concrete blockers, exact file/operand references and actual read coverage.
+Source assessment is not runtime acceptance. Preserve unknowns.
 
-Focus on whether units truly transport through the actual stage2/epsilon/live
-density/source-grade/independent-jet/profile chain. Is the stated homogeneous
-rational coefficient argument valid with these exact old domain and unit
-operands? Native reciprocal bases and saved numeric regularity must remain
-separate from assigning a fabricated unit to a normalized numeric denominator.
-Check original input/return identity joins, full source and consumer grades,
-epsilon-stripped consumer profile input, actual L_W scaling, full field quotient
-records and all544addresses. Does any boolean, field ID, declared required unit
-or source-count substitute for a missing identity? Check applicability of both
-unit controls and that missing evidence refuses after persistence.
+Read build.md, worker.py and library.py, then the full saved operands identified
+in evidence-guide.md and inputs.json. This is the source/consumer subset of the
+unchanged pressure-readiness method. Original native unit, source/grade/profile,
+field and numerical calculations are inherited, not rerun.
 
-Original gamma dimensions remain inference-dependent. Numeric wave/kernel/
-measure/full summand units and evaluator readiness are explicitly deferred;
-do not require a pressure computation in this scope or promote this source
-transport to full readiness. Necessary scientific blockers matter; do not
-start an optional wording review loop. No old producer or scientific tool runs.
+Assess actual normalization-LEFT and stage2 binding joins, original physical
+parameter unit provenance, new full remainder expression assembly, independent
+source/consumer grade and jet correspondence, new scale-covariance identities
+on actual saved mapped polynomials, the native base and predecessor/argument
+joins, both actual controls, and exact544-address set coverage. Are any required
+units, flags or IDs being substituted for a missing identity? Check persistence
+before refusal and the limits of the strict ring normal form.
+
+Keep two objects distinct: (1) a stored numerical magnitude after physical
+binding and (2) a physical quantity formed from that magnitude and the units
+of its original expression. The worker does not claim the bare numeric sum has
+physical unit homogeneity, nor infer a unit from a numeric coefficient. Judge
+whether the actual unbound-unit and binding/grade/jet/profile provenance suffices
+for the explicitly tagged physical coefficient units. The normalized numeric
+denominator gets no invented unit. Old per-grade0=0 outputs stay dependent on
+the accepted original grade operation, not new proofs of a full raw remainder.
+
+Source/grade/profile producers and old functions must not be replayed. The new
+missing unit-provenance and scale identities are expressly new derivations on
+saved operands; assess their correctness and scope. Inferred gamma units remain
+dependent. Wave/kernel/measure/full-summand units and evaluator readiness stay
+explicitly deferred. No pressure value or field response is requested here.
+No optional wording review loop; distinguish actual scientific blockers from
+nonblocking qualifications and clearly state coverage limits.

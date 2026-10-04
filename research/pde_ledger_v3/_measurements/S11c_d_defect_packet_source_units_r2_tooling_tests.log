@@ -1,0 +1,55 @@
+test_assembly_remainder_uses_full_table (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_bad_sum_refuses (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_binding_cycle_refuses (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_dimensional_substitution (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_false_identity (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_field_proof (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_field_proof_wrong_input (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_higher_profile_requires_saved_predecessor (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_jet_schema_disagreement (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_jet_unit (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_matrix_unit (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_new_binding_operand_join (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_no_constant_restoration (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_no_sympy_import (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_profile_argument_mismatch (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_profile_missing_map (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_profile_missing_scale_actual_path (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_profile_recurrence_actual_operand (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_profile_scale (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_profile_wrong_L (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_reciprocal_actual_base (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_reciprocal_missing_path (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_reciprocal_wrong_root (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_regular_both_zero_components_refuse (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_regular_flags_alone_refuse (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_regular_one_nonzero_component_suffices (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_regular_other_operand_refuses (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_regular_unknown_refuses (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_ring_distributive_assembly (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_ring_fractional_symbolic_power_refuses (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_ring_imaginary_constant_inverse (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_ring_inverse_scalar_normalization (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_ring_no_float (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_ring_unequal_operands (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_ring_zero_denominator (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_same_ast_not_printed_text (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_scale_catalog_collision_refuses (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_scale_certificate_reuse_requires_actual_operands (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_strip_epsilon (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_strip_epsilon_missing (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_strip_epsilon_twice (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_strip_epsilon_zero (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_symbol_census (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_transverse_nonzero_refuses (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_transverse_zero (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_tuple_leaf (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_unknown_unit_refuses (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_worker_collection_guards_are_explicit_boolean (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_wrong_matrix_shape (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_zero_no_unit (S11c_d_defect_packet_source_units_test.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 0.062s
+
+OK

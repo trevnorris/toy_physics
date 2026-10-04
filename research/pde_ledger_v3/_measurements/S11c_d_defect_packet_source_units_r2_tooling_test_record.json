@@ -1,0 +1,25 @@
+{
+  "status": "STDLIB_SYNTHETIC_IDENTITY_AND_UNIT_TRANSPORT_TOOLING_TESTS_PASSED",
+  "utc": "2026-10-04T04:40:55.402644+00:00",
+  "command": [
+    "python",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "research/pde_ledger_v3/_measurements",
+    "-p",
+    "S11c_d_defect_packet_source_units_test.py",
+    "-v"
+  ],
+  "tests": 50,
+  "exitCode": 0,
+  "reportedSeconds": 0.062,
+  "actualSourceUnitScienceOrPayloadRestoration": false,
+  "workerSha256": "21574fd86b83ce0e16f743d31143021812e16f84ca38bcdbc5b681fb39697888",
+  "librarySha256": "f705b69892d7a7a5608008bf621893519130057cde30437c32aad3abf0f1ca25",
+  "manifestSha256": "36cb6da4883aa1ffb2387fa7ffb76fc2fb4780e8f79166204cebda36182215a6",
+  "testSourceSha256": "c7327f4b507e1b3814b39e2b8c3f9b3336efa8de90fbba66f7b86c5e05897613",
+  "logSha256": "185910b91f95007118167e6fa6ded94661368c25b88a09fe6859527d4d797418"
+}

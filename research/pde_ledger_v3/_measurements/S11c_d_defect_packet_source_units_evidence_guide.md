@@ -26,3 +26,13 @@ are authorized for this review. Constructor strings may be inspected as text.
 7. tooling-tests.py uses synthetic operands only. Test success does not establish
    an actual native unit or future worker acceptance. No reviewed peer report
    is present. The native result metadata retains historical record references.
+
+The current correction adds exact operand-assembly and scale-covariance checks.
+In worker.py, follow assembly(), the chemical/velocity/stage2 LEFT-operand joins,
+full_remainder_operands and the two exact coverage sets. In library.py, read
+ring/binding_operand, profile_polynomial, scale_certificate and ScaleVerifier.
+The new scale certificate parses ACTUAL mapped expressions and all x/L arguments;
+its missing-L control uses the same transport path. source-contracts.json now
+also pins the two exact native profile base assignments. Original saved source,
+grade, profile, field and unit result bytes are unchanged. The new source-contract
+file is implementation metadata, not a new old-science result or peer report.

@@ -35,7 +35,7 @@
   "launcher": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units_launch.py",
   "helperSource": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py",
   "executionAuthority": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units_execution_authority.json",
-  "reviewRecordWillBe": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units_build_review_record.json",
+  "reviewRecordWillBe": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units_build_review_r2_record.json",
   "methodRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_pressure_readiness_review_record.json",
   "methodPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_pressure_readiness_method.md",
   "packetMethodPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_action_method.md",
@@ -44,11 +44,11 @@
     "/var/projects/toy_physics/scripts/s11c_guarded_run.py": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
     "/var/projects/toy_physics/scripts/codex_job_watch.py": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units.py": "78b92b9da16843095cf4712e29c33e1be9425668dc12c5e35da2f1b6ed2ebb86",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units_lib.py": "cda21dd06bbdc61471bbd616be6e86ef3dfe57b9eaecbc27d51443c8df4438e1",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units.py": "21574fd86b83ce0e16f743d31143021812e16f84ca38bcdbc5b681fb39697888",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units_lib.py": "f705b69892d7a7a5608008bf621893519130057cde30437c32aad3abf0f1ca25",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units_launch.py": "e02704dff0fdea2fe9cf7e86643b4fb209040e7d0f13f24a2d6479d6d778dc75",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units_execution_authority.json": "abf6778347dad8e3689f67cc2ddf11b4e8357178d607170fc40abcad0d9c1367",
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units_source_contracts.json": "b1746391b57a5bc554ca83155e0b11f3bc30512ad6b6475daf2bde41c5889848",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units_source_contracts.json": "2d1024e1b0cebae00bb67f7d3bdf5c5ac342695f25a6af992bc23a7158024fb2",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_native_units_lib.py": "f8c2ef3ff0277a6a6373ced475edfa9e36d5eea430d5cd364630a5a5ff5be47a",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
     "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
@@ -4719,8 +4719,8 @@
     },
     "source-contracts.json": {
       "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units_source_contracts.json",
-      "sha256": "b1746391b57a5bc554ca83155e0b11f3bc30512ad6b6475daf2bde41c5889848",
-      "bytes": 11160
+      "sha256": "2d1024e1b0cebae00bb67f7d3bdf5c5ac342695f25a6af992bc23a7158024fb2",
+      "bytes": 11558
     }
   },
   "indexedAliases": {
@@ -5345,6 +5345,7 @@
     "durationLimits": null,
     "priority": "desktop-managed"
   },
+  "compositionSource": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition.py",
   "priorResultCommits": {
     "nativeUnits": "086253f7",
     "sourceComposition": "7455ee78",

@@ -144,6 +144,12 @@ def run(m,J,U):
         if left is not None:require(U.equal(args['left'],left),'left operand join '+name)
         if right is not None:require(U.equal(args['right'],right),'right operand join '+name)
         return args
+    def assembly(name,expected,actual):
+        J.emit(name+'-assembly-input',{'constructedFromActualSavedOperands':ast.unparse(expected),'savedOperand':actual,'newUnitProvenanceJoin':True,'oldProducerOrQuotientRecurrenceCalled':False})
+        left=U.ring(expected);right=U.ring(U.parse(actual['srepr']))
+        result={'leftNormalForm':U.dump_ring(left),'rightNormalForm':U.dump_ring(right),'exactlyEqual':left==right}
+        J.emit(name+'-assembly-decision',result);require(left==right,'new exact saved-operand assembly '+name)
+        return result
     native_result=get('native/result-record.json')
     require(native_result['allChecksPassed'] is True and native_result['status']=='BOUNDED_NATIVE_PRESSURE_UNIT_BRIDGE_ACCEPTED_TRANSPORT_AND_EVALUATOR_PENDING','accepted native bridge')
     native_files=native_result['records'];composition_files=get('composition-files.json');composition_result=get('composition-result.json')
@@ -180,6 +186,17 @@ def run(m,J,U):
     scale=sc('native-profile-scale-join');require(scale['savedLength']==context['numeric']['L_W'] and scale['physicalLength']==context['physicalInput']['parameters']['L_W'],'actual original length join')
     U.verify_contracts(m,get('source-contracts.json'))
     J.emit('actual-source-contracts',get('source-contracts.json'))
+    definitions=get('source-contracts.json')['profileDefinitions'];text=Path(definitions['source']).read_text()
+    for item in definitions['statements']:
+        matches=[n for n in ast.walk(ast.parse(text)) if isinstance(n,ast.Assign) and n.lineno==item['line'] and n.col_offset==item['column']]
+        require(len(matches)==1 and ast.get_source_segment(text,matches[0])==item['text'],'actual native profile base definition')
+    require(U.same(ast.parse(definitions['statements'][0]['text']).body[0],ast.parse('w=(1+sp.tanh(x/profile_length))/2').body[0]) and U.same(ast.parse(definitions['statements'][1]['text']).body[0],ast.parse('m=(1-sp.tanh(x/profile_length)**2)/3').body[0]),'actual profile base coefficients')
+    J.emit('profile-native-base-definitions',definitions)
+    all_profile_records={name:value for name,value in raw.items() if name.startswith('composition/profile-map-')}
+    catalog,catalog_origins=U.scale_catalog(all_profile_records,context);J.emit('profile-scale-catalog',{'entries':[{'base':k[0],'order':k[1],'mapped':v,'origins':catalog_origins[k]} for k,v in catalog.items()]})
+    verifier=U.ScaleVerifier(catalog,context,J)
+    for (base,order),mapped in sorted(catalog.items()):verifier.verify(base,order,mapped)
+
     # Preserve complete unit walks; select reciprocal bases by their actual AST paths.
     native_units={};denominators={}
     for name in m['inheritedUnitOperations']:
@@ -203,10 +220,26 @@ def run(m,J,U):
         stage={U.symbol_name(U.parse(a['srepr'])):b for a,b in ops['stage2Map']}
         require(stage=={'s11cc1_V_lab_held_'+face:inp['velocityAmplitude'],'s11cc1_mu_theta_lab_held_'+face:chem['amplitude']},'actual simultaneous stage2 map')
         require(bound['target']==inp['combined'],'same source target')
-        prior(face+'-native-chemical-raw-join',right=U.encoded_leaf(chem['raw'],1))
+        chemical_leaf=U.encoded_leaf(chem['raw'],1);density_leaf=U.encoded_leaf(context['density'],1)
+        prior(face+'-native-chemical-raw-join',left={'srepr':native_units['new-unbound-chemical-homogeneity']['constructor']},right=chemical_leaf)
+        prior(face+'-native-density-raw-join',left={'srepr':native_units['new-unbound-live-density-units']['constructor']},right=density_leaf)
+        prior(face+'-native-chemical-amplitude-join',left=inp['chemicalAmplitude'],right=chem['amplitude'])
+        # New missing unit-provenance joins on actual original operands. These
+        # do not call the old source builder, bind, grade or profile functions.
+        chemical_expected,chemical_steps=U.binding_operand(ast.unparse(U.times(U.parse(chemical_leaf['srepr']),U.expr_call('Pow',U.parse(context['epsilon']['srepr']),U.integer_node(-1)))),context)
+        epsilon_args=sc(face+'-native-chemical-epsilon-join-input')
+        J.emit(face+'-chemical-unit-binding-stages',{'stages':chemical_steps,'originalPhysicalUnit':native_units['new-unbound-chemical-homogeneity']['unit'],'dimensionlessEpsilon':context['epsilon']})
+        assembly(face+'-chemical-epsilon-left',chemical_expected,epsilon_args['left'])
+        velocity_expected,velocity_steps=U.binding_operand(ast.unparse(U.times(U.parse(inp['nativeVelocity']['srepr']),U.expr_call('Pow',U.parse(context['epsilon']['srepr']),U.integer_node(-1)))),context)
+        velocity_args=sc(face+'-own-velocity-normalization-input');J.emit(face+'-velocity-unit-binding-stages',velocity_steps)
+        assembly(face+'-velocity-normalization-left',velocity_expected,velocity_args['left'])
+        identified=U.constructor_substitute(U.parse(inp['raw']['srepr']),stage)
+        assembly(face+'-stage2-identified',identified,bound['identified'])
+        full_expected,full_steps=U.binding_operand(ast.unparse(identified),context);J.emit(face+'-full-source-unit-binding-stages',full_steps)
+        assembly(face+'-full-bound-left',full_expected,bound['bound'])
         prior(face+'-native-density-map-join',left=context['densityMap']['rho_br_bg_rho4_constant'])
-        prior(face+'-native-chemical-epsilon-join',right=chem['amplitude'])
-        prior(face+'-own-velocity-normalization',right=inp['velocityAmplitude'])
+        prior(face+'-native-chemical-epsilon-join',left=epsilon_args['left'],right=chem['amplitude'])
+        prior(face+'-own-velocity-normalization',left=velocity_args['left'],right=inp['velocityAmplitude'])
         prior(face+'-raw-stage2-live-density-join',left=bound['bound'],right=inp['combined'])
         prior(face+'-native-composed-source',left=inp['combined'],right=old['full'])
         # Original normalization and chemical domain are complete inherited evidence.
@@ -215,7 +248,9 @@ def run(m,J,U):
         prior(face+'-chemical-domain-original-join',left=domain['original'],right=chem['amplitude'])
         prior(face+'-chemical-domain-reduced-join',left=domain['reduced'],right=chem['amplitude'])
         prior(face+'-chemical-domain-fraction-join',left=domain['numerator'])
-        prior(face+'-chemical-domain-zero-grade-join',right=domain['denominatorAtZero'])
+        domain_args=sc(face+'-chemical-domain-zero-grade-join-input')
+        assembly(face+'-chemical-domain-origin',U.at_grade_zero(U.parse(domain['denominator']['srepr']),context['independentGrades']),domain_args['left'])
+        prior(face+'-chemical-domain-zero-grade-join',left=domain_args['left'],right=domain['denominatorAtZero'])
         U.regularity(raw,'composition/'+face+'-chemical-domain-denominator',domain['denominatorAtZero'],J)
         source_origins[face]=old['full']
     consumer_units=get('native/inherited-consumer-unit-returns.json')
@@ -240,7 +275,10 @@ def run(m,J,U):
         require(U.equal(operands['full'],origin),'same full rational grade source '+name)
         U.regularity(raw,'composition/'+name+'-regular-denominator',split['denominatorAtZero'],J)
         prior(name+'-saved-zero',left=split['retained']['(0, 0)'],right=operands['savedZero'])
-        for g in ('00','10','01','11'):prior(name+'-quotient-'+g,right=ZERO)
+        for field,expected in U.full_remainder_operands(operands['full'],split,context['independentGrades']).items():assembly(name+'-'+field,expected,split[field])
+        J.emit(name+'-full-quotient-proof-provenance',{'numerator':split['numerator'],'denominator':split['denominator'],'retained':split['retained'],'excludedPure':split['excludedPure'],'fullHigherRemainder':split['fullHigherRemainder'],'quotientRingNumeratorRemainder':split['quotientRingNumeratorRemainder'],'completedGradeSource':m['compositionSource'],'acceptedSourceHash':composition_result['workerSha256'],'quotientRecurrenceRerun':False,'note':'The following literal zero observations are inherited outputs of this exact saved grade operation, not independent 0=0 proofs of the full remainder.'})
+        require(sha(m['compositionSource'])==composition_result['workerSha256'],'same accepted grade-operation source')
+        for g in ('00','10','01','11'):prior(name+'-quotient-'+g,left=ZERO,right=ZERO)
         require(set(split['retained'])=={'(0, 0)','(1, 0)','(0, 1)','(1, 1)'},'full independent rectangle')
         require(split['nativeShapeCoefficientsCalled'] is False and split['zeroGradeReused'] is True,'saved quotient origin')
         # Assessed homogeneity lemma: regular Taylor coefficients in dimensionless eta/sigma retain the source unit.
@@ -264,9 +302,9 @@ def run(m,J,U):
         maps=[]
         for p in candidates:
             require(U.equal(p['original'],item['coefficient']) and U.equal(p['oneDimensional'],item['field']),'actual profile operands')
-            maps.append(U.profile_transport(p,context,registry))
-        require(maps,'at least one exact profile map')
-        source_records[key]={'requiredUnit':required,'transportedUnit':None if U.zero(item['field']) else required,'zero':U.zero(item['field']),'jetUnit':jet,'item':item,'maps':maps,'proof':'Homogeneity and actual inherited linear independent-jet reconstruction; no coefficient re-extraction.'}
+            maps.append(U.profile_transport(p,context,registry,verifier))
+        require(bool(maps),'at least one exact profile map')
+        source_records[key]={'requiredUnit':required,'transportedUnit':None if U.zero(item['field']) else required,'quantitySemantics':{'savedNumber':'numeric magnitude in original fixed base units','physicalCoefficientUnit':None if U.zero(item['field']) else required,'jetPhysicalUnit':jet,'physicalSourceUnit':groups[face+'-source']['unit'],'unitReferences':['L_ref','T_ref','M_ref'],'bareNumericExpressionPassedToUnitEngine':False},'zero':U.zero(item['field']),'jetUnit':jet,'item':item,'maps':maps,'proof':'Homogeneity and actual inherited linear independent-jet reconstruction; no coefficient re-extraction.'}
         J.finish(source_records[key])
     for key,loc in index['consumerLocations'].items():
         slot,grade=key.split('/');g=tuple(int(v.strip()) for v in grade.strip('()').split(','));code=''.join(map(str,g));name='THETA_BALANCE-'+slot
@@ -275,12 +313,14 @@ def run(m,J,U):
         candidates=[get(m['indexedAliases'][path]) for path in loc['profileOutputCandidateRecords']]
         matching=[p for p in candidates if U.equal_text(p['original']['srepr'],stripped)]
         J.start('consumer-field-'+slot+'-'+code,{'location':loc,'original':original,'epsilonProof':epsproof,'strippedConstructor':stripped,'profileCandidates':candidates,'matchingCount':len(matching)})
-        require(matching,'actual epsilon-stripped consumer profile input')
-        maps=[U.profile_transport(p,context,registry) for p in matching];field=matching[0]['oneDimensional']
+        require(bool(matching),'actual epsilon-stripped consumer profile input')
+        maps=[U.profile_transport(p,context,registry,verifier) for p in matching];field=matching[0]['oneDimensional']
         require(all(U.equal(p['oneDimensional'],field) for p in matching),'identical consumer field for all input matches')
-        unit=groups[name]['unit'];consumer_records[key]={'requiredUnit':unit,'transportedUnit':None if U.zero(field) else unit,'zero':U.zero(field),'field':field,'maps':maps,'original':original}
+        unit=groups[name]['unit'];consumer_records[key]={'requiredUnit':unit,'transportedUnit':None if U.zero(field) else unit,'quantitySemantics':{'savedNumber':'numeric magnitude in original fixed base units','physicalCoefficientUnit':None if U.zero(field) else unit,'unitReferences':['L_ref','T_ref','M_ref'],'bareNumericExpressionPassedToUnitEngine':False},'zero':U.zero(field),'field':field,'maps':maps,'original':original}
         J.finish(consumer_records[key])
-    addresses=[]
+    addresses=[];pointers=[v['selectedJsonPointer'] for v in index['addressLocations']]
+    J.emit('selected-address-coverage-input',{'selectedIds':[v['addressId'] for v in selected],'locations':index['addressLocations']})
+    require(len(pointers)==544 and len(set(pointers))==544 and set(pointers)=={'/selected/'+str(i) for i in range(544)},'exact complete selected pointer coverage')
     for loc in index['addressLocations']:
         a=selected[int(loc['selectedJsonPointer'].rsplit('/',1)[1])];s=source_records[loc['source']];c=consumer_records[loc['consumer']]
         J.start('address-'+str(a['addressId']),{'address':a,'sourceLocation':loc['source'],'consumerLocation':loc['consumer'],'fieldIds':loc['fieldIds']})
@@ -298,13 +338,19 @@ def run(m,J,U):
     # New responsive unit transport controls use actual selected profile maps and live jet entries.
     controls=[]
     candidates=[(k,s) for k,s in source_records.items() if not s['zero'] and any(v['derivativeOrder']>0 and not v['transverseZero'] for mp in s['maps'] for v in mp['entries'])]
-    require(candidates,'applicable live source profile derivative')
+    require(bool(candidates),'applicable live source profile derivative')
     key,s=candidates[0];entry=next(v for mp in s['maps'] for v in mp['entries'] if v['derivativeOrder']>0 and not v['transverseZero'])
-    label='missing-profile-L';mutant={'LExponent':0}
-    J.start('control-'+label,{'sourceLocation':key,'actualItem':s['item'],'actualProfileEntry':entry,'mutation':mutant})
-    expected=U.ZERO;measured=U.add(U.scale(U.unit_tuple(registry['L_W']),0),(-entry['derivativeOrder'],0,0))
-    result={'control':label,'baselineUnit':expected,'mutatedUnit':measured,'refused':measured!=expected,'scope':'Actual saved profile derivative and native scale rule, not a field value'}
-    J.emit('control-'+label+'-decision-operands',result);require(result['refused'],'responsive missing native scale');J.finish(result);controls.append(result)
+    actual_record=next(p for p in all_profile_records.values() if any(v[0]==entry['original'] and v[1]==entry['savedMapped'] for v in p['map']))
+    mutant=json.loads(json.dumps(actual_record));position=next(i for i,v in enumerate(mutant['map']) if v[0]==entry['original'])
+    original_mapped=mutant['map'][position][1]
+    changed=U.times(U.parse(original_mapped['srepr']),U.expr_call('Pow',U.parse(context['numeric']['L_W']['srepr']),U.integer_node(-entry['derivativeOrder'])))
+    mutant['map'][position][1]={'text':ast.unparse(changed),'srepr':ast.unparse(changed)}
+    J.start('control-missing-profile-L',{'sourceLocation':key,'actualItem':s['item'],'actualProfileRecord':actual_record,'mutatedRecord':mutant,'mutation':'Divide the actual saved mapped derivative by its original L^r; call the same profile transport path.'})
+    refused=False;reason=None
+    try:U.profile_transport(mutant,context,registry,verifier)
+    except ValueError as error:refused=True;reason=str(error)
+    result={'control':'missing-profile-L','refused':refused,'reason':reason,'actualProfileTransportCalled':True,'scope':'Actual mapped-profile scale certificate, not a numerical field/action value.'}
+    J.emit('control-missing-profile-L-decision-operands',result);require(refused and 'actual mapped profile' in reason,'responsive actual profile scale refusal');J.finish(result);controls.append(result)
     # Mutate the actual original chemical unit calculation, not a displayed required-unit label.
     op=get('native/new-unbound-chemical-homogeneity-input.json');mutated_registry=dict(op['registry']);mutated_registry['eta_bg']=[1,0,0]
     J.start('control-grade-assigned-length',{'actualInheritedInput':op,'baselineReturn':get('native/new-unbound-chemical-homogeneity-return.json'),'mutatedRegistry':mutated_registry})
@@ -314,6 +360,8 @@ def run(m,J,U):
     finally:J.emit('control-grade-assigned-length-unit-walk',checker.events)
     result={'control':'grade-assigned-length','refused':refused,'reason':reason,'mutatedUnit':mutated,'scope':'Actual original chemical expression under changed grade units; no field calculation.'}
     J.emit('control-grade-assigned-length-decision-operands',result);require(refused and 'inhomogeneous' in reason,'actual native grade-unit refusal');J.finish(result);controls.append(result)
+    J.emit('selected-address-coverage-return',{'joinedIds':[v['addressId'] for v in addresses],'selectedIds':[v['addressId'] for v in selected]})
+    require(len(addresses)==544 and len({v['addressId'] for v in addresses})==544 and {v['addressId'] for v in addresses}=={v['addressId'] for v in selected},'every selected address exactly once')
     result={'status':'BOUNDED_SOURCE_GRADE_PROFILE_UNIT_TRANSPORT_COMPLETE','selectedAddresses':len(addresses),'sourceLocations':len(source_records),'consumerLocations':len(consumer_records),'gradeGroups':len(groups),'controls':controls,'nativeInferenceDependency':True,'sourceGradeFieldUnitTransportComplete':True,'pressureSummandUnitsComplete':False,'waveKernelMeasureUnitsComplete':False,'numericalEvaluatorReady':False,'newIntegralOrAction':False,'priorFunctionsReplayed':False,'limits':['Homogeneity transported through original accepted algebra, not new independent source/grade calculation.','Zero coefficients carry required-unit expectations only.','Gamma registry units remain inference-dependent.','Wave/profile-transform/kernel/measure/all-summand proof remains required.']}
     J.emit('complete-address-unit-transports',addresses);return result
 

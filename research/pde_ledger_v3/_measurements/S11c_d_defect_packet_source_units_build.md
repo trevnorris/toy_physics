@@ -1,94 +1,123 @@
-# Saved source-grade and profile unit transport
+# Saved source-grade and profile unit transport: concrete build
 
-This concrete build implements the source/consumer transport part of the
-pressure-readiness method accepted at 823eefe6. Native unbound source/closure
-unit evidence has now completed at 086253f7. No transport science has run and
-no READY gate exists. This build does not evaluate a pressure contribution.
+This build implements the source/consumer transport part of the pressure-readiness
+method at823eefe6. It restores the native unit bridge086253f7 and the source
+inventory7455ee78. No transport instrument has run and no READY gate exists.
+The current revision strengthens actual operand validation; equations, saved
+scientific data, physical inputs and the numerical method remain unchanged.
 
-## Actual inputs and the new argument
+## Physical quantities and stored magnitudes
 
-The worker restores the accepted native chemical, live-density, face velocity
-and normalized source unit inputs, complete node walks and returns. It joins
-their actual constructor trees to the old source operands, then the same
-chemical/velocity normalization, epsilon, stage2 and live-density arguments to
-the completed source-composition input/return records. Every old cancellation
-identity retains both operands and its literal zero. Opposite sides of an old
-cancellation proof are not required to be structurally equal. No source, grade,
-profile, jet, field, transform or response function is called again.
+A stored rational coefficient is a magnitude after choosing the original base
+units. It is not by itself a physical quantity whose unit can be recovered from
+its numeric value. A physical coefficient is the pair (saved magnitude, units
+transported from its original expression). For example, coefficients multiplying
+e_W and e_W_d1d1 can have different length powers, although both are stored as
+rational complex numbers. Their respective products with the physical jets have
+the same source unit. Running the unit engine on the bare bound numerical sum
+would discard precisely the physical parameter units being certified here.
+This worker never does that and never claims that bare numerical sum is a new
+homogeneous unbound expression.
 
-New strict unit checks apply only to the original background substitutions
-missing from the native unit bridge. Each replacement has to carry the same
-unit as its actual native symbol. Numeric parameter values are carried with
-the original symbol's unit annotation. Equal numeric values never imply equal
-physical dimensions; the worker does not run a unit checker on a bound numeric
-source and call that a proof.
+The complete unbound chemical/velocity/source unit walks and their original
+constructor roots are inherited. Missing background substitutions are newly
+checked against the actual native symbol units. Every numeric binding carries
+its original parameter name, value and unit. Output coefficient records separate
+the magnitude, physical coefficient unit, jet unit and formal L_ref/T_ref/M_ref
+unit references. Old required-unit metadata is only a consistency comparison.
+The derivation is homogeneity of the original source transported through actual
+substitutions and independent jets, not a dimensional inference from a number.
+Gamma units remain dependent on their four original inferred registries.
 
-For each native unit walk, the worker restores every negative-power base and
-its actual node path, original constructor and inherited unit. These are the
-homogeneous reciprocal operands before binding, including memory and density.
-Epsilon normalization is formal and is joined separately to the saved exact
-normalization proofs. Chemical and all six source/consumer quotient groups
-also join the actual saved denominator-at-zero and complete finite/nonzero
-component certificates. The constant domain checks are inherited, not repeated.
+## New joins on restored normalization and grade operands
 
-The dimensional transport uses the following argument, as an implementation
-of the approved method's homogeneity requirement. A homogeneous rational
-expression remains homogeneous under substitutions that preserve symbol units.
-Its coefficients in independent dimensionless eta and sigma have its original
-unit wherever the saved regular quotient is defined. Cancellation and numeric
-normalization may rescale numerator and denominator by a common factor. There
-is no unique recoverable physical unit of the saved normalized numeric
-denominator considered in isolation. This build therefore records its exact
-regularity proof and the unbound homogeneous reciprocal origins, and does NOT
-assign an invented unit to that normalized denominator. Review whether these
-actual joins suffice for the stated coefficient-unit transport. If not, identify
-the missing original operand or mathematical condition; do not authorize a
-post-hoc unit assignment to a numeric constant.
+Both sides of raw chemical, raw density and amplitude identity records join
+actual original constructors and named saved operands. New exact constructor
+substitution certificates connect the unbound epsilon-stripped chemical and
+velocity operands to the saved bound LEFT operands, then connect the actual
+simultaneous stage2 map and original physical binding context to the saved
+identified and bound source. Every substitution stage is saved. The old bind,
+source constructor, coefficient extractor and producer functions are never
+called; these are newly derived missing unit-provenance joins, not restored
+results or a regenerated source export.
 
-The source is linear in arbitrary independent native wave jets. The complete
-saved jet reconstruction, full grade coefficient and original jet schema fix
-the coefficient unit as source-unit minus jet-unit. The new bookkeeping joins
-all 64 selected source locations, including zeros, to those full tables and
-reconstructions. Required coefficient units in old metadata are checked against
-this transported unit; they are not treated as independent evidence. A zero
-has no intrinsic nonzero unit and retains only its required-unit expectation.
+These new joins use a small strict exact ring normal form of saved constructors:
+Integer/Rational/I/Symbol/Add/Mul and integer Pow. Multi-term negative-power
+bases remain opaque canonical atoms; this is not a general CAS simplifier.
+Missing or unsupported identity stays unresolved. Full inputs and normal forms
+persist before equality guards. No tolerance or numeric-smallness fallback.
 
-The source's original dimensionless profile jets map by the pinned native rule
-L_W^r partial_x^r w or m, with saved transverse derivatives zero. Original
-coefficient, every map pair, actual L_W, and saved mapped field must join. The
-old profile derivative is not recalculated. The dimension argument is the
-native L^r factor times a physical r-th derivative, giving dimension zero.
-The strict native unit engine is reused unchanged. Its gamma units remain
-conditional on the four original inferred registries.
+Every native negative-power base is restored from its original unit-walk path,
+with its constructor and unit. Chemical and all six rational source/consumer
+groups join full original finite/nonzero component certificates. A complex value
+is nonzero if at least one of its real/imaginary components is provably nonzero;
+the other can be exactly zero. The unused flag-only fallback is removed.
 
-All four THETA pressure/normal consumer coefficients and their unit returns
-are inherited with full operands. For each of their 16 retained grade locations,
-the original epsilon identity supplies the exact stripped profile input.
-Matching only the output field is insufficient. Both faces and all selected
-source/consumer cross grades remain. The complete 544 selected addresses then
-join source atom, jet specification, original coefficients, source/consumer
-fields, whole-transform records and complete polynomial reconstruction
-operands/returns. A field ID is an extra byte identity, never a unit proof.
+A homogeneous rational source under unit-preserving substitutions has homogeneous
+Taylor coefficients in independent dimensionless eta and sigma on the saved
+regular domain. Cancellation can multiply numerator and denominator by a common
+factor, so no invented physical unit is attached to the normalized numeric
+denominator alone. Its exact regularity and its unbound reciprocal origins
+remain separate parts of the argument.
 
-## Controls and limits
+Each stored fullHigherRemainder and quotientRingNumeratorRemainder is newly joined
+to the complete saved full expression, numerator, denominator and all four
+retained coefficients by exact expression assembly. Excluded pure grades are
+preserved explicitly. The old per-grade zero receipts are inherited observations
+from the pinned original grade operation; a saved 0=0 is not presented as a new
+independent proof of the full remainder. Quotient coefficients and the quotient
+recurrence are never recalculated. This transport retains the accepted original
+grade computation as an explicit dependency.
 
-The missing-L control uses an actual nonzero source location with a live profile
-derivative: its formal native scale factor is removed and the resulting unit
-fails the original dimensionless-profile condition. A second control changes eta to a length in the actual original chemical
-constructor unit calculation, while restoring the completed baseline. It must
-produce an inhomogeneous-add refusal in that native expression. These are dimensional sensitivity
-checks, not numerical response controls or evidence of a nonzero field value.
-All inputs and mutation decisions persist before acceptance guards.
+## Actual profile L-scaling certificate
 
-This is only source/consumer retained-grade/profile/field transport. Actual
-numeric time/tangent wave-factor joins, physical h/j transforms, H/J/direct
-kernels, flat delta support, paired-PV and Fourier measures, and the complete
-pressure summand unit proof are still REQUIRED. The source unit expectations
-are not to be promoted directly to evaluator readiness. No integral, pressure
-value, current, loss, inverse, speed/defect sweep or production change follows.
-The geometry and every completed numerical bank/local action remain unchanged.
+The worker reads every actual saved profile map and its entire tanh argument.
+It must be the saved physical x/L_W, not merely have an L metadata label.
+Repeated occurrences of each profile atom must have identical saved values.
+The original source assignments w=(1+tanh(x/L))/2 and
+m=(1-tanh(x/L)^2)/3 are source-pinned exactly.
 
-The planned worker uses the unchanged shared no-deadline pooled guard around
-the existing supervisor: 4 GiB native/cgroup within the 16 GiB pool, zero swap,
-one assigned CPU/thread, 32 tasks and a 4 GiB host reserve. The completion hook
-must be armed first. No automatic retry, source replay or unguarded fallback.
+The missing scale-covariance identity is new: write the actual saved mapped
+value as an exact polynomial P_r(T), T=tanh(x/L). Its coefficients must satisfy
+
+    P_r(T) = (1-T^2) dP_(r-1)(T)/dT.
+
+For r>1 the predecessor is the actual saved lower-order map. For r=1 it is the
+pinned native base definition. The chain rule identifies this recurrence with
+L^r times the r-th physical derivative. This checks actual mapped coefficients,
+including their normalization, instead of just adding r and -r unit exponents.
+No original profile function or physical derivative calculation is called.
+Only the missing finite coefficient identity on saved values is derived.
+Transverse derivatives must be the actual saved zero. Every mapped source and
+consumer coefficient joins its full original input and actual map records.
+
+The missing-L control divides an actual live saved mapped derivative by its
+original L^r and sends that mutated record through the SAME profile_transport
+and scale-certificate path. It must fail the actual coefficient identity.
+The native chemical control changes eta's unit to a length in the actual
+original chemical constructor and must produce an inhomogeneous-add refusal.
+Both are dimensional/provenance sensitivity, not numerical response or field
+values. Baseline proofs can be reused only for identical full operands.
+
+## Complete scope and limitations
+
+All64selected source jet locations join complete grade/linear reconstruction
+records and the native jet units. All16consumer grade locations join native
+coefficient units and actual epsilon-stripped profile inputs, on both faces.
+All544selected addresses must be covered exactly once: both the full pointer
+set and the actual joined address-ID set are required, with no omissions or
+duplicates. Every whole-field identity and complete polynomial quotient/vector
+and reconstruction record is carried. Exact-zero coefficients keep required-unit
+expectations only, not an intrinsic nonzero dimension.
+
+This is source/consumer grade/profile/field unit transport only. Actual numeric
+wave-factor joins, physical h/j transforms, H/J/direct kernels, flat delta
+support, paired PV, Fourier/integration measures and complete summand units are
+still REQUIRED before evaluator readiness. No integral, pressure value, current,
+loss, inverse, sweep, production change or primitive calibration is supplied.
+The existing numerical banks, local actions and geometry are preserved.
+
+Science runs only after substantive build assessment and an exact gate, under
+the unchanged shared no-deadline pooled guard and existing supervisor:4GiB
+native/cgroup within16GiBpool,zero swap,oneCPU/thread,32tasks,4GiBhost reserve,
+desktop priority and hook first. No automatic scientific retry or fallback.

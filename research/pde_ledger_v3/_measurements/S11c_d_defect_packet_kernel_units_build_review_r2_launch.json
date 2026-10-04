@@ -1,0 +1,61 @@
+{
+  "status": "CORRECTED_FIXED_BUILD_REVIEWS_STARTED_HOOK_ARMED_NO_SCIENCE",
+  "preparedCommit": "3236b21b",
+  "originalReviewCommit": "13af32da",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/kernel-units-build-review-r2",
+  "launch": {
+    "jobPid": 782211,
+    "watcherPid": 782212,
+    "packetSha256": "3b6123f4c849a334bf34b5562700e78cde33ad887ee2786b6342471e1b3a01bf",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "sessions": {
+    "claude": {
+      "sessionId": "4af66bfd-19a5-4943-a9ef-762f8fdcfc41",
+      "pid": 782229,
+      "receiptPath": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/kernel-units-build-review-r2/claude-run.json",
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/kernel-units-build-review-r2/claude/work"
+    },
+    "grok": {
+      "sessionId": "ce42a6ba-f3aa-47b6-9975-e946e907c1bf",
+      "pid": 782228,
+      "receiptPath": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/kernel-units-build-review-r2/grok-run.json",
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/kernel-units-build-review-r2/grok/work"
+    }
+  },
+  "checks": {
+    "coordinator started": true,
+    "hook first": true,
+    "correct session": true,
+    "no science": true,
+    "packet authority": true,
+    "standing authority": true,
+    "claude exact packet": true,
+    "claude prompt": true,
+    "claude source only": true,
+    "claude private census": true,
+    "claude private bytes": true,
+    "grok exact packet": true,
+    "grok prompt": true,
+    "grok source only": true,
+    "grok private census": true,
+    "grok private bytes": true,
+    "independent sessions": true,
+    "no ready gate": true
+  },
+  "packetSha256": "3b6123f4c849a334bf34b5562700e78cde33ad887ee2786b6342471e1b3a01bf",
+  "archiveSha256": "10a74cc00777ac7f1e0c00ed16a0d273a918d22c52505506518665fd1e23a93b",
+  "standingAuthority": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/kernel-units-build-review-r2/explicit-packet-approval.json",
+  "peerReportsShared": false,
+  "scientificExecution": false,
+  "transportRetries": 0,
+  "completionHookFirst": true,
+  "noModelPolling": true
+}

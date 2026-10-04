@@ -1395,3 +1395,19 @@ and C_D are equal is contradicted by the original source and not adopted; their
 distinct formulas remain unchanged. No numerical worker or READY gate exists.
 Next is the concrete bounded J/direct evaluator and its independent build review.
 H and other pressure blocks remain pending; no packet or leakage value follows.
+
+
+2026-10-04 — Concrete numerical contracted J/direct build prepared for independent
+source review. New source joins all 544 addresses and the 20 constant eligible
+entries to saved source/grade/field/template/unit and contraction operands; its
+new Gaussian/moment, six-slab mesh, positive-tail and nested numerical obligations
+have not executed. A24/A48/B50 use separate values and lossless full-request
+journals; active leaves are on disk. New inner A indicators sum absolute panel
+differences before cancellation. Fifty-two stdlib synthetic/metadata tests passed,
+with 34 prior immutable-index tests preserved; these are not runtime science.
+Frozen packet 1d4fefa0f0c2d6d69b438bb1190dbc311a2c09bd5359e02fc10c5ef9523fd075
+contains 3,241 complete files / 108,803,883 bytes, including all 3,142 runtime JSON
+inputs. No peer report is included and no READY gate exists. The worker is only
+ordinary J plus three added direct contributions; H and other pressure terms
+remain pending. No full packet or leakage factor follows. All previous completed
+calculations and literal reviews are preserved without replay.

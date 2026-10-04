@@ -1,0 +1,69 @@
+{
+  "status": "SOURCE_AST_ONLY_NOT_NATIVE_EXECUTION",
+  "fragments": {
+    "fourier-product": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_lib.py",
+      "sourceSha256": "8541ed87d588888daf642ff632ecf0a5780c8f4a47db7a3a53d50b2c36941fe0",
+      "line": 160,
+      "endLine": 194,
+      "text": "def product(self,ctx,spec,argument,shifted):\n        coefficients=[ctx.mpc(self.scalar(ctx,v[0]),self.scalar(ctx,v[1])) for v in spec['coefficientsAscending']]\n        center=self.scalar(ctx,spec['center']);carrier=self.scalar(ctx,spec['carrier']);s=ctx.mpf(8)\n        role=spec['role'];sign=1 if role=='X' else -1\n        nu=argument-carrier\n        c=ctx.mpf(5) if shifted else ctx.zero\n        imaginary=-c*ctx.sign(nu)\n        n=spec['spatialOrders'][0] if role=='X' else 0\n        nt,n2,n3=spec['timeOrder'],spec['spatialOrders'][1],spec['spatialOrders'][2]\n        native=(-3*ctx.j)**nt*(ctx.j/5)**n2*(ctx.j/10)**n3 if role=='X' else ctx.one\n        normalization=1/(2*ctx.pi) if role=='X' else ctx.one\n        # Q_n is in w=z-center. Derivatives act on u BEFORE multiplying the source coefficient.\n        q=[ctx.one]\n        for _ in range(n):q=poly_add(poly_derivative(q),poly_mul([ctx.j*carrier,-1/s**2],q))\n        # Expand actual Q(y+i*imaginary) and the requested argument derivative powers.\n        shifted_q=[ctx.zero]*len(q)\n        for j,a in enumerate(q):\n            for r in range(j+1):shifted_q[r]+=a*math.comb(j,r)*(ctx.j*imaginary)**(j-r)\n        degree=spec['argumentDerivative']\n        # d^m/dk^m for X: (-iz)^m; d^m/dl^m for Y(-l): (+iz)^m.\n        deriv=[ctx.one]\n        for _ in range(degree):deriv=poly_mul(deriv,[-sign*ctx.j*(center+ctx.j*imaginary),-sign*ctx.j])\n        all_poly=poly_mul(shifted_q,deriv)\n        majorant=[abs(v.real)+abs(v.imag) for v in all_poly]\n        norm=sum(abs(v.real)+abs(v.imag) for v in coefficients)\n        C0=abs(native)*normalization*norm\n        def f(y):\n            w=y+ctx.j*imaginary;z=center+w\n            phase=ctx.exp(-w*w/(2*s*s)-ctx.j*nu*z)\n            return normalization*native*poly_eval(coefficients,ctx.tanh(z/10))*poly_eval(all_poly,y)*phase\n        data={'argument':argument,'nu':nu,'center':center,'carrier':carrier,'shift':imaginary,'spatialDerivative':n,\n            'native':native,'normalization':normalization,'Q':q,'shiftedQ':shifted_q,'argumentDerivativePolynomial':deriv,\n            'fullPolynomial':all_poly,'majorant':majorant,'coefficientL1':norm,'C0':C0,\n            'tailExponentialFactor':ctx.exp(c*c/(2*s*s)-c*abs(nu)),'s':s}\n        return f,data",
+      "fragmentSha256": "81393815f70a95835933357546e55fd9259151bfe1f844d29f42eaeeea275720"
+    },
+    "fourier-constant-reference": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_lib.py",
+      "sourceSha256": "8541ed87d588888daf642ff632ecf0a5780c8f4a47db7a3a53d50b2c36941fe0",
+      "line": 241,
+      "endLine": 253,
+      "text": "def constant_reference(self,spec,arg):\n        if len(spec['coefficientsAscending'])!=1:return None\n        c=self.B;carrier=self.scalar(c,spec['carrier']);center=self.scalar(c,spec['center']);s=c.mpf(8)\n        coeff=spec['coefficientsAscending'][0];coeff=c.mpc(self.scalar(c,coeff[0]),self.scalar(c,coeff[1]))\n        native=(-3*c.j)**spec['timeOrder']*(c.j/5)**spec['spatialOrders'][1]*(c.j/10)**spec['spatialOrders'][2] if spec['role']=='X' else c.one\n        norm=1/(2*c.pi) if spec['role']=='X' else c.one\n        n=spec['spatialOrders'][0] if spec['role']=='X' else 0\n        # Polynomial recurrence for derivatives of (i*argument)^n times the analytic Gaussian transform.\n        poly=[c.zero]*n+[c.j**n]\n        for _ in range(spec['argumentDerivative']):\n            poly=poly_add(poly_derivative(poly),poly_mul([s*s*carrier-c.j*center,-s*s],poly))\n        sign=1 if spec['role']=='X' else -1\n        return coeff*native*norm*sign**spec['argumentDerivative']*poly_eval(poly,arg)*s*c.sqrt(2*c.pi)*c.exp(-s*s*(arg-carrier)**2/2-c.j*(arg-carrier)*center)",
+      "fragmentSha256": "1cf16bd59a15e2c0d1e51430c93a906dd487ffe07ed9cc94914507ff4b948392"
+    },
+    "inner-components": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "sourceSha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+      "line": 53,
+      "endLine": 60,
+      "text": "def kernel_components(k,l,t,qi,qo,qh,qs,A1,A2,a,mu,beta,W,L,I):\n    \"\"\"Same arithmetic called by the new exact adapter and by both numeric routes.\"\"\"\n    J=a*mu**2*W*L/4*A1*A2*(k+t)*(2*k+t)*qi/(qh*(qo+beta)*(qh+beta)*(qi+beta)*(qh+qi))\n    pref=W*L/(4*I)*A1*A2*(-I*mu)/((qi+beta)*(qo+beta))\n    reflected=pref*k*(2*l-t)/(qs+qo)\n    height=pref*k*(t+2*k)*qi/(qh*(qh+qi))\n    quadratic=pref*qi**2/qh\n    return [J,reflected,height,quadratic]",
+      "fragmentSha256": "39bc5311ed099a5245efc41d505cadd55125f1cbcd88bfdc6be085b499b01d64"
+    },
+    "inner-profile": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "sourceSha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+      "line": 106,
+      "endLine": 113,
+      "text": "def profile(c,t):\n        z=5*c.pi*t\n        # The discarded sinhc tail is <=2 |z|^12/13! for |z|<=10^-6.\n        # Even at 30 digits this bound is far below arithmetic roundoff.\n        if abs(z)<=c.mpf('1e-6'):\n            z2=z*z;s=1+z2/6+z2**2/120+z2**3/5040+z2**4/362880+z2**5/39916800\n            return 1/(2*c.pi*s)\n        return 5*t/(2*c.sinh(z))",
+      "fragmentSha256": "6688a2c4d19b2095c4d70058923e922bff903568bf74dba0cbe5ea2f68f608e5"
+    },
+    "inner-middle": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "sourceSha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+      "line": 115,
+      "endLine": 123,
+      "text": "def middle(self,c,k,l,t,mutate=False):\n        qi,qo=self.q(c,k),self.q(c,l);qh=self.q(c,k+t);qs=self.q(c,l-t)\n        require(qi!=0 and qo!=0 and qh!=0,'unsampled depth poles')\n        used_qs=qh if mutate else qs\n        a=1/(1-3*c.j/10);mu=c.mpf(3)/10;beta=a*mu\n        aa,bb=self.profile(c,t),self.profile(c,l-k-t)\n        values=kernel_components(k,l,t,qi,qo,qh,used_qs,aa,bb,a,mu,beta,c.one,c.mpf(10),c.j)\n        require(all(c.isfinite(v) for v in values),'finite middle node')\n        return values,{'qi':qi,'qo':qo,'qh':qh,'qs':qs,'used_qs':used_qs,'A1':aa,'A2':bb}",
+      "fragmentSha256": "d00e1e042b2b9193f3ffc491885c429dc9bbbcd22af052504975f1d6c101660c"
+    },
+    "inner-root": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "sourceSha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+      "line": 101,
+      "endLine": 103,
+      "text": "def q(c,p):\n        d=c.mpf(595)/100-p*p\n        return c.sqrt(d) if d>=0 else c.j*c.sqrt(-d)",
+      "fragmentSha256": "c1827147a743334e848fd1904f3be4da01128eb2bdf2c7787444be91ddb49a64"
+    },
+    "tail-contributions": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight.py",
+      "sourceSha256": "bcde596139ab92cc00dbca5bf23bd844471e4714a322c58dc73de947af782064",
+      "line": 322,
+      "endLine": 338,
+      "text": "def contributions(K,U,Tlim):\n        data=[]\n        for a in live:\n            z=bounds[a['addressId']];cx,cy,dy=z['X'],z['Y'],z['Yprime'];comp=a['component'];outer=middle=height=sp.S.Zero\n            if comp=='NATIVE_HEIGHT':\n                ch=(A0/4+11*A0)*cy+(2*A1*cy+A0*dy)/6\n                outer=ch*cx*E15*weighted_tail(2,K);height=11*A0*cx*cy*E15*F[1]*sp.Rational(1,2)**U\n            elif comp=='NATIVE_FLAT':\n                outer=Cordinary*cx*cy*E30*weighted_tail(3,K) # drop one exponential; conservative diagonal bound\n            else:outer=2*Cordinary*cx*cy*E30*F[3]*weighted_tail(3,K)\n            if comp=='NATIVE_MIXED_ITERATION':\n                middle=4*cx*cy*E30*F[3]**2*(sp.Rational(4,5)*121/b**3)*weighted_tail(2,Tlim,1)\n                middle+=(4/b)*cx*cy*E30*F[2]**2*sp.Rational(55,3)*sp.Rational(1,2)**Tlim\n            elif comp=='INHERITED_DIRECT_WHOLE_OFF_DIAGONAL':\n                middle=4*cx*cy*E30*F[3]**2*(36*121/b**2)*weighted_tail(1,Tlim,1)\n            data.append({'addressId':a['addressId'],'component':comp,'grade':a['targetGrade'],'outer':outer,'heightQ':height,'middle':middle,'total':outer+height+middle})\n        return data",
+      "fragmentSha256": "b0de55114e09aa9ce8e4d1e6a22666080da94597a2fdeb6b31eacfc470431ce8"
+    },
+    "tail-weighted": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight.py",
+      "sourceSha256": "bcde596139ab92cc00dbca5bf23bd844471e4714a322c58dc73de947af782064",
+      "line": 135,
+      "endLine": 139,
+      "text": "def weighted_tail(degree,start,rate=5):\n    # For integer rate*start, e^(-rate*start) <= 2^(-rate*start).\n    require(isinstance(start,int) and start>=0 and isinstance(rate,int) and rate>0,'integer tail plan')\n    rate=sp.Integer(rate)\n    return 2*sp.Rational(1,2)**int(rate*start)*sum(math.comb(degree,n)*exponential_moment(n,sp.Integer(start),rate) for n in range(degree+1))",
+      "fragmentSha256": "0d0a024004d12d42b946850e69497b83edc86e91e692eb5d20bcc9fb42a83312"
+    }
+  }
+}

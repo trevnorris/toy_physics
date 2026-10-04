@@ -1,0 +1,27 @@
+{
+  "status": "CONCRETE_NUMERICAL_SOURCE_PREPARED_NOT_EXECUTED",
+  "utc": "2026-10-04T11:51:35.943218+00:00",
+  "stdlibSyntheticTests": 52,
+  "testLog": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_numeric_tooling_tests.log",
+  "sourceHashes": {
+    "S11c_d_defect_packet_contracted_numeric.py": "a2924ebff0cc15aaf365c6828435e9b7389e8590767dab5d6bae731199acfa22",
+    "S11c_d_defect_packet_contracted_numeric_lib.py": "1b327fce35ade78bf297239318bd5333c58047004d11f5439c598321e4b91dea",
+    "S11c_d_defect_packet_contracted_numeric_test.py": "dc875f05dff7f5adae2827bf29460937803dcf1a73caec13c9022e50306c0b09",
+    "S11c_d_defect_packet_contracted_numeric_launch.py": "89f371b5d1b4c2a3fea7691dfb89550676809898c0574ede1b36582b329b73c8",
+    "S11c_d_defect_packet_contracted_prepare.py": "61b1a3fe28a4d377faf19e3746fa01726a4a8d564031c58ae49851382ead2cf9",
+    "S11c_d_defect_packet_contracted_geometry.py": "a2f91c747303340e22f597e9c084e0616b381c423121a68003262398bf07d6af",
+    "S11c_d_defect_packet_contracted_numeric_tooling_tests.log": "1174872a68c8b57ba1c5b201adf6bbee0e68eb36a37f2d8936924b80eb033019"
+  },
+  "previousRequestIndexTests": 34,
+  "scientificComputationsRun": 0,
+  "scientificRestorationsRun": 0,
+  "independentBuildClearance": false,
+  "READYGateExists": false,
+  "checks": "Manufactured quadratic fields/windows; toy Gaussian formula parameters; positive error aggregation; immutable request namespace/argument/pending-failure behavior; metadata and source AST checks. No native source operands, rules or geometry executed.",
+  "localToolingCorrections": [
+    "Full request outputs are decoded consistently for both new and reused returns.",
+    "Exact tail relation objects are explicitly converted to bool; unresolved symbolic truth still raises.",
+    "Inner A24/A48 differences are summed panel by panel before numerical cancellation."
+  ],
+  "limits": "Tests are not actual native eligibility, scientific result or performance evidence."
+}

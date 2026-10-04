@@ -1,0 +1,166 @@
+{
+  "status": "CLAUDE_ONLY_EXPLICIT_PREFIX_RECOVERY_METHOD_CLEAR_CONCRETE_BUILD_PENDING",
+  "recordedUtc": "2026-10-04T16:15:13.988034+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-prefix-recovery-method-review-r2",
+  "preparedCommit": "d65290da",
+  "launchCommit": "ebc8c1be",
+  "failureCommit": "9d91cbf7",
+  "reviewers": [
+    "claude"
+  ],
+  "pairedClearance": false,
+  "independentMethodClearance": true,
+  "independentBuildClearance": false,
+  "scienceCalls": 0,
+  "scientificWorkerExists": false,
+  "scientificGateExists": false,
+  "allSourcePacketArchivePrivateChecksPassed": true,
+  "inspectionChecks": 115763,
+  "packetFiles": 28941,
+  "packetBytes": 534619146,
+  "packetSha256": "76a2b00632c0d4c8e082b465ac9e1dd68e834049adffe07ee6c281c584fcb095",
+  "archiveSha256": "fb17134776064bb2a327de1d94910f02c79483becf766de7aa23803c34b5a2a5",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-04T16:06:08.435138+00:00",
+    "packetSha256": "76a2b00632c0d4c8e082b465ac9e1dd68e834049adffe07ee6c281c584fcb095",
+    "archiveSha256": "fb17134776064bb2a327de1d94910f02c79483becf766de7aa23803c34b5a2a5",
+    "reviewers": [
+      "claude"
+    ],
+    "files": 28941,
+    "bytes": 534619146,
+    "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+    "authority": "Standing user/AGENTS direction and temporary Claude-only policy authorize this necessary explicit unfinished-parent recovery assessment to established Claude without a routine question. No execution of science, automatic retry or disclosure to a new recipient.",
+    "scope": {
+      "target": "Corrected strict parent/node/child/pair numerical-prefix recovery method and encoded state-machine prototype only",
+      "ordinaryJAndThreeAddedDirectOnly": true,
+      "realOmega": 3,
+      "sameOriginalPhysicalInputs": true,
+      "sameRulesWindowsAndTolerances": true,
+      "noNumericalWorkerExists": true,
+      "scientificGateExists": false,
+      "scienceCalls": 0,
+      "completeNumericalRequestsToPreserve": 434,
+      "pendingParents": 1,
+      "originalDatabaseRecords": 1450,
+      "originalFailureCommit": "9d91cbf7",
+      "unsavedParentScalarReconstructionExplicit": true,
+      "fullPacketAction": false,
+      "leakageFactor": null
+    },
+    "noAutomaticRetry": true,
+    "scienceExecutionsAuthorizedByThisReviewLaunch": 0,
+    "noPeerReportsShared": true
+  },
+  "coordinator": {
+    "status": "ALL_REQUESTED_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-10-04T16:12:41.164995+00:00",
+    "scienceCalls": 0
+  },
+  "hook": {
+    "status": "finished",
+    "watcherPid": 1712510,
+    "jobPid": 1712509,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T16:08:24.685251+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "28142f6ae2b6674851309d53d38ddb811e3174b332b0216cff0595908a306007",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-10-04T16:12:41.287816+00:00"
+      }
+    }
+  },
+  "reports": {
+    "claude": {
+      "literalVerdict": "CLEAR FOR THIS EXPLICIT NUMERICAL-PREFIX RECOVERY METHOD",
+      "literalReportPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_prefix_recovery_r2_review_claude.md",
+      "literalReportSha256": "338c109e552ee57c4d1ec40ba1d0070a46f265916578590f483ea7eebbab640e",
+      "jsonOutputSha256": "4e2f140559c529bb95d7b9b3c96e6967390224f2277d120c8d125d109405c5c7",
+      "receipt": {
+        "engine": "claude",
+        "sessionId": "eb92d311-b661-4ddf-88c1-3b0f6d67f1fd",
+        "command": [
+          "/home/trevnorris/.local/bin/claude",
+          "--print",
+          "--output-format",
+          "json",
+          "--safe-mode",
+          "--restricted",
+          "--tools",
+          "Read,Glob,Grep",
+          "--allowedTools",
+          "Read,Glob,Grep",
+          "--permission-mode",
+          "dontAsk",
+          "--strict-mcp-config",
+          "--mcp-config",
+          "{\"mcpServers\":{}}",
+          "--setting-sources",
+          "",
+          "--disable-slash-commands",
+          "--session-id",
+          "eb92d311-b661-4ddf-88c1-3b0f6d67f1fd"
+        ],
+        "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-prefix-recovery-method-review-r2/claude/work",
+        "startedUtc": "2026-10-04T16:08:32.571284+00:00",
+        "packetSha256": "76a2b00632c0d4c8e082b465ac9e1dd68e834049adffe07ee6c281c584fcb095",
+        "promptSha256": "ae05d634d60a32f20fe24327d66048bdd498c4346e2b34f7cb93649a6610e598",
+        "scientificExecutionEnabled": false,
+        "reviewVerdict": "NOT_ADJUDICATED",
+        "pid": 1712580,
+        "exitStatus": 0,
+        "finishedUtc": "2026-10-04T16:12:36.894157+00:00",
+        "wallSeconds": 244.32049301010557,
+        "outputSha256": "4e2f140559c529bb95d7b9b3c96e6967390224f2277d120c8d125d109405c5c7",
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderrBytes": 0
+      },
+      "declaredPartialCoverage": true
+    }
+  },
+  "findings": [
+    {
+      "topic": "Scoped method clearance",
+      "disposition": "Literal CLEAR supports the explicit recovery method only. No concrete worker/gate/result clearance. Reviewer declares partial actual-record coverage; all runtime operand/typed/bitwise joins remain obligations."
+    },
+    {
+      "topic": "Unpublished parent accumulation",
+      "disposition": "Deterministic reconstruction from exact child returns is assessed, not a restored published scalar result. Keep unchanged original scalar expression, per-context environment pins and explicit record."
+    },
+    {
+      "topic": "P1 refusal latch",
+      "disposition": "Implement terminal FAILED state on any protocol refusal or callback exception; caught errors cannot authorize retries."
+    },
+    {
+      "topic": "P2/C9 pair values and expression",
+      "disposition": "Require exact encoded shape and own-A24 value identity. In the integrated wrapper retain/observe the original paired_indicator call and require recorded operands/returns to match the published contributions without invoking completed panel callbacks."
+    },
+    {
+      "topic": "P3/C3 exact sequence and durable ledger",
+      "disposition": "Place execution provenance directly at original count 1450 in its own namespace; first pair exactly1451, recovery ledger immediately1452. Persist full evidence and old/new ranges, not only memory events."
+    },
+    {
+      "topic": "P4/P5/C7 actual preservation",
+      "disposition": "Measure original empty leaves, pin schema and audit entire cloned record/chunk chain plus current request states in finally, alongside original/copy hashes. New legitimate adaptive leaves allowed."
+    },
+    {
+      "topic": "P6 tests",
+      "disposition": "Add pair-key/value/order/name/serial/sequence mutations, NEW-state reuse and interruption between pair commit and post-write acknowledgement; representative synthetic serial580."
+    },
+    {
+      "topic": "C1/C2/C4/C5/C6 build integration",
+      "disposition": "Actual new worker must precheck exact saved panel decode/encode before clone; restore original contexts/rule paths/settings and typed geometry; pin numerical source/backend/version; certify bounded actual source AST deltas and wrapper call sites."
+    },
+    {
+      "topic": "C8 failure history",
+      "disposition": "No generic automatic resume. Any later failure is preserved and all then-completed work must be assessed/reused before another explicitly prepared continuation; never silently return to an older prefix."
+    }
+  ],
+  "sourceIndex": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_prefix_recovery_r2_review_sources.json",
+  "sourceIndexSha256": "a8c147323fdd1312878a28ca8773567fd5ad13204bfd236939f9f8a6ef80a069",
+  "disposition": "Preserve literal scoped CLEAR and exact reviewed bytes. Prepare the concrete guarded recovery build satisfying all P1-P6 and C1-C9 obligations, then obtain applicable source assessment/readiness; no science launch yet. Equations, original sources and all saved work stay unchanged."
+}

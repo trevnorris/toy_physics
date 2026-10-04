@@ -1,0 +1,77 @@
+Finite source projection, opposite-leg current and real-axis receiving build
+2026-10-04. No scientific execution or READY gate exists.
+
+The physical question is whether the actual three-field receiving block has
+an outgoing real-axis pole and whether its projected forcing is localized in
+the stated weighted class. The other new finite calculation is the missing
+incident/reflected cross current. These are prerequisites to a physical power
+balance; none supplies leakage or a radiated power value.
+
+The worker restores complete source/receiving/matching/current operands and
+actual scalar proof families. It does not invoke old scientific functions.
+All2025 complete JSON inputs are supplied, including all400 original local
+cells and original native current/face bodies. Source force rows join the same
+cell ancestry as the off-wave local00 plus pressure00 operator. The existing
+native source correspondence, dual and both zero coupling proofs are inherited
+with original LEFT/RIGHT operands; their residuals are not recomputed.
+
+New finite derivations, in order:
+1. Actual E5/D5 and lower-three selection; full five-by-two eta projection
+against the explicit hand table, full sigma projection and right-step residue.
+Join the physical depth law with fixed tangential momentum, not total wavenumber.
+2. Combined step derivative A' and Q*Ahat=-i*AprimeHat before any square-root
+receiving cusp. All40 saved profile derivative certificates are restored.
+No old moment is repeated; the new endpoint jump is the distribution identity's
+zero-transfer value. The nonlocalized transverse step remains matched.
+3. All10 pressure rows with both faces/four slots join their original source,
+consumer grade/epsilon, flat response/normal factor and receiving operator
+entries. Native affine chemical pressure is transported once: the independent
+normalized-source tag equals10*A_mem/rho times the physical chemical tag.
+The full physical path is sigma=lambda/10. Source/consumer time and tangent
+factors remain already included. Whole flat response enters once.
+4. Actual complete U_B three-row forcing is checked. All sigma and direct
+source envelopes are tested as finite endpoint-zero polynomials. Independent
+sigma tags are display operands only: the Fourier transform respects their
+proved polynomial relations. None of the transforms is evaluated.
+5. Moving R3'(p)U and R3(p)Bprime cancel in the homogeneous right-end delta-prime
+jet. The dropped-term mutant uses the actual complete coefficient. This is a
+coordinate consistency check, not a global half-line transform or work theorem.
+6. Native two-leg LEFT current joins its original slab body, physical binding,
+epsilon-squared proof, coordinate chart and inherited positive signed weights.
+Compute BOTH opposite-leg contractions and conjugacy, preserve exp(+-2ipx).
+The wrong-bra sign control changes that same contraction at a declared entry.
+7. Compute the new global determinant from the complete C3 after evenness and
+s=l^2 substitution. Save/check every original denominator before cancellation.
+The existing denominators are required to factor into nonzero constants and
+linear q factors whose roots have strictly negative real and imaginary parts;
+unsupported factors stop, without an alternative domain heuristic.
+8. Map the physical sheet to q=t,0<=t<=p and q=i*r,r>=0. Exact rational real/imag
+polynomials feed gcdex and a persisted Euclidean chain. Nonconstant gcds require
+square-free Sturm sequences, exact signs and endpoint checks, including p and
+positive infinity. A pole/unknown sign stops. No sampled roots or floating test.
+9. Join q=0 determinant to BOTH saved threshold operands and returns. A fixed
+full-block off-diagonal deletion is a sensitivity control. Only after domain
+and root clearance derive both adjugate identities and rational growth degrees.
+Include one additional momentum power from E3. This does not compute a field.
+
+Claims remain conditional on actual execution and subsequent inspection. The
+analytic all-derivative induction, weighted integrability and Riemann-Lebesgue
+argument are assessed mathematics, not machine measure theory. Only the C3
+contribution may decay; the whole five-field operator retains transverse poles.
+No decay rate, arbitrary threshold-supported distribution inverse, far-bulk
+radiation theorem, or numerical norm/condition estimate is supplied.
+
+The physical nonuniform power identity is the next required physics derivation
+if this finite prerequisite passes. It must include exterior acoustic flux,
+memory dissipation, mass-rate/chemical work and LAB_HELD prescription work.
+K1=0 only removes the linear survival term; a quadratic leakage coefficient
+still needs that identity or second-order transverse amplitudes. Reflected
+transverse waves remain survival. No current/loss/flux number is guessed from a
+coordinate projector or Im(f-dagger G f).
+
+20 stdlib tooling/JSON/source tests pass. No SymPy import, scientific restoration,
+source projection, determinant, current contraction or native unit computation
+ran. The existing shared guard, supervisor, journal and no-deadline policy are
+unchanged. A future gate must pin actual worker/manifest/helpers/method/build/
+authority, with hook FIRST and the same pooled4GiB job limit. No retry/fallback,
+scheduler changes, generic verifier work or parked numerical recovery.

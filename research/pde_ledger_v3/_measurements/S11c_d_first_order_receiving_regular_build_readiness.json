@@ -1,0 +1,35 @@
+{
+  "status": "FIXED_REAL_AXIS_RECEIVING_BUILD_PACKET_VERIFIED",
+  "packetSha256": "9f4f94d46307a0cf254f231d83965fbf78c90382883a3fdc0a803f6b3412407b",
+  "archiveSha256": "41f76036fd3f9ef2533dc1deb3634b0fe1bd7b9ddef607ef608b134d6287b89f",
+  "files": 2059,
+  "bytes": 52684556,
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "completionMessageSha256": "9c1d9fa5da91f8d4c6167cba445f107459bbec91962644aeb5c1ed9e1d66ea25",
+  "sourceHashesChecked": 2058,
+  "losslessViewsChecked": 12,
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "existingReviewerRunnerReusedUnchanged": true,
+  "workerSha256": "c481ef1136c6bc043690c742679852cbc4f85af2587cba82876f7577ebf3e8f0",
+  "manifestSha256": "5e93ed217eedfa5dcff5a0d2c93fc39568487aa96dea644eeb550ec0f743480f",
+  "scientificLauncherSha256": "6d19e4e1839e048681240126051f193662e3750a853864be93cff032c4d1bbf1",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-build-review",
+  "scope": {
+    "target": "Explicit full-source projection, native opposite-leg current and exact C3 real-axis polynomial regularity",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalInputUnchanged": true,
+    "arbitraryDoublet": true,
+    "newFieldOrIntegral": false,
+    "fullFiveFieldInverse": false,
+    "physicalPowerBalancePending": true,
+    "leakageFactor": null,
+    "nonzeroPoleOrResidue": "STOP_NO_FALLBACK",
+    "recoveryParked": true
+  }
+}

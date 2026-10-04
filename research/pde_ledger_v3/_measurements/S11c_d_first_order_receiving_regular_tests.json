@@ -1,0 +1,17 @@
+{
+  "status": "PASS_STDLIB_TOOLING_ONLY",
+  "command": [
+    "python",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_test.py"
+  ],
+  "exitStatus": 0,
+  "tests": 20,
+  "workerSha256": "c481ef1136c6bc043690c742679852cbc4f85af2587cba82876f7577ebf3e8f0",
+  "manifestSha256": "5e93ed217eedfa5dcff5a0d2c93fc39568487aa96dea644eeb550ec0f743480f",
+  "testSha256": "4bc0918dd995ed267b3a046f6705d1cdffc6953a594e400d5b17944ae57bd2c4",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "07a74889edb5226b83690bb4703585068416269db30b471fc3381370b04b02e0",
+  "scientificImports": false,
+  "scientificRestoration": false,
+  "scienceCalls": 0
+}

@@ -202,3 +202,7 @@ research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_prefix_reco
 # Frozen real-axis receiving physics review evidence index.
 research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_20261004_review_sources.json -diff
 research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_20261004_r2_review_sources.json -diff
+
+research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_inputs.json -diff
+
+research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_build_sources.json -diff

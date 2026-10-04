@@ -1,0 +1,188 @@
+{
+  "status": "FIXED_NUMERICAL_METHOD_REVIEW_LAUNCH_VERIFIED",
+  "utc": "2026-10-04T10:36:50.127751+00:00",
+  "preparedCommit": "8073f9c0",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-numeric-method-review",
+  "packetSha256": "fdcf4ab48b6ee39f2a715c2ac01d79bb51bd86b5cad4bf9950505ff723e14d3d",
+  "archiveSha256": "3d3716deb90761312edeb87baf871e4127dcbd0e14872ae01835939dbdb5a570",
+  "launch": {
+    "jobPid": 835717,
+    "watcherPid": 835718,
+    "packetSha256": "fdcf4ab48b6ee39f2a715c2ac01d79bb51bd86b5cad4bf9950505ff723e14d3d",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 835718,
+    "jobPid": 835717,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T10:36:27.704828+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "7009b75e6865730cf2eabf27e974ff4e4bf5f7dab3876a783cb5c48d633a80cb",
+    "notifications": {}
+  },
+  "checks": {
+    "hook targeted existing session": true,
+    "hook armed before release": true,
+    "exact packet": true,
+    "coordinator alive": true,
+    "watcher alive": true,
+    "claude fixed private packet": true,
+    "grok fixed private packet": true,
+    "no science": true,
+    "no reports read before joint finish": true
+  },
+  "privateFileHashesChecked": 6330,
+  "receipts": {
+    "claude": {
+      "engine": "claude",
+      "sessionId": "68536e27-5470-466a-bf71-564aea3eeda7",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "68536e27-5470-466a-bf71-564aea3eeda7"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-numeric-method-review/claude/work",
+      "startedUtc": "2026-10-04T10:36:29.224309+00:00",
+      "packetSha256": "fdcf4ab48b6ee39f2a715c2ac01d79bb51bd86b5cad4bf9950505ff723e14d3d",
+      "promptSha256": "e02a1ade6b99fef9a48c9af3a22917abec0e4afddaf78040691b2ac14fd843e1",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 835754
+    },
+    "grok": {
+      "engine": "grok",
+      "sessionId": "00f52f99-460b-49df-b2f8-8c1da8463629",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-numeric-method-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-numeric-method-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "00f52f99-460b-49df-b2f8-8c1da8463629"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-numeric-method-review/grok/work",
+      "startedUtc": "2026-10-04T10:36:29.220250+00:00",
+      "packetSha256": "fdcf4ab48b6ee39f2a715c2ac01d79bb51bd86b5cad4bf9950505ff723e14d3d",
+      "promptSha256": "e02a1ade6b99fef9a48c9af3a22917abec0e4afddaf78040691b2ac14fd843e1",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 835753
+    }
+  },
+  "processes": {
+    "coordinator": {
+      "pid": 835717,
+      "running": true,
+      "command": [
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-numeric-method-review/review_run.py"
+      ]
+    },
+    "watcher": {
+      "pid": 835718,
+      "running": true,
+      "command": [
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/scripts/codex_job_watch.py",
+        "--pid",
+        "835717",
+        "--thread",
+        "01a0e01b-ef84-7192-817f-584cda5d339b",
+        "--directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-numeric-method-review/completion-watcher",
+        "--message-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-numeric-method-review/completion_message.txt",
+        "--error-log",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-numeric-method-review/issues.log"
+      ]
+    },
+    "claude": {
+      "pid": 835754,
+      "running": true,
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "--disable-slash-commands",
+        "--session-id",
+        "68536e27-5470-466a-bf71-564aea3eeda7"
+      ]
+    },
+    "grok": {
+      "pid": 835753,
+      "running": true,
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-numeric-method-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-numeric-method-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "00f52f99-460b-49df-b2f8-8c1da8463629"
+      ]
+    }
+  },
+  "automaticRetry": false,
+  "reviewReportsRead": false,
+  "scienceCalls": 0,
+  "waitingPolicy": "Existing local completion/error hook only; no model polling or recurring task."
+}

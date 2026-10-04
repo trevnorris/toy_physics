@@ -1258,3 +1258,19 @@ host verification found both reviewers, coordinator and watcher running; all
 3,122 private input-file hashes matched. No report was read before both finish,
 no reviewer or science retry occurred, and no scientific gate/run exists. The
 local completion hook handles continuation without model polling.
+
+The concrete contraction build pair is literally CLEAR/CLEAR. After both
+finished, 9,415 exact packet/archive/private/source/receipt checks passed and
+both complete literal reports were saved unchanged. Claude read complete code
+and selected templates/units/envelopes; Grok read all 20 adapter bodies and
+selected full inputs. Neither exhaustively inspected the 1,534 runtime inputs.
+Grok's 16 Read errors and CLI warnings are preserved as reviewer diagnostics,
+not scientific stderr. Its statement that the guard was absent is contradicted
+by the supplied and hash-verified runtime-source/shared-guard.py; the literal
+report remains unchanged.
+
+No substantive blocker was identified. Preparing one unchanged guarded
+certificate run. All actual source/address/proof/unit/domain/majorant joins,
+strict stderr, full evidence-chain returns and posthash integrity still require
+runtime inspection. Original label ancestry is not a new numerical mesh; the
+full evaluator, nested error propagation and numerical controls remain open.

@@ -1,0 +1,91 @@
+{
+  "status": "ACCEPTED_FINITE_FORMAL_BACKGROUND_COMPARISONS_PHYSICAL_PAIRING_UNRESOLVED",
+  "recordedUtc": "2026-10-04T23:36:49.651699+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01",
+  "gateSha256": "2389e742de8a31eba13f4a95faa418e8347aed6aab2912364887e3d802f7d9e8",
+  "buildReviewRecordSha256": "706eb68b782a5bc882fd0d2cc19558bf570c1ef7d195ad65ae6d02c87afe43e0",
+  "workerSha256": "4dc8c874fe2cbab0678603168045da0697abd5dd8eabc41ba02a5d11943d3651",
+  "manifestSha256": "227fd825a2b586c5c7114d6901962dcda6788d3d211ef776b5f22ba0c465c9a8",
+  "literalBuildVerdict": "CLEAR FOR THIS BACKGROUND FORCE-PAIRING BUILD AND AMENDED METHOD",
+  "inspectionChecks": 1438,
+  "artifactReceipts": 314,
+  "evidenceFormat": "Immutable named files and full artifact/operation receipt indices; no separate hash-chain format claimed.",
+  "completeStageOperations": 25,
+  "newLiteralZeroReturns": 77,
+  "encodedOperandRecordsInspected": 609,
+  "savedCopies": 9,
+  "sourceSnapshots": 16,
+  "additionalIdentityCopies": 20,
+  "posthashes": 34,
+  "allHashesIntact": true,
+  "filesPreserved": 395,
+  "bytesPreserved": 88266179,
+  "inspectionIndex": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01/inspection-index.json",
+  "inspectionIndexSha256": "56edb78fb42643e27d365df6630e381cf8c2c8e8929f2569730ce3232cef84bd",
+  "workerSeconds": 4.658666438888758,
+  "supervisorSeconds": 5.013998348033056,
+  "peakCgroupBytes": 263983104,
+  "zeroMemoryEvents": true,
+  "zeroSwap": true,
+  "strictStderrBytes": 0,
+  "stdoutChecksIdentical": true,
+  "noDeadlineEnforcement": {
+    "verified": true,
+    "actual": {
+      "RuntimeMaxUSec": "infinity",
+      "Restart": "no"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "results": [
+    "Actual original unbound LAB_HELD/RHO4 E_W and both native face traction assignments join. Literal-zero dimensions are vacuous; nonzero source/support units match.",
+    "Saved normal/velocity reconstruction is consistent. Exact-normal candidate comparison records raw D and normalization debt; all retained rectangle differences vanish. Candidate exact source relation remains hand-assessed, not a runtime producer/source derivation.",
+    "Formal common-area pullback has (A E g/W0,A E,0). Face-body U/E differences vanish in retained grades. Higher product remainders do not supply missing physical higher E or body grades.",
+    "Free support compatibility remains unresolved, and assigned centre cancellation is not independent equilibrium. THETA force/power pairing is UNSUPPLIED outside this coefficient map.",
+    "Epsilon2 product retains background-traction/second-rate and first-area terms. Three live controls respond as formal polynomial coefficients only."
+  ],
+  "controls": [
+    {
+      "name": "duplicate-thickness-work-control",
+      "inputSha256": "5120be0c461e1822e3d7c4541b52e89c52275289436af55787d509d84fd5901b",
+      "returnSha256": "50c17fa88eb8968db49ad8feddaff4aa93a29c4202b242ab522b631db6e41b7b",
+      "movement": "(-2*W_0**3*e_W_t*eta_bg*kappa_W*sigma_W*w1_profile*w1_profile_d1d1 - 2*W_0**3*e_W_t*eta_bg*kappa_W*sigma_W*w1_profile*w1_profile_d2d2 - 2*W_0**3*e_W_t*eta_bg*kappa_W*sigma_W*w1_profile*w1_profile_d3d3 - W_0**3*e_W_t*kappa_W*sigma_W*w1_profile_d1d1 - W_0**3*e_W_t*kappa_W*sigma_W*w1_profile_d2d2 - W_0**3*e_W_t*kappa_W*sigma_W*w1_profile_d3d3)/L_W"
+    },
+    {
+      "name": "reverse-upper-centre-control",
+      "inputSha256": "8309058fc5d3ff96603cc62c28244a4c4ee02d7314d000ced4004ad70b5a4c29",
+      "returnSha256": "f8fd34dbc753750d292029de2eb42c35c2d1b0a7b9609c28998c3aa3f937b779",
+      "movement": "(4*W_0**2*eta_bg*kappa_W*sigma_W*w1_profile*w1_profile_d1d1 + 4*W_0**2*eta_bg*kappa_W*sigma_W*w1_profile*w1_profile_d2d2 + 4*W_0**2*eta_bg*kappa_W*sigma_W*w1_profile*w1_profile_d3d3 + 2*W_0**2*kappa_W*sigma_W*w1_profile_d1d1 + 2*W_0**2*kappa_W*sigma_W*w1_profile_d2d2 + 2*W_0**2*kappa_W*sigma_W*w1_profile_d3d3)/L_W"
+    },
+    {
+      "name": "support-symbol-coefficient-control",
+      "inputSha256": "a4476ce253109ec1f931df4496fbba1b074869ab0d92ebd527b0e3f1a10aee05",
+      "returnSha256": "ccbcea29c332d826614c310f564c914ac792546668c6c35d5bf49bbeb9c9eed2",
+      "movement": "t_hold_plus_0_4"
+    }
+  ],
+  "physicalLimitations": {
+    "backgroundTractionMeasure": "TRACTION_MEASURE_UNSUPPLIED",
+    "totalR0_c": "UNSUPPLIED",
+    "physicalPairing": "ORIGINAL_FORCE_PAIRING_UNRESOLVED",
+    "THETAforcePairingAndPower": "UNSUPPLIED; complete original operand preserved, not evaluated",
+    "exactNormal": "SOURCE_ASSESSED_CANDIDATE_NOT_RUNTIME_ORIGINAL_GEOMETRY_JOIN",
+    "acousticZeroProvenance": "DOCUMENTARY_ONLY_NO_NEW_CERTIFICATE",
+    "formalControls": "COEFFICIENT_SENSITIVITY_AT_A1_ONLY",
+    "leakageFactor": null
+  },
+  "scientificScopeAccepted": "Finite unbound formal comparisons only; no physical closure or leakage acceptance",
+  "remainingPhysics": [
+    "Explicit nonduplicated body/face support pairing, area convention, static and incremental support law",
+    "Selected incremental centre drive and possible centre closure",
+    "THETA generalized work; full nonuniform energy, exterior flux, memory/mass-rate and LAB_HELD work",
+    "Physical20/02, end-current and acoustic-threshold remainder"
+  ],
+  "nextAction": "Inspect actual support/centre source specification and saved incremental-centre operands; do not choose an agency or infer leakage. Genuine physical ambiguity goes to user after concrete evidence.",
+  "scientificRestorationDuringInspection": false,
+  "scientificValidatorRun": false,
+  "automaticRetry": false,
+  "oldScienceReplayed": false,
+  "mixedRecoveryParked": true
+}

@@ -1,0 +1,68 @@
+{
+  "recordedUtc": "2026-10-04T21:11:17.190448+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-build-review-r3",
+  "preparedCommit": "61f15023",
+  "packetSha256": "2a323c2742e84e1dd1880804ac127452f8134bbbd135c66396b0a48be5d669c8",
+  "archiveSha256": "4a0b2aa40135b98e047711145a4c48bc808241728703ee66d4990e7368db2606",
+  "launch": {
+    "jobPid": 1845106,
+    "watcherPid": 1845107,
+    "packetSha256": "2a323c2742e84e1dd1880804ac127452f8134bbbd135c66396b0a48be5d669c8",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 1845107,
+    "jobPid": 1845106,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T21:10:44.811664+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "41c8e0c410c5db8ed5ba96952a643e3163e4d842ed5224a86630bb0fdd9971b7",
+    "notifications": {}
+  },
+  "claudeReceipt": {
+    "engine": "claude",
+    "sessionId": "d055cc78-f43e-4875-968c-da9b5350beb0",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "d055cc78-f43e-4875-968c-da9b5350beb0"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-build-review-r3/claude/work",
+    "startedUtc": "2026-10-04T21:10:45.474573+00:00",
+    "packetSha256": "2a323c2742e84e1dd1880804ac127452f8134bbbd135c66396b0a48be5d669c8",
+    "promptSha256": "60323ae89cd5dac1c858be66999b35621143c9f5c0645a3800a0f42d03d632a1",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1845121
+  },
+  "privatePacketFilesVerified": 2075,
+  "oneHostAdmissionInspection": true,
+  "status": "ADMITTED_CLAUDE_REVIEW_RUNNING",
+  "noModelPolling": true,
+  "noAutomaticRetry": true,
+  "scienceCalls": 0
+}

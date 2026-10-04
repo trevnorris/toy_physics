@@ -1,0 +1,193 @@
+{
+  "status": "ACCEPTED_NATIVE_TRANSVERSE_END_FLUX_FINITE_PREREQUISITE",
+  "createdUtc": "2026-10-04T19:55:45.278373+00:00",
+  "scope": {
+    "target": "Native transverse end-flux G0/Gref/G1/K1 with inherited finite T1",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalPath": "eta=lambda,sigma_W=lambda/10",
+    "incomingColumns": 2,
+    "nativePhysicalCurrent": true,
+    "bothMomentumAndBasisDerivatives": true,
+    "originAndGaugeChecks": true,
+    "receivingField": false,
+    "numericalIntegrals": false,
+    "fullWorkAndRegularityPending": true,
+    "leakageFactor": null,
+    "recoveryParked": true
+  },
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-continuation-01",
+  "gateSha256": "dcb6fb886428915f8c15e0ba790435c47a6aca8d2683a015e3cc1a1109cd009e",
+  "workerSha256": "4c1c68e797dac145d8fe5f0c46c6d4330e999f9f38b0342634723c1b62464740",
+  "buildRecordSha256": "3a906f339a740a2880066edefcf173166eab8219b9cb558a928e19424fb0fa31",
+  "methodRecordSha256": "8bfe5fe227565e89df1a877ac3cd1da54d8b469c9c3623743fd192dd9c4622f4",
+  "independentBuildClearance": false,
+  "sourceAssessment": "Original Claude CLEAR preserved; task-local FunctionClass serialization repair and saved-prefix continuation under tested tooling authority, no fresh independent verdict.",
+  "inspection": "Source/JSON/hash/opaque bytes only; no scientific restoration or scientific validator",
+  "metadataChecks": 4638,
+  "newLiteralZeroReturns": 331,
+  "inheritedLiteralZeros": 20,
+  "newControls": 4,
+  "completeOperations": 1,
+  "artifacts": 1090,
+  "savedCopies": 344,
+  "priorCopies": 426,
+  "posthashes": 1563,
+  "sourceSnapshots": 23,
+  "additionalIdentityCopies": 14,
+  "allHashesIntact": true,
+  "strictStderrEmpty": true,
+  "stdoutChecksIdentical": true,
+  "workerSeconds": 36.694730398012325,
+  "guardSeconds": 37.07711737183854,
+  "peakCgroupBytes": 173268992,
+  "zeroMemoryEvents": true,
+  "zeroSwap": true,
+  "noDeadlines": true,
+  "G0": {
+    "text": "Matrix([[5391*sqrt(595)/4000, -1071/800], [-1071/800, 9*sqrt(595)/800]])",
+    "srepr": "ImmutableDenseMatrix([[Mul(Rational(5391, 4000), Pow(Integer(595), Rational(1, 2))), Rational(-1071, 800)], [Rational(-1071, 800), Mul(Rational(9, 800), Pow(Integer(595), Rational(1, 2)))]])"
+  },
+  "Gref": {
+    "text": "Matrix([[5391*sqrt(595)/4000, -1071/800], [-1071/800, 9*sqrt(595)/800]])",
+    "srepr": "ImmutableDenseMatrix([[Mul(Rational(5391, 4000), Pow(Integer(595), Rational(1, 2))), Rational(-1071, 800)], [Rational(-1071, 800), Mul(Rational(9, 800), Pow(Integer(595), Rational(1, 2)))]])"
+  },
+  "G1": {
+    "text": "Matrix([[41877*sqrt(595)/23800, -27/40], [-27/40, 27*sqrt(595)/4760]])",
+    "srepr": "ImmutableDenseMatrix([[Mul(Rational(41877, 23800), Pow(Integer(595), Rational(1, 2))), Rational(-27, 40)], [Rational(-27, 40), Mul(Rational(27, 4760), Pow(Integer(595), Rational(1, 2)))]])"
+  },
+  "G1Parts": {
+    "explicitNativeEnd": {
+      "text": "Matrix([[0, 0], [0, 0]])",
+      "srepr": "ImmutableDenseMatrix([[Integer(0), Integer(0)], [Integer(0), Integer(0)]])"
+    },
+    "leftMomentum": {
+      "text": "Matrix([[4737*sqrt(595)/14000, -27/80], [-27/80, 27*sqrt(595)/9520]])",
+      "srepr": "ImmutableDenseMatrix([[Mul(Rational(4737, 14000), Pow(Integer(595), Rational(1, 2))), Rational(-27, 80)], [Rational(-27, 80), Mul(Rational(27, 9520), Pow(Integer(595), Rational(1, 2)))]])"
+    },
+    "rightMomentum": {
+      "text": "Matrix([[4737*sqrt(595)/14000, -27/80], [-27/80, 27*sqrt(595)/9520]])",
+      "srepr": "ImmutableDenseMatrix([[Mul(Rational(4737, 14000), Pow(Integer(595), Rational(1, 2))), Rational(-27, 80)], [Rational(-27, 80), Mul(Rational(27, 9520), Pow(Integer(595), Rational(1, 2)))]])"
+    },
+    "leftBasis": {
+      "text": "Matrix([[2301*sqrt(595)/4250, 0], [0, 0]])",
+      "srepr": "ImmutableDenseMatrix([[Mul(Rational(2301, 4250), Pow(Integer(595), Rational(1, 2))), Integer(0)], [Integer(0), Integer(0)]])"
+    },
+    "rightBasis": {
+      "text": "Matrix([[2301*sqrt(595)/4250, 0], [0, 0]])",
+      "srepr": "ImmutableDenseMatrix([[Mul(Rational(2301, 4250), Pow(Integer(595), Rational(1, 2))), Integer(0)], [Integer(0), Integer(0)]])"
+    }
+  },
+  "T1": {
+    "text": "Matrix([[-179/238 - 80*sqrt(595)*I/357, 0], [-sqrt(595)/10, -30/119 - 80*sqrt(595)*I/357]])",
+    "srepr": "ImmutableDenseMatrix([[Add(Rational(-179, 238), Mul(Integer(-1), Rational(80, 357), Pow(Integer(595), Rational(1, 2)), I)), Integer(0)], [Mul(Integer(-1), Rational(1, 10), Pow(Integer(595), Rational(1, 2))), Add(Rational(-30, 119), Mul(Integer(-1), Rational(80, 357), Pow(Integer(595), Rational(1, 2)), I))]])"
+  },
+  "K1": {
+    "text": "Matrix([[0, 0], [0, 0]])",
+    "srepr": "ImmutableDenseMatrix([[Integer(0), Integer(0)], [Integer(0), Integer(0)]])"
+  },
+  "K1IdenticallyZero": true,
+  "controls": [
+    {
+      "name": "omit-G1-current-normalization",
+      "input": {
+        "baseline": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "corrupt": {
+          "text": "1071*sqrt(595)/4000 + 5391*sqrt(595)*(-179/238 - 80*sqrt(595)*I/357)/4000 + 5391*sqrt(595)*(-179/238 + 80*sqrt(595)*I/357)/4000",
+          "srepr": "Add(Mul(Rational(1071, 4000), Pow(Integer(595), Rational(1, 2))), Mul(Rational(5391, 4000), Pow(Integer(595), Rational(1, 2)), Add(Rational(-179, 238), Mul(Integer(-1), Rational(80, 357), Pow(Integer(595), Rational(1, 2)), I))), Mul(Rational(5391, 4000), Pow(Integer(595), Rational(1, 2)), Add(Rational(-179, 238), Mul(Rational(80, 357), Pow(Integer(595), Rational(1, 2)), I))))"
+        }
+      },
+      "return": {
+        "movement": {
+          "text": "-41877*sqrt(595)/23800",
+          "srepr": "Mul(Integer(-1), Rational(41877, 23800), Pow(Integer(595), Rational(1, 2)))"
+        },
+        "zero": false,
+        "finite": true
+      }
+    },
+    {
+      "name": "reverse-reflected-current-orientation",
+      "input": {
+        "baseline": {
+          "text": "5391*sqrt(595)/4000",
+          "srepr": "Mul(Rational(5391, 4000), Pow(Integer(595), Rational(1, 2)))"
+        },
+        "corrupt": {
+          "text": "-5391*sqrt(595)/4000",
+          "srepr": "Mul(Integer(-1), Rational(5391, 4000), Pow(Integer(595), Rational(1, 2)))"
+        }
+      },
+      "return": {
+        "movement": {
+          "text": "-5391*sqrt(595)/2000",
+          "srepr": "Mul(Integer(-1), Rational(5391, 2000), Pow(Integer(595), Rational(1, 2)))"
+        },
+        "zero": false,
+        "finite": true
+      }
+    },
+    {
+      "name": "omit-one-native-momentum-leg",
+      "input": {
+        "baseline": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "corrupt": {
+          "text": "-4737*sqrt(595)/14000",
+          "srepr": "Mul(Integer(-1), Rational(4737, 14000), Pow(Integer(595), Rational(1, 2)))"
+        }
+      },
+      "return": {
+        "movement": {
+          "text": "-4737*sqrt(595)/14000",
+          "srepr": "Mul(Integer(-1), Rational(4737, 14000), Pow(Integer(595), Rational(1, 2)))"
+        },
+        "zero": false,
+        "finite": true
+      }
+    },
+    {
+      "name": "change-T1-gauge-without-current",
+      "input": {
+        "baseline": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "corrupt": {
+          "text": "964989*sqrt(595)/476000 + 5391*sqrt(595)*(-417/238 - 80*sqrt(595)*I/357)/4000 + 5391*sqrt(595)*(-417/238 + 80*sqrt(595)*I/357)/4000",
+          "srepr": "Add(Mul(Rational(964989, 476000), Pow(Integer(595), Rational(1, 2))), Mul(Rational(5391, 4000), Pow(Integer(595), Rational(1, 2)), Add(Rational(-417, 238), Mul(Integer(-1), Rational(80, 357), Pow(Integer(595), Rational(1, 2)), I))), Mul(Rational(5391, 4000), Pow(Integer(595), Rational(1, 2)), Add(Rational(-417, 238), Mul(Rational(80, 357), Pow(Integer(595), Rational(1, 2)), I))))"
+        }
+      },
+      "return": {
+        "movement": {
+          "text": "-5391*sqrt(595)/2000",
+          "srepr": "Mul(Integer(-1), Rational(5391, 2000), Pow(Integer(595), Rational(1, 2)))"
+        },
+        "zero": false,
+        "finite": true
+      }
+    }
+  ],
+  "physicalInterpretation": "In arbitrary saved incident coordinates the actual native end-current derivative cancels the first-order amplitude contribution exactly. This removes the linear transverse-survival obstruction within the assumed stationary expansion; it does not give leakage or prove receiving regularity/work balance.",
+  "limits": [
+    "Incident-reflected cross-current J(-p,+p) is not yet contracted; must check it before adding independent survival weights",
+    "Reflected orientation mutant is coefficient sensitivity; actual positive principal minors provide sign check",
+    "All-real coupled receiving, other-channel asymptotics and cross-flux, physical held-profile work remain unresolved",
+    "Original nonoperation guard attestation conditional on pinned straight-line source and actual original failure location",
+    "Reflection integral remains unevaluated; no complete quadratic balance"
+  ],
+  "leakageFactor": null,
+  "scienceReplayed": false,
+  "treeIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-continuation-01/result-inspection-files.json",
+    "sha256": "453852dca37248f472e50cb941735c07b43008b6da52c8eaaafe2d7030238c0d",
+    "files": 1934,
+    "bytes": 45111599,
+    "excludesInspectionFileItself": true
+  }
+}

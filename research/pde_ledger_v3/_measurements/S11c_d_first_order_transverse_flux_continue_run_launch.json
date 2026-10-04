@@ -1,0 +1,68 @@
+{
+  "recordedUtc": "2026-10-04T19:53:10.746051+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-continuation-01",
+  "launch": {
+    "jobPid": 1804850,
+    "watcherPid": 1804851,
+    "gateSha256": "dcb6fb886428915f8c15e0ba790435c47a6aca8d2683a015e3cc1a1109cd009e",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "4",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-continuation-01/resource-guard",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-continuation-01",
+      "--stage",
+      "first_order_transverse_flux_continue",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_continue.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-continuation-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_continue_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_continue_gate.json"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "gateSha256": "dcb6fb886428915f8c15e0ba790435c47a6aca8d2683a015e3cc1a1109cd009e",
+  "preparedCommit": "c3496d0e",
+  "hook": {
+    "status": "finished",
+    "watcherPid": 1804851,
+    "jobPid": 1804850,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T19:49:14.766874+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "aff56bb38b605a748eac8b6c536bb2b804fdb58f06e566632f2e9a09cdde6c0b",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-10-04T19:49:52.165646+00:00"
+      }
+    }
+  },
+  "additionalIdentityCopies": 14,
+  "oneHostAdmissionInspection": true,
+  "automaticRetry": false,
+  "coordinatorOutcome": {
+    "exitCode": 0,
+    "wallSeconds": 37.13778211385943,
+    "scientificAcceptance": "PENDING_ACTUAL_INSPECTION"
+  },
+  "status": "COMPLETED_BEFORE_ADMISSION_REQUIRES_INSPECTION"
+}

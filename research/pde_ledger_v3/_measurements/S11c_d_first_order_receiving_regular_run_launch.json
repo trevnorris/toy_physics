@@ -1,0 +1,162 @@
+{
+  "status": "ADMITTED_GUARDED_FINITE_PHYSICS_RUNNING",
+  "recordedUtc": "2026-10-04T21:16:37.518064+00:00",
+  "readinessCommit": "425b1f8a",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-01",
+  "launch": {
+    "jobPid": 1848248,
+    "watcherPid": 1848249,
+    "gateSha256": "ed21598f418b3dfe9214cbf74f564fc1b8b83f36e97e4a690049e603e4dd9e18",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "4",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-01/resource-guard",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-01",
+      "--stage",
+      "first_order_receiving_regular",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_gate.json"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 1848249,
+    "jobPid": 1848248,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T21:15:43.830625+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "defd5768123b43fe6076d4a426287738b66bcf8d5b73935b73a3b56fe15e2cfa",
+    "notifications": {}
+  },
+  "coordinatorOutcome": null,
+  "sourceSnapshotsVerified": 22,
+  "additionalIdentityCopiesVerified": 24,
+  "guardInvocation": {
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-01",
+      "--stage",
+      "first_order_receiving_regular",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_gate.json"
+    ],
+    "cwd": "/var/projects/toy_physics",
+    "unit": "s11c-guard-0bef4691d208",
+    "seconds": 0,
+    "requestedSecondsArgumentIgnored": 0,
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null,
+    "cpu": 15,
+    "memoryMax": 4294967296,
+    "swapMax": 0,
+    "tasksMax": 32,
+    "minimumHostAvailableBytes": 4294967296,
+    "startedUtc": "2026-10-04T21:15:43.973399+00:00",
+    "pool": "s11c-near-unity",
+    "priorityPolicy": "desktop-managed",
+    "logDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-01/resource-guard",
+    "affinityEnforcement": "systemd-and-inherited-process",
+    "reservedBeforeBytes": 0,
+    "outstandingHeadroomBytes": 0,
+    "hostAvailableBytes": 21038997504,
+    "poolMemoryMax": 17179869184,
+    "poolMaxJobs": 6,
+    "activeUnits": [],
+    "owner": {
+      "pid": 1848254,
+      "startTicks": "118985024",
+      "bootId": "c8304a64-451a-49f4-b454-d113d706e731"
+    }
+  },
+  "workerInvocation": {
+    "stage": "first_order_receiving_regular",
+    "command": [
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_gate.json"
+    ],
+    "prerequisiteLock": "shared-read",
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-01/first_order_receiving_regular.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-01/first_order_receiving_regular.stderr",
+    "startedUtc": "2026-10-04T21:15:44.089673+00:00",
+    "childPid": 1848264,
+    "status": "running"
+  },
+  "limits": {
+    "memory.max": "4294967296",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-0bef4691d208.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      4294967296,
+      4294967296
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  },
+  "durationValidation": {
+    "verified": true,
+    "actual": {
+      "RuntimeMaxUSec": "infinity",
+      "Restart": "no"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "admissionInspectionCorrection": "Used live active.json instead of final-only invocation.json; first inspection and identity copies preserved. No scientific source or run changed.",
+  "hostAdmissionAttempts": 2,
+  "scienceAcceptance": false,
+  "scientificRetry": false,
+  "noModelPolling": true
+}

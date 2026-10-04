@@ -1382,3 +1382,16 @@ old bank or numerical module was read or restored. This prototype is not
 integrated or independently build-cleared; future concrete evaluator assessment
 must verify semantic request completeness, actual resource use and scientific
 control/error behavior. It does not change the frozen review packet.
+
+
+2026-10-04 — Corrected numerical contracted J/direct method independently cleared.
+Both literal reports say CLEAR FOR THIS BOUNDED NUMERICAL J/D PACKET METHOD;
+19,014 source/packet/archive/private-copy/receipt checks passed for packet
+d825302ae1ba1b212fad67dd9f4a51cfebbe75907b54ec990c6569c51da1b27d.
+Prior CLEAR/NEEDS at 7f9e46ca remains unchanged. Reports have partial coverage;
+all constant-field, wave, template, tail, domain, numerical-control and storage
+joins remain concrete-build obligations. Grok's incidental assertion that C_J
+and C_D are equal is contradicted by the original source and not adopted; their
+distinct formulas remain unchanged. No numerical worker or READY gate exists.
+Next is the concrete bounded J/direct evaluator and its independent build review.
+H and other pressure blocks remain pending; no packet or leakage value follows.

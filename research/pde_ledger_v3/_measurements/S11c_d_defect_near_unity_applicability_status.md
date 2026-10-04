@@ -1224,3 +1224,14 @@ matched the frozen packet. The one-time host check found Claude already exited
 0 and Grok still running; no report was read before both finished, and no
 reviewer was retried. Exit status is not a delivered verdict. The hook will
 wake this session for literal joint assessment; no model polling is scheduled.
+
+The contraction method pair is literally CLEAR/CLEAR. All 9,312 packet,
+archive, private-copy, source and receipt checks passed after both finished.
+Both support the four exact finite-window formulas, their different clipping
+variables, positive mapped measure and compact outgoing-root Fubini argument.
+Coverage remains partial: Claude checked original kernel algebra but no saved
+templates; Grok read all 20 adapters and selected full templates/evidence.
+The complete source/544-address/units, original collision-label transport and
+algebra/domain controls are mandatory certificate-build obligations. Inner
+grazing regularity and all full numerical error/cost/storage/readiness claims
+remain unestablished. Preparing that bounded certificate; no integral or gate.

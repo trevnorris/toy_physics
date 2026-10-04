@@ -171,3 +171,5 @@ research/pde_ledger_v3/_measurements/S11c_d_defect_packet_kernel_units_result_re
 research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contraction_result_record.json -diff
 
 research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_numeric_method_review_sources.json -diff
+
+research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_numeric_method_review_record.json -diff

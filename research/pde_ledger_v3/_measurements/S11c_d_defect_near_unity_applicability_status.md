@@ -1330,3 +1330,20 @@ and watcher running; all 6,330 private input-file hashes matched the frozen
 packet. No report was read before both finish. No new scientific calculation,
 worker, gate, transport retry or model polling is scheduled. The completion
 hook will resume joint literal assessment and the authorized next build work.
+
+
+The numerical J/direct method pair finished with literal Claude CLEAR and Grok
+NEEDS REVISION. All 19,014 packet/archive/private/source/receipt checks passed;
+both full reports are preserved. Grok's five Read errors and 4,433-byte CLI
+stderr remain reviewer diagnostics. Neither reviewer exhaustively read all
+runtime evidence. Both support the constant Gaussian formulas, four contraction
+identities and empirical allocation lemma, with stated inherited dependencies.
+
+A substantive domain correction is required: although the proposal listed
+clipping transitions, its four-sector affinity claim omitted the kinks at
+m=+/-95. The revised construction must split there before intersecting affine
+boundary graphs and independently join true max/min windows on both wings.
+Actual wave/delta-support and centered-moment joins, tighter scaled formula
+checks, enlarged-window positive tail transport and concrete request/storage
+safeguards are additional requirements. No new numerical worker or science
+exists; preparing the substantive corrected method under standing authority.

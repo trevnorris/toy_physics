@@ -1300,3 +1300,24 @@ are supported; analytic Fubini reasoning remains assessed mathematics. Full
 numerical discretization, nested error accounting, request identities, storage
 and independent routes remain required before an evaluator launch. Proceeding
 with concrete numerical-method preparation, preserving every completed result.
+
+
+Prepared a substantive numerical J/direct method, with no new worker or science.
+All 20 live applicable addresses have saved constant source/consumer polynomial
+metadata. The proposed analytic Gaussian exception requires actual original
+field/denominator/reconstruction/jet/unit/template joins; it explicitly replaces
+per-request Fourier quadrature only for that exact subset. Two separately
+implemented integration routes, full original windows and wings, inner grazing
+resolution, nested positive error propagation, original tails and measured
+controls are specified. Shared Gaussian identities and empirical numerical
+errors remain disclosed limits. H and all other pressure components remain
+pending, so no complete packet action or leakage factor is claimed.
+
+The fixed independent method packet contains 3,165 complete files / 105,114,603
+bytes, SHA256 fdcf4ab48b6ee39f2a715c2ac01d79bb51bd86b5cad4bf9950505ff723e14d3d.
+It includes all 1,534 original inputs, 1,602 complete accepted contraction
+outputs, immutable numerical rules and original source. Source/packet/archive
+hashes are verified; no peer report or commentary is supplied. Standing
+established-Claude/Grok assessment authority applies. New constant-transform
+algebra and a new numerical mesh remain runtime obligations, not metadata
+proofs. The future numerical build still requires substantive source assessment.

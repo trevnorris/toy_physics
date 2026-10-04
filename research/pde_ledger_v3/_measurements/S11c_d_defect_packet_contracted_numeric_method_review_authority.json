@@ -1,0 +1,17 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T10:34:36.640988+00:00",
+  "packetSha256": "fdcf4ab48b6ee39f2a715c2ac01d79bb51bd86b5cad4bf9950505ff723e14d3d",
+  "archiveSha256": "3d3716deb90761312edeb87baf871e4127dcbd0e14872ae01835939dbdb5a570",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 3165,
+  "bytes": 105114603,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing user/AGENTS authorization for substantive independent established-Claude/Grok assessment within the original two-packet research. No new recipient, physical target, loss/inverse or sweep scope. Numerical prescription changes are submitted explicitly, not treated as tooling.",
+  "scope": "Bounded numerical ordinary J and three direct packet contributions only; exact constant Gaussian exception and concrete nested numerical method proposal. Not a full packet, current or leakage.",
+  "noAutomaticRetry": true,
+  "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+}

@@ -1,0 +1,46 @@
+{
+  "status": "READY_FOR_INDEPENDENT_NUMERICAL_J_D_METHOD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-numeric-method-review",
+  "acceptedContractionCommit": "31146c6a",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-04T10:34:36.640988+00:00",
+    "packetSha256": "fdcf4ab48b6ee39f2a715c2ac01d79bb51bd86b5cad4bf9950505ff723e14d3d",
+    "archiveSha256": "3d3716deb90761312edeb87baf871e4127dcbd0e14872ae01835939dbdb5a570",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 3165,
+    "bytes": 105114603,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing user/AGENTS authorization for substantive independent established-Claude/Grok assessment within the original two-packet research. No new recipient, physical target, loss/inverse or sweep scope. Numerical prescription changes are submitted explicitly, not treated as tooling.",
+    "scope": "Bounded numerical ordinary J and three direct packet contributions only; exact constant Gaussian exception and concrete nested numerical method proposal. Not a full packet, current or leakage.",
+    "noAutomaticRetry": true,
+    "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+  },
+  "static": {
+    "status": "STATIC_FULL_PACKET_VERIFIED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "7009b75e6865730cf2eabf27e974ff4e4bf5f7dab3876a783cb5c48d633a80cb",
+    "packetSha256": "fdcf4ab48b6ee39f2a715c2ac01d79bb51bd86b5cad4bf9950505ff723e14d3d",
+    "archiveSha256": "3d3716deb90761312edeb87baf871e4127dcbd0e14872ae01835939dbdb5a570",
+    "files": 3165,
+    "bytes": 105114603,
+    "sourceHashesChecked": 3164,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "newScientificOperations": 0,
+    "workerOrGateExists": false
+  },
+  "scope": "Bounded numerical ordinary J and three direct packet contributions only; exact constant Gaussian exception and concrete nested numerical method proposal. Not a full packet, current or leakage.",
+  "methodSha256": "cd8a6b77a9c586a49cef9095ec5f3639ab1b64ca5dfe76601d6d4a8e7f7abbc5",
+  "sourceContractsSha256": "57e260371298eb0eab65b32cf74ef0ca9a3f2f0932b41814b02e7c2cdd75f5b7",
+  "sourceIndexSha256": "f952e8eb18672e0d66b36eac19e7429366ab77b6c6da344ab4caaa13440251a0",
+  "newScientificOperations": 0,
+  "workerOrGateExists": false,
+  "oldPeerReportsIncluded": false
+}

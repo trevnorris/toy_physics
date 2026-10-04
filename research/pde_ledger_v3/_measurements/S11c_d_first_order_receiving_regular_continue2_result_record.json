@@ -1,0 +1,152 @@
+{
+  "status": "ACCEPTED_SCOPED_SOURCE_PROJECTION_CROSS_FLUX_AND_REAL_AXIS_C3_REGULARITY",
+  "createdUtc": "2026-10-04T21:52:49.318311+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-continuation-02",
+  "gateSha256": "287ceaad6728fcaa682bc05e01e537525caaee79e1fdb1acd40983e38b6b327c",
+  "workerSha256": "512413d90f1161d3419a751be77fec0675cf698355cf0c25c0f1cac859f29f24",
+  "buildRecordSha256": "7c190e2f6b0041422b288cec491d28cbb8aa10215c7668394ad2a9fde284f0e2",
+  "methodRecordSha256": "51857e79d51e2c4808c5f8a9db4d56571a14d9430a13c5f97f658429b73c32c6",
+  "independentBuildClearance": false,
+  "testedLocalToolingAuthority": true,
+  "inspection": "Source/JSON/hash and constructor syntax only. No scientific restoration or validator.",
+  "metadataChecks": 25745,
+  "newLiteralZeros": 539,
+  "restoredNewLiteralZeros": 651,
+  "restoredOldZeros": 171,
+  "newResponsiveControls": 1,
+  "restoredResponsiveControls": 2,
+  "newRayCertificates": 346,
+  "restoredRayCertificates": 12,
+  "SturmCases": 10,
+  "exactPolynomialReconstructionChecks": 172,
+  "regroupedButExactlyEqualRepresentations": 22,
+  "domainGroupsIncludingRestored": 89,
+  "completeArtifacts": 3636,
+  "completedTopOperations": 1,
+  "savedCopies": 2025,
+  "priorCopies": 4761,
+  "posthashes": 11576,
+  "sourceSnapshots": 28,
+  "additionalIdentityCopies": 20,
+  "workerSeconds": 84.66333890100941,
+  "peakCgroupBytes": 240775168,
+  "zeroMemoryEvents": true,
+  "zeroSwap": true,
+  "noDeadlines": true,
+  "strictScientificStderrBytes": 0,
+  "stdoutChecksIdentical": true,
+  "allHashesIntact": true,
+  "nativeResult": {
+    "executionStatus": "COMPLETED_FINITE_SOURCE_PROJECTION_CROSS_FLUX_AND_REAL_AXIS_RECEIVING",
+    "inheritedZeros": 171,
+    "projectedUBThreeRowsZero": true,
+    "crossCurrentZero": true,
+    "realAxisC3PoleExclusion": [
+      {
+        "ray": "determinant-propagating",
+        "gcd": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "count": 0,
+        "certificate": "constant Bezout"
+      },
+      {
+        "ray": "determinant-evanescent",
+        "gcd": {
+          "text": "1",
+          "srepr": "Integer(1)"
+        },
+        "count": 0,
+        "certificate": "constant Bezout"
+      }
+    ],
+    "conditionalGrowthPowerIncludingForcingAndChart": 1,
+    "newControls": 1,
+    "restoredPrefixControls": 2,
+    "restoredNewZeros": 651,
+    "fullFiveFieldInverse": false,
+    "fieldComputed": false,
+    "FourierIntegralEvaluated": false,
+    "powerBalanceDerived": false,
+    "leakageFactor": null,
+    "oldFunctionsCalled": false,
+    "scientificAcceptance": false
+  },
+  "rootExclusions": {
+    "determinant-propagating": {
+      "gcd": {
+        "text": "1",
+        "srepr": "Integer(1)"
+      },
+      "noCommonRealRoot": true,
+      "reason": "nonzero constant exact Bezout identity",
+      "interval": [
+        0,
+        {
+          "text": "sqrt(595)/10",
+          "srepr": "Mul(Rational(1, 10), Pow(Integer(595), Rational(1, 2)))"
+        }
+      ],
+      "numericalRootFinder": false
+    },
+    "determinant-evanescent": {
+      "gcd": {
+        "text": "1",
+        "srepr": "Integer(1)"
+      },
+      "noCommonRealRoot": true,
+      "reason": "nonzero constant exact Bezout identity",
+      "interval": [
+        0,
+        {
+          "text": "oo",
+          "srepr": "oo"
+        }
+      ],
+      "numericalRootFinder": false
+    }
+  },
+  "determinantNumerator": {
+    "text": "receiving_block_q**7*(-423000 + 125020*I) - 126900*receiving_block_q**6 + receiving_block_q**5*(9177000 - 2741354*I) + receiving_block_q**4*(2611980 - 405000*I) + receiving_block_q**3*(7008750 - 1754157*I) + receiving_block_q**2*(5430996 + 10287000*I) + receiving_block_q*(-244606500 + 74524491*I) - 79815456 - 36207000*I",
+    "srepr": "Add(Mul(Pow(Symbol('receiving_block_q'), Integer(7)), Add(Integer(-423000), Mul(Integer(125020), I))), Mul(Integer(-1), Integer(126900), Pow(Symbol('receiving_block_q'), Integer(6))), Mul(Pow(Symbol('receiving_block_q'), Integer(5)), Add(Integer(9177000), Mul(Integer(-1), Integer(2741354), I))), Mul(Pow(Symbol('receiving_block_q'), Integer(4)), Add(Integer(2611980), Mul(Integer(-1), Integer(405000), I))), Mul(Pow(Symbol('receiving_block_q'), Integer(3)), Add(Integer(7008750), Mul(Integer(-1), Integer(1754157), I))), Mul(Pow(Symbol('receiving_block_q'), Integer(2)), Add(Integer(5430996), Mul(Integer(10287000), I))), Mul(Symbol('receiving_block_q'), Add(Integer(-244606500), Mul(Integer(74524491), I))), Integer(-79815456), Mul(Integer(-1), Integer(36207000), I))"
+  },
+  "determinantDenominator": {
+    "text": "receiving_block_q*(270000 + 900000*I) + 270000*I",
+    "srepr": "Add(Mul(Symbol('receiving_block_q'), Add(Integer(270000), Mul(Integer(900000), I))), Mul(Integer(270000), I))"
+  },
+  "couplingControl": {
+    "movement": {
+      "text": "1593/10 - 1404819*I/5000",
+      "srepr": "Add(Rational(1593, 10), Mul(Integer(-1), Rational(1404819, 5000), I))"
+    },
+    "zero": false,
+    "finite": true
+  },
+  "growth": {
+    "sourceGrowthPower": 0,
+    "chartPower": 1,
+    "receivingGrowthPower": 0,
+    "totalPower": 1,
+    "sufficientSchwartzDecayExponentForL1": 3
+  },
+  "scientificConclusion": "At fixed inputs the actual C3 determinant and every original denominator are nonzero on both outgoing real-axis rays including grazing. The rational receiving multiplier is polynomially bounded; inherited source/localization and actual E3 growth give conditional weighted-L2 uniqueness and L1 slab-tail decay. Full five-field transverse poles and matched waves remain. U_B has zero three-row receiving response in that ordinary weighted class only.",
+  "limits": [
+    "Assessed analytic class/decay reasoning, not machine measure theory",
+    "No complete field or Fourier/power integral",
+    "No all-channel distributional inverse, far-bulk flux or complex-frequency stability",
+    "No physical nonuniform work balance or leakage factor",
+    "Reflection remains transverse survival; K1=0 removes only linear flux obstruction"
+  ],
+  "nextPhysics": "Derive the actual nonuniform mechanical/chemical/held-profile work identity with exterior acoustic flux and memory dissipation before computing quadratic leakage. Claude-only method assessment next; mixed numerical recovery remains parked.",
+  "treeIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-continuation-02/result-inspection-files.json",
+    "sha256": "88c42f556540f938a3815ecb104016d5e71638f57ed854fe1ba652b9c5ff8ced",
+    "files": 8486,
+    "bytes": 98544078,
+    "excludesInspectionFileItself": true
+  },
+  "scientificAcceptance": "SCOPED_FINITE_PREREQUISITE_ONLY",
+  "leakageFactor": null,
+  "automaticRetry": false
+}

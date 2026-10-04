@@ -1505,3 +1505,19 @@ Twelve stdlib admission/selector/hash tests passed. The fixed build packet conta
 original arrays underlying selected flat routes. There is no READY gate, inverse,
 field, Fourier integral, physical power or leakage result. Complete first-order
 face/work maps, matched ends and receiving grazing regularity remain open.
+
+### 2026-10-04 — First-order source build cleared; exact single-run gate prepared
+
+Claude literally cleared the concrete first-order transverse source build. Its
+full report, declared sampling limits and exact reviewed bytes are preserved.
+All 149 packet/archive/private files and 144 runtime source pins match. The
+chemical phase correction is supported by the actual source coefficients and
+face normalization. Non-blocking wording notes do not trigger another review.
+
+The JSON-only cell census resolves the epsilon note: all 158 nonzero cells have
+power 1; all 242 power-0 cells are exact zeros. Runtime source/row/field/control
+joins and endpoint comparison still need actual inspection. No result follows
+from source clearance. A fresh gate authorizes one run of the exact reviewed
+worker with the established hook-first pooled 4 GiB/no-deadline containment.
+Complete physical face/work maps, matched ends, receiving grazing regularity and
+power remain open. Recovery and mixed integrals remain parked.

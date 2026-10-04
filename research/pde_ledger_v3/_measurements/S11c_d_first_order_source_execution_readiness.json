@@ -1,0 +1,17 @@
+{
+  "status": "EXACT_REVIEWED_SOURCE_READY_NO_SCIENCE_EXECUTED",
+  "createdUtc": "2026-10-04T17:40:25.552802+00:00",
+  "gateSha256": "55cc71914bfb493ccb15e54cb789b5350258742d8cf7f272973eb3f4730581fa",
+  "buildRecordSha256": "d4b1f0d7efc648888390a4016d9e30cf9c4c23052ef812bd810d9425dcb6e371",
+  "sourcePinsChecked": 144,
+  "additionalIdentityPinsChecked": 16,
+  "packetFilesChecked": 149,
+  "currentAuthority": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "toolingTests": 12,
+  "scienceImports": false,
+  "scienceExecutions": 0,
+  "noScientificReplay": true,
+  "noDeadlines": true,
+  "noFallback": true,
+  "hookMustPrecedeGuard": true
+}

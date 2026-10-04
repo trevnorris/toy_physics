@@ -1,0 +1,75 @@
+{
+  "status": "CLAUDE_MATCHING_BUILD_REVIEW_RUNNING_HOOK_ARMED",
+  "recordedUtc": "2026-10-04T19:02:42.205081+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-matching-build-review",
+  "preparedCommit": "f02d222d",
+  "packetSha256": "dc0da14f1cc34806226506fc04422ce1d9a6031595f7a780e4e97ddba678f6ff",
+  "archiveSha256": "6393e72e9dfe7f243e168d335ea091c38ef59205fca8060d1daa78f64e06b146",
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "launch": {
+    "jobPid": 1783463,
+    "watcherPid": 1783464,
+    "packetSha256": "dc0da14f1cc34806226506fc04422ce1d9a6031595f7a780e4e97ddba678f6ff",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "reviewReceipt": {
+    "engine": "claude",
+    "sessionId": "d36bb70f-e097-497a-9ca3-a64eb7c79da7",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "d36bb70f-e097-497a-9ca3-a64eb7c79da7"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-matching-build-review/claude/work",
+    "startedUtc": "2026-10-04T19:02:06.715658+00:00",
+    "packetSha256": "dc0da14f1cc34806226506fc04422ce1d9a6031595f7a780e4e97ddba678f6ff",
+    "promptSha256": "ea412ba2a8f2d90cb21d73ad2b369e1004b848a28d750cc56311168e1f2a0a86",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1783472
+  },
+  "hookState": {
+    "status": "waiting",
+    "watcherPid": 1783464,
+    "jobPid": 1783463,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T19:02:06.522820+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "65abda7ec7f5a1d571b17ef38c174e73b8951240313b4868b885805076be778a",
+    "notifications": {}
+  },
+  "oneHostAdmissionCheck": true,
+  "coordinatorAndHookAndReviewerAlive": true,
+  "packetAndPrivateFilesVerified": 751,
+  "originalSourcesVerified": 750,
+  "coordinatorStderrBytes": 0,
+  "reviewStderrBytes": 0,
+  "next": "Use existing local completion/error hook, no model polling. Assess actual literal review before readiness. Receiving result9c5b472d preserved; future physical flux G0/Gref/G1/K1 remains required."
+}

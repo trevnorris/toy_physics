@@ -1,0 +1,40 @@
+{
+  "status": "TESTED_LOCAL_CONSTRUCTOR_TRANSPORT_REPAIR_NO_NEW_SCIENCE",
+  "recordedUtc": "2026-10-04T13:18:26.785063+00:00",
+  "reviewedCommit": "d48727ab",
+  "reviewRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_numeric_build_review_r2_record.json",
+  "reviewRecordSha256": "a145af1b8ecee26fb4f3287081e2043a937f7b2921f102756535a8c13ed2edc9",
+  "localToolingExecutionAuthority": true,
+  "independentBuildClearance": false,
+  "literalVerdicts": {
+    "claude": "NEEDS REVISION",
+    "grok": "CLEAR FOR THIS BOUNDED CONTRACTED NUMERICAL BUILD"
+  },
+  "rationale": "Both source reviewers support the implemented selected mathematics. Claude correctly identifies rational-only transport refusing the existing sinh/pi/applied-function trees. The task-local allowlisted constructor reader restores exactly those representations with exact arities and assumptions. It invokes no producer, does not change any scientific expression or exact-zero acceptance, and has no sympify/eval/dynamic call fallback. Standing AGENTS permits tested local tooling fixes without another physics review.",
+  "testsPassed": true,
+  "syntheticTests": 37,
+  "testLogSha256": "bc1d1523f052e134194b648a9c582626d0f43b8a86bfb73d7f83c2709990a42c",
+  "syntaxInventory": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_numeric_restore_syntax_inventory.json",
+  "syntaxInventorySha256": "b244fc80ccadfa29d7540d6345b8098ae88d2d5fa66e3dccf7b39967a9ec9ee8",
+  "syntaxInventoryRecords": 217,
+  "mathematicalAssignmentsUnchanged": true,
+  "savedInputsUnchanged": true,
+  "savedInputCount": 3142,
+  "reviewed": {
+    "workerSha256": "d06a60b4666fb645bff88187d061febe23ee6b1753bcc0fc921895b204b075ff",
+    "manifestSha256": "b1ca91c842abd37be1923d463e779ba7b70fe6586576013f925d49feecbda07c",
+    "librarySha256": "5686f41cc5f356ae75ff9103cff5bf15668d38e0f63ebf2dc89325316cb37d30",
+    "launcherSha256": "89f371b5d1b4c2a3fea7691dfb89550676809898c0574ede1b36582b329b73c8"
+  },
+  "current": {
+    "workerSha256": "2a907c5b93d95d310f96d5450aa3b6d96e2b225dc228b1ff464e09021f085431",
+    "manifestSha256": "0eb57da8b35abc053872875e5627070c8d713368eeacdf80bf145cc9aa8b444a",
+    "librarySha256": "5686f41cc5f356ae75ff9103cff5bf15668d38e0f63ebf2dc89325316cb37d30",
+    "launcherSha256": "bf6e7757ce9031111fa8ea9c9fba5dab0ce0168fca6061310d4cb266f842d363"
+  },
+  "parserSha256": "8e66b13f6d513f02c777b7d910c3f5b9cd99c605ebd11de9e994d82e2cda92a7",
+  "validationSha256": "aaf51806e3973337e6c9828cd2c73de6b5d8e9b65c6db24bdf190ad8fdac68c9",
+  "newScientificOperations": 0,
+  "noAutomaticRetry": true,
+  "runtimeUnknowns": "Actual object materialization, exact identities, tail budgets, quadrature comparisons and controls remain guarded runtime obligations."
+}

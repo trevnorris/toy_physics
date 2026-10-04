@@ -81,7 +81,7 @@ def copy_inputs(m,J):
 
 def verify_gate(path,manifest_path,m):
     g=read(path)
-    require(g['status']=='READY_FOR_ONE_PACKET_CONTRACTED_NUMERIC' and g['independentBuildClearance'] is True,'actual independent build readiness')
+    require(g['status']=='READY_FOR_ONE_PACKET_CONTRACTED_NUMERIC' and g['independentBuildClearance'] is False,'honest local-tooling readiness')
     require(g['workerSha256']==sha(__file__) and g['manifestSha256']==sha(manifest_path),'worker/manifest pins')
     require(g['sourcePins']==m['sourcePins'],'source census')
     for p,h in g['sourcePins'].items():require(sha(p)==h,'source pin '+p)
@@ -89,9 +89,15 @@ def verify_gate(path,manifest_path,m):
         require(sha(g[key])==g[key+'Sha256'],'gate pin '+key)
     require(g['sharedGuard']==str(ROOT/'scripts/s11c_guarded_run.py') and g['supervisor']==str(M/'S11c_d_end_normalization_run.py'),'actual guard/supervisor')
     require(g['launcher']==m['launcher'] and g['library']==m['librarySource'] and g['authority']==m['executionAuthority'] and g['buildReviewRecord']==m['reviewRecordWillBe'],'actual document paths')
-    r=read(g['buildReviewRecord']);require(r['allChecksPassed'] is True and r['independentBuildClearance'] is True,'build assessment')
-    for key in ('workerSha256','manifestSha256','librarySha256','launcherSha256','sharedGuardSha256','supervisorSha256'):require(r[key]==g[key],'actual reviewed '+key)
-    require(all(r['reports'][e]['literalVerdict']=='CLEAR FOR THIS BOUNDED CONTRACTED NUMERICAL BUILD' for e in ('claude','grok')),'both literal build reports')
+    r=read(g['buildReviewRecord']);require(r['allChecksPassed'] is True and r['independentBuildClearance'] is False,'literal build assessment')
+    require(r['reports']['claude']['literalVerdict']=='NEEDS REVISION' and r['reports']['grok']['literalVerdict']=='CLEAR FOR THIS BOUNDED CONTRACTED NUMERICAL BUILD','preserved literal source reports')
+    require(g['localToolingRepairRecord']==m['localToolingRepairRecord'] and sha(g['localToolingRepairRecord'])==g['localToolingRepairRecordSha256'],'exact tooling repair record')
+    repair=read(g['localToolingRepairRecord'])
+    require(g['localToolingExecutionAuthority'] is True and repair['localToolingExecutionAuthority'] is True and repair['independentBuildClearance'] is False and repair['testsPassed'] is True,'tested standing tooling authority, no author CLEAR')
+    for key,suffix in [('workerSha256','.py'),('manifestSha256','_inputs.json'),('librarySha256','_lib.py'),('launcherSha256','_launch.py')]:
+        require(repair['reviewed'][key]==r['sourcePins'][suffix] and repair['current'][key]==g[key],'reviewed/repaired/gated '+key)
+    require(repair['reviewRecordSha256']==sha(g['buildReviewRecord']) and repair['mathematicalAssignmentsUnchanged'] is True and repair['savedInputsUnchanged'] is True,'exact repair provenance')
+    for key in ('sharedGuardSha256','supervisorSha256'):require(r[key]==g[key],'unchanged containment '+key)
     method=read(m['methodRecord']);require(g['methodRecordSha256']==sha(m['methodRecord']) and method['jointIndependentMethodClearance'] and method['methodSha256']==sha(m['methodPath'])==r['methodSha256'],'actual pressure-readiness method')
     a=read(g['authority']);require(a['scope']==g['scope']==m['scope'] and a['boundedInstrumentAuthorized'] and a['scienceExecutionsAuthorized']==g['scientificRunsAuthorized']==1 and a['automaticScientificRetry'] is False and a['noDeadline'] and g['durationLimits'] is None,'standing bounded authority')
     require(m['numericalEvaluatorAuthorized'] is True and m['resources']['durationLimits'] is None,'bounded new numerical evaluator scope')

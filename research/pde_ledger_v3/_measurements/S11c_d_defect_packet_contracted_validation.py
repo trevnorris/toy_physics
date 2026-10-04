@@ -1,5 +1,6 @@
 """New guarded operand joins; no scientific imports or restored data at import."""
 import ast
+from S11c_d_defect_packet_contracted_restore import restore_scalar
 
 
 def require(value,message):
@@ -30,7 +31,7 @@ def whole_densities(raw,manifest,J,sp,C,exact):
     These are new cross-stage argument joins. Original density construction,
     saved inner arithmetic and full contraction proofs are not called again.
     """
-    R=lambda x:C.restore_scalar(sp,x);old=lambda n:raw['contraction/complete/'+n+'.json']
+    R=lambda x:restore_scalar(sp,x);old=lambda n:raw['contraction/complete/'+n+'.json']
     source=old('new-original-density-interpretation-input');returned=old('new-original-density-interpretation-return')
     J.emit('restored-original-density-operands',{'input':source,'return':returned,'noConstructorCalled':True})
     require(source['source']['fragmentSha256']==raw['numeric-source-contracts.json']['fragments']['inner-components']['fragmentSha256'],'original kernel AST receipt')
@@ -75,7 +76,7 @@ def whole_densities(raw,manifest,J,sp,C,exact):
 
 
 def response_selection(raw,J,sp,C,exact,address,adapter,contraction_return,joined):
-    R=lambda x:C.restore_scalar(sp,x);label='-'.join((address['face'],address['slot'],address['component']))
+    R=lambda x:restore_scalar(sp,x);label='-'.join((address['face'],address['slot'],address['component']))
     args=raw['saved/preflight/numeric-factor-'+label+'-arguments.json'];response=R(address['responseCoefficient'])
     J.emit('new-response-selection-input-'+str(address['addressId']),{'actualAddress':address,'adapter':adapter,'originalArguments':args,'contractionReturn':contraction_return,'joinedDensities':joined})
     require(args['actualCompleteFactor']==address['responseCoefficient']==adapter['original'],'complete live native response')

@@ -625,3 +625,24 @@ unit. Empirical comparisons are not a rigorous quadrature theorem. Pressure and
 complete packet actions remain pending; there is no current or loss result.
 Continue the missing pressure-summand unit and outer assembly readiness using
 accepted operands, without routine permission or completed-work replay.
+
+
+## 2026-10-03 — pressure summand / outer readiness proposal prepared
+
+The next bounded proposal closes the missing pressure-unit and full outer-plan
+obligations of the unchanged two-packet method. It requires unbound native
+source/consumer homogeneity and actual retained-grade/field joins, dimensional
+a/beta and W/L origins, complete flat/contact/PV/H/J/D measures and both normal
+signs. Required unit labels in the old source tables are explicitly insufficient.
+No numeric density is changed to force units. It also plans the full collision
+arrangement and exact request dependencies/work counts before nested integration;
+no interpolation, pruning, hidden projection, tolerance or quadrature change.
+
+The fixed independent Claude/Grok method packet contains411
+complete files/45044129bytes,
+SHA2564025226dde108d7612f33697a951fbca7518ad8f60e3fc12a74e5a2410d5adcc.
+Original native source and complete saved proof operands are supplied without
+peer reports; old full numerical banks have opaque receipts only. No new science,
+worker or READY execution gate exists. Standing AGENTS/user authorization applies.
+After substantive assessment, prepare the concrete missing certificate/geometry
+instrument; source-only clearance cannot accept its future result.

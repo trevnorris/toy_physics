@@ -1013,3 +1013,20 @@ archive 28e9fd8314c8855acb788a401645c0f5ac55de66155a15f5bcae068d71f6417c.
 All933 saved input JSON files match the previous reviewed packet exactly.
 No peer reports or author clearance are supplied. Complete pressure summand
 units and evaluator readiness remain open.
+
+## 2026-10-04 — source unit transport build independently cleared
+
+Both r3 reviewers literally CLEAR FOR THIS BOUNDED SOURCE UNIT-TRANSPORT BUILD.
+Both reports and stderrs were read after completion; 5761 integrity checks join
+the packet/archive, private copies, source bytes, sessions, receipts and hook.
+Claude took 386.202s with empty stderr; Grok took 5387.356s with 6945 bytes of
+CLI diagnostics and 13 Read errors. Both state partial saved-operand coverage.
+
+The assessed scope is faithful bounded source/consumer unit transport. Actual
+large exact assemblies and controls still have to run under containment; source
+clearance is not a result. Retained grades, gamma inference, and all completed
+numerical evidence remain dependencies. Two incidental prose errors are recorded:
+the actual binding object has 31 entries, and the minus denominator contains an
+eta-profile term before taking its grade origin. Neither reviewer prose count nor
+that constant-denominator wording is used by the worker. Proceed to exact pinned
+readiness and one guarded instrument, with no replay or automatic retry.

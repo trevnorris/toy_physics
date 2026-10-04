@@ -1,0 +1,319 @@
+{
+  "status": "FAILED_GCDEX_ZERO_SECOND_POLYNOMIAL_WITH_COMPLETE_SOURCE_CROSS_FLUX_PREFIX",
+  "createdUtc": "2026-10-04T21:20:44.563907+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-01",
+  "gateSha256": "ed21598f418b3dfe9214cbf74f564fc1b8b83f36e97e4a690049e603e4dd9e18",
+  "workerSha256": "06ea418f1403d363e0c46de0d70ca8bbf610bd42d356501844d556a13ec3dc9e",
+  "buildRecordSha256": "7c190e2f6b0041422b288cec491d28cbb8aa10215c7668394ad2a9fde284f0e2",
+  "methodRecordSha256": "51857e79d51e2c4808c5f8a9db4d56571a14d9430a13c5f97f658429b73c32c6",
+  "inspection": "JSON/source/hash only; no scientific restoration or validator",
+  "metadataChecks": 11710,
+  "newLiteralZeroReturns": 639,
+  "individuallyRestoredZeroRecords": 171,
+  "completeMatrixArgumentSets": 44,
+  "responsivePrefixControls": 2,
+  "completeArtifacts": 2466,
+  "completedTopOperations": 0,
+  "savedCopies": 2025,
+  "posthashes": 4070,
+  "sourceSnapshots": 22,
+  "additionalIdentityCopies": 24,
+  "failure": {
+    "executionStatus": "FAILED_PRESERVED",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular.py\", line 562, in main\n    result=J.stage('source-projection-cross-flux-real-axis-receiving',{'manifestSha256':gate['manifestSha256'],'buildReviewSha256':gate['buildReviewRecordSha256']},lambda:scientific_work(manifest,J,ns['decode']));code=0\n  File \"unchanged-journal-and-containment\", line 243, in stage\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular.py\", line 562, in <lambda>\n    result=J.stage('source-projection-cross-flux-real-axis-receiving',{'manifestSha256':gate['manifestSha256'],'buildReviewSha256':gate['buildReviewRecordSha256']},lambda:scientific_work(manifest,J,ns['decode']));code=0\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular.py\", line 490, in scientific_work\n    domain_certificate('entry-'+str(i)+'-joined-denominator',d)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular.py\", line 473, in domain_certificate\n    group.append(exclude_ray(name+'-'+tag+'-'+ray,poly,sub,upper))\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular.py\", line 440, in exclude_ray\n    u,v,g=sp.gcdex(a.as_expr(),b.as_expr(),r);G=sp.Poly(g,r,domain=sp.QQ)\n  File \"/home/trevnorris/.local/lib/python3.10/site-packages/sympy/polys/polytools.py\", line 5341, in gcdex\n    s, t, h = F.gcdex(G, auto=opt.auto)\n  File \"/home/trevnorris/.local/lib/python3.10/site-packages/sympy/polys/polytools.py\", line 2574, in gcdex\n    s, t, h = F.gcdex(G)\n  File \"/home/trevnorris/.local/lib/python3.10/site-packages/sympy/polys/polyclasses.py\", line 771, in gcdex\n    return F._gcdex(G)\n  File \"/home/trevnorris/.local/lib/python3.10/site-packages/sympy/polys/polyclasses.py\", line 1497, in _gcdex\n    s, t, h = dup_gcdex(f._rep, g._rep, f.dom)\n  File \"/home/trevnorris/.local/lib/python3.10/site-packages/sympy/polys/euclidtools.py\", line 124, in dup_gcdex\n    t = dup_quo(F, g, K)\n  File \"/home/trevnorris/.local/lib/python3.10/site-packages/sympy/polys/densearith.py\", line 1578, in dup_quo\n    return dup_div(f, g, K)[0]\n  File \"/home/trevnorris/.local/lib/python3.10/site-packages/sympy/polys/densearith.py\", line 1534, in dup_div\n    return dup_ff_div(f, g, K)\n  File \"/home/trevnorris/.local/lib/python3.10/site-packages/sympy/polys/densearith.py\", line 1430, in dup_ff_div\n    raise ZeroDivisionError(\"polynomial division\")\nZeroDivisionError: polynomial division\n",
+    "incompleteOperation": "source-projection-cross-flux-real-axis-receiving",
+    "automaticRetry": false
+  },
+  "failedGcdOperands": {
+    "originalPolynomial": {
+      "text": "30",
+      "srepr": "Integer(30)"
+    },
+    "substitution": {
+      "text": "receiving_ray_entry-0-joined-denominator-numerator-propagating",
+      "srepr": "Symbol('receiving_ray_entry-0-joined-denominator-numerator-propagating', real=True)"
+    },
+    "expression": {
+      "text": "30",
+      "srepr": "Integer(30)"
+    },
+    "real": {
+      "text": "30",
+      "srepr": "Integer(30)"
+    },
+    "imaginary": {
+      "text": "0",
+      "srepr": "Integer(0)"
+    },
+    "realCoefficients": [
+      {
+        "text": "30",
+        "srepr": "Integer(30)"
+      }
+    ],
+    "imaginaryCoefficients": [
+      {
+        "text": "0",
+        "srepr": "Integer(0)"
+      }
+    ],
+    "interval": [
+      0,
+      {
+        "text": "sqrt(595)/10",
+        "srepr": "Mul(Rational(1, 10), Pow(Integer(595), Rational(1, 2)))"
+      }
+    ]
+  },
+  "prefixAcceptedOnly": "Full source/basis/affine projection, projected UB three-row zero, localized envelopes, moving-projector matching and both native opposite-leg cross currents have actual saved zero returns. Two prefix controls respond. No determinant/root exclusion or receiving regularity has completed.",
+  "nativeOppositeLegCurrentOperands": {
+    "JL": {
+      "text": "Matrix([[17*flux_left_momentum/40 + 17*flux_right_momentum/40, -7/50, -7/100, I*flux_right_momentum**2/4 + 47*I/16, 3*I*flux_right_momentum**2/40 + 93*I/800], [-7/50, 9*flux_left_momentum/8 + 9*flux_right_momentum/8, 0, 0, 0], [-7/100, 0, 9*flux_left_momentum/8 + 9*flux_right_momentum/8, 0, 0], [-I*flux_left_momentum**2/4 - 47*I/16, 0, 0, flux_left_momentum/4 + flux_right_momentum/4, 3*flux_left_momentum/40 + 3*flux_right_momentum/40], [-3*I*flux_left_momentum**2/40 - 93*I/800, 0, 0, 3*flux_left_momentum/40 + 3*flux_right_momentum/40, 3*flux_left_momentum/8 + 3*flux_right_momentum/8]])",
+      "srepr": "ImmutableDenseMatrix([[Add(Mul(Rational(17, 40), Symbol('flux_left_momentum', real=True)), Mul(Rational(17, 40), Symbol('flux_right_momentum', real=True))), Rational(-7, 50), Rational(-7, 100), Add(Mul(Rational(1, 4), I, Pow(Symbol('flux_right_momentum', real=True), Integer(2))), Mul(Rational(47, 16), I)), Add(Mul(Rational(3, 40), I, Pow(Symbol('flux_right_momentum', real=True), Integer(2))), Mul(Rational(93, 800), I))], [Rational(-7, 50), Add(Mul(Rational(9, 8), Symbol('flux_left_momentum', real=True)), Mul(Rational(9, 8), Symbol('flux_right_momentum', real=True))), Integer(0), Integer(0), Integer(0)], [Rational(-7, 100), Integer(0), Add(Mul(Rational(9, 8), Symbol('flux_left_momentum', real=True)), Mul(Rational(9, 8), Symbol('flux_right_momentum', real=True))), Integer(0), Integer(0)], [Add(Mul(Integer(-1), Rational(1, 4), I, Pow(Symbol('flux_left_momentum', real=True), Integer(2))), Mul(Integer(-1), Rational(47, 16), I)), Integer(0), Integer(0), Add(Mul(Rational(1, 4), Symbol('flux_left_momentum', real=True)), Mul(Rational(1, 4), Symbol('flux_right_momentum', real=True))), Add(Mul(Rational(3, 40), Symbol('flux_left_momentum', real=True)), Mul(Rational(3, 40), Symbol('flux_right_momentum', real=True)))], [Add(Mul(Integer(-1), Rational(3, 40), I, Pow(Symbol('flux_left_momentum', real=True), Integer(2))), Mul(Integer(-1), Rational(93, 800), I)), Integer(0), Integer(0), Add(Mul(Rational(3, 40), Symbol('flux_left_momentum', real=True)), Mul(Rational(3, 40), Symbol('flux_right_momentum', real=True))), Add(Mul(Rational(3, 8), Symbol('flux_left_momentum', real=True)), Mul(Rational(3, 8), Symbol('flux_right_momentum', real=True)))]])"
+    },
+    "braMinus": {
+      "text": "Matrix([[I/5, 0], [3*sqrt(595)*I/50, I/10], [2*sqrt(595)*I/25, -I/5], [0, 0], [0, 0]])",
+      "srepr": "ImmutableDenseMatrix([[Mul(Rational(1, 5), I), Integer(0)], [Mul(Rational(3, 50), Pow(Integer(595), Rational(1, 2)), I), Mul(Rational(1, 10), I)], [Mul(Rational(2, 25), Pow(Integer(595), Rational(1, 2)), I), Mul(Integer(-1), Rational(1, 5), I)], [Integer(0), Integer(0)], [Integer(0), Integer(0)]])"
+    },
+    "ketPlus": {
+      "text": "Matrix([[I/5, 0], [-sqrt(595)*I/10, I/10], [0, -I/5], [0, 0], [0, 0]])",
+      "srepr": "ImmutableDenseMatrix([[Mul(Rational(1, 5), I), Integer(0)], [Mul(Integer(-1), Rational(1, 10), Pow(Integer(595), Rational(1, 2)), I), Mul(Rational(1, 10), I)], [Integer(0), Mul(Integer(-1), Rational(1, 5), I)], [Integer(0), Integer(0)], [Integer(0), Integer(0)]])"
+    },
+    "km": {
+      "text": "flux_left_momentum",
+      "srepr": "Symbol('flux_left_momentum', real=True)"
+    },
+    "kp": {
+      "text": "flux_right_momentum",
+      "srepr": "Symbol('flux_right_momentum', real=True)"
+    },
+    "minusPlus": {
+      "text": "Matrix([[0, 0], [0, 0]])",
+      "srepr": "ImmutableDenseMatrix([[Integer(0), Integer(0)], [Integer(0), Integer(0)]])"
+    },
+    "plusMinus": {
+      "text": "Matrix([[0, 0], [0, 0]])",
+      "srepr": "ImmutableDenseMatrix([[Integer(0), Integer(0)], [Integer(0), Integer(0)]])"
+    },
+    "minusPlusPhase": {
+      "text": "exp(sqrt(595)*I*receiving_cross_flux_x/5)",
+      "srepr": "exp(Mul(Rational(1, 5), Pow(Integer(595), Rational(1, 2)), I, Symbol('receiving_cross_flux_x', real=True)))"
+    },
+    "plusMinusPhase": {
+      "text": "exp(-sqrt(595)*I*receiving_cross_flux_x/5)",
+      "srepr": "exp(Mul(Integer(-1), Rational(1, 5), Pow(Integer(595), Rational(1, 2)), I, Symbol('receiving_cross_flux_x', real=True)))"
+    },
+    "inheritedG0": {
+      "text": "Matrix([[5391*sqrt(595)/4000, -1071/800], [-1071/800, 9*sqrt(595)/800]])",
+      "srepr": "ImmutableDenseMatrix([[Mul(Rational(5391, 4000), Pow(Integer(595), Rational(1, 2))), Rational(-1071, 800)], [Rational(-1071, 800), Mul(Rational(9, 800), Pow(Integer(595), Rational(1, 2)))]])"
+    },
+    "inheritedGref": {
+      "text": "Matrix([[5391*sqrt(595)/4000, -1071/800], [-1071/800, 9*sqrt(595)/800]])",
+      "srepr": "ImmutableDenseMatrix([[Mul(Rational(5391, 4000), Pow(Integer(595), Rational(1, 2))), Rational(-1071, 800)], [Rational(-1071, 800), Mul(Rational(9, 800), Pow(Integer(595), Rational(1, 2)))]])"
+    },
+    "inheritedK1": {
+      "text": "Matrix([[0, 0], [0, 0]])",
+      "srepr": "ImmutableDenseMatrix([[Integer(0), Integer(0)], [Integer(0), Integer(0)]])"
+    },
+    "harmonicAndEpsilonConvention": "All displayed weights multiply the same original epsilon_shape^2; harmonic 1/4 is already inside native current. No extra factor.",
+    "units": {
+      "originalAmplitudeUnits": [
+        [
+          {
+            "text": "1",
+            "srepr": "Integer(1)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          }
+        ],
+        [
+          {
+            "text": "1",
+            "srepr": "Integer(1)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          }
+        ],
+        [
+          {
+            "text": "1",
+            "srepr": "Integer(1)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          }
+        ],
+        [
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          }
+        ],
+        [
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          }
+        ]
+      ],
+      "uniformFieldUnits": [
+        [
+          {
+            "text": "1",
+            "srepr": "Integer(1)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          }
+        ],
+        [
+          {
+            "text": "1",
+            "srepr": "Integer(1)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          }
+        ],
+        [
+          {
+            "text": "1",
+            "srepr": "Integer(1)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          }
+        ],
+        [
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          }
+        ],
+        [
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          },
+          {
+            "text": "0",
+            "srepr": "Integer(0)"
+          }
+        ]
+      ],
+      "currentUnit": [
+        {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        {
+          "text": "-3",
+          "srepr": "Integer(-3)"
+        },
+        {
+          "text": "1",
+          "srepr": "Integer(1)"
+        }
+      ],
+      "newDimensionInference": false
+    },
+    "physicalPowerBalance": false
+  },
+  "controlReturns": {
+    "drop-moving-projector-derivative-control-return.json": {
+      "movement": {
+        "text": "-sqrt(595)*I/595",
+        "srepr": "Mul(Integer(-1), Rational(1, 595), Pow(Integer(595), Rational(1, 2)), I)"
+      },
+      "zero": false,
+      "finite": true
+    },
+    "wrong-bra-momentum-sign-control-return.json": {
+      "movement": {
+        "text": "9*sqrt(595)/800",
+        "srepr": "Mul(Rational(9, 800), Pow(Integer(595), Rational(1, 2)))"
+      },
+      "zero": false,
+      "finite": true
+    }
+  },
+  "workerSeconds": 109.42291568289511,
+  "peakCgroupBytes": 232280064,
+  "zeroMemoryEvents": true,
+  "zeroSwap": true,
+  "noDeadlines": true,
+  "strictScientificStderrBytes": 2631,
+  "stdoutChecksIdentical": true,
+  "allHashesIntact": true,
+  "treeIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-01/failure-inspection-files.json",
+    "sha256": "e5da369b22c0d48af7f38e31d9570869be004b287b8df2e9fd58cfc6d0aebc80",
+    "files": 4575,
+    "bytes": 69962764,
+    "excludesInspectionFileItself": true
+  },
+  "scientificAcceptance": false,
+  "automaticRetry": false,
+  "leakageFactor": null,
+  "disposition": "Preserve exact failed run and all complete prefix returns. Installed gcdex source divides by its zero second input. Prepare a task-local exact degenerate-polynomial adapter and narrowly scoped saved-prefix continuation; no old source/current/zero proof replay and no changed physics/tolerance."
+}

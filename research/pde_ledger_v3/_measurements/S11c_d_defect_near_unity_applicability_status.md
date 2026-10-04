@@ -1521,3 +1521,21 @@ from source clearance. A fresh gate authorizes one run of the exact reviewed
 worker with the established hook-first pooled 4 GiB/no-deadline containment.
 Complete physical face/work maps, matched ends, receiving grazing regularity and
 power remain open. Recovery and mixed integrals remain parked.
+
+### 2026-10-04 — First-order forcing resolves a polarization distinction
+
+The exact reviewed source screen completed and its saved evidence passed bounded
+source/JSON/hash inspection: 211 new and 32 inherited literal zeros, two responsive
+source controls, intact 127 copies/273 posthashes/146 snapshots/16 identity copies.
+59.834 s, peak 185,491,456 B, zero swap/events, strict empty stderr and matching
+stdout/checks. The complete local and pressure source results are accepted at this
+scope; no receiving inverse or physical power is accepted.
+
+For U_A=i(1/5,-p,0), the source has nonzero chemical/pressure and scalar/thickness
+forcing. For U_B=i(0,1/10,-1/5), chemical/pressure forcing is zero and the full
+local first-order force remains transverse for arbitrary receiving l: zero
+normal/scalar/thickness components and literal-zero receiving-dot diagnostic.
+Both retain a right-end transverse force step 9 U. This is a source selection
+rule, not yet zero physical leakage. Next: the native receiving blocks, complete
+face drivers and matched-step/physical-work implications. The numerical recovery
+and mixed integrals remain parked.

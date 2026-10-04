@@ -1,0 +1,1219 @@
+{
+  "createdUtc": "2026-10-04T17:02:13.630612+00:00",
+  "scienceCalls": 0,
+  "records": [
+    {
+      "packetPath": "plan.txt",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_first_order_source_20261004_plan.txt",
+      "sourceSha256": "b759c4a9a44c25bfeda8b85020d63af10125089855a0534a813592dcbe2a4a68",
+      "packetSha256": "b759c4a9a44c25bfeda8b85020d63af10125089855a0534a813592dcbe2a4a68",
+      "bytes": 9541,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "review-prompt.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_first_order_source_20261004_review_prompt.txt",
+      "sourceSha256": "f21290f57ee4973fb686182921d77b9cbde3e3305ec9b14eb1aac3e3263a9041",
+      "packetSha256": "f21290f57ee4973fb686182921d77b9cbde3e3305ec9b14eb1aac3e3263a9041",
+      "bytes": 2263,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "guide.txt",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/first-order-source-method-review/guide.txt",
+      "sourceSha256": "2361ce30a1eb3fe4fc4cd78dbc8d38ef52389ae03446e27460e0203cf83c39cc",
+      "packetSha256": "2361ce30a1eb3fe4fc4cd78dbc8d38ef52389ae03446e27460e0203cf83c39cc",
+      "bytes": 3175,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "incident/LEFT-invariant-lift.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/LEFT-invariant-lift.json",
+      "sourceSha256": "7e5169d292d6c3bfd5f6c838b183571b381d7a46849599510c2f6ca49159f13c",
+      "packetSha256": "7e5169d292d6c3bfd5f6c838b183571b381d7a46849599510c2f6ca49159f13c",
+      "bytes": 796,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "incident/LEFT-invariant-P.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/LEFT-invariant-P.json",
+      "sourceSha256": "7fcf8886cf1340e32d2b6a770a8506cbf40d24df9fc274ab98ebfc2d19cfdc3f",
+      "packetSha256": "7fcf8886cf1340e32d2b6a770a8506cbf40d24df9fc274ab98ebfc2d19cfdc3f",
+      "bytes": 25494,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "incident/LEFT-invariant-D.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/LEFT-invariant-D.json",
+      "sourceSha256": "a5b1fa404601021db79acba3b70b952488d28216ab4d7b1637520593a2fcdbf3",
+      "packetSha256": "a5b1fa404601021db79acba3b70b952488d28216ab4d7b1637520593a2fcdbf3",
+      "bytes": 1200,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "incident/LEFT-invariant-gram.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/LEFT-invariant-gram.json",
+      "sourceSha256": "eb36c7d9e458cdae5523608808f9963c289c452e3d0cf8d881a7afa8cc4abaf0",
+      "packetSha256": "eb36c7d9e458cdae5523608808f9963c289c452e3d0cf8d881a7afa8cc4abaf0",
+      "bytes": 842,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "incident/lift-input-curl.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/lift-input-curl.json",
+      "sourceSha256": "1caa561e23d2c5864668347ba6036c1d9db7813e60a1467ab2077691e724e57d",
+      "packetSha256": "1caa561e23d2c5864668347ba6036c1d9db7813e60a1467ab2077691e724e57d",
+      "bytes": 1438,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "incident/actual-source-chart.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/actual-source-chart.json",
+      "sourceSha256": "b4b3bd17f55b9051c07f0d1ebd1acf02a2ee41edeb7204b84ed7b6e15bbe9765",
+      "packetSha256": "b4b3bd17f55b9051c07f0d1ebd1acf02a2ee41edeb7204b84ed7b6e15bbe9765",
+      "bytes": 5248,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "incident/LEFT-raw-source-binding.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/LEFT-raw-source-binding.json",
+      "sourceSha256": "bcea8d5a0a1ec8869824719929350bacda4c113bffadb4a709e7163086fff687",
+      "packetSha256": "bcea8d5a0a1ec8869824719929350bacda4c113bffadb4a709e7163086fff687",
+      "bytes": 118914,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "incident/point-01-LEFT.json",
+      "sourcePath": "_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/point-01-LEFT.json",
+      "sourceSha256": "6d79f2fb8531e29df8a9cf06a1aaacac5daf708da030e4375c04596f2b2df92d",
+      "packetSha256": "6d79f2fb8531e29df8a9cf06a1aaacac5daf708da030e4375c04596f2b2df92d",
+      "bytes": 114246,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "incident/point-01-RIGHT.json",
+      "sourcePath": "_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/point-01-RIGHT.json",
+      "sourceSha256": "a854811c76cca4f637859379e52311ea4013f756e43b8f04aa5a7930152d9de3",
+      "packetSha256": "a854811c76cca4f637859379e52311ea4013f756e43b8f04aa5a7930152d9de3",
+      "bytes": 144108,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/all-local-cells.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/all-local-cells.json",
+      "sourceSha256": "6ff2534c6fdcce7303f36e940e9cd2fda642a939cdca5ff3d18cd6fec9f542ba",
+      "packetSha256": "6ff2534c6fdcce7303f36e940e9cd2fda642a939cdca5ff3d18cd6fec9f542ba",
+      "bytes": 3597097,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/extended-binding-context.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/extended-binding-context.json",
+      "sourceSha256": "fd473063c0a8b26966f0b1c780e5cc4583a19a9ff7ca1b2388f91e9c64c48997",
+      "packetSha256": "fd473063c0a8b26966f0b1c780e5cc4583a19a9ff7ca1b2388f91e9c64c48997",
+      "bytes": 19272,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/native-wave-profile-contract.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/native-wave-profile-contract.json",
+      "sourceSha256": "a74785e2446e1448acdf6cee32b939d2818191fac1fafee4cb597ed3dfddf911",
+      "packetSha256": "a74785e2446e1448acdf6cee32b939d2818191fac1fafee4cb597ed3dfddf911",
+      "bytes": 53178,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/pressure-source-assembly-joins.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/pressure-source-assembly-joins.json",
+      "sourceSha256": "8edb130101530c9a010012fdaa3c28b53867030cfb470322fedffe1e9b4673ea",
+      "packetSha256": "8edb130101530c9a010012fdaa3c28b53867030cfb470322fedffe1e9b4673ea",
+      "bytes": 162759,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U0-new-physical-row-grade-00-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U0-new-physical-row-grade-00-input.json",
+      "sourceSha256": "3220f1cacebb1c7da8dd9dbf6f8c3e2075ee8aa7ae509f6bade9e8e5ef5ce376",
+      "packetSha256": "3220f1cacebb1c7da8dd9dbf6f8c3e2075ee8aa7ae509f6bade9e8e5ef5ce376",
+      "bytes": 1524,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U0-new-physical-row-grade-00-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U0-new-physical-row-grade-00-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U0-new-physical-row-grade-10-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U0-new-physical-row-grade-10-input.json",
+      "sourceSha256": "8602756c9315fe56988d439fc71ee29305f1616e2caf3eacac6ca8918cbfaa54",
+      "packetSha256": "8602756c9315fe56988d439fc71ee29305f1616e2caf3eacac6ca8918cbfaa54",
+      "bytes": 3490,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U0-new-physical-row-grade-10-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U0-new-physical-row-grade-10-return.json",
+      "sourceSha256": "4ca78bc7b4f08d026d9b124bfff1a72bd4ac94c03e9cc27484d619fc761b99b7",
+      "packetSha256": "4ca78bc7b4f08d026d9b124bfff1a72bd4ac94c03e9cc27484d619fc761b99b7",
+      "bytes": 1898,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U0-new-physical-row-grade-01-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U0-new-physical-row-grade-01-input.json",
+      "sourceSha256": "e87923ed427c55f934b65d014a5fe8e7f3cfffc6d511098ce442d761e757ec99",
+      "packetSha256": "e87923ed427c55f934b65d014a5fe8e7f3cfffc6d511098ce442d761e757ec99",
+      "bytes": 48057,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U0-new-physical-row-grade-01-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U0-new-physical-row-grade-01-return.json",
+      "sourceSha256": "8ac368ff9f7013bb469e92670887f47ab563c4b95964702bf8a13292e5a3e0ae",
+      "packetSha256": "8ac368ff9f7013bb469e92670887f47ab563c4b95964702bf8a13292e5a3e0ae",
+      "bytes": 48279,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U0-delta_p_plus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U0-delta_p_plus-split.json",
+      "sourceSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "packetSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "bytes": 902,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U0-delta_p_minus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U0-delta_p_minus-split.json",
+      "sourceSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "packetSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "bytes": 902,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U0-d_w_delta_p_plus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U0-d_w_delta_p_plus-split.json",
+      "sourceSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "packetSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "bytes": 902,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U0-d_w_delta_p_minus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U0-d_w_delta_p_minus-split.json",
+      "sourceSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "packetSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "bytes": 902,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U0-affine-pressure-reconstruction-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U0-affine-pressure-reconstruction-input.json",
+      "sourceSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "packetSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "bytes": 124,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U0-affine-pressure-reconstruction-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U0-affine-pressure-reconstruction-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U1-new-physical-row-grade-00-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U1-new-physical-row-grade-00-input.json",
+      "sourceSha256": "e86ef1b3605c16dc58b514c964a3ace9c13df0adf0134b578905076159661bc8",
+      "packetSha256": "e86ef1b3605c16dc58b514c964a3ace9c13df0adf0134b578905076159661bc8",
+      "bytes": 1598,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U1-new-physical-row-grade-00-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U1-new-physical-row-grade-00-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U1-new-physical-row-grade-10-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U1-new-physical-row-grade-10-input.json",
+      "sourceSha256": "3dfe37b39aa95f38363adc11e61494c530f6582878b0fc2a537d71312ff84dd1",
+      "packetSha256": "3dfe37b39aa95f38363adc11e61494c530f6582878b0fc2a537d71312ff84dd1",
+      "bytes": 3819,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U1-new-physical-row-grade-10-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U1-new-physical-row-grade-10-return.json",
+      "sourceSha256": "4d98202bbdb8757161a027078506a0476a53a2e331df185074ab42ded5b0da3a",
+      "packetSha256": "4d98202bbdb8757161a027078506a0476a53a2e331df185074ab42ded5b0da3a",
+      "bytes": 1781,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U1-new-physical-row-grade-01-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U1-new-physical-row-grade-01-input.json",
+      "sourceSha256": "e8c131130a2384965b802f6d4f691fc972242fba3d431ac3b287f8160d45decf",
+      "packetSha256": "e8c131130a2384965b802f6d4f691fc972242fba3d431ac3b287f8160d45decf",
+      "bytes": 24045,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U1-new-physical-row-grade-01-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U1-new-physical-row-grade-01-return.json",
+      "sourceSha256": "d887853b0f1a3a6d7de3d52e2f314b6465ffce4a62df332bbdc056243b9fbd56",
+      "packetSha256": "d887853b0f1a3a6d7de3d52e2f314b6465ffce4a62df332bbdc056243b9fbd56",
+      "bytes": 24202,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U1-delta_p_plus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U1-delta_p_plus-split.json",
+      "sourceSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "packetSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "bytes": 902,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U1-delta_p_minus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U1-delta_p_minus-split.json",
+      "sourceSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "packetSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "bytes": 902,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U1-d_w_delta_p_plus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U1-d_w_delta_p_plus-split.json",
+      "sourceSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "packetSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "bytes": 902,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U1-d_w_delta_p_minus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U1-d_w_delta_p_minus-split.json",
+      "sourceSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "packetSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "bytes": 902,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U1-affine-pressure-reconstruction-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U1-affine-pressure-reconstruction-input.json",
+      "sourceSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "packetSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "bytes": 124,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U1-affine-pressure-reconstruction-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U1-affine-pressure-reconstruction-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U2-new-physical-row-grade-00-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U2-new-physical-row-grade-00-input.json",
+      "sourceSha256": "9a578f64e9da7075028991a2540121e57bae4169c688cf1abf5cadba96c811d3",
+      "packetSha256": "9a578f64e9da7075028991a2540121e57bae4169c688cf1abf5cadba96c811d3",
+      "bytes": 1602,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U2-new-physical-row-grade-00-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U2-new-physical-row-grade-00-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U2-new-physical-row-grade-10-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U2-new-physical-row-grade-10-input.json",
+      "sourceSha256": "7c4c7d3a96bcc159a4657c3b756c60082b3ea88cddc9c82e5dd6011fb3cc371c",
+      "packetSha256": "7c4c7d3a96bcc159a4657c3b756c60082b3ea88cddc9c82e5dd6011fb3cc371c",
+      "bytes": 3803,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U2-new-physical-row-grade-10-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U2-new-physical-row-grade-10-return.json",
+      "sourceSha256": "4395306707e8a4259d5cbb0147f234e9dd31146a6f9555672877d4371715f473",
+      "packetSha256": "4395306707e8a4259d5cbb0147f234e9dd31146a6f9555672877d4371715f473",
+      "bytes": 1773,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U2-new-physical-row-grade-01-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U2-new-physical-row-grade-01-input.json",
+      "sourceSha256": "159a8d7bc8079a411696ef9f5bf6bc2bae1300e11831661cac022ab0a0545fd9",
+      "packetSha256": "159a8d7bc8079a411696ef9f5bf6bc2bae1300e11831661cac022ab0a0545fd9",
+      "bytes": 24071,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/U2-new-physical-row-grade-01-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/U2-new-physical-row-grade-01-return.json",
+      "sourceSha256": "1b001b614d4cf84aa33f8a49b5114a819c0fe6e320b5c240eb9b5c662e1e9d4c",
+      "packetSha256": "1b001b614d4cf84aa33f8a49b5114a819c0fe6e320b5c240eb9b5c662e1e9d4c",
+      "bytes": 24228,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U2-delta_p_plus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U2-delta_p_plus-split.json",
+      "sourceSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "packetSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "bytes": 902,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U2-delta_p_minus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U2-delta_p_minus-split.json",
+      "sourceSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "packetSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "bytes": 902,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U2-d_w_delta_p_plus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U2-d_w_delta_p_plus-split.json",
+      "sourceSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "packetSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "bytes": 902,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U2-d_w_delta_p_minus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U2-d_w_delta_p_minus-split.json",
+      "sourceSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "packetSha256": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+      "bytes": 902,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U2-affine-pressure-reconstruction-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U2-affine-pressure-reconstruction-input.json",
+      "sourceSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "packetSha256": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+      "bytes": 124,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/U2-affine-pressure-reconstruction-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/U2-affine-pressure-reconstruction-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/THETA_BALANCE-new-physical-row-grade-00-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-new-physical-row-grade-00-input.json",
+      "sourceSha256": "8fa76acb50e03d40bfe8c52642412d2158e2fa97b04803af2eca566b453e5f47",
+      "packetSha256": "8fa76acb50e03d40bfe8c52642412d2158e2fa97b04803af2eca566b453e5f47",
+      "bytes": 3002,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/THETA_BALANCE-new-physical-row-grade-00-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-new-physical-row-grade-00-return.json",
+      "sourceSha256": "a6e5352fcbd15a0b3fcc2b3a4f58052cb7921c94dda97db848bf90233da1398e",
+      "packetSha256": "a6e5352fcbd15a0b3fcc2b3a4f58052cb7921c94dda97db848bf90233da1398e",
+      "bytes": 2521,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/THETA_BALANCE-new-physical-row-grade-10-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-new-physical-row-grade-10-input.json",
+      "sourceSha256": "2ed801c911abdf9299023549b0eea0e6d6651f3ed8aaf88586aeda0e7b3759de",
+      "packetSha256": "2ed801c911abdf9299023549b0eea0e6d6651f3ed8aaf88586aeda0e7b3759de",
+      "bytes": 7676,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/THETA_BALANCE-new-physical-row-grade-10-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-new-physical-row-grade-10-return.json",
+      "sourceSha256": "bc2e8d25d7143cc0d8d07a1ed5c03d40098a87460b68f14ac8198e0b54af500b",
+      "packetSha256": "bc2e8d25d7143cc0d8d07a1ed5c03d40098a87460b68f14ac8198e0b54af500b",
+      "bytes": 7280,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/THETA_BALANCE-new-physical-row-grade-01-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-new-physical-row-grade-01-input.json",
+      "sourceSha256": "5e94951b0a82d1481f180b0485d5ed5ce58d34530d24fa0943f34336dad46ae1",
+      "packetSha256": "5e94951b0a82d1481f180b0485d5ed5ce58d34530d24fa0943f34336dad46ae1",
+      "bytes": 21813,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/THETA_BALANCE-new-physical-row-grade-01-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/THETA_BALANCE-new-physical-row-grade-01-return.json",
+      "sourceSha256": "dfa32e1c5fd02e5a8c2a3442b50657f30f1c91855802f48aabf292ae2cc07614",
+      "packetSha256": "dfa32e1c5fd02e5a8c2a3442b50657f30f1c91855802f48aabf292ae2cc07614",
+      "bytes": 21957,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/THETA_BALANCE-delta_p_plus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/THETA_BALANCE-delta_p_plus-split.json",
+      "sourceSha256": "5f3b8312bc839ede11d45ddb91ce429f7ca5a6efc7b6d44b314dd2a45d346588",
+      "packetSha256": "5f3b8312bc839ede11d45ddb91ce429f7ca5a6efc7b6d44b314dd2a45d346588",
+      "bytes": 1447,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/THETA_BALANCE-delta_p_minus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/THETA_BALANCE-delta_p_minus-split.json",
+      "sourceSha256": "5f3b8312bc839ede11d45ddb91ce429f7ca5a6efc7b6d44b314dd2a45d346588",
+      "packetSha256": "5f3b8312bc839ede11d45ddb91ce429f7ca5a6efc7b6d44b314dd2a45d346588",
+      "bytes": 1447,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/THETA_BALANCE-d_w_delta_p_plus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/THETA_BALANCE-d_w_delta_p_plus-split.json",
+      "sourceSha256": "8e708097cd49037dffbdb7351d26dad38201acc2f1af65684b55826f6d2aa6d8",
+      "packetSha256": "8e708097cd49037dffbdb7351d26dad38201acc2f1af65684b55826f6d2aa6d8",
+      "bytes": 1725,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/THETA_BALANCE-d_w_delta_p_minus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/THETA_BALANCE-d_w_delta_p_minus-split.json",
+      "sourceSha256": "d6b01d40ef21be662d0a7731a199484f81082a1b7c41a22a101d757f0b655c6b",
+      "packetSha256": "d6b01d40ef21be662d0a7731a199484f81082a1b7c41a22a101d757f0b655c6b",
+      "bytes": 1697,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/THETA_BALANCE-affine-pressure-reconstruction-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/THETA_BALANCE-affine-pressure-reconstruction-input.json",
+      "sourceSha256": "7794cd32c13237f6b2f45c54de3a41c0eadaeeacc0babb52cdefa554ab548882",
+      "packetSha256": "7794cd32c13237f6b2f45c54de3a41c0eadaeeacc0babb52cdefa554ab548882",
+      "bytes": 2052,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/THETA_BALANCE-affine-pressure-reconstruction-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/THETA_BALANCE-affine-pressure-reconstruction-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/E_W_BALANCE-new-physical-row-grade-00-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/E_W_BALANCE-new-physical-row-grade-00-input.json",
+      "sourceSha256": "df77e8a27aaf9810435b1b7e1418fd3015a4627060ee15c8e238dfb458934fe6",
+      "packetSha256": "df77e8a27aaf9810435b1b7e1418fd3015a4627060ee15c8e238dfb458934fe6",
+      "bytes": 846,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/E_W_BALANCE-new-physical-row-grade-00-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/E_W_BALANCE-new-physical-row-grade-00-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/E_W_BALANCE-new-physical-row-grade-10-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/E_W_BALANCE-new-physical-row-grade-10-input.json",
+      "sourceSha256": "ab554645b3c3f6ab63da86e62b8dd76a66f479df46de1409117d65abbbd35c47",
+      "packetSha256": "ab554645b3c3f6ab63da86e62b8dd76a66f479df46de1409117d65abbbd35c47",
+      "bytes": 4620,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/E_W_BALANCE-new-physical-row-grade-10-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/E_W_BALANCE-new-physical-row-grade-10-return.json",
+      "sourceSha256": "abed6b8794baf87392d34cd46be797211755065d66a56a284793ea7b1161e926",
+      "packetSha256": "abed6b8794baf87392d34cd46be797211755065d66a56a284793ea7b1161e926",
+      "bytes": 4686,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/E_W_BALANCE-new-physical-row-grade-01-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/E_W_BALANCE-new-physical-row-grade-01-input.json",
+      "sourceSha256": "58bc898ae04e8890c64ac7b5c9fc3a7649261bb8c2f809034b1dd6ad9d14a943",
+      "packetSha256": "58bc898ae04e8890c64ac7b5c9fc3a7649261bb8c2f809034b1dd6ad9d14a943",
+      "bytes": 29056,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "local/E_W_BALANCE-new-physical-row-grade-01-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-full-weak-20261002/diagnostic-01/complete/E_W_BALANCE-new-physical-row-grade-01-return.json",
+      "sourceSha256": "1a50cce94276566987092d5f3d43edbce622407d88ff5b11e3b168935df1ea7b",
+      "packetSha256": "1a50cce94276566987092d5f3d43edbce622407d88ff5b11e3b168935df1ea7b",
+      "bytes": 29213,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/E_W_BALANCE-delta_p_plus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-delta_p_plus-split.json",
+      "sourceSha256": "5ca14f50dbe8075a4fe92310fe4542a7cce0738f550bed83f56e4fd1803d421c",
+      "packetSha256": "5ca14f50dbe8075a4fe92310fe4542a7cce0738f550bed83f56e4fd1803d421c",
+      "bytes": 975,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/E_W_BALANCE-delta_p_minus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-delta_p_minus-split.json",
+      "sourceSha256": "5ca14f50dbe8075a4fe92310fe4542a7cce0738f550bed83f56e4fd1803d421c",
+      "packetSha256": "5ca14f50dbe8075a4fe92310fe4542a7cce0738f550bed83f56e4fd1803d421c",
+      "bytes": 975,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/E_W_BALANCE-d_w_delta_p_plus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_plus-split.json",
+      "sourceSha256": "e32287eeb513add592f8fd9a5e29499c9e04bc41ceffe40e54ae5529f9ce6a72",
+      "packetSha256": "e32287eeb513add592f8fd9a5e29499c9e04bc41ceffe40e54ae5529f9ce6a72",
+      "bytes": 1104,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/E_W_BALANCE-d_w_delta_p_minus-split.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-d_w_delta_p_minus-split.json",
+      "sourceSha256": "7222f6d17b78aaef1a6bbdc17cdc03448f88731aed344d6e8a958df7ebfe8fb5",
+      "packetSha256": "7222f6d17b78aaef1a6bbdc17cdc03448f88731aed344d6e8a958df7ebfe8fb5",
+      "bytes": 1132,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/E_W_BALANCE-affine-pressure-reconstruction-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-affine-pressure-reconstruction-input.json",
+      "sourceSha256": "df8187740653326e7e9ecfb921c6532f0c3e88e3414726ad4230098051d1903e",
+      "packetSha256": "df8187740653326e7e9ecfb921c6532f0c3e88e3414726ad4230098051d1903e",
+      "bytes": 1298,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/E_W_BALANCE-affine-pressure-reconstruction-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/E_W_BALANCE-affine-pressure-reconstruction-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/plus-source-jets-00.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/plus-source-jets-00.json",
+      "sourceSha256": "0009cc7aaafe664ee5c8d34d80184bb132c46839fb853d799e1a9dca9e04265d",
+      "packetSha256": "0009cc7aaafe664ee5c8d34d80184bb132c46839fb853d799e1a9dca9e04265d",
+      "bytes": 34345,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/plus-source-jet-reconstruction-00-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/plus-source-jet-reconstruction-00-input.json",
+      "sourceSha256": "26804d5f566ec73b80e03131490486a88fb8c7a8255adb76dfa3a6c49b42d519",
+      "packetSha256": "26804d5f566ec73b80e03131490486a88fb8c7a8255adb76dfa3a6c49b42d519",
+      "bytes": 2238,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/plus-source-jet-reconstruction-00-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/plus-source-jet-reconstruction-00-return.json",
+      "sourceSha256": "db11879af1471dee356733c74f30c0200e33dc53cd5a25868a5bc9ae3b8b9de2",
+      "packetSha256": "db11879af1471dee356733c74f30c0200e33dc53cd5a25868a5bc9ae3b8b9de2",
+      "bytes": 2414,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/plus-source-jets-10.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/plus-source-jets-10.json",
+      "sourceSha256": "8f41548132182a6bb9bb8265381b46235e1be3fc280040df036ed5f0537fcaf1",
+      "packetSha256": "8f41548132182a6bb9bb8265381b46235e1be3fc280040df036ed5f0537fcaf1",
+      "bytes": 37138,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/plus-source-jet-reconstruction-10-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/plus-source-jet-reconstruction-10-input.json",
+      "sourceSha256": "73d73162ea33e0dff2319eebc174066c50124e1d50f7f9e7aa9870480d28e6a5",
+      "packetSha256": "73d73162ea33e0dff2319eebc174066c50124e1d50f7f9e7aa9870480d28e6a5",
+      "bytes": 3025,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/plus-source-jet-reconstruction-10-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/plus-source-jet-reconstruction-10-return.json",
+      "sourceSha256": "9ccad3cd4b846a09b4d9c3a8594a0f3b1fd9e67fccf0b8b5da6fe73806963236",
+      "packetSha256": "9ccad3cd4b846a09b4d9c3a8594a0f3b1fd9e67fccf0b8b5da6fe73806963236",
+      "bytes": 3069,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/plus-source-jets-01.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/plus-source-jets-01.json",
+      "sourceSha256": "473182e489083fabe8cd817be84838933afbd30f6cc2ffdb41b747d23939d4cf",
+      "packetSha256": "473182e489083fabe8cd817be84838933afbd30f6cc2ffdb41b747d23939d4cf",
+      "bytes": 70614,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/plus-source-jet-reconstruction-01-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/plus-source-jet-reconstruction-01-input.json",
+      "sourceSha256": "ca72a662e6609394084deceef55892a383442212dbc30c2873b344223e0c1a99",
+      "packetSha256": "ca72a662e6609394084deceef55892a383442212dbc30c2873b344223e0c1a99",
+      "bytes": 22037,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/plus-source-jet-reconstruction-01-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/plus-source-jet-reconstruction-01-return.json",
+      "sourceSha256": "255ab405bfd4602b6e6be418aaed9f5a55df809ba4831c987d213b026f9f35b4",
+      "packetSha256": "255ab405bfd4602b6e6be418aaed9f5a55df809ba4831c987d213b026f9f35b4",
+      "bytes": 22473,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/minus-source-jets-00.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/minus-source-jets-00.json",
+      "sourceSha256": "0009cc7aaafe664ee5c8d34d80184bb132c46839fb853d799e1a9dca9e04265d",
+      "packetSha256": "0009cc7aaafe664ee5c8d34d80184bb132c46839fb853d799e1a9dca9e04265d",
+      "bytes": 34345,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/minus-source-jet-reconstruction-00-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/minus-source-jet-reconstruction-00-input.json",
+      "sourceSha256": "26804d5f566ec73b80e03131490486a88fb8c7a8255adb76dfa3a6c49b42d519",
+      "packetSha256": "26804d5f566ec73b80e03131490486a88fb8c7a8255adb76dfa3a6c49b42d519",
+      "bytes": 2238,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/minus-source-jet-reconstruction-00-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/minus-source-jet-reconstruction-00-return.json",
+      "sourceSha256": "db11879af1471dee356733c74f30c0200e33dc53cd5a25868a5bc9ae3b8b9de2",
+      "packetSha256": "db11879af1471dee356733c74f30c0200e33dc53cd5a25868a5bc9ae3b8b9de2",
+      "bytes": 2414,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/minus-source-jets-10.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/minus-source-jets-10.json",
+      "sourceSha256": "8f41548132182a6bb9bb8265381b46235e1be3fc280040df036ed5f0537fcaf1",
+      "packetSha256": "8f41548132182a6bb9bb8265381b46235e1be3fc280040df036ed5f0537fcaf1",
+      "bytes": 37138,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/minus-source-jet-reconstruction-10-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/minus-source-jet-reconstruction-10-input.json",
+      "sourceSha256": "73d73162ea33e0dff2319eebc174066c50124e1d50f7f9e7aa9870480d28e6a5",
+      "packetSha256": "73d73162ea33e0dff2319eebc174066c50124e1d50f7f9e7aa9870480d28e6a5",
+      "bytes": 3025,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/minus-source-jet-reconstruction-10-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/minus-source-jet-reconstruction-10-return.json",
+      "sourceSha256": "9ccad3cd4b846a09b4d9c3a8594a0f3b1fd9e67fccf0b8b5da6fe73806963236",
+      "packetSha256": "9ccad3cd4b846a09b4d9c3a8594a0f3b1fd9e67fccf0b8b5da6fe73806963236",
+      "bytes": 3069,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/minus-source-jets-01.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/minus-source-jets-01.json",
+      "sourceSha256": "473182e489083fabe8cd817be84838933afbd30f6cc2ffdb41b747d23939d4cf",
+      "packetSha256": "473182e489083fabe8cd817be84838933afbd30f6cc2ffdb41b747d23939d4cf",
+      "bytes": 70614,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/minus-source-jet-reconstruction-01-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/minus-source-jet-reconstruction-01-input.json",
+      "sourceSha256": "ca72a662e6609394084deceef55892a383442212dbc30c2873b344223e0c1a99",
+      "packetSha256": "ca72a662e6609394084deceef55892a383442212dbc30c2873b344223e0c1a99",
+      "bytes": 22037,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/minus-source-jet-reconstruction-01-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/minus-source-jet-reconstruction-01-return.json",
+      "sourceSha256": "255ab405bfd4602b6e6be418aaed9f5a55df809ba4831c987d213b026f9f35b4",
+      "packetSha256": "255ab405bfd4602b6e6be418aaed9f5a55df809ba4831c987d213b026f9f35b4",
+      "bytes": 22473,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "consumer/binding-context.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/binding-context.json",
+      "sourceSha256": "9216e51151937a0b815643ee2b958869b530c2bf775d6b5e848b0ebe241eae68",
+      "packetSha256": "9216e51151937a0b815643ee2b958869b530c2bf775d6b5e848b0ebe241eae68",
+      "bytes": 10950,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "consumer/native-chemical-amplitude.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/native-chemical-amplitude.json",
+      "sourceSha256": "d5e9019f68ae190302163a0a2bec2980ad849a9c74fbe430bf1f93231c186179",
+      "packetSha256": "d5e9019f68ae190302163a0a2bec2980ad849a9c74fbe430bf1f93231c186179",
+      "bytes": 75035,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "consumer/chemical-amplitude-domain.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/chemical-amplitude-domain.json",
+      "sourceSha256": "90005cea20b494ce254ce9ade3da00f934b848c9248640d8dcb3f2cd9b1e8929",
+      "packetSha256": "90005cea20b494ce254ce9ade3da00f934b848c9248640d8dcb3f2cd9b1e8929",
+      "bytes": 56090,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "consumer/chemical-amplitude-grade-split.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/chemical-amplitude-grade-split.json",
+      "sourceSha256": "165b7d7eb650841077f1d057d221b7178d1a8a6cf3aa53df5cf7b696379c5434",
+      "packetSha256": "165b7d7eb650841077f1d057d221b7178d1a8a6cf3aa53df5cf7b696379c5434",
+      "bytes": 34595,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "consumer/inherited-source-normalization.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/inherited-source-normalization.json",
+      "sourceSha256": "9764a375d4a16b7c4b7d31cc5de195d4b142aacd10491408da31b6f0250dc56a",
+      "packetSha256": "9764a375d4a16b7c4b7d31cc5de195d4b142aacd10491408da31b6f0250dc56a",
+      "bytes": 140,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "consumer/plus-source-input.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-input.json",
+      "sourceSha256": "78828307da0b0def1a2de27b59afb65168f214536a8315ad3e62a040273ae374",
+      "packetSha256": "78828307da0b0def1a2de27b59afb65168f214536a8315ad3e62a040273ae374",
+      "bytes": 66907,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "consumer/minus-source-input.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-input.json",
+      "sourceSha256": "3dc8276d0c591d5869aa8467accbd7b12ebd89c6110ee7f7548adedce1216208",
+      "packetSha256": "3dc8276d0c591d5869aa8467accbd7b12ebd89c6110ee7f7548adedce1216208",
+      "bytes": 66911,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "consumer/plus-source-grade-split.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-grade-split.json",
+      "sourceSha256": "08521daf932bf2bb9277c28c02a9fe0573322d51240076ec646e49622241d60f",
+      "packetSha256": "08521daf932bf2bb9277c28c02a9fe0573322d51240076ec646e49622241d60f",
+      "bytes": 37451,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "consumer/minus-source-grade-split.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-grade-split.json",
+      "sourceSha256": "08521daf932bf2bb9277c28c02a9fe0573322d51240076ec646e49622241d60f",
+      "packetSha256": "08521daf932bf2bb9277c28c02a9fe0573322d51240076ec646e49622241d60f",
+      "bytes": 37451,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "consumer/reference-response-census.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-reference-grazing-20261002/diagnostic-01/complete/retained-response-census.json",
+      "sourceSha256": "6296b181a3fd62ad9ada7cbd6bec33ce6935c52c3d11533d0cbb05ff81ace0d1",
+      "packetSha256": "6296b181a3fd62ad9ada7cbd6bec33ce6935c52c3d11533d0cbb05ff81ace0d1",
+      "bytes": 18004,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "consumer/physical-input.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "packetSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "bytes": 1884,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "consumer/actual-binding-context.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/actual-binding-context.json",
+      "sourceSha256": "a14783bbed960feba7a16cf8c13dd1d4815b46c854773bee01ce212fd3fdbe89",
+      "packetSha256": "a14783bbed960feba7a16cf8c13dd1d4815b46c854773bee01ce212fd3fdbe89",
+      "bytes": 11759,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-0-full-mapped-residual-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-0-full-mapped-residual-input.json",
+      "sourceSha256": "10ecf8ae4461b232f69520e18c882c5ef0ba55fad32a819dee3c90579634e7cf",
+      "packetSha256": "10ecf8ae4461b232f69520e18c882c5ef0ba55fad32a819dee3c90579634e7cf",
+      "bytes": 532,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-0-full-mapped-residual-raw.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-0-full-mapped-residual-raw.json",
+      "sourceSha256": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+      "packetSha256": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+      "bytes": 67,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-0-full-mapped-residual-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-0-full-mapped-residual-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-0-normal-source-join-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-0-normal-source-join-input.json",
+      "sourceSha256": "a93f86946a5d5650a721014c7ce8e401cca7571db86bb475bf6c449977f9518a",
+      "packetSha256": "a93f86946a5d5650a721014c7ce8e401cca7571db86bb475bf6c449977f9518a",
+      "bytes": 124,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-0-normal-source-join-raw.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-0-normal-source-join-raw.json",
+      "sourceSha256": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+      "packetSha256": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+      "bytes": 67,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-0-normal-source-join-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-0-normal-source-join-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-0-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-0-operands.json",
+      "sourceSha256": "79de75c3ed78ad91fdb85a368f070211ac12e62e82ed89acfb3760c26684ffdd",
+      "packetSha256": "79de75c3ed78ad91fdb85a368f070211ac12e62e82ed89acfb3760c26684ffdd",
+      "bytes": 2172,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-12-full-mapped-residual-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-12-full-mapped-residual-input.json",
+      "sourceSha256": "c1eae6942b1fe08ec47ff7a3dc6e242897f56cfe52b6ec6cc50309393e87f1d0",
+      "packetSha256": "c1eae6942b1fe08ec47ff7a3dc6e242897f56cfe52b6ec6cc50309393e87f1d0",
+      "bytes": 770,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-12-full-mapped-residual-raw.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-12-full-mapped-residual-raw.json",
+      "sourceSha256": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+      "packetSha256": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+      "bytes": 67,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-12-full-mapped-residual-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-12-full-mapped-residual-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-12-normal-source-join-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-12-normal-source-join-input.json",
+      "sourceSha256": "a873c9b587e1d24fd94342cbfb5cfa11259a3c9370c9ca1e1e0c6c6edaeb7774",
+      "packetSha256": "a873c9b587e1d24fd94342cbfb5cfa11259a3c9370c9ca1e1e0c6c6edaeb7774",
+      "bytes": 218,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-12-normal-source-join-raw.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-12-normal-source-join-raw.json",
+      "sourceSha256": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+      "packetSha256": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+      "bytes": 67,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-12-normal-source-join-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-12-normal-source-join-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-12-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-12-operands.json",
+      "sourceSha256": "20921df35ab014be43152533a991ee954c1dfecba7da127d1c9a820d96a6fbff",
+      "packetSha256": "20921df35ab014be43152533a991ee954c1dfecba7da127d1c9a820d96a6fbff",
+      "bytes": 2445,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-5-full-mapped-residual-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-5-full-mapped-residual-input.json",
+      "sourceSha256": "d107c75842b6a13f3f51a0f0aa8d23d5b75faa6f5bec6e215daa38fd86fa311a",
+      "packetSha256": "d107c75842b6a13f3f51a0f0aa8d23d5b75faa6f5bec6e215daa38fd86fa311a",
+      "bytes": 742,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-5-full-mapped-residual-raw.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-5-full-mapped-residual-raw.json",
+      "sourceSha256": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+      "packetSha256": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+      "bytes": 67,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-5-full-mapped-residual-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-5-full-mapped-residual-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-5-normal-source-join-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-5-normal-source-join-input.json",
+      "sourceSha256": "abd4ef4ae151269e78f0f2c330024491b33cf082595feb311e1eef23b6ccf7d8",
+      "packetSha256": "abd4ef4ae151269e78f0f2c330024491b33cf082595feb311e1eef23b6ccf7d8",
+      "bytes": 190,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-5-normal-source-join-raw.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-5-normal-source-join-raw.json",
+      "sourceSha256": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+      "packetSha256": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+      "bytes": 67,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-5-normal-source-join-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-5-normal-source-join-return.json",
+      "sourceSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "packetSha256": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+      "bytes": 127,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "flat-proofs/address-full-factor-5-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-source-composition-20261002/diagnostic-01/complete/address-full-factor-5-operands.json",
+      "sourceSha256": "ae9ec12e949a85c4e765a6b379d40da77cbb61f6b704f0653941d6fcc5d1954c",
+      "packetSha256": "ae9ec12e949a85c4e765a6b379d40da77cbb61f6b704f0653941d6fcc5d1954c",
+      "bytes": 2387,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "pressure/route-inspection.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/first-order-source-method-review/route-inspection.json",
+      "sourceSha256": "828c383cfb4aa21d966ffbd4f6b542eeec971b2ba05f181102bdd441809bfddd",
+      "packetSha256": "828c383cfb4aa21d966ffbd4f6b542eeec971b2ba05f181102bdd441809bfddd",
+      "bytes": 24119,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "native/S11c_d_defect_source_composition.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition.py",
+      "sourceSha256": "b94aa6579f6334d65f7a3306c84109b6fa4496237e5eef363b1da02bebfbbca8",
+      "packetSha256": "b94aa6579f6334d65f7a3306c84109b6fa4496237e5eef363b1da02bebfbbca8",
+      "bytes": 82003,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "native/S11c_d_defect_full_weak.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_full_weak.py",
+      "sourceSha256": "ea1726dd7cc28bca6c85c06276c03941ad3b17de5e6d752e53a8cc487d77d738",
+      "packetSha256": "ea1726dd7cc28bca6c85c06276c03941ad3b17de5e6d752e53a8cc487d77d738",
+      "bytes": 55567,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "native/S11c_d_near_unity_uniform.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py",
+      "sourceSha256": "49506203cb214572f712b023ba71c620f9f13ae75d144827726f03220fc2ff4e",
+      "packetSha256": "49506203cb214572f712b023ba71c620f9f13ae75d144827726f03220fc2ff4e",
+      "bytes": 73677,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "native/S11c_d_mixing_scattering_sympy_audit.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "packetSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "bytes": 545480,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "governing/S11c_d_SHARED_PHYSICS.md",
+      "sourcePath": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "sourceSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "packetSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "bytes": 67800,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "governing/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+      "sourcePath": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+      "sourceSha256": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+      "packetSha256": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+      "bytes": 8243,
+      "completeOriginalBytes": true
+    }
+  ],
+  "scope": "Actual first-order incident-transverse source algebra; no worker, inverse or result",
+  "peerReportsIncluded": false,
+  "packetSha256": "b6b1e56181ce1ad4465ef6144913c3c44b18f176c834e12bc1bec3ce1dad3e64",
+  "archiveSha256": "659fa19654e6036137d3877055877244cf1de4bdfc1e3a41e9c8825b8e4aaf71",
+  "fileHashes": {
+    "consumer/actual-binding-context.json": "a14783bbed960feba7a16cf8c13dd1d4815b46c854773bee01ce212fd3fdbe89",
+    "consumer/binding-context.json": "9216e51151937a0b815643ee2b958869b530c2bf775d6b5e848b0ebe241eae68",
+    "consumer/chemical-amplitude-domain.json": "90005cea20b494ce254ce9ade3da00f934b848c9248640d8dcb3f2cd9b1e8929",
+    "consumer/chemical-amplitude-grade-split.json": "165b7d7eb650841077f1d057d221b7178d1a8a6cf3aa53df5cf7b696379c5434",
+    "consumer/inherited-source-normalization.json": "9764a375d4a16b7c4b7d31cc5de195d4b142aacd10491408da31b6f0250dc56a",
+    "consumer/minus-source-grade-split.json": "08521daf932bf2bb9277c28c02a9fe0573322d51240076ec646e49622241d60f",
+    "consumer/minus-source-input.json": "3dc8276d0c591d5869aa8467accbd7b12ebd89c6110ee7f7548adedce1216208",
+    "consumer/native-chemical-amplitude.json": "d5e9019f68ae190302163a0a2bec2980ad849a9c74fbe430bf1f93231c186179",
+    "consumer/physical-input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "consumer/plus-source-grade-split.json": "08521daf932bf2bb9277c28c02a9fe0573322d51240076ec646e49622241d60f",
+    "consumer/plus-source-input.json": "78828307da0b0def1a2de27b59afb65168f214536a8315ad3e62a040273ae374",
+    "consumer/reference-response-census.json": "6296b181a3fd62ad9ada7cbd6bec33ce6935c52c3d11533d0cbb05ff81ace0d1",
+    "flat-proofs/address-full-factor-0-full-mapped-residual-input.json": "10ecf8ae4461b232f69520e18c882c5ef0ba55fad32a819dee3c90579634e7cf",
+    "flat-proofs/address-full-factor-0-full-mapped-residual-raw.json": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+    "flat-proofs/address-full-factor-0-full-mapped-residual-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "flat-proofs/address-full-factor-0-normal-source-join-input.json": "a93f86946a5d5650a721014c7ce8e401cca7571db86bb475bf6c449977f9518a",
+    "flat-proofs/address-full-factor-0-normal-source-join-raw.json": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+    "flat-proofs/address-full-factor-0-normal-source-join-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "flat-proofs/address-full-factor-0-operands.json": "79de75c3ed78ad91fdb85a368f070211ac12e62e82ed89acfb3760c26684ffdd",
+    "flat-proofs/address-full-factor-12-full-mapped-residual-input.json": "c1eae6942b1fe08ec47ff7a3dc6e242897f56cfe52b6ec6cc50309393e87f1d0",
+    "flat-proofs/address-full-factor-12-full-mapped-residual-raw.json": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+    "flat-proofs/address-full-factor-12-full-mapped-residual-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "flat-proofs/address-full-factor-12-normal-source-join-input.json": "a873c9b587e1d24fd94342cbfb5cfa11259a3c9370c9ca1e1e0c6c6edaeb7774",
+    "flat-proofs/address-full-factor-12-normal-source-join-raw.json": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+    "flat-proofs/address-full-factor-12-normal-source-join-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "flat-proofs/address-full-factor-12-operands.json": "20921df35ab014be43152533a991ee954c1dfecba7da127d1c9a820d96a6fbff",
+    "flat-proofs/address-full-factor-5-full-mapped-residual-input.json": "d107c75842b6a13f3f51a0f0aa8d23d5b75faa6f5bec6e215daa38fd86fa311a",
+    "flat-proofs/address-full-factor-5-full-mapped-residual-raw.json": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+    "flat-proofs/address-full-factor-5-full-mapped-residual-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "flat-proofs/address-full-factor-5-normal-source-join-input.json": "abd4ef4ae151269e78f0f2c330024491b33cf082595feb311e1eef23b6ccf7d8",
+    "flat-proofs/address-full-factor-5-normal-source-join-raw.json": "46549e15eb42f0ac1d5dd3a5794decf1a04eb8d9142439192fb9817bf42315b1",
+    "flat-proofs/address-full-factor-5-normal-source-join-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "flat-proofs/address-full-factor-5-operands.json": "ae9ec12e949a85c4e765a6b379d40da77cbb61f6b704f0653941d6fcc5d1954c",
+    "governing/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "governing/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+    "guide.txt": "2361ce30a1eb3fe4fc4cd78dbc8d38ef52389ae03446e27460e0203cf83c39cc",
+    "incident/LEFT-invariant-D.json": "a5b1fa404601021db79acba3b70b952488d28216ab4d7b1637520593a2fcdbf3",
+    "incident/LEFT-invariant-P.json": "7fcf8886cf1340e32d2b6a770a8506cbf40d24df9fc274ab98ebfc2d19cfdc3f",
+    "incident/LEFT-invariant-gram.json": "eb36c7d9e458cdae5523608808f9963c289c452e3d0cf8d881a7afa8cc4abaf0",
+    "incident/LEFT-invariant-lift.json": "7e5169d292d6c3bfd5f6c838b183571b381d7a46849599510c2f6ca49159f13c",
+    "incident/LEFT-raw-source-binding.json": "bcea8d5a0a1ec8869824719929350bacda4c113bffadb4a709e7163086fff687",
+    "incident/actual-source-chart.json": "b4b3bd17f55b9051c07f0d1ebd1acf02a2ee41edeb7204b84ed7b6e15bbe9765",
+    "incident/lift-input-curl.json": "1caa561e23d2c5864668347ba6036c1d9db7813e60a1467ab2077691e724e57d",
+    "incident/point-01-LEFT.json": "6d79f2fb8531e29df8a9cf06a1aaacac5daf708da030e4375c04596f2b2df92d",
+    "incident/point-01-RIGHT.json": "a854811c76cca4f637859379e52311ea4013f756e43b8f04aa5a7930152d9de3",
+    "local/E_W_BALANCE-new-physical-row-grade-00-input.json": "df77e8a27aaf9810435b1b7e1418fd3015a4627060ee15c8e238dfb458934fe6",
+    "local/E_W_BALANCE-new-physical-row-grade-00-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "local/E_W_BALANCE-new-physical-row-grade-01-input.json": "58bc898ae04e8890c64ac7b5c9fc3a7649261bb8c2f809034b1dd6ad9d14a943",
+    "local/E_W_BALANCE-new-physical-row-grade-01-return.json": "1a50cce94276566987092d5f3d43edbce622407d88ff5b11e3b168935df1ea7b",
+    "local/E_W_BALANCE-new-physical-row-grade-10-input.json": "ab554645b3c3f6ab63da86e62b8dd76a66f479df46de1409117d65abbbd35c47",
+    "local/E_W_BALANCE-new-physical-row-grade-10-return.json": "abed6b8794baf87392d34cd46be797211755065d66a56a284793ea7b1161e926",
+    "local/THETA_BALANCE-new-physical-row-grade-00-input.json": "8fa76acb50e03d40bfe8c52642412d2158e2fa97b04803af2eca566b453e5f47",
+    "local/THETA_BALANCE-new-physical-row-grade-00-return.json": "a6e5352fcbd15a0b3fcc2b3a4f58052cb7921c94dda97db848bf90233da1398e",
+    "local/THETA_BALANCE-new-physical-row-grade-01-input.json": "5e94951b0a82d1481f180b0485d5ed5ce58d34530d24fa0943f34336dad46ae1",
+    "local/THETA_BALANCE-new-physical-row-grade-01-return.json": "dfa32e1c5fd02e5a8c2a3442b50657f30f1c91855802f48aabf292ae2cc07614",
+    "local/THETA_BALANCE-new-physical-row-grade-10-input.json": "2ed801c911abdf9299023549b0eea0e6d6651f3ed8aaf88586aeda0e7b3759de",
+    "local/THETA_BALANCE-new-physical-row-grade-10-return.json": "bc2e8d25d7143cc0d8d07a1ed5c03d40098a87460b68f14ac8198e0b54af500b",
+    "local/U0-new-physical-row-grade-00-input.json": "3220f1cacebb1c7da8dd9dbf6f8c3e2075ee8aa7ae509f6bade9e8e5ef5ce376",
+    "local/U0-new-physical-row-grade-00-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "local/U0-new-physical-row-grade-01-input.json": "e87923ed427c55f934b65d014a5fe8e7f3cfffc6d511098ce442d761e757ec99",
+    "local/U0-new-physical-row-grade-01-return.json": "8ac368ff9f7013bb469e92670887f47ab563c4b95964702bf8a13292e5a3e0ae",
+    "local/U0-new-physical-row-grade-10-input.json": "8602756c9315fe56988d439fc71ee29305f1616e2caf3eacac6ca8918cbfaa54",
+    "local/U0-new-physical-row-grade-10-return.json": "4ca78bc7b4f08d026d9b124bfff1a72bd4ac94c03e9cc27484d619fc761b99b7",
+    "local/U1-new-physical-row-grade-00-input.json": "e86ef1b3605c16dc58b514c964a3ace9c13df0adf0134b578905076159661bc8",
+    "local/U1-new-physical-row-grade-00-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "local/U1-new-physical-row-grade-01-input.json": "e8c131130a2384965b802f6d4f691fc972242fba3d431ac3b287f8160d45decf",
+    "local/U1-new-physical-row-grade-01-return.json": "d887853b0f1a3a6d7de3d52e2f314b6465ffce4a62df332bbdc056243b9fbd56",
+    "local/U1-new-physical-row-grade-10-input.json": "3dfe37b39aa95f38363adc11e61494c530f6582878b0fc2a537d71312ff84dd1",
+    "local/U1-new-physical-row-grade-10-return.json": "4d98202bbdb8757161a027078506a0476a53a2e331df185074ab42ded5b0da3a",
+    "local/U2-new-physical-row-grade-00-input.json": "9a578f64e9da7075028991a2540121e57bae4169c688cf1abf5cadba96c811d3",
+    "local/U2-new-physical-row-grade-00-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "local/U2-new-physical-row-grade-01-input.json": "159a8d7bc8079a411696ef9f5bf6bc2bae1300e11831661cac022ab0a0545fd9",
+    "local/U2-new-physical-row-grade-01-return.json": "1b001b614d4cf84aa33f8a49b5114a819c0fe6e320b5c240eb9b5c662e1e9d4c",
+    "local/U2-new-physical-row-grade-10-input.json": "7c4c7d3a96bcc159a4657c3b756c60082b3ea88cddc9c82e5dd6011fb3cc371c",
+    "local/U2-new-physical-row-grade-10-return.json": "4395306707e8a4259d5cbb0147f234e9dd31146a6f9555672877d4371715f473",
+    "local/all-local-cells.json": "6ff2534c6fdcce7303f36e940e9cd2fda642a939cdca5ff3d18cd6fec9f542ba",
+    "local/extended-binding-context.json": "fd473063c0a8b26966f0b1c780e5cc4583a19a9ff7ca1b2388f91e9c64c48997",
+    "local/native-wave-profile-contract.json": "a74785e2446e1448acdf6cee32b939d2818191fac1fafee4cb597ed3dfddf911",
+    "local/pressure-source-assembly-joins.json": "8edb130101530c9a010012fdaa3c28b53867030cfb470322fedffe1e9b4673ea",
+    "native/S11c_d_defect_full_weak.py": "ea1726dd7cc28bca6c85c06276c03941ad3b17de5e6d752e53a8cc487d77d738",
+    "native/S11c_d_defect_source_composition.py": "b94aa6579f6334d65f7a3306c84109b6fa4496237e5eef363b1da02bebfbbca8",
+    "native/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "native/S11c_d_near_unity_uniform.py": "49506203cb214572f712b023ba71c620f9f13ae75d144827726f03220fc2ff4e",
+    "packet-index.json": "9303f9d3c0d44b94f5386ac9188cfa3e13eaad4091b5f37eda49cb8d89d5d42e",
+    "plan.txt": "b759c4a9a44c25bfeda8b85020d63af10125089855a0534a813592dcbe2a4a68",
+    "pressure/E_W_BALANCE-affine-pressure-reconstruction-input.json": "df8187740653326e7e9ecfb921c6532f0c3e88e3414726ad4230098051d1903e",
+    "pressure/E_W_BALANCE-affine-pressure-reconstruction-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "pressure/E_W_BALANCE-d_w_delta_p_minus-split.json": "7222f6d17b78aaef1a6bbdc17cdc03448f88731aed344d6e8a958df7ebfe8fb5",
+    "pressure/E_W_BALANCE-d_w_delta_p_plus-split.json": "e32287eeb513add592f8fd9a5e29499c9e04bc41ceffe40e54ae5529f9ce6a72",
+    "pressure/E_W_BALANCE-delta_p_minus-split.json": "5ca14f50dbe8075a4fe92310fe4542a7cce0738f550bed83f56e4fd1803d421c",
+    "pressure/E_W_BALANCE-delta_p_plus-split.json": "5ca14f50dbe8075a4fe92310fe4542a7cce0738f550bed83f56e4fd1803d421c",
+    "pressure/THETA_BALANCE-affine-pressure-reconstruction-input.json": "7794cd32c13237f6b2f45c54de3a41c0eadaeeacc0babb52cdefa554ab548882",
+    "pressure/THETA_BALANCE-affine-pressure-reconstruction-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "pressure/THETA_BALANCE-d_w_delta_p_minus-split.json": "d6b01d40ef21be662d0a7731a199484f81082a1b7c41a22a101d757f0b655c6b",
+    "pressure/THETA_BALANCE-d_w_delta_p_plus-split.json": "8e708097cd49037dffbdb7351d26dad38201acc2f1af65684b55826f6d2aa6d8",
+    "pressure/THETA_BALANCE-delta_p_minus-split.json": "5f3b8312bc839ede11d45ddb91ce429f7ca5a6efc7b6d44b314dd2a45d346588",
+    "pressure/THETA_BALANCE-delta_p_plus-split.json": "5f3b8312bc839ede11d45ddb91ce429f7ca5a6efc7b6d44b314dd2a45d346588",
+    "pressure/U0-affine-pressure-reconstruction-input.json": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+    "pressure/U0-affine-pressure-reconstruction-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "pressure/U0-d_w_delta_p_minus-split.json": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+    "pressure/U0-d_w_delta_p_plus-split.json": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+    "pressure/U0-delta_p_minus-split.json": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+    "pressure/U0-delta_p_plus-split.json": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+    "pressure/U1-affine-pressure-reconstruction-input.json": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+    "pressure/U1-affine-pressure-reconstruction-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "pressure/U1-d_w_delta_p_minus-split.json": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+    "pressure/U1-d_w_delta_p_plus-split.json": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+    "pressure/U1-delta_p_minus-split.json": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+    "pressure/U1-delta_p_plus-split.json": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+    "pressure/U2-affine-pressure-reconstruction-input.json": "afc6de2a4ca6a1c055d262c9e47811734e13c94d5df79e86904e1605a8607290",
+    "pressure/U2-affine-pressure-reconstruction-return.json": "d40f72d407074ddd92d6d2a868b52e001a832495c8bb4d0903a6f5a3723ccceb",
+    "pressure/U2-d_w_delta_p_minus-split.json": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+    "pressure/U2-d_w_delta_p_plus-split.json": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+    "pressure/U2-delta_p_minus-split.json": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+    "pressure/U2-delta_p_plus-split.json": "8c1bb473d04a6e250cb5951ce6c93b51dea5740d9a61c27c048b8015779f5aa0",
+    "pressure/route-inspection.json": "828c383cfb4aa21d966ffbd4f6b542eeec971b2ba05f181102bdd441809bfddd",
+    "review-prompt.md": "f21290f57ee4973fb686182921d77b9cbde3e3305ec9b14eb1aac3e3263a9041",
+    "sources/minus-source-jet-reconstruction-00-input.json": "26804d5f566ec73b80e03131490486a88fb8c7a8255adb76dfa3a6c49b42d519",
+    "sources/minus-source-jet-reconstruction-00-return.json": "db11879af1471dee356733c74f30c0200e33dc53cd5a25868a5bc9ae3b8b9de2",
+    "sources/minus-source-jet-reconstruction-01-input.json": "ca72a662e6609394084deceef55892a383442212dbc30c2873b344223e0c1a99",
+    "sources/minus-source-jet-reconstruction-01-return.json": "255ab405bfd4602b6e6be418aaed9f5a55df809ba4831c987d213b026f9f35b4",
+    "sources/minus-source-jet-reconstruction-10-input.json": "73d73162ea33e0dff2319eebc174066c50124e1d50f7f9e7aa9870480d28e6a5",
+    "sources/minus-source-jet-reconstruction-10-return.json": "9ccad3cd4b846a09b4d9c3a8594a0f3b1fd9e67fccf0b8b5da6fe73806963236",
+    "sources/minus-source-jets-00.json": "0009cc7aaafe664ee5c8d34d80184bb132c46839fb853d799e1a9dca9e04265d",
+    "sources/minus-source-jets-01.json": "473182e489083fabe8cd817be84838933afbd30f6cc2ffdb41b747d23939d4cf",
+    "sources/minus-source-jets-10.json": "8f41548132182a6bb9bb8265381b46235e1be3fc280040df036ed5f0537fcaf1",
+    "sources/plus-source-jet-reconstruction-00-input.json": "26804d5f566ec73b80e03131490486a88fb8c7a8255adb76dfa3a6c49b42d519",
+    "sources/plus-source-jet-reconstruction-00-return.json": "db11879af1471dee356733c74f30c0200e33dc53cd5a25868a5bc9ae3b8b9de2",
+    "sources/plus-source-jet-reconstruction-01-input.json": "ca72a662e6609394084deceef55892a383442212dbc30c2873b344223e0c1a99",
+    "sources/plus-source-jet-reconstruction-01-return.json": "255ab405bfd4602b6e6be418aaed9f5a55df809ba4831c987d213b026f9f35b4",
+    "sources/plus-source-jet-reconstruction-10-input.json": "73d73162ea33e0dff2319eebc174066c50124e1d50f7f9e7aa9870480d28e6a5",
+    "sources/plus-source-jet-reconstruction-10-return.json": "9ccad3cd4b846a09b4d9c3a8594a0f3b1fd9e67fccf0b8b5da6fe73806963236",
+    "sources/plus-source-jets-00.json": "0009cc7aaafe664ee5c8d34d80184bb132c46839fb853d799e1a9dca9e04265d",
+    "sources/plus-source-jets-01.json": "473182e489083fabe8cd817be84838933afbd30f6cc2ffdb41b747d23939d4cf",
+    "sources/plus-source-jets-10.json": "8f41548132182a6bb9bb8265381b46235e1be3fc280040df036ed5f0537fcaf1"
+  }
+}

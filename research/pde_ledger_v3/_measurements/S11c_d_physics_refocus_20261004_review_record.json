@@ -1,0 +1,1099 @@
+{
+  "status": "SCOPED_CLAUDE_CLEAR_PHYSICS_REFOCUS_NOT_WORKER_OR_RESULT",
+  "checkedUtc": "2026-10-04T16:52:00.226096+00:00",
+  "packetSha256": "baa42cc90c72920aa6cf248a1b7ba49432c87199d380bd38a6ab325f2ce9765d",
+  "archiveSha256": "9b23c153e26b4fe882180a9d997fa1b664a62118c70b52ec70a335f243707a99",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/physics-refocus-review",
+  "reviewers": [
+    "claude"
+  ],
+  "literalVerdict": "CLEAR FOR THIS PHYSICS REFOCUS AND FIRST-ORDER SOURCE PLAN",
+  "literalReportSha256": "53bd7662868c16ab6e745a442ba14e8696ce78ccb5b705c94c426f74c5cc48f7",
+  "rawResponseSha256": "1a718301c175cb527cc0566cf5979e291c9781100bd82d2765a18a68014c9303",
+  "receipt": {
+    "engine": "claude",
+    "sessionId": "8ab21dff-bf95-47d8-8a62-2a4591005ec2",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "8ab21dff-bf95-47d8-8a62-2a4591005ec2"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/physics-refocus-review/claude/work",
+    "startedUtc": "2026-10-04T16:47:19.451869+00:00",
+    "packetSha256": "baa42cc90c72920aa6cf248a1b7ba49432c87199d380bd38a6ab325f2ce9765d",
+    "promptSha256": "b9fe5981d0858c5861d822696d573712664e6f848603b09abfc0b46ffecd46f5",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1726517,
+    "exitStatus": 0,
+    "finishedUtc": "2026-10-04T16:48:45.317699+00:00",
+    "wallSeconds": 85.86430040816776,
+    "outputSha256": "1a718301c175cb527cc0566cf5979e291c9781100bd82d2765a18a68014c9303",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderrBytes": 0
+  },
+  "stderrBytes": 0,
+  "coordinatorOutcome": {
+    "status": "ALL_REQUESTED_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-10-04T16:48:45.358581+00:00",
+    "scienceCalls": 0
+  },
+  "watcher": {
+    "status": "finished",
+    "watcherPid": 1726512,
+    "jobPid": 1726511,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T16:47:19.308669+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "c78865f00caa0da84b180097e0a5e4bf9b657704b3b3e7284067ec4b00cb5264",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-10-04T16:48:45.482449+00:00"
+      }
+    }
+  },
+  "allSourcePacketArchivePrivateHashesMatch": true,
+  "packetFiles": 58,
+  "sourceFiles": 57,
+  "authoritySha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "coverage": "Reviewer explicitly partial: directly inspected one address and portions of LEFT uniform; other19,RIGHT,physical context not inspected independently. Author JSON census remains separate evidence.",
+  "permissionDenials": [
+    {
+      "tool_name": "Glob",
+      "tool_use_id": "toolu_01LUtag2BZ6DBnNPZx9GYxk9",
+      "tool_input": {
+        "pattern": "**/*",
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/physics-refocus-review/claude"
+      }
+    }
+  ],
+  "permissionDenialDisposition": "Glob outside supplied input directory was refused; reviewer completed and declared actual partial coverage. No transport retry.",
+  "anomalyDisposition": "Flagged nonzero row3 residual is deliberately omitted-coefficient control at /momentumSigns/*/controls/pencil, not baseline face drive. Complete baseline face/leg port exact-zero records inspected directly without recomputation.",
+  "anomalyEvidence": [
+    {
+      "sign": -1,
+      "mutantPointer": "/momentumSigns/0/controls/pencil",
+      "mutant": {
+        "index": [
+          3,
+          0
+        ],
+        "source": "uniformFrequency/5 + uniformFrequency/(2500000*uniformPhysicalDepth*(uniformFrequency/100 + I/10)*(-I*uniformFrequency/100 + 1/10)*(uniformFrequency/(10*uniformPhysicalDepth*(-I*uniformFrequency/10 + 1)) + 1)) - 1/(2500*(uniformFrequency/10 + I))",
+        "original": "3/5",
+        "changed": [
+          [
+            {
+              "real": -0.037333333333333336,
+              "imag": 0.0
+            },
+            {
+              "real": -0.018666666666666668,
+              "imag": 0.0
+            },
+            {
+              "real": 0.4553289409256175,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.18
+            },
+            {
+              "real": 0.0,
+              "imag": 0.15
+            }
+          ],
+          [
+            {
+              "real": -0.018666666666666668,
+              "imag": 0.0
+            },
+            {
+              "real": -0.009333333333333334,
+              "imag": 0.0
+            },
+            {
+              "real": 0.22766447046280874,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.59
+            },
+            {
+              "real": 0.0,
+              "imag": 0.075
+            }
+          ],
+          [
+            {
+              "real": 0.4553289409256175,
+              "imag": 0.0
+            },
+            {
+              "real": 0.22766447046280874,
+              "imag": 0.0
+            },
+            {
+              "real": -5.553333333333334,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -14.391646882827553
+            },
+            {
+              "real": 0.0,
+              "imag": -1.8294466376475702
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.3,
+              "imag": 0.0
+            },
+            {
+              "real": -7.317786550590281,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -3.0
+            },
+            {
+              "real": 0.0,
+              "imag": -2.7
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.002
+            },
+            {
+              "real": 0.0,
+              "imag": 0.001
+            },
+            {
+              "real": 0.0,
+              "imag": -0.024392621835300936
+            },
+            {
+              "real": -4.55,
+              "imag": 0.0
+            },
+            {
+              "real": -3.215,
+              "imag": -1.5
+            }
+          ]
+        ],
+        "route": "OMIT_FINITE_NATIVE_COEFFICIENT_THEN_REPROJECT_FULL_FIVE_ROW_SOURCE",
+        "residual": [
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.2552573490336656
+            },
+            {
+              "real": 0.0,
+              "imag": -6.220092905794086e-18
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ]
+        ],
+        "movement": 0.04158655139435333
+      },
+      "baselinePortRecords": [
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/0/AMPLITUDE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/0/PRESSURE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/0/OUTWARD_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/0/RELATIVE_MASS_FLUX",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/0/AFFINITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/0/CHEMICAL_POTENTIAL",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/0/BULK_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/0/MECHANICAL_RESPONSE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/1/AMPLITUDE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/1/PRESSURE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/1/OUTWARD_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/1/RELATIVE_MASS_FLUX",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/1/AFFINITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/1/CHEMICAL_POTENTIAL",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/1/BULK_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/0/legs/1/MECHANICAL_RESPONSE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/0/AMPLITUDE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/0/PRESSURE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/0/OUTWARD_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/0/RELATIVE_MASS_FLUX",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/0/AFFINITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/0/CHEMICAL_POTENTIAL",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/0/BULK_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/0/MECHANICAL_RESPONSE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/1/AMPLITUDE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/1/PRESSURE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/1/OUTWARD_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/1/RELATIVE_MASS_FLUX",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/1/AFFINITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/1/CHEMICAL_POTENTIAL",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/1/BULK_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/0/faces/1/legs/1/MECHANICAL_RESPONSE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        }
+      ]
+    },
+    {
+      "sign": 1,
+      "mutantPointer": "/momentumSigns/1/controls/pencil",
+      "mutant": {
+        "index": [
+          3,
+          0
+        ],
+        "source": "uniformFrequency/5 + uniformFrequency/(2500000*uniformPhysicalDepth*(uniformFrequency/100 + I/10)*(-I*uniformFrequency/100 + 1/10)*(uniformFrequency/(10*uniformPhysicalDepth*(-I*uniformFrequency/10 + 1)) + 1)) - 1/(2500*(uniformFrequency/10 + I))",
+        "original": "3/5",
+        "changed": [
+          [
+            {
+              "real": -0.037333333333333336,
+              "imag": 0.0
+            },
+            {
+              "real": -0.018666666666666668,
+              "imag": 0.0
+            },
+            {
+              "real": -0.4553289409256175,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 1.18
+            },
+            {
+              "real": 0.0,
+              "imag": 0.15
+            }
+          ],
+          [
+            {
+              "real": -0.018666666666666668,
+              "imag": 0.0
+            },
+            {
+              "real": -0.009333333333333334,
+              "imag": 0.0
+            },
+            {
+              "real": -0.22766447046280874,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.59
+            },
+            {
+              "real": 0.0,
+              "imag": 0.075
+            }
+          ],
+          [
+            {
+              "real": -0.4553289409256175,
+              "imag": 0.0
+            },
+            {
+              "real": -0.22766447046280874,
+              "imag": 0.0
+            },
+            {
+              "real": -5.553333333333334,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 14.391646882827553
+            },
+            {
+              "real": 0.0,
+              "imag": 1.8294466376475702
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.3,
+              "imag": 0.0
+            },
+            {
+              "real": 7.317786550590281,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": -3.0
+            },
+            {
+              "real": 0.0,
+              "imag": -2.7
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.002
+            },
+            {
+              "real": 0.0,
+              "imag": 0.001
+            },
+            {
+              "real": 0.0,
+              "imag": 0.024392621835300936
+            },
+            {
+              "real": -4.55,
+              "imag": 0.0
+            },
+            {
+              "real": -3.215,
+              "imag": -1.5
+            }
+          ]
+        ],
+        "route": "OMIT_FINITE_NATIVE_COEFFICIENT_THEN_REPROJECT_FULL_FIVE_ROW_SOURCE",
+        "residual": [
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": -6.220092905794086e-18
+            },
+            {
+              "real": 0.0,
+              "imag": -0.2552573490336656
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ]
+        ],
+        "movement": 0.04158655139435333
+      },
+      "baselinePortRecords": [
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/0/AMPLITUDE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/0/PRESSURE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/0/OUTWARD_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/0/RELATIVE_MASS_FLUX",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/0/AFFINITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/0/CHEMICAL_POTENTIAL",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/0/BULK_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/0/MECHANICAL_RESPONSE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/1/AMPLITUDE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/1/PRESSURE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/1/OUTWARD_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/1/RELATIVE_MASS_FLUX",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/1/AFFINITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/1/CHEMICAL_POTENTIAL",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/1/BULK_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/0/legs/1/MECHANICAL_RESPONSE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/0/AMPLITUDE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/0/PRESSURE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/0/OUTWARD_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/0/RELATIVE_MASS_FLUX",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/0/AFFINITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/0/CHEMICAL_POTENTIAL",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/0/BULK_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/0/MECHANICAL_RESPONSE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/1/AMPLITUDE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/1/PRESSURE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/1/OUTWARD_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/1/RELATIVE_MASS_FLUX",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/1/AFFINITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/1/CHEMICAL_POTENTIAL",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/1/BULK_VELOCITY",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        },
+        {
+          "pointer": "/momentumSigns/1/faces/1/legs/1/MECHANICAL_RESPONSE",
+          "exact": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "exactZero": true
+        }
+      ]
+    }
+  ],
+  "grazingDisposition": "Reviewer pole/density-of-states reasoning is a warning, not a derived divergence theorem for this model. Determine actual matched source residue, physical closure factors and power weight before classifying threshold behavior.",
+  "next": "Prepare smallest actual first-order transverse source and direct face maps; no receiving inverse or recovery launch.",
+  "scienceCalls": 0,
+  "scientificWorkerCleared": false,
+  "forcedGrazingRegularityEstablished": false,
+  "leakageFactor": null
+}

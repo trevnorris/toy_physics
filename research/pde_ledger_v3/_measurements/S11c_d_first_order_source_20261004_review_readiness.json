@@ -1,0 +1,31 @@
+{
+  "status": "FIXED_FIRST_ORDER_PHYSICS_SOURCE_PACKET_VERIFIED",
+  "packetSha256": "b6b1e56181ce1ad4465ef6144913c3c44b18f176c834e12bc1bec3ce1dad3e64",
+  "archiveSha256": "659fa19654e6036137d3877055877244cf1de4bdfc1e3a41e9c8825b8e4aaf71",
+  "files": 135,
+  "bytes": 6373126,
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "completionMessageSha256": "d6bd0e799d9d14f2b089eedc538b8f7b602b8126ced03a89fe71172b3dabe549",
+  "sourceHashesChecked": 134,
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "existingReviewerRunnerReusedUnchanged": true,
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-source-method-review",
+  "scope": {
+    "target": "First-order transverse source algebra and conditional pressure reduction",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "samePhysicalInputs": true,
+    "handSourceIdentityVerified": false,
+    "newScientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "forcedResponseRegularityEstablished": false,
+    "leakageFactor": null,
+    "recoveryParked": true
+  }
+}

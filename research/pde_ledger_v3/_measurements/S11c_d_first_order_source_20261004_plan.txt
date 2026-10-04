@@ -1,0 +1,144 @@
+First-order transverse forcing: a finite algebra calculation before any inverse
+2026-10-04. Concrete scientific preparation for assessment; no worker or result.
+
+Physical question
+Does the actual first-order defect drive the longitudinal/chemical/thickness
+and exterior degrees of freedom for either polarization of the saved incoming
+LEFT transverse doublet? Which pieces are localized, and which still require
+end matching? This is the missing forcing, not a leakage coefficient or a claim
+of a well-defined receiving inverse at grazing. Keep the existing real omega3,
+edges h=(1/5,1/10), cs=sqrt(6)/2, W=1,L=10, strict rest bulk,
+LAB_HELD/RHO4_CONSTANT, material/memory inputs and independent eta,sigma_W.
+Only after independent grade evaluation use eta=lambda,sigma_W=lambda/10.
+
+Available exact data, not functions to rerun
+- All 400 completed local cells and the original row-grade reconstruction
+  operands/zero returns. These already contain native time/tangential factors;
+  newly apply only the x derivatives to the incident plane wave.
+- Complete plus/minus native source 00,10,01 jet records, raw source/chemical/
+  velocity and normalization operands, and published reconstruction returns.
+  New work is their action on the selected incident subspace, not their grading.
+- The exact saved LEFT curl lift, invariant pencil/restriction, original chart
+  and actual uniform point. The weak chart is (x,edge1,edge2), corresponding to
+  uniform axes (3,1,2); scalars remain unchanged. Never use a label-only map.
+- Native pressure slot consumers and per-face flat response maps with their
+  own normal multipliers, support and original factor arguments. Completed
+  native algebra/unit proofs stay inherited. This is not a new unit campaign.
+
+1. Incident amplitude and source action
+Let p=+sqrt(595)/10 and k_in=(p,h1,h2). Restore the exact uniform lift L(p) and
+the saved proper chart S, and use U=S L(p) a, where a has two independent
+amplitudes. Do not substitute rounded current eigenvectors into an exact-zero
+test. Restore the saved current information for later normalization; this
+calculation supplies field-coordinate source columns, not flux values.
+The native plane wave is exp(i k_in.x - i omega t). For a saved source jet with
+time order t and spatial orders n, substitute (-i omega)^t product(i k_in)^n
+times the corresponding component of U, with theta=e_W=0 from the actual lift.
+For local cells substitute only (ip)^xOrder times U: the saved coefficient
+already carries time/edge derivatives. Preserve all first-order local entries,
+including explicit zeros, and sum using the existing row/field/grade identities.
+
+Keep both independent 10 and 01 forcing columns and all five rows. The source
+sign is minus the operator action in L00 Psi1=-L1 Psi0. The complete physical
+first-order face maps are required separately; a reduced row force alone is
+not yet the complete work source. No Fourier integral or receiving solve here.
+
+2. Specific pressure simplification to verify, not assume
+The actual saved source00 contains u only through div u, and source10 contains
+u only through -w div u. Its other terms contain theta or e_W and their jets.
+Thus a proposed exact consequence of the actual lift is S00[U]=S10[U]=0 on BOTH
+native source assignments. Test it against the complete original source and
+the independently stored jet sum. Do not infer this from a status flag.
+
+For each first-order response composition,
+  (C R S)10 = C10 R00 S00 + C00 R10 S00 + C00 R00 S10,
+  (C R S)01 = C01 R00 S00 + C00 R01 S00 + C00 R00 S01.
+Only if the complete S00 and S10 actions are exact zero does the pressure
+forcing reduce to C00 R00 S01. Cancellation occurs on the entire incident
+function before applying an ordinary or distributional response. Do not multiply
+a merely on-shell numerical zero by an unspecified singular value. Native first-
+order response definitions and source/consumer grades must join this argument.
+This would remove H/height/slope kernel integration from THIS pressure forcing,
+not from the full operator or from a receiving field calculation.
+
+Restore the actual complete per-face flat response. In the saved normalized
+pressure convention it is R00(l)=3/[10(q(l)+beta3)], beta3=3/(10-3i), on flat
+support at OUTPUT l. Normal derivatives use their own signed output q(l).
+Do not replace this by q/(q+beta), use incident q(p), or add external resolvents.
+Here q(l)^2=6-l^2-1/20, with the saved outgoing branch. beta3 is nonzero: a
+square-root branch point by itself does not prove a pole of R00. The full
+receiving pencil and power weight remain unresolved by this observation.
+
+3. A hand reduction that makes the physics test specific
+Write w_j=L^j d_x^j w(x/L), m_j=L^j d_x^j m(x/L), with the ACTUAL saved profiles
+and L. Restrict the complete saved S01 to one-dimensional profile jets, theta=
+e_W=0 and k_in.U=0. A candidate reduction obtained by grouping the native terms is
+  S01[U] = c U_x { i(400+600 K_in^2)m_1 +130 p m_2
+                       +i(1900+2100 K_in^2)w_1 +430 p w_2 },
+  c=(30300-101000 i)/11119090000, K_in^2=p^2+h1^2+h2^2=6.
+This is an UNEXECUTED HAND IDENTITY, not a saved return or asserted certificate.
+The future instrument must decide it against both original full native source
+operands, with the actual L^j maps. A mismatch preserves both operands and stops;
+it does not justify changing coefficients or fitting a polarization.
+
+It suggests a source selection rule: a transverse incident polarization with
+U_x=0 has zero direct S01, while the other may drive it. Test the rule rather
+than assuming planar isotropy of all the mechanical coefficients. Vanishing
+direct exterior forcing does not imply zero induced loss unless the full local
+force and receiving block also preserve that polarization.
+
+The candidate direct pressure source uses profile derivatives, which decay at
+both ends, rather than an uncompensated w step. Determine its exact endpoints
+and whether its ordinary Fourier transform is regular at transfer Q=0. Use
+the actual source combination before any claim; do not impose a required zero
+at Q=0 from a generic density-of-states heuristic. Endpoint differences of the
+supplied w,m and their derivatives can diagnose the zero-transfer moment of
+this source without evaluating a response integral. Any new analytic profile
+transform/moment calculation must be explicitly included in the worker scope.
+
+4. Retain the vector forcing and the receiving momentum
+The local eta force can contain a step proportional to U even when its scalar
+source projection vanishes. It must be preserved for matching the outgoing
+transverse states; setting it to zero would change the problem.
+For output k_out=(l,h1,h2), k_out.U=(l-p)U_x, not zero in general. Thus an
+incoming-transverse vector source can drive a receiving-longitudinal field.
+Using k_in to project it away is wrong. A factor (l-p) can also change the
+step's Fourier delta/PV behavior. Keep that product distributionally with its
+endpoint term; do not discard the step or declare a divergence from its pole.
+
+A useful algebraic report is the full vector source plus k_out dot f_U and
+the theta/e_W row forces, with l independent of p. This is a coordinate
+decomposition, NOT a physical orthogonal loss-sector projection or work form.
+Before a reduced receiving solve, verify that the actual uniform pencil has
+the claimed invariant transverse/longitudinal-scalar blocks in this chart.
+No Euclidean Im(fdagger Gf), guessed source-current map or naive inverse on the
+transverse pole is licensed. A test polarization (0,h2,-h1) is fixed by geometry,
+not by fitting residuals; join it to the actual saved lift before using it.
+
+5. Complete face data and scope boundary
+At these held-profile/rest-bulk inputs, the saved native source input explicitly
+has V_plus=V_minus=W0*e_W,t/2 and Lambda_V0=Lambda_X0=0. Do not invent a convected-
+sheet u.grad(w) velocity term absent from the native held-profile assignment.
+The actual chemical first-grade source and density normalization still vary.
+Retain chemical, normal velocity, affinity/exterior source and both orientations
+separately when constructing C1 Psi0; equal normalized scalar sources do not
+erase opposite native normal signs. The source screen may identify missing face
+maps explicitly; it must not label a reduced source as full physical power.
+
+Deliverables for a subsequent concrete guarded instrument:
+- Exact applied 00/10/01 local rows and per-face source/driver columns with all
+  original operands and inherited argument joins, plus independent grades.
+- A decision on the proposed baseline/height-source zeros and S01 hand identity;
+  complete first-order pressure assembly or an explicit unresolved term.
+- Polarization-resolved forcing, local/source endpoint behavior, and the
+  original step terms needing matched-end/receiving projection work.
+- One applicable source-omission control and one derivative/momentum-routing
+  control, through the same actual source contraction, not an unrelated oracle.
+
+This is finite algebra/source analysis only. It does not establish a0=0 in every
+future physical loss channel, a matched finite forcing, grazing regularity,
+receiving inverse, physical plane-wave action, energy balance or leakage. No
+integral, root sweep, matrix discretization, old producer/replay or calibration.
+The first new scientific worker needs concrete build assessment and a fresh
+guarded gate/hook. Standard saved-record/hash checks suffice; no generic AST
+verifier or recovery framework is part of this physics deliverable.

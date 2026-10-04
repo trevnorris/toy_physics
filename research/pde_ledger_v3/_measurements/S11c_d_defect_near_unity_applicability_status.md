@@ -1464,3 +1464,19 @@ completion hook was armed first; the single launch-admission inspection found
 Claude running, all 58 private packet files byte-identical, and empty coordinator
 stderr. No scientific execution or recurring model check was launched. The
 review concerns this conditional physics priority and source plan only.
+
+The delivered literal Claude verdict is CLEAR FOR THIS PHYSICS REFOCUS AND
+FIRST-ORDER SOURCE PLAN, with explicitly partial packet coverage. Source-only
+scope remains: no field solve, grazing expansion or leakage clearance. The
+flagged LEFT row-3 residual belongs to the deliberately changed-coefficient
+control; all 64 actual LEFT face/leg/port baseline records retain exact-zero
+projections. The review and its uncertainty are preserved literally. A generic
+step-pole/square-root warning is not accepted as a divergence theorem; actual
+source factors, matched ends, receiving closure and power weight are required.
+
+The next source plan now uses the saved incident lift, complete first-order
+local cells and both native pressure sources. It proposes checking S00=S10=0
+on that incident subspace and the explicit localized S01 reduction before any
+response integration. It retains vector forcing and independent output momentum;
+incoming transversality cannot project away an off-diagonal receiving force.
+The hand reductions and polarization selection remain unexecuted proposals.

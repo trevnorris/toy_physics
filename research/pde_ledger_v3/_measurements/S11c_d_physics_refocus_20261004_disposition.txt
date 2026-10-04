@@ -1,0 +1,45 @@
+Physics refocus review: substantive disposition, 2026-10-04
+
+Literal Claude verdict: CLEAR FOR THIS PHYSICS REFOCUS AND FIRST-ORDER SOURCE PLAN.
+The complete delivered text is preserved separately. Packet, archive, all 58
+private files and 57 original source files match their frozen hashes. The
+review completed with empty reviewer/coordinator stderr. One out-of-input Glob
+permission denial is preserved in the raw response. Coverage was explicitly
+partial: Claude inspected one of the 20 actual addresses and parts of LEFT;
+the other addresses, RIGHT and physical input files were not independently read.
+The author census is not relabelled independent verification.
+
+Accept the scoped priority: park the grade11 packet recovery and determine the
+actual first-order transverse forcing before building a receiving-field solver.
+The conditional order argument agrees with the existing physical power rule.
+It neither proves a regular grazing expansion nor removes higher-order terms
+if the first-order loss vanishes. The complete source-work/boundary work and
+external-work balance remain future physics obligations. No worker or value is
+cleared by this verdict.
+
+Resolve the report's apparent LEFT anomaly by its actual location:
+  /momentumSigns/0/controls/pencil
+and the analogous sign+ record. The route deliberately removes a finite native
+coefficient, then reprojects the changed five-row source. Its nonzero residual
+and movement are sensitivity-control results. They are not baseline face drives.
+Direct JSON inspection of all 64 LEFT face/leg/port records instead finds their
+saved exact ['0','0'] projections and exactZero=true. No source, projection or
+current function was rerun. The original report remains literal.
+
+Do not adopt the review's grazing-residue discussion as a divergence result.
+It expressly labels that discussion its own analysis. The actual complete
+forcing, end matching, receiving denominator and physical power weight decide
+the threshold behavior. In particular, a square-root dispersion alone does not
+establish a 1/q receiving singularity in this permeable closure. The saved flat
+response has a nonzero memory/permeability term in its denominator. Likewise,
+a step in the full vector force need not be a step in its correctly projected
+loss-producing part. Those distinctions motivate the next source calculation;
+they are not current result claims.
+
+Next concrete scientific preparation: use the saved local coefficient cells,
+native pressure source grades and exact LEFT lift/chart to obtain the first-
+order forcing of an actual incident doublet. Keep receiving and incident
+momenta distinct, test the candidate constant-height/source cancellations, and
+retain direct chemical/velocity boundary drivers before any power or inverse.
+No general verification framework or recovered mixed numerical action is a
+prerequisite. The new hand reductions need assessment and guarded execution.

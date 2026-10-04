@@ -1,0 +1,33 @@
+Assess input/plan.txt against the actual supplied native source and saved
+operands. This is a finite first-order source method/plan, not a worker, field
+solve, integral, power result or a request for general software verification.
+The user wants the shortest useful physics route to leading transverse loss.
+
+Read input/guide.txt. In particular inspect both source00/source10/source01
+records and the actual lift/chart before deciding the proposed pressure
+cancellation. Check the explicit S01 hand identity against the terms, its L
+powers, and the distinction between incident p and receiving l. Inspect the
+local rows and native held-profile velocity: do not assume a convected-sheet
+term or general polarization decoupling. Keep both native face assignments and
+normal signs. No native computation or scientific restoration in this review.
+
+Decide whether the proposed bounded source calculation faithfully supplies
+the missing first-order drive without a completed mixed-kernel packet action.
+Does applying the full exact baseline source to the incident plane wave before
+the response justify the proposed R10*S00 and R01*S00 zeros? Is the flat R00(l)
+factor the actual pressure convention with its finite beta, rather than q/(q+
+beta)? What remains missing for first-order direct physical face reconstruction?
+Is k_out dot f_U a useful algebraic diagnostic while explicitly not a physical
+loss projection? Distinguish source localization from receiving regularity and
+from any power/grazing claim. Identify a concrete incorrect hand identity or
+missing essential physical term rather than expanding the task into global
+operator certification. Do not require all-root classification or current
+calculation before a source-only output.
+
+Return CLEAR FOR THIS FIRST-ORDER TRANSVERSE SOURCE METHOD or NEEDS REVISION.
+CLEAR only supports faithful concrete source-instrument preparation, not a
+worker, zero first-order source, threshold residue, receiving inverse, physical
+plane-wave action, regular grazing expansion, positive loss or leakage number.
+Give file/operand references and disclose actual coverage. No old reviewer
+report is supplied; the author has no clearance. Claude only. No peer/model
+calls, automatic transport retry or optional wording loop.

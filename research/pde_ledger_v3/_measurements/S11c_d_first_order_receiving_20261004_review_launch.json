@@ -1,0 +1,72 @@
+{
+  "status": "CLAUDE_ONLY_RECEIVING_FACE_METHOD_REVIEW_RUNNING",
+  "checkedUtc": "2026-10-04T18:00:15.915799+00:00",
+  "preparedCommit": "6bffd31c",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-method-review",
+  "launch": {
+    "jobPid": 1756836,
+    "watcherPid": 1756837,
+    "packetSha256": "40cf61303ea745b748010401d32f7882aa330af71adb93ec45321a567b7e7a0e",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "receipt": {
+    "engine": "claude",
+    "sessionId": "111f0032-94e3-4642-9035-af8e5e459d60",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "111f0032-94e3-4642-9035-af8e5e459d60"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-method-review/claude/work",
+    "startedUtc": "2026-10-04T17:59:52.030679+00:00",
+    "packetSha256": "40cf61303ea745b748010401d32f7882aa330af71adb93ec45321a567b7e7a0e",
+    "promptSha256": "3e0091fe8dcd2ec6a9096819b060d7926d49d60c8c77e4baf1b34738c5f00dfa",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1756847
+  },
+  "hookStatus": "waiting",
+  "privateCopyFiles": 947,
+  "allPrivateCopiesMatch": true,
+  "allOriginalSourceHashesMatch": true,
+  "sourceHashesChecked": 946,
+  "coordinatorStderrBytes": 0,
+  "scope": {
+    "target": "Actual off-wave receiving blocks, two grazing points, distributional source-step projection and complete affine native face drivers",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "samePhysicalInputs": true,
+    "newScientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "receivingBlockRegularityEstablished": false,
+    "leakageFactor": null,
+    "recoveryParked": true,
+    "oldScientificReplays": 0
+  },
+  "scienceCalls": 0,
+  "noModelPolling": true
+}

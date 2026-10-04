@@ -1,0 +1,51 @@
+{
+  "status": "STDLIB_SYNTHETIC_REQUEST_INDEX_TESTED_NOT_SCIENCE_INTEGRATED",
+  "utc": "2026-10-04T11:09:11.269373+00:00",
+  "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_request_index.py",
+  "sourceSha256": "bd681778dc3639235ab9e8db14ce9d9a77fee71ffa3ecc1a9388726c91037e1a",
+  "tests": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_request_index_test.py",
+  "testSourceSha256": "2baa56524a4936362b7077aa485d0a44c229ba94cadf9d434493502fd5b117cb",
+  "testCount": 34,
+  "testLog": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_request_index_tooling_tests.log",
+  "testLogSha256": "7d8304ca1c8f4a40e8ae3d915296b07a471ac4682f0cfc4c1376d4d189b0fdcf",
+  "command": [
+    "python3",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_request_index_test.py"
+  ],
+  "testExitCode": 0,
+  "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+  "writerDependency": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_evidence_store.py",
+  "writerDependencySha256": "ca4257bf6ec441426d1e8f8e61fad37097d78a3199faeac7934c52d2a28d8e54",
+  "originalWriterModified": false,
+  "nativeScientificPayloadReadOrRestored": false,
+  "oldBanksOpenedOrRewritten": false,
+  "numericalImports": false,
+  "scientificComputationsRun": 0,
+  "runtimeIntegrated": false,
+  "independentBuildClearance": false,
+  "reviewerPacketModified": false,
+  "newExternalSubmission": false,
+  "properties": [
+    "New writer only; full canonical request descriptor and input/return receipts.",
+    "Route/precision/purpose joined to namespaces, no value sharing across routes.",
+    "PREPARING/PENDING requests refuse lookup and repeated begin; no automatic retry/resume.",
+    "Durable output before index completion; linkage failure preserves refused orphan record.",
+    "Full payload hash/length/codec, record receipt and immediate chain link checked on reads; complete chain still needs final audit.",
+    "Explicit record/node capacities and disk reserve; bounded optional encoded-byte cache.",
+    "SQLite mutation invalidates cached payloads; lookup returns fresh decoded copies."
+  ],
+  "tested": [
+    "Roundtrip and exact encoded MP tuples as opaque synthetic JSON.",
+    "No evaluation or writes on completed lookup; full operands and error targets distinguish requests.",
+    "Input-write, output-write and output-link failure prefixes; no overwrites.",
+    "Route/purpose/precision mismatches, altered descriptors/tickets and corrupted payloads/receipts.",
+    "Internal/external SQLite corruption, missing chunks, cyclic or invalid JSON.",
+    "Record/node capacity, column completeness, disk reserve and bounded cache."
+  ],
+  "notEstablished": [
+    "Full scientific completeness of any request descriptor or input/return.",
+    "Numerical evaluator/method clearance, full chain completion audit or scientific acceptance.",
+    "Real worker RSS, total disk/runtime cost or numerical readiness.",
+    "Actual scientific checkpoint restoration/resume policy, which is not implemented."
+  ]
+}

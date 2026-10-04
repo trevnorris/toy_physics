@@ -1,0 +1,39 @@
+test_bounded_panel_completeness (__main__.Requests) ... ok
+test_cache_limit_and_namespace_keys (__main__.Requests) ... ok
+test_chunk_corruption_invalidates_cache_and_is_detected (__main__.Requests) ... ok
+test_cycles_refused_repeated_acyclic_allowed (__main__.Requests) ... ok
+test_different_full_argument_is_miss (__main__.Requests) ... ok
+test_disk_refusal_preserves_durable_input (__main__.Requests) ... ok
+test_disk_reserve_before_reservation (__main__.Requests) ... ok
+test_duplicate_complete_is_refused (__main__.Requests) ... ok
+test_empty_operands_refused (__main__.Requests) ... ok
+test_encoded_values_are_not_evaluated (__main__.Requests) ... ok
+test_error_budget_is_part_of_identity (__main__.Requests) ... ok
+test_external_sqlite_change_invalidates_cache (__main__.Requests) ... ok
+test_failed_input_write_leaves_reserved_refusal (__main__.Requests) ... ok
+test_failed_link_update_keeps_durable_orphan_and_refuses_replay (__main__.Requests) ... ok
+test_failed_output_write_preserves_input (__main__.Requests) ... ok
+test_full_round_trip_and_receipt (__main__.Requests) ... ok
+test_hash_alone_does_not_match_changed_descriptor (__main__.Requests) ... ok
+test_implicit_tuple_or_key_conversion_refused (__main__.Requests) ... ok
+test_incomplete_descriptor_refused (__main__.Requests) ... ok
+test_lookup_never_calls_evaluation_or_writer (__main__.Requests) ... ok
+test_missing_chunk_refused (__main__.Requests) ... ok
+test_new_lookup_returns_fresh_mutable_object (__main__.Requests) ... ok
+test_no_existing_index_reattachment (__main__.Requests) ... ok
+test_no_more_than_48_nodes_in_one_record (__main__.Requests) ... ok
+test_nonfinite_json_refused (__main__.Requests) ... ok
+test_original_route_values_are_separate (__main__.Requests) ... ok
+test_pending_is_not_a_cache_miss (__main__.Requests) ... ok
+test_purpose_separates_control_from_baseline (__main__.Requests) ... ok
+test_receipt_corruption_refused (__main__.Requests) ... ok
+test_record_capacity_before_write (__main__.Requests) ... ok
+test_return_capacity_preserves_pending_input (__main__.Requests) ... ok
+test_route_precision_purpose_require_actual_namespace_join (__main__.Requests) ... ok
+test_ticket_tampering_refused (__main__.Requests) ... ok
+test_unknown_record_sequence_refused (__main__.Requests) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.794s
+
+OK

@@ -1366,3 +1366,19 @@ Only method, prompt, guide and index changed; 3,161 complete files including
 all scientific operands, original sources and rules are byte-identical. The
 first proposal and literal CLEAR/NEEDS pair remain at 7f9e46ca. No peer report
 or peer commentary is supplied. Standing assessment authority applies.
+
+
+Launched the corrected numerical-method pair after arming the existing hook.
+A single host check verified both reviewer processes, coordinator and watcher
+and all 6,330 private file hashes. No unfinished report was read; no science,
+reviewer retry or model polling occurred. The hook targets the existing session.
+
+While the assessments run, prepared the missing immutable request-index tooling
+on top of the unchanged evidence writer. Thirty-four manufactured JSON/SQLite
+tests passed, including complete input/return identity, namespace separation,
+incomplete-request refusal, durable failure prefixes, corruption detection,
+bounded records/cache and disk-reserve checks. No native scientific payload,
+old bank or numerical module was read or restored. This prototype is not
+integrated or independently build-cleared; future concrete evaluator assessment
+must verify semantic request completeness, actual resource use and scientific
+control/error behavior. It does not change the frozen review packet.

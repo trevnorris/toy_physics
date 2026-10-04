@@ -811,3 +811,24 @@ unchanged and reviewer outputs have not been read. This preparation creates no
 READY gate, scientific certificate or external submission. Full source/grade/jet,
 profile/kernel/measure and complete summand units remain required before the
 pressure action, along with exact request-sharing/storage and evaluator readiness.
+
+## 2026-10-03 — native unit build assessment requires original case labels
+
+The first native pressure-unit build reports are literally Claude NEEDS REVISION
+and Grok CLEAR FOR THIS BOUNDED NATIVE PRESSURE-UNIT BUILD. Both completed before
+joint assessment. All41packet files, archive and private copies, original source
+receipts, authority, sessions and delivered outputs passed271metadata checks.
+Claude stderr is empty; Grok has7126bytes of CLI diagnostics including13Read
+errors and a final resident-session warning, with a complete matching report.
+Both report partial coverage. No science or READY gate exists.
+
+The necessary correction is original labeled-case selection: payload membership
+and a separately saved LAB_HELD/RHO4 label do not by themselves join the chemical
+expression to that case. The same explicit original-table join will cover both
+response/velocity faces and density. The corrected validation will also bind the
+DTN export key, route each actual flat-unit return into its native dynamic Z
+override and preserve a partial-walk refusal decision. No source equations,
+dimensional algorithm or physical inputs change. Original literals and reviewed
+bytes remain preserved; the corrected source requires substantive assessment,
+not an author clearance or a scientific retry. Complete pressure summand units
+and the numerical evaluator remain pending.

@@ -1,0 +1,67 @@
+{
+  "status": "CLAUDE_BUILD_REVIEW_RUNNING_HOOK_FIRST",
+  "recordedUtc": "2026-10-04T17:28:04.625495+00:00",
+  "launch": {
+    "jobPid": 1744174,
+    "watcherPid": 1744175,
+    "packetSha256": "4c0a5a4c85ce6249c4e4c0df58f73d2f1aa0280e31f74e9328d8334d493f0a0d",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "reviewReceipt": {
+    "engine": "claude",
+    "sessionId": "08515e04-49f1-409e-b0d8-569b85d0b22e",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "08515e04-49f1-409e-b0d8-569b85d0b22e"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-source-build-review/claude/work",
+    "startedUtc": "2026-10-04T17:27:10.138907+00:00",
+    "packetSha256": "4c0a5a4c85ce6249c4e4c0df58f73d2f1aa0280e31f74e9328d8334d493f0a0d",
+    "promptSha256": "359d5b442aaa85d0cd1c510fe166b5add7d263391b9058390ed07cc076503196",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1744183
+  },
+  "watcher": {
+    "status": "waiting",
+    "watcherPid": 1744175,
+    "jobPid": 1744174,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T17:27:09.953210+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "f41999a0976378b78e83ab608f0a3a872970dfd44357575423978cd89c909d00",
+    "notifications": {}
+  },
+  "packetSha256": "4c0a5a4c85ce6249c4e4c0df58f73d2f1aa0280e31f74e9328d8334d493f0a0d",
+  "privateFileCount": 149,
+  "privateHashesMatch": true,
+  "hostAdmission": "One host ps check found coordinator1744174,watcher1744175,Claude1744183 live. Sandbox PID namespace did not expose host processes. No restart or retry.",
+  "scienceCalls": 0,
+  "READYGateExists": false,
+  "modelPolling": false,
+  "sourceCommit": "82c6912b"
+}

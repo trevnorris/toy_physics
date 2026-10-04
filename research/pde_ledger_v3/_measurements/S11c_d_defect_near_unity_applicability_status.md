@@ -709,3 +709,28 @@ with no scientific retry. No unit homogeneity/transport calculation or worker
 exists yet. The map explicitly preserves inferred gamma provenance, dynamic
 Z units, actual denominator predicates and expected-only zero-field units as
 future runtime obligations. Geometry review sources remain frozen unchanged.
+
+## 2026-10-03 — geometry pair clear; guarded execution ready
+
+Both literal geometry build reports say CLEAR FOR THIS BOUNDED PACKET-GEOMETRY
+BUILD, preserved at eda13816. Both disclose partial evidence coverage. The1748
+metadata checks joined the complete287-file packet/archive/private copies and
+original sources, receipts and completion hook. Claude had one denied Glob;
+Grok had17Read errors and8201bytes of CLI diagnostics, but both delivered their
+full reports. No reviewer transport was retried. Grok's incidental missing
+manifest-flag claim is refuted by the frozen manifest and28-test/no-skip log.
+
+Tested local fixes at0f5e3477 preserve basis evidence before its guard, require
+the declared box explicitly, and distinguish height-PV paired products from
+both response/Y branch scalar occurrences. Native count/grade/Fourier metadata
+joins and derived zero counts are explicit. All266saved files and the exact
+geometry library/method/inputs remain unchanged.34stdlib synthetic/tooling tests
+pass. The current gate records localToolingExecutionAuthority=true and
+independentBuildClearance=false; original paired CLEAR is not a new assessment
+of edited tooling. No scientific geometry has run at preparation time.
+
+The fresh gate pins277sources and18additional identity copies. Host metadata
+shows no other s11c unit and enough memory; the unchanged shared guard makes the
+actual reservation. One hook-first4GiB pooled run is ready, with no deadline,
+zero swap and all prior controls. Pressure units remain a separate required
+prerequisite; no pressure integral, cache match, numerical action or loss claim.

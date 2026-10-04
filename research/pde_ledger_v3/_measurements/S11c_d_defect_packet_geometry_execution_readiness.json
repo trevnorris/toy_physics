@@ -1,0 +1,73 @@
+{
+  "status": "PINNED_READY_FOR_ONE_GUARDED_PACKET_GEOMETRY",
+  "createdUtc": "2026-10-04T01:45:28.553165+00:00",
+  "gate": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_geometry_gate.json",
+  "gateSha256": "1bd2e836f8454f869925d883c98dfde148a7d244947f8355b21455bb8dbd8dd6",
+  "reviewCommit": "eda13816",
+  "buildCommit": "0f5e3477",
+  "sourcePinsChecked": 277,
+  "additionalIdentityCopies": 18,
+  "additionalIndexSha256": "8519492dd08f3063dc4d3a9cd2ee15e993620be1184c9bc5e0420f9de913e544",
+  "actualLauncherVerifyPassed": true,
+  "scientificImportsOrRestoration": false,
+  "workerLaunched": false,
+  "noDeadline": true,
+  "scienceRunsAuthorized": 1,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "automaticRetry": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Exact collision geometry and candidate dependency/static work counts only; pressure summand units deferred required prerequisite",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "noNewPressureUnitProof": true,
+    "geometryPlans": 8,
+    "K": [
+      27,
+      29
+    ],
+    "U": 75,
+    "T": [
+      122,
+      124
+    ]
+  },
+  "remainingBeforeResultAcceptance": [
+    "Actual guard no-deadline/resource enforcement and supervisor invocation",
+    "Every original field/factor/adapter/address/grade/normal map argument join",
+    "All eight exact arrangements/coverage/box/line controls and paired-versus-branch counts",
+    "Strict stderr and stdout/checks identity",
+    "All source/copy/additional-identity posthashes",
+    "No pressure unit/evaluator/integral/current/loss claim from exact geometry"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "status": "FIXED_RECEIVING_FACE_PHYSICS_METHOD_PACKET_VERIFIED",
+  "packetSha256": "40cf61303ea745b748010401d32f7882aa330af71adb93ec45321a567b7e7a0e",
+  "archiveSha256": "b5375c9e789b1f56a3798b9cac579f9c769df813f9c624cc984995c442192c0d",
+  "files": 947,
+  "bytes": 45879980,
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "completionMessageSha256": "30406503bde8883b16d61ba4aba3d28f50e2a9d17e151ccab0db50c5ebb81f6b",
+  "sourceHashesChecked": 946,
+  "losslessJSONViewsChecked": 21,
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "existingReviewerRunnerReusedUnchanged": true,
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-method-review",
+  "scope": {
+    "target": "Actual off-wave receiving blocks, two grazing points, distributional source-step projection and complete affine native face drivers",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "samePhysicalInputs": true,
+    "newScientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "receivingBlockRegularityEstablished": false,
+    "leakageFactor": null,
+    "recoveryParked": true,
+    "oldScientificReplays": 0
+  }
+}

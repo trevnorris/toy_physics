@@ -1,0 +1,141 @@
+Receiving blocks and complete first-order face drivers
+2026-10-04. Proposed finite physics calculation; no worker, inverse or power value.
+
+Why this calculation
+The completed source screen distinguishes the actual incident columns
+  U_A=i(1/5,-p,0,0,0), U_B=i(0,1/10,-1/5,0,0), p=sqrt(595)/10.
+For U_B, both native chemical and pressure sources vanish, the full local
+first-order force has zero x/theta/e_W components, and its receiving k(l) dot
+force is exactly zero for independent l. U_A does drive these channels. Both
+retain a transverse right-end force step 9 U; all sigma-source endpoints vanish.
+No old source calculation is to be repeated. The next missing physics is whether
+these source facts survive the actual receiving operator and physical face maps.
+
+The target observable remains total stationary transverse-survival deficit,
+including reflected transverse survival. Bulk escape alone is a separate
+quantity. Neither source cancellation nor an arbitrary imaginary quadratic form
+is accepted as a leakage factor. All inputs remain real omega3, resting bulk,
+LAB_HELD/RHO4_CONSTANT, h=(1/5,1/10), cs=sqrt6/2, W1,L10 and original materials.
+Independent eta/sigma results precede eta=lambda,sigma=lambda/10.
+
+1. Actual receiving block, before any inverse
+Restore the complete saved LEFT native P, its exact source/chart/physical binding
+arguments, and its actual closure/domain operands. These are the homogeneous
+baseline at lambda0. Match that interpretation to the saved local00 and flat
+source/consumer00 definitions; selected on-wave agreement is not a full receiving
+matrix identity. If that source correspondence fails, stop as unresolved. No
+old pencil, lift, restriction, limit or source producer is called.
+
+Let k(l)=(l,h1,h2), H2=h1^2+h2^2=1/20, K2=l^2+H2, q^2=p^2-l^2. Use the actual
+proper cyclic chart to put native displacement rows and fields in weak order.
+Use geometrically fixed columns, independent of residuals:
+  t=(0,h2,-h1), b(l)=(H2,-l*h1,-l*h2), k(l), e_theta, e_W.
+Their displacement dual rows are t^T/H2, b^T/(H2*K2), k^T/K2. H2 and K2 are
+positive for real l, so this coordinate change introduces no real singularity.
+These are coordinates with inherited units, NOT a physical work inner product.
+
+Derive the full transformed baseline matrix from the actual operands. Test both
+directions of transverse-versus-longitudinal/scalar coupling, keeping every
+entry and denominator. The candidate transverse block is the scalar
+D_T(l)=3(l^2-p^2)/2 on both transverse columns. Do not infer the off-wave block
+from the saved selected zero. The proposed remaining receiving problem is the
+actual three-by-three block on (longitudinal coefficient,theta,e_W), with source
+component k(l) dot f_U/K2 and the two native scalar row sources.
+
+Determine its exact determinant and original denominator domains at q=0,
+l=+p and l=-p, with the correct outgoing-sheet limits. A nonzero determinant
+would establish only local threshold nonsingularity of this finite block after
+its source correspondence and cancellations; it does not exclude poles elsewhere
+on the real receiving axis. A zero/unknown determinant is physics evidence: save
+it and do not choose a new cs, regularizer or tolerance. Do not invert the full
+five-field pencil on the propagating transverse poles, take a pseudoinverse,
+solve fields, or accept an old frequency1/root/mode census.
+
+2. The step must enter the longitudinal source distributionally
+The saved eta force suggests the exact new decomposition
+  f10(x) = A(x) U, A=9 w(x/L)-6 m(x/L),
+which has A(-infinity)=0, A(+infinity)=9. Decide this against the completed full
+force operands for both columns, without recomputing the source action.
+For Q=l-p and the forward convention Fhat(Q)=integral exp(-iQx)F(x) dx,
+  k(l) dot U = Q U_x,
+  Q Ahat(Q) = -i (A')hat(Q)
+as a tempered-distribution identity with the fixed constant/Heaviside/local
+split. The delta term is annihilated by Q; the derivative includes the full jump.
+This is a proposed analytic application, not a computed transform. Check its
+sign, original origin/L factors and compatibility with the matched outgoing-end
+polarization correction. Do not discard the transverse half-line force or turn
+Ahat itself into an ordinary Fourier integral. A' is integrable, but that alone
+does not settle every receiving or physical-power limit.
+
+All sigma local forces and direct chemical source are already saved localized
+polynomials. Their longitudinal/scalar source must retain the correct output l,
+source derivative p, actual pressure direct addend and physical sigma/lambda
+factor. Combine only new projections/argument assignments. Do not regrade,
+differentiate old profiles or regenerate their Fourier transforms.
+
+3. Affine native face maps: include the direct first-order chemical drive
+Restore actual native acoustic/chemical/velocity/memory expressions, not just
+selected face zeros. For each face form the first-order TOTAL drivers as affine
+maps of the unknown receiving field plus the saved incident-column source:
+  mu_total = mu00[Psi1] + mu1[Psi0],
+  V_total  = V00[Psi1]  + V1[Psi0].
+Here V1[Psi0]=0 is the actual held-profile result; no convected-sheet u.grad(w)
+term may be invented. mu1 includes the completed sigma coefficient divided by
+10 on the physical path, with its separately established chemical phase. The
+source chemical and normalized pressure conventions must join exactly. Shape
+translations/normal variations acting on the baseline exterior field can be
+removed only after actual baseline field and face-gradient arguments show zero.
+
+The original scalar closure, before accepting any reduction, is
+  A_mem=Lambda_A/(1-i omega tau_A),
+  j=rho_m(v_bulk-V), affinity=mu-P/rho_m,
+  j=A_mem*affinity+V_mem*V, mechanical_response=X_mem*affinity.
+The actual generalized face load is (P+mechanical_response) times the native
+outward virtual lift W0/2. Keep this pressure term even when X_mem=0.
+At these inputs V_mem=X_mem=0, rho_m=1/10. For outgoing physical q, the candidate
+relations are v_bulk=q P/(rho_m omega) and
+  P = [rho_m omega/(q+omega A_mem/rho_m)] [V+(A_mem/rho_m)mu].
+Join these to both original face orientations and original pressure/velocity
+normalization. Lab-normal derivative signs are opposite, while each outward
+coordinate has its own positive outgoing convention. Retain pressure, bulk and
+outward velocities, relative mass flux, chemical potential, affinity and load
+separately. Complete driver maps are not a new physical-current proof.
+
+At q0 the candidate flat factor is finite, as the completed source screen
+already records. That fact by itself does not prove the receiving block is
+regular. The point of deriving the block and the affine maps together is to
+expose precisely this distinction. In the closed row equation the direct
+R00*S01 contribution already enters the forcing; do not add it twice when
+reconstructing the physical face fields.
+
+4. What can be concluded about the two polarizations?
+If the baseline receiving block preserves t and every direct first-order face
+inhomogeneity for U_B vanishes, the chosen zero-incoming receiving solution can
+stay in the t sector. That is a conditional absence of first-order exterior and
+scalar driving. Do NOT equate it to zero total transverse-survival deficit until
+the actual restricted conservative current/work and any external work of the
+held profile are accounted for. A non-self-adjoint local term or homogeneous
+receiving nonuniqueness may matter. The supplied native energy/current/face
+objects show the physical work definition; no Euclidean Im(fdagger G f) is used.
+
+For U_A, identify the three-component loss-side source and whether the two
+actual grazing points are locally regular. This would prepare a small receiving
+problem instead of resuming mixed integrals. It is not approval of a numerical
+inverse, all-real pole exclusion, power integral or loss coefficient. Those need
+an explicit physical-work method and applicable concrete build assessment.
+
+Finite instrument obligations after this method assessment
+Preserve original receiving/source/face operands and every new transformed
+matrix, source projection, threshold determinant/domain and affine driver.
+Controls must use actual wrong input-vs-output projection, omitted direct
+chemical drive and an orientation error through these same equations. Restore
+all completed source/profile/closure proof returns rather than invoking their
+functions. No general AST verifier or recovery expansion. Unknown stays
+unresolved; no automatic scientific retry, fallback, parameter shift or sweep.
+
+The conditional leading-order power argument remains conditional: every baseline
+loss drive must vanish, the matched expansion and physical power form must be
+regular, and all channels/external work counted once. This stage does not
+compute an integral, field, power/current/leakage value, finite inverse, drain,
+calibration or strong-edge result. It asks whether the physical route is small
+and regular enough to justify that next calculation at the actual toy inputs.

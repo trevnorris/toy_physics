@@ -1,0 +1,180 @@
+Real-axis receiving response and transverse cross-flux
+Proposed bounded physics method, 2026-10-04. No worker or new calculation.
+
+The physical question
+The completed native end-flux calculation gives positive G0=Gref and K1=0
+in the arbitrary saved incident doublet. This is a necessary cancellation, not
+a leakage value. The next question is whether the first-order longitudinal,
+density and thickness forcing produces a regular outgoing response at the
+actual fixed frequency and sound speed, including both grazing points and
+unbounded receiving momenta. A finite threshold determinant did not answer it.
+We also need the actual incident-reflected cross-current, rather than assuming
+that the two transverse survival fluxes add without interference.
+
+This proposal advances those two questions. It does NOT supply the subsequent
+nonuniform physical work balance or infer it from a uniform end current.
+A positive exterior acoustic flux is not automatically total survival deficit.
+Reflection remains survival. The final observable is a Hermitian form on
+arbitrary incident amplitudes, not a selected polarization or scalar number.
+
+Fixed inputs and inherited work
+Real omega=3; resting bulk; LAB_HELD/RHO4_CONSTANT; original materials,
+W0=1, L=10, tangential h=(1/5,1/10), cs=sqrt(6)/2, p=sqrt(595)/10.
+The physical path is eta=lambda, sigma_W=lambda/10, with native independent
+coefficients preserved. No new regulator, speed, cutoff or root-fitting input.
+Reuse the saved full source action, off-wave receiving correspondence, two
+zero coupling blocks, both threshold determinants, all affine face maps,
+matched B(l), D_B(l), T1 and the actual native two-leg current. No producer,
+old source/profile/grade/current/response/moment/limit function is called.
+No old comparison is recomputed merely to build confidence. New argument
+assignments, determinant identities and contractions are new science.
+
+1. Actual counter-propagating transverse current
+Take J_L(k_minus,k_plus) directly from the completed physical current operand
+and B(l) from the completed matching operand, in the same weak chart and
+native epsilon-squared convention. Do not replace J by a Gram matrix or a
+frequency derivative. For the left superposition the missing matrices are
+  C_-+ = B(-p)^dagger J_L(-p,+p) B(+p),
+  C_+- = B(+p)^dagger J_L(+p,-p) B(-p).
+Restore B(+p)=U and G0/Gref with their actual argument records. Compute both
+C matrices and their conjugate relation; test every entry against zero. Keep
+the explicit phases exp(+2ipx) and exp(-2ipx) in the superposition convention.
+If either contraction is nonzero/unknown, save it and stop the claim that
+incident and reflected signed end currents can be added as independent weights.
+No averaging away an oscillatory term or fitting an origin is allowed.
+A bra-momentum sign mutation goes through the same current contraction and
+must have an actual measured nonzero entry; it is sensitivity, not a proof.
+
+2. The actual three-field block on the outgoing real-momentum sheet
+Use exactly the lower 3x3 submatrix C(l,q) of the saved full transformed
+operator, with its original chart, field order and rational denominators.
+The fields are longitudinal displacement coefficient, theta, e_W. The dual
+is geometric and not an energy metric. Retain every complex memory and pressure
+coefficient. The whole five-field operator has transverse poles; the following
+statement concerns only C, after the inherited exact two-way decoupling.
+
+First verify as a new algebraic identity that all entries of this saved C
+depend on l only through s=l^2. If not, stop this proposed reduction. Bind
+s=p^2-q^2, retaining a complete original-operand map and the identity modulo
+q^2+l^2-p^2. This maps the entire physical real l axis onto TWO rays:
+  propagating: q=t real, 0<=t<=p, s=p^2-t^2;
+  evanescent: q=i*r, r real, r>=0, s=p^2+r^2.
+Both signs of l are included because the evenness identity is required.
+The common endpoint q=0 includes both grazing points; l=0 is t=p. No
+analytic continuation of the physical source frequency is involved.
+
+Before cancelling any rational expression, save all original entry denominators
+and establish their nonvanishing on the applicable rays. The original
+q+beta, beta=(30+9i)/109, has positive real beta; the chart also has
+l^2+1/20>0. Check the actual denominator factors, do not assume these labels
+exhaust them. Unknown denominator roots remain unresolved. Preserve numerator
+and denominator before and after cancellation, with their exact reconstruction.
+
+Compute the determinant from the full saved C for this NEW global problem.
+For each ray obtain det C=N/D as polynomials with exact rational real and
+imaginary coefficients, clearing only declared nonzero constant factors.
+Store all coefficients, original determinant operands and exact reconstruction.
+A numerical root search, a grid or a minimum sampled modulus is insufficient.
+Use gcd(Re N,Im N) over Q with an exact Bezout identity. If the gcd is a
+nonzero constant, that rules out real common roots on the ray. If it is not,
+use its exact real-root isolation/Sturm count on the specified interval or
+half-line, including zero and the algebraic endpoint p explicitly. One zero
+component or constant numerator requires its actual reduced polynomial case;
+identically zero numerator is an obstruction. No unspecified root finder or
+float tolerance may certify absence. Save the Euclidean/Sturm operands,
+remainders, signs, interval endpoints and multiplicities needed for inspection.
+The algorithm is ordinary finite polynomial algebra, not a general verifier.
+
+At q=0 compare the new determinant expression with BOTH saved threshold return
+values and arguments; do not recompute those old threshold determinants.
+Keep any root in the admitted ray as a physical receiving obstruction. Do not
+silently take a principal value, add damping, move cs, or switch parameters.
+A root outside the physical ray is recorded without being promoted to a mode.
+An actual off-diagonal deletion in C gives a determinant sensitivity control
+at the already specified threshold; persist baseline/mutant full operands.
+Unknown or silent controls remain so, not an invitation to search for a pass.
+
+If and only if the original denominators and determinant are nonzero on both
+rays, form the symbolic adjugate/determinant multiplier, with both C adj(C)
+and adj(C) C identities, and record degrees and nonzero leading coefficients.
+This is a new finite algebraic receiving-map derivation, requiring its own
+concrete worker assessment. It is not a numerical coupled field solve or an
+inverse at a transverse pole. Continuity on compact portions plus rational
+large-r asymptotics gives a polynomial growth bound, not a numerical norm
+estimate or condition number. No uniformity in frequency/cs is claimed.
+
+3. Actual forcing and the class in which that receiving map is usable
+Keep the complete two-column force, including scalar pressure rows, from
+published source results. Do not infer the receiving force from only S01.
+Use the saved exact height-force identity F_eta=A(x)U with
+A=9(1+tanh(x/L))/2-2(1-tanh(x/L)^2), left endpoint0/right endpoint9.
+The new longitudinal projection at output l has k(l).U=(l-p)U_x. With
+Q=l-p and Fhat=integral exp(-iQx)F dx, the distributional identity is
+  Q Ahat(Q) = -i (A')hat(Q).
+The coefficient of delta(Q) is annihilated, but the full jump remains in A'.
+Do not multiply a delta distribution by a transverse pole or delete the step.
+The fixed step/origin convention and completed end matching remain unchanged.
+Use already saved coefficient/profile derivative operands where they exist;
+any missing derivative identity is explicitly new, not producer replay.
+
+Assemble the three receiving source rows with the saved geometric dual,
+all physical sigma/10 contributions and the full C00 R00 S01 pressure force.
+Receiving l is independent of incident derivative p. Direct chemical driving
+enters the affine face maps once with the original native A_mem/rho_m
+normalization. The total pressure force and its affine reconstruction must
+not add that term twice. Preserve complete scalar rows and both native faces.
+All Fourier transforms in this proposal remain unevaluated tags with their
+actual x-polynomial, L, p, l, derivative, sign and 2pi arguments.
+
+A' and the localized sigma/direct-chemical profiles are finite polynomials
+in tanh(x/L) with exponential endpoint decay of all derivatives, hence Schwartz.
+This statement must join the actual profiles, their endpoint factors and
+inherited derivative rules. The receiving projection and flat response may
+multiply their transforms by polynomially bounded functions with square-root
+cusps at grazing, so do NOT call the resulting total forcing Schwartz.
+Subject to the nonvanishing test and actual polynomial degree/endpoint joins,
+every required polynomially weighted Fourier field is nevertheless L1 and L2.
+Riemann-Lebesgue then gives decay of the slab receiving field and each finite
+spatial derivative required by the saved current/face maps as x tends to either
+end. No numerical Fourier integral, decay rate, finite-box error or pointwise
+analyticity through grazing is asserted. In this class of ordinary weighted-L2
+Fourier amplitudes C is invertible almost everywhere and the forced response
+is unique. This is not a general theorem about arbitrary threshold-supported
+distributions, complex-frequency stability or an all-channel scattering inverse.
+
+Verify the actual U_B three-row forcing is zero, rather than concluding this
+from a single face-source flag. If the regularity and class conditions pass,
+its receiving scalar/longitudinal response is then zero in this class. U_A
+keeps its full nonzero forcing. This is not a rank-one total-loss proof: the
+nonuniform physical work balance remains to be established. Arbitrary incident
+amplitudes and possible interference must remain in the eventual loss form.
+
+4. What remains after this bounded test
+The native current is derived from SlabEnergyBalance at homogeneous ends.
+It does not by itself supply the nonuniform energy identity. Before calling a
+receiving-field power integral a survival deficit, derive the actual mechanical
+and chemical mass-rate work, both acoustic face fluxes, memory dissipation and
+any work required by the LAB_HELD prescription from the original equations.
+Static prescribed coefficients are not, by label alone, proof of zero external
+work. Supplied native work expressions are context, not a shortcut to that proof.
+No guessed Im(f^dagger G f), Euclidean norm, acoustic-only leakage factor or
+naive R1-only transmission deficit is permitted. The two-port interpretation
+also needs the other-channel asymptotics and cross-flux actually applicable to
+that energy balance. This proposal gives at most slab-field decay at fixed
+faces; it does not prove a uniform far-bulk angular/radiation-flux limit.
+
+No field/transform/power integral or leakage number is computed here. A future
+power method and evaluator need their own applicable assessment and concrete
+readiness. No mixed J/direct recovery, defect sweep, drain or calibration.
+If a genuine physical choice of observable/input is required, ask the user.
+
+Execution and review boundary
+This is a new method proposal, not an executed determinant, an accepted inverse,
+a build or a READY gate. Claude-only source assessment precedes a concrete
+bounded worker. Science, including restoration and exact CAS algebra, only
+under the unchanged shared no-deadline pooled guard around the supervisor:
+4GiB native/cgroup within16GiBpool, zero swap, one CPU/thread,32tasks,
+4GiBhostreserve, desktop priority. Fresh exact pins and hook first to
+01a0e01b-ef84-7192-817f-584cda5d339b. No automatic scientific/reviewer retry,
+fallback, scheduler change or model polling. Keep all published results,
+original failures, reports and protected sources unchanged. Scratch uncommitted.

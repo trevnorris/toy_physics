@@ -1,0 +1,31 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T20:03:21.889482+00:00",
+  "packetSha256": "9f5a62957e43e0f8932df0b580120f116e64ecd8f5ac5cc638336ae9a0bd41c9",
+  "archiveSha256": "bf7f9ae923621243b63b6db5ce96f3d4aa518a70b47f10779b303e992cc02637",
+  "reviewers": [
+    "claude"
+  ],
+  "files": 1919,
+  "bytes": 28568302,
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "authority": "Standing continued bounded physics refocus and necessary established Claude-only assessment; new regularity/adjugate method proposed for assessment, no new scientific execution.",
+  "scope": {
+    "target": "Opposite-leg native transverse cross-flux and all-real outgoing three-field receiving regularity/source class",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "samePhysicalInputs": true,
+    "arbitraryIncidentDoublet": true,
+    "scientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "receivingRegularityEstablished": false,
+    "newInverseEvaluated": false,
+    "fullPhysicalWorkPending": true,
+    "leakageFactor": null,
+    "recoveryParked": true
+  },
+  "noAutomaticRetry": true,
+  "noPeerReportsShared": true,
+  "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+}

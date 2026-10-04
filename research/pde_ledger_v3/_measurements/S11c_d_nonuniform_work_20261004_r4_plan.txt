@@ -1,0 +1,482 @@
+Explicit background force pairing, centre work and nonuniform consistency
+Proposed finite physics prerequisite; no worker, new result or READY gate
+
+1. The question and the deliberately limited next result
+The user's observable is still the total stationary transverse-survival deficit:
+incoming transverse flux minus BOTH transmitted and reflected transverse flux,
+normalized by a^dagger G0 a for an arbitrary incident doublet a. Reflection is
+survival. Acoustic face power alone is not a replacement observable.
+
+The next instrument first classifies background-support and centre-face work,
+then asks a finite prerequisite question: do the actual retained
+equations have the claimed physical stored/kinetic/chemical/face work balance,
+and precisely what prevents that balance from determining leading survival?
+It derives a finite work identity and its explicit order defects. It neither
+evaluates a field/power integral nor claims an asymptotic leakage coefficient.
+
+Distinguish three objects throughout:
+  (i) the actual saved rectangular operator P_rect with grades00/10/01/11;
+  (ii) Q_port[a], the FORMAL quadratic face-power functional of complete
+       first-order fields, if its native port and integrability joins pass;
+  (iii) an actual finite-defect survival deficit and any lambda->0 asymptotic.
+Equality of (ii) with the leading term of (iii) is NOT a result of this method.
+It additionally requires a consistent work law through the relevant order,
+the end current of that same model, any external-work contribution, and an
+adequate weighted remainder estimate. No '+o(lambda^2)' conclusion is proposed.
+
+Use the already selected real omega3, effective cs=sqrt(6)/2, restbulk
+LAB_HELD/RHO4, saved edges, original material/gamma values, W0=1,L=10,
+h=(1/5,1/10), and eta=lambda,sigma_W=lambda/10 only at the final order ledger.
+The bare input omega1/c_s0=10 is a different binding, not a fallback. epsilon
+is the independent wave-amplitude bookkeeper. Do not change equations,
+constitutive inputs, grades, anchoring or the observable. Mixed J/direct
+numerical recovery remains parked.
+
+2. Independent native inputs, now supplied explicitly
+Read the original S11c-b source, not just the homogeneous end-current engine.
+The full original sources and complete published a/b registries are supplied;
+small views reproduce literal source sections without mathematical decoding.
+The published b source and a/b registries must also match their earlier native
+unit-bridge source pins. A current-file name alone is insufficient ancestry.
+
+S11c_b_brane_operator_sympy_audit.py:
+  local_thickness_map: e_local=W0*eW/W_bg;
+  density_pair(RHO4_CONSTANT): rho4=rho_br/W0,
+        Sigma0=rho_br*W_bg/W0, with its actual spatial derivatives;
+  kinetic_balance_from_energy: the independently declared density is
+        T=epsilon^2[ Sigma0*sum_i u_i,t^2
+                     + mu_W*(d_t(W_bg*e_local))^2 ]/2.
+Since the supplied background is stationary, the physical thickness rate is
+W0*eW_t. mu_W is a constant modulus; no invented W_bg^2 thickness inertia is
+allowed. Keep this composition as an explicit operand join before simplifying.
+This kinetic input precedes the saved operator construction; it is not inferred
+by reading an inertia coefficient off a selected row.
+
+SOURCE_ENERGY in original/native/LEFT-original.json is the full saved unbound
+nonuniform STORED density (already at its supplied background order), with
+actual gamma terms. It contains no inertia. Use it as supplied, not as an
+untruncated exact-in-eta energy and not as permission to reconstruct unknown
+higher-order invariants. The a/b registry tables give the actual nonuniform
+material virtual constraint, mass evolution, chemical operand and separately
+labelled BULK_ENERGY/KINETIC/FACE_VIRTUAL_WORK/FACE_FLUX/ADVECTIVE/MASS_EVOLUTION
+origins. Restore these results without invoking their constructors.
+
+S11c_a_interface_geometry_sympy_audit.py mu_specific_raw and affinity_raw
+define chemical potential per mass from mu_theta/rhobr_bg_exact BEFORE their
+shape projection. This is distinct from using constant rho_br everywhere.
+mu_theta is the held-fixed variational derivative of stored energy, not the
+mass row. Native c2 build_face first binds the same live density and then the
+same chemical amplitude. Join all three original frames to the saved chemical,
+normalized pressure source and affine-face operands, including epsilon once.
+Bind source.parameter to its actual route-specific original Dummy: shape_parameter
+for the Eulerian face or material_shape_parameter for the material face. The
+original shape(expression,parameter) is d/dparameter evaluated at parameter=0,
+followed by the external epsilon factor; it is not a background-eta projection.
+Persist exact parameter object, derivative order, evaluation point, live-density
+operand and original amplitude/epsilon frame. A parameter/epsilon control must
+traverse this same normalization join. Do not execute the old shape function.
+Neither normalization may be selected to make a residual zero. Do not replace
+the published projected reciprocal by an invented unit or exact higher-order
+completion. Physical inverse-density meaning and its retained series remain
+separate records, with the actual nonzero domain.
+
+The original S11c-a material-mass variation and evolution_route are independent
+definitions of the virtual constraint and the sourced mass balance. In RHO4
+the moving material sample of a held profile contributes density-gradient
+terms even though the LAB_HELD face velocity is just W0*eW_t/2. Restore these
+different source records; do not add convective motion to the face velocity.
+Any background support law is the actual supplied one, not a name-based agency.
+
+2a. Explicit background admissibility and support classification
+Restore the THREE complete original registry entries
+  admissibility_operator_operand (S11CB_ADMISSIBILITY_OPERATOR_OPERAND),
+  admissibility_support_operand (S11CB_ADMISSIBILITY_SUPPORT_OPERAND), and
+  admissibility_residual (S11CB_ADMISSIBILITY_RESIDUAL),
+selecting the original LAB_HELD/RHO4_CONSTANT case, ordered body U/theta/eW
+and both per-face tractions, their original dimensions and all retained terms.
+These are background wave-amplitude order epsilon^0, independent of the
+linear wave operator. Do not obtain them by setting wave fields to zero in
+P_rect and do not call admissibility_operator/task_admissibility again.
+
+The actual support bundle contains free f_hold_*_0 and t_hold_*_0 symbols.
+They are not a specified incremental support law. Join any bindings from the
+original physical input and saved background context; never assign these
+symbols zero or choose them to cancel an operand. For each component record
+SUPPLIED_VALUE, UNBOUND_SUPPORT or an actual supplied relation. The exact
+stationarity CONDITION is that the support and required background operand
+agree in their original generalized-force pairing at EVERY available retained
+background grade. It is a conditional equality requirement, not an imposed
+new support prescription or a statement that the physical profile satisfies it.
+
+One source-format issue is visible without CAS: the original exported
+admissibility_residual contains Equivalent(...) and Not(...) constructors,
+whereas the original operator and support entries are arithmetic operands.
+Preserve that literal object and the original object_difference source. Do
+not interpret its truthiness, MULTIGRADE header, or logical constructors as
+zero force or successful stationarity. If an arithmetic residual is needed,
+form a NEW componentwise operator-minus-support work operand after exact label,
+case, unit and force-pairing joins, recording it as a new derivation. Do not
+rewrite, repair or replay the old published residual calculation. The raw
+legacy object is provenance only, not an arithmetic certificate to restore.
+
+2a(i). Explicit face-rate and measure pullback, not a raw bundle sum
+Let t_s=(t_parallel,s,t_4,s) denote a published laboratory traction operand.
+Restore its native normalization before calling it a traction per true area
+or per projected area. The original a virtual work is
+  A_s * t_s dot (u_t, hdot_s),
+where A_s is the original measure_exact and hdot_s is the vertical material
+rate from the original virtual-displacement/velocity map. A physical outward
+normal rate V_s is a DIFFERENT scalar. In the source c2 traction_pairing,
+  hdot_s = (V_s - n_parallel,s dot u_t)/n_4,s.
+The fourth traction component pairs with hdot_s, never directly with V_s or
+eW_t. Join original physical and virtual DOF selectors, both s signs, parameter,
+epsilon and normal[3] domain before using this formula.
+
+For LAB_HELD the source a build_face_source gives the candidate linear-wave
+rate map
+  hdot_s = zeta_c,t + s*W0*eW_t/2 + s*(grad_W dot u_t)/2,
+with the actual source_jet_scales on grad_W. Obtain both coordinate columns
+from the supplied DELTA_W and ZETA_C sources, not from an assumed symmetry.
+The corresponding outward normal V_s must join the original face_velocity
+operand. The slope term in the VERTICAL rate is not an additional convective
+term in outward V_s: test the normal contraction with its tangential part.
+The flat outward candidate is V_s=s*zeta_c,t+W0*eW_t/2. This is a check against
+saved tables, not an instruction to replace a nonflat velocity by its flat value.
+
+Keep separate measure operands: original a measure_exact and its published
+face_measure_shape_deriv, original a unit normal, and the c2 expression
+sqrt(sum_i normal_i**2). Do not rename the last expression the true surface
+Jacobian or assume those expressions are identical. Compare actual available
+background-grade coefficients with their original normal/traction normalization.
+Keep the unprojected difference and any 20/02 measure debt. No new exact-area
+extension of the retained model is chosen. If a background registry traction's
+area convention cannot be source-joined, record TRACTION_MEASURE_UNSUPPLIED
+and do not promote its candidate pairing to physical power.
+
+Using the joined rate map, record the NEW coefficient pullback of each face's
+work onto (u_t, eW_t, zeta_c,t), BEFORE any force equality or rate restriction.
+For an area-normalized laboratory traction the candidate coefficients are
+  F_face,U = sum_s A_s*(t_parallel,s + s*t_4,s*grad_W/2),
+  F_face,e = (W0/2)*sum_s s*A_s*t_4,s,
+  F_face,c = sum_s A_s*t_4,s.
+These formulas must follow the actual native rate/measure operands and their
+scales and signs; they are not a new traction definition. Persist the native
+work before collection and the collected coefficients with an exact difference.
+The centre coefficient uses the FULL fourth-component normal-force contraction
+and original geometry, not a sum of unsigned outward pressures. Perturbed
+normal jets remain in section2b's separate incremental centre row.
+
+2a(ii). Shared thickness-force origin and support compatibility
+The actual b admissibility_operator constructs
+  BODY_FORCE.E_W = e_force,
+  PER_FACE_TRACTION[s] = (0,0,0,s*e_force/W0).
+Restore both full published values and their common source assignment; check
+this original identity without running that function. Under the FLAT rate and
+area map the candidate F_face,e is therefore the same e_force, not a second
+independent load; F_face,c has the opposite-sign cancellation candidate. Do
+not install either candidate as a runtime return or assume the nonflat/other-
+grade result. Carry all native area, slope, U and centre coefficients in the
+actual comparison. No missing registry centre slot is itself a zero proof.
+
+The shared-physics directive sections2b/3d names a body-plus-face pairing,
+whereas the concrete thickness face values have the above common origin.
+Keep BOTH statements visible. First emit separate body and face work operands
+and their componentwise arithmetic residuals and representation-compatibility
+differences. These are records/comparisons, NOT independent powers to sum.
+Do not add body E_W work to the same force's face representation. Also do not
+silently delete an independently specified physical force merely because its
+coefficient has a familiar name. The finite work test must establish one work
+contribution from the original energy/geometry and its equivalent coordinate
+representations, or return ORIGINAL_FORCE_PAIRING_UNRESOLVED. The source
+assignment alone does not waive the actual rate/area/sign and unit joins.
+
+The support body f_hold_e_W_0 and face t_hold_s_0_i are independently declared
+symbols: no equality between f_hold_e_W_0 and F_hold,face,e is supplied by the
+operator's redundancy. Keep their complete pullbacks and compatibility
+condition explicit, without setting or relating them. Componentwise background
+stationarity may be stated as conditional equality in each original slot, but
+cannot establish a unique physical work functional for a bundle whose pairing
+is unresolved. An absent support law is not automatically two additive copies
+of a required force, nor permission to select the convenient representation.
+If the original pairing cannot resolve this, stop physical reduction with the
+exact unbound compatibility residual; a later agency decision then has concrete
+operands. No physical support prescription is made by this method.
+
+2a(iii). Background centre record and its amplitude-order work
+Create named F_required,c, F_support,c and R0_c records. Derive the available
+face contribution from the actual above pullback for operator AND support,
+with full signs, units, measure and retained grades. If their sources establish
+a complete centre-force pairing, record R0_c=F_required,c-F_support,c in that
+pairing. If completeness, a body-centre contribution or its normalization is
+not supplied, label the total R0_c UNSUPPLIED and retain the resolved face
+piece separately. Never set an absent centre entry to zero. A vanishing face
+piece alone does not prove the total or impose a centre constraint.
+
+In the epsilon ledger retain R0_c*zeta_c,t^(1) at epsilon and
+R0_c*zeta_c,t^(2) at epsilon^2, including any rate-map correction and incremental
+support contribution at those orders. The second quantity is the nonlinear
+wave-amplitude field, not the defect-lambda correction. Unknown coefficients
+stay named. A stationary periodic total-derivative argument must state its
+actual time dependence and endpoints before removing an average. The centre
+sector is not solved and no missing second-order geometry is manufactured.
+The independently saved incremental CENTER_FACE_GENERALIZED_ROW in section2b
+is not a substitute for this background-centre record. If a component is unbound or unequal, retain
+its explicit power pairing and condition as BACKGROUND_SUPPORT_UNRESOLVED.
+Do not yet say that it dissipates energy: static forces paired with a periodic
+velocity can average to a total time derivative. Derive that statement, if
+applicable, including boundary terms and the actual time dependence. Conversely
+an unbalanced background cannot be declared a stationary scattering solution
+merely because an averaged force-work term happens to vanish. Distinguish
+background existence from incremental/time-averaged work closure.
+
+There are TWO independent expansion axes. Write a real physical field as
+F=F_bg+epsilon*f^(1)(lambda)+epsilon^2*f^(2)(lambda)+... . The first-order
+phasors solve the linear-in-epsilon equations; their quadratic mean work is
+order epsilon^2. The epsilon^2 field contains possible zero-frequency and
+second-harmonic responses and must not be silently identified with the
+second DEFECT correction f2 below. For a known background force residual R0,
+persist R0 paired with the rates/virtual-work image of f^(1) and f^(2), along
+with any unknown incremental support contribution. Only an actual stationary
+periodic/endpoint identity or a supplied stationarity/support condition removes
+these terms. No rectified field or response is computed here. Unknown
+incremental support work remains UNSUPPLIED, even if a static force could be
+chosen to balance the background. A choice of passive/dead/follower/feedback
+support would be a physical choice and is NOT made by this plan.
+
+2b. Independent centre coordinate and the selected five-field restriction
+The original S11c-a/b geometry has independent zeta_c, with laboratory face
+positions zeta_s=zeta_c+s*W0*eW/2 and the corresponding source-bound velocities.
+The existing c2 code explicitly selects REPRESENTATION='DELTA_W'; its
+expanded_rows reads U_BODY_BALANCE, THETA_BALANCE and E_W_BALANCE only. This is
+an actual restriction used by the saved five-field calculations, NOT a proof
+that a free centre is slaved, constrained, or dynamically decoupled.
+
+Restore the original slab_operator/FACE_GENERALIZED_FORCE_ROWS/
+CENTER_FACE_GENERALIZED_ROW and the original virtual_work_shape_deriv case
+(physical DELTA_W, virtual ZETA_C, LAB_HELD/RHO4). Also retain the separate
+physical ZETA_C face_velocity/traction/closure/virtual-work tables. The
+centre generalized work from the DELTA_W case tests whether the already used
+thickness/brane fields exert a centre drive. The physical ZETA_C column is a
+distinct source operand; do not substitute a DELTA_W result in its place.
+No new centre inertia is present in the supplied kinetic definition. Do not
+invent one or execute an enlarged six-field inverse.
+
+Pair the centre generalized row with zeta_c,t in the full work ledger, with
+its actual action-to-row sign and physical dimensions, BEFORE any selected
+subspace restriction. In LAB_HELD the flat outward velocities have candidate
+form V_s=s*zeta_c,t+W0*eW_t/2; the actual tilted normals/area terms and physical
+fields decide the full pairing. Join to both original face definitions. Only
+then specialize to the saved DELTA_W velocity, preserving the discarded
+centre-work operand and its reason. LAB_HELD alone fixes the background
+anchoring; it is not a declaration that zeta_c=0.
+
+Within the existing selected source class, test the complete centre drive
+against BOTH saved physical-face pressure/load maps and their normal traces.
+The centre row has pressure differences and sums of original normal jets;
+checking P_plus=P_minus while omitting those jets is insufficient. Join full
+face reflection/parity, identical material/memory/bulk inputs, source columns,
+and both explicit normal signs using saved operands. This is new finite
+algebra, not a replay of their producers or a new response solve. Keep
+unbound pressure and normal-jet operands until their actual saved joins apply.
+A vanishing selected centre drive can establish only compatibility of the
+centre-zero selected solution at the tested order. It does NOT establish a
+unique free-centre response, an all-orders symmetry theorem or an additional
+boundary condition. Do not globally discard the physical ZETA_C sector.
+
+If no applicable original centre constraint is supplied, record it as
+NO_SUPPLIED_CENTRE_CLOSURE. If the tested selected drive is nonzero or unknown,
+stop the five-field physical-work reduction and identify the missing centre
+condition/work term; do not automatically fix the centre or change the
+model. If it vanishes, retain the conditional scope and any unmatched
+second-order/other-sector centre work. A formal selected Q_port remains
+separate from a claim about the unconstrained full face system.
+
+3. New finite work calculation, without reconstructing old operators
+Work with arbitrary real fields before the stationary harmonic reduction. Use
+the original physical coordinates and full spatial derivatives, then the saved
+normal-axis cyclic map and physical test/row conjugacies. In particular retain
+W0 factors in the eW equation and distinguish chemical work from theta_t times
+the mass equation. No response kernel is varied in a single-copy action.
+
+From the independently supplied T and stored density derive only the NEW
+nonuniform time-work identity and boundary concomitant. Take coefficient
+derivatives as well as field derivatives; retain every generated derivative
+and L power at its originating background grade. Apply the actual material
+virtual constraint for mechanical variations, keeping the physical density
+time rate independent. Its difference from the homogeneous virtual variation
+is the chemical/mass-rate work, not a discarded term. Keep coefficients of
+all arbitrary field-rate and residual operands before using equations.
+
+Compare the resulting five-row AND centre/support work pairing with the saved
+rows and
+their origins, not with hand-selected coefficients. All400local cells and
+full native pressure partitions are available. Form new comparison identities;
+do not call an old source/local/grade/profile/response/current producer or
+regenerate its coefficients. Homogeneous saved zeros are end checks only.
+
+Classify each original term BEFORE the energy comparison:
+  - stored-energy constrained mechanical terms;
+  - supplied kinetic terms;
+  - actual sourced mass evolution and its density-gradient term;
+  - both-face virtual work, chemical flux and physical response;
+  - background admissibility/support residual and any supplied incremental work;
+  - independent centre generalized work and its selected-subspace condition.
+Complex local coefficients can come from eliminating j through native memory,
+even when they have no pressure-slot label. Track their full FACE_FLUX and
+closure-residual ancestry. Join that sum to the saved local/mass cells and
+the explicit pressure pieces. Never call all local cells conservative, remove
+complex numbers by inspection, or count direct chemical pressure twice.
+
+Lift the face part only through its original uneliminated port operands and
+saved exact elimination proofs; do not rerun a face response or source solve.
+For each native face restore physical normal, area convention, load, geometric
+velocity, relative mass flux and affinity. The sign and any profile factor in
+the port work must follow the actual work-to-row mapping. A leftover stored,
+chemical, face or normalization term is a named work mismatch. It is not defined
+to be LAB_HELD/external work. Only a term with an independently supplied support
+law can be classified as external power; an unexplained one stops the claim.
+
+Kinetic rho_br*W_bg/W0 is affine in the native RHO4 profile; preserve its
+original grade before any projection. Compare with the stored/operator
+rectangular grade and the separate spatial jet-depth convention. The source
+STRONG_ROW_JET_DEPTH is a spatial derivative limit, not a license to drop
+eta/sigma powers or coefficient derivatives. Any exact-kinetic versus
+retained-stored mismatch is separately labelled KINETIC_GRADE_DEFECT; no
+retained() call on the total residual may hide it.
+
+Persist the unprojected finite work residual as well as its00/10/01/11
+coefficients. Do not run retained() on a residual and call the resulting zero
+an exact identity. Restore old retained coefficients/proofs; only work
+derivatives, comparisons and the following order decomposition are new.
+
+4. Explicit order debt and the right-end current
+The saved system is a specified first-order-in-each-bookkeeper approximation.
+It does not supply physical20/02 equations. Taking eta=lambda,sigma=lambda/10
+makes a kept11 term orderlambda^2 without controlling the omitted20/02 terms.
+Choosing an exact extension of the stored polynomial, a new action, or a new
+end current to fill this gap would change the model and is not authorized here.
+
+Within the linear-wave field f^(1) of section2a, use the DEFECT expansion
+f^(1)(lambda)=f0+lambda*f1+lambda^2*f2, keeping arbitrary f2. This f2 is not
+the nonlinear-wave epsilon^2 field f^(2). For the finite work expressions, Record the full
+coefficient of each unknown f2 jet, the known first-order quadratic terms, and
+all generated20/02 work residues. f0 is the actual incident doublet with
+theta0=eW0=0; keep its nonzero displacement and gradient components. Determine
+by a new exact test whether each AVAILABLE residual contracted with f0 is
+zero, a time derivative, a spatial divergence with an explicit end term, or
+an obstruction. Unknown physical20/02 operators remain separately marked
+UNSUPPLIED, never treated as zero. This is an order audit, not a construction
+of those missing operators. A vanishing known contraction does not resolve
+the unknown untruncated remainder.
+
+The derived boundary current must join the saved native LEFT/RIGHT forms at
+the orders actually available, including mass-rate chemical transport and the
+same normal orientation. G0,Gref,G1,K1,T1 and opposite-leg cross-current returns
+are inherited, not re-contracted. K1=0 removes only the linear deficit. Do not
+use G0+lambda*G1 as a complete second-order flux or compute a T1-only deficit.
+If the target finite model later needs G2/end polarization contributions,
+record that exact requirement. No G2 is fabricated from an absent coefficient.
+The test may conclude that the supplied retained model is insufficient for
+physical quadratic survival even when its first-order work identity passes.
+
+5. Actual face memory and a formal power functional
+Use outward bulk velocity v_s, geometric velocity V_s, pressure P_s, relative
+flux j_s=rho_m(v_s-V_s), mu_s, chi_s=mu_s-P_s/rho_m on BOTH faces. Preserve the
+opposite lab normals and original projected-area factors before reducing to
+outward coordinates. The source-bound identity to test is
+  (P_s+X*chi_s)V_s+mu_s*j_s = P_s*v_s+chi_s*j_s+(X*chi_s)V_s.
+This algebraic split must agree with section3's row work, not merely itself.
+The parameters have Lambda_V=Lambda_X=0; pressure load remains live.
+
+For Lambda_A>0,tau_A>0 the actual retarded state equation is
+  tau_A*j_t+j=Lambda_A*chi.
+Verify its sign/normalization against the saved source and derive
+  chi*j=j^2/Lambda_A+d_t[tau_A*j^2/(2*Lambda_A)].
+Do not omit memory storage before time averaging. For phasors with the native
+real-field convention the mean product is Re(conj(A)*B)/2, times the separate
+epsilon^2. Thus the candidate mean memory sink is Re(A_mem)*|chi|^2/2 with
+A_mem=Lambda_A/(1-i*omega*tau_A). No phenomenological damping is introduced.
+
+Restore actual baseline face drives for arbitrary a. Only when each baseline
+quantity in a quadratic sink is zero may its formal second-order coefficient
+be written using first-order drives alone; verify those individual zeros.
+This does not remove second-order fields from other work terms without the
+section4 calculation. Keep the complete first-order affine face maps, direct
+chemical drive and matched transverse contribution until their actual map
+joins decide what survives. U_B three-field zero alone is not zero total loss.
+
+With Fhat(l)=integral exp(-ilx)F(x)dx, inverse measure dl/(2pi), native real
+omega3 and outgoing q^2=p^2-l^2, p=sqrt(595)/10, the proposed unevaluated form is
+  Q_port[a] = sum_s { integral_{-p}^p q(l)|P1hat_s(l;a)|^2 dl/(4pi*rho_m*omega)
+                   + Re(A_mem)*integral_R |chi1hat_s(l;a)|^2 dl/(4pi) }.
+Derive both constants from the original P=-rho_m*phi_t and outward normal
+velocity law and the saved harmonic current convention; no guessed DOS or
+Im(f^dagger G f). Preserve the full2x2 polarization form, normalize by G0,
+and keep any independently identified external work as a separate signed term.
+This formula remains FORMAL, conditional and UNEVALUATED in this method.
+
+For each actual affine map list its largest field-jet order (including any
+second derivatives), the E3/receiving/source growth and the extra l powers.
+Use the accepted all-finite-weight localized-source argument only at those
+specific orders. A missing L2/L1 bound is unresolved. Bounded P1 on the compact
+propagating interval suffices for its q-weighted integral; memory needs the
+actual full-real-line chi1 L2 bound. No claimed decay rate is needed.
+
+Two-face plane power is the exchange appearing in the slab balance. It need
+not first be identified with an infinite-depth far-bulk escape flux. Derive
+its role using a finite slab interval and keep all end terms; extend the face
+integral only with its integrability argument. If a later far-bulk interpretation
+is sought, exterior side surfaces and limit ordering remain a separate duty.
+This separation does not turn Q_port into total transverse-survival deficit
+while nonuniform work, model-order or end-current debts remain.
+
+6. Threshold and physical interpretation remain explicit
+The incident doublet is at the actual exterior acoustic grazing point and its
+RIGHT momentum changes at first order. The accepted fixed-parameter C3 domain
+and determinant exclusions give scoped receiving regularity; they do not
+prove a uniform finite-defect expansion near the moving threshold. In particular
+a claim of leading survival would need an estimate such as
+  ||q^(1/2)(Phat(lambda)-lambda*P1hat)||_L2(-p,p)=o(lambda)
+and the corresponding memory-norm remainder, along with the consistent model
+work/end statements. No such estimates or a parameter change are supplied by
+this finite work screen. A formal Q_port value must not later be relabelled a
+physical leakage coefficient merely because it is finite or positive.
+
+7. Bounded implementation target and refusal controls
+After method assessment, the FIRST concrete build is the finite support/centre
+prerequisite in sections2a/2b: exact original bundle/rate/measure joins, one-force
+representation and support-compatibility records, explicit background R0_c,
+and the full selected incremental centre drive. It does not compute the later
+nonuniform energy identity in the same run or treat an unresolved support
+pairing as a pass. If that prerequisite supports a work reduction, a subsequent
+concrete assessed build can implement sections2-5's finite identity, original term classification, grade-debt and normalization tests.
+No full field solution, Fourier/power integral, inverse or spectral evaluation
+belongs to it. Use existing readers/journals/guard, not a new general verifier.
+Controls alter a live coefficient derivative, chemical density/shape-parameter
+normalization, mass-rate work, and one face sign or harmonic factor through
+the same actual work comparison. Add a support-component mutation to the
+new arithmetic force-pairing check and a centre-route/normal-jet mutation to
+the complete selected centre-work check. A duplicate-thickness-work control
+must alter the actual assembled candidate work by adding the already counted
+representation and compare its nonzero coefficient on a live original operand;
+an inapplicable zero case is untested. A centre-support control changes a live
+original face component through the same pullback and must change R0_c or its
+resolved face piece without assigning the real support. These are sensitivity
+checks of new algebra, not permission to repair a physical bundle. Never use a logically malformed
+legacy residual as a numerical control baseline. Persist operands and measured movement/refusal. A control
+without applicable nonzero operands is untested, not passed.
+
+Stop on an unexplained actual row/work/normalization/grade mismatch. A known
+nonzero discarded-order residual is an honest order obstruction, not permission
+to repair physics. A real unspecified agency or material choice goes to the
+user only after the concrete residual is identified. No such choice has yet
+been demonstrated. A method verdict is not build or runtime acceptance.
+
+All new work statements are proposals. The packet uses source/JSON/hash-only
+inspection; no science or old producer was executed. Preserve all old inputs,
+returns, failures and literal reports. Science/restoration needs an exact gate,
+Claude-only build assessment and hook FIRST to01a0e01b-ef84-7192-817f-584cda5d339b,
+then shared no-deadline guard around the existing supervisor:4GiB native/cgroup
+within16GiB pool,zero swap,oneCPU/thread,32tasks,4GiB host reserve,desktoppriority.
+No automatic retry,fallback,scheduler change,model polling or recurring task.
+Scratch never committed. No current/leakage value,sweep,drain or calibration.

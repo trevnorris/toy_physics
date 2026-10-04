@@ -1,0 +1,38 @@
+{
+  "status": "SOURCE_ONLY_EXPLICIT_BACKGROUND_PAIRING_AND_CENTRE_REVISION",
+  "recordedUtc": "2026-10-04T22:50:12.489170+00:00",
+  "originalReport": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonuniform_work_20261004_r3_claude.md",
+  "originalReportSha256": "421e98f093278712cd51c2a790d4b0ee2fce8f034f4aa210d8ff3be416b5ce5b",
+  "newPlan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonuniform_work_20261004_r4_plan.txt",
+  "newPlanSha256": "6a50e43f1811f9390180cec82ab8fac403a398b4d91b57b462f51ee95e873f58",
+  "sourceFindings": [
+    "Original b returns body e_force and per-face s*e_force/W0 from the same assignment. Its directive names body-plus-face pairing, while support body/face symbols are independent. A physical work sum cannot silently double count or reinterpret that bundle. New finite compatibility/representation tests must expose any unresolved term.",
+    "Original a has independent centre virtual displacement, true-area measure and both physical selectors. Original c2 reconstructs the vertical velocity from outward normal velocity and uses sqrt(sum(normal_i**2)); that area expression is not assumed to be the original true-area Jacobian. Available-grade and unprojected comparisons remain new scientific obligations.",
+    "Background R0_c needs an explicit source-derived force pullback or an UNSUPPLIED total; no absent entry may be interpreted as zero. Its nonlinear-wave amplitude-order work is separate from defect-lambda corrections."
+  ],
+  "changes": [
+    "Explicit source-bound laboratory four-vector rate, normal velocity and area pullback with all scalar/vector/centre coefficients.",
+    "Preserve both directive and source force representation; keep original independent support and compatibility residuals without prescribing a law.",
+    "Named background centre force and epsilon/epsilon^2 work before selecting five fields; no assumed centre closure.",
+    "First concrete build narrowed to finite support/centre consistency. Later nonuniform energy/work, formal port power and physical survival remain separate prerequisites."
+  ],
+  "literalRegistryViewsVerified": 9,
+  "sourceViews": 26,
+  "oldManifestPinsActuallyPresent": 4,
+  "metadataPreparationHistory": {
+    "initialPreparationFailure": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4-packet-preparation-incomplete-01/preparation-failure.json",
+    "reason": "Absent a source-code key in old native-unit sourcePins; no scientific calculation or review had run. Exact prior packet receipts retained, no pin invented.",
+    "preSubmissionGuideCorrection": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4/pre-submission-metadata-correction.json"
+  },
+  "newScience": false,
+  "scientificWorkerExists": false,
+  "readyGateExists": false,
+  "scientificConstructorExecuted": false,
+  "completedWorkReplayed": false,
+  "noPeerReportShared": true,
+  "reviewers": [
+    "claude"
+  ],
+  "equationsAndInputsUnchanged": true,
+  "physicsChoiceMade": false
+}

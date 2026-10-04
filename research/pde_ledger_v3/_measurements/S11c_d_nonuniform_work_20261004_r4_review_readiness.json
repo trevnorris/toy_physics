@@ -1,0 +1,45 @@
+{
+  "status": "FIXED_FORCE_PAIRING_CENTRE_WORK_R4_METHOD_PACKET_VERIFIED",
+  "packetSha256": "f0d2716a61105f569dfcf2a6ccdb25a863a945e77d34b043e092107019eaa4e1",
+  "archiveSha256": "b0a8c9ec32909cabfd2d80520241b3d528828768440e5c4784c79c59af1ce6fe",
+  "files": 8308,
+  "bytes": 167118498,
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "completionMessageSha256": "09c61d52ddc727a3b0d556c9bfc07227876c4ac5bf7dfa57be8a746028c3e049",
+  "sourceHashesChecked": 8307,
+  "losslessViewsChecked": 14,
+  "losslessSourceViewsChecked": 26,
+  "literalRegistryViewsChecked": 9,
+  "originalSourcePinsJoined": 4,
+  "artifactCensus": {
+    "source-projection": 2466,
+    "domain-prefix": 99,
+    "regularity": 3636
+  },
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "existingReviewerRunnerReusedUnchanged": true,
+  "oldReviewAdjudication": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonuniform_work_20261004_r3_review_record.json",
+  "oldReviewAdjudicationSha256": "dbc0cfb2447518ef3e19d515d36eccaac9a9338e2dd44dbf7e17d5df2c603ae7",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4",
+  "scope": {
+    "target": "Explicit force pairing and background centre work before nonuniform consistency and formal port power",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "samePhysicalInputs": true,
+    "sameEquations": true,
+    "arbitraryIncidentDoublet": true,
+    "scientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "newFieldOrIntegral": false,
+    "fullPhysicalWorkPending": true,
+    "leakageFactor": null,
+    "finiteDefectAsymptoticClaimed": false,
+    "recoveryParked": true
+  }
+}

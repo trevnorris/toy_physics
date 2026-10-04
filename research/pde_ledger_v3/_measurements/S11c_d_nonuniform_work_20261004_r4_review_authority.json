@@ -1,0 +1,32 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T22:48:29.531429+00:00",
+  "packetSha256": "f0d2716a61105f569dfcf2a6ccdb25a863a945e77d34b043e092107019eaa4e1",
+  "archiveSha256": "b0a8c9ec32909cabfd2d80520241b3d528828768440e5c4784c79c59af1ce6fe",
+  "reviewers": [
+    "claude"
+  ],
+  "files": 8308,
+  "bytes": 167118498,
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "authority": "Standing continued bounded physics refocus and necessary substantive established Claude-only revisions. Method review only; no new science or model change.",
+  "scope": {
+    "target": "Explicit force pairing and background centre work before nonuniform consistency and formal port power",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "samePhysicalInputs": true,
+    "sameEquations": true,
+    "arbitraryIncidentDoublet": true,
+    "scientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "newFieldOrIntegral": false,
+    "fullPhysicalWorkPending": true,
+    "leakageFactor": null,
+    "finiteDefectAsymptoticClaimed": false,
+    "recoveryParked": true
+  },
+  "noAutomaticRetry": true,
+  "noPeerReportsShared": true,
+  "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+}

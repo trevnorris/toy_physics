@@ -1,0 +1,18 @@
+{
+  "status": "14_STDLIB_TOOLING_TESTS_PASS",
+  "createdUtc": "2026-10-04T21:46:23.925567+00:00",
+  "exitStatus": 0,
+  "tests": 14,
+  "command": [
+    "/usr/bin/python",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue2_test.py"
+  ],
+  "workerSha256": "512413d90f1161d3419a751be77fec0675cf698355cf0c25c0f1cac859f29f24",
+  "manifestSha256": "cdaeec15bf04c4bb8fc6fdac530a36cdd86a1874cb13acb1a3b1fd51cacede77",
+  "testSha256": "b16e9f82d7d1eee6a4b46a3ba95056c9ae9522898a515be752253e10cbc387aa",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "abbec61b40abff808da635c67458cbab68bff90d8795c956b51a12956b4d8b6e",
+  "scientificRestoration": false,
+  "nativeScientificExecution": false,
+  "scope": "Interface stand-ins test equivalent structural forms, exact mismatch and unsupported coefficients, predecision persistence. Complete saved-byte and unaffected source AST comparisons. No original or new native mathematics executed."
+}

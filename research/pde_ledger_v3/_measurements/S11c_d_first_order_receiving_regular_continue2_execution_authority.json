@@ -1,0 +1,61 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_ONE_SAVED_DOMAIN_PREFIX_RECEIVING_CONTINUATION",
+  "createdUtc": "2026-10-04T21:46:23.925567+00:00",
+  "scope": {
+    "target": "Explicit full-source projection, native opposite-leg current and exact C3 real-axis polynomial regularity",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalInputUnchanged": true,
+    "arbitraryDoublet": true,
+    "newFieldOrIntegral": false,
+    "fullFiveFieldInverse": false,
+    "physicalPowerBalancePending": true,
+    "leakageFactor": null,
+    "nonzeroPoleOrResidue": "STOP_NO_FALLBACK",
+    "recoveryParked": true
+  },
+  "scienceExecutionsAuthorized": 1,
+  "reviewers": [
+    "claude"
+  ],
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "authority": "Standing user physics continuation and AGENTS local tooling authority after failure inspection; exact remaining checks only. No automatic rerun or new physics assumption.",
+  "sourceAssessmentIsResultAcceptance": false,
+  "noAutomaticScientificRetry": true,
+  "noFallback": true,
+  "noSchedulerChange": true,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolGiB": 16,
+    "zeroSwap": true,
+    "cpuCount": 1,
+    "threads": 1,
+    "tasksMax": 32,
+    "hostReserveGiB": 4,
+    "durationLimits": null
+  },
+  "buildReviewRecordSha256": "7c190e2f6b0041422b288cec491d28cbb8aa10215c7668394ad2a9fde284f0e2",
+  "methodRecordSha256": "51857e79d51e2c4808c5f8a9db4d56571a14d9430a13c5f97f658429b73c32c6",
+  "toolingRepairRecordSha256": "5d927a8d87d61d3ef798bc3a524a2cd801424f24e51fb305ddc6eeef105407f8",
+  "additionalIdentityPins": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_build_r3_record.json": "7c190e2f6b0041422b288cec491d28cbb8aa10215c7668394ad2a9fde284f0e2",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_build_r3_claude.md": "ca4d59a546a371e6a386a38df461ac93922202c0f8d565aa99bea84513069f6f",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_20261004_r2_review_record.json": "51857e79d51e2c4808c5f8a9db4d56571a14d9430a13c5f97f658429b73c32c6",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_20261004_r2_claude.md": "d020419ecee398ec473130dbd36f372427e4c4857ad4be2d612054cbd0b0aa2c",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue_failure_record.json": "f14dc4a16020eebc6e1f86f7b74408eade3a8173f857b76f624b1f1908bd9932",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue2_repair_record.json": "5d927a8d87d61d3ef798bc3a524a2cd801424f24e51fb305ddc6eeef105407f8",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue2_tests.json": "2e470f53374af7ad488c2a9e52809c1b75a9522672fb86ac69ba6dcce35ac0b0",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue2_test.py": "b16e9f82d7d1eee6a4b46a3ba95056c9ae9522898a515be752253e10cbc387aa",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue2_test.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue2_test.stderr": "abbec61b40abff808da635c67458cbab68bff90d8795c956b51a12956b4d8b6e",
+    "/var/projects/toy_physics/AGENTS.md": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-build-review-r3/claude.json": "ebc9029f40a3c9c80d877d047c8dbb3a70f607db54c58bf9377b6a1b39d48668",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-build-review-r3/claude-run.json": "11da4bd161740f29ab0966a95d6630efb06e06c0df4f4db7122fcd384fbd9084",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-build-review-r3/claude.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-build-review-r3/state.json": "c786fcb3bf6cfa29a1eb0c089a14f9d1e3e174b8c6e02ad5c8ba053e7d4b52dc",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-build-review-r3/coordinator-outcome.json": "48ce24afa10794b3822d6c257428b86ddd1d3060bb273129dd281fa38b9d5370",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-build-review-r3/coordinator.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-build-review-r3/adjudication.json": "7c190e2f6b0041422b288cec491d28cbb8aa10215c7668394ad2a9fde284f0e2",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-build-review-r3/completion-watcher/state.json": "1af150dd035ff621e7b717ea8661abffda8800249b05b4bc1ef9da207ecc8dc4"
+  }
+}

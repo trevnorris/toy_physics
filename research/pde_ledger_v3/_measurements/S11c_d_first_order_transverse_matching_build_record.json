@@ -1,0 +1,130 @@
+{
+  "status": "CLAUDE_ONLY_FINITE_MATCHING_BUILD_ASSESSED",
+  "recordedUtc": "2026-10-04T19:09:32.623325+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-matching-build-review",
+  "reviewers": [
+    "claude"
+  ],
+  "literalVerdict": "CLEAR FOR THIS FINITE MATCHED TRANSVERSE AMPLITUDE BUILD",
+  "literalOpening": "**CLEAR FOR THIS FINITE MATCHED TRANSVERSE AMPLITUDE BUILD**",
+  "report": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_matching_build_claude.md",
+  "reportSha256": "7ef87589e56e141d3d242b2e6390dfda1d1c47452e11eb160d071cbfed65971b",
+  "buildAssessed": true,
+  "workerSha256": "e3d53ff89409411d16bb81ec441ba2e467ffe3a04a6bf6be4c738a4522de0bc8",
+  "manifestSha256": "fadf94f92f87c410ce7128e6f80a9979c24cefcca8c5d9af735114a4f8519c2b",
+  "launcherSha256": "3d470f69f7f975c88455c33ee6d2a1fefe3ffa960ed41d3eb000907c240dda38",
+  "rawOutputSha256": "964059572723aa2549f318bc16cd1f62b894a643e6b8614102bcd6c77cf9fc71",
+  "receipt": {
+    "engine": "claude",
+    "sessionId": "d36bb70f-e097-497a-9ca3-a64eb7c79da7",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "d36bb70f-e097-497a-9ca3-a64eb7c79da7"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-matching-build-review/claude/work",
+    "startedUtc": "2026-10-04T19:02:06.715658+00:00",
+    "packetSha256": "dc0da14f1cc34806226506fc04422ce1d9a6031595f7a780e4e97ddba678f6ff",
+    "promptSha256": "ea412ba2a8f2d90cb21d73ad2b369e1004b848a28d750cc56311168e1f2a0a86",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1783472,
+    "exitStatus": 0,
+    "finishedUtc": "2026-10-04T19:07:29.023360+00:00",
+    "wallSeconds": 322.296434244141,
+    "outputSha256": "964059572723aa2549f318bc16cd1f62b894a643e6b8614102bcd6c77cf9fc71",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderrBytes": 0
+  },
+  "coordinatorOutcome": {
+    "status": "ALL_REQUESTED_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-10-04T19:07:29.126621+00:00",
+    "scienceCalls": 0
+  },
+  "completionHook": {
+    "status": "finished",
+    "watcherPid": 1783464,
+    "jobPid": 1783463,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T19:02:06.522820+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "65abda7ec7f5a1d571b17ef38c174e73b8951240313b4868b885805076be778a",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-10-04T19:07:29.251029+00:00"
+      }
+    }
+  },
+  "packetSha256": "dc0da14f1cc34806226506fc04422ce1d9a6031595f7a780e4e97ddba678f6ff",
+  "archiveSha256": "6393e72e9dfe7f243e168d335ea091c38ef59205fca8060d1daa78f64e06b146",
+  "verifiedPacketPrivateArchiveFiles": 751,
+  "verifiedOriginalSources": 750,
+  "allHashesIntact": true,
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "strictStderrBytes": 0,
+  "coordinatorStderrBytes": 0,
+  "coverage": "Read worker, build notes and method; checked actual saved forces, step, momentum-dependent dual, Green/Abel and coordinate-tail arguments. Reviewer did not inspect supplied manifest, launcher, helper, guard or supervisor. All exact source/packet/private/archive hashes and actual helper/method pins verified locally. No native science run by reviewer.",
+  "substantiveAssessment": "The finite matched amplitude extraction is supported with scoped analytic coordinate-tail reasoning. Runtime source joins, primitive identities, finite values and amplitude records remain required. T1 is in saved incident coordinates, not attenuation; reflection is survival. Physical current and work are still pending.",
+  "advisories": [
+    "Both controls show formal coefficient sensitivity only; not independent validation of sign or extraction. The elementary exact-step and Green-jump checks plus assessed analytic argument are the sign support.",
+    "Full five-row finite matching is a chart/algebra check, not by itself an independent derivation of outgoing extraction.",
+    "Original helper is in the hash-pinned manifest and supplied unchanged. It persists scalar operands/raw/returns and uses exact cancellation; unknown stops.",
+    "No optional review loop or mathematical change is needed for the stated nonblocking advisories."
+  ],
+  "incidentalCorrections": {
+    "filesClaimedAbsentButSuppliedAndHashVerified": [
+      "manifest.json",
+      "launcher.py",
+      "runtime-source/S11c_d_defect_raw_increment.py",
+      "runtime-source/S11c_d_end_normalization_run.py",
+      "runtime-source/s11c_guarded_run.py",
+      "runtime-source/codex_job_watch.py"
+    ],
+    "gateAbsentAsExpected": true,
+    "counts": "732 complete runtime JSON files plus19 source/notes/index/helper files =751 packet files. No omission or duplicate-runtime count.",
+    "pressureConsumerCount": "6 displacement row/incident-column records,24 face/slot pieces,72 literal zero retained-grade coefficients. Reviewer incidental40 count is not the complete census.",
+    "faceMaps": "Affine face maps were already accepted in receiving9c5b472d; physical use/work/end normalization remains pending.",
+    "reportPreservedLiterally": true
+  },
+  "scope": {
+    "target": "Finite matched outgoing transverse amplitudes in saved incident coordinates, before physical flux normalization",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalPath": "eta=lambda,sigma_W=lambda/10",
+    "incomingColumns": 2,
+    "origin": 0,
+    "newHalfLinePolynomialMoments": true,
+    "T1InSavedCoordinates": true,
+    "R1ExactUnevaluatedIntegral": true,
+    "G0GrefG1K1Pending": true,
+    "physicalWorkAndAllRealRegularityPending": true,
+    "numericalIntegrals": false,
+    "leakageFactor": null,
+    "recoveryParked": true
+  },
+  "readyGateExists": false,
+  "scienceCalls": 0,
+  "runtimeAcceptance": false,
+  "noAutomaticRetry": true,
+  "noOptionalReviewLoop": true,
+  "noPeerReportShared": true
+}

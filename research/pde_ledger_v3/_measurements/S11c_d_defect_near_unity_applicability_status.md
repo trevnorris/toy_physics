@@ -697,3 +697,15 @@ No peer reports, old review commentary, source replay or author CLEAR. No READY
 execution gate exists. Standing AGENTS/user submission authority applies.
 
 Both geometry build reviews are running from ac87145f on byte-identical287-file private packets. The existing-session hook is armed; launch receipts and restricted source-only commands were verified. No reviewer output was read while running, no new scientific work or READY gate exists.
+
+While the geometry pair runs, a source-only pressure-unit map now pins332complete
+original records and10native source fragments. It adds the earlier combined
+native-flat-source-join.json (both unbound operands and literal zero) and the
+symbolic-L profile-transform input/return, plus complete published native
+chemical/stage2/live-density/domain joins. This closes source-location gaps
+without calling their functions. The old tanh journal uses a combined zero
+record; a metadata lookup using the newer split-file convention was corrected,
+with no scientific retry. No unit homogeneity/transport calculation or worker
+exists yet. The map explicitly preserves inferred gamma provenance, dynamic
+Z units, actual denominator predicates and expected-only zero-field units as
+future runtime obligations. Geometry review sources remain frozen unchanged.

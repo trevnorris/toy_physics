@@ -22,7 +22,14 @@ homogeneous unbound expression.
 The complete unbound chemical/velocity/source unit walks and their original
 constructor roots are inherited. Missing background substitutions are newly
 checked against the actual native symbol units. Every numeric binding carries
-its original parameter name, value and unit. Output coefficient records separate
+its original parameter name, value and unit. Every saved numeric value must
+match that parameter in the same physical input. The frequency is the explicit
+exception: numeric omega must match the saved held frequency 3, while the original
+physical-input omega 1 is retained separately. Neither original input is changed.
+Both stage2 placeholder units must equal the inherited units of their actual
+replacement amplitudes; removing dimensionless epsilon does not alter those units.
+The complete inherited unit-walk registries must match the actual effective
+registry. Each gamma binding retains its inference dependency. Output coefficient records separate
 the magnitude, physical coefficient unit, jet unit and formal L_ref/T_ref/M_ref
 unit references. Old required-unit metadata is only a consistency comparison.
 The derivation is homogeneity of the original source transported through actual
@@ -51,7 +58,13 @@ Every native negative-power base is restored from its original unit-walk path,
 with its constructor and unit. Chemical and all six rational source/consumer
 groups join full original finite/nonzero component certificates. A complex value
 is nonzero if at least one of its real/imaginary components is provably nonzero;
-the other can be exactly zero. The unused flag-only fallback is removed.
+the other can be exactly zero. The unused flag-only fallback is removed. Actual component constructors must
+be finite rational real numbers, must reconstruct the exact complex numerator
+and denominator, and must reproduce the saved nonzero flags. The fraction itself
+must reconstruct the supplied value, and both sides of all inherited component
+identities must agree as exact constants. Unknown, symbolic, nonfinite or false
+components refuse; saved True flags alone never establish regularity. Full
+operands are recorded before these decisions.
 
 A homogeneous rational source under unit-preserving substitutions has homogeneous
 Taylor coefficients in independent dimensionless eta and sigma on the saved
@@ -59,6 +72,23 @@ regular domain. Cancellation can multiply numerator and denominator by a common
 factor, so no invented physical unit is attached to the normalized numeric
 denominator alone. Its exact regularity and its unbound reciprocal origins
 remain separate parts of the argument.
+
+For all six source/consumer groups, the actual denominator at eta=sigma=0
+must equal its saved zero-grade value. A separate exact polynomial-fraction
+certificate connects the full saved rational source to its saved N/D. This new
+identity uses cross multiplication over rational complex coefficients, recording
+every original inverse base. Each inverse base must be an exact finite nonzero
+constant at the independent-grade origin. The certificate does not extend the
+original denominator domain, supply a new Taylor coefficient, or call a saved
+source/grade function. Unsupported constructors refuse. The existing assembly
+ring remains unchanged and conservatively refuses literal zero to power zero;
+this is not silently replaced by 1. The new rational checker has the same policy.
+Both full operands, polynomial fractions, exact cross residual and original-domain
+certificates are saved. No numerical fallback exists.
+
+All four native consumer-unit coefficients are also newly connected through the
+actual binding context to their saved LEFT operands, before joining the original
+bound coefficients and grade tables. Their original unit returns remain inherited.
 
 Each stored fullHigherRemainder and quotientRingNumeratorRemainder is newly joined
 to the complete saved full expression, numerator, denominator and all four

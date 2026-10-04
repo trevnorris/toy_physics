@@ -150,6 +150,17 @@ def run(m,J,U):
         result={'leftNormalForm':U.dump_ring(left),'rightNormalForm':U.dump_ring(right),'exactlyEqual':left==right}
         J.emit(name+'-assembly-decision',result);require(left==right,'new exact saved-operand assembly '+name)
         return result
+    def rational_join(name,left,right):
+        J.emit(name+'-rational-input',{'left':ast.unparse(left),'right':ast.unparse(right),'newIdentityOnly':True})
+        try:decision=U.rational_identity(left,right)
+        except BaseException as error:
+            J.emit(name+'-rational-refusal',{'errorType':type(error).__name__,'error':str(error)});raise
+        J.emit(name+'-rational-decision',decision);require(decision['matches'],'actual rational source identity '+name)
+        for i,item in enumerate(decision['originalInverseDomains']):
+            certificate=U.inverse_origin_certificate(item['inverseBase'],context['independentGrades'])
+            J.emit(name+'-original-domain-'+str(i),certificate)
+            require(certificate['finiteNonzero'],'original rational factor finite/nonzero at grade origin')
+        return decision
     native_result=get('native/result-record.json')
     require(native_result['allChecksPassed'] is True and native_result['status']=='BOUNDED_NATIVE_PRESSURE_UNIT_BRIDGE_ACCEPTED_TRANSPORT_AND_EVALUATOR_PENDING','accepted native bridge')
     native_files=native_result['records'];composition_files=get('composition-files.json');composition_result=get('composition-result.json')
@@ -179,9 +190,8 @@ def run(m,J,U):
     # A numeric parameter binding preserves its physical unit annotation. No arithmetic on its value is used to infer units.
     numeric=[]
     for name,value in context['numeric'].items():
-        require(name in registry,'unaccounted original numeric symbol '+name)
-        require(not U.symbols(value['srepr']),'constant saved parameter binding '+name)
-        numeric.append({'symbol':name,'originalUnit':registry[name],'value':value,'dimensionlessValueInOriginalUnits':True})
+        J.emit('numeric-binding-'+name+'-input',{'symbol':name,'value':value,'unit':registry.get(name),'originalPhysicalParameters':context['physicalInput']['parameters'],'heldFrequency':context['frequency']})
+        decision=U.numeric_binding(name,value,context,registry);J.emit('numeric-binding-'+name+'-return',decision);numeric.append(decision)
     J.emit('numeric-binding-provenance',numeric)
     scale=sc('native-profile-scale-join');require(scale['savedLength']==context['numeric']['L_W'] and scale['physicalLength']==context['physicalInput']['parameters']['L_W'],'actual original length join')
     U.verify_contracts(m,get('source-contracts.json'))
@@ -202,6 +212,7 @@ def run(m,J,U):
     for name in m['inheritedUnitOperations']:
         args=get('native/'+name+'-input.json');ret=get('native/'+name+'-return.json');walk=get('native/'+name+'-unit-walk.json')
         J.start('restore-'+name,{'input':args,'return':ret,'walk':walk})
+        require(args['registry']==registry,'actual inherited unit registry '+name)
         require(U.unit_tuple(ret['unit'])==U.unit_tuple(ret['expected']),'inherited native unit return')
         require(U.same(U.parse(args['constructor']),U.parse(walk[-1]['constructor'])) and U.unit_tuple(walk[-1]['unit'])==U.unit_tuple(ret['unit']),'actual inherited unit root')
         denominators[name]=U.reciprocal_bases(args['constructor'],walk)
@@ -219,6 +230,11 @@ def run(m,J,U):
         require(U.equal_text(native_units['new-unbound-chemical-homogeneity']['constructor'],U.tuple_leaf(chem['raw']['srepr'],1)),'same native chemical expression')
         stage={U.symbol_name(U.parse(a['srepr'])):b for a,b in ops['stage2Map']}
         require(stage=={'s11cc1_V_lab_held_'+face:inp['velocityAmplitude'],'s11cc1_mu_theta_lab_held_'+face:chem['amplitude']},'actual simultaneous stage2 map')
+        stage_units=[]
+        for name,op in [('s11cc1_V_lab_held_'+face,face+'-native-velocity-units'),('s11cc1_mu_theta_lab_held_'+face,'new-unbound-chemical-homogeneity')]:
+            item=U.stage_unit_join(name,stage[name],registry,native_units[op]['unit']);stage_units.append(item)
+        J.emit(face+'-actual-stage2-unit-joins',stage_units)
+        require(all(item['matches'] for item in stage_units),'same stage2 placeholder and replacement units')
         require(bound['target']==inp['combined'],'same source target')
         chemical_leaf=U.encoded_leaf(chem['raw'],1);density_leaf=U.encoded_leaf(context['density'],1)
         prior(face+'-native-chemical-raw-join',left={'srepr':native_units['new-unbound-chemical-homogeneity']['constructor']},right=chemical_leaf)
@@ -270,10 +286,15 @@ def run(m,J,U):
             unit=U.matrix_unit(item['coefficientDimension']);origin=consumer_input['slotCoefficients'][slot]
             # Save full actual unbound coefficient. Its unit proof is inherited, not recalculated.
             J.emit('consumer-origin-'+slot,item)
-            prior(name+'-native-unit-coefficient',right=origin)
+            unit_args=sc(name+'-native-unit-coefficient-input')
+            unit_left,steps=U.binding_operand(item['coefficient']['srepr'],context);J.emit(name+'-native-consumer-unit-binding-stages',steps)
+            rational_join(name+'-native-consumer-unit-left',unit_left,U.parse(unit_args['left']['srepr']))
+            prior(name+'-native-unit-coefficient',left=unit_args['left'],right=origin)
             prior(name+'-full-coefficient',left=origin)
         require(U.equal(operands['full'],origin),'same full rational grade source '+name)
+        assembly(name+'-denominator-origin',U.at_grade_zero(U.parse(split['denominator']['srepr']),context['independentGrades']),split['denominatorAtZero'])
         U.regularity(raw,'composition/'+name+'-regular-denominator',split['denominatorAtZero'],J)
+        rational_join(name+'-full-fraction',U.parse(operands['full']['srepr']),U.times(U.parse(split['numerator']['srepr']),U.expr_call('Pow',U.parse(split['denominator']['srepr']),U.integer_node(-1))))
         prior(name+'-saved-zero',left=split['retained']['(0, 0)'],right=operands['savedZero'])
         for field,expected in U.full_remainder_operands(operands['full'],split,context['independentGrades']).items():assembly(name+'-'+field,expected,split[field])
         J.emit(name+'-full-quotient-proof-provenance',{'numerator':split['numerator'],'denominator':split['denominator'],'retained':split['retained'],'excludedPure':split['excludedPure'],'fullHigherRemainder':split['fullHigherRemainder'],'quotientRingNumeratorRemainder':split['quotientRingNumeratorRemainder'],'completedGradeSource':m['compositionSource'],'acceptedSourceHash':composition_result['workerSha256'],'quotientRecurrenceRerun':False,'note':'The following literal zero observations are inherited outputs of this exact saved grade operation, not independent 0=0 proofs of the full remainder.'})
@@ -283,7 +304,7 @@ def run(m,J,U):
         require(split['nativeShapeCoefficientsCalled'] is False and split['zeroGradeReused'] is True,'saved quotient origin')
         # Assessed homogeneity lemma: regular Taylor coefficients in dimensionless eta/sigma retain the source unit.
         groups[name]={'unit':unit,'split':split,'homogeneityArgument':'Native homogeneous source + unit-preserving binding and dimensionless independent regular quotient; saved recurrence/remainder identities inherited. Not a dimensional proof from numeric polynomial.'}
-        J.finish({'sourceUnit':unit,'retainedUnits':{g:None if U.zero(v) else unit for g,v in split['retained'].items()},'zeroRequiredUnit':unit,'normalizedBoundDenominatorUnit':None,'homogeneousUnboundOriginJoined':True,'regularityInherited':True})
+        J.finish({'sourceUnit':unit,'retainedUnits':{g:None if U.zero(v) else unit for g,v in split['retained'].items()},'zeroRequiredUnit':unit,'normalizedBoundDenominatorUnit':None,'homogeneousUnboundOriginJoined':True,'regularityInherited':True,'componentIdentitiesNew':True,'rationalSourceAndOriginJoined':True})
     fields=get('inventory/transforms.json');selected=get('inventory/selected.json')['selected'];index=get('transport-index.json')
     require(len(selected)==544 and len({a['addressId'] for a in selected})==544,'complete selected address census')
     source_records={};consumer_records={}
@@ -318,6 +339,7 @@ def run(m,J,U):
         require(all(U.equal(p['oneDimensional'],field) for p in matching),'identical consumer field for all input matches')
         unit=groups[name]['unit'];consumer_records[key]={'requiredUnit':unit,'transportedUnit':None if U.zero(field) else unit,'quantitySemantics':{'savedNumber':'numeric magnitude in original fixed base units','physicalCoefficientUnit':None if U.zero(field) else unit,'unitReferences':['L_ref','T_ref','M_ref'],'bareNumericExpressionPassedToUnitEngine':False},'zero':U.zero(field),'field':field,'maps':maps,'original':original}
         J.finish(consumer_records[key])
+    require(len(source_records)==64 and len(consumer_records)==16,'all original source/consumer locations')
     addresses=[];pointers=[v['selectedJsonPointer'] for v in index['addressLocations']]
     J.emit('selected-address-coverage-input',{'selectedIds':[v['addressId'] for v in selected],'locations':index['addressLocations']})
     require(len(pointers)==544 and len(set(pointers))==544 and set(pointers)=={'/selected/'+str(i) for i in range(544)},'exact complete selected pointer coverage')

@@ -10,7 +10,11 @@ unchanged pressure-readiness method. Original native unit, source/grade/profile,
 field and numerical calculations are inherited, not rerun.
 
 Assess actual normalization-LEFT and stage2 binding joins, original physical
-parameter unit provenance, new full remainder expression assembly, independent
+parameter unit AND value provenance (held omega3 distinct from original omega1),
+explicit stage2 placeholder/replacement units and same inherited registries,
+exact component reconstruction/nonzero evidence, all six D(0,0) joins and full=N/D
+polynomial-fraction identities on the recorded original domains, the four actual
+consumer normalization LEFT bindings, full remainder expression assembly, independent
 source/consumer grade and jet correspondence, new scale-covariance identities
 on actual saved mapped polynomials, the native base and predecessor/argument
 joins, both actual controls, and exact544-address set coverage. Are any required

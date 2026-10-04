@@ -991,3 +991,25 @@ incidental claim that the ring accepts 0**0 is not true of the reviewed code; th
 literal report is preserved. Retained grade coefficients remain inherited results.
 This necessary validation correction changes no equations or saved inputs and
 will receive substantive assessment before execution.
+
+## 2026-10-03 — source unit binding/domain validation prepared
+
+The revision adds actual stage2 placeholder/replacement unit equality, exact
+physical parameter values with the held-frequency override kept separate, and
+full inherited registry identity. Exact real/imaginary component arithmetic now
+checks saved finiteness/nonzero flags and both sides of reconstruction records.
+All six rational source/consumer groups join D(0,0) and full=N/D through a new
+exact polynomial-fraction identity and explicit original inverse-domain checks.
+The four consumer unbound-unit coefficients also join actual saved binding LEFT
+operands. These are new missing validation identities; retained Taylor
+coefficients and all completed source/profile/numerical calculations are reused.
+No equation, physical input, tolerance or original saved JSON changed.
+
+73 synthetic tests pass, including deliberately false value, component, domain
+and unit inputs. No native science has run. The new independent frozen packet
+contains 956 files/12247605 bytes, SHA256
+78abeefc0372d01a31f2e6e53884e75eb53f2a06a9bb453cb2782cc678c9544a,
+archive 28e9fd8314c8855acb788a401645c0f5ac55de66155a15f5bcae068d71f6417c.
+All933 saved input JSON files match the previous reviewed packet exactly.
+No peer reports or author clearance are supplied. Complete pressure summand
+units and evaluator readiness remain open.

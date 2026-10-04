@@ -45,24 +45,61 @@ def reciprocal_bases(text,events):
     return result
 
 
+def constant_components(value):
+    """Exact finite rational-complex constants only; no flags or approximations."""
+    node=parse(value['srepr']);require(not symbols(value['srepr']),'constant component has no symbols')
+    poly=ring(node);require(set(poly)<= {()},'literal rational-complex component')
+    return poly.get((),(F(0),F(0)))
+
+
 def regularity(raw,prefix,value,J):
-    inp=raw[prefix+'-input.json'];require(equal(inp['value'],value),'actual regularity argument')
-    fraction=raw.get(prefix+'-fraction.json')
-    require(fraction is not None,'complete inherited fraction/component evidence required; flags alone are insufficient')
-    require(len(fraction['finite'])==len(fraction['signedNonzero'])==2 and all(len(v)==2 for v in fraction['finite']+fraction['signedNonzero']),'two real/imaginary component pairs')
-    require(all(v is True for row in fraction['finite'] for v in row),'saved exact component finiteness')
-    # A complex number is nonzero if at least one real/imaginary component is
-    # provably nonzero; the other component may be exactly zero.
-    require(all(type(v) is bool for row in fraction['signedNonzero'] for v in row) and all(any(v is True for v in row) for row in fraction['signedNonzero']),'saved signed nonzero numerator and denominator')
-    evidence={'input':inp,'fraction':fraction,'joins':{}}
-    for suffix in ('fraction-reconstruction','numerator-components','denominator-components'):
-        a=raw[prefix+'-'+suffix+'-input.json'];r=raw[prefix+'-'+suffix+'-return.json']
-        require(zero(r['cancelled']),'saved exact regularity join')
-        expected=value if suffix=='fraction-reconstruction' else fraction['numerator' if suffix=='numerator-components' else 'denominator']
-        require(equal(a['left'],expected),'same regularity operand')
-        evidence['joins'][suffix]={'input':a,'return':r}
-    J.emit('regularity-'+prefix.replace('/','-'),evidence)
-    return evidence
+    name='regularity-'+prefix.replace('/','-')
+    inp=raw[prefix+'-input.json'];fraction=raw.get(prefix+'-fraction.json')
+    joins={suffix:{'input':raw.get(prefix+'-'+suffix+'-input.json'),'return':raw.get(prefix+'-'+suffix+'-return.json')} for suffix in ('fraction-reconstruction','numerator-components','denominator-components')}
+    evidence={'input':inp,'fraction':fraction,'joins':joins,'actualValue':value}
+    J.emit(name+'-input',evidence)
+    try:
+        require(equal(inp['value'],value),'actual regularity argument')
+        require(fraction is not None,'complete inherited fraction/component evidence required; flags alone are insufficient')
+        require(all(len(fraction[k])==2 and all(len(v)==2 for v in fraction[k]) for k in ('components','finite','signedNonzero')),'two real/imaginary component pairs')
+        actual=[]
+        for label,row in zip(('numerator','denominator'),fraction['components']):
+            parts=[constant_components(v) for v in row]
+            require(all(v[1]==0 for v in parts),'actual real components')
+            pair=tuple(v[0] for v in parts);operand=constant_components(fraction[label])
+            require(pair==operand,'actual exact component reconstruction '+label);actual.append(pair)
+        flags=[[v!=0 for v in pair] for pair in actual]
+        require(fraction['finite']==[[True,True],[True,True]] and all(type(v) is bool for row in fraction['finite'] for v in row),'inherited finite flags agree with rational literals')
+        require(all(type(v) is bool for row in fraction['signedNonzero'] for v in row) and fraction['signedNonzero']==flags,'inherited nonzero flags agree with exact components')
+        require(all(any(row) for row in flags),'actual nonzero numerator and denominator')
+        quotient=cmul(actual[0],cpow(actual[1],-1));require(constant_components(value)==quotient,'actual exact saved fraction reconstruction')
+        for suffix,entry in joins.items():
+            a=entry['input'];r=entry['return'];require(zero(r['cancelled']),'saved exact regularity join')
+            expected=value if suffix=='fraction-reconstruction' else fraction['numerator' if suffix=='numerator-components' else 'denominator']
+            require(equal(a['left'],expected),'same regularity operand')
+            require(constant_components(a['left'])==constant_components(a['right']),'both actual component-proof operands')
+        evidence.update(exactComponents=[[str(v) for v in row] for row in actual],derivedNonzero=flags,exactQuotient=[str(v) for v in quotient],newComponentIdentity=True)
+    except BaseException as error:
+        J.emit(name+'-refusal',{'errorType':type(error).__name__,'error':str(error)});raise
+    J.emit(name,evidence);return evidence
+
+
+def numeric_binding(name,value,context,registry):
+    require(name in registry,'unaccounted original numeric symbol '+name)
+    unit=unit_tuple(registry[name]);actual=constant_components(value)
+    require(actual[1]==0,'real saved physical parameter')
+    original=context['physicalInput']['parameters'][name]
+    require(type(original) is str,'literal original rational parameter')
+    old=F(original)
+    target=constant_components(context['frequency']) if name=='omega' else (old,F(0))
+    require(actual==target,'same actual physical/held parameter '+name)
+    return {'symbol':name,'originalUnit':unit,'value':value,'originalPhysicalValue':original,'heldOverride':context['frequency'] if name=='omega' else None,'exactJoinedValue':str(actual[0]),'dimensionlessValueInOriginalUnits':True,'gammaUnitInferenceInherited':name.startswith('gamma_')}
+
+
+def stage_unit_join(name,replacement,registry,inherited_unit):
+    require(name in registry,'stage2 placeholder unit exists')
+    expected=unit_tuple(registry[name]);actual=unit_tuple(inherited_unit)
+    return {'placeholder':name,'replacement':replacement,'placeholderUnit':expected,'replacementInheritedUnit':actual,'matches':expected==actual,'dimensionlessEpsilonRemoved':True}
 
 
 def verify_contracts(manifest,contracts):
@@ -180,6 +217,38 @@ def ring(node):
         n=rational(node.args[1]);require(n.denominator==1,'integer assembly exponent');return rpower(ring(node.args[0]),int(n))
     raise ValueError('unsupported exact assembly constructor '+str(k))
 
+def rational_form(node,domains):
+    """Polynomial fraction for a new identity, with every inverse base retained.
+
+    Cross multiplication is valid only on the saved original denominator domain;
+    this does not extend that domain or rederive a Taylor coefficient.
+    """
+    one={(): (F(1),F(0))};k=kind(node)
+    if k in ('Integer','Rational','Symbol') or isinstance(node,ast.Name) and node.id=='I':return ring(node),one
+    if k in ('Add','Mul'):
+        num={} if k=='Add' else one;den=one
+        for arg in node.args:
+            n,d=rational_form(arg,domains)
+            if k=='Add' and den==d:num=radd(num,n)
+            else:num=radd(rmul(num,d),rmul(n,den)) if k=='Add' else rmul(num,n);den=rmul(den,d)
+        return num,den
+    if k=='Pow':
+        power=rational(node.args[1]);require(power.denominator==1,'integer rational-identity power')
+        n,d=rational_form(node.args[0],domains);power=int(power)
+        if power<=0:require(bool(n),'zero base at nonpositive power refused')
+        if power<0:
+            domains.append({'inverseBase':ast.unparse(node.args[0]),'numerator':dump_ring(n),'denominator':dump_ring(d),'requiresOriginalNonzeroDomain':True});n,d=d,n;power=-power
+        return rpower(n,power),rpower(d,power)
+    raise ValueError('unsupported rational identity constructor '+str(k))
+
+
+def rational_identity(left,right):
+    domains=[];ln,ld=rational_form(left,domains);rn,rd=rational_form(right,domains)
+    require(bool(ld) and bool(rd),'nonzero polynomial denominators')
+    lhs=rmul(ln,rd);rhs=rmul(rn,ld);residual=radd(lhs,{k:(-v[0],-v[1]) for k,v in rhs.items()})
+    return {'leftNumerator':dump_ring(ln),'leftDenominator':dump_ring(ld),'rightNumerator':dump_ring(rn),'rightDenominator':dump_ring(rd),'crossResidual':dump_ring(residual),'matches':not residual,'originalInverseDomains':domains,'extendsDomain':False,'newSavedOperandIdentity':True,'quotientRecurrenceCalled':False}
+
+
 def dump_ring(p):return [{'monomial':list(k),'real':str(c[0]),'imaginary':str(c[1])} for k,c in sorted(p.items())]
 def expr_call(name,*nodes):return ast.Call(func=ast.Name(id=name,ctx=ast.Load()),args=list(nodes),keywords=[])
 def integer_node(n):return parse('Integer('+str(n)+')')
@@ -290,3 +359,9 @@ class ScaleVerifier:
         require(certificate['matches'],'actual mapped profile fails native L-scaled recurrence')
         result={'name':name,'inputKey':list(key),'certificate':certificate};self.cache[key]=result
         self.J.emit(name+'-return',result);return result
+
+
+def inverse_origin_certificate(base,grades):
+    origin=at_grade_zero(parse(base),grades);normal=ring(origin)
+    constant=set(normal)<= {()};value=normal.get((),(F(0),F(0))) if constant else None
+    return {'originalInverseBase':base,'gradeOriginConstructor':ast.unparse(origin),'normalForm':dump_ring(normal),'constantRational':constant,'value':None if value is None else [str(v) for v in value],'finiteNonzero':constant and value!=(0,0),'newDomainJoin':True}

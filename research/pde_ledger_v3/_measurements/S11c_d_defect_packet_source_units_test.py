@@ -108,7 +108,7 @@ class Tests(unittest.TestCase):
     def test_higher_profile_requires_saved_predecessor(self):
         with self.assertRaises(ValueError):U.scale_certificate('w',2,e('Integer(1)'),{},self.context())
     def fraction_fixture(self):
-        f={'numerator':e('Integer(1)'),'denominator':e('Integer(1)'),'finite':[[True,True],[True,True]],'signedNonzero':[[True,False],[True,False]]}
+        f={'numerator':e('Integer(1)'),'denominator':e('Integer(1)'),'components':[[e('Integer(1)'),e('Integer(0)')],[e('Integer(1)'),e('Integer(0)')]],'finite':[[True,True],[True,True]],'signedNonzero':[[True,False],[True,False]]}
         d={'p-input.json':{'value':e('Integer(1)')},'p-fraction.json':f}
         for n in ('fraction-reconstruction','numerator-components','denominator-components'):
             d['p-'+n+'-input.json']={'left':e('Integer(1)'),'right':e('Integer(1)')};d['p-'+n+'-return.json']={'cancelled':e('Integer(0)')}
@@ -123,4 +123,51 @@ class Tests(unittest.TestCase):
             if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='require' and n.args and isinstance(n.args[0],ast.Call) and isinstance(n.args[0].func,ast.Name) and n.args[0].func.id=='bool':
                 hits.append(n.args[0].args[0].id)
         self.assertTrue({'maps','matching','candidates'}<=set(hits))
+    def test_actual_component_forgery_refuses(self):
+        d=self.fraction_fixture();d['p-fraction.json']['components'][0][0]=e('Integer(2)');sink=Sink()
+        with self.assertRaisesRegex(ValueError,'reconstruction'):U.regularity(d,'p',e('Integer(1)'),sink)
+        self.assertEqual(sink.values[-1][0],'regularity-p-refusal')
+    def test_regular_proof_right_forgery_refuses(self):
+        d=self.fraction_fixture();d['p-numerator-components-input.json']['right']=e('Integer(7)')
+        with self.assertRaisesRegex(ValueError,'both actual'):U.regularity(d,'p',e('Integer(1)'),Sink())
+    def test_regular_forged_true_zero_refuses(self):
+        d=self.fraction_fixture();d['p-fraction.json']['components'][1]=[e('Integer(0)'),e('Integer(0)')];d['p-fraction.json']['denominator']=e('Integer(0)')
+        with self.assertRaises(ValueError):U.regularity(d,'p',e('Integer(1)'),Sink())
+    def test_constant_symbol_refuses(self):
+        with self.assertRaises(ValueError):U.constant_components(e("Symbol('unknown')"))
+    def test_constant_float_refuses(self):
+        with self.assertRaises(ValueError):U.constant_components(e('Float(0.5)'))
+    def test_constant_nonfinite_refuses(self):
+        with self.assertRaises(ValueError):U.constant_components(e('oo'))
+    def test_complex_constant_exact(self):self.assertEqual(U.constant_components(e('Mul(Add(Integer(1),I),Pow(Add(Integer(1),Mul(Integer(-1),I)),Integer(-1)))')),(0,1))
+    def binding_context(self):return {'numeric':{'x':e('Rational(2,3)'),'omega':e('Integer(3)')},'frequency':e('Integer(3)'),'physicalInput':{'parameters':{'x':'2/3','omega':'1'}}}
+    def test_numeric_original_value_join(self):self.assertEqual(U.numeric_binding('x',e('Rational(2,3)'),self.binding_context(),{'x':(1,0,0)})['exactJoinedValue'],'2/3')
+    def test_numeric_original_value_miss(self):
+        with self.assertRaisesRegex(ValueError,'same actual'):U.numeric_binding('x',e('Rational(3,2)'),self.binding_context(),{'x':(1,0,0)})
+    def test_held_frequency_not_original_frequency(self):
+        d=U.numeric_binding('omega',e('Integer(3)'),self.binding_context(),{'omega':(0,-1,0)});self.assertEqual(d['originalPhysicalValue'],'1');self.assertEqual(d['heldOverride'],e('Integer(3)'))
+    def test_wrong_held_frequency_refuses(self):
+        with self.assertRaises(ValueError):U.numeric_binding('omega',e('Integer(1)'),self.binding_context(),{'omega':(0,-1,0)})
+    def test_stage_placeholder_unit_mismatch(self):self.assertFalse(U.stage_unit_join('v',e('Integer(2)'),{'v':(1,0,0)},(0,1,0))['matches'])
+    def test_stage_unit_match(self):self.assertTrue(U.stage_unit_join('v',e('Integer(2)'),{'v':(1,0,0)},(1,0,0))['matches'])
+    def test_rational_identity_cancels_polynomial_factor(self):
+        d=U.rational_identity(U.parse("Mul(Add(Symbol('x'),Integer(1)),Pow(Add(Integer(2),Mul(Integer(2),Symbol('x'))),Integer(-1)))"),U.parse('Rational(1,2)'));self.assertTrue(d['matches']);self.assertTrue(d['originalInverseDomains'])
+    def test_rational_identity_forged_numerator(self):
+        d=U.rational_identity(U.parse("Pow(Add(Symbol('x'),Integer(1)),Integer(-1))"),U.parse("Mul(Integer(2),Pow(Add(Symbol('x'),Integer(1)),Integer(-1)))"));self.assertFalse(d['matches'])
+    def test_rational_identity_nested_inverse(self):
+        d=U.rational_identity(U.parse("Pow(Add(Integer(1),Pow(Symbol('x'),Integer(-1))),Integer(-1))"),U.parse("Mul(Symbol('x'),Pow(Add(Symbol('x'),Integer(1)),Integer(-1)))"));self.assertTrue(d['matches'])
+    def test_rational_identity_noninteger_power_refuses(self):
+        with self.assertRaises(ValueError):U.rational_identity(U.parse("Pow(Symbol('x'),Rational(1,2))"),U.parse('Integer(1)'))
+    def test_rational_identity_zero_inverse_refuses(self):
+        with self.assertRaises(ValueError):U.rational_identity(U.parse('Pow(Integer(0),Integer(-1))'),U.parse('Integer(0)'))
+    def test_ring_and_fraction_zero_power_policy(self):
+        for f in (U.ring,lambda n:U.rational_form(n,[])):
+            with self.assertRaises(ValueError):f(U.parse('Pow(Integer(0),Integer(0))'))
+    def test_inverse_origin_annihilated_profile(self):
+        d=U.inverse_origin_certificate("Add(Integer(1),Mul(Symbol('eta'),Symbol('w')))",[e("Symbol('eta')"),e("Symbol('sig')")]);self.assertTrue(d['finiteNonzero'])
+    def test_inverse_origin_zero_refuses(self):self.assertFalse(U.inverse_origin_certificate("Symbol('eta')",[e("Symbol('eta')")])['finiteNonzero'])
+    def test_inverse_origin_unresolved_refuses(self):self.assertFalse(U.inverse_origin_certificate("Symbol('w')",[e("Symbol('eta')")])['finiteNonzero'])
+    def test_grade_origin_denominator_identity(self):
+        n=U.at_grade_zero(U.parse("Add(Integer(4),Mul(Symbol('eta'),Symbol('w')))"),[e("Symbol('eta')")]);self.assertEqual(U.ring(n),U.ring(U.parse('Integer(4)')));self.assertNotEqual(U.ring(n),U.ring(U.parse('Integer(5)')))
 if __name__=='__main__':unittest.main()
+

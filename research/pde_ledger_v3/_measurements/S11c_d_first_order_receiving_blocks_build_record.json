@@ -1,0 +1,320 @@
+{
+  "status": "CLAUDE_ONLY_FINITE_BUILD_ASSESSED",
+  "recordedUtc": "2026-10-04T18:45:14.325438+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-blocks-build-review",
+  "reviewers": [
+    "claude"
+  ],
+  "literalVerdict": "CLEAR FOR THIS FIRST-ORDER RECEIVING-BLOCK AND FACE BUILD",
+  "literalOpening": "**CLEAR FOR THIS FIRST-ORDER RECEIVING-BLOCK AND FACE BUILD**",
+  "report": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_blocks_build_claude.md",
+  "reportSha256": "a380ee3f8504b7c4b60247049c7b7ee5787bd5af30c04d51ed65912ac9b63fb2",
+  "buildAssessed": true,
+  "workerSha256": "9bd26b957d3682a6bf513c603a931a071cbab1e9c64c3fe0b43317e92fa8e29e",
+  "manifestSha256": "6291bfcfcb2eaca2c8f4a275d63b77af6f795b93e2a0fa6f24d26c99f4004af5",
+  "launcherSha256": "5024af4f878ef34e2084b78896bcb183c10f3febe793fdd7d40122730ddd2bda",
+  "rawOutputSha256": "c58ac54466f79a44e462f0c98a45dac2ecc1e8f04fa716a61b8e45fe55e63d98",
+  "receipt": {
+    "engine": "claude",
+    "sessionId": "324b8af8-55a6-45cd-9f4f-16ac659337c9",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "324b8af8-55a6-45cd-9f4f-16ac659337c9"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-blocks-build-review/claude/work",
+    "startedUtc": "2026-10-04T18:38:58.273088+00:00",
+    "packetSha256": "b946ea494195819e9968db3b7dd46dac86a6ba3e90abafdce45ad34e9b9db29e",
+    "promptSha256": "4d710d400a7ecaef122d629165f6c86417f476451e4b03fec85a35fb782764da",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1773590,
+    "exitStatus": 0,
+    "finishedUtc": "2026-10-04T18:43:31.091100+00:00",
+    "wallSeconds": 272.8068756388966,
+    "outputSha256": "c58ac54466f79a44e462f0c98a45dac2ecc1e8f04fa716a61b8e45fe55e63d98",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderrBytes": 0
+  },
+  "coordinatorOutcome": {
+    "status": "ALL_REQUESTED_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-10-04T18:43:31.389371+00:00",
+    "scienceCalls": 0
+  },
+  "completionHook": {
+    "status": "finished",
+    "watcherPid": 1773569,
+    "jobPid": 1773568,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T18:38:57.801325+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "3c4a632ae322be710d23341228cf9213f164d99e418d99f8b510e1812e6404f0",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-10-04T18:43:31.511145+00:00"
+      }
+    }
+  },
+  "packetSha256": "b946ea494195819e9968db3b7dd46dac86a6ba3e90abafdce45ad34e9b9db29e",
+  "archiveSha256": "2b7a94d206231f066fa2f9fb6f0f227091c917bd5c6dd52bbf66f1884c8b7397",
+  "verifiedPacketPrivateArchiveFiles": 965,
+  "verifiedOriginalSources": 964,
+  "allHashesIntact": true,
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "strictStderrBytes": 0,
+  "coordinatorStderrBytes": 0,
+  "coverage": "Read worker/notes/method and launcher; inspected manifest head and selected original JSON structures, native face/chemical and RIGHT end bodies. Did not read every native leaf or all 912 complete JSON files, or verify hashes. These hashes were independently checked here. No numerical or symbolic runtime calculation by reviewer.",
+  "substantiveAssessment": "Finite prerequisite is supported. Full new off-wave correspondence, both coupling blocks, threshold domains/determinants, end RHS/polarization and both native affine maps must pass actual guarded execution. Later matching/current/regularity obligations remain open.",
+  "advisoriesPreserved": [
+    "Normal-sign mutant uses locally assembled sign reversal: formal sensitivity only, not an independent validation of the inherited factor join. Explicit original factor/orientation residual is the actual provenance guard.",
+    "Control applicability requires actual nonzero saved envelope; refusal is preserved without retuning.",
+    "Free-q end-sign cancellation is a runtime obligation. Any failure needs operand/source assessment before physical interpretation.",
+    "First failure stops later stages; no stage completion inferred from source clearance.",
+    "Fourier sign and 2pi are inherited; no transform evaluated.",
+    "Memory/resource failure remains possible and is preserved without retry."
+  ],
+  "incidentalStatementCorrection": {
+    "literalClaim": "Pressure acts only on the x row",
+    "actualSavedJSON": "All U0/U1/U2 baseline consumers are literal zero. Pressure consumers are nonzero only in THETA_BALANCE and E_W_BALANCE. The x-row/coupling suggestion is not an observed physics finding.",
+    "sourceSha256": "9a3e64f1034793544993f468628ba71d9062d8f1d28f4275f7303ed2cc55c418",
+    "fullBaselineConsumerCensus": [
+      {
+        "row": "U0",
+        "column": 0,
+        "consumer00": [
+          {
+            "face": "plus",
+            "slot": "pressure",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          },
+          {
+            "face": "plus",
+            "slot": "normal",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          },
+          {
+            "face": "minus",
+            "slot": "pressure",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          },
+          {
+            "face": "minus",
+            "slot": "normal",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          }
+        ]
+      },
+      {
+        "row": "U1",
+        "column": 0,
+        "consumer00": [
+          {
+            "face": "plus",
+            "slot": "pressure",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          },
+          {
+            "face": "plus",
+            "slot": "normal",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          },
+          {
+            "face": "minus",
+            "slot": "pressure",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          },
+          {
+            "face": "minus",
+            "slot": "normal",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          }
+        ]
+      },
+      {
+        "row": "U2",
+        "column": 0,
+        "consumer00": [
+          {
+            "face": "plus",
+            "slot": "pressure",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          },
+          {
+            "face": "plus",
+            "slot": "normal",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          },
+          {
+            "face": "minus",
+            "slot": "pressure",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          },
+          {
+            "face": "minus",
+            "slot": "normal",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          }
+        ]
+      },
+      {
+        "row": "THETA_BALANCE",
+        "column": 0,
+        "consumer00": [
+          {
+            "face": "plus",
+            "slot": "pressure",
+            "value": {
+              "text": "-10/109 - 3*I/109",
+              "srepr": "Add(Rational(-10, 109), Mul(Integer(-1), Rational(3, 109), I))"
+            }
+          },
+          {
+            "face": "plus",
+            "slot": "normal",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          },
+          {
+            "face": "minus",
+            "slot": "pressure",
+            "value": {
+              "text": "-10/109 - 3*I/109",
+              "srepr": "Add(Rational(-10, 109), Mul(Integer(-1), Rational(3, 109), I))"
+            }
+          },
+          {
+            "face": "minus",
+            "slot": "normal",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          }
+        ]
+      },
+      {
+        "row": "E_W_BALANCE",
+        "column": 0,
+        "consumer00": [
+          {
+            "face": "plus",
+            "slot": "pressure",
+            "value": {
+              "text": "1/2",
+              "srepr": "Rational(1, 2)"
+            }
+          },
+          {
+            "face": "plus",
+            "slot": "normal",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          },
+          {
+            "face": "minus",
+            "slot": "pressure",
+            "value": {
+              "text": "1/2",
+              "srepr": "Rational(1, 2)"
+            }
+          },
+          {
+            "face": "minus",
+            "slot": "normal",
+            "value": {
+              "text": "0",
+              "srepr": "Integer(0)"
+            }
+          }
+        ]
+      }
+    ],
+    "scienceRestorationPerformed": false
+  },
+  "scope": {
+    "target": "Receiving-block, end-sign and native affine-face finite prerequisite of the assessed matched method",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalInputUnchanged": true,
+    "incomingColumns": 2,
+    "receivingMomentumIndependent": true,
+    "grazingThresholds": 2,
+    "transverseCouplingPolicy": "STOP_IF_NONZERO_OR_UNKNOWN_NO_SCHUR_FALLBACK",
+    "affineFaceColumns": 4,
+    "sourceStageReplay": false,
+    "transverseSolvabilityPending": true,
+    "T1R1Pending": true,
+    "G1K1Pending": true,
+    "reflectedFluxWeightPending": true,
+    "asymptoticProjectionPending": true,
+    "fullWorkAndRegularityPending": true,
+    "integralsEvaluated": false,
+    "leakageFactor": null,
+    "recoveryParked": true
+  },
+  "readyGateExists": false,
+  "scienceCalls": 0,
+  "runtimeAcceptance": false,
+  "noAutomaticRetry": true,
+  "noOptionalReviewLoop": true,
+  "noPeerReportShared": true
+}

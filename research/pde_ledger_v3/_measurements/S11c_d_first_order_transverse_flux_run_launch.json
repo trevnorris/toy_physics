@@ -1,0 +1,68 @@
+{
+  "recordedUtc": "2026-10-04T19:41:28.436110+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-01",
+  "launch": {
+    "jobPid": 1800745,
+    "watcherPid": 1800746,
+    "gateSha256": "9b592d115149e839142914476ced16d0bd24c8119b01ff504bbdaf8bc727ab1d",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "4",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-01/resource-guard",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-01",
+      "--stage",
+      "first_order_transverse_flux",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_gate.json"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "gateSha256": "9b592d115149e839142914476ced16d0bd24c8119b01ff504bbdaf8bc727ab1d",
+  "preparedCommit": "03b693cb",
+  "hook": {
+    "status": "finished",
+    "watcherPid": 1800746,
+    "jobPid": 1800745,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T19:40:56.552947+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "60a84c2fba7c123af4e6202cd61f96b549f5bd39f10cada890076b3f54d19ce9",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-10-04T19:41:22.669844+00:00"
+      }
+    }
+  },
+  "additionalIdentityCopies": 21,
+  "oneHostAdmissionInspection": true,
+  "automaticRetry": false,
+  "coordinatorOutcome": {
+    "exitCode": 1,
+    "wallSeconds": 25.869690014980733,
+    "scientificAcceptance": "PENDING_ACTUAL_INSPECTION"
+  },
+  "status": "COMPLETED_BEFORE_ADMISSION_REQUIRES_INSPECTION"
+}

@@ -1,0 +1,55 @@
+{
+  "status": "FAILED_NATIVE_CURRENT_EVIDENCE_SERIALIZATION_NO_FLUX_RESULT",
+  "createdUtc": "2026-10-04T19:43:27.077242+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-01",
+  "gateSha256": "9b592d115149e839142914476ced16d0bd24c8119b01ff504bbdaf8bc727ab1d",
+  "workerSha256": "a5fd75e43a897bba2728b56c827dca37b4e5a5dc2de816ba62f88f86903d9e6c",
+  "buildRecordSha256": "3a906f339a740a2880066edefcf173166eab8219b9cb558a928e19424fb0fa31",
+  "methodRecordSha256": "8bfe5fe227565e89df1a877ac3cd1da54d8b469c9c3623743fd192dd9c4622f4",
+  "inspection": "Source/JSON/hash/opaque bytes only, no scientific restoration or validator",
+  "metadataChecks": 1171,
+  "failure": {
+    "executionStatus": "FAILED_PRESERVED",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux.py\", line 253, in main\n    result=J.stage('native-transverse-end-flux-prerequisite',{'manifestSha256':gate['manifestSha256'],'buildReviewSha256':gate['buildReviewRecordSha256']},lambda:scientific_work(manifest,J,ns['decode']));code=0\n  File \"unchanged-journal-and-containment\", line 243, in stage\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux.py\", line 253, in <lambda>\n    result=J.stage('native-transverse-end-flux-prerequisite',{'manifestSha256':gate['manifestSha256'],'buildReviewSha256':gate['buildReviewRecordSha256']},lambda:scientific_work(manifest,J,ns['decode']));code=0\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux.py\", line 163, in scientific_work\n    J.emit(side+'-native-current-source',{'slabCurrent':slab['SLAB_CURRENT_MATRIX'],'conservativeCurrent':con['SLAB_CURRENT_MATRIX'],'massCorrection':slab['MASS_RATE_CORRECTION_MATRIX'],'decompositionResidual':slab['CURRENT_DECOMPOSITION_RESIDUAL'],'harmonicNormalization':slab['HARMONIC_VARIATION_NORMALIZATION'],'knownDimensions':list(registry.items()),'units':units,'sourceBoundaryWork':con['NORMAL_BOUNDARY_WORK'],'actualTimeBoundary':slab['ACTUAL_TIME_BOUNDARY'],'chemicalTransport':slab['CHEMICAL_TRANSPORT_CURRENT']})\n  File \"unchanged-journal-and-containment\", line 235, in emit\n  File \"unchanged-journal-and-containment\", line 40, in save\n  File \"/usr/lib/python3.10/json/__init__.py\", line 179, in dump\n    for chunk in iterable:\n  File \"/usr/lib/python3.10/json/encoder.py\", line 431, in _iterencode\n    yield from _iterencode_dict(o, _current_indent_level)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 405, in _iterencode_dict\n    yield from chunks\n  File \"/usr/lib/python3.10/json/encoder.py\", line 325, in _iterencode_list\n    yield from chunks\n  File \"/usr/lib/python3.10/json/encoder.py\", line 325, in _iterencode_list\n    yield from chunks\n  File \"/usr/lib/python3.10/json/encoder.py\", line 438, in _iterencode\n    o = _default(o)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 179, in default\n    raise TypeError(f'Object of type {o.__class__.__name__} '\nTypeError: Object of type UndefinedFunction is not JSON serializable\n",
+    "incompleteOperation": "native-transverse-end-flux-prerequisite",
+    "automaticRetry": false
+  },
+  "newScientificScalarOperations": 0,
+  "completedTopOperations": 0,
+  "completeArtifacts": 6,
+  "completeRightOriginalJoins": {
+    "actualExpected": true,
+    "originalExpected": true
+  },
+  "inheritedLiteralZeros": 20,
+  "partialArtifact": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-01/complete/LEFT-native-current-source.json",
+    "sha256": "8a8a4634014991276a5cd364e49a6a8f5f281deddf6b91c4774e38c4bae01dd5",
+    "bytes": 24504,
+    "validJSON": false
+  },
+  "savedCopies": 344,
+  "posthashes": 705,
+  "sourceSnapshots": 17,
+  "additionalIdentityCopies": 21,
+  "allHashesIntact": true,
+  "strictScientificStderrBytes": 2374,
+  "stdoutChecksIdentical": true,
+  "workerSeconds": 25.467809458030388,
+  "peakCgroupBytes": 165253120,
+  "zeroMemoryEvents": true,
+  "zeroSwap": true,
+  "noDeadlines": true,
+  "G0GrefG1K1Computed": false,
+  "leakageFactor": null,
+  "scientificAcceptance": false,
+  "automaticRetry": false,
+  "treeIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-01/failure-inspection-files.json",
+    "sha256": "f25f89dab0f3ff397c9fee6fda918302bdbf5229fecef08e105eb11559d55147",
+    "files": 425,
+    "bytes": 17669071,
+    "excludesInspectionFileItself": true
+  },
+  "disposition": "Preserve the six complete records and partial native-registry artifact. The existing journal accepts Basic/Matrix but not FunctionClass; a task-local lossless serializer repair and saved-prefix continuation need fresh exact readiness. No equation, numerical tolerance or physics predicate is changed."
+}

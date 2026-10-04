@@ -1,0 +1,58 @@
+{
+  "status": "ACTIVE_TEMPORARY_CLAUDE_ONLY_USER_POLICY",
+  "recordedUtc": "2026-10-04T14:34:22.867533+00:00",
+  "scope": "Ongoing authorized toy_physics research reviews",
+  "userInstruction": "Grok has not been that useful and I'm almost out of tokens for a bit. For the time being only have Claude do reviews. Unless you believe that not having Grok review would be a loss, but from what I've seen Grok hasn't caught anything that Claude didn't catch.",
+  "selectedReviewers": [
+    "claude"
+  ],
+  "until": "User changes this temporary policy; no automatic return to paired reviews.",
+  "supersedes": "Historical requirements for a Claude/Grok pair, waiting for Grok, or literal paired CLEAR within this ongoing work. An actual scoped Claude review and substantive assessment remain required.",
+  "preserve": [
+    "All historical Grok findings and reports, including distinct blockers.",
+    "Pinned source and packet bytes for the active review.",
+    "Claude process and existing completion hook.",
+    "Scientific no-replay, containment, no-deadline, evidence and no-automatic-retry rules."
+  ],
+  "currentReview": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-build-review-r2",
+  "currentGrokDisposition": {
+    "recordedUtc": "2026-10-04T14:34:22.867533+00:00",
+    "authority": "User explicitly directs Claude-only reviews temporarily to conserve tokens. Stop the current Grok attempt; retain Claude and the existing completion hook.",
+    "grokSessionId": "1959066a-0416-49db-867c-7472a2f64f39",
+    "grokPid": 1667688,
+    "claudePid": 1667687,
+    "automaticRetry": false,
+    "reportsRead": false,
+    "action": "SIGTERM sent to verified Grok-only process group",
+    "actualCommand": [
+      "/home/trevnorris/.local/bin/grok",
+      "--cwd",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-build-review-r2/grok/work",
+      "--prompt-file",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-build-review-r2/grok/work/input/review-prompt.md",
+      "--output-format",
+      "json",
+      "--permission-mode",
+      "dontAsk",
+      "--no-plan",
+      "--tools",
+      "Read",
+      "--no-subagents",
+      "--disable-web-search",
+      "--verbatim",
+      "--session-id",
+      "1959066a-0416-49db-867c-7472a2f64f39"
+    ],
+    "processGroup": 1667688
+  },
+  "assessment": "Loses a second independent perspective; reasonable temporary tradeoff under token constraint. Claude-only must never be described as paired clearance.",
+  "implementationAfterCurrentCompletion": [
+    "Read actual Claude report and current attempt receipts; preserve cancelled or completed Grok history without requiring its verdict.",
+    "Add this policy to AGENTS.md after the active reviewer finishes, because AGENTS.md is pinned by the running review and must remain unchanged while it runs.",
+    "Update future review runner selections and exact execution-gate reviewer requirements to Claude-only under this explicit authority; keep scientific assignments and review findings intact."
+  ],
+  "AGENTSCurrentSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "noNewReviewLaunched": true,
+  "noScientificWorkLaunched": true,
+  "noModelPollingOrNewAutomation": true
+}

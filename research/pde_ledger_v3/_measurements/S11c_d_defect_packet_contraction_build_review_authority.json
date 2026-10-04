@@ -1,0 +1,17 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T09:47:46.329094+00:00",
+  "packetSha256": "d04fefbfc8c9d11f9244a9becf447694077990f24344b999dba280cedb2459cc",
+  "archiveSha256": "f7cf1dd99c93e499a26b5fa85484daf30ee6f711a5112622f8b8096af48075a1",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 1561,
+  "bytes": 68632479,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing user/AGENTS authorization for necessary independent established-Claude/Grok source assessment in the existing two-packet research. No new recipient, physical scope or numerical evaluator authorization.",
+  "scope": "Bounded exact finite-window contraction certificate build only; no numerical evaluator, integral/action/current/loss",
+  "noAutomaticRetry": true,
+  "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+}

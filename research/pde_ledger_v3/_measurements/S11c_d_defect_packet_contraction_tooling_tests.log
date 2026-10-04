@@ -1,0 +1,39 @@
+test_all_field_proof_operands (__main__.Metadata) ... ok
+test_all_native_source_ancestry (__main__.Metadata) ... ok
+test_all_saved_bytes (__main__.Metadata) ... ok
+test_all_summand_actual_arguments (__main__.Metadata) ... ok
+test_all_template_proof_operands (__main__.Metadata) ... ok
+test_complete_row_selection (__main__.Metadata) ... ok
+test_declared_no_deadlines (__main__.Metadata) ... ok
+test_full_geometry_saved_no_reconstruction (__main__.Metadata) ... ok
+test_guard_and_hook_unchanged (__main__.Metadata) ... ok
+test_literal_saved_zero_return_schema (__main__.Metadata) ... ok
+test_native_parameters_not_replayed (__main__.Metadata) ... ok
+test_no_gate (__main__.Metadata) ... ok
+test_no_science_at_import (__main__.Metadata) ... ok
+test_original_physical_plan (__main__.Metadata) ... ok
+test_science_import_after_containment (__main__.Metadata) ... ok
+test_source_compile_only (__main__.Metadata) ... ok
+test_source_pins (__main__.Metadata) ... ok
+test_arithmetic_calls_refused (__main__.Synthetic) ... ok
+test_arithmetic_missing_argument (__main__.Synthetic) ... ok
+test_arithmetic_statements_refused (__main__.Synthetic) ... ok
+test_arithmetic_synthetic (__main__.Synthetic) ... ok
+test_exact_source_fragment (__main__.Synthetic) ... ok
+test_strict_true (__main__.Synthetic) ... ok
+test_synthetic_scalar_constructor (__main__.Synthetic) ... ok
+test_toy_bad_domain_types (__main__.Synthetic) ... ok
+test_toy_interval_boundary (__main__.Synthetic) ... ok
+test_toy_interval_central (__main__.Synthetic) ... ok
+test_toy_interval_empty (__main__.Synthetic) ... ok
+test_toy_interval_wings (__main__.Synthetic) ... ok
+test_toy_orientation_membership (__main__.Synthetic) ... ok
+test_toy_wrong_variable_refuses (__main__.Synthetic) ... ok
+test_unit_type_rejection (__main__.Synthetic) ... ok
+test_units_add (__main__.Synthetic) ... ok
+test_units_scale (__main__.Synthetic) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 1.335s
+
+OK

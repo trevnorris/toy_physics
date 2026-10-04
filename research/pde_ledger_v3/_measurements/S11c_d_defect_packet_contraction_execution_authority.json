@@ -1,0 +1,54 @@
+{
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Exact finite-window ordinary J and three added D contraction certificates only",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": true,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": false,
+    "kernelWaveMeasureTransportOnly": false,
+    "newFiniteWindowCertificate": true,
+    "noNumericalEvaluator": true,
+    "originalWindowPairs": [
+      [
+        27,
+        122
+      ],
+      [
+        29,
+        124
+      ]
+    ]
+  },
+  "boundedInstrumentAuthorized": true,
+  "scienceExecutionsAuthorized": 1,
+  "automaticScientificRetry": false,
+  "noDeadline": true,
+  "standingAuthorization": "User repeatedly directed continued clear bounded research and necessary independent established-Claude/Grok assessment without routine stage approval; AGENTS standing review and execution policies apply.",
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "scopeExpansion": false,
+  "numericalEvaluatorAuthorized": false,
+  "utc": "2026-10-04T09:44:20.016289+00:00"
+}

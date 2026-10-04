@@ -1235,3 +1235,19 @@ The complete source/544-address/units, original collision-label transport and
 algebra/domain controls are mandatory certificate-build obligations. Inner
 grazing regularity and all full numerical error/cost/storage/readiness claims
 remain unestablished. Preparing that bounded certificate; no integral or gate.
+
+Prepared the bounded finite-window contraction certificate build. It restores
+1,534 complete JSON inputs and derives only the missing four primitive
+factorizations, full template/address/unit joins, clipped-domain identities,
+compact source-bound majorants and label/dependency records. Both original
+window pairs and all outer wings remain. Algebra/domain controls affect the
+actual maps and complete expressions. Thirty-four stdlib metadata/synthetic
+tests pass; no scientific expression or integral has run. The full numerical
+evaluator, nested error propagation, storage and independent action routes
+remain unapproved and require their own concrete assessment.
+
+The frozen build packet contains 1,561 complete files / 68,632,479 bytes, SHA256
+d04fefbfc8c9d11f9244a9becf447694077990f24344b999dba280cedb2459cc.
+It includes every runtime JSON input and original native source, with no peer
+report or peer commentary. Packet/archive/current source hashes are verified;
+standing established-Claude/Grok authority is recorded. No READY gate exists.

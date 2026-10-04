@@ -1,0 +1,92 @@
+{
+  "status": "READY_FOR_INDEPENDENT_CONTRACTION_BUILD_SOURCE_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-build-review",
+  "methodCommit": "1710a122",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-04T09:47:46.329094+00:00",
+    "packetSha256": "d04fefbfc8c9d11f9244a9becf447694077990f24344b999dba280cedb2459cc",
+    "archiveSha256": "f7cf1dd99c93e499a26b5fa85484daf30ee6f711a5112622f8b8096af48075a1",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 1561,
+    "bytes": 68632479,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing user/AGENTS authorization for necessary independent established-Claude/Grok source assessment in the existing two-packet research. No new recipient, physical scope or numerical evaluator authorization.",
+    "scope": "Bounded exact finite-window contraction certificate build only; no numerical evaluator, integral/action/current/loss",
+    "noAutomaticRetry": true,
+    "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+  },
+  "static": {
+    "status": "STATIC_FULL_PACKET_VERIFIED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "b8e443956ae1f4e00ea2cf7437796862995286f35da97fdec3bd005202230c5e",
+    "packetSha256": "d04fefbfc8c9d11f9244a9becf447694077990f24344b999dba280cedb2459cc",
+    "archiveSha256": "f7cf1dd99c93e499a26b5fa85484daf30ee6f711a5112622f8b8096af48075a1",
+    "files": 1561,
+    "bytes": 68632479,
+    "sourceHashesChecked": 1560,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "newScientificOperations": 0,
+    "READYGateExists": false
+  },
+  "workerSha256": "f0df5d854108d22567f681ed938eaeec28576b18223411aeec2903fae3f8fb7a",
+  "manifestSha256": "44e525084b6279b2e35760bde7618ed94f55c167bb32b2062cc68d0ede58d496",
+  "librarySha256": "602a31189dec7ee4ba6de1e8a81248fe0cdb0bef877c8ec7a77cb2ce2e3b073a",
+  "launcherSha256": "7bfd248603f1bdafa587e6f30fc3c4975eaf32834b6c1b1f144a2f6e7e4498e9",
+  "methodSha256": "2ad44ce730d22d43f785672214e2b58e0660c1d85e4337e13692ba72f6e96a31",
+  "sharedGuardSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+  "supervisorSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Exact finite-window ordinary J and three added D contraction certificates only",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": true,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": false,
+    "kernelWaveMeasureTransportOnly": false,
+    "newFiniteWindowCertificate": true,
+    "noNumericalEvaluator": true,
+    "originalWindowPairs": [
+      [
+        27,
+        122
+      ],
+      [
+        29,
+        124
+      ]
+    ]
+  },
+  "toolingTests": 34,
+  "newScientificOperations": 0,
+  "READYGateExists": false
+}

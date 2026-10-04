@@ -1158,3 +1158,13 @@ metadata tests pass. All 2,521 saved inputs, physical equations and inputs,
 methods, shared helpers and the existing flat-route control remain unchanged.
 Frozen packet 91bf5387192b8fa36f72c37f3014f469c67ce728ff9f5a84968d1609fce2d601
 contains 2,549 files / 17,868,569 bytes, with no peer reports or new science.
+
+Kernel/wave/measure unit build r3 is independently clear for bounded readiness:
+both literal reports CLEAR, with 15,319 completed packet/archive/private-source
+and receipt checks. Partial review coverage and inherited gamma/algebra,
+profile/Fourier and normal-sign dependencies remain explicit. No result is
+accepted by source review. Prepare one exact gated no-deadline pooled run,
+hook first, and inspect all actual operands/returns and controls. No old
+scientific calculations may be replayed; full numerical evaluator readiness
+and any packet/current/loss value remain separate. Earlier literal revisions
+and CLI diagnostics are preserved.

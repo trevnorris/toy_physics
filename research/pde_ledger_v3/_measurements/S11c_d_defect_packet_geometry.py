@@ -103,9 +103,17 @@ def verify_gate(path,manifest_path,m):
     require(g['launcher']==m['launcher'] and g['library']==m['librarySource'] and
         g['buildReviewRecord']==m['reviewRecordWillBe'] and g['authority']==m['executionAuthority'],'actual document routes')
     r=read(g['buildReviewRecord'])
-    require(g['independentBuildClearance'] is True and r['independentBuildClearance'] is True and r['allChecksPassed'] is True,'actual paired build assessment')
-    for key in ('workerSha256','manifestSha256','librarySha256','launcherSha256','sharedGuardSha256','supervisorSha256'):
-        require(r[key]==g[key],'review/gate '+key)
+    require(r['independentBuildClearance'] is True and r['allChecksPassed'] is True,'original paired build assessment')
+    require(g['independentBuildClearance'] is False and g['localToolingExecutionAuthority'] is True,'tested local repair is not fresh independent clearance')
+    require(g['localToolingRepairRecord']==m['localToolingRepairRecord'] and
+        sha(g['localToolingRepairRecord'])==g['localToolingRepairRecordSha256'],'exact repair record')
+    repair=read(g['localToolingRepairRecord'])
+    require(repair['localToolingExecutionAuthority'] is True and repair['testsPassed'] is True and
+        repair['independentBuildClearance'] is False,'standing tested tooling authority')
+    for key in ('workerSha256','manifestSha256','librarySha256','launcherSha256'):
+        require(repair['reviewed'][key]==r[key] and repair['current'][key]==g[key],'review/repair/gate '+key)
+    for key in ('sharedGuardSha256','supervisorSha256'):
+        require(r[key]==g[key],'unchanged containment '+key)
     require(all(r['reports'][reviewer]['literalVerdict']=='CLEAR FOR THIS BOUNDED PACKET-GEOMETRY BUILD' for reviewer in ('claude','grok')),'literal build reports')
     method=read(m['methodRecord'])
     require(g['methodRecordSha256']==sha(m['methodRecord']) and method['jointIndependentMethodClearance'] is True and
@@ -140,7 +148,7 @@ def dependency_inventory(raw,J,m):
     full=raw['inventory/THETA_BALANCE-ordered-addresses.json'];selection=raw['selected/pressure-addresses.json']
     addresses=[a for a in full if a['row']=='THETA_BALANCE' and a['jet']['channel']=='e_W']
     J.emit('selected-arguments',{'selection':selection,'originalReceipt':m['savedInputs']['inventory/THETA_BALANCE-ordered-addresses.json']})
-    require(addresses==selection['selected'] and len(addresses)==544 and len({a['addressId'] for a in addresses})==544,'all actual selected addresses')
+    require(len(full)==2652 and addresses==selection['selected'] and len(addresses)==544 and len({a['addressId'] for a in addresses})==544,'all actual selected addresses')
     original=m['savedInputs']['inventory/THETA_BALANCE-ordered-addresses.json']
     require(selection['sourceSha256']==original['sha256'] and selection['sourceBytes']==original['bytes'],'selection original byte join')
     old=raw['preflight/address-adapter-result.json'];byid={a['addressId']:a for a in old}
@@ -174,6 +182,8 @@ def dependency_inventory(raw,J,m):
         for role in ('source','consumer'):
             fid=a[role+'Transform']['coefficientId']
             require(fields[fid]['field']==a[role+'Field'] and o[role+'FieldId']==fid,'actual '+role+' field identity')
+            require(fields[fid]['definition']=='hat b(s)=(1/(2*pi))*integral exp(-i*s*x)*b(x) dx; distribution not evaluated','saved Fourier convention')
+        require(a['targetGrade']==[sum(a[k][i] for k in ('consumerGrade','responseGrade','sourceGrade')) for i in range(2)],'original ordered grade sum')
         for key in ('sha256','original','mapped','map','symbolAssumptions','flatSupport','frequency','positiveRegulatorContinuation'):
             require(op['actualResponseMap'][key]==a['responseMap'][key],'actual factor argument '+key)
         require(op['addressNormalOriginal']==a['normalOriginal'] and op['requiredMap']==a['fullFactorProof']['completeNormalMap'],'complete native normal map')
@@ -212,7 +222,7 @@ def dependency_inventory(raw,J,m):
     families={kind:[{'id':hashlib.sha256(k.encode()).hexdigest(),**v} for k,v in group.items()] for kind,group in family_maps.items()}
     J.emit('dependency-families',{'families':families,'entries':entries,'scope':'candidate mathematical families only; no numerical cache authorized',
         'rule':'actual carrier/center/width/momentum/rule/route/precision/tail/unit certificate still required',
-        'sharedEvaluatedValuesAcrossRoutes':False,'oldBankRequestMatches':0})
+        'sharedEvaluatedValuesAcrossRoutes':False,'oldBankRequestMatching':'NOT_ATTEMPTED','oldBankRequestsReused':0})
     return entries,families
 
 
@@ -233,7 +243,13 @@ def count_work(entries,families,summary,domain,G):
             for route,n in [('A24',24),('A48',48),('B_initial',None)]:
                 one=slabs*(2*n if n else 15)
                 nodes=one if name in ('flat','height-contact') else counts[route].get('outerNodeOccurrences',counts[route].get('outerNodeOccurrencesLowerBound'))
+                branches=2 if name=='height-paired-PV' else 1
                 per[route]={'nodeOccurrencesPerFamily':nodes,'addressProductOccurrences':nodes*len(a),
+                    'productCountMeaning':'one paired product per height-PV node; one scalar product otherwise',
+                    'addressBranchProductOccurrences':branches*nodes*len(a),
+                    'candidateResponseBranchOccurrences':branches*nodes*len({e['families']['response'] for e in a}),
+                    'candidateYBranchOccurrencesBeforeCoordinateReuse':branches*nodes*len({e['families']['Y'] for e in a}),
+                    'responseBranchesPerNode':branches,
                     'candidateResponseFamilyOccurrences':nodes*len({e['families']['response'] for e in a}),
                     'candidateXFamilyOccurrencesBeforeCoordinateReuse':nodes*len({e['families']['X'] for e in a}),
                     'candidateYFamilyOccurrencesBeforeCoordinateReuse':nodes*len({e['families']['Y'] for e in a}),
@@ -242,7 +258,8 @@ def count_work(entries,families,summary,domain,G):
             records.append({'primitive':name,'liveAddressIds':[e['addressId'] for e in a],
                 'perGrade':[{'grade':list(g),'addressIds':[e['addressId'] for e in a if e['targetGrade']==list(g)]} for g in ((0,0),(1,0),(0,1),(1,1))],
                 'routes':per,'addressedScalarReturnOccurrencesA24A48WithoutSharing':sum(v['addressProductOccurrences'] for k,v in per.items() if k!='B_initial'),
-                'recordCountConvention':'Conditional unshared format: one scalar address/primitive return record per occurrence. A grouped or vector record format can have fewer records; no serialized-size or required-RSS inference follows.'})
+                'addressedBranchScalarReturnOccurrencesA24A48WithoutSharing':sum(v['addressBranchProductOccurrences'] for k,v in per.items() if k!='B_initial'),
+                'recordCountConvention':'Paired height-PV products and individual branch scalars are counted separately. Conditional unshared records only; grouped/vector records may be fewer. No serialized-size or RSS inference.'})
     return {'counts':counts,'primitives':records,'flatContactRule':'Conservative reuse of all square k slabs; flat/contact do not acquire a second outer integral',
         'innerFourierAdaptiveNodeCounts':'UNKNOWN','serializedBytesAndPeakRSS':'UNKNOWN; prior database sizes do not prove native memory failure',
         'wallTimeEstimate':None,'uniformQuadratureErrorClaim':False,'candidateSharingNotEvaluatorReadiness':True}
@@ -274,8 +291,8 @@ def run(m,J,G):
     kappa=G.Quad(0,1,F(119,20));width=F(physical['s']);length=F(params['L_W']);summaries=[];controls=[]
     # This exact constant bridge is new geometry arithmetic, not a replay of
     # matching dispersion, a saved root construction, or a scientific producer.
-    require(kappa*kappa==F(595,100),'exact positive geometry basis bridge')
     J.emit('geometry-basis',{'savedKappa':physical['kappa'],'positiveBasis':kappa,'square':kappa*kappa,'width':width,'length':length})
+    require(kappa*kappa==F(595,100),'exact positive geometry basis bridge')
     for carrier_id,carrier in [('matching',kappa),('zero',kappa*0)]:
         for enlargement in (0,2):
             K=pre['K']+enlargement;U=pre['U'];T=pre['T']+enlargement
@@ -285,6 +302,7 @@ def run(m,J,G):
                 args={'carrier':carrier,'K':K,'U':U,'T':T,'lines':lines,'mandatoryCuts':cuts,'box':box}
                 J.start(name,args)
                 plan=G.arrangement(lines,*box,cuts);J.emit(name+'-full-arrangement',plan)
+                require(plan['box']==box,'actual arrangement box matches specification')
                 result=G.audit(plan,lines,cuts);counts=count_work(entries,families,result,domain,G)
                 J.emit(name+'-work-counts',counts);J.finish({'audit':result,'counts':counts,'noNodesOrIntegralsEvaluated':True})
                 summaries.append({'name':name,'domain':domain,'carrier':carrier_id,'K':K,'U':U,'T':T,'audit':result,'counts':counts})
@@ -311,7 +329,7 @@ def run(m,J,G):
         'response':['face/slot/component','complete native factor and map','physical k/l/depth bindings','omega/cs/edges/materials/W/L','route/order/precision/tail/inner panel settings'],
         'independentRoutes':'A24/A48 and physical B have independent evaluated transforms, inner arrays and outer samples. Immutable source/rule provenance may be shared. No fixed-bank convenience complete assembler called.',
         'oldBankRequestsReused':0,'units':'PENDING_SEPARATE_PRESSURE_CERTIFICATES','numericalEvaluatorReady':False})
-    return {'status':'BOUNDED_GEOMETRY_DEPENDENCY_PLAN_COMPLETE_PENDING_INSPECTION','plans':summaries,'addresses':544,'formalAddresses':102,'explicitZeroAddresses':442,
+    return {'status':'BOUNDED_GEOMETRY_DEPENDENCY_PLAN_COMPLETE_PENDING_INSPECTION','plans':summaries,'addresses':544,'formalAddresses':sum(e['status']==LIVE for e in entries),'explicitZeroAddresses':sum(e['status']!=LIVE for e in entries),
         'candidateFamilyCounts':{k:len(v) for k,v in families.items()},'controls':controls,'pressureSummandUnits':'PENDING_SEPARATE_REQUIRED_CERTIFICATE',
         'numericalEvaluatorReady':False,'integralsEvaluated':0,'completedFunctionsReplayed':False,'numericalCacheValuesReused':0,'fullAdaptiveCost':'UNKNOWN',
         'scope':m['scope'],'savedCopies':len(copies)}
@@ -321,7 +339,7 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);p.add_argument('--inputs',type=Path,required=True);p.add_argument('--gate',type=Path,required=True);args=p.parse_args()
     m=read(args.inputs);gate=verify_gate(args.gate,args.inputs,m)
     document_pins={str(args.inputs):gate['manifestSha256'],str(args.gate):sha(args.gate)}
-    for key in ('buildReviewRecord','authority'):document_pins[gate[key]]=gate[key+'Sha256']
+    for key in ('buildReviewRecord','authority','localToolingRepairRecord'):document_pins[gate[key]]=gate[key+'Sha256']
     document_pins[m['methodRecord']]=gate['methodRecordSha256']
     tail=[str(Path(__file__).resolve()),'--out',str(args.out),'--inputs',str(args.inputs),'--gate',str(args.gate)]
     require(sys.argv==tail and gate['command'][-len(tail):]==tail and str(args.out)==gate['outputDirectory'],'actual invocation and output')

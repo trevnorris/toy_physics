@@ -137,4 +137,44 @@ class ExactTests(unittest.TestCase):
             self.assertEqual(len(v['kronrodNodes' if n==15 else 'nodes']),n)
 
 
+    def test_paired_branch_work_counts(self):
+        entries=[{'addressId':i,'component':'NATIVE_HEIGHT','status':W.LIVE,
+                  'targetGrade':[1,0],'families':{'X':'x','Y':'y','response':'r'}} for i in range(2)]
+        result=W.count_work(entries,{}, {'slabs':3,'cells':7},'height',G)
+        record=result['primitives'][0]
+        for route in record['routes'].values():
+            nodes=route['nodeOccurrencesPerFamily']
+            self.assertEqual(route['addressProductOccurrences'],nodes*2)
+            self.assertEqual(route['addressBranchProductOccurrences'],nodes*4)
+            self.assertEqual(route['candidateResponseBranchOccurrences'],nodes*2)
+            self.assertEqual(route['candidateYBranchOccurrencesBeforeCoordinateReuse'],nodes*2)
+            self.assertEqual(route['candidateXFamilyOccurrencesBeforeCoordinateReuse'],nodes)
+        self.assertEqual(record['addressedBranchScalarReturnOccurrencesA24A48WithoutSharing'],
+                         2*record['addressedScalarReturnOccurrencesA24A48WithoutSharing'])
+    def test_flat_counts_single_outer_integral(self):
+        e={'addressId':0,'component':'NATIVE_FLAT','status':W.LIVE,'targetGrade':[0,0],
+           'families':{'X':'x','Y':'y','response':'r'}}
+        r=W.count_work([e],{}, {'slabs':3,'cells':7},'square',G)['primitives'][0]
+        self.assertEqual(r['routes']['A24']['nodeOccurrencesPerFamily'],3*48)
+        self.assertEqual(r['routes']['A24']['addressBranchProductOccurrences'],3*48)
+    def test_empty_primitive_counts(self):
+        for r in W.count_work([],{}, {'slabs':3,'cells':7},'height',G)['primitives']:
+            self.assertEqual(r['addressedBranchScalarReturnOccurrencesA24A48WithoutSharing'],0)
+            self.assertEqual(r['addressedScalarReturnOccurrencesA24A48WithoutSharing'],0)
+    def test_wrong_box_explicit_join_refuses(self):
+        lines,cuts,box=fixture();actual_box=[q(-4),q(4),box[2],box[3]]
+        plan=G.arrangement(lines,*actual_box,cuts)
+        self.assertTrue(G.audit(plan,lines,cuts)['coverage'])
+        with self.assertRaisesRegex(ValueError,'actual arrangement box'):
+            W.require(plan['box']==box,'actual arrangement box matches specification')
+    def test_missing_saved_directory_scan_is_empty(self):
+        with tempfile.TemporaryDirectory() as d:
+            self.assertEqual(list((Path(d)/'does-not-exist').rglob('*')),[])
+    def test_evidence_precedes_new_guards(self):
+        source=(M/'S11c_d_defect_packet_geometry.py').read_text()
+        self.assertLess(source.index("J.emit('geometry-basis'"),source.index("require(kappa*kappa"))
+        self.assertLess(source.index("J.emit(name+'-full-arrangement'"),source.index("require(plan['box']==box"))
+        self.assertLess(source.index("require(plan['box']==box"),source.index('result=G.audit(plan,lines,cuts)'))
+
+
 if __name__=='__main__':unittest.main()

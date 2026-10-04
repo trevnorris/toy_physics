@@ -1,0 +1,52 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T01:09:53.516295+00:00",
+  "packetSha256": "1563288ff2049c3d5d8e490d35de9b3ca1ebc4fe795b130731d7e19fc8b99c7e",
+  "archiveSha256": "f98de2a7dea8b105e1cb1c5a5d8b150d2a77d901c074281d0f00454995a25264",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 287,
+  "bytes": 23742194,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing AGENTS/user authorization for necessary independent established-Claude/Grok assessment. Geometry is a subset of cleared pressure readiness within the ongoing two-packet task.",
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Exact collision geometry and candidate dependency/static work counts only; pressure summand units deferred required prerequisite",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "noNewPressureUnitProof": true,
+    "geometryPlans": 8,
+    "K": [
+      27,
+      29
+    ],
+    "U": 75,
+    "T": [
+      122,
+      124
+    ]
+  },
+  "noAutomaticRetry": true
+}

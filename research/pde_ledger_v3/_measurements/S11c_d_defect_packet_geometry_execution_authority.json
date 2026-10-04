@@ -1,0 +1,46 @@
+{
+  "boundedInstrumentAuthorized": true,
+  "automaticScientificRetry": false,
+  "authority": "Standing user/AGENTS continued research: geometry subset of cleared pressure-readiness method. No routine permission needed.",
+  "scienceExecutionsAuthorized": 1,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Exact collision geometry and candidate dependency/static work counts only; pressure summand units deferred required prerequisite",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "noNewPressureUnitProof": true,
+    "geometryPlans": 8,
+    "K": [
+      27,
+      29
+    ],
+    "U": 75,
+    "T": [
+      122,
+      124
+    ]
+  },
+  "methodClearanceIsNotBuildClearance": true,
+  "noDeadline": true,
+  "futureEvaluatorRequiresConcreteBuild": true
+}

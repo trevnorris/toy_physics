@@ -669,3 +669,29 @@ The first concrete subset will construct exact Q(sqrt595) collision geometry,
 coverage/orientation controls and dependency/work counts without evaluating a
 kernel or Fourier request. Full pressure-unit certificates remain independently
 required before any complete outer action. All completed science stays untouched.
+
+
+## 2026-10-03 — exact geometry/dependency build prepared
+
+The first concrete pressure-readiness subset is prepared for independent build
+assessment. It restores266complete files: all544selected addresses and original
+THETA row,34field proofs,17full-factor proof sets,20numeric templates with
+arguments/returns,3immutable rules and original physical/radius metadata. New
+Q(kappa) geometry covers both carriers, K27/29 and square/positive-Q domains;
+all crossings, coalesced labels, clipped cells and exact coverage/orientation
+are required before counts. Missing-collision and reversed-cell controls operate
+on actual geometry. No numerical node or integral is evaluated.
+
+Candidate families retain complete field/jet/wave/response/normal arguments and
+all zeros/grades. Actual numerical request identity, units and independent full
+A/B chains remain mandatory. Static counts are occurrences and initial adaptive
+lower bounds; full adaptive cost/serialized size/RSS remain unknown. Historical
+bank bytes are not a memory-failure claim. Pressure-summand unit certificates
+remain a separate REQUIRED next subset, not a result of this instrument.
+
+Twenty-eight stdlib synthetic Q(sqrt2)/metadata tests passed; actual scientific
+geometry has not run. The fixed independent Claude/Grok packet contains
+287complete files/23742194bytes, SHA256
+1563288ff2049c3d5d8e490d35de9b3ca1ebc4fe795b130731d7e19fc8b99c7e.
+No peer reports, old review commentary, source replay or author CLEAR. No READY
+execution gate exists. Standing AGENTS/user submission authority applies.

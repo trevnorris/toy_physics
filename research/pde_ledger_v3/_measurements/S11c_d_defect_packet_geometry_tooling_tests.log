@@ -1,0 +1,33 @@
+test_arithmetic (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_changed_area (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_coalesced_labels (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_duplicate_label (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_exact_coverage (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_exact_json (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_field_mismatch (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_hash_contract (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_height_both_signs (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_journal_before_return (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_launcher_no_deadline (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_line_type (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_manifest_saved_receipts (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_missing_cell (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_missing_crossing_label (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_missing_crossing_record (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_missing_line (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_no_bad_field (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_no_evaluators_imported (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_no_floats (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_no_unprotected_entrypoint (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_order_mixed_signs (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_quadrature_occurrence_count (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_reversed_cell (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_saved_rule_counts_only (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_standing_scope (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_synthetic_full_specs (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+test_zero_divisor (S11c_d_defect_packet_geometry_test.ExactTests) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 3.699s
+
+OK

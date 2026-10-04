@@ -1,0 +1,26 @@
+{
+  "status": "STDLIB_SYNTHETIC_GEOMETRY_AND_METADATA_TESTS_PASSED",
+  "utc": "2026-10-04T01:09:53.516295+00:00",
+  "command": [
+    "python",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "research/pde_ledger_v3/_measurements",
+    "-p",
+    "S11c_d_defect_packet_geometry_test.py",
+    "-v"
+  ],
+  "tests": 28,
+  "exitCode": 0,
+  "reportedSeconds": 3.699,
+  "actualScientificGeometryOrPayloadRestoration": false,
+  "syntheticField": "Q(sqrt2), different boxes/scales",
+  "workerSha256": "1b0c3fdd69231cb2688a056bcd03745d9512edd0334cab7e760717c4f8b55dc5",
+  "librarySha256": "599140df3748b0aff57191b4a693db215cf201566f191d8d923dffdc144d4be2",
+  "manifestSha256": "1391288dc757a5f8cf742617b26cf3601c4bc6afcc8fff306dbf28f51437a9f7",
+  "testSourceSha256": "28f3bb807d6c62a7268b3d876561653f837998dc0dbf6e33aef0609ae0f3cbde",
+  "logSha256": "066d42cafa373144370183aa33372900e76a2d0e99fff5ce0b0fbffb29701cd5"
+}

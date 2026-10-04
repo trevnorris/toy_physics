@@ -1095,3 +1095,25 @@ started with distinct sessions and complete2549-file private copies. Startup
 verified every private/source hash and the event hook before handing off.
 No peer output has been read; both reports must finish before adjudication.
 No scientific job was launched and no completed work replayed.
+
+## 2026-10-04 — independent outer-evaluator tooling preparation
+
+While the fixed kernel-unit reviews run, prepared a lossless encoded-JSON
+journal prototype using only manufactured data.37tests pass for byte-exact
+round trips, independent route/settings namespaces, immutable records, FULL
+transactions, rollback, corruption and externally pinned chain truncation.
+No native database was opened, compressed, rewritten or scientifically restored.
+The prototype is not integrated, independently cleared, or a native speed,
+capacity or RSS estimate. Existing numerical sources and reviewer bytes remain
+unchanged. No automatic resume or numerical cache is implemented.
+
+Read-only source inspection also records three concrete outer-adapter gaps:
+the Fourier bank accepts only its declared carrier/offset argument family;
+the inner bank assumes rational kappa coefficients; and its H convenience
+return selects B. A future complete outer evaluator must accept actual general
+quadrature coordinates and keep A/B evaluated chains independent rather than
+routing both through that convenience return. Complete source/units/settings
+and request identity, all addressed ancestry, actual storage and resource
+readiness still require the concrete build assessment. No additional review or
+scientific job was launched for this preparation; current reviews keep their
+existing completion hook and are not model-polled.

@@ -1,0 +1,42 @@
+test_chain (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_closed_writer_refuses (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_compressed_corruption_detected (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_cycle_refused (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_deleted_chunk_detected (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_empty_audit (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_empty_payload_values (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_envelope_tamper_detected (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_exact_opaque_tuple_encoding (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_existing_file_not_modified (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_external_completion_receipt (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_external_head_detects_truncated_suffix (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_full_sync (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_incomplete_external_receipt_refused (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_invalid_route_refused (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_json_types (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_multiple_routes_not_shared (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_namespace_settings_identity (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_namespace_tamper_detected (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_no_json_key_coercion (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_no_overwrite_changed (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_no_overwrite_even_equal (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_no_tuple_coercion (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_nonexistent_reader_refuses (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_nonfinite_rejected (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_read_only_connection (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_receipt_change_refused (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_record_deletion_chain_detected (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_reordered_chunks_refused (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_repeated_container_allowed (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_repeated_large_content (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_settings_required (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_stream_spans_many_chunks (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_trailing_stream_refused (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_transaction_rollback_preserves_prefix (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_unknown_namespace_refused (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+test_unknown_objects_refused (S11c_d_defect_packet_evidence_store_test.StoreTests) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 0.730s
+
+OK

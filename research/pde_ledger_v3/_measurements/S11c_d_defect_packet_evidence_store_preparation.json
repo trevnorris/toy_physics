@@ -1,0 +1,50 @@
+{
+  "status": "SYNTHETIC_STORAGE_PROTOTYPE_ONLY_NOT_INTEGRATED_OR_SCIENTIFICALLY_ASSESSED",
+  "utc": "2026-10-04T07:55:00.047016+00:00",
+  "library": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_evidence_store.py",
+  "librarySha256": "ca4257bf6ec441426d1e8f8e61fad37097d78a3199faeac7934c52d2a28d8e54",
+  "testSource": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_evidence_store_test.py",
+  "testSourceSha256": "8111bb27e6270e32cb4e7a02d8b9ffe36a003d542042fc57815813c3f1d3f54a",
+  "testCount": 37,
+  "testLogSha256": "d2fc962bbaa4f11816be06e7c488e34d1308ff239d333ee8b5c78d6179f34427",
+  "testSeconds": 0.73,
+  "command": [
+    "python",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "research/pde_ledger_v3/_measurements",
+    "-p",
+    "S11c_d_defect_packet_evidence_store_test.py",
+    "-v"
+  ],
+  "exitCode": 0,
+  "nativeScientificPayloadReadOrRestored": false,
+  "oldBanksOpenedOrRewritten": false,
+  "scientificComputationsRun": 0,
+  "independentBuildClearance": false,
+  "newExternalSubmission": false,
+  "runtimeIntegrated": false,
+  "properties": [
+    "Exact canonical encoded JSON bytes are reconstructed and hashed; no scientific numeric types are restored.",
+    "Stream compression to bounded SQLite chunks, one FULL synchronous transaction per complete record.",
+    "Every occurrence has its own immutable record; evaluated data from A24/A48/B50 is never deduplicated across routes.",
+    "Original files are refused for writing; no automatic resume or migration.",
+    "Partial transaction failures preserve earlier committed records; full payload and external chain receipts detect corruption and suffix truncation.",
+    "Namespace descriptors are exact byte identities, not scientific proof of complete request semantics or cache reuse."
+  ],
+  "tested": [
+    "Encoded MP-shaped synthetic data, signed zero, Unicode, large synthetic payloads and exact JSON byte comparison.",
+    "Duplicate record refusals, independent namespace/settings identity, unknown keys/types and nonfinite rejection.",
+    "Rollback on a serialization failure after a large prefix, corruption/truncated/reordered chunks, envelope/namespace tampering, externally pinned chain tail."
+  ],
+  "notEstablished": [
+    "No native compression ratio, capacity, throughput or RSS estimate.",
+    "The encoder may materialize a large string and the original object remains live; worker resource containment and record design are still required.",
+    "No kill/power-loss recovery rehearsal, database migration or automatic recovery implementation.",
+    "No numerical cache, interning of values, quadrature change, interpolation, node omission or compacted accepted evidence.",
+    "Future guarded evaluator integration and independent concrete build assessment are required before scientific use."
+  ]
+}

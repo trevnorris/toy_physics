@@ -853,3 +853,20 @@ Both private41-file packets were verified byte-for-byte after startup; separate
 session receipts and restricted source-only commands are recorded. No reviewer
 output has been read while the pair runs. Its event hook resumes this same
 session; no model polling or further science has been started.
+
+## 2026-10-03 — corrected native unit build independently cleared
+
+Both revised reports literally CLEAR FOR THIS BOUNDED NATIVE PRESSURE-UNIT BUILD.
+They were read together after completion;271metadata checks verify all41packet
+files, archive, private copies, actual source and authority receipts, sessions and
+delivered reports. Claude stderr is empty. Grok has14795bytes of CLI diagnostics
+including38Read errors, with a complete delivered verdict. Both coverage limits
+remain explicit; neither report accepts runtime science.
+
+The source-case blocker is closed in the assessed worker. The unchanged worker
+can proceed to fresh gated containment. Nonblocking export-chain and amplitude
+substitution qualifications remain with the later transport work; no optional
+review loop is opened. Four actual unit-mutant refusals, full native node walks,
+source/copy identity and effective no-deadline resource enforcement remain run
+acceptance obligations. All544summand units and numerical evaluator readiness
+remain false; no pressure action/current/loss result follows from this clearance.

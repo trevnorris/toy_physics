@@ -782,3 +782,9 @@ No READY gate exists. This prerequisite still leaves complete source-grade/field
 profile/H/J/direct/measure and544address dimensional transport required. The
 complete evaluator additionally needs exact sharing/storage and independent
 numerical-route readiness. No pressure value/current/loss or new physical scope.
+
+The native-unit pair is now running from97c0b343. Both private41-file packets
+were byte-verified after startup, restricted source-only commands and separate
+session IDs were recorded, and the existing-session hook was armed first. No
+review output was read while running. No native unit science or READY gate exists;
+the completion event will trigger literal joint assessment and continued work.

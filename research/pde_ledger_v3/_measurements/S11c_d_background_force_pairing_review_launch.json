@@ -1,0 +1,142 @@
+{
+  "status": "CLAUDE_ONLY_BACKGROUND_BUILD_AND_METHOD_REVIEW_LAUNCHED_PENDING_LITERAL_ASSESSMENT",
+  "recordedUtc": "2026-10-04T23:24:16.830567+00:00",
+  "preparedCommit": "337ea9d1",
+  "prelaunchMetadataCorrectionCommit": "fbe024e3",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review",
+  "packetSha256": "a9b352e56d84f4a58aff58feb57145495f593e42515dd7341e6d2b539b8ffef2",
+  "archiveSha256": "fdb2841ff89c397f71caea5bc21235b2b8bfc209759969cf2a227b86633b2b64",
+  "launch": {
+    "jobPid": 1909091,
+    "watcherPid": 1909092,
+    "packetSha256": "a9b352e56d84f4a58aff58feb57145495f593e42515dd7341e6d2b539b8ffef2",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 1909092,
+    "jobPid": 1909091,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T23:24:05.378975+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "3abc615f2aca44adcf411a79988bd95e8b43c9e2d4da605b0faac817dae6a2bf",
+    "notifications": {}
+  },
+  "claudeReceipt": {
+    "engine": "claude",
+    "sessionId": "1220f3ec-4d98-48b6-b2bb-a81c129548ed",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "1220f3ec-4d98-48b6-b2bb-a81c129548ed"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review/claude/work",
+    "startedUtc": "2026-10-04T23:24:07.685769+00:00",
+    "packetSha256": "a9b352e56d84f4a58aff58feb57145495f593e42515dd7341e6d2b539b8ffef2",
+    "promptSha256": "fabad8653da46f81ad0fd50523d322e9c82eee81066c5227577707da4d9432e2",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1909123
+  },
+  "actualHostProcesses": [
+    {
+      "role": "coordinator",
+      "pid": 1909091,
+      "argv": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review/review_run.py"
+      ]
+    },
+    {
+      "role": "watcher",
+      "pid": 1909092,
+      "argv": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/codex_job_watch.py",
+        "--pid",
+        "1909091",
+        "--thread",
+        "01a0e01b-ef84-7192-817f-584cda5d339b",
+        "--directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review/completion-watcher",
+        "--message-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review/completion_message.txt",
+        "--error-log",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review/issues.log"
+      ]
+    },
+    {
+      "role": "claude",
+      "pid": 1909123,
+      "argv": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "--disable-slash-commands",
+        "--session-id",
+        "1220f3ec-4d98-48b6-b2bb-a81c129548ed"
+      ]
+    }
+  ],
+  "privateInputFilesVerified": 8352,
+  "sourceFilesVerified": 8351,
+  "scope": {
+    "target": "Finite unbound background force/rate/area/order comparison with UNSUPPLIED physical pairing",
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "researchOmega": 3,
+    "researchCs": "sqrt(6)/2",
+    "numericBindingPerformed": false,
+    "sameSavedPhysicalInputs": true,
+    "fullIncrementalCentreDrive": false,
+    "physicalWorkClosed": false,
+    "fieldOrIntegral": false,
+    "leakageFactor": null,
+    "recoveryParked": true,
+    "scientificWorkerExists": true,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "reviewTarget": "Concrete background-only build and amended method"
+  },
+  "singleHostAdmissionCheck": true,
+  "noModelPolling": true,
+  "noScientificExecution": true,
+  "noAutomaticReviewerRetry": true,
+  "noGrokLaunched": true
+}

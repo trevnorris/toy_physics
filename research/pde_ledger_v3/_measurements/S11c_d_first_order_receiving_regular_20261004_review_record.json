@@ -1,0 +1,119 @@
+{
+  "status": "CLAUDE_NEEDS_REVISION_PRESERVED_WITH_SOURCE_PROJECTION_DISPOSITION",
+  "recordedUtc": "2026-10-04T20:09:26.180833+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-method-review",
+  "reviewers": [
+    "claude"
+  ],
+  "literalVerdict": "NEEDS REVISION",
+  "report": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_20261004_claude.md",
+  "reportSha256": "220cfd793c6c9c397dbfa65d3d49bf9253c564ee6c90b101cacdce8bb5ca8175",
+  "methodAssessed": false,
+  "methodSource": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_20261004_plan.txt",
+  "methodSha256": "515d9add3b7a2a3c5beeefc653f59c60d7f8e6db81bb024219c25c6a4041d7f4",
+  "receipt": {
+    "engine": "claude",
+    "sessionId": "e67a2f67-e0a2-4cd0-b5d8-c1d824a1760d",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "e67a2f67-e0a2-4cd0-b5d8-c1d824a1760d"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-method-review/claude/work",
+    "startedUtc": "2026-10-04T20:04:02.708213+00:00",
+    "packetSha256": "9f5a62957e43e0f8932df0b580120f116e64ecd8f5ac5cc638336ae9a0bd41c9",
+    "promptSha256": "56ea3c3b53bba65adeb8f9ae58b995939247424654eb47c4702e8b889d4fe30f",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1810704,
+    "exitStatus": 0,
+    "finishedUtc": "2026-10-04T20:07:02.892698+00:00",
+    "wallSeconds": 180.1726784601342,
+    "outputSha256": "146edc542259668afb7d4139d7e253c453d08e6630c82a1cbbd3d717b9d669f5",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderrBytes": 0
+  },
+  "packetSha256": "9f5a62957e43e0f8932df0b580120f116e64ecd8f5ac5cc638336ae9a0bd41c9",
+  "archiveSha256": "bf7f9ae923621243b63b6db5ce96f3d4aa518a70b47f10779b303e992cc02637",
+  "rawOutputSha256": "146edc542259668afb7d4139d7e253c453d08e6630c82a1cbbd3d717b9d669f5",
+  "verifiedPacketPrivateArchiveFiles": 1919,
+  "verifiedOriginalSources": 1918,
+  "verifiedJSONViews": 10,
+  "allHashesIntact": true,
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "strictStderrBytes": 0,
+  "coordinatorStderrBytes": 0,
+  "coverage": "Explicit partial coverage: plan/guide, C3, plus threshold, force-A/B and chart/dual. Did not inspect opposite threshold, full operator, current/basis views, native work, affine maps, pressure assembly or matching identities.",
+  "supportedScope": [
+    "Evenness and outgoing two-ray reduction",
+    "Original denominators are multiples of (3+10i)q+3i and have no zeros on either outgoing ray",
+    "Exact determinant gcd/Bezout/Sturm method and conditional rational growth",
+    "Actual counter-propagating cross-current contraction; power identity need not precede finite determinant test"
+  ],
+  "literalSourceObservations": {
+    "incidentColumns": {
+      "text": "Matrix([[I/5, 0], [-sqrt(595)*I/10, I/10], [0, -I/5], [0, 0], [0, 0]])",
+      "srepr": "ImmutableDenseMatrix([[Mul(Rational(1, 5), I), Integer(0)], [Mul(Integer(-1), Rational(1, 10), Pow(Integer(595), Rational(1, 2)), I), Mul(Rational(1, 10), I)], [Integer(0), Mul(Integer(-1), Rational(1, 5), I)], [Integer(0), Integer(0)], [Integer(0), Integer(0)]])"
+    },
+    "forceAeta": {
+      "text": "Matrix([[2*I*full_weak_tanh_variable**2/5 + 9*I*full_weak_tanh_variable/10 + I/2], [-sqrt(595)*I*full_weak_tanh_variable**2/5 - 9*sqrt(595)*I*full_weak_tanh_variable/20 - sqrt(595)*I/4], [0], [0], [0]])",
+      "srepr": "MutableDenseMatrix([[Add(Mul(Rational(2, 5), I, Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Rational(9, 10), I, Symbol('full_weak_tanh_variable', real=True)), Mul(Rational(1, 2), I))], [Add(Mul(Integer(-1), Rational(1, 5), Pow(Integer(595), Rational(1, 2)), I, Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Integer(-1), Rational(9, 20), Pow(Integer(595), Rational(1, 2)), I, Symbol('full_weak_tanh_variable', real=True)), Mul(Integer(-1), Rational(1, 4), Pow(Integer(595), Rational(1, 2)), I))], [Integer(0)], [Integer(0)], [Integer(0)]])"
+    },
+    "forceAright": {
+      "text": "Matrix([[9*I/5], [-9*sqrt(595)*I/10], [0], [0], [0]])",
+      "srepr": "MutableDenseMatrix([[Mul(Rational(9, 5), I)], [Mul(Integer(-1), Rational(9, 10), Pow(Integer(595), Rational(1, 2)), I)], [Integer(0)], [Integer(0)], [Integer(0)]])"
+    },
+    "forceBeta": {
+      "text": "Matrix([[0], [I*full_weak_tanh_variable**2/5 + 9*I*full_weak_tanh_variable/20 + I/4], [-2*I*full_weak_tanh_variable**2/5 - 9*I*full_weak_tanh_variable/10 - I/2], [0], [0]])",
+      "srepr": "MutableDenseMatrix([[Integer(0)], [Add(Mul(Rational(1, 5), I, Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Rational(9, 20), I, Symbol('full_weak_tanh_variable', real=True)), Mul(Rational(1, 4), I))], [Add(Mul(Integer(-1), Rational(2, 5), I, Pow(Symbol('full_weak_tanh_variable', real=True), Integer(2))), Mul(Integer(-1), Rational(9, 10), I, Symbol('full_weak_tanh_variable', real=True)), Mul(Integer(-1), Rational(1, 2), I))], [Integer(0)], [Integer(0)]])"
+    },
+    "forceBright": {
+      "text": "Matrix([[0], [9*I/10], [-9*I/5], [0], [0]])",
+      "srepr": "MutableDenseMatrix([[Integer(0)], [Mul(Rational(9, 10), I)], [Mul(Integer(-1), Rational(9, 5), I)], [Integer(0)], [Integer(0)]])"
+    },
+    "chart": {
+      "text": "Matrix([[0, 1/20, receiving_block_l, 0, 0], [1/10, -receiving_block_l/5, 1/5, 0, 0], [-1/5, -receiving_block_l/10, 1/10, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]])",
+      "srepr": "MutableDenseMatrix([[Integer(0), Rational(1, 20), Symbol('receiving_block_l', real=True), Integer(0), Integer(0)], [Rational(1, 10), Mul(Integer(-1), Rational(1, 5), Symbol('receiving_block_l', real=True)), Rational(1, 5), Integer(0), Integer(0)], [Rational(-1, 5), Mul(Integer(-1), Rational(1, 10), Symbol('receiving_block_l', real=True)), Rational(1, 10), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0), Integer(1), Integer(0)], [Integer(0), Integer(0), Integer(0), Integer(0), Integer(1)]])"
+    },
+    "dual": {
+      "text": "Matrix([[0, 2, -4, 0, 0], [1/(20*(receiving_block_l**2/20 + 1/400)), -receiving_block_l/(5*(receiving_block_l**2/20 + 1/400)), -receiving_block_l/(10*(receiving_block_l**2/20 + 1/400)), 0, 0], [receiving_block_l/(receiving_block_l**2 + 1/20), 1/(5*(receiving_block_l**2 + 1/20)), 1/(10*(receiving_block_l**2 + 1/20)), 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]])",
+      "srepr": "MutableDenseMatrix([[Integer(0), Integer(2), Integer(-4), Integer(0), Integer(0)], [Mul(Rational(1, 20), Pow(Add(Mul(Rational(1, 20), Pow(Symbol('receiving_block_l', real=True), Integer(2))), Rational(1, 400)), Integer(-1))), Mul(Integer(-1), Rational(1, 5), Symbol('receiving_block_l', real=True), Pow(Add(Mul(Rational(1, 20), Pow(Symbol('receiving_block_l', real=True), Integer(2))), Rational(1, 400)), Integer(-1))), Mul(Integer(-1), Rational(1, 10), Symbol('receiving_block_l', real=True), Pow(Add(Mul(Rational(1, 20), Pow(Symbol('receiving_block_l', real=True), Integer(2))), Rational(1, 400)), Integer(-1))), Integer(0), Integer(0)], [Mul(Symbol('receiving_block_l', real=True), Pow(Add(Pow(Symbol('receiving_block_l', real=True), Integer(2)), Rational(1, 20)), Integer(-1))), Mul(Rational(1, 5), Pow(Add(Pow(Symbol('receiving_block_l', real=True), Integer(2)), Rational(1, 20)), Integer(-1))), Mul(Rational(1, 10), Pow(Add(Pow(Symbol('receiving_block_l', real=True), Integer(2)), Rational(1, 20)), Integer(-1))), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0), Integer(1), Integer(0)], [Integer(0), Integer(0), Integer(0), Integer(0), Integer(1)]])"
+    }
+  },
+  "substantiveAssessment": [
+    "The report factors U_A as (i/5)(1,-p,0), but the literal column is (i/5,-ip,0); factoring i/5 gives (1,-5p,0). Its proposed nonzero longitudinal step at l=p therefore does not follow from the actual column.",
+    "The report identifies nonzero dual row0 on U_B. Actual chart column0 is t=(0,1/10,-1/5), one of the TWO TRANSVERSE columns. The C3 subblock uses full chart/dual indices2,3,4. Nonzero transverse row0 is part of the previously matched step and is not C3 forcing.",
+    "The source diagnostic is not a physical loss projection. Its k(l) dot F numerator nevertheless enters the actual geometric longitudinal coordinate k(l)^T F/(l^2+1/20). Make this operator-row join explicit before analytic source-class claims.",
+    "Grazing normal p is not total bulk wavenumber omega/cs: q^2=omega^2/cs^2-|h|^2-l^2, with |h|^2=1/20 and omega^2/cs^2=6. Actual saved q^2=119/20-l^2 includes this transverse subtraction.",
+    "No divergent leakage integral or mandatory physical cutoff is established by the review, because its nonzero C3 asymptotic source premise is based on the two misidentifications above. Do not ask user to normalize an unestablished divergence.",
+    "The requested explicit source/row projection is still a useful substantive gate. Add complete five-row projections before selection, selected right-step residue and a matched-basis distributional consistency check; if these fail, stop source-class claims.",
+    "Keep the total nondecaying matched transverse wave separate from the proposed decaying three-field contribution. The l-dependent projector on the secular delta-prime term must be retained alongside B-prime. No scalar/longitudinal decay conclusion from a frozen l=p projector."
+  ],
+  "nextAction": "Substantive method revision with exact fixed row identities, full incident-column normalization, projection-before-decay gates and explicit momentum-dependent matching distribution; no scientific worker yet. Preserve literal NEEDS, no author CLEAR.",
+  "sourceReviewIsResultAcceptance": false,
+  "scientificWorkerExists": false,
+  "readyGateExists": false,
+  "scienceCalls": 0,
+  "scientificRestorationPerformed": false,
+  "noAutomaticRetry": true,
+  "noPeerReportShared": true,
+  "userDecisionRequiredNow": false,
+  "userDecisionReason": "No actual physics obstruction or required new normalization/input choice is demonstrated. If the corrected projected source reveals a persistent coupled step or receiving pole, preserve it and return a concrete physical decision to the user."
+}

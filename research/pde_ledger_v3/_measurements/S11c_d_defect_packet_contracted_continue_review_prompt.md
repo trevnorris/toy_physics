@@ -1,3 +1,5 @@
+Packet files are under `input/` relative to your current review workspace. Begin with `input/method.md`, `input/build.md`, `input/guide.md`, `input/worker.py`, `input/prepare.py` and `input/resume.py`. Every guide path is relative to `input/`; do not look for those names at the workspace root.
+
 Review this concrete saved-evidence continuation and the amended method together,
 independently, from only this fixed input packet. Return CLEAR FOR THIS SAVED-PREFIX
 CONTRACTED NUMERICAL CONTINUATION BUILD or NEEDS REVISION, with exact blockers,
@@ -23,7 +25,7 @@ is called. Separate new arithmetic from restored observations.
 Inspect readiness contracts: actual manifest/source/prior hashes, method/build/
 authority paths, guard/supervisor and hook, complete failure prefixes and posthashes,
 SQLite FULL and all numerical identities/error/controls inherited unchanged.
-35 stdlib synthetic/AST tests are tooling, not native runtime proof. No READY gate
+56 stdlib synthetic/AST tests are tooling, not native runtime proof. No READY gate
 exists and no science has run in this new build. Do not treat proposed assertions
 or source-only verdicts as runtime outcomes. J/direct is not fullpacket or leakage.
 
@@ -31,3 +33,5 @@ No old peer report is supplied. List exactly what you read, coverage gaps, omitt
 essential operands and remaining scoped risks. Avoid unrelated optional expansions
 or a rewrite of already preserved science. All necessary substantive objections
 must remain visible even if another stage's source was previously assessed.
+
+Require saved base/enlarged/carrier domain joins, independent native/preflight/value coverage and all eight same-path mutants per group, exact original formula AST joins, inherited per-primitive majorant operands and flag, complete prior tree and all33 budget checkpoints. All four sum records precede the final budget guard. Both literal build verdicts are required. Shared carrier bounds are not independent evidence. All original equations, tolerances and numerical code are unchanged.

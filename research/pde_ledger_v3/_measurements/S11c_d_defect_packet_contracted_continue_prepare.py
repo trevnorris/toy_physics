@@ -7,7 +7,7 @@ import ast,copy,hashlib,json
 from pathlib import Path
 from S11c_d_defect_packet_contracted_continue_resume import (
     require,ZERO,UNITS,COMPONENTS,canonical_slots,check_census,group_indices,
-    exact_constant,guard_inventory,prefix_return)
+    exact_constant,guard_inventory,prefix_return,join_base_census,bound_source,independent_slots,tail_formula_join)
 from S11c_d_defect_packet_contracted_continue_tail import continue_geometry
 
 
@@ -31,6 +31,14 @@ def restore_prefix(raw,manifest,J):
         require(hashlib.sha256(canonical(body).encode()).hexdigest()==record['chainSha256'] and sha(p)==body['sha256'] and p.stat().st_size==body['bytes'],'original chain operands')
         names[body['name']]=i;previous=record['chainSha256']
     require(names['new-tail-address-budget-8360-J-27']+1==names['failure'],'exact failed checkpoint')
+    budget_names=[n for n in names if n.startswith('new-tail-address-budget-')]
+    budget_records=[{'name':n,'chainSequence':names[n],'record':get(n),'originalControlFlowDisposition':'refused' if i==32 else 'passed before the next checkpoint; inherited control-flow attestation only'} for i,n in enumerate(budget_names)]
+    J.emit('restored-all-original-budget-checkpoints',{'records':budget_records,'independentInequalityReevaluation':False,'sourceGuard':{'source':manifest['attestedGuardSources']['prepare'],'line':216}})
+    require(len(budget_names)==33 and budget_names[-1]=='new-tail-address-budget-8360-J-27','exact32 prior checkpoints and33rd refusal')
+    for rec in budget_records:
+        row=rec['record']['row']
+        require(rec['name']=='new-tail-address-budget-'+str(row['addressId'])+'-'+row['primitive']+'-'+str(row['K']) and rec['record']['epsilon']=={'text':'1/8000000000000','srepr':'Rational(1, 8000000000000)'} and rec['record']['noOtherRowDonation'] is True,'original full budget address/epsilon arguments')
+    require(all(names[a]<names[b] for a,b in zip(budget_names,budget_names[1:])),'original checkpoint order; no claim of new arithmetic pass')
     require(len(records)==5007 and get('journal-result')==failed,'complete original chained result')
     require(not any(n.startswith(('new-positive-tail-total','new-geometry-','numeric-')) for n in names),'only unfinished science ahead')
     old_manifest=read(prior/'source/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_numeric_inputs.json')
@@ -104,12 +112,36 @@ def prepare(raw,manifest,J,sp,C,G,N):
     require(len(all_addresses)==544 and len(entries)==20,'full selected/live census')
     J.emit('new-tail-unit-scope',{'entries':entries,'commonUnit':UNITS,'coordinates':'Original native reference-unit magnitudes; analytic1e-11, numerical1e-11/80 and absolutecomparison1e-9 carry this same summand unit.',
         'analyticCeilingIsJDirectSubsetOnly':True,'pendingComponentsRequireSeparateFutureBudgetAndFullLedger':True,'noGlobalBudgetAlreadyEstablished':True})
+    baseplan=original('preflight/tail-plan.json');physical=original('preflight/physical-plan.json')
+    J.emit('new-independent-tail-domain-input',{'basePlan':baseplan,'physicalPlan':physical,'plannedCarriers':manifest['scope']['plannedCarriers'],'originalContext':get('restored-physical-context'),'nativeAddresses':all_addresses,'entries':entries})
+    require((baseplan['K'],baseplan['T'])==(27,122) and baseplan['coversBothCarriers'] is True,'actual original base window and shared carrier envelope')
+    require(physical==get('restored-physical-context')['physical']==original('saved/preflight/physical-plan.json')==original('accepted-units/parameter-quantity-origins.json')['physicalPlan'],'same saved physical carrier plan')
+    require(manifest['scope']['plannedCarriers']==[v['text'] for v in physical['carriers']]==['sqrt(595)/10','0'] and physical['carriers']==[physical['kappa'],ZERO],'actual two carrier bindings')
+    kappa=C.restore_scalar(sp,physical['kappa']);carriers=[C.restore_scalar(sp,v) for v in physical['carriers']]
+    domain_flags={'positiveKappa':bool(kappa>0),'kappaBelow3':bool(kappa<3),**{'carrierBelow3/'+str(i):bool(v.is_real is True and abs(v)<3) for i,v in enumerate(carriers)}}
+    J.emit('new-native-carrier-domain-decision',{'kappa':kappa,'carriers':carriers,'flags':domain_flags,'newMissingDomainCheckOnly':True})
+    require(all(domain_flags.values()),'actual kappa and carrier envelope domain')
+    selected=join_base_census(baseplan,all_addresses,entries)
+    J.emit('new-independent-native-base-census',{'selectedBaseRecords':selected,'actualEntries':entries,'faceCounts':{'plus':10,'minus':10},'completeNativeRowsJoined':True})
+    majorant=get('new-per-primitive-absolute-tail-transport');density={name:original('contraction/complete/new-full-factorization-'+name+'-input.json') for name in ('J','Dr','Dh','Dq')}
+    pieces={name:original('absolute-bounds/'+name+'.json') for name in ('D-reflected-numerator-envelope','D-height-numerator-envelope','J-numerator-envelope','global-q-triangle-gap')}
+    J.emit('new-inherited-primitive-majorant-input',{'record':majorant,'originalPieces':pieces,'actualDensityInputs':density,'source':manifest['attestedGuardSources']['prepare'],'priorReceipt':manifest['priorFiles']['complete/new-per-primitive-absolute-tail-transport.json']})
+    require(majorant['eachPrimitiveUsesFullPositiveDEnvelope'] is True and majorant['notRecomputedGlobalProof'] is True,'actual inherited per-primitive positive D lemma')
+    require(majorant['pieces']==pieces and majorant['actualDensityProofs']==density and majorant['domain']==original('saved/pressure/global-parameter-domain.json') and majorant['profile']==original('saved/pressure/profile-envelope.json'),'complete primitive-majorant source operands')
+    for name in density:
+        require(get('restored-new-full-factorization-'+name)['arguments']==density[name] and get('restored-new-full-factorization-'+name)['return']=={'residual':ZERO},'same inherited factorization input and return')
+    J.emit('new-inherited-primitive-majorant-dependency',{'accepted':True,'perPrimitiveFullDOuterAndMiddleDominance':'Inherited triangle/shift-root analytic lemma, not a new magnitude calculation or independent proof.','combinedDEnvelopeUsedThreeTimes':True})
+    formula_input={'executedSource':Path(manifest['attestedGuardSources']['prepare']).read_text(),'originalBase':original('numeric-source-contracts.json')['fragments']['tail-contributions']}
+    J.emit('new-tail-formula-provenance-input',formula_input)
+    formula_join=tail_formula_join(formula_input['executedSource'],formula_input['originalBase']['text'])
+    J.emit('new-tail-formula-provenance-decision',formula_join)
+    require(all(v['same'] for v in formula_join.values()),'actual original base/enlarged outer J H D AST identity')
     const=lambda record:exact_constant(sp,C,record)
     baseplan=original('preflight/tail-plan.json');base={v['addressId']:v for v in baseplan['allAddresses']}
     context=original('preflight/tail-bound-derivation.json');env=original('preflight/Fourier-envelope-constants.json')['bounds']
     J.emit('new-original-tail-domains-input',{'context':context,'physical':original('preflight/physical-plan.json'),'globalDomain':original('saved/pressure/global-parameter-domain.json'),'profile':original('saved/pressure/profile-envelope.json')})
     require(bool(const(context['b'])==sp.Rational(3000,11101) and const(context['b'])>0),'same positive beta domain')
-    bounds={};tail_arguments={}
+    bounds={};tail_arguments={};enlarged={};source_records={}
     for e in entries:
         ident=e['addressId'];saved=get('new-enlarged-tail-'+str(ident)+'-input');ret=get('new-enlarged-tail-'+str(ident)+'-return');dec=get('new-enlarged-tail-'+str(ident)+'-decision')
         require(get('restored-base-tail-'+str(ident))==base[ident] and base[ident]['heightQ']==ZERO,'exact original selected base tail')
@@ -118,12 +150,13 @@ def prepare(raw,manifest,J,sp,C,G,N):
         require(dec['includesPositiveHOvercount']==(e['component']==COMPONENTS[0]),'saved H overcount label')
         require(bool(const(saved['CX'])>0 and const(saved['CY'])>0),'positive native envelope arguments')
         J.emit('new-restored-tail-arguments-'+str(ident),{'base':base[ident],'enlargedInput':saved,'enlargedReturn':ret,'baselineOnlyMeaning':'unmutated kernel; both windows identified explicitly','reEvaluatedClosedForm':False})
+        enlarged[ident]={'input':saved,'return':ret};source_records[ident]={27:base[ident],29:ret}
         pair={27:{k:const(base[ident][k]) for k in ('outer','middle')},29:{k:const(ret[k]) for k in ('outer','middle')}}
         flags={str(K)+'/'+k:bool(v>=0) for K,x in pair.items() for k,v in x.items()}
         mono={k:bool(pair[29][k]<=pair[27][k]) for k in ('outer','middle')}
         J.emit('new-tail-component-regression-'+str(ident),{'actualPairs':{str(k):v for k,v in pair.items()},'nonnegative':flags,'componentwiseMonotonicity':mono,'classification':'argument/provenance regression only; not independent arithmetic or physics certificate'})
         require(all(flags.values()) and all(mono.values()),'saved nonnegative component monotonicity')
-        require(bool(122>=27+4 and saved['T']>=saved['K']+4) and (saved['K'],saved['T'])==(29,124),'both original window domains')
+        require(baseplan['T']>=baseplan['K']+4 and saved['T']>=saved['K']+4 and (saved['K'],saved['T'])==tuple(manifest['scope']['originalWindowPairs'][1])==(29,124) and tuple(manifest['scope']['originalWindowPairs'][0])==(baseplan['K'],baseplan['T']),'both actual saved window domains')
         bounds[ident]=pair;tail_arguments[str(ident)]=saved
     # The separate H addend was not persisted. Derive only its SOURCE-BOUND
     # scaling relation from the original exponential factor, not its magnitude
@@ -137,19 +170,27 @@ def prepare(raw,manifest,J,sp,C,G,N):
     h=sp.Symbol('unchanged_positive_H_prefactor',positive=True);left=h*sp.Rational(1,2)**124;right=h*sp.Rational(1,2)**122/4;residual=sp.cancel(left-right)
     J.emit('new-H-overcount-scaling-decision',{'left':left,'right':right,'residual':residual,'ratio':sp.Rational(1,4),'positiveCoefficientPremise':'same4/b,CX,CY,3^30,F2^2,55/3; exact saved positive constants checked','notIndependentTailReevaluation':True})
     require(bool(residual is sp.S.Zero and const(context['fullExponentialMoments']['2'])>0),'separate H-source scaling and positive common factor');J.finish({'residual':residual,'classification':'new source-bound regression relation only'})
-    ceiling=sp.Rational(1,10**11);tails=[]
+    ceiling=sp.Rational(1,10**11);tails=[];all_groups=[]
+    encoded=lambda v:{'text':str(v),'srepr':sp.srepr(v)}
     for K,T in ((27,122),(29,124)):
         for carrier in manifest['scope']['plannedCarriers']:
-            expected=canonical_slots(entries,K,T,carrier);rows=[]
-            for spec in expected:
-                pair=bounds[spec['addressId']][K];rows.append({**spec,**pair,'total':pair['outer']+pair['middle'],'baselineOnly':True,'includesExtraHOvercount':spec['primitive']=='J'})
+            expected=independent_slots(baseplan,enlarged,all_addresses,K,T,carrier);rows=[]
+            for spec in canonical_slots(entries,K,T,carrier):
+                ident=spec['addressId'];pair=bounds[ident][K]
+                rows.append({**spec,**pair,'boundSource':bound_source(ident,K,T,source_records[ident][K]),'outerOperand':encoded(pair['outer']),'middleOperand':encoded(pair['middle']),'total':pair['outer']+pair['middle'],'baselineOnly':True,'includesExtraHOvercount':spec['primitive']=='J'})
             label=str(K)+'-'+('zero' if carrier=='0' else 'matching')
             J.emit('new-analytic-tail-census-'+label,{'expected':expected,'actual':rows,'numericalEpsilonUnchanged':sp.Rational(1,80*10**11)})
             check_census(rows,expected)
             # Same census path; mutations have no second baseline arithmetic.
             mutations={'drop':copy.deepcopy(rows[:-1]),'duplicate':copy.deepcopy(rows+[rows[0]])}
-            for tag,key,value in [('wrong-window','T',T+1),('wrong-face','face','minus' if rows[0]['face']=='plus' else 'plus')]:
+            for tag,key,value in [('wrong-T','T',T+1),('wrong-K','K',29 if K==27 else 27),('wrong-carrier','carrier',manifest['scope']['plannedCarriers'][1] if carrier==manifest['scope']['plannedCarriers'][0] else manifest['scope']['plannedCarriers'][0]),('wrong-face','face','minus' if rows[0]['face']=='plus' else 'plus')]:
                 v=copy.deepcopy(rows);v[0][key]=value;mutations[tag]=v
+            value_mutant=copy.deepcopy(rows);other=bounds[rows[0]['addressId']][29 if K==27 else 27]
+            value_mutant[0].update(other,outerOperand=encoded(other['outer']),middleOperand=encoded(other['middle']),total=other['outer']+other['middle'])
+            mutations['swapped-window-values']=value_mutant
+            address_mutant=copy.deepcopy(rows);other_row=next(v for v in rows if v['addressId']!=rows[0]['addressId'] and (v['outerOperand'],v['middleOperand'])!=(rows[0]['outerOperand'],rows[0]['middleOperand']))
+            for key in ('outer','middle','total','outerOperand','middleOperand'):address_mutant[0][key]=copy.deepcopy(other_row[key])
+            mutations['swapped-address-values']=address_mutant
             for tag,mutant in mutations.items():
                 J.emit('new-census-control-'+label+'-'+tag+'-input',{'actualExpected':expected,'mutant':mutant})
                 error=None
@@ -160,7 +201,9 @@ def prepare(raw,manifest,J,sp,C,G,N):
             groups=group_indices(rows);sums={name:sum((rows[i]['total'] for i in indices),sp.S.Zero) for name,indices in groups.items()}
             flags={name:bool(value>=0 and value<ceiling) for name,value in sums.items()}
             J.emit('new-separate-analytic-tail-sums-'+label,{'rows':rows,'groups':groups,'sums':sums,'ceiling':ceiling,'unit':UNITS,'decisions':flags,'carriersNotAdded':True,'windowsNotAdded':True,'eachDCountedThreeTimes':True,'noDonationOrCancellation':True,'subsetOnly':True})
-            require(all(flags.values()),'actual separate analytic subset aggregate budget')
+            all_groups.append({'label':label,'flags':flags,'sumRecord':'new-separate-analytic-tail-sums-'+label})
             tails.extend(rows)
+    J.emit('new-all-analytic-tail-group-decisions',{'groups':all_groups,'carrierGroupsUseSameUniformEnvelopeNotIndependentEvidence':True,'allFourRecordsPersistedBeforeBudgetGuard':True})
+    require(len(all_groups)==4 and all(all(v['flags'].values()) for v in all_groups),'actual separate analytic subset aggregate budget')
     J.emit('new-analytic-tail-acceptance',{'scope':'Only fixed J/Dr/Dh/Dq subset','fourWindowCarrierGroupsPassed':True,'tailRows':len(tails),'wholePacketBudget':None,'pendingComponents':'H/flat/heightPV/slope require future independent positive allocations and complete error ledger before full action acceptance','empiricalErrorNotRigorous':True})
     return continue_geometry(raw,manifest,J,sp,C,G,N,entries,tails)

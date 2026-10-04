@@ -1,5 +1,7 @@
 # Build packet map
 
+All paths below are relative to `input/` in the reviewer workspace.
+
 - `method.md`: complete amended allocation proposal, including new precise scope,
   native units, no-reevaluation decision and non-operation guard attestation.
 - `build.md`: concrete architecture and execution limits.
@@ -28,3 +30,5 @@
 Read a source-only build as source-only. Exact large dependency records support
 ancestry; they are not a reason to assume the missing aggregate or quadrature
 will pass. All old numerical rules/banks remain preserved and uncalled.
+
+`resume.py` contains exact file-tree, independent census/value and source-AST joins. These helpers use stdlib structures until exact saved quantities are supplied inside containment. `prepare.py` preserves all four aggregate outputs before the budget guard. The new full request identities differ from the failed run because its namespace inputs changed; no previous SQLite file exists.

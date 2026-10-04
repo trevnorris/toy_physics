@@ -1,0 +1,79 @@
+{
+  "priorRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-numeric-01",
+  "records": [
+    {
+      "priorPath": "complete/identity-2-S11c_d_defect_packet_contracted_numeric_build_review_r2_record.json",
+      "sha256": "a145af1b8ecee26fb4f3287081e2043a937f7b2921f102756535a8c13ed2edc9",
+      "bytes": 1746566,
+      "reason": "Historical peer-assessment/authority or completion-hook metadata; opaque receipt only for independent review. Full original byte copy remains required at runtime."
+    },
+    {
+      "priorPath": "complete/identity-3-S11c_d_defect_packet_contracted_numeric_execution_authority.json",
+      "sha256": "dac884799552fe36b750d6a2bd73d5e565a9ae707459a39b74bba07672369930",
+      "bytes": 2629,
+      "reason": "Historical peer-assessment/authority or completion-hook metadata; opaque receipt only for independent review. Full original byte copy remains required at runtime."
+    },
+    {
+      "priorPath": "complete/identity-4-S11c_d_defect_packet_contracted_numeric_method_review_r2_record.json",
+      "sha256": "982510ff59b14ae317ffdb7611fcc3adcecf720a4b7d786987e1954c44595ad7",
+      "bytes": 1479020,
+      "reason": "Historical peer-assessment/authority or completion-hook metadata; opaque receipt only for independent review. Full original byte copy remains required at runtime."
+    },
+    {
+      "priorPath": "completion-message.txt",
+      "sha256": "a81c1b87bbdd3d9ccbf9d195f07a04ecc0e553b110b34bf1372ce8cb4740340f",
+      "bytes": 2851,
+      "reason": "Historical peer-assessment/authority or completion-hook metadata; opaque receipt only for independent review. Full original byte copy remains required at runtime."
+    },
+    {
+      "priorPath": "completion-watcher/completion.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "reason": "Historical peer-assessment/authority or completion-hook metadata; opaque receipt only for independent review. Full original byte copy remains required at runtime."
+    },
+    {
+      "priorPath": "completion-watcher/completion.stdout",
+      "sha256": "230a53c96bdc652119a78048d068dc5e096463c07d4a5ba95b911836085a4038",
+      "bytes": 101,
+      "reason": "Historical peer-assessment/authority or completion-hook metadata; opaque receipt only for independent review. Full original byte copy remains required at runtime."
+    },
+    {
+      "priorPath": "completion-watcher/state.json",
+      "sha256": "8e7e3c1b0d38e0c36aee75cc8367a132fd16080fd785972cb8aac1356820ff29",
+      "bytes": 505,
+      "reason": "Historical peer-assessment/authority or completion-hook metadata; opaque receipt only for independent review. Full original byte copy remains required at runtime."
+    },
+    {
+      "priorPath": "completion-watcher/watcher.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "reason": "Historical peer-assessment/authority or completion-hook metadata; opaque receipt only for independent review. Full original byte copy remains required at runtime."
+    },
+    {
+      "priorPath": "source/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_numeric_execution_authority.json",
+      "sha256": "dac884799552fe36b750d6a2bd73d5e565a9ae707459a39b74bba07672369930",
+      "bytes": 2629,
+      "reason": "Historical peer-assessment/authority or completion-hook metadata; opaque receipt only for independent review. Full original byte copy remains required at runtime."
+    },
+    {
+      "priorPath": "source/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contraction_execution_authority.json",
+      "sha256": "adcc94218a264c378bf0859c5727e7a67f596a2d38b6a60df7fc462c0aa97d77",
+      "bytes": 1659,
+      "reason": "Historical peer-assessment/authority or completion-hook metadata; opaque receipt only for independent review. Full original byte copy remains required at runtime."
+    },
+    {
+      "priorPath": "watcher.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "reason": "Historical peer-assessment/authority or completion-hook metadata; opaque receipt only for independent review. Full original byte copy remains required at runtime."
+    },
+    {
+      "priorPath": "watcher.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "reason": "Historical peer-assessment/authority or completion-hook metadata; opaque receipt only for independent review. Full original byte copy remains required at runtime."
+    }
+  ],
+  "allPriorBytesStillRequiredAtRuntime": true,
+  "noScientificInputOrOutputOmitted": true
+}

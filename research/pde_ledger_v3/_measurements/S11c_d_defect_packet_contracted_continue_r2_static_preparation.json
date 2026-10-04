@@ -1,0 +1,30 @@
+{
+  "status": "SUBSTANTIVE_VALIDATION_R2_PREPARED_NO_SCIENCE",
+  "recordedUtc": "2026-10-04T14:28:30.603728+00:00",
+  "priorBuildCommit": "7fa1933f",
+  "workerSha256": "86f89136a43ab0524792e77307bcf6c2aa1926656a7fe440629374ac4b3ff642",
+  "manifestSha256": "ef88a652a3a098d87f52b30a97e1ffbdf87b7e96dd1dff2ebc1bdf38b6f06baf",
+  "methodSha256": "f35b7961b49e34a35d6c8f003f04063ecb7b5baf2b7b6808e6818117b64935e0",
+  "sourcePins": 97,
+  "oldScientificSourcePinsUnchanged": 84,
+  "oldScientificInputsUnchanged": 3142,
+  "priorFiles": 8271,
+  "sourceHashChecks": 11497,
+  "toolingTests": 56,
+  "toolingTestsLogSha256": "d4a68b389fd3b99eb699b0bb46d29bf77a484cd16cb7c3fe40ed504f6b3bab17",
+  "noScientificRestorationOrCalculation": true,
+  "oldNumericalRunASTUnchanged": true,
+  "unfinishedGeometryASTUnchanged": true,
+  "noGateExists": true,
+  "allStaticChecksPassed": true,
+  "changes": [
+    "Actual saved window/carrier domain checks.",
+    "Independent native/preflight membership, face balance and exact bound operands; eight live coverage mutations for each group.",
+    "Source-only AST joins for all four base/enlarged expressions.",
+    "Explicit inherited per-primitive majorant operand/flag/return joins.",
+    "Exact prior file tree/count/bytes and all33 old checkpoints.",
+    "Four sum records before final budget refusal; shared carrier-envelope dependence.",
+    "Both literal build verdicts required.",
+    "Explicit input/ reviewer paths; request namespace changes disclosed."
+  ]
+}

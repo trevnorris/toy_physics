@@ -1,0 +1,81 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T14:29:33.796453+00:00",
+  "packetSha256": "7b263f1a21099f28dce4c89640e48af6086da21742dd84afa4a31e854efc172a",
+  "archiveSha256": "650a007d03a1736efe95a3a59c3768b4efc110bcd0db7c81b65210c90ed74353",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 8290,
+  "bytes": 163530456,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing user and AGENTS direction authorizes this necessary substantive amended-method and concrete saved-evidence continuation build assessment to the established independent reviewers without a routine permission question. No science, automatic retry or disclosure to new recipients.",
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Source-only assessment of explicit subset-tail method amendment and actual saved-prefix numerical continuation",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": false,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": true,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": false,
+    "kernelWaveMeasureTransportOnly": false,
+    "newFiniteWindowCertificate": false,
+    "noNumericalEvaluator": false,
+    "originalWindowPairs": [
+      [
+        27,
+        122
+      ],
+      [
+        29,
+        124
+      ]
+    ],
+    "boundedContractedNumerics": true,
+    "completePacketAction": false,
+    "noLeakageOrCurrent": true,
+    "eligibleAddressCount": 20,
+    "addressPrimitives": 40,
+    "argumentDerivative": 0,
+    "allRealTailsConditionalOnAssessedBounds": true,
+    "analyticGaussianException": "only exactly joined constant fields",
+    "fullNumericalRoutes": [
+      "A24",
+      "A48",
+      "B50"
+    ],
+    "empiricalErrorNotRigorous": true,
+    "savedPrefixContinuation": true,
+    "analyticSubsetCeiling": "1/100000000000",
+    "numericalEpsilonUnchanged": "1/8000000000000",
+    "pendingFullPacketErrorLedger": true,
+    "scienceCalls": 0,
+    "scientificGateExists": false
+  },
+  "noAutomaticRetry": true,
+  "scienceExecutionsAuthorizedByThisReviewLaunch": 0,
+  "all3142ScientificInputFilesIncluded": true,
+  "noPeerReportsShared": true
+}

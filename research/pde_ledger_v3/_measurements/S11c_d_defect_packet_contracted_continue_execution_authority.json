@@ -1,6 +1,6 @@
 {
   "status": "STANDING_AUTHORITY_CONDITIONAL_ON_EXACT_AMENDED_METHOD_AND_BUILD_ASSESSMENT",
-  "recordedUtc": "2026-10-04T14:12:01.423031+00:00",
+  "recordedUtc": "2026-10-04T14:28:30.603728+00:00",
   "scope": {
     "frequency": 3,
     "anchoring": "LAB_HELD",
@@ -89,5 +89,10 @@
   "executionRequiresIndependentBuildClearance": true,
   "newMethodAndSourceAssessmentRequired": true,
   "futureOutput": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-01/complete",
-  "noImmediateLeakageClaim": true
+  "noImmediateLeakageClaim": true,
+  "revision": "source validation r2",
+  "priorConcreteBuildRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_continue_build_review_record.json",
+  "priorConcreteBuildCommit": "7fa1933f",
+  "priorReviewNotClear": true,
+  "substantiveRevisedBuildAssessmentRequired": true
 }

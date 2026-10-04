@@ -7,6 +7,7 @@ or integral is replayed. Source/JSON inspection and synthetic tests are separate
 import argparse,ast,hashlib,importlib.util,json,math,os,resource,shutil,sys,time,traceback
 from fractions import Fraction as F
 from pathlib import Path
+from S11c_d_defect_packet_contracted_continue_resume import tree_inventory,check_tree
 ROOT=Path('/var/projects/toy_physics');M=ROOT/'research/pde_ledger_v3/_measurements'
 THREADS=('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS','VECLIB_MAXIMUM_THREADS','BLIS_NUM_THREADS')
 ZERO={'text':'0','srepr':'Integer(0)'}
@@ -68,6 +69,8 @@ class Journal:
         self.completed.append(name);self.active=None
 
 def copy_inputs(m,J):
+    observed=tree_inventory(m['priorRoot']);J.emit('prior-tree-input',{'observed':observed,'expected':m['priorFiles'],'expectedCount':8271,'expectedBytes':158628313})
+    check_tree(observed,m['priorFiles'])
     prior={}
     for relative,receipt in m['priorFiles'].items():
         source=Path(m['priorRoot'])/relative;dest=J.out/'prior'/relative;dest.parent.mkdir(parents=True,exist_ok=True)
@@ -75,6 +78,9 @@ def copy_inputs(m,J):
         shutil.copyfile(source,dest);require(sha(dest)==receipt['sha256'],'identical prior copy '+relative)
         prior[relative]={'source':str(source),'path':str(dest.relative_to(J.out)),**receipt}
         J.emit('prior-copy-'+str(len(prior)),{'relative':relative,**prior[relative]})
+    after=tree_inventory(m['priorRoot']);copied_tree=tree_inventory(J.out/'prior')
+    J.emit('prior-tree-after-copy',{'source':after,'copy':copied_tree})
+    check_tree(after,m['priorFiles']);check_tree(copied_tree,m['priorFiles'])
     J.emit('prior-copy-index',prior)
     raw={};copies={}
     for alias,receipt in m['savedInputs'].items():
@@ -99,6 +105,8 @@ def verify_gate(path,manifest_path,m):
     require(g['launcher']==m['launcher'] and g['library']==m['librarySource'] and g['authority']==m['executionAuthority'] and g['buildReviewRecord']==m['reviewRecordWillBe'],'actual execution documents')
     require(g['continuationMethod']==m['continuationMethod'] and g['tailMethodRecord']==m['tailMethodRecord'] and g['priorResultRecord']==m['priorResultRecord'],'actual amended method and preserved failure')
     r=read(g['buildReviewRecord'])
+    expectedVerdict='CLEAR FOR THIS SAVED-PREFIX CONTRACTED NUMERICAL CONTINUATION BUILD'
+    require(g['literalBuildVerdicts']=={e:expectedVerdict for e in ('claude','grok')} and {e:r['reports'][e]['literalVerdict'] for e in ('claude','grok')}==g['literalBuildVerdicts'],'both actual independent literal build verdicts')
     require(r['allChecksPassed'] is True and r['independentBuildClearance'] is True and r['amendedTailMethodAssessed'] is True,'independent concrete build and amended method assessment')
     for k in ('workerSha256','manifestSha256','librarySha256','launcherSha256','sharedGuardSha256','supervisorSha256','continuationMethodSha256'):require(r[k]==g[k],'exact assessed build '+k)
     baseline=read(m['methodRecord']);require(g['methodRecordSha256']==sha(m['methodRecord']) and baseline['jointIndependentMethodClearance'] is True and baseline['methodSha256']==sha(m['methodPath']),'original numerical method remains fixed')
@@ -229,8 +237,14 @@ def main():
         J.emit('posthashes',{'sources':post,'identities':identity_post,'copied':copied,'expectedCopied':expected,'copiesIntact':copied==expected})
         result.update(wallMilliseconds=round((time.monotonic()-start)*1000),sourcePosthashesIntact=all(v['intact'] for v in post.values()),copiesIntact=copied==expected,identityCopiesIntact=len(identities)==len(documents) and all(v['intact'] for v in identity_post.values()),completedOperations=J.completed,activeOperation=J.active)
         prior_post={name:{'source':posthash(Path(m['priorRoot'])/name,v['sha256']),'copy':posthash(args.out/'prior'/name,v['sha256'])} for name,v in m['priorFiles'].items()}
-        J.emit('prior-copy-posthashes',prior_post)
-        result['priorCopiesIntact']=all(v['source']['intact'] and v['copy']['intact'] for v in prior_post.values())
+        prior_trees={'source':tree_inventory(m['priorRoot']),'copy':tree_inventory(args.out/'prior')}
+        J.emit('prior-final-trees',prior_trees)
+        tree_error=None
+        try:
+            for observed in prior_trees.values():check_tree(observed,m['priorFiles'])
+        except ValueError as ex:tree_error=str(ex)
+        J.emit('prior-copy-posthashes',{'files':prior_post,'treeRefusal':tree_error})
+        result['priorCopiesIntact']=tree_error is None and all(v['source']['intact'] and v['copy']['intact'] for v in prior_post.values())
         J.emit('journal-result',result);save(args.out/'checks.json',result);sys.stdout.write((args.out/'checks.json').read_text());sys.stdout.flush()
     if error:sys.stderr.write(error);return 1
     require(result['sourcePosthashesIntact'] and result['copiesIntact'] and result['identityCopiesIntact'] and result['priorCopiesIntact'],'posthash integrity');return 0

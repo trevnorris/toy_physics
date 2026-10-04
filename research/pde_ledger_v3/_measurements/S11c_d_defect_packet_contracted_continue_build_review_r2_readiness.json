@@ -1,0 +1,203 @@
+{
+  "status": "READY_FOR_INDEPENDENT_SAVED_PREFIX_BUILD_AND_AMENDED_METHOD_ASSESSMENT",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-build-review-r2",
+  "failureCommit": "ec54932e",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-04T14:29:33.796453+00:00",
+    "packetSha256": "7b263f1a21099f28dce4c89640e48af6086da21742dd84afa4a31e854efc172a",
+    "archiveSha256": "650a007d03a1736efe95a3a59c3768b4efc110bcd0db7c81b65210c90ed74353",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 8290,
+    "bytes": 163530456,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing user and AGENTS direction authorizes this necessary substantive amended-method and concrete saved-evidence continuation build assessment to the established independent reviewers without a routine permission question. No science, automatic retry or disclosure to new recipients.",
+    "scope": {
+      "frequency": 3,
+      "anchoring": "LAB_HELD",
+      "density": "RHO4_CONSTANT",
+      "drain": 0,
+      "edges": [
+        "1/5",
+        "1/10"
+      ],
+      "effectiveCs": "sqrt(6)/2",
+      "plannedCarriers": [
+        "sqrt(595)/10",
+        "0"
+      ],
+      "target": "Source-only assessment of explicit subset-tail method amendment and actual saved-prefix numerical continuation",
+      "sourceFrequencyContinued": false,
+      "responseRegulator": 0,
+      "selectedPressureAddresses": 544,
+      "selectedLocalCells": 16,
+      "pressureCoefficientFields": 34,
+      "noEvaluatedResponseIntegral": false,
+      "noNumericalPacketAction": true,
+      "noFiniteSolve": true,
+      "noProductionOverwrite": true,
+      "noDefectSweep": true,
+      "pressureSummandUnitsComplete": true,
+      "addressUnitCertificatesProduced": 544,
+      "noGeometryReplay": true,
+      "sourceGradeFieldTransportOnly": false,
+      "kernelWaveMeasureTransportOnly": false,
+      "newFiniteWindowCertificate": false,
+      "noNumericalEvaluator": false,
+      "originalWindowPairs": [
+        [
+          27,
+          122
+        ],
+        [
+          29,
+          124
+        ]
+      ],
+      "boundedContractedNumerics": true,
+      "completePacketAction": false,
+      "noLeakageOrCurrent": true,
+      "eligibleAddressCount": 20,
+      "addressPrimitives": 40,
+      "argumentDerivative": 0,
+      "allRealTailsConditionalOnAssessedBounds": true,
+      "analyticGaussianException": "only exactly joined constant fields",
+      "fullNumericalRoutes": [
+        "A24",
+        "A48",
+        "B50"
+      ],
+      "empiricalErrorNotRigorous": true,
+      "savedPrefixContinuation": true,
+      "analyticSubsetCeiling": "1/100000000000",
+      "numericalEpsilonUnchanged": "1/8000000000000",
+      "pendingFullPacketErrorLedger": true,
+      "scienceCalls": 0,
+      "scientificGateExists": false
+    },
+    "noAutomaticRetry": true,
+    "scienceExecutionsAuthorizedByThisReviewLaunch": 0,
+    "all3142ScientificInputFilesIncluded": true,
+    "noPeerReportsShared": true
+  },
+  "static": {
+    "status": "STATIC_FIXED_CONTINUATION_BUILD_PACKET_VERIFIED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "3320a88c5453a203e164e653316177623eb0c88b1c76b73527d1617a7627fa5a",
+    "packetSha256": "7b263f1a21099f28dce4c89640e48af6086da21742dd84afa4a31e854efc172a",
+    "archiveSha256": "650a007d03a1736efe95a3a59c3768b4efc110bcd0db7c81b65210c90ed74353",
+    "files": 8290,
+    "bytes": 163530456,
+    "sourceHashesChecked": 8289,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "newScientificOperations": 0,
+    "scientificGateExists": false
+  },
+  "newScientificOperations": 0,
+  "scientificGateExists": false,
+  "oldPeerReportsIncluded": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Source-only assessment of explicit subset-tail method amendment and actual saved-prefix numerical continuation",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": false,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": true,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": false,
+    "kernelWaveMeasureTransportOnly": false,
+    "newFiniteWindowCertificate": false,
+    "noNumericalEvaluator": false,
+    "originalWindowPairs": [
+      [
+        27,
+        122
+      ],
+      [
+        29,
+        124
+      ]
+    ],
+    "boundedContractedNumerics": true,
+    "completePacketAction": false,
+    "noLeakageOrCurrent": true,
+    "eligibleAddressCount": 20,
+    "addressPrimitives": 40,
+    "argumentDerivative": 0,
+    "allRealTailsConditionalOnAssessedBounds": true,
+    "analyticGaussianException": "only exactly joined constant fields",
+    "fullNumericalRoutes": [
+      "A24",
+      "A48",
+      "B50"
+    ],
+    "empiricalErrorNotRigorous": true,
+    "savedPrefixContinuation": true,
+    "analyticSubsetCeiling": "1/100000000000",
+    "numericalEpsilonUnchanged": "1/8000000000000",
+    "pendingFullPacketErrorLedger": true,
+    "scienceCalls": 0,
+    "scientificGateExists": false
+  },
+  "continuationMethodSha256": "f35b7961b49e34a35d6c8f003f04063ecb7b5baf2b7b6808e6818117b64935e0",
+  "workerSha256": "86f89136a43ab0524792e77307bcf6c2aa1926656a7fe440629374ac4b3ff642",
+  "manifestSha256": "ef88a652a3a098d87f52b30a97e1ffbdf87b7e96dd1dff2ebc1bdf38b6f06baf",
+  "staticPreparation": {
+    "status": "SUBSTANTIVE_VALIDATION_R2_PREPARED_NO_SCIENCE",
+    "recordedUtc": "2026-10-04T14:28:30.603728+00:00",
+    "priorBuildCommit": "7fa1933f",
+    "workerSha256": "86f89136a43ab0524792e77307bcf6c2aa1926656a7fe440629374ac4b3ff642",
+    "manifestSha256": "ef88a652a3a098d87f52b30a97e1ffbdf87b7e96dd1dff2ebc1bdf38b6f06baf",
+    "methodSha256": "f35b7961b49e34a35d6c8f003f04063ecb7b5baf2b7b6808e6818117b64935e0",
+    "sourcePins": 97,
+    "oldScientificSourcePinsUnchanged": 84,
+    "oldScientificInputsUnchanged": 3142,
+    "priorFiles": 8271,
+    "sourceHashChecks": 11497,
+    "toolingTests": 56,
+    "toolingTestsLogSha256": "d4a68b389fd3b99eb699b0bb46d29bf77a484cd16cb7c3fe40ed504f6b3bab17",
+    "noScientificRestorationOrCalculation": true,
+    "oldNumericalRunASTUnchanged": true,
+    "unfinishedGeometryASTUnchanged": true,
+    "noGateExists": true,
+    "allStaticChecksPassed": true,
+    "changes": [
+      "Actual saved window/carrier domain checks.",
+      "Independent native/preflight membership, face balance and exact bound operands; eight live coverage mutations for each group.",
+      "Source-only AST joins for all four base/enlarged expressions.",
+      "Explicit inherited per-primitive majorant operand/flag/return joins.",
+      "Exact prior file tree/count/bytes and all33 old checkpoints.",
+      "Four sum records before final budget refusal; shared carrier-envelope dependence.",
+      "Both literal build verdicts required.",
+      "Explicit input/ reviewer paths; request namespace changes disclosed."
+    ]
+  },
+  "excludedHistoricalFiles": 12
+}

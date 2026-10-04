@@ -54,3 +54,38 @@ BUILD assessment. A passing method judgment alone does not authorize this code.
 Science still requires a fresh exact gate and hook-first guarded launch with the
 unchanged4GiB native/cgroup,16GiB pool,zero swap,oneCPU/thread,32tasks,4GiBhostreserve
 and no deadlines. No automatic retry, fallback or scheduler change.
+
+## Exact domain, census and formula provenance
+
+The source tree must have exactly 8,271 regular files and 158,628,313 bytes before
+copying, after copying and at final posthash inspection. All 33 old budget
+checkpoints are restored in chain order. The first 32 passed on the original
+executed path and the 33rd refused; this is conditional control-flow attribution,
+not a replay of those inequalities.
+
+The base K/T pair comes from the saved plan. The enlarged pair comes from each
+actual published input. Both carriers join the saved physical plan and their
+exact real bounds |p0|<3; the saved positive kappa must be below 3. The original
+full preflight live list must equal the native live row list. Its selected J/D ids
+must equal all 20 eligible entries, with five J and five D entries on each face.
+Expected census records are independently constructed from that preflight list,
+the full native rows and the published enlarged returns. Actual rows carry both
+the complete bound-source record and the encoded actual rational outer/middle
+operands. Wrong K, T, carrier, face, missing/duplicate row and swapped-window or
+swapped-address values all pass through the same exact census check.
+
+The four actual base outer/J/H/D assignment ASTs join the executed enlarged
+assignments after only renaming the storage variables outerbound/middlebound.
+This evaluates no completed tail formula. The actual per-primitive positive D
+lemma flag, full numerator and density inputs, original domain/profile and zero
+returns are mandatory inherited dependencies. The analytic triangle/shift-root
+argument remains inherited, not a newly computed proof.
+
+All four window/carrier aggregate records precede the final budget refusal.
+Carrier bounds share one uniform envelope and are not independent numerical
+evidence. The new gate requires both actual literal reviewer verdicts, as well as
+the exact reviewed source/manifest and amended-method identity.
+
+Request-identity construction code is unchanged. Namespace identity values are
+necessarily new because the manifest and tail payload changed. There is no prior
+numerical SQLite file to reuse. No old numerical request is repeated.

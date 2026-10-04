@@ -1,0 +1,46 @@
+{
+  "status": "CLAUDE_RUNNING_HOOK_ARMED_AT_ADMISSION",
+  "recordedUtc": "2026-10-04T19:33:04.725825+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-build-review",
+  "launch": {
+    "jobPid": 1796334,
+    "watcherPid": 1796335,
+    "packetSha256": "0178d02c28d9e2cb1f70ac5d70f2a2bbe6694ae62d77d163fe87491ab5d0e541",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "admission": {
+    "state": "RUNNING",
+    "watcherStatus": "waiting",
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "processesAlive": {
+      "coordinator": true,
+      "watcher": true,
+      "claude": true
+    },
+    "claudePid": 1796344,
+    "oneReadOnlyProcessAdmissionCheck": true,
+    "metadataCorrection": "Initial record construction reached a KeyError after its RUNNING/waiting/all-alive assertions passed: watcher uses thread, not threadId. Corrected only the metadata field; no reviewer relaunch, further process polling or scientific action."
+  },
+  "packetSha256": "0178d02c28d9e2cb1f70ac5d70f2a2bbe6694ae62d77d163fe87491ab5d0e541",
+  "archiveSha256": "9a2e6a6ce7d5df4d9f860812e8cebe29897e5adc241c0019797951a58833c654",
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "preparedCommit": "6ef03e14",
+  "receipts": {
+    "launch.json": "abf68fe6cba8070c1ee601f403411df26008424f7f9e965af554c4cc1650a0b7",
+    "static-review.json": "9e461c6607b1ddae5765e020c52386fad3f4558ba96b4c964dd4fc934d05ded6",
+    "explicit-packet-approval.json": "3ad14fe559c251f6f51f97a2b3eb97d2772929290590bec4f9b4317a7ceab290",
+    "completion_message.txt": "b3e47abf955ff4b7609f1163162605964f72822b603d6b6be8718dc011c07c68"
+  },
+  "noModelPolling": true,
+  "noAutomaticRetry": true
+}

@@ -1,0 +1,42 @@
+Review this proposed finite receiving physics method independently. Work only
+inside input/ in this private workspace using Read/Glob/Grep. Start with
+input/plan.txt and input/guide.txt. Do not run code or decode opaque objects.
+No prior reviewer report, peer commentary or author-clearance claim is supplied.
+The existing evidence is for source/receiving/end-flux joins; all proposed
+all-real determinant/adjugate/source-class and cross-flux checks are unexecuted.
+
+Return first line exactly one of:
+CLEAR FOR THIS REAL-AXIS RECEIVING AND CROSS-FLUX METHOD
+NEEDS REVISION
+Then give substantive physics findings and actual coverage limitations. Focus
+on whether this is the smallest sound next calculation toward total transverse
+survival deficit, not on optional wording or general verification tooling.
+
+First assess section0: actual E5 column labels, R3=D5[2:5,:], the complete
+normalization of both incident columns, and the full projected eta/sigma/pressure
+force before selecting the three receiving rows. Read views/incident-columns-
+only.json and the small eta/sigma/right-end views, then actual full originals.
+Transverse chart indices0,1 stay in the matched resonant sector. Assess the
+section3a derivative-of-delta/moving-polarization consistency gate, not a
+frozen-momentum projection of B-prime alone. These proposed joins are new
+calculations and may fail; no source-class claim precedes them.
+
+Assess the actual C3 block and denominators, outgoing propagating/evanescent
+rays, evenness, exact common-root exclusion, polynomial growth and source-class
+argument. Inspect full source and affine pressure operands; the longitudinal
+step must be treated distributionally and direct chemical pressure only once.
+Assess both native current cross terms, physical chart/phase/epsilon conventions,
+and whether claimed slab asymptotic decay follows in the stated weighted-L2
+class without silently claiming all far-bulk asymptotics or full physical work.
+A scalar permeability or finite grazing determinant does not prove global
+regularity. A coordinate inverse is not a power metric. Root/nonzero outcomes
+are unknown and must be allowed to stop the route.
+
+The eventual physical-work balance is explicitly open. Flag any missing
+physical assumption that makes even this bounded regularity/source result
+unsound or useless. Do not certify leakage, a full scattering inverse or
+quadratic total loss from K1=0 or U_B source selection. If you believe a power
+identity must precede this bounded calculation, explain the concrete obstruction.
+No worker, numerical field solve, transform/power integral or new parameter
+choice is authorized by a favorable method assessment. Declare partial coverage
+honestly; prioritize complete live core operands over unrelated old proofs.

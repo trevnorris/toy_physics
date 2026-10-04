@@ -1,0 +1,42 @@
+{
+  "status": "FIXED_EXPLICIT_SOURCE_PROJECTION_RECEIVING_METHOD_PACKET_VERIFIED",
+  "packetSha256": "84e905c4641dfa865d2ed871a1e7988702bf4611395407b8125af47c60424f0f",
+  "archiveSha256": "5123eb8753425e32723eb2a3afc5a9c5a76db4c650a7c65cfb83382bf01fff2c",
+  "files": 1929,
+  "bytes": 28600761,
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "completionMessageSha256": "022723320954719578c49a6ebb8dfd4da38e50a5a2727bf1fee1c5cf42e917c9",
+  "sourceHashesChecked": 1928,
+  "losslessViewsChecked": 20,
+  "artifactCensus": {
+    "source": 781,
+    "receiving": 725,
+    "selectedMatching": 98,
+    "selectedFlux": 289
+  },
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "existingReviewerRunnerReusedUnchanged": true,
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-method-review-r2",
+  "scope": {
+    "target": "Explicit full row/source projection and moving-basis distribution before real-axis three-field regularity and transverse cross-flux",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "samePhysicalInputs": true,
+    "arbitraryIncidentDoublet": true,
+    "scientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "receivingRegularityEstablished": false,
+    "newInverseEvaluated": false,
+    "fullPhysicalWorkPending": true,
+    "leakageFactor": null,
+    "recoveryParked": true,
+    "projectionGateBeforeDecay": true,
+    "asymptoticPlaneWaveJetScopeOnly": true
+  }
+}

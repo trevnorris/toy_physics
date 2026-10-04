@@ -1,0 +1,33 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T20:13:32.256852+00:00",
+  "packetSha256": "84e905c4641dfa865d2ed871a1e7988702bf4611395407b8125af47c60424f0f",
+  "archiveSha256": "5123eb8753425e32723eb2a3afc5a9c5a76db4c650a7c65cfb83382bf01fff2c",
+  "reviewers": [
+    "claude"
+  ],
+  "files": 1929,
+  "bytes": 28600761,
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "authority": "Standing physics refocus and necessary substantive Claude-only scientific-method revision; no scientific execution. Prior literal NEEDS preserved separately, no old report supplied.",
+  "scope": {
+    "target": "Explicit full row/source projection and moving-basis distribution before real-axis three-field regularity and transverse cross-flux",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "samePhysicalInputs": true,
+    "arbitraryIncidentDoublet": true,
+    "scientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "receivingRegularityEstablished": false,
+    "newInverseEvaluated": false,
+    "fullPhysicalWorkPending": true,
+    "leakageFactor": null,
+    "recoveryParked": true,
+    "projectionGateBeforeDecay": true,
+    "asymptoticPlaneWaveJetScopeOnly": true
+  },
+  "noAutomaticRetry": true,
+  "noPeerReportsShared": true,
+  "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+}

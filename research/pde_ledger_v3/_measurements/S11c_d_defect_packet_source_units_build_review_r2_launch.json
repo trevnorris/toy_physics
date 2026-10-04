@@ -1,0 +1,101 @@
+{
+  "status": "INDEPENDENT_CORRECTED_SOURCE_UNIT_TRANSPORT_BUILD_REVIEWS_RUNNING",
+  "recordedUtc": "2026-10-04T04:42:34.894427+00:00",
+  "preparedCommit": "38985166",
+  "priorLiteralReviewCommit": "9c15ab04",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/source-units-build-review-r2",
+  "launch": {
+    "jobPid": 719954,
+    "watcherPid": 719955,
+    "packetSha256": "f7aa12b043c03c98648c5fc83dceaa6ea656cd5dbe9959bb82a977cea2979de0",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "watcher": {
+    "status": "waiting",
+    "watcherPid": 719955,
+    "jobPid": 719954,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T04:42:13.567823+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "1d54cbdee69794dfac499cb4083a44c82e4e936273b0095f34f5515db8c58981",
+    "notifications": {}
+  },
+  "reviewRuns": {
+    "claude": {
+      "engine": "claude",
+      "sessionId": "fe7dc47e-5c40-4a74-8e53-2357c7f24bfc",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "fe7dc47e-5c40-4a74-8e53-2357c7f24bfc"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/source-units-build-review-r2/claude/work",
+      "startedUtc": "2026-10-04T04:42:13.954985+00:00",
+      "packetSha256": "f7aa12b043c03c98648c5fc83dceaa6ea656cd5dbe9959bb82a977cea2979de0",
+      "promptSha256": "f1994e5ab58c774577747fcdc0406e5a142511ef2812fa65536ad9f37090a574",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 719967
+    },
+    "grok": {
+      "engine": "grok",
+      "sessionId": "1e172929-2346-467b-b4df-8453253e451e",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/source-units-build-review-r2/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/source-units-build-review-r2/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "1e172929-2346-467b-b4df-8453253e451e"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/source-units-build-review-r2/grok/work",
+      "startedUtc": "2026-10-04T04:42:13.958577+00:00",
+      "packetSha256": "f7aa12b043c03c98648c5fc83dceaa6ea656cd5dbe9959bb82a977cea2979de0",
+      "promptSha256": "f1994e5ab58c774577747fcdc0406e5a142511ef2812fa65536ad9f37090a574",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 719968
+    }
+  },
+  "packetSha256": "f7aa12b043c03c98648c5fc83dceaa6ea656cd5dbe9959bb82a977cea2979de0",
+  "archiveSha256": "e89e551a326f9cd3ae83ca9a07f719667870aedc75c0910ee335ec45687800d7",
+  "scienceExecuted": false,
+  "verdictsRead": false,
+  "automaticRetry": false,
+  "next": "Local event hook; no model polling. Read both literal reports and exact packet receipts before adjudication or edits."
+}

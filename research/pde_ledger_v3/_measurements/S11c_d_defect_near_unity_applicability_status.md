@@ -1177,3 +1177,21 @@ The forthcoming run derives only missing unit transport and controls; all
 2,521 original inputs remain pinned for reuse without completed calculations.
 Runtime operands, returns, resource enforcement and integrity remain unaccepted
 until completion inspection.
+
+Kernel/wave/measure unit certificate accepted after actual guarded execution:
+567 operations, 20 complete templates, all 544 addresses (102 formal, 442
+explicit zero; 288 flat), 31 bindings and 580 inherited literal zero proofs.
+Four new dimensional controls responded through actual template or full
+summand refusal; one previous profile control was restored. 11,691 metadata
+inspection checks passed across 4,912 chain records, 2,521 saved copies, 22
+source posthashes, 21 snapshots and 16 additional identity copies. Strict
+scientific stderr is empty and stdout equals checks bytes. Guard duration
+12.439 seconds, peak 158,765,056 bytes, zero limit/OOM/swap events, CPU15;
+RuntimeMaxUSec=infinity and Restart=no verified.
+
+This closes the selected pressure-summand dimensional obligation with inherited
+gamma/algebra/Fourier dependencies retained. No integral or complete packet
+action was evaluated. Next is concrete outer-evaluator preparation, including
+actual general Fourier/inner request interfaces, independent route values,
+exact reuse identities, collision coverage and lossless evidence persistence.
+No scattering/current/loss, inverse or sweep follows from unit consistency.

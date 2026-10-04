@@ -164,3 +164,5 @@ research/pde_ledger_v3/_measurements/S11c_d_defect_packet_kernel_units_build_rev
 research/pde_ledger_v3/_measurements/S11c_d_defect_packet_kernel_units_build_review_r3_sources.json -diff
 
 research/pde_ledger_v3/_measurements/S11c_d_defect_packet_kernel_units_build_review_r3_record.json -diff
+
+research/pde_ledger_v3/_measurements/S11c_d_defect_packet_kernel_units_result_record.json -diff

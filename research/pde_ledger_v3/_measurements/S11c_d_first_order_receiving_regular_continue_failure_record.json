@@ -1,0 +1,120 @@
+{
+  "status": "FAILED_STRUCTURAL_POLYNOMIAL_RECONSTRUCTION_WITH_TWELVE_SAVED_BEZOUT_RETURNS",
+  "createdUtc": "2026-10-04T21:41:00.058461+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-continuation-01",
+  "gateSha256": "9de01acd8212b271e844c02ab256270decbec48790584eaf7fe031140a5515fe",
+  "workerSha256": "4f0f0edf06f4baac90e87f5d449760de753f25dfc3303e5b15a636f6cceb4947",
+  "buildRecordSha256": "7c190e2f6b0041422b288cec491d28cbb8aa10215c7668394ad2a9fde284f0e2",
+  "methodRecordSha256": "51857e79d51e2c4808c5f8a9db4d56571a14d9430a13c5f97f658429b73c32c6",
+  "independentBuildClearance": false,
+  "inspection": "JSON/source/hash only. No symbolic restoration or scientific validator.",
+  "metadataChecks": 20836,
+  "newLiteralZeros": 12,
+  "newConstantRayCertificates": [
+    "entry-0-joined-denominator-numerator-propagating",
+    "entry-0-joined-denominator-numerator-evanescent",
+    "entry-0-joined-denominator-denominator-propagating",
+    "entry-0-joined-denominator-denominator-evanescent",
+    "entry-1-joined-denominator-numerator-propagating",
+    "entry-1-joined-denominator-numerator-evanescent",
+    "entry-1-joined-denominator-denominator-propagating",
+    "entry-1-joined-denominator-denominator-evanescent",
+    "entry-2-joined-denominator-numerator-propagating",
+    "entry-2-joined-denominator-numerator-evanescent",
+    "entry-2-joined-denominator-denominator-propagating",
+    "entry-2-joined-denominator-denominator-evanescent"
+  ],
+  "completedTopOperations": 0,
+  "completeArtifacts": 99,
+  "restoredNewZeros": 639,
+  "restoredOldZeros": 171,
+  "restoredControls": 2,
+  "savedCopies": 2025,
+  "priorCopies": 4576,
+  "posthashes": 11203,
+  "sourceSnapshots": 25,
+  "additionalIdentityCopies": 23,
+  "failedEntry": {
+    "original": {
+      "text": "(receiving_block_l**2*receiving_block_q*(8980 + 30000*I) + 9000*I*receiving_block_l**2 + receiving_block_q*(449 + 1500*I) + 450*I)/(receiving_block_q*(3000 + 10000*I) + 3000*I)",
+      "srepr": "Mul(Pow(Add(Mul(Symbol('receiving_block_q'), Add(Integer(3000), Mul(Integer(10000), I))), Mul(Integer(3000), I)), Integer(-1)), Add(Mul(Pow(Symbol('receiving_block_l', real=True), Integer(2)), Symbol('receiving_block_q'), Add(Integer(8980), Mul(Integer(30000), I))), Mul(Integer(9000), I, Pow(Symbol('receiving_block_l', real=True), Integer(2))), Mul(Symbol('receiving_block_q'), Add(Integer(449), Mul(Integer(1500), I))), Mul(Integer(450), I)))"
+    },
+    "sheetEntry": {
+      "text": "(receiving_block_q*(119/20 - receiving_block_q**2)*(8980 + 30000*I) + receiving_block_q*(449 + 1500*I) + 9000*I*(119/20 - receiving_block_q**2) + 450*I)/(receiving_block_q*(3000 + 10000*I) + 3000*I)",
+      "srepr": "Mul(Pow(Add(Mul(Symbol('receiving_block_q'), Add(Integer(3000), Mul(Integer(10000), I))), Mul(Integer(3000), I)), Integer(-1)), Add(Mul(Symbol('receiving_block_q'), Add(Rational(119, 20), Mul(Integer(-1), Pow(Symbol('receiving_block_q'), Integer(2)))), Add(Integer(8980), Mul(Integer(30000), I))), Mul(Symbol('receiving_block_q'), Add(Integer(449), Mul(Integer(1500), I))), Mul(Integer(9000), I, Add(Rational(119, 20), Mul(Integer(-1), Pow(Symbol('receiving_block_q'), Integer(2))))), Mul(Integer(450), I)))"
+    },
+    "originalNegativePowers": [
+      {
+        "position": 1,
+        "base": {
+          "text": "receiving_block_q*(3000 + 10000*I) + 3000*I",
+          "srepr": "Add(Mul(Symbol('receiving_block_q'), Add(Integer(3000), Mul(Integer(10000), I))), Mul(Integer(3000), I))"
+        },
+        "exponent": {
+          "text": "-1",
+          "srepr": "Integer(-1)"
+        },
+        "transported": {
+          "text": "receiving_block_q*(3000 + 10000*I) + 3000*I",
+          "srepr": "Add(Mul(Symbol('receiving_block_q'), Add(Integer(3000), Mul(Integer(10000), I))), Mul(Integer(3000), I))"
+        }
+      }
+    ],
+    "joinedEntry": {
+      "text": "(receiving_block_q*(119 - 20*receiving_block_q**2)*(449 + 1500*I) + receiving_block_q*(449 + 1500*I) + 450*I*(119 - 20*receiving_block_q**2) + 450*I)/(1000*(receiving_block_q*(3 + 10*I) + 3*I))",
+      "srepr": "Mul(Rational(1, 1000), Pow(Add(Mul(Symbol('receiving_block_q'), Add(Integer(3), Mul(Integer(10), I))), Mul(Integer(3), I)), Integer(-1)), Add(Mul(Symbol('receiving_block_q'), Add(Integer(119), Mul(Integer(-1), Integer(20), Pow(Symbol('receiving_block_q'), Integer(2)))), Add(Integer(449), Mul(Integer(1500), I))), Mul(Symbol('receiving_block_q'), Add(Integer(449), Mul(Integer(1500), I))), Mul(Integer(450), I, Add(Integer(119), Mul(Integer(-1), Integer(20), Pow(Symbol('receiving_block_q'), Integer(2))))), Mul(Integer(450), I)))"
+    },
+    "joinedNumerator": {
+      "text": "receiving_block_q*(119 - 20*receiving_block_q**2)*(449 + 1500*I) + receiving_block_q*(449 + 1500*I) + 450*I*(119 - 20*receiving_block_q**2) + 450*I",
+      "srepr": "Add(Mul(Symbol('receiving_block_q'), Add(Integer(119), Mul(Integer(-1), Integer(20), Pow(Symbol('receiving_block_q'), Integer(2)))), Add(Integer(449), Mul(Integer(1500), I))), Mul(Symbol('receiving_block_q'), Add(Integer(449), Mul(Integer(1500), I))), Mul(Integer(450), I, Add(Integer(119), Mul(Integer(-1), Integer(20), Pow(Symbol('receiving_block_q'), Integer(2))))), Mul(Integer(450), I))"
+    },
+    "joinedDenominator": {
+      "text": "1000*receiving_block_q*(3 + 10*I) + 3000*I",
+      "srepr": "Add(Mul(Integer(1000), Symbol('receiving_block_q'), Add(Integer(3), Mul(Integer(10), I))), Mul(Integer(3000), I))"
+    }
+  },
+  "failedPair": {
+    "original": {
+      "text": "receiving_block_q*(3000 + 10000*I) + 3000*I",
+      "srepr": "Add(Mul(Symbol('receiving_block_q'), Add(Integer(3000), Mul(Integer(10000), I))), Mul(Integer(3000), I))"
+    },
+    "joined": {
+      "text": "1000*(receiving_block_q*(3 + 10*I) + 3*I)",
+      "srepr": "Mul(Integer(1000), Add(Mul(Symbol('receiving_block_q'), Add(Integer(3), Mul(Integer(10), I))), Mul(Integer(3), I)))"
+    },
+    "numerator": {
+      "text": "1000*receiving_block_q*(3 + 10*I) + 3000*I",
+      "srepr": "Add(Mul(Integer(1000), Symbol('receiving_block_q'), Add(Integer(3), Mul(Integer(10), I))), Mul(Integer(3000), I))"
+    },
+    "denominator": {
+      "text": "1",
+      "srepr": "Integer(1)"
+    }
+  },
+  "failure": {
+    "executionStatus": "FAILED_PRESERVED",
+    "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue.py\", line 318, in main\n    result=J.stage('saved-prefix-real-axis-receiving-continuation',{'manifestSha256':gate['manifestSha256'],'buildReviewSha256':gate['buildReviewRecordSha256']},lambda:scientific_work(manifest,J,ns['decode']));code=0\n  File \"unchanged-journal-and-containment\", line 243, in stage\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue.py\", line 318, in <lambda>\n    result=J.stage('saved-prefix-real-axis-receiving-continuation',{'manifestSha256':gate['manifestSha256'],'buildReviewSha256':gate['buildReviewRecordSha256']},lambda:scientific_work(manifest,J,ns['decode']));code=0\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue.py\", line 245, in scientific_work\n    for j,base in enumerate(bases):domain_certificate('entry-'+str(i)+'-base-'+str(j),base['transported'])\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue.py\", line 222, in domain_certificate\n    require(sp.Poly(poly,q,extension=sp.I).as_expr()==sp.expand(poly),'exact Gaussian-rational denominator polynomial')\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue.py\", line 15, in require\n    if value is not True: raise ValueError(message)\nValueError: exact Gaussian-rational denominator polynomial\n",
+    "incompleteOperation": "saved-prefix-real-axis-receiving-continuation",
+    "automaticRetry": false
+  },
+  "diagnosis": "The strict structural predicate compares Poly.as_expr with expand(original). Complex coefficient grouping need not be structurally identical. Its two intermediate expressions/comparison object were not published. No denominator ray computation for entry3 or determinant computation occurred. A future exact expanded reconstruction residual must be saved and checked; no inferred pass.",
+  "workerSeconds": 12.918096933979541,
+  "peakCgroupBytes": 211738624,
+  "zeroMemoryEvents": true,
+  "zeroSwap": true,
+  "noDeadlines": true,
+  "strictScientificStderrBytes": 1601,
+  "stdoutChecksIdentical": true,
+  "allHashesIntact": true,
+  "treeIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-continuation-01/failure-inspection-files.json",
+    "sha256": "fb6c6c593f2cce3bc46c10340699d8d993bb2ea649fa80f12323da409b19bb12",
+    "files": 4760,
+    "bytes": 82141188,
+    "excludesInspectionFileItself": true
+  },
+  "scientificAcceptance": false,
+  "receivingDeterminantUnresolved": true,
+  "leakageFactor": null,
+  "disposition": "Preserve every original/source/current and12newBezout/ray results. Prepare task-local exact polynomial representation repair starting at the unpublished entry3 domain predicate. No completed symbolic operations or original source/current functions replayed."
+}

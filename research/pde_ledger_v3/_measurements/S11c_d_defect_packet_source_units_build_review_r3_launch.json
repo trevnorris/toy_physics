@@ -1,0 +1,113 @@
+{
+  "status": "INDEPENDENT_SOURCE_UNIT_BINDING_DOMAIN_BUILD_REVIEWS_RUNNING",
+  "recordedUtc": "2026-10-04T05:22:12.435803+00:00",
+  "preparedCommit": "21328d5e",
+  "priorLiteralReviewCommit": "818fd432",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/source-units-build-review-r3",
+  "launch": {
+    "jobPid": 732247,
+    "watcherPid": 732248,
+    "packetSha256": "78abeefc0372d01a31f2e6e53884e75eb53f2a06a9bb453cb2782cc678c9544a",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "watcher": {
+    "status": "waiting",
+    "watcherPid": 732248,
+    "jobPid": 732247,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T05:20:30.014609+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "727b7b88f091887a502066838fff28240ec8d368d32505bcea0db630dcc15d56",
+    "notifications": {}
+  },
+  "reviewRuns": {
+    "claude": {
+      "engine": "claude",
+      "sessionId": "8bbf1baf-0d26-43db-afb3-6f04db96b33b",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "8bbf1baf-0d26-43db-afb3-6f04db96b33b"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/source-units-build-review-r3/claude/work",
+      "startedUtc": "2026-10-04T05:20:30.370731+00:00",
+      "packetSha256": "78abeefc0372d01a31f2e6e53884e75eb53f2a06a9bb453cb2782cc678c9544a",
+      "promptSha256": "8c4088c5d12f47c57fe938ad78af971c6b7a312f755a46a9509f0636b7700af6",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 732258
+    },
+    "grok": {
+      "engine": "grok",
+      "sessionId": "9b404970-ca2c-4134-854b-473c4981756a",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/source-units-build-review-r3/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/source-units-build-review-r3/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "9b404970-ca2c-4134-854b-473c4981756a"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/source-units-build-review-r3/grok/work",
+      "startedUtc": "2026-10-04T05:20:30.369331+00:00",
+      "packetSha256": "78abeefc0372d01a31f2e6e53884e75eb53f2a06a9bb453cb2782cc678c9544a",
+      "promptSha256": "8c4088c5d12f47c57fe938ad78af971c6b7a312f755a46a9509f0636b7700af6",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 732257
+    }
+  },
+  "packetSha256": "78abeefc0372d01a31f2e6e53884e75eb53f2a06a9bb453cb2782cc678c9544a",
+  "archiveSha256": "28e9fd8314c8855acb788a401645c0f5ac55de66155a15f5bcae068d71f6417c",
+  "scienceExecuted": false,
+  "verdictsRead": false,
+  "automaticRetry": false,
+  "hostStartupVerification": {
+    "method": "one host ps inspection after sandbox process lookup could not see host PIDs",
+    "coordinatorPid": 732247,
+    "watcherPid": 732248,
+    "reviewerPids": [
+      732257,
+      732258
+    ],
+    "allPresent": true,
+    "coordinatorAndWatcherStderrEmpty": true,
+    "sandboxProcessLookupFailureWasNotHostProcessExit": true
+  },
+  "next": "Completion hook resumes existing session. Read both literal reports and exact receipts before adjudication or edits; no model polling."
+}

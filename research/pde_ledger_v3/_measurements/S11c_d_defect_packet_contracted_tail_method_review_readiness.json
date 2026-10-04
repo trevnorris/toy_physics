@@ -1,0 +1,160 @@
+{
+  "status": "READY_FOR_INDEPENDENT_SEPARATE_TAIL_ALLOCATION_METHOD_ASSESSMENT",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-tail-method-review",
+  "failureCommit": "ec54932e",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-04T13:33:25.362885+00:00",
+    "packetSha256": "40934258fbcd77225d788f0c03f9e82520ec63cb6a2ca38fdd3891ec6e87606d",
+    "archiveSha256": "e2901e082d8cda2b5e589d4439e1aa53a56fece437a7ffd0a279bd7c6085f9dd",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 1571,
+    "bytes": 31950540,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing user and AGENTS authority for necessary substantive method assessment after actual failure within the same bounded numerical J/direct target. No new disclosure recipients, physics, windows, numerical rules or tolerances. Original failure remains preserved; no scientific retry or new worker is authorized by this review launch.",
+    "scope": {
+      "frequency": 3,
+      "anchoring": "LAB_HELD",
+      "density": "RHO4_CONSTANT",
+      "drain": 0,
+      "edges": [
+        "1/5",
+        "1/10"
+      ],
+      "effectiveCs": "sqrt(6)/2",
+      "plannedCarriers": [
+        "sqrt(595)/10",
+        "0"
+      ],
+      "target": "Source-only assessment of separate analytic aggregate and unchanged numerical resolution allocations after preserved tail refusal",
+      "sourceFrequencyContinued": false,
+      "responseRegulator": 0,
+      "selectedPressureAddresses": 544,
+      "selectedLocalCells": 16,
+      "pressureCoefficientFields": 34,
+      "noEvaluatedResponseIntegral": false,
+      "noNumericalPacketAction": true,
+      "noFiniteSolve": true,
+      "noProductionOverwrite": true,
+      "noDefectSweep": true,
+      "pressureSummandUnitsComplete": true,
+      "addressUnitCertificatesProduced": 544,
+      "noGeometryReplay": true,
+      "sourceGradeFieldTransportOnly": false,
+      "kernelWaveMeasureTransportOnly": false,
+      "newFiniteWindowCertificate": false,
+      "noNumericalEvaluator": false,
+      "originalWindowPairs": [
+        [
+          27,
+          122
+        ],
+        [
+          29,
+          124
+        ]
+      ],
+      "boundedContractedNumerics": true,
+      "completePacketAction": false,
+      "noLeakageOrCurrent": true,
+      "eligibleAddressCount": 20,
+      "addressPrimitives": 40,
+      "argumentDerivative": 0,
+      "allRealTailsConditionalOnAssessedBounds": true,
+      "analyticGaussianException": "only exactly joined constant fields",
+      "fullNumericalRoutes": [
+        "A24",
+        "A48",
+        "B50"
+      ],
+      "empiricalErrorNotRigorous": true,
+      "noNewNumericalWorker": true,
+      "scienceCalls": 0
+    },
+    "noAutomaticRetry": true,
+    "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+  },
+  "static": {
+    "status": "STATIC_FIXED_METHOD_PACKET_VERIFIED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "bca69f7f401123d06f840955133a843798ab3b9af53901ad6ea3a4afdfabcdcd",
+    "packetSha256": "40934258fbcd77225d788f0c03f9e82520ec63cb6a2ca38fdd3891ec6e87606d",
+    "archiveSha256": "e2901e082d8cda2b5e589d4439e1aa53a56fece437a7ffd0a279bd7c6085f9dd",
+    "files": 1571,
+    "bytes": 31950540,
+    "sourceHashesChecked": 1570,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "newScientificOperations": 0,
+    "newWorkerOrGateExists": false
+  },
+  "newScientificOperations": 0,
+  "newWorkerOrGateExists": false,
+  "oldPeerReportsIncluded": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Source-only assessment of separate analytic aggregate and unchanged numerical resolution allocations after preserved tail refusal",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": false,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": true,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": false,
+    "kernelWaveMeasureTransportOnly": false,
+    "newFiniteWindowCertificate": false,
+    "noNumericalEvaluator": false,
+    "originalWindowPairs": [
+      [
+        27,
+        122
+      ],
+      [
+        29,
+        124
+      ]
+    ],
+    "boundedContractedNumerics": true,
+    "completePacketAction": false,
+    "noLeakageOrCurrent": true,
+    "eligibleAddressCount": 20,
+    "addressPrimitives": 40,
+    "argumentDerivative": 0,
+    "allRealTailsConditionalOnAssessedBounds": true,
+    "analyticGaussianException": "only exactly joined constant fields",
+    "fullNumericalRoutes": [
+      "A24",
+      "A48",
+      "B50"
+    ],
+    "empiricalErrorNotRigorous": true,
+    "noNewNumericalWorker": true,
+    "scienceCalls": 0
+  },
+  "methodSha256": "8b2702eb088609befd1d0be1deae61a370757dcfa893edda2c0dc3876b6c80eb"
+}

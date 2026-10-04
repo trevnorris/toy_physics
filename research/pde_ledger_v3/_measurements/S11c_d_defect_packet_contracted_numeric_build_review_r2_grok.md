@@ -1,0 +1,46 @@
+I'll review this bounded contracted numerical build from the stated inputs, worker source, and native operands only—read-only, with no execution or inferred runtime results.The packet lives under `input/`. I’ll read the method, the evidence guide, and the implementation sources before judging the joins.The preamble joins are in view. Next I’ll read the numerical routes, geometry, request index, store, and launcher against those joins.The review is still open: I am finishing the unread joins, the cross-context arithmetic path, containment, and the remaining native operands before giving one verdict.I will re-read the governing build, method, and the load-bearing source and operand sites before giving a verdict. The earlier decode concern stays closed only if the codec and joins still match the files.The quadrature multiplies summed pieces, so I am checking the method’s integral against that product and the geometry and operand joins that feed it.The remaining gap is the original-density LEFT operands. I will read those files and the validation map they must match, then give the verdict from the source.The original densities use `contract_*` symbols. I need the arithmetic LEFT texts and the exact-join predicate to see whether substitution matches them.The original densities match the arithmetic sides by the substitution map. I am checking the derivative mutant and the adaptive ranking in the numerical source before the verdict.**CLEAR FOR THIS BOUNDED CONTRACTED NUMERICAL BUILD**
+
+This source and the operands below implement one bounded instrument: ordinary J of `NATIVE_MIXED_ITERATION`, plus the three added direct pieces Dr, Dh, and Dq of `INHERITED_DIRECT_WHOLE_OFF_DIAGONAL`, for the two original Gaussian carriers and both original windows. Source clearance is the start of execution, and the run still has to pass the checks below. No integral value is claimed here.
+
+No fatal omission or incorrect implementation turned up in the source and operands that were opened.
+
+## What was read
+
+Packet sources, in full: `input/build.md`, `input/method.md`, `input/evidence-guide.md`, `input/worker.py`, `input/prepare.py`, `input/validation.py`, `input/numeric.py`, `input/geometry.py`, `input/launcher.py`, `input/request-index.py`, `input/evidence-store.py`.
+
+Pinned anchors and containment, read at the cited regions: numerical library `gaussian`/`combine` and the preamble census/moment loop; `containment()` in `S11c_d_defect_raw_increment.py` (lines 174–188); geometry library `Quad`/`Line`/`canonical_lines`; `scripts/s11c_guarded_run.py` resource admission through the host-reserve and pool caps; supervisor `main()` through the child `wait()` with no timeout; mpmath `PythonMPContext.make_mpf` (assigns the tuple, does not renormalize); source-contract fragments for the Fourier product, constant reference, inner components, profile, root, and tail contributions.
+
+Operands opened in full or at the cited windows: interpretation input and return (`new-original-density-interpretation-input.json`, sha `1b1514b2…`, and its return, sha `418558cf…`); J and D arithmetic inputs and returns; `runtime-a` and `runtime-mu`; contraction definitions through the five outer integrands; whole-tag definitions and the D closed density; reflected numerator envelope; rules `A-GL24` and `B-G7-K15`; address bodies 8346, 8347, 8348, 8350 (input and return), 8356, 8361, 9672, and the 8349 and 9673 headers. The manifest resources block matches 4 GiB native, 16 GiB pool, zero swap, one CPU, one thread, 32 tasks, 4 GiB host reserve, `durationLimits` null.
+
+## Joins that hold on the opened objects
+
+The interpretation arguments are exactly `{k,l,t,qi,qo,qh,qs,A1,A2,a,mu,beta,W,L,I}`, stored as `contract_*` except `I`. The four ordered densities are the kernel components after `1/I * (-I)` cancels. `validation.whole_densities` substitutes those symbols by the packet map, with `A1` and `A2` the length-10 profiles, `a = 100(1+3I/10)/109`, `mu = 3/10`, and `beta = a*mu = 30/109+9I/109`. By hand, that image is the J arithmetic left side: the profile and `a*mu**2` produce `1125/872*(1+3I/10)`, which is the saved `225/872*(1+3I/10)` times the factor-5 linear term. Each direct piece produces the factor `75/16`, which is the saved `15/16` times the same factor-5 term. The three-piece sum is the D arithmetic left side. The arithmetic returns are the inherited cancelled `Integer(0)`. `exact()` is `cancel(together(left-right))` and refuses on a nonzero residual. That cancellation is the inherited identity; the new join is the argument substitution.
+
+Jwhole at frequency 3 and Dwhole with reflected momentum `l-td` are the objects mapped onto the arithmetic right sides. The J response keeps H as a separate tag and sets that tag to zero only inside the ordinary-J injection. Address 8346 records `contractedOrdinaryComponent: true`. Numerical output is `combine()` of the saved outer integrands, including `Dr_wrong_root`. `Cd = -mu*W*L/4`.
+
+Eligible live rows require grades 00/11, `epsilonCount == 1`, normal 1, and `n in {0,2}`. Alpha carries `b*c*P_j*i^n` once. Route A uses `p^n/(2*pi)` on X, or `carrier^n` for the derivative mutant. Route B divides the moment sum by `i^n*2*pi`. Y has no `n` and no `1/(2*pi)`. The derivative mutant sets the route-B coefficient to `[(i*p0)^n]` and does not call `moment_polynomial`; for `n=2` the length is 1, so the recurrence loop does not run. Wrong-root output is only `8347/Dr`. Derivative output is only `8350/J`.
+
+Geometry builds six affinity slabs from the exact cuts, retains every canonical-line label, and audits `true_window` at both endpoints and the midpoint. `wing_control` forces the central box onto a wing and requires the refusal `actual max/min clipping window`. The same mesh coordinate is used for `k` and `l` because `I(m)` is the same interval; input clip and output clip are applied to different contraction copies.
+
+Both routes keep separate purpose, route, and precision namespaces. A pairs GL24 with GL48 on the inner pieces before `combine()`. B uses the embedded 7-node Gauss rule inside 15 Kronrod nodes, with panel error `|Kronrod-Gauss|` plus both weight systems times the inner error. The inner stop is the addressed product error against the per-`m` target. The outer stop is total error `<= 1e-11/80` and weighted nested inner error `<=` that quantity over 4. Leaf ranking uses the binding guard: inner ranking rebuilds the product with global magnitudes and that leaf’s error; outer ranking uses the leaf’s already-addressed panel error. The parent leaf is deactivated only after both children exist. There is no automatic resume, precision fallback, or higher-order retry. Failure, journal, and posthash emission are in `worker.main`. The launcher command is the pooled guard at 4 GiB and 32 tasks around the existing supervisor.
+
+## Mandatory runtime checks
+
+These are implemented and fail closed. Their outcomes are unknown until the guarded run:
+
+- Census `64 / 20 / 10 / 12 / 32` over the 544 restored `e_W` rows, and the per-address quotient, wave, epsilon, template, and unit joins.
+- `exact()` residuals for the density substitution, whole-density maps, combine formulas, and the four absolute numerator joins.
+- Positive per-address and grand-total tail budgets, including restored K27/T122 rows and the enlarged K29/T124 evaluations.
+- Saved-rule embedding `len(embedded)==7`, open nodes, and positive weights, including `A-GL48`.
+- Inner endpoint equality with `-K`/`K` and outer equality with `-M`/`M` after MP conversion.
+- A24/A48, A48/B50, and window comparisons at `1e-9+1e-7*|A48|`, and finite-window movement of `8347/Dr` and `8350/J` above ten times the summed empirical envelope.
+- Disk reserve, the 8 MiB record cap, cgroup 4 GiB, zero swap, one CPU, thread environment `1`, and `pids.max` 32.
+- The future two-reviewer gate file. `verify_gate` requires both literal CLEAR verdicts before this worker can run. That file is not present yet.
+
+## Scope limits
+
+H, flat, height/contact/PV, and slope stay outside this integral. The manifest lists height geometry plans; `prepare` builds only the square meshes. J is the ordinary component. J+D is not a packet action, current, inverse, or leakage factor.
+
+Both routes share the assessed constant-field Gaussian identity. The `1e-24` formula check compares the two formulas; it is not an independent Fourier quadrature. The Y-phase `exact()` is the opposite-center identity `(p0-l)*(-5/2)=(l-p0)*(5/2)`. `gaussian()` implements the method’s phase. Large-argument `sinh` contributes error `0` and is an empirical roundoff statement. Adaptive and comparison indicators are empirical. The nested-allocation integral bound is recorded as a lemma, not re-proved here.
+
+Coverage that stays unresolved until the runtime requires fire: the remaining live address bodies, 42 of the 44 zero-status strings, the `A-GL48` nodes, the K27 tail-plan numbers, and three of the four absolute-certificate bodies. The reflected certificate was read and matches the preamble expressions; the other three are the same `exact()` join. Packet-to-pin byte hashes were not recomputed. Total work, resident memory, and whether any request reaches 8 MiB are unknown until execution.

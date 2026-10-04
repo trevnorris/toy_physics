@@ -1,0 +1,71 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_ONE_BOUNDED_BACKGROUND_FORCE_COMPARISON",
+  "createdUtc": "2026-10-04T23:31:25.013316+00:00",
+  "scope": {
+    "target": "Finite unbound background force/rate/area/order comparison with UNSUPPLIED physical pairing",
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "researchOmega": 3,
+    "researchCs": "sqrt(6)/2",
+    "numericBindingPerformed": false,
+    "sameSavedPhysicalInputs": true,
+    "fullIncrementalCentreDrive": false,
+    "physicalWorkClosed": false,
+    "fieldOrIntegral": false,
+    "leakageFactor": null,
+    "recoveryParked": true
+  },
+  "scienceExecutionsAuthorized": 1,
+  "reviewers": [
+    "claude"
+  ],
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "authority": "User-directed physics refocus, latest completion instruction and standing AGENTS authorize this exact finite background prerequisite after substantive Claude assessment; no routine stage permission required.",
+  "sourceAssessmentIsResultAcceptance": false,
+  "noAutomaticScientificRetry": true,
+  "noFallback": true,
+  "noSchedulerChange": true,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolGiB": 16,
+    "zeroSwap": true,
+    "cpuCount": 1,
+    "threads": 1,
+    "tasksMax": 32,
+    "hostReserveGiB": 4,
+    "durationLimits": null
+  },
+  "buildReviewRecordSha256": "706eb68b782a5bc882fd0d2cc19558bf570c1ef7d195ad65ae6d02c87afe43e0",
+  "methodSha256": "cca4715f827611fa8cce2d2c74f5ba257f08955bab3d38d6867171e928c3523b",
+  "physicalLimitations": {
+    "backgroundTractionMeasure": "TRACTION_MEASURE_UNSUPPLIED",
+    "totalR0_c": "UNSUPPLIED",
+    "physicalPairing": "ORIGINAL_FORCE_PAIRING_UNRESOLVED",
+    "THETAforcePairingAndPower": "UNSUPPLIED; complete original operand preserved, not evaluated",
+    "exactNormal": "SOURCE_ASSESSED_CANDIDATE_NOT_RUNTIME_ORIGINAL_GEOMETRY_JOIN",
+    "acousticZeroProvenance": "DOCUMENTARY_ONLY_NO_NEW_CERTIFICATE",
+    "formalControls": "COEFFICIENT_SENSITIVITY_AT_A1_ONLY",
+    "leakageFactor": null
+  },
+  "additionalIdentityPins": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_review_record.json": "706eb68b782a5bc882fd0d2cc19558bf570c1ef7d195ad65ae6d02c87afe43e0",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_claude.md": "c388c498daae4c356f396d98e3848921e65f666c5542ac857cd98d3f07faf0e8",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_method.txt": "cca4715f827611fa8cce2d2c74f5ba257f08955bab3d38d6867171e928c3523b",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_test.py": "31933691f9570028b2190a1f46c99d4daeab6820da00f10c263ece57cd7f604a",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_test.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_test.stderr": "48c6a99f37b8febb6a2556624a82e3559ec17f7c4a3d044ebe4a6aba976042e5",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_review_readiness.json": "aad22292b903a1e65e71d9d8cbf8d28bd879d1bcc249b7bb3f9ac621cb3ca3af",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_review_authority.json": "c98a8e9f1113381270d91b8060bb854b7a49ab2c8f94c07126782c192a9fd78e",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_review_sources.json": "2884fa8e90550f89e3a468f7098e8c6c843a87c9ec08f722f8af89c9324520c8",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_review_prelaunch_fix.json": "0657dcf031e3d37515bd12ec742ff3bde40550b574fb783d5d0b55c4101d2230",
+    "/var/projects/toy_physics/AGENTS.md": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review/claude.json": "a5ce687aca9b33d88a933f56cc6311f298dcb62527d376c88effed744bed9712",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review/claude-run.json": "d9ef100b7292701760e35ccae750d8ac1c4777d17533d3c9606b9d4cf63abf8e",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review/claude.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review/state.json": "e40fcf4545f3c6f61df0cdd86d3c159c4ad172aa3250b81f41e5e82ea1d91c09",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review/coordinator-outcome.json": "bb445b5518e76020b2fccb518a5a59ba25ab0a5fe2cfadd7127d9428ff0e5fc7",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review/coordinator.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review/adjudication.json": "706eb68b782a5bc882fd0d2cc19558bf570c1ef7d195ad65ae6d02c87afe43e0",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review/completion-watcher/state.json": "230d156bca54b7165536af0051ff04083d1a77cfb9709b9992e857b347d3f5ee"
+  }
+}

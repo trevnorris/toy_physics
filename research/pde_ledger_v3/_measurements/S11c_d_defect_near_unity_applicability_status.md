@@ -1030,3 +1030,18 @@ the actual binding object has 31 entries, and the minus denominator contains an
 eta-profile term before taking its grade origin. Neither reviewer prose count nor
 that constant-denominator wording is used by the worker. Proceed to exact pinned
 readiness and one guarded instrument, with no replay or automatic retry.
+
+## 2026-10-04 — source unit transport execution readiness
+
+A fresh gate pins the exact paired-clear worker, manifest, library, method,
+review, authority, launcher and unchanged guard/supervisor. Fifteen source pins
+and 16 additional full identity copies are checked; the actual launcher and
+worker metadata-only gate verification pass. Host systemd is available, about
+21.2GB memory is available and 361GB disk is free; no guarded job is active at
+preflight. The guard will independently recheck and reserve resources on launch.
+
+One bounded instrument is authorized: 4GiB native/cgroup within16GiB pooled,
+zero swap, one CPU/thread, 32 tasks, 4GiB host reserve, desktop priority and no
+deadline. Hook first to the existing session. This is source/grade/profile unit
+transport only; complete summand units and evaluator readiness remain pending.
+No native science or scientific restoration occurred during preparation.

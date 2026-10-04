@@ -1,0 +1,66 @@
+{
+  "status": "PINNED_READY_FOR_ONE_GUARDED_SOURCE_GRADE_PROFILE_UNIT_TRANSPORT",
+  "createdUtc": "2026-10-04T06:54:01.566279+00:00",
+  "gate": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units_gate.json",
+  "gateSha256": "1e5528f0cbd63425d4d77f707f8d35457fae5802a78d560b6857150f86cbcba4",
+  "reviewCommit": "30102b90",
+  "buildCommit": "21328d5e",
+  "sourcePinsChecked": 15,
+  "additionalIdentityCopies": 16,
+  "additionalIndexSha256": "bb5ad341007f3bd4d7b8ad8df4fa86ee09c480e519537fb17b7cbf36bfd102bf",
+  "actualLauncherVerifyPassed": true,
+  "scientificImportsOrRestoration": false,
+  "workerLaunched": false,
+  "noDeadline": true,
+  "scienceRunsAuthorized": 1,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "automaticRetry": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Source/consumer native-to-retained-grade/profile/field unit transport for all544selected addresses; wave/kernel/measure and complete pressure summand proof deferred",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": false,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": true
+  },
+  "remainingBeforeResultAcceptance": [
+    "Actual guard no-deadline/resource enforcement and supervisor invocation",
+    "Actual numeric values, stage2 placeholder/replacement units, inherited registries and both-face source/normalization argument joins",
+    "Six grade groups and exact original domains/components, 64 source and 16 consumer locations, actual profile identities and 544 address joins, two actual refusal controls and complete evidence chain",
+    "Strict scientific stderr and stdout/checks identity",
+    "All source/copy/additional-identity posthashes",
+    "No complete pressure summand/evaluator/integral/current/loss claim from source/grade/profile unit transport"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "exitStatus": 0,
+  "tests": 16,
+  "status": "PASS_STDLIB_ONLY",
+  "workerSha256": "4f0f0edf06f4baac90e87f5d449760de753f25dfc3303e5b15a636f6cceb4947",
+  "testSha256": "47fc9eae8165586512a37129f9bb1bb813848964b75f5e6a9185c7ee9c3817fc",
+  "manifestSha256": "e66d36e079e9497082868a7984514026957129f0428b2e6ee1a70e1982cb5d56",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "d6fd6ad6b0af0896f8577aaca43220b26aae92d253f84e3ffbdd8bab8954790e",
+  "scientificImports": false,
+  "scientificRestoration": false,
+  "scienceCalls": 0,
+  "previousToolingFailure": "AST test used wrong statement count; changed test to identify the exact enumerate(bases) boundary. Worker unchanged."
+}

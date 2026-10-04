@@ -1,0 +1,13 @@
+{
+  "exitStatus": 1,
+  "tests": 16,
+  "status": "FAIL_STDLIB_ONLY",
+  "workerSha256": "4f0f0edf06f4baac90e87f5d449760de753f25dfc3303e5b15a636f6cceb4947",
+  "testSha256": "2425595be0211c2609be6d12621d93eb61d5257a1eee3de9826d00ec654ec548",
+  "manifestSha256": "e66d36e079e9497082868a7984514026957129f0428b2e6ee1a70e1982cb5d56",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "7eaab6211c82d328e4d461b0fd91cb4e21a3962092333fc77645026dda885b4c",
+  "scientificImports": false,
+  "scientificRestoration": false,
+  "scienceCalls": 0
+}

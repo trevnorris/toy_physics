@@ -1,0 +1,14 @@
+.....F..........
+======================================================================
+FAIL: test_domain_group_and_entry_remaining_calls_unchanged (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue_test.py", line 80, in test_domain_group_and_entry_remaining_calls_unchanged
+    self.assertEqual(dump(a.body[:4]),dump(b.body[0].orelse))
+AssertionError: "Modu[3837 chars]=[]))], type_ignores=[])" != "Modu[3837 chars]=[])), Expr(value=Call(func=Attribute(value=Na[749 chars]=[])"
+Diff is 16994 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.727s
+
+FAILED (failures=1)

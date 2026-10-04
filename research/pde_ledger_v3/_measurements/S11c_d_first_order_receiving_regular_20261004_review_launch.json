@@ -1,0 +1,69 @@
+{
+  "recordedUtc": "2026-10-04T20:05:02.095077+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-method-review",
+  "preparedCommit": "f4001140",
+  "packetSha256": "9f5a62957e43e0f8932df0b580120f116e64ecd8f5ac5cc638336ae9a0bd41c9",
+  "archiveSha256": "bf7f9ae923621243b63b6db5ce96f3d4aa518a70b47f10779b303e992cc02637",
+  "launch": {
+    "jobPid": 1810685,
+    "watcherPid": 1810686,
+    "packetSha256": "9f5a62957e43e0f8932df0b580120f116e64ecd8f5ac5cc638336ae9a0bd41c9",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 1810686,
+    "jobPid": 1810685,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T20:04:02.168172+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "a42c2f0c57daaa5ed770e37bf0457b3858dd9406ef7bbb0515c837df86fa9cc7",
+    "notifications": {}
+  },
+  "claudeReceipt": {
+    "engine": "claude",
+    "sessionId": "e67a2f67-e0a2-4cd0-b5d8-c1d824a1760d",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "e67a2f67-e0a2-4cd0-b5d8-c1d824a1760d"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-method-review/claude/work",
+    "startedUtc": "2026-10-04T20:04:02.708213+00:00",
+    "packetSha256": "9f5a62957e43e0f8932df0b580120f116e64ecd8f5ac5cc638336ae9a0bd41c9",
+    "promptSha256": "56ea3c3b53bba65adeb8f9ae58b995939247424654eb47c4702e8b889d4fe30f",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1810704
+  },
+  "privatePacketFilesVerified": 1919,
+  "oneHostAdmissionInspection": true,
+  "priorSandboxProcessCheck": "Sandbox namespace could not see host pid; no retry/launch occurred. This is the one actual host process admission.",
+  "status": "ADMITTED_CLAUDE_REVIEW_RUNNING",
+  "noModelPolling": true,
+  "noAutomaticRetry": true,
+  "scienceCalls": 0
+}

@@ -1480,3 +1480,28 @@ on that incident subspace and the explicit localized S01 reduction before any
 response integration. It retains vector forcing and independent output momentum;
 incoming transversality cannot project away an off-diagonal receiving force.
 The hand reductions and polarization selection remain unexecuted proposals.
+
+### 2026-10-04 — First-order source method assessed; concrete source screen prepared
+
+The actual Claude-only report literally says `CLEAR FOR THIS FIRST-ORDER
+TRANSVERSE SOURCE METHOD`. Packet, archive, private copy and all 134 source
+records match; the report's limited coverage is recorded explicitly. It clears
+source preparation only. The numerical recovery and mixed J/direct action remain
+parked under the user's physics refocus.
+
+The new concrete build applies the two exact incoming LEFT transverse columns to
+complete both-face sources and the saved local rows, retaining all five force
+components and step/end data. It checks the pressure simplification on identical
+source-function zeros and preserves receiving momentum separately. The chemical
+source's phase is checked separately against its native normalization: its raw
+u_1*m_1 coefficient is real 4/101, so the candidate chemical bracket differs by
+-i from the normalized S01 bracket. This qualifies the incidental common-bracket
+wording in the literal method report; the report remains unchanged. No native
+application has yet been executed, and the concrete build asks Claude to inspect
+this identity and the complete native operands.
+
+Twelve stdlib admission/selector/hash tests passed. The fixed build packet contains
+149 files (24,335,569 bytes), including all 127 complete JSON inputs and the
+original arrays underlying selected flat routes. There is no READY gate, inverse,
+field, Fourier integral, physical power or leakage result. Complete first-order
+face/work maps, matched ends and receiving grazing regularity remain open.

@@ -1,0 +1,43 @@
+{
+  "status": "FIXED_FIRST_ORDER_SOURCE_BUILD_PACKET_VERIFIED",
+  "packetSha256": "4c0a5a4c85ce6249c4e4c0df58f73d2f1aa0280e31f74e9328d8334d493f0a0d",
+  "archiveSha256": "da6f47a4c7470dec7981656aea1f4c2812f05643679448f276157276fc6c4e45",
+  "files": 149,
+  "bytes": 24335569,
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "completionMessageSha256": "f41999a0976378b78e83ab608f0a3a872970dfd44357575423978cd89c909d00",
+  "sourceHashesChecked": 148,
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "existingReviewerRunnerReusedUnchanged": true,
+  "workerSha256": "651cb42c5f4eba28f331902dddfb77ff842f3ecac6b9fc34360cb3a5fe1e18de",
+  "manifestSha256": "e2cba5b1f5385c457e91b3900def638ea418010452e15da129c511225112764f",
+  "scientificLauncherSha256": "1b576c2a5f4b3173a2caa7092270350ef325c015feabcaadaa1a01e56a0db882",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-source-build-review",
+  "scope": {
+    "calculation": "Finite first-order incident transverse source and local-force screen",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "incidentEnd": "LEFT",
+    "incidentSign": 1,
+    "twoExactLiftColumns": true,
+    "independentGrades": [
+      "00",
+      "10",
+      "01"
+    ],
+    "physicalPath": "eta=lambda,sigma_W=lambda/10 after independent grades",
+    "restBulk": true,
+    "densityPolicy": "RHO4_CONSTANT",
+    "profilePolicy": "LAB_HELD",
+    "fourierIntegral": false,
+    "receivingInverse": false,
+    "physicalPower": false,
+    "leakageFactor": null,
+    "numericalRecoveryParked": true
+  }
+}

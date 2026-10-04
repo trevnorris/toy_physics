@@ -1,0 +1,54 @@
+Concrete first-order source screen, 2026-10-04
+
+Question: which incident polarization drives each actual first-order row and
+native face source, before attempting any receiving inverse or physical power?
+The parked numerical recovery and mixed integrals remain parked.
+
+This worker restores the complete saved source/chemical/velocity expressions,
+400 local cells, original row/source zero-proof arguments, complete profile-jet
+certificates, exact incident lift/chart/point, native consumer splits and flat
+response/normal arguments. It applies these to the two exact incoming LEFT
+columns. It calls no old source, grading, profile, response or unit producer.
+The fixed physical point and independent 00/10/01 grades precede eta=lambda,
+sigma_W=lambda/10. All five rows and local step/end values are retained.
+
+New work: full source application against stored jet-field sums; baseline/height
+zeros and the S01 hand identity; applied chemical and LAB_HELD velocity; local
+row/cell actions; and a tagged Fourier assembly of C00 R00 S01 using OUTPUT
+q(l) and both native normal signs. Tags are unevaluated transforms of whole
+source envelopes at l-p, with inverse dl/(2pi). They are not pressure values.
+The source omission and wrong spatial-derivative-sign controls act through the
+same full native source contraction. Their nonzero movements are diagnostics,
+not correctness or loss measurements.
+
+Chemical phase matters: the complete saved chemical coefficient of u_1*m_1 is
+4/101, whereas the normalized S01 bracket contains i*400 times c. Accordingly,
+this concrete build checks chemical01 = -i*sigma_W*U_x*bracket/10100 and joins
+it back to S01 with the actual baseline chemicalCoefficient from each face.
+This is a new candidate application identity, not a restored result. Read the
+full original expressions and decide it; do not propagate an unverified common
+phase between chemical and normalized pressure channels.
+
+No zero-transfer moment or Fourier integral is computed in this instrument.
+The profile derivative values and their L-scaled identities are inherited;
+new application joins them to the complete stored coefficient fields. Local
+coefficient endpoints are inherited and applied to the incident columns, not
+re-derived by a limit routine. Profile-polynomial source endpoint substitutions
+are new elementary source applications, not a receiving limit theorem.
+
+The actual retained C10/C01 consumers can be profile-dependent. They are kept
+as actual operands while they multiply an identically zero source function;
+only C00 must be constant for the remaining single tagged transform. The two
+face source tags remain separately addressed even if the envelope matches.
+
+Unresolved after a pass: complete first-order physical face maps/work sources,
+matched end forcing, invariant receiving blocks, outgoing grazing regularity,
+physical current and power. k_out dot f_U is an algebraic coordinate diagnostic,
+not a loss projection. No inverse, field, leakage factor, root sweep, parameter
+fallback, or extension of the arbitrary toy material coefficients is claimed.
+
+The unchanged journal/decoder/containment helper and hook-first launcher pattern
+are reused. Twelve stdlib admission/selector/hash tests passed without importing
+SymPy or decoding scientific constructors. These are tooling checks, not native
+science. No READY gate exists; the concrete worker requires scoped Claude build
+assessment and exact one-run authority/guard pins before execution.

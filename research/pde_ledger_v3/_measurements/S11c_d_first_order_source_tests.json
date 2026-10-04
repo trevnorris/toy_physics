@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "tests": 12,
+  "scientificImports": false,
+  "scientificRestoration": false,
+  "scope": "Stdlib admission, native jet selector, hash/copy/route coverage; no native science",
+  "workerSha256": "651cb42c5f4eba28f331902dddfb77ff842f3ecac6b9fc34360cb3a5fe1e18de",
+  "launcherSha256": "1b576c2a5f4b3173a2caa7092270350ef325c015feabcaadaa1a01e56a0db882",
+  "testSha256": "7a6c159941bb3a820bdaaac7e3b9fba637bbc3ae55b2983f37747bd135ae3925",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "caaeaafda03337edeb615783c40c28513e14f6e9b475ebe2e95e5975cd5bd178"
+}

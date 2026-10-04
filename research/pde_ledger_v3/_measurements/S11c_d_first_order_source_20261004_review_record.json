@@ -1,0 +1,82 @@
+{
+  "status": "SOURCE_METHOD_ASSESSED",
+  "createdUtc": "2026-10-04T17:14:19.868539+00:00",
+  "reviewers": [
+    "claude"
+  ],
+  "literalVerdict": "CLEAR FOR THIS FIRST-ORDER TRANSVERSE SOURCE METHOD",
+  "methodAssessed": true,
+  "methodSource": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_source_20261004_plan.txt",
+  "methodSha256": "b759c4a9a44c25bfeda8b85020d63af10125089855a0534a813592dcbe2a4a68",
+  "report": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_source_20261004_review_claude.md",
+  "reportSha256": "7a148fb306498d7095a3a420c4e899923c9dc3db730d8b9fa3afb6938226f532",
+  "rawReportSha256": "de08f9a0ce4c0c813027ad492fcc795c1829c87cdaf4cb8a6fd993eed7b4ec11",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-source-method-review",
+  "packetSha256": "b6b1e56181ce1ad4465ef6144913c3c44b18f176c834e12bc1bec3ce1dad3e64",
+  "archiveSha256": "659fa19654e6036137d3877055877244cf1de4bdfc1e3a41e9c8825b8e4aaf71",
+  "packetArchivePrivateSourceHashesMatch": true,
+  "fileCount": 135,
+  "sourceCount": 134,
+  "receipt": {
+    "engine": "claude",
+    "sessionId": "7a2ae833-4a1a-438d-b721-b33918f3c4ae",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "7a2ae833-4a1a-438d-b721-b33918f3c4ae"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-source-method-review/claude/work",
+    "startedUtc": "2026-10-04T17:03:12.879890+00:00",
+    "packetSha256": "b6b1e56181ce1ad4465ef6144913c3c44b18f176c834e12bc1bec3ce1dad3e64",
+    "promptSha256": "f21290f57ee4973fb686182921d77b9cbde3e3305ec9b14eb1aac3e3263a9041",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1734050,
+    "exitStatus": 0,
+    "finishedUtc": "2026-10-04T17:07:36.680219+00:00",
+    "wallSeconds": 263.79822944593616,
+    "outputSha256": "de08f9a0ce4c0c813027ad492fcc795c1829c87cdaf4cb8a6fd993eed7b4ec11",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderrBytes": 0
+  },
+  "coordinatorOutcome": {
+    "status": "ALL_REQUESTED_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-10-04T17:07:36.736504+00:00",
+    "scienceCalls": 0
+  },
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "coverage": "Partial: plus sources/lift/chart/chemical/velocity/flat census fully read; minus checked in segments; local count and one return only; pressure splits/proofs/routes, governing and remaining native sources not inspected. Concrete build must cover complete operands.",
+  "assessment": "Hand source identity and bounded source plan supported. R00 has no pole on real-radiating or positive-imaginary outgoing branches only. Local vector forcing, complete native first-order face maps, matched end work and receiving/power regularity remain open.",
+  "permissionsDenied": [
+    {
+      "tool_name": "Glob",
+      "tool_use_id": "toolu_01MZKfDXTneFnomJsz7TgVFZ",
+      "tool_input": {
+        "pattern": "**/*",
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-source-method-review/claude"
+      }
+    }
+  ],
+  "scienceCalls": 0,
+  "scientificWorkerCleared": false,
+  "receivingInverseCleared": false,
+  "leakageFactor": null,
+  "recoveryParked": true
+}

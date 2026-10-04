@@ -1,0 +1,38 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T17:26:22.203160+00:00",
+  "packetSha256": "4c0a5a4c85ce6249c4e4c0df58f73d2f1aa0280e31f74e9328d8334d493f0a0d",
+  "archiveSha256": "da6f47a4c7470dec7981656aea1f4c2812f05643679448f276157276fc6c4e45",
+  "reviewers": [
+    "claude"
+  ],
+  "files": 149,
+  "bytes": 24335569,
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "authority": "Standing user-directed physics refocus and established Claude build assessment; no routine permission. No scientific execution authorized by this review launch.",
+  "scope": {
+    "calculation": "Finite first-order incident transverse source and local-force screen",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "incidentEnd": "LEFT",
+    "incidentSign": 1,
+    "twoExactLiftColumns": true,
+    "independentGrades": [
+      "00",
+      "10",
+      "01"
+    ],
+    "physicalPath": "eta=lambda,sigma_W=lambda/10 after independent grades",
+    "restBulk": true,
+    "densityPolicy": "RHO4_CONSTANT",
+    "profilePolicy": "LAB_HELD",
+    "fourierIntegral": false,
+    "receivingInverse": false,
+    "physicalPower": false,
+    "leakageFactor": null,
+    "numericalRecoveryParked": true
+  },
+  "noAutomaticRetry": true,
+  "noPeerReportsShared": true,
+  "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+}

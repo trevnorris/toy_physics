@@ -1,0 +1,29 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T16:46:37.063445+00:00",
+  "packetSha256": "baa42cc90c72920aa6cf248a1b7ba49432c87199d380bd38a6ab325f2ce9765d",
+  "archiveSha256": "9b23c153e26b4fe882180a9d997fa1b664a62118c70b52ec70a335f243707a99",
+  "reviewers": [
+    "claude"
+  ],
+  "files": 58,
+  "bytes": 3267549,
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "authority": "User explicitly requested physics refocus and continuation. Standing AGENTS authorizes necessary assessment to established Claude, with current Claude-only policy. This is source-only priority/method assessment, not a scientific run.",
+  "scope": {
+    "target": "Physics refocus and conditional first-order transverse-source plan",
+    "samePhysicalInputs": true,
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "lossObservable": "all-outgoing-transverse survival deficit",
+    "forcedGrazingRegularityEstablished": false,
+    "newScientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "leakageFactor": null,
+    "recoveryDevelopmentParked": true
+  },
+  "noAutomaticRetry": true,
+  "scienceExecutionsAuthorizedByThisReviewLaunch": 0,
+  "noPeerReportsShared": true
+}

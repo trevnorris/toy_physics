@@ -1,0 +1,38 @@
+Review the physics route in input/proposal.txt, not a recovery implementation.
+The user explicitly asked us to refocus on (1) what leakage factor means,
+(2) the smallest calculation which determines it, (3) the unresolved physics
+assumptions. We need an independent assessment of the proposed shortcut, not
+another AST/serialization/source-census campaign. No native calculation or
+scientific restoration is authorized for this read-only review.
+
+Use input/guide.txt. Inspect the supplied actual full address records and
+uniform-point records before relying on their grade/field/domain claims.
+The author has no clearance. No previous reviewer report is supplied.
+Current policy is Claude only. No workers or new numerical gate exist.
+
+Assess:
+- Is L_T the appropriate conditional stationary loss target, and is a fixed-input
+  weak coefficient distinct from the unresolved calibrated/strong-edge number?
+- Does the zero-loss-baseline/regular-expansion order argument mean L10,L01 and
+  direct first-order maps suffice for leading lambda^2 power, so the current
+  grade11 e_W-to-THETA J/direct work can be parked? State precisely where this
+  inference could fail (including singular grazing and a vanishing first-order
+  projected source). Do not confuse eta/sigma bookkeeping with wave nonlinearity.
+- What is the smallest next physics ingredient: actual projected first-order
+  forcing and face sources, a receiving inverse, or some smaller missing premise?
+  Does a source-specific Fourier receiving problem plausibly avoid full general
+  mixed-kernel action? Treat this as a proposal, not a proved source projection,
+  a runtime estimate, a new uniform-cs inverse or a cleared numerical method.
+- Can the physical power balance be obtained from the supplied native forms
+  without silently omitting boundary inhomogeneities/external work? Identify
+  the necessary source-specific extensions only.
+- Give a short, prioritized physics recommendation. If the model cannot yet
+  produce the requested coefficient, identify the actual physical blocker.
+
+Return CLEAR FOR THIS PHYSICS REFOCUS AND FIRST-ORDER SOURCE PLAN or NEEDS
+REVISION, with concrete physical reasons and file/section references. CLEAR
+covers only the proposed priority and bounded source-plan preparation, not a
+worker, receiving-field calculation, grazing expansion, positive loss result,
+full operator, calibration or leakage number. Disclose what you read and any
+partial coverage. Avoid optional wording loops or demands to replay accepted
+work. No Grok, other agents, model polling or automatic retry.

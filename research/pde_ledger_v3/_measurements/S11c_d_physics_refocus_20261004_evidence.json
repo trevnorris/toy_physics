@@ -1,0 +1,814 @@
+{
+  "status": "PHYSICS_REFOCUS_SOURCE_AND_JSON_INSPECTION_ONLY",
+  "date": "2026-10-04T16:38:30.337120+00:00",
+  "userDirection": "Refocus on definition of leakage, smallest useful physics calculation, and assumptions which could change the answer.",
+  "currentReviewerPolicy": [
+    "claude"
+  ],
+  "scientificImports": 0,
+  "scientificRestorations": 0,
+  "newScientificEvaluations": 0,
+  "sourceRecordZero": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-prefix-recovery-evidence/sqlite-records/0000.json",
+    "sha256": "3d6772d1594dbb3e88d69bf862b91b22711cc088cee23ddcbdbfe6aad013772f",
+    "bytes": 1305018
+  },
+  "currentNumericalFailureRecord": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_continue_fix_result_record.json",
+    "sha256": "c1981751ffd447340bc11e9400a05ae2a2e950976b28d5d7b294e899fbe04ce8"
+  },
+  "addressCount": 20,
+  "gradeCensus": {
+    "11": 20
+  },
+  "components": {
+    "NATIVE_MIXED_ITERATION": 10,
+    "INHERITED_DIRECT_WHOLE_OFF_DIAGONAL": 10
+  },
+  "actualAddressJoins": [
+    {
+      "addressId": 8346,
+      "face": "plus",
+      "component": "NATIVE_MIXED_ITERATION",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8346-input.json",
+        "sha256": "bd29798a6898d7dfbf5797c4d6999064a173f01677c78608af1d94b4e5071391",
+        "bytes": 49472
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8346-return.json",
+        "sha256": "20a3063c12328b94621e78db7a41af88827928767c1da555fb81e1cceee8bb90",
+        "bytes": 6143
+      }
+    },
+    {
+      "addressId": 8347,
+      "face": "plus",
+      "component": "INHERITED_DIRECT_WHOLE_OFF_DIAGONAL",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8347-input.json",
+        "sha256": "c43750b9714656e620ac7de3186cc12bcfe70d1feab91e8f93950ff00210fe68",
+        "bytes": 24407
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8347-return.json",
+        "sha256": "2f483e23072d212f3be05b9822a7c3c5367515c9a05671be74d90c498f456ef1",
+        "bytes": 5840
+      }
+    },
+    {
+      "addressId": 8350,
+      "face": "plus",
+      "component": "NATIVE_MIXED_ITERATION",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8350-input.json",
+        "sha256": "e7632b375923c6a971179622b921ec4eec9cd74cff923a3ec1f7644706d32ed5",
+        "bytes": 50048
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8350-return.json",
+        "sha256": "a689001f2aeae15a88b1ec6fe54a9afce8ce05551ba28dd65b19ccca88456361",
+        "bytes": 6164
+      }
+    },
+    {
+      "addressId": 8351,
+      "face": "plus",
+      "component": "INHERITED_DIRECT_WHOLE_OFF_DIAGONAL",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8351-input.json",
+        "sha256": "6febab1390438958b561e2e311e60abcd1e36914b151ce1e46010430b2595a9b",
+        "bytes": 24983
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8351-return.json",
+        "sha256": "2517566fe86f72ab5354703af792992e9f311e3ec91627a43ff29077d9f6c29f",
+        "bytes": 5901
+      }
+    },
+    {
+      "addressId": 8354,
+      "face": "plus",
+      "component": "NATIVE_MIXED_ITERATION",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8354-input.json",
+        "sha256": "b41f7a8930c2512566a2da226db9c523431a57614c334463bbab550aad0a6be0",
+        "bytes": 49723
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8354-return.json",
+        "sha256": "ef1fcde24cc133fad09fa5102e50fc9fce0b3a7d39dea436138e7965924e5536",
+        "bytes": 6154
+      }
+    },
+    {
+      "addressId": 8355,
+      "face": "plus",
+      "component": "INHERITED_DIRECT_WHOLE_OFF_DIAGONAL",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8355-input.json",
+        "sha256": "c86b4a8599235554c4780f5f040151b425e8dfda2040d3d5164f9b1abb4db885",
+        "bytes": 24658
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8355-return.json",
+        "sha256": "ce16c97908013de73029de660c1ba51a665e5f9a6d9db7d94e2e13885fdc979d",
+        "bytes": 5873
+      }
+    },
+    {
+      "addressId": 8358,
+      "face": "plus",
+      "component": "NATIVE_MIXED_ITERATION",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8358-input.json",
+        "sha256": "85b84986a668a6804e8df3f6648f53ceac08b47a9322dbf7242e651f91237862",
+        "bytes": 49733
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8358-return.json",
+        "sha256": "ce18f59ec1d6b501e1036e73cbe71e42f7e8541035d5b6163eaaba4c67d36103",
+        "bytes": 6150
+      }
+    },
+    {
+      "addressId": 8359,
+      "face": "plus",
+      "component": "INHERITED_DIRECT_WHOLE_OFF_DIAGONAL",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8359-input.json",
+        "sha256": "464f97a827d8d8435cf51ab11cf804ede73f2e7d29c8c82b0ec417f11576654e",
+        "bytes": 24668
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8359-return.json",
+        "sha256": "672227556473ff24736584bcd4a16010e01f6566ae535682bb68c05e80c4750a",
+        "bytes": 5871
+      }
+    },
+    {
+      "addressId": 8360,
+      "face": "plus",
+      "component": "NATIVE_MIXED_ITERATION",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8360-input.json",
+        "sha256": "3b6d2996772266a76c8e505bc3438ed647af3240a4e2389c14282e1bb4346e06",
+        "bytes": 49197
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8360-return.json",
+        "sha256": "87ffc8030b45013ee82a5bd4090be37778d55a2fdb060f63bbc82109854f8879",
+        "bytes": 6141
+      }
+    },
+    {
+      "addressId": 8361,
+      "face": "plus",
+      "component": "INHERITED_DIRECT_WHOLE_OFF_DIAGONAL",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8361-input.json",
+        "sha256": "d3e3268e5c24d705d99f282bf3e7c8fc935b2343d08e25f2d797a543c9aa89fe",
+        "bytes": 24132
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8361-return.json",
+        "sha256": "e3888388a91a6b2a19d271227fca68c1a081bb9eaea5aa306e86d1b8a3cd37d4",
+        "bytes": 5856
+      }
+    },
+    {
+      "addressId": 9672,
+      "face": "minus",
+      "component": "NATIVE_MIXED_ITERATION",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9672-input.json",
+        "sha256": "21184c19bdd38a7589ff6b5fc97b60dda0603fe95b22cc57379ed1b4c73e211c",
+        "bytes": 49527
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9672-return.json",
+        "sha256": "330ce162d6cb6fa8c65a7839d7a5551d9499ef94a6148f0c4af68d7088793cf1",
+        "bytes": 6143
+      }
+    },
+    {
+      "addressId": 9673,
+      "face": "minus",
+      "component": "INHERITED_DIRECT_WHOLE_OFF_DIAGONAL",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9673-input.json",
+        "sha256": "b72b4330a695e32f91c13b1645903ea8e01095ac4f45c1be45c831dd1d7f0e98",
+        "bytes": 24462
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9673-return.json",
+        "sha256": "5f26a754a1b9393d724db04e9366af61ccbf7d685d9d7eee967e8d76b89813f6",
+        "bytes": 5840
+      }
+    },
+    {
+      "addressId": 9676,
+      "face": "minus",
+      "component": "NATIVE_MIXED_ITERATION",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9676-input.json",
+        "sha256": "74c6bc6b783cb9c52832834fc37b7671719060dd9e4f2ce587966489b5f24da3",
+        "bytes": 50103
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9676-return.json",
+        "sha256": "2d94d2ba3ffdc10396e0b34bceedbf4d5f41ebf1abc709ce4d2e456cb9a42398",
+        "bytes": 6164
+      }
+    },
+    {
+      "addressId": 9677,
+      "face": "minus",
+      "component": "INHERITED_DIRECT_WHOLE_OFF_DIAGONAL",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9677-input.json",
+        "sha256": "f0591bace1a997e95df685763dda9dca872d0a0abbef64d7bf3ed319b99bc74d",
+        "bytes": 25038
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9677-return.json",
+        "sha256": "7082254f9676dbc987acb7fe848e5c33478255e51a325e88bd65cf3af22b92a7",
+        "bytes": 5901
+      }
+    },
+    {
+      "addressId": 9680,
+      "face": "minus",
+      "component": "NATIVE_MIXED_ITERATION",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9680-input.json",
+        "sha256": "98d79c67b0541179177716dc68f34aa7b23c07f49c50c1aa645ea5a45f4908e2",
+        "bytes": 49778
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9680-return.json",
+        "sha256": "2d8517ef6f6dbded6a2599a7f310cf90ed4b7980e8f6799e65e6613d7b22851e",
+        "bytes": 6154
+      }
+    },
+    {
+      "addressId": 9681,
+      "face": "minus",
+      "component": "INHERITED_DIRECT_WHOLE_OFF_DIAGONAL",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9681-input.json",
+        "sha256": "f031b607f101a178d65781ec3cb930681fdd9e486882c066aba7b8aaf7ea9dfe",
+        "bytes": 24713
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9681-return.json",
+        "sha256": "ecb336d58172bbba6f8289c0c3d8df715ec43069d25f1669dede6207028c8d1d",
+        "bytes": 5873
+      }
+    },
+    {
+      "addressId": 9684,
+      "face": "minus",
+      "component": "NATIVE_MIXED_ITERATION",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9684-input.json",
+        "sha256": "e93f189f37a4317eec46919320ca92929c33e15afe78f229d06715e2921a911f",
+        "bytes": 49788
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9684-return.json",
+        "sha256": "d328efc7c09715b1e25210a6511319e41f48869d446404ca003aa4215f1bac76",
+        "bytes": 6150
+      }
+    },
+    {
+      "addressId": 9685,
+      "face": "minus",
+      "component": "INHERITED_DIRECT_WHOLE_OFF_DIAGONAL",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9685-input.json",
+        "sha256": "a4aa1f194c38ad46eb4394351e3450ffc1a8913a8d8db5f8e7a565dbf55775e6",
+        "bytes": 24723
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9685-return.json",
+        "sha256": "6ad413288310caaa1cafadcf1e5a11a7ddc76a9bbbc0c5cd0fbb5e25819a54b6",
+        "bytes": 5871
+      }
+    },
+    {
+      "addressId": 9686,
+      "face": "minus",
+      "component": "NATIVE_MIXED_ITERATION",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9686-input.json",
+        "sha256": "67eda2ac0cdfd7dcabe7cf99fe8c063dcb576ad2fc90adab94db6eb1eea006cc",
+        "bytes": 49252
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9686-return.json",
+        "sha256": "2aff26ccf05b4c363bdf502924da8651b327b380cce74dc2b839b89a34fac5c0",
+        "bytes": 6141
+      }
+    },
+    {
+      "addressId": 9687,
+      "face": "minus",
+      "component": "INHERITED_DIRECT_WHOLE_OFF_DIAGONAL",
+      "targetGrade": [
+        1,
+        1
+      ],
+      "sourceGrade": [
+        0,
+        0
+      ],
+      "responseGrade": [
+        1,
+        1
+      ],
+      "consumerGrade": [
+        0,
+        0
+      ],
+      "row": "THETA_BALANCE",
+      "inputField": "e_W",
+      "input": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9687-input.json",
+        "sha256": "f042f7c8a176af840c73249c76ef7b978730b33111002e3e6eeb4e0a81340d7e",
+        "bytes": 24187
+      },
+      "return": {
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9687-return.json",
+        "sha256": "a369e9696333cf1e39346ada5f439e83d8200e3f7a53ba2ae93836693353c5ee",
+        "bytes": 5856
+      }
+    }
+  ],
+  "selectedUniformPoints": [
+    {
+      "end": "LEFT",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/point-01-LEFT.json",
+      "sha256": "6d79f2fb8531e29df8a9cf06a1aaacac5daf708da030e4375c04596f2b2df92d",
+      "bytes": 114246,
+      "schedule": {
+        "index": 1,
+        "speed": "sqrt(6)/2",
+        "modalRatios": {
+          "LEFT": "1",
+          "RIGHT": "10*sqrt(101)/101"
+        },
+        "bareRatio": "sqrt(6)/3"
+      },
+      "signs": [
+        {
+          "sign": -1,
+          "stratum": {
+            "normal": "-sqrt(595)/10",
+            "depth": "0",
+            "depthSquared": "0",
+            "stratum": "EXACT_GRAZING"
+          },
+          "currentEigenvalues": [
+            -32.930039477656265,
+            -0.2195335965177084
+          ],
+          "status": "SUPPORTED_ON_SELECTED_UNIFORM_SUBSPACE",
+          "completeOutgoingBasisClaim": false
+        },
+        {
+          "sign": 1,
+          "stratum": {
+            "normal": "sqrt(595)/10",
+            "depth": "0",
+            "depthSquared": "0",
+            "stratum": "EXACT_GRAZING"
+          },
+          "currentEigenvalues": [
+            0.2195335965177084,
+            32.930039477656265
+          ],
+          "status": "SUPPORTED_ON_SELECTED_UNIFORM_SUBSPACE",
+          "completeOutgoingBasisClaim": false
+        }
+      ]
+    },
+    {
+      "end": "RIGHT",
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/point-01-RIGHT.json",
+      "sha256": "a854811c76cca4f637859379e52311ea4013f756e43b8f04aa5a7930152d9de3",
+      "bytes": 144108,
+      "schedule": {
+        "index": 1,
+        "speed": "sqrt(6)/2",
+        "modalRatios": {
+          "LEFT": "1",
+          "RIGHT": "10*sqrt(101)/101"
+        },
+        "bareRatio": "sqrt(6)/3"
+      },
+      "signs": [
+        {
+          "sign": -1,
+          "stratum": {
+            "normal": "-sqrt(601)/10",
+            "depth": "sqrt(6)*I/10",
+            "depthSquared": "-3/50",
+            "stratum": "EVANESCENT"
+          },
+          "currentEigenvalues": [
+            -33.42661338290195,
+            -0.22063771209836272
+          ],
+          "status": "SUPPORTED_ON_SELECTED_UNIFORM_SUBSPACE",
+          "completeOutgoingBasisClaim": false
+        },
+        {
+          "sign": 1,
+          "stratum": {
+            "normal": "sqrt(601)/10",
+            "depth": "sqrt(6)*I/10",
+            "depthSquared": "-3/50",
+            "stratum": "EVANESCENT"
+          },
+          "currentEigenvalues": [
+            0.22063771209836272,
+            33.42661338290195
+          ],
+          "status": "SUPPORTED_ON_SELECTED_UNIFORM_SUBSPACE",
+          "completeOutgoingBasisClaim": false
+        }
+      ]
+    }
+  ],
+  "metadataFinding": "The stalled ordinary J/added-direct subset acts from e_W to THETA_BALANCE and contains only response/target grade11, with source/consumer grade00. It is not an incident-transverse response or a current.",
+  "conditionalInference": "Along eta=lambda and sigma_W=(W/L)*lambda these entries enter the operator at lambda^2. If all loss drives have zero reference value and the forced response/power expansion is regular, leading lambda^2 loss depends on first-order fields and maps, not this operator grade11. This is a proposed application of the existing power-counting rule, not a computed native source/power certificate.",
+  "notInferred": [
+    "No first-order source value or cancellation",
+    "No forced response regularity at grazing",
+    "No power balance or passivity",
+    "No leakage coefficient",
+    "No global omission of grade11",
+    "No calibrated strong-edge or draining prediction"
+  ],
+  "parkedDevelopment": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_recover_numeric.py": {
+      "sha256": "87654eee23af04e612b683d8c1c14562a94e0a1790cd5471889510f28a063327",
+      "bytes": 28565,
+      "status": "UNREVIEWED_INCOMPLETE_DEVELOPMENT_PARKED_NOT_EXECUTED"
+    },
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_recover_protocol.py": {
+      "sha256": "06096a67d81e8486f094e0d4620c123a05e9b569205c4be87b41c7892a0ea9b4",
+      "bytes": 34294,
+      "status": "UNREVIEWED_INCOMPLETE_DEVELOPMENT_PARKED_NOT_EXECUTED"
+    },
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_recover_test.py": {
+      "sha256": "7b5c63f6c644ce11f742791216053a90b8189d39fabe071b349d6db72811cf56",
+      "bytes": 32735,
+      "status": "UNREVIEWED_INCOMPLETE_DEVELOPMENT_PARKED_NOT_EXECUTED"
+    }
+  },
+  "nextAssessment": "Source-specific first-order transverse forcing and physical power route, retaining original inputs and exact grazing uncertainty. No numerical recovery/build launch while its relevance is reassessed."
+}

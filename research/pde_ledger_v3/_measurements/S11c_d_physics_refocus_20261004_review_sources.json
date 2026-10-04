@@ -1,0 +1,531 @@
+{
+  "status": "SOURCE_AND_SAVED_JSON_ONLY_NO_NEW_SCIENCE",
+  "createdUtc": "2026-10-04T16:46:37.063445+00:00",
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scope": "Physics refocus and conditional first-order source-plan only",
+  "records": [
+    {
+      "packetPath": "guide.txt",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/physics-refocus-review/guide.txt",
+      "sourceSha256": "b0de68c8a0461518e526f0f617e6069b15cb78bb6af994c0df8fc22e7e40512f",
+      "packetSha256": "b0de68c8a0461518e526f0f617e6069b15cb78bb6af994c0df8fc22e7e40512f",
+      "bytes": 3365,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "proposal.txt",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_physics_refocus_20261004_proposal.txt",
+      "sourceSha256": "f8a8fe4dee2350af416e8c55b15455c2635d713c019b84dd13903dfa290bbae9",
+      "packetSha256": "f8a8fe4dee2350af416e8c55b15455c2635d713c019b84dd13903dfa290bbae9",
+      "bytes": 8489,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "review-prompt.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_physics_refocus_20261004_review_prompt.txt",
+      "sourceSha256": "b9fe5981d0858c5861d822696d573712664e6f848603b09abfc0b46ffecd46f5",
+      "packetSha256": "b9fe5981d0858c5861d822696d573712664e6f848603b09abfc0b46ffecd46f5",
+      "bytes": 2577,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/refocus-inspection.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_physics_refocus_20261004_evidence.json",
+      "sourceSha256": "51bd439231c63fb6f6f60994de2ef467407ebe21e6c23a1d155458da9b0f0652",
+      "packetSha256": "51bd439231c63fb6f6f60994de2ef467407ebe21e6c23a1d155458da9b0f0652",
+      "bytes": 26400,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "governing/S11c_d_SHARED_PHYSICS.md",
+      "sourcePath": "research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md",
+      "sourceSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "packetSha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "bytes": 67800,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "governing/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+      "sourcePath": "research/pde_ledger_v3/directives/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md",
+      "sourceSha256": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+      "packetSha256": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+      "bytes": 8243,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "context/S11c_d_total_transverse_loss_assessment.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_assessment.md",
+      "sourceSha256": "13de05bfec1e3fc6ed062d7b172002b228f399ebe4bd33c86170cbe46f3ecae0",
+      "packetSha256": "13de05bfec1e3fc6ed062d7b172002b228f399ebe4bd33c86170cbe46f3ecae0",
+      "bytes": 9745,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "context/S11c_d_defect_packet_action_method.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_action_method.md",
+      "sourceSha256": "79f1459596c84d0f4fbca2c45b51977ff338bce1a55a66c6214e850793eaf45a",
+      "packetSha256": "79f1459596c84d0f4fbca2c45b51977ff338bce1a55a66c6214e850793eaf45a",
+      "bytes": 26187,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "context/S11c_d_defect_packet_contracted_numeric_method.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_numeric_method.md",
+      "sourceSha256": "b912dac3c009bf8dbf09535e99a9f520f743721257547d25097a49acff220f09",
+      "packetSha256": "b912dac3c009bf8dbf09535e99a9f520f743721257547d25097a49acff220f09",
+      "bytes": 28216,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "context/S11c_d_near_unity_uniform_plan.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_plan.md",
+      "sourceSha256": "eaabe92686915b439dadf5c0c0085dd5b256f316045a3ef087de22207545fdb3",
+      "packetSha256": "eaabe92686915b439dadf5c0c0085dd5b256f316045a3ef087de22207545fdb3",
+      "bytes": 12181,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "native/S11c_d_mixing_scattering_sympy_audit.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py",
+      "sourceSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "packetSha256": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+      "bytes": 545480,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/original-numeric-context.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-prefix-recovery-evidence/sqlite-records/0000.json",
+      "sourceSha256": "3d6772d1594dbb3e88d69bf862b91b22711cc088cee23ddcbdbfe6aad013772f",
+      "packetSha256": "3d6772d1594dbb3e88d69bf862b91b22711cc088cee23ddcbdbfe6aad013772f",
+      "bytes": 1305018,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8346-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8346-input.json",
+      "sourceSha256": "bd29798a6898d7dfbf5797c4d6999064a173f01677c78608af1d94b4e5071391",
+      "packetSha256": "bd29798a6898d7dfbf5797c4d6999064a173f01677c78608af1d94b4e5071391",
+      "bytes": 49472,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8346-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8346-return.json",
+      "sourceSha256": "20a3063c12328b94621e78db7a41af88827928767c1da555fb81e1cceee8bb90",
+      "packetSha256": "20a3063c12328b94621e78db7a41af88827928767c1da555fb81e1cceee8bb90",
+      "bytes": 6143,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8347-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8347-input.json",
+      "sourceSha256": "c43750b9714656e620ac7de3186cc12bcfe70d1feab91e8f93950ff00210fe68",
+      "packetSha256": "c43750b9714656e620ac7de3186cc12bcfe70d1feab91e8f93950ff00210fe68",
+      "bytes": 24407,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8347-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8347-return.json",
+      "sourceSha256": "2f483e23072d212f3be05b9822a7c3c5367515c9a05671be74d90c498f456ef1",
+      "packetSha256": "2f483e23072d212f3be05b9822a7c3c5367515c9a05671be74d90c498f456ef1",
+      "bytes": 5840,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8350-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8350-input.json",
+      "sourceSha256": "e7632b375923c6a971179622b921ec4eec9cd74cff923a3ec1f7644706d32ed5",
+      "packetSha256": "e7632b375923c6a971179622b921ec4eec9cd74cff923a3ec1f7644706d32ed5",
+      "bytes": 50048,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8350-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8350-return.json",
+      "sourceSha256": "a689001f2aeae15a88b1ec6fe54a9afce8ce05551ba28dd65b19ccca88456361",
+      "packetSha256": "a689001f2aeae15a88b1ec6fe54a9afce8ce05551ba28dd65b19ccca88456361",
+      "bytes": 6164,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8351-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8351-input.json",
+      "sourceSha256": "6febab1390438958b561e2e311e60abcd1e36914b151ce1e46010430b2595a9b",
+      "packetSha256": "6febab1390438958b561e2e311e60abcd1e36914b151ce1e46010430b2595a9b",
+      "bytes": 24983,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8351-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8351-return.json",
+      "sourceSha256": "2517566fe86f72ab5354703af792992e9f311e3ec91627a43ff29077d9f6c29f",
+      "packetSha256": "2517566fe86f72ab5354703af792992e9f311e3ec91627a43ff29077d9f6c29f",
+      "bytes": 5901,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8354-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8354-input.json",
+      "sourceSha256": "b41f7a8930c2512566a2da226db9c523431a57614c334463bbab550aad0a6be0",
+      "packetSha256": "b41f7a8930c2512566a2da226db9c523431a57614c334463bbab550aad0a6be0",
+      "bytes": 49723,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8354-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8354-return.json",
+      "sourceSha256": "ef1fcde24cc133fad09fa5102e50fc9fce0b3a7d39dea436138e7965924e5536",
+      "packetSha256": "ef1fcde24cc133fad09fa5102e50fc9fce0b3a7d39dea436138e7965924e5536",
+      "bytes": 6154,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8355-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8355-input.json",
+      "sourceSha256": "c86b4a8599235554c4780f5f040151b425e8dfda2040d3d5164f9b1abb4db885",
+      "packetSha256": "c86b4a8599235554c4780f5f040151b425e8dfda2040d3d5164f9b1abb4db885",
+      "bytes": 24658,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8355-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8355-return.json",
+      "sourceSha256": "ce16c97908013de73029de660c1ba51a665e5f9a6d9db7d94e2e13885fdc979d",
+      "packetSha256": "ce16c97908013de73029de660c1ba51a665e5f9a6d9db7d94e2e13885fdc979d",
+      "bytes": 5873,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8358-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8358-input.json",
+      "sourceSha256": "85b84986a668a6804e8df3f6648f53ceac08b47a9322dbf7242e651f91237862",
+      "packetSha256": "85b84986a668a6804e8df3f6648f53ceac08b47a9322dbf7242e651f91237862",
+      "bytes": 49733,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8358-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8358-return.json",
+      "sourceSha256": "ce18f59ec1d6b501e1036e73cbe71e42f7e8541035d5b6163eaaba4c67d36103",
+      "packetSha256": "ce18f59ec1d6b501e1036e73cbe71e42f7e8541035d5b6163eaaba4c67d36103",
+      "bytes": 6150,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8359-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8359-input.json",
+      "sourceSha256": "464f97a827d8d8435cf51ab11cf804ede73f2e7d29c8c82b0ec417f11576654e",
+      "packetSha256": "464f97a827d8d8435cf51ab11cf804ede73f2e7d29c8c82b0ec417f11576654e",
+      "bytes": 24668,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8359-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8359-return.json",
+      "sourceSha256": "672227556473ff24736584bcd4a16010e01f6566ae535682bb68c05e80c4750a",
+      "packetSha256": "672227556473ff24736584bcd4a16010e01f6566ae535682bb68c05e80c4750a",
+      "bytes": 5871,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8360-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8360-input.json",
+      "sourceSha256": "3b6d2996772266a76c8e505bc3438ed647af3240a4e2389c14282e1bb4346e06",
+      "packetSha256": "3b6d2996772266a76c8e505bc3438ed647af3240a4e2389c14282e1bb4346e06",
+      "bytes": 49197,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8360-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8360-return.json",
+      "sourceSha256": "87ffc8030b45013ee82a5bd4090be37778d55a2fdb060f63bbc82109854f8879",
+      "packetSha256": "87ffc8030b45013ee82a5bd4090be37778d55a2fdb060f63bbc82109854f8879",
+      "bytes": 6141,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8361-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8361-input.json",
+      "sourceSha256": "d3e3268e5c24d705d99f282bf3e7c8fc935b2343d08e25f2d797a543c9aa89fe",
+      "packetSha256": "d3e3268e5c24d705d99f282bf3e7c8fc935b2343d08e25f2d797a543c9aa89fe",
+      "bytes": 24132,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-8361-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-8361-return.json",
+      "sourceSha256": "e3888388a91a6b2a19d271227fca68c1a081bb9eaea5aa306e86d1b8a3cd37d4",
+      "packetSha256": "e3888388a91a6b2a19d271227fca68c1a081bb9eaea5aa306e86d1b8a3cd37d4",
+      "bytes": 5856,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9672-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9672-input.json",
+      "sourceSha256": "21184c19bdd38a7589ff6b5fc97b60dda0603fe95b22cc57379ed1b4c73e211c",
+      "packetSha256": "21184c19bdd38a7589ff6b5fc97b60dda0603fe95b22cc57379ed1b4c73e211c",
+      "bytes": 49527,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9672-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9672-return.json",
+      "sourceSha256": "330ce162d6cb6fa8c65a7839d7a5551d9499ef94a6148f0c4af68d7088793cf1",
+      "packetSha256": "330ce162d6cb6fa8c65a7839d7a5551d9499ef94a6148f0c4af68d7088793cf1",
+      "bytes": 6143,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9673-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9673-input.json",
+      "sourceSha256": "b72b4330a695e32f91c13b1645903ea8e01095ac4f45c1be45c831dd1d7f0e98",
+      "packetSha256": "b72b4330a695e32f91c13b1645903ea8e01095ac4f45c1be45c831dd1d7f0e98",
+      "bytes": 24462,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9673-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9673-return.json",
+      "sourceSha256": "5f26a754a1b9393d724db04e9366af61ccbf7d685d9d7eee967e8d76b89813f6",
+      "packetSha256": "5f26a754a1b9393d724db04e9366af61ccbf7d685d9d7eee967e8d76b89813f6",
+      "bytes": 5840,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9676-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9676-input.json",
+      "sourceSha256": "74c6bc6b783cb9c52832834fc37b7671719060dd9e4f2ce587966489b5f24da3",
+      "packetSha256": "74c6bc6b783cb9c52832834fc37b7671719060dd9e4f2ce587966489b5f24da3",
+      "bytes": 50103,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9676-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9676-return.json",
+      "sourceSha256": "2d94d2ba3ffdc10396e0b34bceedbf4d5f41ebf1abc709ce4d2e456cb9a42398",
+      "packetSha256": "2d94d2ba3ffdc10396e0b34bceedbf4d5f41ebf1abc709ce4d2e456cb9a42398",
+      "bytes": 6164,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9677-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9677-input.json",
+      "sourceSha256": "f0591bace1a997e95df685763dda9dca872d0a0abbef64d7bf3ed319b99bc74d",
+      "packetSha256": "f0591bace1a997e95df685763dda9dca872d0a0abbef64d7bf3ed319b99bc74d",
+      "bytes": 25038,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9677-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9677-return.json",
+      "sourceSha256": "7082254f9676dbc987acb7fe848e5c33478255e51a325e88bd65cf3af22b92a7",
+      "packetSha256": "7082254f9676dbc987acb7fe848e5c33478255e51a325e88bd65cf3af22b92a7",
+      "bytes": 5901,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9680-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9680-input.json",
+      "sourceSha256": "98d79c67b0541179177716dc68f34aa7b23c07f49c50c1aa645ea5a45f4908e2",
+      "packetSha256": "98d79c67b0541179177716dc68f34aa7b23c07f49c50c1aa645ea5a45f4908e2",
+      "bytes": 49778,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9680-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9680-return.json",
+      "sourceSha256": "2d8517ef6f6dbded6a2599a7f310cf90ed4b7980e8f6799e65e6613d7b22851e",
+      "packetSha256": "2d8517ef6f6dbded6a2599a7f310cf90ed4b7980e8f6799e65e6613d7b22851e",
+      "bytes": 6154,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9681-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9681-input.json",
+      "sourceSha256": "f031b607f101a178d65781ec3cb930681fdd9e486882c066aba7b8aaf7ea9dfe",
+      "packetSha256": "f031b607f101a178d65781ec3cb930681fdd9e486882c066aba7b8aaf7ea9dfe",
+      "bytes": 24713,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9681-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9681-return.json",
+      "sourceSha256": "ecb336d58172bbba6f8289c0c3d8df715ec43069d25f1669dede6207028c8d1d",
+      "packetSha256": "ecb336d58172bbba6f8289c0c3d8df715ec43069d25f1669dede6207028c8d1d",
+      "bytes": 5873,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9684-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9684-input.json",
+      "sourceSha256": "e93f189f37a4317eec46919320ca92929c33e15afe78f229d06715e2921a911f",
+      "packetSha256": "e93f189f37a4317eec46919320ca92929c33e15afe78f229d06715e2921a911f",
+      "bytes": 49788,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9684-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9684-return.json",
+      "sourceSha256": "d328efc7c09715b1e25210a6511319e41f48869d446404ca003aa4215f1bac76",
+      "packetSha256": "d328efc7c09715b1e25210a6511319e41f48869d446404ca003aa4215f1bac76",
+      "bytes": 6150,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9685-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9685-input.json",
+      "sourceSha256": "a4aa1f194c38ad46eb4394351e3450ffc1a8913a8d8db5f8e7a565dbf55775e6",
+      "packetSha256": "a4aa1f194c38ad46eb4394351e3450ffc1a8913a8d8db5f8e7a565dbf55775e6",
+      "bytes": 24723,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9685-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9685-return.json",
+      "sourceSha256": "6ad413288310caaa1cafadcf1e5a11a7ddc76a9bbbc0c5cd0fbb5e25819a54b6",
+      "packetSha256": "6ad413288310caaa1cafadcf1e5a11a7ddc76a9bbbc0c5cd0fbb5e25819a54b6",
+      "bytes": 5871,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9686-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9686-input.json",
+      "sourceSha256": "67eda2ac0cdfd7dcabe7cf99fe8c063dcb576ad2fc90adab94db6eb1eea006cc",
+      "packetSha256": "67eda2ac0cdfd7dcabe7cf99fe8c063dcb576ad2fc90adab94db6eb1eea006cc",
+      "bytes": 49252,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9686-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9686-return.json",
+      "sourceSha256": "2aff26ccf05b4c363bdf502924da8651b327b380cce74dc2b839b89a34fac5c0",
+      "packetSha256": "2aff26ccf05b4c363bdf502924da8651b327b380cce74dc2b839b89a34fac5c0",
+      "bytes": 6141,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9687-input.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9687-input.json",
+      "sourceSha256": "f042f7c8a176af840c73249c76ef7b978730b33111002e3e6eeb4e0a81340d7e",
+      "packetSha256": "f042f7c8a176af840c73249c76ef7b978730b33111002e3e6eeb4e0a81340d7e",
+      "bytes": 24187,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/addresses/address-9687-return.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02/complete/saved/contraction/complete/address-9687-return.json",
+      "sourceSha256": "a369e9696333cf1e39346ada5f439e83d8200e3f7a53ba2ae93836693353c5ee",
+      "packetSha256": "a369e9696333cf1e39346ada5f439e83d8200e3f7a53ba2ae93836693353c5ee",
+      "bytes": 5856,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/uniform/point-01-LEFT.json",
+      "sourcePath": "_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/point-01-LEFT.json",
+      "sourceSha256": "6d79f2fb8531e29df8a9cf06a1aaacac5daf708da030e4375c04596f2b2df92d",
+      "packetSha256": "6d79f2fb8531e29df8a9cf06a1aaacac5daf708da030e4375c04596f2b2df92d",
+      "bytes": 114246,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/uniform/point-01-RIGHT.json",
+      "sourcePath": "_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/point-01-RIGHT.json",
+      "sourceSha256": "a854811c76cca4f637859379e52311ea4013f756e43b8f04aa5a7930152d9de3",
+      "packetSha256": "a854811c76cca4f637859379e52311ea4013f756e43b8f04aa5a7930152d9de3",
+      "bytes": 144108,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/physical/S11c_d_variable_profile_development_input.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "packetSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "bytes": 1884,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/physical/physical-plan.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/preflight-01/complete/physical-plan.json",
+      "sourceSha256": "6a2feca464f4de41ca9a135a93b2c1129763e460136ccc4744275db6337ef92a",
+      "packetSha256": "6a2feca464f4de41ca9a135a93b2c1129763e460136ccc4744275db6337ef92a",
+      "bytes": 1137,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "evidence/physical/inherited-physical-parameters.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-packet-action-20261003/contraction-01/complete/inherited-physical-parameters.json",
+      "sourceSha256": "4e8c843750732b9536d5fc5ed92bb7d843123b1a5f970564afde2d57e5b501cc",
+      "packetSha256": "4e8c843750732b9536d5fc5ed92bb7d843123b1a5f970564afde2d57e5b501cc",
+      "bytes": 73124,
+      "completeOriginalBytes": true
+    }
+  ],
+  "peerReportsIncluded": false,
+  "scientificWorkerOrGateExists": false,
+  "packetSha256": "baa42cc90c72920aa6cf248a1b7ba49432c87199d380bd38a6ab325f2ce9765d",
+  "archiveSha256": "9b23c153e26b4fe882180a9d997fa1b664a62118c70b52ec70a335f243707a99",
+  "fileHashes": {
+    "context/S11c_d_defect_packet_action_method.md": "79f1459596c84d0f4fbca2c45b51977ff338bce1a55a66c6214e850793eaf45a",
+    "context/S11c_d_defect_packet_contracted_numeric_method.md": "b912dac3c009bf8dbf09535e99a9f520f743721257547d25097a49acff220f09",
+    "context/S11c_d_near_unity_uniform_plan.md": "eaabe92686915b439dadf5c0c0085dd5b256f316045a3ef087de22207545fdb3",
+    "context/S11c_d_total_transverse_loss_assessment.md": "13de05bfec1e3fc6ed062d7b172002b228f399ebe4bd33c86170cbe46f3ecae0",
+    "evidence/addresses/address-8346-input.json": "bd29798a6898d7dfbf5797c4d6999064a173f01677c78608af1d94b4e5071391",
+    "evidence/addresses/address-8346-return.json": "20a3063c12328b94621e78db7a41af88827928767c1da555fb81e1cceee8bb90",
+    "evidence/addresses/address-8347-input.json": "c43750b9714656e620ac7de3186cc12bcfe70d1feab91e8f93950ff00210fe68",
+    "evidence/addresses/address-8347-return.json": "2f483e23072d212f3be05b9822a7c3c5367515c9a05671be74d90c498f456ef1",
+    "evidence/addresses/address-8350-input.json": "e7632b375923c6a971179622b921ec4eec9cd74cff923a3ec1f7644706d32ed5",
+    "evidence/addresses/address-8350-return.json": "a689001f2aeae15a88b1ec6fe54a9afce8ce05551ba28dd65b19ccca88456361",
+    "evidence/addresses/address-8351-input.json": "6febab1390438958b561e2e311e60abcd1e36914b151ce1e46010430b2595a9b",
+    "evidence/addresses/address-8351-return.json": "2517566fe86f72ab5354703af792992e9f311e3ec91627a43ff29077d9f6c29f",
+    "evidence/addresses/address-8354-input.json": "b41f7a8930c2512566a2da226db9c523431a57614c334463bbab550aad0a6be0",
+    "evidence/addresses/address-8354-return.json": "ef1fcde24cc133fad09fa5102e50fc9fce0b3a7d39dea436138e7965924e5536",
+    "evidence/addresses/address-8355-input.json": "c86b4a8599235554c4780f5f040151b425e8dfda2040d3d5164f9b1abb4db885",
+    "evidence/addresses/address-8355-return.json": "ce16c97908013de73029de660c1ba51a665e5f9a6d9db7d94e2e13885fdc979d",
+    "evidence/addresses/address-8358-input.json": "85b84986a668a6804e8df3f6648f53ceac08b47a9322dbf7242e651f91237862",
+    "evidence/addresses/address-8358-return.json": "ce18f59ec1d6b501e1036e73cbe71e42f7e8541035d5b6163eaaba4c67d36103",
+    "evidence/addresses/address-8359-input.json": "464f97a827d8d8435cf51ab11cf804ede73f2e7d29c8c82b0ec417f11576654e",
+    "evidence/addresses/address-8359-return.json": "672227556473ff24736584bcd4a16010e01f6566ae535682bb68c05e80c4750a",
+    "evidence/addresses/address-8360-input.json": "3b6d2996772266a76c8e505bc3438ed647af3240a4e2389c14282e1bb4346e06",
+    "evidence/addresses/address-8360-return.json": "87ffc8030b45013ee82a5bd4090be37778d55a2fdb060f63bbc82109854f8879",
+    "evidence/addresses/address-8361-input.json": "d3e3268e5c24d705d99f282bf3e7c8fc935b2343d08e25f2d797a543c9aa89fe",
+    "evidence/addresses/address-8361-return.json": "e3888388a91a6b2a19d271227fca68c1a081bb9eaea5aa306e86d1b8a3cd37d4",
+    "evidence/addresses/address-9672-input.json": "21184c19bdd38a7589ff6b5fc97b60dda0603fe95b22cc57379ed1b4c73e211c",
+    "evidence/addresses/address-9672-return.json": "330ce162d6cb6fa8c65a7839d7a5551d9499ef94a6148f0c4af68d7088793cf1",
+    "evidence/addresses/address-9673-input.json": "b72b4330a695e32f91c13b1645903ea8e01095ac4f45c1be45c831dd1d7f0e98",
+    "evidence/addresses/address-9673-return.json": "5f26a754a1b9393d724db04e9366af61ccbf7d685d9d7eee967e8d76b89813f6",
+    "evidence/addresses/address-9676-input.json": "74c6bc6b783cb9c52832834fc37b7671719060dd9e4f2ce587966489b5f24da3",
+    "evidence/addresses/address-9676-return.json": "2d94d2ba3ffdc10396e0b34bceedbf4d5f41ebf1abc709ce4d2e456cb9a42398",
+    "evidence/addresses/address-9677-input.json": "f0591bace1a997e95df685763dda9dca872d0a0abbef64d7bf3ed319b99bc74d",
+    "evidence/addresses/address-9677-return.json": "7082254f9676dbc987acb7fe848e5c33478255e51a325e88bd65cf3af22b92a7",
+    "evidence/addresses/address-9680-input.json": "98d79c67b0541179177716dc68f34aa7b23c07f49c50c1aa645ea5a45f4908e2",
+    "evidence/addresses/address-9680-return.json": "2d8517ef6f6dbded6a2599a7f310cf90ed4b7980e8f6799e65e6613d7b22851e",
+    "evidence/addresses/address-9681-input.json": "f031b607f101a178d65781ec3cb930681fdd9e486882c066aba7b8aaf7ea9dfe",
+    "evidence/addresses/address-9681-return.json": "ecb336d58172bbba6f8289c0c3d8df715ec43069d25f1669dede6207028c8d1d",
+    "evidence/addresses/address-9684-input.json": "e93f189f37a4317eec46919320ca92929c33e15afe78f229d06715e2921a911f",
+    "evidence/addresses/address-9684-return.json": "d328efc7c09715b1e25210a6511319e41f48869d446404ca003aa4215f1bac76",
+    "evidence/addresses/address-9685-input.json": "a4aa1f194c38ad46eb4394351e3450ffc1a8913a8d8db5f8e7a565dbf55775e6",
+    "evidence/addresses/address-9685-return.json": "6ad413288310caaa1cafadcf1e5a11a7ddc76a9bbbc0c5cd0fbb5e25819a54b6",
+    "evidence/addresses/address-9686-input.json": "67eda2ac0cdfd7dcabe7cf99fe8c063dcb576ad2fc90adab94db6eb1eea006cc",
+    "evidence/addresses/address-9686-return.json": "2aff26ccf05b4c363bdf502924da8651b327b380cce74dc2b839b89a34fac5c0",
+    "evidence/addresses/address-9687-input.json": "f042f7c8a176af840c73249c76ef7b978730b33111002e3e6eeb4e0a81340d7e",
+    "evidence/addresses/address-9687-return.json": "a369e9696333cf1e39346ada5f439e83d8200e3f7a53ba2ae93836693353c5ee",
+    "evidence/original-numeric-context.json": "3d6772d1594dbb3e88d69bf862b91b22711cc088cee23ddcbdbfe6aad013772f",
+    "evidence/physical/S11c_d_variable_profile_development_input.json": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+    "evidence/physical/inherited-physical-parameters.json": "4e8c843750732b9536d5fc5ed92bb7d843123b1a5f970564afde2d57e5b501cc",
+    "evidence/physical/physical-plan.json": "6a2feca464f4de41ca9a135a93b2c1129763e460136ccc4744275db6337ef92a",
+    "evidence/refocus-inspection.json": "51bd439231c63fb6f6f60994de2ef467407ebe21e6c23a1d155458da9b0f0652",
+    "evidence/uniform/point-01-LEFT.json": "6d79f2fb8531e29df8a9cf06a1aaacac5daf708da030e4375c04596f2b2df92d",
+    "evidence/uniform/point-01-RIGHT.json": "a854811c76cca4f637859379e52311ea4013f756e43b8f04aa5a7930152d9de3",
+    "governing/S11c_d_SHARED_PHYSICS.md": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+    "governing/S11c_d_TOTAL_TRANSVERSE_LOSS_AMENDMENT_DRAFT.md": "ec12456947527bb162a6bd56a65651f1028cca1f95f0d85379bdc8a411fbb6fc",
+    "guide.txt": "b0de68c8a0461518e526f0f617e6069b15cb78bb6af994c0df8fc22e7e40512f",
+    "native/S11c_d_mixing_scattering_sympy_audit.py": "5bf77729682960bb59f10c672a5fe3f67a98b0a9533da7c6189a37183596050f",
+    "packet-index.json": "1ded768350126c7be5647d74fa2bc8c7096aabb13b74957af198e657ca3a68ed",
+    "proposal.txt": "f8a8fe4dee2350af416e8c55b15455c2635d713c019b84dd13903dfa290bbae9",
+    "review-prompt.md": "b9fe5981d0858c5861d822696d573712664e6f848603b09abfc0b46ffecd46f5"
+  }
+}

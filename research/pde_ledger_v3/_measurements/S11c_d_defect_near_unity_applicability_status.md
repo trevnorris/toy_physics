@@ -1418,3 +1418,43 @@ one launch-admission inspection; all 6,482 private packet file hashes matched.
 The hook was armed before coordinator release for the existing session. Pending
 reports were not read. No science launched and no automatic retry or model polling
 is scheduled. Exact launch receipts are preserved in the canonical build record.
+
+## Physics refocus — 2026-10-04, user-directed
+
+The user asked to prioritize the leakage observable, the smallest calculation
+that determines it, and unresolved physics assumptions. The incomplete numerical
+recovery development is parked; no recovery worker, new gate or scientific run
+is launched by this change. Every completed result and failed prefix remains.
+
+JSON-only inspection of all 20 live contracted J/direct entries joins their
+full saved addresses: every entry is e_W input to THETA_BALANCE, with source
+and consumer grade 00 and response/target grade 11. This is a second-order
+operator contribution on eta=lambda, sigma_W=(W/L)lambda. The Gaussian pairings
+are explicitly operator tests, not incident transverse modes or physical power.
+
+The proposed priority is the leading weak-contrast transverse-loss coefficient
+at the existing effective inputs. If all baseline loss-producing drives vanish
+and the forced response/power expansion is regular, its lambda-squared term
+needs the first-order induced field and the first-order direct face maps. The
+mixed operator L11 does not enter that first-order field. This conditional
+argument would remove the stalled J/direct integral from the immediate path to
+that coefficient; it does not remove grade 11 from the retained model or settle
+higher-order loss if the first-order projection vanishes.
+
+The next proposed physics ingredient is the actual full first-order defect
+forcing of the accepted incident transverse subspace, including both independent
+10/01 grades, density/profile/face terms and end matching, followed by a
+source-specific outgoing response and physical power balance if those premises
+hold. No receiving inverse or leakage coefficient is asserted. In particular,
+finite selected uniform limits at acoustic grazing do not establish a regular
+forced response. The step's end terms, complete boundary-source work and held-
+background work remain substantive questions.
+
+The intended stationary observable counts all outgoing transverse reflection
+and transmission as survival. Bulk radiation is a separate attribution; an
+operator matrix element and a forward-beam deficit are not leakage fractions.
+A fixed-input weak coefficient would not determine strong-edge, primitively
+calibrated or draining-model leakage. See the source evidence and proposed
+physics route in S11c_d_physics_refocus_20261004_evidence.json and
+S11c_d_physics_refocus_20261004_proposal.txt. Their inference is awaiting a
+focused Claude-only physics assessment, not author clearance.

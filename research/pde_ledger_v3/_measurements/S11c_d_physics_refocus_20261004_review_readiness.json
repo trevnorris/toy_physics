@@ -1,0 +1,33 @@
+{
+  "status": "FIXED_PHYSICS_SOURCE_PACKET_VERIFIED",
+  "packetSha256": "baa42cc90c72920aa6cf248a1b7ba49432c87199d380bd38a6ab325f2ce9765d",
+  "archiveSha256": "9b23c153e26b4fe882180a9d997fa1b664a62118c70b52ec70a335f243707a99",
+  "files": 58,
+  "bytes": 3267549,
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "completionMessageSha256": "c78865f00caa0da84b180097e0a5e4bf9b657704b3b3e7284067ec4b00cb5264",
+  "sourceHashesChecked": 57,
+  "archiveFilesChecked": 58,
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "existingReviewerRunnerReusedUnchanged": true,
+  "originalSourcesAndSavedRecordsUnchanged": true,
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/physics-refocus-review",
+  "scope": {
+    "target": "Physics refocus and conditional first-order transverse-source plan",
+    "samePhysicalInputs": true,
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "lossObservable": "all-outgoing-transverse survival deficit",
+    "forcedGrazingRegularityEstablished": false,
+    "newScientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "leakageFactor": null,
+    "recoveryDevelopmentParked": true
+  }
+}

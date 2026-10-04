@@ -1,0 +1,127 @@
+Physics refocus: a source-specific leading transverse-loss calculation
+2026-10-04. Proposed physics route for assessment, not a worker or result.
+
+Question 1: what is the leakage factor?
+Use the previously proposed stationary transverse-survival observable:
+  L_T(a;lambda) = 1 - J_T,out(all reflected and transmitted transverse modes)/J_T,in.
+Here a specifies the incident transverse polarization; all reflected transverse
+power survives. This is not forward extinction, a temporal decay rate, or a
+bound-state capture probability. A bulk-only fraction P_bulk,out/J_T,in is a
+separate observable. Interface absorption and non-transverse escape may enter
+the total, but must not count the same converted energy twice. A stationary
+balance must include any external work of the held profile; nonnegative loss
+is not an assumption. Do not infer a loss coefficient from the norm, imaginary
+part, or absolute square of the current complex-bilinear Gaussian test.
+
+The attainable near-term target is a conditional weak-contrast coefficient at
+fixed effective toy inputs, not a universal physical constant. Keep omega=3,
+strict rest bulk, LAB_HELD/RHO4_CONSTANT, edge momenta (1/5,1/10), W=1,L=10,
+cs=sqrt(6)/2, the original independent material/profile/closure inputs and
+memory. Preserve the original physical contrast path eta=lambda,
+sigma_W=(W/L)lambda=lambda/10. A coefficient does not fix a real slit-edge
+fraction: the defect/interior and primitive calibration remain unresolved,
+and lambda=1 is not justified by the weak calculation. No drain is introduced.
+
+Question 2: what is the smallest calculation that determines this coefficient?
+Write the accepted grade structure symbolically as
+  L_ret = L00 + eta L10 + sigma_W L01 + eta sigma_W L11.
+Along the physical path, L1 = L10 + (W/L)L01. If a regular expansion exists,
+  L00 Psi0 = 0,
+  L00 Psi1 = -L1 Psi0,
+with every actual first-order face/exterior inhomogeneity and matched-end
+correction included, either in this augmented system or through a faithfully
+reconstructed reduced source. This display is not an evaluated native source.
+For a physical loss-output map C,
+  a0 = C0 Psi0,
+  a1 = C0 Psi1 + C1 Psi0.
+If each contributing loss drive has a0=0 and the physical power form is regular,
+  P_loss(lambda) = lambda^2 B0[a1,a1] + o(lambda^2).
+Consequently the leading loss coefficient needs Psi1 and C1, not Psi2 or L11.
+Do not evaluate 1 minus a first-order transmitted intensity: that expression
+misses interference with its second-order transverse amplitude. The source-work
+route is allowed only after equality to physical boundary/dissipation work.
+
+This is a conditional application of the existing retained-order rule, not a
+new proof that these hypotheses hold at the present point. If a0 is nonzero,
+only net baseline power vanishes, the loss form is singular, or the outgoing
+expansion fails, the shortcut is unavailable. If the complete first-order
+loss source vanishes, this would settle only absence of that leading term;
+higher-order loss could require the preserved mixed work. Nothing is discarded
+from the complete retained operator or declared identically irrelevant.
+
+Why park the current recovery branch? The new JSON-only inspection joins all
+20 live entries to their full saved address operands and returns. They have
+source/consumer grade00, response/target grade11, input e_W, row THETA_BALANCE:
+10 NATIVE_MIXED_ITERATION and 10 INHERITED_DIRECT_WHOLE_OFF_DIAGONAL. They are
+second order on the physical path and do not supply L1. The two chosen Gaussian
+packets are explicitly not incident transverse modes. Thus completing these
+integrals is not presently a demonstrated prerequisite for the leading loss
+coefficient. Preserve them as operator-validation work; do not complete them
+merely because much effort has already been spent.
+
+Proposed bounded next physics ingredient, subject to this assessment:
+1. Reuse the accepted positive-direction LEFT transverse subspace/current,
+   preferably both already-normalized polarization columns with their cross
+   terms. Construct only the actual first-order forcing L1 Psi0 and direct
+   first-order face/closure/exterior maps C1 Psi0. Include both 10 and 01 grades,
+   all source/consumer cross grades at that order, profile/density/normal terms,
+   and end matching. A nonzero entry is not a nonzero projected force. This
+   should answer which physical mechanism is actually driven before integration.
+2. Test the specific outgoing receiving problem on that force. A Fourier route
+   using the uniform reference pencil, with small pointwise linear systems and
+   one output-momentum power integral, is a candidate, not an established
+   implementation or cost estimate. It requires physical transverse/receiving
+   projections, outgoing sheets, pole/threshold treatment and finite matched
+   sources. Do not fit a projection to zero residuals, assume an ordinary
+   inverse on a propagating transverse pole, reuse an omega1/cs10 inverse as a
+   result at the present binding, or invoke a generic real-axis pseudoinverse.
+3. Only after 1 and 2 support it, compute the complete first-order field and
+   the physical loss-side power. Reuse the actual native two-port work identity,
+   include direct boundary sources and C1 Psi0, and compare source work with
+   reconstructed face/bulk/lateral power on one control volume. A failed or
+   divergent premise is useful physics evidence; no general Green campaign or
+   different parameter point is an automatic fallback.
+
+A minimal pilot could return the leading loss quadratic form on the selected
+LEFT incident doublet, hence polarization-resolved coefficients. It need not
+produce every incoming-end S-matrix, all damped thickness roots, or a complete
+mixed-grade packet action. Both outgoing ends and actual loss channels remain
+necessary in the balance. This changes the priority/deliverable, not equations
+or current definitions. The above is not a concrete numerical execution plan.
+
+Question 3: what unresolved physics could change the answer?
+- Grazing: LEFT is exactly at q=0 at this cs. Saved selected uniform fields,
+  currents and face limits are finite, but those facts do not bound the forced
+  receiving resolvent or show a regular lambda expansion. Higher-order terms
+  cannot be dismissed if this expansion fails. RIGHT's matching speed differs.
+- End matching: the step has different asymptotes. Saved uniform zero drives
+  do not remove all first-order half-line forcing. The proposed loss must have
+  finite matched source/power limits; a regulator is not evidence of finiteness.
+- Physical balance: homogeneous uniform row-power/face maps do not already
+  include arbitrary inhomogeneous boundary sources. External work/passivity,
+  current normalization and no double counting remain physical obligations.
+- Validity/calibration: this is the retained effective, strictly resting-bulk
+  model. A weak-interface coefficient does not establish strong-edge loss,
+  calibrated optical relevance, draining-background behavior or a capture rate.
+
+Available evidence and limits
+The full retained weak operator inventory and selected uniform results are
+reusable. The supplied point-01 LEFT and RIGHT files are complete readable
+saved records at cs=sqrt(6)/2; their hashes join the accepted completion. The
+LEFT incident doublet has finite nonzero currents and zero selected face drives;
+this is a selected uniform premise, not a forced-field result. Current end
+correspondence does not automatically transfer the nonuniform physical current.
+The old finite omega3 benchmark had unresolved signed ppm imbalances and open
+numerical-route debts. It supplies neither a leakage number nor a calibration.
+No source, operator, inverse, limit, integral, power or completed numerical
+request has been recomputed during this refocus. The incomplete recovery files
+are parked with hashes. No new scientific worker or READY gate exists.
+
+Requested assessment
+Decide whether this is the right physical target and whether the order argument
+actually justifies removing the J/direct recovery from the immediate critical
+path. Identify the smallest concrete first-order source/power ingredient and
+the exact point where the present grazing/step/domain could defeat it. Do not
+turn this into approval of an unspecified solver or another general validation
+program. If the route cannot determine a coefficient with existing physical
+inputs, identify the missing physical datum distinctly from computational work.

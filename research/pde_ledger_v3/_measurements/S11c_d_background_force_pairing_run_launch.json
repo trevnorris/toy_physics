@@ -1,0 +1,214 @@
+{
+  "status": "ADMITTED_GUARDED_BACKGROUND_COMPARISON_RUNNING",
+  "recordedUtc": "2026-10-04T23:33:02.524125+00:00",
+  "readinessCommit": "d3419434",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01",
+  "launch": {
+    "jobPid": 1913390,
+    "watcherPid": 1913391,
+    "gateSha256": "2389e742de8a31eba13f4a95faa418e8347aed6aab2912364887e3d802f7d9e8",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "4",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01/resource-guard",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01",
+      "--stage",
+      "background_force_pairing",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_gate.json"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 1913391,
+    "jobPid": 1913390,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T23:32:58.563922+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "546f6c7253b92eeeb594e3d11b64d50d8b555b0d16c62231732b33d265276c21",
+    "notifications": {}
+  },
+  "coordinatorOutcome": null,
+  "sourceSnapshotsVerified": 16,
+  "additionalIdentityCopiesVerified": 20,
+  "guardInvocation": {
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01",
+      "--stage",
+      "background_force_pairing",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_gate.json"
+    ],
+    "cwd": "/var/projects/toy_physics",
+    "unit": "s11c-guard-d2ab275f9f24",
+    "seconds": 0,
+    "requestedSecondsArgumentIgnored": 0,
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null,
+    "cpu": 15,
+    "memoryMax": 4294967296,
+    "swapMax": 0,
+    "tasksMax": 32,
+    "minimumHostAvailableBytes": 4294967296,
+    "startedUtc": "2026-10-04T23:32:58.924667+00:00",
+    "pool": "s11c-near-unity",
+    "priorityPolicy": "desktop-managed",
+    "logDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01/resource-guard",
+    "affinityEnforcement": "systemd-and-inherited-process",
+    "reservedBeforeBytes": 0,
+    "outstandingHeadroomBytes": 0,
+    "hostAvailableBytes": 20834344960,
+    "poolMemoryMax": 17179869184,
+    "poolMaxJobs": 6,
+    "activeUnits": [],
+    "owner": {
+      "pid": 1913402,
+      "startTicks": "119808520",
+      "bootId": "c8304a64-451a-49f4-b454-d113d706e731"
+    }
+  },
+  "workerInvocation": {
+    "stage": "background_force_pairing",
+    "command": [
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_gate.json"
+    ],
+    "prerequisiteLock": "shared-read",
+    "stdout": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01/background_force_pairing.stdout",
+    "stderr": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01/background_force_pairing.stderr",
+    "startedUtc": "2026-10-04T23:32:59.044690+00:00",
+    "childPid": 1913408,
+    "status": "running"
+  },
+  "actualHostProcesses": [
+    {
+      "role": "coordinator",
+      "pid": 1913390,
+      "argv": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_launch.py",
+        "--coordinator",
+        "3"
+      ]
+    },
+    {
+      "role": "watcher",
+      "pid": 1913391,
+      "argv": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/codex_job_watch.py",
+        "--pid",
+        "1913390",
+        "--thread",
+        "01a0e01b-ef84-7192-817f-584cda5d339b",
+        "--directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01/completion-watcher",
+        "--message-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01/completion-message.txt"
+      ]
+    },
+    {
+      "role": "worker",
+      "pid": 1913408,
+      "argv": [
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing.py",
+        "--out",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/background-force-pairing-01/complete",
+        "--inputs",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_inputs.json",
+        "--gate",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_gate.json"
+      ]
+    }
+  ],
+  "limits": {
+    "memory.max": "4294967296",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-d2ab275f9f24.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      4294967296,
+      4294967296
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  },
+  "durationValidation": {
+    "verified": true,
+    "actual": {
+      "RuntimeMaxUSec": "infinity",
+      "Restart": "no"
+    },
+    "wallDeadlineSeconds": null,
+    "inactivityDeadlineSeconds": null
+  },
+  "hostAdmissionAttempts": 1,
+  "scienceAcceptance": false,
+  "scientificRetry": false,
+  "noModelPolling": true,
+  "physicalLimitations": {
+    "backgroundTractionMeasure": "TRACTION_MEASURE_UNSUPPLIED",
+    "totalR0_c": "UNSUPPLIED",
+    "physicalPairing": "ORIGINAL_FORCE_PAIRING_UNRESOLVED",
+    "THETAforcePairingAndPower": "UNSUPPLIED; complete original operand preserved, not evaluated",
+    "exactNormal": "SOURCE_ASSESSED_CANDIDATE_NOT_RUNTIME_ORIGINAL_GEOMETRY_JOIN",
+    "acousticZeroProvenance": "DOCUMENTARY_ONLY_NO_NEW_CERTIFICATE",
+    "formalControls": "COEFFICIENT_SENSITIVITY_AT_A1_ONLY",
+    "leakageFactor": null
+  }
+}

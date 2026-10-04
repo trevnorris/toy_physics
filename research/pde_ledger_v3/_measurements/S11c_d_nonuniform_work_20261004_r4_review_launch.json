@@ -1,0 +1,139 @@
+{
+  "status": "CLAUDE_ONLY_METHOD_REVIEW_LAUNCHED_PENDING_LITERAL_ASSESSMENT",
+  "recordedUtc": "2026-10-04T22:51:58.523006+00:00",
+  "preparedCommit": "d3a2c83f",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4",
+  "packetSha256": "f0d2716a61105f569dfcf2a6ccdb25a863a945e77d34b043e092107019eaa4e1",
+  "archiveSha256": "b0a8c9ec32909cabfd2d80520241b3d528828768440e5c4784c79c59af1ce6fe",
+  "launch": {
+    "jobPid": 1893013,
+    "watcherPid": 1893014,
+    "packetSha256": "f0d2716a61105f569dfcf2a6ccdb25a863a945e77d34b043e092107019eaa4e1",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 1893014,
+    "jobPid": 1893013,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T22:51:03.000092+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "09c61d52ddc727a3b0d556c9bfc07227876c4ac5bf7dfa57be8a746028c3e049",
+    "notifications": {}
+  },
+  "claudeReceipt": {
+    "engine": "claude",
+    "sessionId": "627efd53-69b8-4c4e-ab3f-e245f2e4bee2",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "627efd53-69b8-4c4e-ab3f-e245f2e4bee2"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4/claude/work",
+    "startedUtc": "2026-10-04T22:51:05.754104+00:00",
+    "packetSha256": "f0d2716a61105f569dfcf2a6ccdb25a863a945e77d34b043e092107019eaa4e1",
+    "promptSha256": "312c3a32ac9323bc038996d4bc550696e083d7f52941da69e46325848372ca9c",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1893048
+  },
+  "actualHostProcesses": [
+    {
+      "role": "coordinator",
+      "pid": 1893013,
+      "argv": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4/review_run.py"
+      ]
+    },
+    {
+      "role": "watcher",
+      "pid": 1893014,
+      "argv": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/codex_job_watch.py",
+        "--pid",
+        "1893013",
+        "--thread",
+        "01a0e01b-ef84-7192-817f-584cda5d339b",
+        "--directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4/completion-watcher",
+        "--message-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4/completion_message.txt",
+        "--error-log",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4/issues.log"
+      ]
+    },
+    {
+      "role": "claude",
+      "pid": 1893048,
+      "argv": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "--disable-slash-commands",
+        "--session-id",
+        "627efd53-69b8-4c4e-ab3f-e245f2e4bee2"
+      ]
+    }
+  ],
+  "privateInputFilesVerified": 8308,
+  "sourceFilesVerified": 8307,
+  "scope": {
+    "target": "Explicit force pairing and background centre work before nonuniform consistency and formal port power",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "samePhysicalInputs": true,
+    "sameEquations": true,
+    "arbitraryIncidentDoublet": true,
+    "scientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "newFieldOrIntegral": false,
+    "fullPhysicalWorkPending": true,
+    "leakageFactor": null,
+    "finiteDefectAsymptoticClaimed": false,
+    "recoveryParked": true
+  },
+  "singleHostAdmissionCheck": true,
+  "noModelPolling": true,
+  "noScientificExecution": true,
+  "noAutomaticReviewerRetry": true,
+  "noGrokLaunched": true
+}

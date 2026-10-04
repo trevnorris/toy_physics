@@ -1,0 +1,203 @@
+{
+  "status": "COMPLETED_BEFORE_ADMISSION_INSPECTION_REQUIRED",
+  "recordedUtc": "2026-10-04T19:10:59.373189+00:00",
+  "readinessCommit": "e8572069",
+  "gateSha256": "193f3e329670c2dd214e28f10f921942bea94ac18c72cc3541d775d400674fc6",
+  "launch": {
+    "jobPid": 1787455,
+    "watcherPid": 1787456,
+    "gateSha256": "193f3e329670c2dd214e28f10f921942bea94ac18c72cc3541d775d400674fc6",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "4",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-matching-01/resource-guard",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-matching-01",
+      "--stage",
+      "first_order_transverse_matching",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_matching.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-matching-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_matching_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_matching_gate.json"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "hookAtAdmission": {
+    "status": "finished",
+    "watcherPid": 1787456,
+    "jobPid": 1787455,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T19:10:18.134178+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "1fa58ea4a04b01ddcacebc738dd6c4a88840b0326e2e474177b83557eb54aa39",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-10-04T19:10:25.668153+00:00"
+      }
+    }
+  },
+  "hookArmedBeforeStage": true,
+  "oneHostAdmissionCheck": true,
+  "pidsAlive": {
+    "jobPid": false,
+    "watcherPid": false
+  },
+  "coordinatorOutcome": {
+    "exitCode": 0,
+    "wallSeconds": 7.3087136540561914,
+    "scientificAcceptance": "PENDING_ACTUAL_INSPECTION"
+  },
+  "resourceGuard": {
+    "child-outcome.json": {
+      "exitCode": 0,
+      "guardReason": null,
+      "wallSeconds": 7.123885917011648,
+      "childPid": 1787470
+    },
+    "invocation.json": {
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+        "--parallel-prerequisite-read",
+        "--run-root",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-matching-01",
+        "--stage",
+        "first_order_transverse_matching",
+        "--",
+        "/usr/bin/python",
+        "-u",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_matching.py",
+        "--out",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-matching-01/complete",
+        "--inputs",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_matching_inputs.json",
+        "--gate",
+        "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_matching_gate.json"
+      ],
+      "cwd": "/var/projects/toy_physics",
+      "unit": "s11c-guard-6a2e94ff732f",
+      "seconds": 0,
+      "requestedSecondsArgumentIgnored": 0,
+      "wallDeadlineSeconds": null,
+      "inactivityDeadlineSeconds": null,
+      "cpu": 15,
+      "memoryMax": 4294967296,
+      "swapMax": 0,
+      "tasksMax": 32,
+      "minimumHostAvailableBytes": 4294967296,
+      "startedUtc": "2026-10-04T19:10:18.269803+00:00",
+      "pool": "s11c-near-unity",
+      "priorityPolicy": "desktop-managed",
+      "logDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-matching-01/resource-guard",
+      "affinityEnforcement": "systemd-and-inherited-process",
+      "reservedBeforeBytes": 0,
+      "outstandingHeadroomBytes": 0,
+      "hostAvailableBytes": 20585889792,
+      "poolMemoryMax": 17179869184,
+      "poolMaxJobs": 6,
+      "activeUnits": [],
+      "owner": {
+        "pid": 1787460,
+        "startTicks": "118232454",
+        "bootId": "c8304a64-451a-49f4-b454-d113d706e731"
+      }
+    },
+    "outcome.json": {
+      "exitCode": 0,
+      "wallSeconds": 7.241695733973756,
+      "unit": "s11c-guard-6a2e94ff732f",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 7.123885917011648,
+        "childPid": 1787470
+      }
+    },
+    "limit-validation.json": {
+      "verified": true,
+      "actual": {
+        "memory.max": "4294967296",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-6a2e94ff732f.service",
+        "nice": 0,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpaceBytes": [
+          4294967296,
+          4294967296
+        ],
+        "systemd.CPUAffinity": "15",
+        "affinityEnforcement": "systemd-and-inherited-process"
+      }
+    },
+    "duration-validation.json": {
+      "verified": true,
+      "actual": {
+        "RuntimeMaxUSec": "infinity",
+        "Restart": "no"
+      },
+      "wallDeadlineSeconds": null,
+      "inactivityDeadlineSeconds": null
+    },
+    "effective-limits.json": {
+      "memory.max": "4294967296",
+      "memory.swap.max": "0",
+      "pids.max": "32",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-6a2e94ff732f.service",
+      "nice": 0,
+      "affinity": [
+        15
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "nativeAddressSpaceBytes": [
+        4294967296,
+        4294967296
+      ],
+      "systemd.CPUAffinity": "15",
+      "affinityEnforcement": "systemd-and-inherited-process"
+    }
+  },
+  "sourceSnapshotsVerified": 22,
+  "additionalIdentityCopiesVerified": 21,
+  "scientificAcceptance": false,
+  "noAutomaticRetry": true
+}

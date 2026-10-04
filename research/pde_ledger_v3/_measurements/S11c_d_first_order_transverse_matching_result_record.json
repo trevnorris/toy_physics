@@ -1,0 +1,157 @@
+{
+  "status": "ACCEPTED_FINITE_MATCHED_TRANSVERSE_AMPLITUDE_PREREQUISITE",
+  "createdUtc": "2026-10-04T19:14:11.389374+00:00",
+  "scope": {
+    "target": "Finite matched outgoing transverse amplitudes in saved incident coordinates, before physical flux normalization",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalPath": "eta=lambda,sigma_W=lambda/10",
+    "incomingColumns": 2,
+    "origin": 0,
+    "newHalfLinePolynomialMoments": true,
+    "T1InSavedCoordinates": true,
+    "R1ExactUnevaluatedIntegral": true,
+    "G0GrefG1K1Pending": true,
+    "physicalWorkAndAllRealRegularityPending": true,
+    "numericalIntegrals": false,
+    "leakageFactor": null,
+    "recoveryParked": true
+  },
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-matching-01",
+  "gateSha256": "193f3e329670c2dd214e28f10f921942bea94ac18c72cc3541d775d400674fc6",
+  "workerSha256": "e3d53ff89409411d16bb81ec441ba2e467ffe3a04a6bf6be4c738a4522de0bc8",
+  "buildRecordSha256": "68a484d70706d1396d70d61554f531351cd17938f006c74589e125a20612d342",
+  "methodRecordSha256": "8bfe5fe227565e89df1a877ac3cd1da54d8b469c9c3623743fd192dd9c4622f4",
+  "inspection": "Stored source/JSON/hash only; no scientific restoration, extra scientific validator or replay",
+  "metadataChecks": 3011,
+  "newLiteralZeroReturns": 88,
+  "restoredLiteralZeros": 61,
+  "inheritedReserializationNotes": [
+    {
+      "name": "FULL-offwave-source-correspondence-3-1",
+      "changedReturnFields": [
+        "raw"
+      ],
+      "changedOperandFields": [
+        "right"
+      ],
+      "publishedLiteralZeroIdentical": true,
+      "fullOriginalCopiedBytesIntact": true,
+      "reason": "Restoring and reserializing the original constructor expression groups scalar constant terms. Original raw/right bytes remain copied and hashed; no old cancel proof is recomputed or claimed as a new return."
+    },
+    {
+      "name": "FULL-offwave-source-correspondence-3-2",
+      "changedReturnFields": [
+        "raw"
+      ],
+      "changedOperandFields": [
+        "right"
+      ],
+      "publishedLiteralZeroIdentical": true,
+      "fullOriginalCopiedBytesIntact": true,
+      "reason": "Restoring and reserializing the original constructor expression groups scalar constant terms. Original raw/right bytes remain copied and hashed; no old cancel proof is recomputed or claimed as a new return."
+    }
+  ],
+  "newControls": 2,
+  "completeOperations": 1,
+  "artifacts": 300,
+  "savedCopies": 732,
+  "posthashes": 1486,
+  "sourceSnapshots": 22,
+  "additionalIdentityCopies": 21,
+  "treeFiles": 1111,
+  "treeBytes": 10072601,
+  "workerSeconds": 6.838228999869898,
+  "guardSeconds": 7.241695733973756,
+  "peakCgroupBytes": 83795968,
+  "zeroSwap": true,
+  "zeroMemoryEvents": true,
+  "strictStderrEmpty": true,
+  "stdoutChecksIdentical": true,
+  "allSourceAndCopyHashesIntact": true,
+  "T1": {
+    "text": "Matrix([[-179/238 - 80*sqrt(595)*I/357, 0], [-sqrt(595)/10, -30/119 - 80*sqrt(595)*I/357]])",
+    "srepr": "ImmutableDenseMatrix([[Add(Rational(-179, 238), Mul(Integer(-1), Rational(80, 357), Pow(Integer(595), Rational(1, 2)), I)), Integer(0)], [Mul(Integer(-1), Rational(1, 10), Pow(Integer(595), Rational(1, 2))), Add(Rational(-30, 119), Mul(Integer(-1), Rational(80, 357), Pow(Integer(595), Rational(1, 2)), I))]])"
+  },
+  "stepT1": {
+    "text": "Matrix([[-179/238, 0], [-sqrt(595)/10, -30/119]])",
+    "srepr": "ImmutableDenseMatrix([[Rational(-179, 238), Integer(0)], [Mul(Integer(-1), Rational(1, 10), Pow(Integer(595), Rational(1, 2))), Rational(-30, 119)]])"
+  },
+  "localizedT1": {
+    "text": "Matrix([[-80*sqrt(595)*I/357, 0], [0, -80*sqrt(595)*I/357]])",
+    "srepr": "ImmutableDenseMatrix([[Mul(Integer(-1), Rational(80, 357), Pow(Integer(595), Rational(1, 2)), I), Integer(0)], [Integer(0), Mul(Integer(-1), Rational(80, 357), Pow(Integer(595), Rational(1, 2)), I)]])"
+  },
+  "moment": {
+    "text": "Matrix([[73*sqrt(595)/2525 - 8*I, 0], [146/2525 + 4*sqrt(595)*I, -4*I], [73/2525, 8*I], [-6588/11009 - 58*I/11009, 0], [-19*I/505, 0]])",
+    "srepr": "MutableDenseMatrix([[Add(Mul(Rational(73, 2525), Pow(Integer(595), Rational(1, 2))), Mul(Integer(-1), Integer(8), I)), Integer(0)], [Add(Rational(146, 2525), Mul(Integer(4), Pow(Integer(595), Rational(1, 2)), I)), Mul(Integer(-1), Integer(4), I)], [Rational(73, 2525), Mul(Integer(8), I)], [Add(Rational(-6588, 11009), Mul(Integer(-1), Rational(58, 11009), I)), Integer(0)], [Mul(Integer(-1), Rational(19, 505), I), Integer(0)]])"
+  },
+  "reflectionStep": {
+    "text": "Matrix([[59/238, 0], [sqrt(595)/10, -30/119]])",
+    "srepr": "ImmutableDenseMatrix([[Rational(59, 238), Integer(0)], [Mul(Rational(1, 10), Pow(Integer(595), Rational(1, 2))), Rational(-30, 119)]])"
+  },
+  "R1Formal": {
+    "text": "Matrix([[2*sqrt(595)*I*R_local_integral_0_0/357 + 59/238, 2*sqrt(595)*I*R_local_integral_0_1/357], [2*sqrt(595)*I*R_local_integral_1_0/357 + sqrt(595)/10, 2*sqrt(595)*I*R_local_integral_1_1/357 - 30/119]])",
+    "srepr": "ImmutableDenseMatrix([[Add(Mul(Rational(2, 357), Pow(Integer(595), Rational(1, 2)), I, Symbol('R_local_integral_0_0')), Rational(59, 238)), Mul(Rational(2, 357), Pow(Integer(595), Rational(1, 2)), I, Symbol('R_local_integral_0_1'))], [Add(Mul(Rational(2, 357), Pow(Integer(595), Rational(1, 2)), I, Symbol('R_local_integral_1_0')), Mul(Rational(1, 10), Pow(Integer(595), Rational(1, 2)))), Add(Mul(Rational(2, 357), Pow(Integer(595), Rational(1, 2)), I, Symbol('R_local_integral_1_1')), Rational(-30, 119))]])"
+  },
+  "controls": [
+    {
+      "name": "omit-dual-momentum-derivative",
+      "input": {
+        "baseline": {
+          "text": "-sqrt(595)/10",
+          "srepr": "Mul(Integer(-1), Rational(1, 10), Pow(Integer(595), Rational(1, 2)))"
+        },
+        "corrupt": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        }
+      },
+      "return": {
+        "movement": {
+          "text": "sqrt(595)/10",
+          "srepr": "Mul(Rational(1, 10), Pow(Integer(595), Rational(1, 2)))"
+        },
+        "zero": false,
+        "finite": true
+      }
+    },
+    {
+      "name": "reverse-scalar-outgoing",
+      "input": {
+        "baseline": {
+          "text": "-30/119",
+          "srepr": "Rational(-30, 119)"
+        },
+        "corrupt": {
+          "text": "30/119",
+          "srepr": "Rational(30, 119)"
+        }
+      },
+      "return": {
+        "movement": {
+          "text": "60/119",
+          "srepr": "Rational(60, 119)"
+        },
+        "zero": false,
+        "finite": true
+      }
+    }
+  ],
+  "physicalInterpretation": "T1 is expressed in the original unnormalized incident coordinates. The localized contribution is the saved common imaginary diagonal; real/off-diagonal contributions here arise from end step/polarization matching. None is attenuation until native G0/Gref/G1/K1 and work are assessed. Reflection remains an exact unevaluated localized integral plus the Abel step and counts toward survival.",
+  "analyticLimit": "Exponential coordinate-tail argument is assessed mathematics for the exactly decoupled transverse projection; not machine measure theory, full coupled asymptotics or all-real regularity.",
+  "controlLimit": "Coefficient sensitivities only, not independent derivations or physical power responses.",
+  "pending": [
+    "Actual native G0/Gref/G1/K1 with both momentum legs and changing basis/material coefficients",
+    "Origin and gauge covariance of physical K1",
+    "Physical/external work and all-real coupled receiving regularity",
+    "Any leakage factor or strong-edge calibration"
+  ],
+  "leakageFactor": null,
+  "scienceReplayed": false,
+  "treeIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-matching-01/result-inspection-files.json",
+    "sha256": "9bd3073180db138fd8214f1083199f9ebb8937ac818b761aeb953231d2618aa7",
+    "files": 1111,
+    "excludesInspectionFileItself": true
+  }
+}

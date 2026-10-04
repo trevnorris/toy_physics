@@ -1117,3 +1117,13 @@ and request identity, all addressed ancestry, actual storage and resource
 readiness still require the concrete build assessment. No additional review or
 scientific job was launched for this preparation; current reviews keep their
 existing completion hook and are not model-polled.
+
+Kernel/wave/measure unit build assessment: both delivered reports and stderr
+were read after completion; 15,319 packet/archive/private-copy/source/receipt
+checks passed. Literal verdicts are Claude CLEAR / Grok NEEDS REVISION. The
+flat-delta control did not exercise complete measure routing; its manufactured
+unit comparison is insufficient. Preserve this build and strengthen the actual
+addressed control, then obtain assessment of the substantive validation change.
+No science or READY gate exists. Optional advice and partial coverage remain in
+the literal reports. Grok CLI Read errors and internal recovery diagnostic are
+preserved; no agent transport retry was made.

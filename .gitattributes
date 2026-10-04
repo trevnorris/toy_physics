@@ -154,3 +154,5 @@ research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units_result_re
 
 # Generated kernel/wave/measure unit evidence manifests.
 research/pde_ledger_v3/_measurements/S11c_d_defect_packet_kernel_units_build_review_sources.json -diff
+
+research/pde_ledger_v3/_measurements/S11c_d_defect_packet_kernel_units_build_review_record.json -diff

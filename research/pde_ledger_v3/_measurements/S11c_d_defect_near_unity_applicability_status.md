@@ -648,3 +648,24 @@ After substantive assessment, prepare the concrete missing certificate/geometry
 instrument; source-only clearance cannot accept its future result.
 
 Both pressure-readiness method reviews are running on verified identical411-file private packets. The existing-session completion hook was armed before review start. No scientific computation, worker or source verdict is claimed. Prepared source commit5921b978.
+
+## 2026-10-03 — pressure readiness method pair cleared
+
+Both literal reports say CLEAR FOR THIS BOUNDED PRESSURE-ASSEMBLY READINESS
+METHOD. The411-file packet/archive and both private copies, delivered report
+receipts, original source hashes and hook were verified with2490metadata checks.
+Claude726.611s,empty stderr/no denials; Grok1233.589s,6631stderr bytes including
+12Read errors and CLI diagnostics, followed by a complete delivered report.
+Both declare partial saved-evidence coverage. No retry, peer sharing or science.
+
+Concrete obligations include the native dynamic Z-unit override, honest inferred
+gamma provenance and cross-occurrence checks, actual homogeneous source-domain
+and per-address unit transport, explicit W/L origins, separate A/B numerical
+chains, exact outer argument descriptors, and full work/storage counts. Numeric
+bank bytes are disk evidence, not a measured4GiB process-memory requirement.
+No pressure value, worker or runtime clearance follows.
+
+The first concrete subset will construct exact Q(sqrt595) collision geometry,
+coverage/orientation controls and dependency/work counts without evaluating a
+kernel or Fourier request. Full pressure-unit certificates remain independently
+required before any complete outer action. All completed science stays untouched.

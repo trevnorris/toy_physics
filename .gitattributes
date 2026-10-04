@@ -148,3 +148,6 @@ research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_result_record.js
 
 # Complete metadata-only pressure transport index; source and concise status remain reviewable.
 research/pde_ledger_v3/_measurements/S11c_d_defect_packet_pressure_transport_source_map.json -diff
+
+# Complete source unit-transport receipts; inspect concise result/status and code.
+research/pde_ledger_v3/_measurements/S11c_d_defect_packet_source_units_result_record.json -diff

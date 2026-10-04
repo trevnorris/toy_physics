@@ -1045,3 +1045,27 @@ zero swap, one CPU/thread, 32 tasks, 4GiB host reserve, desktop priority and no
 deadline. Hook first to the existing session. This is source/grade/profile unit
 transport only; complete summand units and evaluator readiness remain pending.
 No native science or scientific restoration occurred during preparation.
+
+## 2026-10-04 — source/grade/profile unit transport completed
+
+The paired-clear instrument completed all651operations: 13 new substitution
+unit walks, 6 inherited unit operations, 6 rational grade groups, 64 source
+locations, 16 consumer locations and all544selected addresses. It saved31exact
+physical-value bindings,91inherited zero returns,28new ring identities,10new
+rational identities,12original inverse-domain certificates,8actual component
+certificates and5profile identities. Both actual dimensional controls refused
+as intended: the missing-L map failed the same profile checker, and a dimensional
+eta made the original chemical sum inhomogeneous. No prior calculation replayed.
+
+12708completion inspection checks covered all2577chain records,933saved copies,
+18source posthashes,17source snapshots and16extraidentity copies. Strict scientific
+stderr is empty; stdout matches checks byte-for-byte. The actual guard ran10.864s,
+peak127504384bytes, zero memory-limit/OOM/swap events, CPU15,4GiB native/cgroup,
+16GiBpool,one thread,32tasks,4GiBhostreserve and no deadline. RuntimeMaxUSec=infinity
+and Restart=no were verified. Exit status alone was not acceptance.
+
+This accepts the source/consumer grade/profile unit transport, with original
+gamma inference and accepted algebraic proofs still explicit dependencies. Numeric
+wave factors, physical profile-transform/kernel/measure and complete pressure
+summand units remain required. Continue with that bounded certificate from saved
+operands; no pressure value, full evaluator, current, loss or sweep follows.

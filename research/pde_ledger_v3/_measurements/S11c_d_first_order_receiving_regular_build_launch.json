@@ -1,0 +1,68 @@
+{
+  "recordedUtc": "2026-10-04T20:40:51.288939+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-build-review",
+  "preparedCommit": "a813a365",
+  "packetSha256": "9f4f94d46307a0cf254f231d83965fbf78c90382883a3fdc0a803f6b3412407b",
+  "archiveSha256": "41f76036fd3f9ef2533dc1deb3634b0fe1bd7b9ddef607ef608b134d6287b89f",
+  "launch": {
+    "jobPid": 1829606,
+    "watcherPid": 1829607,
+    "packetSha256": "9f4f94d46307a0cf254f231d83965fbf78c90382883a3fdc0a803f6b3412407b",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 1829607,
+    "jobPid": 1829606,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T20:40:15.662293+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "9c1d9fa5da91f8d4c6167cba445f107459bbec91962644aeb5c1ed9e1d66ea25",
+    "notifications": {}
+  },
+  "claudeReceipt": {
+    "engine": "claude",
+    "sessionId": "f849e1b3-7538-4ed0-b31a-90d3fe0629c3",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "f849e1b3-7538-4ed0-b31a-90d3fe0629c3"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-regular-build-review/claude/work",
+    "startedUtc": "2026-10-04T20:40:16.313160+00:00",
+    "packetSha256": "9f4f94d46307a0cf254f231d83965fbf78c90382883a3fdc0a803f6b3412407b",
+    "promptSha256": "b458924f8fec125a65c226ae71b0b4d15087efbdc9490646664eb0318f536ad4",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1829641
+  },
+  "privatePacketFilesVerified": 2059,
+  "oneHostAdmissionInspection": true,
+  "status": "ADMITTED_CLAUDE_REVIEW_RUNNING",
+  "noModelPolling": true,
+  "noAutomaticRetry": true,
+  "scienceCalls": 0
+}

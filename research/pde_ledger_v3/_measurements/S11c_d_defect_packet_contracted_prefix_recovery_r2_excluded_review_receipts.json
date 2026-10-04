@@ -1,0 +1,208 @@
+{
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-02",
+  "fullFailureIndexSha256": "c1981751ffd447340bc11e9400a05ae2a2e950976b28d5d7b294e899fbe04ce8",
+  "records": [
+    {
+      "originalPath": "complete/identity-2-S11c_d_defect_packet_contracted_continue_build_review_r3_record.json",
+      "sha256": "5c79e6fb09ea2f0f76c488804d21fc026223d1d58ecd57032c661f6d8fe89796",
+      "bytes": 2771583,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/identity-3-S11c_d_defect_packet_contracted_continue_fix_execution_authority.json",
+      "sha256": "bcb33c5d7e862021980c711eb472015e283cc16a7c9c520585214a16e568c3ad",
+      "bytes": 4566,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/identity-4-S11c_d_defect_packet_contracted_numeric_method_review_r2_record.json",
+      "sha256": "982510ff59b14ae317ffdb7611fcc3adcecf720a4b7d786987e1954c44595ad7",
+      "bytes": 1479020,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/identity-5-S11c_d_defect_packet_contracted_continue_fix_tooling_repair.json",
+      "sha256": "6e584980d96d46535c076b517849f94a11625b7dd69505d9a9fb1d431f4454b2",
+      "bytes": 41863,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/identity-6-S11c_d_defect_packet_contracted_continue_result_record.json",
+      "sha256": "b986dab7dc5b1d5dcbee7908df43b855252aa0bce229f6f927b92f636f5cbc14",
+      "bytes": 6535460,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/prior/complete/identity-2-S11c_d_defect_packet_contracted_numeric_build_review_r2_record.json",
+      "sha256": "a145af1b8ecee26fb4f3287081e2043a937f7b2921f102756535a8c13ed2edc9",
+      "bytes": 1746566,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/prior/complete/identity-3-S11c_d_defect_packet_contracted_numeric_execution_authority.json",
+      "sha256": "dac884799552fe36b750d6a2bd73d5e565a9ae707459a39b74bba07672369930",
+      "bytes": 2629,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/prior/complete/identity-4-S11c_d_defect_packet_contracted_numeric_method_review_r2_record.json",
+      "sha256": "982510ff59b14ae317ffdb7611fcc3adcecf720a4b7d786987e1954c44595ad7",
+      "bytes": 1479020,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/prior/completion-message.txt",
+      "sha256": "a81c1b87bbdd3d9ccbf9d195f07a04ecc0e553b110b34bf1372ce8cb4740340f",
+      "bytes": 2851,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/prior/completion-watcher/completion.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/prior/completion-watcher/completion.stdout",
+      "sha256": "230a53c96bdc652119a78048d068dc5e096463c07d4a5ba95b911836085a4038",
+      "bytes": 101,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/prior/completion-watcher/state.json",
+      "sha256": "8e7e3c1b0d38e0c36aee75cc8367a132fd16080fd785972cb8aac1356820ff29",
+      "bytes": 505,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/prior/completion-watcher/watcher.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/prior/source/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_numeric_execution_authority.json",
+      "sha256": "dac884799552fe36b750d6a2bd73d5e565a9ae707459a39b74bba07672369930",
+      "bytes": 2629,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/prior/source/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contraction_execution_authority.json",
+      "sha256": "adcc94218a264c378bf0859c5727e7a67f596a2d38b6a60df7fc462c0aa97d77",
+      "bytes": 1659,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/prior/watcher.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "complete/prior/watcher.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "completion-message.txt",
+      "sha256": "7cb3a470dbf9940335df5180c8d97e8ec4702eee71b5c345040d0760a1767e1e",
+      "bytes": 3500,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "completion-watcher/completion.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "completion-watcher/completion.stdout",
+      "sha256": "09c54f7b6887c82e726077d8e7037177aaad293c483363bdc6ac4f13ec6e11f6",
+      "bytes": 101,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "completion-watcher/state.json",
+      "sha256": "c720960a31ca9e2c0885059b92be70e51a4343f0013e62eee6f66c3983aa771a",
+      "bytes": 505,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "completion-watcher/watcher.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "source/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_continue_execution_authority.json",
+      "sha256": "8bdb50cb4ddccd6d3357dd8fa80796e9e73b1d7e55a27a480c333ae45c89b6f5",
+      "bytes": 3940,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "source/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_continue_fix_execution_authority.json",
+      "sha256": "bcb33c5d7e862021980c711eb472015e283cc16a7c9c520585214a16e568c3ad",
+      "bytes": 4566,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "source/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_continue_result_record.json",
+      "sha256": "b986dab7dc5b1d5dcbee7908df43b855252aa0bce229f6f927b92f636f5cbc14",
+      "bytes": 6535460,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "source/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_continue_review_prompt.md",
+      "sha256": "eda66fd6f33f3aaf1ba22a8a099288e9af52fa1a792378eef060f1cbb0f6c79c",
+      "bytes": 3730,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "source/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_numeric_execution_authority.json",
+      "sha256": "dac884799552fe36b750d6a2bd73d5e565a9ae707459a39b74bba07672369930",
+      "bytes": 2629,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "source/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_numeric_result_record.json",
+      "sha256": "de4af01ad6f06bed514abb4d73a3249f68d42f458630d668e88a1b50185c5b36",
+      "bytes": 1848021,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "source/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_tail_method_review_record.json",
+      "sha256": "373c53f934164d100136d90af9d393edfd173c271884c2bd10eff46afe33cc33",
+      "bytes": 827553,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "source/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contraction_execution_authority.json",
+      "sha256": "adcc94218a264c378bf0859c5727e7a67f596a2d38b6a60df7fc462c0aa97d77",
+      "bytes": 1659,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "source/research/pde_ledger_v3/_measurements/S11c_d_temporary_claude_only_review_policy_20261004.json",
+      "sha256": "0b918036506ff25bd1d17d54d24f5b4eb33ca3e603e1570fc3d91f4d82013093",
+      "bytes": 3358,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "watcher.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    },
+    {
+      "originalPath": "watcher.stdout",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "reason": "Historical review/adjudication/authority/hook metadata or repair disposition; opaque receipt only for independence. Complete original remains preserved and is required in any future runtime copy."
+    }
+  ],
+  "fullTreeFiles": 24028,
+  "fullTreeBytes": 452260779,
+  "fullRuntimeCopyStillRequired": true,
+  "noScientificArraysShortened": true
+}

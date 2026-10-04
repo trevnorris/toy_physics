@@ -1458,3 +1458,9 @@ calibrated or draining-model leakage. See the source evidence and proposed
 physics route in S11c_d_physics_refocus_20261004_evidence.json and
 S11c_d_physics_refocus_20261004_proposal.txt. Their inference is awaiting a
 focused Claude-only physics assessment, not author clearance.
+
+The fixed physics packet was submitted after commit 9284e24c. The existing
+completion hook was armed first; the single launch-admission inspection found
+Claude running, all 58 private packet files byte-identical, and empty coordinator
+stderr. No scientific execution or recurring model check was launched. The
+review concerns this conditional physics priority and source plan only.

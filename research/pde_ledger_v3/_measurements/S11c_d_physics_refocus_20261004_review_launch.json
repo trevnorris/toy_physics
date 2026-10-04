@@ -1,0 +1,71 @@
+{
+  "status": "CLAUDE_ONLY_PHYSICS_REVIEW_RUNNING_HOOK_ARMED",
+  "checkedUtc": "2026-10-04T16:47:36.912801+00:00",
+  "preparedCommit": "9284e24c",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/physics-refocus-review",
+  "launch": {
+    "jobPid": 1726511,
+    "watcherPid": 1726512,
+    "packetSha256": "baa42cc90c72920aa6cf248a1b7ba49432c87199d380bd38a6ab325f2ce9765d",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "reviewReceipt": {
+    "engine": "claude",
+    "sessionId": "8ab21dff-bf95-47d8-8a62-2a4591005ec2",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "8ab21dff-bf95-47d8-8a62-2a4591005ec2"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/physics-refocus-review/claude/work",
+    "startedUtc": "2026-10-04T16:47:19.451869+00:00",
+    "packetSha256": "baa42cc90c72920aa6cf248a1b7ba49432c87199d380bd38a6ab325f2ce9765d",
+    "promptSha256": "b9fe5981d0858c5861d822696d573712664e6f848603b09abfc0b46ffecd46f5",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1726517
+  },
+  "hookStatus": "waiting",
+  "privateCopyFiles": 58,
+  "allPrivateCopiesMatch": true,
+  "coordinatorStderrBytes": 0,
+  "scope": {
+    "target": "Physics refocus and conditional first-order transverse-source plan",
+    "samePhysicalInputs": true,
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "lossObservable": "all-outgoing-transverse survival deficit",
+    "forcedGrazingRegularityEstablished": false,
+    "newScientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "leakageFactor": null,
+    "recoveryDevelopmentParked": true
+  },
+  "noScientificExecution": true,
+  "noModelPolling": true,
+  "recoveryDevelopmentParked": true
+}

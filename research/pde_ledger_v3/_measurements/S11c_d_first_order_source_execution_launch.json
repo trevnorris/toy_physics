@@ -1,0 +1,148 @@
+{
+  "status": "GUARDED_FIRST_ORDER_SOURCE_LAUNCHED",
+  "utc": "2026-10-04T17:41:23.538046+00:00",
+  "sourceAssessmentCommit": "b64203f1",
+  "launch": {
+    "jobPid": 1749281,
+    "watcherPid": 1749282,
+    "gateSha256": "55cc71914bfb493ccb15e54cb789b5350258742d8cf7f272973eb3f4730581fa",
+    "command": [
+      "/usr/bin/python",
+      "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+      "--pool",
+      "s11c-near-unity",
+      "--memory-gib",
+      "4",
+      "--tasks-max",
+      "32",
+      "--log-directory",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-source-01/resource-guard",
+      "--",
+      "/usr/bin/python",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "--parallel-prerequisite-read",
+      "--run-root",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-source-01",
+      "--stage",
+      "first_order_source",
+      "--",
+      "/usr/bin/python",
+      "-u",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_source.py",
+      "--out",
+      "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-source-01/complete",
+      "--inputs",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_source_inputs.json",
+      "--gate",
+      "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_source_gate.json"
+    ],
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "automaticRetry": false
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 1749282,
+    "jobPid": 1749281,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T17:41:09.320023+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "9f0c4451da6f6a4940a4696f6e44bf0658a1c977b4b7f663b8c2f92be8263c78",
+    "notifications": {}
+  },
+  "additionalIdentityCopies": 16,
+  "scientificAcceptance": false,
+  "automaticRetry": false,
+  "actualResourceAdmission": {
+    "resource-guard/effective-limits.json": {
+      "sha256": "93bf71eeaf13b052c60382aea5f0a1645df05351b3e177b62acdb2ec06eb51d2",
+      "record": {
+        "memory.max": "4294967296",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-24072db84399.service",
+        "nice": 0,
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpaceBytes": [
+          4294967296,
+          4294967296
+        ],
+        "systemd.CPUAffinity": "15",
+        "affinityEnforcement": "systemd-and-inherited-process"
+      }
+    },
+    "resource-guard/duration-validation.json": {
+      "sha256": "b7b9c58dd0ec33f07067967dd624c44127d7066971a4006f06ad57656809d244",
+      "record": {
+        "verified": true,
+        "actual": {
+          "RuntimeMaxUSec": "infinity",
+          "Restart": "no"
+        },
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null
+      }
+    },
+    "resource-guard/limit-validation.json": {
+      "sha256": "593a9b07e2a3cc354b00afdc9ce5fd78eb28c14b6f571a200bfd581bfe9ae888",
+      "record": {
+        "verified": true,
+        "actual": {
+          "memory.max": "4294967296",
+          "memory.swap.max": "0",
+          "pids.max": "32",
+          "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-24072db84399.service",
+          "nice": 0,
+          "affinity": [
+            15
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "VECLIB_MAXIMUM_THREADS": "1",
+            "BLIS_NUM_THREADS": "1"
+          },
+          "nativeAddressSpaceBytes": [
+            4294967296,
+            4294967296
+          ],
+          "systemd.CPUAffinity": "15",
+          "affinityEnforcement": "systemd-and-inherited-process"
+        }
+      }
+    },
+    "complete/containment.json": {
+      "sha256": "a7e77deb1c7042a320abb921a29f89437b0facfa17673bd02636793de3288aab",
+      "record": {
+        "memory.max": "4294967296",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "cgroup": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-24072db84399.service",
+        "affinity": [
+          15
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpace": 4294967296,
+        "durationLimits": null
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+test_actual_codec_transport_with_manufactured_values (__main__.EncodingTests) ... ok
+test_collision_and_unknown_keys_refuse (__main__.EncodingTests) ... ok
+test_no_scientific_import_or_dynamic_execution_in_recovery (__main__.EncodingTests) ... ok
+test_only_evidence_boundary_changes_in_numeric_copy (__main__.EncodingTests) ... ok
+test_original_failure_and_exact_repair (__main__.EncodingTests) ... ok
+test_original_numeric_metadata_site_is_unique (__main__.EncodingTests) ... ok
+test_branch_is_byte_identical_before_new_records (__main__.Fixture) ... ok
+test_claim_twice_refuses_without_reexecution (__main__.Fixture) ... ok
+test_completed_lookup_returns_exact_operands_without_callback (__main__.Fixture) ... ok
+test_completed_request_cannot_be_started_again (__main__.Fixture) ... ok
+test_completed_return_link_mutation_detected (__main__.Fixture) ... ok
+test_existing_destination_refuses (__main__.Fixture) ... ok
+test_full_argument_change_cannot_claim_parent (__main__.Fixture) ... ok
+test_full_audit (__main__.Fixture) ... ok
+test_missing_paired_order_refuses (__main__.Fixture) ... ok
+test_namespace_mutation_detected (__main__.Fixture) ... ok
+test_new_request_storage_reserve_refusal (__main__.Fixture) ... ok
+test_new_request_works_normally (__main__.Fixture) ... ok
+test_ordinary_lookup_still_refuses_pending (__main__.Fixture) ... ok
+test_original_mutation_detected (__main__.Fixture) ... ok
+test_original_unchanged_after_append (__main__.Fixture) ... ok
+test_other_pending_request_has_no_claim_permission (__main__.Fixture) ... ok
+test_parent_completion_without_claim_refuses (__main__.Fixture) ... ok
+test_parent_exact_claim_and_one_way_completion (__main__.Fixture) ... ok
+test_precision_change_refuses (__main__.Fixture) ... ok
+test_prefix_chunk_mutation_detected (__main__.Fixture) ... ok
+test_same_original_destination_refuses (__main__.Fixture) ... ok
+test_sidecar_refuses (__main__.Fixture) ... ok
+test_stale_hash_refuses (__main__.Fixture) ... ok
+test_wrong_chain_head_refuses (__main__.Fixture) ... ok
+test_wrong_complete_census_refuses (__main__.Fixture) ... ok
+test_wrong_panel_receipt_refuses (__main__.Fixture) ... ok
+test_wrong_pending_descriptor_refuses (__main__.Fixture) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 1.223s
+
+OK

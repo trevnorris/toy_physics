@@ -1,0 +1,165 @@
+{
+  "status": "READY_FOR_CLAUDE_ONLY_EXPLICIT_RECOVERY_METHOD_ASSESSMENT",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-prefix-recovery-method-review",
+  "failureCommit": "9d91cbf7",
+  "scope": {
+    "target": "Explicit one-parent numerical-prefix recovery method and stdlib storage prototype only",
+    "ordinaryJAndThreeAddedDirectOnly": true,
+    "realOmega": 3,
+    "sameOriginalPhysicalInputs": true,
+    "sameRulesWindowsAndTolerances": true,
+    "noNumericalWorkerExists": true,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "completeNumericalRequestsToPreserve": 434,
+    "pendingParents": 1,
+    "originalDatabaseRecords": 1450,
+    "originalFailureCommit": "9d91cbf7",
+    "unsavedParentScalarReconstructionExplicit": true,
+    "fullPacketAction": false,
+    "leakageFactor": null
+  },
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-04T15:42:36.174612+00:00",
+    "packetSha256": "10e54a5882a830efa38a1ef56639baec4bee68d1b399aa0fd4cf5bc994b4f652",
+    "archiveSha256": "f43446bfa156f6b13cac8dabfab7daca1f5b2c2114bd4cdf083a1a7420a48a70",
+    "reviewers": [
+      "claude"
+    ],
+    "files": 25478,
+    "bytes": 529134237,
+    "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+    "authority": "Standing user/AGENTS direction and temporary Claude-only policy authorize this necessary explicit unfinished-parent recovery assessment to established Claude without a routine question. No execution of science, automatic retry or disclosure to a new recipient.",
+    "scope": {
+      "target": "Explicit one-parent numerical-prefix recovery method and stdlib storage prototype only",
+      "ordinaryJAndThreeAddedDirectOnly": true,
+      "realOmega": 3,
+      "sameOriginalPhysicalInputs": true,
+      "sameRulesWindowsAndTolerances": true,
+      "noNumericalWorkerExists": true,
+      "scientificGateExists": false,
+      "scienceCalls": 0,
+      "completeNumericalRequestsToPreserve": 434,
+      "pendingParents": 1,
+      "originalDatabaseRecords": 1450,
+      "originalFailureCommit": "9d91cbf7",
+      "unsavedParentScalarReconstructionExplicit": true,
+      "fullPacketAction": false,
+      "leakageFactor": null
+    },
+    "noAutomaticRetry": true,
+    "scienceExecutionsAuthorizedByThisReviewLaunch": 0,
+    "noPeerReportsShared": true
+  },
+  "static": {
+    "status": "FIXED_SOURCE_ONLY_RECOVERY_METHOD_PACKET_VERIFIED",
+    "packetSha256": "10e54a5882a830efa38a1ef56639baec4bee68d1b399aa0fd4cf5bc994b4f652",
+    "archiveSha256": "f43446bfa156f6b13cac8dabfab7daca1f5b2c2114bd4cdf083a1a7420a48a70",
+    "files": 25478,
+    "bytes": 529134237,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "dfcedb33e96fdcaa201cc14e019f48ca084cf6676b9d28b3b2f027bd31347878",
+    "sourceHashesChecked": 25477,
+    "reviewers": [
+      "claude"
+    ],
+    "scienceCalls": 0,
+    "scientificGateExists": false
+  },
+  "staticPreparation": {
+    "status": "EXPLICIT_RECOVERY_METHOD_AND_STORAGE_PROTOTYPE_PREPARED_NO_SCIENCE",
+    "files": {
+      "recovery": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_prefix_recovery.py",
+        "sha256": "f0906f1d9c55fd55d688185766a9e39bf5b7159d5499309b2cfa8b4b2b637fe6",
+        "bytes": 13350
+      },
+      "numericEvidenceCopy": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_prefix_recovery_numeric.py",
+        "sha256": "89dd5b3326344bcd2fceadaea5ffea31b2c7eac91aaec4e632bcf3451dce699e",
+        "bytes": 28195
+      },
+      "tests": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_prefix_recovery_test.py",
+        "sha256": "eccb1384809b721b6d783ec2c021648d12cf068a3c744b7f2f1f009ec5df4389",
+        "bytes": 12923
+      },
+      "firstTestLog": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_prefix_recovery_tooling_tests.log",
+        "sha256": "77eaf452a8c229693d10e728a1c60b1a59c3d87b009a200c76c93c519c25cde4",
+        "bytes": 2137
+      },
+      "testLog": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_prefix_recovery_source_tooling_tests.log",
+        "sha256": "ba13f4951b133cab405927bdfd74194070dd5ed87bdeddbdd305a99cafa3662a",
+        "bytes": 2306
+      },
+      "contract": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_prefix_recovery_contract.json",
+        "sha256": "20dae5efaf03ddf9ae4b59a857f25958723cf14b4452135a27559c7c0935684b",
+        "bytes": 383022
+      },
+      "method": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_prefix_recovery_method.md",
+        "sha256": "2b57342d16a8fbe0012649eaa8083cb520cf5a66184cf1939310b7b1713e2ef5",
+        "bytes": 11262
+      },
+      "guide": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_prefix_recovery_guide.md",
+        "sha256": "4d572b5f64aef8e8513d1b66d75a64c8bc0ab1a2b006b2192f8252b3d2c09bca",
+        "bytes": 4123
+      },
+      "prompt": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_prefix_recovery_review_prompt.md",
+        "sha256": "cff04758a1c161df371c7766e5e01b384a17fee0038adbde9a676ab2b34f1daf",
+        "bytes": 3409
+      },
+      "originalNumeric": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_numeric_lib.py",
+        "sha256": "5686f41cc5f356ae75ff9103cff5bf15668d38e0f63ebf2dc89325316cb37d30",
+        "bytes": 28104
+      },
+      "originalWorker": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_continue_fix.py",
+        "sha256": "4277d78ea40fa29635fa70dea1a4bade693f980ef9967c5983f36ff01089a469",
+        "bytes": 23973
+      },
+      "requestIndex": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_request_index.py",
+        "sha256": "bd681778dc3639235ab9e8db14ce9d9a77fee71ffa3ecc1a9388726c91037e1a",
+        "bytes": 12833
+      },
+      "evidenceStore": {
+        "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_evidence_store.py",
+        "sha256": "ca4257bf6ec441426d1e8f8e61fad37097d78a3199faeac7934c52d2a28d8e54",
+        "bytes": 11485
+      }
+    },
+    "tests": 33,
+    "testsPassed": true,
+    "testsScope": "Manufactured JSON/SQLite state machines and source-extracted stdlib codec/AST comparison only. No actual database was opened for writes or actual scientific types restored.",
+    "failureCommit": "9d91cbf7",
+    "originalNumericalLibraryUnchanged": true,
+    "numericCopyDelta": "One added helper import; only pairedPanels evidence field calls panel_evidence. Whole AST equals original after reversing precisely those two changes. No resume path in this numeric copy.",
+    "originalSharedHelpersUnchanged": true,
+    "noScientificWorkerExists": true,
+    "noScientificGateExists": true,
+    "independentMethodClearance": false,
+    "independentBuildClearance": false,
+    "pendingReviewers": [
+      "claude"
+    ],
+    "scope": "Explicit recovery of the single saved incomplete parent with complete child return reuse, not acceptance of numerical result or a full worker.",
+    "unsavedScalarReconstructionDisclosed": true,
+    "noAutomaticRetry": true,
+    "newScientificOperations": 0
+  },
+  "excludedHistoricalFiles": 33,
+  "originalFailureTreeFiles": 24028,
+  "fullScientificRecordExports": 1450,
+  "noScientificGateExists": true,
+  "noScientificTypesRestored": true,
+  "noAuthorClear": true
+}

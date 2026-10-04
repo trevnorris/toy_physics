@@ -1,0 +1,33 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T15:42:36.174612+00:00",
+  "packetSha256": "10e54a5882a830efa38a1ef56639baec4bee68d1b399aa0fd4cf5bc994b4f652",
+  "archiveSha256": "f43446bfa156f6b13cac8dabfab7daca1f5b2c2114bd4cdf083a1a7420a48a70",
+  "reviewers": [
+    "claude"
+  ],
+  "files": 25478,
+  "bytes": 529134237,
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "authority": "Standing user/AGENTS direction and temporary Claude-only policy authorize this necessary explicit unfinished-parent recovery assessment to established Claude without a routine question. No execution of science, automatic retry or disclosure to a new recipient.",
+  "scope": {
+    "target": "Explicit one-parent numerical-prefix recovery method and stdlib storage prototype only",
+    "ordinaryJAndThreeAddedDirectOnly": true,
+    "realOmega": 3,
+    "sameOriginalPhysicalInputs": true,
+    "sameRulesWindowsAndTolerances": true,
+    "noNumericalWorkerExists": true,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "completeNumericalRequestsToPreserve": 434,
+    "pendingParents": 1,
+    "originalDatabaseRecords": 1450,
+    "originalFailureCommit": "9d91cbf7",
+    "unsavedParentScalarReconstructionExplicit": true,
+    "fullPacketAction": false,
+    "leakageFactor": null
+  },
+  "noAutomaticRetry": true,
+  "scienceExecutionsAuthorizedByThisReviewLaunch": 0,
+  "noPeerReportsShared": true
+}

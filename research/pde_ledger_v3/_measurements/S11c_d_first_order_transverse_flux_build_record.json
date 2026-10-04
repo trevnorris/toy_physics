@@ -1,0 +1,131 @@
+{
+  "status": "CLAUDE_ONLY_NATIVE_TRANSVERSE_END_FLUX_BUILD_ASSESSED",
+  "recordedUtc": "2026-10-04T19:40:04.431875+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-build-review",
+  "reviewers": [
+    "claude"
+  ],
+  "literalVerdict": "CLEAR FOR THIS NATIVE TRANSVERSE END-FLUX BUILD",
+  "literalOpening": "CLEAR FOR THIS NATIVE TRANSVERSE END-FLUX BUILD",
+  "report": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_build_claude.md",
+  "reportSha256": "543ef4312c2f606feacbee6e5b4b850bf1473105f51f4c1fbaa2b87747b10526",
+  "buildAssessed": true,
+  "workerSha256": "a5fd75e43a897bba2728b56c827dca37b4e5a5dc2de816ba62f88f86903d9e6c",
+  "manifestSha256": "c84129145234921b07697457239df01f75ba3f5e73cb271b5682c6b087d1e437",
+  "launcherSha256": "260580c82a4caf27b6975eaa7333321f7e3ce3dbd5ae5649a383c14234e68547",
+  "rawOutputSha256": "a758d2d92eb2457c990af006aeeb9068e2c361beb6b92772a8f3fe580f87d26d",
+  "receipt": {
+    "engine": "claude",
+    "sessionId": "2768c97d-e1c3-430f-9d16-ecd35ef27bb6",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "2768c97d-e1c3-430f-9d16-ecd35ef27bb6"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-build-review/claude/work",
+    "startedUtc": "2026-10-04T19:32:05.094099+00:00",
+    "packetSha256": "0178d02c28d9e2cb1f70ac5d70f2a2bbe6694ae62d77d163fe87491ab5d0e541",
+    "promptSha256": "cc05d3287fe5fb4e7e1d44f66d89eddbb740d13aa25768c72d43c805e99e58d5",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1796344,
+    "exitStatus": 0,
+    "finishedUtc": "2026-10-04T19:38:26.470794+00:00",
+    "wallSeconds": 381.37507696892135,
+    "outputSha256": "a758d2d92eb2457c990af006aeeb9068e2c361beb6b92772a8f3fe580f87d26d",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderrBytes": 0
+  },
+  "coordinatorOutcome": {
+    "status": "ALL_REQUESTED_ATTEMPTS_FINISHED_AWAITING_LITERAL_ADJUDICATION",
+    "finishedUtc": "2026-10-04T19:38:26.590881+00:00",
+    "scienceCalls": 0
+  },
+  "completionHook": {
+    "status": "finished",
+    "watcherPid": 1796335,
+    "jobPid": 1796334,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T19:32:04.826705+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "b3e47abf955ff4b7609f1163162605964f72822b603d6b6be8718dc011c07c68",
+    "notifications": {
+      "completion": {
+        "status": "queued",
+        "exitCode": 0,
+        "finishedUtc": "2026-10-04T19:38:26.712395+00:00"
+      }
+    }
+  },
+  "packetSha256": "0178d02c28d9e2cb1f70ac5d70f2a2bbe6694ae62d77d163fe87491ab5d0e541",
+  "archiveSha256": "9a2e6a6ce7d5df4d9f860812e8cebe29897e5adc241c0019797951a58833c654",
+  "verifiedPacketPrivateArchiveFiles": 364,
+  "verifiedOriginalSources": 363,
+  "allHashesIntact": true,
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "strictStderrBytes": 0,
+  "coordinatorStderrBytes": 0,
+  "permissionDenials": [
+    {
+      "tool_name": "Glob",
+      "tool_use_id": "toolu_01HaAyuQPJ2wc7cwbiTFdJgw",
+      "tool_input": {
+        "pattern": "**/{worker.py,build-notes.txt,method-plan.txt}",
+        "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-build-review"
+      }
+    }
+  ],
+  "denialDisposition": "One broad Glob outside the private input workspace was denied. The completed literal report subsequently gives concrete worker and supplied frozen-engine/LEFT/matching operand findings. No permission bypass, automatic transport retry or science occurred. RIGHT remains explicitly uninspected as a live scientific object.",
+  "coverage": "Actual source/operand assessment of finite native flux definition, both momentum/basis derivatives, native harmonic normalization/chart, mass-current and face requirements, sign tests, gauge/origin transformations and scoped classification. Opaque RIGHT shapes and values require guarded runtime restoration. All supplied packet/private/archive/original-source bytes verified locally.",
+  "substantiveAssessment": "The reviewed unchanged worker is supported for the finite end-current coefficients G0/Gref/G1/K1 under the existing matched method section5. This is not total stationary survival acceptance. In particular the incident-reflected cross-current and other-channel asymptotics/work must be addressed before interpreting a physical total deficit. No author-invented clearance or optional review loop.",
+  "advisories": [
+    "Incident-reflected cross-current J(-p,+p) is not calculated here. Its actual native contraction must be checked before total survival interpretation; no conservation argument substitutes for that return.",
+    "Reflected-orientation negation is only coefficient sensitivity. Positive principal minors of the actual signed native Gref provide the actual sign gate.",
+    "Gauge/origin checks test consistency of the current/amplitude combination, not independent correctness of inherited T1.",
+    "LEFT original exact_structure proof is inherited from an intact complete actual/expected file, not recomputed. RIGHT full original/return/input joins are new runtime obligations.",
+    "Unknown unit/source restoration, nonpositive Gram signs or failed exact controls stop. No automatic scientific retry or relaxed predicate.",
+    "Nonzero K1 blocks the assumed quadratic-deficit route; zero K1 removes only a necessary obstruction. Full radiation/other-channel cross-current, all-real receiving regularity and held-profile work remain unresolved."
+  ],
+  "incidentalCorrections": {
+    "faceDependence": "The full saved LEFT pressure amplitude/chemical driver includes displacement-divergence terms as well as theta/eW. The reviewer statement that it depends on theta/eW alone is not the full native formula. Worker contracts the actual full native expression with transverse B and checks cancellation, so no code change or source shortcut follows.",
+    "reportPreservedLiterally": true
+  },
+  "scope": {
+    "target": "Native transverse end-flux G0/Gref/G1/K1 with inherited finite T1",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalPath": "eta=lambda,sigma_W=lambda/10",
+    "incomingColumns": 2,
+    "nativePhysicalCurrent": true,
+    "bothMomentumAndBasisDerivatives": true,
+    "originAndGaugeChecks": true,
+    "receivingField": false,
+    "numericalIntegrals": false,
+    "fullWorkAndRegularityPending": true,
+    "leakageFactor": null,
+    "recoveryParked": true
+  },
+  "readyGateExists": false,
+  "scienceCalls": 0,
+  "runtimeAcceptance": false,
+  "noAutomaticRetry": true,
+  "noOptionalReviewLoop": true,
+  "noPeerReportShared": true
+}

@@ -1,0 +1,63 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_ONE_BOUNDED_TRANSVERSE_FLUX_PREREQUISITE",
+  "createdUtc": "2026-10-04T19:40:27.289368+00:00",
+  "scope": {
+    "target": "Native transverse end-flux G0/Gref/G1/K1 with inherited finite T1",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalPath": "eta=lambda,sigma_W=lambda/10",
+    "incomingColumns": 2,
+    "nativePhysicalCurrent": true,
+    "bothMomentumAndBasisDerivatives": true,
+    "originAndGaugeChecks": true,
+    "receivingField": false,
+    "numericalIntegrals": false,
+    "fullWorkAndRegularityPending": true,
+    "leakageFactor": null,
+    "recoveryParked": true
+  },
+  "scienceExecutionsAuthorized": 1,
+  "reviewers": [
+    "claude"
+  ],
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "authority": "User-directed physics refocus, latest completion instruction and standing AGENTS authorize this exact finite prerequisite after substantive Claude assessment; no routine stage permission required.",
+  "sourceAssessmentIsResultAcceptance": false,
+  "noAutomaticScientificRetry": true,
+  "noFallback": true,
+  "noSchedulerChange": true,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolGiB": 16,
+    "zeroSwap": true,
+    "cpuCount": 1,
+    "threads": 1,
+    "tasksMax": 32,
+    "hostReserveGiB": 4,
+    "durationLimits": null
+  },
+  "buildReviewRecordSha256": "3a906f339a740a2880066edefcf173166eab8219b9cb558a928e19424fb0fa31",
+  "methodRecordSha256": "8bfe5fe227565e89df1a877ac3cd1da54d8b469c9c3623743fd192dd9c4622f4",
+  "additionalIdentityPins": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_build_record.json": "3a906f339a740a2880066edefcf173166eab8219b9cb558a928e19424fb0fa31",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_build_claude.md": "543ef4312c2f606feacbee6e5b4b850bf1473105f51f4c1fbaa2b87747b10526",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_20261004_r2_review_record.json": "8bfe5fe227565e89df1a877ac3cd1da54d8b469c9c3623743fd192dd9c4622f4",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_20261004_r2_claude.md": "021435bb7cadcc81cb813962105920ef4cc665747fc5a5ca5d75b470f743d3e9",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_tests.json": "1f44f246d272728d209a838af12bc7bce0bdf5e6f4e5b62ea5fd46a07702223f",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_test.py": "504247052c6d3d8b254902d44724a8ad34bdcbdb693fddf117b4a67e90d0c0ec",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_test.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_test.stderr": "496bbcf79614842c9d190cd9446f5ca0a728063974595567338f1e4c28a53c3a",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_build_readiness.json": "95749f448ee31894ccf009ba6256661fa54ba885979fb68edb2839fca2b20585",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_build_authority.json": "3ad14fe559c251f6f51f97a2b3eb97d2772929290590bec4f9b4317a7ceab290",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_build_sources.json": "b0958c51fdd6a313ec728e44f53436b5654d41c4da49e06c3747fc1792e04d84",
+    "/var/projects/toy_physics/AGENTS.md": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-build-review/claude.json": "a758d2d92eb2457c990af006aeeb9068e2c361beb6b92772a8f3fe580f87d26d",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-build-review/claude-run.json": "138ebd7b85b6936a796e26455672ede81c4e3918d03b5a18b2724005fa830fba",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-build-review/claude.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-build-review/state.json": "3bcef984606239ad0d74bae1e029a86a0779287c3e8a3530dce0eb6acbedacda",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-build-review/coordinator-outcome.json": "943b0a1950b3cc4bc0af2984f2571b458288cd711202268664277fe2a6ab5ce7",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-build-review/coordinator.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-build-review/adjudication.json": "3a906f339a740a2880066edefcf173166eab8219b9cb558a928e19424fb0fa31",
+    "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-transverse-flux-build-review/completion-watcher/state.json": "20b44c7da0fa160165bebc6adde85981a1a309347d5b32bea250b82a7eaf5e93"
+  }
+}

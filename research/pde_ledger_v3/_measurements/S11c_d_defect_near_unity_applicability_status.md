@@ -1138,3 +1138,12 @@ inputs, equations, physical inputs, methods and shared helpers are unchanged.
 65 synthetic/source-metadata tests pass; no native science has run. Revised
 packet 3b6123f4c849a334bf34b5562700e78cde33ad887ee2786b6342471e1b3a01bf
 contains 2,549 files / 17,860,183 bytes with no peer reports. No READY gate exists.
+
+Kernel-unit corrected build r2: literal Claude NEEDS REVISION / Grok CLEAR;
+15,319 receipt, packet, archive, private-copy and source checks pass. Both
+accept the actual flat-route correction. Claude identifies the remaining
+missing-dt controls as unit-only comparisons. Propagate those changes through
+actual J/D templates and complete addressed dimensional refusal before a new
+substantive assessment. No science or gate exists. The hook's 2,651 saved-file
+count was a textual replacement error; actual manifest remains 2,521, unchanged.
+Both reports, partial coverage and reviewer CLI stderr are preserved.

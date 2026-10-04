@@ -1,0 +1,26 @@
+Use only Read/Glob/Grep within this fixed ./input packet. No shell, scientific
+execution/restoration, web, external paths or other agent. Claude-only BUILD
+assessment. No old review report or peer commentary is supplied.
+
+Read worker.py, build-notes.txt and method-plan.txt in full. Return CLEAR FOR THIS
+FINITE MATCHED TRANSVERSE AMPLITUDE BUILD or NEEDS REVISION with substantive
+blockers and honest coverage. This implements the finite transverse matching
+part of the method after completed block/end/face checks. Actual physical end
+current normalization G0/Gref/G1/K1 and full coupled work/regularity are pending.
+Do not mistake T1 in saved coordinates for flux-normalized attenuation or leakage.
+
+Inspect original complete forces, pressure displacement zeros, actual B/DB and
+both derivatives, inherited exact block/source/end arguments and returns. Check
+the half-line split, polynomial division and finite primitives, Green jump and
+Abel normalization, exact scalar-step signs, projector pole/tail argument and
+finite field matching. In particular inspect the sign of delta_p D_B'(p)U and
+all imaginary/off-diagonal sigma contributions. Reflection retains Q=-2p and
+its Abel step plus an unevaluated convergent integral, not a numerical result.
+The coordinate-tail argument must justify this projected amplitude extraction
+without promoting it to all-real coupled regularity or other-channel scattering.
+Check actual control applicability, derivative omission and no source replay.
+
+All runtime JSON operands are complete, including every accepted receiving
+artifact. Source-only tests are not native scientific proof. Inspect gate,
+argv/output, source/helper/method/build/authority pins and unchanged no-deadline
+pooled containment. No numerical recovery or general verifier work is proposed.

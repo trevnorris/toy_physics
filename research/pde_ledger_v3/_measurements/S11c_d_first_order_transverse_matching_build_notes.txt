@@ -1,0 +1,63 @@
+Finite matched transverse amplitudes before physical flux normalization
+
+The actual preceding receiving calculation is complete: both off-wave coupling
+blocks vanish, D_T=(3/2)(l^2-p^2)I2, both three-field grazing determinants are
+finite/nonzero, and delta_p=3/p with the full B'(p) correction. Those exact saved
+returns and arguments are restored. They are not recomputed or generalized into
+all-real coupled regularity. The physical current stage G0/Gref/G1/K1 is still
+required, including current orientations and origin/gauge checks. No amplitude
+in this worker is called attenuation or leakage.
+
+This is the next finite part of the existing matched-receiving method. The new
+calculations are deliberately small:
+1. Compare the completed full height force to [9w-6m]U; retain all independent
+   sigma force with its physical1/10 factor. Source and receiving momenta remain
+   distinct. The completed pressure assembly has literal zero displacement
+   consumers at every retained grade, so no pressure term enters this projection.
+2. Split F(x)=9H(x)U+F_loc(x) at the original centre0. Compute the NEW exact
+   matrix moment integral F_loc dx by T=tanh(x/L) on [-1,0] and [0,1]. On each
+   half-line divide out only the approached-end factor of1-T^2. Polynomial
+   division plus the remaining regular simple fraction gives a primitive with
+   finite log2 endpoint terms. Each new primitive is differentiated back to its
+   integrand; full numerator/quotient/remainder/endpoint operands are saved.
+   This evaluates small scalar polynomial moments, not a numerical Fourier bank.
+3. Derive the scalar outgoing Green normalization from the differential jump.
+   G=i exp(ip|x-y|)/(3p). The Abel half-line integral of exp(2ipy) is -1/(2ip).
+   The9H forcing gives right i delta_p x plus finite -delta_p/(2p), and the same
+   scalar reflected coefficient. Check these coefficients against the exact
+   linearized scalar step r=(p-p_R)/(p+p_R),t=2p/(p+p_R). This is a normalization
+   control, not replacement of the actual vector source by a scalar model.
+4. Keep the full fixed projector Pi(l)=B(l)D_B(l). Its coordinate poles are only
+   l=+/-iH, H=sqrt(h1^2+h2^2)>0; multiplying each entry by l^2+H^2 leaves a
+   polynomial. Its nonlocal coordinate kernel is exp(-H|x|)/(2H), with local
+   distributions and derivatives for numerator powers. The saved half-line
+   remainders have approached-end zeros and hence exponential tails2/L. Thus
+   the additional coordinate kernels give vanishing end tails. No acoustic q
+   occurs in this exactly decoupled projected channel. This analytic argument
+   concerns transverse amplitude extraction only, not other-channel radiation
+   asymptotics or a full coupled scattering solution.
+5. Applying the projector to the scalar secular term adds delta_p Pi'(p)U.
+   Preserve Pi'(p)U=B'(p)+B(p)D_B'(p)U. With the matched B(p_R) polarization,
+     T1=-delta_p/(2p) I + delta_p D_B'(p)U
+                        + i D_B(p) integral(F_loc dx)/(3p).
+   The full five-row finite field must equal delta_p B'(p)+U T1. This new join
+   checks amplitude extraction against the actual momentum-dependent chart.
+6. Save reflection as
+     R1= -delta_p D_B(-p)U/(2p)
+         + i/(3p) integral exp(2ipx) D_B(-p)F_loc(x) dx.
+   It retains both half-line integrands, actual original polynomials and L,
+   signed transfer Q=-2p, and the Abel step. The convergent localized integral
+   is NOT evaluated. Reflection contributes to survival; it is not leakage.
+
+Two new controls omit D_B' through the actual T1 and reverse the outgoing scalar
+step coefficient. Neither is a physical field-value or flux test. Original
+source/profile/cell/receiving/response/current producers remain uncalled. The
+rational receiving block, endpoints and profile calculations are reused. New
+primitive derivatives are certificates of new scalar moments, not old profile
+reconstruction. Exact conserved-power or current claims are absent.
+
+Runtime uses the unchanged journal/decoder, guard, supervisor and hook. Complete
+new operands/returns precede checks. Every original saved file is copied/hash
+checked; only consumed operands are decoded. The 732 complete JSON inputs
+include all725 receiving artifacts, both indexes, and original source operands.
+Stdlib tests are tooling/metadata only. No science or READY gate exists yet.

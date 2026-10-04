@@ -1,0 +1,32 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T19:01:19.002874+00:00",
+  "packetSha256": "dc0da14f1cc34806226506fc04422ce1d9a6031595f7a780e4e97ddba678f6ff",
+  "archiveSha256": "6393e72e9dfe7f243e168d335ea091c38ef59205fca8060d1daa78f64e06b146",
+  "reviewers": [
+    "claude"
+  ],
+  "files": 751,
+  "bytes": 8765215,
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "authority": "Standing user-directed physics refocus, matched-receiving method scope and necessary Claude-only concrete build assessment without routine permission. No science execution enabled by this review launch.",
+  "scope": {
+    "target": "Finite matched outgoing transverse amplitudes in saved incident coordinates, before physical flux normalization",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalPath": "eta=lambda,sigma_W=lambda/10",
+    "incomingColumns": 2,
+    "origin": 0,
+    "newHalfLinePolynomialMoments": true,
+    "T1InSavedCoordinates": true,
+    "R1ExactUnevaluatedIntegral": true,
+    "G0GrefG1K1Pending": true,
+    "physicalWorkAndAllRealRegularityPending": true,
+    "numericalIntegrals": false,
+    "leakageFactor": null,
+    "recoveryParked": true
+  },
+  "noAutomaticRetry": true,
+  "noPeerReportsShared": true,
+  "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+}

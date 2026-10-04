@@ -1,0 +1,133 @@
+{
+  "status": "CLAUDE_ONLY_SELECTED_CENTRE_METHOD_REVIEW_LAUNCHED_PENDING_LITERAL_ASSESSMENT",
+  "recordedUtc": "2026-10-04T23:51:33.668458+00:00",
+  "preparedCommit": "7fc10ec3",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/centre-drive-method-review",
+  "packetSha256": "4811a5c58b4ccd353ade15edd33de2588b8845983545833aef5df803daee21c4",
+  "archiveSha256": "e844ed99df40650374a4fc2222e3b3aa4410a694bad42b898588c604467b00c9",
+  "launch": {
+    "jobPid": 1921105,
+    "watcherPid": 1921106,
+    "packetSha256": "4811a5c58b4ccd353ade15edd33de2588b8845983545833aef5df803daee21c4",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 1921106,
+    "jobPid": 1921105,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T23:51:13.092926+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "879347bb2fed0ae2705a560a4cd6afd259f6ca393dd349a2be0d2ef8203fee3e",
+    "notifications": {}
+  },
+  "claudeReceipt": {
+    "engine": "claude",
+    "sessionId": "973b19a1-71b9-461a-b1cc-ef37bdca15fb",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "973b19a1-71b9-461a-b1cc-ef37bdca15fb"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/centre-drive-method-review/claude/work",
+    "startedUtc": "2026-10-04T23:51:15.485081+00:00",
+    "packetSha256": "4811a5c58b4ccd353ade15edd33de2588b8845983545833aef5df803daee21c4",
+    "promptSha256": "64ba250f0fe539c5eba8ab7d591cb737c16ea5089ab2aa298d74b3af36b80ce5",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1921128
+  },
+  "actualHostProcesses": [
+    {
+      "role": "coordinator",
+      "pid": 1921105,
+      "argv": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/centre-drive-method-review/review_run.py"
+      ]
+    },
+    {
+      "role": "watcher",
+      "pid": 1921106,
+      "argv": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics/scripts/codex_job_watch.py",
+        "--pid",
+        "1921105",
+        "--thread",
+        "01a0e01b-ef84-7192-817f-584cda5d339b",
+        "--directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/centre-drive-method-review/completion-watcher",
+        "--message-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/centre-drive-method-review/completion_message.txt",
+        "--error-log",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/centre-drive-method-review/issues.log"
+      ]
+    },
+    {
+      "role": "claude",
+      "pid": 1921128,
+      "argv": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "--disable-slash-commands",
+        "--session-id",
+        "973b19a1-71b9-461a-b1cc-ef37bdca15fb"
+      ]
+    }
+  ],
+  "privateInputFilesVerified": 3109,
+  "sourceFilesVerified": 3108,
+  "scope": {
+    "kind": "SELECTED_CENTRE_DRIVE_COMPATIBILITY_METHOD_ONLY",
+    "supportChoice": "PENDING_USER_INPUT_NOT_A_PREMISE",
+    "sourceNewIdentitiesUnexecuted": true,
+    "workerExists": false,
+    "gateExists": false,
+    "scienceCalls": 0,
+    "mixedRecovery": "PARKED",
+    "leakageFactor": null
+  },
+  "singleHostAdmissionCheck": true,
+  "noModelPolling": true,
+  "noScientificExecution": true,
+  "noAutomaticReviewerRetry": true,
+  "noGrokLaunched": true
+}

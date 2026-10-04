@@ -1274,3 +1274,10 @@ certificate run. All actual source/address/proof/unit/domain/majorant joins,
 strict stderr, full evidence-chain returns and posthash integrity still require
 runtime inspection. Original label ancestry is not a new numerical mesh; the
 full evaluator, nested error propagation and numerical controls remain open.
+
+The exact unchanged certificate is now pinned for one guarded run. Host systemd
+is available, no guarded job was active, and fresh read-only memory/disk checks
+passed. The actual launcher verified worker, manifest, 17 source pins, method,
+paired build record, standing authority and 15 extra identity copies before any
+science import. The shared guard will independently enforce admission and the
+no-deadline resource policy; no host scheduling change or fallback is planned.

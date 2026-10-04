@@ -1,0 +1,79 @@
+{
+  "status": "PINNED_READY_FOR_ONE_GUARDED_FINITE_WINDOW_CONTRACTION_CERTIFICATE",
+  "createdUtc": "2026-10-04T10:11:28.868438+00:00",
+  "gate": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contraction_gate.json",
+  "gateSha256": "88acdf6d33c8b91898a7175343690bb317083c7b842b47eaa91067339f2f366e",
+  "reviewCommit": "2ad0ad04",
+  "buildCommit": "d45f5cb1",
+  "sourcePinsChecked": 17,
+  "additionalIdentityCopies": 15,
+  "additionalIndexSha256": "ef84287dc03f945bae8b8c1bf43ae665a1fa18a6854d5c9cb349ef61007682d6",
+  "actualLauncherVerifyPassed": true,
+  "scientificImportsOrRestoration": false,
+  "workerLaunched": false,
+  "noDeadline": true,
+  "scienceRunsAuthorized": 1,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "automaticRetry": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Exact finite-window ordinary J and three added D contraction certificates only",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": true,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": false,
+    "kernelWaveMeasureTransportOnly": false,
+    "newFiniteWindowCertificate": true,
+    "noNumericalEvaluator": true,
+    "originalWindowPairs": [
+      [
+        27,
+        122
+      ],
+      [
+        29,
+        124
+      ]
+    ]
+  },
+  "remainingBeforeResultAcceptance": [
+    "Actual guard no-deadline/resources and supervisor invocation",
+    "All restored source/field/factor/template/544-address arguments and new complete algebra/unit returns",
+    "Distinct input/output clipping, full wings, actual complete control movements and source-bound compact majorants",
+    "Original geometry label ancestry, no new numerical mesh or integral claims",
+    "Complete evidence chain, strict scientific stderr, stdout/checks identity and all source/copy/additional-identity posthashes",
+    "Analytic Fubini remains assessed mathematics; numerical evaluator/error/storage/control readiness and action/current/loss remain separate"
+  ]
+}

@@ -20,14 +20,21 @@ Check the following on their mathematical merits:
    jet/template/unit joins. Is the proposed Fourier exception confined to the
    actual constant subset, with correct signs, centers, derivative-before-field
    order, native factors, bilinear duality and 2*pi normalization? Check both
-   Gaussian moment and integration-by-parts formulas and their exact runtime
-   joins. They share an analytic identity, not independent Fourier quadrature.
+   Gaussian moment and integration-by-parts formulas, centered w=x-center,
+   original waveMultiplier joined once via source delta k=p, argumentDerivative
+   zero and their exact runtime joins. Inspect both stricter full-value and
+   Gaussian-exponential-stripped amplitude checks and error transport. They
+   share an analytic identity, not independent Fourier quadrature.
 2. Actual four primitive contractions, q(k+t) versus q(l-t), full clipped wings,
    different input/output clipping, original resolvents and units. Check any
    normalized-family sharing requires complete equality and absolute error
    accounting for every original address. J is only part of native mixed.
-3. The new affine panel construction, all fixed/moving intersections and exact
-   coverage, simultaneous inner-grazing resolution scale, common positive
+3. The new affine panel construction first partitions at BOTH window kinks
+   +/-(T-K), plus -kappa, 0, kappa and the outer endpoints, making six affinity
+   slabs before any graph selection/intersection. Inspect the full true
+   max/min window validator and actual wing-corruption refusal controls,
+   all fixed/moving intersections and exact coverage, inner-grazing scale,
+   common positive
    outgoing sheet and open squared A nodes versus physical adaptive B nodes.
    No omitted regions, fabricated 0/0, product of reflected roots or pointwise
    regularity inferred from a weak bound. Are the concrete fixed A and adaptive
@@ -37,10 +44,14 @@ Check the following on their mathematical merits:
    the w(m)/W_M lemma, active-leaf B refinement, same-m inner A24/48 differences,
    full independent action and window comparisons. No cancellation pays error
    or tail budgets; empirical estimates are not rigorous total error bounds.
-   Identify any missing prerequisite before a concrete numerical build.
+   Inspect the new K29/T124 evaluation of the SAME positive inherited tail
+   expressions, without replaying the old preflight. b_* is the positive beta
+   bound, not source b. Identify missing prerequisites before a concrete build.
 5. The full wrong-root mutant's distinct domain and actual complete J derivative
    mutant, each carrier's measured movement/envelope test, and explicitly
-   deferred H/normal/Leibniz controls. Do not assert numerical responsiveness.
+   deferred H/normal/Leibniz controls. These are explicitly finite-window
+   controls; baseline all-real tails do not certify a mutated kernel's tails.
+   Do not assert numerical responsiveness or all-real control coverage.
 6. Exact request identity and value reuse without completed work replay;
    immutable rules and route separation; lossless bounded-record persistence,
    failure prefixes, disk/memory safeguards and unknown cost. The existing

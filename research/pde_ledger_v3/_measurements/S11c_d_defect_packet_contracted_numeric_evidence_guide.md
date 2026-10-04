@@ -85,3 +85,13 @@ Numerical rules and storage:
 path/hash. Prior numerical SQLite banks and peer reviews are not exported. The
 new analytic Gaussian identity is not claimed to have been numerically proved
 by a finite bank. No existing result or reporting failure is rewritten.
+
+The current proposal explicitly splits the affinity plan at both clipping
+transitions before selecting window branches. The true max/min validator and
+wing mutants are new build obligations. It also requires original wave/delta
+and centered-moment joins, stricter full-value/scaled-amplitude checks, actual
+request lookup/storage semantics and new positive enlarged-window tails.
+`original-source/S11c_d_defect_packet_preflight.py` contains the full unchanged
+exponential_moment, weighted_tail and nested contributions assignments for the
+new K29/T124 arguments. The K27/T122 calculation is restored without replay.
+No source/evidence file or scientific input was modified for this revision.

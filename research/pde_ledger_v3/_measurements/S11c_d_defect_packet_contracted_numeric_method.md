@@ -1,6 +1,6 @@
 # Numerical J and direct packet contributions on the certified finite windows
 
-2026-10-04. New method proposal for independent assessment. No new numerical
+2026-10-04, revision 2. Method proposal for independent assessment. No new numerical
 worker, integral, constant-transform certificate or execution gate exists.
 The completed contraction certificate is at 31146c6a. Its original operands,
 57 new exact-zero returns and 92 inherited returns are supplied unchanged.
@@ -74,6 +74,13 @@ decay at both ends. The carrier derivative is i*k after Fourier transformation,
 not i*p0. The Y sign follows its actual argument -l and test carrier -p0;
 no conjugation of c, P_j or the response is introduced. The physical derivative
 units belong to k and the native jet; numerical magnitudes do not erase them.
+Join the original address's waveMultiplier to P_j*(i*k)^n using its actual
+constant-source delta support k=p. This replaces that same wave multiplier;
+it is not an additional copy of it. Keep the actual b for each jet, including
+the distinct second-derivative and time coefficients. Require the original
+argumentDerivative selector to be 0 and N(l)=1 on every eligible entry; reject
+any other census or selector. For Y the constant-consumer support r=l likewise
+joins its original argument rather than collapsing off-diagonal k and l.
 
 This is a substantive change from requiring new GL24/48/B50 Fourier quadrature
 at EVERY request. For this exactly joined constant subset, replace those
@@ -85,7 +92,8 @@ the original Fourier request/rule constructor merely to recreate old tests.
 
 Two numerical implementations remain separate. Route A uses the displayed
 Fourier derivative identity at 30 digits. Route B at 50 digits independently
-forms the physical Gaussian derivative polynomial Q_n(w), starting with 1 and
+forms the physical Gaussian derivative polynomial Q_n(w), with w=x-x_u for X,
+starting with 1 and
 using Q_next=Q_n'+(i*p0-w/s^2)Q_n, and evaluates its Gaussian moments:
 
     M0(nu)=s*sqrt(2*pi)*exp(-s^2*nu^2/2),
@@ -95,15 +103,37 @@ using Q_next=Q_n'+(i*p0-w/s^2)Q_n, and evaluates its Gaussian moments:
 Use nu=k-p0 and multiply exp(-i*nu*x_u) and the source normalization for X.
 For Y, use the test's actual Fourier argument -l, carrier -p0 and center x_v;
 its nu is p0-l, and there is no 1/(2*pi) factor after the declared 2*pi in Y.
+Its centered variable is w=x-x_v; should a future variant have a derivative,
+its recurrence would use carrier -p0, not +p0. This subset requires derivative
+order zero on Y. Route B's moment sum already contains the X derivative; it
+must not be multiplied again by (i*k)^n.
 The future build derives and saves the moment/derivative algebra for every
 actual n and checks exact equality to the displayed form before quadrature.
 The Gaussian transform theorem is assessed mathematics, not machine analysis.
 
 At each new numerical request compare the two formula evaluations at that
 request's EXACT same represented momentum (conversion preserves its MP tuple,
-not a newly rounded intended node), using a private checking context. Record
-the actual value/difference and require absolute difference <1e-12 in the
-fixed transform unit. The independent-route values are not replaced by the
+not a newly rounded intended node), using a private checking context. Require
+absolute full-value difference <1e-24 in the fixed transform unit. In addition,
+strip ONLY the real Gaussian exponential g=exp(-s^2*nu^2/2) before comparison:
+compute both complex amplitudes V_tilde from their own formulas, including all
+center phases, coefficients, native factors and normalization. For the moment
+route compute M_r/M0 with the displayed recurrence starting from 1; do not
+numerically divide two exponentially small computed numbers. The resulting
+amplitude must reconstruct the actual full value g*V_tilde. At the same
+represented momentum also require
+
+    |V_tilde_A-V_tilde_B| < 1e-24*max(1,|V_tilde_A|,|V_tilde_B|).
+
+Here amplitudes are magnitudes in the fixed transform unit; the 1 is one such
+unit, not an added physical quantity. It handles exact polynomial zeros without
+division by a zero reference. The scaled check prevents Gaussian damping alone
+from making a large phase/polynomial error pass. Save the full values, actual
+amplitudes, reconstruction differences and both gates before a decision. Carry
+the actual full-value discrepancy and reconstruction discrepancies through the
+nested error path, not the allowed 1e-24 threshold. These checks are tighter
+empirical numerical conditions, not a uniform analytic roundoff bound.
+The independent-route values are not replaced by the
 check's values or shared between routes. These are algebra/roundoff checks,
 not independent numerical Fourier integrals. The two complete action routes
 therefore share an assessed analytic Gaussian identity; state that limitation.
@@ -175,20 +205,45 @@ singularities. Their purpose is to resolve the scale |q(z)| approximately
 |q(m)| on each side of either simple root, including m approaching a root.
 Retain both branches and all coalesced labels. There is no pointwise 0/0 value.
 
-The m plan includes endpoints +-M, clipping transitions +-(T-K), +-kappa, 0,
-and the same carrier and profile offset cuts around p0. On each of the four
-sectors divided by -kappa,0,kappa, all the above inner-boundary functions are
-affine in m: fixed cuts, m+d, the appropriate clipped window endpoints, and
-the two signs of d_g. Include EVERY intersection of these boundary functions
-inside the outer sector, including crossings with +-K and the active clipped
-endpoints. Coalesce only exactly equal points, retaining their labels. Then
-verify order constancy, disjoint open intervals and complete inner coverage on
-each m slab. There is no omitted narrow strip or clipped wing. This is a new
-plan certificate in the future numerical worker, not a completed geometry job.
+Before selecting ANY affine boundary branch or computing intersections, split
+[-M,M] at the sorted union
 
-On each original interval, Route A splits at the midpoint and uses open
-z^2 endpoint maps on each half with positive Jacobians, followed by the saved
-GL24 or GL48 rule. Apply this to m and the actual m-dependent inner intervals.
+    {-M, -(T-K), -kappa, 0, kappa, T-K, M}.
+
+For both windows T-K=95>kappa, so there are SIX initial open affinity slabs.
+The clipped endpoints are NOT affine on the two entire outer root sectors.
+On the left wing [-M,-95] the true I(m) is [-K,m+T]; on [-95,95] it is [-K,K];
+on [95,M] it is [m-T,K]. Adjacent expressions agree at their common endpoint;
+the singleton intervals at +-M are unsampled. Keep all branch/clipping labels.
+
+On these six slabs d_g is respectively -m-kappa, -m-kappa, m+kappa,
+kappa-m, m-kappa, m-kappa. Thus the chosen window endpoints, fixed cuts, m+d,
+and both signs of each grazing-resolution cut are actually affine there.
+For an unclipped contraction the endpoints remain -K,K on every slab. Add the
+carrier and profile offsets around p0 to the m cuts. Include EVERY intersection
+of the applicable inner-boundary graphs INSIDE EACH of the six initial slabs,
+including intersections with the fixed box and the active clipped endpoints.
+Only then sort and clip the inner cells. Coalesce only exact equality, retaining
+all labels and the full wings; narrow intervals may not be discarded.
+
+Independently validate the resulting endpoints against max(-K,m-T) and
+min(K,m+T), not just against the affine graph selected by the same planner.
+Check both endpoints of every m slab and an interior exact witness, together
+with slope/order inequalities. Verify disjoint interiors and complete coverage
+of the true interval, separately with semantic variable k for J/Dh/Dq and l
+for Dr. Propagate original full-domain and orientation witnesses through that
+check. Add a refusal control that forces the central [-K,K] window into an
+actual left and right wing on each K/T pair, through this same validator.
+This is a new geometry obligation in the future numerical worker, not a replay
+of the old square mesh. Both numerical routes require this completed validation.
+
+On each original interval [a,b], Route A splits at c=(a+b)/2. On the left half
+use x=a+(c-a)*z^2; on the right use x=b-(b-c)*z^2, with 0<z<1. These cluster
+toward a and b respectively. Both positive integration Jacobians are
+2*half_length*z; mapping a saved Legendre node n to z=(n+1)/2 additionally
+multiplies its weight by 1/2. Persist actual nodes/Jacobians before guards and
+never manufacture mirrored nodes: restore each original rule tuple as saved.
+Apply this to m and the actual m-dependent inner intervals.
 Both A levels use the same exact interval plan, but their actual nodes remain
 different. Do not substitute a uniform tiny spacing across the entire wings;
 the stated exact resolution/branch/window plan defines all initial intervals.
@@ -273,8 +328,36 @@ per-face/component/grade. Both carriers must be assessed separately.
 
 Restore and join the original positive per-address all-real tail budgets for
 these same J/D integrands. Reordering the IDENTICAL finite windows creates no
-new truncation. Do not use the compact Fubini C/|q(m)| bound as an all-real tail
-estimate. No cancellation pays a tail budget. Save base/enlarged results and
+new truncation. The saved tail-plan is for K27/T122; its filename is not an
+enlarged-window certificate. For K29/T124 evaluate only the SAME original
+positive tail expressions at those NEW arguments in the guarded preamble,
+using their saved lower bound b_*, Cordinary, CX, CY, F2/F3 and source/grade
+operands. Here b_*=3000/11101 is the positive beta lower-bound magnitude in
+tail-bound-derivation.json, not the complex source coefficient b. Restore
+the K27/T122 operands and returns without rerunning the preflight or its radius
+selection loop. The full original functions exponential_moment, weighted_tail
+and the contributions source supply the exact new-argument expressions; the
+worker must join their ASTs and preserve the new rational operands/returns.
+
+Explicitly, with WT_d(R,r) the original weighted_tail, E30=3^30 and actual
+per-address CX,CY, retain
+
+    outer = 2*Cordinary*CX*CY*E30*F3*WT_3(K,5),
+    middle_J = 4*CX*CY*E30*F3^2*(4*121/(5*b_*^3))*WT_2(T,1),
+    middle_D = 4*CX*CY*E30*F3^2*(36*121/b_*^2)*WT_1(T,1).
+
+The original mixed middle allocation also includes a positive H-tail term;
+preserve that original record and label any use of the larger full mixed
+budget as overcounting, not as an evaluated H contribution. Each direct
+primitive must join the original triangle/absolute majorant before using the
+full direct budget as an individual upper bound. Retain the full shared D
+bound for the sum; duplicating a bound on display is not permission to cancel
+or donate it. Require T>=K+4 and all original bound domains and positive
+per-address/grade budget checks for BOTH window pairs before quadrature.
+These are new enlarged-argument bound values, not new response integrals.
+There is no Fourier x-truncation share for the analytic Gaussian exception.
+Do not use the compact Fubini C/|q(m)| bound as an all-real tail estimate.
+No cancellation pays a tail budget. Save base/enlarged results and
 tail allocations separately. Conditional analytic tails plus propagated
 empirical indicators and route/refinement/window differences form a declared
 empirical envelope, not a certified total error bar, flux uncertainty or loss.
@@ -291,6 +374,11 @@ where YrC is unclipped. Do not reuse correct Dr's clipping. Persist the complete
 baseline/mutant values and their difference with both routes/window checks.
 Require finite measured movement >10 times their summed empirical envelopes;
 silence is unestablished coverage, not permission to choose another address.
+These two new controls compare finite-window contributions, on each original
+window, with their finite-domain empirical errors and enlargement changes.
+Do not attach the baseline's all-real tail bound to a changed mutant kernel.
+All-real mutant response/coverage is not established by this finite-window
+control. The baseline's conditional all-real approximation is a separate claim.
 This control supplies no normal-slot/H-contact/Leibniz coverage: those remain
 required when the other pressure contributions are evaluated.
 
@@ -299,6 +387,8 @@ As a Fourier-adapter control use the smallest eligible n1=2 address, replacing
 routing mutant, not the nonconstant-coefficient Leibniz control. The carrier-zero
 mutant can be exactly zero while the baseline need not be. Use the same finite
 movement/envelope criterion per carrier; no asserted outcome in advance.
+This tests only derivative routing, not center/phase correctness or Leibniz
+ordering. Exact phase and original source joins remain independently required.
 
 Each numerical request identity includes the full exact field/jet/unit/template
 and source-proof identities, native coefficients, carrier/centers/width,
@@ -318,6 +408,16 @@ inner-to-outer error propagation, sums and controls as exact encoded MP tuples
 with byte/hash receipts. Commit input before evaluation and the returned panel
 before any scalar guard. Persist a complete prefix on failure. No lossy decimal
 serialization, output pruning, old-bank rewriting or destructive migration.
+The supplied EvidenceStore is a writer, not a scientific request cache. The
+concrete build must add an immutable full-operand lookup/index and exact-return
+reader, with collision refusal and no overwrite/recomputation. Include both
+route and purpose (baseline, formula-check or named mutant) in the namespace
+settings; numerical check values must not populate baseline caches. Original
+rule/source/tail identities belong to mathematical-inputs, new numerical
+evaluations to A24/A48/B50 with their actual check precision recorded. Any
+extension must be reviewed and tested; the old store alone does not implement
+these semantics. Disk reserve, record-size refusal and LRU accounting must be
+actual code and tested tooling, not source comments.
 
 Process at most one inner panel record (<=48 nodes) at a time; release its live
 arrays after durable storage. Keep adaptive leaves and immutable request indices

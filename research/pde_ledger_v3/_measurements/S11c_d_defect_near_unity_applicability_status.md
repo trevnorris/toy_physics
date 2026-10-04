@@ -1347,3 +1347,22 @@ Actual wave/delta-support and centered-moment joins, tighter scaled formula
 checks, enlarged-window positive tail transport and concrete request/storage
 safeguards are additional requirements. No new numerical worker or science
 exists; preparing the substantive corrected method under standing authority.
+
+
+Prepared the substantive corrected numerical method. Six affinity slabs now
+include both actual clipping transitions before graph intersections; a separate
+true max/min-window check and wing-corruption controls are required. Original
+waveMultiplier/support/center joins are explicit. Full-value and Gaussian-
+stripped amplitude gates are tightened to 1e-24 with actual discrepancies
+propagated. The same positive tail expressions will be evaluated only at the
+new enlarged-window arguments, with saved base returns restored. Numerical
+mutants are explicitly finite-window sensitivity tests; baseline all-real tails
+are not attributed to mutated kernels. Request indexing and storage safeguards
+remain actual concrete-build obligations. No new science or worker exists.
+
+The corrected frozen packet has 3,165 complete files / 105,123,048 bytes,
+SHA256 d825302ae1ba1b212fad67dd9f4a51cfebbe75907b54ec990c6569c51da1b27d.
+Only method, prompt, guide and index changed; 3,161 complete files including
+all scientific operands, original sources and rules are byte-identical. The
+first proposal and literal CLEAR/NEEDS pair remain at 7f9e46ca. No peer report
+or peer commentary is supplied. Standing assessment authority applies.

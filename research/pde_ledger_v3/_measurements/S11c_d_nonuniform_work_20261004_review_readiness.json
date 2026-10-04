@@ -1,0 +1,38 @@
+{
+  "status": "FIXED_NONUNIFORM_WORK_METHOD_PACKET_VERIFIED",
+  "packetSha256": "61cc7e82cf940355a07474afffec0cafcb35e04d58b01fbaf9e57a3986955d1b",
+  "archiveSha256": "4e40e53c2c71898bdb505165ae41e46d4c04eb814c0583bc21c2ef3526d77ad4",
+  "files": 8266,
+  "bytes": 87319219,
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "completionMessageSha256": "350aa2fa0ea1145f2a0aef6ab932a6a083c856a9b3a79ece49fbd53a83e136dd",
+  "sourceHashesChecked": 8265,
+  "losslessViewsChecked": 14,
+  "artifactCensus": {
+    "source-projection": 2466,
+    "domain-prefix": 99,
+    "regularity": 3636
+  },
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "existingReviewerRunnerReusedUnchanged": true,
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review",
+  "scope": {
+    "target": "Nonuniform physical work identity and conditional leading total transverse-survival deficit",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "samePhysicalInputs": true,
+    "arbitraryIncidentDoublet": true,
+    "scientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "newFieldOrIntegral": false,
+    "fullPhysicalWorkPending": true,
+    "leakageFactor": null,
+    "recoveryParked": true
+  }
+}

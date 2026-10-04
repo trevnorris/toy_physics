@@ -1,0 +1,228 @@
+Nonuniform work balance and the leading transverse-survival deficit
+Proposed physics method; no new calculation, evaluator or READY gate
+
+Purpose and fixed question
+The observable remains the total stationary transverse-survival deficit, counting
+both reflected and transmitted transverse waves as survival. For arbitrary
+incident doublet a, the intended weak coefficient is, if the expansion exists,
+  1 - (J_transmitted + J_reflected)/(a^dagger G0 a)
+       = lambda^2 a^dagger L2 a/(a^dagger G0 a) + o(lambda^2).
+The diagonal lambda path is the existing eta=lambda, sigma_W=lambda/10, not a
+new parameter choice. epsilon_shape is the separate physical wave amplitude.
+We seek the physical identity that makes L2 computable from first-order fields,
+not a guessed Im(f^dagger G f), squared T1, or reflected-only deficit. This
+proposal derives a finite work/source identity and a conditional power formula;
+it evaluates no field, Fourier transform, spatial/power integral or leakage.
+
+Use only the original restbulk LAB_HELD/RHO4 saved-edge model at real omega=3,
+effective sound speed sqrt(6)/2, original material/gamma inputs, W0=1 and L=10,
+h=(1/5,1/10). Keep the original bare input omega1/c_s0=10 distinct from their
+already joined held-frequency/effective-speed bindings. Keep independent eta,
+sigma grades until the stated path is taken. The numerical mixed J/direct
+recovery and packet action remain parked.
+
+What is now actually known
+Reuse completed first-order source, receiving, matching, native current and
+real-axis results. Do not invoke any of their completed producers/functions.
+The actual full five-row sources have been projected before selecting the three
+rows R3=D5[2:5,:]. The U_B three-row forcing vanishes; U_A has a live chemical
+and scalar/longitudinal drive. Both have the transverse 9U end step. The matched
+moving-basis delta/delta-prime contributions cancel in R3. The full five-field
+operator still has transverse poles; no full distributional inverse is asserted.
+The C3 determinant and all original domains are now nonzero on both outgoing
+q rays, with exact polynomial certificates and both grazing joins. Its rational
+multiplier has growth degree0; E3 adds degree1; full forcing has degree0. The
+localized source argument therefore gives ordinary weighted-L2 uniqueness and
+conditional L1 decay of E3 chi3 and required finite derivatives at slab ends.
+This is assessed analytic reasoning, not a far-bulk radiation theorem.
+Native G0=Gref is positive, K1=G1+T1^dagger G0+G0 T1=0, and both opposite-leg
+incident/reflected cross-current matrices are exactly zero. Reflection remains
+unevaluated. These facts alone do not establish a quadratic leakage coefficient.
+
+1. Derive the actual nonuniform slab work identity
+The complete original native object includes conservative/SOURCE_ENERGY BEFORE
+uniform background substitution. This is the starting stored-energy density,
+including W_BG and MU_R_BG terms and their original generated gamma constants.
+The frozen engine UniformSlabCurrent and SlabEnergyBalance provide conventions
+and existing homogeneous-end operands; do not call construct/retained/parts or
+rerun their old identities. In particular their homogeneous energy balance is
+not a proved nonuniform law.
+
+Use explicit arbitrary real physical fields (u1,u2,u3,theta,eW) of time and the
+normal x coordinate, with the original tangential harmonic reduction and full
+spatial derivative ordering. Match the weak normal coordinate1 to the native
+normal coordinate3 by the already saved cyclic map; retain physical field/row
+units, epsilon once for rows and epsilon^2 for quadratic work. The actual
+spatial thickness lift is W0 eW; do not silently replace it with W(x)eW or use
+its rate without the original row conjugacy factors.
+
+Restore the native stored source and the saved full local400cell operator,
+original pre-pressure partitions, material bindings, zero-transfer mass row and
+physical field convention. Derive ONLY the missing variable-coefficient energy
+variation/work identity. Reconstruct its rows and boundary current against
+these existing full source/consumer records, with new joins declared as new
+algebra. No old local/grade/profile/source/response/current constructor replay.
+Existing derivative/profile proofs may be restored; differentiations genuinely
+needed for this new work identity are new and require a concrete assessed
+worker. Keep complete source argument/grade ancestry, not only final field IDs.
+
+Perform integration by parts on the unbound energy density with coefficients
+as actual static profiles. A total derivative must act on both the field and
+the coefficient: all w',m', higher coefficient derivatives and physical L
+powers remain. Derive the kinetic contribution from the native physical mass
+and thickness rows/action, not an arbitrary Euclidean field weight. Compare
+the resulting constrained mechanical rows with the actual saved U and E_W
+rows, and the density-rate defect with the actual THETA/mass row. Keep the
+independent density time rate live when applying the material virtual-density
+constraint: dropping it loses the chemical mass-rate work. Obtain the native
+chemical potential with its original surface-density normalization exactly once.
+Do not vary an eliminated bulk response or count chemical pressure twice.
+
+Keep a separately named exact work residual between the supplied retained
+operator and the energy-derived rows. An unexplained residual is an obstruction,
+not a freely defined external-work term that makes the identity tautological.
+Any nonzero term attributed to LAB_HELD work must be joined to the original
+anchoring/constraint law and supplied agency, with sign and order. A prescribed
+static coefficient has zero explicit time derivative, but that alone does not
+prove the full supplied mechanical/mass system variational. Conversely do not
+invent convective motion or an actuator power merely because LAB_HELD appears
+in a label. The native face velocity is W0 eW_t/2 in outward coordinates.
+
+Use the exact retained model and record the grade/remainder convention explicitly.
+The rectangular operator keeps00/10/01/11, so its diagonal lambda expansion has
+an explicit mixed coefficient at order2. It is not the full untruncated physical
+Taylor expansion, with its absent20/02 terms. No new grades may be silently
+inserted. Derive the work identity consistently in that retained model, show
+which omitted/remainder terms could enter the lambda^2 balance, and refuse a
+claim about the untruncated model if their exclusion is not justified. An
+unmatched grade, normalization or local-force residual stops this stage.
+
+The derived nonuniform slab boundary current must reduce at BOTH saved ends
+to the actual native end-current form including chemical transport and the
+mass-rate correction, using restored current operands/returns rather than
+reconstructing the old current. Keep total-derivative gauge changes explicit;
+compare their end effect and the physically oriented incident/reflected forms.
+
+2. Close the physical two-face power, with native orientations
+For each face use outward bulk velocity v, outward geometric velocity V,
+pressure P, relative mass flux j=rho_m(v-V), chemical potential mu and affinity
+chi=mu-P/rho_m. Join these to the complete saved affine maps on both faces,
+including direct chemical drive and original A_mem/rho normalization. Preserve
+lab-normal signs before expressing both faces in outward coordinates. The
+pressure load stays live although Lambda_X=0. U_A/U_B or selected-lift zeros
+alone are not a replacement for these actual maps.
+
+The native source proposes the pointwise port-work split
+  (P+X*chi)V + mu*j = P*v + chi*j + (X*chi)V,
+where products in time include the actual memory response (convolution or
+auxiliary state). Verify that this is the source-bound work in the newly
+derived slab identity, with its sign, rather than just an algebraic identity
+between arbitrarily assigned port quantities. The harmonic average uses the
+same real-field convention as the native currents: (1/2)Re(A* conjugate(B))
+after removing epsilon_shape^2, subject to the actual native normalization join.
+This stage does not inherit a frequency-derivative/current transfer.
+
+For the actual parameters Lambda_V=Lambda_X=0 and positive Lambda_A, tau_A,
+restore j=A_mem chi with A_mem=Lambda_A/(1-i omega tau_A). The candidate mean
+interface power is (1/2)Re(A_mem)|chi|^2. A real-time auxiliary-state check
+  tau_A j_t + j = Lambda_A chi
+would give chi*j = j^2/Lambda_A + d_t[tau_A j^2/(2 Lambda_A)] for real fields.
+Derive that exact relation with the actual signs/units, keep memory storage,
+and only then take its stationary mean. No new regulator or phenomenological
+damping is introduced. If an actual extra V/X term survives the native binding,
+retain its full cross-work and assess passivity instead of dropping it.
+
+Restore the original rest-bulk acoustic law P=-rho_m phi_t, v=grad(phi) and its
+native energy/current conventions. A new finite control-volume construction
+must retain both exterior depth fluxes and normal-x side fluxes, with the fixed
+tangential averaging/per-unit-area convention. The bulk identity follows from
+the actual wave equation; no bulk constructor/old integral is repeated.
+Its use on the two varying faces requires the original geometry/work pairing.
+Do not assume an infinite depth limit commutes with an infinite x limit.
+
+3. Decide whether first-order fields really suffice
+Begin with finite x and exterior-depth boundaries and the full real-field
+work identity, then its stationary average and the lambda expansion. Record
+all boundary/work terms before taking any limit. Join the actual zeroth-order
+face drives for arbitrary incident a, not just one column or selected flags.
+If every baseline P,V,j,chi and exterior acoustic amplitude that multiplies a
+first-order power variation is zero, quadratic radiation/interface power uses
+only the complete first-order affine face response. Show this explicitly.
+Full transverse matching, including the right moving polarization, remains
+necessary; its coordinate T1 is not attenuation.
+
+The key target is a derived oriented balance of the form
+  incoming transverse power - outgoing transverse survival
+      = exterior acoustic power + interface dissipation - supplied external work,
+with the actual sign of the final term fixed by the native identity. Include
+any other surviving side flux or nonuniform work term, rather than forcing
+this displayed target. Vanishing cross-current and three-field slab-tail decay
+are inherited ingredients for the x ends, not proofs that all exterior side
+flux vanishes. No power assigned to an artificial finite box is called leakage.
+
+If external/held-profile work remains at order2, display its complete bilinear
+operands and whether they involve the unknown second-order field. K1=0 does
+not dispose of them. A term coupling baseline fields to unknown second-order
+responses prevents a first-order-only formula unless the physical identity
+eliminates it. Stop and state the exact physics debt. A genuinely unspecified
+external agency or material change requires user input; do not choose a new
+anchor, frequency, sound speed or observable to get a result.
+
+4. Conditional spectral formula and a finite next calculation
+ONLY after the prior work/ordering gates, propose the following fixed-frequency
+power formulas as consequences to be checked, not executed integrals. With
+Fhat(l)=integral exp(-ilx)F(x)dx, inverse measure dl/(2pi), and outgoing q(l):
+  P_rad^(2) = sum_faces 1/(4pi rho_m omega)
+                  integral_{-p}^{p} q(l)|P1hat_face(l)|^2 dl,
+  D_mem^(2) = sum_faces Re(A_mem)/(4pi)
+                  integral_R |chi1hat_face(l)|^2 dl.
+These are per unit tangential area and per epsilon_shape^2. The proposed
+coefficients MUST join the native real harmonic normalization and Fourier
+measure; a mismatch changes the formulas, not the native conventions. Here
+q^2=p^2-l^2, p=sqrt(595)/10. For propagating components, vhat=q P_hat/(rho_m
+omega); evanescent diagonal normal mean power is zero. Opposite faces are
+separate exterior regions and their powers add, but polarization cross terms
+within each face and arbitrary a stay intact.
+
+These formulas must be derived from finite-domain conservation plus a justified
+integrated spectral/radiation limit, not a bare invocation of plane-wave DOS.
+The now regular C3 and finite beta bound P1 at grazing; q weighting then has no
+assumed 1/q divergence. Prove the actual weighted endpoint/tail integrability
+and control side surfaces before claiming equivalence to total far-bulk flux.
+No pointwise far-field decay rate or uniform angular theorem is claimed here.
+
+P1hat and chi1hat would use the complete saved affine face maps evaluated on
+E3(l)[adj(C3)/det(C3)] F3(l), plus any surviving matched transverse contribution.
+The receiving multiplier is restored, not recomputed. New exact map joins
+must show whether the physical face rows annihilate the transverse projector,
+including direct sources and the matched moving-basis distributions. Do not
+assume all first-order transverse fields are irrelevant merely from theta=eW=0.
+The explicit U_B three-row zero may then imply zero radiative/interface power
+for that column; it does NOT establish rank-one total loss until all other work
+terms are handled. Keep a full 2x2 Hermitian quadratic form and normalize by G0,
+not by Euclidean |a|^2 or an arbitrarily chosen polarization.
+
+For this method assessment all transforms remain unevaluated, including the
+smooth whole-step derivative source and localized sigma/direct-chemical tags.
+A future numerical evaluation (if this route holds) needs its own actual
+Fourier prescription, integral/error/tail/control plan and concrete assessment.
+No resumption of the unrelated mixed packet integrals is a prerequisite.
+
+Proposed finite certificate and stop conditions
+The first concrete worker should derive only the missing nonuniform slab/port
+identity, actual grade/order ledger and physical normalization joins. Give it
+full original operands and inherited end/source/current returns. Preserve the
+first unresolved source/energy/held-work mismatch. Controls must mutate a live
+chemical mass-rate term, one lab/outward normal sign or harmonic factor, and a
+live coefficient-derivative contribution; a silent control stays untested. A
+method verdict is not worker or result acceptance. No general AST verifier.
+
+All new mathematics above is a proposal. Source/JSON/hash inspection made this
+packet; no CAS restoration or new scientific execution occurred. Claude-only
+assessment precedes concrete build/readiness. Science must use the unchanged
+shared no-deadline pooled guard around the supervisor:4GiB native/cgroup in
+16GiB pool,zero swap,one CPU/thread,32tasks,4GiB host reserve,desktop priority;
+fresh exact gate and hook first to01a0e01b-ef84-7192-817f-584cda5d339b. No automatic
+retry/fallback/scheduler change/model polling. Preserve all history and scratch;
+no field/power integral, leakage value, sweep, drain or calibration is authorized
+by this proposed method alone.

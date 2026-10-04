@@ -1,0 +1,35 @@
+Review the proposed physics method in input/plan.txt against the actual original
+source and completed operands in input/. Read input/guide.txt first. This is a
+CLAUDE-ONLY method assessment, not worker/result clearance. No peer reports or
+author clearance are supplied. Do not run any program or restore opaque objects.
+Use only Read/Glob/Grep. Do not edit input files. No new science exists yet.
+
+The user explicitly refocused this toy model toward leakage definition, the
+smallest physical calculation and real assumptions. Avoid proposing a general
+verification/recovery framework. Existing receiving/matching/current results
+are evidence to reuse, not proofs of nonuniform work or leakage. The question
+is whether the actual nonuniform retained equations have the energy/chemical/
+acoustic/held-profile work identity needed for a first-order-field quadratic
+survival deficit, including reflection as survival, and whether this plan can
+derive it without guessing dissipation or hiding missing second-order work.
+
+Prioritize: original nonuniform SOURCE_ENERGY versus actual saved five rows;
+physical kinetic/thickness/mass-rate conjugacy and coefficient derivatives;
+LAB_HELD static-profile versus genuine external-work residual; independent
+rectangular grade/remainder implications at lambda^2; both native affine faces,
+chemical normalization/pressure counted once, memory storage and dissipation;
+finite control-volume signs, exterior side flux/limit order, spectral q measure
+and Fourier/harmonic normalization; arbitrary doublet and no unjustified rank-one
+or zero-loss inference. Challenge whether C3 regularity/L1 slab decay suffices
+for each limit. Identify any actual missing physical input or whether the
+proposed finite source/work checks can decide it before asking the user.
+
+Return first line exactly either
+CLEAR FOR THIS NONUNIFORM WORK AND LEADING SURVIVAL METHOD
+or
+NEEDS REVISION FOR THIS NONUNIFORM WORK AND LEADING SURVIVAL METHOD
+State scope and actual coverage. Give concrete physics blockers with source
+locations and proposed correction; keep optional wording separate. Do not
+invent a result from the proposal, or call a conditional formula an evaluated
+leakage coefficient. No unspecified new parameters, inverse, current transfer,
+plane-wave scattering calculation, speed/defect sweep or mixed packet recovery.

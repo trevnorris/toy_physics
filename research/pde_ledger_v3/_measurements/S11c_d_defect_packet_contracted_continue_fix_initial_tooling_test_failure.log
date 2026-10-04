@@ -1,0 +1,32 @@
+test_actual_base_and_module_bindings (__main__.ToolingRepair) ... ok
+test_all_new_sources_parse (__main__.ToolingRepair) ... ok
+test_base_XY_swap_refuses_after_operand_persistence (__main__.ToolingRepair) ... ok
+test_earliest_original_numeric_run_unchanged (__main__.ToolingRepair) ... ok
+test_fixed_actual_closure_keeps_path (__main__.ToolingRepair) ... ok
+test_fixed_getter_reusable_for_multiple_literal_paths (__main__.ToolingRepair) ... ok
+test_helper_and_tail_stay_original (__main__.ToolingRepair) ... ok
+test_module_mismatch_refuses_after_operand_persistence (__main__.ToolingRepair) ... ok
+test_new_gate_honest_flags (__main__.ToolingRepair) ... ok
+test_numeric_run_unchanged (__main__.ToolingRepair) ... ok
+test_old_pins_still_exact (__main__.ToolingRepair) ... ok
+test_original_actual_closure_reproduces_failure (__main__.ToolingRepair) ... ok
+test_preserved_tree_changed_bytes_refuse (__main__.ToolingRepair) ... ok
+test_preserved_tree_extra_refuses (__main__.ToolingRepair) ... ok
+test_preserved_tree_intact (__main__.ToolingRepair) ... FAIL
+test_preserved_tree_missing_refuses (__main__.ToolingRepair) ... ok
+test_restore_function_only_alpha_renamed (__main__.ToolingRepair) ... ok
+test_scientific_imports_absent (__main__.ToolingRepair) ... ok
+test_scientific_prepare_body_unchanged (__main__.ToolingRepair) ... ok
+
+======================================================================
+FAIL: test_preserved_tree_intact (__main__.ToolingRepair)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_continue_fix_test.py", line 64, in test_preserved_tree_intact
+    _,m=self.failure_fixture(d);self.assertTrue(self.worker.tooling_failure_state(m)['intact'])
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.209s
+
+FAILED (failures=1)

@@ -1,0 +1,36 @@
+{
+  "status": "FIXED_MATCHED_RECEIVING_FACE_PHYSICS_METHOD_PACKET_VERIFIED",
+  "packetSha256": "b749f03fce02ad3d5efbdd032f899bfc9848e5fbc30aabaaaa8f3aff9bc615eb",
+  "archiveSha256": "0161e635c6343aa676b119d86de62b788b93dcb469d0a6c5137eece03dc0b80b",
+  "files": 966,
+  "bytes": 50962557,
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "completionMessageSha256": "500218ad7986e625146530a57e8d5a976c4b0f9514b774ae2fae00b468c8b546",
+  "sourceHashesChecked": 965,
+  "losslessJSONViewsChecked": 29,
+  "opaqueByteReceiptsChecked": 2,
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "existingReviewerRunnerReusedUnchanged": true,
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-method-review-r2",
+  "scope": {
+    "target": "Matched transverse solvability and end-flux diagnostic with actual receiving blocks and complete affine faces",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "samePhysicalInputs": true,
+    "incidentAmplitudes": "arbitrary complex doublet",
+    "newScientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "K1Evaluated": false,
+    "receivingRegularityEstablished": false,
+    "leakageFactor": null,
+    "recoveryParked": true,
+    "oldScientificReplays": 0,
+    "opaqueObjectsDecoded": 0
+  }
+}

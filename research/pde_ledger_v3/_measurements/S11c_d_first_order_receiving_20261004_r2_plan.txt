@@ -1,0 +1,264 @@
+Receiving blocks, matched transverse poles and complete first-order face drivers
+Revision 2, 2026-10-04. Proposed physics method; no worker or scientific run.
+
+Why this calculation
+The completed source screen distinguishes the actual incident columns
+  U_A=i(1/5,-p,0,0,0), U_B=i(0,1/10,-1/5,0,0), p=sqrt(595)/10.
+For U_B, both native chemical and pressure sources vanish, the full local
+first-order force has zero x/theta/e_W components, and its receiving k(l) dot
+force is exactly zero for independent l. U_A does drive these channels. Both
+retain a transverse right-end force step 9 U; all sigma-source endpoints vanish.
+No old source calculation is to be repeated. The next missing physics is whether
+these source facts survive the actual receiving operator, transverse resonance,
+matched-end normalization and physical face maps. The new transverse matching
+and end-flux calculation below is a substantive scientific addition, not a
+tooling change or a previously accepted result.
+
+The target observable remains total stationary transverse-survival deficit,
+including reflected transverse survival. Bulk escape alone is a separate
+quantity. Neither source cancellation nor an arbitrary imaginary quadratic form
+is accepted as a leakage factor. All inputs remain real omega3, resting bulk,
+LAB_HELD/RHO4_CONSTANT, h=(1/5,1/10), cs=sqrt6/2, W1,L10 and original materials.
+Independent eta/sigma results precede eta=lambda,sigma=lambda/10.
+
+1. Actual receiving block, before any inverse
+Restore the complete saved LEFT native P, its exact source/chart/physical binding
+arguments, and its actual closure/domain operands. These are the homogeneous
+baseline at lambda0. Match that interpretation to the saved local00 and flat
+source/consumer00 definitions; selected on-wave agreement is not a full receiving
+matrix identity. If that source correspondence fails, stop as unresolved. No
+old pencil, lift, restriction, limit or source producer is called.
+
+Let k(l)=(l,h1,h2), H2=h1^2+h2^2=1/20, K2=l^2+H2, q^2=p^2-l^2. Use the actual
+proper cyclic chart to put native displacement rows and fields in weak order.
+Use geometrically fixed columns, independent of residuals:
+  t=(0,h2,-h1), b(l)=(H2,-l*h1,-l*h2), k(l), e_theta, e_W.
+Their displacement dual rows are t^T/H2, b^T/(H2*K2), k^T/K2. H2 and K2 are
+positive for real l, so this coordinate change introduces no real singularity.
+These are coordinates with inherited units, NOT a physical work inner product.
+
+Derive the full transformed baseline matrix from the actual operands. Test both
+directions of transverse-versus-longitudinal/scalar coupling, keeping every
+entry and denominator. The candidate transverse block is the scalar
+D_T(l)=3(l^2-p^2)/2 on both transverse columns. Do not infer the off-wave block
+from the saved selected zero. The proposed remaining receiving problem is the
+actual three-by-three block on (longitudinal coefficient,theta,e_W), with source
+component k(l) dot f_U/K2 and the two native scalar row sources.
+
+Determine its exact determinant and original denominator domains at q=0,
+l=+p and l=-p, with the correct outgoing-sheet limits. A nonzero determinant
+would establish only local threshold nonsingularity of this finite block after
+its source correspondence and cancellations; it does not exclude poles elsewhere
+on the real receiving axis. A zero/unknown determinant is physics evidence: save
+it and do not choose a new cs, regularizer or tolerance. Do not invert the full
+five-field pencil on the propagating transverse poles, take a pseudoinverse,
+solve the coupled receiving field, or accept an old frequency1/root/mode census.
+The scalar transverse radiation distribution is treated separately in section 4.
+
+2. The step must enter the longitudinal source distributionally
+The saved eta force suggests the exact new decomposition
+  f10(x) = A(x) U, A=9 w(x/L)-6 m(x/L),
+which has A(-infinity)=0, A(+infinity)=9. Decide this against the completed full
+force operands for both columns, without recomputing the source action.
+For Q=l-p and the forward convention Fhat(Q)=integral exp(-iQx)F(x) dx,
+  k(l) dot U = Q U_x,
+  Q Ahat(Q) = -i (A')hat(Q)
+as a tempered-distribution identity with the fixed constant/Heaviside/local
+split. The delta term is annihilated by Q; the derivative includes the full jump.
+This is a proposed analytic application, not a computed transform. Check its
+sign, original origin/L factors and compatibility with the matched outgoing-end
+polarization correction. Do not discard the transverse half-line force or turn
+Ahat itself into an ordinary Fourier integral. A' is integrable, but that alone
+does not settle every receiving or physical-power limit.
+
+All sigma local forces and direct chemical source are already saved localized
+polynomials. Their longitudinal/scalar source must retain the correct output l,
+source derivative p, actual pressure direct addend and physical sigma/lambda
+factor. Combine only new projections/argument assignments. Do not regrade,
+differentiate old profiles or regenerate their Fourier transforms.
+
+3. Affine native face maps: include the direct first-order chemical drive
+Restore actual native acoustic/chemical/velocity/memory expressions, not just
+selected face zeros. For each face form the first-order TOTAL drivers as affine
+maps of the unknown receiving field plus the saved incident-column source:
+  mu_total = mu00[Psi1] + mu1[Psi0],
+  V_total  = V00[Psi1]  + V1[Psi0].
+Here V1[Psi0]=0 is the actual held-profile result; no convected-sheet u.grad(w)
+term may be invented. mu1 includes the completed sigma coefficient divided by
+10 on the physical path, with its separately established chemical phase. The
+source chemical and normalized pressure conventions must join exactly. Shape
+translations/normal variations acting on the baseline exterior field can be
+removed only after actual baseline field and face-gradient arguments show zero.
+
+The original scalar closure, before accepting any reduction, is
+  A_mem=Lambda_A/(1-i omega tau_A),
+  j=rho_m(v_bulk-V), affinity=mu-P/rho_m,
+  j=A_mem*affinity+V_mem*V, mechanical_response=X_mem*affinity.
+The actual generalized face load is (P+mechanical_response) times the native
+outward virtual lift W0/2. Keep this pressure term even when X_mem=0.
+At these inputs V_mem=X_mem=0, rho_m=1/10. For outgoing physical q, the candidate
+relations are v_bulk=q P/(rho_m omega) and
+  P = [rho_m omega/(q+omega A_mem/rho_m)] [V+(A_mem/rho_m)mu].
+Join these to both original face orientations and original pressure/velocity
+normalization. Lab-normal derivative signs are opposite, while each outward
+coordinate has its own positive outgoing convention. Retain pressure, bulk and
+outward velocities, relative mass flux, chemical potential, affinity and load
+separately. Complete driver maps are not a new physical-current proof.
+
+At q0 the candidate flat factor is finite, as the completed source screen
+already records. Nonzero permeability beta is essential here; setting the memory
+time tau_A to zero alone does not remove beta. No beta0 experiment is proposed. That fact by itself does not prove the receiving block is
+regular. The point of deriving the block and the affine maps together is to
+expose precisely this distinction. In the closed row equation the direct
+R00*S01 contribution already enters the forcing; do not add it twice when
+reconstructing the physical face fields.
+
+4. Matched transverse resonance, before assuming a quadratic deficit
+Keep arbitrary complex incident amplitudes a=(a_A,a_B); no incident polarization
+or Euclidean normalization is silently selected. Return matrices in the actual
+saved column coordinates. A scalar leakage coefficient for a chosen state, or
+extremization over states, is a later user-facing choice after the form exists.
+
+Construct E(l)=[t,b(l)] and its geometric dual D_E(l) from section 1. Determine
+C from the exact saved incident columns U=[U_A,U_B]=E(p)C, and carry
+B(l)=E(l)C, D_B(l)=C^(-1)D_E(l). This fixed geometric chart, not a fitted residual
+permutation, identifies the incoming and outgoing doublets. B(p)=U and
+D_B(l)B(l)=I must join actual operands. This finite coordinate inverse is not
+an inverse of the receiving pencil. Keep B'(p), D_B'(p) and any equivalent
+c_b'(p) contribution; changing the geometric polarization with momentum is real
+first-order matching, not an optional basis simplification.
+
+Use exp(-i omega t) and no extra incoming waves. The scalar transverse boundary
+value is
+  [ (3/2)(l^2-p^2) - i0 ]^(-1),
+with outgoing exp(+ip x) on the right and exp(-ip x) on the left. Derive its
+normalization from the jump of -(3/2)(d_x^2+p^2): the proposed real-space kernel
+is i exp(ip|x-y|)/(3p). The infinitesimal is a radiation prescription for this
+scalar block only, NOT a physical complex-frequency continuation of sources,
+material coefficients or the pressure operator.
+
+The transmitted end wave has a shifted momentum. Restore the actual RIGHT raw
+end source, with eta/sigma still independent, and join its order0 and order1
+transverse restriction to the saved endpoint force. The candidate end shift is
+  p_R=p+lambda*delta_p+O(lambda^2), delta_p=9/D_T'(p)=3/p.
+Check the complete first-order endpoint pencil on B(p_R), not only its scalar
+D_T entry. The new derivative in momentum is allowed; no old endpoint, source,
+profile or root producer is replayed. Do not fit delta_p to a finite1% root.
+If the endpoint field requires additional scalar components, preserve them and
+revise the reduced matching, rather than forcing B(p_R) to be sufficient.
+
+Derive the O(lambda) forward matrix T1 and reflected matrix R1 from the actual
+projected force. The asymptotic definition, with phase origin x=0 fixed by the
+supplied tanh profile, is
+  Psi_right = exp(i p_R x) B(p_R) [I+lambda*T1] a + other channels,
+  Psi_left  = exp(i p x) U a + lambda exp(-i p x) B(-p) R1 a
+              + other channels.
+The expanded right expression includes i*delta_p*x*U*a and delta_p*B'(p)*a.
+Those are the secular phase and matched polarization; neither is attenuation.
+
+For the known step split A=9*H(x)+a_loc(x), a_loc is integrable with this fixed
+origin. Treat the step by analytic matched half-line Green integrals, using an
+Abel factor only to define those half-line integrals, and extract the secular
+term and finite matching coefficient together. Do NOT multiply delta(l-p) by
+the singular outgoing denominator or insert Q=0 into Ahat. Carry the l-dependent
+B(l) and D_B(l) through pole extraction; their derivatives contribute finite
+terms. For the scalar constant-polarization step, require the linearized exact
+step-scattering solution as an independent sign/normalization check. This is a
+new elementary control, not a substituted model for the actual vector source.
+
+The forward localized solvability integral uses Q=0 after the matched step is
+removed; reflection uses the full Q=-2p source, including the Abel half-line
+step. Pressure displacement rows are saved zero, so they cannot be silently
+inserted into the transverse projection. All actual local sigma terms, including
+imaginary and off-diagonal entries, remain with the physical sigma/lambda=1/10.
+Do not infer a Hermitian forward matrix from the U_B total-derivative example.
+
+This stage derives exact integral expressions and their finite polynomial
+moments from the completed source polynomials; it is not a numerical transform
+bank or a quadrature project. At Q=0, substitute T=tanh(x/L), dx=L dT/(1-T^2),
+with the half-line split explicit. Save the polynomial division, removable
+endpoint factors and endpoint primitive values for these NEW scalar moments.
+At Q=-2p, it is sufficient to preserve the exact convergent integral and the
+closed Abel step value, with original constants, signs and 2pi conventions.
+No numerical reflection value is required. Do not differentiate/reconstruct old
+profiles or replay any previously evaluated Fourier request. Their original
+polynomial coefficients and profile rules are restored verbatim.
+
+5. Physical flux normalization and the linear survival term
+Coordinate D_B is not a physical work metric. Restore the actual native
+SLAB_CURRENT_MATRIX from the SlabEnergyBalance output and its conservative
+boundary-work and mass-rate-correction relations, with both harmonic legs,
+epsilon^2, source/chart/units and original physical bindings. On the transverse
+end modes explicitly join the mass-rate correction and scalar/bulk driver
+cancellations. Never use lift.H*lift or a guessed frequency derivative in place
+of this physical flux. Old selected numeric current is a check at its original
+arguments, not a new endpoint derivative.
+
+At lambda0 define G0=U^dagger J_L(p,p) U with the original epsilon convention.
+For reflection define G_ref=-B(-p)^dagger J_L(-p,-p) B(-p), where the minus sign
+turns the leftward signed slab flux into an outward weight. Check the actual
+signs and Hermiticity; do not presume positive definiteness from a label.
+The RIGHT flux weight is
+  G_R(lambda)=B(p_R)^dagger J_R(lambda;p_R,p_R) B(p_R)
+             =G0+lambda*G1+O(lambda^2),
+with BOTH momentum legs, both basis factors and explicit end-coefficient changes
+included in G1. Check the lambda0 identity, the original LEFT/RIGHT chart, and
+all end-source units. Do not set G1=0 or infer it from a finite physical-origin
+record. Restore the original unbound RIGHT current operand; if it exists only
+as an opaque saved object, its source-bound restoration/join is a concrete
+worker obligation inside containment, not a plaintext/source-only certificate.
+Do not rerun the native energy/current constructor.
+
+With the above unnormalized amplitude convention the new linear flux diagnostic
+is the FULL two-by-two Hermitian matrix
+  K1 = G1 + T1^dagger*G0 + G0*T1.
+The linear transverse-survival deficit for a, provided the stationary expansion
+exists, is -lambda*a^dagger K1 a/(a^dagger G0 a). In flux-normalized coordinates
+the equivalent test includes G1/2; a naive Hermiticity test of T1 alone misses
+the moving-end normalization. Derive this relation from the actual asymptotic
+current, including any first-order interference with nontransverse end fields
+if the complete endpoint pencil requires them. Prove those terms zero before
+using the displayed reduced formula. Do not claim a result for K1 before the
+new source moments, end maps and physical current arguments are checked.
+
+Reflection contributes +lambda^2*a^dagger R1^dagger G_ref R1 a to SURVIVAL;
+it is not leakage. This bookkeeping does not supply all second-order terms.
+If K1 is nonzero or unknown, preserve that finding and stop the assumed
+quadratic-deficit route. If K1=0, this removes one obstruction only: regular
+receiving response over the required real axis and the complete conservative,
+memory and held-profile external-work balance still need their own derivation.
+A vanishing bare longitudinal elastic diagonal is not a coupled-block pole.
+No all-real pole census, physical dissipation identity or rank-one total-loss
+form is inferred from the three-by-three threshold determinant.
+
+6. What the amended finite method would establish
+For U_B, block separation and affine source zeros may show that first-order
+exterior/scalar fields need not be driven. Transverse reflection, forward
+normalization and possible work remain in the problem. There is no blanket
+zero-leakage claim. For the arbitrary doublet, K1 tests a necessary condition
+for using a quadratic survival deficit, in the actual end flux and incident
+coordinates. This exposes a possible physical obstruction early.
+
+For U_A, keep the loss-side source and the two grazing determinants/face maps
+from sections 1-3. These prepare a small receiving problem; they do not solve
+it. No three-by-three or full-pencil numerical inverse, full field, coupled
+Fourier/power integral, evaluated leakage coefficient, new parameter selection
+or defect sweep is authorized by this proposal. Analytic scalar matching and
+new zero-frequency polynomial moments are the explicitly added scope, requiring
+method assessment and a concrete build review before guarded execution.
+
+Instrument obligations after method assessment
+Preserve every old operand/return and all new block, source, pole, secular,
+matching, moment, endpoint-flux and face-map operands before checks. Unknown
+stays unresolved. Controls mutate actual output/input projection, omitted direct
+chemical drive, face orientation, matched polarization derivative and end-flux
+normalization through these same equations. The scalar step reference checks
+radiation orientation, transmission/reflection signs and phase normalization.
+Old source/profile/closure/current producer functions remain prohibited. No
+general verifier or recovery expansion and no automatic scientific retry.
+
+Scope remains the same toy physical inputs and formal small-lambda path, with
+arbitrary incident-doublet amplitudes. The conditional leading-power argument
+is not promoted until every baseline loss drive, matched expansion, receiving
+regularity and physical work requirement is met. No strong-edge calibration,
+drain, current value, complete loss or numerical mixed-integral recovery.

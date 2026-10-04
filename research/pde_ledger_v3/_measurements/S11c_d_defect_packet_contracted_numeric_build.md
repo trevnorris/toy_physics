@@ -21,10 +21,21 @@ for the opposite sides of an inherited cancellation proof.
 chain, runs the preamble, and then performs the numerical routes and comparisons.
 `prepare.py` joins the exact constant quotients and their original reconstruction
 proofs, epsilon/independent grades, source/test support and actual wave multiplier.
-It constructs and saves explicit X and Y specs, including argumentDerivative=0,
+It selects the actual original X/Y interfaces from every accepted unit return,
+requires the selector to be the integer zero, and joins fields, coefficients,
+address membership, derivatives, centers and scales before saving the X/Y specs,
 Y's negative argument/carrier, centers and units. New per-address identities
 factor the native coefficient into normalized n=0 or n=2 families; the complete
-native template injection and unit returns are inherited. All 20 eligible entries
+native template and unit returns are inherited. `validation.py` supplies new
+whole-definition/argument joins: original whole bytes and signatures map to the
+RIGHT operands of completed inner arithmetic; physical original density arguments
+map to its LEFT operands. The completed arithmetic zero is inherited without
+rechecking its opposite sides. Each primitive then joins its actual original
+contraction density. Every live original whole call is matched through the actual
+permitted-call map to its native template, where J is selected with the separate
+H tag set formally to zero, or D is selected once. This does not assert H vanishes.
+The existing ordinary-component flag is required. The actual consumer with one
+epsilon also joins its stripped coefficient by a new identity. All 20 eligible entries
 must be pressure slots with N=1. Every one of the other 44 applicable entries
 retains its inherited exact-zero reason. No unknown/nonconstant field qualifies.
 
@@ -37,15 +48,23 @@ the same actual constant Fourier integrands and assessed Gaussian identity; no
 new numerical envelope sample substitutes for that argument. The four original
 nonnegative numerator certificates explicitly support a triangle majorant of
 each added direct term. The old base tails are restored; only K29/T124 arguments
-of the unchanged positive tail expressions are new. Repeating the positive D
-bound for each primitive is recorded as overcounting, never signed cancellation.
+of the unchanged positive tail expressions are new. The original tail moment and weighted-tail function ASTs, and all four actual
+positive contribution expressions, must match the new implementation. The
+enlarged J tail retains the original positive H overcount as well. New identities
+join the actual separate primitive numerator forms to the original certificate
+operands; accepted polynomial-gap proofs are not rederived. Every address/primitive
+tail must independently be below epsilon=1e-11/80, before the separate positive
+grand-total check. Repeating the positive D bound for each primitive is recorded
+as overcounting, never signed cancellation.
 
 `geometry.py` uses the old generic exact quadratic-field arithmetic only, not its
 old arrangement constructor. New plans split at all six affinity slabs before
 intersecting all root, box, clip, profile, carrier and inner-grazing graphs. Both
 outer packet/profile offset lists are explicit. The audit independently checks
 true max/min windows, affine endpoint/interior witnesses, complete full-box and
-clipped cells, all graph intersections, labels and orientation. Two wing mutations in each of the four plans call that same audit. No tiny interval is discarded.
+clipped cells, all graph intersections, labels and orientation. Each new plan attaches its own original window/carrier label record, with all
+four primitive transports. Two wing mutations in each of the four plans call
+that same audit. No tiny interval is discarded.
 Native geometry will run only inside containment; tooling tests use unrelated
 synthetic quadratic fields, scales and domains.
 
@@ -55,7 +74,8 @@ on both halves of each interval. At every own outer node, each route obtains its
 own inner GL24/48 pair; absolute differences are summed PANEL BY PANEL before
 forming the contracted products. B50 restores physical-variable G7/K15 in an independent 50-digit context, with a global active-leaf vector sum.
 The leaf selected for refinement has the largest contribution to the currently
-worst normalized addressed component. There is no local tolerance halving, new
+worst normalized addressed component and its binding total-error or weighted-
+nested guard. The same binding guard scores each active leaf. There is no local tolerance halving, new
 rule construction, timed continuation, higher-order retry or precision fallback.
 The root and profile source conventions are shared; numerical agreement does not
 independently prove those conventions or endpoint smoothness.
@@ -82,7 +102,8 @@ J subtotal, direct subtotal and J+D subtotal, independently for both carriers an
 windows. A24/A48, A48/B50 and window enlargement use the unchanged
 1e-9+1e-7*abs(A48) gate. The native wrong-reflected-root control uses address 8347
 and its distinct clipped-input/unclipped-output formula. The derivative control
-uses the smallest actual J n1=2 address, 8350. Both run through all three full routes,
+uses the smallest actual J n1=2 address, 8350. The wrong-root mutant emits only
+its actual Dr label, with no duplicated Dh/Dq mutant subtotal. Both run through all three full routes,
 both windows and carriers. Movement must exceed ten times the summed finite-window
 indicators, inter-route discrepancies and enlargement movements. Mutants never
 inherit the baseline's all-real tail bounds; silence refuses coverage.
@@ -115,7 +136,9 @@ route, purpose, arguments, precision, rule and error settings match exactly.
 The unchanged shared guard surrounds the existing normalization supervisor:
 4 GiB native/cgroup within the 16 GiB pool, zero swap, one CPU/thread, 32 tasks,
 4 GiB host reserve, desktop priority and no deadlines. A fresh exact gate and the
-existing local session completion hook are required before any execution. All
+existing local session completion hook are required before any execution. Exact
+MP decoding verifies the restored tuple, and final storage receipts handle a
+failure before the active-leaf table has been created. All
 prior failures and literal review records stay preserved. Inferred gamma units
 and accepted prior algebra remain explicit dependencies. Source review and stdlib
 synthetic tests are not execution acceptance.

@@ -1,6 +1,6 @@
 Independently assess this concrete bounded numerical contracted J/direct BUILD.
 Read input/build.md, method.md and evidence-guide.md, then actual new worker,
-preamble, geometry, numerical library, persistence and launcher source and the
+preamble, whole/selector validation library, geometry, numerical library, persistence and launcher source and the
 complete native saved operands needed to evaluate them. Tools are read-only;
 do not execute scientific code, launch work, use a shell or infer runtime results.
 State exactly what you read and any coverage limitation. No peer report is supplied.
@@ -25,7 +25,9 @@ Trace BOTH actual independent numerical routes, all panel/rule Jacobians, the
 positive per-panel inner discrepancies, global B adaptive decisions, complete
 addressed product/error propagation, pointwise AND weighted nested budgets, all
 individual and grouped comparisons and finite-window numerical controls. Check
-the B derivative mutant actually changes its moment recurrence. Check the original
+the B derivative mutant actually changes its moment recurrence. Check the full whole-density LEFT/RIGHT argument joins and explicit ordinary-J
+selection, actual original zero selectors and epsilon, the binding-guard adaptive
+leaf ranking, and the original
 absolute direct-piece tail ancestry and the enlarged positive tails. Analytic
 Gaussian identity and empirical indicators are disclosed shared limits; do not
 promote them to independent Fourier quadrature or rigorous accuracy proofs.

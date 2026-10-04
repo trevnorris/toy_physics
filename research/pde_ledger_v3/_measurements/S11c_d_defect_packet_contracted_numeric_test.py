@@ -8,9 +8,11 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+import sqlite3
 
 import S11c_d_defect_packet_contracted_geometry as G
 import S11c_d_defect_packet_contracted_numeric_lib as N
+import S11c_d_defect_packet_contracted_validation as V
 from S11c_d_defect_packet_evidence_store import EvidenceStore
 from S11c_d_defect_packet_request_index import RequestIndex
 
@@ -18,6 +20,31 @@ HERE=Path(__file__).parent
 
 
 class Arithmetic(unittest.TestCase):
+    def test_outer_leaf_ranks_binding_nested_guard(self):
+        total={'a':N.Estimate(0,F(9,10))};nested={'a':F(4,5)}
+        done,key,metric,details=N.outer_decision(total,nested,1)
+        self.assertFalse(done);self.assertEqual(details['bindingGuard'],'nested')
+        left=metric({'a':N.Estimate(0,F(6,10))},{'a':F(1,5)},key)
+        right=metric({'a':N.Estimate(0,F(3,10))},{'a':F(3,5)},key)
+        self.assertGreater(right,left)
+    def test_outer_leaf_ranks_total_when_binding(self):
+        done,key,metric,details=N.outer_decision({'a':N.Estimate(0,4)},{'a':F(1,2)},1)
+        self.assertEqual(details['bindingGuard'],'total');self.assertEqual(metric({'a':N.Estimate(0,3)},{'a':F(1,9)},key),3)
+    def test_outer_checks_all_components(self):
+        done,key,_,_=N.outer_decision({'a':N.Estimate(0,0),'b':N.Estimate(0,F(1,3))},{'a':0,'b':F(1,3)},1)
+        self.assertFalse(done);self.assertEqual(key,'b')
+    def test_early_leaf_receipt(self):
+        with sqlite3.connect(':memory:') as db:self.assertEqual(N.leaf_count(db),{'initialized':False,'active':0})
+    def test_initialized_leaf_receipt(self):
+        with sqlite3.connect(':memory:') as db:
+            db.execute('CREATE TABLE contracted_leaves(active INTEGER)');db.executemany('INSERT INTO contracted_leaves VALUES (?)',[(1,),(0,),(1,)])
+            self.assertEqual(N.leaf_count(db),{'initialized':True,'active':2})
+    def test_wrong_root_only_has_its_dr_label(self):
+        e=N.Evaluator.__new__(N.Evaluator);e.contexts={'entries':[{'addressId':8347,'n':0,'alpha':['1','0'],'primitives':['Dr','Dh','Dq']}]}
+        class C:
+            j=1j
+            mpf=staticmethod(F)
+        self.assertEqual(e.addressed(C(),0,'wrong-root-mutant',{'Dr_wrong_root':N.Estimate(5,F(1,4))}),{'8347/Dr':N.Estimate(5+0j,F(1,4))})
     def test_positive_product_errors(self):
         a,b=N.Estimate(F(-3),F(1,10)),N.Estimate(F(7),F(1,5))
         v=a*b;self.assertEqual(v.value,-21);self.assertEqual(v.error,F(66,50))
@@ -55,6 +82,50 @@ class Arithmetic(unittest.TestCase):
 class ToyContext:
     one=1;zero=0;j=1j;pi=cmath.pi
     exp=staticmethod(cmath.exp);sqrt=staticmethod(cmath.sqrt)
+
+
+class ExactCodec(unittest.TestCase):
+    class C:
+        @staticmethod
+        def make_mpf(t):return type('Number',(),{'_mpf_':t})()
+        @staticmethod
+        def isfinite(v):return True
+    def test_exact_tuple_roundtrip(self):
+        value={'mpf':[1,'123456789',-19,27]}
+        self.assertEqual(N.encode(N.decode(self.C(),value)),value)
+    def test_tuple_normalization_refuses(self):
+        class Bad(self.C):
+            @staticmethod
+            def make_mpf(t):return ExactCodec.C.make_mpf((t[0],t[1]+1,t[2],t[3]))
+        with self.assertRaises(ValueError):N.decode(Bad(),{'mpf':[0,'5',-2,3]})
+    def test_bad_mantissa_refuses(self):
+        with self.assertRaises(ValueError):N.decode(self.C(),{'mpf':[0,'not-an-integer',-2,3]})
+
+
+class Selector(unittest.TestCase):
+    def setUp(self):
+        self.address={'addressId':17,'sourceTransform':{'coefficientId':'fixture-X'},'consumerTransform':{'coefficientId':'fixture-Y'},'jet':{'spatialOrders':[2,0,0],'timeOrder':0}}
+        self.x={'role':'X','argumentDerivative':0,'fieldId':'fixture-X','timeOrder':0,'spatialOrders':[2,0,0],'center':'-5/2','width':'8','profileLength':'10','coefficientsAscending':[['7','2']]}
+        self.y={**self.x,'role':'Y','fieldId':'fixture-Y','spatialOrders':[0,0,0],'center':'5/2'}
+        self.units={'matchingXFamilyInterfaces':[self.x],'matchingYFamilyInterfaces':[{'spec':self.y,'addresses':[17]}]}
+    def test_actual_selector(self):self.assertIs(V.original_selector(self.units,self.address,'source',[['7','2']]),self.x)
+    def test_nonzero_selector_refuses(self):
+        self.x['argumentDerivative']=1
+        with self.assertRaises(ValueError):V.original_selector(self.units,self.address,'source',[['7','2']])
+    def test_boolean_selector_refuses(self):
+        self.x['argumentDerivative']=False
+        with self.assertRaises(ValueError):V.original_selector(self.units,self.address,'source',[['7','2']])
+    def test_missing_interface_refuses(self):
+        self.units['matchingXFamilyInterfaces']=[]
+        with self.assertRaises(ValueError):V.original_selector(self.units,self.address,'source',[['7','2']])
+    def test_wrong_y_address_refuses(self):
+        self.units['matchingYFamilyInterfaces'][0]['addresses']=[18]
+        with self.assertRaises(ValueError):V.original_selector(self.units,self.address,'consumer',[['7','2']])
+    def test_wrong_coefficient_refuses(self):
+        with self.assertRaises(ValueError):V.original_selector(self.units,self.address,'consumer',[['8','2']])
+    def test_wrong_order_refuses(self):
+        self.x['spatialOrders']=[0,0,0]
+        with self.assertRaises(ValueError):V.original_selector(self.units,self.address,'source',[['7','2']])
 
 
 class ManufacturedGaussian(unittest.TestCase):
@@ -145,6 +216,15 @@ class RequestOrchestration(unittest.TestCase):
 
 
 class SourceContracts(unittest.TestCase):
+    def test_actual_tail_and_profile_ast_only(self):
+        contracts=json.loads((HERE/'S11c_d_defect_packet_contracted_numeric_build_source_contracts.json').read_text())
+        class C:
+            @staticmethod
+            def fragment(record):return ast.parse(record['text']).body[0]
+        class J:
+            @staticmethod
+            def emit(name,value):pass
+        V.source_ast_joins(contracts,ast.parse((HERE/'S11c_d_defect_packet_contracted_numeric_lib.py').read_text()),ast.parse((HERE/'S11c_d_defect_packet_contracted_prepare.py').read_text()),C(),J())
     def test_no_science_import_at_library_top(self):
         for name in ('contracted_numeric_lib','contracted_geometry','contracted_prepare'):
             tree=ast.parse((HERE/('S11c_d_defect_packet_'+name+'.py')).read_text())

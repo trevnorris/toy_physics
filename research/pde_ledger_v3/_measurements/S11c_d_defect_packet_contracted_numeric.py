@@ -185,7 +185,7 @@ def run(m,J):
         J.emit('new-baseline-positive-tails',tails)
         return {'status':'BOUNDED_ORDINARY_J_AND_ADDED_DIRECT_SUBTOTALS_COMPLETE','results':results,'eligibleAddresses':20,'allSelectedAddresses':544,'addressPrimitives':40,'controls':controls,'comparisons':len(comparisons),'completePacketAction':False,'leakageFactor':None,'tails':tails,'limits':['The two full routes share an assessed analytic constant-Gaussian identity.','Adaptive and comparison indicators are empirical, not rigorous total quadrature error bounds.','H, flat, height/contact/PV and slope remain pending. J is not full native mixed.','Finite-window controls do not establish all-real mutated responses.','Inferred gamma units and original algebra are inherited. No current, inverse, scattering or loss.']}
     finally:
-        J.emit('numerical-journal-final-receipt',{'records':store.sequence,'head':store.previous,'bytes':store.path.stat().st_size,'requestStates':dict(store.db.execute('SELECT state,count(*) FROM request_index GROUP BY state')),'activeLeaves':store.db.execute('SELECT count(*) FROM contracted_leaves WHERE active=1').fetchone()[0],'freeBytes':shutil.disk_usage(J.out).free,'reserveBytes':index.reserve,'noAutomaticResume':True})
+        J.emit('numerical-journal-final-receipt',{'records':store.sequence,'head':store.previous,'bytes':store.path.stat().st_size,'requestStates':dict(store.db.execute('SELECT state,count(*) FROM request_index GROUP BY state')),'leafState':N.leaf_count(store.db),'freeBytes':shutil.disk_usage(J.out).free,'reserveBytes':index.reserve,'noAutomaticResume':True})
         store.close()
 
 

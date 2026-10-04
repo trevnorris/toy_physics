@@ -43,3 +43,30 @@ Gaussian parameters; it never restores actual scientific operands. The separate
 request-index tests cover immutable lookup and failure prefixes. These tests do
 not establish actual runtime scientific joins, integrability or quadrature accuracy.
 Read the full reports of your own findings only; no peer report is in this packet.
+
+## Complete whole and validation path
+
+Read `validation.py` with `prepare.py`. `runtime-input/saved/pressure/whole-tags.json`
+and `saved/whole-origin/{Jwhole,Dwhole}.json` supply complete original densities and
+byte receipts. `contraction/complete/new-original-density-interpretation-{input,return}.json`
+supply the original kernel AST and full symbolic argument/return vectors. The new
+physical maps bind those to `saved/inner/new-runtime-{J-arithmetic,D-arithmetic-sum}-input.json`
+LEFT operands; whole maps bind to RIGHT operands, retaining the completed zero
+returns. Full factorization inputs join each primitive's original density.
+No old density constructor or arithmetic check is invoked.
+
+For each of the twenty live entries, inspect the actual `matchingXFamilyInterfaces`
+and `matchingYFamilyInterfaces` in its accepted unit return, including selector,
+coefficients and original address membership. Complete native template arguments
+contain the actual whole-call map. The new selection requires the exact whole
+argument tuple and joins its injected density through the complete template,
+with H explicitly separated as pending. The original consumer and epsilon are
+joined before normalization.
+
+`absolute-bounds/` supplies full nonnegative numerator certificates. New argument
+identities bind their larger/smaller operands to actual primitive numerators;
+accepted gap proofs remain inherited. The unchanged method's per-address per-
+primitive tail epsilon is enforced. Moment/weighted-tail and all positive tail
+contribution ASTs are compared to their frozen sources; the enlarged J rows
+include the original positive H overcount. No old base tail or bound constructor
+is rerun. Each new geometry plan uses its matching original carrier/window record.

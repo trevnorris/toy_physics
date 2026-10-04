@@ -57,13 +57,21 @@
       "text": "def contributions(K,U,Tlim):\n        data=[]\n        for a in live:\n            z=bounds[a['addressId']];cx,cy,dy=z['X'],z['Y'],z['Yprime'];comp=a['component'];outer=middle=height=sp.S.Zero\n            if comp=='NATIVE_HEIGHT':\n                ch=(A0/4+11*A0)*cy+(2*A1*cy+A0*dy)/6\n                outer=ch*cx*E15*weighted_tail(2,K);height=11*A0*cx*cy*E15*F[1]*sp.Rational(1,2)**U\n            elif comp=='NATIVE_FLAT':\n                outer=Cordinary*cx*cy*E30*weighted_tail(3,K) # drop one exponential; conservative diagonal bound\n            else:outer=2*Cordinary*cx*cy*E30*F[3]*weighted_tail(3,K)\n            if comp=='NATIVE_MIXED_ITERATION':\n                middle=4*cx*cy*E30*F[3]**2*(sp.Rational(4,5)*121/b**3)*weighted_tail(2,Tlim,1)\n                middle+=(4/b)*cx*cy*E30*F[2]**2*sp.Rational(55,3)*sp.Rational(1,2)**Tlim\n            elif comp=='INHERITED_DIRECT_WHOLE_OFF_DIAGONAL':\n                middle=4*cx*cy*E30*F[3]**2*(36*121/b**2)*weighted_tail(1,Tlim,1)\n            data.append({'addressId':a['addressId'],'component':comp,'grade':a['targetGrade'],'outer':outer,'heightQ':height,'middle':middle,'total':outer+height+middle})\n        return data",
       "fragmentSha256": "b0de55114e09aa9ce8e4d1e6a22666080da94597a2fdeb6b31eacfc470431ce8"
     },
-    "tail-weighted": {
+    "tail-weighted-tail": {
       "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight.py",
       "sourceSha256": "bcde596139ab92cc00dbca5bf23bd844471e4714a322c58dc73de947af782064",
       "line": 135,
       "endLine": 139,
       "text": "def weighted_tail(degree,start,rate=5):\n    # For integer rate*start, e^(-rate*start) <= 2^(-rate*start).\n    require(isinstance(start,int) and start>=0 and isinstance(rate,int) and rate>0,'integer tail plan')\n    rate=sp.Integer(rate)\n    return 2*sp.Rational(1,2)**int(rate*start)*sum(math.comb(degree,n)*exponential_moment(n,sp.Integer(start),rate) for n in range(degree+1))",
       "fragmentSha256": "0d0a024004d12d42b946850e69497b83edc86e91e692eb5d20bcc9fb42a83312"
+    },
+    "tail-exponential-moment": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight.py",
+      "sourceSha256": "bcde596139ab92cc00dbca5bf23bd844471e4714a322c58dc73de947af782064",
+      "line": 130,
+      "endLine": 132,
+      "text": "def exponential_moment(n,start,rate):\n    # Exact polynomial prefactor of integral_start^infty x^n exp(-rate*x) dx.\n    return sum(sp.Rational(math.factorial(n),math.factorial(j))*start**j/rate**(n-j+1) for j in range(n+1))",
+      "fragmentSha256": "500f389eca553a201b5514fec32d71bcbe9074fbd273ec205a6d8eb579a163e9"
     }
   }
 }

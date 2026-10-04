@@ -1,0 +1,35 @@
+{
+  "status": "SUBSTANTIVE_VALIDATION_REVISION_PREPARED_NOT_EXECUTED",
+  "recordedUtc": "2026-10-04T12:26:49.373041+00:00",
+  "priorLiteralRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_numeric_build_review_record.json",
+  "priorCommit": "f747579b",
+  "independentBuildClearance": false,
+  "noScientificExecution": true,
+  "unchanged": [
+    "physical inputs",
+    "kernel equations",
+    "Gaussian identities",
+    "method",
+    "original windows and quadrature rules",
+    "comparison tolerances",
+    "all3141originalsavedscienceJSONfiles"
+  ],
+  "substantiveValidation": [
+    "Actual whole-definition and full original density maps through completed inner arithmetic operands, native whole-call/template selection and original ordinary-component flag.",
+    "Original X/Y selectors and full interface argument joins; actual epsilon-stripped consumer identity.",
+    "Original tail AST joins and new absolute numerator argument joins; per-address/primitive epsilon and retained positive H overcount at enlarged window.",
+    "Outer B leaf ranking follows the actual binding error guard, including weighted nested indicators.",
+    "Per-plan and primitive original label records."
+  ],
+  "localTooling": [
+    "Wrong-root control labels only actual Dr contribution.",
+    "Exact MP tuple identity check.",
+    "Early storage receipt when active-leaf table does not exist."
+  ],
+  "limits": [
+    "New identities remain unexecuted runtime obligations.",
+    "Shared Gaussian identity and empirical numerical errors remain limits.",
+    "J+D is not full packet, current or leakage."
+  ],
+  "noAutomaticRetry": true
+}

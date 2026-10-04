@@ -1,0 +1,107 @@
+{
+  "status": "READY_FOR_INDEPENDENT_CONTRACTED_NUMERICAL_BUILD_SOURCE_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-numeric-build-review-r2",
+  "methodCommit": "65ebe423",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-04T12:29:49.880331+00:00",
+    "packetSha256": "df9dcb671be28ddf80459440ba8bf566aa73a630da1edf8446587dca68c4437f",
+    "archiveSha256": "218626223142aacefa9452a85bf337a21ba510f7924c90e315fb63599fdbdc9d",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 3243,
+    "bytes": 108852362,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing user/AGENTS authorization for necessary independent established-Claude/Grok source assessment in the existing two-packet research. No new recipient or physical scope; this review launch executes no science and does not create a READY gate.",
+    "scope": "Bounded numerical ordinary J and three ADDED direct weak packet contributions only; no complete packet/current/leakage/loss/inverse",
+    "noAutomaticRetry": true,
+    "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+  },
+  "static": {
+    "status": "STATIC_FULL_PACKET_VERIFIED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "cb4cdf080694d1c05dbd29780b952f1f54e72fbd32475bb6a33173b60b7b6acd",
+    "packetSha256": "df9dcb671be28ddf80459440ba8bf566aa73a630da1edf8446587dca68c4437f",
+    "archiveSha256": "218626223142aacefa9452a85bf337a21ba510f7924c90e315fb63599fdbdc9d",
+    "files": 3243,
+    "bytes": 108852362,
+    "sourceHashesChecked": 3242,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "newScientificOperations": 0,
+    "READYGateExists": false
+  },
+  "workerSha256": "d06a60b4666fb645bff88187d061febe23ee6b1753bcc0fc921895b204b075ff",
+  "manifestSha256": "b1ca91c842abd37be1923d463e779ba7b70fe6586576013f925d49feecbda07c",
+  "librarySha256": "5686f41cc5f356ae75ff9103cff5bf15668d38e0f63ebf2dc89325316cb37d30",
+  "launcherSha256": "89f371b5d1b4c2a3fea7691dfb89550676809898c0574ede1b36582b329b73c8",
+  "methodSha256": "b912dac3c009bf8dbf09535e99a9f520f743721257547d25097a49acff220f09",
+  "sharedGuardSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+  "supervisorSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Only ordinary J and three ADDED direct weak Gaussian contributions; two carriers and two original windows",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": false,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": true,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": false,
+    "kernelWaveMeasureTransportOnly": false,
+    "newFiniteWindowCertificate": false,
+    "noNumericalEvaluator": false,
+    "originalWindowPairs": [
+      [
+        27,
+        122
+      ],
+      [
+        29,
+        124
+      ]
+    ],
+    "boundedContractedNumerics": true,
+    "completePacketAction": false,
+    "noLeakageOrCurrent": true,
+    "eligibleAddressCount": 20,
+    "addressPrimitives": 40,
+    "argumentDerivative": 0,
+    "allRealTailsConditionalOnAssessedBounds": true,
+    "analyticGaussianException": "only exactly joined constant fields",
+    "fullNumericalRoutes": [
+      "A24",
+      "A48",
+      "B50"
+    ],
+    "empiricalErrorNotRigorous": true
+  },
+  "toolingTests": 69,
+  "previousRequestIndexTests": 34,
+  "newScientificOperations": 0,
+  "READYGateExists": false
+}

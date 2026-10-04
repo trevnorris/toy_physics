@@ -33,7 +33,8 @@ def decode(c,value):
         if 'mpf' in value:
             require(set(value)<={'mpf','decimal'} and len(value['mpf'])==4,'original exact MPF')
             s,m,e,b=value['mpf'];require(type(s) is int and s in (0,1) and type(m) is str and type(e) is int and type(b) is int,'MP tuple types')
-            result=c.make_mpf((s,int(m),e,b));require(c.isfinite(result),'finite exact MPF');return result
+            original=(s,int(m),e,b);result=c.make_mpf(original)
+            require(c.isfinite(result) and result._mpf_==original,'finite identical exact MPF');return result
         if set(value)=={'mpc'}:return c.make_mpc(tuple(decode(c,x)._mpf_ for x in value['mpc']))
         return {k:decode(c,v) for k,v in value.items()}
     if isinstance(value,list):return [decode(c,v) for v in value]
@@ -71,6 +72,21 @@ def paired_indicator(left,right,own):
     require(own in (24,48),'fixed paired order')
     chosen=left if own==24 else right
     return Estimate(chosen['value'],abs(left['value']-right['value'])+left['error']+right['error'])
+
+
+def outer_decision(total,nested,eps):
+    """Rank leaves by the same guard that is worst in the complete sum."""
+    guards={(key,kind):value for key,v in total.items() for kind,value in
+            [('total',v.error/eps),('nested',nested[key]/(eps/4))]}
+    target=max(guards,key=guards.get);worst,kind=target
+    def metric(part,part_nested,key):
+        return part[key].error/eps if kind=='total' else part_nested[key]/(eps/4)
+    return bool(guards[target]<=1),worst,metric,{'epsilon':eps,'weightedNestedCap':eps/4,'guards':{key+'/'+kind:value for (key,kind),value in guards.items()},'bindingGuard':kind,'noBudgetDonation':True}
+
+
+def leaf_count(db):
+    exists=db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='contracted_leaves'").fetchone()
+    return {'initialized':exists is not None,'active':db.execute('SELECT count(*) FROM contracted_leaves WHERE active=1').fetchone()[0] if exists else 0}
 
 
 def moment_polynomial(c,n,carrier,width):
@@ -175,7 +191,10 @@ class Evaluator:
         c=self.rules[route][0];center=-c.mpf(5)/2 if kind=='X' else c.mpf(5)/2
         mutant=purpose=='derivative-mutant' and kind=='X';mode='B' if route=='B50' else 'A'
         members=[r for r in self.contexts['entries'] if r['n']==n]
-        settings={'formula':mode,'kind':kind,'n':n,'mutant':mutant,'absoluteGate':'1e-24','strippedGate':'1e-24','argumentDerivative':0,'fixedUnit':'X' if kind=='X' else 'Y','parent':parent}
+        role='source' if kind=='X' else 'consumer'
+        selectors={r['specs'][role]['argumentDerivative'] for r in members}
+        require(selectors=={0},'actual original transform selector remains zero')
+        settings={'formula':mode,'kind':kind,'n':n,'mutant':mutant,'absoluteGate':'1e-24','strippedGate':'1e-24','argumentDerivative':next(iter(selectors)),'fixedUnit':'X' if kind=='X' else 'Y','parent':parent}
         def work():
             full,amp,g=gaussian(c,p,carrier,center,c.mpf(8),n,kind,mode,mutant)
             other=self.mp.clone();other.dps=30 if mode=='B' else 50
@@ -311,7 +330,8 @@ class Evaluator:
             best=None;score=None
             for leaf_id,raw in self.leaf_rows(job):
                 row=decode(c,raw);part={key:Estimate(totals[key].value,r['error']) for key,r in row['panel']['components'].items()}
-                candidate=metric(part,target_key)
+                part_nested={key:r['innerError'] for key,r in row['panel']['components'].items()}
+                candidate=metric(part,part_nested,target_key)
                 if score is None or candidate>score:score=candidate;best=(leaf_id,row)
             require(best is not None and score>0,'positive refinable global error; no unknown promotion')
             leaf_id,row=best;a,b=row['a'],row['b'];mid=(a+b)/2
@@ -336,7 +356,8 @@ class Evaluator:
         out={}
         for r in self.selected_members(n,purpose):
             alpha=complex_pair(c,r['alpha'])
-            for p in r['primitives']:
+            labels=['Dr'] if purpose=='wrong-root-mutant' else r['primitives']
+            for p in labels:
                 key='Dr_wrong_root' if purpose=='wrong-root-mutant' else p
                 if key in primitives:out[str(r['addressId'])+'/'+p]=alpha*primitives[key]
         return out
@@ -357,7 +378,7 @@ class Evaluator:
             def decision(total,nested):
                 primitive=self.primitive_vector(c,m,total,keys);vals=self.addressed(c,n,purpose,primitive)
                 ratios={key:v.error/target for key,v in vals.items()};worst=max(ratios,key=ratios.get)
-                def metric(part,address):return self.addressed(c,n,purpose,self.primitive_vector(c,m,part,keys))[address].error/target
+                def metric(part,part_nested,address):return self.addressed(c,n,purpose,self.primitive_vector(c,m,part,keys))[address].error/target
                 return bool(ratios[worst]<=1),worst,metric,{'pointTarget':target,'ratios':ratios,'actualPositiveProductPropagation':True}
             result,_=self.adaptive(route,purpose,'inner',initial,callback,context,decision)
         else:
@@ -385,9 +406,7 @@ class Evaluator:
         def callback(m,p,meta):return self.inner(route,purpose,n,m,carrier,plan,plan['slabs'][meta['slabId']],p)
         if route=='B50':
             def decision(total,nested):
-                ratios={key:max(v.error/eps,nested[key]/(eps/4)) for key,v in total.items()};worst=max(ratios,key=ratios.get)
-                def metric(part,key):return part[key].error/eps
-                return bool(ratios[worst]<=1),worst,metric,{'epsilon':eps,'weightedNestedCap':eps/4,'ratios':ratios,'noBudgetDonation':True}
+                return outer_decision(total,nested,eps)
             totals,nested=self.adaptive(route,purpose,'outer',initial,callback,parent,decision)
         else:
             totals={};nested={}

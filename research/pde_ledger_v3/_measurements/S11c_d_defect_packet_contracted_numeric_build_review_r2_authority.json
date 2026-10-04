@@ -1,0 +1,17 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T12:29:49.880331+00:00",
+  "packetSha256": "df9dcb671be28ddf80459440ba8bf566aa73a630da1edf8446587dca68c4437f",
+  "archiveSha256": "218626223142aacefa9452a85bf337a21ba510f7924c90e315fb63599fdbdc9d",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 3243,
+  "bytes": 108852362,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing user/AGENTS authorization for necessary independent established-Claude/Grok source assessment in the existing two-packet research. No new recipient or physical scope; this review launch executes no science and does not create a READY gate.",
+  "scope": "Bounded numerical ordinary J and three ADDED direct weak packet contributions only; no complete packet/current/leakage/loss/inverse",
+  "noAutomaticRetry": true,
+  "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+}

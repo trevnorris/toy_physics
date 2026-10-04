@@ -1,0 +1,125 @@
+Finite selected centre-drive compatibility method
+
+Physical question: do the already retained five fields, driven by either saved
+incident transverse column, exert a first-defect-order force on the omitted
+independent centre coordinate zeta_c? This is independent of choosing the
+external holding agency. It is NOT a centre equation, free-centre uniqueness,
+new six-field model or energy/leakage calculation. The background-force check
+leaves the support measure, total R0_c, THETA generalized work and incremental
+holding law unspecified. Do not set them to zero. An answer about support is
+pending from the user and is not a premise of this source-only method.
+
+Use unchanged real omega3, LAB_HELD, RHO4_CONSTANT, saved edges, cs=sqrt6/2 and
+arbitrary amplitudes in the two saved incident columns. Keep wave epsilon and
+independent background eta/sigma orders distinct. The eventual physical path
+eta=lambda, sigma=lambda/10 may label the leading coefficient only after the
+independent orders are inspected. No new parameter values or field solutions.
+
+1. Native centre work before selected restriction
+Restore the complete original a virtual_work_shape_deriv table and the b
+slab_operator/FACE_GENERALIZED_FORCE_ROWS/CENTER_FACE_GENERALIZED_ROW. Select
+the actual (LAB_HELD, physical DELTA_W, virtual ZETA_C, RHO4_CONSTANT) case,
+retaining per-face contributions, their sum and dimensions. Keep all physical
+ZETA_C cases separately as context; no DELTA_W velocity is substituted into
+the physical ZETA_C sector. b's face_generalized_force_rows derives centre
+force from the summed weak work coefficient of delta_v_zeta_c; use the stored
+row rather than rerunning that function. Restore its actual mu_theta binding
+and arguments and compare against the original a operand through that binding
+once. No old producer, mu constructor, profile/grade, response or current call.
+
+A NEW coefficient identity may check the already saved total against
+ epsilon*delta_v_zeta_c*chi*[P_minus-P_plus
+                    - eta*W0*w1*(DwP_minus+DwP_plus)/2],
+ chi=1-Lambda_X(omega)/rho_m, Lambda_X=Lambda_X_0/(1-i*omega*tau_X).
+This is a hand candidate to test against the complete original operand, not a
+result to install. Keep both original chemical terms and their density/eta
+corrections until their actual cancellation is demonstrated. Distinguish
+unbound parameter*mu_theta/rho_br from the normalized pressure-source object.
+Keep both pressure differences AND the sum of laboratory w derivatives. No
+outward-normal derivative is silently used in place of a laboratory derivative.
+New identity operands and return precede its decision. If an extra term,
+normalization or domain is missing, stop with the actual source mismatch.
+
+The source action-to-row sign and unit pairing are taken from the actual b
+source and a virtual-work definitions; no sign is inferred from a name. c2's
+actual DELTA_W restriction consumes five U/THETA/E rows, not this centre row.
+The omitted row must be preserved explicitly. No absent centre kinetic term
+is interpreted as zero force, zero motion or a constraint.
+
+2. Exact saved face maps and first-order source ancestry
+Restore BOTH plus/minus affine-face-column-{0,1}.json with their full native
+face dictionaries, physical binding/chart, original normal-sign and source
+normalization operands/returns. These records contain full pressure, totalMu,
+totalV, load, labPressureDerivative and outwardPressureDerivative for generic
+five receiving-field coefficients at independent receiving l and q. Their
+receiving field coordinates, q(l), source tag and original units must match
+literally before NEW cross-face comparisons. The incident p is not q(l) or l.
+
+Verify the full saved direct chemical source/tag for each column, including
+its phase, unit and normalization once, and the inherited actual baseline
+pressure/chemical/velocity zeros with their input arguments. Restore the native
+flat normal-factor proof arguments (opposite +/- i*q(l)), not their producers.
+Matching labels or source flags alone do not suffice. Keep full P and normal
+maps even if Lambda_X_0 is actually zero at the selected point: pressure load
+survives that specialization. The actual physical binding must decide this.
+
+NEW cross-face identities test totalMu equality, totalV equality, P_plus-P_minus,
+DwP_plus+DwP_minus and both lab-to-outward sign maps on those complete generic
+receiving expressions, separately for both incident columns. No receiving
+inverse or numerical Fourier transform is needed: the five receiving-field
+coefficients and exact direct-source transform tags stay formal. A shared
+formal tag must be justified by the saved two-face source operands, never by
+renaming unrelated tags to force a zero. Retain original denominator domains
+and any unknown/nonzero difference; an unexplained mismatch stops.
+
+3. First-defect-order accounting and conditional conclusion
+Start from the full native centre work BEFORE selecting a leading coefficient.
+Write the accounting explicitly as C00 acting on the first-order field plus
+C10/C01 acting on the baseline incident field, plus any direct first-order
+source maps already included in the saved affine pressures. Baseline fields
+have their actual saved zeros; do not globally set all pressures or normal
+jets to zero. A profile factor times a first-order field belongs to a higher
+defect order and cannot be accidentally counted in the leading coefficient.
+
+Use the complete original per-face pressure/normal terms to verify both kinds
+of contribution. Separately record the full conditional parity identity with
+P_plus=P_minus and DwP_plus=-DwP_minus; this is not a second-order field result
+or a replacement for the degree accounting. New coefficient extraction only
+applies to this new centre-work comparison; no old retained-grade producer is
+replayed. Independent eta/sigma remain independent until the optional path.
+
+A zero establishes only COMPATIBLE_ZERO_SELECTED_CENTRE_DRIVE at the tested
+orders for the already selected five-field response class. It does not prove
+that a homogeneous centre mode is absent, that an unconstrained centre is
+unique, or that general/second-order/mixed input sectors decouple. Record
+NO_SUPPLIED_CENTRE_CLOSURE and unknown support contribution separately. A
+nonzero/unknown selected drive blocks a physical five-field work reduction and
+requires a genuine model decision; do not invent stiffness, inertia, damping,
+a constraint or a new inverse to remove it. Reflection remains survival.
+
+4. Controls and evidence
+At the UNBOUND original centre row, mutate one actual lower pressure term and
+one actual lower laboratory normal-jet sign through the same full coefficient
+map. Keep full inputs and their changed-minus-baseline result. The normal-jet
+control can be live at eta order even when its selected baseline first-order
+contribution is zero. Explicitly distinguish that formal row sensitivity from
+selected first-order sensitivity; never claim an inapplicable control passed.
+For the selected affine pressure comparison, a one-face sign mutation must
+move the complete coefficient map if live. Unknown/zero movement is reported
+as inapplicable or unresolved, never fixed by choosing field values. No
+physical amplitude, dissipation or power is assigned by a formal control.
+
+All completed background/source/receiving records remain immutable, restored
+with full operand-return joins and exact file hashes. All new algebra persists
+before checks. No old background geometry, source, profile, grade, response,
+current, moment, rule or numerical work is replayed. No generic AST verifier,
+recovery machinery, integral, solver, field, current or leakage value.
+
+This is METHOD assessment only. A faithful concrete worker and actual build
+assessment/readiness are required before science. Any future science must use
+the unchanged shared no-deadline guard around the existing supervisor with
+4GiB native/cgroup in16GiB pool, zero swap, oneCPU/thread,32tasks,4GiB host reserve,
+desktop priority and hookFIRST to01a0e01b-ef84-7192-817f-584cda5d339b. Claude only,
+no automatic retry/fallback/scheduler changes/model polling. All support,
+full nonuniform/exterior work, physical20/02, end-current and threshold
+remainder obligations remain. Mixed numerical recovery stays PARKED.

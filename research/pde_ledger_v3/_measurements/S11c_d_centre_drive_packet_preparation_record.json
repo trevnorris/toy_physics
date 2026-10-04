@@ -1,0 +1,80 @@
+{
+  "status": "PRELAUNCH_PACKET_METADATA_SCHEMA_FIX_NO_REVIEWER_OR_SCIENCE_STARTED",
+  "preservedDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/centre-drive-preparation/freeze-metadata-failure-01",
+  "files": {
+    "failed-freeze.py": {
+      "sha256": "6c7adc8a60983f80eaf5234c3526b6259f553c601828fa12904a237f39984aa2",
+      "bytes": 17565
+    },
+    "failure.json": {
+      "sha256": "f8b7c7b3a347ee0989e03ee5547e21825f635913326be5458fb20685c20a93f7",
+      "bytes": 308
+    },
+    "packet/native-directives/S11c_a_SHARED_PHYSICS.md": {
+      "sha256": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4",
+      "bytes": 28887
+    },
+    "packet/native-directives/S11c_b_SHARED_PHYSICS.md": {
+      "sha256": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89",
+      "bytes": 39529
+    },
+    "packet/native-directives/S11c_d_SHARED_PHYSICS.md": {
+      "sha256": "fd76447db9c6f2b31d7a72219f4705052023c45788392ec70d761f03aea626c5",
+      "bytes": 67800
+    },
+    "packet/native-registry/operator.json": {
+      "sha256": "73c035364f2acfb13926649616c1b2cb7e6d6b85426c365c98bc553e77d94ac8",
+      "bytes": 40160
+    },
+    "packet/native-source/S11c_a_exports.py": {
+      "sha256": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+      "bytes": 17217022
+    },
+    "packet/native-source/S11c_a_interface_geometry_sympy_audit.py": {
+      "sha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "bytes": 101558
+    },
+    "packet/native-source/S11c_b_brane_operator_sympy_audit.py": {
+      "sha256": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+      "bytes": 203199
+    },
+    "packet/native-source/S11c_b_exports.py": {
+      "sha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "bytes": 61624077
+    },
+    "packet/native-source/S11c_c2_selfenergy_fold_sympy_audit.py": {
+      "sha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "bytes": 102548
+    },
+    "packet/plan.txt": {
+      "sha256": "e29f4cfdfa2f34e5cf6e67778199d3816a440be5c7fdedf3381ec1a7c190da0f",
+      "bytes": 8283
+    },
+    "packet/review-prompt.md": {
+      "sha256": "64ba250f0fe539c5eba8ab7d591cb737c16ea5089ab2aa298d74b3af36b80ce5",
+      "bytes": 2502
+    },
+    "packet/saved-producer-source/S11c_d_background_force_pairing.py": {
+      "sha256": "4dc8c874fe2cbab0678603168045da0697abd5dd8eabc41ba02a5d11943d3651",
+      "bytes": 19141
+    },
+    "packet/saved-producer-source/S11c_d_defect_raw_increment.py": {
+      "sha256": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+      "bytes": 48444
+    },
+    "packet/saved-producer-source/S11c_d_first_order_receiving_blocks.py": {
+      "sha256": "9bd26b957d3682a6bf513c603a931a071cbab1e9c64c3fe0b43317e92fa8e29e",
+      "bytes": 26653
+    },
+    "packet/saved-producer-source/S11c_d_first_order_source.py": {
+      "sha256": "651cb42c5f4eba28f331902dddfb77ff842f3ecac6b9fc34360cb3a5fe1e18de",
+      "bytes": 24392
+    }
+  },
+  "explanation": "Original registry views identify their source via sourcePacketPath; the new slab view has sourcePath. The packet preparation now resolves the two original export filenames and verifies their complete original pinned hashes. No original evidence, algebra or method changed.",
+  "originalFreezeScriptSha256": "6c7adc8a60983f80eaf5234c3526b6259f553c601828fa12904a237f39984aa2",
+  "correctedFreezeScriptSha256": "00c52535fb169ba4c2b3f73ecd52b50de3ffdc80d2a5818f58e490a566a1e584",
+  "reviewersLaunchedDuringFailure": 0,
+  "scienceCalls": 0,
+  "noScientificRetry": true
+}

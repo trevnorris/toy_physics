@@ -217,3 +217,6 @@ research/pde_ledger_v3/_measurements/S11c_d_nonuniform_work_20261004_r3_review_s
 research/pde_ledger_v3/_measurements/S11c_d_nonuniform_work_20261004_r4_review_sources.json -diff
 research/pde_ledger_v3/_measurements/S11c_d_nonuniform_work_20261004_r5_review_sources.json -diff
 research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_review_sources.json -diff
+
+# Frozen selected centre-drive physics method evidence index.
+research/pde_ledger_v3/_measurements/S11c_d_centre_drive_review_sources.json -diff

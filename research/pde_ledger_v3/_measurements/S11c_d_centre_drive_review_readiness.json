@@ -1,0 +1,52 @@
+{
+  "status": "FIXED_SELECTED_CENTRE_DRIVE_METHOD_PACKET_VERIFIED",
+  "packetSha256": "4811a5c58b4ccd353ade15edd33de2588b8845983545833aef5df803daee21c4",
+  "archiveSha256": "e844ed99df40650374a4fc2222e3b3aa4410a694bad42b898588c604467b00c9",
+  "files": 3109,
+  "bytes": 224790640,
+  "methodSha256": "e29f4cfdfa2f34e5cf6e67778199d3816a440be5c7fdedf3381ec1a7c190da0f",
+  "promptSha256": "64ba250f0fe539c5eba8ab7d591cb737c16ea5089ab2aa298d74b3af36b80ce5",
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "completionMessageSha256": "879347bb2fed0ae2705a560a4cd6afd259f6ca393dd349a2be0d2ef8203fee3e",
+  "watcherSourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+  "sourceHashesChecked": 3108,
+  "literalRegistryViewsChecked": 10,
+  "losslessViewsChecked": 49,
+  "sourceViewsChecked": 5,
+  "artifactCensus": {
+    "background-force-pairing-01": {
+      "files": 329,
+      "bytes": 2063374
+    },
+    "first-order-source-01": {
+      "files": 914,
+      "bytes": 32645908
+    },
+    "first-order-receiving-blocks-01": {
+      "files": 1643,
+      "bytes": 51017836
+    },
+    "first_order_source-additional-inputs": 127,
+    "first_order_receiving_blocks-additional-inputs": 2
+  },
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "existingReviewerRunnerReusedUnchanged": true,
+  "backgroundResultRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_record.json",
+  "backgroundResultRecordSha256": "fe83118625e383f4342b175981cac061aff0cdc0104d8b3f98bfc0ac8aefcfb8",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/centre-drive-method-review",
+  "scope": {
+    "kind": "SELECTED_CENTRE_DRIVE_COMPATIBILITY_METHOD_ONLY",
+    "supportChoice": "PENDING_USER_INPUT_NOT_A_PREMISE",
+    "sourceNewIdentitiesUnexecuted": true,
+    "workerExists": false,
+    "gateExists": false,
+    "scienceCalls": 0,
+    "mixedRecovery": "PARKED",
+    "leakageFactor": null
+  }
+}

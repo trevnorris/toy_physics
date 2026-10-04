@@ -1,0 +1,65 @@
+{
+  "status": "PINNED_READY_FOR_ONE_GUARDED_NATIVE_PRESSURE_UNIT_BRIDGE",
+  "createdUtc": "2026-10-04T03:25:43.374112+00:00",
+  "gate": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_native_units_gate.json",
+  "gateSha256": "7d628759e3d78f8874015ea465988f5d34269d647a2bab326dec8b98697a8aa8",
+  "reviewCommit": "3783cc7c",
+  "buildCommit": "cb194624",
+  "sourcePinsChecked": 35,
+  "additionalIdentityCopies": 16,
+  "additionalIndexSha256": "8a462f29911e6fde2b8d4710b0db0a202fd568e01f7dd2ba3718278e04c09c8f",
+  "actualLauncherVerifyPassed": true,
+  "scientificImportsOrRestoration": false,
+  "workerLaunched": false,
+  "noDeadline": true,
+  "scienceRunsAuthorized": 1,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "automaticRetry": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Native unbound pressure-source/closure unit homogeneity bridge only; grade/field/kernel-measure/all-address transport remains required",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": false,
+    "addressUnitCertificatesProduced": 0,
+    "noGeometryReplay": true
+  },
+  "remainingBeforeResultAcceptance": [
+    "Actual guard no-deadline/resource enforcement and supervisor invocation",
+    "Complete native cases, registry/source/flat/closure node walks and saved unit arguments",
+    "Four actual mutant-refusal controls, original consumer-unit returns and all evidence-chain records",
+    "Strict scientific stderr and stdout/checks identity",
+    "All source/copy/additional-identity posthashes",
+    "No complete pressure summand/evaluator/integral/current/loss claim from native unit bridge"
+  ]
+}

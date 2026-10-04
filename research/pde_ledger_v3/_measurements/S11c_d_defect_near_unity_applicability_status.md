@@ -870,3 +870,12 @@ review loop is opened. Four actual unit-mutant refusals, full native node walks,
 source/copy identity and effective no-deadline resource enforcement remain run
 acceptance obligations. All544summand units and numerical evaluator readiness
 remain false; no pressure action/current/loss result follows from this clearance.
+
+Fresh readiness pins the unchanged paired-clear worker and35source paths, plus
+16additional complete identity copies. The actual launcher's metadata-only
+verification passes. Host systemd is running, no guarded service was listed,
+available memory was21332119552bytes and disk free361412407296bytes at preflight;
+the unchanged guard must still make its own fresh reservation and enforce limits.
+Gate7d628759e3d78f8874015ea465988f5d34269d647a2bab326dec8b98697a8aa8
+authorizes one4GiB pooled native unit bridge without deadlines or retries.
+No native scientific unit work ran during preparation.

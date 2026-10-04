@@ -1,0 +1,26 @@
+{
+  "status": "PRELAUNCH_METADATA_CORRECTED_NO_REVIEWER_ATTEMPT",
+  "recordedUtc": "2026-10-04T23:23:45.473889+00:00",
+  "originalPreparedCommit": "337ea9d1",
+  "failure": "Shared review launcher refused at its hash predicate: static launcherSha256 contained scientific launcher hash, not reviewer launcher hash.",
+  "failureExitCode": 1,
+  "preservedFailureDirectory": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-background-build-review/prelaunch-metadata-failure-01",
+  "absentBeforeCorrection": [
+    "launch.json",
+    "start-authorized",
+    "coordinator.stdout",
+    "claude-run.json",
+    "claude.json",
+    "completion-watcher"
+  ],
+  "correction": "Preserve scientific hash as workerLauncherSha256; assign launcherSha256 to unchanged reviewer launcher. reviewLauncherSha256 remains explicit.",
+  "metadataPredicatesPassed": 8,
+  "packetSha256": "a9b352e56d84f4a58aff58feb57145495f593e42515dd7341e6d2b539b8ffef2",
+  "archiveSha256": "fdb2841ff89c397f71caea5bc21235b2b8bfc209759969cf2a227b86633b2b64",
+  "packetChanged": false,
+  "workerChanged": false,
+  "scientificManifestChanged": false,
+  "reviewerLaunchedBeforeFix": false,
+  "scientificCalls": 0,
+  "automaticReviewerRetry": false
+}

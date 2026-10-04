@@ -1,0 +1,37 @@
+{
+  "status": "SOURCE_ONLY_WAVE_ORDER_AND_ACTUAL_SAVED_GRADE_METHOD_REVISION",
+  "recordedUtc": "2026-10-04T23:01:31.172800+00:00",
+  "originalReport": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonuniform_work_20261004_r4_claude.md",
+  "originalReportSha256": "20e9eead46e6e4a5e1af4febf17446b9e4d2631c37632947aecc06212b79d37e",
+  "newPlan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonuniform_work_20261004_r5_plan.txt",
+  "newPlanSha256": "990f47ac8aad7ac9249ec99653a9e42e132671f7d8ea5da0db3ef492c13c3c8e",
+  "sourceFindings": [
+    "The actual published LAB_HELD normal[0] is (-sigma*w1_d1/2,-sigma*w1_d2/2,-sigma*w1_d3/2,s), and background measure[0] is1. The source normal_exact is normalized differently before publication. c2 reads the stored normal[0]. Its area cannot be identified with sqrt(n_exact dot n_exact) solely from source-unit-normal reasoning.",
+    "Actual published b E_W has sigma and eta*sigma terms. The proposed extra-slope face-U difference needs full and retained grade classification; it is not automatically a retained-model contradiction. The aggregate MULTIGRADE header is not an arithmetic proof of the actual powers.",
+    "Original physical_trace_fields explicitly uses zero pressure_background and velocity_background. The a traction and velocity exports are epsilon increments. They cannot serve as b epsilon0 holding traction or unknown support response.",
+    "The full force-density and physical-rate product has different orders from a virtual-work test. The new method keeps A1*t0*r1 at epsilon2, and records A1*t1 at force-density order2 while distinguishing its pairing with r0 or r1. No new computation is represented by this hand proposal."
+  ],
+  "changes": [
+    "Explicit source/case/amplitude/background-order metadata obligations for actual operands.",
+    "Separate exact normal/measure, published normal/measure and actual c2 consumer expression before raw/retained comparison.",
+    "Default unknown b traction normalization and R0_c, complete amplitude-power ledger and assignment-dependent centre zero.",
+    "Controls report live operator sensitivity or symbolic coefficient movement, never invented physical support.",
+    "Nine complete registry displays have exact plain-text and fixed160character literal chunk views so reviewers can inspect full saved values. Seven original publication/background source functions are additional text views only."
+  ],
+  "literalRegistryViewsVerified": 9,
+  "literalDisplayViewsVerified": 9,
+  "sourceViews": 33,
+  "oldManifestPinsActuallyPresent": 4,
+  "newScience": false,
+  "scientificWorkerExists": false,
+  "readyGateExists": false,
+  "scientificConstructorExecuted": false,
+  "completedWorkReplayed": false,
+  "noPeerReportShared": true,
+  "reviewers": [
+    "claude"
+  ],
+  "equationsAndInputsUnchanged": true,
+  "physicsChoiceMade": false,
+  "firstConcreteBuild": "Finite support and centre consistency only; later work/port/survival requires separate actual readiness."
+}

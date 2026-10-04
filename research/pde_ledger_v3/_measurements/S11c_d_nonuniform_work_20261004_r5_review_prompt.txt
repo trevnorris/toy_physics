@@ -1,0 +1,55 @@
+Assess this fixed WAVE-ORDER / SAVED-GRADE FORCE-PAIRING AND CENTRE method.
+Read/Glob/Grep on input/ only. No execution, CAS restoration, old producer call,
+opaque decode or numerical evaluation. No worker, new result or READY gate.
+
+Read guide.txt, then plan2a and the READABLE original registry displays/chunks.
+Complete original sources, published constructor strings and all saved science
+remain supplied. Display/chunk views are literal strings with exact join
+receipts, not a mathematical reconstruction. No peer report/commentary supplied.
+
+The finite first build is only support/centre consistency; later physical
+nonuniform work and total survival require their own concrete readiness.
+Assess explicit provenance and wave order: b epsilon0 holding forces are not
+the a epsilon1 acoustic traction increments. The a physical_trace_fields source
+sets background pressure and velocity to zero. The complete product ledger
+separates physical rates (r0=0) from independent virtual tests. A1*t0*r1 belongs
+to quadratic physical work, while A1*t1 is second-order force density; its work
+order depends on the rate. Unknown support/rate/second-order terms stay unknown.
+
+Use actual stored operands for the area question: published LAB_HELD
+face_normal VALUE[0]=(-sigma*w1_d1/2,-sigma*w1_d2/2,-sigma*w1_d3/2,s), and the
+published background face_measure VALUE[0]=1. c2 reads THAT stored normal[0].
+The exact source unit normal and true-area D are different representations.
+Do not replace n_saved by n_exact when inspecting sqrt(sum(n_saved_i**2)).
+No statement that c2 area is identically1 or physically drops a Jacobian may
+be inferred from the untruncated source alone. Keep full and retained
+comparisons separate, including unavailable higher-order measure/traction debt.
+
+For the background force representation inspect actual saved E_W, not merely
+the formal e_force symbol or MULTIGRADE header: it has sigma and eta*sigma
+terms. The face-U candidate contains an additional profile slope. The finite
+screen must classify the COMPLETE difference and its grades before calling it
+a retained-order mismatch. It must not hide discarded-order debt either.
+The face-centre cancellation from t4,s=s*e_force/W0 is assignment-dependent,
+not independent evidence of a uniquely determined centre force.
+
+Original b traction area convention remains unjoined by default; record
+TRACTION_MEASURE_UNSUPPLIED and total R0_c UNSUPPLIED unless an actual original
+source supplies that join. The a increment is sourced from per-true-area
+traction, but cannot supply the missing b background convention. Keep all body
+and face operands/compatibility conditions without double counting or imposing
+a support law. Symbol-coefficient controls are formal sensitivity, not a resolved
+physical support or power. A missing pairing/closure is an allowed finite
+outcome, not result clearance. No user material/agency choice is made here.
+
+Formal Q_port remains distinct from total transverse survival, including
+reflection. Physical20/02, second-order end-current and threshold-remainder
+obligations remain. No field/Fourier/power integral or leakage value is proposed.
+
+Begin with exactly one verdict:
+CLEAR FOR THIS WAVE-ORDER AND SAVED-GRADE CENTRE WORK METHOD
+NEEDS REVISION FOR THIS WAVE-ORDER AND SAVED-GRADE CENTRE WORK METHOD
+Give concrete source-based reasons and necessary changes. Distinguish source
+formula, actual stored approximation, and new runtime comparison. Disclose
+reading coverage and uncertainty; separate optional wording from substantive
+physics. This is not a worker, result, support-law or leakage acceptance.

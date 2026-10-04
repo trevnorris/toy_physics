@@ -37,3 +37,11 @@ They do not execute native unit walks or certify this scientific result.
 The inherited gamma inference, accepted algebra and analytic Fourier/
 distribution conventions remain explicit dependencies. Current evaluator
 readiness and full action values are excluded.
+
+For the flat route control, inspect the full selected address (including its
+saved measure, responseMap.flatSupport, deltaSupport, depths and nested
+fullFactorProof.completeNormalMap), its source transport input/return and
+complete adapter. The worker uses those operands in the baseline and mutation,
+not a manufactured coefficient or a unit-only proxy. Synthetic route tests
+exercise refusal and a deliberately broken assembly that masks the missing
+delta; that defective assembly must not pass the control.

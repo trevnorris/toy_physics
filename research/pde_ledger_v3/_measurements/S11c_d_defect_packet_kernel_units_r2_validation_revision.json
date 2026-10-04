@@ -1,0 +1,22 @@
+{
+  "status": "SUBSTANTIVE_FLAT_SUPPORT_CONTROL_VALIDATION_REVISION_READY_FOR_ASSESSMENT",
+  "baselineCommit": "13af32da",
+  "baselinePacketSha256": "d9889c14436188a3d172f55026ebf256a831d8eef2fdcd194794c9795c58e2cf",
+  "scienceRun": false,
+  "authorClearance": false,
+  "savedInputsUnchanged": 2521,
+  "equationsPhysicalInputsMethodUnchanged": true,
+  "changes": [
+    "Read actual saved response measure/support/depth route before complete unit assembly.",
+    "Use same assembly and acceptance predicate for baseline flat coefficient with reduced measure, supported unreduced measure, and removal of delta only.",
+    "Persist full control assembly operands/returns before response guard.",
+    "Correct nested normal-map evidence selector; no new argument map derived.",
+    "Pin forthcoming corrected review record."
+  ],
+  "toolingOnlyCorrection": "normalMap selector corrected from absent top-level key to actual fullFactorProof.completeNormalMap; synthetic decoy/missing-key tests cover it.",
+  "substantiveAssessmentRequired": true,
+  "tests": 65,
+  "testLogSha256": "0a6f72a77c428129dfc40758120932477426451572250732d9bc5c3f97f32130",
+  "noCompletedFunctionReplay": true,
+  "noGateExists": true
+}

@@ -1127,3 +1127,14 @@ addressed control, then obtain assessment of the substantive validation change.
 No science or READY gate exists. Optional advice and partial coverage remain in
 the literal reports. Grok CLI Read errors and internal recovery diagnostic are
 preserved; no agent transport retry was made.
+
+Prepared corrected kernel-unit build for fresh substantive assessment. The
+flat control now joins the actual saved response measure/support/depths and
+uses the same complete dimensional assembly and acceptance predicate as the
+baseline. It restores the reduced coefficient into dl dk with its delta and
+then removes only that delta, preserving both full returns before refusal.
+The nested normal-map evidence selector is also corrected. All 2,521 saved
+inputs, equations, physical inputs, methods and shared helpers are unchanged.
+65 synthetic/source-metadata tests pass; no native science has run. Revised
+packet 3b6123f4c849a334bf34b5562700e78cde33ad887ee2786b6342471e1b3a01bf
+contains 2,549 files / 17,860,183 bytes with no peer reports. No READY gate exists.

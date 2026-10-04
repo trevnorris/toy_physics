@@ -2,6 +2,7 @@
 import ast,hashlib,importlib.util,json,sys,tempfile,unittest
 from pathlib import Path
 from fractions import Fraction as F
+from unittest.mock import patch
 M=Path(__file__).parent
 spec=importlib.util.spec_from_file_location('new_kernel_unit_helpers',M/'S11c_d_defect_packet_kernel_units_lib.py');K=importlib.util.module_from_spec(spec);spec.loader.exec_module(K)
 class SyntheticTests(unittest.TestCase):
@@ -88,5 +89,58 @@ class MetadataTests(unittest.TestCase):
                 if isinstance(n,ast.Import):self.assertFalse(any(a.name in ('sympy','mpmath','pickle') for a in n.names))
     def test_resources(self):self.assertIsNone(self.m['resources']['durationLimits']);self.assertEqual(self.m['resources']['memoryBytes'],4*1024**3)
     def test_scope(self):self.assertTrue(self.m['scope']['kernelWaveMeasureTransportOnly']);self.assertFalse(self.m['completedFunctionsReplayed'])
+
+class RouteTests(unittest.TestCase):
+    def setUp(self):
+        # Manufactured address and dimensional quantities; no saved science evaluated.
+        self.a={'addressId':7,'component':'NATIVE_FLAT','measure':'dl','responseMap':{'flatSupport':'k=l'},'responseInputDepth':'q(l)','responseOutputDepth':'q(l)','deltaSupport':['k=l'],'status':'FORMAL_SYNTHETIC','fullFactorProof':{'completeNormalMap':[['dummy-q','dummy-mapped-q']]}}
+        self.args=((1,-1,0),K.ZERO,(-5,0,1),K.LENGTH)
+    def baseline(self):return K.assemble_route(*self.args,K.address_route(self.a))
+    def test_reduced_and_unreduced_agree_mutant_refuses(self):
+        b=self.baseline();r=K.flat_delta_control(self.a,*self.args,b)
+        self.assertTrue(r['responded']);self.assertTrue(r['mutantRefusedBySameDimensionPredicate'])
+        self.assertEqual(r['baselineUnreducedWithDelta']['total'],b['total'])
+        self.assertEqual(r['mutantWithoutDelta']['total'],(-3,-1,1))
+        self.assertEqual(r['mutantWithoutDelta']['measure'],r['baselineUnreducedWithDelta']['measure'])
+        self.assertEqual(r['mutantWithoutDelta']['coefficientKernel'],b['coefficientKernel'])
+    def test_wrong_saved_measure_refuses(self):
+        self.a['measure']='dl dk'
+        with self.assertRaises(ValueError):K.address_route(self.a)
+    def test_missing_actual_delta_refuses(self):
+        self.a['deltaSupport']=[]
+        with self.assertRaises(ValueError):K.address_route(self.a)
+    def test_wrong_actual_depth_refuses(self):
+        self.a['responseInputDepth']='q(k)'
+        with self.assertRaises(ValueError):K.address_route(self.a)
+    def test_missing_support_refuses(self):
+        self.a['responseMap']['flatSupport']=None
+        with self.assertRaises(ValueError):K.address_route(self.a)
+    def test_offdiagonal_route_is_double_measure(self):
+        self.a.update(component='NATIVE_SLOPE',measure='dl dk',responseInputDepth='q(k)',responseMap={'flatSupport':None})
+        r=K.assemble_route(*self.args,K.address_route(self.a));self.assertEqual(r['measure'],(-2,0,0))
+    def test_offdiagonal_false_flat_support_refuses(self):
+        self.a.update(component='NATIVE_SLOPE',measure='dl dk',responseInputDepth='q(k)')
+        with self.assertRaises(ValueError):K.address_route(self.a)
+    def test_zero_control_refuses(self):
+        b=self.baseline();self.a['status']='EXACT_ZERO_SYNTHETIC'
+        with self.assertRaises(ValueError):K.flat_delta_control(self.a,*self.args,b)
+    def test_unrelated_baseline_refuses(self):
+        b=self.baseline();b['route']['addressId']=8
+        with self.assertRaises(ValueError):K.flat_delta_control(self.a,*self.args,b)
+    def test_masked_measure_defect_does_not_pass_control(self):
+        b=self.baseline();real=K.assemble_route
+        def broken(*args):
+            r=real(*args);r['total']=b['total'];return r
+        with patch.object(K,'assemble_route',side_effect=broken):r=K.flat_delta_control(self.a,*self.args,b)
+        self.assertFalse(r['responded']);self.assertFalse(r['mutantRefusedBySameDimensionPredicate'])
+    def test_double_delta_refuses(self):
+        route=K.address_route(self.a);route['explicitDelta']='k=l'
+        with self.assertRaises(ValueError):K.assemble_route(*self.args,route)
+    def test_nested_normal_map(self):
+        self.a['completeNormalMap']=['wrong top-level decoy']
+        self.assertEqual(K.normal_map(self.a),[['dummy-q','dummy-mapped-q']])
+    def test_missing_nested_normal_map_refuses(self):
+        self.a['fullFactorProof']={}
+        with self.assertRaises(KeyError):K.normal_map(self.a)
 
 if __name__=='__main__':unittest.main()

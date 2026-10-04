@@ -263,14 +263,13 @@ def run(m,J,K):
         require(a['epsilonCount']==(0 if a['status'].startswith('EXACT_ZERO') else 1),'epsilon exactly once or explicit zero')
         jet=a['jet'];require(jet['channel']=='e_W' and len(jet['spatialOrders'])==3 and all(type(n) is int and n>=0 for n in [jet['timeOrder'],*jet['spatialOrders']]),'actual independent physical jet')
         jdim=(-sum(jet['spatialOrders']),-jet['timeOrder'],0)
-        flat=a['component']=='NATIVE_FLAT';measure=K.MOMENTUM if flat else K.scale(K.MOMENTUM,2)
-        r=K.total_unit(sr['sourceRequiredUnit'],jdim,sr['consumerRequiredUnit'],template_units[label],measure)
+        route=K.address_route(a)
+        r=K.assemble_route(sr['sourceRequiredUnit'],jdim,sr['consumerRequiredUnit'],template_units[label],route)
         # Native numeric wave factor was joined above; its accepted complete
         # p/time/edge expression keeps derivative-before-coefficient order.
-        r.update(addressId=ident,status=a['status'],flatSupport=a['responseMap'].get('flatSupport'),normalMap=a.get('completeNormalMap'),sourceUnitProof='inherited actual source address return',zeroHasIntrinsicDimension=False,nonzero=not a['status'].startswith('EXACT_ZERO'))
+        r.update(addressId=ident,status=a['status'],flatSupport=a['responseMap']['flatSupport'],normalMap=K.normal_map(a),sourceUnitProof='inherited actual source address return',zeroHasIntrinsicDimension=False,nonzero=not a['status'].startswith('EXACT_ZERO'))
         J.emit('summand-'+str(ident)+'-decision',r)
-        require(r['physicalSource']==(1,-1,0) and r['X']==(2,-1,0) and r['total']==(-2,-1,1),'full addressed pressure dimension')
-        if flat:require(a['responseMap']['flatSupport'] is not None,'actual delta-supported flat source')
+        require(K.pressure_dimension(r),'full addressed pressure dimension')
         # Check finite-bank family signatures only as interface evidence. No
         # equality of argument values or cache reuse is claimed by this join.
         matches=[]
@@ -299,8 +298,11 @@ def run(m,J,K):
     J.start('control-a-unitless',{'actualSource':contracts['fragments']['inner-kernel-components'],'baselineEnvironment':{**env,'A1':Aunit,'A2':Aunit},'mutation':{'a':K.ZERO}})
     mutated,w=K.statements(fn,{**env,'A1':Aunit,'A2':Aunit,'a':K.ZERO});J.emit('control-a-unitless-walk',w.events);r={'baseline':densities,'mutant':mutated,'responded':mutated[0]!=densities[0],'notNumericalResponse':True};J.emit('control-a-unitless-decision',r);require(r['responded'],'actual J dimensional a control');J.finish(r);controls.append(r)
     candidate=next(v for v in results if v['nonzero'] and v['flatSupport'] is not None)
-    J.start('control-flat-delta',{'actualSummand':candidate,'mutation':'Use actual flat coefficient in unreduced dl dk route but omit delta(l-k)'})
-    baseline=K.add(candidate['kernel'],K.LENGTH);mutant=candidate['kernel'];r={'actualAddress':candidate['addressId'],'fullKernelWithDelta':baseline,'mutantWithoutDelta':mutant,'responded':baseline!=mutant,'notNumericalResponse':True};J.emit('control-flat-delta-decision',r);require(r['responded'],'actual supported flat delta control');J.finish(r);controls.append(r)
+    a=next(v for v in selected if v['addressId']==candidate['addressId']);sr=get('source/address-'+str(a['addressId'])+'-return.json')
+    label='-'.join((a['face'],a['slot'],a['component']));jet=a['jet'];jdim=(-sum(jet['spatialOrders']),-jet['timeOrder'],0)
+    J.start('control-flat-delta',{'actualAddress':a,'actualSourceTransport':sr,'actualAdapter':adapters['definitions'][label],'actualSummand':candidate,'jetUnit':jdim,'coefficientKernelUnit':template_units[label],'requiredDimension':[-2,-1,1],'mutation':'Keep actual flat coefficient and both dl dk integrations; remove only delta(k-l) from the supported unreduced route.'})
+    r=K.flat_delta_control(a,sr['sourceRequiredUnit'],jdim,sr['consumerRequiredUnit'],template_units[label],candidate)
+    J.emit('control-flat-delta-decision',r);require(r['responded'],'actual supported flat delta control');J.finish(r);controls.append(r)
     J.emit('complete-summand-dimensions',results)
     return {'status':'BOUNDED_PACKET_KERNEL_WAVE_MEASURE_UNIT_TRANSPORT_COMPLETE','selectedAddresses':len(results),'formalAddresses':sum(v['nonzero'] for v in results),'templates':len(template_units),'newControls':controls,'restoredProfileControl':True,'pressureSummandUnitsComplete':True,'numericPolynomialIndependentlyDimensional':False,'numericalEvaluatorReady':False,'newIntegralOrAction':False,'priorFunctionsReplayed':False,'limits':['Dimensional homogeneity and original accepted algebra, including inferred gamma units, remain dependencies.','Unit consistency and sensitivity do not prove numerical value or common kernel convention.','No uniform quadrature error, exact cache matches, full outer evaluator, action/current/loss or sweep.']}
 

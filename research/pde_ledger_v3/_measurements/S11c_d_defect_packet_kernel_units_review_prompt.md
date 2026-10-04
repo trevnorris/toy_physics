@@ -13,6 +13,11 @@ all20templates and544address ancestry including zeros; wave/Fourier ordering,
 normal signs, flat support, separate height measures, and applicable controls.
 Check the actual caller/generic-source/accepted proof joins, not unit labels or
 file counts alone. Old algebra/registry inference is an explicit dependency.
+Inspect library.py::address_route/assemble_route/pressure_dimension and the
+actual live flat control: reduced single-dl baseline, same coefficient with
+delta(k-l) in dl dk, then removal of only that delta through the same complete
+assembly and acceptance predicate. Check saved measure/support/depth joins,
+full operands before decisions and the nested complete normal-map selector.
 No old scientific function, bank, rule, transform or integral may be replayed.
 
 Return literally CLEAR FOR THIS BOUNDED KERNEL WAVE/MEASURE UNIT-TRANSPORT BUILD

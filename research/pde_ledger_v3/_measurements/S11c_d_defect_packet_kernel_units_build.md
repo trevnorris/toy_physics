@@ -83,6 +83,20 @@ from an actual live flat address. The previously responsive missing-profile-L
 control is restored, not repeated. These are dimensional sensitivity checks,
 not numerical response or independent correctness evidence.
 
+The flat control uses the same complete summand assembly and dimensional
+predicate as all baseline addresses. The baseline route reads the saved
+`measure`, `flatSupport`, `deltaSupport` and input/output-depth map. It refuses
+an inconsistent flat or off-diagonal route. For one actual live flat address,
+the original reduced coefficient is inserted in `dl dk` with delta(k-l), which
+must match the original single-dl total. The mutant removes only that delta,
+retaining both integrations and the same source, jet, consumer and coefficient.
+Both complete assembly returns are saved before requiring that the supported
+route passes and the mutant fails the baseline dimensional predicate. A unit
+tuple difference without full summand refusal is insufficient. This is a
+dimensional route check, not a computation of a delta distribution or a packet.
+The decision also preserves `fullFactorProof.completeNormalMap` from its actual
+nested address location; it does not derive a new momentum map.
+
 ## Evidence and boundary
 
 The manifest supplies complete JSON operands, original source contracts and

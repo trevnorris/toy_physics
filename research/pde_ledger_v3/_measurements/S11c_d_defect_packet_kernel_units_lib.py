@@ -127,3 +127,60 @@ def inherit_zero(args,ret):
 def total_unit(source,jet,consumer,kernel,measure):
     physical_source=add(unit(source),unit(jet));X=add(physical_source,LENGTH);Y=add(unit(consumer),LENGTH)
     return {'physicalSource':physical_source,'X':X,'Y':Y,'kernel':unit(kernel),'measure':unit(measure),'total':add(add(X,Y),add(unit(kernel),unit(measure)))}
+
+
+def address_route(address):
+    """Read the saved reduced response measure and its actual support."""
+    flat=address['component']=='NATIVE_FLAT'
+    support=address['responseMap']['flatSupport']
+    require(address['measure']==('dl' if flat else 'dl dk'),'actual saved response measure')
+    require(support==('k=l' if flat else None),'actual saved response support')
+    require(address['responseInputDepth']==('q(l)' if flat else 'q(k)') and address['responseOutputDepth']=='q(l)','saved support depth map')
+    if flat:require('k=l' in address['deltaSupport'],'original flat delta support')
+    return {'addressId':address['addressId'],'savedMeasure':address['measure'],
+            'savedFlatSupport':support,'measureVariables':['l'] if flat else ['l','k'],
+            'explicitDelta':None,'deltaReduced':flat}
+
+
+def assemble_route(source,jet,consumer,kernel,route):
+    """Same complete summand assembly for reduced, supported and mutant routes."""
+    require(route['measureVariables'] in (['l'],['l','k']),'known response integration variables')
+    delta=route['explicitDelta']
+    require(delta in (None,'k=l'),'known response delta')
+    if delta is not None:
+        require(route['savedFlatSupport']==delta and route['measureVariables']==['l','k'] and route['deltaReduced'] is False,'applicable unreduced response delta')
+    if route['deltaReduced']:
+        require(route['savedFlatSupport']=='k=l' and route['measureVariables']==['l'] and delta is None,'single reduced delta use')
+    effective_kernel=add(unit(kernel),LENGTH) if delta is not None else unit(kernel)
+    result=total_unit(source,jet,consumer,effective_kernel,scale(MOMENTUM,len(route['measureVariables'])))
+    result.update(route=dict(route),coefficientKernel=unit(kernel))
+    return result
+
+
+def pressure_dimension(result):
+    return result['physicalSource']==(1,-1,0) and result['X']==(2,-1,0) and result['total']==(-2,-1,1)
+
+
+def normal_map(address):
+    result=address['fullFactorProof']['completeNormalMap']
+    require(type(result) is list,'actual nested complete normal map')
+    return result
+
+
+def flat_delta_control(address,source,jet,consumer,kernel,baseline):
+    route=address_route(address)
+    require(route['deltaReduced'] is True and not address['status'].startswith('EXACT_ZERO'),'applicable live flat address')
+    require(baseline['route']==route and baseline['coefficientKernel']==unit(kernel),'same original assembled address and coefficient')
+    supported_route={**route,'measureVariables':['l','k'],'explicitDelta':'k=l','deltaReduced':False}
+    mutant_route={**supported_route,'explicitDelta':None}
+    supported=assemble_route(source,jet,consumer,kernel,supported_route)
+    mutant=assemble_route(source,jet,consumer,kernel,mutant_route)
+    # The caller persists both full returns before requiring the decision.
+    supported_ok=pressure_dimension(supported) and supported['total']==baseline['total']
+    mutant_refused=not pressure_dimension(mutant)
+    return {'actualAddress':address['addressId'],'baselineReduced':baseline,
+            'baselineUnreducedWithDelta':supported,'mutantWithoutDelta':mutant,
+            'baselineAccepted':pressure_dimension(baseline),'supportedAccepted':supported_ok,
+            'mutantRefusedBySameDimensionPredicate':mutant_refused,
+            'responded':pressure_dimension(baseline) and supported_ok and mutant_refused and mutant['total']!=baseline['total'],
+            'notNumericalResponse':True}

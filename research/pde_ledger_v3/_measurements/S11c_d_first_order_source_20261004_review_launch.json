@@ -1,0 +1,70 @@
+{
+  "status": "CLAUDE_ONLY_FIRST_ORDER_SOURCE_METHOD_REVIEW_RUNNING",
+  "checkedUtc": "2026-10-04T17:03:34.415828+00:00",
+  "preparedCommit": "dece515e",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-source-method-review",
+  "launch": {
+    "jobPid": 1734043,
+    "watcherPid": 1734044,
+    "packetSha256": "b6b1e56181ce1ad4465ef6144913c3c44b18f176c834e12bc1bec3ce1dad3e64",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "receipt": {
+    "engine": "claude",
+    "sessionId": "7a2ae833-4a1a-438d-b721-b33918f3c4ae",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "7a2ae833-4a1a-438d-b721-b33918f3c4ae"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-source-method-review/claude/work",
+    "startedUtc": "2026-10-04T17:03:12.879890+00:00",
+    "packetSha256": "b6b1e56181ce1ad4465ef6144913c3c44b18f176c834e12bc1bec3ce1dad3e64",
+    "promptSha256": "f21290f57ee4973fb686182921d77b9cbde3e3305ec9b14eb1aac3e3263a9041",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1734050
+  },
+  "hookStatus": "waiting",
+  "privateCopyFiles": 135,
+  "allPrivateCopiesMatch": true,
+  "coordinatorStderrBytes": 0,
+  "scope": {
+    "target": "First-order transverse source algebra and conditional pressure reduction",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "samePhysicalInputs": true,
+    "handSourceIdentityVerified": false,
+    "newScientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "forcedResponseRegularityEstablished": false,
+    "leakageFactor": null,
+    "recoveryParked": true
+  },
+  "scienceCalls": 0,
+  "noModelPolling": true
+}

@@ -1,0 +1,32 @@
+{
+  "status": "SOURCE_ONLY_SUPPORT_AND_CENTRE_METHOD_REVISION",
+  "recordedUtc": "2026-10-04T22:36:12.967998+00:00",
+  "originalReport": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonuniform_work_20261004_r2_claude.md",
+  "originalReportSha256": "0ac10e71c60e9647c79a2abb4937d1994d65b93ebd0e72a58ac3cf21c3363467",
+  "newPlan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonuniform_work_20261004_r3_plan.txt",
+  "newPlanSha256": "a031bdcff0d1a96cbb9f05ad3671616091cca1c4e5e06fcd1a47cd671c1a0a43",
+  "sourceFindings": [
+    "Complete published background operator/support entries are arithmetic source operands. Their literal residual export includes16Equivalent and36Not constructors; it is not an accepted arithmetic force-zero certificate. Original source/bytes are preserved. A new arithmetic work comparison must be separately derived under containment.",
+    "Original input contains no f_hold/t_hold/zeta_c parameter bindings. This source-level census does not by itself decide stationary averaged work, support response or centre parity.",
+    "Original c2 REPRESENTATION is DELTA_W and expanded_rows selects five internal rows. Original b FACE_GENERALIZED_FORCE_ROWS also preserves a centre row with pressure differences and normal-jet sums. The restriction is not a proven general centre closure."
+  ],
+  "changes": [
+    "Restore/classify actual admissibility operands, free support bindings and all amplitude/defect orders. Keep stationary existence separate from averaged work.",
+    "Include independent centre work before specialization and test complete pressure/normal-jet/parity compatibility using original source maps. No centre inertia, clamp or inverse invented.",
+    "Retain two independent expansion axes and possible second-order wave-field work. Clarify exact shape parameter and spatial jet-depth versus background-amplitude order.",
+    "Add applicable support/centre controls and preserve unknown decisions. Formal Q_port remains distinct from total survival."
+  ],
+  "literalRegistryViewsVerified": 3,
+  "sourceViews": 16,
+  "newScience": false,
+  "scientificWorkerExists": false,
+  "readyGateExists": false,
+  "scientificConstructorExecuted": false,
+  "completedWorkReplayed": false,
+  "noPeerReportShared": true,
+  "reviewers": [
+    "claude"
+  ],
+  "equationsAndInputsUnchanged": true,
+  "physicsChoiceMade": false
+}

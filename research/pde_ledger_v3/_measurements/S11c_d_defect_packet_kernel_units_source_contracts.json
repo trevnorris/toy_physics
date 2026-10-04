@@ -1,0 +1,156 @@
+{
+  "fragments": {
+    "preflight-mu": {
+      "name": "preflight-mu",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight.py",
+      "line": 235,
+      "column": 24,
+      "kind": "Assign",
+      "text": "mu=omega*params['rho_m']",
+      "sha256": "81e8fbd9dbb0e7a6c132b9eefc10c56bb524e88624b4aeba4a1a9e4d737e2bdc",
+      "oldFunctionCalled": false
+    },
+    "preflight-aa": {
+      "name": "preflight-aa",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight.py",
+      "line": 235,
+      "column": 49,
+      "kind": "Assign",
+      "text": "aa=params['Lambda_A_0']/(params['rho_m']**2*(1-sp.I*omega*params['tau_A']))",
+      "sha256": "41ff33636b9dc9742d4ef37965e62a5730323090707bc03ad0791e74a9b37fe1",
+      "oldFunctionCalled": false
+    },
+    "preflight-beta": {
+      "name": "preflight-beta",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight.py",
+      "line": 235,
+      "column": 125,
+      "kind": "Assign",
+      "text": "beta=sp.cancel(aa*mu)",
+      "sha256": "cdc166f8c404708d8f7d310af267e8c3d2fc955e1b4584f93eaf7b292a4602dd",
+      "oldFunctionCalled": false
+    },
+    "preflight-templates": {
+      "name": "preflight-templates",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight.py",
+      "line": 264,
+      "column": 12,
+      "kind": "Assign",
+      "text": "expected={'NATIVE_FLAT':mu/(qo+beta),'NATIVE_HEIGHT':-sp.I*mu*qi*hvalue/(qo+beta),\n                'NATIVE_SLOPE':mu*k*jvalue/((qo+beta)*(qi+beta)),\n                'NATIVE_MIXED_ITERATION':-sp.I*mu*k*qo*Hvalue/((qo+beta)*(qi+beta))+Jvalue,\n                'INHERITED_DIRECT_WHOLE_OFF_DIAGONAL':Dvalue}[comp]",
+      "sha256": "b0fa3c3ce3461bed58e7127ed2fc2ff021a155e3a3632e90035c39cb24b66ae5",
+      "oldFunctionCalled": false
+    },
+    "preflight-wave-proof": {
+      "name": "preflight-wave-proof",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight.py",
+      "line": 207,
+      "column": 8,
+      "kind": "Expr",
+      "text": "J.zero('address-'+str(a['addressId'])+'-wave-jet',D(a['waveMultiplier']),(-3*sp.I)**nt*(sp.I*p)**n1*(sp.I/5)**n2*(sp.I/10)**n3)",
+      "sha256": "a823386d87f55607be520759865f50aed446927b46db0091f95903b94b640ab2",
+      "oldFunctionCalled": false
+    },
+    "preflight-normal": {
+      "name": "preflight-normal",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight.py",
+      "line": 268,
+      "column": 35,
+      "kind": "AugAssign",
+      "text": "expected*=sp.I*(1 if suffix=='plus' else -1)*qo",
+      "sha256": "112918972e428eece180a57fdcbcaf8f7918f976e659199ff2204d86cc877a0d",
+      "oldFunctionCalled": false
+    },
+    "inner-kernel-components": {
+      "name": "inner-kernel-components",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "line": 53,
+      "column": 0,
+      "kind": "FunctionDef",
+      "text": "def kernel_components(k,l,t,qi,qo,qh,qs,A1,A2,a,mu,beta,W,L,I):\n    \"\"\"Same arithmetic called by the new exact adapter and by both numeric routes.\"\"\"\n    J=a*mu**2*W*L/4*A1*A2*(k+t)*(2*k+t)*qi/(qh*(qo+beta)*(qh+beta)*(qi+beta)*(qh+qi))\n    pref=W*L/(4*I)*A1*A2*(-I*mu)/((qi+beta)*(qo+beta))\n    reflected=pref*k*(2*l-t)/(qs+qo)\n    height=pref*k*(t+2*k)*qi/(qh*(qh+qi))\n    quadratic=pref*qi**2/qh\n    return [J,reflected,height,quadratic]",
+      "sha256": "39bc5311ed099a5245efc41d505cadd55125f1cbcd88bfdc6be085b499b01d64",
+      "oldFunctionCalled": false
+    },
+    "inner-runtime-call": {
+      "name": "inner-runtime-call",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "line": 121,
+      "column": 8,
+      "kind": "Assign",
+      "text": "values=kernel_components(k,l,t,qi,qo,qh,used_qs,aa,bb,a,mu,beta,c.one,c.mpf(10),c.j)",
+      "sha256": "ceadb6dccc96259ecafa6b4caca0044fb3804f238a24d3b459e52c7362474bdf",
+      "oldFunctionCalled": false
+    },
+    "inner-proof-call": {
+      "name": "inner-proof-call",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner.py",
+      "line": 139,
+      "column": 4,
+      "kind": "Assign",
+      "text": "values=lib.kernel_components(k,l,t,qi,qo,qh,qs,A(t),A(l-k-t),aa,mu,beta,sp.Integer(1),sp.Integer(10),sp.I)",
+      "sha256": "14aaa46ff64d9b25523baf9c5b8c722de8d3b734b0aff95a07b0249663bc0312",
+      "oldFunctionCalled": false
+    },
+    "reference-A": {
+      "name": "reference-A",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing.py",
+      "line": 300,
+      "column": 4,
+      "kind": "Assign",
+      "text": "A=lambda s:L*s/(4*sp.sinh(sp.pi*L*s/2))",
+      "sha256": "a7f124082ffd37b08c5d36c4ace668f4c25cdeaed7dd84fcce95e2937fd8ff46",
+      "oldFunctionCalled": false
+    },
+    "reference-Hsub": {
+      "name": "reference-Hsub",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing.py",
+      "line": 328,
+      "column": 4,
+      "kind": "Assign",
+      "text": "Hsub=A(s)*(L/2*A(Q-s)-L/2*A(Q))/s",
+      "sha256": "64558bedffebe0febace7af17a3492ee4181a8b7c8acaf12b7349cdc4f51bf68",
+      "oldFunctionCalled": false
+    },
+    "reference-originalPV": {
+      "name": "reference-originalPV",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing.py",
+      "line": 311,
+      "column": 4,
+      "kind": "Assign",
+      "text": "originalPV=psh_t*(W/2*A(t)/(sp.I*t))*(L/2*A(Q-t))",
+      "sha256": "4287e41a06bc8e48ea705ef98f6554971d901cc9de6205c770fe17273c28cf50",
+      "oldFunctionCalled": false
+    },
+    "reference-H-record": {
+      "name": "reference-H-record",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_reference_grazing.py",
+      "line": 329,
+      "column": 4,
+      "kind": "Expr",
+      "text": "J.emit('left-height-subtracted-PV',{'contact':W/4*(L/2*A(Q)),'ordinarySubtractedIntegrand':W/(2*sp.I)*Hsub,'variableChange':[m,l-s],'boundsAfterOrientation':'integrate s over the full real line in increasing order','removedTerm':A(s)*(L/2*A(Q))/s,'reason':'A even; symmetric PV of the odd removed term is zero. No integral value evaluated.'})",
+      "sha256": "c0c35c2cea9271f9fad287982ff6143daea47654a48ed670fea15d799f8c9ec0",
+      "oldFunctionCalled": false
+    },
+    "fourier-product": {
+      "name": "fourier-product",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_lib.py",
+      "line": 160,
+      "column": 4,
+      "kind": "FunctionDef",
+      "text": "def product(self,ctx,spec,argument,shifted):\n        coefficients=[ctx.mpc(self.scalar(ctx,v[0]),self.scalar(ctx,v[1])) for v in spec['coefficientsAscending']]\n        center=self.scalar(ctx,spec['center']);carrier=self.scalar(ctx,spec['carrier']);s=ctx.mpf(8)\n        role=spec['role'];sign=1 if role=='X' else -1\n        nu=argument-carrier\n        c=ctx.mpf(5) if shifted else ctx.zero\n        imaginary=-c*ctx.sign(nu)\n        n=spec['spatialOrders'][0] if role=='X' else 0\n        nt,n2,n3=spec['timeOrder'],spec['spatialOrders'][1],spec['spatialOrders'][2]\n        native=(-3*ctx.j)**nt*(ctx.j/5)**n2*(ctx.j/10)**n3 if role=='X' else ctx.one\n        normalization=1/(2*ctx.pi) if role=='X' else ctx.one\n        # Q_n is in w=z-center. Derivatives act on u BEFORE multiplying the source coefficient.\n        q=[ctx.one]\n        for _ in range(n):q=poly_add(poly_derivative(q),poly_mul([ctx.j*carrier,-1/s**2],q))\n        # Expand actual Q(y+i*imaginary) and the requested argument derivative powers.\n        shifted_q=[ctx.zero]*len(q)\n        for j,a in enumerate(q):\n            for r in range(j+1):shifted_q[r]+=a*math.comb(j,r)*(ctx.j*imaginary)**(j-r)\n        degree=spec['argumentDerivative']\n        # d^m/dk^m for X: (-iz)^m; d^m/dl^m for Y(-l): (+iz)^m.\n        deriv=[ctx.one]\n        for _ in range(degree):deriv=poly_mul(deriv,[-sign*ctx.j*(center+ctx.j*imaginary),-sign*ctx.j])\n        all_poly=poly_mul(shifted_q,deriv)\n        majorant=[abs(v.real)+abs(v.imag) for v in all_poly]\n        norm=sum(abs(v.real)+abs(v.imag) for v in coefficients)\n        C0=abs(native)*normalization*norm\n        def f(y):\n            w=y+ctx.j*imaginary;z=center+w\n            phase=ctx.exp(-w*w/(2*s*s)-ctx.j*nu*z)\n            return normalization*native*poly_eval(coefficients,ctx.tanh(z/10))*poly_eval(all_poly,y)*phase\n        data={'argument':argument,'nu':nu,'center':center,'carrier':carrier,'shift':imaginary,'spatialDerivative':n,\n            'native':native,'normalization':normalization,'Q':q,'shiftedQ':shifted_q,'argumentDerivativePolynomial':deriv,\n            'fullPolynomial':all_poly,'majorant':majorant,'coefficientL1':norm,'C0':C0,\n            'tailExponentialFactor':ctx.exp(c*c/(2*s*s)-c*abs(nu)),'s':s}\n        return f,data",
+      "sha256": "81393815f70a95835933357546e55fd9259151bfe1f844d29f42eaeeea275720",
+      "oldFunctionCalled": false
+    },
+    "raw-direct-scale": {
+      "name": "raw-direct-scale",
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py",
+      "line": 448,
+      "column": 4,
+      "kind": "Expr",
+      "text": "J.emit('raw-ordered-before-cancel',{'heightScale':W/2,'B':fact['B'].subs(H,t),'heightNumerator':A(t),'jet':L*A(Q-t)/2,'phaseDivisor':sp.I,'numeric':{str(a):v for a,v in numeric.items()}})",
+      "sha256": "f0057195409cd2d7516ec844d6163db46ec595257e18cec2a92d8f55b2e66afb",
+      "oldFunctionCalled": false
+    }
+  },
+  "noFunctionExecution": true,
+  "purpose": "Actual generic source arithmetic and numeric caller origins for new dimensional interpretation only."
+}

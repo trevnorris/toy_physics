@@ -1069,3 +1069,23 @@ gamma inference and accepted algebraic proofs still explicit dependencies. Numer
 wave factors, physical profile-transform/kernel/measure and complete pressure
 summand units remain required. Continue with that bounded certificate from saved
 operands; no pressure value, full evaluator, current, loss or sweep follows.
+
+## 2026-10-04 — kernel/wave/measure unit build prepared
+
+Prepared the remaining pressure summand dimension certificate under the unchanged
+pressure-readiness method823eefe6. It restores accepted source-unit returns from
+7343a80b, all544addresses and wave proofs,20complete adapters, whole definitions
+and original numerical caller/source contracts. New source-AST unit walks keep
+the unbound a/beta/W/L origins, both native faces, distinct four depths and three
+added direct terms. Flat support and height contact/paired-PV retain their own
+measures. Four new dimensional controls and the saved profile control are scoped
+sensitivity evidence; no numerical action or evaluator is authorized by units.
+
+52synthetic/static metadata tests pass; no native scientific unit calculation,
+payload restoration or old function replay ran during preparation. The frozen
+2549-file,17849872-byte packet has SHA256
+`d9889c14436188a3d172f55026ebf256a831d8eef2fdcd194794c9795c58e2cf`;
+archive SHA256 `d268f3e15413b29c12319ca1b4a479a49027e0d09f26053c89543bda889606a0`.
+All2521complete saved JSON inputs are supplied. Standing user/AGENTS authority
+covers separate Claude/Grok build assessments. No peer reports, source verdict,
+scientific READY gate or execution yet. All old results/failures remain pinned.

@@ -1,0 +1,46 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T07:31:48.117157+00:00",
+  "packetSha256": "d9889c14436188a3d172f55026ebf256a831d8eef2fdcd194794c9795c58e2cf",
+  "archiveSha256": "d268f3e15413b29c12319ca1b4a479a49027e0d09f26053c89543bda889606a0",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 2549,
+  "bytes": 17849872,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing user/AGENTS authorization for necessary established-Claude/Grok assessments within ongoing research. Remaining kernel/wave/measure unit certificate under pressure-readiness method823eefe6.",
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Remaining source-bound primitive kernel, wave/Fourier and measure dimensional transport for all544selected pressure addresses; no evaluator or action",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": false,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": false,
+    "kernelWaveMeasureTransportOnly": true
+  },
+  "noAutomaticRetry": true
+}

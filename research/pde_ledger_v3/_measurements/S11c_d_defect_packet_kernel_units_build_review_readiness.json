@@ -1,0 +1,136 @@
+{
+  "status": "READY_FOR_INDEPENDENT_KERNEL_WAVE_MEASURE_UNIT_BUILD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/kernel-units-build-review",
+  "methodAssessmentCommit": "823eefe6",
+  "sourceUnitResultCommit": "7343a80b",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-04T07:31:48.117157+00:00",
+    "packetSha256": "d9889c14436188a3d172f55026ebf256a831d8eef2fdcd194794c9795c58e2cf",
+    "archiveSha256": "d268f3e15413b29c12319ca1b4a479a49027e0d09f26053c89543bda889606a0",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 2549,
+    "bytes": 17849872,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing user/AGENTS authorization for necessary established-Claude/Grok assessments within ongoing research. Remaining kernel/wave/measure unit certificate under pressure-readiness method823eefe6.",
+    "scope": {
+      "frequency": 3,
+      "anchoring": "LAB_HELD",
+      "density": "RHO4_CONSTANT",
+      "drain": 0,
+      "edges": [
+        "1/5",
+        "1/10"
+      ],
+      "effectiveCs": "sqrt(6)/2",
+      "plannedCarriers": [
+        "sqrt(595)/10",
+        "0"
+      ],
+      "target": "Remaining source-bound primitive kernel, wave/Fourier and measure dimensional transport for all544selected pressure addresses; no evaluator or action",
+      "sourceFrequencyContinued": false,
+      "responseRegulator": 0,
+      "selectedPressureAddresses": 544,
+      "selectedLocalCells": 16,
+      "pressureCoefficientFields": 34,
+      "noEvaluatedResponseIntegral": true,
+      "noNumericalPacketAction": true,
+      "noFiniteSolve": true,
+      "noProductionOverwrite": true,
+      "noDefectSweep": true,
+      "pressureSummandUnitsComplete": false,
+      "addressUnitCertificatesProduced": 544,
+      "noGeometryReplay": true,
+      "sourceGradeFieldTransportOnly": false,
+      "kernelWaveMeasureTransportOnly": true
+    },
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_PACKET_HASHES_AND_SYNTHETIC_TESTS_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "921b44ae88fc8aae26d4d6b66227b996061d14e39b5366afc6d01454e48671b5",
+    "packetSha256": "d9889c14436188a3d172f55026ebf256a831d8eef2fdcd194794c9795c58e2cf",
+    "archiveSha256": "d268f3e15413b29c12319ca1b4a479a49027e0d09f26053c89543bda889606a0",
+    "files": 2549,
+    "bytes": 17849872,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 2548,
+    "nativeScientificExecution": false,
+    "noReviewVerdict": true
+  },
+  "workerSha256": "8e158da7b046d274eef765f1516a229ad6a82da2dbc7c9484dcaf933288d9e2b",
+  "librarySha256": "871f2e4f88ba80db0d646dafbbe262cfe99d2a172371421ec29ff47b52136b8f",
+  "manifestSha256": "751c2896400bd6792ede0f3f34fea5ee8c84a168635f26130e9cea6bf5b37abc",
+  "launcherSha256": "fe4b7ebab30c65f8ed3567cae8a55a67e7ec76abbc4a10600359af021d18ee8b",
+  "sharedGuardSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+  "supervisorSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+  "methodSha256": "16b96e2c1a518e3e0cf3d5eba0ae05d1c24cf7c3b37334b26ed2743efee78a68",
+  "toolingTests": {
+    "status": "STDLIB_SYNTHETIC_AND_METADATA_TESTS_PASSED_NO_NATIVE_SCIENCE",
+    "utc": "2026-10-04T07:31:48.117157+00:00",
+    "command": [
+      "python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "research/pde_ledger_v3/_measurements",
+      "-p",
+      "S11c_d_defect_packet_kernel_units_test.py",
+      "-v"
+    ],
+    "tests": 52,
+    "exitCode": 0,
+    "reportedSeconds": 0.556,
+    "actualNativeUnitScienceOrPayloadRestoration": false,
+    "workerSha256": "8e158da7b046d274eef765f1516a229ad6a82da2dbc7c9484dcaf933288d9e2b",
+    "librarySha256": "871f2e4f88ba80db0d646dafbbe262cfe99d2a172371421ec29ff47b52136b8f",
+    "manifestSha256": "751c2896400bd6792ede0f3f34fea5ee8c84a168635f26130e9cea6bf5b37abc",
+    "testSourceSha256": "9bdd803f2a1d67a16771526faa7c94fc1667d025151171d26179ba16bb9849cf",
+    "logSha256": "c0a6331da4d690c0e012b5b2692b22fdd28a50c054e3aa59be45cc01de2e7fa2"
+  },
+  "savedInputFiles": 2521,
+  "peerReportsIncluded": false,
+  "newScientificOperations": 0,
+  "readyGateExists": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Remaining source-bound primitive kernel, wave/Fourier and measure dimensional transport for all544selected pressure addresses; no evaluator or action",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": false,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": false,
+    "kernelWaveMeasureTransportOnly": true
+  }
+}

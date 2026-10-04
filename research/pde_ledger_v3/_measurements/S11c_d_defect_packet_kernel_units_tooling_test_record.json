@@ -1,0 +1,25 @@
+{
+  "status": "STDLIB_SYNTHETIC_AND_METADATA_TESTS_PASSED_NO_NATIVE_SCIENCE",
+  "utc": "2026-10-04T07:31:48.117157+00:00",
+  "command": [
+    "python",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "research/pde_ledger_v3/_measurements",
+    "-p",
+    "S11c_d_defect_packet_kernel_units_test.py",
+    "-v"
+  ],
+  "tests": 52,
+  "exitCode": 0,
+  "reportedSeconds": 0.556,
+  "actualNativeUnitScienceOrPayloadRestoration": false,
+  "workerSha256": "8e158da7b046d274eef765f1516a229ad6a82da2dbc7c9484dcaf933288d9e2b",
+  "librarySha256": "871f2e4f88ba80db0d646dafbbe262cfe99d2a172371421ec29ff47b52136b8f",
+  "manifestSha256": "751c2896400bd6792ede0f3f34fea5ee8c84a168635f26130e9cea6bf5b37abc",
+  "testSourceSha256": "9bdd803f2a1d67a16771526faa7c94fc1667d025151171d26179ba16bb9849cf",
+  "logSha256": "c0a6331da4d690c0e012b5b2692b22fdd28a50c054e3aa59be45cc01de2e7fa2"
+}

@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "worker": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing.py",
+  "launcher": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_launch.py",
+  "helperSource": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py",
+  "methodPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_method.txt",
+  "methodSha256": "cca4715f827611fa8cce2d2c74f5ba257f08955bab3d38d6867171e928c3523b",
+  "savedFiles": {
+    "operator.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r3/published-admissibility_operator_operand.json",
+      "sha256": "73c035364f2acfb13926649616c1b2cb7e6d6b85426c365c98bc553e77d94ac8",
+      "bytes": 40160,
+      "completeOriginalView": true
+    },
+    "support.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r3/published-admissibility_support_operand.json",
+      "sha256": "14456441ec7145c6e4aaa0cefadc1b3ca96419f89cb52bc2257774dc177e8a37",
+      "bytes": 13203,
+      "completeOriginalView": true
+    },
+    "legacy_residual.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r3/published-admissibility_residual.json",
+      "sha256": "766f2774a052347b0ea9946979791d53e05c8161fedebf0bbdea18af5d3600a1",
+      "bytes": 45108,
+      "completeOriginalView": true
+    },
+    "normal.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4/published-a-face_normal.json",
+      "sha256": "f7f3c905c82c01e09aad75f7f86ecea021be35fab1c13e95615abae2de31ef74",
+      "bytes": 43342,
+      "completeOriginalView": true
+    },
+    "measure.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4/published-a-face_measure_shape_deriv.json",
+      "sha256": "64f85c01a8f494c0dfa861a86acfa5a6229376468f862e437e2fa799d314813f",
+      "bytes": 10356,
+      "completeOriginalView": true
+    },
+    "velocity.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4/published-a-face_velocity.json",
+      "sha256": "1eef248947a6049a52e435529441c179fcca9718586bebc376893e3cad348afd",
+      "bytes": 5779,
+      "completeOriginalView": true
+    },
+    "traction.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4/published-a-traction.json",
+      "sha256": "db6e6c14d3a20273b2490d772e45a94a2a9c72069cdad577e27510a05c974288",
+      "bytes": 82534,
+      "completeOriginalView": true
+    },
+    "virtual_work.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4/published-a-virtual_work_shape_deriv.json",
+      "sha256": "2f9678adc15c7c2fec9c55627368aa750ace06cb4daf9e9d35763d7113e79bc7",
+      "bytes": 125332,
+      "completeOriginalView": true
+    },
+    "closure.json": {
+      "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r4/published-a-closure_shape_deriv.json",
+      "sha256": "798901ba22e4e001b51094c98d2dff2fb70edbbc09b99460afdb856add829df8",
+      "bytes": 57585,
+      "completeOriginalView": true
+    }
+  },
+  "registryInputs": {
+    "operator": {
+      "savedAlias": "operator.json",
+      "originalSource": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py",
+      "scientificRestore": true
+    },
+    "support": {
+      "savedAlias": "support.json",
+      "originalSource": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py",
+      "scientificRestore": true
+    },
+    "legacy_residual": {
+      "savedAlias": "legacy_residual.json",
+      "originalSource": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py",
+      "scientificRestore": false
+    },
+    "normal": {
+      "savedAlias": "normal.json",
+      "originalSource": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "scientificRestore": true
+    },
+    "measure": {
+      "savedAlias": "measure.json",
+      "originalSource": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "scientificRestore": true
+    },
+    "velocity": {
+      "savedAlias": "velocity.json",
+      "originalSource": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "scientificRestore": true
+    },
+    "traction": {
+      "savedAlias": "traction.json",
+      "originalSource": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "scientificRestore": true
+    },
+    "virtual_work": {
+      "savedAlias": "virtual_work.json",
+      "originalSource": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "scientificRestore": true
+    },
+    "closure": {
+      "savedAlias": "closure.json",
+      "originalSource": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "scientificRestore": true
+    }
+  },
+  "sourcePins": {
+    "/var/projects/toy_physics/AGENTS.md": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+    "/var/projects/toy_physics/scripts/s11c_guarded_run.py": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+    "/var/projects/toy_physics/scripts/codex_job_watch.py": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing.py": "4dc8c874fe2cbab0678603168045da0697abd5dd8eabc41ba02a5d11943d3651",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_launch.py": "c0d015f7cfd37ddb4fc2ba33eeaaa31211abe4326c1760f9f5df8b10583b8a11",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_background_force_pairing_method.txt": "cca4715f827611fa8cce2d2c74f5ba257f08955bab3d38d6867171e928c3523b",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_exports.py": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+    "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md": "84d319141045522072bdbe944e72901ce78c70e73fdca31b5693d640f144ca89"
+  },
+  "scope": {
+    "target": "Finite unbound background force/rate/area/order comparison with UNSUPPLIED physical pairing",
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "researchOmega": 3,
+    "researchCs": "sqrt(6)/2",
+    "numericBindingPerformed": false,
+    "sameSavedPhysicalInputs": true,
+    "fullIncrementalCentreDrive": false,
+    "physicalWorkClosed": false,
+    "fieldOrIntegral": false,
+    "leakageFactor": null,
+    "recoveryParked": true
+  },
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolGiB": 16,
+    "zeroSwap": true,
+    "cpuCount": 1,
+    "threads": 1,
+    "tasksMax": 32,
+    "hostReserveGiB": 4,
+    "durationLimits": null
+  },
+  "noScientificRunYet": true
+}

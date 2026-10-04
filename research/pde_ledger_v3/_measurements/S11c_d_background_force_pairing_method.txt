@@ -1,0 +1,162 @@
+First finite background force-pairing instrument and amended method
+
+This is only the background portion of the proposed support/centre prerequisite.
+It tests the actual native background force bundle, saved face geometry, rate
+normalization, representation grades, and wave-power product ledger. It does
+NOT compute the incremental selected centre drive of the incident doublet,
+nonuniform kinetic/stored work, fields, power, currents or leakage. Those need
+subsequent concrete preparation and applicable assessment. No old producer,
+profile, wave-source, receiving, current, rule or integral function is called.
+
+All physical data remain realomega3, restbulk LAB_HELD/RHO4, saved edges,
+cs=sqrt(6)/2 and arbitrary incident doublet in the research scope. This first
+instrument is an UNBOUND source-identity screen: no numeric parameter or wave
+amplitude is substituted. Its symbolic coefficient controls do not prove a
+nonzero physical force or power at the selected material/profile values.
+
+1. Original operands and safe outcome
+Restore complete original b admissibility operator and support and complete a
+normal, measure, velocity, traction, virtual-work and closure tables. For each
+registry view, join BOTH full original display and constructor strings to the
+literal export source lines and exact source hash before restoring a tree.
+Use the existing reader/journal only under containment. No export module or
+source constructor is executed. Preserve all other original cases unchanged.
+
+The legacy b residual is copied and recorded as literal text only. Its Boolean
+Equivalent/Not payload is not an arithmetic residual. Its PER_FACE_TRACTION
+labels include zero label differences, so they are NEVER used to identify a
+face. Select original operator and support independently by LAB_HELD and
+RHO4_CONSTANT, require original sign order +1,-1 and complete four-vectors,
+and retain full operands/dimension records before any comparisons.
+
+A literal-zero operator component has vacuous placeholder dimensions. Record
+VACUOUS_LITERAL_ZERO_NO_UNIT_AGREEMENT instead of comparing it to a physical
+support unit. Compare actual nonzero slot dimensions separately, including
+body THETA/E_W and both fourth face components. This is not a complete new
+unit derivation for either the full operator or a missing background law.
+
+The b fourth traction is literally s*e_force/W0. Its physical area convention
+has NOT been supplied by this package. The default/final result of this bounded
+worker is therefore TRACTION_MEASURE_UNSUPPLIED and total R0_c UNSUPPLIED.
+The worker has no rule to upgrade those statuses to physical clearance. Formal
+area/rate comparisons can still identify exactly which representation terms
+would need a source join. Body-plus-face bundle format does not make duplicate
+thickness powers independent; nor does shared origin relate the free support
+symbols. No support law or centre constraint is chosen.
+
+2. New source-bound comparison of exact, stored and consumed geometry
+Let g be the THREE native sigma_W*w1_profile_di entries. The saved normal
+background VALUE[0] is the FOUR-vector (-g/2,s); the saved measure background
+VALUE[0] is1. Their epsilon increments are separate VALUE[1] operands.
+Restore and join all four LAB_HELD face/physical-DOF cases: signs +/- and
+DELTA_W/ZETA_C. The normal vector component indexed3 is the fourth component;
+the outer tuple index0 is the background entry. Preserve complete cases,
+including their increments, sum entries and dimension metadata.
+
+The actual c2 expression uses the norm of that stored four-vector. The NEW
+comparison expression is A_c2_raw=sqrt(sum_{i=0}^3 n_saved[i]^2). Its square
+must join 1+sum_{i=1}^3 g_i^2/4. Keep this raw expression separately from the
+new rectangular coefficient comparison, whose candidate retained value is1,
+and from the leading sigma^2 coefficient sum_i w1_di^2/8. Those are new
+cross-representation checks, not restored c2 returns. The exact source geometry
+has D=sqrt(1+|g|^2/4), n_exact=(-g/(2D),s/D), whereas its published normal was
+background-truncated. The worker constructs the source-exact candidate only
+for a NEW normalization comparison and keeps its source definition pinned.
+It does not call old geometry/final_scalar/retained_shape functions, manufacture
+new physical higher-order geometry, or relabel its new comparisons as old
+certificates. The stored measure and normal alone cannot choose between a
+unit-normal approximation and an unnormalized normal-density interpretation.
+
+Use actual epsilon-stripped stored velocities from DELTA_W and ZETA_C, adding
+their two independent normal-rate columns. Tangential velocity enters ONCE.
+The LAB_HELD source-rate candidate is
+ r=(u_t, zeta_t+s*W0*eW_t/2+s*g dot u_t/2).
+Check the saved reconstruction
+ h_saved=(V_saved-n_saved,par dot u_t)/n_saved,4
+against that candidate. Separately form V_exact=n_exact dot r and check
+ n_saved dot r=D*V_exact.
+Do not put V_exact into the saved-normal reconstruction and call it exact:
+ h_mixed-h_saved=s*(V_exact-V_saved)
+is a new raw normalization debt. Record it and its retained coefficients
+(expected zero at00/10/01/11), with the full complement. No velocity convention
+is changed. The nonzero higher-order complement is not automatically a
+retained-model inconsistency. Positive native W0 and L domains remain explicit.
+
+3. Formal background force and support pullback
+Select actual saved E_W and join its complete scalar to
+ -W0^3*kappa_W*sigma_W*(1+2*eta_bg*w1_profile)*sum_i w1_didi/L_W.
+The b aggregate MULTIGRADE header understates this expression: use operands,
+not that header. The source assignment for e_force follows an original
+first_shape_series; no unknown sigma^2-and-higher e_force is reconstructed.
+The unprovided complement of the physical background force stays UNSUPPLIED.
+
+For a COMMON FORMAL area A, the coefficient pullback of the two laboratory
+four-vectors with the source rate r is
+ F_U=sum_s A*(t_par,s+s*t4,s*g/2),
+ F_e=sum_s A*s*W0*t4,s/2, F_c=sum_s A*t4,s.
+Its source-assignment candidate is (A*e_force*g/W0,A*e_force,0).
+F_e=e_force only when A=1 or at a justified retained comparison; do not omit
+A from the raw expression. This is conditional algebra with b traction's
+physical area convention UNSUPPLIED. It is not an independent external load
+and is not added as a second copy of body e_force power.
+
+Keep actual raw face-minus-body U/E expressions and their new retained
+coefficients/remainders. With the saved E_W and an additional slope the U
+candidate starts at sigma^2/eta*sigma^2; its comparison with literal body U=0
+is order debt, not evidence that the unavailable body coefficients are zero.
+Likewise the D/A factor stays explicit. The assigned F_c=0 is caused by the
+antisymmetric source assignment, not independent centre equilibrium. The
+thickness force fixes a difference, not the undetermined symmetric load.
+
+Map the independent free support face symbols through the same FORMAL area/rate
+map and retain the body-face compatibility expressions and formal face-centre
+residual. Do not set holding symbols or choose an agency. Their coefficient
+sensitivity does not supply a physical value. Total R0_c remains UNSUPPLIED
+regardless of a vanishing assigned operator face piece or responsive control.
+
+4. Wave-amplitude order ledger
+For each scalar component of A*t dot r, independently introduce bookkeeping
+coefficients A0,A1,A2; t0,t1,t2; r0,r1,r2 and a NEW ledger wave parameter. These
+are explicitly formal slots, not physical values or replacements for old data.
+Expand the finite product and retain the full original input. At the original
+stationary r0=0, compare its coefficients:
+ epsilon1: A0*t0*r1;
+ epsilon2: A0*t0*r2+A0*t1*r1+A1*t0*r1.
+The second-order force-density coefficient is A0*t2+A1*t1+A2*t0. The A1*t1
+force-density term pairs with r0 at epsilon2 and with r1 at epsilon3. Independent
+virtual tests of amplitude-order0 have a different work order. Unknown physical
+support/rate/geometry corrections are not assigned by this formal identity.
+
+The source acoustic background pressure/velocity zeros come from
+physical_trace_fields. Background chemical potential zero comes instead from
+parameter*mu_theta/rhobr in traction_raw/virtual_work_cases, with the original
+nonzero density domain; affinity then uses mu-P/rho_m. This instrument pins
+those origins and does not compute or claim a new acoustic-zero certificate.
+They do not turn b holding traction into zero. Complete R0_c*zeta_t^(1) and
+R0_c*zeta_t^(2), first-order-area/background-traction and rate-map/support terms
+remain unknown in the physical work ledger. Defect-lambda corrections are not
+these nonlinear wave-epsilon corrections.
+
+5. Controls, scope and execution
+Three controls use actual selected operands through the same finite formulas:
+(i) add the duplicate thickness representation to its candidate work;
+(ii) reverse the upper operator fourth traction in the centre pullback;
+(iii) double the coefficient of the upper free support fourth component.
+For each save full baseline/mutant, exact difference, numerator/denominator
+and polynomial nonzero decision. This is FORMAL_POLYNOMIAL_SENSITIVITY, not a
+numerical support value, field, dissipation or physical nonzero power. Missing,
+zero or unrecognized algebra refuses; no parameter value is chosen to pass.
+
+Every new scalar comparison and stage persists inputs/returns before refusal.
+Copy exact saved inputs, keep all posthashes, use the unchanged journal and
+containment helper. Pure stdlib source/metadata tests do not restore science.
+This is a combined amended-method and concrete BUILD review: the preceding
+method NEEDS history is preserved, not relabelled CLEAR. Actual runtime needs
+a scoped literal Claude report, substantive assessment, exact fresh gate and
+hook first to01a0e01b-ef84-7192-817f-584cda5d339b. No science before that gate.
+Shared no-deadline guard around the existing supervisor,4GiB native/cgroup in
+16GiB pool,zero swap,oneCPU/thread,32tasks,4GiB host reserve,desktop priority.
+No automatic retry/fallback/scheduler change,model polling or recurring task.
+Mixed recovery remains PARKED. No full centre-response/work/port identity,
+field/Fourier/power integral,leakage value,sweep,drain or calibration. Reflection
+is survival; physical20/02,end-current and threshold-remainder duties remain.

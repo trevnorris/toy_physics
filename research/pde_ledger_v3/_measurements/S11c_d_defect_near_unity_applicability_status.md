@@ -1281,3 +1281,22 @@ passed. The actual launcher verified worker, manifest, 17 source pins, method,
 paired build record, standing authority and 15 extra identity copies before any
 science import. The shared guard will independently enforce admission and the
 no-deadline resource policy; no host scheduling change or fallback is planned.
+
+
+The bounded contraction certificate completed and passed 6,903 source/JSON/hash
+inspection checks. It saved 57 new literal-zero identities, 92 inherited exact
+returns, all 544 address joins, 20 complete templates, 40 compact-majorant sets
+and six responsive algebra/domain controls. All 605 operations and 3,141
+append-only evidence records are complete; 1,534 saved copies, 21 source
+posthashes, 19 snapshots and 15 additional identity copies are intact. Strict
+scientific stderr is empty and stdout/checks bytes agree. Runtime was 11.557
+seconds, peak memory 408,813,568 bytes, with zero limit/OOM/swap events under
+the original no-deadline guard. Both source reviews remain literally CLEAR.
+
+This accepts only the exact finite-window contraction certificate. No new
+Fourier, inner, local or outer integral was evaluated. Original input/output
+clipping, full wings, reflected-root distinction, normal signs and unit joins
+are supported; analytic Fubini reasoning remains assessed mathematics. Full
+numerical discretization, nested error accounting, request identities, storage
+and independent routes remain required before an evaluator launch. Proceeding
+with concrete numerical-method preparation, preserving every completed result.

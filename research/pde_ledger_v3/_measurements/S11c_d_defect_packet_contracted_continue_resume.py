@@ -160,3 +160,56 @@ def tail_formula_join(executed_text,base_text):
                'baseAST':ast.dump(b),'executedMappedAST':ast.dump(Names().visit(copy.deepcopy(e))),
                'same':ast.dump(b)==ast.dump(Names().visit(copy.deepcopy(e))),
                'renamesOnly':{'outerbound':'outer','middlebound':'middle'},'KandTlim':'same symbolic arguments; actual saved windows are joined separately'} for k,(b,e) in pairs.items()}
+
+
+def checked_totals(rows,expected,materialize,encode):
+    check_census(rows,expected)
+    totals=[]
+    for row in rows:
+        # The encoded operands have already joined the independent saved census.
+        outer=materialize(row['outerOperand']);middle=materialize(row['middleOperand'])
+        require(encode(row['outer'])==row['outerOperand'] and encode(row['middle'])==row['middleOperand'],'live outer/middle objects equal validated operands')
+        total=outer+middle
+        require(encode(row['total'])==encode(total),'live total equals validated operand sum')
+        totals.append(total)
+    return totals
+
+
+def continuation_source_joins(worker,original_worker,tail,original_prepare):
+    def fn(text,name):
+        nodes=[v for v in ast.parse(text).body if isinstance(v,ast.FunctionDef) and v.name==name]
+        require(len(nodes)==1,'one source function '+name);return nodes[0]
+    newrun=fn(worker,'run');oldrun=fn(original_worker,'run');old=fn(original_prepare,'prepare');new=fn(tail,'continue_geometry')
+    starts=[i for i,n in enumerate(old.body) if isinstance(n,ast.Assign) and any(isinstance(v,ast.Name) and v.id=='plans' for v in n.targets)]
+    require(len(starts)==1,'one original unfinished geometry start')
+    oldtail=ast.Module(body=old.body[starts[0]:],type_ignores=[]);newtail=ast.Module(body=new.body[2:],type_ignores=[])
+    return {'run':{'original':ast.unparse(oldrun),'new':ast.unparse(newrun),'same':ast.dump(newrun)==ast.dump(oldrun)},
+            'geometryTail':{'original':ast.unparse(oldtail),'new':ast.unparse(newtail),'same':ast.dump(oldtail)==ast.dump(newtail)}}
+
+
+def tail_binding_joins(base_text,executed_text):
+    base=ast.parse(base_text);exe=ast.parse(executed_text);result={}
+    def bind(tree,target):
+        nodes=[n for n in ast.walk(tree) if isinstance(n,ast.Assign) and len(n.targets)==1 and isinstance(n.targets[0],ast.Name) and n.targets[0].id==target]
+        require(len(nodes)==1,'one actual binding '+target);return nodes[0].value
+    expected_base={'b':'sp.Rational(3000,11101)','E15':'sp.Integer(3)**15','E30':'E15**2','F':'{n:weighted_tail(n,0) for n in range(4)}',
+                   'KJ':'sp.Rational(4,5)*121*Cq/b**3','KD':'18*121*2*Cq/b**2','Cq':'sp.Integer(36)','Cordinary':'1+4*KJ+4*KD+400/b**2'}
+    expected_new={'tail_context':"get('preflight/tail-bound-derivation.json')",'bstar':"R(tail_context['b'])",'ordinary':"R(tail_context['ordinaryKernelUpper'])",'F3':"R(tail_context['fullExponentialMoments']['3'])",'b':'bstar','Cordinary':'ordinary','E30':'sp.Integer(3)**30','F':"{2:R(tail_context['fullExponentialMoments']['2']),3:F3}"}
+    for label,tree,specs in [('base',base,expected_base),('enlarged',exe,expected_new)]:
+        for name,spec in specs.items():
+            actual=bind(tree,name);ref=ast.parse(spec,mode='eval').body
+            result[label+'/'+name]={'actualSource':ast.unparse(actual),'requiredSource':spec,'same':ast.dump(actual)==ast.dump(ref)}
+    for name in ('exponential_moment','weighted_tail'):
+        old=[n for n in ast.walk(base) if isinstance(n,ast.FunctionDef) and n.name==name];new=[n for n in ast.walk(exe) if isinstance(n,ast.FunctionDef) and n.name==name]
+        require(len(old)==len(new)==1,'one actual tail helper '+name)
+        result['helper/'+name]={'baseSource':ast.unparse(old[0]),'enlargedSource':ast.unparse(new[0]),'same':ast.dump(old[0])==ast.dump(new[0])}
+    emits=[n for n in ast.walk(base) if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute) and n.func.attr=='emit' and n.args and isinstance(n.args[0],ast.Constant) and n.args[0].value=='tail-bound-derivation']
+    require(len(emits)==1 and isinstance(emits[0].args[1],ast.Dict),'actual base saved binding output')
+    payload={k.value:v for k,v in zip(emits[0].args[1].keys,emits[0].args[1].values)}
+    for key,expression in [('b','b'),('ordinaryKernelUpper','Cordinary'),('fullExponentialMoments','{str(k):v for k,v in F.items()}')]:
+        result['base-output/'+key]={'actualSource':ast.unparse(payload[key]),'requiredSource':expression,'same':ast.dump(payload[key])==ast.dump(ast.parse(expression,mode='eval').body)}
+    # Exact constructor pattern plus integer-power law; no saved bound or
+    # large constant is reevaluated. The individual source patterns above gate it.
+    result['E30-identity']={'base':'(3^15)^2','enlarged':'3^30','law':'Integer power composition on positive base3; 15*2=30. Formal source-binding identity only.',
+                           'same':all(result[k]['same'] for k in ('base/E15','base/E30','enlarged/E30'))}
+    return result

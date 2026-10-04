@@ -1,0 +1,217 @@
+{
+  "status": "READY_FOR_INDEPENDENT_SAVED_PREFIX_BUILD_AND_AMENDED_METHOD_ASSESSMENT",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-build-review-r3",
+  "failureCommit": "ec54932e",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-04T14:45:52.090602+00:00",
+    "packetSha256": "3a5ba0eb835c04d926b59b660f9059a1393e5a6146f4fabb7cc2289659c0716e",
+    "archiveSha256": "84b90a75e84d28ca0dc77c70265cdfe951865182641061da525f4e0efb2d0abc",
+    "reviewers": [
+      "claude"
+    ],
+    "files": 8292,
+    "bytes": 163563135,
+    "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+    "authority": "Standing user and AGENTS direction authorizes this necessary substantive amended-method and concrete saved-evidence continuation build assessment to the established Claude reviewer under explicit temporary Claude-only policy without a routine permission question. No science, automatic retry or disclosure to new recipients.",
+    "scope": {
+      "frequency": 3,
+      "anchoring": "LAB_HELD",
+      "density": "RHO4_CONSTANT",
+      "drain": 0,
+      "edges": [
+        "1/5",
+        "1/10"
+      ],
+      "effectiveCs": "sqrt(6)/2",
+      "plannedCarriers": [
+        "sqrt(595)/10",
+        "0"
+      ],
+      "target": "Source-only assessment of explicit subset-tail method amendment and actual saved-prefix numerical continuation",
+      "sourceFrequencyContinued": false,
+      "responseRegulator": 0,
+      "selectedPressureAddresses": 544,
+      "selectedLocalCells": 16,
+      "pressureCoefficientFields": 34,
+      "noEvaluatedResponseIntegral": false,
+      "noNumericalPacketAction": true,
+      "noFiniteSolve": true,
+      "noProductionOverwrite": true,
+      "noDefectSweep": true,
+      "pressureSummandUnitsComplete": true,
+      "addressUnitCertificatesProduced": 544,
+      "noGeometryReplay": true,
+      "sourceGradeFieldTransportOnly": false,
+      "kernelWaveMeasureTransportOnly": false,
+      "newFiniteWindowCertificate": false,
+      "noNumericalEvaluator": false,
+      "originalWindowPairs": [
+        [
+          27,
+          122
+        ],
+        [
+          29,
+          124
+        ]
+      ],
+      "boundedContractedNumerics": true,
+      "completePacketAction": false,
+      "noLeakageOrCurrent": true,
+      "eligibleAddressCount": 20,
+      "addressPrimitives": 40,
+      "argumentDerivative": 0,
+      "allRealTailsConditionalOnAssessedBounds": true,
+      "analyticGaussianException": "only exactly joined constant fields",
+      "fullNumericalRoutes": [
+        "A24",
+        "A48",
+        "B50"
+      ],
+      "empiricalErrorNotRigorous": true,
+      "savedPrefixContinuation": true,
+      "analyticSubsetCeiling": "1/100000000000",
+      "numericalEpsilonUnchanged": "1/8000000000000",
+      "pendingFullPacketErrorLedger": true,
+      "scienceCalls": 0,
+      "scientificGateExists": false
+    },
+    "noAutomaticRetry": true,
+    "scienceExecutionsAuthorizedByThisReviewLaunch": 0,
+    "all3142ScientificInputFilesIncluded": true,
+    "noPeerReportsShared": true
+  },
+  "static": {
+    "status": "STATIC_FIXED_CONTINUATION_BUILD_PACKET_VERIFIED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "c14e94822d301cfee746f3cb7d3b294ece6d51508c05be0eae1e991aeec0aed4",
+    "packetSha256": "3a5ba0eb835c04d926b59b660f9059a1393e5a6146f4fabb7cc2289659c0716e",
+    "archiveSha256": "84b90a75e84d28ca0dc77c70265cdfe951865182641061da525f4e0efb2d0abc",
+    "files": 8292,
+    "bytes": 163563135,
+    "sourceHashesChecked": 8291,
+    "reviewers": [
+      "claude"
+    ],
+    "newScientificOperations": 0,
+    "scientificGateExists": false
+  },
+  "newScientificOperations": 0,
+  "scientificGateExists": false,
+  "oldPeerReportsIncluded": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Source-only assessment of explicit subset-tail method amendment and actual saved-prefix numerical continuation",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": false,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": true,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": false,
+    "kernelWaveMeasureTransportOnly": false,
+    "newFiniteWindowCertificate": false,
+    "noNumericalEvaluator": false,
+    "originalWindowPairs": [
+      [
+        27,
+        122
+      ],
+      [
+        29,
+        124
+      ]
+    ],
+    "boundedContractedNumerics": true,
+    "completePacketAction": false,
+    "noLeakageOrCurrent": true,
+    "eligibleAddressCount": 20,
+    "addressPrimitives": 40,
+    "argumentDerivative": 0,
+    "allRealTailsConditionalOnAssessedBounds": true,
+    "analyticGaussianException": "only exactly joined constant fields",
+    "fullNumericalRoutes": [
+      "A24",
+      "A48",
+      "B50"
+    ],
+    "empiricalErrorNotRigorous": true,
+    "savedPrefixContinuation": true,
+    "analyticSubsetCeiling": "1/100000000000",
+    "numericalEpsilonUnchanged": "1/8000000000000",
+    "pendingFullPacketErrorLedger": true,
+    "scienceCalls": 0,
+    "scientificGateExists": false
+  },
+  "continuationMethodSha256": "fbd06c52ab4f5324d2ecbfb76f382043e60d375dca0908c31bf39cbfa0f797de",
+  "workerSha256": "b3c4557a1a2e2b7e57a967a0e5423bcf4feb14fcb316cc698bdab79e0f3855cf",
+  "manifestSha256": "816a3f5c2d798a0ea83fb5f14cb817e51f3cab5721eb3dd8dec4fb2eae52937b",
+  "staticPreparation": {
+    "status": "COMPLETE_SCALAR_SOURCE_VALIDATION_R3_PREPARED_CLAUDE_ONLY_NO_SCIENCE",
+    "recordedUtc": "2026-10-04T14:44:44.914548+00:00",
+    "priorBuildCommit": "705c0a4f",
+    "workerSha256": "b3c4557a1a2e2b7e57a967a0e5423bcf4feb14fcb316cc698bdab79e0f3855cf",
+    "manifestSha256": "816a3f5c2d798a0ea83fb5f14cb817e51f3cab5721eb3dd8dec4fb2eae52937b",
+    "methodSha256": "fbd06c52ab4f5324d2ecbfb76f382043e60d375dca0908c31bf39cbfa0f797de",
+    "sourcePins": 101,
+    "oldScientificSourcePinsUnchanged": 83,
+    "soleHistoricalCurrentPathChange": {
+      "status": "EXPLICIT_USER_REVIEW_POLICY_APPEND_ONLY_TRANSITION",
+      "recordedUtc": "2026-10-04T14:38:26.859538+00:00",
+      "source": "/var/projects/toy_physics/AGENTS.md",
+      "beforeSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+      "afterSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+      "appendedText": "\n# Temporary Claude-only review policy (user instruction, October 4, 2026)\n\nUntil the user changes this policy, use only the established Claude reviewer for\nongoing authorized research reviews. Do not launch or wait for Grok reviews.\nThis supersedes historical paired-review and two-literal-CLEAR requirements,\nincluding earlier completion-hook messages. Require the actual scoped Claude\nreport and substantive assessment; never label Claude-only clearance as paired\nclearance. Preserve all prior reports, findings and cancelled attempts.\n\nKeep fixed packet/source hashes, no scientific replay or automatic retries,\nresource containment, the no-deadline policy and completion hooks unchanged.\nNecessary substantive revisions to Claude remain authorized without routine\npermission questions. Preserve active pinned sources when applying this policy.\n",
+      "policyPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_temporary_claude_only_review_policy_20261004.json",
+      "policySha256": "0b918036506ff25bd1d17d54d24f5b4eb33ca3e603e1570fc3d91f4d82013093",
+      "oldSourcePreservedAt": "prior/source/AGENTS.md",
+      "onlyHistoricalCurrentPathException": "/var/projects/toy_physics/AGENTS.md",
+      "reason": "Review authority update after active reviews finished; no scientific source changed. Historical source receipts must still match the original frozen AGENTS bytes, while the new run pins current policy separately."
+    },
+    "oldScientificInputsUnchanged": 3142,
+    "priorFiles": 8271,
+    "sourceHashChecks": 11497,
+    "toolingTests": 72,
+    "toolingTestsSourceSha256": "597bebb58283074ff14f6492572cab01f1c4157b198e549d912ccc41a873b03d",
+    "toolingTestsLogSha256": "f00f421c828641f01c5dc7f812dd526cb2b319077aeb8f7e1edae6ba4f883ff3",
+    "testSourceAndLogBothPinned": true,
+    "noScientificRestorationOrCalculation": true,
+    "oldNumericalRunASTUnchanged": true,
+    "unfinishedGeometryASTUnchanged": true,
+    "noGateExists": true,
+    "allStaticChecksPassed": true,
+    "reviewers": [
+      "claude"
+    ],
+    "noPairedClearanceClaim": true,
+    "changes": [
+      "Actual derived scalar totals consumed by sums, eleven same-path mutations per group.",
+      "Full base/enlarged helper and constant source-binding joins without reevaluation.",
+      "Fresh metadata/source/profile/root/Gaussian checkpoint joins with inherited mathematics disclosed.",
+      "Runtime exact numerical-run and unfinished-geometry AST comparisons plus pinned test/log.",
+      "Explicit user-directed Claude-only review and narrow append-only AGENTS provenance transition."
+    ]
+  },
+  "excludedHistoricalFiles": 12
+}

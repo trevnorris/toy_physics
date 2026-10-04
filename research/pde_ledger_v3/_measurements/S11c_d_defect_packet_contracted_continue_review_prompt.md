@@ -25,7 +25,7 @@ is called. Separate new arithmetic from restored observations.
 Inspect readiness contracts: actual manifest/source/prior hashes, method/build/
 authority paths, guard/supervisor and hook, complete failure prefixes and posthashes,
 SQLite FULL and all numerical identities/error/controls inherited unchanged.
-56 stdlib synthetic/AST tests are tooling, not native runtime proof. No READY gate
+72 stdlib synthetic/AST tests are tooling, not native runtime proof. No READY gate
 exists and no science has run in this new build. Do not treat proposed assertions
 or source-only verdicts as runtime outcomes. J/direct is not fullpacket or leakage.
 
@@ -34,4 +34,13 @@ essential operands and remaining scoped risks. Avoid unrelated optional expansio
 or a rewrite of already preserved science. All necessary substantive objections
 must remain visible even if another stage's source was previously assessed.
 
-Require saved base/enlarged/carrier domain joins, independent native/preflight/value coverage and all eight same-path mutants per group, exact original formula AST joins, inherited per-primitive majorant operands and flag, complete prior tree and all33 budget checkpoints. All four sum records precede the final budget guard. Both literal build verdicts are required. Shared carrier bounds are not independent evidence. All original equations, tolerances and numerical code are unchanged.
+Require saved base/enlarged/carrier domain joins, independent native/preflight/value coverage and all eleven same-path mutants per group, exact original formula AST joins, inherited per-primitive majorant operands and flag, complete prior tree and all33 budget checkpoints. All four sum records precede the final budget guard. The current user explicitly selects Claude-only review; an actual Claude literal verdict is required, never a paired-clearance claim. Shared carrier bounds are not independent evidence. All original equations, tolerances and numerical code are unchanged.
+
+
+Inspect the actual scalar objects and derived totals consumed by the sums, not
+only their census metadata. Inspect all base/enlarged binding paths and both
+moment-helper source definitions; no completed tail formula is reevaluated.
+Inspect fresh source/profile/root/Gaussian metadata joins and runtime original-
+run/unfinished-tail AST equality. Tooling source and hash-labelled log are exact
+manifest pins. The sole historical current-path exception is the explicit
+append-only AGENTS review-policy transition; original bytes remain pinned.

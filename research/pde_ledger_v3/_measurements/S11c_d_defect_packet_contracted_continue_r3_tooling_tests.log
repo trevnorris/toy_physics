@@ -1,0 +1,89 @@
+{
+  "toolingOnly": true,
+  "scientificRestoration": false,
+  "sourceHashes": {
+    "S11c_d_defect_packet_contracted_continue.py": "b3c4557a1a2e2b7e57a967a0e5423bcf4feb14fcb316cc698bdab79e0f3855cf",
+    "S11c_d_defect_packet_contracted_continue_prepare.py": "4d8c7aaf9faac2155493a8a56035a2d5e3207fe0d90a284c43088fc15ecbe0ba",
+    "S11c_d_defect_packet_contracted_continue_resume.py": "34e540e63046c04fe27bc9a27633e0665b5b0bbfec52de517f07ccaecc423b73",
+    "S11c_d_defect_packet_contracted_continue_tail.py": "76962a64220efad00d7b7778dce463ffa880749b25a77c25c3265836f40b77e4",
+    "S11c_d_defect_packet_contracted_continue_launch.py": "00382cc380c4254e93ce550210f15575edd6cf80fe64e768757d1a6a22e7ee9a",
+    "S11c_d_defect_packet_contracted_continue_test.py": "597bebb58283074ff14f6492572cab01f1c4157b198e549d912ccc41a873b03d"
+  }
+}
+test_H_formula_source_AST (__main__.ASTAndContracts) ... ok
+test_all_modules_parse (__main__.ASTAndContracts) ... ok
+test_exact_comparison_wrapped_for_strict_predicate (__main__.ASTAndContracts) ... ok
+test_no_completed_function_calls (__main__.ASTAndContracts) ... ok
+test_no_gate_created (__main__.ASTAndContracts) ... ok
+test_no_science_import (__main__.ASTAndContracts) ... ok
+test_saved_no_unit_conversion (__main__.ASTAndContracts) ... ok
+test_unchanged_geometry_tail (__main__.ASTAndContracts) ... ok
+test_unchanged_numerical_worker_tail (__main__.ASTAndContracts) ... ok
+test_direct_three_times (__main__.Census) ... ok
+test_duplicate (__main__.Census) ... ok
+test_duplicate_replaces_missing (__main__.Census) ... ok
+test_full (__main__.Census) ... ok
+test_grade_refusal (__main__.Census) ... ok
+test_missing (__main__.Census) ... ok
+test_order_not_identity (__main__.Census) ... ok
+test_positive_groups_all_retained (__main__.Census) ... ok
+test_same_census_mutant_path (__main__.Census) ... ok
+test_twenty_unique (__main__.Census) ... ok
+test_unit_refusal (__main__.Census) ... ok
+test_wrong_K (__main__.Census) ... ok
+test_wrong_T (__main__.Census) ... ok
+test_wrong_carrier (__main__.Census) ... ok
+test_wrong_face (__main__.Census) ... ok
+test_wrong_primitive_selection (__main__.Census) ... ok
+test_wrong_purpose (__main__.Census) ... ok
+test_all_actual_binding_ASTs (__main__.CompleteScalarAndSourceJoins) ... ok
+test_changed_geometry_refused (__main__.CompleteScalarAndSourceJoins) ... ok
+test_changed_run_refused (__main__.CompleteScalarAndSourceJoins) ... ok
+test_derived_totals (__main__.CompleteScalarAndSourceJoins) ... ok
+test_historical_policy_is_only_exception (__main__.CompleteScalarAndSourceJoins) ... ok
+test_middle_only_mutant (__main__.CompleteScalarAndSourceJoins) ... ok
+test_outer_only_mutant (__main__.CompleteScalarAndSourceJoins) ... ok
+test_policy_gate_single_reviewer (__main__.CompleteScalarAndSourceJoins) ... ok
+test_runtime_source_check_implementation (__main__.CompleteScalarAndSourceJoins) ... ok
+test_sums_consume_validated_vector (__main__.CompleteScalarAndSourceJoins) ... ok
+test_total_only_mutant (__main__.CompleteScalarAndSourceJoins) ... ok
+test_wrong_E30_constructor (__main__.CompleteScalarAndSourceJoins) ... ok
+test_wrong_base_output (__main__.CompleteScalarAndSourceJoins) ... ok
+test_wrong_helper (__main__.CompleteScalarAndSourceJoins) ... ok
+test_wrong_moment_binding (__main__.CompleteScalarAndSourceJoins) ... ok
+test_wrong_ordinary_binding (__main__.CompleteScalarAndSourceJoins) ... ok
+test_all_groups_before_budget_guard (__main__.IndependentAncestry) ... ok
+test_changed_D_source_refused (__main__.IndependentAncestry) ... ok
+test_changed_H_source_refused (__main__.IndependentAncestry) ... ok
+test_changed_outer_source_refused (__main__.IndependentAncestry) ... ok
+test_exact_actual_source_AST_pairs (__main__.IndependentAncestry) ... ok
+test_extra_base_entry (__main__.IndependentAncestry) ... ok
+test_gate_requires_literal_pair (__main__.IndependentAncestry) ... ok
+test_independent_windows (__main__.IndependentAncestry) ... ok
+test_native_base_census (__main__.IndependentAncestry) ... ok
+test_prior_missing (__main__.IndependentAncestry) ... ok
+test_prior_symlink (__main__.IndependentAncestry) ... ok
+test_prior_tree (__main__.IndependentAncestry) ... ok
+test_prior_wrong_bytes (__main__.IndependentAncestry) ... ok
+test_swapped_value_refused (__main__.IndependentAncestry) ... ok
+test_unbalanced_faces (__main__.IndependentAncestry) ... ok
+test_unlisted_extra_live (__main__.IndependentAncestry) ... ok
+test_wrong_bound_source_refused (__main__.IndependentAncestry) ... ok
+test_wrong_native_grade (__main__.IndependentAncestry) ... ok
+test_wrong_saved_base_window (__main__.IndependentAncestry) ... ok
+test_wrong_saved_enlarged_id (__main__.IndependentAncestry) ... ok
+test_wrong_saved_enlarged_window (__main__.IndependentAncestry) ... ok
+test_changed_arguments (__main__.Prefix) ... ok
+test_changed_decision (__main__.Prefix) ... ok
+test_enlarged (__main__.Prefix) ... ok
+test_guard_inventory (__main__.Prefix) ... ok
+test_missing_input (__main__.Prefix) ... ok
+test_nonzero (__main__.Prefix) ... ok
+test_source_call_refused (__main__.Prefix) ... ok
+test_strict_boolean (__main__.Prefix) ... ok
+test_zero (__main__.Prefix) ... ok
+
+----------------------------------------------------------------------
+Ran 72 tests in 1.604s
+
+OK

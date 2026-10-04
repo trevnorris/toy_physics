@@ -1,0 +1,13 @@
+{
+  "status": "EXPLICIT_USER_REVIEW_POLICY_APPEND_ONLY_TRANSITION",
+  "recordedUtc": "2026-10-04T14:38:26.859538+00:00",
+  "source": "/var/projects/toy_physics/AGENTS.md",
+  "beforeSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "afterSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "appendedText": "\n# Temporary Claude-only review policy (user instruction, October 4, 2026)\n\nUntil the user changes this policy, use only the established Claude reviewer for\nongoing authorized research reviews. Do not launch or wait for Grok reviews.\nThis supersedes historical paired-review and two-literal-CLEAR requirements,\nincluding earlier completion-hook messages. Require the actual scoped Claude\nreport and substantive assessment; never label Claude-only clearance as paired\nclearance. Preserve all prior reports, findings and cancelled attempts.\n\nKeep fixed packet/source hashes, no scientific replay or automatic retries,\nresource containment, the no-deadline policy and completion hooks unchanged.\nNecessary substantive revisions to Claude remain authorized without routine\npermission questions. Preserve active pinned sources when applying this policy.\n",
+  "policyPath": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_temporary_claude_only_review_policy_20261004.json",
+  "policySha256": "0b918036506ff25bd1d17d54d24f5b4eb33ca3e603e1570fc3d91f4d82013093",
+  "oldSourcePreservedAt": "prior/source/AGENTS.md",
+  "onlyHistoricalCurrentPathException": "/var/projects/toy_physics/AGENTS.md",
+  "reason": "Review authority update after active reviews finished; no scientific source changed. Historical source receipts must still match the original frozen AGENTS bytes, while the new run pins current policy separately."
+}

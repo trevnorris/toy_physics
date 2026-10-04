@@ -7,13 +7,23 @@ import ast,copy,hashlib,json
 from pathlib import Path
 from S11c_d_defect_packet_contracted_continue_resume import (
     require,ZERO,UNITS,COMPONENTS,canonical_slots,check_census,group_indices,
-    exact_constant,guard_inventory,prefix_return,join_base_census,bound_source,independent_slots,tail_formula_join)
+    exact_constant,guard_inventory,prefix_return,join_base_census,bound_source,independent_slots,tail_formula_join,checked_totals,continuation_source_joins,tail_binding_joins)
 from S11c_d_defect_packet_contracted_continue_tail import continue_geometry
 
 
 def read(p):return json.loads(Path(p).read_text())
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def canonical(v):return json.dumps(v,sort_keys=True,separators=(',',':'),allow_nan=False)
+
+
+def historical_source(source,expected,manifest,prior):
+    transition=read(manifest['policySourceTransition'])
+    if source!=transition['source']:return Path(source)
+    require(source=='/var/projects/toy_physics/AGENTS.md' and transition['policyPath']==manifest['reviewPolicy'],'only the explicit AGENTS review-policy transition')
+    old=prior/'source/AGENTS.md';current=Path(source)
+    require(expected==transition['beforeSha256'] and sha(old)==expected and sha(current)==transition['afterSha256']==manifest['sourcePins'][source],'exact historical/current policy bytes')
+    require(current.read_bytes()==old.read_bytes()+transition['appendedText'].encode() and sha(transition['policyPath'])==transition['policySha256'],'only explicitly authorized policy appendix changed')
+    return old
 
 
 def restore_prefix(raw,manifest,J):
@@ -47,9 +57,9 @@ def restore_prefix(raw,manifest,J):
     for alias,rec in manifest['savedInputs'].items():
         require(sha(root/'saved'/alias)==rec['sha256'],'prior argument copy '+alias)
     for source,digest in old_manifest['sourcePins'].items():
-        require(sha(source)==digest,'unchanged prior source '+source)
+        require(sha(historical_source(source,digest,manifest,prior))==digest,'unchanged prior source or exact historical policy '+source)
     units=get('posthashes');require(units['copiesIntact'] and failed['copiesIntact'] and failed['sourcePosthashesIntact'] and failed['identityCopiesIntact'],'original integrity flags')
-    for source,rec in units['sources'].items():require(rec['intact'] and sha(source)==rec['expected']==rec['actual'],'actual prior source posthash')
+    for source,rec in units['sources'].items():require(rec['intact'] and sha(historical_source(source,rec['expected'],manifest,prior))==rec['expected']==rec['actual'],'actual prior source posthash')
     operations=failed['completedOperations'];require(len(operations)==len(set(operations))==263,'all263 complete operations')
     counts={'inherited-new-zero':0,'enlarged-tail-observation':0}
     for name in operations:
@@ -82,6 +92,20 @@ def restore_prefix(raw,manifest,J):
     for rec in contracts['fragments'].values():
         text=Path(rec['source']).read_text();nodes=[n for n in ast.walk(ast.parse(text)) if getattr(n,'lineno',None)==rec['line'] and getattr(n,'end_lineno',None)==rec['endLine'] and ast.get_source_segment(text,n)==rec['text']]
         require(len(nodes)==1 and sha(rec['source'])==rec['sourceSha256'],'actual original fragment and hash')
+    source_args={k:Path(v).read_text() for k,v in manifest['continuationSourceProof'].items()}
+    J.emit('new-runtime-continuation-source-input',source_args)
+    source_joins=continuation_source_joins(**source_args)
+    J.emit('new-runtime-continuation-source-decision',source_joins)
+    require(all(v['same'] for v in source_joins.values()),'actual pinned numerical and unfinished geometry AST identity')
+    numeric=Path(manifest['librarySource']).read_text();oldprepare=Path(manifest['attestedGuardSources']['prepare']).read_text()
+    ast_record=get('new-source-ast-join-input');profile_record=get('new-profile-tail-source-joins');outgoing=get('new-outgoing-source-join')
+    newtree=ast.parse(numeric);profile=next(n for n in ast.walk(newtree) if isinstance(n,ast.FunctionDef) and n.name=='profile');root=next(n for n in ast.walk(newtree) if isinstance(n,ast.FunctionDef) and n.name=='q')
+    decisions={'originalContracts':ast_record['originalContracts']==contracts,'numericSource':ast_record['newNumericSource']==ast.unparse(newtree),'originalPrepareSource':ast_record['newPreparationSource']==ast.unparse(ast.parse(oldprepare)),
+        'profileSource':profile_record['newProfile']==ast.unparse(profile),'profileOriginal':profile_record['originalProfile']==contracts['fragments']['inner-profile'],
+        'weightedTail':profile_record['weightedTail']==contracts['fragments']['tail-weighted-tail'],'moment':profile_record['moment']==contracts['fragments']['tail-exponential-moment'],'contributions':profile_record['contributions']==contracts['fragments']['tail-contributions'],
+        'outgoingOriginal':outgoing['original']==contracts['fragments']['inner-root'],'outgoingActual':outgoing['actualNewSource']==ast.get_source_segment(numeric,root),'outgoingSavedDecision':outgoing['sameRadicandAndBranch'] is True}
+    J.emit('new-restored-source-attestation-joins',{'decisions':decisions,'oldRecords':{'ast':ast_record,'profile':profile_record,'outgoing':outgoing},'currentNumericSource':numeric,'currentOriginalPrepare':oldprepare,'classification':'Fresh metadata/source joins; old mathematical identities remain inherited.'})
+    require(all(decisions.values()),'actual source/profile/root checkpoint arguments')
     return get,operations,counts
 
 
@@ -112,6 +136,9 @@ def prepare(raw,manifest,J,sp,C,G,N):
     require(len(all_addresses)==544 and len(entries)==20,'full selected/live census')
     J.emit('new-tail-unit-scope',{'entries':entries,'commonUnit':UNITS,'coordinates':'Original native reference-unit magnitudes; analytic1e-11, numerical1e-11/80 and absolutecomparison1e-9 carry this same summand unit.',
         'analyticCeilingIsJDirectSubsetOnly':True,'pendingComponentsRequireSeparateFutureBudgetAndFullLedger':True,'noGlobalBudgetAlreadyEstablished':True})
+    gaussian=get('new-Gaussian-envelope-transport')
+    J.emit('new-inherited-Gaussian-context-input',{'record':gaussian,'actualEntries':entries,'oldBounds':original('preflight/Fourier-envelope-constants.json'),'originalFourierSource':original('numeric-source-contracts.json')['fragments']['fourier-product']})
+    require(gaussian['actualEligibleSources']==entries and gaussian['oldBounds']==original('preflight/Fourier-envelope-constants.json') and gaussian['originalFourierSource']==original('numeric-source-contracts.json')['fragments']['fourier-product'] and gaussian['carrierDomain']=='|p0|<3','actual Gaussian/source context; analytic identity remains inherited')
     baseplan=original('preflight/tail-plan.json');physical=original('preflight/physical-plan.json')
     J.emit('new-independent-tail-domain-input',{'basePlan':baseplan,'physicalPlan':physical,'plannedCarriers':manifest['scope']['plannedCarriers'],'originalContext':get('restored-physical-context'),'nativeAddresses':all_addresses,'entries':entries})
     require((baseplan['K'],baseplan['T'])==(27,122) and baseplan['coversBothCarriers'] is True,'actual original base window and shared carrier envelope')
@@ -137,10 +164,19 @@ def prepare(raw,manifest,J,sp,C,G,N):
     J.emit('new-tail-formula-provenance-decision',formula_join)
     require(all(v['same'] for v in formula_join.values()),'actual original base/enlarged outer J H D AST identity')
     const=lambda record:exact_constant(sp,C,record)
+    base_text=Path(original('numeric-source-contracts.json')['fragments']['tail-contributions']['source']).read_text()
+    J.emit('new-tail-binding-source-input',{'baseSource':base_text,'enlargedSource':formula_input['executedSource'],'savedBaseContext':original('preflight/tail-bound-derivation.json')})
+    binding_joins=tail_binding_joins(base_text,formula_input['executedSource'])
+    J.emit('new-tail-binding-source-decision',binding_joins)
+    require(all(v['same'] for v in binding_joins.values()),'actual base/enlarged constant and helper provenance')
     baseplan=original('preflight/tail-plan.json');base={v['addressId']:v for v in baseplan['allAddresses']}
     context=original('preflight/tail-bound-derivation.json');env=original('preflight/Fourier-envelope-constants.json')['bounds']
     J.emit('new-original-tail-domains-input',{'context':context,'physical':original('preflight/physical-plan.json'),'globalDomain':original('saved/pressure/global-parameter-domain.json'),'profile':original('saved/pressure/profile-envelope.json')})
     require(bool(const(context['b'])==sp.Rational(3000,11101) and const(context['b'])>0),'same positive beta domain')
+    positive_bindings={k:bool(const(context[k])>0) for k in ('b','ordinaryKernelUpper')}
+    positive_bindings.update({k:bool(const(context['fullExponentialMoments'][k])>0) for k in ('2','3')})
+    J.emit('new-saved-tail-positive-bindings',{'originalContext':context,'flags':positive_bindings,'bindingSourceProof':'new-tail-binding-source-decision','noCompletedMomentOrTailReevaluation':True})
+    require(all(positive_bindings.values()),'positive actual saved tail coefficient premises')
     bounds={};tail_arguments={};enlarged={};source_records={}
     for e in entries:
         ident=e['addressId'];saved=get('new-enlarged-tail-'+str(ident)+'-input');ret=get('new-enlarged-tail-'+str(ident)+'-return');dec=get('new-enlarged-tail-'+str(ident)+'-decision')
@@ -180,7 +216,8 @@ def prepare(raw,manifest,J,sp,C,G,N):
                 rows.append({**spec,**pair,'boundSource':bound_source(ident,K,T,source_records[ident][K]),'outerOperand':encoded(pair['outer']),'middleOperand':encoded(pair['middle']),'total':pair['outer']+pair['middle'],'baselineOnly':True,'includesExtraHOvercount':spec['primitive']=='J'})
             label=str(K)+'-'+('zero' if carrier=='0' else 'matching')
             J.emit('new-analytic-tail-census-'+label,{'expected':expected,'actual':rows,'numericalEpsilonUnchanged':sp.Rational(1,80*10**11)})
-            check_census(rows,expected)
+            totals=checked_totals(rows,expected,const,encoded)
+            J.emit('new-validated-tail-totals-'+label,{'rows':rows,'validatedTotals':totals,'construction':'Restored census-validated encoded outer plus middle; no independent mutable total is summed.'})
             # Same census path; mutations have no second baseline arithmetic.
             mutations={'drop':copy.deepcopy(rows[:-1]),'duplicate':copy.deepcopy(rows+[rows[0]])}
             for tag,key,value in [('wrong-T','T',T+1),('wrong-K','K',29 if K==27 else 27),('wrong-carrier','carrier',manifest['scope']['plannedCarriers'][1] if carrier==manifest['scope']['plannedCarriers'][0] else manifest['scope']['plannedCarriers'][0]),('wrong-face','face','minus' if rows[0]['face']=='plus' else 'plus')]:
@@ -191,14 +228,16 @@ def prepare(raw,manifest,J,sp,C,G,N):
             address_mutant=copy.deepcopy(rows);other_row=next(v for v in rows if v['addressId']!=rows[0]['addressId'] and (v['outerOperand'],v['middleOperand'])!=(rows[0]['outerOperand'],rows[0]['middleOperand']))
             for key in ('outer','middle','total','outerOperand','middleOperand'):address_mutant[0][key]=copy.deepcopy(other_row[key])
             mutations['swapped-address-values']=address_mutant
+            for key in ('total','outer','middle'):
+                mutant=copy.deepcopy(rows);mutant[0][key]+=1;mutations[key+'-only']=mutant
             for tag,mutant in mutations.items():
                 J.emit('new-census-control-'+label+'-'+tag+'-input',{'actualExpected':expected,'mutant':mutant})
                 error=None
-                try:check_census(mutant,expected)
+                try:checked_totals(mutant,expected,const,encoded)
                 except ValueError as ex:error=str(ex)
                 J.emit('new-census-control-'+label+'-'+tag+'-return',{'refused':error is not None,'reason':error,'noNumericResponseClaim':True})
                 require(error is not None,'responsive same-path coverage control')
-            groups=group_indices(rows);sums={name:sum((rows[i]['total'] for i in indices),sp.S.Zero) for name,indices in groups.items()}
+            groups=group_indices(rows);sums={name:sum((totals[i] for i in indices),sp.S.Zero) for name,indices in groups.items()}
             flags={name:bool(value>=0 and value<ceiling) for name,value in sums.items()}
             J.emit('new-separate-analytic-tail-sums-'+label,{'rows':rows,'groups':groups,'sums':sums,'ceiling':ceiling,'unit':UNITS,'decisions':flags,'carriersNotAdded':True,'windowsNotAdded':True,'eachDCountedThreeTimes':True,'noDonationOrCancellation':True,'subsetOnly':True})
             all_groups.append({'label':label,'flags':flags,'sumRecord':'new-separate-analytic-tail-sums-'+label})

@@ -1,6 +1,6 @@
 {
   "status": "STANDING_AUTHORITY_CONDITIONAL_ON_EXACT_AMENDED_METHOD_AND_BUILD_ASSESSMENT",
-  "recordedUtc": "2026-10-04T14:28:30.603728+00:00",
+  "recordedUtc": "2026-10-04T14:44:44.914548+00:00",
   "scope": {
     "frequency": 3,
     "anchoring": "LAB_HELD",
@@ -78,7 +78,7 @@
     "priority": "desktop-managed"
   },
   "AGENTSPath": "/var/projects/toy_physics/AGENTS.md",
-  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
   "authority": "Standing user direction to continue clear bounded work without repeated stage prompts, and AGENTS standing review-submission authority. Any future launch requires actual substantive amended-method/concrete-build assessment and a fresh pinned gate. This preparation is not a launch or scientific acceptance.",
   "priorFailureCommit": "ec54932e",
   "priorFailureRemainsFailure": true,
@@ -90,9 +90,15 @@
   "newMethodAndSourceAssessmentRequired": true,
   "futureOutput": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-01/complete",
   "noImmediateLeakageClaim": true,
-  "revision": "source validation r2",
-  "priorConcreteBuildRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_continue_build_review_record.json",
-  "priorConcreteBuildCommit": "7fa1933f",
+  "revision": "complete scalar/source validation r3; explicit Claude-only user authority",
+  "priorConcreteBuildRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_continue_build_review_r2_record.json",
+  "priorConcreteBuildCommit": "705c0a4f",
   "priorReviewNotClear": true,
-  "substantiveRevisedBuildAssessmentRequired": true
+  "substantiveRevisedBuildAssessmentRequired": true,
+  "reviewers": [
+    "claude"
+  ],
+  "reviewPolicy": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_temporary_claude_only_review_policy_20261004.json",
+  "reviewPolicySha256": "0b918036506ff25bd1d17d54d24f5b4eb33ca3e603e1570fc3d91f4d82013093",
+  "noPairedClearanceClaim": true
 }

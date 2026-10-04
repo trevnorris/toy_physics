@@ -105,8 +105,11 @@ def verify_gate(path,manifest_path,m):
     require(g['launcher']==m['launcher'] and g['library']==m['librarySource'] and g['authority']==m['executionAuthority'] and g['buildReviewRecord']==m['reviewRecordWillBe'],'actual execution documents')
     require(g['continuationMethod']==m['continuationMethod'] and g['tailMethodRecord']==m['tailMethodRecord'] and g['priorResultRecord']==m['priorResultRecord'],'actual amended method and preserved failure')
     r=read(g['buildReviewRecord'])
+    policy=read(m['reviewPolicy'])
+    require(policy['status']=='ACTIVE_TEMPORARY_CLAUDE_ONLY_USER_POLICY' and policy['selectedReviewers']==g['reviewers']==m['reviewers']==['claude'] and g['reviewPolicySha256']==sha(m['reviewPolicy']),'actual explicit Claude-only policy')
+    require(r['reviewers']==['claude'] and r['reviewPolicySha256']==g['reviewPolicySha256'] and r['sourcePins']==g['sourcePins'],'exact reviewed helper/test/log/policy pins')
     expectedVerdict='CLEAR FOR THIS SAVED-PREFIX CONTRACTED NUMERICAL CONTINUATION BUILD'
-    require(g['literalBuildVerdicts']=={e:expectedVerdict for e in ('claude','grok')} and {e:r['reports'][e]['literalVerdict'] for e in ('claude','grok')}==g['literalBuildVerdicts'],'both actual independent literal build verdicts')
+    require(g['literalBuildVerdicts']=={e:expectedVerdict for e in ('claude',)} and {e:r['reports'][e]['literalVerdict'] for e in ('claude',)}==g['literalBuildVerdicts'],'actual Claude literal build verdict under temporary policy')
     require(r['allChecksPassed'] is True and r['independentBuildClearance'] is True and r['amendedTailMethodAssessed'] is True,'independent concrete build and amended method assessment')
     for k in ('workerSha256','manifestSha256','librarySha256','launcherSha256','sharedGuardSha256','supervisorSha256','continuationMethodSha256'):require(r[k]==g[k],'exact assessed build '+k)
     baseline=read(m['methodRecord']);require(g['methodRecordSha256']==sha(m['methodRecord']) and baseline['jointIndependentMethodClearance'] is True and baseline['methodSha256']==sha(m['methodPath']),'original numerical method remains fixed')

@@ -83,9 +83,32 @@ argument remains inherited, not a newly computed proof.
 
 All four window/carrier aggregate records precede the final budget refusal.
 Carrier bounds share one uniform envelope and are not independent numerical
-evidence. The new gate requires both actual literal reviewer verdicts, as well as
+evidence. The new gate requires the actual Claude literal verdict under the temporary user policy, as well as
 the exact reviewed source/manifest and amended-method identity.
 
 Request-identity construction code is unchanged. Namespace identity values are
 necessarily new because the manifest and tail payload changed. There is no prior
 numerical SQLite file to reuse. No old numerical request is repeated.
+
+
+## Scalar objects and current review policy
+
+`checked_totals` materializes only the encoded, independently census-validated
+saved outer/middle operands. It checks the live outer/middle and declared total,
+then returns the derived totals used by every group sum. Three additional scalar-
+only mutations (total, outer, middle) join the eight existing metadata/value
+mutations: eleven actual refusal controls per window/carrier group.
+
+`tail_binding_joins` inspects the real original preflight and enlarged source,
+including b/bstar, ordinary/Cordinary, saved F2/F3 paths, E15/E30 and both moment
+helper definitions. Full inputs and source decisions precede guards. No bound is
+recomputed. Source/profile/root/Gaussian checkpoint joins compare actual pinned
+source and original envelope/entry operands. Their analytic identities remain
+inherited. Runtime run/tail AST comparison complements the 72 tooling tests.
+
+The exact tooling source and log are now explicit pins, as are the user policy
+and its append-only AGENTS transition. The original AGENTS byte hash must still
+match its failed-run snapshot, and current AGENTS must be exactly that snapshot
+plus the authorized appendix. No other historical current-path exception exists.
+Future review and execution gating use only Claude until the user changes this
+policy. Historical Grok material is preserved, not supplied as peer commentary.

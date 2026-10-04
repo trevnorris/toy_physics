@@ -85,3 +85,17 @@ and the no-deadline policy remain in force.
 This instruction supersedes older exact-packet consent requirements in project
 notes, preparation records and completion-hook messages. Preserve those records
 as history; do not treat their superseded permission language as a new blocker.
+
+# Temporary Claude-only review policy (user instruction, October 4, 2026)
+
+Until the user changes this policy, use only the established Claude reviewer for
+ongoing authorized research reviews. Do not launch or wait for Grok reviews.
+This supersedes historical paired-review and two-literal-CLEAR requirements,
+including earlier completion-hook messages. Require the actual scoped Claude
+report and substantive assessment; never label Claude-only clearance as paired
+clearance. Preserve all prior reports, findings and cancelled attempts.
+
+Keep fixed packet/source hashes, no scientific replay or automatic retries,
+resource containment, the no-deadline policy and completion hooks unchanged.
+Necessary substantive revisions to Claude remain authorized without routine
+permission questions. Preserve active pinned sources when applying this policy.

@@ -32,3 +32,9 @@ ancestry; they are not a reason to assume the missing aggregate or quadrature
 will pass. All old numerical rules/banks remain preserved and uncalled.
 
 `resume.py` contains exact file-tree, independent census/value and source-AST joins. These helpers use stdlib structures until exact saved quantities are supplied inside containment. `prepare.py` preserves all four aggregate outputs before the budget guard. The new full request identities differ from the failed run because its namespace inputs changed; no previous SQLite file exists.
+
+`review-policy.json` and `policy-transition.json` record the user's current
+Claude-only instruction and exact append-only AGENTS change. The old frozen
+AGENTS file remains in `prior/source/AGENTS.md`. `tooling-tests.log` includes the
+actual tested source hashes. Runtime source comparison and complete scalar checks
+are in `resume.py` and called before aggregation in `prepare.py`.

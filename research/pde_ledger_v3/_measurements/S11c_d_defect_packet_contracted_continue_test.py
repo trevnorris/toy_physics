@@ -2,8 +2,9 @@
 import ast,copy,json,tempfile,unittest
 from pathlib import Path
 from collections import Counter
+from fractions import Fraction
 from S11c_d_defect_packet_contracted_continue_resume import (
-    require,UNITS,ZERO,canonical_slots,check_census,group_indices,guard_inventory,prefix_return,exact_constant,tree_inventory,check_tree,join_base_census,bound_source,independent_slots,tail_formula_join)
+    require,UNITS,ZERO,canonical_slots,check_census,group_indices,guard_inventory,prefix_return,exact_constant,tree_inventory,check_tree,join_base_census,bound_source,independent_slots,tail_formula_join,checked_totals,tail_binding_joins,continuation_source_joins)
 M=Path(__file__).resolve().parent
 
 def entries():
@@ -199,5 +200,57 @@ class IndependentAncestry(unittest.TestCase):
         text=(M/'S11c_d_defect_packet_contracted_continue_prepare.py').read_text();self.assertLess(text.index("J.emit('new-all-analytic-tail-group-decisions'"),text.index("'actual separate analytic subset aggregate budget'"))
     def test_gate_requires_literal_pair(self):
         text=(M/'S11c_d_defect_packet_contracted_continue.py').read_text();self.assertIn("g['literalBuildVerdicts']",text);self.assertIn("r['reports'][e]['literalVerdict']",text)
+
+class CompleteScalarAndSourceJoins(unittest.TestCase):
+    def fixture(self):
+        rows=canonical_slots(entries(),27,122,'synthetic')
+        encode=lambda v:{'text':str(v),'srepr':'manufactured('+str(v)+')'}
+        for r in rows:r.update(boundSource={'fixture':'original'},outer=Fraction(2),middle=Fraction(3),total=Fraction(5),outerOperand=encode(Fraction(2)),middleOperand=encode(Fraction(3)))
+        expected=[{k:v for k,v in r.items() if k not in ('outer','middle','total')} for r in rows]
+        restore=lambda v:Fraction(v['text'])
+        return rows,expected,restore,encode
+    def test_derived_totals(self):
+        rows,expected,restore,encode=self.fixture();self.assertEqual(checked_totals(rows,expected,restore,encode),[Fraction(5)]*40)
+    def test_total_only_mutant(self):
+        rows,expected,restore,encode=self.fixture();rows[0]['total']+=1
+        with self.assertRaises(ValueError):checked_totals(rows,expected,restore,encode)
+    def test_outer_only_mutant(self):
+        rows,expected,restore,encode=self.fixture();rows[0]['outer']+=1
+        with self.assertRaises(ValueError):checked_totals(rows,expected,restore,encode)
+    def test_middle_only_mutant(self):
+        rows,expected,restore,encode=self.fixture();rows[0]['middle']+=1
+        with self.assertRaises(ValueError):checked_totals(rows,expected,restore,encode)
+    def test_sums_consume_validated_vector(self):
+        tree=ast.parse((M/'S11c_d_defect_packet_contracted_continue_prepare.py').read_text())
+        sums=next(n.value for n in ast.walk(tree) if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='sums' for t in n.targets))
+        self.assertIn('totals[i]',ast.unparse(sums));self.assertNotIn("rows[i]['total']",ast.unparse(sums))
+    def sources(self):
+        return (M/'S11c_d_defect_packet_preflight.py').read_text(),(M/'S11c_d_defect_packet_contracted_prepare.py').read_text()
+    def test_all_actual_binding_ASTs(self):
+        b,e=self.sources();self.assertTrue(all(v['same'] for v in tail_binding_joins(b,e).values()))
+    def test_wrong_E30_constructor(self):
+        b,e=self.sources();v=tail_binding_joins(b,e.replace('E30=sp.Integer(3)**30','E30=sp.Integer(3)**31'));self.assertFalse(v['enlarged/E30']['same']);self.assertFalse(v['E30-identity']['same'])
+    def test_wrong_moment_binding(self):
+        b,e=self.sources();v=tail_binding_joins(b,e.replace("2:R(tail_context['fullExponentialMoments']['2'])","2:R(tail_context['fullExponentialMoments']['3'])"));self.assertFalse(v['enlarged/F']['same'])
+    def test_wrong_ordinary_binding(self):
+        b,e=self.sources();v=tail_binding_joins(b,e.replace("ordinary=R(tail_context['ordinaryKernelUpper'])","ordinary=R(tail_context['heightMagnitude'])"));self.assertFalse(v['enlarged/ordinary']['same'])
+    def test_wrong_base_output(self):
+        b,e=self.sources();v=tail_binding_joins(b.replace("'ordinaryKernelUpper':Cordinary","'ordinaryKernelUpper':KJ"),e);self.assertFalse(v['base-output/ordinaryKernelUpper']['same'])
+    def test_wrong_helper(self):
+        b,e=self.sources();v=tail_binding_joins(b,e.replace('math.factorial(n),math.factorial(j)','math.factorial(n+1),math.factorial(j)'));self.assertFalse(v['helper/exponential_moment']['same'])
+    def source_context(self):
+        return {k:(M/(v+'.py')).read_text() for k,v in {'worker':'S11c_d_defect_packet_contracted_continue','original_worker':'S11c_d_defect_packet_contracted_numeric','tail':'S11c_d_defect_packet_contracted_continue_tail','original_prepare':'S11c_d_defect_packet_contracted_prepare'}.items()}
+    def test_runtime_source_check_implementation(self):self.assertTrue(all(v['same'] for v in continuation_source_joins(**self.source_context()).values()))
+    def test_changed_run_refused(self):
+        v=self.source_context();v['worker']=v['worker'].replace("c.mpf('1e-9')","c.mpf('1e-8')");self.assertFalse(continuation_source_joins(**v)['run']['same'])
+    def test_changed_geometry_refused(self):
+        v=self.source_context();v['tail']=v['tail'].replace('K,T,carrier,8,10','K,T,carrier,9,10');self.assertFalse(continuation_source_joins(**v)['geometryTail']['same'])
+    def test_policy_gate_single_reviewer(self):
+        text=(M/'S11c_d_defect_packet_contracted_continue.py').read_text();tree=ast.parse(text)
+        fn=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='verify_gate')
+        self.assertIn("policy['selectedReviewers'] == g['reviewers'] == m['reviewers'] == ['claude']",ast.unparse(fn));self.assertIn("r['sourcePins'] == g['sourcePins']",ast.unparse(fn))
+    def test_historical_policy_is_only_exception(self):
+        text=(M/'S11c_d_defect_packet_contracted_continue_prepare.py').read_text();tree=ast.parse(text);fn=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='historical_source')
+        self.assertIn("source == '/var/projects/toy_physics/AGENTS.md'",ast.unparse(fn));self.assertIn("old.read_bytes() + transition['appendedText'].encode()",ast.unparse(fn))
 
 if __name__=='__main__':unittest.main()

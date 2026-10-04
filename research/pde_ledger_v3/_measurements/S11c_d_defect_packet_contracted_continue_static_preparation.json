@@ -1,0 +1,23 @@
+{
+  "status": "STATIC_SAVED_PREFIX_BUILD_PREPARATION_NO_SCIENCE",
+  "recordedUtc": "2026-10-04T14:12:01.423031+00:00",
+  "manifestSha256": "825438db7981304696d62c432678cad770cf8a1163b21b00bca8a272cfa0fd7b",
+  "workerSha256": "3d00313cfcb1ccb7606e6e3faa5fe62aea0aca2020904d61769ca4aabc5bf012",
+  "authoritySha256": "13a60300fbdf8b97f53cf494af52d99132bc3d41808177bdc216c322fc759c3d",
+  "methodSha256": "f35b7961b49e34a35d6c8f003f04063ecb7b5baf2b7b6808e6818117b64935e0",
+  "sourceHashChecks": 14736,
+  "priorFiles": 8271,
+  "priorBytes": 158628313,
+  "savedInputs": 3142,
+  "sourcePins": 97,
+  "toolingTests": 35,
+  "toolingTestLogSha256": "c42d9945b0489e75e26192528109815a6f7c0eae43f07950b35ddbcfb8db8e6b",
+  "allStaticChecksPassed": true,
+  "noScientificRestorationOrCalculation": true,
+  "oldNumericalRunASTUnchanged": true,
+  "oldUnfinishedGeometryASTUnchanged": true,
+  "scientificGateExists": false,
+  "futureRunExists": false,
+  "independentBuildClearance": false,
+  "next": "Fixed independent amended-method and concrete continuation build assessment; no science launch yet."
+}

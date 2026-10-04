@@ -972,3 +972,22 @@ f7aa12b043c03c98648c5fc83dceaa6ea656cd5dbe9959bb82a977cea2979de0,
 archivee89e551a326f9cd3ae83ca9a07f719667870aedc75c0910ee335ec45687800d7.
 No peer reports or author clearance were included. Complete wave/kernel/measure
 and pressure summand units remain open; no pressure value/current/loss follows.
+
+## 2026-10-03 — corrected source unit transport review disposition
+
+The actual r2 reports are Claude NEEDS REVISION and Grok CLEAR FOR THIS BOUNDED
+SOURCE UNIT-TRANSPORT BUILD. Both were read after completion. 5761 metadata
+checks verified the complete packet/archive, private copies, actual sources,
+independent sessions, receipts and hook. Claude took 506.457s with empty stderr;
+Grok took 1373.200s with 6945 bytes of CLI diagnostics and 13 Read errors. Both
+reports declare partial packet coverage. No science or READY gate exists.
+
+Both support the added source/profile joins and the distinction between physical
+quantities and stored magnitudes. The remaining revision must explicitly connect
+stage2 placeholder units and parameter values to their saved origins, and connect
+actual exact component evidence and zero-grade denominators to the full rational
+sources. The original frequency 1 and held frequency 3 remain distinct. Grok's
+incidental claim that the ring accepts 0**0 is not true of the reviewed code; the
+literal report is preserved. Retained grade coefficients remain inherited results.
+This necessary validation correction changes no equations or saved inputs and
+will receive substantive assessment before execution.

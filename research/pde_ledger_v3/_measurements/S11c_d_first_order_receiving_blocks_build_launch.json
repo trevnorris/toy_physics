@@ -1,0 +1,75 @@
+{
+  "status": "CLAUDE_BUILD_REVIEW_RUNNING_HOOK_ARMED",
+  "recordedUtc": "2026-10-04T18:39:27.296012+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-blocks-build-review",
+  "preparedCommit": "3045a69d",
+  "packetSha256": "b946ea494195819e9968db3b7dd46dac86a6ba3e90abafdce45ad34e9b9db29e",
+  "archiveSha256": "2b7a94d206231f066fa2f9fb6f0f227091c917bd5c6dd52bbf66f1884c8b7397",
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "launch": {
+    "jobPid": 1773568,
+    "watcherPid": 1773569,
+    "packetSha256": "b946ea494195819e9968db3b7dd46dac86a6ba3e90abafdce45ad34e9b9db29e",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "reviewReceipt": {
+    "engine": "claude",
+    "sessionId": "324b8af8-55a6-45cd-9f4f-16ac659337c9",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "324b8af8-55a6-45cd-9f4f-16ac659337c9"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-blocks-build-review/claude/work",
+    "startedUtc": "2026-10-04T18:38:58.273088+00:00",
+    "packetSha256": "b946ea494195819e9968db3b7dd46dac86a6ba3e90abafdce45ad34e9b9db29e",
+    "promptSha256": "4d710d400a7ecaef122d629165f6c86417f476451e4b03fec85a35fb782764da",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 1773590
+  },
+  "hookState": {
+    "status": "waiting",
+    "watcherPid": 1773569,
+    "jobPid": 1773568,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T18:38:57.801325+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "3c4a632ae322be710d23341228cf9213f164d99e418d99f8b510e1812e6404f0",
+    "notifications": {}
+  },
+  "oneHostAdmissionCheck": true,
+  "coordinatorAndHookAndReviewerAlive": true,
+  "packetAndPrivateFilesVerified": 965,
+  "originalSourcesVerified": 964,
+  "coordinatorStderrBytes": 0,
+  "reviewStderrBytes": 0,
+  "next": "Wait on existing local completion/error hook; no model polling or recurring task. Read literal Claude report and exact bytes before assessment; T1/R1/G1/K1 remain outside this prerequisite."
+}

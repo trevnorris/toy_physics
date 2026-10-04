@@ -1,0 +1,188 @@
+{
+  "status": "FIXED_BUILD_REVIEW_LAUNCH_VERIFIED",
+  "utc": "2026-10-04T09:49:38.046602+00:00",
+  "preparedCommit": "d45f5cb1",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-build-review",
+  "packetSha256": "d04fefbfc8c9d11f9244a9becf447694077990f24344b999dba280cedb2459cc",
+  "archiveSha256": "f7cf1dd99c93e499a26b5fa85484daf30ee6f711a5112622f8b8096af48075a1",
+  "launch": {
+    "jobPid": 819037,
+    "watcherPid": 819038,
+    "packetSha256": "d04fefbfc8c9d11f9244a9becf447694077990f24344b999dba280cedb2459cc",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 819038,
+    "jobPid": 819037,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T09:49:00.824849+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "b8e443956ae1f4e00ea2cf7437796862995286f35da97fdec3bd005202230c5e",
+    "notifications": {}
+  },
+  "checks": {
+    "hook targeted existing session": true,
+    "hook armed before release": true,
+    "exact packet": true,
+    "coordinator alive": true,
+    "watcher alive": true,
+    "claude fixed private packet": true,
+    "grok fixed private packet": true,
+    "no science": true,
+    "no reports read before joint finish": true
+  },
+  "privateFileHashesChecked": 3122,
+  "receipts": {
+    "claude": {
+      "engine": "claude",
+      "sessionId": "377725ec-daad-401f-8e31-0e5d6588fa78",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "377725ec-daad-401f-8e31-0e5d6588fa78"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-build-review/claude/work",
+      "startedUtc": "2026-10-04T09:49:01.720532+00:00",
+      "packetSha256": "d04fefbfc8c9d11f9244a9becf447694077990f24344b999dba280cedb2459cc",
+      "promptSha256": "78e2add8c8ba4ada1a83f9ea67faa1f2daeeebdbe54ab15f0ec710b9191a6ad9",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 819054
+    },
+    "grok": {
+      "engine": "grok",
+      "sessionId": "a7a0134e-0458-4e81-a8b5-a7e9397855b5",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-build-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-build-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "a7a0134e-0458-4e81-a8b5-a7e9397855b5"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-build-review/grok/work",
+      "startedUtc": "2026-10-04T09:49:01.722041+00:00",
+      "packetSha256": "d04fefbfc8c9d11f9244a9becf447694077990f24344b999dba280cedb2459cc",
+      "promptSha256": "78e2add8c8ba4ada1a83f9ea67faa1f2daeeebdbe54ab15f0ec710b9191a6ad9",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 819053
+    }
+  },
+  "processes": {
+    "coordinator": {
+      "pid": 819037,
+      "running": true,
+      "command": [
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-build-review/review_run.py"
+      ]
+    },
+    "watcher": {
+      "pid": 819038,
+      "running": true,
+      "command": [
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/scripts/codex_job_watch.py",
+        "--pid",
+        "819037",
+        "--thread",
+        "01a0e01b-ef84-7192-817f-584cda5d339b",
+        "--directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-build-review/completion-watcher",
+        "--message-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-build-review/completion_message.txt",
+        "--error-log",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-build-review/issues.log"
+      ]
+    },
+    "claude": {
+      "pid": 819054,
+      "running": true,
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "--disable-slash-commands",
+        "--session-id",
+        "377725ec-daad-401f-8e31-0e5d6588fa78"
+      ]
+    },
+    "grok": {
+      "pid": 819053,
+      "running": true,
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-build-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-build-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "a7a0134e-0458-4e81-a8b5-a7e9397855b5"
+      ]
+    }
+  },
+  "automaticRetry": false,
+  "reviewReportsRead": false,
+  "scienceCalls": 0,
+  "waitingPolicy": "Existing local completion/error hook only; no model polling or recurring task."
+}

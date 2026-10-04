@@ -1,0 +1,112 @@
+{
+  "status": "LAUNCHED_WITH_EVENT_HOOK_AND_VERIFIED_PRIVATE_INPUTS",
+  "utc": "2026-10-04T09:18:14.543669+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-method-review",
+  "launch": {
+    "jobPid": 806447,
+    "watcherPid": 806448,
+    "packetSha256": "176f44d4fd552b3254bd34729dcbd80303366dc4e0226b77e7495da101cf728a",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 806448,
+    "jobPid": 806447,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T09:15:36.237921+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "fe5809ecc912edb52674feea5c03acc7603ae9caf8b0f5f367c873578ea14db6",
+    "notifications": {}
+  },
+  "reviewerStarts": {
+    "claude": {
+      "sessionId": "07b8439d-ad6b-454f-b84b-4216c7ea3de0",
+      "pid": 806464,
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "07b8439d-ad6b-454f-b84b-4216c7ea3de0"
+      ],
+      "receiptSha256": "2589b3519e74782c855906d495a17f993604d84dcc366000239761be2528ea00",
+      "actualProcCommand": [],
+      "exitStatusAtInspection": 0,
+      "literalReportRead": false
+    },
+    "grok": {
+      "sessionId": "5f471e23-843a-4a59-b4ae-743b016d873b",
+      "pid": 806463,
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-method-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-method-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "5f471e23-843a-4a59-b4ae-743b016d873b"
+      ],
+      "receiptSha256": "611c1bb570b5209b2416e35408d30babe26c5357977f8b89e1fbd822106e5ea4",
+      "actualProcCommand": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-method-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contraction-method-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "5f471e23-843a-4a59-b4ae-743b016d873b"
+      ],
+      "exitStatusAtInspection": null,
+      "literalReportRead": false
+    }
+  },
+  "packetSha256": "176f44d4fd552b3254bd34729dcbd80303366dc4e0226b77e7495da101cf728a",
+  "archiveSha256": "ce023bed8f034720f4b4c92eed53f9b32f293d136b1ac37b78fc1ac1953f60c2",
+  "privateFileChecks": 3096,
+  "reportsRead": false,
+  "scientificOperations": 0,
+  "noAutomaticRetry": true,
+  "startupInspectionNote": "Initial sandbox check could not see host PIDs. Host verification found Claude already completed exit0 before the running-process assertion; outcome and bytes checked without reading its report. Grok still running. No reviewer restart or retry."
+}

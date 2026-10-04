@@ -1,0 +1,17 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T09:14:31.708455+00:00",
+  "packetSha256": "176f44d4fd552b3254bd34729dcbd80303366dc4e0226b77e7495da101cf728a",
+  "archiveSha256": "ce023bed8f034720f4b4c92eed53f9b32f293d136b1ac37b78fc1ac1953f60c2",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 1548,
+  "bytes": 66342665,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing user/AGENTS consent to necessary substantive established-Claude/Grok assessments within the ongoing two-packet research. Exact finite-window contraction addresses repeated numerical work; no disclosure to new recipients or physical scope expansion.",
+  "scope": "Exact finite-window J/direct packet contraction method and bounded certificate readiness only; no numerical integral/evaluator or current/loss",
+  "noAutomaticRetry": true,
+  "scienceExecutionsAuthorizedByThisReviewLaunch": 0
+}

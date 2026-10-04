@@ -1195,3 +1195,25 @@ action was evaluated. Next is concrete outer-evaluator preparation, including
 actual general Fourier/inner request interfaces, independent route values,
 exact reuse identities, collision coverage and lossless evidence persistence.
 No scattering/current/loss, inverse or sweep follows from unit consistency.
+
+Prepared a substantive finite-window contraction method for independent
+assessment. The new hand derivation contracts packet factors before repeatedly
+forming Jwhole and each of the three added direct terms at outer nodes. It
+keeps the original K/T domains exactly: m=k+t clips the input k window, whereas
+m=l-t clips the output l window and reverses the integration orientation.
+The full m wings, actual normal q(l), dimensional a/beta and original resolvents
+remain explicit. No new algebra or integral has run, and no runtime improvement
+is claimed yet. The old 8.3-billion addressed occurrence count is not a unique
+work count or evidence of infeasibility.
+
+The proposed next instrument is limited to missing source/algebra/domain/unit
+and dependency readiness certificates. Full numerical discretization, nested
+error allocation, transform requests, independent action routes and storage
+remain required. H/contact/height-PV, flat and slope obligations are unchanged;
+no interpolation or analytic-H substitution is proposed. Packet
+176f44d4fd552b3254bd34729dcbd80303366dc4e0226b77e7495da101cf728a
+contains 1,548 complete files / 66,342,665 bytes, including all 544 addressed
+unit operand/return pairs, 20 native templates and all eight original geometry
+plans. Original sources and archive bytes were verified, no peer reports were
+included, and standing Claude/Grok submission authority is recorded. No worker
+or READY gate exists for this new method.

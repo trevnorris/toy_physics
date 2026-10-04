@@ -1,0 +1,96 @@
+{
+  "status": "ORIGINAL_SOURCE_TEXT_ONLY_NO_EXECUTION",
+  "utc": "2026-10-04T09:14:31.708455+00:00",
+  "fragments": {
+    "S11c_d_defect_packet_inner_lib.py:H": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "sourceSha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+      "line": 239,
+      "endLine": 275,
+      "text": "def H(self,Qcoeff):\n        Qcoeff=str(F(Qcoeff))\n        if Qcoeff in self.cache:\n            old=self.cache[Qcoeff];self.store.put('H-reuse/'+str(len(self.cache))+'/'+str(self.reuses),{'exactQCoefficient':Qcoeff,'completedReturn':old[1],'settingsIdentical':True});self.reuses+=1;return old\n        key='H/'+Qcoeff.replace('/','_');c=self.A;Q=self.rat(c,Qcoeff)*c.sqrt(595)/10;T=122\n        # Exact symmetric subtraction: the j(Q) and chi contacts cancel between +/-t.\n        def fa(t):\n            am=self.profile(c,Q-t);ap=self.profile(c,Q+t);a=self.profile(c,t)\n            return [a*5*(am-ap)/(2*c.j*t)],{'A':a,'A_Q_minus_t':am,'A_Q_plus_t':ap}\n        cuts=sorted(set([c.zero,c.mpf(T),abs(Q)]+[c.mpf(i)/10 for i in range(1,9)]))\n        panels=[]\n        for a,b in zip(cuts,cuts[1:]):\n            n=int(c.ceil(2*(b-a)));p=partition_interval(a,b,n);panels.extend(zip(p,p[1:]))\n        contact=5*self.profile(c,Q)/4\n        self.emit(c,key+'/input',{'QCoefficient':Qcoeff,'Q':Q,'T':T,'panels':panels,'contact':contact})\n        integral24=self.gauss(key+'/A24',c,panels,fa,24)[0]\n        integral48=self.gauss(key+'/A48',c,panels,fa,48)[0]\n        a24=[assemble_H(integral24,contact)]\n        a48=[assemble_H(integral48,contact)]\n        momentum={'exactQCoefficient':Qcoeff,'Q':Q,'T':T,'precision':30,'order':48,'integral':integral48,'contact':contact,'baseline':a48[0],'includeContact':True,'integralRecord':key+'/A48/return','integralSelector':'value[0]','panelInputRecord':key+'/input'}\n        momentumReceipt=self.emit(c,key+'/momentum-assembly',momentum)\n        self.Hmomentum[Qcoeff]={**momentum,'assemblyReceipt':momentumReceipt}\n        c=self.B;Q=self.rat(c,Qcoeff)*c.sqrt(595)/10;trials=[]\n        for m in range(1,4097):\n            R=c.mpf(10*m);tail=10/(4*c.pi)*c.exp(-2*R/10);trials.append({'R':R,'tail':tail})\n            if tail<=c.mpf('1e-14'):break\n        else:raise ValueError('physical H radius capacity unavailable')\n        def fb(x):\n            h=(1+c.tanh(x/10))/4;j=1/(4*c.cosh(x/10)**2)\n            return [h*j*c.exp(-c.j*Q*x)/(2*c.pi)],{'h':h,'j':j,'phase':c.exp(-c.j*Q*x)}\n        n=int(c.ceil(4*R));p=partition_interval(-R,R,n);panels=list(zip(p,p[1:]))\n        self.emit(c,key+'/B/input',{'QCoefficient':Qcoeff,'Q':Q,'radiusTrials':trials,'panels':panels,'profileScale':10,'FourierNormalization':'1/(2pi)'})\n        b=self.adaptive(key+'/B',c,panels,fb,c.mpf('1e-11')/(4*38))\n        analytic=[5*self.profile(c,Q)*(c.mpf(1)/4-10*c.j*Q/8)]\n        compare=self.compare(key+'/comparison',a48,{'A24':a24,'Bphysical':b,'analyticProduct':analytic})\n        receipt=self.emit(c,key+'/complete',{'A24':a24,'A48':[self.B.make_mpc(a48[0]._mpc_)],'B':b,'analyticProduct':analytic,'comparison':compare,'momentumAssembly':momentumReceipt,'tTailBound':c.mpf(55)/3*c.power(2,-T)})\n        self.cache[Qcoeff]=(b[0],receipt);return self.cache[Qcoeff]",
+      "fragmentSha256": "c40e0669b92e2720919d21edf90ba8578691890bbfe7bb2d67289954943d92b2",
+      "executedDuringPreparation": false
+    },
+    "S11c_d_defect_packet_inner_lib.py:exact_cuts": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "sourceSha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+      "line": 31,
+      "endLine": 42,
+      "text": "def exact_cuts(k,l,T):\n    \"\"\"a*kappa+b with exact rational a,b. Every root/profile label is retained.\"\"\"\n    k,l=F(k),F(l);cuts={}\n    def add(a,b,label):cuts.setdefault((F(a),F(b)),[]).append(label)\n    add(0,-T,'left-radius');add(0,T,'right-radius')\n    for sign in [-1,1]:\n        add(sign-k,0,'height-root-'+str(sign));add(l+sign,0,'reflected-root-'+str(-sign))\n    for a,label in [(F(0),'t=0'),(l-k,'t=Q')]:\n        add(a,0,label)\n        for v in [F(-4,5),F(-2,5),F(-1,5),F(-1,10),F(1,10),F(1,5),F(2,5),F(4,5)]:\n            add(a,v,label+'-profile-offset-'+str(v))\n    return [{'a':str(a),'b':str(b),'labels':labels} for (a,b),labels in sorted(cuts.items())]",
+      "fragmentSha256": "41e7ed4afc57234a5aecaf73a6095173f1537a8592b3722e459d5ff0fb2c7577",
+      "executedDuringPreparation": false
+    },
+    "S11c_d_defect_packet_inner_lib.py:kernel_components": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "sourceSha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+      "line": 53,
+      "endLine": 60,
+      "text": "def kernel_components(k,l,t,qi,qo,qh,qs,A1,A2,a,mu,beta,W,L,I):\n    \"\"\"Same arithmetic called by the new exact adapter and by both numeric routes.\"\"\"\n    J=a*mu**2*W*L/4*A1*A2*(k+t)*(2*k+t)*qi/(qh*(qo+beta)*(qh+beta)*(qi+beta)*(qh+qi))\n    pref=W*L/(4*I)*A1*A2*(-I*mu)/((qi+beta)*(qo+beta))\n    reflected=pref*k*(2*l-t)/(qs+qo)\n    height=pref*k*(t+2*k)*qi/(qh*(qh+qi))\n    quadratic=pref*qi**2/qh\n    return [J,reflected,height,quadratic]",
+      "fragmentSha256": "39bc5311ed099a5245efc41d505cadd55125f1cbcd88bfdc6be085b499b01d64",
+      "executedDuringPreparation": false
+    },
+    "S11c_d_defect_packet_inner_lib.py:middle": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "sourceSha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+      "line": 115,
+      "endLine": 123,
+      "text": "def middle(self,c,k,l,t,mutate=False):\n        qi,qo=self.q(c,k),self.q(c,l);qh=self.q(c,k+t);qs=self.q(c,l-t)\n        require(qi!=0 and qo!=0 and qh!=0,'unsampled depth poles')\n        used_qs=qh if mutate else qs\n        a=1/(1-3*c.j/10);mu=c.mpf(3)/10;beta=a*mu\n        aa,bb=self.profile(c,t),self.profile(c,l-k-t)\n        values=kernel_components(k,l,t,qi,qo,qh,used_qs,aa,bb,a,mu,beta,c.one,c.mpf(10),c.j)\n        require(all(c.isfinite(v) for v in values),'finite middle node')\n        return values,{'qi':qi,'qo':qo,'qh':qh,'qs':qs,'used_qs':used_qs,'A1':aa,'A2':bb}",
+      "fragmentSha256": "d00e1e042b2b9193f3ffc491885c429dc9bbbcd22af052504975f1d6c101660c",
+      "executedDuringPreparation": false
+    },
+    "S11c_d_defect_packet_inner_lib.py:panels": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "sourceSha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+      "line": 125,
+      "endLine": 138,
+      "text": "def panels(self,c,point,T,key):\n        kappa=c.sqrt(595)/10;raw=exact_cuts(point['k'],point['l'],T)\n        cuts=[(self.rat(c,r['a'])*kappa+self.rat(c,r['b']),r) for r in raw]\n        cuts=sorted(((v,r) for v,r in cuts if -T<=v<=T),key=lambda v:v[0])\n        self.emit(c,key+'/cut-operands',{'point':point,'T':T,'exactCuts':raw,'resolvedCuts':cuts})\n        require(cuts[0][0]==-T and cuts[-1][0]==T,'full radius included')\n        require(all(cuts[i][0]<cuts[i+1][0] for i in range(len(cuts)-1)),'distinct exact cuts may not float-alias')\n        panels=[]\n        for (a,ra),(b,rb) in zip(cuts,cuts[1:]):\n            n=int(c.ceil(2*(b-a)));require(n>=1,'nonempty interval')\n            points=partition_interval(a,b,n)\n            for i in range(n):panels.append((points[i],points[i+1]))\n        require(all(a<b for a,b in panels) and all(panels[i][1]==panels[i+1][0] for i in range(len(panels)-1)),'open coverage')\n        return panels,{'exactCuts':raw,'resolvedCuts':cuts,'maxPhysicalWidth':'1/2'}",
+      "fragmentSha256": "5752064a3afc54ed1cb012346d26dffbe9554cc77824d51b11f17316572ada92",
+      "executedDuringPreparation": false
+    },
+    "S11c_d_defect_packet_inner_lib.py:profile": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "sourceSha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+      "line": 106,
+      "endLine": 113,
+      "text": "def profile(c,t):\n        z=5*c.pi*t\n        # The discarded sinhc tail is <=2 |z|^12/13! for |z|<=10^-6.\n        # Even at 30 digits this bound is far below arithmetic roundoff.\n        if abs(z)<=c.mpf('1e-6'):\n            z2=z*z;s=1+z2/6+z2**2/120+z2**3/5040+z2**4/362880+z2**5/39916800\n            return 1/(2*c.pi*s)\n        return 5*t/(2*c.sinh(z))",
+      "fragmentSha256": "6688a2c4d19b2095c4d70058923e922bff903568bf74dba0cbe5ea2f68f608e5",
+      "executedDuringPreparation": false
+    },
+    "S11c_d_defect_packet_inner_lib.py:q": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "sourceSha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+      "line": 101,
+      "endLine": 103,
+      "text": "def q(c,p):\n        d=c.mpf(595)/100-p*p\n        return c.sqrt(d) if d>=0 else c.j*c.sqrt(-d)",
+      "fragmentSha256": "c1827147a743334e848fd1904f3be4da01128eb2bdf2c7787444be91ddb49a64",
+      "executedDuringPreparation": false
+    },
+    "S11c_d_defect_packet_inner_lib.py:run": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_lib.py",
+      "sourceSha256": "6d08106ce4682e4485caee66655ddfa1dcc7beeea8cec0db1298dcd9fc30df04",
+      "line": 277,
+      "endLine": 306,
+      "text": "def run(self,plan):\n        self.reuses=0;summaries=[]\n        for index,point in enumerate(plan):\n            key='point/'+str(index);results={}\n            self.store.put(key+'/request',{'point':point,'routeSettings':[['A',30,24,122],['A',30,48,122],['A',30,48,124],['B',50,'G7/K15',122]],'noAutomaticRetry':True})\n            for name,c,order,T in [('A24',self.A,24,122),('A48',self.A,48,122),('A48T124',self.A,48,124),('B',self.B,None,122)]:\n                k=self.rat(c,point['k'])*c.sqrt(595)/10;l=self.rat(c,point['l'])*c.sqrt(595)/10\n                panels,cuts=self.panels(c,point,T,key+'/'+name);self.emit(c,key+'/'+name+'/input',{'point':point,'k':k,'l':l,'T':T,'cuts':cuts,'panels':panels,'componentOrder':['J','Dreflected','Dheight','Dquadratic']})\n                fun=lambda t:self.middle(c,k,l,t)\n                vals=self.adaptive(key+'/'+name,c,panels,fun,c.mpf('1e-11')/(4*38)) if order is None else self.gauss(key+'/'+name,c,panels,fun,order)\n                results[name]=vals+[c.fsum(vals[1:])]\n            comparison=self.compare(key+'/comparison',results['A48'],{n:v for n,v in results.items() if n!='A48'})\n            H,hr=self.H(F(point['l'])-F(point['k']))\n            c=self.B;k=self.rat(c,point['k'])*c.sqrt(595)/10;l=self.rat(c,point['l'])*c.sqrt(595)/10;qi=self.q(c,k);qo=self.q(c,l);beta=(30+9*c.j)/109\n            mixed=-3*c.j*k*qo*H/(10*(qi+beta)*(qo+beta))+results['B'][0]\n            pressure=[mixed,results['B'][-1]]\n            normal={'plus':[c.j*qo*v for v in pressure],'minus':[-c.j*qo*v for v in pressure]}\n            # These are normalized templates per unit source, not a field/current.\n            receipt=self.emit(c,key+'/complete',{'point':point,'routes':results,'comparison':comparison,'H':hr,'pressureMixedAndDirect':pressure,'normalMixedAndDirect':normal})\n            summaries.append(receipt)\n            if point['label']=='control':\n                t=c.mpf(1)/10;base,operands=self.middle(c,k,l,t);wrong,wrongOperands=self.middle(c,k,l,t,True)\n                movement=wrong[1]-base[1];normalMove=-2*normal['minus'][1]\n                self.emit(c,'controls/reflected-root',{'point':point,'t':t,'baseline':base,'mutated':wrong,'operands':operands,'mutatedOperands':wrongOperands,'movement':movement})\n                self.emit(c,'controls/lower-normal',{'point':point,'baseline':normal['minus'][1],'mutated':-normal['minus'][1],'movement':normalMove,'wholeDirectValue':results['B'][-1]})\n                require(c.isfinite(movement) and abs(movement)>c.mpf('1e-12'),'responsive reflected-root control')\n                require(c.isfinite(normalMove) and abs(normalMove)>c.mpf('1e-12'),'responsive lower-normal control')\n                self.H_contact_control(point,F(point['l'])-F(point['k']))\n        self.store.put('complete-point-receipts',summaries)\n        return {'points':len(summaries),'distinctHRequests':len(self.cache),'exactHReuses':self.reuses,'controls':3}",
+      "fragmentSha256": "8e974f61ac74734a7ba8c0c839e5d801e8c4df347d041c838d975a537594d2d5",
+      "executedDuringPreparation": false
+    },
+    "S11c_d_defect_packet_fourier_lib.py:product": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_lib.py",
+      "sourceSha256": "8541ed87d588888daf642ff632ecf0a5780c8f4a47db7a3a53d50b2c36941fe0",
+      "line": 160,
+      "endLine": 194,
+      "text": "def product(self,ctx,spec,argument,shifted):\n        coefficients=[ctx.mpc(self.scalar(ctx,v[0]),self.scalar(ctx,v[1])) for v in spec['coefficientsAscending']]\n        center=self.scalar(ctx,spec['center']);carrier=self.scalar(ctx,spec['carrier']);s=ctx.mpf(8)\n        role=spec['role'];sign=1 if role=='X' else -1\n        nu=argument-carrier\n        c=ctx.mpf(5) if shifted else ctx.zero\n        imaginary=-c*ctx.sign(nu)\n        n=spec['spatialOrders'][0] if role=='X' else 0\n        nt,n2,n3=spec['timeOrder'],spec['spatialOrders'][1],spec['spatialOrders'][2]\n        native=(-3*ctx.j)**nt*(ctx.j/5)**n2*(ctx.j/10)**n3 if role=='X' else ctx.one\n        normalization=1/(2*ctx.pi) if role=='X' else ctx.one\n        # Q_n is in w=z-center. Derivatives act on u BEFORE multiplying the source coefficient.\n        q=[ctx.one]\n        for _ in range(n):q=poly_add(poly_derivative(q),poly_mul([ctx.j*carrier,-1/s**2],q))\n        # Expand actual Q(y+i*imaginary) and the requested argument derivative powers.\n        shifted_q=[ctx.zero]*len(q)\n        for j,a in enumerate(q):\n            for r in range(j+1):shifted_q[r]+=a*math.comb(j,r)*(ctx.j*imaginary)**(j-r)\n        degree=spec['argumentDerivative']\n        # d^m/dk^m for X: (-iz)^m; d^m/dl^m for Y(-l): (+iz)^m.\n        deriv=[ctx.one]\n        for _ in range(degree):deriv=poly_mul(deriv,[-sign*ctx.j*(center+ctx.j*imaginary),-sign*ctx.j])\n        all_poly=poly_mul(shifted_q,deriv)\n        majorant=[abs(v.real)+abs(v.imag) for v in all_poly]\n        norm=sum(abs(v.real)+abs(v.imag) for v in coefficients)\n        C0=abs(native)*normalization*norm\n        def f(y):\n            w=y+ctx.j*imaginary;z=center+w\n            phase=ctx.exp(-w*w/(2*s*s)-ctx.j*nu*z)\n            return normalization*native*poly_eval(coefficients,ctx.tanh(z/10))*poly_eval(all_poly,y)*phase\n        data={'argument':argument,'nu':nu,'center':center,'carrier':carrier,'shift':imaginary,'spatialDerivative':n,\n            'native':native,'normalization':normalization,'Q':q,'shiftedQ':shifted_q,'argumentDerivativePolynomial':deriv,\n            'fullPolynomial':all_poly,'majorant':majorant,'coefficientL1':norm,'C0':C0,\n            'tailExponentialFactor':ctx.exp(c*c/(2*s*s)-c*abs(nu)),'s':s}\n        return f,data",
+      "fragmentSha256": "81393815f70a95835933357546e55fd9259151bfe1f844d29f42eaeeea275720",
+      "executedDuringPreparation": false
+    },
+    "S11c_d_defect_packet_fourier_lib.py:request": {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_fourier_lib.py",
+      "sourceSha256": "8541ed87d588888daf642ff632ecf0a5780c8f4a47db7a3a53d50b2c36941fe0",
+      "line": 255,
+      "endLine": 272,
+      "text": "def request(self,spec,argument_text):\n        require(spec['role'] in ('X','Y') and spec['argumentDerivative'] in (0,1),'supported product/derivative')\n        full={'spec':spec,'argument':argument_text,'Aprecision':30,'Bprecision':50,'orders':[24,48],'comparison':'absolute <1e-12'}\n        key=polynomial_request_key(full)\n        if key in self.cache:\n            require(self.cache[key]['input']==full,'exact cached arguments');return self.cache[key]['return']\n        self.store.put(key+'/input',full)\n        # Argument descriptors are sum of fixed carrier and a fixed signed offset; no float keys.\n        def argument(c):return self.scalar(c,argument_text['base'])+self.scalar(c,argument_text['offset'])*argument_text['sign']\n        a=self.route_a(key,spec,argument(self.A),24);b=self.route_a(key,spec,argument(self.A),48);ref=self.route_b(key,spec,argument(self.B))\n        c=self.B;av=c.mpc(a['value']);bv=c.mpc(b['value']);rv=ref['value'];analytic=self.constant_reference(spec,argument(c))\n        differences={'A24-A48':abs(av-bv),'A48-B':abs(bv-rv),'A24-B':abs(av-rv)}\n        if analytic is not None:differences.update({'A24-analytic':abs(av-analytic),'A48-analytic':abs(bv-analytic),'B-analytic':abs(rv-analytic)})\n        result={'key':key,'A24':av,'A48':bv,'B':rv,'analyticConstantReference':analytic,'absoluteDifferences':differences,\n            'tailBounds':[c.mpf(a['tail']),c.mpf(b['tail']),ref['tail']],'BempiricalError':ref['empiricalError'],\n            'pass':all(v<c.mpf('1e-12') for v in differences.values()),'relativeAccuracyClaim':False,'fullActionAccuracyClaim':False}\n        receipt=self.store.put(key+'/return',encode(c,result));require(result['pass'],'absolute Fourier comparison failed; stop without replacement orders')\n        answer={'receipt':receipt,'values':result};self.cache[key]={'input':full,'return':answer};return answer",
+      "fragmentSha256": "172832fb32e13661abdcbc8d7c2832e366395764883933565f4a54428323435f",
+      "executedDuringPreparation": false
+    }
+  }
+}

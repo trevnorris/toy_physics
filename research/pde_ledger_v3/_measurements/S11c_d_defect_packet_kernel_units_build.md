@@ -77,7 +77,7 @@ Each live summand must give dual_THETA times(-2,-1,1), the local pairing unit.
 Explicit zeros carry only required-unit expectations, not newly computed
 nonzero dimensions or Fourier values.
 
-Four new dimensional controls remove dt separately from J and a direct term,
+Four new dimensional controls remove dt separately from J and the whole direct sum,
 make the dimensional a unitless through the actual kernel AST, and omit delta
 from an actual live flat address. The previously responsive missing-profile-L
 control is restored, not repeated. These are dimensional sensitivity checks,
@@ -96,6 +96,19 @@ tuple difference without full summand refusal is insufficient. This is a
 dimensional route check, not a computation of a delta distribution or a packet.
 The decision also preserves `fullFactorProof.completeNormalMap` from its actual
 nested address location; it does not derive a new momentum map.
+
+The missing-dt controls now change `Jvalue` or `Dvalue` in the original template
+AST. The J mutant is the unintegrated J density, so the actual mixed-template
+addition must refuse incompatible units. The D mutant omits the one middle
+measure from the whole three-addend direct density (all three density units
+were separately joined and checked equal), then passes through the original
+direct template, native normal factor when applicable, saved outer route and
+the same complete summand predicate. The unitless-a mutation likewise runs
+the actual generic kernel AST and propagates its changed J through that mixed
+template. Each control selects a live applicable address and saves its source,
+adapter, original accepted summand, environments, partial walk and full return
+before requiring refusal. Only an actual inhomogeneous addition is an expected
+walker refusal; unsupported syntax or missing units remain fatal errors.
 
 ## Evidence and boundary
 

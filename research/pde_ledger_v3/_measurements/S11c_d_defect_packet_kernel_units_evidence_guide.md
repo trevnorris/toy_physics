@@ -45,3 +45,11 @@ complete adapter. The worker uses those operands in the baseline and mutation,
 not a manufactured coefficient or a unit-only proxy. Synthetic route tests
 exercise refusal and a deliberately broken assembly that masks the missing
 delta; that defective assembly must not pass the control.
+
+For missing-dt and unitless-a controls, follow worker.py::template_mutation to
+the actual preflight template node and saved live address. Inspect library.py::
+template_route_attempt and its strict expected addition refusal versus fatal
+unknown errors. A D mutant that remains homogeneous still reaches the same
+complete summand predicate. Full control records retain the unchanged baseline
+and original environment alongside each mutated operand; synthetic tests
+ensure that an unchanged or artificially masked mutation gives no response.

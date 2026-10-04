@@ -1,0 +1,20 @@
+{
+  "status": "SUBSTANTIVE_TEMPLATE_AND_SUMMAND_CONTROL_REVISION_READY_FOR_ASSESSMENT",
+  "baselineCommit": "712f977a",
+  "baselinePacketSha256": "3b6123f4c849a334bf34b5562700e78cde33ad887ee2786b6342471e1b3a01bf",
+  "scienceRun": false,
+  "authorClearance": false,
+  "savedInputsUnchanged": 2521,
+  "equationsPhysicalInputsMethodUnchanged": true,
+  "changes": [
+    "Missing middle measure mutates actual Jvalue/Dvalue through original template and a live addressed summand.",
+    "Unitless-a kernel mutation propagates into actual J template.",
+    "Expected inhomogeneous addition is distinguished from fatal unsupported syntax/unbound names.",
+    "Complete original/mutated inputs, partial walks and assembly results persist before response guards."
+  ],
+  "substantiveAssessmentRequired": true,
+  "tests": 73,
+  "testLogSha256": "88be1246b20b288ead927b06fa08a6cb5a88ac9464248efb294364374031a380",
+  "noCompletedFunctionReplay": true,
+  "noGateExists": true
+}

@@ -291,12 +291,30 @@ def run(m,J,K):
         if r['nonzero']:require(bool(matches),'live source Fourier family interface')
         J.finish(r);results.append(r)
     controls=[]
-    for comp,unit0 in zip(('J','reflected','height','quadratic'),densities):
-        if comp not in ('J','reflected'):continue
-        J.start('control-missing-dt-'+comp,{'actualDensitySource':contracts['fragments']['inner-kernel-components'],'densityUnit':unit0,'baselineMeasure':K.MOMENTUM,'mutatedMeasure':K.ZERO,'mutation':'omit the actual middle dt in this density route'})
-        baseline=K.add(unit0,K.MOMENTUM);mutant=K.add(unit0,K.ZERO);r={'baseline':baseline,'mutant':mutant,'responded':baseline!=mutant,'notNumericalResponse':True};J.emit('control-missing-dt-'+comp+'-decision',r);require(r['responded'],'missing measure response');J.finish(r);controls.append(r)
+    def template_mutation(name,component,variable,replacement):
+        a=next(v for v in selected if v['component']==component and not v['status'].startswith('EXACT_ZERO'))
+        baseline=next(v for v in results if v['addressId']==a['addressId'])
+        sr=get('source/address-'+str(a['addressId'])+'-return.json');jet=a['jet'];jdim=(-sum(jet['spatialOrders']),-jet['timeOrder'],0)
+        label='-'.join((a['face'],a['slot'],component));node=templates[component]
+        mutated_env={**tenv,variable:replacement}
+        J.emit(name+'-template-operands',{'address':a,'baselineSummand':baseline,'sourceTransport':sr,'adapter':adapters['definitions'][label],'actualTemplateSource':contracts['fragments']['preflight-templates'],'template':ast.unparse(node),'normalSource':contracts['fragments']['preflight-normal'],'baselineEnvironment':tenv,'mutatedEnvironment':mutated_env,'changedVariable':variable,'jetUnit':jdim,'requiredDimension':[-2,-1,1]})
+        require(variable in {n.id for n in ast.walk(node) if isinstance(n,ast.Name)} and tenv[variable]!=replacement,'mutation changes an actual applicable template operand')
+        require(K.pressure_dimension(baseline) and baseline['route']==K.address_route(a),'same accepted baseline address and route')
+        tw=K.Walk(mutated_env)
+        try:mutant=K.template_route_attempt(node,tw,a,sr['sourceRequiredUnit'],jdim,sr['consumerRequiredUnit'])
+        finally:J.emit(name+'-template-walk',tw.events)
+        r={'actualAddress':a['addressId'],'component':component,'baseline':baseline,'mutant':mutant,'responded':K.pressure_dimension(baseline) and mutant['refused'],'notNumericalResponse':True}
+        J.emit(name+'-decision',r);require(r['responded'],'actual template or complete summand must refuse mutation')
+        return r
+    for name,component,variable,replacement in [('control-missing-dt-J','NATIVE_MIXED_ITERATION','Jvalue',densities[0]),('control-missing-dt-direct','INHERITED_DIRECT_WHOLE_OFF_DIAGONAL','Dvalue',densities[1])]:
+        J.start(name,{'actualDensitySource':contracts['fragments']['inner-kernel-components'],'allDensityUnits':densities,'baselineMeasure':K.MOMENTUM,'mutatedMeasure':K.ZERO,'actualWholeDefinitions':get('pressure/whole-definitions.json'),'mutation':'Omit the one middle dt from this whole J or complete three-addend direct value before its original template and full addressed assembly. The three direct density units were independently checked equal.'})
+        r=template_mutation(name,component,variable,replacement);J.finish(r);controls.append(r)
     J.start('control-a-unitless',{'actualSource':contracts['fragments']['inner-kernel-components'],'baselineEnvironment':{**env,'A1':Aunit,'A2':Aunit},'mutation':{'a':K.ZERO}})
-    mutated,w=K.statements(fn,{**env,'A1':Aunit,'A2':Aunit,'a':K.ZERO});J.emit('control-a-unitless-walk',w.events);r={'baseline':densities,'mutant':mutated,'responded':mutated[0]!=densities[0],'notNumericalResponse':True};J.emit('control-a-unitless-decision',r);require(r['responded'],'actual J dimensional a control');J.finish(r);controls.append(r)
+    aw=K.Walk({**env,'A1':Aunit,'A2':Aunit,'a':K.ZERO})
+    try:mutated,aw=K.statements(fn,aw.env,walk=aw)
+    finally:J.emit('control-a-unitless-walk',aw.events)
+    J.emit('control-a-unitless-density-return',{'baseline':densities,'mutant':mutated})
+    r=template_mutation('control-a-unitless','NATIVE_MIXED_ITERATION','Jvalue',K.add(mutated[0],K.MOMENTUM));J.finish(r);controls.append(r)
     candidate=next(v for v in results if v['nonzero'] and v['flatSupport'] is not None)
     a=next(v for v in selected if v['addressId']==candidate['addressId']);sr=get('source/address-'+str(a['addressId'])+'-return.json')
     label='-'.join((a['face'],a['slot'],a['component']));jet=a['jet'];jdim=(-sum(jet['spatialOrders']),-jet['timeOrder'],0)

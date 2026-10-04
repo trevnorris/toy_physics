@@ -18,6 +18,11 @@ actual live flat control: reduced single-dl baseline, same coefficient with
 delta(k-l) in dl dk, then removal of only that delta through the same complete
 assembly and acceptance predicate. Check saved measure/support/depth joins,
 full operands before decisions and the nested complete normal-map selector.
+Also inspect actual missing-dt Jvalue/Dvalue mutations through their original
+template ASTs and live addresses, and unitless-a propagation from the generic
+kernel into Jvalue. A control must produce template-addition refusal or fail
+the same complete summand predicate, with full operands/walks/returns saved.
+Unbound names or unsupported syntax must not count as a successful control.
 No old scientific function, bank, rule, transform or integral may be replayed.
 
 Return literally CLEAR FOR THIS BOUNDED KERNEL WAVE/MEASURE UNIT-TRANSPORT BUILD

@@ -161,6 +161,26 @@ def pressure_dimension(result):
     return result['physicalSource']==(1,-1,0) and result['X']==(2,-1,0) and result['total']==(-2,-1,1)
 
 
+def template_route_attempt(node,walk,address,source,jet,consumer):
+    """Mutant template homogeneity or the same complete summand predicate.
+
+    Only the dimensional addition refusal is an expected control outcome.
+    Unsupported syntax, unbound names and all other errors remain fatal.
+    The caller saves the supplied walk even on an unexpected exception.
+    """
+    try:
+        coefficient=walk.dim(node,'mutant-template')
+    except ValueError as error:
+        if str(error)!='inhomogeneous source addition':raise
+        require(any(e.get('refused') and e.get('reason')==str(error) for e in walk.events),'actual addition refusal node')
+        return {'refused':True,'refusalKind':'template-addition-inhomogeneity','reason':str(error),'assembly':None}
+    require(address['slot'] in ('pressure','normal'),'native addressed slot')
+    if address['slot']=='normal':coefficient=add(coefficient,MOMENTUM)
+    assembly=assemble_route(source,jet,consumer,coefficient,address_route(address))
+    refused=not pressure_dimension(assembly)
+    return {'refused':refused,'refusalKind':'complete-summand-dimension' if refused else None,'reason':None,'assembly':assembly}
+
+
 def normal_map(address):
     result=address['fullFactorProof']['completeNormalMap']
     require(type(result) is list,'actual nested complete normal map')

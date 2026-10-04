@@ -142,5 +142,36 @@ class RouteTests(unittest.TestCase):
     def test_missing_nested_normal_map_refuses(self):
         self.a['fullFactorProof']={}
         with self.assertRaises(KeyError):K.normal_map(self.a)
+    def test_mutant_addition_refuses_with_actual_node(self):
+        self.a['slot']='pressure';w=K.Walk({'H':K.LENGTH,'J':K.scale(K.LENGTH,2)})
+        r=K.template_route_attempt(K.expression('H+J'),w,self.a,*self.args[:3])
+        self.assertTrue(r['refused']);self.assertEqual(r['refusalKind'],'template-addition-inhomogeneity')
+        self.assertIsNone(r['assembly']);self.assertTrue(any(e.get('refused') for e in w.events))
+    def test_mutant_direct_uses_full_summand(self):
+        self.a['slot']='pressure';w=K.Walk({'D':K.scale(K.LENGTH,2)})
+        r=K.template_route_attempt(K.expression('D'),w,self.a,*self.args[:3])
+        self.assertTrue(r['refused']);self.assertEqual(r['refusalKind'],'complete-summand-dimension')
+        self.assertEqual(r['assembly']['total'],(-1,-1,1))
+    def test_unchanged_template_is_not_control_response(self):
+        self.a['slot']='pressure';r=K.template_route_attempt(K.expression('D'),K.Walk({'D':K.LENGTH}),self.a,*self.args[:3])
+        self.assertFalse(r['refused']);self.assertTrue(K.pressure_dimension(r['assembly']))
+    def test_unknown_template_error_is_fatal(self):
+        self.a['slot']='pressure';w=K.Walk({})
+        with self.assertRaisesRegex(ValueError,'unbound dimensional name'):K.template_route_attempt(K.expression('unknown'),w,self.a,*self.args[:3])
+        self.assertTrue(any(e.get('refused') for e in w.events))
+    def test_unsupported_template_error_is_fatal(self):
+        self.a['slot']='pressure';w=K.Walk({'D':K.LENGTH})
+        with self.assertRaisesRegex(ValueError,'unsupported source AST'):K.template_route_attempt(K.expression('[D]'),w,self.a,*self.args[:3])
+    def test_template_normal_factor_enters_same_assembly(self):
+        self.a['slot']='normal';r=K.template_route_attempt(K.expression('D'),K.Walk({'D':K.scale(K.LENGTH,2)}),self.a,*self.args[:3])
+        self.assertFalse(r['refused']);self.assertEqual(r['assembly']['coefficientKernel'],K.LENGTH)
+    def test_masked_template_mutation_has_no_response(self):
+        self.a['slot']='pressure';b=self.baseline()
+        with patch.object(K,'assemble_route',return_value=b):r=K.template_route_attempt(K.expression('D'),K.Walk({'D':K.scale(K.LENGTH,2)}),self.a,*self.args[:3])
+        self.assertFalse(r['refused'])
+    def test_false_refusal_without_unit_walk_cannot_count(self):
+        self.a['slot']='pressure';w=K.Walk({})
+        with patch.object(w,'dim',side_effect=ValueError('inhomogeneous source addition')):
+            with self.assertRaisesRegex(ValueError,'actual addition refusal node'):K.template_route_attempt(K.expression('D'),w,self.a,*self.args[:3])
 
 if __name__=='__main__':unittest.main()

@@ -1147,3 +1147,14 @@ actual J/D templates and complete addressed dimensional refusal before a new
 substantive assessment. No science or gate exists. The hook's 2,651 saved-file
 count was a textual replacement error; actual manifest remains 2,521, unchanged.
 Both reports, partial coverage and reviewer CLI stderr are preserved.
+
+Prepared kernel-unit build r3 with actual template/summand control propagation.
+Missing-dt J and whole-direct mutations now use the original template AST and
+a live saved address; unitless-a also propagates into the J template. Only
+actual dimensional-addition refusal or failure of the complete summand
+predicate counts; unknown units/syntax remain fatal. Original/mutated operands
+and partial walks are preserved before decisions. All 73 synthetic and source
+metadata tests pass. All 2,521 saved inputs, physical equations and inputs,
+methods, shared helpers and the existing flat-route control remain unchanged.
+Frozen packet 91bf5387192b8fa36f72c37f3014f469c67ce728ff9f5a84968d1609fce2d601
+contains 2,549 files / 17,868,569 bytes, with no peer reports or new science.

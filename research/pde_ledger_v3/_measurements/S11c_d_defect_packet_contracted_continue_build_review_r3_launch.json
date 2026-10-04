@@ -1,0 +1,222 @@
+{
+  "finishedAttemptsAtSnapshot": 0,
+  "status": "CLAUDE_ONLY_CORRECTED_CONTINUATION_BUILD_REVIEW_RUNNING",
+  "recordedUtc": "2026-10-04T14:47:27.693781+00:00",
+  "preparedCommit": "4f2f27ea",
+  "priorMethodAdjudicationCommit": "f09df321",
+  "priorBuildAdjudicationCommit": "705c0a4f",
+  "priorFailureCommit": "ec54932e",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-build-review-r3",
+  "launch": {
+    "jobPid": 1679934,
+    "watcherPid": 1679935,
+    "packetSha256": "3a5ba0eb835c04d926b59b660f9059a1393e5a6146f4fabb7cc2289659c0716e",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 1679935,
+    "jobPid": 1679934,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T14:47:02.185684+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "c14e94822d301cfee746f3cb7d3b294ece6d51508c05be0eae1e991aeec0aed4",
+    "notifications": {}
+  },
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-04T14:45:52.090602+00:00",
+    "packetSha256": "3a5ba0eb835c04d926b59b660f9059a1393e5a6146f4fabb7cc2289659c0716e",
+    "archiveSha256": "84b90a75e84d28ca0dc77c70265cdfe951865182641061da525f4e0efb2d0abc",
+    "reviewers": [
+      "claude"
+    ],
+    "files": 8292,
+    "bytes": 163563135,
+    "AGENTSSha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+    "authority": "Standing user and AGENTS direction authorizes this necessary substantive amended-method and concrete saved-evidence continuation build assessment to the established Claude reviewer under explicit temporary Claude-only policy without a routine permission question. No science, automatic retry or disclosure to new recipients.",
+    "scope": {
+      "frequency": 3,
+      "anchoring": "LAB_HELD",
+      "density": "RHO4_CONSTANT",
+      "drain": 0,
+      "edges": [
+        "1/5",
+        "1/10"
+      ],
+      "effectiveCs": "sqrt(6)/2",
+      "plannedCarriers": [
+        "sqrt(595)/10",
+        "0"
+      ],
+      "target": "Source-only assessment of explicit subset-tail method amendment and actual saved-prefix numerical continuation",
+      "sourceFrequencyContinued": false,
+      "responseRegulator": 0,
+      "selectedPressureAddresses": 544,
+      "selectedLocalCells": 16,
+      "pressureCoefficientFields": 34,
+      "noEvaluatedResponseIntegral": false,
+      "noNumericalPacketAction": true,
+      "noFiniteSolve": true,
+      "noProductionOverwrite": true,
+      "noDefectSweep": true,
+      "pressureSummandUnitsComplete": true,
+      "addressUnitCertificatesProduced": 544,
+      "noGeometryReplay": true,
+      "sourceGradeFieldTransportOnly": false,
+      "kernelWaveMeasureTransportOnly": false,
+      "newFiniteWindowCertificate": false,
+      "noNumericalEvaluator": false,
+      "originalWindowPairs": [
+        [
+          27,
+          122
+        ],
+        [
+          29,
+          124
+        ]
+      ],
+      "boundedContractedNumerics": true,
+      "completePacketAction": false,
+      "noLeakageOrCurrent": true,
+      "eligibleAddressCount": 20,
+      "addressPrimitives": 40,
+      "argumentDerivative": 0,
+      "allRealTailsConditionalOnAssessedBounds": true,
+      "analyticGaussianException": "only exactly joined constant fields",
+      "fullNumericalRoutes": [
+        "A24",
+        "A48",
+        "B50"
+      ],
+      "empiricalErrorNotRigorous": true,
+      "savedPrefixContinuation": true,
+      "analyticSubsetCeiling": "1/100000000000",
+      "numericalEpsilonUnchanged": "1/8000000000000",
+      "pendingFullPacketErrorLedger": true,
+      "scienceCalls": 0,
+      "scientificGateExists": false
+    },
+    "noAutomaticRetry": true,
+    "scienceExecutionsAuthorizedByThisReviewLaunch": 0,
+    "all3142ScientificInputFilesIncluded": true,
+    "noPeerReportsShared": true
+  },
+  "reviewReceipts": {
+    "claude": {
+      "engine": "claude",
+      "sessionId": "4f051434-015a-43b3-b17a-36a59d1bedb9",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "4f051434-015a-43b3-b17a-36a59d1bedb9"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-continuation-build-review-r3/claude/work",
+      "startedUtc": "2026-10-04T14:47:04.672238+00:00",
+      "packetSha256": "3a5ba0eb835c04d926b59b660f9059a1393e5a6146f4fabb7cc2289659c0716e",
+      "promptSha256": "eda66fd6f33f3aaf1ba22a8a099288e9af52fa1a792378eef060f1cbb0f6c79c",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 1679956
+    }
+  },
+  "processes": {
+    "claude": {
+      "pid": 1679956,
+      "processPresent": true,
+      "finishedBeforeSnapshot": false,
+      "actualCommand": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "--disable-slash-commands",
+        "--session-id",
+        "4f051434-015a-43b3-b17a-36a59d1bedb9"
+      ],
+      "receiptCommand": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "4f051434-015a-43b3-b17a-36a59d1bedb9"
+      ],
+      "sourceOnlyTools": true,
+      "reportNotRead": true,
+      "privateFileHashesChecked": 8292
+    },
+    "coordinator": {
+      "pid": 1679934,
+      "present": true
+    },
+    "completionWatcher": {
+      "pid": 1679935,
+      "present": true
+    }
+  },
+  "inspectionChecks": 24875,
+  "allSourceAndPrivateHashesIntact": true,
+  "reportsRead": false,
+  "noPeerSharing": true,
+  "selectedReviewers": [
+    "claude"
+  ],
+  "noGrokLaunched": true,
+  "reviewPolicyCommit": "2dc38b0d",
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "automaticRetry": false,
+  "noElapsedReviewLimit": true,
+  "continuation": "Local completion hook will wake the same existing session once both attempts finish; no model polling."
+}

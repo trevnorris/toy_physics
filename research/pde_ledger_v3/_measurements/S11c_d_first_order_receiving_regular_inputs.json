@@ -19,7 +19,7 @@
   "methodRecord": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_20261004_r2_review_record.json",
   "methodSha256": "1fe7b8c74bfc4ed628718ee71625c7ec8e8d1d9c3602820ddf4e77689faf0a3f",
   "sourcePins": {
-    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular.py": "f9d4dccc1990a3f7170e8e3a46b0e9df2062af4e95c82ae4e06cad8bbb2db073",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular.py": "06ea418f1403d363e0c46de0d70ca8bbf610bd42d356501844d556a13ec3dc9e",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_launch.py": "6d19e4e1839e048681240126051f193662e3750a853864be93cff032c4d1bbf1",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_20261004_r2_plan.txt": "1fe7b8c74bfc4ed628718ee71625c7ec8e8d1d9c3602820ddf4e77689faf0a3f",
     "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_20261004_r2_review_record.json": "51857e79d51e2c4808c5f8a9db4d56571a14d9430a13c5f97f658429b73c32c6",

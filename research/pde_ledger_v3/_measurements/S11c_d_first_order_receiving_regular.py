@@ -138,23 +138,92 @@ def scientific_work(manifest,J,decode):
     require(matched['B']==B and matched['Bprime']==Bp and matched['deltaP']==delta,'actual saved moving basis')
     J.emit('moving-basis-symbol-identities',{'B':B,'Bprime':Bp,'T1':matched['T1'],'U':U,'receivingMomentum':l,'BFreeSymbols':sorted(B.free_symbols,key=str)})
     require(B.free_symbols<={l} and not Bp.free_symbols and not U.free_symbols and not matched['T1'].free_symbols,'foreign moving-basis or incident symbol')
-    old_matrix('receiving','geometric-dual',right=sp.eye(5))
+    dual_proof=old_matrix('receiving','geometric-dual',right=sp.eye(5))
+    J.emit('live-basis-product-arguments',{'savedDualLeft':dual_proof['left'],'D5':D5,'E5':E5,'physicalMatrix':full['physicalMatrix'],'savedTransformed':transformed,'newArgumentJoinsNotOldResidualReplay':True})
+    zero('new-dual-left-argument-join',dual_proof['left'],D5*E5)
+    zero('new-complete-transformation-join',transformed,D5*full['physicalMatrix']*E5)
     old_matrix('receiving','transverse-to-scalars-coupling',transformed[2:5,:2],sp.zeros(3,2))
     old_matrix('receiving','scalars-to-transverse-coupling',transformed[:2,2:5],sp.zeros(2,3))
     old_matrix('receiving','transverse-block',transformed[:2,:2],sp.eye(2)*full['DTCandidate'])
-    old_matrix('receiving','incident-chart-match',right=U)
-    old_matrix('receiving','FULL-offwave-source-correspondence',left=full['physicalMatrix'])
-    require(full['physicalMatrix']==get('receiving/LEFT-raw-vs-receiving-matrix-operands.json')['right'],'same actual native equation basis')
-    old_matrix('receiving','LEFT-raw-vs-receiving',right=full['physicalMatrix'])
+    old_matrix('receiving','incident-chart-match',B.subs(l,p),U)
+    correspondence=old_matrix('receiving','FULL-offwave-source-correspondence',left=full['physicalMatrix'])
+    raw_proof=old_matrix('receiving','LEFT-raw-vs-receiving',right=full['physicalMatrix'])
     # Original source/row families, their actual return operands and native provenance.
     local=get('receiving/local-receiving-assembly.json');pressure=get('receiving/pressure-receiving-assembly.json')
     cells=get('source-input/local/all-local-cells.json');require(len(cells)==400 and len(local['entries'])==100,'full original local00 row census')
-    for entry in local['entries']:require(entry['cell'] in cells,'actual local00 cell ancestry')
     J.emit('receiving-source-basis-ancestry',{'fullNativeCorrespondence':get('receiving/FULL-offwave-source-correspondence-matrix-operands.json'),'local':local,'pressure':pressure,'fullTransformed':full,'nativeSourceArguments':get('receiving/LEFT-raw-source-arguments.json'),'oldSourceFunctionsCalled':False})
+    # New operand connections use saved terms/returns; no cell, source or substitution producer.
+    baseline=[cell for cell in cells if cell['grade']==[0,0]]
+    require([entry['cell'] for entry in local['entries']]==baseline,'complete ordered local00 ancestry')
+    local_terms=sp.zeros(5)
+    for index,entry in enumerate(local['entries']):
+        cell=entry['cell'];require(cell['field']==FIELDS[cell['fieldColumn']],'local physical column')
+        require(entry['newReceivingMultiplier']==(sp.I*l)**cell['xOrder'],'original receiving jet argument')
+        # This connects the saved contribution to its declared coefficient, not its original child sum.
+        zero('new-local-term-argument-'+str(index),entry['term'],cell['coefficient']*entry['newReceivingMultiplier'])
+        local_terms[ROWS.index(cell['row']),cell['fieldColumn']]+=entry['term']
+    zero('new-local-saved-summand-join',local['matrix'],local_terms)
+    psi=sp.Matrix(sp.symbols('receiving_field_0:5'));source_rows={}
+    for face in ['plus','minus']:
+        inherited_source=get('receiving/'+face+'-inherited-source00.json')
+        source=get('source-input/sources/'+face+'-source-jets-00.json')
+        original_op=get('source-input/sources/'+face+'-source-jet-reconstruction-00-input.json')
+        original_ret=get('source-input/sources/'+face+'-source-jet-reconstruction-00-return.json')
+        sub_input=get('receiving/'+face+'-receiving-source00-substitution-input.json')
+        sub_return=get('receiving/'+face+'-receiving-source00-substitution-return.json')
+        J.emit(face+'-restored-source00-frame',{'inherited':inherited_source,'source':source,'operands':original_op,'return':original_ret,'substitutionInput':sub_input,'substitutionReturn':sub_return,'fieldOrder':list(FIELDS),'fields':psi,'momentum':l,'frequency':omega,'tangents':[h1,h2],'acceptedSubstitutionExecutionDependency':True})
+        require(inherited_source=={'record':source,'operands':original_op,'return':original_ret},'original source00 receipt '+face)
+        require(original_ret['cancelled']==0 and original_op['left']==source['source'] and original_op['right']==source['reconstruction'],'original source00 proof '+face)
+        require(sub_input['expression']==source['source'] and set(sub_input['allowedSymbols'])=={l,*psi},'original source00 substitution input '+face)
+        jet_map=dict(sub_input['mapping'])
+        require(len(jet_map)==len(sub_input['mapping']) and set(jet_map)==source['source'].free_symbols,'complete source00 substitution keys '+face)
+        for atom,value in jet_map.items():
+            jets=[jet for jet in source['jets'] if jet['atom']==atom];require(len(jets)==1,'unique original source jet '+face)
+            spec=jets[0]['spec'];powers=spec['spatialOrders']
+            require(spec['name']==atom.name and len(powers)==3,'original native jet specification '+face)
+            expected=psi[FIELDS.index(spec['channel'])]*(-sp.I*omega)**spec['timeOrder']
+            for momentum,order in zip([l,h1,h2],powers):expected*= (sp.I*momentum)**order
+            zero('new-'+face+'-jet-frame-'+atom.name,value,expected)
+        require(set(sub_return['remaining'])==sub_return['value'].free_symbols and sub_return['value'].free_symbols<={l,*psi},'original source00 return symbols '+face)
+        linear=old_scalar('receiving',face+'-source00-linear',left=sub_return['value'])
+        rows=[entry['receivingSourceRow'] for entry in pressure['entries'] if entry['originalPiece']['face']==face]
+        require(len(rows)==10 and all(row==rows[0] for row in rows),'one complete source row per face '+face)
+        source_rows[face]=rows[0]
+        zero('new-'+face+'-source-row-proof-argument',linear['right'],(rows[0]*psi)[0])
+    require(pressure['sourceMomentum']==l and pressure['normalOutputDepth']==q and pressure['wholeFlatResponseOnce'] is True and pressure['flatSupport']=='input=output=l','actual flat receiving arguments')
+    assembly=get('source/first-order-pressure-assembly.json');pressure_terms=sp.zeros(5);seen=set()
+    for index,entry in enumerate(pressure['entries']):
+        piece=entry['originalPiece'];face,slot=piece['face'],piece['slot'];key=(entry['row'],face,slot)
+        require(key not in seen,'unique receiving pressure slot');seen.add(key)
+        originals=[record for record in assembly if record['row']==entry['row'] and record['column']==0]
+        require(len(originals)==1 and piece in originals[0]['pieces'],'actual full source/consumer piece')
+        factor=get('source/'+face+'-'+slot+'-flat-arguments.json')
+        require(entry['factorArguments']==factor and factor['factor']==piece['flatNormalFactor'],'same saved flat factor')
+        olddepth=get('source/receiving-sheet.json')['depth']
+        require(entry['newFactor']==factor['factor'].xreplace({olddepth:q}),'actual flat output depth mapping')
+        zero('new-pressure-term-argument-'+str(index),entry['contribution'],piece['consumers']['00']*entry['newFactor']*source_rows[face])
+        pressure_terms[ROWS.index(entry['row']),:]+=entry['contribution']
+    require(seen=={(row,face,slot) for row in ROWS for face in ['plus','minus'] for slot in ['pressure','normal']},'complete receiving pressure census')
+    zero('new-pressure-saved-summand-join',pressure['matrix'],pressure_terms)
+    zero('new-physical-local-pressure-join',full['physicalMatrix'],local['matrix']+pressure['matrix'])
+    # The two native LEFT operands live in the physical weak basis, before D5/E5.
+    uniform=get('source-input/incident/LEFT-invariant-P.json')
+    native_input=get('receiving/uniform-native-receiving-substitution-input.json');native_return=get('receiving/uniform-native-receiving-substitution-return.json')
+    raw_args=get('receiving/LEFT-raw-source-arguments.json');raw_saved=get('source-input/incident/LEFT-raw-source-binding.json')
+    raw_input=get('receiving/LEFT-raw-end-substitution-input.json');raw_return=get('receiving/LEFT-raw-end-substitution-return.json')
+    J.emit('native-physical-basis-argument-frames',{'S':S,'uniform':uniform,'nativeInput':native_input,'nativeReturn':native_return,'rawArguments':raw_args,'rawSaved':raw_saved,'rawInput':raw_input,'rawReturn':raw_return,'fullCorrespondence':correspondence,'rawProof':raw_proof,'oldSubstitutionFunctionsCalled':False,'acceptedSubstitutionExecutionDependency':True})
+    require(uniform['actual']==uniform['expected']==native_input['expression'],'original uniform source input')
+    require(dict(native_input['mapping'])=={symbol(uniform['actual'],'uniformNormal'):l,symbol(uniform['actual'],'uniformFrequency'):omega,symbol(uniform['actual'],'uniformPhysicalDepth'):q},'actual native receiving substitution frame')
+    require(all(raw_args['saved'][key]==raw_saved[key] for key in ['nativeSource','raw','map']) and raw_input['expression']==raw_saved['raw'],'actual raw LEFT source input')
+    require(raw_args['originalFiniteOriginNotUsed'] is True,'unused finite-origin context stays separate')
+    require(dict(raw_args['originalMapping'])=={a:b for a,b in raw_saved['map']['mappingPairs'] if a.name not in ['eta_bg','sigma_W']},'original raw LEFT physical bindings')
+    require(dict(raw_input['mapping'])==dict(raw_args['newArgumentMapping'])=={symbol(raw_input['expression'],'weak_end_p'):l,symbol(raw_input['expression'],'weak_end_q'):q},'actual raw LEFT receiving frame')
+    for label,ret in [('uniform',native_return),('raw',raw_return)]:
+        require(set(ret['remaining'])==ret['value'].free_symbols and ret['value'].free_symbols<={l,q},'native return symbols '+label)
+    zero('new-native-uniform-proof-right-argument',correspondence['right'],S*native_return['value']*S.T)
+    zero('new-native-raw-proof-left-argument',raw_proof['left'],S*raw_return['value']*S.T)
     zero('new-chart-selection-R3',R3,sp.Matrix([[l/K2,h1/K2,h2/K2,0,0],[0,0,0,1,0],[0,0,0,0,1]]))
     zero('new-chart-selection-E3',E3,sp.Matrix([[l,0,0],[h1,0,0],[h2,0,0],[0,1,0],[0,0,1]]))
-    # Join the existing chart multiplication operands; do not rerun the old whole operator transformation.
-    require(full['chart']==E5 and full['dual']==D5,'actual chart and dual operands retained with accepted product proof')
     sheet=get('source/receiving-sheet.json');oldl,oldq=sheet['momentum'],sheet['depth'];beta=sheet['beta'];rho=values['rho_m']
     def transport(name,expr,allowed):
         expr=sp.sympify(expr);mapping={oldl:l,oldq:q}

@@ -1,0 +1,23 @@
+{
+  "status": "PASS_STDLIB_TOOLING_ONLY",
+  "command": [
+    "python",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_test.py"
+  ],
+  "exitStatus": 0,
+  "tests": 33,
+  "workerSha256": "06ea418f1403d363e0c46de0d70ca8bbf610bd42d356501844d556a13ec3dc9e",
+  "manifestSha256": "ba4c2cea708ece6eb7febf85849d1867a3b496c5512b1e0bb22d3f1a5c0a0f7f",
+  "testSha256": "33e326c823980cce456fed9c12d0e6a79f4c5e6db73870cd43b0eebc11f4a072",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "c84f721b2831c2a05b9ea046f29606900e850cfd9f3a639b9a5dc5004abb4d4e",
+  "scientificImports": false,
+  "scientificRestoration": false,
+  "scienceCalls": 0,
+  "scope": "Stdlib metadata/source tests only; all new matrix/argument identities remain unexecuted.",
+  "previousAttempt": {
+    "record": "S11c_d_first_order_receiving_regular_tests_r3_attempt1.json",
+    "failure": "Whole metadata object differed only at unused oldPhysical finite-origin rendering.",
+    "correction": "Compare actual nativeSource/raw/map operands used by this off-wave join; retain both complete context objects, with originalFiniteOriginNotUsed explicitly checked. No formula, source input or numerical tolerance changed."
+  }
+}

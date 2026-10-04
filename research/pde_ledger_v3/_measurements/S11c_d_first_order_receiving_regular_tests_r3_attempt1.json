@@ -1,0 +1,18 @@
+{
+  "status": "FAIL_STDLIB_TOOLING_ONLY",
+  "command": [
+    "python",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_test.py"
+  ],
+  "exitStatus": 1,
+  "tests": 33,
+  "workerSha256": "42a5f163f61c117a71cd64a3bcc4bb43161a93b1247a98f9997623b27adbaded",
+  "manifestSha256": "9531958d7c6405674d67f9b846490764bdde9bf6341128bcb052ffa3bf35ad1b",
+  "testSha256": "0cfef1c2f59faaa33061a274cebae6b4d48833607cc9ab162e861f402dd208ef",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "527df3d1621833ae7a3c473191df5109ea3190e7f67d1f923802e0a476580e7e",
+  "scientificImports": false,
+  "scientificRestoration": false,
+  "scienceCalls": 0,
+  "scope": "Only stdlib metadata/source tests; new matrix/argument identities remain unexecuted science."
+}

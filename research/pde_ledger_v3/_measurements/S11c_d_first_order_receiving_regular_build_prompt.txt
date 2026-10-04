@@ -37,3 +37,12 @@ are inherited through original exact source assignments/live argument frames;
 do not require rerunning completed diagonal current contractions. The complete
 forcing/chart/receiving positive growth ledger is explicit. All9 C3 constructor
 entries have compact literal views; full originals are retained.
+
+This revision explicitly joins both sides of the inherited dual and native
+correspondence proofs to live operands. Inspect full local/pressure summand
+connections, source00 saved substitution/jet/linearity frames, native uniform
+and raw LEFT substitution returns, S mapping, and the new D5*physicalMatrix*E5
+identity before C3 use. Raw LEFT is a physical weak-basis operand; it is not the
+transformed C3-basis matrix. These are new finite argument identities; original
+cancelled proofs and producer outputs remain inherited, not replayed. Focus on
+whether these actual connections support the finite physics checks.

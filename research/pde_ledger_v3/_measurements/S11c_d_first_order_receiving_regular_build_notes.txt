@@ -1,5 +1,5 @@
 Finite source projection, opposite-leg current and real-axis receiving build
-Revision2, 2026-10-04. No scientific execution or READY gate exists.
+Revision3, 2026-10-04. No scientific execution or READY gate exists.
 
 The physical question is whether the actual three-field receiving block has
 an outgoing real-axis pole and whether its projected forcing is localized in
@@ -74,7 +74,7 @@ still needs that identity or second-order transverse amplitudes. Reflected
 transverse waves remain survival. No current/loss/flux number is guessed from a
 coordinate projector or Im(f-dagger G f).
 
-28 stdlib tooling/JSON/source tests pass. The initial metadata test compared
+Prior revision:28 stdlib tooling/JSON/source tests passed. The initial metadata test compared
 mutable and immutable matrix wrappers; its failure and correction are preserved.
 This was not a scientific execution or a change to scientific equality. No SymPy import, scientific restoration,
 source projection, determinant, current contraction or native unit computation
@@ -105,3 +105,42 @@ matrix, without scientific decoding. They expose six original negative-power
 bases in the stored entries. This census is not a denominator clearance; the
 full exact domain checks remain future guarded science. No equation, physical
 input, method, old result, tolerance, shared helper or launcher changed.
+
+Revision3 connects the live receiving block to its actual physical equation
+basis. New exact operand identities join the saved dual-proof LEFT to D5*E5
+and the saved complete transformed matrix to D5*physicalMatrix*E5. The original
+dual LEFT-versus-identity residual and coupling residuals remain inherited.
+The tautological self-comparison is removed. These new product identities are
+new derivations; they are not mislabeled as restored calculations.
+
+The complete ordered100 baseline local cells, saved jet multipliers and terms
+join the same400 original cells used by the forcing. The20 pressure entries
+join original full row/face/slot pieces, saved source00 substitution frames,
+original jet specifications, both depth factors and scalar linearity proofs.
+New argument checks tie the published terms to their recorded coefficients,
+source rows and consumer factors. Sums of saved contributions join the saved
+local/pressure matrices and physicalMatrix. No child sum, coefficient, source,
+wave substitution or old producer is recomputed. Saved substitution execution
+remains an explicit inherited dependency, with actual input/return frames.
+
+Both native sides of the correspondence are bound separately. The saved
+uniform substitution input joins LEFT-invariant-P and the exact l/omega/q map;
+its published return is cyclically mapped with S into the inherited full-proof
+RIGHT. The raw LEFT input equals the original saved raw expression, with exact
+original and receiving argument maps; its return enters S*rawLEFT*S.T and joins
+the raw-proof LEFT. This raw LEFT is in physical weak coordinates, not the
+D5/E5 transformed basis. No equality between different coordinate bases is
+imposed. The old correspondence proofs remain inherited with complete scalar
+returns; new checks connect their operands rather than replay their residuals.
+
+All2025 saved science files, method, physical inputs, equations and shared
+helpers remain unchanged. New connections and their guarded checks require
+this concrete build assessment. No computation, receiving regularity or
+cross-current result has been obtained by preparing or testing this revision.
+
+Current revision:33 stdlib tests pass. A first metadata-only attempt compared
+an entire saved source context and found a different rendering of oldPhysical,
+which is unused finite-origin context. Both complete versions and that failure
+remain preserved. The actual nativeSource/raw/map input operands match exactly;
+these are the paths now required, along with originalFiniteOriginNotUsed=True.
+No scientific equality, physical input or source expression was relaxed.

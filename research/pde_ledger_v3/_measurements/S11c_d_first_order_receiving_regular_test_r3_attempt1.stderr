@@ -1,0 +1,14 @@
+..........................F......
+======================================================================
+FAIL: test_raw_native_input_is_original_raw_not_transformed (__main__.Tooling)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_test.py", line 177, in test_raw_native_input_is_original_raw_not_transformed
+    self.assertEqual(saved,args['saved']);self.assertEqual(inp['expression'],saved['raw'])
+AssertionError: {'nat[108517 chars]0], [3/5 - (3/10 - I)/2725 + 120*(3/100 - I/10[7304 chars])'}}} != {'nat[108517 chars]0], [16347/27250 + I/2725 + 120*(3/100 - I/10)[7210 chars])'}}}
+Diff is 188888 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 33 tests in 1.697s
+
+FAILED (failures=1)

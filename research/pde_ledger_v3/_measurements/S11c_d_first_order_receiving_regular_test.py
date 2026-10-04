@@ -163,4 +163,44 @@ class Tooling(unittest.TestCase):
         s=(HERE/(PREFIX+'.py')).read_text()
         for name in ['new-both-column-delta-prime-coefficient','new-both-column-T1-delta-coefficient','declared-derivative-control-entry','complete-source-and-chart-growth-ledger','sufficientSchwartzDecayExponentForL1']:self.assertIn(name,s)
         self.assertIn("sourceGrowthPower':forcing_power",s)
+    def test_baseline_local_order_and_saved_pressure_census(self):
+        cells=raw('source-input/local/all-local-cells.json')
+        local=raw('receiving/local-receiving-assembly.json')
+        self.assertEqual([e['cell'] for e in local['entries']],[c for c in cells if c['grade']==[0,0]])
+        entries=raw('receiving/pressure-receiving-assembly.json')['entries']
+        keys=[(e['row'],e['originalPiece']['face'],e['originalPiece']['slot']) for e in entries]
+        self.assertEqual(len(keys),len(set(keys)))
+        self.assertEqual(set(keys),{(r,f,s) for r in w.ROWS for f in ['plus','minus'] for s in ['pressure','normal']})
+    def test_raw_native_input_is_original_raw_not_transformed(self):
+        saved=raw('source-input/incident/LEFT-raw-source-binding.json')
+        args=raw('receiving/LEFT-raw-source-arguments.json');inp=raw('receiving/LEFT-raw-end-substitution-input.json')
+        for key in ['nativeSource','raw','map']:self.assertEqual(saved[key],args['saved'][key])
+        self.assertEqual(inp['expression'],saved['raw']);self.assertTrue(args['originalFiniteOriginNotUsed'])
+        self.assertEqual(inp['mapping'],args['newArgumentMapping'])
+        self.assertEqual({a['text']:b['text'] for a,b in inp['mapping']},{'weak_end_p':'receiving_block_l','weak_end_q':'receiving_block_q'})
+        self.assertNotEqual(raw('receiving/LEFT-raw-vs-receiving-matrix-operands.json')['left'],raw('receiving/complete-transformed-operator.json')['matrix'])
+    def test_native_uniform_original_input_and_live_frame(self):
+        u=raw('source-input/incident/LEFT-invariant-P.json');inp=raw('receiving/uniform-native-receiving-substitution-input.json')
+        self.assertEqual(u['actual'],u['expected']);self.assertEqual(inp['expression'],u['actual'])
+        self.assertEqual({a['text']:b['text'] for a,b in inp['mapping']},{'uniformNormal':'receiving_block_l','uniformFrequency':'3','uniformPhysicalDepth':'receiving_block_q'})
+    def test_both_source00_proof_inputs_and_jet_frames_are_supplied(self):
+        for face in ['plus','minus']:
+            source=raw('source-input/sources/'+face+'-source-jets-00.json')
+            inherited=raw('receiving/'+face+'-inherited-source00.json')
+            inp=raw('receiving/'+face+'-receiving-source00-substitution-input.json')
+            ret=raw('receiving/'+face+'-receiving-source00-substitution-return.json')
+            self.assertEqual(inherited['record'],source);self.assertEqual(inp['expression'],source['source'])
+            self.assertEqual(raw('receiving/'+face+'-source00-linear-input.json')['left'],ret['value'])
+            atoms=[a['text'] for a,b in inp['mapping']];self.assertEqual(len(atoms),len(set(atoms)))
+            for atom in atoms:
+                jets=[j for j in source['jets'] if j['atom']['text']==atom];self.assertEqual(len(jets),1)
+                self.assertEqual(jets[0]['spec']['name'],atom)
+                self.assertEqual(len(jets[0]['spec']['spatialOrders']),3)
+    def test_new_basis_joins_precede_projection_and_keep_bases_distinct(self):
+        s=(HERE/(PREFIX+'.py')).read_text()
+        for label in ['new-dual-left-argument-join','new-complete-transformation-join','new-local-saved-summand-join','new-pressure-saved-summand-join','new-physical-local-pressure-join','new-native-uniform-proof-right-argument','new-native-raw-proof-left-argument']:
+            self.assertLess(s.index(label),s.index('projection=D5*Feta'))
+        self.assertIn("raw_proof['left'],S*raw_return['value']*S.T",s)
+        self.assertNotIn("raw_proof['left'],transformed",s)
+        self.assertNotIn("full['chart']==E5 and full['dual']==D5",s)
 if __name__=='__main__':unittest.main()

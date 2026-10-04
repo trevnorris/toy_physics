@@ -1,0 +1,80 @@
+{
+  "status": "INDEPENDENT_CORRECTED_SOURCE_REVIEW_PAIR_RUNNING_HOOK_ARMED",
+  "utc": "2026-10-04T02:49:54.318811+00:00",
+  "preparedCommit": "cb194624",
+  "priorReviewCommit": "a88031f2",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/native-units-build-review-r2",
+  "launch": {
+    "jobPid": 684579,
+    "watcherPid": 684580,
+    "packetSha256": "c33caf1674ba7d35ae967e980e6cf396e7d41f4cbb4fb3027f41fec1de0c52e6",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "receipts": {
+    "claude": {
+      "sessionId": "dd7b41e2-c61b-4bf7-8a13-4e130078e260",
+      "pid": 684590,
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "dd7b41e2-c61b-4bf7-8a13-4e130078e260"
+      ],
+      "startedUtc": "2026-10-04T02:49:21.356151+00:00",
+      "privateFilesChecked": 41
+    },
+    "grok": {
+      "sessionId": "0399b858-b94a-4e74-82bd-75f78ba84b64",
+      "pid": 684589,
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/native-units-build-review-r2/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/native-units-build-review-r2/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "0399b858-b94a-4e74-82bd-75f78ba84b64"
+      ],
+      "startedUtc": "2026-10-04T02:49:21.356094+00:00",
+      "privateFilesChecked": 41
+    }
+  },
+  "hookFirst": true,
+  "reviewerOutputsRead": false,
+  "newScienceCalls": 0,
+  "privatePacketsByteIdentical": true,
+  "noAutomaticRetry": true
+}

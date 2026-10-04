@@ -847,3 +847,9 @@ c33caf1674ba7d35ae967e980e6cf396e7d41f4cbb4fb3027f41fec1de0c52e6.
 Both established reviewers receive identical fixed source without peer reports
 or commentary. Standing authority covers submission; no science or READY gate
 exists and no author clearance substitutes for the actual reports.
+
+The corrected pair launched fromcb194624 with the completion hook armed first.
+Both private41-file packets were verified byte-for-byte after startup; separate
+session receipts and restricted source-only commands are recorded. No reviewer
+output has been read while the pair runs. Its event hook resumes this same
+session; no model polling or further science has been started.

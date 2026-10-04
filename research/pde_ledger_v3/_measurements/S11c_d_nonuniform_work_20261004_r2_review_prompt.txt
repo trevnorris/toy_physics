@@ -1,0 +1,35 @@
+Assess this fixed SOURCE-BOUND NONUNIFORM WORK CONSISTENCY method independently.
+Use only Read/Glob/Grep on input/. No scripts, CAS, opaque decoding, external
+work or producer execution. This is a method review, not an instrument or result.
+
+Read guide.txt and plan.txt, then the original physics/source operands. The
+important new source is S11c-b's actual nonuniform kinetic density, density_pair
+and local thickness map, and S11c-a's material mass/chemical normalization.
+These are supplied original definitions, not a kinetic hypothesis fitted to a
+row. Full a/b registries and prior native source pins are included. Source views
+are literal text selections only; complete files remain available.
+
+Judge the finite work test as stated: unchanged retained equations, independently
+supplied stored/kinetic inputs, five-row work/face-memory ancestry, unprojected
+work residual and explicit missing-order ledger. It must distinguish a formal
+quadratic first-order port functional from an actual finite-defect survival
+asymptotic, with threshold remainder and second-order end-current debts explicit.
+It must not invent physical20/02 data or an external agency. The user's target
+counts reflected transverse flux as survival; do not replace it by acoustic-only
+face leakage. No source, receiving or numerical-bank calculation is to be replayed.
+
+Identify a concrete scientific blocker if the finite plan still cannot test
+its question, especially native chemical/live-density normalization, variable
+coefficient work, mass-rate terms, retained grades, side/end currents and the
+actual jet orders in the face maps. Distinguish a present blocker from the
+explicitly deferred finite-defect remainder or future integral evaluation.
+Do not infer zero/rank-one total leakage or a passive closed model from a label.
+State actual reading coverage and uncertainty. Source assurance is not execution.
+
+Begin with exactly one verdict:
+CLEAR FOR THIS SOURCE-BOUND NONUNIFORM WORK CONSISTENCY METHOD
+NEEDS REVISION FOR THIS SOURCE-BOUND NONUNIFORM WORK CONSISTENCY METHOD
+Then give substantive reasons, source references and concrete required changes.
+Keep optional prose suggestions separate. No previous reviewer report, peer
+commentary or author CLEAR is supplied. A genuine physical input choice should
+be distinguished from a finite source check that can be performed as proposed.

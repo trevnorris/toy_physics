@@ -1,0 +1,50 @@
+{
+  "status": "SOURCE_ONLY_SUBSTANTIVE_METHOD_REVISION",
+  "recordedUtc": "2026-10-04T22:25:57.158085+00:00",
+  "originalLiteralReport": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonuniform_work_20261004_claude.md",
+  "originalReportSha256": "f8ae871b1fe3500540468c577ba02456c2ec3513e39b960a238b82ac1d924abe",
+  "newPlan": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonuniform_work_20261004_r2_plan.txt",
+  "newPlanSha256": "f4a54c3f5d6b503d95dc4b7e1cf56dd84e68d219186941ee58f40f7094bf52f6",
+  "sourceObservations": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py",
+      "sha256": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+      "functions": [
+        "density_pair",
+        "local_thickness_map",
+        "kinetic_balance_from_energy",
+        "operator_from_density",
+        "face_generalized_force_rows"
+      ],
+      "observation": "Actual original nonuniform kinetic declaration precedes row construction. Sigma0 is rho_br*W_bg/W0 for RHO4; physical thickness composed from W_bg*local_thickness. Native origins keep kinetic, stored energy, face work/flux and mass evolution separate. This was absent from the first reviewer reading, not evidence of a missing model law."
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "sha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "functions": [
+        "mu_specific_raw",
+        "affinity_raw",
+        "virtual_constraint_route",
+        "evolution_route"
+      ],
+      "observation": "Original chemical definition uses rhobr_bg_exact before shape projection; actual material mass and evolution are independently specified. No new chemical normalization or LAB_HELD convective face term is chosen."
+    }
+  ],
+  "changes": [
+    "Narrow finite target to native work consistency and explicit order obstructions.",
+    "Formal first-order port functional separated from finite-defect survival and its unproved weighted threshold remainder.",
+    "No silent choice of exact completion or missing20/02 operators/end current. Actual available work residuals and arbitrary second-order-field coefficients must be retained.",
+    "Both-face work ancestry and native memory contribution are separated from conservative local terms.",
+    "Total transverse-survival observable unchanged; acoustic face-plane exchange is only a component."
+  ],
+  "newScience": false,
+  "newScientificWorker": false,
+  "readyGateExists": false,
+  "completedWorkReplayed": false,
+  "peerReportShared": false,
+  "reviewers": [
+    "claude"
+  ],
+  "newPhysicalInputs": false,
+  "unknownPhysicalChoiceEstablished": false
+}

@@ -1,0 +1,44 @@
+{
+  "status": "FIXED_NONUNIFORM_WORK_R2_METHOD_PACKET_VERIFIED",
+  "packetSha256": "fa818f911f4e2b6911db526dd72dcbcab1894d5a822d4442c4a852643cfb4833",
+  "archiveSha256": "ca153165b7de7adea03053a657511d652bb5bb667e569d13b0d04f617c3afed5",
+  "files": 8281,
+  "bytes": 166532979,
+  "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+  "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+  "completionMessageSha256": "665ad92a1ba8330d5368d95520dcf55b631c6f2ad80ce5e97789f220e016589b",
+  "sourceHashesChecked": 8280,
+  "losslessViewsChecked": 14,
+  "losslessSourceViewsChecked": 9,
+  "originalSourcePinsJoined": 3,
+  "artifactCensus": {
+    "source-projection": 2466,
+    "domain-prefix": 99,
+    "regularity": 3636
+  },
+  "reviewers": [
+    "claude"
+  ],
+  "scienceCalls": 0,
+  "scientificGateExists": false,
+  "existingReviewerRunnerReusedUnchanged": true,
+  "oldReviewAdjudication": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_nonuniform_work_20261004_review_record.json",
+  "oldReviewAdjudicationSha256": "04768b53a0ac7136a96c58ced54b2d896bd51d7fd8b0999758ebcd24bad4112e",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/nonuniform-work-method-review-r2",
+  "scope": {
+    "target": "Source-bound nonuniform work consistency and formal first-order port power, with physical survival/order/remainder debts explicit",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "samePhysicalInputs": true,
+    "sameEquations": true,
+    "arbitraryIncidentDoublet": true,
+    "scientificWorkerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "newFieldOrIntegral": false,
+    "fullPhysicalWorkPending": true,
+    "leakageFactor": null,
+    "finiteDefectAsymptoticClaimed": false,
+    "recoveryParked": true
+  }
+}

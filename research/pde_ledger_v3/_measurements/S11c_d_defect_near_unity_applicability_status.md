@@ -928,3 +928,24 @@ Claude/Grok reviewers. No peer reports or reviewer commentary are supplied.
 Actual wave factors, physical profile transforms, H/J/direct kernels and
 integration measures still require full summand unit transport before any
 pressure evaluator. No pressure value/current/loss or sweep follows.
+
+## 2026-10-03 — source unit transport build needs revision
+
+Both delivered reports literally say NEEDS REVISION.5761metadata checks confirm
+the exact956-file packet/archive, both private copies, actual source hashes,
+independent sessions, receipts and hook. Claude finished in88.767s with empty
+stderr; Grok in1082.872s with6945bytes of CLI diagnostics/13Read errors and a
+complete report. Both state partial coverage. No science or READY gate exists.
+
+The revision must connect native profile L-scaling to actual saved map values,
+route the missing-L mutant through that real certificate, join both sides of
+source normalization/density identities, and make full quotient/remainder
+provenance and exact address-set coverage explicit. The original evidence and
+reviewed worker remain preserved. Grok's claim that bound numerical magnitudes
+must carry dimensionless units is qualified: physical units must be transported
+from their original quantities, not inferred by dimensioning a bare numeric
+sum. The actual provenance links still need strengthening. A component pair
+with one provably nonzero part suffices for complex nonzero; all relevant saved
+domain records are complete. No result or physics failure has been inferred.
+The next work is a substantive source-bound validation correction and independent
+assessment, without replaying any accepted source/grade/profile computation.

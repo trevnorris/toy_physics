@@ -1089,3 +1089,9 @@ archive SHA256 `d268f3e15413b29c12319ca1b4a479a49027e0d09f26053c89543bda889606a0
 All2521complete saved JSON inputs are supplied. Standing user/AGENTS authority
 covers separate Claude/Grok build assessments. No peer reports, source verdict,
 scientific READY gate or execution yet. All old results/failures remain pinned.
+
+The prepared build is preserved at14a7101f. Both independent source-only reviews
+started with distinct sessions and complete2549-file private copies. Startup
+verified every private/source hash and the event hook before handing off.
+No peer output has been read; both reports must finish before adjudication.
+No scientific job was launched and no completed work replayed.

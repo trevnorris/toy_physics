@@ -1,0 +1,67 @@
+{
+  "status": "PINNED_READY_FOR_ONE_GUARDED_KERNEL_WAVE_MEASURE_UNIT_TRANSPORT",
+  "createdUtc": "2026-10-04T08:52:27.898792+00:00",
+  "gate": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_kernel_units_gate.json",
+  "gateSha256": "c1773990f7c7898c34f217bde8454d1891cc61917bf5a2b0e6d5f1fb3d747fc6",
+  "reviewCommit": "7e4b01bd",
+  "buildCommit": "81c8baf5",
+  "sourcePinsChecked": 19,
+  "additionalIdentityCopies": 16,
+  "additionalIndexSha256": "59aaa7042a5340cd033115c4652ed35345dce04a52f741e88bbc7fc7727c985b",
+  "actualLauncherVerifyPassed": true,
+  "scientificImportsOrRestoration": false,
+  "workerLaunched": false,
+  "noDeadline": true,
+  "scienceRunsAuthorized": 1,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "automaticRetry": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Remaining source-bound primitive kernel, wave/Fourier and measure dimensional transport for all544selected pressure addresses; no evaluator or action",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": false,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": false,
+    "kernelWaveMeasureTransportOnly": true
+  },
+  "remainingBeforeResultAcceptance": [
+    "Actual guard no-deadline/resource enforcement and supervisor invocation",
+    "Actual source parameter origins, registry and original density/a/beta/W/L/Fourier/normal and kernel template joins",
+    "All four distinct kernel densities, complete whole definitions, 20 templates, 544 full summand/address/wave/measure joins, four actual dimensional refusal controls plus one restored profile control and complete evidence chain",
+    "Strict scientific stderr and stdout/checks identity",
+    "All source/copy/additional-identity posthashes",
+    "Dimensional consistency alone gives no evaluator readiness, integral, complete packet action, current/loss or sweep"
+  ]
+}

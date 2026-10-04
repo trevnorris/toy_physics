@@ -1168,3 +1168,12 @@ hook first, and inspect all actual operands/returns and controls. No old
 scientific calculations may be replayed; full numerical evaluator readiness
 and any packet/current/loss value remain separate. Earlier literal revisions
 and CLI diagnostics are preserved.
+
+Pinned one guarded kernel/wave/measure unit execution after paired build
+clearance 7e4b01bd. Actual launcher gate verification passed, with reviewed
+worker/manifest/library and unchanged guard/supervisor pinned, 16 additional
+identity copies, current host readiness and no computation deadlines.
+The forthcoming run derives only missing unit transport and controls; all
+2,521 original inputs remain pinned for reuse without completed calculations.
+Runtime operands, returns, resource enforcement and integrity remain unaccepted
+until completion inspection.

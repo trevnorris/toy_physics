@@ -1,0 +1,163 @@
+{
+  "status": "PINNED_READY_FOR_ONE_GUARDED_SAVED_PREFIX_J_DIRECT_CONTINUATION",
+  "createdUtc": "2026-10-04T14:57:35.112748+00:00",
+  "gate": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_packet_contracted_continue_gate.json",
+  "gateSha256": "4303d36e0fff2aacb02c280c79df732e54222262dc0ff7346dc03d796330ce9e",
+  "reviewCommit": "79bb69c4",
+  "reviewedBuildCommit": "4f2f27ea",
+  "independentBuildClearance": true,
+  "pairedClearance": false,
+  "reviewers": [
+    "claude"
+  ],
+  "reviewPolicySha256": "0b918036506ff25bd1d17d54d24f5b4eb33ca3e603e1570fc3d91f4d82013093",
+  "sourcePinsChecked": 101,
+  "additionalIdentityCopies": 20,
+  "additionalIndexSha256": "77af7f2c7557fa5d218244c90644431c0bf9b759cdb94a035d59e67209971b0c",
+  "actualLauncherVerifyPassed": true,
+  "gateRefusalChecks": {
+    "missingIndependentClearance": {
+      "refused": true,
+      "reason": "actual continuation build clearance"
+    },
+    "unexpectedReviewer": {
+      "refused": true,
+      "reason": "actual explicit Claude-only policy"
+    },
+    "wrongWorkerPin": {
+      "refused": true,
+      "reason": "actual continuation worker/manifest"
+    },
+    "wrongPolicyPin": {
+      "refused": true,
+      "reason": "actual explicit Claude-only policy"
+    },
+    "extraRun": {
+      "refused": true,
+      "reason": "standing bounded continuation authority"
+    },
+    "deadlineAdded": {
+      "refused": true,
+      "reason": "standing bounded continuation authority"
+    },
+    "wrongLiteralVerdict": {
+      "refused": true,
+      "reason": "actual Claude literal build verdict under temporary policy"
+    },
+    "wrongSourceCensus": {
+      "refused": true,
+      "reason": "complete continuation source census"
+    }
+  },
+  "scientificImportsOrRestoration": false,
+  "newModules": [
+    "S11c_d_defect_packet_contracted_continue_resume",
+    "_decimal",
+    "_posixsubprocess",
+    "argparse",
+    "atexit",
+    "collections.abc",
+    "decimal",
+    "fcntl",
+    "fractions",
+    "gettext",
+    "linecache",
+    "numbers",
+    "pkgutil",
+    "resource",
+    "select",
+    "selectors",
+    "signal",
+    "subprocess",
+    "threading",
+    "token",
+    "tokenize",
+    "traceback"
+  ],
+  "workerLaunched": false,
+  "noDeadline": true,
+  "scienceRunsAuthorized": 1,
+  "resources": {
+    "memoryBytes": 4294967296,
+    "poolMemoryBytes": 17179869184,
+    "swapBytes": 0,
+    "cpuCount": 1,
+    "nativeThreads": 1,
+    "tasksMax": 32,
+    "hostReserveBytes": 4294967296,
+    "durationLimits": null,
+    "priority": "desktop-managed"
+  },
+  "automaticRetry": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Only ordinary J and three ADDED direct weak Gaussian contributions; two carriers and two original windows",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": false,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": true,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": false,
+    "kernelWaveMeasureTransportOnly": false,
+    "newFiniteWindowCertificate": false,
+    "noNumericalEvaluator": false,
+    "originalWindowPairs": [
+      [
+        27,
+        122
+      ],
+      [
+        29,
+        124
+      ]
+    ],
+    "boundedContractedNumerics": true,
+    "completePacketAction": false,
+    "noLeakageOrCurrent": true,
+    "eligibleAddressCount": 20,
+    "addressPrimitives": 40,
+    "argumentDerivative": 0,
+    "allRealTailsConditionalOnAssessedBounds": true,
+    "analyticGaussianException": "only exactly joined constant fields",
+    "fullNumericalRoutes": [
+      "A24",
+      "A48",
+      "B50"
+    ],
+    "empiricalErrorNotRigorous": true,
+    "savedPrefixContinuation": true,
+    "analyticSubsetCeiling": "1/100000000000",
+    "numericalEpsilonUnchanged": "1/8000000000000",
+    "pendingFullPacketErrorLedger": true
+  },
+  "unchangedReviewedSource": true,
+  "remainingBeforeResultAcceptance": [
+    "Actual hook-first guard enforcement, no-deadline resources and supervisor invocation.",
+    "All8271 prior copies,263 completed operand/return sets,33 budget checkpoints; no completed calculation replay.",
+    "Four positive aggregate records and all11 same-path coverage refusals per group, full exact scalar/source/unit/domain joins.",
+    "Original unfinished geometry and numerical A24/A48/B50, per-panel and pointwise positive budgets, tails, controls, complete SQLite FULL records.",
+    "Strict scientific stderr, stdout/checks identity, all source/copy/additional-identity posthashes.",
+    "H scaling and carrier-envelope duplication have the disclosed limits; analytic1e-11 is a subset ceiling, not full packet allocation.",
+    "J/direct only. H/flat/heightPV/slope and full action/current/leakage remain separate. Empirical error is not rigorous accuracy."
+  ]
+}

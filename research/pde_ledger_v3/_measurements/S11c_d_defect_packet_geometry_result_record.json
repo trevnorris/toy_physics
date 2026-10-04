@@ -1,0 +1,386 @@
+{
+  "status": "BOUNDED_PACKET_GEOMETRY_ACCEPTED_UNITS_AND_EVALUATOR_PENDING",
+  "recordedUtc": "2026-10-04T01:50:41.752776+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/geometry-01",
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Exact collision geometry and candidate dependency/static work counts only; pressure summand units deferred required prerequisite",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "noNewPressureUnitProof": true,
+    "geometryPlans": 8,
+    "K": [
+      27,
+      29
+    ],
+    "U": 75,
+    "T": [
+      122,
+      124
+    ]
+  },
+  "buildReviewCommit": "eda13816",
+  "toolingRepairCommit": "0f5e3477",
+  "gateCommit": "9778c6f9",
+  "gateSha256": "1bd2e836f8454f869925d883c98dfde148a7d244947f8355b21455bb8dbd8dd6",
+  "resultSha256": "56e8783711e711966cdcc10b921299ac852b4a309f9a28f40d5c8246b18c8ab0",
+  "allChecksPassed": true,
+  "inspectionChecks": 30319,
+  "inspectionCheckCategories": {
+    "launch commands": 1,
+    "supervisor/guard commands": 1,
+    "completed no failure": 1,
+    "no-deadline enforced": 1,
+    "resource limits": 1,
+    "native limits": 1,
+    "pool": 1,
+    "hook first/completed": 1,
+    "empty stderr": 5,
+    "stdout/checks exact bytes": 1,
+    "no failure file": 1,
+    "resource sample": 15,
+    "source snapshot census": 1,
+    "posthash": 282,
+    "identity posthash": 6,
+    "snapshot": 279,
+    "copy census": 1,
+    "copy": 266,
+    "additional index": 1,
+    "additional identity": 18,
+    "complete chain artifact": 930,
+    "unique chain": 1,
+    "all top-level artifacts chained": 1,
+    "complete narrow result": 1,
+    "result scope": 1,
+    "complete actual selection": 1,
+    "complete field operands": 34,
+    "inherited field proof": 34,
+    "complete template operands": 20,
+    "inherited adapter zero": 20,
+    "full actual address operands": 544,
+    "actual response map": 4352,
+    "actual normal map": 544,
+    "source consumer field/normalization": 1088,
+    "grade metadata": 544,
+    "complete addressed grade": 544,
+    "complete inherited factor arguments": 17,
+    "complete factor returns": 17,
+    "explicit zero address": 442,
+    "family census": 3,
+    "full signature family membership": 30,
+    "all zero/formal statuses": 1,
+    "no numerical cache claim": 1,
+    "complete operation return": 8,
+    "actual geometry arguments": 8,
+    "saved exact audit result": 8,
+    "complete slab/cell census": 8,
+    "saved slab cuts": 900,
+    "saved oriented incidence": 17564,
+    "saved intersection provenance": 1654,
+    "per-grade work addresses": 28,
+    "paired branch count metadata": 84,
+    "actual control refusals": 1,
+    "actual omitted line control": 1,
+    "actual reversed cell control": 1
+  },
+  "inspection": "JSON/source/hash/opaque bytes only; no Quad/CAS restoration or extra geometry validation",
+  "plans": [
+    {
+      "name": "matching-K27-square",
+      "domain": "square",
+      "carrier": "matching",
+      "K": 27,
+      "U": 75,
+      "T": 122,
+      "audit": {
+        "slabs": 114,
+        "cells": 2592,
+        "area": {
+          "a": "2916",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "expectedArea": {
+          "a": "2916",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "coverage": true,
+        "disjointInteriors": true,
+        "allRequiredLines": true,
+        "squareSubstitutionJacobians": "2*(half-width)*z > 0 for 0<z<1; both nested half-widths positive in each open cell",
+        "numericalNodesEvaluated": 0
+      }
+    },
+    {
+      "name": "matching-K27-height",
+      "domain": "height",
+      "carrier": "matching",
+      "K": 27,
+      "U": 75,
+      "T": 122,
+      "audit": {
+        "slabs": 100,
+        "cells": 1500,
+        "area": {
+          "a": "4050",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "expectedArea": {
+          "a": "4050",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "coverage": true,
+        "disjointInteriors": true,
+        "allRequiredLines": true,
+        "squareSubstitutionJacobians": "2*(half-width)*z > 0 for 0<z<1; both nested half-widths positive in each open cell",
+        "numericalNodesEvaluated": 0
+      }
+    },
+    {
+      "name": "matching-K29-square",
+      "domain": "square",
+      "carrier": "matching",
+      "K": 29,
+      "U": 75,
+      "T": 124,
+      "audit": {
+        "slabs": 114,
+        "cells": 2592,
+        "area": {
+          "a": "3364",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "expectedArea": {
+          "a": "3364",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "coverage": true,
+        "disjointInteriors": true,
+        "allRequiredLines": true,
+        "squareSubstitutionJacobians": "2*(half-width)*z > 0 for 0<z<1; both nested half-widths positive in each open cell",
+        "numericalNodesEvaluated": 0
+      }
+    },
+    {
+      "name": "matching-K29-height",
+      "domain": "height",
+      "carrier": "matching",
+      "K": 29,
+      "U": 75,
+      "T": 124,
+      "audit": {
+        "slabs": 100,
+        "cells": 1500,
+        "area": {
+          "a": "4350",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "expectedArea": {
+          "a": "4350",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "coverage": true,
+        "disjointInteriors": true,
+        "allRequiredLines": true,
+        "squareSubstitutionJacobians": "2*(half-width)*z > 0 for 0<z<1; both nested half-widths positive in each open cell",
+        "numericalNodesEvaluated": 0
+      }
+    },
+    {
+      "name": "zero-K27-square",
+      "domain": "square",
+      "carrier": "zero",
+      "K": 27,
+      "U": 75,
+      "T": 122,
+      "audit": {
+        "slabs": 118,
+        "cells": 2802,
+        "area": {
+          "a": "2916",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "expectedArea": {
+          "a": "2916",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "coverage": true,
+        "disjointInteriors": true,
+        "allRequiredLines": true,
+        "squareSubstitutionJacobians": "2*(half-width)*z > 0 for 0<z<1; both nested half-widths positive in each open cell",
+        "numericalNodesEvaluated": 0
+      }
+    },
+    {
+      "name": "zero-K27-height",
+      "domain": "height",
+      "carrier": "zero",
+      "K": 27,
+      "U": 75,
+      "T": 122,
+      "audit": {
+        "slabs": 118,
+        "cells": 1888,
+        "area": {
+          "a": "4050",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "expectedArea": {
+          "a": "4050",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "coverage": true,
+        "disjointInteriors": true,
+        "allRequiredLines": true,
+        "squareSubstitutionJacobians": "2*(half-width)*z > 0 for 0<z<1; both nested half-widths positive in each open cell",
+        "numericalNodesEvaluated": 0
+      }
+    },
+    {
+      "name": "zero-K29-square",
+      "domain": "square",
+      "carrier": "zero",
+      "K": 29,
+      "U": 75,
+      "T": 124,
+      "audit": {
+        "slabs": 118,
+        "cells": 2802,
+        "area": {
+          "a": "3364",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "expectedArea": {
+          "a": "3364",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "coverage": true,
+        "disjointInteriors": true,
+        "allRequiredLines": true,
+        "squareSubstitutionJacobians": "2*(half-width)*z > 0 for 0<z<1; both nested half-widths positive in each open cell",
+        "numericalNodesEvaluated": 0
+      }
+    },
+    {
+      "name": "zero-K29-height",
+      "domain": "height",
+      "carrier": "zero",
+      "K": 29,
+      "U": 75,
+      "T": 124,
+      "audit": {
+        "slabs": 118,
+        "cells": 1888,
+        "area": {
+          "a": "4350",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "expectedArea": {
+          "a": "4350",
+          "b": "0",
+          "basisSquare": "119/20"
+        },
+        "coverage": true,
+        "disjointInteriors": true,
+        "allRequiredLines": true,
+        "squareSubstitutionJacobians": "2*(half-width)*z > 0 for 0<z<1; both nested half-widths positive in each open cell",
+        "numericalNodesEvaluated": 0
+      }
+    }
+  ],
+  "controls": [
+    {
+      "name": "missing-collision",
+      "refusal": "required collision/resolution incidence",
+      "mutantStillCoversBox": true
+    },
+    {
+      "name": "reversed-cell",
+      "refusal": "oriented adjacent cell"
+    }
+  ],
+  "addresses": 544,
+  "formalAddresses": 102,
+  "zeroAddresses": 442,
+  "zeroSplit": {
+    "FORMAL_ADDRESS_AVAILABLE_NONZERO_NOT_ASSERTED": 102,
+    "EXACT_ZERO_SOURCE_JET": 106,
+    "EXACT_ZERO_CONSUMER": 336
+  },
+  "fields": 34,
+  "nativeTemplates": 20,
+  "inheritedFactorProofs": 17,
+  "candidateFamilyCounts": {
+    "X": 13,
+    "Y": 3,
+    "response": 14
+  },
+  "A24A48UnsharedPairedProductsAllPlans": 8304551424,
+  "A24A48UnsharedBranchScalarProductsAllPlans": 9397384704,
+  "countInterpretation": "Static unshared address occurrences across both carriers/base+enlarged, not unique evaluated values. Exact sharing not yet a numerical cache. Adaptive B/Fourier/inner work and byte/RSS/runtime unknown.",
+  "wallSeconds": 26.300521543016657,
+  "peakCgroupBytes": 162156544,
+  "memoryEvents": {
+    "low": 0,
+    "high": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0,
+    "sock_throttled": 0
+  },
+  "savedCopies": 266,
+  "posthashes": 282,
+  "snapshots": 279,
+  "runtimeIdentityCopies": 6,
+  "additionalIdentityCopies": 18,
+  "chainRecords": 930,
+  "evidenceChainSha256": "9480fecf1cae6605a6744269d6c803bdb49175aebad77df895e083efeecb9cec",
+  "allSourcesAndCopiesIntact": true,
+  "strictStderrBytes": 0,
+  "stdoutChecksIdentity": true,
+  "noDeadline": true,
+  "independentBuildClearance": false,
+  "originalPairClearance": true,
+  "localToolingExecutionAuthority": true,
+  "pressureSummandUnits": "PENDING_SEPARATE_REQUIRED_CERTIFICATE",
+  "numericalEvaluatorReady": false,
+  "integralsEvaluated": 0,
+  "numericalCacheValuesReused": 0,
+  "completedFunctionsReplayed": false,
+  "next": "Prepare required native pressure unit instrument from pinned original source map; then exact sharing/streamed assembly and independent full numerical evaluator still need concrete readiness. No full integration launched."
+}

@@ -734,3 +734,29 @@ shows no other s11c unit and enough memory; the unchanged shared guard makes the
 actual reservation. One hook-first4GiB pooled run is ready, with no deadline,
 zero swap and all prior controls. Pressure units remain a separate required
 prerequisite; no pressure integral, cache match, numerical action or loss claim.
+
+## 2026-10-03 — eight exact geometry plans accepted; unit proof next
+
+The bounded geometry run completed in26.301s, peak162156544cgroup bytes,
+zero memory-limit/OOM/swap events, empty strict stderr and byte-identical
+stdout/checks. All8plan audits preserve complete declared boxes, crossings,
+coalesced labels, oriented clipped cells and exact coverage. Matching-carrier
+square/height plans contain2592/1500cells; zero-carrier plans2802/1888, at both
+K27/29. Both actual missing-line/reversed-cell controls refuse correctly.
+
+The30319JSON/source/hash inspection checks cover930chain records,266saved
+copies, complete field/factor/template/address evidence and source posthashes.
+All544addresses remain:102formal,106zero-source,336zero-consumer. Candidate
+signatures reduce these to13X,3Y,14response families, with no numerical bank
+match or cache reuse. All science was within the verified no-deadline pooled
+4GiB guard; no accepted function or integral replayed.
+
+Across both carriers and both box sizes, A24+A48 counts are8304551424 unshared
+address products or9397384704 individual branch scalar products when both
+height-PV branches are recorded. These are conditional occurrence counts, not
+unique numerical requests, runtime estimates or byte/RSS bounds. They make
+exact sharing and evidence storage an explicit evaluator-readiness obligation;
+no full integration is launched from this count. Required native pressure-unit
+certificates are the next bounded preparation using the332-record source map.
+No pressure value/current/loss follows. Original paired build CLEAR and tested
+local bookkeeping repair remain distinct from this runtime acceptance.

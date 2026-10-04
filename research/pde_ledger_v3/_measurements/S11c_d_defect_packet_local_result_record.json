@@ -1,0 +1,1012 @@
+{
+  "status": "ACCEPTED_TWO_LOCAL_GAUSSIAN_ACTIONS_PRESSURE_PENDING",
+  "utc": "2026-10-04T00:06:15.860719+00:00",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/local-01",
+  "reviewCommit": "abc6c012",
+  "readyCommit": "f262339d",
+  "launchCommit": "f2981980",
+  "allChecksPassed": true,
+  "inspectionCounts": {
+    "launch commands": 1,
+    "supervisor/guard commands": 1,
+    "completed no failure": 1,
+    "no-deadline enforced": 1,
+    "resource limits": 1,
+    "native limits": 1,
+    "pool": 1,
+    "hook first/completed": 1,
+    "empty stderr": 5,
+    "stdout/checks exact bytes": 1,
+    "no failure file": 1,
+    "resource sample": 167,
+    "source snapshot census": 1,
+    "posthash": 202,
+    "snapshot": 133,
+    "copy census": 1,
+    "copy": 69,
+    "additional index": 1,
+    "additional identity": 18,
+    "artifact": 433,
+    "complete top operation": 1,
+    "stage actual inputs": 1,
+    "complete bounded return": 1,
+    "complete new zero": 84,
+    "complete native selection": 1,
+    "native batch inputs": 24,
+    "native child actual constructor": 376,
+    "inherited child zero": 1880,
+    "unique child": 376,
+    "complete native local partition": 1,
+    "original native source line": 1,
+    "actual native unit source join": 1,
+    "complete native ancestry": 16,
+    "inherited cell zero": 48,
+    "unaltered certificate originals": 16,
+    "certificate exact multiplicity": 16,
+    "actual exact certificate match": 34,
+    "actual certificate proof operand": 34,
+    "actual adapter source argument": 16,
+    "local integration unit": 16,
+    "literal rational transport": 34,
+    "epsilon once": 16,
+    "actual unbound unit operands/result": 112,
+    "complete narrow unit conclusion": 1,
+    "native unit/cell census": 1,
+    "actual physical/profile inputs": 1,
+    "SQLite full byte receipt": 1,
+    "SQLite integrity": 1,
+    "SQLite row bytes": 24944,
+    "finite complete saved record": 24944,
+    "complete rules restored no constructor": 1,
+    "fixed packet family": 24941,
+    "native cell request": 24939,
+    "fixed cell index": 24939,
+    "native actual local request": 18,
+    "actual full tail prefix": 18,
+    "known route": 24887,
+    "actual independent route arguments": 72,
+    "exact route finite coverage": 72,
+    "full panel nodes/values/operands": 24630,
+    "open physical nodes": 24630,
+    "actual native integrand operand record": 925866,
+    "native derivative before coefficient": 874554,
+    "actual squared route panel": 21888,
+    "positive Jacobians and return": 21888,
+    "route complete scalar": 72,
+    "complete A panel census": 54,
+    "adaptive full operands": 2742,
+    "adaptive initial bounds": 2592,
+    "actual global active partition": 38,
+    "global empirical criterion": 18,
+    "complete native cell arguments": 34,
+    "complete four routes": 18,
+    "actual numerical completed return join": 72,
+    "actual reference and empirical error": 18,
+    "complete comparison census": 18,
+    "actual saved absolute comparison": 58,
+    "saved tails and empirical envelope": 18,
+    "actual explicit zero no quadrature": 16,
+    "local grade totals scope": 2,
+    "actual complete grade cell receipts": 8,
+    "predeclared mutant address": 2971,
+    "actual adaptive replacement": 75,
+    "complete local receipt joins": 1,
+    "all bounded local work complete": 1,
+    "actual control completed operands": 2,
+    "saved control movement exceeds full envelope": 2,
+    "top scientific return journal joins": 1,
+    "SQLite postinspection immutable": 1
+  },
+  "inspectionChecks": 2056213,
+  "inspectionKind": "Read-only stdlib source/JSON/hash/opaque SQLite traversal and persisted scalar display comparison. No scientific restoration or calculation replay.",
+  "result": {
+    "status": "BOUNDED_LOCAL_PACKET_ACTIONS_COMPLETE_PRESSURE_PENDING",
+    "cells": 16,
+    "packets": 2,
+    "localResult": {
+      "packetGradeReceipts": {
+        "kappa": {
+          "record": "packet/kappa/local-grade-totals",
+          "sha256": "cc8120e8d9e06037b4a64791724807be9b6d9b614e22420649dbd25c8302c90a",
+          "bytes": 4247
+        },
+        "0": {
+          "record": "packet/0/local-grade-totals",
+          "sha256": "9fb4ebf3dca3da9dd5c15b693cb0035eed466280676f1d7e8052edffa353a9d5",
+          "bytes": 4194
+        }
+      },
+      "controlReceipt": {
+        "record": "controls/complete",
+        "sha256": "d326d3f0c28e6db1d019e6438c29881eed3b9106a45450f2e1bc663d29d5d042",
+        "bytes": 1959
+      },
+      "completeReceipt": {
+        "record": "complete-local-actions",
+        "sha256": "9c6233309c2caf9ea27674d669d445dbafd8d19162bcf93bb6eda3cd9675d616",
+        "bytes": 472
+      },
+      "localActions": 2,
+      "controls": 2,
+      "currentOrLoss": null
+    },
+    "completePacketAction": false,
+    "pressureActionEvaluated": false,
+    "currentOrLoss": null,
+    "scientificAcceptance": false,
+    "wallSeconds": 330.6840793520678
+  },
+  "newLiteralZeroReturns": 84,
+  "inheritedLiteralZeroReturns": 1928,
+  "nativeUnitChildren": 112,
+  "coefficientCertificateMatching": {
+    "0": [
+      0
+    ],
+    "1": [
+      0,
+      1
+    ],
+    "2": [
+      0,
+      3,
+      1,
+      2,
+      4
+    ],
+    "3": [
+      0,
+      2,
+      4,
+      5,
+      3,
+      1
+    ],
+    "4": [
+      0
+    ],
+    "5": [
+      0
+    ],
+    "6": [
+      0,
+      3,
+      1,
+      2
+    ],
+    "7": [
+      0,
+      1,
+      3,
+      4,
+      2
+    ],
+    "8": [
+      0
+    ],
+    "9": [
+      0,
+      1
+    ],
+    "10": [
+      0
+    ],
+    "11": [
+      0
+    ],
+    "12": [
+      0
+    ],
+    "13": [
+      0
+    ],
+    "14": [
+      0
+    ],
+    "15": [
+      0
+    ]
+  },
+  "jsonArtifacts": 433,
+  "savedCopies": 69,
+  "sourcePosthashes": 202,
+  "sourceSnapshots": 133,
+  "additionalIdentityCopies": 18,
+  "sqlite": {
+    "receipt": {
+      "path": "local-evidence.sqlite",
+      "bytes": 1306898432,
+      "sha256": "575c1cdf38bb090a456442879237e7baff9517976d021ac8f3b1ff50331b1569"
+    },
+    "records": 24944,
+    "payloadBytes": 1282292272,
+    "panelCounts": {
+      "A24": 6912,
+      "A48": 6912,
+      "A48Rplus8": 8064,
+      "B": 2742
+    },
+    "readonlyIntegrity": "ok"
+  },
+  "comparisons": 58,
+  "analyticConstantComparisons": 4,
+  "savedScalarMaxima": {
+    "difference": "8.298676596759585338268845015483085313039317062974846645046E-16",
+    "toleranceFraction": "2.435064321725680728061824213E-7",
+    "BempiricalError": "3.029643533861750152350026210430682602434435096085946980346E-15",
+    "envelope": "4.201972027367711487116070521486517772785561626955560798776E-15"
+  },
+  "maximumRecords": {
+    "difference": {
+      "record": "packet/0/cell/0/complete",
+      "comparison": {
+        "difference": {
+          "decimal": "0.0000000000000008298676596759585338268845015483085313039317062974846645046",
+          "mpf": [
+            0,
+            "699162120176779989622834510063532424232130626090069",
+            -219,
+            169
+          ]
+        },
+        "passed": true,
+        "route": "analyticConstant",
+        "tolerance": {
+          "decimal": "0.000003857309539298249960351708383001642271022465564331700714111",
+          "mpf": [
+            0,
+            "189161909398848772715580579651333479377130098942329",
+            -185,
+            168
+          ]
+        },
+        "value": {
+          "mpc": [
+            {
+              "decimal": "0.06017235804000080863539374160788023333314382806730615379677",
+              "mpf": [
+                0,
+                "720420862341304337797815619426756301592914209934265",
+                -173,
+                169
+              ]
+            },
+            {
+              "decimal": "-38.56304844764734176480889855551143259654521720061729987869",
+              "mpf": [
+                1,
+                "450879667573660192432986063424435157986250058927667",
+                -163,
+                169
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "toleranceFraction": {
+      "record": "packet/kappa/cell/0/mutant-conjugation/complete",
+      "comparison": {
+        "difference": {
+          "decimal": "0.0000000000000002435064321725740023504630529603872583923173644398622768074",
+          "mpf": [
+            0,
+            "410307526530045612651361908423455966407252856080109",
+            -220,
+            169
+          ]
+        },
+        "passed": true,
+        "route": "A48Rplus8",
+        "tolerance": {
+          "decimal": "0.000000001000000000000024350667979191202361702984203279425614966566",
+          "mpf": [
+            0,
+            "401734511064757351389185243467699321814723180010121",
+            -198,
+            169
+          ]
+        },
+        "value": {
+          "mpc": [
+            {
+              "decimal": "3.863757965542949211645761618931307672802052856945435702216e-25",
+              "mpf": [
+                0,
+                "37007449082372676994066247277",
+                -176,
+                95
+              ]
+            },
+            {
+              "decimal": "-2.476190365780347418752456040005104269290519597830490157762e-22",
+              "mpf": [
+                1,
+                "5929297959208526074675209385713",
+                -174,
+                103
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "gradeResults": {
+    "kappa": {
+      "data": {
+        "finiteGradeWeightsApplied": false,
+        "fixedUnit": "U_dual_THETA * M_ref * L_ref^-2 * T_ref^-1",
+        "grades": [
+          {
+            "completeCellReceipts": [
+              {
+                "bytes": 5555,
+                "record": "packet/kappa/cell/0/complete",
+                "sha256": "b2f1a20e305380063bdb7a523205093567bfb8dfc4602e349e25b3b73cf7fc31"
+              },
+              {
+                "bytes": 199,
+                "record": "packet/kappa/cell/4/complete",
+                "sha256": "6f91d7785fd107bc8007eef6c0a4777a35e1ea19c67ee259468149203814f872"
+              },
+              {
+                "bytes": 5578,
+                "record": "packet/kappa/cell/8/complete",
+                "sha256": "feb81303263e6c3fc9887f19bbef899a739b4cb9f1c942b8c412cb83d67ae137"
+              },
+              {
+                "bytes": 200,
+                "record": "packet/kappa/cell/12/complete",
+                "sha256": "5893e7b04f9e6e91c27d8d60b2dc21c11cd02c959d9a90efd2a9eff9d8b09a14"
+              }
+            ],
+            "empiricalEnvelopeSum": {
+              "decimal": "0.000000000000001769544804631523289774922200020031969987736948581430600688",
+              "mpf": [
+                0,
+                "372709637171870049572844257365146060122649601977951",
+                -217,
+                168
+              ]
+            },
+            "grade": [
+              0,
+              0
+            ],
+            "value": {
+              "mpc": [
+                {
+                  "decimal": "0.19937382665287613595053286237948000905942774887794809428",
+                  "mpf": [
+                    0,
+                    "4043781616421078313511486840269",
+                    -104,
+                    102
+                  ]
+                },
+                {
+                  "decimal": "-38.51638647484435212380375174602418290132063198099885074242",
+                  "mpf": [
+                    1,
+                    "6249641015482739162793029229837237",
+                    -107,
+                    113
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "completeCellReceipts": [
+              {
+                "bytes": 4631,
+                "record": "packet/kappa/cell/1/complete",
+                "sha256": "272fd7bd7a3e62552f37081b5eb11df3a0146b01af17d0d98d5cdce8da1fd614"
+              },
+              {
+                "bytes": 199,
+                "record": "packet/kappa/cell/5/complete",
+                "sha256": "30b966e224e649d2ac6df5862e51c9e3415b51da7627d07475ecdacaee757e31"
+              },
+              {
+                "bytes": 4606,
+                "record": "packet/kappa/cell/9/complete",
+                "sha256": "ca2f4e4db3bd4da6d7d5640fcb1b16632e76523fb7f3fdb209741e936e2e927c"
+              },
+              {
+                "bytes": 200,
+                "record": "packet/kappa/cell/13/complete",
+                "sha256": "f0b0097ebd94c5ef2baff0c45c0c71175a11f7d8ddb3ad97643857bb6660993c"
+              }
+            ],
+            "empiricalEnvelopeSum": {
+              "decimal": "0.00000000000000002210234626476282403741559383556182848216183954109688362327",
+              "mpf": [
+                0,
+                "595878076516901890356013162009864181263682629253673",
+                -224,
+                169
+              ]
+            },
+            "grade": [
+              1,
+              0
+            ],
+            "value": {
+              "mpc": [
+                {
+                  "decimal": "-0.1684335747001654633127468117411051905759002696215661135747",
+                  "mpf": [
+                    1,
+                    "54659820049216272285043327562487",
+                    -108,
+                    106
+                  ]
+                },
+                {
+                  "decimal": "-0.06041226218004247967789638346059255755558209793957192846573",
+                  "mpf": [
+                    1,
+                    "19604899945901059028374059722735",
+                    -108,
+                    104
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "completeCellReceipts": [
+              {
+                "bytes": 4660,
+                "record": "packet/kappa/cell/2/complete",
+                "sha256": "750e2426506d264997bbbba457d0116e09cbbd168ff47062690fbfc796235a89"
+              },
+              {
+                "bytes": 4659,
+                "record": "packet/kappa/cell/6/complete",
+                "sha256": "19c2589bd15b4d2632c0951e929934dd5f1dc527e68210a3aacd89fbbac273ae"
+              },
+              {
+                "bytes": 200,
+                "record": "packet/kappa/cell/10/complete",
+                "sha256": "c63b35859d2e1c27761d6a6f01a17209db791779f06f915908e6aaddf1d4c704"
+              },
+              {
+                "bytes": 200,
+                "record": "packet/kappa/cell/14/complete",
+                "sha256": "012239dd046bd0619ecff0a5b170fdcb1f7b7d3574549304660772ca173ea397"
+              }
+            ],
+            "empiricalEnvelopeSum": {
+              "decimal": "0.00000000000000000575458952515013082177345737180568264512053892186745974731",
+              "mpf": [
+                0,
+                "620573706757565009230187458636097870400657451354839",
+                -226,
+                169
+              ]
+            },
+            "grade": [
+              0,
+              1
+            ],
+            "value": {
+              "mpc": [
+                {
+                  "decimal": "-0.0128093216950742445367350313101894529164611839658337547825",
+                  "mpf": [
+                    1,
+                    "133019601594592026260147528557877",
+                    -113,
+                    107
+                  ]
+                },
+                {
+                  "decimal": "0.04349810694525955806151391931148327336172439424071586944508",
+                  "mpf": [
+                    0,
+                    "903420336176332682801465501236525",
+                    -114,
+                    110
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "completeCellReceipts": [
+              {
+                "bytes": 4779,
+                "record": "packet/kappa/cell/3/complete",
+                "sha256": "7f1b193016dae1cb0bb6413e4cd920d377483f4137c8499276ddb01aa640edaf"
+              },
+              {
+                "bytes": 4694,
+                "record": "packet/kappa/cell/7/complete",
+                "sha256": "65c786ca1445cfeb5f59141dcd56091fe3d3d2b45ea5c9c053795e8ddcde1fd3"
+              },
+              {
+                "bytes": 200,
+                "record": "packet/kappa/cell/11/complete",
+                "sha256": "54bcddbcc26032657b77729dd5af97fbc88164a5ad6e3d4596ab493992c822c4"
+              },
+              {
+                "bytes": 200,
+                "record": "packet/kappa/cell/15/complete",
+                "sha256": "6016877bcf31133c0dd3bb496c863617fd0b597d20bbe611c6fe349ee02c907e"
+              }
+            ],
+            "empiricalEnvelopeSum": {
+              "decimal": "0.00000000000000001548927819977671784639106427277162893306126248577241184513",
+              "mpf": [
+                0,
+                "417590114178639386134564829087964065671636568658781",
+                -224,
+                169
+              ]
+            },
+            "grade": [
+              1,
+              1
+            ],
+            "value": {
+              "mpc": [
+                {
+                  "decimal": "0.02053159145681872893788701831527982866906629125544346593545",
+                  "mpf": [
+                    0,
+                    "53303058910980195654275900741065",
+                    -111,
+                    106
+                  ]
+                },
+                {
+                  "decimal": "-0.06657934672590370628115270111569538007910822619875808855531",
+                  "mpf": [
+                    1,
+                    "1382798931392843501810835116191839",
+                    -114,
+                    111
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "pressureIncluded": false
+      },
+      "receipt": {
+        "record": "packet/kappa/local-grade-totals",
+        "sha256": "cc8120e8d9e06037b4a64791724807be9b6d9b614e22420649dbd25c8302c90a",
+        "bytes": 4247
+      }
+    },
+    "0": {
+      "data": {
+        "finiteGradeWeightsApplied": false,
+        "fixedUnit": "U_dual_THETA * M_ref * L_ref^-2 * T_ref^-1",
+        "grades": [
+          {
+            "completeCellReceipts": [
+              {
+                "bytes": 5554,
+                "record": "packet/0/cell/0/complete",
+                "sha256": "a00f7adb501a3239329f1309e0c4d98cc0d1b4be397aacc68ee2af4fed562fe5"
+              },
+              {
+                "bytes": 195,
+                "record": "packet/0/cell/4/complete",
+                "sha256": "d12685b8f462b3c06f968a47c3c6fa038c6e5a60bb9dee19035328f94b2fdd9d"
+              },
+              {
+                "bytes": 5614,
+                "record": "packet/0/cell/8/complete",
+                "sha256": "2eef8a89d908ee88310652b9d433263e743f13dcd6539087d225ac26e4b0562a"
+              },
+              {
+                "bytes": 196,
+                "record": "packet/0/cell/12/complete",
+                "sha256": "e80150b34247d93991c4f0f153b49bc1e12145a73ca9c8813a7b1c27d1dcebfa"
+              }
+            ],
+            "empiricalEnvelopeSum": {
+              "decimal": "0.000000000000001766986397685649400757594149283311884477091561484112936504",
+              "mpf": [
+                0,
+                "372170773774888582373531426157894291189104390830993",
+                -217,
+                168
+              ]
+            },
+            "grade": [
+              0,
+              0
+            ],
+            "value": {
+              "mpc": [
+                {
+                  "decimal": "0.06032070345777137487772568831969699634595722872628591142864",
+                  "mpf": [
+                    0,
+                    "626405998136794448483132800001449",
+                    -113,
+                    109
+                  ]
+                },
+                {
+                  "decimal": "-38.56300394402200976468108155607453942153073429061166885821",
+                  "mpf": [
+                    1,
+                    "6407378055494772772236555757884434031",
+                    -117,
+                    123
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "completeCellReceipts": [
+              {
+                "bytes": 4627,
+                "record": "packet/0/cell/1/complete",
+                "sha256": "23dafb9ff1c498a6758096830d9fbf9bd2d1ecb4ec0f5ba3982f43964605090e"
+              },
+              {
+                "bytes": 195,
+                "record": "packet/0/cell/5/complete",
+                "sha256": "2b2b18d86b2e45ef63e1c3b264fc36ac18bc3a6ddbf220f40fb384874879c1cf"
+              },
+              {
+                "bytes": 4640,
+                "record": "packet/0/cell/9/complete",
+                "sha256": "fb56cfc1544b53362c89b5783b57fec4cd2b7cc4c7c2e0a19d14c0bb62a3f2d9"
+              },
+              {
+                "bytes": 196,
+                "record": "packet/0/cell/13/complete",
+                "sha256": "0a0129983b218765028ded66f464d4126a3fb2dc3005fb6b282d6c3e944e25f3"
+              }
+            ],
+            "empiricalEnvelopeSum": {
+              "decimal": "0.0000000000000000189331631983287575676532709447273906015211751435284443586",
+              "mpf": [
+                0,
+                "127609267516850633843224539925127127625220797667817",
+                -222,
+                167
+              ]
+            },
+            "grade": [
+              1,
+              0
+            ],
+            "value": {
+              "mpc": [
+                {
+                  "decimal": "-0.03075127468419830631202716486645612745577481052620847693659",
+                  "mpf": [
+                    1,
+                    "1277357975509635515411999066656265",
+                    -115,
+                    110
+                  ]
+                },
+                {
+                  "decimal": "-0.009225382405259491893608149459937145181817329873576623877462",
+                  "mpf": [
+                    1,
+                    "1532829570611562618494398879987569",
+                    -117,
+                    111
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "completeCellReceipts": [
+              {
+                "bytes": 4656,
+                "record": "packet/0/cell/2/complete",
+                "sha256": "499193d195ac35213538c0603b12f439f93f5504877d3152ba6435760d5964c5"
+              },
+              {
+                "bytes": 4695,
+                "record": "packet/0/cell/6/complete",
+                "sha256": "1a3cd65e1c59ccf15432d4dc46477a9efa7fa5d757477b4a53970ef5ee10cdf6"
+              },
+              {
+                "bytes": 196,
+                "record": "packet/0/cell/10/complete",
+                "sha256": "46197cba9ce7bd293489ccf26d5d885c5c957da11c2ffd3bd7c8ff7295dde1e3"
+              },
+              {
+                "bytes": 196,
+                "record": "packet/0/cell/14/complete",
+                "sha256": "ce8879db3e8dcab6b34f3f8a3bc123cd63d68212980fc5639a02421d030dfe0d"
+              }
+            ],
+            "empiricalEnvelopeSum": {
+              "decimal": "0.000000000000000005754305754515930256800871016208643893448535943659294926678",
+              "mpf": [
+                0,
+                "620543104992910006250218398773279947928284840668851",
+                -226,
+                169
+              ]
+            },
+            "grade": [
+              0,
+              1
+            ],
+            "value": {
+              "mpc": [
+                {
+                  "decimal": "0.0002202847600950668639625178745448312399533540625888919395113",
+                  "mpf": [
+                    0,
+                    "142972983478089229361943613967",
+                    -109,
+                    97
+                  ]
+                },
+                {
+                  "decimal": "0.00006608542802852005918875536236346381646058912304556550168795",
+                  "mpf": [
+                    0,
+                    "2745081282779313203749317388167",
+                    -115,
+                    102
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "completeCellReceipts": [
+              {
+                "bytes": 4775,
+                "record": "packet/0/cell/3/complete",
+                "sha256": "5e8cb506e93b3ea27b69edb3a87072547f75c4b0c193c96d8ac1760ab2bdc947"
+              },
+              {
+                "bytes": 4710,
+                "record": "packet/0/cell/7/complete",
+                "sha256": "916c9dd86a0ed9aaa2f3f70ebbf01d18c27ad15145a4c3b63afe5a89df01779e"
+              },
+              {
+                "bytes": 196,
+                "record": "packet/0/cell/11/complete",
+                "sha256": "2d0d697dbc64277388dbcd1a9148999cad462f13edc3692a989328b372804e14"
+              },
+              {
+                "bytes": 196,
+                "record": "packet/0/cell/15/complete",
+                "sha256": "5ba2e9fe49f5988f8531d562ee8bd9e88b9b2c2a39187a0392d3fee39f9a0e54"
+              }
+            ],
+            "empiricalEnvelopeSum": {
+              "decimal": "0.00000000000000001548893736304128436147239631900782041563016963187106295847",
+              "mpf": [
+                0,
+                "208790462619214946824227875772948085613402064246385",
+                -223,
+                168
+              ]
+            },
+            "grade": [
+              1,
+              1
+            ],
+            "value": {
+              "mpc": [
+                {
+                  "decimal": "0.0005117315954565294069185394317155736783620277151785301349112",
+                  "mpf": [
+                    0,
+                    "664265588875488227692469671499",
+                    -110,
+                    100
+                  ]
+                },
+                {
+                  "decimal": "0.0001535194786369588220755618295146624738588863783742937605837",
+                  "mpf": [
+                    0,
+                    "3188474826602343492923854423195",
+                    -114,
+                    102
+                  ]
+                }
+              ]
+            }
+          }
+        ],
+        "pressureIncluded": false
+      },
+      "receipt": {
+        "record": "packet/0/local-grade-totals",
+        "sha256": "9fb4ebf3dca3da9dd5c15b693cb0035eed466280676f1d7e8052edffa353a9d5",
+        "bytes": 4194
+      }
+    }
+  },
+  "controls": {
+    "data": [
+      {
+        "baseline": {
+          "bytes": 4659,
+          "record": "packet/kappa/cell/6/complete",
+          "sha256": "19c2589bd15b4d2632c0951e929934dd5f1dc527e68210a3aacd89fbbac273ae"
+        },
+        "cell": {
+          "cellIndex": 6,
+          "coefficientsAscending": [
+            [
+              "96/55045",
+              "144/275225"
+            ],
+            [
+              "4/33027",
+              "2/55045"
+            ],
+            [
+              "-96/55045",
+              "-144/275225"
+            ],
+            [
+              "-4/33027",
+              "-2/55045"
+            ]
+          ],
+          "grade": [
+            0,
+            1
+          ],
+          "xOrder": 1,
+          "zero": false
+        },
+        "changed": {
+          "bytes": 4665,
+          "record": "packet/kappa/cell/6/mutant-Leibniz/complete",
+          "sha256": "4c54fe959649482c01eb5939a58c821e0cc16e08767df259ea09642e0b2715ba"
+        },
+        "movement": {
+          "mpc": [
+            {
+              "decimal": "0.00006783762366700103823185282396474305770019516868087363623457",
+              "mpf": [
+                0,
+                "5503641879009958820077402045",
+                -106,
+                93
+              ]
+            },
+            {
+              "decimal": "0.00002035128710010031146955584718942291731005855060426209087037",
+              "mpf": [
+                0,
+                "3302185127405975292046441227",
+                -107,
+                92
+              ]
+            }
+          ]
+        },
+        "mutation": "Leibniz",
+        "responsive": true,
+        "tenTimesEmpiricalEnvelope": {
+          "decimal": "0.0000000000000001018564095668159882061882664898078235873325956182569392271",
+          "mpf": [
+            0,
+            "686510842407202810916100303879101440400868067096475",
+            -222,
+            169
+          ]
+        }
+      },
+      {
+        "baseline": {
+          "bytes": 5555,
+          "record": "packet/kappa/cell/0/complete",
+          "sha256": "b2f1a20e305380063bdb7a523205093567bfb8dfc4602e349e25b3b73cf7fc31"
+        },
+        "cell": {
+          "cellIndex": 0,
+          "coefficientsAscending": [
+            [
+              "51/10900",
+              "-326847/109000"
+            ]
+          ],
+          "grade": [
+            0,
+            0
+          ],
+          "xOrder": 0,
+          "zero": false
+        },
+        "changed": {
+          "bytes": 4699,
+          "record": "packet/kappa/cell/0/mutant-conjugation/complete",
+          "sha256": "61d629601e3ac8542dda9afd70e7254833625402275de48ee2a85c5e4fa66390"
+        },
+        "movement": {
+          "mpc": [
+            {
+              "decimal": "-0.06017235804000080696054206263270840450506260944797038003359",
+              "mpf": [
+                1,
+                "21985499949380624931196610843044948569260325261",
+                -158,
+                154
+              ]
+            },
+            {
+              "decimal": "38.56304844764734069143586577522919086639364314570251081887",
+              "mpf": [
+                0,
+                "440312175364902519417084476975273189605470049613",
+                -153,
+                159
+              ]
+            }
+          ]
+        },
+        "mutation": "conjugation",
+        "responsive": true,
+        "tenTimesEmpiricalEnvelope": {
+          "decimal": "0.00000000000005960661748407349041058103871923145481767711615697037472138",
+          "mpf": [
+            0,
+            "392331842866179236327245331634848151997416416295631",
+            -212,
+            169
+          ]
+        }
+      }
+    ],
+    "receipt": {
+      "record": "controls/complete",
+      "sha256": "d326d3f0c28e6db1d019e6438c29881eed3b9106a45450f2e1bc663d29d5d042",
+      "bytes": 1959
+    }
+  },
+  "resources": {
+    "samples": 167,
+    "memoryPeakBytes": 1486610432,
+    "hostAvailableMinimumBytes": 21090844672,
+    "eventsMax": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0,
+      "sock_throttled": 0
+    },
+    "swapBytes": 0,
+    "affinity": [
+      15
+    ],
+    "duration": {
+      "RuntimeMaxUSec": "infinity",
+      "Restart": "no"
+    },
+    "interpretation": "Actual cgroup counters, no process/cache split inferred."
+  },
+  "strictStderrBytes": 0,
+  "stdoutChecksByteIdentity": true,
+  "independentBuildClearance": false,
+  "literalBuildHistory": "Claude NEEDS REVISION / Grok CLEAR; tested exact certificate matching and evidence persistence repair under standing tooling authority, not independent CLEAR.",
+  "limitations": [
+    "Local THETA/e_W part only:16cells,2carriers,2sensitivity controls; pressure and complete packet action pending.",
+    "Adaptive errors/cross-route differences empirical, not rigorous quadrature error bounds.",
+    "Full pressure summand units, each actual outer Fourier/inner request, collision-aware independent full actions and full addressed controls remain.",
+    "No scattering/current/loss, inverse, drain, calibration or sweep."
+  ],
+  "next": "Continue bounded source-bound pressure summand unit and outer-action readiness; reuse all completed inputs/returns. No routine permission question."
+}

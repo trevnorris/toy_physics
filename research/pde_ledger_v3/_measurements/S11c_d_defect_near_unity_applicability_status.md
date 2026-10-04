@@ -597,3 +597,31 @@ controls and evidence inspection remain required. No pressure or complete packet
 value, current or loss is claimed.
 
 The local-01 run is launched from f262339d. Actual guard/supervisor/native commands and limits were verified, including133source snapshots and18additionalidentitycopies,4GiB native/cgroup,zero swap,CPU15,one thread,32tasks,RuntimeMaxUSec=infinity,Restart=no. Hook armed before stage start. No runtime result is accepted yet; no model polling while healthy.
+
+
+## 2026-10-03 — two local Gaussian actions accepted
+
+The local-01 instrument completed both original carriers with all16native
+THETA/e_W cells, including8explicit zeros per carrier. All58route/reference
+comparisons and both actual Leibniz/conjugation controls passed. Maximum saved
+difference8.2986765968e-16; maximum tolerance fraction2.4350643217e-7.
+The local unit proof covers112original native children, with84new literal-zero
+adapter joins and1928inherited zero references inspected. Exact coefficient
+certificate matching retained original lists and multiplicities; no old source,
+cell, Fourier, inner-integral or rule calculation was replayed.
+
+Completion inspection checked24944SQLite records
+(1306898432bytes),433JSON artifacts,
+69saved copies,202posthashes,
+133source snapshots and18additional
+identity copies, with2056213metadata/hash/record checks.
+Scientificstderr was empty and stdout/checks byte-identical. Wall330.968957s;
+peak1486610432bytes, zero memory-limit/OOM/swap events. Actual no-deadline
+containment passed. Literal Claude NEEDS/Grok CLEAR and the tested local tooling
+repair remain history; no fresh independent build clearance is claimed.
+
+Results are separate unweighted local grades, in the formal dual THETA pairing
+unit. Empirical comparisons are not a rigorous quadrature theorem. Pressure and
+complete packet actions remain pending; there is no current or loss result.
+Continue the missing pressure-summand unit and outer assembly readiness using
+accepted operands, without routine permission or completed-work replay.

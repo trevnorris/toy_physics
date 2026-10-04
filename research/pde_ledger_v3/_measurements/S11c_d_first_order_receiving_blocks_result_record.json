@@ -1,0 +1,158 @@
+{
+  "status": "ACCEPTED_BOUNDED_RECEIVING_BLOCK_END_SIGN_AFFINE_FACE_PREREQUISITE",
+  "createdUtc": "2026-10-04T18:51:46.323470+00:00",
+  "scope": {
+    "target": "Receiving-block, end-sign and native affine-face finite prerequisite of the assessed matched method",
+    "realOmega": 3,
+    "effectiveCs": "sqrt(6)/2",
+    "physicalInputUnchanged": true,
+    "incomingColumns": 2,
+    "receivingMomentumIndependent": true,
+    "grazingThresholds": 2,
+    "transverseCouplingPolicy": "STOP_IF_NONZERO_OR_UNKNOWN_NO_SCHUR_FALLBACK",
+    "affineFaceColumns": 4,
+    "sourceStageReplay": false,
+    "transverseSolvabilityPending": true,
+    "T1R1Pending": true,
+    "G1K1Pending": true,
+    "reflectedFluxWeightPending": true,
+    "asymptoticProjectionPending": true,
+    "fullWorkAndRegularityPending": true,
+    "integralsEvaluated": false,
+    "leakageFactor": null,
+    "recoveryParked": true
+  },
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-blocks-01",
+  "gateSha256": "48822fe16c39b642c7d4f5e903f05587ebfcd41b7f471b645105416ff9acea65",
+  "workerSha256": "9bd26b957d3682a6bf513c603a931a071cbab1e9c64c3fe0b43317e92fa8e29e",
+  "buildRecordSha256": "bbe99e3a487d98c2060072c58bc6c090e648bd5b46c667ff13c22dec8a984f89",
+  "methodRecordSha256": "8bfe5fe227565e89df1a877ac3cd1da54d8b469c9c3623743fd192dd9c4622f4",
+  "inspection": "Source/JSON/hash inspection only; no scientific restoration, arithmetic validator or replay",
+  "metadataChecks": 4242,
+  "newLiteralZeroReturns": 212,
+  "explicitRestoredSourceAndVelocityZeros": 4,
+  "inheritedNormalizationReturns": 4,
+  "newControls": 3,
+  "completeOperations": 1,
+  "artifacts": 725,
+  "savedCopies": 912,
+  "posthashes": 1848,
+  "sourceSnapshots": 24,
+  "additionalIdentityCopies": 21,
+  "treeFiles": 1718,
+  "treeBytes": 53107722,
+  "workerSeconds": 42.34968668711372,
+  "guardSeconds": 42.81927497382276,
+  "peakCgroupBytes": 180297728,
+  "zeroSwap": true,
+  "zeroMemoryEvents": true,
+  "strictStderrEmpty": true,
+  "stdoutChecksIdentical": true,
+  "allSourceAndCopyHashesIntact": true,
+  "resultSummary": "Full off-wave receiving source correspondence passes; both transverse/scalar coupling directions vanish identically. Transverse block is (3/2)(l^2-119/20) I2. Both continuous outgoing grazing three-field blocks have the same finite nonzero determinant. Actual RIGHT end force gives delta_p=3/p with full polarization derivative. Four affine face/incident-column maps and all three formal controls pass.",
+  "thresholdDeterminant": {
+    "text": "-1341/10 + 184758*I/625",
+    "srepr": "Add(Rational(-1341, 10), Mul(Rational(184758, 625), I))"
+  },
+  "deltaP": {
+    "text": "6*sqrt(595)/119",
+    "srepr": "Mul(Rational(6, 119), Pow(Integer(595), Rational(1, 2)))"
+  },
+  "controls": [
+    {
+      "name": "omit-direct-chemical",
+      "input": {
+        "baseline": {
+          "text": "327*(1/109 + 3*I/1090)*(139/109 - 9*I/109)*(-13*sqrt(595)/757500 + 29*I/2020)/178",
+          "srepr": "Mul(Rational(327, 178), Add(Rational(1, 109), Mul(Rational(3, 1090), I)), Add(Rational(139, 109), Mul(Integer(-1), Rational(9, 109), I)), Add(Mul(Integer(-1), Rational(13, 757500), Pow(Integer(595), Rational(1, 2))), Mul(Rational(29, 2020), I)))"
+        },
+        "corrupt": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        }
+      },
+      "return": {
+        "movement": {
+          "text": "(3 - 13*I)*(10875 + 13*sqrt(595)*I)/449450000",
+          "srepr": "Mul(Rational(1, 449450000), Add(Integer(3), Mul(Integer(-1), Integer(13), I)), Add(Integer(10875), Mul(Integer(13), Pow(Integer(595), Rational(1, 2)), I)))"
+        },
+        "zero": false,
+        "finite": true
+      }
+    },
+    {
+      "name": "reversed-lab-normal",
+      "input": {
+        "baseline": {
+          "text": "26269*I*(1/109 + 3*I/1090)*(139/109 - 9*I/109)/3560",
+          "srepr": "Mul(Rational(26269, 3560), I, Add(Rational(1, 109), Mul(Rational(3, 1090), I)), Add(Rational(139, 109), Mul(Integer(-1), Rational(9, 109), I)))"
+        },
+        "corrupt": {
+          "text": "-26269*I*(1/109 + 3*I/1090)*(139/109 - 9*I/109)/3560",
+          "srepr": "Mul(Integer(-1), Rational(26269, 3560), I, Add(Rational(1, 109), Mul(Rational(3, 1090), I)), Add(Rational(139, 109), Mul(Integer(-1), Rational(9, 109), I)))"
+        }
+      },
+      "return": {
+        "movement": {
+          "text": "723/17800 - 3133*I/17800",
+          "srepr": "Add(Rational(723, 17800), Mul(Integer(-1), Rational(3133, 17800), I))"
+        },
+        "zero": false,
+        "finite": true
+      }
+    },
+    {
+      "name": "incoming-for-receiving-projection",
+      "input": {
+        "baseline": {
+          "text": "0",
+          "srepr": "Integer(0)"
+        },
+        "corrupt": {
+          "text": "sqrt(595)/500",
+          "srepr": "Mul(Rational(1, 500), Pow(Integer(595), Rational(1, 2)))"
+        }
+      },
+      "return": {
+        "movement": {
+          "text": "sqrt(595)/500",
+          "srepr": "Mul(Rational(1, 500), Pow(Integer(595), Rational(1, 2)))"
+        },
+        "zero": false,
+        "finite": true
+      }
+    }
+  ],
+  "controlLimitation": "Normal reversal is formal sign sensitivity, not an independent check of native normal provenance; that provenance has separate saved-factor joins. No control is a field or loss value.",
+  "limits": "No all-real pole exclusion, forced field, radiation branch-tail/asymptotic proof, T1/R1/G1/K1, physical reflected flux weight, power or leakage. The transverse block still has the physical poles at +/-p and requires matched outgoing treatment. The finite three-field threshold determinant does not make the full five-field operator invertible there.",
+  "reserializedUnusedEndMetadata": [
+    {
+      "side": "LEFT",
+      "changedUnconsumedFields": [
+        "oldPhysical"
+      ],
+      "actualConsumedNativeSourceAndMapExact": true,
+      "originalFullBytesPreserved": true,
+      "interpretation": "Decoder reserialization of unused raw/oldPhysical expressions is not a scientific join; those fields are not used by this worker. No symbolic equivalence calculation was performed here."
+    },
+    {
+      "side": "RIGHT",
+      "changedUnconsumedFields": [
+        "raw",
+        "oldPhysical"
+      ],
+      "actualConsumedNativeSourceAndMapExact": true,
+      "originalFullBytesPreserved": true,
+      "interpretation": "Decoder reserialization of unused raw/oldPhysical expressions is not a scientific join; those fields are not used by this worker. No symbolic equivalence calculation was performed here."
+    }
+  ],
+  "inspectionCorrection": "A first JSON-only comparison required all decoded/re-encoded end fields to be byte-identical, including unused raw/oldPhysical. These unused expressions changed representation; actual consumed nativeSource/map and all full original bytes match exactly. No scientific check was relaxed or replayed.",
+  "scienceReplayed": false,
+  "leakageFactor": null,
+  "treeIndex": {
+    "path": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/first-order-receiving-blocks-01/result-inspection-files.json",
+    "sha256": "de64c73ac9ef190b7e89b7b6875cebe4549e233389f1425473fcf90cd359a99a",
+    "files": 1718,
+    "excludesInspectionFileItself": true
+  }
+}

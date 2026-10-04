@@ -1,0 +1,38 @@
+Accepted finite receiving-block / end-sign / affine-face prerequisite
+
+The actual full off-wave native LEFT symbol agrees with the saved local00 plus
+whole flat pressure assembly at independent receiving l and q. Both transverse
+coupling directions are identically zero. In the fixed geometric coordinates,
+the transverse block is D_T(l) I2, D_T=(3/2)(l^2-119/20).
+
+The remaining three-field block is nonsingular at both outgoing grazing points
+l=+/-sqrt(595)/10, q=0. Its determinant is
+  -1341/10 + (184758/625) i.
+This removes a local threshold obstruction. It does not establish an all-real
+inverse, and the transverse block still has its physical poles at +/-p.
+
+The actual RIGHT source/end-force join fixes delta_p=3/p, with the correct
+minus-operator RHS sign and the full B'(p) polarization correction. All five rows
+of that first-order end equation vanish. Both native faces and both incident
+columns have complete affine chemical/velocity/pressure/relative-mass-flux/
+affinity/load maps. The direct chemical drive enters once; U_B's direct chemical
+and velocity terms remain zero. Those are maps, not receiving field values.
+
+212 new literal zero residuals; 3 responsive formal controls. All 912 saved
+copies, 1848 posthashes, 24 source snapshots and 21 additional identity copies
+match. Strict scientific stderr is empty and stdout equals checks.json exactly.
+42.350 worker seconds; peak cgroup 180297728 bytes; zero memory events and swap.
+The shared 4GiB/16GiB pooled guard, one CPU/thread,32tasks,4GiB host reserve and
+no-deadline policy were enforced. No old scientific function was replayed.
+
+Claude's literal scoped CLEAR and declared partial coverage are preserved.
+Its incidental x-row pressure claim is not used: actual saved pressure consumers
+are zero in all displacement rows and live in the two scalar rows. The normal
+sign control is formal sensitivity; separate native-factor joins provide its
+source provenance.
+
+Next physics: matched outgoing transverse amplitudes with the complete step and
+momentum-dependent polarization, then original physical end-flux normalization
+G0/Gref/G1 and full K1. No T1/R1/G1/K1, full radiation/asymptotic proof, all-real
+receiving regularity, work balance, power or leakage factor follows yet.
+Mixed numerical recovery remains parked.

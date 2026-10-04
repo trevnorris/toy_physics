@@ -1,0 +1,45 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T04:00:14.688951+00:00",
+  "packetSha256": "3f7c1a3d7b5308db481fb092b912a06a7a3cb4a442a9c7f6afba3a97238164c0",
+  "archiveSha256": "f724d00853d1a4dc1aefb7fdc5fdef249a65ced7ff503f5513058e5225e1c3a3",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 956,
+  "bytes": 12201212,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing user/AGENTS authorization for necessary established-Claude/Grok independent assessment of the source-grade/profile subset of pressure readiness. No new scientific scope or disclosure destination.",
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Source/consumer native-to-retained-grade/profile/field unit transport for all544selected addresses; wave/kernel/measure and complete pressure summand proof deferred",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": false,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": true
+  },
+  "noAutomaticRetry": true
+}

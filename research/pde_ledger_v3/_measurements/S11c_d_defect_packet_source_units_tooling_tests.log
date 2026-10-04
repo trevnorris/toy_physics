@@ -1,0 +1,36 @@
+test_bad_sum_refuses (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_dimensional_substitution (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_false_identity (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_field_proof (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_field_proof_wrong_input (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_jet_schema_disagreement (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_jet_unit (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_matrix_unit (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_no_constant_restoration (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_no_sympy_import (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_profile_missing_map (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_profile_scale (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_profile_wrong_L (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_reciprocal_actual_base (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_reciprocal_missing_path (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_reciprocal_wrong_root (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_regular_flags (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_regular_other_operand_refuses (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_regular_unknown_refuses (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_same_ast_not_printed_text (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_strip_epsilon (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_strip_epsilon_missing (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_strip_epsilon_twice (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_strip_epsilon_zero (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_symbol_census (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_transverse_nonzero_refuses (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_transverse_zero (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_tuple_leaf (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_unknown_unit_refuses (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_wrong_matrix_shape (S11c_d_defect_packet_source_units_test.Tests) ... ok
+test_zero_no_unit (S11c_d_defect_packet_source_units_test.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.028s
+
+OK

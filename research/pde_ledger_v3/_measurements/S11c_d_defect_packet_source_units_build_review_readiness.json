@@ -1,0 +1,135 @@
+{
+  "status": "READY_FOR_INDEPENDENT_SOURCE_UNIT_TRANSPORT_BUILD_REVIEW_ONLY",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/source-units-build-review",
+  "methodAssessmentCommit": "823eefe6",
+  "nativeUnitsResultCommit": "086253f7",
+  "authority": {
+    "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+    "recordedUtc": "2026-10-04T04:00:14.688951+00:00",
+    "packetSha256": "3f7c1a3d7b5308db481fb092b912a06a7a3cb4a442a9c7f6afba3a97238164c0",
+    "archiveSha256": "f724d00853d1a4dc1aefb7fdc5fdef249a65ced7ff503f5513058e5225e1c3a3",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "files": 956,
+    "bytes": 12201212,
+    "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+    "authority": "Standing user/AGENTS authorization for necessary established-Claude/Grok independent assessment of the source-grade/profile subset of pressure readiness. No new scientific scope or disclosure destination.",
+    "scope": {
+      "frequency": 3,
+      "anchoring": "LAB_HELD",
+      "density": "RHO4_CONSTANT",
+      "drain": 0,
+      "edges": [
+        "1/5",
+        "1/10"
+      ],
+      "effectiveCs": "sqrt(6)/2",
+      "plannedCarriers": [
+        "sqrt(595)/10",
+        "0"
+      ],
+      "target": "Source/consumer native-to-retained-grade/profile/field unit transport for all544selected addresses; wave/kernel/measure and complete pressure summand proof deferred",
+      "sourceFrequencyContinued": false,
+      "responseRegulator": 0,
+      "selectedPressureAddresses": 544,
+      "selectedLocalCells": 16,
+      "pressureCoefficientFields": 34,
+      "noEvaluatedResponseIntegral": true,
+      "noNumericalPacketAction": true,
+      "noFiniteSolve": true,
+      "noProductionOverwrite": true,
+      "noDefectSweep": true,
+      "pressureSummandUnitsComplete": false,
+      "addressUnitCertificatesProduced": 544,
+      "noGeometryReplay": true,
+      "sourceGradeFieldTransportOnly": true
+    },
+    "noAutomaticRetry": true
+  },
+  "static": {
+    "status": "STATIC_SOURCE_PACKET_HASHES_AND_SYNTHETIC_TESTS_CHECKED_NO_SCIENCE",
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d",
+    "completionMessageSha256": "ff4736af3d6eb9cc861a9532227be46115daffe7146fb162d9fc3af40d67596a",
+    "packetSha256": "3f7c1a3d7b5308db481fb092b912a06a7a3cb4a442a9c7f6afba3a97238164c0",
+    "archiveSha256": "f724d00853d1a4dc1aefb7fdc5fdef249a65ced7ff503f5513058e5225e1c3a3",
+    "files": 956,
+    "bytes": 12201212,
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "sourceHashesChecked": 955,
+    "sourceTransportScienceExecuted": false,
+    "transportIdenticalToPrior": true,
+    "noReviewVerdict": true
+  },
+  "workerSha256": "78b92b9da16843095cf4712e29c33e1be9425668dc12c5e35da2f1b6ed2ebb86",
+  "librarySha256": "cda21dd06bbdc61471bbd616be6e86ef3dfe57b9eaecbc27d51443c8df4438e1",
+  "manifestSha256": "9377703db97f7412cfbdf422395fb7bbb8c8e327bbdc0dbe77516e25d0efeb41",
+  "launcherSha256": "e02704dff0fdea2fe9cf7e86643b4fb209040e7d0f13f24a2d6479d6d778dc75",
+  "sharedGuardSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+  "supervisorSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+  "methodSha256": "16b96e2c1a518e3e0cf3d5eba0ae05d1c24cf7c3b37334b26ed2743efee78a68",
+  "toolingTests": {
+    "status": "STDLIB_SYNTHETIC_IDENTITY_AND_UNIT_TRANSPORT_TOOLING_TESTS_PASSED",
+    "utc": "2026-10-04T04:00:14.688951+00:00",
+    "command": [
+      "python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "research/pde_ledger_v3/_measurements",
+      "-p",
+      "S11c_d_defect_packet_source_units_test.py",
+      "-v"
+    ],
+    "tests": 31,
+    "exitCode": 0,
+    "reportedSeconds": 0.028,
+    "actualSourceUnitScienceOrPayloadRestoration": false,
+    "workerSha256": "78b92b9da16843095cf4712e29c33e1be9425668dc12c5e35da2f1b6ed2ebb86",
+    "librarySha256": "cda21dd06bbdc61471bbd616be6e86ef3dfe57b9eaecbc27d51443c8df4438e1",
+    "manifestSha256": "9377703db97f7412cfbdf422395fb7bbb8c8e327bbdc0dbe77516e25d0efeb41",
+    "testSourceSha256": "ec76606e7cfe021050a549191bb759a795f3bcc1ec7349b33c03c70aafdbc153",
+    "logSha256": "3a84924bc6d31f898c0dff37b8b8aef9c2e2feeea85ff2c0b31af34904ff321b"
+  },
+  "savedInputFiles": 933,
+  "peerReportsIncluded": false,
+  "newScientificOperations": 0,
+  "readyGateExists": false,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Source/consumer native-to-retained-grade/profile/field unit transport for all544selected addresses; wave/kernel/measure and complete pressure summand proof deferred",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": false,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": true
+  }
+}

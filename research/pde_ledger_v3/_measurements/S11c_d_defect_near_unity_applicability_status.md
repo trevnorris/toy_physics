@@ -904,3 +904,27 @@ grade/jet/field/profile and H/J/direct/measure transport into544pressure summand
 is still required, followed by exact storage/sharing and evaluator readiness.
 No pressure integral, action, current or loss has been calculated. The clear next
 work reuses these14returns and the saved source transport index without replay.
+
+## 2026-10-03 — source-grade/profile unit transport build prepared
+
+The native unit result086253f7 is now used as an inherited source-bound input
+for a concrete source/consumer transport instrument. It joins the same raw
+source, chemical/velocity/epsilon/live-density bindings and saved independent
+rational-grade/domain proofs, then64selected source locations,16consumer grade
+locations,392profile maps and all544selected addresses. New unit calculations
+are limited to missing substitutions, formal unit transport and two applicable
+unit controls; no old source/grade/profile or numerical function is replayed.
+The argument retains homogeneous unbound reciprocal operands and exact numeric
+regularity separately. It assigns no guessed physical unit to a normalized
+numeric denominator. Gamma-unit inference and inherited algebra remain explicit.
+
+31synthetic tooling tests pass; no native transport science or READY gate exists.
+The independent fixed build packet contains956files/12201212bytes, including
+all933complete runtime JSON inputs, with SHA256
+3f7c1a3d7b5308db481fb092b912a06a7a3cb4a442a9c7f6afba3a97238164c0
+and archivef724d00853d1a4dc1aefb7fdc5fdef249a65ced7ff503f5513058e5225e1c3a3.
+Standing AGENTS/user authority covers submission to the established independent
+Claude/Grok reviewers. No peer reports or reviewer commentary are supplied.
+Actual wave factors, physical profile transforms, H/J/direct kernels and
+integration measures still require full summand unit transport before any
+pressure evaluator. No pressure value/current/loss or sweep follows.

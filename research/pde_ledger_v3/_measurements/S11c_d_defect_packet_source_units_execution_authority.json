@@ -1,0 +1,40 @@
+{
+  "boundedInstrumentAuthorized": true,
+  "automaticScientificRetry": false,
+  "authority": "Standing user/AGENTS continued research: source-grade/profile unit transport subset of cleared pressure-readiness method. No routine stage permission.",
+  "scienceExecutionsAuthorized": 1,
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Source/consumer native-to-retained-grade/profile/field unit transport for all544selected addresses; wave/kernel/measure and complete pressure summand proof deferred",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": false,
+    "addressUnitCertificatesProduced": 544,
+    "noGeometryReplay": true,
+    "sourceGradeFieldTransportOnly": true
+  },
+  "methodClearanceIsNotBuildClearance": true,
+  "noDeadline": true,
+  "futureEvaluatorRequiresConcreteBuild": true,
+  "scopeDescription": "Source/consumer native-to-retained-grade/profile/field unit transport for all544selected addresses; wave/kernel/measure and complete pressure summand proof deferred"
+}

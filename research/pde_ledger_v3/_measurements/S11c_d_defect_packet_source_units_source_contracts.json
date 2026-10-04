@@ -1,0 +1,77 @@
+{
+  "fragments": [
+    {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition.py",
+      "name": "join_source_input",
+      "line": 102,
+      "text": "def join_source_input(J, face, inp, chemical, normalization, bind, one, epsilon):\n    \"\"\"New argument joins on restored operands; no prior source function call.\"\"\"\n    velocity_atom=one([inp['raw']], 's11cc1_V_lab_held_'+face)\n    chemical_atom=one([inp['raw']], 's11cc1_mu_theta_lab_held_'+face)\n    density_atom=one([inp['raw']], 'rho_br_bg_rho4_constant')\n    stage2={velocity_atom:inp['velocityAmplitude'], chemical_atom:chemical['amplitude']}\n    J.emit(face+'-native-source-join-operands', {'saved':inp,'nativeChemical':chemical,\n        'inheritedNormalization':normalization,'epsilon':epsilon,\n        'stage2Map':[[a,b] for a,b in stage2.items()],'liveDensityAtom':density_atom,\n        'previousSourceFunctionCalled':False})\n    identified=inp['raw'].subs(stage2, simultaneous=True)\n    bound=bind(identified)\n    J.emit(face+'-native-source-join-bound', {'identified':identified,'bound':bound,\n        'target':inp['combined'],'densityBindingContext':'actual-binding-context'})\n    J.zero(face+'-native-chemical-amplitude-join',inp['chemicalAmplitude'],chemical['amplitude'])\n    J.zero(face+'-native-chemical-epsilon-join',bind(chemical['raw'][1]/epsilon),chemical['amplitude'])\n    J.zero(face+'-inherited-velocity-normalization-join',inp['velocityCoefficient'],normalization['velocityCoefficient'])\n    J.zero(face+'-raw-stage2-live-density-join',bound,inp['combined'])",
+      "sha256": "d1b719e015de98ca6a262594484a71c000723356d561ec68ce454b8be4493401",
+      "executed": false
+    },
+    {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition.py",
+      "name": "jet_spec",
+      "line": 150,
+      "text": "def jet_spec(name):\n    original=name\n    if name.startswith('grad_theta_'):\n        name='theta_d'+name.rsplit('_',1)[1]\n    match=re.fullmatch(r'(u_[123]|theta|e_W)((?:_t{1,2})?(?:_?d[123])*)', name)\n    if not match:\n        return None\n    channel,suffix=match.groups()\n    return {'name':original,'channel':channel,'timeOrder':2 if '_tt' in suffix else 1 if '_t' in suffix else 0,\n            'spatialOrders':[len(re.findall('d'+str(i),suffix)) for i in (1,2,3)]}",
+      "sha256": "5ee8b770dd01c5909c43edcdc4d1a058258a48c87f5030c4ad200aa53381b76d",
+      "executed": false
+    },
+    {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition.py",
+      "name": "quotient_recurrence",
+      "line": 238,
+      "text": "def quotient_recurrence(numerator, denominator, grades, cancel):\n    \"\"\"Exact multivariate quotient recurrence; no full coefficient-domain Poly.\"\"\"\n    result={}\n    for a,b in sorted(grades,key=lambda g:(sum(g),g)):\n        remainder=numerator.get((a,b),0)\n        for (i,j),value in denominator.items():\n            if (i or j) and i<=a and j<=b:\n                remainder-=value*result.get((a-i,b-j),0)\n        result[a,b]=cancel(remainder/denominator[(0,0)])\n    return result",
+      "sha256": "e962b7602f423a485b1b4958ee0b08c7c986b8d3747ff84314173c9913bde6ad",
+      "executed": false
+    },
+    {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition.py",
+      "name": "grade_split",
+      "line": 250,
+      "text": "def grade_split(J,name,full,eta,sigma,zero_saved,nonzero):\n    J.emit(name+'-operands',{'full':full,'savedZero':zero_saved,'grades':[eta,sigma]})\n    numerator,denominator=sp.fraction(sp.cancel(full))\n    n=polynomial_terms(numerator,eta,sigma);d=polynomial_terms(denominator,eta,sigma)\n    den0=d.get((0,0),sp.S.Zero)\n    nonzero(J,name+'-regular-denominator',den0)\n    table=quotient_recurrence(n,d,tuple(itertools.product(range(3),repeat=2)),sp.cancel)\n    retained=sum(table[g]*eta**g[0]*sigma**g[1] for g in G)\n    raw=numerator-denominator*retained;terms=polynomial_terms(raw,eta,sigma)\n    J.emit(name+'-split',{'numerator':numerator,'denominator':denominator,'denominatorAtZero':den0,\n        'retained':{str(g):table[g] for g in G},'excludedPure':{str(g):table[g] for g in ((2,0),(0,2))},\n        'fullHigherRemainder':full-retained,'quotientRingNumeratorRemainder':raw,\n        'zeroGradeReused':True,'nativeShapeCoefficientsCalled':False})\n    J.zero(name+'-saved-zero',table[0,0],zero_saved)\n    for g in G:J.zero(name+'-quotient-'+str(g[0])+str(g[1]),terms.get(g,sp.S.Zero),sp.S.Zero)\n    return {g:table[g] for g in G}",
+      "sha256": "a08850870b67d2efc32c6f6925bb12c63abb09351095131a64ba0ac91cd2d199",
+      "executed": false
+    },
+    {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition.py",
+      "name": "bind",
+      "line": 310,
+      "text": "def bind(value):\n        syms=value.atoms(sp.Symbol);named={s.name:s for s in syms}\n        require(len(named)==len(syms),'no ambiguous raw symbol assumptions')\n        dm={s:context['densityMap'][s.name] for s in syms if s.name in context['densityMap']}\n        value=value.xreplace(dm)\n        for _ in range(len(context['profileEqualities'])+2):\n            mapping={s:context['profileEqualities'][s.name] for s in value.atoms(sp.Symbol)\n                     if s.name in context['profileEqualities']}\n            changed=value.xreplace(mapping)\n            if changed==value:break\n            value=changed\n        else:raise ValueError('background substitution cycle')\n        mapping={s:context['numeric'][s.name] for s in value.atoms(sp.Symbol) if s.name in context['numeric']}\n        require(not any(s in mapping for s in (eta,sigma,eps)),'independent grades/epsilon')\n        return value.xreplace(mapping)",
+      "sha256": "f61224ffe0f4fe6129e19ee947f433daf313ff86625216ef7a7465179464bc69",
+      "executed": false
+    },
+    {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition.py",
+      "name": "profile",
+      "line": 411,
+      "text": "def profile(expr):\n        mapping={}\n        for s in expr.free_symbols:\n            hit=re.fullmatch(r'([wm])1_profile((?:_?d[123])*)',s.name)\n            if hit:\n                base,suffix=hit.groups();directions=re.findall('d([123])',suffix)\n                mapping[s]=sp.S.Zero if any(d!='1' for d in directions) else profile_length**len(directions)*sp.diff(w if base=='w' else m,x,len(directions))\n        result=sp.cancel(expr.xreplace(mapping))\n        J.emit('profile-map-'+str(len(J.artifacts)),{'original':expr,'map':[[a,b] for a,b in mapping.items()],\n            'oneDimensional':result,'L':profile_length,'independentSigma':True,'profileTransformEvaluated':False})\n        require(result.free_symbols<={x},'coefficient field fully bound')\n        return result",
+      "sha256": "efffd85e86bd7ab59df2e0e1d74339a28d6e2a2f59fe317fefc83d2b83691eee",
+      "executed": false
+    },
+    {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_defect_source_composition.py",
+      "name": "wave",
+      "line": 697,
+      "text": "def wave(spec,momentum):\n        out=(-sp.I*3)**spec['timeOrder']\n        for n,mom in zip(spec['spatialOrders'],(momentum,sp.Rational(1,5),sp.Rational(1,10))):out*= (sp.I*mom)**n\n        return out",
+      "sha256": "2363d43734fbc21983286eb31c397de2184b1d6356c65902f7b09cff39116078",
+      "executed": false
+    },
+    {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "name": "wave_jet",
+      "line": 139,
+      "text": "def wave_jet(atom, point=X, sector=None):\n    \"\"\"The trial-field ansatz, with every spatial and temporal jet mapped.\n\n    Solenoidal trials are curls; longitudinal trials are gradients.  This is\n    the compact-support weak-restriction convention, without a Fourier projector.\n    \"\"\"\n    name = str(atom)\n    if name.startswith('grad_theta_'):\n        name = 'theta_d' + name.rsplit('_', 1)[1]\n    match = re.fullmatch(r'(u_[123]|theta|e_W)((?:_t{1,2})?(?:_?d[123])*)', name)\n    if not match:\n        raise ValueError(('wave jet', name))\n    base, suffix = match.groups()\n    if sector == 'TRANSVERSE' and base.startswith('u_'):\n        i = int(base[-1]) - 1\n        j, k = (i + 1) % 3, (i + 2) % 3\n        potentials = [field(f's11cc2TrialA{n}', point, (2, 0, 0)) for n in range(3)]\n        value = sp.diff(potentials[k], point[j]) - sp.diff(potentials[j], point[k])\n    elif sector == 'LONGITUDINAL' and base.startswith('u_'):\n        value = sp.diff(field('s11cc2TrialPhi', point, (2, 0, 0)), point[int(base[-1])-1])\n    elif sector == 'THETA' and base == 'theta':\n        value = field('s11cc2TrialTheta', point, (0, 0, 0))\n    elif sector == 'E_W' and base == 'e_W':\n        value = field('s11cc2TrialE', point, (0, 0, 0))\n    elif sector is not None:\n        value = sp.S.Zero\n    else:\n        value = field('s11cc2Field' + base, point, (1, 0, 0) if base.startswith('u_') else (0, 0, 0))\n    for direction in re.findall(r'd([123])', suffix):\n        value = sp.diff(value, point[int(direction)-1])\n    if '_tt' in suffix:\n        value = sp.diff(value, TIME, 2)\n    elif '_t' in suffix:\n        value = sp.diff(value, TIME)\n    return value",
+      "sha256": "b3f0b3534930c97d78064287476843deada5ba85b85888d01cb17dad8e7ae524",
+      "executed": false
+    },
+    {
+      "source": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "name": "at_source",
+      "line": 247,
+      "text": "def at_source(self, expression):\n        \"\"\"Translate the full source to its integration point, including density.\n\n        Background jets are independent supplied coefficient fields here.  No\n        field is replaced by its constant representative during translation.\n        \"\"\"\n        replacements = {}\n        for a in expression.atoms(sp.Symbol):\n            if a in self.wave:\n                replacements[a] = wave_jet(a, Y)\n            elif re.match(r'(?:W_bg|mu_R_bg|[wm]1_profile)(?:$|_d)', a.name):\n                base=a.name.split('_d')[0]\n                name=re.sub(r'_([a-zA-Z0-9])',lambda m:m[1].upper(),'s11cc2Coefficient'+base)\n                function=sp.Function(name)\n                NEW_DIMENSIONS[function]=tuple(DIMENSION_SCHEMA[base])\n                indices=[int(n)-1 for n in re.findall(r'd([123])',a.name)]\n                value=sp.diff(function(*Y),*(Y[i] for i in indices)) if indices else function(*Y)\n                if base in ('w1_profile','m1_profile'):\n                    value*=self.values['L_W']**len(indices)\n                replacements[a]=value\n        return expression.xreplace(replacements)",
+      "sha256": "ffbff59b0ec6ae65c5d3e576fb5c9f815c9fbcdcd5292f76c55625afb6833dcf",
+      "executed": false
+    }
+  ],
+  "scope": "Exact original substitution, quotient, independent wave jet and profile algorithms; no invocation."
+}

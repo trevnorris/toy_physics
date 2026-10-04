@@ -145,3 +145,6 @@ research/pde_ledger_v3/_measurements/S11c_d_defect_packet_preflight_result_recor
 
 # Complete fixed-inner comparison ledger; keep the concise status/source reviewable.
 research/pde_ledger_v3/_measurements/S11c_d_defect_packet_inner_result_record.json -diff
+
+# Complete metadata-only pressure transport index; source and concise status remain reviewable.
+research/pde_ledger_v3/_measurements/S11c_d_defect_packet_pressure_transport_source_map.json -diff

@@ -788,3 +788,26 @@ were byte-verified after startup, restricted source-only commands and separate
 session IDs were recorded, and the existing-session hook was armed first. No
 review output was read while running. No native unit science or READY gate exists;
 the completion event will trigger literal joint assessment and continued work.
+
+## 2026-10-03 — saved pressure transport evidence indexed during review
+
+The delayed geometry completion hook was matched to the accepted8326373c
+record and identical saved checks bytes; no geometry work was repeated.
+Independent preparation now locates the remaining source-grade/jet/profile
+transport evidence in595complete saved/source files, including392profile maps,
+six complete rational source/consumer grade groups and their denominator
+certificates. All332receipts from the earlier source map still match.
+The new index maps all544selected addresses to64source-jet locations and
+16consumer-grade locations, plus their original coefficient-field IDs.
+Complete encoded JSON comparisons and hashes only were used; no symbolic
+object was restored, no native dimension calculated and no completed function
+or integral called. All595file receipts and index references were checked.
+
+Duplicate profile matches remain explicit candidates. In particular, a matching
+consumer profile output does not establish its epsilon-stripped input or a unit
+transport proof. The unchanged original scientific source fragments are indexed
+for future guarded argument joins. Native-unit review-pinned sources remain
+unchanged and reviewer outputs have not been read. This preparation creates no
+READY gate, scientific certificate or external submission. Full source/grade/jet,
+profile/kernel/measure and complete summand units remain required before the
+pressure action, along with exact request-sharing/storage and evaluator readiness.

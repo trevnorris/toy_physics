@@ -10,7 +10,11 @@ H/J/direct-profile/measure and all544address unit transport remain required;
 judge this prerequisite's claims, not a proposed numerical action. No science
 or READY gate exists. No old reviewer report or commentary is supplied.
 
-Inspect original source-line and case membership, actual chemical/live-density/
+Inspect original source-line and full labeled-table selection, including unique
+labels, index, complete payload and VALUE identity on each applicable face.
+Check original _LEDGER dtn_kernel membership and actual Inputs self.kernel lookup;
+the face's actual delta-removed unit return must drive its dynamic Z override.
+Inspect actual chemical/live-density/
 velocity/raw-c1/epsilon joins, complete gamma registry origins and no fresh
 inference, strict constructor interpreter behavior, original flat delta removal,
 native dynamic Z-unit override and inverse-operand/pressure unit joins. Ensure

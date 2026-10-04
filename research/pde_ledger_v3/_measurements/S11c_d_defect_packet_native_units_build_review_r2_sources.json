@@ -1,0 +1,396 @@
+{
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Native unbound pressure-source/closure unit homogeneity bridge only; grade/field/kernel-measure/all-address transport remains required",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": false,
+    "addressUnitCertificatesProduced": 0,
+    "noGeometryReplay": true
+  },
+  "records": [
+    {
+      "packetPath": "worker.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_native_units.py",
+      "sourceSha256": "c5d4b873de4a319446ed30c46ae70cfcea78ee11f03cd2953a2d5b7b9d2383c4",
+      "packetSha256": "c5d4b873de4a319446ed30c46ae70cfcea78ee11f03cd2953a2d5b7b9d2383c4",
+      "bytes": 26099,
+      "kind": "complete file",
+      "role": "New bounded native source-unit bridge, not executed"
+    },
+    {
+      "packetPath": "library.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_native_units_lib.py",
+      "sourceSha256": "f8c2ef3ff0277a6a6373ced475edfa9e36d5eea430d5cd364630a5a5ff5be47a",
+      "packetSha256": "f8c2ef3ff0277a6a6373ced475edfa9e36d5eea430d5cd364630a5a5ff5be47a",
+      "bytes": 6987,
+      "kind": "complete file",
+      "role": "Strict exact constructor-text unit interpreter; no CAS constructors"
+    },
+    {
+      "packetPath": "launcher.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_native_units_launch.py",
+      "sourceSha256": "8f5881e63366a11bef3b8ea16ce5c7ce4be5c838d6c20048e512c03c2a9e827c",
+      "packetSha256": "8f5881e63366a11bef3b8ea16ce5c7ce4be5c838d6c20048e512c03c2a9e827c",
+      "bytes": 8387,
+      "kind": "complete file",
+      "role": "Hook-first guarded execution; no gate yet"
+    },
+    {
+      "packetPath": "inputs.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_native_units_inputs.json",
+      "sourceSha256": "8db737bcff340aaa29e1bca008043e9687006730ddd1de9c58f66f1f80027349",
+      "packetSha256": "8db737bcff340aaa29e1bca008043e9687006730ddd1de9c58f66f1f80027349",
+      "bytes": 19390,
+      "kind": "complete file",
+      "role": "Complete source and original input pins"
+    },
+    {
+      "packetPath": "execution-authority.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_native_units_execution_authority.json",
+      "sourceSha256": "68e4c5545e9f8901fd67806e296af6b67c62b0ea65037601860581ba017af85a",
+      "packetSha256": "68e4c5545e9f8901fd67806e296af6b67c62b0ea65037601860581ba017af85a",
+      "bytes": 1247,
+      "kind": "complete file",
+      "role": "Standing bounded authority after build assessment"
+    },
+    {
+      "packetPath": "build.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_native_units_build.md",
+      "sourceSha256": "208e0a5ab7f6a85ea173de39a270fc76b9f02655876c6dece0cf7b1aef97a180",
+      "packetSha256": "208e0a5ab7f6a85ea173de39a270fc76b9f02655876c6dece0cf7b1aef97a180",
+      "bytes": 5786,
+      "kind": "complete file",
+      "role": "Native source subset and required deferred transport"
+    },
+    {
+      "packetPath": "method.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_pressure_readiness_method.md",
+      "sourceSha256": "16b96e2c1a518e3e0cf3d5eba0ae05d1c24cf7c3b37334b26ed2743efee78a68",
+      "packetSha256": "16b96e2c1a518e3e0cf3d5eba0ae05d1c24cf7c3b37334b26ed2743efee78a68",
+      "bytes": 13815,
+      "kind": "complete file",
+      "role": "Unchanged pressure-readiness method"
+    },
+    {
+      "packetPath": "packet-action-method.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_action_method.md",
+      "sourceSha256": "79f1459596c84d0f4fbca2c45b51977ff338bce1a55a66c6214e850793eaf45a",
+      "packetSha256": "79f1459596c84d0f4fbca2c45b51977ff338bce1a55a66c6214e850793eaf45a",
+      "bytes": 26187,
+      "kind": "complete file",
+      "role": "Unchanged overall two-packet method"
+    },
+    {
+      "packetPath": "review-prompt.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_native_units_review_prompt.md",
+      "sourceSha256": "c8954d00a21fef27c8f7ffb9877af0433ca04e30321ffd2625a2b4327e7f75da",
+      "packetSha256": "c8954d00a21fef27c8f7ffb9877af0433ca04e30321ffd2625a2b4327e7f75da",
+      "bytes": 2321,
+      "kind": "complete file",
+      "role": "Independent build assessment request"
+    },
+    {
+      "packetPath": "evidence-guide.md",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_native_units_evidence_guide.md",
+      "sourceSha256": "bb014f8bbdcdcb0ffb179628c9802aa11ecc8b08d35ad8974103f73d098a09e0",
+      "packetSha256": "bb014f8bbdcdcb0ffb179628c9802aa11ecc8b08d35ad8974103f73d098a09e0",
+      "bytes": 2529,
+      "kind": "complete file",
+      "role": "Complete source navigation"
+    },
+    {
+      "packetPath": "tooling-tests.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_native_units_test.py",
+      "sourceSha256": "7f2c9a858e61985ef75f9ff56b2a30d6d530867e43958905fab83483de2f3267",
+      "packetSha256": "7f2c9a858e61985ef75f9ff56b2a30d6d530867e43958905fab83483de2f3267",
+      "bytes": 9214,
+      "kind": "complete file",
+      "role": "Synthetic constructor/unit tests, no native unit calculation"
+    },
+    {
+      "packetPath": "tooling-test-record.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_native_units_r2_tooling_test_record.json",
+      "sourceSha256": "c138c2e2cb0d7aa45298382ee962f551945d0476ef33aa79ef4d8c6b11d5b860",
+      "packetSha256": "c138c2e2cb0d7aa45298382ee962f551945d0476ef33aa79ef4d8c6b11d5b860",
+      "bytes": 876,
+      "kind": "complete file",
+      "role": "Tooling receipt"
+    },
+    {
+      "packetPath": "tooling-tests.log",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_native_units_r2_tooling_tests.log",
+      "sourceSha256": "67975f3e9cdb8aae30e107efe4e03c54066ff0a766f64b5980a614abc3877219",
+      "packetSha256": "67975f3e9cdb8aae30e107efe4e03c54066ff0a766f64b5980a614abc3877219",
+      "bytes": 3722,
+      "kind": "complete file",
+      "role": "Full literal tooling log"
+    },
+    {
+      "packetPath": "native-c1-exports.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_c1_exports.py",
+      "sourceSha256": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "packetSha256": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "bytes": 906467,
+      "kind": "complete file",
+      "role": "Original complete native quoted DTN/response export"
+    },
+    {
+      "packetPath": "native-c2.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "packetSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "bytes": 102548,
+      "kind": "complete file",
+      "role": "Original complete schema and kernel_bridge source"
+    },
+    {
+      "packetPath": "native-b-exports.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_b_exports.py",
+      "sourceSha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "packetSha256": "3c6555f90a85382a5e96f3f961f0e36a4875d9259fe1be947fa8e683669b7084",
+      "bytes": 61624077,
+      "kind": "complete file",
+      "role": "Original complete native quoted chemical/velocity/density/consumer export"
+    },
+    {
+      "packetPath": "runtime-source/raw-helper.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_raw_increment.py",
+      "sourceSha256": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+      "packetSha256": "9545304e7c74d974ef4965aab1eedc0a0a0c1ae2f3a7ae54713a287bbe676f36",
+      "bytes": 48444,
+      "kind": "complete file",
+      "role": "Only inert containment function selected; no old science"
+    },
+    {
+      "packetPath": "runtime-source/shared-guard.py",
+      "sourcePath": "scripts/s11c_guarded_run.py",
+      "sourceSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "packetSha256": "6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df",
+      "bytes": 21340,
+      "kind": "complete file",
+      "role": "Unchanged no-deadline pool"
+    },
+    {
+      "packetPath": "runtime-source/supervisor.py",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_end_normalization_run.py",
+      "sourceSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "packetSha256": "35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69",
+      "bytes": 4837,
+      "kind": "complete file",
+      "role": "Unchanged supervisor"
+    },
+    {
+      "packetPath": "runtime-source/completion-hook.py",
+      "sourcePath": "scripts/codex_job_watch.py",
+      "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "packetSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+      "bytes": 4301,
+      "kind": "complete file",
+      "role": "Existing event-only completion hook"
+    },
+    {
+      "packetPath": "runtime-source/AGENTS.md",
+      "sourcePath": "AGENTS.md",
+      "sourceSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+      "packetSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+      "bytes": 5617,
+      "kind": "complete file",
+      "role": "Standing policy"
+    },
+    {
+      "packetPath": "saved/native/source.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_upstream_mixed_consumer_native.json",
+      "sourceSha256": "441c580e56bd426bc098af6589776384f275401373cddd5c8fd5479707e5915e",
+      "packetSha256": "441c580e56bd426bc098af6589776384f275401373cddd5c8fd5479707e5915e",
+      "bytes": 904500,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "saved/native/dtn-operands.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-operands.json",
+      "sourceSha256": "a656a45a24324ecc87cf8d4ed8fdc1303c3f619a2c0f6b4ec972914185b04d53",
+      "packetSha256": "a656a45a24324ecc87cf8d4ed8fdc1303c3f619a2c0f6b4ec972914185b04d53",
+      "bytes": 22766,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "saved/native/flat-join.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-tanh-20261001/diagnostic-01/complete/native-flat-source-join.json",
+      "sourceSha256": "a790dae596cf2f46ffa1b1d4202c6bc645fa77a2622ef80121fb6d7b6c3a0b5e",
+      "packetSha256": "a790dae596cf2f46ffa1b1d4202c6bc645fa77a2622ef80121fb6d7b6c3a0b5e",
+      "bytes": 452,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "saved/consumer/binding-context.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/binding-context.json",
+      "sourceSha256": "9216e51151937a0b815643ee2b958869b530c2bf775d6b5e848b0ebe241eae68",
+      "packetSha256": "9216e51151937a0b815643ee2b958869b530c2bf775d6b5e848b0ebe241eae68",
+      "bytes": 10950,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "saved/consumer/native-chemical-amplitude.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/native-chemical-amplitude.json",
+      "sourceSha256": "d5e9019f68ae190302163a0a2bec2980ad849a9c74fbe430bf1f93231c186179",
+      "packetSha256": "d5e9019f68ae190302163a0a2bec2980ad849a9c74fbe430bf1f93231c186179",
+      "bytes": 75035,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "saved/consumer/plus-source-input.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/plus-source-input.json",
+      "sourceSha256": "78828307da0b0def1a2de27b59afb65168f214536a8315ad3e62a040273ae374",
+      "packetSha256": "78828307da0b0def1a2de27b59afb65168f214536a8315ad3e62a040273ae374",
+      "bytes": 66907,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "saved/consumer/minus-source-input.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/diagnostic-01/complete/minus-source-input.json",
+      "sourceSha256": "3dc8276d0c591d5869aa8467accbd7b12ebd89c6110ee7f7548adedce1216208",
+      "packetSha256": "3dc8276d0c591d5869aa8467accbd7b12ebd89c6110ee7f7548adedce1216208",
+      "bytes": 66911,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "saved/consumer/consumer-unit-joins.json",
+      "sourcePath": "_scratch/s11c/s11c-mixed-consumer-20261001/continuation-01/complete/consumer-unit-joins.json",
+      "sourceSha256": "520b3a356a7faf019e3da7286d457a5c1f38142ccab447aa5bdd2f6934063ca3",
+      "packetSha256": "520b3a356a7faf019e3da7286d457a5c1f38142ccab447aa5bdd2f6934063ca3",
+      "bytes": 8912,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "saved/units/merged.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/unit-registry-merged.json",
+      "sourceSha256": "85aecd82fe391fbf302070929e8ebdf40bf0af006d3e7ff72a0359c3d745d2c2",
+      "packetSha256": "85aecd82fe391fbf302070929e8ebdf40bf0af006d3e7ff72a0359c3d745d2c2",
+      "bytes": 60653,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "saved/units/LEFTNativeSource-origin.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/unit-registry-LEFTNativeSource-origin.json",
+      "sourceSha256": "9c53cc45c635da50304c0ab118b021fcc1819e08d281e61a7c7c70aee2d87497",
+      "packetSha256": "9c53cc45c635da50304c0ab118b021fcc1819e08d281e61a7c7c70aee2d87497",
+      "bytes": 8465,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "saved/units/RIGHTNativeSource-origin.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/unit-registry-RIGHTNativeSource-origin.json",
+      "sourceSha256": "40b630b47bccf77bc86657c444338ade559821bcefa3e34fbf8c63f104078f3b",
+      "packetSha256": "40b630b47bccf77bc86657c444338ade559821bcefa3e34fbf8c63f104078f3b",
+      "bytes": 8467,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "saved/units/LEFTPairing-origin.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/unit-registry-LEFTPairing-origin.json",
+      "sourceSha256": "f8c6ac101293be3c2a593ca7800cbb1320e9280c5f97420fd64bc6649e8f6c60",
+      "packetSha256": "f8c6ac101293be3c2a593ca7800cbb1320e9280c5f97420fd64bc6649e8f6c60",
+      "bytes": 9633,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "saved/units/RIGHTPairing-origin.json",
+      "sourcePath": "_scratch/s11c/s11c-defect-end-uniform-20261003/diagnostic-01/complete/unit-registry-RIGHTPairing-origin.json",
+      "sourceSha256": "6de84dbef5f04d87c772ac848b5c94bc9c9eb41ad99e7a3567db467926e78edc",
+      "packetSha256": "6de84dbef5f04d87c772ac848b5c94bc9c9eb41ad99e7a3567db467926e78edc",
+      "bytes": 9640,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "saved/physical-input.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_variable_profile_development_input.json",
+      "sourceSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "packetSha256": "660b2b0b54494dce964c7f5fbd722a76a7e894d8ed92b18b5eb6290c3c10f1d5",
+      "bytes": 1884,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "saved/source-contracts.json",
+      "sourcePath": "research/pde_ledger_v3/_measurements/S11c_d_defect_packet_native_units_source_contracts.json",
+      "sourceSha256": "9e4a697549bf284f92b1552349793d398ca923483fd72cb74a4d1827838377db",
+      "packetSha256": "9e4a697549bf284f92b1552349793d398ca923483fd72cb74a4d1827838377db",
+      "bytes": 38432,
+      "kind": "complete file",
+      "role": "Complete original source/operand/return/receipt JSON; no replay"
+    },
+    {
+      "packetPath": "opaque-registry/LEFTNativeSource.pickle",
+      "sourcePath": "_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_left/objects.pickle",
+      "sourceSha256": "f3409cc92263880f0d0e2c941f1884ed5ae0aa984f8bf6ea97b169060edcd51d",
+      "packetSha256": "f3409cc92263880f0d0e2c941f1884ed5ae0aa984f8bf6ea97b169060edcd51d",
+      "bytes": 187054,
+      "kind": "complete file",
+      "role": "Complete opaque original registry object; hash/source identity only, no restoration permitted"
+    },
+    {
+      "packetPath": "opaque-registry/RIGHTNativeSource.pickle",
+      "sourcePath": "_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_right/objects.pickle",
+      "sourceSha256": "56825f670042c21e56ac6b02ce553b90227158704b4fb40c6b9f8f8c03071b1a",
+      "packetSha256": "56825f670042c21e56ac6b02ce553b90227158704b4fb40c6b9f8f8c03071b1a",
+      "bytes": 764140,
+      "kind": "complete file",
+      "role": "Complete opaque original registry object; hash/source identity only, no restoration permitted"
+    },
+    {
+      "packetPath": "opaque-registry/LEFTPairing.pickle",
+      "sourcePath": "_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left/complete.pickle",
+      "sourceSha256": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259",
+      "packetSha256": "6399da59a971434aae54a95ed4c823c4b029029dbe50aed2913bcc48747b9259",
+      "bytes": 318441,
+      "kind": "complete file",
+      "role": "Complete opaque original registry object; hash/source identity only, no restoration permitted"
+    },
+    {
+      "packetPath": "opaque-registry/RIGHTPairing.pickle",
+      "sourcePath": "_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right/complete.pickle",
+      "sourceSha256": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+      "packetSha256": "690ceb5c452de298f67ec929cacb76d7d16e182efcd321f9692ecf1cbd28b628",
+      "bytes": 1065916,
+      "kind": "complete file",
+      "role": "Complete opaque original registry object; hash/source identity only, no restoration permitted"
+    }
+  ],
+  "projections": "15 complete saved JSON and4 complete opaque original objects. Original complete native b/c1 exports and c2 source included. Source/closure unit subset only, no grade/field/complete-pressure transport proof.",
+  "oldPeerReportsIncluded": false,
+  "nativeUnitScienceExecuted": false
+}

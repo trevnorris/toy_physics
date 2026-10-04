@@ -1,0 +1,44 @@
+{
+  "status": "STANDING_USER_AUTHORIZED_FIXED_PACKET",
+  "recordedUtc": "2026-10-04T02:48:08.296891+00:00",
+  "packetSha256": "c33caf1674ba7d35ae967e980e6cf396e7d41f4cbb4fb3027f41fec1de0c52e6",
+  "archiveSha256": "15a94e2f3cf18ef9d18045f95bbb20fe620d8dcb0a8858bb6c363f34a1fa4224",
+  "reviewers": [
+    "claude",
+    "grok"
+  ],
+  "files": 41,
+  "bytes": 66493359,
+  "AGENTSSha256": "3485cb891f831619eef7de1266fa1ae01da8a140faaa18c97e65c1625098c5bf",
+  "authority": "Standing AGENTS/user authorization for necessary independent established-Claude/Grok source assessment. Native unbound pressure-source unit subset of approved pressure readiness.",
+  "scope": {
+    "frequency": 3,
+    "anchoring": "LAB_HELD",
+    "density": "RHO4_CONSTANT",
+    "drain": 0,
+    "edges": [
+      "1/5",
+      "1/10"
+    ],
+    "effectiveCs": "sqrt(6)/2",
+    "plannedCarriers": [
+      "sqrt(595)/10",
+      "0"
+    ],
+    "target": "Native unbound pressure-source/closure unit homogeneity bridge only; grade/field/kernel-measure/all-address transport remains required",
+    "sourceFrequencyContinued": false,
+    "responseRegulator": 0,
+    "selectedPressureAddresses": 544,
+    "selectedLocalCells": 16,
+    "pressureCoefficientFields": 34,
+    "noEvaluatedResponseIntegral": true,
+    "noNumericalPacketAction": true,
+    "noFiniteSolve": true,
+    "noProductionOverwrite": true,
+    "noDefectSweep": true,
+    "pressureSummandUnitsComplete": false,
+    "addressUnitCertificatesProduced": 0,
+    "noGeometryReplay": true
+  },
+  "noAutomaticRetry": true
+}

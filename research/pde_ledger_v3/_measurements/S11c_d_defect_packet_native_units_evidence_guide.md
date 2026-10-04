@@ -11,6 +11,11 @@ for chemical, face response, velocity and density, plus unchanged consumer
 census context. native-c1-exports.py and native-b-exports.py supply the actual
 quoted export lines. The worker never calls their constructors. The full native
 C2 source supplies the literal static schema and dynamic kernel_bridge override.
+Chemical, velocity and density constructors are labeled tables; face response
+has a tagged CASES table. join_native_case requires original labels, exact saved
+index, full payload and VALUE identity. The original C1 _LEDGER dtn_kernel value
+and C2 Inputs self.kernel statement are joined separately. These selectors run
+inside containment; synthetic tests cannot establish actual runtime identity.
 saved/native/dtn-operands.json contains the full original dtn literal;
 saved/native/flat-join.json is the old combined left/right/literal-zero receipt.
 

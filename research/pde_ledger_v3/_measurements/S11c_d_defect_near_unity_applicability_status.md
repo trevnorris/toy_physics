@@ -832,3 +832,18 @@ dimensional algorithm or physical inputs change. Original literals and reviewed
 bytes remain preserved; the corrected source requires substantive assessment,
 not an author clearance or a scientific retry. Complete pressure summand units
 and the numerical evaluator remain pending.
+
+The corrected build now selects chemical/density/velocity/response cases from
+the original labeled tables, preserving complete selector inputs and decisions.
+It requires the native DTN export key and Inputs lookup and propagates each
+face's actual flat-unit return into its Z registry. Partial unit refusals retain
+their decision and walk. All43synthetic tooling tests pass; the Units class AST,
+all15savedJSON,4opaqueobjects, equations, physical inputs, method, scope, launcher
+and shared helpers are unchanged. No native unit calculation ran. The original
+NEEDS/CLEAR pair and worker are preserved ata88031f2.
+
+The necessary revised independent packet is41files/66493359bytes, SHA256
+c33caf1674ba7d35ae967e980e6cf396e7d41f4cbb4fb3027f41fec1de0c52e6.
+Both established reviewers receive identical fixed source without peer reports
+or commentary. Standing authority covers submission; no science or READY gate
+exists and no author clearance substitutes for the actual reports.

@@ -44,6 +44,38 @@ def tagged(node,name):
         if len(args)==2 and kind(args[0])=='Str' and len(args[0].args)==1 and isinstance(args[0].args[0],ast.Constant) and args[0].args[0].value==name:matches.append(args[1])
     require(len(matches)==1,'unique native tag '+name);return matches[0]
 
+def case_label(node):
+    if kind(node)=='Str':
+        require(len(node.args)==1 and not node.keywords and isinstance(node.args[0],ast.Constant) and type(node.args[0].value) is str,'literal native case string')
+        return node.args[0].value
+    value=rational(node)
+    require(value.denominator==1,'integer native case label')
+    return int(value)
+
+def select_case(node,expected):
+    require(type(expected) is list and all(type(v) in (str,int) for v in expected),'literal expected case labels')
+    census=[];matches=[]
+    for index,case in enumerate(tuple_args(node)):
+        parts=tuple_args(case);require(len(parts)==2,'native labeled case pair')
+        labels=[case_label(v) for v in tuple_args(parts[0])]
+        census.append(labels)
+        if labels==expected:matches.append((index,parts[1]))
+    require(len(matches)==1,'unique original labeled case '+repr(expected))
+    return matches[0][0],matches[0][1],census
+
+def literal_dict_item(node,key):
+    require(isinstance(node,ast.Dict),'literal source dictionary')
+    matches=[v for k,v in zip(node.keys,node.values) if isinstance(k,ast.Constant) and type(k.value) is str and k.value==key]
+    require(len(matches)==1,'unique original dictionary key '+key)
+    return matches[0]
+
+def export_restore_literal(module,key):
+    assignments=[n for n in module.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='_LEDGER' for t in n.targets)]
+    require(len(assignments)==1,'unique original _LEDGER assignment')
+    entry=literal_dict_item(assignments[0].value,key);value=literal_dict_item(entry,'value')
+    require(kind(value)=='_restore' and len(value.args)==1 and not value.keywords and isinstance(value.args[0],ast.Constant) and type(value.args[0].value) is str,'original keyed restore literal')
+    return value.args[0].value,value
+
 def unit_tuple(value):
     require(type(value) in (list,tuple) and len(value)==3,'three unit exponents')
     return tuple(F(v) if type(v) in (int,str,F) else rational(parse(v['srepr'])) for v in value)

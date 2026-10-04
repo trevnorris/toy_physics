@@ -103,11 +103,34 @@ def certify(J,U,name,text,registry,expected):
     J.start(name,{'constructor':text,'registry':registry,'expected':expected,'newUnitCheckNotSourceEvaluation':True})
     checker=U.Units(registry)
     try:unit=checker.dimension(U.parse(text))
-    finally:J.emit(name+'-complete-unit-walk',checker.events)
+    except BaseException as error:
+        J.emit(name+'-decision-operands',{'status':'UNIT_WALK_REFUSED','expected':expected,'errorType':type(error).__name__,'error':str(error),'partialWalk':True})
+        raise
+    finally:J.emit(name+'-unit-walk',checker.events)
     result={'unit':unit,'expected':expected,'literalZeroUnitUnspecified':unit is None}
     J.emit(name+'-decision-operands',result)
     require(unit==tuple(map(F,expected)),'native homogeneity '+name)
     J.finish(result);return unit
+
+
+def join_native_case(J,U,name,original,case,table_tags=()):
+    J.start(name,{'originalConstructor':original,'savedCase':case,'tableTags':list(table_tags),'constructorExecuted':False})
+    try:
+        table=U.parse(original)
+        for tag in table_tags:table=U.tagged(table,tag)
+        index,payload,census=U.select_case(table,case['case'])
+        value=U.tagged(payload,'VALUE')
+        result={'originalLabels':census,'selectedIndex':index,'savedIndex':case['caseIndex'],
+            'selectedPayload':ast.unparse(payload),'selectedValue':ast.unparse(value),
+            'payloadMatches':U.same(payload,U.parse(case['caseConstructorText'])),
+            'valueMatches':U.same(value,U.parse(case['valueConstructorText'])),
+            'savedPayloadHashMatches':hashlib.sha256(case['caseConstructorText'].encode()).hexdigest()==case['caseConstructorSha256']}
+    except BaseException as error:
+        J.emit(name+'-decision-operands',{'status':'SOURCE_CASE_REFUSED','errorType':type(error).__name__,'error':str(error)})
+        raise
+    J.emit(name+'-decision-operands',result)
+    require(index==case['caseIndex'] and result['payloadMatches'] and result['valueMatches'] and result['savedPayloadHashMatches'],'actual native case labels/index/payload/value '+name)
+    J.finish(result);return value
 
 
 def run(m,J,U):
@@ -147,27 +170,34 @@ def run(m,J,U):
     J.emit('effective-registry',{'units':registry,'unavailable':unavailable,'newInference':False,'independentOfOriginalInference':False})
     for name,expected in [('rho_m',[-4,0,1]),('rho_br',[-3,0,1]),('epsilon_shape',[0,0,0]),('eta_bg',[0,0,0]),('sigma_W',[0,0,0])]:require(U.unit_tuple(registry[name])==tuple(expected),'actual native unit '+name)
     # Chemical constructor is the original tuple's second leaf, not a rebuilt source.
-    chemical=native['chemicalSource'];chemical_text=chemical['valueConstructorText'];chemical_node=U.tuple_args(U.parse(chemical_text))[1]
-    require(chemical['case']==['LAB_HELD','RHO4_CONSTANT'] and hashlib.sha256(chemical['caseConstructorText'].encode()).hexdigest()==chemical['caseConstructorSha256'],'original chemical case')
-    require(U.same(U.tagged(U.parse(chemical['caseConstructorText']),'VALUE'),U.parse(chemical_text)),'chemical case value selector')
-    require(chemical_text in sources[chemical['provenance']['source']+':'+str(chemical['provenance']['valueLine'])],'chemical selected literal belongs to native source')
+    chemical=native['chemicalSource'];require(chemical['case']==['LAB_HELD','RHO4_CONSTANT'],'declared chemical case')
+    chemical_value=join_native_case(J,U,'chemical-original-case',sources[chemical['provenance']['source']+':'+str(chemical['provenance']['valueLine'])],chemical)
+    chemical_node=U.tuple_args(chemical_value)[1]
     chemical_old=raw['consumer/native-chemical-amplitude.json']
     require(U.same(chemical_node,U.tuple_args(U.parse(chemical_old['raw']['srepr']))[1]),'actual original chemical operand')
     certify(J,U,'new-unbound-chemical-homogeneity',ast.unparse(chemical_node),registry,[-1,-2,1])
     density=next(v for v in native['geometry']['background_density_map']['cases'] if v['case']==['RHO4_CONSTANT'])
-    density_leaf=U.tuple_args(U.parse(density['valueConstructorText']))[1]
+    density_value=join_native_case(J,U,'density-original-case',sources[density['provenance']['source']+':'+str(density['provenance']['valueLine'])],density)
+    density_leaf=U.tuple_args(density_value)[1]
     J.emit('native-live-density-arguments',{'case':density,'selectedLeaf':ast.unparse(density_leaf),'savedMap':context['densityMap']})
-    require(density['caseConstructorText'] in sources[density['provenance']['source']+':'+str(density['provenance']['valueLine'])] and hashlib.sha256(density['caseConstructorText'].encode()).hexdigest()==density['caseConstructorSha256'],'native live density case identity')
-    require(U.same(U.tagged(U.parse(density['caseConstructorText']),'VALUE'),U.parse(density['valueConstructorText'])) and U.same(density_leaf,U.parse(context['densityMap']['rho_br_bg_rho4_constant']['srepr'])),'actual density map leaf')
+    require(U.same(density_leaf,U.parse(context['densityMap']['rho_br_bg_rho4_constant']['srepr'])),'actual density map leaf')
     certify(J,U,'new-unbound-live-density-units',ast.unparse(density_leaf),registry,[-3,0,1])
     flat=raw['native/flat-join.json'];require(flat['residual']==ZERO and flat['left']==flat['right'],'inherited native flat identity')
-    certify(J,U,'new-delta-removed-native-flat-units',flat['left']['srepr'],registry,[-3,-1,1])
     dtn=raw['native/dtn-operands.json'];dtn_tree=U.parse(dtn['literal'])
     # All native cases supplied; select by literal labels, never a fitted mapping.
     dtn_cases=U.tuple_args(dtn_tree)
     kernel_source=Path(m['nativeC1Exports']).read_text();kernel_ast=ast.parse(kernel_source)
-    literals=[n.args[0].value for n in ast.walk(kernel_ast) if isinstance(n,ast.Call) and isinstance(n.func,ast.Name) and n.func.id=='_restore' and len(n.args)==1 and isinstance(n.args[0],ast.Constant) and n.args[0].value==dtn['literal']]
-    require(len(literals)==1,'actual original native dtn literal')
+    J.start('original-dtn-export-key',{'source':m['nativeC1Exports'],'sourceSha256':sha(m['nativeC1Exports']),'key':'dtn_kernel','savedLiteral':dtn['literal']})
+    keyed_literal,keyed_call=U.export_restore_literal(kernel_ast,'dtn_kernel')
+    inputs_class=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='Inputs')
+    constructor=next(n for n in inputs_class.body if isinstance(n,ast.FunctionDef) and n.name=='__init__')
+    lookup=[n for n in constructor.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Attribute) and isinstance(t.value,ast.Name) and t.value.id=='self' and t.attr=='kernel' for t in n.targets)]
+    expected_lookup=ast.parse("self.kernel = cases(values['dtn_kernel'])").body[0]
+    keyed_result={'selectedRestoreCall':ast.unparse(keyed_call),'lookupStatements':[ast.unparse(n) for n in lookup],
+        'expectedLookup':ast.unparse(expected_lookup),'literalMatches':keyed_literal==dtn['literal'],
+        'lookupMatches':len(lookup)==1 and U.same(lookup[0],expected_lookup)}
+    J.emit('original-dtn-export-key-decision-operands',keyed_result)
+    require(keyed_result['literalMatches'] and keyed_result['lookupMatches'],'actual original DTN export key and consumer lookup');J.finish(keyed_result)
     contract=raw['source-contracts.json']['kernel_bridge'];native_bridge=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='kernel_bridge')
     require(U.signature(ast.parse(contract).body[0])==U.signature(native_bridge),'actual kernel bridge source contract')
     required_statements=["diagonal = named(raw, 'FLAT_DIAGONAL')", "deltas = diagonal.atoms(sp.DiracDelta)", "z0out = diagonal.xreplace({d: sp.S.One for d in deltas})", "DIMENSION_SCHEMA[z.name] = dimension(z0out)"]
@@ -180,9 +210,7 @@ def run(m,J,U):
         velocity=next(r for r in native['geometry']['face_velocity']['cases'] if r['case']==['LAB_HELD',sign,'DELTA_W'])
         for name,case in [('response',response),('velocity',velocity)]:
             J.emit(face+'-'+name+'-native-case',case)
-            require(hashlib.sha256(case['caseConstructorText'].encode()).hexdigest()==case['caseConstructorSha256'],'native case hash')
-            require(case['caseConstructorText'] in sources[case['provenance']['source']+':'+str(case['provenance']['valueLine'])],'actual native case membership')
-            require(U.same(U.tagged(U.parse(case['caseConstructorText']),'VALUE'),U.parse(case['valueConstructorText'])),'native value selector')
+            join_native_case(J,U,face+'-'+name+'-original-case',sources[case['provenance']['source']+':'+str(case['provenance']['valueLine'])],case,('CASES',) if name=='response' else ())
         selected_dtn=[]
         for case in dtn_cases:
             labels,payload=U.tuple_args(case);labels=U.tuple_args(labels)
@@ -193,6 +221,7 @@ def run(m,J,U):
         delta_removed=ast.Call(func=ast.Name(id='Mul',ctx=ast.Load()),args=remaining,keywords=[])
         J.emit(face+'-actual-flat-delta-removal',{'diagonal':ast.unparse(diagonal),'deltaFactors':[ast.unparse(v) for v in delta_nodes],'deltaRemoved':ast.unparse(delta_removed),'savedFlatJoin':flat})
         require(len(delta_nodes)==3 and U.same(delta_removed,U.parse(flat['left']['srepr'])),'actual three-dimensional flat coefficient join')
+        flat_unit=certify(J,U,face+'-delta-removed-native-flat-units',ast.unparse(delta_removed),registry,[-3,-1,1])
         saved=raw['consumer/'+face+'-source-input.json'];require(U.same(U.parse(velocity['valueConstructorText']),U.parse(saved['nativeVelocity']['srepr'])),'native velocity argument')
         certify(J,U,face+'-native-velocity-units',velocity['valueConstructorText'],registry,[1,-1,0])
         resp=U.parse(response['valueConstructorText']);dp=U.tagged(resp,'DELTA_P');require(U.kind(dp)=='Mul','native deltaP product')
@@ -205,7 +234,7 @@ def run(m,J,U):
         source_unit=certify(J,U,face+'-unbound-source-units',saved['raw']['srepr'],registry,[1,-1,0])
         # Join dynamic native Z unit override to actual flat operand. This is the
         # original kernel_bridge rule, not a correction to its static placeholder.
-        zname='s11cc1_dtn_operator_lab_held_'+face;face_registry=dict(registry);face_registry[zname]=[-3,-1,1]
+        zname='s11cc1_dtn_operator_lab_held_'+face;face_registry=dict(registry);face_registry[zname]=flat_unit
         definition=U.tuple_args(U.tagged(resp,'RESOLVENT_DEFINITION'))
         require(len(definition)==3 and U.same(definition[0],U.tagged(resp,'RESOLVENT')),'native resolvent definition')
         require(U.kind(definition[1])=='Add','native inverse operand sum')
@@ -214,7 +243,7 @@ def run(m,J,U):
         feedback_factors=[v for v in feedback[0].args if not (U.kind(v)=='Symbol' and U.symbol_name(v)==zname)]
         coefficient=ast.Call(func=ast.Name(id='Mul',ctx=ast.Load()),args=feedback_factors,keywords=[])
         certify(J,U,face+'-unbound-feedback-coefficient-unit',ast.unparse(coefficient),registry,[3,1,-1])
-        J.emit(face+'-dynamic-Z-contract',{'flat':flat,'staticZUnit':registry[zname],'actualAppliedSymbolUnit':face_registry[zname],'kernelBridge':raw['source-contracts.json']['kernel_bridge'],'definition':ast.unparse(definition[1])})
+        J.emit(face+'-dynamic-Z-contract',{'flat':flat,'actualFlatConstructor':ast.unparse(delta_removed),'flatUnitReturnOperation':face+'-delta-removed-native-flat-units','staticZUnit':registry[zname],'actualAppliedSymbolUnit':face_registry[zname],'kernelBridge':raw['source-contracts.json']['kernel_bridge'],'definition':ast.unparse(definition[1])})
         certify(J,U,face+'-native-resolvent-homogeneity',ast.unparse(definition[1]),face_registry,[0,0,0])
         certify(J,U,face+'-native-pressure-unit',ast.unparse(dp),face_registry,[-2,-2,1])
         wrong=dict(face_registry);wrong[zname]=[0,0,0]

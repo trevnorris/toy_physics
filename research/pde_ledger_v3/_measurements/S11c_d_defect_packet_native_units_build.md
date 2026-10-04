@@ -16,8 +16,13 @@ Stdlib synthetic tests are tooling checks only; no native dimensions have been
 computed during preparation.
 
 The actual unbound chemical expression joins its saved raw operand and original
-LAB_HELD/RHO4 case. The live density joins the original RHO4 case and saved live
-density map. Both velocities join their native face cases and saved source
+LAB_HELD/RHO4 case. Every chemical, density, response and velocity selection
+parses labels from the full original table (the response uses its explicit CASES
+tag), requires exactly one match and joins the saved case index, full payload
+and VALUE. A payload occurring somewhere in the export is insufficient. Full
+original text and saved case operands precede selection; the selected original
+labels and payload precede the equality guard. The live density joins the
+original RHO4 case and saved live density map. Both velocities join their native face cases and saved source
 inputs. Each complete c1 source is selected from the actual DELTA_P product,
 then joined to the saved raw source with its original single epsilon divisor.
 No source is rebuilt or numerically rebound. Raw source normalization and
@@ -28,8 +33,10 @@ gamma unit must agree across all four inherited registry records; original
 opaque-object hashes and producer receipts remain attached. These are inferred
 original units, not a new inference or independent proof of their first defining
 occurrence. Unknown, nonrational and unavailable units remain unavailable and
-cause refusal if an actual source uses them. Zero has no intrinsic dimension;
-zero factors cannot hide an unknown symbol or bad addend.
+cause refusal if an actual source uses them. Zero has no intrinsic dimension.
+All factors are visited, so an unknown symbol or an internally inhomogeneous
+Add cannot hide inside a zero product. A known dimensionful term multiplied by
+literal zero is itself zero and has no unit; no dimension is inferred from it.
 
 The new unit interpreter accepts only explicit Symbol, exact Integer/Rational,
 Add, Mul, rational Pow, dimensionless transcendental arguments and undifferentiated
@@ -37,9 +44,15 @@ DiracDelta constructors. It executes no constructor. Every input, symbol registr
 partial node walk and decision is saved before the scalar guard. Mismatched
 addends, unsupported nodes, undefined zero powers and missing units refuse.
 No cancellation, simplification, numeric tolerance or unknown-to-true fallback.
+An interpreter refusal saves its error decision and partial walk before it
+propagates; only a successful walk and expected-unit check produce a return.
 
 The native flat coefficient joins the saved exact flat identity AND the original
 FLAT_DIAGONAL on each face after removal of its three actual delta factors. The
+literal must occur as the value of the original _LEDGER['dtn_kernel'] entry and
+match the native Inputs self.kernel lookup. Its mere occurrence is insufficient.
+Each face's actual delta-removed unit-walk return supplies the applied Z unit.
+The expected impedance vector is still checked before that return is used. The
 C2 kernel_bridge source must contain the actual dynamic Z-unit override, tied
 to that delta-removed coefficient. The static opaque-Z placeholder remains in
 the original schema; only the applied face-symbol registry uses its native

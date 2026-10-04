@@ -1,0 +1,190 @@
+{
+  "status": "FIXED_TAIL_ALLOCATION_METHOD_REVIEW_LAUNCH_VERIFIED",
+  "utc": "2026-10-04T13:34:38.154909+00:00",
+  "preparedCommit": "266722f8",
+  "root": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-tail-method-review",
+  "packetSha256": "40934258fbcd77225d788f0c03f9e82520ec63cb6a2ca38fdd3891ec6e87606d",
+  "archiveSha256": "e2901e082d8cda2b5e589d4439e1aa53a56fece437a7ffd0a279bd7c6085f9dd",
+  "launch": {
+    "jobPid": 1645099,
+    "watcherPid": 1645100,
+    "packetSha256": "40934258fbcd77225d788f0c03f9e82520ec63cb6a2ca38fdd3891ec6e87606d",
+    "reviewers": [
+      "claude",
+      "grok"
+    ],
+    "concurrentReviewWorkers": 2,
+    "scienceCalls": 0,
+    "runnerSha256": "bc3b5337a6416d6a7b84bcc21aa1fbde298b3d69d7634d51ec4892ec556c62c0",
+    "launcherSha256": "b06398239090661b80494cdf3af31d329ccaa1c4dc4ce97101a13b923f27967d"
+  },
+  "hook": {
+    "status": "waiting",
+    "watcherPid": 1645100,
+    "jobPid": 1645099,
+    "thread": "01a0e01b-ef84-7192-817f-584cda5d339b",
+    "startedUtc": "2026-10-04T13:34:04.356871+00:00",
+    "sourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+    "messageSha256": "bca69f7f401123d06f840955133a843798ab3b9af53901ad6ea3a4afdfabcdcd",
+    "notifications": {}
+  },
+  "checks": {
+    "hookTarget": true,
+    "hookFirst": true,
+    "exactPacket": true,
+    "coordinatorAlive": true,
+    "watcherAlive": true,
+    "claudePrivatePacket": true,
+    "claudeNoScience": true,
+    "grokPrivatePacket": true,
+    "grokNoScience": true,
+    "noScience": true,
+    "reportsNotRead": true
+  },
+  "privateFileHashesChecked": 3142,
+  "receipts": {
+    "claude": {
+      "engine": "claude",
+      "sessionId": "7cd0b69a-de38-4407-810f-3a53e4778c96",
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "",
+        "--disable-slash-commands",
+        "--session-id",
+        "7cd0b69a-de38-4407-810f-3a53e4778c96"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-tail-method-review/claude/work",
+      "startedUtc": "2026-10-04T13:34:05.047404+00:00",
+      "packetSha256": "40934258fbcd77225d788f0c03f9e82520ec63cb6a2ca38fdd3891ec6e87606d",
+      "promptSha256": "a51e622d9779045a4074b50d238d9ca800183957659d2ae818255f7510fbbac7",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 1645111
+    },
+    "grok": {
+      "engine": "grok",
+      "sessionId": "cadeada9-537b-4de4-a7cd-6f6123e03c30",
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-tail-method-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-tail-method-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "cadeada9-537b-4de4-a7cd-6f6123e03c30"
+      ],
+      "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-tail-method-review/grok/work",
+      "startedUtc": "2026-10-04T13:34:05.047836+00:00",
+      "packetSha256": "40934258fbcd77225d788f0c03f9e82520ec63cb6a2ca38fdd3891ec6e87606d",
+      "promptSha256": "a51e622d9779045a4074b50d238d9ca800183957659d2ae818255f7510fbbac7",
+      "scientificExecutionEnabled": false,
+      "reviewVerdict": "NOT_ADJUDICATED",
+      "pid": 1645112
+    }
+  },
+  "processes": {
+    "coordinator": {
+      "pid": 1645099,
+      "running": true,
+      "command": [
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-tail-method-review/review_run.py"
+      ]
+    },
+    "watcher": {
+      "pid": 1645100,
+      "running": true,
+      "command": [
+        "/usr/bin/python3",
+        "/var/projects/toy_physics/scripts/codex_job_watch.py",
+        "--pid",
+        "1645099",
+        "--thread",
+        "01a0e01b-ef84-7192-817f-584cda5d339b",
+        "--directory",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-tail-method-review/completion-watcher",
+        "--message-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-tail-method-review/completion_message.txt",
+        "--error-log",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-tail-method-review/issues.log"
+      ]
+    },
+    "claude": {
+      "pid": 1645111,
+      "running": true,
+      "command": [
+        "/home/trevnorris/.local/bin/claude",
+        "--print",
+        "--output-format",
+        "json",
+        "--safe-mode",
+        "--restricted",
+        "--tools",
+        "Read,Glob,Grep",
+        "--allowedTools",
+        "Read,Glob,Grep",
+        "--permission-mode",
+        "dontAsk",
+        "--strict-mcp-config",
+        "--mcp-config",
+        "{\"mcpServers\":{}}",
+        "--setting-sources",
+        "--disable-slash-commands",
+        "--session-id",
+        "7cd0b69a-de38-4407-810f-3a53e4778c96"
+      ]
+    },
+    "grok": {
+      "pid": 1645112,
+      "running": true,
+      "command": [
+        "/home/trevnorris/.local/bin/grok",
+        "--cwd",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-tail-method-review/grok/work",
+        "--prompt-file",
+        "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/contracted-tail-method-review/grok/work/input/review-prompt.md",
+        "--output-format",
+        "json",
+        "--permission-mode",
+        "dontAsk",
+        "--no-plan",
+        "--tools",
+        "Read",
+        "--no-subagents",
+        "--disable-web-search",
+        "--verbatim",
+        "--session-id",
+        "cadeada9-537b-4de4-a7cd-6f6123e03c30"
+      ]
+    }
+  },
+  "automaticRetry": false,
+  "reviewReportsRead": false,
+  "scienceCalls": 0,
+  "waitingPolicy": "Existing local completion/error hook; no model polling or recurring task."
+}

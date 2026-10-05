@@ -15,8 +15,9 @@ CAS repair and ten passing root comparisons are recorded below and in
 [the repair report](../_measurements/S10_anisotropic_strata_report.md).
 The original full-sweep outputs, broad comparator and `S10_exports.py` remain
 unchanged; references to the live join below describe that retained comparator
-artifact, not the new focused comparison. General formal coverage and remaining
-Q6/Q7/integration obligations are listed in [COVERAGE.md](../lean/s10/COVERAGE.md).
+artifact, not the new focused comparison. The bounded six-family Lean contract is complete,
+with Claude and Grok both CLEAR; coverage and the separate CAS production/integration
+limits are in [COVERAGE.md](../lean/s10/COVERAGE.md) and [the closure](../lean/s10/FIDELITY_REVIEW.md).
 
 The subsequent [Q6/Q7 Lean extension](../lean/s10/Q6_Q7_RESULT.md) now proves
 the action/root dimensional analysis and the six-package Levi-Civita comparison.
@@ -60,9 +61,10 @@ restriction. The [metadata extension](../lean/s10/METADATA_RESULT.md) connects
 all Q8/aggregate coincidence fields, reported root signs, root-condition lists,
 spectrum solve operands/statuses and retained/skipped-stratum dispositions. It
 independently proves both extra-root signs that SymPy left undecided to be
-positive on the declared domain. Reality-filter traces, remaining Q5/Q6 and
-period-average metadata, D4, other packages and production comparator/export
-integration remain open.
+positive on the declared domain. Untranslated reality-filter/Q5/Q6 metadata and
+other per-output bridge items are not remaining Lean obligations under the
+[scope policy, binding S10 disposition](../lean/FORMALIZATION_POLICY.md).
+Production comparator/export integration retains its separate acceptance requirements.
 The retained outputs and exports are unchanged. Current full-build evidence
 is recorded in [CAS_BRIDGE_VERIFICATION.txt](../lean/s10/CAS_BRIDGE_VERIFICATION.txt).
 

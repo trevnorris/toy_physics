@@ -1,9 +1,9 @@
-# Why the light sector survives where MacCullagh's ether died
+# What the light sector establishes alongside MacCullagh — and what remains open
 
 **Framing / write-up doc — NOT a physics authority or a spec.** This consolidates, for the eventual
-prior-art / citation pass, *why* the 19th-century elastic ether died and *which specific S11 results*
-address each cause of death. It is banked at the user's request (2026-09-10) while the S11c-d build is in
-flight. The literature mapping and the "where each piece sits" table live in the auto-memory
+prior-art / citation pass, the proposed historical comparison and the limits of the S11 results. Uniform confinement is derived
+within the supplied linear model; nonuniform confinement and the material's physical admissibility remain
+open. S11c is now PARTIAL; see [the closeout, MacCullagh and prohibited claims](../research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md). The literature mapping and the "where each piece sits" table live in the auto-memory
 `reference-prior-art-maccullagh` (richer, but 32 days stale on the S11 state) — read both together.
 
 ⛔ **Framing discipline (see `feedback-framing-split`, `project-analog-framework-goal`):** publicly this is a
@@ -16,10 +16,10 @@ citation pass actually searches.
 
 ## The core observation
 
-The **entire S11 program is organized around the exact question that killed MacCullagh.** `V3_STEP_PLAN.md`
-states S11c's headline as *"is light's confinement unconditional?"* — and confinement-vs-leakage into the
-longitudinal sector is precisely the wound the elastic ether died from. We are not sidestepping the historic
-failure; we are computing it head-on and letting the chips fall.
+The S11 program asks whether a model with additional material motions can keep its light modes confined.
+S11b answers this within the uniform linear model; S11c leaves the nonuniform answer unresolved. This is
+one useful comparison with rotational-elastic light models, not a resolution of every historical objection.
+[Source: S11c closeout, uniform result and MacCullagh boundary](../research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md).
 
 The light sector's *algebra* is not new — it is MacCullagh's rotational aether (1839): curl-only stiffness
 ⇒ `D−1` transverse modes at `c² = μ/ρ` + a zero-restoring-force longitudinal slot (Whittaker, *A History of
@@ -44,35 +44,40 @@ matter–aether coupling."*)
 
 ## The four differentiators — mapped to the four causes
 
-### 1. Confinement is *derived*, not postulated — and it is an identity. → answers cause (1) & (2)
-MacCullagh *assumed* transverse-only. **S11b proved the transverse↔longitudinal coupling is identically zero
-in the uniform brane** (`565b3fe8`) — light is confined as a *derived* consequence of one medium's dynamics,
-not an ad-hoc energy. The `S_leak` object is an **identity**, not an ansatz: *"nobody set out to derive a
-leak; it is what is left because the window has edges"* (`V3_STEP_PLAN.md`, S11b `S_leak`). That derived
-substrate is exactly what cause (2) says he lacked.
+### 1. Uniform confinement is derived within a supplied material model
+S11b derives zero transverse coupling on the **uniform** brane. SymPy and independent Wolfram work support
+it, with the coefficient map and review limits stated in [S11b, transverse mode and comparison](../research/pde_ledger_v3/steps/S11b_interface_coupling_law.md).
+This earns a conditional confinement result; it does not derive the rotational stiffness itself or establish
+its mechanical admissibility. The original `S_leak` window identity is a lead, not an imported authority
+([plan, S_leak](../research/pde_ledger_v3/V3_STEP_PLAN.md)). Reference/stress/torque closure remains open
+([native interpretation, §§5.7, 14.3](native_light_em_and_vortex_throat_interpretation.md)).
 
-### 2. The longitudinal mode is kept, computed, and shown controlled — not suppressed. → answers cause (1)
+### 2. Additional motion is retained; nonuniform conversion is unresolved
 This is the direct differentiator. The thickness/breathing (longitudinal-ish) sector genuinely *exists* in
 the model (S11c-c2's self-energy sector). Instead of assuming it away, S11 computes:
 - **its own fate** — does it radiate or stay bound — in the homogeneous case (S11b-A/B, subsumed into the
   closed `S11b`); and
 - **whether light's confinement survives a non-uniform brane** — the S11c program. The plan is explicit:
-  *"the longitudinal mode's fate needs no gradients; light's confinement needs them."* S11c-d computes the
-  **weak (Born) leakage law**; S11c-e the **strong slit-edge limit**.
+  *"the longitudinal mode's fate needs no gradients; light's confinement needs them."* S11c-d sought the
+  **weak (Born) leakage law** but closes PARTIAL; S11c-e's **strong-edge interpretation** is deferred.
+  [Current d record, handoff](../research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md).
 
-Where MacCullagh made the compression mode vanish by assumption, we keep it and *earn* the confinement — or
-get falsified. This is also where the stray longitudinal acquires a **physical role** (the deliberate anchor
-for the charge sector) rather than being an embarrassment to hide.
+The useful distinction is retaining compression, thickness and bulk channels and testing their coupling.
+Uniform decoupling is earned within the supplied model; confinement around defects is not established.
+Nor is the in-plane longitudinal mode the charge-carrying normal displacement. The charge connection is
+an open question, not an identified holder. [Plan, S11 distinction and charge preamble](../research/pde_ledger_v3/V3_STEP_PLAN.md).
 
-### 3. A falsifiable leakage law + magnitude bound. → answers cause (3)
-The S11c end deliverable is the **flux-normalized leakage FORM** plus a **magnitude bound** (the withheld
-O(1) criterion, `N7`, which needs the throat interior `R1` — a later step). MacCullagh predicted nothing new;
-this predicts *light leaks by this law, bounded by this size*, and if a generic brane feature leaked at
-order-unity the model is dead. Novel, testable, killable — the thing his theory never was.
+### 3. A testable leakage target, not an obtained law or magnitude bound
+The intended deliverable was a flux-normalized conversion law and, with a physical throat profile, a
+magnitude test. S11c has not delivered an accepted nonuniform loss number or a physical upper bound.
+The omega=3 benchmark's empirical 1 ppm floor is a numerical limit, not an optics prediction.
+[Canonical d record, benchmark and handoff](../research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md).
+The possibility of such a test remains useful; it cannot be reported as a completed differentiator.
 
-### 4. Single-substrate, multi-sector provenance. → answers cause (2) at the architecture level
-Light here is *one sector* of a single medium that also yields gravity (flow) and charge/magnetism (throat),
-not a standalone optics re-description. The nearest living programmes each have *half* of this:
+### 4. A proposed single-substrate architecture, with material closure still open
+The intended architecture puts light, flow/gravity and throat/charge in one medium. That ambition does
+not prove a complete compatible material, throat or electric-force mechanism; those obligations remain
+in S12/Q2/Q3/S22 and the material audit. [Closeout, owners](../research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md). The nearest living programmes each have *half* of this:
 - **Unzicker** (*ZAMM* 10.1002/zamm.202100280, 2022) — MacCullagh + topological defects ⇒ EM incl. charge,
   but **no bulk, no brane, no codimension** (an incompressible 3D solid). ⇒ the *confinement architecture is
   not his*; only the charge-from-defect move overlaps. ⚠ His sharper warning: linear-elastic MacCullagh
@@ -82,24 +87,24 @@ not a standalone optics re-description. The nearest living programmes each have 
   topology / effective gauge fields, a different mechanism.
 
 ⇒ **the novel-looking residual, if any, is the ARCHITECTURE** (confinement package + stray-longitudinal-as-
-charge-anchor + gravity-as-drain-flow-while-light-is-MacCullagh-on-the-same-sheet), ⛔ not any single
+charge-question + gravity-as-drain-flow-while-light-is-MacCullagh-on-the-same-sheet), ⛔ not any single
 derivation.
 
 ## The bigger arc (banked, "for later")
 
 Leakage is not purely a failure mode. The velocity leak *"lies outside the passive region ⇒ costs a named
 reservoir, ⛔ not forbidden,"* and the user's **dark-energy postulate** (bulk reordering onto the brane → the
-brane expands → cosmic expansion) is where a *controlled* leak becomes a feature. So the S11 confinement/
-leakage result is also the hinge the cosmology story later hangs on.
+brane expands → cosmic expansion) is a later proposed role for order conversion. It is not a measured
+light-leakage result or an energy-supply proof. [Plan, dark-energy postulate and S12](../research/pde_ledger_v3/V3_STEP_PLAN.md).
 
-## Honest status (as of 2026-09-10)
+## Honest status (2026-10-04)
 
-- **In hand:** uniform confinement = identically zero (S11b, `565b3fe8`); the longitudinal mode's homogeneous
-  fate; the `S_leak` identity.
-- **Being computed now:** the non-uniform *weak* leakage law (S11c-d — current build; the mixing/S-matrix/
-  poles/survival/leakage-FORM engine).
-- **Still ahead:** the strong slit-edge limit (S11c-e); the magnitude *bound* (needs the throat interior
-  `R1`). So the differentiators are partly proven, partly the target we are building toward.
+- **CONDITIONAL:** uniform decoupling within the stated linear model, supported by independent SymPy/Wolfram
+  construction; stability requires nonnegative stiffness. [S11b, transverse mode/reviews](../research/pde_ledger_v3/steps/S11b_interface_coupling_law.md).
+- **UNRESOLVED:** nonuniform confinement and leakage size. The later uniform speed-match check is useful
+  but does not settle a defect. [d record, uniform and benchmark](../research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md).
+- **OPEN:** strong-edge interpretation, physical throat response and rotational material admissibility.
+  These are later questions, not successes attributed to S11c. [Closeout, ownership table](../research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md).
 
 ## Where to cite (for the eventual pass)
 
@@ -116,4 +121,4 @@ graviton leakage. Full table + status in `reference-prior-art-maccullagh`.
 Memory: `reference-prior-art-maccullagh`, `project-analog-framework-goal`, `feedback-framing-split`,
 `project-puncture-deflection-charge-mechanism`, `project-s11b-interface-law-result`,
 `project-native-em-mechanisms`. Plan: `research/pde_ledger_v3/V3_STEP_PLAN.md` (S11 block),
-`steps/S11c_SCOPE.md`. Current build state: `research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md`.
+`steps/S11c_SCOPE.md`. Current scope and limits: `research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md`.

@@ -1,0 +1,102 @@
+[
+  {
+    "name": "saved-shape",
+    "expected": true,
+    "certificate": {
+      "value": "2250 + sqrt(266)*(-1365 + 900*I)/4 + 7500*I",
+      "finite": true,
+      "originalZeroFlag": null,
+      "freeSymbols": [],
+      "certified": true,
+      "route": "EXACT_REAL_IMAGINARY_SIGN_WITNESS",
+      "real": "2250 - 1365*sqrt(266)/4",
+      "imaginary": "225*sqrt(266) + 7500",
+      "reconstructionResidual": "0",
+      "realIsReal": true,
+      "imaginaryIsReal": true,
+      "realSign": -1,
+      "imaginarySign": 1
+    }
+  },
+  {
+    "name": "positive",
+    "expected": true,
+    "certificate": {
+      "value": "2",
+      "finite": true,
+      "originalZeroFlag": false,
+      "freeSymbols": [],
+      "certified": true,
+      "route": "ORIGINAL_EXACT_NONZERO_PROPERTY"
+    }
+  },
+  {
+    "name": "negative",
+    "expected": true,
+    "certificate": {
+      "value": "-2",
+      "finite": true,
+      "originalZeroFlag": false,
+      "freeSymbols": [],
+      "certified": true,
+      "route": "ORIGINAL_EXACT_NONZERO_PROPERTY"
+    }
+  },
+  {
+    "name": "pure-imaginary",
+    "expected": true,
+    "certificate": {
+      "value": "3*I",
+      "finite": true,
+      "originalZeroFlag": false,
+      "freeSymbols": [],
+      "certified": true,
+      "route": "ORIGINAL_EXACT_NONZERO_PROPERTY"
+    }
+  },
+  {
+    "name": "zero",
+    "expected": false,
+    "certificate": {
+      "value": "0",
+      "finite": true,
+      "originalZeroFlag": true,
+      "freeSymbols": [],
+      "certified": false,
+      "route": "UNRESOLVED_EXACT_NONZERO",
+      "real": "0",
+      "imaginary": "0",
+      "reconstructionResidual": "0",
+      "realIsReal": true,
+      "imaginaryIsReal": true,
+      "realSign": 0,
+      "imaginarySign": 0
+    }
+  },
+  {
+    "name": "infinity",
+    "expected": false,
+    "certificate": {
+      "value": "oo",
+      "finite": false,
+      "originalZeroFlag": false,
+      "freeSymbols": [],
+      "certified": false,
+      "route": "NONFINITE_OR_UNBOUND"
+    }
+  },
+  {
+    "name": "unbound",
+    "expected": false,
+    "certificate": {
+      "value": "certificate_unknown",
+      "finite": true,
+      "originalZeroFlag": null,
+      "freeSymbols": [
+        "certificate_unknown"
+      ],
+      "certified": false,
+      "route": "NONFINITE_OR_UNBOUND"
+    }
+  }
+]

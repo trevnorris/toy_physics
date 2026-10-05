@@ -1,0 +1,21 @@
+Finite matched transverse amplitudes — accepted guarded prerequisite
+
+T1 = [[-179/238 - 80 sqrt(595) i/357, 0],
+      [-sqrt(595)/10, -30/119 - 80 sqrt(595) i/357]].
+The localized force contributes the common imaginary diagonal. The remaining
+terms arise from the end step and the momentum-dependent polarization. These
+are amplitudes in the saved incident coordinates, not attenuation.
+
+Reflection is recorded as the exact Abel step plus unevaluated localized
+reflection integrals and counts toward transverse survival. No reflection
+integral, physical flux normalization or leakage factor was evaluated.
+
+The native G0/Gref/G1/K1 calculation, consistent origin/gauge checks, physical
+work balance and all-real receiving regularity remain required.
+
+Execution: 6.838 s, peak 83,795,968 bytes, zero memory events and swap.
+88 new exact-zero returns, 61 inherited zero returns, two formal controls.
+732 saved copies, 1,486 posthashes, 22 snapshots and 21 additional identity
+copies intact; strict stderr empty and stdout/checks identical. Source/JSON/hash
+inspection performed 3,011 metadata checks without scientific replay.
+The result record preserves the two inherited reserialization differences.

@@ -1,0 +1,6279 @@
+{
+  "schedule": {
+    "index": 0,
+    "speed": "100*sqrt(6)/199",
+    "modalRatios": {
+      "LEFT": "199/200",
+      "RIGHT": "199*sqrt(101)/2020"
+    },
+    "bareRatio": "199*sqrt(6)/600"
+  },
+  "end": "LEFT",
+  "status": "SUPPORTED_ON_SELECTED_UNIFORM_SUBSPACE",
+  "momentumSigns": [
+    {
+      "status": "SUPPORTED_ON_SELECTED_UNIFORM_SUBSPACE",
+      "end": "LEFT",
+      "speed": "100*sqrt(6)/199",
+      "sign": -1,
+      "mapping": {
+        "uniformFrequency": "3",
+        "uniformSoundSpeed": "100*sqrt(6)/199",
+        "uniformNormal": "-sqrt(595)/10",
+        "uniformMinusNormal": "-sqrt(595)/10",
+        "uniformPhysicalDepth": "3*sqrt(266)*I/200",
+        "uniformMinusPhysicalDepth": "-3*sqrt(266)*I/200",
+        "uniformAlgebraicRadical": "3*sqrt(399)*I/199"
+      },
+      "stratum": {
+        "normal": "-sqrt(595)/10",
+        "depth": "3*sqrt(266)*I/200",
+        "depthSquared": "-1197/20000",
+        "stratum": "EVANESCENT"
+      },
+      "rank": 2,
+      "fullRankEstimate": 3,
+      "fullNullityEstimate": 2,
+      "fullRankTolerance": 1.4391646882827554e-08,
+      "fullSingularValues": [
+        17.460242159117048,
+        5.9347624788212,
+        3.2968868744177167,
+        3.2663610335310986e-16,
+        1.3550168172161233e-16
+      ],
+      "isolatedDoubletDiagnostic": true,
+      "completeOutgoingBasisClaim": false,
+      "currentGram": [
+        [
+          {
+            "real": -32.875156078526835,
+            "imag": 0.0
+          },
+          {
+            "real": -1.33875,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": -1.33875,
+            "imag": 0.0
+          },
+          {
+            "real": -0.2744169956471355,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "currentEigenvalues": [
+        -32.930039477656265,
+        -0.2195335965177084
+      ],
+      "normalizedBasis": [
+        [
+          {
+            "real": 0.0,
+            "imag": -0.42542891505610936
+          },
+          {
+            "real": 0.0,
+            "imag": 1.036682150965681e-17
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.001427613808913119
+          },
+          {
+            "real": 0.0,
+            "imag": 0.4264958920967452
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": -0.03482324376767128
+          },
+          {
+            "real": 0.0,
+            "imag": 0.017484626907941545
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "normalizedGram": [
+        [
+          {
+            "real": -0.9999999999999999,
+            "imag": 0.0
+          },
+          {
+            "real": 3.283699572970305e-17,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 1.9667080942847795e-17,
+            "imag": 0.0
+          },
+          {
+            "real": -0.9999999999999999,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "direction": "-sqrt(595)/20",
+      "faces": [
+        {
+          "face": 0,
+          "legs": [
+            {
+              "AMPLITUDE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1.474938979663639,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "PRESSURE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "OUTWARD_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "RELATIVE_MASS_FLUX": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "AFFINITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 4.696088483056055,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "CHEMICAL_POTENTIAL": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 2.5589753525804713,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "BULK_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "MECHANICAL_RESPONSE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              }
+            },
+            {
+              "AMPLITUDE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1.474938979663639,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "PRESSURE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "OUTWARD_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "RELATIVE_MASS_FLUX": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "AFFINITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 4.696088483056055,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "CHEMICAL_POTENTIAL": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 2.5589753525804713,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "BULK_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "MECHANICAL_RESPONSE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              }
+            }
+          ],
+          "selectedConjugacy": {
+            "AMPLITUDE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "PRESSURE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "OUTWARD_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "RELATIVE_MASS_FLUX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "AFFINITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "CHEMICAL_POTENTIAL": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "BULK_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "MECHANICAL_RESPONSE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ]
+          },
+          "fullRowConjugacy": {
+            "AMPLITUDE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "PRESSURE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "OUTWARD_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "RELATIVE_MASS_FLUX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "AFFINITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "CHEMICAL_POTENTIAL": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "BULK_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "MECHANICAL_RESPONSE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ]
+          },
+          "conjugacyScales": {
+            "AMPLITUDE": 1,
+            "PRESSURE": 1,
+            "OUTWARD_VELOCITY": 1,
+            "RELATIVE_MASS_FLUX": 1,
+            "AFFINITY": 1,
+            "CHEMICAL_POTENTIAL": 1,
+            "BULK_VELOCITY": 1,
+            "MECHANICAL_RESPONSE": 1
+          }
+        },
+        {
+          "face": 1,
+          "legs": [
+            {
+              "AMPLITUDE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1.474938979663639,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "PRESSURE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "OUTWARD_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "RELATIVE_MASS_FLUX": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "AFFINITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 4.696088483056055,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "CHEMICAL_POTENTIAL": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 2.5589753525804713,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "BULK_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "MECHANICAL_RESPONSE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              }
+            },
+            {
+              "AMPLITUDE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1.474938979663639,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "PRESSURE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "OUTWARD_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "RELATIVE_MASS_FLUX": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "AFFINITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 4.696088483056055,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "CHEMICAL_POTENTIAL": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 2.5589753525804713,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "BULK_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "MECHANICAL_RESPONSE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              }
+            }
+          ],
+          "selectedConjugacy": {
+            "AMPLITUDE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "PRESSURE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "OUTWARD_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "RELATIVE_MASS_FLUX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "AFFINITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "CHEMICAL_POTENTIAL": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "BULK_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "MECHANICAL_RESPONSE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ]
+          },
+          "fullRowConjugacy": {
+            "AMPLITUDE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "PRESSURE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "OUTWARD_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "RELATIVE_MASS_FLUX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "AFFINITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "CHEMICAL_POTENTIAL": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "BULK_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "MECHANICAL_RESPONSE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ]
+          },
+          "conjugacyScales": {
+            "AMPLITUDE": 1,
+            "PRESSURE": 1,
+            "OUTWARD_VELOCITY": 1,
+            "RELATIVE_MASS_FLUX": 1,
+            "AFFINITY": 1,
+            "CHEMICAL_POTENTIAL": 1,
+            "BULK_VELOCITY": 1,
+            "MECHANICAL_RESPONSE": 1
+          }
+        }
+      ],
+      "separateForms": {
+        "BULK_NORMAL_CURRENT_DENSITY_MATRIX": [
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ]
+        ],
+        "BULK_DEPTH_CURRENT_MATRIX": [
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ]
+        ],
+        "INTERFACE_POWER_MATRIX": [
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ]
+        ]
+      },
+      "controls": {
+        "pencil": {
+          "index": [
+            3,
+            0
+          ],
+          "source": "uniformFrequency/5 + uniformFrequency/(2500000*uniformPhysicalDepth*(uniformFrequency/100 + I/10)*(-I*uniformFrequency/100 + 1/10)*(uniformFrequency/(10*uniformPhysicalDepth*(-I*uniformFrequency/10 + 1)) + 1)) - 1/(2500*(uniformFrequency/10 + I))",
+          "original": "(59717 + 15000*sqrt(266) + 199500*I)/(99750 + 25000*sqrt(266) + 332500*I)",
+          "changed": [
+            [
+              {
+                "real": -0.037333333333333336,
+                "imag": 0.0
+              },
+              {
+                "real": -0.018666666666666668,
+                "imag": 0.0
+              },
+              {
+                "real": 0.4553289409256175,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 1.18
+              },
+              {
+                "real": 0.0,
+                "imag": 0.15
+              }
+            ],
+            [
+              {
+                "real": -0.018666666666666668,
+                "imag": 0.0
+              },
+              {
+                "real": -0.009333333333333334,
+                "imag": 0.0
+              },
+              {
+                "real": 0.22766447046280874,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.59
+              },
+              {
+                "real": 0.0,
+                "imag": 0.075
+              }
+            ],
+            [
+              {
+                "real": 0.4553289409256175,
+                "imag": 0.0
+              },
+              {
+                "real": 0.22766447046280874,
+                "imag": 0.0
+              },
+              {
+                "real": -5.553333333333334,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": -14.391646882827553
+              },
+              {
+                "real": 0.0,
+                "imag": -1.8294466376475702
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.29990831857740524,
+                "imag": 6.0068599435999334e-05
+              },
+              {
+                "real": -7.3155502003196045,
+                "imag": -0.001465230630218503
+              },
+              {
+                "real": 0.036041159661599605,
+                "imag": -2.9449911464431495
+              },
+              {
+                "real": 0.11559709509798681,
+                "imag": -2.8235666184010833
+              }
+            ],
+            [
+              {
+                "real": 0.0007366084276395125,
+                "imag": 0.0011242697378557535
+              },
+              {
+                "real": 0.00036830421381975624,
+                "imag": 0.0005621348689278767
+              },
+              {
+                "real": -0.00898390540805313,
+                "imag": -0.013711943278194156
+              },
+              {
+                "real": -4.812719078643274,
+                "imag": -0.22098252829185372
+              },
+              {
+                "real": -3.6076355478883095,
+                "imag": -0.7087712653476042
+              }
+            ]
+          ],
+          "route": "OMIT_FINITE_NATIVE_COEFFICIENT_THEN_REPROJECT_FULL_FIVE_ROW_SOURCE",
+          "residual": [
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": -5.110983817399444e-05,
+                "imag": 0.25517934117737506
+              },
+              {
+                "real": 1.2454408973761536e-21,
+                "imag": -6.218192015906504e-18
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            ]
+          ],
+          "movement": 0.041573843180933344
+        },
+        "current": {
+          "indices": [
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          "source": [
+            "-7/50",
+            "-7/50"
+          ],
+          "changed": [
+            [
+              {
+                "real": -5.488339912942711,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": -5.488339912942711,
+                "imag": 0.0
+              },
+              {
+                "real": -0.07,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": -0.07,
+                "imag": 0.0
+              },
+              {
+                "real": -2.0733728560005797,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 4.425
+              },
+              {
+                "real": 0.0,
+                "imag": 0.5625
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": -4.425
+              },
+              {
+                "real": -1.2196310917650468,
+                "imag": 0.0
+              },
+              {
+                "real": -0.36588932752951403,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": -0.5625
+              },
+              {
+                "real": -0.36588932752951403,
+                "imag": 0.0
+              },
+              {
+                "real": -1.8294466376475702,
+                "imag": 0.0
+              }
+            ]
+          ],
+          "Gram": [
+            [
+              {
+                "real": -0.9958518518518518,
+                "imag": 0.0
+              },
+              {
+                "real": -0.001041385219784867,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": -0.00104138521978488,
+                "imag": 0.0
+              },
+              {
+                "real": -0.9999999999999999,
+                "imag": 0.0
+              }
+            ]
+          ],
+          "movement": 0.004148148148148123
+        },
+        "orientation": {
+          "assigned": -1,
+          "reversed": 1,
+          "baseline": [
+            1.0,
+            1.0
+          ],
+          "reversedCurrentSigns": [
+            -1.0,
+            -1.0
+          ],
+          "independentGroupSign": 1.0,
+          "disagreement": true
+        },
+        "outwardVelocity": [
+          {
+            "face": 0,
+            "leg": 0,
+            "baseline": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": -1.5
+                }
+              ]
+            ],
+            "omitted": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "unitProbeColumn": 4,
+            "movement": 1.0
+          },
+          {
+            "face": 0,
+            "leg": 1,
+            "baseline": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 1.5
+                }
+              ]
+            ],
+            "omitted": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "unitProbeColumn": 4,
+            "movement": 1.0
+          },
+          {
+            "face": 1,
+            "leg": 0,
+            "baseline": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": -1.5
+                }
+              ]
+            ],
+            "omitted": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "unitProbeColumn": 4,
+            "movement": 1.0
+          },
+          {
+            "face": 1,
+            "leg": 1,
+            "baseline": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 1.5
+                }
+              ]
+            ],
+            "omitted": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "unitProbeColumn": 4,
+            "movement": 1.0
+          }
+        ]
+      },
+      "sourceDomain": {
+        "minimumNonzeroMagnitude": 0.1044030650891055,
+        "directSubstitutionExclusions": [],
+        "certificateRoute": "SAVED_DENOMINATOR_EXACT_NONZERO",
+        "priorExclusions": [
+          [
+            "P",
+            {
+              "factor": "250*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "2250 + sqrt(266)*(-1365 + 900*I)/4 + 7500*I"
+            }
+          ],
+          [
+            "P",
+            {
+              "factor": "500*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "4500 + sqrt(266)*(-1365 + 900*I)/2 + 15000*I"
+            }
+          ],
+          [
+            "P",
+            {
+              "factor": "50*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "450 + sqrt(266)*(-273 + 180*I)/4 + 1500*I"
+            }
+          ],
+          [
+            "P",
+            {
+              "factor": "300*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "2700 + sqrt(266)*(-819 + 540*I)/2 + 9000*I"
+            }
+          ],
+          [
+            "P",
+            {
+              "factor": "1000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "9000 + sqrt(266)*(-1365 + 900*I) + 30000*I"
+            }
+          ],
+          [
+            "Pminus",
+            {
+              "factor": "250*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+              "value": "-2250 + sqrt(266)*(1365 + 900*I)/4 + 7500*I"
+            }
+          ],
+          [
+            "Pminus",
+            {
+              "factor": "500*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+              "value": "-4500 + sqrt(266)*(1365 + 900*I)/2 + 15000*I"
+            }
+          ],
+          [
+            "Pminus",
+            {
+              "factor": "50*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+              "value": "-450 + sqrt(266)*(273 + 180*I)/4 + 1500*I"
+            }
+          ],
+          [
+            "Pminus",
+            {
+              "factor": "300*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+              "value": "-2700 + sqrt(266)*(819 + 540*I)/2 + 9000*I"
+            }
+          ],
+          [
+            "Pminus",
+            {
+              "factor": "1000*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+              "value": "-9000 + sqrt(266)*(1365 + 900*I) + 30000*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "3*uniformPhysicalDepth/25 + 91*I*uniformPhysicalDepth/500 + 9/500 + 3*I/50",
+              "value": "9/500 + 3*sqrt(266)*(-91 + 60*I)/100000 + 3*I/50"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "3000*uniformPhysicalDepth + 4550*I*uniformPhysicalDepth + 450 + 1500*I",
+              "value": "450 + sqrt(266)*(-273 + 180*I)/4 + 1500*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "6000*uniformPhysicalDepth + 9100*I*uniformPhysicalDepth + 900 + 3000*I",
+              "value": "900 + sqrt(266)*(-273 + 180*I)/2 + 3000*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "600*uniformPhysicalDepth + 910*I*uniformPhysicalDepth + 90 + 300*I",
+              "value": "90 + sqrt(266)*(-273 + 180*I)/20 + 300*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "3600*uniformPhysicalDepth + 5460*I*uniformPhysicalDepth + 540 + 1800*I",
+              "value": "540 + sqrt(266)*(-819 + 540*I)/10 + 1800*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "12000*uniformPhysicalDepth + 18200*I*uniformPhysicalDepth + 1800 + 6000*I",
+              "value": "1800 + sqrt(266)*(-273 + 180*I) + 6000*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "30000*uniformPhysicalDepth + 45500*I*uniformPhysicalDepth + 4500 + 15000*I",
+              "value": "4500 + sqrt(266)*(-1365 + 900*I)/2 + 15000*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "60000*uniformPhysicalDepth + 91000*I*uniformPhysicalDepth + 9000 + 30000*I",
+              "value": "9000 + sqrt(266)*(-1365 + 900*I) + 30000*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "120000*uniformPhysicalDepth + 182000*I*uniformPhysicalDepth + 18000 + 60000*I",
+              "value": "18000 + sqrt(266)*(-2730 + 1800*I) + 60000*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "36000*uniformPhysicalDepth + 54600*I*uniformPhysicalDepth + 5400 + 18000*I",
+              "value": "5400 + sqrt(266)*(-819 + 540*I) + 18000*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "3*uniformMinusPhysicalDepth/25 - 91*I*uniformMinusPhysicalDepth/500 + 9/500 - 3*I/50",
+              "value": "9/500 - 3*I/50 - 3*sqrt(266)*(91 + 60*I)/100000"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "3000*uniformMinusPhysicalDepth - 4550*I*uniformMinusPhysicalDepth + 450 - 1500*I",
+              "value": "450 - 1500*I + sqrt(266)*(-273 - 180*I)/4"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "6000*uniformMinusPhysicalDepth - 9100*I*uniformMinusPhysicalDepth + 900 - 3000*I",
+              "value": "900 - 3000*I + sqrt(266)*(-273 - 180*I)/2"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "600*uniformMinusPhysicalDepth - 910*I*uniformMinusPhysicalDepth + 90 - 300*I",
+              "value": "90 - 300*I + sqrt(266)*(-273 - 180*I)/20"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "3600*uniformMinusPhysicalDepth - 5460*I*uniformMinusPhysicalDepth + 540 - 1800*I",
+              "value": "540 - 1800*I + sqrt(266)*(-819 - 540*I)/10"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "12000*uniformMinusPhysicalDepth - 18200*I*uniformMinusPhysicalDepth + 1800 - 6000*I",
+              "value": "1800 - 6000*I + sqrt(266)*(-273 - 180*I)"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "30000*uniformMinusPhysicalDepth - 45500*I*uniformMinusPhysicalDepth + 4500 - 15000*I",
+              "value": "4500 - 15000*I + sqrt(266)*(-1365 - 900*I)/2"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "60000*uniformMinusPhysicalDepth - 91000*I*uniformMinusPhysicalDepth + 9000 - 30000*I",
+              "value": "9000 - 30000*I + sqrt(266)*(-1365 - 900*I)"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "120000*uniformMinusPhysicalDepth - 182000*I*uniformMinusPhysicalDepth + 18000 - 60000*I",
+              "value": "18000 - 60000*I + sqrt(266)*(-2730 - 1800*I)"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "36000*uniformMinusPhysicalDepth - 54600*I*uniformMinusPhysicalDepth + 5400 - 18000*I",
+              "value": "5400 - 18000*I + sqrt(266)*(-819 - 540*I)"
+            }
+          ],
+          [
+            "forms",
+            {
+              "factor": "3*uniformMinusPhysicalDepth/25 - 91*I*uniformMinusPhysicalDepth/500 + 9/500 - 3*I/50",
+              "value": "9/500 - 3*I/50 - 3*sqrt(266)*(91 + 60*I)/100000"
+            }
+          ],
+          [
+            "forms",
+            {
+              "factor": "3*uniformPhysicalDepth/25 + 91*I*uniformPhysicalDepth/500 + 9/500 + 3*I/50",
+              "value": "9/500 + 3*sqrt(266)*(-91 + 60*I)/100000 + 3*I/50"
+            }
+          ],
+          [
+            "selectedRestriction",
+            {
+              "factor": "250*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "2250 + sqrt(266)*(-1365 + 900*I)/4 + 7500*I"
+            }
+          ],
+          [
+            "selectedRestriction",
+            {
+              "factor": "500*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "4500 + sqrt(266)*(-1365 + 900*I)/2 + 15000*I"
+            }
+          ],
+          [
+            "selectedRestriction",
+            {
+              "factor": "50*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "450 + sqrt(266)*(-273 + 180*I)/4 + 1500*I"
+            }
+          ],
+          [
+            "selectedRestriction",
+            {
+              "factor": "300*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "2700 + sqrt(266)*(-819 + 540*I)/2 + 9000*I"
+            }
+          ],
+          [
+            "selectedRestriction",
+            {
+              "factor": "1000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "9000 + sqrt(266)*(-1365 + 900*I) + 30000*I"
+            }
+          ]
+        ],
+        "magnitudeScope": "Prior certified subset only"
+      },
+      "liftCondition": 12.247448713915887,
+      "currentCondition": 150.00000000000003,
+      "approachToExactLimit": {
+        "SLAB_CURRENT_MATRIX": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "BULK_NORMAL_CURRENT_DENSITY_MATRIX": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "BULK_DEPTH_CURRENT_MATRIX": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "INTERFACE_POWER_MATRIX": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "conditionalApplicability": true
+    },
+    {
+      "status": "SUPPORTED_ON_SELECTED_UNIFORM_SUBSPACE",
+      "end": "LEFT",
+      "speed": "100*sqrt(6)/199",
+      "sign": 1,
+      "mapping": {
+        "uniformFrequency": "3",
+        "uniformSoundSpeed": "100*sqrt(6)/199",
+        "uniformNormal": "sqrt(595)/10",
+        "uniformMinusNormal": "sqrt(595)/10",
+        "uniformPhysicalDepth": "3*sqrt(266)*I/200",
+        "uniformMinusPhysicalDepth": "-3*sqrt(266)*I/200",
+        "uniformAlgebraicRadical": "3*sqrt(399)*I/199"
+      },
+      "stratum": {
+        "normal": "sqrt(595)/10",
+        "depth": "3*sqrt(266)*I/200",
+        "depthSquared": "-1197/20000",
+        "stratum": "EVANESCENT"
+      },
+      "rank": 2,
+      "fullRankEstimate": 3,
+      "fullNullityEstimate": 2,
+      "fullRankTolerance": 1.4391646882827554e-08,
+      "fullSingularValues": [
+        17.460242159117048,
+        5.9347624788212,
+        3.2968868744177167,
+        3.2663610335310986e-16,
+        1.3550168172161233e-16
+      ],
+      "isolatedDoubletDiagnostic": true,
+      "completeOutgoingBasisClaim": false,
+      "currentGram": [
+        [
+          {
+            "real": 32.875156078526835,
+            "imag": 0.0
+          },
+          {
+            "real": -1.33875,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": -1.33875,
+            "imag": 0.0
+          },
+          {
+            "real": 0.2744169956471355,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "currentEigenvalues": [
+        0.2195335965177084,
+        32.930039477656265
+      ],
+      "normalizedBasis": [
+        [
+          {
+            "real": 0.0,
+            "imag": 1.036682150965681e-17
+          },
+          {
+            "real": 0.0,
+            "imag": 0.42542891505610936
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.4264958920967452
+          },
+          {
+            "real": 0.0,
+            "imag": -0.001427613808913119
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": -0.017484626907941545
+          },
+          {
+            "real": 0.0,
+            "imag": -0.03482324376767128
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 0.0,
+            "imag": 0.0
+          },
+          {
+            "real": 0.0,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "normalizedGram": [
+        [
+          {
+            "real": 0.9999999999999999,
+            "imag": 0.0
+          },
+          {
+            "real": 1.9667080942847795e-17,
+            "imag": 0.0
+          }
+        ],
+        [
+          {
+            "real": 3.283699572970305e-17,
+            "imag": 0.0
+          },
+          {
+            "real": 0.9999999999999999,
+            "imag": 0.0
+          }
+        ]
+      ],
+      "direction": "sqrt(595)/20",
+      "faces": [
+        {
+          "face": 0,
+          "legs": [
+            {
+              "AMPLITUDE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1.474938979663639,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "PRESSURE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "OUTWARD_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "RELATIVE_MASS_FLUX": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "AFFINITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 4.696088483056055,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "CHEMICAL_POTENTIAL": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 2.5589753525804713,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "BULK_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "MECHANICAL_RESPONSE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              }
+            },
+            {
+              "AMPLITUDE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1.474938979663639,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "PRESSURE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "OUTWARD_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "RELATIVE_MASS_FLUX": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "AFFINITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 4.696088483056055,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "CHEMICAL_POTENTIAL": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 2.5589753525804713,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "BULK_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "MECHANICAL_RESPONSE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              }
+            }
+          ],
+          "selectedConjugacy": {
+            "AMPLITUDE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "PRESSURE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "OUTWARD_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "RELATIVE_MASS_FLUX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "AFFINITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "CHEMICAL_POTENTIAL": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "BULK_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "MECHANICAL_RESPONSE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ]
+          },
+          "fullRowConjugacy": {
+            "AMPLITUDE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "PRESSURE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "OUTWARD_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "RELATIVE_MASS_FLUX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "AFFINITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "CHEMICAL_POTENTIAL": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "BULK_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "MECHANICAL_RESPONSE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ]
+          },
+          "conjugacyScales": {
+            "AMPLITUDE": 1,
+            "PRESSURE": 1,
+            "OUTWARD_VELOCITY": 1,
+            "RELATIVE_MASS_FLUX": 1,
+            "AFFINITY": 1,
+            "CHEMICAL_POTENTIAL": 1,
+            "BULK_VELOCITY": 1,
+            "MECHANICAL_RESPONSE": 1
+          }
+        },
+        {
+          "face": 1,
+          "legs": [
+            {
+              "AMPLITUDE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1.474938979663639,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "PRESSURE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "OUTWARD_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "RELATIVE_MASS_FLUX": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "AFFINITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 4.696088483056055,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "CHEMICAL_POTENTIAL": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 2.5589753525804713,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "BULK_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "MECHANICAL_RESPONSE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              }
+            },
+            {
+              "AMPLITUDE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1.474938979663639,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "PRESSURE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "OUTWARD_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "RELATIVE_MASS_FLUX": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "AFFINITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 4.696088483056055,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "CHEMICAL_POTENTIAL": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 2.5589753525804713,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "BULK_VELOCITY": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              },
+              "MECHANICAL_RESPONSE": {
+                "exact": [
+                  [
+                    "0",
+                    "0"
+                  ]
+                ],
+                "exactZero": true,
+                "normalizedProjection": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    },
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "scale": 1,
+                "relative": 0.0,
+                "fullRowFinite": true,
+                "scaleSource": "FULL_NATIVE_ROW"
+              }
+            }
+          ],
+          "selectedConjugacy": {
+            "AMPLITUDE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "PRESSURE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "OUTWARD_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "RELATIVE_MASS_FLUX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "AFFINITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "CHEMICAL_POTENTIAL": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "BULK_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "MECHANICAL_RESPONSE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ]
+          },
+          "fullRowConjugacy": {
+            "AMPLITUDE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "PRESSURE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "OUTWARD_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "RELATIVE_MASS_FLUX": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "AFFINITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "CHEMICAL_POTENTIAL": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "BULK_VELOCITY": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "MECHANICAL_RESPONSE": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ]
+          },
+          "conjugacyScales": {
+            "AMPLITUDE": 1,
+            "PRESSURE": 1,
+            "OUTWARD_VELOCITY": 1,
+            "RELATIVE_MASS_FLUX": 1,
+            "AFFINITY": 1,
+            "CHEMICAL_POTENTIAL": 1,
+            "BULK_VELOCITY": 1,
+            "MECHANICAL_RESPONSE": 1
+          }
+        }
+      ],
+      "separateForms": {
+        "BULK_NORMAL_CURRENT_DENSITY_MATRIX": [
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ]
+        ],
+        "BULK_DEPTH_CURRENT_MATRIX": [
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ]
+        ],
+        "INTERFACE_POWER_MATRIX": [
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ],
+          [
+            {
+              "real": 0.0,
+              "imag": 0.0
+            },
+            {
+              "real": 0.0,
+              "imag": 0.0
+            }
+          ]
+        ]
+      },
+      "controls": {
+        "pencil": {
+          "index": [
+            3,
+            0
+          ],
+          "source": "uniformFrequency/5 + uniformFrequency/(2500000*uniformPhysicalDepth*(uniformFrequency/100 + I/10)*(-I*uniformFrequency/100 + 1/10)*(uniformFrequency/(10*uniformPhysicalDepth*(-I*uniformFrequency/10 + 1)) + 1)) - 1/(2500*(uniformFrequency/10 + I))",
+          "original": "(59717 + 15000*sqrt(266) + 199500*I)/(99750 + 25000*sqrt(266) + 332500*I)",
+          "changed": [
+            [
+              {
+                "real": -0.037333333333333336,
+                "imag": 0.0
+              },
+              {
+                "real": -0.018666666666666668,
+                "imag": 0.0
+              },
+              {
+                "real": -0.4553289409256175,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 1.18
+              },
+              {
+                "real": 0.0,
+                "imag": 0.15
+              }
+            ],
+            [
+              {
+                "real": -0.018666666666666668,
+                "imag": 0.0
+              },
+              {
+                "real": -0.009333333333333334,
+                "imag": 0.0
+              },
+              {
+                "real": -0.22766447046280874,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.59
+              },
+              {
+                "real": 0.0,
+                "imag": 0.075
+              }
+            ],
+            [
+              {
+                "real": -0.4553289409256175,
+                "imag": 0.0
+              },
+              {
+                "real": -0.22766447046280874,
+                "imag": 0.0
+              },
+              {
+                "real": -5.553333333333334,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 14.391646882827553
+              },
+              {
+                "real": 0.0,
+                "imag": 1.8294466376475702
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.29990831857740524,
+                "imag": 6.0068599435999334e-05
+              },
+              {
+                "real": 7.3155502003196045,
+                "imag": 0.001465230630218503
+              },
+              {
+                "real": 0.036041159661599605,
+                "imag": -2.9449911464431495
+              },
+              {
+                "real": 0.11559709509798681,
+                "imag": -2.8235666184010833
+              }
+            ],
+            [
+              {
+                "real": 0.0007366084276395125,
+                "imag": 0.0011242697378557535
+              },
+              {
+                "real": 0.00036830421381975624,
+                "imag": 0.0005621348689278767
+              },
+              {
+                "real": 0.00898390540805313,
+                "imag": 0.013711943278194156
+              },
+              {
+                "real": -4.812719078643274,
+                "imag": -0.22098252829185372
+              },
+              {
+                "real": -3.6076355478883095,
+                "imag": -0.7087712653476042
+              }
+            ]
+          ],
+          "route": "OMIT_FINITE_NATIVE_COEFFICIENT_THEN_REPROJECT_FULL_FIVE_ROW_SOURCE",
+          "residual": [
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": 1.2454408973761536e-21,
+                "imag": -6.218192015906504e-18
+              },
+              {
+                "real": 5.110983817399444e-05,
+                "imag": -0.25517934117737506
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            ]
+          ],
+          "movement": 0.041573843180933344
+        },
+        "current": {
+          "indices": [
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          "source": [
+            "-7/50",
+            "-7/50"
+          ],
+          "changed": [
+            [
+              {
+                "real": 5.488339912942711,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 5.488339912942711,
+                "imag": 0.0
+              },
+              {
+                "real": -0.07,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": -0.07,
+                "imag": 0.0
+              },
+              {
+                "real": 2.0733728560005797,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 4.425
+              },
+              {
+                "real": 0.0,
+                "imag": 0.5625
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": -4.425
+              },
+              {
+                "real": 1.2196310917650468,
+                "imag": 0.0
+              },
+              {
+                "real": 0.36588932752951403,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": 0.0
+              },
+              {
+                "real": 0.0,
+                "imag": -0.5625
+              },
+              {
+                "real": 0.36588932752951403,
+                "imag": 0.0
+              },
+              {
+                "real": 1.8294466376475702,
+                "imag": 0.0
+              }
+            ]
+          ],
+          "Gram": [
+            [
+              {
+                "real": 0.9999999999999999,
+                "imag": 0.0
+              },
+              {
+                "real": -0.00104138521978488,
+                "imag": 0.0
+              }
+            ],
+            [
+              {
+                "real": -0.001041385219784867,
+                "imag": 0.0
+              },
+              {
+                "real": 0.9958518518518518,
+                "imag": 0.0
+              }
+            ]
+          ],
+          "movement": 0.004148148148148123
+        },
+        "orientation": {
+          "assigned": -1,
+          "reversed": 1,
+          "baseline": [
+            -1.0,
+            -1.0
+          ],
+          "reversedCurrentSigns": [
+            1.0,
+            1.0
+          ],
+          "independentGroupSign": -1.0,
+          "disagreement": true
+        },
+        "outwardVelocity": [
+          {
+            "face": 0,
+            "leg": 0,
+            "baseline": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": -1.5
+                }
+              ]
+            ],
+            "omitted": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "unitProbeColumn": 4,
+            "movement": 1.0
+          },
+          {
+            "face": 0,
+            "leg": 1,
+            "baseline": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 1.5
+                }
+              ]
+            ],
+            "omitted": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "unitProbeColumn": 4,
+            "movement": 1.0
+          },
+          {
+            "face": 1,
+            "leg": 0,
+            "baseline": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": -1.5
+                }
+              ]
+            ],
+            "omitted": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "unitProbeColumn": 4,
+            "movement": 1.0
+          },
+          {
+            "face": 1,
+            "leg": 1,
+            "baseline": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 1.5
+                }
+              ]
+            ],
+            "omitted": [
+              [
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                },
+                {
+                  "real": 0.0,
+                  "imag": 0.0
+                }
+              ]
+            ],
+            "unitProbeColumn": 4,
+            "movement": 1.0
+          }
+        ],
+        "sheet": [
+          {
+            "face": 0,
+            "leg": 0,
+            "column": 3,
+            "rows": {
+              "AMPLITUDE": {
+                "baseline": [
+                  [
+                    {
+                      "real": -0.7366084276395124,
+                      "imag": -1.1242697378557536
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 1.3200041257810706,
+                      "imag": -1.2226916778633496
+                    }
+                  ]
+                ]
+              },
+              "PRESSURE": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.33728092135672605,
+                      "imag": -0.22098252829185372
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.36680750335900486,
+                      "imag": 0.39600123773432117
+                    }
+                  ]
+                ]
+              },
+              "OUTWARD_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              },
+              "RELATIVE_MASS_FLUX": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.018020579830799802,
+                      "imag": 0.027504426778425312
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.032292923666173534,
+                      "imag": -0.02991224667358006
+                    }
+                  ]
+                ]
+              },
+              "AFFINITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 2.6271907864327395,
+                      "imag": 2.2098252829185374
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 2.3319249664099515,
+                      "imag": -3.960012377343212
+                    }
+                  ]
+                ]
+              },
+              "CHEMICAL_POTENTIAL": {
+                "baseline": [
+                  [
+                    {
+                      "real": 6.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 6.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              },
+              "BULK_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.18020579830799802,
+                      "imag": 0.2750442677842531
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.3229292366617353,
+                      "imag": -0.2991224667358006
+                    }
+                  ]
+                ]
+              },
+              "MECHANICAL_RESPONSE": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              }
+            },
+            "movement": 1.7992736954658513,
+            "sourceClosure": "I*closureAmplitude*uniformPhysicalDepth/10 + 3*I*s11cdCurrentPlusAmplitude4/20 - I*(3/10 - I)*(-3*I*closureAmplitude + I*s11cdCurrentPlusAmplitude0/50 + I*s11cdCurrentPlusAmplitude1/100 + I*s11cdCurrentPlusAmplitude2*uniformNormal/10 + s11cdCurrentPlusAmplitude3*uniformNormal**2/3 + 241*s11cdCurrentPlusAmplitude3/60 + s11cdCurrentPlusAmplitude4*uniformNormal**2/10 + 51*s11cdCurrentPlusAmplitude4/200)/109",
+            "changedAmplitude": "s11cdCurrentPlusAmplitude0*(3/(25000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(2500*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude1*(3/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude2*(3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude3*(3/(25*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 9*I/(250*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude4*(-2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 163/(1000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)))",
+            "rawClosure": "3*I*s11cdCurrentPlusAmplitude4/20 + 3*sqrt(266)*(s11cdCurrentPlusAmplitude0*(3/(25000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(2500*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude1*(3/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude2*(3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude3*(3/(25*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 9*I/(250*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude4*(-2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 163/(1000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))))/2000 - I*(3/10 - I)*(I*s11cdCurrentPlusAmplitude0/50 + I*s11cdCurrentPlusAmplitude1/100 + sqrt(595)*I*s11cdCurrentPlusAmplitude2/100 + 6*s11cdCurrentPlusAmplitude3 + 17*s11cdCurrentPlusAmplitude4/20 - 3*I*(s11cdCurrentPlusAmplitude0*(3/(25000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(2500*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude1*(3/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude2*(3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude3*(3/(25*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 9*I/(250*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude4*(-2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 163/(1000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)))))/109",
+            "closureResidual": "0"
+          },
+          {
+            "face": 0,
+            "leg": 0,
+            "column": 4,
+            "rows": {
+              "AMPLITUDE": {
+                "baseline": [
+                  [
+                    {
+                      "real": -2.3625708844920137,
+                      "imag": 2.5254518262943644
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -3.8597317045085253,
+                      "imag": -2.556206210419139
+                    }
+                  ]
+                ]
+              },
+              "PRESSURE": {
+                "baseline": [
+                  [
+                    {
+                      "real": -0.7576355478883093,
+                      "imag": -0.7087712653476042
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.7668618631257417,
+                      "imag": -1.1579195113525576
+                    }
+                  ]
+                ]
+              },
+              "OUTWARD_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": -1.5
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": -1.5
+                    }
+                  ]
+                ]
+              },
+              "RELATIVE_MASS_FLUX": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.057798547548993405,
+                      "imag": 0.08821669079945843
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -0.09442547858087239,
+                      "imag": 0.08746430756099405
+                    }
+                  ]
+                ]
+              },
+              "AFFINITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 8.426355478883094,
+                      "imag": 7.087712653476041
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -6.818618631257417,
+                      "imag": 11.579195113525575
+                    }
+                  ]
+                ]
+              },
+              "CHEMICAL_POTENTIAL": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.85,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.85,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              },
+              "BULK_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.5779854754899341,
+                      "imag": -0.6178330920054157
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -0.9442547858087238,
+                      "imag": -0.6253569243900596
+                    }
+                  ]
+                ]
+              },
+              "MECHANICAL_RESPONSE": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              }
+            },
+            "movement": 1.5318678532242733,
+            "sourceClosure": "I*closureAmplitude*uniformPhysicalDepth/10 + 3*I*s11cdCurrentPlusAmplitude4/20 - I*(3/10 - I)*(-3*I*closureAmplitude + I*s11cdCurrentPlusAmplitude0/50 + I*s11cdCurrentPlusAmplitude1/100 + I*s11cdCurrentPlusAmplitude2*uniformNormal/10 + s11cdCurrentPlusAmplitude3*uniformNormal**2/3 + 241*s11cdCurrentPlusAmplitude3/60 + s11cdCurrentPlusAmplitude4*uniformNormal**2/10 + 51*s11cdCurrentPlusAmplitude4/200)/109",
+            "changedAmplitude": "s11cdCurrentPlusAmplitude0*(3/(25000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(2500*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude1*(3/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude2*(3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude3*(3/(25*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 9*I/(250*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude4*(-2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 163/(1000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)))",
+            "rawClosure": "3*I*s11cdCurrentPlusAmplitude4/20 + 3*sqrt(266)*(s11cdCurrentPlusAmplitude0*(3/(25000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(2500*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude1*(3/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude2*(3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude3*(3/(25*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 9*I/(250*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude4*(-2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 163/(1000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))))/2000 - I*(3/10 - I)*(I*s11cdCurrentPlusAmplitude0/50 + I*s11cdCurrentPlusAmplitude1/100 + sqrt(595)*I*s11cdCurrentPlusAmplitude2/100 + 6*s11cdCurrentPlusAmplitude3 + 17*s11cdCurrentPlusAmplitude4/20 - 3*I*(s11cdCurrentPlusAmplitude0*(3/(25000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(2500*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude1*(3/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude2*(3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude3*(3/(25*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 9*I/(250*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude4*(-2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 163/(1000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)))))/109",
+            "closureResidual": "0"
+          },
+          {
+            "face": 0,
+            "leg": 1,
+            "column": 3,
+            "rows": {
+              "AMPLITUDE": {
+                "baseline": [
+                  [
+                    {
+                      "real": -0.7366084276395124,
+                      "imag": 1.1242697378557536
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 1.3200041257810706,
+                      "imag": 1.2226916778633496
+                    }
+                  ]
+                ]
+              },
+              "PRESSURE": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.33728092135672605,
+                      "imag": 0.22098252829185372
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.36680750335900486,
+                      "imag": -0.39600123773432117
+                    }
+                  ]
+                ]
+              },
+              "OUTWARD_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              },
+              "RELATIVE_MASS_FLUX": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.018020579830799802,
+                      "imag": -0.027504426778425312
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.032292923666173534,
+                      "imag": 0.02991224667358006
+                    }
+                  ]
+                ]
+              },
+              "AFFINITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 2.6271907864327395,
+                      "imag": -2.2098252829185374
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 2.3319249664099515,
+                      "imag": 3.960012377343212
+                    }
+                  ]
+                ]
+              },
+              "CHEMICAL_POTENTIAL": {
+                "baseline": [
+                  [
+                    {
+                      "real": 6.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 6.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              },
+              "BULK_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.18020579830799802,
+                      "imag": -0.2750442677842531
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.3229292366617353,
+                      "imag": 0.2991224667358006
+                    }
+                  ]
+                ]
+              },
+              "MECHANICAL_RESPONSE": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              }
+            },
+            "movement": 1.7992736954658513,
+            "sourceClosure": "-I*closureAmplitude*uniformMinusPhysicalDepth/10 - 3*I*s11cdCurrentMinusAmplitude4/20 - I*(-3/10 - I)*(3*I*closureAmplitude - I*s11cdCurrentMinusAmplitude0/50 - I*s11cdCurrentMinusAmplitude1/100 - I*s11cdCurrentMinusAmplitude2*uniformMinusNormal/10 + s11cdCurrentMinusAmplitude3*uniformMinusNormal**2/3 + 241*s11cdCurrentMinusAmplitude3/60 + s11cdCurrentMinusAmplitude4*uniformMinusNormal**2/10 + 51*s11cdCurrentMinusAmplitude4/200)/109",
+            "changedAmplitude": "s11cdCurrentMinusAmplitude0*(-I/(2500*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude1*(-I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude2*(-sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude3*(9*I/(250*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude4*(-163/(1000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)))",
+            "rawClosure": "-3*I*s11cdCurrentMinusAmplitude4/20 + 3*sqrt(266)*(s11cdCurrentMinusAmplitude0*(-I/(2500*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude1*(-I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude2*(-sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude3*(9*I/(250*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude4*(-163/(1000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))))/2000 - I*(-3/10 - I)*(-I*s11cdCurrentMinusAmplitude0/50 - I*s11cdCurrentMinusAmplitude1/100 - sqrt(595)*I*s11cdCurrentMinusAmplitude2/100 + 6*s11cdCurrentMinusAmplitude3 + 17*s11cdCurrentMinusAmplitude4/20 + 3*I*(s11cdCurrentMinusAmplitude0*(-I/(2500*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude1*(-I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude2*(-sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude3*(9*I/(250*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude4*(-163/(1000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)))))/109",
+            "closureResidual": "0"
+          },
+          {
+            "face": 0,
+            "leg": 1,
+            "column": 4,
+            "rows": {
+              "AMPLITUDE": {
+                "baseline": [
+                  [
+                    {
+                      "real": -2.3625708844920137,
+                      "imag": -2.5254518262943644
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -3.8597317045085253,
+                      "imag": 2.556206210419139
+                    }
+                  ]
+                ]
+              },
+              "PRESSURE": {
+                "baseline": [
+                  [
+                    {
+                      "real": -0.7576355478883093,
+                      "imag": 0.7087712653476042
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.7668618631257417,
+                      "imag": 1.1579195113525576
+                    }
+                  ]
+                ]
+              },
+              "OUTWARD_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 1.5
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 1.5
+                    }
+                  ]
+                ]
+              },
+              "RELATIVE_MASS_FLUX": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.057798547548993405,
+                      "imag": -0.08821669079945843
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -0.09442547858087239,
+                      "imag": -0.08746430756099405
+                    }
+                  ]
+                ]
+              },
+              "AFFINITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 8.426355478883094,
+                      "imag": -7.087712653476041
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -6.818618631257417,
+                      "imag": -11.579195113525575
+                    }
+                  ]
+                ]
+              },
+              "CHEMICAL_POTENTIAL": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.85,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.85,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              },
+              "BULK_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.5779854754899341,
+                      "imag": 0.6178330920054157
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -0.9442547858087238,
+                      "imag": 0.6253569243900596
+                    }
+                  ]
+                ]
+              },
+              "MECHANICAL_RESPONSE": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              }
+            },
+            "movement": 1.5318678532242733,
+            "sourceClosure": "-I*closureAmplitude*uniformMinusPhysicalDepth/10 - 3*I*s11cdCurrentMinusAmplitude4/20 - I*(-3/10 - I)*(3*I*closureAmplitude - I*s11cdCurrentMinusAmplitude0/50 - I*s11cdCurrentMinusAmplitude1/100 - I*s11cdCurrentMinusAmplitude2*uniformMinusNormal/10 + s11cdCurrentMinusAmplitude3*uniformMinusNormal**2/3 + 241*s11cdCurrentMinusAmplitude3/60 + s11cdCurrentMinusAmplitude4*uniformMinusNormal**2/10 + 51*s11cdCurrentMinusAmplitude4/200)/109",
+            "changedAmplitude": "s11cdCurrentMinusAmplitude0*(-I/(2500*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude1*(-I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude2*(-sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude3*(9*I/(250*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude4*(-163/(1000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)))",
+            "rawClosure": "-3*I*s11cdCurrentMinusAmplitude4/20 + 3*sqrt(266)*(s11cdCurrentMinusAmplitude0*(-I/(2500*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude1*(-I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude2*(-sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude3*(9*I/(250*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude4*(-163/(1000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))))/2000 - I*(-3/10 - I)*(-I*s11cdCurrentMinusAmplitude0/50 - I*s11cdCurrentMinusAmplitude1/100 - sqrt(595)*I*s11cdCurrentMinusAmplitude2/100 + 6*s11cdCurrentMinusAmplitude3 + 17*s11cdCurrentMinusAmplitude4/20 + 3*I*(s11cdCurrentMinusAmplitude0*(-I/(2500*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude1*(-I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude2*(-sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude3*(9*I/(250*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude4*(-163/(1000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)))))/109",
+            "closureResidual": "0"
+          },
+          {
+            "face": 1,
+            "leg": 0,
+            "column": 3,
+            "rows": {
+              "AMPLITUDE": {
+                "baseline": [
+                  [
+                    {
+                      "real": -0.7366084276395124,
+                      "imag": -1.1242697378557536
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 1.3200041257810706,
+                      "imag": -1.2226916778633496
+                    }
+                  ]
+                ]
+              },
+              "PRESSURE": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.33728092135672605,
+                      "imag": -0.22098252829185372
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.36680750335900486,
+                      "imag": 0.39600123773432117
+                    }
+                  ]
+                ]
+              },
+              "OUTWARD_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              },
+              "RELATIVE_MASS_FLUX": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.018020579830799802,
+                      "imag": 0.027504426778425312
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.032292923666173534,
+                      "imag": -0.02991224667358006
+                    }
+                  ]
+                ]
+              },
+              "AFFINITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 2.6271907864327395,
+                      "imag": 2.2098252829185374
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 2.3319249664099515,
+                      "imag": -3.960012377343212
+                    }
+                  ]
+                ]
+              },
+              "CHEMICAL_POTENTIAL": {
+                "baseline": [
+                  [
+                    {
+                      "real": 6.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 6.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              },
+              "BULK_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.18020579830799802,
+                      "imag": 0.2750442677842531
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.3229292366617353,
+                      "imag": -0.2991224667358006
+                    }
+                  ]
+                ]
+              },
+              "MECHANICAL_RESPONSE": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              }
+            },
+            "movement": 1.7992736954658513,
+            "sourceClosure": "I*closureAmplitude*uniformPhysicalDepth/10 + 3*I*s11cdCurrentPlusAmplitude4/20 - I*(3/10 - I)*(-3*I*closureAmplitude + I*s11cdCurrentPlusAmplitude0/50 + I*s11cdCurrentPlusAmplitude1/100 + I*s11cdCurrentPlusAmplitude2*uniformNormal/10 + s11cdCurrentPlusAmplitude3*uniformNormal**2/3 + 241*s11cdCurrentPlusAmplitude3/60 + s11cdCurrentPlusAmplitude4*uniformNormal**2/10 + 51*s11cdCurrentPlusAmplitude4/200)/109",
+            "changedAmplitude": "s11cdCurrentPlusAmplitude0*(3/(25000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(2500*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude1*(3/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude2*(3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude3*(3/(25*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 9*I/(250*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude4*(-2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 163/(1000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)))",
+            "rawClosure": "3*I*s11cdCurrentPlusAmplitude4/20 + 3*sqrt(266)*(s11cdCurrentPlusAmplitude0*(3/(25000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(2500*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude1*(3/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude2*(3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude3*(3/(25*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 9*I/(250*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude4*(-2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 163/(1000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))))/2000 - I*(3/10 - I)*(I*s11cdCurrentPlusAmplitude0/50 + I*s11cdCurrentPlusAmplitude1/100 + sqrt(595)*I*s11cdCurrentPlusAmplitude2/100 + 6*s11cdCurrentPlusAmplitude3 + 17*s11cdCurrentPlusAmplitude4/20 - 3*I*(s11cdCurrentPlusAmplitude0*(3/(25000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(2500*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude1*(3/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude2*(3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude3*(3/(25*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 9*I/(250*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude4*(-2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 163/(1000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)))))/109",
+            "closureResidual": "0"
+          },
+          {
+            "face": 1,
+            "leg": 0,
+            "column": 4,
+            "rows": {
+              "AMPLITUDE": {
+                "baseline": [
+                  [
+                    {
+                      "real": -2.3625708844920137,
+                      "imag": 2.5254518262943644
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -3.8597317045085253,
+                      "imag": -2.556206210419139
+                    }
+                  ]
+                ]
+              },
+              "PRESSURE": {
+                "baseline": [
+                  [
+                    {
+                      "real": -0.7576355478883093,
+                      "imag": -0.7087712653476042
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.7668618631257417,
+                      "imag": -1.1579195113525576
+                    }
+                  ]
+                ]
+              },
+              "OUTWARD_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": -1.5
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": -1.5
+                    }
+                  ]
+                ]
+              },
+              "RELATIVE_MASS_FLUX": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.057798547548993405,
+                      "imag": 0.08821669079945843
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -0.09442547858087239,
+                      "imag": 0.08746430756099405
+                    }
+                  ]
+                ]
+              },
+              "AFFINITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 8.426355478883094,
+                      "imag": 7.087712653476041
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -6.818618631257417,
+                      "imag": 11.579195113525575
+                    }
+                  ]
+                ]
+              },
+              "CHEMICAL_POTENTIAL": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.85,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.85,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              },
+              "BULK_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.5779854754899341,
+                      "imag": -0.6178330920054157
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -0.9442547858087238,
+                      "imag": -0.6253569243900596
+                    }
+                  ]
+                ]
+              },
+              "MECHANICAL_RESPONSE": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              }
+            },
+            "movement": 1.5318678532242733,
+            "sourceClosure": "I*closureAmplitude*uniformPhysicalDepth/10 + 3*I*s11cdCurrentPlusAmplitude4/20 - I*(3/10 - I)*(-3*I*closureAmplitude + I*s11cdCurrentPlusAmplitude0/50 + I*s11cdCurrentPlusAmplitude1/100 + I*s11cdCurrentPlusAmplitude2*uniformNormal/10 + s11cdCurrentPlusAmplitude3*uniformNormal**2/3 + 241*s11cdCurrentPlusAmplitude3/60 + s11cdCurrentPlusAmplitude4*uniformNormal**2/10 + 51*s11cdCurrentPlusAmplitude4/200)/109",
+            "changedAmplitude": "s11cdCurrentPlusAmplitude0*(3/(25000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(2500*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude1*(3/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude2*(3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude3*(3/(25*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 9*I/(250*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude4*(-2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 163/(1000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)))",
+            "rawClosure": "3*I*s11cdCurrentPlusAmplitude4/20 + 3*sqrt(266)*(s11cdCurrentPlusAmplitude0*(3/(25000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(2500*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude1*(3/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude2*(3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude3*(3/(25*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 9*I/(250*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude4*(-2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 163/(1000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))))/2000 - I*(3/10 - I)*(I*s11cdCurrentPlusAmplitude0/50 + I*s11cdCurrentPlusAmplitude1/100 + sqrt(595)*I*s11cdCurrentPlusAmplitude2/100 + 6*s11cdCurrentPlusAmplitude3 + 17*s11cdCurrentPlusAmplitude4/20 - 3*I*(s11cdCurrentPlusAmplitude0*(3/(25000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(2500*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude1*(3/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude2*(3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) + sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude3*(3/(25*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 9*I/(250*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50))) + s11cdCurrentPlusAmplitude4*(-2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)) - 163/(1000*(9/500 + 273*sqrt(266)/100000 - 9*sqrt(266)*I/5000 + 3*I/50)))))/109",
+            "closureResidual": "0"
+          },
+          {
+            "face": 1,
+            "leg": 1,
+            "column": 3,
+            "rows": {
+              "AMPLITUDE": {
+                "baseline": [
+                  [
+                    {
+                      "real": -0.7366084276395124,
+                      "imag": 1.1242697378557536
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 1.3200041257810706,
+                      "imag": 1.2226916778633496
+                    }
+                  ]
+                ]
+              },
+              "PRESSURE": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.33728092135672605,
+                      "imag": 0.22098252829185372
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.36680750335900486,
+                      "imag": -0.39600123773432117
+                    }
+                  ]
+                ]
+              },
+              "OUTWARD_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              },
+              "RELATIVE_MASS_FLUX": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.018020579830799802,
+                      "imag": -0.027504426778425312
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.032292923666173534,
+                      "imag": 0.02991224667358006
+                    }
+                  ]
+                ]
+              },
+              "AFFINITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 2.6271907864327395,
+                      "imag": -2.2098252829185374
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 2.3319249664099515,
+                      "imag": 3.960012377343212
+                    }
+                  ]
+                ]
+              },
+              "CHEMICAL_POTENTIAL": {
+                "baseline": [
+                  [
+                    {
+                      "real": 6.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 6.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              },
+              "BULK_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.18020579830799802,
+                      "imag": -0.2750442677842531
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.3229292366617353,
+                      "imag": 0.2991224667358006
+                    }
+                  ]
+                ]
+              },
+              "MECHANICAL_RESPONSE": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              }
+            },
+            "movement": 1.7992736954658513,
+            "sourceClosure": "-I*closureAmplitude*uniformMinusPhysicalDepth/10 - 3*I*s11cdCurrentMinusAmplitude4/20 - I*(-3/10 - I)*(3*I*closureAmplitude - I*s11cdCurrentMinusAmplitude0/50 - I*s11cdCurrentMinusAmplitude1/100 - I*s11cdCurrentMinusAmplitude2*uniformMinusNormal/10 + s11cdCurrentMinusAmplitude3*uniformMinusNormal**2/3 + 241*s11cdCurrentMinusAmplitude3/60 + s11cdCurrentMinusAmplitude4*uniformMinusNormal**2/10 + 51*s11cdCurrentMinusAmplitude4/200)/109",
+            "changedAmplitude": "s11cdCurrentMinusAmplitude0*(-I/(2500*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude1*(-I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude2*(-sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude3*(9*I/(250*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude4*(-163/(1000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)))",
+            "rawClosure": "-3*I*s11cdCurrentMinusAmplitude4/20 + 3*sqrt(266)*(s11cdCurrentMinusAmplitude0*(-I/(2500*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude1*(-I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude2*(-sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude3*(9*I/(250*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude4*(-163/(1000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))))/2000 - I*(-3/10 - I)*(-I*s11cdCurrentMinusAmplitude0/50 - I*s11cdCurrentMinusAmplitude1/100 - sqrt(595)*I*s11cdCurrentMinusAmplitude2/100 + 6*s11cdCurrentMinusAmplitude3 + 17*s11cdCurrentMinusAmplitude4/20 + 3*I*(s11cdCurrentMinusAmplitude0*(-I/(2500*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude1*(-I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude2*(-sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude3*(9*I/(250*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude4*(-163/(1000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)))))/109",
+            "closureResidual": "0"
+          },
+          {
+            "face": 1,
+            "leg": 1,
+            "column": 4,
+            "rows": {
+              "AMPLITUDE": {
+                "baseline": [
+                  [
+                    {
+                      "real": -2.3625708844920137,
+                      "imag": -2.5254518262943644
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -3.8597317045085253,
+                      "imag": 2.556206210419139
+                    }
+                  ]
+                ]
+              },
+              "PRESSURE": {
+                "baseline": [
+                  [
+                    {
+                      "real": -0.7576355478883093,
+                      "imag": 0.7087712653476042
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.7668618631257417,
+                      "imag": 1.1579195113525576
+                    }
+                  ]
+                ]
+              },
+              "OUTWARD_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 1.5
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 1.5
+                    }
+                  ]
+                ]
+              },
+              "RELATIVE_MASS_FLUX": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.057798547548993405,
+                      "imag": -0.08821669079945843
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -0.09442547858087239,
+                      "imag": -0.08746430756099405
+                    }
+                  ]
+                ]
+              },
+              "AFFINITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 8.426355478883094,
+                      "imag": -7.087712653476041
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -6.818618631257417,
+                      "imag": -11.579195113525575
+                    }
+                  ]
+                ]
+              },
+              "CHEMICAL_POTENTIAL": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.85,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.85,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              },
+              "BULK_VELOCITY": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.5779854754899341,
+                      "imag": 0.6178330920054157
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": -0.9442547858087238,
+                      "imag": 0.6253569243900596
+                    }
+                  ]
+                ]
+              },
+              "MECHANICAL_RESPONSE": {
+                "baseline": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ],
+                "reversed": [
+                  [
+                    {
+                      "real": 0.0,
+                      "imag": 0.0
+                    }
+                  ]
+                ]
+              }
+            },
+            "movement": 1.5318678532242733,
+            "sourceClosure": "-I*closureAmplitude*uniformMinusPhysicalDepth/10 - 3*I*s11cdCurrentMinusAmplitude4/20 - I*(-3/10 - I)*(3*I*closureAmplitude - I*s11cdCurrentMinusAmplitude0/50 - I*s11cdCurrentMinusAmplitude1/100 - I*s11cdCurrentMinusAmplitude2*uniformMinusNormal/10 + s11cdCurrentMinusAmplitude3*uniformMinusNormal**2/3 + 241*s11cdCurrentMinusAmplitude3/60 + s11cdCurrentMinusAmplitude4*uniformMinusNormal**2/10 + 51*s11cdCurrentMinusAmplitude4/200)/109",
+            "changedAmplitude": "s11cdCurrentMinusAmplitude0*(-I/(2500*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude1*(-I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude2*(-sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude3*(9*I/(250*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude4*(-163/(1000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)))",
+            "rawClosure": "-3*I*s11cdCurrentMinusAmplitude4/20 + 3*sqrt(266)*(s11cdCurrentMinusAmplitude0*(-I/(2500*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude1*(-I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude2*(-sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude3*(9*I/(250*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude4*(-163/(1000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))))/2000 - I*(-3/10 - I)*(-I*s11cdCurrentMinusAmplitude0/50 - I*s11cdCurrentMinusAmplitude1/100 - sqrt(595)*I*s11cdCurrentMinusAmplitude2/100 + 6*s11cdCurrentMinusAmplitude3 + 17*s11cdCurrentMinusAmplitude4/20 + 3*I*(s11cdCurrentMinusAmplitude0*(-I/(2500*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude1*(-I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude2*(-sqrt(595)*I/(5000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3*sqrt(595)/(50000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude3*(9*I/(250*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 3/(25*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000))) + s11cdCurrentMinusAmplitude4*(-163/(1000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)) + 2781*I/(10000*(9/500 + 273*sqrt(266)/100000 - 3*I/50 + 9*sqrt(266)*I/5000)))))/109",
+            "closureResidual": "0"
+          }
+        ]
+      },
+      "sourceDomain": {
+        "minimumNonzeroMagnitude": 0.1044030650891055,
+        "directSubstitutionExclusions": [],
+        "certificateRoute": "SAVED_DENOMINATOR_EXACT_NONZERO",
+        "priorExclusions": [
+          [
+            "P",
+            {
+              "factor": "250*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "2250 + sqrt(266)*(-1365 + 900*I)/4 + 7500*I"
+            }
+          ],
+          [
+            "P",
+            {
+              "factor": "500*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "4500 + sqrt(266)*(-1365 + 900*I)/2 + 15000*I"
+            }
+          ],
+          [
+            "P",
+            {
+              "factor": "50*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "450 + sqrt(266)*(-273 + 180*I)/4 + 1500*I"
+            }
+          ],
+          [
+            "P",
+            {
+              "factor": "300*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "2700 + sqrt(266)*(-819 + 540*I)/2 + 9000*I"
+            }
+          ],
+          [
+            "P",
+            {
+              "factor": "1000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "9000 + sqrt(266)*(-1365 + 900*I) + 30000*I"
+            }
+          ],
+          [
+            "Pminus",
+            {
+              "factor": "250*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+              "value": "-2250 + sqrt(266)*(1365 + 900*I)/4 + 7500*I"
+            }
+          ],
+          [
+            "Pminus",
+            {
+              "factor": "500*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+              "value": "-4500 + sqrt(266)*(1365 + 900*I)/2 + 15000*I"
+            }
+          ],
+          [
+            "Pminus",
+            {
+              "factor": "50*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+              "value": "-450 + sqrt(266)*(273 + 180*I)/4 + 1500*I"
+            }
+          ],
+          [
+            "Pminus",
+            {
+              "factor": "300*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+              "value": "-2700 + sqrt(266)*(819 + 540*I)/2 + 9000*I"
+            }
+          ],
+          [
+            "Pminus",
+            {
+              "factor": "1000*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+              "value": "-9000 + sqrt(266)*(1365 + 900*I) + 30000*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "3*uniformPhysicalDepth/25 + 91*I*uniformPhysicalDepth/500 + 9/500 + 3*I/50",
+              "value": "9/500 + 3*sqrt(266)*(-91 + 60*I)/100000 + 3*I/50"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "3000*uniformPhysicalDepth + 4550*I*uniformPhysicalDepth + 450 + 1500*I",
+              "value": "450 + sqrt(266)*(-273 + 180*I)/4 + 1500*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "6000*uniformPhysicalDepth + 9100*I*uniformPhysicalDepth + 900 + 3000*I",
+              "value": "900 + sqrt(266)*(-273 + 180*I)/2 + 3000*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "600*uniformPhysicalDepth + 910*I*uniformPhysicalDepth + 90 + 300*I",
+              "value": "90 + sqrt(266)*(-273 + 180*I)/20 + 300*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "3600*uniformPhysicalDepth + 5460*I*uniformPhysicalDepth + 540 + 1800*I",
+              "value": "540 + sqrt(266)*(-819 + 540*I)/10 + 1800*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "12000*uniformPhysicalDepth + 18200*I*uniformPhysicalDepth + 1800 + 6000*I",
+              "value": "1800 + sqrt(266)*(-273 + 180*I) + 6000*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "30000*uniformPhysicalDepth + 45500*I*uniformPhysicalDepth + 4500 + 15000*I",
+              "value": "4500 + sqrt(266)*(-1365 + 900*I)/2 + 15000*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "60000*uniformPhysicalDepth + 91000*I*uniformPhysicalDepth + 9000 + 30000*I",
+              "value": "9000 + sqrt(266)*(-1365 + 900*I) + 30000*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "120000*uniformPhysicalDepth + 182000*I*uniformPhysicalDepth + 18000 + 60000*I",
+              "value": "18000 + sqrt(266)*(-2730 + 1800*I) + 60000*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "36000*uniformPhysicalDepth + 54600*I*uniformPhysicalDepth + 5400 + 18000*I",
+              "value": "5400 + sqrt(266)*(-819 + 540*I) + 18000*I"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "3*uniformMinusPhysicalDepth/25 - 91*I*uniformMinusPhysicalDepth/500 + 9/500 - 3*I/50",
+              "value": "9/500 - 3*I/50 - 3*sqrt(266)*(91 + 60*I)/100000"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "3000*uniformMinusPhysicalDepth - 4550*I*uniformMinusPhysicalDepth + 450 - 1500*I",
+              "value": "450 - 1500*I + sqrt(266)*(-273 - 180*I)/4"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "6000*uniformMinusPhysicalDepth - 9100*I*uniformMinusPhysicalDepth + 900 - 3000*I",
+              "value": "900 - 3000*I + sqrt(266)*(-273 - 180*I)/2"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "600*uniformMinusPhysicalDepth - 910*I*uniformMinusPhysicalDepth + 90 - 300*I",
+              "value": "90 - 300*I + sqrt(266)*(-273 - 180*I)/20"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "3600*uniformMinusPhysicalDepth - 5460*I*uniformMinusPhysicalDepth + 540 - 1800*I",
+              "value": "540 - 1800*I + sqrt(266)*(-819 - 540*I)/10"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "12000*uniformMinusPhysicalDepth - 18200*I*uniformMinusPhysicalDepth + 1800 - 6000*I",
+              "value": "1800 - 6000*I + sqrt(266)*(-273 - 180*I)"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "30000*uniformMinusPhysicalDepth - 45500*I*uniformMinusPhysicalDepth + 4500 - 15000*I",
+              "value": "4500 - 15000*I + sqrt(266)*(-1365 - 900*I)/2"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "60000*uniformMinusPhysicalDepth - 91000*I*uniformMinusPhysicalDepth + 9000 - 30000*I",
+              "value": "9000 - 30000*I + sqrt(266)*(-1365 - 900*I)"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "120000*uniformMinusPhysicalDepth - 182000*I*uniformMinusPhysicalDepth + 18000 - 60000*I",
+              "value": "18000 - 60000*I + sqrt(266)*(-2730 - 1800*I)"
+            }
+          ],
+          [
+            "faces",
+            {
+              "factor": "36000*uniformMinusPhysicalDepth - 54600*I*uniformMinusPhysicalDepth + 5400 - 18000*I",
+              "value": "5400 - 18000*I + sqrt(266)*(-819 - 540*I)"
+            }
+          ],
+          [
+            "forms",
+            {
+              "factor": "3*uniformMinusPhysicalDepth/25 - 91*I*uniformMinusPhysicalDepth/500 + 9/500 - 3*I/50",
+              "value": "9/500 - 3*I/50 - 3*sqrt(266)*(91 + 60*I)/100000"
+            }
+          ],
+          [
+            "forms",
+            {
+              "factor": "3*uniformPhysicalDepth/25 + 91*I*uniformPhysicalDepth/500 + 9/500 + 3*I/50",
+              "value": "9/500 + 3*sqrt(266)*(-91 + 60*I)/100000 + 3*I/50"
+            }
+          ],
+          [
+            "selectedRestriction",
+            {
+              "factor": "250*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "2250 + sqrt(266)*(-1365 + 900*I)/4 + 7500*I"
+            }
+          ],
+          [
+            "selectedRestriction",
+            {
+              "factor": "500*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "4500 + sqrt(266)*(-1365 + 900*I)/2 + 15000*I"
+            }
+          ],
+          [
+            "selectedRestriction",
+            {
+              "factor": "50*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "450 + sqrt(266)*(-273 + 180*I)/4 + 1500*I"
+            }
+          ],
+          [
+            "selectedRestriction",
+            {
+              "factor": "300*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "2700 + sqrt(266)*(-819 + 540*I)/2 + 9000*I"
+            }
+          ],
+          [
+            "selectedRestriction",
+            {
+              "factor": "1000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+              "value": "9000 + sqrt(266)*(-1365 + 900*I) + 30000*I"
+            }
+          ]
+        ],
+        "magnitudeScope": "Prior certified subset only"
+      },
+      "liftCondition": 12.247448713915887,
+      "currentCondition": 150.00000000000003,
+      "approachToExactLimit": {
+        "SLAB_CURRENT_MATRIX": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "BULK_NORMAL_CURRENT_DENSITY_MATRIX": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "BULK_DEPTH_CURRENT_MATRIX": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "INTERFACE_POWER_MATRIX": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ]
+      },
+      "conditionalApplicability": true
+    }
+  ],
+  "applicability": "CONDITIONAL_ON_UNSUPPLIED_NONUNIFORM_AND_DIRECT_MIXED_GRADE_COMPOSITION",
+  "dependencySnapshot": {
+    "scope": "Saved original uniform source and effective material family; no producer replay or nonuniform repair clearance.",
+    "upstreamClaude": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_record.json",
+      "bytes": 429435,
+      "sha256": "fab27be943a7c831446166e49b2ca9b2701c5bc4aa9ed4d3d8e5a3c16f740da3"
+    },
+    "upstreamGrok": "Separate approved same-session assessment; not assumed delivered or clear. No partial report consumed.",
+    "nonuniformApplicability": "Must inspect actual constant-end profile/jet operands. Missing candidate/composition proof remains explicit conditional dependency.",
+    "physicalCalibration": "R7 uncommitted; R10 pending; rest bulk only.",
+    "environmentMetadata": {
+      "python": "/usr/bin/python3",
+      "sympy": "1.14.0",
+      "numpy": "1.26.4",
+      "source": "installed distribution metadata only; scientific modules not imported during preparation"
+    }
+  }
+}

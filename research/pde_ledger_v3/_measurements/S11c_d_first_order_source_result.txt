@@ -1,0 +1,39 @@
+First-order source screen: accepted finite source evidence, 2026-10-04
+
+The guarded run completed all source applications and checks. Inspection covered
+strict empty stderr, byte-identical stdout/checks, actual guard/supervisor commands
+and limits, every indexed operand/return, source/copy hashes and both controls.
+211 new literal-zero returns and 32 inherited literal-zero returns are preserved.
+Runtime was 59.834 seconds; peak cgroup memory 185,491,456 bytes; no swap or memory
+events. All 127 saved copies, 273 posthashes, 146 snapshots and 16 extra identity
+copies match. No producer, grading, profile, response or numerical bank replay.
+
+In weak coordinates (x,edge1,edge2), p=sqrt(595)/10, the actual incoming columns are
+  U_A = i (1/5, -p, 0, 0, 0),
+  U_B = i (0, 1/10, -1/5, 0, 0).
+These are field-coordinate columns, not newly flux-normalized states.
+
+Both native faces: S00=S10=0 for both columns. U_A has a nonzero S01 and chemical
+source, each localized at the interface. Their actual normalization and relative
+phase agree. U_B has zero S01, chemical and pressure forcing. Both columns have
+zero direct LAB_HELD velocity drive. The flat pressure assembly retains output
+q(l), both face signs and the original physical memory/permeability.
+
+The COMPLETE local force is the important extra result. U_B has zero x, theta
+and e_W components, its two edge components stay in ratio 1:-2, and its saved
+receiving-momentum dot diagnostic is exactly zero for arbitrary l. Thus this
+polarization does not generate a longitudinal/scalar/thickness source at this
+first order. U_A does generate scalar/thickness and pressure forcing. The old
+claim that source cancellation alone decides leakage is not being made.
+
+For both columns the eta force has a nonzero right-end step: the saved full
+physical-path local force is zero at the left and 9 U at the right. All sigma
+local endpoints vanish. These terms require matched-end treatment; they have not
+been silently discarded. The pressure contribution is a tagged unevaluated
+Fourier response, not a field, and no Fourier integral was evaluated.
+
+The next physics question is whether the receiving uniform operator and complete
+native face maps preserve the unforced scalar sector for U_B, and whether the
+longitudinal/scalar receiving block for U_A is regular at actual grazing. The
+physical two-face work/current balance remains needed before either a zero or a
+nonzero leakage coefficient. No inverse, power or leakage value is accepted.

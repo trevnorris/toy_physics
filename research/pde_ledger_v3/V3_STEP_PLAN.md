@@ -506,8 +506,11 @@ not its actual use, a bound state or a complete spectrum. [S11b, comparison/oper
 #### S11b closed; S11c closes PARTIAL {#s11b-split}
 
 S11c asked how much light converts into other motion where the brane changes. It has conditional operator
-and source results, but **no accepted nonuniform loss number**. The tested uniform speed matches remain
-finite; the held-profile omega=3 benchmark remains numerically unresolved. Reflection counts as survival.
+and source results, but **no accepted nonuniform loss number**. A later SymPy check found finite modes, nonzero energy current and zero face drives
+(light does not push on the bulk) at, above and below the tested uniform speed matches, with the bulk at rest
+and other inputs fixed. Claude/Grok cleared the method, not a fresh review of the executed result.
+[Uniform completion, coverage/limits](_measurements/S11c_d_near_unity_uniform_continue_result.md).
+The held-profile omega=3 benchmark remains numerically unresolved. Reflection counts as survival.
 The [S11c closeout](steps/S11c_PARTIAL_CLOSEOUT.md) and [canonical d record](steps/S11c_d_profile_conditioned_scattering.md)
 set the current scope; no old build/continuation instruction schedules further work.
 

@@ -4,7 +4,7 @@ S11c asked how much light converts into other motion where the brane's thickness
 
 ## Where we stand
 
-On a uniform brane, the stated linear model decouples light from the bulk. Independent SymPy/Wolfram work and scoped reviews support that result; stable propagation needs nonnegative stiffness. A later SymPy check remains finite at tested light/sound speed matches with the bulk at rest; its method was reviewed, its executed result was not freshly cross-checked. **CONDITIONAL.** [S11b, transverse mode/reviews](S11b_interface_coupling_law.md); [d, uniform check](S11c_d_profile_conditioned_scattering.md#what-the-uniform-check-establishes).
+On a uniform brane, the stated linear model decouples light from the bulk. Independent SymPy/Wolfram work and scoped reviews support that result; stable propagation needs nonnegative stiffness. A later SymPy check found finite modes, nonzero energy current and zero face drives (light does not push on the bulk) at, above and below the tested light/sound speed matches, with the bulk at rest and other inputs fixed; Claude/Grok cleared its method, not a fresh review of its executed result. **CONDITIONAL.** [S11b, transverse mode/reviews](S11b_interface_coupling_law.md); [d, uniform check](S11c_d_profile_conditioned_scattering.md#what-the-uniform-check-establishes).
 
 Where the brane changes, the equations contain conversion routes, but their size remains unknown. The held-profile omega=3 benchmark at speed ratio approximately 0.12 is **UNRESOLVED**: final imbalances lie within its empirical 1 ppm floor, not a physical bound. This is not a matched-speed defect result. [d, benchmark and controls](S11c_d_profile_conditioned_scattering.md#the-omega3-benchmark-numerical-loss-unresolved).
 

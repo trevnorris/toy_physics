@@ -10,7 +10,8 @@ Read the [short closeout](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md)
 - **CONDITIONAL:** uniform light decouples from the bulk in the supplied linear model. SymPy and independent
   Wolfram work support it, with documented engine/repair reviews and comparison limits; stability needs
   nonnegative stiffness. [S11b, transverse mode and review provenance](research/pde_ledger_v3/steps/S11b_interface_coupling_law.md).
-- **CONDITIONAL:** a later SymPy check remains finite at the tested light/sound speed matches with the bulk
+- **CONDITIONAL:** a later SymPy check found finite modes, nonzero energy current and zero face drives
+  (light does not push on the bulk) at, above and below the tested light/sound speed matches, with the bulk
   at rest and other inputs fixed. Claude/Grok cleared the method, not a fresh review of the executed result.
   [Uniform completion, coverage/limits](research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_result.md).
 - **UNRESOLVED:** the held-profile omega=3 benchmark at ratio approximately 0.12 found no numerically resolved

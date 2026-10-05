@@ -96,3 +96,31 @@ Phase 4.
 - Report the new total of tracked files against `dada3b7d` (`git ls-files | wc -l`: 9,472 at `dada3b7d`; 10,089 now).
 
 Then STOP. Claude checks H1–H5 before Phase 4.
+
+## Round 2: check of the H1–H5 fixes (`1848323b`)
+
+**H1–H5: verified fixed** by Claude:
+- **H1:** `git ls-files | grep -c '\.blob$'` → `0`.
+- **H2:** no `uniform_retained` file is tracked. `scripts/out/S11c_d_mixing_scattering_sympy_audit.out` is back at
+  its original path, and `git annex whereis` reports 2 copies.
+- **H3:** `_measurements/retained_uniform/` is gone. The 31 files in `_measurements/S11c_d_near_unity_uniform_output/`
+  are byte-identical (`cmp`) to `_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete`.
+  The nine scratch run directories in FINDINGS G exist on disk with 0 tracked files. STATUS line 31 carries the
+  replay debt.
+- **H4:** FINDINGS G names `56595cf7` and `035bb654` and withdraws "pre-existing". STATUS line 32 carries the
+  regeneration debt.
+- **H5:** the amendment is byte-identical to its `0dcc53dd` version. FINDINGS G lists it as the one frozen
+  exemption.
+- **Invariants:**
+  - `git ls-files | wc -l` → `10001`;
+  - `git ls-files -ci --exclude-standard | wc -l` → `20`;
+  - `.gitattributes` and `AGENTS.md` still match.
+
+**Phase 3 is accepted. Proceed to Phase 4** of the directive:
+- branch `ledger-v3-rebuild-clean` from `dada3b7d`;
+- workstream-grouped commits, with `git diff cleanup/pruned ledger-v3-rebuild-clean` empty;
+- CLAUDE.md and AGENTS.md changes each in their own commit;
+- annex pointers unchanged, and the `git-annex` branch untouched;
+- the fresh-clone check under `_scratch/`.
+
+The H4 export mismatch is a known OPEN item. Report its check as such, not as a failure of the rebuild. Then STOP.

@@ -29,6 +29,7 @@ Read the [short closeout](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md)
 | Question | Owner / evidence |
 | --- | --- |
 | Direct c2 `[0,2]` entry is set to zero without an order-counting justification; whether the full response needs a nonzero term is unresolved. | S11c-c2/d if reused; [joint disposition, mixed-term issue](research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_joint_disposition.md). |
+| N6 premises: physical correctness of Φ, the V transform and extracted-block leakage remain open. | S11c-c2/d if reused; [c2, review caveats](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md), [N6 disposition, §7](research/pde_ledger_v3/_measurements/S11c_c2_N6_reconcile_disposition.md). |
 | Full cross-engine composition, b sign/control debts, c1 giants and accepted scattering/work/loss | S11c-b/c1/c2/d if reopened; [DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md), [d limits](research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md). |
 | Conversion observable and strong-edge interpretation | S11c-e; [split and d weak-limit obligation](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md#actual-downstream-uses-and-next-step). |
 | Dynamical drain/return source, boundary data and any change to the drain-frozen symmetry result | **S12**; [plan, S12](research/pde_ledger_v3/V3_STEP_PLAN.md). No automatic transfer of the one-engine no-leak rule. |

@@ -199,6 +199,7 @@ underlying physics. Conflicting closure claims are carried, not adjudicated in t
 | F/G numerical re-grounding and dependent §5e/§3c interpretation/wording | 31–32, 37–38, 47, 63, 90, 97, 102, 106, 109 | carried | S11c-c2 if needed; [F/G deferral, disposition][fg] and [c2, Changed after close][c2]. Indefinitely paused, nonblocking, interpretations withdrawn; the old “values unaffected” sentence is pre-repair only. |
 | c2 publication repair's owed complete fresh-Claude leg | 101, 105–109 | carried | S11c-c2 record maintenance. **Conflicting closure statements**, retained below: [publication adjudication, verdict][export-review] still says owed; old STATUS line 101 says done. No new clearance asserted. |
 | c2 N6 wrong-anchoring test/spec correction and later covariance construction | 84–103, 105–109 | resolved | [c2, review/repair arc][c2] and [N6 disposition, earned versus not earned][n6] record the corrected test and scoped covariance. This does not resolve the separate operand debt. |
+| N6 premise caveats: physical correctness of Φ, V transform and extracted-block leakage | 89 | carried | S11c-c2/d if reused. [c2, review caveats (lines 180–184, 203 at Phase 2)][c2]; [N6 disposition, §7][n6]. Correcting the test and proving scoped covariance did not settle these premises. |
 | b carrier-harness re-author/relaunch/commit queue | 59, 65–75 | superseded | Old STATUS line 59 records b closed after the harness work; [b record, original verification/close][b] is the replacement. The former one-full-leg/partial-leg attempt remains history, not relabelled paired clearance. |
 | N6 harness output/budget repairs and stale production-output regeneration | 49–63, 69–82 | resolved | Old STATUS lines 50, 55–56 record the completed replacement; [N6 harness review, final verdict][n6-harness]; [c2, Wolfram engine and comparator provenance][c2]. Scoped historical task only. |
 | c2 T7 comparator, reconcile disposition and step-record writeup | 34–57, 69, 75, 90, 97 | resolved | [N6 disposition][n6] and [c2 record][c2] complete the Path-B writeup; unresolved operand families were carried, not declared agreement. |
@@ -249,7 +250,7 @@ underlying physics. Conflicting closure claims are carried, not adjudicated in t
 | χ_Q / 54/5 reconciliation between pathA_22b and moving-throat ladder | 1278–1289 | carried | Later integration/Part VII; old STATUS lines 1286–1289 explicitly retain the mismatch. [Moving-throat ladder, Gate 4][ladder] and [Part VII split][part7] are context, not a new reconciliation. |
 | Retired v2 fingerprint-join, sidecar-custody and module-digest-as-proof procedures | 863–870, 1005–1007, 1078–1086, 1094–1129, 1165–1172 | superseded | [DIMENSION_REWRITE, charter/§4/§9][dim] and [development pipeline, posture][pipeline]. Their actual drift/coverage limits remain; no new trust framework is proposed. |
 
-**Disposition counts:** 41 carried · 10 resolved · 11 superseded = 62 grouped items.
+**Disposition counts:** 42 carried · 10 resolved · 11 superseded = 63 grouped items.
 
 ### Carry-over conflicts and questions
 

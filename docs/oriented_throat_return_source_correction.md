@@ -1,0 +1,18 @@
+# Correction: return already has a material-state meaning
+
+This source-reading correction follows the user's reminder about `S_leak`. It supplements the [core-response assessment](oriented_throat_core_response_assessment.md) without changing the frozen proposal, literal Claude report or historical review record. No scientific calculation or review was run.
+
+The preceding discussion was incomplete. It described local recirculation, remote replenishment and open throughflow as though the model had not already specified the physical meaning of return. The committed meaning is **bulk material re-ordering into the brane state of the same medium**. A local loop back to the original throat is not required. The earlier suggestion to choose such a loop or a remote mass-source mechanism is not a prerequisite for continuing this research.
+
+The source chain is explicit:
+
+- [V3 step plan, S11b `S_leak` and the banked user postulate](../research/pde_ledger_v3/V3_STEP_PLAN.md#dark-energy-postulate): the user states that bulk re-orders onto the brane and the brane expands to accommodate it. The plan retains a steady background contribution and distinguishes it from the wave perturbation. The proposed cosmological interpretation and rate are not a computed expansion result.
+- [V3 step plan, S12](../research/pde_ledger_v3/V3_STEP_PLAN.md): the committed drain is dynamical order conversion, `Gamma_B = Gamma_return - Gamma_drain`. It explicitly rules out the old frozen-wall mass-sink plus remote-return law as the operative model. Source/controller functions and boundary conditions remain separate inventories.
+- [Material-state handoff, sections 2 and 6–7](../notes/brane_bulk_handoff.md): return is the reverse of de-structuring, with bulk-like material acquiring brane order. Transport and conversion are distinct contributions to the projected balance. Its recorded dimensional errata must be respected.
+- [Stage 006, operative amended ontology and projected balance](../research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md): total constituent density is conserved; ordered density is not. The two-source projection and its recovery of the original `S_leak` identity are recorded as earned relative to the postulated material split.
+
+In the recorded equations, `chi_B` measures brane order. Positive `Gamma_B` is bulk-to-brane re-ordering; negative `Gamma_B` is de-structuring. The projected ordered-density source has both `S_flux` and `S_convert`, with `S_convert = Integral(W n Gamma_B dw)`. The older `S_leak` is the boundary/window flux identity; it should not be silently equated with the conversion rate alone. Neither term is the transverse-light survival deficit.
+
+This narrows the open physics question. We should use the existing order-conversion framework and its declared constitutive inputs before proposing any new sustaining law. What remains to connect is the actual return/drain rate, its energy and momentum exchange, and its response to a throat deformation or incident wave. The source documents do not yet supply a solved autonomous nonlinear throat or its global return solution. Material re-ordering alone also does not establish how much power reaches a trapped support mode or determine the electric-force sign.
+
+The earlier broad sustaining-choice question must therefore not be treated as a mandatory unanswered gate about the existence or meaning of return. The user has reminded us of existing model content, not authorized a new pump, a new mass source or an arbitrary phase-conversion law. Next preparation should trace the existing `chi_B`/`Gamma_B` and interface energy terms into the core/work proposal. New leakage workers, centre implementation and mixed numerical recovery remain parked.

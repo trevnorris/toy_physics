@@ -1,0 +1,59 @@
+{
+  "recordedUtc": "2026-10-05T04:47:46.648061+00:00",
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/elastic-reference-comparison-review",
+  "launch": {
+    "jobPid": 2012111,
+    "watcherPid": 2012112,
+    "packetSha256": "cdf759fc56ab8a469b4e08663be786d50d18bcbf00e9ec40d7f3f34e47817b46",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "217fe7d11a736d9113ffa5fc578c4051d6ecb4298673ef2121566b602621eda1",
+    "launcherSha256": "4296600fb16cc3b01900a799ac02c7e977ba9ecc7e5bc507bb922434889e8135"
+  },
+  "reviewStateAtAdmission": "RUNNING",
+  "hookStatusAtAdmission": "waiting",
+  "reviewerReceiptAtAdmission": {
+    "engine": "claude",
+    "sessionId": "c5ad9e7e-4e8b-4f31-97c3-9c2e4f4247e5",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "c5ad9e7e-4e8b-4f31-97c3-9c2e4f4247e5"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/elastic-reference-comparison-review/claude/work",
+    "startedUtc": "2026-10-05T04:46:39.578858+00:00",
+    "packetSha256": "cdf759fc56ab8a469b4e08663be786d50d18bcbf00e9ec40d7f3f34e47817b46",
+    "promptSha256": "5d72cc3631618b2981b98c15a1977fb4937d494ad3871b692d71a575c68fb4c0",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 2012118
+  },
+  "privateAndPacketHashesVerifiedEach": 11,
+  "originalSourcesVerified": 8,
+  "archiveSha256": "1622a86b8d196d6cf44d8801666443edc5f9c5c86eca3f26ef5a660014577742",
+  "currentAuthoritySha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "oneTimeAdmissionSnapshotOnly": true,
+  "modelPolling": false,
+  "scienceCalls": 0,
+  "verdict": "PENDING_LITERAL_REPORT_AND_ASSESSMENT"
+}

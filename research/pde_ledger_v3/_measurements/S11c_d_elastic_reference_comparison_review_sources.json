@@ -1,0 +1,76 @@
+{
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/elastic-reference-comparison-review",
+  "records": [
+    {
+      "packetPath": "proposal.md",
+      "sourcePath": "docs/elastic_reference_limit_comparison.md",
+      "sourceSha256": "bf38716a1090f6df8496b01554a7d7a30228dc50f3d600ca7a4490257298a2f8",
+      "bytes": 11180,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/native-interpretation.md",
+      "sourcePath": "docs/native_light_em_and_vortex_throat_interpretation.md",
+      "sourceSha256": "3efc9c49f1a5326b254ed8bb583b8ca8c715c05639dfceb5b9dac3d4c815d124",
+      "bytes": 228205,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/stage006-material-record.md",
+      "sourcePath": "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md",
+      "sourceSha256": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+      "bytes": 21702,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/stage006-material-source.py",
+      "sourcePath": "research/pde_ledger_v2/scripts/ledger_stage006_two_phase_chiB_ontology_sympy_audit.py",
+      "sourceSha256": "cd6340214740c886e4f65f80e786c199cb3bd395148188ba4ed334ebca32181f",
+      "bytes": 45604,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/s11ca-physical-definitions.md",
+      "sourcePath": "research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md",
+      "sourceSha256": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4",
+      "bytes": 28887,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/s11ca-geometry-source.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "sourceSha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "bytes": 101558,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/substrate-requirements.md",
+      "sourcePath": "research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md",
+      "sourceSha256": "aee5ac27ff4bcd6b3ca7f5b690b68dd0a47c74153d44e980c233cc42c03ec306",
+      "bytes": 24593,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/v3-step-plan.md",
+      "sourcePath": "research/pde_ledger_v3/V3_STEP_PLAN.md",
+      "sourceSha256": "0b1b5bbe4d00cf2e92d982556458ce627d89e3661086b6070ae189e1783f2751",
+      "bytes": 97897,
+      "completeOriginalBytes": true
+    }
+  ],
+  "packetSha256": "cdf759fc56ab8a469b4e08663be786d50d18bcbf00e9ec40d7f3f34e47817b46",
+  "archiveSha256": "1622a86b8d196d6cf44d8801666443edc5f9c5c86eca3f26ef5a660014577742",
+  "fileHashes": {
+    "guide.txt": "f52e589a1222beba5f8e9e6e8bacd0e247b03fa2134e1b92926b99f503fd3676",
+    "packet-index.json": "ac951dde4219ca92e1dbd8061f138865e6f041195cde2a1c0be2fca640ca965d",
+    "proposal.md": "bf38716a1090f6df8496b01554a7d7a30228dc50f3d600ca7a4490257298a2f8",
+    "review-prompt.md": "5d72cc3631618b2981b98c15a1977fb4937d494ad3871b692d71a575c68fb4c0",
+    "sources/native-interpretation.md": "3efc9c49f1a5326b254ed8bb583b8ca8c715c05639dfceb5b9dac3d4c815d124",
+    "sources/s11ca-geometry-source.py": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+    "sources/s11ca-physical-definitions.md": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4",
+    "sources/stage006-material-record.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "sources/stage006-material-source.py": "cd6340214740c886e4f65f80e786c199cb3bd395148188ba4ed334ebca32181f",
+    "sources/substrate-requirements.md": "aee5ac27ff4bcd6b3ca7f5b690b68dd0a47c74153d44e980c233cc42c03ec306",
+    "sources/v3-step-plan.md": "0b1b5bbe4d00cf2e92d982556458ce627d89e3661086b6070ae189e1783f2751"
+  }
+}

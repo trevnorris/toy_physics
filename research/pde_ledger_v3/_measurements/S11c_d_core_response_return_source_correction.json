@@ -1,0 +1,39 @@
+{
+  "status": "SOURCE_READING_CORRECTION_EXISTING_RETURN_MECHANISM_RECOGNIZED",
+  "recordedUtc": "2026-10-05T04:05:57.758234+00:00",
+  "userTrigger": "Have you already looked for the S_leak term where we show that the bulk naturally reorganizes into the brane?",
+  "correction": "Return already means bulk-to-brane re-ordering within the committed one-medium material-state framework. Earlier recirculation/remote-source options are not a required model choice. Do not reintroduce the ruled-out frozen-wall mass-sink plus remote-return law.",
+  "previousQuestionDisposition": "Not a mandatory unanswered gate about the existence or meaning of return; no new sustaining law selected.",
+  "sources": [
+    {
+      "path": "docs/oriented_throat_return_source_correction.md",
+      "sha256": "2ed8d9929d07ec66405f50457f0f674ed6f06123d0862340b3c5ffee38293fe0"
+    },
+    {
+      "path": "research/pde_ledger_v3/V3_STEP_PLAN.md",
+      "sha256": "0b1b5bbe4d00cf2e92d982556458ce627d89e3661086b6070ae189e1783f2751"
+    },
+    {
+      "path": "notes/brane_bulk_handoff.md",
+      "sha256": "5f9ef420e227447e9f7cb93e482a4e5354b0c4eab8091962a2ca88d7413c1752"
+    },
+    {
+      "path": "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md",
+      "sha256": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e"
+    },
+    {
+      "path": "research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md",
+      "sha256": "9ea9e388e9d6421a841eaf851d12e1793527bba9a24aeeface3bfac2f4b40078"
+    }
+  ],
+  "priorReviewPreserved": true,
+  "scienceCalls": 0,
+  "oldFunctionsReplayed": false,
+  "newReviewLaunched": false,
+  "nextAction": "Trace existing chi_B/Gamma_B and interface energy terms before proposing new core/work closure. Keep postulated conversion law distinct from derived projection identities and uncomputed nonlinear return dynamics.",
+  "parked": [
+    "new leakage workers",
+    "selected centre-drive implementation",
+    "mixed numerical recovery"
+  ]
+}

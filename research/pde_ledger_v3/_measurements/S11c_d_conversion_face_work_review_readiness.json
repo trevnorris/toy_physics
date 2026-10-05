@@ -1,0 +1,29 @@
+{
+  "status": "FROZEN_SOURCE_ONLY_PAPER_READY_FOR_CLAUDE",
+  "packetSha256": "35746e5c4acba8b154af7efd736f2c809f32954d8e3d03552c4241e4ae3fa185",
+  "archiveSha256": "e10f0bc493882d08c259ed56980faea8a903fe6a870eccc5fc20602e3029f49a",
+  "files": 13,
+  "bytes": 774410,
+  "sourceHashesVerified": 10,
+  "archiveContentHashesVerified": 13,
+  "runnerSha256": "217fe7d11a736d9113ffa5fc578c4051d6ecb4298673ef2121566b602621eda1",
+  "launcherSha256": "4296600fb16cc3b01900a799ac02c7e977ba9ecc7e5bc507bb922434889e8135",
+  "completionMessageSha256": "9517c6ce7ab3bec3cf84b590e41ca9f3ae326832441b5e80093ac6ffbe0894cc",
+  "watcherSourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+  "toolingRationale": "Verbatim copies of the existing no-deadline Claude-only review coordinator and hook-first launcher; hashes and Python syntax checked. No helper change, scientific code, restoration, numerical test or new verification machinery.",
+  "sharedHelpersChanged": false,
+  "scienceCalls": 0,
+  "scope": {
+    "kind": "PAPER_CONVERSION_FACE_PARTIAL_WORK_BRIDGE_ONLY",
+    "workerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "noNewConstitutiveLawSelected": true,
+    "nativeFaceJoinCompleted": false,
+    "newLeakageWorkers": "PARKED",
+    "centreDriveImplementation": "PARKED",
+    "mixedRecovery": "PARKED",
+    "leakageFactor": null
+  },
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/conversion-face-balance-review"
+}

@@ -1,0 +1,60 @@
+{
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/core-response-concept-review",
+  "records": [
+    {
+      "packetPath": "proposal.md",
+      "sourcePath": "docs/oriented_throat_core_response_proposal.md",
+      "sourceSha256": "26582b9d4803735978691ab453ffdb12232b727c15698269ad87355d54794f5a",
+      "bytes": 11356,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/native-interpretation.md",
+      "sourcePath": "docs/native_light_em_and_vortex_throat_interpretation.md",
+      "sourceSha256": "3efc9c49f1a5326b254ed8bb583b8ca8c715c05639dfceb5b9dac3d4c815d124",
+      "bytes": 228205,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/electric-sign-result.md",
+      "sourcePath": "software/em_charge_attribute/puncture_deflection_electric_sign_result.md",
+      "sourceSha256": "54284dcb2e160d5d2c51c480c5bf55c9b581640d1d91e17ff20b0d4c8e56b019",
+      "bytes": 11565,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/electric-sign-check.py",
+      "sourcePath": "software/em_charge_attribute/puncture_deflection_electric_sign_check.py",
+      "sourceSha256": "05c43aab9141c8560cd189461457171b9911a82bf29716052441cbd14557f0f5",
+      "bytes": 57651,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/electric-sign-check.wl",
+      "sourcePath": "software/em_charge_attribute/puncture_deflection_electric_sign_check.wl",
+      "sourceSha256": "534ebc2bd19f58a335433bc6217c9d44a36b75abdf6f53670cdb5a5fd18e4ee8",
+      "bytes": 41572,
+      "completeOriginalBytes": true
+    },
+    {
+      "packetPath": "sources/interface-geometry.py",
+      "sourcePath": "research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "sourceSha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "bytes": 101558,
+      "completeOriginalBytes": true
+    }
+  ],
+  "packetSha256": "0227cf9527d2eec1c2ea9be6c280f4adc8a7db09688ff347cd8138ff5e796e29",
+  "archiveSha256": "c1235f759ef3aff4e0a7d355d9a2d9fb0ecbb81c6b703bf1ef605d716b6f3e40",
+  "fileHashes": {
+    "guide.txt": "6149be4a3754ab64c00d269ca683666b5998734832dc7c2b59338e82c28df664",
+    "packet-index.json": "8038a044069cae9a7c9904217c70c85bbf618bb9db1eebb64816cd416d4e2c3f",
+    "proposal.md": "26582b9d4803735978691ab453ffdb12232b727c15698269ad87355d54794f5a",
+    "review-prompt.md": "768db5bb885a25535310e4e99a6037611dbdda3bc35b8a6988e099f374129783",
+    "sources/electric-sign-check.py": "05c43aab9141c8560cd189461457171b9911a82bf29716052441cbd14557f0f5",
+    "sources/electric-sign-check.wl": "534ebc2bd19f58a335433bc6217c9d44a36b75abdf6f53670cdb5a5fd18e4ee8",
+    "sources/electric-sign-result.md": "54284dcb2e160d5d2c51c480c5bf55c9b581640d1d91e17ff20b0d4c8e56b019",
+    "sources/interface-geometry.py": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+    "sources/native-interpretation.md": "3efc9c49f1a5326b254ed8bb583b8ca8c715c05639dfceb5b9dac3d4c815d124"
+  }
+}

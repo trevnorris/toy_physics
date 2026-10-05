@@ -1,0 +1,60 @@
+{
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/conversion-face-balance-review",
+  "recordedUtc": "2026-10-05T04:24:43.425880+00:00",
+  "launch": {
+    "jobPid": 2002040,
+    "watcherPid": 2002041,
+    "packetSha256": "35746e5c4acba8b154af7efd736f2c809f32954d8e3d03552c4241e4ae3fa185",
+    "reviewers": [
+      "claude"
+    ],
+    "concurrentReviewWorkers": 1,
+    "scienceCalls": 0,
+    "runnerSha256": "217fe7d11a736d9113ffa5fc578c4051d6ecb4298673ef2121566b602621eda1",
+    "launcherSha256": "4296600fb16cc3b01900a799ac02c7e977ba9ecc7e5bc507bb922434889e8135"
+  },
+  "reviewStateAtAdmission": "RUNNING",
+  "hookStatusAtAdmission": "waiting",
+  "reviewerReceiptAtAdmission": {
+    "engine": "claude",
+    "sessionId": "38d7856c-09fa-4d84-95b2-31cb01eff2ce",
+    "command": [
+      "/home/trevnorris/.local/bin/claude",
+      "--print",
+      "--output-format",
+      "json",
+      "--safe-mode",
+      "--restricted",
+      "--tools",
+      "Read,Glob,Grep",
+      "--allowedTools",
+      "Read,Glob,Grep",
+      "--permission-mode",
+      "dontAsk",
+      "--strict-mcp-config",
+      "--mcp-config",
+      "{\"mcpServers\":{}}",
+      "--setting-sources",
+      "",
+      "--disable-slash-commands",
+      "--session-id",
+      "38d7856c-09fa-4d84-95b2-31cb01eff2ce"
+    ],
+    "cwd": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/conversion-face-balance-review/claude/work",
+    "startedUtc": "2026-10-05T04:24:16.810769+00:00",
+    "packetSha256": "35746e5c4acba8b154af7efd736f2c809f32954d8e3d03552c4241e4ae3fa185",
+    "promptSha256": "484379f96dee42ff6f60988edf883a9111393a17e81da10b81a5174ce4ee95a1",
+    "scientificExecutionEnabled": false,
+    "reviewVerdict": "NOT_ADJUDICATED",
+    "pid": 2002050
+  },
+  "privateInputHashesVerified": 13,
+  "packetInputHashesVerified": 13,
+  "originalSourcesVerified": 10,
+  "currentAuthoritySha256": "a9ce8653a597b846093253c4fdd07004c949bc0c0237882146204d9a449c3c9c",
+  "archiveSha256": "e10f0bc493882d08c259ed56980faea8a903fe6a870eccc5fc20602e3029f49a",
+  "scienceCalls": 0,
+  "modelPolling": false,
+  "oneTimeAdmissionSnapshotOnly": true,
+  "verdict": "PENDING_LITERAL_REPORT_AND_ASSESSMENT"
+}

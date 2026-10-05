@@ -1,5 +1,11 @@
 # STATUS — where the Path-A program is (single front door)
 
+## Current disposition — S11c CLOSED AS PARTIAL (2026-10-04)
+
+User-directed closure: read the short [S11c closure and handoff](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md). No accepted matched-speed nonuniform leakage number exists; the omega=3 development benchmark remains unresolved. The four upstream repairs received scoped reviews, but their nonuniform composition was not cleared. Throat/EM notes are preserved as exploratory and paused. S12 is the next planned subject; it is not started by this documentation change. No new calculation, build, review or push is authorized by this closeout.
+
+All earlier S11c “BUILD IN FLIGHT,” “NEXT,” and “UNREVIEWED” summaries below are historical and superseded by this disposition and the linked records. Preserve their bytes and chronology; do not resume an old continuation instruction automatically.
+
 > ⚠ **SHA NOTE (2026-09-01 DataLad rewrite):** the git history of `ledger-v3-rebuild` was rewritten — **every commit SHA cited in a clause dated before 2026-09-01 is PRE-rewrite and no longer resolves.** Find those commits by their message, not the SHA. Post-rewrite anchors: #89 directive `660a3055`, #88 `05cb1ea5`, #87 `bab2b828`, #89 engine checkpoint `f655ea65`, #89 clearance `9f40c18e`, **#89a WL basis `d4adbd99`**. `.out` files are now git-annex pointers (`datalad get` to read).
 
 ## ⭐⭐⭐ S11c-d BUILD IN FLIGHT (codex methodical, allowed to finish) + FOUR upstream repairs it exposed + Lean S10 COMPLETE + muonium gravity corrections banked (2026-09-15, latest)

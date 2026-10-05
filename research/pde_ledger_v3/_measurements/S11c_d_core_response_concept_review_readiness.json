@@ -1,0 +1,28 @@
+{
+  "status": "FROZEN_SOURCE_ONLY_CONCEPTUAL_PROPOSAL_READY_FOR_CLAUDE",
+  "packetSha256": "0227cf9527d2eec1c2ea9be6c280f4adc8a7db09688ff347cd8138ff5e796e29",
+  "archiveSha256": "c1235f759ef3aff4e0a7d355d9a2d9fb0ecbb81c6b703bf1ef605d716b6f3e40",
+  "files": 9,
+  "bytes": 459495,
+  "sourceHashesVerified": 6,
+  "archiveContentHashesVerified": 9,
+  "runnerSha256": "217fe7d11a736d9113ffa5fc578c4051d6ecb4298673ef2121566b602621eda1",
+  "launcherSha256": "4296600fb16cc3b01900a799ac02c7e977ba9ecc7e5bc507bb922434889e8135",
+  "completionMessageSha256": "00670ff60b450ec068dfb2dc46f529a5902d577e83298d30627b838ab16960d5",
+  "watcherSourceSha256": "1acfdeb3e7d23a9993221d77f64e365f032946a30269af3cf78b2fda146c6f77",
+  "toolingRationale": "Task-local copies of existing reviewer launcher/coordinator; no new scientific code. Claude-only branch enforced, all original sources and authority pinned, startup time caps removed. Syntax and fixed command/absence of timeout checked without launching a reviewer; process-exit refusals preserved.",
+  "sharedHelpersChanged": false,
+  "scienceCalls": 0,
+  "scope": {
+    "kind": "CORE_RESPONSE_CONCEPTUAL_PROPOSAL_ONLY",
+    "workerExists": false,
+    "scientificGateExists": false,
+    "scienceCalls": 0,
+    "noModelSelected": true,
+    "newLeakageWorkers": "PARKED",
+    "centreDriveImplementation": "PARKED",
+    "mixedRecovery": "PARKED",
+    "leakageFactor": null
+  },
+  "runRoot": "/var/projects/toy_physics/_scratch/s11c/s11c-defect-packet-action-20261003/core-response-concept-review"
+}

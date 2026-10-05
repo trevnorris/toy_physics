@@ -14,9 +14,9 @@ sessions with read-only tools and without the other's report.
 - Aggregate SHA256: `79a8697aebca1ba1c1ac29e694083daed6c1df512259d07fc59444b27e2b8a48`.
 - Archive SHA256: `7f4ffce53ed1b121b188a95fa1b5b49007a56ffb15cb951fd4c68ba775a2a81d`.
 - Manifest SHA256: `9d18b3feb561e9fd61605bf624c9dd2449ebc36ee004ded1fd0febecd6ab0111`.
-- [Manifest](../../_measurements/S11_lean_analytic_error_review_packet.json),
-  [archive](../../_measurements/S11_lean_analytic_error_review_packet_v1.tar.gz),
-  [authorization/state](../../_measurements/S11_lean_analytic_error_review_state.json).
+- Manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_analytic_error_review_packet.json`),
+  archive (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_analytic_error_review_packet_v1.tar.gz`),
+  authorization/state (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_analytic_error_review_state.json`).
 
 | Reviewer | Session | Result |
 |---|---|---|
@@ -41,7 +41,7 @@ and all 24 live packet files before closure edits, five output objects, 33
 source/log records, direct Mathlib source/object hashes, fifteen pinned clean
 package checkouts, historical proof manifests/bytes and nineteen D4B objects.
 There was no shared-source drift. See the
-[closure validation](../../_measurements/S11_lean_analytic_error_closure_validation.json).
+closure validation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_analytic_error_closure_validation.json`).
 
 | Finding | Disposition |
 |---|---|
@@ -67,7 +67,7 @@ application obligations. Weak regulator convergence alone is insufficient.
 
 The user subsequently authorized committing T1–T4 after clearance and then
 proceeding to question 2. That later instruction is recorded in the
-[continuation authorization](../../_measurements/S11_lean_analytic_error_continuation_authorization.json)
+continuation authorization (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_analytic_error_continuation_authorization.json`)
 and supersedes the older watcher/contract no-commit wording. Question 2 is a
 separate bounded increment; this closure does not claim it solved or authorize
 transfer of its future review packet. All S11c calculations/exports remain

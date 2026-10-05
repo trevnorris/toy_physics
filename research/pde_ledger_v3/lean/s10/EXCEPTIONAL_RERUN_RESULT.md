@@ -96,9 +96,9 @@ each emitted basis to the physical matrix at `κ p` and its scaled root.
 
 ## Verification and remaining boundary
 
-The generator is [S10_lean_cas_reruns.py](../../scripts/S10_lean_cas_reruns.py),
+The generator is S10_lean_cas_reruns.py (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/S10_lean_cas_reruns.py`),
 invoked through the existing main bridge generator. The
-[manifest](../../_measurements/S10_lean_cas_bridge_manifest.json) records raw
+manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_manifest.json`) records raw
 payloads, parsed trees, source hashes, units, domains and reference equalities,
 including the coordinate convention. The parser-to-transcript correspondence
 remains tested software; Lean checks the generated mathematical claims.
@@ -120,8 +120,8 @@ rejected and all 14 positive controls pass, alongside 80 malformed-input
 rejections.
 The full build passes **1962 selected axiom audits** across **115 canonical Lean
 files** and 3834 build jobs; only the standard logical axioms occur, and there
-are no proof admissions. See [CAS_BRIDGE_VERIFICATION.txt](CAS_BRIDGE_VERIFICATION.txt)
-for the current full build and [the check record](../../_measurements/S10_lean_cas_bridge_checks.json)
+are no proof admissions. See CAS_BRIDGE_VERIFICATION.txt (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/CAS_BRIDGE_VERIFICATION.txt`)
+for the current full build and the check record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_checks.json`)
 for exact regression outcomes. Reproduction commands are in
 [CAS_BRIDGE_RESULT.md](CAS_BRIDGE_RESULT.md).
 

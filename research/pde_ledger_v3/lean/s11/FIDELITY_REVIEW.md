@@ -10,16 +10,16 @@ This closes the homogeneous Lean contract, not the entire S11 series.
 
 The user explicitly authorized this 47-file S11 packet for Claude and Grok.
 That authorization is retained in the
-[review state](../../_measurements/S11_lean_fidelity_review_state.json).
+review state (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_fidelity_review_state.json`).
 Both received the same bytes in fresh, sequential sessions. Neither was supplied
 the other's findings. Transport was outside the repository to avoid discovering
 parent project instructions as extra context.
 
-- [Manifest](../../_measurements/S11_lean_fidelity_review_packet.json):
+- Manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_fidelity_review_packet.json`):
   `S11 homogeneous bounded fidelity contract v1`, aggregate SHA-256
   `4541cf8243b2058f813a09cf316b165a6d730ea53153f2284e27b39e5d4e51cf`.
   The aggregate hashes UTF-8 `json.dumps(files, sort_keys=True)`.
-- [Exact archive](../../_measurements/S11_lean_fidelity_packet_v1.tar.gz): SHA-256
+- Exact archive (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_fidelity_packet_v1.tar.gz`): SHA-256
   `aea065d5dd6e5a4563f45ac5db33919b7ccdf9a13349e83b1c0a18091f6b2c15`.
   It contains the 47 files and manifest, including the pre-closure prose.
   Paths are relative to `research/pde_ledger_v3`, except `docs/model_map.md`,
@@ -27,8 +27,8 @@ parent project instructions as extra context.
 
 | Reviewer | Session and completion (UTC) | Verdict and retained evidence |
 |---|---|---|
-| Claude Opus 5 (`claude-opus-5[1m]` in metadata) | `c33ca478-e576-4edf-89b0-5c2c0ce3c815`; 2026-09-16 03:14:56 | **CLEAR**; [report](../../_measurements/S11_lean_fidelity_claude_v1.md), [raw JSON](../../_measurements/S11_lean_fidelity_claude_v1.json), [run](../../_measurements/S11_lean_fidelity_claude_v1_run.json) |
-| Grok 4.6 (`grok-4.6-build`) | `d76418e2-171b-4df4-8522-7b1581655595`; 2026-09-16 03:24:02 | **CLEAR**; [report](../../_measurements/S11_lean_fidelity_grok_v1.md), [raw JSON](../../_measurements/S11_lean_fidelity_grok_v1.json), [run](../../_measurements/S11_lean_fidelity_grok_v1_run.json) |
+| Claude Opus 5 (`claude-opus-5[1m]` in metadata) | `c33ca478-e576-4edf-89b0-5c2c0ce3c815`; 2026-09-16 03:14:56 | **CLEAR**; [report](../../_measurements/S11_lean_fidelity_claude_v1.md), raw JSON (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_fidelity_claude_v1.json`), run (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_fidelity_claude_v1_run.json`) |
+| Grok 4.6 (`grok-4.6-build`) | `d76418e2-171b-4df4-8522-7b1581655595`; 2026-09-16 03:24:02 | **CLEAR**; [report](../../_measurements/S11_lean_fidelity_grok_v1.md), raw JSON (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_fidelity_grok_v1.json`), run (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_fidelity_grok_v1_run.json`) |
 
 Both processes exited 0 with `end_turn`; Claude additionally reports
 `completed`, `success`, no error and no permission denials. These are completed
@@ -36,7 +36,7 @@ source reviews. Claude's Markdown preserves its decoded `result`; Grok's
 preserves `text` from the final report heading onward. Its preceding progress
 sentences remain in the raw JSON. Reports are retained without editorial changes.
 The extraction offsets and artifact hashes are in the
-[closure validation](../../_measurements/S11_lean_closure_validation.json).
+closure validation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_closure_validation.json`).
 
 Both reviewers report no Lean/CAS/script execution or hash recomputation. Each
 states its inspected sources and limits. The author separately recomputed all
@@ -46,7 +46,7 @@ and outputs, and four compiled S11 output hashes also matched verification.
 
 Claude was limited to Read/Glob/Grep in safe/restricted mode; Grok was configured
 with Read only, no subagents and no web search. Grok's
-[stderr](../../_measurements/S11_lean_fidelity_grok_v1.stderr) contains startup
+stderr (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_fidelity_grok_v1.stderr`) contains startup
 warnings about plugin-name precedence, unrelated hook formats and git discovery
 under `/tmp`. There is no tool-allowlist mapping failure in this run. These
 warnings did not prevent the completed source review. Packet bytes remained

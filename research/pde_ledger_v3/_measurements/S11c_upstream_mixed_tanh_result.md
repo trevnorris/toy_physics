@@ -9,7 +9,7 @@ the complete closed response, or a leakage value.
 The guarded worker completed in **5.247 seconds**, with **77,709,312 bytes
 (74.1 MiB)** peak sampled cgroup memory. All 32 saved scalar identity residuals
 are exactly zero; native slope omission and sheet-reversal controls respond.
-The [completion record](S11c_upstream_mixed_tanh_completion.json) contains the
+The completion record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_upstream_mixed_tanh_completion.json`) contains the
 actual operands, receipt hashes, resources and 115 successful metadata checks.
 
 ## Actual selected result

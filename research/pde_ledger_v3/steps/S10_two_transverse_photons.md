@@ -66,7 +66,7 @@ other per-output bridge items are not remaining Lean obligations under the
 [scope policy, binding S10 disposition](../lean/FORMALIZATION_POLICY.md).
 Production comparator/export integration retains its separate acceptance requirements.
 The retained outputs and exports are unchanged. Current full-build evidence
-is recorded in [CAS_BRIDGE_VERIFICATION.txt](../lean/s10/CAS_BRIDGE_VERIFICATION.txt).
+is recorded in CAS_BRIDGE_VERIFICATION.txt (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/CAS_BRIDGE_VERIFICATION.txt`).
 
 The measured generic result is:
 
@@ -438,7 +438,7 @@ That original comparator therefore supplies no exceptional-stratum result.
 The focused repair now discovers rank loci for both `M_r` and `[M_r; k^T]`,
 and partitions the discovered Wolfram regions by membership before sampling.
 Both engines rerun both directions at D=3 and D=4. The new
-[focused comparator](../scripts/out/S10_anisotropic_strata_comparator.json)
+focused comparator (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S10_anisotropic_strata_comparator.json`)
 passes all ten root cases, matching direction geometry and `r/|k|²` and
 checking ranks and complete emitted bases at each witness. It does not prove
 equivalence of the general Boolean loci or completeness of the CAS discovery

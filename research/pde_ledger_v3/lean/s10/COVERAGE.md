@@ -6,8 +6,8 @@ not a claim that the supplied physical model has been derived.
 ## Current scope and Lean completion
 
 [FORMALIZATION_POLICY.md](../FORMALIZATION_POLICY.md) governs this work. The
-systematic CAS bridge expansion is stopped; the committed bridge remains
-evidence. Outstanding transcript fields are not automatically Lean obligations.
+systematic CAS bridge expansion is stopped; the historical bridge remains
+in `archive/pre-cleanup-2026-10-04`, with the compact D3 identity kept in the tree. Outstanding transcript fields are not automatically Lean obligations.
 
 **The scoped S10 Lean contract is complete.** C1–C4 below are closed: the existing
 six-family proofs supply the mathematical classification, the compact
@@ -27,7 +27,7 @@ justify resuming systematic transcript translation.
 quadratic action families. The contract below assembles existing theorems; it
 introduces no new physical premise or requirement to translate more CAS output.
 Its status is **complete within the stated Lean scope**. The exact reviewed v1
-contract is [archived](../../_measurements/S10_lean_fidelity_contract_v1.md);
+contract is archived (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_fidelity_contract_v1.md`);
 subsequent wording clarifications and status updates are recorded in the review
 disposition. No canonical proof or control instrument changed after review.
 
@@ -121,9 +121,9 @@ The stronger existing ANISO D3 artifact link is retained:
 is one half of the same action-derived operator, with `M_A = -2 M_B`.
 The scalar factors are nonzero and preserve the kernel, which is the claim
 here. This does not establish equality of normalized resolvents or residues.
-The [focused comparator](../../scripts/S10_anisotropic_strata_comparator.py)
+The focused comparator (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/S10_anisotropic_strata_comparator.py`)
 checks both exceptional directions at D=3,4, actual bases and normalized roots;
-its [result](../../scripts/out/S10_anisotropic_strata_comparator.json) reports
+its result (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S10_anisotropic_strata_comparator.json`) reports
 sampled coverage. General coverage comes from the theorem census above.
 
 All six actual action constructors and the limited stronger D3 link are in the
@@ -147,10 +147,10 @@ proof is required merely to combine existing checked statements in this table.
 | Q5/Q6/Q7 mathematical assertions | scalar and ANISO scaling theorems; `S10Audit.Expr.HasDim.rescale`, dimension solves, root dimensions, `packageAction_uses_stiffness`, `epsilonCurl_eq_jetCurl`, six Q7 comparisons | existing rejected root-wavevector, slot-unit and epsilon-contraction mutations; `q7_control_counterexample`, coefficient free-family and declared-dimensionless theorems |
 | Actual selected D3 matrix link and denominator domain | `S10Audit.CAS.PY/WL.matrixB_action`, `matrixB_reference`, `routes` | rejected PY/WL wrong coefficients, `missing_chart_denominator`, `wrong_basis_normalization`; passing denominator and basis controls |
 
-The durable existing records are [CAS controls](../../_measurements/S10_lean_cas_bridge_checks.json),
-[Q6/Q7 controls](../../_measurements/S10_lean_q6_q7_checks.json),
-[matrix controls](../../_measurements/S10_lean_matrix_checks.json) and
-[CAS verification](CAS_BRIDGE_VERIFICATION.txt). The [closure instrument](../../_measurements/S10_lean_contract_check.py) and
+The durable existing records are CAS controls (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_checks.json`),
+Q6/Q7 controls (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_q6_q7_checks.json`),
+matrix controls (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_matrix_checks.json`) and
+CAS verification (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/CAS_BRIDGE_VERIFICATION.txt`). The [closure instrument](../../_measurements/S10_lean_contract_check.py) and
 [its result](../../_measurements/S10_lean_contract_checks.json) reproduce the
 early action controls and add scalar/sign and phase-average controls: seven
 mathematical rejections and six passing controls, with commands, source variants
@@ -201,7 +201,7 @@ The latest control results are in [SCALAR_RESULT.md](SCALAR_RESULT.md).
 The dimensional-analysis and curl extension is in [Q6_Q7_RESULT.md](Q6_Q7_RESULT.md).
 The matrix, minor and complete-basis extension is in [MATRIX_RESULT.md](MATRIX_RESULT.md).
 The first actual-expression bridge is in [CAS_BRIDGE_RESULT.md](CAS_BRIDGE_RESULT.md),
-with current build evidence in [CAS_BRIDGE_VERIFICATION.txt](CAS_BRIDGE_VERIFICATION.txt).
+with current build evidence in CAS_BRIDGE_VERIFICATION.txt (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/CAS_BRIDGE_VERIFICATION.txt`).
 The complete minor and exceptional-locus bridge is in [MINOR_LOCUS_RESULT.md](MINOR_LOCUS_RESULT.md).
 The exceptional matrices and complete bases are in [EXCEPTIONAL_RERUN_RESULT.md](EXCEPTIONAL_RERUN_RESULT.md).
 The exceptional rank/nullity and signed-count bindings are in [COUNT_RESULT.md](COUNT_RESULT.md).

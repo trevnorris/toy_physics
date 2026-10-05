@@ -35,7 +35,7 @@ Transforming the remainder requires the additional stated premise
 \(f_{\rm loc}\in L^1\). The constant and step cannot be discarded as tails.
 Their delta/PV contributions encode the asymptotic interface.
 
-The [domain report](../../_measurements/S11c_d_quadrature_domain_report.md)
+The domain report (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_quadrature_domain_report.md`)
 already distinguishes finite-domain quadrature from complete-operator tails
 and the Abel limit. Its denominator sign records are not uniform lower bounds
 on an infinite spectral domain. Agreement of two quadratures or two cutoffs

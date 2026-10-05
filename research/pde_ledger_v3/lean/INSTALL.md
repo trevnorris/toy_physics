@@ -191,7 +191,7 @@ another job is guarding their object hashes.
 ## Validation of this installation path
 
 Validated on Linux with Python 3.10.12 and the pinned dependencies on
-2026-09-17. The compact record is [INSTALL_VALIDATION.json](INSTALL_VALIDATION.json).
+2026-09-17. The compact record is INSTALL_VALIDATION.json (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/INSTALL_VALIDATION.json`).
 
 | Check | Observed result |
 |---|---|
@@ -222,7 +222,7 @@ used one worker and took approximately 73 minutes on this host; other hardware
 may differ. Live inputs, logs, objects, fifteen clean dependency pins and five
 direct Mathlib source/object pairs were checked after completion.
 
-[INSTALL_D5_VALIDATION.json](INSTALL_D5_VALIDATION.json) records this new
+INSTALL_D5_VALIDATION.json (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/INSTALL_D5_VALIDATION.json`) records this new
 execution evidence. All 499 protected historical source/evidence files and 232
 shared ledger objects remained unchanged. The dated installation validation
 above remains historical and is not rewritten. This replay used the existing

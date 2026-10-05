@@ -10,7 +10,7 @@ separate S10 CAS production, comparator/export or ledger/paper work.
 
 Codex authored the contract. Two fresh non-author review sessions received the
 same 157-file packet, with no access to one another's findings. The
-[original prompt](../../_measurements/S10_lean_fidelity_review_prompt.txt) asked
+original prompt (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_fidelity_review_prompt.txt`) asked
 for statement fidelity, explicit domains, action/parameter normalization,
 exceptional cases, full subspaces and meaningful controls. It excluded
 systematic per-output bridge expansion.
@@ -18,10 +18,10 @@ systematic per-output bridge expansion.
 - Revision: `S10 compact fidelity contract v1`.
 - Packet SHA-256: `96d2c9d90a32b26d1c031e43ccc8580a8f8a102e18425491b231d4ac0cbc3b35`.
 - Policy commit: `c2bdb663`; canonical proof checkpoint: `f21e6459`.
-- [Manifest](../../_measurements/S10_lean_fidelity_review_packet.json): each
+- Manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_fidelity_review_packet.json`): each
   file hash; aggregate is SHA-256 of Python `json.dumps(files, sort_keys=True)`
   encoded as UTF-8. The author recomputed the aggregate and all 157 file hashes.
-- [Exact reviewed contract](../../_measurements/S10_lean_fidelity_contract_v1.md):
+- Exact reviewed contract (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_fidelity_contract_v1.md`):
   SHA-256 `013cf4df7b9cfcb55881550dca3bc9d9effef417343d488c0cda917123c1c5db`.
   The live [COVERAGE.md](COVERAGE.md) includes the editorial and status changes
   described below. Canonical proofs and the control instrument are unchanged.
@@ -34,14 +34,14 @@ also checked using those durable originals after the status updates.
 
 | Reviewer | Session | Verdict and evidence |
 |---|---|---|
-| Claude Opus 5 (`claude-opus-5[1m]` in CLI metadata) | `cad2e599-63c7-4417-878d-5bd5c3f7aed7` | **CLEAR**; [report](../../_measurements/S10_lean_fidelity_claude_v1.md), [raw response](../../_measurements/S10_lean_fidelity_claude_v1.json), [run](../../_measurements/S10_lean_fidelity_claude_v1_run.json) |
-| Grok 4.6 (`grok-4.6-build`) | `d419314e-5241-48c0-9a9e-9fc04c8a891b` | **CLEAR**; [report](../../_measurements/S10_lean_fidelity_grok_v1.md), [raw final response](../../_measurements/S10_lean_fidelity_grok_v1_completion.json), [completion run](../../_measurements/S10_lean_fidelity_grok_v1_completion_run.json) |
+| Claude Opus 5 (`claude-opus-5[1m]` in CLI metadata) | `cad2e599-63c7-4417-878d-5bd5c3f7aed7` | **CLEAR**; [report](../../_measurements/S10_lean_fidelity_claude_v1.md), raw response (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_fidelity_claude_v1.json`), run (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_fidelity_claude_v1_run.json`) |
+| Grok 4.6 (`grok-4.6-build`) | `d419314e-5241-48c0-9a9e-9fc04c8a891b` | **CLEAR**; [report](../../_measurements/S10_lean_fidelity_grok_v1.md), raw final response (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_fidelity_grok_v1_completion.json`), completion run (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_fidelity_grok_v1_completion_run.json`) |
 
-Grok's [first run](../../_measurements/S10_lean_fidelity_grok_v1_run.json)
+Grok's first run (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_fidelity_grok_v1_run.json`)
 returned `stopReason: cancelled` after requesting a shell hash check. Its
-[partial response](../../_measurements/S10_lean_fidelity_grok_v1.json) is not
+partial response (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_fidelity_grok_v1.json`) is not
 review clearance. The same independent session resumed with read/search tools
-only and [this prompt](../../_measurements/S10_lean_fidelity_grok_resume_prompt.txt),
+only and this prompt (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_fidelity_grok_resume_prompt.txt`),
 without Claude's findings. The completed response returned `end_turn` and the
 full report above. Both completed reports were collected before adjudication.
 
@@ -59,7 +59,7 @@ or extending the bridge.
 | Claude E4 / Grok: make implicit static N3 anchors explicit | Added scalar `zero_counts` at `c=1`, `longitudinal_inf_transverse`, and `div_zero_space` with `T ∩ T = T`. |
 | Grok: scalar stationarity inherits the MAIN theorems | Named `actionStationary_eq` and the inheritance explicitly in the evidence table. |
 | Claude E5: some mutants also emit linter errors; rejection regex scans whole output | No instrument change needed for this run: both reviewers inspected the mathematical failures inside the required declarations. ANISO fails `kinetic_eq`; ignored scaling fails `lagrangian_eq`. The linter errors are additional diagnostics, not the evidence of rejection. Linters remain enabled. A future instrument revision can narrow diagnostic matching if needed. |
-| Claude E6: older CAS mutation JSON stores hashes rather than full mutant text | Retained the committed record. The [existing instrument](../../_measurements/S10_lean_cas_bridge_check.py) contains the mutation constructions; its diagnostics and positive controls were reviewed. No unrelated evidence-format migration is required for closure. |
+| Claude E6: older CAS mutation JSON stores hashes rather than full mutant text | Retained the committed record. The existing instrument (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_check.py`) contains the mutation constructions; its diagnostics and positive controls were reviewed. No unrelated evidence-format migration is required for closure. |
 
 These clarifications implement the reviewers' source-backed observations. They
 do not alter definitions, hypotheses of formal theorems, the classification, or

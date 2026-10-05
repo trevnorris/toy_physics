@@ -1,0 +1,305 @@
+{
+  "normal": "sqrt(595)/10",
+  "selectedJoin": {
+    "pencil": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "minusPencil": [
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "forms": {
+      "SLAB_CURRENT_MATRIX": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "BULK_NORMAL_CURRENT_DENSITY_MATRIX": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "BULK_DEPTH_CURRENT_MATRIX": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "INTERFACE_POWER_MATRIX": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    },
+    "faces": [
+      [
+        {
+          "AMPLITUDE": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "PRESSURE": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "OUTWARD_VELOCITY": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "RELATIVE_MASS_FLUX": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "AFFINITY": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "CHEMICAL_POTENTIAL": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "BULK_VELOCITY": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "MECHANICAL_RESPONSE": [
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "AMPLITUDE": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "PRESSURE": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "OUTWARD_VELOCITY": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "RELATIVE_MASS_FLUX": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "AFFINITY": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "CHEMICAL_POTENTIAL": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "BULK_VELOCITY": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "MECHANICAL_RESPONSE": [
+            [
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ],
+      [
+        {
+          "AMPLITUDE": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "PRESSURE": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "OUTWARD_VELOCITY": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "RELATIVE_MASS_FLUX": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "AFFINITY": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "CHEMICAL_POTENTIAL": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "BULK_VELOCITY": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "MECHANICAL_RESPONSE": [
+            [
+              "0",
+              "0"
+            ]
+          ]
+        },
+        {
+          "AMPLITUDE": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "PRESSURE": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "OUTWARD_VELOCITY": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "RELATIVE_MASS_FLUX": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "AFFINITY": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "CHEMICAL_POTENTIAL": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "BULK_VELOCITY": [
+            [
+              "0",
+              "0"
+            ]
+          ],
+          "MECHANICAL_RESPONSE": [
+            [
+              "0",
+              "0"
+            ]
+          ]
+        }
+      ]
+    ]
+  },
+  "fullPFinite": {
+    "RADIATING": true,
+    "EVANESCENT": true
+  },
+  "scalarLimits": {
+    "RADIATING": 322,
+    "EVANESCENT": 295
+  }
+}

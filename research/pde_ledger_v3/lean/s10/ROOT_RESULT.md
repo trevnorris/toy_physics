@@ -17,7 +17,7 @@ targeted points and these three filter lists.
 
 ## Complete spectrum and algebraic multiplicity
 
-[RootSupport.lean](S10Audit/CAS/RootSupport.lean) defines the cubic polynomial
+RootSupport.lean (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/S10Audit/CAS/RootSupport.lean`) defines the cubic polynomial
 
 ```
 (rho^3 sigma / 8) z (z - ordinaryRoot) (z - extraRoot).
@@ -31,7 +31,7 @@ algebraic multiplicity is three. These are polynomial-root multiplicities in
 squared frequency; they are separate from the modal kernel dimensions proved
 in the [count bridge](COUNT_RESULT.md).
 
-[RootBindings.lean](S10Audit/CAS/RootBindings.lean) connects the imported
+RootBindings.lean (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/S10Audit/CAS/RootBindings.lean`) connects the imported
 solution and distinct-root lists to this multiset. For each of the six
 engine/case combinations, a squared frequency belongs to the imported
 distinct-root list if and only if the **actual emitted determinant** vanishes.
@@ -78,7 +78,7 @@ its numerical value cancels.
 
 ## Parsing, provenance and verification
 
-[S10_lean_cas_roots.py](../../scripts/S10_lean_cas_roots.py) accepts only
+S10_lean_cas_roots.py (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/S10_lean_cas_roots.py`) accepts only
 single-variable solution rules with the exact `omegaSquared` key and scalar
 arithmetic values. It preserves every candidate and its order, including
 duplicates. The association parser accepts exactly the two named count fields.
@@ -86,7 +86,7 @@ Unsupported conditions, extra assignments, wrong variables, duplicate fields,
 fractional counts, malformed containers and trailing text are rejected.
 Original payloads, line numbers, source hashes, arithmetic trees, units,
 domains and semantic proof names remain in the
-[manifest](../../_measurements/S10_lean_cas_bridge_manifest.json).
+manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_manifest.json`).
 
 The independent comparison uses the existing SymPy and Wolfram parsers to
 extract each solution value and association field separately. It also checks
@@ -106,8 +106,8 @@ That checkpoint regression suite passed 834 independent arithmetic comparisons,
 It rejected all 53 malformed inputs and all 24 mathematical mutations; all eight
 positive controls passed. Canonical source, input and export hashes remain
 unchanged by the tests. The latest full-build and regression results are recorded in
-[CAS_BRIDGE_VERIFICATION.txt](CAS_BRIDGE_VERIFICATION.txt) and
-[the check record](../../_measurements/S10_lean_cas_bridge_checks.json).
+CAS_BRIDGE_VERIFICATION.txt (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/CAS_BRIDGE_VERIFICATION.txt`) and
+the check record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_checks.json`).
 Reproduction commands are in [CAS_BRIDGE_RESULT.md](CAS_BRIDGE_RESULT.md).
 
 ## Remaining work

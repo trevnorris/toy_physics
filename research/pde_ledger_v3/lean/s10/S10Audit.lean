@@ -1,5 +1,6 @@
 import S10Audit.NormalizedTrees
-import S10Audit.CAS.Audit
+-- Keep the compact C2 imported-matrix identity; the transcript-wide audit is archived.
+import S10Audit.CAS.Bindings
 
 #print axioms S10Audit.packageAction_uses_stiffness
 #print axioms S10Audit.epsilonCurl_eq_jetCurl

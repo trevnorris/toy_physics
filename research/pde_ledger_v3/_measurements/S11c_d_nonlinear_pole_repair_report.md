@@ -9,7 +9,7 @@ controls. The subsequent Lean NP1–NP4 handoff proves a bounded conditional cor
 its independent fidelity reviews remain pending at reception. Neither is a
 physical pole certificate or a proof of the complete analytic contract.
 
-The [application plan](S11c_d_nonlinear_pole_repair_plan.md#applying-the-np1np4-handoff)
+The application plan (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_nonlinear_pole_repair_plan.md`)
 maps that handoff to actual derivative/full-kernel and inverse-expansion joins,
 ordered Laurent/response coefficients, contour scaling and the remaining
 analytic and physical premises. The reception checkpoint joins the fixed

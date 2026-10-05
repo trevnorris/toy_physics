@@ -18,9 +18,9 @@ in separate sequential sessions, without the other review's report.
 - Aggregate SHA256: `9c7e8e41dd1820647c3dc787ad171043944038c70d37b873699d414f49396e57`.
 - Archive SHA256: `2c354358720bb6fd03afd8298a237131cf326de785222598ee15bef84b9bb9d7`.
 - Manifest SHA256: `a85ac31521dcf002a4baaa4d4a5244c6f98f00da917d470287003cd9f2ec0e6e`.
-- [Manifest](../../_measurements/S11_lean_pole_review_packet.json),
-  [archive](../../_measurements/S11_lean_pole_review_packet_v1.tar.gz),
-  [authorization/state](../../_measurements/S11_lean_pole_review_state.json).
+- Manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_pole_review_packet.json`),
+  archive (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_pole_review_packet_v1.tar.gz`),
+  authorization/state (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_pole_review_state.json`).
 
 | Reviewer | Session | Result |
 |---|---|---|
@@ -51,7 +51,7 @@ direct Mathlib source/object pairs. All seven read-only native/addendum inputs
 and forty VC plus five T1 objects match their preservation record. No shared
 source drift occurred. The other session's application-mapping commit
 `8e8bd430` is preserved and is not treated as a change to the approved packet.
-See [closure validation](../../_measurements/S11_lean_pole_closure_validation.json).
+See closure validation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_pole_closure_validation.json`).
 
 | Finding | Disposition |
 |---|---|
@@ -86,7 +86,7 @@ These are established mathematical distinctions, not new physical discoveries.
 
 The user authorized the checkpoint commit with “After they approve go ahead
 and commit”; both required clearances and finding dispositions now satisfy
-that condition. See [commit authorization](../../_measurements/S11_lean_pole_commit_authorization.json).
+that condition. See commit authorization (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_pole_commit_authorization.json`).
 This supersedes the older cached watcher text saying no NP commit was requested.
 The commit uses a `lean:` prefix and preserves unrelated/other-session work.
 No new mathematical increment is authorized by this completion.

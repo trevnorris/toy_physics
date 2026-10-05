@@ -12,12 +12,12 @@ Both reviewers received the same fixed 49-file packet, `S9 bounded fidelity
 contract v1`, in separate sessions. Reviews ran sequentially; neither was given
 the other's findings. The user's explicit authorization, “Yes you can send the
 files for review”, is retained in the
-[review state](../../_measurements/S9_lean_fidelity_review_state.json).
+review state (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S9_lean_fidelity_review_state.json`).
 
-- [Manifest](../../_measurements/S9_lean_fidelity_review_packet.json), aggregate
+- Manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S9_lean_fidelity_review_packet.json`), aggregate
   SHA-256: `6903a1fa2cedf302561deab7dd04c6e88f523125b372a416cd6448ed4325d0eb`.
   This hashes UTF-8 `json.dumps(files, sort_keys=True)`.
-- [Exact reviewed archive](../../_measurements/S9_lean_fidelity_packet_v1.tar.gz),
+- Exact reviewed archive (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S9_lean_fidelity_packet_v1.tar.gz`),
   SHA-256: `10eb027fa73f93f6e469e0c8950abd5dc765bc7a984093adea7dd446beb1e5d4`.
   It preserves all 49 files and the manifest, including the pre-closure prose.
   A narrow ignore exception makes the archive eligible for a future checkpoint.
@@ -26,8 +26,8 @@ files for review”, is retained in the
 
 | Reviewer | Session and completion | Verdict and retained evidence |
 |---|---|---|
-| Claude Opus 5 (`claude-opus-5[1m]` in model metadata) | `a00d350a-61b5-4b28-87a7-d77ef4811ff9`; 2026-09-16 01:28:43 UTC | **CLEAR**; [report](../../_measurements/S9_lean_fidelity_claude_v1.md), [raw JSON](../../_measurements/S9_lean_fidelity_claude_v1.json), [run](../../_measurements/S9_lean_fidelity_claude_v1_run.json) |
-| Grok 4.6 (`grok-4.6-build`) | `e1dc69d7-d887-44fc-89ca-aed0216d4503`; 2026-09-16 01:37:52 UTC | **CLEAR**; [report](../../_measurements/S9_lean_fidelity_grok_v1.md), [raw JSON](../../_measurements/S9_lean_fidelity_grok_v1.json), [run](../../_measurements/S9_lean_fidelity_grok_v1_run.json) |
+| Claude Opus 5 (`claude-opus-5[1m]` in model metadata) | `a00d350a-61b5-4b28-87a7-d77ef4811ff9`; 2026-09-16 01:28:43 UTC | **CLEAR**; [report](../../_measurements/S9_lean_fidelity_claude_v1.md), raw JSON (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S9_lean_fidelity_claude_v1.json`), run (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S9_lean_fidelity_claude_v1_run.json`) |
+| Grok 4.6 (`grok-4.6-build`) | `e1dc69d7-d887-44fc-89ca-aed0216d4503`; 2026-09-16 01:37:52 UTC | **CLEAR**; [report](../../_measurements/S9_lean_fidelity_grok_v1.md), raw JSON (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S9_lean_fidelity_grok_v1.json`), run (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S9_lean_fidelity_grok_v1_run.json`) |
 
 Both CLIs exited 0 with `end_turn`. Claude additionally reports `completed`,
 `success`, and no error. These are completed reviews, not plans or partial
@@ -35,7 +35,7 @@ responses. Claude's Markdown is its full decoded `result` field. Grok's is the
 decoded `text` from the final report heading onward; the preceding progress
 sentences remain in the raw JSON. Neither report has been editorially corrected.
 Extraction details and artifact hashes are in the
-[closure validation](../../_measurements/S9_lean_closure_validation.json).
+closure validation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S9_lean_closure_validation.json`).
 
 Both reviewers inspected source and recorded evidence, and report that they
 did not run Lean, CAS or hash computations. The author independently recomputed
@@ -45,7 +45,7 @@ check. The supervisor log was empty and the completion hook finished normally.
 
 The reviews were instructed to inspect without changing files. Claude was
 limited to read/search tools. Grok's retained
-[stderr](../../_measurements/S9_lean_fidelity_grok_v1.stderr) warns that two tool
+stderr (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S9_lean_fidelity_grok_v1.stderr`) warns that two tool
 allowlist names were unmappable and the full toolset remained available; a
 technical read-only restriction therefore cannot be claimed for that session.
 Its report states no execution, and all reviewed and live packet contents were
@@ -82,7 +82,7 @@ records already use the correct meanings.
 | C4: build, axiom audit and independent fidelity reviews | All nine S9 modules rebuilt sequentially and the audit root compiled; 32 selected axiom audits use only `propext`, `Classical.choice`, `Quot.sound`. No admissions or custom physics axioms. Both review legs complete and findings disposed above. |
 
 The [verification record](CLOSURE_VERIFICATION.txt) and
-[full control results](../../_measurements/S9_lean_contract_checks.json) retain
+full control results (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S9_lean_contract_checks.json`) retain
 their pre-review timestamps. The verification record's “review pending” line
 describes that earlier state; this document records its completion.
 

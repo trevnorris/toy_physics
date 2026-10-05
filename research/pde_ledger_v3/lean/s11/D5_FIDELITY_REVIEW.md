@@ -10,7 +10,7 @@ not D5 bulk variation, S11 as a whole or the separate CAS production work.
 The user authorized transfer of the fixed 64-file packet by replying
 "I approve" to the exact-packet request. Authorization, immutable packet and
 run identities are recorded in
-[`S11_lean_d5_review_state.json`](../../_measurements/S11_lean_d5_review_state.json).
+`S11_lean_d5_review_state.json` (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d5_review_state.json`).
 
 - Packet: `S11 D5 quadratic invariant D5.1–D5.4 fidelity contract v1`.
 - Aggregate SHA256: `ff8aa6e60d1403128615212ccbf601fc0c038ef82d0f64690144d9a9457c081c`.
@@ -106,7 +106,7 @@ invariant remains. This is exhaustive certification of the supplied density
 family, not a new physical discovery or a statement that three distinct bulk
 responses or particular boundary conditions follow.
 
-[`S11_lean_d5_closure_validation.json`](../../_measurements/S11_lean_d5_closure_validation.json)
+`S11_lean_d5_closure_validation.json` (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d5_closure_validation.json`)
 records packet/report correspondence, preservation and documentation-only
 differences. The approved snapshot, archive, transport and mathematical sources
 remain unchanged. Installation/reproducibility fixes retain their separate

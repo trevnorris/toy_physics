@@ -2,7 +2,7 @@
 
 Historical record of checkpoint `f9e28f5`. The canonical main transcript has
 since been regenerated for the
-[rectangular mode-jet checkpoint](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_rectangular_mode_jet_report.md).
+rectangular mode-jet checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_rectangular_mode_jet_report.md`).
 The sizes, hashes and verification results below describe the preserved
 sheet-repair run; its run record and inventory remain unchanged.
 
@@ -10,7 +10,7 @@ sheet-repair run; its run record and inventory remain unchanged.
 
 ## Construction that resolves the scope question
 
-The [Fourier probe](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_fourier_sheet_probe.py) consumes a newly generated reference pencil, its completed one-case transcript, the explicit physical input, and the actual c2 branch bindings captured by the scope lookup. It checks the run's source/input/cache/transcript hashes. The pre-repair engine run completed with exit 0, empty stderr, 801.55 seconds, and peak RSS 1,720,624 KiB.
+The Fourier probe (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/S11c_d_fourier_sheet_probe.py`) consumes a newly generated reference pencil, its completed one-case transcript, the explicit physical input, and the actual c2 branch bindings captured by the scope lookup. It checks the run's source/input/cache/transcript hashes. The pre-repair engine run completed with exit 0, empty stderr, 801.55 seconds, and peak RSS 1,720,624 KiB.
 
 From the computed reduced radical relation, the probe obtains the even quadratic in normal momentum and its roots. At this input, the branch points are `k_n = ±0.2 i` in inverse-length reference units. It scales momentum by the computed `a = 0.2`, producing the dimensionless radical square `1+p²`. The real-axis seed is evaluated from the exported c2 branch definition, with the conversion to the d radical obtained from the computed quadratic coefficient.
 
@@ -32,23 +32,23 @@ Thus no additional physical premise is needed to decide this original counterexa
 
 The flag records membership in this explicit fixed-frequency continuation chart. It is not a frequency-pole classification. Candidates on the other branch or outside the resolved path domain remain in the output. An unresolved label cannot pass the incoming/outgoing flag gate. Frequency slopes remain diagnostics; the unfinished bulk current is still required for flux normalization.
 
-The [cached path controls](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_sheet_path_controls.py) recomputed labels for 198 candidates in nine one-case packets: six algebraic PIT packets and three explicit-input packets. Differential-equation transport completed for every resolved path. Maximum transport difference was `6.04e-12`, or `4.98e-12` relative. Label transitions were: 34 false→true, 28 true→false, and 28 becoming unresolved. These counts describe candidate records, not physical open-channel counts. All 18 deliberate branch-locus path probes were unresolved.
+The cached path controls (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/S11c_d_sheet_path_controls.py`) recomputed labels for 198 candidates in nine one-case packets: six algebraic PIT packets and three explicit-input packets. Differential-equation transport completed for every resolved path. Maximum transport difference was `6.04e-12`, or `4.98e-12` relative. Label transitions were: 34 false→true, 28 true→false, and 28 becoming unresolved. These counts describe candidate records, not physical open-channel counts. All 18 deliberate branch-locus path probes were unresolved.
 
 The build directive also requests `reduction/derived_or_declared.py` and `reduction/engine_output_checks.py`; neither file is present in this repository. The recorded compilation, import guards, emitted dimensional constraints and transcript inventory are the available builder checks, not execution of those missing tools.
 
-The updated [original probe](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_sheet_continuation_probe.py) calls the repaired selector on the original counterexample. It emits `selectedPhysicalSheet = false`, a relative opposite-branch difference of `1.46e-16`, and empty dimensional constraints. The Fourier and cached-control instruments also emit empty dimensional constraints. These cached checks use the pinned pre-repair pencil as a construction operand; they are not presented as a fresh integrated execution of the repaired engine.
+The updated original probe (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/S11c_d_sheet_continuation_probe.py`) calls the repaired selector on the original counterexample. It emits `selectedPhysicalSheet = false`, a relative opposite-branch difference of `1.46e-16`, and empty dimensional constraints. The Fourier and cached-control instruments also emit empty dimensional constraints. These cached checks use the pinned pre-repair pencil as a construction operand; they are not presented as a fresh integrated execution of the repaired engine.
 
 ## Artifacts and remaining scope
 
-Exact commands, run manifests, payload hashes, and exit/stderr records are in [the run record](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sheet_repair_runs.json). Completed stdout is published at its expected paths:
+Exact commands, run manifests, payload hashes, and exit/stderr records are in the run record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_sheet_repair_runs.json`). Completed stdout is published at its expected paths:
 
-- [Main four-case/PIT transcript](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out): 55,823,604 bytes, from the repaired engine.
-- [Channel preflight](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_channel_reentry_preflight.out): 15,882,954 bytes, from the freshly pinned **pre-repair** engine.
-- [Fourier probe](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_fourier_sheet_probe.out): 36,365 bytes.
-- [Original counterexample probe](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_sheet_continuation_probe.out): 13,844 bytes.
-- [Cached path controls](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_sheet_path_controls.out): 313,768 bytes.
+- Main four-case/PIT transcript (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out`): 55,823,604 bytes, from the repaired engine.
+- Channel preflight (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S11c_d_channel_reentry_preflight.out`): 15,882,954 bytes, from the freshly pinned **pre-repair** engine.
+- Fourier probe (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S11c_d_fourier_sheet_probe.out`): 36,365 bytes.
+- Original counterexample probe (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S11c_d_sheet_continuation_probe.out`): 13,844 bytes.
+- Cached path controls (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S11c_d_sheet_path_controls.out`): 313,768 bytes.
 
-The full run used the engine's default four-case/PIT path; the explicit physical input is covered separately above. It completed in 2,495.66 seconds with peak RSS 1,721,064 KiB and empty stderr. The [literal output inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sheet_output_inventory.json) records 9,894 distinct tags, all 12 reference/end symbols and 24 mode packets, unchanged emitted source pins, one completion marker, and three empty dimensional records. All 528 candidates carry branch-path records and matching packet metadata: 224 labels are true, 240 false and 64 unresolved. These are algebraic PIT candidate records, not an open-channel census. The inventory exited 0 with empty stderr.
+The full run used the engine's default four-case/PIT path; the explicit physical input is covered separately above. It completed in 2,495.66 seconds with peak RSS 1,721,064 KiB and empty stderr. The literal output inventory (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_sheet_output_inventory.json`) records 9,894 distinct tags, all 12 reference/end symbols and 24 mode packets, unchanged emitted source pins, one completion marker, and three empty dimensional records. All 528 candidates carry branch-path records and matching packet metadata: 224 labels are true, 240 false and 64 unresolved. These are algebraic PIT candidate records, not an open-channel census. The inventory exited 0 with empty stderr.
 
 Publication replaced directory entries without writing through annex symlinks; the old annex content remains preserved by checkpoint `55e298b`. The previous main annex object's hash was checked again after publication and is unchanged. The user subsequently requested this repair checkpoint. Its storage policy sends the five `.out` payloads through DataLad/git-annex and keeps scripts, reports and JSON in ordinary Git. This preservation save does not confer review clearance; no push was requested.
 

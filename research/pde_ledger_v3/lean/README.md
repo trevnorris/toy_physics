@@ -19,8 +19,8 @@ the pinned Python environment, dependency caches, and the portable proof/control
 runner. The original author verification scripts retain historical workspace
 guards; the portable runner creates new evidence without changing those records.
 
-See [CHECKPOINT.md](CHECKPOINT.md) for the original S9/S10 checkpoint and
-[s10/CAS_CHECKPOINT.md](s10/CAS_CHECKPOINT.md) for the subsequent CAS bridge
+See CHECKPOINT.md (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/CHECKPOINT.md`) for the original S9/S10 checkpoint and
+s10/CAS_CHECKPOINT.md (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/CAS_CHECKPOINT.md`) for the subsequent CAS bridge
 checkpoint, validation evidence and resume plan.
 The later [S10 contract completion](s10/FIDELITY_REVIEW.md) records the compact
 coverage contract, both independent CLEAR fidelity reviews, mutation evidence
@@ -65,7 +65,7 @@ It uses one worker and separate objects/logs under `_scratch/lean_portable/`.
 Use `--list`, `--plan`, or a contract name such as `analytic-error` to select a
 smaller run. The completed D5 density classification is included as `d5`;
 its fresh portable replay passed, as recorded in
-[INSTALL_D5_VALIDATION.json](INSTALL_D5_VALIDATION.json). The new D5 bulk
+INSTALL_D5_VALIDATION.json (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/INSTALL_D5_VALIDATION.json`). The new D5 bulk
 contract is complete with its own recorded suite and two CLEAR fidelity
 reviews; it is registered as `d5-bulk`. Registration checks are recorded in
 `INSTALL_D5_BULK_REGISTRATION.json`; no new full D5 bulk portable replay is

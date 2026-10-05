@@ -39,7 +39,7 @@ Claude's literal verdict was **REQUIRES A PHYSICAL CHOICE**, with partial source
 - Existing S11b face response retains chemical drive, relative mass flux, pressure work and memory. Its background normal drain is an uncarried scope limit in the rest-bulk wave calculation. Do not turn that limit into a computed energy supply.
 - The nonlinear Γ_return/Γ_drain functions, native core energy and the map into the trapped-mode and electric-mouth response remain to be identified or explicitly proposed. No new choice should be requested until the existing source content has been traced.
 
-Accepted finite S11c findings remain intact: [native end flux](../research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_continue_result_record.json) has positive G0/Gref and K1 = 0; [scoped receiving regularity](../research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue2_result_record.json) excludes the recorded C3 real-axis poles. Neither is a full field, full work balance or leakage factor. Missing physical second-order grades, end-current terms and threshold limits remain recorded debts.
+Accepted finite S11c findings remain intact: native end flux (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_first_order_transverse_flux_continue_result_record.json`) has positive G0/Gref and K1 = 0; scoped receiving regularity (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue2_result_record.json`) excludes the recorded C3 real-axis poles. Neither is a full field, full work balance or leakage factor. Missing physical second-order grades, end-current terms and threshold limits remain recorded debts.
 
 ## Work state and next action
 

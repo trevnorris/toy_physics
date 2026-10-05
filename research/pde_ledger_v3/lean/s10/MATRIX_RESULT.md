@@ -109,10 +109,10 @@ At the committed checkpoint, `LAKE_CACHE_DIR=.lake/cache lake build` passed with
 Only the standard logical axioms `propext`, `Classical.choice` and `Quot.sound`
 occur. Warnings are errors, and no proof admissions are used.
 
-The [mutation instrument](../../_measurements/S10_lean_matrix_check.py) tests
+The mutation instrument (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_matrix_check.py`) tests
 three isolated copies: an incorrect appended-row unit, a dropped cofactor
 sign and an incorrect transverse-basis sign. Results are recorded in
-[S10_lean_matrix_checks.json](../../_measurements/S10_lean_matrix_checks.json).
+S10_lean_matrix_checks.json (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_matrix_checks.json`).
 [AUDIT_VERIFICATION.txt](AUDIT_VERIFICATION.txt) records the build, audits and
 source hashes.
 
@@ -134,4 +134,4 @@ signs, solver operands/statuses and stratum dispositions. Reality-filter traces,
 remaining Q5/Q6/period-average metadata, D4 and other packages remain to be connected. The production Q7 construction, broad comparator/export
 refresh and paper alignment also remain open in [COVERAGE.md](COVERAGE.md).
 This matrix increment changes no CAS engine or frozen export. It is included
-in the [combined S9/S10 checkpoint](../CHECKPOINT.md).
+in the combined S9/S10 checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/CHECKPOINT.md`).

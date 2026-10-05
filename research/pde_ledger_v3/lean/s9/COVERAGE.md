@@ -62,9 +62,9 @@ does not independently justify choosing it.
 
 The [proof report](RESULT.md) and original [verification record](VERIFICATION.txt)
 give the precise pilot statements and its 21 selected audits. The new closure
-instrument is [_measurements/S9_lean_contract_check.py](../../_measurements/S9_lean_contract_check.py).
+instrument is _measurements/S9_lean_contract_check.py (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S9_lean_contract_check.py`).
 It adds the scalar-phase audits and reproducible mutation records. The later
 [S10 coverage map](../s10/COVERAGE.md) records the additional formal coverage
-and the remaining integration work. The [combined checkpoint](../CHECKPOINT.md)
+and the remaining integration work. The combined checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/CHECKPOINT.md`)
 is historical; [FIDELITY_REVIEW.md](FIDELITY_REVIEW.md) records this bounded S9
 closure. No further Lean coverage is required by C1–C4.

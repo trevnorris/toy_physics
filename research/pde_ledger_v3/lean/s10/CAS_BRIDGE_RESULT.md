@@ -16,7 +16,7 @@ root differences, guarded loci, allowed regions, decisions and witnesses.
 The [metadata extension](METADATA_RESULT.md) checks aggregate/Q8 copies, reported
 root signs, spectrum operands and statuses, root solver-condition lists, and
 retained/skipped-stratum dispositions.
-The [manifest](../../_measurements/S10_lean_cas_bridge_manifest.json) records each
+The manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_manifest.json`) records each
 input file hash, tag, line number, exact payload, parsed tree, denominator
 condition, unit and generated theorem.
 
@@ -169,17 +169,17 @@ record's semantic binding. All 48 metadata records and nine associated arithmeti
 records also have their semantic bindings audited. Thirty declarations require
 no axioms; the others use only `propext`, `Classical.choice` and `Quot.sound`.
 Warnings are errors, and there are no proof admissions.
-[CAS_BRIDGE_VERIFICATION.txt](CAS_BRIDGE_VERIFICATION.txt) records the current
+CAS_BRIDGE_VERIFICATION.txt (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/CAS_BRIDGE_VERIFICATION.txt`) records the current
 build, axiom audits and source hashes. The earlier verification files describe
-the [committed 250-audit checkpoint](../CHECKPOINT.md).
+the committed 250-audit checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/CHECKPOINT.md`).
 
-The [regression instrument](../../_measurements/S10_lean_cas_bridge_check.py)
+The regression instrument (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_check.py`)
 compares all 916 cells against the independently implemented existing parsers,
 tests malformed inputs, and compiles isolated Lean mutations. It changes a
 dimensionless coefficient in each engine's matrix, removes a chart assumption,
 changes a basis normalization and assigns a wrong slot unit. Positive controls
 distinguish intended proof failures from a broken test environment. The
-[check record](../../_measurements/S10_lean_cas_bridge_checks.json) retains
+check record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_checks.json`) retains
 outcomes and verifies canonical hashes before and after the tests.
 The extended checks also cover locus guards, targeted points, row/column
 selection errors, omission of either exceptional branch, incomplete/dependent

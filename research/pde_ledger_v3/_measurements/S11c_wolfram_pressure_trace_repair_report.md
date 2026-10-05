@@ -10,7 +10,7 @@ rectangle. Both weak contractions and the native closed-slot construction use
 the computed reference images. Four new trace tags expose physical/reference
 responses, reconstructed physical pressure and the literal residual.
 
-The [focused checkpoint](S11c_wolfram_pressure_trace_focused_checkpoint.json)
+The focused checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_focused_checkpoint.json`)
 records **218 zero residual scalars** across the generic ordered matrix joins,
 separately targeted zero-frequency solves, 16 native anchoring/density/route/face
 row cases and four exact shifted-wave regressions. Each of six missing/doubled/
@@ -23,7 +23,7 @@ wave regression independently reconstructs pressure and its normal continuation.
 
 The complete focused run took 20.51 seconds at 398,136 KiB peak RSS, with exit
 zero, empty stderr and stable source hashes. Its 1,642,937-byte
-[transcript](../mathematica/out/S11c_wolfram_pressure_trace_repaired.out) retains
+transcript (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/mathematica/out/S11c_wolfram_pressure_trace_repaired.out`) retains
 both operands, raw/retained/discarded parts and restored dimensions/grades.
 The first development attempt is preserved: repeated general series expansion
 was replaced in the checker by direct coefficient extraction when the denominator
@@ -35,12 +35,12 @@ no historical ablation result is being treated as a new repaired run. The old
 main c2 output remains preserved in annex history. The native
 development case completed in 1,004.16 seconds at 588,792 KiB peak RSS with empty
 stderr and all source/prior-output pins stable. Its transcript has 126,423,192
-bytes. The [development validation](S11c_wolfram_pressure_trace_native_development_checkpoint.json)
+bytes. The development validation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_native_development_checkpoint.json`)
 finds zero nonzero numerators across nine required residual families, with no
 zero sample denominators. All 144 new trace components have complete family,
 face, grade and restored-dimension joins.
 
-The [four-case native checkpoint](S11c_wolfram_pressure_trace_native_checkpoint.json)
+The four-case native checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_native_checkpoint.json`)
 records 44 tags and **9,968,256 zero numerator evaluations** across the nine
 required residual families, with no zero checked sample denominators. Each case
 uses 17 recorded real-axis cells, three primes and eight draws (408 sample rows).
@@ -51,7 +51,7 @@ The validated 496,254,757-byte [main transcript](../mathematica/out/S11c_c2_N6_m
 has SHA-256 `08bfb8be8097e97b711918d32bc7ad2127298fb0305e25c0c1ff2faf3ea9c254`.
 Both completion watchers delivered their events without model polling.
 
-The [emission inventory](S11c_wolfram_pressure_trace_emission_delta.json)
+The emission inventory (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_emission_delta.json`)
 finds 26 unchanged assignments, 14 changed assignments, four added trace tags
 and none removed. Unchanged assignments include the carrier/source operands,
 covariance families and slot guards. Pressure-contracted operands, channel

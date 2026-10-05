@@ -10,7 +10,7 @@ only, not S11 as a whole or the separate CAS production work.
 The user approved transfer of the fixed 52-file packet by answering
 "Yes you can." to the exact-packet request. The authorization, run identities
 and immutable snapshot are recorded in
-[`S11_lean_d4_bulk_review_state.json`](../../_measurements/S11_lean_d4_bulk_review_state.json).
+`S11_lean_d4_bulk_review_state.json` (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d4_bulk_review_state.json`).
 
 - Packet: `S11 full D4 bulk D4C.1–D4C.4 fidelity contract v1`.
 - Aggregate SHA256: `061d0d96f0c3b62439875877aa4a107b53b6870a206b308ee8a04056bd8e8a11`.
@@ -91,7 +91,7 @@ currents. This is exhaustive proof of the supplied family, not a new physical
 discovery, pointwise vanishing of the null density, or absence of boundary
 effects.
 
-[`S11_lean_d4_bulk_closure_validation.json`](../../_measurements/S11_lean_d4_bulk_closure_validation.json)
+`S11_lean_d4_bulk_closure_validation.json` (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d4_bulk_closure_validation.json`)
 records the reviewed hashes, report extraction, final preservation checks and
 documentation-only differences. The approved snapshot, archive and transport
 are unchanged. No commit was requested or performed for this closure.

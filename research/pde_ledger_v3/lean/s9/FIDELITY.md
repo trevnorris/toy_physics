@@ -40,7 +40,7 @@ forms `aᵀ K a / 2`, then differentiates twice. Since this kernel is symmetric,
 both yield the same `M`, without a phase-average factor. This S9 paired-wave
 normalization should not be confused with S10's real-cosine period average.
 
-The [compact source check](../../_measurements/S9_lean_source_check.py) executes
+The compact source check (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S9_lean_source_check.py`) executes
 only selected original SymPy constructor and route definitions. It compares the
 action in independent jet symbols and the two native modal matrices with these
 handwritten references, by exact symbolic zero residuals. It checks the
@@ -122,7 +122,7 @@ The supplied constitutive law and physical interpretation remain premises.
 The closure instrument leaves every canonical proof unchanged. Its source
 mutations use the existing mathematical proofs; its concrete statement mutants
 have separately compiled passing counterparts. Review the full source and
-diagnostics in [the result record](../../_measurements/S9_lean_contract_checks.json).
+diagnostics in the result record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S9_lean_contract_checks.json`).
 The final suite passes: nine mathematical rejections, five explicit positive
 controls, the sequential S9 rebuild and 32 axiom audits. Both independent reviews
 are CLEAR; see the [review dispositions](FIDELITY_REVIEW.md).
@@ -139,7 +139,7 @@ are CLEAR; see the [review dispositions](FIDELITY_REVIEW.md).
 | No nonzero transverse velocity polarization | The unit-coefficient cosine amplitude at `(0,0,1)` is not transverse. Its passing check and the false transverse-membership counterpart test this consequence nonvacuously. |
 | Nonzero prefactor in the complete longitudinal amplitude range | At `hbar=0`, the cosine amplitude is zero. The passing check admits this limit; falsely asserting nonzero amplitude there must fail. Physically positive `hbar,m` and a nonzero-velocity witness ensure the intended family is nonempty. |
 
-The [initial instrument attempts](../../_measurements/S9_lean_contract_initial_attempt.json)
+The initial instrument attempts (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S9_lean_contract_initial_attempt.json`)
 are retained transparently. Their canonical rebuild and all 32 selected axiom
 audits passed. The instrument refused to count a `simp`-only failure for a
 reversed action definition and an `omega`-only failure for a wrong general

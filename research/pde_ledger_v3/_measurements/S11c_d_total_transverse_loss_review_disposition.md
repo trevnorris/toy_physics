@@ -2,7 +2,7 @@
 
 2026-09-28. Both fresh reports literally return **CLEAR FOR THIS PREPARATION
 AMENDMENT**. Claude finished at 23:10:37 UTC (364.890 s); Grok at 23:19:07 UTC
-(510.224 s). The [round-2 record](S11c_d_total_transverse_loss_review_r2_record.json)
+(510.224 s). The round-2 record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_review_r2_record.json`)
 retains both complete literal reports, authorization, stderr and hash evidence.
 All 17 files / 336,969 bytes, archive, 24 canonical sources, prompt/transport and
 report receipts match. Claude and infrastructure stderr are empty; Grok has
@@ -42,7 +42,7 @@ wording suggestions do not trigger another amendment review.
 2026-09-28. Both reports finished before this disposition or any repair.
 Claude literally returned **NEEDS REVISION**; Grok literally returned
 **CLEAR FOR THIS PREPARATION AMENDMENT**. The amendment is not cleared.
-The [record](S11c_d_total_transverse_loss_review_record.json) retains complete
+The record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_review_record.json`) retains complete
 literal reports, receipts, stderr and verified packet/source/archive identities.
 This is source-based author adjudication, not a third independent review.
 

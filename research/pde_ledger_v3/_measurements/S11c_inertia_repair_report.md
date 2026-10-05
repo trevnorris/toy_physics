@@ -1,6 +1,6 @@
 # S11c conservative inertia repair
 
-2026-09-10. User-authorized repair of the relative conservative inertia sign diagnosed in [the historical investigation](S11c_d_transverse_sign_diagnosis.md). This record covers the SymPy repair, regeneration, and focused verification.
+2026-09-10. User-authorized repair of the relative conservative inertia sign diagnosed in the historical investigation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_transverse_sign_diagnosis.md`). This record covers the SymPy repair, regeneration, and focused verification.
 
 In `scripts/S11c_b_brane_operator_sympy_audit.py`, `kinetic_balance_from_energy` (2290) differentiates the supplied quadratic kinetic energy. `operator_from_density` (2308) adds that computed inertia to the stored-energy variation. `build_operator` (2742) removes it before the material virtual-constraint fold and reinserts it afterward; kinetic provenance uses the same computation. The production source SHA-256 is `36c52ad3b54697690d2b225d9a6051e80ca218c575b07cb4c28a9d770aa1feca`.
 

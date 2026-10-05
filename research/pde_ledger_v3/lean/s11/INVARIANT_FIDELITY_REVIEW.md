@@ -10,10 +10,10 @@ This does not complete the whole S11 step or downstream CAS production work.
 The fixed 28-file packet (plus its manifest) has aggregate SHA-256
 `f95d1667e54b4c8139881feaa86267ebe60eb4e9d85f0f4f4bd2dff9dc2b2747`. The aggregate hashes the file-to-SHA256 map as UTF-8
 `json.dumps(files, sort_keys=True)`. The
-[manifest](../../_measurements/S11_lean_invariant_review_packet.json),
-[archive](../../_measurements/S11_lean_invariant_review_packet_v1.tar.gz),
+manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_invariant_review_packet.json`),
+archive (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_invariant_review_packet_v1.tar.gz`),
 [local verification](INVARIANT_VERIFICATION.txt), and
-[closure validation](../../_measurements/S11_lean_invariant_closure_validation.json)
+closure validation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_invariant_closure_validation.json`)
 retain the exact source and result identities. The user authorized transfer
 of this fixed packet by saying “Approved”.
 

@@ -13,11 +13,11 @@ scalar has checked units and an equality to its reference operand. The logical
 selection covers the primary loci, allowed operands/regions, Boolean decisions,
 Wolfram decided-empty/nonempty outcomes, and SymPy witness and branch records.
 Exact source payloads, line numbers, hashes, trees and semantic theorem names
-are retained in the [manifest](../../_measurements/S10_lean_cas_bridge_manifest.json).
+are retained in the manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_manifest.json`).
 
 ## Full loci on the stated domain
 
-[CoincidenceSupport.lean](S10Audit/CAS/CoincidenceSupport.lean) proves the
+CoincidenceSupport.lean (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/S10Audit/CAS/CoincidenceSupport.lean`) proves the
 classification at arbitrary real wavevectors, under
 
 ```
@@ -35,7 +35,7 @@ one-based coordinate names:
 | Static / extra | k1 = k2 = k3 = 0 | Empty |
 | Ordinary / extra | k2 = k3 = 0 | k1 != 0, k2 = k3 = 0 |
 
-[CoincidenceBindings.lean](S10Audit/CAS/CoincidenceBindings.lean) proves each
+CoincidenceBindings.lean (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/S10Audit/CAS/CoincidenceBindings.lean`) proves each
 translated locus equivalent to this geometry. It also proves that each actual
 emitted root-difference expression vanishes if and only if its printed locus
 holds. Each allowed-region predicate has the same complete geometry, and the
@@ -71,7 +71,7 @@ whole allowed axis. The result is not inferred from sampling that point.
 
 ## Translation and verification
 
-[S10_lean_cas_coincidence.py](../../scripts/S10_lean_cas_coincidence.py) uses a
+S10_lean_cas_coincidence.py (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/S10_lean_cas_coincidence.py`) uses a
 restricted, non-evaluating arithmetic/logical grammar. It preserves unions,
 conjunctions, inequalities, equality rules and conditional expressions.
 Dimension membership is specialized only for D=3; unsupported integer
@@ -104,8 +104,8 @@ mathematical mutations are rejected; all 14 positive controls pass. Canonical
 source, input and frozen export hashes remain unchanged by the tests.
 
 Full-build and regression evidence is in
-[CAS_BRIDGE_VERIFICATION.txt](CAS_BRIDGE_VERIFICATION.txt) and the
-[check record](../../_measurements/S10_lean_cas_bridge_checks.json).
+CAS_BRIDGE_VERIFICATION.txt (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/CAS_BRIDGE_VERIFICATION.txt`) and the
+check record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_checks.json`).
 
 ## Remaining S10 integration
 

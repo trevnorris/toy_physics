@@ -18,9 +18,9 @@ read-only tools. Neither received the other's report or authoring duties.
 - Method: SHA256 of UTF-8 `json.dumps(files, sort_keys=True)`.
 - Archive SHA256:
   `cf69d3c8cc4b1b239052a8245d11f21bdfaa1e033e2fdd2806bb4e75c4c51229`.
-- [Repository manifest](../../_measurements/S11_lean_d4_review_packet.json),
-  [archive](../../_measurements/S11_lean_d4_review_packet_v1.tar.gz),
-  [authorization and state](../../_measurements/S11_lean_d4_review_state.json).
+- Repository manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d4_review_packet.json`),
+  archive (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d4_review_packet_v1.tar.gz`),
+  authorization and state (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d4_review_state.json`).
 
 The repository manifest is supplied to reviewers as `MANIFEST.json` at the
 packet root. Those files are byte-identical, with SHA256
@@ -97,7 +97,7 @@ closure record and durable reports were added. The other 30 packet files,
 all proof bytes, native sources, instruments, local-check records and compiled
 objects retain their reviewed hashes. The approved snapshot, archive and
 transport remain unchanged. See
-[closure validation](../../_measurements/S11_lean_d4_closure_validation.json).
+closure validation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d4_closure_validation.json`).
 The frozen local validation's pending-review label is historical; the review
 state and this document record completion.
 

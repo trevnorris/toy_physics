@@ -15,9 +15,9 @@ without the other's report.
 - Aggregate SHA256: `8152df86a31ecaabe89713a3fb178c7c469885f905b9e486207bbc695c02cf45`.
 - Archive SHA256: `32e7b1acf2caaf3c329d3f8a31c53b5255d95e4c356a6d72ccefcd66c77ca8f6`.
 - Manifest SHA256: `1abf833f0806dcc518836ded7775a7808d73846f84d12b0dbc4462fab8b359bf`.
-- [Manifest](../../_measurements/S11_lean_variable_review_packet.json),
-  [archive](../../_measurements/S11_lean_variable_review_packet_v1.tar.gz),
-  [authorization/state](../../_measurements/S11_lean_variable_review_state.json).
+- Manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_variable_review_packet.json`),
+  archive (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_variable_review_packet_v1.tar.gz`),
+  authorization/state (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_variable_review_state.json`).
 
 | Reviewer | Session | Result |
 |---|---|---|
@@ -41,7 +41,7 @@ files before closure edits, all forty output objects, all 68 source/log records,
 input object and transitive source hashes, generators, fifteen clean package
 pins and thirteen direct Mathlib source/object pairs. Historical proof bytes
 and manifests and all five T1 objects match. There was no shared-source drift.
-See [closure validation](../../_measurements/S11_lean_variable_closure_validation.json).
+See closure validation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_variable_closure_validation.json`).
 
 | Finding | Disposition |
 |---|---|
@@ -67,7 +67,7 @@ nonzero profile responses and boundary momentum.
 
 The user subsequently authorized committing this completed work with a `lean:`
 message and then proceeding to question 3. That instruction is recorded in
-[continuation authorization](../../_measurements/S11_lean_variable_continuation_authorization.json)
+continuation authorization (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_variable_continuation_authorization.json`)
 and supersedes the older cached watcher's no-commit/no-next-scope wording after
 these clearances. Question 3 requires its own bounded contract; no future
 review-packet transfer is authorized by this approval. S11c calculation files

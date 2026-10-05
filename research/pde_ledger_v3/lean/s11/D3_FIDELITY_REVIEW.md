@@ -19,9 +19,9 @@ authoring duties, and did not modify the packet.
 - Aggregate method: SHA256 of UTF-8 `json.dumps(files, sort_keys=True)`.
 - Archive SHA256:
   `a4b44d54fadef971f557ef85cc3e62d48919807639ab3b764735740059d30db2`.
-- [Manifest](../../_measurements/S11_lean_d3_review_packet.json),
-  [archive](../../_measurements/S11_lean_d3_review_packet_v1.tar.gz),
-  [authorization and state](../../_measurements/S11_lean_d3_review_state.json).
+- Manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d3_review_packet.json`),
+  archive (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d3_review_packet_v1.tar.gz`),
+  authorization and state (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d3_review_state.json`).
 
 | Independent reviewer | Session | Result |
 |---|---|---|
@@ -93,7 +93,7 @@ fidelity, verification and the D3 README section changed afterward, and this
 closure record was added. Proofs, native sources, dependencies, generators,
 instruments and terminal local-check records retain their reviewed bytes. The
 approved archive, snapshot and transport remain unchanged. See the
-[closure validation](../../_measurements/S11_lean_d3_closure_validation.json).
+closure validation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d3_closure_validation.json`).
 These documentation clarifications require no proof rebuild, mutation rerun or
 substantive re-review. The frozen local validation record's pending-review label
 is historical; the review state and closure record give the completed status.

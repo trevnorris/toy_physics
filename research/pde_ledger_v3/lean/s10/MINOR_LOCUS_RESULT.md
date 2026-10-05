@@ -95,9 +95,9 @@ software; Lean checks the generated predicates and mathematical equivalences.
 The bridge does not prove a general CAS stratum-discovery algorithm or certify
 the original solver status labels.
 
-The [manifest](../../_measurements/S10_lean_cas_bridge_manifest.json) retains
+The manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_manifest.json`) retains
 payloads, hashes, minor selections, complete index maps, predicate trees and
-point coordinates. The [regression instrument](../../_measurements/S10_lean_cas_bridge_check.py)
+point coordinates. The regression instrument (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_check.py`)
 compares the new arithmetic to the existing parsers and checks all 27 coordinate
 sign patterns for each locus. This exhausts the distinct truth patterns of the
 restricted coordinate-to-zero comparison grammar. Lean independently proves
@@ -106,8 +106,8 @@ the geometric equivalences without sampling.
 Targeted Lean mutations swap two minor selections, omit either exceptional
 branch, and corrupt a conditional guard. The earlier coefficient, unit,
 normalization and denominator mutations remain in the same instrument. See
-[CAS_BRIDGE_VERIFICATION.txt](CAS_BRIDGE_VERIFICATION.txt) and the
-[check record](../../_measurements/S10_lean_cas_bridge_checks.json) for current
+CAS_BRIDGE_VERIFICATION.txt (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/CAS_BRIDGE_VERIFICATION.txt`) and the
+check record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_checks.json`) for current
 build evidence and outcomes.
 
 At this minor/locus checkpoint, the full build passed 536 selected axiom audits

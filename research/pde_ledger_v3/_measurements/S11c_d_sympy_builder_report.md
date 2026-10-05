@@ -1,8 +1,8 @@
 # S11c-d SymPy builder checkpoint
 
-The user approved a [practical numerical acceptance standard](../directives/S11c_d_EXPLORATORY_ACCEPTANCE.md)
+The user approved a practical numerical acceptance standard (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/directives/S11c_d_EXPLORATORY_ACCEPTANCE.md`)
 on 2026-09-18. Follow the
-[focused completion plan](S11c_d_focused_completion_plan.md): construct the first
+focused completion plan (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_focused_completion_plan.md`): construct the first
 complete two-ended numerical scattering response, then check its important
 observables at stated precision. Rigorous operator/infinite-limit certificates
 move to optional follow-up. Equations, required outputs, units, source joins,
@@ -13,7 +13,7 @@ The wide-triple adaptive production launched at `b5597574` is now accepted and
 annex-published at `4ba95bcf`:22h45m, four clean workers,1260 adaptive points,
 raw differences2.18e-13 and complete-action differences1.39e-17. All56185 metadata
 paths and saved-source/operand joins pass. This ends the fixed-box quadrature
-sequence. The first [finite scattering pilot](S11c_d_finite_scattering_report.md)
+sequence. The first finite scattering pilot (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_report.md`)
 now computes all four incident columns, all80 nonlocal rows and325 field
 coefficients in13.24 seconds. The full-rank system has condition1600, scaled
 equation residual1.40e-15 and independent-solve difference9.19e-14. Its coarse
@@ -32,11 +32,11 @@ unresolved. Independent symbolic continuum coefficients are accepted at24961b20:
 The complete finite interior matrices are now published at9471a10f: four
 645-by-645 grades in18.68 seconds, reusing accepted quadratures with zero new
 nodes. Approved-operator recombination agrees to4.79e-16; omitting the mixed
-term responds. The [boundary/current coefficients](S11c_d_continuum_boundary_report.md) now
+term responds. The boundary/current coefficients (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_continuum_boundary_report.md`) now
 pass:10 complete clusters,52 derivative tables,100 exact saved current-pair
 replays and5291 metadata paths. Invariant-pair residuals are below3.86e-15.
 The right finite-versus-Taylor trace difference0.00567 remains a truncation
-diagnostic. The [complete finite continuum coefficient response](S11c_d_continuum_response_report.md)
+diagnostic. The complete finite continuum coefficient response (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_continuum_response_report.md`)
 now passes:645 unknowns, all four incident directions and all independent/mixed
 coefficients, scaled equation residual3.80e-14 and independent solve difference
 2.11e-12. Actual boundary/current/phase normalization is included;506 tags and
@@ -45,7 +45,7 @@ The [channel-current bookkeeping](S11c_d_continuum_currents_report.md) also pass
 open/full-end contraction residuals below4.45e-16/5.86e-14, all2632 tags and
 20032 metadata paths replay. This input has no open thickness channel and
 computed closed bulk-depth propagation; evanescent matching fields remain.
-The [profile-FORM control](S11c_d_profile_form_report.md) is now accepted:
+The profile-FORM control (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_profile_form_report.md`) is now accepted:
 111.60 seconds, all80 rows and35 sources, both finite and independent-grade
 responses. Finite amplitude/current changes2.23e-5/3.56e-8 are below the
 predeclared absolute reporting resolutions; the approved retained-continuum
@@ -54,18 +54,18 @@ joins pass. Separate derivative moments/end jumps remain explicit. This is
 one selected form control, not profile independence. Uniform/covariance
 controls, frequency poles and final integration remain; tiny reflection/loss
 is unresolved. No broad quadrature sweep is queued.
-The [three uniform source controls](S11c_d_uniform_source_report.md) pass in
+The three uniform source controls (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md`) pass in
 50.67 seconds: all210 source residual scalars and509 metadata paths check.
 Both transverse/thickness coupling blocks compute to zero in the three
 constant backgrounds; the full right symbol retains zero-jet contrast.
 This is the specified case and endpoint input, not a global decoupling claim.
-The [uniform full-subspace/current/matching controls](S11c_d_uniform_response_report.md)
+The uniform full-subspace/current/matching controls (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_uniform_response_report.md`)
 also pass in41.78seconds:54 candidates and66 full basis directions, three
 full-rank10-by-10 solves, reflection below4.44e-16 and unit transmission to
 roundoff. All10519 metadata paths and203 artifacts validate. This is a
 selected constant-background control, not variable-profile transparency.
 Coordinate-covariance controls, targeted poles and final integration remain.
-The [coordinate-source preparation](S11c_d_coordinate_source_report.md) is
+The coordinate-source preparation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_coordinate_source_report.md`) is
 accepted after saved-packet output recovery:375 records,80 integral rows,
 160 native terms and699 exact chart/field-jet proof scalars. All380 packets and
 7275 original prefix payloads are unchanged;8148 metadata paths replay.
@@ -73,7 +73,7 @@ Its3.59MB transcript is annex-verified. Literal first-w-derivative reversal
 changes33 local,30 factor and12 source records; the actual constant-rho4
 source computes zero density gradient/advection. The source maps now enter the complete material response described below.
 No c2 N3/N4/N6 closure follows.
-The [complete material-coordinate response](S11c_d_coordinate_response_report.md)
+The complete material-coordinate response (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_coordinate_response_report.md`)
 is accepted:443.10seconds, all80 new row quadratures,160 cell terms and the
 645-unknown four-incident mixed continuum solve. Common Eulerian operators
 agree within6.22e-15; evaluated channel differences reach4.62e-14. Both
@@ -83,7 +83,7 @@ transcript is annex-verified. This completes the selected affine finite-space
 coordinate control, not arbitrary nonaffine covariance or c2 source-origin
 closure. One-sided first-w-derivative sensitivity, targeted frequency poles,
 remaining cases and exports are next under practical acceptance.
-The [one-sided first-derivative control](S11c_d_first_jet_report.md) is accepted:
+The one-sided first-derivative control (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_first_jet_report.md`) is accepted:
 285.22seconds,50 newly integrated rows and30 exact reused rows, all160 cell
 terms and645 unknowns. Operator recombination agrees to4.04e-16; the mixed
 solve residual is4.79e-14. Evaluated amplitude/current sensitivities6.02e-7/
@@ -92,12 +92,12 @@ solve residual is4.79e-14. Evaluated amplitude/current sensitivities6.02e-7/
 This closes the selected first-derivative probe, not isolated channel physics
 or c2 source-origin debt. The actual frequency-dependent operator and targeted
 nonlinear pole search, remaining cases and exports are next.
-The [frequency-source preparation](S11c_d_frequency_source_report.md) is
+The frequency-source preparation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md`) is
 implemented for the next bounded pole stage. It keeps actual frequency
 operands live, checks independent rebinding, and derives end-domain candidate
 polynomials from the original constant symbols. No new frequency pencil,
 profile pole, outgoing analytic chart or bound-channel result is accepted yet.
-The [frequency-source preparation](S11c_d_frequency_source_report.md) is accepted
+The frequency-source preparation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md`) is accepted
 and annex-verified:375 records,750 binding pairs,all80 frequency-dependent
 nonlocal rows,35 source amplitudes and three actual live end pencils. Full
 complex eliminations and exact common real/imaginary candidate roots remain
@@ -110,7 +110,7 @@ The older checkpoint narrative below records history, not the current task
 queue. The retained solver/export suffix remains byte-identical, interpreted
 under the new acceptance addendum and the approved pole correction.
 
-The [wider-box triple refinement](S11c_d_wide_three_momentum_report.md) is validated:
+The wider-box triple refinement (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_wide_three_momentum_report.md`) is validated:
 1.049 billion new nodes in 44h03m, four clean workers, 64,016 preserved partials
 and 134,254 metadata paths. Outer/innermost/middle raw changes reach
 3.68e-10 / 3.92e-18 / 1.55e-14. The finite cutoff3-to4 action change remains
@@ -129,13 +129,13 @@ is interpreted under this correction. No physical pole result is yet computed.
 The Lean [pole handoff](../lean/s11/POLE_HANDOFF.md) supports this correction with
 conditional full-pairing projections, finite Laurent contour identities and
 response-map derivative controls. Local verification passes; fidelity reviews
-remain pending. The [pole application plan](S11c_d_nonlinear_pole_repair_plan.md)
+remain pending. The pole application plan (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_nonlinear_pole_repair_plan.md`)
 retains actual derivative/kernel/expansion joins and the unproved physical
 analytic premises. No new repair or numerical rerun follows from this handoff.
 
 The Lean [tail/Abel and stability handoff](../lean/s11/ANALYTIC_ERROR_HANDOFF.md)
 completed its bounded proof/fidelity contract at `ad365b5f` with both reviews clear.
-The [limits plan](S11c_d_quadrature_limits_plan.md) now maps its hypotheses to
+The limits plan (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_quadrature_limits_plan.md`) now maps its hypotheses to
 the actual outgoing domain, uniform folded-amplitude estimates, full operator
 error budget and inverse/channel bounds. No numerical epsilon, inverse bound
 or scattering convergence certificate follows yet. The reception checkpoint
@@ -171,7 +171,7 @@ residual-minus-remainder norm is 8.21e-13.
 
 The [Mathematica audit](S11c_wolfram_repair_audit_report.md) found a duplicate
 pressure shift in native c2 N6. The three mechanical issues are absent on the
-audited b domain (200 zero residuals). The [repair plan](S11c_wolfram_pressure_trace_repair_plan.md)
+audited b domain (200 zero residuals). The repair plan (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_repair_plan.md`)
 is complete on its validated domain: 218 zero focused residuals and 9,968,256
 zero native numerator evaluations across four cases under the adopted covariance
 criterion. Raw R_N6 remains a representation diagnostic. The repaired main
@@ -182,9 +182,9 @@ balance matrices vanish; all 275 exact remainder checks are zero and the largest
 residual-minus-remainder norm is 8.21e-13. Pre/post-emission packet joins agree.
 RIGHT/LEFT/REFERENCE normalization is complete on the supplied case.
 LEFT is committed at b271c71b; the accepted SymPy chain remains unchanged.
-See [the native checkpoint](S11c_wolfram_pressure_trace_native_checkpoint.json).
-See the [normalization report](S11c_d_end_normalization_report.md) and
-[plan](S11c_d_end_normalization_plan.md) for complete evidence and boundaries.
+See the native checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_native_checkpoint.json`).
+See the normalization report (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_end_normalization_report.md`) and
+plan (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_end_normalization_plan.md`) for complete evidence and boundaries.
 
 All working runs and source snapshots live in the repository's _scratch/s11c/.
 Published .out files use DataLad/git-annex with post-save full-hash verification;
@@ -192,7 +192,7 @@ ordinary sources, reports and inventories use Git. The user controls continuatio
 Owned jobs use user-authorized local completion/error wake-ups, with no recurring
 checks or model polling.
 
-The [matching-channel construction](S11c_d_matching_channels_report.md) now
+The matching-channel construction (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_matching_channels_report.md`) now
 is validated: all 36 candidates and 44 basis directions are retained, with two
 incoming and two outgoing directions per end. All cross-mode currents were
 evaluated; reconstruction residual norms are below 6.34e-16. The 500-tag packet
@@ -357,20 +357,20 @@ all momentum/source amplitudes are grade-independent. Reuse their saved finite
 matrices for numerical coefficient assembly, then expand boundary/channel/current
 maps and the response. No new quadrature or completed continuum response is claimed.
 
-The [local acoustic frequency chart](S11c_d_frequency_chart_report.md) is
+The local acoustic frequency chart (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_chart_report.md`) is
 accepted and annex-verified: 375 records, 750 seed/control pairs, 25 actual
 denominator forms, three radicals, 27 native path checks and all 8730 metadata
 paths pass in 118.20 seconds. The subsequent end and finite-pencil stages are
 recorded below; targeted pole results remain uncomputed.
 
-The [full-subspace end continuation](S11c_d_frequency_end_report.md) is
+The full-subspace end continuation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_end_report.md`) is
 accepted at 86993760: ten clusters, 14 directions, all 36 candidate dispositions
 and 30 corrected points pass in 27.60 seconds. Step differences are below
 6.54e-14 and scaled Jacobian condition below 19.18. The first actual
-[finite complex-frequency pencil](S11c_d_frequency_matrix_report.md) is
+finite complex-frequency pencil (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_report.md`) is
 accepted: 89.88 seconds, all 80 rows and 160 cell terms, full rank 645 and
 complex equation residual 1.11e-15. Complete source and end maps vary with
-frequency in fixed seed coordinates. The [small contour diagnostic](S11c_d_frequency_contour_report.md)
+frequency in fixed seed coordinates. The small contour diagnostic (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_contour_report.md`)
 now passes in 8m37s: 16 full-rank matrices, four clean workers and
 2,845,568 new nodes. Sampled 8/16 windings are both zero; the phase increment
 reaches 2.70 radians. The first full inverse moment drops from 8.74e-2 to
@@ -378,7 +378,7 @@ reaches 2.70 radians. The first full inverse moment drops from 8.74e-2 to
 reuse every accepted matrix and add 16 points. No physical pole set or
 certified empty spectrum is established.
 
-The [single contour midpoint comparison](S11c_d_frequency_contour_refine_report.md)
+The single contour midpoint comparison (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_contour_refine_report.md`)
 now passes in10m40s:16 new points and all16 original matrices reused, four clean
 workers, full rank at all32 points. Winding remains numerically zero, maximum
 phase increment falls to1.36radians and the first inverse moment to2.67e-12.
@@ -407,7 +407,7 @@ The narrow context repair preserves both censuses and passes affected-cell
 coefficient reconstruction and mutation checks. Complete saved-packet validation
 and output follow without repeating source construction or numerical work.
 
-The [remaining case sources](S11c_d_remaining_case_sources_report.md) are now
+The remaining case sources (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_sources_report.md`) are now
 accepted and annex-published: all four native operators, 100 exact cell proofs,
 931 coefficient checks and 100 responding controls; 4595 metadata paths replay.
 The three new cases contain 70/80/70 integrals and 61/61/46 exact baseline
@@ -416,7 +416,7 @@ case scattering/current/continuum/control/pole work and final exports continue.
 
 ## Four-case response completion (2026-09-20)
 
-The [four-case finite and continuum responses](S11c_d_remaining_case_response_report.md)
+The four-case finite and continuum responses (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_response_report.md`)
 are now published at fa684a3a and annex-verified. All four cases have full-rank
 645-unknown systems and four incident directions, with actual case-specific
 boundary/current maps and complete independent/mixed grades. Three new solves
@@ -430,7 +430,7 @@ all-case engine/exports remain. No baseline contour doubling is queued.
 
 ## Four-case current completion (2026-09-20)
 
-The [four-case current bookkeeping](S11c_d_remaining_case_flux_report.md) is
+The four-case current bookkeeping (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux_report.md`) is
 published at 588a5383 and annex-verified. Three new contractions took 277.79
 seconds; baseline bookkeeping, current closures and all solves were reused.
 The largest new current residual is 5.86e-14. All four approved inputs compute
@@ -442,7 +442,7 @@ remain; no broad quadrature or baseline contour doubling is queued.
 
 ## Four-case uniform controls (2026-09-20)
 
-The [four-case uniform controls](S11c_d_remaining_case_uniform_report.md) are
+The four-case uniform controls (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform_report.md`) are
 published at 44de056f and annex-verified. One new RHOBR-right homogeneous solve
 and ten complete original reuses cover all twelve backgrounds. Production took
 53.34 seconds; the new full-rank 10-by-10 system has residual 2.61e-16. Computed
@@ -452,7 +452,7 @@ uniform consistency controls, with each background's own coordinates and
 constant-symbol domain retained. Other practical case controls, scoped searches
 and final engine/exports remain; no broad campaign is queued.
 
-The [four-case first-derivative response output](S11c_d_remaining_case_first_jet_response_report.md)
+The four-case first-derivative response output (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_report.md`)
 is accepted: all thirteen bounded phases passed, followed by 403.80 seconds of
 independent saved-hash/codec validation. Twelve parts retain 31816 payloads,
 15884 keys and 898801 metadata paths. Four finite and three new continuum
@@ -462,7 +462,7 @@ at 46796940, with independent MD5/SHA256 and actual symlink/backend checks.
 Remaining coordinate/advection controls, scoped case searches and final all-case
 engine/exports follow.
 
-The [remaining coordinate inputs](S11c_d_remaining_case_coordinate_inputs_report.md)
+The remaining coordinate inputs (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_inputs_report.md`)
 are accepted at 4365f2b1: 65.13 seconds plus 19.05 seconds independent validation,
 all 1467 records/300 rows/647 terms/120 sources. Only 86 union source images are
 new; accepted images and explicit aliases cover the other uses. Constant-rho4
@@ -470,7 +470,7 @@ absence and the actual live RHOBR volume-density gradient are separately retaine
 Those source images and their numerical material routes have since been
 completed and independently accepted as recorded below.
 
-The [four-case material-coordinate controls](S11c_d_remaining_case_coordinate_response_report.md)
+The four-case material-coordinate controls (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_report.md`)
 are accepted at 50911879 and annex-published at 998c4023. All four finite
 controls and three new continuum controls use their own material end/current/
 phase maps transformed into common Eulerian coordinates before solving; the

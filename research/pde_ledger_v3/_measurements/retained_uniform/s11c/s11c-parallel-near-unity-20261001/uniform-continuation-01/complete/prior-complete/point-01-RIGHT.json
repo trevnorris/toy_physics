@@ -1,0 +1,623 @@
+{
+  "schedule": {
+    "index": 1,
+    "speed": "sqrt(6)/2",
+    "modalRatios": {
+      "LEFT": "1",
+      "RIGHT": "10*sqrt(101)/101"
+    },
+    "bareRatio": "sqrt(6)/3"
+  },
+  "end": "RIGHT",
+  "status": "UNRESOLVED",
+  "momentumSigns": [
+    {
+      "status": "UNRESOLVED",
+      "reason": "nongrazing source denominator outside admitted domain",
+      "evidence": [
+        [
+          "P",
+          {
+            "factor": "50000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "450000 + sqrt(6)*(-455000 + 300000*I) + 1500000*I"
+          }
+        ],
+        [
+          "P",
+          {
+            "factor": "100000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "900000 + sqrt(6)*(-910000 + 600000*I) + 3000000*I"
+          }
+        ],
+        [
+          "P",
+          {
+            "factor": "10000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "90000 + sqrt(6)*(-91000 + 60000*I) + 300000*I"
+          }
+        ],
+        [
+          "P",
+          {
+            "factor": "60000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "540000 + sqrt(6)*(-546000 + 360000*I) + 1800000*I"
+          }
+        ],
+        [
+          "P",
+          {
+            "factor": "200000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))*(uniformFrequency**2 + 20*I*uniformFrequency - 100)",
+            "value": "-523800000 + sqrt(6)*(93620000 - 218400000*I) - 438000000*I"
+          }
+        ],
+        [
+          "Pminus",
+          {
+            "factor": "50000*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+            "value": "-450000 + sqrt(6)*(455000 + 300000*I) + 1500000*I"
+          }
+        ],
+        [
+          "Pminus",
+          {
+            "factor": "100000*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+            "value": "-900000 + sqrt(6)*(910000 + 600000*I) + 3000000*I"
+          }
+        ],
+        [
+          "Pminus",
+          {
+            "factor": "10000*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+            "value": "-90000 + sqrt(6)*(91000 + 60000*I) + 300000*I"
+          }
+        ],
+        [
+          "Pminus",
+          {
+            "factor": "60000*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+            "value": "-540000 + sqrt(6)*(546000 + 360000*I) + 1800000*I"
+          }
+        ],
+        [
+          "Pminus",
+          {
+            "factor": "200000*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))*(uniformFrequency**2 - 20*I*uniformFrequency - 100)",
+            "value": "523800000 + sqrt(6)*(-93620000 - 218400000*I) - 438000000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "-4681*uniformPhysicalDepth**2/250000 + 273*I*uniformPhysicalDepth**2/6250 - 219*uniformPhysicalDepth/12500 + 2619*I*uniformPhysicalDepth/125000 - 819/250000 + 27*I/12500",
+            "value": "-26907/12500000 - 3*sqrt(6)*(873 + 730*I)/1250000 - 36*I/78125"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "3*uniformPhysicalDepth/25 + 91*I*uniformPhysicalDepth/500 + 9/500 + 3*I/50",
+            "value": "9/500 + sqrt(6)*(-91 + 60*I)/5000 + 3*I/50"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "5000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "214901100 + sqrt(6)*(70070370 - 109182600*I) - 60615000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "10000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "429802200 + sqrt(6)*(140140740 - 218365200*I) - 121230000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "1000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "42980220 + sqrt(6)*(14014074 - 21836520*I) - 12123000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "6000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "257881320 + sqrt(6)*(84084444 - 131019120*I) - 72738000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "20000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "859604400 + sqrt(6)*(280281480 - 436730400*I) - 242460000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "50000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "2149011000 + sqrt(6)*(700703700 - 1091826000*I) - 606150000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "100000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "4298022000 + sqrt(6)*(1401407400 - 2183652000*I) - 1212300000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "200000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "8596044000 + sqrt(6)*(2802814800 - 4367304000*I) - 2424600000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "60000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "2578813200 + sqrt(6)*(840844440 - 1310191200*I) - 727380000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "3*uniformMinusPhysicalDepth/25 - 91*I*uniformMinusPhysicalDepth/500 + 9/500 - 3*I/50",
+            "value": "9/500 - 3*I/50 - sqrt(6)*(91 + 60*I)/5000"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "-4681*uniformMinusPhysicalDepth**2/250000 - 273*I*uniformMinusPhysicalDepth**2/6250 - 219*uniformMinusPhysicalDepth/12500 - 2619*I*uniformMinusPhysicalDepth/125000 - 819/250000 - 27*I/12500",
+            "value": "-26907/12500000 + 36*I/78125 + 3*sqrt(6)*(-873 + 730*I)/1250000"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "5000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "214901100 + 60615000*I + sqrt(6)*(70070370 + 109182600*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "10000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "429802200 + 121230000*I + sqrt(6)*(140140740 + 218365200*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "1000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "42980220 + 12123000*I + sqrt(6)*(14014074 + 21836520*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "6000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "257881320 + 72738000*I + sqrt(6)*(84084444 + 131019120*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "20000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "859604400 + 242460000*I + sqrt(6)*(280281480 + 436730400*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "50000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "2149011000 + 606150000*I + sqrt(6)*(700703700 + 1091826000*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "100000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "4298022000 + 1212300000*I + sqrt(6)*(1401407400 + 2183652000*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "200000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "8596044000 + 2424600000*I + sqrt(6)*(2802814800 + 4367304000*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "60000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "2578813200 + 727380000*I + sqrt(6)*(840844440 + 1310191200*I)"
+          }
+        ],
+        [
+          "forms",
+          {
+            "factor": "3*uniformPhysicalDepth/25 + 91*I*uniformPhysicalDepth/500 + 9/500 + 3*I/50",
+            "value": "9/500 + sqrt(6)*(-91 + 60*I)/5000 + 3*I/50"
+          }
+        ],
+        [
+          "forms",
+          {
+            "factor": "3*uniformMinusPhysicalDepth/25 - 91*I*uniformMinusPhysicalDepth/500 + 9/500 - 3*I/50",
+            "value": "9/500 - 3*I/50 - sqrt(6)*(91 + 60*I)/5000"
+          }
+        ],
+        [
+          "forms",
+          {
+            "factor": "-4681*uniformMinusPhysicalDepth**2/250000 - 273*I*uniformMinusPhysicalDepth**2/6250 - 219*uniformMinusPhysicalDepth/12500 - 2619*I*uniformMinusPhysicalDepth/125000 - 819/250000 - 27*I/12500",
+            "value": "-26907/12500000 + 36*I/78125 + 3*sqrt(6)*(-873 + 730*I)/1250000"
+          }
+        ],
+        [
+          "forms",
+          {
+            "factor": "-4681*uniformPhysicalDepth**2/250000 + 273*I*uniformPhysicalDepth**2/6250 - 219*uniformPhysicalDepth/12500 + 2619*I*uniformPhysicalDepth/125000 - 819/250000 + 27*I/12500",
+            "value": "-26907/12500000 - 3*sqrt(6)*(873 + 730*I)/1250000 - 36*I/78125"
+          }
+        ],
+        [
+          "selectedRestriction",
+          {
+            "factor": "50000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "450000 + sqrt(6)*(-455000 + 300000*I) + 1500000*I"
+          }
+        ],
+        [
+          "selectedRestriction",
+          {
+            "factor": "100000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "900000 + sqrt(6)*(-910000 + 600000*I) + 3000000*I"
+          }
+        ],
+        [
+          "selectedRestriction",
+          {
+            "factor": "10000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "90000 + sqrt(6)*(-91000 + 60000*I) + 300000*I"
+          }
+        ],
+        [
+          "selectedRestriction",
+          {
+            "factor": "60000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "540000 + sqrt(6)*(-546000 + 360000*I) + 1800000*I"
+          }
+        ],
+        [
+          "selectedRestriction",
+          {
+            "factor": "200000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))*(uniformFrequency**2 + 20*I*uniformFrequency - 100)",
+            "value": "-523800000 + sqrt(6)*(93620000 - 218400000*I) - 438000000*I"
+          }
+        ]
+      ],
+      "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py\", line 138, in call\n    value=fn()\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py\", line 1001, in <lambda>\n    lambda:evaluate_sign(item['B'],item['R'],item['N'],speed,sign,\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py\", line 737, in evaluate_sign\n    domain=domain_at_point(N,mapping,J,prefix,grazing)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py\", line 731, in domain_at_point\n    if bad and not grazing:raise ScientificIssue('nongrazing source denominator outside admitted domain',bad)\nScientificIssue: nongrazing source denominator outside admitted domain\n",
+      "operation": "points/01/RIGHT/-1"
+    },
+    {
+      "status": "UNRESOLVED",
+      "reason": "nongrazing source denominator outside admitted domain",
+      "evidence": [
+        [
+          "P",
+          {
+            "factor": "50000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "450000 + sqrt(6)*(-455000 + 300000*I) + 1500000*I"
+          }
+        ],
+        [
+          "P",
+          {
+            "factor": "100000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "900000 + sqrt(6)*(-910000 + 600000*I) + 3000000*I"
+          }
+        ],
+        [
+          "P",
+          {
+            "factor": "10000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "90000 + sqrt(6)*(-91000 + 60000*I) + 300000*I"
+          }
+        ],
+        [
+          "P",
+          {
+            "factor": "60000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "540000 + sqrt(6)*(-546000 + 360000*I) + 1800000*I"
+          }
+        ],
+        [
+          "P",
+          {
+            "factor": "200000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))*(uniformFrequency**2 + 20*I*uniformFrequency - 100)",
+            "value": "-523800000 + sqrt(6)*(93620000 - 218400000*I) - 438000000*I"
+          }
+        ],
+        [
+          "Pminus",
+          {
+            "factor": "50000*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+            "value": "-450000 + sqrt(6)*(455000 + 300000*I) + 1500000*I"
+          }
+        ],
+        [
+          "Pminus",
+          {
+            "factor": "100000*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+            "value": "-900000 + sqrt(6)*(910000 + 600000*I) + 3000000*I"
+          }
+        ],
+        [
+          "Pminus",
+          {
+            "factor": "10000*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+            "value": "-90000 + sqrt(6)*(91000 + 60000*I) + 300000*I"
+          }
+        ],
+        [
+          "Pminus",
+          {
+            "factor": "60000*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))",
+            "value": "-540000 + sqrt(6)*(546000 + 360000*I) + 1800000*I"
+          }
+        ],
+        [
+          "Pminus",
+          {
+            "factor": "200000*(-uniformFrequency + 10*I)*(uniformFrequency + uniformMinusPhysicalDepth*(I*uniformFrequency + 10))*(uniformFrequency**2 - 20*I*uniformFrequency - 100)",
+            "value": "523800000 + sqrt(6)*(-93620000 - 218400000*I) - 438000000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "-4681*uniformPhysicalDepth**2/250000 + 273*I*uniformPhysicalDepth**2/6250 - 219*uniformPhysicalDepth/12500 + 2619*I*uniformPhysicalDepth/125000 - 819/250000 + 27*I/12500",
+            "value": "-26907/12500000 - 3*sqrt(6)*(873 + 730*I)/1250000 - 36*I/78125"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "3*uniformPhysicalDepth/25 + 91*I*uniformPhysicalDepth/500 + 9/500 + 3*I/50",
+            "value": "9/500 + sqrt(6)*(-91 + 60*I)/5000 + 3*I/50"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "5000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "214901100 + sqrt(6)*(70070370 - 109182600*I) - 60615000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "10000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "429802200 + sqrt(6)*(140140740 - 218365200*I) - 121230000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "1000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "42980220 + sqrt(6)*(14014074 - 21836520*I) - 12123000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "6000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "257881320 + sqrt(6)*(84084444 - 131019120*I) - 72738000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "20000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "859604400 + sqrt(6)*(280281480 - 436730400*I) - 242460000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "50000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "2149011000 + sqrt(6)*(700703700 - 1091826000*I) - 606150000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "100000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "4298022000 + sqrt(6)*(1401407400 - 2183652000*I) - 1212300000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "200000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "8596044000 + sqrt(6)*(2802814800 - 4367304000*I) - 2424600000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "60000*(60*uniformPhysicalDepth + 91*I*uniformPhysicalDepth + 9 + 30*I)*(-4681*uniformPhysicalDepth**2 + 10920*I*uniformPhysicalDepth**2 - 4380*uniformPhysicalDepth + 5238*I*uniformPhysicalDepth - 819 + 540*I)",
+            "value": "2578813200 + sqrt(6)*(840844440 - 1310191200*I) - 727380000*I"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "3*uniformMinusPhysicalDepth/25 - 91*I*uniformMinusPhysicalDepth/500 + 9/500 - 3*I/50",
+            "value": "9/500 - 3*I/50 - sqrt(6)*(91 + 60*I)/5000"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "-4681*uniformMinusPhysicalDepth**2/250000 - 273*I*uniformMinusPhysicalDepth**2/6250 - 219*uniformMinusPhysicalDepth/12500 - 2619*I*uniformMinusPhysicalDepth/125000 - 819/250000 - 27*I/12500",
+            "value": "-26907/12500000 + 36*I/78125 + 3*sqrt(6)*(-873 + 730*I)/1250000"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "5000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "214901100 + 60615000*I + sqrt(6)*(70070370 + 109182600*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "10000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "429802200 + 121230000*I + sqrt(6)*(140140740 + 218365200*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "1000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "42980220 + 12123000*I + sqrt(6)*(14014074 + 21836520*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "6000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "257881320 + 72738000*I + sqrt(6)*(84084444 + 131019120*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "20000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "859604400 + 242460000*I + sqrt(6)*(280281480 + 436730400*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "50000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "2149011000 + 606150000*I + sqrt(6)*(700703700 + 1091826000*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "100000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "4298022000 + 1212300000*I + sqrt(6)*(1401407400 + 2183652000*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "200000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "8596044000 + 2424600000*I + sqrt(6)*(2802814800 + 4367304000*I)"
+          }
+        ],
+        [
+          "faces",
+          {
+            "factor": "60000*(60*uniformMinusPhysicalDepth - 91*I*uniformMinusPhysicalDepth + 9 - 30*I)*(-4681*uniformMinusPhysicalDepth**2 - 10920*I*uniformMinusPhysicalDepth**2 - 4380*uniformMinusPhysicalDepth - 5238*I*uniformMinusPhysicalDepth - 819 - 540*I)",
+            "value": "2578813200 + 727380000*I + sqrt(6)*(840844440 + 1310191200*I)"
+          }
+        ],
+        [
+          "forms",
+          {
+            "factor": "3*uniformPhysicalDepth/25 + 91*I*uniformPhysicalDepth/500 + 9/500 + 3*I/50",
+            "value": "9/500 + sqrt(6)*(-91 + 60*I)/5000 + 3*I/50"
+          }
+        ],
+        [
+          "forms",
+          {
+            "factor": "3*uniformMinusPhysicalDepth/25 - 91*I*uniformMinusPhysicalDepth/500 + 9/500 - 3*I/50",
+            "value": "9/500 - 3*I/50 - sqrt(6)*(91 + 60*I)/5000"
+          }
+        ],
+        [
+          "forms",
+          {
+            "factor": "-4681*uniformMinusPhysicalDepth**2/250000 - 273*I*uniformMinusPhysicalDepth**2/6250 - 219*uniformMinusPhysicalDepth/12500 - 2619*I*uniformMinusPhysicalDepth/125000 - 819/250000 - 27*I/12500",
+            "value": "-26907/12500000 + 36*I/78125 + 3*sqrt(6)*(-873 + 730*I)/1250000"
+          }
+        ],
+        [
+          "forms",
+          {
+            "factor": "-4681*uniformPhysicalDepth**2/250000 + 273*I*uniformPhysicalDepth**2/6250 - 219*uniformPhysicalDepth/12500 + 2619*I*uniformPhysicalDepth/125000 - 819/250000 + 27*I/12500",
+            "value": "-26907/12500000 - 3*sqrt(6)*(873 + 730*I)/1250000 - 36*I/78125"
+          }
+        ],
+        [
+          "selectedRestriction",
+          {
+            "factor": "50000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "450000 + sqrt(6)*(-455000 + 300000*I) + 1500000*I"
+          }
+        ],
+        [
+          "selectedRestriction",
+          {
+            "factor": "100000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "900000 + sqrt(6)*(-910000 + 600000*I) + 3000000*I"
+          }
+        ],
+        [
+          "selectedRestriction",
+          {
+            "factor": "10000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "90000 + sqrt(6)*(-91000 + 60000*I) + 300000*I"
+          }
+        ],
+        [
+          "selectedRestriction",
+          {
+            "factor": "60000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))",
+            "value": "540000 + sqrt(6)*(-546000 + 360000*I) + 1800000*I"
+          }
+        ],
+        [
+          "selectedRestriction",
+          {
+            "factor": "200000*(uniformFrequency + 10*I)*(uniformFrequency + uniformPhysicalDepth*(-I*uniformFrequency + 10))*(uniformFrequency**2 + 20*I*uniformFrequency - 100)",
+            "value": "-523800000 + sqrt(6)*(93620000 - 218400000*I) - 438000000*I"
+          }
+        ]
+      ],
+      "traceback": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py\", line 138, in call\n    value=fn()\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py\", line 1001, in <lambda>\n    lambda:evaluate_sign(item['B'],item['R'],item['N'],speed,sign,\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py\", line 737, in evaluate_sign\n    domain=domain_at_point(N,mapping,J,prefix,grazing)\n  File \"/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform.py\", line 731, in domain_at_point\n    if bad and not grazing:raise ScientificIssue('nongrazing source denominator outside admitted domain',bad)\nScientificIssue: nongrazing source denominator outside admitted domain\n",
+      "operation": "points/01/RIGHT/1"
+    }
+  ],
+  "applicability": "CONDITIONAL_ON_UNSUPPLIED_NONUNIFORM_AND_DIRECT_MIXED_GRADE_COMPOSITION",
+  "dependencySnapshot": {
+    "scope": "Saved original uniform source and effective material family; no producer replay or nonuniform repair clearance.",
+    "upstreamClaude": {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_record.json",
+      "bytes": 429435,
+      "sha256": "fab27be943a7c831446166e49b2ca9b2701c5bc4aa9ed4d3d8e5a3c16f740da3"
+    },
+    "upstreamGrok": "Separate approved same-session assessment; not assumed delivered or clear. No partial report consumed.",
+    "nonuniformApplicability": "Must inspect actual constant-end profile/jet operands. Missing candidate/composition proof remains explicit conditional dependency.",
+    "physicalCalibration": "R7 uncommitted; R10 pending; rest bulk only.",
+    "environmentMetadata": {
+      "python": "/usr/bin/python3",
+      "sympy": "1.14.0",
+      "numpy": "1.26.4",
+      "source": "installed distribution metadata only; scientific modules not imported during preparation"
+    }
+  }
+}

@@ -3,7 +3,7 @@
 Current continuation (2026-09-13): the reference/physical pressure trace repair
 has been implemented and the full four-case c2 export regenerated. See the
 [trace repair report](S11c_c2_trace_repair_report.md) and
-[stage inventory](S11c_c2_trace_repair_stage_inventory.json) for current evidence.
+stage inventory (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_stage_inventory.json`) for current evidence.
 The retained record below describes the earlier build; its line numbers,
 direct pressure/jet map and power-construction description are historical.
 The current native code derives reference slots from the inherited face trace

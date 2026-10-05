@@ -19,9 +19,9 @@ duties, and neither changed the packet.
 - Method: SHA256 of UTF-8 `json.dumps(files, sort_keys=True)`.
 - Archive SHA256:
   `4dae234d09a153122d3dd49eef4aee92b971ed24b64154e238c9abda6ab4d29b`.
-- [Manifest](../../_measurements/S11_lean_d3_bulk_review_packet.json),
-  [archive](../../_measurements/S11_lean_d3_bulk_review_packet_v1.tar.gz),
-  [authorization and state](../../_measurements/S11_lean_d3_bulk_review_state.json).
+- Manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d3_bulk_review_packet.json`),
+  archive (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d3_bulk_review_packet_v1.tar.gz`),
+  authorization and state (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d3_bulk_review_state.json`).
 
 | Independent reviewer | Session | Result |
 |---|---|---|
@@ -91,7 +91,7 @@ closure record and durable review reports were added. The other 37 packet
 files, all proof bytes, native sources, instruments, local-check records and
 compiled objects retain their reviewed hashes. The approved snapshot, archive
 and transport are unchanged. See
-[closure validation](../../_measurements/S11_lean_d3_bulk_closure_validation.json).
+closure validation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d3_bulk_closure_validation.json`).
 The frozen validation record's pending-review label is historical; the review
 state and this document record completion.
 

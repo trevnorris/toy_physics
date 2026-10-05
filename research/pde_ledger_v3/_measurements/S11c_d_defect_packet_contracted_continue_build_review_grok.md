@@ -1,1 +1,0 @@
-I'll review only the fixed packet: method, build, guide, and the new sources, without running code or looking outside that packet.

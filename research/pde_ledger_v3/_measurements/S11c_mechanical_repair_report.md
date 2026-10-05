@@ -1,9 +1,9 @@
 # S11c mechanical-load repair — execution record
 
-The user authorized the [repair plan](S11c_mechanical_sign_repair_plan.md) on
+The user authorized the repair plan (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_mechanical_sign_repair_plan.md`) on
 2026-09-12. The mechanical-load repair and dependent regeneration are complete.
 The pinned baseline is in
-[S11c_mechanical_repair_baseline.json](S11c_mechanical_repair_baseline.json).
+S11c_mechanical_repair_baseline.json (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_mechanical_repair_baseline.json`).
 
 S11c-b now derives the external-work row multiplier from the supplied action's
 stiffness coefficient and the actual stored mechanical row. It applies that
@@ -35,7 +35,7 @@ The run took 489.18 seconds with 1,662,352 KiB peak RSS and empty stderr.
 
 The two focused transcripts are under `scripts/out/`, with 15 and 11 unique
 keys and sizes 118,120 and 308,291 bytes. The
-[focused inventory](S11c_mechanical_repair_focused_checks.json) records source
+focused inventory (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_mechanical_repair_focused_checks.json`) records source
 and payload hashes, literal short residuals, control samples, and complete order
 and restored-dimension metadata. An unnecessary post-run expansion of the
 nonzero controls was interrupted; the recorded inventories use the already
@@ -100,8 +100,8 @@ is intact. The existing d formulas were unchanged.
 
 The final four-case d rebuild completed in 9,989.25 seconds with
 1,734,840 KiB peak RSS, stable source pins, exit zero, and empty stderr. All nine
-serial recheck stages completed. The [full inventory](S11c_mechanical_repair_d_full_checks.json)
-and [run records](S11c_mechanical_repair_d_rechecks.json) preserve their inputs,
+serial recheck stages completed. The full inventory (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_mechanical_repair_d_full_checks.json`)
+and run records (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_mechanical_repair_d_rechecks.json`) preserve their inputs,
 residuals, domains, and source hashes. No historical root count was used as a
 target.
 
@@ -135,7 +135,7 @@ unresolved dimensions, nonfinite objects, or duplicate tags. Lossless expansion
 and re-encoding preserve every payload and all 229,634 indexed source-line
 assignments. The published output is 83,848,737 bytes, SHA-256
 `312935010ef56ce0eabe7b1685e906dfb785c40e02978c7b93fdbb4af11bae52`.
-The [publication record](S11c_mechanical_repair_d_publications.json) verifies
+The publication record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_mechanical_repair_d_publications.json`) verifies
 that the previous annex payload remains unchanged.
 
 The b/c1/c2 exports and their production transcripts, the focused diagnostics,

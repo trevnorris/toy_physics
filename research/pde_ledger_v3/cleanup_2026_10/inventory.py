@@ -178,10 +178,130 @@ def inventory():
     return sorted(rows), annex
 
 
+def check_selection(live_exports=False):
+    """Phase 3 metadata only: no imports of a scientific module or blob decoding."""
+    import ast
+    import hashlib
+    import json
+    import posixpath
+    folder = DEST.parent
+    def table(name):
+        with (folder / name).open() as stream:
+            return list(csv.DictReader(stream, delimiter='\t'))
+    kept_rows, pruned_rows = table('KEEP.tsv'), table('PRUNE.tsv')
+    kept = {r['path']: r for r in kept_rows}
+    pruned = {r['path'] for r in pruned_rows}
+    original = {r['path'] for r in table('INVENTORY.tsv')}
+    archived = set(git('ls-tree', '-r', '--name-only', END).decode().splitlines())
+    assert not set(kept) & pruned
+    assert original == (set(kept) | pruned) & original
+    assert pruned <= archived
+    def sha(path):
+        with path.open('rb') as stream:
+            h = hashlib.sha256()
+            for block in iter(lambda: stream.read(1024*1024), b''):
+                h.update(block)
+            return h.hexdigest()
+    relocated = collections.defaultdict(list)
+    for row in kept_rows:
+        assert (ROOT / row['path']).is_file(), row['path']
+        if row['original_path']:
+            assert sha(ROOT / row['path']) == row['sha256'], row['path']
+            relocated[row['original_path']].append(row)
+    def candidates(name, owner, historical=True):
+        path = Path(name)
+        choices = [path] if path.is_absolute() else [owner.parent/path, ROOT/'research/pde_ledger_v3'/path,
+            ROOT/'research/pde_ledger_v3/scripts'/path, ROOT/'research/pde_ledger_v3/directives'/path, ROOT/path]
+        found = []
+        for choice in choices:
+            try: rel = str(choice.relative_to(ROOT))
+            except ValueError: rel = str(choice)
+            if historical:
+                found.extend(ROOT/r['path'] for r in relocated.get(rel, []))
+            if choice.is_file() and rel not in pruned: found.append(choice)
+        return found
+    pins = []
+    def walk(value, owner, where=''):
+        if isinstance(value, dict):
+            if isinstance(value.get('path'), str) and re.fullmatch('[0-9a-f]{64}', str(value.get('sha256', ''))):
+                pins.append((owner, value['path'], value['sha256'], value))
+            for key, item in value.items():
+                if '/' in str(key) and isinstance(item, str) and re.fullmatch('[0-9a-f]{64}', item):
+                    pins.append((owner, key, item, {}))
+                elif '/' in str(key) and isinstance(item, dict) and re.fullmatch('[0-9a-f]{64}', str(item.get('sha256',''))):
+                    pins.append((owner, key, item['sha256'], item))
+                walk(item, owner, where+'/'+str(key))
+        elif isinstance(value, list):
+            for item in value: walk(item, owner, where)
+    for name, row in kept.items():
+        # Relocated result files are verified as complete immutable bytes above.
+        if row['tier']=='1' and name.endswith('.json') and not row['original_path']:
+            walk(json.loads((ROOT/name).read_text()), ROOT/name)
+    for owner, name, expected, detail in pins:
+        options = candidates(name, owner)
+        if 'byteOffset' in detail:
+            def matches(path):
+                with path.open('rb') as stream:
+                    stream.seek(detail['byteOffset'])
+                    return hashlib.sha256(stream.read(detail['bytes'])).hexdigest()==expected
+        else:
+            def matches(path): return sha(path)==expected
+        assert any(matches(p) for p in options), (owner, name, expected)
+    exports = 0
+    live_bad = []
+    for path in sorted((ROOT/'research/pde_ledger_v3/scripts').glob('*_exports.py')):
+        lines = path.read_text().splitlines(True)
+        start = next((i for i,line in enumerate(lines) if line.startswith('BUILD_INPUT_DIGESTS = ')), None)
+        if start is None: continue
+        for end in range(start+1, len(lines)+1):
+            try: value = ast.parse(''.join(lines[start:end])).body[0].value; break
+            except SyntaxError: continue
+        mapping = ast.literal_eval(value.args[0] if isinstance(value, ast.Call) else value)
+        for name, expected in mapping.items():
+            exports += 1
+            assert any(sha(p)==expected for p in candidates(name,path)), (path,name,expected)
+            if not any(sha(p)==expected for p in candidates(name,path,False)):
+                live_bad.append((path.name,name))
+    for engine, directory in [('PY','scripts'),('WL','mathematica')]:
+        source = ROOT/f'research/pde_ledger_v3/lean/s10/S10Audit/CAS/{engine}.lean'
+        expected = source.read_text().splitlines()[1].split()[-1]
+        producer = 'sympy' if engine=='PY' else 'mathematica'
+        assert sha(ROOT/f'research/pde_ledger_v3/{directory}/out/S10_anisotropic_strata_{producer}_audit.out')==expected
+    local, archive_links = 0, 0
+    for name,row in kept.items():
+        if not name.endswith('.md') or re.search(r'(claude|grok|opus)(_|\.|/)|/(_legs|_reviews)/',name,re.I): continue
+        text = (ROOT/name).read_text()
+        links = re.findall(r'\]\(([^)]+)\)',text) + re.findall(r'^\[[^\]]+\]:\s*(\S+)',text,re.M)
+        for target in links:
+            target=re.sub(r':\d+(?:[–-]\d+)?$','',target.strip('<>').split('#')[0])
+            if not target or target.startswith(('http','app:','codex:','mailto:')): continue
+            if target.startswith(END+':'):
+                assert target[len(END)+1:] in archived, (name,target);archive_links+=1;continue
+            if '/' not in target and '.' not in target: continue # math, not a file link
+            assert (ROOT/Path(posixpath.normpath(posixpath.join(str(Path(name).parent),target)))).exists(), (name,target)
+            local+=1
+        for target in re.findall(re.escape(END)+r':([^`\s)]+)',text):
+            target=re.sub(r':\d+(?:[–-]\d+)?$','',target)
+            if target.startswith('<'): continue # directive placeholder, not a citation
+            assert target in archived or any(p.startswith(target.rstrip('/')+'/') for p in archived), (name,target)
+            archive_links+=1
+    print(f'PASS: inventory partition {len(original & set(kept))} kept + {len(original & pruned)} pruned = {len(original)}.')
+    print(f'PASS: {len(kept)} kept paths; {sum(bool(r["original_path"]) for r in kept_rows)} exact-byte relocation rows.')
+    print(f'PASS: {len(pins)} explicit Tier1 JSON file/range pins; {exports} export pins resolve, including kept historical inputs; 2 compact Lean input hashes.')
+    print(f'PASS: {local} local record links and {archive_links} archive references; literal reviews remain unchanged historical text.')
+    print(f'LIVE EXPORT CHECK: {len(live_bad)} pre-existing producer mismatches (not repaired): {live_bad}')
+    if live_exports and live_bad: raise SystemExit(1)
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--check-selection", action="store_true", help="Check Phase 3 path/hash metadata only")
+    parser.add_argument("--check-live-exports", action="store_true", help="Also fail on live export/producer drift")
     args = parser.parse_args()
+    if args.check_selection or args.check_live_exports:
+        check_selection(args.check_live_exports)
+        raise SystemExit(0)
     NAMES = {Path(p).name.lower() for p in git("ls-tree", "-r", "--name-only", END).decode().splitlines()}
     rows, annex = inventory()
     buffer = io.StringIO(newline="")

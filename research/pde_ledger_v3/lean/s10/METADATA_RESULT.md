@@ -20,11 +20,11 @@ The arithmetic records comprise 48 scalar entries in the Wolfram associations
 three SymPy solve-operand/solve-variable pairs. Their expressions have checked
 values and units. Original payloads, line numbers, hashes, trees, schema fields,
 and theorem names are retained in the
-[manifest](../../_measurements/S10_lean_cas_bridge_manifest.json).
+manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_manifest.json`).
 
 ## Complete aggregate and duplicate-field bindings
 
-[RecordBindings.lean](S10Audit/CAS/RecordBindings.lean) translates each repeated
+RecordBindings.lean (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/S10Audit/CAS/RecordBindings.lean`) translates each repeated
 field from its own payload. It proves an identity with the primary predicate,
 then transfers the primary geometric theorem. Each association's printed
 root difference vanishes exactly on its printed locus. Its Boolean and outcome
@@ -48,13 +48,13 @@ exceptional parallel axis.
 
 ## Reported signs and mathematical signs
 
-[RecordSupport.lean](S10Audit/CAS/RecordSupport.lean) distinguishes zero,
+RecordSupport.lean (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/S10Audit/CAS/RecordSupport.lean`) distinguishes zero,
 positive, negative, and undecided sign observations. An undecided observation
 asserts no sign. It also proves the reference static root is zero and both
 nonzero branches are positive when `rho > 0`, `mu > 0`, `sigma > 0`, and
 `k != 0`.
 
-[StatusBindings.lean](S10Audit/CAS/StatusBindings.lean) applies that theorem to
+StatusBindings.lean (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/S10Audit/CAS/StatusBindings.lean`) applies that theorem to
 each **actual imported root expression**, including each engine's own targeted
 point. Every sign record has separate theorems for its reported observation,
 its computed mathematical sign, and consistency of the reported information.
@@ -94,7 +94,7 @@ and belongs to the already certified extra-transverse rank-drop locus.
 
 ## Verification
 
-[S10_lean_cas_records.py](../../scripts/S10_lean_cas_records.py) extends the
+S10_lean_cas_records.py (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/S10_lean_cas_records.py`) extends the
 non-evaluating bridge. Independent parser comparisons cover all 48 complete
 metadata payloads and all 54 new arithmetic expressions. The comparisons use
 the established SymPy parser and the independent Mathematica tokenizer and
@@ -123,8 +123,8 @@ positive controls pass. Canonical source, input and frozen export hashes remain
 unchanged by the tests.
 
 Current full-build and regression evidence is in
-[CAS_BRIDGE_VERIFICATION.txt](CAS_BRIDGE_VERIFICATION.txt) and the
-[check record](../../_measurements/S10_lean_cas_bridge_checks.json).
+CAS_BRIDGE_VERIFICATION.txt (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/CAS_BRIDGE_VERIFICATION.txt`) and the
+check record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_checks.json`).
 The lexer/parser and transcript translation remain tested software; the
 translated mathematical claims are checked by Lean's kernel.
 
@@ -142,4 +142,4 @@ chain and paper alignment have separate obligations in [COVERAGE.md](COVERAGE.md
 
 No CAS engine, input transcript, frozen export or S11 operand is changed by
 this extension. The combined scope and resume plan are recorded in
-[CAS_CHECKPOINT.md](CAS_CHECKPOINT.md).
+CAS_CHECKPOINT.md (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/CAS_CHECKPOINT.md`).

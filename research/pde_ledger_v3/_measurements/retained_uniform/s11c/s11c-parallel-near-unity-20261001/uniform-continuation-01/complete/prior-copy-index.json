@@ -1,0 +1,194 @@
+{
+  "LEFT-limits-sign--1.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/LEFT-limits-sign--1.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/LEFT-limits-sign--1.json",
+    "bytes": 4842,
+    "sha256": "ab4e641c3aece220006a0ee3f5e3808ba6c7c882dcb43bcd52ec79734e96f5e3"
+  },
+  "LEFT-limits-sign-1.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/LEFT-limits-sign-1.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/LEFT-limits-sign-1.json",
+    "bytes": 4841,
+    "sha256": "e918dc2b898bcb0eb3e3927b9577e5061a949ff914d1506ae00f1b6b3ed78eb1"
+  },
+  "RIGHT-limits-sign--1.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/RIGHT-limits-sign--1.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/RIGHT-limits-sign--1.json",
+    "bytes": 4842,
+    "sha256": "2eff3bff15799bbcd40997ba0a68359c1842e772c0fee91e2c5d888180ade78d"
+  },
+  "RIGHT-limits-sign-1.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/RIGHT-limits-sign-1.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/RIGHT-limits-sign-1.json",
+    "bytes": 4841,
+    "sha256": "e16e1311f30fcff11c3069540b87cf73059a2fc37fc1d1f99495eab30909ddbc"
+  },
+  "checks.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/checks.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/checks.json",
+    "bytes": 1525006,
+    "sha256": "93e1156764b4c83f560cad97657bfd6d04a0c9c421dcf73c391657757a153f98"
+  },
+  "invocation.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/invocation.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/invocation.json",
+    "bytes": 1166,
+    "sha256": "f421a094ae4b3b5e9324c7818d00b137c845cd908d2b173519838262f27a5d11"
+  },
+  "operation-index.jsonl": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/operation-index.jsonl",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/operation-index.jsonl",
+    "bytes": 1494182,
+    "sha256": "350b4f8c52a6d72fc57724b593b48316b80623240e1e9abe89793b73c095be2b"
+  },
+  "operations.sqlite": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/operations.sqlite",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/operations.sqlite",
+    "bytes": 42827776,
+    "sha256": "ae1c00d82b440c75a6c998bd6fba388a5c4f7744e83be637885a5ec0fd5bb7b9"
+  },
+  "point-00-LEFT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-00-LEFT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-00-LEFT.json",
+    "bytes": 21624,
+    "sha256": "5dc0ca122a700d1f8bc500cd935adbb9a895d2805e05e2ec0c056ad8a53d572c"
+  },
+  "point-00-RIGHT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-00-RIGHT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-00-RIGHT.json",
+    "bytes": 31531,
+    "sha256": "b86b522248c680ad7724a7adde95789ec02b77d287062ccf81452283abaaf6f9"
+  },
+  "point-01-LEFT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-01-LEFT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-01-LEFT.json",
+    "bytes": 114246,
+    "sha256": "6d79f2fb8531e29df8a9cf06a1aaacac5daf708da030e4375c04596f2b2df92d"
+  },
+  "point-01-RIGHT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-01-RIGHT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-01-RIGHT.json",
+    "bytes": 30913,
+    "sha256": "907501d4fd390649780a65764a6db06686290356038d4460ef440286b3b37fc4"
+  },
+  "point-02-LEFT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-02-LEFT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-02-LEFT.json",
+    "bytes": 21553,
+    "sha256": "678da8fb917d064c22cb292e20f4cfbfb9143fd953de9cb56e9fcdfc3b70bc5a"
+  },
+  "point-02-RIGHT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-02-RIGHT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-02-RIGHT.json",
+    "bytes": 31344,
+    "sha256": "0da1c3f1294ca83b09d736d36733d376f3daff6e9f36f9664090bab48d994760"
+  },
+  "point-03-LEFT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-03-LEFT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-03-LEFT.json",
+    "bytes": 21752,
+    "sha256": "7463c56ab7485bbf2f6d45053fd0d7e020f7cc31b4213d5b9f2bc41ce8dd62f2"
+  },
+  "point-03-RIGHT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-03-RIGHT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-03-RIGHT.json",
+    "bytes": 32223,
+    "sha256": "e9ab377f33fab0f5071d8f0c0d6ea7e5bc66ae4f6bdf6bbd612993ef549d8040"
+  },
+  "point-04-LEFT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-04-LEFT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-04-LEFT.json",
+    "bytes": 21655,
+    "sha256": "0ff03e57b5d7263b9a78c1324072210a3994e275824ce77f310be4db4266b6c7"
+  },
+  "point-04-RIGHT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-04-RIGHT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-04-RIGHT.json",
+    "bytes": 32222,
+    "sha256": "d5495010848f5d3ca9e5d5b45769271326d979defef576e37ddeaff385593260"
+  },
+  "point-05-LEFT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-05-LEFT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-05-LEFT.json",
+    "bytes": 21511,
+    "sha256": "d272cf04d25e1ebd6f0b1bbdf6153162199aa3327864d9136d1f36bd7d1a192e"
+  },
+  "point-05-RIGHT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-05-RIGHT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-05-RIGHT.json",
+    "bytes": 31352,
+    "sha256": "b7209543b3f463fff9df3007e8f69fcfe107b8fdb103039804563d37570fe055"
+  },
+  "point-06-LEFT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-06-LEFT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-06-LEFT.json",
+    "bytes": 21432,
+    "sha256": "6c1f2f92eaffe073e9f391ef02af970b4e41f6b4bc5b4fcc699b756592dd0a12"
+  },
+  "point-06-RIGHT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-06-RIGHT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-06-RIGHT.json",
+    "bytes": 31439,
+    "sha256": "43561be74b8f52c6ed4b137722e8f59204d081fd86655c699c02129b78b7a360"
+  },
+  "point-07-LEFT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-07-LEFT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-07-LEFT.json",
+    "bytes": 21618,
+    "sha256": "356d184dd85183c7c7775b7f0d8b0e8994e17afcbb8d211fdc08234e3bb11a04"
+  },
+  "point-07-RIGHT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-07-RIGHT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-07-RIGHT.json",
+    "bytes": 32179,
+    "sha256": "9bd0bddea9619aebf388af529c0a43450a67035dff5f0a569d64c5b3f093976b"
+  },
+  "point-08-LEFT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-08-LEFT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-08-LEFT.json",
+    "bytes": 21337,
+    "sha256": "bd91a26633c5eaaf6973ce7de2a42949f549ef37fe5f1f828b611d32f16ca3ed"
+  },
+  "point-08-RIGHT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-08-RIGHT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-08-RIGHT.json",
+    "bytes": 118066,
+    "sha256": "3ae35a1d75d6e5fd71987ce33dd785ce95acb23385c9a9067176a818e2283fad"
+  },
+  "point-09-LEFT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-09-LEFT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-09-LEFT.json",
+    "bytes": 21729,
+    "sha256": "bf3c5df01ae9679a88bc8cc490cc3ba25bb056684c6ef81a7ba0c44fd0b9f2d3"
+  },
+  "point-09-RIGHT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-09-RIGHT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-09-RIGHT.json",
+    "bytes": 32314,
+    "sha256": "a1c2c4575c16f2a3636b9685c5bb5423151b354f384f8010c7d40830ce5ca9d6"
+  },
+  "point-10-LEFT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-10-LEFT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-10-LEFT.json",
+    "bytes": 21969,
+    "sha256": "fa863fbbde6146071701dfc5cc392d76c00c0db2568a42550cf03a4096dc062e"
+  },
+  "point-10-RIGHT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-10-RIGHT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-10-RIGHT.json",
+    "bytes": 32890,
+    "sha256": "3f10a89b0686e23311f96ee0e5567a7991cbab961acc47af706a0e9f6ff8beeb"
+  },
+  "point-11-LEFT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-11-LEFT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-11-LEFT.json",
+    "bytes": 21968,
+    "sha256": "aed25f94630610cefc5d555141db6524a59bbb9c1dada267e36f6d3dbb27e2dd"
+  },
+  "point-11-RIGHT.json": {
+    "source": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/point-11-RIGHT.json",
+    "copy": "/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/prior-complete/point-11-RIGHT.json",
+    "bytes": 32933,
+    "sha256": "09e9528286940bbfa96d86de6c54ed9b089548682bf0e6ce0ef798d64f4fab1a"
+  }
+}

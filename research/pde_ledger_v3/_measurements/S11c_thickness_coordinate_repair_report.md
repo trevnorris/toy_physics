@@ -2,7 +2,7 @@
 
 The endpoint-pairing diagnostic is committed at **f796f7ba**. The user then
 authorized autonomous continuation and a commit at each substantive step.
-This record follows the [repair plan](S11c_thickness_coordinate_repair_plan.md).
+This record follows the repair plan (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_repair_plan.md`).
 
 The new source trace identifies the discrepancy in **S11c-b's native kinetic
 ansatz**. Shared physics sections 1a/1c define the physical thickness through
@@ -28,8 +28,8 @@ and the equal-frequency restriction are separate computed objects. The generic
 coordinate identity applies before any numerical witness; endpoint accounting
 is explicitly scoped to the saved RIGHT LAB_HELD/RHO4_CONSTANT case.
 
-The [trace transcript](../scripts/out/S11c_thickness_coordinate_trace.out) and
-[checkpoint](S11c_thickness_coordinate_trace_checkpoint.json) validate **40
+The trace transcript (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S11c_thickness_coordinate_trace.out`) and
+checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_trace_checkpoint.json`) validate **40
 objects and 453 metadata paths**, with restored [L,T,M], explicit epsilon/eta/
 sigma and homotopy support, rational numerator/denominator grade metadata for
 the coordinate map, and source/packet/output hashes. The output is 146,008 bytes,
@@ -55,8 +55,8 @@ assembly and the frozen historical comparison are preserved. The independent
 time-action check uses the defining reference-normalized physical field and
 returns **eight literal-zero inertia-minus-action components** across both
 density representatives, with symbolic material/background inputs. The
-[action checkpoint](S11c_thickness_coordinate_action_checkpoint.json) pins the
-4751-byte [output](../scripts/out/S11c_b_inertia_action_after_coordinate_repair.out),
+action checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_action_checkpoint.json`) pins the
+4751-byte output (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S11c_b_inertia_action_after_coordinate_repair.out`),
 SHA256 `df08264820d43e3053ef41de07f02eb2d5c5faa35f4340c161492d7cfdfd04db`.
 Python compilation and whitespace checks pass.
 
@@ -68,7 +68,7 @@ scope, snapshots inputs, measures resources and leaves publication separate.
 Current b/c1/c2/d exports and production outputs still describe the pre-repair
 operator until their recorded regeneration completes. Baseline source/export copies
 and all accessible S11c output hashes are recorded in
-[S11c_thickness_coordinate_baseline.json](S11c_thickness_coordinate_baseline.json).
+S11c_thickness_coordinate_baseline.json (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_baseline.json`).
 After the source fix, regenerate b, c1, c2 and d in order, then rebuild actual
 endpoint/reference pairing and modal prerequisites. Earlier downstream outputs
 remain historical until their replacement is validated. No full S-matrix,
@@ -91,7 +91,7 @@ comparisons** in 8.20 seconds at 78,760 KiB peak RSS. It restores both recorded
 stack limits (256 MiB); an initial inspection with an unlimited hard limit was
 correctly rejected by the exact runtime guard. This is cache provenance
 validation, not a new endpoint balance result. See the
-[arithmetic inventory](S11c_thickness_coordinate_arithmetic_cache_inventory.json).
+arithmetic inventory (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_arithmetic_cache_inventory.json`).
 Fresh pairing publication supports a new suffix and never replaces the original
 RIGHT discrepancy. End-to-end fresh construction/emission remains to be run
 after the repaired production imports exist.
@@ -105,7 +105,7 @@ regeneration status at each validated producer checkpoint. It never pushes or
 changes a physical source, and it stops with evidence if a validator fails.
 
 The serial controller is committed at **e9b3d6d1** and launched. The
-[execution checkpoint](S11c_thickness_coordinate_execution_checkpoint.json)
+execution checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_execution_checkpoint.json`)
 records the live b producer and waiting continuation, stable current producer
 sources and empty stderr at observation. A read-only host process inspection
 shows b actively using CPU at 216,720 KiB RSS. The committed baseline b timing
@@ -173,8 +173,8 @@ is 1,361,873 bytes, SHA256
 `7620bb53be733b28bfbc1abbd71e940ba1be9ea6db7bde5b436df5a47a4cadd8`.
 The complete native b output has been atomically published at its production
 path (183,361,030 bytes), preserving its previous annex payload. See the
-[b artifact inventory](S11c_thickness_coordinate_b_stage_inventory.json) and
-[validated action/export checkpoint](S11c_thickness_coordinate_b_export_checkpoint.json).
+b artifact inventory (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_b_stage_inventory.json`) and
+validated action/export checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_b_export_checkpoint.json`).
 c1/c2/d regeneration and fresh endpoint/reference balance remain next.
 
 The validated b artifact checkpoint is **1175b686**. Its native and focused
@@ -184,7 +184,7 @@ improper-integral endpoint nodes separately from nonfinite value nodes. An
 actual saved c2 coupling integral has six infinite endpoints and no nonfinite
 coefficient; explicit infinite/NaN/complex-infinite coefficient probes and an
 infinite-integrand probe remain detected. See the
-[domain-syntax checkpoint](S11c_thickness_coordinate_integral_domain_checkpoint.json).
+domain-syntax checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_integral_domain_checkpoint.json`).
 This is validation of expression syntax, not convergence or integral evaluation.
 The regression took 72.70 seconds at 3,875,140 KiB peak RSS while selecting the
 actual operand from the serialized c2 export. It ran after b validation ended;
@@ -219,7 +219,7 @@ preservation data contain **2483 zero scalar differences**, but the guard
 iterated dictionary keys, so nonempty row names triggered it. The guard now
 uses the nonzero count computed from the emitted residual payload. The actual
 zero census is accepted and an explicit one-nonzero-count probe is rejected;
-see [guard checkpoint](S11c_thickness_coordinate_c2_guard_checkpoint.json).
+see guard checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_c2_guard_checkpoint.json`).
 No native physics source or computed operand changed in this guard repair.
 
 Resume only validation in fresh `c2_checks_values` and
@@ -246,14 +246,14 @@ for every small kinetic diagnostic, including the lambda homotopy and zero
 operands. Reconstructing **108 actual emitted scalars** under the imported
 profile definitions gives **216 zero polynomial reconstruction residuals**;
 **50 metadata descriptors** change. See the
-[kinetic grade checkpoint](S11c_thickness_coordinate_c2_kinetic_grade_checkpoint.json).
+kinetic grade checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_c2_kinetic_grade_checkpoint.json`).
 The other closure-object metadata retains its explicitly named native
 structural convention. No native source, export or physical operand changed.
 The metadata regression took 2.59 seconds at 334,668 KiB peak RSS.
 
 All four native power-residual payloads are byte-identical to the committed
 baseline, including their metadata; the
-[power-preservation checkpoint](S11c_thickness_coordinate_c2_power_preservation_checkpoint.json)
+power-preservation checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_c2_power_preservation_checkpoint.json`)
 pins both transcripts and the four exact comparisons. This is preservation of
 the recorded raw residuals, not a new simplification or physical verdict.
 Resume the completed c2 producer's validation in `c2_checks_exact` under
@@ -268,7 +268,7 @@ peak RSS. All **2846 residual scalars are zero**, across **418 objects and
 only `s11cc2ClosedSlabOperator` changes among the 70 native export values.
 The native output, focused transcript and export/inventories were committed at
 **537d78fd**. See the
-[c2 export checkpoint](S11c_thickness_coordinate_c2_export_checkpoint.json).
+c2 export checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_c2_export_checkpoint.json`).
 
 The controller's post-save hash check then stopped the queue before d. The
 native annex object contained 79,560,704 bytes, an exact prefix of its expected
@@ -283,7 +283,7 @@ source changed. SHA256 and file-size comparisons now match all three native
 b/c1/c2 outputs and both focused transcripts; targeted annex fsck succeeds for
 all five. The recovered native c2 SHA256 is
 `9712191e3af5e7bbc2eb65824ca283f0c5cb3a35d5e21632d0821412ec018864`.
-The [recovery checkpoint](S11c_thickness_coordinate_c2_annex_recovery_checkpoint.json)
+The recovery checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_c2_annex_recovery_checkpoint.json`)
 records the observed failure, quarantine, reinjection and verification results.
 
 Resume the existing serial controller at d in a fresh
@@ -312,7 +312,7 @@ The native spectrum inventory retains 24 packets and 432 root/lift candidates,
 including 336 scalar and 96 two-dimensional nullspaces. Joint-sheet records
 contain 480 transported paths and 24 separate branch-locus-on-path records.
 The numerical residuals, exceptional and threshold records remain in their
-[full inventory](S11c_thickness_coordinate_d_full_checks.json). These measured
+full inventory (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_d_full_checks.json`). These measured
 domains do not establish global coverage or profile-frequency bound poles.
 All ten broad native outstanding constructions retain their current scope.
 
@@ -345,7 +345,7 @@ it before the earlier single-construction `active_endpoint.json`.
 Compilation and the complete eight-stage command-plan check pass. Isolated
 operational fixtures exercise accepted exact payloads and rejection of nonzero
 residual counts, missing census fields and changed payloads; see the
-[controller checkpoint](S11c_thickness_coordinate_endpoint_controller_checkpoint.json).
+controller checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_endpoint_controller_checkpoint.json`).
 These are execution guards, not physical evidence. No native construction or
 validator changed in this preparation.
 
@@ -381,7 +381,7 @@ plus 80 adjacent files** moved to the repository's `_scratch/s11c/` tree.
 All **10,718 files / 13,891,191,404 bytes** retain their hashes and inodes.
 Compatibility aliases preserve frozen absolute-path signatures; all 115 paths
 resolve to durable repository data. The live controller's 32 pins also match.
-See the [storage report](S11c_storage_report.md) for the migration inventory,
+See the storage report (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_storage_report.md`) for the migration inventory,
 tested link-recovery helper and restart instructions. New runs use repository
 paths directly. Existing published `.out` pointers and payloads are unchanged.
 

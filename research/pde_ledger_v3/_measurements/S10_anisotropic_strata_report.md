@@ -1,7 +1,7 @@
 # S10 anisotropic exceptional-stratum repair
 
 2026-09-11. Focused SymPy/Wolfram reruns and a Lean-derived coverage contract.
-Included in the [S9/S10 checkpoint](../lean/CHECKPOINT.md). The original full-sweep transcripts, broad
+Included in the S9/S10 checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/CHECKPOINT.md`). The original full-sweep transcripts, broad
 comparator output, and `S10_exports.py` have not been regenerated.
 
 ## Finding and repair
@@ -57,7 +57,7 @@ direction geometry, never the incidental stratum numbering.
 | 4 | perpendicular | `muR/rhoBr` | 2 / 2 |
 | 4 | perpendicular | `muR/(rhoBr*sRho)` | 1 / 1 |
 
-The [focused comparator result](../scripts/out/S10_anisotropic_strata_comparator.json)
+The focused comparator result (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S10_anisotropic_strata_comparator.json`)
 also retains each actual wavevector and unnormalized root. It independently
 checks the emitted determinant's complete root list at each witness, matrix
 and stack dimensions, ranks/nullities, N4 differences, and N6 basis rank and
@@ -70,8 +70,8 @@ Wolfram prints 20 `Solve::svars` diagnostics for underdetermined solutions.
 The comparator accounts for that exact diagnostic and rejects other untagged
 output; local solver diagnostics remain in the transcript.
 
-The [validation instrument](S10_anisotropic_strata_check.py) has eight
-[recorded checks](S10_anisotropic_strata_checks.json): the canonical pair
+The validation instrument (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_anisotropic_strata_check.py`) has eight
+recorded checks (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_anisotropic_strata_checks.json`): the canonical pair
 passes; swapping Wolfram stratum numbers still passes; corrupting a transverse
 count, omitting the perpendicular rerun, and corrupting a root list are each
 rejected. All 48 selected generic rows in each engine match the original
@@ -91,7 +91,7 @@ source hashes are recorded in its verification files.
 
 `S10_exports.py` retains SHA-256
 `bc8de16bae05dcf6caa71d82184f5aa95e2a9d6fd157fdbb674b88f185ed34c9`.
-The [run manifest](S10_anisotropic_strata_runs.json) records the focused
+The run manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_anisotropic_strata_runs.json`) records the focused
 sources, outputs and pre-change digests. This increment has not modified the
 frozen S11c-b/c1/c2 inputs or the other session's S11c-d files.
 

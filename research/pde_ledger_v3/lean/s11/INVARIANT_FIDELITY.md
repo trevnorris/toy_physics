@@ -67,7 +67,7 @@ The recorded build and axiom audit pass; see
 At checkpoint `d80d02d2`, SymPy `compute_q9` stored each generator's monomial
 images as rows and computed their right nullspace. This has the wrong
 coefficient-action orientation. The frozen
-[probe report](../../_measurements/S11_lean_q9_orientation_probe.json)
+probe report (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_q9_orientation_probe.json`)
 records the original source SHA-256 and the concrete failure. Its companion
 probe script is historical reconnaissance against that source revision; its
 old expected-failure assertions should not be rerun against the repaired
@@ -81,13 +81,13 @@ its source is unchanged. This generic coefficient-action correction affects
 all dimensions using this routine, but this increment measures and proves the
 D2 census only. It does not certify D3–D5 production results.
 
-The [compact native check](../../_measurements/S11_lean_invariant_source_check.py)
+The compact native check (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_invariant_source_check.py`)
 executes five original helpers with their real coordinate convention, omitting
 registry initialization and production execution. It compares the entire D2
 V1, V2 and V6 row spaces to the four/three/one forms above using exact rational
 RREF and rank identities. An in-memory wrong-orientation control retains
 counts 4/3 but must fail the span comparison. The
-[record](../../_measurements/S11_lean_invariant_source_checks.json)
+record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_invariant_source_checks.json`)
 contains the instrument and source hashes and exact polynomials. Its numeric
 residual is an independent check of the explicitly supplied polynomial; it is
 not extracted from the in-memory mutant basis. The frozen original probe
@@ -110,7 +110,7 @@ values 1 and 481/625, and the non-invariance conclusion.
 Local builds, 46 standard-axiom audits, nine mathematical mutations and eight
 positive controls passed. Live sources, compiled outputs and the 15 dependency
 checkout revisions match the recorded evidence. See
-[the validation record](../../_measurements/S11_lean_invariant_validation.json).
+the validation record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_invariant_validation.json`).
 Two independent non-author fidelity reviews inspected the approved fixed
 packet and native correction and returned CLEAR with no blockers. All live
 shared-source and proof hashes matched the reviewed snapshot before these

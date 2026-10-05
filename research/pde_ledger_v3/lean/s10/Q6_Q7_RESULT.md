@@ -123,8 +123,8 @@ The committed checkpoint build succeeded with **250 audited declarations**, incl
 There are no proof admissions. Two isolated source mutations are rejected:
 doubling the epsilon contraction breaks its curl identity, and dropping the
 wavevector factor breaks both the root-evaluation and root-dimension theorems.
-The [mutation instrument](../../_measurements/S10_lean_q6_q7_check.py) and
-[recorded checks](../../_measurements/S10_lean_q6_q7_checks.json) retain that evidence.
+The mutation instrument (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_q6_q7_check.py`) and
+recorded checks (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_q6_q7_checks.json`) retain that evidence.
 
 The local cache setting permits newly used PhysLean modules to build in the
 workspace when the toolchain installation is read-only. Dependency pins are
@@ -151,4 +151,4 @@ Other emitted cases and the production CAS/export refresh remain open.
 The original CAS Q7 implementations still
 require alignment with their explicit Levi-Civita construction requirement.
 The [coverage map](COVERAGE.md) keeps those tasks separate. These results are
-included in the [combined S9/S10 checkpoint](../CHECKPOINT.md).
+included in the combined S9/S10 checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/CHECKPOINT.md`).

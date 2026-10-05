@@ -20,8 +20,8 @@ polynomial coefficients instead needs the transpose of each generator block.
 The Wolfram constructor explicitly uses `Transpose[actionRows]` (line 910).
 This is a source-level distinction, not a basis-presentation difference.
 
-The [small D2 probe](../../_measurements/S11_lean_q9_orientation_probe.py) and
-[its evidence](../../_measurements/S11_lean_q9_orientation_probe.json) execute
+The small D2 probe (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_q9_orientation_probe.py`) and
+its evidence (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_q9_orientation_probe.json`) execute
 five original helpers with the original real coordinate names. They do not run
 the production audit or initialize the registry. One emitted basis polynomial is
 
@@ -80,7 +80,7 @@ counts. Wolfram remains unchanged. These are local source checks; production
 results have not been regenerated or cleared.
 
 The recorded one-worker suite is
-[`S11_lean_invariant_contract_check.py`](../../_measurements/S11_lean_invariant_contract_check.py).
+`S11_lean_invariant_contract_check.py` (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_invariant_contract_check.py`).
 It builds the five modules and audit root, checks standard axioms, tests nine
 mathematical mutations and eight positive controls, and validates source and
 dependency hashes. Reuse requires matching commands, source/dependency hashes

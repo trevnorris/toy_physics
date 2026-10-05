@@ -6,11 +6,11 @@ tested effective sound speeds on both sides of, and at, their modal/acoustic
 matches. This removes the observed denominator-decision blocker. It does not
 measure defect leakage or establish the flowing, primitively calibrated model.
 
-The [completion record](S11c_d_near_unity_uniform_continue_completion.json)
+The completion record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_completion.json`)
 contains the inspected receipts, preservation checks, resources, certificate
 summary and per-point coverage. The immutable continuation is
 `_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01`.
-The earlier [partial result](S11c_d_near_unity_uniform_result.md) and its 44
+The earlier partial result (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_result.md`) and its 44
 domain refusals remain unchanged as history.
 
 ## Actual coverage and result
@@ -130,7 +130,7 @@ small-flow approximation is nonuniform at grazing for fixed nonzero flow.
 The delivered [upstream joint assessment](S11c_upstream_repair_review_joint_disposition.md)
 still leaves direct height–slope/nonuniform composition unresolved. The uniform
 result retains that conditional applicability; it cannot clear the defect
-operator. The [parallel preparation](S11c_upstream_parallel_next_work.md)
+operator. The parallel preparation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_upstream_parallel_next_work.md`)
 identifies a small same-profile direct-term diagnostic and affected downstream
 objects. That diagnostic is not launched by this completion. Stop here before
 any defect sweep, producer regeneration, new validator or loss calculation.

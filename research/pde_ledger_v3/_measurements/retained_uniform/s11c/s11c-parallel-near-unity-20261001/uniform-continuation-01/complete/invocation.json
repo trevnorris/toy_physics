@@ -1,0 +1,25 @@
+{
+  "workerSha256": "ae3bdfa9fe96a4c700d39f988b26a3420687a46e29e8d92950b990a022742d29",
+  "manifestSha256": "3572f7b90cfd994e4dbb31169c2ba1729b17aa28835fddff6fd23df44a5fc64a",
+  "gateSha256": "eaf5fdf6eb2cb430bb94e03696fdba8af48fd07539a44c09fd06017863f3629a",
+  "containment": {
+    "memory.max": "8589934592",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "cgroup": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-d202569dc89b.service",
+    "nativeAddressSpace": 8589934592,
+    "durationLimits": null
+  },
+  "restoration": "All scientific imports and saved-object restoration follow containment."
+}

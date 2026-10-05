@@ -27,30 +27,11 @@ cache are shared at [../](../README.md).
   residual dimensions and Levi-Civita Q7 comparisons for all six packages.
   See [Q6_Q7_RESULT.md](Q6_Q7_RESULT.md), [MATRIX_RESULT.md](MATRIX_RESULT.md),
   and [AUDIT_VERIFICATION.txt](AUDIT_VERIFICATION.txt).
-- `S10Audit/CAS/`: generated trees from both engines' generic and exceptional anisotropic D3
-  transcripts, checked values and units, route normalization, explicit
-  denominator domains and complete displayed bases. See
-  [CAS_BRIDGE_RESULT.md](CAS_BRIDGE_RESULT.md) and
-  [CAS_BRIDGE_VERIFICATION.txt](CAS_BRIDGE_VERIFICATION.txt) for the current
-  increment; earlier verification files retain the committed checkpoint.
-  The [minor/locus extension](MINOR_LOCUS_RESULT.md) additionally certifies all
-  printed D3 rank-drop minors, complete selection maps, guarded exceptional
-  locus predicates and the four targeted points. The
-  [exceptional rerun extension](EXCEPTIONAL_RERUN_RESULT.md) connects their
-  matrices, roots and complete bases, including both parallel basis vectors
-  and the restoration of physical units after numerical specialization. The
-  [count extension](COUNT_RESULT.md) connects all 112 generic and exceptional N2/N3/N4/N7
-  records to matrix ranks, kernel dimensions, basis cardinalities and signed
-  residuals, with explicit generic chart assumptions and preservation of the
-  exceptional counts under nonzero physical scaling.
-  The [root-list extension](ROOT_RESULT.md) certifies complete solution lists,
-  distinct-root counts, algebraic multiplicities and syntactic filter records.
-  The [coincidence extension](COINCIDENCE_RESULT.md) connects primary emitted
-  root differences, guarded loci, allowed regions, decisions and witnesses,
-  including the full exceptional parallel axis. The
-  [metadata extension](METADATA_RESULT.md) checks all coincidence aggregate/Q8
-  fields, root signs, spectrum solve operands/statuses, empty root-condition
-  lists and retained/skipped stratum dispositions.
+- `S10Audit/CAS/`: only `PY`, `WL`, `Support`, `BasisCompletion` and `Bindings` remain,
+  preserving the limited D3 imported-matrix identity used by the compact C2 fidelity contract.
+  The transcript-wide audit, exceptional reruns, count/root/locus records and their bindings
+  are at `archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/S10Audit/CAS/`.
+  Their historical reports are not claims that those modules remain in the current build.
 
 Run from `research/pde_ledger_v3/lean/`:
 

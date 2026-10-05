@@ -87,14 +87,14 @@ comparison. Multiplying E by the nonzero
 scalars -1 or 1/2 preserves its kernel; it would not preserve resolvent or
 residue normalization. No such spectral-response equivalence is claimed.
 
-The [compact checker](../../_measurements/S11_lean_source_check.py) executes
+The compact checker (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_source_check.py`) executes
 only selected original SymPy definitions. It reads the needed inherited scalar
 values from their actual records in `S10_exports.py`; it does not execute that
 whole export file or a CAS audit. An explicit unused sentinel fills the invariant
 census input expected by the generic constructor, and the checker verifies that
 MAIN does not depend on it. No invariant census is performed or certified.
 
-Exact symbolic zero residuals in [the source-check record](../../_measurements/S11_lean_source_checks.json)
+Exact symbolic zero residuals in the source-check record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_source_checks.json`)
 identify the action, both matrices, phase-average normalization and the native
 D3 determinant of the selected matrix `M_B`,
 `(rho z-mu K)² (rho z-B K)/8`. Reversing the compression sign
@@ -177,7 +177,7 @@ Those require the separate interface and spectral-boundary problem.
 
 ## Mutation map and stopping boundary
 
-The [verification instrument](../../_measurements/S11_lean_contract_check.py)
+The verification instrument (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_contract_check.py`)
 runs one Lean process at a time with `-j1 -M4096`, warnings as errors, and low
 scheduling priority. It records commands, source and output hashes, generated
 control statements and diagnostics. Source-mutation rejections must expose a

@@ -8,7 +8,7 @@ cancelled, permission-stopped and CLI-startup attempts remain unchanged. This is
 local adjudication of their evidence, not author-issued independent clearance.
 
 The [literal delivered text](S11c_upstream_repair_review_grok_delivered.txt) and
-[completion record](S11c_upstream_repair_review_grok_completion.json) preserve the
+completion record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_grok_completion.json`) preserve the
 verdict, receipts, source/probe hashes, resources and selected actual operands.
 The original [Claude disposition](S11c_upstream_repair_review_disposition.md)
 remains a historical record. Its missing-second-verdict status is superseded by

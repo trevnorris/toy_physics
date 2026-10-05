@@ -20,9 +20,9 @@ reviewer received the other's response or acted as an author of the proofs.
 - Aggregate method: SHA256 of UTF-8 `json.dumps(files, sort_keys=True)`.
 - Archive SHA256:
   `d91f74171af7d5fcfbb3bc623d58bc07ccc5de30a5f96a2fd53138789dfacd58`.
-- [Manifest](../../_measurements/S11_lean_dynamics_review_packet.json),
-  [archive](../../_measurements/S11_lean_dynamics_review_packet_v1.tar.gz),
-  [authorization and review state](../../_measurements/S11_lean_dynamics_review_state.json).
+- Manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_dynamics_review_packet.json`),
+  archive (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_dynamics_review_packet_v1.tar.gz`),
+  authorization and review state (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_dynamics_review_state.json`).
 
 | Independent reviewer | Session | Result |
 |---|---|---|
@@ -87,7 +87,7 @@ sources, dependencies, instruments and terminal check records remain the reviewe
 bytes. The approved archive and snapshot remain unchanged. No substantive
 re-review, proof rebuild or mutation rerun is needed for these documentation
 clarifications. See the
-[closure validation](../../_measurements/S11_lean_dynamics_closure_validation.json).
+closure validation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_dynamics_closure_validation.json`).
 
 This does not complete all of S11, the full XFORM_EXTRA spectrum, D3–D5 invariant
 or divergence classes, interface/radiation physics, production exports or

@@ -27,9 +27,9 @@ the matrix or basis quantity above. The manifest records both stages and the
 coefficient domain. Agreement with an expected integer alone is not used as
 proof of the mathematical count.
 
-[CountSupport.lean](S10Audit/CAS/CountSupport.lean) proves that appending a
+CountSupport.lean (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/S10Audit/CAS/CountSupport.lean`) proves that appending a
 wavevector row gives exactly the intersection of the modal kernel with the
-Euclidean transverse space. The generated [CountReference.lean](S10Audit/CAS/CountReference.lean)
+Euclidean transverse space. The generated CountReference.lean (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/S10Audit/CAS/CountReference.lean`)
 connects both imported matrix maps to the previously classified spaces, then
 uses their proved dimensions. Rank follows from rank-nullity with domain
 dimension three. This applies to the 4-by-3 N3 matrix as well: four rows do
@@ -49,13 +49,13 @@ of `k` nonzero. These are explicit hypotheses, also recorded in the manifest.
 The chart supports the displayed basis normalizations. It is not claimed to
 be the largest domain on which an individual count holds.
 
-[GenericCountReference.lean](S10Audit/CAS/GenericCountReference.lean) assembles
+GenericCountReference.lean (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/S10Audit/CAS/GenericCountReference.lean`) assembles
 each engine's complete N1 and N3 matrices directly from the already imported
 expression trees and proves their whole-matrix reference equalities. It
 identifies their kernels with the classified modal and transverse subspaces,
 then derives all ranks, nullities and signed counts. Each imported basis is
 also proved independent and complete for its corresponding N1 kernel.
-[GenericCountSupport.lean](S10Audit/CAS/GenericCountSupport.lean) derives the
+GenericCountSupport.lean (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/S10Audit/CAS/GenericCountSupport.lean`) derives the
 generic dimensions from the existing static and oblique census theorems.
 These formulas use the physical wavevector and squared-frequency convention
 of the generic expressions; no numerical point substitution is involved.
@@ -108,11 +108,11 @@ residuals consequently have the same values.
 
 ## Verification and remaining work
 
-[S10_lean_cas_counts.py](../../scripts/S10_lean_cas_counts.py) and
-[S10_lean_cas_generic_counts.py](../../scripts/S10_lean_cas_generic_counts.py)
+S10_lean_cas_counts.py (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/S10_lean_cas_counts.py`) and
+S10_lean_cas_generic_counts.py (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/S10_lean_cas_generic_counts.py`)
 generate the exceptional and generic arithmetic and semantic bindings through
 the main bridge generator. The
-[manifest](../../_measurements/S10_lean_cas_bridge_manifest.json) preserves tags,
+manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_manifest.json`) preserves tags,
 line numbers, exact payloads, raw trees, units, source hashes, mathematical
 meanings and proof names for every record.
 
@@ -139,8 +139,8 @@ audits**, across **115 canonical Lean files** and 3834 build jobs. All 112
 semantic count bindings are included in that audit. Only `propext`,
 `Classical.choice` and `Quot.sound` occur; warnings are errors and there are
 no proof admissions. Full-build and test results are recorded in
-[CAS_BRIDGE_VERIFICATION.txt](CAS_BRIDGE_VERIFICATION.txt) and
-[the check record](../../_measurements/S10_lean_cas_bridge_checks.json).
+CAS_BRIDGE_VERIFICATION.txt (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/lean/s10/CAS_BRIDGE_VERIFICATION.txt`) and
+the check record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S10_lean_cas_bridge_checks.json`).
 Reproduction commands are in [CAS_BRIDGE_RESULT.md](CAS_BRIDGE_RESULT.md).
 
 The [root-list extension](ROOT_RESULT.md) now certifies the raw solution lists,

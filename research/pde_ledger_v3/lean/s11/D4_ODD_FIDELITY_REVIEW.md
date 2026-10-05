@@ -20,9 +20,9 @@ read-only tools. Neither received the other's report or authoring duties.
   `166f3de5984894b7b9383e87e03a7b1e5c731ea9a891ca1a724309836eb4b8cc`.
 - Manifest SHA256:
   `970bb4ce1cc64423ca2da4c3c1fc86ad93fd515793c849f2fb56dea314ee7f14`.
-- [Manifest](../../_measurements/S11_lean_d4_odd_review_packet.json),
-  [archive](../../_measurements/S11_lean_d4_odd_review_packet_v1.tar.gz),
-  [authorization and state](../../_measurements/S11_lean_d4_odd_review_state.json).
+- Manifest (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d4_odd_review_packet.json`),
+  archive (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d4_odd_review_packet_v1.tar.gz`),
+  authorization and state (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d4_odd_review_state.json`).
 
 The repository manifest and the snapshot/transport `MANIFEST.json` are
 byte-identical. Both terminal reports identify the exact aggregate above.
@@ -103,7 +103,7 @@ Only coverage, fidelity, verification and the README were updated after review;
 this closure record and durable reports were added. The other 34 packet files,
 all proof/instrument/native bytes, verification reports and nineteen objects
 retain the reviewed correspondence. The approved snapshot/archive/transport
-remain frozen. See [closure validation](../../_measurements/S11_lean_d4_odd_closure_validation.json).
+remain frozen. See closure validation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11_lean_d4_odd_closure_validation.json`).
 The frozen local validation's pending-review status is historical; the review
 state and this record establish completion.
 

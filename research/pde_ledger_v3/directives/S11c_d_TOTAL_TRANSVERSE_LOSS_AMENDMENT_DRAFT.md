@@ -3,7 +3,7 @@
 **UNREVIEWED PROPOSAL — preparation only, no launch authority.** 2026-09-28.
 Keep the cleared channel-map/Born amendment and all historical findings intact.
 This proposes a new primary observable; the user authorized fresh Claude/Grok
-review until substantively clear. The [assessment](../_measurements/S11c_d_total_transverse_loss_assessment.md)
+review until substantively clear. The assessment (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_total_transverse_loss_assessment.md`)
 states the source evidence and remaining method dependency.
 
 ## 1. Object and scope

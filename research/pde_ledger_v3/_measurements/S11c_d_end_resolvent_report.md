@@ -99,7 +99,7 @@ before/after the run and with the current files. The main transcript has
 109,612 unique tags, one completion marker, three empty dimensional-constraint
 records, and no new metadata gaps, unmatched objects or nonfinite records.
 
-The [resolvent inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_inventory.json)
+The resolvent inventory (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_inventory.json`)
 accounts for 24 packets, 432 native candidates and regular Laurent residues,
 1,728 contours, 192 bank pairs and 384 bank inverses. All nullities agree with
 the native records. There are 144 explicitly subtracted local normal-pole
@@ -110,22 +110,22 @@ inverse identities equal the focused maxima above. The maximum contour
 coefficient condition is `1.206e6`, and the maximum coefficient-frame inverse
 residual is `9.000e-11`; those are finite-input numerical diagnostics.
 
-The [joint inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_joint_inventory.json)
+The joint inventory (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_joint_inventory.json`)
 retains all 504 paths (480 transported, 24 individually unresolved branch
 intersections) and 192 original bank pairs. The native and continuation
 comparisons each have 24 raw carrier-association/metadata ordering differences
 and zero semantic differences. All 8,016 native payloads otherwise match,
 including every numerical candidate record. The
-[spectrum inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_spectrum_inventory.json)
+spectrum inventory (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_spectrum_inventory.json`)
 retains 24 finite-root certificates, all 432 native candidates, 12 earlier
 full-sector symbols and 24 legacy packets containing 528 candidate records.
-The [Fourier inventory](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_inverse_inventory.json)
+The Fourier inventory (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_inverse_inventory.json`)
 retains all 96 carriers with zero inverse/source-image/remainder/branch
 residuals. All 666 projections from 222 integral residuals and 132 projections
 from eight row residuals are zero. All four inventories exit 0 with empty
 stderr. No upstream operand mismatch was indicated.
 
-The [main transcript](/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out)
+The main transcript (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out`)
 is 189,492,142 bytes, SHA-256
 `b04b50c87e227498a7acf48dec0a8a46e3e2288bb09045f479c9de2523a1d617`.
 This exceeds the brief's original tens-of-MB target. New resolvent object
@@ -140,7 +140,7 @@ The four focused transcripts are published beside the main output as
 203,816,095 bytes. Copy, fsync, digest verification and atomic replacement
 preserved the old 104,669,285-byte annex payload. The new transcripts are
 working files for the next user-requested DataLad/git-annex save. The
-[run record](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_runs.json)
+run record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_runs.json`)
 retains commands, source/input/cache provenance, resources, inventory and
 publication hashes, and the focused/development distinction.
 
@@ -152,7 +152,7 @@ eight-point solver/export contract remains byte-for-byte unchanged.
 
 ## Remaining boundary
 
-The user's S10 Lean concern prompted a [read-only stratum-coverage inspection](/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_stratum_coverage_note.md)
+The user's S10 Lean concern prompted a read-only stratum-coverage inspection (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_stratum_coverage_note.md`)
 while the source was frozen. Root checks visit every isolated candidate, and
 nullspace residuals use every computed basis column. The 24 branch-intersection
 controls have individual records. Sheet-region enumeration and deliberate

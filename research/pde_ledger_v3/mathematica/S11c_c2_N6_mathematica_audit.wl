@@ -33,9 +33,11 @@ covNames = {"SOURCE_ACTUAL", "SOURCE_PREDICTED", "R_COV", "SOURCE_BASELINE",
   "ACTUAL_CONTROL_PARAMETERS", "PROVENANCE"};
 guardNames = {"SLOT_GUARD_NATIVE", "SLOT_GUARD_CARRIER", "SLOT_GUARD_RESIDUAL",
   "CLOSURE_GUARD_NATIVE", "CLOSURE_GUARD_CARRIER", "CLOSURE_GUARD_RESIDUAL"};
+traceNames = {"PhysicalResponse", "ReferenceResponse", "ReconstructedPressure", "ReconstructionResidual"};
 standardEmissionName[{family_String, name_String}] := Switch[family,
   "RC", "WL_S11CC2_N6RC_" <> name, "COV", "WL_S11CC2_N6COV_" <> name,
-  "GUARD", "WL_S11CC2_N6_" <> name, _, "WL_S11CC2_N6_LOCAL_" <> name];
+  "GUARD", "WL_S11CC2_N6_" <> name, "TRACE", "wlS11cc2PressureTrace" <> name,
+  _, "WL_S11CC2_N6_LOCAL_" <> name];
 emittedNames = {};
 stripConditional[x_] := x /. ConditionalExpression[v_, c_] :>
   <|"CONDITIONAL_VALUE" -> v, "CONDITION_OPERAND" -> HoldForm[c]|>;
@@ -306,10 +308,15 @@ materialGeometry[anchor_, s_, knife_] := Module[{deform, invT, thick, center, fl
 virtualU = {virtualU1, virtualU2, virtualU3};
 Scan[declare[#, {1, 0, 0}] &, Join[virtualU, {virtualCenter}]];
 declare[virtualEW, {0, 0, 0}];
+(* Reference-face pressure and its normal jet. The same native face evaluation
+   supplies the ordered inverse used when a physical boundary response is folded. *)
+facePressureTrace[s_Integer] := Module[{p},
+  p = If[s === 1, Take[pressureSlots, 2], Take[pressureSlots, -2]];
+  shapeParameter (p[[1]] + s (WBg - W0) p[[2]]/2)];
 faceLaws[geometry_, s_, mu_, density_] := Module[{p, trace, normal, area, velocity, bulk,
     affinity, flux, closure, traction, work, balance},
   p = If[s === 1, Take[pressureSlots, 2], Take[pressureSlots, -2]];
-  trace = shapeParameter (p[[1]] + s (WBg - W0) p[[2]]/2);
+  trace = facePressureTrace[s];
   normal = geometry["NORMAL"]; area = geometry["AREA"];
   velocity = geometry["FACE_VECTOR"];
   bulk = shapeParameter Table[declare[Symbol["bulkVelocity" <> ToString[s /. -1 -> 2] <> ToString[i]], {1, -1, 0}], {i, 4}];
@@ -549,6 +556,58 @@ formalMeasure[family_] := Switch[family,
 normalContinuation[s_] := normalContinuation[s] = Cancel[
   D[Exp[I s qLeg["Out"] continuationW], continuationW]/Exp[I s qLeg["Out"] continuationW]];
 
+(* Solve A P_ref = P_face grade by grade and by ordered integral family.
+   The multiplication kernel of the local profile is extracted from the face
+   law's coefficients. H(out,in) acts on the INPUT normal momentum; its product
+   with a first-shape response retains the intermediate momentum. No commuting
+   replacement or diagonal momentum identification is used in this construction. *)
+referencePressureFamilies[physical_Association, s_Integer] := Module[
+  {slots, trace, pressureCoefficient, jetCoefficient, coefficientZero, jetZero,
+    coefficientKernel, jetKernel, mapFlat, mapFirst, inverseFlat, flat, first,
+    middle, leftRules, rightRules, leftMap, rightFirst, reconstructed,
+    affineResidual, coefficientRemainders, out},
+  slots = If[s === 1, Take[pressureSlots, 2], Take[pressureSlots, -2]];
+  trace = linearShape[facePressureTrace[s]];
+  pressureCoefficient = finish[D[trace, slots[[1]]]];
+  jetCoefficient = finish[D[trace, slots[[2]]]];
+  coefficientZero = pressureCoefficient /. w1Profile -> 0;
+  jetZero = jetCoefficient /. w1Profile -> 0;
+  coefficientKernel = Coefficient[pressureCoefficient, w1Profile] declare[profileTransform, {3, 0, 0}];
+  jetKernel = Coefficient[jetCoefficient, w1Profile] profileTransform;
+  mapFlat = graded[coefficientZero + jetZero normalContinuation[s]];
+  mapFirst = graded[coefficientKernel + jetKernel (normalContinuation[s] /. qLeg["Out"] -> qLeg["In"])];
+  inverseFlat = gInverse[mapFlat];
+  flat = gMul[inverseFlat, physical["FOURIER_KOUT_Y"]];
+  first = gMul[inverseFlat, gSub[physical["FOURIER_KOUT_KIN_Y"],
+    gMul[mapFirst, flat /. qLeg["Out"] -> qLeg["In"]]]];
+  leftRules = Join[Thread[momentum["kIn"] -> momentum["kMiddle"]],
+    {qLeg["In"] -> qLeg["Middle"], profileTransform -> declare[profileTransformLeft, {3, 0, 0}]}];
+  rightRules = Join[Thread[momentum["kOut"] -> momentum["kMiddle"]],
+    {qLeg["Out"] -> qLeg["Middle"], profileTransform -> declare[profileTransformRight, {3, 0, 0}]}];
+  leftMap = mapFirst /. leftRules; rightFirst = first /. rightRules;
+  middle = gMul[inverseFlat, gSub[physical["FOURIER_KOUT_KIN_Y_MIDDLE"], gMul[leftMap, rightFirst]]];
+  reconstructed = <|"FOURIER_KOUT_Y" -> gMul[mapFlat, flat],
+    "FOURIER_KOUT_KIN_Y" -> gAdd[gMul[mapFlat, first], gMul[mapFirst, flat /. qLeg["Out"] -> qLeg["In"]]],
+    "FOURIER_KOUT_KIN_Y_MIDDLE" -> gAdd[gMul[mapFlat, middle], gMul[leftMap, rightFirst]]|>;
+  affineResidual = finish[trace - D[trace, slots[[1]]] slots[[1]] - D[trace, slots[[2]]] slots[[2]]];
+  coefficientRemainders = {pressureCoefficient - coefficientZero - Coefficient[pressureCoefficient, w1Profile] w1Profile,
+    jetCoefficient - jetZero - Coefficient[jetCoefficient, w1Profile] w1Profile};
+  out = <|"FOURIER_KOUT_Y" -> flat, "FOURIER_KOUT_KIN_Y" -> first,
+    "FOURIER_KOUT_KIN_Y_MIDDLE" -> middle, "DENOMINATORS" -> physical["DENOMINATORS"],
+    "TRACE_MAP_FLAT" -> mapFlat, "TRACE_MAP_FIRST" -> mapFirst,
+    "RECONSTRUCTED_PHYSICAL_PRESSURE" -> reconstructed,
+    "TRACE_SOURCE_COEFFICIENTS" -> {pressureCoefficient, jetCoefficient},
+    "TRACE_SOURCE_AFFINE_RESIDUAL" -> affineResidual,
+    "TRACE_COEFFICIENT_EXTRACTION_RESIDUAL" -> coefficientRemainders,
+    "TRACE_INVERSE_DENOMINATOR" -> First[mapFlat]|>;
+  out];
+
+pressureTraceMap[responses_Association, field_] := Association[Flatten[Table[
+  {family, s, {0, Sequence @@ gradeIndices[[g]]}} -> {
+    If[field === "ReconstructedPressure", responses[s]["RECONSTRUCTED_PHYSICAL_PRESSURE"][family][[g]],
+      responses[s][family][[g]]]},
+  {family, Rest[kernelFamilies]}, {s, faces}, {g, 4}], 2]];
+
 (* Assembly keeps the pressure-independent base in the diagnostic circuit. The
    weak increment itself is formed only from P coefficients. *)
 buildContraction[cs_, source_, response_, s_, affine_] := Module[{result = <||>, tc, sc, sourceGrade,
@@ -698,7 +757,7 @@ withFaceSum[mapping_, axis_] := Module[{out = mapping, partner, sumKey},
   Do[If[key[[axis]] === 1, partner = ReplacePart[key, axis -> -1]; sumKey = ReplacePart[key, axis -> "SUM"];
     AssociateTo[out, sumKey -> MapThread[add, {mapping[key], mapping[partner]}]]], {key, Keys[mapping]}]; out];
 addNumeric[family_, name_, mapping_] := Module[{axis},
-  axis = Which[family === "GUARD", 3,
+  axis = Which[family === "GUARD", 3, family === "TRACE", 2,
     MemberQ[{"CARRIER_EULERIAN", "CARRIER_MATERIAL", "CARRIER_BRIDGE_RESIDUAL"}, name], 2,
     MemberQ[{"SOURCE_EULERIAN", "SOURCE_MATERIAL", "SOURCE_BRIDGE_RESIDUAL", "SOURCE_ACTUAL", "SOURCE_PREDICTED",
       "R_COV", "SOURCE_BASELINE", "R_COV_BASELINE", "SOURCE_CONTROL_DELTA", "R_COV_CONTROL_DELTA"}, name], 1,
@@ -826,7 +885,7 @@ buildCase[case_List] := Module[{anchor = case[[1]], densityKind = case[[2]], den
     a, h, energy, muE, mat, baseline, muM, predictedMap, muPred, geometriesE = <||>,
     geometriesM = <||>, geometriesSourceM = <||>, lawE = <||>, lawM = <||>, rowsE = <||>, rowsM = <||>,
     ce = <||>, cm = <||>, es = <||>, ms = <||>, predicted = <||>, baselineSource = <||>,
-    velocitiesE = <||>, velocitiesM = <||>, sourceSolve, kernel, response, massBase, eMap, mMap,
+    velocitiesE = <||>, velocitiesM = <||>, sourceSolve, kernel, physicalResponse, response, massBase, eMap, mMap,
     sEMap, sMMap, pMap, baselineMap, bridge, sourceDelta, covDelta, baselineCov,
     eOperand, mOperand, rawResidual, carrierChannel, sourceChannel, crossChannel, splitSum, splitCheck,
     covIncrement, native = <||>, reconstructed = <||>, slotResidual = <||>, closedNative = <||>,
@@ -854,7 +913,13 @@ buildCase[case_List] := Module[{anchor = case[[1]], densityKind = case[[2]], den
   appendAssociationEmission[{case, "AMPLITUDES"}, LeafCount /@ {muE, muM, muPred}];
   sourceSolve = sourceConstruction[];
   kernel = Association[Table[s -> constructKernel[s], {s, faces}]];
-  response = Map[responseFamilies, kernel];
+  physicalResponse = Map[responseFamilies, kernel];
+  response = Association[Table[s -> referencePressureFamilies[physicalResponse[s], s], {s, faces}]];
+  addNumeric["TRACE", "PhysicalResponse", pressureTraceMap[physicalResponse, "PhysicalResponse"]];
+  addNumeric["TRACE", "ReferenceResponse", pressureTraceMap[response, "ReferenceResponse"]];
+  addNumeric["TRACE", "ReconstructedPressure", pressureTraceMap[response, "ReconstructedPressure"]];
+  addNumeric["TRACE", "ReconstructionResidual", mapCombine[
+    pressureTraceMap[response, "ReconstructedPressure"], pressureTraceMap[physicalResponse, "PhysicalResponse"], sub]];
   massData = massSubstrate[anchor, density4];
   Do[AssociateTo[geometriesE, s -> graphGeometry[anchor, s]];
     AssociateTo[geometriesM, s -> materialGeometry[anchor, s, materialNormalKnife]];
@@ -965,7 +1030,8 @@ buildCase[case_List] := Module[{anchor = case[[1]], densityKind = case[[2]], den
     "LOCAL_BARE_ROWS_BEFORE_WEAK_RESTRICTION" -> {Map[-#.pressureSlots &, ce], Map[-#.pressureSlots &, cm]},
     "VELOCITY_OPERAND_A" -> Map[finish, velocitiesE], "VELOCITY_OPERAND_B" -> Map[finish, velocitiesM],
     "VELOCITY_DIFFERENCE" -> MapThread[sub, {Values[Map[finish, velocitiesE]], Values[Map[finish, velocitiesM]]}],
-    "C1_SOURCE_SOLVE" -> sourceSolve, "C1_KERNEL" -> kernel, "C1_RESPONSE_FAMILIES" -> response,
+    "C1_SOURCE_SOLVE" -> sourceSolve, "C1_KERNEL" -> kernel, "C1_RESPONSE_FAMILIES" -> physicalResponse,
+    "REFERENCE_PRESSURE_FAMILIES" -> response,
     "BULK_PRESSURE_DEPENDENCY" -> Table[D[energy["DENSITY"], p], {p, pressureSlots}],
     "INDEPENDENT_BUILDERS" -> KeyTake[stages, {"MU_E", "MU_M", "V_E", "V_M", "C_E", "C_M"}]|>];
   If[densityKind === "RHO4_CONSTANT",
@@ -1018,8 +1084,8 @@ Do[With[{id = objectId[family, name]},
   If[KeyExistsQ[outputObjects, id], beginAssociationEmission[{family, name}];
     appendAssociationEmissionFromSpool[Normal[outputObjects[id]]]; endAssociationEmission[],
     If[KeyExistsQ[outputMetadata, id], emit[{family, name}, outputMetadata[id]]]]],
-  {family, {"RC", "COV", "GUARD"}},
-  {name, Switch[family, "RC", DeleteCases[rcNames, "DIMENSIONS"], "COV", covNames, "GUARD", guardNames]}];
+  {family, {"RC", "COV", "GUARD", "TRACE"}},
+  {name, Switch[family, "RC", DeleteCases[rcNames, "DIMENSIONS"], "COV", covNames, "GUARD", guardNames, "TRACE", traceNames]}];
 (* Dimensional guard operands follow the numerical comparisons in every family. *)
 emit[{"RC", "DIMENSIONS"}, outputMetadata["RC:DIMENSIONS"]];
 emit[{"LOCAL", "PROBE"}, outputMetadata["LOCAL:PROBE"]];

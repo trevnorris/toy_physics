@@ -1,0 +1,518 @@
+{
+  "status": "PREPARED_SUPPLEMENT_NOT_SUBMITTED",
+  "preparedUtc": "2026-10-01T17:05:32.430941+00:00",
+  "repoHead": "531e80ab7d7a17e553fba7a2a269d5fabb44e0d2",
+  "scope": "One fresh replacement independent Grok assessment of the original four repairs with supplemental physical source joins. No peer report, reviewer probe, old counterexample or prior verdict is supplied.",
+  "preparation": "Source text/JSON/opaque-byte hashing only; no scientific import, restoration, simplification or execution.",
+  "baseInventory": {
+    "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_sources.json",
+    "bytes": 51392,
+    "sha256": "e2ba5ba8249db19652eca6e15da6d4fa3384303a235ec0644a5158a45e665a1b"
+  },
+  "composition": {
+    "mode": "add these exact excerpts and fullFiles to original candidate packet",
+    "replacePrompt": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_prompt.md",
+    "withPrompt": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_prompt_v2.md",
+    "originalSourcesChanged": false,
+    "preserveOriginalFrozenPacket": true,
+    "oldPeerReportsIncluded": false
+  },
+  "fullFiles": [
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_supplement.md",
+    "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_prompt_v2.md"
+  ],
+  "fullFileRecords": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_supplement.md",
+      "bytes": 7014,
+      "sha256": "0346e660dcd55d1e508a1d86a355d47ae30b271b1e861dcf65f6765e97adac21"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_prompt_v2.md",
+      "bytes": 7566,
+      "sha256": "def8d7857ba6c4ff53d3c74cc2d8380f0775a3b5d5f5163fc83ed3d539da082d"
+    }
+  ],
+  "excerpts": [
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "start": 390,
+      "end": 461,
+      "role": "dot/Jacobian, exact profile substitutions, rectangular projection and object helpers",
+      "sourceSha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "sourceBytes": 101558,
+      "selectedSha256": "4da4b4766d3d22b36a812661d28725897001d9a77ecabd01b3e4d24ac5349f0a",
+      "selectedBytes": 2616,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "start": 509,
+      "end": 623,
+      "role": "source jets, actual derivatives, density and coordinate/affine physical trace, FaceSource structure",
+      "sourceSha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "sourceBytes": 101558,
+      "selectedSha256": "b8bf64f14fa4704838ef2e17306002bc81491a0328a11a80e1b61c2085c988f7",
+      "selectedBytes": 4096,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "start": 629,
+      "end": 1001,
+      "role": "complete physical traces, both native face constructions, actual normals/measures/velocities/traction/work and profile context",
+      "sourceSha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "sourceBytes": 101558,
+      "selectedSha256": "8919f9a1143c730aa20fcc29830ebb79b345ca29584e980cd57829c332364385",
+      "selectedBytes": 16282,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py",
+      "start": 1207,
+      "end": 1278,
+      "role": "complete virtual constraint routes and all-case construction",
+      "sourceSha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "sourceBytes": 101558,
+      "selectedSha256": "3a66254113f2c810ef960f065c8109248c0921b90b832f20fea5f7b53d37e785",
+      "selectedBytes": 3233,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py",
+      "start": 722,
+      "end": 830,
+      "role": "field/background jet tables and complete total derivative used in IBP",
+      "sourceSha256": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+      "sourceBytes": 203199,
+      "selectedSha256": "354a5d241949c1b25a3d1c56bfc99dafee5b6539987caffdfb30d96963b35899",
+      "selectedBytes": 4386,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py",
+      "start": 1878,
+      "end": 1902,
+      "role": "actual density pair and background derivative",
+      "sourceSha256": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+      "sourceBytes": 203199,
+      "selectedSha256": "fdea68d198c7ef2a0519999c64ab22fbe5ca60c873402225f90683fbebbca784",
+      "selectedBytes": 790,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py",
+      "start": 2437,
+      "end": 2631,
+      "role": "complete repeated derivative, IBP and constraint fold; explicit transcription-consistency boundary",
+      "sourceSha256": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+      "sourceBytes": 203199,
+      "selectedSha256": "3aa0c5bc290c39842cd94b45845e1705a2869685aaf651bcef518c0ea78b4e84",
+      "selectedBytes": 7365,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "start": 177,
+      "end": 210,
+      "role": "live Fourier momentum and profile/jet symbols",
+      "sourceSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "sourceBytes": 101082,
+      "selectedSha256": "569386a2ac11f08d643b943e96206739e7d3a3771b572da39c247757880ae536",
+      "selectedBytes": 1245,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "start": 485,
+      "end": 506,
+      "role": "native Inputs field definitions",
+      "sourceSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "sourceBytes": 101082,
+      "selectedSha256": "6f3d5a113a75828add070824d478be5cc43ca44b1511899035442f1d1f84cb81",
+      "selectedBytes": 485,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "start": 519,
+      "end": 573,
+      "role": "binding actual inherited a/b/c1 inputs",
+      "sourceSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "sourceBytes": 101082,
+      "selectedSha256": "abbae86f6a1ea07622b3f6a067ca612730a494eb22bdfc12ccb675d17e63d7ca",
+      "selectedBytes": 2889,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "start": 576,
+      "end": 755,
+      "role": "complete source geometry, outgoing impedance routes and physical response coefficients",
+      "sourceSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "sourceBytes": 101082,
+      "selectedSha256": "206e7cb0bb4c92d68feb6ca90715a693c635d2362f32219797ced062da8a43ae",
+      "selectedBytes": 7215,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py",
+      "start": 1046,
+      "end": 1119,
+      "role": "native model flat/first-shape operator construction and exact retained labels",
+      "sourceSha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "sourceBytes": 101082,
+      "selectedSha256": "41a42c38b06be60c48f3a9c48e5588d670f4464a0124d418f1e4990d5fa6aec3",
+      "selectedBytes": 3430,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "start": 186,
+      "end": 306,
+      "role": "complete native Inputs; at_source and derivative map with L_W jet scale",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "sourceBytes": 102548,
+      "selectedSha256": "7f59a9dc5d36dc56255291956ac5d5fe2aae81dd3950df60157a1b93d9d9b05d",
+      "selectedBytes": 6632,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "start": 367,
+      "end": 418,
+      "role": "complete native two/three-leg impedance and inherited closure composition",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "sourceBytes": 102548,
+      "selectedSha256": "c93d65c701cb6e22bfc57f12c15fcc19b910c79bc40cccb621558b492c2eddd2",
+      "selectedBytes": 3296,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "start": 429,
+      "end": 435,
+      "role": "exact transfer-argument Fourier profile mapping",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "sourceBytes": 102548,
+      "selectedSha256": "623c2fb4bcd43d6946b09fa65619d6243597b3da6a3e5ae47217b721c63ff34f",
+      "selectedBytes": 445,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "start": 665,
+      "end": 725,
+      "role": "complete retained rectangle and source coefficient extraction",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "sourceBytes": 102548,
+      "selectedSha256": "32a49ae61a20a96f6a14205d1869682fd1df42c7b595f8bda1e01277c396df8e",
+      "selectedBytes": 3143,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py",
+      "start": 850,
+      "end": 861,
+      "role": "actual (2pi)^-3 Fourier phase, integration domain and profile/jet definitions",
+      "sourceSha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "sourceBytes": 102548,
+      "selectedSha256": "a60e47369ad0cd46fbecbeb8940c58781697fdce25eb30a3337be00380dadb40",
+      "selectedBytes": 751,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md",
+      "start": 163,
+      "end": 244,
+      "role": "actual two-scale ansatz, separate eta/sigma and density/anchoring domain",
+      "sourceSha256": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4",
+      "sourceBytes": 28887,
+      "selectedSha256": "a9c299733e1973b2d184b99dac2039a95225a005ca13bbd89c6c5400090d50e3",
+      "selectedBytes": 3371,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md",
+      "start": 285,
+      "end": 401,
+      "role": "physical graph/virtual displacement/work/shifted trace definitions",
+      "sourceSha256": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4",
+      "sourceBytes": 28887,
+      "selectedSha256": "3e4f5f732b98fec4f8dee3873dead2b95f771b7847988649f7e1cd1864a11850",
+      "selectedBytes": 5036,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "start": 24,
+      "end": 60,
+      "role": "first-shape scope and explicit exclusions",
+      "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+      "sourceBytes": 50376,
+      "selectedSha256": "deba61a83bfb75d96b9d105ec846a8d47b83455b4ae1b89905c8420687025401",
+      "selectedBytes": 3197,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "start": 63,
+      "end": 137,
+      "role": "bulk/branch/physical fields and inherited closure",
+      "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+      "sourceBytes": 50376,
+      "selectedSha256": "eae6d375be39d8a078caec7bf13c30614c43b94fd92293f111b609140be4077d",
+      "selectedBytes": 4827,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "start": 162,
+      "end": 274,
+      "role": "physical curved face, flow qualification, rectangular bookkeeping and impedance construction",
+      "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+      "sourceBytes": 50376,
+      "selectedSha256": "38db72db728972d283aaebb93a1c413a777daed1c515a667553e57a544c4271e",
+      "selectedBytes": 9369,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "start": 285,
+      "end": 336,
+      "role": "closure and current physical meaning and truncation caveats",
+      "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+      "sourceBytes": 50376,
+      "selectedSha256": "22b28025e5795602c06294f5c7b639aac697d2fb0a67dc2af894614e86e6a2cf",
+      "selectedBytes": 4748,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md",
+      "start": 401,
+      "end": 448,
+      "role": "independent boundary constructions and actual tilt/profile controls",
+      "sourceSha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+      "sourceBytes": 50376,
+      "selectedSha256": "273c7984352968606c7f069d44647ca962a2a8ee53de01f0dd03d29edc22296b",
+      "selectedBytes": 4540,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md",
+      "start": 135,
+      "end": 218,
+      "role": "ordered inherited fold and closed-operator/increment scope",
+      "sourceSha256": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1",
+      "sourceBytes": 41229,
+      "selectedSha256": "f626c532cf645d04295aba4e8981d6818fa499deeff1a28a58f268ede2f40e22",
+      "selectedBytes": 5585,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes"
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "start": 482,
+      "end": 482,
+      "role": "complete literal source-owned background_density_map value, not restored",
+      "sourceSha256": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+      "sourceBytes": 17217022,
+      "selectedSha256": "e2328633946f1a21f5393c8cd384e6cb0c46d84f4d782ea4195187f1f0948a98",
+      "selectedBytes": 5486,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes",
+      "exportKey": "background_density_map",
+      "keyLine": 480
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "start": 3098,
+      "end": 3098,
+      "role": "complete literal source-owned face_measure_shape_deriv value, not restored",
+      "sourceSha256": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+      "sourceBytes": 17217022,
+      "selectedSha256": "529d51b566315c47ddfd8272eafc659d24ab3cde91c4a51523356ef5dbd26c18",
+      "selectedBytes": 7276,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes",
+      "exportKey": "face_measure_shape_deriv",
+      "keyLine": 3096
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "start": 3105,
+      "end": 3105,
+      "role": "complete literal source-owned face_normal value, not restored",
+      "sourceSha256": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+      "sourceBytes": 17217022,
+      "selectedSha256": "ab7c76dd29cbc2cfb1548517fa670c2af0f149701dc3f02e7ed84b85f25f5cbb",
+      "selectedBytes": 30587,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes",
+      "exportKey": "face_normal",
+      "keyLine": 3103
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "start": 3126,
+      "end": 3126,
+      "role": "complete literal source-owned face_shift value, not restored",
+      "sourceSha256": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+      "sourceBytes": 17217022,
+      "selectedSha256": "55aa804e8e6a3b73bbf3ceb2bcba305be59ff5d1548a69974caf53acbd918b06",
+      "selectedBytes": 44788,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes",
+      "exportKey": "face_shift",
+      "keyLine": 3124
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "start": 3133,
+      "end": 3133,
+      "role": "complete literal source-owned face_velocity value, not restored",
+      "sourceSha256": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+      "sourceBytes": 17217022,
+      "selectedSha256": "fdb2d4c2f7256cc6d0c80611ef6308f520eaee6116c5aecce6c8b8eb391c0f85",
+      "selectedBytes": 3887,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes",
+      "exportKey": "face_velocity",
+      "keyLine": 3131
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "start": 14121,
+      "end": 14121,
+      "role": "complete literal source-owned traction value, not restored",
+      "sourceSha256": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+      "sourceBytes": 17217022,
+      "selectedSha256": "f9c51504cb68f6f415eb5ecee4f7e6390ff2dcf1e5dd7e6ec37242985ba1d1e6",
+      "selectedBytes": 63676,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes",
+      "exportKey": "traction",
+      "keyLine": 14119
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "start": 14766,
+      "end": 14766,
+      "role": "complete literal source-owned virtual_constraint value, not restored",
+      "sourceSha256": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+      "sourceBytes": 17217022,
+      "selectedSha256": "d344aa80bf1ebd5947b1219b2d047f5528b8c9a99a9f986b85658f6ea0d15bca",
+      "selectedBytes": 5454,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes",
+      "exportKey": "virtual_constraint",
+      "keyLine": 14764
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py",
+      "start": 14780,
+      "end": 14780,
+      "role": "complete literal source-owned virtual_work_shape_deriv value, not restored",
+      "sourceSha256": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+      "sourceBytes": 17217022,
+      "selectedSha256": "712fce2bc1af0d4ee79b3c353654ca784036e070b3db2d17847ef9476baa22e9",
+      "selectedBytes": 96520,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes",
+      "exportKey": "virtual_work_shape_deriv",
+      "keyLine": 14778
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py",
+      "start": 79,
+      "end": 79,
+      "role": "complete literal source-owned dtn_flat_symbol value, not restored",
+      "sourceSha256": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "sourceBytes": 906467,
+      "selectedSha256": "e3b38042882ea45e2916a5bf73c477ed66bd166cb8f02a3fcbf5554387305559",
+      "selectedBytes": 2260,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes",
+      "exportKey": "dtn_flat_symbol",
+      "keyLine": 77
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py",
+      "start": 87,
+      "end": 87,
+      "role": "complete literal source-owned dtn_kernel value, not restored",
+      "sourceSha256": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "sourceBytes": 906467,
+      "selectedSha256": "41a7bc253f3feffc71969b43932eaf02ae082f007678148f5bc0ac874bada820",
+      "selectedBytes": 17868,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes",
+      "exportKey": "dtn_kernel",
+      "keyLine": 85
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py",
+      "start": 95,
+      "end": 95,
+      "role": "complete literal source-owned dtn_operator value, not restored",
+      "sourceSha256": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "sourceBytes": 906467,
+      "selectedSha256": "347f7ddb2745836e0a77cf6813b1f94b947c559fb4bb0118e95e0f8143f07be0",
+      "selectedBytes": 9580,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes",
+      "exportKey": "dtn_operator",
+      "keyLine": 93
+    },
+    {
+      "path": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py",
+      "start": 103,
+      "end": 103,
+      "role": "complete literal source-owned s11c_c1_face_response value, not restored",
+      "sourceSha256": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "sourceBytes": 906467,
+      "selectedSha256": "2ed5612f0587d45727ee1b55785dec26c68479f31f16df1b8a6543d725ece44d",
+      "selectedBytes": 206655,
+      "encoding": "verbatim UTF-8 original inclusive lines with newline bytes",
+      "exportKey": "s11c_c1_face_response",
+      "keyLine": 101
+    }
+  ],
+  "localSourcePins": {
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_interface_geometry_sympy_audit.py": {
+      "sha256": "f4da0f2224257381300e5e78cc74a1341485b82446ac98251ca25d4b3c1a6be7",
+      "bytes": 101558
+    },
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py": {
+      "sha256": "666b4005b745dd29933561f701c6c1859a2b00e9855badcb08e2347308504472",
+      "bytes": 203199
+    },
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_bulk_closure_sympy_audit.py": {
+      "sha256": "02abfa93076efcb38a1b300daf9adedf5e3ad425ebf9d73555d730cea935ba20",
+      "bytes": 101082
+    },
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py": {
+      "sha256": "0e90c751d36178a9846e75c38ac4ad0c8591b4b8ce11b6dc194218913265d434",
+      "bytes": 102548
+    },
+    "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md": {
+      "sha256": "348bb3a3fa8f849139773096885a783ef46e8b24740ad1776eb21a4aa222e7f4",
+      "bytes": 28887
+    },
+    "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md": {
+      "sha256": "47554c8c9cf2fd070c1048a7ae0ca36b1315bf50a48ed07a51019ff3e72987ad",
+      "bytes": 50376
+    },
+    "/var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c2_SHARED_PHYSICS.md": {
+      "sha256": "656d55a36be5f7179934f187c106fdc942dd98b4533a683c99135d29ceb62cd1",
+      "bytes": 41229
+    },
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_a_exports.py": {
+      "sha256": "f0fd8d6d75dc7320393b7c6aad10e3fb23ca14ab8b6a50deee7d9995fbab6b17",
+      "bytes": 17217022
+    },
+    "/var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_c1_exports.py": {
+      "sha256": "a5353b86dc526fd1b56734fdbdf7dc7f42387a3195ab4de84e8994f751871cdc",
+      "bytes": 906467
+    }
+  },
+  "packetSummary": {
+    "fullFiles": 2,
+    "fullFileBytes": 14580,
+    "excerpts": 37,
+    "excerptBytes": 603009,
+    "contentBytesExcludingInventory": 617589
+  },
+  "requiredRuntime": "Coordinator appends/pins the existing s11c_review_cas.py interface, private workspace and no-deadline pooled guard/supervisor. All independent CAS probes use it. No Wolfram kernel or full producer run.",
+  "proofBoundary": "Source identity and selected source values do not decide equation correctness or justify a new term. Review must establish actual profile/jet/grade applicability with computed independent evidence.",
+  "fullGeneratedExportsBundled": false,
+  "allOriginalSourceHashesUnchangedDuringPreparation": true
+}

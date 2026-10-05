@@ -1,0 +1,82 @@
+I'll read the packet index first and keep every later inspection on the Read tool, with scientific checks only through the approved dispatcher.The packet lists four repairs and the physical definitions that govern them. I'll read those definitions next and derive from them before opening the repaired functions.The supplied definitions fix the kinetic pairing, the material constraint, the face work, and the first-shape bulk trace. I am writing that derivation into a probe before opening the repaired functions.The independent derivation is in place. Next I will run it through the guarded review dispatcher.The first probe stopped on a derivative-variable formatting error, and unexpanded coefficient extraction dropped part of the constraint row. The failed run stays on disk; I am correcting those probe faults and rerunning.I'll continue the same review from the frozen packet, starting with the packet index and the native repair sources the join still has to execute.The packet is the same frozen review. The independent derivation already ran; the remaining gap is to execute the native repairs against that derivation, including the mixed-grade term and the constraint and work joins.The native functions and the literal exports are in the packet. I'll put the join in one probe: independent operands first, then the extracted repairs, then one-sided residuals.The geometry excerpt ends on a cut-off function signature. I'll execute only the complete functions and leave that failed run in place.I'll continue the same review on the frozen packet, starting from the packet index and the unread join-probe output before changing the work-channel extraction.The restored work value is an array, so a zero channel derivative crashes before the pressure numerator is computed. I'll scalarize those channels, use the dispersive traction and the shifted pressure trace, and then rerun the same probe.I'll continue the same review from the frozen packet. First I'll read the packet index, then patch only the two formatting faults in the join probe and rerun it through the CAS dispatcher.The packet is the same frozen review: no peer report and no claimed science result. The last join probe still differentiated the exported work tuple and differentiated the profile with respect to `y/L_W`. I'll correct those two formatting faults and rerun only that probe.The work comparison now differentiates the summed scalar and each face, and the profile slope uses the chain rule. Next I’ll run that probe through the guarded dispatcher.The four repairs were checked on the frozen packet (`noPeerReports: true`, `scienceResultClaimed: false`). The join probe completed under the guarded dispatcher.
+
+**Needs revision** for the composition, because the retained mixed grade `η¹σ¹` is not the same object as the native three-leg iteration. Inertia, external-work orientation, and the thickness coordinate are clear on the domains below. The linear pressure trace is clear on its executed joins; the direct mixed-grade impedance slot is not.
+
+## Evidence
+
+Script: `/var/projects/toy_physics/_scratch/s11c/s11c-parallel-near-unity-20261001/upstream-repair-review-grok-replacement/grok/work/probe_join.py`  
+sha256 `7b90b9e98935725b103e68105f9218f3ee5c2fa79970c1d9f15f412854fa70dd`
+
+Run `cas-runs/280de61b396044408a83970bd03f8297`  
+started `2026-10-01T18:58:13.008214+00:00`, finished `2026-10-01T18:59:36.136386+00:00`, exit 0, `originalScriptUnchanged` true, `sourceCopyUnchanged` true, `wallDeadlineSeconds` null, `retry` false.  
+Stdout: `.../280de61b396044408a83970bd03f8297/supervisor/review_probe.stdout` (3194 lines)  
+Stderr: `.../supervisor/review_probe.stderr` (empty)  
+Receipt: `.../280de61b396044408a83970bd03f8297/outcome.json`  
+Guard sha256 `6a6369424edfa43cbdaa36e8fa2bebbd278bebdbac3b565b2a8498aaca1dc9df`; supervisor sha256 `35ad679486d2fcf5f4ee803b42293e4dd50cbe0bfcce790eb95343768bb8fd69`.
+
+The earlier failed join `cas-runs/a6f5c444634d49c19f34b544ab6842a4` is preserved. Its channel lines are unevaluated derivatives of a whole tuple and are not physics residuals. Earlier failed runs `4f463093226d4c1184c861cc4a867809`, `8405af091df5489fa311c6e2cbf5ca5a`, `95a0d61cf06544ee86c59e52060e92cd`, and `2c5241ce0779456b9de848d21a298e19` are also preserved. The prior independent script `probe_independent.py` (run `3a6f912b5081401794b0b8deb032852e`) was not rerun.
+
+## 1. Inertia and fold — clear
+
+Domain: both density rules, stationary symbolic `W_bg`, the supplied quadratic kinetic energy, and the eight anchoring × dof × density constraints at rectangle grade `a≤1`, `b≤1`.
+
+For `RHO4_CONSTANT`, the native and independent in-plane rows are `ε (W_bg/W_0) ρ_br ü` and the thickness row is `ε μ_W W_0² e_tt`. For `RHOBR_CONSTANT`, the in-plane rows are `ε ρ_br ü` and the thickness row is the same. Power of those rows equals `dT/dt`; both residuals are 0. Flipping only the thickness inertia produces `-2 W_0² e_t e_tt μ_W`.
+
+The fold input has `e_tt` coefficient 0. After the kinetic row is restored, that coefficient is `W_0² ε μ_W`, matching the kinetic operand; the residual is 0.
+
+The non-flat fold is the `LAB_HELD` × `RHO4_CONSTANT` row. For the centre dof its first component is
+
+`ε μ_R,1 + ε η μ_R σ w1 w1_1 / W_0 − ε μ_R σ w1_1 / W_0`,
+
+and the independent integration by parts matches it (residual 0). `RHOBR` and material folds reduce to `ε ∇μ` on the in-plane rows. The gradient-free stub prints `-W_bg_d1` and is not this result. The depth-2 derivative of `∂_1 W_bg` is `σ_W w1_profile_jet_12 / L_W` (residual 0). Dropping `L_W` leaves `σ_W w1_profile_jet_12 (1/L_W − 1)`. The depth-1 call returns 0; those depth integers are probe bounds, not packet constants.
+
+All eight constraint residuals against the independent rectangle, the native Eulerian route, the native material route, and export `add-32` are 0 where read, including both ends of the loop and the transport case above. The native elimination-versus-multiplier residual stays `((U,(0,0,0)),(E_W,0))` after the constraint is replaced by itself plus `5 δθ`, while `CONTROL_CORRUPT_CHANGES_E` for `MATERIAL_ADVECTED` × `DELTA_W` × `RHO4_CONSTANT` is the nonzero change of the reduced thickness row. That transcription identity is algebraic consistency of a linear constraint.
+
+## 2. External work — clear
+
+Domain: Eulerian face map, all 16 keys in `WORK_KEYS` (both anchorings, both physical dofs, both virtual dofs, both density rules), both faces, channels `E_W`, `ZETA`, `U1`, `U2`, `U3`, dispersive `Λ_X(ω)=Λ_X⁰/(1−iωτ_X)`, and the affine pressure jet. Rectangle grade as above. `|∇h|²` is outside that grade.
+
+Every read face residual, channel residual, and rectangle-of-export residual on those keys is 0. The lab thickness case has a nonzero `E_W` channel and zero in-plane channels. Material cases have nonzero in-plane channels; the `U1` residual is 0. Centre virtual work is nonzero when the virtual dof is `ZETA_C` (`δp⁻` and `δp⁺` enter with opposite signs) and its residual is 0. `RHO4` carries the extra `η μ_θ` piece; `RHOBR` does not. Dropping both pressure jets leaves a nonzero expression, so that jet is live.
+
+The stored-row multiplier is `−1` (residual 0 against `W_0²` anchors of opposite sign). Flipping only the stored stiffness returns `+1`. With multiplier `−1`, the oriented row is `ε μ_W W_0² e_tt + ε k_W W_0² e_W − Q`, so the balance is inertia plus the stored derivative equal to the physical work coefficient. The stored-row residual is the same subtraction as the channel residual. The traction-sign control, which adds the independent channel instead of subtracting it, is nonzero on every live channel (thickness for `DELTA_W` virtual, centre for `ZETA_C` virtual, and `U1` for material cases).
+
+In `build_operator` (excerpt 06, lines 250–344) that multiplier is applied to the physical `U` and `E_W` rows and those rows are added into the balances. `CENTER_FACE_GENERALIZED_ROW` is stored unmultiplied and is not added there. The supplied energy has no `ζ_c` term, so this is the scope of the repaired rows. The c2 power route was not executed as a function; its coordinate check is under repair 4. It uses b’s energy as an input, so it is not a second derivation of that energy.
+
+## 3. Pressure, profile, and mixed grade — needs revision on the direct slot
+
+Linear trace and first kernel, clear on this domain: one upper outgoing sheet, symbols `q_in` and `q_out` nonzero, before any claim about the full two-momentum operator. Native Eulerian, Hanzawa, and layer kernels print the same expression and the residuals are 0 and `0*I`. The linear height coefficient `i ω ρ_m (q_h−q_in)/q_h` and slope coefficient `k_in ω ρ_m /(q_in q_s)` match the native pattern (residuals 0). Collapsing `q_h` onto `q_in` gives 0, and the difference is the height coefficient. The closed resolvent matches `1/(1+Λ_A Z_out/ρ_m²)` with `Λ_A=λ_A⁰/(1−iωτ_A)` (residual 0). The denominator factor is `(λ_A⁰ ω + q_out ρ_m(1−iωτ_A))/(q_out ρ_m(1−iωτ_A))`. A trace matrix times its own reference inverse is the zero matrix. Swapping the output sheet in the trace returns `Matrix([[0, i height_hat (q_out−q_in)],[0,0]])`. That sheet identity is separate from the profile. Upper-face `x1` tilt reversal is detected: the flipped plus unflipped `x1` component is `σ_W` times the jet, and the orthogonal component’s difference is `−σ_W` times its jet.
+
+Profile family, clear as a one-dimensional example. For `w1=exp(−(y/L_W)²/2)` and `ξ=y/L_W`, the chain-rule slope is `−y exp(−y²/(2 L_W²))/L_W`. Then `∂_y[W_0(1+η w1)] − σ ∂_ξ w1` is 0 after `σ=η W_0/L_W`. The one-dimensional Fourier transform with phase `exp(−i K y)/(2π)` has
+
+`hat = √2 L_W exp(−K² L_W²/2)/(2√π)`,  
+`hat(L_W ∂_y w) = √2 i K L_W² exp(−K² L_W²/2)/(2√π)`,
+
+and `hat(L_W ∂_y w) − i L_W K hat = 0`. The printed control that drops `L_W` substitutes `L_W=1` on both sides and therefore prints 0; the jet-map control above is the one that stays nonzero for `L_W≠1`. The central difference at step `L_W/100`, sample `y=−2 L_W`, leaves the nonzero remainder `−50 exp(−40401/20000)/L_W − 2 exp(−2)/L_W + 50 exp(−39601/20000)/L_W`. That is a finite-difference remainder, not a continuum identity. Source text of `profile_bindings` uses `exp(−i(k_out−k_in)·y)/(2π)³`; the integral above is the one-dimensional reduction of that phase.
+
+Direct mixed grade, the defect. On the same upper outgoing one-dimensional reduction, the bilinear numerator is
+
+`−i K_h ω q_in² ρ_m + i k_in ω q_h q_hs ρ_m + i k_in ω q_h q_in ρ_m − i k_in ω q_h q_s ρ_m − i k_in ω q_in² ρ_m`,
+
+and `DIRECT_COEFF_NUMERATOR_IS_ZERO` prints `False`. Denominators `q_in`, `q_h`, `q_s`, and `q_hs` are excluded. `retained_shape` keeps `a≤1` and `b≤1`, so `η¹σ¹` is inside the retained rectangle. Setting `σ_W=η W_0/L_W` would push this monomial to order `η²`, which that rectangle does not do.
+
+`kernel_bridge` in `S11c_c2_selfenergy_fold_sympy_audit.py` lines 367–418 (sha256 `c93d65c701cb6e22bfc57f12c15fcc19b910c79bc40cccb621558b492c2eddd2`) builds
+
+`z_three = Matrix([[z00, transfer_left, 0], [0, z_middle, transfer_right], [0, 0, z22]])`
+
+and takes the mixed derivative of `(three_inverse * z_three)[0,2]`. The reconstructed direct entry prints `0`. The iterated entry prints
+
+`−Λ_A η q_in q_mid q_out ρ_m σ (H_left Tilt_right + H_right Tilt_left) / ((Λ_A ω + q_in ρ_m)(Λ_A ω + q_mid ρ_m)(Λ_A ω + q_out ρ_m))`.
+
+That iteration is a different nonzero object from the direct numerator. The literal `0` is a scope exclusion of the direct slot. `kernel_bridge` itself was not called; the zero is the source literal together with this reconstruction. The lower face was not reduced, and this is not the two-momentum kernel.
+
+## 4. Thickness coordinate — clear
+
+Domain: `e_W=δW/W_0`, symbolic `W_bg`, both density rules, and the extracted c2 kinetic factor `W_0 e_W(t)`.
+
+`local_thickness_map` at depth 2 returns `W_0 e_W/W_bg`. Differentiating `W_bg` times that value and multiplying by `e_t` returns `W_0 e_t` (residual 0), and the same rate appears at depth 1. The obsolete row `ε μ_W W_bg² e_tt` differs by `ε μ_W e_tt (W_bg²−W_0²)` for both densities. The c2 source contains `inputs.values['W_0']*fields[3]`. Differentiating `W_0 e_W(t)` gives `W_0 ∂_t e_W` (residual 0). Reinstating `W_bg e_W(t)` on that route alone leaves `(W_bg−W_0) ∂_t e_W`.
+
+## Composition
+
+Inertia, external-work orientation, linear pressure trace, and thickness coordinate are clear on the domains named above. The composition needs revision because a claim that the three-leg mixed response is the full retained-grade impedance includes a direct `η¹σ¹` contribution whose one-dimensional upper-outgoing numerator is not zero, while the native direct slot is the literal `0` and only the iterated product is kept.
+
+Still unresolved, and not used as clearance: `kernel_bridge` was not executed; the lower-face bilinear and the two-momentum kernel were not derived; `face_shift`, raw traction, and the c1 flat/kernel/operator/response exports were not restored; the depth integers and `named_tuple_row` / `sorted_index` are probe stubs; the trailing `multigrade` body is outside excerpt `add-01`; the c2 power function was checked through its `W_0 e_W(t)` factor rather than by calling it. No equation was changed.

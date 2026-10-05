@@ -1,0 +1,532 @@
+# S11c-d SymPy builder checkpoint
+
+The user approved a practical numerical acceptance standard (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/directives/S11c_d_EXPLORATORY_ACCEPTANCE.md`)
+on 2026-09-18. Follow the
+focused completion plan (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_focused_completion_plan.md`): construct the first
+complete two-ended numerical scattering response, then check its important
+observables at stated precision. Rigorous operator/infinite-limit certificates
+move to optional follow-up. Equations, required outputs, units, source joins,
+continuum grades and nonlinearPoleV2 remain intact. No numerical or physical
+result is newly accepted by this planning change.
+
+The wide-triple adaptive production launched at `b5597574` is now accepted and
+annex-published at `4ba95bcf`:22h45m, four clean workers,1260 adaptive points,
+raw differences2.18e-13 and complete-action differences1.39e-17. All56185 metadata
+paths and saved-source/operand joins pass. This ends the fixed-box quadrature
+sequence. The first finite scattering pilot (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_finite_scattering_report.md`)
+now computes all four incident columns, all80 nonlocal rows and325 field
+coefficients in13.24 seconds. The full-rank system has condition1600, scaled
+equation residual1.40e-15 and independent-solve difference9.19e-14. Its coarse
+quadrature and approximate modal boundaries make this an instrument milestone,
+not converged scattering or a continuum expansion. The selected response
+resolution checks now pass: transform, collocation and momentum amplitude changes
+are2.96e-10,2.13e-5 and1.99e-6. The final485-unknown solve is full rank; the
+recovered last comparison took43.90 seconds. Dominant response is stable at the
+stated practical precision; tiny reflected/lost current remains unresolved.
+The selected boundary/regulator set now passes in170.14 seconds: all645-unknown
+systems full rank, scaled residuals below6.60e-16. Matching-basis, common-phase
+boundary and regulator amplitude changes are1.2813e-7,2.1422e-6 and5.100e-12.
+The dominant finite response meets practical precision; tiny reflection/loss is
+unresolved. Independent symbolic continuum coefficients are accepted at24961b20:
+375 records, 1628 zero residuals, all original factors and limits retained.
+The complete finite interior matrices are now published at9471a10f: four
+645-by-645 grades in18.68 seconds, reusing accepted quadratures with zero new
+nodes. Approved-operator recombination agrees to4.79e-16; omitting the mixed
+term responds. The boundary/current coefficients (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_continuum_boundary_report.md`) now
+pass:10 complete clusters,52 derivative tables,100 exact saved current-pair
+replays and5291 metadata paths. Invariant-pair residuals are below3.86e-15.
+The right finite-versus-Taylor trace difference0.00567 remains a truncation
+diagnostic. The complete finite continuum coefficient response (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_continuum_response_report.md`)
+now passes:645 unknowns, all four incident directions and all independent/mixed
+coefficients, scaled equation residual3.80e-14 and independent solve difference
+2.11e-12. Actual boundary/current/phase normalization is included;506 tags and
+45731 metadata paths replay. The202-second solve reuses accepted quadratures.
+The [channel-current bookkeeping](S11c_d_continuum_currents_report.md) also passes:
+open/full-end contraction residuals below4.45e-16/5.86e-14, all2632 tags and
+20032 metadata paths replay. This input has no open thickness channel and
+computed closed bulk-depth propagation; evanescent matching fields remain.
+The profile-FORM control (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_profile_form_report.md`) is now accepted:
+111.60 seconds, all80 rows and35 sources, both finite and independent-grade
+responses. Finite amplitude/current changes2.23e-5/3.56e-8 are below the
+predeclared absolute reporting resolutions; the approved retained-continuum
+flux amplitude changes2.80e-7. All13572 metadata paths and saved source/packet
+joins pass. Separate derivative moments/end jumps remain explicit. This is
+one selected form control, not profile independence. Uniform/covariance
+controls, frequency poles and final integration remain; tiny reflection/loss
+is unresolved. No broad quadrature sweep is queued.
+The three uniform source controls (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_uniform_source_report.md`) pass in
+50.67 seconds: all210 source residual scalars and509 metadata paths check.
+Both transverse/thickness coupling blocks compute to zero in the three
+constant backgrounds; the full right symbol retains zero-jet contrast.
+This is the specified case and endpoint input, not a global decoupling claim.
+The uniform full-subspace/current/matching controls (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_uniform_response_report.md`)
+also pass in41.78seconds:54 candidates and66 full basis directions, three
+full-rank10-by-10 solves, reflection below4.44e-16 and unit transmission to
+roundoff. All10519 metadata paths and203 artifacts validate. This is a
+selected constant-background control, not variable-profile transparency.
+Coordinate-covariance controls, targeted poles and final integration remain.
+The coordinate-source preparation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_coordinate_source_report.md`) is
+accepted after saved-packet output recovery:375 records,80 integral rows,
+160 native terms and699 exact chart/field-jet proof scalars. All380 packets and
+7275 original prefix payloads are unchanged;8148 metadata paths replay.
+Its3.59MB transcript is annex-verified. Literal first-w-derivative reversal
+changes33 local,30 factor and12 source records; the actual constant-rho4
+source computes zero density gradient/advection. The source maps now enter the complete material response described below.
+No c2 N3/N4/N6 closure follows.
+The complete material-coordinate response (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_coordinate_response_report.md`)
+is accepted:443.10seconds, all80 new row quadratures,160 cell terms and the
+645-unknown four-incident mixed continuum solve. Common Eulerian operators
+agree within6.22e-15; evaluated channel differences reach4.62e-14. Both
+boundary/current routes enter the common basis before solving. All54 sources,
+102 input packets,29 artifacts and72760 metadata paths validate; the7.45MB
+transcript is annex-verified. This completes the selected affine finite-space
+coordinate control, not arbitrary nonaffine covariance or c2 source-origin
+closure. One-sided first-w-derivative sensitivity, targeted frequency poles,
+remaining cases and exports are next under practical acceptance.
+The one-sided first-derivative control (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_first_jet_report.md`) is accepted:
+285.22seconds,50 newly integrated rows and30 exact reused rows, all160 cell
+terms and645 unknowns. Operator recombination agrees to4.04e-16; the mixed
+solve residual is4.79e-14. Evaluated amplitude/current sensitivities6.02e-7/
+4.57e-7 remain below the existing absolute reporting resolutions. All54 sources,
+398 artifacts and73663 metadata paths validate; its transcript is annex-verified.
+This closes the selected first-derivative probe, not isolated channel physics
+or c2 source-origin debt. The actual frequency-dependent operator and targeted
+nonlinear pole search, remaining cases and exports are next.
+The frequency-source preparation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md`) is
+implemented for the next bounded pole stage. It keeps actual frequency
+operands live, checks independent rebinding, and derives end-domain candidate
+polynomials from the original constant symbols. No new frequency pencil,
+profile pole, outgoing analytic chart or bound-channel result is accepted yet.
+The frequency-source preparation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md`) is accepted
+and annex-verified:375 records,750 binding pairs,all80 frequency-dependent
+nonlocal rows,35 source amplitudes and three actual live end pencils. Full
+complex eliminations and exact common real/imaginary candidate roots remain
+explicit,with no profile-pole claim. All55 sources,2,284 artifacts and14,863
+metadata paths validate. The final stage took60.37seconds and reused completed
+source work. A local analytic outgoing frequency pencil and bounded pole
+search are next,followed by remaining cases and final exports.
+
+The older checkpoint narrative below records history, not the current task
+queue. The retained solver/export suffix remains byte-identical, interpreted
+under the new acceptance addendum and the approved pole correction.
+
+The wider-box triple refinement (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_wide_three_momentum_report.md`) is validated:
+1.049 billion new nodes in 44h03m, four clean workers, 64,016 preserved partials
+and 134,254 metadata paths. Outer/innermost/middle raw changes reach
+3.68e-10 / 3.92e-18 / 1.55e-14. The finite cutoff3-to4 action change remains
+1.13467e-7. Independent triple outer quadrature is accepted on the finest
+inner rules; physical tail/Abel and inverse-bound certificates remain open on
+the optional rigorous track.
+
+The user-approved [nonlinear pole correction](../directives/S11c_d_NONLINEAR_POLE_CONTRACT.md)
+now governs the remaining pole work and its export requirements. It replaces the
+unrestricted projector prescription with full Laurent data, conditional modal
+projections and justified Riesz realizations. The [repair report](S11c_d_nonlinear_pole_repair_report.md)
+records exact controls and provenance. The active quadrature's pinned v10 sources
+and the retained contract suffix below stay byte-identical; its pole shorthand
+is interpreted under this correction. No physical pole result is yet computed.
+
+The Lean [pole handoff](../lean/s11/POLE_HANDOFF.md) supports this correction with
+conditional full-pairing projections, finite Laurent contour identities and
+response-map derivative controls. Local verification passes; fidelity reviews
+remain pending. The pole application plan (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_nonlinear_pole_repair_plan.md`)
+retains actual derivative/kernel/expansion joins and the unproved physical
+analytic premises. No new repair or numerical rerun follows from this handoff.
+
+The Lean [tail/Abel and stability handoff](../lean/s11/ANALYTIC_ERROR_HANDOFF.md)
+completed its bounded proof/fidelity contract at `ad365b5f` with both reviews clear.
+The limits plan (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_quadrature_limits_plan.md`) now maps its hypotheses to
+the actual outgoing domain, uniform folded-amplitude estimates, full operator
+error budget and inverse/channel bounds. No numerical epsilon, inverse bound
+or scattering convergence certificate follows yet. The reception checkpoint
+preserves the fixed review-packet hashes; no Lean work or production source changed.
+
+The [variable-coefficient/interface handoff](../lean/s11/VARIABLE_COEFFICIENT_HANDOFF.md)
+completed its bounded proof/fidelity contract at `9865050f`, with both reviews
+clear and no required correction. The limits
+plan records the derivative-row/native-field-row map, weighted divergence and
+boundary-current obligations, and the restricted interface hypotheses. Source
+inspection confirms profile-dependent density differentiation in the native
+construction path; it is not a full closed-operator fidelity certificate. No new
+upstream defect or numerical rerun is established by this handoff.
+
+RIGHT current/adjoint normalization is validated and published for the supplied
+LAB_HELD / RHO4_CONSTANT case: all 18 root/lift candidates, 22 basis directions,
+18 invertible field maps, and two current-normalized two-dimensional subspaces.
+Validation covers 5,990 original tags and 5,850 numerical residual scalars.
+The nine nonzero raw balance/reconstruction families are preserved. Independent
+contractions of the saved eta-squared pairing remainder account for them to
+2.15e-13; 275 decomposition/projection/limit residual scalars are zero. No new
+upstream physical repair was needed. This is retained-order accounting, not an
+exact finite-contrast balance or a higher-order continuum prediction.
+
+The thickness-coordinate repair and native b/c1/c2/d regeneration are committed
+through 8b2e3cf2. All eight endpoint source/frequency/pairing prerequisites remain
+committed through 432db7e7; RIGHT, LEFT and REFERENCE each have 802 zero retained
+pairing residual scalars. RIGHT is committed at 0da0f746. LEFT normalization
+is now validated and published: 18 candidates, 22 basis directions and 18
+adjoint field maps, with no raw norm above the diagnostic threshold. Its
+independently computed discarded balance matrices vanish; the largest
+residual-minus-remainder norm is 8.21e-13.
+
+The [Mathematica audit](S11c_wolfram_repair_audit_report.md) found a duplicate
+pressure shift in native c2 N6. The three mechanical issues are absent on the
+audited b domain (200 zero residuals). The repair plan (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_repair_plan.md`)
+is complete on its validated domain: 218 zero focused residuals and 9,968,256
+zero native numerator evaluations across four cases under the adopted covariance
+criterion. Raw R_N6 remains a representation diagnostic. The repaired main
+transcript is committed at `5acfdf30` and its annex payload hash is verified.
+REFERENCE normalization is validated: 18 candidates, all 22 basis directions,
+18 invertible maps, 5,586 tags and 5,850 numerical residual scalars. Its discarded
+balance matrices vanish; all 275 exact remainder checks are zero and the largest
+residual-minus-remainder norm is 8.21e-13. Pre/post-emission packet joins agree.
+RIGHT/LEFT/REFERENCE normalization is complete on the supplied case.
+LEFT is committed at b271c71b; the accepted SymPy chain remains unchanged.
+See the native checkpoint (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_native_checkpoint.json`).
+See the normalization report (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_end_normalization_report.md`) and
+plan (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_end_normalization_plan.md`) for complete evidence and boundaries.
+
+All working runs and source snapshots live in the repository's _scratch/s11c/.
+Published .out files use DataLad/git-annex with post-save full-hash verification;
+ordinary sources, reports and inventories use Git. The user controls continuation.
+Owned jobs use user-authorized local completion/error wake-ups, with no recurring
+checks or model polling.
+
+The matching-channel construction (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_matching_channels_report.md`) now
+is validated: all 36 candidates and 44 basis directions are retained, with two
+incoming and two outgoing directions per end. All cross-mode currents were
+evaluated; reconstruction residual norms are below 6.34e-16. The 500-tag packet
+and 2,763 metadata paths passed full replay. The packet is committed and annex-verified at 3a5d3d25. Reduced operator
+assembly now has validated full five-slot source rows and all five native
+probe-action columns. Exact assembly is validated: four local derivative
+matrices, 80 distinct nonlocal integrals and 281 zero reconstruction/extraction
+residuals; 1,226 metadata paths passed replay. The user approved the proposed values
+for all 30 inherited free gradient-energy coefficients. The separate development
+input preserves every original parameter and profile. Numerical action evaluation
+continues with the accepted end-dependency proof and unchanged symbolic operators.
+
+The complete two-ended variable-profile S-matrix, profile-frequency bound
+poles/residues/overlap, survival, flux bookkeeping, weak coefficients, section 5
+controls and final own-row export remain program work. Per-root and full-subspace
+checks retain their stated sheet and exceptional-domain limits. Supplied physical
+premises and c2 operand debt remain inherited premises. No S11c_d_exports.py exists.
+
+The numerical action check completed: all 300 components agree within
+2.49e-16, retaining 1,920 nonlocal contributions and passing mutation checks.
+All 106 tags and 3,611 metadata paths replayed, and source/packet hashes agree.
+Grid changes reach 0.04670; quadrature refinement, physical tails and Abel
+weak limits remain work before boundary matching. Publication is annex-verified
+at 009667f7. Quadrature-domain recovery passed with empty stderr: all source
+and operand joins agree. Width-based split rules resolve the elementary Abel
+mass to 5.33e-15; profile transforms agree to 1.25e-12 at the refined order.
+The domain transcript is annex-verified at e514b704. Bounded source Fourier
+factorization is now validated: all 80 original operators, 35 distinct source
+integrals, 324 zero normalized residuals and 264 zero certificate proofs.
+All 58 original expanded residuals remain beside exact saved-pair checks;
+all denominator/branch restrictions are retained. The source packet is
+byte-identical and its constructor unchanged. Full replay covers 1,670 tags,
+4,752 metadata paths and 833 fresh write-keys. The transcript is published and annex-verified at bed088be. Source Fourier quadrature is now validated:
+35 distinct source integrals on both approved Gaussian fields, 140 interval
+records and 9,240 frequency evaluations. All 320 native occurrence joins and
+104 binding proofs pass, with 42 additional zero replay proofs and all coefficient
+and measure mutations detected. Scaled source/adaptive residuals reach only
+1.73e-14 / 4.11e-13. Gauss changes are 1.43e-6 / 4.11e-13 and the largest finite
+source-interval change is 4.40e-9. The 8.69 MB transcript has 10,400 tags and
+151,318 metadata paths; source and numerical packet hashes are unchanged.
+Original live raw forms remain distinct from their canonical pickle forms,
+with twenty exact metadata-support transitions checked and forty altered-unit/
+order controls rejected. See the source quadrature report and accepted checkpoint.
+Next is complete-action momentum quadrature with all three Abel transfer pairs
+and nested profile factors. Full-action convergence, physical tails and Abel
+limits remain work before boundary matching; finite source tests do not replace
+these requirements.
+
+Finite momentum integration is validated on the declared finite grids: all
+80 native integral rows, 70 bound sources, six nested profiles and three Abel
+pairs are evaluated. All 300 native action and 1,920 term comparisons agree to
+1.11e-16 scaled / 3.60e-17 absolute. Refinement changes fall roughly fortyfold,
+to 3.64e-5 / 1.05e-5 for the two fields; further resolution is needed before
+physical tails and Abel limits. The 2.22 MB transcript replays all 5,398 tags,
+2,697 keys and 22,822 metadata paths, with unchanged operand packets. See the
+momentum action report and accepted checkpoint. No scattering/pole claim follows.
+
+The targeted one-momentum refinement is validated: final outer/source changes
+are below 6.64e-15 / 3.81e-15; adaptive outer quadrature agrees within 1.90e-15
+in complete actions. The accepted baseline and all held native terms replay
+exactly. The 3.84 MB transcript has 13,230 tags and 64,385 metadata paths, with
+unchanged packet hashes. Next is two-momentum refinement with the accepted
+one- and three-momentum terms held explicitly. Full physical limits remain work.
+
+Two-momentum refinement is validated: final outer/panel/source/profile raw
+integral changes are 8.33e-14 / 1.50e-12 / 2.62e-16 / 8.55e-15. Adaptive outer
+quadrature agrees within 2.45e-14 in integrals and 6.21e-17 in complete actions.
+All 30 rows, 22 records and 91,047 metadata paths pass, with unchanged held terms
+and packet hashes. The 5.65 MB transcript is published and annex-verified.
+Next: the remaining ten three-momentum rows, before physical tails and Abel limits.
+
+Initial three-momentum refinement is validated in 3h22m: all ten rows and both
+fields, with final outer/innermost/middle raw changes 2.68e-12 / 8.22e-15 /
+5.61e-14. All ten records, 10,184 partials and 34,691 metadata paths pass, with
+unchanged held terms, source hashes and packet identities. The 2.24 MB transcript
+is published and annex-verified. Next are source/profile order refinements on
+the fixed final momentum grid; physical tails and Abel limits remain work.
+
+Three-momentum source/profile refinement is validated in 2h18m with four
+single-thread workers. The preserved 11,616,256-node prefix was resumed without
+changing native summation. Raw source/profile order changes are at most
+6.14e-19 / 3.64e-17. All ten rows, six records and 26,705 metadata paths pass;
+source, worker, partial and pre/post-packet hashes agree. The 1.52 MB transcript
+is published and annex-verified. Next is independent adaptive outer quadrature,
+then physical domain/tail and regulator checks; finite agreement is not a limit.
+
+Independent adaptive outer production is validated in 2h12m. All ten rows
+and both fields agree with Gauss-144 within 1.74e-16 in raw integrals; complete
+actions round equal. All 420 conditional points, 6,764 partials, 67 sources and
+20,678 metadata paths pass with unchanged packets and held single/pair terms.
+The 1.18 MB transcript is published and annex-verified. Next are finite-domain
+and tail checks. Inner/source/profile rules were held, so independent outer
+agreement does not establish uniform/grade coverage, tails or Abel limits.
+
+Finite position-domain production is validated in 2h26m. All 80 rows and both
+fields were reevaluated at source/profile bounds 48/10 and 48/14. Source/profile
+domain changes reach 8.47e-14 / 4.40e-15 in complete actions. All 12 layouts,
+8,484 partials, 71 sources and 40,672 metadata paths pass with unchanged packets.
+The 2.31 MB transcript is published and annex-verified. Next is momentum-domain
+expansion with freshly computed source-frequency/profile-transfer ranges and
+resolution checks. Finite changes do not establish physical tail or Abel limits.
+
+Momentum-domain preparation is validated in 7m37s: 152 source/profile records,
+all 80-row coefficient probes, 74 sources and 263,184 metadata paths pass.
+Source/profile adaptive residuals reach 7.17e-13 / 1.15e-12. At the new wider
+transfer range, profile 256-to-384 changes reach 0.00404, falling to 1.80e-12
+for 384-to-512. Next compute source256/profile512 complete actions with a
+matching-rule cutoff-2 baseline before cutoffs 3/4. The 7.30 MB preparation
+transcript is published and annex-verified; wider actions and physical limits remain.
+
+Momentum-domain action preflight 649a98d2 passed 152 selected transforms,
+six exact prefixes and six exact coarse full actions, with 37,614 metadata
+paths. The coarse smoke remains instrument evidence only.
+
+The separately discovered S11 Q9 coefficient-action orientation defect has
+been dependency-traced. Its 72-row family is carried in accumulated exports,
+but c1/c2/d import manifests exclude it; the actual d binder retains identical
+73 inputs when all Q9 rows are removed. The current 78-source production hashes
+match and its numerical operands remain unchanged. The run completed against
+those immutable inputs. Refresh carried rows/provenance after repair acceptance,
+with explicit consumed-root/closure joins. D3-D5 Q9 validation and parity-odd
+extra-action checks remain owned by that repair. See the Q9 dependency report.
+
+The complete momentum-domain production is now accepted: six clean workers,
+240,460,912 new nodes in 9 h 17 m, 18 saved layouts, 14,672 partials and
+66,798 metadata paths. The matching profile-order baseline changes the action
+by 6.94e-18; cutoff 2→3 and 3→4 changes reach 2.25e-7 and 1.14e-7.
+Wider-box paired-momentum refinement is next before tail interpretation.
+The 3.41 MB canonical transcript and checkpoint retain every source/packet join.
+
+Wider-box one-/two-momentum production is accepted in 10m28s: four clean
+workers, 4,674,896 new nodes, 28 records, 274 partials and 236,526 metadata
+paths. Final single and paired outer/inner changes reach 2.87e-15 and
+4.84e-16 / 3.40e-16 in raw integrals. The refined cutoff 3-to-4 action change
+remains 1.134674e-7. All held three-momentum values remain explicit. The
+10.64 MB transcript is published and annex-verified. Next is independent
+outer quadrature on boxes 3/4, followed by needed three-momentum checks;
+physical tails, regulator limits and scattering remain open.
+
+Independent wider-box outer production is accepted in4m20s: all40 single
+and30 paired rows agree with refined Gauss within4.83e-15/7.71e-16; all eight
+adaptive solves finish. The box3-to4 action difference remains1.134674e-7.
+Four clean workers,84 sources,3066 conditional points and101909 metadata paths
+pass. The6.75MB transcript is published and annex-verified. Next refine the
+held wider-box three-momentum terms at fixed source/profile/domain/regulator
+settings. Finite agreement does not establish physical tails or Abel limits.
+
+Wider-box triple instrument preflight is accepted in 114.51 seconds: four exact
+saved prefixes, four finest-rule cost prefixes, twelve isolated settings and
+twelve exact coarse serial/worker plus independent cell comparisons. Four clean
+workers, 87 sources, 5040 held-term scalars and 75886 metadata paths pass.
+The 5.07 MB smoke stays instrument evidence in durable scratch. Production launched after acceptance 8ac0caaf at
+216/24/24→216/32/24→216/32/32 with all single/pair values held. Four single-thread
+2 GiB workers, 87 current/frozen sources and the silent watcher are verified;
+no production result is accepted yet.
+Prefix extrapolation suggests roughly 16 hours, with concurrent-load uncertainty.
+
+Independent operator-grade extraction is now published and annex-verified at
+`d46e00ee`:375 coefficient records,160 complete nonlocal term joins,1628 zero
+residuals and8106 metadata paths in44.87 seconds. Computed support is00,10,01,11;
+all momentum/source amplitudes are grade-independent. Reuse their saved finite
+matrices for numerical coefficient assembly, then expand boundary/channel/current
+maps and the response. No new quadrature or completed continuum response is claimed.
+
+The local acoustic frequency chart (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_chart_report.md`) is
+accepted and annex-verified: 375 records, 750 seed/control pairs, 25 actual
+denominator forms, three radicals, 27 native path checks and all 8730 metadata
+paths pass in 118.20 seconds. The subsequent end and finite-pencil stages are
+recorded below; targeted pole results remain uncomputed.
+
+The full-subspace end continuation (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_end_report.md`) is
+accepted at 86993760: ten clusters, 14 directions, all 36 candidate dispositions
+and 30 corrected points pass in 27.60 seconds. Step differences are below
+6.54e-14 and scaled Jacobian condition below 19.18. The first actual
+finite complex-frequency pencil (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_matrix_report.md`) is
+accepted: 89.88 seconds, all 80 rows and 160 cell terms, full rank 645 and
+complex equation residual 1.11e-15. Complete source and end maps vary with
+frequency in fixed seed coordinates. The small contour diagnostic (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_contour_report.md`)
+now passes in 8m37s: 16 full-rank matrices, four clean workers and
+2,845,568 new nodes. Sampled 8/16 windings are both zero; the phase increment
+reaches 2.70 radians. The first full inverse moment drops from 8.74e-2 to
+7.02e-6, with end-loop closure within 4.26e-13. One midpoint refinement will
+reuse every accepted matrix and add 16 points. No physical pole set or
+certified empty spectrum is established.
+
+The single contour midpoint comparison (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_contour_refine_report.md`)
+now passes in10m40s:16 new points and all16 original matrices reused, four clean
+workers, full rank at all32 points. Winding remains numerically zero, maximum
+phase increment falls to1.36radians and the first inverse moment to2.67e-12.
+All original/new source and array joins, exact retained16 moments and post-run
+adapter checks pass. The recorded launch-mode and acceptance-summary mistakes
+changed no numerical operand. No candidate is resolved in the selected circle;
+this closes the bounded numerical search, not a certified empty spectrum.
+Remaining cases and final engine/own-row exports are next; no contour doubling
+or broad convergence campaign is queued.
+
+## Remaining case source preparation (2026-09-19)
+
+The bounded contour search is closed at d10667f1 without a resolved candidate;
+this is not a certified empty spectrum. The saved parent cache contains all
+four original cases. The new remaining-case loader passes its exact native
+definition, baseline field/action, 281 residual and 80 integral-address checks.
+It will materialize the three missing full source/assembly packets and identify
+exact integral reuse before the remaining responses. No historical quadrature
+repeat or additional contour doubling is queued.
+
+## Saved case output recovery (2026-09-19)
+
+All three remaining reduced operators and assemblies are saved. Output hit a
+live/restored expression-census mismatch; source/action identities remain exact.
+The narrow context repair preserves both censuses and passes affected-cell
+coefficient reconstruction and mutation checks. Complete saved-packet validation
+and output follow without repeating source construction or numerical work.
+
+The remaining case sources (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_sources_report.md`) are now
+accepted and annex-published: all four native operators, 100 exact cell proofs,
+931 coefficient checks and 100 responding controls; 4595 metadata paths replay.
+The three new cases contain 70/80/70 integrals and 61/61/46 exact baseline
+matches. These permit operand reuse, not assumed response equality. Remaining
+case scattering/current/continuum/control/pole work and final exports continue.
+
+## Four-case response completion (2026-09-20)
+
+The four-case finite and continuum responses (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_response_report.md`)
+are now published at fa684a3a and annex-verified. All four cases have full-rank
+645-unknown systems and four incident directions, with actual case-specific
+boundary/current maps and complete independent/mixed grades. Three new solves
+reuse accepted interior matrices; no quadrature or baseline solve repeats.
+All 2,024 decoded payloads and 182,924 metadata paths survive the lossless
+combined output. Same-density anchoring amplitude changes are below 7.45e-7
+and current changes below 3.37e-7, below declared absolute resolution. Positive
+regulator, approximate boundaries and unresolved tiny signals remain explicit.
+Case current bookkeeping, practical controls, scoped case searches and final
+all-case engine/exports remain. No baseline contour doubling is queued.
+
+## Four-case current completion (2026-09-20)
+
+The four-case current bookkeeping (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux_report.md`) is
+published at 588a5383 and annex-verified. Three new contractions took 277.79
+seconds; baseline bookkeeping, current closures and all solves were reused.
+The largest new current residual is 5.86e-14. All four approved inputs compute
+four open transverse and zero open thickness directions while retaining closed
+matching data and all current variation. All 10,528 decoded payloads and 80,128
+metadata paths pass. This does not resolve tiny loss/reflection or establish
+depth escape. Practical case controls, scoped searches and final engine/exports
+remain; no broad quadrature or baseline contour doubling is queued.
+
+## Four-case uniform controls (2026-09-20)
+
+The four-case uniform controls (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_uniform_report.md`) are
+published at 44de056f and annex-verified. One new RHOBR-right homogeneous solve
+and ten complete original reuses cover all twelve backgrounds. Production took
+53.34 seconds; the new full-rank 10-by-10 system has residual 2.61e-16. Computed
+reflections are below 4.44e-16 and same-background transmission agrees to 4.57e-16.
+All 5,872 decoded payloads and 42,240 metadata paths pass. This closes the selected
+uniform consistency controls, with each background's own coordinates and
+constant-symbol domain retained. Other practical case controls, scoped searches
+and final engine/exports remain; no broad campaign is queued.
+
+The four-case first-derivative response output (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_first_jet_response_report.md`)
+is accepted: all thirteen bounded phases passed, followed by 403.80 seconds of
+independent saved-hash/codec validation. Twelve parts retain 31816 payloads,
+15884 keys and 898801 metadata paths. Four finite and three new continuum
+controls are complete; historical baseline continuum is reused. Amplitude/current
+sensitivities stay below 1e-4/1e-6. The 60930340-byte transcript is annex-verified
+at 46796940, with independent MD5/SHA256 and actual symlink/backend checks.
+Remaining coordinate/advection controls, scoped case searches and final all-case
+engine/exports follow.
+
+The remaining coordinate inputs (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_inputs_report.md`)
+are accepted at 4365f2b1: 65.13 seconds plus 19.05 seconds independent validation,
+all 1467 records/300 rows/647 terms/120 sources. Only 86 union source images are
+new; accepted images and explicit aliases cover the other uses. Constant-rho4
+absence and the actual live RHOBR volume-density gradient are separately retained.
+Those source images and their numerical material routes have since been
+completed and independently accepted as recorded below.
+
+The four-case material-coordinate controls (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_coordinate_response_report.md`)
+are accepted at 50911879 and annex-published at 998c4023. All four finite
+controls and three new continuum controls use their own material end/current/
+phase maps transformed into common Eulerian coordinates before solving; the
+historical baseline continuum is reused. Finite amplitude/current differences
+are at most 2.213e-13/2.963e-13, continuum differences 5.532e-14/3.265e-14.
+These are coordinate consistency checks, not resolved tiny reflection or loss.
+The twelve-part 93,126,403-byte transcript retains 28,780 decoded payloads,
+14,366 keys and 903,142 metadata paths. Independent saved validation took
+440.76 seconds; all guards recorded zero OOM/swap. The original output timeout
+and clean audit continuation remain explicit. Actual MD5E/symlink/size/MD5/
+SHA256 publication checks pass. Scoped remaining-case frequency work and
+final all-case engine/export integration remain, with no baseline contour
+doubling or inferred empty spectrum.
+
+## Retained user-approved solver/export contract
+
+
+1. Preserve `EdgeReduction`, the positional three-parent fold, and the exact
+   direct-lookup manifest. All numerical assembly must consume the computed
+   reduced rows, including the full nonlocal terms and full coupling vertex.
+2. Accept explicit, independent dimensionless profile functions w(xi), m(xi),
+   their derivatives, asymptotic limits and tail information. A selected smooth
+   step with an independently adjustable localized modulus bump is a numerical
+   instance; it does not replace the interface class. Store the profile formula
+   and digest in every case record. The current preflight input is recorded in `S11c_d_channel_preflight_input.json`.
+3. Require a complete parameter map in a declared L/T/M unit frame, real
+   continuum frequency and tangential momentum, small contrast, and
+   sigma_W = eta_bg W_0/L_W for evaluations on the physical homotopy. Retain
+   independent eta/sigma grades in the symbolic calculation. Test actual
+   reference/end channel availability before attempting flux normalization.
+   Do not manufacture an incident channel by assigning a sector label.
+4. Compute both-end modes, left/right normalization, the S11b-derived current,
+   and the variable-profile matching problem. Re-expand the continuum response
+   to the retained rectangle; do not present a finite-contrast numerical
+   solution as a higher-order continuum prediction. Retain evanescent matching
+   modes, channel degeneracies and domain failures explicitly.
+5. Numerical pole searches have an explicit profile, parameter map, sheet,
+   bounded search region and isolating contours. Evaluate the retained operator
+   without the continuum re-expansion. Record boundary/quadrature resolution,
+   domain size, precision, root residuals, contour-count evidence, and changes
+   under refinement. A bounded search does not establish a global pole set.
+   An unsuccessful or inconclusive search is unresolved, not an empty pole set.
+   Compute residues/projectors and sheet/decay/width/closure tests only for
+   actually resolved candidates; emit spectral overlap, not capture probability.
+6. Separate transparent symbolic expressions from evaluated numerical records.
+   Symbolic operator/continuum/weak-coefficient exports remain differentiable
+   SymPy expressions, compacted with algebraic equivalence checks. Numerical
+   mode and pole datasets retain their input bindings, domain, convergence
+   evidence, dimensions and truncated-model status. They are not stand-ins for
+   a generic symbolic profile-dependent root function. This is the export
+   distinction motivating the user-approved contract; the downstream consumer
+   will need to bind the appropriate representation explicitly.
+7. Fingerprints summarize already constructed/evaluated objects. They do not
+   evaluate nonlocal integrals or replace a spectral solve. Algebraic PIT and
+   physical numerical evaluation are separate records. All completed roots use
+   fresh lowerCamel write-keys and the existing bind-closure/minimal-delta guards.
+8. Finish the one-case path, then implement controls and bookkeeping, then run
+   all four cases once and write the complete export. No review legs,
+   comparator, Wolfram engine, downstream stage, or commit belongs to this lane.

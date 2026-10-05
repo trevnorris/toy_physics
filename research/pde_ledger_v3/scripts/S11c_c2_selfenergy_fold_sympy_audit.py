@@ -30,7 +30,7 @@ sys.path.insert(0, str(HERE.parent))
 from ledger_fold import load_model, check_consumer, assert_lookups_equal_manifest, assert_delta_is_minimal
 
 IMPORT_KEYS = (
-    'slab_operator', 'slab_operator_term_origins', 'mu_theta_operator',
+    'slab_operator', 'slab_operator_term_origins', 'mu_theta_operator', 'energy_basis_variable',
     'closure_shape_deriv', 'face_normal', 'conormal_deriv',
     'face_measure_shape_deriv', 'face_velocity', 'relative_flux',
     'kinematic_balance', 'traction', 'face_shift', 'background_density_map',
@@ -193,6 +193,8 @@ class Inputs:
         self.slab = cases(values['slab_operator'])
         self.origins = cases(values['slab_operator_term_origins'])
         self.mu = cases(values['mu_theta_operator'])
+        self.energy = {str(branch):named(payload,'VALUE')
+                       for branch,payload in values['energy_basis_variable']}
         self.response = cases(named(values['s11c_c1_face_response'], 'CASES'))
         self.kernel = cases(values['dtn_kernel'])
         self.density = cases(values['background_density_map'])
@@ -473,6 +475,80 @@ def integral(integrand,*limits):
     return sp.S.Zero if integrand==0 else sp.Integral(integrand,*limits)
 
 
+def reference_pressure_kernels(inputs, anchoring, face, density, pmat, second, ko, ki, qo, overrides):
+    """Invert the inherited affine face trace in the retained kernel algebra.
+
+    The incoming response is a physical-face pressure. The slab slots are a
+    reference-face value and lab-normal jet. Trace coefficients come from
+    face_shift, and the normal multiplier is differentiated from an outgoing
+    reference continuation before forming the two/three-leg operator solve.
+    """
+    label = 'plus' if face == 1 else 'minus'
+    pressure_slot, jet_slot = (inputs.a(prefix+label) for prefix in ('delta_p_', 'd_w_delta_p_'))
+    source = inputs.geometry['face_shift'][(anchoring,face,REPRESENTATION,density)][0]
+    trace = sp.cancel(source/inputs.eps).subs(overrides).xreplace(inputs.profiles)
+    value_coefficient = sp.diff(trace, pressure_slot)
+    height = sp.diff(trace, jet_slot)
+    constant = trace.subs({pressure_slot:0,jet_slot:0}, simultaneous=True)
+    reconstruction = sp.expand(trace-value_coefficient*pressure_slot-height*jet_slot-constant)
+    profile = inputs.a('w1_profile')
+    height_constant = height.subs(profile,0)
+    height_coefficient = sp.diff(height,profile)
+    height_reconstruction = sp.expand(height-height_constant-height_coefficient*profile)
+    height_hat = height_coefficient*inputs.a('s11cc1_w1_profile_hat_transfer')
+    # The normalized transform is the existing computed profile binding;
+    # applying it to the extracted linear height coefficient adds no convention.
+    transform = profile_bindings(inputs)[0]
+    height_transform = sp.Integral(height_coefficient*transform.rhs.function,*transform.rhs.limits)
+    height_kernel = fourier_profiles(inputs,height_hat,ko,ki)
+    reference = face*inputs.values['W_0']/2
+    extension = sp.exp(sp.I*face*qo*(NORMAL-reference))
+    normal_output = sp.diff(extension,NORMAL).subs(NORMAL,reference)
+    qi = inputs.a('s11cc1_q_out_input')
+    normal_input = normal_output.xreplace({qo:qi})
+    trace_two = sp.Matrix([[value_coefficient+height_constant*normal_output,
+                            height_hat*normal_input],
+                           [0,value_coefficient+height_constant*normal_input]])
+    reference_two = trace_two.upper_triangular_solve(pmat)
+    two_residual = (trace_two*reference_two-pmat).applyfunc(sp.cancel)
+    left = dict(zip(ki,MIDDLE))|{qi:MIDDLE_Q}
+    right = dict(zip(ko,MIDDLE))|{qo:MIDDLE_Q}
+    normal_middle = normal_output.xreplace({qo:MIDDLE_Q})
+    transfer = fourier_profiles(inputs,pmat[0,1],ko,ki)
+    response_three = sp.Matrix([[pmat[0,0],transfer.xreplace(left),second],
+        [0,pmat[0,0].xreplace(dict(zip(ko,MIDDLE))|{qo:MIDDLE_Q}),transfer.xreplace(right)],
+        [0,0,pmat[1,1]]])
+    trace_three = sp.Matrix([[value_coefficient+height_constant*normal_output,
+        height_kernel.xreplace(left)*normal_middle,0],
+        [0,value_coefficient+height_constant*normal_middle,height_kernel.xreplace(right)*normal_input],
+        [0,0,value_coefficient+height_constant*normal_input]])
+    reference_three_raw = trace_three.upper_triangular_solve(response_three)
+    reference_three = reference_three_raw.applyfunc(lambda e:retained_shape(e,inputs))
+    three_residual = (trace_three*reference_three-response_three).applyfunc(
+        lambda e:sp.cancel(retained_shape(e,inputs)))
+    reference_two = reference_two.applyfunc(lambda e:retained_shape(e,inputs))
+    target = coordinate('s11cc2PhysicalFacePressureTarget',dimension(pressure_slot))
+    equation = trace-target
+    reference_value_solve = sp.solve(equation,pressure_slot)[0]
+    return reference_two,reference_three[0,2],{
+        'SOURCE':source,'AMPLITUDE_TRACE':trace,'VALUE_COEFFICIENT':value_coefficient,
+        'NORMAL_JET_COEFFICIENT':height,'CONSTANT_OPERAND':constant,
+        'TRACE_RECONSTRUCTION_RESIDUAL':reconstruction,
+        'HEIGHT_CONSTANT':height_constant,'HEIGHT_PROFILE_COEFFICIENT':height_coefficient,
+        'HEIGHT_RECONSTRUCTION_RESIDUAL':height_reconstruction,
+        'HEIGHT_FOURIER_DEFINITION':height_transform,'HEIGHT_FOURIER_KERNEL':height_kernel,
+        'REFERENCE_NORMAL_EXTENSION':extension,'REFERENCE_NORMAL_MULTIPLIER':normal_output,
+        'TWO_LEG_TRACE_OPERATOR':trace_two,'TWO_LEG_FACE_RESPONSE':pmat,
+        'TWO_LEG_REFERENCE_RESPONSE':reference_two,'TWO_LEG_TRACE_RESIDUAL':two_residual,
+        'THREE_LEG_TRACE_OPERATOR':trace_three,'THREE_LEG_FACE_RESPONSE':response_three,
+        'THREE_LEG_REFERENCE_RESPONSE_BEFORE_PROJECTION':reference_three_raw,
+        'THREE_LEG_REFERENCE_RESPONSE':reference_three,'THREE_LEG_TRACE_RESIDUAL':three_residual,
+        'PHYSICAL_PRESSURE_TARGET':target,'REFERENCE_VALUE_EQUATION':equation,
+        'REFERENCE_VALUE_SOLVE':reference_value_solve,
+        'REFERENCE_VALUE_SOLVE_RESIDUAL':sp.cancel(equation.subs(pressure_slot,reference_value_solve)),
+    }
+
+
 def build_face(inputs, anchoring, face, density, overrides=None, mu_override=None, velocity_override=None):
     overrides = {} if overrides is None else overrides
     numeric_overrides = {k:v for k,v in overrides.items() if isinstance(k,sp.Basic)}
@@ -498,17 +574,21 @@ def build_face(inputs, anchoring, face, density, overrides=None, mu_override=Non
     stage2 = {c1_mu: mu_amplitude, c1_v: velocity}
     composed_source = sp.expand(source.subs(stage2, simultaneous=True).subs(numeric_overrides).xreplace(inputs.profiles))
     pressure = kernel_apply(inputs, pmat[0,0], pmat[0,1], composed_source, ko, ki,second)
-    # Stage 3: normal jet from the outgoing continuation ansatz, differentiated
-    # before evaluating at the reference face.  The output leg belongs to w.
+    # Stage 3: convert the physical-face response to the reference continuation
+    # before taking its normal derivative. The output leg belongs to w.
+    reference_matrix,reference_second,trace_map = reference_pressure_kernels(
+        inputs,anchoring,face,density,pmat,second,ko,ki,qo,numeric_overrides)
     reference = face * inputs.values['W_0'] / 2
     extension = sp.exp(sp.I * face * qo * (NORMAL-reference))
-    jet_diagonal = sp.diff(extension * pmat[0,0], NORMAL).subs(NORMAL,reference)
-    jet_transfer = sp.diff(extension * pmat[0,1], NORMAL).subs(NORMAL,reference)
-    jet_second=sp.diff(extension*second,NORMAL).subs(NORMAL,reference)
+    jet_diagonal = sp.diff(extension * reference_matrix[0,0], NORMAL).subs(NORMAL,reference)
+    jet_transfer = sp.diff(extension * reference_matrix[0,1], NORMAL).subs(NORMAL,reference)
+    jet_second=sp.diff(extension*reference_second,NORMAL).subs(NORMAL,reference)
     normal_jet = kernel_apply(inputs, jet_diagonal, jet_transfer, composed_source, ko, ki,jet_second)
     pressure_slot = inputs.a('delta_p_' + label)
     jet_slot = inputs.a('d_w_delta_p_' + label)
-    replacements = {pressure_slot: pressure, jet_slot: normal_jet}
+    reference_pressure = trace_map['REFERENCE_VALUE_SOLVE'].subs(
+        {trace_map['PHYSICAL_PRESSURE_TARGET']:pressure,jet_slot:normal_jet},simultaneous=True)
+    replacements = {pressure_slot: reference_pressure, jet_slot: normal_jet}
     return replacements, {
         'DENSITY_BINDING': sp.Tuple(*[sp.Tuple(k,v) for k,v in density_map.items()]),
         'DELTA_P_SOURCE': delta_p_source,
@@ -519,6 +599,10 @@ def build_face(inputs, anchoring, face, density, overrides=None, mu_override=Non
         'PRESSURE_KERNEL_MATRIX': pmat,
         'PRESSURE_SECOND_SCATTERING_KERNEL':second,
         'PRESSURE': pressure,
+        'REFERENCE_PRESSURE':reference_pressure,
+        'REFERENCE_PRESSURE_KERNEL_MATRIX':reference_matrix,
+        'REFERENCE_PRESSURE_SECOND_SCATTERING_KERNEL':reference_second,
+        'REFERENCE_TRACE_MAP':trace_map,
         'NORMAL_JET': normal_jet,
     }
 
@@ -528,7 +612,7 @@ def expanded_rows(operator):
         ('U','U_BODY_BALANCE'),('THETA','THETA_BALANCE'),('E_W','E_W_BALANCE'))}
 
 
-def build_case(inputs, anchoring, density, *, overrides=None, routing=None, mu_override=None, velocity_override=None, input_map=None):
+def build_case(inputs, anchoring, density, *, overrides=None, routing=None, mu_override=None, velocity_override=None, input_map=None, face_work_routing=sp.S.One):
     """All controls enter at these imported operands, before close/extract."""
     progress_path=ROOT/'_measurements/S11c_c2_sympy_progress.json'
     progress={'anchoring':anchoring,'density':density,'routing':routing,
@@ -541,6 +625,16 @@ def build_case(inputs, anchoring, density, *, overrides=None, routing=None, mu_o
     imported = expanded_rows(operator)
     pre_map = {} if input_map is None else input_map
     source_rows = tree(imported, lambda e:e.subs(numeric_overrides).xreplace(pre_map))
+    if face_work_routing != 1:
+        # A control on the imported open face-work contribution, before any
+        # pressure closure. It never changes a computed closed operator.
+        face_origin=named(named(inputs.origins[(anchoring,density)],'FACE_VIRTUAL_WORK'),'ROWS')
+        face_u=named(named(face_origin,'U'),'EXPANDED')
+        face_e=named(named(face_origin,'E_W'),'EXPANDED')
+        source_load=tree({'U':face_u,'E_W':face_e},lambda e:e.subs(numeric_overrides).xreplace(pre_map))
+        source_rows['U']=tuple(row+(face_work_routing-1)*load
+                               for row,load in zip(source_rows['U'],source_load['U']))
+        source_rows['E_W']+=(face_work_routing-1)*source_load['E_W']
     substitutions, maps, face_rows = {}, {}, {}
     for face in FACES:
         sub, fmap = build_face(inputs,anchoring,face,density,overrides,mu_override,velocity_override)
@@ -684,6 +778,31 @@ def dimensions(value):
     return sp.ImmutableMatrix(dimension(value))
 
 
+def reference_trace_dimensions(inputs, value):
+    """Typed zeros in the weighted triangular trace/response operators."""
+    result=dimensions(value)
+    pressure=dimension(value['PHYSICAL_PRESSURE_TARGET'])
+    normal=dimension(value['REFERENCE_NORMAL_MULTIPLIER'])
+    height=tuple(-a for a in normal)
+    weight=dimension(profile_bindings(inputs)[0].lhs)
+    impedance=dimension(next(iter(cases(inputs.values['dtn_flat_symbol']).values())))
+    def unit(v):return sp.ImmutableMatrix(v)
+    for key in ('TRACE_RECONSTRUCTION_RESIDUAL','CONSTANT_OPERAND','REFERENCE_VALUE_EQUATION',
+                'REFERENCE_VALUE_SOLVE','REFERENCE_VALUE_SOLVE_RESIDUAL'):
+        result[key]=unit(pressure)
+    for key in ('NORMAL_JET_COEFFICIENT','HEIGHT_CONSTANT','HEIGHT_PROFILE_COEFFICIENT',
+                'HEIGHT_RECONSTRUCTION_RESIDUAL'):
+        result[key]=unit(height)
+    for key in ('HEIGHT_FOURIER_DEFINITION','HEIGHT_FOURIER_KERNEL'):
+        result[key]=unit(tuple(a+b for a,b in zip(height,weight)))
+    for key,v in value.items():
+        if isinstance(v,sp.MatrixBase):
+            base=(0,0,0) if key.endswith('TRACE_OPERATOR') else impedance
+            result[key]=sp.Tuple(*(unit(tuple(a+(j-i)*b for a,b in zip(base,weight)))
+                                  for i in range(v.rows) for j in range(v.cols)))
+    return result
+
+
 @lru_cache(maxsize=131072)
 def grades(expression, epsilon, eta, sigma):
     """Structural multigrade support, including arbitrary-profile integrands.
@@ -742,7 +861,7 @@ def profile_bindings(inputs):
     return sp.Tuple(*equations)
 
 
-def emit(quantity, value, inputs, case=(), *, key=None):
+def emit(quantity, value, inputs, case=(), *, key=None, dimension_metadata=None):
     tag = 'PY_S11CC2_' + quantity
     if case:
         tag += '_' + '_'.join(str(c).replace('-','MINUS') for c in case)
@@ -750,8 +869,15 @@ def emit(quantity, value, inputs, case=(), *, key=None):
     if write_key in EMITTED_KEYS:
         raise ValueError(('duplicate write-key',write_key))
     EMITTED_KEYS.add(write_key)
+    if quantity == 'FOLD_SYMBOL_MAP' and dimension_metadata is None:
+        dimension_metadata=dimensions(value)
+        for face,record in value.items():
+            trace_units=reference_trace_dimensions(inputs,record['REFERENCE_TRACE_MAP'])
+            dimension_metadata[face]['REFERENCE_TRACE_MAP']=trace_units
+            dimension_metadata[face]['REFERENCE_PRESSURE_KERNEL_MATRIX']=trace_units['TWO_LEG_REFERENCE_RESPONSE']
+            dimension_metadata[face]['REFERENCE_PRESSURE_SECOND_SCATTERING_KERNEL']=trace_units['THREE_LEG_REFERENCE_RESPONSE'][2]
     body={'VALUE':value,'MULTIGRADE':grade_object(value,inputs),
-          'DIMENSION_L_T_M':dimensions(value)}
+          'DIMENSION_L_T_M':dimensions(value) if dimension_metadata is None else dimension_metadata}
     if quantity in ('CLOSED_SLAB_OPERATOR','CLOSED_COUPLING_KERNEL','SELF_ENERGY_INCREMENT'):
         body['COMPUTED_BRANCH_BINDINGS']=sp.Tuple(*(sp.Eq(k,v,evaluate=False) for k,v in COMPUTED_BINDINGS.items()))
         body['FOURIER_PROFILE_BINDINGS']=profile_bindings(inputs)
@@ -766,6 +892,52 @@ def control(inputs, case, baseline, name, **kwargs):
     emit(name+'_OPERAND',changed['increment'],inputs,case)
     emit(name+'_RESIDUAL',difference(changed['increment'],baseline['increment']),inputs,case)
     return changed
+
+
+@lru_cache(maxsize=4)
+def conservative_power_variation(inputs, case):
+    """Power from separately differentiated constrained energy terms and T.
+
+    BULK_ENERGY contains b's term-by-term variations under the material virtual
+    constraint, computed separately from its assembled slab operator. Summing
+    these source variations does not subtract any face term from a slab row.
+    This route tests external-work routing; it is not a second derivation of
+    b's energy basis or material constraint.
+    """
+    anchoring,density=case
+    fields=[wave_jet(inputs.a(f'u_{i}')) for i in range(1,4)]+[wave_jet(inputs.a('e_W'))]
+    rates=sp.ImmutableMatrix([sp.diff(value,TIME) for value in fields])
+    energy_terms={}
+    for label,term in named(inputs.origins[case],'BULK_ENERGY'):
+        vector=sp.ImmutableMatrix([*named(named(term,'U'),'EXPANDED'),named(named(term,'E_W'),'EXPANDED')])
+        energy_terms[str(label)]=inputs.physical_fields(vector)
+    stored=sp.ImmutableMatrix([sp.Add(*(row[i] for row in energy_terms.values())) for i in range(4)])
+    basis=inputs.energy[anchoring]
+    energy=sp.Add(*(row[4] if str(row[0]) in ('W_BG','MU_R_BG') else row[3] for row in basis[1:]))
+    energy=inputs.physical_fields(energy)
+    potential_action=-energy
+    action_anchor=sp.diff(potential_action,inputs.a('k_W'),fields[3],2)/inputs.eps
+    stored_anchor=sp.diff(stored[3],inputs.a('k_W'),fields[3])
+    action_to_row=sp.cancel(stored_anchor/action_anchor)
+    rho=inputs.density[(density,)][1]
+    # e_W is deltaW/W_0; differentiate the defining physical thickness field.
+    kinetic=inputs.eps**2*(rho*sum(v*v for v in rates[:3])+
+                          inputs.a('mu_W')*sp.diff(inputs.values['W_0']*fields[3],TIME)**2)/2
+    kinetic_action=sp.ImmutableMatrix([-sp.diff(sp.diff(kinetic,rate),TIME)/inputs.eps for rate in rates])
+    kinetic_rows=tree(action_to_row*kinetic_action,lambda e:retained_shape(e,inputs))
+    source_kinetic=named(inputs.origins[case],'KINETIC')
+    source_kinetic=inputs.physical_fields(sp.ImmutableMatrix([*source_kinetic[0],source_kinetic[1]]))
+    action_internal=kinetic_action-stored
+    conservative=tree(action_to_row*action_internal,lambda e:retained_shape(e,inputs))
+    return {'ENERGY_TERM_VARIATIONS':energy_terms,'KINETIC_ENERGY':retained_shape(kinetic,inputs),
+            'STORED_STIFFNESS_COEFFICIENT':stored_anchor,'ACTION_STIFFNESS_COEFFICIENT':action_anchor,
+            'ACTION_TO_ROW_MULTIPLIER':action_to_row,
+            'KINETIC_ACTION_ROWS':kinetic_action,'KINETIC_SOURCE_ROWS':source_kinetic,
+            'KINETIC_NORMALIZATION_RESIDUAL':difference(source_kinetic,kinetic_rows),
+            'CONSTRAINED_STORED_VARIATION_ROWS':stored,'KINETIC_STORED_ROWS':conservative,
+            'KINETIC_POWER':(rates.T*kinetic_rows)[0],
+            'STORED_POWER':(rates.T*stored)[0],
+            'KINETIC_STORED_POWER':(rates.T*conservative)[0]}
 
 
 def traction_pairing(inputs, case, model, *, flip=False):
@@ -796,10 +968,14 @@ def traction_pairing(inputs, case, model, *, flip=False):
     e_velocity=wave_jet(inputs.a('e_W_t'))
     slab_power=sum(r*v for r,v in zip(model['closed']['U'],velocities))+model['closed']['E_W']*e_velocity
     face_power=sum(r*v for r,v in zip(independent_force['U'],velocities))+independent_force['E_W']*e_velocity
-    kinetic_stored=slab_power-face_power
-    pairing=tree({'SLAB_POWER':slab_power,'KINETIC_STORED_POWER':kinetic_stored,
-                  'TRACTION_POWER':power,'FACE_GENERALIZED_POWER':face_power},lambda e:retained_shape(e,inputs))
-    residual=pairing['SLAB_POWER']-pairing['KINETIC_STORED_POWER']-pairing['TRACTION_POWER']
+    conservative=conservative_power_variation(inputs,case)
+    multiplier=conservative['ACTION_TO_ROW_MULTIPLIER']
+    pairing=tree({'SLAB_POWER':slab_power,'KINETIC_STORED_POWER':conservative['KINETIC_STORED_POWER'],
+                  'KINETIC_POWER':conservative['KINETIC_POWER'],'STORED_POWER':conservative['STORED_POWER'],
+                  'TRACTION_POWER':power,'FACE_GENERALIZED_POWER':face_power,
+                  'ACTION_TO_ROW_MULTIPLIER':multiplier,
+                  'TRACTION_ROW_POWER':multiplier*power},lambda e:retained_shape(e,inputs))
+    residual=difference(pairing['SLAB_POWER'],pairing['KINETIC_STORED_POWER']+pairing['TRACTION_ROW_POWER'])
     return tree(covectors,lambda e:retained_shape(e,inputs)),pairing,residual
 
 
@@ -1061,12 +1237,25 @@ def run():
             emit('ORDERING_EXTRACT_FIRST_OPERAND',aligned,inputs,case)
             emit('ORDERING_COMMUTATOR',difference(model['closed_kernel'],aligned),inputs,case)
             covectors,pairing,residual=traction_pairing(inputs,case,model)
+            conservative=conservative_power_variation(inputs,case)
+            conservative_dimensions=dimensions(conservative)
+            mechanical_dimensions=dimensions(conservative['KINETIC_SOURCE_ROWS'])
+            conservative_dimensions['KINETIC_NORMALIZATION_RESIDUAL']=mechanical_dimensions
+            conservative_dimensions['ENERGY_TERM_VARIATIONS']={
+                label:mechanical_dimensions for label in conservative['ENERGY_TERM_VARIATIONS']}
+            emit('TRACTION_CONSERVATIVE_VARIATION',conservative,inputs,case,dimension_metadata=conservative_dimensions)
             emit('TRACTION_MECHANICAL_CONTRIB',covectors,inputs,case)
             emit('TRACTION_SLAB_POWER_PAIRING',pairing,inputs,case)
-            emit('TRACTION_SLAB_POWER_PAIRING_RESIDUAL',residual,inputs,case)
+            power_dimension=dimensions(pairing['SLAB_POWER'])
+            emit('TRACTION_SLAB_POWER_PAIRING_RESIDUAL',residual,inputs,case,dimension_metadata=power_dimension)
             _,corrupt_pairing,corrupt_residual=traction_pairing(inputs,case,model,flip=True)
             emit('TRACTION_SIGN_OPERAND',corrupt_pairing,inputs,case)
-            emit('TRACTION_SIGN_RESIDUAL',corrupt_residual-residual,inputs,case)
+            emit('TRACTION_SIGN_RESIDUAL',corrupt_residual-residual,inputs,case,dimension_metadata=power_dimension)
+            routed=build_case(inputs,*case,face_work_routing=-sp.S.One)
+            _,routed_pairing,routed_residual=traction_pairing(inputs,case,routed)
+            emit('TRACTION_ROW_ROUTING_SOURCE_OPERAND',routed['open'],inputs,case)
+            emit('TRACTION_ROW_ROUTING_OPERAND',routed_pairing,inputs,case)
+            emit('TRACTION_ROW_ROUTING_RESIDUAL',difference(routed_residual,residual),inputs,case,dimension_metadata=power_dimension)
             whole_atoms=inputs.values['dtn_operator'].atoms(sp.Symbol)
             used=cas(model['increment']).atoms(sp.Symbol)&whole_atoms
             emit('DTN_WHOLEFORM_DEPENDENCE',sp.Tuple(*sorted((a for a in used if not a.is_commutative),key=str)),inputs,case)

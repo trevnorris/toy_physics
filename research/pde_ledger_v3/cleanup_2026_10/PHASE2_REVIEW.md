@@ -86,3 +86,40 @@ The items behind those counts:
 Stop with a short report: each fix and its commit, and the Part F counts (carried, resolved, superseded).
 Claude will verify the fixes against this list. Grok will re-check the STATUS carry-over and Part F only, since that
 is new content. Phase 3 starts after that.
+
+## Round 2: check of the F1–F6 fixes (`996eee4b`, `19042324`)
+
+**F1–F5: verified fixed** by Claude:
+- The d record (line 50) and c2 record (line 57) now mark the N6 repair as unreviewed.
+- The c2 row cites `f618178a` and the export `537d78fd`.
+- Both b and c2 tables now say "gradient-free".
+- The d record (line 58) uses the source's C3 wording.
+- STATUS (lines 13–14), the closeout (line 7) and the plan (lines 509–510) now carry the zero face drives.
+
+**F6: Grok re-checked the carry-over** ([phase2b_review_grok.txt](phase2b_review_grok.txt), prompt
+[phase2b_review_prompt.md](phase2b_review_prompt.md)). It found two misses, and Claude verified both:
+
+- **G1.** The FINDINGS Part F row at line 201 marks old STATUS lines 84–103 as **resolved**. But old line 89 carries
+  the **three N6 premise caveats** forward:
+  1. whether Φ is physically correct;
+  2. the `V` transform;
+  3. extracted-block leakage.
+
+  These are still open in `steps/S11c_c2_self_energy_fold.md:180–184, 203` and in
+  `_measurements/S11c_c2_N6_reconcile_disposition.md` §7.
+  **Fix:** split the row. The corrected test and the scoped covariance are **resolved**. The three premise caveats
+  are **carried**, owned by S11c-c2/d if reused. Add them to the STATUS open table.
+- **G2.** Part F (line 195) and STATUS (line 32) send the **full c2 self-energy cross-engine residual** to
+  `DEFERRED_HEAVY_RUNS.md`, but that file has no c2 entry: `grep -c -i "self-energy\|S11c-c2" DEFERRED_HEAVY_RUNS.md`
+  returns 0.
+  **Fix:** add a short entry to `DEFERRED_HEAVY_RUNS.md` stating what must run (≥64 GB, the assembled self-energy
+  operator's full cross-engine residual) and pointing at `steps/S11c_c2_self_energy_fold.md:32–34`. Or carry the
+  item in STATUS directly. Use one or the other.
+
+**Next:** apply G1 and G2, then go straight into **Phase 3** without stopping in between. Claude will verify G1 and
+G2 at the Phase 3 STOP.
+
+**Phase 3b, AGENTS.md:** the replacement text is in [AGENTS_replacement.md](AGENTS_replacement.md). Copy its content
+to the root `AGENTS.md`, unchanged and in its own commit, with the title line kept. This is a process policy, not
+physics-bearing: it changes no computation, premise, check or claim. So it gets a Claude review at the Phase 3 STOP,
+not a two-leg physics review.

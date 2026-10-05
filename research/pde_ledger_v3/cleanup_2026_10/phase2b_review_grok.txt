@@ -1,0 +1,52 @@
+I'll review the carry-over as a document check: first the old STATUS at `c8885c4f`, then Part F and the rewritten STATUS, quoting both sides for anything that would hide a live debt or overclaim a result.The old STATUS front door marks earlier S11c banners as historical. I'll inventory every still-open debt in that file before I look at Part F's dispositions.The old STATUS still names unpaid items under the partial closeout. Next I’ll read Part F and the rewritten STATUS against that list.Part F groups 62 items. I’ll check the resolved and superseded rows against the files they cite, and check the new STATUS sentences against those same sources.**NEEDS REVISION**
+
+Two live debts are closed or pointed at a register that does not list them. The rest of the carry-over holds.
+
+## 1. The three N6 premise caveats are marked resolved while their own disposition still says to carry them
+
+Part F row at `research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md:201` disposes old STATUS lines 84–103 as **resolved**: the corrected anchoring test and the scoped covariance. The same cell says that resolution leaves only the operand debt open.
+
+Those lines still contain a separate carry-forward. `git show c8885c4f:STATUS.md | nl -ba | sed -n '89p'` prints:
+
+```
+89 ⚠ **CARRY-FORWARD premise caveats (Reading B does NOT close — route to WL/comparator/step-record, ⛔ not pre-cleared):** (1) is Φ itself physically correct (derive from the actual material motion, not just faithfully implemented); (2) does face velocity `V` transform correctly (`V_E≡V_M` = BUILDER agreement, prediction uses `V_E` not `Φ(V_E)`); (3) extracted-block omitted-block leakage. `R_cov` can't exclude an error SHARED by the declared Φ + both routes.
+```
+
+The record Part F cites as the resolution still lists those three as open. `sed -n '148,155p' research/pde_ledger_v3/_measurements/S11c_c2_N6_reconcile_disposition.md | nl -ba -v 148` prints:
+
+```
+148 ## 7. CARRY OPEN — into the c2 step record
+151 - **The 3 per-engine N6 premise caveats** (Reading B does NOT close them —
+152   `_measurements/S11c_c2_N6_RESOLVED.md`): (1) is Φ itself physically correct ...
+154   of its own routes); (2) does face velocity V transform correctly ...
+155   uses `V_E`, not `Φ(V_E)`); (3) extracted-block omitted-block leakage.
+```
+
+The current step record repeats them as carry-forward for S11c-d at `research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md:180–184` and `:203`. The new `STATUS.md` open table names the operand debt, F/G, and the unreviewed sheet/N6 trace repair. It does not name these three premise checks. Reading B and the later covariance build are what the old line said do not close them.
+
+## 2. The deferred c2 self-energy residual is carried into a register that does not list it
+
+Part F row at `FINDINGS.md:195` marks the full c2 self-energy comparison **carried**, with `DEFERRED_HEAVY_RUNS.md` as the home. The c2 record sends the same job there. `sed -n '32,34p' research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md | nl -ba -v 32` prints:
+
+```
+32 > **CROSS-ENGINE (this box) = the N6 representation-invariance thread ONLY.** There is **no WL self-energy engine and
+33 > no self-energy comparator**; the assembled self-energy operator's full cross-engine residual is **DEFERRED**
+34 > (≥64 GB, with c1's four giants, `DEFERRED_HEAVY_RUNS.md`).
+```
+
+`DEFERRED_HEAVY_RUNS.md:9` says that file lists exactly what to re-run. Its section headings are only the b #89 / #90 / #89b runs and the c1 four-giant reconcile (`rg -n '^## ' research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md`). `rg -n -i 'self-energy|selfenergy|S11c-c2|S11c_c2|c2 residual' research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md` prints no matches. New `STATUS.md:32` points "full cross-engine composition" at that same file. The b residual and the c1 giants are in it. The self-energy residual, which the c2 record separates from those giants, is not.
+
+## What checked out
+
+The old STATUS debt lines outside Part F's cited ranges are historical restatements of items the table already carries (the b ≥64 GB heading at line 141, the exceptional-strata sentence at line 736, the S11b closure narrative). The line scan was a membership check of `OWED|DEBT|DEFERRED|UNRESOLVED|unreviewed|never computed` against the 62-row citation ranges.
+
+These dispositions match the files they cite:
+
+- Omega=3 stays unresolved: the balance report's 1 ppm floor is an empirical floor, the ratio is about 0.12, and the result is not a matched-speed loss number (`S11c_d_numerical_radiating_balance_report.md:1–5, 18`).
+- The uniform check is finite modes, nonzero current, and zero selected face drives, with method clearance only (`S11c_d_near_unity_uniform_continue_result.md:3–6, 119–121`). `STATUS.md:13–16` matches that.
+- The four repairs have scoped findings, and the direct `[0,2]` zero stays unresolved (`S11c_upstream_repair_review_joint_disposition.md:3–5, 36–41`). Composition is still open in `STATUS.md:20–22` and `:31`.
+- μ_S shear normalization is still open (`S11c_inertia_repair_report.md:27`; `S11c_d_end_resolvent_report.md:177–178`) and is in `STATUS.md:44`.
+- The sheet repair is unreviewed (`S11c_d_sheet_repair_report.md:9`). The export-review conflict is real: old line 101 says the fresh-Claude leg is done, and `S11c_c2_export_repair_rereview_adjudication.md:40–51` still says that leg is owed. Part F carries both.
+- S11c-a control-family keying is still owed (`S11c_a_interface_shape_derivatives.md:255–265`) and is in `STATUS.md:45`. The b sign conventions, #88 hardenings, #90 flags, and c1 giants are in `DEFERRED_HEAVY_RUNS.md:31–34` and `:117–151`.
+- The S10 non-author fidelity confirmation is supported (`lean/s10/FIDELITY_REVIEW.md:11–12, 78–79`). The L-control and `FORMALIZATION_POLICY.md` reviews stay carried (`STATUS.md:49`). Substrate pass 1 is recorded complete, and S1–S8 remain unbuilt (`SUBSTRATE_REQUIREMENTS.md:1–12`).
+- The uniform transverse result in `STATUS.md:10–12` matches `S11b_interface_coupling_law.md:74–81`, including nonnegative stiffness. The bounded S10/S11 Lean sentences match `lean/s10/FIDELITY_REVIEW.md:3–7` and `lean/s11/README.md:7–15`.

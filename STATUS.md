@@ -65,4 +65,4 @@ The [throat/EM notes](docs/light_em_investigation_handoff.md) remain **explorato
 S22/Q2 (with S12/Q3 connections), not adopted constitutive laws. Mixed numerical recovery, centre-drive
 implementation and new leakage workers remain parked. [Closeout, paused notes](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md).
 
-Cleanup: Phase 3 is prepared on local `cleanup/pruned` for its STOP review; **Phases 4–5 remain pending**. G1/G2 and the supplied AGENTS replacement are applied. Selection, checks and export-pin drift introduced during the inventoried period are in [FINDINGS, Phase 3](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#g-phase-3-selection-and-checks). No history rewrite or push. The archive tag `archive/pre-cleanup-2026-10-04` is unchanged and already on both remotes ([directive](research/pde_ledger_v3/CLEANUP_2026-10_directive.md)).
+Cleanup is complete: history rebuilt and pushed at `bdc181c0`; archive tag `archive/pre-cleanup-2026-10-04` is on both remotes; nine uniform-cache runs are kept on local disk ([preservation list](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#phase-5-preservation-list--keep-on-disk)).

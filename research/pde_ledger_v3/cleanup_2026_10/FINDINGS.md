@@ -61,9 +61,9 @@ Workstream refinements are organizational: 02 includes the early finite omega=1 
 
 **Question:** did the inherited equations and their consumers represent the stated action/face laws? [Repair review disposition, repair table](../_measurements/S11c_upstream_repair_review_disposition.md).
 
-- **CONDITIONAL:** saved repairs address inertia sign (`a74da30a`), mechanical-load orientation (`c643112a`), physical/reference pressure trace (`a05b05e3`) and thickness coordinate (**`3b52afcb`**). They have distinct domains and regeneration records; the coordinate diagnosis changed `W_bg e_W,t` to the physical `W0 e_W,t`. Sources: [inertia report](../_measurements/S11c_inertia_repair_report.md), [mechanical report, opening](../_measurements/S11c_mechanical_repair_report.md), [trace report, construction/checks](../_measurements/S11c_c2_trace_repair_report.md), [coordinate report, source repair](../_measurements/S11c_thickness_coordinate_repair_report.md).
+- **CONDITIONAL:** saved repairs address inertia sign (`a74da30a`), mechanical-load orientation (`c643112a`), physical/reference pressure trace (`a05b05e3`) and thickness coordinate (b **`3b52afcb`**; c2 **`f618178a`**, export **`537d78fd`**). They have distinct domains and regeneration records; the coordinate diagnosis changed `W_bg e_W,t` to the physical `W0 e_W,t`. Sources: [inertia report](../_measurements/S11c_inertia_repair_report.md), [mechanical report, opening](../_measurements/S11c_mechanical_repair_report.md), [trace report, construction/checks](../_measurements/S11c_c2_trace_repair_report.md), [coordinate report, source repair](../_measurements/S11c_thickness_coordinate_repair_report.md).
 - **UNRESOLVED:** overall nonuniform composition remains uncleared. Claude's scoped table says **“Clear on stated domain”**, **“Orientation clear; non-flat face-row content insufficient evidence”**, and **“Two-leg clear; three-leg mixed grade needs revision”** as applicable. Supplemental Grok's overall verdict is **“Needs revision”**, with scoped clear findings. Sources: [Claude disposition, table](../_measurements/S11c_upstream_repair_review_disposition.md), [joint disposition, opening/table](../_measurements/S11c_upstream_repair_review_joint_disposition.md).
-- **CONDITIONAL:** the separate Wolfram audit/repair found and repaired a reference-pressure double shift on its tested N6 domain; it is not a full self-energy/d engine. The d-internal sheet repair (`f9e28f5f`) resolves its bounded fixed-positive-frequency counterexample; its report explicitly calls the instruments **unreviewed**. Sources: [Wolfram repair, final paragraphs](../_measurements/S11c_wolfram_pressure_trace_repair_report.md), [sheet repair, opening and final section](../_measurements/S11c_d_sheet_repair_report.md).
+- **UNRESOLVED — unreviewed repairs:** the separate Wolfram audit/repair corrected a reference-pressure double shift by extracting the actual face-law reference-pressure map and solving its ordered inverse on the tested N6 domain. Its report says no review or comparator ran; it is not a full self-energy/d engine. The d-internal sheet repair (`f9e28f5f`) resolves its bounded fixed-positive-frequency counterexample; its report explicitly calls the instruments **unreviewed**. Sources: [Wolfram repair, final paragraphs](../_measurements/S11c_wolfram_pressure_trace_repair_report.md), [sheet repair, opening and final section](../_measurements/S11c_d_sheet_repair_report.md).
 - **OPEN — S11c-b/c2/d if reused:** direct mixed-term completeness and full cross-engine composition remain debts; see C2–C3 below. [Joint disposition, “Remaining mixed-term issue”](../_measurements/S11c_upstream_repair_review_joint_disposition.md).
 
 ### 04 — Numerical radiating track and omega=3 benchmark
@@ -169,3 +169,143 @@ The [Phase 1 review, verdict](PHASE1_REVIEW.md) supersedes the original Part E w
 - Scratch citations and Lean build dependencies follow the directive's specific Phase 3 rules. No blanket dependency closure applies to Tier 2.
 
 The original Phase 1 proposal remains at `174f4fa9`. The [review, C1–C8 and Part D](PHASE1_REVIEW.md) supplies the editorial decisions for Phase 2; Part B above remains the detailed reading guide.
+
+## F. STATUS debt carry-over
+
+The short STATUS now keeps the unfinished work visible without restarting it. This sweep covers the entire
+1,289-line `c8885c4f:STATUS.md`, including its superseded S11 and v2 sections. Repeated mentions of one
+obligation are grouped into one row; counts below are **groups of obligations, not files or physics results**.
+The old line numbers always refer to that revision (`git show c8885c4f:STATUS.md`), not today's STATUS.
+This is an **ESTABLISHED document inventory**, implementing [Phase 2 review, F6](PHASE2_REVIEW.md#fixes).
+
+Each row has exactly one editorial disposition. **carried** means OPEN under the owner or register linked
+from today's [STATUS, open questions and carry-overs](../../../STATUS.md); it is not scheduled work.
+**resolved** closes only the named historical task on the cited record's stated scope.
+**superseded** retires a queue, procedure or framing in favor of a named replacement; it does not prove its
+underlying physics. Conflicting closure claims are carried, not adjudicated in this cleanup.
+
+| Item | Old STATUS line(s) | Disposition | Evidence / current owner |
+| --- | --- | --- | --- |
+| Held-defect omega=3 loss number | 5 | carried | S11c-d if reopened. [Benchmark, controls][benchmark]: unresolved within an empirical floor, not a bound. |
+| Full d engine, response/FORM integration, blind WL/T7, final export and full physical work | 12, 17, 21–24, 31–32 | carried | S11c-d/e if reopened. [d record, intermediate results/ownership][d]; [builder, retained solver/export contract][builder]. Partial constructions do not close this list. |
+| “BUILD IN FLIGHT,” resume-until-complete, stabilization-first and old d review/build sequences | 7, 11–12, 17, 19–24, 26, 32, 39 | superseded | [PARTIAL closeout, opening/next step][closeout] and [cleanup directive, Phase 2 STOP][directive]. S12 is next; no automatic S11c continuation. |
+| Blanket “four upstream repairs UNREVIEWED” status | 13, 17 | superseded | [Joint disposition, scoped table and remaining issue][joint]; [b/c2 Changed after close][b]. Scoped reviews exist; full composition remains open, and the direct `[0,2]` entry is unjustified by order counting. |
+| d sheet repair's missing independent review | 13, 17 | carried | S11c-d if reused. [Sheet report, scope][sheet]; [d record, unreviewed repairs][d]. The separate Wolfram N6 trace repair is likewise unreviewed (F1), not silently included in the four reviewed repairs. |
+| μ_S shear-normalization debt | 17 | carried | S11b/S11c-b if reused. [Inertia report, final paragraph][inertia]; [end-resolvent report, lines 177–178][end]. It remains distinct from the inertia-sign repair. |
+| ≥64 GB b residual/all-case WL output, c1 giants/full residual, full c2 self-energy comparison; b #88 hardenings/re-adjudication and #90 sign/survivor flags | 13, 17, 24, 32, 37, 39, 121, 124, 139, 142–160, 167, 173–175, 183–198, 205 | carried | S11c-b/c1/c2/e if reused. [DEFERRED_HEAVY_RUNS, cross-engine residual and per-engine entries][heavy]; [b, established versus owed][b]; [c1, status of close][c1]. Includes term origins, P2a/P2b, skipped in-band controls, traction/DtN/energy/flat-leg and density caveats; no all-family agreement is inferred. |
+| b namespace/structure gaps, v2 N1/N2/N3 notes and absent emitted admissibility discriminator | 239 | carried | S11c-b/comparator maintenance. `c8885c4f:STATUS.md:239` lists 57 structure and 12 namespace gaps and §5 coverage; [b, owed cross-engine checks][b] is narrower than closure of them. No discharge found in this sweep. |
+| b kernel-build optimization | 196–197 | carried | S11c-b tooling if reopened; explicitly deferred at `c8885c4f:STATUS.md:197`; [heavy, PY #89][heavy] retains the costly control path. No optimization is scheduled. |
+| c2 carrier/source/Φ operand corroboration and inherited sign/density/traction/DtN/energy questions | 31, 37, 39, 42–43, 47, 106, 109 | carried | S11c-c2/d if reused. [c2, close status and cross-engine debt][c2]; [N6 disposition, Path B][n6]. Covariance or matched zeros do not settle operand agreement. |
+| F/G numerical re-grounding and dependent §5e/§3c interpretation/wording | 31–32, 37–38, 47, 63, 90, 97, 102, 106, 109 | carried | S11c-c2 if needed; [F/G deferral, disposition][fg] and [c2, Changed after close][c2]. Indefinitely paused, nonblocking, interpretations withdrawn; the old “values unaffected” sentence is pre-repair only. |
+| c2 publication repair's owed complete fresh-Claude leg | 101, 105–109 | carried | S11c-c2 record maintenance. **Conflicting closure statements**, retained below: [publication adjudication, verdict][export-review] still says owed; old STATUS line 101 says done. No new clearance asserted. |
+| c2 N6 wrong-anchoring test/spec correction and later covariance construction | 84–103, 105–109 | resolved | [c2, review/repair arc][c2] and [N6 disposition, earned versus not earned][n6] record the corrected test and scoped covariance. This does not resolve the separate operand debt. |
+| b carrier-harness re-author/relaunch/commit queue | 59, 65–75 | superseded | Old STATUS line 59 records b closed after the harness work; [b record, original verification/close][b] is the replacement. The former one-full-leg/partial-leg attempt remains history, not relabelled paired clearance. |
+| N6 harness output/budget repairs and stale production-output regeneration | 49–63, 69–82 | resolved | Old STATUS lines 50, 55–56 record the completed replacement; [N6 harness review, final verdict][n6-harness]; [c2, Wolfram engine and comparator provenance][c2]. Scoped historical task only. |
+| c2 T7 comparator, reconcile disposition and step-record writeup | 34–57, 69, 75, 90, 97 | resolved | [N6 disposition][n6] and [c2 record][c2] complete the Path-B writeup; unresolved operand families were carried, not declared agreement. |
+| c1 retro-review record corrections (density, grazing, independence and carry-forwards) | 112, 118 | resolved | [c1 corrections adjudication, corrected records and round 2][c1-corrections]. Record-only corrections; unchanged engines are not blanket closure of c1's remaining comparisons. |
+| c1 split/build/export-migration/comparator queue | 120–139 | superseded | [c1, status of close and engines][c1] records the later build and scoped comparison. Remaining ≥64 GB work is carried above. |
+| Five off-path export-chain pairs not checked by the new minimal consumer | 130 | carried | Export-chain maintenance; the deferred residual is recorded at `c8885c4f:STATUS.md:130`, citing `_measurements/f9c_pair_scan.py`. No new dependency closure or rerun is claimed. |
+| S11c-a full-axis control KEYING and abstract-symbol control-form characterization | 239, 241 | carried | S11c-a/b; [a record, standing limits/owed items][a]. Missing density/face axes and other control bookkeeping remain separate from its physics-family comparison. |
+| S11c-a FACE_SHIFT/current-freeze/projection comparator and representational adjudication queue | 241, 268–270, 293–305, 345–348, 377–396, 450 | resolved | [a record, fixes and cross-engine reconciliation][a], including `cccb4f9e` and close `3b552426`. The blanket-collapse “all agree” predecessor is withdrawn history, not the evidence. |
+| b admissibility/kinetic/advective/coupling verdicts and basis/jet-depth repair queues (#84–90) | 162–239 | superseded | [b, walk and established versus owed][b] and its Changed after close section replace the interim diagnoses. Old “kinetic gap”/on-box feasibility claims are not current; composition/control debts remain above. |
+| d profile-class/regime choice, governing spec and Fourier-reduction build plan | 27–32, 39 | resolved | [Shared physics, §§0–3][d-spec], [builder, retained contract][builder]. The design was supplied; completed scattering is not implied. |
+| S11c-e conversion/strong-edge/bench-optics work and eventual family roll-up | 17, 24, 32, 39, 167, 398–400, 601–609 | carried | S11c-e; [closeout, actual downstream uses][closeout] and [a, standing limits][a]. A PARTIAL note is not completion of the full family. |
+| Background-flow correction, frozen-wall and nonlinear-radiation limits | 485, 589–591, 601–608, 617 | carried | S12 for flow; [a, standing limits][a], [S11b, scope/limits][s11b], [plan, S12][plan]. The uniform result does not remove these qualifications. |
+| S11b coverage/keying, exceptional denominator domains and non-passive power-source obligation | 497, 583–591 | carried | S11b/interface-model owner; [S11b, permeable response and cross-engine comparison][s11b]. Different solved/undecided sets and regular-domain agreement are not full coverage; a non-passive model needs a named power source. |
+| S11b X-1 basis correction, unified step/card and export-integrity queue | 466–471, 537–538, 594–599 | resolved | [S11b, two engines/comparison][s11b] records `53fcd98d`, `8ddccb74`, `565b3fe8`. This is the uniform step's recorded closure. |
+| Uniform grazing/interface question formerly assigned from S11 to S11b | 484–485, 617 | superseded | [S11, ownership boundary after grazing audit][s11] and [S11b, scope/comparison][s11b] now distinguish an allowed channel from its actual use; nonuniform loss is still carried. |
+| S11 engine defects, undecided/omitted/spurious strata, witness gaps and obligation-4 coverage debt | 615–630, 726–730, 757–761, 783–785 | carried | S11 maintenance only if a downstream locus requires it; [DEFECT_REGISTER, WL entries][defects], [S11, strata-audit closure][s11]. Certified instruments and bounded Lean results do not erase CAS production gaps. |
+| Frozen T7 comparator, complex-k rank-drop mismatch and native-boolean rejection | 627, 630, 653–655, 787–791 | carried | S11 comparator maintenance; [REBUILD_HANDOFF, open items/physics filter][rebuild], [DEFECT_REGISTER, F7 and WL entry 5][defects]. No comparison is run by cleanup. |
+| S11 PY/WL sweep, D2/D4 memory-wall, spec/engine rebuild and census-instrument launch sequences | 621–625, 630–634, 640–724, 766–791, 807–845 | superseded | [S11, verification and strata-audit closure][s11] records the later completed campaigns and their limits. The historical compute-box fallback is not a new request; remaining defects are carried above. |
+| S10 non-author fidelity-review confirmation | 14 | resolved | [S10 fidelity review, fixed revision and independent reviews][s10-fidelity]: Codex author, fresh non-author Claude and Grok sessions. Reviews inspected source/diagnostics, not a fresh Lean/CAS/generator rerun. |
+| CLAUDE.md L control consistency review | 14, 17 | carried | Policy maintainers; [Phase 2 review, F6][p2-review]. Landed unreviewed in mixed-scope `c2bdb663`; cleanup edits neither CLAUDE.md nor its rules. |
+| lean/FORMALIZATION_POLICY.md consistency review | 14, 17 | carried | Policy maintainers; [Phase 2 review, F6][p2-review]. Contract review is not review of this policy's adoption. |
+| S10 production/export/ledger work beyond Lean, including three unlegged record corrections | 17, 653–655, 844 | carried | S10 maintenance; [REBUILD_HANDOFF, “What S10 still owes”][rebuild], [S10 fidelity review, stopping point][s10-fidelity]. No blanket discharge by Lean. |
+| S10 D12/naming, F3/F4 row/regeneration, twelve dimension-key refs and split spectrum vocabulary | 653–655, 819–822, 844 | carried | S10/export maintenance; [DEFECT_REGISTER, C19/C20][defects], [REBUILD_HANDOFF, four-item pass and physics filter][rebuild]. Conflicting “owed”/“ceremony” descriptions are retained below; no export edited. |
+| S9/S10 requirements-register pass 1 | 653–655, 844 | resolved | [SUBSTRATE_REQUIREMENTS, opening][substrate] explicitly records pass 1 complete. Later passes and the unbuilt substrate remain open; this closes the old capture task only. |
+| Comprehensive substrate requirements, S1–S8 delivery and curl-only material admissibility | 609, 627, 855–859 | carried | S1–S8/material audit; [SUBSTRATE_REQUIREMENTS, entries and remaining passes][substrate]. No substrate execution is inferred from the requirements list. |
+| Muonium dependency quarantine, PN geometry-independence and structural audit; species matching | 16–17, 883–885 | carried | S16 and later species/throat work; [muonium corrections, §§2–5][muonium], [DEFECT_REGISTER, D1][defects]. Numerical geometry is withdrawn; the audit is not done by this note. |
+| Remaining force sectors and real throat/holder/charge mechanism | 609–610, 627, 879–885 | carried | Q2/Q3/S22 and the plan's named sectors; [plan][plan], [closeout, paused exploratory notes][closeout], [DEFECT_REGISTER, A/C/D][defects]. No throat mechanism is adopted. |
+| Remote compute implementation, licensing/credit questions, smoke tests and acceptance | 13, 17, 717 | carried | Infrastructure owner; [remote requirements, §§8–10][remote-req] and [plan, §§7–9][remote-plan]. The former S11 D2 fallback is superseded above; the ≥64 GB S11c jobs remain deferred. Historical prices/configurations are not revalidated. |
+| Commit-scope/annex review and local history rewrite (including c2bdb663 bundle) | 12, 15, 17 | carried | Cleanup Phases 3–4; [directive][directive]. Nothing rewritten or pruned in this fix pass. |
+| Stale unpushed-commit counts and push/resume commands | 12, 17, 24, 27, 32, 39, 43, 47, 69, 80 | superseded | [Directive, archive and no-push rule][directive]; [Phase 2 review, F6][p2-review]. Current STATUS separates the reported work-branch push date from the already-pushed archive tag; no push performed here. |
+| MEMORY.md compaction (retain live pointers) | 17, 24, 32, 63, 69, 75, 82, 97, 103, 109, 115 | carried | Documentation maintainer; old STATUS at these lines is the record. Historical size estimates are not a current measurement. This is maintenance, not a physics gate. |
+| Temporary-only outputs/loaders and review/scratch evidence portability | 82, 90, 103, 109, 115, 627, 630, 795–801 | carried | Cleanup Phase 3a dependency selection; [directive, Tier 1/scratch rules][directive]. Keep-by-tier replaces blanket retention; no file moved or restored here. |
+| Reverted watchdog/agent-roles/process detour and old resource/review schedules | 68, 139, 151, 762–764, 795–801, 1225–1243 | superseded | Old line 68 records `e406cde6`; [AGENTS, standing execution/review policies][agents] and [directive, ground rules][directive] govern now. No watcher, deadline or review launched. |
+| v2 walkthrough/dimension-rewrite as the active front, and the old whole-ledger phase schedule | 834–846, 872, 895–917, 1001–1028, 1201–1212, 1250–1257 | superseded | [V3_STEP_PLAN, S11c close/S12][plan] and [PARTIAL closeout][closeout]. Distinct unresolved v2 contents are carried below; the old queue is not revived. |
+| The a-pin/throat-radius identification and its repair-before-walkthrough prerequisite | 874–876, 930–938, 1010–1012 | resolved | [DEFECT_REGISTER, A1][defects] records removal `407eed94`; no other length identification is thereby settled. |
+| v2 K_eta/T_Omega/mu_eta reduction-level adjudications and invisible T_w/Tw naming debt | 925–944 | carried | Dormant v2 dimension maintenance; [DIMENSION_REWRITE, §§7–8 and open routes][dim]. Same dimensions do not identify quantities. |
+| v2 missing per-quantity route tables and broader inventory/independent-derivation limits | 948–980, 1050–1056 | carried | Dormant v2 physics-verification work; [DIMENSION_REWRITE, §4-c1 and §§8–12][dim]. “Converted” is not “verified”; provisional reachability counts do not prove completeness. |
+| v2 stage027 shape/computed-vector reachability, then 027/021 conversion and harness hazards | 1001–1004, 1054–1067 | carried | Dormant v2 dimension maintenance; [DIMENSION_REWRITE, §§8–9][dim]. Includes the generator's axis-order failure before 035/036/037; no conversion scheduled. |
+| v2 small ablation driver and shared Wolfram DIM emitter | 1013–1028 | carried | Dormant v2 tooling; [DIMENSION_REWRITE, §12b][dim] and its two requirements documents. The obsolete frozen-fixture machinery stays retired; old STATUS lines 1130–1131 also retain the `run_all_audits.sh` exit-zero limitation, not validation evidence. |
+| Seven stage023 derivation routes | 1030–1045 | carried | Dormant v2: [DIMENSION_REWRITE, §12 WORK-023-*][dim] — MOMENT-CONVENTION, STAGE009-MOMENT0, D0-SEAM, STIFFNESS-REDUCTION, L1-L2-PROFILE-IDENTITY, CS-EVALUATION, SOURCED-PROVENANCE. W3/q_free are not added to this list. |
+| v2 035/036 independent routes and old waiver/impossibility claims | 1088–1092, 1133–1135 | carried | Dormant v2 dimension maintenance; [DIMENSION_REWRITE, §3b][dim]. 037's prototype is not completion of the remaining routes. |
+| v2 four surviving corpus findings (tier contradiction, false consumption, wrong loci, missing citations) | 1137–1143 | carried | Dormant v2 documentation; [v2 handoff, OPEN CORPUS FINDINGS][v2-handoff], [DEFECT_REGISTER, F][defects]. Retiring the census front did not discharge these findings. |
+| v2 Part VII constant-provenance firewall and unbuilt stage046/input-source claim | 1144–1164 | carried | Later integration/v2 maintenance; [Part VII split, stage046 row][part7], [DIMENSION_REWRITE, charter/open work][dim]. Claimed consumption is not an implemented dependency. |
+| v2 stage044-v2 dynamic sleeve and stage045 drain/return model choice | 1174–1183 | carried | Physical successors S7/S12/S22; [v3 plan][plan]. Original preparation remains [044][v2-044] / [045][v2-045]; no old implementation or pending material choice is silently approved. |
+| v2 manifest semantic core, archive/per-file split and stage045–049 completion | 1184–1199, 1212 | carried | Dormant v2/integration maintenance; [v2 handoff][v2-handoff], [Part VII split][part7]. The old “archived”/“not yet executed” conflict remains below. |
+| v2 stage043 exact-count/category discrepancy | 1214–1221 | carried | Dormant v2 record maintenance; [stage043 note, count discussion][v2-043] versus the script loci listed at `c8885c4f:STATUS.md:1215–1220`. Do not quote the note's range as reconciled. |
+| Old EM boundary operator's 144/144 unresolved record | 1268–1269 | carried | Q2/Q3/S22 boundary-model history; [EM handoff, boundary-operator verdict][em-handoff]. Exploratory newer notes do not turn it into a solved native mechanism. |
+| χ_Q / 54/5 reconciliation between pathA_22b and moving-throat ladder | 1278–1289 | carried | Later integration/Part VII; old STATUS lines 1286–1289 explicitly retain the mismatch. [Moving-throat ladder, Gate 4][ladder] and [Part VII split][part7] are context, not a new reconciliation. |
+| Retired v2 fingerprint-join, sidecar-custody and module-digest-as-proof procedures | 863–870, 1005–1007, 1078–1086, 1094–1129, 1165–1172 | superseded | [DIMENSION_REWRITE, charter/§4/§9][dim] and [development pipeline, posture][pipeline]. Their actual drift/coverage limits remain; no new trust framework is proposed. |
+
+**Disposition counts:** 41 carried · 10 resolved · 11 superseded = 62 grouped items.
+
+### Carry-over conflicts and questions
+
+These are **UNRESOLVED record conflicts**, not new physics findings or requests to restart work:
+
+1. **c2 export-review closure:** `c8885c4f:STATUS.md:101` says the fresh-Claude leg was done, while the
+   [publication adjudication, verdict][export-review] explicitly leaves it owed. Carry it until the reviewer
+   identifies the closing report; this pass does not choose between the records.
+2. **S10 export housekeeping:** [DEFECT_REGISTER, C20][defects] retains a four-item repair pass, while
+   [REBUILD_HANDOFF, physics filter][rebuild] calls F3/F4 regeneration ceremony and separately keeps unlegged
+   record claims. The short STATUS preserves the owner/pointers, not an instruction to execute either list.
+3. **v2 manifest archive:** old STATUS lines 1193–1199 call it both archived and not yet executed; the old census
+   paragraph at 1137–1143 has similar wording. Its surviving content is carried. A per-file decision belongs to
+   the named dormant workstream, not this S11c cleanup or an edit to the off-limits v2 tree.
+
+**Scope of this fix:** documentation and Git metadata only. No scientific functions, reviews, annex fetches,
+pruning or history rewrite. Phases 3–5 remain pending under the [directive][directive].
+
+[benchmark]: ../_measurements/S11c_d_numerical_radiating_balance_report.md
+[d]: ../steps/S11c_d_profile_conditioned_scattering.md
+[builder]: ../_measurements/S11c_d_sympy_builder_report.md
+[closeout]: ../steps/S11c_PARTIAL_CLOSEOUT.md
+[directive]: ../CLEANUP_2026-10_directive.md
+[joint]: ../_measurements/S11c_upstream_repair_review_joint_disposition.md
+[b]: ../steps/S11c_b_variable_coefficient_operator.md
+[sheet]: ../_measurements/S11c_d_sheet_repair_report.md
+[inertia]: ../_measurements/S11c_inertia_repair_report.md
+[end]: ../_measurements/S11c_d_end_resolvent_report.md
+[heavy]: ../DEFERRED_HEAVY_RUNS.md
+[c1]: ../steps/S11c_c1_curved_bulk_closure.md
+[c2]: ../steps/S11c_c2_self_energy_fold.md
+[n6]: ../_measurements/S11c_c2_N6_reconcile_disposition.md
+[fg]: ../_measurements/S11c_c2_FG_regrounding_deferred.md
+[export-review]: ../_measurements/S11c_c2_export_repair_rereview_adjudication.md
+[n6-harness]: ../_measurements/S11c_c2_N6_harness_build_review.md
+[c1-corrections]: ../directives/_measurements/S11c_c1_record_corrections_review_adjudication.md
+[a]: ../steps/S11c_a_interface_shape_derivatives.md
+[d-spec]: ../directives/S11c_d_SHARED_PHYSICS.md
+[s11b]: ../steps/S11b_interface_coupling_law.md
+[s11]: ../steps/S11_stray_longitudinal.md
+[defects]: ../DEFECT_REGISTER.md
+[rebuild]: ../REBUILD_HANDOFF.md
+[s10-fidelity]: ../lean/s10/FIDELITY_REVIEW.md
+[p2-review]: PHASE2_REVIEW.md
+[substrate]: ../SUBSTRATE_REQUIREMENTS.md
+[muonium]: ../../../notes/muonium_gravity_corrections.md
+[plan]: ../V3_STEP_PLAN.md
+[remote-req]: ../../../notes/remote_compute_requirements.md
+[remote-plan]: ../../../notes/remote_compute_plan.md
+[agents]: ../../../AGENTS.md
+[dim]: ../../pde_ledger_v2/manifests/DIMENSION_REWRITE.md
+[v2-handoff]: ../../pde_ledger_v2/_scratch/NEXT_SESSION.md
+[part7]: ../../pde_ledger_v2/notes/part7_integration_atomic_split.md
+[v2-044]: ../../pde_ledger_v2/notes/stage044_v2_unfreeze_prep.md
+[v2-045]: ../../pde_ledger_v2/notes/stage045_nonvariational_block_prep.md
+[v2-043]: ../../pde_ledger_v2/notes/stages/ledger_stage043_irreducible_count_range.md
+[em-handoff]: ../../../docs/em_analog_next_phase_handoff.md
+[ladder]: ../../pde_ledger/notes/stages/moving_throat_pde_completion_ladder.md
+[pipeline]: ../../../docs/development_pipeline.md

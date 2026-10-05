@@ -29,13 +29,28 @@ Read the [short closeout](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md)
 | Question | Owner / evidence |
 | --- | --- |
 | Direct c2 `[0,2]` entry is set to zero without an order-counting justification; whether the full response needs a nonzero term is unresolved. | S11c-c2/d if reused; [joint disposition, mixed-term issue](research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_joint_disposition.md). |
-| Full cross-engine composition and accepted scattering/work/loss | S11c-b/c1/c2/d if reopened; [canonical d limits](research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md). |
+| Full cross-engine composition, b sign/control debts, c1 giants and accepted scattering/work/loss | S11c-b/c1/c2/d if reopened; [DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md), [d limits](research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md). |
 | Conversion observable and strong-edge interpretation | S11c-e; [split and d weak-limit obligation](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md#actual-downstream-uses-and-next-step). |
 | Dynamical drain/return source, boundary data and any change to the drain-frozen symmetry result | **S12**; [plan, S12](research/pde_ledger_v3/V3_STEP_PLAN.md). No automatic transfer of the one-engine no-leak rule. |
 | Real defect profile, holder, response and charge-force sign | Q2/Q3/S22; [plan, charge phase/S22](research/pde_ledger_v3/V3_STEP_PLAN.md). |
 | Physical light/sound speed ratio | S20a calibration; S22/R10 proposed derivation; [plan, S20a/S22](research/pde_ledger_v3/V3_STEP_PLAN.md). |
-| Physical admissibility of the rotational-stiffness material | Separate material audit; [native interpretation, §§5.7, 14.3](docs/native_light_em_and_vortex_throat_interpretation.md). |
-| Muonium/gravity corrections, without withdrawn throat geometry | S16 and later species matching; [correction note, §§2–5](notes/muonium_gravity_corrections.md). |
+| Material admissibility and unbuilt substrate, including shear response and physical dimension | S1–S8; [SUBSTRATE_REQUIREMENTS, entries/passes](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). S9/S10 requirements pass 1 is recorded, but the substrate steps have not run. |
+| Muonium/gravity dependency quarantine, PN geometry-independence and structural audit | S16/species matching; [correction note, §§2–5](notes/muonium_gravity_corrections.md). No withdrawn throat geometry may supply a prediction. |
+
+The following are **OPEN** carry-overs, not instructions to resume. [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over) maps every grouped item to the old STATUS and its disposition.
+
+| Other debt | Owner / register |
+| --- | --- |
+| μ_S shear normalization | S11b/S11c-b if reused; [inertia report, final paragraph](research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md). |
+| S11c-a full-axis KEYING and control-form characterization | S11c-a/b; [a record, standing limits/owed items](research/pde_ledger_v3/steps/S11c_a_interface_shape_derivatives.md). |
+| F/G interpretation re-grounding; unresolved historical publication-review closure; unreviewed sheet/N6 trace repairs | S11c-c2/d if reused; [c2 record](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md), [Part F conflicts](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#carry-over-conflicts-and-questions). |
+| b control namespace/admissibility coverage, kernel optimization, five off-path export checks | S11c-b/export maintenance; [Part F, carry-over evidence](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). |
+| S10 CAS/export/naming debts and unreviewed record corrections; S11 deferred loci/T7 checks; S11b comparison/passivity limits | S10/S11/S11b maintenance; [DEFECT_REGISTER, C19/C20 and WL entries](research/pde_ledger_v3/DEFECT_REGISTER.md), [REBUILD_HANDOFF, owed-item sections](research/pde_ledger_v3/REBUILD_HANDOFF.md), [S11b scope](research/pde_ledger_v3/steps/S11b_interface_coupling_law.md). Lean closure does not discharge these. |
+| Review owed for CLAUDE.md L control and lean/FORMALIZATION_POLICY.md (`c2bdb663`) | Policy maintainers; [Phase 2 review, F6](research/pde_ledger_v3/cleanup_2026_10/PHASE2_REVIEW.md). Non-author S10 fidelity review is confirmed separately. |
+| ≥64 GB remote compute setup and outstanding licensing/acceptance questions | Infrastructure owner; [plan](notes/remote_compute_plan.md), [requirements, §§8–10](notes/remote_compute_requirements.md). Planning only; no run authorized here. |
+| Earlier v2 dimension, provenance, integration and normalization debts | Dormant v2 maintenance; [DIMENSION_REWRITE, §§8–12](research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md), [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). Not a revived v2 queue. |
+| Remaining model gaps, including species identity and old EM boundary-operator limitations | Named owners in [DEFECT_REGISTER](research/pde_ledger_v3/DEFECT_REGISTER.md); Q2/Q3/S22 and later matching, with [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over) retaining historical limits. |
+| Memory-note compaction and temporary-path evidence portability | Documentation maintenance / cleanup Phase 3; [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). No live-memory size remeasurement or file pruning here. |
 
 ## Next and paused work
 
@@ -47,4 +62,4 @@ The [throat/EM notes](docs/light_em_investigation_handoff.md) remain **explorato
 S22/Q2 (with S12/Q3 connections), not adopted constitutive laws. Mixed numerical recovery, centre-drive
 implementation and new leakage workers remain parked. [Closeout, paused notes](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md).
 
-History is preserved in `archive/pre-cleanup-2026-10-04`; the cleanup record is under [cleanup_2026_10/](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md).
+Cleanup: Phase 2 fixes await review; **Phases 3–5 pending**. `ledger-v3-rebuild` still awaits the local history rewrite. No cleanup push; the work branch was last pushed on 2026-09-30 as reported in [F6](research/pde_ledger_v3/cleanup_2026_10/PHASE2_REVIEW.md). The archive tag `archive/pre-cleanup-2026-10-04` is already on both remotes ([directive, opening](research/pde_ledger_v3/CLEANUP_2026-10_directive.md)).

@@ -1,0 +1,174 @@
+I'll review these ledger records against the sources they cite, starting with the cleanup directive and the cited source reports before reading the records themselves.The Phase 2 instructions name the claim boundaries. Next I’ll pull the three commits and read the sources those records cite before looking at the records.The records cite a fixed set of reports. I’ll read those reports and the repair verdicts before judging whether the new wording matches them.Auto-compacting conversation (81% full)...
+Conversation compacted.
+The review is still open. I am checking the remaining claim mismatches against the cited sources, then I will write the verdict.**NEEDS REVISION**
+
+Six claim mismatches. Each one would let a later step treat something as established that the cited source does not establish, or would drop a result the source still states. Read-only check of `8e0a8ee1` against `git diff c8885c4f 8e0a8ee1`. No files were changed.
+
+## 1. The Wolfram N6 pressure-trace repair is stated as a conditional result, and the report says no review has run
+
+The d record and the c2 “Changed after close” section classify this repair with the scoped repairs and name only the sheet repair as unreviewed. They also describe a domain check, not the equation change.
+
+Record, `research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md` line 50:
+
+> **CONDITIONAL:** the separate Wolfram N6 pressure-trace repair is limited to its tested representation domain, not a full Wolfram self-energy engine. The d-internal sheet repair resolves its fixed-positive-frequency counterexample but is explicitly **unreviewed**.
+
+Record, `research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md` line 57:
+
+> **CONDITIONAL:** the later blind Wolfram pressure-trace repair (`5acfdf30`) checks the N6 representation domain, not a full Wolfram self-energy engine or cross-engine composition.
+
+Source, `research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_repair_report.md` lines 3–5 and 78–80:
+
+> Native c2 now extracts the reference-pressure evaluation map from its actual face law and solves its ordered inverse before filling pressure and normal-jet slots.
+>
+> This is a repair of the existing c2 N6 instrument, not a full c2 self-energy or d engine. No review, comparator, recurring scheduler or push has run.
+
+The audit that prompted that repair, `research/pde_ledger_v3/_measurements/S11c_wolfram_repair_audit_report.md` line 16:
+
+> Reference/physical pressure trace | PRESENT: c2 N6 assigns its physical-face pressure response to a reference-pressure slot and shifts it again.
+
+```text
+nl -ba research/pde_ledger_v3/_measurements/S11c_wolfram_pressure_trace_repair_report.md | sed -n '1,11p;75,83p'
+nl -ba research/pde_ledger_v3/_measurements/S11c_wolfram_repair_audit_report.md | sed -n '12,17p'
+nl -ba research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md | sed -n '50p'
+nl -ba research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md | sed -n '57p'
+```
+
+The publication commit `5acfdf30` matches the report. The missing facts are the literal “No review … has run” and the change itself: the ordered inverse of a double reference-pressure shift. A later step can treat this operator as reviewed conditional support of the same kind as the four scoped repairs.
+
+## 2. The c2 thickness row names a commit that does not edit the c2 script
+
+Both “Changed after close” tables give the thickness repair as `3b52afcb`. That commit is the b source repair. The c2 kinetic replacement is a different commit.
+
+Record, `research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md` line 49 (the same row is `S11c_b_variable_coefficient_operator.md` line 42):
+
+> `3b52afcb` — thickness coordinate | Uses physical `deltaW=W0*e_W`, replacing `W_bg*e_W` in the relevant kinetic/rate factors.
+
+`git show --name-only --format='' 3b52afcb` lists `research/pde_ledger_v3/scripts/S11c_b_brane_operator_sympy_audit.py` and does not list the c2 script. The thickness report itself separates the commits (`research/pde_ledger_v3/_measurements/S11c_thickness_coordinate_repair_report.md` lines 63 and 161):
+
+> The source repair is committed at **3b52afcb**.
+>
+> The export-check preparation is committed at **f618178a**.
+
+`git show f618178a -- research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py` replaces the c2 kinetic term:
+
+```text
+- inputs.a('mu_W')*(inputs.values['W_bg']*rates[3])**2)/2
++ inputs.a('mu_W')*sp.diff(inputs.values['W_0']*fields[3],TIME)**2)/2
+```
+
+On the b record, `3b52afcb` is the source commit the report names. On the c2 record, a later step that opens only `3b52afcb` will not see the c2 kinetic rewrite. The published c2 export of that family is `537d78fd` (same report, line 270).
+
+## 3. The inertia clearance domain drops the gradient-free limit
+
+Record, `research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md` line 39 and `S11c_c2_self_energy_fold.md` line 46:
+
+> Claude: **“Clear on stated domain; fold ordering not computed”** for stationary symbolic thickness, constant thickness modulus and both density rules.
+
+Source, `research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_disposition.md` line 24:
+
+> Independent action and four source-extracted native functions agree for gradient-free test energy, stationary symbolic W_bg, constant mu_W and both density rules. Full material-constraint fold remains source-inspected only.
+
+Same file, lines 100–101:
+
+> Its corrected stub remains valid only for that gradient-free test.
+
+```text
+nl -ba research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_disposition.md | sed -n '22,27p;99,102p'
+nl -ba research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md | sed -n '46p'
+```
+
+The quoted verdict words match. The stated domain does not. Claude’s evidence is a gradient-free test energy, and the material-constraint fold was source-inspected only. The records’ Grok sentence (“helper/domain and shared-perturbation limits”) does not put the gradient-free limit back. A later step can treat “clear on stated domain” as covering stationary symbolic thickness with gradients.
+
+## 4. The d record upgrades scoped receiving into three-field regularity
+
+Record, `research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md` line 58:
+
+> The handoff records positive end-current weights, first-order flux cancellation and scoped three-field receiving regularity.
+
+Source, `docs/light_em_investigation_handoff.md` line 42:
+
+> Accepted finite S11c findings remain intact: native end flux has positive G0/Gref and K1 = 0; scoped receiving regularity excludes the recorded C3 real-axis poles. Neither is a full field, full work balance or leakage factor.
+
+The receiving result the handoff cites, `research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue2_result_record.json`, `scientificConclusion`:
+
+> Full five-field transverse poles and matched waves remain. U_B has zero three-row receiving response in that ordinary weighted class only.
+
+Its limits include “No physical nonuniform work balance or leakage factor” and “K1=0 removes only linear flux obstruction.” Status is `ACCEPTED_SCOPED_SOURCE_PROJECTION_CROSS_FLUX_AND_REAL_AXIS_C3_REGULARITY`.
+
+```text
+nl -ba docs/light_em_investigation_handoff.md | sed -n '42p'
+nl -ba research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md | sed -n '58p'
+python3 -c 'import json; d=json.load(open("research/pde_ledger_v3/_measurements/S11c_d_first_order_receiving_regular_continue2_result_record.json")); print(d["status"]); print(d["scientificConclusion"]); print(d["limits"])'
+```
+
+“Scoped three-field receiving regularity” is a larger claim than C3 real-axis pole exclusion plus a zero three-row response in one weighted class, and the same conclusion says the five-field poles remain. The next sentence of line 58, that none of this is complete work or leakage, matches the handoff. The positive claim does not. `FINDINGS.md` line 83 keeps the handoff’s own wording (positive G0/Gref, K1 = 0, C3 pole exclusion).
+
+## 5. The front door drops the uniform check’s zero face drives
+
+The uniform result’s headline is finiteness, nonzero current, and zero selected face drives. STATUS, the closeout’s stand paragraph, and the plan’s S11c summary keep only finiteness. STATUS puts that sentence under “What later work may use.”
+
+Source, `research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_result.md` lines 3–6 and 38:
+
+> Both transverse polarizations remain finite, carry nonzero current and have zero selected face drives at the tested effective sound speeds on both sides of, and at, their modal/acoustic matches.
+>
+> All 1,536 named face-channel records have literal exact-zero selected rows and zero numerical relative residual.
+
+STATUS.md lines 13–14:
+
+> a later SymPy check remains finite at the tested light/sound speed matches with the bulk at rest and other inputs fixed.
+
+Closeout, `research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md` line 7:
+
+> A later SymPy check remains finite at tested light/sound speed matches with the bulk at rest; its method was reviewed, its executed result was not freshly cross-checked.
+
+Plan, `research/pde_ledger_v3/V3_STEP_PLAN.md` lines 509–510:
+
+> The tested uniform speed matches remain finite; the held-profile omega=3 benchmark remains numerically unresolved.
+
+```text
+nl -ba research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_result.md | sed -n '3,7p;38,39p'
+nl -ba STATUS.md | sed -n '8,15p'
+nl -ba research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md | sed -n '7p'
+nl -ba research/pde_ledger_v3/V3_STEP_PLAN.md | sed -n '508,511p'
+```
+
+The method limit is faithful in all three: cleared method, no fresh review of the executed result, and the result file’s lines 119–121 still say both verdicts are **CLEAR FOR THIS SELECTED UNIFORM METHOD** with “no new independent worker/result review.” The d record body (lines 9 and 23), the FINDINGS opening (line 9), and the paper (lines 38–39) keep the zero drives. The three summaries that later work is told to use do not.
+
+## 6. The new STATUS open list drops the shear-normalization debt
+
+The old front door still named it open. Later measurement reports, including ones written with the repairs, still say it remains open. The new 49-line STATUS open table (lines 28–37) does not, and none of the new S11c records restates it.
+
+Old `STATUS.md` at `c8885c4f`, line 17, inside the owed list:
+
+> **μ_S shear-normalization debt OPEN**
+
+`research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md` line 27:
+
+> Supplied §1 premises, the separate shear normalization, and cross-engine response/operand debts remain open.
+
+`research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_report.md` lines 177–178:
+
+> The shear-normalization and c2 cross-engine operand/sign debts remain open.
+
+```text
+git show c8885c4f:STATUS.md | nl -ba | sed -n '17p'
+nl -ba research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md | sed -n '27p'
+nl -ba research/pde_ledger_v3/_measurements/S11c_d_end_resolvent_report.md | sed -n '177,178p'
+rg -n 'shear-normalization|shear normalization' STATUS.md research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md
+```
+
+The last search returns no matches. The October 4 banner on the old STATUS superseded the “NEXT / BUILD IN FLIGHT” work queue. It did not discharge this debt. “Full cross-engine composition” on the new open table covers the operand residual. It does not name shear normalization. F/G re-grounding is still stated as not discharged in the c2 record at line 53, which STATUS links, so that one is not lost the same way.
+
+## Checked and found sound
+
+**Mixed term.** `research/pde_ledger_v3/scripts/S11c_c2_selfenergy_fold_sympy_audit.py` lines 409–417 set `z_three[0,2]` to the literal `0` and keep `second = (three_inverse*z_three)[0,2]`, then differentiate in `eta` and `sigma` and multiply by `eta*sigma`. `retained_shape` at lines 665–668 keeps grades `a<=1` and `b<=1`, so `eta*sigma` stays. The joint disposition lines 36–41 say the same thing and that the zero cannot be dismissed as second order. The d record (line 48), closeout (line 25), c2 record (line 55), STATUS (line 30), the plan (lines 524–527), the paper (lines 69–72), and the FINDINGS opening (line 13) all say the direct entry is zero, the iterated product is kept, order counting does not justify the zero, and whether the complete closed response has a nonzero direct term is unresolved. No record says the closeout’s old “omits a direct mixed height–slope contribution.”
+
+**Uniform body, benchmark, clean condition.** The d record lines 23–25 keep the model point, 1,536 zero face channels, LEFT `sqrt(3/2)`, RIGHT `sqrt(150/101)`, and **CLEAR FOR THIS SELECTED UNIFORM METHOD** with no fresh result review. The benchmark table (lines 33–42) matches the report: baseline −1.773911 / +1.633609 through regulator-halved −0.608218 / +0.554792 ppm, empirical 1 ppm floor, columns 1 and 4 within 0.000012 ppm, both replacement reviewers **NEEDS REVISION**. The clean-condition paragraph keeps one engine, `MIXED 0` and `WRONG_SIDE 0`, Claude **“not clear.”**, Grok **“not cleared.”**, and the drain-frozen no-leak rule as open to S12.
+
+**Repair quotes and original verification text.** The four Claude phrases in the tables match the disposition table lines 24–27, including “Three-leg mixed grade needs revision.” Grok’s overall **“Needs revision”** is stated, and the records say the reviews are not paired clearance and not production scattering validation. `git diff -U0 c8885c4f 8e0a8ee1` for the b and c2 records is insertion-only (`@@ -32,0 +33,13` and `@@ -39,0 +40,19`). Both new sections say the original verification describes the pre-repair version. The c2 record line 53 limits “VALUES are unaffected” to the pre-repair operator. The mechanical “what changed” sentence matches the mechanical report’s opening.
+
+**Plan and downstream dependencies.** The S11 section is lines 392–573. `rg` for `NEXT` and `in flight` inside it returns nothing. The only “in flight” in the plan file is line 22, the general phrase “caught in flight,” outside S11. S12 starts at line 576 as the next planned step. S22 item 1 remains “response/form remains PARTIAL (S11c-c2/d); physical magnitude needs the interior (R1)”; items 2 and 3 remain S11b and S11b+S5–S7; item 4 remains “as (1)”. The charge preamble (lines 846–849) says PARTIAL did not establish a linear charge holder and that a loss number is not a prerequisite. The closeout lines 29–33 say the same.
+
+**Paper and macros.** `research/pde_ledger_v3/paper/macros.tex` lines 16–20 set `\showstageverificationfalse` and suppress a field named Verification. `rg Verification research/pde_ledger_v3/paper/parts/part01_light.tex` returns no matches. The new S11c section uses `\claimstatus{PARTIAL: no accepted nonuniform light-loss number}` and ordinary paragraphs. Its limits (stiffness, no defect confinement, method-not-result, the −0.608218 / +0.554792 ppm pair, **NEEDS REVISION**, pre-repair b/c2, the `[0,2]` zero, the unresolved direct term, the clean-condition quotes, and the owners) are in the main text. It also keeps “not driving the bulk” for the uniform check. It does not claim the Wolfram N6 repair was reviewed.
+
+**Other rewrites.** The MacCullagh essay keeps uniform confinement inside the supplied linear model and leaves nonuniform confinement and rotational admissibility open. The S10 record and `lean/s11/README.md` replace the stale “pending / in progress / next increment” language with the closure reviews (S10 six-family contract both CLEAR; S11 F1–F4 and P1–P4 CLEAR) and keep application debts and the finite-solve sensitivity separate from the S11c-d loss result. The d record’s fixed-point MemoryError, the 645-unknown conditional claim, the rank-zero open-thickness scope, and the unreviewed sheet repair (`f9e28f5f`) match their reports. The local-action pair stays Claude **NEEDS REVISION** / Grok **CLEAR**, and the flux and receiving reviews stay Claude-only source-build clearance.

@@ -13,3 +13,86 @@ that constrains every later sector.
 \input{steps/S11_stray_longitudinal}
 
 \input{steps/S11b_interface_coupling_law}
+
+\section{S11c: Light at a Nonuniformity --- Partial}
+\label{step:S11c}
+\claimstatus{PARTIAL: no accepted nonuniform light-loss number}
+
+S11c asked how much light escapes into other motion when the brane's
+thickness or material properties change. Both reflected and transmitted
+transverse light count as survival. The equations contain conversion
+channels, but this campaign did not obtain a reliable loss fraction at a
+defect. The canonical account is
+\StageFile{steps/S11c_d_profile_conditioned_scattering.md}; the short handoff is
+\StageFile{steps/S11c_PARTIAL_CLOSEOUT.md}.
+
+\paragraph{What is established, conditionally.}
+On the uniform background, light decouples from the bulk in the stated
+linear model. Independent SymPy and Wolfram constructions support S11b's
+result, with the coefficient identification and review limits recorded in
+\StageFile{steps/S11b_interface_coupling_law.md} (transverse mode, comparison
+and operational note). Stable real-frequency propagation requires
+nonnegative transverse stiffness; a uniform result does not establish
+confinement around a defect.
+
+A later SymPy check found two selected light polarizations finite, carrying
+current and not driving the bulk at the tested light/sound speed matches.
+It fixes the bulk at rest, frequency \(\omega=3\), tangential momenta
+\((1/5,1/10)\), held profiles and the bulk-density convention. The exact
+matching sound speeds are \(\sqrt{3/2}\) on the left and
+\(\sqrt{150/101}\) on the right. Claude and Grok cleared the selected method;
+there was no fresh independent review of the executed result. The finite
+samples and selected limits do not establish a complete mode census or
+interval-wide regularity. See the coverage and limits in
+\StageFile{_measurements/S11c_d_near_unity_uniform_continue_result.md}.
+
+\paragraph{What is unresolved.}
+The held-profile \(\omega=3\) scattering benchmark used rest bulk, the same
+held-profile/density conventions and tangents, and a selected phase-speed
+ratio approximately \(0.12\); the bare S9 coefficient ratio is separately
+\(0.1\). Ten finite solves completed. In the final enlarged-domain,
+regulator-halved setting, the two small signed current deficits were
+\(-0.608218\) and \(+0.554792\) ppm. They lie within the empirical
+\(1\) ppm numerical floor. That floor is \emph{not} a physical upper bound,
+and the apparent gain is not evidence of a physical energy source.
+Refinement/domain sensitivity and unfinished checks leave the result
+\textbf{UNRESOLVED}. Both replacement reviewers returned
+\textbf{NEEDS REVISION}; no matched-speed defect result follows. See the
+signed-current table and controls in
+\StageFile{_measurements/S11c_d_numerical_radiating_balance_report.md}.
+
+\paragraph{Equation and interpretation limits.}
+Four repairs to inertia, work orientation, pressure trace and thickness
+coordinates have scoped review support, not full nonuniform-composition
+clearance. The original b/c2 verification describes pre-repair equations;
+their records' ``Changed after close'' sections carry the later limits.
+The c2 fold sets the direct three-leg \([0,2]\) entry to zero while keeping
+the iterated contribution. Retaining \(\eta\sigma_W\) means order counting
+does not justify that zero. Whether the complete closed response needs a
+nonzero direct term remains \textbf{UNRESOLVED}; no benchmark correction
+has been established. See ``The remaining mixed-term issue'' in
+\StageFile{_measurements/S11c_upstream_repair_review_joint_disposition.md}.
+
+The clean-condition packet measured a symmetry selection rule on SymPy
+only. Its no-leak interpretation requires the drain frozen; it does not
+transfer to live conversion. The broader packet remained uncleared
+(Claude: ``not clear.''; Grok: ``not cleared.''). See round~5 of
+\StageFile{directives/_measurements/S11c_d_clean_condition_review_disposition.md}.
+Uniform confinement is derived within the supplied model; nonuniform
+confinement and the material admissibility of its rotational stiffness
+remain open. Intermediate source, packet, current and receiving checks do
+not replace a complete physical work and outgoing-power balance.
+
+\paragraph{Handoff.}
+S12 is the next planned subject: dynamical bulk-to-brane order conversion
+and its separate boundary data. It does not require a numerical S11c loss
+factor. Equation/computation debts stay with S11c-b/c2/d if reopened;
+S11c-e owns the conversion observable and strong-edge interpretation.
+Q2/Q3/S22 owns real throat support and charge response; S22/R10 owns the
+proposed speed-ratio derivation, with calibration retained in S20a.
+S22's conversion/birefringence tests need nonuniform response and a supplied
+profile, not a loss number presumed from this partial close.
+These ownership boundaries are in \StageFile{V3_STEP_PLAN.md} (S12, charge
+preamble, S20a and S22). The throat/EM notes indexed in
+\StageFile{docs/light_em_investigation_handoff.md} at the repository root
+remain exploratory, paused inputs to S22/Q2, not adopted material laws.

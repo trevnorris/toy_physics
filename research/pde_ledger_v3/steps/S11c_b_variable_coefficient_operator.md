@@ -30,6 +30,19 @@ says so.
 > whole-row SIGN conventions (kinetic −K PY vs +K WL; face generalized-force) and #90's two flags (closure-fold sign;
 > uniform-limit Λ survivor) remain **cross-engine-UNVALIDATED**.
 
+## Changed after close
+
+**CONDITIONAL — repaired equations, scoped review only.** The original verification above and below describes the **pre-repair version**, not a fresh sign-off on today's operators. The original text is preserved as history. The [current S11c closeout](S11c_PARTIAL_CLOSEOUT.md) is PARTIAL; its old continuation instructions do not schedule work.
+
+| Repair | What changed and where | Review scope and literal verdict |
+| --- | --- | --- |
+| `a74da30a` — inertia | Corrected the action-based inertia sign; propagated through b/c1/c2/d. [Inertia report, opening/checks](../_measurements/S11c_inertia_repair_report.md). | Claude: **“Clear on stated domain; fold ordering not computed”** for a **gradient-free test energy**, stationary symbolic thickness, constant thickness modulus and both density rules; the full material-constraint fold was **source-inspected only**. Grok later supplies scoped inertia/fold support, with helper/domain and shared-perturbation limits. |
+| `c643112a` — mechanical load | Corrected the orientation of external face work in mechanical rows. [Mechanical report, opening/checks](../_measurements/S11c_mechanical_repair_report.md). | Claude: **“Orientation clear; non-flat face-row content insufficient evidence”**. Grok adds non-flat work cases and controls; physical assembly routing is source-inspected, centre dynamics/full c2 power unaccepted. |
+| `a05b05e3` — pressure trace | Separates physical face pressure from its reference-plane trace in c2; b supplies the pressure slots consumed by that fold. [Trace report, construction and full regeneration](../_measurements/S11c_c2_trace_repair_report.md). | Claude: **“Two-leg clear; three-leg mixed grade needs revision”**. Grok supports the stated linear trace domain, not the complete two-transfer operator. |
+| `3b52afcb` — thickness coordinate | Uses physical `deltaW=W0*e_W`, replacing `W_bg*e_W` in the relevant kinetic/rate factors. [Coordinate report, source repair](../_measurements/S11c_thickness_coordinate_repair_report.md). | Claude: **“Clear on stated domain”**. Grok checks the map/both density rules; it does not execute full c2 power. No new varying-modulus, advection or centre-kinetic result follows. |
+
+The literal Claude conclusions are in the [first disposition, repair table](../_measurements/S11c_upstream_repair_review_disposition.md). Grok's overall verdict is **“Needs revision”**, with the scoped support and limits in the [joint disposition, evidence table](../_measurements/S11c_upstream_repair_review_joint_disposition.md). Its supplemental domains were not automatically cleared by both reviewers. **UNRESOLVED:** full nonuniform composition and the deferred cross-engine residual remain; these reviews are not production scattering validation.
+
 ## What the step computes
 On the S11c background ansatz (in-plane-varying thickness `W_bg(y)=W̄₀[1+η w₁(ξ)]`, response modulus `μ_R,bg(y)`, two
 density representatives ρ4D/ρbr, two anchorings LAB_HELD/MATERIAL_ADVECTED), S11c-b computes: (1) the **§3a energy

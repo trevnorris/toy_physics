@@ -1,4 +1,7 @@
-# Deferred heavy runs — re-run these when a bigger box is available
+# Deferred heavy runs — resource limits and unfinished computations
+
+Entries distinguish memory limits, symbolic runtime limits, and the results
+that depend on them.
 
 Some in-band engine self-checks OOM the current **30 GB** dev box (the un-reduced variable-coefficient
 operators are ~50k+ LeafCount and several are held/expanded at once). Where that happens we run a memory-fitting
@@ -31,6 +34,13 @@ of headroom to be safe. Watch RSS; a Mathematica kernel can balloon and orphan �
 > re-adjudication + the 2 owed control-hardenings.**
 
 ---
+
+## S11c-c2 — assembled self-energy cross-engine residual (OPEN)
+
+The full cross-engine residual of the assembled self-energy operator remains deferred to a **≥64 GB**
+machine. Per-engine checks and the scoped N6 covariance result do not establish this comparison.
+Owner: S11c-c2/d if reused. Source: [c2 step, original close status, lines 32–34](steps/S11c_c2_self_energy_fold.md).
+This entry carries the debt; it does not schedule a run or predict its result.
 
 ## PY — S11c-b #89 (SymPy engine): the PRIMARIES_ONLY-skipped in-band controls
 

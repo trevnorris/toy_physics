@@ -37,6 +37,25 @@ command in `_measurements/` (rule 2).
 > NOT "weak N6"; ⛔ NOT "c2 has everything it needs"). Governing disposition:
 > `_measurements/S11c_c2_N6_reconcile_disposition.md` (`0bca95f3`).
 
+## Changed after close
+
+**CONDITIONAL — repaired equations, scoped review only.** The original verification above and below describes the **pre-repair version**, not a fresh sign-off on today's operators. The original text is preserved as history. The [current S11c closeout](S11c_PARTIAL_CLOSEOUT.md) is PARTIAL; its old continuation instructions do not schedule work.
+
+| Repair | What changed and where | Review scope and literal verdict |
+| --- | --- | --- |
+| `a74da30a` — inertia | Corrected the action-based inertia sign; propagated through b/c1/c2/d. [Inertia report, opening/checks](../_measurements/S11c_inertia_repair_report.md). | Claude: **“Clear on stated domain; fold ordering not computed”** for a **gradient-free test energy**, stationary symbolic thickness, constant thickness modulus and both density rules; the full material-constraint fold was **source-inspected only**. Grok later supplies scoped inertia/fold support, with helper/domain and shared-perturbation limits. |
+| `c643112a` — mechanical load | Corrected the orientation of external face work in mechanical rows. [Mechanical report, opening/checks](../_measurements/S11c_mechanical_repair_report.md). | Claude: **“Orientation clear; non-flat face-row content insufficient evidence”**. Grok adds non-flat work cases and controls; physical assembly routing is source-inspected, centre dynamics/full c2 power unaccepted. |
+| `a05b05e3` — pressure trace | Separates physical face pressure from its reference-plane trace in c2; b supplies the pressure slots consumed by that fold. [Trace report, construction and full regeneration](../_measurements/S11c_c2_trace_repair_report.md). | Claude: **“Two-leg clear; three-leg mixed grade needs revision”**. Grok supports the stated linear trace domain, not the complete two-transfer operator. |
+| `f618178a` — c2 thickness coordinate; export `537d78fd` | Uses physical `deltaW=W0*e_W`, replacing `W_bg*e_W` in the relevant kinetic/rate factors. [Coordinate report, source repair](../_measurements/S11c_thickness_coordinate_repair_report.md). | Claude: **“Clear on stated domain”**. Grok checks the map/both density rules; it does not execute full c2 power. No new varying-modulus, advection or centre-kinetic result follows. |
+
+The literal Claude conclusions are in the [first disposition, repair table](../_measurements/S11c_upstream_repair_review_disposition.md). Grok's overall verdict is **“Needs revision”**, with the scoped support and limits in the [joint disposition, evidence table](../_measurements/S11c_upstream_repair_review_joint_disposition.md). Its supplemental domains were not automatically cleared by both reviewers. **UNRESOLVED:** full nonuniform composition and the deferred cross-engine residual remain; these reviews are not production scattering validation.
+
+The old **“VALUES are unaffected”** sentence applies to the pre-repair operator and its then-discussed review issues. It does not claim unchanged values across these later repairs. F/G remain withdrawn interpretations, and their paused re-grounding is not discharged. [Original status box, 2026-09-09](S11c_c2_self_energy_fold.md); [joint disposition, remaining issue](../_measurements/S11c_upstream_repair_review_joint_disposition.md).
+
+**UNRESOLVED:** the native fold sets direct three-leg `[0,2]` to zero while retaining the iterated first-shape product (`scripts/S11c_c2_selfenergy_fold_sympy_audit.py:400–418`). The retained `eta*sigma_W` grade does not justify this zero by order counting. Whether the **complete closed response** has a nonzero direct term remains unresolved; no benchmark correction follows. [Joint disposition, “The remaining mixed-term issue”](../_measurements/S11c_upstream_repair_review_joint_disposition.md).
+
+**UNRESOLVED — unreviewed repair:** the later Wolfram N6 pressure-trace repair (`5acfdf30`) corrected a reference-pressure double shift by extracting the reference-pressure map from the actual face law and solving its ordered inverse. Its checks cover the tested N6 representation domain, not a full Wolfram self-energy engine or cross-engine composition. No review or comparator ran. [Wolfram repair report, opening and scope/limits](../_measurements/S11c_wolfram_pressure_trace_repair_report.md); [repair audit, line 16](../_measurements/S11c_wolfram_repair_audit_report.md). The separate d-internal sheet repair (`f9e28f5f`) is explicitly unreviewed and does not clear c2. [Sheet report, scope](../_measurements/S11c_d_sheet_repair_report.md).
+
 ## What the step computes
 On the inherited S11c-a/S11c-b background (in-plane-varying thickness `W_bg(y)=W̄₀[1+η w₁(ξ)]`; anchorings
 `α∈{LAB_HELD,MATERIAL_ADVECTED}`; density representatives `ρ∈{ρ_4D,ρ_br}`; the two faces `s∈{+,−}` the slab EOM

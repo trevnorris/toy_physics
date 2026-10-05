@@ -490,82 +490,51 @@ without a physical referent** — the gauge field did, until it was asked what i
 
 ⇒ The departure is a **choice the model makes**, ⛔ not an inability.
 
-### S11b · ⭐⭐ The brane–bulk interface coupling — LINEAR, and it closes S11 {#s11b}
+### S11b · The uniform brane–bulk interface law {#s11b}
 
-**Added 2026-08-02, after S11 walked. ⭐ It is not scope creep, and the test is one line: it is LINEAR,
-and by this ledger's own definition linear is HALF ONE** (`CHARTER.md#two-halves`). It was deferred by
-**choice**, ⛔ not by difficulty.
+Small light waves decouple from the bulk on the stated uniform background. This is a **CONDITIONAL**
+linear-model result, not a demonstration of confinement around defects. Stable real-frequency propagation
+requires nonnegative transverse stiffness. S11b is closed as the unified A+B step; the nonuniform question
+is the separate S11c family. [S11b record, transverse mode and provenance](steps/S11b_interface_coupling_law.md).
 
-⭐⭐ **Why it is worth its own step: S11 ends with three apparently separate open questions that are ONE
-question**, and this is that question:
+SymPy and the independently written Wolfram engine derived the uniform coupling law, with engine/repair
+reviews and a frozen comparator. Their coefficient-basis identification and incomplete review-rerun
+coverage are documented, not erased by closure. Bulk phase matching alone establishes channel kinematics,
+not its actual use, a bound state or a complete spectrum. [S11b, comparison/operational note](steps/S11b_interface_coupling_law.md);
+[S11, ownership boundary](steps/S11_stray_longitudinal.md#ownership-boundary-after-the-grazing-threshold-audit).
 
-| S11 leaves open | reduces to |
-|---|---|
-| does the longitudinal radiate into the bulk, or stay bound? | **the coupling law** |
-| is light's confinement **unconditional**, or does it rest on a polarization-overlap argument? | **the coupling law** |
-| does a second characteristic speed break Lorentz invariance **for us**? | **the coupling law** |
+#### S11b closed; S11c closes PARTIAL {#s11b-split}
 
-⇒ ⭐ **The second mode's entire physical status — radiative, observable, Lorentz-breaking, or none of
-the above — is decided here.**
+S11c asked how much light converts into other motion where the brane changes. It has conditional operator
+and source results, but **no accepted nonuniform loss number**. A later SymPy check found finite modes, nonzero energy current and zero face drives
+(light does not push on the bulk) at, above and below the tested uniform speed matches, with the bulk at rest
+and other inputs fixed. Claude/Grok cleared the method, not a fresh review of the executed result.
+[Uniform completion, coverage/limits](_measurements/S11c_d_near_unity_uniform_continue_result.md).
+The held-profile omega=3 benchmark remains numerically unresolved. Reflection counts as survival.
+The [S11c closeout](steps/S11c_PARTIAL_CLOSEOUT.md) and [canonical d record](steps/S11c_d_profile_conditioned_scattering.md)
+set the current scope; no old build/continuation instruction schedules further work.
 
-**What it needs:** interface conditions at the wall (continuity of displacement and of stress), the
-scalar bulk sound mode already in the registry, and the brane sector from S8–S11. ⛔ It does **not**
-require the wall solved — standard elastic/acoustic matching is enough for the conditions themselves.
+| Step | Scope | Current state and evidence |
+| --- | --- | --- |
+| S11b | Uniform interface and slab assembly | Closed, conditional on stated model/domains; [record](steps/S11b_interface_coupling_law.md). |
+| S11c-a | Tilted-face geometry and interface shape derivatives | Recorded per-family comparison with its retained limits; [a record](steps/S11c_a_interface_shape_derivatives.md). |
+| S11c-b | Variable-coefficient operator/coupling | Original per-engine close; later scoped repairs, full cross-engine residual/composition unresolved. [Changed after close](steps/S11c_b_variable_coefficient_operator.md#changed-after-close). |
+| S11c-c1 | Curved-bulk closure | Measured kernel/pressure/flux agreement; traction, energy, operand and deferred giant-family checks remain. [c1 status](steps/S11c_c1_curved_bulk_closure.md). |
+| S11c-c2 | Closed self-energy fold | Original wiring close applies to pre-repair equations; current composition/direct mixed entry unresolved. [Changed after close](steps/S11c_c2_self_energy_fold.md#changed-after-close). |
+| S11c-d | Supplied-profile scattering | **PARTIAL**: selected uniform checks passed; omega=3 nonuniform benchmark unresolved, no accepted matched-speed defect loss. [d record](steps/S11c_d_profile_conditioned_scattering.md). |
+| S11c-e | Conversion observable and strong-edge interpretation | **OPEN / deferred**; a future finite-contrast calculation must recover d's weak limit. [Split, table/N5](directives/S11c_decisions.md); [d spec, §3d](directives/S11c_d_SHARED_PHYSICS.md). |
 
-⛔ **What S11 established that this step must NOT re-assume:** phase matching is **kinematic only**. It
-settles whether a propagating bulk channel **exists**; it settles ⛔ **neither** that an existing channel
-is used, ⛔ **nor** that an evanescent solution forms a bound eigenmode. Both are this step's job.
+**UNRESOLVED equation debt:** c2 sets its direct three-leg `[0,2]` entry to zero while retaining the
+iterated product. The retained `eta*sigma_W` grade does not justify that zero. Whether the complete
+closed response needs a nonzero direct term remains unknown. Scoped repair reviews do not clear full
+composition. [Joint disposition, mixed-term issue](_measurements/S11c_upstream_repair_review_joint_disposition.md).
 
-⚠ **Expect the transverse answer to be strong and the longitudinal answer to be weaker** — the bulk has
-no transverse mode to match at all, whereas the parallel pairing is like-for-like in polarization.
-⛔ But S11's own engines refused to conclude even the transverse case without this law; ⛔ do not import
-that refusal as an answer in either direction.
-
-⭐ **What it unlocks beyond the ledger** (→ **S22**): three of the five near-term *linear* simulations —
-longitudinal radiation, the width mode's inertia and stiffness, and the flexural crossover of move 5.
-⇒ `steps/S11_stray_longitudinal.md`.
-
-**Expected new:** interface/matching conditions; ⛔ no new medium constant is anticipated — if one is
-required, that is a result, record it.
-**Register:** **C13** is adjacent but ⛔ **not** this step's job (a gravitational wave is not a brane
-mode).
-
-#### ⭐⭐ S11b IS SPLIT INTO THREE — ⛔ AND S11b IS **NOT CLOSED** UNTIL C IS {#s11b-split}
-
-> ⭐⭐⭐ **S11b (A+B unified) is CLOSED (2026-08-23, `565b3fe8`) and C is renamed `S11c`.** This section's
-> whole A/B/C framing — the "NOT CLOSED until C", the "no renumbering", the "C runs immediately after B" — is
-> **SUPERSEDED**. S11b was rebuilt as **ONE unified export-chain step** ("the linear brane–bulk interface
-> coupling law"; decision list `directives/S11b_unified_decisions.md` `ddd0ae4c`, spec
-> `directives/S11b_SHARED_PHYSICS.md` `1a2395a3`). SymPy engine `864d6f41` + blind WL engine `ec89f9df`
-> cross-checked by the frozen T7 comparator (`17fe32c8`, re-run `fba6a34c` — physics agree; the **X-1**
-> energy-basis over-count 11→10 was corrected, `53fcd98d`); step record `8ddccb74`; card `565b3fe8`. **All 13
-> step-run steps + export integrity done.**
-> ⭐ **C is now `S11c`** — a **separate LATER step** (G1; user-confirmed 2026-08-23): the non-uniform,
-> variable-coefficient transverse coupling (is light's confinement unconditional?). ⛔ The old "no
-> renumbering / C is part of S11b" language is dead — do NOT reuse the `S11b` slug for S11c.
-> ⇒ ⭐ **scope: `steps/S11c_SCOPE.md`**; live NEXT in `STATUS.md`'s top block + memory
-> `project-s11b-interface-law-result`.
-
-⚠ **History (both superseded by the banner above).** A 2026-08-05 user correction had said "A, B and C are
-ONE STEP; S11b closes only when C closes; no renumbering; C runs immediately after B." G1 (2026-08-19) then
-made C a **separate later step**, and the 2026-08-23 close of the unified A+B **`S11b`** plus the C → **`S11c`**
-rename retire that framing entirely. ⭐ The lasting content: the split was for **specification tractability**
-(three attempts to spec the whole interface in one pass were rejected), and the uniform result (S11b) does
-NOT close the non-uniform question (S11c) — a ledger that called the light sector finished while S11c is
-unbuilt would overstate it.
-
-
-
-⚠ **2026-08-03.** Two attempts to specify the whole interface in one pass were rejected before any build,
-and a third was rejected for mandating a non-uniform background while fixing plane waves. ⇒ three steps:
-
-| | scope | state |
-|---|---|---|
-| **S11b-A + S11b-B** | bulk face response + projection identity, and the **homogeneous** assembly (does the longitudinal radiate or stay bound) | ✅ **SUBSUMED into the closed unified `S11b`** (`565b3fe8`). Archival A/B records: `steps/S11bA_interface_response.md`, `steps/S11bB_interface_assembly.md`. ⚠ **The velocity leak lies OUTSIDE the passive region ⇒ it costs a named reservoir; ⛔ NOT forbidden** — passivity + Onsager are classifications, not gates, and both assume an equilibrium reference state this model lacks (`v₀ ≠ 0`) |
-| **`S11c`** (was S11b-C) | the **non-uniform** variable-coefficient transverse coupling ⇒ is light's confinement unconditional | ▶ **NEXT.** ⚠ the uniform coupling is **identically zero** (proven in S11b), so a uniform-limit control is **known-vacuous**. ⇒ ⭐ scope: `steps/S11c_SCOPE.md` |
-
-⭐ **The seam is real:** the longitudinal mode's fate needs no gradients; light's confinement needs them.
-⇒ Full state, traps, and C's requirements: **`steps/S11b_HANDOFF.md`**.
+**OPEN — S12:** the clean-condition packet measured a symmetry selection rule on SymPy only; its no-leak
+interpretation needs the drain frozen. Nothing transfers to live conversion without its own dynamics.
+[Clean-condition disposition, round 5](directives/_measurements/S11c_d_clean_condition_review_disposition.md).
+Real defect support and response remain Q2/Q3/S22 work; S20a retains speed calibration and S22/R10 its
+proposed derivation. The [exploratory throat/EM notes](../../docs/light_em_investigation_handoff.md)
+are paused inputs to those later questions, not adopted laws.
 
 #### ⭐ `S_leak` EXISTS ALREADY, and it is an IDENTITY — ⛔ not an ansatz {#s11b-sleak}
 
@@ -608,6 +577,9 @@ rate), which is a future calibration hook — ⛔ not claimed, not derived, and 
 ## PHASE 3 — the drain (3 steps) ⚠ where the interior is deferred
 
 ### S12 · The throat's non-variational SOURCE, plus its boundary data
+
+**Next planned step.** Specify dynamical order conversion and its separate boundary data; a numerical S11c loss factor is not a prerequisite. Its effect on light remains separate future work. [S11c closeout, downstream uses](steps/S11c_PARTIAL_CLOSEOUT.md).
+
 ⛔ **Not merely a boundary condition.** `n*Gamma_B` is the RHS of a **local order-balance PDE** — a *source*. The return controllers and the mouth/collar/IR conditions are **separate** objects.
 ⇒ Inventory the source functions and the boundary data **separately**; conflating them hides which of the two is open.
 ⛔⛔ **CORRECTED 2026-07-31 — this step originally wrote a drain law the user had already RULED OUT.**
@@ -730,6 +702,33 @@ which makes it dimensionally inhomogeneous (force on the left, acceleration in t
 not present the repaired formula as a quotation.** Quote the source as written, record the missing-mass
 **typo**, and cite the dimensionally correct form from `4d_1pn_full.tex:886`.
 
+⛔⛔ **GRAVITY-SECTOR PLUG — REVISIT BEFORE COMMITTING THE SPECIES/INTERIOR-DEPENDENT RESPONSE (banked 2026-09-15).**
+Before extending S16 beyond leading-order universality — into the **interior-dependent / species-dependent**
+gravitational response, or the defect-to-worldline matching per lepton family — **STOP and read
+`notes/muonium_gravity_corrections.md`** (full source: `notes/muonium_gravity_research_track_handoff.md`).
+This step is exactly where the model can corner itself on gravity. The muonium/LEMING experiment (~2–3 yr) makes
+a **second-generation lepton** free-fall test plausible, so the corrections below are load-bearing here:
+- ⛔ **The interior-dependence this step already flags is where a species anomaly (`κ_μ≠1`) would live.** Do NOT
+  assume universality to fix throat geometry and then "derive" universality (circularity — M3).
+- **Separate the three masses:** passive `m_p` (response-side — what LEMING measures, and what S16 is about),
+  active `m_a` (source-side), inertial `m_i`. ⛔ Don't conflate; equality must emerge as a Ward identity, not be
+  assumed.
+- **`κ_ρ=1` here is TARGET-MATCHED (calibrated `−Gm/r`), ⛔ NOT derived** — treat the species-specific `κ_{ρ,s}`
+  as open and compute it per branch.
+- ⛔ **Do NOT import the WITHDRAWN lepton throat-geometry results** (`L/a≈1.85`, `11:2:5`, `−57/64`,
+  `a_j∝(2j+1)^-1`, deep-needle, `m_G~ρa²L`) — withdrawn pending a first-principles branch solve.
+- ⭐ **`κ_μ` is an OUTPUT, not a target — a surprising value is NOT a failure** (don't lock the 2nd-gen throat
+  radius). But its *status* depends on where it shows up + consistency: passive (`m_p/m_i≠1`) = LEMING-measurable
+  prediction; active-only = not-a-failure-but-unfalsifiable-unless-it-leaks; momentum-violating = red flag unless
+  the reservoir flux is **derived** (a reservoir *permits* exchange, ⛔ doesn't guarantee it). ⇒ run the
+  **structural consistency audit** (*source anomalously + fall normally + conserve momentum, at one fixed order?*
+  — the §5.1-negligible-flux vs bridge-`S_{J_i}` tension) **before** any branch solve, ⛔ with no preference for
+  the answer that makes LEMING more useful. Electron/1st-gen is NOT free: must give `κ_e≈1` to ~10⁻¹⁵.
+  Full guardrail: `notes/muonium_gravity_corrections.md` §7.
+- This is a **deferred parallel branch** gated on the throat/moving-throat PDE (off critical path) + the S11
+  medium chain — a warning to not corner ourselves here, ⛔ not a step to run now. Outcome 5 (can't compute
+  without importing κ=1 ⇒ no muonium prediction) is a legitimate honest result.
+
 ⛔ **A11 GATE — this step must not substitute one length for another.** The source's `a` is a
 **Gaussian/profile support width** controlling `Q_ij = M a² δ_ij / 2`; the model's **mouth radius** is a
 different object, and the bridge report says outright it *"is not an invariant reduction width"*.
@@ -847,12 +846,13 @@ large deformations requiring nonlinear description."*
 - ⛔ **And our brane–bulk interface law (S11b-A/B) is LINEAR**, and it is what the charge story runs on.
 - ⇒ ⭐ the **object** is plausibly nonlinear while the **instrument** we built for it is linear.
 
-⭐⭐ **THE DECISIVE TEST IS CHEAP AND ALREADY NAMED: ⛔ `S11c` (was S11b-C), non-uniform coupling, WAS NEVER
-BUILT** — and it is the **MacCullagh differentiator**. ⇒ ⭐ **Run it before committing this phase to anything**
-(scope: `steps/S11c_SCOPE.md`).
-- ⭐ If S11c anchors charge linearly, we have what he did not, and half one's linear scope holds.
-- ⛔ If it cannot, that is **independent convergence on his conclusion**, and **C6** (the absent nonlinear
-  brane-shear action) moves onto the critical path **with a measured reason**, ⛔ not an assumption.
+**UNRESOLVED — linear support is not established.** S11c has now been built in scoped parts and closes
+PARTIAL; it did not establish a linear charge holder, nonuniform confinement or a reliable leakage size.
+The question remains relevant to this phase, but a loss number is not a prerequisite for every Q-sector
+calculation, and the partial result is not a no-go for linear support. [S11c closeout, downstream uses](steps/S11c_PARTIAL_CLOSEOUT.md).
+Actual holder/response choices remain Q2/S22; the nonlinear-parent debt C6 is neither discharged nor
+proved necessary by the unresolved scattering benchmark. The [paused exploratory notes](../../docs/light_em_investigation_handoff.md)
+are input to those questions, not an adopted core model.
 
 ⛔⛔ **AND "GO NONLINEAR" IS NOT A MATTER OF KEEPING MORE TERMS.** ⚠ **C6**: every form in the corpus is
 quadratic and the quadratic Lagrangian was written **directly**, ⛔ not expanded from a nonlinear parent
@@ -1171,12 +1171,13 @@ against. ⇒ This step's honest form is: *name what integration needs that phase
 
 #### ⭐⭐ THE NEAR-TERM LINEAR SIM INVENTORY — banked 2026-08-02, ⛔ do not re-derive it
 
-⚠ **These need NO nonlinearity.** They are blocked by **one LINEAR object** — the brane–bulk interface
-coupling law (**S11b**) — ⛔ **not** by the missing nonlinear shear action. ⇒ Much cheaper than the geon.
+These are proposed linear tests on supplied backgrounds, not a solved nonlinear throat. S11b supplies
+conditional uniform interface data; S11c's nonuniform response remains partial. Do not infer that all
+five tests are cleared or all depend on a completed S11c loss factor. [S11c closeout, downstream uses](steps/S11c_PARTIAL_CLOSEOUT.md).
 
 | # | what it measures | needs | blocked by |
 |---|---|---|---|
-| 1 | ⭐⭐ **transverse → longitudinal conversion at a defect** — how much light converts to the stray mode passing a particle. ⚠ The families do **not** mix in a *homogeneous* brane (coupling `∝ k·a`); `∇μ_R ≠ 0` mixes them | a defect profile | **form** available now with a generic profile; **magnitude** needs the interior (`R1`) |
+| 1 | ⭐⭐ **transverse → longitudinal conversion at a defect** — how much light converts to the stray mode passing a particle. ⚠ The families do **not** mix in a *homogeneous* brane (coupling `∝ k·a`); `∇μ_R ≠ 0` mixes them | a defect profile | **response/form remains PARTIAL** (S11c-c2/d); physical **magnitude** needs the interior (`R1`) |
 | 2 | ⭐⭐ **does the longitudinal actually radiate into the bulk** | the interface law | **S11b** |
 | 3 | ⭐ **the flexural crossover** — `ω ∝ k²` at long wavelength once the wall width is dynamical. ⛔ **Able to fail:** a clean cone means move 5 was wrong | width mode inertia + stiffness | **S11b** + **S5–S7** |
 | 4 | **birefringence near a defect** — the two polarisations are degenerate *by symmetry* in a homogeneous brane; a defect splits them | a defect profile | as (1) |

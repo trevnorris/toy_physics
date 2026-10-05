@@ -1,0 +1,61 @@
+P1–P4 retained-order bookkeeping — COMPLETE; local PASS, Claude/Grok CLEAR
+
+Recorded formal run: _scratch/S11_lean_bookkeeping/verification_run7/evidence
+Canonical imports/builds, all fresh and isolated:
+  S11ScatteringFlux.Current (unchanged reviewed source)
+  S11ScatteringBookkeeping.Path
+  S11ScatteringBookkeeping.Quadratic
+  S11ScatteringBookkeeping.Observables
+  S11ScatteringBookkeeping.Quotient
+  S11ScatteringBookkeeping.Controls
+  S11ScatteringBookkeeping (audit root)
+
+Seven output objects; 33 selected standard-axiom audit declarations.
+Allowed audit axioms: propext, Classical.choice, Quot.sound only.
+16 paired mathematical rejections, 20 positive executions (18 distinct statements).
+44 total records = 7 builds + 16 negative + 20 positive + 1 native revalidation.
+Each accepted mutant: exit 1, exactly one contract_control diagnostic, exactly
+one unsolved False, no other errors or warnings. No source-replacement mutants.
+Fresh controls use canonical witnesses/arithmetic, not independent derivations.
+
+Native record was executed in guarded verification_run1 and revalidated in run7:
+  30 identities/examples; 11 wrong-formula controls; 1 invalid-domain witness.
+  Python 3.10.12; NumPy 1.26.4; exact small synthetic fixtures.
+  No production import/driver, saved scientific operands or S11c output rewrite.
+  Native quotient keeps complex diagonal channel coefficients, lacks a zero guard.
+  Its isolated nonfinite zero-denominator fixture lies outside correspondence.
+
+Evidence:
+  _measurements/S11_lean_bookkeeping_contract_checks.json
+  _measurements/S11_lean_bookkeeping_source_checks.json
+  _measurements/S11_lean_bookkeeping_validation.json
+  _measurements/S11_lean_bookkeeping_resource_receipt.json
+  _measurements/S11_lean_bookkeeping_preserved_inputs.json
+Author validation re-adjudicates actual logs and all fresh control sources,
+source/snapshot/output correspondence, direct dependency objects/sources, package
+pins and preservation. It does not rerun Lean or native scientific calculation.
+Fifteen clean pinned package repositories and six direct Mathlib import pairs.
+Transitive cache: existing pinned baseline. 567 historical files and 236 old
+objects unchanged, including the four completed flux objects.
+
+Containment: scripts/s11c_guarded_run.py, 2 GiB whole-job memory, no swap,
+32 task slots, one CPU, lowered CPU/I/O priority, no overlapping jobs or retries.
+Lean -j1 -M2048 -DwarningAsError=true, 180 seconds/process, whole-group cleanup.
+Actual run7 guard peak: 268177408 bytes; no recorded max/OOM/swap events.
+No focused object supplied formal evidence. Earlier instrument/resource/proof
+failures are retained as failed attempts; no failure was counted as a mutation.
+The last repair only added proved logical rewrites to one paired control;
+all canonical proofs, statements, definitions, acceptance and limits unchanged.
+
+This is a bespoke guarded verification instrument; no claim of new portable
+catalog registration or a Lake named-target test is made for P1–P4.
+Both independent source-fidelity reviews returned CLEAR with no blocking
+findings. Optional observations are disposed in SCATTERING_BOOKKEEPING_FIDELITY_REVIEW.md.
+Neither reviewer reran Lean/NumPy or checked external filesystem hashes.
+Author closure checks revalidate the source/object/dependency/log bindings and
+preservation. Proofs, instruments, fixed packet and historical evidence are
+unchanged; only live documentation was clarified, with exact deltas recorded in
+_measurements/S11_lean_bookkeeping_closure.json. No proof rerun for wording edits.
+Work is paused as requested; no commit or subsequent increment was started.
+No parent-theory Taylor/error bound, physical scattering solution, conservation,
+channel completeness or strong-edge conclusion is certified.

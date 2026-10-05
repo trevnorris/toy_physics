@@ -1,0 +1,82 @@
+S11 D3 bulk variation K1–K4 — COMPLETE within the bounded contract
+
+Scope: D3_BULK_COVERAGE.md. This is local evidence for the actual L=-Q/2
+variation, the exhaustive one-dimensional null family, the two-dimensional
+bulk response and its homogeneous stiffness map. Both independent non-author
+reviews returned CLEAR with no blockers; see D3_BULK_FIDELITY_REVIEW.md.
+
+FORMAL EVIDENCE
+S11_lean_d3_bulk_contract_checks.json: PASS, run2, 2026-09-16.
+Five new modules plus the audit root compile. All 49 new theorem roots depend
+only on propext, Classical.choice and Quot.sound (or subsets). Twelve wrong
+mathematical claims are rejected and eleven explicit positive controls pass.
+All 44 check logs, 21 compiled objects, sources, input dependencies, instruments
+and 15 package checkout pins were revalidated in
+../../_measurements/S11_lean_d3_bulk_validation.json.
+
+The fifteen unchanged local imports built in run1 and were reused in run2 only
+with matching transitive sources, pins, generator, commands and input/output
+object hashes. Reuse did not waive the new module builds, audit or mutations.
+Earlier H/I/E/J proof files are unchanged; their historical evidence was not
+rewritten. Current source/object correspondence is recorded by this increment.
+
+MATHEMATICAL CONTROLS
+- Density sign and missing half-factor fail density_identity. With v=(1,0,0)
+  and G=diag(1,0,0), the changes give +1/2 or -1 in place of -1/2.
+- Replacing a+b by a-b in the modal map fails homogeneous_operator. For
+  v=(0,1,0) and k=amplitude=e1, the mutation gives +e1 instead of -e1.
+- Replacing subtraction by addition in the boundary current fails
+  boundary_identity. The smooth static field u=(x1,0,0) gives mutated divergence
+  2 while the claimed density is zero. The mutation also produces a redundant
+  partial_sub simp-argument diagnostic; that warning is not the rejection
+  evidence. The displayed false identity supplies the mathematical reason.
+- Eight false wrappers reduce to False: zero/nonzero nullness, Frobenius
+  non-nullness, trace equivalence, differing c, response/null dimensions and
+  the zero-wavevector operator. Their eight true counterparts pass.
+- Three further positives give a nonzero compact first variation with negative
+  coefficients, and the correct longitudinal and transverse modal responses.
+No timeout, import, syntax or environment failure is accepted as a rejection.
+
+NATIVE CONNECTION
+S11_lean_d3_bulk_source_checks.json: PASS. The actual D3 Q9 V1 basis maps to
+trace-square / trace-of-square / Frobenius-square by rows
+[[0,1,0],[1/2,-1/2,0],[0,-1,1]]. General (a,b,c) therefore uses native weights
+(a+b+c,2a,c). Exact identities cover every native V5 basis vector and arbitrary
+coefficients, density normalization, the native/Lean variational sign, the
+modal operator, and mu=c, B=a+b+c at zero inertia. Native sign/factor mutations
+are detected; null/non-null and wrong-B controls pass.
+The native helper returns positive divergence of momentum, opposite to Lean's
+variational derivative. Thus native EL(L)=-Lean EL(L), and V5(Q)=2 Lean EL(L)
+for L=-Q/2. Symbolic mixed derivatives are reduced under the smooth-field
+interpretation. This is tested translation, not a kernel-certified CAS parser.
+Wolfram evidence is source inspection only. No production driver or export ran.
+
+REPAIRS AND RESOURCES
+Run1 stopped in canonical Action on finite-index/sum simplification after all
+imports passed; no mutation had run. Proof-only repairs made finite reductions,
+smoothness types and coordinate-calculus theorem calls explicit. Bulk uses
+specific mixed-derivative swaps and reduction-aware normalization. An increased
+heartbeat experiment was discarded; final proofs use the default allowance.
+Census reduces vector entries explicitly and uses current tactic spelling.
+The paired null/equivalence controls reduce the last vector entry explicitly.
+No mathematical theorem, hypothesis, density, parameter map or scope changed.
+
+Run2 completed 19:34:38–19:39:53 UTC with one worker, -j1 -M4096, nice 10 and a
+600-second per-process timeout. The allocator cap is not an OS RSS limit. Silent
+local completion/error hooks handled continuation. No S11c source, calculation
+or pinned export was edited or regenerated.
+
+REVIEW AND CLOSURE
+The user approved the fixed 41-file packet. Claude and Grok independently
+returned substantive CLEAR reports. They checked fidelity through source
+inspection and mathematical analysis; no independent execution or cryptographic
+recomputation is claimed. Optional suggestions were assessed and require no
+expansion of the agreed contract.
+
+The author revalidated all live files, compiled objects, instruments, check
+logs, dependency pins, immutable archive/snapshot/transport and terminal review
+records. Only closure documentation changed after review; proofs and instruments
+retain their reviewed bytes. See S11_lean_d3_bulk_closure_validation.json and
+D3_BULK_FIDELITY_REVIEW.md. No new build or mutation run is required for these
+documentation updates. K1–K4 is complete; all wider S11 obligations retain their
+own status. No new commit requested or made.

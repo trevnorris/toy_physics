@@ -1,0 +1,75 @@
+Bounded S11 D2 odd-invariant dynamics E1–E4: local verification
+Status: LOCAL PASS. Both independent fidelity reviews now CLEAR; E1–E4 complete.
+See DYNAMICS_FIDELITY_REVIEW.md for the fixed revision and findings.
+Validated UTC: 2026-09-16T13:06:21.253130+00:00
+Policy: ../FORMALIZATION_POLICY.md; contract: DYNAMICS_COVERAGE.md
+
+From lean/, sequentially:
+  python3 ../_measurements/S11_lean_dynamics_source_check.py
+  python3 ../_measurements/S11_lean_dynamics_contract_check.py
+Run: 2026-09-16T12:56:21.172916+00:00 to 2026-09-16T13:03:47.695493+00:00
+One Lean worker: nice -n 10 lake env lean -j1 -M4096
+  -DwarningAsError=true. The allocator limit is not an OS RSS cap.
+
+Three new modules and the audit root passed. Nine unchanged local dependency
+modules were freshly built sequentially to bind this run to their source bytes.
+All 47 audited theorem dependencies use only propext, Classical.choice and
+Quot.sound. The audit root lists every theorem in the three new modules.
+No admissions or custom physics axioms were accepted.
+
+Ten mathematical mutations were rejected; eight explicit positive controls
+passed. Canonical source hashes were unchanged by isolated mutations.
+
+Mutation adjudication:
+- Changing the density sign leaves opposite polynomial coefficients in
+  density_identity. Removing the half-factor leaves full versus half
+  coefficients there. These unsolved mathematical identities are the required
+  failures. Both also fail lagrangian_increment algebraically; later
+  change-tactic failures are secondary and are not counted.
+- Reversing the local EL sign leaves opposite coefficients of differentiated
+  divergence/skew in both eulerLagrange_eq component identities. The later
+  rewrite failure in the plane-wave theorem is secondary.
+- The seven concrete false statements each reduce to False in contract_control:
+  nonzero beta is variationally null; zero beta is not null; the nonzero example
+  does not mix; beta=0 mixes; k=0 mixes; negative nonzero beta does not mix; and
+  the witness EL has the wrong sign. Each corresponding true statement passes.
+- The eighth positive control proves existence of an allowed compact test
+  variation with nonzero first variation at beta=1. The smooth background is
+  witnessField=(cos x1,0); it need not have finite background action.
+- Syntax/import/resource errors and timeouts are not accepted mutations.
+
+All 16 transitive source/dependency-pin hashes agree before/after and with live
+files. All 13 fresh compiled-module hashes match; all 31 logs and input source
+hashes match. Both instrument hashes and both native source hashes match.
+All 15 dependency package checkout commits equal their manifest pins, with
+no tracked source changes. Prior H1–H4/I1–I4 packet proof hashes still match.
+
+Four S10 olean hashes changed on the fresh rebuild, with unchanged source
+bytes. The new source/build/object records apply to this E1–E4 snapshot. Past
+reports and their historical hashes have not been silently updated.
+
+Compact native check: eight exact symbolic identities connect actual native
+D2 P_D, XFORM_EXTRA minus MAIN, the odd V5 combination, local EL and modal
+routes. Lean EL=-native EL; native route A=-M; native route B=M/2; the period
+average is modalAction/2. Two in-memory action sign/factor mutations fail the
+intended identities. Five explicit beta/k locus controls pass on the Python
+translation of the Lean-side target M; native correspondence is established
+by the exact symbolic route identities. Wolfram source
+anchors are inspection evidence only; no fresh Wolfram execution, production
+export/comparator or S11c run is claimed.
+
+Durable records:
+  ../../_measurements/S11_lean_dynamics_contract_checks.json
+  SHA256 ba1462c1a819e12b37620f98b6cd58849b45a4108dbba8fc3c5f6ceb0ceb2e4b
+  ../../_measurements/S11_lean_dynamics_source_checks.json
+  SHA256 45bc25dcc7b1273639d6fe0e018e20c48ccbde03ca84dc0cbaa63fc76dc51be9
+  ../../_measurements/S11_lean_dynamics_validation.json
+  SHA256 e637e5cdd77a77a57543f86f5eeebfe6b14acba3168696f911567d110134a2c6
+
+The sequential supervisor state is PASS, both exit codes are zero, and job.log
+is empty. No proof repairs or additional builds are needed for these post-run
+documentation updates. Both independent reviews of the fixed packet returned
+CLEAR. Closure validation confirms live source, compiled-object, dependency
+and snapshot/archive/transport correspondence. Only closure documentation
+changed after review; no proof or instrument changes require re-verification.
+This closes E1–E4 only, not S11 as a whole.

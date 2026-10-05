@@ -1,0 +1,113 @@
+S11 analytic error T1–T4 — complete; local PASS and both independent reviews CLEAR
+
+CLAIM AND LIMIT
+For complex amplitudes g, bounded measurable multipliers b with norm at most B,
+a nonnegative Abel regulator a, and a measurable kept domain s, the actual
+integral error is at most B*(tailMass + a*firstMoment). Integrability of g and
+its first absolute moment are explicit premises; the physical application is
+Lebesgue measure, and the regulator is exp(-a*abs(xi)) about the fixed origin.
+
+On an explicit Banach domain, a supplied continuous linear equivalence A and
+bounded E with norm(A^-1)<=kappa, norm(E)<=epsilon and kappa*epsilon<1 give an
+actual inverse for A+E. Its norm is bounded by kappa/(1-kappa*epsilon), and
+its difference from A^-1 by kappa^2*epsilon/(1-kappa*epsilon). Source and fixed
+bounded-observation errors are also bounded. Completeness is needed for the
+inverse construction; the equivalence transports it to the codomain.
+
+No numerical epsilon, outgoing domain, inverse margin, uniform folded-amplitude
+moments, complete operator error, quadrature or channel error is established
+for the physical scattering problem. Conditional estimates do not establish
+scattering convergence. Stronger Fourier-space rates, variable coefficients,
+interfaces and nonlinear-pole formalization are outside this increment.
+
+RECORDED EVIDENCE
+Terminal run: _scratch/S11_lean_analytic_error/verification_run1, PASS.
+Reports under _measurements/:
+- S11_lean_analytic_error_contract_checks.json
+- S11_lean_analytic_error_source_checks.json
+- S11_lean_analytic_error_validation.json
+
+Four modules (Tail, Abel, Stability, Controls) and the audit root built freshly.
+All 41 requested axiom declarations matched by name and use only standard
+axioms (propext, Classical.choice, Quot.sound) or none. No custom axioms or
+admissions. Twelve false statements and sixteen positive controls ran freshly:
+33 records total, with five output objects. The sixteen positive executions
+represent fifteen distinct statements; the inverse-difference and operator-error
+omission positive partners are identical. Focused builds were not reused.
+
+Author validation checked every current control source/log and build command's
+input/output object hashes, local transitive source hashes and dependency pins.
+All fifteen package revisions and clean tracked sources match; all seven direct
+Mathlib source/object hashes match. Existing transitive Mathlib compiled inputs
+remain the pinned cache trust baseline, not a fresh full-library build.
+Historical manifests/proof bytes and all nineteen D4B objects are unchanged.
+There were no instrument failures or timeouts in this recorded run.
+
+MATHEMATICAL CONTROL ADJUDICATION
+Every false statement has exactly one diagnostic: unsolved False in the named
+contract_control theorem, with exit 1. Its correct partner passes with exit 0.
+These are paired statement mutations, not canonical-source replacements.
+
+1. Omitted real tail: Dirac mass at 2 outside [-1,1] gives error 1, not 0.
+2. Complex tail: the same integral for i also has norm error 1, not 0.
+3. Omitted Abel moment term: Dirac mass at 1 gives 1-exp(-1)>0, not zero.
+4. Physical width: a=1, L_W=10 gives 1/10, not 10.
+5. Regulator sign: a=-1 at x=1 gives exp(1)>1, contradicting contraction.
+6. Absolute position: a=1 at x=-1 is contracting, not greater than 1.
+7. Lost inverse conditioning: A=1, E=-1/2 has inverse norm 2, not <=1.
+8. Inverse difference: that inverse differs from 1 by 1, not <=1/2.
+9. Source error: f=1, df=1/4 gives solution error 3/2, not <=1.
+10. Observation error: applying multiplication by 3 gives 9/2, not <=3/2.
+11. Omitted operator error: the inverse difference is 1, not <=0.
+12. Critical margin: A=1, E=-1 has no multiplicative inverse.
+
+Four extra positives check integrability and the finite first moment of the
+atomic example, zero regulator, zero amplitude, and a nonempty strict margin.
+Scalar arithmetic controls do not themselves instantiate every general operator
+lemma or promise to detect every possible source edit. Dirac examples are valid
+for the general-measure theorems; no physical Lebesgue moment is inferred.
+
+COMPACT NATIVE IDENTIFICATION
+The source check executes only selected original EdgeReduction constructor
+statements (coordinate/profile declarations, Gaussian Fourier mass, and Abel
+half-line transforms). It does not import the production module or construct
+the complete closed operator. Eight exact identities pass: Fourier mass 2*pi,
+negative and positive half-lines, their constant sum, the even/odd step parts,
+and the physical constant/step measure-and-width formulas using the checker
+map. The native Jacobian, substitution and division by Fourier mass are linked
+by source inspection of hat/prescribe, not by executing those full methods.
+Four wrong controls
+are detected: a*L_W width, reversed PV sign, omitted step half, dropped constant.
+
+With s=L_W*(k-k'), width h=a/L_W, and measure L_W/(2*pi), the constant kernel
+is h/[pi*(h^2+q^2)] and the step kernel is half the Poisson kernel minus i/2
+times q/[pi*(h^2+q^2)]. The approved development input has L_W=10.
+The raw native delta_mass Meijer-G expression is not evaluated or accepted as
+a proved Abel mass integral; the Fourier mass check is the separate Gaussian
+computation. This is tested symbolic source correspondence, not kernel-checked
+CAS evaluation. Actual distributional trial/test pairing remains an obligation.
+
+PRE-RECORD REPAIRS AND RESOURCES
+Focused proof repairs concerned measurability/casts, finite-measure integral
+simplification, coercion reduction, lemma argument order and unused instances.
+Instrument bootstrap fixes occurred before this recorded run. The recorded
+sources, strict warnings, all controls and source/object correspondence passed.
+One Lean worker, -j1 -M4096, nice 10, 600 seconds per process. The allocator
+limit is not an OS RSS cap. Existing tested process-group cleanup is unchanged.
+No preceding proof or object was rebuilt; no S11c source/export was edited.
+
+REVIEW AND CLOSURE
+The approved fixed 24-file packet has aggregate SHA256
+79a8697aebca1ba1c1ac29e694083daed6c1df512259d07fc59444b27e2b8a48.
+Claude and Grok independently returned substantive terminal CLEAR reports.
+Both performed source fidelity and hand algebra, not independent execution or
+hash audits. Author validation checked archive/snapshot/transport/live bytes,
+all inputs/outputs/logs, dependency pins and historical proof preservation.
+Claude's scale-link wording and duplicate-positive observations are reflected
+above and in the fidelity record. Its report mistakenly says 23 packet files;
+the manifest contains 24. Optional stronger wrappers and rates are deferred.
+No proof, definition, assumption, instrument or native source changed. Only
+closure/clarification documentation changed after review; the packet is frozen.
+The user subsequently authorized committing this completed work and proceeding
+to question 2 under a separate bounded contract. No physical error budget is
+claimed. See ANALYTIC_ERROR_FIDELITY_REVIEW.md and the closure validation JSON.

@@ -1,0 +1,102 @@
+name = "pde_ledger"
+version = "0.1.0"
+defaultTargets = ["S9Pilot", "S10Pilot", "S10Controls", "S10Anisotropic", "S10Audit"]
+
+[[require]]
+name = "Physlib"
+git = "https://github.com/leanprover-community/physlib.git"
+rev = "8b2b23701c07409f882c49e0bd290a214e44450c"
+
+[[lean_lib]]
+name = "S9Pilot"
+srcDir = "s9"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S10Pilot"
+srcDir = "s10"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S10Controls"
+srcDir = "s10"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S10Anisotropic"
+srcDir = "s10"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S10Audit"
+srcDir = "s10"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11Homogeneous"
+srcDir = "s11"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11Invariants"
+srcDir = "s11"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11OddDynamics"
+srcDir = "s11"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11D3Invariants"
+srcDir = "s11"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11D3Bulk"
+srcDir = "s11"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11D4Invariants"
+srcDir = "s11"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11D4Odd"
+srcDir = "s11"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11AnalyticError"
+srcDir = "s11"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11VariableCoefficients"
+srcDir = "s11"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11NonlinearPole"
+srcDir = "s11"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11D4Bulk"
+srcDir = "s11"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11D5Invariants"
+srcDir = "s11"
+leanOptions = { warningAsError = true }
+
+[[lean_lib]]
+name = "S11D5Bulk"
+srcDir = "s11"
+
+[[lean_lib]]
+name = "S11ScatteringFlux"
+srcDir = "s11"
+leanOptions = { warningAsError = true }

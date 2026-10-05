@@ -1,0 +1,152 @@
+D5B.1–D5B.4: full D5 constant-coefficient bulk variation
+LOCAL VERIFICATION: PASS; INDEPENDENT FIDELITY REVIEWS: CLEAR / CLEAR
+BOUNDED D5B.1–D5B.4: COMPLETE
+
+Recorded acceptance: _scratch/S11_lean_d5_bulk/verification_run4
+Formal run started: 2026-09-18T04:09:47.332478+00:00
+Formal run finished: 2026-09-18T04:14:12.603824+00:00
+One Lean worker: -j1 -M4096 -DwarningAsError=true; 600 seconds per process.
+Default tactic limits; allocator limit is not an OS RSS cap. Existing tested
+whole-process-group cleanup retained. No failed instrument is mutation evidence.
+
+60 isolated objects: 42 validated D5 classification dependencies copied from
+fresh portable D5 replay; twelve other imports and Action/Variation built in
+bulk run1; Bulk in run2; Census/Controls/root in run3. Run4 guarded reuse of
+all sixty, with every control fresh. Focused builds are not recorded evidence.
+54 selected standard-axiom audits revalidated from the run3 root log.
+14 paired mathematical rejections, 18 positive executions, 92 total records.
+17 distinct positive statements: momentum positive repeats for sign/factor.
+Each rejection: one contract_control diagnostic, one unsolved False, no warnings,
+syntax/import/resource failures. No canonical source-replacement mutants claimed.
+
+Claim: actual L=-Q/2 for every constant real (a,b,c) on all real 5x5 gradients;
+Q=a(trG)^2+b tr(G^2)+c tr(GG^T), G_ij=partial_i u_j. No inertia.
+Actual jet derivative momentum, actual finite relative-action first derivative
+for smooth backgrounds and smooth compact variations; stationarity iff local EL.
+EL=(a+b)grad(div u)+c Delta u. Universal equality iff c and a+b agree.
+Full null family (t,-t,0), response/kernel dimensions 2/1. Explicit divergence
+current and its -t/2 action factor; nonzero density/current/momentum retained.
+Homogeneous map rho=0,mu=c,B=a+b+c, zero wavevector and fifth direction included.
+No pointwise-zero density or absent-boundary-effect conclusion.
+
+Native: twelve exact identities; two mutated original EL implementations;
+nine target checks (two wrong computed formulas, one polynomial sanity check,
+six positives). The sanity check is not a computed-current source mutation. Actual complete Q9/V5
+span and momenta, basis rows (0,1,0),(1/2,-1/2,0),(0,-1,1), determinant -1/2,
+weights (a+b+c,2a,c). Native EL helper sign is opposite Lean; V5(Q)=2 Lean EL.
+Selected original helpers only; no production or S11c import/driver execution.
+Wolfram source inspection only. Tested translation is outside the Lean kernel.
+
+Author validation PASS: fifteen clean package pins, thirteen direct Mathlib
+source/object pairs, complete local inputs/objects/logs/build lineage. Existing
+transitive cache is the pinned baseline. All 499 historical source/evidence
+files, 232 shared local objects, two native inputs and installation records
+preserved. D5 portable integration separately passed its full replay.
+
+Formal report SHA256: 7e69b7fe73333892f84fe980737f49c6aa3e41bd47484364a0d0bbb196bae429
+Formal instrument SHA256: fa30f7f1ed94ba70c3166752dce96da4cd9b6dc761f896b8fefa2f4b7adaee81
+Native report SHA256: 58c496e660b71f50e3fa8f6cdc7a2d0b81ac98376e9ea7488b1cd21e00de6485
+Native instrument SHA256: bd3ed9e4b89a81f44ce27366bdf7759bfae2ad540f4378cef8c5b829bd935d69
+Author validation: _measurements/S11_lean_d5_bulk_validation.json
+Scope/review: D5_BULK_COVERAGE.md, D5_BULK_FIDELITY.md.
+User authorized review transfer and commit after both independent approvals.
+Both substantive terminal reviews are CLEAR; only closure/status prose changed.
+The homogeneous map is operator-level, not density equality. The existence
+proof is nonconstructive. See D5_BULK_FIDELITY_REVIEW.md and the closure record.
+No variable coefficient, interface,
+general-dimensional/null-Lagrangian theory, new spectrum/scattering/pole work,
+S11c calculation, production rerun or systematic CAS bridge.
+
+CHECK RECORDS (canonical provenance as above):
+PASS     build_S10Pilot.Action
+PASS     build_S10Pilot.PlaneWave
+PASS     build_S10Pilot.Analytic
+PASS     build_S11D4Odd.Calculus
+PASS     build_S10Pilot.Variation
+PASS     seed_S11D5Invariants.CoordinateAlgebra
+PASS     seed_S11D5Invariants.BilinearExpansion
+PASS     seed_S11D5Invariants.Quadratic
+PASS     seed_S11D5Invariants.Rotation
+PASS     seed_S11D5Invariants.Forms
+PASS     seed_S11D5Invariants.ConstraintPolynomial
+PASS     seed_S11D5Invariants.ConstraintBlock0
+PASS     seed_S11D5Invariants.ConstraintBlock1
+PASS     seed_S11D5Invariants.ConstraintBlock2
+PASS     seed_S11D5Invariants.ConstraintBlock3
+PASS     seed_S11D5Invariants.ConstraintBlock4
+PASS     seed_S11D5Invariants.ConstraintBlock5
+PASS     seed_S11D5Invariants.ConstraintBlock6
+PASS     seed_S11D5Invariants.ConstraintBlock11
+PASS     seed_S11D5Invariants.ConstraintBlock12
+PASS     seed_S11D5Invariants.ConstraintBlock14
+PASS     seed_S11D5Invariants.ConstraintBlock15
+PASS     seed_S11D5Invariants.ConstraintBlock16
+PASS     seed_S11D5Invariants.ReconstructionBlock0
+PASS     seed_S11D5Invariants.ReconstructionBlock1
+PASS     seed_S11D5Invariants.ReconstructionBlock2
+PASS     seed_S11D5Invariants.ConstraintBlock7
+PASS     seed_S11D5Invariants.ReconstructionBlock3
+PASS     seed_S11D5Invariants.ReconstructionBlock4
+PASS     seed_S11D5Invariants.ReconstructionBlock5
+PASS     seed_S11D5Invariants.ReconstructionBlock6
+PASS     seed_S11D5Invariants.ReconstructionBlock7
+PASS     seed_S11D5Invariants.ReconstructionBlock8
+PASS     seed_S11D5Invariants.ReconstructionBlock9
+PASS     seed_S11D5Invariants.ConstraintBlock8
+PASS     seed_S11D5Invariants.ConstraintBlock13
+PASS     seed_S11D5Invariants.ReconstructionBlock10
+PASS     seed_S11D5Invariants.ConstraintBlock9
+PASS     seed_S11D5Invariants.ReconstructionBlock11
+PASS     seed_S11D5Invariants.ReconstructionBlock12
+PASS     seed_S11D5Invariants.ConstraintBlock10
+PASS     seed_S11D5Invariants.ReconstructionBlock13
+PASS     seed_S11D5Invariants.ReconstructionBlock14
+PASS     seed_S11D5Invariants.ReconstructionBlock15
+PASS     seed_S11D5Invariants.ReconstructionBlock16
+PASS     seed_S11D5Invariants.Constraints
+PASS     seed_S11D5Invariants.Classification
+PASS     build_S11D5Bulk.Action
+PASS     build_S11D5Bulk.Variation
+PASS     build_S10Controls.Action
+PASS     build_S10Controls.PlaneWave
+PASS     build_S10Controls.Analytic
+PASS     build_S10Controls.Variation
+PASS     build_S10Pilot.PhaseAverage
+PASS     build_S10Controls.PhaseAverage
+PASS     build_S11Homogeneous.Action
+PASS     build_S11D5Bulk.Bulk
+PASS     build_S11D5Bulk.Census
+PASS     build_S11D5Bulk.Controls
+PASS     build_S11D5Bulk
+PASS     response_dimension_positive
+REJECTED response_dimension_mutant
+PASS     null_dimension_positive
+REJECTED null_dimension_mutant
+PASS     null_sum_sign_positive
+REJECTED null_sum_sign_mutant
+PASS     omit_laplacian_positive
+REJECTED omit_laplacian_mutant
+PASS     even_density_not_zero_positive
+REJECTED even_density_not_zero_mutant
+PASS     even_momentum_sign_positive
+REJECTED even_momentum_sign_mutant
+PASS     even_momentum_factor_positive
+REJECTED even_momentum_factor_mutant
+PASS     even_current_factor_positive
+REJECTED even_current_factor_mutant
+PASS     transverse_coefficient_positive
+REJECTED transverse_coefficient_mutant
+PASS     longitudinal_coefficient_positive
+REJECTED longitudinal_coefficient_mutant
+PASS     bulk_equivalence_positive
+REJECTED bulk_equivalence_mutant
+PASS     time_momentum_positive
+REJECTED time_momentum_mutant
+PASS     fifth_transverse_positive
+REJECTED fifth_transverse_mutant
+PASS     fifth_longitudinal_positive
+REJECTED fifth_longitudinal_mutant
+PASS     null_positive
+PASS     zero_wavevector_positive
+PASS     negative_coefficients_positive
+PASS     nonzero_variation_positive

@@ -391,7 +391,10 @@ symbols. ⇒ ⛔⛔ **EVERY NUMBER Q4 PRODUCES IS A GENERIC NUMBER, AND SAYING S
 - the locus where the generic rank **drops** — take `r` to be the rank **your own computation returned**
   for that matrix, form the `r × r` minors, and solve them **all** to zero **for `k_1 … k_D` over the
   REALS**; emit the solution set;
-- the Q3 root-coincidence locus alongside it;
+- the same rank-drop calculation for the N3 stacked matrix `[M_r; k^T]`,
+  using that matrix's own computed generic rank and all minors of that size;
+  emit this family separately from the unstacked matrix's rank-drop family;
+- the Q3 root-coincidence locus alongside them;
 - ⭐ for each locus, **whether it intersects the region allowed by §3** (`Σ k_m² > 0`, all `k_m` real, all
   control parameters in their declared ranges), emitted as a symbolic test with its operands.
 

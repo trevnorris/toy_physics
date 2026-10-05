@@ -1,0 +1,81 @@
+S1–S4 conditional finite-solve sensitivity — COMPLETE; local PASS, both reviews CLEAR
+
+Recorded formal run: _scratch/S11_lean_sensitivity/verification_run6/evidence
+Canonical builds, all fresh and isolated:
+  S11AnalyticError.Stability (unchanged reviewed T2 source)
+  S11ScatteringSensitivity.Residual
+  S11ScatteringFlux.Current (unchanged reviewed F1–F4 source)
+  S11ScatteringSensitivity.Current
+  S11ScatteringSensitivity.Fraction
+  S11ScatteringSensitivity.Pipeline
+  S11ScatteringSensitivity.Controls
+  S11ScatteringSensitivity (audit root)
+
+Eight objects; 51 selected standard-axiom audit declarations.
+Allowed axioms: propext, Classical.choice, Quot.sound only.
+18 paired mathematical rejections; 24 positives (23 distinct statements).
+51 records = 8 builds + 18 negatives + 24 positives + 1 native revalidation.
+Every false statement has exit 1, one contract_control error, exactly one
+unsolved False, and no other error/warning. Fresh instance-level controls use
+canonical witnesses/arithmetic, not independent derivations or source-replacement
+mutations. Cross-term and quadratic-error omission pairs share a positive.
+
+Native execution occurred in guarded run1 before an unrelated formal failure:
+  13 identities/examples, 14 wrong-formula controls, 9 conditional bound examples.
+  Python 3.10.12; NumPy 1.26.4.
+  Tiny synthetic 10-unknown/two-incident finite system; no saved operands.
+  Original selected balance/least-squares/unscale, residual and modal/current ASTs.
+  Comparison tolerance: 1e-12 * max(1, max(abs(expected))).
+  Conditional bound examples allow 1e-12 absolute slack; wrong-formula controls
+  require separation greater than 1e-8. These are floating-point checks.
+Run6 revalidated the original source/instrument/report hashes, without rerunning
+the native instrument. Run1's overall ERROR record is retained as a failure.
+One original residual AST subtraction was changed to addition as a sign control.
+No production import, full constructor, scientific result or S11c source edit.
+
+Author evidence:
+  _measurements/S11_lean_sensitivity_contract_checks.json
+  _measurements/S11_lean_sensitivity_source_checks.json
+  _measurements/S11_lean_sensitivity_validation.json
+  _measurements/S11_lean_sensitivity_resource_receipt.json
+  _measurements/S11_lean_sensitivity_preserved_inputs.json
+Read-only validation re-adjudicates logs and generated control sources, audits
+actual axiom lists and checks live/snapshot/object/native lineage correspondence.
+Fifteen clean package pins; thirteen direct Mathlib source/object pairs.
+Transitive external cache is the pinned baseline, not a fresh full cache build.
+605 historical source/evidence files and 243 old objects are unchanged.
+Old proof objects are never rebuilt in place or used for these fresh builds.
+
+Containment: scripts/s11c_guarded_run.py, whole-job 2 GiB, no swap, 32 tasks,
+one CPU, lower CPU/I/O priority. No overlapping jobs, unguarded fallback or
+automatic retries. Lean -j1 -M4096 -DwarningAsError=true, 180 seconds/process,
+tested whole-process-group cleanup; worker 800 seconds, outer guard 850 seconds.
+Run6 elapsed 102.712 seconds; actual cgroup peak 418717696 bytes; no recorded
+max/OOM/swap events. The internal Lean accounting setting became 4096 after the
+unchanged T2 import hit its 2048 setting; the hard whole-job cap stayed 2 GiB.
+No later tactic, timeout, resource or acceptance setting was increased.
+Earlier import/resource/linter/proof failures remain historical failed attempts.
+The last repair inserted spaces in one extra positive; canonical proofs and
+objects were unchanged by it. No failed positive was accepted as evidence.
+
+The instrument is bespoke and guarded. No new portable-runner catalog entry
+or Lake named-target registration is claimed. No scientific replay was needed
+for documentation or author hash validation.
+
+Conditional scope: supplied inverse and observation bounds, actual finite
+residual/scaling, full current form, and explicit signed denominator margins.
+Native condition estimates are not certified inverse bounds. Synthetic inverse
+examples use unscaled M/sup norm; balanced K and unscaling are separately tested.
+The native incident-positive guard and saved ratio expression are source-only
+references; selected execution stops at constructing the incident currents.
+No certified physical error budget, continuum convergence, conservation,
+channel completeness, parent-theory Taylor bound or numerical interval proof.
+
+Claude and Grok independently returned complete CLEAR reports with no blocking
+findings on the approved fixed 30-file packet. Optional dispositions are in
+SCATTERING_SENSITIVITY_FIDELITY_REVIEW.md. Neither independently rebuilt Lean,
+executed native code or validated external filesystem hashes; author closure
+checks retain those responsibilities. The approved packet, canonical sources,
+instruments, objects and historical evidence remain unchanged. Exactly three
+live documents received wording/status changes, pinned in the closure record.
+No scientific rerun for documentation-only changes. No commit is authorized.

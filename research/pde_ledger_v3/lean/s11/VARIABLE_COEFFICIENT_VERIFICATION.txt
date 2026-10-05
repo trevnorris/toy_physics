@@ -1,0 +1,132 @@
+S11 variable coefficients and flat-interface traces VC1–VC4
+Bounded contract complete: local verification PASS and both independent reviews CLEAR.
+
+CLAIM AND LIMIT
+For prescribed smooth real profiles a,b,c and smooth u, the same D3 action
+L=-[a(div u)^2+b tr(G^2)+c sum_ij G_ij^2]/2, G_ij=partial_i u_j,
+has actual jet derivative momentum
+ p_ij=-(a delta_ij div u+b partial_j u_i+c partial_i u_j).
+Its local EL=-div p is
+ (a+b)grad div u+c Delta u+(grad a)div u
+ +sum_i(partial_i b)partial_j u_i+sum_i(partial_i c)partial_i u_j.
+Constants recover the reviewed operator. The former null direction a=-b,c=0
+retains its coefficient-gradient residual, which can be nonzero.
+
+For the reviewed D4 P=F01 F23-F02 F13+F03 F12, F=G-G^T,
+L=-beta P/2 and M_ij=partial P/partial G_ij, the actual local EL is
+ (1/2)sum_i(partial_i beta)M_ij.
+Constant beta gives zero. Weighted divergence identities retain the gradient
+contractions with the reviewed D3/D4 currents and the action factor -1/2.
+Time momenta are zero, without assuming time-independent profiles or fields.
+Profiles are prescribed, not varied fields. No positivity or transverse ansatz.
+
+Actual two-interval integration by parts retains
+ [p_minus(c)-p_plus(c)]h(c), outer endpoints and both interior derivatives.
+The test has a common trace; each flux has its own sufficiently regular
+representative. The algebraic finite-dimensional pairing vanishes for every
+test value iff the fluxes match. Normal momentum flux uses n_i dL/dG_ij;
+physical stiffness traction has the opposite sign for these negative actions.
+
+This is a local EL/pointwise variation and normal-slice/trace result. It does
+not prove a general multidimensional stationarity or transmission theorem,
+one-sided weak trace theory, existence of solutions, surface-action laws,
+distribution products, or correspondence to the full S11c reduced operator.
+The integral theorem assumes actual derivatives on the closed intervals of
+separate real-line representatives, plus interval-integrable derivative data.
+The endpoint-zero corollary requires h(a)=h(b)=0, not compact support. Oriented
+interval integrals permit arbitrary a,c,b; the physical interpretation uses
+a<=c<=b. No surface source/action, curved-interface theorem, general null
+Lagrangian classification, D5 or scattering/pole work is included.
+
+RECORDED EVIDENCE
+Terminal supervisor: _scratch/S11_lean_variable/verification_run2, PASS.
+Per-check sources/logs: lean/s11/_scratch/variable_verification.
+These are separate supervisor and instrument directories, not a path mismatch.
+Reports under _measurements/:
+- S11_lean_variable_contract_checks.json
+- S11_lean_variable_source_checks.json
+- S11_lean_variable_validation.json
+
+Run1 freshly built 34 unchanged imports, five new modules (Common,D3,D4,
+Interface,Controls) and the audit root. All forty builds passed. The selected
+31 declarations used only standard axioms (propext, Classical.choice,
+Quot.sound) or none. No admissions or custom physics axioms were accepted.
+All twelve paired rejections and twelve paired positives passed, then an
+extra constant-profile positive failed to reduce the last vector entry.
+Adding Matrix.cons_val_two to that control's proof fixed this instrument
+issue; it was never accepted as mathematical rejection. Canonical proof
+sources, statements and objects remained unchanged.
+
+Run2 reused all forty recorded builds with matching transitive local source,
+pins, generators, external dependencies, commands and input/output object
+hashes. It reran every control freshly: twelve mathematical rejections and
+sixteen positives, 68 check records in total. Each rejected false statement
+has exactly one diagnostic, an unsolved False in contract_control, exit 1.
+The runner requires at least one intended False; author validation additionally
+enforces the observed exactly-one property for every accepted record.
+Every positive exits 0 without warnings. These are paired statement mutations,
+not replacements inside canonical general-theorem source. No focused build
+object is used as recorded reuse evidence. No run2 timeout/instrument failure.
+
+Author validation checked current canonical/control sources and logs, every
+build input/output object, the formal/native instruments and reports, all
+fifteen pinned package revisions with clean tracked sources, and thirteen
+direct Mathlib import source/object pairs. The full transitive Mathlib cache
+is the existing pinned trust baseline, not a fresh library rebuild. Historical
+proof bytes/manifests and the five T1 objects match. Rebuilt unchanged D3/D4
+imports may have different objects from earlier contracts; old reviewed
+evidence remains historical and unchanged.
+
+MATHEMATICAL CONTROL ADJUDICATION
+1. D3 omitted gradient: actual u=(0,x2,0),a=x1,b=-x1,c=0 gives EL_1=1, not 0.
+2. D3 gradient sign: that response is positive, not negative.
+3. D4 omitted gradient: u=(0,0,0,x3),beta=x1 gives nonzero EL_2.
+4. D4 factor: that component is 1/2, not 1.
+5. D4 sign: that response is positive, not negative.
+6. Weighted current: a=x1,J=1 in one spatial dimension gives correction 1, not 0.
+7. D3 momentum traction: a=1,b=-1,c=0,G22=1,n=e1 gives -1, not +1.
+8. D4 momentum traction: beta=2 and the reviewed witness jet give -1, not -2.
+9. Interface omission: p_minus=2,p_plus=5,h=1-x^2 on [-1,1] gives a nonzero integral.
+10. Interface sign: that actual integral is -3, not +3.
+11. Trace omission: the pairing (2-5)*1 is -3, not 0.
+12. Normal reversal: swapping minus/plus gives +3, not -3.
+
+Four extra positives check the constant D3 null profile, constant D4 beta=-7,
+equal traces and the universally quantified finite-dimensional trace criterion.
+Canonical witnesses are actual smooth fields, derivative-defined momenta and
+interval integrals. The paired controls do not claim sensitivity to every
+possible edit of a general theorem. The index transpose check is native below.
+
+COMPACT NATIVE IDENTIFICATION
+The selected original Q9 and coordinate helpers identify the same D3 trace
+basis and D4 native P_D=P. The new instrument differentiates the actual
+prescribed-profile momentum; it does not attribute this new variable-profile
+divergence to the old constant-coefficient native EL helper. Sources are
+read-only and hashed. There is no production-driver or S11c execution.
+
+Seven exact identities pass: D3 density, EL and weighted-null current; D4
+density, EL and weighted current; actual normal-slice integral. Ten controls
+detect D3 omitted/reversed gradients, transposed b-gradient derivative index,
+omitted weighted-current correction; D4 false zero response, factor, sign,
+omitted weighted correction; and omitted/reversed interface jump. The index
+witness b=x1,a=c=0,u=(x2,0,0) gives EL=(0,1,0), while the wrong transpose
+gives zero. The initial seven-identity/nine-control native record is archived;
+run2 adds this explicitly promised VC4 sensitivity and reruns the instrument.
+No native engine source changed. Translation checking is not kernel-certified
+CAS evaluation or full S11c operator identification.
+
+RESOURCES AND REVIEW
+One Lean worker, -j1 -M4096, nice 10, 600 seconds per process with the unchanged
+tested whole-process-group timeout cleanup. The allocator limit is not an OS
+RSS cap. No resource limit was raised. S11c sources/pinned exports untouched.
+
+The approved fixed 61-file packet has aggregate SHA256
+8152df86a31ecaabe89713a3fb178c7c469885f905b9e486207bbc695c02cf45.
+Claude and Grok returned substantive terminal CLEAR reports after independent
+source reading and hand algebra. They did not execute Lean/native code or
+perform hash audits. Author validation separately checked the full correspondence.
+The epsilon-on-G normalization is prose/hand algebra here (also recorded in
+the earlier native D4 check); Lean proves G:M=2P for derivative-defined M.
+Only documentation changed after review; the packet remains frozen and all
+proof/instrument/report bytes are unchanged. See VARIABLE_COEFFICIENT_FIDELITY_REVIEW.md.
+The user authorized committing after clearance and proceeding to question 3.

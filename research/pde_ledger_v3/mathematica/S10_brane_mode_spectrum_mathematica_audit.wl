@@ -1458,11 +1458,11 @@ runRankStrata[
   assumptions_
 ] := Module[
   {
-    dimension, wavevector, allIndices, stratumRecords,
+    dimension, wavevector, stratumRecords, rankFamily, rankFamilyName,
     rootMatrix, genericRank, rowSelections, columnSelections, minors,
     equations, locusData, locus, allowed, outcome, intersects, currentPrefix,
     coincidenceRecords, gatheredRecords, uniqueRecords, record,
-    sameStratumRegionQ,
+    sameStratumRegionQ, regionRecords, nextRegions, region, regionFormula, regionOutcome,
     pointVariables, pointFormula, pointInstances, point, pointLocated,
     pointSearchRecord, spectrumParameterVariables,
     parameterSpecializationRules, parameterSpecializations,
@@ -1472,60 +1472,65 @@ runRankStrata[
   },
   dimension = Length[data["Wavevector"]];
   wavevector = data["Wavevector"];
-  allIndices = Range[dimension];
   coincidenceRecords = spectrumData["CoincidenceRecords"];
   stratumRecords = {};
   allMinors = {};
 
   Do[
-    rootMatrix = modeData[[rootIndex, "RootMatrix"]];
-    genericRank = modeData[[rootIndex, "Rank"]];
-    rowSelections = Subsets[allIndices, {genericRank}];
-    columnSelections = Subsets[allIndices, {genericRank}];
-    minors = If[
-      genericRank == 0,
-      {Apply[Times, {}]},
-      Flatten[
-        Table[
-          Factor[Together[Det[rootMatrix[[rows, columns]]]]],
-          {rows, rowSelections},
-          {columns, columnSelections}
+    Do[
+      rankFamilyName = rankFamily[[1]];
+      rootMatrix = modeData[[rootIndex, rankFamily[[2]]]];
+      genericRank = modeData[[rootIndex, rankFamily[[3]]]];
+      rowSelections = Subsets[Range[Length[rootMatrix]], {genericRank}];
+      columnSelections = Subsets[Range[Length[First[rootMatrix]]], {genericRank}];
+      minors = If[
+        genericRank == 0,
+        {Apply[Times, {}]},
+        Flatten[
+          Table[
+            Factor[Together[Det[rootMatrix[[rows, columns]]]]],
+            {rows, rowSelections},
+            {columns, columnSelections}
+          ]
         ]
-      ]
+      ];
+      equations = (# == 0) & /@ minors;
+      allMinors = Join[allMinors, minors];
+      locusData = realLocusSolve[equations, wavevector];
+      locus = locusData["Result"];
+      allowed = reduceAllowed[And @@ equations, wavevector, assumptions];
+      outcome = classifyReduceOutcome[allowed];
+      intersects = intersectionValue[outcome];
+      currentPrefix = rootPrefix[prefix, rootIndex] <> "_Q8_" <> rankFamilyName;
+      emit[currentPrefix <> "_MINORS", minors];
+      emit[currentPrefix <> "_OPERANDS", {equations, assumptions}];
+      emitSolverObject[currentPrefix <> "_LOCUS", locus];
+      emitLocal[
+        localizeTag[currentPrefix <> "_LOCUS_SOLVE_SVARS_MESSAGE"],
+        locusData["SolveSvarsMessageFired"]
+      ];
+      emit[currentPrefix <> "_ALLOWED_INTERSECTION", allowed];
+      emit[currentPrefix <> "_INTERSECTION_OUTCOME", outcome];
+      emit[currentPrefix <> "_INTERSECTION_TEST", intersects];
+      If[TrueQ[intersects],
+        stratumRecords = Append[
+          stratumRecords,
+          <|
+            "Source" -> {rankFamilyName, rootIndex},
+            "Equations" -> equations,
+            "Allowed" -> allowed,
+            "IntersectionOutcome" -> outcome
+          |>
+        ]
+      ],
+      {rankFamily, {{"RANK_DROP", "RootMatrix", "Rank"},
+        {"TRANSVERSE_RANK_DROP", "StackedMatrix", "StackedRank"}}}
     ];
-    equations = (# == 0) & /@ minors;
-    allMinors = Join[allMinors, minors];
-    locusData = realLocusSolve[equations, wavevector];
-    locus = locusData["Result"];
-    allowed = reduceAllowed[And @@ equations, wavevector, assumptions];
-    outcome = classifyReduceOutcome[allowed];
-    intersects = intersectionValue[outcome];
-    currentPrefix = rootPrefix[prefix, rootIndex] <> "_Q8_RANK_DROP";
-    emit[currentPrefix <> "_MINORS", minors];
-    emit[currentPrefix <> "_OPERANDS", {equations, assumptions}];
-    emitSolverObject[currentPrefix <> "_LOCUS", locus];
-    emitLocal[
-      localizeTag[currentPrefix <> "_LOCUS_SOLVE_SVARS_MESSAGE"],
-      locusData["SolveSvarsMessageFired"]
-    ];
-    emit[currentPrefix <> "_ALLOWED_INTERSECTION", allowed];
-    emit[currentPrefix <> "_INTERSECTION_OUTCOME", outcome];
-    emit[currentPrefix <> "_INTERSECTION_TEST", intersects];
     emit[
       rootPrefix[prefix, rootIndex] <> "_Q8_ROOT_COINCIDENCE_LOCI",
       coincidenceRecords
     ];
-    If[TrueQ[intersects],
-      stratumRecords = Append[
-        stratumRecords,
-        <|
-          "Source" -> {rankDrop, rootIndex},
-          "Equations" -> equations,
-          "Allowed" -> allowed,
-          "IntersectionOutcome" -> outcome
-        |>
-      ]
-    ],
+    Null,
     {rootIndex, Length[modeData]}
   ];
 
@@ -1573,6 +1578,36 @@ runRankStrata[
     ],
     gatheredRecords
   ];
+  (* Partition by membership in every discovered region. A union must not be
+     represented by a single witness that can miss a different rank pattern. *)
+  regionRecords = {<|"Sources" -> {}, "Allowed" -> assumptions|>};
+  Do[
+    nextRegions = {};
+    Do[
+      Do[
+        regionFormula = reduceAllowed[
+          And[region["Allowed"], If[inside, record["Allowed"], Not[record["Allowed"]]]],
+          wavevector, assumptions
+        ];
+        regionOutcome = classifyReduceOutcome[regionFormula];
+        If[regionOutcome === undecided,
+          emit[prefix <> "_Q8_PARTITION_UNRESOLVED", regionFormula]; Exit[2]
+        ];
+        If[regionOutcome === decidedNonempty,
+          AppendTo[nextRegions, <|
+            "Sources" -> If[inside, Join[region["Sources"], record["Sources"]], region["Sources"]],
+            "Allowed" -> regionFormula,
+            "Equations" -> {regionFormula}
+          |>]
+        ],
+        {inside, {True, False}}
+      ],
+      {region, regionRecords}
+    ];
+    regionRecords = nextRegions,
+    {record, uniqueRecords}
+  ];
+  uniqueRecords = Select[regionRecords, Length[#["Sources"]] > 0 &];
   emit[prefix <> "_Q8_ALLOWED_STRATA", uniqueRecords];
 
   controlVariables = Select[
@@ -1773,6 +1808,13 @@ packageRuns = {
   {"XFORM_ANISO", {3, 4}},
   {"XCOEF_SCALE", {3}}
 };
+
+selectedPackages = Environment["S10_PACKAGES"];
+If[StringQ[selectedPackages] && StringLength[selectedPackages] > 0,
+  selectedPackageNames = StringSplit[selectedPackages, ","];
+  If[Complement[selectedPackageNames, packageRuns[[All, 1]]] =!= {}, Exit[2]];
+  packageRuns = Select[packageRuns, MemberQ[selectedPackageNames, First[#]] &];
+];
 
 declaredRunPairs = Flatten[
   Table[

@@ -1,0 +1,53 @@
+import S11D4Invariants.Controls
+
+/-! Load-bearing D4 invariant contract axiom audit. -/
+
+#print axioms S11D4Invariants.coordinates_decode
+#print axioms S11D4Invariants.decode_coordinates
+#print axioms S11D4Invariants.frame_expansion
+#print axioms S11D4Invariants.quadratic_representation
+#print axioms S11D4Invariants.det_four
+#print axioms S11D4Invariants.rotationXY_proper
+#print axioms S11D4Invariants.rotationYZ_proper
+#print axioms S11D4Invariants.rotationZW_proper
+#print axioms S11D4Invariants.coordinates_rotationXY
+#print axioms S11D4Invariants.coordinates_rotationYZ
+#print axioms S11D4Invariants.coordinates_rotationZW
+#print axioms S11D4Invariants.reflection_orthogonal
+#print axioms S11D4Invariants.reflection_det
+#print axioms S11D4Invariants.trace_conjugate
+#print axioms S11D4Invariants.conjugate_mul
+#print axioms S11D4Invariants.conjugate_transpose
+#print axioms S11D4Invariants.orientation_conjugate
+#print axioms S11D4Invariants.traceSquare_apply
+#print axioms S11D4Invariants.traceOfSquare_apply
+#print axioms S11D4Invariants.frobeniusSquare_apply
+#print axioms S11D4Invariants.orientationForm_apply
+#print axioms S11D4Invariants.invariantForm_apply
+#print axioms S11D4Invariants.invariantForm_SO
+#print axioms S11D4Invariants.invariantForm_reflection
+#print axioms S11D4Invariants.invariant_polynomial
+#print axioms S11D4Invariants.SO_classification
+#print axioms S11D4Invariants.invariantForm_injective
+#print axioms S11D4Invariants.SO_unique
+#print axioms S11D4Invariants.invariantForm_O
+#print axioms S11D4Invariants.invariantForm_odd
+#print axioms S11D4Invariants.O_classification
+#print axioms S11D4Invariants.odd_classification
+#print axioms S11D4Invariants.soMap_bijective
+#print axioms S11D4Invariants.oMap_bijective
+#print axioms S11D4Invariants.oddMap_bijective
+#print axioms S11D4Invariants.so_dimension
+#print axioms S11D4Invariants.o_dimension
+#print axioms S11D4Invariants.odd_dimension
+#print axioms S11D4Invariants.even_odd_disjoint
+#print axioms S11D4Invariants.even_odd_span
+#print axioms S11D4Invariants.census
+#print axioms S11D4Invariants.trace_not_omittable
+#print axioms S11D4Invariants.traceOfSquare_not_omittable
+#print axioms S11D4Invariants.frobenius_not_omittable
+#print axioms S11D4Invariants.orientation_not_omittable
+#print axioms S11D4Invariants.orientation_nonzero
+#print axioms S11D4Invariants.nonzero_odd_exists
+#print axioms S11D4Invariants.zero_invariant
+#print axioms S11D4Invariants.single_entry_not_invariant

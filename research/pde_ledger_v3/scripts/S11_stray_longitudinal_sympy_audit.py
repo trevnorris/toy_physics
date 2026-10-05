@@ -508,8 +508,13 @@ def compute_q9(n: int) -> dict[str, object]:
             generator[b_idx, a_idx] = -1
             delta = generator * qg - qg * generator
             delta_vars = tuple(delta[i, j] for i in range(n) for j in range(n))
-            for p, q in pairs:
-                lie_equations.append(q9_vector(delta_vars[p] * variables[q] + variables[p] * delta_vars[q], variables, pairs))
+            action_rows = [
+                q9_vector(delta_vars[p] * variables[q] + variables[p] * delta_vars[q], variables, pairs)
+                for p, q in pairs
+            ]
+            # Rows are images of basis monomials. Polynomial coefficient columns
+            # therefore obey the transpose of each generator block (Q9 V1/V2).
+            lie_equations.extend(matrix_from_rows(action_rows, len(monomials)).T.tolist())
 
     lie_matrix = matrix_from_rows(lie_equations, len(monomials))
     v1_null = lie_matrix.nullspace()

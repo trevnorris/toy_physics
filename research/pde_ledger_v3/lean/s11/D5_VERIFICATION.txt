@@ -1,0 +1,151 @@
+D5.1–D5.4: full D5 quadratic invariant classification
+LOCAL VERIFICATION: PASS; INDEPENDENT FIDELITY REVIEWS: CLEAR / CLEAR
+BOUNDED CONTRACT: COMPLETE (D5.1–D5.4 only)
+
+Recorded acceptance: _scratch/S11_lean_d5/verification_run11
+Formal run started: 2026-09-18T00:55:44.227542+00:00
+Formal run finished: 2026-09-18T00:59:41.911839+00:00
+One Lean worker: -j1 -M4096 -DwarningAsError=true; 600-second process limit.
+Allocator limit is not an OS RSS cap. Tested whole-process-group timeout
+cleanup is unchanged. No timeout or compiler failure is mutation evidence.
+
+45 canonical objects: 44 modules plus audit root.
+43 modules built in recorded run9; Controls/root built in recorded run10.
+All 45 reused in run11 under full local transitive source/pin/generator,
+exact-command, input/output object and external dependency guards.
+Focused objects never supplied recorded reuse evidence.
+51 selected standard-axiom audits; only propext, Classical.choice, Quot.sound
+or empty lists. No admissions, custom axioms or trustCompiler.
+13 fresh paired mathematical rejections and 17 fresh positives (75 records).
+Every rejection: one contract_control diagnostic, one unsolved False, no
+warning, import, syntax, resource or instrument failure. Paired statement
+controls only; no canonical source-replacement mutations are claimed.
+
+Proof: all real homogeneous quadratic forms on real 5x5 matrices under
+G -> R G R^T, G_ij=partial_i u_j, with no gradient symmetry, transverse or
+positivity restriction. Unique a(tr G)^2+b tr(G^2)+c tr(G G^T), arbitrary
+real coefficients including zero/negative values. Actual SO/O/odd subspaces
+have dimensions 3/3/0; the odd subspace is zero.
+All 325 unordered quadratic coefficients represented, 322 necessary equations
+checked, all reconstruction combinations checked, full-group sufficiency
+proved separately. Seventeen necessary blocks and seventeen reconstruction
+blocks are compilation units, not restrictions of the mathematical domain.
+SO=O follows from conjugation by R and -R with opposite determinants in D5.
+Density classification only, before EL/divergence quotient; no D5 bulk claim.
+
+Native: complete actual Q9 V1/V2/V6 spans match 3/3/0, reflection acts as the
+identity and P_D=0. Same-count wrong-span control detected. Historical wrong
+orientation retains 3/3/0 counts but fails span agreement. Selected original
+Q9/coordinate helpers only; no production module/driver or S11c execution.
+Run2 native evidence revalidated against live source/instrument/report hashes.
+Wolfram source inspection only; tested translation is outside the Lean kernel.
+
+Author validation: PASS. Fifteen clean pinned packages, five direct Mathlib
+source/object pairs. Existing transitive Mathlib cache is the pinned baseline,
+not rebuilt here. All 383 historical proof/evidence files, two read-only native
+inputs and 51 D4C/NP/T1/VC objects match. Installation/replay sources match their
+separate completed validation. No older local Lean module was imported/rebuilt.
+
+Earlier resource/simplification issues changed proof organization or proof code,
+not the public claims or rational certificate. Run10's last mutant was refused
+because its goal was oSpace != oSpace instead of literal False; run11 changes
+only that paired control's simplification. Canonical sources and objects stayed
+unchanged. D5_FIDELITY.md records compact repair/build lineage and its limits.
+
+Author validation: _measurements/S11_lean_d5_validation.json
+Formal evidence: _measurements/S11_lean_d5_contract_checks.json
+Native evidence: _measurements/S11_lean_d5_source_checks.json
+Preservation: _measurements/S11_lean_d5_preserved_inputs.json
+Formal report SHA256: 80d2b3865a81059dd4cdf1fcd23362185bfcf59cbeed1983fd2d75484f3b746a
+Native report SHA256: c47746e096a251f0d386d101f56de0b83caed8f44431a3480333119570f8a1a7
+Formal instrument SHA256: c36cff60c61050c25485064b7ea628049022b982de91d6ec8f1d9391e0503a17
+Native instrument SHA256: 6d2999c2a24b361da7c9f924adb4f8d1cebf078fd29dc589c54ae3be8693f0be
+
+The user approved transfer of the fixed 64-file packet; Claude and Grok both
+returned substantive terminal CLEAR reports with no required fix. Their
+source-only reviews do not independently repeat builds, native runs or hash
+checks. Author closure checks packet/archive/transport, sources, objects,
+dependencies, instruments, logs and protected inputs. No shared-source drift.
+Review dispositions: lean/s11/D5_FIDELITY_REVIEW.md
+Closure record: _measurements/S11_lean_d5_closure_validation.json
+Packet: ff8aa6e60d1403128615212ccbf601fc0c038ef82d0f64690144d9a9457c081c
+Only closure documentation changed after review. No new commit requested.
+No D5 bulk, general-dimensional/null-Lagrangian theorem, new spectrum,
+interface/scattering/pole work, production rerun or systematic CAS bridge.
+
+CHECK RECORDS (build entries reused as recorded above):
+PASS     build_CoordinateAlgebra
+PASS     build_BilinearExpansion
+PASS     build_Quadratic
+PASS     build_Rotation
+PASS     build_Forms
+PASS     build_ConstraintPolynomial
+PASS     build_ConstraintBlock0
+PASS     build_ConstraintBlock1
+PASS     build_ConstraintBlock2
+PASS     build_ConstraintBlock3
+PASS     build_ConstraintBlock4
+PASS     build_ConstraintBlock5
+PASS     build_ConstraintBlock6
+PASS     build_ConstraintBlock7
+PASS     build_ConstraintBlock8
+PASS     build_ConstraintBlock9
+PASS     build_ConstraintBlock10
+PASS     build_ConstraintBlock11
+PASS     build_ConstraintBlock12
+PASS     build_ConstraintBlock13
+PASS     build_ConstraintBlock14
+PASS     build_ConstraintBlock15
+PASS     build_ConstraintBlock16
+PASS     build_ReconstructionBlock0
+PASS     build_ReconstructionBlock1
+PASS     build_ReconstructionBlock2
+PASS     build_ReconstructionBlock3
+PASS     build_ReconstructionBlock4
+PASS     build_ReconstructionBlock5
+PASS     build_ReconstructionBlock6
+PASS     build_ReconstructionBlock7
+PASS     build_ReconstructionBlock8
+PASS     build_ReconstructionBlock9
+PASS     build_ReconstructionBlock10
+PASS     build_ReconstructionBlock11
+PASS     build_ReconstructionBlock12
+PASS     build_ReconstructionBlock13
+PASS     build_ReconstructionBlock14
+PASS     build_ReconstructionBlock15
+PASS     build_ReconstructionBlock16
+PASS     build_Constraints
+PASS     build_Classification
+PASS     build_Census
+PASS     build_Controls
+PASS     axiom_audit
+PASS     SO_count_positive
+REJECTED SO_count_mutant
+PASS     O_count_positive
+REJECTED O_count_mutant
+PASS     odd_count_positive
+REJECTED odd_count_mutant
+PASS     odd_existence_positive
+REJECTED odd_existence_mutant
+PASS     omit_trace_positive
+REJECTED omit_trace_mutant
+PASS     omit_pair_positive
+REJECTED omit_pair_mutant
+PASS     omit_frobenius_positive
+REJECTED omit_frobenius_mutant
+PASS     wrong_span_member_positive
+REJECTED wrong_span_member_mutant
+PASS     trace_factor_positive
+REJECTED trace_factor_mutant
+PASS     pair_factor_positive
+REJECTED pair_factor_mutant
+PASS     frobenius_factor_positive
+REJECTED frobenius_factor_mutant
+PASS     reflection_sign_positive
+REJECTED reflection_sign_mutant
+PASS     SO_O_equality_positive
+REJECTED SO_O_equality_mutant
+PASS     zero_form_positive
+PASS     nonzero_form_positive
+PASS     arbitrary_coefficients_positive
+PASS     unique_coefficients_positive

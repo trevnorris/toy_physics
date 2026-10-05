@@ -1,0 +1,114 @@
+S11 D4 odd density D4B.1–D4B.4 — complete; local PASS and both reviews CLEAR
+
+Scope: the unique SO(4)-invariant reflection-odd quadratic family, on all
+smooth real fields u on (t,x1,x2,x3,x4), with arbitrary constant real beta.
+G_ij=partial_i u_j, F_ij=G_ij-G_ji, P=F01 F23-F02 F13+F03 F12,
+L=-beta P/2. Actual momenta are -beta M/2 with zero time row, where M is the
+complementary antisymmetric matrix in D4_ODD_COVERAGE.md. The current
+K_i=(1/2)sum_j u_j M_ij has div K=P. The actual local EL and actual finite
+relative-action first variation vanish for every smooth background and smooth
+compact variation. No beta sign/nonzero premise or time-independence premise.
+
+RESULTS AND PROVENANCE
+Terminal suite: _scratch/S11_lean_d4_odd/verification_run2, PASS.
+Evidence: _measurements/S11_lean_d4_odd_contract_checks.json,
+S11_lean_d4_odd_source_checks.json and S11_lean_d4_odd_validation.json.
+
+- Four new modules (Action, Calculus, Variation, Boundary) and the root built
+  freshly in run2. Fourteen unchanged imports were reused from run1 after
+  checking commands, local transitive sources, pins/generator and all input
+  and output object hashes in dependency order. Focused checks did not count
+  as recorded reuse. Nineteen compiled objects and 43 check logs match.
+- All 41 requested axiom declarations were matched by name and use only
+  propext, Classical.choice and Quot.sound, or no axioms. No admissions or
+  custom axioms occur in the canonical modules.
+- Twelve mathematical rejections and twelve positives ran afresh. Instrument
+  errors, warnings, import failures and timeouts were not accepted rejections.
+- Native source/instrument hashes and proof/dependency/generator/instrument
+  hashes match. All fifteen package checkouts match the pinned commits and
+  have clean tracked source. H/I/E/J/K and D4 classification proof bytes and
+  historical manifests remain unchanged. Dependency objects stayed identical
+  on the run1 rebuild; the old reviewed records were not rewritten.
+
+CONTROL ADJUDICATION
+Four isolated source mutations expose false identities in named declarations:
+1. Density normalization: replace -beta P/2 by -beta P. At witnessJet with
+   beta=2, the changed value is -2 but density_identity requires -1.
+2. Complementary orientation sign: flip M10 from -F23 to +F23. At witnessJet
+   with beta=2, dL/dG10=+1 but the changed formula predicts -1. momentum_eq
+   reports an unsolved equality with the opposite sign (or beta=0).
+3. Mixed derivative index: replace each partial_i in div M by partial_1.
+   For u=(0,0,0,x1*x2), component j=0 becomes 1 instead of 0. The required
+   dualCurl_divergence_zero fails on a false derivative identity. Subsequent
+   rewrite/simp errors caused by its changed statement are not evidence.
+4. Boundary-current factor: replace 1/2 by 1 in currentJet. For
+   u=(0,x1,0,x3), P=1 but the changed current has divergence 2.
+   boundary_identity fails on the explicit 1 versus 1/2 equality. The later
+   witness proof's conversion error is a secondary diagnostic, not evidence.
+
+Eight paired false statements each reduce to False in contract_control:
+- P(witnessJet)=0 instead of 1;
+- momentum at beta=2 equals +1 instead of -1;
+- the current witness equals 2 instead of 1;
+- the degree-two contraction equals 1 instead of 2;
+- the actual first variation equals 1 instead of 0;
+- the actual local EL component equals 1 instead of 0;
+- the density at beta=-2 equals -1 instead of 1;
+- the time momentum equals 1 instead of 0.
+Their eight correct partners pass. Four additional positives pass: a smooth
+compact zero test field, stationarity at beta=-7, stationarity at beta=0,
+and the smooth affine background (0,x1,0,x3). Canonical statements retain
+their universal quantifiers; these witnesses do not replace the proofs.
+
+COMPACT NATIVE CONNECTION
+The source instrument extracts ten named original helpers without executing
+the production driver. For D4 it computes actual Q9 P_D=P, the derivative
+momenta -beta M/2 and zero time row, contraction 2P, div M=0 and div K=P.
+The actual native EL expression is zero. The actual V6 odd row is expressed
+in the computed V1 basis and its native V5 combination is zero. This is an
+exact symbolic translation check, not a kernel-certified CAS bridge.
+
+The shared specification sets L=T-W with the odd stiffness term beta P_D/2.
+Its native EL sign is opposite to Lean's first-variation convention. Both
+bulk expressions vanish, so sign and scale are checked on nonzero momenta.
+Wrong momentum sign/factor, doubled current, zero-density claim and wrong
+derivative index are detected. Adding G00^2 makes the native operator nonzero
+(its first component is -partial_1^2 u_0 after commuting partials); a helper
+mutated in memory to return zero fails that target. No native file is changed.
+Wolfram evidence is source inspection of the generator transpose only.
+
+BOUNDED REPAIRS
+Run1 passed the native check and fourteen imports, then stopped in Action on
+finite matrix-entry reduction and an unreachable tactic. No mutation ran.
+The repairs explicitly reduce finite entries, use reduction-aware polynomial
+normalization and the current sum_apply lemma, preserve the finite sum needed
+for EL cancellation, and reduce the concrete witnesses. All definitions and
+theorem statements stayed unchanged. The affine positive control also gained
+explicit entry reduction. Four focused builds passed before the recorded
+run2; all control execution and canonical evidence above comes from run2.
+Run1 snapshots, diagnostics and repair preflight remain in local scratch.
+
+Resources: one Lean worker, -j1 -M4096, nice 10, 600 seconds per process.
+The allocator limit is not an OS RSS cap. The existing process-group timeout
+cleanup is unchanged. An OS completion hook provides silent continuation.
+
+INDEPENDENT REVIEW AND CLOSURE
+The user approved the fixed 38-file packet with "Yes you can". Its aggregate
+SHA256 is 1c2fb3840e56f82e506adbddb13463a6fbc645193294a3173531026f0ae838d5.
+Claude and Grok independently returned substantive terminal CLEAR reports
+with no required corrections. Both performed source fidelity and mathematical
+hand checks; neither claimed an independent build, execution or hash audit.
+Author validation confirms archive/snapshot/transport and all live packet
+bytes before documentation changes, nineteen objects, 43 logs, source and
+instrument hashes, pins and historical proof bytes. No shared-source drift
+was found. Optional suggestions are dispositioned in D4_ODD_FIDELITY_REVIEW.md.
+Only closure documentation changed afterward; the frozen packet, proofs and
+verification evidence remain unchanged. See the closure validation JSON.
+D4B.1–D4B.4 is complete, and its stopping rule applies.
+
+This is existing constant-coefficient mathematics with checked conventions
+and exhaustive smooth-field quantifiers, not a new physical discovery.
+A divergence may have boundary effects; the density and momenta can be
+nonzero. No full D4 even-family bulk census, variable beta, general null
+Lagrangians, D5, spectrum/stability/interface work, S11c, production/export
+rerun or systematic CAS bridge is included. No commit requested this turn.

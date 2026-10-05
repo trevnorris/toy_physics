@@ -1,7 +1,7 @@
 # Substrate requirements — what the force sectors oblige the unbuilt steps to deliver
 
 **Status: passes 1 (S9, S10) and 2 (S11, S11b-A/B, S11c PARTIAL) complete; pass-2 review pending.**
-Eighteen entries, all OPEN. Pass 2 was populated 2026-10-05 from the kept results and their stated
+Fifteen entries, all OPEN. Pass 2 was populated 2026-10-05 from the kept results and their stated
 conditions; it does not close the substrate or upgrade S11c's unresolved work. Later sectors remain to
 be read as they close. The two 2026-08-07 prior-art entries retain their provenance; the second route is
 recorded under Population passes.
@@ -62,25 +62,22 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 | target | id | the object owed | source |
 |---|---|---|---|
 | **S1** | `R-S1-02` | the substructure's shear response as a function of `χ_B`, both phases | S9 |
-| **S1** | `R-S1-03` | whether the substructure's microdynamics is time-reversible | S11b-B / unified S11b |
+| **S1** *(register inference)* | `R-S1-03` | whether the substructure's microdynamics is time-reversible | S11b-B / unified S11b |
 | **S1.5** | `R-S1.5-01` | the mode content of the linearised GNLS, including the bulk acoustic branch | S9, S11, S11b-A/B |
-| **S6** | `R-S6-01` | the brane's compression modulus `B_comp` | S11, S11b-B |
+| **S6** | `R-S6-01` | the brane's compression modulus `B_comp` | S11 |
 | **S6** | `R-S6-02` | the first variation of the substrate action at `v₀ = 0` | S9, S10, S11, S11b-A/B, S11c uniform |
 | **S6** | `R-S1-01` | the brane's spatial dimension `D_brane` ⚠ *id kept; target corrected to S6* | S10, S11 |
-| **S7** | `R-S7-01` | the slab-width flat direction under a non-uniform width | S11 |
+| **S7** | `R-S7-01` | the slab-width flat direction under a non-uniform width | S11, unified S11b |
 | **S8** | `R-S8-01` | the form of the brane's quadratic stiffness functional | S9, S10, S11, S11b-B, S11c uniform |
 | **S8** | `R-S8-02` | the quadratic operator on `u` **and** `h` together | S10 |
 | **S8** | `R-S8-03` | the **sign** of the physical transverse stiffness | S9, S10, S11, S11b-B, S11c uniform |
 | **S8** | `R-S8-04` | what carries the brane's **internal angular momentum** | S9, S10, S11 |
 | **S8** | `R-S8-05` | the **frame** the brane's rotational stiffness is measured against | S9, S10, S11 |
-| **S8** | `R-S8-06` | the material displacement and quadratic inertia of the slab | S11, S11b-B |
-| **S11b** | `R-S11b-01` | the constitutive brane–bulk interface coupling law | S11b-A/B |
-| **S11b** | `R-S11b-02` | the outgoing/retarded acoustic boundary condition | S11b-A/B, S11c uniform |
-| **S12** | `R-S12-01` | a named reservoir and its power budget | S11b-B / unified S11b |
-| **S12** | `R-S12-02` | background drain/return and the receiving-channel content | S11b-A/B, S11c uniform/clean condition |
-| **Q2/S22** | `R-Q2-01` | symmetry of the support, material fields and boundary data | S11c clean condition |
+| **S8** *(register inference)* | `R-S8-06` | the material displacement and quadratic inertia of the slab | S11, S11b-B |
+| **S12** *(register inference)* | `R-S12-01` | a named reservoir and its power budget | S11b-B / unified S11b |
+| **S12** | `R-S12-02` | background drain/return and the receiving-channel content | S11b-A/B, S11c uniform |
 
-⚠ Entries below are in the order they were found, ⛔ not in step order. All **eighteen** are **OPEN**.
+⚠ Entries below are in the order they were found, ⛔ not in step order. All **fifteen** are **OPEN**.
 ⭐ `R-S8-01`, `-03`, `-04`, `-05` are one family: the stiffness functional's **form**, its **sign**, its
 **mechanical admissibility**, and its **reference frame**. ⛔ Delivering the form does not deliver the
 other three.
@@ -88,8 +85,7 @@ other three.
 
 ### R-S6-01 — `B_comp` must be retired or re-affirmed
 
-- **source** S11 (`steps/S11_stray_longitudinal.md`, moves 1–5); S11b-B
-  (`steps/S11bB_interface_assembly.md`, energy basis / B4 identification) · **target** S6 · **status** OPEN
+- **source** S11 (`steps/S11_stray_longitudinal.md`, moves 1–5) · **target** S6 · **status** OPEN
 - **requirement** — the brane's compression modulus `B_comp` (`Q.brane.B_comp`), as a derived quantity or
   an explicitly re-affirmed postulate.
 - **on failure** — S11's knob count stays an upper bound and the longitudinal mode keeps a postulated
@@ -97,21 +93,29 @@ other three.
   so the retirement would be visible when it happens.
 - **note** — recorded at `V3_STEP_PLAN.md` `{#s6-b-comp-callback}`, written into S6 on purpose: a note
   living only in S11's record is a note nobody reads on arrival at S6.
-- **pass-2 scope** — S11b-B's frozen-thickness identification consumes the compression sector, but its
-  enlarged energy basis is not a derivation of `B_comp` from the substrate. Its scorecard limits the
+- **pass-2 scope** — No S11b record rests on `B_comp`: B's enlarged energy basis is not a derivation of
+  `B_comp` from the substrate. Its scorecard limits the
   static series-compliance claim to impermeable faces; with active transfer the static row is `μ_θ = 0`.
   This entry does not identify `B_comp` with `B_eff` or impose a series law on that permeable case.
 
 ### R-S7-01 — the slab-width flat direction, under a non-uniform width
 
-- **source** S11 · **target** S7 · **status** OPEN
+- **source** S11 (`steps/S11_stray_longitudinal.md:90–92`); unified S11b
+  (`steps/S11b_interface_coupling_law.md:156–157`) · **target** S7 · **status** OPEN
 - **requirement** — whether the slab-width flat direction survives when the width is made **position- and
   time-dependent**. A uniform-width statement does not answer it.
-- **on failure** — if the flatness is a genuine flat direction, the wall offers no resistance to
-  thickening, so `B_wall = 0` and by the series law `B_comp = 0`; S10's longitudinal zero is never lifted
-  and **S11's propagating mode does not exist.** S11's own answer is that gradients lift it — a wave
+- **on failure** — S11 says, *"Two channels accommodating additive shares of one strain, i.e.
+  **springs in series**, so compliances add and `B_comp` is **softer than either channel alone**"*, then
+  *"If that flatness survived, `B_wall = 0`, hence `B_comp = 0`, and S10's zero would never lift"*
+  (`steps/S11_stray_longitudinal.md:84–88`). S11b-B's P3 instead says *"impermeable only; with active
+  transfer the static row is `μ_θ = 0`"* (`steps/S11bB_interface_assembly.md:172`). The records disagree
+  on the unqualified series-law failure statement; this is unresolved. S11's own answer is that gradients
+  lift the flat direction — a wave
   modulates the width, tilting and stretching the interfaces at cost proportional to `σ_wall|∇W|²`, so
   flat at `k=0` and stiff as `k²`. S7 must confirm or refute that.
+- **named freeze** — S11 says its cone is *"computed with the wall width FROZEN"*
+  (`steps/S11_stray_longitudinal.md:90–92`); the unified record calls the same imported-width identity
+  *"a recorded **freeze**, ⛔ not a fix"* (`steps/S11b_interface_coupling_law.md:156–157`).
 - **note** — `V3_STEP_PLAN.md` `{#s7-b-comp-callback}`. The charge anchor rests on this.
 
 ### R-S1-01 — the brane's spatial dimension
@@ -190,10 +194,16 @@ other three.
   reference state is not being held in place by an assumption rather than by the dynamics. S6's kink is
   the candidate stationary solution; S6 has no record yet.
 - **pass-2 scope** — the kept homogeneous and selected uniform results use the rest reference state.
-  S11b-B and the unified record also name a driven physical state with `v₀ ≠ 0`; neither establishes
-  that it is this equilibrium. The rest-state obligation remains here; live drain/return and its
-  scope correction are `R-S12-02`, and the power supply is `R-S12-01`. No equilibrium result is promoted
-  to a result about the driven state.
+  S11b-B states verbatim: *"⛔⛔ **Passivity and reciprocity are properties of fluctuations about an
+  EQUILIBRIUM. This model's reference state is not one.** It carries a steady background normal flow
+  `v₀` — the dark-energy drain — ⇒ a **driven steady state with a reservoir attached.**"*
+  (`steps/S11bB_interface_assembly.md:46–48`). The kept S11b and S11c results nevertheless linearise at
+  `v₀ = 0`: the unified record reports the background-flow correction as uncarried
+  (`steps/S11b_interface_coupling_law.md:158–164`), and the S11c records say the bulk is at rest
+  (`steps/S11c_PARTIAL_CLOSEOUT.md:7`; `steps/S11c_d_profile_conditioned_scattering.md:23,29`). This is an
+  unresolved tension between the driven reference state and the recorded rest-state freeze. The rest-state
+  obligation remains here; live drain/return and its scope correction are `R-S12-02`, and the power supply
+  is `R-S12-01`. No equilibrium result is promoted to a result about the driven state.
 
 ### R-S8-01 — the form of the brane's quadratic stiffness functional
 
@@ -217,13 +227,17 @@ other three.
   Defect `B2` closes the route from a polar substructure `P` to `μ_R` — ⚠ **the whole quantity, not only
   its magnitude**, as `DEFECT_REGISTER.md#B2` scopes it. ⛔ But it closes **one route**, and it says
   nothing about the **form**, so this requirement is live.
-- **pass-2 consumers** — S11's unchanged transverse root rests on adding the trace invariant: its
-  symmetric-traceless FORM control changes both roots and reproduces the rejected-Cauchy-branch `4/3`.
+- **pass-2 consumers** — S11's unchanged transverse root rests on adding the trace invariant. As a
+  first-route source only, its record says: *"The form control's `4/3` independently reproduces the
+  corpus's rejected-Cauchy-branch coefficient"* (`steps/S11_stray_longitudinal.md:126–127`); the record
+  names no prior-art objection to that branch.
   S11b-B needs the complete quadratic stored energy on `u, θ, e_W`, with the stated in-plane isotropy
   and parity, modulo total divergences. The unified record's ten-dimensional quotient has different
   valid representatives; no individual representative coefficient is the required object. Its
   constrained breathing stiffness is `K₀ = B_ρ⁽³⁾ − 2CW₀ + k_W W₀²`. The stability claim is only the
-  `k = 0`, impermeable, zero-reciprocal-traction slice. Failure to supply this energy leaves the
+  `k = 0`, impermeable, zero-reciprocal-traction slice. On that slice B hands forward `K₀ > 0` as
+  *"an **empirical** constraint — the brane is here"* (`steps/S11bB_interface_assembly.md:192`). Failure
+  to supply this energy leaves the
   decoupling and slice stability conditional; no sign or magnitude of an individual scalar coefficient
   is inferred. S11c's uniform result inherits that qualification, not a nonuniform confinement law.
 
@@ -331,20 +345,25 @@ other three.
 ### R-S1-03 — the substructure's microscopic time-reversibility
 
 - **source** S11b-B (`steps/S11bB_interface_assembly.md`, limits of the passive region), unified S11b
-  (`steps/S11b_interface_coupling_law.md`, conditional Onsager–Casimir test) · **target** S1 · **status** OPEN
+  (`steps/S11b_interface_coupling_law.md`, conditional Onsager–Casimir test) · **target** S1
+  (**register inference; no owner named by the records**) · **status** OPEN
 - **requirement** — whether the substructure's microdynamics is time-reversible, the premise of the
   conditional Onsager–Casimir relation `Λ_X(ω) = −Λ_V(ω)`.
 - **on failure** — that relation cannot be imposed on the physical interface as an unconditional law.
   The conditional calculation and the independently computed passivity region still stand; neither
   selects a reciprocal medium. The records explicitly say microscopic reversibility is not postulated.
-- **note** — this is also the second-route obligation from the identified Onsager–Casimir result and
-  the records' own objection to inheriting its premise. The equilibrium issue is `R-S6-02`; the driven
-  state and power budget are separately `R-S12-02` and `R-S12-01`.
+- **note** — this is a first-route obligation from B's hand-forward: `Λ_X(ω) = −Λ_V(ω)` is
+  *"**conditional** on microscopic time-reversibility, which the model does not postulate"*
+  (`steps/S11bB_interface_assembly.md:190`). The records name no step that owns the missing premise, so S1
+  is a register inference. Onsager–Casimir is a second-route candidate only, not a reproduced prior result.
+  The equilibrium issue is `R-S6-02`; the driven state and power budget are separately `R-S12-02` and
+  `R-S12-01`.
 
 ### R-S8-06 — material displacement and the slab's quadratic inertia
 
 - **source** S11 (`steps/S11_stray_longitudinal.md`, move 1 / finite census); S11b-B
-  (`steps/S11bB_interface_assembly.md`, breathing quadratic) · **target** S8 · **status** OPEN
+  (`steps/S11bB_interface_assembly.md`, breathing quadratic) · **target** S8
+  (**register inference; no owner named by the records**) · **status** OPEN
 - **requirement** — `u` as the material displacement of the stuff whose density is `ρ_br`, and the
   quadratic kinetic form of that material and the thickness degree of freedom (B's `μ_W`).
 - **on failure** — if `u` is a director rather than that displacement, S11's continuity identification
@@ -352,45 +371,15 @@ other three.
   `ρ_br`; B's breathing-root interpretation also rests on the stated inertial model. A stiffness
   functional alone (`R-S8-01`) does not supply this identification or the kinetic form.
 - **note** — this asks for the field identity and inertia, not numerical benchmark values of `ρ_br`
-  or `μ_W`, and does not identify the thickness mode with S10's out-of-plane displacement.
-
-### R-S11b-01 — the constitutive brane–bulk interface coupling law
-
-- **source** S11b-A (`steps/S11bA_interface_response.md`, permeable response / frequency-dependent
-  leak); S11b-B and unified S11b (`steps/S11b_interface_coupling_law.md`, chemical-potential drive /
-  passivity region) · **target** S11b · **status** OPEN
-- **requirement** — the physical interface law relating relative material flux and traction to the
-  affinity `𝒜 = μ_s − δp/ρ_m` and face velocity, including the response kernels
-  `Λ_A(ω), Λ_V(ω), Λ_X(ω)` and the brane chemical potential `μ_s`.
-- **on failure** — A's permeable impedance and finite-memory loss, and B's passivity/reciprocity
-  classifications, describe the supplied closure only. They do not establish that the medium has that
-  frequency response. The pressure-only closure in A and the affinity-driven law in B cannot be
-  interchanged without B's stated `μ_s = 0` reduction and its scope.
-- **note** — S11b delivered the response of the specified interface model, not a substrate derivation
-  of its constitutive law. This obligation remains with the interface-law owner; no numerical
-  `Λ` or relaxation time is selected. S11's closed homogeneous census and kinematic grazing threshold
-  do not themselves depend on interface overlap and are not sources for a bound/leaky-mode claim.
-
-### R-S11b-02 — the outgoing/retarded acoustic boundary condition
-
-- **source** S11b-A (`steps/S11bA_interface_response.md`, `q_out` and two-face response); S11b-B
-  (`steps/S11bB_interface_assembly.md`, radiated-energy direction under known limits); S11c
-  (`steps/S11c_d_profile_conditioned_scattering.md`, conditional selected uniform check)
-  · **target** S11b · **status** OPEN
-- **requirement** — the physical outgoing/retarded boundary condition selecting the acoustic branch
-  `q_out` and the associated pressure/normal-velocity and outgoing-energy conventions at the two faces.
-- **on failure** — A's radiation resistance versus reactive added mass and B's decay/growth
-  interpretation would not describe that boundary problem. B explicitly says radiated-energy direction
-  is inherited from the supplied continuation and a wrong direction flips those classifications.
-  S11c's selected uniform face-drive limits apply to the stated branch, not all boundary data.
-- **note** — the branch calculations and independent reviewer derivations are recorded evidence for
-  the supplied model; the physical boundary selection remains an obligation. No generic grazing
-  response, complete slab spectrum or nonuniform loss is delivered by this entry.
+  or `μ_W`, and does not identify the thickness mode with S10's out-of-plane displacement. The cited
+  records name no future owner for this object; S8 is a register inference
+  (`steps/S11_stray_longitudinal.md:32–38`; `steps/S11bB_interface_assembly.md:80–85`).
 
 ### R-S12-01 — the reservoir and its power budget
 
 - **source** S11b-B (`steps/S11bB_interface_assembly.md`, standing rule); unified S11b
-  (`steps/S11b_interface_coupling_law.md`, passivity region) · **target** S12 · **status** OPEN
+  (`steps/S11b_interface_coupling_law.md`, passivity region) · **target** S12
+  (**register inference**) · **status** OPEN
 - **requirement** — a named reservoir and a stated power budget for any adopted non-passive interface
   coupling. The records name the background drain `v₀` as the candidate reservoir.
 - **on failure** — the finite-memory velocity channel outside the passive region cannot be inherited
@@ -399,38 +388,24 @@ other three.
 - **note** — this is the records' explicit condition for retaining that channel, not a requirement
   that the model choose it. A numerical observational bound also needs matter-to-compression coupling;
   B says that is unbuilt and reports only a structural test, so no numerical-bound requirement is added.
+- **owner/target** — the records do not name S12; that target is a register inference. They hand the
+  reservoir-and-budget condition to *"S11b-C"* (`steps/S11bB_interface_assembly.md:195–197`) and carry the
+  background-flow limit to *"C (and to the nonlinear program for the DC/harmonic/sideband radiation
+  audit)"* (`steps/S11b_interface_coupling_law.md:163–164`). S11c-a did not carry it: it *"computes
+  geometry only and does not address it"* (`steps/S11c_a_interface_shape_derivatives.md:257–259`).
 
 ### R-S12-02 — background drain/return and the receiving channels
 
 - **source** S11b-A/B (`steps/S11b_interface_coupling_law.md`, background-flow limit); S11c
-  (`steps/S11c_PARTIAL_CLOSEOUT.md`, uniform result / clean-condition ownership;
-  `steps/S11c_d_profile_conditioned_scattering.md`, uniform and clean-condition sections)
+  (`steps/S11c_PARTIAL_CLOSEOUT.md:7`, uniform result;
+  `steps/S11c_d_profile_conditioned_scattering.md:21–25`, selected uniform check)
   · **target** S12 · **status** OPEN
 - **requirement** — the native drain/return functions, their separate boundary data, and the receiving
-  channels of the resulting background. For use of the clean-condition no-leak interpretation, this
-  includes whether the relevant odd receiving channel is empty.
+  channels of the resulting background.
 - **on failure** — the kept rest-bulk decoupling and selected uniform limits cannot be transferred to
-  live conversion. The recorded scope correction is `O(v₀|q_n|/ω)`, uncarried and unbounded; the
-  selection rule alone does not exclude an allowed odd-to-odd channel when material crosses a face.
-- **qualification** — the S11c clean-condition symmetry measurement is CONDITIONAL, SymPy-only
-  review-leg evidence. The broader packet received Claude **“not clear.”** and Grok **“not cleared.”**
-  (`directives/_measurements/S11c_d_clean_condition_review_disposition.md`, round 5 / R5-1).
-  S12 owns the live functions, not an automatically transferred no-leak theorem or an S11c loss factor.
-
-### R-Q2-01 — symmetry of the support and boundary data
-
-- **source** S11c (`steps/S11c_PARTIAL_CLOSEOUT.md`, clean-condition ownership;
-  `steps/S11c_d_profile_conditioned_scattering.md`, clean-condition result and its cited round-5
-  disposition) · **target** Q2/S22 · **status** OPEN
-- **requirement** — the symmetry/equivariance of the support, material fields and boundary data needed
-  by the clean-condition selection rule, including the geometry of a throat supported by a trapped mode.
-- **on failure** — a symmetric supplied-background selection rule cannot be applied to the actual
-  supported throat. The cited disposition's R5-2 flags support-induced deformation; the presence of a
-  trapped mode does not establish the symmetry of the background it supports.
-- **qualification** — the kept result is the CONDITIONAL, single-engine selection rule, with the
-  broader review verdicts quoted in `R-S12-02`. This entry derives from that condition, not from the
-  OPEN claim of a solved holder/charge response or any exploratory core/support proposal. It selects
-  no support law, does not prove a normalizable throat mode, and does not establish confinement.
+  live conversion. The recorded scope correction is `O(v₀|q_n|/ω)`, uncarried and unbounded
+  (`steps/S11b_interface_coupling_law.md:158–164`). S12 owns the live functions, not an automatically
+  transferred rest-bulk result or an S11c loss factor.
 
 ---
 
@@ -458,16 +433,19 @@ Seven entries added, against the two that existed. The calibration it produced, 
 
 Read `steps/S11_stray_longitudinal.md`, all three S11b records (the unified record and the historical A/B
 records), `steps/S11c_PARTIAL_CLOSEOUT.md`, and the a/b/c1/c2/d records in full. Applied the schema,
-rest-on test and both routes below: **11 → 18 entries**, seven new and six existing entries gaining
-sources (`R-S6-01`, `R-S1-01`, `R-S1.5-01`, `R-S6-02`, `R-S8-01`, `R-S8-03`). New entries:
-S1 `R-S1-03`; S8 `R-S8-06`; S11b `R-S11b-01`/`02`; S12 `R-S12-01`/`02`; Q2/S22 `R-Q2-01`.
+rest-on test and both routes below: **11 → 15 entries**, four new and six existing entries gaining
+sources (`R-S7-01`, `R-S1-01`, `R-S1.5-01`, `R-S6-02`, `R-S8-01`, `R-S8-03`). New entries:
+S1 `R-S1-03`; S8 `R-S8-06`; S12 `R-S12-01`/`02`.
 All use schema status OPEN; CONDITIONAL is a qualification of the source result, not a status value.
 
-S11c contributes only conditions of its kept uniform/selected-uniform and clean-condition results,
-with the closeout and d record's review limits retained. Its UNRESOLVED direct mixed term, numerical
-loss, and OPEN nonuniform confinement/material, observable and real-throat questions source no entry.
+S11c contributes only conditions of its kept uniform/selected-uniform results, with the closeout and d
+record's review limits retained. The clean-condition packet sources no entry: the closeout marks only
+uniform decoupling CONDITIONAL (`steps/S11c_PARTIAL_CLOSEOUT.md:7`), while its no-leak reading is OPEN
+(`V3_STEP_PLAN.md:532–534`; `steps/S11c_d_profile_conditioned_scattering.md:64`). Its UNRESOLVED direct
+mixed term, numerical loss, and OPEN nonuniform confinement/material, observable and real-throat questions
+source no entry.
 Reading a/b/c1/c2 did not promote their pre-repair closure language or deferred comparisons to accepted
-nonuniform physics. The conditional clean-condition source does not establish a support law; the
+nonuniform physics. The clean-condition packet does not establish a support law; the
 exploratory throat/EM documents supply candidates only. No new requirement is inferred just because
 a future scattering calculation would need an input. S11's deferred interface/spectral and nonlinear
 questions are not recast as dependencies of its closed homogeneous census.
@@ -483,18 +461,16 @@ light bending and delay under v3's light picture remains open — **no owner nam
 `V3_STEP_PLAN.md:208–250` retains the provisional medium EOS and its half-two parent-action debt;
 **O-02 stays open**. This pass does not decide whether `K` and the exponent count as one entry or two.
 
-**Second route, by step.** S11 explicitly reproduces the rejected-Cauchy-branch coefficient in its
-FORM control; the recorded objection is that this alternative changes both roots, so its obligation
-is merged into `R-S8-01`. S11b-B/unified S11b identify the conditional Onsager–Casimir result and its
-missing microscopic-reversibility premise: `R-S1-03`, with the reference-state condition merged into
-`R-S6-02`. S11b-A and S11c-a/b/c1/c2/d have **no identified prior-art route** meeting the directive's
-record-and-objection test. A's memoryless reduction is by construction; internal cross-engine
-reproductions are not prior art. MacCullagh and the other historical comparisons in
-`docs/s11_maccullagh_differentiation.md`, and the closeout's exploratory notes, remain candidates for
-the STOP report, not additional entries. The two pre-existing prior-art entries are not re-certified
-by this pass. No directive/register method disagreement was found; the obsolete rebuild schedule is
-replaced by this completed population pass. Record qualifications/disagreements are reported at STOP,
-not adjudicated here.
+**Second route, by step.** S11 has **no identified prior-art route**: its record names the
+rejected-Cauchy-branch coefficient but no objection to that branch, so the Cauchy branch is a candidate
+only. The FORM outcome stays solely in `R-S8-01` as a first-route source, quoted from the S11 record.
+S11b-A, S11b-B/unified S11b, and S11c-a/b/c1/c2/d each have **no identified prior-art route** meeting the
+directive's record-and-objection test. Onsager–Casimir is a candidate only; `R-S1-03` instead rests on B's
+first-route hand-forward, *"conditional on microscopic time-reversibility"*. A's memoryless reduction is
+by construction, and internal cross-engine reproductions are not prior art. The two pre-existing
+prior-art entries are not re-certified by this pass. No directive/register method disagreement was found;
+the obsolete rebuild schedule is replaced by this completed population pass. Record
+qualifications/disagreements are reported at STOP, not adjudicated here.
 
 #### Inputs a future nonuniform calculation must define
 

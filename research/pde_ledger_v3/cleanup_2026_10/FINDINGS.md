@@ -377,7 +377,10 @@ Every copied location is listed individually by `original_path`, kept `path` and
 rows / 106 unique destinations**. These include the uniform inputs, prior and completed outputs, one full
 emitted transcript for a 6,429-byte offset/length citation, the frozen method, and the two older export producers.
 Large uniform byte copies use seven `scripts/out/S11c_uniform_retained_*.out` containers under the restored
-annex policy; small copies are under `_measurements/retained_uniform/`. The .out suffix is storage policy,
+annex policy; small copies are under `_measurements/retained_uniform/`. Eight small opaque inputs use `.blob`
+because the existing ignore rule excludes `.pickle`. The first save correctly skipped those ignored copies;
+the tracking check caught this and the follow-up preserves the same bytes under the listed `.blob` paths.
+The ignored copies stay on disk and no ignore rule or byte content changed. The .out suffix is storage policy,
 not a claim that SQLite/pickle data is a text transcript. Their bytes were copied without decoding scientific
 objects. Original scratch files were not deleted.
 

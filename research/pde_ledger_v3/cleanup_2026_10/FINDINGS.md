@@ -313,29 +313,34 @@ pruning or history rewrite. Phases 3–5 remain pending under the [directive][di
 
 ## G. Phase 3 selection and checks
 
-**ESTABLISHED — repository cleanup, not new physics.** S11c remains PARTIAL. G1 carries the three N6 premise
-caveats in STATUS/Part F; G2 adds the missing c2 residual entry to DEFERRED_HEAVY_RUNS. The corrected Phase 2 tip
-is `0dcc53dd`; `cleanup/pruned` was cut there. The exact supplied AGENTS text is committed separately at
-`a811df3b`. Nothing was pushed and the archive tag was not changed.
+**ESTABLISHED — repository cleanup, not new physics.** S11c remains PARTIAL. The uniform report and its cited
+JSON results are kept, but the tree does **not** contain a ready-to-run copy of its intermediate caches.
+Replaying it requires regeneration and export-chain repair. This section incorporates
+[PHASE3_REVIEW, H1–H5](PHASE3_REVIEW.md), using H3's default, not option B.
 
-[KEEP.tsv](KEEP.tsv) and [PRUNE.tsv](PRUNE.tsv) partition every original inventory path. KEEP gives each file's
-tier and reason. Files predating the inventory remain outside pruning except the named S10 CAS bridge;
-Tier 1 baseline dependencies are explicitly listed. There are **521 kept / 3,937 pruned inventory paths**.
-The latter includes **33 untrack-only files**, still on disk. KEEP has **659 unique paths**, including **138**
-retained dependencies/cleanup artifacts/copied evidence outside the original inventory. The lists—not an
-incidental hash chain—define the selection. The named final records retain their original scientific limits.
+G1/G2 were committed at `0dcc53dd`; the exact supplied AGENTS replacement is at `a811df3b`.
+The earlier Phase 3 copies and reconstruction claim at `bd1119bb`/`9b98bd79` are superseded by these fixes.
+The 33 ignored process files remain untracked and on disk (`bec92067`); the 20 older tracked ignored files
+remain unchanged. No scientific producer, review, cache regeneration, export repair or push ran.
 
-### Counts by workstream and kind
+### Selection
 
-Same K1–K12 key as the inventory table. Entries are **kept/pruned**, counting original inventory paths only.
+[KEEP.tsv](KEEP.tsv) and [PRUNE.tsv](PRUNE.tsv) partition all 4,458 original inventory paths:
+**507 kept / 3951 pruned**. PRUNE includes the 33 untrack-only paths.
+KEEP has **571 unique paths**, including **64** baseline dependencies, cleanup files and newly
+cited output files outside that inventory. The 106 prior copy/container paths were removed; they were
+post-inventory additions and are not counted again in the original-inventory PRUNE table.
+No relocation-map rows remain.
+
+Same K1–K12 key as Part A. Each entry is **kept/pruned** for the original inventory.
 
 | Workstream | K1 | K2 | K3 | K4 | K5 | K6 | K7 | K8 | K9 | K10 | K11 | K12 | Total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 01 Physics specification and contracts | 4/2 | 0/3 | 1/0 | 4/55 | 0/1 | 0/2 | 0/29 | 0/4 | 0/0 | 0/0 | 0/2 | 0/0 | 9/98 |
-| 02 Symbolic build and omega1 premises | 0/1 | 2/222 | 4/144 | 0/70 | 17/78 | 26/173 | 2/447 | 1/346 | 0/0 | 0/0 | 0/36 | 0/0 | 52/1517 |
+| 02 Symbolic build and omega1 premises | 0/1 | 2/222 | 4/144 | 0/70 | 17/78 | 26/173 | 2/447 | 2/345 | 0/0 | 0/0 | 0/36 | 0/0 | 53/1516 |
 | 03 Upstream repairs and diagnostics | 0/0 | 0/7 | 9/6 | 3/16 | 4/9 | 3/53 | 2/96 | 7/111 | 0/0 | 0/0 | 0/7 | 0/0 | 28/305 |
 | 04 Numerical scattering and omega3 benchmark | 0/2 | 0/3 | 1/5 | 1/4 | 1/3 | 3/41 | 0/67 | 1/22 | 0/0 | 0/0 | 0/6 | 0/0 | 7/153 |
-| 05 Near-unity and defect prerequisites | 0/21 | 1/30 | 4/10 | 2/168 | 1/6 | 4/131 | 7/753 | 5/126 | 0/0 | 0/0 | 2/12 | 0/0 | 26/1257 |
+| 05 Near-unity and defect prerequisites | 0/21 | 1/30 | 4/10 | 2/168 | 1/6 | 1/134 | 0/760 | 0/131 | 0/0 | 0/0 | 2/12 | 0/0 | 11/1272 |
 | 06 Clean-condition packet | 1/1 | 0/2 | 0/0 | 1/10 | 0/19 | 0/59 | 0/14 | 0/77 | 0/0 | 0/0 | 0/3 | 0/0 | 2/185 |
 | 07 Lean and S9-S11 formalization audits | 2/1 | 0/0 | 37/0 | 50/6 | 3/2 | 5/40 | 1/158 | 3/123 | 235/0 | 15/55 | 7/3 | 8/0 | 366/388 |
 | 08 Exploratory throat and EM | 0/0 | 0/0 | 0/0 | 7/0 | 0/0 | 0/0 | 0/14 | 0/2 | 0/0 | 0/0 | 6/0 | 0/0 | 13/16 |
@@ -343,112 +348,116 @@ Same K1–K12 key as the inventory table. Entries are **kept/pruned**, counting 
 | 10 Execution infrastructure | 0/0 | 0/0 | 1/1 | 0/0 | 0/0 | 2/7 | 0/9 | 0/1 | 0/0 | 0/0 | 1/0 | 3/0 | 7/18 |
 | 11 Ledger front matter and other notes | 0/0 | 1/0 | 0/0 | 0/0 | 0/0 | 0/0 | 0/0 | 0/0 | 0/0 | 0/0 | 2/0 | 6/0 | 9/0 |
 
-The 138 additional KEEP paths comprise 106 preserved-byte destinations and 32 pre-existing dependency or
-cleanup files. Duplicate relocation rows describe identical-byte aliases; they do not inflate file counts.
-The source index and snapshots preserve file content, not new result acceptance.
+### H1–H3: outputs kept, caches left on disk
 
-### Ambiguous cases and decisions
+- The eight `.blob` files and the six cache containers named `S11c_uniform_retained_*.out` are removed.
+  Their original eight pickles and six cache/output files remain in ignored `_scratch/`; no original was deleted.
+  Neither ignore nor annex rules were changed.
+- The seventh `.out` was an existing transcript. It is restored at its original path,
+  `research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out`, because the kept c2 trace,
+  sheet-repair and end-resolvent reports cite it. Its original annex key is preserved.
+- The uniform worker and report remain. The report now directly cites **31 original JSON outputs** in
+  [`S11c_d_near_unity_uniform_output`](../_measurements/S11c_d_near_unity_uniform_output/): 24 point files,
+  four grazing-limit files, the aggregate checks, denominator certificates and certificate self-checks.
+  Names and bytes are unchanged. These are plain JSON, not renamed caches or a replay reconstruction map.
+- The rest of `_measurements/retained_uniform/` is removed, including the copied old export producers and
+  frozen-method copy. Historical uniform launch/gate/census/input-copy records no longer supply a claimed
+  replay bundle; they are in the archive. The report's historical preservation statements describe the original
+  run, not the current tracked tree. Historical hashes inside the output JSON retain that same limitation.
+- [STATUS, open questions](../../../STATUS.md#open-questions-and-owners) records the replay obligation:
+  regenerate intermediate caches from the kept b/c2 engines and repair the S10/S11 export chain before reuse.
+  The original caches were never in the archive tag under their scratch paths.
 
-- **Paused intermediate results:** finite omega=1 response, the unresolved omega=3 benchmark, packet/first-order
-  prerequisites and exploratory throat work are Tier 2. Keep their final cited reports/reviews; full runtime
-  chains remain in the archive. Later work may not treat their conditional intermediate findings as completed
-  scattering, work or loss certificates.
-- **Clean-condition review measurement:** Tier 2 because the broader packet/build was not cleared and was paused.
-  Its single-engine, drain-frozen symmetry qualification remains. The decision does not upgrade or withdraw it.
-- **Uniform provenance:** Tier 1 retains the original worker/imports, nine opaque inputs, all 32 prior complete
-  files and the completed output bytes. A few historical gate/checkpoint/review files are kept only because
-  this worker actually reads or hashes them. Frozen review metadata remains Tier 2, so its incidental packet
-  hash lists do not force retention of the whole review transport chain. No process record was newly generated.
-- **Lean:** removed 50 systematic CAS bridge modules and their expansive audit/bindings. Five modules
-  (`PY`, `WL`, `Support`, `BasisCompletion`, `Bindings`) remain for the compact C2 imported-matrix identity required
-  by the reviewed S10 contract. S10Audit imports that compact binding instead of the large Audit module.
-  Mathematical proof bodies and mutation constructions are unchanged. The identity generator's imports and
-  original two transcript payloads remain; this is not an instruction to expand the bridge again.
-- **Current versus historical producer bytes:** the S10 and S11 exports still pin older producers. Exact producer
-  snapshots from `dada3b7d` are kept, and both pin values match those bytes. The live-path check still fails for
-  those two files, just as before cleanup. No export or scientific producer was repaired here.
-- **Frozen method citations:** the readable scattering-form amendment now sends pruned historical references to
-  the archive. Its exact pre-edit bytes are retained separately for the uniform worker's original hash pin.
-  This is a citation-only edit, not an amended physical method or a fresh review.
+The earlier accepted Tier 2 decisions are unchanged: paused/intermediate and exploratory work retains its
+final cited reports with their limits. The clean-condition result remains single-engine and drain-frozen.
+The five compact S10 CAS modules (`PY`, `WL`, `Support`, `BasisCompletion`, `Bindings`) stay; removal of the
+other 50 modules was accepted. This cleanup does not enlarge Lean's proof scope.
 
-### Scratch and replay boundary
+### H4: export drift introduced within the inventoried period
 
-Every copied location is listed individually by `original_path`, kept `path` and SHA-256 in KEEP: **109 relocation
-rows / 106 unique destinations**. These include the uniform inputs, prior and completed outputs, one full
-emitted transcript for a 6,429-byte offset/length citation, the frozen method, and the two older export producers.
-Large uniform byte copies use seven `scripts/out/S11c_uniform_retained_*.out` containers under the restored
-annex policy; small copies are under `_measurements/retained_uniform/`. Eight small opaque inputs use `.blob`
-because the existing ignore rule excludes `.pickle`. The first save correctly skipped those ignored copies;
-the tracking check caught this and the follow-up preserves the same bytes under the listed `.blob` paths.
-The ignored copies stay on disk and no ignore rule or byte content changed. The .out suffix is storage policy,
-not a claim that SQLite/pickle data is a text transcript. Their bytes were copied without decoding scientific
-objects. Original scratch files were not deleted.
+**OPEN — S10/S11 maintenance.** At `dada3b7d`, each export pin matched its producer. The subsequent producer
+edits were `56595cf7` (2026-09-11, S10: `TRANSVERSE_RANK_DROP`, argparse and unlink removal) and `035bb654`
+(2026-09-16, S11). The exports were not regenerated. This drift arose inside the inventoried period; calling
+it “pre-existing” or saying the older producer snapshots repaired it was wrong. [Review, H4](PHASE3_REVIEW.md).
 
-The old worker has absolute paths and refuses reuse of an existing run directory. KEEP is the relocation map
-for reconstructing its exact input layout in an **isolated** replay checkout; frozen source snapshots must not
-overwrite current production files. A later authorized replay still needs a fresh gate/output directory and the
-existing resource guard. No old gate or launcher grants permission to rerun during cleanup. Historical `/tmp`
-and scratch paths in Tier 2 reports remain archive context, not live dependencies. Historical literal reviews
-are preserved verbatim; their old path references have the archive revision as context.
+| Export / producer | Export pin, matching the producer at dada3b7d | Current producer SHA-256 |
+| --- | --- | --- |
+| S10 / S10_brane_mode_spectrum_sympy_audit.py | `7de1764c1c7ff7a87c70074db8d73b8a259aa53294e272e905531c901fd1bb33` | `f609d57afe9b4dedaaf93a5f49b08572779916cf3d14306ae7ea5da60be7f6fe` |
+| S11 / S11_stray_longitudinal_sympy_audit.py | `352fc502f6e191afa512a2dec513685a48c9b32bc8b4e63ca84c5af9be629db4` | `dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2` |
 
-### Checks and commands
+`git log dada3b7d..HEAD -- research/pde_ledger_v3/scripts/<producer>` supplies those edit commits. The checker
+compares the literal export pins with the current files and the `dada3b7d` Git blobs; it does not import an
+export or evaluate scientific expressions. The baseline blobs remain in Git history, not duplicate files.
+Regeneration under review or reverting the edits is a future decision. The S10 Lean D3 link may rely on the
+S10 edit, so no revert is automatic. STATUS carries this debt separately from the uniform replay debt.
 
-All commands below inspect bytes/metadata or compile existing sources. No CAS engine, numerical worker,
-scientific restoration, mutation calculation or review ran. `inventory.py` now has a small selection-check
-mode: path coverage, explicit JSON file/range pins, copied bytes, literal export digests, compact Lean input
-hashes and authored record links. It does not evaluate exports or serialized scientific expressions. Exact
-copied SQLite/pickle receipts are whole-file checks, not independent scientific validation.
+### H5: frozen method
 
-Commands ran from the repository root unless a different directory is shown. Exit status was zero except
-for the deliberately separate live-export check. Build logs are local, not committed process records.
+The only hash-pinned frozen-file exemption from the live-link check is
+`research/pde_ledger_v3/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md`.
+It is restored byte-for-byte from `archive/pre-cleanup-2026-10-04` (SHA-256
+`eb6f20a3fd0bce308e53901fa69fdf267b2917e5cc78b319a1e7700074a47560`).
+Its old links are interpreted at that archive revision. The checker verifies its exact bytes and skips its
+live links. Literal reviewer reports also remain unchanged historical text, as before.
+
+### Phase 5 preservation list — keep on disk
+
+The following scratch run directories are **KEEP ON DISK** in the future Phase 5 list. They contain the
+original uniform inputs and intermediate caches; H3 does not authorize their deletion. This is a preservation
+mark for Phase 5, not the full Phase 5 disk inventory or permission to clean scratch.
+
+- `_scratch/s11c/s11c-frequency-source-20260919/finish-01` — **KEEP ON DISK**.
+- `_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_left` — **KEEP ON DISK**.
+- `_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_right` — **KEEP ON DISK**.
+- `_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left` — **KEEP ON DISK**.
+- `_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right` — **KEEP ON DISK**.
+- `_scratch/s11c/s11c-uniform-source-20260919/production` — **KEEP ON DISK**.
+- `_scratch/s11c/s11c-uniform-response-20260919/production` — **KEEP ON DISK**.
+- `_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01` — **KEEP ON DISK**.
+- `_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01` — **KEEP ON DISK**.
+
+The required ignored-file check covers these eight pickles and six cache/output files at their original paths:
+
+```text
+_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle
+_scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/right-frequency-pencil.pickle
+_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left/complete.pickle
+_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_left/objects.pickle
+_scratch/s11c/s11c-thickness-coordinate-20260914/end_source_right/objects.pickle
+_scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle
+_scratch/s11c/s11c-uniform-source-20260919/production/complete/common.pickle
+_scratch/s11c/s11c-uniform-source-20260919/production/complete/uniform-source.pickle
+_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/operation-index.jsonl
+_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/checks.json
+_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/operations.sqlite
+_scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right/complete.pickle
+_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/checks.json
+_scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/operations.sqlite
+```
+
+### Checks after H1–H5
+
+All commands are metadata reads or compilation of existing sources. Logs remain under `/tmp/`; no process
+records are added. Exit status is zero unless explicitly noted. Commands run from the repository root unless
+another working directory is named.
 
 ```sh
 python3 research/pde_ledger_v3/cleanup_2026_10/inventory.py --check-selection
 ```
 
 ```text
-PASS: inventory partition 521 kept + 3937 pruned = 4458.
-PASS: 659 kept paths; 109 exact-byte relocation rows.
-PASS: 199 explicit Tier1 JSON file/range pins; 28 export pins resolve, including kept historical inputs; 2 compact Lean input hashes.
-PASS: 993 local record links and 296 archive references; literal reviews remain unchanged historical text.
-LIVE EXPORT CHECK: 2 pre-existing producer mismatches (not repaired): [('S10_exports.py', 'S10_brane_mode_spectrum_sympy_audit.py'), ('S11_exports.py', 'S11_stray_longitudinal_sympy_audit.py')]
+PASS: inventory partition 507 kept + 3951 pruned = 4458.
+PASS: 571 kept paths; 31 byte-identical uniform JSON outputs; no relocation-map rows.
+PASS: 0 other Tier1 JSON file/range pins; 26/28 current export pins; 2 compact Lean input hashes.
+PASS: 1001 local record links and 279 archive references; 1 exact frozen method exempt from live-link checks.
+KNOWN OPEN (H4): 2 export/producer mismatches introduced by 56595cf7 and 035bb654: [('S10_exports.py', 'S10_brane_mode_spectrum_sympy_audit.py'), ('S11_exports.py', 'S11_stray_longitudinal_sympy_audit.py')]
 ```
 
+The selection check reports H4 as a known open debt, not a successful current-chain check.
 `python3 research/pde_ledger_v3/cleanup_2026_10/inventory.py --check-live-exports` prints the same output and
-**exits 1** for those two live-path mismatches. The expected/current SHA-256 pairs are:
-
-| Export → producer | Expected by export | Current producer, also at the archive tag |
-| --- | --- | --- |
-| S10 → S10_brane_mode_spectrum_sympy_audit.py | `7de1764c1c7ff7a87c70074db8d73b8a259aa53294e272e905531c901fd1bb33` | `f609d57afe9b4dedaaf93a5f49b08572779916cf3d14306ae7ea5da60be7f6fe` |
-| S11 → S11_stray_longitudinal_sympy_audit.py | `352fc502f6e191afa512a2dec513685a48c9b32bc8b4e63ca84c5af9be629db4` | `dc77f30b3e0b2b72aa13c7531a586e6ef50167949e645d99378de8527e06bfe2` |
-
-The matching older producers are retained under `_measurements/retained_uniform/frozen-export-inputs/`, as
-listed in KEEP. Matching historical bytes do not repair the current-path mismatch.
-
-The existing S11c metadata reader was also checked without importing an export or running an engine:
-
-```sh
-python3 - <<'PY'
-from pathlib import Path
-import runpy,hashlib
-m=runpy.run_path('research/pde_ledger_v3/_measurements/S11c_inertia_artifact_audit.py')
-for stage in ('b','c1','c2'):
-    path=m['ROOT']/('scripts/S11c_'+stage+'_exports.py')
-    _,pins,_=m['export_data'](path)
-    bad={n:h for n,h in pins.items()
-         if hashlib.sha256(m['locate'](n).read_bytes()).hexdigest()!=h}
-    assert not bad,bad
-    print('PASS: existing export_data/locate metadata check:',stage,len(pins),'pins; 0 mismatches.')
-PY
-```
-
-```text
-PASS: existing export_data/locate metadata check: b 3 pins; 0 mismatches.
-PASS: existing export_data/locate metadata check: c1 6 pins; 0 mismatches.
-PASS: existing export_data/locate metadata check: c2 5 pins; 0 mismatches.
-```
-
-Python syntax compilation (temporary bytecode outside the repository):
+exits **1** for those two mismatches. It does not accept the baseline producer as a substitute current file.
+Output JSON is checked for its exact recorded byte digest and JSON syntax, not interpreted as scientific code.
+Its historical cache/source receipts are not current-tree dependencies under H3.
 
 ```sh
 python3 - <<'PY'
@@ -458,34 +467,31 @@ with open('research/pde_ledger_v3/cleanup_2026_10/KEEP.tsv') as f:
 paths |= set(subprocess.check_output(['git','ls-files','*.py'],text=True).splitlines())
 paths=sorted(p for p in paths if p.endswith('.py') and pathlib.Path(p).exists())
 for i,p in enumerate(paths):
-    py_compile.compile(p,cfile='/tmp/phase3-pycache/'+str(i)+'.pyc',doraise=True)
-print('PASS: python3 py_compile,',len(paths),'kept tracked/retained scripts; no script imported or executed.')
+    py_compile.compile(p,cfile='/tmp/phase3-h-pycache/'+str(i)+'.pyc',doraise=True)
+print('PASS: python3 py_compile,',len(paths),'kept scripts; none imported or executed.')
 PY
 ```
 
 ```text
-PASS: python3 py_compile, 1432 kept tracked/retained scripts; no script imported or executed.
+PASS: python3 py_compile, 1427 kept scripts; none imported or executed.
 ```
 
-Lean, in `research/pde_ledger_v3/lean/`:
+In `research/pde_ledger_v3/lean/` (the existing S9/S10 default build; no proof edits):
 
 ```sh
-LAKE_CACHE_DIR=.lake/cache lake build > /tmp/phase3-lake-build.log 2>&1 && tail -1 /tmp/phase3-lake-build.log
+LAKE_CACHE_DIR=.lake/cache lake build > /tmp/phase3-h-lake.log 2>&1 && tail -1 /tmp/phase3-h-lake.log
 ```
 
 ```text
 Build completed successfully (3785 jobs).
 ```
 
-This is one foreground Lake build of the configured S9/S10 default targets, including parallel rebuilding of
-existing Mathlib dependencies. No new formal claim or mutation suite was added or run.
-
-Paper, in `research/pde_ledger_v3/paper/`:
+In `research/pde_ledger_v3/paper/`:
 
 ```sh
-pdflatex -interaction=nonstopmode -halt-on-error pde_ledger_v3.tex > /tmp/phase3-paper-pass1.log 2>&1 &&
-pdflatex -interaction=nonstopmode -halt-on-error pde_ledger_v3.tex > /tmp/phase3-paper-pass2.log 2>&1 &&
-tail -2 /tmp/phase3-paper-pass2.log
+pdflatex -interaction=nonstopmode -halt-on-error pde_ledger_v3.tex > /tmp/phase3-h-paper1.log 2>&1 &&
+pdflatex -interaction=nonstopmode -halt-on-error pde_ledger_v3.tex > /tmp/phase3-h-paper2.log 2>&1 &&
+tail -2 /tmp/phase3-h-paper2.log
 ```
 
 ```text
@@ -493,43 +499,47 @@ Output written on pde_ledger_v3.pdf (39 pages, 444438 bytes).
 Transcript written on pde_ledger_v3.log.
 ```
 
-The original `inventory.py --check` also exits zero and reproduces the 4,458-row inventory and its workstream
-counts above, with the literal header:
-
-```text
-4458 files: 4434 A, 24 M; 132 annex sizes read from keys; no content fetched.
-Frozen endpoint: 2f56b303b144ffb3078d7b4f2b6f95b486bbc25b
-```
-
-Policy/protected-file check:
+The ignored-file command takes the exact 14 original paths listed above:
 
 ```sh
 python3 - <<'PY'
 from pathlib import Path
 import subprocess
-q=lambda *a:subprocess.check_output(['git',*a])
-assert Path('AGENTS.md').read_bytes()==Path('research/pde_ledger_v3/cleanup_2026_10/AGENTS_replacement.md').read_bytes()
-assert Path('.gitattributes').read_bytes()==q('show','dada3b7d:.gitattributes')
-assert len(q('ls-files','-ci','--exclude-standard').decode().splitlines())==20
-assert not q('diff','--name-only','394767fd','--','CLAUDE.md','.claude','research/pde_ledger_v2','*_exports.py','*gitignore*').strip()
-assert q('rev-parse','archive/pre-cleanup-2026-10-04^{commit}').decode().strip()=='2f56b303b144ffb3078d7b4f2b6f95b486bbc25b'
-print('PASS: exact supplied AGENTS and original .gitattributes; 20 older ignored paths tracked.')
-print('PASS: protected files unchanged; archive tag unchanged.')
+text=Path('research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md').read_text()
+section=text.split('The required ignored-file check covers',1)[1]
+paths=section.split('```text\n',1)[1].split('```',1)[0].strip().splitlines()
+assert len(paths)==14 and all(Path(p).is_file() for p in paths)
+subprocess.run(['git','status','--ignored','--short','--untracked-files=all','--',*paths],check=True)
 PY
 ```
 
 ```text
-PASS: exact supplied AGENTS and original .gitattributes; 20 older ignored paths tracked.
-PASS: protected files unchanged; archive tag unchanged.
+!! _scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/left-frequency-pencil.pickle
+!! _scratch/s11c/s11c-frequency-source-20260919/finish-01/complete/right-frequency-pencil.pickle
+!! _scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/checks.json
+!! _scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/operation-index.jsonl
+!! _scratch/s11c/s11c-parallel-near-unity-20261001/uniform-01/complete/operations.sqlite
+!! _scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/checks.json
+!! _scratch/s11c/s11c-parallel-near-unity-20261001/uniform-continuation-01/complete/operations.sqlite
+!! _scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_left/complete.pickle
+!! _scratch/s11c/s11c-thickness-coordinate-20260914/end_pairing_right/complete.pickle
+!! _scratch/s11c/s11c-thickness-coordinate-20260914/end_source_left/objects.pickle
+!! _scratch/s11c/s11c-thickness-coordinate-20260914/end_source_right/objects.pickle
+!! _scratch/s11c/s11c-uniform-response-20260919/production/complete/uniform-response.pickle
+!! _scratch/s11c/s11c-uniform-source-20260919/production/complete/common.pickle
+!! _scratch/s11c/s11c-uniform-source-20260919/production/complete/uniform-source.pickle
 ```
 
+`!!` means present, ignored and untracked. None of these original scratch files was deleted.
+The final tracked-file census is reported at the STOP against the baseline command
+`git ls-tree -r --name-only dada3b7d | wc -l` (**9,472**); the current-tree command is
+`git ls-files | wc -l`. The earlier Phase 3 review counted 10,089; its newly committed review file brought
+this fix pass's starting tree to 10,090.
 
-### Unchanged older tracked-but-ignored files
 
-`git ls-files -ci --exclude-standard` lists exactly these 20. The 33 newer ignored files are untracked but still
-on disk. DataLad initially re-staged their index-only deletions, so the final untracking save temporarily
-held those same bytes in a local temporary directory and restored them after the save. Their SHA-256 values
-are unchanged. All ignore files are unchanged; `.gitattributes` equals the original eight-line `dada3b7d` policy.
+### Older tracked-but-ignored files
+
+`git ls-files -ci --exclude-standard` still lists exactly these 20; ignore files are unchanged:
 
 ```text
 research/pde_ledger_v2/_scratch/DIRECTIVE_step1_retire_apin.md
@@ -554,10 +564,8 @@ research/pde_ledger_v3/_scratch/S11_wl_script_review_prompt.md
 research/pde_ledger_v3/_scratch/skills_directive.md
 ```
 
-### Conflicts and questions at the Phase 3 STOP
+### Conflicts and questions at this STOP
 
-The three carried record conflicts in Part F remain unresolved. The new **metadata conflict** is the two
-pre-existing live export/producer mismatches: S10 and S11. Historical pinned bytes are preserved, but the
-current-path export-chain check is **not all-pass**. This cleanup does not adjudicate that drift or regenerate
-exports. Claude should assess this limitation, the five-module compact Lean retention and the Tier 2 choices
-before Phase 4. No Phase 4 history rebuild or Phase 5 scratch deletion was started.
+The three record conflicts in Part F remain open. H4's two export/producer mismatches are explicitly carried;
+the current export-chain check is not all-pass. Uniform replay needs cache regeneration and that chain repair.
+No Phase 4 history rebuild, Phase 5 deletion, new science or new review has started.

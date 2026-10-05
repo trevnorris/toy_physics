@@ -28,6 +28,8 @@ Read the [short closeout](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md)
 
 | Question | Owner / evidence |
 | --- | --- |
+| Replaying the uniform check needs its intermediate caches regenerated from the kept b/c2 engines and the S10/S11 export chain repaired (H4). The original caches are not in git. They stay on local disk under `_scratch/` (Phase 5). | S11c-d if reused; [H3](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). |
+| S10/S11 exports pin their pre-2026-09-11 producers. Regenerate them from the current producers under review, or revert the producer edits. The S10 edit may be what the S10 Lean D3 link relies on, so a revert is not automatic. | S10/S11 maintenance; [H4](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). Not run in this cleanup. |
 | Direct c2 `[0,2]` entry is set to zero without an order-counting justification; whether the full response needs a nonzero term is unresolved. | S11c-c2/d if reused; [joint disposition, mixed-term issue](research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_joint_disposition.md). |
 | N6 premises: physical correctness of Φ, the V transform and extracted-block leakage remain open. | S11c-c2/d if reused; [c2, review caveats](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md), [N6 disposition, §7](research/pde_ledger_v3/_measurements/S11c_c2_N6_reconcile_disposition.md). |
 | Full cross-engine composition, b sign/control debts, c1 giants and accepted scattering/work/loss | S11c-b/c1/c2/d if reopened; [DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md), [d limits](research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md). |
@@ -51,7 +53,7 @@ The following are **OPEN** carry-overs, not instructions to resume. [Part F](res
 | ≥64 GB remote compute setup and outstanding licensing/acceptance questions | Infrastructure owner; [plan](notes/remote_compute_plan.md), [requirements, §§8–10](notes/remote_compute_requirements.md). Planning only; no run authorized here. |
 | Earlier v2 dimension, provenance, integration and normalization debts | Dormant v2 maintenance; [DIMENSION_REWRITE, §§8–12](research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md), [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). Not a revived v2 queue. |
 | Remaining model gaps, including species identity and old EM boundary-operator limitations | Named owners in [DEFECT_REGISTER](research/pde_ledger_v3/DEFECT_REGISTER.md); Q2/Q3/S22 and later matching, with [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over) retaining historical limits. |
-| Memory-note compaction and temporary-path evidence portability | Documentation maintenance; [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). Phase 3 preserves the selected Tier 1 inputs in the tree; no live-memory size remeasurement. |
+| Memory-note compaction and temporary-path evidence portability | Documentation maintenance; [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). Phase 3 keeps cited outputs; uniform replay caches remain on local disk; no live-memory size remeasurement. |
 
 ## Next and paused work
 
@@ -63,4 +65,4 @@ The [throat/EM notes](docs/light_em_investigation_handoff.md) remain **explorato
 S22/Q2 (with S12/Q3 connections), not adopted constitutive laws. Mixed numerical recovery, centre-drive
 implementation and new leakage workers remain parked. [Closeout, paused notes](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md).
 
-Cleanup: Phase 3 is prepared on local `cleanup/pruned` for its STOP review; **Phases 4–5 remain pending**. G1/G2 and the supplied AGENTS replacement are applied. Selection, checks and pre-existing export-pin conflicts are in [FINDINGS, Phase 3](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#g-phase-3-selection-and-checks). No history rewrite or push. The archive tag `archive/pre-cleanup-2026-10-04` is unchanged and already on both remotes ([directive](research/pde_ledger_v3/CLEANUP_2026-10_directive.md)).
+Cleanup: Phase 3 is prepared on local `cleanup/pruned` for its STOP review; **Phases 4–5 remain pending**. G1/G2 and the supplied AGENTS replacement are applied. Selection, checks and export-pin drift introduced during the inventoried period are in [FINDINGS, Phase 3](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#g-phase-3-selection-and-checks). No history rewrite or push. The archive tag `archive/pre-cleanup-2026-10-04` is unchanged and already on both remotes ([directive](research/pde_ledger_v3/CLEANUP_2026-10_directive.md)).

@@ -130,7 +130,7 @@ worst bank inverse precision-refinement coefficient is 4.852e-25 in its
 emitted unit frame. Numerical residuals and original domains remain in the
 inventories.
 
-The main d transcript (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out`)
+The main d [transcript](../scripts/out/S11c_d_mixing_scattering_sympy_audit.out)
 is atomically published. Its previous annex payload is unchanged; see the
 publication record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_d_publication.json`). The
 scoped/full provenance joins (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_c2_trace_repair_d_source_joins.json`) match

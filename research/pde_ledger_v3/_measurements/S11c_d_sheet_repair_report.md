@@ -42,7 +42,7 @@ The updated original probe (`archive/pre-cleanup-2026-10-04:research/pde_ledger_
 
 Exact commands, run manifests, payload hashes, and exit/stderr records are in the run record (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_sheet_repair_runs.json`). Completed stdout is published at its expected paths:
 
-- Main four-case/PIT transcript (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out`): 55,823,604 bytes, from the repaired engine.
+- Main four-case/PIT [transcript](../scripts/out/S11c_d_mixing_scattering_sympy_audit.out): 55,823,604 bytes, from the repaired engine.
 - Channel preflight (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S11c_d_channel_reentry_preflight.out`): 15,882,954 bytes, from the freshly pinned **pre-repair** engine.
 - Fourier probe (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S11c_d_fourier_sheet_probe.out`): 36,365 bytes.
 - Original counterexample probe (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S11c_d_sheet_continuation_probe.out`): 13,844 bytes.

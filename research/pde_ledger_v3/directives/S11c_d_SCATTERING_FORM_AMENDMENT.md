@@ -867,17 +867,17 @@ control ran or that the later scientific/engine/export gates are satisfied.
 [spec-controls]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md:711
 [spec-outputs]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md:681
 [pole-contract]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_NONLINEAR_POLE_CONTRACT.md
-[old-acceptance]: archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/directives/S11c_d_EXPLORATORY_ACCEPTANCE.md
+[old-acceptance]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_EXPLORATORY_ACCEPTANCE.md
 [retained]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_sympy_builder_report.md:488
 [decisions]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:47
-[current-report]: archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux_report.md
+[current-report]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_remaining_case_flux_report.md
 [continuum-report]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_currents_report.md
-[frequency-report]: archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md
-[search-report]: archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_frequency_contour_refine_report.md
+[frequency-report]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_source_report.md
+[search-report]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_frequency_contour_refine_report.md
 [lean-review]: /var/projects/toy_physics/research/pde_ledger_v3/lean/s11/POLE_FIDELITY_REVIEW.md
 [c1-validity]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:204
 [bulk-accounting]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md:452
-[inventory]: archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_scope_inventory_20260922.md
+[inventory]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scope_inventory_20260922.md
 [rest-decision]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:179
 [spec-method]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_d_SHARED_PHYSICS.md:838
 [rest-source]: /var/projects/toy_physics/research/pde_ledger_v3/steps/S11b_interface_coupling_law.md:158
@@ -892,7 +892,7 @@ control ran or that the later scientific/engine/export gates are satisfied.
 [c1-truncation]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_c1_SHARED_PHYSICS.md:332
 
 [saved-current-source]: /var/projects/toy_physics/research/pde_ledger_v3/scripts/S11c_d_mixing_scattering_sympy_audit.py:3383
-[saved-current-consumer]: archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_continuum_currents.py
+[saved-current-consumer]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_currents.py:107
 
 [deferral-owners]: /var/projects/toy_physics/research/pde_ledger_v3/directives/S11c_decisions.md:175
 [c1-independence]: /var/projects/toy_physics/research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md:157
@@ -904,4 +904,4 @@ control ran or that the later scientific/engine/export gates are satisfied.
 [survival-order]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_continuum_currents_report.md:32
 
 [review09]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_review_round09_adjudication.md
-[execution]: archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_scattering_form_execution_plan.md
+[execution]: /var/projects/toy_physics/research/pde_ledger_v3/_measurements/S11c_d_scattering_form_execution_plan.md

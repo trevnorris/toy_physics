@@ -125,7 +125,7 @@ residuals. All 666 projections from 222 integral residuals and 132 projections
 from eight row residuals are zero. All four inventories exit 0 with empty
 stderr. No upstream operand mismatch was indicated.
 
-The main transcript (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/scripts/out/S11c_d_mixing_scattering_sympy_audit.out`)
+The main [transcript](../scripts/out/S11c_d_mixing_scattering_sympy_audit.out)
 is 189,492,142 bytes, SHA-256
 `b04b50c87e227498a7acf48dec0a8a46e3e2288bb09045f479c9de2523a1d617`.
 This exceeds the brief's original tens-of-MB target. New resolvent object

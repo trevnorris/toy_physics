@@ -13,6 +13,36 @@ summary and per-point coverage. The immutable continuation is
 The earlier partial result (`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_result.md`) and its 44
 domain refusals remain unchanged as history.
 
+## Saved outputs and replay limit
+
+The completed outputs below are kept as their original JSON bytes. They support this report; they are not a
+self-contained replay package. Intermediate caches remain only on local disk under `_scratch/`. A new run
+needs those caches regenerated from the kept b/c2 engines and the S10/S11 export chain repaired; see
+[STATUS, open questions](../../../STATUS.md#open-questions-and-owners). No rerun occurred during cleanup.
+
+- [Aggregate checks and results](S11c_d_near_unity_uniform_output/checks.json).
+- [Exact denominator certificates](S11c_d_near_unity_uniform_output/nonzero-certificate-summary.json) and
+  [certificate self-checks](S11c_d_near_unity_uniform_output/certificate-self-checks.json).
+- Saved grazing limits: [LEFT minus](S11c_d_near_unity_uniform_output/LEFT-limits-sign--1.json),
+  [LEFT plus](S11c_d_near_unity_uniform_output/LEFT-limits-sign-1.json),
+  [RIGHT minus](S11c_d_near_unity_uniform_output/RIGHT-limits-sign--1.json),
+  [RIGHT plus](S11c_d_near_unity_uniform_output/RIGHT-limits-sign-1.json).
+
+| Schedule index | LEFT point output | RIGHT point output |
+| --- | --- | --- |
+| 0 | [LEFT](S11c_d_near_unity_uniform_output/point-00-LEFT.json) | [RIGHT](S11c_d_near_unity_uniform_output/point-00-RIGHT.json) |
+| 1 | [LEFT](S11c_d_near_unity_uniform_output/point-01-LEFT.json) | [RIGHT](S11c_d_near_unity_uniform_output/point-01-RIGHT.json) |
+| 2 | [LEFT](S11c_d_near_unity_uniform_output/point-02-LEFT.json) | [RIGHT](S11c_d_near_unity_uniform_output/point-02-RIGHT.json) |
+| 3 | [LEFT](S11c_d_near_unity_uniform_output/point-03-LEFT.json) | [RIGHT](S11c_d_near_unity_uniform_output/point-03-RIGHT.json) |
+| 4 | [LEFT](S11c_d_near_unity_uniform_output/point-04-LEFT.json) | [RIGHT](S11c_d_near_unity_uniform_output/point-04-RIGHT.json) |
+| 5 | [LEFT](S11c_d_near_unity_uniform_output/point-05-LEFT.json) | [RIGHT](S11c_d_near_unity_uniform_output/point-05-RIGHT.json) |
+| 6 | [LEFT](S11c_d_near_unity_uniform_output/point-06-LEFT.json) | [RIGHT](S11c_d_near_unity_uniform_output/point-06-RIGHT.json) |
+| 7 | [LEFT](S11c_d_near_unity_uniform_output/point-07-LEFT.json) | [RIGHT](S11c_d_near_unity_uniform_output/point-07-RIGHT.json) |
+| 8 | [LEFT](S11c_d_near_unity_uniform_output/point-08-LEFT.json) | [RIGHT](S11c_d_near_unity_uniform_output/point-08-RIGHT.json) |
+| 9 | [LEFT](S11c_d_near_unity_uniform_output/point-09-LEFT.json) | [RIGHT](S11c_d_near_unity_uniform_output/point-09-RIGHT.json) |
+| 10 | [LEFT](S11c_d_near_unity_uniform_output/point-10-LEFT.json) | [RIGHT](S11c_d_near_unity_uniform_output/point-10-RIGHT.json) |
+| 11 | [LEFT](S11c_d_near_unity_uniform_output/point-11-LEFT.json) | [RIGHT](S11c_d_near_unity_uniform_output/point-11-RIGHT.json) |
+
 ## Actual coverage and result
 
 This is LAB_HELD/RHO4_CONSTANT, omega=3, tangents (1/5,1/10), strict rest bulk,

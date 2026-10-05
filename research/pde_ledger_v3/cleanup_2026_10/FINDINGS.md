@@ -527,7 +527,9 @@ PASS: protected files unchanged; archive tag unchanged.
 ### Unchanged older tracked-but-ignored files
 
 `git ls-files -ci --exclude-standard` lists exactly these 20. The 33 newer ignored files are untracked but still
-on disk. All ignore files are unchanged; `.gitattributes` equals the original eight-line `dada3b7d` policy.
+on disk. DataLad initially re-staged their index-only deletions, so the final untracking save temporarily
+held those same bytes in a local temporary directory and restored them after the save. Their SHA-256 values
+are unchanged. All ignore files are unchanged; `.gitattributes` equals the original eight-line `dada3b7d` policy.
 
 ```text
 research/pde_ledger_v2/_scratch/DIRECTIVE_step1_retire_apin.md

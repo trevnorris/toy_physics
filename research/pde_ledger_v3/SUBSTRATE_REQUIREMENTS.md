@@ -75,7 +75,7 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 | **S8** | `R-S8-05` | the **frame** the brane's rotational stiffness is measured against | S9, S10, S11 |
 | **S8** *(register inference)* | `R-S8-06` | the material displacement and quadratic inertia of the slab | S11, S11b-B |
 | **S12** *(register inference)* | `R-S12-01` | a named reservoir and its power budget | S11b-B / unified S11b |
-| **S12** | `R-S12-02` | background drain/return and the receiving-channel content | S11b-A/B, S11c uniform |
+| **S12** | `R-S12-02` | background drain/return and separate boundary data | S11b-A/B, S11c uniform |
 
 ⚠ Entries below are in the order they were found, ⛔ not in step order. All **fifteen** are **OPEN**.
 ⭐ `R-S8-01`, `-03`, `-04`, `-05` are one family: the stiffness functional's **form**, its **sign**, its
@@ -197,13 +197,16 @@ other three.
   S11b-B states verbatim: *"⛔⛔ **Passivity and reciprocity are properties of fluctuations about an
   EQUILIBRIUM. This model's reference state is not one.** It carries a steady background normal flow
   `v₀` — the dark-energy drain — ⇒ a **driven steady state with a reservoir attached.**"*
-  (`steps/S11bB_interface_assembly.md:46–48`). The kept S11b and S11c results nevertheless linearise at
-  `v₀ = 0`: the unified record reports the background-flow correction as uncarried
-  (`steps/S11b_interface_coupling_law.md:158–164`), and the S11c records say the bulk is at rest
-  (`steps/S11c_PARTIAL_CLOSEOUT.md:7`; `steps/S11c_d_profile_conditioned_scattering.md:23,29`). This is an
-  unresolved tension between the driven reference state and the recorded rest-state freeze. The rest-state
-  obligation remains here; live drain/return and its scope correction are `R-S12-02`, and the power supply
-  is `R-S12-01`. No equilibrium result is promoted to a result about the driven state.
+  (`steps/S11bB_interface_assembly.md:46–48`). In that quote S11b's `v₀` is the bulk's normal drain,
+  standardised as `v_bulk_normal_0`; it is distinct from the brane rest velocity `v₀ = 0` in this
+  requirement (`directives/S11b_unified_decisions.md:33–40`). For S11b, the rest-frame linearisation
+  discards a relative correction of order `O(v_bulk_normal_0|q_n|/ω)`
+  (`steps/S11bB_interface_assembly.md:150–154`), and the unified record calls that correction uncarried
+  (`steps/S11b_interface_coupling_law.md:158–164`). The kept S11c results state that the bulk is at rest
+  (`steps/S11c_PARTIAL_CLOSEOUT.md:7`; `steps/S11c_d_profile_conditioned_scattering.md:9,23`). This is an
+  unresolved tension between the driven reference state and the recorded rest-state calculations. The
+  rest-state obligation remains here; live drain/return and its scope correction are `R-S12-02`, and the
+  power supply is `R-S12-01`. No equilibrium result is promoted to a result about the driven state.
 
 ### R-S8-01 — the form of the brane's quadratic stiffness functional
 
@@ -232,7 +235,8 @@ other three.
   corpus's rejected-Cauchy-branch coefficient"* (`steps/S11_stray_longitudinal.md:126–127`); the record
   names no prior-art objection to that branch.
   S11b-B needs the complete quadratic stored energy on `u, θ, e_W`, with the stated in-plane isotropy
-  and parity, modulo total divergences. The unified record's ten-dimensional quotient has different
+  and parity (`directives/S11b_SHARED_PHYSICS.md:280–284`), modulo total divergences. The unified record's
+  ten-dimensional quotient has different
   valid representatives; no individual representative coefficient is the required object. Its
   constrained breathing stiffness is `K₀ = B_ρ⁽³⁾ − 2CW₀ + k_W W₀²`. The stability claim is only the
   `k = 0`, impermeable, zero-reciprocal-traction slice. On that slice B hands forward `K₀ > 0` as
@@ -381,31 +385,35 @@ other three.
   (`steps/S11b_interface_coupling_law.md`, passivity region) · **target** S12
   (**register inference**) · **status** OPEN
 - **requirement** — a named reservoir and a stated power budget for any adopted non-passive interface
-  coupling. The records name the background drain `v₀` as the candidate reservoir.
+  coupling. The records name the bulk normal drain `v_bulk_normal_0` as the candidate reservoir.
 - **on failure** — the finite-memory velocity channel outside the passive region cannot be inherited
   as a physically supplied response. The computed region remains a classification, not a prohibition,
-  and naming `v₀` alone does not supply the missing power.
+  and naming `v_bulk_normal_0` alone does not supply the missing power.
 - **note** — this is the records' explicit condition for retaining that channel, not a requirement
   that the model choose it. A numerical observational bound also needs matter-to-compression coupling;
   B says that is unbuilt and reports only a structural test, so no numerical-bound requirement is added.
 - **owner/target** — the records do not name S12; that target is a register inference. They hand the
-  reservoir-and-budget condition to *"S11b-C"* (`steps/S11bB_interface_assembly.md:195–197`) and carry the
-  background-flow limit to *"C (and to the nonlinear program for the DC/harmonic/sideband radiation
-  audit)"* (`steps/S11b_interface_coupling_law.md:163–164`). S11c-a did not carry it: it *"computes
-  geometry only and does not address it"* (`steps/S11c_a_interface_shape_derivatives.md:257–259`).
+  reservoir-and-budget condition to *"S11b-C"* (`steps/S11bB_interface_assembly.md:195–197`).
 
-### R-S12-02 — background drain/return and the receiving channels
+### R-S12-02 — background drain/return and separate boundary data
 
-- **source** S11b-A/B (`steps/S11b_interface_coupling_law.md`, background-flow limit); S11c
+- **source** S11b-A/B (`steps/S11b_interface_coupling_law.md:158–164`, background-flow limit); S11c
   (`steps/S11c_PARTIAL_CLOSEOUT.md:7`, uniform result;
   `steps/S11c_d_profile_conditioned_scattering.md:21–25`, selected uniform check)
   · **target** S12 · **status** OPEN
-- **requirement** — the native drain/return functions, their separate boundary data, and the receiving
-  channels of the resulting background.
-- **on failure** — the kept rest-bulk decoupling and selected uniform limits cannot be transferred to
-  live conversion. The recorded scope correction is `O(v₀|q_n|/ω)`, uncarried and unbounded
-  (`steps/S11b_interface_coupling_law.md:158–164`). S12 owns the live functions, not an automatically
-  transferred rest-bulk result or an S11c loss factor.
+- **requirement** — the native drain/return functions and their separate boundary data.
+- **on failure** — the kept selected uniform check cannot be transferred to a flowing background: it is
+  a strict-rest-bulk calculation, and its finite samples do not prove flowing-background behaviour
+  (`steps/S11c_d_profile_conditioned_scattering.md:21–25`). S11b records why the rest-frame limitation
+  matters: its linearisation discards a relative correction of order
+  `O(v_bulk_normal_0|q_n|/ω)` (`steps/S11bB_interface_assembly.md:150–154`), which the unified record calls
+  uncarried and unbounded (`steps/S11b_interface_coupling_law.md:158–164`). That record carries the limit
+  to *"C (and to the nonlinear program for the DC/harmonic/sideband radiation audit)"*; S11c-a inherited
+  it as a standing limit but *"computes geometry only and does not address it"*
+  (`steps/S11c_a_interface_shape_derivatives.md:257–260`).
+- **owner** — S12 owns the drain/return data (`steps/S11c_PARTIAL_CLOSEOUT.md:21`) and is next for
+  dynamical bulk-to-brane order conversion with separate boundary data
+  (`steps/S11c_PARTIAL_CLOSEOUT.md:33`).
 
 ---
 
@@ -444,6 +452,9 @@ uniform decoupling CONDITIONAL (`steps/S11c_PARTIAL_CLOSEOUT.md:7`), while its n
 (`V3_STEP_PLAN.md:532–534`; `steps/S11c_d_profile_conditioned_scattering.md:64`). Its UNRESOLVED direct
 mixed term, numerical loss, and OPEN nonuniform confinement/material, observable and real-throat questions
 source no entry.
+S11b's supplied interface closure and outgoing-branch prescription have no named retirement condition and
+are routed to the ansatz ledger as candidate postulates (`steps/S11bB_interface_assembly.md:136–139,158–159`;
+`directives/S11b_unified_decisions.md:62–67`); v3 has no ansatz ledger yet.
 Reading a/b/c1/c2 did not promote their pre-repair closure language or deferred comparisons to accepted
 nonuniform physics. The clean-condition packet does not establish a support law; the
 exploratory throat/EM documents supply candidates only. No new requirement is inferred just because

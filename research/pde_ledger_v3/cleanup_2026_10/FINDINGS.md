@@ -1,6 +1,18 @@
 # S11c-era inventory and findings — Phase 1
 
-This is a reading guide to the preserved work, not a new physics assessment. **UNRESOLVED:** S11c ended without an accepted nonuniform light-loss number; **CONDITIONAL:** selected uniform light modes passed the speed-match tests. **OPEN — S12:** the next planned subject is the dynamical drain/return source, not another automatic scattering run. Sources: [closeout, opening and “Actual downstream uses”](../steps/S11c_PARTIAL_CLOSEOUT.md), [uniform result, “Actual coverage and result”](../_measurements/S11c_d_near_unity_uniform_continue_result.md), [plan, S12](../V3_STEP_PLAN.md).
+## Where the light sector stands
+
+S11c asked how much light escapes into other motion when the brane's thickness or material properties change. It closes **PARTIAL**: there is no accepted loss number. **UNRESOLVED.** [Closeout, opening](../steps/S11c_PARTIAL_CLOSEOUT.md).
+
+On a uniform brane, small light waves do not drive the surrounding bulk in the stated linear model; stable propagation requires nonnegative stiffness. SymPy and independently written Wolfram calculations support this, with engine/repair reviews and a documented comparison; one Wolfram review's full rerun was blocked. **CONDITIONAL.** [S11b, transverse mode, comparison and operational note](../steps/S11b_interface_coupling_law.md).
+
+A later SymPy check found the selected light modes still finite and decoupled at the tested light/sound speed matches, with the bulk at rest and other inputs fixed. Claude and Grok cleared its method, not a fresh independent review of the executed result. **CONDITIONAL.** [Uniform check, coverage and limits](../_measurements/S11c_d_near_unity_uniform_continue_result.md).
+
+Where the brane changes, the equations contain routes for conversion, but its size is unknown. The one completed scattering benchmark could not distinguish its final signal from numerical error; “within 1 ppm” is not a physical bound. **UNRESOLVED.** [Benchmark, signed-current table and controls](../_measurements/S11c_d_numerical_radiating_balance_report.md).
+
+Four equation repairs have scoped review support, not approval of the whole nonuniform calculation. One direct mixed contribution is set to zero without an order-counting justification; whether the complete response needs a nonzero term remains unknown. **UNRESOLVED.** [Joint repair disposition, limits and mixed-term issue](../_measurements/S11c_upstream_repair_review_joint_disposition.md).
+
+**OPEN:** S11c-b/c2/d owns equation/computation debts if reopened; S11c-e owns the conversion observable and strong-edge interpretation; Q2/Q3/S22 owns real defect support and charge response, S22/R10 the speed ratio, and a separate material audit the rotational-stiffness assumption. **S12 is next**, for drain/return dynamics; it does not need a finished leakage number. [Closeout, downstream uses and MacCullagh](../steps/S11c_PARTIAL_CLOSEOUT.md); [plan, S12/Q2/Q3/S22](../V3_STEP_PLAN.md).
 
 ## Inventory counts (metadata, not scientific findings)
 
@@ -24,18 +36,6 @@ Kind key: **K1** spec/amendment/contract; **K2** decision list or build directiv
 | Total | 35 | 271 | 223 | 397 | 144 | 549 | 1599 | 829 | 235 | 70 | 89 | 17 | 4458 |
 
 Workstream refinements are organizational: 02 includes the early finite omega=1 response that grew out of the symbolic build; 03 includes upstream diagnostic copies; 07 includes adjacent S9/S10 audits as well as Lean; 08 includes the exploratory documents' supporting reviews. The inventory does not infer a scientific status from a filename. Source: [script, `workstream`](inventory.py).
-
-## A. Plain-language summary
-
-**ESTABLISHED — scope and disposition:** S11c asked how a supplied change in the brane's thickness or material properties transfers light into other motion. Both reflected and transmitted transverse light count as survival. It closed **PARTIAL**, not passed or disproved. A held-defect test could be meaningful before a realistic particle model exists; it simply did not yield a trustworthy matched-speed loss result in this campaign. Sources: [d specification, §0](../directives/S11c_d_SHARED_PHYSICS.md), [closeout, opening](../steps/S11c_PARTIAL_CLOSEOUT.md).
-
-**CONDITIONAL:** the useful positive result is that the selected uniform transverse modes remain finite, carry current and have zero selected face drives at the tested speed matches. This used rest bulk, omega=3, LAB_HELD/RHO4_CONSTANT, fixed tangential momenta and selected effective sound speeds. It is not a statement about arbitrary defects, drain flow or a calibrated physical medium. The two reviewers cleared the **method**; there was no fresh independent worker/result review. Source: [uniform completion, “Actual coverage and result” and “Cost, limits and next dependency”](../_measurements/S11c_d_near_unity_uniform_continue_result.md).
-
-**UNRESOLVED:** the nonuniform omega=3 benchmark, at selected phase-speed ratio approximately **0.12**, completed ten finite solves but did not resolve loss. Its final imbalances were inside an empirical **1 ppm** floor; earlier apparent gain, refinement movements and outstanding review checks prevent a physical bound. Source: [benchmark, “Actual signed current results” and “Controls and their limits”](../_measurements/S11c_d_numerical_radiating_balance_report.md).
-
-**CONDITIONAL:** the campaign also produced scoped repair evidence, intermediate response/source/current checks and reviewed mathematical proofs. None supplies the missing complete scattering/work result. Sources: [repair joint disposition, opening and limits table](../_measurements/S11c_upstream_repair_review_joint_disposition.md), [first-order source result, entire short report](../_measurements/S11c_d_first_order_source_result.txt), [Lean policy, division of responsibility](../lean/FORMALIZATION_POLICY.md).
-
-**OPEN — S12, S11c-e, Q2/S22/R10:** S12 next specifies dynamical order conversion and boundary data. The normalized/strong-edge observable, real defect response and speed-ratio derivation retain their separate owners. The exploratory throat/EM notes are paused. Sources: [plan, S12, charge-phase preamble, S20a and S22](../V3_STEP_PLAN.md), [closeout, final two sections](../steps/S11c_PARTIAL_CLOSEOUT.md). No work in those steps is started here.
 
 ## B. Findings by workstream
 
@@ -158,15 +158,14 @@ These are editorial proposals under [Phase 1D / Phase 2](../CLEANUP_2026-10_dire
 6. **Add a visible S11c PARTIAL account to `paper/parts/part01_light.tex`**, consistent with the approved records; keep reader-critical limits outside the suppressed Verification field. Build/check the PDF in Phase 2 only. [Part I](../paper/parts/part01_light.tex); [macros, lines 16–26](../paper/macros.tex); [directive, Phase 2](../CLEANUP_2026-10_directive.md).
 7. **Keep exploratory/throat and muonium ownership links in the existing closeout/plan.** Preserve frozen proposals and literal reviews. Propose a short qualification of the older MacCullagh framing essay after C5 is reviewed, without rewriting history as a solved material problem. No new S22 theory or gravity prediction. [B08–B09 sources](#08--exploratory-throatem-notes); [essay](../../../docs/s11_maccullagh_differentiation.md); [plan, S16/S22](../V3_STEP_PLAN.md).
 
-## E. Proposed keep rules — no file selection or deletion yet
+## E. Keep rules — replaced by the approved tier policy
 
-Under [Phase 1E and Phase 3a](../CLEANUP_2026-10_directive.md), propose:
+The [Phase 1 review, verdict](PHASE1_REVIEW.md) supersedes the original Part E with [directive Phase 3a](../CLEANUP_2026-10_directive.md). No files are selected or pruned in Phase 2.
 
-- Keep each approved canonical claim's governing spec, current disposition, literal scoped review and result report, including failure/withdrawal evidence needed to understand its limit. Keep one reader-facing status per step; historical process duplication is not automatically needed.
-- Keep supporting producers, physical inputs, raw scientific returns, controls and every transitive import/hash dependency required by a kept claim. A file being labelled “process record” is **not** enough to prune it: it may carry the only exact source/input pin. Determine that in Phase 3.
-- Keep annexed `.out` as annexed, export chains unchanged and relevant before/after failure evidence. Do not assume a current-path output equals the historical reviewed bytes; match the kept claim's version.
-- Keep Lean proofs, coverage contracts, fidelity statements, controls and build dependencies; treat the S10 CAS byte bridge as a proposed Phase 3 removal only if the mandated build succeeds without it. [Formalization policy, L1–L4](../lean/FORMALIZATION_POLICY.md).
-- Keep the exploratory index/proposals/qualified assessments distinctly labelled; retain muonium withdrawal/ownership notes so old geometry cannot silently re-enter. [Handoff, work state](../../../docs/light_em_investigation_handoff.md); [muonium corrections, §§2–5](../../../notes/muonium_gravity_corrections.md).
-- Resolve every needed `_scratch/` or `/tmp/` citation in Phase 3, rather than silently counting a link as durable evidence. Examples already appear in the [fixed-point report, preservation paragraph](../_measurements/S11c_d_transverse_face_fixed_point_continue_report.md) and [inertia report, evidence paragraph](../_measurements/S11c_inertia_repair_report.md). No scratch artifact was moved or fetched here.
+- **Tier 1:** established/conditional claims that later work may use retain their report, producer, inputs, outputs and transitive dependencies, enough to rerun from the kept tree.
+- **Tier 2:** unresolved, withdrawn, paused or exploratory work retains the final report/disposition and any literal reviews cited by the ledger. Its transitive chain stays only in `archive/pre-cleanup-2026-10-04`; its hash pins need not resolve in the pruned tree. **When unsure, use Tier 2.**
+- **Process records:** prune unless a Tier 1 script reads them at runtime. An incidental hash link is not a reason to keep a process chain.
+- **Directives:** keep the cleared governing spec/build directive, not drafts, superseded versions or per-round prompts.
+- Scratch citations and Lean build dependencies follow the directive's specific Phase 3 rules. No blanket dependency closure applies to Tier 2.
 
-**Phase 1 STOP.** Await Claude's review of this document and the user's approval of Part D, as required by the [directive](../CLEANUP_2026-10_directive.md). No Phase 2 edits, pruning, history rebuild, scientific job or review submission has been performed.
+The original Phase 1 proposal remains at `174f4fa9`. The [review, C1–C8 and Part D](PHASE1_REVIEW.md) supplies the editorial decisions for Phase 2; Part B above remains the detailed reading guide.

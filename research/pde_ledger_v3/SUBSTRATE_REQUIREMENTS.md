@@ -68,7 +68,7 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 | **S6** | `R-S6-02` | the first variation of the substrate action at `v₀ = 0` | S9, S10, S11, S11b-A/B, S11c uniform |
 | **S6** | `R-S1-01` | the brane's spatial dimension `D_brane` ⚠ *id kept; target corrected to S6* | S10, S11 |
 | **S7** | `R-S7-01` | the slab-width flat direction under a non-uniform width | S11, unified S11b |
-| **S8** | `R-S8-01` | the form of the brane's quadratic stiffness functional | S9, S10, S11, S11b-B, S11c uniform |
+| **S8** | `R-S8-01` | the form of the brane's quadratic stiffness functional | S9, S10, S11, S11b-B, unified S11b, S11c uniform |
 | **S8** | `R-S8-02` | the quadratic operator on `u` **and** `h` together | S10, S11 |
 | **S8** | `R-S8-03` | the **sign** of the physical transverse stiffness | S9, S10, S11, unified S11b, S11c uniform |
 | **S8** | `R-S8-04` | what carries the brane's **internal angular momentum** | S9, S10, S11 |
@@ -214,8 +214,8 @@ other three.
 ### R-S8-01 — the form of the brane's quadratic stiffness functional
 
 - **source** S9, S10; S11 (`steps/S11_stray_longitudinal.md`, moves 2–3 / FORM control);
-  S11b-B (`steps/S11bB_interface_assembly.md`, energy basis / breathing stability;
-  `steps/S11b_interface_coupling_law.md`, energy quotient); S11c
+  S11b-B (`steps/S11bB_interface_assembly.md`, energy basis / breathing stability); unified S11b
+  (`steps/S11b_interface_coupling_law.md`, energy quotient); S11c
   (`steps/S11c_PARTIAL_CLOSEOUT.md`, conditional uniform result) · **target** S8 · **status** OPEN
 - **requirement** — the quadratic brane Lagrangian's **stiffness functional**, as delivered by the
   substructure rather than chosen.
@@ -250,7 +250,8 @@ other three.
 
 ### R-S8-02 — the in-plane and out-of-plane sectors must decouple at quadratic order
 
-- **source** S10, S11 · **target** S8 · **status** OPEN
+- **source** S10; S11 (`steps/S11_stray_longitudinal.md:278–280`, in-plane, frozen-wall-width spectrum)
+  · **target** S8 · **status** OPEN
 - **requirement** — the quadratic operator on the brane's **full** displacement, in-plane `u` **and**
   out-of-plane `h` together, and whether it is block-diagonal in that split.
 - **on failure** — ⛔ **S10's headline number changes** — but ⚠ **not by the mechanism an earlier draft of
@@ -274,11 +275,22 @@ other three.
   ⭐ Note this is the `(u_L, h)` block — the scalar sector — so it bears on the **longitudinal** slot and
   the charge anchor, ⛔ and not directly on the transverse count, which is what the corrected on-failure
   above turns on.
-- **pass-2 source** — S11's selected-action statement says its homogeneous-sector decoupling does not
-  establish decoupling *"after additional allowed fields are introduced"*
-  (`steps/S11_stray_longitudinal.md:75–76`), and its scope caveat explicitly excludes `hBranon` from the
-  frozen-wall-width in-plane spectrum (`steps/S11_stray_longitudinal.md:279–280`). It therefore sources the
-  same open obligation for the joint `u`/`h` operator.
+- **pass-2 source** — S11's result here is the one its record names as the in-plane, frozen-wall-width
+  spectrum with `hBranon` excluded: *"⚠ Scope caveats, none touching the decoupling: (i) this is the
+  **in-plane, frozen-wall-width** spectrum (`WALL_WIDTH_FIELDS={}`, `hBranon` excluded,
+  `INTERFACE_EQUATIONS_SUPPLIED={}`) — it does not decide inhomogeneous mode conversion,"*
+  (`steps/S11_stray_longitudinal.md:278–280`). S11's decoupling statement, with its own limit, reads:
+  *"Thus the homogeneous \(D=3\) quadratic transverse and longitudinal eigenbranches have zero linear
+  cross-block under the selected action. This does not establish decoupling at nonlinear order, on a
+  nonuniform slab, at an interface or defect, or after additional allowed fields are introduced."*
+  (`steps/S11_stray_longitudinal.md:74–76`). This entry's object is the joint `u`/`h` operator that the
+  spectrum leaves out.
+- **named freeze** — the `hBranon` exclusion is named by S11's record itself, in the same caveat as its
+  frozen wall width (`steps/S11_stray_longitudinal.md:279–280`); its Mathematica audit binds the token as
+  `"OUT_OF_PLANE_FIELD_EXCLUDED" -> hBranon`
+  (`mathematica/S11_stray_longitudinal_mathematica_audit.wl:1082`). If S8 does not deliver the joint
+  operator, S11's spectrum is not extended beyond that stated scope. The record does not say what its
+  roots or census would be with `hBranon` included, and this register does not infer it.
 
 ### R-S8-03 — the SIGN of the physical transverse stiffness
 
@@ -393,9 +405,11 @@ other three.
   (`steps/S11b_interface_coupling_law.md`, passivity region) · **target** S12
   (**register inference**) · **status** OPEN
 - **requirement** — a named reservoir and a stated power budget for any adopted non-passive interface
-  coupling. The candidate reservoir is the background drain `v₀` (standard name `v_bulk_normal_0`,
-  `directives/S11b_SHARED_PHYSICS.md:101–104`; `directives/S11b_unified_decisions.md:33–40`), as recorded in
-  `steps/S11bB_interface_assembly.md:46–48`.
+  coupling. The unified record names the candidate: *"The model supplies a candidate reservoir — the
+  background drain `v₀`."* (`steps/S11b_interface_coupling_law.md:62–63`). That `v₀` is the bulk's normal
+  drain, standard name `v_bulk_normal_0` (`directives/S11b_SHARED_PHYSICS.md:101–104`;
+  `directives/S11b_unified_decisions.md:33–40`). B says the reference state carrying that flow is *"a
+  **driven steady state with a reservoir attached.**"* (`steps/S11bB_interface_assembly.md:46–48`).
 - **on failure** — the finite-memory velocity channel outside the passive region cannot be inherited
   as a physically supplied response. The computed region remains a classification, not a prohibition,
   and naming `v_bulk_normal_0` alone does not supply the missing power.
@@ -453,8 +467,8 @@ Seven entries added, against the two that existed. The calibration it produced, 
 
 Read `steps/S11_stray_longitudinal.md`, all three S11b records (the unified record and the historical A/B
 records), `steps/S11c_PARTIAL_CLOSEOUT.md`, and the a/b/c1/c2/d records in full. Applied the schema,
-rest-on test and both routes below: **11 → 15 entries**, four new and six existing entries gaining
-sources (`R-S7-01`, `R-S1-01`, `R-S1.5-01`, `R-S6-02`, `R-S8-01`, `R-S8-03`). New entries:
+rest-on test and both routes below: **11 → 15 entries**, four new and seven existing entries gaining
+sources (`R-S7-01`, `R-S1-01`, `R-S1.5-01`, `R-S6-02`, `R-S8-01`, `R-S8-02`, `R-S8-03`). New entries:
 S1 `R-S1-03`; S8 `R-S8-06`; S12 `R-S12-01`/`02`.
 All use schema status OPEN; CONDITIONAL is a qualification of the source result, not a status value.
 
@@ -464,14 +478,23 @@ uniform decoupling CONDITIONAL (`steps/S11c_PARTIAL_CLOSEOUT.md:7`), while its n
 (`V3_STEP_PLAN.md:532–534`; `steps/S11c_d_profile_conditioned_scattering.md:64`). Its UNRESOLVED direct
 mixed term, numerical loss, and OPEN nonuniform confinement/material, observable and real-throat questions
 source no entry.
-The unified spec marks the §1b branch prescription supplied and lists both it and the §4 closure among the
-supplied objects (`directives/S11b_SHARED_PHYSICS.md:113`; `directives/S11b_SHARED_PHYSICS.md:995`); B's
-record likewise includes the branch
-prescription among the supplied objects (`steps/S11bB_interface_assembly.md:136–137`) and separately says
-that radiated-energy direction is inherited from the supplied continuation
-(`steps/S11bB_interface_assembly.md:158–159`). From that supplied status, this register infers that the
-interface closure and outgoing-branch prescription have no named retirement condition and routes them to
-the ansatz ledger as candidate postulates; v3 has no ansatz ledger yet.
+**Supplied objects.** The unified spec's names are the §1b branch prescription and the §4 face closure.
+It heads §1b *"COMPLEX FREQUENCY — SUPPLIED"* (`directives/S11b_SHARED_PHYSICS.md:113`) and §4 *"THE FACE
+CLOSURE — SUPPLIED, and the affinity is the canonical driver"* (`directives/S11b_SHARED_PHYSICS.md:208`).
+Its supplied column reads *"§2 bulk acoustics; the §1b branch prescription; the §4 closure, affinity `𝒜`
+and its normalization; the §5 term list (⛔ but its **closedness** is tested); the §6 balance-law route and
+virtual-displacement rule"* (`directives/S11b_SHARED_PHYSICS.md:995`). B's record lists five supplied
+objects: *"The affinity, the branch prescription, the mass balance, the virtual-displacement rule and the
+row structure are **supplied**"* (`steps/S11bB_interface_assembly.md:136–137`). It then says *"⭐ Their
+verification comes from the independent reviewer derivations above, ⛔ **not from the engines
+agreeing.**"* (`steps/S11bB_interface_assembly.md:138–139`). What the reviewers re-derived is a different
+list: *"the affinity `𝒜 = μ_s − δp/ρ_m` (**three times**), the complex-frequency continuation (**three
+times**), the interfacial mass balance, the `Z_perm` reduction, the virtual-displacement rule, the
+ten-element basis, the dimension table, and `K₀`"* (`steps/S11bB_interface_assembly.md:126–129`).
+Separately, B says *"**Radiated-energy direction is inherited** from the supplied continuation"*
+(`steps/S11bB_interface_assembly.md:158–159`). This register draws no postulate inference from
+"supplied", and leaves open whether any supplied object belongs in the ansatz ledger; v3 has no ansatz
+ledger yet.
 Reading a/b/c1/c2 did not promote their pre-repair closure language or deferred comparisons to accepted
 nonuniform physics. The clean-condition packet does not establish a support law; the
 exploratory throat/EM documents supply candidates only. No new requirement is inferred just because
@@ -493,12 +516,29 @@ light bending and delay under v3's light picture remains open — **no owner nam
 rejected-Cauchy-branch coefficient but no objection to that branch, so the Cauchy branch is a candidate
 only. The FORM outcome stays solely in `R-S8-01` as a first-route source, quoted from the S11 record.
 S11b-A, S11b-B/unified S11b, and S11c-a/b/c1/c2/d each have **no identified prior-art route** meeting the
-directive's record-and-objection test. Onsager–Casimir is a candidate only; `R-S1-03` instead rests on B's
+directive's record-and-objection test. The S11c closeout, which is a record, does name MacCullagh, in an
+item it marks OPEN: *"**OPEN — material audit/Q2/S22:** uniform confinement is derived within the
+supplied linear model; nonuniform confinement and the physical admissibility of rotational stiffness are
+not established. That is the useful but limited MacCullagh distinction."*
+(`steps/S11c_PARTIAL_CLOSEOUT.md:27`). That item is listed under *"Claims future work must not inherit"*
+(`steps/S11c_PARTIAL_CLOSEOUT.md:23`), and an OPEN item sources no entry under the rest-on test, so it
+sources none here. Onsager–Casimir is a candidate only; `R-S1-03` instead rests on B's
 first-route hand-forward, *"conditional on microscopic time-reversibility"*. A's memoryless reduction is
 by construction, and internal cross-engine reproductions are not prior art. The two pre-existing
-prior-art entries are not re-certified by this pass. No directive/register method disagreement was found;
-the obsolete rebuild schedule is replaced by this completed population pass. Record
-qualifications/disagreements are reported at STOP, not adjudicated here.
+prior-art entries are not re-certified by this pass. The obsolete rebuild schedule is replaced by this
+completed population pass. Record qualifications/disagreements are reported at STOP, not adjudicated
+here.
+
+**Directive/register disagreement on the second route — unresolved.** The second-route results above
+apply the directive's test: *"Run it only on a prior result that a record in the reading list identifies
+as reproduced by the sector, with the objection taken from that record or from a source the record
+cites."* (`directives/S11_requirements_pass2_directive.md:56–57`). This register's own second route, under
+"Method for population passes" below, found `R-S8-04` and `R-S8-05` outside the records — *"⛔ Neither is
+anywhere in S9's or S10's records, because the records only capture what their authors thought to
+doubt"* — and says *"⇒ ⭐ **Run this route for every sector with identified prior art**, ⛔ not only the
+light sector."* The directive also says *"Where this directive and the register disagree, the register
+wins, and you report the disagreement."* (`directives/S11_requirements_pass2_directive.md:21–22`). Both
+sides are quoted here; this pass does not resolve the disagreement.
 
 #### Inputs a future nonuniform calculation must define
 

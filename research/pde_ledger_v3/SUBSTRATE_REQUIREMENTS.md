@@ -285,8 +285,8 @@ other three.
   nonuniform slab, at an interface or defect, or after additional allowed fields are introduced."*
   (`steps/S11_stray_longitudinal.md:74–76`). This entry's object is the joint `u`/`h` operator that the
   spectrum leaves out.
-- **named freeze** — the `hBranon` exclusion is named by S11's record itself, in the same caveat as its
-  frozen wall width (`steps/S11_stray_longitudinal.md:279–280`); its Mathematica audit binds the token as
+- **excluded field** — in that caveat S11's record freezes the wall width and excludes `hBranon`
+  (`steps/S11_stray_longitudinal.md:279–280`); its Mathematica audit binds the token as
   `"OUT_OF_PLANE_FIELD_EXCLUDED" -> hBranon`
   (`mathematica/S11_stray_longitudinal_mathematica_audit.wl:1082`). If S8 does not deliver the joint
   operator, S11's spectrum is not extended beyond that stated scope. The record does not say what its

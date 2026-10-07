@@ -101,6 +101,10 @@ split is adopted.
 | `𝒩_br^live` | Normal material response, retaining distinctions among embedding, centre and thickness content until a model connects them. | S5–S8 for wall/width/compression ingredients; Q1/Q2 for their recorded static embedding sector; live identification with O4 remains OPEN. |
 | `𝒜_rot^live` | Required internal angular-momentum/couple-stress content and the physical rotational reference frame, including whether such content is present. | S8's OPEN requirements; no carrier or frame is chosen. |
 
+`ℳ_⊥` (§6), `𝒩_br^live` and `ℛ_ref/strain^live` (§4) name response content within, or content
+determining, `𝒯_br^live`, rather than additional force channels; the live material stress enters O2's
+balance once, through `𝒯_br^live`.
+
 **Source/domain:** `O2_premise_decision_list.md:43–47` retains the live stress, inertia and normal response
 as general unknowns. `V3_STEP_PLAN.md:185–204` assigns S1.5 conservative left-hand sides and keeps S12's
 source partners OPEN; `:271–350,1207–1214` supplies the other material boundaries. The rotational
@@ -285,7 +289,8 @@ EOS/action S1/S1.5. Part C's three speed-response choices (v9:164–172) are lat
 none is selected here as a constitutive closure.
 
 **Status: OPEN `ℳ_⊥` (O1) and `ℛ_br` (O7).** These name the stiffness and brane-density responses,
-respectively. `ℳ_⊥` retains general dependence on frequency regime and material/loading history.
+respectively. `ℳ_⊥` retains general dependence on frequency regime and material/loading history,
+with its relation to the live stress specified in §3.
 Dependence on bulk state, flow, embedding, thickness and projection remains general,
 as do their gradients. The speed ratio and bulk EOS determine neither response separately
 (v9:283–286,309–312; `O2_premise_decision_list.md:45`). **Owner:** S8's brane inputs; unresolved material
@@ -361,9 +366,11 @@ not an adopted pressure/affinity or DC response law. **Source:**
 tilted face must not be replaced by zero in-plane projection on the brane. There is no independent
 tangential bulk stress. For S21's sort, premise 4 excludes any tangential face traction from the
 recorded GNLS quantum stress `σ^Q_ij` (v2:`stages/ledger_stage002_matter_stress_force_assembly.md:94–101`)
-as an adopted input, rather than a consequence of S11b's rest-acoustic no-shear-modulus model; the
-record's convective `mρv_i v_j` remains transport content for sub-step 3's O3 treatment, with O6's
-sheet/slab map still OPEN. **Owner:** O2 carries the OPEN load; S12 owns needed live bulk/drain data. No
+as an adopted input, rather than a consequence of S11b's rest-acoustic no-shear-modulus model. The
+record's convective `mρv_i v_j` is not assigned here to either O3 or `𝒯_bulk,n,s^live`: sub-step 3 must
+declare how it enters the balance, counted once, with O6's sheet/slab map still OPEN. Premise 3's brane
+material velocity `V` is distinct from the record's bulk velocity `v`.
+**Owner:** O2 carries the OPEN load; S12 owns needed live bulk/drain data. No
 new live traction law is assigned to S11c.
 
 **Status: supplied perturbation traction and face work, reported on their original domain.**

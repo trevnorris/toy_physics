@@ -147,7 +147,7 @@ stressInputs = {fullStress,consStress,normalResponse,rotation,stressReference,
 internalForce = Table[response[InternalForce[a],stressInputs,section],{a,4}];
 emit["INTERNAL_MATERIAL_FORCE", <|"Components" -> internalForce,
   "GraphNormalProjection" -> graphNormal.internalForce,
-  "StressOccurrences" -> {fullStress}, "Origin" -> origin["3.2,4", "3,4"]|>];
+  "Origin" -> origin["3.2,4", "3,4"]|>];
 
 (* Full load is ONE joint action constrained by its bulk part. A support split
    is not selected. The native face integral and weighting are inside JMap;
@@ -155,14 +155,24 @@ emit["INTERNAL_MATERIAL_FORCE", <|"Components" -> internalForce,
 nativeHold = Table[response[NativeCompleteHold[a],
   {holdOperand,BulkPartConstraint[bulkTraction],core,
    NoDeclaredExternalSupport,UnresolvedSupportPartition},section],{a,4}];
+nativeFaceSet = response[NativeBoundingFaceSet,
+  {mapOperand,boundaryInventory},section];
 reduceNative[object_] := response[NativeToCoordinateDensity,
-  {mapOperand,NativeFaces,boundaryInventory,core},
+  {mapOperand,nativeFaceSet,boundaryInventory,core},
   <|"NativeObject" -> object, "AreaFactor" -> faceArea,
     "NativeNormal" -> faceNormal, "Measure" -> CoordinateVolume[x],
     "UnrestrictedDependence" -> section|>];
-mechanicalLoad = reduceNative /@ nativeHold;
+(* Sum the complete per-face reduction over the OPEN O6 face set. Function
+   binds s throughout the reduced object, including geometry and application
+   data. Apply constructs that binding AFTER the per-face object is evaluated.
+   Inactive Map/Total retain the unknown set without choosing its cardinality
+   or face identifications. The same aggregation is used for face work below. *)
+totalNativeFaces[object_] := Inactive[Total][
+  Inactive[Map][Function @@ {{s},object},nativeFaceSet]];
+mechanicalLoad = totalNativeFaces /@ (reduceNative /@ nativeHold);
 emit["MECHANICAL_LOAD", <|"NativeBulkTraction" -> bulkTraction,
-  "NativeCompleteLoad" -> nativeHold, "CoordinateComponents" -> mechanicalLoad,
+  "NativeCompleteLoad" -> nativeHold, "NativeFaceSet" -> nativeFaceSet,
+  "CoordinateComponents" -> mechanicalLoad,
   "GraphNormalProjection" -> graphNormal.mechanicalLoad,
   "Origin" -> origin["3.3,4,5", "5,6,7"]|>];
 
@@ -213,8 +223,8 @@ massRHS = -profiles["j_n"];
 emit["MASS_INPUT", <|"DensityOperand" -> massDensity, "VelocityOperand" -> vPlane,
   "Flux" -> massFlux, "Divergence" -> massDivergence, "RHS" -> massRHS,
   "Equation" -> (massDivergence == massRHS), "Residual" -> (massDivergence - massRHS),
-  "TransformationsUsedInMomentum" -> {}, "Measure" -> CoordinateVolume[x],
-  "Qualification" -> "Recorded relative O(epsilon) qualification on j_n when transferred to induced measure; no such transfer used",
+  "Measure" -> CoordinateVolume[x],
+  "Qualification" -> "Recorded relative O(epsilon) qualification on j_n when transferred to induced measure",
   "NativeIdentification" -> mapOperand, "Origin" -> origin["3.1,5,7", "6,9"]|>];
 
 (* Native mechanical work uses the ACTUAL application velocity as an OPEN map
@@ -226,7 +236,7 @@ faceVelocity = Table[response[NativeApplicationVelocity[a],
   <|"GraphVelocity" -> pairedVelocity,"NativeChart" -> faceHeight,
     "UnrestrictedDependence" -> section|>],{a,4}];
 nativeFaceWork = nativeHold.faceVelocity;
-faceWork = reduceNative[nativeFaceWork];
+faceWork = totalNativeFaces[reduceNative[nativeFaceWork]];
 stressWork = response[MaterialStressNormalRotationalWork,
   {stressInputs,inertia,normalResponse,rotation},
   <|"ForceAction" -> internalForce,"GraphVelocity" -> vMaterial,

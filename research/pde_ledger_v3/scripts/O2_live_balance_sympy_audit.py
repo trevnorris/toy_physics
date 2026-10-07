@@ -19,6 +19,9 @@ changes one marked construction line in an in-memory source copy per knife.
 from __future__ import annotations
 
 import hashlib
+from functools import lru_cache
+from sympy.core.function import AppliedUndef
+from sympy.printing.repr import ReprPrinter
 from pathlib import Path
 from types import MappingProxyType
 import sys
@@ -51,7 +54,24 @@ SECTION9 = (
     'ENERGY_STEADY', 'COUPLED_INPUTS', 'MODEL_POINT', 'TRACE',
 )
 LOCAL_NAMES = ('IMPORT_MANIFEST', 'FOLD', 'F9', 'F3', 'F6', 'ROUNDTRIP',
-               'EXPORT_CLOSURE', 'INPUT_DIGESTS')
+               'EXPORT_CLOSURE', 'INPUT_DIGESTS', 'NAME_AUDIT')
+
+
+class LosslessReprPrinter(ReprPrinter):
+    """Preserve the undefined-function constructor metadata omitted by srepr.
+
+    In particular, a real native immersion function must not revive as an
+    assumption-free function. This changes encoding, not any constructed object
+    or the strict structural D3 comparison.
+    """
+    def _print_FunctionClass(self, expr):
+        if issubclass(expr, AppliedUndef) and expr._kwargs:
+            return 'Function(%r, **%r)' % (expr.__name__, dict(sorted(expr._kwargs.items())))
+        return super()._print_FunctionClass(expr)
+
+
+def serialize(value):
+    return LosslessReprPrinter().doprint(value)
 
 
 def record(**items):
@@ -81,6 +101,32 @@ def bind_inputs(fold):
     return {key: fold[key]['value'] for key in IMPORT_KEYS}
 
 
+@lru_cache(maxsize=None)
+def graph_kinematics(x, vr, xi):
+    """Differentiate supplied graph/profile inputs only AFTER their selection."""
+    r = sp.sqrt(sum(q*q for q in x))
+    embedding = vector((*x, xi))
+    tangent = embedding.jacobian(x)
+    metric = sp.ImmutableMatrix(tangent.T * tangent)  # KNIFE_K4
+    metric_inverse = sp.ImmutableMatrix(metric.inv(method='DM'))
+    metric_determinant = sp.factor(metric.det())
+    slope = vector(sp.diff(xi, q) for q in x)
+    graph_normal = vector((*(-slope), sp.S.One)) / sp.sqrt(1 + slope.dot(slope))
+    v = vector(vr*q/r for q in x)
+    graph_velocity = tangent * v  # KNIFE_K2
+    return (embedding, tangent, metric, metric_inverse, metric_determinant,
+            graph_normal, v, graph_velocity)
+
+
+def all_native_faces(face_set, face_label, contribution):
+    """Formal sum over the ENTIRE OPEN O6 face set; Lambda binds its index.
+
+    This is an unevaluated set-indexed sum, not one selected face, a chosen
+    cardinality, or a finite-slab reduction. The same operator is used for work.
+    """
+    return action('SumOverAllNativeFaces', face_set, sp.Lambda(face_label, contribution))
+
+
 def construct(_bound_inputs):
     # ACTION / ANSATZ inputs: supplied equations and named OPEN operands.
     x = sp.symbols('x1 x2 x3', real=True)
@@ -89,7 +135,7 @@ def construct(_bound_inputs):
     GM = sp.Symbol('GM', real=True)
     r = sp.sqrt(sum(q*q for q in x))
     radial = {name: sp.Function(name)(r) for name in (
-        'V_r', 'rho_br', 'mu_perp', 'xi_w', 'h', 'delta', 'j_n', 'f')}
+        'V_r', 'o2_rho_br_live', 'mu_perp', 'xi_w', 'h', 'delta', 'j_n', 'f')}
     vr, rho, mu, xi, h, delta, jn, f = (radial[k] for k in radial)
     domain = action('OpenDomain', *x, t)
     names = ('B_A13 I_br_live P_br_cons T_br_live T_br_cons N_br_live '
@@ -108,29 +154,27 @@ def construct(_bound_inputs):
     boundary = sp.Tuple(op['S12_boundary_domain'], op['H_core'], op['mouth_core_data'])
     history = action('StateHistory', domain, profile_packet, source, boundary)
     state = sp.Tuple(domain, history, op['bulk_state'], profile_packet)
+    # O1/O7 stay input obligations, not response equations or extra forces.
+    constitutive_inputs = record(density=sp.Tuple(rho, op['R_br']),
+                                 optical_stiffness=sp.Tuple(mu, op['M_perp']))
     # Compute graph geometry in ambient Cartesian (x1,x2,x3,w) coordinates.
-    embedding = vector((*x, xi))
-    tangent = embedding.jacobian(x)
-    metric = sp.ImmutableMatrix(tangent.T * tangent)  # KNIFE_K4
-    metric_inverse = sp.ImmutableMatrix(metric.inv(method='DM'))
-    metric_determinant = sp.factor(metric.det())
-    slope = vector(sp.diff(xi, q) for q in x)
-    graph_normal = vector((*(-slope), sp.S.One)) / sp.sqrt(1 + slope.dot(slope))
+    (embedding, tangent, metric, metric_inverse, metric_determinant,
+     graph_normal, v, graph_velocity) = graph_kinematics(x, vr, xi)
     dual_tangent = metric_inverse * tangent.T
-    v = vector(vr*q/r for q in x)
-    graph_velocity = tangent * v  # KNIFE_K2
     geom = sp.Tuple(embedding, tangent, metric, metric_inverse, graph_normal)
     material = sp.Tuple(op['I_br_live'], op['P_br_cons'], op['N_br_live'],
                         op['A_rot_live'], op['J_map'], op['B_A13'],
-                        op['material_action_compatibility'])
+                        op['material_action_compatibility'], constitutive_inputs)
     # An OPEN material response sees the FULL field/history domain. The explicit
     # profiles identify its supplied argument state, not a derivative cutoff.
     momentum_profiles = sp.Tuple(vr, rho, xi)  # KNIFE_K6
     momentum_replacements = dict(zip((vr, rho, xi), momentum_profiles))
-    momentum_velocity = graph_velocity.xreplace(momentum_replacements).doit()
-    momentum_geometry = geom.xreplace(momentum_replacements).doit()
-    momentum_state = state.xreplace(momentum_replacements).doit()
-    momentum_args = sp.Tuple(material, momentum_state, momentum_profiles,
+    (m_embedding, m_tangent, m_metric, m_inverse, m_determinant,
+     m_normal, m_v, momentum_velocity) = graph_kinematics(x, momentum_profiles[0], momentum_profiles[2])
+    momentum_geometry = sp.Tuple(m_embedding, m_tangent, m_metric, m_inverse, m_normal)
+    momentum_state = state.xreplace(momentum_replacements)
+    momentum_material = material.xreplace(momentum_replacements)
+    momentum_args = sp.Tuple(momentum_material, momentum_state, momentum_profiles,
                             momentum_velocity, momentum_geometry, source, boundary,
                             op['R_ref_strain_live'])
     density = vector(action('MomentumDensity_' + str(a), momentum_args) for a in range(4))
@@ -145,7 +189,7 @@ def construct(_bound_inputs):
         profiles=momentum_profiles,
         gradients=sp.ImmutableMatrix(momentum_profiles).jacobian(x),
         velocity_gradient=momentum_velocity.jacobian(x),
-        material_velocity_rate=momentum_velocity.jacobian(x) * v,
+        material_velocity_rate=momentum_velocity.jacobian(x) * m_v,
         measure=Str('d3x'))
     stress_state = sp.Tuple(op['T_br_live'], op['T_br_cons'], ref_stress,
                            op['N_br_live'], op['A_rot_live'], material, state,
@@ -153,24 +197,35 @@ def construct(_bound_inputs):
     internal = vector(action('InternalForce_' + str(a), stress_state) for a in range(4))
     compatibility = action('MaterialCompatibility', material, stress_state,
                            momentum_args, op['E_h_live'])
-    # s is a native face label. No face count, sheet/slab, window or identification
-    # of the native face with the supplied reduced graph is selected.
-    s = sp.Symbol('s_face')
+    # An arbitrary regular native immersion X_s(q,t) into (x1,x2,x3,w).
+    # Chart orientation is chosen outward; no face is identified with the graph.
+    # O6 owns its set, domains, geometry and reduction. No face count is chosen.
+    s = sp.Symbol('o2_s_face')
+    q = sp.symbols('o2_q_face_1 o2_q_face_2 o2_q_face_3', real=True)
+    face_set = action('NativeFaceSet', op['J_map'], state, boundary)
     face_context = sp.Tuple(s, state, geom, op['N_br_live'], op['J_map'], boundary)
-    native_normal = vector(action('NativeFaceNormal_' + str(a), face_context)
-                           for a in range(4))  # KNIFE_K7
-    native_area = action('NativeFaceAreaFactor', face_context)
-    amplitude = action('T_bulk_n_s_live', face_context)
+    native_embedding = vector(sp.Function('o2_X_face_' + str(a), real=True)(s, *q, t)
+                              for a in range(4))
+    native_tangent = native_embedding.jacobian(q)
+    native_cofactor = vector((-1)**(a+3) * native_tangent.extract(
+                              [b for b in range(4) if b != a], range(3)).det()
+                             for a in range(4))
+    native_area = sp.sqrt(native_cofactor.dot(native_cofactor))
+    native_normal = native_cofactor / native_area  # KNIFE_K7
+    native_domain = action('NativeFaceChartDomain', face_context)
+    native_point_context = sp.Tuple(face_context, sp.Tuple(*q), native_embedding)
+    amplitude = action('T_bulk_n_s_live', native_point_context)
     bulk_load = amplitude * native_normal
     hold = sp.Symbol('T_hold_s')
     # Single full load, with its restricted bulk part as an operand, never added
     # beside another full T_hold. External support has not been selected.
     native_hold = vector(action('FullFaceSupportLoad_' + str(a), hold,
                                sp.Tuple(*bulk_load), op['face_support_partition'],
-                               face_context) for a in range(4))
-    reduced_load = vector(action('FaceLoadReduction_' + str(a), op['J_map'],
-                                native_area, sp.Tuple(*native_hold), face_context)
-                          for a in range(4))
+                               native_point_context) for a in range(4))
+    per_face_load = vector(action('FaceLoadReduction_' + str(a), op['J_map'],
+                                  native_domain, sp.Lambda(q, sp.Tuple(native_area, native_hold)),
+                                  face_context) for a in range(4))
+    reduced_load = vector(all_native_faces(face_set, s, per_face_load[a]) for a in range(4))
     carried_v = v  # KNIFE_K3
     carried_w = action('CarriedMomentumW', op['Pi_n'], jn, op['J_map'],
                        op['N_br_live'], graph_velocity, geom, state, source,
@@ -194,11 +249,12 @@ def construct(_bound_inputs):
     # Force/power on actual application velocities. The native face velocity
     # identification remains OPEN, and the same face context/map/area is used.
     face_velocity = vector(action('FaceApplicationVelocity_' + str(a),
-                                  graph_velocity, face_context) for a in range(4))
+                                  graph_velocity, native_point_context) for a in range(4))
     paired_face_velocity = face_velocity  # KNIFE_K9
     native_face_power = native_hold.dot(paired_face_velocity)
-    mechanical_power = action('FaceWorkReduction', op['J_map'], native_area,
-                              native_face_power, face_context)
+    per_face_power = action('FaceWorkReduction', op['J_map'], native_domain,
+                            sp.Lambda(q, sp.Tuple(native_area, native_face_power)), face_context)
+    mechanical_power = all_native_faces(face_set, s, per_face_power)
     material_pairing = internal.dot(graph_velocity)
     rotational_power = action('RotationalGeneralizedWork', op['A_rot_live'],
                               material, stress_state, state)
@@ -229,7 +285,7 @@ def construct(_bound_inputs):
     energy_balance = sum((energy_storage, energy_transport, -net_power))
     optical = sp.Tuple(sp.Eq(action('c_gamma', r)**2, mu/rho, evaluate=False),
                        sp.Eq(action('c_gamma', r), c0*(1+delta), evaluate=False))
-    grades = text_tuple('rho_br', 'mu_perp', 'I_br_live', 'T_br_live', 'N_br_live',
+    grades = text_tuple('o2_rho_br_live', 'mu_perp', 'I_br_live', 'T_br_live', 'N_br_live',
                         'R_ref_strain_live', 'A_rot_live', 'P_ref_relax_live',
                         'Pi_n', 'j_n', 'T_hold_s', 'H_core', 'mouth_core_data',
                         'embedding_coefficients_source_longitudinal_field')
@@ -264,10 +320,20 @@ def construct(_bound_inputs):
         'MEASURES': record(density_measure=Str('d3x'),
                            graph_area_factor=sp.sqrt(metric_determinant),
                            native_face_area=native_area, map=op['J_map'],
-                           face_context=face_context),
+                           face_context=face_context, face_set=face_set,
+                           native_chart_domain=native_domain,
+                           chart_coordinates=sp.Tuple(*q),
+                           orientation=Str('outward_oriented_regular_native_chart')),
         'GEOMETRY': record(embedding=embedding, metric=metric,
                            inverse=metric_inverse, determinant=metric_determinant,
-                           identity=sp.Eq(xi, ell*h, evaluate=False)),
+                           identity=sp.Eq(xi, ell*h, evaluate=False),
+                           native_embedding=native_embedding,
+                           native_tangent=native_tangent,
+                           native_cofactor=native_cofactor,
+                           native_area=native_area, native_normal=native_normal,
+                           native_regular_domain=sp.Ne(native_area**2, 0, evaluate=False),
+                           native_normal_norm=sp.cancel(native_normal.dot(native_normal)),
+                           native_normal_tangent_pairing=(native_tangent.T * native_normal).applyfunc(sp.expand)),
         'PROFILES': profile_packet,
         'MATERIAL_VELOCITY': graph_velocity,
         'MATERIAL_INPUT_DIFFERENTIALS': momentum_input_differentials,
@@ -285,7 +351,7 @@ def construct(_bound_inputs):
         'HOLD_GRAPH_NORMAL': graph_normal.dot(balance),
         'MASS_INPUT': record(current=mass_current, divergence=mass_divergence,
                              outward_loss=jn, supplied_equation=mass_equation,
-                             measure=Str('d3x')),
+                             measure=Str('d3x'), density_input=constitutive_inputs),
         'MASS_RESIDUAL': mass_residual,
         'MATERIAL_POWER_PAIRING': record(velocity=graph_velocity, force=internal,
                                          pair=material_pairing, rotational=rotational_power,
@@ -300,6 +366,8 @@ def construct(_bound_inputs):
             embedding=sp.Tuple(op['E_h_live'], sp.Eq(xi, ell*h, evaluate=False),
                                Str('normal_equation_identity_and_count_unsettled')),
             unknown_grades_and_derivative_scales=grades,
+            live_density_name=sp.Tuple(Str('ρ_br(r)'), Str('o2_rho_br_live')),
+            constitutive_inputs=constitutive_inputs,
             open_action_semantics=Str('displayed_operands_not_closed_arguments_full_fields_jets_history_nonlocality'),
             native_reduction=Str('unevaluated_J_map_action_no_sheet_slab_choice'),
             supplier_obligation=sp.Tuple(op['S_E_net'], op['P_E_supply']),
@@ -341,7 +409,7 @@ def construct(_bound_inputs):
 
 def emit(name, value, local=False):
     prefix = 'PY_LOCAL_O2_' if local else 'PY_O2_'
-    print(prefix + name + ': ' + sp.srepr(value), flush=True)
+    print(prefix + name + ': ' + serialize(value), flush=True)
 
 
 def equal_three(left, right):
@@ -397,8 +465,8 @@ def publish(fold, objects, emitted):
             comparison = equal_three(prior, value)
             route = 'F9B_EQUAL' if comparison is sp.true else 'F9C_NEW'
             write_key = key if comparison is sp.true else 'o2_' + key
-            extra = {'f9_operands': (sp.srepr(prior), sp.srepr(value)),
-                     'f9_comparison': sp.srepr(comparison)}
+            extra = {'f9_operands': (serialize(prior), serialize(value)),
+                     'f9_comparison': serialize(comparison)}
         if write_key in delta or (write_key != key and write_key in fold):
             raise ValueError('F9 routed-key collision: ' + write_key)
         delta[write_key] = dict(value=value, display=sp.sstr(value),
@@ -435,7 +503,7 @@ def publish(fold, objects, emitted):
              'BUILD_INPUT_DIGESTS = MappingProxyType(' + repr(digests) + ')',
              'EXPORT_ROOTS = ' + repr(tuple(write_keys)), '_LEDGER = {']
     for key, row in delta.items():
-        fields = [repr(k) + ': ' + ('_restore(' + repr(sp.srepr(v)) + ')'
+        fields = [repr(k) + ': ' + ('_restore(' + repr(serialize(v)) + ')'
                                    if k == 'value' else repr(v)) for k, v in row.items()]
         lines.append(repr(key) + ': {' + ', '.join(fields) + '},')
     lines += ['}', 'LEDGER = MappingProxyType({k: MappingProxyType(v) for k,v in _LEDGER.items()})',
@@ -456,6 +524,27 @@ def publish(fold, objects, emitted):
     (ROOT/'scripts/O2_exports.py').write_text(code)
 
 
+def name_audit(objects, fold):
+    """Census every emitted physical symbol/function name against upstream keys.
+
+    Metadata-only inspection: no upstream value becomes a construction operand.
+    The five shared coordinate names have the same meanings in the fold.
+    """
+    names = set()
+    for value in objects.values():
+        names.update(atom.name for atom in value.atoms(sp.Symbol))
+        names.update(atom.func.__name__ for atom in value.atoms(AppliedUndef))
+    overlap = sorted(names.intersection(fold))
+    shared_coordinates = {'x1', 'x2', 'x3', 't', 'w'}
+    unexpected = sorted(set(overlap) - shared_coordinates)
+    emit('NAME_AUDIT', record(names=text_tuple(*sorted(names)),
+         upstream_matches=sp.Tuple(*(sp.Tuple(Str(k), Str(fold[k].get('class', '')),
+                                  Str(fold[k].get('description', ''))) for k in overlap)),
+         other_matches=text_tuple(*unexpected)), local=True)
+    if unexpected:
+        raise ValueError('unresolved upstream name collision: ' + ', '.join(unexpected))
+
+
 def run(publish_delta=True, fold=None):
     if fold is None:
         fold, audit = load_model(*(str(p) for p in FOLD_PATHS))
@@ -473,6 +562,7 @@ def run(publish_delta=True, fold=None):
     for name in SECTION9:
         emit(name, objects[name])
         emitted.append(name)
+    name_audit(objects, fold)
     if publish_delta:
         publish(fold, objects, emitted)
     return objects

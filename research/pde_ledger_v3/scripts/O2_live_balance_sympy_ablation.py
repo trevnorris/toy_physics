@@ -40,7 +40,7 @@ KNIVES = {
          "    momentum_profiles = sp.Tuple(vr, sp.Symbol('rho_momentum_constant'), xi)  # KNIFE_K6"),
  'K6c': ('    momentum_profiles = sp.Tuple(vr, rho, xi)  # KNIFE_K6',
          "    momentum_profiles = sp.Tuple(vr, rho, sp.Symbol('xi_w_constant'))  # KNIFE_K6"),
- 'K7': ("    native_normal = vector(action('NativeFaceNormal_' + str(a), face_context)\n                           for a in range(4))  # KNIFE_K7",
+ 'K7': ('    native_normal = native_cofactor / native_area  # KNIFE_K7',
         '    native_normal = vector((0, 0, 0, 1))  # KNIFE_K7'),
  'K8': ('    transport = vector(sum(derivative(flux[a, i], x[i]) for i in range(3))\n                       for a in range(4))  # KNIFE_K8',
         '    transport = sp.ImmutableMatrix(sp.zeros(4, 1))  # KNIFE_K8'),
@@ -57,25 +57,80 @@ KNIVES = {
 }
 
 
-def difference(baseline, corrupted):
-    """Corrupted minus baseline; structured fields retained even when zero.
+def scalar_difference(baseline, corrupted):
+    """Exact algebraic residual, with unresolved actions as formal operands.
 
-    CAS tuples/matrices are compared recursively. Metadata has a structural
-    edit pair if changed, zero if identical; no fictitious subtraction of text.
+    Protect calculus/functional atoms during rational normalization; no OPEN
+    constitutive identity is invented. Restore them before printing. This also
+    avoids recursively expanding their large operand registers as polynomials.
     """
-    if isinstance(baseline, sp.MatrixBase) and isinstance(corrupted, sp.MatrixBase):
-        if baseline.shape == corrupted.shape:
-            return corrupted-baseline
-    if isinstance(baseline, sp.Tuple) and isinstance(corrupted, sp.Tuple):
-        if len(baseline) == len(corrupted):
-            return sp.Tuple(*(difference(a,b) for a,b in zip(baseline,corrupted)))
     if baseline == corrupted:
         return sp.S.Zero
+    atoms = set()
+    def collect(value):
+        if isinstance(value, (sp.Function, sp.Derivative, sp.Subs, sp.Lambda)):
+            atoms.add(value)
+        else:
+            for arg in value.args:
+                collect(arg)
+    collect(baseline)
+    collect(corrupted)
+    protect = {atom: sp.Dummy('o2_difference_atom') for atom in sorted(atoms, key=sp.default_sort_key)}
+    residual = corrupted.xreplace(protect) - baseline.xreplace(protect)
+    residual = sp.cancel(sp.expand(residual))
+    return residual.xreplace({value: key for key, value in protect.items()})
+
+
+def difference(baseline, corrupted):
+    """Normalize every scalar entry; unchanged matrices/containers emit zero.
+
+    A nonzero formal residual is not a verdict about an OPEN constitutive law.
+    Metadata uses a structural edit pair rather than subtraction of text.
+    """
+    if baseline == corrupted:
+        return sp.S.Zero
+    if isinstance(baseline, sp.MatrixBase) and isinstance(corrupted, sp.MatrixBase):
+        if baseline.shape == corrupted.shape:
+            entries = [difference(a,b) for a,b in zip(baseline,corrupted)]
+            return (sp.S.Zero if all(item == 0 for item in entries) else
+                    sp.ImmutableMatrix(baseline.rows, baseline.cols, entries))
+    if isinstance(baseline, sp.Tuple) and isinstance(corrupted, sp.Tuple):
+        if len(baseline) == len(corrupted):
+            entries = [difference(a,b) for a,b in zip(baseline,corrupted)]
+            return sp.S.Zero if all(item == 0 for item in entries) else sp.Tuple(*entries)
     if isinstance(baseline, sp.Equality) and isinstance(corrupted, sp.Equality):
-        return sp.Tuple(corrupted.lhs-baseline.lhs, corrupted.rhs-baseline.rhs)
+        return difference(sp.Tuple(baseline.lhs, baseline.rhs),
+                          sp.Tuple(corrupted.lhs, corrupted.rhs))
     if isinstance(baseline, sp.Expr) and isinstance(corrupted, sp.Expr):
-        return corrupted-baseline
+        return scalar_difference(baseline, corrupted)
     return sp.Tuple(Str('STRUCTURAL_EDIT'), baseline, corrupted)
+
+
+def repair_evidence(objects, engine):
+    """Computed observations for the six repair findings; no expected values."""
+    native_bound = set(sp.symbols('o2_s_face o2_q_face_1 o2_q_face_2 o2_q_face_3'))
+    # Compare names because native chart coordinates carry real assumptions.
+    native_names = {atom.name for atom in native_bound}
+    assembled = ('MECHANICAL_LOAD', 'HOLD_INPLANE', 'HOLD_W',
+                 'HOLD_GRAPH_NORMAL', 'ENERGY_STEADY')
+    free_native = sp.Tuple(*(sp.Tuple(Str(tag), engine.text_tuple(*sorted(
+        atom.name for atom in objects[tag].free_symbols if atom.name in native_names)))
+        for tag in assembled))
+    material_tags = ('MOMENTUM_DENSITY', 'MOMENTUM_FLUX', 'MOMENTUM_STORAGE',
+                     'MOMENTUM_TRANSPORT', 'INTERNAL_FORCE', 'ENERGY_STORAGE',
+                     'ENERGY_TRANSPORT', 'ENERGY_POWER', 'ENERGY_STEADY')
+    operands = sp.symbols('R_br M_perp')
+    dependencies = sp.Tuple(*(sp.Tuple(Str(tag), sp.Tuple(*(
+        sp.sympify(objects[tag].has(operand)) for operand in operands))) for tag in material_tags))
+    momentum_tags = ('MOMENTUM_DENSITY', 'MOMENTUM_FLUX', 'MOMENTUM_STORAGE',
+                     'MOMENTUM_TRANSPORT', 'MATERIAL_INPUT_DIFFERENTIALS')
+    xi_derivatives = sp.Tuple(*(sp.Tuple(Str(tag), sp.Tuple(*sorted(
+        (item for item in objects[tag].atoms(sp.Derivative)
+         if any(fn.func.__name__ == 'xi_w' for fn in item.expr.atoms(sp.Function))),
+        key=sp.default_sort_key))) for tag in momentum_tags))
+    return engine.record(free_native_names=free_native,
+                         material_O7_O1=dependencies,
+                         momentum_xi_derivatives=xi_derivatives)
 
 
 def parse_stream(path, engine):
@@ -111,6 +166,7 @@ def main():
     with baseline_path.open('w') as stream, contextlib.redirect_stdout(stream):
         engine.run(fold=fold)
     baseline = parse_stream(baseline_path, engine)
+    engine.emit('REPAIR_BASELINE', repair_evidence(baseline, engine), local=True)
     (args.scratch / 'baseline.py').write_text(source)
     engine.emit('ABLATION_SOURCE', sp.Tuple(Str(str(LIVE)),
                  Str(hashlib.sha256(source.encode()).hexdigest())), local=True)
@@ -136,6 +192,8 @@ def main():
         with capture.open('w') as stream, contextlib.redirect_stdout(stream):
             module['run'](publish_delta=False, fold=fold)
         corrupted = parse_stream(capture, engine)
+        if knife == 'K6c':
+            engine.emit('REPAIR_K6C', repair_evidence(corrupted, engine), local=True)
         for name in engine.SECTION9:
             engine.emit('ABLATION_' + knife + '_' + name,
                         engine.record(baseline=baseline[name], corrupted=corrupted[name],

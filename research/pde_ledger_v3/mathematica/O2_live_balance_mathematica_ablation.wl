@@ -1,4 +1,4 @@
-(* Run this harness through s11c_guarded_run.py, 4 GiB, default TasksMax.
+(* Run this harness through s11c_guarded_run.py with the authorized job limits.
    Exactly one kernel: Get executes the live file and each single-mutated copy
    serially inside this kernel. The engine itself reads no file. All artifacts
    written by this harness are below the repository's ignored _scratch.

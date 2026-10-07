@@ -1,0 +1,215 @@
+Guarded command (cwd /var/projects/toy_physics):
+python scripts/s11c_guarded_run.py --pool o2-comparator --memory-gib 6 --log-directory /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/tests-repoint -- python research/pde_ledger_v3/scripts/test_O2_cross_engine_comparator.py
+Child command:
+python research/pde_ledger_v3/scripts/test_O2_cross_engine_comparator.py
+Literal child stdout:
+
+Literal child stderr:
+test_applied_argument_stripped (__main__.Controls) ... ok
+test_binder_structure (__main__.Controls) ... ok
+test_boolean_does_not_hide_algebraic_sibling (__main__.Controls) ... ok
+test_declared_tables_are_injective (__main__.Controls) ... ok
+test_derivative_order (__main__.Controls) ... ok
+test_duplicate_join_rejected (__main__.Controls) ... ok
+test_duplicate_name_rejected_both_sides (__main__.Controls) ... ok
+test_each_name_binding_repoint (__main__.Controls) ... ok
+test_empty_containers_are_accounted (__main__.Controls) ... ok
+test_form_change (__main__.Controls) ... ok
+test_grammatical_unknown_head_is_coverage (__main__.Controls) ... ok
+test_independent_census_accounts_for_nested_sibling (__main__.Controls) ... ok
+test_live_profile_frozen (__main__.Controls) ... ok
+test_lossless_function_metadata_survives (__main__.Controls) ... ok
+test_malformed_input_rejected (__main__.Controls) ... ok
+test_matching_text_and_names_not_zero_evidence (__main__.Controls) ... ok
+test_moved_tag_and_key_stays_joined (__main__.Controls) ... ok
+test_nested_sibling_removed (__main__.Controls) ... ok
+test_one_sided_operand (__main__.Controls) ... ok
+test_open_argument (__main__.Controls) ... ok
+test_open_head (__main__.Controls) ... ok
+test_open_named_operand (__main__.Controls) ... ok
+test_open_orientation (__main__.Controls) ... ok
+test_parent_child_join_rejected (__main__.Controls) ... ok
+test_profile_derivative_reaches_scalar_subtraction (__main__.Controls) ... ok
+test_unpaired_open_subtree_mutation_moves_residual (__main__.Controls) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.143s
+
+OK
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/tests-repoint/outcome.json
+{
+  "exitCode": 0,
+  "wallSeconds": 0.49434850085526705,
+  "unit": "s11c-guard-0a72f2bde249",
+  "stderrBytes": 1647,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 0,
+    "guardReason": null,
+    "wallSeconds": 0.41678731283172965,
+    "childPid": 3058787
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/tests-repoint/limit-validation.json
+{
+  "verified": true,
+  "actual": {
+    "memory.max": "6442450944",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-0a72f2bde249.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      6442450944,
+      6442450944
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/tests-repoint/duration-validation.json
+{
+  "verified": true,
+  "actual": {
+    "RuntimeMaxUSec": "infinity",
+    "Restart": "no"
+  },
+  "wallDeadlineSeconds": null,
+  "inactivityDeadlineSeconds": null
+}
+
+Guarded command (cwd /var/projects/toy_physics):
+python scripts/s11c_guarded_run.py --pool o2-comparator --memory-gib 6 --log-directory /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/full -- python /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/pinned/O2_cross_engine_comparator.py --py /var/projects/toy_physics/research/pde_ledger_v3/scripts/out/O2_live_balance_sympy_audit.out --wl /var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/O2_live_balance_mathematica_audit.out --output /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/comparison.jsonl --accounting /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/accounting.jsonl --catalog /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/catalog.json
+Child command:
+python /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/pinned/O2_cross_engine_comparator.py --py /var/projects/toy_physics/research/pde_ledger_v3/scripts/out/O2_live_balance_sympy_audit.out --wl /var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/O2_live_balance_mathematica_audit.out --output /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/comparison.jsonl --accounting /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/accounting.jsonl --catalog /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/catalog.json
+Literal child stdout:
+{"runtime_seconds": 118.37262136489153, "peak_rss_kib": 1328056}
+
+Literal child stderr:
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/full/outcome.json
+{
+  "exitCode": 0,
+  "wallSeconds": 118.84675127104856,
+  "unit": "s11c-guard-844cce50bb1f",
+  "stderrBytes": 0,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 0,
+    "guardReason": null,
+    "wallSeconds": 118.73149989009835,
+    "childPid": 3057944
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/full/limit-validation.json
+{
+  "verified": true,
+  "actual": {
+    "memory.max": "6442450944",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-844cce50bb1f.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      6442450944,
+      6442450944
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build/full/duration-validation.json
+{
+  "verified": true,
+  "actual": {
+    "RuntimeMaxUSec": "infinity",
+    "Restart": "no"
+  },
+  "wallDeadlineSeconds": null,
+  "inactivityDeadlineSeconds": null
+}
+
+Mechanical accounting summary (stored fields/cardinalities only):
+{
+  "join_rows": 159,
+  "name_rows": 43,
+  "joined_rows": 159,
+  "counterpart_absent": [],
+  "unjoined_occurrences": {
+    "py": 48,
+    "wl": 154
+  },
+  "stream_objects": {
+    "py": 42,
+    "wl": 12
+  },
+  "unaccounted_leaves": [],
+  "unspecified_absence_reasons": [],
+  "tests-repoint": {
+    "guard_outcome": {
+      "exitCode": 0,
+      "wallSeconds": 0.49434850085526705,
+      "unit": "s11c-guard-0a72f2bde249",
+      "stderrBytes": 1647,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 0.41678731283172965,
+        "childPid": 3058787
+      }
+    },
+    "peak_cgroup_bytes": 48275456
+  },
+  "full": {
+    "guard_outcome": {
+      "exitCode": 0,
+      "wallSeconds": 118.84675127104856,
+      "unit": "s11c-guard-844cce50bb1f",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 118.73149989009835,
+        "childPid": 3057944
+      }
+    },
+    "peak_cgroup_bytes": 1362120704
+  },
+  "comparator_process": {
+    "runtime_seconds": 118.37262136489153,
+    "peak_rss_kib": 1328056
+  },
+  "sha256": {
+    "research/pde_ledger_v3/scripts/O2_cross_engine_comparator.py": "e7f52badd2af403382887013c4b11536be038b01de3109bfceb4117e4d253135",
+    "research/pde_ledger_v3/scripts/test_O2_cross_engine_comparator.py": "c8a798ec481096dc8b1f49d380e8de14022a80ccf6d9a4669be18098cc373881"
+  }
+}

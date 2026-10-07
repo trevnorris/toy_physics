@@ -67,33 +67,53 @@ supplyBudget = operand[PESupply, "6", "8"];
 energyReference = operand[CRef, "8.6", "8"];
 bodyForceEntries = {}; (* SITE K12 *)
 
-(* Geometry by differentiation of the graph; native face qFace is a GENERAL
-   chart, not an identification with xi_w, h, centre or thickness. The set of
-   native faces and its chart identifications remain JMap-dependent. *)
+(* The supplied brane graph and a CONDITIONAL native height-chart ansatz.
+   The native chart domain is printed on every affected output and retained
+   inside its reduction/velocity actions. No native-face identification with
+   xi_w, h, centre or thickness is supplied by this representation. *)
+faceRepresentationDomain = <|
+  "Condition" -> "Every contributing native face admits a real differentiable single-valued height over far-field x on the represented region",
+  "Coverage" -> "Restricted to that height-chart domain; faces without such a chart are outside this representation",
+  "NativeGeometryAndIdentifications" -> mapOperand|>;
+faceQualified[object_Association] := Append[object,
+  "NativeFaceRepresentationDomain" -> faceRepresentationDomain];
+graphEmbedding = Append[x,profiles["xi_w"]];
 slope = D[profiles["xi_w"], #] & /@ x;
-tangent = Transpose[Join[IdentityMatrix[3], {slope}]];
+tangent = D[graphEmbedding, #] & /@ x;
+(* Oriented codimension-one normal density from tangent minors. For the
+   ordered ambient basis (x1,x2,x3,w), the final-column cofactor is positive.
+   Normalization is Euclidean on real regular charts; no normal is supplied. *)
+normalDensity[rows_List] := Table[
+  (-1)^(Length[First[rows]] + j) Det[
+    rows[[All,Delete[Range[Length[First[rows]]],j]]]],
+  {j,Length[First[rows]]}];
+unitNormal[rows_List] := With[{density = normalDensity[rows]},
+  density/Sqrt[density.density]];
 metric = tangent.Transpose[tangent]; (* SITE K4 *)
 metricInverse = Simplify[Inverse[metric], Element[x,Reals] && x.x > 0];
 metricDet = Factor[Det[metric]];
-graphNormal = Join[-slope, {1}]/Sqrt[1 + slope.slope];
+graphNormal = unitNormal[tangent];
 vBulk = vPlane.slope; (* SITE K2 *)
 vMaterial = Join[vPlane, {vBulk}];
 faceHeight = qFace[s][x1,x2,x3,t];
-faceSlope = D[faceHeight, #] & /@ x;
-faceArea = Sqrt[1 + faceSlope.faceSlope];
-faceNormal = orientation[s] Join[-faceSlope, {1}]/faceArea; (* SITE K7 *)
+faceEmbedding = Append[x,faceHeight];
+faceTangents = D[faceEmbedding, #] & /@ x;
+faceNormalDensity = normalDensity[faceTangents];
+faceArea = Sqrt[faceNormalDensity.faceNormalDensity];
+faceNormal = orientation[s] unitNormal[faceTangents]; (* SITE K7 *)
 bulkTraction = bulkAmplitude faceNormal;
 geometry = <|"g_ij" -> metric, "g_inverse" -> metricInverse,
   "det_g" -> metricDet, "tangent_vectors" -> tangent,
   "graph_normal" -> graphNormal, "native_face_normal" -> faceNormal,
+  "native_face_tangents" -> faceTangents,
   "native_face_area_factor" -> faceArea|>;
-emit["BASIS_MEASURES_GEOMETRY", <|"Basis" -> {ex1,ex2,ex3,ew},
+emit["BASIS_MEASURES_GEOMETRY", faceQualified[<|"Basis" -> {ex1,ex2,ex3,ew},
   "Coordinates" -> Append[x,w], "Domain" -> (radius > 0),
   "DensityMeasure" -> CoordinateVolume[x], "NativeFaceMeasure" -> faceArea CoordinateVolume[x],
   "NativeFaceOrientation" -> (orientation[s]^2 == 1),
   "NativeFaceMap" -> mapOperand, "NativeChart" -> faceHeight,
   "FieldIdentity" -> fieldIdentity, "Geometry" -> geometry,
-  "MaterialVelocity" -> vMaterial, "Origin" -> origin["1,3.1,5", "5,6,7"]|>];
+  "MaterialVelocity" -> vMaterial, "Origin" -> origin["1,3.1,5", "5,6,7"]|>]];
 
 (* General section calculus. The explicit entries are evaluated coordinates on
    an UNRESTRICTED section, not a finite list of constitutive arguments. The
@@ -159,9 +179,9 @@ nativeFaceSet = response[NativeBoundingFaceSet,
   {mapOperand,boundaryInventory},section];
 reduceNative[object_] := response[NativeToCoordinateDensity,
   {mapOperand,nativeFaceSet,boundaryInventory,core},
-  <|"NativeObject" -> object, "AreaFactor" -> faceArea,
+  faceQualified[<|"NativeObject" -> object, "AreaFactor" -> faceArea,
     "NativeNormal" -> faceNormal, "Measure" -> CoordinateVolume[x],
-    "UnrestrictedDependence" -> section|>];
+    "UnrestrictedDependence" -> section|>]];
 (* Sum the complete per-face reduction over the OPEN O6 face set. Function
    binds s throughout the reduced object, including geometry and application
    data. Apply constructs that binding AFTER the per-face object is evaluated.
@@ -170,11 +190,11 @@ reduceNative[object_] := response[NativeToCoordinateDensity,
 totalNativeFaces[object_] := Inactive[Total][
   Inactive[Map][Function @@ {{s},object},nativeFaceSet]];
 mechanicalLoad = totalNativeFaces /@ (reduceNative /@ nativeHold);
-emit["MECHANICAL_LOAD", <|"NativeBulkTraction" -> bulkTraction,
+emit["MECHANICAL_LOAD", faceQualified[<|"NativeBulkTraction" -> bulkTraction,
   "NativeCompleteLoad" -> nativeHold, "NativeFaceSet" -> nativeFaceSet,
   "CoordinateComponents" -> mechanicalLoad,
   "GraphNormalProjection" -> graphNormal.mechanicalLoad,
-  "Origin" -> origin["3.3,4,5", "5,6,7"]|>];
+  "Origin" -> origin["3.3,4,5", "5,6,7"]|>]];
 
 carriedBulk = response[OutwardCarriedBulkMomentum,
   {exchangeOperand,mapOperand,normalResponse,branch,sourceInventory,boundaryInventory,
@@ -189,11 +209,11 @@ emit["EXCHANGE_MOMENTUM", <|"Orientation" -> "Outward loss",
   "MaterialIdentification" -> SameExchangedMaterial[profiles["j_n"],exchangeOperand,mapOperand],
   "Origin" -> origin["2,3.3,5", "1,2,6,7,10"]|>];
 
-emit["DRIVE_PROVENANCE", <|"SeparateBodyForceEntries" -> bodyForceEntries,
+emit["DRIVE_PROVENANCE", faceQualified[<|"SeparateBodyForceEntries" -> bodyForceEntries,
   "Drive" -> DynamicalOrderConversionDrain[branch,sourceInventory],
   "LocalSourceInventory" -> sourceInventory, "BoundaryInventory" -> boundaryInventory,
   "EntryDependencies" -> {internalForce,mechanicalLoad,carriedMomentum,sourcePartners},
-  "GMInterface" -> OPEN[S16ResponseMatching], "Origin" -> origin["2,3.3,4,5", "1,2,6,7,10"]|>];
+  "GMInterface" -> OPEN[S16ResponseMatching], "Origin" -> origin["2,3.3,4,5", "1,2,6,7,10"]|>]];
 
 (* Generic oriented accounting: storage and outward flux enter positively;
    applied/internal forces enter negatively. Inputs above, never a supplied
@@ -210,12 +230,12 @@ momentumEntries = Join[{
   entry[AdditionalExchange,1,sourcePartners,origin["5","1,2,7,10"]]},
   (entry[SeparateBodyForce,-1,#,origin["2","1"]]& /@ bodyForceEntries)];
 holdBalance = account[momentumEntries];
-emit["B_HOLD_LIVE", <|"Entries" -> momentumEntries,
+emit["B_HOLD_LIVE", faceQualified[<|"Entries" -> momentumEntries,
   "InPlane" -> Take[holdBalance,3], "BulkCoordinate" -> Last[holdBalance],
   "GraphNormalProjection" -> graphNormal.holdBalance,
   "Relation" -> Thread[holdBalance == ConstantArray[0,4]],
   "Status" -> ConditionalNamedBalance, "O4Identity" -> UnresolvedIdentification[embeddingRelation,holdBalance],
-  "Origin" -> origin["4,5,9", "1,3,5,7,10"]|>];
+  "Origin" -> origin["4,5,9", "1,3,5,7,10"]|>]];
 
 massFlux = massDensity vPlane;
 massDivergence = Total[MapThread[D,{massFlux,x}]];
@@ -233,8 +253,8 @@ emit["MASS_INPUT", <|"DensityOperand" -> massDensity, "VelocityOperand" -> vPlan
 pairedVelocity = vMaterial; (* SITE K9 *)
 faceVelocity = Table[response[NativeApplicationVelocity[a],
   {normalResponse,mapOperand,UnspecifiedFaceToMaterialVelocity},
-  <|"GraphVelocity" -> pairedVelocity,"NativeChart" -> faceHeight,
-    "UnrestrictedDependence" -> section|>],{a,4}];
+  faceQualified[<|"GraphVelocity" -> pairedVelocity,"NativeChart" -> faceHeight,
+    "UnrestrictedDependence" -> section|>]],{a,4}];
 nativeFaceWork = nativeHold.faceVelocity;
 faceWork = totalNativeFaces[reduceNative[nativeFaceWork]];
 stressWork = response[MaterialStressNormalRotationalWork,
@@ -267,18 +287,18 @@ energyEntries = {entry[EnergyStorage,1,energyStorage,origin["6","8"]],
   entry[EnergySpatialTransport,1,energyTransport,origin["6","8"]],
   entry[JointPower,-1,energyPower,origin["6","8"]]};
 energyBalance = account[energyEntries];
-emit["FORCE_POWER_PAIRINGS", <|"GraphVelocity" -> vMaterial,
+emit["FORCE_POWER_PAIRINGS", faceQualified[<|"GraphVelocity" -> vMaterial,
   "NativeApplicationVelocity" -> faceVelocity, "NativeFaceWork" -> nativeFaceWork,
   "CoordinateFaceWork" -> faceWork, "MaterialWork" -> stressWork,
   "SharedMap" -> mapOperand,"Measure" -> CoordinateVolume[x],
-  "Origin" -> origin["1,4,5,6", "3,6,7,8"]|>];
-emit["B_E_STEADY", <|"Storage" -> energyStorage,"Transport" -> energyTransport,
+  "Origin" -> origin["1,4,5,6", "3,6,7,8"]|>]];
+emit["B_E_STEADY", faceQualified[<|"Storage" -> energyStorage,"Transport" -> energyTransport,
   "PowerOccurrence" -> energyPower,"Entries" -> energyEntries,
   "Object" -> energyBalance,"Relation" -> (energyBalance == 0),
   "Supplier" -> supplier,"Budget" -> supplyBudget,"EnergyReference" -> energyReference,
   "NonPassiveObligation" -> ConditionalObligation[NonPassiveClosure,
     {NamedReservoir,StatedPowerBudget,OPENLiveSuccessorOwner}],
-  "Origin" -> origin["2,6,8.6", "4,8"]|>];
+  "Origin" -> origin["2,6,8.6", "4,8"]|>]];
 
 emit["COUPLED_INPUTS_MODEL_POINT", <|"CoupledInputs" ->
   {branch,stiffnessResponse,embeddingRelation,core,mapOperand,densityResponse},

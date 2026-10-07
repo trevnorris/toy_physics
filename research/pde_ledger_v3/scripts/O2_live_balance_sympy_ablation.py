@@ -57,6 +57,37 @@ KNIVES = {
 }
 
 
+# These descriptions specify the PY construction site; they do not claim that
+# another engine's similarly named knife has identical substitution semantics.
+K6_SCOPE = {
+    'K6a': ('V_r(r)', 'V_r_constant',
+            ('momentum_profiles[0]', 'momentum_state',
+             'graph_kinematics radial velocity input before differentiation')),
+    'K6b': ('o2_rho_br_live(r)', 'rho_momentum_constant',
+            ('momentum_profiles[1]', 'momentum_state',
+             'momentum_material density operand')),
+    'K6c': ('xi_w(r)', 'xi_w_constant',
+            ('momentum_profiles[2]', 'momentum_state',
+             'graph_kinematics embedding input before every geometry derivative')),
+}
+
+
+def k6_site_semantics(knife, baseline, corrupted, engine):
+    profile, replacement, sites = K6_SCOPE[knife]
+    before = dict(baseline['MATERIAL_INPUT_DIFFERENTIALS'])[Str('profiles')]
+    after = dict(corrupted['MATERIAL_INPUT_DIFFERENTIALS'])[Str('profiles')]
+    return engine.record(
+        profile=Str(profile), replacement=Str(replacement),
+        construction_site=Str('construct: momentum_profiles before graph_kinematics'),
+        direct_propagation=engine.text_tuple(*sites),
+        momentum_action_scope=engine.text_tuple(
+            'all profile occurrences in momentum OPEN arguments, not derivative occurrences only',
+            'momentum_args feeds MomentumDensity and MomentumFlux',
+            'storage and transport differentiate those reconstructed OPEN actions',
+            'downstream compatibility and balance consumers are recomputed'),
+        baseline_profiles=before, corrupted_profiles=after)
+
+
 def scalar_difference(baseline, corrupted):
     """Exact algebraic residual, with unresolved actions as formal operands.
 
@@ -192,6 +223,9 @@ def main():
         with capture.open('w') as stream, contextlib.redirect_stdout(stream):
             module['run'](publish_delta=False, fold=fold)
         corrupted = parse_stream(capture, engine)
+        if knife in K6_SCOPE:
+            engine.emit('ABLATION_' + knife + '_SEMANTICS',
+                        k6_site_semantics(knife, baseline, corrupted, engine), local=True)
         if knife == 'K6c':
             engine.emit('REPAIR_K6C', repair_evidence(corrupted, engine), local=True)
         for name in engine.SECTION9:

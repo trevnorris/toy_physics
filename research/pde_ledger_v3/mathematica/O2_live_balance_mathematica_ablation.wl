@@ -29,8 +29,8 @@ knives = {
    "momentumDerivativeRules = {RhoBr -> Function[{z},RhoBrConstant]}; (* SITE K6a K6b K6c *)"},
  {"K6c","momentumDerivativeRules = {}; (* SITE K6a K6b K6c *)",
    "momentumDerivativeRules = {XiW -> Function[{z},XiWConstant]}; (* SITE K6a K6b K6c *)"},
- {"K7","faceNormal = orientation[s] Join[-faceSlope, {1}]/faceArea; (* SITE K7 *)",
-   "faceNormal = orientation[s] {0,0,0,1}; (* SITE K7 *)"},
+ {"K7","faceNormal = orientation[s] unitNormal[faceTangents]; (* SITE K7 *)",
+   "faceNormal = orientation[s] unitNormal[D[Append[x,0],#]& /@ x]; (* SITE K7 *)"},
  {"K8","transport = Table[Sum[sectionDerivative[momentumCurrent[[a,i]],\n  momentumDifferentiatedSection,x[[i]]],{i,3}],{a,4}]; (* SITE K8 *)",
    "transport = ConstantArray[0,4]; (* SITE K8 *)"},
  {"K9","pairedVelocity = vMaterial; (* SITE K9 *)",
@@ -44,6 +44,21 @@ knives = {
  {"K13","carriedBulk = response[OutwardCarriedBulkMomentum,\n  {exchangeOperand,mapOperand,normalResponse,branch,sourceInventory,boundaryInventory,\n   NativeRelativeMassCurrent,Premise3LocalMaterialVelocity,\n   UnspecifiedFaceToMaterialVelocity},section]; (* SITE K13 *)",
    "carriedBulk = profiles[\"j_n\"] vBulk; (* SITE K13 *)"}
 };
+(* Mutation-scope metadata, not an equivalence claim about another engine's K6.
+   Keep the exact replacement source above and the actual application statement
+   below alongside the profile/replacement names in each K6 SITE payload. *)
+k6Profiles = <|"K6a" -> {"V_r","VR","VRConstant"},
+  "K6b" -> {"rho_br","RhoBr","RhoBrConstant"},
+  "K6c" -> {"xi_w","XiW","XiWConstant"}|>;
+knifeSiteSemantics[knife_String] := If[KeyExistsQ[k6Profiles,knife],
+  <|"Profile" -> k6Profiles[knife][[1]],
+    "FunctionReplaced" -> k6Profiles[knife][[2]],
+    "ConstantReplacement" -> k6Profiles[knife][[3]],
+    "ApplicationStatement" -> Select[StringSplit[source,"\n"],
+      StringStartsQ[#,"momentumDifferentiatedSection = "]&],
+    "ReplacementScope" -> "Rewrite the copied momentum section before differentiation; the rewritten section supplies only the sectionTangent argument in momentum storage and spatial transport",
+    "UnmodifiedResponseSection" -> "momentumSection remains the section used in momentumDensity and momentumCurrent",
+    "DerivativeScope" -> "The rule acts throughout the copied section, including profile occurrences in its velocity and metric; it is not a global profile substitution"|>,<||>];
 writeTag[name_, value_] := (WriteString[First[$Output],name <> ": " <>
   ToString[value,InputForm,PageWidth->Infinity] <> "\n"]; Flush[First[$Output]];);
 (* Strings and semantic records have a formal structural difference; algebraic
@@ -79,7 +94,8 @@ writeTag["WL_LOCAL_O2_ABLATION_BASELINE_TAGS",Keys[baseline]];
 Do[
   Module[{knife=First[spec],old=spec[[2]],new=spec[[3]],count,file,corrupted},
     count = StringCount[source,old];
-    writeTag["WL_LOCAL_O2_ABLATION_"<>knife<>"_SITE",<|"Occurrences"->count,"Source"->old,"Replacement"->new|>];
+    writeTag["WL_LOCAL_O2_ABLATION_"<>knife<>"_SITE",Join[
+      <|"Occurrences"->count,"Source"->old,"Replacement"->new|>,knifeSiteSemantics[knife]]];
     If[count != 1,
       writeTag["WL_LOCAL_O2_ABLATION_"<>knife<>"_CONSTRUCTION",Missing["ConstructionSite",old]];
       Quit[94]];

@@ -96,6 +96,19 @@ def vector(items):
     return sp.ImmutableMatrix(list(items))
 
 
+def oriented_cofactor(tangent):
+    """Oriented codimension-one area vector, computed from tangent minors."""
+    return vector((-1)**(a+3) * tangent.extract(
+                  [b for b in range(4) if b != a], range(3)).det()
+                  for a in range(4))
+
+
+def order_statement(quantity, scale):
+    """A supplied O(scale) claim limit, not an equation or profile binding."""
+    return record(quantity=quantity, relation=Str('is_O_of'), scale=scale,
+                  status=Str('supplied_order_statement_claim_limit_not_equality'))
+
+
 def bind_inputs(fold):
     # Deliberately empty, but exercised through the access-recording proxy.
     return {key: fold[key]['value'] for key in IMPORT_KEYS}
@@ -110,8 +123,8 @@ def graph_kinematics(x, vr, xi):
     metric = sp.ImmutableMatrix(tangent.T * tangent)  # KNIFE_K4
     metric_inverse = sp.ImmutableMatrix(metric.inv(method='DM'))
     metric_determinant = sp.factor(metric.det())
-    slope = vector(sp.diff(xi, q) for q in x)
-    graph_normal = vector((*(-slope), sp.S.One)) / sp.sqrt(1 + slope.dot(slope))
+    graph_cofactor = oriented_cofactor(tangent)
+    graph_normal = graph_cofactor / sp.sqrt(graph_cofactor.dot(graph_cofactor))
     v = vector(vr*q/r for q in x)
     graph_velocity = tangent * v  # KNIFE_K2
     return (embedding, tangent, metric, metric_inverse, metric_determinant,
@@ -134,6 +147,7 @@ def construct(_bound_inputs):
     ell, c0 = sp.symbols('ell c0', positive=True)
     GM = sp.Symbol('GM', real=True)
     r = sp.sqrt(sum(q*q for q in x))
+    epsilon = GM/(c0**2*r)
     radial = {name: sp.Function(name)(r) for name in (
         'V_r', 'o2_rho_br_live', 'mu_perp', 'xi_w', 'h', 'delta', 'j_n', 'f')}
     vr, rho, mu, xi, h, delta, jn, f = (radial[k] for k in radial)
@@ -207,9 +221,7 @@ def construct(_bound_inputs):
     native_embedding = vector(sp.Function('o2_X_face_' + str(a), real=True)(s, *q, t)
                               for a in range(4))
     native_tangent = native_embedding.jacobian(q)
-    native_cofactor = vector((-1)**(a+3) * native_tangent.extract(
-                              [b for b in range(4) if b != a], range(3)).det()
-                             for a in range(4))
+    native_cofactor = oriented_cofactor(native_tangent)
     native_area = sp.sqrt(native_cofactor.dot(native_cofactor))
     native_normal = native_cofactor / native_area  # KNIFE_K7
     native_domain = action('NativeFaceChartDomain', face_context)
@@ -222,9 +234,16 @@ def construct(_bound_inputs):
     native_hold = vector(action('FullFaceSupportLoad_' + str(a), hold,
                                sp.Tuple(*bulk_load), op['face_support_partition'],
                                native_point_context) for a in range(4))
-    per_face_load = vector(action('FaceLoadReduction_' + str(a), op['J_map'],
-                                  native_domain, sp.Lambda(q, sp.Tuple(native_area, native_hold)),
-                                  face_context) for a in range(4))
+    # One OPEN map instance, shared by all force components and face work.
+    # The native integrand is the only argument that differs between uses.
+    face_reduction_map = action('NativeFaceReductionMap', op['J_map'],
+                                native_domain, face_context)
+
+    def reduce_native_integrand(integrand):
+        return action('ApplyNativeFaceReduction', face_reduction_map,
+                      sp.Lambda(q, native_area * integrand))
+
+    per_face_load = vector(reduce_native_integrand(native_hold[a]) for a in range(4))
     reduced_load = vector(all_native_faces(face_set, s, per_face_load[a]) for a in range(4))
     carried_v = v  # KNIFE_K3
     carried_w = action('CarriedMomentumW', op['Pi_n'], jn, op['J_map'],
@@ -252,14 +271,17 @@ def construct(_bound_inputs):
                                   graph_velocity, native_point_context) for a in range(4))
     paired_face_velocity = face_velocity  # KNIFE_K9
     native_face_power = native_hold.dot(paired_face_velocity)
-    per_face_power = action('FaceWorkReduction', op['J_map'], native_domain,
-                            sp.Lambda(q, sp.Tuple(native_area, native_face_power)), face_context)
+    per_face_power = reduce_native_integrand(native_face_power)
     mechanical_power = all_native_faces(face_set, s, per_face_power)
-    material_pairing = internal.dot(graph_velocity)
+    graph_velocity_contraction = internal.dot(graph_velocity)
+    normal_generalized_rates = action('UnfixedNormalGeneralizedRates',
+                                      op['N_br_live'], op['J_map'], state, geom)
     rotational_power = action('RotationalGeneralizedWork', op['A_rot_live'],
                               material, stress_state, state)
     energy_transport_channels = (op['J_E_live'],)  # KNIFE_K10
-    material_work = action('MaterialStressNormalWork', material_pairing,
+    material_work = action('MaterialStressNormalWork',
+                           record(graph_velocity_contraction=graph_velocity_contraction,
+                                  unfixed_normal_generalized_rates=normal_generalized_rates),
                            rotational_power, stress_state, op['E_br_live'],
                            sp.Tuple(*energy_transport_channels))
     relaxation = op['P_ref_relax_live']  # KNIFE_K11
@@ -283,8 +305,10 @@ def construct(_bound_inputs):
                nonpassive_obligation=op['nonpassive_reservoir_budget_obligation']),
         energy_context, source, boundary)
     energy_balance = sum((energy_storage, energy_transport, -net_power))
-    optical = sp.Tuple(sp.Eq(action('c_gamma', r)**2, mu/rho, evaluate=False),
-                       sp.Eq(action('c_gamma', r), c0*(1+delta), evaluate=False))
+    # Supplied optical-regime profile and identifications (§3.1), not an OPEN action.
+    c_gamma = sp.Function('o2_c_gamma_live')(r)
+    optical = sp.Tuple(sp.Eq(c_gamma**2, mu/rho, evaluate=False),
+                       sp.Eq(c_gamma, c0*(1+delta), evaluate=False))
     grades = text_tuple('o2_rho_br_live', 'mu_perp', 'I_br_live', 'T_br_live', 'N_br_live',
                         'R_ref_strain_live', 'A_rot_live', 'P_ref_relax_live',
                         'Pi_n', 'j_n', 'T_hold_s', 'H_core', 'mouth_core_data',
@@ -322,6 +346,7 @@ def construct(_bound_inputs):
                            native_face_area=native_area, map=op['J_map'],
                            face_context=face_context, face_set=face_set,
                            native_chart_domain=native_domain,
+                           native_reduction_map=face_reduction_map,
                            chart_coordinates=sp.Tuple(*q),
                            orientation=Str('outward_oriented_regular_native_chart')),
         'GEOMETRY': record(embedding=embedding, metric=metric,
@@ -354,11 +379,15 @@ def construct(_bound_inputs):
                              measure=Str('d3x'), density_input=constitutive_inputs),
         'MASS_RESIDUAL': mass_residual,
         'MATERIAL_POWER_PAIRING': record(velocity=graph_velocity, force=internal,
-                                         pair=material_pairing, rotational=rotational_power,
+                                         graph_velocity_contraction=graph_velocity_contraction,
+                                         contraction_scope=Str('ambient_force_components_contracted_with_supplied_graph_material_velocity_only'),
+                                         unfixed_normal_generalized_rates=normal_generalized_rates,
+                                         rotational=rotational_power,
                                          work=material_work),
         'FACE_POWER_PAIRING': record(velocity=paired_face_velocity, traction=native_hold,
                                      native_power=native_face_power,
                                      reduced_power=mechanical_power, map=op['J_map'],
+                                     native_reduction_map=face_reduction_map,
                                      native_area=native_area),
         'ENERGY_STORAGE': energy_storage, 'ENERGY_TRANSPORT': energy_transport,
         'ENERGY_POWER': net_power, 'ENERGY_STEADY': energy_balance,
@@ -381,12 +410,13 @@ def construct(_bound_inputs):
                                 '2_conversion_drive', '3_carried_local_material_velocity',
                                 '4_shear_free_scalar_bulk_normal_load'),
             premise_status=Str('adopted substrate input to a conditional model (2026-10-06)'),
-            epsilon=GM/(c0**2*r),
+            epsilon=epsilon,
             optical_monomial_indices=sp.Tuple(*(sp.Tuple(a,b,c) for a in range(2)
                                                for b in range(3) for c in range(2))),
-            recorded_grades=record(delta=sp.Symbol('epsilon'),
-                                   slope_squared=sp.Symbol('epsilon'),
-                                   velocity_over_c0=sp.sqrt(sp.Symbol('epsilon')))),
+            recorded_grades=sp.Tuple(
+                order_statement(delta, epsilon),
+                order_statement(tangent[3, :].dot(tangent[3, :]), epsilon),
+                order_statement(v/c0, sp.sqrt(epsilon)))),
     }
     traces = {
         'BASIS MEASURES GEOMETRY PROFILES MATERIAL_VELOCITY': '§1,§3.1; C§1,2,5,6',

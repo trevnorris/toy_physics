@@ -29,14 +29,14 @@ knives = {
    "momentumDerivativeRules = {RhoBr -> Function[{z},RhoBrConstant]}; (* SITE K6a K6b K6c *)"},
  {"K6c","momentumDerivativeRules = {}; (* SITE K6a K6b K6c *)",
    "momentumDerivativeRules = {XiW -> Function[{z},XiWConstant]}; (* SITE K6a K6b K6c *)"},
- {"K7","faceNormal = orientation[s] unitNormal[faceTangents]; (* SITE K7 *)",
+ {"K7","faceNormal = Table[response[NativeUnitNormalComponent[a],{mapOperand},\n  Join[nativeState,<|\"TangentGeometry\" -> faceTangents|>]],{a,4}]; (* SITE K7 *)",
    "faceNormal = orientation[s] unitNormal[D[Append[x,0],#]& /@ x]; (* SITE K7 *)"},
  {"K8","transport = Table[Sum[sectionDerivative[momentumCurrent[[a,i]],\n  momentumDifferentiatedSection,x[[i]]],{i,3}],{a,4}]; (* SITE K8 *)",
    "transport = ConstantArray[0,4]; (* SITE K8 *)"},
  {"K9","pairedVelocity = vMaterial; (* SITE K9 *)",
    "pairedVelocity = Array[IndependentPowerVelocity,4]; (* SITE K9 *)"},
- {"K10","energyTransport = Sum[sectionDerivative[energyCurrent[[i]],energySection,x[[i]]],{i,3}]; (* SITE K10 *)",
-   "energyTransport = 0; (* SITE K10 *)"},
+ {"K10","energyTransportOperands = {energyCurrentOperand}; (* SITE K10 *)",
+   "energyTransportOperands = {}; (* SITE K10 *)"},
  {"K11","relaxationPower = operand[PRefRelaxLive, \"6\", \"8\"]; (* SITE K11 *)",
    "relaxationPower = 0; (* SITE K11 *)"},
  {"K12","bodyForceEntries = {}; (* SITE K12 *)",
@@ -50,7 +50,7 @@ knives = {
 k6Profiles = <|"K6a" -> {"V_r","VR","VRConstant"},
   "K6b" -> {"rho_br","RhoBr","RhoBrConstant"},
   "K6c" -> {"xi_w","XiW","XiWConstant"}|>;
-knifeSiteSemantics[knife_String] := If[KeyExistsQ[k6Profiles,knife],
+knifeSiteSemantics[knife_String] := Which[KeyExistsQ[k6Profiles,knife],
   <|"Profile" -> k6Profiles[knife][[1]],
     "FunctionReplaced" -> k6Profiles[knife][[2]],
     "ConstantReplacement" -> k6Profiles[knife][[3]],
@@ -58,7 +58,19 @@ knifeSiteSemantics[knife_String] := If[KeyExistsQ[k6Profiles,knife],
       StringStartsQ[#,"momentumDifferentiatedSection = "]&],
     "ReplacementScope" -> "Rewrite the copied momentum section before differentiation; the rewritten section supplies only the sectionTangent argument in momentum storage and spatial transport",
     "UnmodifiedResponseSection" -> "momentumSection remains the section used in momentumDensity and momentumCurrent",
-    "DerivativeScope" -> "The rule acts throughout the copied section, including profile occurrences in its velocity and metric; it is not a global profile substitution"|>,<||>];
+    "DerivativeScope" -> "The rule acts throughout the copied section, including profile occurrences in its velocity and metric; it is not a global profile substitution"|>,
+  knife === "K10", <|
+    "RemovedOperand" -> "JELive (energyCurrentOperand)",
+    "ConstructionSite" -> "energyTransportOperands registration",
+    "RemovalScope" -> {"energyInputs", "energySection", "energyDensity",
+      "energyCurrentContributions", "energyCurrent", "energyStorage",
+      "energyTransport", "energyPower", "energyEntries", "energyBalance"},
+    "Mechanism" -> "One empty-registration mutation removes JELive from the energy dependency list and all current contributions; their empty sums compute the removed transport",
+    "ApplicationStatements" -> Select[StringSplit[source,"\n"],
+      Function[line,AnyTrue[
+        {"energyInputs = ","energyCurrentContributions = ","  energyTransportOperands];"},
+        Function[prefix,StringStartsQ[line,prefix]]]]]|>,
+  True, <||>];
 writeTag[name_, value_] := (WriteString[First[$Output],name <> ": " <>
   ToString[value,InputForm,PageWidth->Infinity] <> "\n"]; Flush[First[$Output]];);
 (* Strings and semantic records have a formal structural difference; algebraic

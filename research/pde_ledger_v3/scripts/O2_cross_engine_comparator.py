@@ -13,6 +13,7 @@ import ast
 from collections import Counter
 from dataclasses import dataclass
 import json
+import hashlib
 from pathlib import Path
 import re
 import resource
@@ -510,6 +511,60 @@ def validate_tables(joins, names):
         raise InputError('duplicate join label')
 
 
+# Role bindings identify actions, never their values or constitutive arguments.
+# Component offsets follow the emitted ambient/tangent basis, not tree position.
+@dataclass(frozen=True)
+class ActionRow:
+    py: str
+    wl: str
+    py_line: int
+    wl_line: int
+    spec: str
+
+
+ACTION_TABLE = []
+for py,wl,pl,ww,spec in (
+    ('MomentumDensity','MomentumDensity',194,146,'§4 momentum density'),
+    ('InternalForce','InternalForce',211,168,'§4 internal material force'),
+    ('FullFaceSupportLoad','NativeCompleteHold',234,175,'§5 complete native load'),
+    ('OutwardSourcePartner','OutwardAdditionalMomentumPartner',254,207,'§5 additional exchange'),
+    ('FaceApplicationVelocity','NativeApplicationVelocity',270,256,'§6 native application velocity')):
+    for i in range(4):
+        ACTION_TABLE.append(ActionRow('OPEN_'+py+'_'+str(i),wl+'['+str(i+1)+']',pl,ww,spec))
+for a in range(4):
+    for i in range(3):
+        ACTION_TABLE.append(ActionRow(f'OPEN_MomentumFlux_{a}_{i}',f'MomentumCurrent[{a+1},{i+1}]',195,149,'§4 momentum current'))
+for i in range(3):
+    ACTION_TABLE.append(ActionRow(f'OPEN_MaterialEnergyFlux_{i}',f'MaterialEnergyCurrent[{i+1}]',291,278,'§6 energy current'))
+ACTION_TABLE.extend(ActionRow(*r) for r in (
+    ('OPEN_NativeFaceSet','NativeBoundingFaceSet',219,179,'§5 complete native face set'),
+    ('OPEN_ApplyNativeFaceReduction','NativeToCoordinateDensity',243,181,'§5,6 native reduction'),
+    ('OPEN_CarriedMomentumW','OutwardCarriedBulkMomentum',249,202,'§5 bulk carried exchange'),
+    ('OPEN_MaterialEnergyDensity','MaterialEnergyDensity',290,276,'§6 energy density'),
+    ('OPEN_MaterialStressNormalWork','MaterialStressNormalRotationalWork',282,263,'§6 material work'),
+    ('OPEN_JointPowerAccounting','JointNetPowerOccurrence',298,288,'§6 joint power'),
+    ('OPEN_SumOverAllNativeFaces','held:Total',140,192,'§5,6 complete face aggregation'),
+    ('OPEN_T_bulk_n_s_live','native:TBulkNormalLive',229,68,'§3.3,5 native bulk amplitude'),
+    ('OPEN_MaterialCompatibility','identification:material',212,162,'§3.2,4 material compatibility'),
+    ('OPEN_UnfixedNormalGeneralizedRates','operand:UnspecifiedRotationalNormalRates',277,266,'§6 generalized rates')))
+
+ACTION_TABLE = tuple(ACTION_TABLE)
+# These are secondary analyses of the declared balance objects, not new stream
+# joins or new physical equations. Their citations are the same construction cuts.
+BALANCE_TABLE = tuple(r for r in JOIN_TABLE if r.label in
+                      ('hold_inplane','hold_bulk','hold_normal','energy_balance'))
+
+
+def validate_secondary(actions,balances):
+    for side in ('py','wl'):
+        for table in (actions,balances):
+            values = [getattr(r,side) for r in table]
+            if len(values) != len(set(values)):
+                raise InputError('duplicate secondary table binding: '+side)
+    if len({r.label for r in balances}) != len(balances):
+        raise InputError('duplicate balance label')
+
+
 def children(n):
     if n.head == 'Record':
         return {e.value: e.args[0] for e in n.args}
@@ -603,7 +658,7 @@ def algebra(n, bindings, engine):
             if len(orders) == 1 and len(a) == 2 and bindings.kinds.get(key) == 'profile':
                 var = sp.Symbol('_profile_argument', real=True)
                 derivative = sp.Derivative(sp.Function(key)(var),(var,int(orders[0].value)),evaluate=False)
-                return sp.Subs(derivative,var,algebra(a[1],bindings,engine)).doit()
+                return sp.Subs(derivative,var,evaluation_point(a[1],bindings,engine)).doit()
         raise Unsupported('held, OPEN or unsupported applied head')
     if h == 'Derivative':
         v = algebra(a[0],bindings,engine)
@@ -617,6 +672,8 @@ def algebra(n, bindings, engine):
     if h == 'Subs' and len(a) == 3:
         def members(v):
             return v.args if v.head == 'Sequence' else (v,)
+        if len(members(a[1])) != len(members(a[2])) or not members(a[2]):
+            raise Unsupported('substitution evaluation point absent or arity differs')
         # Dummy differentiation coordinates are local algebraic binders only.
         local = Bindings(())
         local.maps = {k:dict(v) for k,v in bindings.maps.items()}
@@ -636,8 +693,13 @@ def algebra(n, bindings, engine):
                         tuple(dummy(x) for x in v.args),v.value,v.options)
         return sp.Subs(algebra(dummy(a[0]),local,engine),
                        tuple(convert(x) for x in members(a[1])),
-                       tuple(algebra(x,bindings,engine) for x in members(a[2]))).doit()
+                       tuple(evaluation_point(x,bindings,engine) for x in members(a[2]))).doit()
     raise Unsupported('non-algebraic ' + h)
+
+
+def evaluation_point(n,bindings,engine):
+    """Evaluation points are operands, including when they are composite."""
+    return algebra(n,bindings,engine)
 
 
 def layout(n):
@@ -648,34 +710,72 @@ def layout(n):
     return n
 
 
-def differences(a, b, path=()):
-    """Tree differences retain mismatched subtrees by reference to printed operands.
+def fingerprint(n):
+    # Merkle representation retains argument order inside each engine; it never
+    # pairs one engine's child with the other engine's child by that position.
+    return hashlib.sha256(json.dumps([n.head,n.value,n.options,
+        [fingerprint(x) for x in n.args]],separators=(',',':')).encode()).hexdigest()
 
-    Descend through paired children even when their parent heads differ. Unpaired
-    subtrees are emitted in full so mutations below a mismatch remain observable.
+
+def bag_delta(a,b):
+    return [[key,a.get(key,0)-b.get(key,0)] for key in sorted(a.keys() | b.keys())
+            if a.get(key,0) != b.get(key,0)]
+
+
+def differences(a,b):
+    """Unpaired subtree fingerprints, not a positional cross-engine alignment."""
+    aa,bb = Counter({fingerprint(a):1}),Counter({fingerprint(b):1})
+    for digest,count in bag_delta(aa,bb):
+        yield {'subtree_sha256':digest,'py_minus_wl_count':count,
+               'correspondence':'unpaired subtree; complete mapped operand printed above'}
+
+
+def wl_structural_role(n):
+    """Specific constructor forms cited by ACTION_TABLE, including non-OpenAction
+    representations. Others remain unpaired; no general head alias is inferred.
     """
-    if (a.head,a.value,a.options,len(a.args)) != (b.head,b.value,b.options,len(b.args)):
-        yield {'path':path,'py_node':[a.head,a.value,a.options,len(a.args)],
-               'wl_node':[b.head,b.value,b.options,len(b.args)],
-               'subtrees':'see mapped operands at this path'}
-    for i,(x,y) in enumerate(zip(a.args,b.args)):
-        yield from differences(x,y,(*path,i))
-    for i in range(min(len(a.args),len(b.args)),max(len(a.args),len(b.args))):
-        yield {'path':(*path,i),'py_unpaired':data(a.args[i]) if i < len(a.args) else None,
-               'wl_unpaired':data(b.args[i]) if i < len(b.args) else None}
+    def name(v):
+        return v.value.removeprefix('wl::')
+    def operand_name(v):
+        if v.head=='Apply' and name(v.args[0])=='OPEN' and len(v.args)>1:
+            return name(v.args[1])
+        return ''
+    if n.head!='Apply':
+        return None
+    head=n.args[0]
+    if head.head=='Apply':
+        if name(head.args[0])=='Inactive' and len(head.args)==2 and name(head.args[1])=='Total':
+            return 'held:Total'
+        if name(head.args[0])=='OpenNativeField' and len(head.args)==2:
+            operand=operand_name(head.args[1])
+            if operand:
+                return 'native:'+operand
+    if name(head)=='UnresolvedIdentification' and len(n.args)==5 and operand_name(n.args[1]) in ('NBrLive','N_br_live'):
+        return 'identification:material'
+    if name(head)=='OPEN' and len(n.args)>1 and name(n.args[1])=='UnspecifiedRotationalNormalRates':
+        return 'operand:UnspecifiedRotationalNormalRates'
+    return None
 
 
-def structure(n):
-    names, heads, options, orientations = Counter(), Counter(), Counter(), Counter()
-    argument_actions = Counter()
-    def visit(v):
-        heads[v.head] += 1
-        if v.head in ('Symbol','FunctionName','Dummy'):
-            names[v.value] += 1
-        options.update(v.options)
-        for child in v.args:
-            visit(child)
-    visit(n)
+def action_key(n,engine):
+    if n.head != 'Apply':
+        return None
+    head = n.args[0]
+    if engine == 'py' and head.value.startswith('OPEN_'):
+        return head.value
+    if engine == 'wl' and head == atom('Symbol','OpenAction') and len(n.args)>1:
+        role = n.args[1]
+        if role.head == 'Symbol':
+            return role.value
+        if role.head == 'Apply' and all(v.head=='Number' for v in role.args[1:]):
+            return role.args[0].value+'['+','.join(v.value for v in role.args[1:])+']'
+        return json.dumps(data(role),separators=(',',':'))
+    return wl_structural_role(n) if engine=='wl' else None
+
+
+def action_occurrences(n,include_structural=False):
+    """Yield mapped OPEN nodes with balance orientation or argument status."""
+    occurrences = []
     def signed_actions(v,sign=1,dependency=False):
         # Linear syntax carries the enclosing expression's orientation. This is
         # the engines' held calculus/aggregation syntax, not a constitutive law:
@@ -691,24 +791,23 @@ def structure(n):
             head = v.args[0]
             linear_arguments = ()
             if (head.head == 'Apply' and len(head.args) == 2
-                    and head.args[0].value == 'wl::Inactive'):
-                operator = head.args[1].value
-                if operator in ('wl::Total','wl::Map','wl::D'):
+                    and head.args[0].value in ('Inactive','wl::Inactive')):
+                operator = head.args[1].value.removeprefix('wl::')
+                if operator in ('Total','Map','D'):
                     linear_arguments = (1,)
-            elif head.value in ('wl::Function','wl::OpenFirstVariation'):
-                linear_arguments = (2,) if head.value == 'wl::Function' else (1,)
-            elif head.value == 'py::OPEN_SumOverAllNativeFaces':
+            elif head.value.removeprefix('wl::') in ('Function','OpenFirstVariation'):
+                linear_arguments = (2,) if head.value.removeprefix('wl::') == 'Function' else (1,)
+            elif head.value.removeprefix('py::') == 'OPEN_SumOverAllNativeFaces':
                 linear_arguments = (2,)
             role = None
-            if head.value.startswith('py::OPEN_'):
+            if head.value.removeprefix('py::').startswith('OPEN_'):
                 role = head.value
-            elif head.value == 'wl::OpenAction' and len(v.args) > 1:
+            elif head.value.removeprefix('wl::') == 'OpenAction' and len(v.args) > 1:
                 role = json.dumps(data(v.args[1]),separators=(',',':'))
+            if role is None and include_structural:
+                role = wl_structural_role(v)
             if role is not None:
-                if dependency:
-                    argument_actions[role] += 1
-                else:
-                    orientations[(role,sign)] += 1
+                occurrences.append((v,role,sign,dependency))
             # Unknown/OPEN action arguments are dependencies. Only explicitly
             # identified linear bodies inherit the sign; Map's set and binders
             # do not. Dependency mode remains distinct even inside a wrapper.
@@ -725,6 +824,25 @@ def structure(n):
             for child in v.args:
                 signed_actions(child,sign if v.head in ('Add','Sequence','Matrix') else 1,dependency)
     signed_actions(n)
+    return occurrences
+
+
+def structure(n):
+    names, heads, options, orientations = Counter(), Counter(), Counter(), Counter()
+    argument_actions = Counter()
+    def visit(v):
+        heads[v.head] += 1
+        if v.head in ('Symbol','FunctionName','Dummy'):
+            names[v.value] += 1
+        options.update(v.options)
+        for child in v.args:
+            visit(child)
+    visit(n)
+    for v,role,sign,dependency in action_occurrences(n):
+        if dependency:
+            argument_actions[role] += 1
+        else:
+            orientations[(role,sign)] += 1
     terms = n.args if n.head == 'Add' else (n,)
     factors_by_term = []
     for term in terms:
@@ -735,8 +853,169 @@ def structure(n):
             'constructor_options':[[list(k),v] for k,v in sorted(options.items())],
             'term_numeric_factors':factors_by_term,
             'open_action_orientation_counts':[[role,sign,count] for (role,sign),count in sorted(orientations.items())],
-            'open_argument_occurrence_counts':[[role,count] for role,count in sorted(argument_actions.items())],
-            'live_arguments_and_binders':'complete mapped operand tree; no argument erasure'}
+            'open_argument_occurrence_counts':[[role,count] for role,count in sorted(argument_actions.items())]}
+
+
+def role_maps(actions):
+    return {'py':{r.py:r.py for r in actions},'wl':{r.wl:r.py for r in actions}}
+
+
+def features(n,bindings,engine):
+    """Computed multisets; repeated occurrences are counted, never zipped."""
+    mapped = bindings.apply(n,engine)
+    names,live,binders = Counter(),Counter(),Counter()
+    def visit(v):
+        if v.head in ('Symbol','Dummy') and bindings.kinds.get(v.value) not in ('coordinate','parameter','profile','binder'):
+            names[v.value] += 1
+        if v.head=='Apply' and (bindings.kinds.get(v.args[0].value)=='profile' or
+                (v.args[0].head=='FunctionName' and not v.args[0].value.startswith('py::OPEN_'))):
+            live[json.dumps(data(v),separators=(',',':'))] += 1
+        if v.head in ('Derivative','Subs','Lambda') or (v.head=='Apply' and
+                (v.args[0].value in ('wl::Function','wl::OpenFirstVariation') or
+                 'wl::Derivative' in {x.value for x in v.args[0].args})):
+            binders[fingerprint(v)] += 1
+        arguments=v.args
+        if v.head=='Apply':
+            arguments=v.args[2:] if v.args[0].value=='wl::OpenAction' else v.args[1:]
+        for x in arguments:
+            visit(x)
+    visit(mapped)
+    return {'head':Counter({json.dumps([mapped.head,mapped.value,
+                data(mapped.args[0]) if mapped.head=='Apply' else None],separators=(',',':')):1}),
+            'named_OPEN_operands':names,'live_arguments':live,'binders':binders,
+            'argument_trees':Counter({fingerprint(mapped):1})}
+
+
+def field_deltas(left,right):
+    return {field:bag_delta(left.get(field,{}),right.get(field,{}))
+            for field in sorted(left.keys() | right.keys())}
+
+
+def action_comparison(a,b,bindings,actions):
+    maps = role_maps(actions)
+    grouped = {}
+    for engine,node in (('py',a),('wl',b)):
+        group = {}
+        for original,_,sign,dependency in action_occurrences(node,include_structural=True):
+            key = action_key(original,engine)
+            role = maps[engine].get(key,engine+'::'+key)
+            fields = features(original,bindings,engine)
+            fields['head'] = Counter({key:1})
+            fields['orientation'] = Counter({('argument' if dependency else str(sign)):1})
+            fields['role'] = Counter({role:1})
+            current = group.setdefault(role,{})
+            for field,values in fields.items():
+                current.setdefault(field,Counter()).update(values)
+        grouped[engine] = group
+    result=[]
+    for role in sorted(grouped['py'].keys() | grouped['wl'].keys()):
+        left,right = grouped['py'].get(role,{}),grouped['wl'].get(role,{})
+        result.append({'role':role,'py':left,'wl':right,
+                       'unpaired_reason':None if left and right else
+                           ('no cross-engine role binding; representation-specific action' if '::' in role else
+                            'no occurrence of this declared role in the other operand'),
+                       'differences':field_deltas(left,right)})
+    return result
+
+
+def additive_terms(n):
+    """Distribute only syntactic sums/products; do not evaluate held bodies."""
+    if n.head=='Add':
+        return [term for v in n.args for term in additive_terms(v)]
+    if n.head=='Mul':
+        terms=[()]
+        for v in n.args:
+            terms=[(*prefix,w) for prefix in terms for w in additive_terms(v)]
+        return [Node('Mul',t) for t in terms]
+    return [n]
+
+
+def contains_open(n,engine):
+    if action_key(n,engine) is not None:
+        return True
+    return any(contains_open(v,engine) for v in n.args)
+
+
+def term_orientation(n):
+    sign=1
+    if n.head=='Number' and n.value.startswith('-'):
+        return -1
+    if n.head=='Mul':
+        for v in n.args:
+            sign *= term_orientation(v)
+    elif n.head=='Derivative':
+        sign *= term_orientation(n.args[0])
+    elif n.head=='Lambda':
+        sign *= term_orientation(n.args[1])
+    elif n.head=='Apply':
+        head=n.args[0]
+        if head.value in ('OpenFirstVariation','Function','OPEN_SumOverAllNativeFaces'):
+            body=1 if head.value=='OpenFirstVariation' else 2
+            sign *= term_orientation(n.args[body])
+        elif (head.head=='Apply' and head.args[0].value=='Inactive' and
+              head.args[1].value in ('Total','Map','D')):
+            sign *= term_orientation(n.args[1])
+    return sign
+
+
+def balance_comparison(a,b,bindings,actions):
+    maps=role_maps(actions)
+    sides,closed,groups = {},{},{}
+    for engine,node in (('py',a),('wl',b)):
+        entries=[]
+        closed_terms=[]
+        group={}
+        for term in additive_terms(node):
+            is_open=contains_open(term,engine)
+            if not is_open:
+                closed_terms.append(term)
+            mapped=bindings.apply(term,engine)
+            # Roles are a multiset of the declared actions in this term. Unknown
+            # actions remain engine-qualified; the OPEN-free group is the closed
+            # portion of this declared balance, not an assumed physical closure.
+            def roles(v):
+                key=action_key(v,engine)
+                if key is not None:
+                    return [maps[engine].get(key,engine+'::'+key)]
+                return [r for child in v.args for r in roles(child)]
+            role=json.dumps(sorted(roles(term))) if is_open else 'OPEN_free'
+            fields=features(term,bindings,engine)
+            fields['orientation']=Counter({str(term_orientation(term)):1})
+            fields['role']=Counter({role:1})
+            entries.append({'role':role,'orientation':term_orientation(term),
+                            'open_free':not is_open,'operand':data(mapped)})
+            current=group.setdefault(role,{})
+            for field,values in fields.items():
+                current.setdefault(field,Counter()).update(values)
+        sides[engine]=entries
+        groups[engine]=group
+        closed[engine]=Node('Add',tuple(closed_terms)) if closed_terms else atom('Number',0)
+    result={'outcome':'balance','entries':sides,'entry_differences':{
+        role:field_deltas(groups['py'].get(role,{}),groups['wl'].get(role,{}))
+        for role in sorted(groups['py'].keys() | groups['wl'].keys())},
+        'closed_operands':{e:data(n) for e,n in closed.items()}}
+    # The caller emits these operands before forming this supplemental residual.
+    return result,closed
+
+
+def emit_balance(output,label,a,b,bindings,actions):
+    def emit_component(a,b,component):
+        a,b=layout(a),layout(b)
+        if a.head=='Sequence' or b.head=='Sequence':
+            if a.head!=b.head or len(a.args)!=len(b.args):
+                emit(output,{'kind':'balance_comparison','row':label,'component':component,
+                             'comparison':{'outcome':'not_formed','reason':'component layout differs'}})
+                return
+            for i in range(len(a.args)):
+                emit_component(a.args[i],b.args[i],(*component,i))
+            return
+        result,closed=balance_comparison(a,b,bindings,actions)
+        emit(output,{'kind':'balance_entries','row':label,'component':component,**result})
+        comparison,counts=compare(closed['py'],closed['wl'],bindings)
+        emit(output,{'kind':'balance_comparison','row':label,'component':component,
+                     'comparison':{'outcome':'balance','entry_differences':result['entry_differences'],
+                                   'closed_residual':comparison,'closed_compared_leaves':counts}})
+    emit_component(a,b,())
 
 
 def compare(a,b,bindings):
@@ -891,8 +1170,10 @@ def emit(stream, value):
     stream.flush()
 
 
-def run(py_path,wl_path,output,accounting,joins=JOIN_TABLE,names=NAME_TABLE):
+def run(py_path,wl_path,output,accounting,joins=JOIN_TABLE,names=NAME_TABLE,
+        actions=ACTION_TABLE,balances=BALANCE_TABLE):
     validate_tables(joins,names)
+    validate_secondary(actions,balances)
     bindings = Bindings(names)
     py,wl = read_stream(py_path,'py'),read_stream(wl_path,'wl')
     partition = {'py':Counter(),'wl':Counter()}
@@ -911,7 +1192,8 @@ def run(py_path,wl_path,output,accounting,joins=JOIN_TABLE,names=NAME_TABLE):
             aa,bb = bindings.apply(a,'py'),bindings.apply(b,'wl')
             emit(output,{'kind':'structure','row':row.label,'py':structure(aa),'wl':structure(bb),
                          'mapped_py':data(aa),'mapped_wl':data(bb),
-                         'differences':list(differences(aa,bb))})
+                         'differences':list(differences(aa,bb)),
+                         'action_comparison':action_comparison(a,b,bindings,actions)})
             if row.layout == 'transpose' and a.head == 'Matrix':
                 a = seq(*(seq(*(r.args[i] for r in a.args)) for i in range(len(a.args[0].args))))
             result,counts = compare(a,b,bindings)
@@ -923,6 +1205,18 @@ def run(py_path,wl_path,output,accounting,joins=JOIN_TABLE,names=NAME_TABLE):
             compared[engine][tag] += counts[i]
         emit(output,{'kind':'accounting',**info})
         emit(accounting,info)
+    for row in balances:
+        # Secondary analyses use their declared paths, and emit their own operands.
+        a,b=extract(py,row.py),extract(wl,row.wl)
+        if a is not None or b is not None:
+            emit(output,{'kind':'balance_operands','row':row.label,
+                         'py_path':row.py,'wl_path':row.wl,
+                         'py':data(a) if a else None,'wl':data(b) if b else None})
+            if a is not None and b is not None:
+                emit_balance(output,row.label,a,b,bindings,actions)
+            else:
+                emit(output,{'kind':'balance_comparison','row':row.label,
+                             'comparison':{'outcome':'not_formed','reason':'balance counterpart absent'}})
     for engine,stream in (('py',py),('wl',wl)):
         for path,value in remainder(stream,{getattr(row,engine) for row in joins}):
             info = {'accounting':'unjoined','engine':engine,'path':path,
@@ -941,13 +1235,15 @@ def run(py_path,wl_path,output,accounting,joins=JOIN_TABLE,names=NAME_TABLE):
     return py,wl
 
 
-def catalog(path,joins=JOIN_TABLE,names=NAME_TABLE):
+def catalog(path,joins=JOIN_TABLE,names=NAME_TABLE,actions=ACTION_TABLE,balances=BALANCE_TABLE):
     with Path(path).open('w') as out:
         emit(out,{'path_convention':'zero-based sequence indices; record keys; @n constructor argument (@0 applied head); tag first',
                   'leaf_convention':'terminal parsed IR nodes plus constructor options; empty container one',
                   'joins':[dict(label=r.label,py=r.py,wl=r.wl,spec=r.spec,layout=r.layout,
                                 py_citation=f'{PY_SOURCE}:{r.py_line}',wl_citation=f'{WL_SOURCE}:{r.wl_line}')
                            for r in joins],
+                  'actions':[dict(py=r.py,wl=r.wl,spec=r.spec,py_citation=f'{PY_SOURCE}:{r.py_line}',wl_citation=f'{WL_SOURCE}:{r.wl_line}') for r in actions],
+                  'balances':[dict(label=r.label,py=r.py,wl=r.wl,spec=r.spec,py_citation=f'{PY_SOURCE}:{r.py_line}',wl_citation=f'{WL_SOURCE}:{r.wl_line}') for r in balances],
                   'names':[dict(py=r.py,wl=r.wl,spec=r.spec,kind=r.kind,
                                 py_citation=f'{PY_SOURCE}:{r.py_line}',wl_citation=f'{WL_SOURCE}:{r.wl_line}')
                            for r in names]})

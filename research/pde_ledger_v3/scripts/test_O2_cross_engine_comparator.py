@@ -35,22 +35,22 @@ def products(value):
 
 
 class Controls(unittest.TestCase):
-    def streams(self,py_text,wl_text,joins,*,names=c.NAME_TABLE):
+    def streams(self,py_text,wl_text,joins,*,names=c.NAME_TABLE,actions=c.ACTION_TABLE,balances=c.BALANCE_TABLE):
         # Native serialization is part of every control's path, including repoints.
         with tempfile.TemporaryDirectory() as directory:
             p,w = Path(directory)/'py.out',Path(directory)/'wl.out'
             p.write_text(py_text)
             w.write_text(wl_text)
             output,accounting = io.StringIO(),io.StringIO()
-            c.run(p,w,output,accounting,joins=joins,names=names)
+            c.run(p,w,output,accounting,joins=joins,names=names,actions=actions,balances=balances)
         parsed = [json.loads(line) for line in output.getvalue().splitlines()]
         residual = [line['comparison'] for line in parsed if line['kind']=='residual']
         return residual,parsed,[json.loads(line) for line in accounting.getvalue().splitlines()]
 
-    def fixture(self,py,wl,*,names=c.NAME_TABLE,py_tag='LEFT',wl_tag='RIGHT',key='item',layout=''):
+    def fixture(self,py,wl,*,names=c.NAME_TABLE,py_tag='LEFT',wl_tag='RIGHT',key='item',layout='',actions=c.ACTION_TABLE,balance=False):
         row = c.JoinRow('synthetic',(py_tag,'value'),(wl_tag,key),1,1,'synthetic',layout)
         return self.streams(f'PY_O2_{py_tag}: Tuple(Tuple(Str("value"), {py}))\n',
-                            f'WL_O2_{wl_tag}: <|\n"{key}" -> {wl}\n|>\n',(row,),names=names)
+                            f'WL_O2_{wl_tag}: <|\n"{key}" -> {wl}\n|>\n',(row,),names=names,actions=actions,balances=(row,) if balance else ())
 
     def changes(self,py,wl,mutation):
         before = self.fixture(py,wl)
@@ -332,6 +332,193 @@ class Controls(unittest.TestCase):
                     names = self.census(result,side,'named_operands_and_heads')
                     self.assertIn(py,names)
                     self.assertNotIn(side+'::'+(py if side=='py' else wl),names)
+
+    def action_deltas(self,result,field=None):
+        records=next(r['action_comparison'] for r in result[1] if r['kind']=='structure')
+        return {r['role']:r['differences'] if field is None else r['differences'].get(field,[])
+                for r in records}
+
+    def balance_products(self,result):
+        # Assert computed differences/residuals, never balance operand echoes.
+        return [r['comparison'] for r in result[1] if r['kind']=='balance_comparison']
+
+    def test_closed_balance_entry(self):
+        pyopen=fn('OPEN_MomentumDensity_0',sy('I_br_live'))
+        wlopen='OpenAction[MomentumDensity[1],{IBrLive},x1]'
+        for py,wl,changed in (
+            ('Add('+pyopen+',Mul(Function("j_n")(Symbol("x1")),Function("V_r")(Symbol("x1"))))',
+             wlopen+'+Jn[x1]*VR[x1]',wlopen+'-Jn[x1]*VR[x1]'),
+            ('Add('+pyopen+',Integer(5))',wlopen+'+5',wlopen+'-5')):
+            before=self.fixture(py,wl,balance=True)
+            after=self.fixture(py,changed,balance=True)
+            a,b=self.balance_products(before)[0],self.balance_products(after)[0]
+            self.assertEqual(a['closed_residual']['outcome'],'exact')
+            self.assertEqual(b['closed_residual']['outcome'],'exact')
+            self.assertNotEqual(a['closed_residual']['residual'],b['closed_residual']['residual'])
+            self.assertIn('orientation',a['entry_differences']['OPEN_free'])
+            self.assertIn('orientation',b['entry_differences']['OPEN_free'])
+            self.assertNotEqual(a['entry_differences']['OPEN_free']['orientation'],
+                                b['entry_differences']['OPEN_free']['orientation'])
+            # Also exercise the symmetric Python corruption independently.
+            mutated=self.fixture('Mul(Integer(-1),'+py+')',wl,balance=True)
+            self.assertNotEqual(a['closed_residual']['residual'],
+                                self.balance_products(mutated)[0]['closed_residual']['residual'])
+
+    def test_projected_balance_closed_part(self):
+        py='Mul(Symbol("x2"),Add(Function("OPEN_MomentumDensity_0")(Symbol("I_br_live")),Function("j_n")(Symbol("x1"))))'
+        wl='x2*(OpenAction[MomentumDensity[1],{IBrLive},x1]+Jn[x1])'
+        before=self.balance_products(self.fixture(py,wl,balance=True))[0]
+        after=self.balance_products(self.fixture(py,wl.replace('+Jn','-Jn'),balance=True))[0]
+        self.assertEqual(before['closed_residual']['outcome'],'exact')
+        self.assertNotEqual(before['closed_residual']['residual'],after['closed_residual']['residual'])
+
+    def test_derivative_evaluation_points(self):
+        def py(point):
+            return ('Subs(Derivative(Function("V_r")(Dummy("z")), Tuple(Dummy("z"), Integer(1))),'
+                    'Tuple(Dummy("z")), Tuple('+point+'))')
+        base=self.fixture(py(sy('x1')),'Derivative[1][VR][x1]')[0][0]
+        moved=(self.fixture(py(sy('x2')),'Derivative[1][VR][x1]')[0][0],
+               self.fixture(py(sy('x1')),'Derivative[1][VR][x2]')[0][0])
+        for result in moved:
+            self.assertEqual(result['outcome'],'exact')
+            self.assertNotEqual(base['residual'],result['residual'])
+        for left,right in ((py(''),'Derivative[1][VR][x1]'),
+                           (py(sy('x1')),'Derivative[1][VR]')):
+            result=self.fixture(left,right)[0][0]
+            self.assertNotEqual(products(base),products(result))
+
+    def test_all_held_linear_orientations(self):
+        pyaction=fn('OPEN_MomentumDensity_0',sy('I_br_live')+', '+fn('V_r',sy('x1')))
+        wlaction='OpenAction[MomentumDensity[1],{IBrLive},VR[x1]]'
+        wrappers=(
+            ('py',lambda a:'Derivative('+a+',Tuple(Symbol("t"),Integer(1)))'),
+            ('py',lambda a:'Lambda(Tuple(Symbol("o2_s_face")),'+a+')'),
+            ('py',lambda a:fn('OPEN_SumOverAllNativeFaces',sy('J_map')+',Lambda(Tuple(Symbol("o2_s_face")),'+a+')')),
+            ('wl',lambda a:'Inactive[D]['+a+',t]'),
+            ('wl',lambda a:'OpenFirstVariation['+a+',t]'),
+            ('wl',lambda a:'Function[{s},'+a+']'),
+            ('wl',lambda a:'Inactive[Total][Inactive[Map][Function[{s},'+a+'],JMap]]'))
+        for engine,wrap in wrappers:
+            with self.subTest(engine=engine,wrapper=wrap(pyaction if engine=='py' else wlaction)):
+                def run(action):
+                    return self.fixture(wrap(action),wlaction) if engine=='py' else self.fixture(pyaction,wrap(action))
+                action=pyaction if engine=='py' else wlaction
+                before=run(action)
+                negative='Mul(Integer(-1),'+action+')' if engine=='py' else '-('+action+')'
+                after=run(negative)
+                self.assertNotEqual(self.action_deltas(before,'orientation'),self.action_deltas(after,'orientation'))
+                # An outer sign must also reach the held body's action.
+                outer=('Mul(Integer(-1),'+wrap(action)+')' if engine=='py' else '-('+wrap(action)+')')
+                outside=self.fixture(outer,wlaction) if engine=='py' else self.fixture(pyaction,outer)
+                role='OPEN_MomentumDensity_0'
+                self.assertIn(role,self.action_deltas(after,'orientation'))
+                self.assertIn(role,self.action_deltas(outside,'orientation'))
+                self.assertEqual(self.action_deltas(after,'orientation')[role],
+                                 self.action_deltas(outside,'orientation')[role])
+
+    def test_held_balance_entry_orientation(self):
+        action=fn('OPEN_MomentumDensity_0',sy('I_br_live'))
+        def derivative(body):
+            return 'Derivative('+body+',Tuple(Symbol("t"),Integer(1)))'
+        wl='OpenFirstVariation[OpenAction[MomentumDensity[1],{IBrLive},x1],t]'
+        before=self.balance_products(self.fixture(derivative(action),wl,balance=True))[0]
+        after=self.balance_products(self.fixture(derivative('Mul(Integer(-1),'+action+')'),wl,balance=True))[0]
+        def signs(result):
+            return {key:field.get('orientation',[]) for key,field in result['entry_differences'].items()}
+        self.assertNotEqual(signs(before),signs(after))
+
+    def test_action_field_differences(self):
+        py=fn('OPEN_MomentumDensity_0',sy('I_br_live')+', '+fn('V_r',sy('x1')))
+        wl='OpenAction[MomentumDensity[1],{IBrLive},VR[x1]]'
+        base=self.fixture(py,wl)
+        for field,mutation in (
+            ('role',wl.replace('MomentumDensity[1]','InternalForce[1]')),
+            ('head',wl.replace('MomentumDensity[1]','InternalForce[1]')),
+            ('named_OPEN_operands',wl.replace('IBrLive','NBrLive')),
+            ('live_arguments',wl.replace('VR[x1]','VR[x2]')),
+            ('orientation','-('+wl+')'),
+            ('argument_trees',wl.replace('VR[x1]','Wrapper[VR[x1]]'))):
+            with self.subTest(field=field):
+                self.assertNotEqual(self.action_deltas(base,field),
+                                    self.action_deltas(self.fixture(py,mutation),field))
+
+    def test_balance_entry_field_differences(self):
+        py='Add('+fn('OPEN_MomentumDensity_0',sy('I_br_live')+', '+fn('V_r',sy('x1')))+',Integer(3))'
+        wl='OpenAction[MomentumDensity[1],{IBrLive},VR[x1]]+3'
+        def delta(text,field):
+            product=self.balance_products(self.fixture(py,text,balance=True))[0]
+            return {role:fields.get(field,[]) for role,fields in product['entry_differences'].items()}
+        for field,changed in (
+            ('role',wl.replace('MomentumDensity[1]','InternalForce[1]')),
+            ('head',wl.replace('MomentumDensity[1]','InternalForce[1]')),
+            ('named_OPEN_operands',wl.replace('IBrLive','NBrLive')),
+            ('live_arguments',wl.replace('VR[x1]','VR[x2]')),
+            ('orientation','-('+wl+')'),
+            ('argument_trees',wl.replace('VR[x1]','Wrapper[VR[x1]]'))):
+            with self.subTest(field=field):
+                self.assertNotEqual(delta(wl,field),delta(changed,field))
+
+    def test_action_order_does_not_pair_occurrences(self):
+        py='Add('+fn('OPEN_MomentumDensity_0',fn('V_r',sy('x1')))+','+fn('OPEN_InternalForce_0',fn('V_r',sy('x2')))+')'
+        left='OpenAction[MomentumDensity[1],{IBrLive},VR[x1]]'
+        right='OpenAction[InternalForce[1],{TBrLive},VR[x2]]'
+        self.assertEqual(self.action_deltas(self.fixture(py,left+'+'+right)),
+                         self.action_deltas(self.fixture(py,right+'+'+left)))
+        # Repeated same-role occurrences also remain multisets, never zipped.
+        right=left.replace('VR[x1]','VR[x2]')
+        self.assertEqual(self.action_deltas(self.fixture(py,left+'+'+right)),
+                         self.action_deltas(self.fixture(py,right+'+'+left)))
+
+    def test_each_action_binding_repoint(self):
+        for row in c.ACTION_TABLE:
+            with self.subTest(role=row.py):
+                other=next(r for r in c.ACTION_TABLE if r!=row)
+                rows=tuple(replace(r,wl=other.wl) if r==row else replace(r,wl=row.wl) if r==other else r
+                           for r in c.ACTION_TABLE)
+                py=fn(row.py,sy('I_br_live')+', '+fn('V_r',sy('x1')))
+                if row.wl=='held:Total':
+                    wl='Inactive[Total][Inactive[Map][Function[{s},VR[x1]],JMap]]'
+                elif row.wl=='native:TBulkNormalLive':
+                    wl='OpenNativeField[OPEN[TBulkNormalLive,IBrLive]][s,x1,t,VR[x1]]'
+                elif row.wl=='identification:material':
+                    wl='UnresolvedIdentification[OPEN[NBrLive,IBrLive],IBrLive,TBrLive,JMap]'
+                elif row.wl=='operand:UnspecifiedRotationalNormalRates':
+                    wl='OPEN[UnspecifiedRotationalNormalRates,IBrLive]'
+                else:
+                    wl='OpenAction['+row.wl+',{IBrLive},VR[x1]]'
+                self.assertNotEqual(self.action_deltas(self.fixture(py,wl),'role'),
+                                    self.action_deltas(self.fixture(py,wl,actions=rows),'role'))
+
+    def test_each_balance_binding_repoint(self):
+        # The real balance table's tags/keys, with synthetic closed operands.
+        py=''.join('PY_O2_'+r.py[0]+': Integer('+str(11+i)+')\n' for i,r in enumerate(c.BALANCE_TABLE))
+        wl_records={}
+        for i,row in enumerate(c.BALANCE_TABLE):
+            wl_records.setdefault(row.wl[0],[]).append('"'+row.wl[1]+'" -> '+str(2+i*i))
+        wl=''.join('WL_O2_'+tag+': <|'+','.join(items)+'|>\n' for tag,items in wl_records.items())
+        baseline=self.streams(py,wl,c.BALANCE_TABLE)
+        for row in c.BALANCE_TABLE:
+            with self.subTest(balance=row.label):
+                other=next(r for r in c.BALANCE_TABLE if r!=row)
+                rows=tuple(replace(r,wl=other.wl) if r==row else replace(r,wl=row.wl) if r==other else r
+                           for r in c.BALANCE_TABLE)
+                changed=self.streams(py,wl,c.BALANCE_TABLE,balances=rows)
+                def residual(result):
+                    return next(r['comparison']['closed_residual']['residual'] for r in result[1]
+                                if r['kind']=='balance_comparison' and r['row']==row.label)
+                self.assertNotEqual(residual(baseline),residual(changed))
+
+    def test_secondary_tables_injective(self):
+        c.validate_secondary(c.ACTION_TABLE,c.BALANCE_TABLE)
+        for table,other in ((c.ACTION_TABLE,c.BALANCE_TABLE),(c.BALANCE_TABLE,c.ACTION_TABLE)):
+            for side in ('py','wl'):
+                row=table[0]
+                duplicate=replace(row,**{side:getattr(table[1],side)})
+                with self.assertRaises(c.InputError):
+                    if table is c.ACTION_TABLE:
+                        c.validate_secondary((*table,duplicate),other)
+                    else:
+                        c.validate_secondary(other,(*table,duplicate))
 
 
 if __name__ == '__main__':

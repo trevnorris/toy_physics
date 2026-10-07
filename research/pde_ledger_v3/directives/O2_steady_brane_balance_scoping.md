@@ -1,0 +1,194 @@
+# O2 — live steady brane momentum and support balance: scope
+
+**Author:** Codex, 2026-10-06. **Status:** authored for the orchestrator's review; no physics or build
+clearance is claimed.
+
+**Deliverable:** inventory the recorded ingredients, missing premises, plan ownership, prior-art oracles,
+user decisions and finite sub-steps needed to obtain S9b v9's `ℬ_hold^live`.
+
+Source convention: paths below are relative to `research/pde_ledger_v3/` unless prefixed `v2:`; that prefix
+means `research/pde_ledger_v2/notes/`, read-only. **v9** means
+`directives/S9b_SHARED_PHYSICS.md` preserved at **`05b1a5d5`**, retrieved with
+`git show 05b1a5d5:research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md`. Other line references are to the
+files read at repository HEAD **`961090ec0718`**. `directives/S9b_linked_brane_sources.md:15–27,29–80,84–99`
+is the accompanying source map; the underlying records, rather than that map alone, supply the evidence.
+The requirements register's pass-2 review is pending (`SUBSTRATE_REQUIREMENTS.md:3`); its assignments and
+requirements below retain that status. This inventory reports existing evidence, without a derivation or CAS.
+
+## 1. The object
+
+O2 is **the live steady momentum/support balance `ℬ_hold^live`**, the missing relation among the brane
+profiles, the body force `F_drive(r)` and face/support tractions `T_hold,s(r)` (v9:287–290). Its setting is
+one isolated, spherically symmetric mass at rest, with its drain flowing: far field, steady, linear waves,
+lab time in the brane's far-field rest frame, with the material velocity `V` live (v9:113–114).
+The linked source map identifies both in-plane and normal force/support content as part of this object
+(`S9b_linked_brane_sources.md:87`). A wave-displacement equation, a thickness perturbation equation and a
+static equation for `h` have different domains and do not individually identify O2.
+
+The profiles `V`, `ρ_br`, `μ_⊥`, `ξ_w`, `δ` and `j_n`, the bulk state, the forces, the tractions and their
+spatial derivatives remain live. `V` is the velocity of the material displaced by light's `u`; it is
+distinct from the wave velocity, the outward face velocity `V_s`, and the bulk-normal drain `v_dr`
+(v9:15–36,43–45,102–105,210–215). `ξ_w=ℓh` identifies the embedding field within its recorded sector;
+the independent S11b face-centre perturbation `ζ_c` and thickness `W` do not supply a replacement for it
+(v9:216–228). LAB_HELD is the supplied anchoring of the steady light-speed profile (v9:51–54,268–269);
+it does not specify a physical holder or establish material constancy.
+
+`GM` remains the independent mass parameter measured by slow test-matter orbits (v9:132–134).
+`F_drive`, its coupling to `GM`, and the exchange momentum `Π_n` are **unsupplied**. They remain named
+operands or inputs; neither a gravitational body-force profile nor an exchanged-material velocity is
+selected here. The distinction between mechanical traction and momentum transported with exchange also
+remains to be specified before a closed law can be claimed.
+
+Each other OPEN item has the following relation to O2 (names and domains from v9:283–312):
+
+| Item | Classification relative to O2 | What that classification permits |
+| --- | --- | --- |
+| **O1 / `ℳ_⊥`** | **Constitutive input to closure.** | Its stiffness response may supply part of a brane stress law. The speed/inertia ratio alone supplies neither that response nor the full stress required by momentum balance. A formal balance may retain constitutive stress as an operand while O1 stays open. |
+| **O3 / `Π_n`** | **Operand of O2**, explicitly named as such in v9:291–294. | Exchange carries unspecified momentum, direction and material velocity. The perturbative S11b treatment of generalized flux force supplies no value for this operand on the flowing background. |
+| **O4 / `ℰ_h^live`** | **Coupled embedding/longitudinal input to a closed O2 system.** | A live relation for the embedding and its stresses is needed if the normal part of O2 is to determine `ξ_w`. Its content may overlap that normal balance; the future spec must identify this overlap rather than count two independent equations. The static closure supplies no flowing extension. |
+| **O5 / `ℋ_core`** | **Boundary/support input.** | It selects physical core response and mouth data, potentially including boundary tractions and their relation to `GM`. A local far-field balance can retain those data symbolically without solving the core. |
+| **O6 / `𝒥_map`** | **Exchange/projection and bulk-boundary input.** | It connects the sheet source to finite-slab fluxes, measures, bulk-normal flow and return data. Those identifications are needed to connect a face description of transported momentum to O3. Mass conservation alone does not supply the map. |
+| **O7 / `ℛ_br` and further grades** | **Density/ordering input to closure and truncation.** | `ρ_br` can remain a live field in O2 without a density-response law. Eliminating it using the bulk profile, or deciding which force/source terms survive at a stated order, requires the response and grades that O7 leaves open. |
+
+None of these six items is wholly independent of a **closed** live steady state. They are distinct
+obligations, however: writing a balance with named stress, exchange and boundary operands does not require
+solving every constitutive or core question. Part C's optical response choices and the eventual light
+observables are subsequent compatibility questions, rather than premises determining O2.
+
+## 2. What the records supply
+
+“Supplied” and “postulated” identify inputs, not independently established dynamics for the live brane.
+“Verified” below is restricted to the domain and evidence stated by the cited record. No row promotes a
+held, static or perturbative relation to a live-flow equation.
+
+| Ingredient | Recorded content and source lines | Verification/applicability domain |
+| --- | --- | --- |
+| **Sheet mass balance** | `∇·(ρ_br V)=−j_n`, v9:37–45,195–215. | **Supplied live steady relation** in S9b. The sheet source convention is fixed; its physical relation to order conversion, slab fluxes and `v_dr` remains O6. This is not a new verified projection of the dynamical drain. |
+| **Finite-slab mass balance and moving-face flux** | `Σ=ρ_4D W`; physical sourced evolution and relative outward face flux, `directives/S11c_a_SHARED_PHYSICS.md:126–148,348–371`. Historical B identifies independent reviewer derivations of interfacial mass balance and the virtual-displacement rule, `steps/S11bB_interface_assembly.md:126–139`. | Uniform perturbation assembly, extended by recorded **first shape derivatives** of supplied nonuniform profiles and true-face/projected measures. The a record's domain is `steps/S11c_a_interface_shape_derivatives.md:26–34,63–68,255–260`. Its background exchange and bulk current are frozen in the supplied state; this does not verify the live O6 map. |
+| **Material identity and inertia** | `u` as material displacement, `steps/S11_stray_longitudinal.md:32–38`; slab/material density maps, `directives/S11b_SHARED_PHYSICS.md:324–337`; quadratic kinetic model, `:263` and `steps/S11bB_interface_assembly.md:80–85`. | Homogeneous material-displacement and finite-slab linear models. The physical identity and quadratic inertia remain a substrate requirement, `SUBSTRATE_REQUIREMENTS.md:386–400`; this is not a full kinetic law about a draining background. |
+| **In-plane momentum balance** | Wave-displacement momentum row and its binding virtual constraint, `directives/S11b_SHARED_PHYSICS.md:318–363`. Nonuniform constraint-reduced operator rows, `directives/S11c_b_SHARED_PHYSICS.md:281–304`; `steps/S11c_b_variable_coefficient_operator.md:46–57`. | **Linear perturbations**, uniform S11b or supplied-profile S11c. S11b excludes active `v_dr` from its operators (`S11b_SHARED_PHYSICS.md:99–111`). Current b equations have scoped repair support, with full residual/composition unresolved (`S11c_b_variable_coefficient_operator.md:35–44`). No live steady background momentum row is supplied. |
+| **Normal mechanical balance** | Thickness equation and prescribed face work, `directives/S11b_SHARED_PHYSICS.md:353–372`; the soluble breathing slice is recorded at `steps/S11b_interface_coupling_law.md:89–93`. | Uniform **thickness perturbation**, with the record's slice restrictions. This is not the normal momentum/support equation for the steady embedding `ξ_w` or a dynamical throat. S11c's geometry and repaired face rows retain their separate scope limits. |
+| **Brane stress/constitutive ingredients** | Quadratic stored energy and independent invariants, `directives/S11b_SHARED_PHYSICS.md:255–299`; functional constitutive operands `μ_θ` and `p_W`, `:347–352`. Basis/representative discussion, `steps/S11b_interface_coupling_law.md:95–121`. Nonuniform energy/operator scope, `steps/S11c_b_variable_coefficient_operator.md:46–57`. | Constant-coefficient linear response in S11b; supplied varying thickness/modulus and first-background-jet expansion in S11c. These are not a closed nonlinear material stress. The uniform representative fold is restricted to that domain (`directives/S11c_b_SHARED_PHYSICS.md:165–174`). |
+| **Transverse stiffness and light inertia** | Uniform transverse branch and basis qualification, `steps/S11b_interface_coupling_law.md:74–87`. S9b supplies the pointwise identification `c_γ²≡μ_⊥/ρ_br`, v9:24–33,185–194. | Uniform anchor plus a **supplied** identification for live S9b profiles. There is no constitutive response of `μ_⊥` to density, flow, embedding or bulk state. |
+| **Interface traction and response** | Prescribed perturbative face traction/virtual work, `directives/S11b_SHARED_PHYSICS.md:358–372`; affinity and memory-carrying face closure, `:194–224`; tilted-face traction, relative flux and true-area work, `directives/S11c_a_SHARED_PHYSICS.md:348–371`. Historical B's independently re-derived affinity and related ingredients are at `steps/S11bB_interface_assembly.md:126–139`. | Linear normal face response, with independent response times; a's extension is geometric first shape order. The static background pressure belongs to declared support, rather than the perturbation affinity (`S11c_a_SHARED_PHYSICS.md:254–267`). No DC constitutive traction or exchange law for the live background follows. |
+| **Stationary force/support operand** | Declared support `𝒮_hold⁰={f_hold⁰,t_hold,s⁰}` and background state, `directives/S11c_a_SHARED_PHYSICS.md:246–279`; background-order energy/geometry operand, support operand and comparison, `directives/S11c_b_SHARED_PHYSICS.md:190–235`. | **Held/support-stabilised supplied profiles**, with face velocity, flux and affinity frozen at background order. a explicitly does not test stationarity. b's current review limits remain those above. This is a stationary energy/geometry comparison, not verified O2 with live flow. |
+| **Uniform bulk response** | Rest-frame acoustics, `directives/S11b_SHARED_PHYSICS.md:162–181`; computed face impedance, relative-flux channels and projection identity, `steps/S11bA_interface_response.md:32–65`. | Uniform, scalar bulk acoustics linearised about **rest**, with the stated outgoing/decaying branch prescription. The unified record retains the uncarried background-flow correction (`steps/S11b_interface_coupling_law.md:154–164`). It supplies no bulk background response to live drain flow. |
+| **Curved bulk response** | c1's two-momentum kernel and pressure/relative-flux response coefficients, `steps/S11c_c1_curved_bulk_closure.md:34–43,99–115`; non-grazing and rest-frame qualifications, `:146–155,194–196`; live density reinstatement, `steps/S11c_c2_self_energy_fold.md:192–195`. | First shape order on supplied profiles, strict-rest bulk. Kernel/pressure/flux agreement does not establish whole-operator, traction or energy agreement; those remain **UNDECIDED** in the cited c1 record. Current composition remains unresolved (`steps/S11c_PARTIAL_CLOSEOUT.md:15–25`). No steady bulk/holder law is supplied. |
+| **Bulk EOS and density profile** | Symbolic `P=Kρ^n` and sound-speed response, and the independent bulk number-density profile `f`, v9:140–146. The underlying GNLS action is recorded at v2:`stages/ledger_stage004_gnls_action_dimensional_foundation.md:56–69,94–109`. | S9b **supplies** the EOS and first-order-in-`f` response; it does not solve the bulk profile or give `ρ_br(f)`. Stage 004's action content is postulated and its verification is dimensional; it is not a live brane momentum derivation. `c_s`, `c_γ` and `c_E` remain distinct. |
+| **Conserved total material and order conversion** | Total continuity and order-balance PDE, v2:`stages/ledger_stage006_two_phase_chiB_ontology.md:69–87`; status and earned-within-closure qualification, `:16–33`. Committed dynamical drain choice, v2:`stage045_nonvariational_block_prep.md:17–35`; current owner, `V3_STEP_PLAN.md:579–617`. | **Postulated two-phase ontology**, with structural identities earned within that split. Order conversion is distinct from a total-material sink. The 045 document is prep, not a completed source-partner derivation (`:1–15,41–54`). Its controllers and force partition are proposed structure, not supplied O2 or O3. |
+| **Conservative bulk matter stress** | Convective, EOS and quantum matter-stress ingredients, v2:`stages/ledger_stage002_matter_stress_force_assembly.md:62–107`; number-flux drain assumption, `:51–60,109–121`; unresolved quantum/confining/other profile contributions, `:239–246`. | Historical **stationary far-field inter-defect** construction, with a Gauss number-flux drain. It is not the shear-bearing brane stress or a local support law. Its dynamical-drain bridge is missing (`V3_STEP_PLAN.md:626–640`), and S15 retains independent source-side assumptions and normalization debt (`:652–668`). No `F_drive(GM)` is imported from it. |
+| **Embedding field identity and reduction** | `ξ_w=ℓh`, v2:`stages/ledger_stage031_puncture_deflection_field_identity_source.md:60–76`; parent, projection and reduction, v2:`stages/ledger_stage030_electric_scalar_localized_h_closure.md:46–51,63–66,88–112,127–130`. | Reduction **given the postulated localized G0 sector**. It identifies a field and its reduced coefficients; it does not identify a live-flow kinetic law. The plan retains Q1's static/postulated status (`V3_STEP_PLAN.md:871–893`). |
+| **Embedding/longitudinal constitutive action** | Reduced coupled `(u_L,h)` action, v2:`stages/ledger_stage030_electric_scalar_localized_h_closure.md:134–142`; postulate and undisclosed cross-sector obligations, `:228–253`. | Constant-coefficient scalar closure, earned given its postulated action, carried by Q1 in the **static sector**. Neither a background `V` nor normal-exchange momentum is supplied; the longitudinal displacement is distinct from `h`. A flowing promotion is O4. |
+| **Static mouth source and exterior normal-field equation** | Mouth functional/source, v2:`stages/ledger_stage031_puncture_deflection_field_identity_source.md:68–76,96–138,147–155`; exterior governing equation and held mouth datum, `:157–174`; frozen sleeve/profile postulate, `:243–253`. | Static oriented puncture, postulated profile class and constant exterior stiffness. The mouth coupling is distinct from `j_n`; its orientation label is distinct from Part C's exponent. The physical holder remains deferred. The solved exterior profile is not an input to O2. |
+| **Exchange momentum** | The record boundary is v9:291–294 and `S9b_linked_brane_sources.md:48–51,88`; S11b's direct generalized flux-force prescription is scoped at `directives/S11b_SHARED_PHYSICS.md:356–363`. | **No supplied live `Π_n`**, exchanged-material velocity, direction or source-partner law. A linear perturbation prescription is not a value for momentum transported by background exchange. |
+
+The current handoff supplies no further live holder, drain or normal balance:
+`steps/S11c_PARTIAL_CLOSEOUT.md:19–21,33–37` and
+`steps/S11c_d_profile_conditioned_scattering.md:21–29,60–72` preserve the strict-rest/supplied-profile
+domains and later owners. Exploratory throat notes remain inputs, not adopted laws. The rest-state
+requirement, driven-state tension, reservoir requirement and separate drain data are recorded at
+`SUBSTRATE_REQUIREMENTS.md:181–212,402–442`. These do not close O2.
+
+## 3. What is missing
+
+| Missing ingredient | Could it follow from supplied ingredients, or does it need a premise? |
+| --- | --- |
+| **Conservative live brane momentum/stress and inertial content** | The conservative bulk antecedent belongs to S1.5 (`V3_STEP_PLAN.md:185–204`); quadratic brane content belongs to S8 (`:332–350`). Their supplied/conditional linear ingredients do not determine the full material response on a flowing, embedded brane. A declared admissible material action or stress/inertia law is needed for closure; a formal law can retain those objects symbolically. Any reduction from the substrate is a later derivation, not something this inventory supplies. |
+| **Normal momentum/support content and its relation to O4** | Field identity and geometric projection can be used within their supplied domains. The live embedding/longitudinal relation, normal material response, and any distinction between centre, width and embedding dynamics require an explicit governing model or an independently established reduction. Merely promoting static coefficients or replacing a time derivative does not supply that model. |
+| **`F_drive` and its connection to `GM`** | Neither mass conservation nor the recorded wave/static sectors fixes the body force. A user-supplied force/coupling premise could close this input conditionally; otherwise it remains symbolic pending the gravity source/response work and drain bridge. Slow test-matter `GM` cannot be identified with a drain, mouth or profile amplitude by definition. |
+| **O3's momentum transfer** | Transported momentum could be obtained from a specified underlying conservation system and interface kinematics, once the material velocity and conversion/source partners are defined. The current records do not define those live partners. Closure therefore needs a velocity/momentum-transfer premise or a later microscopic/substrate derivation; knowledge of scalar `j_n` alone is insufficient. |
+| **O6's mass/order/sheet/face/bulk map** | Relative flux, density factorization and true-area projection are recorded ingredients. A particular live sheet reduction could be derived once its geometry, order weighting, material identification and bulk/return data are supplied. The identification with `Γ_B` and `v_dr` is missing; substituting the former frozen-wall total-mass sink would change the committed model. |
+| **Background face traction and support response** | The perturbative traction law identifies mechanical pairing and response about its stated background. It supplies no flowing background pressure/traction, tangential loading, or physical support response. These may follow from a chosen coupled bulk/interface/holder model; otherwise they are new declared inputs. Keep mechanical support and transported momentum separately identified. |
+| **Constitutive closure O1/O7** | The speed ratio and slab density factorization constrain the named quantities but do not determine stiffness or density responses, full prestress, compression/thickness coupling or their gradients. A supplied constitutive response or parent model is needed to eliminate them. They need not be eliminated merely to state O2. |
+| **Angular-momentum and reference-frame content of the chosen stress** | The register leaves material admissibility and the rotational reference frame open (`SUBSTRATE_REQUIREMENTS.md:322–367`). A bare transverse modulus does not answer those requirements. If the selected stress needs internal angular momentum or couple stress, that content must be declared or derived at its owner; it cannot be inferred from flow or quietly replaced with an active material. This inventory does not perform that material audit. |
+| **Physical core/return/asymptotic data** | Existing held mouth data and the independent asymptotic light speed are recorded inputs. Selection by a physical core/holder and the drain/return boundary conditions remains O5/O6. The far-field law can carry those boundary inputs without solving the Q2/S22 throat. |
+| **Individual grades and derivative scales** | v9:70–90,314–323 supplies speed-ratio, velocity and slope counting and separate first order in `f`. It does not supply separate density, stiffness, source, momentum-transfer, force, support or holder grades, nor a relation of `f` to `ε`. A later order contract needs user/substrate input. Until then all such grades remain symbolic; no operand is discarded through an assigned higher order. |
+| **Drive/reservoir work if a non-passive response is selected** | The existing record names a conditional reservoir-and-budget obligation, rather than a quantitative supply (`steps/S11b_interface_coupling_law.md:57–63`; `SUBSTRATE_REQUIREMENTS.md:402–420`). A named drain alone is insufficient. This is a requirement on an adopted response, with energy partners owned by S12, not a new thermodynamic restriction imposed on every possible closure. |
+
+Thus conservation, geometry and supplied identities can constrain a future derivation, but they do not
+choose its constitutive, driving, exchange or holder inputs. Unclosed operands are an admissible finite
+deliverable; obtaining the local law need not become a solve of the substrate, gravity calibration,
+nonuniform light conversion and throat interior.
+
+## 4. Where the plan files the law
+
+**S12 is the closest existing owner for O2's non-variational momentum/source partners and live
+drain/return data.** S1.5 explicitly supplies only conservative left-hand sides and leaves S12's partners
+open (`V3_STEP_PLAN.md:196–204`). S12 owns dynamical order conversion, its source/controllers and its
+separate boundary data (`:579–617`); the closeout preserves that assignment
+(`steps/S11c_PARTIAL_CLOSEOUT.md:21,33`). The plan does **not** explicitly name `ℬ_hold^live` or give S12 a
+completed brane momentum/support derivation. Filing O2 as a bounded S12 balance sub-step is a proposal,
+not an existing banked result or an amendment made by this file.
+
+The complementary owners remain distinct:
+
+| Content | Existing owner / source boundary |
+| --- | --- |
+| Conservative material balances and stress convention | **S1.5**, `V3_STEP_PLAN.md:185–204`; material action/brane linear stress **S8**, `:332–350`. |
+| Wall tension, width and compression/thickness response | **S5–S8**, `:271–350`; those planned steps do not supply a live holder. |
+| Source strength, its mass connection and dynamical-drain flux bridge | **S13/S14a**, `:619–640`; source-side matter force **S15**, `:652–668`. These do not already specify `F_drive(GM)` for the brane. |
+| Static embedding-sector identity/closure | **Q1/Q2**, `:871–906`, with the recorded postulates and static domain. |
+| Physical core holder and nonlinear material/parent closure | **Q2/S22**, `:908–939,1207–1214`; competing holder candidates remain unselected. |
+
+The local live balance belongs with S12, with explicit references to its conservative and boundary
+inputs. A physical holder solve belongs at Q2/S22. Source-to-`GM` derivation belongs to the gravity owners.
+These later questions remain with those steps; this scope neither answers them nor requires their full
+completion before O2 can be expressed with named operands. S11c repair/composition and light-loss work
+remain outside this task.
+
+## 5. Prior art — oracles only
+
+Only this section uses web search. Access was checked on 2026-10-06. Comparison scope below is a proposed
+use of an oracle, conditional on matching its assumptions; **none of its equations, results or material
+models is a premise for O2**. Ordinary two-dimensional surfaces in a three-dimensional bulk do not by
+themselves establish a three-dimensional brane law in a four-dimensional bulk.
+
+| Published source and access status | Possible comparison and conditions to check |
+| --- | --- |
+| **M. E. Gurtin and A. I. Murdoch (1975), “A continuum theory of elastic material surfaces,” Archive for Rational Mechanics and Analysis 57, 291–323.** **Opened publisher abstract/bibliography; full text unverified.** [Publisher page, DOI 10.1007/BF00261375](https://link.springer.com/article/10.1007/BF00261375). | The abstract reports surface stress established from force/moment balance, coupling of surface and body stress, and linear surface elasticity with residual stress. This is an oracle candidate for O2's stress/traction pairing and a declared elastic surface limit. Before an equation-level comparison, open the full text and check material-surface kinematics, dimension, exchange assumptions and linearisation. It supplies no brane constitutive selection. |
+| **H. Abels, H. Garcke and G. Grün (2012), “Thermodynamically Consistent, Frame Indifferent Diffuse Interface Models for Incompressible Two-Phase Flows with Different Densities,” Mathematical Models and Methods in Applied Sciences 22(3), 1150013, DOI 10.1142/S0218202511500138.** **Opened author manuscript**, especially §2, equations (2.12)–(2.15), and §4.3.6; [manuscript PDF](https://epub.uni-regensburg.de/20566/1/MP146.pdf), [arXiv abstract](https://arxiv.org/abs/1104.1336), [publication metadata](https://epub.uni-regensburg.de/64011/). | The manuscript treats momentum accounting with diffusive mass transport and mobility-dependent interface limits. It is a possible oracle for a derived exchange-momentum law and its velocity-frame bookkeeping. Its two incompressible fluids, phase-field thermodynamics, velocity definition and mobility scaling must match a separately declared limit. S12's order conversion in one medium is not identified with this model. |
+| **L. E. Scriven (1960), “Dynamics of a fluid interface: Equation of motion for Newtonian surface fluids,” Chemical Engineering Science 12, 98–108, DOI 10.1016/0009-2509(60)87003-0.** **UNVERIFIED paper: opening the DOI/publisher full text failed.** Its bibliographic entry is in the opened [Gurtin–Murdoch publisher bibliography](https://link.springer.com/article/10.1007/BF00261375). | Candidate oracle for the force balance of a flowing interface if a Newtonian surface-fluid limit is independently declared. The actual equations, transport/exchange assumptions and applicability remain unverified here. The title does not authorize replacing brane shear elasticity with surface viscosity. |
+| **W. Helfrich (1973), “Elastic Properties of Lipid Bilayers: Theory and Possible Experiments,” Zeitschrift für Naturforschung C 28, 693–703, DOI 10.1515/znc-1973-11-1209.** **UNVERIFIED paper: publisher full text could not be opened; the bibliographic search result was not a full-text read.** [Publisher citation](https://www.degruyterbrill.com/de/document/doi/10.1515/znc-1973-11-1209/html). | Candidate for a declared membrane-curvature sector of the normal balance, only after its actual result and assumptions are opened and checked. No bending functional, modulus, equilibrium shape or holder is imported. It would check a restricted material limit, not the live drain mechanism. |
+
+These references offer checks of independently derived objects in stated limits. They do not select
+`F_drive`, its `GM` coupling, `Π_n`, a physical core holder or an optical outcome. No inaccessible paper
+is treated as corroborating a computed law.
+
+## 6. Decisions for the user
+
+These are unresolved **physical premise choices**, not requests to run work. Existing choices remain:
+`V` and all profiles stay live, S9b's speed profile is LAB_HELD, `GM` is independent, and the drain is
+dynamical order conversion rather than the ruled-out frozen-wall mass sink. An option retaining a named
+input permits a conditional law; it does not resolve that input.
+
+| Question | Options and what must be declared |
+| --- | --- |
+| **Which material/order-field branch governs the O2 system?** | The **real/dissipative** or **complex/inertial** branch left to S1's A13 gate, or retain the branch-dependent material operands pending that gate (`V3_STEP_PLAN.md:176–179,616–617`). If already decided in a later authoritative record, cite that record rather than choose again. |
+| **What supplies the live brane stress, inertia and normal material response?** | A specified coupled material/parent action; specified constitutive stress/inertia responses with their domain; or named responses left open. Identify any internal angular-momentum/couple-stress and reference-frame content needed by the chosen model. The uniform optical stiffness does not supply the rest of this premise. |
+| **What physical force drives the steady state, and how is it connected to `GM`?** | Supply a body-force/coupling postulate and its domain; require the connection from the gravity sector while keeping it open in O2; or retain `F_drive` and `GM` as independent inputs for the conditional balance. No profile amplitude is an automatic mass parameter. |
+| **What momentum does converted/exchanged material carry?** | A declared identification with the live brane material velocity; distinct live bulk/converted-material velocities and their transfer rule; or the full vector `Π_n` retained as an unspecified response. State whether additional non-variational momentum partners are present and which system carries their reaction. |
+| **What sheet/slab reduction identifies the normal exchange?** | A sharp-sheet reduction with its supplied order/material weighting; a dynamical finite slab with its face/projection measures; or `𝒥_map` retained symbolically. Any closure must specify the relation to S12's order balance, `v_dr`, and distinct source/controller versus mouth/collar/return boundary data. |
+| **What status has the recorded embedding closure on the flowing background?** | Supply a live coupled embedding/material model with its premises; retain L3's field identity while leaving `ℰ_h^live` open; or use L4–L6 only as a separately labelled static-sector comparison. Their static use supplies no flowing extension or map of `u_L` to `V`. |
+| **What selects the support/holder and core data?** | Declared external support with named body/face loads; a proposed physical holder involving trapped-wave pressure, drain-flow response, or their combination; or `ℋ_core`, `T_hold,s` and the mouth data left open until Q2/S22. A candidate mechanism must keep its constitutive response and, when needed, reservoir/work budget explicit. The plan has not selected among its holder candidates. |
+| **How are stiffness and brane density linked to the live bulk state?** | Specify `ℳ_⊥` and `ℛ_br`, including thickness/projection dependence; supply a parent model from which those responses are to follow; or retain them as symbolic constitutive inputs. A Part C speed response constrains the ratio and does not choose either response separately. |
+| **What are the force/source/support/holder grades and derivative scales?** | Supply a consistent order contract, including any relation of `f` to `ε`; or retain the missing grades symbolically and limit the deliverable to the untruncated named balance. Preserve v9's existing ratio/velocity/slope counting without assigning separate density/modulus orders or hiding unknown operands at a higher order. |
+
+## 7. Proposed sub-steps and review gates
+
+These are proposals for later authorization. The present task ends with this file. Reviews at this
+handoff are run by Claude under `AGENTS.md`; no review or computation is launched here. A finite law
+with explicitly unresolved physical inputs is a permissible end point.
+
+| Order | Deliverable | Review gate / finite boundary |
+| --- | --- | --- |
+| **1. Review the scope and record premise decisions.** | Reviewed version of this scope plus an orchestrator-authored decision list naming the user-selected physical inputs, retained OPEN operands, intended claim and owners. | This Codex-authored physics-bearing scope: **fresh Claude + Grok, review-until-clear**. The subsequent orchestrator decision list: **one Codex + Grok pass, verify findings and fold once**. Physics-bearing specifications within it still need their own substantive clearance. Stop if a required physical premise remains unavailable beyond a conditional deliverable. |
+| **2. Bound the conservative and geometric inputs.** | One source/input contract for exactly the brane material, conservative momentum/normal-stress operands, geometry and density/projection conventions used by O2. State which are recorded, supplied, postulated or OPEN; name any O2/O4 overlap. | **Two non-author legs by actual authorship, review-until-clear** on physics fidelity. Reuse applicable reviewed ingredients. Missing S1.5/S8 or material content is returned to its owner or retained as an operand; this sub-step is not a new substrate reconstruction or S11c repair program. |
+| **3. Specify the live balance object under S12.** | A physics spec for the in-plane and normal momentum/support relation, with live coefficients, drive, face/support loads, O3 momentum transport, O6 identifications and explicit source/boundary separation; either a symbolic balance or a closure at the agreed order. | **Two non-author spec legs, review-until-clear**, before use as governing physics. No expected answer, sign, cancellation, profile or optical compatibility outcome is supplied. If no order contract exists, keep the affected terms/grades as named operands. |
+| **4. Independently construct the law.** | SymPy and blind Wolfram constructions from the reviewed physical inputs, emitting the momentum/stress/support objects and their domain qualifications, with literal transcripts. | **Build review-until-clear** with valid non-author pairing for each author; independent reviewer derivations and mandatory **FORM** ablations. Variable coefficients and exchanged-material velocities stay live. Use the repository guard for CAS; memory/parallel allocation requires the task's user choice, with no time limits and at most two Wolfram kernels. No completed jobs are replayed. |
+| **5. Compare objects and apply applicable oracles.** | A bounded comparison of the two constructions and separate checks against opened prior-art results only where their physical domains, velocity definitions, dimensions and retained order match. Preserve disagreements and inaccessible-source limits. | Comparator/check instruments receive their own **two non-author build legs, review-until-clear**, with meaningful form/one-sided controls and operands emitted before guards. Verify each finding from filed evidence; an oracle never substitutes for the construction. A second method failure or a new unassigned sub-problem triggers the repository stop rule. |
+| **6. Record O2 and hand it back to the linked-brane question.** | A short law record stating the established balance, exact domain, supplied inputs and remaining O1/O3–O7 dependences; identify which inputs a later S9b Part D calculation may use. | **Two non-author record legs, source-first and review-until-clear** on what may be claimed. Stop once that finite record is complete. Constitutive elimination, `GM` calibration, physical holder selection/solve and light-observable compatibility remain at their named later steps. |
+
+**Current STOP:** the scoping artifact is written. No derivation, CAS, review round or plan amendment was
+performed. No commit is made, as required by
+`directives/O2_steady_brane_balance_scoping_directive.md`. Open questions are the physical premise choices
+in §6 and the later review of this file; the conservative, source and holder debts retain their owners.

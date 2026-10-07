@@ -1,0 +1,21 @@
+Repaired [the inventory](/var/projects/toy_physics/_scratch/light_leakage/light_leakage_scoping.md) in place. No other file modified by me; commits: none. STOP.
+
+| Finding | Change |
+|---|---|
+| R1 | Part 1 observation cells: removed coefficients, tolerances and theoretical predictions as bounds; added measured yardsticks/gaps; corrected Corning to **16 mm radius**. |
+| R2 | Part 1 and §2.3: corrected brane/bulk receivers and transverse-survival accounting. |
+| R3 | §2.1: merged former C2 into E1/E3’s thickness component; prevented additive double counting. |
+| R4 | §§2.1–2.3: added E5, C3, C4, O4 and O5. |
+| R5 | §2.1: added per-item drain statements and named freezes; retained record disagreements. |
+| R6 | E4: restored exact formula, conditions, uniform-zero statement and photon caveat. |
+| R7 | Part 1: corrected object-specific statuses and polarization mapping; retained Raman/Brillouin-specific NOT ADDRESSED. |
+| R8 | Part 1: marked unopened chapter bodies and completeness UNVERIFIED. |
+| R9 | §2.2 Gu–Fuller: replaced control-cost oracle with uncontrolled radiation term; removed controller/reservoir analogy. |
+| R10 | §2.4: added RG/HB criteria, Tolman, FIRAS/CMB, photon lifetime and polarization yardsticks; explicitly deferred particle stability; defined codes. |
+| R11 | §2.3: added recorded correlations and validity limits; corrected Hermitian label, Molz DOI and Marcuse 1970 access. |
+
+Counts: **13 mechanisms** — ABSENT **1**, PRESENT ANALOG **9**, NOT ADDRESSED **3**. **13 route items** — equation-level **5**, candidate **3**, open/non-establishment **5**.
+
+UNVERIFIED: Keiser/Snyder–Love/Telecommunications chapter bodies; Molz primary text; Demma equations; Marcuse 1970 equation glyphs; Marcuse 1969 visual glyph check; Tamura measurement protocol; Friedland–Giannotti journal full text/unit correspondence.
+
+Qualifications/disagreements: R7’s records name generic nonlinear coupling, not Raman/Brillouin interactions. [Gu–Fuller’s Eqs. 13–16](https://vtechworks.lib.vt.edu/bitstreams/ac456826-ab58-4e3b-9274-ec27505c0cab/download) also include controls. The [Friedland–Giannotti preprint](https://arxiv.org/pdf/0709.2164) prints `erg⁻¹` in the supernova criterion, unlike the review; this discrepancy remains explicit. Photon lifetime is recorded without calculating a new per-length limit. No calculations or confinement verdicts added.

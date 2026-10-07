@@ -1,0 +1,67 @@
+I'll review the inventory against the directive and the records it cites, starting with the directive and the ledger records before I open the artifact.The directive names the records the inventory must cover. I'll read those sections and form a view of what they establish before opening the inventory.The records are in hand. Next I’ll check the inventory’s citations against those passages and the prior-art sources it quotes.**Verdict: NEEDS REVISION**
+
+The inventory has the routes, the survival rule, and the named yardsticks, and it does not predict what the bracket will find. Several columns still point the bracket at the wrong receiver, the wrong status, or the wrong constraint.
+
+## Findings
+
+**1. Energy destination is wrong on rows 1, 7, 9, 11, and 13.**  
+The directive’s destination is one of: the same transverse branch (survives), another brane branch, the bulk, or an exchange of frequency, under the closeout rule that reflected and transmitted transverse light survive (`steps/S11c_PARTIAL_CLOSEOUT.md:3`).
+
+- Row 11 maps the analog to `transverse↔{θ,e_W,u_L}` and says those receivers “are mechanical brane branches, not optical transverse guided modes” (`light_leakage_scoping.md:21`; record `steps/S11c_c2_self_energy_fold.md:63–65`). The destination cell says “same transverse branch (survives).” Power that leaves the transverse branch does not survive.
+- Row 9 maps tapers to a `W_bg` thickness defect and then sends the energy to the bulk. `steps/S11bB_interface_assembly.md:199–202` names that route as the gradient-driven thickness channel: “If a slit edge converted an O(1) fraction of a photon into the thickness channel, diffraction gratings would not work.” Part 2’s C2 row correctly has transverse → `e_W`. Row 9’s bulk label would apply the grating yardstick to the wrong receiver.
+- Row 7 says “the receiver can be brane motion or acoustic bulk” and then records only “bulk.”
+- Rows 1 and 13 use “exchange of frequency.” Absorption deposits the photon in material excitations. A lossy-cladding overlap is absorption or radiation into a second region. Frequency exchange is the Raman/Brillouin case, which rows 3 and 4 already use. Row 13’s own mapping is **ABSENT**: `steps/S9_light_requires_shear.md:180–185` says bulk shear-freeness is postulated and that shear in the disordered phase “would unconfine light.”
+
+Fix: split any row whose records allow two receivers; put `{θ,e_W,u_L}` on “another brane branch”; leave absorption and cladding overlap without a frequency-exchange label.
+
+**2. Two “observational constraints” do not bound the loss, and one geometry is misread.**  
+- Row 5: “at most 0.1 dB for one 16-mm-diameter turn at 1550 nm.” The Corning SMF-28 ULL sheet at the cited URL lists that 0.1 dB figure under mandrel **radius** 16 mm, one turn, 1550 nm (the same product sheet’s Chinese edition, PI-1470, labels the column 心轴半径). A 16 mm diameter is a tighter bend than a 16 mm radius.
+- Row 8: “G.657 specifies a 125.0 μm cladding diameter with ±0.7 μm tolerance” and then “the bounded quantity is manufactured cladding diameter, not loss caused by it.” A diameter tolerance does not bound loss from diameter fluctuation.
+- Rows 7 and 11 put Marcuse’s calculated examples in the observation column (“9 Å rms … 10 dB/km”; “complete exchange … about 1 cm” for a 0.5% thickness sinusoid). Those sentences match the 1969 abstract, and §2.2 correctly calls the paper an oracle. They are still a perturbation-theory example for his slab, not an observation, so they are not a v3 bound (`CLAUDE.md` M3).
+
+Fix: quote the mandrel as a radius; replace the G.657 cell with a measurement that bounds loss from diameter variation, or leave the cell as a gap; keep Marcuse only in §2.2.
+
+**3. Record statuses are not the words the records use.**  
+- Rows 1, 3, and 4 are marked **OPEN** with the gloss “not a recorded … result.” The records do not mark absorption, Raman, or Brillouin. `steps/S11_stray_longitudinal.md:72–76` says the homogeneous quadratic cross-block is zero and that this “does not establish decoupling at nonlinear order.” That is O1’s non-establishment, not an open Raman or Brillouin result.
+- Row 6 is **CONDITIONAL**, while the sentence in the same cell says the physical loss “remains unresolved,” and `steps/S11c_d_profile_conditioned_scattering.md:70` marks the loss claim **UNRESOLVED**.
+- Row 11 marks the whole guided-mode analog **UNRESOLVED** because `steps/S11c_c2_self_energy_fold.md:55` leaves the direct three-leg `[0,2]` term unresolved. That line does not withdraw the coupling kernel.
+
+Fix: use **OPEN** / **UNRESOLVED** / **CONDITIONAL** only where a record uses that status for that object, and say “no recorded status” where none exists.
+
+**4. The E4 peak-regime formula is not the record’s formula, and it is not a photon coefficient.**  
+Inventory, matrix row `E4 / ωτ≈1`: “in the recorded soluble slice `Re Z∝Λ_V^0 ωτ/[bq(1+(ωτ)²)]`,” citing `steps/S11bA_interface_response.md:69–89`.  
+That passage prints an equality under `Λ_p⁰ = 0`, with denominator `b_q`, not `bq`:
+
+`Λ_p⁰ = 0 , ωτ ≠ 0  ⇒  Re Z = Λ_V⁰ ωτ / (b_q(1 + (ωτ)²))`
+
+and then: “This does not establish anything about photons — the transverse channel is S11b-B’s.” The words “soluble slice” belong to `steps/S11bB_interface_assembly.md:80` (`k = 0`, impermeable, no reciprocal coupling), which is a different cut. Collapsing `b_q` into `bq` and replacing `=` with `∝` changes the object.  
+Fix: quote the equality, the condition `Λ_p⁰ = 0`, and the photon caveat, and leave the photon-route local quantity as a gap.
+
+**5. The curved-bulk route drops a named freeze and mis-labels grazing.**  
+`steps/S11c_c1_curved_bulk_closure.md:24` and `:91–94` keep seal 5, the background density, as a “surfaced rule-17 freeze (UNDECIDED)”: Wolfram holds a live field `(ρbr/W₀)·W_bg(x)` and SymPy a bare constant. E2’s freeze cell quotes only the `v₀` correction (`steps/S11bB_interface_assembly.md:150–154`).  
+The grazing row says “singular/degenerate kernel locus,” citing `c1:35–44`. Those lines define the two-momentum kernel and the three regimes. The singularity is stated later, at `:146–155`: `N⁻¹` and `Z=iρ_mω·N⁻¹` are nonanalytic as `q_out→0`, while the permeable resolvent is regular for generic `Λ_A≠0`, and exact grazing is `NOT_ESTABLISHED_AT_FIRST_SHAPE_ORDER`.  
+Fix: name the density freeze as a freeze, and say which object is singular.
+
+**6. The Molz abstract link is a different paper.**  
+The Molz claims (60 μm alumina, fluid helium does not radiate, solid helium does, SH(0) shear only, L(1) both) match the AIP abstract at doi `10.1121/1.415372`. The “accessible abstract listing” URL is ResearchGate publication 232971853, whose slug is “Electrorheological Properties of Chiral Smectic-C Liquid Crystals…”.  
+Fix: cite the AIP abstract. The equation cell is already marked **UNVERIFIED**.
+
+**7. The two fiber texts are contents-only and are not marked UNVERIFIED.**  
+The inventory says the Keiser loss chapter is “visible in the Google Books record,” Snyder–Love material is “visible in the Google Books contents,” and Raman/Brillouin/microbending were “cross-checked against the contents.” The directive says to mark any source that was not opened **UNVERIFIED**. The physical-condition sentences (imaginary susceptibility, Stokes/anti-Stokes, intensity dependence) are not quotations from opened chapters.  
+Fix: mark Keiser, Snyder–Love, and *Optical Fiber Telecommunications* **UNVERIFIED**, or replace those clauses with text from opened pages.
+
+**8. The thickness channel is listed twice, under two statuses.**  
+E1/E3 are equation-level routes whose receiver set includes `e_W` (`S11c_b:54–57`, `S11c_c2:63–65`). C2 is the same gradient-driven thickness channel (`S11bB:199–202`) filed as “candidate beyond scope,” with local quantity “gap.” The coefficient is still only an input assignment (`SUBSTRATE_REQUIREMENTS.md:543–570`). The equation is not absent.  
+Fix: make C2 the `e_W` leg of E1/E3, and keep the coefficient as an unevaluated input.
+
+## Checked and sound
+
+- The nine routes use the directive’s three statuses. O1 is `S11:74–76`, O2 is `S11c_d:64` (**OPEN — S12**, drain frozen and receiver empty), and O3 is `R-S8-02` (**OPEN**). The `v₀` disagreement is quoted from `S11bB:46–48` and `SUBSTRATE_REQUIREMENTS.md:199–212` and is not resolved. The closeout survival rule is the matrix convention for transverse reflected/transmitted power.
+- The six required yardsticks are present. `v₀` is left as “bounded by cosmology” with the number as a gap. The Debye cell keeps the gravity-sector coupling as “not built.”
+- Friedland & Giannotti, arXiv:0709.2164, eq. (21), supernova: `k ≳ 6×10¹⁴ TeV` (`n=1`), `7×10⁴ TeV` (`n=2`), `27 TeV` (`n=3`). The inventory states those figures and says they are not a generic photon-loss or v3 bound.
+- More, Bovy & Hogg, ApJ 696 (2009): `Δτ < 0.13` at 95% confidence from redshift 0.20 to 0.35.
+- DES, MNRAS 533 (2024) 3365: `Δt_obs=Δt_em(1+z)^b` with `b=1.003±0.005` (stat) `±0.010` (sys) over `0.1≲z≲1.2`. The paper excludes non-time-dilating models; the inventory keeps that scope.
+- Marcuse 1969 title, DOI, abstract numbers, and eqs. (72)–(73) and (75)–(76) match the Internet Archive text of BSTJ 48:3187. Marcuse 1970 title, pp. 273–290, and DOI `10.1002/j.1538-7305.1970.tb01769.x` match; the equation cell stays **UNVERIFIED**. Peyton et al. eq. (2) and `C=1.38` for the reported 6 mm case match the Warwick PDF.
+- Part 1’s 1 / 9 / 3 mapping counts and Part 2’s 4 / 2 / 3 route counts match the labels in the tables. Nothing in the inventory says what the bracket will conclude or that the model must suppress a mechanism.
+
+Kubrusly eqs. (1), (8), (14)–(16) and Gu & Fuller eqs. (31)–(33) were not re-extracted from the full papers, so those two equation cells are not cleared here. The Raman, Brillouin, Rayleigh, grating-efficiency, PMD, and resonator-`Q` citations were not re-opened.

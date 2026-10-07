@@ -1,0 +1,17 @@
+I'll review only the v3→v4 repair against the directive and the cited records, starting with the directive and the diff.The diff is five hunks. Next I will check those cells against the shared-physics lines, the C3 and O7 rows, and the Friedland and Wolff sources.**Verdict: CLEAR**
+
+No finding changes what a later bracket would compute or claim from this inventory. The two repaired cells match the records and the sources, and the accompanying edits stay consistent with them.
+
+**Findings**
+
+None.
+
+**What was checked and found sound**
+
+The diff is five hunks: Part 1 rows 3–4 and their taxonomy note, the O7 route, the Friedland–Giannotti validity cell, the Wolff oracle row and the oracle summary, and the O7 matrix frequency cell. Mapping counts (NOT ADDRESSED 6, including rows 3 and 4) and route counts (15 items; C3 still candidate beyond scope; O7 still open requirement / non-establishment) are unchanged.
+
+**F1.** `directives/S11c_a_SHARED_PHYSICS.md:194–198` says the wave perturbations `u`, `ζ_c`, `δW`, `θ`, and the first variations of the face and bulk fields, carry `ε`, and that the requested truncation is “first order in wave amplitude.” `:235–239` sets `Q_bg ∈ {W_bg, μ_R,bg, ρ_4D,bg⁰, ρ_br,bg⁰}` with `Q_bg^L(x,t) ≡ Q_bg(x)` and `Q_bg^M(x,t) ≡ Q_bg(χ(x,t))`. Rows 3 and 4 stay **NOT ADDRESSED**, with “No recorded Raman status” and “No recorded Brillouin status.” Both spontaneous and stimulated forms point to C3 for every initiation and Wolff gain class. Each names the missing interaction and the receiving branch’s fluctuation statistics as a gap. A search of `research/pde_ledger_v3/**/*.md` for fluctuation statistics, thermal phonons, vacuum fluctuations, and Langevin sources returned no matches. O7 is only a `Q_bg` released from that hold, distinct from the `ε` perturbations. Wolff et al., JOSA B 38, 1243 (2021), §2.A, states the parenthetical that was added: spontaneous emission there covers “phononic vacuum fluctuations” and “pre-existing thermal phonons,” with thermal emission dominating for `T ≈ ℏΩ/k_B ≃ 1 K`. Row 4 quotes that parenthetical and says it is not asserted for v3. C3’s unchanged matrix row already carries frequency exchange and an interaction gap, so the reroute does not drop the channel or contradict the survival line. Wolff Eq. (1) moved with it as phase matching only; the summary leaves the rest of C3’s nonlinear audit, and all of O7, as an oracle gap. The O7 matrix cell now says “no oracle candidate.”
+
+**F2.** arXiv:0709.2164v1, p. 5, derives Eq. (8) from “an infinitely small perturbation” that lifts `0 → E′ ≡ m²/2k²`, approximates the interior by “the unperturbed function,” and estimates the barrier factor from that function at the turning point. It does not write an explicit domain for Eq. (8). The validity cell marks `E′ = m²/2k² ≪ 1`, i.e. `m/k ≪ 1`, as this inventory’s inference. The p. 6 phrase “phenomenologically viable for energies ≪ k” is about continuum modes on the brane, and the cell says so. The correspondence cell is unchanged: `k` and `m` have no record object, and v3 confinement is the shear-free phase, not warping. The §2.2 preamble still says no v3 bound is inherited. The §2.4 stellar-budget yardstick is untouched.
+
+The added Abramczyk sentence matches Eq. (4.9): the first term is the linear polarisation and “depicts the spontaneous linear Raman scattering.” That sentence is what keeps AB’s word “linear” from being read as the model’s first-order truncation.

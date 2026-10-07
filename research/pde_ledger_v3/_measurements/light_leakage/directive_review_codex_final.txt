@@ -1,0 +1,220 @@
+# Verdict: NEEDS CHANGE
+
+## Findings
+
+1. **Part 2.1 misclassifies scope caveats and an unrelated open requirement as leakage routes.**  
+   Directive: “Start from … `S11_stray_longitudinal.md:74–76` … `:64` … and `R-S8-02`.”  
+   Records: S11 merely says decoupling is *not established* outside its tested scope; d:64 says nothing transfers automatically to live conversion; `R-S8-02` explicitly concerns the scalar `(u_L,h)` block and “not directly” the transverse count. Meanwhile S11c-b/c1 name actual couplings and bulk-radiation objects.  
+   **Fix:** Seed the inventory from S11c-b:54–57, c1:35–44, and c2:63–70. Give every item a status—equation-level route, candidate beyond scope, or open/non-result—and retain the cited S11/d/R-S8 passages only in the latter categories.
+
+2. **Part 1’s required “one class” is not a partition, and its observable bookkeeping conflicts with the records.**  
+   Directive: choose one of “DIFFERENT MECHANISM” or “REQUIREMENT,” then label “redirects.” A model analog can simultaneously differ from fiber physics *and* be observationally constrained. Also, redirection is not necessarily leakage: the closeout says reflected and transmitted transverse light survives.  
+   **Fix:** Split this into independent columns: model mapping (`ABSENT/PRESENT ANALOG/NOT ADDRESSED`), record status (`ESTABLISHED/CONDITIONAL/OPEN`), observational constraint, and destination (`same transverse branch`, `other brane branch`, `bulk`, or frequency exchange).
+
+3. **The estimate instruction contradicts M3.**  
+   Directive: obtain a prior-art estimate “that could bound” each route while computing nothing. M3 defines an oracle as something checked against an independently computed result and forbids assuming its result for this object. With no model-side calculation, the external formula cannot yet be a bound.  
+   **Fix:** Request only oracle candidates: exact equation, assumptions, applicability domain, and parameter correspondence. Prohibit calling one a v3 bound until the future bracket independently derives the corresponding v3 quantity.
+
+4. **The inventory does not name a common bracket object or exposure measure.**  
+   The record’s existing observable is a normalized transverse-current deficit in which reflection and transmission survive; it is strongly profile-, frequency-, momentum-, anchoring-, and regime-dependent. The directive requests parameters and broad dimming/reddening/redirection yardsticks but no route-to-observable normalization, accumulation law, exposure/path/event count, validity regime, or parameter correlations. Friedland–Giannotti specifically analyzes metastable photons in plasma and stellar cooling, not a generic “number of charge encounters.” [APS source](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.100.031602)  
+   **Fix:** Require a route-by-regime matrix containing source/destination branch, local coefficient or per-event probability, exposure variable, frequency/polarization dependence, validity domain, parameter correlations, survival convention, and an applicable bound—or an explicit gap.
+
+5. **“Every known loss mechanism” has no achievable closure criterion, and one starting citation conflates two papers.**  
+   Directive: “Cover every known…” and “Marcuse … (1970), on taper and imperfection loss.” Publisher records identify the taper paper as 1970 but the surface-imperfection paper as 1969. [1970 taper](https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1970.tb01769.x), [1969 imperfections](https://onlinelibrary.wiley.com/doi/abs/10.1002/j.1538-7305.1969.tb01742.x)  
+   **Fix:** Define a bounded taxonomy and search-stopping rule, and split Marcuse into exact title/year/DOI entries.
+
+## Checked and sound
+
+- S9:1/64/337 accurately support brane shear, bulk shear-freeness, and its postulated status.
+- S11c closeout:3/9 accurately supports PARTIAL closure and unknown nonuniform loss.
+- The input-register table is a useful starting point and correctly warns that its assignments are not physical calibrations.
+- “No calculations,” no predicted outcome, source verification labels, freeze identification, and preserving record disagreements are sound controls.
+
+## Command evidence
+
+```text
+$ nl -ba research/pde_ledger_v3/steps/S11_stray_longitudinal.md | sed -n '72,76p'
+    72	⇒ transverse (`k·a = 0`): the new term vanishes **identically** in the selected homogeneous \(D=3\)
+    73	quadratic action. Longitudinal (`a ∥ k`): the `μ_R` bracket vanishes and the zero is not perturbed but
+    74	**replaced**. Thus the homogeneous \(D=3\) quadratic transverse and longitudinal eigenbranches have zero
+    75	linear cross-block under the selected action. This does not establish decoupling at nonlinear order, on
+    76	a nonuniform slab, at an interface or defect, or after additional allowed fields are introduced.
+
+$ nl -ba research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md | sed -n '46,57p'
+    46	## What the step computes
+    47	On the S11c background ansatz (in-plane-varying thickness `W_bg(y)=W̄₀[1+η w₁(ξ)]`, response modulus `μ_R,bg(y)`, two
+    48	density representatives ρ4D/ρbr, two anchorings LAB_HELD/MATERIAL_ADVECTED), S11c-b computes: (1) the **§3a energy
+    49	basis** — the O(3)-Kronecker field-bilinear invariant family, corrected to **40 = 10 uniform + 15 ∂W_bg-spurion + 15
+    50	∂μ_R,bg-spurion**; (2) the **variable-coefficient slab OPERATOR ROWS** — the equations of motion for U/θ/e_W with the
+    51	LIVE background jet tower retained (un-frozen); the slab U/e_W rows are **constraint-reduced** (pin B — the U row is
+    52	specifically NOT the held-θ Euler–Lagrange derivative), the θ-row is the sourced mass-evolution balance MINUS the
+    53	face-response closure (`evolution_mass_balance − Σ closure_shape_deriv`, folded by #90), and μ_θ is a separate
+    54	constitutive operand; (3) the **off-diagonal coupling kernel** — the §3c INCLUDE/INCLUDE content: reversible
+    55	tilted-face geometry + the irreversible face responses `Λ_A𝒜_s + Λ_V V_s` (from `closure_shape_deriv`) and
+    56	`Λ_X𝒜_s` (from traction / virtual work), Λ symbolic, computed as face generalized-force rows INTO the operator, then
+    57	weak-restricted.
+
+$ nl -ba research/pde_ledger_v3/steps/S11c_c1_curved_bulk_closure.md | sed -n '34,44p'
+    34	## What the step computes
+    35	On the S11c curved background (in-plane-varying thickness `W_bg(y)=W̄₀[1+η w₁(ξ)]`, two anchorings
+    36	LAB_HELD/MATERIAL_ADVECTED, two face-normal signs ±1, two density representatives ρ4/ρbr, three radiation regimes
+    37	PROPAGATING/EVANESCENT/GRAZING per leg): (1) the **nonlocal DtN/impedance operator** `Z_s(ω;k,k′)` — composition
+    38	`N₀∘M_{h_s}∘N₀ + Div(h∇) + κ²h` — AND its **two-momentum kernel** with BOTH branch legs `q_out(k), q_out(k′)`
+    39	explicit, `Z_1 ∝ Ŵ_bg(k−k′)·[q(k)q(k′)+k·k′−ω²/c_s0²]/(q(k)q(k′))` (⛔ no single-`k` multiplier, ⛔ no one-leg
+    40	left-quantization — both delete the mode mixing, the rule-17 freeze); (2) the **permeable curved face response**
+    41	`(δp_s,J_s,t_s)(V_s,μ_θ)` as an operator inverse `[I+(Λ_A/ρ_m²)Z]⁻¹` (not a scalar division), μ_θ a separate
+    42	opaque constitutive operand; (3) the **Fredholm noninvertibility** condition (formal) + the algebraic locus
+    43	protocol (flat/finite-dim); (4) the **three-object dissipation audit** — bulk-radiation Hermitian part `H_a[Z]`,
+    44	the two-port permeable-port Hermitian form, and the INDEPENDENT traction-vs-far-field-Poynting energy balance.
+```
+
+```text
+$ nl -ba research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md | sed -n '251,276p'
+   251	### R-S8-02 — the in-plane and out-of-plane sectors must decouple at quadratic order
+   252	
+   253	- **source** S10; S11 (`steps/S11_stray_longitudinal.md:278–280`, in-plane, frozen-wall-width spectrum)
+   254	  · **target** S8 · **status** OPEN
+   255	- **requirement** — the quadratic operator on the brane's **full** displacement, in-plane `u` **and**
+   256	  out-of-plane `h` together, and whether it is block-diagonal in that split.
+   257	- **on failure** — ⛔ **S10's headline number changes** — but ⚠ **not by the mechanism an earlier draft of
+   258	  this entry named, and a leg corrected it.** Mixing is **not** the failure mode: under the rotation group
+   259	  that acts on the brane, `h` and `u_L` are both **scalars** and `u_T` is a **vector**, so `h` can mix with
+   260	  `u_L` freely and the transverse count stays `D − 1` regardless. ⭐ **The condition that gives 3 is `h`
+   261	  being DEGENERATE WITH THE TRANSVERSE PAIR** — the brane's elasticity being isotropic in `D+1` rather
+   262	  than in `D`. That is what *"belonging to the same elastic sector"* has to mean, and it is what S8 must
+   263	  settle.
+   264	- **note** — ⭐ **This is the most load-bearing open item in the sector**, and it was flagged inside S10 at
+   265	  the moment the identification was made rather than found later: `h ≠ u_L`, stated in three places in the
+   266	  corpus, **user-confirmed as the picture** — but ⛔ confirmed as a picture, not computed. `V3_STEP_PLAN`
+   267	  puts *"transverse and longitudinal sectors; the reduced `h`/`u_L` operator"* in S8, so the object is
+   268	  already scheduled.
+   269	  ⚠⚠ **And v3 is not starting from nothing — a leg found the computation already exists in v2 and this
+   270	  entry did not cite it.** `research/pde_ledger_v2/paper/stages/stage_030.tex:99-125` builds the coupled
+   271	  `(u_L, h)` scalar block with stiffness `K = [[B_eff, C_hu], [C_hu, K_h]]` — explicitly **not**
+   272	  block-diagonal, with `C_hu` a registered free-unreduced parameter — and `R79` records that the mixed
+   273	  poles are cone-coincident only when `C_hu = 0`. ⇒ ⛔ *"nothing computes that"* is true of **v3** and
+   274	  misleading about the **corpus**; S8 should start from `stage_030`, ⛔ not from scratch.
+   275	  ⭐ Note this is the `(u_L, h)` block — the scalar sector — so it bears on the **longitudinal** slot and
+   276	  the charge anchor, ⛔ and not directly on the transverse count, which is what the corrected on-failure
+```
+
+```text
+$ nl -ba _scratch/light_leakage/light_leakage_scoping_directive.md | sed -n '20p;30,41p;45,63p;69,80p'
+    20	Cover every known loss mechanism of guided light in optical fibers and dielectric waveguides. At least:
+    30	Add any others you find. For each mechanism, give:
+    31	1. The mechanism and the physical condition it needs in a fiber, with a source. Mark any source you could not
+    32	   open as **UNVERIFIED**.
+    33	2. Whether that condition exists in v3's model as the records state it, citing record lines, or "not
+    34	   addressed by the records".
+    35	3. One class:
+    36	   - **ABSENT**: the condition does not exist in the model;
+    37	   - **DIFFERENT MECHANISM**: an analog exists but works differently. Say how, in the records' terms;
+    38	   - **REQUIREMENT**: observations of vacuum show no such loss, so the model must suppress it. Name the
+    39	     observation and its source;
+    40	   - **UNDETERMINED**.
+    41	4. Whether it removes light (dims), shifts its frequency (reddens), or redirects it.
+    45	1. **Routes.** List every route the records identify by which brane light can lose energy from the transverse
+    46	   branch. Start from `steps/S11_stray_longitudinal.md:74–76`, `steps/S11c_d_profile_conditioned_scattering.md:11`
+    47	   and `:64`, the S11c closeout, and `R-S8-02` in `research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md`. For each
+    48	   route, give:
+    49	   - the record line;
+    50	   - any freeze the route hides behind or appears from;
+    51	   - whether a steady background conserves its frequency.
+    52	2. **Estimate families.** For each route, the prior-art first-order estimate that could bound it. Quote it as
+    53	   the source states it, as an oracle and never a premise (`CLAUDE.md` M3), and mark it UNVERIFIED if you could
+    54	   not check it. Starting sources, all unverified:
+    55	   - Marcuse, *Bell Syst. Tech. J.* (1970), on taper and imperfection loss;
+    56	   - Molz & Beamish, *JASA* 99:1894 (1996);
+    57	   - Demma, Cawley & Lowe, *JASA* 113:1880 (2003);
+    58	   - Kubrusly, von der Weid & Dixon, *NDT&E* 108 (2019);
+    59	   - Peyton et al., *NDT&E* 158 (2026);
+    60	   - Gu & Fuller, *JASA* 90:2020 (1991).
+    61	3. **Parameters.** For each estimate, the parameters it needs, and what the records give for each: a value or
+    62	   range and its status (calibrated, input assignment, or unknown), plus any owner the records name. The
+    63	   register's inputs table is a starting point.
+    69	   Include at least these:
+    70	   - stellar energy budgets, given how often light meets charges inside a star (Friedland & Giannotti,
+    71	     *PRL* 100:031602 (2008), is a starting point);
+    72	   - cosmological transparency;
+    73	   - the observations that exclude a gradual per-photon energy loss (tired light).
+    74	
+    75	## Rules
+    76	
+    77	- No calculations and no new physics. Do not say what the bracket will find.
+    78	- Every claim about the model cites a record line. Every prior-art claim cites a source. Mark unverified
+    79	  sources.
+    80	- Name freezes as freezes. Quote disagreements between records; do not resolve them.
+```
+
+```text
+$ nl -ba CLAUDE.md | sed -n '78,95p'
+    78	**M2 — Name the object; supply verified equations; withhold only the target answer.** *(was R3, R5)*
+    79	Name the **object**, ⛔ not the recipe: if a review argues *how* to derive something — is this quotient
+    80	well-defined, is this weight unique — the question was manufactured by specifying a derivation path. Ask for
+    81	the object; let the engine hand over what it built. The spec says what to **compute** — ⛔ never what
+    82	anything equals, is expected, or was measured. Withhold exactly one thing: an acceptance criterion
+    83	referencing an expected value (a builder iterating to exit 0 converges on any target it can see). Supply
+    84	everything else, as **equations**, and label supplied objects as supplied and unfalsifiable in that build.
+    85	Naming an object does not waive first-principles derivation, form ablation, or evidence. Prior art's result
+    86	for our object is never a supplied premise (M3).
+    87	
+    88	**M3 — Prior art is an oracle, not a premise; keep every varying quantity live.** *(was R16, R17)*
+    89	Prior art is an **oracle**, never a premise: check our computed result against it; ⛔ never assume its result
+    90	for our object — its conditions may not be ours. A freeze is a red flag; a **required freeze is the finding**
+    91	— treating a quantity that VARIES as if it were constant manufactures a wrong-but-consistent answer both
+    92	engines share, which the comparator misreads as agreement (the measured account: L-R17). Keep every varying
+    93	quantity **LIVE** and differentiate it; when a method seems to require holding one fixed to proceed, that
+    94	requirement is the measurement, not a step. Caught only by a ground-truth anchor (verify *its* conditions —
+    95	never replace the derivation with its answer) or a variable-coefficient/form ablation (E2). *(evidence: L-R17)*
+```
+
+```text
+$ nl -ba research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md | sed -n '29,31p;62,70p'
+    29	**UNRESOLVED:** ten finite solves used one held profile, strict rest bulk, LAB_HELD/RHO4_CONSTANT, tangents (1/5,1/10), and selected transverse phase-speed ratio approximately **0.12**; the bare S9 coefficient ratio is separately **0.1**. No neighboring frequency or alternative anchoring was run. This is not the calibrated draining model. [Benchmark, opening](../_measurements/S11c_d_numerical_radiating_balance_report.md).
+    30	
+    31	The measured quantity is one minus reflected-plus-transmitted transverse current divided by incident transverse current, including polarized cross terms. Positive is a deficit; negative is apparent gain. The original report gives:
+    62	**CONDITIONAL:** the clean-condition packet measured a symmetry selection rule on one engine, SymPy: `MIXED 0` and `WRONG_SIDE 0` in all four tested cases, with responsive controls. This was review-leg evidence, not a blind second-engine build. Claude literally said **“not clear.”**, Grok **“not cleared.”** for the broader packet. [Clean-condition disposition, round 5, verdicts and measurements](../directives/_measurements/S11c_d_clean_condition_review_disposition.md).
+    63	
+    64	**OPEN — S12:** its no-leak conclusion needs the drain frozen and the relevant receiving channel empty. Nothing transfers automatically to live order conversion. The native drain/return functions and their boundary data belong to S12; trapped support belongs to Q2/S22. [Clean-condition disposition, R5-1/R5-2 and final question](../directives/_measurements/S11c_d_clean_condition_review_disposition.md); [plan, S12/Q2](../V3_STEP_PLAN.md).
+    65	
+    66	## Handoff and prohibited claims
+    67	
+    68	**OPEN:** S11c-e's observable/strong-edge calculation must recover d's weak limit if supplied; S22 inventory items 1/4 need nonuniform response and a supplied profile, with physical magnitude deferred to R1. Items 2/3 instead name S11b and S5–S7. The charge-phase preamble uses S11c as a question about linear support, not as proof of a holder. [Split, table/N5](../directives/S11c_decisions.md); [d spec, §3d](../directives/S11c_d_SHARED_PHYSICS.md); [plan, charge preamble/S22](../V3_STEP_PLAN.md).
+    69	
+    70	**UNRESOLVED:** no claim of “below 1 ppm,” physical gain, matched-speed defect loss, harmless particles/strong edges, or unconditional confinement follows. Reflected light remains survival. Uniform decoupling, source zeros, first-order flux cancellation and conditional receiving regularity do not replace complete work and outgoing-power accounting. [Benchmark, controls](../_measurements/S11c_d_numerical_radiating_balance_report.md); [handoff, work state](../../../docs/light_em_investigation_handoff.md).
+```
+
+```text
+$ nl -ba research/pde_ledger_v3/steps/S9_light_requires_shear.md | sed -n '1,5p;61,68p;331,338p'; nl -ba research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md | sed -n '1,10p'
+     1	# S9 · Light's requirement on the medium — shear on the brane, none in the bulk
+     2	
+     3	**Sector 1 (light), step 1.** Walked side by side with the user, 2026-08-01.
+     4	⚠ First step banked under the **requirements-first** direction: light states what it needs; the medium's
+     5	structure is not assumed in advance.
+    61	| | requirement | what it buys |
+    62	|---|---|---|
+    63	| **ordered phase** (`χ_B = 1`) | carries **MacCullagh curl-only** shear | photons **exist** |
+    64	| **disordered phase** (`χ_B = 0`) | carries **no** shear | photons stay **confined** |
+    65	
+    66	⭐ **Both halves are light's own bill.** ⛔ The second is not magnetism's, as an earlier draft had it:
+    67	without it a photon has somewhere else to go, light leaks off our 3D space, and that is an energy sink
+    68	with no observational room. ⚠ **Stressed hardest at the throat**, where the brane is bent into `±w`.
+   331	- ⛔ **P2 — that a scalar superfluid carries no transverse mode.** Cited from one external review; ⛔ **no
+   332	  script executes it**, and the rebuild did not add one. It remains a **supplied premise**.
+   333	- ⛔ **The absence of a propagating longitudinal wave is ASSUMED, not derived.** The curl-only action sets
+   334	  the longitudinal restoring stiffness to **zero by construction**, so `ω² = 0` there is the postulate
+   335	  restated. ⛔ It removes the restoring *force*, ⛔ **not the degree of freedom** — which is why the
+   336	  longitudinal test is emitted at every root.
+   337	- ⛔ **Bulk shear-freeness** is postulated; the bulk is absent from the action, so nothing here tests it.
+   338	- ⚠ **The assumption set is computationally INERT.** Removing it entirely leaves every computed value
+     1	# S11c closure and handoff — PARTIAL
+     2	
+     3	S11c asked how much light converts into other motion where the brane's thickness or material properties change. **It closes PARTIAL: no accepted nonuniform light-loss number was obtained.** Both reflected and transmitted light count as survival. No S11c calculation or review resumes automatically. [Canonical d record, opening and scope](S11c_d_profile_conditioned_scattering.md).
+     4	
+     5	## Where we stand
+     6	
+     7	On a uniform brane, the stated linear model decouples light from the bulk. Independent SymPy/Wolfram work and scoped reviews support that result; stable propagation needs nonnegative stiffness. A later SymPy check found finite modes, nonzero energy current and zero face drives (light does not push on the bulk) at, above and below the tested light/sound speed matches, with the bulk at rest and other inputs fixed; Claude/Grok cleared its method, not a fresh review of its executed result. **CONDITIONAL.** [S11b, transverse mode/reviews](S11b_interface_coupling_law.md); [d, uniform check](S11c_d_profile_conditioned_scattering.md#what-the-uniform-check-establishes).
+     8	
+     9	Where the brane changes, the equations contain conversion routes, but their size remains unknown. The held-profile omega=3 benchmark at speed ratio approximately 0.12 is **UNRESOLVED**: final imbalances lie within its empirical 1 ppm floor, not a physical bound. This is not a matched-speed defect result. [d, benchmark and controls](S11c_d_profile_conditioned_scattering.md#the-omega3-benchmark-numerical-loss-unresolved).
+    10
+```

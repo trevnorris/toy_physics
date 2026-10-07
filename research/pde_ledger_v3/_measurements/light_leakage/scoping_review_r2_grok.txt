@@ -1,0 +1,63 @@
+I'll review the light-leakage scoping inventory against its directive and the cited records, starting with the directive and source records before the inventory itself.The directory also holds earlier review reports. I will leave those unread and start from the directive, then the records it names.The directive names specific record lines. I'll read those sections and form a source-grounded view before opening the inventory.The cited records are in hand. Next I’ll read the inventory and check each claim against those lines.Several inventory citations look load-bearing or easy to misread. I’ll check those lines and the quoted prior-art claims against the sources.The published yardstick numbers need a direct look at the sources. I’ll pull the papers and compare them with the inventory’s quotations.**Verdict: NEEDS REVISION**
+
+The inventory meets the directive’s column scheme, keeps the closeout survival rule, and does not issue a suppression verdict. Six record-fidelity problems would still send the later bracket after the wrong object, the wrong status, or the wrong domain.
+
+## Findings
+
+**1. O6 and row 5 treat the throat sentence as bend conversion of guided light.**
+Location: row 5 and O6 (`light_leakage_scoping.md` lines 29 and 70).
+
+The inventory says the records “name brane bending only at the throat” and defines O6 as “conversion of transverse light where the brane bends,” citing S9:68 and SR:157.
+
+Those lines are the shear-confinement stress, already O4. S9:67–68 says that if the disordered phase carries shear, “light leaks off our 3D space,” and that this is “Stressed hardest at the throat, where the brane is bent into `±w`.” SR:151–157 repeats that failure mode and the same throat sentence. Neither line is a curved-guide-axis loss.
+
+Row 5’s **NOT ADDRESSED** label for fiber macrobending can stand. O6 should not be a route hung on that sentence. A background centre-line profile is absent from `Q_bg` (SPa:235); say that, and leave the throat stress inside O4.
+
+**2. Row 1 cites the uniform-decoupling caveat as a statement about absorption.**
+Location: row 1, model-mapping cell.
+
+The inventory says: “S9 takes ‘no dissipation’ (S9:349–350). Uniform zero does not answer nonuniform confinement (B:74–78).”
+
+S9:349–350 is the limit list “sharp zero-width sheet · `v₀ → 0` · no dissipation · …”. B:74–77 says the transverse coupling is “identically zero” on a uniform background, with `Im = 0`, and “This does NOT settle whether confinement is unconditional.” That sentence is about `e_W ↔ u_T` coupling, not about an absorber.
+
+Keep **NOT ADDRESSED** for a material absorber. Drop the B:74–78 attachment.
+
+**3. Rows 2 and 8 give c1’s established kernel as the status of a larger analog.**
+Location: rows 2 and 8, status column.
+
+Row 2’s analog is “off-diagonal two-momentum coupling” cited to b:50–57, c1:35–44, and c2:63–70, with status “Kernel/pressure/relative-flux **ESTABLISHED**” (c1:100–110) and “Complete loss **UNRESOLVED**” (d:70). Row 8’s destination includes closure, with the same c1 status.
+
+c1:100–102 establishes the two-momentum DtN kernel and the `δp_s`/`J_s` coefficients. The brane operator and the closed kernel are elsewhere: b:35 and c2:42 say “**CONDITIONAL — repaired equations, scoped review only**”; b:44 and c2:51 say full nonuniform composition is **UNRESOLVED**; c2:55 says whether the complete closed response has a nonzero direct `[0,2]` term “remains unresolved.” Row 11 states those limits. Rows 2 and 8, which cite the same coupling, do not.
+
+Put b/c2’s conditional and unresolved marks on rows 2 and 8 beside the c1 marks.
+
+**4. E5 cites the scope note for a radiation claim that note does not make.**
+Location: E5, inventory line 61.
+
+The inventory says “B’s breathing slice radiates for `K₀>0` (B:80–94; SC:17).”
+
+B:93–94 does say that for `K₀ > 0` “every nonzero imaginary part comes from propagating bulk radiation resistance.” SC:16–17 says “The gradient-driven channel is exactly what S11c computes” and “the longitudinal mode’s fate needs no gradients (S11b did it).” It does not say the slice radiates. Cite B:93–94 for the radiation, and SC:16–17 only for which step owns the gradient channel.
+
+**5. The shared N11a freeze is applied to the live-drain route.**
+Location: §2.1, the shared-freeze bullet and the O2 row (lines 51 and 66).
+
+The inventory says N11a “binds every S11c-derived item: E1, E2, E3, C4, O2, O5.”
+
+DEC:182–184 says S11c “inherits it as a standing rest-frame limit” and that “every S11c spectrum/leakage/confinement result is conditional” on `|q v_bulk_normal_0/ω| ≪ 1`. O2 is “live drain/return receiver, **OPEN — S12**,” and d:64 says the no-leak conclusion “needs the drain frozen” and that nothing transfers automatically to live order conversion. O2 is the route outside that limit.
+
+Keep N11a on E1, E2, E3, and C4. On O2, state that the frozen-drain conclusion does not establish the live receiver.
+
+**6. The bench-top yardstick is missing the record’s bounded quantity and the decision list’s regime limit.**
+Location: §2.4 code **BO**, and its assignment to E1/E3.
+
+BO is only the Optics Letters point efficiency `(99.577±0.002)%` (DOI `10.1364/OL.34.001708`; that sentence is in the abstract). The record-named yardstick is B:200–202: if a slit edge converted an `O(1)` fraction of a photon into the thickness channel, diffraction gratings would not work. DEC:112–117 calls that grating argument an “order-of-magnitude hint” and says “A slit edge is an order-unity localized gradient, not the small-`∇W₀` regime,” so a weak-gradient coefficient is not to be compared with that lab case. E1’s validity cell says the operator is weak-restricted, and BO is still its yardstick, without DEC:112–117.
+
+Quote B:200–202 as the bounded quantity (thickness-channel fraction, `O(1)` scale). Put DEC:112–117 on every BO assignment to the weak-gradient operator. Leave the grating efficiency as a published observation of missing intended-order power, with the separation gap already stated.
+
+## What checked out
+
+The directive’s columns, the three route statuses, and the required seeds are present. Equation-level E1–E3 keep composition unresolved. C1 stays kinematic only (S11:97–101). O1, O2, and O3 are S11:74–76, d:64, and R-S8-02. Reflected and transmitted transverse light are survival (PC:3), and DEC:130–132 is quoted with it. Frequency-shifted transverse output is left a gap.
+
+These disagreements are quoted and left open: rest versus driven `v₀` (B:47–48, SR:201–212), “exceeds first order whenever `k c_s0 ≫ ω`” versus “necessary, not sufficient” (B:151–154, U:158–161), the passive-region readings (B:34–37 versus U:70–72), and uniform coupling “unconditional” (B:191, U:75–76) versus **CONDITIONAL** (PC:7, d:7). Named holds include N11a, frozen wall width, c1 seal 5, the background hold (PLAN:566–570, SPa:237–239), and the S9:349–350 limit list. `v₀` “bounded by cosmology” is left without an invented number (B:62–63, PLAN:572–573).
+
+Prior-art quotations that were opened match the sources, and none is used as a v3 bound. Marcuse, *Bell Syst. Tech. J.* 48 (1969) 3187, pp. 3200–3201: Eqs. (72)–(73) `∂C₀/∂z = −κ₀₁ C₁`, `∂C₁/∂z = κ*₀₁ C₀`, Eqs. (75)–(76), and the `α = 0` / `α = π` parity sentence (scan `https://vtda.org/pubs/BSTJ/vol48-1969/articles/bstj48-10-3187.pdf`). Scheibner et al. arXiv:1902.07760 Eq. (1) is the printed 4×4 matrix with `B`, `A`, `μ`, `K^o`. Peyton et al., *NDT&E* 158 (2026) 103534, Eq. (2) is `I ∝ [(λ/(Wπ sinθ)) sin(πW sinθ/λ)]² sin²(C×θ)` with `C = 1.38` for the 6 mm case (Warwick PDF). Friedland & Giannotti, arXiv:0709.2164, Eqs. (7)–(9) and the red-giant, supernova, and horizontal-branch bounds match, including the preprint’s printed `3×10³³ erg⁻¹ cm⁻³ s⁻¹` left uncorrected beside “energy loss rate per unit volume.” Tamura et al., OFC 2017 Th5D.1, `0.1419 dB/km` at 1560 nm; Berceau et al., arXiv:1109.4792, `τ = 1.16 ms`, `L_c = 2.27 m`, finesse `481000`, `Δn ≤ 5.0×10⁻²⁰ T⁻²` per 4 ms; More, Bovy & Hogg, arXiv:0810.5553, `Δτ < 0.13` (95%) and `nσ < 2×10⁻⁴ h Mpc⁻¹`; Pratt et al., *PRX* 13, 011018, `Q` up to `10⁸` and damping `7 μHz`; Fixsen et al., *ApJ* 473, 576, rms under 50 ppm, `|y| < 15×10⁻⁶`, `|μ| < 9×10⁻⁵`; DES, arXiv:2406.05050, `b = 1.003±0.005` (stat) `±0.010` (sys); Lubin & Sandage, *AJ* 122, 1084, `n = 2.59±0.17` (R), `3.37±0.13` (I), tired-light exclusion better than 10σ. Unverified chapter bodies and the Corning datasheet are marked unverified. Raman and Brillouin stay **NOT ADDRESSED** as three-wave processes. No repository file was modified.

@@ -1,0 +1,85 @@
+**Verdict: NEEDS REVISION.**
+
+Two findings change the mappings or validity domains the later bracket would use.
+
+1. **Spontaneous Brillouin scattering is tied to the wrong background freeze.**
+
+   **Location:** inventory lines 27, 41, 71, 92 and 132.
+
+   **Inventory evidence**, from:
+   ```bash
+   nl -ba _scratch/light_leakage/light_leakage_scoping.md | sed -n '27p;41p;71p;92p;132p'
+   ```
+   It says: “Thermal initiation needs a fluctuating background, which the records hold fixed”; assigns “C3 (the nonlinear program, for stimulated gain) and O7 (a time-dependent background, for spontaneous initiation)”; and maps “Acoustic wave ↔ a time-dependent background profile”.
+
+   **Record evidence**, from:
+   ```bash
+   nl -ba research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md | sed -n '194,195p;234,239p'
+   ```
+   The records retain “Wave perturbations `u`, `ζ_c`, `δW`, `θ`, and the first variations of the face and bulk fields”. The held objects are specifically material profiles:
+   ```text
+   LAB_HELD:          Q_bg^L(x,t) ≡ Q_bg(x)
+   MATERIAL_ADVECTED: Q_bg^M(x,t) ≡ Q_bg(χ(x,t))
+   ```
+
+   **Source evidence:** Wolff et al. describe optical forcing—“This pressure then excites an acoustic wave”—and explicitly include “true spontaneous emission due to phononic vacuum fluctuations”. [Author accepted manuscript, §2 and footnote 3](https://findresearcher.sdu.dk/ws/portalfiles/portal/222481164/SBS_Tutorial_JOSA_B_revised_version_2_.pdf).
+
+   **What is wrong:** holding mean thickness, modulus and density profiles fixed does not freeze dynamical phonons. A Brillouin interaction can occur on a stationary material background. Its missing interaction and fluctuation statistics therefore cannot be assigned solely to releasing the background hold. Likewise, absence of steady-state Stokes gain does not remove the need to examine the optical–acoustic interaction.
+
+   This correspondence could make the bracket treat spontaneous frequency exchange as requiring time-varying material profiles, while assigning the nonlinear audit only to stimulated gain.
+
+   **Fix:** retain **NOT ADDRESSED**, with no invented record status. Identify the missing interaction and receiver-fluctuation statistics separately; point to the generic C3 audit irrespective of initiation or gain classification. Reserve O7’s background-hold discussion for independently time-varying material profiles. Preserve the source’s thermal/vacuum distinction without asserting a quantum mechanism for v3.
+
+2. **The Friedland–Giannotti escape-rate oracle omits its small-lift validity condition.**
+
+   **Location:** inventory line 86, validity column for Eq. (8).
+
+   **Inventory evidence**, from:
+   ```bash
+   nl -ba _scratch/light_leakage/light_leakage_scoping.md | sed -n '86p'
+   ```
+   It supplies:
+   ```text
+   Γ₀^vac = c_n m (m/k)^n
+   ```
+   and says “A perturbation that ‘lifts the zero mode, `0 → E′ ≡ m²/2k²`’, makes it metastable”. It labels Eq. (8) a “rest-frame barrier-penetration estimate”, but states no smallness domain.
+
+   **Source evidence:** the derivation specifies “an infinitely small perturbation”, approximates the interior solution using “the unperturbed function”, and discusses “energies ≪ k”. [Primary preprint, §II around Eqs. (8)–(9)](https://arxiv.org/pdf/0709.2164).
+
+   **What is wrong:** the displayed power-law rate comes from a small perturbative lift and low-energy tunnelling approximation. From `E′ = m²/(2k²)`, the corresponding fixed-`n` small-lift condition is `m/k ≪ 1`. That is an inference from the quoted derivation, not an additional v3 result.
+
+   Without this condition, a later parameter scan could test the power law outside its applicable regime.
+
+   **Fix:** add the small-lift/low-`m/k` domain explicitly to Eq. (8)’s validity column. Keep the existing statements that its parameters have no established v3 correspondence and that it supplies no inherited bound.
+
+**Checked and found sound:**
+
+- **Survival accounting.**  
+  Commands:
+  ```bash
+  nl -ba research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md | sed -n '3p'
+  nl -ba _scratch/light_leakage/light_leakage_scoping.md | sed -n '3p;98p'
+  ```
+  Both preserve “Both reflected and transmitted light count as survival”. The inventory also explicitly leaves frequency-shifted transverse accounting a “gap”.
+
+- **Repaired-operator status and outstanding composition.**  
+  Commands:
+  ```bash
+  nl -ba research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md | sed -n '35p;44p'
+  nl -ba research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md | sed -n '42p;51,55p'
+  nl -ba _scratch/light_leakage/light_leakage_scoping.md | sed -n '57,59p'
+  ```
+  The inventory preserves “CONDITIONAL — repaired equations, scoped review only”, **UNRESOLVED** composition/direct-term status, and “F/G remain withdrawn interpretations”.
+
+- **M3 treatment of prior art.**  
+  Commands:
+  ```bash
+  rg -n -A 3 -B 2 'Prior art is an oracle' CLAUDE.md
+  nl -ba _scratch/light_leakage/light_leakage_scoping.md | sed -n '79p'
+  ```
+  CLAUDE requires “never assume its result for our object”; the inventory states “no v3 coefficient/value or bound is inherited”.
+
+- **Attenuation yardstick qualification.**  
+  `nl -ba _scratch/light_leakage/light_leakage_scoping.md | sed -n '140p'` reports “0.1419 dB/km at 1560 nm”, matching the [primary Tamura abstract](https://opg.optica.org/abstract.cfm?uri=OFC-2017-Th5D.1), while retaining “Total attenuation, not a separated mechanism/material coefficient.”
+
+Independent verification of every claimed visual equation check was incomplete because some scans failed to fetch. Those access failures are not findings. No repository files were modified, and no other review outputs were opened.

@@ -1,0 +1,29 @@
+I'll review only the v4→v5 repair against the directive and the cited records, starting with those sources and the diff.The diff is confined to rows 3–4 and the taxonomy note. Next I’ll check those cells against the records they cite and against the inventory’s unchanged E1 route.**Verdict: CLEAR**
+
+No finding changes a route, status, mapping, destination, freeze, validity domain, yardstick, oracle correspondence, or citation the later bracket would use.
+
+**Findings**
+
+None.
+
+**What was checked and holds**
+
+The diff touches only row 3’s mapping cell, row 4’s mapping cell, and the rows 3–4 taxonomy note. Commands: `diff _scratch/light_leakage/light_leakage_scoping_v4.md _scratch/light_leakage/light_leakage_scoping.md`, plus `nl -ba` on the cited record lines.
+
+The v4 justification that was removed is this inventory sentence: a coupling of transverse light to another wave perturbation “enters as a product of wave amplitudes, beyond the first-order truncation.” That claim is absent from v5. `rg` on v5 finds no remaining “product of wave” sentence.
+
+Routing to C3 now rests on the records’ nonlinear program, not on an order claim about branch couplings as such.
+
+- Row 3 points to C3 because “nonlinear intensity coupling and the DC/harmonic/sideband audit are named without a Raman vertex” (`S11:157–159`; `SC:50–51`).
+- Row 4 points to C3 because branches exist, the homogeneous quadratic cross-block is zero, the generic nonlinear program is named, and there is “no three-wave Brillouin vertex.” The wave-perturbation sentence is separate, and it only distinguishes that coupling from a release of the background hold (O7).
+- The taxonomy note says the C3 pointer “does not claim that a coupling between wave branches lies, as such, beyond” the first-order truncation, and it does not identify E1 with Raman or Brillouin. Rows stay **NOT ADDRESSED**, with the interaction and the receiving branch left as gaps. No v3 vertex is written in.
+
+Those citations match the records.
+
+- `nl -ba research/pde_ledger_v3/steps/S11_stray_longitudinal.md` lines 157–159: the finite-amplitude photon-helper role “additionally requires nonlinear intensity coupling.” Lines 74–75: the homogeneous \(D=3\) quadratic eigenbranches “have zero linear cross-block.” Line 76: that zero “does not establish decoupling at nonlinear order, on a nonuniform slab.” Adding “homogeneous” in row 4 matches that domain and the inventory’s unchanged O1 wording (“beyond homogeneous quadratic,” `S11:68–76`).
+- `nl -ba research/pde_ledger_v3/steps/S11c_SCOPE.md` lines 48–51: “In S11c (non-uniform, linear)” versus “NOT S11c — the nonlinear light program: the DC/harmonic/sideband radiation audit and nonlinear intensity coupling.”
+- `nl -ba research/pde_ledger_v3/directives/S11c_decisions.md` lines 123–125: “the transverse↔thickness coupling is `O(εη)`.”
+- Inventory line 57: E1 is an **equation-level route**, the “nonuniform transverse↔`{θ,e_W,u_L}` operator, including gradient-thickness leg.” The new note affirms that route. It does not move it into C3.
+- `nl -ba research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md` lines 194–198 and 237–239: `u`, `ζ_c`, `δW`, `θ` carry `ε`, and `Q_bg` has no time argument of its own. The note’s truncation phrase is the amplitude half of line 197; `O(εη)` sits inside that half. The user’s premise that this coupling is first order in wave amplitude agrees with `DEC:125`.
+
+Unchanged C3, O1, O7, and the Wolff oracle row (inventory line 92) still send Raman/Brillouin to C3 as a gap, keep O7 for a background with its own time dependence, and record no three-wave vertex. None of them still says that a coupling between wave branches lies beyond first order. The changed cells state no loss outcome, no suppression requirement, and no new interaction.

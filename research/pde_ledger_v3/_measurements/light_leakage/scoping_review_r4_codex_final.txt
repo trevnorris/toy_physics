@@ -1,0 +1,41 @@
+**Verdict: NEEDS REVISION** — scoped to the changed material in the v3 → v4 repair.
+
+1. **The added amplitude-order rationale excludes too much.** Locations: [Raman mapping, line 26](/var/projects/toy_physics/_scratch/light_leakage/light_leakage_scoping.md:26) and [taxonomy note, line 41](/var/projects/toy_physics/_scratch/light_leakage/light_leakage_scoping.md:41).
+
+   Artifact evidence, retrieved with:
+   ```bash
+   sed -n '41p;57p' _scratch/light_leakage/light_leakage_scoping.md
+   ```
+   The changed note says:
+   > “on held profiles, a coupling of transverse light to another wave perturbation enters as a product of wave amplitudes, beyond the first-order truncation”
+
+   But unchanged E1 retains:
+   > “**Equation-level route:** nonuniform transverse↔`{θ,e_W,u_L}` operator, including gradient-thickness leg”
+
+   The governing records distinguish bilinear perturbation energy from first-order perturbation equations. Retrieved with:
+   ```bash
+   sed -n '366,368p' research/pde_ledger_v3/directives/S11c_b_SHARED_PHYSICS.md
+   sed -n '123,126p' research/pde_ledger_v3/directives/S11c_decisions.md
+   ```
+   Literal record text:
+   > “that energy is bilinear in the perturbations, so its first variation is linear in them”
+
+   > “the transverse↔thickness coupling is `O(εη)`; the leakage probability/rate `O(ε²η²)`.”
+
+   **What is wrong:** coupling two wave branches does not, by itself, put their coupling outside the first-order equations. The new general rule contradicts the retained E1 route and could make the later bracket misclassify allowed linear conversion as nonlinear C3 work. This affects route classification and validity, beyond wording.
+
+   **Fix:** remove the blanket exclusion from row 3 and the taxonomy note. Preserve the requested C3 routing, but distinguish the missing Raman/Brillouin scattering interaction from the recorded linear interbranch operator. Any order argument should specify whether the amplitude product occurs in the energy or the equations, without inventing a v3 vertex.
+
+**Checked and found sound**
+
+Inventory evidence below was retrieved with:
+```bash
+sed -n '26p;41p;57p;59p;71p;75p;86p;92p;94p;124p;132p' _scratch/light_leakage/light_leakage_scoping.md
+```
+
+- **F1 routing and gaps:** the repair says “Spontaneous and stimulated forms both point to **C3**” and names “the interaction (including which branch receives), and the fluctuation statistics of the receiving branch” as gaps. The taxonomy retains “NOT ADDRESSED with no recorded status.” O7 now requires a material profile that “varies in time on its own.”
+- **Thermal/vacuum distinction:** row 4 explicitly says “quoted and not asserted for v3.” Its distinction matches the authors’ [accepted manuscript, §2.A footnote 3](https://findresearcher.sdu.dk/ws/portalfiles/portal/222481164/SBS_Tutorial_JOSA_B_revised_version_2_.pdf): “phononic vacuum fluctuations or emission stimulated by pre-existing thermal phonons.”
+- **F2 domain:** line 86 labels the domain “this inventory’s inference” and states `m/k ≪ 1`. [arXiv:0709.2164v1, §II](https://arxiv.org/html/0709.2164v1) supplies “an infinitely small perturbation” and “can be approximated by the unperturbed function.” The inventory retains “neither with a record object” for `m,k` and “no bound is inherited.”
+- **Oracle consistency:** the Wolff row now points to C3; the summary limits it to “phase matching only, with no coupling strength”; O7’s matrix cell says “no oracle candidate.” The frequency-shifted survival treatment remains a “gap.”
+
+No repository files were modified. No commits were created.

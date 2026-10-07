@@ -1,0 +1,90 @@
+I'll review the scoping directive against the records it cites, then check whether the requested inventory is enough for a leakage bracket and whether any outcome or freeze is already built in.The directive is in hand. Next I’ll pull the cited record lines with the shell and compare them to what the directive claims they say.**Verdict: NEEDS CHANGE**
+
+## Findings
+
+**1. The REQUIREMENT class states the outcome the bracket is there to test.**
+Part 1, lines 38–39: “**REQUIREMENT**: observations of vacuum show no such loss, so the model must suppress it.” That asserts an observation and a model obligation. S9 lines 67–68 call the related leak “an energy sink with no observational room.” S11b-B lines 196–197 say the opposite about one recorded channel: “A's frequency-dependent leak is **outside the passive region, ⛔ NOT ruled out.** … ⛔ Do not re-describe it as forbidden.”
+Fix: remove this class. Ask for the observation, the quantity it bounds, and the source. Leave suppression to the bracket.
+
+**2. The frequency question freezes `v₀` and is not answered by the records.**
+Part 2.1, line 51, asks “whether a steady background conserves its frequency.” A search of `research/pde_ledger_v3` and `docs` (excluding `lean/`, `.lake/`, and `archive/`) for that claim returned no matches. S11b-B lines 46–48 say the reference state “carries a steady background normal flow `v₀` — the dark-energy drain” and is “a driven steady state with a reservoir attached.” `SUBSTRATE_REQUIREMENTS.md` lines 207–212 call S11c’s bulk-at-rest results and that driven state “an unresolved tension,” and say “No equilibrium result is promoted to a result about the driven state.” S11b-B lines 150–154 say the rest-frame linearisation discards `O(v₀|q_n|/ω)` and neither carried nor bounded it. S9 line 349 lists `v₀ → 0` and frequency-independent moduli as limits taken.
+Fix: per route, quote the record on `v₀`, the rest-versus-driven disagreement, and any stated frequency dependence. Name a freeze as a freeze. Do not ask for a conservation verdict.
+
+**3. The closeout citation drops the survival rule and misstates line 9.**
+Lines 11–12: S11c “closed PARTIAL, with no light-loss number (`…S11c_PARTIAL_CLOSEOUT.md:3`, `:9`).” Line 3 says “no accepted nonuniform light-loss number was obtained. Both reflected and transmitted light count as survival.” Line 9 says conversion routes exist, “their size remains unknown,” and the benchmark imbalances “lie within its empirical 1 ppm floor, not a physical bound.”
+Fix: cite line 3 for the accepted-number sentence and the survival rule, and make that rule the accounting rule for Part 2. Cite line 9 for “size unknown” and “not a physical bound.”
+
+**4. The route seeds are scope limits, and two record channels are missing from the reading list.**
+Part 2.1 starts from S11 lines 74–76 and `R-S8-02`. Lines 74–76 say the homogeneous branches “have zero linear cross-block” and that this “does not establish decoupling” at nonlinear order, on a nonuniform slab, at an interface or defect, or with further fields. `R-S8-02` (`SUBSTRATE_REQUIREMENTS.md` lines 257–262) says “Mixing is **not** the failure mode” and “the transverse count stays `D − 1` regardless.” The seeded list does not include S11 lines 97–101, where phase matching is “kinematic only” and the interface coupling law “is absent,” or S11b-B lines 198–202, where zero transverse coupling is the uniform limit and the gradient-driven thickness channel “is bounded by BENCH-TOP OPTICS.”
+Fix: label lines 74–76 and `R-S8-02` as non-establishment and an open joint-operator requirement. A transverse-loss route is one a record says removes energy from the transverse branch. Add the kinematic bulk channel and the thickness channel, each with the record’s limit.
+
+**5. The comparison inventory is missing record-named yardsticks, the exposure, and the inputs table’s own status.**
+Part 2.4 lists stellar budgets, cosmological transparency, and tired light. S11b-B line 63 says “`v₀` is bounded by cosmology.” Lines 65–68 bound a Debye peak at `ωτ ~ 1` by anomalous mechanical dissipation, and say a numerical bound needs the gravity-sector coupling, which “is **not built**.” Lines 200–202 bound an O(1) slit-edge conversion by bench-top optics. Part 2.3 asks for each estimate’s parameters. A per-length or per-encounter estimate does not include the path, column, or encounter count that the stellar and cosmological yardsticks integrate. Line 62’s status bin, “calibrated, input assignment, or unknown,” also fights the table in question: `SUBSTRATE_REQUIREMENTS.md` lines 545–556 say those rows “are input assignments … not physical values earned by a kept result” and “None is a calibration of the draining model.” That section is the inputs table; `DEFECT_REGISTER.md` has none.
+Fix: add those three yardsticks with the qualifications above. Add one exposure row per comparison, with record status or “not addressed by the records.” Name `SUBSTRATE_REQUIREMENTS.md:543–570` and use its statuses.
+
+## Checked and sound
+
+The bulk half of the opening is supported: S9 line 1 is the shear-on-the-brane title, line 64 says the disordered phase carries no shear, and line 337 says bulk shear-freeness is postulated. “Transverse shear wave of the brane slab” is a gloss. Line 11 says “Light is a transverse wave,” and lines 333–336 keep the longitudinal degree of freedom with its restoring force set to zero by construction. Finding 4 covers the channels that gloss drops.
+
+S11c-d line 11 does say conversion routes exist and that survival is unresolved. Line 64 does say the no-leak reading needs the drain frozen and assigns live conversion to S12. “Name freezes as freezes” and “quote disagreements; do not resolve them” match those lines. Marking the listed estimates as unverified oracles, never premises, matches M3. Part 1’s dimming / reddening / redirection tag is a usable join key.
+
+With findings 1 and 2 removed, the task is record quotation plus web search. As written, those two items ask for verdicts the records do not contain.
+
+## Commands and stdout
+
+```text
+$ nl -ba research/pde_ledger_v3/steps/S9_light_requires_shear.md | sed -n '63,68p;333,337p;349p'
+    63| **ordered phase** (`χ_B = 1`) | carries **MacCullagh curl-only** shear | photons **exist** |
+    64| **disordered phase** (`χ_B = 0`) | carries **no** shear | photons stay **confined** |
+    67without it a photon has somewhere else to go, light leaks off our 3D space, and that is an energy sink
+    68with no observational room.
+   333- ⛔ **The absence of a propagating longitudinal wave is ASSUMED, not derived.**
+   336  longitudinal test is emitted at every root.
+   337- ⛔ **Bulk shear-freeness** is postulated; the bulk is absent from the action, so nothing here tests it.
+   349- ⚠ Limits taken: sharp zero-width sheet · `v₀ → 0` · no dissipation · frequency-independent moduli ·
+
+$ nl -ba research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md | sed -n '3p;9p'
+     3S11c asked how much light converts into other motion where the brane's thickness or material properties change. **It closes PARTIAL: no accepted nonuniform light-loss number was obtained.** Both reflected and transmitted light count as survival.
+     9Where the brane changes, the equations contain conversion routes, but their size remains unknown. The held-profile omega=3 benchmark at speed ratio approximately 0.12 is **UNRESOLVED**: final imbalances lie within its empirical 1 ppm floor, not a physical bound.
+
+$ nl -ba research/pde_ledger_v3/steps/S11_stray_longitudinal.md | sed -n '74,76p;97,101p'
+    74**replaced**. Thus the homogeneous \(D=3\) quadratic transverse and longitudinal eigenbranches have zero
+    75linear cross-block under the selected action. This does not establish decoupling at nonlinear order, on
+    76a nonuniform slab, at an interface or defect, or after additional allowed fields are introduced.
+    97Phase matching gives `k_w² = k²(c_L²/c_s0² − 1)`, ...
+    98radiates; `c_L < c_s0` ⇒ bound."* ⭐ **Neither direction is established.** Phase matching is **kinematic
+    99only** — it determines whether a propagating bulk channel **exists**, ⛔ not whether the mode uses it,
+   101that is absent.
+
+$ nl -ba research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md | sed -n '207,212p;251,262p;545,556p'
+   207  calls that correction uncarried ... The kept S11c results state that the bulk is at rest
+   209  unresolved tension between the driven reference state and the recorded rest-state calculations.
+   212  is promoted to a result about the driven state.
+   251### R-S8-02 — the in-plane and out-of-plane sectors must decouple at quadratic order
+   258  this entry named, and a leg corrected it.** Mixing is **not** the failure mode: ...
+   260  `u_L` freely and the transverse count stays `D − 1` regardless.
+   545These are input assignments used by the S11c calculations, not physical values earned by a kept
+   546result ... None is a calibration of the draining model.
+
+$ nl -ba research/pde_ledger_v3/steps/S11bB_interface_assembly.md | sed -n '46,48p;63,68p;150,154p;196,202p'
+    46. ⛔⛔ **Passivity and reciprocity are properties of fluctuations about an EQUILIBRIUM. This model's
+    47   reference state is not one.** It carries a steady background normal flow `v₀` — the dark-energy drain —
+    48   ⇒ a **driven steady state with a reservoir attached.**
+    63> **quantitative**, because `v₀` is bounded by cosmology.
+    65⇒ ⭐ **the real gate is observational, ⛔ not thermodynamic.** The departure's frequency profile is a **Debye
+    66loss peak at `ωτ ~ 1`** ...
+    68which is the gravity sector and is **not built**
+   151  the bulk's rest-frame linearisation discards a relative correction of order **`O(v₀|q_n|/ω)`**
+   154  ⛔ **This step neither carried nor bounded it.**
+   196- ⚠ A's frequency-dependent leak is **outside the passive region, ⛔ NOT ruled out.**
+   198- ⛔ Do not read the zero transverse coupling as confinement being unconditional; it is the **uniform**
+   200- ⭐⭐ **C's coefficient is bounded by BENCH-TOP OPTICS.**
+
+$ rg -n -i "conserves its frequency|frequency is conserved|conserved frequency" \
+    research/pde_ledger_v3 docs --glob '!**/lean/**' --glob '!**/.lake/**' --glob '!**/archive/**'
+(no matches)
+
+$ rg -n "Inputs a future nonuniform|inputs table" \
+    research/pde_ledger_v3/DEFECT_REGISTER.md research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
+research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md:543:#### Inputs a future nonuniform calculation must define
+```

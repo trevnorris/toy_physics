@@ -1,0 +1,66 @@
+I'll review the scoping inventory against the directive and the cited records, starting with the directive and the source records before the artifact.The directive is in hand. Next I’ll read the cited step records and substrate lines, and only then open the inventory.The inventory is in view. I’ll check the cited record lines and the prior-art equations against the text they are said to quote.Auto-compacting conversation (80% full)...
+Conversation compacted.
+The remaining prior-art checks are Peyton, Kubrusly, Marcuse 1970, Gu & Fuller, and Fixsen. I will verify those equations against the inventory before writing the verdict.Equation text in the two plate papers is still unread. I will pull those formulas and the three remaining sources, and re-check the record lines the inventory cites for status.**Verdict: NEEDS REVISION**
+
+The inventory has the directive’s columns, route statuses, seeds, survival rule, and yardstick list, and it states no suppression requirement or bracket outcome. Eight statements mis-cite a record or a source in a way that changes what a later bracket can treat as established.
+
+## Findings
+
+**1. E4, §2.1.** The row says the uniform transverse zero is unconditional on a uniform background and cites B:191 and U:74–80 together.
+
+B:191 does say coupling ≡ 0, `ρ_br⁰ω² = μ_R k²`, `Im = 0`, “unconditional on a uniform background.” U:74–80 says the coupling and `TRANSVERSE_DISSIPATION` are identically zero, and then: “It is a stable real-frequency mode (`Im ω = 0`) only where the transverse stiffness `μ_⊥ ≥ 0`”; `μ_⊥ < 0` “gives a growing transverse root.” Correlation T already states the `μ_⊥ ≥ 0` condition. The E4 sentence attaches U’s whole paragraph to “unconditional.”
+
+Fix: separate coupling-zero on a uniform background from `Im ω = 0` only for `μ_⊥ ≥ 0`, and quote U:77–80 beside B:191.
+
+**2. E4 and correlation P.** The directive says to quote disagreements and leave them unresolved. B:34–38 says the engines emitted a region “not used to remove the root,” under “admissibility is a classification, not an acceptance gate,” and that “thermodynamically FORBIDDEN” was introduced in the writeup. U:70–72 says that inside the passive region “the second law forbids” the velocity channel, “so the model refuses” it, and that outside the region it survives only against a named reservoir.
+
+P and E4 adopt the classification/reservoir reading and cite U:51–55 for the region formula. They do not quote U:70–72. That choice decides whether `Λ_V` with `ωτ ≠ 0` is inside the bracket domain.
+
+Fix: quote both sentences under E4 and P and leave them unresolved.
+
+**3. Correlation P.** “`τ_A` unrestricted by that region,” citing B:23–27 and U:51–55.
+
+B:27: “`τ_A` is unrestricted.” U:53–55: “`τ_A` is unrestricted by the passivity conditions (no relation beyond the supplied `τ_A ≥ 0`, ⛔ not that negative relaxation times are admitted).”
+
+Fix: keep the supplied `τ_A ≥ 0` bound and the exclusion of negative relaxation times.
+
+**4. E5 and the E4/E5 matrix rows.** Impermeable radiation resistance is written `Re Z = ρ_m/a_q` (A:71–74), and A:79 is called exact, with denominator `b_q(1+(ωτ)²)`.
+
+A:36 states `Z = ω ρ_m / q_out`. A:41 states propagating `Z` real, `ωρ_m/q`.
+
+`rg -n "a_q|b_q" research/pde_ledger_v3 --glob '*.md'` returns only A:72 and A:79. Neither symbol is defined in A, B, or U.
+
+Fix: quote both impedance expressions and mark `a_q` and `b_q` undefined. Do not pick one as the radiation resistance.
+
+**5. E2, §2.1, and the PROPAGATING matrix row.** The row says “established kernel/pressure/flux” at c1:100–110. The matrix lists `H_a[Z]`, the port form, and the far-field audit as the local quantity (c1:43–44, 100–110).
+
+c1:100–102 establishes the two-momentum kernel and the “δp_s (pressure) + J_s (relative-flux)” coefficients. c1:105–107: the Hermitian/reactive dissipation parts “AGREE only at c1’s first order,” with the full symbolic comparison deferred. c1:43–44 defines that three-object audit, including the far-field Poynting balance, as something the step computes. c1:112–115 lists the ENERGY audit as “OWED / SURFACED (UNDECIDED).”
+
+Part 1’s “relative-flux” is the established object. Bare “flux,” and listing the far-field audit as the local quantity, reads as that undecided energy audit.
+
+Fix: say “J_s relative-flux,” and mark the energy/far-field audit UNDECIDED.
+
+**6. E3.** The row cites c2:51 and c2:55 for unresolved full composition and the direct mixed term, and c2:59–70 for the close-then-extract equation.
+
+c2:53, between those two lines: “F/G remain withdrawn interpretations, and their paused re-grounding is not discharged.” c2:136–138: per-engine wiring and kernel VALUES are established per engine; “NOT F or G,” because those interpretations rest on the withdrawn `verify_F`/`verify_EG` instruments and are “not established physics.”
+
+Fix: put that withdrawal on the E3 row so the kernel values are not read as an established loss.
+
+**7. C1.** “has `INTERFACE_EQ={}` (S11:278–285).”
+
+S11:279–280: “`WALL_WIDTH_FIELDS={}`, `hBranon` excluded, `INTERFACE_EQUATIONS_SUPPLIED={}`.”
+
+Fix: use the record’s token. O3’s “excluded hBranon/interface equations” already matches.
+
+**8. §2.2, Gu and Fuller.** The exact-equation cell writes `b₁=[ρ₀/(2√(2πRk₀)m)]p̄_F(R,θ)v′`, which places `m` outside the radical.
+
+JASA 90 (1991) 2022, Eq. (15), from the VT PDF page image: `b₁ = (ρ₀ / 2√(2π R k₀ m)) p̄_F(R,θ) v′`, with `m` inside the square root. Eqs. (13) and (16) otherwise match, and the note that the sum includes control forces is right.
+
+Command: `curl` of `https://vtechworks.lib.vt.edu/bitstreams/ac456826-ab58-4e3b-9274-ec27505c0cab/download`, then `pdftoppm -f 3 -l 4`. Fix: move `m` inside the radical.
+
+## Checked and found sound
+
+- Directive columns, the three route statuses, the S11c-b/c1/c2 seeds, the kinematic channel, A’s velocity leak, the gradient-thickness leg inside E1, and O1–O3 in the third status. Survival is transverse reflection and transmission (PC:3). The closing line states that this repair contains no calculation, new physics, or confinement verdict.
+- Rest versus driven, and whether `k c_s0 ≫ ω` is sufficient, are quoted in §2.1 and left open. The cited freezes are named: the d:29 held rest profile, the frozen wall, strict `v_dr=0`, the seal-5 density with the c2 rebind, dropped convection versus the `O(σ_W²)` tilt, frozen width, excluded `hBranon`, the S9 ancestor limits, and the d:64 frozen drain.
+- Prior art that matches the quoted text: Peyton Eq. (2) and `C=1.38` (open NDT&E PDF); Kubrusly Eqs. (1), (8), (15), and (16), with the 8 mm aluminium plate, 2/4/6 mm steps, and 6 and 10 mm wavelengths (Warwick PDF); Marcuse 1970’s title, DOI, and abstract statement that properly dimensioned 2:1 steps can be kept below 1 percent, with equation glyphs correctly left unverified (the archive.org OCR of (32)–(33) is garbled); Marcuse 1969 Eqs. (72)–(76) on BSTJ p. 3201, which match the printed formulas (the inventory’s “glyphs UNVERIFIED” flag is stricter than that page); Fixsen’s abstract, `|y|<15×10^{-6}`, `|μ|<9×10^{-5}`, RMS under 50 ppm (ApJ 473, 576; arXiv:astro-ph/9605054). The oracle rows are labeled comparison targets, not v3 bounds.
+- Rows 5 and 10 say the analog is acoustic radiation and that direct bulk shear is the separate open route O4. Raman and Brillouin stay NOT ADDRESSED, with the generic nonlinear program on C3. The yardstick codes are present, and V0 and MD record the missing numerical cosmological and matter-coupling bounds.

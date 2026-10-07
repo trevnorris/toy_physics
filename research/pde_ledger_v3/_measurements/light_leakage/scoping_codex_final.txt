@@ -1,0 +1,7 @@
+Completed [light_leakage_scoping.md](/var/projects/toy_physics/_scratch/light_leakage/light_leakage_scoping.md).
+
+- Part 1: 13 mechanisms — ABSENT 1, PRESENT ANALOG 9, NOT ADDRESSED 3.
+- Part 2: 9 routes — equation-level 4, candidate beyond scope 2, open/non-established 3.
+- Unverified: exact equation text for Marcuse (1970), Molz–Beamish (1996), and Demma–Cawley–Lowe (2003); their metadata and abstracts were verified.
+- Could not supply a numerical cosmological bound for `v₀` because the records provide no sourced observable correspondence.
+- Commits: none, as directed. No other file was modified.

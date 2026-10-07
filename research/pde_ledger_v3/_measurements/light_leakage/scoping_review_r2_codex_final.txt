@@ -1,0 +1,48 @@
+**Verdict: NEEDS REVISION.**
+
+Two confirmed issues affect parameter correspondence and classification. Chapter-derived completeness also remains unverified.
+
+Local quotations are supported by the exact commands and literal output in the [evidence log](/tmp/light_leakage_independent_review/local_evidence.txt). The artifact evidence for both findings was read with:
+
+```bash
+nl -ba _scratch/light_leakage/light_leakage_scoping.md | sed -n '27p;41p;90p;94p;18p'
+```
+
+1. **Peyton oracle: λ maps to the wrong branch — line 90.**
+
+   **Inventory:** “`λ,θ` ↔ incident scale and outgoing angle.”
+
+   **Source:** Peyton et al., §3.2.2, p.6: “where λ is the S0 wavelength in this case.” [Primary paper](https://wrap.warwick.ac.uk/id/eprint/193473/1/1-s2.0-S0963869525002154-main.pdf)
+
+   **Problem:** Equation (2)’s λ belongs to the converted, reflected S0 wave. Mapping it to the incident SH0 scale changes the oracle’s parameter correspondence. The equation itself is transcribed correctly; the reported 6-mm incident SH0 wavelength does not define its λ.
+
+   **Fix:** Map λ to the receiving scalar/mechanical branch’s wavelength at the shared frequency. Retain 6 mm explicitly as the incident SH0 wavelength used for the reported fit.
+
+2. **Brillouin classification omits a qualification and leaves overlapping categories unexplained — lines 27 and 41.**
+
+   **Inventory:** Line 41 points to “C3 (stimulated, nonlinear) and O7 (spontaneous, time-dependent background).” Line 27’s quotation of WB’s stimulated-process definition stops before its steady-state qualification.
+
+   **Source:** WB §2.C requires “after the system has achieved steady state”; backward scattering is “always a stimulated process, even if it is initiated spontaneously.” [Accepted manuscript, p.6](https://findresearcher.sdu.dk/ws/portalfiles/portal/222481164/SBS_Tutorial_JOSA_B_revised_version_2_.pdf)
+
+   **Problem:** The source distinguishes initiation—seeded or spontaneous—from its classification by steady-state gain. The inventory’s abbreviated definition and C3/O7 pairing do not preserve that distinction. A spontaneously initiated process can also be stimulated under the cited definition.
+
+   **Fix:** Restore the steady-state qualification and explicitly make the C3/O7 references nonexclusive. Describe initiation and amplification separately. Preserve **NOT ADDRESSED** and the absence of a recorded Brillouin-specific status.
+
+The completeness limitation is disclosed honestly, but cannot be treated as verified coverage. The directive requires “the loss mechanisms of guided light named in the loss chapters of two standard references you cite”:
+
+```bash
+nl -ba _scratch/light_leakage/light_leakage_scoping_directive.md | sed -n '20,42p'
+```
+
+Against that, artifact line 18 says “completeness of a chapter-derived union is **UNVERIFIED**, not asserted.” This establishes a verification gap, not evidence that a particular additional mechanism is missing.
+
+What I checked and found sound, with supporting commands and literal output in the evidence log:
+
+- **Columns, seeds and route classes:** The required matrix columns are present, including “Local quantity, or gap,” “Exposure and status,” “Validity,” “Survival” and “Yardstick.” The mandated b/c1/c2 seeds appear as E1/E2/E3. E3 explicitly remains a “closed representation of E1, not extra thickness route,” avoiding double counting.
+- **Record statuses:** E3 reproduces c2:42’s “CONDITIONAL — repaired equations, scoped review only.” E2 preserves c1’s distinction between the **ESTABLISHED** kernel/pressure/flux coefficients and “OWED / SURFACED (UNDECIDED)” objects. The inventory does not promote these to an accepted loss number.
+- **Survival and destinations:** PC:3 says “Both reflected and transmitted light count as survival”; DEC:130–133 defines “survival of the transverse polarization channel” and excludes bound breathing conversion. Artifact lines 3 and 98 preserve both rules. Line 112 correctly says “reactive field alone not loss.”
+- **Observational scope:** YF is explicitly “Total attenuation, not a separated mechanism/material coefficient” at line 140. Its reported **0.1419 dB/km at 1560 nm** matches the [Tamura primary abstract](https://opg.optica.org/abstract.cfm?uri=OFC-2017-Th5D.1). Branch-resolved observational maps remain labelled gaps.
+- **Freezes and M3:** The inventory names the “Flat background centre-line” freeze and the “background hold.” It preserves unresolved rest/driven qualifications. CLAUDE.md says prior art is “an oracle, never a premise”; artifact line 3 correspondingly states “Oracles are M3 comparison targets, never v3 bounds.”
+- **Scope discipline:** Artifact line 157 retains “No accepted physical photon-loss coefficient/probability.” I found no calculation, suppression requirement, bracket outcome or new-physics claim.
+
+No repository files were modified, and no other review outputs were read.

@@ -1,0 +1,50 @@
+**Verdict: CLEAR** — limited to the targeted v4→v5 repair.
+
+**Findings:** None meeting the physics filter.
+
+Checked and found sound:
+
+- **First-order fidelity and E1 consistency.** The taxonomy note now explicitly rejects treating interbranch coupling, as such, as beyond first order. Evidence commands:
+
+  ```bash
+  nl -ba _scratch/light_leakage/light_leakage_scoping.md | sed -n '41p;57p'
+  nl -ba research/pde_ledger_v3/directives/S11c_decisions.md | sed -n '123,126p'
+  ```
+
+  The inventory says, “This pointer does not claim that a coupling between wave branches lies, as such, beyond the ‘first order in wave amplitude’ truncation.” The record states, “the transverse↔thickness coupling is `O(εη)`.” E1 remains an “Equation-level route.”
+
+- **Homogeneous qualification.** Row 4 now says “the homogeneous quadratic cross-block is zero,” consistent with the cited record’s restricted domain:
+
+  ```bash
+  nl -ba research/pde_ledger_v3/steps/S11_stray_longitudinal.md | sed -n '72,76p'
+  ```
+
+  Literal record text: “the homogeneous \(D=3\) quadratic transverse and longitudinal eigenbranches have zero linear cross-block under the selected action.”
+
+- **C3 remains a candidate pointer; no v3 vertex is asserted.** Rows 3–4 retain “NOT ADDRESSED” and “No recorded Raman status” / “No recorded Brillouin status,” with the interaction and receiving-branch statistics left as gaps. The supporting program boundary is:
+
+  ```bash
+  nl -ba research/pde_ledger_v3/steps/S11c_SCOPE.md | sed -n '48,51p'
+  ```
+
+  Literal text: “NOT S11c — the nonlinear light program: the DC/harmonic/sideband radiation audit and nonlinear intensity coupling.” The repaired note acknowledges E1 separately and does not turn this program assignment into an established Raman/Brillouin interaction.
+
+- **Source distinctions and O7 consistency.** Abramczyk identifies the first polarization term with “spontaneous linear Raman scattering.” Wolff’s accepted manuscript distinguishes initiation from gain classification and describes coupling to an “acoustic or mechanical wave.” These support retaining the source distinctions without importing a v3 interaction. [Abramczyk, §4.2](https://mitr.p.lodz.pl/arch/evu/lectures/Abramczyk.pdf); [Wolff et al., accepted manuscript, §§1–2](https://findresearcher.sdu.dk/ws/portalfiles/portal/222481164/SBS_Tutorial_JOSA_B_revised_version_2_.pdf). The published Wolff PDF could not be opened; the accepted manuscript was checked.
+
+  The unchanged O7 distinction also matches the supplied anchorings:
+
+  ```bash
+  nl -ba research/pde_ledger_v3/directives/S11c_a_SHARED_PHYSICS.md | sed -n '237,239p'
+  ```
+
+  Literal text: `LAB_HELD: Q_bg^L(x,t) ≡ Q_bg(x)` and `MATERIAL_ADVECTED: Q_bg^M(x,t) ≡ Q_bg(χ(x,t))`.
+
+- **Scope and prohibited claims.**
+
+  ```bash
+  diff -u _scratch/light_leakage/light_leakage_scoping_v4.md _scratch/light_leakage/light_leakage_scoping.md
+  ```
+
+  The changes remove the erroneous truncation rationale, qualify the homogeneous cross-block, and explicitly preserve E1’s first-order coupling. No changed material adds a loss outcome, suppression requirement, vertex, numerical bound, or conflicting route/status/destination/freeze/oracle assignment.
+
+Raman/Brillouin interactions and receiving-branch statistics remain explicit gaps. Repository files were not modified; no commit was made.

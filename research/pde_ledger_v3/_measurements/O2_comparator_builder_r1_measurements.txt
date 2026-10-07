@@ -1,0 +1,1843 @@
+Round-1 completion measurements. Initial stopped-run evidence remains in tests/ and initial-stop-* in the round-1 scratch directory.
+
+RUN tests-complete
+$ python scripts/s11c_guarded_run.py --pool o2-comparator --memory-gib 6 --log-directory /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tests-complete -- env PYTHONDONTWRITEBYTECODE=1 TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp python /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/pinned-complete/test_O2_cross_engine_comparator.py
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tests-complete-launch.stdout
+{
+  "exitCode": 0,
+  "wallSeconds": 0.6390789921861142,
+  "unit": "s11c-guard-d8dadafcb60f",
+  "stderrBytes": 2246,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 0,
+    "guardReason": null,
+    "wallSeconds": 0.5670904668513685,
+    "childPid": 3082233
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tests-complete-launch.stderr
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tests-complete/stdout
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tests-complete/stderr
+test_applied_argument_stripped (__main__.Controls) ... ok
+test_binder_structure (__main__.Controls) ... ok
+test_boolean_does_not_hide_algebraic_sibling (__main__.Controls) ... ok
+test_common_translation_preserves_residual (__main__.Controls) ... ok
+test_declared_tables_are_injective (__main__.Controls) ... ok
+test_derivative_order (__main__.Controls) ... ok
+test_duplicate_join_rejected (__main__.Controls) ... ok
+test_duplicate_name_rejected_both_sides (__main__.Controls) ... ok
+test_each_name_binding_repoint (__main__.Controls) ... ok
+test_empty_containers_are_accounted (__main__.Controls) ... ok
+test_exact_argument_content (__main__.Controls) ... ok
+test_form_change (__main__.Controls) ... ok
+test_grammatical_unknown_head_is_coverage (__main__.Controls) ... ok
+test_held_aggregate_orientation (__main__.Controls) ... ok
+test_independent_census_accounts_for_nested_sibling (__main__.Controls) ... ok
+test_live_profile_frozen (__main__.Controls) ... ok
+test_lossless_function_metadata_survives (__main__.Controls) ... ok
+test_malformed_input_rejected (__main__.Controls) ... ok
+test_mass_loss_join_keeps_rhs_separate (__main__.Controls) ... ok
+test_matching_text_and_names_not_zero_evidence (__main__.Controls) ... ok
+test_moved_tag_and_key_stays_joined (__main__.Controls) ... ok
+test_nested_sibling_removed (__main__.Controls) ... ok
+test_one_sided_operand (__main__.Controls) ... ok
+test_open_argument (__main__.Controls) ... ok
+test_open_arguments_are_not_signed_balance_terms (__main__.Controls) ... ok
+test_open_head (__main__.Controls) ... ok
+test_open_named_operand (__main__.Controls) ... ok
+test_open_operand_binding_consistency (__main__.Controls) ... ok
+test_open_orientation (__main__.Controls) ... ok
+test_parent_child_join_rejected (__main__.Controls) ... ok
+test_profile_derivative_reaches_scalar_subtraction (__main__.Controls) ... ok
+test_residual_reconstructs_left_operand (__main__.Controls) ... ok
+test_sympy_aggregate_body_orientation (__main__.Controls) ... ok
+test_transpose_layout_matches_explicit_transpose (__main__.Controls) ... ok
+test_unpaired_open_subtree_mutation_moves_residual (__main__.Controls) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.248s
+
+OK
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tests-complete/outcome.json
+{
+  "exitCode": 0,
+  "wallSeconds": 0.6390789921861142,
+  "unit": "s11c-guard-d8dadafcb60f",
+  "stderrBytes": 2246,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 0,
+    "guardReason": null,
+    "wallSeconds": 0.5670904668513685,
+    "childPid": 3082233
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tests-complete/limit-validation.json
+{
+  "verified": true,
+  "actual": {
+    "memory.max": "6442450944",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-d8dadafcb60f.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      6442450944,
+      6442450944
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tests-complete/duration-validation.json
+{
+  "verified": true,
+  "actual": {
+    "RuntimeMaxUSec": "infinity",
+    "Restart": "no"
+  },
+  "wallDeadlineSeconds": null,
+  "inactivityDeadlineSeconds": null
+}
+
+RUN ablation collapse_applied_function
+$ python scripts/s11c_guarded_run.py --pool o2-comparator --memory-gib 6 --log-directory /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/collapse_applied_function/guard -- env PYTHONDONTWRITEBYTECODE=1 TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp python /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/collapse_applied_function/test_O2_cross_engine_comparator.py
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/collapse_applied_function/launch.stdout
+{
+  "exitCode": 1,
+  "wallSeconds": 0.6417643649037927,
+  "unit": "s11c-guard-c73a56b741a4",
+  "stderrBytes": 4108,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 1,
+    "guardReason": null,
+    "wallSeconds": 0.5671939039602876,
+    "childPid": 3082491
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/collapse_applied_function/launch.stderr
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/collapse_applied_function/guard/stdout
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/collapse_applied_function/guard/stderr
+test_applied_argument_stripped (__main__.Controls) ... ok
+test_binder_structure (__main__.Controls) ... ok
+test_boolean_does_not_hide_algebraic_sibling (__main__.Controls) ... ok
+test_common_translation_preserves_residual (__main__.Controls) ... ok
+test_declared_tables_are_injective (__main__.Controls) ... ok
+test_derivative_order (__main__.Controls) ... ok
+test_duplicate_join_rejected (__main__.Controls) ... ok
+test_duplicate_name_rejected_both_sides (__main__.Controls) ... ok
+test_each_name_binding_repoint (__main__.Controls) ... ok
+test_empty_containers_are_accounted (__main__.Controls) ... ok
+test_exact_argument_content (__main__.Controls) ... FAIL
+test_form_change (__main__.Controls) ... ok
+test_grammatical_unknown_head_is_coverage (__main__.Controls) ... ok
+test_held_aggregate_orientation (__main__.Controls) ... ok
+test_independent_census_accounts_for_nested_sibling (__main__.Controls) ... ok
+test_live_profile_frozen (__main__.Controls) ... ok
+test_lossless_function_metadata_survives (__main__.Controls) ... ok
+test_malformed_input_rejected (__main__.Controls) ... ok
+test_mass_loss_join_keeps_rhs_separate (__main__.Controls) ... FAIL
+test_matching_text_and_names_not_zero_evidence (__main__.Controls) ... ok
+test_moved_tag_and_key_stays_joined (__main__.Controls) ... ok
+test_nested_sibling_removed (__main__.Controls) ... ok
+test_one_sided_operand (__main__.Controls) ... ok
+test_open_argument (__main__.Controls) ... ok
+test_open_arguments_are_not_signed_balance_terms (__main__.Controls) ... ok
+test_open_head (__main__.Controls) ... ok
+test_open_named_operand (__main__.Controls) ... ok
+test_open_operand_binding_consistency (__main__.Controls) ... ok
+test_open_orientation (__main__.Controls) ... ok
+test_parent_child_join_rejected (__main__.Controls) ... ok
+test_profile_derivative_reaches_scalar_subtraction (__main__.Controls) ... ok
+test_residual_reconstructs_left_operand (__main__.Controls) ... ok
+test_sympy_aggregate_body_orientation (__main__.Controls) ... ok
+test_transpose_layout_matches_explicit_transpose (__main__.Controls) ... ok
+test_unpaired_open_subtree_mutation_moves_residual (__main__.Controls) ... ok
+
+======================================================================
+FAIL: test_exact_argument_content (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/collapse_applied_function/test_O2_cross_engine_comparator.py", line 220, in test_exact_argument_content
+    before,after = self.changes(fn('V_r','Symbol("x1")'),'VR[x1]','VR[x2]')
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/collapse_applied_function/test_O2_cross_engine_comparator.py", line 58, in changes
+    self.assertNotEqual(products(before[0]),products(after[0]),
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : mutation must move outcome/residual/delta, not operand text
+
+======================================================================
+FAIL: test_mass_loss_join_keeps_rhs_separate (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/collapse_applied_function/test_O2_cross_engine_comparator.py", line 318, in test_mass_loss_join_keeps_rhs_separate
+    self.assertNotEqual(products(base[0]),products(loss_changed[0]))
+AssertionError: [{'outcome': 'exact', 'residual': '0'}, {'outcome': 'exact', 'residual': '0'}, {'outcome': 'relation', 'head': 'Equality', 'operands': [{'outcome': 'exact', 'residual': '0'}, {'outcome': 'exact', 'residual': '0'}]}] == [{'outcome': 'exact', 'residual': '0'}, {'outcome': 'exact', 'residual': '0'}, {'outcome': 'relation', 'head': 'Equality', 'operands': [{'outcome': 'exact', 'residual': '0'}, {'outcome': 'exact', 'residual': '0'}]}]
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.234s
+
+FAILED (failures=2)
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/collapse_applied_function/guard/outcome.json
+{
+  "exitCode": 1,
+  "wallSeconds": 0.6417643649037927,
+  "unit": "s11c-guard-c73a56b741a4",
+  "stderrBytes": 4108,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 1,
+    "guardReason": null,
+    "wallSeconds": 0.5671939039602876,
+    "childPid": 3082491
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/collapse_applied_function/guard/limit-validation.json
+{
+  "verified": true,
+  "actual": {
+    "memory.max": "6442450944",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-c73a56b741a4.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      6442450944,
+      6442450944
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/collapse_applied_function/guard/duration-validation.json
+{
+  "verified": true,
+  "actual": {
+    "RuntimeMaxUSec": "infinity",
+    "Restart": "no"
+  },
+  "wallDeadlineSeconds": null,
+  "inactivityDeadlineSeconds": null
+}
+
+RUN ablation never_flip_orientation
+$ python scripts/s11c_guarded_run.py --pool o2-comparator --memory-gib 6 --log-directory /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/guard -- env PYTHONDONTWRITEBYTECODE=1 TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp python /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/test_O2_cross_engine_comparator.py
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/launch.stdout
+{
+  "exitCode": 1,
+  "wallSeconds": 0.6355989451985806,
+  "unit": "s11c-guard-53e8ab53ff05",
+  "stderrBytes": 5067,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 1,
+    "guardReason": null,
+    "wallSeconds": 0.567105962196365,
+    "childPid": 3082501
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/launch.stderr
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/guard/stdout
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/guard/stderr
+test_applied_argument_stripped (__main__.Controls) ... ok
+test_binder_structure (__main__.Controls) ... ok
+test_boolean_does_not_hide_algebraic_sibling (__main__.Controls) ... ok
+test_common_translation_preserves_residual (__main__.Controls) ... ok
+test_declared_tables_are_injective (__main__.Controls) ... ok
+test_derivative_order (__main__.Controls) ... ok
+test_duplicate_join_rejected (__main__.Controls) ... ok
+test_duplicate_name_rejected_both_sides (__main__.Controls) ... ok
+test_each_name_binding_repoint (__main__.Controls) ... ok
+test_empty_containers_are_accounted (__main__.Controls) ... ok
+test_exact_argument_content (__main__.Controls) ... ok
+test_form_change (__main__.Controls) ... ok
+test_grammatical_unknown_head_is_coverage (__main__.Controls) ... ok
+test_held_aggregate_orientation (__main__.Controls) ... FAIL
+test_independent_census_accounts_for_nested_sibling (__main__.Controls) ... ok
+test_live_profile_frozen (__main__.Controls) ... ok
+test_lossless_function_metadata_survives (__main__.Controls) ... ok
+test_malformed_input_rejected (__main__.Controls) ... ok
+test_mass_loss_join_keeps_rhs_separate (__main__.Controls) ... ok
+test_matching_text_and_names_not_zero_evidence (__main__.Controls) ... ok
+test_moved_tag_and_key_stays_joined (__main__.Controls) ... ok
+test_nested_sibling_removed (__main__.Controls) ... ok
+test_one_sided_operand (__main__.Controls) ... ok
+test_open_argument (__main__.Controls) ... ok
+test_open_arguments_are_not_signed_balance_terms (__main__.Controls) ... FAIL
+test_open_head (__main__.Controls) ... ok
+test_open_named_operand (__main__.Controls) ... ok
+test_open_operand_binding_consistency (__main__.Controls) ... ok
+test_open_orientation (__main__.Controls) ... FAIL
+test_parent_child_join_rejected (__main__.Controls) ... ok
+test_profile_derivative_reaches_scalar_subtraction (__main__.Controls) ... ok
+test_residual_reconstructs_left_operand (__main__.Controls) ... ok
+test_sympy_aggregate_body_orientation (__main__.Controls) ... FAIL
+test_transpose_layout_matches_explicit_transpose (__main__.Controls) ... ok
+test_unpaired_open_subtree_mutation_moves_residual (__main__.Controls) ... ok
+
+======================================================================
+FAIL: test_held_aggregate_orientation (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/test_O2_cross_engine_comparator.py", line 260, in test_held_aggregate_orientation
+    self.assertNotEqual(self.census(aggregate,'wl',field),self.census(opposite,'wl',field))
+AssertionError: [['["Symbol","wl::NativeToCoordinateDensity",[],[]]', 1, 1]] == [['["Symbol","wl::NativeToCoordinateDensity",[],[]]', 1, 1]]
+
+======================================================================
+FAIL: test_open_arguments_are_not_signed_balance_terms (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/test_O2_cross_engine_comparator.py", line 285, in test_open_arguments_are_not_signed_balance_terms
+    self.assertNotEqual(self.census(positive,'wl',term_field),self.census(negative,'wl',term_field))
+AssertionError: [['["Symbol","wl::Outer",[],[]]', 1, 1]] == [['["Symbol","wl::Outer",[],[]]', 1, 1]]
+
+======================================================================
+FAIL: test_open_orientation (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/test_O2_cross_engine_comparator.py", line 119, in test_open_orientation
+    self.changes_open(fn('OPEN_Synthetic','Symbol("I_br_live"), Symbol("x1")'),
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/test_O2_cross_engine_comparator.py", line 67, in changes_open
+    self.assertNotEqual(self.census(before,'wl',field),self.census(after,'wl',field),
+AssertionError: [['["Symbol","wl::Role",[],[]]', 1, 1]] == [['["Symbol","wl::Role",[],[]]', 1, 1]] : OPEN control must also move its computed census
+
+======================================================================
+FAIL: test_sympy_aggregate_body_orientation (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/test_O2_cross_engine_comparator.py", line 276, in test_sympy_aggregate_body_orientation
+    self.assertNotEqual(body(negative),body(positive))
+AssertionError: [['py::OPEN_ApplyNativeFaceReduction', 1, 1]] == [['py::OPEN_ApplyNativeFaceReduction', 1, 1]]
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.245s
+
+FAILED (failures=4)
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/guard/outcome.json
+{
+  "exitCode": 1,
+  "wallSeconds": 0.6355989451985806,
+  "unit": "s11c-guard-53e8ab53ff05",
+  "stderrBytes": 5067,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 1,
+    "guardReason": null,
+    "wallSeconds": 0.567105962196365,
+    "childPid": 3082501
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/guard/limit-validation.json
+{
+  "verified": true,
+  "actual": {
+    "memory.max": "6442450944",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-53e8ab53ff05.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      6442450944,
+      6442450944
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/guard/duration-validation.json
+{
+  "verified": true,
+  "actual": {
+    "RuntimeMaxUSec": "infinity",
+    "Restart": "no"
+  },
+  "wallDeadlineSeconds": null,
+  "inactivityDeadlineSeconds": null
+}
+
+RUN ablation drop_transpose
+$ python scripts/s11c_guarded_run.py --pool o2-comparator --memory-gib 6 --log-directory /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/drop_transpose/guard -- env PYTHONDONTWRITEBYTECODE=1 TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp python /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/drop_transpose/test_O2_cross_engine_comparator.py
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/drop_transpose/launch.stdout
+{
+  "exitCode": 1,
+  "wallSeconds": 0.645056425826624,
+  "unit": "s11c-guard-7ea0bc00d9c4",
+  "stderrBytes": 3221,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 1,
+    "guardReason": null,
+    "wallSeconds": 0.5668812780641019,
+    "childPid": 3082518
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/drop_transpose/launch.stderr
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/drop_transpose/guard/stdout
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/drop_transpose/guard/stderr
+test_applied_argument_stripped (__main__.Controls) ... ok
+test_binder_structure (__main__.Controls) ... ok
+test_boolean_does_not_hide_algebraic_sibling (__main__.Controls) ... ok
+test_common_translation_preserves_residual (__main__.Controls) ... ok
+test_declared_tables_are_injective (__main__.Controls) ... ok
+test_derivative_order (__main__.Controls) ... ok
+test_duplicate_join_rejected (__main__.Controls) ... ok
+test_duplicate_name_rejected_both_sides (__main__.Controls) ... ok
+test_each_name_binding_repoint (__main__.Controls) ... ok
+test_empty_containers_are_accounted (__main__.Controls) ... ok
+test_exact_argument_content (__main__.Controls) ... ok
+test_form_change (__main__.Controls) ... ok
+test_grammatical_unknown_head_is_coverage (__main__.Controls) ... ok
+test_held_aggregate_orientation (__main__.Controls) ... ok
+test_independent_census_accounts_for_nested_sibling (__main__.Controls) ... ok
+test_live_profile_frozen (__main__.Controls) ... ok
+test_lossless_function_metadata_survives (__main__.Controls) ... ok
+test_malformed_input_rejected (__main__.Controls) ... ok
+test_mass_loss_join_keeps_rhs_separate (__main__.Controls) ... ok
+test_matching_text_and_names_not_zero_evidence (__main__.Controls) ... ok
+test_moved_tag_and_key_stays_joined (__main__.Controls) ... ok
+test_nested_sibling_removed (__main__.Controls) ... ok
+test_one_sided_operand (__main__.Controls) ... ok
+test_open_argument (__main__.Controls) ... ok
+test_open_arguments_are_not_signed_balance_terms (__main__.Controls) ... ok
+test_open_head (__main__.Controls) ... ok
+test_open_named_operand (__main__.Controls) ... ok
+test_open_operand_binding_consistency (__main__.Controls) ... ok
+test_open_orientation (__main__.Controls) ... ok
+test_parent_child_join_rejected (__main__.Controls) ... ok
+test_profile_derivative_reaches_scalar_subtraction (__main__.Controls) ... ok
+test_residual_reconstructs_left_operand (__main__.Controls) ... ok
+test_sympy_aggregate_body_orientation (__main__.Controls) ... ok
+test_transpose_layout_matches_explicit_transpose (__main__.Controls) ... FAIL
+test_unpaired_open_subtree_mutation_moves_residual (__main__.Controls) ... ok
+
+======================================================================
+FAIL: test_transpose_layout_matches_explicit_transpose (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/drop_transpose/test_O2_cross_engine_comparator.py", line 248, in test_transpose_layout_matches_explicit_transpose
+    self.assertEqual(products(mapped[0]),products(explicit[0]))
+AssertionError: Lists differ: [{'ou[155 chars]l': '-4'}, '2': {'outcome': 'not_formed', 'py_[315 chars]e}}}] != [{'ou[155 chars]l': '0'}}}, '1': {'outcome': 'container', 'chi[228 chars]}}}}]
+
+First differing element 0:
+{'out[154 chars]l': '-4'}, '2': {'outcome': 'not_formed', 'py_[314 chars]ue}}}
+{'out[154 chars]l': '0'}}}, '1': {'outcome': 'container', 'chi[227 chars]}}}}}
+
+Diff is 1820 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.249s
+
+FAILED (failures=1)
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/drop_transpose/guard/outcome.json
+{
+  "exitCode": 1,
+  "wallSeconds": 0.645056425826624,
+  "unit": "s11c-guard-7ea0bc00d9c4",
+  "stderrBytes": 3221,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 1,
+    "guardReason": null,
+    "wallSeconds": 0.5668812780641019,
+    "childPid": 3082518
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/drop_transpose/guard/limit-validation.json
+{
+  "verified": true,
+  "actual": {
+    "memory.max": "6442450944",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-7ea0bc00d9c4.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      6442450944,
+      6442450944
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/drop_transpose/guard/duration-validation.json
+{
+  "verified": true,
+  "actual": {
+    "RuntimeMaxUSec": "infinity",
+    "Restart": "no"
+  },
+  "wallDeadlineSeconds": null,
+  "inactivityDeadlineSeconds": null
+}
+
+RUN ablation subtraction_to_addition
+$ python scripts/s11c_guarded_run.py --pool o2-comparator --memory-gib 6 --log-directory /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/subtraction_to_addition/guard -- env PYTHONDONTWRITEBYTECODE=1 TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp python /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/subtraction_to_addition/test_O2_cross_engine_comparator.py
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/subtraction_to_addition/launch.stdout
+{
+  "exitCode": 1,
+  "wallSeconds": 0.6397122631315142,
+  "unit": "s11c-guard-d905b2db5627",
+  "stderrBytes": 3822,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 1,
+    "guardReason": null,
+    "wallSeconds": 0.5668378889095038,
+    "childPid": 3082526
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/subtraction_to_addition/launch.stderr
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/subtraction_to_addition/guard/stdout
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/subtraction_to_addition/guard/stderr
+test_applied_argument_stripped (__main__.Controls) ... ok
+test_binder_structure (__main__.Controls) ... ok
+test_boolean_does_not_hide_algebraic_sibling (__main__.Controls) ... ok
+test_common_translation_preserves_residual (__main__.Controls) ... FAIL
+test_declared_tables_are_injective (__main__.Controls) ... ok
+test_derivative_order (__main__.Controls) ... ok
+test_duplicate_join_rejected (__main__.Controls) ... ok
+test_duplicate_name_rejected_both_sides (__main__.Controls) ... ok
+test_each_name_binding_repoint (__main__.Controls) ... ok
+test_empty_containers_are_accounted (__main__.Controls) ... ok
+test_exact_argument_content (__main__.Controls) ... ok
+test_form_change (__main__.Controls) ... ok
+test_grammatical_unknown_head_is_coverage (__main__.Controls) ... ok
+test_held_aggregate_orientation (__main__.Controls) ... ok
+test_independent_census_accounts_for_nested_sibling (__main__.Controls) ... ok
+test_live_profile_frozen (__main__.Controls) ... ok
+test_lossless_function_metadata_survives (__main__.Controls) ... ok
+test_malformed_input_rejected (__main__.Controls) ... ok
+test_mass_loss_join_keeps_rhs_separate (__main__.Controls) ... ok
+test_matching_text_and_names_not_zero_evidence (__main__.Controls) ... ok
+test_moved_tag_and_key_stays_joined (__main__.Controls) ... ok
+test_nested_sibling_removed (__main__.Controls) ... ok
+test_one_sided_operand (__main__.Controls) ... ok
+test_open_argument (__main__.Controls) ... ok
+test_open_arguments_are_not_signed_balance_terms (__main__.Controls) ... ok
+test_open_head (__main__.Controls) ... ok
+test_open_named_operand (__main__.Controls) ... ok
+test_open_operand_binding_consistency (__main__.Controls) ... ok
+test_open_orientation (__main__.Controls) ... ok
+test_parent_child_join_rejected (__main__.Controls) ... ok
+test_profile_derivative_reaches_scalar_subtraction (__main__.Controls) ... ok
+test_residual_reconstructs_left_operand (__main__.Controls) ... FAIL
+test_sympy_aggregate_body_orientation (__main__.Controls) ... ok
+test_transpose_layout_matches_explicit_transpose (__main__.Controls) ... ok
+test_unpaired_open_subtree_mutation_moves_residual (__main__.Controls) ... ok
+
+======================================================================
+FAIL: test_common_translation_preserves_residual (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/subtraction_to_addition/test_O2_cross_engine_comparator.py", line 229, in test_common_translation_preserves_residual
+    self.assertEqual(products(base[0]),products(translated[0]))
+AssertionError: Lists differ: [{'outcome': 'exact', 'residual': 'x1**2 + x1*x2 + 8'}] != [{'outcome': 'exact', 'residual': 'x1**2 + x1*x2 + 2*x3 + 8'}]
+
+First differing element 0:
+{'outcome': 'exact', 'residual': 'x1**2 + x1*x2 + 8'}
+{'outcome': 'exact', 'residual': 'x1**2 + x1*x2 + 2*x3 + 8'}
+
+- [{'outcome': 'exact', 'residual': 'x1**2 + x1*x2 + 8'}]
++ [{'outcome': 'exact', 'residual': 'x1**2 + x1*x2 + 2*x3 + 8'}]
+?                                                   +++++++
+
+
+======================================================================
+FAIL: test_residual_reconstructs_left_operand (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/subtraction_to_addition/test_O2_cross_engine_comparator.py", line 240, in test_residual_reconstructs_left_operand
+    self.assertEqual(sp.expand(right+residual),sp.expand(left))
+AssertionError: x1**2 + 2*x1*x2 + 2*x2 - 5 != x1**2 + 2*x2 + 3
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.267s
+
+FAILED (failures=2)
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/subtraction_to_addition/guard/outcome.json
+{
+  "exitCode": 1,
+  "wallSeconds": 0.6397122631315142,
+  "unit": "s11c-guard-d905b2db5627",
+  "stderrBytes": 3822,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 1,
+    "guardReason": null,
+    "wallSeconds": 0.5668378889095038,
+    "childPid": 3082526
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/subtraction_to_addition/guard/limit-validation.json
+{
+  "verified": true,
+  "actual": {
+    "memory.max": "6442450944",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-d905b2db5627.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      6442450944,
+      6442450944
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/subtraction_to_addition/guard/duration-validation.json
+{
+  "verified": true,
+  "actual": {
+    "RuntimeMaxUSec": "infinity",
+    "Restart": "no"
+  },
+  "wallDeadlineSeconds": null,
+  "inactivityDeadlineSeconds": null
+}
+
+RUN ablation constant_residual
+$ python scripts/s11c_guarded_run.py --pool o2-comparator --memory-gib 6 --log-directory /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/guard -- env PYTHONDONTWRITEBYTECODE=1 TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp python /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/launch.stdout
+{
+  "exitCode": 1,
+  "wallSeconds": 0.6187419220805168,
+  "unit": "s11c-guard-d7f8a1bee8e3",
+  "stderrBytes": 20649,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 1,
+    "guardReason": null,
+    "wallSeconds": 0.5167758769821376,
+    "childPid": 3082534
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/launch.stderr
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/guard/stdout
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/guard/stderr
+test_applied_argument_stripped (__main__.Controls) ... ok
+test_binder_structure (__main__.Controls) ... ok
+test_boolean_does_not_hide_algebraic_sibling (__main__.Controls) ... ok
+test_common_translation_preserves_residual (__main__.Controls) ... ok
+test_declared_tables_are_injective (__main__.Controls) ... ok
+test_derivative_order (__main__.Controls) ... FAIL
+test_duplicate_join_rejected (__main__.Controls) ... ok
+test_duplicate_name_rejected_both_sides (__main__.Controls) ... ok
+test_each_name_binding_repoint (__main__.Controls) ... test_empty_containers_are_accounted (__main__.Controls) ... ok
+test_exact_argument_content (__main__.Controls) ... FAIL
+test_form_change (__main__.Controls) ... FAIL
+test_grammatical_unknown_head_is_coverage (__main__.Controls) ... ok
+test_held_aggregate_orientation (__main__.Controls) ... ok
+test_independent_census_accounts_for_nested_sibling (__main__.Controls) ... ok
+test_live_profile_frozen (__main__.Controls) ... FAIL
+test_lossless_function_metadata_survives (__main__.Controls) ... ok
+test_malformed_input_rejected (__main__.Controls) ... ok
+test_mass_loss_join_keeps_rhs_separate (__main__.Controls) ... FAIL
+test_matching_text_and_names_not_zero_evidence (__main__.Controls) ... ok
+test_moved_tag_and_key_stays_joined (__main__.Controls) ... ok
+test_nested_sibling_removed (__main__.Controls) ... ok
+test_one_sided_operand (__main__.Controls) ... FAIL
+test_open_argument (__main__.Controls) ... ok
+test_open_arguments_are_not_signed_balance_terms (__main__.Controls) ... ok
+test_open_head (__main__.Controls) ... ok
+test_open_named_operand (__main__.Controls) ... ok
+test_open_operand_binding_consistency (__main__.Controls) ... ok
+test_open_orientation (__main__.Controls) ... ok
+test_parent_child_join_rejected (__main__.Controls) ... ok
+test_profile_derivative_reaches_scalar_subtraction (__main__.Controls) ... ok
+test_residual_reconstructs_left_operand (__main__.Controls) ... FAIL
+test_sympy_aggregate_body_orientation (__main__.Controls) ... ok
+test_transpose_layout_matches_explicit_transpose (__main__.Controls) ... FAIL
+test_unpaired_open_subtree_mutation_moves_residual (__main__.Controls) ... ok
+
+======================================================================
+FAIL: test_derivative_order (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 125, in test_derivative_order
+    self.changes(py,'Derivative[1][VR][x1]','Derivative[2][VR][x1]')
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 58, in changes
+    self.assertNotEqual(products(before[0]),products(after[0]),
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : mutation must move outcome/residual/delta, not operand text
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='x1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='x2')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='x3')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='t')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='w')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='ell')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='c0')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='GM')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='V_r')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='o2_rho_br_live')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='mu_perp')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='xi_w')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='h')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='delta')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='j_n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='f')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_each_name_binding_repoint (__main__.Controls) (name='o2_c_gamma_live')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 91, in test_each_name_binding_repoint
+    self.assertNotEqual(products(before),products(after),'repoint must move residual content')
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : repoint must move residual content
+
+======================================================================
+FAIL: test_exact_argument_content (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 220, in test_exact_argument_content
+    before,after = self.changes(fn('V_r','Symbol("x1")'),'VR[x1]','VR[x2]')
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 58, in changes
+    self.assertNotEqual(products(before[0]),products(after[0]),
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : mutation must move outcome/residual/delta, not operand text
+
+======================================================================
+FAIL: test_form_change (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 74, in test_form_change
+    self.changes('Mul(Symbol("x1"), Symbol("x2"))','x1*x2','x1+x2^2')
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 58, in changes
+    self.assertNotEqual(products(before[0]),products(after[0]),
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : mutation must move outcome/residual/delta, not operand text
+
+======================================================================
+FAIL: test_live_profile_frozen (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 101, in test_live_profile_frozen
+    self.changes(fn('o2_rho_br_live','Symbol("x1")'),'RhoBr[x1]','11')
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 58, in changes
+    self.assertNotEqual(products(before[0]),products(after[0]),
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : mutation must move outcome/residual/delta, not operand text
+
+======================================================================
+FAIL: test_mass_loss_join_keeps_rhs_separate (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 318, in test_mass_loss_join_keeps_rhs_separate
+    self.assertNotEqual(products(base[0]),products(loss_changed[0]))
+AssertionError: [{'outcome': 'exact', 'residual': '0'}, {'outcome': 'exact', 'residual': '0'}, {'outcome': 'relation', 'head': 'Equality', 'operands': [{'outcome': 'exact', 'residual': '0'}, {'outcome': 'exact', 'residual': '0'}]}] == [{'outcome': 'exact', 'residual': '0'}, {'outcome': 'exact', 'residual': '0'}, {'outcome': 'relation', 'head': 'Equality', 'operands': [{'outcome': 'exact', 'residual': '0'}, {'outcome': 'exact', 'residual': '0'}]}]
+
+======================================================================
+FAIL: test_one_sided_operand (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 71, in test_one_sided_operand
+    self.changes('Add(Integer(2), Symbol("x1", real=True))','2+x1','3+x1')
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 58, in changes
+    self.assertNotEqual(products(before[0]),products(after[0]),
+AssertionError: [{'outcome': 'exact', 'residual': '0'}] == [{'outcome': 'exact', 'residual': '0'}] : mutation must move outcome/residual/delta, not operand text
+
+======================================================================
+FAIL: test_residual_reconstructs_left_operand (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 240, in test_residual_reconstructs_left_operand
+    self.assertEqual(sp.expand(right+residual),sp.expand(left))
+AssertionError: x1*x2 - 4 != x1**2 + 2*x2 + 3
+
+======================================================================
+FAIL: test_transpose_layout_matches_explicit_transpose (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py", line 250, in test_transpose_layout_matches_explicit_transpose
+    self.assertNotEqual(products(mapped[0]),products(changed[0]))
+AssertionError: [{'outcome': 'container', 'children': {'0': {'outcome': 'container', 'children': {'0': {'outcome': 'exact', 'residual': '0'}, '1': {'outcome': 'exact', 'residual': '0'}}}, '1': {'outcome': 'container', 'children': {'0': {'outcome': 'exact', 'residual': '0'}, '1': {'outcome': 'exact', 'residual': '0'}}}, '2': {'outcome': 'container', 'children': {'0': {'outcome': 'exact', 'residual': '0'}, '1': {'outcome': 'exact', 'residual': '0'}}}}}] == [{'outcome': 'container', 'children': {'0': {'outcome': 'container', 'children': {'0': {'outcome': 'exact', 'residual': '0'}, '1': {'outcome': 'exact', 'residual': '0'}}}, '1': {'outcome': 'container', 'children': {'0': {'outcome': 'exact', 'residual': '0'}, '1': {'outcome': 'exact', 'residual': '0'}}}, '2': {'outcome': 'container', 'children': {'0': {'outcome': 'exact', 'residual': '0'}, '1': {'outcome': 'exact', 'residual': '0'}}}}}]
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.196s
+
+FAILED (failures=25)
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/guard/outcome.json
+{
+  "exitCode": 1,
+  "wallSeconds": 0.6187419220805168,
+  "unit": "s11c-guard-d7f8a1bee8e3",
+  "stderrBytes": 20649,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 1,
+    "guardReason": null,
+    "wallSeconds": 0.5167758769821376,
+    "childPid": 3082534
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/guard/limit-validation.json
+{
+  "verified": true,
+  "actual": {
+    "memory.max": "6442450944",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-d7f8a1bee8e3.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      6442450944,
+      6442450944
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/guard/duration-validation.json
+{
+  "verified": true,
+  "actual": {
+    "RuntimeMaxUSec": "infinity",
+    "Restart": "no"
+  },
+  "wallDeadlineSeconds": null,
+  "inactivityDeadlineSeconds": null
+}
+
+RUN ablation outward_loss_to_rhs
+$ python scripts/s11c_guarded_run.py --pool o2-comparator --memory-gib 6 --log-directory /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_rhs/guard -- env PYTHONDONTWRITEBYTECODE=1 TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp python /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_rhs/test_O2_cross_engine_comparator.py
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_rhs/launch.stdout
+{
+  "exitCode": 1,
+  "wallSeconds": 0.6400164470542222,
+  "unit": "s11c-guard-f8795b72d8e2",
+  "stderrBytes": 3105,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 1,
+    "guardReason": null,
+    "wallSeconds": 0.5667524030432105,
+    "childPid": 3082543
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_rhs/launch.stderr
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_rhs/guard/stdout
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_rhs/guard/stderr
+test_applied_argument_stripped (__main__.Controls) ... ok
+test_binder_structure (__main__.Controls) ... ok
+test_boolean_does_not_hide_algebraic_sibling (__main__.Controls) ... ok
+test_common_translation_preserves_residual (__main__.Controls) ... ok
+test_declared_tables_are_injective (__main__.Controls) ... ok
+test_derivative_order (__main__.Controls) ... ok
+test_duplicate_join_rejected (__main__.Controls) ... ok
+test_duplicate_name_rejected_both_sides (__main__.Controls) ... ok
+test_each_name_binding_repoint (__main__.Controls) ... ok
+test_empty_containers_are_accounted (__main__.Controls) ... ok
+test_exact_argument_content (__main__.Controls) ... ok
+test_form_change (__main__.Controls) ... ok
+test_grammatical_unknown_head_is_coverage (__main__.Controls) ... ok
+test_held_aggregate_orientation (__main__.Controls) ... ok
+test_independent_census_accounts_for_nested_sibling (__main__.Controls) ... ok
+test_live_profile_frozen (__main__.Controls) ... ok
+test_lossless_function_metadata_survives (__main__.Controls) ... ok
+test_malformed_input_rejected (__main__.Controls) ... ok
+test_mass_loss_join_keeps_rhs_separate (__main__.Controls) ... FAIL
+test_matching_text_and_names_not_zero_evidence (__main__.Controls) ... ok
+test_moved_tag_and_key_stays_joined (__main__.Controls) ... ok
+test_nested_sibling_removed (__main__.Controls) ... ok
+test_one_sided_operand (__main__.Controls) ... ok
+test_open_argument (__main__.Controls) ... ok
+test_open_arguments_are_not_signed_balance_terms (__main__.Controls) ... ok
+test_open_head (__main__.Controls) ... ok
+test_open_named_operand (__main__.Controls) ... ok
+test_open_operand_binding_consistency (__main__.Controls) ... ok
+test_open_orientation (__main__.Controls) ... ok
+test_parent_child_join_rejected (__main__.Controls) ... ok
+test_profile_derivative_reaches_scalar_subtraction (__main__.Controls) ... ok
+test_residual_reconstructs_left_operand (__main__.Controls) ... ok
+test_sympy_aggregate_body_orientation (__main__.Controls) ... ok
+test_transpose_layout_matches_explicit_transpose (__main__.Controls) ... ok
+test_unpaired_open_subtree_mutation_moves_residual (__main__.Controls) ... ok
+
+======================================================================
+FAIL: test_mass_loss_join_keeps_rhs_separate (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_rhs/test_O2_cross_engine_comparator.py", line 297, in test_mass_loss_join_keeps_rhs_separate
+    self.assertEqual(row.wl,('EXCHANGE_MOMENTUM','MaterialIdentification','@1'))
+AssertionError: Tuples differ: ('MASS_INPUT', 'RHS') != ('EXCHANGE_MOMENTUM', 'MaterialIdentification', '@1')
+
+First differing element 0:
+'MASS_INPUT'
+'EXCHANGE_MOMENTUM'
+
+Second tuple contains 1 additional elements.
+First extra element 2:
+'@1'
+
+- ('MASS_INPUT', 'RHS')
++ ('EXCHANGE_MOMENTUM', 'MaterialIdentification', '@1')
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.247s
+
+FAILED (failures=1)
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_rhs/guard/outcome.json
+{
+  "exitCode": 1,
+  "wallSeconds": 0.6400164470542222,
+  "unit": "s11c-guard-f8795b72d8e2",
+  "stderrBytes": 3105,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 1,
+    "guardReason": null,
+    "wallSeconds": 0.5667524030432105,
+    "childPid": 3082543
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_rhs/guard/limit-validation.json
+{
+  "verified": true,
+  "actual": {
+    "memory.max": "6442450944",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-f8795b72d8e2.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      6442450944,
+      6442450944
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_rhs/guard/duration-validation.json
+{
+  "verified": true,
+  "actual": {
+    "RuntimeMaxUSec": "infinity",
+    "Restart": "no"
+  },
+  "wallDeadlineSeconds": null,
+  "inactivityDeadlineSeconds": null
+}
+
+RUN ablation outward_loss_to_map_operand
+$ python scripts/s11c_guarded_run.py --pool o2-comparator --memory-gib 6 --log-directory /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_map_operand/guard -- env PYTHONDONTWRITEBYTECODE=1 TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp python /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_map_operand/test_O2_cross_engine_comparator.py
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_map_operand/launch.stdout
+{
+  "exitCode": 1,
+  "wallSeconds": 0.6417884989641607,
+  "unit": "s11c-guard-85357abbe97e",
+  "stderrBytes": 3190,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 1,
+    "guardReason": null,
+    "wallSeconds": 0.5671669589355588,
+    "childPid": 3082551
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_map_operand/launch.stderr
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_map_operand/guard/stdout
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_map_operand/guard/stderr
+test_applied_argument_stripped (__main__.Controls) ... ok
+test_binder_structure (__main__.Controls) ... ok
+test_boolean_does_not_hide_algebraic_sibling (__main__.Controls) ... ok
+test_common_translation_preserves_residual (__main__.Controls) ... ok
+test_declared_tables_are_injective (__main__.Controls) ... ok
+test_derivative_order (__main__.Controls) ... ok
+test_duplicate_join_rejected (__main__.Controls) ... ok
+test_duplicate_name_rejected_both_sides (__main__.Controls) ... ok
+test_each_name_binding_repoint (__main__.Controls) ... ok
+test_empty_containers_are_accounted (__main__.Controls) ... ok
+test_exact_argument_content (__main__.Controls) ... ok
+test_form_change (__main__.Controls) ... ok
+test_grammatical_unknown_head_is_coverage (__main__.Controls) ... ok
+test_held_aggregate_orientation (__main__.Controls) ... ok
+test_independent_census_accounts_for_nested_sibling (__main__.Controls) ... ok
+test_live_profile_frozen (__main__.Controls) ... ok
+test_lossless_function_metadata_survives (__main__.Controls) ... ok
+test_malformed_input_rejected (__main__.Controls) ... ok
+test_mass_loss_join_keeps_rhs_separate (__main__.Controls) ... FAIL
+test_matching_text_and_names_not_zero_evidence (__main__.Controls) ... ok
+test_moved_tag_and_key_stays_joined (__main__.Controls) ... ok
+test_nested_sibling_removed (__main__.Controls) ... ok
+test_one_sided_operand (__main__.Controls) ... ok
+test_open_argument (__main__.Controls) ... ok
+test_open_arguments_are_not_signed_balance_terms (__main__.Controls) ... ok
+test_open_head (__main__.Controls) ... ok
+test_open_named_operand (__main__.Controls) ... ok
+test_open_operand_binding_consistency (__main__.Controls) ... ok
+test_open_orientation (__main__.Controls) ... ok
+test_parent_child_join_rejected (__main__.Controls) ... ok
+test_profile_derivative_reaches_scalar_subtraction (__main__.Controls) ... ok
+test_residual_reconstructs_left_operand (__main__.Controls) ... ok
+test_sympy_aggregate_body_orientation (__main__.Controls) ... ok
+test_transpose_layout_matches_explicit_transpose (__main__.Controls) ... ok
+test_unpaired_open_subtree_mutation_moves_residual (__main__.Controls) ... ok
+
+======================================================================
+FAIL: test_mass_loss_join_keeps_rhs_separate (__main__.Controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_map_operand/test_O2_cross_engine_comparator.py", line 297, in test_mass_loss_join_keeps_rhs_separate
+    self.assertEqual(row.wl,('EXCHANGE_MOMENTUM','MaterialIdentification','@1'))
+AssertionError: Tuples differ: ('EXCHANGE_MOMENTUM', 'MaterialIdentification', '@3') != ('EXCHANGE_MOMENTUM', 'MaterialIdentification', '@1')
+
+First differing element 2:
+'@3'
+'@1'
+
+- ('EXCHANGE_MOMENTUM', 'MaterialIdentification', '@3')
+?                                                   ^
+
++ ('EXCHANGE_MOMENTUM', 'MaterialIdentification', '@1')
+?                                                   ^
+
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.236s
+
+FAILED (failures=1)
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_map_operand/guard/outcome.json
+{
+  "exitCode": 1,
+  "wallSeconds": 0.6417884989641607,
+  "unit": "s11c-guard-85357abbe97e",
+  "stderrBytes": 3190,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 1,
+    "guardReason": null,
+    "wallSeconds": 0.5671669589355588,
+    "childPid": 3082551
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_map_operand/guard/limit-validation.json
+{
+  "verified": true,
+  "actual": {
+    "memory.max": "6442450944",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-85357abbe97e.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      6442450944,
+      6442450944
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_map_operand/guard/duration-validation.json
+{
+  "verified": true,
+  "actual": {
+    "RuntimeMaxUSec": "infinity",
+    "Restart": "no"
+  },
+  "wallDeadlineSeconds": null,
+  "inactivityDeadlineSeconds": null
+}
+
+RUN full
+$ python scripts/s11c_guarded_run.py --pool o2-comparator --memory-gib 6 --log-directory /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/full -- env PYTHONDONTWRITEBYTECODE=1 python /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/pinned-complete/O2_cross_engine_comparator.py --py /var/projects/toy_physics/research/pde_ledger_v3/scripts/out/O2_live_balance_sympy_audit.out --wl /var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/O2_live_balance_mathematica_audit.out --output /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/comparison.jsonl --accounting /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/accounting.jsonl --catalog /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/catalog.json
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/full-launch.stdout
+{
+  "exitCode": 0,
+  "wallSeconds": 119.32599752699025,
+  "unit": "s11c-guard-4ef6a8454290",
+  "stderrBytes": 0,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 0,
+    "guardReason": null,
+    "wallSeconds": 119.26439646515064,
+    "childPid": 3082752
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/full-launch.stderr
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/full/stdout
+{"runtime_seconds": 118.90033720387146, "peak_rss_kib": 1328064}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/full/stderr
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/full/outcome.json
+{
+  "exitCode": 0,
+  "wallSeconds": 119.32599752699025,
+  "unit": "s11c-guard-4ef6a8454290",
+  "stderrBytes": 0,
+  "limitsVerified": true,
+  "childOutcome": {
+    "exitCode": 0,
+    "guardReason": null,
+    "wallSeconds": 119.26439646515064,
+    "childPid": 3082752
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/full/limit-validation.json
+{
+  "verified": true,
+  "actual": {
+    "memory.max": "6442450944",
+    "memory.swap.max": "0",
+    "pids.max": "32",
+    "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-4ef6a8454290.service",
+    "nice": 0,
+    "affinity": [
+      15
+    ],
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "BLIS_NUM_THREADS": "1"
+    },
+    "nativeAddressSpaceBytes": [
+      6442450944,
+      6442450944
+    ],
+    "systemd.CPUAffinity": "15",
+    "affinityEnforcement": "systemd-and-inherited-process"
+  }
+}
+
+$ cat /var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/full/duration-validation.json
+{
+  "verified": true,
+  "actual": {
+    "RuntimeMaxUSec": "infinity",
+    "Restart": "no"
+  },
+  "wallDeadlineSeconds": null,
+  "inactivityDeadlineSeconds": null
+}
+
+$ python _scratch/s11c/o2-comparator-build-r1/complete_report.py
+Mechanical summary:
+{
+  "join_rows": 159,
+  "name_rows": 47,
+  "accounting": {
+    "joined": 159,
+    "unjoined": 202,
+    "stream_object_count": 54
+  },
+  "counterpart_absent": [],
+  "unjoined_occurrences": {
+    "py": 48,
+    "wl": 154
+  },
+  "stream_objects": {
+    "py": 42,
+    "wl": 12
+  },
+  "unaccounted_leaves": [],
+  "unspecified_absence_reasons": [],
+  "tests": {
+    "guard_outcome": {
+      "exitCode": 0,
+      "wallSeconds": 0.6390789921861142,
+      "unit": "s11c-guard-d8dadafcb60f",
+      "stderrBytes": 2246,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 0.5670904668513685,
+        "childPid": 3082233
+      }
+    },
+    "peak_cgroup_bytes": 51290112
+  },
+  "full": {
+    "guard_outcome": {
+      "exitCode": 0,
+      "wallSeconds": 119.32599752699025,
+      "unit": "s11c-guard-4ef6a8454290",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 119.26439646515064,
+        "childPid": 3082752
+      }
+    },
+    "peak_cgroup_bytes": 1361989632
+  },
+  "comparator_process": {
+    "runtime_seconds": 118.90033720387146,
+    "peak_rss_kib": 1328064
+  },
+  "ablations": [
+    {
+      "name": "collapse_applied_function",
+      "old": "return sp.Function(key)(*(algebra(x,bindings,engine) for x in a[1:]))",
+      "new": "return sp.Symbol(key)",
+      "command": [
+        "python",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "o2-comparator",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/collapse_applied_function/guard",
+        "--",
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp",
+        "python",
+        "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/collapse_applied_function/test_O2_cross_engine_comparator.py"
+      ],
+      "exit_code": 1,
+      "outcome": {
+        "exitCode": 1,
+        "wallSeconds": 0.6417643649037927,
+        "unit": "s11c-guard-c73a56b741a4",
+        "stderrBytes": 4108,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 1,
+          "guardReason": null,
+          "wallSeconds": 0.5671939039602876,
+          "childPid": 3082491
+        }
+      },
+      "failing_tests": [
+        "test_exact_argument_content",
+        "test_mass_loss_join_keeps_rhs_separate"
+      ],
+      "errored_tests": [],
+      "source_sha256": "c9735f9916a7dfa219e889b0e0ac7dd44f3af7e521412373198890e91aea0b01",
+      "resources": {
+        "guard_outcome": {
+          "exitCode": 1,
+          "wallSeconds": 0.6417643649037927,
+          "unit": "s11c-guard-c73a56b741a4",
+          "stderrBytes": 4108,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 1,
+            "guardReason": null,
+            "wallSeconds": 0.5671939039602876,
+            "childPid": 3082491
+          }
+        },
+        "peak_cgroup_bytes": 51249152
+      }
+    },
+    {
+      "name": "never_flip_orientation",
+      "old": "sign *= -1",
+      "new": "sign *= 1",
+      "command": [
+        "python",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "o2-comparator",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/guard",
+        "--",
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp",
+        "python",
+        "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/never_flip_orientation/test_O2_cross_engine_comparator.py"
+      ],
+      "exit_code": 1,
+      "outcome": {
+        "exitCode": 1,
+        "wallSeconds": 0.6355989451985806,
+        "unit": "s11c-guard-53e8ab53ff05",
+        "stderrBytes": 5067,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 1,
+          "guardReason": null,
+          "wallSeconds": 0.567105962196365,
+          "childPid": 3082501
+        }
+      },
+      "failing_tests": [
+        "test_held_aggregate_orientation",
+        "test_open_arguments_are_not_signed_balance_terms",
+        "test_open_orientation",
+        "test_sympy_aggregate_body_orientation"
+      ],
+      "errored_tests": [],
+      "source_sha256": "3c6cfd274ac61f8d7e02bc35e38b55473d825aabf90588d48cc4dfd43cbe9179",
+      "resources": {
+        "guard_outcome": {
+          "exitCode": 1,
+          "wallSeconds": 0.6355989451985806,
+          "unit": "s11c-guard-53e8ab53ff05",
+          "stderrBytes": 5067,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 1,
+            "guardReason": null,
+            "wallSeconds": 0.567105962196365,
+            "childPid": 3082501
+          }
+        },
+        "peak_cgroup_bytes": 51335168
+      }
+    },
+    {
+      "name": "drop_transpose",
+      "old": "if row.layout == 'transpose' and a.head == 'Matrix':",
+      "new": "if False and row.layout == 'transpose' and a.head == 'Matrix':",
+      "command": [
+        "python",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "o2-comparator",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/drop_transpose/guard",
+        "--",
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp",
+        "python",
+        "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/drop_transpose/test_O2_cross_engine_comparator.py"
+      ],
+      "exit_code": 1,
+      "outcome": {
+        "exitCode": 1,
+        "wallSeconds": 0.645056425826624,
+        "unit": "s11c-guard-7ea0bc00d9c4",
+        "stderrBytes": 3221,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 1,
+          "guardReason": null,
+          "wallSeconds": 0.5668812780641019,
+          "childPid": 3082518
+        }
+      },
+      "failing_tests": [
+        "test_transpose_layout_matches_explicit_transpose"
+      ],
+      "errored_tests": [],
+      "source_sha256": "959f459bf1ecd357ac5ee244b4c45cea2677d69c0679e871eb47c53f852dcc5e",
+      "resources": {
+        "guard_outcome": {
+          "exitCode": 1,
+          "wallSeconds": 0.645056425826624,
+          "unit": "s11c-guard-7ea0bc00d9c4",
+          "stderrBytes": 3221,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 1,
+            "guardReason": null,
+            "wallSeconds": 0.5668812780641019,
+            "childPid": 3082518
+          }
+        },
+        "peak_cgroup_bytes": 51273728
+      }
+    },
+    {
+      "name": "subtraction_to_addition",
+      "old": "delta = sp.cancel(left-right)",
+      "new": "delta = sp.cancel(left+right)",
+      "command": [
+        "python",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "o2-comparator",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/subtraction_to_addition/guard",
+        "--",
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp",
+        "python",
+        "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/subtraction_to_addition/test_O2_cross_engine_comparator.py"
+      ],
+      "exit_code": 1,
+      "outcome": {
+        "exitCode": 1,
+        "wallSeconds": 0.6397122631315142,
+        "unit": "s11c-guard-d905b2db5627",
+        "stderrBytes": 3822,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 1,
+          "guardReason": null,
+          "wallSeconds": 0.5668378889095038,
+          "childPid": 3082526
+        }
+      },
+      "failing_tests": [
+        "test_common_translation_preserves_residual",
+        "test_residual_reconstructs_left_operand"
+      ],
+      "errored_tests": [],
+      "source_sha256": "770b8271659e1eb9a04c67f8a428d804a2a6f14b14127df63408353bf4315553",
+      "resources": {
+        "guard_outcome": {
+          "exitCode": 1,
+          "wallSeconds": 0.6397122631315142,
+          "unit": "s11c-guard-d905b2db5627",
+          "stderrBytes": 3822,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 1,
+            "guardReason": null,
+            "wallSeconds": 0.5668378889095038,
+            "childPid": 3082526
+          }
+        },
+        "peak_cgroup_bytes": 51343360
+      }
+    },
+    {
+      "name": "constant_residual",
+      "old": "delta = sp.cancel(left-right)",
+      "new": "delta = sp.Integer(0)",
+      "command": [
+        "python",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "o2-comparator",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/guard",
+        "--",
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp",
+        "python",
+        "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/constant_residual/test_O2_cross_engine_comparator.py"
+      ],
+      "exit_code": 1,
+      "outcome": {
+        "exitCode": 1,
+        "wallSeconds": 0.6187419220805168,
+        "unit": "s11c-guard-d7f8a1bee8e3",
+        "stderrBytes": 20649,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 1,
+          "guardReason": null,
+          "wallSeconds": 0.5167758769821376,
+          "childPid": 3082534
+        }
+      },
+      "failing_tests": [
+        "test_derivative_order",
+        "test_each_name_binding_repoint",
+        "test_exact_argument_content",
+        "test_form_change",
+        "test_live_profile_frozen",
+        "test_mass_loss_join_keeps_rhs_separate",
+        "test_one_sided_operand",
+        "test_residual_reconstructs_left_operand",
+        "test_transpose_layout_matches_explicit_transpose"
+      ],
+      "errored_tests": [],
+      "source_sha256": "979b9791a0d766b4d684a066f3153dd57e924d96a38a2a484b65328db517d13d",
+      "resources": {
+        "guard_outcome": {
+          "exitCode": 1,
+          "wallSeconds": 0.6187419220805168,
+          "unit": "s11c-guard-d7f8a1bee8e3",
+          "stderrBytes": 20649,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 1,
+            "guardReason": null,
+            "wallSeconds": 0.5167758769821376,
+            "childPid": 3082534
+          }
+        },
+        "peak_cgroup_bytes": 51130368
+      }
+    },
+    {
+      "name": "outward_loss_to_rhs",
+      "old": "J('outward_mass_loss','MASS_INPUT/outward_loss','EXCHANGE_MOMENTUM/MaterialIdentification/@1'",
+      "new": "J('outward_mass_loss','MASS_INPUT/outward_loss','MASS_INPUT/RHS'",
+      "command": [
+        "python",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "o2-comparator",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_rhs/guard",
+        "--",
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp",
+        "python",
+        "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_rhs/test_O2_cross_engine_comparator.py"
+      ],
+      "exit_code": 1,
+      "outcome": {
+        "exitCode": 1,
+        "wallSeconds": 0.6400164470542222,
+        "unit": "s11c-guard-f8795b72d8e2",
+        "stderrBytes": 3105,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 1,
+          "guardReason": null,
+          "wallSeconds": 0.5667524030432105,
+          "childPid": 3082543
+        }
+      },
+      "failing_tests": [
+        "test_mass_loss_join_keeps_rhs_separate"
+      ],
+      "errored_tests": [],
+      "source_sha256": "fe63800410ab61d79f877d0f4b0f695326b9915cb87a6ee2a3bf65390fa6a633",
+      "resources": {
+        "guard_outcome": {
+          "exitCode": 1,
+          "wallSeconds": 0.6400164470542222,
+          "unit": "s11c-guard-f8795b72d8e2",
+          "stderrBytes": 3105,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 1,
+            "guardReason": null,
+            "wallSeconds": 0.5667524030432105,
+            "childPid": 3082543
+          }
+        },
+        "peak_cgroup_bytes": 51208192
+      }
+    },
+    {
+      "name": "outward_loss_to_map_operand",
+      "old": "J('outward_mass_loss','MASS_INPUT/outward_loss','EXCHANGE_MOMENTUM/MaterialIdentification/@1'",
+      "new": "J('outward_mass_loss','MASS_INPUT/outward_loss','EXCHANGE_MOMENTUM/MaterialIdentification/@3'",
+      "command": [
+        "python",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "o2-comparator",
+        "--memory-gib",
+        "6",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_map_operand/guard",
+        "--",
+        "env",
+        "PYTHONDONTWRITEBYTECODE=1",
+        "TMPDIR=/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/tmp",
+        "python",
+        "/var/projects/toy_physics/_scratch/s11c/o2-comparator-build-r1/ablations/outward_loss_to_map_operand/test_O2_cross_engine_comparator.py"
+      ],
+      "exit_code": 1,
+      "outcome": {
+        "exitCode": 1,
+        "wallSeconds": 0.6417884989641607,
+        "unit": "s11c-guard-85357abbe97e",
+        "stderrBytes": 3190,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 1,
+          "guardReason": null,
+          "wallSeconds": 0.5671669589355588,
+          "childPid": 3082551
+        }
+      },
+      "failing_tests": [
+        "test_mass_loss_join_keeps_rhs_separate"
+      ],
+      "errored_tests": [],
+      "source_sha256": "ea75a8374fb5e7f57ef752cbf3e67cce407226f7ad4cafb29e90239d1ebb9efe",
+      "resources": {
+        "guard_outcome": {
+          "exitCode": 1,
+          "wallSeconds": 0.6417884989641607,
+          "unit": "s11c-guard-85357abbe97e",
+          "stderrBytes": 3190,
+          "limitsVerified": true,
+          "childOutcome": {
+            "exitCode": 1,
+            "guardReason": null,
+            "wallSeconds": 0.5671669589355588,
+            "childPid": 3082551
+          }
+        },
+        "peak_cgroup_bytes": 51224576
+      }
+    }
+  ],
+  "round0_changed_files": [],
+  "round0_added_files": [],
+  "source_sha256": {
+    "research/pde_ledger_v3/scripts/O2_cross_engine_comparator.py": "e11abeda2c6606cdf986760388fe21bf399726f6f4b0a9703be5c7745def3323",
+    "research/pde_ledger_v3/scripts/test_O2_cross_engine_comparator.py": "53b722f8eb5586ed32d0ac774627b69578b0902885ad84d4b6544dc93eec98cd"
+  }
+}

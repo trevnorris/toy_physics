@@ -321,6 +321,12 @@ NAME_TABLE = tuple(NameRow(*r) for r in [
     ('S12_boundary_domain','S12MouthCollarReturnIRBulkBoundary','§3.3 boundary inventory',159,44),
     ('T_hold_s','THold','§3.3 complete native support operand',231,66),
     ('o2_s_face','s','§5 native face label',217,61,'binder'),
+    ('material_action_compatibility','UnresolvedStressInertiaNormalIdentifications',
+     '§3.2,4 unresolved identification among material stress, inertia and normal response',162,133),
+    ('energy_accounting_overlap','UnresolvedEnergyOccurrenceIdentifications',
+     '§6 unresolved overlaps among material, boundary, conversion and supply energy occurrences',162,289),
+    ('S12_reaction_system','OPENReactionSystem','§3.3,5 S12 additional momentum reaction system',160,209),
+    ('face_support_partition','UnresolvedSupportPartition','§3.3 unresolved partition of complete face/support loading',163,177),
 ])
 
 
@@ -421,7 +427,7 @@ for i, j in ((0,0),(8,1),(10,2),(13,3),(11,4),(9,5)):
 # including @0 for an applied head; it never evaluates that constructor.
 JOIN_TABLE.extend([
     J('lab_time','BASIS/time','MATERIAL_MOMENTUM/DifferentiatedSection/OtherDependence/@3',146,131,'§1'),
-    J('mass_loss_orientation','MASS_INPUT/outward_loss','MASS_INPUT/RHS',378,244,'§3.1,5'),
+    J('outward_mass_loss','MASS_INPUT/outward_loss','EXCHANGE_MOMENTUM/MaterialIdentification/@1',378,212,'§3.1,5 outward material loss'),
     J('differential_measure','MATERIAL_INPUT_DIFFERENTIALS/measure','FORCE_POWER_PAIRINGS/Measure',207,304,'§1'),
     J('reference_operand','COUPLED_INPUTS/operands/7','MATERIAL_MOMENTUM/DifferentiatedSection/MaterialReference',156,144,'§3.2'),
     J('exchange_operand','COUPLED_INPUTS/operands/12','EXCHANGE_MOMENTUM/MaterialIdentification/@2',157,212,'§5'),
@@ -661,6 +667,7 @@ def differences(a, b, path=()):
 
 def structure(n):
     names, heads, options, orientations = Counter(), Counter(), Counter(), Counter()
+    argument_actions = Counter()
     def visit(v):
         heads[v.head] += 1
         if v.head in ('Symbol','FunctionName','Dummy'):
@@ -669,26 +676,54 @@ def structure(n):
         for child in v.args:
             visit(child)
     visit(n)
-    def signed_actions(v,sign=1):
+    def signed_actions(v,sign=1,dependency=False):
+        # Linear syntax carries the enclosing expression's orientation. This is
+        # the engines' held calculus/aggregation syntax, not a constitutive law:
+        # PY audit 134-140, 242-244; WL audit 142-143, 181-193.
         if v.head == 'Mul':
             for child in v.args:
                 if child.head == 'Number' and child.value.startswith('-'):
                     sign *= -1
             for child in v.args:
                 if child.head != 'Number':
-                    signed_actions(child,sign)
+                    signed_actions(child,sign,dependency)
         elif v.head == 'Apply':
             head = v.args[0]
+            linear_arguments = ()
+            if (head.head == 'Apply' and len(head.args) == 2
+                    and head.args[0].value == 'wl::Inactive'):
+                operator = head.args[1].value
+                if operator in ('wl::Total','wl::Map','wl::D'):
+                    linear_arguments = (1,)
+            elif head.value in ('wl::Function','wl::OpenFirstVariation'):
+                linear_arguments = (2,) if head.value == 'wl::Function' else (1,)
+            elif head.value == 'py::OPEN_SumOverAllNativeFaces':
+                linear_arguments = (2,)
+            role = None
             if head.value.startswith('py::OPEN_'):
-                orientations[(head.value,sign)] += 1
+                role = head.value
             elif head.value == 'wl::OpenAction' and len(v.args) > 1:
-                orientations[(json.dumps(data(v.args[1]),separators=(',',':')),sign)] += 1
-            # An action's arguments are dependencies, not signed balance terms.
-            for child in v.args[1:]:
-                signed_actions(child,1)
+                role = json.dumps(data(v.args[1]),separators=(',',':'))
+            if role is not None:
+                if dependency:
+                    argument_actions[role] += 1
+                else:
+                    orientations[(role,sign)] += 1
+            # Unknown/OPEN action arguments are dependencies. Only explicitly
+            # identified linear bodies inherit the sign; Map's set and binders
+            # do not. Dependency mode remains distinct even inside a wrapper.
+            for i,child in enumerate(v.args[1:],1):
+                if i in linear_arguments:
+                    signed_actions(child,sign,dependency)
+                else:
+                    signed_actions(child,1,True)
+        elif v.head in ('Derivative','Lambda'):
+            body = 0 if v.head == 'Derivative' else 1
+            for i,child in enumerate(v.args):
+                signed_actions(child,sign if i == body else 1,dependency or i != body)
         else:
             for child in v.args:
-                signed_actions(child,sign if v.head in ('Add','Derivative') else 1)
+                signed_actions(child,sign if v.head in ('Add','Sequence','Matrix') else 1,dependency)
     signed_actions(n)
     terms = n.args if n.head == 'Add' else (n,)
     factors_by_term = []
@@ -700,6 +735,7 @@ def structure(n):
             'constructor_options':[[list(k),v] for k,v in sorted(options.items())],
             'term_numeric_factors':factors_by_term,
             'open_action_orientation_counts':[[role,sign,count] for (role,sign),count in sorted(orientations.items())],
+            'open_argument_occurrence_counts':[[role,count] for role,count in sorted(argument_actions.items())],
             'live_arguments_and_binders':'complete mapped operand tree; no argument erasure'}
 
 
@@ -817,6 +853,7 @@ UNJOINED_REASONS = {
         'DRIVE_PROVENANCE/GMInterface':'WL separately emits S16 matching dependency; PY includes it only in the joined interface list (§10).',
         'B_HOLD_LIVE/Status':'WL separately labels its named balance; PY has no separate conditional-balance label object (§9).',
         'MASS_INPUT/VelocityOperand':'WL separately repeats the in-plane mass velocity; PY emits it only as part of mass current and graph velocity (§3.1).',
+        'MASS_INPUT/RHS':'Mass-law right-hand side, not outward loss: PY has no separately emitted same-role RHS occurrence outside the already joined mass equation (§3.1,5; PY audit 266,378; WL audit 244,247).',
         'MASS_INPUT/Qualification':'WL separately declares the mass-law qualification; PY includes it in the joined model restriction inventory (§7).',
         'MASS_INPUT/NativeIdentification':'WL separately repeats the O6 operand for mass; PY has no additional mass-native-identification entry (§5).',
         'COUPLED_INPUTS_MODEL_POINT/BulkInputs':'WL emits the three bulk EOS/sound/contrast relations; PY emits f and bulk_state but no bulk EOS relation objects (§3.1).',

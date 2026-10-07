@@ -27,7 +27,7 @@ Each of premises **1–4** has **Status: adopted premise (user, 2026-10-06)** an
 
 | Premise | Adopted content and source | Contract location / owner |
 | --- | --- | --- |
-| **1 — material reference** | Elastic response in the optical shear regime and relaxation under steady load; the relaxation response remains a general unknown. Steady energy accounting includes its power, with sign undetermined and any net power naming its supplier (`O2_premise_decision_list.md:16–27`). | Reference and energy inputs in §§4, 8. O2 carries the requirement; material content goes to S8, with nonlinear completion at S22 and source partners at S12. No specific relaxation law is supplied. |
+| **1 — material reference** | Elastic response in the optical shear regime and relaxation under steady load; the relaxation response remains a general unknown. Steady energy accounting includes its power, with sign undetermined and any net power naming its supplier (`O2_premise_decision_list.md:16–27`). | Live stress, reference and energy inputs in §§3, 4, 8. O2 carries the requirement; relaxation/reference ownership is unassigned (§4), and conversion/source partners remain with S12. No specific relaxation law is supplied. |
 | **2 — drive** | The committed order-conversion drain is the drive, with no separate external body force. Its action is through stress, traction and O3 operands; `F_drive` is identified with those terms or absent beside them. The `GM` bridge stays OPEN (`:28–31`). | Drive specification belongs to **sub-step 3**. S12 owns conversion/source and separate boundary data; S14a/S14 and S16 retain their source/response interfaces. This contract makes no choice between the two permitted representations of `F_drive`. |
 | **3 — exchange momentum** | Converted material carries the local brane material velocity `V`. This closes transported momentum only; additional non-variational momentum partners and their reaction system stay OPEN with S12 (`:32–36`). | O3's momentum term and its convention belong to **sub-step 3**; no equation for `Π_n` is authored here. S12 owns the additional partners. |
 | **4 — bulk traction** | Retain the postulated shear-free scalar bulk, with face-normal loading and no tangential bulk stress; O3 transport remains separate (`:37–39`). | Bulk premises and the OPEN normal-load response in §7. This does not fix the full `T_hold,s`, its physical support, or its power. |
@@ -80,14 +80,23 @@ viscoelastic character does not decide A13. **Form/domain:** no branch is select
 explicitly a template. **Owner:** S1's A13 gate, propagated at S5 and S12
 (`V3_STEP_PLAN.md:173–180,271–277,616–617`; `O2_premise_decision_list.md:43–44`).
 
-## 3. Conservative momentum, stress, inertia and normal response
+## 3. Live stress, conservative antecedents, inertia and normal response
 
-**Status: OPEN live material operands.** Retain separately named content:
+**Status of live-stress character: adopted premise 1 (user, 2026-10-06); Label: adopted substrate input
+to a conditional model (2026-10-06).** The decision list retains “the live brane stress, inertia and
+normal material response. Premise 1 fixes its character, not its form.” (`O2_premise_decision_list.md:44`).
+**Form: OPEN `𝒯_br^live`.** The live in-plane and normal stress is that of the premise-1 material,
+with the evolving reference/strain state of `ℛ_ref/strain^live` and its material history kept live and
+general. Any non-conservative stress content remains within this OPEN operand; no conservative/dissipative
+split is adopted.
+
+**Status: OPEN material operands and conservative antecedents.** Retain separately named content:
 
 | Operand | Physical input whose form is missing | Owner / boundary |
 | --- | --- | --- |
-| `𝒫_br^cons` | Conservative brane material momentum content. | S1.5 supplies conservative substrate balance antecedents; S8 supplies brane material content. No live reduction is supplied. |
-| `𝒯_br^cons` | Conservative stress content, including the in-plane and normal-stress operands required by O2. | S8; nonlinear material completion S22. No stress measure, symmetry or full constitutive form is selected here. |
+| `𝒯_br^live` | Full live brane stress, including any relaxation contribution to the in-plane and normal force content. | O2 carries the operand; conservative/material antecedents S1.5/S8 and nonlinear material completion S22. Relaxation/reference ownership remains unassigned (§4). |
+| `𝒫_br^cons` | Conservative brane material momentum antecedents. | S1.5 supplies conservative substrate balance antecedents; S8 supplies brane material content. No live reduction is supplied. |
+| `𝒯_br^cons` | Conservative in-plane and normal-stress antecedents from S1.5/S8. | S1.5/S8; nonlinear material completion S22. These do not supply the full `𝒯_br^live`; no stress measure, symmetry or constitutive form is selected here. |
 | `ℐ_br^live` | Inertial/kinetic response on the flowing, embedded material background. | S8, using S1.5 antecedents when available. The optical density identification alone does not supply this response. |
 | `𝒩_br^live` | Normal material response, retaining distinctions among embedding, centre and thickness content until a model connects them. | S5–S8 for wall/width/compression ingredients; Q1/Q2 for their recorded static embedding sector; live identification with O4 remains OPEN. |
 | `𝒜_rot^live` | Required internal angular-momentum/couple-stress content and the physical rotational reference frame, including whether such content is present. | S8's OPEN requirements; no carrier or frame is chosen. |
@@ -122,7 +131,7 @@ S11c's supplied-profile, first-background-jet operator content has scoped repair
 full composition (`steps/S11c_b_variable_coefficient_operator.md:35–57`). Its uniform representative
 fold does not extend to varying coefficients (`directives/S11c_b_SHARED_PHYSICS.md:165–174`). Neither
 those operators nor a substitution of live coefficients into the displayed quadratic terms closes
-`𝒫_br^cons`, `𝒯_br^cons`, `ℐ_br^live` or `𝒩_br^live`.
+`𝒫_br^cons`, `𝒯_br^cons`, `𝒯_br^live`, `ℐ_br^live` or `𝒩_br^live`.
 
 **Status: recorded wall tension, with static qualification.**
 
@@ -144,7 +153,8 @@ not the G0 wall Hessian (v2:`stages/ledger_stage030_electric_scalar_localized_h_
 evolution and relaxation response, including its physical reference carrier, transport, formation or
 renewal through conversion/return, and work content where applicable. It has no prescribed argument
 list, tensor realization, relaxation kernel, rate, time scale or zero-frequency form. Premise 1 fixes
-character, not an equation (`O2_premise_decision_list.md:16–25,44`).
+character, not an equation (`O2_premise_decision_list.md:16–25,44`). Its evolving reference/strain
+state and history are retained in §3's OPEN `𝒯_br^live`.
 
 **Recorded limits:** S9 took no dissipation and frequency-independent moduli, as well as a sharp sheet,
 rest background, continuum and vanishing wave amplitude (`steps/S9_light_requires_shear.md:349–350`).
@@ -165,9 +175,12 @@ steer authorized comparing those limits before adding relaxation; the 2026-10-06
 supersedes that order (`O2_premise_decision_list.md:16–19`). It selects neither comparator law and does
 not resume the paused comparison.
 
-**Owner:** O2 carries this input under premise 1; material/reference content belongs with S8, and
-nonlinear completion with S22. The paused comparison remains an input for Q2/S22 with S12 connections;
-S12 owns the actual conversion/return functions and partners, rather than a relaxation law supplied here.
+**Owner:** relaxation/reference evolution is **unassigned**; O2 carries the input under premise 1.
+Connections to S8's rotational-reference obligation (`SUBSTRATE_REQUIREMENTS.md:348–367`, pass-2 review
+pending) and S22's nonlinear completion (`V3_STEP_PLAN.md:1207–1214`) are **inferences**, not recorded
+assignments of a relaxation law. S8's quadratic scope (`V3_STEP_PLAN.md:332–350`) supplies no such
+assignment. The paused comparison remains an input for Q2/S22 with S12 connections; S12 owns the actual
+conversion/return functions and partners, rather than a relaxation law supplied here.
 
 ## 5. Geometry, embedding and O4
 
@@ -229,7 +242,7 @@ O2 spec, with material completion at its S8/S22 owners.
 
 ## 6. Density, stiffness and projection
 
-**Status: supplied live identifications and balance.**
+**Status: supplied optical-regime live identifications and steady mass balance.**
 
 ```text
 c_γ(r)² ≡ μ_⊥(r)/ρ_br(r) ,       c_γ(r) ≡ c₀[1+δ(r)] ,
@@ -238,7 +251,10 @@ c_γ(r)² ≡ μ_⊥(r)/ρ_br(r) ,       c_γ(r) ≡ c₀[1+δ(r)] ,
 
 **Source/domain:** v9:24–45,185–215, supplied on the live steady S9b object. The uniform anchor is
 `ρ_br⁰ω² = μ_⊥k²`, recorded at `steps/S11b_interface_coupling_law.md:74–87`; its basis qualifications
-do not define a varying-coefficient stress. `c₀` is the supplied asymptotic speed (v9:62–64).
+do not define a varying-coefficient stress. Under adopted premise 1 (`O2_premise_decision_list.md:16–23`),
+L1's `μ_⊥` is the optical-regime elastic stiffness; L1 supplies no zero-frequency or steady-load
+stiffness. The steady-load material response remains OPEN through `ℛ_ref/strain^live` (§4) and
+`𝒯_br^live` (§3). `c₀` is the supplied asymptotic speed (v9:62–64).
 `j_n` uses v9's normal-exchange source convention; the finite-slab identification is not thereby earned.
 **Owner:** stiffness/inertia inputs S8; `j_n` and bulk profile gravity sector or S12 (v9:43–45,143–146).
 
@@ -269,7 +285,8 @@ EOS/action S1/S1.5. Part C's three speed-response choices (v9:164–172) are lat
 none is selected here as a constitutive closure.
 
 **Status: OPEN `ℳ_⊥` (O1) and `ℛ_br` (O7).** These name the stiffness and brane-density responses,
-respectively. Dependence on bulk state, flow, embedding, thickness and projection remains general,
+respectively. `ℳ_⊥` retains general dependence on frequency regime and material/loading history.
+Dependence on bulk state, flow, embedding, thickness and projection remains general,
 as do their gradients. The speed ratio and bulk EOS determine neither response separately
 (v9:283–286,309–312; `O2_premise_decision_list.md:45`). **Owner:** S8's brane inputs; unresolved material
 reduction/completion stays with its substrate and S22 owners, rather than becoming a task here.
@@ -342,7 +359,11 @@ t_bulk,s^live = 𝒯_bulk,n,s^live n̂_s .
 not an adopted pressure/affinity or DC response law. **Source:**
 `O2_premise_decision_list.md:37–39,48`. Face geometry and projection stay live; loading normal to a
 tilted face must not be replaced by zero in-plane projection on the brane. There is no independent
-tangential bulk stress. **Owner:** O2 carries the OPEN load; S12 owns needed live bulk/drain data. No
+tangential bulk stress. For S21's sort, premise 4 excludes any tangential face traction from the
+recorded GNLS quantum stress `σ^Q_ij` (v2:`stages/ledger_stage002_matter_stress_force_assembly.md:94–101`)
+as an adopted input, rather than a consequence of S11b's rest-acoustic no-shear-modulus model; the
+record's convective `mρv_i v_j` remains transport content for sub-step 3's O3 treatment, with O6's
+sheet/slab map still OPEN. **Owner:** O2 carries the OPEN load; S12 owns needed live bulk/drain data. No
 new live traction law is assigned to S11c.
 
 **Status: supplied perturbation traction and face work, reported on their original domain.**
@@ -380,7 +401,7 @@ It explicitly carries the following general OPEN content:
 
 | Named energy operand | Required physical content / owner |
 | --- | --- |
-| `ℰ_br^live`, `𝒥_E^live` | Material energy storage and transport compatible with the live stress, inertia, normal response and reference evolution. Conservative antecedents S1.5; brane material content S8, nonlinear completion S22. |
+| `ℰ_br^live`, `𝒥_E^live` | Material energy storage and transport compatible with `𝒯_br^live`, inertia, normal response and reference evolution. Conservative antecedents S1.5; brane material content S8, nonlinear completion S22. |
 | `𝒫_ref/relax^live` | Power associated with the reference/strain evolution and relaxation response `ℛ_ref/strain^live`. O2 carries it under premise 1; no formula, sign or vanishing is supplied. |
 | `𝒫_convert/exchange^live` | Order conversion, energy carried with exchanged material and any additional non-variational energy partners. S12 owns their forms and reaction/supply system; premise 3's momentum choice does not determine them. |
 | `𝒫_boundary^live` | Mechanical work and energy transfer through the live bulk/face/boundary data, and any explicitly declared held support. O2 carries the accounting; its force/traction pairing is for sub-step 3, while native drain/return data belong to S12 and physical core response to Q2/S22. |

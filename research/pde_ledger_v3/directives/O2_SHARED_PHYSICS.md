@@ -1,8 +1,8 @@
 # O2 — shared physics for the live steady momentum and support balance
 
-**Author:** Codex, 2026-10-06 (version preserved at `f18c67e8`); revision 1 by a fresh Claude author,
-2026-10-07. **Status:** revision 1 on the reviewed baseline `f18c67e8`; nothing accepted, and no review
-clearance or computed result is claimed.
+**Author:** Codex, 2026-10-06 (versions preserved at `f18c67e8`, `a7badd69`); revisions 1 and 2 by fresh
+Claude authors, 2026-10-07. **Status:** revision 2 on the reviewed baseline `a7badd69`; nothing accepted,
+and no review clearance or computed result is claimed.
 
 **Deliverable:** specify the untruncated, conditional in-plane and normal momentum/support object
 `ℬ_hold^live`, with its energy pairing, live profiles and every OPEN input retained, for independent
@@ -33,12 +33,18 @@ perturbation equation.
 
 Keep `V`, `ρ_br`, `μ_⊥`, `ξ_w`, `h`, `δ`, `j_n`, the bulk state, stress and inertial responses,
 reference/strain state, loading and boundary data live, including their spatial derivatives and
-material-history dependence. Eulerian steadiness does not impose material constancy. No radial
-profile, constitutive family, relaxation kernel, stress measure, stress symmetry, derivative order
-or finite list of internal variables is selected. The fields and OPEN responses depend generally on
-the three in-plane coordinates `x^i`, and the component objects are constructed for that general
-dependence. The setting's spherical symmetry describes the supplied mass. It is not imposed on the
-profiles, the OPEN responses or their components (§7).
+material-history dependence. Eulerian steadiness does not impose material constancy. No particular
+radial function, constitutive family, relaxation kernel, stress measure, stress symmetry, derivative
+order or finite list of internal variables is selected.
+
+**Spherically symmetric profiles (a restriction used, from v9's setting).** The profiles are v9's
+radial profiles about the mass. `ρ_br`, `μ_⊥`, `δ`, `ξ_w`, `h`, `j_n` and the bulk-density profile
+`f` are general live functions of `r = |x|`, and `V` is the radial in-plane field `V^i = V_r(r) x^i/r`,
+with `V_r` general and live. Component calculus may use the Cartesian `x^i` basis; the printed object
+is on these profiles. The restriction is on the profiles only. It fixes no form of the OPEN operands
+of §§3.2–3.3: no isotropy, parity, stress symmetry, absence of couple, chiral or rotational-reference
+content (`𝒜_rot^live`), or constitutive family follows from it. Their component actions are taken on
+these profiles. The transfer limits are in §7.
 
 The component object has three in-plane directions and normal material content on the supplied
 embedded brane. State the component basis and its relation to the far-field coordinates `x^i` and
@@ -62,10 +68,15 @@ law's recorded qualification (§7).
 `V` is the background in-plane velocity of the material displaced by light's `u`. It is distinct
 from the perturbation velocity, outward face velocity `V_s`, bulk-normal drain `v_dr`, and a native
 bulk velocity. No value for a normal material response or identification among these velocities
-follows from those names (C §§2, 5–7). The bulk-direction component of the same material's
-background velocity is the OPEN operand `𝒱_w^live` (§3.2). In the `(x^i, w)` basis the material
-velocity is `(V^i, 𝒱_w^live)`. This one operand enters the material momentum entries (§4), the
-carried exchange momentum (§5) and the force/power pairings (§6).
+follows from those names (C §§2, 5–7). On the steady supplied graph `w = ξ_w` (§3.1), a brane
+material point with in-plane coordinate velocity `V^i` has the bulk-direction coordinate velocity
+that the graph and `V` determine. Construct that component from them; it stays live through `V` and
+`ξ_w`, and there is no separate bulk-direction velocity operand. Normal velocity content that the
+graph does not determine belongs to `𝒩_br^live` and `𝒥_map`. One example is different local
+velocities at the faces of a finite-thickness realization, whose centre and thickness content `ξ_w`
+does not fix. Such content stays an unevaluated action with those operands named. This material
+velocity enters the material momentum entries (§4) and the force/power pairings (§6); the
+bulk-direction carried exchange momentum is the OPEN reduction of §5.
 
 The target is conditional on premises 1–4 below. It is a named balance with unresolved responses,
 not a derived substrate law or a solution for the profiles. This specification supplies no assembled
@@ -81,7 +92,7 @@ None is a derived result.
 | --- | --- | --- |
 | **1 — material reference** | Elastic response in the optical shear regime and relaxation under steady load. The relaxation/reference evolution is a general unknown. Its power is carried explicitly, with sign undetermined and any net power naming its supplier. | The full live stress and material response keep the evolving reference/strain state and history. The energy object retains `𝒫_ref/relax^live`, `𝒮_E,net` and `𝒫_E,supply`. No relaxation law or steady-load modulus is chosen. |
 | **2 — drive** | The committed dynamical order-conversion drain is the drive. No separate external body force. Its source and boundary/return data act through stress, traction and O3; the `GM` bridge is OPEN. | Use the permitted representation in which `F_drive` is **absent as a separate body-force entry**. Declare the drain-drive provenance of the material, boundary and exchange entries. Do not also add a drain-force aggregate beside them. |
-| **3 — exchanged material** | Converted material carries the local brane material velocity `V`. This closes transported momentum only. Additional non-variational partners and their reaction system remain OPEN with S12. | Distinguish carried-material momentum, mechanical face/support loading and additional S12 momentum partners. Apply the outward exchange convention in §5. The carried velocity is the material velocity `(V^i, 𝒱_w^live)` of §1; its bulk-direction component stays OPEN. Keep all live velocity and measure factors. |
+| **3 — exchanged material** | Converted material carries the local brane material velocity `V`. This closes transported momentum only. Additional non-variational partners and their reaction system remain OPEN with S12. | Distinguish carried-material momentum, mechanical face/support loading and additional S12 momentum partners. Apply the outward exchange convention in §5: premise 3 closes the in-plane carried components at `V`, and the bulk-direction carried component stays the OPEN reduction stated there. Keep all live velocity and measure factors. |
 | **4 — bulk traction** | Retain the postulated shear-free scalar bulk, with face-normal mechanical loading and no independent tangential bulk stress. O3 transport is separate. | The bulk part of the mechanical loading is `𝒯_bulk,n,s^live n̂_s`, with its amplitude OPEN. A tilted normal retains its in-plane projection. No tangential bulk stress is hidden in a support operand. |
 
 The drive declaration, mechanical loading and O3 transfer are separately identifiable accounting
@@ -96,7 +107,7 @@ physical core holder (C §§1, 7, 10).
 | Status and source in C | Equation or operand | Domain and use |
 | --- | --- | --- |
 | **Recorded material identity; supplied S9b identification**, C §2 | `u` displaces the material carrying `ρ_br`; `V` is its live background in-plane velocity. | Fixes the material whose momentum is accounted for. The homogeneous kinetic/continuity anchor is reported in §8.1; it supplies no flowing kinetic law. |
-| **Supplied geometric identification**, C §5 | `g_ij = δ_ij + ∂_iξ_w ∂_jξ_w`, `g^{ij} = (g_ij)⁻¹`, `ξ_w = ℓh`. | Induced spatial metric on the recorded graph and retained L3 field identity. `ξ_w` has length, `h` is dimensionless, and `ℓ` is the fixed reduction scale, not a selected slab width. Geometry and slopes remain live. |
+| **Supplied geometric identification**, C §5 | `g_ij = δ_ij + ∂_iξ_w ∂_jξ_w`, `g^{ij} = (g_ij)⁻¹`, `ξ_w = ℓh`. | Induced spatial metric on the recorded graph and retained L3 field identity. `ξ_w` is the brane's displacement into the bulk direction `w`, so the supplied graph is `w = ξ_w` over the far-field coordinates `x^i`. `ξ_w` has length, `h` is dimensionless, and `ℓ` is the fixed reduction scale, not a selected slab width. Geometry and slopes remain live. |
 | **Supplied optical-regime live identifications**, C §6 | `c_γ(r)² ≡ μ_⊥(r)/ρ_br(r)`, `c_γ(r) ≡ c₀[1+δ(r)]`. | `μ_⊥` is premise 1's optical elastic stiffness. The ratio supplies no full stress, steady-load stiffness or inertial law. `c₀` is the supplied asymptotic light speed. |
 | **Supplied steady mass balance**, C §6 | `∇·(ρ_br V) = −j_n`. | Use it as written on the declared measure (§1), retaining the full density factor and derivatives in the v9 source convention. This is the live mass input, not a proof of O6. A finite-slab or induced-measure replacement is not supplied by this equation. Its recorded relative-`O(ε)` qualification is a limit on claims, not a term in the object (§7). |
 | **Supplied speed-profile anchoring**, C §6 | `Q_bg^L(x,t) = Q_bg(x)`, `Q_bg^M(x,t) = Q_bg(χ(x,t))`; v9 selects LAB_HELD for `c_γ`. | These are distinct physical anchorings on the recorded supplied background. `χ(x,t)` is the inverse material map, not `χ_B`. LAB_HELD does not impose a material-reference law or supply a holder. |
@@ -121,7 +132,6 @@ gradients and material history remain admissible dependences (C §1).
 | `𝒯_br^cons`; **OPEN conservative antecedent**, C §3 | Conservative in-plane/normal-stress content, retained as an antecedent to the material-force description. It is not added beside the full live stress as another stress. Its relation to that stress remains unspecified. | S1.5/S8; nonlinear completion S22. |
 | `ℐ_br^live`; **OPEN**, C §3 | Flowing/embedded inertial and kinetic response, entering momentum storage and transport. No identification with `ρ_br V`, a quadratic live kinetic energy, or a constant inertia is supplied. | S8, with S1.5 antecedents when available. |
 | `𝒩_br^live`; **OPEN**, C §3 | Normal material response, keeping embedding, centre and thickness content distinct. It qualifies the normal material accounting jointly with the stress and inertia inputs; their overlap/identification remains unresolved, rather than being treated as three additive normal forces. | S5–S8 ingredients, Q1/Q2 static sector, S8/S22 live completion. |
-| `𝒱_w^live`; **OPEN**, not named in C; C §2 supplies only the in-plane `V` | Bulk-direction (`w`) component of the brane material's background velocity in the `(x^i, w)` basis, whose in-plane components are `V^i`. The one operand enters the material momentum storage and transport, including the normal component (§4), premise 3's carried momentum (§5) and the force/power pairings (§6). No value, and no relation to `V`, `ξ_w` or the graph, is supplied. It is distinct from `V_s`, `v_dr` and a native bulk velocity. Its relation to `𝒩_br^live`, `ℰ_h^live` and `𝒥_map` remains unresolved. | No recorded owner; O2 carries it. |
 | `𝒜_rot^live`; **OPEN**, C §3 | Whether internal angular momentum/couple stress is present and its physical rotational reference frame. Retain its effect on the admissible momentum/stress action and on the corresponding power accounting. No stress symmetry, vanishing couple content or chosen carrier is assumed. | S8 requirements; register assignments retain pass-2-review-pending status. |
 | `ℛ_ref/strain^live`; **OPEN form**, **adopted premise 1**, C §4 | Reference/strain evolution and relaxation, including carrier, transport, formation/renewal through conversion/return, and work content. It enters through the material's evolving state/history and its explicit energy partner, not as an independently postulated body force. | Relaxation/reference ownership **unassigned**; O2 carries it. S8/S22 links are inferences; conversion/return functions remain S12's. |
 | `ℳ_⊥` (O1); **OPEN**, C §6 | General stiffness response, including frequency regime and loading/material history, bulk/flow/embedding/thickness/projection dependence and gradients. It is a constitutive input to the linked optical/material description; no relation to `𝒯_br^live` is supplied. It is not a separate force. | S8, substrate reduction and S22 completion. |
@@ -161,9 +171,10 @@ every unresolved material action. No algebraic sum for the assembled balance is 
   conservative momentum antecedent `𝒫_br^cons` still named. Keep storage, spatial transport and
   material-history effects where the response requires them. Eulerian steadiness does not remove
   convective transport. The mass law identifies the mass-source convention; it does not close the
-  momentum-to-velocity relation. The material velocity on which this response acts, in the in-plane
-  and normal components alike, is `(V^i, 𝒱_w^live)` (§1); `ℐ_br^live` still supplies no map from that
-  velocity to momentum.
+  momentum-to-velocity relation. The material velocity on which this response acts is that of §1,
+  with in-plane components `V^i` and the bulk-direction component that the supplied graph and `V`
+  determine. `ℐ_br^live` still supplies no map from that velocity to momentum, and normal content that
+  the graph does not determine stays with `𝒩_br^live` and `𝒥_map`.
 - **Internal material force:** use the full `𝒯_br^live` once. Retain the conservative antecedent
   `𝒯_br^cons`, evolving `ℛ_ref/strain^live` and admissibility/frame content `𝒜_rot^live` as its
   unresolved material inputs, without asserting a split or containment relation. Do not add the
@@ -208,27 +219,33 @@ it with the finite-slab equations reported in §8.4 or with the historical S11c 
 **O3 convention (C §1, premise 3; C §6 mass-source convention):** `j_n` is the signed outward material
 loss density in the supplied v9 relation `∇·(ρ_br V)=−j_n`, on the declared measure (§1). It need not
 have a prescribed sign. Name the outward carried-momentum density in that same outward convention
-`Π_n^carry`. Premise 3 identifies the carried velocity with the material velocity `(V^i, 𝒱_w^live)` of
-§1, so in the `(x^i, w)` basis it gives
+`Π_n^carry`. Premise 3 identifies the carried velocity with the local brane material velocity. For
+the in-plane `x^i` coordinate components it gives
 
 ```text
-(Π_n^carry)^i = j_n V^i ,          (Π_n^carry)^w = j_n 𝒱_w^live .
+(Π_n^carry)^i = j_n V^i .
 ```
 
-The first equation gives the `x^i` coordinate components; the second gives the bulk-direction
-component, with `𝒱_w^live` OPEN. These are the carried-material input identification and orientation
-convention, not the assembled balance or a target for its residual. An engine using an inward-source
-notation states the orientation change. Construct the exchange occurrence in the momentum accounting
-from that convention.
+This is the carried-material input identification and orientation convention for those components,
+not the assembled balance or a target for its residual. An engine using an inward-source notation
+states the orientation change. Construct the exchange occurrence in the momentum accounting from that
+convention.
 
 On a native face description, transported momentum uses the native relative exchanged mass current
 and the local brane material velocity of the converted material. A full normal/component reduction
-retains `𝒥_map`, the live geometry, the OPEN `𝒱_w^live` and any unsupplied face-to-material velocity
-identification. Do not choose an independent converted-material velocity, replace it with `v_dr`,
-or identify it with a native bulk velocity. The premise-3 identification applies to the material
-after the specified conversion/transfer; it does not fix how a native bulk current acquires that
-momentum. Any additional non-variational conversion momentum partner and its reaction system remain
-OPEN with S12.
+retains `𝒥_map`, the live geometry and any unsupplied face-to-material velocity identification. Do
+not choose an independent converted-material velocity, replace it with `v_dr`, or identify it with a
+native bulk velocity. The premise-3 identification applies to the material after the specified
+conversion/transfer; it does not fix how a native bulk current acquires that momentum. Any additional
+non-variational conversion momentum partner and its reaction system remain OPEN with S12.
+
+**Bulk-direction carried component.** Premise 3 applies to each native transfer at its own location.
+It does not supply the reduced bulk-direction component `(Π_n^carry)^w` as `j_n` times one
+bulk-direction velocity. In a finite-thickness realization, the transfers at different faces need
+not share one current or one local bulk-direction velocity, and premise 3 supplies no such equality.
+The reduced component therefore depends on the OPEN `𝒥_map` and the normal material response
+`𝒩_br^live`, with the live geometry and any unsupplied face-to-material velocity identification. Print
+it as an unevaluated OPEN action with those operands named, in the same outward convention.
 
 The historical matter-stress current `Π_ij` includes the convective term `mρv_i v_j`, while
 `σ^Q_ij` is its recorded quantum-stress content (C §7, stage 002 record). Its `v` is the native steady
@@ -266,8 +283,8 @@ residual. Its required inputs are:
 
 Pair each mechanical contribution with the velocity or generalized rate of the material point or
 degree of freedom on which it acts, on the same measure (§1) and with the same geometric map as its
-momentum occurrence. For a brane material point, that velocity is `(V^i, 𝒱_w^live)` in the `(x^i, w)`
-basis (§1), the same operand as in its momentum occurrence. In particular:
+momentum occurrence. For a brane material point on the supplied graph, that velocity is the material
+velocity of §1, the same velocity as in its momentum occurrence. In particular:
 
 - The stress/normal-response contribution has its corresponding material stress work and energy
   transport. Any couple/frame content retains the matching rotational/generalized-rate work as
@@ -278,8 +295,8 @@ basis (§1), the same operand as in its momentum occurrence. In particular:
   normal/material response and map. Do not use the light perturbation velocity or silently equate
   `V`, `V_s` and `v_dr`.
 - Carried exchange energy and additional conversion/source power are accounted for separately from
-  mechanical face work. Transported momentum at the material velocity `(V^i, 𝒱_w^live)` alone does
-  not authorize a formula for total energy per converted mass, or an energy-free change of material
+  mechanical face work. Transported momentum at the local brane material velocity alone does not
+  authorize a formula for total energy per converted mass, or an energy-free change of material
   reference.
 - Keep `𝒫_ref/relax^live` explicit even when its work is represented within the material stress and
   internal-energy accounting. Identify its occurrence there instead of adding the same work again
@@ -325,8 +342,6 @@ normal response; reference/relaxation and power; source and exchange momentum; f
 traction/support; holder and mouth data; embedding-sector coefficients/source and longitudinal
 field, wherever no grade is recorded. Retain these as named unknown grades/scales attached to their
 inputs. Do not assign them a convenient higher order or separate density/modulus `O(ε)` variations.
-The grade of `𝒱_w^live` is likewise unrecorded; the recorded `V/c₀` grade is for the in-plane `V`
-only.
 
 O2 is **untruncated**. The optical monomial box records the model's optical counting; it is not an
 order contract for removing material, exchange, boundary or power terms from O2.
@@ -334,7 +349,7 @@ order contract for removing material, exchange, boundary or power terms from O2.
 | Restriction or freeze | Use and transfer limit in this specification |
 | --- | --- |
 | Far field, spherical isolated mass at rest, Eulerian steady profiles, lab time; linear optical waves and leading eikonal | Supplied model setting. No transfer to strong field, mouth/interior, moving or rotating mass, or a drain varying during a light crossing (C §1; I §1; v9 model point). |
-| Spherically symmetric sector of the profiles and responses (v9's live radial profiles, v9:43, 85–86, 91) | Not imposed, and not part of the printed object: the component objects use general dependence on `x^i` (§1). A later use of the symmetric sector is a separately labelled restriction on the profiles and OPEN responses, not a consequence of them. It does not transfer to non-symmetric fields or responses, including swirl and any chiral, couple-stress or rotational-reference content (`𝒜_rot^live`). |
+| Spherically symmetric profiles: scalar profiles general functions of `r`, radial `V` (§1; v9's live radial profiles, v9:43, 53–54, 85–86, 91, 113–114, 144) | Used: the printed object is on these profiles. It is v9's supplied setting, not a new premise; the radial functions stay general and live. No transfer to profiles without that symmetry, including swirl or other angular dependence of `V` and angular dependence of a scalar profile. It fixes no form of the OPEN operands (§1): isotropy, parity, stress symmetry, and couple-stress, chiral or rotational-reference content (`𝒜_rot^live`) stay OPEN. |
 | Isotropic optical speed, same shear-regime identification | Recorded optical scope. Direction-dependent stiffness, polarization-dependent propagation, coupled thickness/bulk branches, extra mixed `ωk` content and polarization/subprincipal transport remain later optical questions. This scope does not delete thickness/bulk dependences from OPEN mechanical responses (C §§4, 6; I §2). |
 | S9 sharp zero-width sheet, continuum and vanishing wave amplitude | Historical optical limits. Continuum/linear optical scope is retained as recorded; no sharp-sheet material or exchange reduction is selected for O2 (C §§4, 6). |
 | S9 no dissipation and frequency-independent moduli | **Revisited by premise 1**. Not imposed on the steady-load/reference relaxation response. Optical consequences remain deferred (C §4). |
@@ -563,15 +578,15 @@ Print the following, with in-plane components and normal content separately iden
 | Printed object | Input trace and qualifications required |
 | --- | --- |
 | Component basis, native/reduced measures and geometric projection objects used | The declared coordinate measure for every density (§1); `g_ij`, `ξ_w=ℓh`, live geometry; distinguish a geometric change of basis from an unresolved material/face reduction through `𝒥_map`. |
-| Material momentum storage/transport and inertial component actions | `ℐ_br^live`, `𝒫_br^cons`, live `V`/`ρ_br` where applicable, and the material velocity `(V^i, 𝒱_w^live)`; state the OPEN momentum map and any unsupplied stress/normal-response identification. Do not emit a chosen kinetic law as computed. |
+| Material momentum storage/transport and inertial component actions | `ℐ_br^live`, `𝒫_br^cons`, live `V`/`ρ_br` where applicable, and the material velocity on the supplied graph (§1); state the OPEN momentum map and any unsupplied stress/normal-response identification, including normal content that the graph does not determine. Do not emit a chosen kinetic law as computed. |
 | Internal material-force component actions, including normal-response and rotational content | `𝒯_br^live`, `𝒯_br^cons`, `𝒩_br^live`, `𝒜_rot^live`, `ℛ_ref/strain^live`; show unresolved relations without duplicate forces or an adopted constitutive split. |
 | Mechanical face/support load components | `T_hold,s`, the OPEN `𝒯_bulk,n,s^live` bulk-normal restriction, geometry and map; preserve support/holder status and native measures. |
-| Carried exchange-momentum components and any separately attributable source-partner actions | `Π_n`, premise 3, `j_n`, live local material velocity `(V^i, 𝒱_w^live)` with its OPEN bulk-direction component, O6/native relative fluxes where needed; keep S12 partner and reaction systems OPEN. Mechanical load and native convective transport are not counted again. |
+| Carried exchange-momentum components and any separately attributable source-partner actions | `Π_n`, premise 3's in-plane `j_n V^i`, the bulk-direction component as the OPEN reduction of §5 with `𝒥_map` and `𝒩_br^live` named, O6/native relative fluxes where needed; keep S12 partner and reaction systems OPEN. Mechanical load and native convective transport are not counted again. |
 | Drive representation and source/boundary dependencies | Premise 2's absent separate body-force representation; drain action traced into stress, loading and O3, with local source/controller and boundary data separately named. No computed `F_drive(GM)` is implied. |
 | The constructed `ℬ_hold^live` component objects | Each occurrence traced to the preceding physical entries, with its orientation, status, domain and remaining OPEN actions. No unresolved overlap is silently treated as an additive constitutive decomposition. |
 | Mass input and any transformations actually used with the component objects | Supplied live `∇·(ρ_br V)=−j_n` on the declared coordinate measure (§1), full live density/derivatives and its recorded relative-`O(ε)` qualification (§7); any native-measure or native-flux identification remains O6-dependent. Print operands and transformed objects. |
-| Force/power pairings and the constructed `ℬ_E^steady` object | All §6 energy operands, matched velocities/rates/measures with the material velocity `(V^i, 𝒱_w^live)`, explicit relaxation power, exchange energy, boundary work, and OPEN net supplier/budget. Preserve `C_ref` dependence where applicable and any conditional non-passive reservoir obligation. |
-| Coupled-input and model-point qualifications | A13, O1, O4, O5, O6, O7, `𝒱_w^live`, missing grades/scales, premises 1–4, the general-field construction (§1), the restrictions in §7 and the historical-only domains in §8. O4 equation identity/count stays unsettled. |
+| Force/power pairings and the constructed `ℬ_E^steady` object | All §6 energy operands, matched velocities/rates/measures (§6), explicit relaxation power, exchange energy, boundary work, and OPEN net supplier/budget. Preserve `C_ref` dependence where applicable and any conditional non-passive reservoir obligation. |
+| Coupled-input and model-point qualifications | A13, O1, O4, O5, O6, O7, missing grades/scales, premises 1–4, the spherically symmetric profiles (§1), the restrictions in §7 and the historical-only domains in §8. O4 equation identity/count stays unsettled. |
 
 Each term carries the section of this specification and the C section from which its input came.
 OPEN actions are printed as OPEN actions with their physical role, rather than a substituted closed

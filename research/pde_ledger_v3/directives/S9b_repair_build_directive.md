@@ -3,8 +3,9 @@
 **Author:** Claude (orchestrator), 2026-10-08. **Status:** folded once after one Codex + Grok pass (`CLAUDE.md` G2;
 both NEEDS REVISION, five findings, all accepted; dispositions in
 `directives/_measurements/S9b_repair_build_directive_review_disposition.md`). Item 10 changes what the engines print,
-so it is also reviewed as physics-bearing content until clear (CLAUDE.md scope precedence). There are two builds,
-one per engine. Each builder reads Part 1 and its own part.
+so it was also reviewed as physics-bearing content until clear (CLAUDE.md scope precedence): three rounds, cleared by
+both legs (`directives/_measurements/S9b_repair_build_directive_item10_r{1,2}_review_disposition.md`). There are two
+builds, one per engine. Each builder reads Part 1 and its own part.
 
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
 only. **Part D is held** (user decision, 2026-10-08) until the brane-material premise behind P1 is settled. This build
@@ -77,9 +78,9 @@ comparator, the production runs and the record.
         live.
       - First print the branch-existence and path-traversal conditions after the same substitution. Gate the
         forward observables on them as Part A does.
-      - Print the deflection, the round-trip excess time and its `ln(1/b²)` coefficient, both effective `γ`s, their
-        difference and both Part B residuals against the references, each as a function of `b`. Also print both
-        one-way excess times and their nonreciprocal part, with `Z_E` and `Z_R` kept.
+      - Print the deflection, the round trip's `ln(1/b²)` coefficient (item 7), both effective `γ`s, their
+        difference and both Part B residuals against the references, each as a function of `b`. Also print the round-trip excess time, both
+        one-way excess times and their nonreciprocal part, with `b`, `Z_E` and `Z_R` kept.
       - Print no matching condition for this case. Label every object with the premise.
     - For the deflection and for the radar `ln(1/b²)` coefficient, print each restriction below of:
       - Part A's computed observable;
@@ -91,7 +92,8 @@ comparator, the production runs and the record.
       - **speed only:** `V ≡ 0`, `ξ_w ≡ 0`, `δ` live;
       - **tilt only:** `δ ≡ 0`, `V ≡ 0`, `ξ_w` live.
     - For Part C's fixed-ratio and power responses, also print each condition restricted to `V ≡ 0`, `ξ_w ≡ 0`
-      (bulk density alone), with its domain.
+      (bulk density alone), with its domain and the `j_n` it implies through the supplied mass balance, with
+      `ρ_br` symbolic.
     - Each restriction is obtained by substituting into the computed general object, then reducing. Its tag and
       label name the restriction and the profiles it sets to zero, never an outcome. Restrictions add no premise.
     - Everything in this item is additional labelled output. This directive supplies the forward case's premise for

@@ -7,6 +7,10 @@ builder starts before then. The comparator it describes is an instrument written
 two non-author build legs (fresh Claude + Grok) until clear, as O2 scoping §7 row 6 requires
 (`directives/O2_steady_brane_balance_scoping.md:252`).
 
+**Amendment 1 (2026-10-07).** After four build-review rounds, the user chose a finite contract. Amendment 1 rewrites
+items 4 and 6 and adds one exclusion. As a changed decision list, it gets its own one-pass Codex + Grok review and
+is folded once before any builder resumes.
+
 ## Object
 
 `research/pde_ledger_v3/scripts/O2_cross_engine_comparator.py`, with synthetic tests in
@@ -57,36 +61,97 @@ object by object and prints what it finds. It decides nothing.
    - No applied function is collapsed to a bare symbol, and no live profile is replaced by a constant, to make
      two operands meet.
 
-4. **OPEN content is compared, not discarded.** For OPEN actions and balance entries, print each engine's
-   structure:
-   - the role or head;
-   - the OPEN operands it names, through the name table;
-   - the live quantities it takes as arguments;
-   - its orientation sign.
+4. **OPEN content is compared at a declared level, and the comparator prints its own limit.** For each paired OPEN
+   action and each balance entry, compute and print, per engine and as differences:
+   - the role or head, and its orientation sign;
+   - the named OPEN operands, including labels, through the name table;
+   - the live objects it takes: each profile, or profile derivative, at its argument, keyed by the object rather
+     than by either engine's spelling.
 
-   Then print the differences. A difference in representation (for example, native face geometry as a general
-   immersion in one engine and an OPEN `𝒥_map` action in the other) is printed as a difference. It is never
-   reconciled inside the comparator.
+   Identical content gives an empty difference. A difference in representation is printed as a difference and never
+   reconciled inside the comparator. For example, native face geometry may be a general immersion in one engine and
+   an OPEN `𝒥_map` action in the other.
+
+   The arguments of an OPEN action are not compared position by position (user scope decision, 2026-10-07). The
+   engines package arguments differently, so no shared notion of an argument slot is defined. The comparison covers
+   exactly the three inventories above. An empty difference means only that those inventories match.
+
+   The output states, as the instrument's limit, what is not compared:
+   - where each object sits among an action's arguments;
+   - how many times it occurs;
+   - argument content outside the three inventories, for example velocity components or metric algebra that name
+     no profile.
+
+   For each paired OPEN occurrence and each engine, the comparator also computes and prints:
+   - the live objects that occur more than once in that occurrence, since freezing one occurrence of such an object
+     leaves the inventory unchanged;
+   - the number of the occurrence's parsed leaves that fall outside the compared inventories.
+
+   This limit is part of the output.
 
 5. **No target.** Nothing in the comparator or its report states what any residual or comparison on the
    measured streams is expected to be. It emits no `PASS`/`FAIL`/`AGREE`/`VERDICT`/`STATUS` token. It exits 0
    whatever it finds, and nonzero only on operational failure (a missing or ungrammatical input). Interpreting
    the output belongs to the record (sub-step 7).
 
-6. **Controls that fail when their defect goes undetected.** The tests use synthetic fixtures only and never
-   load the measured streams. Each fixture is serialized in its engine's own format (a lossless SymPy line, a
-   Wolfram association) and goes through the same reader, extraction, join and comparison path as the production
-   run. Each control is a test that fails unless its mutation changes the printed output; the assertion names
-   no value. Required mutations:
+6. **A finite control contract.** The tests use synthetic fixtures only and never load the measured streams. Each
+   fixture is serialized in its engine's own format (a lossless SymPy line, a Wolfram association). It goes through
+   the same reader, extraction, join and comparison path as the production run.
+
+   Each control fails when the comparator's own comparison misses its defect. It asserts on what the comparison
+   produces (outcome, residual, orientation, difference or printed limit), never on operand text alone, and it
+   names no value.
+
+   The list below is the complete control contract (user scope decision, 2026-10-07). Each bullet is a separate
+   control, and a comparator-logic ablation that removes that behaviour makes at least one test fail.
+
+   *Residuals and operands:*
+   - an algebraic residual is the subtraction of the two operands: the residual added to the right operand
+     reconstructs the left, and replacing subtraction by addition fails a test;
+   - both operands are printed before the residual;
    - one-sided corruption of an operand;
-   - a form change, not a rescaling;
-   - a repoint of every name-table row (item 2);
+   - a form change, not a rescaling.
+
+   *Joins and names:*
+   - a repoint of every name-table and join-table row (items 1–2);
+   - a counterpart moved under a different tag, key path or head still joins, and does not fall to unjoined;
+   - a computed object in one engine and an OPEN action for the same role in the other is printed as a
+     difference, never as a zero (item 4);
+   - an OPEN name with no name-table binding appears in the named difference.
+
+   *Profiles and derivatives:*
    - a stripped argument of an applied function;
    - a live profile replaced by a constant;
-   - a changed OPEN head, named operand, argument or orientation;
-   - changed derivative or binder structure;
-   - a nested sibling removed;
-   - a counterpart moved under a different tag or key path (it must still join, not fall to unjoined).
+   - a changed derivative order;
+   - a changed derivative evaluation point;
+   - a changed binder structure.
+
+   *OPEN content:*
+   - a changed OPEN head;
+   - a changed named operand;
+   - a changed label;
+   - a changed live object;
+   - a changed orientation;
+   - identical OPEN content gives an empty difference;
+   - a nested sibling removed.
+
+   *Balances:*
+   - orientation through plain sums;
+   - orientation through held or inactive aggregates;
+   - orientation through SymPy `Derivative` and `Lambda` bodies;
+   - every OPEN-free term of a balance with several such terms.
+
+   *Layout and translation:*
+   - the transpose layout;
+   - either side of a relation;
+   - the Wolfram `Sqrt` translation, checked against an explicit power spelling of the same object.
+
+   *The printed limit (item 4):*
+   - a live object occurring twice in one OPEN occurrence appears in it;
+   - argument content outside the inventories raises the printed outside-leaf count.
+
+   *Output:*
+   - the output contains no `PASS`/`FAIL`/`AGREE`/`VERDICT`/`STATUS` token (item 5).
 
    Two further tests: a duplicate join or name row is rejected, and a native boolean is rejected as an operand
    while a sibling algebraic leaf is still subtracted.
@@ -110,6 +175,7 @@ object by object and prints what it finds. It decides nothing.
   fluid or kinetic limit. O2's construction keeps that content OPEN (spec §1; scoping §6), so no oracle's domain
   matches without a premise O2 does not supply. Choosing such a limit is a premise decision for the user, not a
   comparator task.
+- No position-by-position comparison of OPEN-action arguments (item 4; user scope decision, 2026-10-07).
 - No new physics, closure, normalization or profile choice. No engine edit. No commit.
 
 ## Builder report (at most 40 lines)

@@ -647,15 +647,15 @@ calibration of the draining model.
 
 ### O2 pass — conditional live steady balance · populated 2026-10-07; review pending
 
-Source: `steps/O2_steady_brane_balance.md`, §§1–8; governing inputs and accepted constructions/comparator
+Source: `steps/O2_steady_brane_balance.md`, §§1–9; governing inputs and accepted constructions/comparator
 are identified there. Commands and literal retrieval output: `steps/_measurements/O2_record_measurements.md`,
-M1, M6, M8–M11; generator `scripts/O2_record_measurements.py`. The pass follows this register's schema,
+M1, M6, M8–M12; generator `scripts/O2_record_measurements.py`. The pass follows this register's schema,
 rest-on test and both routes. **15 → 16 entries**, all OPEN. **New entries by target: no owner named,
 `R-O2-01`.** Six existing
 entries gain the O2 source: `R-S1-02`, `R-S8-04`, `R-S8-05`, `R-S8-06`, `R-S12-01`, `R-S12-02`.
 Original target inferences and review qualifications are retained; no DELIVERED or RETIRED status is assigned.
-Repair 2 against preserved r1 `69f0ed3d` is **16 → 16**: no new entries by target and no newly sourced
-existing entry in this repair. The O2 source on `R-S8-06` is narrowed to material identification.
+Repair 3 against preserved r2 `9eff4ae5` is **16 → 16**: no new entries by target and no newly sourced
+existing entry in this repair. The O2 source on `R-S8-06` remains limited to material identification.
 
 **First route / one rest-on criterion.** Enter an O2 source only for a sourced condition on which the
 presently reported conditional object rests: its stated material/phase identifications and its
@@ -710,6 +710,17 @@ measure mass law is derived, and no steady equilibrium, power sign, passive resp
 or physical holder is earned. Existing rest-reference `R-S6-02` is not extended to a flowing equilibrium;
 quadratic form/sign, mode-count, compression, width and EOS entries gain no new O2 source on that basis.
 All cross-engine OPEN-content differences remain open; they are not recorded as substrate defects.
+The pass inherits the record's whole difference ledger and its comparison bounds (§§3–5), carried
+with each applicable accounting/admissibility condition in its Part D handoff (§8). In particular,
+the power-accounting conditions retain the eight one-sided declared-role actions, the four paired
+`energy_balance` action-orientation differences `[["argument",1]]` (stream line 207), and the stored
+PY density/flux nesting in `OPEN_JointPowerAccounting` in `energy_power` and `energy_balance`
+(lines 202/206; M6/M12). None settles compatibility or judges either engine to duplicate power.
+The comparator acceptance assigns the WL-only `xi_w''` interpretation to the O2 record, sub-step 7;
+the directive allows retrieval only. It remains an **undischarged sub-step-7 obligation returned
+to the orchestrator under M1**, as quoted and bounded in record §§4/9 (M1). It is not unowned,
+not computed here, and not a new substrate-delivery entry. The handoff carries that status alongside
+every admissible-dependence and force/power condition it bears on.
 
 **Second route.** Read the O2 record against scoping §5 and its source qualifications. That section
 identifies surface-mechanics, diffuse-interface/evolving-reference and river/acoustic-flow **candidate

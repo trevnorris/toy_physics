@@ -23,8 +23,10 @@ OUTPUT = V3 / 'steps/_measurements/O2_record_measurements.md'
 STREAM = V3 / 'scripts/out/O2_cross_engine_comparator.out'
 REGISTER = 'research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md'
 BASELINE = 'c9db665d'
-REPAIR_BASELINE = '69f0ed3d'
+REPAIR_BASELINE = '9eff4ae5'
 DECLARED_ROLE_ABSENT = 'no occurrence of this declared role in the other operand'
+ENERGY_ROLES = ('OPEN_MaterialEnergyDensity', 'OPEN_MaterialEnergyFlux_0',
+                'OPEN_MaterialEnergyFlux_1', 'OPEN_MaterialEnergyFlux_2')
 
 SOURCES = [
     'directives/O2_steady_brane_balance_scoping.md',
@@ -36,6 +38,7 @@ SOURCES = [
     'directives/_measurements/O2_comparator_production_run.md',
     'directives/_measurements/O2_comparator_build_r5_review_disposition.md',
     'directives/_measurements/O2_record_directive_review_disposition.md',
+    'directives/O2_record_directive.md',
 ]
 
 
@@ -62,6 +65,13 @@ def comparison_nodes(obj, path=()):
         yield from comparison_nodes(child, (*path, 'operands', index))
 
 
+def raw_nodes(node, path=(), parent=None):
+    """Retrieve the shape/paths of nodes in a filed four-field syntax tree."""
+    yield path, node, parent
+    for index, child in enumerate(node[3]):
+        yield from raw_nodes(child, (*path, 3, index), node)
+
+
 def lookup(name):
     if name == 'existence':
         for rel in (
@@ -81,6 +91,8 @@ def lookup(name):
                     continue
                 if rel.endswith('O2_comparator_build_r5_review_disposition.md') and not (
                         number <= 12 or 62 <= number <= 92):
+                    continue
+                if rel.endswith('O2_record_directive.md') and not (50 <= number <= 60):
                     continue
                 print(f'{number}: {line}')
         rel = 'scripts/O2_cross_engine_comparator.py'
@@ -142,6 +154,35 @@ def lookup(name):
                     for entry in entries:
                         dump({'engine': engine, **fields(entry, (
                             'role', 'orientation', 'open_free'))})
+    elif name == 'energy-action-context':
+        # Only stored orientation fields, occurrence-collection shape, and
+        # literal function-name nodes/paths bearing on the energy handoff.
+        # No cross-engine occurrence pairing or power accounting is performed.
+        for number, obj, _ in rows():
+            if obj['kind'] == 'structure' and obj['row'] == 'energy_balance':
+                for action in obj['action_comparison']:
+                    if action['role'] in ENERGY_ROLES:
+                        dump({'stream_line': number, 'row': obj['row'],
+                              **fields(action, ('role', 'unpaired_reason')),
+                              'differences': fields(action['differences'], (
+                                  'head', 'role', 'orientation'))})
+                        for engine in ('py', 'wl'):
+                            occurrences = action['occurrences'][engine]
+                            dump({'engine': engine, 'role': action['role'],
+                                  'orientation': action[engine]['orientation'],
+                                  'stored_object': 'occurrences/' + engine,
+                                  'length': len(occurrences)})
+                            for occurrence in occurrences:
+                                dump({'engine': engine, 'role': action['role'],
+                                      'local_occurrence': occurrence['local_occurrence'],
+                                      'orientation': occurrence['inventories']['orientation']})
+            elif obj['kind'] == 'operands' and obj['row'] in ('energy_power', 'energy_balance'):
+                for path, node, parent in raw_nodes(obj['py']):
+                    if node[0] == 'FunctionName' and node[1] in (
+                            'OPEN_JointPowerAccounting', 'OPEN_MaterialCompatibility', *ENERGY_ROLES):
+                        dump({'stream_line': number, 'row': obj['row'],
+                              'stored_object': 'py', 'raw_path': path, 'node': node,
+                              'parent_path': path[:-2], 'parent_fields': parent[:3]})
     elif name == 'closed-results':
         # All stored outcome/reason/residual leaves, not only successful rows.
         for number, obj, _ in rows():
@@ -184,6 +225,9 @@ def lookup(name):
         counts = {kind: 0 for kind in kinds}
         residual_counts = {token: 0 for token in residual_tokens}
         paired = empty_paired = 0
+        paired_field_tokens = ('"head":[]', '"role":[]', '"orientation":[]',
+                               '"orientation":[["argument",1]]')
+        paired_field_counts = {token: 0 for token in paired_field_tokens}
         absent_token = '"unpaired_reason":' + json.dumps(DECLARED_ROLE_ABSENT)
         absent_count = 0
         empty_delta = '{"head":[],"live_arguments":[],"named_OPEN_operands":[],"orientation":[],"role":[]}'
@@ -201,6 +245,10 @@ def lookup(name):
                     if '"unpaired_reason":null' in stored:
                         paired += stored.count('"unpaired_reason":null')
                         empty_paired += stored.count('"differences":' + empty_delta)
+                        differences = json.dumps(action['differences'], ensure_ascii=False,
+                                                 separators=(',', ':'))
+                        for token in paired_field_tokens:
+                            paired_field_counts[token] += differences.count(token)
         for kind, count in counts.items():
             dump({'stored_object': 'stream', 'literal': '"kind":"' + kind + '"', 'count': count})
         for token, count in residual_counts.items():
@@ -211,6 +259,9 @@ def lookup(name):
               'literal': '"differences":' + empty_delta, 'count': empty_paired})
         dump({'stored_object': 'structure/action_comparison',
               'literal': absent_token, 'count': absent_count})
+        for token, count in paired_field_counts.items():
+            dump({'stored_object': 'paired structure/action_comparison/differences',
+                  'literal': token, 'count': count})
     elif name == 'register':
         before = subprocess.run(
             ['git', 'show', BASELINE + ':' + REGISTER], cwd=ROOT,
@@ -254,6 +305,7 @@ SECTIONS = (
     ('M8 Closed results and reasons for unformed residuals', 'closed-results'),
     ('M9 Every unjoined path and its printed reason', 'unjoined'),
     ('M10 Filed accounting', 'accounting'), ('M11 Register before and after', 'register'),
+    ('M12 Energy action orientation and stored nesting paths', 'energy-action-context'),
 )
 
 

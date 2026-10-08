@@ -1,10 +1,14 @@
 # Substrate requirements — what the force sectors oblige the unbuilt steps to deliver
 
-**Status: passes 1 (S9, S10) and 2 (S11, S11b-A/B, S11c PARTIAL) complete; pass-2 review pending.**
+**Status: passes 1 (S9, S10) and 2 (S11, S11b-A/B, S11c PARTIAL) complete; pass-2 review pending.
+O2 pass populated 2026-10-07; its record/pass review is pending.**
 Fifteen entries, all OPEN. Pass 2 was populated 2026-10-05 from the kept results and their stated
 conditions; it does not close the substrate or upgrade S11c's unresolved work. Later sectors remain to
 be read as they close. The two 2026-08-07 prior-art entries retain their provenance; the second route is
 recorded under Population passes.
+O2 adds sources to six existing entries and adds no new entry; its four adopted premises retain their
+conditional-input labels in the O2 pass below. Entry counts are retrieved in
+`steps/_measurements/O2_record_measurements.md`, M11.
 
 ## Why this exists
 
@@ -61,7 +65,7 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 
 | target | id | the object owed | source |
 |---|---|---|---|
-| **S1** | `R-S1-02` | the substructure's shear response as a function of `χ_B`, both phases | S9 |
+| **S1** | `R-S1-02` | the substructure's shear response as a function of `χ_B`, both phases | S9, O2 conditional premises |
 | **S1** *(register inference)* | `R-S1-03` | whether the substructure's microdynamics is time-reversible | S11b-B / unified S11b |
 | **S1.5** | `R-S1.5-01` | the mode content of the linearised GNLS, including the bulk acoustic branch | S9, S11, S11b-A/B |
 | **S6** | `R-S6-01` | the brane's compression modulus `B_comp` | S11 |
@@ -71,11 +75,11 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 | **S8** | `R-S8-01` | the form of the brane's quadratic stiffness functional | S9, S10, S11, S11b-B, unified S11b, S11c uniform |
 | **S8** | `R-S8-02` | the quadratic operator on `u` **and** `h` together | S10, S11 |
 | **S8** | `R-S8-03` | the **sign** of the physical transverse stiffness | S9, S10, S11, unified S11b, S11c uniform |
-| **S8** | `R-S8-04` | what carries the brane's **internal angular momentum** | S9, S10, S11 |
-| **S8** | `R-S8-05` | the **frame** the brane's rotational stiffness is measured against | S9, S10, S11 |
-| **S8** *(register inference)* | `R-S8-06` | the material displacement and quadratic inertia of the slab | S11, S11b-B |
-| **S12** *(register inference)* | `R-S12-01` | a named reservoir and its power budget | S11b-B / unified S11b |
-| **S12** | `R-S12-02` | background drain/return and separate boundary data | S11b-A/B, S11c uniform |
+| **S8** | `R-S8-04` | what carries the brane's **internal angular momentum** | S9, S10, S11, O2 carried obligation |
+| **S8** | `R-S8-05` | the **frame** the brane's rotational stiffness is measured against | S9, S10, S11, O2 carried obligation |
+| **S8** *(register inference for original entry)* | `R-S8-06` | the material displacement and inertial response, with the original quadratic slab domain retained | S11, S11b-B, O2 |
+| **S12** *(register inference)* | `R-S12-01` | a named supplier/reservoir and its power budget, when supply is required | S11b-B / unified S11b, O2 |
+| **S12** | `R-S12-02` | background drain/return and separate boundary data | S11b-A/B, S11c uniform, O2 |
 
 ⚠ Entries below are in the order they were found, ⛔ not in step order. All **fifteen** are **OPEN**.
 ⭐ `R-S8-01`, `-03`, `-04`, `-05` are one family: the stiffness functional's **form**, its **sign**, its
@@ -143,7 +147,7 @@ other three.
 
 ### R-S1-02 — the substructure's shear response, as a function of the order parameter
 
-- **source** S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
+- **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
 - **requirement** — the shear response of the substructure as a function of `χ_B`, across **both** phases.
 - **on failure** — the two halves fail differently, and both are fatal:
   - **ordered phase carries no shear** ⇒ `μ_R = 0`, the brane has no transverse sector, and **photons do
@@ -156,6 +160,12 @@ other three.
   substructure be ordered-and-shear-bearing in one phase and unstructured-and-shear-free in the other?
   ⚠ Stressed hardest at the throat, where the brane is bent into `±w`. Currently the only machine check
   on the bulk half anywhere in the corpus is **dimensional**.
+- **O2 scope** — Premises 1 and 4 adopt optical-regime elastic shear in the brane and the postulated
+  shear-free scalar bulk with face-normal mechanical loading. O2 derives neither phase response.
+  The existing shear-response retirement question gains this conditional consumer, not a new
+  entry for an adopted value. Failure to realize those responses prevents promoting O2's conditional
+  material/load object to that substrate. No flowing pressure law, tangential bulk stress or optical
+  compatibility result follows (`directives/O2_SHARED_PHYSICS.md`, §§2, 3.1, 3.3, 7).
 
 ### R-S1.5-01 — the GNLS's own mode content
 
@@ -321,7 +331,7 @@ other three.
 
 ### R-S8-04 — what carries the brane's internal angular momentum
 
-- **source** S9, S10, S11 · **target** S8 · **status** OPEN
+- **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9, S10, S11 · **target** S8 · **status** OPEN
 - **requirement** — the object in the substructure that carries **internal angular momentum** on the brane,
   or the couple-stress it supports. ⛔ Not a mechanism, ⛔ not a model: the object, or a statement that there
   is none.
@@ -344,10 +354,16 @@ other three.
   answering a different question.
   ⚠ `R-S8-01` asks for the **form** and is silent on admissibility; a substructure could deliver the
   curl-only form and still owe this.
+- **O2 scope** — OPEN `𝒜_rot^live` carries this existing S8 obligation, including whether internal
+  angular momentum/couple stress is present. O2 selects no stress symmetry or carrier and does not
+  establish a curl-only live stress. The original conservative-MacCullagh objection keeps its
+  original domain; it is not newly proved for an unspecified viscoelastic stress. Without a delivered
+  admissible rotational response, O2's corresponding stress/power action remains conditional
+  (`directives/O2_SHARED_PHYSICS.md`, §§3.2, 4, 6).
 
 ### R-S8-05 — the frame the brane's rotational stiffness is measured against
 
-- **source** S9, S10, S11 · **target** S8 · **status** OPEN
+- **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9, S10, S11 · **target** S8 · **status** OPEN
 - **requirement** — the frame with respect to which the brane's rotational stiffness is defined: **what
   `∇×u` is measured against.**
 - **on failure** — for an infinitesimal rigid rotation `u = ω × r` the curl is `2ω ≠ 0`, so a curl-only
@@ -365,12 +381,17 @@ other three.
   ⚠ **A flowing medium does NOT answer this.** Flow bears on the **velocity** frame — whether a background
   drift is detectable — and the analog-gravity route hides it in an effective metric. ⛔ Orientation is a
   **separate** objection: being carried is not being turned. ⇒ ⭐ do not let one argument discharge both.
+- **O2 scope** — OPEN `𝒜_rot^live` retains the physical rotational frame as an existing S8
+  obligation. Neither radial flow, the graph normal nor LAB_HELD chooses that material frame. Its
+  absence prevents identifying the corresponding OPEN force/power action with a physical rotational
+  response. O2 does not extend the original curl-only objection to an unspecified live stress
+  (`directives/O2_SHARED_PHYSICS.md`, §§1, 3.2, 6, 7).
 
 ### R-S1-03 — the substructure's microscopic time-reversibility
 
 - **source** S11b-B (`steps/S11bB_interface_assembly.md`, limits of the passive region), unified S11b
   (`steps/S11b_interface_coupling_law.md`, conditional Onsager–Casimir test) · **target** S1
-  (**register inference; no owner named by the records**) · **status** OPEN
+  (**register inference for the original S11/S11b records; O2 explicitly names S8**) · **status** OPEN
 - **requirement** — whether the substructure's microdynamics is time-reversible, the premise of the
   conditional Onsager–Casimir relation `Λ_X(ω) = −Λ_V(ω)`.
 - **on failure** — that relation cannot be imposed on the physical interface as an unconditional law.
@@ -385,11 +406,12 @@ other three.
 
 ### R-S8-06 — material displacement and the slab's quadratic inertia
 
-- **source** S11 (`steps/S11_stray_longitudinal.md`, move 1 / finite census); S11b-B
+- **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11 (`steps/S11_stray_longitudinal.md`, move 1 / finite census); S11b-B
   (`steps/S11bB_interface_assembly.md`, breathing quadratic) · **target** S8
-  (**register inference; no owner named by the records**) · **status** OPEN
+  (**register inference for the original S11/S11b records; O2 explicitly names S8**) · **status** OPEN
 - **requirement** — `u` as the material displacement of the stuff whose density is `ρ_br`, and the
-  quadratic kinetic form of that material and the thickness degree of freedom (B's `μ_W`).
+  quadratic kinetic form of that material and the thickness degree of freedom (B's `μ_W`) on the
+  original homogeneous/slab domain; for O2, the same material's OPEN flowing/embedded inertial response.
 - **on failure** — if `u` is a director rather than that displacement, S11's continuity identification
   `δρ_br = −ρ_br ∇·u` and its compression argument do not follow. Its finite census requires nonzero
   `ρ_br`; B's breathing-root interpretation also rests on the stated inertial model. A stiffness
@@ -398,14 +420,23 @@ other three.
   or `μ_W`, and does not identify the thickness mode with S10's out-of-plane displacement. The cited
   records name no future owner for this object; S8 is a register inference
   (`steps/S11_stray_longitudinal.md:32–38`; `steps/S11bB_interface_assembly.md:80–85`).
+- **O2 scope** — The same material displaced by `u` has live velocity `V`; O2's flowing/embedded
+  inertial response `ℐ_br^live` and momentum map remain OPEN. The homogeneous quadratic anchor above
+  is not a live kinetic law and supplies no identification of momentum density with `ρ_br V`.
+  The material identity and live inertial response are merged here by object, with the original slab
+  and thickness domain retained; no quadratic live form is required. Without them the formal O2
+  storage/transport actions cannot become a physically supplied flowing response
+  (`directives/O2_input_contract.md`, §§2–3; `directives/O2_SHARED_PHYSICS.md`, §§3.2, 4).
+  The original S8 assignment remains a register inference; O2 explicitly names S8 with S1.5 antecedents.
 
 ### R-S12-01 — the reservoir and its power budget
 
-- **source** S11b-B (`steps/S11bB_interface_assembly.md`, standing rule); unified S11b
+- **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-B (`steps/S11bB_interface_assembly.md`, standing rule); unified S11b
   (`steps/S11b_interface_coupling_law.md`, passivity region) · **target** S12
   (**register inference**) · **status** OPEN
 - **requirement** — a named reservoir and a stated power budget for any adopted non-passive interface
-  coupling. The unified record names the candidate: *"The model supplies a candidate reservoir — the
+  coupling; for O2, a named physical supplier and its budget if a closure requires net supply.
+  The unified record names the candidate: *"The model supplies a candidate reservoir — the
   background drain `v₀`."* (`steps/S11b_interface_coupling_law.md:62–63`). That `v₀` is the bulk's normal
   drain, standard name `v_bulk_normal_0` (`directives/S11b_SHARED_PHYSICS.md:101–104`;
   `directives/S11b_unified_decisions.md:33–40`). B says the reference state carrying that flow is *"a
@@ -418,10 +449,18 @@ other three.
   B says that is unbuilt and reports only a structural test, so no numerical-bound requirement is added.
 - **owner/target** — the records do not name S12; that target is a register inference. They hand the
   reservoir-and-budget condition to *"S11b-C"* (`steps/S11bB_interface_assembly.md:195–197`).
+- **O2 scope** — Adopted premise 1 requires explicit reference/relaxation power with sign OPEN and
+  a named supplier plus stated budget for any net supply. O2 carries OPEN `𝒮_E,net` and `𝒫_E,supply`;
+  no net supply is measured and naming the drain provides no budget. The object is merged here rather
+  than creating a second power-budget entry. Without the supplier/budget, a conditional closure
+  requiring net supply cannot be claimed physically supplied. This adds neither a passive sign nor
+  a relaxation law. The separate non-passive-interface condition remains conditional and its live
+  successor owner remains unassigned; S12 is still only the original register inference
+  (`directives/O2_SHARED_PHYSICS.md`, §6; `directives/O2_input_contract.md`, §8).
 
 ### R-S12-02 — background drain/return and separate boundary data
 
-- **source** S11b-A/B (`steps/S11b_interface_coupling_law.md:158–164`, background-flow limit); S11c
+- **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-A/B (`steps/S11b_interface_coupling_law.md:158–164`, background-flow limit); S11c
   (`steps/S11c_PARTIAL_CLOSEOUT.md:7`, uniform result;
   `steps/S11c_d_profile_conditioned_scattering.md:21–25`, selected uniform check)
   · **target** S12 · **status** OPEN
@@ -440,6 +479,14 @@ other three.
 - **owner** — S12 owns the drain/return data (`steps/S11c_PARTIAL_CLOSEOUT.md:21`) and is next for
   dynamical bulk-to-brane order conversion with separate boundary data
   (`steps/S11c_PARTIAL_CLOSEOUT.md:33`).
+- **O2 scope** — Premise 2 makes dynamical order conversion the drive, with no separate body force.
+  O2's local source/controller and boundary/domain inventories remain distinct, as do additional
+  S12 momentum/energy partners and their reaction/supply systems. This same native drain/return and
+  boundary object gains O2 as a consumer. Without it the formal drain provenance cannot become a
+  physically supplied source/boundary realization. Local in-plane carried `j_n V^i` does not deliver
+  these data, the live `𝒥_map`, bulk-direction carry, energy partners or a `GM` coupling
+  (`directives/O2_SHARED_PHYSICS.md`, §§3.3, 5, 6, 10). Those remain OPEN handoffs, not extra entries
+  merely because a later profile solve would need them.
 
 ---
 
@@ -462,6 +509,7 @@ Seven entries added, against the two that existed. The calibration it produced, 
   out-of-plane sectors decouple — is the single entry on which S10's headline number depends, and it was
   flagged inside S10 **at the moment the identification was made**. ⇒ read a record for its *flagged
   identifications* first; they are where the requirements are.
+
 
 ### Pass 2 — S11, S11b-A/B and S11c PARTIAL · populated 2026-10-05; review pending
 
@@ -568,6 +616,63 @@ calibration of the draining model.
 | Effective bulk sound speed / actual transverse phase-speed ratio, distinguished from the bare S9 ratio | P, `c_s0` and brane coefficients; d, uniform check / benchmark; `_measurements/S11c_d_near_unity_uniform_continue_result.md`, coverage | S20a (calibration); S22/R10 (derivation) |
 | Unit frame, incident frequency `omega` and the two tangential momenta | P, `unit_frame` / `parameters`; d, uniform check / benchmark | no owner named |
 | Numerical regulator, quadrature/basis/cutoff and source/domain intervals | d, benchmark and controls; `_measurements/S11c_d_numerical_radiating_balance_report.md`, controls and their limits | no owner named |
+
+### O2 pass — conditional live steady balance · populated 2026-10-07; review pending
+
+Source: `steps/O2_steady_brane_balance.md`, §§1–8; governing inputs and accepted constructions/comparator
+are identified there. Commands and literal retrieval output: `steps/_measurements/O2_record_measurements.md`,
+M1, M6, M8–M11; generator `scripts/O2_record_measurements.py`. The pass follows this register's schema,
+rest-on test and both routes. **15 → 15 entries**, all OPEN. **New entries by target: none.** Six existing
+entries gain the O2 source: `R-S1-02`, `R-S8-04`, `R-S8-05`, `R-S8-06`, `R-S12-01`, `R-S12-02`.
+Original target inferences and review qualifications are retained; no DELIVERED or RETIRED status is assigned.
+
+**First route / rest-on test.** The constructed result is an untruncated conditional accounting object,
+not a selected live material law or solved steady state. Its material identity, adopted shear-bearing/
+shear-free setting, retained angular-momentum/frame obligations, conditional supplier/budget obligation
+and distinct native source/boundary needs merge into the six objects above. `R-S8-06` retains its
+original homogeneous quadratic/slab scope while adding the flowing inertial-response condition;
+it does not impose that quadratic form on live O2. `R-S12-01` retains the distinction between net
+power, relaxation power and the conditional non-passive interface obligation, including the latter's
+unassigned live successor. None of these sources proves the substrate can deliver the object.
+
+The four user-selected choices have the exact provenance label **adopted substrate input to a
+conditional model (2026-10-06)** (`directives/O2_premise_decision_list.md`, premises 1–4). They are
+postulates for this conditional result, not newly derived requirements. The existing live retirement
+condition for the two-phase shear response is retained in `R-S1-02`; the new premise choices supply
+no additional named retirement conditions requiring duplicate entries. Their provenance is kept here
+for S21; this pass edits neither an ansatz ledger nor the defect register.
+
+| Adopted premise | Content retained for S21 | Unresolved form / owner boundary |
+|---|---|---|
+| 1 — material reference | Optical shear response elastic; relaxation under steady load; explicit relaxation power, sign OPEN, net supply with named supplier/budget | `ℛ_ref/strain^live` and full live response OPEN; relaxation/reference owner unassigned. Optical consequences deferred; S9's no-dissipation/frequency-independent limits are revisited. |
+| 2 — drive | Dynamical order-conversion drain; no separate external body force | O2 chooses the absent separate-body-force representation. Source/return and partners S12; S14a/S14 source bridge and S16 response matching remain OPEN, with S16 assignment an inference. |
+| 3 — exchange | Converted material carries local brane material velocity `V`; closes transported momentum only | In-plane carried `j_n V^i` in the outward-loss convention; bulk-direction reduction and additional reaction/energy partners remain OPEN through `𝒥_map`, normal response and S12. Momentum density remains OPEN. |
+| 4 — bulk | Postulated shear-free scalar bulk; native face-normal mechanical load; no independent tangential bulk stress | Signed normal-load amplitude, geometry/projection and complete support partition OPEN; tilted loading can project in-plane. External supports and exchange remain distinct. |
+
+O1/O3–O7, A13, live stress/energy/reference forms, missing grades/scales, core selection, source/response
+`GM` matching and S21's integration/sort remain the record's OPEN handoff. They are not entered merely
+because a later closed profile calculation would use them. The banked claim is not a solution that
+already rests on those deliveries. In particular, the emitted mass residual is unsolved, no induced-
+measure mass law is derived, and no steady equilibrium, power sign, passive response, optical outcome
+or physical holder is earned. Existing rest-reference `R-S6-02` is not extended to a flowing equilibrium;
+quadratic form/sign, mode-count, compression, width and EOS entries gain no new O2 source on that basis.
+All cross-engine OPEN-content differences remain open; they are not recorded as substrate defects.
+
+**Second route.** Read the O2 record against scoping §5 and its source qualifications. That section
+identifies surface-mechanics, diffuse-interface/evolving-reference and river/acoustic-flow **candidate
+oracles**, with explicit dimension, model and access limits. O2 reproduces no identified prior-art
+result; no oracle was applied by this record. There is therefore no O2 reproduced result whose historic
+objection can generate a new entry under this register's second route. The earlier MacCullagh
+admissibility/frame entries remain OPEN and gain only O2's explicit carried S8 obligations; they are
+not re-certified. No new search, oracle check or prior-art model was introduced.
+
+**Directive/register relation.** No operative disagreement is found for this O2 pass: directive item 5
+says to preserve the distinction between a derived requirement and an adopted substrate premise;
+this register says “a **postulate** is a value or form assumed *here* and not derived” and “A postulate
+with a named retirement condition generates a requirement.” O2's premise provenance is retained as
+conditional adopted input; open closure needs alone source no new entry under the rest-on test.
+The earlier pass-2 second-route disagreement, quoted above, remains unresolved and is not adjudicated
+or erased by this pass.
 
 ### Method for population passes
 

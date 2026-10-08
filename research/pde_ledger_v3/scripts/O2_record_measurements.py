@@ -23,6 +23,8 @@ OUTPUT = V3 / 'steps/_measurements/O2_record_measurements.md'
 STREAM = V3 / 'scripts/out/O2_cross_engine_comparator.out'
 REGISTER = 'research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md'
 BASELINE = 'c9db665d'
+REPAIR_BASELINE = '69f0ed3d'
+DECLARED_ROLE_ABSENT = 'no occurrence of this declared role in the other operand'
 
 SOURCES = [
     'directives/O2_steady_brane_balance_scoping.md',
@@ -114,8 +116,13 @@ def lookup(name):
                 dump({'stream_line': number, **fields(obj, (
                     'kind', 'row', 'serialization_differences', 'serialization_scope'))})
                 for action in obj['action_comparison']:
-                    dump({'stream_line': number, 'row': obj['row'], **fields(action, (
-                        'role', 'unpaired_reason', 'differences'))})
+                    projection = {'stream_line': number, 'row': obj['row'], **fields(action, (
+                        'role', 'unpaired_reason', 'differences'))}
+                    if action['unpaired_reason'] == DECLARED_ROLE_ABSENT:
+                        # Retrieve the side and local occurrence collection named by this class.
+                        projection['wl'] = action['wl']
+                        projection['wl_occurrences'] = action['occurrences']['wl']
+                    dump(projection)
             elif obj['kind'] == 'residual':
                 for path, result in comparison_nodes(obj['comparison']):
                     if 'structural_delta' in result:
@@ -177,6 +184,8 @@ def lookup(name):
         counts = {kind: 0 for kind in kinds}
         residual_counts = {token: 0 for token in residual_tokens}
         paired = empty_paired = 0
+        absent_token = '"unpaired_reason":' + json.dumps(DECLARED_ROLE_ABSENT)
+        absent_count = 0
         empty_delta = '{"head":[],"live_arguments":[],"named_OPEN_operands":[],"orientation":[],"role":[]}'
         for _, obj, line in rows():
             for kind in kinds:
@@ -185,6 +194,7 @@ def lookup(name):
                 for token in residual_tokens:
                     residual_counts[token] += line.count(token)
             elif obj['kind'] == 'structure':
+                absent_count += line.count(absent_token)
                 for action in obj['action_comparison']:
                     stored = json.dumps(action, ensure_ascii=False, separators=(',', ':'))
                     # Literal null is the comparator's filed paired-role marker.
@@ -199,12 +209,17 @@ def lookup(name):
               'literal': '"unpaired_reason":null', 'count': paired})
         dump({'stored_object': 'paired structure/action_comparison',
               'literal': '"differences":' + empty_delta, 'count': empty_paired})
+        dump({'stored_object': 'structure/action_comparison',
+              'literal': absent_token, 'count': absent_count})
     elif name == 'register':
         before = subprocess.run(
             ['git', 'show', BASELINE + ':' + REGISTER], cwd=ROOT,
             check=True, text=True, capture_output=True).stdout
+        reviewed = subprocess.run(
+            ['git', 'show', REPAIR_BASELINE + ':' + REGISTER], cwd=ROOT,
+            check=True, text=True, capture_output=True).stdout
         after = (ROOT / REGISTER).read_text()
-        for label, content in ((BASELINE, before), ('working-tree', after)):
+        for label, content in ((BASELINE, before), (REPAIR_BASELINE, reviewed), ('working-tree', after)):
             print('REGISTER ' + label)
             dump({'literal': '### R-', 'count': content.count('### R-')})
             selected = False

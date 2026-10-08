@@ -2,6 +2,10 @@
 
 **Author:** Claude (orchestrator), 2026-10-08. **Status:** folded once after one Codex + Grok pass (`CLAUDE.md` G2;
 both NEEDS REVISION; dispositions in `directives/_measurements/S9b_repair_dl_review_disposition.md`).
+**Amendment 1** (2026-10-08) rewrites D2's P5 and P6 rows, D3's live symbols and D4 in place, after spec v10 review
+round 1 (`af1674e5`; dispositions in `directives/_measurements/S9b_spec_v10_r1_review_disposition.md`). The user
+re-selected P5 and P6 the same day. The amendment had its own single Codex + Grok pass (both NEEDS REVISION) and was folded once (dispositions in
+`directives/_measurements/S9b_repair_dl_amend1_review_disposition.md`).
 
 This list sets what the next S9b spec version (v10) must contain, and routes the build findings still owed. It names
 objects and sources. It states no expected value, sign or relation between symbols.
@@ -24,8 +28,8 @@ Every result that depends on one is flagged with it.
 
 | Premise | Content | Qualification carried with it |
 |---|---|---|
-| **P5** (2026-10-07) | The brane's momentum density is `ρ_br V`. | If the stressed brane material carried additional momentum from its stress, P5 would change. Whether that enters at a retained grade is OPEN; S8 owns it. |
-| **P6** (2026-10-08) | In steady flow the brane's in-plane stress is an isotropic pressure `p_br(ρ_br)` that depends on `ρ_br` only, because shear relaxes under steady load (P1). `p_br` stays a general function. Its compressional speed `c_comp`, with `c_comp² = dp_br/dρ_br`, is live wherever `ρ_br` varies. In the optical regime, light still sees the elastic transverse stiffness `μ_⊥`. | Scoped to Part D. It supplies the steady in-plane part of O2's stress `𝒯_br^live` only. |
+| **P5** (2026-10-07; carriage 2026-10-08) | The brane's in-plane momentum density is `ρ_br V`, and that momentum is carried with the brane material at `V`. Its contribution to the in-plane momentum current is `ρ_br V^i V^j`. | Scoped to Part D. Any other in-plane momentum current stays OPEN. It is counted beside the supplied current and P6's stress, which it does not contain again. Part D states what the OPEN pieces must supply. If the stressed brane material carried additional momentum from its stress, P5 would change. Whether that enters at a retained grade is OPEN; S8 owns it. |
+| **P6** (2026-10-08, revised the same day) | In steady flow the brane's in-plane stress is an isotropic pressure plus a linear viscous stress: `T^{ij} = −p_br(ρ_br) δ^{ij} + η (∂^iV^j + ∂^jV^i − (2/3) δ^{ij} ∂_kV^k) + ζ δ^{ij} ∂_kV^k`, in the Cauchy convention (traction `T^{ij} n_j`; force density `∂_j T^{ij}`). `p_br` is a general function of `ρ_br` only. Its compressional speed `c_comp`, with `c_comp² = dp_br/dρ_br`, is live wherever `ρ_br` varies. The shear viscosity `η` and bulk viscosity `ζ` are live general profiles. In the optical regime, light still sees the elastic transverse stiffness `μ_⊥`. | Scoped to Part D. It supplies the steady in-plane part of O2's stress `𝒯_br^live` only. It is an adopted steady form, not a consequence of P1: P1's relaxation response stays OPEN outside it. The linear viscous form excludes power-law creep. The power this stress dissipates is not identified with any O2 energy operand. It stays in the OPEN energy accounting, with its physical supplier and budget OPEN. The first 2026-10-08 row (pressure only, justified by relaxation under steady load) is withdrawn: steady flow keeps straining, so relaxation does not remove the viscous stress (spec v10 review C2). |
 | **Density link** (2026-10-06) | v8's `c_γ² = μ_⊥/ρ_br` is kept, with `μ_⊥ ∝ ρ_br^α` and `α` one live symbol. This is the user's selected live exponent. | Scoped to Part D. There it supplies `μ_⊥` as a function of `ρ_br` alone. Its other O1 `ℳ_⊥` dependences are set aside by this premise, and results are flagged. Parts A–C keep `μ_⊥(x)` and `ρ_br(x)` independent, as in v8. |
 | **w-parity** (2026-10-07) | For an electrically neutral mass, the far field is symmetric under `w → −w`. So `ξ_w` and the material `w`-velocity vanish there. | This is a **labelled neutral-sector restriction**. Parts A–C keep `ξ_w` live as in v8, which covers the charged case. Part D is stated for the neutral sector, and prints the label. |
 
@@ -39,23 +43,27 @@ Every result that depends on one is flagged with it.
 **The deliverable.** Part D re-expresses the Part B conditions with that balance in force. It prints:
 - which of `δ`, `V`, `ρ_br` and `j_n` it determines relative to `GM`;
 - which of them stay free;
-- for each condition, the `j_n` it implies.
+- for each condition, the `j_n` it implies;
+- for each condition, what the OPEN pieces left in the in-plane balance must supply, each with its general live
+  dependence.
 
 **What must be true:**
 - **Supplied pieces.** The spec supplies O2's balance pieces and the premises as equations, from the O2 sources. It
   does not compose them in advance; the engines compose them.
 - **OPEN operands.** Every O2 OPEN operand that P3–P6 and w-parity do not supply stays a general live unknown, not
   an engine-chosen family (v9 review). This includes its admissible gradient and history dependence (O2 record §8).
-- **Live symbols.** `j_n`, `p_br(ρ_br)` (and with it `c_comp`), `α` and the asymptotic `ρ_br⁰` stay live. No order or
-  value is assigned to `c₀/c_comp`.
+- **Live symbols.** `j_n`, `p_br(ρ_br)` (and with it `c_comp`), `η`, `ζ`, `α` and the asymptotic `ρ_br⁰` stay live.
+  No order or value is assigned to `c₀/c_comp`, `η` or `ζ`.
 - **Bulk-density route.** v8's Part C is unchanged.
 
 ## D4. Induced metric and order
 - **v8's sentence.** v8 says the induced-metric mass balance differs from the flat form by "a relative `O(ε)`
-  correction to the implied `j_n`". That holds only if `∂_r[(∂ξ_w)²] = O(ε/r)` (v9 review, Grok).
-- **One rule for v10.** The supplied mass balance is on the coordinate `d³x` measure (O2 record §8). Any reading on
-  the induced measure carries the scale `∂_r[(∂ξ_w)²]` live, or states the condition above. No order is attached
-  without one or the other.
+  correction to the implied `j_n`". No source supplies that order. The gradient-scale condition
+  `∂_r[(∂ξ_w)²] = O(ε/r)` (v9 review, Grok) does not supply it either (spec v10 review C4).
+- **One rule for v10.** The supplied mass balance is on the coordinate `d³x` measure (O2 record §8). An induced-measure
+  claim names which reading it uses: the same densities re-expressed per induced volume, or a mass law imposed on the
+  induced measure. Such a claim keeps `∂_r[(∂ξ_w)²]` live. It attaches no relative order to the correction to `j_n`
+  unless it states a condition that bounds that correction relative to `j_n` itself.
 - **Neutral Part D.** With `ξ_w = 0` (w-parity), the supplied `g_ij` reduces to `δ_ij`, and the engines print that
   reduction. This limits the claim; it adds no term.
 
@@ -103,6 +111,7 @@ repair build directive, which gets its own G2 pass, and the build legs verify th
 4. **Afterwards.** Build legs review until clear, with a FORM ablation each. Then the comparator, then the record.
 
 ## Not decided here
-- Any expected value, sign or limit. This includes the relation of `c_comp` to `c₀`, and of `j_n` to zero.
+- Any expected value, sign or limit. This includes the relation of `c_comp` to `c₀`, of `j_n` to zero, and the size
+  or sign of `η` and `ζ`.
 - The laws for S8 inertia and stress, and O1/O3–O7. The exception is Part D, where P5, P6 and the density link
   supply content as scoped above.

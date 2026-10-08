@@ -329,6 +329,12 @@ NAME_TABLE = tuple(NameRow(*r) for r in [
      '§6 unresolved overlaps among material, boundary, conversion and supply energy occurrences',162,289),
     ('S12_reaction_system','OPENReactionSystem','§3.3,5 S12 additional momentum reaction system',160,209),
     ('face_support_partition','UnresolvedSupportPartition','§3.3 unresolved partition of complete face/support loading',163,177),
+    ('outward_native_relative_mass_current','NativeRelativeMassCurrent',
+     '§5 outward native relative exchanged mass current',251,204,'label'),
+    ('premise_3_local_material_velocity_at_each_transfer','Premise3LocalMaterialVelocity',
+     '§2 premise 3, §5 local material velocity at each native transfer',252,204,'label'),
+    ('normal_equation_identity_and_count_unsettled','Unsettled',
+     '§3.2 O4 equation identity and count remain unsettled',396,340,'label'),
 ])
 
 
@@ -404,7 +410,8 @@ JOIN_TABLE = [
     J('energy_power','ENERGY_POWER','B_E_STEADY/PowerOccurrence',298,288,'§6'),
     J('energy_balance','ENERGY_STEADY','B_E_STEADY/Object',307,300,'§6'),
     J('optical_inputs','COUPLED_INPUTS/optical','COUPLED_INPUTS_MODEL_POINT/OpticalIdentifications',310,34,'§3.1'),
-    J('coupled_embedding','COUPLED_INPUTS/embedding','B_HOLD_LIVE/O4Identity',395,239,'§3.2'),
+    J('coupled_embedding_operand','COUPLED_INPUTS/embedding/0','B_HOLD_LIVE/O4Identity/@1',395,239,'§3.2 O4 operand'),
+    J('coupled_embedding_count','COUPLED_INPUTS/embedding/2','COUPLED_INPUTS_MODEL_POINT/O4EquationIdentityCount',396,340,'§3.2 unsettled equation identity/count'),
     J('missing_grades','COUPLED_INPUTS/unknown_grades_and_derivative_scales','COUPLED_INPUTS_MODEL_POINT/MissingGradesScales',312,324,'§7'),
     J('supplier','COUPLED_INPUTS/supplier_obligation/0','B_E_STEADY/Supplier',402,309,'§6'),
     J('supply_budget','COUPLED_INPUTS/supplier_obligation/1','B_E_STEADY/Budget',402,309,'§6'),
@@ -978,27 +985,96 @@ def feature_tree(n,bindings,engine,scope=None):
     return Node(h,args,n.value)
 
 
-OBJECT_FIELDS = frozenset(('named_OPEN_operands','live_arguments','binders'))
+OPEN_SCOPE = {
+    'compared_inventories':['role_or_head_and_orientation','named_OPEN_operands_including_labels',
+                           'live_profiles_and_derivatives_at_arguments'],
+    'empty_difference_means':'only these inventories match',
+    'not_compared':['where an object sits among OPEN arguments','how many times an object occurs',
+                    'argument content outside these inventories, including profile-free velocity or metric algebra'],
+    'occurrence_indices':'local engine enumeration only; no cross-engine argument or occurrence slot pairing',
+    'leaf_policy':'parsed terminal nodes and constructor options; consumed leaves construct a role/head, named operand/label, or complete live-object key; options, binder declarations outside a live key, provenance and other syntax are outside; no leaf is counted twice',
+    'raw_syntax_policy':'raw trees, censuses and serialization hashes are diagnostics, not additional OPEN comparisons',
+}
+
+OBJECT_FIELDS = frozenset(('head','role','orientation','named_OPEN_operands','live_arguments'))
 
 
-def features(n,bindings,engine):
-    """Inventories of objects, not counts of engine-specific syntax nodes."""
-    mapped = bindings.apply(n,engine)
-    names,live,binders = Counter(),Counter(),Counter()
-    def visit(v,head=False):
-        if v.head=='Name' and not head and bindings.kinds.get(v.value) not in ('coordinate','parameter','profile','binder'):
-            names[v.value] = 1
-        if v.head in ('LiveProfile','ProfileDerivative'):
-            live[object_key(v)] = 1
-        if v.head in ('ProfileDerivative','Derivative','Subs','Lambda','FirstVariation','HeldDerivative'):
-            binders[object_key(v)] = 1
-        for i,x in enumerate(v.args):
-            visit(x,head=v.head=='Apply' and i==0)
-    visit(feature_tree(n,bindings,engine))
-    return {'head':Counter({json.dumps([mapped.head,mapped.value,
-                data(mapped.args[0]) if mapped.head=='Apply' else None],separators=(',',':')):1}),
-            'named_OPEN_operands':names,'live_arguments':live,'binders':binders,
-            'argument_trees':Counter({fingerprint(mapped):1})}
+def inventory_details(n,bindings,engine):
+    """Inventory keys plus a disjoint census on the *raw* occurrence.
+
+    Count repetitions before arithmetic canonicalization, so F(x)+F(x) has
+    two occurrences even if another spelling is 2 F(x). Counts diagnose the
+    declared limit; they never participate in the cross-engine difference.
+    WL OPEN provenance is metadata (audit 21-23), not a named argument label.
+    """
+    names,live_counts=Counter(),Counter()
+    def members(v):
+        return v.args if v.head=='Sequence' else (v,)
+    def profile(v):
+        return (v.head=='Apply' and v.args[0].head in ('Symbol','FunctionName') and
+                bindings.kinds.get(bindings.name(v.args[0].value,engine))=='profile')
+    def candidate(v):
+        if profile(v):
+            return True
+        if v.head=='Derivative':
+            return bool(v.args) and profile(v.args[0])
+        if v.head=='Subs':
+            return bool(v.args) and candidate(v.args[0])
+        return (v.head=='Apply' and v.args[0].head in ('Prime','Apply'))
+    def visit(v,scope,root=False,head=False):
+        if candidate(v):
+            canonical=feature_tree(v,bindings,engine,scope)
+            if canonical.head in ('LiveProfile','ProfileDerivative'):
+                live_counts[object_key(canonical)] += 1
+                # Nested live arguments also belong to the inventory. Do not
+                # invent a second occurrence F(dummy) below a derivative key.
+                arguments=(members(v.args[2]) if v.head=='Subs' else
+                           v.args[0].args[1:] if v.head=='Derivative' else v.args[1:])
+                for x in arguments:
+                    visit(x,scope)
+                return algebra_leaves(v)
+        if v.head in ('Symbol','FunctionName','Dummy','Text'):
+            key=bindings.name(v.value,engine)
+            if v.value not in scope and (not head or bindings.kinds.get(key) in ('operand','label')):
+                if v.head=='Text' or bindings.kinds.get(key) not in ('coordinate','parameter','profile','binder'):
+                    names[key] = 1
+                    return 1
+            return 0
+        if v.head=='Lambda' or (v.head=='Apply' and v.args[0]==atom('Symbol','Function') and len(v.args)==3):
+            variables,body=v.args if v.head=='Lambda' else v.args[1:]
+            local=dict(scope)
+            for i,x in enumerate(members(variables)):
+                local[x.value]=atom('Bound',f'{len(scope)}:{i}')
+            return visit(body,local)
+        if v.head=='Subs' and len(v.args)==3:
+            local=dict(scope)
+            for i,x in enumerate(members(v.args[1])):
+                local[x.value]=atom('Bound',f'{len(scope)}:{i}')
+            return visit(v.args[0],local)+sum(visit(x,scope) for x in members(v.args[2]))
+        if v.head=='Apply':
+            key=action_key(v,engine)
+            start=2 if engine=='wl' and v.args[0]==atom('Symbol','OpenAction') else 1
+            if key is not None:
+                own_head=sum(algebra_leaves(x) for x in v.args[:start]) if root else 0
+                if root and key.startswith('native:'):
+                    # OpenNativeField[OPEN[name, provenance]]: only these
+                    # three name leaves identify the role, not its provenance.
+                    native_head=v.args[0]
+                    descriptor=native_head.args[1]
+                    own_head=sum(algebra_leaves(x) for x in
+                                 (native_head.args[0],descriptor.args[0],descriptor.args[1]))
+                return own_head+sum(visit(x,scope) for x in v.args[start:])
+            if engine=='wl' and v.args[0]==atom('Symbol','OPEN'):
+                return visit(v.args[1],scope) if len(v.args)>1 else 0
+            return sum(visit(x,scope,head=i==0) for i,x in enumerate(v.args))
+        return sum(visit(x,scope) for x in v.args)
+    consumed=visit(n,{},root=True)
+    parsed=parsed_leaves(n)
+    fields={'named_OPEN_operands':names,'live_arguments':Counter({k:1 for k in live_counts})}
+    limit={'repeated_live_objects':{k:v for k,v in live_counts.items() if v>1},
+           'parsed_leaves':parsed,'inventory_consumed_leaves':consumed,
+           'outside_inventory_leaves':parsed-consumed}
+    return fields,limit
 
 
 def merge_fields(current,fields):
@@ -1017,23 +1093,27 @@ def field_deltas(left,right):
 
 def action_comparison(a,b,bindings,actions):
     maps = role_maps(actions)
-    grouped = {}
+    grouped,occurrences = {},{}
     for engine,node in (('py',a),('wl',b)):
-        group = {}
+        group,local_occurrences = {},{}
         for original,_,sign,dependency in action_occurrences(node,include_structural=True):
             key = action_key(original,engine)
             role = maps[engine].get(key,engine+'::'+key)
-            fields = features(original,bindings,engine)
-            fields['head'] = Counter({key:1})
+            fields,limit = inventory_details(original,bindings,engine)
+            fields['head'] = Counter({role:1})
             fields['orientation'] = Counter({('argument' if dependency else str(sign)):1})
             fields['role'] = Counter({role:1})
+            local_occurrences.setdefault(role,[]).append({'local_occurrence':len(local_occurrences.get(role,[])),
+                                                         'inventories':fields,'limit':limit})
             current = group.setdefault(role,{})
             merge_fields(current,fields)
         grouped[engine] = group
+        occurrences[engine] = local_occurrences
     result=[]
     for role in sorted(grouped['py'].keys() | grouped['wl'].keys()):
         left,right = grouped['py'].get(role,{}),grouped['wl'].get(role,{})
         result.append({'role':role,'py':left,'wl':right,
+                       'occurrences':{e:occurrences[e].get(role,[]) for e in ('py','wl')},
                        'unpaired_reason':None if left and right else
                            ('no cross-engine role binding; representation-specific action' if '::' in role else
                             'no occurrence of this declared role in the other operand'),
@@ -1102,11 +1182,12 @@ def balance_comparison(a,b,bindings,actions):
                     return [maps[engine].get(key,engine+'::'+key)]
                 return [r for child in v.args for r in roles(child)]
             role=json.dumps(sorted(roles(term))) if is_open else 'OPEN_free'
-            fields=features(term,bindings,engine)
+            fields,limit=inventory_details(term,bindings,engine)
+            fields['head']=Counter({role:1})
             fields['orientation']=Counter({str(term_orientation(term)):1})
             fields['role']=Counter({role:1})
             entries.append({'role':role,'orientation':term_orientation(term),
-                            'open_free':not is_open,'operand':data(mapped)})
+                            'open_free':not is_open,'operand':data(mapped),'inventories':fields,'limit':limit})
             current=group.setdefault(role,{})
             merge_fields(current,fields)
         sides[engine]=entries
@@ -1144,6 +1225,7 @@ def compare(a,b,bindings):
     result,counts = _compare(a,b,bindings)
     if result['outcome'] == 'not_formed':
         result['structural_delta'] = list(differences(bindings.apply(a,'py'),bindings.apply(b,'wl')))
+        result['structural_delta_scope'] = 'serialization diagnostic only; no semantic OPEN argument comparison'
     return result,counts
 
 
@@ -1237,6 +1319,7 @@ UNJOINED_REASONS = {
         'FACE_POWER_PAIRING/native_area':'Additional PY native-area occurrence; WL keeps native measure within work-reduction applications, with no additional separate area object (§5,6).',
         'COUPLED_INPUTS/live_density_name':'PY density-name collision explanation; WL has no equivalent collision-audit object.',
         'COUPLED_INPUTS/native_reduction':'PY standalone no-sheet/slab-choice declaration; WL encodes the reduction as an OPEN application without a separate declaration (§5).',
+        'COUPLED_INPUTS/embedding/1':'Repeated PY graph identity (§3.1, audit 395); WL emits one graph identity at BASIS_MEASURES_GEOMETRY/FieldIdentity (audit 117), already paired with GEOMETRY/identity. No additional same-role occurrence remains.',
         'MODEL_POINT/premise_status':'PY separately repeats the adopted-premise label/date; WL includes its date only inside the joined Premises object (§2).',
         'COUPLED_INPUTS/operands/24':'PY separately registers the S12 reaction system; WL carries it within additional momentum-partner actions, with no second register occurrence (§5).',
         'COUPLED_INPUTS/operands/25':'PY separately registers S12 energy reaction/supply; WL has no separately named energy-reaction/supply operand (§6).',
@@ -1253,6 +1336,8 @@ UNJOINED_REASONS = {
         'EXCHANGE_MOMENTUM/Orientation':'WL separately declares outward loss; PY carries it in the joined carried action/trace, no standalone declaration (§5).',
         'DRIVE_PROVENANCE/GMInterface':'WL separately emits S16 matching dependency; PY includes it only in the joined interface list (§10).',
         'B_HOLD_LIVE/Status':'WL separately labels its named balance; PY has no separate conditional-balance label object (§9).',
+        'B_HOLD_LIVE/O4Identity/@0':'WL unresolved-identification constructor (§3.2, audit 239); PY emits an O4 operand and count label, now separately joined, but no constructor relating that operand to a hold vector.',
+        'B_HOLD_LIVE/O4Identity/@2':'Additional WL full hold-vector occurrence inside the O4 identification (§3.2, audit 239); PY emits assembled hold components already joined on hold_inplane/hold_bulk, with no additional hold-vector occurrence in its coupled-input tuple.',
         'MASS_INPUT/VelocityOperand':'WL separately repeats the in-plane mass velocity; PY emits it only as part of mass current and graph velocity (§3.1).',
         'MASS_INPUT/RHS':'Mass-law right-hand side, not outward loss: PY has no separately emitted same-role RHS occurrence outside the already joined mass equation (§3.1,5; PY audit 266,378; WL audit 244,247).',
         'MASS_INPUT/Qualification':'WL separately declares the mass-law qualification; PY includes it in the joined model restriction inventory (§7).',
@@ -1262,7 +1347,6 @@ UNJOINED_REASONS = {
         'COUPLED_INPUTS_MODEL_POINT/Counting/Truncation':'WL explicitly emits a no-truncation token; PY includes its declaration in the joined restriction inventory (§7).',
         'COUPLED_INPUTS_MODEL_POINT/TransferLimits':'Additional structured WL transfer-limit list; PY has one combined restriction list, already joined, with no second transfer-limit object (§7).',
         'COUPLED_INPUTS_MODEL_POINT/HistoricalDomains':'Additional structured WL historical-domain record; PY carries its historical declarations in the joined restriction list, with no second domain record (§8).',
-        'COUPLED_INPUTS_MODEL_POINT/O4EquationIdentityCount':'Additional WL unsettled-count token; PY carries it within the joined coupled-embedding object, with no separate count token (§3.2).',
         'COUPLED_INPUTS_MODEL_POINT/RelaxationOwner':'Additional WL unassigned-owner token; PY carries ownership within the joined interface list, with no separate owner token (§10).',
     },
 }
@@ -1298,6 +1382,7 @@ def run(py_path,wl_path,output,accounting,joins=JOIN_TABLE,names=NAME_TABLE,
     validate_secondary(actions,balances)
     bindings = Bindings(names)
     py,wl = read_stream(py_path,'py'),read_stream(wl_path,'wl')
+    emit(output,{'kind':'comparison_scope','OPEN_limit':OPEN_SCOPE})
     partition = {'py':Counter(),'wl':Counter()}
     compared = {'py':Counter(),'wl':Counter()}
     for row in joins:
@@ -1314,7 +1399,8 @@ def run(py_path,wl_path,output,accounting,joins=JOIN_TABLE,names=NAME_TABLE,
             aa,bb = bindings.apply(a,'py'),bindings.apply(b,'wl')
             emit(output,{'kind':'structure','row':row.label,'py':structure(aa),'wl':structure(bb),
                          'mapped_py':data(aa),'mapped_wl':data(bb),
-                         'differences':list(differences(aa,bb)),
+                         'serialization_differences':list(differences(aa,bb)),
+                         'serialization_scope':OPEN_SCOPE['raw_syntax_policy'],
                          'action_comparison':action_comparison(a,b,bindings,actions)})
             if row.layout == 'transpose' and a.head == 'Matrix':
                 a = seq(*(seq(*(r.args[i] for r in a.args)) for i in range(len(a.args[0].args))))
@@ -1361,7 +1447,7 @@ def catalog(path,joins=JOIN_TABLE,names=NAME_TABLE,actions=ACTION_TABLE,balances
     with Path(path).open('w') as out:
         emit(out,{'path_convention':'zero-based sequence indices; record keys; @n constructor argument (@0 applied head); tag first',
                   'leaf_convention':'terminal parsed IR nodes plus constructor options; empty container one',
-                  'feature_convention':'named_OPEN_operands, live_arguments and binders are sets of canonical objects (1=present); raw serialization counts/trees are separate; argument order retained within each live object; unknown heads stay engine-qualified',
+                  'feature_convention':OPEN_SCOPE,
                   'joins':[dict(label=r.label,py=r.py,wl=r.wl,spec=r.spec,layout=r.layout,
                                 py_citation=f'{PY_SOURCE}:{r.py_line}',wl_citation=f'{WL_SOURCE}:{r.wl_line}')
                            for r in joins],

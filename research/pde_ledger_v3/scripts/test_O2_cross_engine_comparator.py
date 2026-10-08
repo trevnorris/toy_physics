@@ -129,8 +129,11 @@ class Controls(unittest.TestCase):
                      'Function[{s},OpenAction[Role,s]]','Function[{t},OpenAction[Role,s]]')
 
     def test_nested_sibling_removed(self):
-        self.changes('Tuple(Tuple(Str("a"), Integer(2)), Tuple(Str("b"), Integer(3)))',
+        _,after=self.changes('Tuple(Tuple(Str("a"), Integer(2)), Tuple(Str("b"), Integer(3)))',
                      '<|"a" -> 2,"b" -> 3|>','<|"a" -> 2|>')
+        self.assertEqual(after[0][0]['children']['b']['outcome'],'not_formed')
+        self.assertTrue(after[0][0]['children']['b']['py_present'])
+        self.assertFalse(after[0][0]['children']['b']['wl_present'])
 
     def test_moved_tag_and_key_stays_joined(self):
         before = self.fixture('Integer(13)','13')
@@ -139,6 +142,11 @@ class Controls(unittest.TestCase):
         self.assertEqual(after[2][0]['accounting'],'joined')
         self.assertFalse(any(r.get('accounting')=='unjoined' for r in after[2]))
         self.assertEqual(products(before[0]),products(after[0]))
+        # A different representation head is still the declared object row.
+        changed=self.fixture('Integer(13)','OtherHead[13]',wl_tag='RENAMED_CONTAINER',key='relocated')
+        self.assertEqual(changed[2][0]['accounting'],'joined')
+        self.assertFalse(any(r.get('accounting')=='unjoined' for r in changed[2]))
+        self.assertEqual(changed[0][0]['outcome'],'not_formed')
 
     def test_duplicate_join_rejected(self):
         r = c.J('a','L','R/k',1,1,'fixture')
@@ -441,7 +449,7 @@ class Controls(unittest.TestCase):
             ('named_OPEN_operands',wl.replace('IBrLive','NBrLive')),
             ('live_arguments',wl.replace('VR[x1]','VR[x2]')),
             ('orientation','-('+wl+')'),
-            ('argument_trees',wl.replace('VR[x1]','Wrapper[VR[x1]]'))):
+            ('live_arguments',wl.replace('VR[x1]','VR[Wrapper[x1]]'))):
             with self.subTest(field=field):
                 self.assertNotEqual(self.action_deltas(base,field),
                                     self.action_deltas(self.fixture(py,mutation),field))
@@ -458,7 +466,7 @@ class Controls(unittest.TestCase):
             ('named_OPEN_operands',wl.replace('IBrLive','NBrLive')),
             ('live_arguments',wl.replace('VR[x1]','VR[x2]')),
             ('orientation','-('+wl+')'),
-            ('argument_trees',wl.replace('VR[x1]','Wrapper[VR[x1]]'))):
+            ('live_arguments',wl.replace('VR[x1]','VR[Wrapper[x1]]'))):
             with self.subTest(field=field):
                 self.assertNotEqual(delta(wl,field),delta(changed,field))
 
@@ -532,7 +540,7 @@ class Controls(unittest.TestCase):
 
     def object_deltas(self,result):
         return {field:self.action_deltas(result,field)['OPEN_MomentumDensity_0']
-                for field in ('live_arguments','binders','named_OPEN_operands')}
+                for field in ('live_arguments','named_OPEN_operands')}
 
     def test_identical_open_objects_have_empty_deltas(self):
         radius='Pow(Add(Pow(Symbol("x1"),Integer(2)),Pow(Symbol("x2"),Integer(2))),Rational(1,2))'
@@ -558,7 +566,7 @@ class Controls(unittest.TestCase):
                     self.assertFalse(delta,field)
                 comparison=self.balance_products(result)[0]
                 for fields in comparison['entry_differences'].values():
-                    for field in ('live_arguments','binders','named_OPEN_operands'):
+                    for field in ('live_arguments','named_OPEN_operands'):
                         self.assertFalse(fields[field],field)
 
     def test_profile_derivative_is_one_object_key(self):
@@ -566,7 +574,7 @@ class Controls(unittest.TestCase):
             'Tuple(Dummy("z")),Tuple(Symbol("x1")))')
         result=self.open_pair(py,'Derivative[1][VR][x1]')
         action=next(r for r in result[1] if r['kind']=='structure')['action_comparison'][0]
-        for field in ('live_arguments','binders'):
+        for field in ('live_arguments',):
             self.assertEqual(action['py'][field],action['wl'][field])
             self.assertEqual(len(action['py'][field]),1)
         self.assertEqual(action['py']['named_OPEN_operands'],action['wl']['named_OPEN_operands'])
@@ -590,11 +598,11 @@ class Controls(unittest.TestCase):
             (derivative(),'Derivative[1][VR][x1]',
              (derivative(point=sy('x2')),derivative(name='j_n'),derivative(order='2'),'Integer(11)'),
              ('Derivative[1][VR][x2]','Derivative[1][Jn][x1]','Derivative[2][VR][x1]','11'),
-             ('live_arguments','binders')),
+             ('live_arguments',)),
             ('Derivative(Function("V_r")(Symbol("x1"),Symbol("x2")),Tuple(Symbol("x1"),Integer(1)))',
              'Derivative[1,0][VR][x1,x2]',
              ('Derivative(Function("V_r")(Symbol("x2"),Symbol("x1")),Tuple(Symbol("x2"),Integer(1)))',),
-             ('Derivative[1,0][VR][x2,x1]',),('live_arguments','binders')),
+             ('Derivative[1,0][VR][x2,x1]',),('live_arguments',)),
         )
         for py,wl,py_mutations,wl_mutations,fields in fixtures:
             baseline=self.object_deltas(self.open_pair(py,wl))
@@ -618,7 +626,6 @@ class Controls(unittest.TestCase):
         for left,right in ((py.replace('Dummy("q"),Symbol','Symbol("x2"),Symbol'),wl),
                            (py,wl.replace('VR[local','VR[x2'))):
             delta=self.object_deltas(self.open_pair(left,right))
-            self.assertTrue(delta['binders'])
             self.assertTrue(delta['live_arguments'])
             self.assertFalse(delta['named_OPEN_operands'])
 
@@ -668,6 +675,184 @@ class Controls(unittest.TestCase):
                     else:
                         right[term]='-('+right[term]+')'
                     self.assertNotEqual(base,closed(left,right))
+
+    def test_operands_precede_residual(self):
+        result=self.fixture('Add(Symbol("x1"),Integer(2))','x1+3')
+        records=result[1]
+        operand=next(i for i,r in enumerate(records) if r['kind']=='operands')
+        residual=next(i for i,r in enumerate(records) if r['kind']=='residual')
+        self.assertLess(operand,residual)
+        self.assertIsNotNone(records[operand]['py'])
+        self.assertIsNotNone(records[operand]['wl'])
+
+    def test_each_join_binding_repoint(self):
+        def wrap(path,leaf,engine):
+            for part in reversed(path[1:]):
+                if part.startswith('@'):
+                    index=int(part[1:])
+                    if engine=='py':
+                        leaf='Add('+','.join(['Integer(0)']*index+[leaf])+',evaluate=False)'
+                    elif index:
+                        leaf='Wrapper['+','.join(['0']*(index-1)+[leaf])+']'
+                    else:
+                        leaf='('+leaf+')[0]'
+                elif part.isdigit():
+                    index=int(part)
+                    leaf=('Tuple('+','.join(['Integer(0)']*index+[leaf])+')' if engine=='py'
+                          else '{'+','.join(['0']*index+[leaf])+'}')
+                else:
+                    leaf=('Tuple(Tuple(Str('+repr(part)+'),'+leaf+'))' if engine=='py'
+                          else '<|'+json.dumps(part)+'->'+leaf+'|>')
+            return ('PY_O2_' if engine=='py' else 'WL_O2_')+path[0]+': '+leaf+'\n'
+        for row in c.JOIN_TABLE:
+            with self.subTest(row=row.label):
+                other=next(r for r in c.JOIN_TABLE if r.wl[0]!=row.wl[0])
+                py=wrap(row.py,'Integer(7)','py')
+                wl=wrap(row.wl,'7','wl')+wrap(other.wl,'x1+3','wl')
+                base=self.streams(py,wl,(row,),balances=())
+                changed=self.streams(py,wl,(replace(row,wl=other.wl),),balances=())
+                self.assertEqual(base[2][0]['accounting'],'joined')
+                self.assertEqual(changed[2][0]['accounting'],'joined')
+                self.assertNotEqual(products(base[0]),products(changed[0]))
+
+    def test_computed_and_open_same_role(self):
+        result=self.fixture('Pow(Symbol("x1"),Integer(2))',
+                            'OpenAction[MomentumDensity[1],{IBrLive},VR[x1]]')
+        self.assertEqual(result[2][0]['accounting'],'joined')
+        self.assertEqual(result[0][0]['outcome'],'not_formed')
+        self.assertNotIn('residual',result[0][0])
+        self.assertTrue(any(self.action_deltas(result,'live_arguments').values()))
+
+    def test_unbound_open_name_is_in_difference(self):
+        result=self.open_pair(sy('UnregisteredOperand'), 'UnregisteredOperand')
+        delta=self.object_deltas(result)['named_OPEN_operands']
+        self.assertTrue(any(key=='py::UnregisteredOperand' for key,count in delta))
+        self.assertTrue(any(key=='wl::UnregisteredOperand' for key,count in delta))
+
+    def inventory_mutation(self,field,py,wl,changed_py,changed_wl):
+        baseline=self.fixture(py,wl)
+        self.assertFalse(any(self.action_deltas(baseline,field).values()))
+        for left,right in ((changed_py,wl),(py,changed_wl)):
+            changed=self.fixture(left,right)
+            self.assertTrue(any(self.action_deltas(changed,field).values()),field)
+
+    def test_contract_changed_open_head(self):
+        py=fn('OPEN_MomentumDensity_0',sy('I_br_live'))
+        wl='OpenAction[MomentumDensity[1],{IBrLive}]'
+        self.inventory_mutation('head',py,wl,py.replace('MomentumDensity','InternalForce'),
+                                wl.replace('MomentumDensity','InternalForce'))
+
+    def test_contract_changed_named_operand(self):
+        py=fn('OPEN_MomentumDensity_0',sy('I_br_live'))
+        wl='OpenAction[MomentumDensity[1],{IBrLive}]'
+        self.inventory_mutation('named_OPEN_operands',py,wl,py.replace('I_br_live','N_br_live'),
+                                wl.replace('IBrLive','NBrLive'))
+
+    def test_contract_changed_label(self):
+        row=next(r for r in c.NAME_TABLE if r.py=='outward_native_relative_mass_current')
+        py=fn('OPEN_CarriedMomentumW','Str('+repr(row.py)+')')
+        wl='OpenAction[OutwardCarriedBulkMomentum,{'+row.wl+'}]'
+        self.inventory_mutation('named_OPEN_operands',py,wl,py.replace(row.py,'changed_label'),
+                                wl.replace(row.wl,'ChangedLabel'))
+        for row in (r for r in c.NAME_TABLE if r.kind=='label'):
+            result=self.open_pair('Str('+repr(row.py)+')',row.wl)
+            self.assertFalse(self.object_deltas(result)['named_OPEN_operands'])
+
+    def test_contract_changed_live_object(self):
+        py=fn('OPEN_MomentumDensity_0',fn('V_r',sy('x1')))
+        wl='OpenAction[MomentumDensity[1],{},VR[x1]]'
+        self.inventory_mutation('live_arguments',py,wl,py.replace('x1','x2'),wl.replace('x1','x2'))
+
+    def test_contract_changed_orientation(self):
+        py=fn('OPEN_MomentumDensity_0',sy('I_br_live'))
+        wl='OpenAction[MomentumDensity[1],{IBrLive}]'
+        self.inventory_mutation('orientation',py,wl,'Mul(Integer(-1),'+py+')','-('+wl+')')
+
+    def test_contract_binder_structure(self):
+        py='Lambda(Tuple(Dummy("q")),Function("V_r")(Dummy("q")))'
+        wl='Function[{local},VR[local]]'
+        baseline=self.open_pair(py,wl)
+        self.assertFalse(self.object_deltas(baseline)['live_arguments'])
+        for left,right in ((py.replace('Tuple(Dummy("q"))','Tuple(Dummy("other"))'),wl),
+                           (py,wl.replace('{local}','{other}'))):
+            self.assertTrue(self.object_deltas(self.open_pair(left,right))['live_arguments'])
+
+    def test_contract_identical_inventories(self):
+        py=fn('V_r','Pow(Symbol("x1"),Rational(1,2))')
+        result=self.open_pair(py,'VR[Sqrt[x1]]',balance=True)
+        for differences in self.action_deltas(result).values():
+            self.assertFalse(any(differences.values()))
+        for differences in self.balance_products(result)[0]['entry_differences'].values():
+            self.assertFalse(any(differences.values()))
+        scope=next(r['OPEN_limit'] for r in result[1] if r['kind']=='comparison_scope')
+        self.assertEqual(len(scope['compared_inventories']),3)
+        self.assertEqual(scope['empty_difference_means'],'only these inventories match')
+        self.assertEqual(len(scope['not_compared']),3)
+
+    def test_wolfram_sqrt_translation(self):
+        py='Pow(Add(Symbol("x1"),Integer(2)),Rational(1,2))'
+        root=self.fixture(py,'Sqrt[x1+2]')[0]
+        power=self.fixture(py,'(x1+2)^(1/2)')[0]
+        self.assertEqual(root[0]['outcome'],'exact')
+        self.assertEqual(power[0]['outcome'],'exact')
+        self.assertEqual(products(root),products(power))
+
+    def occurrence_limit(self,result,engine):
+        records=next(r['action_comparison'] for r in result[1] if r['kind']=='structure')
+        return next(r for r in records if r['role']=='OPEN_MomentumDensity_0')['occurrences'][engine][0]['limit']
+
+    def test_limit_repeated_live_object(self):
+        py='Tuple(Function("V_r")(Symbol("x1")),Function("V_r")(Symbol("x1")))'
+        wl='{VR[x1],VR[x1]}'
+        baseline=self.open_pair(py,wl)
+        for engine in ('py','wl'):
+            limit=self.occurrence_limit(baseline,engine)
+            self.assertEqual(len(limit['repeated_live_objects']),1)
+            self.assertEqual(list(limit['repeated_live_objects'].values()),[2])
+            changed=self.open_pair(py.replace(',Function("V_r")(Symbol("x1"))',',Integer(11)'),wl) if engine=='py' else self.open_pair(py,'{VR[x1],11}')
+            # Inventory deliberately stays unchanged: the printed limit is the
+            # control for the partial freeze, not a whole-tree hash.
+            self.assertFalse(any(self.object_deltas(changed).values()))
+            self.assertFalse(self.occurrence_limit(changed,engine)['repeated_live_objects'])
+
+    def test_limit_outside_leaves(self):
+        py=fn('V_r',sy('x1'))
+        wl='VR[x1]'
+        baseline=self.open_pair(py,wl)
+        for engine in ('py','wl'):
+            changed=(self.open_pair('Tuple('+py+',Pow(Symbol("x2"),Integer(2)))',wl) if engine=='py'
+                     else self.open_pair(py,'{'+wl+',x2^2}'))
+            before=self.occurrence_limit(baseline,engine)
+            after=self.occurrence_limit(changed,engine)
+            self.assertFalse(any(self.object_deltas(changed).values()))
+            self.assertGreater(after['outside_inventory_leaves'],before['outside_inventory_leaves'])
+            self.assertEqual(after['parsed_leaves'],after['inventory_consumed_leaves']+after['outside_inventory_leaves'])
+
+    def test_output_has_no_verdict_tokens(self):
+        import re
+        result=self.open_pair(fn('V_r',sy('x1')),'VR[x1]',balance=True)
+        self.assertFalse(re.search(r'\b(?:PASS|FAIL|AGREE|VERDICT|STATUS)\b',json.dumps(result)))
+
+    def test_o4_components_have_same_role_joins(self):
+        joins=tuple(r for r in c.JOIN_TABLE if r.label.startswith('coupled_embedding'))
+        py=('PY_O2_COUPLED_INPUTS: Tuple(Tuple(Str("embedding"),Tuple(Symbol("E_h_live"),'
+            'Equality(Function("xi_w")(Symbol("x1")),Mul(Symbol("ell"),Function("h")(Symbol("x1")))),'
+            'Str("normal_equation_identity_and_count_unsettled"))))\n')
+        def wl(hold):
+            return ('WL_O2_B_HOLD_LIVE: <|"O4Identity"->UnresolvedIdentification[OPEN[EhLive],'+hold+']|>\n'
+                    'WL_O2_COUPLED_INPUTS_MODEL_POINT: <|"O4EquationIdentityCount"->Unsettled|>\n')
+        base=self.streams(py,wl('OpenAction[MomentumDensity[1],{IBrLive}]'),joins,balances=())
+        changed=self.streams(py,wl('OpenAction[InternalForce[1],{TBrLive}]'),joins,balances=())
+        self.assertEqual({r['row'] for r in base[2] if r.get('accounting')=='joined'},
+                         {'coupled_embedding_operand','coupled_embedding_count'})
+        self.assertEqual(products(base[0]),products(changed[0]))
+        for row in base[1]:
+            if row['kind']=='structure':
+                self.assertFalse(row['action_comparison'])
+        unjoined={tuple(r['path']):r['reason'] for r in base[2] if r.get('accounting')=='unjoined'}
+        self.assertIn(('COUPLED_INPUTS','embedding','1'),unjoined)
+        self.assertIn(('B_HOLD_LIVE','O4Identity','@2'),unjoined)
+        self.assertFalse(any('requires source-level coverage review' in reason for reason in unjoined.values()))
 
 
 if __name__ == '__main__':

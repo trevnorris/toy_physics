@@ -1,5 +1,8 @@
 # S9b v10 — mechanical authoring lookups
 
+The original authoring and repair 1–2 sections preserve historical lookups. Their induced-measure
+claims and requests are superseded by the coordinate-measure-only change documented at the end.
+
 ## Original authoring: preserved baseline `af1674e5`
 
 The following lookups predate amendment 1. The repair 1 lookups below use the amended authority.
@@ -2199,6 +2202,172 @@ Exit code: `0`.
 
 ```bash
 git diff --check -- research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md
+```
+
+```text
+```
+
+Exit code: `0`.
+
+## Coordinate-measure-only scope change (2026-10-08): baseline `f416bb0d`
+
+User decision: S9b computes and claims on the coordinate `d³x` measure only. The current spec
+removes both optional induced-measure readings, their supplied measure/density identifications,
+their output requests, and their gradient/order/bound commentary (baseline L66–90). Repair 2's
+reading-specific treatment of O2-R L478–480 is superseded: the recorded qualification for those
+readings is outside this step's computation and claims. The previous literal lookup blocks remain
+historical evidence, rather than current source claims or engine instructions.
+
+No conflict with the unchanged decision list or sources was found. D4 L63–66 conditions an
+induced-measure claim without requiring one; O2-R L478–480 qualifies claims on those readings.
+D4's neutral-Part-D printed metric reduction remains requested at current spec L397–398.
+The spec diff below is confined to the mass-balance paragraph; all other spec text is unchanged.
+No additional piece was needed. No CAS or physical computation was run.
+
+Commands run from `/var/projects/toy_physics`; literal stdout and exit codes follow.
+
+```bash
+bash -o pipefail -c 'git diff --no-ext-diff f416bb0d -- research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md | cat -E'
+```
+
+```text
+diff --git a/research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md b/research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md$
+index fa57ad80..ae9e7d79 100644$
+--- a/research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md$
++++ b/research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md$
+@@ -63,31 +63,11 @@ Each piece is a supplied identification. Flag any result that depends on one.$
+ $
+   The divergence and both densities are on the coordinate `d³x` measure of the far-field `x^i`$
+   coordinates (O2-R §§2, 8; O2-S §§1, 3.1). `μ_⊥` in the optical ratio is on the same measure as$
+-  `ρ_br`. This input supplies no induced-measure or finite-slab replacement mass law. Every$
+-  induced-measure claim names which of the following readings it uses (D4):$
+-$
+-  - **Density re-expression.** The same mass and normal exchange are re-expressed as densities per$
+-    induced volume. The measure and same-content identifications defining this reading are$
+-$
+-    ```$
+-    dvol_g ≡ √det(g_ij) d³x ,$
+-    ρ_br^(g) dvol_g ≡ ρ_br d³x ,      j_n^(g) dvol_g ≡ j_n d³x .$
+-    ```$
+-$
+-    These are supplied identifications of the reading, using the supplied metric; they do not$
+-    replace the mass law. Print the re-expressed densities and correction objects with their$
+-    orders under the supplied metric and slope counting. No additional independent bound on the$
+-    drain divergence is a premise of this density re-expression. The imposed-law restriction$
+-    below does not apply to this reading.$
+-  - **Imposed mass law.** An independently imposed mass law on the induced measure, without the$
+-    same-content density re-expression above, is a separate physical input; none is supplied here.$
+-    A comparison on this reading names that law and keeps$
+-    `∂_r[(∂ξ_w)²]` live. A relative order for its correction to the implied `j_n` requires a$
+-    condition bounding that correction relative to `j_n` itself. **For this imposed-law reading$
+-    only**, the unqualified recorded relative-order statement in O2-R L478–480 is not carried.$
+-    The supplied slope counting and the historical gradient-scale condition$
+-    `∂_r[(∂ξ_w)²] = O(ε/r)` supply no such uniform drain-relative bound for an imposed-law$
+-    comparison (D4). The historical derivative condition is not imposed here.$
++  `ρ_br`. This input supplies no induced-measure or finite-slab replacement mass law.$
++  S9b computes and claims on the coordinate `d³x` measure only. No induced-measure object,$
++  re-expression or correction is computed or printed. The induced-measure readings and$
++  O2-R L478–480's recorded qualification for those readings are outside this step's$
++  computation and claims (D4).$
+ $
+   `ρ_br(x)` and `j_n(x)` are live radial profiles. `j_n` is the brane's normal exchange with the bulk and is$
+   owned by the gravity sector or S12. S11b's uniform background normal drain `v_dr` is a different object$
+```
+
+Exit code: `0`.
+
+```bash
+bash -o pipefail -c 'git show 79055918:research/pde_ledger_v3/directives/S9b_repair_decision_list.md | nl -ba | sed -n '"'"'59,68p'"'"' | cat -E'
+```
+
+```text
+    59	## D4. Induced metric and order$
+    60	- **v8's sentence.** v8 says the induced-metric mass balance differs from the flat form by "a relative `O(ε)`$
+    61	  correction to the implied `j_n`". No source supplies that order. The gradient-scale condition$
+    62	  `∂_r[(∂ξ_w)²] = O(ε/r)` (v9 review, Grok) does not supply it either (spec v10 review C4).$
+    63	- **One rule for v10.** The supplied mass balance is on the coordinate `d³x` measure (O2 record §8). An induced-measure$
+    64	  claim names which reading it uses: the same densities re-expressed per induced volume, or a mass law imposed on the$
+    65	  induced measure. Such a claim keeps `∂_r[(∂ξ_w)²]` live. It attaches no relative order to the correction to `j_n`$
+    66	  unless it states a condition that bounds that correction relative to `j_n` itself.$
+    67	- **Neutral Part D.** With `ξ_w = 0` (w-parity), the supplied `g_ij` reduces to `δ_ij`, and the engines print that$
+    68	  reduction. This limits the claim; it adds no term.$
+```
+
+Exit code: `0`.
+
+```bash
+bash -o pipefail -c 'git show 72866fcf:research/pde_ledger_v3/steps/O2_steady_brane_balance.md | nl -ba | sed -n '"'"'88,92p;478,484p'"'"' | cat -E'
+```
+
+```text
+    88	Every density in this object is per coordinate `d³x`, including mass/source, material momentum,$
+    89	exchange, loads, energy and power; optical `μ_⊥` uses the same measure as `ρ_br`. Induced metric and$
+    90	native area factors remain explicit. The supplied geometric/optical/mass inputs are$
+    91	`g_ij=δ_ij+∂_iξ_w∂_jξ_w`, its inverse, `ξ_w=ℓh`,$
+    92	`c_γ²≡μ_⊥/ρ_br`, `c_γ=c₀(1+δ)` and `∇·(ρ_br V)=−j_n`.$
+   478	The mass-law qualification travels explicitly: `∇·(ρ_br V)=−j_n` is a **coordinate-`d³x` measure**$
+   479	input. For a claim reading `j_n` or `ρ_br` per induced measure, or comparing an induced-metric mass$
+   480	law, the recorded qualification is a **relative `O(ε)` correction to `j_n`**, not a live O6 law;$
+   481	O2 supplies and derives **no induced-metric mass balance** (spec L330–336). Fixed-`ℓ` counting,$
+   482	independent orbital `GM`, only the stiffness/density ratio inheriting the speed-change grade, and$
+   483	first order in `f` with no `f`–`ε` relation also travel unchanged. Historical static/homogeneous,$
+   484	frozen/uniform or supplied-profile relations retain exactly §2's restricted domains.$
+```
+
+Exit code: `0`.
+
+```bash
+bash -o pipefail -c 'nl -ba research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md | sed -n '"'"'58,78p;397,403p'"'"' | cat -E'
+```
+
+```text
+    58	- **Steady brane mass balance.** The supplied balance is$
+    59	$
+    60	  ```$
+    61	  ∇·(ρ_br(x)V(x)) = −j_n(x) .$
+    62	  ```$
+    63	$
+    64	  The divergence and both densities are on the coordinate `d³x` measure of the far-field `x^i`$
+    65	  coordinates (O2-R §§2, 8; O2-S §§1, 3.1). `μ_⊥` in the optical ratio is on the same measure as$
+    66	  `ρ_br`. This input supplies no induced-measure or finite-slab replacement mass law.$
+    67	  S9b computes and claims on the coordinate `d³x` measure only. No induced-measure object,$
+    68	  re-expression or correction is computed or printed. The induced-measure readings and$
+    69	  O2-R L478–480's recorded qualification for those readings are outside this step's$
+    70	  computation and claims (D4).$
+    71	$
+    72	  `ρ_br(x)` and `j_n(x)` are live radial profiles. `j_n` is the brane's normal exchange with the bulk and is$
+    73	  owned by the gravity sector or S12. S11b's uniform background normal drain `v_dr` is a different object$
+    74	  (`directives/S11b_SHARED_PHYSICS.md:99–111`); the relation between `j_n` and `v_dr` is open.$
+    75	- **Embedding (supplied).** `ξ_w(x)` is the brane's displacement into the bulk direction, as a length.$
+    76	  The ledger's `h` is dimensionless. The supplied equations are$
+    77	$
+    78	  ```$
+   397	Print **neutral-sector restriction** with Part D and each dependent result, including the reduction$
+   398	of the supplied `g_ij`. Parts A–C keep `ξ_w` live, including the charged case. This restriction adds$
+   399	no force term. Normal velocity content not determined by the centre graph remains OPEN in$
+   400	`𝒩_br^live` and `𝒥_map`, including face and interior content and unsupplied face-to-material$
+   401	identifications. The reduced bulk-direction carry `(Π_n^carry)^w` remains an OPEN action of those$
+   402	operands with native geometry; it is not supplied as `j_n` times one centre-graph velocity$
+   403	(O2-S §5). No native-face, thickness, exchange-map or normal constitutive law is supplied.$
+```
+
+Exit code: `0`.
+
+```bash
+bash -o pipefail -c 'rg -n -i '"'"'induc|dvol_g|ρ_br\^\(g\)|j_n\^\(g\)|density re-expression|imposed mass law|478–480'"'"' research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md | cat -E'
+```
+
+```text
+66:  `ρ_br`. This input supplies no induced-measure or finite-slab replacement mass law.$
+67:  S9b computes and claims on the coordinate `d³x` measure only. No induced-measure object,$
+68:  re-expression or correction is computed or printed. The induced-measure readings and$
+69:  O2-R L478–480's recorded qualification for those readings are outside this step's$
+```
+
+Exit code: `0`.
+
+```bash
+git diff --check -- research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md research/pde_ledger_v3/directives/_measurements/S9b_v10_spec_lookups.md
 ```
 
 ```text

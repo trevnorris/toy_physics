@@ -63,31 +63,11 @@ Each piece is a supplied identification. Flag any result that depends on one.
 
   The divergence and both densities are on the coordinate `d³x` measure of the far-field `x^i`
   coordinates (O2-R §§2, 8; O2-S §§1, 3.1). `μ_⊥` in the optical ratio is on the same measure as
-  `ρ_br`. This input supplies no induced-measure or finite-slab replacement mass law. Every
-  induced-measure claim names which of the following readings it uses (D4):
-
-  - **Density re-expression.** The same mass and normal exchange are re-expressed as densities per
-    induced volume. The measure and same-content identifications defining this reading are
-
-    ```
-    dvol_g ≡ √det(g_ij) d³x ,
-    ρ_br^(g) dvol_g ≡ ρ_br d³x ,      j_n^(g) dvol_g ≡ j_n d³x .
-    ```
-
-    These are supplied identifications of the reading, using the supplied metric; they do not
-    replace the mass law. Print the re-expressed densities and correction objects with their
-    orders under the supplied metric and slope counting. No additional independent bound on the
-    drain divergence is a premise of this density re-expression. The imposed-law restriction
-    below does not apply to this reading.
-  - **Imposed mass law.** An independently imposed mass law on the induced measure, without the
-    same-content density re-expression above, is a separate physical input; none is supplied here.
-    A comparison on this reading names that law and keeps
-    `∂_r[(∂ξ_w)²]` live. A relative order for its correction to the implied `j_n` requires a
-    condition bounding that correction relative to `j_n` itself. **For this imposed-law reading
-    only**, the unqualified recorded relative-order statement in O2-R L478–480 is not carried.
-    The supplied slope counting and the historical gradient-scale condition
-    `∂_r[(∂ξ_w)²] = O(ε/r)` supply no such uniform drain-relative bound for an imposed-law
-    comparison (D4). The historical derivative condition is not imposed here.
+  `ρ_br`. This input supplies no induced-measure or finite-slab replacement mass law.
+  S9b computes and claims on the coordinate `d³x` measure only. No induced-measure object,
+  re-expression or correction is computed or printed. The induced-measure readings and
+  O2-R L478–480's recorded qualification for those readings are outside this step's
+  computation and claims (D4).
 
   `ρ_br(x)` and `j_n(x)` are live radial profiles. `j_n` is the brane's normal exchange with the bulk and is
   owned by the gravity sector or S12. S11b's uniform background normal drain `v_dr` is a different object

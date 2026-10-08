@@ -1491,3 +1491,717 @@ git diff --check -- research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md
 ```
 
 Exit code: `0`.
+
+## Repair 2: baseline `478b5e7b`, decisions unchanged at `79055918`
+
+Author: Codex. These are mechanical source/version and text lookups for the three requested repairs.
+The same-content density equations define D4's density-re-expression reading; they are not a new
+mass law. The graph-velocity notation identifies the source-constructed material tangent lift;
+unsupplied normal material/map content stays OPEN. Review and authoring workflow is outside the
+engine-facing spec. No CAS or physical computation was run. `cat -E` marks line endings in the
+new literal stdout blocks; previous lookup sections remain preserved as filed.
+
+```bash
+bash -o pipefail -c 'git diff --no-ext-diff 478b5e7b -- research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md | cat -E'
+```
+
+```text
+diff --git a/research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md b/research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md$
+index 015d369c..fa57ad80 100644$
+--- a/research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md$
++++ b/research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md$
+@@ -1,10 +1,8 @@$
+ # S9b — what brane light needs in order to bend and be delayed like GR (question spec, v10)$
+ $
+-**Authors:** Codex (v5–v6, v10), with v7–v8 edits by Claude (orchestrator). **Status:** v10 repair 1,$
+-2026-10-08, against the preserved, not accepted baseline `af1674e5`; no repair clearance or computed$
+-result is claimed.$
++**Version:** v10, repair 2 (2026-10-08).$
+ $
+-**Deliverable:** specify the v8 optical objects in Parts A–C and the neutral, linked steady in-plane$
++**Objects:** the v8 optical objects in Parts A–C and the neutral, linked steady in-plane$
+ brane balance and its conditional optical requirements in Part D, retaining every unsupplied O2 input.$
+ $
+ **Authority and sources.** The base is v8 at `c2f1cf2b`, with its cited sources. The governing decisions$
+@@ -16,8 +14,8 @@ below are relative to `research/pde_ledger_v3/`. The additional source abbreviat$
+ - **O2-C:** `directives/O2_input_contract.md` at `217a92e9`.$
+ - **O2-P:** `directives/O2_premise_decision_list.md` at `77d2c39a`.$
+ $
+-`CLAUDE.md` M1–M3 and E1–E2 govern the artifact. Equations labelled **supplied** are conditional$
+-inputs that this build cannot test. Adopted premises retain that status and their provenance. Every$
++Equations labelled **supplied** are conditional inputs that the computation cannot test. Adopted$
++premises retain that status and their provenance. Every$
+ dependent result is flagged with the supplied identification or adopted premise it uses. Reference$
+ objects are comparison inputs, rather than premises for deriving the brane's observables. The spec$
+ names computed objects and solution conditions; it supplies no outcome or expected-value acceptance test.$
+@@ -29,7 +27,7 @@ needs in order to be deflected and delayed by a mass. This step states that requ$
+ local wave equation that brane light sees near a mass. It does not derive that equation from the substrate:$
+ the nonuniform brane operator is unfinished S11c work, and the substrate comes at the knit.$
+ $
+-## Governing object (supplied; the build cannot test it)$
++## Governing object (supplied; the computation cannot test the input)$
+ $
+ Light is the transverse branch of the brane's in-plane displacement `u`, and `u` is the material displacement$
+ of the stuff whose density is `ρ_br` (`steps/S11_stray_longitudinal.md:32–35`; S10). Near the mass, at$
+@@ -65,12 +63,31 @@ Each piece is a supplied identification. Flag any result that depends on one.$
+ $
+   The divergence and both densities are on the coordinate `d³x` measure of the far-field `x^i`$
+   coordinates (O2-R §§2, 8; O2-S §§1, 3.1). `μ_⊥` in the optical ratio is on the same measure as$
+-  `ρ_br`. This input supplies no induced-measure or finite-slab mass law. Any induced-measure claim$
+-  names its reading: the same densities re-expressed per induced volume, or a mass law imposed on$
+-  the induced measure. It keeps `∂_r[(∂ξ_w)²]` live and attaches no relative order to the correction$
+-  to `j_n` unless it states a condition bounding that correction relative to `j_n` itself (amended$
+-  D4). No such bound is supplied here. Neither the supplied slope counting nor the historical$
+-  gradient-scale condition `∂_r[(∂ξ_w)²] = O(ε/r)` supplies that bound. The latter is not imposed.$
++  `ρ_br`. This input supplies no induced-measure or finite-slab replacement mass law. Every$
++  induced-measure claim names which of the following readings it uses (D4):$
++$
++  - **Density re-expression.** The same mass and normal exchange are re-expressed as densities per$
++    induced volume. The measure and same-content identifications defining this reading are$
++$
++    ```$
++    dvol_g ≡ √det(g_ij) d³x ,$
++    ρ_br^(g) dvol_g ≡ ρ_br d³x ,      j_n^(g) dvol_g ≡ j_n d³x .$
++    ```$
++$
++    These are supplied identifications of the reading, using the supplied metric; they do not$
++    replace the mass law. Print the re-expressed densities and correction objects with their$
++    orders under the supplied metric and slope counting. No additional independent bound on the$
++    drain divergence is a premise of this density re-expression. The imposed-law restriction$
++    below does not apply to this reading.$
++  - **Imposed mass law.** An independently imposed mass law on the induced measure, without the$
++    same-content density re-expression above, is a separate physical input; none is supplied here.$
++    A comparison on this reading names that law and keeps$
++    `∂_r[(∂ξ_w)²]` live. A relative order for its correction to the implied `j_n` requires a$
++    condition bounding that correction relative to `j_n` itself. **For this imposed-law reading$
++    only**, the unqualified recorded relative-order statement in O2-R L478–480 is not carried.$
++    The supplied slope counting and the historical gradient-scale condition$
++    `∂_r[(∂ξ_w)²] = O(ε/r)` supply no such uniform drain-relative bound for an imposed-law$
++    comparison (D4). The historical derivative condition is not imposed here.$
+ $
+   `ρ_br(x)` and `j_n(x)` are live radial profiles. `j_n` is the brane's normal exchange with the bulk and is$
+   owned by the gravity sector or S12. S11b's uniform background normal drain `v_dr` is a different object$
+@@ -125,7 +142,7 @@ because rulers and clocks are made of the same medium. Only the far-field observ$
+   with nonnegative integer `a`, `b` and `c`. Each retained optical monomial is printed separately;$
+   optical terms outside this set are not computed. This is not a truncation of Part D's mechanical$
+   or inherited energy accounting.$
+-- **Order counting** (supplied; the build cannot test it; owned by the gravity sector or S12). In the far zone,$
++- **Order counting** (supplied; the computation cannot test it; owned by the gravity sector or S12). In the far zone,$
+   let `ε(r) ≡ GM/(c₀² r)`, with `GM` as supplied below. The supplied counting is$
+ $
+   ```$
+@@ -262,7 +279,8 @@ Q(x,t) = Q(r)      (steady scalar profiles in this setting).$
+ steadiness supplies no material constancy or history cutoff. Coordinate momentum storage, transport,$
+ exchange, force, load, energy and power densities use the same coordinate `d³x` measure as the mass$
+ law. Native face-area factors and reductions remain explicit through O6. Coordinate `w` content and$
+-graph-normal content are distinct; the centre graph fixes no finite-thickness face response.$
++graph-normal content are distinct. The centre graph fixes neither finite-thickness face nor interior$
++normal velocity content; any content it does not determine stays with `𝒩_br^live` and `𝒥_map`.$
+ $
+ ### Adopted equations and their scope$
+ $
+@@ -381,30 +399,43 @@ The link supplies no `ρ_br(f)` law or separate smallness grade for the brane de$
+ The engines compute its implication for `δ`; no such implication is stated here.$
+ $
+ **w-parity — neutral sector (2026-10-07; D2, D4).** For an electrically neutral mass the adopted$
+-far-field `w → −w` symmetry restricts the graph displacement and material bulk-direction velocity:$
++far-field `w → −w` symmetry restricts the graph displacement and the constructed centre-graph$
++material velocity. Define the supplied graph embedding and its material tangent lift by$
+ $
+ ```$
+-ξ_w(r) ≡ 0 ,      U_material^w(r) ≡ 0 .$
++X_graph(x) ≡ (x¹,x²,x³,ξ_w(x)) ,      U_graph ≡ V^i ∂_i X_graph .$
++```$
++$
++`U_graph^w` denotes the bulk-coordinate component of this centre-graph material velocity, constructed$
++from the steady graph and `V` (O2-S L68–79; O2-R §§1–2). It is not an independent normal velocity$
++operand. The adopted neutral-sector equations are$
++$
++```$
++ξ_w(r) ≡ 0 ,      U_graph^w(r) ≡ 0 .$
+ ```$
+ $
+ Print **neutral-sector restriction** with Part D and each dependent result, including the reduction$
+ of the supplied `g_ij`. Parts A–C keep `ξ_w` live, including the charged case. This restriction adds$
+-no force term and supplies no native-face, thickness, exchange-map or normal constitutive law.$
++no force term. Normal velocity content not determined by the centre graph remains OPEN in$
++`𝒩_br^live` and `𝒥_map`, including face and interior content and unsupplied face-to-material$
++identifications. The reduced bulk-direction carry `(Π_n^carry)^w` remains an OPEN action of those$
++operands with native geometry; it is not supplied as `j_n` times one centre-graph velocity$
++(O2-S §5). No native-face, thickness, exchange-map or normal constitutive law is supplied.$
+ $
+ ### O2 balance pieces that remain live$
+ $
+ The engines compose the balance from these physical roles and the supplied equations above.$
+ No assembled momentum balance, total transport tensor, cancellation or profile solution is supplied$
+-here (D3; O2-S §§3–6; O2-R §8). The author identifies the supplied content as follows:$
++here (D3; O2-S §§3–6; O2-R §8). The supplied content and remaining OPEN actions are:$
+ $
+ | O2 content | Supplied content in Part D | Content retained as OPEN |$
+ |---|---|---|$
+ | Material momentum storage and transport; `ℐ_br^live`, `𝒫_br^cons` | P5 supplies in-plane momentum density and the material-carried contribution `ρ_br V^i V^j` to the in-plane current. | Any other in-plane momentum current, with general live dependence, counted beside the supplied current and P6 stress and containing neither again; normal/embedded responses and unresolved relations wherever unsupplied. The conservative antecedent is named, rather than added as another momentum species. |$
+ | Internal material force; `𝒯_br^live`, `𝒯_br^cons`, `𝒩_br^live`, `𝒜_rot^live`, `ℛ_ref/strain^live` | P6 supplies the full steady in-plane stress in its adopted pressure-plus-linear-viscous form, with the stated Cauchy traction/force convention. | Normal material response, conservative antecedents, reference evolution outside the adopted form, and rotational/couple/frame content wherever unsupplied. Their overlapping descriptions remain explicit within one material accounting object; no additional in-plane stress duplicates P6. |$
+ | Optical/material constitutive inputs; O1 `ℳ_⊥`, O7 `ℛ_br` | The density link supplies Part D's optical stiffness response only. | Brane-density response and every other unsupplied material or reduction identification. Parts A–C retain the v8 local profiles. |$
+-| Geometry, O4 `ℰ_h^live`, O6 `𝒥_map` | Supplied centre graph, `ξ_w=ℓh`, metric and neutral-sector restriction. | Live embedding/longitudinal relation and its unsettled identity with O2 normal content; native face geometry/measure, finite-thickness reduction, normal response and material/order/projection map. No second normal equation is imposed. |$
++| Geometry, O4 `ℰ_h^live`, O6 `𝒥_map` | Supplied centre graph, `ξ_w=ℓh`, metric, constructed `U_graph` and neutral centre-graph restriction. | Live embedding/longitudinal relation and its unsettled identity with O2 normal content; native face geometry/measure, finite-thickness reduction, face/interior normal velocity content not determined by the graph, normal response and material/order/projection map. No second normal equation is imposed. |$
+ | Mechanical face/support loading; `T_hold,s`, `𝒯_bulk,n,s^live` | P4 supplies the bulk part's native direction only. | Full load/support partition, native normal-load amplitude, projections/maps and application-point velocities. No external support is selected by LAB_HELD. |$
+-| Exchange; O3 `Π_n`, S12 partners/reactions | P3 supplies the coordinate in-plane carry `j_n V^i`. | Additional momentum partners/reactions and bulk-direction carry with O6/normal material content. Native convective transfer and the same O3 carry are not counted twice. |$
++| Exchange; O3 `Π_n`, S12 partners/reactions | P3 supplies the coordinate in-plane carry `j_n V^i`. | Additional momentum partners/reactions and bulk-direction carry with O6/normal material content, native geometry and unsupplied face-to-material velocities. Centre-graph parity supplies no reduced bulk-carry formula. Native convective transfer and the same O3 carry are not counted twice. |$
+ | Boundary/source/core inputs; O5 `ℋ_core`, `𝔅_A13` | P2 supplies the drain-drive representation only. | A13 branch; distinct local conversion/controller and boundary/domain inventories; physical core holder/mouth data and their response. Q2/S22 retain O5; S12 retains conversion and return partners. |$
+ $
+ All OPEN entries are general unknown actions, with admissible live fields, gradients, entire material$
+@@ -444,10 +475,9 @@ assigned to `c₀/c_comp`, `η` or `ζ`. No new scale is used to remove an OPEN$
+ ### Returned O2 interpretation and dependence locations$
+ $
+ **D5; O2-R §§4, 8.** The WL-only `ξ_w''` interpretation remains an **undischarged sub-step-7$
+-obligation returned to the orchestrator under M1**. S9b does not discharge it; the S9b record carries$
+-that status. It is distinct from ownership of a physical input. The engine-facing dependence inputs$
+-are stated explicitly below; preservation of the historical difference ledger is the comparator/record$
+-handoff at the end of this subsection.$
++obligation returned to the orchestrator under M1**. This is an unresolved input qualification,$
++distinct from ownership of a physical input. Each dependent Part D condition carries that status;$
++no physical interpretation or reconciliation is supplied. The dependence inputs are explicit below.$
+ $
+ The full inherited derivative keys are `ProfileDerivative` of `V_r`, `delta`, `f`, `h`, `j_n`,$
+ `mu_perp`, `o2_rho_br_live` at order 1 and `xi_w` at order 2, each at the stored argument$
+@@ -486,33 +516,27 @@ shared work/energy content visible, without choosing a decomposition or counting$
+ These role names denote the existing material/energy operands above, not additional independently$
+ additive energy species or a prescribed nesting/occurrence count.$
+ $
+-**Comparator and record handoff (O2-R §§4–5, 8).** The comparator and record check that the Part D$
+-content no adopted premise supplies retains every named operand and complete live-object dependence$
+-printed by either O2 engine, including all eight derivative keys at every listed location and the$
+-PY-only native/chart and core/material-compatibility content. They carry the complete O2 difference$
+-ledger wherever it bears on a condition. Each engine constructs from the explicit inputs in this$
+-spec alone; it is not charged with checking historical O2 emissions it was not given.$
+-The handoff includes the one-sided material-compatibility actions in all four named energy rows;$
++**O2 emission provenance and comparison limits (O2-R §§4–5, 8).** Retention against historical$
++O2 emissions is comparator/record scope, outside engine construction from this spec. The historical$
++content includes every named operand and complete live-object dependence from either O2 engine,$
++the eight keys at every listed location, and PY-only native/chart and core/material-compatibility$
++content. The explicit engine inputs above retain general admissible dependences independently of$
++that finite inventory. The O2 difference ledger is unresolved wherever it bears on a condition.$
++It includes one-sided material-compatibility actions in all four named energy rows;$
+ one-sided material density/flux actions in `energy_power`; four density/flux orientation differences$
+ in `energy_balance`; and density/flux occurrences inside `OPEN_JointPowerAccounting` in$
+ `energy_power` and `ℬ_E^steady` alongside separate `energy_balance` occurrences. Those differences$
+ travel with the force/power-compatibility and duplicate-power questions. No limited inventory match$
+-supplies full OPEN equality, compatibility or a duplicate-power conclusion. This check discharges$
+-neither the returned interpretation nor any unsupplied physical input.$
+-$
+-**Register handoff (D5; O2-R §8).** The later record carries the adopted-premise provenance and the$
+-undischarged interpretation. A register entry follows only from an established sourced requirement$
+-on which the conditional object rests: material/phase identifications or expressly carried$
+-accounting/admissibility obligations. Unsupplied closure forms remain OPEN handoffs. An unresolved$
+-engine difference alone creates no requirement. S21 owns the later integration/sort; this spec$
+-performs no register edit or physical reconciliation.$
+-$
+-## Engines, review, scope$
+-$
+-- **Engines.** SymPy, plus a blind Wolfram engine that imports nothing. No Lean (CLAUDE.md L5).$
+-- **Spec review.** A fresh non-author Claude agent and Grok review v10 until clear, after this$
+-  authoring stop (D7). The orchestrator runs those reviews.$
+-- **Build review.** Codex-written, so a fresh Claude agent and Grok, each with a mandatory FORM ablation.$
++supplies full OPEN equality, compatibility or a duplicate-power conclusion. The returned interpretation$
++and unsupplied physical inputs remain OPEN.$
++$
++**Requirement status (D5; O2-R §8).** An established sourced requirement is a condition on which the$
++conditional object rests: a material/phase identification or an expressly carried accounting/$
++admissibility obligation. Unsupplied closure forms remain OPEN. An unresolved engine difference$
++alone supplies no requirement.$
++$
++## Model point and scope$
++$
+ - **Optical model point.** As in "Setting": leading eikonal with the retained multigraded set above.$
+   Part D's mechanical and inherited energy content retains its stated untruncated domain. Its results$
+   are conditional on P5's adopted momentum carriage and P6's adopted steady pressure-plus-linear-viscous$
+@@ -525,16 +549,3 @@ performs no register edit or physical reconciliation.$
+   - a drain that changes while light crosses;$
+   - polarization transport;$
+   - anisotropic or coupled branches.$
+-- **Deferred to the build** (implementation, not new physics; the build directive owns it):$
+-  - the symbolic handling of the every-`b` requirement;$
+-  - component/measure calculus on the supplied coordinate mass law, with amended D4's reading,$
+-    live-gradient and relative-to-`j_n` bound requirements above for any induced-measure claim;$
+-  - representation of general OPEN actions and executable controls, including FORM ablation (E2).$
+-- **Stop and report**, without choosing, when any of these happens:$
+-  - a second method failure;$
+-  - a sub-problem this spec does not name;$
+-  - a premise this spec does not supply.$
+-- **The step record** interprets the results.$
+-$
+-**Authoring STOP.** Repair v10 in place and report changes for repair items 1–4, source conflicts$
+-and missing sourced pieces. No CAS, build, review launch, commit, push or spawned agent is part of this task.$
+```
+
+Exit code: `0`.
+
+```bash
+bash -o pipefail -c 'git show 79055918:research/pde_ledger_v3/directives/S9b_repair_decision_list.md | nl -ba | sed -n '"'"'27,34p;59,68p;76,90p'"'"' | cat -E'
+```
+
+```text
+    27	**New for S9b:**$
+    28	$
+    29	| Premise | Content | Qualification carried with it |$
+    30	|---|---|---|$
+    31	| **P5** (2026-10-07; carriage 2026-10-08) | The brane's in-plane momentum density is `ρ_br V`, and that momentum is carried with the brane material at `V`. Its contribution to the in-plane momentum current is `ρ_br V^i V^j`. | Scoped to Part D. Any other in-plane momentum current stays OPEN. It is counted beside the supplied current and P6's stress, which it does not contain again. Part D states what the OPEN pieces must supply. If the stressed brane material carried additional momentum from its stress, P5 would change. Whether that enters at a retained grade is OPEN; S8 owns it. |$
+    32	| **P6** (2026-10-08, revised the same day) | In steady flow the brane's in-plane stress is an isotropic pressure plus a linear viscous stress: `T^{ij} = −p_br(ρ_br) δ^{ij} + η (∂^iV^j + ∂^jV^i − (2/3) δ^{ij} ∂_kV^k) + ζ δ^{ij} ∂_kV^k`, in the Cauchy convention (traction `T^{ij} n_j`; force density `∂_j T^{ij}`). `p_br` is a general function of `ρ_br` only. Its compressional speed `c_comp`, with `c_comp² = dp_br/dρ_br`, is live wherever `ρ_br` varies. The shear viscosity `η` and bulk viscosity `ζ` are live general profiles. In the optical regime, light still sees the elastic transverse stiffness `μ_⊥`. | Scoped to Part D. It supplies the steady in-plane part of O2's stress `𝒯_br^live` only. It is an adopted steady form, not a consequence of P1: P1's relaxation response stays OPEN outside it. The linear viscous form excludes power-law creep. The power this stress dissipates is not identified with any O2 energy operand. It stays in the OPEN energy accounting, with its physical supplier and budget OPEN. The first 2026-10-08 row (pressure only, justified by relaxation under steady load) is withdrawn: steady flow keeps straining, so relaxation does not remove the viscous stress (spec v10 review C2). |$
+    33	| **Density link** (2026-10-06) | v8's `c_γ² = μ_⊥/ρ_br` is kept, with `μ_⊥ ∝ ρ_br^α` and `α` one live symbol. This is the user's selected live exponent. | Scoped to Part D. There it supplies `μ_⊥` as a function of `ρ_br` alone. Its other O1 `ℳ_⊥` dependences are set aside by this premise, and results are flagged. Parts A–C keep `μ_⊥(x)` and `ρ_br(x)` independent, as in v8. |$
+    34	| **w-parity** (2026-10-07) | For an electrically neutral mass, the far field is symmetric under `w → −w`. So `ξ_w` and the material `w`-velocity vanish there. | This is a **labelled neutral-sector restriction**. Parts A–C keep `ξ_w` live as in v8, which covers the charged case. Part D is stated for the neutral sector, and prints the label. |$
+    59	## D4. Induced metric and order$
+    60	- **v8's sentence.** v8 says the induced-metric mass balance differs from the flat form by "a relative `O(ε)`$
+    61	  correction to the implied `j_n`". No source supplies that order. The gradient-scale condition$
+    62	  `∂_r[(∂ξ_w)²] = O(ε/r)` (v9 review, Grok) does not supply it either (spec v10 review C4).$
+    63	- **One rule for v10.** The supplied mass balance is on the coordinate `d³x` measure (O2 record §8). An induced-measure$
+    64	  claim names which reading it uses: the same densities re-expressed per induced volume, or a mass law imposed on the$
+    65	  induced measure. Such a claim keeps `∂_r[(∂ξ_w)²]` live. It attaches no relative order to the correction to `j_n`$
+    66	  unless it states a condition that bounds that correction relative to `j_n` itself.$
+    67	- **Neutral Part D.** With `ξ_w = 0` (w-parity), the supplied `g_ij` reduces to `δ_ij`, and the engines print that$
+    68	  reduction. This limits the claim; it adds no term.$
+    76	**Routing:**$
+    77	- **The obligation stays the orchestrator's** (M1; record §8). S9b does not discharge it. The S9b record carries it$
+    78	  as undischarged. It is distinct from any step's ownership of a physical input.$
+    79	- **Retained keys.** Part D retains all eight keys, at every §4 location, for every piece of O2 content that no$
+    80	  adopted premise supplies (record §8).$
+    81	- **Supplied content.** Where P5, P6 or the density link supplies an object, the premise states that object's$
+    82	  dependence, and every result that uses it is flagged.$
+    83	  - The spec author determines, from the O2 sources, which content each premise supplies.$
+    84	  - The author does not compose the balance (D3).$
+    85	  - The user chose P6 over keeping the stress OPEN (2026-10-08).$
+    86	- **Register.** A register entry follows only if a sourced requirement is established. An unresolved difference$
+    87	  alone does not create one (record's rest-on criterion).$
+    88	$
+    89	## D6. Owed build findings: routed to the repair build directive$
+    90	These come from the build review preserved at `bb94b885`, as listed in that commit's message. They concern implementation, not spec physics. They go to the$
+```
+
+Exit code: `0`.
+
+```bash
+bash -o pipefail -c 'git show 72866fcf:research/pde_ledger_v3/steps/O2_steady_brane_balance.md | nl -ba | sed -n '"'"'62,97p;115,123p;469,515p'"'"' | cat -E'
+```
+
+```text
+    62	The engine acceptance reports the computed metric/inverse and `det g = 1+ξ′²`, graph normal from$
+    63	tangents, graph material velocity with `U^w = V_r ξ′` and zero graph-normal component, `(V·∇)U`,$
+    64	the unsolved coordinate-measure mass residual, and in-plane carried `j_n V^i`. It also explicitly$
+    65	keeps momentum density/flux, internal force, native reductions, bulk carry and energy inputs OPEN.$
+    66	These are the acceptance disposition's scoped statements, retrieved by M1, not new derivations.$
+    67	The comparator's `metric_determinant`, geometry/velocity container leaves, mass rows, profile and$
+    68	gradient rows print their own results (M8). The material-acceleration vector has no emitted WL$
+    69	counterpart and is unjoined (M9); the engine acceptance does not make it a cross-engine comparator$
+    70	agreement claim.$
+    71	$
+    72	## 2. Exact domain, adopted premises and supplied inputs$
+    73	$
+    74	The supplied setting is one isolated, spherically symmetric mass at rest with its drain flowing:$
+    75	far field, Eulerian steady material profiles, lab time in the brane's far-field rest frame, linear$
+    76	optical waves and leading eikonal. There are three in-plane coordinate directions `x^i` and bulk$
+    77	coordinate `w`. Scalar profiles are general live functions of `r=|x|` on the far-field `r>0` domain, with radial$
+    78	`V^i=V_r(r)x^i/r`. The material velocity is that of the material displaced by `u`, distinct from$
+    79	wave velocity, outward face velocity `V_s`, bulk-normal drain `v_dr` and native bulk velocity.$
+    80	The steady graph determines its centre graph velocity; it does not identify finite-thickness face$
+    81	velocities or the reduced bulk-direction exchange. Material identity is **recorded** on the$
+    82	homogeneous displacement anchor and a **supplied S9b identification**, not a live kinetic law.$
+    83	The historical ordered/disordered split of one conserved material is **postulated**; A13 remains$
+    84	OPEN. The static localized reduction is conditional on its **postulated** parent sector.$
+    85	Sources: spec §§1, 5, 7–8; contract §§1–2, 5–7 (M1). WL separately emits its `r>0` inequality;$
+    86	PY has no paired inequality emission (M9), so domain use is not an inequality-comparison result.$
+    87	$
+    88	Every density in this object is per coordinate `d³x`, including mass/source, material momentum,$
+    89	exchange, loads, energy and power; optical `μ_⊥` uses the same measure as `ρ_br`. Induced metric and$
+    90	native area factors remain explicit. The supplied geometric/optical/mass inputs are$
+    91	`g_ij=δ_ij+∂_iξ_w∂_jξ_w`, its inverse, `ξ_w=ℓh`,$
+    92	`c_γ²≡μ_⊥/ρ_br`, `c_γ=c₀(1+δ)` and `∇·(ρ_br V)=−j_n`.$
+    93	LAB_HELD is supplied spatial speed anchoring, not a holder or reference-evolution law. The bulk$
+    94	inputs `P=Kρ^n`, `c_s²=nKρ^(n−1)/m`, `f=ρ/ρ₀−1` use bulk number density, particle mass and symbolic$
+    95	EOS exponent. They supply no bulk profile, brane-density response or live traction. These are inputs$
+    96	on their recorded domains, not results earned by engine agreement. Sources: spec §§1, 3.1, 7–8;$
+    97	contract §§5–7 (M1).$
+   115	Supplied counting is `ε=GM/(c₀²r)`, `δ=O(ε)`, `(∂ξ_w)²=O(ε)`, `V/c₀=O(ε^{1/2})`,$
+   116	`(V/c₀)²=O(ε)` and the optical monomial box `0≤a≤1, 0≤b≤2, 0≤c≤1` in$
+   117	`δ^a(V/c₀)^b((∂ξ_w)²)^c`, with nonnegative integer indices. Only the stiffness/density ratio$
+   118	inherits the speed-change grade. Individual density/modulus, stress/inertia/normal response,$
+   119	exchange/source/load, relaxation/power, holder/embedding and derivative grades remain OPEN. O2 is$
+   120	untruncated; this optical box removes no mechanical or energy term. Bulk first order in `f` is$
+   121	separate, with no supplied `f`–`ε` relation. The mass law carries its recorded relative-`O(ε)`$
+   122	qualification for claims transferring `j_n` or `ρ_br` to induced measure; no induced-measure mass$
+   123	law is supplied or derived. Sources: spec §7; contract §9 (M1).$
+   469	Part D must retain **every named operand and complete live-object dependence printed by either engine**,$
+   470	including all eight WL-only derivative keys at every location in §4 and all PY-only native/chart,$
+   471	core/material-compatibility content. It must also preserve the spec's general admissible live fields,$
+   472	gradients, entire material history and other native dependences (spec L124–125). Neither engine's$
+   473	finite OPEN inventory is the object's dependence list, and even taking both lists cannot impose a$
+   474	closed argument list or derivative/history cutoff. The full inventories/operands remain in the$
+   475	filed production stream; their differences are M6. No surrounding held calculus, coefficient algebra,$
+   476	position or multiplicity outside §5's inventory scope becomes a comparison result.$
+   477	$
+   478	The mass-law qualification travels explicitly: `∇·(ρ_br V)=−j_n` is a **coordinate-`d³x` measure**$
+   479	input. For a claim reading `j_n` or `ρ_br` per induced measure, or comparing an induced-metric mass$
+   480	law, the recorded qualification is a **relative `O(ε)` correction to `j_n`**, not a live O6 law;$
+   481	O2 supplies and derives **no induced-metric mass balance** (spec L330–336). Fixed-`ℓ` counting,$
+   482	independent orbital `GM`, only the stiffness/density ratio inheriting the speed-change grade, and$
+   483	first order in `f` with no `f`–`ε` relation also travel unchanged. Historical static/homogeneous,$
+   484	frozen/uniform or supplied-profile relations retain exactly §2's restricted domains.$
+   485	$
+   486	Part D must keep coordinate versus graph-normal content distinct, use the same material and measure$
+   487	with compatible native maps, retain untruncated unknown terms/grades, avoid duplicate stress/exchange/$
+   488	power content, and name the supplier/budget if a closure requires net power. Residual `0` at the$
+   489	balance closed-part level (printed, M8), unioned balance-role inventory matches (printed, M6),$
+   490	and joint stored classification tuple count matches (record literal counts, M7) supply neither$
+   491	a solved material state nor full OPEN equality. Each condition inherits the whole difference$
+   492	ledger in §4 wherever a difference bears on its content, including native-map/measure, material$
+   493	compatibility, named/live dependences and generalized-work scope (M6/M9/M12).$
+   494	In particular, the force/power-compatibility and duplicate-power conditions carry the one-sided$
+   495	`OPEN_MaterialCompatibility` actions in all four energy rows, the one-sided density/flux actions in$
+   496	`energy_power`, **and** the four paired density/flux orientation differences `[["argument",1]]`$
+   497	in `energy_balance` (line 207). The stored PY density/flux actions inside `OPEN_JointPowerAccounting`$
+   498	travel with those conditions in both `energy_power` and `ℬ_E^steady` itself, alongside the separate$
+   499	occurrences in `energy_balance` (lines 202/206; §4; M12). The record's literal stored classification tuple$
+   500	count match (M7) and the comparator's unioned balance-role inventory matches (M6)$
+   501	do not settle compatibility or whether the complete work/energy content is counted once.$
+   502	Part D must carry these differences alongside those conditions; it may not discard or reconcile$
+   503	them, or judge either engine to duplicate power from either limited match. The `xi_w''` difference$
+   504	also travels with the admissible-dependence and force/power conditions as **OPEN interpretation,$
+   505	undischarged at sub-step 7 and returned to the orchestrator under M1** (§4). Any physical resolution$
+   506	requires work beyond retrieval.$
+   507	Source: spec §§1–10, contract §§1–10 and M6–M9/M12.$
+   508	$
+   509	In particular, O2 supplies **no momentum-density map `ρ_br V`**. Its open inertia/momentum mapping$
+   510	cannot be cancelled or converted into a chosen advective kinetic law using the mass relation.$
+   511	The directive's folded disposition keeps the separate user premise for S9b repair at that later$
+   512	decision-list gate (M1). Part D must source any additional kinetic, constitutive, projection,$
+   513	profile, support, order or energy input through its own authorized premise/specification work.$
+   514	It inherits no `GM` normalization, drain-to-mouth identification, static flowing extension or$
+   515	light-observable compatibility from O2.$
+```
+
+Exit code: `0`.
+
+```bash
+bash -o pipefail -c 'git show 4680e251:research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md | nl -ba | sed -n '"'"'49,79p;103,114p;234,248p;330,347p'"'"' | cat -E'
+```
+
+```text
+    49	The component object has three in-plane directions and normal material content on the supplied$
+    50	embedded brane. State the component basis and its relation to the far-field coordinates `x^i` and$
+    51	bulk direction `w`. Distinguish coordinate projections from projections onto the embedded graph's$
+    52	normal. Geometric component changes may be constructed from the supplied graph; a component basis$
+    53	does not choose a sharp-sheet or finite-slab material reduction. Where a material or face quantity$
+    54	cannot be projected without O6 or a live material response, its component action stays explicitly$
+    55	unevaluated with that operand named.$
+    56	$
+    57	**Declared measure (a convention).** Every density in this object is a density per coordinate volume$
+    58	`d³x` of the far-field coordinates `x^i`, the measure on which the supplied mass law's divergence is$
+    59	written (§3.1). This covers `ρ_br`, `j_n`, material momentum storage and transport, the carried and$
+    60	other exchange occurrences, and the force, load, energy and power densities. In the optical ratio$
+    61	`c_γ² ≡ μ_⊥/ρ_br`, `μ_⊥` is referred to the same measure as `ρ_br`. Induced-metric factors, such as$
+    62	`g_ij`, `g^{ij}`, `det g_ij` and the graph normal, enter explicitly in the geometric actions; no$
+    63	occurrence is moved to another measure. A quantity defined per native face area enters through its$
+    64	native geometric factor and `𝒥_map` (§5). This fixes the volume measure of densities only. It$
+    65	selects no stress measure, supplies no induced-measure mass balance, and does not remove the supplied$
+    66	law's recorded qualification (§7).$
+    67	$
+    68	`V` is the background in-plane velocity of the material displaced by light's `u`. It is distinct$
+    69	from the perturbation velocity, outward face velocity `V_s`, bulk-normal drain `v_dr`, and a native$
+    70	bulk velocity. No value for a normal material response or identification among these velocities$
+    71	follows from those names (C §§2, 5–7). On the steady supplied graph `w = ξ_w` (§3.1), a brane$
+    72	material point with in-plane coordinate velocity `V^i` has the bulk-direction coordinate velocity$
+    73	that the graph and `V` determine. Construct that component from them; it stays live through `V` and$
+    74	`ξ_w`, and there is no separate bulk-direction velocity operand. Normal velocity content that the$
+    75	graph does not determine belongs to `𝒩_br^live` and `𝒥_map`. One example is different local$
+    76	velocities at the faces of a finite-thickness realization, whose centre and thickness content `ξ_w`$
+    77	does not fix. Such content stays an unevaluated action with those operands named. This material$
+    78	velocity enters the material momentum entries (§4) and the force/power pairings (§6); the$
+    79	bulk-direction carried exchange momentum is the OPEN reduction of §5.$
+   103	## 3. Live input register$
+   104	$
+   105	### 3.1 Material identity, geometry, optical identifications and mass source$
+   106	$
+   107	| Status and source in C | Equation or operand | Domain and use |$
+   108	| --- | --- | --- |$
+   109	| **Recorded material identity; supplied S9b identification**, C §2 | `u` displaces the material carrying `ρ_br`; `V` is its live background in-plane velocity. | Fixes the material whose momentum is accounted for. The homogeneous kinetic/continuity anchor is reported in §8.1; it supplies no flowing kinetic law. |$
+   110	| **Supplied geometric identification**, C §5 | `g_ij = δ_ij + ∂_iξ_w ∂_jξ_w`, `g^{ij} = (g_ij)⁻¹`, `ξ_w = ℓh`. | Induced spatial metric on the recorded graph and retained L3 field identity. `ξ_w` is the brane's displacement into the bulk direction `w`, so the supplied graph is `w = ξ_w` over the far-field coordinates `x^i`. `ξ_w` has length, `h` is dimensionless, and `ℓ` is the fixed reduction scale, not a selected slab width. Geometry and slopes remain live. |$
+   111	| **Supplied optical-regime live identifications**, C §6 | `c_γ(r)² ≡ μ_⊥(r)/ρ_br(r)`, `c_γ(r) ≡ c₀[1+δ(r)]`. | `μ_⊥` is premise 1's optical elastic stiffness. The ratio supplies no full stress, steady-load stiffness or inertial law. `c₀` is the supplied asymptotic light speed. |$
+   112	| **Supplied steady mass balance**, C §6 | `∇·(ρ_br V) = −j_n`. | Use it as written on the declared measure (§1), retaining the full density factor and derivatives in the v9 source convention. This is the live mass input, not a proof of O6. A finite-slab or induced-measure replacement is not supplied by this equation. Its recorded relative-`O(ε)` qualification is a limit on claims, not a term in the object (§7). |$
+   113	| **Supplied speed-profile anchoring**, C §6 | `Q_bg^L(x,t) = Q_bg(x)`, `Q_bg^M(x,t) = Q_bg(χ(x,t))`; v9 selects LAB_HELD for `c_γ`. | These are distinct physical anchorings on the recorded supplied background. `χ(x,t)` is the inverse material map, not `χ_B`. LAB_HELD does not impose a material-reference law or supply a holder. |$
+   114	| **Supplied bulk-density inputs**, C §6 | `P = Kρ^n`, `c_s² = nKρ^(n−1)/m`, `f(r) ≡ ρ(r)/ρ₀ − 1`. | `ρ` is bulk number density, `m` particle mass and `n` a symbolic EOS exponent. The profile is unsolved; the recorded Part C response is first order in `f`. Neither `ρ_br(f)` nor a live normal traction follows. |$
+   234	On a native face description, transported momentum uses the native relative exchanged mass current$
+   235	and the local brane material velocity of the converted material. A full normal/component reduction$
+   236	retains `𝒥_map`, the live geometry and any unsupplied face-to-material velocity identification. Do$
+   237	not choose an independent converted-material velocity, replace it with `v_dr`, or identify it with a$
+   238	native bulk velocity. The premise-3 identification applies to the material after the specified$
+   239	conversion/transfer; it does not fix how a native bulk current acquires that momentum. Any additional$
+   240	non-variational conversion momentum partner and its reaction system remain OPEN with S12.$
+   241	$
+   242	**Bulk-direction carried component.** Premise 3 applies to each native transfer at its own location.$
+   243	It does not supply the reduced bulk-direction component `(Π_n^carry)^w` as `j_n` times one$
+   244	bulk-direction velocity. In a finite-thickness realization, the transfers at different faces need$
+   245	not share one current or one local bulk-direction velocity, and premise 3 supplies no such equality.$
+   246	The reduced component therefore depends on the OPEN `𝒥_map` and the normal material response$
+   247	`𝒩_br^live`, with the live geometry and any unsupplied face-to-material velocity identification. Print$
+   248	it as an unevaluated OPEN action with those operands named, in the same outward convention.$
+   330	`GM` is the independent slow-test-matter orbital parameter, not a source, profile, mouth or drain$
+   331	amplitude. Only `μ_⊥/ρ_br` inherits the speed-change grade. Keep the full density factor and$
+   332	derivatives in the mass input. The recorded induced-metric qualification is a relative `O(ε)`$
+   333	correction to `j_n`, not a live O6 law. O2 uses the law on the declared coordinate measure (§1) and$
+   334	supplies no induced-metric mass balance. The qualification is carried as a limit on claims, not as a$
+   335	term in the object: a claim that reads this `j_n` or `ρ_br` as a density per induced measure, or$
+   336	compares it with an induced-metric mass balance, carries it. Fixed `ℓ` transfers the live `h` slope$
+   337	to the geometric grade without supplying a mouth-amplitude grade. First order in bulk `f` is a$
+   338	separate recorded response domain; no relation between `f` and `ε` is supplied.$
+   339	$
+   340	**OPEN grades and derivative scales (C §9):** individual density and stiffness; inertia; stress and$
+   341	normal response; reference/relaxation and power; source and exchange momentum; force and$
+   342	traction/support; holder and mouth data; embedding-sector coefficients/source and longitudinal$
+   343	field, wherever no grade is recorded. Retain these as named unknown grades/scales attached to their$
+   344	inputs. Do not assign them a convenient higher order or separate density/modulus `O(ε)` variations.$
+   345	$
+   346	O2 is **untruncated**. The optical monomial box records the model's optical counting; it is not an$
+   347	order contract for removing material, exchange, boundary or power terms from O2.$
+```
+
+Exit code: `0`.
+
+```bash
+bash -o pipefail -c 'git show 217a92e9:research/pde_ledger_v3/directives/O2_input_contract.md | nl -ba | sed -n '"'"'107,114p;197,211p;247,253p;332,347p'"'"' | cat -E'
+```
+
+```text
+   107	| Operand | Physical input whose form is missing | Owner / boundary |$
+   108	| --- | --- | --- |$
+   109	| `𝒯_br^live` | Full live brane stress, including any relaxation contribution to the in-plane and normal force content. | O2 carries the operand; conservative/material antecedents S1.5/S8 and nonlinear material completion S22. Relaxation/reference ownership remains unassigned (§4). |$
+   110	| `𝒫_br^cons` | Conservative brane material momentum antecedents. | S1.5 supplies conservative substrate balance antecedents; S8 supplies brane material content. No live reduction is supplied. |$
+   111	| `𝒯_br^cons` | Conservative in-plane and normal-stress antecedents from S1.5/S8. | S1.5/S8; nonlinear material completion S22. These do not supply the full `𝒯_br^live`; no stress measure, symmetry or constitutive form is selected here. |$
+   112	| `ℐ_br^live` | Inertial/kinetic response on the flowing, embedded material background. | S8, using S1.5 antecedents when available. The optical density identification alone does not supply this response. |$
+   113	| `𝒩_br^live` | Normal material response, retaining distinctions among embedding, centre and thickness content until a model connects them. | S5–S8 for wall/width/compression ingredients; Q1/Q2 for their recorded static embedding sector; live identification with O4 remains OPEN. |$
+   114	| `𝒜_rot^live` | Required internal angular-momentum/couple-stress content and the physical rotational reference frame, including whether such content is present. | S8's OPEN requirements; no carrier or frame is chosen. |$
+   197	## 5. Geometry, embedding and O4$
+   198	$
+   199	**Status: supplied geometric identification.**$
+   200	$
+   201	```text$
+   202	g_ij = δ_ij + ∂_iξ_w ∂_jξ_w ,       g^{ij} = (g_ij)⁻¹ ,       ξ_w = ℓh .$
+   203	```$
+   204	$
+   205	**Source/domain:** v9:19–21,46–48,216–228; the induced spatial metric on its supplied graph and the$
+   206	retained L3 field identity. Underlying identity:$
+   207	v2:`stages/ledger_stage031_puncture_deflection_field_identity_source.md:60–76`, within the postulated$
+   208	G0 sector. `ξ_w` is a length, `h` dimensionless and `ℓ` that reduction's fixed scale; `ℓ` is not a newly$
+   209	selected slab width. `ξ_w`, `h` and their spatial derivatives remain live. `ζ_c` and `W` are independent$
+   210	face-centre/thickness variables in S11b, rather than replacements for `ξ_w`$
+   211	(`directives/S11b_SHARED_PHYSICS.md:89–96`). **Owner:** static identity Q1/Q2; live applicability O4.$
+   247	**Status: OPEN `ℰ_h^live` (O4).** It denotes the missing live embedding/longitudinal relation with flow,$
+   248	exchange, variable coefficients and their gradients (v9:295–300). The recorded action supplies no map$
+   249	from `u_L` to steady `V`, or from its mouth source to the mass's drain. **Relation to O2's normal content:$
+   250	unsettled**, as fixed by `O2_premise_decision_list.md:46–47`. O4 remains separately named as a coupled$
+   251	input; this contract chooses neither an identification with `𝒩_br^live` nor an independent equation$
+   252	count. **Owner:** recorded static ingredients Q1/Q2; the live identification remains O4 for the later$
+   253	O2 spec, with material completion at its S8/S22 owners.$
+   332	**Status: OPEN `𝒥_map` (O6).** The material/order weighting, live projection/window and measure$
+   333	identifications connecting sheet `j_n`, slab fluxes and bulk-normal `v_dr`, with bulk/return data, remain$
+   334	general (v9:305–308; `O2_premise_decision_list.md:50`). The window in$
+   335	`directives/S11c_a_SHARED_PHYSICS.md:394–402` is tied to its own face maps; it is not a newly selected$
+   336	O2 projection. Stage 006's shear projection$
+   337	$
+   338	```text$
+   339	μ_R = ∫ dw χ_B μ_R⁽⁴⁾$
+   340	```$
+   341	$
+   342	is **postulated/PENDING**, with dimensional consistency asserted only$
+   343	(v2:`stages/ledger_stage006_two_phase_chiB_ontology.md:98`); it is not a supplied `ℳ_⊥` law or a complete$
+   344	live map. **Owner:** S12 for dynamical conversion and separate source/boundary inventories$
+   345	(`V3_STEP_PLAN.md:579–617`; `steps/S11c_PARTIAL_CLOSEOUT.md:21,33`); S14a retains the distinct$
+   346	projected order-loss/far-field flux bridge (`V3_STEP_PLAN.md:626–641`). Sub-step 3 must state its use of$
+   347	O6 in the balance; this contract does not perform that reduction.$
+```
+
+Exit code: `0`.
+
+```bash
+bash -o pipefail -c 'nl -ba research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md | sed -n '"'"'1,21p;58,90p;278,284p;400,439p;477,480p;519,552p'"'"' | cat -E'
+```
+
+```text
+     1	# S9b — what brane light needs in order to bend and be delayed like GR (question spec, v10)$
+     2	$
+     3	**Version:** v10, repair 2 (2026-10-08).$
+     4	$
+     5	**Objects:** the v8 optical objects in Parts A–C and the neutral, linked steady in-plane$
+     6	brane balance and its conditional optical requirements in Part D, retaining every unsupplied O2 input.$
+     7	$
+     8	**Authority and sources.** The base is v8 at `c2f1cf2b`, with its cited sources. The governing decisions$
+     9	are `directives/S9b_repair_decision_list.md` at `79055918` (amendment 1). v9's Part D is not an input. Paths$
+    10	below are relative to `research/pde_ledger_v3/`. The additional source abbreviations are:$
+    11	$
+    12	- **O2-R:** `steps/O2_steady_brane_balance.md`, accepted at `72866fcf`, especially §§4 and 8.$
+    13	- **O2-S:** `directives/O2_SHARED_PHYSICS.md` at `4680e251`.$
+    14	- **O2-C:** `directives/O2_input_contract.md` at `217a92e9`.$
+    15	- **O2-P:** `directives/O2_premise_decision_list.md` at `77d2c39a`.$
+    16	$
+    17	Equations labelled **supplied** are conditional inputs that the computation cannot test. Adopted$
+    18	premises retain that status and their provenance. Every$
+    19	dependent result is flagged with the supplied identification or adopted premise it uses. Reference$
+    20	objects are comparison inputs, rather than premises for deriving the brane's observables. The spec$
+    21	names computed objects and solution conditions; it supplies no outcome or expected-value acceptance test.$
+    58	- **Steady brane mass balance.** The supplied balance is$
+    59	$
+    60	  ```$
+    61	  ∇·(ρ_br(x)V(x)) = −j_n(x) .$
+    62	  ```$
+    63	$
+    64	  The divergence and both densities are on the coordinate `d³x` measure of the far-field `x^i`$
+    65	  coordinates (O2-R §§2, 8; O2-S §§1, 3.1). `μ_⊥` in the optical ratio is on the same measure as$
+    66	  `ρ_br`. This input supplies no induced-measure or finite-slab replacement mass law. Every$
+    67	  induced-measure claim names which of the following readings it uses (D4):$
+    68	$
+    69	  - **Density re-expression.** The same mass and normal exchange are re-expressed as densities per$
+    70	    induced volume. The measure and same-content identifications defining this reading are$
+    71	$
+    72	    ```$
+    73	    dvol_g ≡ √det(g_ij) d³x ,$
+    74	    ρ_br^(g) dvol_g ≡ ρ_br d³x ,      j_n^(g) dvol_g ≡ j_n d³x .$
+    75	    ```$
+    76	$
+    77	    These are supplied identifications of the reading, using the supplied metric; they do not$
+    78	    replace the mass law. Print the re-expressed densities and correction objects with their$
+    79	    orders under the supplied metric and slope counting. No additional independent bound on the$
+    80	    drain divergence is a premise of this density re-expression. The imposed-law restriction$
+    81	    below does not apply to this reading.$
+    82	  - **Imposed mass law.** An independently imposed mass law on the induced measure, without the$
+    83	    same-content density re-expression above, is a separate physical input; none is supplied here.$
+    84	    A comparison on this reading names that law and keeps$
+    85	    `∂_r[(∂ξ_w)²]` live. A relative order for its correction to the implied `j_n` requires a$
+    86	    condition bounding that correction relative to `j_n` itself. **For this imposed-law reading$
+    87	    only**, the unqualified recorded relative-order statement in O2-R L478–480 is not carried.$
+    88	    The supplied slope counting and the historical gradient-scale condition$
+    89	    `∂_r[(∂ξ_w)²] = O(ε/r)` supply no such uniform drain-relative bound for an imposed-law$
+    90	    comparison (D4). The historical derivative condition is not imposed here.$
+   278	`V_r`, `ρ_br`, `j_n` and all unsupplied responses remain general live profiles/actions. Eulerian$
+   279	steadiness supplies no material constancy or history cutoff. Coordinate momentum storage, transport,$
+   280	exchange, force, load, energy and power densities use the same coordinate `d³x` measure as the mass$
+   281	law. Native face-area factors and reductions remain explicit through O6. Coordinate `w` content and$
+   282	graph-normal content are distinct. The centre graph fixes neither finite-thickness face nor interior$
+   283	normal velocity content; any content it does not determine stays with `𝒩_br^live` and `𝒥_map`.$
+   284	$
+   400	$
+   401	**w-parity — neutral sector (2026-10-07; D2, D4).** For an electrically neutral mass the adopted$
+   402	far-field `w → −w` symmetry restricts the graph displacement and the constructed centre-graph$
+   403	material velocity. Define the supplied graph embedding and its material tangent lift by$
+   404	$
+   405	```$
+   406	X_graph(x) ≡ (x¹,x²,x³,ξ_w(x)) ,      U_graph ≡ V^i ∂_i X_graph .$
+   407	```$
+   408	$
+   409	`U_graph^w` denotes the bulk-coordinate component of this centre-graph material velocity, constructed$
+   410	from the steady graph and `V` (O2-S L68–79; O2-R §§1–2). It is not an independent normal velocity$
+   411	operand. The adopted neutral-sector equations are$
+   412	$
+   413	```$
+   414	ξ_w(r) ≡ 0 ,      U_graph^w(r) ≡ 0 .$
+   415	```$
+   416	$
+   417	Print **neutral-sector restriction** with Part D and each dependent result, including the reduction$
+   418	of the supplied `g_ij`. Parts A–C keep `ξ_w` live, including the charged case. This restriction adds$
+   419	no force term. Normal velocity content not determined by the centre graph remains OPEN in$
+   420	`𝒩_br^live` and `𝒥_map`, including face and interior content and unsupplied face-to-material$
+   421	identifications. The reduced bulk-direction carry `(Π_n^carry)^w` remains an OPEN action of those$
+   422	operands with native geometry; it is not supplied as `j_n` times one centre-graph velocity$
+   423	(O2-S §5). No native-face, thickness, exchange-map or normal constitutive law is supplied.$
+   424	$
+   425	### O2 balance pieces that remain live$
+   426	$
+   427	The engines compose the balance from these physical roles and the supplied equations above.$
+   428	No assembled momentum balance, total transport tensor, cancellation or profile solution is supplied$
+   429	here (D3; O2-S §§3–6; O2-R §8). The supplied content and remaining OPEN actions are:$
+   430	$
+   431	| O2 content | Supplied content in Part D | Content retained as OPEN |$
+   432	|---|---|---|$
+   433	| Material momentum storage and transport; `ℐ_br^live`, `𝒫_br^cons` | P5 supplies in-plane momentum density and the material-carried contribution `ρ_br V^i V^j` to the in-plane current. | Any other in-plane momentum current, with general live dependence, counted beside the supplied current and P6 stress and containing neither again; normal/embedded responses and unresolved relations wherever unsupplied. The conservative antecedent is named, rather than added as another momentum species. |$
+   434	| Internal material force; `𝒯_br^live`, `𝒯_br^cons`, `𝒩_br^live`, `𝒜_rot^live`, `ℛ_ref/strain^live` | P6 supplies the full steady in-plane stress in its adopted pressure-plus-linear-viscous form, with the stated Cauchy traction/force convention. | Normal material response, conservative antecedents, reference evolution outside the adopted form, and rotational/couple/frame content wherever unsupplied. Their overlapping descriptions remain explicit within one material accounting object; no additional in-plane stress duplicates P6. |$
+   435	| Optical/material constitutive inputs; O1 `ℳ_⊥`, O7 `ℛ_br` | The density link supplies Part D's optical stiffness response only. | Brane-density response and every other unsupplied material or reduction identification. Parts A–C retain the v8 local profiles. |$
+   436	| Geometry, O4 `ℰ_h^live`, O6 `𝒥_map` | Supplied centre graph, `ξ_w=ℓh`, metric, constructed `U_graph` and neutral centre-graph restriction. | Live embedding/longitudinal relation and its unsettled identity with O2 normal content; native face geometry/measure, finite-thickness reduction, face/interior normal velocity content not determined by the graph, normal response and material/order/projection map. No second normal equation is imposed. |$
+   437	| Mechanical face/support loading; `T_hold,s`, `𝒯_bulk,n,s^live` | P4 supplies the bulk part's native direction only. | Full load/support partition, native normal-load amplitude, projections/maps and application-point velocities. No external support is selected by LAB_HELD. |$
+   438	| Exchange; O3 `Π_n`, S12 partners/reactions | P3 supplies the coordinate in-plane carry `j_n V^i`. | Additional momentum partners/reactions and bulk-direction carry with O6/normal material content, native geometry and unsupplied face-to-material velocities. Centre-graph parity supplies no reduced bulk-carry formula. Native convective transfer and the same O3 carry are not counted twice. |$
+   439	| Boundary/source/core inputs; O5 `ℋ_core`, `𝔅_A13` | P2 supplies the drain-drive representation only. | A13 branch; distinct local conversion/controller and boundary/domain inventories; physical core holder/mouth data and their response. Q2/S22 retain O5; S12 retains conversion and return partners. |$
+   477	**D5; O2-R §§4, 8.** The WL-only `ξ_w''` interpretation remains an **undischarged sub-step-7$
+   478	obligation returned to the orchestrator under M1**. This is an unresolved input qualification,$
+   479	distinct from ownership of a physical input. Each dependent Part D condition carries that status;$
+   480	no physical interpretation or reconciliation is supplied. The dependence inputs are explicit below.$
+   519	**O2 emission provenance and comparison limits (O2-R §§4–5, 8).** Retention against historical$
+   520	O2 emissions is comparator/record scope, outside engine construction from this spec. The historical$
+   521	content includes every named operand and complete live-object dependence from either O2 engine,$
+   522	the eight keys at every listed location, and PY-only native/chart and core/material-compatibility$
+   523	content. The explicit engine inputs above retain general admissible dependences independently of$
+   524	that finite inventory. The O2 difference ledger is unresolved wherever it bears on a condition.$
+   525	It includes one-sided material-compatibility actions in all four named energy rows;$
+   526	one-sided material density/flux actions in `energy_power`; four density/flux orientation differences$
+   527	in `energy_balance`; and density/flux occurrences inside `OPEN_JointPowerAccounting` in$
+   528	`energy_power` and `ℬ_E^steady` alongside separate `energy_balance` occurrences. Those differences$
+   529	travel with the force/power-compatibility and duplicate-power questions. No limited inventory match$
+   530	supplies full OPEN equality, compatibility or a duplicate-power conclusion. The returned interpretation$
+   531	and unsupplied physical inputs remain OPEN.$
+   532	$
+   533	**Requirement status (D5; O2-R §8).** An established sourced requirement is a condition on which the$
+   534	conditional object rests: a material/phase identification or an expressly carried accounting/$
+   535	admissibility obligation. Unsupplied closure forms remain OPEN. An unresolved engine difference$
+   536	alone supplies no requirement.$
+   537	$
+   538	## Model point and scope$
+   539	$
+   540	- **Optical model point.** As in "Setting": leading eikonal with the retained multigraded set above.$
+   541	  Part D's mechanical and inherited energy content retains its stated untruncated domain. Its results$
+   542	  are conditional on P5's adopted momentum carriage and P6's adopted steady pressure-plus-linear-viscous$
+   543	  form, with general live `η` and `ζ`. P6 is not derived from P1; power-law creep is outside this model$
+   544	  point, and relaxation outside the adopted form and energy accounting remain OPEN. Results do not$
+   545	  transfer to:$
+   546	  - the strong field;$
+   547	  - the throat mouth or interior;$
+   548	  - a moving or rotating mass;$
+   549	  - a drain that changes while light crosses;$
+   550	  - polarization transport;$
+   551	  - anisotropic or coupled branches.$
+```
+
+Exit code: `0`.
+
+```bash
+rg -n -i 'author|review|stop|launch|push|spawn|orchestrator|claude|build' research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md
+```
+
+```text
+8:**Authority and sources.** The base is v8 at `c2f1cf2b`, with its cited sources. The governing decisions
+164:  (`directives/S9_wl_rebuild_directive.md:359`; `steps/S10_two_transverse_photons.md:816–819`):
+478:obligation returned to the orchestrator under M1**. This is an unresolved input qualification,
+```
+
+Exit code: `0`.
+
+```bash
+git rev-parse 478b5e7b:research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md HEAD:research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md 79055918:research/pde_ledger_v3/directives/S9b_repair_decision_list.md HEAD:research/pde_ledger_v3/directives/S9b_repair_decision_list.md 72866fcf:research/pde_ledger_v3/steps/O2_steady_brane_balance.md HEAD:research/pde_ledger_v3/steps/O2_steady_brane_balance.md 4680e251:research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md HEAD:research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md 217a92e9:research/pde_ledger_v3/directives/O2_input_contract.md HEAD:research/pde_ledger_v3/directives/O2_input_contract.md
+```
+
+```text
+015d369c7226c1e351e5320c78e003f3563d993b
+015d369c7226c1e351e5320c78e003f3563d993b
+dd0cc090c5cd6486909617dbfacfd6e6baffdf2c
+dd0cc090c5cd6486909617dbfacfd6e6baffdf2c
+84745153f47d4fe2c07871af708be5aa4dd2658e
+84745153f47d4fe2c07871af708be5aa4dd2658e
+4ba41e1fc548c61d9f043fd37fbc6673df58c531
+4ba41e1fc548c61d9f043fd37fbc6673df58c531
+2b5f663e22fa25335e01c4ac66b60049366d74e3
+2b5f663e22fa25335e01c4ac66b60049366d74e3
+```
+
+Exit code: `0`.
+
+```bash
+git diff --check -- research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md
+```
+
+```text
+```
+
+Exit code: `0`.

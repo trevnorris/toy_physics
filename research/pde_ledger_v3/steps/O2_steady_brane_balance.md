@@ -1,15 +1,17 @@
 # O2 — conditional live steady brane momentum and support accounting
 
-**Author:** Codex, 2026-10-07. **Status:** record and requirements pass written; non-author record/pass
-review pending. The user authorized this authoring after the directive's one fold at `c9db665d` and
+**Author:** Codex, 2026-10-07. **Status:** repaired record and requirements pass written; non-author
+record/pass re-review pending. The reviewed r0 is preserved at `243a530f`. The user authorized this
+repair under the directive's one fold at `c9db665d` and
 instructed no commits, pushes or spawned agents. No record clearance is claimed.
 
 **Result:** the accepted engines construct an **untruncated conditional named** `ℬ_hold^live`, with
 in-plane, bulk-coordinate and graph-normal content, and paired `ℬ_E^steady` accounting. They do not
 derive a brane material law, solve the steady profiles, establish a physical holder, or close the
 momentum/energy responses. The filed comparator reports agreement of its closed scalar parts while
-preserving differences in OPEN content. An empty OPEN difference means only the printed inventories
-match. Sources: `O2_SHARED_PHYSICS.md`, §§1–10; engine acceptance `O2_build_r3_review_disposition.md`;
+preserving differences in OPEN content. All **234 paired action-role entries** have nonempty inventory
+differences; **0** have all-empty differences. Empty balance `OPEN_free` groups and empty fields mean
+only those printed inventories match. Sources: `O2_SHARED_PHYSICS.md`, §§1–10; engine acceptance `O2_build_r3_review_disposition.md`;
 comparator stream and acceptance `O2_comparator_build_r5_review_disposition.md`.
 
 Paths are relative to `research/pde_ledger_v3/`. Source filenames below are under `directives/`,
@@ -44,7 +46,10 @@ M0 `existence`; M1 `sources`; M2 `scope`; M3 `catalog`; M4 `shape`; M5 `index`; 
 M7 `inventory-limits`; M8 `closed-results`; M9 `unjoined`; M10 `accounting`; M11 `register`.
 Every command and its literal stdout is filed there. JSON projection retrieves stored values and
 reformats whitespace only; it performs no algebra, new comparison, normalization or reconciliation.
-The complete operands remain in the read-only production stream. All three annex transcripts exist
+Each projection is limited to the cited fields: source prose and label provenance (M1), differences
+(M6), role/orientation/OPEN-free entries (M7), outcomes/reasons and the six
+closed balance operands (M8). Common inventories and full raw operands remain in the read-only stream.
+All three annex transcripts exist
 in this checkout (M0); no engine or comparator was rerun.
 
 The engine acceptance reports the computed metric/inverse and `det g = 1+ξ′²`, graph normal from
@@ -126,31 +131,49 @@ relaxed-reference comparison remains **EXPLORATORY / PAUSED**, with its earlier 
 
 The stored catalog has **160 joins**, **45 action-role bindings**, **4 balances**, **50 name bindings**.
 The following counts are literal matches of printed `kind` tokens (M4), not a success score.
-Every row label/path and all printed accounting fields are retained in M5/M10; every printed
-difference, structural delta, residual and reason is retained in M6. No row is dropped because its
+Every joined row label/path and accounting field is retained in M3/M5; per-tag accounting is M10.
+Every printed difference and structural delta is retained in M6, every residual/outcome/reason in M8,
+and every unjoined path/reason in M9. No row is dropped because its
 residual is unformable or its difference is inconvenient.
 
 | Printed class | Count | What the record may take from it / retrieval |
 |---|---:|---|
 | `comparison_scope` | 1 | Printed comparison contract, reproduced in §5; M2. |
 | `operands` | 160 | Complete raw operands and declared paths in the original stream; paths and join catalog M3/M5. Presence does not establish equality. |
-| `structure` | 160 | Serialization diagnostics and OPEN action inventories/differences; all difference fields M6, occurrence limits M7. |
-| `residual` | 160 | Exact scalar, relation/container, or `not_formed` results and true reasons; M6/M8. `not_formed` is not zero. |
+| `structure` | 160 | Serialization diagnostics and OPEN action inventories/differences; all difference fields M6, comparison limits M1/M2. |
+| `residual` | 160 | Exact scalar, relation/container, or `not_formed` results and true reasons; M8. `not_formed` is not zero. |
 | `accounting` | 160 | Joined-row leaf coverage, not semantic agreement; M5/M10. |
 | `balance_operands` | 4 | Full operands for `hold_inplane`, `hold_bulk`, `hold_normal`, `energy_balance`; original stream and M3/M5. |
-| `balance_entries` | 6 | Three in-plane components and the bulk, graph-normal and energy objects; oriented entry inventories and limits M7. |
+| `balance_entries` | 6 | Three in-plane components and the bulk, graph-normal and energy objects; oriented entries M7, inventory differences M6, limits M1/M2. |
 | `balance_comparison` | 6 | Every per-role entry difference and closed-part residual; M6/M8. |
 | `unjoined` | 204 | Every unmatched occurrence/path and its printed reason; M9/M10. No residual or agreement is inferred. |
 | `stream_object_count` | 54 | Per-tag parsed/accounted/compared/unaccounted leaves; all printed in M5/M10. Their `unaccounted_leaves` fields are 0; accounted is not compared. |
 
-Closed scalar results print exact residual `0` on the determinant, supplied profile applications,
-explicit differentiated profiles/gradients and velocity gradients, mass-current/divergence/density/
-residual objects, epsilon and supported geometry/velocity/container leaves. Relation rows retain
-their relation and compare sides (`field_identity`, `mass_equation`); symbols/text/native booleans,
-unsupported heads and incompatible containers are `not_formed` with reasons. The unsolved mass
-residual's equality across engines does not say the supplied live profiles satisfy it. The full
-per-leaf outcome/operand values, including unformed coordinate/basis leaves and the compared
-optical-input relation sides, are M8; the authoritative full comparisons are M6. No new scalar residual is formed here.
+The **160 joined residual rows** print **136 exact-zero leaves**, **212 not formed**, and **no nonzero
+residual**. M4 counts the literal `exact`, `not_formed`, `"residual":"0"` and residual-key tokens within
+those rows; M8 retrieves every result, relation head, sibling-presence field and path. The six closed
+balance results below are a separate collection, not included in 136. The complete listing of rows
+with zero leaves is:
+
+| Rows | Printed exact-zero leaves / qualification |
+|---|---|
+| `tangents`, `graph_normal`, `metric`, `inverse_metric`, `metric_determinant` | 12, 4, 9, 9, 1 respectively. |
+| `field_identity`, `material_velocity`, `power_graph_velocity`, `optical_inputs`, `epsilon`, `optical_box` | 2, 4, 4, 4, 1, 36 respectively; relation rows compare sides. |
+| `mass_current`, `mass_divergence`, `mass_equation`, `mass_density`, `mass_residual`, `outward_mass_loss` | 3, 1, 2, 1, 1, 1 respectively; `mass_equation` compares its relation sides. |
+| `profile_V_r`, `profile_rho_br`, `profile_mu_perp`, `profile_xi_w`, `profile_h`, `profile_delta`, `profile_j_n`, `profile_f` | 1 each. |
+| `stiffness_profile_in_mass`, `constitutive_density_profile`, `constitutive_stiffness_profile` | 1 each. |
+| `differentiated_profile_0`, `differentiated_profile_1`, `differentiated_profile_2`; `profile_gradient_0_0`, `profile_gradient_0_1`, `profile_gradient_0_2`, `profile_gradient_1_0`, `profile_gradient_1_1`, `profile_gradient_1_2`, `profile_gradient_2_0`, `profile_gradient_2_1`, `profile_gradient_2_2` | 1 each. |
+| `velocity_gradient_0_0`, `velocity_gradient_0_1`, `velocity_gradient_0_2`, `velocity_gradient_1_0`, `velocity_gradient_1_1`, `velocity_gradient_1_2`, `velocity_gradient_2_0`, `velocity_gradient_2_1`, `velocity_gradient_2_2`, `velocity_gradient_3_0`, `velocity_gradient_3_1`, `velocity_gradient_3_2` | 1 each. |
+| `carried_momentum`, `drive_occurrences` | 3 each, with 1 and 13 not-formed leaves respectively; these are mixed rows. |
+| `drive_body_entries` | Matching empty container; retrieved `"children_keys":[]`. No residual leaf or body force follows. |
+
+The complete printed not-formed reason list, with literal counts in the joined residual rows (M4/M8),
+is **“held, OPEN or unsupported applied head” (92)**, **“named operand has no supplied scalar value”
+(34)**, **“container structure differs” (31)**, **“nested sibling absent” (27)**, **“text, native
+boolean or name is not a subtractable operand” (21)**, and **“bindings alone are not value evidence”
+(7)**. Unformed coordinate/basis leaves and all relation/container results remain in M8. The mass
+residual's equality across engines does not say the supplied live profiles satisfy it. No new scalar
+residual is formed here.
 
 All six balance comparisons print closed-part residual `0`: the in-plane closed operands are the
 three `j_n V^i` components; the bulk-coordinate and energy closed operands are `0`; the graph-normal
@@ -158,27 +181,62 @@ row prints the projection of in-plane carry, with its full operands retained. Th
 between the two **closed parts**, not proofs that a full material balance vanishes. OPEN entry
 differences remain printed on those same rows (M6/M8, stream lines 644, 646, 648, 651, 654, 657).
 
+For **each** balance component, the retrieved PY and WL role/orientation/OPEN-free entry multisets
+are identical; every per-role `head`, `role` and `orientation` difference field is `[]` (M6/M7).
+This is the printed entry classification only, under §5's orientation-reader limit:
+
+| Component / comparison stream line | PY / WL entries | Role and orientation differences | Remaining inventory differences |
+|---|---:|---|---|
+| `hold_inplane[0]` / 644 | 8 / 8 | All empty; matching one `OPEN_free` entry. | Named differences on all seven OPEN role groups; live differences on the three flux roles. |
+| `hold_inplane[1]` / 646 | 8 / 8 | All empty; matching one `OPEN_free` entry. | Named differences on all seven OPEN role groups; live differences on the three flux roles. |
+| `hold_inplane[2]` / 648 | 8 / 8 | All empty; matching one `OPEN_free` entry. | Named differences on all seven OPEN role groups; live differences on the three flux roles. |
+| `hold_bulk` / 651 | 8 / 8 | All empty; no `OPEN_free` entry. | Named differences on all eight role groups; live differences on the three flux roles. |
+| `hold_normal` / 654 | 32 / 32 | All empty; matching three `OPEN_free` entries. | Named differences on all 26 OPEN role groups; live differences on all twelve momentum-flux roles. |
+| `energy_balance` / 657 | 5 / 5 | All empty; no `OPEN_free` entry. | Named differences on all five role groups; live differences on all three energy-flux roles. |
+
+The matching `OPEN_free` groups have all-empty inventory differences. Every OPEN role group in every
+balance component has a nonempty named-operand difference. Separately, M4's literal paired-role
+marker counts **234** action-role entries and **0** all-empty difference dictionaries among them:
+all 234 have differences. Entry classification agreement and closed-part zeros do not establish
+agreement of any complete OPEN action or balance.
+
 ## 4. Complete difference ledger and classification
 
 M6 is the exhaustive difference ledger: each printed `serialization_differences`, residual
 `structural_delta`, action `differences`, and balance `entry_differences` is retrieved with its
-stream line, row, role/component and all signed values, including empty lists. M9 adds all 204
-unjoined paths/reasons. The following classification applies to **every item** in those collections;
+stream line, row, role/component and all signed values, including empty lists. M8 retains nested
+sibling-presence differences; M9 adds all 204 unjoined paths/reasons. The following classification
+applies to **every item** in those collections;
 it is not a selection of representative differences. Signs retain the comparator's PY-minus-WL
 inventory convention and do not measure a physical magnitude.
 
 | Printed difference | Classification, evidence and ownership |
 |---|---|
 | Every serialization hash/subtree delta and raw census/tree difference | **Serialization diagnostic only**, as the printed `raw_syntax_policy`, `serialization_scope` and `structural_delta_scope` explicitly state (M2/M6). This settles its diagnostic role, not equivalence of the complete physical objects. No physics is claimed from trace/provenance rows. |
-| Unpaired role/head syntax explicitly labelled “no cross-engine role binding; representation-specific action” | **Representational role-binding difference only to that stated extent** (M6). Includes PY domain/history/chart/reduction/rotational-work actions and WL native measure/tangent/unit-normal/hold actions. The accompanying named/live/orientation inventory differences are preserved below; the label does not prove their physical equivalence. |
+| Unbound role labelled “no cross-engine role binding; representation-specific action” | **OPEN cross-engine difference; no comparison formed; no owner named for adjudication.** Includes PY domain/history/chart/reduction/rotational-work actions and WL native measure/tangent/unit-normal/hold actions. The label is the comparator's role-table fallback, not a physics determination: L1108 assigns `engine::key` when its table has no binding; L1125–1126 assigns this label (M1/M6). No cited physics source settles these objects as merely representational. All accompanying head/named/live/orientation/role differences remain OPEN. |
 | Every nonempty `named_OPEN_operands` difference, including labels | **OPEN cross-engine content difference; no owner named for adjudication.** Includes material/stress/normal/rotational/energy operands and compatibility; core, bulk-state, source/boundary, reaction/support labels; native coordinates and WL unrestricted jet/history/native-dependence labels. Full names, signs and locations are M6. Physical-input owners are §7, not an assignment to reconcile engine differences. |
 | Every nonempty `live_arguments` difference | **OPEN cross-engine content difference; no owner named for adjudication.** Full profile/derivative order, evaluation argument and sign are M6. This includes native versus radial argument content, extra first-profile derivatives and the WL-only second derivative described below. No live key is collapsed to a name. |
-| Every nonempty matched-role head/role/orientation or balance-entry inventory difference not settled as representation-specific syntax above | **OPEN cross-engine difference; no owner named for adjudication.** M6 preserves every key and sign, including role-only/missing-role occurrences and their reasons. Repeated same-role unions are not per-occurrence comparisons. |
-| Every unjoined occurrence | **Uncompared emission/coverage difference**, with the literal reason in M9. Provenance/publication diagnostics, repeated labels/entry copies and declarations are representational only where that reason identifies them as such. All unmatched physical objects otherwise remain **OPEN cross-engine differences; no owner named for adjudication**. No counterpart is constructed from related emitted objects. |
+| Every nonempty matched-role head/role/orientation or balance-entry inventory difference | **OPEN cross-engine difference; no owner named for adjudication.** M6 preserves every key and sign, including role-only/missing-role occurrences and their reasons. Repeated same-role unions are not per-occurrence comparisons. |
+| Every nested sibling-presence difference | **Uncompared container/coverage difference**, `not_formed` with “nested sibling absent”; M8 retains each path and its `py_present` / `wl_present` fields. Physical content remains **OPEN cross-engine difference; no owner named for adjudication**. No absent sibling is constructed or counted as zero. |
+| Every unjoined occurrence | **Uncompared emission/coverage difference**, with the literal reason in M9. Raw/provenance-only diagnostics carry §5's explicitly settled diagnostic scope; the provenance pairing singled out by the acceptance supports no physics claim. Every unmatched physical emission, including entry copies/declarations lacking a compared counterpart, remains **OPEN cross-engine difference; no owner named for adjudication**. A code reason cannot settle physical equivalence. |
 
-In particular, M6's in-plane `MomentumCurrent`/`OPEN_MomentumFlux_i_j` balance entries print
-WL-only first derivatives of `V_r`, `δ`, `f`, `h`, `j_n`, `μ_⊥`, `ρ_br`, and `xi_w''(r)`;
-the `MaterialEnergyCurrent` entries likewise print differing live-derivative content. The comparator
+Every nonempty balance `live_arguments` difference consists of the following eight complete keys:
+`ProfileDerivative` of **`V_r`, `delta`, `f`, `h`, `j_n`, `mu_perp`, `o2_rho_br_live` at order 1**, and
+**`xi_w` at order 2**, all evaluated at the stored argument `sqrt(x1²+x2²+x3²)` and all with signed
+PY-minus-WL value **−1** (WL-only). M6 retains the full keys, including derivative order and argument.
+Each of those eight keys occurs in **every** role in the following exhaustive location table:
+
+| Balance component | Every entry key carrying all eight differences |
+|---|---|
+| `hold_inplane[0]` | `["OPEN_MomentumFlux_0_0"]`, `["OPEN_MomentumFlux_0_1"]`, `["OPEN_MomentumFlux_0_2"]` |
+| `hold_inplane[1]` | `["OPEN_MomentumFlux_1_0"]`, `["OPEN_MomentumFlux_1_1"]`, `["OPEN_MomentumFlux_1_2"]` |
+| `hold_inplane[2]` | `["OPEN_MomentumFlux_2_0"]`, `["OPEN_MomentumFlux_2_1"]`, `["OPEN_MomentumFlux_2_2"]` |
+| `hold_bulk` | `["OPEN_MomentumFlux_3_0"]`, `["OPEN_MomentumFlux_3_1"]`, `["OPEN_MomentumFlux_3_2"]` |
+| `hold_normal` | `["OPEN_MomentumFlux_0_0"]`, `["OPEN_MomentumFlux_0_1"]`, `["OPEN_MomentumFlux_0_2"]`, `["OPEN_MomentumFlux_1_0"]`, `["OPEN_MomentumFlux_1_1"]`, `["OPEN_MomentumFlux_1_2"]`, `["OPEN_MomentumFlux_2_0"]`, `["OPEN_MomentumFlux_2_1"]`, `["OPEN_MomentumFlux_2_2"]`, `["OPEN_MomentumFlux_3_0"]`, `["OPEN_MomentumFlux_3_1"]`, `["OPEN_MomentumFlux_3_2"]` |
+| `energy_balance` | `["OPEN_MaterialEnergyFlux_0"]`, `["OPEN_MaterialEnergyFlux_1"]`, `["OPEN_MaterialEnergyFlux_2"]` |
+
+All other balance entry live-difference arrays are empty; their named-operand differences remain.
+These are OPEN cross-engine content differences, with no owner named for adjudication. The comparator
 acceptance specifically calls the WL-only `xi_w''(r)` a **“cross-engine difference in OPEN content”**,
 with filed reviewer measurements `{{1, 43}, {2, 12}}` for WL XiW derivatives versus `{1: 105}` for
 PY `OPEN_MomentumFlux_*` occurrences (M1, acceptance's measurement section). These are quotations
@@ -186,9 +244,10 @@ of that evidence, not a new count or computation. **OPEN; no owner named for rec
 The named operands and all other live-key differences beside it remain open under the same ledger.
 
 The `generalized_rates` pair differs in scope: PY normal-only versus WL rotational plus normal;
-PY rotational work is unjoined. This is an **accepted scope/representation difference, not agreement
-of the complete generalized work**, settled only to that extent by the comparator acceptance and
-the unjoined reason (M1/M6/M9). Whether their complete work actions coincide remains OPEN, with
+PY rotational work is unjoined. This is an **OPEN cross-engine scope difference**, with the unequal
+scopes stated by the comparator acceptance and the unjoined reason retained (M1/M6/M9). Neither
+source settles it as a merely representational difference. Whether complete work actions coincide
+remains OPEN, with
 no owner named for cross-engine adjudication.
 
 M9 also preserves the distinct unjoined physical emissions: PY graph dual/area/embedding and
@@ -287,10 +346,18 @@ Sources: scoping §4; contract §10; spec §10 (M1).
 ## 8. Register pass and S9b Part D handoff
 
 The O2 pass is in [`SUBSTRATE_REQUIREMENTS.md`](../SUBSTRATE_REQUIREMENTS.md), with its schema,
-rest-on test and both population routes applied. **15 → 15 entries**, all OPEN; **no new entries by
-target**. Six existing entries gain O2 as a conditional source/carried obligation: `R-S1-02`,
+rest-on test and both population routes applied. **15 → 16 entries**, all OPEN; **new entry by
+target: no owner named — `R-O2-01`**, the physical net-power supplier and budget required alongside
+any conditional closure requiring net supply. Six existing entries gain O2 as a conditional
+source/carried obligation: `R-S1-02`,
 `R-S8-04`, `R-S8-05`, `R-S8-06`, `R-S12-01`, `R-S12-02`. Original domains, target inferences and
-pass-2 review qualification remain. Counts and before/after text are M11.
+pass-2 review qualification remain. `R-S12-01` carries only the separate conditional non-passive
+interface reservoir obligation, with no live owner named and its original S12 register inference
+qualified. Spec L282 names the net supplier/budget an O2 requirement while retaining the owners of
+source/holder/supplier forms; it names no delivery owner for that entire object. Spec L312–317 and
+contract L459–465 keep the non-passive condition separate. `R-S1-03` has no O2 source or change from
+the directive baseline: its qualifier is “register inference; no owner named by the records.”
+Counts and selected before/after entries, schema and population method are M11; cited physics is M1.
 
 The first route merges shared objects rather than turning each OPEN closure input into a new
 requirement. The four adopted premise values/forms retain their exact conditional-input label and
@@ -300,14 +367,38 @@ so there is no reproduced result whose historical objection generates a new entr
 MacCullagh admissibility/frame obligations are carried, not re-certified. No oracle check is done.
 No defect is inferred from a printed OPEN difference, and no ansatz ledger is edited.
 
-A later S9b Part D calculation may use the supplied live radial setting, coordinate mass law,
-graph/field identity, optical ratio/anchoring/counting and user-adopted premises 1–4, and may refer
-to the accepted emitted geometry, material velocity, in-plane carried momentum, named `ℬ_hold^live`
-component accounting and `ℬ_E^steady` with their full OPEN inputs and differences. It must keep
-coordinate versus graph-normal content distinct, use the same material/measure and compatible native
-maps, retain untruncated unknown terms/grades, avoid duplicate stress/exchange/power content, and
-name the supplier/budget if a closure requires net power. It may not take closed-part comparator
-zeros as a solved material state or full OPEN equality. Source: spec §§1–10 and M6/M8.
+A later S9b Part D calculation may rely on the following specifically bounded handoff (M1/M6–M9):
+
+| Content Part D may use or carry | Standing and conditions |
+|---|---|
+| Supplied radial setting, coordinate mass law, `ξ_w=ℓh`, optical speed ratio, LAB_HELD anchoring/counting, and premises 1–4 | Conditional inputs on §2's isolated-rest-mass, far-field `r>0`, Eulerian-steady, linear-optical/leading-eikonal domain. Premises remain adopted; optical grades and the monomial box do not truncate the mechanical/energy accounting. LAB_HELD supplies no holder. |
+| Compared centre-graph tangents/normal/metric/inverse/determinant; material and graph application velocities; supplied profile/gradient rows, coordinate mass rows and optical relation sides | Only the explicitly supported leaves listed in §3 have zero comparator residuals. This supplies no finite-thickness native-face geometry, completed normal map, inertia law, solved mass profile or broader transfer. All §2 measure, domain and historical-input qualifications travel with these objects. |
+| In-plane carried `j_n V^i` | Adopted premise 3, signed outward-loss convention, per coordinate `d³x`; three compared carried-momentum leaves. Bulk carry remains OPEN, and no carried-total-energy formula follows. |
+| `ℬ_hold^live` in-plane/bulk/graph-normal components and `ℬ_E^steady` | Conditional named accounting with matching printed role/orientation/OPEN-free entries and six compared closed-part residuals. All OPEN inventory differences persist; no complete momentum, normal, work or energy balance is established equal or solved. |
+| Native-face geometry/measure/normal/hold, finite-thickness map, bulk-direction exchange, generalized/rotational work and other unjoined physical emissions | OPEN, engine-specific candidate content only. Native geometry rows have not-formed residuals and differing inventories; unbound roles have no comparison formed. They are not part of the compared geometry above. No common native-face or complete-work object is established for adoption. |
+
+Part D must retain **every named operand and complete live-object dependence printed by either engine**,
+including all eight WL-only derivative keys at every location in §4 and all PY-only native/chart,
+core/material-compatibility content. It must also preserve the spec's general admissible live fields,
+gradients, entire material history and other native dependences (spec L124–125). Neither engine's
+finite OPEN inventory is the object's dependence list, and even taking both lists cannot impose a
+closed argument list or derivative/history cutoff. The full inventories/operands remain in the
+filed production stream; their differences are M6. No surrounding held calculus, coefficient algebra,
+position or multiplicity outside §5's inventory scope becomes a comparison result.
+
+The mass-law qualification travels explicitly: `∇·(ρ_br V)=−j_n` is a **coordinate-`d³x` measure**
+input. For a claim reading `j_n` or `ρ_br` per induced measure, or comparing an induced-metric mass
+law, the recorded qualification is a **relative `O(ε)` correction to `j_n`**, not a live O6 law;
+O2 supplies and derives **no induced-metric mass balance** (spec L330–336). Fixed-`ℓ` counting,
+independent orbital `GM`, only the stiffness/density ratio inheriting the speed-change grade, and
+first order in `f` with no `f`–`ε` relation also travel unchanged. Historical static/homogeneous,
+frozen/uniform or supplied-profile relations retain exactly §2's restricted domains.
+
+Part D must keep coordinate versus graph-normal content distinct, use the same material and measure
+with compatible native maps, retain untruncated unknown terms/grades, avoid duplicate stress/exchange/
+power content, and name the supplier/budget if a closure requires net power. Closed-part zeros and
+matching entry classifications supply neither a solved material state nor full OPEN equality.
+Source: spec §§1–10, contract §§1–10 and M6–M9.
 
 In particular, O2 supplies **no momentum-density map `ρ_br V`**. Its open inertia/momentum mapping
 cannot be cancelled or converted into a chosen advective kinetic law using the mass relation.
@@ -352,6 +443,7 @@ matched domains; and optical compatibility. Owners remain §7's, with **no owner
 cross-engine reconciliation and **unassigned** reference evolution/live non-passive successor.
 No computation beyond retrieval was performed for any of them.
 
-**STOP:** the finite authoring deliverables are written; the record/pass awaits Claude's non-author
-reviews under the repository workflow. No engine/comparator edits or reruns, CAS, S9b calculation,
-new review round, commit or push is part of this completed authoring task.
+**STOP:** the finite repair deliverables are written; the repaired record/pass awaits Claude's
+non-author re-review under the repository workflow. The retrieval generator was rerun. No engine/
+comparator edits or reruns, CAS, S9b calculation, new review round, commit or push is part of this
+completed repair task.

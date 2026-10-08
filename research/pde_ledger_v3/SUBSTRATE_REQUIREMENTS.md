@@ -2,11 +2,12 @@
 
 **Status: passes 1 (S9, S10) and 2 (S11, S11b-A/B, S11c PARTIAL) complete; pass-2 review pending.
 O2 pass populated 2026-10-07; its record/pass review is pending.**
-Fifteen entries, all OPEN. Pass 2 was populated 2026-10-05 from the kept results and their stated
+Sixteen entries, all OPEN. Pass 2 was populated 2026-10-05 from the kept results and their stated
 conditions; it does not close the substrate or upgrade S11c's unresolved work. Later sectors remain to
 be read as they close. The two 2026-08-07 prior-art entries retain their provenance; the second route is
 recorded under Population passes.
-O2 adds sources to six existing entries and adds no new entry; its four adopted premises retain their
+O2 adds sources to six existing entries and one separate supplier/budget entry with no owner named;
+its four adopted premises retain their
 conditional-input labels in the O2 pass below. Entry counts are retrieved in
 `steps/_measurements/O2_record_measurements.md`, M11.
 
@@ -78,10 +79,11 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 | **S8** | `R-S8-04` | what carries the brane's **internal angular momentum** | S9, S10, S11, O2 carried obligation |
 | **S8** | `R-S8-05` | the **frame** the brane's rotational stiffness is measured against | S9, S10, S11, O2 carried obligation |
 | **S8** *(register inference for original entry)* | `R-S8-06` | the material displacement and inertial response, with the original quadratic slab domain retained | S11, S11b-B, O2 |
-| **S12** *(register inference)* | `R-S12-01` | a named supplier/reservoir and its power budget, when supply is required | S11b-B / unified S11b, O2 |
+| **S12** *(register inference; no live owner named)* | `R-S12-01` | a reservoir and power budget if a non-passive interface response is adopted | S11b-B / unified S11b, O2 carried condition |
 | **S12** | `R-S12-02` | background drain/return and separate boundary data | S11b-A/B, S11c uniform, O2 |
+| **no owner named** | `R-O2-01` | the physical net-power supplier and its stated budget, if a conditional closure requires net supply | O2 |
 
-⚠ Entries below are in the order they were found, ⛔ not in step order. All **fifteen** are **OPEN**.
+⚠ Entries below are in the order they were found, ⛔ not in step order. All **sixteen** are **OPEN**.
 ⭐ `R-S8-01`, `-03`, `-04`, `-05` are one family: the stiffness functional's **form**, its **sign**, its
 **mechanical admissibility**, and its **reference frame**. ⛔ Delivering the form does not deliver the
 other three.
@@ -391,7 +393,7 @@ other three.
 
 - **source** S11b-B (`steps/S11bB_interface_assembly.md`, limits of the passive region), unified S11b
   (`steps/S11b_interface_coupling_law.md`, conditional Onsager–Casimir test) · **target** S1
-  (**register inference for the original S11/S11b records; O2 explicitly names S8**) · **status** OPEN
+  (**register inference; no owner named by the records**) · **status** OPEN
 - **requirement** — whether the substructure's microdynamics is time-reversible, the premise of the
   conditional Onsager–Casimir relation `Λ_X(ω) = −Λ_V(ω)`.
 - **on failure** — that relation cannot be imposed on the physical interface as an unconditional law.
@@ -435,7 +437,7 @@ other three.
   (`steps/S11b_interface_coupling_law.md`, passivity region) · **target** S12
   (**register inference**) · **status** OPEN
 - **requirement** — a named reservoir and a stated power budget for any adopted non-passive interface
-  coupling; for O2, a named physical supplier and its budget if a closure requires net supply.
+  coupling.
   The unified record names the candidate: *"The model supplies a candidate reservoir — the
   background drain `v₀`."* (`steps/S11b_interface_coupling_law.md:62–63`). That `v₀` is the bulk's normal
   drain, standard name `v_bulk_normal_0` (`directives/S11b_SHARED_PHYSICS.md:101–104`;
@@ -449,14 +451,13 @@ other three.
   B says that is unbuilt and reports only a structural test, so no numerical-bound requirement is added.
 - **owner/target** — the records do not name S12; that target is a register inference. They hand the
   reservoir-and-budget condition to *"S11b-C"* (`steps/S11bB_interface_assembly.md:195–197`).
-- **O2 scope** — Adopted premise 1 requires explicit reference/relaxation power with sign OPEN and
-  a named supplier plus stated budget for any net supply. O2 carries OPEN `𝒮_E,net` and `𝒫_E,supply`;
-  no net supply is measured and naming the drain provides no budget. The object is merged here rather
-  than creating a second power-budget entry. Without the supplier/budget, a conditional closure
-  requiring net supply cannot be claimed physically supplied. This adds neither a passive sign nor
-  a relaxation law. The separate non-passive-interface condition remains conditional and its live
-  successor owner remains unassigned; S12 is still only the original register inference
-  (`directives/O2_SHARED_PHYSICS.md`, §6; `directives/O2_input_contract.md`, §8).
+- **O2 scope** — O2 carries this same conditional non-passive-interface obligation: if a later
+  closure adopts that response, name its reservoir and state its power budget. No such response is
+  selected. Its live owner is **no owner named**; the historical S11b-C → S11c handoff has no recorded
+  live successor, and S12 remains only the original register inference. This object is separate
+  from S12's additional non-variational source partners, premise 1's relaxation power, and the
+  net-supplier/budget obligation `R-O2-01`
+  (`directives/O2_SHARED_PHYSICS.md:312–317`; `directives/O2_input_contract.md:459–465`).
 
 ### R-S12-02 — background drain/return and separate boundary data
 
@@ -487,6 +488,25 @@ other three.
   these data, the live `𝒥_map`, bulk-direction carry, energy partners or a `GM` coupling
   (`directives/O2_SHARED_PHYSICS.md`, §§3.3, 5, 6, 10). Those remain OPEN handoffs, not extra entries
   merely because a later profile solve would need them.
+
+### R-O2-01 — the net-power supplier and its stated budget
+
+- **source** O2 (`steps/O2_steady_brane_balance.md`, energy accounting and register handoff)
+  · **target** no owner named · **status** OPEN
+- **requirement** — the physical supplier of net power and its stated power budget, represented by
+  the OPEN `𝒮_E,net` / `𝒫_E,supply` inputs, accompanying any conditional closure requiring net supply.
+- **on failure** — such a closure cannot be claimed physically supplied. Naming the drain alone
+  supplies neither available energy nor a budget; O2 measures no net supply and imposes no passive
+  sign or relaxation law.
+- **owner** — the spec calls this an **O2 requirement; source/holder/supplier forms retain their
+  owners** (`directives/O2_SHARED_PHYSICS.md:282`). It names no future owner of the net-supplier/budget
+  object. S12 source forms and Q2/S22 holder forms keep their separate assignments; none is assigned
+  this entire obligation.
+- **scope** — this is an accounting requirement on conditional relations requiring net supply,
+  fixed by adopted premise 1, not a derived supplier, budget value or additive energy-channel law.
+  It is separate from the conditional non-passive-interface reservoir obligation `R-S12-01` and
+  from explicit reference/relaxation power with its unassigned reference owner
+  (`directives/O2_SHARED_PHYSICS.md:270–282, 307–317`; `directives/O2_input_contract.md`, §8).
 
 ---
 
@@ -622,18 +642,22 @@ calibration of the draining model.
 Source: `steps/O2_steady_brane_balance.md`, §§1–8; governing inputs and accepted constructions/comparator
 are identified there. Commands and literal retrieval output: `steps/_measurements/O2_record_measurements.md`,
 M1, M6, M8–M11; generator `scripts/O2_record_measurements.py`. The pass follows this register's schema,
-rest-on test and both routes. **15 → 15 entries**, all OPEN. **New entries by target: none.** Six existing
+rest-on test and both routes. **15 → 16 entries**, all OPEN. **New entries by target: no owner named,
+`R-O2-01`.** Six existing
 entries gain the O2 source: `R-S1-02`, `R-S8-04`, `R-S8-05`, `R-S8-06`, `R-S12-01`, `R-S12-02`.
 Original target inferences and review qualifications are retained; no DELIVERED or RETIRED status is assigned.
 
 **First route / rest-on test.** The constructed result is an untruncated conditional accounting object,
 not a selected live material law or solved steady state. Its material identity, adopted shear-bearing/
-shear-free setting, retained angular-momentum/frame obligations, conditional supplier/budget obligation
+shear-free setting, retained angular-momentum/frame obligations, conditional non-passive-interface obligation
 and distinct native source/boundary needs merge into the six objects above. `R-S8-06` retains its
 original homogeneous quadratic/slab scope while adding the flowing inertial-response condition;
-it does not impose that quadratic form on live O2. `R-S12-01` retains the distinction between net
-power, relaxation power and the conditional non-passive interface obligation, including the latter's
-unassigned live successor. None of these sources proves the substrate can deliver the object.
+it does not impose that quadratic form on live O2. `R-S12-01` carries only the conditional non-passive
+interface reservoir obligation, with no live owner named. The distinct O2 net-supplier/budget
+requirement is `R-O2-01`, with no owner named for its delivery; spec §6 expressly requires that object
+to accompany any relation requiring net supply. It is entered on that rest-on condition, not simply
+because a future solve might use it. Relaxation power remains separately explicit and its reference
+owner unassigned. None of these sources proves the substrate can deliver the object.
 
 The four user-selected choices have the exact provenance label **adopted substrate input to a
 conditional model (2026-10-06)** (`directives/O2_premise_decision_list.md`, premises 1–4). They are

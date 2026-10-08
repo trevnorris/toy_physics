@@ -990,9 +990,9 @@ OPEN_SCOPE = {
                            'live_profiles_and_derivatives_at_arguments'],
     'empty_difference_means':'only these inventories match',
     'not_compared':['where an object sits among OPEN arguments','how many times an object occurs',
-                    'argument content outside these inventories, including profile-free velocity or metric algebra'],
+                    'content outside these inventories in OPEN occurrences and balance entries: profile-free velocity or metric algebra; held derivative or variation variables; held aggregate sets and binders; scalar coefficients beyond their orientation sign; provenance, constructor options and other syntax. Named objects or complete live-object keys within that content are still inventoried, but the surrounding content is not compared'],
     'occurrence_indices':'local engine enumeration only; no cross-engine argument or occurrence slot pairing',
-    'leaf_policy':'parsed terminal nodes and constructor options; consumed leaves construct a role/head, named operand/label, or complete live-object key; options, binder declarations outside a live key, provenance and other syntax are outside; no leaf is counted twice',
+    'leaf_policy':'parsed terminal nodes and constructor options; consumed leaves construct a role/head wherever the action sits, a named operand/label, or a complete live-object key. Options, binder declarations outside a live key, provenance and other syntax are outside. Inactive operator spelling is outside unless it constructs a declared role/head. Numeric coefficients remain outside even when their sign is inventoried; no leaf is counted twice',
     'raw_syntax_policy':'raw trees, censuses and serialization hashes are diagnostics, not additional OPEN comparisons',
 }
 
@@ -1021,7 +1021,7 @@ def inventory_details(n,bindings,engine):
         if v.head=='Subs':
             return bool(v.args) and candidate(v.args[0])
         return (v.head=='Apply' and v.args[0].head in ('Prime','Apply'))
-    def visit(v,scope,root=False,head=False):
+    def visit(v,scope,head=False):
         if candidate(v):
             canonical=feature_tree(v,bindings,engine,scope)
             if canonical.head in ('LiveProfile','ProfileDerivative'):
@@ -1053,22 +1053,29 @@ def inventory_details(n,bindings,engine):
             return visit(v.args[0],local)+sum(visit(x,scope) for x in members(v.args[2]))
         if v.head=='Apply':
             key=action_key(v,engine)
+            if engine=='wl' and v.args[0]==atom('Symbol','OPEN'):
+                # OPEN[name, provenance] is a descriptor even when it also
+                # supplies a structural action role. Never visit its metadata.
+                if len(v.args)<2:
+                    return 0
+                return (algebra_leaves(v.args[0]) if key is not None else 0) + visit(v.args[1],scope)
+            if engine=='wl' and head and v.args[0]==atom('Symbol','Inactive'):
+                # Inactive[D] / Inactive[Map] are operator heads, not operands.
+                return 0
             start=2 if engine=='wl' and v.args[0]==atom('Symbol','OpenAction') else 1
             if key is not None:
-                own_head=sum(algebra_leaves(x) for x in v.args[:start]) if root else 0
-                if root and key.startswith('native:'):
+                own_head=sum(algebra_leaves(x) for x in v.args[:start])
+                if key.startswith('native:'):
                     # OpenNativeField[OPEN[name, provenance]]: only these
                     # three name leaves identify the role, not its provenance.
                     native_head=v.args[0]
                     descriptor=native_head.args[1]
                     own_head=sum(algebra_leaves(x) for x in
-                                 (native_head.args[0],descriptor.args[0],descriptor.args[1]))
+                                 (native_head.args[0],descriptor.args[0]))+visit(descriptor.args[1],scope)
                 return own_head+sum(visit(x,scope) for x in v.args[start:])
-            if engine=='wl' and v.args[0]==atom('Symbol','OPEN'):
-                return visit(v.args[1],scope) if len(v.args)>1 else 0
             return sum(visit(x,scope,head=i==0) for i,x in enumerate(v.args))
         return sum(visit(x,scope) for x in v.args)
-    consumed=visit(n,{},root=True)
+    consumed=visit(n,{})
     parsed=parsed_leaves(n)
     fields={'named_OPEN_operands':names,'live_arguments':Counter({k:1 for k in live_counts})}
     limit={'repeated_live_objects':{k:v for k,v in live_counts.items() if v>1},

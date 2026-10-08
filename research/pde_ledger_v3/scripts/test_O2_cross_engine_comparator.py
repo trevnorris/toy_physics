@@ -828,6 +828,121 @@ class Controls(unittest.TestCase):
             self.assertGreater(after['outside_inventory_leaves'],before['outside_inventory_leaves'])
             self.assertEqual(after['parsed_leaves'],after['inventory_consumed_leaves']+after['outside_inventory_leaves'])
 
+    def balance_entries(self,result,engine):
+        return next(r['entries'][engine] for r in result[1] if r['kind']=='balance_entries')
+
+    def balance_orientation_control(self,engine,wrap):
+        py=fn('OPEN_MomentumDensity_0',sy('I_br_live'))
+        wl='OpenAction[MomentumDensity[1],{IBrLive}]'
+        action=py if engine=='py' else wl
+        negative='Mul(Integer(-1),'+action+')' if engine=='py' else '-('+action+')'
+        def run(body):
+            return self.fixture(wrap(body) if engine=='py' else py,
+                                wrap(body) if engine=='wl' else wl,balance=True)
+        before,after=run(action),run(negative)
+        def orientations(result):
+            return [e['orientation'] for e in self.balance_entries(result,engine) if not e['open_free']]
+        self.assertEqual(orientations(before),[1])
+        self.assertEqual(orientations(after),[-1])
+        # Check both the entry's printed scalar and its computed inventory.
+        entries=[e for e in self.balance_entries(after,engine) if not e['open_free']]
+        self.assertEqual(entries[0]['inventories']['orientation'],{'-1':1})
+        self.assertNotEqual(self.balance_products(before)[0]['entry_differences'],
+                            self.balance_products(after)[0]['entry_differences'])
+
+    def test_balance_plain_sum_orientation(self):
+        self.balance_orientation_control('py',lambda a:'Add('+a+',Integer(3))')
+        self.balance_orientation_control('wl',lambda a:a+'+3')
+
+    def test_balance_derivative_body_orientation(self):
+        self.balance_orientation_control('py',lambda a:'Derivative('+a+',Tuple(Symbol("x1"),Integer(1)))')
+
+    def test_balance_lambda_body_orientation(self):
+        self.balance_orientation_control('py',lambda a:'Lambda(Tuple(Symbol("o2_s_face")),'+a+')')
+
+    def test_balance_native_sum_body_orientation(self):
+        self.balance_orientation_control('py',lambda a:fn('OPEN_SumOverAllNativeFaces',sy('J_map')+','+a))
+
+    def test_balance_variation_body_orientation(self):
+        self.balance_orientation_control('wl',lambda a:'OpenFirstVariation['+a+',x1]')
+
+    def test_balance_function_body_orientation(self):
+        self.balance_orientation_control('wl',lambda a:'Function[{s},'+a+']')
+
+    def test_balance_inactive_total_orientation(self):
+        self.balance_orientation_control('wl',lambda a:'Inactive[Total]['+a+']')
+
+    def test_balance_inactive_map_orientation(self):
+        self.balance_orientation_control('wl',lambda a:'Inactive[Map]['+a+',x1]')
+
+    def test_balance_inactive_d_orientation(self):
+        self.balance_orientation_control('wl',lambda a:'Inactive[D]['+a+',x1]')
+
+    def test_named_inventory_excludes_structural_provenance(self):
+        py=fn('OPEN_UnfixedNormalGeneralizedRates',sy('I_br_live'))
+        wl='OPEN[UnspecifiedRotationalNormalRates,<|"Spec"->"6","Premises"->"3,8"|>]'
+        for wrap in (lambda a:a,lambda a:'-('+a+')',lambda a:'Inactive[D]['+a+',x1]'):
+            result=self.fixture(py,wrap(wl),balance=True)
+            entry=self.balance_entries(result,'wl')[0]
+            self.assertEqual(entry['inventories']['named_OPEN_operands'],
+                             {'wl::UnspecifiedRotationalNormalRates':1})
+            limit=entry['limit']
+            self.assertEqual(limit['inventory_consumed_leaves'],2)
+            self.assertEqual(limit['outside_inventory_leaves'],limit['parsed_leaves']-2)
+            occurrence=next(r for r in result[1] if r['kind']=='structure')['action_comparison']
+            own=next(r for r in occurrence if r['role']=='OPEN_UnfixedNormalGeneralizedRates')
+            # Association keys are retained as record names, not terminal leaves.
+            self.assertEqual(own['occurrences']['wl'][0]['limit']['outside_inventory_leaves'],2)
+
+    def test_named_inventory_excludes_inactive_operators(self):
+        py=fn('OPEN_MomentumDensity_0',sy('I_br_live')+",Str('unbound_label')")
+        wl='OpenAction[MomentumDensity[1],{OPEN[IBrLive,<|"Spec"->"3.2"|>],"unbound_label"}]'
+        for wrap,extra in ((lambda a:'Inactive[D]['+a+',x1]',3),
+                           (lambda a:'Inactive[Map][Function[{s},'+a+'],x1]',5)):
+            result=self.fixture(py,wrap(wl),balance=True)
+            entry=self.balance_entries(result,'wl')[0]
+            self.assertEqual(entry['inventories']['named_OPEN_operands'],{'I_br_live':1,'wl::unbound_label':1})
+            # OpenAction + MomentumDensity[1] + operand + label = five leaves;
+            # OPEN syntax/provenance and the enclosing operator are outside.
+            self.assertEqual(entry['limit']['inventory_consumed_leaves'],5)
+            self.assertEqual(entry['limit']['outside_inventory_leaves'],2+extra)
+            # Operator heads inside an action payload are likewise syntax.
+            nested=self.open_pair(sy('I_br_live'),wrap(wl))
+            names=next(r for r in nested[1] if r['kind']=='structure')['action_comparison']
+            self.assertFalse(any(k in r['wl'].get('named_OPEN_operands',{}) for r in names
+                                 for k in ('wl::D','wl::Map','wl::Inactive')))
+
+    def test_limit_consumes_wrapped_role_heads(self):
+        py=fn('OPEN_MomentumDensity_0',sy('I_br_live'))
+        wl='OpenAction[MomentumDensity[1],{IBrLive}]'
+        for engine,base,wrappers in (
+            ('py',py,((lambda a:'Mul(Integer(-1),'+a+')',1),
+                      (lambda a:'Derivative('+a+',Tuple(Symbol("x1"),Integer(1)))',2))),
+            ('wl',wl,((lambda a:'-('+a+')',1),(lambda a:'Inactive[D]['+a+',x1]',3)))):
+            baseline=self.fixture(py,wl,balance=True)
+            original=self.balance_entries(baseline,engine)[0]['limit']
+            for wrap,extra in wrappers:
+                result=self.fixture(wrap(base) if engine=='py' else py,
+                                    wrap(base) if engine=='wl' else wl,balance=True)
+                limit=self.balance_entries(result,engine)[0]['limit']
+                self.assertEqual(limit['inventory_consumed_leaves'],original['inventory_consumed_leaves'])
+                self.assertEqual(limit['outside_inventory_leaves'],original['outside_inventory_leaves']+extra)
+                self.assertEqual(limit['parsed_leaves'],limit['inventory_consumed_leaves']+limit['outside_inventory_leaves'])
+
+    def test_limit_names_uncompared_wrappers(self):
+        py=fn('OPEN_MomentumFlux_0_0',sy('I_br_live'))
+        wl='OpenAction[MomentumCurrent[1,1],{IBrLive}]'
+        base=self.fixture('Derivative('+py+',Tuple(Symbol("x1"),Integer(1)))',wl,balance=True)
+        changed=self.fixture('Derivative('+py+',Tuple(Symbol("x2"),Integer(1)))',wl,balance=True)
+        self.assertEqual(self.action_deltas(base),self.action_deltas(changed))
+        self.assertEqual(self.balance_products(base)[0]['entry_differences'],
+                         self.balance_products(changed)[0]['entry_differences'])
+        scope=next(r['OPEN_limit'] for r in base[1] if r['kind']=='comparison_scope')
+        limit=' '.join(scope['not_compared'])
+        for phrase in ('held derivative or variation variables','held aggregate sets and binders',
+                       'scalar coefficients','provenance','constructor options','other syntax'):
+            self.assertIn(phrase,limit)
+
     def test_output_has_no_verdict_tokens(self):
         import re
         result=self.open_pair(fn('V_r',sy('x1')),'VR[x1]',balance=True)

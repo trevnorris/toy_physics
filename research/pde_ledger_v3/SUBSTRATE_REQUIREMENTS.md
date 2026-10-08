@@ -649,12 +649,12 @@ calibration of the draining model.
 
 Source: `steps/O2_steady_brane_balance.md`, §§1–9; governing inputs and accepted constructions/comparator
 are identified there. Commands and literal retrieval output: `steps/_measurements/O2_record_measurements.md`,
-M1, M6, M8–M12; generator `scripts/O2_record_measurements.py`. The pass follows this register's schema,
+M1, M4, M6–M12; generator `scripts/O2_record_measurements.py`. The pass follows this register's schema,
 rest-on test and both routes. **15 → 16 entries**, all OPEN. **New entries by target: no owner named,
 `R-O2-01`.** Six existing
 entries gain the O2 source: `R-S1-02`, `R-S8-04`, `R-S8-05`, `R-S8-06`, `R-S12-01`, `R-S12-02`.
 Original target inferences and review qualifications are retained; no DELIVERED or RETIRED status is assigned.
-Repair 3 against preserved r2 `9eff4ae5` is **16 → 16**: no new entries by target and no newly sourced
+Repair 4 against preserved r3 `7ce97e8a` is **16 → 16**: no new entries by target and no newly sourced
 existing entry in this repair. The O2 source on `R-S8-06` remains limited to material identification.
 
 **First route / one rest-on criterion.** Enter an O2 source only for a sourced condition on which the
@@ -712,6 +712,11 @@ quadratic form/sign, mode-count, compression, width and EOS entries gain no new 
 All cross-engine OPEN-content differences remain open; they are not recorded as substrate defects.
 The pass inherits the record's whole difference ledger and its comparison bounds (§§3–5), carried
 with each applicable accounting/admissibility condition in its Part D handoff (§8). In particular,
+the record's literal counts agree only at the joint stored `(role, orientation, open_free)`
+classification tuple count level (M7). The comparator prints empty head/role/orientation differences
+at the unioned balance-role inventory level (M6), and zeros at the balance closed-part level (M8).
+Its single `hold_normal`/`OPEN_free` comparison does not compare the three stored occurrences
+per engine separately. These bounds travel with every condition below:
 the power-accounting conditions retain the eight one-sided declared-role actions, the four paired
 `energy_balance` action-orientation differences `[["argument",1]]` (stream line 207), and the stored
 PY density/flux nesting in `OPEN_JointPowerAccounting` in `energy_power` and `energy_balance`

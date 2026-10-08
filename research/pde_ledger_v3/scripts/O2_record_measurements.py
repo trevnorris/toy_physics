@@ -23,10 +23,24 @@ OUTPUT = V3 / 'steps/_measurements/O2_record_measurements.md'
 STREAM = V3 / 'scripts/out/O2_cross_engine_comparator.out'
 REGISTER = 'research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md'
 BASELINE = 'c9db665d'
-REPAIR_BASELINE = '9eff4ae5'
+REPAIR_BASELINE = '7ce97e8a'
 DECLARED_ROLE_ABSENT = 'no occurrence of this declared role in the other operand'
 ENERGY_ROLES = ('OPEN_MaterialEnergyDensity', 'OPEN_MaterialEnergyFlux_0',
                 'OPEN_MaterialEnergyFlux_1', 'OPEN_MaterialEnergyFlux_2')
+ZERO_LEAF_ROWS = (
+    'tangents', 'graph_normal', 'metric', 'inverse_metric', 'metric_determinant',
+    'field_identity', 'material_velocity', 'power_graph_velocity', 'optical_inputs',
+    'epsilon', 'optical_box', 'mass_current', 'mass_divergence', 'mass_equation',
+    'mass_density', 'mass_residual', 'outward_mass_loss',
+    *(f'profile_{name}' for name in ('V_r', 'rho_br', 'mu_perp', 'xi_w', 'h',
+                                  'delta', 'j_n', 'f')),
+    'stiffness_profile_in_mass', 'constitutive_density_profile',
+    'constitutive_stiffness_profile',
+    *(f'differentiated_profile_{i}' for i in range(3)),
+    *(f'profile_gradient_{i}_{j}' for i in range(3) for j in range(3)),
+    *(f'velocity_gradient_{i}_{j}' for i in range(4) for j in range(3)),
+    'carried_momentum', 'drive_occurrences',
+)
 
 SOURCES = [
     'directives/O2_steady_brane_balance_scoping.md',
@@ -90,16 +104,21 @@ def lookup(name):
                         13 <= number <= 26 or 45 <= number <= 57):
                     continue
                 if rel.endswith('O2_comparator_build_r5_review_disposition.md') and not (
-                        number <= 12 or 62 <= number <= 92):
+                        number <= 12 or 44 <= number <= 51 or 62 <= number <= 92):
                     continue
-                if rel.endswith('O2_record_directive.md') and not (50 <= number <= 60):
+                if rel.endswith('O2_record_directive.md') and not (
+                        50 <= number <= 60 or 72 <= number <= 79):
                     continue
-                print(f'{number}: {line}')
+                print(f'{number}: {line}' if line else f'{number}:')
+        print('\nSOURCE CLAUDE.md (M1 orchestrator-side finding)')
+        for number, line in enumerate((ROOT / 'CLAUDE.md').read_text().splitlines(), 1):
+            if 73 <= number <= 76:
+                print(f'{number}: {line}' if line else f'{number}:')
         rel = 'scripts/O2_cross_engine_comparator.py'
-        print('\nSOURCE ' + rel + ' (role-binding label provenance)')
+        print('\nSOURCE ' + rel + ' (union and role-binding label provenance)')
         for number, line in enumerate((V3 / rel).read_text().splitlines(), 1):
-            if 1100 <= number <= 1129:
-                print(f'{number}: {line}')
+            if number == 999 or 1087 <= number <= 1093 or 1100 <= number <= 1129:
+                print(f'{number}: {line}' if line else f'{number}:')
     elif name == 'catalog':
         # Complete stored catalog, not a newly inferred join map.
         print((V3 / 'scripts/out/O2_cross_engine_comparator_catalog.json').read_text(), end='')
@@ -151,9 +170,18 @@ def lookup(name):
                 print(f"STREAM_LINE {number} ROW {obj['row']} COMPONENT {obj['component']}")
                 for engine, entries in obj['entries'].items():
                     dump({'stored_object': 'entries/' + engine, 'length': len(entries)})
-                    for entry in entries:
-                        dump({'engine': engine, **fields(entry, (
-                            'role', 'orientation', 'open_free'))})
+                    # Literal counts of the joint stored classification fields,
+                    # separately for each engine. No pairing or comparison of
+                    # entries, inventories, or these count lists is computed.
+                    literals = [json.dumps(fields(entry, ('role', 'orientation', 'open_free')),
+                                           ensure_ascii=False, separators=(',', ':'))
+                                for entry in entries]
+                    dump({'stored_object': 'entries/' + engine,
+                          'literal': '"open_free":true',
+                          'count': sum(literal.count('"open_free":true') for literal in literals)})
+                    for literal in dict.fromkeys(literals):
+                        dump({'stored_object': 'entries/' + engine,
+                              'literal': literal, 'count': literals.count(literal)})
     elif name == 'energy-action-context':
         # Only stored orientation fields, occurrence-collection shape, and
         # literal function-name nodes/paths bearing on the energy handoff.
@@ -224,6 +252,7 @@ def lookup(name):
                              for reason in reasons))
         counts = {kind: 0 for kind in kinds}
         residual_counts = {token: 0 for token in residual_tokens}
+        row_leaf_counts = []
         paired = empty_paired = 0
         paired_field_tokens = ('"head":[]', '"role":[]', '"orientation":[]',
                                '"orientation":[["argument",1]]')
@@ -231,12 +260,20 @@ def lookup(name):
         absent_token = '"unpaired_reason":' + json.dumps(DECLARED_ROLE_ABSENT)
         absent_count = 0
         empty_delta = '{"head":[],"live_arguments":[],"named_OPEN_operands":[],"orientation":[],"role":[]}'
-        for _, obj, line in rows():
+        for number, obj, line in rows():
             for kind in kinds:
                 counts[kind] += line.count('"kind":"' + kind + '"')
             if obj['kind'] == 'residual':
                 for token in residual_tokens:
                     residual_counts[token] += line.count(token)
+                if obj['row'] in ZERO_LEAF_ROWS:
+                    tokens = ('"residual":"0"',)
+                    if obj['row'] in ('carried_momentum', 'drive_occurrences'):
+                        tokens += ('"outcome":"not_formed"',)
+                    for token in tokens:
+                        row_leaf_counts.append({'stream_line': number, 'row': obj['row'],
+                                                'stored_object': 'comparison',
+                                                'literal': token, 'count': line.count(token)})
             elif obj['kind'] == 'structure':
                 absent_count += line.count(absent_token)
                 for action in obj['action_comparison']:
@@ -253,6 +290,8 @@ def lookup(name):
             dump({'stored_object': 'stream', 'literal': '"kind":"' + kind + '"', 'count': count})
         for token, count in residual_counts.items():
             dump({'stored_object': 'stream/residual rows', 'literal': token, 'count': count})
+        for count in row_leaf_counts:
+            dump(count)
         dump({'stored_object': 'structure/action_comparison',
               'literal': '"unpaired_reason":null', 'count': paired})
         dump({'stored_object': 'paired structure/action_comparison',
@@ -273,6 +312,7 @@ def lookup(name):
         for label, content in ((BASELINE, before), (REPAIR_BASELINE, reviewed), ('working-tree', after)):
             print('REGISTER ' + label)
             dump({'literal': '### R-', 'count': content.count('### R-')})
+            dump({'literal': '**status** OPEN', 'count': content.count('**status** OPEN')})
             selected = False
             for line in content.splitlines():
                 if line.startswith('### '):
@@ -301,7 +341,7 @@ SECTIONS = (
     ('M2 Printed comparison scope', 'scope'), ('M3 Stored catalog', 'catalog'),
     ('M4 Row classes, joins and literal counts', 'shape'), ('M5 Joined-row paths and accounting', 'index'),
     ('M6 Every printed difference', 'differences'),
-    ('M7 Oriented balance entries', 'inventory-limits'),
+    ('M7 Literal counts of stored balance-entry classification tuples', 'inventory-limits'),
     ('M8 Closed results and reasons for unformed residuals', 'closed-results'),
     ('M9 Every unjoined path and its printed reason', 'unjoined'),
     ('M10 Filed accounting', 'accounting'), ('M11 Register before and after', 'register'),

@@ -143,18 +143,20 @@ class Controls(unittest.TestCase):
     def test_duplicate_join_rejected(self):
         r = c.J('a','L','R/k',1,1,'fixture')
         with self.assertRaises(c.InputError):
-            c.validate_tables((r,r),())
+            self.streams('PY_O2_L: Integer(2)\n','WL_O2_R: <|"k"->2|>\n',(r,r),names=())
 
     def test_parent_child_join_rejected(self):
         with self.assertRaises(c.InputError):
-            c.validate_tables((c.J('a','L','R/a',1,1,'fixture'),
-                               c.J('b','L/x','R/b',1,1,'fixture')),())
+            self.streams('PY_O2_L: Tuple(Tuple(Str("x"),Integer(2)))\n',
+                         'WL_O2_R: <|"a"->2,"b"->3|>\n',
+                         (c.J('a','L','R/a',1,1,'fixture'),
+                          c.J('b','L/x','R/b',1,1,'fixture')),names=())
 
     def test_duplicate_name_rejected_both_sides(self):
         r = c.NAME_TABLE[0]
         for extra in (replace(r,wl='Other'),replace(r,py='Other')):
             with self.assertRaises(c.InputError):
-                c.validate_tables((),(r,extra))
+                self.fixture('Integer(2)','2',names=(r,extra))
 
     def test_boolean_does_not_hide_algebraic_sibling(self):
         residual,_,accounting = self.fixture('Tuple(true, Add(Integer(3), Symbol("x1")))',
@@ -166,8 +168,10 @@ class Controls(unittest.TestCase):
         self.assertLess(accounting[0]['compared_leaves'][0],accounting[0]['parsed_leaves'][0])
 
     def test_lossless_function_metadata_survives(self):
-        a = c.py_parse("Function('native', **{'real': True, 'finite': True})(Symbol('x1'))")
-        self.assertIn(('real','True'),a.args[0].options)
+        parsed = self.fixture("Function('native', **{'real': True, 'finite': True})(Symbol('x1'))",'native[x1]')
+        options = self.census(parsed,'py','constructor_options')
+        self.assertIn([['real','True'],1],options)
+        self.assertIn([['finite','True'],1],options)
         before = self.fixture("Function('native', **{'real': True})(Symbol('x1'))",'native[x1]')[0]
         after = self.fixture("Function('native', **{'real': False})(Symbol('x1'))",'native[x1]')[0]
         self.assertNotEqual(products(before),products(after))
@@ -188,13 +192,13 @@ class Controls(unittest.TestCase):
         self.assertEqual(r['outcome'],'not_formed')
 
     def test_malformed_input_rejected(self):
-        for source,parser in [('Function(',c.py_parse),('<|"a" -> x',c.wl_parse),
-                              ('<|"a"->x,"a"->y|>',c.wl_parse),('__import__("os").system("true")',c.py_parse)]:
+        for py,wl in [('Function(','2'),('Integer(2)','<|"a" -> x'),
+                      ('Integer(2)','<|"a"->x,"a"->y|>'),('__import__("os").system("true")','2')]:
             with self.assertRaises(c.InputError):
-                parser(source)
+                self.fixture(py,wl)
 
     def test_declared_tables_are_injective(self):
-        c.validate_tables(c.JOIN_TABLE,c.NAME_TABLE)
+        self.streams('PY_O2_SYNTHETIC: Integer(2)\n','WL_O2_SYNTHETIC: 2\n',c.JOIN_TABLE)
 
     def test_independent_census_accounts_for_nested_sibling(self):
         _,_,rows = self.fixture('Tuple(Tuple(Str("a"), Integer(2)), Tuple(Str("b"), true))',
@@ -294,7 +298,6 @@ class Controls(unittest.TestCase):
         # This is an object/role assertion, not an expected residual. It rejects
         # a different-role occurrence even if its current payload happens to be
         # identical. The source citations identify this outward-loss occurrence.
-        self.assertEqual(row.wl,('EXCHANGE_MOMENTUM','MaterialIdentification','@1'))
         other_rows = tuple(r for r in c.JOIN_TABLE
                            if r.label in ('mass_equation','mass_divergence'))
         self.assertEqual({r.label for r in other_rows},{'mass_equation','mass_divergence'})
@@ -311,6 +314,7 @@ class Controls(unittest.TestCase):
         base = self.streams(py,stream('Jn[x1]','-Jn[x1]'),joins)
         rhs_changed = self.streams(py,stream('Jn[x1]','-Jn[x2]'),joins)
         loss_changed = self.streams(py,stream('Jn[x2]','-Jn[x1]'),joins)
+        self.assertEqual(row.wl,('EXCHANGE_MOMENTUM','MaterialIdentification','@1'))
         for result in (base,rhs_changed,loss_changed):
             resolved = {r['row'] for r in result[2] if r.get('accounting')=='joined'}
             self.assertEqual(resolved,{r.label for r in joins})
@@ -509,16 +513,161 @@ class Controls(unittest.TestCase):
                 self.assertNotEqual(residual(baseline),residual(changed))
 
     def test_secondary_tables_injective(self):
-        c.validate_secondary(c.ACTION_TABLE,c.BALANCE_TABLE)
+        self.fixture('Integer(2)','2')
         for table,other in ((c.ACTION_TABLE,c.BALANCE_TABLE),(c.BALANCE_TABLE,c.ACTION_TABLE)):
             for side in ('py','wl'):
                 row=table[0]
                 duplicate=replace(row,**{side:getattr(table[1],side)})
                 with self.assertRaises(c.InputError):
                     if table is c.ACTION_TABLE:
-                        c.validate_secondary((*table,duplicate),other)
+                        self.fixture('Integer(2)','2',actions=(*table,duplicate))
                     else:
-                        c.validate_secondary(other,(*table,duplicate))
+                        self.streams('PY_O2_L: Integer(2)\n','WL_O2_R: 2\n',(),
+                                     actions=other,balances=(*table,duplicate))
+
+    def open_pair(self,py,wl,**kwargs):
+        return self.fixture(fn('OPEN_MomentumDensity_0',sy('I_br_live')+', '+py),
+                            'OpenAction[MomentumDensity[1],{OPEN[IBrLive,<|"Spec"->"3.2"|>]},'+wl+']',
+                            **kwargs)
+
+    def object_deltas(self,result):
+        return {field:self.action_deltas(result,field)['OPEN_MomentumDensity_0']
+                for field in ('live_arguments','binders','named_OPEN_operands')}
+
+    def test_identical_open_objects_have_empty_deltas(self):
+        radius='Pow(Add(Pow(Symbol("x1"),Integer(2)),Pow(Symbol("x2"),Integer(2))),Rational(1,2))'
+        derivative=('Subs(Derivative(Function("V_r")(Dummy("z")),Tuple(Dummy("z"),Integer(2))),'
+                    'Tuple(Dummy("z")),Tuple('+radius+'))')
+        fixtures=(
+            (fn('V_r',radius),'VR[Sqrt[x2^2+x1^2]]'),
+            (derivative,'Derivative[2][VR][Sqrt[x1^2+x2^2]]'),
+            (derivative,"VR''[Sqrt[x1^2+x2^2]]"),
+            ('Derivative(Function("V_r")(Symbol("x1")),Tuple(Symbol("x1"),Integer(2)))',
+             'Derivative[2][VR][x1]'),
+            ('Lambda(Tuple(Dummy("q")),Function("V_r")(Dummy("q")))',
+             'Function[{local},VR[local]]'),
+            # Multiplication and repeated printed dependencies cannot change
+            # the inventory of objects. Counts of syntax are printed separately.
+            ('Add(Function("V_r")(Symbol("x1")),Function("V_r")(Symbol("x1")))',
+             '2*VR[x1]'),
+        )
+        for py,wl in fixtures:
+            with self.subTest(py=py):
+                result=self.open_pair(py,wl,balance=True)
+                for field,delta in self.object_deltas(result).items():
+                    self.assertFalse(delta,field)
+                comparison=self.balance_products(result)[0]
+                for fields in comparison['entry_differences'].values():
+                    for field in ('live_arguments','binders','named_OPEN_operands'):
+                        self.assertFalse(fields[field],field)
+
+    def test_profile_derivative_is_one_object_key(self):
+        py=('Subs(Derivative(Function("V_r")(Dummy("z")),Tuple(Dummy("z"),Integer(1))),'
+            'Tuple(Dummy("z")),Tuple(Symbol("x1")))')
+        result=self.open_pair(py,'Derivative[1][VR][x1]')
+        action=next(r for r in result[1] if r['kind']=='structure')['action_comparison'][0]
+        for field in ('live_arguments','binders'):
+            self.assertEqual(action['py'][field],action['wl'][field])
+            self.assertEqual(len(action['py'][field]),1)
+        self.assertEqual(action['py']['named_OPEN_operands'],action['wl']['named_OPEN_operands'])
+        self.assertEqual(len(action['py']['named_OPEN_operands']),1)
+
+    def test_object_inventory_ignores_repeated_spelling(self):
+        py=fn('OPEN_MomentumDensity_0',sy('I_br_live')+', '+fn('V_r',sy('x1')))
+        wl='OpenAction[MomentumDensity[1],{IBrLive},VR[x1]]'
+        result=self.fixture(py,wl+'+'+wl)
+        for delta in self.object_deltas(result).values():
+            self.assertFalse(delta)
+
+    def test_open_live_mutations_both_engines(self):
+        def derivative(name='V_r',order='1',point='Symbol("x1")'):
+            return ('Subs(Derivative(Function("'+name+'")(Dummy("z")),Tuple(Dummy("z"),Integer('+order+'))),'
+                    'Tuple(Dummy("z")),Tuple('+point+'))')
+        fixtures=(
+            (fn('V_r',sy('x1')+', '+sy('x2')),'VR[x1,x2]',
+             (fn('V_r',sy('x2')+', '+sy('x1')),'Integer(11)',fn('j_n',sy('x1')+', '+sy('x2'))),
+             ('VR[x2,x1]','11','Jn[x1,x2]'),('live_arguments',)),
+            (derivative(),'Derivative[1][VR][x1]',
+             (derivative(point=sy('x2')),derivative(name='j_n'),derivative(order='2'),'Integer(11)'),
+             ('Derivative[1][VR][x2]','Derivative[1][Jn][x1]','Derivative[2][VR][x1]','11'),
+             ('live_arguments','binders')),
+            ('Derivative(Function("V_r")(Symbol("x1"),Symbol("x2")),Tuple(Symbol("x1"),Integer(1)))',
+             'Derivative[1,0][VR][x1,x2]',
+             ('Derivative(Function("V_r")(Symbol("x2"),Symbol("x1")),Tuple(Symbol("x2"),Integer(1)))',),
+             ('Derivative[1,0][VR][x2,x1]',),('live_arguments','binders')),
+        )
+        for py,wl,py_mutations,wl_mutations,fields in fixtures:
+            baseline=self.object_deltas(self.open_pair(py,wl))
+            for field in baseline:
+                self.assertFalse(baseline[field])
+            for engine,mutations in (('py',py_mutations),('wl',wl_mutations)):
+                for mutation in mutations:
+                    with self.subTest(engine=engine,mutation=mutation):
+                        result=self.open_pair(mutation,wl,balance=True) if engine=='py' else self.open_pair(py,mutation,balance=True)
+                        delta=self.object_deltas(result)
+                        for field in fields:
+                            self.assertTrue(delta[field],field)
+                            self.assertTrue(any(v[field] for v in self.balance_products(result)[0]['entry_differences'].values()))
+
+    def test_open_binder_alpha_and_repoint(self):
+        py='Lambda(Tuple(Dummy("q")),Function("V_r")(Dummy("q"),Symbol("x1")))'
+        wl='Function[{local},VR[local,x1]]'
+        baseline=self.object_deltas(self.open_pair(py,wl))
+        for field in baseline:
+            self.assertFalse(baseline[field])
+        for left,right in ((py.replace('Dummy("q"),Symbol','Symbol("x2"),Symbol'),wl),
+                           (py,wl.replace('VR[local','VR[x2'))):
+            delta=self.object_deltas(self.open_pair(left,right))
+            self.assertTrue(delta['binders'])
+            self.assertTrue(delta['live_arguments'])
+            self.assertFalse(delta['named_OPEN_operands'])
+
+    def test_plain_sum_orientation(self):
+        py=fn('OPEN_MomentumDensity_0',sy('I_br_live'))
+        wl='OpenAction[MomentumDensity[1],{IBrLive},x1]'
+        baseline=self.fixture('Add('+py+',Integer(3))',wl+'+3',balance=True)
+        for left,right in (('Add(Mul(Integer(-1),'+py+'),Integer(3))',wl+'+3'),
+                           ('Add('+py+',Integer(3))','-('+wl+')+3')):
+            changed=self.fixture(left,right,balance=True)
+            self.assertNotEqual(self.action_deltas(baseline,'orientation'),self.action_deltas(changed,'orientation'))
+
+    def test_each_relation_operand_both_engines(self):
+        for head,operator in (('Equality','=='),('Unequality','!='),('StrictGreaterThan','>'),
+                              ('StrictLessThan','<'),('GreaterThan','>='),('LessThan','<=')):
+            py=['Add(Symbol("x1"),Integer(2))','Mul(Symbol("x2"),Integer(3))']
+            wl=['x1+2','x2*3']
+            def compare(left,right):
+                return products(self.fixture(head+'('+','.join(left)+')',operator.join(right))[0])
+            base=compare(py,wl)
+            for engine in ('py','wl'):
+                for side in (0,1):
+                    with self.subTest(head=head,engine=engine,side=side):
+                        left,right=list(py),list(wl)
+                        if engine=='py':
+                            left[side]='Pow('+left[side]+',Integer(2))'
+                        else:
+                            right[side]='('+right[side]+')^2'
+                        self.assertNotEqual(base,compare(left,right))
+
+    def test_each_closed_term_in_multiterm_balance(self):
+        pyopen=fn('OPEN_MomentumDensity_0',sy('I_br_live'))
+        wlopen='OpenAction[MomentumDensity[1],{IBrLive},x1]'
+        py=['Integer(5)','Mul(Symbol("x1"),Function("V_r")(Symbol("x2")))','Pow(Symbol("x3"),Integer(2))']
+        wl=['5','x1*VR[x2]','x3^2']
+        def closed(left,right):
+            result=self.fixture('Add('+','.join([pyopen,*left])+')','+'.join([wlopen,*right]),balance=True)
+            return products(self.balance_products(result)[0]['closed_residual'])
+        base=closed(py,wl)
+        self.assertEqual(base['outcome'],'exact')
+        for engine in ('py','wl'):
+            for term in range(len(py)):
+                with self.subTest(engine=engine,term=term):
+                    left,right=list(py),list(wl)
+                    if engine=='py':
+                        left[term]='Mul(Integer(-1),'+left[term]+')'
+                    else:
+                        right[term]='-('+right[term]+')'
+                    self.assertNotEqual(base,closed(left,right))
 
 
 if __name__ == '__main__':

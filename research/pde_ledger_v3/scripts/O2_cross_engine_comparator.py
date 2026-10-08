@@ -12,6 +12,7 @@ import argparse
 import ast
 from collections import Counter
 from dataclasses import dataclass
+from fractions import Fraction
 import json
 import hashlib
 from pathlib import Path
@@ -860,30 +861,153 @@ def role_maps(actions):
     return {'py':{r.py:r.py for r in actions},'wl':{r.wl:r.py for r in actions}}
 
 
+def object_key(n):
+    """Readable semantic key, separate from the lossless serialization census."""
+    return json.dumps(data(n),separators=(',',':'))
+
+
+def feature_tree(n,bindings,engine,scope=None):
+    """Canonical syntax for object inventories, never a scalar residual.
+
+    Only declared names are shared. Normalize constructor spelling (PY audit
+    60-74, 152; WL audit 22-31), rational arithmetic, and profile derivatives.
+    Unknown heads stay engine-qualified. No OPEN action or binder is evaluated.
+    Original metadata/structure remain in the lossless trees and their deltas.
+    """
+    scope = {} if scope is None else scope
+    def convert(v,local=scope):
+        return feature_tree(v,bindings,engine,local)
+    def members(v):
+        return v.args if v.head=='Sequence' else (v,)
+    h,a=n.head,n.args
+    if h in ('Symbol','FunctionName','Dummy'):
+        return scope.get(n.value,atom('Name',bindings.name(n.value,engine)))
+    if h=='Number':
+        return atom('Number',Fraction(n.value))
+    if h=='Apply':
+        head=a[0]
+        if engine=='wl' and head.head=='Prime' and len(a)==2:
+            order=0
+            function=head
+            while function.head=='Prime':
+                order+=1
+                function=function.args[0]
+            key=bindings.name(function.value,engine)
+            if bindings.kinds.get(key)=='profile':
+                return Node('ProfileDerivative',(seq(atom('Number',order)),seq(convert(a[1]))),key)
+        # Derivative[n1,...][F][points...] is one derivative application,
+        # including its head: never visit F or its placeholders as operands.
+        if (engine=='wl' and head.head=='Apply' and head.args[0].head=='Apply'
+                and head.args[0].args[0]==atom('Symbol','Derivative')
+                and len(head.args)==2):
+            key=bindings.name(head.args[1].value,engine)
+            orders=head.args[0].args[1:]
+            if bindings.kinds.get(key)=='profile' and len(orders)==len(a)-1:
+                return Node('ProfileDerivative',(seq(*(convert(v) for v in orders)),
+                            seq(*(convert(v) for v in a[1:]))),key)
+        if head.head in ('Symbol','FunctionName'):
+            key=bindings.name(head.value,engine)
+            if bindings.kinds.get(key)=='profile':
+                return Node('LiveProfile',tuple(convert(v) for v in a[1:]),key)
+            if engine=='wl' and head.value=='Sqrt' and len(a)==2:
+                return convert(Node('Pow',(a[1],atom('Number','1/2'))))
+            if engine=='wl' and head.value=='Function' and len(a)==3:
+                return convert(Node('Lambda',a[1:]))
+            if engine=='wl' and head.value=='OpenAction':
+                # The role has its own declared table; it is not an operand.
+                return Node('ActionArguments',tuple(convert(v) for v in a[2:]))
+            if engine=='wl' and head.value=='OpenFirstVariation':
+                return Node('FirstVariation',tuple(convert(v) for v in a[1:]))
+        if (engine=='wl' and head.head=='Apply' and len(head.args)==2
+                and head.args[0]==atom('Symbol','Inactive') and head.args[1]==atom('Symbol','D')):
+            return Node('HeldDerivative',tuple(convert(v) for v in a[1:]))
+        # Heads may themselves contain derivatives, native fields, or binders.
+        return Node('Apply',tuple(convert(v) for v in a))
+    if h=='Derivative' and a:
+        body=convert(a[0])
+        if body.head=='LiveProfile':
+            orders=[0]*len(body.args)
+            for spec in a[1:]:
+                parts=members(spec)
+                variable=convert(parts[0])
+                if len(parts)>2 or body.args.count(variable)!=1:
+                    break
+                order=int(parts[1].value) if len(parts)==2 and parts[1].head=='Number' else 1
+                orders[body.args.index(variable)] += order
+            else:
+                return Node('ProfileDerivative',(seq(*(atom('Number',v) for v in orders)),
+                            seq(*body.args)),body.value)
+        return Node('Derivative',tuple(convert(v) for v in a))
+    if h in ('Subs','Lambda'):
+        variables=members(a[1] if h=='Subs' else a[0])
+        local=dict(scope)
+        placeholders=[]
+        for i,v in enumerate(variables):
+            placeholder=atom('Bound',f'{len(scope)}:{i}')
+            local[v.value]=placeholder
+            placeholders.append(placeholder)
+        body=convert(a[0] if h=='Subs' else a[1],local)
+        if h=='Subs':
+            points=tuple(convert(v) for v in members(a[2]))
+            if body.head=='ProfileDerivative' and len(points)==len(placeholders) and points:
+                replacements=dict(zip(placeholders,points))
+                def substitute(v):
+                    return replacements.get(v,Node(v.head,tuple(substitute(x) for x in v.args),v.value))
+                return substitute(body)
+            return Node('Subs',(seq(*placeholders),body,seq(*points)))
+        return Node('Lambda',(seq(*placeholders),body))
+    args=tuple(convert(v) for v in a)
+    if h=='Rational':
+        return atom('Number',Fraction(args[0].value)/Fraction(args[1].value))
+    if h in ('Add','Mul'):
+        flat=[x for v in args for x in (v.args if v.head==h else (v,))]
+        numbers=[Fraction(v.value) for v in flat if v.head=='Number']
+        rest=[v for v in flat if v.head!='Number']
+        number=Fraction(0 if h=='Add' else 1)
+        for v in numbers:
+            number=number+v if h=='Add' else number*v
+        if number!=(0 if h=='Add' else 1) or not rest:
+            rest.append(atom('Number',number))
+        args=tuple(sorted(rest,key=object_key))
+        if len(args)==1:
+            return args[0]
+    if h=='Pow' and len(args)==2 and all(v.head=='Number' for v in args):
+        power=Fraction(args[1].value)
+        if power.denominator==1 and (Fraction(args[0].value) or power>=0):
+            return atom('Number',Fraction(args[0].value)**int(power))
+    return Node(h,args,n.value)
+
+
+OBJECT_FIELDS = frozenset(('named_OPEN_operands','live_arguments','binders'))
+
+
 def features(n,bindings,engine):
-    """Computed multisets; repeated occurrences are counted, never zipped."""
+    """Inventories of objects, not counts of engine-specific syntax nodes."""
     mapped = bindings.apply(n,engine)
     names,live,binders = Counter(),Counter(),Counter()
-    def visit(v):
-        if v.head in ('Symbol','Dummy') and bindings.kinds.get(v.value) not in ('coordinate','parameter','profile','binder'):
-            names[v.value] += 1
-        if v.head=='Apply' and (bindings.kinds.get(v.args[0].value)=='profile' or
-                (v.args[0].head=='FunctionName' and not v.args[0].value.startswith('py::OPEN_'))):
-            live[json.dumps(data(v),separators=(',',':'))] += 1
-        if v.head in ('Derivative','Subs','Lambda') or (v.head=='Apply' and
-                (v.args[0].value in ('wl::Function','wl::OpenFirstVariation') or
-                 'wl::Derivative' in {x.value for x in v.args[0].args})):
-            binders[fingerprint(v)] += 1
-        arguments=v.args
-        if v.head=='Apply':
-            arguments=v.args[2:] if v.args[0].value=='wl::OpenAction' else v.args[1:]
-        for x in arguments:
-            visit(x)
-    visit(mapped)
+    def visit(v,head=False):
+        if v.head=='Name' and not head and bindings.kinds.get(v.value) not in ('coordinate','parameter','profile','binder'):
+            names[v.value] = 1
+        if v.head in ('LiveProfile','ProfileDerivative'):
+            live[object_key(v)] = 1
+        if v.head in ('ProfileDerivative','Derivative','Subs','Lambda','FirstVariation','HeldDerivative'):
+            binders[object_key(v)] = 1
+        for i,x in enumerate(v.args):
+            visit(x,head=v.head=='Apply' and i==0)
+    visit(feature_tree(n,bindings,engine))
     return {'head':Counter({json.dumps([mapped.head,mapped.value,
                 data(mapped.args[0]) if mapped.head=='Apply' else None],separators=(',',':')):1}),
             'named_OPEN_operands':names,'live_arguments':live,'binders':binders,
             'argument_trees':Counter({fingerprint(mapped):1})}
+
+
+def merge_fields(current,fields):
+    for field,values in fields.items():
+        inventory=current.setdefault(field,Counter())
+        if field in OBJECT_FIELDS:
+            inventory.update({key:1 for key in values if key not in inventory})
+        else:
+            inventory.update(values)
 
 
 def field_deltas(left,right):
@@ -904,8 +1028,7 @@ def action_comparison(a,b,bindings,actions):
             fields['orientation'] = Counter({('argument' if dependency else str(sign)):1})
             fields['role'] = Counter({role:1})
             current = group.setdefault(role,{})
-            for field,values in fields.items():
-                current.setdefault(field,Counter()).update(values)
+            merge_fields(current,fields)
         grouped[engine] = group
     result=[]
     for role in sorted(grouped['py'].keys() | grouped['wl'].keys()):
@@ -985,8 +1108,7 @@ def balance_comparison(a,b,bindings,actions):
             entries.append({'role':role,'orientation':term_orientation(term),
                             'open_free':not is_open,'operand':data(mapped)})
             current=group.setdefault(role,{})
-            for field,values in fields.items():
-                current.setdefault(field,Counter()).update(values)
+            merge_fields(current,fields)
         sides[engine]=entries
         groups[engine]=group
         closed[engine]=Node('Add',tuple(closed_terms)) if closed_terms else atom('Number',0)
@@ -1239,6 +1361,7 @@ def catalog(path,joins=JOIN_TABLE,names=NAME_TABLE,actions=ACTION_TABLE,balances
     with Path(path).open('w') as out:
         emit(out,{'path_convention':'zero-based sequence indices; record keys; @n constructor argument (@0 applied head); tag first',
                   'leaf_convention':'terminal parsed IR nodes plus constructor options; empty container one',
+                  'feature_convention':'named_OPEN_operands, live_arguments and binders are sets of canonical objects (1=present); raw serialization counts/trees are separate; argument order retained within each live object; unknown heads stay engine-qualified',
                   'joins':[dict(label=r.label,py=r.py,wl=r.wl,spec=r.spec,layout=r.layout,
                                 py_citation=f'{PY_SOURCE}:{r.py_line}',wl_citation=f'{WL_SOURCE}:{r.wl_line}')
                            for r in joins],

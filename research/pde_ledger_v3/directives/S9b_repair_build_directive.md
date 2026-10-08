@@ -38,8 +38,8 @@ comparator, the production runs and the record.
    - Bind a fold row only where the spec identifies it with a supplied object. Obtain the binding by computation
      and report it with its spec line. No fold row is bound as the value of a live profile.
    - No export changes an upstream row's status or role.
-   - Symbols that originate in this step: `n`, `K`, `m`, `GM`, `s`, `f`, `j_n`, `ρ₀`, and item 10's far-zone flux
-     constant. None has a numeric value.
+   - Symbols that originate in this step: `n`, `K`, `m`, `GM`, `s`, `f`, `j_n`, `ρ₀`, and item 10's flux `Φ`. None
+     has a numeric value.
      `ρ₀` is not `LEDGER['rho_m']`, and `c₀` is not `c_s0`.
 4. **Tags (D6 B7).** Use the grammar `<ENGINE>_S9B_<QUANTITY>`, where `<ENGINE>` is `PY` or `WL`. Both engines emit
    the same set of `<QUANTITY>` names, with one tag per named object and one line per tag: `TAG: <payload>`,
@@ -68,14 +68,18 @@ comparator, the production runs and the record.
     - **Forward case: no far-zone loss.** This is the user's premise (2026-10-06/07/08): brane material leaves the
       brane only in throats, so `j_n ≡ 0` in the far zone, and the same brane mass crosses every sphere around the
       body.
-      - Solve the supplied mass balance for `V` under this premise, with `ρ_br` live. Its integration constant is
-        a new live symbol: the signed far-zone brane mass flux, with no value and no sign. Its relation to `GM` is
-        open.
+      - `Φ` is a new live symbol, defined by one equation: `Φ ≡ ∮ ρ_br V·n_out dA`, the brane mass flux through a
+        far-zone coordinate sphere with outward unit normal `n_out`. It has no value and no sign, and its relation
+        to `GM` is open.
+      - Solve the supplied mass balance for `V` under this premise, with `ρ_br` live, and express the integration
+        constant through `Φ`.
       - Substitute that `V` into Part A's observables, first with `δ ≡ 0`, `ξ_w ≡ 0`, then with `δ` and `ξ_w`
         live.
-      - Print the deflection, the round-trip excess time and its `ln(1/b²)` coefficient, both effective `γ`s and
-        both Part B residuals against the references, each as a function of `b`. Also print both one-way excess
-        times and their nonreciprocal part, with `Z_E` and `Z_R` kept.
+      - First print the branch-existence and path-traversal conditions after the same substitution. Gate the
+        forward observables on them as Part A does.
+      - Print the deflection, the round-trip excess time and its `ln(1/b²)` coefficient, both effective `γ`s, their
+        difference and both Part B residuals against the references, each as a function of `b`. Also print both
+        one-way excess times and their nonreciprocal part, with `Z_E` and `Z_R` kept.
       - Print no matching condition for this case. Label every object with the premise.
     - For the deflection and for the radar `ln(1/b²)` coefficient, print each restriction below of:
       - Part A's computed observable;

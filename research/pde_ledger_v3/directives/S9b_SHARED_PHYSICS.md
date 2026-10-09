@@ -2,6 +2,10 @@
 
 **Version:** v10, repair 2 (2026-10-08).
 
+**Amendment 1 to Parts A–C** (orchestrator, 2026-10-09; a repair under the user's standing approval). Part B's
+radar comparison object is the round trip's logarithmic slope in `b` (observable 2). Reviewed until clear.
+Dispositions: `directives/_measurements/S9b_SHARED_PHYSICS_amend1_review_disposition.md`.
+
 **Objects:** the v8 optical objects in Parts A–C and the neutral, linked steady in-plane
 brane balance and its conditional optical requirements in Part D, retaining every unsupplied O2 input.
 
@@ -168,9 +172,16 @@ with `V` live. Far field; linear waves. Time is the lab time of the brane's far-
 1. **Δθ(b):** the total turning angle of a full flyby with impact parameter `b`.
 2. **Round-trip (radar) excess time.** An emitter at distance `Z_E` on one side of the mass and a reflector
    at `Z_R` on the other, along the line. Subtract the flat round-trip time. Here
-   `r_E = √(b² + Z_E²)` and `r_R = √(b² + Z_R²)`. Part A prints the full excess time; the Part B comparison
-   uses only the coefficient of `ln(1/b²)` in the regime `Z_E, Z_R ≫ b`, for every profile, including tails
-   other than `1/r`. The radar claim is limited to this logarithmic component.
+   `r_E = √(b² + Z_E²)` and `r_R = √(b² + Z_R²)`. Part A prints the full excess time `Δt_RT(b; Z_E, Z_R)`.
+   The Part B comparison uses only its **logarithmic slope** in `b`, taken at fixed endpoints, for far endpoints:
+
+   ```
+   𝒮_RT(b) ≡ lim_{Z_E, Z_R → ∞} ∂Δt_RT(b; Z_E, Z_R) / ∂ln(1/b²) ,      Z_E and Z_R held fixed in the derivative.
+   ```
+
+   This applies to every profile, including tails other than `1/r`. Where `Δt_RT` is `A·ln(1/b²)`, plus terms
+   independent of `b`, plus terms that vanish with their `b`-derivatives as `Z_E, Z_R → ∞`, `𝒮_RT = A`. The
+   radar claim is limited to this slope. Terms independent of `b`, which carry the endpoints, are not compared.
 3. **The two one-way excess times** between the same endpoints, and their **nonreciprocal part** (half the
    difference). Print whether that part depends on the path or only on the endpoints.
 
@@ -193,8 +204,8 @@ them.
   γ_GR ≡ 1 .
   ```
 
-  The logarithmic reference has domain `Z_E, Z_R ≫ b`; Part B uses only its coefficient of
-  `ln(1/b²)`. These equations define the oracle objects to compare against. They do not specify
+  The logarithmic reference has domain `Z_E, Z_R ≫ b`; Part B uses only its logarithmic slope, defined
+  as for `𝒮_RT` (observable 2). These equations define the oracle objects to compare against. They do not specify
   either observable computed from the supplied brane dispersion, or an acceptance test.
   The reference family defines each effective `γ`; GR residuals and matching conditions use its
   supplied `γ_GR` member.
@@ -214,8 +225,7 @@ them.
   - the round-trip excess time;
   - the two one-way excess times and their nonreciprocal part.
 - **Part B.**
-  - An effective `γ` from `Δθ`, and one from the coefficient of `ln(1/b²)` in the round-trip excess time for
-    `Z_E, Z_R ≫ b`.
+  - An effective `γ` from `Δθ`, and one from the round trip's logarithmic slope `𝒮_RT` (observable 2).
   - Their residuals against the references.
   - For each observable, the solution condition on the profiles, relative to `GM`, for the comparison
     residual of the selected grade sum (see "Order counting") at every far-zone `b`. This is an object

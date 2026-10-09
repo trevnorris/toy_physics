@@ -22,6 +22,11 @@ Dispositions: `directives/_measurements/S9b_repair_build_directive_amend2_review
 
 Reviewed until clear. Dispositions: `directives/_measurements/S9b_repair_build_directive_amend3_review_disposition.md`.
 
+**Amendment 4** (orchestrator, 2026-10-09; a repair under the user's standing approval). The spec's amendment 1 makes
+the radar comparison object the round trip's logarithmic slope `𝒮_RT` (spec observable 2). Items 4, 7, 10 and 14 and
+Part 3 now name it. Reviewed until clear with the spec amendment. Dispositions:
+`directives/_measurements/S9b_SHARED_PHYSICS_amend1_review_disposition.md`.
+
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
 only. **Part D is held** (user decision, 2026-10-08) until the brane-material premise behind P1 is settled. This build
 constructs and prints no Part D object. That narrows D7 item 3, which listed Part D. Not in this build: the
@@ -69,7 +74,7 @@ comparator, the production runs and the record.
    Tokens:
    - `G<a><b><c>`: one retained optical monomial of the spec's "Order" item, where `a`, `b` and `c` are its
      exponents of `δ`, `V/c₀` and `(∂ξ_w)²`. There are twelve grades, `G000` to `G121`.
-   - `<OBS>`: `DEFLECTION` (Δθ), or `RADAR` (the coefficient of `ln(1/b²)` in the round trip, item 7).
+   - `<OBS>`: `DEFLECTION` (Δθ), or `RADAR` (the round trip's logarithmic slope `𝒮_RT`, item 7).
    - `<RESP>`: the Part C responses `CONSTANT` (`c_γ ≡ c₀`), `FIXED_RATIO` and `POWER`.
 
    Names for the spec's objects:
@@ -82,7 +87,7 @@ comparator, the production runs and the record.
    | `A_ONE_WAY_ER_G<abc>`, `A_ONE_WAY_RE_G<abc>` | the one-way excess time from emitter to reflector, and from reflector to emitter, at that grade |
    | `A_NONRECIPROCAL_G<abc>` | their nonreciprocal part, at that grade: half of (emitter-to-reflector time minus reflector-to-emitter time) |
    | `A_NONRECIPROCAL_PATH_DEPENDENCE` | item 8's object |
-   | `A_RADAR_LOG_G<abc>` | item 7's coefficient, for each grade in Part B's comparison sum (`G100`, `G010`, `G020`, `G001`) |
+   | `A_RADAR_LOG_G<abc>` | item 7's slope, for each grade in Part B's comparison sum (`G100`, `G010`, `G020`, `G001`) |
    | `B_GAMMA_<OBS>`, `B_GAMMA_DIFFERENCE` | Part B's effective `γ`s, and their difference: the deflection `γ` minus the radar `γ` |
    | `B_RESIDUAL_<OBS>` | Part B's residuals against the references |
    | `B_CONDITION_<OBS>`, `B_IMPLIED_JN_<OBS>` | Part B's every-`b` condition, and the `j_n` it implies |
@@ -110,9 +115,8 @@ comparator, the production runs and the record.
    - For each reduced condition, print the `j_n` it implies through `∇·(ρ_br V) = −j_n`, with `ρ_br` symbolic and
      the sign of `V` symbolic.
    - The method is the builder's choice (item 13). If an engine cannot reduce a condition, item 12 applies.
-7. **The radar coefficient (D6 B3).** The coefficient of `ln(1/b²)` is obtained by computation from Part A's
-   computed round-trip excess time, in the regime `Z_E, Z_R ≫ b`. It is not a rule applied by hand. Part B's
-   radar `γ` uses that coefficient.
+7. **The radar slope (D6 B3).** The spec's logarithmic slope `𝒮_RT` (observable 2) is obtained by computation from
+   Part A's computed round-trip excess time. It is not a rule applied by hand. Part B's radar `γ` uses that slope.
 8. **Path dependence (D6 B4).** Whether the nonreciprocal part depends on the path or only on the endpoints is
    computed on the nonreciprocal object Part A computed, not on a placeholder.
 9. **Part C domains (D6 B6).** Each Part C row's domain predicates are built from that row's own response. They are
@@ -130,7 +134,7 @@ comparator, the production runs and the record.
         live.
       - First print the branch-existence and path-traversal conditions after the same substitution. Gate the
         forward observables on them as Part A does.
-      - Print the deflection, the round trip's `ln(1/b²)` coefficient (item 7), both effective `γ`s, their
+      - Print the deflection, the round trip's logarithmic slope (item 7), both effective `γ`s, their
         difference and both Part B residuals against the references, each as a function of `b`. Also print the round-trip excess time, both
         one-way excess times and their nonreciprocal part, with `b`, `Z_E` and `Z_R` kept.
       - At both stages, also print Part B's condition for each observable under the same substitution, reduced as
@@ -142,7 +146,7 @@ comparator, the production runs and the record.
         the row's `n` or `s` stay symbolic. These are computed objects too, and the implied-`j_n` print does not
         apply to them.
       - Label every object with the premise.
-    - For the deflection and for the radar `ln(1/b²)` coefficient, print each restriction below of:
+    - For the deflection and for the radar slope (item 7), print each restriction below of:
       - Part A's computed observable;
       - Part B's effective `γ` and residual;
       - the difference between the two effective `γ`s;
@@ -204,10 +208,10 @@ comparator, the production runs and the record.
     - **K4a–c, profile freezes:** each of the Parts A–C radial profiles `δ`, `V` and `ξ_w` is replaced by a constant
       where it is differentiated in the ray construction (three separate knives).
     - **K5, return leg:** the round trip's return leg propagates in the outgoing leg's direction.
-    - **K6, radar source (a named coefficient knife):** the object from which the `ln(1/b²)` coefficient is
-      extracted is replaced by one one-way excess time. It is named for a channel no FORM knife sees: which computed
-      object the coefficient is taken from (`docs/development_pipeline.md` §4). K1–K3 are the FORM knives on the
-      round-trip construction that feeds the coefficient.
+    - **K6, radar source (a named coefficient knife):** the object whose slope is taken (item 7) is replaced
+      by one one-way excess time. It is named for a channel no FORM knife sees: which computed
+      object the slope is taken from (`docs/development_pipeline.md` §4). K1–K3 are the FORM knives on the
+      round-trip construction that feeds the slope.
     - **K7, quantifier:** the every-`b` reduction is carried out at one fixed far-zone `b`.
     - **K8, mass balance:** `ρ_br` in the supplied mass balance is replaced by a constant.
     - **K9a–b, Part C responses:** in the fixed-ratio response, the local `c_s(x)` is replaced by `c_s0`; in the
@@ -290,7 +294,7 @@ comparator, the production runs and the record.
 - **Repair round 1 (amendment 3).** Besides items 4 and 13, these must be true after the repair:
   - Every along-ray gate quantifies over a constructed domain, the radii the ray traverses. No gate quantifies
     over an undefined head.
-  - The radar `γ` is solved on every stratum of the `ln(1/b²)` coefficient. The `γ` difference, and each
+  - The radar `γ` is solved on every stratum of the radar slope (item 7). The `γ` difference, and each
     restriction and forward copy of the radar `γ`, use that solution.
 - **Executable checks, with no expected values:**
   1. Copy the finished `.wl` alone into an empty scratch directory. Run it there and in the repository. Both runs

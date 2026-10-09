@@ -14,6 +14,14 @@ rewrites, where it printed none before, and the memory limit in item 11 is raise
 **Amendment 2** (user, 2026-10-08). Item 14 evaluates K11's copy compactly. One two-leg pass, folded once (G2).
 Dispositions: `directives/_measurements/S9b_repair_build_directive_amend2_review_disposition.md`.
 
+**Amendment 3** (user, 2026-10-09), for the build's repair round 1 after review r0
+(`directives/_measurements/S9b_repair_build_r0_review_disposition.md`):
+- Item 4 now supplies the shared vocabulary.
+- Item 13 requires general profiles.
+- Parts 2 and 3 list each engine's repairs.
+
+Reviewed until clear. Dispositions: `directives/_measurements/S9b_repair_build_directive_amend3_review_disposition.md`.
+
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
 only. **Part D is held** (user decision, 2026-10-08) until the brane-material premise behind P1 is settled. This build
 constructs and prints no Part D object. That narrows D7 item 3, which listed Part D. Not in this build: the
@@ -54,6 +62,42 @@ comparator, the production runs and the record.
    re-parseable. A name names the object, never its value, sign or shape. Engine-local tags carry `_LOCAL_` after
    the engine prefix, and each engine emits one tag listing its `_LOCAL_` names. This follows
    `S11b_SHARED_PHYSICS.md` §10, with the step tag `S9B`.
+
+   **Shared vocabulary (amendment 3).** Each object below is emitted by both engines under exactly this
+   `<QUANTITY>` name. Every other emitted object is engine-local (`_LOCAL_`).
+
+   Tokens:
+   - `G<a><b><c>`: one retained optical monomial of the spec's "Order" item, where `a`, `b` and `c` are its
+     exponents of `δ`, `V/c₀` and `(∂ξ_w)²`. There are twelve grades, `G000` to `G121`.
+   - `<OBS>`: `DEFLECTION` (Δθ), or `RADAR` (the coefficient of `ln(1/b²)` in the round trip, item 7).
+   - `<RESP>`: the Part C responses `CONSTANT` (`c_γ ≡ c₀`), `FIXED_RATIO` and `POWER`.
+
+   Names for the spec's objects:
+
+   | Name | Object |
+   |---|---|
+   | `BRANCH_EXISTENCE`, `PATH_TRAVERSAL`, `BRANCH_TYPE` | the two conditions and the branch type of the spec's "Branch existence" |
+   | `A_DEFLECTION_G<abc>` | Δθ, at that grade |
+   | `A_ROUND_TRIP_G<abc>` | the round-trip excess time, at that grade |
+   | `A_ONE_WAY_ER_G<abc>`, `A_ONE_WAY_RE_G<abc>` | the one-way excess time from emitter to reflector, and from reflector to emitter, at that grade |
+   | `A_NONRECIPROCAL_G<abc>` | their nonreciprocal part, at that grade |
+   | `A_NONRECIPROCAL_PATH_DEPENDENCE` | item 8's object |
+   | `A_RADAR_LOG_G<abc>` | item 7's coefficient, for each grade in Part B's comparison sum (`G100`, `G010`, `G020`, `G001`) |
+   | `B_GAMMA_<OBS>`, `B_GAMMA_DIFFERENCE` | Part B's effective `γ`s and their difference |
+   | `B_RESIDUAL_<OBS>` | Part B's residuals against the references |
+   | `B_CONDITION_<OBS>`, `B_IMPLIED_JN_<OBS>` | Part B's every-`b` condition, and the `j_n` it implies |
+   | `C_<RESP>_CONDITION_<OBS>`, `C_<RESP>_IMPLIED_JN_<OBS>` | Part C's rewritten condition, and the `j_n` it implies |
+   | `C_<RESP>_N_DEPENDENCE` | where `n` enters that row's conditions |
+
+   Item 10's objects are named by a prefix on the name of the object they restrict:
+   - `R_FLOW_ONLY_`, `R_SPEED_ONLY_` and `R_TILT_ONLY_` prefix `A_DEFLECTION_G<abc>`, `A_RADAR_LOG_G<abc>`,
+     `B_GAMMA_<OBS>`, `B_GAMMA_DIFFERENCE`, `B_RESIDUAL_<OBS>`, `B_CONDITION_<OBS>` and `B_IMPLIED_JN_<OBS>`.
+   - `R_BULK_ONLY_` prefixes `C_FIXED_RATIO_CONDITION_<OBS>`, `C_FIXED_RATIO_IMPLIED_JN_<OBS>`,
+     `C_POWER_CONDITION_<OBS>` and `C_POWER_IMPLIED_JN_<OBS>`.
+   - `F_FLOW_` (the forward case's first stage, `δ ≡ 0`, `ξ_w ≡ 0`) and `F_LIVE_` (its second stage) prefix
+     `BRANCH_EXISTENCE`, `PATH_TRAVERSAL`, `BRANCH_TYPE`, every `A_` name, `B_GAMMA_<OBS>`, `B_GAMMA_DIFFERENCE`,
+     `B_RESIDUAL_<OBS>` and `B_CONDITION_<OBS>`. `F_LIVE_` also prefixes `C_<RESP>_CONDITION_<OBS>`.
+   - `F_MASS_SOLUTION` is the forward case's solved `V`, expressed through `Φ` and `ρ_br`.
 5. **No verdicts (D6 B5).** No `VERDICT`, `PASS` or `FAIL`. A boolean-valued test is emitted as the CAS object the
    test returned. Emission never depends on a payload's value. Outside the branch-existence conditions the spec
    requires `NOT_ESTABLISHED`. That output, and the branch type, are produced from the computed conditions, never
@@ -132,7 +176,16 @@ comparator, the production runs and the record.
     of these. No choice may turn a live profile into a chosen one or add an expected value.
     - The symbolic handling of the every-`b` requirement, within item 6.
     - Component calculus on the supplied coordinate mass law.
-    - The representation of general live radial profiles. A family restriction follows the spec's "Profiles" item.
+    - The representation of general live radial profiles.
+
+    **General profiles (amendment 3; the user's choice, 2026-10-09).**
+    - Every shared-vocabulary object (item 4) is computed for general radial profiles: `δ`, `V`, `ξ_w`, and,
+      where they enter, `ρ_br` and `f`.
+    - Part A's observables are functionals of those profiles. Each every-`b` condition is reduced, as item 6
+      requires, to a condition on them.
+    - No profile family is used for a shared-vocabulary object. An engine may also print family-restricted
+      objects, as engine-local tags whose labels name the family.
+    - If an engine cannot reduce a condition for general profiles, item 12 applies.
 14. **Ablation harness** (`docs/development_pipeline.md` §4).
     - Each engine gets a committed harness that runs the live engine unchanged as the baseline. For each knife
       below, it runs a copy with exactly that one mutation at the named construction site.
@@ -192,7 +245,8 @@ comparator, the production runs and the record.
     - every `NOT_ESTABLISHED`;
     - every guard refusal or kill;
     - every stop-and-report event (item 12);
-    - for K11, the compact method, its coverage, and every tag printed as not evaluated.
+    - for K11, the compact method, its coverage, and every tag printed as not evaluated;
+    - every shared-vocabulary name (item 4) the engine does not emit, and why.
 
 ## Part 2. SymPy engine
 
@@ -215,6 +269,10 @@ comparator, the production runs and the record.
   - Publish the delta only if Parts A, B and C, branch existence and item 10 all completed (`F6`, first branch).
 - **Mechanical precedent, not authority:** `scripts/S11c_c2_selfenergy_fold_sympy_audit.py` for the fold, the
   manifest and the delta; `scripts/S11b_interface_coupling_law_sympy_audit.py` for the emission shape.
+- **Repair round 1 (amendment 3).** Besides items 4 and 13, these must be true after the repair:
+  - Item 8's nonreciprocal one-form is computed from this engine's own dispersion relation, with the advected
+    velocity entering it as a vector field. K11's mutation then enters the dispersion.
+  - Each item 10 restriction is substituted into its gates as well as into its observables.
 
 ## Part 3. Wolfram engine (blind)
 
@@ -226,6 +284,11 @@ comparator, the production runs and the record.
 - **Mechanical precedent, not authority:** `mathematica/S11b_interface_coupling_law_mathematica_audit.wl`, for its
   emit, naming and flush shape only.
 - **At most one kernel at a time.**
+- **Repair round 1 (amendment 3).** Besides items 4 and 13, these must be true after the repair:
+  - Every along-ray gate quantifies over a constructed domain, the radii the ray traverses. No gate quantifies
+    over an undefined head.
+  - Each effective `γ` is solved on every stratum of its observable's coefficient. The `γ` difference and every
+    restriction and forward copy use that solution.
 - **Executable checks, with no expected values:**
   1. Copy the finished `.wl` alone into an empty scratch directory. Run it there and in the repository. Both runs
      exit 0, and their streams are non-empty and byte-identical. Afterwards the scratch directory holds only the

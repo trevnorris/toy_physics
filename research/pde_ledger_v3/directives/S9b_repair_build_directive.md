@@ -11,8 +11,8 @@ builds, one per engine. Each builder reads Part 1 and its own part.
 rewrites, where it printed none before, and the memory limit in item 11 is raised. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend1_review_disposition.md`.
 
-**Amendment 2** (user, 2026-10-08). Item 14 lets the harness evaluate K11's copy compactly. One two-leg pass, folded
-once (G2). Dispositions: `directives/_measurements/S9b_repair_build_directive_amend2_review_disposition.md`.
+**Amendment 2** (user, 2026-10-08). Item 14 evaluates K11's copy compactly. One two-leg pass, folded once (G2).
+Dispositions: `directives/_measurements/S9b_repair_build_directive_amend2_review_disposition.md`.
 
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
 only. **Part D is held** (user decision, 2026-10-08) until the brane-material premise behind P1 is settled. This build
@@ -161,16 +161,23 @@ comparator, the production runs and the record.
     - **K11, non-radial flow:** at the advection construction, the advected velocity gains an azimuthal component,
       so it is no longer radial. It acts on the construction from which item 8 computes path dependence.
 
-    **K11 evaluation (amendment 2).** The guard killed K11's copy at 8 GiB and again at 16 GiB, both times after the
-    same 31 tags. For K11 only, the harness may evaluate the corrupted copy by a compact method of the builder's
-    choice that completes within item 11's limit.
-    - The mutation is unchanged and stays in force in the evaluated copy.
-    - The same method is applied to an unmutated copy of the engine. The difference is taken between those two
-      evaluations.
-    - For every tag, the harness prints the full baseline payload, both compact evaluations and their difference.
-      It names the method, every truncation order, and every sampled value with its seed.
+    **K11 evaluation (amendment 2; the user's choice, 2026-10-08).** The guard killed K11's full copy at 8 GiB and
+    again at 16 GiB, both times after the same 31 tags. For K11, the corrupted payload is a compact evaluation by a
+    method of the builder's choice, and the full K11 copy is not run. Item 11's stop-and-report rule applies if the
+    guard kills the compact run.
+    - The method calls the engine's own constructions, or is mechanically extracted from them. The K11 mutation is
+      its only source change, and it stays in force in the evaluated copy.
+    - The same method, with the same configuration, is applied to an unmutated copy. The configuration includes
+      every sample point and seed, every truncation order, and the arithmetic's precision.
+    - For every tag, the harness prints:
+      - the full baseline payload;
+      - both compact evaluations and their difference;
+      - the method's residual: the unmutated compact evaluation minus the full baseline payload reduced by the same
+        configuration.
+    - Each difference and residual is printed with its coverage: the retained grades it keeps, and its truncation
+      order or sample domain. If the arithmetic is not exact, each also carries its precision and an error bound.
     - A tag the method does not reach is printed as not evaluated.
-    - The engine and its baseline run are unchanged.
+    - The engine, its baseline run and the other knives are unchanged.
 15. **Handoff.** Each builder works in its own fresh repository, exported from the commit that holds this
     directive, with no git history. The other engine's S9b files are absent from it. Builders are Codex
     `gpt-6-astra` at high effort, a fresh session per engine.
@@ -184,7 +191,8 @@ comparator, the production runs and the record.
     - each knife, and where it acts;
     - every `NOT_ESTABLISHED`;
     - every guard refusal or kill;
-    - every stop-and-report event (item 12).
+    - every stop-and-report event (item 12);
+    - for K11, the compact method, its coverage, and every tag printed as not evaluated.
 
 ## Part 2. SymPy engine
 

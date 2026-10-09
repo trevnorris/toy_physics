@@ -80,10 +80,10 @@ comparator, the production runs and the record.
    | `A_DEFLECTION_G<abc>` | Δθ, at that grade |
    | `A_ROUND_TRIP_G<abc>` | the round-trip excess time, at that grade |
    | `A_ONE_WAY_ER_G<abc>`, `A_ONE_WAY_RE_G<abc>` | the one-way excess time from emitter to reflector, and from reflector to emitter, at that grade |
-   | `A_NONRECIPROCAL_G<abc>` | their nonreciprocal part, at that grade |
+   | `A_NONRECIPROCAL_G<abc>` | their nonreciprocal part, at that grade: half of (emitter-to-reflector time minus reflector-to-emitter time) |
    | `A_NONRECIPROCAL_PATH_DEPENDENCE` | item 8's object |
    | `A_RADAR_LOG_G<abc>` | item 7's coefficient, for each grade in Part B's comparison sum (`G100`, `G010`, `G020`, `G001`) |
-   | `B_GAMMA_<OBS>`, `B_GAMMA_DIFFERENCE` | Part B's effective `γ`s and their difference |
+   | `B_GAMMA_<OBS>`, `B_GAMMA_DIFFERENCE` | Part B's effective `γ`s, and their difference: the deflection `γ` minus the radar `γ` |
    | `B_RESIDUAL_<OBS>` | Part B's residuals against the references |
    | `B_CONDITION_<OBS>`, `B_IMPLIED_JN_<OBS>` | Part B's every-`b` condition, and the `j_n` it implies |
    | `C_<RESP>_CONDITION_<OBS>`, `C_<RESP>_IMPLIED_JN_<OBS>` | Part C's rewritten condition, and the `j_n` it implies |
@@ -95,8 +95,9 @@ comparator, the production runs and the record.
    - `R_BULK_ONLY_` prefixes `C_FIXED_RATIO_CONDITION_<OBS>`, `C_FIXED_RATIO_IMPLIED_JN_<OBS>`,
      `C_POWER_CONDITION_<OBS>` and `C_POWER_IMPLIED_JN_<OBS>`.
    - `F_FLOW_` (the forward case's first stage, `δ ≡ 0`, `ξ_w ≡ 0`) and `F_LIVE_` (its second stage) prefix
-     `BRANCH_EXISTENCE`, `PATH_TRAVERSAL`, `BRANCH_TYPE`, every `A_` name, `B_GAMMA_<OBS>`, `B_GAMMA_DIFFERENCE`,
-     `B_RESIDUAL_<OBS>` and `B_CONDITION_<OBS>`. `F_LIVE_` also prefixes `C_<RESP>_CONDITION_<OBS>`.
+     `BRANCH_EXISTENCE`, `PATH_TRAVERSAL`, `BRANCH_TYPE`, every graded `A_` name (`A_…_G<abc>`),
+     `B_GAMMA_<OBS>`, `B_GAMMA_DIFFERENCE`, `B_RESIDUAL_<OBS>` and `B_CONDITION_<OBS>`. `F_LIVE_` also prefixes
+     `C_<RESP>_CONDITION_<OBS>`.
    - `F_MASS_SOLUTION` is the forward case's solved `V`, expressed through `Φ` and `ρ_br`.
 5. **No verdicts (D6 B5).** No `VERDICT`, `PASS` or `FAIL`. A boolean-valued test is emitted as the CAS object the
    test returned. Emission never depends on a payload's value. Outside the branch-existence conditions the spec
@@ -179,13 +180,15 @@ comparator, the production runs and the record.
     - The representation of general live radial profiles.
 
     **General profiles (amendment 3; the user's choice, 2026-10-09).**
-    - Every shared-vocabulary object (item 4) is computed for general radial profiles: `δ`, `V`, `ξ_w`, and,
-      where they enter, `ρ_br` and `f`.
-    - Part A's observables are functionals of those profiles. Each every-`b` condition is reduced, as item 6
+    - In every shared-vocabulary object (item 4), each profile the object leaves live is a general radial
+      function. The profiles are `δ`, `V`, `ξ_w`, and, where they enter, `ρ_br` and `f`. Item 10's restrictions
+      and forward stages, and Part C's responses, apply their substitutions first.
+    - Part A's observables are functionals of the live profiles. Each every-`b` condition is reduced, as item 6
       requires, to a condition on them.
     - No profile family is used for a shared-vocabulary object. An engine may also print family-restricted
       objects, as engine-local tags whose labels name the family.
-    - If an engine cannot reduce a condition for general profiles, item 12 applies.
+    - If an engine cannot reduce a Parts A–C condition for general profiles, item 12 applies. If it cannot reduce
+      an item 10 condition, that is not a stop event (item 10): it omits the object and reports it under item 17.
 14. **Ablation harness** (`docs/development_pipeline.md` §4).
     - Each engine gets a committed harness that runs the live engine unchanged as the baseline. For each knife
       below, it runs a copy with exactly that one mutation at the named construction site.
@@ -287,8 +290,8 @@ comparator, the production runs and the record.
 - **Repair round 1 (amendment 3).** Besides items 4 and 13, these must be true after the repair:
   - Every along-ray gate quantifies over a constructed domain, the radii the ray traverses. No gate quantifies
     over an undefined head.
-  - Each effective `γ` is solved on every stratum of its observable's coefficient. The `γ` difference and every
-    restriction and forward copy use that solution.
+  - The radar `γ` is solved on every stratum of the `ln(1/b²)` coefficient. The `γ` difference, and each
+    restriction and forward copy of the radar `γ`, use that solution.
 - **Executable checks, with no expected values:**
   1. Copy the finished `.wl` alone into an empty scratch directory. Run it there and in the repository. Both runs
      exit 0, and their streams are non-empty and byte-identical. Afterwards the scratch directory holds only the

@@ -33,3 +33,26 @@ Both reported before I adjudicated.
 
 **Next.** The reviewed version is committed unchanged as a preserved baseline, not accepted. The repair goes to
 round 1 with fresh legs on one prompt.
+
+## Round 1
+
+Both legs used the identical prompt `_scratch/s9b_build/s9b_repair_build_directive_amend3_review_prompt_r1.md` on
+the repaired version with sha `0282e4e4…`, the working-tree directive (lookups). A frozen copy is at
+`_scratch/s9b_build/S9b_repair_build_directive_amend3_reviewed_r1.md`.
+- **Codex** (gpt-6.1-sol, xhigh): CLEAR, no findings. Final report
+  `_scratch/s9b_build/s9b_amend3_review_r1_codex_final.txt`; full report and evidence `…_r1_codex_evidence/`.
+- **Grok** (grok-4.7): CLEAR, no findings. Report `_scratch/s9b_build/s9b_amend3_review_r1_grok.txt`; evidence
+  `…_r1_grok_evidence/`.
+
+Both reported before I adjudicated. The four round-0 repairs are in the reviewed text, and the widened sentence
+("Each effective") is gone (lookups).
+
+**Recorded, not a finding.** Codex notes that the SymPy delta (L272) is still published only when item 10 has
+completed. Item 10 already says that building it is not a stop event (L159–161), and item 13 says an item 10
+condition that cannot be reduced is omitted and reported under item 17 (L190–191). That changes nothing computed or
+claimed.
+
+The legs' own constructions are reviewer measurements. They stay out of builder packets and leg prompts.
+
+**Outcome.** Nothing outstanding changes what is computed or what may be claimed. Amendment 3 is accepted at this
+version.

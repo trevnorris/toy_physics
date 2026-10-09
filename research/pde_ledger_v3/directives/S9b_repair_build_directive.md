@@ -7,8 +7,8 @@ so it was also reviewed as physics-bearing content until clear (CLAUDE.md scope 
 both legs (`directives/_measurements/S9b_repair_build_directive_item10_r{1,2}_review_disposition.md`). There are two
 builds, one per engine. Each builder reads Part 1 and its own part.
 
-**Amendment 1** (user, 2026-10-08). The forward case in item 10 now prints Part B's condition, where it printed
-none before, and the memory limit in item 11 is raised. Dispositions:
+**Amendment 1** (user, 2026-10-08). The forward case in item 10 now prints Part B's condition and its Part C
+rewrites, where it printed none before, and the memory limit in item 11 is raised. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend1_review_disposition.md`.
 
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
@@ -89,6 +89,10 @@ comparator, the production runs and the record.
         in item 6. Its free inputs are `Φ` and the profiles live at that stage: `ρ_br`, plus `δ` and `ξ_w` at the
         second stage. `j_n ≡ 0` is the case's premise, not a free input, so item 6's implied-`j_n` print does not
         apply. The condition is a computed object. It is not a supplied relation between `Φ` and `GM`.
+      - Also print the second-stage condition rewritten under each of Part C's three responses, as Part C rewrites
+        Part B's conditions. Reduce each as in item 6 and build its domain as in item 9. `Φ`, `ρ_br`, `f`, `ξ_w` and
+        the row's `n` or `s` stay symbolic. These are computed objects too, and the implied-`j_n` print does not
+        apply to them.
       - Label every object with the premise.
     - For the deflection and for the radar `ln(1/b²)` coefficient, print each restriction below of:
       - Part A's computed observable;

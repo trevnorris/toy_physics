@@ -32,3 +32,15 @@ builder packets and leg prompts.
 
 **Next.** The reviewed version is committed unchanged as a preserved baseline, not accepted. The repair is then
 reviewed in round 1 by fresh legs on one prompt.
+
+## Round 1 (acceptance)
+
+The round-0 version is preserved at `8eaa17aa`. Both legs used the identical prompt
+`_scratch/s9b_build/s9b_repair_build_directive_amend1_review_prompt_r1.md` on the uncommitted repair (sha
+`50f3c6ae…`; frozen copy `_scratch/s9b_build/S9b_repair_build_directive_amend1_reviewed_r1.md`).
+- **Codex:** CLEAR. Report `_scratch/s9b_build/s9b_amend1_review_r1_codex_final.txt`; evidence
+  `…_r1_codex_evidence/`.
+- **Grok:** CLEAR. Report `_scratch/s9b_build/s9b_amend1_review_r1_grok.txt`.
+
+Neither leg reports a finding. Lookups: `S9b_repair_build_directive_amend1_r1_review_lookups.md`. The amendment is
+clear and the directive is accepted for the build at this version. Findings by round: 1, 0.

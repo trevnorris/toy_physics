@@ -7,6 +7,10 @@ so it was also reviewed as physics-bearing content until clear (CLAUDE.md scope 
 both legs (`directives/_measurements/S9b_repair_build_directive_item10_r{1,2}_review_disposition.md`). There are two
 builds, one per engine. Each builder reads Part 1 and its own part.
 
+**Amendment 1** (user, 2026-10-08). The forward case in item 10 now prints Part B's condition, where it printed
+none before, and the memory limit in item 11 is raised. Dispositions:
+`directives/_measurements/S9b_repair_build_directive_amend1_review_disposition.md`.
+
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
 only. **Part D is held** (user decision, 2026-10-08) until the brane-material premise behind P1 is settled. This build
 constructs and prints no Part D object. That narrows D7 item 3, which listed Part D. Not in this build: the
@@ -81,7 +85,11 @@ comparator, the production runs and the record.
       - Print the deflection, the round trip's `ln(1/b²)` coefficient (item 7), both effective `γ`s, their
         difference and both Part B residuals against the references, each as a function of `b`. Also print the round-trip excess time, both
         one-way excess times and their nonreciprocal part, with `b`, `Z_E` and `Z_R` kept.
-      - Print no matching condition for this case. Label every object with the premise.
+      - At both stages, also print Part B's condition for each observable under the same substitution, reduced as
+        in item 6. Its free inputs are `Φ` and the profiles live at that stage: `ρ_br`, plus `δ` and `ξ_w` at the
+        second stage. `j_n ≡ 0` is the case's premise, not a free input, so item 6's implied-`j_n` print does not
+        apply. The condition is a computed object. It is not a supplied relation between `Φ` and `GM`.
+      - Label every object with the premise.
     - For the deflection and for the radar `ln(1/b²)` coefficient, print each restriction below of:
       - Part A's computed observable;
       - Part B's effective `γ` and residual;
@@ -100,8 +108,9 @@ comparator, the production runs and the record.
       that label only. Building this item is not a stop event under item 12, and it does not replace the live `j_n`
       in Parts A–C.
 11. **Running.**
-    - Run every CAS demonstration through `scripts/s11c_guarded_run.py` with `--pool s9b --memory-gib 8`. Wolfram
-      runs also take `--tasks-max 64`. Both limits rest on the user's authorizations of 2026-10-06 and 2026-10-07.
+    - Run every CAS demonstration through `scripts/s11c_guarded_run.py` with `--pool s9b --memory-gib 16`. Wolfram
+      runs also take `--tasks-max 64`. These limits rest on the user's authorizations of 2026-10-06 and 2026-10-07,
+      and on the user's raise to 16 GiB on 2026-10-08, after the SymPy harness was killed at 8 GiB.
     - If the guard refuses admission, kills a run, or a kernel hits the task limit, stop and report it. A higher
       limit needs the user. ⛔ Never answer a kill by narrowing or cheapening the requested object.
     - There are no time limits (`AGENTS.md`).

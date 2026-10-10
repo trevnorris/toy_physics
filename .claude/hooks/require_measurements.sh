@@ -1,194 +1,77 @@
 #!/bin/bash
-# PreToolUse(Bash) — keeps the measurements gate in force. CLAUDE.md E1, orchestrator half.
+# PreToolUse(Bash) — keeps the measurements gate installed. CLAUDE.md E1, orchestrator half.
 #
-# The gate itself is git's commit-msg hook, require_measurements_commit_msg.sh: it
-# sees the commit's final contents and message. This hook runs before any Bash
-# command that may commit, and refuses it when
-#   - that git hook is not installed where git will run it, or
-#   - the command turns hooks off (--no-verify or -n on commit, core.hooksPath,
-#     or GIT_CONFIG_* in the environment), or
-#   - the command cannot be tokenised, so neither can be ruled out.
+# The gate itself is git's reference-transaction hook, require_measurements_gate.sh.
+# Git runs it for every commit however the command is written, so this hook does
+# not try to recognise commits. It refuses a Bash command when either holds:
+#   - the command text mentions core.hooksPath or a GIT_CONFIG* variable, anywhere,
+#     in any form. Either can point git at another hook directory and switch the
+#     gate off, and this hook cannot see what such a setting will resolve to before
+#     the command runs. The project has no use for either, so it refuses them all,
+#     including settings that would leave the gate in place.
+#   - the command text mentions git or datalad, and the hook git will run in the
+#     project's repository is not the gate (missing, replaced, not executable, or
+#     masked by a configured core.hooksPath).
 #
-# Measured 2026-10-10: the previous version read the index before the command
-# ran, and skipped any command shlex could not tokenise. A directive staged and
-# committed in one command, or committed with an odd apostrophe in a heredoc
-# message, went through ungated (ede8aa21, 34a994d5).
+# Measured 2026-10-10: the first version parsed the command to decide whether it
+# committed, read the index before the command ran, and skipped what it could not
+# tokenise; directive commits went through ungated (ede8aa21, 34a994d5). Its
+# replacement parsed shell and git options to find hook-disabling flags, and the
+# review found that parsing both over- and under-refused. Neither job is needed
+# now that the gate runs inside git.
 #
-# It is not tamper-proof against the agent; it is tamper-EVIDENT. A commit made
-# from inside a script, through an alias, or with plumbing (commit-tree) is not
-# seen here; git still runs the commit-msg hook for the first two.
+# It is not tamper-proof against the agent; it is tamper-EVIDENT. The installation
+# check covers the project's repository as git resolves it from CLAUDE_PROJECT_DIR
+# (linked worktrees share its hook). Removing the hook inside the same command that
+# then commits, or committing in a repository configured beforehand by other means,
+# is not seen here.
 
 set -uo pipefail
 
 payload=$(cat)
-
-# Decide whether the command may invoke `git commit`, and whether it turns hooks
-# off. Substring matching is wrong: a command that merely mentions the string
-# inside a quoted argument is not a commit (measured 2026-08-12 — the first version
-# of this hook blocked its own test harness that way). So the command is tokenised
-# respecting quotes, heredoc bodies are removed first (they are data, and an
-# apostrophe in one breaks tokenising), and only bare tokens count.
-verdict=$(printf '%s' "$payload" | python3 -c '
-import json, os, re, shlex, sys
-
+cmd=$(printf '%s' "$payload" | python3 -c '
+import json, sys
 raw = sys.stdin.read()
 try:
     c = json.loads(raw).get("tool_input", {}).get("command", "")
+    print(c if isinstance(c, str) else raw, end="")
 except Exception:
-    # Not a payload we can read. Refuse only if it could be a commit.
-    print("unparsed" if "commit" in raw else "pass")
-    sys.exit(0)
-if not isinstance(c, str):
-    c = ""
+    print(raw, end="")             # unreadable payload: check its whole text
+' 2>/dev/null) || cmd=$payload
 
-HEREDOC = re.compile(r"(?<!<)<<(?!<)(-?)\s*\\?([\x27\x22]?)([A-Za-z_][A-Za-z0-9_]*)\2")
-
-def strip_heredocs(s):
-    out, pending = [], []
-    for line in s.split("\n"):
-        if pending:
-            delim, dash = pending[0]
-            if (line.lstrip("\t") if dash else line) == delim:
-                pending.pop(0)
-            continue
-        out.append(line)
-        pending += [(m.group(3), m.group(1) == "-") for m in HEREDOC.finditer(line)]
-    return "\n".join(out)
-
-OPS = set("();<>|&\n")
-
-def simple_commands(s):
-    s = s.replace("\\\n", " ")              # line continuations
-    lex = shlex.shlex(s, posix=True, punctuation_chars="();<>|&\n")
-    lex.whitespace = " \t\r"
-    lex.whitespace_split = True
-    cmds, cur = [], []
-    for t in lex:                           # raises ValueError if unbalanced
-        if t and set(t) <= OPS:
-            if cur:
-                cmds.append(cur)
-            cur = []
-        else:
-            cur.append(t)
-    if cur:
-        cmds.append(cur)
-    return cmds
-
-# Short options of `git commit` that take an argument: the rest of the cluster,
-# or else the next token, is that argument.
-ARG_SHORT = set("mFCct")
-OPT_ARG_SHORT = set("Su")                  # optional argument, attached only
-ARG_LONG = {"--message", "--file", "--reuse-message", "--reedit-message",
-            "--template", "--author", "--date", "--fixup", "--squash",
-            "--cleanup", "--trailer", "--pathspec-from-file"}
-
-def commit_bypass(after):
-    i = 0
-    while i < len(after):
-        t = after[i]
-        if t == "--":
-            break
-        if t.startswith("--"):
-            name = t.split("=", 1)[0]
-            if name.startswith("--no-veri"):
-                return "--no-verify"
-            if name in ARG_LONG and "=" not in t:
-                i += 1
-        elif t.startswith("-") and len(t) > 1:
-            for k, ch in enumerate(t[1:]):
-                if ch == "n":
-                    return "-n"
-                if ch in ARG_SHORT:
-                    if k == len(t) - 2:
-                        i += 1
-                    break
-                if ch in OPT_ARG_SHORT:
-                    break
-        i += 1
-    return None
-
-def scan(s):
-    """Return (is_commit, bypass_reason)."""
-    found, why = False, None
-    for cmd in simple_commands(s):
-        for gi, t in enumerate(cmd):
-            if os.path.basename(t) != "git":
-                continue
-            for ci in range(gi + 1, len(cmd)):
-                if cmd[ci] != "commit":
-                    continue
-                found = True
-                before = cmd[:ci]
-                if any("hookspath" in b.lower() for b in before):
-                    why = why or "core.hooksPath"
-                if any(b.startswith("GIT_CONFIG") for b in before):
-                    why = why or "GIT_CONFIG_* in the environment"
-                why = why or commit_bypass(cmd[ci + 1:])
-    return found, why
-
-texts = [strip_heredocs(c)]
-if texts[0] != c:
-    texts.append(c)                         # a misread heredoc must not hide a command
-parsed, found, why = 0, False, None
-for s in texts:
-    try:
-        f, w = scan(s)
-    except ValueError:
-        continue
-    parsed += 1
-    found = found or f
-    why = why or w
-
-if parsed == 0:
-    looks = re.search(r"\bgit\b", c) and re.search(r"\bcommit\b", c)
-    print("unparsed" if looks else "pass")
-elif why:
-    print("bypass " + why)
-else:
-    print("commit" if found else "pass")
-')
-
-case "$verdict" in
-  pass) exit 0 ;;
-  unparsed)
-    cat >&2 <<'EOF'
-BLOCKED — require_measurements: this command may run `git commit`, and it could not
-be tokenised (an unbalanced quote outside any heredoc), so the hook cannot tell
-whether it turns hooks off. Restate the command so it tokenises.
+if grep -qiE 'hookspath|GIT_CONFIG' <<< "$cmd"; then
+  cat >&2 <<'EOF'
+BLOCKED — require_measurements: this command mentions core.hooksPath or a GIT_CONFIG*
+variable. Either can point git at another hook directory and switch off the
+measurements gate (git's reference-transaction hook), so neither is allowed from
+here. Restate the command without it.
 EOF
-    exit 2 ;;
-  bypass\ *)
-    cat >&2 <<EOF
-BLOCKED — require_measurements: this commit turns git's hooks off (${verdict#bypass }).
-The measurements gate is git's commit-msg hook; a commit that skips it is ungated.
-Commit without it. If a directive in the commit genuinely asserts nothing about any
-artifact, say so in the message with:  no-measurements: <reason>
-EOF
-    exit 2 ;;
-  commit) ;;
-  *)
-    echo "BLOCKED — require_measurements: unexpected verdict '$verdict' from the tokeniser." >&2
-    exit 2 ;;
-esac
-
-proj=${CLAUDE_PROJECT_DIR:-/var/projects/toy_physics}
-want="$proj/.claude/hooks/require_measurements_commit_msg.sh"
-hooks=$(git -C "$proj" rev-parse --path-format=absolute --git-path hooks 2>/dev/null) || hooks=""
-have=""
-[ -n "$hooks" ] && have=$(readlink -f "$hooks/commit-msg" 2>/dev/null)
-if [ -n "$have" ] && [ "$have" = "$(readlink -f "$want")" ] && [ -x "$want" ]; then
-  exit 0
+  exit 2
 fi
 
+grep -qE '(^|[^[:alnum:]_.-])(git|datalad)([^[:alnum:]_]|$)' <<< "$cmd" || exit 0
+
+proj=${CLAUDE_PROJECT_DIR:-/var/projects/toy_physics}
+gate=require_measurements_gate.sh
+hooks=$(git -C "$proj" rev-parse --path-format=absolute --git-path hooks 2>/dev/null) || hooks=""
+common=$(git -C "$proj" rev-parse --path-format=absolute --git-common-dir 2>/dev/null) || common=""
+have=""
+[ -n "$hooks" ] && have=$(readlink -f "$hooks/reference-transaction" 2>/dev/null)
+ok=0
+for want in "$proj/.claude/hooks/$gate" "${common%/.git}/.claude/hooks/$gate"; do
+  [ -n "$have" ] && [ -x "$have" ] && [ "$have" = "$(readlink -f "$want" 2>/dev/null)" ] && ok=1
+done
+[ $ok = 1 ] && exit 0
+
 cat >&2 <<EOF
-BLOCKED — require_measurements: git's commit-msg hook is not the measurements gate.
+BLOCKED — require_measurements: git's reference-transaction hook is not the measurements gate.
 
 The gate runs inside git, so a commit made without it is ungated. Expected
-  ${hooks:-<git hooks directory>}/commit-msg  ->  $want
+  ${hooks:-<git hooks directory>}/reference-transaction  ->  .claude/hooks/$gate
 found
   ${have:-nothing}
-Install it from the repository root with:
-  ln -s ../../.claude/hooks/require_measurements_commit_msg.sh .git/hooks/commit-msg
-(If core.hooksPath is set, git reads hooks from there instead; unset it.)
+Install it from the main checkout's root with:
+  ln -s ../../.claude/hooks/$gate .git/hooks/reference-transaction
+If git reads hooks from somewhere else (a configured hook path), remove that setting.
 EOF
 exit 2

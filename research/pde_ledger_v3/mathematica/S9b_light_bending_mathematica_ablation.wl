@@ -8,12 +8,12 @@ scope = Replace[Environment["S9B_ABLATION_SCOPE"], $Failed -> "ALL"];
 If[!MemberQ[{"ALL", "K11"}, scope], Quit[94]];
 root = Directory[];
 engine = FileNameJoin[{root, "research", "pde_ledger_v3", "mathematica", "S9b_light_bending_mathematica_audit.wl"}];
-work = FileNameJoin[{root, "_scratch", "s9b_wl_repair1", "k11_repair", "ablation"}];
+work = FileNameJoin[{root, "_scratch", "s9b_wl_repair2", "ablation-final2"}];
 If[!DirectoryQ[work], CreateDirectory[work, CreateIntermediateDirectories -> True]];
 source = Import[engine, "Text"];
-progress = OpenWrite[FileNameJoin[{work, "progress.log"}]];
-note[stage_, name_] := (WriteString[progress,
-  ToString[{stage, name, MemoryInUse[], MaxMemoryUsed[]}, InputForm] <> "\n"]; Flush[progress]);
+S9bHarness`progress = OpenWrite[FileNameJoin[{work, "progress.log"}]];
+note[stage_, name_] := (WriteString[S9bHarness`progress,
+  ToString[{stage, name, MemoryInUse[], MaxMemoryUsed[]}, InputForm] <> "\n"]; Flush[S9bHarness`progress]);
 knives = <|
  "K1" -> {"kineticSymbol = (omega - vVector.kCov)^2;", "kineticSymbol = omega^2;"},
  "K2" -> {"metric2 = DiagonalMatrix[{aMetric, r^2}];", "metric2 = DiagonalMatrix[{1, r^2}];"},
@@ -42,6 +42,8 @@ difference[a_Association, b_Association] := AssociationMap[
   difference[Lookup[a, #, Missing["Unemitted"]], Lookup[b, #, Missing["Unemitted"]]] &,
   Union[Keys[a], Keys[b]]];
 difference[a_List, b_List] /; Length[a] == Length[b] := MapThread[difference, {a,b}];
+(* A changed list shape is a structural difference, not vector arithmetic. *)
+difference[a_List, b_List] := Inactive[Subtract][a,b];
 difference[a_, b_] := Which[SameQ[a,b], 0,
   StringQ[a] || StringQ[b] || MemberQ[{True, False}, a] || MemberQ[{True, False}, b] ||
     !FreeQ[{a,b}, _String | _Association | _Rule | _Missing | _ConditionalExpression |
@@ -112,5 +114,5 @@ Do[print["K11_" <> tag, If[KeyExistsQ[compactBaseline, tag] && KeyExistsQ[compac
 (* Harness dead-path ablation: both inputs are the actual baseline. *)
 If[scope == "ALL", Do[print["HARNESS_DEAD_PATH_" <> tag, <|"Baseline" -> baseline[tag],
  "Corrupted" -> baseline[tag], "Difference" -> difference[baseline[tag], baseline[tag]]|>], {tag, Keys[baseline]}]];
-note["complete", scope]; Close[progress];
+note["complete", scope]; Close[S9bHarness`progress];
 End[];

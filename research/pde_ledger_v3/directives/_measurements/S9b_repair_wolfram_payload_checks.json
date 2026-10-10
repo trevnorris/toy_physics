@@ -1,0 +1,175 @@
+{
+  "payloadIssues": [],
+  "counts": {
+    "K1": 373,
+    "K2": 373,
+    "K3": 373,
+    "K4a": 373,
+    "K4b": 373,
+    "K4c": 373,
+    "K5": 373,
+    "K6": 373,
+    "K7": 373,
+    "K8": 373,
+    "K9a": 373,
+    "K9b": 373,
+    "K10": 373,
+    "K11": 373,
+    "HARNESS_DEAD_PATH": 373
+  },
+  "manifest": [
+    {
+      "knife": "K1",
+      "site": "kineticSymbol = (omega - vVector.kCov)^2;",
+      "mutation": "kineticSymbol = omega^2;",
+      "occurrences": 1,
+      "exactSingleMutationApartFromTerminalNewline": true,
+      "terminalNewlineRemovedByTextExport": true,
+      "sha256": "c99ac5573079e5700d5f2429235b6992049faeb3d9b85bf428afea7e66ce38f5"
+    },
+    {
+      "knife": "K2",
+      "site": "metric2 = DiagonalMatrix[{aMetric, r^2}];",
+      "mutation": "metric2 = DiagonalMatrix[{1, r^2}];",
+      "occurrences": 1,
+      "exactSingleMutationApartFromTerminalNewline": true,
+      "terminalNewlineRemovedByTextExport": true,
+      "sha256": "e49250ab71f5b0e9343a47dfc4bf1d12cd0eca3d0dc9331fb09109660458ad9f"
+    },
+    {
+      "knife": "K3",
+      "site": "dispersionSpeed = cSquared;",
+      "mutation": "dispersionSpeed = c0^2;",
+      "occurrences": 1,
+      "exactSingleMutationApartFromTerminalNewline": true,
+      "terminalNewlineRemovedByTextExport": true,
+      "sha256": "e789b918e5be1a05f1de9d72f9fa99756933da6c84279c617a2fbf3c5a99b8b6"
+    },
+    {
+      "knife": "K4a",
+      "site": "rayDerivative[z_, x_] := D[z, x];",
+      "mutation": "rayDerivative[z_, x_] := D[z, x] /. HoldPattern[Derivative[j_][deltaProfile][arg_]] :> 0;",
+      "occurrences": 1,
+      "exactSingleMutationApartFromTerminalNewline": true,
+      "terminalNewlineRemovedByTextExport": true,
+      "sha256": "1b2ca16aadb2e2b0b3960802e98f34ac159cc04659bba26840c9716cd81336c4"
+    },
+    {
+      "knife": "K4b",
+      "site": "rayDerivative[z_, x_] := D[z, x];",
+      "mutation": "rayDerivative[z_, x_] := D[z, x] /. HoldPattern[Derivative[j_][velocityProfile][arg_]] :> 0;",
+      "occurrences": 1,
+      "exactSingleMutationApartFromTerminalNewline": true,
+      "terminalNewlineRemovedByTextExport": true,
+      "sha256": "42afe51bf5ef0d80f8206b0fd12f5fed6a05ca64d255469e04eea6b35e545070"
+    },
+    {
+      "knife": "K4c",
+      "site": "xiSlope = Simplify[D[xiAnsatz, r], $Assumptions];",
+      "mutation": "xiSlope = Simplify[D[xiConstant, r], $Assumptions];",
+      "occurrences": 1,
+      "exactSingleMutationApartFromTerminalNewline": true,
+      "terminalNewlineRemovedByTextExport": true,
+      "sha256": "ad57873a6c60ca5fd142c6f706a29be39c69078cc26d54c754e0e53f2730f128"
+    },
+    {
+      "knife": "K5",
+      "site": "returnDirection = -1;",
+      "mutation": "returnDirection = 1;",
+      "occurrences": 1,
+      "exactSingleMutationApartFromTerminalNewline": true,
+      "terminalNewlineRemovedByTextExport": true,
+      "sha256": "7fc0fe3654a4a425ec16a2c5d9057c81a7b078e3894615243804df0acd3734d7"
+    },
+    {
+      "knife": "K6",
+      "site": "radarSource = roundTrip;",
+      "mutation": "radarSource = oneWayER;",
+      "occurrences": 1,
+      "exactSingleMutationApartFromTerminalNewline": true,
+      "terminalNewlineRemovedByTextExport": true,
+      "sha256": "f5d59ab42df7a171af4805b861fd225f7c03e4105b021075b8d719d162c0b421"
+    },
+    {
+      "knife": "K7",
+      "site": "quantifierMode = \"EVERY_B\";",
+      "mutation": "quantifierMode = \"FIXED_B\";",
+      "occurrences": 1,
+      "exactSingleMutationApartFromTerminalNewline": true,
+      "terminalNewlineRemovedByTextExport": true,
+      "sha256": "3f3b49f9cb40fd19bec9fc3a734f3b98ffb16f277e7214602d6ee4e7f3fd981d"
+    },
+    {
+      "knife": "K8",
+      "site": "massDensity = rhoBr[r];",
+      "mutation": "massDensity = rhoBrConstant;",
+      "occurrences": 1,
+      "exactSingleMutationApartFromTerminalNewline": true,
+      "terminalNewlineRemovedByTextExport": true,
+      "sha256": "ea16b105d16dc8286d9abcf84490186d308c9915b9f1b0422f95f85fedc48f0f"
+    },
+    {
+      "knife": "K9a",
+      "site": "localSoundSquared = bulkSoundSquared /. rho -> rho0 (1 + fLocal);",
+      "mutation": "localSoundSquared = bulkSoundSquared /. rho -> rho0;",
+      "occurrences": 1,
+      "exactSingleMutationApartFromTerminalNewline": true,
+      "terminalNewlineRemovedByTextExport": true,
+      "sha256": "d315937b961538bf60dae78a3809d3f1fb39dec77133ae41d61918c0908bf907"
+    },
+    {
+      "knife": "K9b",
+      "site": "localBulkDensity = rho0 (1 + fLocal);",
+      "mutation": "localBulkDensity = rho0;",
+      "occurrences": 1,
+      "exactSingleMutationApartFromTerminalNewline": true,
+      "terminalNewlineRemovedByTextExport": true,
+      "sha256": "ea0d0704f8724d8b02016c46f3ea351d0994c06bb5af231a54db740a8f569056"
+    },
+    {
+      "knife": "K10",
+      "site": "branchGateLocal = propagatingLocal;",
+      "mutation": "branchGateLocal = Not[propagatingLocal];",
+      "occurrences": 1,
+      "exactSingleMutationApartFromTerminalNewline": true,
+      "terminalNewlineRemovedByTextExport": true,
+      "sha256": "d434e648a56611520090651093431ac94dcce7584599c9bc66247a3aeeb04099"
+    },
+    {
+      "knife": "K11",
+      "site": "vVector = {vLocal, 0};",
+      "mutation": "vVector = {vLocal, vLocal/r};",
+      "occurrences": 1,
+      "exactSingleMutationApartFromTerminalNewline": true,
+      "terminalNewlineRemovedByTextExport": true,
+      "sha256": "27237c11ce495d32fd221e95bc153b786affea054115fbeba6e1d637da39ab74"
+    }
+  ],
+  "compactExtractionExact": {
+    "K11_COMPACT_BASELINE": true,
+    "K11_COMPACT_CORRUPTED": true
+  },
+  "nonTagLines": [],
+  "headers": [
+    "WL_LOCAL_S9B_ABLATION_MANIFEST",
+    "WL_LOCAL_S9B_ABLATION_K1_SITE",
+    "WL_LOCAL_S9B_ABLATION_K2_SITE",
+    "WL_LOCAL_S9B_ABLATION_K3_SITE",
+    "WL_LOCAL_S9B_ABLATION_K4a_SITE",
+    "WL_LOCAL_S9B_ABLATION_K4b_SITE",
+    "WL_LOCAL_S9B_ABLATION_K4c_SITE",
+    "WL_LOCAL_S9B_ABLATION_K5_SITE",
+    "WL_LOCAL_S9B_ABLATION_K6_SITE",
+    "WL_LOCAL_S9B_ABLATION_K7_SITE",
+    "WL_LOCAL_S9B_ABLATION_K8_SITE",
+    "WL_LOCAL_S9B_ABLATION_K9a_SITE",
+    "WL_LOCAL_S9B_ABLATION_K9b_SITE",
+    "WL_LOCAL_S9B_ABLATION_K10_SITE",
+    "WL_LOCAL_S9B_ABLATION_K11_SITE"
+  ],
+  "formerFailureTagProgress": [
+    "{\"difference begin\", \"K1_WL_S9B_F_LIVE_BRANCH_TYPE\", 217563672, 220311176}",
+    "{\"difference end\", \"K1_WL_S9B_F_LIVE_BRANCH_TYPE\", 217565848, 220311176}"
+  ],
+  "completionEvent": "{\"complete\", \"ALL\", 233167304, 266890576}"
+}

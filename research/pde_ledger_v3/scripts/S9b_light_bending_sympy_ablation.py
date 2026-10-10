@@ -56,6 +56,10 @@ FORWARD_CONDITION_TAGS = frozenset(
     ['PY_S9B_F_LIVE_C_'+response+'_CONDITION_'+quantity
      for response in ('CONSTANT','FIXED_RATIO','POWER') for quantity in ('DEFLECTION','RADAR')])
 
+
+def progress(object_name):
+    print('S9B_HARNESS_WORK '+str(object_name), file=sys.stderr, flush=True)
+
 # Amendment 2: finite exact samples, not a universal path-independence claim.
 # These dimensionless coordinate/unit choices are evaluation inputs only.
 # In particular both copies receive identical nonzero profile amplitudes.
@@ -121,7 +125,9 @@ def compact_difference(a,b):
 def compact_k11(baseline, source, mutant, folder):
     unmutated = mutant.with_name('S9b_compact_unmutated.py')
     unmutated.write_text(source)
+    progress('K11 compact unmutated dispersion/nonreciprocity')
     original,parameters,coordinates,grades,lines = compact_copy(unmutated)
+    progress('K11 compact mutated dispersion/nonreciprocity')
     corrupted,other_parameters,other_coordinates,other_grades,other_lines = compact_copy(mutant)
     coverage = sp.Tuple(
         sp.Tuple(Str('method'),Str('engine vector_dispersion and nonreciprocity calls; exact profile specialization; derivatives before coordinate sampling')),
@@ -138,6 +144,7 @@ def compact_k11(baseline, source, mutant, folder):
         raise ValueError('compact extraction/configuration mismatch')
     reached,not_evaluated = [],[]
     for tag,full in sorted(baseline.items()):
+        progress('K11 '+tag+': compact evaluation, difference and method residual')
         if tag in original and tag in corrupted:
             reduced = compact_reduce(full,parameters,coordinates)
             delta = compact_difference(original[tag],corrupted[tag])
@@ -212,11 +219,22 @@ def run(script, folder):
     folder.mkdir(parents=True,exist_ok=False)
     output = folder/'stdout'
     with output.open('w') as out, (folder/'stderr').open('w') as err:
-        completed = subprocess.run([sys.executable,'-B',str(script)],stdout=out,stderr=err,
-                                   stdin=subprocess.DEVNULL,env=dict(os.environ,PYTHONDONTWRITEBYTECODE='1'))
-    (folder/'exit-code').write_text(str(completed.returncode)+'\n')
-    if completed.returncode:
-        raise RuntimeError(('worker stopped',str(folder),completed.returncode))
+        progress(str(folder)+': engine start')
+        child = subprocess.Popen([sys.executable,'-B',str(script)],stdout=out,stderr=subprocess.PIPE,
+                                 text=True,stdin=subprocess.DEVNULL,
+                                 env=dict(os.environ,PYTHONDONTWRITEBYTECODE='1'))
+        # Relay operational progress immediately, keeping stdout purely the
+        # payload grammar and preserving a separate worker stderr transcript.
+        for line in child.stderr:
+            err.write(line)
+            err.flush()
+            print(str(folder)+': '+line.rstrip('\n'),file=sys.stderr,flush=True)
+        code = child.wait()
+        child.stderr.close()
+    (folder/'exit-code').write_text(str(code)+'\n')
+    progress(str(folder)+': engine exit '+str(code))
+    if code:
+        raise RuntimeError(('worker stopped',str(folder),code))
     return output
 
 
@@ -238,6 +256,7 @@ def main():
     else:
         output = run(ENGINE,scratch/'baseline')
         output.with_name(output.name+'.source-sha256').write_text(digest+'\n')
+    progress('baseline: parse '+str(output))
     baseline = parse(output)
     for knife in args.knife or KNIVES:
         before,after = KNIVES[knife]
@@ -256,8 +275,11 @@ def main():
         if knife == 'K11':
             compact_k11(baseline,source,mutant,scratch/knife)
             continue
-        corrupted = parse(run(mutant,scratch/knife/'run'))
+        worker_output = run(mutant,scratch/knife/'run')
+        progress(knife+': parse '+str(worker_output))
+        corrupted = parse(worker_output)
         for tag in sorted(set(baseline)|set(corrupted)):
+            progress(knife+' '+tag+': baseline, corrupted and difference')
             a = baseline.get(tag,Str('MISSING_TAG'))
             b = corrupted.get(tag,Str('MISSING_TAG'))
             print('PY_LOCAL_S9B_ABLATION_'+knife+'_'+tag+': '+render(sp.Tuple(a,b,difference(a,b))),flush=True)

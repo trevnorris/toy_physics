@@ -30,21 +30,20 @@ REPOSITORY = ROOT.parent.parent
 # Exactly one replacement in exactly one construction per copy. The mutation
 # manifest contains no expected payload or bite criterion.
 KNIVES = {
-    'K1': ('kinetic = (omega-U*kr)**2', 'kinetic = omega**2'),
-    'K2': ('inverse_metric = sp.diag(1/A, 1/r**2)', 'inverse_metric = sp.diag(1, 1/r**2)'),
+    'K1': ('kinetic = (omega-advected_velocity.dot(momenta))**2', 'kinetic = omega**2'),
+    'K2': ('inverse_metric = sp.diag(1/A,1,1)', 'inverse_metric = sp.eye(3)'),
     'K3': ('local_speed_squared = chi', 'local_speed_squared = c0**2'),
     'K4a': ('RADIAL_FREEZE = None', 'RADIAL_FREEZE = 0'),
     'K4b': ('RADIAL_FREEZE = None', 'RADIAL_FREEZE = 1'),
-    'K4c': ('slope = slope  # K4c', 'slope = sp.S.Zero  # K4c'),
+    'K4c': ('RADIAL_FREEZE = None', 'RADIAL_FREEZE = 2'),
     'K5': ('return_orientation = -1', 'return_orientation = 1'),
     'K6': ('log_source = roundtrip_time', 'log_source = forward_time'),
     'K7': ('fixed_impact = None', "fixed_impact = sp.Symbol('s9b_fixed_b',positive=True)"),
     'K8': ('mass_density = rho', "mass_density = sp.Symbol('s9b_constant_density',positive=True)"),
     'K9a': ('fixed_ratio_response = sp.sqrt(cs_ratio)', 'fixed_ratio_response = sp.S.One'),
-    'K9b': ('power_response = responses[2]', 'power_response = responses[2].subs(f_symbol,0)'),
-    'K10': ('observable_gate = ray_domain', 'observable_gate = sp.Not(ray_domain)'),
-    'K11': ('azimuthal_velocity = sp.zeros(3, 1)',
-            "azimuthal_velocity = sp.Symbol('s9b_azimuthal',real=True)*sp.Matrix([-xyz[1],xyz[0],0])/radius**2"),
+    'K9b': ('power_response = (1+f_symbol)**s', 'power_response = sp.S.One'),
+    'K10': ('observable_gate = real_domain', 'observable_gate = sp.Not(real_domain)'),
+    'K11': ('azimuthal_component = sp.S.Zero', "azimuthal_component = sp.Symbol('s9b_azimuthal',real=True)"),
 }
 
 RELATIONALS = {name: (lambda a,b, f=f: f(a,b,evaluate=False)) for name,f in
@@ -52,11 +51,10 @@ RELATIONALS = {name: (lambda a,b, f=f: f(a,b,evaluate=False)) for name,f in
      ('StrictLessThan',sp.Lt),('GreaterThan',sp.Ge),('LessThan',sp.Le))}
 
 FORWARD_CONDITION_TAGS = frozenset(
-    'PY_S9B_FORWARD_NO_FAR_ZONE_LOSS_'+stage+'_'+quantity+'_CONDITION'
-    for stage in ('DELTA_XI_ZERO','DELTA_XI_LIVE',
-                  'DELTA_XI_LIVE_C_CONSTANT','DELTA_XI_LIVE_C_FIXED_RATIO',
-                  'DELTA_XI_LIVE_C_POWER')
-    for quantity in ('DEFLECTION','RADAR'))
+    ['PY_S9B_F_'+stage+'_B_CONDITION_'+quantity
+     for stage in ('FLOW','LIVE') for quantity in ('DEFLECTION','RADAR')]+
+    ['PY_S9B_F_LIVE_C_'+response+'_CONDITION_'+quantity
+     for response in ('CONSTANT','FIXED_RATIO','POWER') for quantity in ('DEFLECTION','RADAR')])
 
 # Amendment 2: finite exact samples, not a universal path-independence claim.
 # These dimensionless coordinate/unit choices are evaluation inputs only.
@@ -67,87 +65,43 @@ COMPACT_PARAMETERS = {'d':sp.Rational(1,10), 'v':sp.Rational(1,8),
                       'L':sp.Integer(1), 'c0':sp.Integer(1)}
 COMPACT_AZIMUTHAL = sp.Rational(1,12)
 COMPACT_POINTS = ((3,4,0),(4,0,3),(0,6,8))
-COMPACT_TARGETS = {'PY_S9B_NONRECIPROCITY_ONEFORM':'oneform',
-                   'PY_S9B_NONRECIPROCITY_EXTERIOR_DERIVATIVE':'curl',
-                   'PY_S9B_NONRECIPROCITY_PATH_DEPENDENCE':None}
-
-
-def assigned_names(statement):
-    return {node.id for target in statement.targets for node in ast.walk(target)
-            if isinstance(node,ast.Name) and isinstance(node.ctx,ast.Store)}
+COMPACT_TARGETS = {'PY_LOCAL_S9B_NONRECIPROCITY_ONEFORM':'oneform',
+                   'PY_LOCAL_S9B_NONRECIPROCITY_EXTERIOR_DERIVATIVE':'curl',
+                   'PY_LOCAL_S9B_NONRECIPROCITY_PATH_PREDICATE':'predicate'}
 
 
 def compact_copy(path):
-    """Execute an assignment dependency slice, verbatim, from THIS source.
-
-    No expression is replaced by a handwritten physical formula. Configuration
-    is injected at symbol declarations; coordinates remain symbolic through
-    the engine's differentiation. Only the three target emissions are reached.
-    """
-    source = path.read_text()
-    module = ast.parse(source,filename=str(path))
-    build = next(node for node in module.body if isinstance(node,ast.FunctionDef)
-                 and node.name == 'build')
-    stop = next(i for i,node in enumerate(build.body)
-                if isinstance(node,ast.Assign) and 'curl' in assigned_names(node))
-    wanted, selected = {'oneform','curl'}, []
-    for node in reversed(build.body[:stop+1]):
-        if not isinstance(node,ast.Assign):
-            continue
-        names = assigned_names(node)
-        if wanted & names:
-            selected.append(node)
-            wanted = (wanted-names)|{a.id for a in ast.walk(node)
-                                      if isinstance(a,ast.Name) and isinstance(a.ctx,ast.Load)}
-    selected.reverse()
-    # Loading the module defines its own Jet and construction helpers, but
-    # does not call build(), import the fold's rows, or publish an export.
-    namespace = {'__file__':str(path),'__name__':'s9b_compact_copy'}
-    exec(compile(module,str(path),'exec'),namespace)
-    parameter_map = {}
-    for node in selected:
-        exec(compile(ast.Module(body=[node],type_ignores=[]),str(path),'exec'),namespace)
-        for name in assigned_names(node):
-            if name in COMPACT_PARAMETERS:
-                parameter_map[namespace[name]] = COMPACT_PARAMETERS[name]
-                namespace[name] = COMPACT_PARAMETERS[name]
-        if 'oneform' in assigned_names(node):
-            # The engine obtains its radial comparator by replacing the live
-            # azimuthal symbol with zero. Keep that symbol through this source
-            # construction; specialize only its completed one-form, before
-            # differentiating with respect to the still-symbolic coordinates.
-            azimuthal_map = {symbol:COMPACT_AZIMUTHAL
-                             for symbol in namespace['azimuthal_velocity'].free_symbols
-                             if symbol.name == 's9b_azimuthal'}
-            parameter_map.update(azimuthal_map)
-            namespace['oneform'] = [component.subs(azimuthal_map)
-                                    for component in namespace['oneform']]
-    # Extract the actual predicate emission rather than choosing its polarity.
-    predicate_emit = next(node for node in build.body if isinstance(node,ast.Expr)
-        and isinstance(node.value,ast.Call) and isinstance(node.value.func,ast.Name)
-        and node.value.func.id == 'emit' and node.value.args
-        and isinstance(node.value.args[0],ast.Constant)
-        and node.value.args[0].value == 'NONRECIPROCITY_PATH_DEPENDENCE')
-    reached = {}
-    for point in COMPACT_POINTS:
-        point_map = dict(zip(namespace['xyz'],map(sp.Integer,point)))
-        sampled = {tag:namespace['cas'](namespace[name]).subs(point_map)
-                   for tag,name in COMPACT_TARGETS.items() if name is not None}
-        sampled = {tag:sp.simplify(value) for tag,value in sampled.items()}
-        local = dict(namespace, curl=sampled['PY_S9B_NONRECIPROCITY_EXTERIOR_DERIVATIVE'])
-        predicate = eval(compile(ast.Expression(predicate_emit.value.args[1]),str(path),'eval'),local)
-        sampled['PY_S9B_NONRECIPROCITY_PATH_DEPENDENCE'] = predicate
-        for tag,value in sampled.items():
-            reached.setdefault(tag,[]).append(value)
-    lines = tuple((node.lineno,node.end_lineno) for node in selected)
-    return ({tag:sp.Tuple(*values) for tag,values in reached.items()},parameter_map,
-            namespace['xyz'],namespace['GRADES'],lines)
+    """Call the evaluated copy's own vector-dispersion/one-form construction."""
+    source=path.read_text()
+    namespace={'__file__':str(path),'__name__':'s9b_compact_copy'}
+    exec(compile(source,str(path),'exec'),namespace)
+    r=sp.Symbol('s9b_r',positive=True)
+    c0=sp.Symbol('c_0',positive=True)
+    config=COMPACT_PARAMETERS
+    templates={namespace['Delta']:config['d']*(config['L']/r)**config['p'],
+               namespace['Velocity']:config['c0']*config['v']*(config['L']/r)**config['q'],
+               namespace['Embedding']:config['w']*sp.log(r/config['L'])}
+    # The xi template differentiates to the configured h=1 slope. It is a
+    # compact-evaluation input only, never the engine's shared-profile ansatz.
+    replacements={function:(lambda x,value=value:value.subs(r,x)) for function,value in templates.items()}
+    result=namespace['nonreciprocity'](r,config['c0'],templates[namespace['Delta']],
+        templates[namespace['Velocity']],templates[namespace['Embedding']])
+    parameters={c0:config['c0'],sp.Symbol('s9b_azimuthal',real=True):COMPACT_AZIMUTHAL}
+    reached={tag:sp.Tuple(*(sp.simplify(namespace['cas'](result[name]).subs(parameters).subs(
+            dict(zip(result['xyz'],map(sp.Integer,point))))) for point in COMPACT_POINTS))
+             for tag,name in COMPACT_TARGETS.items()}
+    functions=[n for n in ast.parse(source).body if isinstance(n,ast.FunctionDef)
+               and n.name in ('vector_dispersion','nonreciprocity')]
+    lines=tuple((node.lineno,node.end_lineno) for node in functions)
+    reducer=(namespace['profile_substitute'],replacements,parameters)
+    return reached,reducer,result['xyz'],result['grades'],lines
 
 
-def compact_reduce(value, parameters, coordinates):
-    """The identical parameter/coordinate reduction of a full baseline tag."""
-    return sp.Tuple(*(sp.simplify(value.subs(parameters).subs(
-        dict(zip(coordinates,map(sp.Integer,point))))) for point in COMPACT_POINTS))
+def compact_reduce(value, reducer, coordinates):
+    apply,replacements,parameters=reducer
+    reduced=apply(value,replacements).subs(parameters)
+    return sp.Tuple(*(sp.simplify(reduced.subs(dict(zip(coordinates,map(sp.Integer,point)))))
+                      for point in COMPACT_POINTS))
 
 
 def compact_difference(a,b):
@@ -170,20 +124,18 @@ def compact_k11(baseline, source, mutant, folder):
     original,parameters,coordinates,grades,lines = compact_copy(unmutated)
     corrupted,other_parameters,other_coordinates,other_grades,other_lines = compact_copy(mutant)
     coverage = sp.Tuple(
-        sp.Tuple(Str('method'),Str('verbatim AST assignment slice; exact parameter specialization; derivatives before coordinate sampling')),
+        sp.Tuple(Str('method'),Str('engine vector_dispersion and nonreciprocity calls; exact profile specialization; derivatives before coordinate sampling')),
         sp.Tuple(Str('profile_parameters'),sp.Tuple(*(sp.Tuple(Str(k),v) for k,v in COMPACT_PARAMETERS.items()))),
         sp.Tuple(Str('azimuthal_parameter'),COMPACT_AZIMUTHAL),
         sp.Tuple(Str('sample_points'),sp.Tuple(*(sp.Tuple(*point) for point in COMPACT_POINTS))),
         sp.Tuple(Str('radial_retained_grades'),sp.Tuple(*(sp.Tuple(*grade) for grade in grades))),
-        sp.Tuple(Str('additional_truncation'),Str('NONE; nonradial correction is the exact engine expression')),
+        sp.Tuple(Str('additional_truncation'),Str('NONE beyond the engine retained grades; all vector velocity components enter the same graded dispersion')),
         sp.Tuple(Str('arithmetic'),Str('EXACT; no seed, rounding, or numerical error')),
         sp.Tuple(Str('boolean_difference'),Str('corrupted minus unmutated truth indicators; pointwise predicate only')),
         sp.Tuple(Str('extracted_line_ranges'),sp.Tuple(*(sp.Tuple(*pair) for pair in lines))))
     print('PY_LOCAL_S9B_ABLATION_K11_CONFIGURATION: '+render(coverage),flush=True)
     if coordinates != other_coordinates or grades != other_grades or lines != other_lines:
         raise ValueError('compact extraction/configuration mismatch')
-    if any(other_parameters.get(key)!=value for key,value in parameters.items()):
-        raise ValueError('compact parameter mismatch')
     reached,not_evaluated = [],[]
     for tag,full in sorted(baseline.items()):
         if tag in original and tag in corrupted:

@@ -1,6 +1,6 @@
 (* S9b blind builder.  Sole physical input: S9b_SHARED_PHYSICS.md v10, Parts A-C only.
    No Get, Needs, Import, file access, exports, or runtime configuration.
-   Power-law ansatz, with symbolic amplitudes AND exponents.  All expressions
+   General radial functions; no profile-family restriction.  All expressions
    below are formal coefficients about the flat ray; no straight-ray
    substitution is made for the higher retained grades of the travel time.
    Units: V is the contravariant radial coordinate velocity of the material.
@@ -38,20 +38,15 @@ label[g_] := StringJoin[ToString /@ g];
 atOne[z_] := z /. Thread[markers -> 1];
 
 $Assumptions = Element[{c0, ell, b, bFar, ZE, ZR, r, rr, impact,
-    ampD, ampV, ampW, powD, powV, powW, GM, n, K, m, s, rho0,
-    ampF}, Reals] && c0 > 0 && ell > 0 && b > 0 && bFar > 0 &&
-    ZE > 0 && ZR > 0 && r > 0 && rr > 0 && impact > 0 &&
-    powD >= 1 && powV >= 1/2 && powW >= 1/2 && rho0 > 0 && m > 0;
-
-(* Supplied equations and chosen ansatz: the only hand-combined physics.
-   powW is the exponent of xi', so the embedding grade has exponent 2 powW.
-   rhoBr is an arbitrary live radial function, not the bulk number density.
-*)
-delta = ampD (ell/r)^powD;
-velocity = c0 ampV (ell/r)^powV;
-xiAnsatz = ampW ell^powW Piecewise[{{Log[r], powW == 1}}, r^(1 - powW)/(1 - powW)];
+  GM, n, K, m, s, rho0, Phi, rAnchor}, Reals] && c0 > 0 && ell > 0 &&
+  b > bFar > 0 && ZE > 0 && ZR > 0 && r > 0 && rr > 0 && impact > 0 &&
+  rho0 > 0 && m > 0 && rAnchor > bFar;
+(* Supplied action and general radial ansatz. *)
+delta = deltaProfile[r]; velocity = velocityProfile[r];
+xiAnsatz = xiProfile[r];
 xiSlope = Simplify[D[xiAnsatz, r], $Assumptions]; (* K4c *)
-densityFraction = ampF (ell/r)^powD;
+densityFraction = fProfile[r];
+returnDirection = -1; (* K5 *)
 speed = c0 (1 + xD delta);
 radialMetric = 1 + xW xiSlope^2;
 metric3 = DiagonalMatrix[{radialMetric, r^2, r^2 Sin[theta]^2}];
@@ -74,7 +69,7 @@ responseInputs = {c0, c0 Sqrt[localSoundSquared/(bulkSoundSquared /. rho -> rho0
 rayDerivative[z_, x_] := D[z, x]; (* K4a,K4b: freeze only at differentiation *)
 rayDerivative[z_, x_, j_Integer] := Nest[rayDerivative[#, x] &, z, j];
 
-emit["SUPPLIED_INPUTS", <|"Dispersion" -> dispersion == 0,
+emit["LOCAL_SUPPLIED_INPUTS", <|"Dispersion" -> dispersion == 0,
   "Speed" -> localSpeedIdentification, "FarSpeed" -> farSpeedIdentification,
   "Metric" -> metric3, "Balance" -> massBalanceInput,
   "References" -> {referenceTheta, referenceRadar, gamma == 1},
@@ -87,12 +82,12 @@ emit["SUPPLIED_INPUTS", <|"Dispersion" -> dispersion == 0,
   "BackgroundAnchoring" -> {qBackgroundLab[x,t] == qBackground[x],
     qBackgroundMaterial[x,t] == qBackground[chi[x,t]], cGammaLab[x,t] == cGamma[x]},
   "SelectedAnchoring" -> "LAB_HELD"|>];
-emit["PROFILE_ANSATZ", <|"Delta" -> delta, "V" -> velocity,
+emit["LOCAL_PROFILE_ANSATZ", <|"Delta" -> delta, "V" -> velocity,
   "XiDerivative" -> xiSlope, "RhoBr" -> rhoBr[r],
   "FractionalBulkDensity" -> densityFraction, "Domain" -> $Assumptions,
-  "OrderCountingDomain" -> (powD >= 1 && powV >= 1/2 && powW >= 1/2),
+  "Counting" -> {"delta O(epsilon)", "V/c0 O(Sqrt[epsilon])", "xiPrimeSquared O(epsilon)"},
   "Anchoring" -> "LAB_HELD"|>];
-emit["RETAINED_GRADES", <|"Markers" -> markers, "Grades" -> grades,
+emit["LOCAL_RETAINED_GRADES", <|"Markers" -> markers, "Grades" -> grades,
   "EpsilonPowers" -> (#.{1, 1/2, 1} & /@ grades)|>];
 
 (* Hamilton velocity and the Fermat functional are derived from the symbol.
@@ -133,21 +128,14 @@ localRules = {aMetric -> radialMetric, cSquared -> speed^2,
   vLocal -> xV velocity};
 physicalPropagation = atOne[branchGateLocal /. localRules];
 physicalTraversal = atOne[subcritical /. localRules];
-emit["BRANCH_FREQUENCIES", frequencyRoots];
-emit["BRANCH_EXISTENCE", <|"Local" -> propagatingLocal,
-  "AlongRay" -> Inactive[ForAll][r, rayRadiusDomain[r],
-    physicalPropagation && atOne[speed] > 0 && rhoBr[r] != 0],
-  "SpeedIdentification" -> localSpeedIdentification|>];
-emit["PATH_TRAVERSAL", <|"RadialGroupVelocities" -> radialSpeeds,
-  "DirectionalCondition" -> traversalLocal,
-  "SubcriticalDomain" -> Inactive[ForAll][r, rayRadiusDomain[r], physicalTraversal]|>];
+emit["LOCAL_BRANCH_FREQUENCIES", frequencyRoots];
 branchTypes = Piecewise[{
   {Map[Function[root, Piecewise[{{"growing", Im[root] > 0},
        {"decaying", Im[root] < 0}}, "absent"]], frequencyRoots], relativeNorm < 0},
-  {"absent", relativeNorm == 0 || Det[metric2] <= 0},
+  {"absent", relativeNorm == 0 || Det[metric2] <= 0 || rhoBr[r] == 0},
   {"unable to traverse in a required direction", branchGateLocal && Not[subcritical]}},
   "real propagating"];
-emit["BRANCH_TYPES", branchTypes];
+emit["LOCAL_BRANCH_TYPES", branchTypes];
 emit["LOCAL_HAMILTON_VELOCITY", <|"Velocity" -> groupVelocity,
   "RelativeMetricNorm" -> relativeNorm|>];
 emit["LOCAL_FERMAT_OBJECT", <|"TimePolynomial" -> timePolynomial,
@@ -155,396 +143,324 @@ emit["LOCAL_FERMAT_OBJECT", <|"TimePolynomial" -> timePolynomial,
 
 (* The actual odd Fermat one-form, before any radial reduction. The compact
    K11 evaluator mechanically extracts through the following boundary. *)
-oddOneFormLocal = D[fermatOdd, #] & /@ tangent;
-oddExteriorLocal = Table[D[oddOneFormLocal[[j]], {r, phi}[[i]]] -
-  D[oddOneFormLocal[[i]], {r, phi}[[j]]], {i, 2}, {j, 2}];
-(* Local symbols stand for radial fields: include their chain-rule jets. *)
-oddExteriorLocal = oddExteriorLocal + Table[If[i == 1,
-  Total[MapThread[D[oddOneFormLocal[[j]], #1] #2 &,
-    {{aMetric, cSquared, vLocal}, {aJet, cJet, vJet}}]], 0] - If[j == 1,
-  Total[MapThread[D[oddOneFormLocal[[i]], #1] #2 &,
-    {{aMetric, cSquared, vLocal}, {aJet, cJet, vJet}}]], 0], {i, 2}, {j, 2}];
-emit["NONRECIPROCAL_DEPENDENCE", <|"OneForm" -> oddOneFormLocal,
-  "ExteriorDerivative" -> Simplify[oddExteriorLocal],
-  "Closedness" -> Simplify[And @@ Thread[Flatten[oddExteriorLocal] == 0]],
-  "Domain" -> (r > 0 && subcritical && branchGateLocal),
-  "RadialPrimitive" -> Inactive[Integrate][oddOneFormLocal[[1]], r]|>];
+oddOneFormLocal = D[(1 - returnDirection) fermatOdd/2, #] & /@ tangent;
+oddOneForm = (atOne[box[# /. localRules]] &) /@ oddOneFormLocal;
+oddExterior = Table[D[oddOneForm[[j]], {r,phi}[[i]]] -
+  D[oddOneForm[[i]], {r,phi}[[j]]], {i,2},{j,2}];
+emit["A_NONRECIPROCAL_PATH_DEPENDENCE", <|"OneForm" -> oddOneForm,
+  "ExteriorDerivative" -> Simplify[oddExterior],
+  "Closedness" -> Simplify[And @@ Thread[Flatten[oddExterior] == 0]],
+  "Domain" -> (r > 0 && atOne[(subcritical && branchGateLocal) /. localRules]),
+  "RadialPrimitive" -> Inactive[Integrate][oddOneForm[[1]], {r,rAnchor,rr}]|>];
 (* COMPACT_K11_BOUNDARY *)
 
-(* Normalize the even optical metric to far-field length units.  R(r) is
-   its circumferential radius.  The push-forward of a(r) dr under R=r+u(r)
-   has formal density Sum[(-D_R)^j (a u^j)/j!].  Three iterations suffice:
-   every even perturbation contains xD, xV^2 or xW; no fourth product
-   survives the requested box.  This includes the shift of the periapsis.
-*)
+(* Functional calculus. Integrals remain general radial functionals; their
+   parameter derivatives are computed by the Leibniz rule. All derivative
+   construction passes through rayDerivative, including K4a/b. *)
+lim[z_, x_, target_, opts___] := Block[
+  {$Assumptions = And @@ Select[List @@ $Assumptions, FreeQ[#,x] &]},
+  Limit[z, x -> target, opts]];
+fi[z_, range_List] := If[SameQ[z, 0], 0, Inactive[Integrate][z, range]];
+fd[z_, x_] := Module[{ints, slots, algebra, result, v, lo, hi, q},
+  ints = DeleteDuplicates[Cases[z, HoldPattern[Inactive[Integrate][_, {_, _, _}]], {0, Infinity}]];
+  slots = Table[Unique["integralSlot"], {Length[ints]}];
+  algebra = z /. Thread[ints -> slots];
+  result = rayDerivative[algebra, x];
+  Do[{v, lo, hi} = ints[[i, 2]]; q = ints[[i, 1]];
+    result += D[algebra, slots[[i]]] (fi[rayDerivative[q, x], {v, lo, hi}] +
+      (q /. v -> hi) rayDerivative[hi, x] - (q /. v -> lo) rayDerivative[lo, x]),
+    {i, Length[ints]}];
+  result /. Thread[slots -> ints]];
+fd[z_, x_, j_Integer] := Nest[fd[#, x] &, z, j];
+linearRules[polynomial_, variable_] := {Thread[{variable} ->
+  LinearSolve[{{Coefficient[Expand[polynomial], variable]}},
+    {-(polynomial /. variable -> 0)}]]};
+
+(* Central optical-coordinate construction from the derived Fermat metric. *)
 optical = Simplify[(c0^2 opticalMetric) /. localRules, $Assumptions];
-circumferenceRadius = Simplify[Sqrt[optical[[2, 2]]], $Assumptions];
-(* Derive the same coordinate from the computed angular metric, keeping
-   the analytic branch connected to positive r at zero perturbation. *)
+circumferenceRadius = Sqrt[optical[[2, 2]]];
 radiusShift = box[r (Sqrt[box[optical[[2, 2]]/r^2]] - 1)];
 radialLengthDensity = box[Sqrt[box[optical[[1, 1]]]]];
 opticalDensity = radialLengthDensity;
 Do[opticalDensity += (-1)^j/Factorial[j] rayDerivative[
-    project[radialLengthDensity project[radiusShift^j]], r, j], {j, 1, 3}];
-opticalDensity = project[Expand[opticalDensity]];
-exponent[g_] := g.{powD, powV, 2 powW};
-hCoefficient[g_] := hCoefficient[g] = Simplify[coeff[opticalDensity, g] /. r -> ell,
-  $Assumptions];
+  project[radialLengthDensity project[radiusShift^j]], r, j], {j, 1, 3}];
+opticalDensity = project[opticalDensity];
+hCoefficient[g_] := hCoefficient[g] = Simplify[coeff[opticalDensity, g]];
 emit["LOCAL_OPTICAL_COORDINATE", <|"Radius" -> circumferenceRadius,
-  "Shift" -> radiusShift, "RadialDensity" -> radialLengthDensity,
-  "PushedDensity" -> opticalDensity|>];
+  "Shift" -> radiusShift, "PushedDensity" -> opticalDensity|>];
 
-(* Conditions include a simple exterior turning point and the connected
-   perturbative branch of the boundary-value solution.  rayRadiusDomain
-   is the union of radii traversed by that branch, not the throat interior.
-*)
-rayDomain = <|"LocalPropagation" -> physicalPropagation,
-  "PositiveSpeed" -> atOne[speed] > 0,
-  "Traversal" -> physicalTraversal,
-  "TurningPoint" -> {atOne[circumferenceRadius] == impact,
-    D[atOne[circumferenceRadius], r] > 0},
-  "Exterior" -> Inactive[ForAll][r, r > rTurning,
-    atOne[circumferenceRadius] > impact],
-  "PerturbativeBranch" -> AnalyticContinuationFrom[Thread[markers -> 0]],
-  "Endpoints" -> {rE == Sqrt[b^2 + ZE^2], rR == Sqrt[b^2 + ZR^2]},
-  "FarZone" -> b > bFar|>;
-emit["RAY_DOMAIN", rayDomain];
+(* The physical radii traversed by a central ray are constructed as the
+   inverse images of its monotone optical-radius intervals. Turning radii
+   are roots of the computed optical radius, not an undefined domain head. *)
+endpointRadii = {Sqrt[b^2 + ZE^2], Sqrt[b^2 + ZR^2]};
+rayRadius = atOne[circumferenceRadius];
+angularSeparation = Total[ArcCos[b/#] & /@ endpointRadii];
+exactRadialActionIntegrand = Sqrt[optical[[1,1]]] Sqrt[1-impact^2/optical[[2,2]]];
+radarAngleIntegrand = atOne[-D[exactRadialActionIntegrand,impact] /. impact -> impactRadar];
+radarEndpointEquation = Total[fi[radarAngleIntegrand,{r,rTurnRadar,#}] & /@ endpointRadii] == angularSeparation;
+turningCondition[j_, t_] := (rayRadius /. r -> t) == j && t > bFar &&
+  (D[rayRadius, r] /. r -> t) > 0;
+flybyRadii = r >= rTurnFlyby;
+radarRadii = rTurnRadar <= r <= Max[endpointRadii];
+rayConstruction = radarEndpointEquation && turningCondition[b, rTurnFlyby] &&
+  turningCondition[impactRadar, rTurnRadar] && rTurnRadar <= Min[endpointRadii] &&
+  Inactive[ForAll][r, r >= rTurnFlyby, D[rayRadius, r] > 0] &&
+  Inactive[ForAll][r, radarRadii, D[rayRadius, r] > 0];
+traversedRadii = flybyRadii || radarRadii;
+propagationGate = rayConstruction && Inactive[ForAll][r, traversedRadii,
+  physicalPropagation && atOne[speed] > 0 && rhoBr[r] != 0 &&
+  Element[{deltaProfile[r],velocityProfile[r],xiProfile[r],rhoBr[r]},Reals]];
+traversalGate = rayConstruction && Inactive[ForAll][r, traversedRadii, physicalTraversal];
+rayGate = propagationGate && traversalGate;
+rayDomain = <|"FlybyRadii" -> flybyRadii, "RadarRadii" -> radarRadii,
+  "TurningAndExterior" -> rayConstruction, "Endpoints" -> endpointRadii,
+  "FlatConnectedBranch" -> Thread[markers -> 0], "FarZone" -> b > bFar|>;
+emit["LOCAL_RAY_DOMAIN", rayDomain];
+gated[z_, rules_:{}] := <|"OnDomain" -> ConditionalExpression[z, rayGate /. rules],
+  "OutsideDomain" -> ConditionalExpression["NOT_ESTABLISHED", Not[rayGate /. rules]],
+  "Supplied" -> {"DISPERSION", "ADVECTION", "OPTICAL_RATIO", "EMBEDDING", "LAB_HELD"}|>;
+emitGates[prefix_, rules_, wrapper_] := (
+  emit[prefix <> "BRANCH_EXISTENCE", wrapper[propagationGate /. rules]];
+  emit[prefix <> "PATH_TRAVERSAL", wrapper[traversalGate /. rules]];
+  emit[prefix <> "BRANCH_TYPE", wrapper[<|"LocalClassification" ->
+    (branchTypes /. localRules /. Thread[markers -> 1] /. rules),
+    "Radii" -> (traversedRadii /. rules),
+    "TraversalClassification" -> Piecewise[{{"unable to traverse in a required direction",
+      Not[traversalGate /. rules]}}, "traversable"]|>]]);
+emitGates["", {}, Identity];
 
-(* Universal quadratures are computed once using nonphysical dummy
-   variables.  Their parameters are subsequently replaced by computed
-   grade exponents.  The finite-endpoint radial action is regular at its
-   turning point. *)
-angularKernel = Integrate[Cos[psi]^nu, {psi, 0, Pi/2},
-  Assumptions -> nu > 0, GenerateConditions -> False];
-(* Convert the elementary integrand to its incomplete-beta integral by
-   solving for the two exponents.  This representation stays regular at
-   all positive nu, including nu=2; generic antiderivatives can introduce
-   removable poles there.  The defining derivative is emitted below. *)
-betaIntegrand = y^(1/2) (1 - y)^((nu - 3)/2);
-betaParameters = First[SolveAlways[Together[D[betaIntegrand, y]/betaIntegrand -
-  ((alphaBeta - 1)/y - (betaBeta - 1)/(1 - y))] == 0, y]];
-betaNormalization = Simplify[betaIntegrand/
-  (y^(alphaBeta - 1) (1 - y)^(betaBeta - 1)) /. betaParameters,
-  0 < y < 1 && Element[nu, Reals]];
-betaPrimitive = betaNormalization (Beta[xx, alphaBeta, betaBeta] /. betaParameters);
-betaDerivative = Simplify[D[betaPrimitive, xx] - (betaIntegrand /. y -> xx),
-  0 < xx < 1 && Element[nu, Reals]];
-(* R=impact/Sqrt[1-y] transforms R^-nu Sqrt[1-impact^2/R^2] dR. *)
-radialMap = impact/Sqrt[1 - y];
-radialJacobian = Simplify[radialMap^(-nu) Sqrt[1 - impact^2/radialMap^2]
-  D[radialMap, y], impact > 0 && 0 < y < 1 && Element[nu, Reals]];
-kernelFactor = Simplify[radialJacobian/(y^(1/2) (1 - y)^((nu - 3)/2)),
-  impact > 0 && 0 < y < 1 && Element[nu, Reals]];
-radialKernel = kernelFactor (betaPrimitive /. xx -> 1 - impact^2/rr^2);
-flatPrimitive = Integrate[Sqrt[1 - impact^2/rr^2], rr,
-  Assumptions -> rr > impact > 0, GenerateConditions -> False];
-flatKernel = Simplify[flatPrimitive - Block[{$Assumptions = impact > 0},
-  Limit[flatPrimitive, rr -> impact, Direction -> "FromAbove"]], rr > impact > 0];
-emit["LOCAL_QUADRATURE_KERNELS", <|"Angular" -> angularKernel,
-  "RadialChangeOfVariable" -> radialJacobian, "Radial" -> radialKernel,
-  "BetaIntegrand" -> betaIntegrand, "BetaParameters" -> betaParameters,
-  "BetaDerivativeResidual" -> betaDerivative,
-  "FlatRadial" -> flatKernel|>];
-
+(* Universal geometry kernels, obtained by coordinate transformation. *)
+angleMap = ArcCos[b/r];
+thetaKernel = FullSimplify[2 D[angleMap, r], r > b > 0];
+radialKernel = Sqrt[1 - impact^2/rr^2];
+angularMap = impact Sec[psi];
+angularActionKernel = FullSimplify[(radialKernel /. rr -> angularMap)
+  D[angularMap, psi], impact > 0 && 0 < psi < Pi/2];
+flatPrimitive = Integrate[radialKernel, rr, Assumptions -> rr > impact > 0,
+  GenerateConditions -> False];
+flatKernel = Simplify[flatPrimitive - lim[flatPrimitive, rr, impact, Direction -> "FromAbove"], impact > 0 && rr > impact];
 bending = Association[];
-Do[AssociateTo[bending, label[g] -> If[g == {0, 0, 0},
-    Simplify[2 Integrate[1, {psi, 0, Pi/2}] - Pi],
-    Simplify[2 hCoefficient[g] (ell/b)^exponent[g]
-      (angularKernel /. nu -> exponent[g]), $Assumptions]]], {g, grades}];
+Do[AssociateTo[bending, label[g] -> If[g == {0,0,0},
+  Simplify[2 Integrate[1, {psi,0,Pi/2}] - Pi],
+  fi[hCoefficient[g] thetaKernel, {r,b,Infinity}]]], {g,grades}];
 
-(* Fixed physical endpoints.  Expand the upper limit R(r_i) as well as
-   the density.  The action W(impact)+impact Phi is stationary at the
-   angular momentum selected by the endpoints.  Universal stationarity
-   is solved in the retained ring below; this keeps all path corrections.
-*)
+(* Expand physical endpoints and solve the finite-endpoint variational
+   problem in the complete retained ring, including path displacement. *)
 endpointShift = radiusShift /. r -> rr;
-endpointDensity = Total[(hCoefficient[#] mon[#] (ell/rr)^exponent[#]) & /@ evenGrades];
+endpointDensity = opticalDensity /. r -> rr;
 upperCorrection = 0;
 Do[upperCorrection += project[project[endpointShift^j] rayDerivative[
-    endpointDensity Sqrt[1 - impact^2/rr^2], rr, j - 1]]/Factorial[j], {j, 1, 3}];
+  endpointDensity radialKernel, rr, j-1]]/Factorial[j], {j,1,3}];
 upperCorrection = project[upperCorrection];
-wEnd[g_List] := wEnd[g] = hCoefficient[g] ell^exponent[g] *
-    (radialKernel /. nu -> exponent[g]) + coeff[upperCorrection, g];
-endpointRadii = {Sqrt[b^2 + ZE^2], Sqrt[b^2 + ZR^2]};
+wEnd[g_] := fi[(hCoefficient[g] /. r -> integrationRadius)
+  (radialKernel /. rr -> integrationRadius), {integrationRadius,impact,rr}] +
+  coeff[upperCorrection,g];
+wEndAngular[g_] := fi[(hCoefficient[g] /. r -> angularMap) angularActionKernel,
+  {psi,0,ArcCos[impact/rr]}] + coeff[upperCorrection,g];
 flatAction = Total[(flatKernel /. rr -> #) & /@ endpointRadii];
-angularSeparation = Total[(ArcCos[b/#]) & /@ endpointRadii];
+angularSeparation = Total[ArcCos[b/#] & /@ endpointRadii];
 flatPrincipal = flatAction + impact angularSeparation;
-flatDerivatives = Table[FullSimplify[D[flatPrincipal, {impact, j}] /. impact -> b,
-  $Assumptions], {j, 0, 3}];
-
-(* Symbols wJet[grade,j] stand for the displayed derivatives of W.
-   Solve the formal stationarity equation with a symbolic flat Hessian.
-   The equations, solution, and full substitution map are emitted. *)
-wPoly[j_] := Total[(wJet[label[#], j] mon[#]) & /@ nonzeroEven];
+flatDerivatives = Table[FullSimplify[D[flatPrincipal,{impact,j}] /. impact -> b,
+  $Assumptions], {j,0,3}];
+wPoly[j_] := Total[(wJet[label[#],j] mon[#]) & /@ nonzeroEven];
 shift = 0;
-Do[gradient = project[sHessian shift + sThird shift^2/2 +
-    wPoly[1] + wPoly[2] shift + wPoly[3] shift^2/2];
-  shift = project[shift - gradient/sHessian], {iteration, 1, 2}];
-shift = Total[(coeff[shift, #] mon[#]) & /@
-  Select[evenGrades, #.{1, 1/2, 1} <= 2 &]];
+Do[gradient = project[sHessian shift + sThird shift^2/2 + wPoly[1] +
+  wPoly[2] shift + wPoly[3] shift^2/2];
+  shift = project[shift - gradient/sHessian], {iteration,1,2}];
+shift = Total[(coeff[shift,#] mon[#]) & /@
+  Select[evenGrades, #.{1,1/2,1} <= 2 &]];
 stationaryAction = project[wPoly[0] + wPoly[1] shift + wPoly[2] shift^2/2 +
   sHessian shift^2/2 + sThird shift^3/6];
-jetRules = Flatten[Table[wJet[label[g], j] ->
-    Total[(Simplify[D[wEnd[g], {impact, j}] /. {impact -> b, rr -> #},
-      $Assumptions]) & /@ endpointRadii], {g, nonzeroEven}, {j, 0, 2}]];
+jetRules = Flatten[Table[wJet[label[g],j] -> Total[
+  ((If[j == 0, wEnd[g], fd[wEndAngular[g],impact,j]]) /.
+    {impact -> b, rr -> #}) & /@ endpointRadii], {g,nonzeroEven},{j,0,2}]];
 flatJetRules = {sHessian -> flatDerivatives[[3]], sThird -> flatDerivatives[[4]]};
-emit["LOCAL_ENDPOINT_ACTION", <|"UpperCorrection" -> upperCorrection,
-  "GradeActions" -> Table[{g, wEnd[g]}, {g, nonzeroEven}],
-  "FlatAction" -> flatPrincipal, "FlatDerivatives" -> flatDerivatives|>];
-emit["LOCAL_STATIONARY_ACTION", <|"ShiftThroughEvenDegreeTwo" -> shift,
-  "Action" -> stationaryAction, "JetSubstitution" -> jetRules,
-  "FlatJetSubstitution" -> flatJetRules|>];
-
-evenTimes = Association[];
-Do[AssociateTo[evenTimes, label[g] ->
-  ((coeff[stationaryAction, g] /. flatJetRules) /. jetRules)/c0], {g, grades}];
-
-(* The odd Fermat one-form is integrated on the actual endpoints.  Its
-   exterior derivative tests path dependence without choosing a ray. *)
-oddRadial = box[(Coefficient[fermatOdd, dr] /. localRules)];
-oddComponents = {oddRadial, 0, 0};
-coords = {r, theta, phi};
-oddExterior = Table[D[oddComponents[[j]], coords[[i]]] -
-  D[oddComponents[[i]], coords[[j]]], {i, 3}, {j, 3}];
-primitiveGeneral = Integrate[rr^(-nu), rr, GenerateConditions -> False];
-primitiveResonance = Integrate[rr^(-nu) /. nu -> 1, rr];
-oddTimes = Association[];
-Do[oddPower = exponent[g]; oddAmp = Simplify[coeff[oddRadial, g] /. r -> ell];
-  oddPrimitive = oddAmp ell^oddPower Piecewise[{{primitiveResonance, oddPower == 1}},
-    primitiveGeneral /. nu -> oddPower];
-  AssociateTo[oddTimes, label[g] -> ((oddPrimitive /. rr -> endpointRadii[[2]]) -
-    (oddPrimitive /. rr -> endpointRadii[[1]]))], {g, grades}];
-(* All observables are expressions on the computed branch, rather than
-   values evaluated on a branch which cannot propagate. *)
-rayGate = Inactive[ForAll][r, rayRadiusDomain[r],
-  physicalPropagation && physicalTraversal && atOne[speed] > 0 && rhoBr[r] != 0];
-gated[z_, gate_:rayGate, rules_:{}] := <|"OnDomain" -> ConditionalExpression[z, gate],
-  "OutsideDomain" -> ConditionalExpression["NOT_ESTABLISHED", Not[gate]],
-  "BranchType" -> (branchTypes /. localRules /. Thread[markers -> 1] /. rules)|>;
-returnDirection = -1; (* K5 *)
+evenTimes = Association[Table[label[g] ->
+  ((coeff[stationaryAction,g] /. flatJetRules) /. jetRules)/c0, {g,grades}]];
+oddRadial = box[Coefficient[fermatOdd,dr] /. localRules];
+oddTimes = Association[Table[label[g] -> fi[coeff[oddRadial,g] /. r -> integrationRadius,
+  {integrationRadius,endpointRadii[[1]],endpointRadii[[2]]}], {g,grades}]];
 oneWayER = AssociationMap[evenTimes[#] + oddTimes[#] &, Keys[evenTimes]];
 oneWayRE = AssociationMap[evenTimes[#] + returnDirection oddTimes[#] &, Keys[evenTimes]];
 roundTrip = AssociationMap[oneWayER[#] + oneWayRE[#] &, Keys[evenTimes]];
 nonreciprocal = AssociationMap[(oneWayER[#] - oneWayRE[#])/2 &, Keys[evenTimes]];
-Do[emit["A_DEFLECTION_G" <> label[g], gated[bending[label[g]]]];
-  emit["A_ROUND_TRIP_G" <> label[g], gated[roundTrip[label[g]]]];
-  emit["A_ONE_WAY_ER_G" <> label[g], gated[oneWayER[label[g]]]];
-  emit["A_ONE_WAY_RE_G" <> label[g], gated[oneWayRE[label[g]]]];
-  emit["A_NONRECIPROCAL_G" <> label[g], gated[nonreciprocal[label[g]]]], {g, grades}];
+emit["LOCAL_ENDPOINT_ACTION", <|"GradeActions" -> (wEnd /@ nonzeroEven),
+  "EndpointCorrection" -> upperCorrection, "StationaryAction" -> stationaryAction,
+  "JetRules" -> jetRules, "FlatJetRules" -> flatJetRules,
+  "RadarImpact" -> (impactRadar == b + (shift /. flatJetRules /. jetRules /. Thread[markers -> 1]))|>];
 
-(* Extract the logarithm from the computed time, not from a separately
-   assigned density coefficient. Its incomplete-beta primitive is expanded
-   on the exponent-one stratum. The endpoint corrections are algebraic.
-   Positive exponents exclude further logarithmic resonances. *)
-resonantMap = impact Cosh[hyperbolicParameter];
-resonantIntegrand = FullSimplify[(Sqrt[1 - impact^2/resonantMap^2]/resonantMap)
-  D[resonantMap, hyperbolicParameter], impact > 0 && hyperbolicParameter > 0];
-resonantKernel = Integrate[resonantIntegrand,
-  {hyperbolicParameter, 0, ArcCosh[rr/impact]},
-  Assumptions -> rr > impact > 0, GenerateConditions -> False];
-resonantAsymptotic = FullSimplify[Normal[Series[resonantKernel /. rr -> impact/zeta,
-  {zeta, 0, 0}]], impact > 0 && 0 < zeta < 1];
-logPerEndpoint = FullSimplify[zeta D[resonantAsymptotic, zeta]/(-2),
-  impact > 0 && 0 < zeta < 1];
+(* Amendment 4: differentiate the computed finite-endpoint source with ZE,
+   ZR fixed, before taking the far-endpoint limit. Integral limits become
+   infinity; all remaining endpoint terms are separately computed. The
+   limiting endpoint profile values below are independent bounded symbols,
+   justified by the supplied optical O(epsilon) counting, not a family. *)
 radarSource = roundTrip; (* K6 *)
-(* wEnd uses kernelFactor times Beta. This quotient obtains that Beta's
-   log coefficient from the very same computed primitive. *)
-betaLogCoefficient = Simplify[logPerEndpoint/(kernelFactor /. nu -> 1), impact > 0];
-logFromTime[z_] := Module[{betas, answer = 0, q, factor, rest, resonanceDomain},
-  betas = DeleteDuplicates[Cases[z, _Beta, Infinity]];
-  Do[q = 2 bt[[3]] + 1;
-    resonanceDomain = Simplify[q == 1, $Assumptions];
-    If[!SameQ[resonanceDomain, False],
-      factor = Coefficient[Expand[z], bt];
-      answer += Piecewise[{{Simplify[factor betaLogCoefficient,
-        $Assumptions && resonanceDomain], resonanceDomain}}, 0]], {bt, betas}];
-  Simplify[answer /. impact -> b, $Assumptions]];
-radarLog = AssociationMap[logFromTime[radarSource[#]] &, Keys[radarSource]];
-emit["LOCAL_RADAR_LOG_EXTRACTION", <|"Source" -> radarSource,
-  "ResonantIntegral" -> resonantKernel, "LargeEndpointExpansion" -> resonantAsymptotic,
-  "BetaLogCoefficient" -> betaLogCoefficient, "Coefficients" -> radarLog,
-  "Domain" -> (ZE/b > 1 && ZR/b > 1)|>];
-thetaFirst = Total[bending[label[#]] & /@ firstGrades];
-radarFirst = Total[radarLog[label[#]] & /@ firstGrades];
-referenceLog = Coefficient[Expand[referenceRadar /. Log[4 rE rR/b^2] -> logBasis], logBasis];
-gammaTheta = gamma /. First[Solve[referenceTheta == thetaFirst, gamma]];
-gammaRadar = gamma /. First[Solve[referenceLog == radarFirst, gamma]];
-thetaResidual = thetaFirst - (referenceTheta /. gamma -> 1);
-radarResidual = radarFirst - (referenceLog /. gamma -> 1);
+endpointBounds = Flatten[Table[{
+  deltaProfile[endpointRadii[[i]]] -> boundedDelta[i],
+  velocityProfile[endpointRadii[[i]]] -> boundedVelocity[i],
+  xiProfile'[endpointRadii[[i]]] -> boundedSlope[i]}, {i,2}]];
+radarFinite = <||>; radarBoundary = <||>; radarBoundaryLimit = <||>; radarKernels = <||>;
+Do[finiteSlope = Expand[-b fd[radarSource[label[g]], b]/2];
+  integrals = DeleteDuplicates[Cases[finiteSlope,
+    HoldPattern[Inactive[Integrate][_,{_,_,_}]], {0,Infinity}]];
+  boundary = Simplify[finiteSlope /. Thread[integrals -> 0]];
+  kernel = Simplify[(finiteSlope - boundary) /.
+    HoldPattern[Inactive[Integrate][q_, {v_,lo_,hi_}]] :> (q /. v -> r)];
+  boundaryLimit = FullSimplify[lim[lim[boundary /. endpointBounds, ZE, Infinity], ZR, Infinity]];
+  AssociateTo[radarFinite,label[g] -> finiteSlope];
+  AssociateTo[radarBoundary,label[g] -> boundary];
+  AssociateTo[radarBoundaryLimit,label[g] -> boundaryLimit];
+  AssociateTo[radarKernels,label[g] -> kernel], {g,firstGrades}];
+radarSlope = AssociationMap[fi[radarKernels[#],{r,b,Infinity}] + radarBoundaryLimit[#] &,
+  Keys[radarKernels]];
+emit["LOCAL_RADAR_SLOPE_DERIVATION", <|"Source" -> radarSource,
+  "FiniteEndpointDerivative" -> radarFinite, "EndpointRemainder" -> radarBoundary,
+  "EndpointLimit" -> radarBoundaryLimit, "IntegralKernels" -> radarKernels,
+  "BoundedEndpointSymbols" -> endpointBounds|>];
 
-(* Coordinate Cartesian component calculus: no induced-measure object. *)
-cartesian = {x1, x2, x3}; cartRadius = Sqrt[cartesian.cartesian];
+(* Abel inversion on the exterior half-line. The double-integral kernel
+   and the reference inverse are computed here, rather than prescribed.
+   Conditions are local differential conditions on general functions,
+   with the constant GM fixed at an arbitrary exterior anchor radius. *)
+abelKernel = Integrate[1/Sqrt[(v-t)(t-u)], {t,u,v},
+  Assumptions -> 0 < u < v, GenerateConditions -> False];
+referenceSlope = FullSimplify[lim[lim[-b D[referenceRadar /.
+  {rE -> endpointRadii[[1]],rR -> endpointRadii[[2]]},b]/2,
+  ZE, Infinity], ZR, Infinity], $Assumptions];
+abelInverse[ref_] := Module[{transformed, primitive},
+  transformed = (ref /. b -> Sqrt[t])/(2 Sqrt[t]);
+  primitive = Integrate[transformed/Sqrt[t-u], {t,u,Infinity},
+    Assumptions -> u > 0 && c0 > 0 && Element[{GM,gamma},Reals], GenerateConditions -> False];
+  FullSimplify[(-2 u D[primitive,u]/abelKernel) /. u -> r^2, r > 0 && c0 > 0]];
+quantifierMode = "EVERY_B"; (* K7 *)
+comparisonThetaKernel = Total[hCoefficient[#] thetaKernel & /@ firstGrades];
+comparisonRadarKernel = Total[radarKernels[label[#]] & /@ firstGrades];
+comparisonTheta = fi[comparisonThetaKernel,{r,b,Infinity}];
+comparisonRadar = fi[comparisonRadarKernel,{r,b,Infinity}] + Total[Values[radarBoundaryLimit]];
+regularityDomain = <|"Radius" -> r > bFar, "Anchor" -> rAnchor > bFar,
+  "Profiles" -> {deltaProfile,velocityProfile,xiProfile,rhoBr,fProfile},
+  "FunctionalDomain" -> {"required derivatives exist", "displayed improper integrals converge",
+    "Abel inverse exists on the exterior half-line"},
+  "OpticalCounting" -> {"delta O(1/r)", "V/c0 O(1/Sqrt[r])", "xiPrimeSquared O(1/r)"}|>;
+reduceProfile[kernel_, reference_, rules_, extra_] := Module[{q, power, weight, target, mass, equation, rule},
+  q = Simplify[(kernel /. rules)/thetaKernel];
+  If[quantifierMode === "FIXED_B", Return[<|"Domain" -> extra && bFixed > bFar,
+    "BranchDomain" -> (rayGate /. rules),
+    "Cases" -> {<|"Domain" -> extra && bFixed > bFar,
+      "GM" -> linearRules[(fi[kernel /. rules,{r,b,Infinity}] - reference) /. b -> bFixed,GM]|>}|>]];
+  power = Exponent[Simplify[kernel/thetaKernel],b];
+  weight = Simplify[q/b^power]; target = abelInverse[reference/b^power];
+  rule = linearRules[weight-target,GM]; mass = GM /. First[rule];
+  equation = Simplify[D[mass,r] == 0];
+  <|"Domain" -> regularityDomain, "BranchDomain" -> (rayGate /. rules),
+    "Cases" -> {<|"Domain" -> extra && r > bFar && rAnchor > bFar,
+      "GM" -> (rule /. r -> rAnchor), "ProfileEquation" -> equation,
+      "ProfileEquationRadius" -> r, "InverseWeight" -> weight,
+      "ReferenceInverse" -> target|>}|>];
+emit["LOCAL_ABEL_REDUCTION", <|"DoubleIntegralKernel" -> abelKernel,
+  "DeflectionKernel" -> comparisonThetaKernel, "RadarKernel" -> comparisonRadarKernel,
+  "ReferenceDeflectionInverse" -> abelInverse[referenceTheta /. gamma -> 1],
+  "ReferenceRadarSlope" -> referenceSlope, "Domain" -> regularityDomain|>];
+
+(* Exact linear rank strata include GM=0. No branch of a Piecewise slope
+   is discarded; general functionals occupy the observable parameter. *)
+gammaTemplate = Reduce[aa gamma + bb == qq, gamma, Reals];
+gammaDifferenceTemplate = Reduce[Exists[{gd,gr},
+  ad gd + bd == qd && ar gr + br == qr && gammaDifference == gd-gr],
+  gammaDifference, Reals];
+gammaSolution[obs_, ref_] := gammaTemplate /.
+  {aa -> Coefficient[ref,gamma], bb -> (ref /. gamma -> 0), qq -> obs};
+gammaDifferenceSolution[obsD_,obsR_] := gammaDifferenceTemplate /.
+  {ad -> Coefficient[referenceTheta,gamma], bd -> (referenceTheta /. gamma -> 0), qd -> obsD,
+   ar -> Coefficient[referenceSlope,gamma], br -> (referenceSlope /. gamma -> 0), qr -> obsR};
+emit["LOCAL_GAMMA_STRATA", <|"Single" -> gammaTemplate, "Difference" -> gammaDifferenceTemplate|>];
+
+(* Coordinate mass law, with live density inside the component derivatives. *)
+cartesian = {x1,x2,x3}; cartRadius = Sqrt[cartesian.cartesian];
 massDensity = rhoBr[r]; (* K8 *)
 massVector = (massDensity velocity cartesian/r) /. r -> cartRadius;
-divergenceCartesian = Total[MapThread[D, {massVector, cartesian}]];
-divergence = Simplify[divergenceCartesian /. {x1 -> r, x2 -> 0, x3 -> 0}, $Assumptions];
+divergence = Simplify[Total[MapThread[D,{massVector,cartesian}]] /.
+  {x1 -> r,x2 -> 0,x3 -> 0}, $Assumptions];
 exchange = jn[r] /. First[Solve[massBalanceInput /. divRhoV -> divergence, jn[r]]];
-emit["MASS_BALANCE", <|"Measure" -> "coordinate d3x", "Components" -> massVector,
+emit["LOCAL_MASS_BALANCE", <|"Measure" -> "coordinate d3x", "Components" -> massVector,
   "Divergence" -> divergence, "Exchange" -> exchange|>];
+impliedExchange[condition_, rules_] := <|"ReducedProfileCondition" -> condition,
+  "ImpliedExchange" -> (jn[r] == (exchange /. rules)),
+  "SignedVelocity" -> (velocity /. rules), "Density" -> (massDensity /. rules)|>;
 
-(* Exhaustive exponent partitions reduce equality of finite power sums on
-   an open interval. The exponent-one group solves GM; every other group
-   has vanishing total coefficient. No ForAll survives this reduction.
-   Equalities among the amplitudes are kept as exact algebraic constraints,
-   so zero amplitudes, coincident tails and cancellations are all included. *)
-linearRules[polynomial_, variable_] := {Thread[{variable} ->
-  LinearSolve[{{Coefficient[Expand[polynomial], variable]}},
-    {-(polynomial /. variable -> 0)}]]};
-partitions[{}] = {{}};
-partitions[list_List] := partitions[list] = Module[{a = First[list], rest},
-  rest = partitions[Rest[list]];
-  Flatten[Map[Function[p, Join[{Prepend[p, {a}]},
-    Table[ReplacePart[p, i -> Prepend[p[[i]], a]], {i, Length[p]}]]], rest], 1]];
-comparisonPowers = exponent /@ firstGrades;
-thetaCoefficients = Simplify[Table[bending[label[g]] b^exponent[g], {g, firstGrades}], $Assumptions];
-referenceThetaCoefficient = Simplify[b (referenceTheta /. gamma -> 1)];
-quantifierMode = "EVERY_B"; (* K7 *)
-reducePowers[cs_, ps_, ref_, domain_] := Module[{allP, allC, cases, groups, reps,
-    equalities, inequalities, equations, gmGroup, gmSolution, other},
-  If[quantifierMode === "FIXED_B", Return[<|"Domain" -> domain && bFixed > bFar,
-    "Cases" -> linearRules[Total[MapThread[#1 bFixed^(-#2) &, {cs, ps}]] - ref/bFixed, GM]|>]];
-  allP = Append[ps, 1]; allC = Append[cs, -ref];
-  cases = Table[groups = pp; reps = First /@ groups;
-    equalities = And @@ Flatten[Table[Thread[allP[[gg]] == allP[[First[gg]]]], {gg, groups}]];
-    inequalities = And @@ (Unequal @@ # & /@ Subsets[allP[[reps]], {2}]);
-    gmGroup = First[Select[groups, MemberQ[#, Length[allC]] &]];
-    gmSolution = linearRules[Total[allC[[gmGroup]]], GM];
-    other = DeleteCases[groups, gmGroup];
-    equations = And @@ (Total[allC[[#]]] == 0 & /@ other);
-    <|"Domain" -> Simplify[domain && equalities && inequalities, $Assumptions],
-      "GM" -> gmSolution, "AmplitudeConditions" -> Simplify[equations, $Assumptions]|>,
-    {pp, partitions[Range[Length[allP]]]}];
-  <|"Domain" -> domain, "Cases" -> cases|>];
-reduceRadar[rad_, domain_] := Module[{pw, cases, pred, value},
-  pw = DeleteDuplicates[Flatten[(#[[1, All, 2]] &) /@ Cases[rad, _Piecewise, {0, Infinity}]]];
-  cases = Table[pred = And @@ MapThread[If[#2, #1, Not[#1]] &, {pw, mask}];
-    value = Simplify[rad /. Thread[pw -> mask], $Assumptions && pred];
-    <|"Domain" -> Simplify[domain && pred, $Assumptions],
-      "GM" -> linearRules[value - (referenceLog /. gamma -> 1), GM]|>,
-    {mask, Tuples[{False, True}, Length[pw]]}];
-  <|"Domain" -> domain, "Cases" -> cases|>];
-profileDomain = powD >= 1 && powV >= 1/2 && powW >= 1/2 && b > bFar;
-conditionPair[rules_, dom_] := (Append[#, "BranchDomain" -> (rayGate /. rules)] & /@ {
-  reducePowers[thetaCoefficients /. rules, comparisonPowers /. rules, referenceThetaCoefficient, dom],
-  reduceRadar[radarFirst /. rules, dom]});
-conditions = conditionPair[{}, profileDomain];
-constrainedExchange[cond_, rules_:{}] := <|"Domain" -> cond["Domain"],
-  "BranchDomain" -> cond["BranchDomain"],
-  "Cases" -> Map[Append[#, "ImpliedExchange" -> <|
-    "Relation" -> (jn[r] == (exchange /. rules)),
-    "Density" -> (massDensity /. rules), "SignedVelocity" -> (velocity /. rules)|>] &,
-    cond["Cases"]]|>;
-emit["B_FIRST_ORDER_DEFLECTION", gated[Table[{g, bending[label[g]], g.{1, 1/2, 1}}, {g, firstGrades}]]];
-emit["B_FIRST_ORDER_RADAR_LOG", gated[Table[{g, radarLog[label[g]], g.{1, 1/2, 1}}, {g, firstGrades}]]];
-emit["B_GAMMA_DEFLECTION", gated[gammaTheta]];
-emit["B_GAMMA_RADAR", gated[gammaRadar]];
-emit["B_GAMMA_DIFFERENCE", gated[gammaTheta - gammaRadar]];
-emit["B_DEFLECTION_RESIDUAL", gated[<|"Computed" -> thetaFirst,
-  "Reference" -> (referenceTheta /. gamma -> 1), "Residual" -> thetaResidual|>]];
-emit["B_RADAR_LOG_RESIDUAL", gated[<|"Computed" -> radarFirst,
-  "Reference" -> (referenceLog /. gamma -> 1), "Residual" -> radarResidual|>]];
-emit["B_DEFLECTION_CONDITION", conditions[[1]]];
-emit["B_RADAR_CONDITION", conditions[[2]]];
-emit["B_DEFLECTION_EXCHANGE", constrainedExchange[conditions[[1]]]];
-emit["B_RADAR_EXCHANGE", constrainedExchange[conditions[[2]]]];
+(* Shared vocabulary and all substitutions, including their branch gates. *)
+conditionPair[rules_, domain_] := {
+  reduceProfile[comparisonThetaKernel,referenceTheta /. gamma -> 1,rules,domain],
+  reduceProfile[comparisonRadarKernel,referenceSlope /. gamma -> 1,rules,domain]};
+observations = {"DEFLECTION","RADAR"};
+emitComparisons[prefix_, rules_, domain_, wrapper_, withJn_] := Module[{obs, refs, cond},
+  obs = {comparisonTheta,comparisonRadar} /. rules;
+  refs = {referenceTheta,referenceSlope}; cond = conditionPair[rules,domain];
+  Do[emit[prefix <> "B_GAMMA_" <> observations[[i]], wrapper[gated[gammaSolution[obs[[i]],refs[[i]]],rules]]];
+    emit[prefix <> "B_RESIDUAL_" <> observations[[i]], wrapper[gated[obs[[i]]-(refs[[i]] /. gamma -> 1),rules]]];
+    emit[prefix <> "B_CONDITION_" <> observations[[i]], wrapper[cond[[i]]]];
+    If[withJn,emit[prefix <> "B_IMPLIED_JN_" <> observations[[i]], wrapper[impliedExchange[cond[[i]],rules]]]], {i,2}];
+  emit[prefix <> "B_GAMMA_DIFFERENCE", wrapper[gated[gammaDifferenceSolution @@ obs,rules]]]];
+allA = <|"DEFLECTION" -> bending, "ROUND_TRIP" -> roundTrip,
+  "ONE_WAY_ER" -> oneWayER, "ONE_WAY_RE" -> oneWayRE, "NONRECIPROCAL" -> nonreciprocal|>;
+emitA[prefix_,rules_,wrapper_,which_] := (
+  Do[emit[prefix <> "A_" <> name <> "_G" <> label[g],
+    wrapper[gated[allA[name][label[g]] /. rules,rules]]], {name,which},{g,grades}];
+  Do[emit[prefix <> "A_RADAR_LOG_G" <> label[g],
+    wrapper[gated[radarSlope[label[g]] /. rules,rules]]], {g,firstGrades}]);
+emitA["",{},Identity,Keys[allA]];
+emitComparisons["",{},True,Identity,True];
+responseDeltas = (Simplify[Normal[Series[#/c0 - 1,{fLocal,0,1}]],
+  rho0 > 0 && c0 > 0 && Element[{n,s,fLocal},Reals]] &) /@ responseInputs;
+responseRules = Table[{deltaProfile -> Function[{r}, Evaluate[responseDeltas[[i]] /. fLocal -> fProfile[r]]]}, {i,3}];
+responseNames = {"CONSTANT","FIXED_RATIO","POWER"};
+responseDomain[i_] := With[{resp = responseInputs[[i]],change = responseDeltas[[i]]},
+  Element[resp,Reals] && resp > 0 && Abs[change] < 1 &&
+    If[i == 2, localSoundSquared > 0 && (bulkSoundSquared /. rho -> rho0) > 0,
+      If[i == 3,localBulkDensity/rho0 > 0,True]]] /. fLocal -> fProfile[r];
+emit["LOCAL_C_RESPONSES", <|"Responses" -> responseInputs,"DeltaSeries" -> responseDeltas,
+  "Domains" -> Table[responseDomain[i],{i,3}]|>];
+emitC[prefix_, additional_, wrapper_, withJn_, indices_] := Do[
+  cRules = Join[responseRules[[i]],additional];
+  cConditions = conditionPair[cRules,responseDomain[i]];
+  Do[emit[prefix <> "C_" <> responseNames[[i]] <> "_CONDITION_" <> observations[[j]],wrapper[cConditions[[j]]]];
+    If[withJn, emit[prefix <> "C_" <> responseNames[[i]] <> "_IMPLIED_JN_" <> observations[[j]],
+      wrapper[impliedExchange[cConditions[[j]],cRules]]]], {j,2}];
+  If[prefix == "", emit["C_" <> responseNames[[i]] <> "_N_DEPENDENCE", <|
+    "ResponseDerivative" -> D[responseDeltas[[i]],n],
+    "KernelDerivatives" -> D[{comparisonThetaKernel,comparisonRadarKernel} /. cRules,n],
+    "ConditionGMderivatives" -> (D[(GM /. First[#["Cases"][[1]]["GM"]]),n] & /@ cConditions)|>]], {i,indices}];
+emitC["",{},Identity,True,Range[3]];
+zeroDelta = {deltaProfile -> Function[{r},0]};
+zeroVelocity = {velocityProfile -> Function[{r},0]};
+zeroXi = {xiProfile -> Function[{r},0]};
+restrictions = <|"FLOW_ONLY" -> Join[zeroDelta,zeroXi],
+  "SPEED_ONLY" -> Join[zeroVelocity,zeroXi], "TILT_ONLY" -> Join[zeroDelta,zeroVelocity]|>;
+KeyValueMap[Function[{name,rules},
+  emit["LOCAL_RESTRICTION_" <> name, rules];
+  emitA["R_" <> name <> "_",rules,Identity,{"DEFLECTION"}];
+  emitComparisons["R_" <> name <> "_",rules,True,Identity,True]],restrictions];
+emitC["R_BULK_ONLY_",Join[zeroVelocity,zeroXi],Identity,True,{2,3}];
 
-responseDeltas = (Simplify[Normal[Series[#/c0 - 1, {fLocal, 0, 1}]],
-  rho0 > 0 && c0 > 0 && Element[{n, s, fLocal}, Reals]] &) /@ responseInputs;
-responseMultipliers = Coefficient[#, fLocal] & /@ responseDeltas;
-responseDomain[j_] := With[{resp = responseInputs[[j]], change = responseDeltas[[j]]},
-  Element[resp, Reals] && resp > 0 && Abs[change] < 1 &&
-  If[j == 2, localSoundSquared > 0 && (bulkSoundSquared /. rho -> rho0) > 0,
-    If[j == 3, localBulkDensity/rho0 > 0, True]]];
-emit["C_RESPONSES", <|"SoundSquared" -> bulkSoundSquared,
-  "DeltaSeries" -> responseDeltas, "Multipliers" -> responseMultipliers,
-  "Domains" -> Table[responseDomain[j], {j, 3}]|>];
-Do[cRules = {ampD -> responseMultipliers[[j]] ampF};
-  cDomain = profileDomain && (responseDomain[j] /. fLocal -> densityFraction);
-  cConditions = conditionPair[cRules, cDomain];
-  emit["C_RESPONSE_" <> ToString[j] <> "_DEFLECTION_CONDITION", cConditions[[1]]];
-  emit["C_RESPONSE_" <> ToString[j] <> "_RADAR_CONDITION", cConditions[[2]]];
-  emit["C_RESPONSE_" <> ToString[j] <> "_DEFLECTION_EXCHANGE", constrainedExchange[cConditions[[1]], cRules]];
-  emit["C_RESPONSE_" <> ToString[j] <> "_RADAR_EXCHANGE", constrainedExchange[cConditions[[2]], cRules]];
-  emit["C_RESPONSE_" <> ToString[j] <> "_N_DEPENDENCE", <|
-    "DeltaDerivative" -> D[responseDeltas[[j]], n],
-    "ResidualDerivatives" -> D[{thetaResidual, radarResidual} /. cRules, n]|>], {j, 3}];
-
-restrictions = <|"FLOW_ONLY" -> {ampD -> 0, ampW -> 0},
-  "SPEED_ONLY" -> {ampV -> 0, ampW -> 0}, "TILT_ONLY" -> {ampD -> 0, ampV -> 0}|>;
-KeyValueMap[Function[{name, rules}, Module[{cc = conditionPair[rules, profileDomain], prefix},
-  prefix = "RESTRICTION_" <> name <> "_";
-  emit[prefix <> "PROFILES", rules];
-  emit[prefix <> "DEFLECTION", gated[Values[bending] /. rules, rayGate /. rules]];
-  emit[prefix <> "RADAR_LOG", gated[Values[radarLog] /. rules, rayGate /. rules]];
-  emit[prefix <> "GAMMA_DEFLECTION", gated[gammaTheta /. rules, rayGate /. rules, rules]];
-  emit[prefix <> "GAMMA_RADAR", gated[gammaRadar /. rules, rayGate /. rules, rules]];
-  emit[prefix <> "GAMMA_DIFFERENCE", gated[(gammaTheta - gammaRadar) /. rules, rayGate /. rules, rules]];
-  emit[prefix <> "DEFLECTION_RESIDUAL", gated[thetaResidual /. rules, rayGate /. rules, rules]];
-  emit[prefix <> "RADAR_RESIDUAL", gated[radarResidual /. rules, rayGate /. rules, rules]];
-  emit[prefix <> "DEFLECTION_CONDITION", cc[[1]]]; emit[prefix <> "RADAR_CONDITION", cc[[2]]];
-  emit[prefix <> "DEFLECTION_EXCHANGE", constrainedExchange[cc[[1]], rules]];
-  emit[prefix <> "RADAR_EXCHANGE", constrainedExchange[cc[[2]], rules]]]], restrictions];
-Do[bulkRules = {ampD -> responseMultipliers[[j]] ampF, ampV -> 0, ampW -> 0};
-  bulkDomain = profileDomain && (responseDomain[j] /. fLocal -> densityFraction);
-  bulkConditions = conditionPair[bulkRules, bulkDomain];
-  emit["C_RESPONSE_" <> ToString[j] <> "_BULK_ONLY_DEFLECTION_CONDITION", bulkConditions[[1]]];
-  emit["C_RESPONSE_" <> ToString[j] <> "_BULK_ONLY_RADAR_CONDITION", bulkConditions[[2]]];
-  emit["C_RESPONSE_" <> ToString[j] <> "_BULK_ONLY_DEFLECTION_EXCHANGE", constrainedExchange[bulkConditions[[1]], bulkRules]];
-  emit["C_RESPONSE_" <> ToString[j] <> "_BULK_ONLY_RADAR_EXCHANGE", constrainedExchange[bulkConditions[[2]], bulkRules]], {j, {2, 3}}];
-
-(* Forward premise, solved before choosing a profile representation. The
-   density power law below is a declared family restriction for evaluation,
-   with live normalization/exponent; no identification with bulk rho0. *)
+(* The forward case solves the general mass law, without selecting rhoBr. *)
 forwardMassVector = (massDensity vForward[r] cartesian/r) /. r -> cartRadius;
-forwardDiv = Simplify[Total[MapThread[D, {forwardMassVector, cartesian}]] /.
-  {x1 -> r, x2 -> 0, x3 -> 0}, $Assumptions];
-forwardSolution = DSolve[forwardDiv == 0, vForward, r];
-fluxInput = Phi == Integrate[(massDensity vForward[r]) r^2 Sin[theta],
-  {theta, 0, Pi}, {phi, 0, 2 Pi}];
-forwardV = Simplify[vForward[r] /. First[Solve[fluxInput, vForward[r]]]];
-forwardResidual = Simplify[forwardDiv /. {vForward -> Function[{r}, Evaluate[forwardV]]}];
-rhoForwardAnsatz = rhoScale (ell/r)^powRho;
-forwardFamilyV = Simplify[forwardV /. rhoBr[r] -> rhoForwardAnsatz];
-forwardPower = Simplify[-r D[forwardFamilyV, r]/forwardFamilyV];
-forwardAmplitude = Simplify[(forwardFamilyV /. r -> ell)/c0];
-forwardRules = {ampV -> forwardAmplitude, powV -> forwardPower, rhoBr[r] -> rhoForwardAnsatz};
-forwardDomain = (profileDomain /. forwardRules) && rhoScale != 0 &&
-  Element[{Phi, powRho, rhoScale}, Reals];
-forwardPremise = <|"NormalExchange" -> (jn[r] == 0), "FluxDefinition" -> fluxInput,
-  "Measure" -> "coordinate d3x", "DensityFamily" -> (rhoBr[r] == rhoForwardAnsatz)|>;
-forwardEmit[name_, z_] := emit["FORWARD_NO_FAR_ZONE_LOSS_" <> name,
-  <|"Premise" -> forwardPremise, "Object" -> z|>];
-forwardEmit["MASS_SOLUTION", <|"Solution" -> forwardSolution, "FluxVelocity" -> forwardV,
-  "DifferentialResidual" -> forwardResidual, "FamilyVelocity" -> forwardFamilyV,
-  "Substitution" -> forwardRules, "Domain" -> forwardDomain|>];
-Do[stageRules = Join[forwardRules, If[stage == 1, {ampD -> 0, ampW -> 0}, {}]];
-  stageGate = rayGate /. stageRules;
-  prefix = If[stage == 1, "FLOW_", "LIVE_OPTICS_"];
-  forwardEmit[prefix <> "BRANCH_EXISTENCE", Inactive[ForAll][r, rayRadiusDomain[r], physicalPropagation /. stageRules]];
-  forwardEmit[prefix <> "PATH_TRAVERSAL", Inactive[ForAll][r, rayRadiusDomain[r], physicalTraversal /. stageRules]];
-  forwardEmit[prefix <> "DEFLECTION", gated[Values[bending] /. stageRules, stageGate, stageRules]];
-  forwardEmit[prefix <> "RADAR_LOG", gated[Values[radarLog] /. stageRules, stageGate, stageRules]];
-  forwardEmit[prefix <> "GAMMA_DEFLECTION", gated[gammaTheta /. stageRules, stageGate, stageRules]];
-  forwardEmit[prefix <> "GAMMA_RADAR", gated[gammaRadar /. stageRules, stageGate, stageRules]];
-  forwardEmit[prefix <> "GAMMA_DIFFERENCE", gated[(gammaTheta - gammaRadar) /. stageRules, stageGate, stageRules]];
-  forwardEmit[prefix <> "DEFLECTION_RESIDUAL", gated[thetaResidual /. stageRules, stageGate, stageRules]];
-  forwardEmit[prefix <> "RADAR_RESIDUAL", gated[radarResidual /. stageRules, stageGate, stageRules]];
-  forwardEmit[prefix <> "ROUND_TRIP", gated[Values[roundTrip] /. stageRules, stageGate, stageRules]];
-  forwardEmit[prefix <> "ONE_WAY_ER", gated[Values[oneWayER] /. stageRules, stageGate, stageRules]];
-  forwardEmit[prefix <> "ONE_WAY_RE", gated[Values[oneWayRE] /. stageRules, stageGate, stageRules]];
-  forwardEmit[prefix <> "NONRECIPROCAL", gated[Values[nonreciprocal] /. stageRules, stageGate, stageRules]];
-  stageConditions = conditionPair[stageRules, forwardDomain];
-  forwardEmit[prefix <> "DEFLECTION_CONDITION", stageConditions[[1]]];
-  forwardEmit[prefix <> "RADAR_CONDITION", stageConditions[[2]]], {stage, 2}];
-Do[forwardCRules = Join[forwardRules, {ampD -> responseMultipliers[[j]] ampF}];
-  forwardCDomain = forwardDomain && (responseDomain[j] /. fLocal -> densityFraction);
-  forwardCConditions = conditionPair[forwardCRules, forwardCDomain];
-  forwardEmit["C_RESPONSE_" <> ToString[j] <> "_DEFLECTION_CONDITION", forwardCConditions[[1]]];
-  forwardEmit["C_RESPONSE_" <> ToString[j] <> "_RADAR_CONDITION", forwardCConditions[[2]]], {j, 3}];
-emit["SUPPLIED_DEPENDENCIES", <|"A" -> {"DISPERSION", "ADVECTION", "EMBEDDING",
-    "ISOTROPIC_SPEED", "LAB_HELD"}, "B" -> {"ORDER_COUNTING", "GM_REFERENCE", "PPN_REFERENCE"},
-  "EXCHANGE" -> {"COORDINATE_MASS_BALANCE"}, "C" -> {"BULK_EOS", "DENSITY_RESPONSE"}|>];
-emit["OBSERVABLE_DOMAIN", <|"Domain" -> rayDomain, "Gate" -> rayGate,
-  "Outside" -> ConditionalExpression["NOT_ESTABLISHED", Not[rayGate]],
-  "ProfileFamily" -> {delta, velocity, xiSlope}, "LogComparison" -> ZE/b > 1 && ZR/b > 1|>];
-emit["ENGINE_LOCAL_NAMES", localNames];
+forwardDiv = Simplify[Total[MapThread[D,{forwardMassVector,cartesian}]] /.
+  {x1 -> r,x2 -> 0,x3 -> 0},$Assumptions];
+forwardSolution = DSolve[forwardDiv == 0,vForward,r];
+fluxInput = Phi == Integrate[massDensity vForward[r] r^2 Sin[theta],
+  {theta,0,Pi},{phi,0,2 Pi}];
+forwardV = vForward[r] /. First[Solve[fluxInput,vForward[r]]];
+forwardRules = {velocityProfile -> Function[{r},Evaluate[forwardV]]};
+forwardPremise = <|"NormalExchange" -> (jn[r] == 0),"Flux" -> fluxInput,
+  "Measure" -> "coordinate d3x"|>;
+forwardWrap[z_] := <|"Premise" -> forwardPremise,"Object" -> z|>;
+emit["F_MASS_SOLUTION",forwardWrap[<|"GeneralSolution" -> forwardSolution,
+  "FluxVelocity" -> forwardV,"Residual" -> Simplify[forwardDiv /.
+    vForward -> Function[{r},Evaluate[forwardV]]]|>]];
+Do[stageRules = Join[forwardRules,If[stage == 1,Join[zeroDelta,zeroXi],{}]];
+  prefix = If[stage == 1,"F_FLOW_","F_LIVE_"];
+  emitGates[prefix,stageRules,forwardWrap];
+  emitA[prefix,stageRules,forwardWrap,Keys[allA]];
+  emitComparisons[prefix,stageRules,massDensity != 0,forwardWrap,False],{stage,2}];
+emitC["F_LIVE_",forwardRules,forwardWrap,False,Range[3]];
+emit["LOCAL_ENGINE_LOCAL_NAMES", Append[localNames, "WL_LOCAL_S9B_ENGINE_LOCAL_NAMES"]];

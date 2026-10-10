@@ -1,0 +1,104 @@
+## Review of POLARIZATION_SURVEY.md, repair round 1 (sha256 732ea94d…, matches the baseline file)
+
+**Verdict: NEEDS REVISION**
+
+Evidence files are under `/tmp/polsurvey_r1_review/`:
+- `evidence_findings.txt`: ledger and survey line retrievals made with `nl -ba … | sed -n`.
+- `lookup_S9_S10.txt`, `lookup_S11.txt`, `lookup_SR.txt`: re-runs of the v3 quotes.
+- `doc_quote_checks.txt`: phrase-at-line checks.
+- `classes.txt`: the class tally.
+- `units_check.py` and `units_check.stdout`: the arithmetic.
+- `pdg_photon_2024.txt`: pdftotext of the PDG listing.
+- `dambrosio.txt`: pdftotext of arXiv 1306.1606.
+
+### Findings
+
+**1. E33/E34 are not classified by the conflict rule applied to E32 (this is the C1 rule).**
+- **Survey side.**
+  - The rule at L192: "**In apparent conflict** records opposed claims, including a departure the ledger itself identifies … an open coupling … can make the conflict conditional."
+  - E32 (L229) is a conflict "conditional on matter coupling, even though the coupling remains unresolved". Its experimental side is only E01's tomography and E02–E03. The survey itself says these are "not a model-independent census" and "not every uncoupled field".
+  - E33 (L230) and E34 (L231) are the experiments sensitive to an extra coupled mode (L108: a third state "would multiply that normalization by 3/2"). Yet they are classed "Required but with no mechanism", with the note "Whether an extra branch meets the thermal/coupling conditions is unclear". That is the same uncertainty E32 carries into its conflict.
+- **Ledger side.**
+  - S11:15: "Lifts S10's zero to a propagating longitudinal mode".
+  - S11:16: "closes the homogeneous three-finite-mode census".
+  - S11:173: "A second cone is only a departure if matter COUPLES to it."
+- **Measured side.** Quinn & Martin: σ "differs from the calculated one by 13 parts in 10⁵, which is less than the combined standard deviations". Source: Crossref deposit of DOI 10.1098/rsta.1985.0058, abstract opened. The 3/2 factor is about 3700 times the relative uncertainty (`units_check.stdout`).
+- **Fix.** Apply one conflict rule to E32–E34. Either E33/E34 become conditional conflicts, quoting S11:15/16/173 and their own thermal conditions, or the survey states why they differ from E32. E32's experimental side should cite E33/E34.
+
+**2. Rows with the same stated basis get different classes.**
+- L192 defines "required" as "a requirement whose needed derivation is missing" and "not addressed" as "an observable outside the cited delivered results". Every "required" row also meets the second definition. The classes are what the user will use to decide what the model must explain, so this matters.
+- **E12 against E10/E11 and E13–E15.**
+  - E12 (L209) is "Not addressed" because there is "No anisotropic cosmic-rotation power spectrum or CMB polarization transport result".
+  - E13–E15 (L210–212) are conflicts although "A CMB rotation/transport law is not delivered".
+  - E10/E11 are null birefringence bounds classed "testable" against "degenerate *by symmetry* in a homogeneous brane".
+  - Under E13's own condition (the homogeneous branch "applies along the relevant path"), E12's null is in E10/E11's position.
+- **E25 and E29 against E16, E17 and E26.** All are established optics facts with the same rationale: no calculation exists. The classes still differ.
+  - E25, "Not addressed": "No derived polarization-dependent transverse beam position at a dielectric interface".
+  - E29, "Not addressed": "A tight-focus vector field has not been calculated".
+  - E26, "Required": "No derived optical dielectric boundary law or Brewster-polarization condition". E16 and E17 are also "Required".
+- **E01 against E10/E11.** Both follow from supplied inputs whose substrate requirement is OPEN:
+  - E01 rests on D = 3 (R-S1-01, "D_brane = 3 went in"), and is classed "Required".
+  - E10/E11 rest on the supplied action (R-S8-01 OPEN), and are classed "testable".
+  - Under L192 each fits both definitions.
+- **Fix.** Give a criterion that separates required, testable and not addressed, and apply it to every row. Otherwise state per row why it differs.
+
+**3. Missed v3 sources on handedness and on the w displacement. They bear on how E10–E15 are conditioned.**
+- **What the survey uses.** The model side of E10–E15 is only the plan's S22 sentence (L1183) and S10's common root.
+- **Sources missed.**
+  - **S11:52–64 (two engines plus Lean).**
+    - "N_SO = {D=2 → 4, D=3 → 3, D=4 → 4, D=5 → 3}  N_O = 3 for every D."
+    - "The extras are **reflection-odd** … at D=2 … at D=4."
+    - "**Sector separation is a D=3 fact, not a structural one**."
+    - So in S11's first-gradient quadratic class, D = 3 admits no reflection-odd invariant. The survey's L142 row cites S11:74–76 but not this, and the passage also bears on the transverse/longitudinal count when D is open (R-S1-01).
+  - **O2:110–111.** "Radial profiles impose no constitutive isotropy, parity, stress symmetry, absent couple/chiral content".
+  - **S11bB:53–54.** "Non-reciprocal, 'odd' constitutive couplings … are realised in driven laboratory media (odd elasticity, odd viscosity, active and chiral fluids). They are not unphysical."
+  - **O2:89–92 and 115–117.** These supply `g_ij=δ_ij+∂_iξ_w∂_jξ_w` and put `((∂ξ_w)²)^c` in the optical counting. So the brane's w displacement is a live field in the accepted gravity record's light geometry. The terminology note (L124) presents w displacement only as the charge field.
+  - **S9b spec at `ede8aa21`:117–119.** "Excluded … subprincipal terms … which affect amplitude and polarization transport". This is relevant to E22 and the gravitational spin-Hall paragraph.
+- **External side.** The primary sources state what β tests:
+  - Minami & Komatsu (arXiv 2011.11254, abstract opened): "We search for evidence of parity-violating physics".
+  - Diego-Palazuelos & Komatsu v2 (abstract opened): "sensitive to new physics that violates parity symmetry".
+- **Fix.** Add these sources to Part 3 with their statuses. State the parity/chirality condition in E10–E15 with them. Do not resolve it.
+
+**4. Missing photon-mass bounds (E02/E03).**
+- **Survey side.** E03: "The authors question whether some stronger solar-wind limits are justified". The bound itself is not given. E02 and E03 test "a specified massive-vector theory". In the model the static mediator (h) and the light branch (u_T) are different fields (L159, E02 cell).
+- **Missing bound 1: the PDG-adopted limit.** The PDG 2024 photon listing (pdg.lbl.gov, PDF opened) gives "RYUTOV 07 <1 × 10⁻¹⁸ [eV] MHD of solar wind". That is about 1.8×10⁻⁵⁴ kg, roughly 1900 times tighter than E03's tightest value.
+- **Missing bound 2: dispersion (time-of-flight) limits.** Bonetti et al. 2016 (arXiv 1602.09135, abstract opened): "m_γ ≲ 1.8 × 10⁻¹⁴ eV/c² (3.2 × 10⁻⁵⁰ kg)" from FRB frequency-dependent delays. The PDG adds: "assuming the DM is caused by expected dispersion in IGM. There are several uncertainties".
+  - This bounds a gap in the propagating light branch directly, with no Coulomb/Ampère identification. On the model side, S10:237 gives the "raw root formula is 0 and μ_R|k|²/ρ_br".
+- **Fix.** Add these bounds with their stated assumptions, and classify them by the survey's rule.
+
+### Checked and sound
+
+- **Round-0 "what must be true" items.**
+  - **C1 (partly):** E01 is no longer "reproduced", the added rule is gone, and the longitudinal branch is its own row. Finding 1 is the remaining gap.
+  - **C2:** conditions are stated.
+  - **C3:** P6 rows are present, E02 is sourced to them, and the terminology note is present.
+  - **C4:** the S9b spec is cited at `ede8aa21`. I re-ran L53–55 and L106–109 and they match. S11c-d:58 matches.
+  - **C5:** E33 and E34 are present, and their values match the primary abstracts.
+  - **C6:** both reasons appear and are labelled classical or quantum.
+  - **G2:** E21 matches the Caltech version-of-record abstract (13.5±0.8%, 15.0±1.0%, 35.2±7.1%, 90° swing, scattering interpretation).
+  - **G3:** E15 matches v2 §I/§VI ("mean rotation ⟨ψi⟩=0.20∘±0.08∘ reported by the ACT team").
+- **Part 1.** Correct. Classical and quantum facts are labelled. I found nothing misleading for a careful non-physicist.
+- **Part 2 values checked against primary sources** (abstracts or full text as noted):
+  - E03: 1.4×10⁻⁴⁹ to 3.4×10⁻⁵¹ kg.
+  - E04: "about 120 determinations by two observers".
+  - E06: "all curves show a visibility greater than 0.73" (full text); m up to 100.
+  - E09: 5.9×10⁻⁹ and 2.3×10⁻⁷.
+  - E10: z=2.739, >28% at 90% c.l., ξ<10⁻¹⁶.
+  - E11: 2×10⁻³².
+  - E12: 0.10×10⁻⁴ rad² = 0.0328 deg².
+  - E13: 0.35±0.14°, 2.4σ.
+  - E14: 0.30±0.11°, with the withheld-significance statement.
+  - E18: 17/2.5 = 6.8.
+  - E19: the follow-up calls the earlier results "instrumental artifacts".
+  - E20: 16.43±5.26%.
+  - E22: Δγ_p<1.6×10⁻²⁷.
+  - E23: γ=0.9998±0.0003, 2005.
+  - E31: 46±4% and 65±8%; VB-off χ²/dof 106.8/4; "unconfirmed prediction" wording.
+  - E33: σ value, 1.34×10⁻⁴ relative.
+  - E34: 2.728±0.004 K (95% CL), <50 ppm.
+  - Unestablished signals are marked as such.
+- **Part 3.** Every v3 file:line quotation I re-ran matched: S9:21, 331–337; S10:73–84, 98–101, 172–176, 182–197, 245–252; S11:15–25, 74–92, 154–163, 173; S11b:14–16, 74–81; S11c closeout:3, 27, 31, 35–39; SUBSTRATE_REQUIREMENTS:3–19, 128–145, 226–244, 263–316, 334–345; DEFECT_REGISTER B2 FALSIFIED and C10 OPEN; O2:125–127; plan:413–416, 453–462, 871–905, 1174–1204; LIGHT_LEAKAGE_SCOPING:36, 152. R31 re-run gives exit 1 with empty output. The docs/v2/paper quotations are present at the cited lines, allowing for line wrapping. The status labels are faithful.
+- **Structure.** All 26 anchors resolve. The totals 15/4/7/8 match a mechanical tally.
+- **Scope.** No mechanism is proposed and no conflict is resolved.
+
+**Not reported (by the physics filter):** whether Arago–Fresnel non-interference belongs as a transversality entry. The only source I opened (Wikipedia, secondary) does not state the transversality link, so I make no claim.

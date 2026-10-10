@@ -1,0 +1,48 @@
+#!/bin/bash
+# Mechanical fact-lookups (sha256sum/grep/sed only) behind the polarization survey review, round 0.
+cd /var/projects/toy_physics || exit 1
+run() { echo '```'; echo "\$ $*"; eval "$@" 2>&1 | cut -c1-300; echo '```'; echo; }
+V=_scratch/polarization/POLARIZATION_SURVEY.md
+L=research/pde_ledger_v3
+echo "# Lookups — polarization survey review, round 0 (generated $(date '+%Y-%m-%d %H:%M'))"
+echo
+echo "Generator: \`_scratch/polarization/gen/survey_r0_lookups.sh\` (sha256sum/grep/sed only)."
+echo
+echo "## The reviewed file is unchanged"
+run "(cd _scratch/polarization && sha256sum -c survey_review_baseline_r0.sha256)"
+echo "## Verdicts"
+run "grep -n -o 'Verdict:\*\* [A-Z][A-Z ]*\|Verdict: [A-Z][A-Z ]*' _scratch/polarization/survey_review_r0_claude.txt _scratch/polarization/survey_review_r0_grok.txt"
+echo "## E01 and the survey's conflict rule (C1, G1)"
+run "grep -n '| E01' $V"
+run "grep -n 'Apparent conflict requires' $V"
+run "grep -n 'apparent conflict' _scratch/polarization/survey_prompt_r0.md"
+run "sed -n 249,251p $L/steps/S10_two_transverse_photons.md"
+run "sed -n 172,176p $L/steps/S10_two_transverse_photons.md"
+run "ls $L/steps | grep -i 's11'"
+run "grep -n 'Lifts S10' $L/steps/*.md"
+run "grep -n 'only a departure if matter' $L/steps/*.md"
+run "sed -n 128,136p $L/SUBSTRATE_REQUIREMENTS.md"
+echo "## One standard across E10, E11, E13–E15 (C2)"
+run "grep -n '| E1[0-5]' $V"
+run "sed -n 1183p $L/V3_STEP_PLAN.md"
+run "grep -n 'residual w^2_(1) - w^2_(2)\|Stokes residual' _scratch/polarization/survey_review_r0_claude_evidence/degenerate_transverse_polarization.stdout"
+echo "## The w-displacement in the plan (C3)"
+run "sed -n 453,455p $L/V3_STEP_PLAN.md"
+run "sed -n 460,461p $L/V3_STEP_PLAN.md"
+run "grep -n 'ξ_w = ℓh\|THROAT_H_SOURCE_1_OVER_R2' $L/V3_STEP_PLAN.md | head -5"
+run "grep -n 'w-directed normal displacement' $V"
+run "grep -n '| E02' $V"
+echo "## S9b's supplied polarization identification and S11c-d (C4)"
+run "git show ede8aa21:$L/directives/S9b_SHARED_PHYSICS.md | sed -n 53,55p"
+run "git show ede8aa21:$L/directives/S9b_SHARED_PHYSICS.md | sed -n 106,109p"
+run "grep -c 'S9b_SHARED_PHYSICS' $V"
+run "ls $L/steps | grep -ci s9b"
+run "grep -n 'polarization-dependent first-order forcing' $L/steps/*.md"
+echo "## Thermal mode count absent (C5)"
+run "grep -n -i 'stefan\|blackbody\|black-body\|N_eff\|Planck 2018' $V | head"
+echo "## Part 1 on why two states (C6)"
+run "grep -n 'does not mean three freely propagating' $V"
+run "grep -n -i 'massless' $V | head -5"
+echo "## E21 and E15 (G2, G3)"
+run "grep -n '| E21' $V"
+run "grep -n '| E15' $V"

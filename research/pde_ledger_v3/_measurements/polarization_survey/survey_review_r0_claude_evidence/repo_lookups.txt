@@ -1,0 +1,95 @@
+$ nl -ba research/pde_ledger_v3/steps/S10_two_transverse_photons.md | sed -n '96,98p;237,240p;245,252p;869,876p'
+    96	| D | case | roots in emitted order: N2 / N3 | total N2 / N3 over propagating roots |
+    97	|---:|---|---|---:|
+    98	| 3 | MAIN, generic | zero `1 / 0`; positive `2 / 2` | `2 / 2` |
+   237	The raw root formula is 0 and μ_R |k|² / ρ_br. Under the supplied
+   238	positive-coefficient and nonzero-wavevector assumptions, the latter is
+   239	positive. The zero-root null direction is longitudinal and has no transverse
+   240	nullity; the positive root has D − 1 total and D − 1 transverse null
+   245	The zero root retains a degree of freedom; it does not remove one. What the
+   246	curl-only stiffness removes is the restoring stiffness for the longitudinal
+   247	direction. The per-root nullities make the distinction explicit:
+   248	`1 + (D − 1) = D` in every MAIN dimension measured, so all D amplitude
+   249	directions remain in the spectrum. Within the light sector, Maxwell has no
+   250	counterpart to this surviving zero-frequency longitudinal direction. That is
+   251	a characterised departure, and its onward disposition belongs to S11
+   252	(`stray_longitudinal`). S10 assigns it no further interpretation.
+   869	The supplied in-plane/out-of-plane split is not ours. The prior-art register
+   870	classifies “the `h`-branon as the brane's own
+   871	transverse fluctuation” as KNOWN and attributes that object to Cembranos,
+   872	Dobado, and Maroto, PRL 90 241301 (2003)
+   873	(../../docs/medium_requirements_and_prior_art.md:136-143). That entry
+   874	establishes attribution for the excluded out-of-plane field; it does not
+   875	establish this ledger's `u`/`h` decoupling, its quadratic operator, any
+   876	degeneracy with the in-plane modes, or the D − 1 count. Prior art is used here
+
+$ nl -ba research/pde_ledger_v3/steps/S11_stray_longitudinal.md | sed -n '15,17p;113p;161,163p;173,174p'
+    15	Lifts S10's zero to a propagating longitudinal mode, enters the brane's compression modulus as a
+    16	**postulated** knob with a **named retirement condition**, closes the homogeneous three-finite-mode
+    17	census, and derives the simple \(k_w=0\) grazing locus. The free mode's actual leakage remains an
+   113	| finite \(D=3\) census | characteristic polynomial degree 3 in `ω²`, leading coefficient `−ρ_br³ ≠ 0`; exactly three finite roots counted with multiplicity and no hidden fourth mode |
+   161	⛔ **What S11 does NOT deliver**, stated so it cannot be over-read: bound-versus-resonant classification ·
+   162	nonzero interface overlap · an actual leakage rate · unconditional light confinement · observability or
+   163	unobservability of the longitudinal branch · a localized or nonradiative nonlinear photon helper.
+   173	- ⭐⭐ **A second cone is only a departure if matter COUPLES to it.** The transverse wave equation is
+   174	  Lorentz-invariant with invariant speed `c_γ` automatically, so anything built from those modes
+
+$ nl -ba research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md | sed -n '134,136p'
+   134	- **on failure** — S10's headline reads *"light having exactly two polarisations is a statement that our
+   135	  space is three-dimensional."* Read backwards it says the opposite: `D_brane = 3` went in and `D−1 = 2`
+   136	  came out. Without a delivered `D_brane` the sentence is an assumption restated, ⛔ not a result.
+
+$ nl -ba research/pde_ledger_v3/V3_STEP_PLAN.md | sed -n '453,455p;459,462p;871,873p;896,898p;902,905p;1183p'
+   453	⛔⛔ **DIFFERENT OBJECTS — ⛔ do not weld them, at any strength.** `u_L` is an **in-plane longitudinal
+   454	brane displacement**; **`±w`** is the **throat's normal/orientation direction**, and the charge the
+   455	rethink produced is carried by the **`h`-branon**. The committed sources keep them apart:
+   459	- `docs/em_analog_next_phase_handoff.md#u-l-clamp-not-the-charge-scalar` — of the `u_L`-clamp candidate:
+   460	  *"It is NOT the committed charge scalar (that's the `h`-branon, `h≠u_L`; `h` remains the committed
+   461	  mediator for the conditional `1/R²` falloff); `u_L` is a separate charge-odd density mode BC'd to
+   462	  relax to 0."*
+   871	### Q1 · The electric-scalar substrate
+   872	The **static electric scalar**, closed by a **localized-`H` / PT** construction. ⚠ This is the phase's
+   873	entry point onto PHASE 3's throat, ⛔ not onto PHASE 2's brane-shear apparatus.
+   896	### Q2 · The puncture deflection and its source ⛔ the holder is a DEBT, not a result
+   897	A **±w puncture geometrically bends the brane into ±w**: the field identity `ξ_w = ℓh` and the
+   898	orientation-odd mouth source. Token: **`THROAT_H_SOURCE_1_OVER_R2`**.
+   902	**Expected new:** the **source identity** and the **far-field FORM** — ⛔ **not a holder.**
+   903	**Class:** the **`1/R²` falloff** and the **`s₁s₂` product** are **target-blind EARNED** (`stage031:25`) —
+   904	⭐ this is the **FORM** the phase preamble promises, and it is the part that does *not* wait on the
+   905	interior. ⚠ EARNED ***within Q1's postulated G0 closure*** (`stage031:18`), ⛔ not from primitives. {#q2-earned-within-g0}
+  1183	| 4 | **birefringence near a defect** — the two polarisations are degenerate *by symmetry* in a homogeneous brane; a defect splits them | a defect profile | as (1) |
+
+$ git show ede8aa21:research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md | nl -ba | sed -n '53,55p;106,110p;117,119p;540p'
+    53	  remain live. The same `ρ_br(x)` appears in the mass balance below. There is one isotropic speed, the same
+    54	  for both polarizations, measured relative to the shear-carrying material; the supplied polarization
+    55	  identification is `c_γ,1(x) ≡ c_γ,2(x) ≡ c_γ(x)`.
+   106	**Outside this step.** These were narrowed out with the user's approval, and are recorded as open:
+   107	- direction-dependent (radial versus tangential) stiffness;
+   108	- coupling to thickness or bulk fields;
+   109	- polarization-dependent propagation;
+   110	- mixed `ωk` content other than advection.
+   117	- **Eikonal.** The retained object is the dispersion relation above, with its position-dependent
+   118	  coefficients, and its rays. Excluded from this step's claim and not computed: the explicit subprincipal
+   119	  terms of the underlying operator, which affect amplitude and polarization transport.
+   540	  - polarization transport;
+
+$ nl -ba research/pde_ledger_v3/steps/O2_steady_brane_balance.md | sed -n '109,113p'
+   109	`V`, `ρ_br`, `μ_⊥`, `ξ_w`, `h`, `δ`, `j_n`, bulk state, material responses, history/reference,
+   110	loads and boundary data remain live with spatial derivatives. Radial profiles impose no constitutive
+   111	isotropy, parity, stress symmetry, absent couple/chiral content, derivative cutoff or finite history
+   112	state. No sharp-sheet or finite-slab material reduction, stress measure, relaxation family, passive
+   113	sign or physical support is selected. Sources: spec §§1–6; contract §§1, 3–8 (M1).
+
+$ nl -ba research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md | sed -n '58p' | cut -c1-200
+    58	**CONDITIONAL:** finite packet/source/matching evidence includes an inner-kernel bank, local Gaussian actions, polarization-dependent first-order forcing and matched transverse amplitudes. The 
+
+$ nl -ba research/pde_ledger_v3/steps/S9_light_requires_shear.md | sed -n '349,350p'
+   349	- ⚠ Limits taken: sharp zero-width sheet · `v₀ → 0` · no dissipation · frequency-independent moduli ·
+   350	  continuum limit · amplitude → 0.
+
+$ ls research/pde_ledger_v3/steps | grep -ci s9b
+0
+
+$ sha256sum _scratch/polarization/POLARIZATION_SURVEY.md
+d423244eac6f3c26981bbe3244c43c2d96205bfecda75b04bcead4eb1fa6913c  _scratch/polarization/POLARIZATION_SURVEY.md
+

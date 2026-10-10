@@ -1,0 +1,25 @@
+I'll review the repaired polarization survey against the prompt, the repair dispositions, and the sources it cites. First I'll read those documents and confirm the file matches the recorded checksum.The checksum matches the baseline. Next I’ll map the survey’s structure and check each repair condition against the sources.The repair items are present in the text. I’ll now check them against the ledger and the papers they cite, and look for anything the repair changed incorrectly.**Verdict: CLEAR**
+
+The file matches `732ea94d94367df6d220e3b4c6f4e35988c9245e078c81eb326275bedf82537b`. The round-0 repair conditions hold, and nothing in the repaired survey changes the physics a reader would take away, what an experiment is said to show, or how a fact is classed.
+
+## Findings
+
+None.
+
+## What was checked and holds
+
+**Repair conditions.** “Reproduced” is unused (0 of 34). E01 names the supplied input: `D = 3` goes in and `D−1 = 2` comes out (`SUBSTRATE_REQUIREMENTS.md:128–145`; `S10_two_transverse_photons.md:172–176`, “The physical selection D = 3 is not made in S10”). The longitudinal branch is its own row, E32, an apparent conflict only if matter couples, quoting both sides (S10:249–251; S11:15 and S11:173, “A second cone is only a departure if matter COUPLES to it.”). E10, E11, and E13–E15 use that same rule and state homogeneity and isotropic inertia. Part 3 records `ξ_w = ℓh` as the plan’s charge field and static mediator (`V3_STEP_PLAN.md:453–462`, `:896–905`) and separates “transverse to the brane” from “transverse to propagation.” E22–E24 say the S9b spec at commit `ede8aa21`, lines 53–55, supplies `c_γ,1(x) ≡ c_γ,2(x) ≡ c_γ(x)`, so S9b cannot reproduce polarization independence; lines 106–109 leave polarization-dependent propagation outside the step. `S11c_d_profile_conditioned_scattering.md:58` is included as conditional. E33 and E34 are the laboratory and cosmological thermal-count rows, with Part 4 classes. Part 1 labels Gauss’s law as the classical reason and massless spin-1 helicity as the quantum reason. The old rule that an apparent conflict needs an experimentally comparable model prediction is gone. The table does not add a mechanism or close a conflict.
+
+Those lines were read with `sed -n` and a Python line dump of the cited ranges, and with `git show ede8aa21:research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md | nl -ba`. The quoted sentences sit on the cited lines, including the plan’s line 1183 (“degenerate *by symmetry* in a homogeneous brane”) and O2:125–127 (no polarization-dependent optical transport in that record). The class counts are 15 required, 4 conditional apparent conflicts, 7 not addressed, 8 places for a testable statement, 0 reproduced.
+
+**Part 1.** Jones vectors, Stokes parameters, and the Poincaré sphere are the standard two-component account. A source-free plane wave has two directions because `k·E = 0`. A massless spin-1 photon has helicities `±1`; a massive spin-1 particle has three spin projections. Circular and orbital angular momentum are given as `±1/ω` and `ℓ/ω` per energy, with `±ℏ` and `ℓℏ` marked as the quantum reading. Malus’s cosine-squared law is separated from single-photon anticorrelation.
+
+**Experiments opened, and the survey’s numbers match.**
+
+- E21. Science DOI `10.1126/science.add0080`, abstract on science.org and PubMed: “13.5 ± 0.8%” over 2–8 keV; “15.0 ± 1.0%” at 2–4 keV; “35.2 ± 7.1%” at 5.5–8 keV; the angle “changes by 90°.”
+- E15. arXiv:2509.13654v2 HTML: `β = 0.215° ± 0.074°` (68% CL, 2.9σ). The paper says Ref. 27 “did not explicitly estimate `β`” and that `0.20° ± 0.08°` is the average detector angle `⟨ψ_i⟩`.
+- E33. Quinn & Martin, Phil. Trans. R. Soc. A, DOI `10.1098/rsta.1985.0058`, abstract: `σ = (5.66967 ± 0.00076)×10^{-8}` W m^{-2} K^{-4}, differing from the calculated value by 13 parts in 10^5, within the combined standard deviations.
+- E34. Fixsen et al. 1996, ApJ, DOI `10.1086/178173`, abstract: `T = 2.728 ± 0.004` K (95% CL); RMS deviations less than 50 parts per million of the peak. The survey’s caveat that this is not a universal 50 ppm bound on an extra mode matches that differential blackbody comparison.
+- Also matched to the opened abstracts: Williams, Faller & Hill 1971 (`μ² = (1.04±1.2)×10^{-19}` cm^{-2}; `q = (2.7±3.1)×10^{-16}`); Götz et al. 2014 (above 28% at 90% CL, `z = 2.739`, `ξ < 1×10^{-16}`); Ejlli et al. 2020 (`Δn = (12±17)×10^{-23}`, QED `2.5×10^{-23}` at 2.5 T); Bianchini et al. 2020 (`L(L+1)C_L^{αα}/2π < 0.10×10^{-4}` rad²); Diego-Palazuelos et al., arXiv:2203.04830 and PRL 128, 091302 (both `β = 0.30°±0.11°`); Giustina et al. (`p` not exceeding `3.74×10^{-31}`); Shalm et al. (`5.9×10^{-9}`, adjusted `2.3×10^{-7}`); James et al. 2001 (“the two polarization degrees of freedom”); Stewart et al., arXiv:2509.19446v5 (`46±4%` over 2–8 keV; fitted `65±8%` at 2 keV) and the Nature abstract’s statement that vacuum birefringence remains unconfirmed.
+
+Historical rows the survey marks as unread (Faraday, Kerr, Cassini’s publisher page) were left as labelled. No missing experiment turned up that would move a class.

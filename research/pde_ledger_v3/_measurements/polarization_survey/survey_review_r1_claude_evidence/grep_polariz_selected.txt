@@ -1,0 +1,35 @@
+=== lean/s10/ANISOTROPIC_RESULT.md
+89:occurs exactly when `q=0`; for `q != 0`, it proves the extra polarization is
+=== lean/s11/D4_ODD_COVERAGE.md
+19:| D4B.3 — exhaustive odd-family bulk conclusion | For every real constant beta, every smooth background and every smooth compact variation, prove the local Euler–Lagrange expression and the actual first variation vanish. Include beta=0, negative beta an
+=== lean/s11/D4_COVERAGE.md
+16:no positivity, field-equation, nonzero-coefficient or polarization assumptions.
+=== lean/s11/D3_BULK_FIDELITY.md
+86:nonzero compact first variation and both polarization directions. Instrument
+=== lean/s11/DYNAMICS_COVERAGE.md
+63:| E3 | `modal_variation`, `eulerLagrange_planeWave`, `polarization_decomposition`, the two directional-action identities, `mixing_iff` and `mixing_cases`; zero/nonzero/negative-beta mixing controls. |
+=== lean/s9/COVERAGE.md
+52:| Narrow scalar-phase part of P2 | `Madelung.lean` proves that both velocity quadratures obtained from the actual supplied phase-gradient law are longitudinal, with no nonzero transverse polarization. The S9 rebuild, 32 axiom audits, nine rejected mutations
+=== lean/s9/README.md
+19:transverse velocity polarization for the stated smooth scalar-phase plane waves;
+=== directives/S11bB_SHARED_PHYSICS.md
+659:not to be a scalar — if the response is operator-valued, or the polarizations split, or the effect is a
+=== directives/O2_SHARED_PHYSICS.md
+45:of §§3.2–3.3: no isotropy, parity, stress symmetry, absence of couple, chiral or rotational-reference
+352:| Spherically symmetric profiles: scalar profiles general functions of `r`, radial `V` (§1; v9's live radial profiles, v9:43, 53–54, 85–86, 91, 113–114, 144) | Used: the printed object is on these profiles. It is v9's supplied setting, not a new pre
+353:| Isotropic optical speed, same shear-regime identification | Recorded optical scope. Direction-dependent stiffness, polarization-dependent propagation, coupled thickness/bulk branches, extra mixed `ωk` content and polarization/subprincipal transport rema
+=== directives/S11c_d_SHARED_PHYSICS.md
+449:J_{ab}^{(e)} ≡ the polarized S11b normal energy-current bilinear 𝓙_n[l_a,r_b]
+481:`N13`: "confinement of light" = **survival of the transverse polarization channel**. Conversion into a **bound**
+=== steps/S11c_d_profile_conditioned_scattering.md
+23:**CONDITIONAL:** the fixed model is omega=3, strict rest bulk, LAB_HELD/RHO4_CONSTANT and tangential momenta (1/5,1/10), with a selected effective sound-speed family. Twelve exact speeds give 24 end evaluations and 48 normal-sign checks, each for two select
+31:The measured quantity is one minus reflected-plus-transmitted transverse current divided by incident transverse current, including polarized cross terms. Positive is a deficit; negative is apparent gain. The original report gives:
+58:**CONDITIONAL:** finite packet/source/matching evidence includes an inner-kernel bank, local Gaussian actions, polarization-dependent first-order forcing and matched transverse amplitudes. The handoff records positive end-current weights and first-order flu
+=== steps/O2_steady_brane_balance.md
+111:isotropy, parity, stress symmetry, absent couple/chiral content, derivative cutoff or finite history
+126:swirl/angular profile, direction/polarization-dependent optical stiffness, coupled thickness/bulk
+127:branch, extra mixed `ωk`, or subprincipal/polarization transport result. Historical S11b rest-bulk,
+=== NEXT_SESSION.md
+384:transverse polarizations were recovered (`software/force_visualizer/output/verification_report.txt:42-48`).
+=== S9_REWRITE_PLAN.md
+231:    "polarization_count":       {"value": ..., "dim": ..., "class": "DERIVED", "step": "S10"},

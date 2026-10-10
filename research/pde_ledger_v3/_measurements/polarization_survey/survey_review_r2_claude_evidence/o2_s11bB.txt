@@ -1,0 +1,66 @@
+$ nl -ba O2_steady_brane_balance.md | sed -n 85,128p
+    85	Sources: spec §§1, 5, 7–8; contract §§1–2, 5–7 (M1). WL separately emits its `r>0` inequality;
+    86	PY has no paired inequality emission (M9), so domain use is not an inequality-comparison result.
+    87	
+    88	Every density in this object is per coordinate `d³x`, including mass/source, material momentum,
+    89	exchange, loads, energy and power; optical `μ_⊥` uses the same measure as `ρ_br`. Induced metric and
+    90	native area factors remain explicit. The supplied geometric/optical/mass inputs are
+    91	`g_ij=δ_ij+∂_iξ_w∂_jξ_w`, its inverse, `ξ_w=ℓh`,
+    92	`c_γ²≡μ_⊥/ρ_br`, `c_γ=c₀(1+δ)` and `∇·(ρ_br V)=−j_n`.
+    93	LAB_HELD is supplied spatial speed anchoring, not a holder or reference-evolution law. The bulk
+    94	inputs `P=Kρ^n`, `c_s²=nKρ^(n−1)/m`, `f=ρ/ρ₀−1` use bulk number density, particle mass and symbolic
+    95	EOS exponent. They supply no bulk profile, brane-density response or live traction. These are inputs
+    96	on their recorded domains, not results earned by engine agreement. Sources: spec §§1, 3.1, 7–8;
+    97	contract §§5–7 (M1).
+    98	
+    99	Each premise below is exactly labelled **adopted substrate input to a conditional model (2026-10-06)**,
+   100	from the user-selected premise decision list 1–4. None is derived (M1).
+   101	
+   102	| Premise | Adopted content and representation retained |
+   103	|---|---|
+   104	| 1 — material reference | Elastic in the optical shear regime, relaxing under steady load. Reference/strain evolution remains general and OPEN. Relaxation power is explicit, its sign OPEN, with any net power naming its supplier and budget. Optical consequences are deferred. |
+   105	| 2 — drive | Dynamical order-conversion drain, with no separate external body force. The spec chooses the representation with `F_drive` absent as a separate entry; source/boundary provenance enters material, load and exchange accounting. No drain-force aggregate is added beside them. The link to orbital `GM` stays OPEN. |
+   106	| 3 — exchange momentum | Converted material carries the local brane material velocity `V`; this closes transported momentum only. In the signed outward-loss convention, in-plane carry is `j_n V^i`. Bulk-direction carry remains an OPEN `𝒥_map`/normal-response reduction at native transfers. Additional non-variational partners/reactions stay OPEN with S12. This supplies no momentum-density identification or carried-total-energy formula. |
+   107	| 4 — bulk loading | Retain the postulated shear-free scalar bulk, native face-normal mechanical loading and no independent tangential bulk stress. The signed amplitude, native geometry/map and full support partition stay OPEN. A tilted face-normal load can have in-plane coordinate projections. External support and carried exchange remain distinct. |
+   108	
+   109	`V`, `ρ_br`, `μ_⊥`, `ξ_w`, `h`, `δ`, `j_n`, bulk state, material responses, history/reference,
+   110	loads and boundary data remain live with spatial derivatives. Radial profiles impose no constitutive
+   111	isotropy, parity, stress symmetry, absent couple/chiral content, derivative cutoff or finite history
+   112	state. No sharp-sheet or finite-slab material reduction, stress measure, relaxation family, passive
+   113	sign or physical support is selected. Sources: spec §§1–6; contract §§1, 3–8 (M1).
+   114	
+   115	Supplied counting is `ε=GM/(c₀²r)`, `δ=O(ε)`, `(∂ξ_w)²=O(ε)`, `V/c₀=O(ε^{1/2})`,
+   116	`(V/c₀)²=O(ε)` and the optical monomial box `0≤a≤1, 0≤b≤2, 0≤c≤1` in
+   117	`δ^a(V/c₀)^b((∂ξ_w)²)^c`, with nonnegative integer indices. Only the stiffness/density ratio
+   118	inherits the speed-change grade. Individual density/modulus, stress/inertia/normal response,
+   119	exchange/source/load, relaxation/power, holder/embedding and derivative grades remain OPEN. O2 is
+   120	untruncated; this optical box removes no mechanical or energy term. Bulk first order in `f` is
+   121	separate, with no supplied `f`–`ε` relation. The mass law carries its recorded relative-`O(ε)`
+   122	qualification for claims transferring `j_n` or `ρ_br` to induced measure; no induced-measure mass
+   123	law is supplied or derived. Sources: spec §7; contract §9 (M1).
+   124	
+   125	Transfer limits are exact: no strong field, mouth/interior, moving/rotating mass, time-varying drain,
+   126	swirl/angular profile, direction/polarization-dependent optical stiffness, coupled thickness/bulk
+   127	branch, extra mixed `ωk`, or subprincipal/polarization transport result. Historical S11b rest-bulk,
+   128	uniform quadratic/breathing-slice inputs and S11c supplied-profile, first-shape/background-jet,
+
+$ nl -ba S11bB_interface_assembly.md | sed -n 48,66p
+    48	   ⇒ a **driven steady state with a reservoir attached.** About a NESS, reciprocity generically breaks and
+    49	   the fluctuation subsystem need not be passive, because it can draw on the drive.
+    50	   ⚠⚠ **`v₀` is the SAME neglect this record files below as its top known limitation.** ⇒ the omission
+    51	   recorded as *"uncarried and unbounded"* is precisely what would license the channel we called dead.
+    52	
+    53	⚠ Non-reciprocal, "odd" constitutive couplings of exactly the excluded form are realised in driven
+    54	laboratory media (odd elasticity, odd viscosity, active and chiral fluids). ⛔ They are not unphysical.
+    55	⭐ **They have a reservoir.**
+    56	
+    57	### ⭐⭐ THE STANDING RULE THIS REPLACES IT WITH
+    58	
+    59	⛔ *"Anything goes"* is not the correction — under it no mode is ever stable and the ledger predicts nothing.
+    60	
+    61	> ⭐⭐ **A non-passive coupling is admissible only with a NAMED reservoir and a STATED power budget.**
+    62	> Unbounded growth fed by nothing is still a defect. Unbounded growth fed by `v₀` is **physics** — and it is
+    63	> **quantitative**, because `v₀` is bounded by cosmology.
+    64	
+    65	⇒ ⭐ **the real gate is observational, ⛔ not thermodynamic.** The departure's frequency profile is a **Debye
+    66	loss peak at `ωτ ~ 1`** (zero at both ends), so it is bounded by whatever measurement of anomalous

@@ -1,0 +1,101 @@
+$ nl -ba V3_STEP_PLAN.md | sed -n 410,418p;450,464p;868,906p;1170,1206p
+   410	Maxwell — ⛔ **never** to carrying both. Carrying two transverse modes **and** a longitudinal one
+   411	simultaneously is exactly what the `μ_br > 0` branch *does*.
+   412	
+   413	⭐⭐ **The mode is REAL and IRREMOVABLE, and its role was CATALYTIC — ⛔ not constitutive** (user's own
+   414	history, recalled 2026-07-31). ⛔⛔ **It is not charge; it does not become charge; it supplies no part of
+   415	charge.** ⚠ An earlier version of this step said it "becomes the **±w** displacement" — ⛔ that was a
+   416	false identification, corrected here. The history, in the order it happened:
+   417	
+   418	1. A **gauge field** had been used to obtain exact Maxwell, and had been in use for **months**. The user
+   450	longitudinal mode is the thing that carries charge. Its irremovability **closed the exact-Maxwell route
+   451	and forced the rethink**; the rethink produced the `±w` mechanism (PHASE 4b, `Q2`).
+   452	
+   453	⛔⛔ **DIFFERENT OBJECTS — ⛔ do not weld them, at any strength.** `u_L` is an **in-plane longitudinal
+   454	brane displacement**; **`±w`** is the **throat's normal/orientation direction**, and the charge the
+   455	rethink produced is carried by the **`h`-branon**. The committed sources keep them apart:
+   456	
+   457	- `research/pde_ledger_v2/notes/stages/ledger_stage031_puncture_deflection_field_identity_source.md#h-a-distinct-from-u-l`
+   458	  — *"Define the held mouth datum `h_A = ξ_w|_A/ℓ = P₀H|_A`, `[h_A]=1` **(distinct from `u_L`)**"*.
+   459	- `docs/em_analog_next_phase_handoff.md#u-l-clamp-not-the-charge-scalar` — of the `u_L`-clamp candidate:
+   460	  *"It is NOT the committed charge scalar (that's the `h`-branon, `h≠u_L`; `h` remains the committed
+   461	  mediator for the conditional `1/R²` falloff); `u_L` is a separate charge-odd density mode BC'd to
+   462	  relax to 0."*
+   463	- `docs/model_map.md#superseded-charge-routes` — the *"leftover-scalar `u_L`-clamp"* is listed among the
+   464	  **superseded** charge routes.
+   868	   objection is a **separate axis**: Cosserat buys **microrotation**, ⛔ not amplitude. ⇒ a fully nonlinear
+   869	   theory can still be inadmissible for the same 19th-century reason ⇒ `SUBSTRATE_REQUIREMENTS.md`.
+   870	
+   871	### Q1 · The electric-scalar substrate
+   872	The **static electric scalar**, closed by a **localized-`H` / PT** construction. ⚠ This is the phase's
+   873	entry point onto PHASE 3's throat, ⛔ not onto PHASE 2's brane-shear apparatus.
+   874	
+   875	**Locus:** `research/pde_ledger_v2/notes/stages/ledger_stage030_electric_scalar_localized_h_closure.md:15`.
+   876	
+   877	The reduction
+   878	
+   879	```
+   880	M_h = N₀M₄ ,    K_h = N₀K₄ = M_h c_E²
+   881	```
+   882	
+   883	is **EARNED — *given the postulated action***.
+   884	
+   885	**Expected new:** the localized-`H`/PT closure, and the **throat Green speed `c_E`**.
+   886	**Class:** `M_h`, `K_h` — **derived, conditional on the action**; `c_E` — an **interior** quantity
+   887	(`parameter_register.md:135`).
+   888	**Regime:** static.
+   889	**Carry forward:** ⛔ **the action is postulated — a tier-1 item.** ⇒ "EARNED" here means earned *from a
+   890	postulate*, not from primitives. ⛔ Do not promote it in transcription. → S22.
+   891	**Defect register:** **C6** (*"No closed parent action."*) — ⛔ Q1 does **not** resolve it: `M_h`/`K_h`
+   892	are earned *given* a postulated action, which is exactly the closure gap C6 names. ⇒ **Explicitly
+   893	deferred**, not closed. → S22.
+   894	**Parameter-register edges:** none.
+   895	
+   896	### Q2 · The puncture deflection and its source ⛔ the holder is a DEBT, not a result
+   897	A **±w puncture geometrically bends the brane into ±w**: the field identity `ξ_w = ℓh` and the
+   898	orientation-odd mouth source. Token: **`THROAT_H_SOURCE_1_OVER_R2`**.
+   899	
+   900	**Loci:** `ledger_stage031_puncture_deflection_field_identity_source.md:12`, `:18`, `:25`.
+   901	
+   902	**Expected new:** the **source identity** and the **far-field FORM** — ⛔ **not a holder.**
+   903	**Class:** the **`1/R²` falloff** and the **`s₁s₂` product** are **target-blind EARNED** (`stage031:25`) —
+   904	⭐ this is the **FORM** the phase preamble promises, and it is the part that does *not* wait on the
+   905	interior. ⚠ EARNED ***within Q1's postulated G0 closure*** (`stage031:18`), ⛔ not from primitives. {#q2-earned-within-g0}
+   906	**Regime:** static, one puncture against another.
+  1170	### S22 · ⭐⭐ HALF TWO — what only a simulation can settle
+  1171	
+  1172	#### ⭐⭐ THE NEAR-TERM LINEAR SIM INVENTORY — banked 2026-08-02, ⛔ do not re-derive it
+  1173	
+  1174	These are proposed linear tests on supplied backgrounds, not a solved nonlinear throat. S11b supplies
+  1175	conditional uniform interface data; S11c's nonuniform response remains partial. Do not infer that all
+  1176	five tests are cleared or all depend on a completed S11c loss factor. [S11c closeout, downstream uses](steps/S11c_PARTIAL_CLOSEOUT.md).
+  1177	
+  1178	| # | what it measures | needs | blocked by |
+  1179	|---|---|---|---|
+  1180	| 1 | ⭐⭐ **transverse → longitudinal conversion at a defect** — how much light converts to the stray mode passing a particle. ⚠ The families do **not** mix in a *homogeneous* brane (coupling `∝ k·a`); `∇μ_R ≠ 0` mixes them | a defect profile | **response/form remains PARTIAL** (S11c-c2/d); physical **magnitude** needs the interior (`R1`) |
+  1181	| 2 | ⭐⭐ **does the longitudinal actually radiate into the bulk** | the interface law | **S11b** |
+  1182	| 3 | ⭐ **the flexural crossover** — `ω ∝ k²` at long wavelength once the wall width is dynamical. ⛔ **Able to fail:** a clean cone means move 5 was wrong | width mode inertia + stiffness | **S11b** + **S5–S7** |
+  1183	| 4 | **birefringence near a defect** — the two polarisations are degenerate *by symmetry* in a homogeneous brane; a defect splits them | a defect profile | as (1) |
+  1184	| 5 | **Test 5** — set `χ_B = 0`, confirm shear propagation dies (`notes/brane_bulk_handoff.md:880`) | nothing new | ⭐ **runnable now**, designed, never run |
+  1185	
+  1186	⛔⛔ **TAUTOLOGY GUARD:** a sim fed `μ_R` that reports `c_γ = √(μ_R/ρ_br)` has measured **nothing** — a
+  1187	linear integrator already does exactly that. ⇒ Postulated parameters are fine to *run* with; they bound
+  1188	what the run may **claim**. Conversion efficiency, mode structure, stability and confinement are genuine
+  1189	outputs; ⛔ **the speeds are not.**
+  1190	
+  1191	#### ⭐⭐ "STAYS QUANTIZED IN A PACKET" IS THREE DIFFERENT QUESTIONS — ⛔ do not merge them
+  1192	
+  1193	⚠ The user's ambition is *"a photon travelling through space, self-sustaining."* Three readings, **three
+  1194	different blockers**, and conflating them caused a false alarm that `ħ` was on the critical path:
+  1195	
+  1196	| reading | needs | status |
+  1197	|---|---|---|
+  1198	| **a bound state** — a localized mode with a **discrete** frequency spectrum, trapped by a defect | ⭐ a linear wave equation in a **varying** medium (Sturm–Liouville) | ⭐⭐ **reachable, LINEAR.** No `ħ`, no nonlinearity |
+  1199	| **a soliton** — one allowed lump, energy fixed by a size–amplitude relation | the nonlinear shear action | ⛔ **C6** — the real wall, and what the user actually wants |
+  1200	| **`ħω` quanta** — energy in discrete lumps | field quantization | ⛔ **not a classical PDE sim at all**, at any effort |
+  1201	
+  1202	⭐⭐ **⇒ Shelving `ħ_model` does NOT block the simulation.** A classical field has continuous energy no
+  1203	matter how good the code is; row three was never reachable this way. ⇒ `ħ_model` connects the model to
+  1204	quantum mechanics — a **separate project** from watching the brane move. ⛔ Do not re-open it here.
+  1205	
+  1206	

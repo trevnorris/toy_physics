@@ -1,0 +1,8 @@
+K(k) - K(k)^dagger (Hermiticity residual): Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+K(k) - K(-k)^T (Onsager reciprocity residual): Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+K(-k) - K(k) (parity-odd part): Matrix([[0, -2*I*eta*k_z*(k_x**2 + k_y**2 + k_z**2), 2*I*eta*k_y*(k_x**2 + k_y**2 + k_z**2)], [2*I*eta*k_z*(k_x**2 + k_y**2 + k_z**2), 0, -2*I*eta*k_x*(k_x**2 + k_y**2 + k_z**2)], [-2*I*eta*k_y*(k_x**2 + k_y**2 + k_z**2), 2*I*eta*k_x*(k_x**2 + k_y**2 + k_z**2), 0]])
+K for k along z: Matrix([[k**2*mu, I*eta*k**3, 0], [-I*eta*k**3, k**2*mu, 0], [0, 0, 0]])
+eigenvalue rho*omega^2 = 0  multiplicity 1  eigenvector [[0, 0, 1]]
+eigenvalue rho*omega^2 = k**2*(-eta*k + mu)  multiplicity 1  eigenvector [[-I, 1, 0]]
+eigenvalue rho*omega^2 = k**2*(eta*k + mu)  multiplicity 1  eigenvector [[I, 1, 0]]
+eta=0 eigenvalues: {k**2*mu: 2, 0: 1}

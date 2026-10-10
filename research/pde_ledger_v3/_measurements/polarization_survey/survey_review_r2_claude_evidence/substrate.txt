@@ -1,0 +1,151 @@
+$ nl -ba SUBSTRATE_REQUIREMENTS.md | sed -n 1,20p;126,146p;224,246p;261,346p
+     1	# Substrate requirements — what the force sectors oblige the unbuilt steps to deliver
+     2	
+     3	**Status: passes 1 (S9, S10) and 2 (S11, S11b-A/B, S11c PARTIAL) complete; pass-2 review pending.
+     4	O2 pass populated 2026-10-07; its record/pass review is pending.**
+     5	Sixteen entries, all OPEN. Pass 2 was populated 2026-10-05 from the kept results and their stated
+     6	conditions; it does not close the substrate or upgrade S11c's unresolved work. Later sectors remain to
+     7	be read as they close. The two 2026-08-07 prior-art entries retain their provenance; the second route is
+     8	recorded under Population passes.
+     9	O2 adds sources to six existing entries and one separate supplier/budget entry with no owner named;
+    10	its four adopted premises retain their
+    11	conditional-input labels in the O2 pass below. Entry counts are retrieved in
+    12	`steps/_measurements/O2_record_measurements.md`, M11.
+    13	
+    14	## Why this exists
+    15	
+    16	v3 is requirements-first: each sector states what it needs, and the knit happens last. The light sector
+    17	(S9, S10, S11, S11b) is built on **S1–S8, none of which have been run** — there are no step records for
+    18	them. That is the design, not an oversight: the substrate gets built once every sector has said what it
+    19	requires, so it can be checked against all of them at once rather than rebuilt per sector.
+    20	
+   126	- **note** — `V3_STEP_PLAN.md` `{#s7-b-comp-callback}`. The charge anchor rests on this.
+   127	
+   128	### R-S1-01 — the brane's spatial dimension
+   129	
+   130	- **source** S10 (`steps/S10_two_transverse_photons.md`); S11
+   131	  (`steps/S11_stray_longitudinal.md`, moves 2–3 / finite census) · **target** S6 · **status** OPEN
+   132	- **requirement** — the brane's spatial dimension `D_brane`, as a derived quantity or an explicitly
+   133	  re-affirmed postulate.
+   134	- **on failure** — S10's headline reads *"light having exactly two polarisations is a statement that our
+   135	  space is three-dimensional."* Read backwards it says the opposite: `D_brane = 3` went in and `D−1 = 2`
+   136	  came out. Without a delivered `D_brane` the sentence is an assumption restated, ⛔ not a result.
+   137	- **note** — ⚠ **The target is S6, not S1.** S1 owns `D = 4` and the two-phase split; `D_brane` is a
+   138	  property of the **wall**, and S5–S6 are what construct it — S6 (the kink) is the first step at which a
+   139	  codimension-1 surface exists to have a dimension.
+   140	  ⛔⛔ **An earlier draft of this entry ruled out the obvious route on bad reasoning**, and a leg caught
+   141	  it. It argued that because S10's *mode-count computation* contains no codimension, `D_bulk − 1` is not
+   142	  the route. ⚠ **Non sequitur.** That the count does not *use* a codimension says nothing about whether
+   143	  `D_brane` can be *derived* as one elsewhere — a domain wall in a `D = 4` bulk is exactly codimension 1,
+   144	  and that is the natural derivation. ⇒ ⭐ **this entry does not prescribe a route**, per the schema; it
+   145	  asks for the object.
+   146	- **pass-2 consumer** — S11's selected homogeneous three-mode census and transverse/longitudinal
+   224	  is promoted to a result about the driven state.
+   225	
+   226	### R-S8-01 — the form of the brane's quadratic stiffness functional
+   227	
+   228	- **source** S9, S10; S11 (`steps/S11_stray_longitudinal.md`, moves 2–3 / FORM control);
+   229	  S11b-B (`steps/S11bB_interface_assembly.md`, energy basis / breathing stability); unified S11b
+   230	  (`steps/S11b_interface_coupling_law.md`, energy quotient); S11c
+   231	  (`steps/S11c_PARTIAL_CLOSEOUT.md`, conditional uniform result) · **target** S8 · **status** OPEN
+   232	- **requirement** — the quadratic brane Lagrangian's **stiffness functional**, as delivered by the
+   233	  substructure rather than chosen.
+   234	- **on failure** — this is the one input the light sector's central claim is **measurably** sensitive to,
+   235	  and S9's own controls prove it:
+   236	  - the gradient-elastic form `−½ μ_R Σ(∂_i u_j)²` — an ordinary elastic solid — carries **the same two
+   237	    transverse modes at the same `c² = μ_R/ρ_br`**, and *also* propagates the longitudinal;
+   238	  - the divergence-only form makes the roles **swap**: the transverse pair drops to `ω² = 0` and the
+   239	    longitudinal propagates.
+   240	  ⇒ ⭐ **What curl-only buys is the ABSENCE of a propagating longitudinal mode, ⛔ not the presence of the
+   241	  transverse ones.** If S8 delivers any other form, S9's and S10's transverse results may survive while
+   242	  the no-longitudinal claim — Maxwell's third demand, and the whole reason the sector exists — does not.
+   243	- **note** — S9 classifies the curl-only form as **postulated (structural)**, justified by *"forced by
+   244	  Maxwell's no longitudinal mode"*. ⚠ That is a justification from the target, ⛔ not from the substrate.
+   245	  Defect `B2` closes the route from a polar substructure `P` to `μ_R` — ⚠ **the whole quantity, not only
+   246	  its magnitude**, as `DEFECT_REGISTER.md#B2` scopes it. ⛔ But it closes **one route**, and it says
+   261	  is inferred. S11c's uniform result inherits that qualification, not a nonuniform confinement law.
+   262	
+   263	### R-S8-02 — the in-plane and out-of-plane sectors must decouple at quadratic order
+   264	
+   265	- **source** S10; S11 (`steps/S11_stray_longitudinal.md:278–280`, in-plane, frozen-wall-width spectrum)
+   266	  · **target** S8 · **status** OPEN
+   267	- **requirement** — the quadratic operator on the brane's **full** displacement, in-plane `u` **and**
+   268	  out-of-plane `h` together, and whether it is block-diagonal in that split.
+   269	- **on failure** — ⛔ **S10's headline number changes** — but ⚠ **not by the mechanism an earlier draft of
+   270	  this entry named, and a leg corrected it.** Mixing is **not** the failure mode: under the rotation group
+   271	  that acts on the brane, `h` and `u_L` are both **scalars** and `u_T` is a **vector**, so `h` can mix with
+   272	  `u_L` freely and the transverse count stays `D − 1` regardless. ⭐ **The condition that gives 3 is `h`
+   273	  being DEGENERATE WITH THE TRANSVERSE PAIR** — the brane's elasticity being isotropic in `D+1` rather
+   274	  than in `D`. That is what *"belonging to the same elastic sector"* has to mean, and it is what S8 must
+   275	  settle.
+   276	- **note** — ⭐ **This is the most load-bearing open item in the sector**, and it was flagged inside S10 at
+   277	  the moment the identification was made rather than found later: `h ≠ u_L`, stated in three places in the
+   278	  corpus, **user-confirmed as the picture** — but ⛔ confirmed as a picture, not computed. `V3_STEP_PLAN`
+   279	  puts *"transverse and longitudinal sectors; the reduced `h`/`u_L` operator"* in S8, so the object is
+   280	  already scheduled.
+   281	  ⚠⚠ **And v3 is not starting from nothing — a leg found the computation already exists in v2 and this
+   282	  entry did not cite it.** `research/pde_ledger_v2/paper/stages/stage_030.tex:99-125` builds the coupled
+   283	  `(u_L, h)` scalar block with stiffness `K = [[B_eff, C_hu], [C_hu, K_h]]` — explicitly **not**
+   284	  block-diagonal, with `C_hu` a registered free-unreduced parameter — and `R79` records that the mixed
+   285	  poles are cone-coincident only when `C_hu = 0`. ⇒ ⛔ *"nothing computes that"* is true of **v3** and
+   286	  misleading about the **corpus**; S8 should start from `stage_030`, ⛔ not from scratch.
+   287	  ⭐ Note this is the `(u_L, h)` block — the scalar sector — so it bears on the **longitudinal** slot and
+   288	  the charge anchor, ⛔ and not directly on the transverse count, which is what the corrected on-failure
+   289	  above turns on.
+   290	- **pass-2 source** — S11's result here is the one its record names as the in-plane, frozen-wall-width
+   291	  spectrum with `hBranon` excluded: *"⚠ Scope caveats, none touching the decoupling: (i) this is the
+   292	  **in-plane, frozen-wall-width** spectrum (`WALL_WIDTH_FIELDS={}`, `hBranon` excluded,
+   293	  `INTERFACE_EQUATIONS_SUPPLIED={}`) — it does not decide inhomogeneous mode conversion,"*
+   294	  (`steps/S11_stray_longitudinal.md:278–280`). S11's decoupling statement, with its own limit, reads:
+   295	  *"Thus the homogeneous \(D=3\) quadratic transverse and longitudinal eigenbranches have zero linear
+   296	  cross-block under the selected action. This does not establish decoupling at nonlinear order, on a
+   297	  nonuniform slab, at an interface or defect, or after additional allowed fields are introduced."*
+   298	  (`steps/S11_stray_longitudinal.md:74–76`). This entry's object is the joint `u`/`h` operator that the
+   299	  spectrum leaves out.
+   300	- **excluded field** — in that caveat S11's record freezes the wall width and excludes `hBranon`
+   301	  (`steps/S11_stray_longitudinal.md:279–280`); its Mathematica audit binds the token as
+   302	  `"OUT_OF_PLANE_FIELD_EXCLUDED" -> hBranon`
+   303	  (`mathematica/S11_stray_longitudinal_mathematica_audit.wl:1082`). If S8 does not deliver the joint
+   304	  operator, S11's spectrum is not extended beyond that stated scope. The record does not say what its
+   305	  roots or census would be with `hBranon` included, and this register does not infer it.
+   306	
+   307	### R-S8-03 — the SIGN of the physical transverse stiffness
+   308	
+   309	- **source** S9, S10; S11 (`steps/S11_stray_longitudinal.md`, unchanged transverse branch);
+   310	  unified S11b (`steps/S11b_interface_coupling_law.md`, transverse mode); S11c
+   311	  (`steps/S11c_PARTIAL_CLOSEOUT.md`, conditional uniform result;
+   312	  `steps/S11c_d_profile_conditioned_scattering.md`, uniform check) · **target** S8 · **status** OPEN
+   313	- **requirement** — the **sign** of the physical transverse stiffness in the quadratic brane
+   314	  Lagrangian, as delivered by the substructure: `μ_R` in S9/S10's selected action, `μ_⊥` in the enlarged
+   315	  S11b action. `R-S8-01` asks for the stiffness **functional**; this asks for its transverse sign.
+   316	- **on failure** — ⛔ **the transverse sector is two exponentially growing modes rather than two waves,
+   317	  and every mode count in S9 and S10 is unchanged.** S10's `XFORM_SIGNFLIP` control measures exactly this:
+   318	  with the sign flipped, `ω² = −μ_R k²/ρ_br` and **every nullity is identical to the baseline's** — the
+   319	  count cannot tell a wave from an instability. What distinguishes them is a single emitted object,
+   320	  `ROOT2_Q3_SIGN`.
+   321	- **note** — ⭐ **Found by a review leg reading the register against S10's own controls**, ⛔ not by the
+   322	  pass that wrote the register: `R-S8-01` is entirely about form and never mentions sign or positivity,
+   323	  so the pass consolidated one and dropped the other.
+   324	  ⚠ **It is not closed by defect `B2`**, which shuts the route for deriving `μ_R` — its sign as well as
+   325	  its magnitude — from a polar substructure `P`. Other substrate routes remain open: a step that
+   326	  delivers the stiffness functional delivers its sign with it, so the retirement condition is exactly
+   327	  as live as `R-S8-01`'s.
+   328	- **pass-2 object** — in the enlarged S11b action this is the physical transverse stiffness `μ_⊥`:
+   329	  WL-`μ_R` and SymPy-`(μ_R + μ_S/2)` are its two representatives under the unified record's invertible
+   330	  coefficient map. The obligation concerns the sign of `μ_⊥`, not a basis-dependent sign of `μ_S` or
+   331	  either engine's bare `μ_R`. Stable real-frequency uniform modes require `μ_⊥ ≥ 0`; decoupling alone
+   332	  does not exclude growth. S11c's selected finite-current check keeps its tested-input and review scope.
+   333	
+   334	### R-S8-04 — what carries the brane's internal angular momentum
+   335	
+   336	- **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9, S10, S11 · **target** S8 · **status** OPEN
+   337	- **requirement** — the object in the substructure that carries **internal angular momentum** on the brane,
+   338	  or the couple-stress it supports. ⛔ Not a mechanism, ⛔ not a model: the object, or a statement that there
+   339	  is none.
+   340	- **on failure** — ⛔⛔ **the curl-only stiffness functional is not an admissible continuum mechanics.** An
+   341	  energy in `(∇×u)²` alone has an **antisymmetric** Cauchy stress, and balance of angular momentum forces
+   342	  the Cauchy stress to be **symmetric** unless the medium carries distributed couples or internal spin. If
+   343	  the substructure supplies neither, the light sector's central form is inadmissible **regardless of its
+   344	  mode content** — S9's and S10's mode counts, dimensions and speeds would all be computed from a
+   345	  functional no medium can have.
+   346	- **note** — ⚠ **This is the objection that sank MacCullagh's aether**, and it is the one part of that

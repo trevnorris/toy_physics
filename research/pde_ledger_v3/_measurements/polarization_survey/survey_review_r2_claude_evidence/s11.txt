@@ -1,0 +1,104 @@
+$ nl -ba S11_stray_longitudinal.md | sed -n 10,30p;38,66p;70,95p;150,176p
+    10	allowed to resist compression, what that costs the ledger, and what the resulting mode's physical status
+    11	actually is.
+    12	
+    13	## What it does
+    14	
+    15	Lifts S10's zero to a propagating longitudinal mode, enters the brane's compression modulus as a
+    16	**postulated** knob with a **named retirement condition**, closes the homogeneous three-finite-mode
+    17	census, and derives the simple \(k_w=0\) grazing locus. The free mode's actual leakage remains an
+    18	interface and spectral-boundary problem; its possible finite-amplitude photon-helper role additionally
+    19	requires nonlinear coupling and a harmonic/sideband radiation audit.
+    20	
+    21	⛔ **This is not a defect being repaired.** The extra mode is a characterized departure from a
+    22	transverse-only Maxwell field. Historical drum-head discussions used the compressional response as
+    23	motivation for a material electric sector, but the current canonical ontology does **not** identify
+    24	\(u_L\) with charge: charge is the oriented throat/electric-odd boundary condition, while \(u_L\) is a
+    25	separate in-plane longitudinal material mode. ⛔ `FAIL_CAUCHY_STRAY_LONGITUDINAL` is a **misnamed** token;
+    26	never read the prefix as a verdict.
+    27	
+    28	---
+    29	
+    30	## The walk, move by move
+    38	not a density change, and the channel would need separate argument.
+    39	
+    40	**Move 2 — what a quadratic stiffness on the brane can be.** Decompose `∂_i u_j` into trace,
+    41	symmetric-traceless and antisymmetric parts. ⭐ **S10 did not forget a term — it kept ONE invariant of
+    42	several.** Curl-only stiffness charges for twist and nothing else, which is why the longitudinal came out
+    43	free rather than forbidden: a longitudinal plane wave has a symmetric gradient
+    44	and hence no curl. That gradient generally contains both trace and symmetric-traceless
+    45	parts; it is not pure trace. The selected curl-only action charges neither of those
+    46	parts. (Clarified during the S11 homogeneous Lean fidelity pass, 2026-09-16 UTC.)
+    47	
+    48	⛔⛔ **CORRECTION — the orchestrator's count in this move was WRONG, and both engines caught it.** The
+    49	walk asserted *"exactly three coefficients, for every `D ≥ 2`."* ⭐ **False under proper rotations.**
+    50	
+    51	```
+    52	N_SO = {D=2 → 4, D=3 → 3, D=4 → 4, D=5 → 3}        N_O = 3 for every D
+    53	```
+    54	
+    55	The extras are **reflection-odd**: `(tr G)·ε^{ij}G_{ij}` at `D=2`, `ε_{ijkl}G_{ij}G_{kl}` at `D=4`.
+    56	⚠ **And the walk's METHOD was the error, not its arithmetic** — *"decompose into pieces that do not mix
+    57	and count them"* misses **cross-pairings between isomorphic summands**, which is exactly what `D=2` and
+    58	`D=4` have (at `D=2` the trace and `Λ²` are both `SO(2)` scalars; at `D=4`, `Λ²` splits into self-dual ⊕
+    59	anti-self-dual). ⭐ Five independent derivations agree on the corrected counts.
+    60	
+    61	⭐⭐ **The physical content of the extras, and it sharpens the step:** at `D=2` the extra invariant is
+    62	**NOT a total derivative** — its Euler–Lagrange operator is non-zero — so an `SO(2)`-invariant Lagrangian
+    63	**can mix the longitudinal and transverse sectors**. At `D=4` it **is** a total derivative and adds no
+    64	operator structure. ⇒ ⭐ **Sector separation is a `D=3` fact, ⛔ not a structural one.**
+    65	
+    66	**Move 3 — the spectrum.** The trace term enters strictly as `B_comp k(k·a)`:
+    70	```
+    71	
+    72	⇒ transverse (`k·a = 0`): the new term vanishes **identically** in the selected homogeneous \(D=3\)
+    73	quadratic action. Longitudinal (`a ∥ k`): the `μ_R` bracket vanishes and the zero is not perturbed but
+    74	**replaced**. Thus the homogeneous \(D=3\) quadratic transverse and longitudinal eigenbranches have zero
+    75	linear cross-block under the selected action. This does not establish decoupling at nonlinear order, on
+    76	a nonuniform slab, at an interface or defect, or after additional allowed fields are introduced.
+    77	
+    78	**Move 4 — where `B_comp` comes from.** ⛔ **The orchestrator's first mechanism was wrong** — it had
+    79	brane material "squeezing out into the bulk," which smuggles in a phase transition (bulk *is* the
+    80	disordered phase) and the user rejected it: *"How can the brane become unordered just by compression?"*
+    81	⭐ **The correct mechanism: the brane THICKENS.** In-plane compression raises the areal density, which
+    82	can be absorbed as a higher 4D density (charged by the EOS) **or as a wider wall** (charged by the wall
+    83	potential). ⛔ **Neither disorders anything** — the order parameter never changes; the sheet bulges into
+    84	`±w`. ⇒ Two channels accommodating additive shares of one strain, i.e. **springs in series**, so
+    85	compliances add and `B_comp` is **softer than either channel alone**.
+    86	
+    87	**Move 5 — the flat direction.** `S7` records that the double-well **selects no slab width**. ⇒ If that
+    88	flatness survived, `B_wall = 0`, hence `B_comp = 0`, and S10's zero would never lift. ⭐ **It is lifted by
+    89	GRADIENTS**: a wave modulates the width, tilting the interfaces and stretching them at cost
+    90	`∝ σ_wall|∇W|²`. ⇒ flat at `k=0`, stiff as `k²`, predicting a **flexural crossover** — `ω ∝ k²` at long
+    91	wavelength. ⚠ **S11's cone below is computed with the wall width FROZEN**; unfreezing it should soften
+    92	the mode. ⛔ If it does not, **move 5 was wrong** — say so rather than reconciling.
+    93	⭐ `σ_wall` is **S6-derived**, so this predicts `B_comp` may cost no knob at all → `DEFECT_REGISTER#c12`.
+    94	
+    95	**Move 6 — the bulk.** ⛔⛔ **THE ORCHESTRATOR OVERSTATED THIS MOVE TWICE, and both corrections stuck.**
+   150	| question | present owner |
+   151	|---|---|
+   152	| where the free homogeneous longitudinal root lies relative to simple bulk sound | S11 kinematic `KW_ZERO_LOCUS` |
+   153	| whether that mode is bound, a threshold state, a bound state in the continuum, or a resonance | S11b interface and full-slab spectrum |
+   154	| whether matter directly observes the second cone | derived matter/interface coupling |
+   155	| whether the mode participates in a finite-amplitude photon helper | nonlinear intensity coupling plus harmonic and sideband response |
+   156	
+   157	At homogeneous linear order, the mode's bulk leakage and direct observability require the brane–bulk
+   158	interface law. Its possible finite-amplitude photon-helper role additionally requires nonlinear intensity
+   159	coupling, the complete slab spectrum, and a harmonic and sideband radiation audit.
+   160	
+   161	⛔ **What S11 does NOT deliver**, stated so it cannot be over-read: bound-versus-resonant classification ·
+   162	nonzero interface overlap · an actual leakage rate · unconditional light confinement · observability or
+   163	unobservability of the longitudinal branch · a localized or nonradiative nonlinear photon helper.
+   164	
+   165	## ⭐ What this settles about the light sector as a whole
+   166	
+   167	Established with the user, 2026-08-02, and load-bearing for how the departure above reads:
+   168	
+   169	- ⛔⛔ **`c_L` is NOT a gravitational wave.** Gravity in this model is *"the **FLOW** between draining
+   170	  defects — carried by the flow + Bernoulli pressure, **NOT** by ripples/radiation"*
+   171	  (`docs/conceptual_foundation.md:348`). `c_L` is an in-plane displacement of brane material.
+   172	  ⚠ Separately: the corpus contains **no mechanistic account of what a gravitational wave is**.
+   173	- ⭐⭐ **A second cone is only a departure if matter COUPLES to it.** The transverse wave equation is
+   174	  Lorentz-invariant with invariant speed `c_γ` automatically, so anything built from those modes
+   175	  inherits that invariance — and this model's matter **is** built from them (a throat held open by a
+   176	  trapped brane-shear standing wave). ⛔ The orchestrator's *"a second cone means observers see no single

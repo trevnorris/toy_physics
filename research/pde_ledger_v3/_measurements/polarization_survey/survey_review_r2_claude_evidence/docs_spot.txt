@@ -1,0 +1,12 @@
+$ grep -n "exactly two transverse polarizations\|real electromagnetism\|2 transverse polarizations automatically\|never leaves the brane" docs/conceptual_foundation.md
+373:energy to *locally rotate* the medium, energy `∝ (∇×u)²` — then the wave equation has **exactly two transverse polarizations and
+393:  `∝ (∇×u)²`, the curl of a genuine displacement. This gives exactly two transverse polarizations, no longitudinal mode, Maxwell —
+475:- **Light is INTRINSICALLY a (3+1)D brane field** — so it has **2 transverse polarizations automatically**, and it **never leaves the
+$ sed -n 2278,2282p;4214p;4218p docs/native_light_em_and_vortex_throat_interpretation.md
+It is undefined for a throat at rest and changes meaning if mixed
+\(S_{aw}\) components participate. For a freely propagating transverse shear
+mode, right- and left-circular polarization may instead furnish two
+wave-helicity states, but their angular momentum density and detector response
+must be calculated.
+| transverse radiation from acceleration | open | two polarization amplitudes and extra emission channels are not derived |
+| spin-\(1\) helicity of the light quantum | outside the present classical derivation | circular shear polarization is a candidate classical precursor only |

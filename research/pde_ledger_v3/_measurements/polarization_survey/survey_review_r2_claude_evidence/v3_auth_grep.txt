@@ -1,0 +1,62 @@
+$ grep -n -i -E "polari[sz]|helicit|chiral|handed|birefring|reflection-odd|parity-odd|parity" steps/*.md V3_STEP_PLAN.md DEFECT_REGISTER.md SUBSTRATE_REQUIREMENTS.md CHARTER.md | grep -v -i "harness.parity\|parity_exclude\|engine parity\|PARITY_" | cut -c1-260
+steps/S11bA_PREREGISTERED_PREDICTION.md:6:the parity split, the algebraic closure, the relative-flux identification, and the split control.
+steps/S11bA_PREREGISTERED_PREDICTION.md:10:## P-A · Impedance by parity
+steps/S11bA_PREREGISTERED_PREDICTION.md:14:belongs to. ⇒ the parity difference should appear **only** in how the two face pressures combine into a
+steps/S11bA_PREREGISTERED_PREDICTION.md:18:⚠ If `Z` itself comes out parity-dependent, my picture of the two half-spaces as independent is wrong,
+steps/S11bA_PREREGISTERED_PREDICTION.md:46:**Prediction: BOTH move `A2`'s result.** ⇒ the parity result is **not** a property of the window alone; it
+steps/S11bB_interface_assembly.md:54:laboratory media (odd elasticity, odd viscosity, active and chiral fluids). ⛔ They are not unphysical.
+steps/S11bB_interface_assembly.md:76:structural reason: in-plane parity admits no `e_W ↔ u_T` bilinear.
+steps/S11c_PARTIAL_CLOSEOUT.md:31:**OPEN:** S11c-e owns the conversion observable and must recover d's weak limit in a future finite-contrast calculation. The plan's charge preamble asks whether linear nonuniform physics can support charge; PARTIAL closure ans
+steps/S11bA_interface_response.md:57:**Parity**, `Ω` even, on the **symmetric** interval `[−L, L]`: `j^w` even ⇒ source `= 0` **exactly**;
+steps/S11bA_interface_response.md:127:| **P-D** | **both** controls move the parity result | ✓ confirmed — parity needs an even window **and** a symmetric interval |
+steps/S11bA_interface_response.md:189:| parity rule | requires an even window **and** a symmetric interval |
+steps/S11b_RUN_CHECKLIST.md:28:| 10 | cross-engine comparison + control/dim/parity | ⬜ | ⚠ `reduction/` harness DELETED — replacement mapping below |
+steps/S11b_RUN_CHECKLIST.md:54:   rule 12) — which is independent of whether `.py` exists. SAFEGUARD: launch the WL Codex build handed ONLY
+steps/S11b_RUN_CHECKLIST.md:59:   harness (cross-engine agreement · dimensional homogeneity · control response · tag parity). Replacement:
+steps/S11b_RUN_CHECKLIST.md:60:   - cross-engine agreement + tag parity → the **T7 comparator** (G8a): join by name, residual paired
+steps/O2_steady_brane_balance.md:111:isotropy, parity, stress symmetry, absent couple/chiral content, derivative cutoff or finite history
+steps/O2_steady_brane_balance.md:126:swirl/angular profile, direction/polarization-dependent optical stiffness, coupled thickness/bulk
+steps/O2_steady_brane_balance.md:127:branch, extra mixed `ωk`, or subprincipal/polarization transport result. Historical S11b rest-bulk,
+steps/S11b_PREREGISTERED_PREDICTION.md:23:## T2 · The parity selection rule
+steps/S11b_PREREGISTERED_PREDICTION.md:112:  the family, so it cannot test a channel *count* or a parity *selection rule*.
+steps/S11c_d_profile_conditioned_scattering.md:23:**CONDITIONAL:** the fixed model is omega=3, strict rest bulk, LAB_HELD/RHO4_CONSTANT and tangential momenta (1/5,1/10), with a selected effective sound-speed family. Twelve exact speeds give 24 end evaluations
+steps/S11c_d_profile_conditioned_scattering.md:31:The measured quantity is one minus reflected-plus-transmitted transverse current divided by incident transverse current, including polarized cross terms. Positive is a deficit; negative is apparent gain. The or
+steps/S11c_d_profile_conditioned_scattering.md:58:**CONDITIONAL:** finite packet/source/matching evidence includes an inner-kernel bank, local Gaussian actions, polarization-dependent first-order forcing and matched transverse amplitudes. The handoff records p
+steps/S11c_c1_curved_bulk_closure.md:53:  `13f0bd2c`; repair-2 (Fredholm re-freeze + dead parity axis) `dd34d564`. Blindness is the cross-engine control:
+steps/S11c_c1_curved_bulk_closure.md:69:  `t_s` binding) + repair-2 (Fredholm two-leg re-freeze; dead parity axis) — all 2-leg CLEARED. ⚠ The WL repair
+steps/S11c_c1_curved_bulk_closure.md:76:  bg-density field, regime/parity all UNRECONCILED — surfaced, not folded); raw-operand whitelist exactly
+steps/S11c_c1_curved_bulk_closure.md:90:  **(4) regime/parity naming — AGREE on content** (`OUTPUT_X`/`INPUT_X` vs bare is a bridgeable keying
+steps/S11c_c1_curved_bulk_closure.md:102:  collapse at physical kinematics, sweep `AGREE=54`), the flat symbol, the parity matrix (= the kernel), the
+steps/LIGHT_LEAKAGE_SCOPING.md:3:**Date:** 2026-10-07. This is an inventory, not a calculation. **No accepted nonuniform light-loss number** exists (PC:3,9). Survival has two recorded halves. What survives: “Both reflected and transmitted light count as surv
+steps/LIGHT_LEAKAGE_SCOPING.md:18:The rows cover the directive's listed mechanisms; completeness of a chapter-derived union is **UNVERIFIED**, not asserted. Interface roughness is split by face parity (rows 7a/7b): the records' kernel shape is “the face-EVEN
+steps/LIGHT_LEAKAGE_SCOPING.md:26:| 3 | Raman scattering — inelastic scattering off molecular/lattice vibrations with Stokes/anti-Stokes frequency shift (FT; AB §4.2). AB §4.2: the linear-polarisation term “depicts the spontaneous linear Raman scattering
+steps/LIGHT_LEAKAGE_SCOPING.md:36:| 12 | Polarization coupling/birefringence — symmetry breaking splits/mixes transverse polarizations (K/SL). | **PRESENT ANALOG, named future item:** S22 conversion/birefringence and defect inputs. d's polarization-dependent
+steps/LIGHT_LEAKAGE_SCOPING.md:39:**Mapping accounting:** the 13 directive mechanisms occupy 14 rows (roughness split by face parity) — **ABSENT 1** (13); **PRESENT ANALOG 7** (2, 7a, 8, 9, 10, 11, 12); **NOT ADDRESSED 6** (1, 3, 4, 5, 6, 7b). Status attache
+steps/LIGHT_LEAKAGE_SCOPING.md:83:| D. Marcuse, “Mode Conversion Caused by Surface Imperfections of a Dielectric Slab Waveguide,” *Bell Syst. Tech. J.* **48** (1969) 3187–3215, DOI [10.1002/j.1538-7305.1969.tb01742.x](https://onlinelibrary.wiley.com/doi/
+steps/LIGHT_LEAKAGE_SCOPING.md:87:| C. Scheibner et al., “Odd elasticity,” *Nature Physics* **16**, 475–480 (2020), DOI [10.1038/s41567-020-0795-y](https://doi.org/10.1038/s41567-020-0795-y), [preprint arXiv:1902.07760v1 opened](https://arxiv.org/pdf/190
+steps/LIGHT_LEAKAGE_SCOPING.md:89:| A. C. Kubrusly, J. P. von der Weid and S. M. Dixon, “Experimental and numerical investigation of the interaction of the first four SH guided wave modes with symmetric and non-symmetric discontinuities in plates,” *NDT&E*
+steps/LIGHT_LEAKAGE_SCOPING.md:94:No verified equation-bearing oracle is supplied for E4's Debye memory law, C3's nonlinear audit beyond the Brillouin phase-matching condition below, or O1/O2/O3/O5/O7: **gap**. The odd-media papers are oracles for E4's non-rec
+steps/LIGHT_LEAKAGE_SCOPING.md:98:All numerical parameters/profiles are **input assignments, not physical values** (SR:543–570). **S** means the two recorded survival halves: transverse reflection and transmission survive (PC:3); conversion into a bound brea
+steps/LIGHT_LEAKAGE_SCOPING.md:108:| Route / regime | Source → destination | Local quantity, or gap | Exposure and status | Frequency / polarization | Validity | Recorded correlations | Survival | Yardstick |
+steps/LIGHT_LEAKAGE_SCOPING.md:110:| E1 / nonuniform, unique gradient-`e_W` leg included | Transverse → `θ,e_W,u_L` | Off-diagonal kernel; per-encounter probability/per-length loss **gap** (b:54–57) | Profile/width inputs; physical path/count **gap** (SR:
+steps/LIGHT_LEAKAGE_SCOPING.md:111:| E2 / PROPAGATING | Face → acoustic bulk | `H_a[Z]` (Hermitian/reactive parts “AGREE only at c1's first order”, c1:105–107); permeable-port Hermitian form, cross-engine **“UNMEASURED — DEFERRED”** (PERMEABLE_PO
+steps/LIGHT_LEAKAGE_SCOPING.md:114:| E3 / closed representation of E1, not extra thickness route | Transverse → same scalar receivers/E2 response | `ΔΣ=extract(close)−extract(open-symbolic)`; S-matrix probability **gap** (c2:63–70); F/G interpretations
+steps/LIGHT_LEAKAGE_SCOPING.md:118:| E5 / PROPAGATING second hop | Scalar/normal face → acoustic bulk | `Z` “real, `ωρ_m/q`” (A:41) and `Re Z` “survives as `ρ_m/a_q`” (A:72), neither chosen; `a_q` undefined in A/B/U, declared in “propagating(y=a
+steps/LIGHT_LEAKAGE_SCOPING.md:125:| C4 / strong edge, finite contrast | Transverse → conversion receivers; exact finite-contrast map **gap** | Observable **OPEN** (PC:31; d:68) | Physical profile/path/count **gap** (SR:543–570) | Polarization/finite-contr
+steps/LIGHT_LEAKAGE_SCOPING.md:136:Codes: **YF** measured fiber attenuation; **LP** laboratory photon lifetime; **BO** bench-top optics; **CT** cosmological transparency; **SE** stellar energy; **MD** mechanical dissipation; **V0** drain/cosmology; **FD** freq
+steps/LIGHT_LEAKAGE_SCOPING.md:152:| PB | Berceau et al., [PRA 85, 013837, primary paper](https://arxiv.org/pdf/1109.4792): vacuum magnetic birefringence **`Δn≤5.0×10⁻²⁰ T⁻²` per `4 ms` acquisition**. Phase/polarization response, not disappearance 
+steps/S9_light_requires_shear.md:21:**1 — What Maxwell demands.** Two transverse polarisations · one speed · no longitudinal mode.
+steps/S9_light_requires_shear.md:237:- **Sign of `ω²` emitted per root**, so the sign-flip control can fail through the polarisation tests.
+steps/S9_light_requires_shear.md:342:  ⇒ ⭐ **Read the polarisation values as generic-locus values with the exceptions listed.**
+steps/S11_stray_longitudinal.md:55:The extras are **reflection-odd**: `(tr G)·ε^{ij}G_{ij}` at `D=2`, `ε_{ijkl}G_{ij}G_{kl}` at `D=4`.
+steps/S11_stray_longitudinal.md:284:fact** (at `D=2` the reflection-odd invariant mixes the sectors — Move 2), not structural; (iv) the
+steps/S11_stray_longitudinal.md:307:is handed to **S11b** where it already belongs. ⛔ **The S11 engine round was NOT run** — it would buy
+steps/S9_REBUILD_QUESTION_DEFECTS.md:48:when roots collapse, when a root disappears, and when a polarisation subset is empty.
+DEFECT_REGISTER.md:288:*transverse-traceless* / *tensor mode* / *GW polarization* returns **nothing**.
+DEFECT_REGISTER.md:298:the locus above. ⭐ Note also that GR's gravitational waves are **transverse with two polarizations** —
+DEFECT_REGISTER.md:667:**zero** times in `directives/S10_wl_directive.md` — ⛔ the scheme was **not** handed to either builder.
+SUBSTRATE_REQUIREMENTS.md:134:- **on failure** — S10's headline reads *"light having exactly two polarisations is a statement that our
+SUBSTRATE_REQUIREMENTS.md:178:  carries and their polarisation.
+SUBSTRATE_REQUIREMENTS.md:188:  in `q² = ω²/c_s0² − k²`, its polarisation and the regime in which that acoustic approximation applies.
+V3_STEP_PLAN.md:379:1. ⛔ *"brane shear gives exactly two transverse polarisations."* ⚠ **The form control refutes the
+V3_STEP_PLAN.md:1183:| 4 | **birefringence near a defect** — the two polarisations are degenerate *by symmetry* in a homogeneous brane; a defect splits them | a defect profile | as (1) |

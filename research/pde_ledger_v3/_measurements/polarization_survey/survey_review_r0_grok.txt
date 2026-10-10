@@ -1,0 +1,49 @@
+I'll review the Codex polarization survey against its prompt, the cited experiments, and the repository sources. First I'll read the survey, the prompt, and the baseline hash.The survey matches its baseline hash. Next I’ll check the experimental numbers against the cited papers and the repository quotations against the v3 files.**Verdict: NEEDS REVISION**
+
+The file matches `survey_review_baseline_r0.sha256` (`d423244eac6f3c26981bbe3244c43c2d96205bfecda75b04bcead4eb1fa6913c`). Two items change what the survey asks the user to believe.
+
+### Findings
+
+**1. Part 4, E01, is marked Reproduced more strongly than the ledger allows.**
+
+The survey’s row says: “**Reproduced** … two exactly transverse in-plane directions on the supplied homogeneous, isotropic-inertia D=3 branch,” and the totals say “reproduced 1.”
+
+The same survey’s authority says that count is not a result. From `nl -ba research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md | sed -n '128,136p'`:
+
+```text
+134- **on failure** — S10's headline reads *"light having exactly two polarisations is a statement that our
+135  space is three-dimensional."* Read backwards it says the opposite: `D_brane = 3` went in and `D−1 = 2`
+136  came out. Without a delivered `D_brane` the sentence is an assumption restated, ⛔ not a result.
+```
+
+Status on that entry is **OPEN**. From `nl -ba research/pde_ledger_v3/steps/S10_two_transverse_photons.md | sed -n '172,176p'`:
+
+```text
+172 The physical selection D = 3 is not made in S10. ...
+175 arbitrary finite D with a nonzero wavevector, extending the measured sweep.
+176 Neither establishes which D nature selects.
+```
+
+E01’s experimental claim is that ordinary polarization uses two basis amplitudes. S10 shows `D−1` transverse directions after `D=3` is inserted. That conditional arithmetic can stay in the cell. The class should not be Reproduced. Put E01 with the testable-statement rows, and say the selection of two states remains `R-S1-01`, OPEN. The reproduced count becomes 0.
+
+**2. E21 quotes the preprint percentages, not the Science paper it cites.**
+
+The survey, citing DOI `10.1126/science.add0080`, says the measurement is “**quoted from arXiv v1**, `14±1%` at 2–4 keV and `41±7%` at 5.5–8 keV,” and that these “are not silently substituted for the revised published analysis.”
+
+The arXiv v1 abstract, opened at `https://arxiv.org/abs/2205.08898`, does say “`(14±1)%` at 2–4 keV and `(41±7)%` at 5.5–8 keV.” The Science version-of-record abstract, read from the PubMed and CaltechAUTHORS records of that DOI (the paywalled PDF was not opened), says otherwise: “`13.5 ± 0.8%` averaged over the 2- to 8-keV band. … `15.0 ± 1.0%` at 2 to 4 kilo-electron volts … `35.2 ± 7.1%` at 5.5 to 8 kilo-electron volts.” The published abstract’s interpretation is magnetospheric scattering, not the preprint’s vacuum-birefringence sentence.
+
+The hard-band central value the user will remember, 41% versus 35%, is the preprint’s. Quote the Science numbers as what that DOI reports. Keep the v1 pair only as the preprint. The “not addressed” class can stay.
+
+**3. E15 calls `0.20±0.08°` an earlier value of its own result. It is a different estimator.**
+
+The survey says the v2 result `β=0.215±0.074°` is “the revised values, not the earlier `0.20±0.08°`.”
+
+Both `https://arxiv.org/html/2509.13654v1` and `v2` already state `β=0.215°±0.074°` (2.9σ). In both, `0.20°±0.08°` is the ACT team’s mean detector angle `⟨ψ_i⟩`, which this paper says its `β` is compatible with: “Our result is compatible with the mean rotation `⟨ψ_i⟩=0.20°±0.08°` reported by the ACT team.” Drop the “revised, not the earlier” sentence. The headline `β` and the “hint, not established” label are right.
+
+### Checked and found sound
+
+Part 1’s classical-versus-quantum split holds: two transverse basis states for a free plane wave, Jones versus Stokes, helicity `±1` rather than a third photon, Malus’ law shared with classical intensity, and no signaling from entanglement. Handedness is tied to an explicit Jones vector instead of a “right/left” name.
+
+Opened primary abstracts or text agree with the survey for E02 (Williams, Faller & Hill: `μ²=(1.04±1.2)×10^{-19} cm^{-2}`), E03 (Retinò, Spallicci & Vaivads: `1.4×10^{-49}` to `3.4×10^{-51}` kg), E06 (visibility greater than 0.73, `m` up to 100), E08 (`p` at most `3.74×10^{-31}`), E09 (`5.9×10^{-9}` and `2.3×10^{-7}`), E10 (above 28% at 90% confidence, `z=2.739`, `ξ<1×10^{-16}`), E11 (`2×10^{-32}`), E12 (`0.10×10^{-4}` rad² = 0.033 deg²), E18 (PVLAS `(12±17)×10^{-23}`), E20 (`16.43±5.26%`, `145.39±9.44°`), and E31 (`46±4%` in 2–8 keV; `65±8%` at 2 keV; QED still called unconfirmed). Hints and the withdrawn PVLAS signal are marked as such. E31’s “worse Stokes description with vacuum birefringence off” matches the v5 text that was opened.
+
+Repository lines checked with `nl -ba` match the survey’s quotations and statuses: S9’s target versus postulated shear, S10’s conditional `D−1` count and form and inertia controls, S11’s postulated compression and the open observability of `u_L`, S11b’s uniform decoupling, the S11c partial closeout, `R-S8-02` through `R-S8-04`, defect B2 versus C10, the S22 birefringence item, and O2’s withheld polarization transport. No v3 step, plan, substrate, or defect source that bears on polarization was missed in a way that adds a class the survey lacks. The longitudinal branch is a recorded departure whose coupling is explicitly not delivered (`S11` lines 161–163); leaving it out of “apparent conflict” does not resolve it. The survey does not propose a mechanism.

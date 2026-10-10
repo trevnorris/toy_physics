@@ -1,0 +1,84 @@
+**Verdict: NEEDS REVISION**
+
+The survey's sha256 (`d423244e…`) matches `survey_review_baseline_r0.sha256`. I modified nothing under `/var/projects/toy_physics`. The evidence is in `/tmp/polarization_review_r0/`:
+- `repo_lookups.txt`: the command and literal output for every repository claim below.
+- `degenerate_transverse_polarization.py` and its `.stdout`.
+- `stefan_boltzmann_mode_count.py` and its `.stdout`.
+
+## Findings
+
+**1. §4 E01 is marked "Reproduced" but leaves out a departure that its own source records. The survey's conflict rule is also stricter than the task's.**
+- **Survey.** The E01 row says: "two exactly transverse in-plane directions … not … a complete slab census. The h inclusion remains **OPEN**". Line 179 adds: "Apparent conflict requires an experimentally comparable model prediction."
+- **Sources** (lookups file):
+  - S10:249–251: "Maxwell has no counterpart to this surviving zero-frequency longitudinal direction. That is a characterised departure".
+  - S11:15–16: "Lifts S10's zero to a propagating longitudinal mode … closes the homogeneous three-finite-mode census".
+  - S11:173: "A second cone is only a departure if matter COUPLES to it".
+  - SUBSTRATE_REQUIREMENTS:135–136: "`D_brane = 3` went in and `D−1 = 2` came out … an assumption restated, ⛔ not a result."
+- **What is wrong.** With B_comp postulated, the homogeneous brane carries three propagating modes. The ledger calls the third one a departure from Maxwell, conditional on whether matter couples to it. The E01 row omits this, so a reader leaves thinking the model, like light, has exactly two. The task defined the class as "in apparent conflict, quoting both sides". The survey added a requirement for an experimentally comparable prediction, which the task did not ask for.
+- **Fix.** Split E01 into two rows:
+  - (a) The transverse pair: reproduced, conditional on D=3 as an input, isotropic inertia, the in-plane field content and μ≥0.
+  - (b) "No third radiating mode": apparent conflict, conditional on matter coupling (S11:161–163, 173), quoting both sides.
+  - At minimum, put these quotes in the E01 row and mark the status unclear.
+
+**2. E10/E11 and E13–E15 are held to a different standard than E01.**
+- **Survey.** E10 says "Homogeneous transverse degeneracy is present in the supplied S10 spectrum" and is classed testable. E13 says "No model prediction of a uniform cosmic rotation angle" and is classed not addressed.
+- **Sources:**
+  - S10:98, MAIN case: "positive `2 / 2`".
+  - S10:237: "The raw root formula is 0 and μ_R |k|² / ρ_br".
+  - Plan:1183: "the two polarisations are degenerate *by symmetry* in a homogeneous brane".
+- **Script.** `degenerate_transverse_polarization.py` builds the eigenproblem directly from S10's action.
+  - MAIN stdout: `residual w^2_(1) - w^2_(2) = 0`, `dphi = 0`, `Stokes residual out-in = [0, 0, 0, 0]`.
+  - The ANISO form control (S10's own) gives `residual w^2_(1) - w^2_(2) = 45*k**2*mu*(s - 1)/(49*rho*s)` and `Stokes residual out-in = [0, 0, -0.407159377378424, -0.514858388023709]`, so the check can fail.
+- **What is wrong.** The same spectrum that "reproduces" E01 gives zero birefringence and zero rotation at every frequency. That is the null E11 measures, and it gives β=0 for E13–E15.
+- **Fix.** Apply one standard:
+  - E11 → reproduced, conditional on the same scope as E01; anisotropic inertia would break it.
+  - E10 → reproduced only within S9's "continuum limit" (S9:349–350); otherwise testable.
+  - E13–E15 → testable, not "not addressed". The supplied action gives β=0, and O2:110–111 records that profiles "impose no … parity … absent couple/chiral content".
+  - E12 can stay as it is.
+
+**3. Missed: the plan's role for the brane's w-displacement.**
+- **Survey.** §3 line 115: "A w-directed normal displacement is an additional field to audit". E02 row: "S10 supplies a gapless transverse root … not yet a Proca/Coulomb-law observable."
+- **Sources:**
+  - Plan:453–455: "`±w` is the throat's normal/orientation direction, and the charge … is carried by the `h`-branon".
+  - Plan:460–461: "`h` remains the committed mediator for the conditional `1/R²` falloff".
+  - Plan Q1/Q2, 871–905: "the field identity `ξ_w = ℓh`", "`THROAT_H_SOURCE_1_OVER_R2`", "EARNED ***within Q1's postulated G0 closure***".
+- **What is wrong.** In the plan, the w-displacement is the electric/charge field. A Coulomb's-law test (E02) therefore bears on the static h falloff in Q2, not on S10's transverse root.
+- **Terminology hazard.** S10:870–871 quotes prior art calling "the `h`-branon … the brane's own transverse fluctuation". There, "transverse" means normal to the brane. A non-physicist will misread it as a third polarization of light.
+- **Fix.** Add these rows with plan-level status (Q1/Q2 have no v3 step records yet). Re-source E02 to Q2. Add a terminology note.
+
+**4. Missed: sources that tie gravitational bending and delay to polarization.**
+- **Sources.** `directives/S9b_SHARED_PHYSICS.md`, quoted at commit `ede8aa21` because the working copy is being edited:
+  - Lines 53–55: "one isotropic speed, the same for both polarizations … the supplied polarization identification is `c_γ,1(x) ≡ c_γ,2(x) ≡ c_γ(x)`".
+  - Lines 106–109: "Outside this step … polarization-dependent propagation".
+  - Line 119: subprincipal terms affecting "polarization transport" are not computed.
+- **What is wrong.** S9b is the step that computes bending and delay, and it has no step record yet (`ls steps | grep -ci s9b` → `0`). It takes polarization independence as an input. Rows E22–E24 cite only O2. When S9b closes, it cannot "reproduce" polarization-independent bending, and the survey should say so.
+- **Also missed.** S11c-d:58, marked "**CONDITIONAL**", reports "polarization-dependent first-order forcing". This is v3's only computed polarization-dependent quantity on a nonuniform profile.
+- **Fix.** Add both to §3 and cite S9b in E22–E24. The classification can stay testable.
+
+**5. A load-bearing experiment is missing: the thermal count of radiating modes.**
+- **Survey.** E01 says "Tomography assuming this space is not a model-independent census". E02 says the bound "does not measure the amplitude of every conceivable longitudinal material wave".
+- **What is wrong.** No entry tests for an extra mode that couples to matter in general. That is exactly S11's undelivered "observability or unobservability of the longitudinal branch".
+- **Evidence.** Planck's law counts one factor per polarization.
+  - Quinn & Martin (NPL 1985, Phil. Trans. A 316:85, DOI 10.1098/rsta.1985.0058) measured "σexp = 5.66967(76)·10⁻⁸ W m⁻² K⁻⁴", "δexp = 1.4·10⁻⁴". The publisher page returned 403, so I relied on the secondary source Gusev, arXiv:1612.03199, eq. 11–12, which I opened.
+  - Script stdout: two polarizations give `resid/u_exp = -0.926867`. A third matter-coupled mode at c gives `-3731.44`; at c_x/c=10, `-38.232`; at c_x/c=100, `-1.29992`.
+  - Cosmological counterpart: Planck 2018 (arXiv:1807.06209, abstract opened) gives "N_eff = 2.99 ± 0.17". How a brane mode would map onto N_eff depends on the model.
+- **Fix.** Add an entry classed testable. The coupling and c_L are open (S11:161–163), and B_comp is postulated.
+
+**6. Part 1 does not give the quantum reason light has two polarization states.**
+- **Survey,** line 48: "Photon 'spin 1' therefore does not mean three freely propagating vacuum polarization states."
+- **What is missing.** The reason is that the photon is massless. A massive spin-1 particle has three states, which is what E02/E03 bound. The classical side is also missing: in Maxwell's theory the longitudinal field is fixed by charge through Gauss's law and is not a mode. Without both points the user cannot see why S10:249–251 calls a retained zero-frequency longitudinal direction a departure.
+- **Fix.** Add two sentences, labelled quantum and classical.
+
+## Checked and found sound
+- **Part 2 values against primary abstracts I opened:**
+  - E02 μ² and q; E03 1.4e-49 to 3.4e-51 kg; E04 "about 120 determinations by two observers"; E06 m=100.
+  - E08 3.74e-31 and 11.5σ; E09 5.9e-9 and 2.3e-7.
+  - E10 z=2.739, >28%, ξ<1e-16; E11 2e-32; E12 0.10e-4 rad² and 0.033 deg²; E13 0.35±0.14° at 2.4σ.
+  - E14 0.30±0.11°, the mask trend, and significance withheld. The cited arXiv:2203.04830 is the Moriond proceedings, not the PRL; this changes no physics.
+  - E15 v2 dated 2026-04-14, 0.215±0.074°, 2.9σ; E18 the factor 7; E19 3.9±0.5e-12 and "instrumental artifacts".
+  - E20 16.43±5.26%; E21 v1 14±1% and 41±7%; E22 1.6e-27; E23 0.9998±0.0003; E28 4.9σ.
+  - E31 "unconfirmed prediction of QED", 46±4% and 65±8%.
+- **Unestablished signals are marked as such:** E13–E15, E19–E21 and E31.
+- **Part 3 quotations.** Every v3 `file:line` quotation I re-ran matches verbatim, with the stated status. This covers S9, S10, S11, S11b, the S11c closeout, R-S1-01 and R-S8-01 to R-S8-04, defect-register B2 and C10, O2:125–127, plan lines 413–416, 1174–1184 and 1198–1204, and LIGHT_LEAKAGE_SCOPING:36. I spot-checked the docs and v2 leads and found no problems.
+- **Part 1 otherwise correct:** Jones, Stokes and the Poincaré sphere; the handedness convention; OAM; Malus's law versus single-photon anticorrelation; entanglement and no-signalling.
+- **Totals and scope:** the classification totals sum to 31, and the survey proposes no mechanisms. The only scope issue is the conflict rule in Finding 1.

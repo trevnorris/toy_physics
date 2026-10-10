@@ -1,0 +1,258 @@
+LAUNCH_PROMPT.md:152:⛔ **Verify the DELIVERABLE, not the session** — `hook: Stop` + exit 0 fired on a run handed an **empty
+steps/S11c_PARTIAL_CLOSEOUT.md:31:**OPEN:** S11c-e owns the conversion observable and must recover d's weak limit in a future finite-contrast calculation. The plan's charge preamble asks whether linea
+DEFECT_REGISTER.md:667:**zero** times in `directives/S10_wl_directive.md` — ⛔ the scheme was **not** handed to either builder.
+steps/S11b_RUN_CHECKLIST.md:54:   rule 12) — which is independent of whether `.py` exists. SAFEGUARD: launch the WL Codex build handed ONLY
+_measurements/S11c_b_carrier_ablation_harness_adjudication_key.md:1:# S11c-b carrier ablation-harness — ORCHESTRATOR adjudication key (⛔ NOT handed to the blind builder)
+steps/S11_stray_longitudinal.md:307:is handed to **S11b** where it already belongs. ⛔ **The S11 engine round was NOT run** — it would buy
+V3_STEP_PLAN.md:1183:| 4 | **birefringence near a defect** — the two polarisations are degenerate *by symmetry* in a homogeneous brane; a defect splits them | a defect profile | as (1) |
+_measurements/S11c_c2_N6_ablation_harness_adjudication_key.md:1:# S11c-c2 N6 ablation-harness ADJUDICATION KEY — ⛔ ORCHESTRATOR-ONLY (never handed to the blind builder)
+steps/LIGHT_LEAKAGE_SCOPING.md:36:| 12 | Polarization coupling/birefringence — symmetry breaking splits/mixes transverse polarizations (K/SL). | **PRESENT ANALOG, named future item:** S22 conversion
+steps/LIGHT_LEAKAGE_SCOPING.md:87:| C. Scheibner et al., “Odd elasticity,” *Nature Physics* **16**, 475–480 (2020), DOI [10.1038/s41567-020-0795-y](https://doi.org/10.1038/s41567-020-0795-y), [p
+steps/LIGHT_LEAKAGE_SCOPING.md:110:| E1 / nonuniform, unique gradient-`e_W` leg included | Transverse → `θ,e_W,u_L` | Off-diagonal kernel; per-encounter probability/per-length loss **gap** (b:54–
+steps/LIGHT_LEAKAGE_SCOPING.md:136:Codes: **YF** measured fiber attenuation; **LP** laboratory photon lifetime; **BO** bench-top optics; **CT** cosmological transparency; **SE** stellar energy; **MD**
+steps/LIGHT_LEAKAGE_SCOPING.md:152:| PB | Berceau et al., [PRA 85, 013837, primary paper](https://arxiv.org/pdf/1109.4792): vacuum magnetic birefringence **`Δn≤5.0×10⁻²⁰ T⁻²` per `4 ms` ac
+steps/S11bB_interface_assembly.md:54:laboratory media (odd elasticity, odd viscosity, active and chiral fluids). ⛔ They are not unphysical.
+_measurements/S11c_b_carrier_ablation_harness_reauthor_review.md:5:expected bites, ⛔ NOT handed to the builder). Author: orchestrator. **Legs (G1 orchestrator-written → Codex +
+steps/O2_steady_brane_balance.md:111:isotropy, parity, stress symmetry, absent couple/chiral content, derivative cutoff or finite history
+_measurements/S11c_c2_N6_comparator_directive_review.md:8:## Handed inputs (all committed)
+_measurements/S11c_c2_N6_wl_directive_review_adjudication.md:18:| 1 | **Answer leakage** — `RESOLVED.md` handed as a physics authority (it states the computed residuals + verdict); inline leaks (`C_
+_measurements/S11c_c2_N6_wl_directive_review_adjudication.md:43:| R2-1 | **Fold-1 incomplete** — the two SymPy N6 **build directives** (reconcile, covariance) stayed builder-facing "winning authorit
+_measurements/S11c_c2_physics_review_adjudication.md:17:**Handed inputs:** the script; the physics authority `directives/S11c_c2_SHARED_PHYSICS.md`; the real imports
+_measurements/light_leakage/light_leakage_scoping_v0.md:22:| 12 | **Polarization coupling / birefringence** — anisotropy, asymmetry or stress splits/couples the two transverse polarizations; Keiser 
+_measurements/light_leakage/light_leakage_scoping_v0.md:55:| E. Molz and J. Beamish, “Leaky plate modes: Radiation into a solid medium,” *JASA* **99** (1996) 1894–1900, DOI [10.1121/1.415372](ht
+_measurements/s11c_b_adjudication_v2_directive_review_grok/REVIEW.md:144:**Why it changes the build:** Rule 5 — the builder must not be handed expected classifications. The ADMISSIBILITY THETA resid
+_measurements/light_leakage/light_leakage_scoping_v2.md:36:| 12 | Polarization coupling/birefringence — symmetry breaking splits/mixes transverse polarizations (K/SL). | **PRESENT ANALOG, named futu
+_measurements/light_leakage/light_leakage_scoping_v2.md:87:| C. Scheibner et al., “Odd elasticity,” *Nature Physics* **16**, 475–480 (2020), DOI [10.1038/s41567-020-0795-y](https://doi.org/10.10
+_measurements/light_leakage/light_leakage_scoping_v2.md:110:| E1 / nonuniform, unique gradient-`e_W` leg included | Transverse → `θ,e_W,u_L` | Off-diagonal kernel; per-encounter probability/per-len
+_measurements/light_leakage/light_leakage_scoping_v2.md:136:Codes: **YF** measured fiber attenuation; **LP** laboratory photon lifetime; **BO** bench-top optics; **CT** cosmological transparency; **SE
+_measurements/light_leakage/light_leakage_scoping_v2.md:152:| PB | Berceau et al., [PRA 85, 013837, primary paper](https://arxiv.org/pdf/1109.4792): vacuum magnetic birefringence **`Δn≤5.0×10⁻²
+_measurements/S11c_c2_N6_output_contract_rereview.md:15:- Identical rendered prompt: `_legs/S11c_c2_N6_output_contract_rereview_prompt.md`; PRE→POST diff handed to
+_measurements/S11c_c2_N6_output_contract_rereview.md:76:agent + Grok), identical prompt `_legs/S11c_c2_N6_fold_round2_rereview_prompt.md`, fold diff handed to both
+_measurements/light_leakage/light_leakage_scoping_v3.md:36:| 12 | Polarization coupling/birefringence — symmetry breaking splits/mixes transverse polarizations (K/SL). | **PRESENT ANALOG, named futu
+_measurements/light_leakage/light_leakage_scoping_v3.md:87:| C. Scheibner et al., “Odd elasticity,” *Nature Physics* **16**, 475–480 (2020), DOI [10.1038/s41567-020-0795-y](https://doi.org/10.10
+_measurements/light_leakage/light_leakage_scoping_v3.md:110:| E1 / nonuniform, unique gradient-`e_W` leg included | Transverse → `θ,e_W,u_L` | Off-diagonal kernel; per-encounter probability/per-len
+_measurements/light_leakage/light_leakage_scoping_v3.md:136:Codes: **YF** measured fiber attenuation; **LP** laboratory photon lifetime; **BO** bench-top optics; **CT** cosmological transparency; **SE
+_measurements/light_leakage/light_leakage_scoping_v3.md:152:| PB | Berceau et al., [PRA 85, 013837, primary paper](https://arxiv.org/pdf/1109.4792): vacuum magnetic birefringence **`Δn≤5.0×10⁻²
+directives/S10_paper_card_decision_review_prompt.md:7:It is orchestrator-written. It will be handed to a builder that rebuilds a LaTeX paper card. **No builder
+directives/S10_paper_card_decision_review_prompt.md:25:The question is **whether this decision list, handed to a competent builder, produces a card that says what
+directives/S11bA_py_directive.md:37:they share, and it exists because on an earlier step the two engines were handed *different task lists*,
+directives/S11c_c1_wl_build_directive.md:290:   handed only the specs, ⛔ never the SymPy engine/export):** (a) structurally scan the finished `.wl` — it
+directives/S10_record_fix_round2_review_prompt.md:19:This list is the fix round. It will be handed to a builder. ⭐ **It is checked zero times while everything
+directives/S11_export_chain_decisions_v2.md:306:**absence**, by bounding what the builder is handed, ⛔ never by a sentence forbidding it.
+_measurements/light_leakage/scoping_review_claude.md:21:  - astrophysical or cosmic birefringence limits for polarization coupling
+_measurements/light_leakage/scoping_review_claude.md:75:- **Row 12 maps the wrong record.** d:58's "polarization-dependent first-order forcing" is polarization-dependent conversion, not coupling betwe
+_measurements/light_leakage/scoping_review_claude.md:116:- **Molz–Beamish link:** It points to a ResearchGate page for "Electrorheological Properties of Chiral Smectic-C Liquid Crystals…", a diffe
+directives/S11bA_SHARED_PHYSICS.md:4:they share, and it exists because on an earlier step the two engines were handed *different task lists*,
+directives/S11_C17_C18_round4_directive.md:83:receiver handed the raw counterpart point does not recognise the symbols, and every witness would come back
+directives/O2_SHARED_PHYSICS.md:45:of §§3.2–3.3: no isotropy, parity, stress symmetry, absence of couple, chiral or rotational-reference
+directives/O2_SHARED_PHYSICS.md:352:| Spherically symmetric profiles: scalar profiles general functions of `r`, radial `V` (§1; v9's live radial profiles, v9:43, 53–54, 85–86, 91, 113–114, 144)
+directives/S10_record_fix_round1_decisions.md:46:| b | **The status of the `ω² = 0` root** — determine whether the degree of freedom is removed or retained, what is removed instead, and how the pe
+directives/S11c_c2_N6_wl_build_directive.md:41:handed to the build.** They were written for the SymPy build and STATE COMPUTED RESULTS (residual values, affected-case
+directives/S11c_c2_N6_wl_build_directive.md:43:**absence**, ⛔ not a prohibition on a handed file). Their engine-neutral construction physics is already folded into the
+directives/S11c_c2_N6_wl_build_directive.md:406:   not transcribe — that bound comes from the builder being handed only the specs, ⛔ never the SymPy N6 engine/`.out`):
+directives/S11_sympy_export_decisions_review_prompt.md:8:⚠⚠ **This is the list a builder will be handed, and it is the one artifact in this pipeline checked once
+directives/S11b_unified_decisions.md:133:⭐ **In scope here** (uniform background; these are B5's, and S11 handed them to "the S11b interface and full-slab spectrum", `steps/S11_stray_longitudinal.md
+directives/_measurements/S11c_b_89b_wl_operator_spec_confirm.md:4:numbers). For the orchestrator + directive-drafting + review record only — ⛔ NOT handed to the builder.
+directives/_measurements/S11b_comparator_build_directive.md:2:# (This twin is the orchestrator's record; it is NOT handed to the builder, which stays blind.)
+directives/S10_step_record_decision_review_prompt.md:12:This list will be handed to a builder who rewrites
+_measurements/light_leakage/light_leakage_scoping_v1.md:32:| 12 | Polarization coupling/birefringence — symmetry breaking splits/mixes transverse polarizations (K/SL). | **PRESENT ANALOG, named futu
+_measurements/light_leakage/light_leakage_scoping_v1.md:95:| E1 / nonuniform, unique gradient-`e_W` leg included | Transverse → `θ,e_W,u_L` | Off-diagonal kernel; per-encounter probability/per-leng
+_measurements/light_leakage/light_leakage_scoping_v1.md:119:Codes: **YF** measured fiber attenuation; **LP** laboratory photon lifetime; **BO** bench-top optics; **CT** cosmological transparency; **SE
+_measurements/light_leakage/light_leakage_scoping_v1.md:135:| PB | Berceau et al., [PRA 85, 013837, primary paper](https://arxiv.org/pdf/1109.4792): vacuum magnetic birefringence **`Δn≤5.0×10⁻²
+directives/_legs/S11c_c2_N6_rereview_agent_report.md:122:(b) Genuinely NON-KNIFE. The case edit only changes the argument list handed to the unchanged `buildCase`, so
+directives/_legs/S11b_wl_engine_review_prompt.md:20:## What you are handed
+directives/_legs/S11b_wl_engine_review_prompt.md:26:- ⛔ You are **NOT** handed, and must **NOT** seek out, the sibling SymPy engine
+directives/_legs/S11c_b_py_constraint_fold_build_review.md:30:## What you are handed
+directives/_legs/S11c_c1_comparator_review_prompt.md:20:## What you are handed (read these; ⛔ do NOT read the build directive — an artifact can satisfy its directive and still be wrong)
+directives/_legs/S11c_b_wl_admissibility_repair_review_prompt.md:18:You are deliberately not handed the sibling (SymPy) engine's emitted values for the two contested objects,
+directives/S10_record_fix_round1_review_prompt.md:19:This list is the fix round. It will be handed to a builder. ⭐ **It is checked zero times while everything
+directives/_legs/S11c_c2_N6_output_contract_rereview_prompt.md:29:## What you are handed
+directives/_legs/S11c_b_carrier_reauthor_review_prompt_round2.md:4:write and run small check scripts under `/tmp`. ⛔ Do not modify the working tree. ⛔ You are not handed the other
+_measurements/S11c_c2_N6_ablation_harness_directive_review.md:61:Committed as the reviewed baseline; astra builds the four harnesses against it (handed the directive alone).
+directives/S11c_d_SCATTERING_FORM_AMENDMENT.md:768:bulk completion is handed off at the named S11c-e boundary, pending an actual
+directives/_legs/S11c_a_step_record_review_prompt.md:35:⚠ You are deliberately NOT handed the comparator build directive or the orchestrator's working notes: a record
+directives/_legs/S11c_b_carrier_reauthor_review_prompt_round3.md:4:write/run small check scripts under `/tmp`. ⛔ Do not modify the working tree. ⛔ You are not handed the other leg's
+directives/_legs/S11b_sympy_x1_repair_review_prompt.md:6:This is an ORCHESTRATOR-WRITTEN repair directive. It will be handed to a builder (Codex) to repair the SymPy
+directives/_legs/S11b_sympy_x1_repair_review_prompt.md:58:## What you are handed
+directives/_legs/S11_census_instr_repair_review_prompt.md:49:## What you are handed
+directives/_legs/S11c_c2_N6_reconcile_disposition_review_prompt.md:51:## What you are handed (read these as your source of truth, BEFORE forming a verdict on the artifact)
+directives/_legs/S11b_sympy_fix_round2_directive_review_prompt.md:18:## What you are handed (verify against these, ⛔ do not take the directive on faith)
+directives/_legs/S11c_c2_spec_review_v2_prompt.md:21:## What you are handed (read the SOURCES OF TRUTH first, form your own view, THEN read v2)
+directives/_measurements/S11c_b_multigrade_instrument_directive_review.md:8:**Ground truth handed:** the layer `scripts/S11c_b_adjudicated_comparison.py`, comparator
+directives/_legs/S11b_card_repoint_directive_review_prompt.md:6:This is an ORCHESTRATOR-WRITTEN directive that will be handed to Codex to re-point the ledger card
+directives/_legs/S11b_card_repoint_directive_review_prompt.md:43:## What you are handed
+directives/_legs/S11b_sympy_engine_round2_script_review_prompt.md:46:## What you are handed
+_measurements/S11c_c2_wolfram_compact_prep_verify_codex.md:221:    71	- ⛔ **The 2 decision legs REJECTED v1 for a rule-17 FREEZE** — I handed §1c:143's `(uniform linearisation)` as the constraint
+_measurements/S11c_c2_wolfram_compact_prep_verify_codex.md:257:    17	**Handed inputs:** the script; the physics authority `directives/S11c_c2_SHARED_PHYSICS.md`; the real imports
+_measurements/S11c_c2_wolfram_compact_prep_verify_codex.md:2386:    56	author(s); handed-input manifest; the identical rendered review prompt; two separately-attributed reports
+_measurements/S11c_c2_wolfram_compact_prep_verify_codex.md:2491:   161	handed — ⛔ never by a sentence forbidding a read. A do-not-read list is a denylist, and a denylist means the
+directives/_legs/S11c_c2_export_repair_rereview_prompt.md:17:## What you are handed (read any; nothing you may use is withheld)
+directives/_legs/S11c_c1_record_corrections_review_prompt.md:57:## What you are handed (read these SOURCES first, form your own view, THEN read the corrected records)
+directives/_legs/S11_repair3_directive_review_prompt.md:38:## What you are handed
+directives/_legs/S11b_sympy_fix_round1_directive_review_prompt.md:13:## What you are handed (verify against these, do not take the directive on faith)
+_measurements/light_leakage/scoping_review_r1_claude.md:55:  - B:53–55 names prior art for E4's non-reciprocal driven coupling: "odd elasticity, odd viscosity, active and chiral fluids".
+directives/_legs/S11c_c2_N6_build_directive_review_prompt_r2.md:19:   (routing), §5d (density), §6 (dimensions/multigrade). ⛔ You are NOT handed, and there is NOT, any expected value
+directives/S10_paper_card_unresolved.md:11:4. **Allowing compressibility lifts the longitudinal zero.**  The record says curl-only removes the longitudinal restoring stiffness and that the zero direct
+directives/W0_decision_list_round2.md:57:### ⛔ E3 · "The required cardinality is one" is an expected value handed to the builder
+directives/W0_decision_list_round2.md:129:  than the deliverable. ⚠ An earlier decision list handed to you contained a false measurement and you
+directives/S11_py_decisions_v2_review_prompt.md:7:It is **orchestrator-written**. It is the list a builder will be handed to rewrite
+directives/_legs/S11c_a_sympy_engine_review_prompt.md:27:## What you are handed
+directives/_legs/S11c_a_sympy_engine_review_prompt.md:37:- ⛔ You are **not** handed the build directive or any orchestrator commentary. The spec is the authority;
+directives/_measurements/S11c_b_89b_wl_operator_decision_review.md:3:⚠ ANSWER-BEARING context (mechanism). For the orchestrator + directive record only — ⛔ NOT handed to the
+directives/S11_naming_and_chain_plan.md:32:| `Q2_MATRIX` in `S10_py_directive.md` / `S10_wl_directive.md` | ⛔ **0** and **0** — handed to neither builder |
+directives/_legs/S11_census_instr_brief_review_prompt.md:37:## What you are handed
+directives/_legs/S11c_c1_record_corrections_review_r2_prompt.md:34:## What you are handed (read SOURCES first, form your own view, THEN read the corrected records)
+_scratch/skills_directive.md:36:- **verify the DELIVERABLE, not the session** — a run handed an empty prompt has exited 0 with a Stop
+directives/_measurements/S11c_c1_wl_build_directive.md:63:   construction-time blindness comes from the builder being handed only the specs (⛔ the "denylist" reframing was
+directives/_legs/S11_wl_fix1_script_review_prompt.md:21:## What you are handed
+directives/_legs/S11c_b_p2a_decision_review.md:16:## Context you are handed (read the CODE, cite file:line)
+steps/_measurements/O2_record_measurements.md:903:45: of §§3.2–3.3: no isotropy, parity, stress symmetry, absence of couple, chiral or rotational-reference
+steps/_measurements/O2_record_measurements.md:1210:352: | Spherically symmetric profiles: scalar profiles general functions of `r`, radial `V` (§1; v9's live radial profiles, v9:43, 53–54, 85–86,
+directives/S11b_wl_directive.md:41:were handed *different task lists*, leaving the one surprising result with no second engine.
+directives/S11c_c2_N6_sympy_build_directive.md:20:⛔ **You are BUILDING the object §5c NAMES. You are NOT handed, and must NOT invent, any expected value for any
+directives/_legs/S11c_c2_N6_comparator_review_prompt.md:16:## What you are handed
+directives/S10_harness_repair_partB_directive.md:143:   loudly**; and a `vector`-declared payload handed a matrix must error.
+directives/_legs/S11c_b_multigrade_instrument_directive_review.md:21:## What you are handed (read these; derive your own view before judging the directive)
+directives/S11c_b_wl_admissibility_repair_directive.md:27:derivation yields. A repair that iterates toward a value it was handed is the failure this method exists to
+directives/S11c_b_wl_admissibility_repair_directive.md:28:prevent — so no such value is handed to you.
+directives/_legs/S11c_b_spec_round2_review.md:16:## What the build legs found (the failure the round-2 text must prevent) — you are handed these
+directives/_legs/S11b_card_review_prompt.md:43:## What you are handed
+directives/_legs/S11b_card_review_prompt.md:47:⚠ You are NOT handed the re-point directive: a card can satisfy its directive and still misrepresent the step
+directives/S10_spec_rewrite_directive.md:57:correctly said a BUILDER must not be handed this choice.** ⭐ **Write them; ⛔ do not re-open them.**
+directives/_legs/S11c_c2_N6_reconcile_build_review_prompt.md:11:remainder) is the orchestrator's adjudication AFTER your review. ⛔ You are NOT handed, and there is NOT, any expected
+directives/_legs/S11b_build_directives_review_prompt.md:24:## What you are handed (read the SOURCES OF TRUTH first, then the two directives)
+directives/S11_chain_and_py_round_review_prompt.md:8:   will be handed to rewrite `scripts/S11_stray_longitudinal_sympy_audit.py`.
+directives/_legs/S11c_b_wl_build_review.md:11:## What you are handed
+directives/_legs/S11c_b_wl_build_review.md:16:- ⛔ You are NOT handed the sibling SymPy engine's output, and must not seek it — the cross-engine check is a
+_measurements/light_leakage/light_leakage_scoping_v4.md:36:| 12 | Polarization coupling/birefringence — symmetry breaking splits/mixes transverse polarizations (K/SL). | **PRESENT ANALOG, named futu
+_measurements/light_leakage/light_leakage_scoping_v4.md:87:| C. Scheibner et al., “Odd elasticity,” *Nature Physics* **16**, 475–480 (2020), DOI [10.1038/s41567-020-0795-y](https://doi.org/10.10
+_measurements/light_leakage/light_leakage_scoping_v4.md:110:| E1 / nonuniform, unique gradient-`e_W` leg included | Transverse → `θ,e_W,u_L` | Off-diagonal kernel; per-encounter probability/per-len
+_measurements/light_leakage/light_leakage_scoping_v4.md:136:Codes: **YF** measured fiber attenuation; **LP** laboratory photon lifetime; **BO** bench-top optics; **CT** cosmological transparency; **SE
+_measurements/light_leakage/light_leakage_scoping_v4.md:152:| PB | Berceau et al., [PRA 85, 013837, primary paper](https://arxiv.org/pdf/1109.4792): vacuum magnetic birefringence **`Δn≤5.0×10⁻²
+directives/_legs/S11c_b_wl_repair_review.md:10:## What you are handed
+directives/S10_export_chain_fix_round3_directive.md:44:handed to the ledger to an immutable matrix. Then inspect the entire stored tree, including every argument
+directives/S11b_py_directive.md:65:were handed *different task lists*, leaving the one surprising result with no second engine.
+directives/_legs/S11c_b_89b_wl_operator_decision_review.md:24:## What you are handed (read all of it; a directive review checks the directive against its sources)
+directives/S10_contract_DEFERRED_findings.md:43:residual becomes a **guaranteed pass**, and it is guaranteed by a number we handed over.
+directives/_measurements/S11c_c_spec_orientation.md:11:## The seam — where S11c-a and S11c-b explicitly stopped and handed to S11c-c
+directives/S10_record_fix_round3_review_prompt.md:19:This list is the fix round. It will be handed to a builder. ⭐ **It is checked zero times while everything
+directives/S11c_d_clean_condition.md:11:condition does it provably not leak?"* There is one candidate: **in an achiral medium, light whose motion is a
+directives/S11c_d_clean_condition.md:73:about a point (`O(3)`), *if* such a throat background exists. That means an achiral medium, a round throat, a parity-even
+directives/S11c_d_clean_condition.md:100:| P1 | The medium is achiral: the constitutive law has no parity-odd term. | **Supplied, not testable by Part 1.** The accepted basis is constructed with "in-p
+directives/S11c_d_clean_condition.md:109:| light trapped at a throat (particle stability) | **linear order only, conditionally** — in an achiral medium, on an `O(3)`-symmetric, swirl-free throat bac
+directives/S11c_d_clean_condition.md:124:H supplies its adopted **linear** clean condition: the medium is achiral and the mode is pure twist-type about a
+directives/S11c_d_clean_condition.md:133:- **F2.** The model's spin carrier violates the adopted achiral/`O(3)` condition at linear order. Possibilities
+directives/S11c_d_clean_condition.md:134:  include a swirl, a chiral constitutive term, a non-round throat, or a net mixed `a`–`w` circulation: the last is
+directives/S11c_d_clean_condition.md:143:- **F2c.** The required trapped mode is not pure twist-type. In particular, a trapped chiral-shear realization
+directives/S11c_d_clean_condition.md:145:  zero-helicity pure-twist representative and the nonzero-helicity mixed representative are computed in
+directives/_legs/S11_census_instr_repair3_review_prompt.md:52:## What you are handed
+directives/_legs/S11c_c2_N6_route2_spec_review_prompt.md:13:the code below, then quote both sides for every finding. ⛔ You are NOT handed, and there is NOT, any expected value
+directives/_measurements/S11b_unified_decisions.md:203:is handed to **S11b** where it already belongs. ⛔ **The S11 engine round was NOT run** — it would buy
+directives/_measurements/S11b_unified_decisions.md:335:## G14/fold — S11 handed the bound/resonance classification to the S11b interface + full-slab spectrum
+directives/_legs/S11b_step_record_review_prompt.md:46:## What you are handed
+directives/_legs/S11b_step_record_review_prompt.md:54:⚠ You are deliberately NOT handed the build directives: a record can satisfy a directive and still
+directives/S11bA_wl_directive.md:32:they share, and it exists because on an earlier step the two engines were handed *different task lists*,
+directives/_legs/S11c_c1_spec_retro_review_prompt.md:20:## What you are handed (derive the physics YOURSELF first, then read the spec, then cross-check the outcome)
+directives/_legs/S11b_comparator_fix_review_prompt2.md:14:## What you are handed
+directives/S10_paper_card_fix_round1_review_prompt.md:7:Orchestrator-written. It will be handed to a builder that repairs a LaTeX paper card. **No builder has
+directives/_legs/S11c_b_sympy_build_review.md:11:## What you are handed
+directives/_legs/S11c_b_sympy_build_review.md:16:- ⛔ You are NOT handed the sibling Wolfram engine's output, and must not seek it — the cross-engine check is
+directives/_legs/CLAUDE_md_cas_authorship_review_prompt.md:27:## What you are handed (read any; nothing you may use is withheld)
+directives/_legs/S11c_b_spec_round3_review.md:18:## The findings the rewrite had to fix (ground truth — you are handed these)
+directives/_legs/S11_repair4_directive_review_prompt.md:38:## What you are handed
+directives/_legs/S11c_b_88_blast_radius_build_review.md:23:## What you are handed
+directives/_measurements/S11c_b_89_wl_decision_review.md:4:handed to the WL builder. The build directive `S11c_b_89_wl_3a_repair_directive.md` stays leak-clean.
+directives/_legs/F9_round2_review_prompt.md:61:   expected, or was measured. Round 1 failed this — its measured-state table handed the builder ledger
+directives/_legs/S11c_a_wl_repair2_engine_review_prompt.md:34:## What you are handed
+directives/_legs/S11c_a_wl_repair2_engine_review_prompt.md:46:- ⛔ You are **not** handed any build directive, the repair directive, the sibling SymPy engine, or
+directives/_legs/S11c_c2_N6_fold_round2_grok_report.md:1:I'll review the folded S11c-c2 N6 ablation-harness directive against the engines and the round-2 diff, starting with the review-leg method and 
+directives/_legs/S11c_b_py_constraint_fold_decision_review.md:21:## What you are handed (read the sources and form your own view of the code + spec)
+directives/_measurements/S11b_SHARED_PHYSICS.md:232:is handed to **S11b** where it already belongs. ⛔ **The S11 engine round was NOT run** — it would buy
+directives/_measurements/S11c_a_wl_engine_repair2_directive.md:22:- B (rule-5 leak I'd left in a verbatim quote): grade numerics {0,1,0}/{0,0,1}/{0,0,0} handed the builder the target ⇒ iterate-to-gr
+directives/_legs/S11c_c1_build_review.md:14:## What you are handed (read these; ⛔ you are NOT given the build directive — derive from the spec)
+directives/_legs/S11c_b_90_coupling_decision_review.md:17:## What you are handed (read the sources, form your own view)
+directives/_legs/S11c_b_carrier_reauthor_review_prompt.md:4:you may write and run small check scripts under `/tmp`. ⛔ Do not modify the working tree. ⛔ You are not handed
+directives/_measurements/S11c_b_89_sympy_perf_directive.md:83:saved partial (basis unchanged) — that anchor is not handed to the builder.
+directives/_legs/S11c_b_comparator_build_review.md:61:## What you are handed
+directives/_legs/S11c_b_comparator_build_review.md:70:- ⛔ You are NOT handed a "correct" comparison result. There is none. Do not invent an expected residual for
+directives/_measurements/S11c_d_clean_condition_review_disposition.md:407:  mixed \(a\)-\(w\) circulation, trapped chiral shear, and an independent
+directives/_measurements/S11c_d_clean_condition_review_disposition.md:409:$ grep -n -i -E 'chiral shear|a.w circulation|helic|mean flow' research/pde_ledger_v3/directives/S11c_d_clean_condition.md
+directives/_measurements/S11c_d_clean_condition_review_disposition.md:425:  - `HELICITY_PURE_TOROIDAL 0`
+directives/_measurements/S11c_d_clean_condition_review_disposition.md:426:  - `HELICITY_TOROIDAL_PLUS_c_POLOIDAL 5*sqrt(2)*pi**(3/2)*c/4`
+directives/_measurements/S11c_d_clean_condition_review_disposition.md:445:| R4-8 | P1 (no parity-odd constitutive term) is a **supplied input** of the basis ("in-plane `O(3)` isotropy and parity", spe
+directives/_measurements/S11c_d_clean_condition_review_disposition.md:446:| R4-9 | Two of the cited spin-carrier candidates are unclassified: **trapped chiral shear** (toroidal + poloidal mix has heli
+directives/_legs/S11c_a_faceshift_density_adjudication.md:49:## What you are handed
+directives/_legs/S11c_b_p2_comparator_decision_review.md:19:## Context you are handed (read the CODE, cite file:line)
+directives/_legs/F9_round3_review_prompt.md:62:   expected, or was measured. Round 1 failed this — its measured-state table handed the builder ledger
+directives/_legs/S11c_c2_physics_review_prompt.md:21:## What you are handed (read any of these; nothing is withheld that you may use)
+directives/_legs/S11_census_instr_repair4_review_prompt.md:93:## What you are handed
+directives/_legs/S11c_b_wl_admissibility_repair_review_prompt_v2.md:19:You are NOT handed the sibling (SymPy) engine's values. Derive from the shared physics; do not lift an answer
+directives/_legs/S11c_a_comparator_build_review.md:28:## What you are handed
+directives/_legs/F9_review_prompt.md:10:This is an **orchestrator-written decision list**. It is not a build directive. It will be handed to a
+directives/_legs/S11b_wl_repair_review_prompt.md:15:## What you are handed
+directives/_legs/S11b_wl_repair_review_prompt.md:19:- ⛔ You are NOT handed the sibling SymPy engine or its output; derive independently where needed.
+directives/_legs/S11c_c2_N6_wl_directive_review_prompt.md:67:## What you are handed
+directives/_legs/S11c_c2_N6_wl_directive_review_prompt.md:68:The directive, the source-of-truth files above, and read access to the repo. You are NOT handed an expected answer —
+directives/_legs/S11b_comparator_review_prompt.md:15:## What you are handed
+directives/_legs/S11c_c2_N6_comparator_directive_review_grok.md:19:**Why wrong.** A builder handed only this join never measures whether the two engines agree on the control-delta of the commuting squ
+directives/_legs/S11b_sympy_x1_build_review_prompt.md:23:## What you are handed
+directives/_legs/S11c_c2_step_record_review_prompt.md:41:## What you are handed (read these as your source of truth, BEFORE forming a verdict)
+directives/_legs/S11c_c2_step_record_review_prompt.md:53:- ⛔ You are NOT handed the build directives (a record can satisfy a directive and still misrepresent its source);
+directives/_legs/S11c_c2_N6_build_directive_review_prompt.md:32:every finding. ⛔ You are NOT handed, and there is NOT, any expected value for the residual — §5c fixes no target.
+directives/_legs/S11c_b_p2b_decision_review.md:16:## Context you are handed (read the CODE, cite file:line)
+directives/_legs/S11c_a_wl_patch_review_prompt.md:8:## What you are handed
+directives/_legs/S11c_c1_repair_review.md:17:## What you are handed
+directives/_legs/S11c_a_comparator_directive_review_prompt.md:11:whether it can be handed to a builder without any bridge silently masking a real cross-engine disagreement.
+directives/_legs/S11c_a_comparator_directive_review_prompt.md:13:## What you are handed
+directives/_legs/S11c_b_carrier_reauthor_review_prompt_round4.md:4:write/run small check scripts under `/tmp`. ⛔ Do not modify the working tree. ⛔ You are not handed the other leg's
+directives/_legs/S11c_b_89_sympy_perf_directive_review.md:13:## What you are handed (all readable — you are a reviewer)
+directives/_legs/S11c_b_89_sympy_perf_directive_review.md:49:   corrected value) are NOT handed to the builder as an acceptance anchor.
+directives/_legs/S11c_b_89_sympy_3a_repair_directive_review.md:4:handed to a builder. Your job is to find defects in the DIRECTIVE — ambiguities, wrong premises, missed
+directives/_legs/S11c_b_89_sympy_3a_repair_directive_review.md:14:## What you are handed (all readable — you are a reviewer, not the blind builder)
+directives/_legs/S11_wl_fix1_review_prompt.md:18:## What you are handed
+directives/_legs/S11c_b_reconcile_build_review.md:38:## What you are handed
+directives/_legs/S11c_b_reconcile_build_review.md:44:- ⛔ You are NOT handed a "correct" set of MATCH/FLAG verdicts. A genuine FLAG is expected and is not a bug.
+directives/_legs/S11c_a_wl_bgcurrent_fix_directive_review.md:7:This directive will be handed to a builder (Codex) to modify the Wolfram engine. You are reviewing the
+directives/_legs/S11c_c1_wl_repair_review.md:10:## What you are handed
+directives/_legs/S11c_a_py_patch_review_prompt.md:8:## What you are handed
+directives/_legs/S11c_a_reemit_plan_review_prompt.md:12:## What you are handed
+directives/_legs/S11c_b_89_wl_3a_repair_decision_review.md:19:## What you are handed (read all of it; a directive review checks the directive against its sources)
+directives/_legs/S11c_decisions_review_prompt.md:33:## What you are handed (read the sources FIRST, then the artifact)
+directives/_legs/S11b_sympy_engine_script_review_prompt.md:34:## What you are handed
+directives/_legs/S11c_b_spec_review.md:19:## What you are handed (read these; nothing else is withheld — there is no "expected answer," this is a spec)
+directives/_legs/S11c_c2_N6_wl_directive_review_prompt_r2.md:14:1. **Answer leakage removed** — `RESOLVED.md` is no longer a handed authority (now named only as "absent from the
+directives/_legs/S11c_c2_N6_comparator_directive_review_prompt.md:8:complete, and value-free, so that a builder handed ONLY this directive produces a correct comparator. Substantiate
+directives/_legs/S11c_b_p1_wl_decision_review.md:16:## Context you are handed (read the CODE, cite file:line)
+directives/_legs/S11_census_instr_script_review_prompt.md:62:## What you are handed
+directives/_legs/S11c_c2_N6_ablation_harness_directive_review_r2.md:12:## What you are handed
+directives/_legs/S11c_c2_N6_ablation_harness_directive_review_r2.md:21:- ⛔ You are NOT handed an expected-cone/answer key. Confirm each knife hits the right object by READING the engine.
+directives/_legs/S11c_b_row_residual_directive_review.md:15:## What you are handed (read the sources of truth FIRST, form your own view, THEN read the directive)
+directives/_legs/S11c_b_90_coupling_build_review.md:27:## What you are handed
+directives/_legs/c1_migration_review.md:22:## What you are handed (read all)
+directives/_legs/S11c_c2_N6_wl_build_review_prompt.md:32:## What you are handed
+directives/_legs/S11_wl_fix2_review_prompt.md:37:## What you are handed
+directives/_legs/S11c_a_py_projection_current_build_review.md:19:## What you are handed
+directives/_legs/S11c_a_sympy_engine_rereview_prompt.md:26:## What you are handed
+directives/_legs/S11c_a_sympy_engine_rereview_prompt.md:38:- ⛔ You are **not** handed any build directive or orchestrator commentary. The spec is the authority;
+directives/_legs/S11c_b_adjudication_directive_review.md:11:## Context you are handed (read all of it)
+directives/_legs/S11c_c2_N6_build_review_prompt.md:11:`/var/projects/toy_physics`. This is a **SCRIPT review** — derive independently, then ABLATE. ⛔ You are NOT handed,
+directives/_legs/S11c_c2_N6_fold_round2_rereview_prompt.md:27:## What you are handed
+directives/_legs/S11c_c1_wl_build_review.md:13:## What you are handed
+directives/_legs/S11c_c1_wl_build_review.md:19:- ⛔ You are NOT handed the SymPy engine or its export, and you must not seek them: this leg checks the WL engine's
+directives/_legs/S11_wl_fix2_script_review_prompt.md:55:## What you are handed
+directives/_legs/S11c_c2_spec_review_prompt.md:20:## What you are handed (read the SOURCES OF TRUTH first, form your own view, THEN read the spec)
+_scratch/S11_wl_repair_directive.md:45:⚠ Be precise about what the calculation was handed. State any physical ingredient that would be required
+directives/_legs/S11c_c2_export_repair_decision_prompt.md:14:## What you are handed (read any)
+directives/_legs/S11c_b_multigrade_instrument_build_review.md:28:## What you are handed
+directives/_legs/S11c_b_sympy_repair_review.md:19:## What you are handed
+directives/_legs/S11c_c2_N6_ablation_harness_directive_review.md:15:## What you are handed
+directives/_legs/S11c_c2_N6_ablation_harness_directive_review.md:26:- ⛔ You are NOT handed an expected-cone/adjudication key — you must confirm each knife hits the right object by
+directives/_legs/S11c_a_py_fix_review_leg.md:15:## What you are handed
+directives/_legs/S11c_a_wl_engine_review_prompt.md:27:## What you are handed
+directives/_legs/S11c_a_wl_engine_review_prompt.md:38:- ⛔ You are **not** handed any build directive, the sibling SymPy engine, or orchestrator commentary. Derive
+_scratch/S11_lean_d3/review_packet_v1/steps/S11_stray_longitudinal.md:307:is handed to **S11b** where it already belongs. ⛔ **The S11 engine round was NOT run** — it would buy
+_scratch/S11_lean_homogeneous/review_packet_v1/steps/S11_stray_longitudinal.md:307:is handed to **S11b** where it already belongs. ⛔ **The S11 engine round was NOT run** — it would buy
+_scratch/S11_lean_d4/review_packet_v1/steps/S11_stray_longitudinal.md:307:is handed to **S11b** where it already belongs. ⛔ **The S11 engine round was NOT run** — it would buy
+_scratch/S11_lean_sensitivity/review_packet_v1/directives/S11c_d_SCATTERING_FORM_AMENDMENT.md:768:bulk completion is handed off at the named S11c-e boundary, pending an actual
+cleanup_2026_10/phase2b_review_prompt.md:25:## What you are handed
+cleanup_2026_10/phase2_review_prompt.md:40:## What you are handed

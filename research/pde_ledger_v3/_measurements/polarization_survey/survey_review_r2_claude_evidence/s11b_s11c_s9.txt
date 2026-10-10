@@ -1,0 +1,97 @@
+$ nl -ba S11b_interface_coupling_law.md | sed -n 12,17p;72,88p
+    12	## What the step computes
+    13	
+    14	The linear response of the brane–bulk interface: given a slab of finite thickness `W` in the `w` direction
+    15	with two faces meeting the bulk, derive how a normal face motion couples to the bulk, what drives material
+    16	across the interface, and the closed spectrum of the assembled system on a **uniform** background.
+    17	
+    72	refuses an unphysical process on its own terms. Outside the region it survives only against a named reservoir.
+    73	
+    74	**Transverse mode — decoupled on a uniform background.** The transverse-to-thickness coupling
+    75	`∂²U/∂u_T ∂e_W` is **identically zero** and the transverse mode is **non-dissipative** (`TRANSVERSE_DISSIPATION`
+    76	≡ 0, unconditionally) — a decoupled oscillator `ρ_br⁰ ω² = μ_⊥ k²` (`S11B_TRANSVERSE_DISPERSION`,
+    77	`S11B_TRANSVERSE_COUPLING`). ⚠ It is a **stable real-frequency** mode (`Im ω = 0`) **only where the transverse
+    78	stiffness `μ_⊥ ≥ 0`**: §5's moduli are free and ⛔ no positivity is assumed (§0), so `μ_⊥ = μ_R + μ_S/2 < 0`
+    79	is admissible and gives a growing transverse root `ω = ±i k √(|μ_⊥|/ρ_br⁰)` — decay and growth are both
+    80	admissible outcomes here, ⛔ not excluded. ⛔ This is the **uniform** limit only and does NOT settle
+    81	unconditional confinement — that is the non-uniform question deferred to C. ⚠ The two
+    82	engines express the transverse stiffness `μ_⊥` in **different coefficient bases** (a consequence of the
+    83	energy-basis representative split, below): the blind WL engine emits `μ_⊥ = μ_R`, the SymPy engine
+    84	`μ_⊥ = μ_R + μ_S/2`, with identical roots under the invertible coefficient identification WL-`μ_R` ≡
+    85	SymPy-`(μ_R + μ_S/2)`. ⛔ They are NOT equal under the comparator's naive `muR↔mu_R` name-transliteration,
+    86	which is why `TRANSVERSE_DISPERSION` shows a cross-engine difference (an extra `k²μ_S/2`, masked under its
+    87	tuple-vs-Association STRUCTURE flag) — the same physical stiffness, not a physics disagreement.
+    88	
+$ nl -ba S11c_PARTIAL_CLOSEOUT.md | sed -n 1,40p
+     1	# S11c closure and handoff — PARTIAL
+     2	
+     3	S11c asked how much light converts into other motion where the brane's thickness or material properties change. **It closes PARTIAL: no accepted nonuniform light-loss number was obtained.** Both reflected and transmitted light count as survival. No S11c calculation or review resumes automatically. [Canonical d record, opening and scope](S11c_d_profile_conditioned_scattering.md).
+     4	
+     5	## Where we stand
+     6	
+     7	On a uniform brane, the stated linear model decouples light from the bulk. Independent SymPy/Wolfram work and scoped reviews support that result; stable propagation needs nonnegative stiffness. A later SymPy check found finite modes, nonzero energy current and zero face drives (light does not push on the bulk) at, above and below the tested light/sound speed matches, with the bulk at rest and other inputs fixed; Claude/Grok cleared its method, not a fresh review of its executed result. **CONDITIONAL.** [S11b, transverse mode/reviews](S11b_interface_coupling_law.md); [d, uniform check](S11c_d_profile_conditioned_scattering.md#what-the-uniform-check-establishes).
+     8	
+     9	Where the brane changes, the equations contain conversion routes, but their size remains unknown. The held-profile omega=3 benchmark at speed ratio approximately 0.12 is **UNRESOLVED**: final imbalances lie within its empirical 1 ppm floor, not a physical bound. This is not a matched-speed defect result. [d, benchmark and controls](S11c_d_profile_conditioned_scattering.md#the-omega3-benchmark-numerical-loss-unresolved).
+    10	
+    11	## Records and open ownership
+    12	
+    13	| Record / qualified result | Unresolved / owner |
+    14	| --- | --- |
+    15	| [a: interface shape derivatives](S11c_a_interface_shape_derivatives.md), per-family comparison and limits | Geometric/substrate dependencies remain conditional; affected S11c consumers if reused. |
+    16	| [b: variable-coefficient operator](S11c_b_variable_coefficient_operator.md), original per-engine close plus later scoped repairs | Full cross-engine residual/composition: **S11c-b**. Original checks describe pre-repair equations. |
+    17	| [c1: curved bulk response](S11c_c1_curved_bulk_closure.md), kernel/pressure/flux agreement on measured domains | Traction, energy, operand and deferred family comparisons: **S11c-c1/c2**. |
+    18	| [c2: self-energy fold](S11c_c2_self_energy_fold.md), original wiring close plus later scoped repairs | Direct mixed entry and full composition: **S11c-c2/d**. Original “VALUES unaffected” describes the pre-repair operator. |
+    19	| [d: supplied-profile scattering](S11c_d_profile_conditioned_scattering.md), selected uniform success and unresolved defect benchmark | Complete response/work/loss: **S11c-d if reopened**; observable/strong edges: **S11c-e**. |
+    20	| [Clean-condition symmetry rule](S11c_d_profile_conditioned_scattering.md#clean-condition-result-and-its-owner), measured on SymPy only | No-leak interpretation needs drain frozen; live conversion belongs to **S12**, with no automatic transfer. |
+    21	| Supplied-profile calculations do not determine a real particle. [Plan, Q2/Q3/S20a/S22](../V3_STEP_PLAN.md) | Holder/charge response: **Q2/Q3/S22**; speed-ratio calibration: **S20a**, derivation: **S22/R10**; drain/return data: **S12**. |
+    22	
+    23	## Claims future work must not inherit
+    24	
+    25	- **UNRESOLVED:** c2 sets the direct three-leg `[0,2]` entry to zero while keeping the iterated product. Retaining `eta*sigma_W` means order counting does not justify that zero. **Whether the complete closed response has a nonzero direct term is unresolved.** This is not proof of a missing physical term or its effect on the benchmark. [Joint disposition, mixed-term issue](../_measurements/S11c_upstream_repair_review_joint_disposition.md); [d, equations](S11c_d_profile_conditioned_scattering.md#equations-what-was-repaired-and-what-remains-open).
+    26	- **UNRESOLVED:** the omega=3 benchmark establishes neither “leakage below 1 ppm” nor physical gain. Source identities, finite packet checks and first-order flux cancellation do not constitute a complete loss calculation. [d, benchmark and intermediate results](S11c_d_profile_conditioned_scattering.md).
+    27	- **OPEN — material audit/Q2/S22:** uniform confinement is derived within the supplied linear model; nonuniform confinement and the physical admissibility of rotational stiffness are not established. That is the useful but limited MacCullagh distinction. [Native interpretation, §§5.7, 14.3](../../../docs/native_light_em_and_vortex_throat_interpretation.md); [framing essay, differentiators](../../../docs/s11_maccullagh_differentiation.md).
+    28	
+    29	## Actual downstream uses and next step
+    30	
+    31	**OPEN:** S11c-e owns the conversion observable and must recover d's weak limit in a future finite-contrast calculation. The plan's charge preamble asks whether linear nonuniform physics can support charge; PARTIAL closure answers neither that question nor all Q-sector work. **S22 items 1/4** concern conversion/birefringence and supplied defect profiles; physical magnitude needs interior input. Items 2/3 name S11b and S5–S7 instead. [Split, table/N5](../directives/S11c_decisions.md); [d spec, §3d](../directives/S11c_d_SHARED_PHYSICS.md); [plan, charge preamble/S22](../V3_STEP_PLAN.md).
+    32	
+    33	**S12 is next:** dynamical bulk-to-brane order conversion and separate boundary data. It does not require a numerical S11c loss factor and does not automatically settle light leakage. [Plan, S12](../V3_STEP_PLAN.md).
+    34	
+    35	## Exploratory notes, paused
+    36	
+    37	The [throat/EM handoff in docs/](../../../docs/light_em_investigation_handoff.md) indexes the preserved support, oriented-core, conversion/work and elastic-reference notes. These are **exploratory inputs for S22/Q2**, with S12/Q3 connections, not adopted laws or solved throats. Their review disagreements remain with their own assessments. [Phase 1 review, C6](../cleanup_2026_10/PHASE1_REVIEW.md).
+    38	
+    39	The full history lives in `archive/pre-cleanup-2026-10-04`; the [cleanup record](../cleanup_2026_10/FINDINGS.md) separates findings from unresolved work. No archived result is upgraded by this closure.
+$ nl -ba S11c_d_profile_conditioned_scattering.md | sed -n 56,59p
+    56	**WITHDRAWN/FAILED:** the omega=1 fixed-point continuation stopped at RIGHT with MemoryError; exit zero was not full success. Its two literal **CLEAR FOR THIS PROGRESS-DEPENDENT FIXED-POINT CONTINUATION** verdicts concerned the build, not results. [Fixed-point report, failure and review scope](../_measurements/S11c_d_transverse_face_fixed_point_continue_report.md).
+    57	
+    58	**CONDITIONAL:** finite packet/source/matching evidence includes an inner-kernel bank, local Gaussian actions, polarization-dependent first-order forcing and matched transverse amplitudes. The handoff records positive end-current weights and first-order flux cancellation. The scoped receiving result excludes the recorded C3 real-axis poles; the zero-forcing U_B polarization has zero three-row response only in the stated weighted class, and the full five-field transverse poles remain. None supplies complete physical work, a full field or leakage. Reviews had different scopes: the local action retained Claude **NEEDS REVISION** / Grok **CLEAR** with a tooling repair; later Claude-only flux/receiving verdicts cleared source builds, not independent result execution. [Applicability status, accepted inner/local sections](../_measurements/S11c_d_defect_near_unity_applicability_status.md); [source result](../_measurements/S11c_d_first_order_source_result.txt); [matching result](../_measurements/S11c_d_first_order_transverse_matching_result.txt); [handoff, established results](../../../docs/light_em_investigation_handoff.md); [flux review, limits](../_measurements/S11c_d_first_order_transverse_flux_build_claude.md); [receiving review, limits](../_measurements/S11c_d_first_order_receiving_regular_build_r3_claude.md); [receiving method, §3 class/U_B restriction](../_measurements/S11c_d_first_order_receiving_regular_20261004_r2_plan.txt).
+    59	
+$ nl -ba S9_light_requires_shear.md | sed -n 19,22p;329,351p
+    19	## The argument, in three moves
+    20	
+    21	**1 — What Maxwell demands.** Two transverse polarisations · one speed · no longitudinal mode.
+    22	
+   329	## ⛔ WHAT THIS STEP STILL DOES NOT ESTABLISH
+   330	
+   331	- ⛔ **P2 — that a scalar superfluid carries no transverse mode.** Cited from one external review; ⛔ **no
+   332	  script executes it**, and the rebuild did not add one. It remains a **supplied premise**.
+   333	- ⛔ **The absence of a propagating longitudinal wave is ASSUMED, not derived.** The curl-only action sets
+   334	  the longitudinal restoring stiffness to **zero by construction**, so `ω² = 0` there is the postulate
+   335	  restated. ⛔ It removes the restoring *force*, ⛔ **not the degree of freedom** — which is why the
+   336	  longitudinal test is emitted at every root.
+   337	- ⛔ **Bulk shear-freeness** is postulated; the bulk is absent from the action, so nothing here tests it.
+   338	- ⚠ **The assumption set is computationally INERT.** Removing it entirely leaves every computed value
+   339	  byte-identical. ⭐ The physics is nonetheless correctly bounded — by generic rank **plus explicitly
+   340	  emitted exceptional loci**, and a reviewer verified that enumeration is **complete** for the anisotropic
+   341	  control (roots collide exactly where `ρ_z = ρ_br` or `k_x = k_y = 0`, and both are emitted).
+   342	  ⇒ ⭐ **Read the polarisation values as generic-locus values with the exceptions listed.**
+   343	- ⚠ **The `.py` was written AFTER the `.wl`**, so this is ⛔ not the blind-first ordering. Construction was
+   344	  independent (different naming, granularity, idioms; a hand-rolled Euler–Lagrange where SymPy has a
+   345	  built-in) and the builder was barred from reading the `.wl` — ⭐ but agreement here is **weaker evidence**
+   346	  than at a step where both engines predate any comparison.
+   347	- ⚠ One tag remains **unparsed** by the consumer: the anisotropic third root's sign is a `Piecewise`,
+   348	  because the sign is conditional on the parameter domain and the assumptions are inert.
+   349	- ⚠ Limits taken: sharp zero-width sheet · `v₀ → 0` · no dissipation · frequency-independent moduli ·
+   350	  continuum limit · amplitude → 0.
+   351	

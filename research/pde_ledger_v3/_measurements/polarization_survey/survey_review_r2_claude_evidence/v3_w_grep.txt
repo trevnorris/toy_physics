@@ -1,0 +1,135 @@
+$ grep -n -E "ξ_w|xi_w|hBranon|h-branon|branon|out-of-plane|flexur|bending|antisymmetric face|breathing|two faces|face-odd|face-EVEN|face-ODD|transverse count|two transverse|D − 1|D−1|D-1 " steps/*.md V3_STEP_PLAN.md DEFECT_REGISTER.md SUBSTRATE_REQUIREMENTS.md | cut -c1-240
+steps/S11b_RUN_CHECKLIST.md:126:CONDITIONAL on `μ⊥≥0`; breathing slice all three cuts incl. `Λ_X⁰=0`; adjudication "no physics CONTRADICTION"
+steps/S11bB_interface_assembly.md:80:**The breathing mode is stable iff `K₀ > 0`.** On the soluble slice (`k = 0`, impermeable, no reciprocal
+steps/S11bB_interface_assembly.md:192:| breathing stability | `K₀ = B_ρ⁽³⁾ − 2CW₀ + k_W W₀² > 0` | ⭐ `K₀ > 0` is an **empirical** constraint — the brane is here |
+steps/S9_PILOT_ADJUDICATION.md:21:| `dispersion_scaling_residual_flexural` | `WL_S9_X7_ROOT1_SCALING_RESIDUAL` | `PY_S9_X7_ROOT_SCALING_RESIDUAL` | `AGREE` |
+steps/S9_PILOT_ADJUDICATION.md:45:  rows=dispersion_scaling_residual_flexural
+steps/S9_PILOT_ADJUDICATION.md:55:  rows=dispersion_scaling_residual_flexural
+steps/S9_PILOT_ADJUDICATION.md:93:| X7 · flexural control | the root-scaling response must change |
+steps/S11_PREREGISTERED_PREDICTION.md:38:| `ω² = (μ_R/ρ_br) k²` | `D − 1` | ⊥ `k` |
+steps/S11b_interface_coupling_law.md:15:with two faces meeting the bulk, derive how a normal face motion couples to the bulk, what drives material
+steps/S11b_interface_coupling_law.md:93:⛔ not the general breathing boundary.
+steps/S11c_c2_self_energy_fold.md:61:`α∈{LAB_HELD,MATERIAL_ADVECTED}`; density representatives `ρ∈{ρ_4D,ρ_br}`; the two faces `s∈{+,−}` the slab EOM
+steps/S11b_PREREGISTERED_PREDICTION.md:27:- `j^w` **even** in `w` — uniform normal translation, i.e. the **branon** — ⇒ `S_leak = 0` **exactly**.
+steps/S11b_PREREGISTERED_PREDICTION.md:28:- `j^w` **odd** in `w` — the **breathing / width** mode — ⇒ `S_leak ≠ 0` generically.
+steps/S11b_PREREGISTERED_PREDICTION.md:34:branon leak. That is the FORM control in T9.
+steps/S11b_PREREGISTERED_PREDICTION.md:110:- ⭐ **FORM control B — break the window's evenness.** T2's annihilation of the branon should **fail**.
+steps/S11_stray_longitudinal.md:90:`∝ σ_wall|∇W|²`. ⇒ flat at `k=0`, stiff as `k²`, predicting a **flexural crossover** — `ω ∝ k²` at long
+steps/S11_stray_longitudinal.md:110:| transverse | `ω² = (μ_R/ρ_br)k²`, nullity `D−1`, kernel ⊥ `k` ⭐ **unchanged from S9/S10** |
+steps/S11_stray_longitudinal.md:276:eigenvalues (transverse `μ_R/ρ_br` nullity `D−1`, longitudinal `B_comp/ρ_br` nullity 1, no cross-modulus,
+steps/S11_stray_longitudinal.md:280:`hBranon` excluded, `INTERFACE_EQUATIONS_SUPPLIED={}`) — it does not decide inhomogeneous mode conversion,
+steps/S11_stray_longitudinal.md:292:- the two transverse roots and one longitudinal root;
+steps/S10_PREREGISTERED_PREDICTION.md:20:⇒ predicted pattern: **longitudinal nullity 1 in every D; transverse nullity D−1**; sum = D.
+steps/S10_PREREGISTERED_PREDICTION.md:23:codimension (4−3=1). If the table shows transverse nullity tracking D−1, the "not codimension" point is
+steps/LIGHT_LEAKAGE_SCOPING.md:3:**Date:** 2026-10-07. This is an inventory, not a calculation. **No accepted nonuniform light-loss number** exists (PC:3,9). Survival has two recorded halves. What survives: “Both reflected and transmitted
+steps/LIGHT_LEAKAGE_SCOPING.md:18:The rows cover the directive's listed mechanisms; completeness of a chapter-derived union is **UNVERIFIED**, not asserted. Interface roughness is split by face parity (rows 7a/7b): the records' kernel shape
+steps/LIGHT_LEAKAGE_SCOPING.md:28:| 5 | Macrobending radiation — curved guide boundary enabling radiation (K/SL). | **NOT ADDRESSED.** The S11c background set is `Q_bg ∈ {W_bg, μ_R,bg, ρ_4D,bg⁰, ρ_br,bg⁰}` (SPa:235), with no cent
+steps/LIGHT_LEAKAGE_SCOPING.md:29:| 6 | Microbending — small random axis bends/pressure-induced deformations with coupling spatial spectrum (K/FT). | **NOT ADDRESSED.** No background centre-line profile (SPa:235); `ζ_c` is a wave perturb
+steps/LIGHT_LEAKAGE_SCOPING.md:31:| 7b | Interface/surface roughness, centre-line (face-odd) component — “deviations from straightness” (SL; Marcuse 1969 `α = π`, oracle §2.2). | **NOT ADDRESSED.** No background centre-line profile
+steps/LIGHT_LEAKAGE_SCOPING.md:53:- **Flat background centre-line** (named a freeze by this inventory; the records do not use that word for it). The background set `Q_bg ∈ {W_bg, μ_R,bg, ρ_4D,bg⁰, ρ_br,bg⁰}` has no centre-line prof
+steps/LIGHT_LEAKAGE_SCOPING.md:60:| E4 | **Equation-level interface route, photon use unestablished:** memory velocity channel outside passive region, requiring named reservoir/budget (A:76–89; B:196–197). Passive-region readings, quote
+steps/LIGHT_LEAKAGE_SCOPING.md:61:| E5 | **Equation-level route:** scalar/normal-face → acoustic bulk radiation resistance. Impedance as recorded, neither expression chosen: “`Z = ω ρ_m / q_out`” (A:36); propagating `Z` “real, `ω
+steps/LIGHT_LEAKAGE_SCOPING.md:62:| C1 | **Candidate beyond scope:** longitudinal bulk kinematics only, `k_w²=k²(c_L²/c_s0²−1)`; interface use/bound eigenmode/grazing not established (S11:95–101). E5 is later scalar response, not re
+steps/LIGHT_LEAKAGE_SCOPING.md:65:| O1 | **Open requirement / non-establishment:** beyond homogeneous quadratic transverse–longitudinal separation (S11:68–76); C3 is the assigned nonlinear program. | S11:74–76 says nothing about `v₀
+steps/LIGHT_LEAKAGE_SCOPING.md:67:| O3 | **Open requirement / non-establishment:** full `(u,h)` quadratic block, R-S8-02 **OPEN** (SR:251–282); v2 coupling not inherited. | SR:251–282 says nothing about `v₀`. Named restrictions: **fro
+steps/LIGHT_LEAKAGE_SCOPING.md:91:| Y. Gu and C. R. Fuller, “Active control of sound radiation due to subsonic wave scattering from discontinuities on fluid-loaded plates. I: Far-field pressure,” *JASA* **90** (1991) 2020–2026, DOI [1
+steps/LIGHT_LEAKAGE_SCOPING.md:94:No verified equation-bearing oracle is supplied for E4's Debye memory law, C3's nonlinear audit beyond the Brillouin phase-matching condition below, or O1/O2/O3/O5/O7: **gap**. The odd-media papers are orac
+steps/LIGHT_LEAKAGE_SCOPING.md:98:All numerical parameters/profiles are **input assignments, not physical values** (SR:543–570). **S** means the two recorded survival halves: transverse reflection and transmission survive (PC:3); conversi
+steps/LIGHT_LEAKAGE_SCOPING.md:106:- **K:** breathing-slice empirical `K₀=B_ρ⁽³⁾−2CW₀+k_WW₀²>0` (B:84,192; U:89–93).
+steps/LIGHT_LEAKAGE_SCOPING.md:118:| E5 / PROPAGATING second hop | Scalar/normal face → acoustic bulk | `Z` “real, `ωρ_m/q`” (A:41) and `Re Z` “survives as `ρ_m/a_q`” (A:72), neither chosen; `a_q` undefined in A/B/U, declared i
+steps/LIGHT_LEAKAGE_SCOPING.md:119:| E5 / EVANESCENT | Scalar face → reactive bulk | At `Λ_p⁰ = Λ_V⁰ = 0` “the evanescent `Re Z` vanishes identically” (A:71–73); `Z` “imaginary, `−iωρ_m/α`” (A:42); general scalar atte
+steps/LIGHT_LEAKAGE_SCOPING.md:120:| E5 / GRAZING | Scalar face → threshold field | Flat `Z` singular; threshold scalar attenuation **gap** (A:43) | Threshold exposure **gap** | `q=0` | No general breathing threshold result (U:89–93) | 
+steps/LIGHT_LEAKAGE_SCOPING.md:128:| O3 / full `(u,h)` block | Full displacement branches | v3 coupling **gap** (SR:251–282) | Path/count **gap** | `h,u_L` scalar; `u_T` vector; degeneracy not mixing (SR:251–282) | Frozen width/excluded
+steps/S9_light_requires_shear.md:115:(flexural, `(∇²u)²`) moves the stiffness dimension to `(4−D,−2,1)`; a control with an **undifferentiated
+steps/S9_light_requires_shear.md:230:  **nonzero** for flexural and for a gapped root. ⛔ The superseded `q`-substitution family is **deleted**,
+steps/S9_light_requires_shear.md:244:`−½ μ_R Σ(∂_i u_j)²` — an ordinary elastic solid — carries **two transverse modes at the same
+steps/S9_light_requires_shear.md:291:flexural and bare-field rows belong to control packages `X7`/`X8`. Conflating those two tens produced the
+steps/S11b_wl_engine_review_disposition.md:10:`ZPERM_SLICE`, transverse B6 (`{0,0}`, `ω²=μ_R k²/ρ_br`, `Im ω=0`), breathing B4 (`K₀ = B_ρ³−2CW₀+k_W W₀²`,
+steps/S11c_c1_curved_bulk_closure.md:180:- **`h_s` graph-vs-outward + `N`/`Z` terminology.** `h_s=s·W_bg/2+ζ_s` is the signed lab GRAPH height (face-odd); the
+steps/S11c_c1_curved_bulk_closure.md:181:  shape displacement that enters the kernel is the face-EVEN outward displacement `a_s=(W_bg−W₀)/2`. Both engines used
+steps/S10_two_transverse_photons.md:74:> from allowed exceptional strata, the nonzero root has D − 1 transverse null
+steps/S10_two_transverse_photons.md:76:> has two transverse directions.
+steps/S10_two_transverse_photons.md:80:D = 4, FULLGRAD has the same nonzero root and the same D − 1 transverse
+steps/S10_two_transverse_photons.md:81:nullity as MAIN. The transverse count therefore cannot be attributed to the
+steps/S10_two_transverse_photons.md:86:count even though curl-only is not what uniquely produces D − 1.
+steps/S10_two_transverse_photons.md:109:remains D − 1, exactly as in MAIN. In the same breath, it does generically
+steps/S10_two_transverse_photons.md:110:reduce the number of those modes that are exactly transverse from D − 1 to
+steps/S10_two_transverse_photons.md:112:additional positive root, instead of MAIN's N3 nullity D − 1 on one positive
+steps/S10_two_transverse_photons.md:124:exactly-transverse count. No control in this sweep varies the in-plane field
+steps/S10_two_transverse_photons.md:135:propagating N2 / N3 equal to `(D − 1) / (D − 1)`; the Lean classification proves
+steps/S10_two_transverse_photons.md:159:transverse count here; none is inferred from display-only N6.
+steps/S10_two_transverse_photons.md:174:The new Lean baseline proof establishes the conditional map D ↦ D − 1 for
+steps/S10_two_transverse_photons.md:183:  out-of-plane field inherited rather than tested;
+steps/S10_two_transverse_photons.md:240:nullity; the positive root has D − 1 total and D − 1 transverse null
+steps/S10_two_transverse_photons.md:248:`1 + (D − 1) = D` in every MAIN dimension measured, so all D amplitude
+steps/S10_two_transverse_photons.md:336:1 at zero and D − 1 at the nonzero root. Thus curl-only determines the
+steps/S10_two_transverse_photons.md:337:missing longitudinal restoring stiffness, not the transverse count itself.
+steps/S10_two_transverse_photons.md:392:01:52:54. It prospectively records the MAIN `D − 1` pattern, the FULLGRAD
+steps/S10_two_transverse_photons.md:474:occurs in either S10 engine or raw transcript. The `D − 1` here is therefore
+steps/S10_two_transverse_photons.md:621:    main_action = construct_flexural_action().subs(mu_F, mu_R)
+steps/S10_two_transverse_photons.md:761:1. **The in-plane/out-of-plane split remains supplied.** S10 does not derive or
+steps/S10_two_transverse_photons.md:762:   dynamically test the decoupling of u from out-of-plane fields.
+steps/S10_two_transverse_photons.md:850:| `R-S8-02` | the joint quadratic operator on in-plane `u` and out-of-plane `h`, including whether `h` is degenerate with the transverse pair | “S10's headline number changes”; block mixing alone 
+steps/S10_two_transverse_photons.md:864:and its transverse count are standard. Its own search did not find the
+steps/S10_two_transverse_photons.md:869:The supplied in-plane/out-of-plane split is not ours. The prior-art register
+steps/S10_two_transverse_photons.md:870:classifies “the `h`-branon as the brane's own
+steps/S10_two_transverse_photons.md:874:establishes attribution for the excluded out-of-plane field; it does not
+steps/S10_two_transverse_photons.md:876:degeneracy with the in-plane modes, or the D − 1 count. Prior art is used here
+steps/S10_two_transverse_photons.md:883:- sweeping D and recovering D − 1 is evidence for this implementation, not a
+steps/O2_steady_brane_balance.md:91:`g_ij=δ_ij+∂_iξ_w∂_jξ_w`, its inverse, `ξ_w=ℓh`,
+steps/O2_steady_brane_balance.md:109:`V`, `ρ_br`, `μ_⊥`, `ξ_w`, `h`, `δ`, `j_n`, bulk state, material responses, history/reference,
+steps/O2_steady_brane_balance.md:115:Supplied counting is `ε=GM/(c₀²r)`, `δ=O(ε)`, `(∂ξ_w)²=O(ε)`, `V/c₀=O(ε^{1/2})`,
+steps/O2_steady_brane_balance.md:117:`δ^a(V/c₀)^b((∂ξ_w)²)^c`, with nonnegative integer indices. Only the stiffness/density ratio
+steps/O2_steady_brane_balance.md:128:uniform quadratic/breathing-slice inputs and S11c supplied-profile, first-shape/background-jet,
+steps/O2_steady_brane_balance.md:171:| `profile_V_r`, `profile_rho_br`, `profile_mu_perp`, `profile_xi_w`, `profile_h`, `profile_delta`, `profile_j_n`, `profile_f` | 1 each. |
+steps/O2_steady_brane_balance.md:230:Throughout this ledger, any WL-only `xi_w''` content carries the assigned sub-step-7 interpretation
+steps/O2_steady_brane_balance.md:239:| Every nonempty `live_arguments` difference | **OPEN cross-engine content difference.** Full profile/derivative order, evaluation argument and sign are M6. The WL-only `xi_w''` interpretation is assigne
+steps/O2_steady_brane_balance.md:240:| Every nonempty matched-role `head`/`role`/`orientation` difference | **OPEN cross-engine difference; no owner named for adjudication.** M6 preserves every key and sign, including role-only/missing-role
+steps/O2_steady_brane_balance.md:285:**`xi_w` at order 2**, all evaluated at the stored argument `sqrt(x1²+x2²+x3²)` and all with signed
+steps/O2_steady_brane_balance.md:301:acceptance specifically calls the WL-only `xi_w''(r)` a **“cross-engine difference in OPEN content”**,
+steps/O2_steady_brane_balance.md:364:for `xi_w''` carries §4's undischarged/returned status. `wl::D`/`wl::Map` raw-census spellings
+steps/O2_steady_brane_balance.md:376:| Transport calculus | `momentum_storage`, `momentum_transport` and the three hold representations retain OPEN content and unformed full residuals. Explicit profile/velocity gradients print exact scalar-
+steps/O2_steady_brane_balance.md:463:| Supplied radial setting, coordinate mass law, `ξ_w=ℓh`, optical speed ratio, LAB_HELD anchoring/counting, and premises 1–4 | Conditional inputs on §2's isolated-rest-mass, far-field `r>0`, Euleri
+steps/O2_steady_brane_balance.md:466:| `ℬ_hold^live` in-plane/bulk/graph-normal components and `ℬ_E^steady` | Conditional named accounting. The record's literal counts match **at the level of joint stored `(role, orientation, open_free)
+steps/O2_steady_brane_balance.md:503:them, or judge either engine to duplicate power from either limited match. The `xi_w''` difference
+steps/O2_steady_brane_balance.md:523:Their complete physical reconciliation remains OPEN under M1. For `xi_w''`, the comparator
+steps/O2_steady_brane_balance.md:557:matched domains; and optical compatibility. Physical-input owners remain §7's. The `xi_w''`
+DEFECT_REGISTER.md:28:| **A4** | implicit `β·a = 1` — `L0/a = 37/20` and `β·L0 = 37/20` together equate the wall-response inverse length with the inverse mouth radius, while the register says geometry does **not** derive `β` | `param
+DEFECT_REGISTER.md:156:| **B2** | **Gate L returned a no-go — and the no-go is of a NARROWER thing than this row used to claim.** `FAIL_COUPLE_STRESS_NOGO`, the gate the medium survey had flagged as *"Highest risk; the most likely no-go"*
+DEFECT_REGISTER.md:524:stacked rank is precisely what determines `N3`, the basis-independent transverse count.
+DEFECT_REGISTER.md:540:⭐ **`MAIN` is NOT exposed** — a 748-wavevector sweep found **0** deviations from `[(1,0), (D−1,D−1)]`.
+V3_STEP_PLAN.md:311:(`ω ∝ k²`, flexural rather than acoustic, from the `σ_wall|∇W|²` cost of a modulated width).
+V3_STEP_PLAN.md:374:⭐ **What S10 measured:** the conditional map `D ↦ D − 1` transverse null directions **for the cases it
+V3_STEP_PLAN.md:379:1. ⛔ *"brane shear gives exactly two transverse polarisations."* ⚠ **The form control refutes the
+V3_STEP_PLAN.md:380:   attribution**: `FULLGRAD` returns the **same root and the same `D − 1` count**. ⭐ What curl-only
+V3_STEP_PLAN.md:406:> symmetric shear …) → two transverse modes `μ_br k²` **but also** a longitudinal mode
+V3_STEP_PLAN.md:410:Maxwell — ⛔ **never** to carrying both. Carrying two transverse modes **and** a longitudinal one
+V3_STEP_PLAN.md:422:3. The calculations were redone **from the core concept of the model**, to see whether the two transverse
+V3_STEP_PLAN.md:447:⇒ ⭐⭐ **What the mode did was falsify the TARGET.** Exact Maxwell gives two transverse photons **and
+V3_STEP_PLAN.md:455:rethink produced is carried by the **`h`-branon**. The committed sources keep them apart:
+V3_STEP_PLAN.md:458:  — *"Define the held mouth datum `h_A = ξ_w|_A/ℓ = P₀H|_A`, `[h_A]=1` **(distinct from `u_L`)**"*.
+V3_STEP_PLAN.md:460:  *"It is NOT the committed charge scalar (that's the `h`-branon, `h≠u_L`; `h` remains the committed
+V3_STEP_PLAN.md:897:A **±w puncture geometrically bends the brane into ±w**: the field identity `ξ_w = ℓh` and the
+V3_STEP_PLAN.md:1182:| 3 | ⭐ **the flexural crossover** — `ω ∝ k²` at long wavelength once the wall width is dynamical. ⛔ **Able to fail:** a clean cone means move 5 was wrong | width mode inertia + stiffness | **S11b** + **S5–S
+V3_STEP_PLAN.md:1252:| `{Vp0/ell_c}` (R33) | breathing drive |
+SUBSTRATE_REQUIREMENTS.md:135:  space is three-dimensional."* Read backwards it says the opposite: `D_brane = 3` went in and `D−1 = 2`
+SUBSTRATE_REQUIREMENTS.md:176:  (`steps/S11bB_interface_assembly.md`, breathing slice) · **target** S1.5 · **status** OPEN
+SUBSTRATE_REQUIREMENTS.md:189:  S11's threshold, A's radiation resistance/added mass, and B's radiative breathing load rest on that
+SUBSTRATE_REQUIREMENTS.md:229:  S11b-B (`steps/S11bB_interface_assembly.md`, energy basis / breathing stability); unified S11b
+SUBSTRATE_REQUIREMENTS.md:256:  constrained breathing stiffness is `K₀ = B_ρ⁽³⁾ − 2CW₀ + k_W W₀²`. The stability claim is only the
+SUBSTRATE_REQUIREMENTS.md:263:### R-S8-02 — the in-plane and out-of-plane sectors must decouple at quadratic order
+SUBSTRATE_REQUIREMENTS.md:268:  out-of-plane `h` together, and whether it is block-diagonal in that split.
+SUBSTRATE_REQUIREMENTS.md:272:  `u_L` freely and the transverse count stays `D − 1` regardless. ⭐ **The condition that gives 3 is `h`
+SUBSTRATE_REQUIREMENTS.md:288:  the charge anchor, ⛔ and not directly on the transverse count, which is what the corrected on-failure
+SUBSTRATE_REQUIREMENTS.md:291:  spectrum with `hBranon` excluded: *"⚠ Scope caveats, none touching the decoupling: (i) this is the
+SUBSTRATE_REQUIREMENTS.md:292:  **in-plane, frozen-wall-width** spectrum (`WALL_WIDTH_FIELDS={}`, `hBranon` excluded,
+SUBSTRATE_REQUIREMENTS.md:300:- **excluded field** — in that caveat S11's record freezes the wall width and excludes `hBranon`
+SUBSTRATE_REQUIREMENTS.md:302:  `"OUT_OF_PLANE_FIELD_EXCLUDED" -> hBranon`
+SUBSTRATE_REQUIREMENTS.md:305:  roots or census would be with `hBranon` included, and this register does not infer it.
+SUBSTRATE_REQUIREMENTS.md:415:  (`steps/S11bB_interface_assembly.md`, breathing quadratic) · **target** S8
+SUBSTRATE_REQUIREMENTS.md:422:  `ρ_br`; B's breathing-root interpretation also rests on the stated inertial model. A stiffness
+SUBSTRATE_REQUIREMENTS.md:425:  or `μ_W`, and does not identify the thickness mode with S10's out-of-plane displacement. The cited
+SUBSTRATE_REQUIREMENTS.md:537:  out-of-plane sectors decouple — is the single entry on which S10's headline number depends, and it was
+SUBSTRATE_REQUIREMENTS.md:587:light bending and delay under v3's light picture remains open — **no owner named** in the records read.
+SUBSTRATE_REQUIREMENTS.md:641:| Scalar stored-energy inputs `B_rho_3`, `C`, `k_W` | P, `parameters`; S11b-B, breathing stability | no owner named |
+SUBSTRATE_REQUIREMENTS.md:724:The comparator acceptance assigns the WL-only `xi_w''` interpretation to the O2 record, sub-step 7;

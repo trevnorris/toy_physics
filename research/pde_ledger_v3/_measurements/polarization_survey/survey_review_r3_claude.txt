@@ -1,0 +1,96 @@
+**Verdict: NEEDS REVISION.** There are two findings. Finding 1 changes a class (E01) and the totals. Finding 2 changes what the user is told about where the parity condition sits; it changes no class. The artifact's hash matches `survey_review_baseline_r3.sha256` (f1baeff2…).
+
+## Findings
+
+### 1. E01 "Reproduced" claims more than the ledger supports, and repeats a defect accepted at r0
+**Location:** Part 4 L214 (E01), the summary at L253, and the Part 3 R-S1-01 row at L157.
+
+**Survey says (L214):** "Its action, field content and dimensional input do **not themselves state the two-direction result**; supplying D=3 is not supplying D−1=2."
+
+**The ledger says the opposite.** Command: `nl -ba research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md | sed -n '134,136p'`
+```
+   134	- **on failure** — S10's headline reads *"light having exactly two polarisations is a statement that our
+   135	  space is three-dimensional."* Read backwards it says the opposite: `D_brane = 3` went in and `D−1 = 2`
+   136	  came out. Without a delivered `D_brane` the sentence is an assumption restated, ⛔ not a result.
+```
+Command: `nl -ba research/pde_ledger_v3/V3_STEP_PLAN.md | sed -n '374,376p;387,388p'`
+```
+   374	⭐ **What S10 measured:** the conditional map `D ↦ D − 1` transverse null directions **for the cases it
+   375	swept** (`D = 2,3,4,5`), so the `D = 3` member has two — ⛔ **conditional on the supplied action, the
+   376	supplied `[u]`, and BOTH structural premises.**
+   387	   ...⛔ **Expected new: nothing** was right; ⛔ *"earned"* was
+   388	   the wrong word for why.
+```
+The count also depends on a second supplied input, S10:182–183: "a D-component in-plane displacement u, with its separation from every out-of-plane field inherited rather than tested". That is the input that rules out a third (w) direction; R-S8-02, at SR:270–275, gives the condition under which the count would be 3.
+
+**What the survey does with these sources:**
+- In Part 3 (L157) it quotes only "Dbrane = 3 went in and D−1 = 2 came out" and omits the verdict sentence at :136.
+- It cites plan lines 374–391 zero times in Parts 1–4: `sed -n '1,254p' $S | grep -cE 'V3_STEP_PLAN\.md:3(7[4-9]|8[0-9]|9[01])'` returns `0`. They appear only inside appendix R19.
+- r0 accepted C1/G1: "E01 is classed 'Reproduced', but D = 3 goes in and D − 1 = 2 comes out (R-S1-01, OPEN)". The fresh author has reinstated that class.
+
+**Fix:**
+- Rule 1 fails, because the ledger itself says the count restates a supplied input.
+- Rule 4's supplied-input clause takes precedence over rule 3. It names `D_brane = 3` (R-S1-01, OPEN) and the inherited out-of-plane separation (S10:182–183).
+- The row should still say that S10 computes the conditional map D ↦ D−1, so it does not contradict S10:73–76. That satisfies both r0 C1 and r2 item 4.
+- Quote SR:136 in Part 3. Update the totals (reproduced 0; required 6) and the summary.
+
+### 2. The parity/chirality condition is mislocated (E10–E15, Part 3 L154, L176, L179)
+**Survey says (E10, repeated in E11–E15 and L176):** "The unresolved parity/chirality condition lies **outside that class**: …O2…; **S11bB_interface_assembly.md:53–63** permits non-passive odd couplings only with a named reservoir/power budget; …S9b…". L179 is titled "Odd/chiral interface couplings are not generally prohibited".
+
+**(a) S11bB:53–63 is not about parity.** Its "odd" means non-reciprocal: it governs the interfacial velocity coupling of the thickness/longitudinal leak and is tied to time reversal and passivity. Command: `nl -ba research/pde_ledger_v3/steps/S11bB_interface_assembly.md | sed -n '17p;53,55p;76p'`
+```
+    17	## ⭐⭐⭐ THE HEADLINE — the velocity-coupled leak costs an ENERGY RESERVOIR
+    53	⚠ Non-reciprocal, "odd" constitutive couplings of exactly the excluded form are realised in driven
+    54	laboratory media (odd elasticity, odd viscosity, active and chiral fluids). ⛔ They are not unphysical.
+    55	⭐ **They have a reservoir.**
+    76	structural reason: in-plane parity admits no `e_W ↔ u_T` bilinear.
+```
+- As written, a user would infer that splitting the two helicities in this model needs a named reservoir and power budget. That is wrong.
+- A parity-odd term can be lossless and reciprocal and still split the helicities. Script `/tmp/polr3/chiral_passive_check.py` (SymPy); stdout in `/tmp/polr3/chiral_passive_check_stdout.txt`. For K_ij = μ(k²δ_ij − k_ik_j) + iηk²ε_ijl k_l it prints:
+  - Hermiticity residual `0`;
+  - Onsager reciprocity residual `0`;
+  - a nonzero parity-odd part;
+  - eigenvalues `k**2*(-eta*k + mu)` and `k**2*(eta*k + mu)` on the (∓i, 1, 0) helicity vectors;
+  - the η=0 control `{k**2*mu: 2, 0: 1}`.
+- This is a k³ helicity splitting, the form E10 bounds. It needs no reservoir, so S11bB's rule does not govern it.
+
+**(b) Missed source: the interface specs supply in-plane parity.** Command: `nl -ba research/pde_ledger_v3/directives/S11b_SHARED_PHYSICS.md | sed -n '284p;288p'; nl -ba …/S11bB_SHARED_PHYSICS.md | sed -n '358p'`
+```
+   284	- **In-plane isotropy _and_ parity** — the full `O(3)` acting on the three in-plane directions.
+   288	- ⛔ **Time-reversal is NOT assumed**, and ⛔ no positivity or boundedness is assumed (§0).
+   358	- **In-plane isotropy _and_ parity** (the full `O(3)` acting on the three in-plane directions).
+```
+- So S11bB:76's "in-plane parity admits no `e_W ↔ u_T` bilinear" follows from an imposed symmetry. It is not a parity selection.
+- SR:252–254 (R-S8-01, OPEN) holds the stored energy "under its whole stated symmetry group" as part of an open requirement.
+- Parts 3–4 cite neither spec. `grep -nE 'S11bB?_SHARED_PHYSICS'` finds them only inside appendix output (L782–783, L1906).
+
+**Fix:**
+- Add both spec lines to Part 3, with the status "supplied symmetry group: in-plane O(3) including parity; time reversal not assumed".
+- In L154, say that the parity exclusion rests on that supplied symmetry.
+- In L176, L179 and E10–E15, state S11bB:53–63's actual scope: non-reciprocal, non-passive interfacial couplings.
+- Stop listing S11bB:53–63 as where the parity condition sits. Locate the condition in what the ledger leaves open (O2:110–111), what it supplies (the specs' in-plane parity) and what it excludes (S9b at `ede8aa21`:117–119).
+- The classes stay as they are, and nothing gets resolved.
+
+## Checked and found sound
+- **Appendix A:** I re-ran all 28 commands and every output is identical, including R31's empty output with exit 1. Script `/tmp/polr3/rerun_appendix.py`; stdout `/tmp/polr3/rerun_appendix_stdout.txt`.
+- **r3 item 1:** the class-rule paragraph (L208) states the brief's definitions, including rule 4's precedence and rule 5's quoted wording. The totals 1/7/10/5/15 = 38 match the rows.
+- **r3 item 2:** E12 is now Testable on the same object as E10–E11. It differs from E13–E15 only because E12 is a null result while E13–E15 report a signal. Its conditions include the CMB source and statistics.
+- **r3 item 3:** the S11:52–64 rendering is correct. At D=3 both counts are 3 (N_SO = N_O = 3). The D=2 extra term can mix sectors; the D=4 extra is a total derivative. The source does say "Five independent derivations". Finding 2 concerns only the sources used to locate the condition.
+- **r3 item 4:** E22's rule-4 precedence is correct, and E22 does not contradict S10. (E01: Finding 1.)
+- **r3 item 5:** E38 checked in the primary Planck paper, which I downloaded from arXiv and opened. It confirms:
+  - the abstract's "Neff = 2.99 ± 0.17";
+  - eq. (67b), 2.99 +0.34/−0.33 at 95% for TT,TE,EE+lowE+lensing+BAO;
+  - §7.5.2 eq. (64), and the phrase "neither interact nor decay".
+
+  The E38 assumptions and the statement that it "counts non-photon relativistic energy density" are right.
+- **r3 item 5, PDG:** I opened the PDG 2026 photon listing and confirmed:
+  - RYUTOV 07 "< 1 × 10−18", with the CL column blank;
+  - LEMOS 25 "(16 +3 −9) × 10−15" eV, in the block PDG does not use for averages, fits or limits;
+  - note 3: "under several assumptions … Do not present an upper limit."
+- **r3 item 5, Part 3 additions:** S11bB:74–76 and R-S8-06 (SR:412–427) are quoted correctly, with the right statuses.
+- **S9b spec:** the cited `ede8aa21` lines 53–55, 106–109 and 117–119 are verified. Its diff to HEAD only adds the amendment-2 header and the wording on the root of `c_γ`. No polarization content changed.
+- **Earlier rounds' items:** all still hold except r0 C1 (Finding 1).
+- **Part 1:** the physics is correct and each statement is correctly labelled classical or quantum. I checked the helicity convention for J±, the Stokes parameters and the Poincaré sphere, both reasons for two states, the Malus caveat, and the entanglement statements.
+- **Scope:** no mechanisms are proposed and no conflicts are resolved.
+
+**Not re-opened this round:** the other Part 2 sources (E01–E37). The values I recognise match my knowledge of those papers, but that is not an opened check.

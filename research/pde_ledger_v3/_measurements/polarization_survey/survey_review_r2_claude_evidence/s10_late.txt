@@ -1,0 +1,40 @@
+   757	
+   758	Each item below is a current disposition, not inherited prose from the deleted
+   759	instrument.
+   760	
+   761	1. **The in-plane/out-of-plane split remains supplied.** S10 does not derive or
+   762	   dynamically test the decoupling of u from out-of-plane fields.
+   763	
+   764	2. **The physical value D = 3 remains owed.** The symbol D is a STRUCTURAL S9
+   765	   export imported by S10; no live reduction registry selects D = 3.
+   766	
+   767	3. **The curl-only action remains supplied.** Absence of a longitudinal
+   768	   propagating mode follows from that action and does not explain why other
+   769	   allowed elastic terms are absent.
+   770	
+   860	
+   861	## Prior art and departure
+   862	
+   863	The relevant prior-art note says that the MacCullagh curl-energy construction
+   864	and its transverse count are standard. Its own search did not find the
+   865	thin-phase confinement architecture
+   866	(../../docs/medium_requirements_and_prior_art.md:127-156). That is a
+   867	search-failure statement, not an originality proof.
+   868	
+   869	The supplied in-plane/out-of-plane split is not ours. The prior-art register
+   870	classifies “the `h`-branon as the brane's own
+   871	transverse fluctuation” as KNOWN and attributes that object to Cembranos,
+   872	Dobado, and Maroto, PRL 90 241301 (2003)
+   873	(../../docs/medium_requirements_and_prior_art.md:136-143). That entry
+   874	establishes attribution for the excluded out-of-plane field; it does not
+   875	establish this ledger's `u`/`h` decoupling, its quadratic operator, any
+   876	degeneracy with the in-plane modes, or the D − 1 count. Prior art is used here
+   877	as an attribution oracle, never as a premise for those uncomputed properties.
+   878	
+   879	Accordingly:
+   880	
+   881	- agreement with the ordinary D = 3 curl is an oracle check inside the standard
+   882	  MacCullagh regime, not a novel result and not a premise for the D sweep;
+   883	- sweeping D and recovering D − 1 is evidence for this implementation, not a
+   884	  novelty claim.
+   885	

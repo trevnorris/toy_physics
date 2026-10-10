@@ -1,0 +1,38 @@
+I'll review the repaired survey against the prompt, the two dispositions, and the class definitions now in force, checking sources rather than only the edits.The review reports stay unread. I'll verify the survey hash, then read the prompt, the repair-2 class definitions, and both dispositions.The hash matches the baseline. Next I’ll read the explainer, the class rule, and the rows the repairs were required to change.The class counts add up. I’ll now check the repair-critical repository lines and search the v3 ledger for polarization statements the survey may have missed.Auto-compacting conversation (80% full)...
+Conversation compacted.
+The prior pass closed the sources. I am checking the baseline hash and the classification rows once more, then writing the report.Class counts match the stated totals. I am reading the birefringence rows and the repository lines those rows depend on.**Verdict: CLEAR**
+
+No finding changes what the survey says an experiment shows, what a reader should understand, or how a fact is classed against the model.
+
+**Findings.** None.
+
+**Checked and found sound**
+
+The file matches the round-2 baseline. `sha256sum` of `POLARIZATION_SURVEY.md` is `96c52bdccc5ad5b01fdab145a25a0250c956efab7d17821b5daa4593271dc981`, the same digest as `survey_review_baseline_r2.sha256`.
+
+The class rule at line 203 restates the five definitions from `survey_repair2_prompt.md` and says to take the first class met. The 37 rows are: reproduced 0; in apparent conflict 6 (E13–E15, E32–E34); testable 9 (E02, E03, E10, E11, E23, E24, E35–E37); required, no mechanism yet 6 (E01, E04, E05, E18, E22, E29); not addressed 16 (E06–E09, E12, E16, E17, E19–E21, E25–E28, E30, E31). That is the total printed at line 247. Nothing is marked reproduced.
+
+E32–E34 use the same rule-2 conflict. Each is conditional on matter coupling, and the thermal rows add the further condition that the extra branch participates as an ordinary radiating mode. E32’s experimental side cites E33 and E34. Both sides are quoted: S10 lines 249–251 call the surviving zero-frequency longitudinal direction “a characterised departure” from Maxwell, and S11 line 173 says “A second cone is only a departure if matter COUPLES to it.” S11 lines 161–163 leave observability undelivered. The survey does not resolve that condition.
+
+E01 is required because the physical count is a supplied input. `SUBSTRATE_REQUIREMENTS.md` lines 134–136, R-S1-01, status OPEN: “`D_brane = 3` went in and `D−1 = 2` came out.” S10 computes the map; it does not select `D = 3`.
+
+E10 and E11 are testable against S10’s common transverse root (`S10` lines 73–86; plan line 1183: degenerate by symmetry in a homogeneous brane), with the parity and transport condition stated. E13–E15 are apparent conflicts only if the reported β is real cosmic rotation and that same parity/transport condition holds. The β note keeps the papers’ parity-violation target separate from a speed measurement, and the cells do not resolve it. E12 stays not addressed: the measured object is the anisotropic spectrum `L(L+1)C_L^{αα}/2π`, and plan lines 1178–1183 name birefringence near a defect, not that sky spectrum. The parity caveat qualifies the rows that use homogeneous degeneracy; leaving it off E12 does not move E12 into another class.
+
+The terminology note (line 130) gives `ξ_w` both jobs. Plan lines 453–461 keep `u_L` apart from the `h`-branon charge. O2 lines 89–92 and 115–117 put `g_ij = δ_ij + ∂_i ξ_w ∂_j ξ_w` and `(∂ξ_w)^2` into the supplied geometry and optical counting. Part 3 also carries S11 lines 52–64 (`N_SO = {D=2→4, D=3→3, D=4→4, D=5→3}`, extras reflection-odd, “Sector separation is a `D=3` fact”), O2 lines 110–111 (no parity or chiral content selected), S11bB lines 53–54 and 61 (odd couplings “are not unphysical” and need a named reservoir and a stated power budget), and `git show ede8aa21:…/S9b_SHARED_PHYSICS.md` lines 117–119 (eikonal rays retained; subprincipal polarization transport excluded). Those lines match the files.
+
+E22 is required because S9b at `ede8aa21` lines 53–55 supplies `c_γ,1(x) ≡ c_γ,2(x) ≡ c_γ(x)`, and lines 106–109 put polarization-dependent propagation outside the step. E23 and E24 are testable because the same spec names common flyby deflection and common excess time as computands (lines 165–186). S9b is not treated as having reproduced polarization independence.
+
+Part 1 labels both reasons for two states: Gauss’s law as a classical constraint (line 29), and massless spin-1 helicity `±1` as the quantum fact (line 56). Stokes signs are marked as convention-dependent. Handedness is not described as motion into an extra dimension. Parts 1–4 do not propose a mechanism.
+
+Opened sources, matched to the survey:
+
+- PDG 2026 photon listing, https://pdg.lbl.gov/2026/listings/rpp2026-list-photon.pdf: adopted `< 1 × 10^{-18}` with document RYUTOV 07, “MHD of solar wind”; the confidence-level cell is blank; the printed conversion is `1 eV = 1.783 × 10^{-36} kg`. E35 uses that adopted limit, about `1.8 × 10^{-54}` kg, and says the number is PDG’s.
+- Ryutov author report, https://www.osti.gov/servlets/purl/940862: Proca, “single-fluid MHD,” “largely radial” flow “at the Pluto orbit,” safety factor `q=3`, `r=40 AU`.
+- E15, https://arxiv.org/html/2509.13654v2: `β = 0.215° ± 0.074°` at 68%, 2.9σ; the same paper says the ACT result `0.20° ± 0.08°` is the mean detector angle `⟨ψ_i⟩` and that ACT did not explicitly estimate β.
+- E36, https://arxiv.org/html/2301.12103v1: `< 4.8` and `< 7.1 × 10^{-51}` kg with host-DM evolution fixed, and `< 0.67 (< 1.01) × 10^{-50}` kg when it is free; NE2001 and halo DM `50 pc cm^{-3}` are in the text.
+- E37, https://arxiv.org/html/2404.17154v1: `≤ 3.5` and `≤ 6.5 × 10^{-51}` kg for the Gaussian halo prior `65 ± 15`; the flat-prior row is `≤ 3.8 (≤ 7.2)`.
+- E31, https://arxiv.org/html/2509.19446v5: 2–8 keV degree `46 ± 4%`; fitted `65 ± 8%` at 2 keV; vacuum birefringence “remains a long-standing but unconfirmed prediction of QED.”
+- E33 abstract via Crossref 10.1098/rsta.1985.0058: `σ = (5.66967 ± 0.00076) × 10^{-8}`. `0.00076/5.66967 = 0.00013405`, which is the survey’s “about `1.34 × 10^{-4}` relative.” Full text was not opened; the survey says so.
+- E12 abstract, arXiv:2006.08061: the SPTpol 95% bound matches line 84. E10 abstract, arXiv:1408.4121: polarization above 28% at 90% confidence and `ξ < 1 × 10^{-16}`. E03 abstract, arXiv:1302.6168: the kilogram range is the paper’s own.
+
+`SUBSTRATE_REQUIREMENTS.md` lines 3–19: “Sixteen entries, all OPEN,” and the light sector rests on S1–S8, “none of which have been run.” The survey’s authority split matches that.

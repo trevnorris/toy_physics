@@ -1,0 +1,148 @@
+steps/S11b_PREREGISTERED_PREDICTION.md:23:## T2 · The parity selection rule
+steps/S11b_PREREGISTERED_PREDICTION.md:112:  the family, so it cannot test a channel *count* or a parity *selection rule*.
+steps/S11bA_interface_response.md:57:**Parity**, `Ω` even, on the **symmetric** interval `[−L, L]`: `j^w` even ⇒ source `= 0` **exactly**;
+steps/S11bA_interface_response.md:127:| **P-D** | **both** controls move the parity result | ✓ confirmed — parity needs an even window **and** a symmetric interval |
+steps/S11bA_interface_response.md:189:| parity rule | requires an even window **and** a symmetric interval |
+steps/S11c_d_profile_conditioned_scattering.md:23:**CONDITIONAL:** the fixed model is omega=3, strict rest bulk, LAB_HELD/RHO4_CONSTANT and tangential momenta (1/5,1/10), with a selected effective sound-speed family. Twe
+steps/S11c_d_profile_conditioned_scattering.md:31:The measured quantity is one minus reflected-plus-transmitted transverse current divided by incident transverse current, including polarized cross terms. Positive is a de
+steps/S11c_d_profile_conditioned_scattering.md:58:**CONDITIONAL:** finite packet/source/matching evidence includes an inner-kernel bank, local Gaussian actions, polarization-dependent first-order forcing and matched tran
+directives/S10_SHARED_PHYSICS.md:512:### ⭐ Engine-local tags — declare them, so parity is meaningful
+directives/S10_SHARED_PHYSICS.md:515:each CAS emits its own solver-condition tags. ⛔ Those are **not** disagreements, and a parity checker that
+steps/S9_light_requires_shear.md:21:**1 — What Maxwell demands.** Two transverse polarisations · one speed · no longitudinal mode.
+steps/S9_light_requires_shear.md:237:- **Sign of `ω²` emitted per root**, so the sign-flip control can fail through the polarisation tests.
+steps/S9_light_requires_shear.md:342:  ⇒ ⭐ **Read the polarisation values as generic-locus values with the exceptions listed.**
+steps/S11bA_PREREGISTERED_PREDICTION.md:6:the parity split, the algebraic closure, the relative-flux identification, and the split control.
+steps/S11bA_PREREGISTERED_PREDICTION.md:10:## P-A · Impedance by parity
+steps/S11bA_PREREGISTERED_PREDICTION.md:14:belongs to. ⇒ the parity difference should appear **only** in how the two face pressures combine into a
+steps/S11bA_PREREGISTERED_PREDICTION.md:18:⚠ If `Z` itself comes out parity-dependent, my picture of the two half-spaces as independent is wrong,
+steps/S11bA_PREREGISTERED_PREDICTION.md:46:**Prediction: BOTH move `A2`'s result.** ⇒ the parity result is **not** a property of the window alone; it
+steps/S11b_RUN_CHECKLIST.md:28:| 10 | cross-engine comparison + control/dim/parity | ⬜ | ⚠ `reduction/` harness DELETED — replacement mapping below |
+steps/S11b_RUN_CHECKLIST.md:59:   harness (cross-engine agreement · dimensional homogeneity · control response · tag parity). Replacement:
+steps/S11b_RUN_CHECKLIST.md:60:   - cross-engine agreement + tag parity → the **T7 comparator** (G8a): join by name, residual paired
+steps/S11bB_interface_assembly.md:54:laboratory media (odd elasticity, odd viscosity, active and chiral fluids). ⛔ They are not unphysical.
+steps/S11bB_interface_assembly.md:76:structural reason: in-plane parity admits no `e_W ↔ u_T` bilinear.
+steps/O2_steady_brane_balance.md:111:isotropy, parity, stress symmetry, absent couple/chiral content, derivative cutoff or finite history
+steps/O2_steady_brane_balance.md:126:swirl/angular profile, direction/polarization-dependent optical stiffness, coupled thickness/bulk
+steps/O2_steady_brane_balance.md:127:branch, extra mixed `ωk`, or subprincipal/polarization transport result. Historical S11b rest-bulk,
+steps/S11_stray_longitudinal.md:55:The extras are **reflection-odd**: `(tr G)·ε^{ij}G_{ij}` at `D=2`, `ε_{ijkl}G_{ij}G_{kl}` at `D=4`.
+steps/S11_stray_longitudinal.md:177:  invariant speed"* was wrong as stated. ⭐ **Not circular:** the wave equation supplies the invariance,
+steps/S11_stray_longitudinal.md:205:the check retroactively. ⭐ It then **diagnosed its own circularity**, blind, and named the missing
+steps/S11_stray_longitudinal.md:284:fact** (at `D=2` the reflection-odd invariant mixes the sectors — Move 2), not structural; (iv) the
+steps/S11c_PARTIAL_CLOSEOUT.md:31:**OPEN:** S11c-e owns the conversion observable and must recover d's weak limit in a future finite-contrast calculation. The plan's charge preamble asks whether linear nonuniform physics
+directives/O2_SHARED_PHYSICS.md:45:of §§3.2–3.3: no isotropy, parity, stress symmetry, absence of couple, chiral or rotational-reference
+directives/O2_SHARED_PHYSICS.md:352:| Spherically symmetric profiles: scalar profiles general functions of `r`, radial `V` (§1; v9's live radial profiles, v9:43, 53–54, 85–86, 91, 113–114, 144) | Used: the printed
+directives/O2_SHARED_PHYSICS.md:353:| Isotropic optical speed, same shear-regime identification | Recorded optical scope. Direction-dependent stiffness, polarization-dependent propagation, coupled thickness/bulk branches
+steps/S11c_c1_curved_bulk_closure.md:53:  `13f0bd2c`; repair-2 (Fredholm re-freeze + dead parity axis) `dd34d564`. Blindness is the cross-engine control:
+steps/S11c_c1_curved_bulk_closure.md:69:  `t_s` binding) + repair-2 (Fredholm two-leg re-freeze; dead parity axis) — all 2-leg CLEARED. ⚠ The WL repair
+steps/S11c_c1_curved_bulk_closure.md:76:  bg-density field, regime/parity all UNRECONCILED — surfaced, not folded); raw-operand whitelist exactly
+steps/S11c_c1_curved_bulk_closure.md:90:  **(4) regime/parity naming — AGREE on content** (`OUTPUT_X`/`INPUT_X` vs bare is a bridgeable keying
+steps/S11c_c1_curved_bulk_closure.md:91:  convention; PARITY_MATRIX joins and IS the proven kernel); **(5) background density (rule 17) — UNDECIDED,
+steps/S11c_c1_curved_bulk_closure.md:102:  collapse at physical kinematics, sweep `AGREE=54`), the flat symbol, the parity matrix (= the kernel), the
+steps/S9_REBUILD_QUESTION_DEFECTS.md:48:when roots collapse, when a root disappears, and when a polarisation subset is empty.
+directives/S11bA_SHARED_PHYSICS.md:62:| parity combinations | **thickness** `δW ≡ ζ₊ − ζ₋` · **centre shift** `ζ_c ≡ (ζ₊ + ζ₋)/2` |
+directives/S11bA_SHARED_PHYSICS.md:148:**A2 · Parity.**
+directives/S11bA_SHARED_PHYSICS.md:153:⇒ `S11BA_PARITY_EVEN_JW`, `S11BA_PARITY_ODD_JW`, `S11BA_PARITY_INTERVAL`
+directives/S11bA_SHARED_PHYSICS.md:171:⇒ `S11BA_Z_IMPERMEABLE`, `S11BA_Z_BY_REGIME`, `S11BA_Z_BY_PARITY`, `S11BA_ADDED_MASS`,
+directives/S11bA_SHARED_PHYSICS.md:207:`Λ_p⁰`, `Λ_V⁰` and `ωτ`**. Then report, **for each of A4's three regimes and each parity combination**,
+directives/S11bA_SHARED_PHYSICS.md:220:⇒ `S11BA_PERMEABLE_COEFF_DIMS`, `S11BA_Z_PERMEABLE`, `S11BA_DISSIPATIVE_BY_REGIME_AND_PARITY`,
+directives/S11bA_SHARED_PHYSICS.md:247:independent of that parameter or not. ⭐ That is what distinguishes a parity selection rule from a
+directives/S11bA_SHARED_PHYSICS.md:249:⇒ `S11BA_CONTROL_WINDOW_PARITY`, `S11BA_CONTROL_INTERVAL_SYMMETRY`
+directives/S11c_b_SHARED_PHYSICS.md:26:  no bulk-response solve (`δp = Z·v_bulk`), no permeability/memory kernel, no face-parity impedance object
+directives/S11c_b_SHARED_PHYSICS.md:39:those contributions. The §0 exclusion of a face-parity impedance object is unchanged.
+directives/S11c_b_SHARED_PHYSICS.md:117:only through its gradients, never undifferentiated), **in-plane `O(3)` isotropy and parity**, **reflection
+directives/S11c_b_SHARED_PHYSICS.md:341:parity, or grade — the operator's own weak block extraction is the computation.
+directives/S11c_b_SHARED_PHYSICS.md:383:component, term, order, coefficient, parity, survival, or cancellation in prose.
+directives/S11c_b_SHARED_PHYSICS.md:476:survives at `(η,σ_W)=0`. It does **not** validate the coupling's gradient coefficient, sign, or parity, and
+directives/S11c_a_SHARED_PHYSICS.md:40:  Their independent parity coordinates are
+directives/S11c_a_SHARED_PHYSICS.md:97:`{u,∇u,θ,∇θ,e_W,∇e_W}` with in-plane translation invariance, the full in-plane `O(3)` including parity,
+directives/S11c_a_SHARED_PHYSICS.md:409:coefficient, parity, survival, or cancellation in prose.
+directives/S11bB_SHARED_PHYSICS.md:268:   reversal and the rates `J_±` and `V_±` odd; this parity assignment does not assume that time reversal is
+directives/S11bB_SHARED_PHYSICS.md:284:   Apply Onsager–Casimir to that all-flux matrix **at the same real `ω`**, using the parity of each
+directives/S11bB_SHARED_PHYSICS.md:285:   associated state variable (the opposite of the parity of its displayed rate); do not insert a complex
+directives/S11bB_SHARED_PHYSICS.md:358:- **In-plane isotropy _and_ parity** (the full `O(3)` acting on the three in-plane directions).
+directives/S11bB_SHARED_PHYSICS.md:659:not to be a scalar — if the response is operator-valued, or the polarizations split, or the effect is a
+steps/S10_two_transverse_photons.md:489:terms to have the energy-density dimension. The engines mark that circular
+steps/LIGHT_LEAKAGE_SCOPING.md:3:**Date:** 2026-10-07. This is an inventory, not a calculation. **No accepted nonuniform light-loss number** exists (PC:3,9). Survival has two recorded halves. What survives: “Both refle
+steps/LIGHT_LEAKAGE_SCOPING.md:18:The rows cover the directive's listed mechanisms; completeness of a chapter-derived union is **UNVERIFIED**, not asserted. Interface roughness is split by face parity (rows 7a/7b): the r
+steps/LIGHT_LEAKAGE_SCOPING.md:26:| 3 | Raman scattering — inelastic scattering off molecular/lattice vibrations with Stokes/anti-Stokes frequency shift (FT; AB §4.2). AB §4.2: the linear-polarisation term “depicts
+steps/LIGHT_LEAKAGE_SCOPING.md:36:| 12 | Polarization coupling/birefringence — symmetry breaking splits/mixes transverse polarizations (K/SL). | **PRESENT ANALOG, named future item:** S22 conversion/birefringence and d
+steps/LIGHT_LEAKAGE_SCOPING.md:39:**Mapping accounting:** the 13 directive mechanisms occupy 14 rows (roughness split by face parity) — **ABSENT 1** (13); **PRESENT ANALOG 7** (2, 7a, 8, 9, 10, 11, 12); **NOT ADDRESSED
+steps/LIGHT_LEAKAGE_SCOPING.md:83:| D. Marcuse, “Mode Conversion Caused by Surface Imperfections of a Dielectric Slab Waveguide,” *Bell Syst. Tech. J.* **48** (1969) 3187–3215, DOI [10.1002/j.1538-7305.1969.tb01742
+steps/LIGHT_LEAKAGE_SCOPING.md:87:| C. Scheibner et al., “Odd elasticity,” *Nature Physics* **16**, 475–480 (2020), DOI [10.1038/s41567-020-0795-y](https://doi.org/10.1038/s41567-020-0795-y), [preprint arXiv:1902.0
+steps/LIGHT_LEAKAGE_SCOPING.md:89:| A. C. Kubrusly, J. P. von der Weid and S. M. Dixon, “Experimental and numerical investigation of the interaction of the first four SH guided wave modes with symmetric and non-symmetr
+steps/LIGHT_LEAKAGE_SCOPING.md:94:No verified equation-bearing oracle is supplied for E4's Debye memory law, C3's nonlinear audit beyond the Brillouin phase-matching condition below, or O1/O2/O3/O5/O7: **gap**. The odd-m
+steps/LIGHT_LEAKAGE_SCOPING.md:98:All numerical parameters/profiles are **input assignments, not physical values** (SR:543–570). **S** means the two recorded survival halves: transverse reflection and transmission surv
+steps/LIGHT_LEAKAGE_SCOPING.md:108:| Route / regime | Source → destination | Local quantity, or gap | Exposure and status | Frequency / polarization | Validity | Recorded correlations | Survival | Yardstick |
+steps/LIGHT_LEAKAGE_SCOPING.md:110:| E1 / nonuniform, unique gradient-`e_W` leg included | Transverse → `θ,e_W,u_L` | Off-diagonal kernel; per-encounter probability/per-length loss **gap** (b:54–57) | Profile/width 
+steps/LIGHT_LEAKAGE_SCOPING.md:111:| E2 / PROPAGATING | Face → acoustic bulk | `H_a[Z]` (Hermitian/reactive parts “AGREE only at c1's first order”, c1:105–107); permeable-port Hermitian form, cross-engine **“UN
+steps/LIGHT_LEAKAGE_SCOPING.md:114:| E3 / closed representation of E1, not extra thickness route | Transverse → same scalar receivers/E2 response | `ΔΣ=extract(close)−extract(open-symbolic)`; S-matrix probability *
+steps/LIGHT_LEAKAGE_SCOPING.md:118:| E5 / PROPAGATING second hop | Scalar/normal face → acoustic bulk | `Z` “real, `ωρ_m/q`” (A:41) and `Re Z` “survives as `ρ_m/a_q`” (A:72), neither chosen; `a_q` undefined 
+steps/LIGHT_LEAKAGE_SCOPING.md:125:| C4 / strong edge, finite contrast | Transverse → conversion receivers; exact finite-contrast map **gap** | Observable **OPEN** (PC:31; d:68) | Physical profile/path/count **gap** (S
+steps/LIGHT_LEAKAGE_SCOPING.md:136:Codes: **YF** measured fiber attenuation; **LP** laboratory photon lifetime; **BO** bench-top optics; **CT** cosmological transparency; **SE** stellar energy; **MD** mechanical dissipat
+steps/LIGHT_LEAKAGE_SCOPING.md:152:| PB | Berceau et al., [PRA 85, 013837, primary paper](https://arxiv.org/pdf/1109.4792): vacuum magnetic birefringence **`Δn≤5.0×10⁻²⁰ T⁻²` per `4 ms` acquisition**. Phase/p
+directives/S11b_SHARED_PHYSICS.md:89:| parity combinations | **thickness** `δW ≡ ζ₊ − ζ₋` · **centre shift** `ζ_c ≡ (ζ₊ + ζ₋)/2` |
+directives/S11b_SHARED_PHYSICS.md:284:- **In-plane isotropy _and_ parity** — the full `O(3)` acting on the three in-plane directions.
+directives/S11b_SHARED_PHYSICS.md:528:   parity, region, or the shape of the answer. Schematically — **placeholder** content, ⛔ not this step's:
+directives/S11b_SHARED_PHYSICS.md:602:⇒ `S11B_PROJECTION_FINITE`, `S11B_PROJECTION_INFINITE`, `S11B_PARITY_EVEN_JW`, `S11B_PARITY_ODD_JW`,
+directives/S11b_SHARED_PHYSICS.md:603:  `S11B_PARITY_INTERVAL`, `S11B_DYNAMIC_WINDOW_EXTRA_TERMS`
+directives/S11b_SHARED_PHYSICS.md:618:⇒ `S11B_Z_IMPERMEABLE`, `S11B_Z_BY_REGIME`, `S11B_Z_BY_PARITY`, `S11B_ADDED_MASS`, `S11B_GRAZING_BEHAVIOUR`
+directives/S11b_SHARED_PHYSICS.md:631:⭐ **Permeable-response dissipation audit.** For **each of B0b's three regimes and each parity combination**,
+directives/S11b_SHARED_PHYSICS.md:636:  `S11B_PERMEABLE_DISSIPATIVE_BY_REGIME_AND_PARITY`, `S11B_PERMEABLE_DISSIPATION_VS_OMEGA_TAU`
+directives/S11b_SHARED_PHYSICS.md:737:   **that** all-flux matrix at the same real `ω` using each state variable's parity (the opposite of its
+directives/S11b_SHARED_PHYSICS.md:854:Projection / parity controls — ⭐ run each as a **controlled one-parameter family**, ⛔ not an arbitrary
+directives/S11b_SHARED_PHYSICS.md:863:- **control W** — `b ≠ 0`, `c = 0` (window shift only): recompute B0a's parity result as a function of `b`.
+directives/S11b_SHARED_PHYSICS.md:865:⭐ For each, state whether the parity result is identically independent of that parameter — ⭐ this
+directives/S11b_SHARED_PHYSICS.md:866:distinguishes a parity **selection rule** from a domain-symmetry **artifact**. ⛔ Do not vary both at once.
+directives/S11b_SHARED_PHYSICS.md:892:⇒ `S11B_CONTROL_WINDOW_PARITY`, `S11B_CONTROL_INTERVAL_SYMMETRY`, `S11B_CONTROL_NO_THICKNESS`,
+directives/S11b_SHARED_PHYSICS.md:938:### ⭐ Engine-local tags — declare them, so parity is meaningful
+directives/S11c_c1_SHARED_PHYSICS.md:28:`Z_s(ω;k,k′)` (a two-momentum nonlocal kernel — §3a), its bulk-regime structure, branch selection, face parity,
+directives/S11c_c1_SHARED_PHYSICS.md:131:S11B_Z_IMPERMEABLE , S11B_Z_BY_REGIME , S11B_Z_BY_PARITY , S11B_ADDED_MASS , S11B_GRAZING_BEHAVIOUR ,
+directives/S11c_c1_SHARED_PHYSICS.md:133:S11B_PERMEABLE_DISSIPATIVE_BY_REGIME_AND_PARITY .
+directives/S11c_c1_SHARED_PHYSICS.md:177:face-parity blocks, and cancellations in §§3–5 are **outputs** computed from them; ⛔ none is stated here.
+directives/S11c_c1_SHARED_PHYSICS.md:191:(`∂_x h_s^α = (s/2)∂_x W_bg^α + …`), a supplied-map identity. ⛔ **Do not infer a parity of any face object from
+directives/S11c_c1_SHARED_PHYSICS.md:274:separate `q_out` data (§1b), not as kernel-entry signs. Emit the **face-parity** structure of the first-shape-order
+directives/S11c_c1_SHARED_PHYSICS.md:275:correction (its parity under `s→−s`, and whether it couples the `δW` and `ζ_c` combinations of the two per-face
+directives/S11c_c1_SHARED_PHYSICS.md:283:  S11CC1_DTN_BY_REGIME_PAIR , S11CC1_DTN_BY_PARITY , S11CC1_DTN_HERMITIAN_PART , S11CC1_DTN_REACTIVE_PART ,
+directives/S11c_c1_SHARED_PHYSICS.md:296:report the response as what it is — per face and per parity combination — and ⛔ do not force it into a single
+directives/S11c_c1_SHARED_PHYSICS.md:311:per regime pair and parity combination:
+directives/S11c_c1_SHARED_PHYSICS.md:358:term, order, coefficient, parity, survival, regime, branch, or cancellation in prose.
+directives/S11c_c1_SHARED_PHYSICS.md:362:  `S11CC1_DTN_BY_REGIME_PAIR`, `S11CC1_DTN_BY_PARITY`, `S11CC1_DTN_HERMITIAN_PART`, `S11CC1_DTN_REACTIVE_PART`,
+directives/S11c_c1_SHARED_PHYSICS.md:427:this source; omitting it would leave the §3a parity untested). ⚠ **The profile-advection channel (`Σ_E`) and the
+directives/S11c_c1_SHARED_PHYSICS.md:460:by object, regime pair, and parity. ⛔ This is a **regression smoke test only**: it checks the curved construction
+directives/S11c_c1_SHARED_PHYSICS.md:462:coefficient/sign/parity/branch structure, which vanish at `(η,σ_W)=0`. `(η,σ_W)→0` is **not** an accepted
+directives/S11c_c1_SHARED_PHYSICS.md:572:regime/parity/term-origin structural-view diagnostics are **emit-only**, in the annexed `.out`, ⛔ not in the
+directives/S11c_c1_SHARED_PHYSICS.md:597:object; a single object's branch/face/DOF/density/regime-pair/parity/direction/mutation cases are a keyed CAS map
+directives/S11c_c1_SHARED_PHYSICS.md:616:flat symbol, the rigid-shift residual, the regime-pair/parity/branch structure, the Hermitian and reactive parts)
+DEFECT_REGISTER.md:217:each right-hand side as INDEPENDENT / CIRCULAR / UNDETERMINED* — **was started on 2026-08-02 and KILLED
+DEFECT_REGISTER.md:225:of `ξ_h` — ⛔ **the very quantity that relation defines.** Circular, no content. ⚠ But `ħ`'s other uses
+DEFECT_REGISTER.md:288:*transverse-traceless* / *tensor mode* / *GW polarization* returns **nothing**.
+DEFECT_REGISTER.md:298:the locus above. ⭐ Note also that GR's gravitational waves are **transverse with two polarizations** —
+DEFECT_REGISTER.md:394:| **F6** | ⛔ **`constraint_dimension` measures independence, not truth.** It catches **circularity** (a relation the others already imply) and is blind to a wrong **coefficient**, a wrong **sign*
+SUBSTRATE_REQUIREMENTS.md:134:- **on failure** — S10's headline reads *"light having exactly two polarisations is a statement that our
+SUBSTRATE_REQUIREMENTS.md:178:  carries and their polarisation.
+SUBSTRATE_REQUIREMENTS.md:188:  in `q² = ω²/c_s0² − k²`, its polarisation and the regime in which that acoustic approximation applies.
+V3_STEP_PLAN.md:145:  > substitute a **circular** relation the survivors already imply. ⛔ **Do not assert that any error class
+V3_STEP_PLAN.md:379:1. ⛔ *"brane shear gives exactly two transverse polarisations."* ⚠ **The form control refutes the
+V3_STEP_PLAN.md:712:  assume universality to fix throat geometry and then "derive" universality (circularity — M3).
+V3_STEP_PLAN.md:1183:| 4 | **birefringence near a defect** — the two polarisations are degenerate *by symmetry* in a homogeneous brane; a defect splits them | a defect profile | as (1) |
+directives/S9b_SHARED_PHYSICS.md:58:  for both polarizations, measured relative to the shear-carrying material; the supplied polarization
+directives/S9b_SHARED_PHYSICS.md:113:- polarization-dependent propagation;
+directives/S9b_SHARED_PHYSICS.md:123:  terms of the underlying operator, which affect amplitude and polarization transport.
+directives/S9b_SHARED_PHYSICS.md:397:**w-parity — neutral sector (2026-10-07; D2, D4).** For an electrically neutral mass the adopted
+directives/S9b_SHARED_PHYSICS.md:434:| Exchange; O3 `Π_n`, S12 partners/reactions | P3 supplies the coordinate in-plane carry `j_n V^i`. | Additional momentum partners/reactions and bulk-direction carry with O6/normal m
+directives/S9b_SHARED_PHYSICS.md:546:  - polarization transport;
+directives/S11c_c2_SHARED_PHYSICS.md:82:the parity matrix (= the kernel) AGREE.
+directives/S11c_c2_SHARED_PHYSICS.md:165:`(ε,η,σ_W)` multigrade and restored `[L,T,M]` dimension, and states no component value, sign, order, parity, or grade
+directives/S11c_c2_SHARED_PHYSICS.md:179:`(α,ρ)`** (both faces summed, as the slab EOM is), the per-face contributions as provenance, and the face-parity
+directives/S11c_c2_SHARED_PHYSICS.md:184:  S11CC2_CLOSED_SLAB_OPERATOR_PARITY_BLOCKS .
+directives/S11c_c2_SHARED_PHYSICS.md:268:- The **closed full slab operator** (assembled two-face, per-face provenance, parity blocks) — §3a.
+directives/S11c_c2_SHARED_PHYSICS.md:410:  a **secondary** smoke test only (cannot see coefficient/sign/parity).
+directives/S11_SHARED_PHYSICS.md:184:   sign, parity, or the shape of the answer. ⚠ Schematically — with **placeholder** content, ⛔ not this
+directives/S11_SHARED_PHYSICS.md:1097:### ⭐ Engine-local tags — declare them, so parity is meaningful
+directives/S11_SHARED_PHYSICS.md:1101:⛔ Those are **not** disagreements, and a parity checker that reports them as gaps trains its reader to
+directives/S11c_d_SHARED_PHYSICS.md:127:⛔ **There are NO c2 term-origin, parity, self-energy-increment, or six-§3d-re-adjudication export rows** — those are
+directives/S11c_d_SHARED_PHYSICS.md:419:document supplies no component value, sign, parity, grade, or expected residual.
+directives/S11c_d_SHARED_PHYSICS.md:449:J_{ab}^{(e)} ≡ the polarized S11b normal energy-current bilinear 𝓙_n[l_a,r_b]
+directives/S11c_d_SHARED_PHYSICS.md:481:`N13`: "confinement of light" = **survival of the transverse polarization channel**. Conversion into a **bound**
+directives/S11c_d_SHARED_PHYSICS.md:780:on each constant background. They do not validate a gradient coefficient, sign, or parity and do not close the
+directives/S11c_d_SHARED_PHYSICS.md:913:§3d re-adjudications, the 3 N6 premise caveats, the withdrawn F/G, and that no term-origin/parity/increment/§3d rows

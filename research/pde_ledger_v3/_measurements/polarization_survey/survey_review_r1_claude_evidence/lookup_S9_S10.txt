@@ -1,0 +1,115 @@
+=== steps/S9_light_requires_shear.md 21,21
+    21	**1 — What Maxwell demands.** Two transverse polarisations · one speed · no longitudinal mode.
+=== steps/S9_light_requires_shear.md 329,352
+   329	## ⛔ WHAT THIS STEP STILL DOES NOT ESTABLISH
+   330	
+   331	- ⛔ **P2 — that a scalar superfluid carries no transverse mode.** Cited from one external review; ⛔ **no
+   332	  script executes it**, and the rebuild did not add one. It remains a **supplied premise**.
+   333	- ⛔ **The absence of a propagating longitudinal wave is ASSUMED, not derived.** The curl-only action sets
+   334	  the longitudinal restoring stiffness to **zero by construction**, so `ω² = 0` there is the postulate
+   335	  restated. ⛔ It removes the restoring *force*, ⛔ **not the degree of freedom** — which is why the
+   336	  longitudinal test is emitted at every root.
+   337	- ⛔ **Bulk shear-freeness** is postulated; the bulk is absent from the action, so nothing here tests it.
+   338	- ⚠ **The assumption set is computationally INERT.** Removing it entirely leaves every computed value
+   339	  byte-identical. ⭐ The physics is nonetheless correctly bounded — by generic rank **plus explicitly
+   340	  emitted exceptional loci**, and a reviewer verified that enumeration is **complete** for the anisotropic
+   341	  control (roots collide exactly where `ρ_z = ρ_br` or `k_x = k_y = 0`, and both are emitted).
+   342	  ⇒ ⭐ **Read the polarisation values as generic-locus values with the exceptions listed.**
+   343	- ⚠ **The `.py` was written AFTER the `.wl`**, so this is ⛔ not the blind-first ordering. Construction was
+   344	  independent (different naming, granularity, idioms; a hand-rolled Euler–Lagrange where SymPy has a
+   345	  built-in) and the builder was barred from reading the `.wl` — ⭐ but agreement here is **weaker evidence**
+   346	  than at a step where both engines predate any comparison.
+   347	- ⚠ One tag remains **unparsed** by the consumer: the anisotropic third root's sign is a `Piecewise`,
+   348	  because the sign is conditional on the parameter domain and the assumptions are inert.
+   349	- ⚠ Limits taken: sharp zero-width sheet · `v₀ → 0` · no dissipation · frequency-independent moduli ·
+   350	  continuum limit · amplitude → 0.
+   351	
+   352	## Registry additions (executed at this step)
+=== steps/S10_two_transverse_photons.md 70,102
+    70	
+    71	The measured generic result is:
+    72	
+    73	> For the supplied curl-only in-plane action, at nonzero wavevector and away
+    74	> from allowed exceptional strata, the nonzero root has D − 1 transverse null
+    75	> directions in every measured MAIN case D = 2, 3, 4, 5. Thus the D = 3 member
+    76	> has two transverse directions.
+    77	
+    78	The form controls prohibit a stronger reading of that sentence. At both
+    79	dimensions where the form-changing packages and MAIN were emitted, D = 3 and
+    80	D = 4, FULLGRAD has the same nonzero root and the same D − 1 transverse
+    81	nullity as MAIN. The transverse count therefore cannot be attributed to the
+    82	curl-only form. What that form determines here is the disposition of the one
+    83	remaining, longitudinal direction: unlike FULLGRAD, it leaves that direction
+    84	at the zero root instead of putting it on the propagating root. DIVONLY, which
+    85	reverses the two sectors, confirms that the stiffness form can change the
+    86	count even though curl-only is not what uniquely produces D − 1.
+    87	
+    88	A separate condition comes from the inertia structure. `XFORM_ANISO` is not a
+    89	stiffness-form control and does not multiply the inertia by one scalar: it
+    90	keeps `S_curl` and changes the kinetic quadratic form on one distinguished
+    91	axis to `s_ρ(∂_t u_1)² + Σ_{j=2..D}(∂_t u_j)²`, with `s_ρ > 0` and
+    92	`s_ρ ≠ 1`. Thus the isotropic inertia value is not admitted by this control.
+    93	Writing each root as `N2 / N3`, where N2 is total nullity and N3 is the
+    94	basis-independent exactly-transverse nullity, the original and focused readings are:
+    95	
+    96	| D | case | roots in emitted order: N2 / N3 | total N2 / N3 over propagating roots |
+    97	|---:|---|---|---:|
+    98	| 3 | MAIN, generic | zero `1 / 0`; positive `2 / 2` | `2 / 2` |
+    99	| 3 | ANISO, generic | zero `1 / 0`; positive `1 / 1`; positive `1 / 0` | `2 / 1` |
+   100	| 3 | ANISO, parallel stratum | zero `1 / 0`; positive `2 / 2` | `2 / 2` |
+   101	| 3 | ANISO, perpendicular stratum (new) | zero `1 / 0`; positive `1 / 1`; positive `1 / 1` | `2 / 2` |
+   102	| 4 | MAIN, generic | zero `1 / 0`; positive `3 / 3` | `3 / 3` |
+=== steps/S10_two_transverse_photons.md 170,200
+   170	headline because the headline is otherwise independently quotable.
+   171	
+   172	The physical selection D = 3 is not made in S10. The live S10 computation keeps
+   173	D symbolic for dimensions and evaluates an indexed sweep at D = 2, 3, 4, 5.
+   174	The new Lean baseline proof establishes the conditional map D ↦ D − 1 for
+   175	arbitrary finite D with a nonzero wavevector, extending the measured sweep.
+   176	Neither establishes which D nature selects.
+   177	
+   178	## What was supplied and what was computed
+   179	
+   180	The shared specification supplies:
+   181	
+   182	- a D-component in-plane displacement u, with its separation from every
+   183	  out-of-plane field inherited rather than tested;
+   184	- the real cosine plane-wave ansatz;
+   185	- positive inertia and stiffness coefficients, nonzero real wavevector,
+   186	  unstrained rest background, no dissipation, and linear response;
+   187	- the curl-only stiffness density
+   188	
+   189	      S_curl = (1/2) Σ_i Σ_j (∂_i u_j − ∂_j u_i)²
+   190	
+   191	  in
+   192	
+   193	      L = (ρ_br/2) Σ_j (∂_t u_j)² − (μ_R/2) S_curl.
+   194	
+   195	These premises and the action are at
+   196	directives/S10_SHARED_PHYSICS.md:13-28, :30-47, and :82-107. The action is an
+   197	input, not a result of the mode count.
+   198	
+   199	From that input each engine constructs the Euler–Lagrange equations; obtains the
+   200	dynamical matrix by an equation-of-motion route and a quadratic-form route;
+=== steps/S10_two_transverse_photons.md 235,255
+   235	:483, :493, :496; and :676-677, :696, :699, :709, :712.
+   236	
+   237	The raw root formula is 0 and μ_R |k|² / ρ_br. Under the supplied
+   238	positive-coefficient and nonzero-wavevector assumptions, the latter is
+   239	positive. The zero-root null direction is longitudinal and has no transverse
+   240	nullity; the positive root has D − 1 total and D − 1 transverse null
+   241	directions. This paired raw reading is not a blanket comparator pass for every
+   242	Q3 expression; the joined integer families below are the cross-engine result
+   243	claimed here.
+   244	
+   245	The zero root retains a degree of freedom; it does not remove one. What the
+   246	curl-only stiffness removes is the restoring stiffness for the longitudinal
+   247	direction. The per-root nullities make the distinction explicit:
+   248	`1 + (D − 1) = D` in every MAIN dimension measured, so all D amplitude
+   249	directions remain in the spectrum. Within the light sector, Maxwell has no
+   250	counterpart to this surviving zero-frequency longitudinal direction. That is
+   251	a characterised departure, and its onward disposition belongs to S11
+   252	(`stray_longitudinal`). S10 assigns it no further interpretation.
+   253	
+   254	The live name join supplies stronger, but still delimited, support for the
+   255	integer count. Across the 26 shared root cases, each of N2 rank, N2 nullity, N3

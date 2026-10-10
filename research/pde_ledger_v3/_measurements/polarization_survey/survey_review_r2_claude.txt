@@ -1,0 +1,63 @@
+## Polarization survey review, round 2 (fresh Claude leg)
+
+**Verdict: NEEDS REVISION.** One row is still in the wrong class: E12, the same pair that round-1 item 2 flagged. One model source is under-read. One cosmological mode-count bound is missing. The class definitions themselves overlap.
+
+The artifact's sha256 is `96c52bdc…`, which matches `survey_review_baseline_r2.sha256`. I did not read the review reports, and I modified nothing under the repo. One side effect: WebFetch auto-saved the PDG PDF under `~/.claude/projects/…/tool-results/`. I did not read that copy; I downloaded it again to /tmp. All evidence is in `/tmp/polsurvey_r2/`, and each `.txt` lookup file starts with the `$ command` that produced it.
+
+### Findings
+
+**1. E12 is in the wrong class (survey L220, and the rule-5 wording at L203).**
+- **Survey, E12:** "**Rule 5:** the tested anisotropic CMB rotation power spectrum depends on a cosmological polarization source and sky-transport/statistics object not defined here."
+- **Survey, E11 (L219), placed under rule 3 on the same S10 spectrum:** "No step has mapped that spectrum to the constrained dimension-four SME coefficients or compared the measured bound."
+- **Definitions (`survey_repair2_prompt.md`):** rule 3 is "A model source supplies or computes the object the measurement constrains (for example, the spectrum whose splitting a birefringence bound limits)". Rule 5 ends "…and no **model source bears on it**." The survey's paraphrase at L203 reads "no source bears on **that response**", which is narrower.
+- **Model source** (`nl -ba V3_STEP_PLAN.md | sed -n 1183p`, in `plan.txt`): "the two polarisations are degenerate *by symmetry* in a homogeneous brane; a defect splits them". This bears directly on spatially varying rotation.
+- **External source** (SPTpol abstract, arXiv 2006.08061, opened, in `arxiv_abstracts_stdout.txt`): "We reconstruct a map of cosmic polarization rotation anisotropies… constraints on… primordial magnetic fields… and… the Chern-Simons electromagnetic term." This is rotation picked up along the path, not emission physics. E13–E15 depend on the same CMB source and EB statistics, yet the survey is not demoting them for it.
+- **Fix:** classify E12 by the same rule as E10/E11: Testable, under the homogeneous condition. If the author holds that the constrained object is the defect-induced splitting, rule 4 applies instead. Rule 5 does not. Restore the definition's wording "no model source bears on it" at L203.
+
+**2. S11:52–64 is under-read, and the plan's L1183 is half-quoted, in Part 3 L171 and E10–E15 (L218–223).**
+- **Survey:** "S11_stray_longitudinal.md:52–64 gives a dimension/object-specific proper-rotation/reflection count". This is offered as evidence that the parity condition is not established.
+- **Source** (`s11.txt`):
+  - L52: "`N_SO = {D=2 → 4, D=3 → 3, D=4 → 4, D=5 → 3}` `N_O = 3 for every D`"
+  - L55: "The extras are **reflection-odd**: … at `D=2`, … at `D=4`."
+  - So at D=3, N_SO = N_O. In the selected quadratic first-gradient stiffness there is no reflection-odd (chiral) invariant.
+- Within its own class, this source supports the model side of E13–E15. The open parity/chirality question sits outside that class: higher-gradient terms, other fields, nonuniform backgrounds (O2:110–111). The E13–E15 model side also quotes only "degenerate… in a homogeneous brane" and drops "a defect splits them".
+- **Fix:** say in Part 3 and E10–E15 that S11 finds no reflection-odd invariant at D=3, unlike D=2 and D=4. Locate the open condition outside that class. Quote L1183 in full. Do not resolve anything.
+
+**3. A load-bearing cosmological mode-count bound is missing: N_eff.**
+- **Source** (Planck 2018 VI, arXiv 1807.06209, abstract opened, `planck2018_abs.html`): "Combining with BAO we constrain the effective extra relativistic degrees of freedom to be N_eff = 2.99 ± 0.17."
+- **Script** `/tmp/polsurvey_r2/neff_extra_mode.py`, stdout `/tmp/polsurvey_r2/neff_extra_mode_stdout.txt`:
+  - `g=1 extra boson sharing photon temperature after e+e-: dN_eff = 2.2016…`
+  - `g=1 extra boson decoupled with neutrinos (T_x = T_nu): dN_eff = 0.5714…`
+  - That is a shift of about 13σ or 3.4σ.
+- The survey itself says FIRAS's differential sky/reference measurement can cancel an extra mode (E34: "its power must enter the calibrated CMB radiance rather than cancel"). N_eff sees an extra thermalized mode through the expansion rate, with no detector coupling needed. That makes it the more direct cosmological count for E32–E34.
+- **Fix:** add an entry with its assumptions: Friedmann/GR expansion and early-universe thermalization. Add a Part 4 row under the E32–E34 rule, with its own conditions.
+- **Related, minor:** the PDG 2026 listing that E35 opened also lists an FRB value, "(16 + 3 − 9) × 10⁻¹⁵ … LEMOS 25", with the note "Do not present an upper limit" (`pdg_photon_2026.txt`). Its arXiv abstract (2504.21129, opened) gives 29.4 (+5.80 / −15.5) × 10⁻⁵¹ kg. If E36/E37 stand for the FRB literature, mention it and mark it as not established.
+
+**4. The class definitions overlap (rule 3 vs the second sentence of rule 4). This affects E01 and E22.**
+- Rule 3 covers objects a source "supplies". Rule 4 adds "A fact that follows only from a supplied input that states it also belongs here." Under strict first-match order, E22 meets rule 3 first. S9b@`ede8aa21`:53–55 supplies "`c_γ,1(x) ≡ c_γ,2(x) ≡ c_γ(x)`" (`s9b.txt`), which is the object a helicity-delay bound constrains, and no step has compared them. The survey puts E22 under rule 4 without stating why rule 4 wins.
+- E01's stated reason, "not a computed tomography/physical-state-selection object for rules 1 or 3", contradicts S10:73–76, which computes exactly that count. The sound reason E01 fails rule 3 is that S10 already compared it ("Thus the D = 3 member has two transverse directions"), and R-S1-01 says the D = 3 input restates it.
+- The cause is at the definition level. **Fix:** the definitions should state that rule 4's supplied-input clause takes precedence over rule 3. The survey should then state that precedence and correct E01's reason.
+
+**5. Two v3 sources on parity and w-directed motion are missing.**
+- `S11bB_interface_assembly.md:74–76` (`missed_candidates.txt`): "Both engines, same structural reason: in-plane parity admits no `e_W ↔ u_T` bilinear." This is the one v3 result explicitly attributed to parity, which O2:110–111 leaves unselected.
+- `SUBSTRATE_REQUIREMENTS.md:425`, R-S8-06: "does not identify the thickness mode with S10's out-of-plane displacement". The records carry two distinct w-directed motions, thickness/breathing and h. The terminology note (L130) names only `ξ_w=ℓh`.
+- **Fix:** add both to Part 3 with their statuses.
+
+### Checked and sound
+
+- **Appendix:** all 27 appendix commands re-run byte-identical to the recorded output (script `/tmp/polsurvey_r2/rerun_appendix.py`, stdout `rerun_appendix_stdout.txt`). R31's search is reproduced: exit 1, empty output.
+- **Part 3 quotations and statuses** match the sources for S9, S10, S11, S11b, S11bB:53–63, O2:89–127, S11c closeout, S11c-d:58, SUBSTRATE (3–19, 128–145, 226–345), DEFECT B2/C10, LIGHT_LEAKAGE:36, the plan (413–416, 453–462, 871–905, 1174–1204) and S9b@`ede8aa21` (34–55, 106–119, 165–186). HEAD's S9b amendment 2 leaves the cited polarization lines unchanged (`git diff ede8aa21 HEAD`).
+- **Counts:** 0 / 6 / 9 / 6 / 16 = 37 matches the rows. No stale class names remain.
+- **E32–E34** share one rule, and E32 cites E33/E34.
+- **Part 2 values against opened sources:**
+  - E10, E12, E13, E14, E18, E20, E22 and E34: arXiv abstracts.
+  - E15: v2 abstract.
+  - E21: published abstract.
+  - E31: the abstract says VB "remains a long-standing but unconfirmed prediction", as the survey states.
+  - E33: Crossref abstract.
+  - E35: the PDG PDF gives "< 1 × 10⁻¹⁸ … RYUTOV 07", with the CL column blank.
+  - E36 and E37: assumptions, priors and limits match.
+  - Conversions (`numeric_checks_stdout.txt`): 1×10⁻¹⁸ eV = 1.78×10⁻⁵⁴ kg; 0.10×10⁻⁴ rad² = 0.0328 deg².
+- **Part 1** is correct and labelled classical or quantum, including both reasons for two states.
+- **Earlier rounds:** every round-0 "what must be true" item holds. Round-1 items 1, 3 and 4 hold. Item 2 does not (findings 1 and 4).
+- **Scope:** no mechanism is proposed and no conflict is resolved.

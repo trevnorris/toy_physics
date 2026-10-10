@@ -1,0 +1,71 @@
+$ nl -ba steps/S11bB_interface_assembly.md | sed -n 66,82p
+    66	loss peak at `ωτ ~ 1`** (zero at both ends), so it is bounded by whatever measurement of anomalous
+    67	mechanical dissipation covers that band. ⚠ A *numerical* bound needs the matter→brane-compression coupling,
+    68	which is the gravity sector and is **not built** ⇒ today this is a **structural** test, not a number.
+    69	
+    70	⭐ **This was not predicted.** Nothing in the pre-registration anticipated the region.
+    71	
+    72	## ⭐⭐ The other two results
+    73	
+    74	**The transverse mode is completely decoupled on a uniform background.** The coupling is **identically
+    75	zero**, the dispersion is `ρ_br⁰ω² = μ_R k²`, and the imaginary part is **zero**. Both engines, same
+    76	structural reason: in-plane parity admits no `e_W ↔ u_T` bilinear.
+    77	⛔ **This does NOT settle whether confinement is unconditional** — that is a non-uniform question (S11b-C).
+    78	⚠ Its dimension is **undetermined**, because a coefficient that vanishes identically has none.
+    79	
+    80	**The breathing mode is stable iff `K₀ > 0`.** On the soluble slice (`k = 0`, impermeable, no reciprocal
+    81	coupling), derived by **both** engines from their **own** assembled determinants:
+    82	
+$ nl -ba SUBSTRATE_REQUIREMENTS.md | sed -n 405,430p;530,540p;578,592p
+   405	- **note** — this is a first-route obligation from B's hand-forward: `Λ_X(ω) = −Λ_V(ω)` is
+   406	  *"**conditional** on microscopic time-reversibility, which the model does not postulate"*
+   407	  (`steps/S11bB_interface_assembly.md:190`). The records name no step that owns the missing premise, so S1
+   408	  is a register inference. Onsager–Casimir is a second-route candidate only, not a reproduced prior result.
+   409	  The equilibrium issue is `R-S6-02`; the driven state and power budget are separately `R-S12-02` and
+   410	  `R-S12-01`.
+   411	
+   412	### R-S8-06 — material displacement and the slab's quadratic inertia
+   413	
+   414	- **source** O2 (material identification only; `steps/O2_steady_brane_balance.md`, register handoff); S11 (`steps/S11_stray_longitudinal.md`, move 1 / finite census); S11b-B
+   415	  (`steps/S11bB_interface_assembly.md`, breathing quadratic) · **target** S8
+   416	  (**register inference for the original S11/S11b records; O2 names S8 for the material identification**) · **status** OPEN
+   417	- **requirement** — `u` as the material displacement of the stuff whose density is `ρ_br`, and the
+   418	  quadratic kinetic form of that material and the thickness degree of freedom (B's `μ_W`) on the
+   419	  original homogeneous/slab domain. O2 is a consumer of the material identification only.
+   420	- **on failure** — if `u` is a director rather than that displacement, S11's continuity identification
+   421	  `δρ_br = −ρ_br ∇·u` and its compression argument do not follow. Its finite census requires nonzero
+   422	  `ρ_br`; B's breathing-root interpretation also rests on the stated inertial model. A stiffness
+   423	  functional alone (`R-S8-01`) does not supply this identification or the kinetic form.
+   424	- **note** — this asks for the field identity and inertia, not numerical benchmark values of `ρ_br`
+   425	  or `μ_W`, and does not identify the thickness mode with S10's out-of-plane displacement. The cited
+   426	  records name no future owner for this object; S8 is a register inference
+   427	  (`steps/S11_stray_longitudinal.md:32–38`; `steps/S11bB_interface_assembly.md:80–85`).
+   428	- **O2 scope** — O2 accounts for the material whose displacement is `u`, density is `ρ_br` and live
+   429	  background velocity is `V`. This recorded/supplied identification fixes which material the named
+   430	  conditional balance describes; without it the stated material object and its force/velocity
+   530	  **magnitude** is postulated and defect `B2` closed the polar-`P` route to deriving it ⇒ ansatz, ⛔ no
+   531	  entry. Its **form** has no such closure ⇒ `R-S8-01`, a live requirement. The two sit in the same
+   532	  sentence of S9's record and go to different registers.
+   533	- ⛔ **A requirement is not everything a later step would find useful.** A simulation needs `ρ_br` and
+   534	  `μ_R` separately rather than only their ratio; that is a *consumer's* need pointing **forward**, ⛔ not
+   535	  an obligation on which a banked result rests. It got no entry.
+   536	- ⭐ **The load-bearing ones are the identifications nobody computed.** `R-S8-02` — that the in-plane and
+   537	  out-of-plane sectors decouple — is the single entry on which S10's headline number depends, and it was
+   538	  flagged inside S10 **at the moment the identification was made**. ⇒ read a record for its *flagged
+   539	  identifications* first; they are where the requirements are.
+   540	
+   578	questions are not recast as dependencies of its closed homogeneous census.
+   579	
+   580	**Bulk EOS exponent (`n`, rule 6).** No kept S9, S11, S11b or S11c result read here rests on selecting
+   581	`n`: S9's supplied bulk-sound formula carries the inheritance, while its light result uses the brane
+   582	stiffness/inertia ratio; S11 and S11b use `c_s0` in the bulk acoustic branch, and the kept S11c uniform
+   583	checks fix or vary effective sound speed without deriving the EOS. **No S2 entry is added.**
+   584	`n_eos = 5` is inherited. Its original light-side justification took light's phase speed to be the bulk
+   585	sound speed (`research/1pn_optics/paper/1pn_optics.tex:720–737`, `:975–978`); that paper's competing
+   586	constructions and reasons for preferring `n = 5` are at `:2165–2343`. Whether, and where, `n` enters
+   587	light bending and delay under v3's light picture remains open — **no owner named** in the records read.
+   588	`V3_STEP_PLAN.md:208–250` retains the provisional medium EOS and its half-two parent-action debt;
+   589	**O-02 stays open**. This pass does not decide whether `K` and the exponent count as one entry or two.
+   590	
+   591	**Second route, by step.** S11 has **no identified prior-art route**: its record names the
+   592	rejected-Cauchy-branch coefficient but no objection to that branch, so the Cauchy branch is a candidate

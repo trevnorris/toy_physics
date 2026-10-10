@@ -1,0 +1,130 @@
+=== steps/S11_stray_longitudinal.md 13,27
+    13	## What it does
+    14	
+    15	Lifts S10's zero to a propagating longitudinal mode, enters the brane's compression modulus as a
+    16	**postulated** knob with a **named retirement condition**, closes the homogeneous three-finite-mode
+    17	census, and derives the simple \(k_w=0\) grazing locus. The free mode's actual leakage remains an
+    18	interface and spectral-boundary problem; its possible finite-amplitude photon-helper role additionally
+    19	requires nonlinear coupling and a harmonic/sideband radiation audit.
+    20	
+    21	⛔ **This is not a defect being repaired.** The extra mode is a characterized departure from a
+    22	transverse-only Maxwell field. Historical drum-head discussions used the compressional response as
+    23	motivation for a material electric sector, but the current canonical ontology does **not** identify
+    24	\(u_L\) with charge: charge is the oriented throat/electric-odd boundary condition, while \(u_L\) is a
+    25	separate in-plane longitudinal material mode. ⛔ `FAIL_CAUCHY_STRAY_LONGITUDINAL` is a **misnamed** token;
+    26	never read the prefix as a verdict.
+    27	
+=== steps/S11_stray_longitudinal.md 72,94
+    72	⇒ transverse (`k·a = 0`): the new term vanishes **identically** in the selected homogeneous \(D=3\)
+    73	quadratic action. Longitudinal (`a ∥ k`): the `μ_R` bracket vanishes and the zero is not perturbed but
+    74	**replaced**. Thus the homogeneous \(D=3\) quadratic transverse and longitudinal eigenbranches have zero
+    75	linear cross-block under the selected action. This does not establish decoupling at nonlinear order, on
+    76	a nonuniform slab, at an interface or defect, or after additional allowed fields are introduced.
+    77	
+    78	**Move 4 — where `B_comp` comes from.** ⛔ **The orchestrator's first mechanism was wrong** — it had
+    79	brane material "squeezing out into the bulk," which smuggles in a phase transition (bulk *is* the
+    80	disordered phase) and the user rejected it: *"How can the brane become unordered just by compression?"*
+    81	⭐ **The correct mechanism: the brane THICKENS.** In-plane compression raises the areal density, which
+    82	can be absorbed as a higher 4D density (charged by the EOS) **or as a wider wall** (charged by the wall
+    83	potential). ⛔ **Neither disorders anything** — the order parameter never changes; the sheet bulges into
+    84	`±w`. ⇒ Two channels accommodating additive shares of one strain, i.e. **springs in series**, so
+    85	compliances add and `B_comp` is **softer than either channel alone**.
+    86	
+    87	**Move 5 — the flat direction.** `S7` records that the double-well **selects no slab width**. ⇒ If that
+    88	flatness survived, `B_wall = 0`, hence `B_comp = 0`, and S10's zero would never lift. ⭐ **It is lifted by
+    89	GRADIENTS**: a wave modulates the width, tilting the interfaces and stretching them at cost
+    90	`∝ σ_wall|∇W|²`. ⇒ flat at `k=0`, stiff as `k²`, predicting a **flexural crossover** — `ω ∝ k²` at long
+    91	wavelength. ⚠ **S11's cone below is computed with the wall width FROZEN**; unfreezing it should soften
+    92	the mode. ⛔ If it does not, **move 5 was wrong** — say so rather than reconciling.
+    93	⭐ `σ_wall` is **S6-derived**, so this predicts `B_comp` may cost no knob at all → `DEFECT_REGISTER#c12`.
+    94	
+=== steps/S11_stray_longitudinal.md 150,176
+   150	| question | present owner |
+   151	|---|---|
+   152	| where the free homogeneous longitudinal root lies relative to simple bulk sound | S11 kinematic `KW_ZERO_LOCUS` |
+   153	| whether that mode is bound, a threshold state, a bound state in the continuum, or a resonance | S11b interface and full-slab spectrum |
+   154	| whether matter directly observes the second cone | derived matter/interface coupling |
+   155	| whether the mode participates in a finite-amplitude photon helper | nonlinear intensity coupling plus harmonic and sideband response |
+   156	
+   157	At homogeneous linear order, the mode's bulk leakage and direct observability require the brane–bulk
+   158	interface law. Its possible finite-amplitude photon-helper role additionally requires nonlinear intensity
+   159	coupling, the complete slab spectrum, and a harmonic and sideband radiation audit.
+   160	
+   161	⛔ **What S11 does NOT deliver**, stated so it cannot be over-read: bound-versus-resonant classification ·
+   162	nonzero interface overlap · an actual leakage rate · unconditional light confinement · observability or
+   163	unobservability of the longitudinal branch · a localized or nonradiative nonlinear photon helper.
+   164	
+   165	## ⭐ What this settles about the light sector as a whole
+   166	
+   167	Established with the user, 2026-08-02, and load-bearing for how the departure above reads:
+   168	
+   169	- ⛔⛔ **`c_L` is NOT a gravitational wave.** Gravity in this model is *"the **FLOW** between draining
+   170	  defects — carried by the flow + Bernoulli pressure, **NOT** by ripples/radiation"*
+   171	  (`docs/conceptual_foundation.md:348`). `c_L` is an in-plane displacement of brane material.
+   172	  ⚠ Separately: the corpus contains **no mechanistic account of what a gravitational wave is**.
+   173	- ⭐⭐ **A second cone is only a departure if matter COUPLES to it.** The transverse wave equation is
+   174	  Lorentz-invariant with invariant speed `c_γ` automatically, so anything built from those modes
+   175	  inherits that invariance — and this model's matter **is** built from them (a throat held open by a
+   176	  trapped brane-shear standing wave). ⛔ The orchestrator's *"a second cone means observers see no single
+=== steps/S11b_interface_coupling_law.md 12,18
+    12	## What the step computes
+    13	
+    14	The linear response of the brane–bulk interface: given a slab of finite thickness `W` in the `w` direction
+    15	with two faces meeting the bulk, derive how a normal face motion couples to the bulk, what drives material
+    16	across the interface, and the closed spectrum of the assembled system on a **uniform** background.
+    17	
+    18	## The two engines and their agreement
+=== steps/S11b_interface_coupling_law.md 72,84
+    72	refuses an unphysical process on its own terms. Outside the region it survives only against a named reservoir.
+    73	
+    74	**Transverse mode — decoupled on a uniform background.** The transverse-to-thickness coupling
+    75	`∂²U/∂u_T ∂e_W` is **identically zero** and the transverse mode is **non-dissipative** (`TRANSVERSE_DISSIPATION`
+    76	≡ 0, unconditionally) — a decoupled oscillator `ρ_br⁰ ω² = μ_⊥ k²` (`S11B_TRANSVERSE_DISPERSION`,
+    77	`S11B_TRANSVERSE_COUPLING`). ⚠ It is a **stable real-frequency** mode (`Im ω = 0`) **only where the transverse
+    78	stiffness `μ_⊥ ≥ 0`**: §5's moduli are free and ⛔ no positivity is assumed (§0), so `μ_⊥ = μ_R + μ_S/2 < 0`
+    79	is admissible and gives a growing transverse root `ω = ±i k √(|μ_⊥|/ρ_br⁰)` — decay and growth are both
+    80	admissible outcomes here, ⛔ not excluded. ⛔ This is the **uniform** limit only and does NOT settle
+    81	unconditional confinement — that is the non-uniform question deferred to C. ⚠ The two
+    82	engines express the transverse stiffness `μ_⊥` in **different coefficient bases** (a consequence of the
+    83	energy-basis representative split, below): the blind WL engine emits `μ_⊥ = μ_R`, the SymPy engine
+    84	`μ_⊥ = μ_R + μ_S/2`, with identical roots under the invertible coefficient identification WL-`μ_R` ≡
+=== steps/S11c_PARTIAL_CLOSEOUT.md 1,40
+     1	# S11c closure and handoff — PARTIAL
+     2	
+     3	S11c asked how much light converts into other motion where the brane's thickness or material properties change. **It closes PARTIAL: no accepted nonuniform light-loss number was obtained.** Both reflected and transmitted light count as survival. No S11c calculation or review resumes automatically. [Canonical d record, opening and scope](S11c_d_profile_conditioned_scattering.md).
+     4	
+     5	## Where we stand
+     6	
+     7	On a uniform brane, the stated linear model decouples light from the bulk. Independent SymPy/Wolfram work and scoped reviews support that result; stable propagation needs nonnegative stiffness. A later SymPy check found finite modes, nonzero energy current and zero face drives (light does not push on the bulk) at, above and below the tested light/sound speed matches, with the bulk at rest and other inputs fixed; Claude/Grok cleared its method, not a fresh review of its executed result. **CONDITIONAL.** [S11b, transverse mode/reviews](S11b_interface_coupling_law.md); [d, uniform check](S11c_d_profile_conditioned_scattering.md#what-the-uniform-check-establishes).
+     8	
+     9	Where the brane changes, the equations contain conversion routes, but their size remains unknown. The held-profile omega=3 benchmark at speed ratio approximately 0.12 is **UNRESOLVED**: final imbalances lie within its empirical 1 ppm floor, not a physical bound. This is not a matched-speed defect result. [d, benchmark and controls](S11c_d_profile_conditioned_scattering.md#the-omega3-benchmark-numerical-loss-unresolved).
+    10	
+    11	## Records and open ownership
+    12	
+    13	| Record / qualified result | Unresolved / owner |
+    14	| --- | --- |
+    15	| [a: interface shape derivatives](S11c_a_interface_shape_derivatives.md), per-family comparison and limits | Geometric/substrate dependencies remain conditional; affected S11c consumers if reused. |
+    16	| [b: variable-coefficient operator](S11c_b_variable_coefficient_operator.md), original per-engine close plus later scoped repairs | Full cross-engine residual/composition: **S11c-b**. Original checks describe pre-repair equations. |
+    17	| [c1: curved bulk response](S11c_c1_curved_bulk_closure.md), kernel/pressure/flux agreement on measured domains | Traction, energy, operand and deferred family comparisons: **S11c-c1/c2**. |
+    18	| [c2: self-energy fold](S11c_c2_self_energy_fold.md), original wiring close plus later scoped repairs | Direct mixed entry and full composition: **S11c-c2/d**. Original “VALUES unaffected” describes the pre-repair operator. |
+    19	| [d: supplied-profile scattering](S11c_d_profile_conditioned_scattering.md), selected uniform success and unresolved defect benchmark | Complete response/work/loss: **S11c-d if reopened**; observable/strong edges: **S11c-e**. |
+    20	| [Clean-condition symmetry rule](S11c_d_profile_conditioned_scattering.md#clean-condition-result-and-its-owner), measured on SymPy only | No-leak interpretation needs drain frozen; live conversion belongs to **S12**, with no automatic transfer. |
+    21	| Supplied-profile calculations do not determine a real particle. [Plan, Q2/Q3/S20a/S22](../V3_STEP_PLAN.md) | Holder/charge response: **Q2/Q3/S22**; speed-ratio calibration: **S20a**, derivation: **S22/R10**; drain/return data: **S12**. |
+    22	
+    23	## Claims future work must not inherit
+    24	
+    25	- **UNRESOLVED:** c2 sets the direct three-leg `[0,2]` entry to zero while keeping the iterated product. Retaining `eta*sigma_W` means order counting does not justify that zero. **Whether the complete closed response has a nonzero direct term is unresolved.** This is not proof of a missing physical term or its effect on the benchmark. [Joint disposition, mixed-term issue](../_measurements/S11c_upstream_repair_review_joint_disposition.md); [d, equations](S11c_d_profile_conditioned_scattering.md#equations-what-was-repaired-and-what-remains-open).
+    26	- **UNRESOLVED:** the omega=3 benchmark establishes neither “leakage below 1 ppm” nor physical gain. Source identities, finite packet checks and first-order flux cancellation do not constitute a complete loss calculation. [d, benchmark and intermediate results](S11c_d_profile_conditioned_scattering.md).
+    27	- **OPEN — material audit/Q2/S22:** uniform confinement is derived within the supplied linear model; nonuniform confinement and the physical admissibility of rotational stiffness are not established. That is the useful but limited MacCullagh distinction. [Native interpretation, §§5.7, 14.3](../../../docs/native_light_em_and_vortex_throat_interpretation.md); [framing essay, differentiators](../../../docs/s11_maccullagh_differentiation.md).
+    28	
+    29	## Actual downstream uses and next step
+    30	
+    31	**OPEN:** S11c-e owns the conversion observable and must recover d's weak limit in a future finite-contrast calculation. The plan's charge preamble asks whether linear nonuniform physics can support charge; PARTIAL closure answers neither that question nor all Q-sector work. **S22 items 1/4** concern conversion/birefringence and supplied defect profiles; physical magnitude needs interior input. Items 2/3 name S11b and S5–S7 instead. [Split, table/N5](../directives/S11c_decisions.md); [d spec, §3d](../directives/S11c_d_SHARED_PHYSICS.md); [plan, charge preamble/S22](../V3_STEP_PLAN.md).
+    32	
+    33	**S12 is next:** dynamical bulk-to-brane order conversion and separate boundary data. It does not require a numerical S11c loss factor and does not automatically settle light leakage. [Plan, S12](../V3_STEP_PLAN.md).
+    34	
+    35	## Exploratory notes, paused
+    36	
+    37	The [throat/EM handoff in docs/](../../../docs/light_em_investigation_handoff.md) indexes the preserved support, oriented-core, conversion/work and elastic-reference notes. These are **exploratory inputs for S22/Q2**, with S12/Q3 connections, not adopted laws or solved throats. Their review disagreements remain with their own assessments. [Phase 1 review, C6](../cleanup_2026_10/PHASE1_REVIEW.md).
+    38	
+    39	The full history lives in `archive/pre-cleanup-2026-10-04`; the [cleanup record](../cleanup_2026_10/FINDINGS.md) separates findings from unresolved work. No archived result is upgraded by this closure.

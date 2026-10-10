@@ -1,0 +1,80 @@
+     1	# S9b — what brane light needs in order to bend and be delayed like GR (question spec, v10)
+     2	
+     3	**Version:** v10, repair 2 (2026-10-08).
+     4	
+     5	**Amendment 1 to Parts A–C** (orchestrator, 2026-10-09; a repair under the user's standing approval). Part B's
+     6	radar comparison object is the round trip's logarithmic slope in `b` (observable 2). Reviewed until clear.
+     7	Dispositions: `directives/_measurements/S9b_SHARED_PHYSICS_amend1_review_disposition.md`.
+     8	
+     9	**Objects:** the v8 optical objects in Parts A–C and the neutral, linked steady in-plane
+    10	brane balance and its conditional optical requirements in Part D, retaining every unsupplied O2 input.
+    11	
+    12	**Authority and sources.** The base is v8 at `c2f1cf2b`, with its cited sources. The governing decisions
+    13	are `directives/S9b_repair_decision_list.md` at `79055918` (amendment 1). v9's Part D is not an input. Paths
+    14	below are relative to `research/pde_ledger_v3/`. The additional source abbreviations are:
+    15	
+    16	- **O2-R:** `steps/O2_steady_brane_balance.md`, accepted at `72866fcf`, especially §§4 and 8.
+    17	- **O2-S:** `directives/O2_SHARED_PHYSICS.md` at `4680e251`.
+    18	- **O2-C:** `directives/O2_input_contract.md` at `217a92e9`.
+    19	- **O2-P:** `directives/O2_premise_decision_list.md` at `77d2c39a`.
+    20	
+    21	Equations labelled **supplied** are conditional inputs that the computation cannot test. Adopted
+    22	premises retain that status and their provenance. Every
+    23	dependent result is flagged with the supplied identification or adopted premise it uses. Reference
+    24	objects are comparison inputs, rather than premises for deriving the brane's observables. The spec
+    25	names computed objects and solution conditions; it supplies no outcome or expected-value acceptance test.
+    26	
+    27	## Why
+    28	
+    29	S9 states what light needs from the medium in order to exist and to stay confined. It does not state what light
+   190	trip in the required directions. Outside either condition, report the branch type (growing, decaying, absent,
+   191	or unable to traverse in a required direction), print `NOT_ESTABLISHED` for the observables, and do not compute
+   192	them.
+   193	
+   194	## Reference and bulk input objects
+   195	
+   196	- **`GM`** (owned by the gravity sector). The far-field Newtonian mass parameter, as measured by the orbits of
+   197	  slowly moving test matter. It is an independent symbol, not identified with any profile amplitude. Every
+   198	  Part B and Part C condition is stated relative to it.
+   199	- **GR reference objects (supplied comparison inputs), in PPN form with `c₀`:**
+   200	
+   201	  ```
+   202	  Δθ_ref(b;γ) ≡ (1+γ)·2GM/(b c₀²) ,
+   203	  Δt_RT,log,ref(b;γ) ≡ 2(1+γ)(GM/c₀³)·ln(4 r_E r_R/b²) ,
+   204	  γ_GR ≡ 1 .
+   205	  ```
+   206	
+   207	  The logarithmic reference has domain `Z_E, Z_R ≫ b`; Part B uses only its logarithmic slope, defined
+   208	  as for `𝒮_RT` (observable 2). These equations define the oracle objects to compare against. They do not specify
+   209	  either observable computed from the supplied brane dispersion, or an acceptance test.
+   210	  The reference family defines each effective `γ`; GR residuals and matching conditions use its
+   211	  supplied `γ_GR` member.
+   212	- **Part C bulk (supplied):**
+   213	  - `P = Kρ^n`, with `n` symbolic, `ρ` the bulk number density and `m` the particle mass (v3 convention). So
+   214	    `c_s² = nKρ^(n−1)/m`.
+   215	  - Define the fractional bulk-density change at the brane by
+   216	    `f(x) ≡ δρ(x)/ρ₀ = ρ(x)/ρ₀ − 1`. It is a symbolic radial profile owned by the gravity sector or S12.
+   217	    `ρ₀` is the asymptotic bulk number density, `c_s0` is the corresponding asymptotic sound speed, and Part C
+   218	    keeps first order in `f`.
+   219	
+   220	## Deliverables (printed by each engine; no conclusions in the scripts)
+   221	
+   222	- **Part A.** The branch-existence and path-traversal conditions. Then, for the LAB_HELD profile, as expressions
+   223	  or functionals of `δ`, `V` and `ξ_w`, with each retained monomial printed separately:
+   224	  - `Δθ`;
+   225	  - the round-trip excess time;
+   226	  - the two one-way excess times and their nonreciprocal part.
+   227	- **Part B.**
+   228	  - An effective `γ` from `Δθ`, and one from the round trip's logarithmic slope `𝒮_RT` (observable 2).
+   229	  - Their residuals against the references.
+   230	  - For each observable, the solution condition on the profiles, relative to `GM`, for the comparison
+   231	    residual of the selected grade sum (see "Order counting") at every far-zone `b`. This is an object
+   232	    to compute, with its domain and unresolved inputs; it is not a demanded residual value. Other
+   233	    retained monomials are printed but not set against the references.
+   234	  - For each condition, the `j_n` it implies through `∇·(ρ_br V) = −j_n`, with `ρ_br` symbolic.
+   235	  - The difference between the two `γ`s, printed as an object.
+   236	- **Part C.** The Part B conditions rewritten, to first order in `f`, under three supplied responses of `c_γ`
+   237	  to the local bulk density, with `V` and `ξ_w` left live in each:
+   238	  - `c_γ(x) ≡ c₀` (`δ(x) ≡ 0`);
+   239	  - pointwise fixed ratio: `c_γ(x)/c_s(x) = c₀/c_s0`;
+   240	  - symbolic power response: `c_γ(x)/c₀ = (ρ(x)/ρ₀)^s`, with `s` symbolic.

@@ -1,0 +1,84 @@
+    73	> For the supplied curl-only in-plane action, at nonzero wavevector and away
+    74	> from allowed exceptional strata, the nonzero root has D − 1 transverse null
+    75	> directions in every measured MAIN case D = 2, 3, 4, 5. Thus the D = 3 member
+    76	> has two transverse directions.
+    77	
+    78	The form controls prohibit a stronger reading of that sentence. At both
+    79	dimensions where the form-changing packages and MAIN were emitted, D = 3 and
+    80	D = 4, FULLGRAD has the same nonzero root and the same D − 1 transverse
+    81	nullity as MAIN. The transverse count therefore cannot be attributed to the
+    82	curl-only form. What that form determines here is the disposition of the one
+    83	remaining, longitudinal direction: unlike FULLGRAD, it leaves that direction
+    84	at the zero root instead of putting it on the propagating root. DIVONLY, which
+    85	reverses the two sectors, confirms that the stiffness form can change the
+    86	count even though curl-only is not what uniquely produces D − 1.
+   172	The physical selection D = 3 is not made in S10. The live S10 computation keeps
+   173	D symbolic for dimensions and evaluates an indexed sweep at D = 2, 3, 4, 5.
+   174	The new Lean baseline proof establishes the conditional map D ↦ D − 1 for
+   175	arbitrary finite D with a nonzero wavevector, extending the measured sweep.
+   176	Neither establishes which D nature selects.
+   177	
+   178	## What was supplied and what was computed
+   179	
+   180	The shared specification supplies:
+   181	
+   182	- a D-component in-plane displacement u, with its separation from every
+   183	  out-of-plane field inherited rather than tested;
+   184	- the real cosine plane-wave ansatz;
+   185	- positive inertia and stiffness coefficients, nonzero real wavevector,
+   186	  unstrained rest background, no dissipation, and linear response;
+   187	- the curl-only stiffness density
+   188	
+   189	      S_curl = (1/2) Σ_i Σ_j (∂_i u_j − ∂_j u_i)²
+   190	
+   191	  in
+   192	
+   193	      L = (ρ_br/2) Σ_j (∂_t u_j)² − (μ_R/2) S_curl.
+   194	
+   195	These premises and the action are at
+   196	directives/S10_SHARED_PHYSICS.md:13-28, :30-47, and :82-107. The action is an
+   197	input, not a result of the mode count.
+    40	**Move 2 — what a quadratic stiffness on the brane can be.** Decompose `∂_i u_j` into trace,
+    41	symmetric-traceless and antisymmetric parts. ⭐ **S10 did not forget a term — it kept ONE invariant of
+    42	several.** Curl-only stiffness charges for twist and nothing else, which is why the longitudinal came out
+    43	free rather than forbidden: a longitudinal plane wave has a symmetric gradient
+    44	and hence no curl. That gradient generally contains both trace and symmetric-traceless
+    45	parts; it is not pure trace. The selected curl-only action charges neither of those
+    46	parts. (Clarified during the S11 homogeneous Lean fidelity pass, 2026-09-16 UTC.)
+    47	
+    48	⛔⛔ **CORRECTION — the orchestrator's count in this move was WRONG, and both engines caught it.** The
+    49	walk asserted *"exactly three coefficients, for every `D ≥ 2`."* ⭐ **False under proper rotations.**
+    50	
+    51	```
+    52	N_SO = {D=2 → 4, D=3 → 3, D=4 → 4, D=5 → 3}        N_O = 3 for every D
+    53	```
+    54	
+    55	The extras are **reflection-odd**: `(tr G)·ε^{ij}G_{ij}` at `D=2`, `ε_{ijkl}G_{ij}G_{kl}` at `D=4`.
+    56	⚠ **And the walk's METHOD was the error, not its arithmetic** — *"decompose into pieces that do not mix
+    57	and count them"* misses **cross-pairings between isomorphic summands**, which is exactly what `D=2` and
+    58	`D=4` have (at `D=2` the trace and `Λ²` are both `SO(2)` scalars; at `D=4`, `Λ²` splits into self-dual ⊕
+    59	anti-self-dual). ⭐ Five independent derivations agree on the corrected counts.
+    60	
+    61	⭐⭐ **The physical content of the extras, and it sharpens the step:** at `D=2` the extra invariant is
+    62	**NOT a total derivative** — its Euler–Lagrange operator is non-zero — so an `SO(2)`-invariant Lagrangian
+    63	**can mix the longitudinal and transverse sectors**. At `D=4` it **is** a total derivative and adds no
+    64	operator structure. ⇒ ⭐ **Sector separation is a `D=3` fact, ⛔ not a structural one.**
+    74	**The transverse mode is completely decoupled on a uniform background.** The coupling is **identically
+    75	zero**, the dispersion is `ρ_br⁰ω² = μ_R k²`, and the imaginary part is **zero**. Both engines, same
+    76	structural reason: in-plane parity admits no `e_W ↔ u_T` bilinear.
+   412	### R-S8-06 — material displacement and the slab's quadratic inertia
+   413	
+   414	- **source** O2 (material identification only; `steps/O2_steady_brane_balance.md`, register handoff); S11 (`steps/S11_stray_longitudinal.md`, move 1 / finite census); S11b-B
+   415	  (`steps/S11bB_interface_assembly.md`, breathing quadratic) · **target** S8
+   416	  (**register inference for the original S11/S11b records; O2 names S8 for the material identification**) · **status** OPEN
+   417	- **requirement** — `u` as the material displacement of the stuff whose density is `ρ_br`, and the
+   418	  quadratic kinetic form of that material and the thickness degree of freedom (B's `μ_W`) on the
+   419	  original homogeneous/slab domain. O2 is a consumer of the material identification only.
+   420	- **on failure** — if `u` is a director rather than that displacement, S11's continuity identification
+   421	  `δρ_br = −ρ_br ∇·u` and its compression argument do not follow. Its finite census requires nonzero
+   422	  `ρ_br`; B's breathing-root interpretation also rests on the stated inertial model. A stiffness
+   423	  functional alone (`R-S8-01`) does not supply this identification or the kinetic form.
+   424	- **note** — this asks for the field identity and inertia, not numerical benchmark values of `ρ_br`
+   425	  or `μ_W`, and does not identify the thickness mode with S10's out-of-plane displacement. The cited
+   426	  records name no future owner for this object; S8 is a register inference
+   427	  (`steps/S11_stray_longitudinal.md:32–38`; `steps/S11bB_interface_assembly.md:80–85`).

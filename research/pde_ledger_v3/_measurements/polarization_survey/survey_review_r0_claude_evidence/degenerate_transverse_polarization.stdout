@@ -1,0 +1,25 @@
+unit check |n|^2 = 1
+
+=== MAIN ===
+char poly det(K - lam R) = -lam*rho*(k**2*mu - lam*rho)**2
+w^2 roots = [0, k**2*mu/rho]
+root multiplicities = {k**2*mu/rho: 2, 0: 1}
+nonzero w^2 operands (with multiplicity) = [k**2*mu/rho, k**2*mu/rho]
+residual w^2_(1) - w^2_(2) = 0
+relative transverse phase over L_p at fixed omega, dphi = 0
+  (sample: s=3/2, rho=mu=omega=1, L_p=10) dphi = 0
+  Stokes in  = [1.00000000000000, 0.921060994002885, 0.367983567586930, 0.127415616438539]
+  Stokes out = [1.00000000000000, 0.921060994002885, 0.367983567586930, 0.127415616438539]
+  Stokes residual out-in = [0, 0, 0, 0]
+
+=== ANISO ===
+char poly det(K - lam R) = -lam*rho*(k**2*mu - lam*rho)*(4*k**2*mu*s + 45*k**2*mu - 49*lam*rho*s)/49
+w^2 roots = [0, k**2*mu/rho, k**2*mu*(4*s + 45)/(49*rho*s)]
+root multiplicities = {k**2*mu/rho: 1, k**2*mu*(4*s + 45)/(49*rho*s): 1, 0: 1}
+nonzero w^2 operands (with multiplicity) = [k**2*mu/rho, k**2*mu*(4*s + 45)/(49*rho*s)]
+residual w^2_(1) - w^2_(2) = 45*k**2*mu*(s - 1)/(49*rho*s)
+relative transverse phase over L_p at fixed omega, dphi = L_p*omega*sqrt(rho)*(-7*sqrt(s) + sqrt(4*s + 45))/(sqrt(mu)*sqrt(4*s + 45))
+  (sample: s=3/2, rho=mu=omega=1, L_p=10) dphi = -2.00490095997562
+  Stokes in  = [1.00000000000000, 0.921060994002885, 0.367983567586930, 0.127415616438539]
+  Stokes out = [1.00000000000000, 0.921060994002885, -0.0391758097914944, -0.387442771585170]
+  Stokes residual out-in = [0, 0, -0.407159377378424, -0.514858388023709]

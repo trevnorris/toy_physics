@@ -1,0 +1,7 @@
+sigma per polarization            = 2.83518721e-8
+g=2 (two polarizations, no extra mode) sigma_th = 5.670374419e-8  resid(exp-th) = -7.04419e-12  resid/u_exp = -0.926867  relative = -0.000124228
+third matter-coupled mode at c_x/c=1 sigma_th = 8.505561629e-8  resid(exp-th) = -2.83589e-8  resid/u_exp = -3731.44  relative = -0.333416
+third matter-coupled mode at c_x/c=0.5 sigma_th = 1.701112326e-7  resid(exp-th) = -1.13415e-7  resid/u_exp = -14923.0  relative = -0.666708
+third matter-coupled mode at c_x/c=2 sigma_th = 6.379171222e-8  resid(exp-th) = -7.09501e-9  resid/u_exp = -933.554  relative = -0.111222
+third matter-coupled mode at c_x/c=10 sigma_th = 5.698726291e-8  resid(exp-th) = -2.90563e-10  resid/u_exp = -38.232  relative = -0.00509873
+third matter-coupled mode at c_x/c=100 sigma_th = 5.670657938e-8  resid(exp-th) = -9.87938e-12  resid/u_exp = -1.29992  relative = -0.000174219

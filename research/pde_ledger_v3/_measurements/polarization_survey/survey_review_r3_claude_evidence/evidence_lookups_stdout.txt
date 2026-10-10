@@ -1,0 +1,42 @@
+### 1. survey E01 rationale
+Its action, field content and dimensional input do **not themselves state the two-direction result**; supplying D=3 is not supplying D−1=2
+### 2. survey Part 3 R-S1-01 row
+R-S1-01: Dbrane as a derived quantity or “explicitly re-affirmed postulate”, status **OPEN**; “Dbrane = 3 went in and D−1 = 2 came out”. [R28](#r28) 
+### 3. register R-S1-01
+   134	- **on failure** — S10's headline reads *"light having exactly two polarisations is a statement that our
+   135	  space is three-dimensional."* Read backwards it says the opposite: `D_brane = 3` went in and `D−1 = 2`
+   136	  came out. Without a delivered `D_brane` the sentence is an assumption restated, ⛔ not a result.
+### 4. plan S10 entry
+   374	⭐ **What S10 measured:** the conditional map `D ↦ D − 1` transverse null directions **for the cases it
+   375	swept** (`D = 2,3,4,5`), so the `D = 3` member has two — ⛔ **conditional on the supplied action, the
+   376	supplied `[u]`, and BOTH structural premises.**
+   387	   ⇒ `docs/medium_requirements_and_prior_art.md`. ⛔ **Expected new: nothing** was right; ⛔ *"earned"* was
+   388	   the wrong word for why.
+### 5. S10 supplied field content
+   182	- a D-component in-plane displacement u, with its separation from every
+   183	  out-of-plane field inherited rather than tested;
+### 6. survey cites of plan 374-391 in body
+0
+### 7. S11bB odd couplings and headline
+    16	
+    17	## ⭐⭐⭐ THE HEADLINE — the velocity-coupled leak costs an ENERGY RESERVOIR
+    53	⚠ Non-reciprocal, "odd" constitutive couplings of exactly the excluded form are realised in driven
+    54	laboratory media (odd elasticity, odd viscosity, active and chiral fluids). ⛔ They are not unphysical.
+    55	⭐ **They have a reservoir.**
+    59	⛔ *"Anything goes"* is not the correction — under it no mode is ever stable and the ledger predicts nothing.
+    76	structural reason: in-plane parity admits no `e_W ↔ u_T` bilinear.
+### 8. survey E10 parity sentence
+The unresolved parity/chirality condition lies **outside that class**: **O2_steady_brane_balance.md:110–111** leaves wider constitutive parity/chiral content unselected; **S11bB_interface_assembly.md:53–63** permits non-passive odd couplings only with a named reservoir/power budget; **S9b_SHARED_PHYSICS.md at `ede8aa21`:117–119** excludes subprincipal polarization transport 
+### 9. survey Part 3 row title
+179:| Odd/chiral interface couplings are not generally prohibited | **research/pde_ledger_
+### 10. supplied symmetry group
+   280	⛔⛔ **THE SYMMETRY GROUP, STATED IN FULL.** Isotropy and `w → −w` alone are **not enough**: under those
+   281	alone a **pinning term `½K|u|²` is allowed**, and an engine that includes it **gaps the modes** while one
+   282	that does not finds them gapless — both obeying the text. The group is:
+   283	- **In-plane translation invariance** ⇒ `u` may enter **only through its gradients**, never undifferentiated.
+   284	- **In-plane isotropy _and_ parity** — the full `O(3)` acting on the three in-plane directions.
+   288	- ⛔ **Time-reversal is NOT assumed**, and ⛔ no positivity or boundedness is assumed (§0).
+   358	- **In-plane isotropy _and_ parity** (the full `O(3)` acting on the three in-plane directions).
+   362	- ⛔ **Time-reversal is NOT assumed**, and no positivity or boundedness is assumed (§0).
+### 11. survey cites of S11b/S11bB specs
+3

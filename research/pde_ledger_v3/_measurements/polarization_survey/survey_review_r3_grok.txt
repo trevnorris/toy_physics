@@ -1,0 +1,37 @@
+I'll review the repaired polarization survey against the prompt, the class definitions now in force, and the prior dispositions. First I'll read those documents and confirm the baseline hash.The survey matches the round-3 baseline hash. Next I’ll read the task prompt, the class definitions in force, and the prior dispositions before checking the survey itself.The class counts add up, and the rule paragraph matches the definitions in force. I’ll now check the repair-critical sources and look for missed ledger material.**Verdict: CLEAR**
+
+No finding would change what the survey says an experiment shows, what the repository claims, or which class a fact falls in. The round-3 repair items hold, and the repair does not add a false classification or a proposed mechanism.
+
+## Findings
+
+None.
+
+## What was checked and holds
+
+**Class rule and counts.** The rule paragraph states the five definitions in force, including rule 4’s precedence over rule 3 and rule 5’s phrase “no model source bears on it.” The 38 rows are reproduced 1 (E01), apparent conflict 7 (E13–E15, E32–E34, E38), testable 10 (E02, E03, E10–E12, E23, E24, E35–E37), required 5 (E04, E05, E18, E22, E29), and not addressed 15. Those sum to 38.
+
+**E12, E01, E22, and the parity statement.** E12 is testable on the same homogeneous common root as E10–E11 and the model side of E13–E15 (`S10` lines 73–86 and `V3_STEP_PLAN.md` line 1183). It is a null anisotropic bound, so it is not a conflict. Its cell states the shared CMB source and sky-statistics condition. E13–E15 stay conditional conflicts, and only if the reported rotation is real cosmic propagation. Part 3 and E10–E15 say what `S11_stray_longitudinal.md` lines 52–64 find: `N_SO = N_O = 3` at `D = 3`, so that quadratic first-gradient in-plane class has no extra reflection-odd invariant there. The `D = 2` extra can mix sectors. The `D = 4` extra is a total derivative. The open parity condition is placed outside that class, at `O2` lines 110–111, `S11bB` lines 53–63, and the S9b spec at `ede8aa21` lines 117–119. Nothing there is resolved.
+
+E01 is reproduced as a conditional count. `S10` lines 73–76 compute “the nonzero root has D − 1 transverse null directions” and hence two at `D = 3`. The action does not state that two. The cell keeps `D = 3` unselected and R-S1-01 open, and it does not treat tomography as a census. E22 stays required under rule 4’s precedence: `ede8aa21` lines 53–55 supply `c_γ,1(x) ≡ c_γ,2(x) ≡ c_γ(x)`. The cell says `S10` lines 73–86 compute the transverse count and do not derive a helicity-dependent gravitational delay.
+
+**New sources.** `S11bB_interface_assembly.md` lines 74–76 match the survey: on a uniform background the transverse mode is decoupled, `ρ_br⁰ω² = μ_R k²`, and “in-plane parity admits no `e_W ↔ u_T` bilinear.” `SUBSTRATE_REQUIREMENTS.md` lines 424–425, R-S8-06, are open and “do not identify the thickness mode with S10’s out-of-plane displacement.”
+
+Command, from `/var/projects/toy_physics`:
+
+```bash
+nl -ba research/pde_ledger_v3/steps/S10_two_transverse_photons.md | sed -n '73,76p'
+nl -ba research/pde_ledger_v3/steps/S11_stray_longitudinal.md | sed -n '52,64p'
+nl -ba research/pde_ledger_v3/steps/S11bB_interface_assembly.md | sed -n '53,63p;74,76p'
+nl -ba research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md | sed -n '412,427p'
+git show ede8aa21:research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md | nl -ba | sed -n '53,55p;106,109p;117,119p'
+```
+
+Those ranges match the quotations above, including `N_SO = {D=2 → 4, D=3 → 3, D=4 → 4, D=5 → 3}` and `N_O = 3 for every D`.
+
+**Part 1.** Linear, circular, and elliptical polarization, Stokes parameters, the Poincaré sphere, spin versus orbital angular momentum, and entanglement are separated into classical-wave facts and quantum facts. Both reasons for two states are there and labelled: Gauss’s law for a source-free plane wave, and massless spin-1 helicities `±1`. Focused beams are not described as a third free-photon polarization. Part 1 is about 1,040 words.
+
+**Part 2, opened this round.** Planck 2018 results VI, arXiv:1807.06209 PDF: the abstract gives `N_eff = 2.99 ± 0.17`, and the abstract states that its measured-parameter intervals are 68%. Equation (67b) is `N_eff = 2.99^{+0.34}_{-0.33}` at 95% for TT,TE,EE+lowE+lensing+BAO, consistent with 3.046. The survey’s reading, that this counts non-photon relativistic density and that a mode count alone gives no `ΔN_eff`, matches the paper’s §7.5.2 and conclusions. E38 uses the same conditional conflict rule as E32–E34.
+
+PDG 2026 photon listing, `https://pdg.lbl.gov/2026/listings/rpp2026-list-photon.pdf`, opened in full: the adopted entry is Ryutov 07, `< 1 × 10^{-18}` eV, with no confidence percentage. LEMOS 25 is `(16^{+3}_{-9}) × 10^{-15}` eV, under the line “We do not use the following data for averages, fits, limits.” Note 3 says the FRB and supernova inference uses several assumptions and “Do not present an upper limit.” The survey marks that value as not established and does not give it a class row. The LEMOS paper itself was not opened. That limit is disclosed.
+
+Earlier rows still mark E13–E15, E19, E20, E21, and E31 as unestablished or model-dependent. The survey does not propose a mechanism or close a conflict.

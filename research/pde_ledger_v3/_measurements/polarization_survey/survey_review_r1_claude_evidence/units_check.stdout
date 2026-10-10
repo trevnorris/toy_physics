@@ -1,0 +1,12 @@
+kg per eV/c^2 = 1.7826619216278975e-36
+PDG adopted (Ryutov 07) <1e-18 eV: 1e-18 eV -> 1.783e-54 kg
+Bonetti 16 FRB <1.8e-14 eV: 1.8e-14 eV -> 3.209e-50 kg
+PDG-listed Retino 16 <1.9e-15 eV: 1.9e-15 eV -> 3.387e-51 kg
+Retino upper end 1.4e-49 kg: 1.4e-49 kg -> 7.853e-14 eV
+Retino lower end 3.4e-51 kg: 3.4e-51 kg -> 1.907e-15 eV
+ratio Retino tightest / PDG adopted (kg): 1907.260125293514
+PVLAS sigma_dn / dn_QED = 17/2.5 = 6.8
+SPTpol 0.10e-4 rad^2 in deg^2 = 0.032828063500117445
+Quinn&Martin rel. unc. 0.00076/5.66967 = 0.00013404660235957297
+Planck normalization ratio g=3/g=2 = 1.5 ; fractional excess = 0.5
+excess / QM rel. unc. = 3730.0460526315787

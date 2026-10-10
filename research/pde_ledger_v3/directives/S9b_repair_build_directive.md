@@ -220,9 +220,13 @@ comparator, the production runs and the record.
       below, it runs a copy with exactly that one mutation at the named construction site.
     - It prints the baseline payload, the corrupted payload and their difference for **every** tag, including tags
       whose difference is zero. It prints no verdict.
-    - For a payload that carries a domain or conditions, the difference shows separately whether the value changed
-      and whether the domain changed. Each part's difference is computed by the engine, so an unchanged part prints
-      as zero.
+    - For a payload that carries a domain, the difference shows separately whether the value changed and whether
+      the domain changed. The domain is the condition a payload attaches to its computed object, such as the spec's
+      branch-existence conditions or the condition that a case of a reduction carries. The value is the computed
+      object itself, including when that object is a relation, a predicate such as a closedness test, or a
+      condition. Each part's difference is computed by the engine, so an unchanged part prints as zero. This holds
+      for K11's compact differences and method residual too. K11's sample domain is coverage, not a domain in this
+      sense.
     - A knife whose construction an engine does not contain is reported, not invented. The engine itself contains
       no control with an expected outcome.
 
@@ -306,8 +310,11 @@ comparator, the production runs and the record.
     velocity entering it as a vector field. K11's mutation then enters the dispersion.
   - Each item 10 restriction is substituted into its gates as well as into its observables.
 - **Repair round 2 (amendment 5).** Items 5, 6 and 9 as amended, and the spec's amendment 2, hold after the repair.
-- **Repair round 3 (amendment 6).** Items 5 and 6 hold for every `γ` object, and for its restriction and forward
-  copies, on every stratum inside the branch domain, including `GM = 0`.
+- **Repair round 3 (amendment 6).** The branch domain is the set where both conditions in the spec's "Branch
+  existence" paragraph hold. On every stratum inside it, including `GM = 0`, each `γ` object (`B_GAMMA_DEFLECTION`,
+  `B_GAMMA_RADAR`, `B_GAMMA_DIFFERENCE`), and each of its restriction and forward copies, prints what that object's
+  relation determines there, computed by the engine. `NOT_ESTABLISHED` is printed only outside the branch domain
+  (item 5).
 
 ## Part 3. Wolfram engine (blind)
 

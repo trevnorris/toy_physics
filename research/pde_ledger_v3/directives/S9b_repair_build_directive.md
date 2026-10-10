@@ -27,6 +27,11 @@ the radar comparison object the round trip's logarithmic slope `𝒮_RT` (spec o
 Part 3 now name it. Reviewed until clear with the spec amendment. Dispositions:
 `directives/_measurements/S9b_SHARED_PHYSICS_amend1_review_disposition.md`.
 
+**Amendment 5** (orchestrator, 2026-10-09; a repair under the user's standing approval), for the build's repair
+round 2 after review r1 (`directives/_measurements/S9b_repair_build_r1_review_disposition.md`). Items 5, 6 and 9
+change, with the spec's amendment 2. Parts 2 and 3 point at them. Reviewed until clear with the spec amendment.
+Dispositions: `directives/_measurements/S9b_SHARED_PHYSICS_amend2_review_disposition.md`.
+
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
 only. **Part D is held** (user decision, 2026-10-08) until the brane-material premise behind P1 is settled. This build
 constructs and prints no Part D object. That narrows D7 item 3, which listed Part D. Not in this build: the
@@ -107,20 +112,31 @@ comparator, the production runs and the record.
 5. **No verdicts (D6 B5).** No `VERDICT`, `PASS` or `FAIL`. A boolean-valued test is emitted as the CAS object the
    test returned. Emission never depends on a payload's value. Outside the branch-existence conditions the spec
    requires `NOT_ESTABLISHED`. That output, and the branch type, are produced from the computed conditions, never
-   typed.
+   typed. The branch-existence condition is computed through `c_γ²` without presupposing its sign (spec, "Branch
+   existence"), so each branch type the spec lists can be produced from it.
 6. **The every-`b` conditions are reduced (D6 B2).**
    - Each Part B and Part C condition is solved relative to `GM` for every far-zone `b`. The solving is case by
      case, over every branch the reduction produces, and each case carries its domain.
    - An unevaluated quantified set, `ConditionSet` or `ForAll` is a restatement, not a reduction.
    - For each reduced condition, print the `j_n` it implies through `∇·(ρ_br V) = −j_n`, with `ρ_br` symbolic and
-     the sign of `V` symbolic.
+     the sign of `V` symbolic. The implied `j_n` is a consequence of its own condition, not the supplied balance
+     with `V` left free:
+     - On every branch of the reduction, `V` is the velocity that condition determines, given the other live
+       profiles and `GM`, and `j_n` is the balance evaluated on that `V`.
+     - Every branch carries its domain, including any integration constants. A branch excluded by a supplied
+       premise names that premise.
+     - Where a condition leaves `V` undetermined, the print says so and names what stays free.
+   - The `γ` difference is reduced by the engine's CAS, so its printed form shows its value on each stratum. It is
+     not printed as an uncombined difference of two objects.
    - The method is the builder's choice (item 13). If an engine cannot reduce a condition, item 12 applies.
 7. **The radar slope (D6 B3).** The spec's logarithmic slope `𝒮_RT` (observable 2) is obtained by computation from
    Part A's computed round-trip excess time. It is not a rule applied by hand. Part B's radar `γ` uses that slope.
 8. **Path dependence (D6 B4).** Whether the nonreciprocal part depends on the path or only on the endpoints is
    computed on the nonreciprocal object Part A computed, not on a placeholder.
 9. **Part C domains (D6 B6).** Each Part C row's domain predicates are built from that row's own response. They are
-   not built from another row, or from the amplitude before the response is applied.
+   not built from another row, or from the amplitude before the response is applied. Each predicate follows from the
+   row's response being real and positive, or from the row's supplied inputs. The first-order counting in `f` is an
+   order, not a numeric bound on any amplitude.
 10. **Forward case and single-mechanism restrictions (user requests, 2026-10-08).**
     - **Forward case: no far-zone loss.** This is the user's premise (2026-10-06/07/08): brane material leaves the
       brane only in throats, so `j_n ≡ 0` in the far zone, and the same brane mass crosses every sphere around the
@@ -280,6 +296,7 @@ comparator, the production runs and the record.
   - Item 8's nonreciprocal one-form is computed from this engine's own dispersion relation, with the advected
     velocity entering it as a vector field. K11's mutation then enters the dispersion.
   - Each item 10 restriction is substituted into its gates as well as into its observables.
+- **Repair round 2 (amendment 5).** Items 5, 6 and 9 as amended, and the spec's amendment 2, hold after the repair.
 
 ## Part 3. Wolfram engine (blind)
 
@@ -296,6 +313,7 @@ comparator, the production runs and the record.
     over an undefined head.
   - The radar `γ` is solved on every stratum of the radar slope (item 7). The `γ` difference, and each
     restriction and forward copy of the radar `γ`, use that solution.
+- **Repair round 2 (amendment 5).** Items 5, 6 and 9 as amended, and the spec's amendment 2, hold after the repair.
 - **Executable checks, with no expected values:**
   1. Copy the finished `.wl` alone into an empty scratch directory. Run it there and in the repository. Both runs
      exit 0, and their streams are non-empty and byte-identical. Afterwards the scratch directory holds only the

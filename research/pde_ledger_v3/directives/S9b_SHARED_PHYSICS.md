@@ -6,6 +6,10 @@
 radar comparison object is the round trip's logarithmic slope in `b` (observable 2). Reviewed until clear.
 Dispositions: `directives/_measurements/S9b_SHARED_PHYSICS_amend1_review_disposition.md`.
 
+**Amendment 2 to Parts A–C** (orchestrator, 2026-10-09; a repair under the user's standing approval). `c_γ` is the
+non-negative root of `c_γ²`, and branch existence is stated through `c_γ²` without presupposing its sign. Dispositions:
+`directives/_measurements/S9b_SHARED_PHYSICS_amend2_review_disposition.md`.
+
 **Objects:** the v8 optical objects in Parts A–C and the neutral, linked steady in-plane
 brane balance and its conditional optical requirements in Part D, retaining every unsupplied O2 input.
 
@@ -117,7 +121,8 @@ because rulers and clocks are made of the same medium. Only the far-field observ
 - **Eikonal.** The retained object is the dispersion relation above, with its position-dependent
   coefficients, and its rays. Excluded from this step's claim and not computed: the explicit subprincipal
   terms of the underlying operator, which affect amplitude and polarization transport.
-- **Optical smallness.** Define `δ(x) ≡ c_γ(x)/c₀ − 1`. The retained optical set is every monomial
+- **Optical smallness.** Define `δ(x) ≡ c_γ(x)/c₀ − 1`, where `c_γ` is the non-negative root of `c_γ²`. The
+  retained optical set is every monomial
 
   ```
   δ^a (V/c₀)^b ((∂ξ_w)²)^c,      0 ≤ a ≤ 1,  0 ≤ b ≤ 2,  0 ≤ c ≤ 1,
@@ -189,7 +194,8 @@ with `V` live. Far field; linear waves. Time is the lab time of the brane's far-
 along the ray and the condition under which a ray can traverse the full flyby path and both legs of the round
 trip in the required directions. Outside either condition, report the branch type (growing, decaying, absent,
 or unable to traverse in a required direction), print `NOT_ESTABLISHED` for the observables, and do not compute
-them.
+them. State the first condition through `c_γ²` without presupposing its sign, so that each of these branch types
+can follow from it.
 
 ## Reference and bulk input objects
 

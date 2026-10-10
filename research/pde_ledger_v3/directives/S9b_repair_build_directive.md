@@ -32,6 +32,12 @@ round 2 after review r1 (`directives/_measurements/S9b_repair_build_r1_review_di
 change, with the spec's amendment 2. Parts 2 and 3 point at them. Reviewed until clear with the spec amendment.
 Dispositions: `directives/_measurements/S9b_SHARED_PHYSICS_amend2_review_disposition.md`.
 
+**Amendment 6** (orchestrator, 2026-10-10; a repair under the user's standing approval), for the build's repair
+round 3 after review r2 (`directives/_measurements/S9b_repair_build_r2_review_disposition.md`). Item 14 states what
+a difference shows for a payload that carries a domain. Parts 2 and 3 point at the items each engine's repair must
+meet. Reviewed until clear. Dispositions:
+`directives/_measurements/S9b_repair_build_directive_amend6_review_disposition.md`.
+
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
 only. **Part D is held** (user decision, 2026-10-08) until the brane-material premise behind P1 is settled. This build
 constructs and prints no Part D object. That narrows D7 item 3, which listed Part D. Not in this build: the
@@ -214,6 +220,9 @@ comparator, the production runs and the record.
       below, it runs a copy with exactly that one mutation at the named construction site.
     - It prints the baseline payload, the corrupted payload and their difference for **every** tag, including tags
       whose difference is zero. It prints no verdict.
+    - For a payload that carries a domain or conditions, the difference shows separately whether the value changed
+      and whether the domain changed. Each part's difference is computed by the engine, so an unchanged part prints
+      as zero.
     - A knife whose construction an engine does not contain is reported, not invented. The engine itself contains
       no control with an expected outcome.
 
@@ -297,6 +306,8 @@ comparator, the production runs and the record.
     velocity entering it as a vector field. K11's mutation then enters the dispersion.
   - Each item 10 restriction is substituted into its gates as well as into its observables.
 - **Repair round 2 (amendment 5).** Items 5, 6 and 9 as amended, and the spec's amendment 2, hold after the repair.
+- **Repair round 3 (amendment 6).** Items 5 and 6 hold for every `γ` object, and for its restriction and forward
+  copies, on every stratum inside the branch domain, including `GM = 0`.
 
 ## Part 3. Wolfram engine (blind)
 
@@ -314,6 +325,7 @@ comparator, the production runs and the record.
   - The radar `γ` is solved on every stratum of the radar slope (item 7). The `γ` difference, and each
     restriction and forward copy of the radar `γ`, use that solution.
 - **Repair round 2 (amendment 5).** Items 5, 6 and 9 as amended, and the spec's amendment 2, hold after the repair.
+- **Repair round 3 (amendment 6).** Item 14 as amended holds for the harness.
 - **Executable checks, with no expected values:**
   1. Copy the finished `.wl` alone into an empty scratch directory. Run it there and in the repository. Both runs
      exit 0, and their streams are non-empty and byte-identical. Afterwards the scratch directory holds only the

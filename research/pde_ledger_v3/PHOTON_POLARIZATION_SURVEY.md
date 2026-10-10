@@ -4,6 +4,33 @@ Survey date: 2026-10-09. Deliverable: explain polarization, assemble a cited exp
 
 The model under discussion is the user's finite-thickness ordered slab in four spatial bulk dimensions, centred at w = 0. Repository conclusions below use the v3 ledger as authority, as requested. “Two modes” always needs its field content and assumptions attached.
 
+## Open items from the final review (read before using Part 4)
+
+The body below is the round-3 text as reviewed (sha256 `f1baeff2…`). Its final review found two problems. By the
+user's decision they are listed here rather than repaired. **Where an item applies, it overrides the body.** Record:
+`_measurements/polarization_survey/survey_r3_review_disposition.md`, with its lookups beside it.
+
+1. **E01 is not "Reproduced".** The ledger itself says the two-direction count restates a supplied input:
+   "`D_brane = 3` went in and `D−1 = 2` came out. Without a delivered `D_brane` the sentence is an assumption
+   restated, ⛔ not a result" (`research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md:134–136`, R-S1-01, OPEN). S10
+   computes the conditional map `D ↦ D − 1`, "conditional on the supplied action, the supplied `[u]`, and BOTH
+   structural premises" (`research/pde_ledger_v3/V3_STEP_PLAN.md:374–376`). It also rests on the separation of `u`
+   from out-of-plane fields being "inherited rather than tested" (`steps/S10_two_transverse_photons.md:182–183`).
+   Under rule 4's precedence, E01 is **Required, no mechanism yet**, with those two supplied inputs named. The
+   totals become: reproduced 0; in apparent conflict 7; testable 10; required, no mechanism yet 6; not addressed 15.
+   The summary's sentence that E01 "reproduces the conditional in-plane transverse count" should read as "S10
+   computes the conditional count from supplied inputs that state it".
+2. **The parity/chirality condition is not located at `S11bB_interface_assembly.md:53–63`.** Those lines concern
+   non-reciprocal, non-passive interface couplings (line 53 opens: Non-reciprocal, "odd" constitutive couplings),
+   not parity, so splitting the two helicities does not, by that source, need a named reservoir. The interface specs
+   *supply* in-plane parity: "In-plane isotropy _and_ parity — the full `O(3)` acting on the three in-plane
+   directions" (`directives/S11b_SHARED_PHYSICS.md:284`; `directives/S11bB_SHARED_PHYSICS.md:358`), with
+   "Time-reversal is NOT assumed" (`S11b_SHARED_PHYSICS.md:288`). So S11bB:76's "in-plane parity admits no
+   `e_W ↔ u_T` bilinear" follows from that supplied symmetry. Read E10–E15, and Part 3's parity rows, as
+   locating the open condition in what the ledger leaves open (`steps/O2_steady_brane_balance.md:110–111`), what it
+   supplies (the specs' in-plane parity) and what it excludes (the S9b spec at `ede8aa21`, lines 117–119). No class
+   changes, and the condition stays unresolved.
+
 ## 1. What polarization is
 
 ### Plain language

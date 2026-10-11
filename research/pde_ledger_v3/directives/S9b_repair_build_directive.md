@@ -38,6 +38,12 @@ a difference shows for a payload that carries a domain. Parts 2 and 3 point at t
 meet. Reviewed until clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend6_review_disposition.md`.
 
+**Amendment 7** (orchestrator, 2026-10-10; a repair under the user's standing approval), for the build's repair
+round 4 after review r3 (`directives/_measurements/S9b_repair_build_r3_review_disposition.md`). Item 5 states, for
+both engines, the domain every along-ray gate quantifies over; amendment 3 had stated it for Wolfram only. Item 8
+states the sense of the printed predicate and its gate. Parts 2 and 3 point at both items. Reviewed until clear.
+Dispositions: `directives/_measurements/S9b_repair_build_directive_amend7_review_disposition.md`.
+
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
 only. **Part D is held** (user decision, 2026-10-08) until the brane-material premise behind P1 is settled. This build
 constructs and prints no Part D object. That narrows D7 item 3, which listed Part D. Not in this build: the
@@ -120,6 +126,10 @@ comparator, the production runs and the record.
    requires `NOT_ESTABLISHED`. That output, and the branch type, are produced from the computed conditions, never
    typed. The branch-existence condition is computed through `c_γ²` without presupposing its sign (spec, "Branch
    existence"), so each branch type the spec lists can be produced from it.
+   - Every along-ray gate quantifies over a constructed domain: the radii the flyby and both legs of the round trip
+     traverse, each turning radius fixed by that ray's own construction. This covers both branch-existence
+     conditions, the complement where `NOT_ESTABLISHED` is printed, and every restriction and forward copy. No gate
+     quantifies over an undetermined radius or an undefined head.
 6. **The every-`b` conditions are reduced (D6 B2).**
    - Each Part B and Part C condition is solved relative to `GM` for every far-zone `b`. The solving is case by
      case, over every branch the reduction produces, and each case carries its domain.
@@ -138,7 +148,10 @@ comparator, the production runs and the record.
 7. **The radar slope (D6 B3).** The spec's logarithmic slope `𝒮_RT` (observable 2) is obtained by computation from
    Part A's computed round-trip excess time. It is not a rule applied by hand. Part B's radar `γ` uses that slope.
 8. **Path dependence (D6 B4).** Whether the nonreciprocal part depends on the path or only on the endpoints is
-   computed on the nonreciprocal object Part A computed, not on a placeholder.
+   computed on the nonreciprocal object Part A computed, not on a placeholder. Both engines print it under
+   `A_NONRECIPROCAL_PATH_DEPENDENCE` as the same predicate: true when the nonreciprocal part depends on the path, and
+   false when it depends only on the endpoints. It belongs to the spec's observable 3, so outside the branch domain
+   it prints `NOT_ESTABLISHED` (item 5).
 9. **Part C domains (D6 B6).** Each Part C row's domain predicates are built from that row's own response. They are
    not built from another row, or from the amplitude before the response is applied. Each predicate follows from the
    row's response being real and positive, or from the row's supplied inputs. The first-order counting in `f` is an
@@ -315,6 +328,7 @@ comparator, the production runs and the record.
   `B_GAMMA_RADAR`, `B_GAMMA_DIFFERENCE`), and each of its restriction and forward copies, prints what that object's
   relation determines there, computed by the engine. `NOT_ESTABLISHED` is printed only outside the branch domain
   (item 5).
+- **Repair round 4 (amendment 7).** Items 5 and 8 as amended hold after the repair.
 
 ## Part 3. Wolfram engine (blind)
 
@@ -333,6 +347,7 @@ comparator, the production runs and the record.
     restriction and forward copy of the radar `γ`, use that solution.
 - **Repair round 2 (amendment 5).** Items 5, 6 and 9 as amended, and the spec's amendment 2, hold after the repair.
 - **Repair round 3 (amendment 6).** Item 14 as amended holds for the harness.
+- **Repair round 4 (amendment 7).** Items 5 and 8 as amended hold after the repair.
 - **Executable checks, with no expected values:**
   1. Copy the finished `.wl` alone into an empty scratch directory. Run it there and in the repository. Both runs
      exit 0, and their streams are non-empty and byte-identical. Afterwards the scratch directory holds only the

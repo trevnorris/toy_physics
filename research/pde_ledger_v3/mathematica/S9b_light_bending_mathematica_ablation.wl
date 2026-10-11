@@ -8,7 +8,7 @@ scope = Replace[Environment["S9B_ABLATION_SCOPE"], $Failed -> "ALL"];
 If[!MemberQ[{"ALL", "K11"}, scope], Quit[94]];
 root = Directory[];
 engine = FileNameJoin[{root, "research", "pde_ledger_v3", "mathematica", "S9b_light_bending_mathematica_audit.wl"}];
-work = FileNameJoin[{root, "_scratch", "s9b_wl_repair2", "ablation-final2"}];
+work = FileNameJoin[{root, "_scratch", "s9b_wl_repair3", "ablation-final"}];
 If[!DirectoryQ[work], CreateDirectory[work, CreateIntermediateDirectories -> True]];
 source = Import[engine, "Text"];
 S9bHarness`progress = OpenWrite[FileNameJoin[{work, "progress.log"}]];
@@ -31,26 +31,66 @@ knives = <|
  "K11" -> {"vVector = {vLocal, 0};", "vVector = {vLocal, vLocal/r};"}|>;
 print[name_, value_] := (WriteString[First[$Output], "WL_LOCAL_S9B_ABLATION_" <> name <> ": " <>
   ToString[value, InputForm, PageWidth -> Infinity] <> "\n"]; Flush[First[$Output]]);
-(* Exact structural subtraction, with no global Simplify/Reduce call.
-   Associations/lists are traversed without omitting leaves. Identical
-   leaves compute to zero; arithmetic leaves use exact canonical subtraction.
-   Nonnumeric leaves (including string-valued Piecewise and logical gates)
-   retain the complete ordered operands in Inactive[Subtract], as do domains.
-   This is a full difference representation, not an approximation or a
-   compact evaluation. No profile, grade, term or condition is discarded. *)
-difference[a_Association, b_Association] := AssociationMap[
-  difference[Lookup[a, #, Missing["Unemitted"]], Lookup[b, #, Missing["Unemitted"]]] &,
-  Union[Keys[a], Keys[b]]];
-difference[a_List, b_List] /; Length[a] == Length[b] := MapThread[difference, {a,b}];
-(* A changed list shape is a structural difference, not vector arithmetic. *)
-difference[a_List, b_List] := Inactive[Subtract][a,b];
-difference[a_, b_] := Which[SameQ[a,b], 0,
-  StringQ[a] || StringQ[b] || MemberQ[{True, False}, a] || MemberQ[{True, False}, b] ||
-    !FreeQ[{a,b}, _String | _Association | _Rule | _Missing | _ConditionalExpression |
-      _Piecewise | _Equal | _Unequal | _Less | _LessEqual | _Greater | _GreaterEqual |
-      _Inequality | _And | _Or | _Not | _Xor | _Element | _Exists | _ForAll],
-    Inactive[Subtract][a,b],
-  True, a-b];
+(* BEGIN_DOMAIN_DIFFERENCE_METHOD
+   Domain attachment is a property of the engine's payload schema, not of
+   a predicate's head. In particular Closedness, ProfileEquation, Constraint,
+   ConstraintOnOtherInputs and NoRealVelocityDomain remain computed VALUES.
+   ConditionalExpression conditions and the named attachment fields below
+   are collected at their complete structural paths, including nested cases.
+   A predicate emitted alone is a value, not an attached domain. Coverage is
+   never passed to this projection (K11's sample domain is not an attachment).
+   Baseline and corrupted payloads are always printed in full separately. *)
+attachedDomainKeys = {"Domain", "Domains", "BranchDomain", "AlongRayDomain",
+  "ConstantDomain", "GeneralConstantDomain", "FunctionalDomain", "Premise",
+  "Component", "ZeroSetJoining"};
+splitPayload[payload_] := Module[{domains = <||>, walk, value},
+  walk[z_Association, path_] := Association[KeyValueMap[
+    Function[{key, item}, If[MemberQ[attachedDomainKeys,key],
+      AssociateTo[domains, ToString[Append[path,key],InputForm] -> item]; Nothing,
+      key -> walk[item,Append[path,key]]]], z]];
+  walk[z_List, path_] := MapIndexed[walk[#1,Join[path,#2]] &,z];
+  walk[z_ConditionalExpression, path_] := (
+    AssociateTo[domains, ToString[Append[path,"ConditionalExpression"],InputForm] -> z[[2]]];
+    walk[z[[1]],path]);
+  (* Traverse other heads as well: nested ConditionalExpression attachments
+     are separated without changing a relation into a domain. *)
+  walk[z_, path_] := If[AtomQ[z] || FreeQ[z,_ConditionalExpression],z,
+    MapIndexed[walk[#1,Join[path,#2]] &,z]];
+  value = walk[payload,{}]; <|"Value" -> value,"Domain" -> domains|>];
+logicalObjectQ[z_] := MemberQ[{True,False},z] ||
+  MemberQ[{Equal,Unequal,Less,LessEqual,Greater,GreaterEqual,Inequality,
+    And,Or,Not,Xor,Equivalent,Implies,Element,Exists,ForAll},Head[z]] ||
+  MemberQ[{Inactive[ForAll],Inactive[Exists]},Head[z]];
+(* Canonical exact subtraction, with an equality short circuit before any
+   traversal. Logical leaves use signed indicator subtraction, including
+   relations/predicates used as values. No assumption, sampling, global
+   Simplify/Reduce or exponential Boolean expansion is introduced. *)
+partDifference[a_,b_] := Which[
+  SameQ[a,b], 0,
+  AssociationQ[a] && AssociationQ[b], AssociationMap[
+    partDifference[Lookup[a,#,Missing["Unemitted"]],Lookup[b,#,Missing["Unemitted"]]] &,
+    Union[Keys[a],Keys[b]]],
+  ListQ[a] && ListQ[b] && Length[a] == Length[b], MapThread[partDifference,{a,b}],
+  logicalObjectQ[a] && logicalObjectQ[b], Boole[a]-Boole[b],
+  Head[a] === Rule && Head[b] === Rule && SameQ[First[a],First[b]],
+    First[a] -> partDifference[Last[a],Last[b]],
+  ListQ[a] || ListQ[b] || StringQ[a] || StringQ[b] ||
+    !FreeQ[{a,b}, _String | _Association | _Rule | _Missing | _Piecewise],
+    <|"Changed" -> UnsameQ[a,b],"Corrupted" -> a,"Baseline" -> b|>,
+  True,a-b];
+(* Attachment predicates may be a bare Boolean parameter. Metadata-valued
+   domains retain structural comparison; symbolic predicates use indicators. *)
+attachedDifference[a_,b_] := Which[SameQ[a,b],0,
+  (logicalObjectQ[a] || Head[a] === Symbol) &&
+    (logicalObjectQ[b] || Head[b] === Symbol), Boole[a]-Boole[b],
+  True,partDifference[a,b]];
+domainDifference[a_Association,b_Association] := If[SameQ[a,b],0,
+  AssociationMap[attachedDifference[Lookup[a,#,Missing["Unemitted"]],
+    Lookup[b,#,Missing["Unemitted"]]] &,Union[Keys[a],Keys[b]]]];
+difference[a_,b_] := Module[{partsA = splitPayload[a],partsB = splitPayload[b]},
+  <|"ValueDifference" -> partDifference[partsA["Value"],partsB["Value"]],
+    "DomainDifference" -> domainDifference[partsA["Domain"],partsB["Domain"]]|>];
+(* END_DOMAIN_DIFFERENCE_METHOD *)
 run[path_, name_] := Module[{capture, result},
   ClearSystemCache[]; note["engine begin", name];
   capture = OpenWrite[FileNameJoin[{work, name <> ".stdout"}]];
@@ -103,16 +143,16 @@ coverage = <|"Method" -> "exact symbolic mechanical prefix extraction",
   "LocalConstructions" -> "untruncated dispersion/Fermat and retained-ring nonreciprocal one-form",
   "AdditionalTruncation" -> None, "SampleDomain" -> "symbolic constructor domains",
   "Arithmetic" -> "exact", "Samples" -> {}, "Seeds" -> {}|>;
-Do[print["K11_" <> tag, If[KeyExistsQ[compactBaseline, tag] && KeyExistsQ[compactCorrupted, tag],
+Do[note["difference begin", "K11_" <> tag]; print["K11_" <> tag, If[KeyExistsQ[compactBaseline, tag] && KeyExistsQ[compactCorrupted, tag],
   <|"Baseline" -> baseline[tag], "CompactBaseline" -> compactBaseline[tag],
     "CompactCorrupted" -> compactCorrupted[tag],
     "Difference" -> difference[compactCorrupted[tag], compactBaseline[tag]],
     "MethodResidual" -> difference[compactBaseline[tag], baseline[tag]], "Coverage" -> coverage|>,
   <|"Baseline" -> baseline[tag], "CompactBaseline" -> Missing["NOT_EVALUATED"],
     "CompactCorrupted" -> Missing["NOT_EVALUATED"], "Difference" -> Missing["NOT_EVALUATED"],
-    "MethodResidual" -> Missing["NOT_EVALUATED"], "Coverage" -> coverage|>]], {tag, Keys[baseline]}];
+    "MethodResidual" -> Missing["NOT_EVALUATED"], "Coverage" -> coverage|>]]; note["difference end", "K11_" <> tag], {tag, Keys[baseline]}];
 (* Harness dead-path ablation: both inputs are the actual baseline. *)
-If[scope == "ALL", Do[print["HARNESS_DEAD_PATH_" <> tag, <|"Baseline" -> baseline[tag],
- "Corrupted" -> baseline[tag], "Difference" -> difference[baseline[tag], baseline[tag]]|>], {tag, Keys[baseline]}]];
+If[scope == "ALL", Do[note["difference begin", "HARNESS_DEAD_PATH_" <> tag]; print["HARNESS_DEAD_PATH_" <> tag, <|"Baseline" -> baseline[tag],
+ "Corrupted" -> baseline[tag], "Difference" -> difference[baseline[tag], baseline[tag]]|>]; note["difference end", "HARNESS_DEAD_PATH_" <> tag], {tag, Keys[baseline]}]];
 note["complete", scope]; Close[S9bHarness`progress];
 End[];

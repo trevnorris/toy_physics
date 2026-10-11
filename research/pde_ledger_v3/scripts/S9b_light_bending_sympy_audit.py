@@ -22,6 +22,7 @@ from sympy.core.relational import Relational
 from sympy.core.symbol import Str
 from sympy.logic.boolalg import Boolean
 from sympy.printing.repr import ReprPrinter
+from sympy.sets.setexpr import SetExpr
 
 HERE = Path(__file__).resolve()
 ROOT = HERE.parent.parent
@@ -70,6 +71,11 @@ def emit(name, value, *, local=False):
 
 def eq(a, b):
     return sp.Eq(a, b, evaluate=False)
+
+
+def attached_domain(value):
+    """Explicit payload role; predicates elsewhere remain computed values."""
+    return sp.Tuple(Str('ATTACHED_DOMAIN'), cas(value))
 
 
 def everywhere(variable, condition, domain):
@@ -430,7 +436,7 @@ def solve_velocity(mass, GM, r):
     return {'kind':'DIFFERENTIAL','definition':eq(W,velocity**2),'squared':squared,'equation':eq(equation,0),
             'integrating_factor':integrating_factor,'general_solution':eq(W,general),
             'residual':residual,'constants':(eq(C,constants[0]),
-                (sp.Ne(C,constants[0]),'EXCLUDED_BY_SUPPLIED_V_OVER_C0_O_EPSILON_HALF',
+                (attached_domain(sp.Ne(C,constants[0])),'EXCLUDED_BY_SUPPLIED_V_OVER_C0_O_EPSILON_HALF',
                  eq(sp.Limit(C*homogeneous/r,r,sp.oo),homogeneous_limit))),
             'tail_domain':'General radial profiles with the supplied counting; the delta derivative tail converges by integration by parts.'}
 
@@ -502,8 +508,65 @@ def nonreciprocity(r,c0,delta,velocity,embedding):
                 xyz=xyz,source=source,grades=GRADES)
 
 
-def gated(value, domain):
-    return cas(((domain,value),(sp.Not(domain),'NOT_ESTABLISHED')))
+def gated(value, domain, *, applicability=None):
+    # NOT_ESTABLISHED belongs only to the complement of the physical branch
+    # domain. Additional construction assumptions remain attached to the
+    # object itself, separately from that branch classification.
+    if applicability is not None:
+        value=cas(('APPLICABLE_OBJECT',attached_domain(applicability),value))
+    return cas(((attached_domain(domain),value),(attached_domain(sp.Not(domain)),'NOT_ESTABLISHED')))
+
+
+def gamma_cases(reference, observable, unknown, mass):
+    """Solve the comparison relation on regular and singular mass strata.
+
+    At a zero of the computed coefficient, the remaining relation is a
+    compatibility predicate, independent of gamma. Solve that predicate on
+    each of its truth strata; no division by the zero coefficient is made.
+    """
+    equation=reference-observable
+    coefficient=sp.diff(equation,unknown)
+    singular=sp.solveset(coefficient,mass,domain=sp.S.Reals)
+    if not isinstance(singular,sp.FiniteSet):
+        raise ValueError(('non-finite gamma coefficient strata',coefficient,singular))
+    integrals=sorted(equation.atoms(sp.Integral),key=sp.default_sort_key)
+    opaque={integral:sp.Dummy('s9b_gamma_integral') for integral in integrals}
+    root=sp.solve(equation.xreplace(opaque),unknown)[0].xreplace({v:k for k,v in opaque.items()})
+    regular_domain=sp.And(*(sp.Ne(mass,value) for value in singular))
+    regular=(regular_domain,sp.FiniteSet(root))
+    singular_rows={}
+    for value in singular:
+        remainder=reduce_functional(equation.subs(mass,value))
+        compatible=sp.Eq(remainder,0)
+        rows=[]
+        for truth in (sp.true,sp.false):
+            # The stratum fixes this predicate's truth value; solveset then
+            # computes the unconstrained or inconsistent solution set.
+            predicate=compatible.xreplace({compatible:truth})
+            solutions=sp.solveset(predicate,unknown,domain=sp.S.Reals)
+            condition=compatible if truth==sp.true else sp.Not(compatible)
+            rows.append((sp.And(sp.Eq(mass,value),condition),solutions))
+        singular_rows[value]=rows
+    rows=[regular]+[row for group in singular_rows.values() for row in group]
+    payload=cas(('GAMMA_RELATION',unknown,eq(reference,observable),
+                 tuple((attached_domain(domain),solution) for domain,solution in rows)))
+    return dict(payload=payload,root=root,regular_domain=regular_domain,singular=singular_rows)
+
+
+def gamma_difference_cases(left,right):
+    """Image of the two computed gamma solution sets under subtraction."""
+    if left['singular'].keys()!=right['singular'].keys():
+        raise ValueError('gamma relations have different singular mass strata')
+    difference=reduce_functional(left['root']-right['root'])
+    rows=[(sp.And(left['regular_domain'],right['regular_domain']),sp.FiniteSet(difference))]
+    for mass in left['singular']:
+        for left_domain,left_set in left['singular'][mass]:
+            for right_domain,right_set in right['singular'][mass]:
+                product=sp.ProductSet(left_set,right_set)
+                image=product if product==sp.EmptySet else (SetExpr(left_set)-SetExpr(right_set)).set
+                rows.append((sp.And(left_domain,right_domain),image))
+    return cas(('GAMMA_DIFFERENCE_SOLUTION_SETS',
+                tuple((attached_domain(domain),solution) for domain,solution in rows)))
 
 
 def build(branch_demo=None):
@@ -536,9 +599,9 @@ def build(branch_demo=None):
     endpoint_map = {RE:sp.sqrt(b*b+ZE*ZE),RR:sp.sqrt(b*b+ZR*ZR)}
     real_domain = everywhere(r,existence.subs(branch_map),sp.Interval(rt,sp.oo))
     travel_domain = everywhere(r,traversal.subs(branch_map),sp.Interval(rt,sp.oo))
-    branch_type = ((sp.Lt(discriminant,0),('GROWING','DECAYING')),
-                   (sp.Eq(discriminant,0),'ABSENT'),
-                   (sp.And(existence,sp.Not(traversal)),'UNABLE_TO_TRAVERSE_REQUIRED_DIRECTION'))
+    branch_type = ((attached_domain(sp.Lt(discriminant,0)),('GROWING','DECAYING')),
+                   (attached_domain(sp.Eq(discriminant,0)),'ABSENT'),
+                   (attached_domain(sp.And(existence,sp.Not(traversal))),'UNABLE_TO_TRAVERSE_REQUIRED_DIRECTION'))
     progress('SUPPLIED_DEPENDENCIES')
     emit('SUPPLIED_DEPENDENCIES',('DISPERSION','SPEED_IDENTIFICATION','ADVECTION','METRIC','COORDINATE_MASS_BALANCE','LAB_HELD','ORDER_COUNTING','REFERENCES','PART_C_RESPONSES'))
     progress('GENERAL_PROFILES')
@@ -553,7 +616,7 @@ def build(branch_demo=None):
     speed_identity=eq((c0*(1+delta))**2,signed_speed_squared)
     root_domain=sp.And(sp.Ge(1+delta,0),speed_identity)
     progress('SPEED_IDENTIFICATION')
-    emit('SPEED_IDENTIFICATION',(speed_identity,root_domain))
+    emit('SPEED_IDENTIFICATION',(speed_identity,attached_domain(root_domain)))
     progress('BRANCH_EXISTENCE')
     emit('BRANCH_EXISTENCE',real_domain)
     progress('PATH_TRAVERSAL')
@@ -568,7 +631,7 @@ def build(branch_demo=None):
         emit('DEMONSTRATION_BRANCH_TYPE',cas(branch_type).subs(branch_map))
         if domain == sp.false:
             progress('DEMONSTRATION_OBSERVABLES')
-            emit('DEMONSTRATION_OBSERVABLES',('NOT_ESTABLISHED',domain))
+            emit('DEMONSTRATION_OBSERVABLES',('NOT_ESTABLISHED',attached_domain(sp.Not(domain))))
             progress('LOCAL_NAMES')
             emit('LOCAL_NAMES',LOCAL+['PY_LOCAL_S9B_LOCAL_NAMES'])
             return
@@ -606,6 +669,7 @@ def build(branch_demo=None):
     turning_domain=sp.And(eq(turning.subs(r,rt),0),sp.Gt(radial_diff(turning,r).subs(r,rt),0),
                           everywhere(r,sp.Gt(turning,0),sp.Interval.open(rt,sp.oo)))
     observable_gate = real_domain  # K10: existence only
+    branch_domain=sp.And(observable_gate,travel_domain)
     gate=sp.And(observable_gate,travel_domain,turning_domain,
                 everywhere(r,root_domain,sp.Interval(rt,sp.oo)),
                 sp.Lt(rt,sp.Min(RE,RR))).subs(endpoint_map).subs(B,b)
@@ -617,7 +681,7 @@ def build(branch_demo=None):
     progress('NONRECIPROCITY_PATH_PREDICATE')
     emit('NONRECIPROCITY_PATH_PREDICATE',path['predicate'])
     progress('A_NONRECIPROCAL_PATH_DEPENDENCE')
-    emit('A_NONRECIPROCAL_PATH_DEPENDENCE',gated(path['predicate'],gate))
+    emit('A_NONRECIPROCAL_PATH_DEPENDENCE',gated(path['predicate'],branch_domain,applicability=gate))
 
     progress('A_DEFLECTION/A_ROUND_TRIP/A_ONE_WAY: general-profile action functionals')
     kernel=sp.sqrt(1-B*B/x**2)
@@ -694,7 +758,6 @@ def build(branch_demo=None):
     references={'DEFLECTION':reference_theta,'RADAR':reference_slope}
     comparisons={'DEFLECTION':deflection,'RADAR':radar_slope}
     progress('B_GAMMA_DEFLECTION/B_GAMMA_RADAR: solve computed comparisons')
-    gammas={name:sp.solve(eq(references[name],obj),reference_gamma)[0] for name,obj in comparisons.items()}
     residuals={name:obj-references[name].subs(reference_gamma,1) for name,obj in comparisons.items()}
     progress('REFERENCE_OBJECTS')
     emit('REFERENCE_OBJECTS',(reference_theta,reference_time,reference_slope))
@@ -761,14 +824,14 @@ def build(branch_demo=None):
     def implied_exchange(condition,mass,replacement,domain):
         if Velocity in replacement:
             determined=replacement[Velocity](r)
-            return (condition,('VELOCITY_FIXED_BY_RESTRICTION',eq(velocity,determined),domain,
+            return (condition,('VELOCITY_FIXED_BY_RESTRICTION',eq(velocity,determined),attached_domain(domain),
                                eq(jn,substitute(exchange,replacement))))
         solution=solve_velocity(mass,GM,r)
         if solution['kind']=='UNDETERMINED':
-            return (condition,('V_UNDETERMINED',solution['reason'],velocity,rho,domain,
+            return (condition,('V_UNDETERMINED',solution['reason'],velocity,rho,attached_domain(domain),
                                eq(jn,substitute(exchange,replacement))),solution)
         squared=solution['squared']
-        solution=dict(solution, nonreal_branch=(sp.Lt(squared,0),'EXCLUDED_BY_REAL_MATERIAL_VELOCITY'))
+        solution=dict(solution, nonreal_branch=(attached_domain(sp.Lt(squared,0)),'EXCLUDED_BY_REAL_MATERIAL_VELOCITY'))
         root=sp.sqrt(squared)
         solved_gate=substitute_domain(domain,{Velocity:lambda z:root.subs(r,z)})
         real_squared=everywhere(r,sp.Ge(squared,0),sp.Interval.open(bmin,sp.oo))
@@ -778,7 +841,7 @@ def build(branch_demo=None):
                                sp.Symbol('s9b_signed_velocity',real=True)):
             jvalue=substitute(exchange,{Velocity:lambda z:signed.subs(r,z)})
             branches.append(('ON_EACH_CONNECTED_COMPONENT_OF_POSITIVE_V_SQUARED',
-                sp.And(common,sp.Gt(squared,0)),eq(velocity,signed),eq(jn,jvalue)))
+                attached_domain(sp.And(common,sp.Gt(squared,0))),eq(velocity,signed),eq(jn,jvalue)))
         # Signs may differ between positive components. At a zero, retain
         # every real differentiable gluing; the mass law supplies its j_n.
         z=sp.Symbol('s9b_velocity_zero_radius',positive=True)
@@ -794,7 +857,7 @@ def build(branch_demo=None):
                     sp.Contains(left,sp.S.Reals),sp.Contains(right,sp.S.Reals))
                 zero_exchange=exchange.subs({sp.diff(velocity,r):right,velocity:0},simultaneous=True).subs(r,z)
                 branches.append(('ZERO_LOCUS_DIFFERENTIABLE_JOIN_INCLUDING_ZERO_INTERVALS',
-                    joining,(left_sign,right_sign),eq(Velocity(z),0),eq(sp.Subs(sp.diff(velocity,r),r,z),right),
+                    attached_domain(joining),(left_sign,right_sign),eq(Velocity(z),0),eq(sp.Subs(sp.diff(velocity,r),r,z),right),
                     eq(jn.subs(r,z),zero_exchange)))
         return (condition,tuple(branches),solution)
     def emit_condition(prefix,replacement,own_domain=sp.true,implied=True,gate_replacement=None):
@@ -803,7 +866,7 @@ def build(branch_demo=None):
         for name,mass in condition_mass.items():
             progress(prefix+'CONDITION_'+name+': substitute profiles and domains')
             local_mass=substitute(mass,replacement)
-            condition=cas(('RADIAL_DIFFERENTIAL_IDENTITY',r,sp.Interval.open(bmin,sp.oo),domain,eq(GM,local_mass)))
+            condition=cas(('RADIAL_DIFFERENTIAL_IDENTITY',r,attached_domain(sp.Interval.open(bmin,sp.oo)),attached_domain(domain),eq(GM,local_mass)))
             tag=prefix+'CONDITION_'+name
             progress(tag)
             emit(tag,condition)
@@ -817,27 +880,31 @@ def build(branch_demo=None):
                 objects['s9b_'+tag.lower()]=value
                 velocity_reductions[tag]=value[-1]
     def emit_comparisons(prefix,replacement,domain):
+        gamma_domain=substitute_domain(branch_domain,replacement)
+        solved={}
         for name in comparisons:
             progress(prefix+'B_GAMMA_'+name)
-            emit(prefix+'B_GAMMA_'+name,gated(substitute(gammas[name],replacement),sp.And(domain,sp.Ne(GM,0))))
+            solved[name]=gamma_cases(references[name],substitute(comparisons[name],replacement),reference_gamma,GM)
+            emit(prefix+'B_GAMMA_'+name,gated(solved[name]['payload'],gamma_domain))
             progress(prefix+'B_RESIDUAL_'+name)
-            emit(prefix+'B_RESIDUAL_'+name,gated(substitute(residuals[name],replacement),domain))
+            emit(prefix+'B_RESIDUAL_'+name,gated(substitute(residuals[name],replacement),gamma_domain,applicability=domain))
         progress(prefix+'B_GAMMA_DIFFERENCE: substitute and reduce integral kernels')
-        difference=reduce_functional(substitute(gammas['DEFLECTION']-gammas['RADAR'],replacement))
+        difference=gamma_difference_cases(solved['DEFLECTION'],solved['RADAR'])
         progress(prefix+'B_GAMMA_DIFFERENCE')
-        emit(prefix+'B_GAMMA_DIFFERENCE',gated(difference,sp.And(domain,sp.Ne(GM,0))))
+        emit(prefix+'B_GAMMA_DIFFERENCE',gated(difference,gamma_domain))
     def emit_a(prefix,replacement,domain,all_times=True):
+        physical_branch=substitute_domain(branch_domain,replacement)
         for g in GRADES:
             suffix='_G%d%d%d'%g
             progress(prefix+'A_DEFLECTION'+suffix)
-            emit(prefix+'A_DEFLECTION'+suffix,gated(substitute(theta[g].subs(B,b),replacement),domain))
+            emit(prefix+'A_DEFLECTION'+suffix,gated(substitute(theta[g].subs(B,b),replacement),physical_branch,applicability=domain))
             if all_times:
                 for name,jet in (('ROUND_TRIP',roundtrip_time),('ONE_WAY_ER',forward_time),('ONE_WAY_RE',reverse_time),('NONRECIPROCAL',nonreciprocal_time)):
                     progress(prefix+'A_'+name+suffix)
-                    emit(prefix+'A_'+name+suffix,gated(substitute(jet[g].subs(endpoint_map),replacement),domain))
+                    emit(prefix+'A_'+name+suffix,gated(substitute(jet[g].subs(endpoint_map),replacement),physical_branch,applicability=domain))
         for g,value in radar.items():
             progress(prefix+'A_RADAR_LOG_G%d%d%d'%g)
-            emit(prefix+'A_RADAR_LOG_G%d%d%d'%g,gated(substitute(value,replacement),domain))
+            emit(prefix+'A_RADAR_LOG_G%d%d%d'%g,gated(substitute(value,replacement),physical_branch,applicability=domain))
     emit_a('',{},gate)
     emit_comparisons('',{},gate)
     emit_condition('B_',{})
@@ -865,10 +932,10 @@ def build(branch_demo=None):
         if label!='CONSTANT': domain=sp.And(domain,sp.Gt(rho0*(1+f),0))
         if label=='FIXED_RATIO': domain=sp.And(domain,sp.Gt(cs0_squared,0),sp.Gt(cs_squared.subs(rho_bulk,rho0*(1+f)),0))
         progress('C_'+label+'_RESPONSE')
-        emit('C_'+label+'_RESPONSE',(response,coefficient*f,domain))
+        emit('C_'+label+'_RESPONSE',(response,coefficient*f,attached_domain(domain)))
         emit_condition('C_'+label+'_',replacement,domain,gate_replacement=exact_replacement)
         progress('C_'+label+'_N_DEPENDENCE')
-        emit('C_'+label+'_N_DEPENDENCE',(tuple(sp.diff(substitute(value,replacement),n) for value in condition_mass.values()),domain))
+        emit('C_'+label+'_N_DEPENDENCE',(tuple(sp.diff(substitute(value,replacement),n) for value in condition_mass.values()),attached_domain(domain)))
         response_rows.append((label,replacement,domain,exact_replacement))
         if label!='CONSTANT':
             zeros={Velocity:lambda x:sp.S.Zero,Embedding:lambda x:sp.S.Zero}
@@ -882,7 +949,7 @@ def build(branch_demo=None):
     flux_constant=sp.solve(eq(Phi,flux),constant)[0]
     forwardV=solution.rhs.subs(constant,flux_constant)
     progress('F_MASS_SOLUTION')
-    emit('F_MASS_SOLUTION',(eq(jn,0),eq(Phi,flux),eq(liveV,forwardV)))
+    emit('F_MASS_SOLUTION',(attached_domain(eq(jn,0)),eq(Phi,flux),eq(liveV,forwardV)))
     for label,extra in (('FLOW',restrictions['FLOW_ONLY']),('LIVE',{})):
         replacement={Velocity:lambda x:forwardV.subs(r,x)}|extra
         prefix='F_'+label+'_'
@@ -902,15 +969,15 @@ def build(branch_demo=None):
                                gate_replacement=replacement|exact_map)
     progress('VELOCITY_REDUCTIONS')
     emit('VELOCITY_REDUCTIONS',velocity_reductions)
-    labels={tag:('FORWARD_NO_FAR_ZONE_LOSS',eq(jn,0),'Phi is the live outward coordinate-sphere mass flux')
+    labels={tag:('FORWARD_NO_FAR_ZONE_LOSS',attached_domain(eq(jn,0)),'Phi is the live outward coordinate-sphere mass flux')
             for tag in TAGS if tag.startswith('PY_S9B_F_')}
     for label,replacement in restrictions.items():
         for tag in TAGS:
             if tag.startswith('PY_S9B_R_'+label+'_'):
-                labels[tag]=(label,tuple(eq(profile(r),value(r)) for profile,value in replacement.items()))
+                labels[tag]=(label,attached_domain(tuple(eq(profile(r),value(r)) for profile,value in replacement.items())))
     for tag in TAGS:
         if tag.startswith('PY_S9B_R_BULK_ONLY_'):
-            labels[tag]=('BULK_ONLY',eq(velocity,0),eq(xi,0))
+            labels[tag]=('BULK_ONLY',attached_domain((eq(velocity,0),eq(xi,0))))
     progress('OBJECT_LABELS')
     emit('OBJECT_LABELS',labels)
     emitted={tag.removeprefix('PY_S9B_') for tag in TAGS if tag.startswith('PY_S9B_')}

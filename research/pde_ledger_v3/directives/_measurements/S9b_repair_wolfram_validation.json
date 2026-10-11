@@ -1,0 +1,115 @@
+{
+  "engineTags": 373,
+  "sharedTags": 330,
+  "localTags": 43,
+  "duplicates": 0,
+  "missingShared": [],
+  "extraShared": [],
+  "registryComplete": true,
+  "notEstablishedCount": 270,
+  "K11CompactCounts": [
+    10,
+    10
+  ],
+  "K11Reached": [
+    "WL_LOCAL_S9B_SUPPLIED_INPUTS",
+    "WL_LOCAL_S9B_PROFILE_ANSATZ",
+    "WL_LOCAL_S9B_RETAINED_GRADES",
+    "WL_LOCAL_S9B_PROGRESS_001",
+    "WL_LOCAL_S9B_PROGRESS_002",
+    "WL_LOCAL_S9B_BRANCH_FREQUENCIES",
+    "WL_LOCAL_S9B_BRANCH_TYPES",
+    "WL_LOCAL_S9B_HAMILTON_VELOCITY",
+    "WL_LOCAL_S9B_FERMAT_OBJECT",
+    "WL_S9B_A_NONRECIPROCAL_PATH_DEPENDENCE"
+  ],
+  "K11NotEvaluatedCount": 363,
+  "K11BaselinePayloadsEqualFull": true,
+  "engineSourceMatchesRun": true,
+  "harnessSourceMatchesRun": true,
+  "baselineByteIdentical": true,
+  "isolation": {
+    "byteIdentical": true,
+    "nonempty": true,
+    "directoryContents": [
+      "S9b_light_bending_mathematica_audit.wl"
+    ],
+    "repositoryOutputSHA256": "ee0adba9726215abae9a606d794f07b3b5a0812d837c2ed373a04e523ecdabbd",
+    "isolatedOutputSHA256": "ee0adba9726215abae9a606d794f07b3b5a0812d837c2ed373a04e523ecdabbd"
+  },
+  "runOutcomes": {
+    "finished-repository": {
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 22.87871941085905,
+        "unit": "s11c-guard-a92178e4b130",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 22.77584546804428,
+          "childPid": 476829
+        }
+      },
+      "liveGrowthObservations": 32
+    },
+    "finished-isolated": {
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 23.30138709791936,
+        "unit": "s11c-guard-8a8208f9aee0",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 23.175400115083903,
+          "childPid": 478453
+        }
+      },
+      "liveGrowthObservations": 31
+    },
+    "measurements": {
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 23.78940407303162,
+        "unit": "s11c-guard-59a0ecbad39e",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 23.690465565072373,
+          "childPid": 481952
+        }
+      },
+      "liveGrowthObservations": 34
+    },
+    "finished-ablation": {
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 237.14456794899888,
+        "unit": "s11c-guard-3e05962ebfd3",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 237.06965859094635,
+          "childPid": 483561
+        }
+      },
+      "liveGrowthObservations": 100
+    }
+  },
+  "printedVelocityResidualValues": [
+    "0"
+  ],
+  "printedBalanceResidualValues": [
+    "0"
+  ],
+  "baselineIndeterminateOccurrences": 0,
+  "measurementIndeterminateOccurrences": 0,
+  "outStatus": ""
+}

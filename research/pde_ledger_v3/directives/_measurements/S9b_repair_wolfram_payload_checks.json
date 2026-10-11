@@ -1,4 +1,162 @@
 {
+  "k11FieldIssues": [],
+  "coverageVariants": [
+    "<|\"Method\" -> \"exact symbolic mechanical prefix extraction\", \"Boundary\" -> \"(* COMPACT_K11_BOUNDARY *)\", \"RetainedGrades\" -> {{0, 0, 0}, {0, 0, 1}, {0, 1, 0}, {0, 1, 1}, {0, 2, 0}, {0, 2, 1}, {1, 0, 0}, {1, 0, 1}, {1, 1, 0}, {1, 1, 1}, {1, 2, 0}, {1, 2, 1}}, \"LocalConstructions\" -> \"untruncated dispersion/Fermat and retained-ring nonreciprocal one-form\", \"AdditionalTruncation\" -> None, \"SampleDomain\" -> \"symbolic constructor domains\", \"Arithmetic\" -> \"exact\", \"Samples\" -> {}, \"Seeds\" -> {}|>"
+  ],
+  "executedEngineNames": [
+    "BASELINE",
+    "K1",
+    "K2",
+    "K3",
+    "K4a",
+    "K4b",
+    "K4c",
+    "K5",
+    "K6",
+    "K7",
+    "K8",
+    "K9a",
+    "K9b",
+    "K10",
+    "K11_COMPACT_BASELINE",
+    "K11_COMPACT_CORRUPTED"
+  ],
+  "fullK11Executed": false,
+  "differenceShapeIssues": [],
+  "differenceStats": {
+    "K1": {
+      "rows": 373,
+      "valueZero": 201,
+      "domainZero": 81,
+      "bothZero": 57
+    },
+    "K2": {
+      "rows": 373,
+      "valueZero": 229,
+      "domainZero": 185,
+      "bothZero": 136
+    },
+    "K3": {
+      "rows": 373,
+      "valueZero": 223,
+      "domainZero": 56,
+      "bothZero": 36
+    },
+    "K4a": {
+      "rows": 373,
+      "valueZero": 269,
+      "domainZero": 343,
+      "bothZero": 269
+    },
+    "K4b": {
+      "rows": 373,
+      "valueZero": 269,
+      "domainZero": 343,
+      "bothZero": 269
+    },
+    "K4c": {
+      "rows": 373,
+      "valueZero": 232,
+      "domainZero": 185,
+      "bothZero": 139
+    },
+    "K5": {
+      "rows": 373,
+      "valueZero": 335,
+      "domainZero": 373,
+      "bothZero": 335
+    },
+    "K6": {
+      "rows": 373,
+      "valueZero": 319,
+      "domainZero": 350,
+      "bothZero": 319
+    },
+    "K7": {
+      "rows": 373,
+      "valueZero": 326,
+      "domainZero": 327,
+      "bothZero": 326
+    },
+    "K8": {
+      "rows": 373,
+      "valueZero": 271,
+      "domainZero": 218,
+      "bothZero": 189
+    },
+    "K9a": {
+      "rows": 373,
+      "valueZero": 360,
+      "domainZero": 362,
+      "bothZero": 360
+    },
+    "K9b": {
+      "rows": 373,
+      "valueZero": 361,
+      "domainZero": 362,
+      "bothZero": 361
+    },
+    "K10": {
+      "rows": 373,
+      "valueZero": 366,
+      "domainZero": 56,
+      "bothZero": 49
+    },
+    "K11": {
+      "rows": 10,
+      "valueZero": 4,
+      "domainZero": 9,
+      "bothZero": 4
+    },
+    "HARNESS_DEAD_PATH": {
+      "rows": 373,
+      "valueZero": 373,
+      "domainZero": 373,
+      "bothZero": 373
+    }
+  },
+  "k11MethodResiduals": {
+    "WL_LOCAL_S9B_SUPPLIED_INPUTS": {
+      "ValueDifference": "0",
+      "DomainDifference": "0"
+    },
+    "WL_LOCAL_S9B_PROFILE_ANSATZ": {
+      "ValueDifference": "0",
+      "DomainDifference": "0"
+    },
+    "WL_LOCAL_S9B_RETAINED_GRADES": {
+      "ValueDifference": "0",
+      "DomainDifference": "0"
+    },
+    "WL_LOCAL_S9B_PROGRESS_001": {
+      "ValueDifference": "0",
+      "DomainDifference": "0"
+    },
+    "WL_LOCAL_S9B_PROGRESS_002": {
+      "ValueDifference": "0",
+      "DomainDifference": "0"
+    },
+    "WL_LOCAL_S9B_BRANCH_FREQUENCIES": {
+      "ValueDifference": "0",
+      "DomainDifference": "0"
+    },
+    "WL_LOCAL_S9B_BRANCH_TYPES": {
+      "ValueDifference": "0",
+      "DomainDifference": "0"
+    },
+    "WL_LOCAL_S9B_HAMILTON_VELOCITY": {
+      "ValueDifference": "0",
+      "DomainDifference": "0"
+    },
+    "WL_LOCAL_S9B_FERMAT_OBJECT": {
+      "ValueDifference": "0",
+      "DomainDifference": "0"
+    },
+    "WL_S9B_A_NONRECIPROCAL_PATH_DEPENDENCE": {
+      "ValueDifference": "0",
+      "DomainDifference": "0"
+    }
+  },
   "payloadIssues": [],
   "counts": {
     "K1": 373,
@@ -168,8 +326,8 @@
     "WL_LOCAL_S9B_ABLATION_K11_SITE"
   ],
   "formerFailureTagProgress": [
-    "{\"difference begin\", \"K1_WL_S9B_F_LIVE_BRANCH_TYPE\", 217563672, 220311176}",
-    "{\"difference end\", \"K1_WL_S9B_F_LIVE_BRANCH_TYPE\", 217565848, 220311176}"
+    "{\"difference begin\", \"K1_WL_S9B_F_LIVE_BRANCH_TYPE\", 217743608, 220334456}",
+    "{\"difference end\", \"K1_WL_S9B_F_LIVE_BRANCH_TYPE\", 217745832, 220334456}"
   ],
-  "completionEvent": "{\"complete\", \"ALL\", 233167304, 266890576}"
+  "completionEvent": "{\"complete\", \"ALL\", 233161464, 267095984}"
 }

@@ -12,6 +12,7 @@ import argparse
 import ast
 import hashlib
 import os
+from functools import lru_cache
 from pathlib import Path
 import subprocess
 import sys
@@ -108,13 +109,16 @@ def compact_reduce(value, reducer, coordinates):
                       for point in COMPACT_POINTS))
 
 
-def compact_difference(a,b):
+def _compact_difference(a,b):
     # Arithmetic subtraction, including the 0/1 indicators of exact booleans.
     # An unresolved Boolean is not silently converted into a truth value.
+    if a==b:
+        return sp.S.Zero
     if a in (sp.true,sp.false) and b in (sp.true,sp.false):
         return sp.Integer(int(bool(b))-int(bool(a)))
     if isinstance(a,sp.Tuple) and isinstance(b,sp.Tuple) and len(a)==len(b):
-        return sp.Tuple(*(compact_difference(x,y) for x,y in zip(a,b)))
+        parts=sp.Tuple(*(_compact_difference(x,y) for x,y in zip(a,b)))
+        return sp.S.Zero if all(part==0 for part in parts) else parts
     if isinstance(a,sp.MatrixBase) and isinstance(b,sp.MatrixBase) and a.shape==b.shape:
         return (b-a).applyfunc(sp.factor)
     if isinstance(a,sp.Expr) and isinstance(b,sp.Expr):
@@ -201,18 +205,102 @@ def parse(path):
     return result
 
 
-def difference(a,b):
+def _primitive_integral(integral):
+    """Extract only factors independent of every integration variable."""
+    kernel=sp.factor_terms(integral.function)
+    coefficient,kernel=kernel.as_independent(*integral.variables,as_Add=False)
+    return coefficient*sp.Integral(kernel,*integral.limits)
+
+
+@lru_cache(maxsize=256)
+def _normalized_predicate(value):
+    replacements={}
+    for relation in value.atoms(sp.core.relational.Relational):
+        if not all(isinstance(side,sp.Expr) for side in (relation.lhs,relation.rhs)):
+            # A quantified set relation is itself a predicate. Do not solve
+            # its membership problem while comparing payload domains.
+            continue
+        sides=[side.replace(lambda node:isinstance(node,sp.Integral),_primitive_integral)
+               for side in (relation.lhs,relation.rhs)]
+        functionals=set().union(*(side.atoms(sp.Integral,sp.Derivative,sp.Limit,sp.Subs) for side in sides))
+        opaque={node:sp.Dummy('s9b_comparison_functional') for node in sorted(functionals,key=sp.default_sort_key)}
+        held=relation.func(*(side.xreplace(opaque) for side in sides),evaluate=False)
+        reduced=sp.simplify(held,doit=False)
+        replacements[relation]=reduced.xreplace({v:k for k,v in opaque.items()})
+    return value.xreplace(replacements)
+
+
+def _value_difference(a,b):
     if a == b:
         return sp.S.Zero
     if isinstance(a,sp.Tuple) and isinstance(b,sp.Tuple) and len(a)==len(b):
-        return sp.Tuple(*(difference(x,y) for x,y in zip(a,b)))
+        parts=sp.Tuple(*(_value_difference(x,y) for x,y in zip(a,b)))
+        return sp.S.Zero if all(part==0 for part in parts) else parts
     if isinstance(a,sp.MatrixBase) and isinstance(b,sp.MatrixBase) and a.shape==b.shape:
         return b-a
     if isinstance(a,sp.Expr) and isinstance(b,sp.Expr):
         return b-a
     if isinstance(a,sp.logic.boolalg.Boolean) and isinstance(b,sp.logic.boolalg.Boolean):
-        return sp.Xor(a,b)
-    return sp.sympify(a!=b)
+        # Normalize arithmetic relations without evaluating functionals,
+        # then compare their Boolean structure. This also removes spurious
+        # changes from nonzero scalar multiples of a compatibility equation.
+        result=sp.simplify_logic(sp.Xor(_normalized_predicate(a),_normalized_predicate(b)),deep=False)
+        return sp.Integer(int(bool(result))) if result in (sp.true,sp.false) else result
+    if isinstance(a,sp.Set) and isinstance(b,sp.Set):
+        # General-profile solution sets need not have decidable membership.
+        # Preserve their exact symmetric difference without asking Integral
+        # membership tests to evaluate arbitrary profiles. Equality above
+        # still reduces identical sets to zero.
+        return sp.SymmetricDifference(a,b,evaluate=False)
+    return sp.Integer(int(a!=b))
+
+
+def payload_roles(value):
+    """Separate explicitly attached domains, never Boolean-valued objects.
+
+    Integer argument paths identify every domain slot, including nested
+    condition/velocity cases and copies inside export metadata. The sample
+    configuration is supplied outside this function and is not a domain.
+    """
+    domains={}
+    def visit(node,path):
+        if isinstance(node,sp.Tuple) and len(node)==2 and node[0]==Str('ATTACHED_DOMAIN'):
+            domains[path]=node[1]
+            return Str('ATTACHED_DOMAIN_SLOT')
+        if isinstance(node,sp.Basic):
+            args=tuple(visit(child,path+(index,)) for index,child in enumerate(node.args))
+            if args!=node.args:
+                return node.func(*args)
+        # Export metadata also contains FunctionClass objects, which are
+        # classes, not Basic instances. Do not invoke their unbound xreplace
+        # method while projecting the enclosing tuple.
+        return node
+    return visit(value,()),domains
+
+
+def role_difference(a,b,value_method):
+    left,left_domains=payload_roles(a)
+    right,right_domains=payload_roles(b)
+    value_delta=value_method(left,right)
+    if left_domains==right_domains:
+        domain_delta=sp.S.Zero
+    else:
+        rows=[]
+        for path in sorted(left_domains.keys()|right_domains.keys()):
+            before=left_domains.get(path,Str('NO_ATTACHED_DOMAIN'))
+            after=right_domains.get(path,Str('NO_ATTACHED_DOMAIN'))
+            rows.append(sp.Tuple(sp.Tuple(*path),_value_difference(before,after)))
+        domain_delta=sp.S.Zero if all(row[1]==0 for row in rows) else sp.Tuple(*rows)
+    return sp.Tuple(sp.Tuple(Str('VALUE_DIFFERENCE'),value_delta),
+                    sp.Tuple(Str('DOMAIN_DIFFERENCE'),domain_delta))
+
+
+def difference(a,b):
+    return role_difference(a,b,_value_difference)
+
+
+def compact_difference(a,b):
+    return role_difference(a,b,_compact_difference)
 
 
 def run(script, folder):

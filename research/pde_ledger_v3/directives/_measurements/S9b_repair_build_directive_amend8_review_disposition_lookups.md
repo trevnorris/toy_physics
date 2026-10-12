@@ -447,3 +447,136 @@ $ systemctl --user list-units 's11c-guard-*' --no-legend | wc -l
 0
 ```
 
+
+# Round 2 (generated 2026-10-11 22:03; generator `_scratch/s9b_build/gen/s9b_amend8_r2_lookups.sh`)
+
+## The round-2 reviewed version
+```
+$ cat _scratch/s9b_build/s9b_repair_build_directive_amend8_review_baseline_r2.sha256
+8218600d66214d961c017a80b70e296f24812c51c9c788f2231d8ca2db2edbe0  research/pde_ledger_v3/directives/S9b_repair_build_directive.md
+```
+
+```
+$ sha256sum _scratch/s9b_build/S9b_repair_build_directive_amend8_reviewed_r2.md
+8218600d66214d961c017a80b70e296f24812c51c9c788f2231d8ca2db2edbe0  _scratch/s9b_build/S9b_repair_build_directive_amend8_reviewed_r2.md
+```
+
+```
+$ sha256sum _scratch/s9b_build/s9b_repair_build_directive_amend8_review_prompt_r2.md
+c200e75c87140f2312e0908940df26efc5ab3bc2ef469958ed8b9966210195e6  _scratch/s9b_build/s9b_repair_build_directive_amend8_review_prompt_r2.md
+```
+
+```
+$ grep -n 'A rewriting that holds only where' _scratch/s9b_build/S9b_repair_build_directive_amend8_reviewed_r2.md
+177:     is `c_γ/c₀ = (ρ/ρ₀)^s`. A rewriting that holds only where `ρ > 0` is not used for the `ρ ≤ 0` part. A zero power
+```
+
+## Both legs ran to completion, and both verdicts
+```
+$ cat _scratch/s9b_build/amend8_r2_codex.DONE _scratch/s9b_build/amend8_r2_grok.DONE
+EXIT=0
+EXIT=0
+```
+
+```
+$ grep -n -o 'Verdict: [A-Z][A-Z ]*' _scratch/s9b_build/s9b_amend8_review_r2_codex_final.txt _scratch/s9b_build/s9b_amend8_review_r2_grok.txt
+_scratch/s9b_build/s9b_amend8_review_r2_codex_final.txt:1:Verdict: CLEAR
+_scratch/s9b_build/s9b_amend8_review_r2_grok.txt:1:Verdict: NEEDS REVISION
+```
+
+```
+$ grep -n -o 'Findings:\*\* None within the requested physics scope' _scratch/s9b_build/s9b_amend8_review_r2_codex_final.txt
+3:Findings:** None within the requested physics scope
+```
+
+## Grok's findings
+```
+$ sed -n 3p _scratch/s9b_build/s9b_amend8_review_r2_grok.txt | cut -c1-200
+**1. Item 9, the new bullet.** The fixed-ratio response on the `ρ > 0` part is not one expression, so "real and positive" is not one set, and K9a's corrupted copy is not one value. The implied-`j_n` 
+```
+
+```
+$ sed -n 19p _scratch/s9b_build/s9b_amend8_review_r2_grok.txt | cut -c1-200
+**2. Item 9, the same bullet, at zero density when the local root vanishes.** For `n = 2` and `n = 3` at `ρ = 0`, the root ratio is `0` (real, not positive). The spec's quotient divides by `c_s` and 
+```
+
+```
+$ sed -n 20,24p _scratch/s9b_build/s9b_amend8_review_r2_grok_evidence/sympy_stdout.txt
+n=2 rho=0 cs2=0 cs02=2
+  nonnegative-root ratio: 0  real=True positive=False
+  principal-sqrt ratio: 0  real=True positive=False
+  identity (rho/rho0)^((n-1)/2): 0  real=True positive=False
+  spec quotient solved for c_gamma/c0: SPEC_QUOTIENT_UNDEFINED_CS_ZERO
+```
+
+```
+$ sed -n 44,55p _scratch/s9b_build/s9b_amend8_review_r2_grok_evidence/sympy_stdout.txt
+n=3 rho=-8 cs2=192 cs02=3
+  nonnegative-root ratio: 8  real=True positive=True
+  principal-sqrt ratio: 8  real=True positive=True
+  identity (rho/rho0)^((n-1)/2): -8  real=True positive=False
+  spec quotient solved for c_gamma/c0: 8  real=True positive=True
+  in positive set: root=True principal=True identity=False spec=True
+n=3 rho=8 cs2=192 cs02=3
+  nonnegative-root ratio: 8  real=True positive=True
+  principal-sqrt ratio: 8  real=True positive=True
+  identity (rho/rho0)^((n-1)/2): 8  real=True positive=True
+  spec quotient solved for c_gamma/c0: 8  real=True positive=True
+  in positive set: root=True principal=True identity=True spec=True
+```
+
+```
+$ grep -n -A3 'n=0 rho=4\|n=-1 rho=4' _scratch/s9b_build/s9b_amend8_review_r2_grok_evidence/sympy_stdout.txt
+68:n=-1 rho=4 cs2=-1/16 cs02=-1
+69-  nonnegative-root ratio: None
+70-  principal-sqrt ratio: 1/4  real=True positive=True
+71-  identity (rho/rho0)^((n-1)/2): 1/4  real=True positive=True
+--
+80:n=0 rho=4 cs2=0 cs02=0
+81-  nonnegative-root ratio: ZERO_OVER_ZERO
+82-  principal-sqrt ratio: nan  real=None positive=None
+83-  identity (rho/rho0)^((n-1)/2): 1/2  real=True positive=True
+```
+
+```
+$ sed -n 41,48p _scratch/s9b_build/s9b_amend8_review_r2_grok_evidence/wolfram_stdout.txt
+n=3 rho=-8 cs2=192 cs02=3
+  nonnegative-root ratio: 8 positive=True
+  principal-sqrt ratio: 8 real=True positive=True
+  identity: -8 real=True positive=False
+n=3 rho=8 cs2=192 cs02=3
+  nonnegative-root ratio: 8 positive=True
+  principal-sqrt ratio: 8 real=True positive=True
+  identity: 8 real=True positive=True
+```
+
+## The spec's fixed-ratio relation, and the directive's authority clause
+```
+$ sed -n 219,220p research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md
+  - `P = Kρ^n`, with `n` symbolic, `ρ` the bulk number density and `m` the particle mass (v3 convention). So
+    `c_s² = nKρ^(n−1)/m`.
+```
+
+```
+$ sed -n 245p research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md
+  - pointwise fixed ratio: `c_γ(x)/c_s(x) = c₀/c_s0`;
+```
+
+```
+$ sed -n 63,65p research/pde_ledger_v3/directives/S9b_repair_build_directive.md
+1. **Physics authority.** `CLAUDE.md` and `AGENTS.md` bind. `research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md`
+   (Parts A–C accepted at `97580010`) is the sole physics authority and the sole physics input, and it wins every conflict
+   with this directive. Construct and print:
+```
+
+## Guard state after both legs
+```
+$ cat _scratch/s11c/resource-pool/reservations.json
+{}
+```
+
+```
+$ systemctl --user list-units 's11c-guard-*' --no-legend | wc -l
+0
+```
+

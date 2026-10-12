@@ -163,9 +163,13 @@ oddOneFormLocal = D[(1 - returnDirection) fermatOdd/2, #] & /@ tangent;
 oddOneForm = (atOne[box[# /. localRules]] &) /@ oddOneFormLocal;
 oddExterior = Table[D[oddOneForm[[j]], {r,phi}[[i]]] -
   D[oddOneForm[[i]], {r,phi}[[j]]], {i,2},{j,2}];
-emit["A_NONRECIPROCAL_PATH_DEPENDENCE", <|"OneForm" -> oddOneForm,
+(* This is local construction evidence, not the gated observable. The shared
+   path-dependence predicate is emitted after the ray domain is constructed. *)
+oddClosedness = Simplify[And @@ Thread[Flatten[oddExterior] == 0]];
+pathDependence = Simplify[Not[oddClosedness]];
+emit["LOCAL_NONRECIPROCAL_CONSTRUCTION", <|"OneForm" -> oddOneForm,
   "ExteriorDerivative" -> Simplify[oddExterior],
-  "Closedness" -> Simplify[And @@ Thread[Flatten[oddExterior] == 0]],
+  "Closedness" -> oddClosedness,
   "Domain" -> (r > 0 && physicalTraversal && physicalPropagation && speedChart),
   "RadialPrimitive" -> Inactive[Integrate][oddOneForm[[1]], {r,rAnchor,rr}]|>];
 (* COMPACT_K11_BOUNDARY *)
@@ -246,6 +250,11 @@ emitGates[prefix_, rules_, wrapper_] := (
     "TraversalClassification" -> Piecewise[{{"unable to traverse in a required direction",
       Not[traversalGate /. rules]}}, "traversable"]|>]]);
 emitGates["", {}, Identity];
+(* True denotes path dependence; false denotes endpoint-only dependence.
+   Use both computed along-ray conditions and their exact complement, as
+   for the other observable-3 objects. The full gate cannot be supplied by
+   the earlier compact prefix, which consequently does not emit this tag. *)
+emit["A_NONRECIPROCAL_PATH_DEPENDENCE", gated[pathDependence]];
 
 (* Universal geometry kernels, obtained by coordinate transformation. *)
 angleMap = ArcCos[b/r];

@@ -8,7 +8,7 @@ scope = Replace[Environment["S9B_ABLATION_SCOPE"], $Failed -> "ALL"];
 If[!MemberQ[{"ALL", "K11"}, scope], Quit[94]];
 root = Directory[];
 engine = FileNameJoin[{root, "research", "pde_ledger_v3", "mathematica", "S9b_light_bending_mathematica_audit.wl"}];
-work = FileNameJoin[{root, "_scratch", "s9b_wl_repair3", "ablation-final"}];
+work = FileNameJoin[{root, "_scratch", "s9b_wl_repair4", "ablation-final"}];
 If[!DirectoryQ[work], CreateDirectory[work, CreateIntermediateDirectories -> True]];
 source = Import[engine, "Text"];
 S9bHarness`progress = OpenWrite[FileNameJoin[{work, "progress.log"}]];

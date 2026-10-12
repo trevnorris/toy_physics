@@ -1,12 +1,12 @@
 {
-  "engineTags": 373,
+  "engineTags": 374,
   "sharedTags": 330,
-  "localTags": 43,
+  "localTags": 44,
   "duplicates": 0,
   "missingShared": [],
   "extraShared": [],
   "registryComplete": true,
-  "notEstablishedCount": 270,
+  "notEstablishedCount": 271,
   "K11CompactCounts": [
     10,
     10
@@ -21,9 +21,9 @@
     "WL_LOCAL_S9B_BRANCH_TYPES",
     "WL_LOCAL_S9B_HAMILTON_VELOCITY",
     "WL_LOCAL_S9B_FERMAT_OBJECT",
-    "WL_S9B_A_NONRECIPROCAL_PATH_DEPENDENCE"
+    "WL_LOCAL_S9B_NONRECIPROCAL_CONSTRUCTION"
   ],
-  "K11NotEvaluatedCount": 363,
+  "K11NotEvaluatedCount": 364,
   "K11BaselinePayloadsEqualFull": true,
   "engineSourceMatchesRun": true,
   "harnessSourceMatchesRun": true,
@@ -34,54 +34,54 @@
     "directoryContents": [
       "S9b_light_bending_mathematica_audit.wl"
     ],
-    "repositoryOutputSHA256": "ee0adba9726215abae9a606d794f07b3b5a0812d837c2ed373a04e523ecdabbd",
-    "isolatedOutputSHA256": "ee0adba9726215abae9a606d794f07b3b5a0812d837c2ed373a04e523ecdabbd"
+    "repositoryOutputSHA256": "824917ebd0ecfe65f6c958b37b36e10e8eb73ea7fb1e0b758edd7558b8ad1685",
+    "isolatedOutputSHA256": "824917ebd0ecfe65f6c958b37b36e10e8eb73ea7fb1e0b758edd7558b8ad1685"
   },
   "runOutcomes": {
     "finished-repository": {
       "outcome": {
         "exitCode": 0,
-        "wallSeconds": 22.87871941085905,
-        "unit": "s11c-guard-a92178e4b130",
+        "wallSeconds": 20.454437725013122,
+        "unit": "s11c-guard-01c3b6ef158c",
         "stderrBytes": 0,
         "limitsVerified": true,
         "childOutcome": {
           "exitCode": 0,
           "guardReason": null,
-          "wallSeconds": 22.77584546804428,
-          "childPid": 476829
+          "wallSeconds": 20.37243941705674,
+          "childPid": 1235399
         }
       },
-      "liveGrowthObservations": 32
+      "liveGrowthObservations": 29
     },
     "finished-isolated": {
       "outcome": {
         "exitCode": 0,
-        "wallSeconds": 23.30138709791936,
-        "unit": "s11c-guard-8a8208f9aee0",
+        "wallSeconds": 22.256632823031396,
+        "unit": "s11c-guard-e852b19499e9",
         "stderrBytes": 0,
         "limitsVerified": true,
         "childOutcome": {
           "exitCode": 0,
           "guardReason": null,
-          "wallSeconds": 23.175400115083903,
-          "childPid": 478453
+          "wallSeconds": 22.177505471976474,
+          "childPid": 1237020
         }
       },
-      "liveGrowthObservations": 31
+      "liveGrowthObservations": 33
     },
     "measurements": {
       "outcome": {
         "exitCode": 0,
-        "wallSeconds": 23.78940407303162,
-        "unit": "s11c-guard-59a0ecbad39e",
+        "wallSeconds": 23.28359479410574,
+        "unit": "s11c-guard-5d403e4d0b1d",
         "stderrBytes": 0,
         "limitsVerified": true,
         "childOutcome": {
           "exitCode": 0,
           "guardReason": null,
-          "wallSeconds": 23.690465565072373,
-          "childPid": 481952
+          "wallSeconds": 23.182888082927093,
+          "childPid": 1259550
         }
       },
       "liveGrowthObservations": 34
@@ -89,18 +89,18 @@
     "finished-ablation": {
       "outcome": {
         "exitCode": 0,
-        "wallSeconds": 237.14456794899888,
-        "unit": "s11c-guard-3e05962ebfd3",
+        "wallSeconds": 237.97000257507898,
+        "unit": "s11c-guard-0ec795d7211b",
         "stderrBytes": 0,
         "limitsVerified": true,
         "childOutcome": {
           "exitCode": 0,
           "guardReason": null,
-          "wallSeconds": 237.06965859094635,
-          "childPid": 483561
+          "wallSeconds": 237.90373283205554,
+          "childPid": 1240246
         }
       },
-      "liveGrowthObservations": 100
+      "liveGrowthObservations": 102
     }
   },
   "printedVelocityResidualValues": [

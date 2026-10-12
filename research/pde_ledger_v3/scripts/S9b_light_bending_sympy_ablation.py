@@ -181,6 +181,15 @@ class PayloadPrinter(ReprPrinter):
             return 'Function(%r, **%r)' % (expr.__name__, dict(sorted(expr._kwargs.items())))
         return super()._print_FunctionClass(expr)
 
+    def _print_Intersection(self, expr):
+        return 'Intersection('+', '.join(self._print(a) for a in expr.args)+', evaluate=False)'
+
+    def _print_Union(self, expr):
+        return 'Union('+', '.join(self._print(a) for a in expr.args)+', evaluate=False)'
+
+    def _print_SymmetricDifference(self, expr):
+        return 'SymmetricDifference('+', '.join(self._print(a) for a in expr.args)+', evaluate=False)'
+
 
 def render(value):
     return PayloadPrinter().doprint(value)

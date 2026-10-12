@@ -245,6 +245,15 @@ class ExportReprPrinter(ReprPrinter):
             return 'Function(%r, **%r)' % (expr.__name__, dict(sorted(expr._kwargs.items())))
         return super()._print_FunctionClass(expr)
 
+    def _print_Intersection(self, expr):
+        return 'Intersection('+', '.join(self._print(a) for a in expr.args)+', evaluate=False)'
+
+    def _print_Union(self, expr):
+        return 'Union('+', '.join(self._print(a) for a in expr.args)+', evaluate=False)'
+
+    def _print_SymmetricDifference(self, expr):
+        return 'SymmetricDifference('+', '.join(self._print(a) for a in expr.args)+', evaluate=False)'
+
 
 def export_srepr(value):
     return ExportReprPrinter().doprint(value)
@@ -482,7 +491,58 @@ def vector_dispersion(c0,r):
                 centre=centre,beta=beta,even_squared=even_squared,arr=arr,aphi=aphi)
 
 
-def nonreciprocity(r,c0,delta,velocity,embedding):
+def ray_domains(geometry,r,c0,b,ZE,ZR,profile_map):
+    """Exact radial ray domains, with turning point and momentum bound.
+
+    The flyby fixes J from its asymptotic impact parameter. Each finite leg
+    fixes J by the angular separation of its own endpoints. Root sets retain
+    all solutions of that ray construction; no free turning radius stands
+    in for a solution. Empty ray sets cannot satisfy traversal.
+    """
+    J=geometry['J']
+    even=sp.sqrt(geometry['even_squared']).subs(profile_map)
+    beta=geometry['beta'].subs(profile_map)
+    turning=(geometry['even_squared']/geometry['arr']).subs(profile_map)
+    endpoints=(sp.Matrix([b,-ZE]),sp.Matrix([b,ZR]))
+    result={}
+    for name,ends in (('FLYBY',None),('ER',endpoints),('RE',endpoints[::-1])):
+        progress('RAY_DOMAIN '+name+': turning and angular closure')
+        t,j,q=sp.symbols('s9b_turn_'+name+' s9b_momentum_'+name+' s9b_path_'+name,positive=True)
+        if ends is None:
+            upper=sp.oo
+            momentum_equation=eq(j,b/c0)
+            action=sp.S.Zero
+        else:
+            radii=[sp.sqrt(v.dot(v)) for v in ends]
+            upper=sp.Max(*radii)
+            angle=sp.acos(ends[0].dot(ends[1])/sp.prod(radii))
+            # The even radial action traverses both halves. The odd part
+            # is oriented from this leg's emitter to its receiver.
+            # Alpha-rename the integration variable away from the radius
+            # bound by the projected ConditionSet. Its membership Lambda
+            # uses xreplace, which does not protect nested Integral binders.
+            u=sp.Symbol('s9b_ray_integral_'+name,positive=True)
+            action=sum(sp.Integral(even.subs(r,u),(u,t,R)) for R in radii)+sp.Integral(beta.subs(r,u),(u,*radii))
+            angular=sum(sp.Integral(-sp.diff(even,J).subs(r,u),(u,t,R)) for R in radii)+sp.Integral(-sp.diff(beta,J).subs(r,u),(u,*radii))
+            momentum_equation=eq(angular.subs(J,j),angle)
+        radial=turning.subs(J,j)
+        # The finite emitter/reflector radii are traversed too. Only the
+        # turning point is excluded from strict outward radial momentum;
+        # an infinite flyby endpoint remains open by Interval construction.
+        outer=everywhere(q,sp.Gt(radial.subs(r,q),0),sp.Interval(t,upper,left_open=True))
+        root_condition=sp.And(momentum_equation,eq(radial.subs(r,t),0),
+                              sp.Gt(radial_diff(radial,r).subs(r,t),0),outer)
+        ceiling=sp.Min(*(sp.sqrt(v.dot(v)) for v in ends)) if ends else sp.oo
+        roots=sp.ConditionSet(sp.Tuple(t,j),root_condition,
+            sp.ProductSet(sp.Interval.open(0,ceiling),sp.Interval.open(0,sp.oo)))
+        below=sp.Intersection(roots,sp.ProductSet(sp.Interval(0,r),sp.S.Reals),evaluate=False)
+        traversed=sp.ConditionSet(r,sp.Ne(below,sp.EmptySet,evaluate=False),sp.Interval(0,upper,left_open=True))
+        result[name]=dict(roots=roots,radii=traversed,radial_action=action,
+                          angular_condition=momentum_equation)
+    return result
+
+
+def nonreciprocity(r,c0,delta,velocity,embedding,return_orientation=-1):
     """Engine construction also called by amendment-2 compact evaluation."""
     progress('NONRECIPROCITY: vector dispersion, graded one-form and exterior derivative')
     source = vector_dispersion(c0,r)
@@ -501,10 +561,11 @@ def nonreciprocity(r,c0,delta,velocity,embedding):
     components = [evaluate_jet(component,mapping).tidy() for component in source['centre']]
     oneform = sp.ImmutableMatrix(radial_unit*sum(components[0].c.values(),sp.S.Zero)+
                                  azimuthal_unit*sum(components[1].c.values(),sp.S.Zero))
-    oneform = oneform.applyfunc(sp.factor)
+    oneform = (oneform*(1-return_orientation)/2).applyfunc(sp.factor)
     curl = sp.ImmutableMatrix([sp.simplify(radial_diff(oneform[(i+2)%3],xyz[(i+1)%3])-
                                          radial_diff(oneform[(i+1)%3],xyz[(i+2)%3])) for i in range(3)])
-    return dict(oneform=oneform,curl=curl,predicate=sp.Ne(curl,sp.zeros(3,1)),
+    closed=sp.And(*(sp.Eq(component,0) for component in curl))
+    return dict(oneform=oneform,curl=curl,predicate=sp.Not(closed),
                 xyz=xyz,source=source,grades=GRADES)
 
 
@@ -572,7 +633,7 @@ def gamma_difference_cases(left,right):
 def build(branch_demo=None):
     progress('BRANCH_EXISTENCE/PATH_TRAVERSAL/BRANCH_TYPE: dispersion and signed speed')
     r,x,B,b,c0,ZE,ZR = sp.symbols('s9b_r s9b_X s9b_B b c_0 Z_E Z_R',positive=True)
-    RE,RR,rt,bmin = sp.symbols('r_E r_R s9b_r_turn s9b_b_min',positive=True)
+    RE,RR,bmin = sp.symbols('r_E r_R s9b_b_min',positive=True)
     GM,K,n,s = sp.symbols('GM K n s',real=True)
     rho0,m = sp.symbols('rho_0 m',positive=True)
     rho_bulk = sp.Symbol('rho_bulk',positive=True)
@@ -597,8 +658,11 @@ def build(branch_demo=None):
                            'degenerate':{chi:0,U:0,A:1},
                            'blocked':{chi:c0*c0,U:-2*c0,A:1}}[branch_demo])
     endpoint_map = {RE:sp.sqrt(b*b+ZE*ZE),RR:sp.sqrt(b*b+ZR*ZR)}
-    real_domain = everywhere(r,existence.subs(branch_map),sp.Interval(rt,sp.oo))
-    travel_domain = everywhere(r,traversal.subs(branch_map),sp.Interval(rt,sp.oo))
+    rays=ray_domains(geometry,r,c0,b,ZE,ZR,branch_map)
+    traversed=sp.Union(*(ray['radii'] for ray in rays.values()),evaluate=False)
+    real_domain = everywhere(r,existence.subs(branch_map),traversed)
+    travel_domain = sp.And(*(sp.Ne(ray['roots'],sp.EmptySet,evaluate=False) for ray in rays.values()),
+                          everywhere(r,traversal.subs(branch_map),traversed))
     branch_type = ((attached_domain(sp.Lt(discriminant,0)),('GROWING','DECAYING')),
                    (attached_domain(sp.Eq(discriminant,0)),'ABSENT'),
                    (attached_domain(sp.And(existence,sp.Not(traversal))),'UNABLE_TO_TRAVERSE_REQUIRED_DIRECTION'))
@@ -617,6 +681,8 @@ def build(branch_demo=None):
     root_domain=sp.And(sp.Ge(1+delta,0),speed_identity)
     progress('SPEED_IDENTIFICATION')
     emit('SPEED_IDENTIFICATION',(speed_identity,attached_domain(root_domain)))
+    progress('RAY_RADIAL_DOMAINS')
+    emit('RAY_RADIAL_DOMAINS',rays)
     progress('BRANCH_EXISTENCE')
     emit('BRANCH_EXISTENCE',real_domain)
     progress('PATH_TRAVERSAL')
@@ -631,7 +697,10 @@ def build(branch_demo=None):
         emit('DEMONSTRATION_BRANCH_TYPE',cas(branch_type).subs(branch_map))
         if domain == sp.false:
             progress('DEMONSTRATION_OBSERVABLES')
-            emit('DEMONSTRATION_OBSERVABLES',('NOT_ESTABLISHED',attached_domain(sp.Not(domain))))
+            unavailable=cas(('NOT_ESTABLISHED',attached_domain(sp.Not(domain))))
+            emit('DEMONSTRATION_OBSERVABLES',unavailable)
+            progress('A_NONRECIPROCAL_PATH_DEPENDENCE: outside branch domain')
+            emit('A_NONRECIPROCAL_PATH_DEPENDENCE',unavailable)
             progress('LOCAL_NAMES')
             emit('LOCAL_NAMES',LOCAL+['PY_LOCAL_S9B_LOCAL_NAMES'])
             return
@@ -665,15 +734,11 @@ def build(branch_demo=None):
     emit('OPTICAL_RADIUS',optical_r.c)
     progress('OPTICAL_Q')
     emit('OPTICAL_Q',optical_q.c)
-    turning=sp.factor(geometry['even_squared']/arr).subs(profile_map).subs(J,B/c0)
-    turning_domain=sp.And(eq(turning.subs(r,rt),0),sp.Gt(radial_diff(turning,r).subs(r,rt),0),
-                          everywhere(r,sp.Gt(turning,0),sp.Interval.open(rt,sp.oo)))
     observable_gate = real_domain  # K10: existence only
     branch_domain=sp.And(observable_gate,travel_domain)
-    gate=sp.And(observable_gate,travel_domain,turning_domain,
-                everywhere(r,root_domain,sp.Interval(rt,sp.oo)),
-                sp.Lt(rt,sp.Min(RE,RR))).subs(endpoint_map).subs(B,b)
-    path=nonreciprocity(r,c0,delta,velocity,xi)
+    gate=sp.And(branch_domain,everywhere(r,root_domain,traversed))
+    return_orientation = -1  # K5
+    path=nonreciprocity(r,c0,delta,velocity,xi,return_orientation)
     progress('NONRECIPROCITY_ONEFORM')
     emit('NONRECIPROCITY_ONEFORM',path['oneform'])
     progress('NONRECIPROCITY_EXTERIOR_DERIVATIVE')
@@ -714,7 +779,6 @@ def build(branch_demo=None):
     even_time=action+action_diff(action,1)*shift+action_diff(action,2)*shift**2/2+H0*shift**2/2+H1*shift**3/6
     even_time=even_time.map(lambda e:e.subs(B,b))
     odd_time=Jet({g:sp.Integral(value,(r,RE,RR)) for g,value in betaj.c.items()})
-    return_orientation = -1  # K5
     forward_time=even_time+odd_time
     reverse_time=even_time+return_orientation*odd_time
     roundtrip_time=forward_time+reverse_time
@@ -987,7 +1051,7 @@ def build(branch_demo=None):
     declarations={}
     for value in objects.values():
         for symbol in value.atoms(sp.Symbol):
-            declarations[symbol.name]=(symbol,'COORDINATE' if symbol in (r,x,b,B,rt,bmin) else 'KNOB')
+            declarations[symbol.name]=(symbol,'COORDINATE' if symbol in (r,x,b,B,bmin) else 'KNOB')
         for function in value.atoms(AppliedUndef):
             classification='DERIVED' if function.func.__name__=='s9b_velocity_squared' else 'PREMISE'
             declarations[function.func.__name__]=(function.func,classification)

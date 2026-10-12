@@ -45,10 +45,11 @@ states the sense of the printed predicate and its gate. Parts 2 and 3 point at b
 Dispositions: `directives/_measurements/S9b_repair_build_directive_amend7_review_disposition.md`.
 
 **Amendment 8** (orchestrator, 2026-10-11; a repair under the user's standing approval), for the build's repair
-round 5 after review r4 (`directives/_measurements/S9b_repair_build_r4_review_disposition.md`). Item 9 states that
-the bulk density's positivity is a supplied input of each row whose response reads the bulk density. Item 14 states
-what an unchanged part is, and what a difference prints when the engine cannot decide it. Parts 2 and 3 point at both
-items. Reviewed until clear. Dispositions:
+round 5 after review r4 (`directives/_measurements/S9b_repair_build_r4_review_disposition.md`). Item 9 supplies the
+asymptotic bulk density's positivity as a premise, states that the local bulk density's sign is not a domain
+predicate, and has each row that reads the local bulk density label where it is positive and where it is not (the
+user's choices, 2026-10-11). Item 14 states what an unchanged part is, and what a difference prints when the engine
+cannot decide it. Parts 2 and 3 point at both items. Reviewed until clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend8_review_disposition.md`.
 
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
@@ -161,10 +162,17 @@ comparator, the production runs and the record.
    it prints `NOT_ESTABLISHED` (item 5).
 9. **Part C domains (D6 B6).** Each Part C row's domain predicates are built from that row's own response. They are
    not built from another row, or from the amplitude before the response is applied. Each predicate follows from the
-   row's response being real and positive, or from the row's supplied inputs. The bulk number density
-   `ρ = ρ₀(1 + f)` is positive, and that positivity is a supplied input of each row whose response reads `ρ`, so it
-   is part of that row's domain. The constant row's response does not read `ρ`. The first-order counting in `f` is an
-   order, not a numeric bound on any amplitude.
+   row's response being real and positive, or from the row's supplied inputs. A supplied input is one the spec
+   writes as an equation or an inequality, or the premise this item supplies.
+   - **Premise (the user's choice, 2026-10-11):** the asymptotic bulk number density is positive, `ρ₀ > 0`. It is
+     supplied here, so it is not a stop event under item 12. Each engine prints it as a supplied premise.
+   - **The local bulk density's sign is not a domain predicate (the user's choice, 2026-10-11).** No row's domain
+     excludes a point because `ρ = ρ₀(1 + f)` is zero or negative there.
+   - The fixed-ratio and power rows read `ρ`. Each of them, with its implied-`j_n` rows and its item 10 copies,
+     prints its objects with the part where `ρ > 0` and the part where `ρ ≤ 0` labelled separately. A knife's
+     corrupted copy of such a row prints the same two parts. The constant row's response does not read `ρ`.
+
+   The first-order counting in `f` is an order, not a numeric bound on any amplitude.
 10. **Forward case and single-mechanism restrictions (user requests, 2026-10-08).**
     - **Forward case: no far-zone loss.** This is the user's premise (2026-10-06/07/08): brane material leaves the
       brane only in throats, so `j_n ≡ 0` in the far zone, and the same brane mass crosses every sphere around the

@@ -53,6 +53,12 @@ and what a difference prints when the engine cannot decide it. Parts 2 and 3 poi
 clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend8_review_disposition.md`.
 
+**Amendment 9** (orchestrator, 2026-10-12; a repair under the user's standing approval), for the build's repair
+round 6 after review r5 (`directives/_measurements/S9b_repair_build_r5_review_disposition.md`). Item 14 states what
+a changed part is, and that a changed part prints as a change. Parts 2 and 3 point at it. The engines do not change in
+this round. Reviewed until clear. Dispositions:
+`directives/_measurements/S9b_repair_build_directive_amend9_review_disposition.md`.
+
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
 only. **Part D is held** (user decision, 2026-10-08) until the brane-material premise behind P1 is settled. This build
 constructs and prints no Part D object. That narrows D7 item 3, which listed Part D. Not in this build: the
@@ -264,11 +270,15 @@ comparator, the production runs and the record.
       the domain changed. The domain is the condition a payload attaches to its computed object, such as the spec's
       branch-existence conditions or the condition that a case of a reduction carries. The value is the computed
       object itself, including when that object is a relation, a predicate such as a closedness test, or a
-      condition. Each part's difference is computed by the engine, so an unchanged part prints as zero. A part is
+      condition. Each part's difference is computed by the engine, so an unchanged part prints as zero and a
+      changed part prints as a change. A part is
       unchanged when the knife leaves it equal to the baseline part as a mathematical object, in whatever form the
       corrupted copy rebuilds it: the same value, or for a domain the same condition on the same variables,
-      including a condition carried inside a set or a quantifier. Where the engine cannot decide whether a part is
-      unchanged, its difference prints that it is undecided, so it reads neither as zero nor as a change. This holds
+      including a condition carried inside a set or a quantifier. A part is changed when it differs from the
+      baseline part at some point: for a value, a point of its variables where both parts are defined; for a domain,
+      a point where one condition holds and the other does not; and for a part that carries a profile function,
+      such a point under some admissible profile. Where the engine cannot decide whether a part is unchanged or
+      changed, its difference prints that it is undecided, so it reads neither as zero nor as a change. This holds
       for K11's compact differences and method residual too. K11's sample domain is coverage, not a domain in this
       sense.
     - A knife whose construction an engine does not contain is reported, not invented. The engine itself contains
@@ -361,6 +371,7 @@ comparator, the production runs and the record.
   (item 5).
 - **Repair round 4 (amendment 7).** Items 5 and 8 as amended hold after the repair.
 - **Repair round 5 (amendment 8).** Items 9 and 14 as amended hold after the repair.
+- **Repair round 6 (amendment 9).** Item 14 as amended holds for the harness. The engine is unchanged.
 
 ## Part 3. Wolfram engine (blind)
 
@@ -381,6 +392,7 @@ comparator, the production runs and the record.
 - **Repair round 3 (amendment 6).** Item 14 as amended holds for the harness.
 - **Repair round 4 (amendment 7).** Items 5 and 8 as amended hold after the repair.
 - **Repair round 5 (amendment 8).** Items 9 and 14 as amended hold after the repair.
+- **Repair round 6 (amendment 9).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Executable checks, with no expected values:**
   1. Copy the finished `.wl` alone into an empty scratch directory. Run it there and in the repository. Both runs
      exit 0, and their streams are non-empty and byte-identical. Afterwards the scratch directory holds only the

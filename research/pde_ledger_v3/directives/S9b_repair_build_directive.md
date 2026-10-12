@@ -48,9 +48,9 @@ Dispositions: `directives/_measurements/S9b_repair_build_directive_amend7_review
 round 5 after review r4 (`directives/_measurements/S9b_repair_build_r4_review_disposition.md`). Item 9 supplies the
 asymptotic bulk density's positivity as a premise, states that the local bulk density's sign is not a domain
 predicate, and has each row that reads the local bulk density label where it is positive and where it is not (the
-user's choices, 2026-10-11); on both parts, each response is the spec's relation as written. Item 14 states what
-an unchanged part is, and what a difference prints when the engine cannot decide it. Parts 2 and 3 point at both
-items. Reviewed until clear. Dispositions:
+user's choices, 2026-10-11); each response is one object on both parts. Item 14 states what an unchanged part is,
+and what a difference prints when the engine cannot decide it. Parts 2 and 3 point at both items. Reviewed until
+clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend8_review_disposition.md`.
 
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
@@ -172,10 +172,15 @@ comparator, the production runs and the record.
    - The fixed-ratio and power rows read `ρ`. Each of them, with its implied-`j_n` rows and its item 10 copies,
      prints its objects with the part where `ρ > 0` and the part where `ρ ≤ 0` labelled separately. A knife's
      corrupted copy of such a row prints the same two parts. The constant row's response does not read `ρ`.
-   - On both parts, each row's response is the spec's relation as written: the fixed-ratio response is
-     `c_γ/c₀ = c_s/c_s0`, with each sound speed the non-negative root of the spec's `c_s²`, and the power response
-     is `c_γ/c₀ = (ρ/ρ₀)^s`. A rewriting that holds only where `ρ > 0` is not used for the `ρ ≤ 0` part. A zero power
-     of a density or a density ratio is `1` at every value, zero included.
+   - Each response is one object on both parts. No expression that differs from it at some point of either part
+     stands in for it, in a domain or at the site where a knife acts on it.
+     - The fixed-ratio response is the spec's relation solved for `c_γ`: `c_γ = c₀ c_s/c_s0`, where `c_s` and
+       `c_s0` are the non-negative roots of the spec's `c_s²` at `ρ` and at `ρ₀`. It has a value only where both
+       squares are real and non-negative and `c_s0 > 0`. A principal root of a negative square is not a value of
+       it. Where `c_s = 0` and `c_s0 > 0`, its value is `0`; the spec's quotient has none there, so this item
+       supplies it, and that is not a stop event under item 12.
+     - The power response is `c_γ = c₀ (ρ/ρ₀)^s`.
+     - A zero power of a density or a density ratio is `1` at every value, zero included.
 
    The first-order counting in `f` is an order, not a numeric bound on any amplitude.
 10. **Forward case and single-mechanism restrictions (user requests, 2026-10-08).**

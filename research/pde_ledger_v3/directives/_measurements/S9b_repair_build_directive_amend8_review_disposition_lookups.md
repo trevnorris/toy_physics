@@ -580,3 +580,66 @@ $ systemctl --user list-units 's11c-guard-*' --no-legend | wc -l
 0
 ```
 
+
+# Round 3 (generated 2026-10-11 22:34; generator `_scratch/s9b_build/gen/s9b_amend8_r3_lookups.sh`)
+
+## The round-3 reviewed version is the version committed
+```
+$ cat _scratch/s9b_build/s9b_repair_build_directive_amend8_review_baseline_r3.sha256
+8f30f90a58da5d5bb7c3df3b201eb76b92fdde94b87ce5276d327a2ab8f65d7e  research/pde_ledger_v3/directives/S9b_repair_build_directive.md
+```
+
+```
+$ sha256sum research/pde_ledger_v3/directives/S9b_repair_build_directive.md _scratch/s9b_build/S9b_repair_build_directive_amend8_reviewed_r3.md
+8f30f90a58da5d5bb7c3df3b201eb76b92fdde94b87ce5276d327a2ab8f65d7e  research/pde_ledger_v3/directives/S9b_repair_build_directive.md
+8f30f90a58da5d5bb7c3df3b201eb76b92fdde94b87ce5276d327a2ab8f65d7e  _scratch/s9b_build/S9b_repair_build_directive_amend8_reviewed_r3.md
+```
+
+```
+$ sha256sum _scratch/s9b_build/s9b_repair_build_directive_amend8_review_prompt_r3.md
+aeddcecd2b58746d94283d7bef004fd4f8194e677bc39d48ff1fbf686ca32a1f  _scratch/s9b_build/s9b_repair_build_directive_amend8_review_prompt_r3.md
+```
+
+## Both legs ran to completion, and both verdicts
+```
+$ cat _scratch/s9b_build/amend8_r3_codex.DONE _scratch/s9b_build/amend8_r3_grok.DONE
+EXIT=0
+EXIT=0
+```
+
+```
+$ grep -n -o 'Verdict: [A-Z][A-Z ]*' _scratch/s9b_build/s9b_amend8_review_r3_codex_final.txt _scratch/s9b_build/s9b_amend8_review_r3_grok.txt
+_scratch/s9b_build/s9b_amend8_review_r3_codex_final.txt:1:Verdict: CLEAR
+_scratch/s9b_build/s9b_amend8_review_r3_grok.txt:1:Verdict: CLEAR
+```
+
+```
+$ grep -n -o 'Findings: None in the requested scope' _scratch/s9b_build/s9b_amend8_review_r3_codex_final.txt
+3:Findings: None in the requested scope
+```
+
+```
+$ grep -n -o '^No findings' _scratch/s9b_build/s9b_amend8_review_r3_grok.txt
+3:No findings
+```
+
+## Grok's edge-point scripts ran under the guard (stdout files present)
+```
+$ ls _scratch/s9b_build/s9b_amend8_review_r3_grok_evidence
+edge_sympy.py
+edge_sympy.stdout
+edge_wolfram.stdout
+edge_wolfram.wl
+```
+
+## Guard state after both legs
+```
+$ cat _scratch/s11c/resource-pool/reservations.json
+{}
+```
+
+```
+$ systemctl --user list-units 's11c-guard-*' --no-legend | wc -l
+0
+```
+

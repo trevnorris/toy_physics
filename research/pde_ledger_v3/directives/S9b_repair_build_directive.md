@@ -44,6 +44,13 @@ both engines, the domain every along-ray gate quantifies over; amendment 3 had s
 states the sense of the printed predicate and its gate. Parts 2 and 3 point at both items. Reviewed until clear.
 Dispositions: `directives/_measurements/S9b_repair_build_directive_amend7_review_disposition.md`.
 
+**Amendment 8** (orchestrator, 2026-10-11; a repair under the user's standing approval), for the build's repair
+round 5 after review r4 (`directives/_measurements/S9b_repair_build_r4_review_disposition.md`). Item 9 states that
+the bulk density's positivity is a supplied input of each row whose response reads the bulk density. Item 14 states
+what an unchanged part is, and what a difference prints when the engine cannot decide it. Parts 2 and 3 point at both
+items. Reviewed until clear. Dispositions:
+`directives/_measurements/S9b_repair_build_directive_amend8_review_disposition.md`.
+
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
 only. **Part D is held** (user decision, 2026-10-08) until the brane-material premise behind P1 is settled. This build
 constructs and prints no Part D object. That narrows D7 item 3, which listed Part D. Not in this build: the
@@ -154,7 +161,9 @@ comparator, the production runs and the record.
    it prints `NOT_ESTABLISHED` (item 5).
 9. **Part C domains (D6 B6).** Each Part C row's domain predicates are built from that row's own response. They are
    not built from another row, or from the amplitude before the response is applied. Each predicate follows from the
-   row's response being real and positive, or from the row's supplied inputs. The first-order counting in `f` is an
+   row's response being real and positive, or from the row's supplied inputs. The bulk number density
+   `ρ = ρ₀(1 + f)` is positive, and that positivity is a supplied input of each row whose response reads `ρ`, so it
+   is part of that row's domain. The constant row's response does not read `ρ`. The first-order counting in `f` is an
    order, not a numeric bound on any amplitude.
 10. **Forward case and single-mechanism restrictions (user requests, 2026-10-08).**
     - **Forward case: no far-zone loss.** This is the user's premise (2026-10-06/07/08): brane material leaves the
@@ -237,7 +246,11 @@ comparator, the production runs and the record.
       the domain changed. The domain is the condition a payload attaches to its computed object, such as the spec's
       branch-existence conditions or the condition that a case of a reduction carries. The value is the computed
       object itself, including when that object is a relation, a predicate such as a closedness test, or a
-      condition. Each part's difference is computed by the engine, so an unchanged part prints as zero. This holds
+      condition. Each part's difference is computed by the engine, so an unchanged part prints as zero. A part is
+      unchanged when the knife leaves it equal to the baseline part as a mathematical object, in whatever form the
+      corrupted copy rebuilds it: the same value, or for a domain the same condition on the same variables,
+      including a condition carried inside a set or a quantifier. Where the engine cannot decide whether a part is
+      unchanged, its difference prints that it is undecided, so it reads neither as zero nor as a change. This holds
       for K11's compact differences and method residual too. K11's sample domain is coverage, not a domain in this
       sense.
     - A knife whose construction an engine does not contain is reported, not invented. The engine itself contains
@@ -329,6 +342,7 @@ comparator, the production runs and the record.
   relation determines there, computed by the engine. `NOT_ESTABLISHED` is printed only outside the branch domain
   (item 5).
 - **Repair round 4 (amendment 7).** Items 5 and 8 as amended hold after the repair.
+- **Repair round 5 (amendment 8).** Items 9 and 14 as amended hold after the repair.
 
 ## Part 3. Wolfram engine (blind)
 
@@ -348,6 +362,7 @@ comparator, the production runs and the record.
 - **Repair round 2 (amendment 5).** Items 5, 6 and 9 as amended, and the spec's amendment 2, hold after the repair.
 - **Repair round 3 (amendment 6).** Item 14 as amended holds for the harness.
 - **Repair round 4 (amendment 7).** Items 5 and 8 as amended hold after the repair.
+- **Repair round 5 (amendment 8).** Items 9 and 14 as amended hold after the repair.
 - **Executable checks, with no expected values:**
   1. Copy the finished `.wl` alone into an empty scratch directory. Run it there and in the repository. Both runs
      exit 0, and their streams are non-empty and byte-identical. Afterwards the scratch directory holds only the

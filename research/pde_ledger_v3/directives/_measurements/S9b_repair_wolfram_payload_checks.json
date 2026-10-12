@@ -1,4 +1,7 @@
 {
+  "proofSymbolLeaks": [],
+  "undecidedRows": 2005,
+  "changedRows": 144,
   "k11FieldIssues": [],
   "coverageVariants": [
     "<|\"Method\" -> \"exact symbolic mechanical prefix extraction\", \"Boundary\" -> \"(* COMPACT_K11_BOUNDARY *)\", \"RetainedGrades\" -> {{0, 0, 0}, {0, 0, 1}, {0, 1, 0}, {0, 1, 1}, {0, 2, 0}, {0, 2, 1}, {1, 0, 0}, {1, 0, 1}, {1, 1, 0}, {1, 1, 1}, {1, 2, 0}, {1, 2, 1}}, \"LocalConstructions\" -> \"untruncated dispersion/Fermat and retained-ring nonreciprocal one-form\", \"AdditionalTruncation\" -> None, \"SampleDomain\" -> \"symbolic constructor domains\", \"Arithmetic\" -> \"exact\", \"Samples\" -> {}, \"Seeds\" -> {}|>"
@@ -87,7 +90,7 @@
     "K9a": {
       "rows": 374,
       "valueZero": 361,
-      "domainZero": 363,
+      "domainZero": 362,
       "bothZero": 361
     },
     "K9b": {
@@ -183,7 +186,7 @@
       "occurrences": 1,
       "exactSingleMutationApartFromTerminalNewline": true,
       "terminalNewlineRemovedByTextExport": true,
-      "sha256": "8156cd6651eedc432bbcd7a2561166bf22da367cc851123002e5cd92fee4df39"
+      "sha256": "a022280f04c400776f440d89cc17baee14b158a743d8377d1f206d8defe4e6a5"
     },
     {
       "knife": "K2",
@@ -192,7 +195,7 @@
       "occurrences": 1,
       "exactSingleMutationApartFromTerminalNewline": true,
       "terminalNewlineRemovedByTextExport": true,
-      "sha256": "b15cc6f2f6673bbb6b37fe606202bd1c39838d8637badcf663337c6754fbbb1f"
+      "sha256": "5a2553989e2d0252e5ed17e1fef664c3d91e1ce4576315da9192756bee29fa80"
     },
     {
       "knife": "K3",
@@ -201,7 +204,7 @@
       "occurrences": 1,
       "exactSingleMutationApartFromTerminalNewline": true,
       "terminalNewlineRemovedByTextExport": true,
-      "sha256": "4b6b5021610bb7a15ce8a720220659d484aafbf2d89d326cbc974a1932c9c3dc"
+      "sha256": "cc94989c14cfdd0add2b3cad49dd9b710406a39b0bbb47afcc38c95653a5670b"
     },
     {
       "knife": "K4a",
@@ -210,7 +213,7 @@
       "occurrences": 1,
       "exactSingleMutationApartFromTerminalNewline": true,
       "terminalNewlineRemovedByTextExport": true,
-      "sha256": "ea202fa6268fb0ff75d191a799f0524fbd596e176b23dc42a6d33c879f6ad5ad"
+      "sha256": "fa649bbfd1d22f710d894cbb283c15222b38360b8f6d9782d4af3fc7dd8c8144"
     },
     {
       "knife": "K4b",
@@ -219,7 +222,7 @@
       "occurrences": 1,
       "exactSingleMutationApartFromTerminalNewline": true,
       "terminalNewlineRemovedByTextExport": true,
-      "sha256": "72e5e3ab9405736d86577213e390fb6eb63e5c46f73fd137ca69407de874d3f5"
+      "sha256": "3d130213158aa86b8de7de22c5a89227aa0d05eca50a0f6080216a2e603376db"
     },
     {
       "knife": "K4c",
@@ -228,7 +231,7 @@
       "occurrences": 1,
       "exactSingleMutationApartFromTerminalNewline": true,
       "terminalNewlineRemovedByTextExport": true,
-      "sha256": "c585ed6bb08967b91d800ffcdb18e727245b737237d6ddc067b1ebe6c0a1f2ea"
+      "sha256": "3b7eb08cdd341ef35d3d9eca702dd6d1b216fa07f3316526edd30b04fea2ed15"
     },
     {
       "knife": "K5",
@@ -237,7 +240,7 @@
       "occurrences": 1,
       "exactSingleMutationApartFromTerminalNewline": true,
       "terminalNewlineRemovedByTextExport": true,
-      "sha256": "212e2d522531643f71e212f847f3cb4ef8ec3b5d9c0ac0e1a5a7570a23643b44"
+      "sha256": "be74f5f50ba62a851493c6a2ddbfa6ce342457973de9e9fff960d0c0de688372"
     },
     {
       "knife": "K6",
@@ -246,7 +249,7 @@
       "occurrences": 1,
       "exactSingleMutationApartFromTerminalNewline": true,
       "terminalNewlineRemovedByTextExport": true,
-      "sha256": "c697d098c64d810da1c8f6f44d10e09bab3520532f8944c67a27b8c7301f82d0"
+      "sha256": "2fc34260b71e6e35173eb1c7edd18084e0f877e019ae3d4b5405fb4ac9c43821"
     },
     {
       "knife": "K7",
@@ -255,7 +258,7 @@
       "occurrences": 1,
       "exactSingleMutationApartFromTerminalNewline": true,
       "terminalNewlineRemovedByTextExport": true,
-      "sha256": "96af782c237726bb96bf5ee37b594436d1cd5722705fffc885131e91bc77d806"
+      "sha256": "ae3fcb0b5155db6e7cd3a1d63a615b465315a1713e29707fd4e0927d5e2f3954"
     },
     {
       "knife": "K8",
@@ -264,7 +267,7 @@
       "occurrences": 1,
       "exactSingleMutationApartFromTerminalNewline": true,
       "terminalNewlineRemovedByTextExport": true,
-      "sha256": "828897408bd8e87e032c071f4f54f122f44b7cf7f930eb0dcfc6c6e32ae16cf2"
+      "sha256": "3458dbe8d3b47ffecf8ffac5db30f51fbb93807a63a79b4df304d940ee3d2cdf"
     },
     {
       "knife": "K9a",
@@ -273,7 +276,7 @@
       "occurrences": 1,
       "exactSingleMutationApartFromTerminalNewline": true,
       "terminalNewlineRemovedByTextExport": true,
-      "sha256": "9c3a4c0fe0c2006c5e10d712fd79bbfd2ba9e4077ecf15c743b1c2d6c19cb099"
+      "sha256": "66d171c031738c971a0f172715833dc72b25cfda62ecfa61a64a6bc97fa98e48"
     },
     {
       "knife": "K9b",
@@ -282,7 +285,7 @@
       "occurrences": 1,
       "exactSingleMutationApartFromTerminalNewline": true,
       "terminalNewlineRemovedByTextExport": true,
-      "sha256": "7ceec6c5e16e551fddd6a9d79e1a2b3751a51b4797362ddd6bcd373aac7d1667"
+      "sha256": "b9f9308e2e490460ede7e7c4608d04e1fc2385ef29367a6855476bae7a10f607"
     },
     {
       "knife": "K10",
@@ -291,7 +294,7 @@
       "occurrences": 1,
       "exactSingleMutationApartFromTerminalNewline": true,
       "terminalNewlineRemovedByTextExport": true,
-      "sha256": "ca653e227300fb63d5e20e4adc6df273f38b143970d5458aee950e8cfbe6e8a9"
+      "sha256": "a66cb2be17467f9dd39f63c710c4e52547fc50345c8769e8ef435e7feb45f549"
     },
     {
       "knife": "K11",
@@ -300,7 +303,7 @@
       "occurrences": 1,
       "exactSingleMutationApartFromTerminalNewline": true,
       "terminalNewlineRemovedByTextExport": true,
-      "sha256": "f23009d0f26b562028de38839d2d51a1ed4f79c85df324f9276dde7b7f3b8971"
+      "sha256": "de5f619456fab98b63b163f29ba43ddb7d29a2959b6d722f62c30a6459d501cd"
     }
   ],
   "compactExtractionExact": {
@@ -326,8 +329,8 @@
     "WL_LOCAL_S9B_ABLATION_K11_SITE"
   ],
   "formerFailureTagProgress": [
-    "{\"difference begin\", \"K1_WL_S9B_F_LIVE_BRANCH_TYPE\", 217793184, 220406656}",
-    "{\"difference end\", \"K1_WL_S9B_F_LIVE_BRANCH_TYPE\", 217795408, 220406656}"
+    "{\"difference begin\", \"K1_WL_S9B_F_LIVE_BRANCH_TYPE\", 284118224, 300397368}",
+    "{\"difference end\", \"K1_WL_S9B_F_LIVE_BRANCH_TYPE\", 284261168, 300397368}"
   ],
-  "completionEvent": "{\"complete\", \"ALL\", 233216160, 267194104}"
+  "completionEvent": "{\"complete\", \"ALL\", 575588360, 591418184}"
 }

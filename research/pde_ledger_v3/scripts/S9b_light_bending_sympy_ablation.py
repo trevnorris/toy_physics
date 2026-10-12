@@ -41,8 +41,8 @@ KNIVES = {
     'K6': ('log_source = roundtrip_time', 'log_source = forward_time'),
     'K7': ('fixed_impact = None', "fixed_impact = sp.Symbol('s9b_fixed_b',positive=True)"),
     'K8': ('mass_density = rho', "mass_density = sp.Symbol('s9b_constant_density',positive=True)"),
-    'K9a': ('fixed_ratio_response = sp.sqrt(cs_ratio)', 'fixed_ratio_response = sp.S.One'),
-    'K9b': ('power_response = (1+f_symbol)**s', 'power_response = sp.S.One'),
+    'K9a': ('local_sound_speed = sp.sqrt(local_square)', 'local_sound_speed = sp.sqrt(anchor_square)'),
+    'K9b': ('power_density = density', 'power_density = rho0'),
     'K10': ('observable_gate = real_domain', 'observable_gate = sp.Not(real_domain)'),
     'K11': ('azimuthal_component = sp.S.Zero', "azimuthal_component = sp.Symbol('s9b_azimuthal',real=True)"),
 }
@@ -120,10 +120,14 @@ def _compact_difference(a,b):
         parts=sp.Tuple(*(_compact_difference(x,y) for x,y in zip(a,b)))
         return sp.S.Zero if all(part==0 for part in parts) else parts
     if isinstance(a,sp.MatrixBase) and isinstance(b,sp.MatrixBase) and a.shape==b.shape:
-        return (b-a).applyfunc(sp.factor)
+        parts=sp.Tuple(*(_compact_difference(x,y) for x,y in zip(a,b)))
+        return sp.S.Zero if all(part==0 for part in parts) else sp.Tuple(Str('MATRIX_ENTRY_DIFFERENCES'),parts)
     if isinstance(a,sp.Expr) and isinstance(b,sp.Expr):
-        return sp.factor(b-a)
-    raise ValueError(('compact subtraction undefined',type(a),type(b)))
+        residual=sp.factor(b-a)
+        if residual.is_zero is True:return sp.S.Zero
+        if residual.is_zero is False:return residual
+        return undecided(a,b,residual)
+    return _value_difference(a,b)
 
 
 def compact_k11(baseline, source, mutant, folder):
@@ -221,22 +225,52 @@ def _primitive_integral(integral):
     return coefficient*sp.Integral(kernel,*integral.limits)
 
 
+def undecided(a,b,residual):
+    return sp.Tuple(Str('UNDECIDED'),sp.Tuple(Str('BASELINE'),a),
+                    sp.Tuple(Str('CORRUPTED'),b),sp.Tuple(Str('RESIDUAL'),residual))
+
+
+def _arithmetic_reduce(value):
+    # Treat live functionals as independent atoms during algebra. This
+    # changes no integration method and never samples a live profile.
+    value=value.replace(lambda node:isinstance(node,sp.Integral),_primitive_integral)
+    functionals=value.atoms(sp.Integral,sp.Derivative,sp.Limit,sp.Subs)
+    opaque={node:sp.Dummy('s9b_comparison_functional') for node in sorted(functionals,key=sp.default_sort_key)}
+    reduced=sp.factor_terms(sp.expand(value.xreplace(opaque), power_base=False, power_exp=False, log=False))
+    return reduced.xreplace({v:k for k,v in opaque.items()})
+
+
 @lru_cache(maxsize=256)
 def _normalized_predicate(value):
-    replacements={}
-    for relation in value.atoms(sp.core.relational.Relational):
-        if not all(isinstance(side,sp.Expr) for side in (relation.lhs,relation.rhs)):
-            # A quantified set relation is itself a predicate. Do not solve
-            # its membership problem while comparing payload domains.
-            continue
-        sides=[side.replace(lambda node:isinstance(node,sp.Integral),_primitive_integral)
-               for side in (relation.lhs,relation.rhs)]
-        functionals=set().union(*(side.atoms(sp.Integral,sp.Derivative,sp.Limit,sp.Subs) for side in sides))
-        opaque={node:sp.Dummy('s9b_comparison_functional') for node in sorted(functionals,key=sp.default_sort_key)}
-        held=relation.func(*(side.xreplace(opaque) for side in sides),evaluate=False)
-        reduced=sp.simplify(held,doit=False)
-        replacements[relation]=reduced.xreplace({v:k for k,v in opaque.items()})
-    return value.xreplace(replacements)
+    """Canonicalize conditions even inside sets and quantified predicates.
+
+    Only identities established by CAS algebra are used. In particular, an
+    unknown multiplicative factor is never divided out of a zero equation.
+    """
+    def visit(node):
+        if not isinstance(node,sp.Basic) or not node.args:
+            return node
+        if isinstance(node,(sp.ConditionSet,sp.Integral,sp.Limit,sp.Lambda,sp.Subs)):
+            node=node.as_dummy()
+        args=tuple(visit(arg) for arg in node.args)
+        if isinstance(node,sp.core.relational.Relational):
+            left,right=args
+            if all(isinstance(x,sp.Expr) for x in args):
+                delta=_arithmetic_reduce(left-right)
+                factors=sp.Mul.make_args(delta)
+                divisor=sp.S.One
+                for factor in factors:
+                    if isinstance(node,(sp.Equality,sp.Unequality)):
+                        if factor.is_zero is False:divisor*=factor
+                    elif factor.is_positive is True:
+                        divisor*=factor
+                if divisor!=1:delta=sp.cancel(delta/divisor)
+                return node.func(delta,sp.S.Zero)
+            return node.func(left,right,evaluate=False)
+        if isinstance(node,(sp.Intersection,sp.Union,sp.SymmetricDifference)):
+            return node.func(*args,evaluate=False)
+        return node.func(*args) if args!=node.args else node
+    return visit(value)
 
 
 def _value_difference(a,b):
@@ -246,22 +280,28 @@ def _value_difference(a,b):
         parts=sp.Tuple(*(_value_difference(x,y) for x,y in zip(a,b)))
         return sp.S.Zero if all(part==0 for part in parts) else parts
     if isinstance(a,sp.MatrixBase) and isinstance(b,sp.MatrixBase) and a.shape==b.shape:
-        return b-a
-    if isinstance(a,sp.Expr) and isinstance(b,sp.Expr):
-        return b-a
-    if isinstance(a,sp.logic.boolalg.Boolean) and isinstance(b,sp.logic.boolalg.Boolean):
-        # Normalize arithmetic relations without evaluating functionals,
-        # then compare their Boolean structure. This also removes spurious
-        # changes from nonzero scalar multiples of a compatibility equation.
-        result=sp.simplify_logic(sp.Xor(_normalized_predicate(a),_normalized_predicate(b)),deep=False)
-        return sp.Integer(int(bool(result))) if result in (sp.true,sp.false) else result
+        parts=sp.Tuple(*(_value_difference(x,y) for x,y in zip(a,b)))
+        return sp.S.Zero if all(part==0 for part in parts) else sp.Tuple(Str('MATRIX_ENTRY_DIFFERENCES'),parts)
+    if isinstance(a,sp.logic.boolalg.Boolean) and isinstance(b,sp.logic.boolalg.Boolean) and not isinstance(a,sp.Expr) and not isinstance(b,sp.Expr):
+        left,right=_normalized_predicate(a),_normalized_predicate(b)
+        if left==right:return sp.S.Zero
+        result=sp.simplify_logic(sp.Xor(left,right),deep=False)
+        if result in (sp.true,sp.false):return sp.Integer(int(bool(result)))
+        return undecided(a,b,result)
     if isinstance(a,sp.Set) and isinstance(b,sp.Set):
-        # General-profile solution sets need not have decidable membership.
-        # Preserve their exact symmetric difference without asking Integral
-        # membership tests to evaluate arbitrary profiles. Equality above
-        # still reduces identical sets to zero.
-        return sp.SymmetricDifference(a,b,evaluate=False)
-    return sp.Integer(int(a!=b))
+        left,right=_normalized_predicate(a),_normalized_predicate(b)
+        if left==right:return sp.S.Zero
+        if isinstance(left,sp.FiniteSet) and isinstance(right,sp.FiniteSet) and len(left)==len(right)==1:
+            if _value_difference(next(iter(left)),next(iter(right)))==0:return sp.S.Zero
+        residual=sp.SymmetricDifference(left,right,evaluate=False)
+        return undecided(a,b,residual)
+    if isinstance(a,sp.Expr) and isinstance(b,sp.Expr):
+        result=_arithmetic_reduce(b-a)
+        if result.is_zero is True:return sp.S.Zero
+        if result.is_zero is False:return result
+        return undecided(a,b,result)
+    if isinstance(a,Str) and isinstance(b,Str):return sp.S.One
+    return undecided(a,b,sp.Tuple(Str('EQUALITY_QUERY'),a,b))
 
 
 def payload_roles(value):

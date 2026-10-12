@@ -1,5 +1,5 @@
 {
-  "engineSHA256": "18d5d431de41f9ae6f610b8380028fc10fc708c15f7f39ffec1629817c43caba",
+  "engineSHA256": "2028badd3772d68d43659e06d6ebc6644843dd0fb77563fc6fff37255f241561",
   "finished-repository": {
     "command": [
       "python",
@@ -11,233 +11,275 @@
       "--tasks-max",
       "64",
       "--log-directory",
-      "/var/projects/toy_physics-s9b-r2-wl/_scratch/s11c/s9b-wl-r4-final-finished-repository",
+      "/var/projects/toy_physics-s9b-r2-wl/_scratch/s11c/s9b-wl-r5-final4-finished-repository",
       "--",
       "math",
       "-script",
       "/var/projects/toy_physics-s9b-r2-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl"
     ],
     "cwd": "/var/projects/toy_physics-s9b-r2-wl",
-    "sha256": "18d5d431de41f9ae6f610b8380028fc10fc708c15f7f39ffec1629817c43caba",
+    "sha256": "2028badd3772d68d43659e06d6ebc6644843dd0fb77563fc6fff37255f241561",
     "growth": [
       {
-        "bytes": 2090,
+        "bytes": 2819,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757369.646334598
+        "monotonic": 1844272.030607939
       },
       {
-        "bytes": 2173,
+        "bytes": 2902,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757370.154933878
+        "monotonic": 1844272.289780871
       },
       {
-        "bytes": 4869,
+        "bytes": 5598,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757370.412548756
+        "monotonic": 1844272.79971276
       },
       {
-        "bytes": 43287,
+        "bytes": 27619,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757370.921159982
+        "monotonic": 1844273.309723698
       },
       {
-        "bytes": 43386,
+        "bytes": 44016,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757371.681308147
+        "monotonic": 1844273.568742092
       },
       {
-        "bytes": 289747,
+        "bytes": 44115,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757377.717893159
+        "monotonic": 1844274.581840487
       },
       {
-        "bytes": 346150,
+        "bytes": 290476,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757377.976854252
+        "monotonic": 1844280.618256629
       },
       {
-        "bytes": 1558307,
+        "bytes": 346879,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757378.485188172
+        "monotonic": 1844281.128555401
       },
       {
-        "bytes": 1967335,
+        "bytes": 1559036,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757378.742676312
+        "monotonic": 1844281.638920966
       },
       {
-        "bytes": 1984981,
+        "bytes": 1652120,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757379.000052095
+        "monotonic": 1844281.898246631
       },
       {
-        "bytes": 2220366,
+        "bytes": 1968064,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757379.257212146
+        "monotonic": 1844282.157175789
       },
       {
-        "bytes": 2645230,
+        "bytes": 1987720,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757379.514081738
+        "monotonic": 1844282.41608337
       },
       {
-        "bytes": 3082461,
+        "bytes": 2029220,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757379.771738788
+        "monotonic": 1844282.67502805
       },
       {
-        "bytes": 3265568,
+        "bytes": 2224095,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757380.029489422
+        "monotonic": 1844282.933974159
       },
       {
-        "bytes": 3444067,
+        "bytes": 2456819,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757380.287202193
+        "monotonic": 1844283.193137335
       },
       {
-        "bytes": 3544497,
+        "bytes": 3535805,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757380.544671535
+        "monotonic": 1844283.45172064
       },
       {
-        "bytes": 3623016,
+        "bytes": 4334586,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757380.802113297
+        "monotonic": 1844283.710587038
       },
       {
-        "bytes": 3674480,
+        "bytes": 4416294,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757381.059533762
+        "monotonic": 1844283.969554295
       },
       {
-        "bytes": 3710546,
+        "bytes": 4641227,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757381.317799765
+        "monotonic": 1844284.228812377
       },
       {
-        "bytes": 4206271,
+        "bytes": 4736662,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757381.576782813
+        "monotonic": 1844284.48773347
       },
       {
-        "bytes": 4339671,
+        "bytes": 4797940,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757381.835664596
+        "monotonic": 1844284.746634348
       },
       {
-        "bytes": 4400004,
+        "bytes": 4837092,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757382.094624086
+        "monotonic": 1844285.004702085
       },
       {
-        "bytes": 5111587,
+        "bytes": 5084374,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757382.353564963
+        "monotonic": 1844285.26372991
       },
       {
-        "bytes": 5999557,
+        "bytes": 5311361,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757382.612553475
+        "monotonic": 1844285.522767917
       },
       {
-        "bytes": 6128930,
+        "bytes": 5329704,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757382.871456581
+        "monotonic": 1844286.033398588
       },
       {
-        "bytes": 6150200,
+        "bytes": 5834307,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757383.38181161
+        "monotonic": 1844286.292331442
       },
       {
-        "bytes": 6187638,
+        "bytes": 5976552,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757383.640758182
+        "monotonic": 1844286.55130431
       },
       {
-        "bytes": 6246008,
+        "bytes": 6036885,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757383.899873493
+        "monotonic": 1844286.81023772
       },
       {
-        "bytes": 6295305,
+        "bytes": 6558103,
         "kernelPids": [
-          1235399
+          3189819
         ],
-        "monotonic": 1757384.165307552
+        "monotonic": 1844287.069191957
+      },
+      {
+        "bytes": 7636438,
+        "kernelPids": [
+          3189819
+        ],
+        "monotonic": 1844287.328125374
+      },
+      {
+        "bytes": 7765811,
+        "kernelPids": [
+          3189819
+        ],
+        "monotonic": 1844287.843536066
+      },
+      {
+        "bytes": 7787081,
+        "kernelPids": [
+          3189819
+        ],
+        "monotonic": 1844288.102555928
+      },
+      {
+        "bytes": 7824699,
+        "kernelPids": [
+          3189819
+        ],
+        "monotonic": 1844288.361449442
+      },
+      {
+        "bytes": 8027039,
+        "kernelPids": [
+          3189819
+        ],
+        "monotonic": 1844288.620470584
+      },
+      {
+        "bytes": 8132732,
+        "kernelPids": [
+          3189819
+        ],
+        "monotonic": 1844289.133449196
       }
     ],
     "exit": 0,
-    "launcherStdout": "{\n  \"exitCode\": 0,\n  \"wallSeconds\": 20.454437725013122,\n  \"unit\": \"s11c-guard-01c3b6ef158c\",\n  \"stderrBytes\": 0,\n  \"limitsVerified\": true,\n  \"childOutcome\": {\n    \"exitCode\": 0,\n    \"guardReason\": null,\n    \"wallSeconds\": 20.37243941705674,\n    \"childPid\": 1235399\n  }\n}\n",
+    "launcherStdout": "{\n  \"exitCode\": 0,\n  \"wallSeconds\": 23.511085689999163,\n  \"unit\": \"s11c-guard-04fa1b038bd7\",\n  \"stderrBytes\": 0,\n  \"limitsVerified\": true,\n  \"childOutcome\": {\n    \"exitCode\": 0,\n    \"guardReason\": null,\n    \"wallSeconds\": 23.38114686193876,\n    \"childPid\": 3189819\n  }\n}\n",
     "launcherStderr": "",
     "outcome": {
       "exitCode": 0,
-      "wallSeconds": 20.454437725013122,
-      "unit": "s11c-guard-01c3b6ef158c",
+      "wallSeconds": 23.511085689999163,
+      "unit": "s11c-guard-04fa1b038bd7",
       "stderrBytes": 0,
       "limitsVerified": true,
       "childOutcome": {
         "exitCode": 0,
         "guardReason": null,
-        "wallSeconds": 20.37243941705674,
-        "childPid": 1235399
+        "wallSeconds": 23.38114686193876,
+        "childPid": 3189819
       }
     }
   },
@@ -252,261 +294,282 @@
       "--tasks-max",
       "64",
       "--log-directory",
-      "/var/projects/toy_physics-s9b-r2-wl/_scratch/s11c/s9b-wl-r4-final-finished-isolated",
+      "/var/projects/toy_physics-s9b-r2-wl/_scratch/s11c/s9b-wl-r5-final4-finished-isolated",
       "--",
       "math",
       "-script",
-      "/var/projects/toy_physics-s9b-r2-wl/_scratch/s9b_wl_repair4/isolated-final/S9b_light_bending_mathematica_audit.wl"
+      "/var/projects/toy_physics-s9b-r2-wl/_scratch/s9b_wl_repair5/isolated-final4/S9b_light_bending_mathematica_audit.wl"
     ],
-    "cwd": "/var/projects/toy_physics-s9b-r2-wl/_scratch/s9b_wl_repair4/isolated-final",
-    "sha256": "18d5d431de41f9ae6f610b8380028fc10fc708c15f7f39ffec1629817c43caba",
+    "cwd": "/var/projects/toy_physics-s9b-r2-wl/_scratch/s9b_wl_repair5/isolated-final4",
+    "sha256": "2028badd3772d68d43659e06d6ebc6644843dd0fb77563fc6fff37255f241561",
     "growth": [
       {
-        "bytes": 2090,
+        "bytes": 2819,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757390.206037861
+        "monotonic": 1844295.429879766
       },
       {
-        "bytes": 2173,
+        "bytes": 2902,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757390.715552399
+        "monotonic": 1844295.688709483
       },
       {
-        "bytes": 3900,
+        "bytes": 5598,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757390.973625535
+        "monotonic": 1844296.199694282
       },
       {
-        "bytes": 4869,
+        "bytes": 8539,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757391.232520863
+        "monotonic": 1844296.709897495
       },
       {
-        "bytes": 43287,
+        "bytes": 44016,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757391.743100537
+        "monotonic": 1844296.968830501
       },
       {
-        "bytes": 43386,
+        "bytes": 44115,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757393.005823179
+        "monotonic": 1844297.981785422
       },
       {
-        "bytes": 289747,
+        "bytes": 290476,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757399.042060773
+        "monotonic": 1844304.270437462
       },
       {
-        "bytes": 346150,
+        "bytes": 346879,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757399.552288955
+        "monotonic": 1844304.529353716
       },
       {
-        "bytes": 347988,
+        "bytes": 1394460,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757399.811269098
+        "monotonic": 1844305.039618206
       },
       {
-        "bytes": 1558307,
+        "bytes": 1559036,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757400.07015946
+        "monotonic": 1844305.298620196
       },
       {
-        "bytes": 1967335,
+        "bytes": 1968064,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757400.329154624
+        "monotonic": 1844305.557636537
       },
       {
-        "bytes": 1984981,
+        "bytes": 1985072,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757400.588207909
+        "monotonic": 1844305.816787771
       },
       {
-        "bytes": 2220366,
+        "bytes": 1987720,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757400.847203207
+        "monotonic": 1844306.075677147
       },
       {
-        "bytes": 2645230,
+        "bytes": 2224095,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757401.357414297
+        "monotonic": 1844306.334550633
       },
       {
-        "bytes": 2707298,
+        "bytes": 2456819,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757401.616647509
+        "monotonic": 1844306.593420749
       },
       {
-        "bytes": 3109650,
+        "bytes": 3535805,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757401.87591857
+        "monotonic": 1844306.852318527
       },
       {
-        "bytes": 3335962,
+        "bytes": 3668321,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757402.135291497
+        "monotonic": 1844307.111284054
       },
       {
-        "bytes": 3444067,
+        "bytes": 4402245,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757402.394348324
+        "monotonic": 1844307.370136837
       },
       {
-        "bytes": 3509053,
+        "bytes": 4558163,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757402.653312676
+        "monotonic": 1844307.628907965
       },
       {
-        "bytes": 3548231,
+        "bytes": 4666674,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757402.912394839
+        "monotonic": 1844307.887523239
       },
       {
-        "bytes": 3623016,
+        "bytes": 4797940,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757403.171347359
+        "monotonic": 1844308.146413484
       },
       {
-        "bytes": 3674480,
+        "bytes": 4837092,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757403.430351379
+        "monotonic": 1844308.405302373
       },
       {
-        "bytes": 3683981,
+        "bytes": 4840826,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757403.689089441
+        "monotonic": 1844308.664044779
       },
       {
-        "bytes": 4146558,
+        "bytes": 5188872,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757403.948161039
+        "monotonic": 1844308.922862899
       },
       {
-        "bytes": 4339671,
+        "bytes": 5311361,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757404.207134615
+        "monotonic": 1844309.181767838
       },
       {
-        "bytes": 4400004,
+        "bytes": 5647687,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757404.466176654
+        "monotonic": 1844309.692071159
       },
       {
-        "bytes": 5006835,
+        "bytes": 5976552,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757404.724761902
+        "monotonic": 1844309.950987589
       },
       {
-        "bytes": 5999557,
+        "bytes": 6036885,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757404.984132436
+        "monotonic": 1844310.209854681
       },
       {
-        "bytes": 6128930,
+        "bytes": 6104617,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757405.242742141
+        "monotonic": 1844310.4687358
       },
       {
-        "bytes": 6150200,
+        "bytes": 7219613,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757405.751720426
+        "monotonic": 1844310.727907723
       },
       {
-        "bytes": 6187638,
+        "bytes": 7636438,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757406.009884103
+        "monotonic": 1844310.986812731
       },
       {
-        "bytes": 6246008,
+        "bytes": 7765811,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757406.268973873
+        "monotonic": 1844311.245954605
       },
       {
-        "bytes": 6295305,
+        "bytes": 7787081,
         "kernelPids": [
-          1237020
+          3191447
         ],
-        "monotonic": 1757406.543751271
+        "monotonic": 1844311.504850267
+      },
+      {
+        "bytes": 7824699,
+        "kernelPids": [
+          3191447
+        ],
+        "monotonic": 1844312.015573686
+      },
+      {
+        "bytes": 8027039,
+        "kernelPids": [
+          3191447
+        ],
+        "monotonic": 1844312.274471609
+      },
+      {
+        "bytes": 8132732,
+        "kernelPids": [
+          3191447
+        ],
+        "monotonic": 1844312.537324013
       }
     ],
     "exit": 0,
-    "launcherStdout": "{\n  \"exitCode\": 0,\n  \"wallSeconds\": 22.256632823031396,\n  \"unit\": \"s11c-guard-e852b19499e9\",\n  \"stderrBytes\": 0,\n  \"limitsVerified\": true,\n  \"childOutcome\": {\n    \"exitCode\": 0,\n    \"guardReason\": null,\n    \"wallSeconds\": 22.177505471976474,\n    \"childPid\": 1237020\n  }\n}\n",
+    "launcherStdout": "{\n  \"exitCode\": 0,\n  \"wallSeconds\": 23.369208425981924,\n  \"unit\": \"s11c-guard-bb1d106df7aa\",\n  \"stderrBytes\": 0,\n  \"limitsVerified\": true,\n  \"childOutcome\": {\n    \"exitCode\": 0,\n    \"guardReason\": null,\n    \"wallSeconds\": 23.27722091693431,\n    \"childPid\": 3191447\n  }\n}\n",
     "launcherStderr": "",
     "outcome": {
       "exitCode": 0,
-      "wallSeconds": 22.256632823031396,
-      "unit": "s11c-guard-e852b19499e9",
+      "wallSeconds": 23.369208425981924,
+      "unit": "s11c-guard-bb1d106df7aa",
       "stderrBytes": 0,
       "limitsVerified": true,
       "childOutcome": {
         "exitCode": 0,
         "guardReason": null,
-        "wallSeconds": 22.177505471976474,
-        "childPid": 1237020
+        "wallSeconds": 23.27722091693431,
+        "childPid": 3191447
       }
     }
   },
@@ -516,8 +579,8 @@
     "directoryContents": [
       "S9b_light_bending_mathematica_audit.wl"
     ],
-    "repositoryOutputSHA256": "824917ebd0ecfe65f6c958b37b36e10e8eb73ea7fb1e0b758edd7558b8ad1685",
-    "isolatedOutputSHA256": "824917ebd0ecfe65f6c958b37b36e10e8eb73ea7fb1e0b758edd7558b8ad1685"
+    "repositoryOutputSHA256": "6519d10c86c9b16741bd32814a57216116c33717a0aec4150f61903617e9ffdb",
+    "isolatedOutputSHA256": "6519d10c86c9b16741bd32814a57216116c33717a0aec4150f61903617e9ffdb"
   },
   "outStatus": "",
   "measurements": {
@@ -531,268 +594,289 @@
       "--tasks-max",
       "64",
       "--log-directory",
-      "/var/projects/toy_physics-s9b-r2-wl/_scratch/s11c/s9b-wl-r4-final2-measurements",
+      "/var/projects/toy_physics-s9b-r2-wl/_scratch/s11c/s9b-wl-r5-final6-measurements",
       "--",
       "math",
       "-script",
-      "/var/projects/toy_physics-s9b-r2-wl/_scratch/s9b_wl_repair4/measurements.wl"
+      "/var/projects/toy_physics-s9b-r2-wl/_scratch/s9b_wl_repair5/measurements.wl"
     ],
     "cwd": "/var/projects/toy_physics-s9b-r2-wl",
-    "sha256": "f4c6c17dbf9dd16a8942035b57491ab6732473aa0fb390ffa1e334cbc8eb6d42",
+    "sha256": "28ae976b1e66187b8548d8c803e8c18714c53109c358672f18dafbced8a2572e",
     "growth": [
       {
-        "bytes": 2090,
+        "bytes": 2819,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757691.135085382
+        "monotonic": 1846900.930925
       },
       {
-        "bytes": 2173,
+        "bytes": 2902,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757691.645965077
+        "monotonic": 1846901.448109611
       },
       {
-        "bytes": 4869,
+        "bytes": 4629,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757692.156580872
+        "monotonic": 1846901.713280269
       },
       {
-        "bytes": 43287,
+        "bytes": 5598,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757692.667234444
+        "monotonic": 1846901.978503104
       },
       {
-        "bytes": 43386,
+        "bytes": 44016,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757693.931737282
+        "monotonic": 1846902.495360396
       },
       {
-        "bytes": 289747,
+        "bytes": 44115,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757699.970539206
+        "monotonic": 1846903.765514059
       },
       {
-        "bytes": 346150,
+        "bytes": 290476,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757700.481187126
+        "monotonic": 1846909.808054447
       },
       {
-        "bytes": 1558307,
+        "bytes": 346879,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757700.991837862
+        "monotonic": 1846910.324719044
       },
       {
-        "bytes": 1651391,
+        "bytes": 348013,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757701.251072058
+        "monotonic": 1846910.589934619
       },
       {
-        "bytes": 1967335,
+        "bytes": 1559036,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757701.510303816
+        "monotonic": 1846910.855445789
       },
       {
-        "bytes": 1984981,
+        "bytes": 1968064,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757701.769058034
+        "monotonic": 1846911.120728941
       },
       {
-        "bytes": 2220366,
+        "bytes": 1985072,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757702.028038496
+        "monotonic": 1846911.386101918
       },
       {
-        "bytes": 2294641,
+        "bytes": 1987720,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757702.287346493
+        "monotonic": 1846911.651270191
       },
       {
-        "bytes": 2645230,
+        "bytes": 2224095,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757702.546555934
+        "monotonic": 1846911.916678187
       },
       {
-        "bytes": 3109650,
+        "bytes": 3112191,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757702.805799802
+        "monotonic": 1846912.432075543
       },
       {
-        "bytes": 3265568,
+        "bytes": 3535805,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757703.065051914
+        "monotonic": 1846912.697143027
       },
       {
-        "bytes": 3374079,
+        "bytes": 4402245,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757703.324354106
+        "monotonic": 1846912.962583884
       },
       {
-        "bytes": 3505345,
+        "bytes": 4558163,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757703.583609511
+        "monotonic": 1846913.227824105
       },
       {
-        "bytes": 3544497,
+        "bytes": 4666674,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757703.843062176
+        "monotonic": 1846913.493213382
       },
       {
-        "bytes": 3623016,
+        "bytes": 4736662,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757704.102331313
+        "monotonic": 1846913.758446425
       },
       {
-        "bytes": 3674480,
+        "bytes": 4797940,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757704.361549213
+        "monotonic": 1846914.023827117
       },
       {
-        "bytes": 3896263,
+        "bytes": 4840826,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757704.872129684
+        "monotonic": 1846914.289349616
       },
       {
-        "bytes": 4339671,
+        "bytes": 5188872,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757705.131282426
+        "monotonic": 1846914.554579168
       },
       {
-        "bytes": 4400004,
+        "bytes": 5311361,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757705.389906585
+        "monotonic": 1846914.819858603
       },
       {
-        "bytes": 4467736,
+        "bytes": 5472760,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757705.649112703
+        "monotonic": 1846915.335890747
       },
       {
-        "bytes": 5582732,
+        "bytes": 5976552,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757705.908306213
+        "monotonic": 1846915.601408751
       },
       {
-        "bytes": 5999557,
+        "bytes": 6006736,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757706.167521322
+        "monotonic": 1846915.866105063
       },
       {
-        "bytes": 6128930,
+        "bytes": 6036885,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757706.426793429
+        "monotonic": 1846916.130923053
       },
       {
-        "bytes": 6150200,
+        "bytes": 6860097,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757706.685990094
+        "monotonic": 1846916.395289356
       },
       {
-        "bytes": 6187638,
+        "bytes": 7636438,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757706.945197825
+        "monotonic": 1846916.66085832
       },
       {
-        "bytes": 6246008,
+        "bytes": 7765811,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757707.204428502
+        "monotonic": 1846916.926404562
       },
       {
-        "bytes": 6295383,
+        "bytes": 7787081,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757707.463566412
+        "monotonic": 1846917.442982667
       },
       {
-        "bytes": 6446359,
+        "bytes": 7824699,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757708.225559565
+        "monotonic": 1846917.707681671
       },
       {
-        "bytes": 6512530,
+        "bytes": 8027039,
         "kernelPids": [
-          1259550
+          3217530
         ],
-        "monotonic": 1757708.485046425
+        "monotonic": 1846917.973057172
+      },
+      {
+        "bytes": 8132810,
+        "kernelPids": [
+          3217530
+        ],
+        "monotonic": 1846918.238526965
+      },
+      {
+        "bytes": 8326699,
+        "kernelPids": [
+          3217530
+        ],
+        "monotonic": 1846919.005882019
+      },
+      {
+        "bytes": 8409283,
+        "kernelPids": [
+          3217530
+        ],
+        "monotonic": 1846919.265337362
       }
     ],
     "exit": 0,
-    "launcherStdout": "{\n  \"exitCode\": 0,\n  \"wallSeconds\": 23.28359479410574,\n  \"unit\": \"s11c-guard-5d403e4d0b1d\",\n  \"stderrBytes\": 0,\n  \"limitsVerified\": true,\n  \"childOutcome\": {\n    \"exitCode\": 0,\n    \"guardReason\": null,\n    \"wallSeconds\": 23.182888082927093,\n    \"childPid\": 1259550\n  }\n}\n",
+    "launcherStdout": "{\n  \"exitCode\": 0,\n  \"wallSeconds\": 25.462137928931043,\n  \"unit\": \"s11c-guard-658cb1682fcc\",\n  \"stderrBytes\": 0,\n  \"limitsVerified\": true,\n  \"childOutcome\": {\n    \"exitCode\": 0,\n    \"guardReason\": null,\n    \"wallSeconds\": 25.38754843501374,\n    \"childPid\": 3217530\n  }\n}\n",
     "launcherStderr": "",
     "outcome": {
       "exitCode": 0,
-      "wallSeconds": 23.28359479410574,
-      "unit": "s11c-guard-5d403e4d0b1d",
+      "wallSeconds": 25.462137928931043,
+      "unit": "s11c-guard-658cb1682fcc",
       "stderrBytes": 0,
       "limitsVerified": true,
       "childOutcome": {
         "exitCode": 0,
         "guardReason": null,
-        "wallSeconds": 23.182888082927093,
-        "childPid": 1259550
+        "wallSeconds": 25.38754843501374,
+        "childPid": 3217530
       }
     }
   },
@@ -807,744 +891,4111 @@
       "--tasks-max",
       "64",
       "--log-directory",
-      "/var/projects/toy_physics-s9b-r2-wl/_scratch/s11c/s9b-wl-r4-final-finished-ablation",
+      "/var/projects/toy_physics-s9b-r2-wl/_scratch/s11c/s9b-wl-r5-final6-finished-ablation",
       "--",
       "math",
       "-script",
       "/var/projects/toy_physics-s9b-r2-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation.wl"
     ],
     "cwd": "/var/projects/toy_physics-s9b-r2-wl",
-    "sha256": "8f85b6c40da53db2225a0d5ced2537f943680c583f2817b2484f649e47963583",
+    "sha256": "2ba2b150e969ee673203a4a9eaf5e45d043862faf1d75a0815ac216295d759ed",
     "growth": [
       {
         "bytes": 1492,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757453.150618655
+        "monotonic": 1846994.725288647
       },
       {
-        "bytes": 8872,
+        "bytes": 18360,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757464.467448528
+        "monotonic": 1847007.294799513
       },
       {
-        "bytes": 2947797,
+        "bytes": 2007319,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757464.725452777
+        "monotonic": 1847008.308024269
       },
       {
-        "bytes": 5809290,
+        "bytes": 5020079,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757464.984312203
+        "monotonic": 1847015.601621308
       },
       {
-        "bytes": 8436712,
+        "bytes": 6848649,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757465.243164112
+        "monotonic": 1847015.858991122
       },
       {
-        "bytes": 10873298,
+        "bytes": 8938562,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757465.502077914
+        "monotonic": 1847016.116588433
       },
       {
-        "bytes": 13280369,
+        "bytes": 10764377,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757465.760720909
+        "monotonic": 1847016.373351156
       },
       {
-        "bytes": 15693297,
+        "bytes": 12625620,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757466.019525449
+        "monotonic": 1847016.6301551
       },
       {
-        "bytes": 15856084,
+        "bytes": 13451839,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757466.277587128
+        "monotonic": 1847016.889197307
       },
       {
-        "bytes": 15863238,
+        "bytes": 15746811,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757479.8544646
+        "monotonic": 1847026.697229184
       },
       {
-        "bytes": 19381236,
+        "bytes": 17081314,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757480.113409711
+        "monotonic": 1847026.956297568
       },
       {
-        "bytes": 22751549,
+        "bytes": 18434285,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757480.372324812
+        "monotonic": 1847027.215358157
       },
       {
-        "bytes": 25523244,
+        "bytes": 21512141,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757480.631208627
+        "monotonic": 1847037.025366459
       },
       {
-        "bytes": 27805450,
+        "bytes": 22818593,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757480.89011707
+        "monotonic": 1847037.283806389
       },
       {
-        "bytes": 30487464,
+        "bytes": 24456993,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757481.148923649
+        "monotonic": 1847037.542990677
       },
       {
-        "bytes": 33016616,
+        "bytes": 26490295,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757481.407760351
+        "monotonic": 1847046.596023715
       },
       {
-        "bytes": 34127360,
+        "bytes": 27269076,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757481.666729656
+        "monotonic": 1847046.85625484
       },
       {
-        "bytes": 35572430,
+        "bytes": 28583285,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757495.24362384
+        "monotonic": 1847047.115407112
       },
       {
-        "bytes": 38742115,
+        "bytes": 28853102,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757495.502482067
+        "monotonic": 1847047.374544019
       },
       {
-        "bytes": 41697290,
+        "bytes": 30276221,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757495.760479392
+        "monotonic": 1847047.63376165
       },
       {
-        "bytes": 44594117,
+        "bytes": 32549855,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757496.019419277
+        "monotonic": 1847047.892918496
       },
       {
-        "bytes": 46792542,
+        "bytes": 33411648,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757496.278282435
+        "monotonic": 1847048.151969473
       },
       {
-        "bytes": 49435050,
+        "bytes": 34683120,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757496.537127132
+        "monotonic": 1847048.662402551
       },
       {
-        "bytes": 52011970,
+        "bytes": 35955001,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757496.795951121
+        "monotonic": 1847048.921518204
       },
       {
-        "bytes": 54495411,
+        "bytes": 38175810,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757497.054727675
+        "monotonic": 1847049.683206197
       },
       {
-        "bytes": 54938728,
+        "bytes": 40399047,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757497.313544136
+        "monotonic": 1847050.193672297
       },
       {
-        "bytes": 54944401,
+        "bytes": 41015613,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757511.896653152
+        "monotonic": 1847050.452711501
       },
       {
-        "bytes": 57994212,
+        "bytes": 41632508,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757512.155532573
+        "monotonic": 1847050.7117973
       },
       {
-        "bytes": 60761031,
+        "bytes": 42742703,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757512.414350831
+        "monotonic": 1847050.970754652
       },
       {
-        "bytes": 63566778,
+        "bytes": 44388791,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757512.673178245
+        "monotonic": 1847051.229819224
       },
       {
-        "bytes": 65814148,
+        "bytes": 45243342,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757512.931635952
+        "monotonic": 1847051.488922242
       },
       {
-        "bytes": 68286277,
+        "bytes": 46098474,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757513.190505569
+        "monotonic": 1847051.748030951
       },
       {
-        "bytes": 69833705,
+        "bytes": 46847194,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757513.449604928
+        "monotonic": 1847052.007297466
       },
       {
-        "bytes": 69839592,
+        "bytes": 47635945,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757529.036969752
+        "monotonic": 1847052.2665824
       },
       {
-        "bytes": 73154408,
+        "bytes": 48110903,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757529.295823374
+        "monotonic": 1847052.525606811
       },
       {
-        "bytes": 75853170,
+        "bytes": 48989594,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757529.554760306
+        "monotonic": 1847052.784776489
       },
       {
-        "bytes": 78700656,
+        "bytes": 49589028,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757529.813618522
+        "monotonic": 1847053.043911246
       },
       {
-        "bytes": 80971735,
+        "bytes": 50465995,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757530.07349739
+        "monotonic": 1847053.302950064
       },
       {
-        "bytes": 83322439,
+        "bytes": 51018211,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757530.332360088
+        "monotonic": 1847053.561760718
       },
       {
-        "bytes": 84895515,
+        "bytes": 51625642,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757530.59095042
+        "monotonic": 1847053.820784963
       },
       {
-        "bytes": 87423878,
+        "bytes": 52168511,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757544.669074544
+        "monotonic": 1847054.079952419
       },
       {
-        "bytes": 90304736,
+        "bytes": 53634535,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757544.927872091
+        "monotonic": 1847054.338997035
       },
       {
-        "bytes": 93201660,
+        "bytes": 55103455,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757545.186729885
+        "monotonic": 1847054.598011936
       },
       {
-        "bytes": 95620835,
+        "bytes": 56577611,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757545.445607982
+        "monotonic": 1847054.857081157
       },
       {
-        "bytes": 98122869,
+        "bytes": 58045167,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757545.703959026
+        "monotonic": 1847055.116413385
       },
       {
-        "bytes": 100809734,
+        "bytes": 59511019,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757545.962775441
+        "monotonic": 1847055.375473833
       },
       {
-        "bytes": 103151703,
+        "bytes": 60978815,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757546.221639628
+        "monotonic": 1847055.634701602
       },
       {
-        "bytes": 103164827,
+        "bytes": 62446957,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757546.480508709
+        "monotonic": 1847055.893881206
       },
       {
-        "bytes": 106015559,
+        "bytes": 63586636,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757562.57184396
+        "monotonic": 1847056.152927584
       },
       {
-        "bytes": 108718501,
+        "bytes": 64692586,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757562.830617581
+        "monotonic": 1847056.412046683
       },
       {
-        "bytes": 111244989,
+        "bytes": 65119425,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757563.089471579
+        "monotonic": 1847056.671158729
       },
       {
-        "bytes": 113948016,
+        "bytes": 68198759,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757563.348301637
+        "monotonic": 1847065.975808879
       },
       {
-        "bytes": 115801078,
+        "bytes": 69671127,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757563.609298584
+        "monotonic": 1847066.234841822
       },
       {
-        "bytes": 117833433,
+        "bytes": 70811212,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757581.208437121
+        "monotonic": 1847066.493981882
       },
       {
-        "bytes": 120774274,
+        "bytes": 71972921,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757581.467287444
+        "monotonic": 1847066.752969701
       },
       {
-        "bytes": 123462581,
+        "bytes": 75418907,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757581.726127472
+        "monotonic": 1847075.55609715
       },
       {
-        "bytes": 125855582,
+        "bytes": 76886559,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757581.98460887
+        "monotonic": 1847075.815165277
       },
       {
-        "bytes": 128445198,
+        "bytes": 77990179,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757582.243407947
+        "monotonic": 1847076.074264796
       },
       {
-        "bytes": 129680899,
+        "bytes": 79496752,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757582.502562845
+        "monotonic": 1847076.333561564
       },
       {
-        "bytes": 130197232,
+        "bytes": 80290081,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757595.075089615
+        "monotonic": 1847076.592715373
       },
       {
-        "bytes": 133173248,
+        "bytes": 83002161,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757595.333519751
+        "monotonic": 1847085.898290758
       },
       {
-        "bytes": 136330374,
+        "bytes": 84077995,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757595.591803557
+        "monotonic": 1847086.157442922
       },
       {
-        "bytes": 138673225,
+        "bytes": 85366508,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757595.850705482
+        "monotonic": 1847086.416642285
       },
       {
-        "bytes": 141381411,
+        "bytes": 85919046,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757596.109635187
+        "monotonic": 1847086.675578094
       },
       {
-        "bytes": 143029466,
+        "bytes": 86610457,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757596.369098078
+        "monotonic": 1847086.933510043
       },
       {
-        "bytes": 143941849,
+        "bytes": 87588216,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757611.955797372
+        "monotonic": 1847087.192528541
       },
       {
-        "bytes": 147022425,
+        "bytes": 88139104,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757612.214652744
+        "monotonic": 1847087.45177399
       },
       {
-        "bytes": 149678531,
+        "bytes": 89231487,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757612.473537963
+        "monotonic": 1847087.710784169
       },
       {
-        "bytes": 151835488,
+        "bytes": 90051094,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757612.732335988
+        "monotonic": 1847087.969977918
       },
       {
-        "bytes": 154514027,
+        "bytes": 91193655,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757612.991114249
+        "monotonic": 1847088.229071303
       },
       {
-        "bytes": 157199920,
+        "bytes": 92164646,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757613.249855912
+        "monotonic": 1847088.488166592
       },
       {
-        "bytes": 159770814,
+        "bytes": 92974242,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757613.508561767
+        "monotonic": 1847088.747166683
       },
       {
-        "bytes": 160020995,
+        "bytes": 93581073,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757613.767432626
+        "monotonic": 1847089.006211452
       },
       {
-        "bytes": 161232231,
+        "bytes": 94601696,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757629.102174234
+        "monotonic": 1847089.265292442
       },
       {
-        "bytes": 164319074,
+        "bytes": 95490691,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757629.361226619
+        "monotonic": 1847089.524288698
       },
       {
-        "bytes": 167041940,
+        "bytes": 96477547,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757629.620185445
+        "monotonic": 1847089.783391211
       },
       {
-        "bytes": 169463826,
+        "bytes": 96756764,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757629.879134347
+        "monotonic": 1847090.042608162
       },
       {
-        "bytes": 172062255,
+        "bytes": 96773382,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757630.138140709
+        "monotonic": 1847104.874996914
       },
       {
-        "bytes": 173223475,
+        "bytes": 98971495,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757630.397305365
+        "monotonic": 1847105.888106099
       },
       {
-        "bytes": 173229183,
+        "bytes": 101309028,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757645.982252288
+        "monotonic": 1847115.191622057
       },
       {
-        "bytes": 176329572,
+        "bytes": 102764734,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757646.241401791
+        "monotonic": 1847115.450725964
       },
       {
-        "bytes": 178933035,
+        "bytes": 104222008,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757646.500525491
+        "monotonic": 1847115.708779734
       },
       {
-        "bytes": 181585706,
+        "bytes": 105681553,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757646.759454945
+        "monotonic": 1847115.967937138
       },
       {
-        "bytes": 184322716,
+        "bytes": 107501234,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757647.018493659
+        "monotonic": 1847116.227087284
       },
       {
-        "bytes": 186417993,
+        "bytes": 108957386,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757647.278469042
+        "monotonic": 1847116.485813119
       },
       {
-        "bytes": 187920804,
+        "bytes": 110412278,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757663.370956419
+        "monotonic": 1847116.744801213
       },
       {
-        "bytes": 191350560,
+        "bytes": 111870998,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757663.629813337
+        "monotonic": 1847117.004035385
       },
       {
-        "bytes": 194469126,
+        "bytes": 113371089,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757663.888704847
+        "monotonic": 1847117.26328182
       },
       {
-        "bytes": 197467729,
+        "bytes": 114109619,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757664.147882788
+        "monotonic": 1847117.522281308
       },
       {
-        "bytes": 199691849,
+        "bytes": 117339927,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757664.406857834
+        "monotonic": 1847127.583135216
       },
       {
-        "bytes": 202677311,
+        "bytes": 118824567,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757664.6658199
+        "monotonic": 1847127.842272324
       },
       {
-        "bytes": 205405563,
+        "bytes": 120308226,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757664.924744491
+        "monotonic": 1847128.101338368
       },
       {
-        "bytes": 208122744,
+        "bytes": 123537777,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757665.183611354
+        "monotonic": 1847137.910153139
       },
       {
-        "bytes": 209396244,
+        "bytes": 124994234,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757665.442698373
+        "monotonic": 1847138.16937094
       },
       {
-        "bytes": 209847612,
+        "bytes": 126478037,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757666.455844755
+        "monotonic": 1847138.42856388
       },
       {
-        "bytes": 213350947,
+        "bytes": 127960425,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757666.71482823
+        "monotonic": 1847138.687632643
       },
       {
-        "bytes": 216070948,
+        "bytes": 130096869,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757666.973825731
+        "monotonic": 1847147.743031261
       },
       {
-        "bytes": 219705401,
+        "bytes": 131606197,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757667.23288413
+        "monotonic": 1847148.00173271
       },
       {
-        "bytes": 222762231,
+        "bytes": 133115598,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757667.491838141
+        "monotonic": 1847148.260816707
       },
       {
-        "bytes": 225074431,
+        "bytes": 134232628,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757667.750930686
+        "monotonic": 1847148.519915521
       },
       {
-        "bytes": 227978662,
+        "bytes": 137088109,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757668.009877786
+        "monotonic": 1847149.030369479
       },
       {
-        "bytes": 228613808,
+        "bytes": 139943663,
         "kernelPids": [
-          1240246
+          3219505
         ],
-        "monotonic": 1757668.283812053
+        "monotonic": 1847149.289444243
+      },
+      {
+        "bytes": 140861420,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847149.548586604
+      },
+      {
+        "bytes": 141825062,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847149.807822053
+      },
+      {
+        "bytes": 142289818,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847150.067054928
+      },
+      {
+        "bytes": 144134674,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847150.828921071
+      },
+      {
+        "bytes": 145979781,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847151.339657866
+      },
+      {
+        "bytes": 149352716,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847152.352781881
+      },
+      {
+        "bytes": 152727759,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847153.365594922
+      },
+      {
+        "bytes": 153621007,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847153.624663003
+      },
+      {
+        "bytes": 154514406,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847153.883726601
+      },
+      {
+        "bytes": 156198829,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847154.394197884
+      },
+      {
+        "bytes": 158171662,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847154.653251947
+      },
+      {
+        "bytes": 158939984,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847154.912384777
+      },
+      {
+        "bytes": 159409501,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847155.171421914
+      },
+      {
+        "bytes": 160283584,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847155.430583464
+      },
+      {
+        "bytes": 161370678,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847155.689812286
+      },
+      {
+        "bytes": 163002381,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847155.948932667
+      },
+      {
+        "bytes": 164633334,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847156.208091262
+      },
+      {
+        "bytes": 165721380,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847156.467352361
+      },
+      {
+        "bytes": 167356269,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847156.726414665
+      },
+      {
+        "bytes": 168987301,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847156.985519461
+      },
+      {
+        "bytes": 170073837,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847157.244601146
+      },
+      {
+        "bytes": 171705047,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847157.503718555
+      },
+      {
+        "bytes": 173334848,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847157.763069581
+      },
+      {
+        "bytes": 174423054,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847158.021988192
+      },
+      {
+        "bytes": 176090914,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847158.281180808
+      },
+      {
+        "bytes": 177195820,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847158.540334769
+      },
+      {
+        "bytes": 178843295,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847158.7995107
+      },
+      {
+        "bytes": 181732974,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847168.353338147
+      },
+      {
+        "bytes": 183364447,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847168.611731341
+      },
+      {
+        "bytes": 184453938,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847168.869838696
+      },
+      {
+        "bytes": 186137216,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847169.129130063
+      },
+      {
+        "bytes": 187225157,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847169.388221373
+      },
+      {
+        "bytes": 187784696,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847169.647172804
+      },
+      {
+        "bytes": 191218223,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847178.200160528
+      },
+      {
+        "bytes": 192305159,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847178.459027397
+      },
+      {
+        "bytes": 193936563,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847178.718273657
+      },
+      {
+        "bytes": 195023093,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847178.977750853
+      },
+      {
+        "bytes": 196691005,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847179.236788831
+      },
+      {
+        "bytes": 197794941,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847179.495976393
+      },
+      {
+        "bytes": 198897753,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847179.754175867
+      },
+      {
+        "bytes": 202782342,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847189.310607191
+      },
+      {
+        "bytes": 203886889,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847189.569694689
+      },
+      {
+        "bytes": 205228300,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847189.828771276
+      },
+      {
+        "bytes": 206009882,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847190.087908534
+      },
+      {
+        "bytes": 206829335,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847190.347097129
+      },
+      {
+        "bytes": 207648889,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847190.606191386
+      },
+      {
+        "bytes": 208554221,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847190.865289709
+      },
+      {
+        "bytes": 210570964,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847191.124474829
+      },
+      {
+        "bytes": 211113698,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847191.382822162
+      },
+      {
+        "bytes": 211305491,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847191.645486874
+      },
+      {
+        "bytes": 211322577,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847206.481919033
+      },
+      {
+        "bytes": 213390440,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847207.494932302
+      },
+      {
+        "bytes": 215779125,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847217.303009099
+      },
+      {
+        "bytes": 217348291,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847217.562202587
+      },
+      {
+        "bytes": 218919027,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847217.821401705
+      },
+      {
+        "bytes": 220493458,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847218.080564433
+      },
+      {
+        "bytes": 222062730,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847218.3395765
+      },
+      {
+        "bytes": 223632218,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847218.598791273
+      },
+      {
+        "bytes": 225201909,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847218.858062396
+      },
+      {
+        "bytes": 226771767,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847219.117221927
+      },
+      {
+        "bytes": 227958817,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847219.376234967
+      },
+      {
+        "bytes": 229154481,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847219.635462176
+      },
+      {
+        "bytes": 229589390,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847219.894442031
+      },
+      {
+        "bytes": 231755386,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847229.953313982
+      },
+      {
+        "bytes": 233325248,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847230.212578249
+      },
+      {
+        "bytes": 234921858,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847230.471664038
+      },
+      {
+        "bytes": 236142877,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847230.730704466
+      },
+      {
+        "bytes": 239093409,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847240.53897407
+      },
+      {
+        "bytes": 240663571,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847240.798236111
+      },
+      {
+        "bytes": 242240677,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847241.056879152
+      },
+      {
+        "bytes": 243436739,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847241.315994767
+      },
+      {
+        "bytes": 244263864,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847241.574995484
+      },
+      {
+        "bytes": 246428764,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847250.630101001
+      },
+      {
+        "bytes": 248106181,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847250.889166749
+      },
+      {
+        "bytes": 250185867,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847251.14834322
+      },
+      {
+        "bytes": 250986011,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847251.407526338
+      },
+      {
+        "bytes": 254162150,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847251.917861845
+      },
+      {
+        "bytes": 258326455,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847252.428321642
+      },
+      {
+        "bytes": 258948744,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847252.687419188
+      },
+      {
+        "bytes": 260085509,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847252.946503559
+      },
+      {
+        "bytes": 261475317,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847253.707544799
+      },
+      {
+        "bytes": 262865340,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847253.966585706
+      },
+      {
+        "bytes": 265429643,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847254.731280762
+      },
+      {
+        "bytes": 267998140,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847255.493079604
+      },
+      {
+        "bytes": 268865486,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847255.752310089
+      },
+      {
+        "bytes": 269732987,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847256.011723872
+      },
+      {
+        "bytes": 271368378,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847256.522284582
+      },
+      {
+        "bytes": 273385755,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847257.032890086
+      },
+      {
+        "bytes": 274021351,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847257.292085111
+      },
+      {
+        "bytes": 274656401,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847257.55116967
+      },
+      {
+        "bytes": 275257391,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847257.810237009
+      },
+      {
+        "bytes": 275666126,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847258.069360099
+      },
+      {
+        "bytes": 276203470,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847258.328182184
+      },
+      {
+        "bytes": 276802887,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847258.587406162
+      },
+      {
+        "bytes": 277402507,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847258.846669832
+      },
+      {
+        "bytes": 277837068,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847259.107483238
+      },
+      {
+        "bytes": 278160310,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847259.366869009
+      },
+      {
+        "bytes": 279334320,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847259.625982136
+      },
+      {
+        "bytes": 281095463,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847259.885223204
+      },
+      {
+        "bytes": 282270503,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847260.144255153
+      },
+      {
+        "bytes": 284032218,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847260.403329314
+      },
+      {
+        "bytes": 285214360,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847260.662387154
+      },
+      {
+        "bytes": 286975388,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847260.921506855
+      },
+      {
+        "bytes": 288149596,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847261.180587966
+      },
+      {
+        "bytes": 289323428,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847261.43982025
+      },
+      {
+        "bytes": 291086120,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847261.698844889
+      },
+      {
+        "bytes": 292259952,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847261.957854459
+      },
+      {
+        "bytes": 294021569,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847262.217026287
+      },
+      {
+        "bytes": 295197781,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847262.476085567
+      },
+      {
+        "bytes": 296988716,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847262.735127173
+      },
+      {
+        "bytes": 298164486,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847262.99415327
+      },
+      {
+        "bytes": 298811778,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847263.253049318
+      },
+      {
+        "bytes": 302332018,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847272.810962572
+      },
+      {
+        "bytes": 304094015,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847273.070105997
+      },
+      {
+        "bytes": 305280495,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847273.328921402
+      },
+      {
+        "bytes": 307061669,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847273.588024551
+      },
+      {
+        "bytes": 308296941,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847273.847211772
+      },
+      {
+        "bytes": 311471932,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847282.652349549
+      },
+      {
+        "bytes": 312991606,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847282.911455166
+      },
+      {
+        "bytes": 314753538,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847283.170419707
+      },
+      {
+        "bytes": 315927364,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847283.429111822
+      },
+      {
+        "bytes": 317113860,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847283.688079375
+      },
+      {
+        "bytes": 318894177,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847283.947149884
+      },
+      {
+        "bytes": 320128412,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847284.206169708
+      },
+      {
+        "bytes": 323060945,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847293.761808268
+      },
+      {
+        "bytes": 324765386,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847294.020991801
+      },
+      {
+        "bytes": 325957274,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847294.280024913
+      },
+      {
+        "bytes": 327403105,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847294.539442316
+      },
+      {
+        "bytes": 327683038,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847294.798473545
+      },
+      {
+        "bytes": 328892159,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847295.05756968
+      },
+      {
+        "bytes": 329810755,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847295.316703206
+      },
+      {
+        "bytes": 330324440,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847295.57491749
+      },
+      {
+        "bytes": 331227996,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847295.834105381
+      },
+      {
+        "bytes": 332016809,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847296.093390048
+      },
+      {
+        "bytes": 332826671,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847296.352452822
+      },
+      {
+        "bytes": 333458795,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847296.611815585
+      },
+      {
+        "bytes": 334225604,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847296.870845056
+      },
+      {
+        "bytes": 334962950,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847297.129942327
+      },
+      {
+        "bytes": 335700578,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847297.389064124
+      },
+      {
+        "bytes": 336499451,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847297.648151247
+      },
+      {
+        "bytes": 337081890,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847297.907220734
+      },
+      {
+        "bytes": 337405191,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847298.169582165
+      },
+      {
+        "bytes": 337416710,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847314.258877971
+      },
+      {
+        "bytes": 339840919,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847315.522955206
+      },
+      {
+        "bytes": 342697983,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847322.065663679
+      },
+      {
+        "bytes": 342778987,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847322.323714307
+      },
+      {
+        "bytes": 344609323,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847329.116604663
+      },
+      {
+        "bytes": 344809968,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847329.3757648
+      },
+      {
+        "bytes": 346972315,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847335.916568793
+      },
+      {
+        "bytes": 348559827,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847341.956946589
+      },
+      {
+        "bytes": 351729810,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847342.467390182
+      },
+      {
+        "bytes": 351854215,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847342.726483139
+      },
+      {
+        "bytes": 355027091,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847342.985682311
+      },
+      {
+        "bytes": 358764095,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847343.495373639
+      },
+      {
+        "bytes": 360120906,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847344.005837104
+      },
+      {
+        "bytes": 361477932,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847344.516231274
+      },
+      {
+        "bytes": 364147126,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847345.026669444
+      },
+      {
+        "bytes": 366820515,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847345.787635279
+      },
+      {
+        "bytes": 367590408,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847346.046674365
+      },
+      {
+        "bytes": 368360456,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847346.305753266
+      },
+      {
+        "bytes": 369897392,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847346.564782801
+      },
+      {
+        "bytes": 372090458,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847347.075188706
+      },
+      {
+        "bytes": 372965940,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847347.33425231
+      },
+      {
+        "bytes": 374186317,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847347.593317253
+      },
+      {
+        "bytes": 374876464,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847347.852362258
+      },
+      {
+        "bytes": 377583191,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847354.895146711
+      },
+      {
+        "bytes": 380340409,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847360.683868179
+      },
+      {
+        "bytes": 380455174,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847360.942937621
+      },
+      {
+        "bytes": 383486135,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847367.735584462
+      },
+      {
+        "bytes": 385120322,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847367.994676795
+      },
+      {
+        "bytes": 385886179,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847368.257084268
+      },
+      {
+        "bytes": 385897754,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847385.104099821
+      },
+      {
+        "bytes": 388273426,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847386.368654179
+      },
+      {
+        "bytes": 390083876,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847394.166681899
+      },
+      {
+        "bytes": 391386941,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847394.42583716
+      },
+      {
+        "bytes": 393579065,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847402.975892041
+      },
+      {
+        "bytes": 395903153,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847411.025634821
+      },
+      {
+        "bytes": 397641581,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847418.573042043
+      },
+      {
+        "bytes": 399479209,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847418.832235836
+      },
+      {
+        "bytes": 401316959,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847419.094014621
+      },
+      {
+        "bytes": 401441141,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847419.353166957
+      },
+      {
+        "bytes": 405119060,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847419.863613223
+      },
+      {
+        "bytes": 409125724,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847420.374265752
+      },
+      {
+        "bytes": 409833791,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847420.633356331
+      },
+      {
+        "bytes": 410304616,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847420.892632653
+      },
+      {
+        "bytes": 411716723,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847421.403044176
+      },
+      {
+        "bytes": 413129125,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847421.662174423
+      },
+      {
+        "bytes": 415912491,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847422.424096227
+      },
+      {
+        "bytes": 418698010,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847423.185805201
+      },
+      {
+        "bytes": 419475041,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847423.445142579
+      },
+      {
+        "bytes": 420252321,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847423.704279892
+      },
+      {
+        "bytes": 421802619,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847423.963564257
+      },
+      {
+        "bytes": 424028624,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847424.473269067
+      },
+      {
+        "bytes": 424454573,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847424.731763904
+      },
+      {
+        "bytes": 424952574,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847424.990918882
+      },
+      {
+        "bytes": 426794000,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847425.250090268
+      },
+      {
+        "bytes": 426906070,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847425.509473013
+      },
+      {
+        "bytes": 430007029,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847435.57073014
+      },
+      {
+        "bytes": 433273886,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847444.876563774
+      },
+      {
+        "bytes": 436158395,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847454.93629756
+      },
+      {
+        "bytes": 438094410,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847455.195362908
+      },
+      {
+        "bytes": 438612405,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847455.454515871
+      },
+      {
+        "bytes": 440029661,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847455.713667689
+      },
+      {
+        "bytes": 440081459,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847455.976024464
+      },
+      {
+        "bytes": 440092982,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847471.311231501
+      },
+      {
+        "bytes": 442287840,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847472.324425801
+      },
+      {
+        "bytes": 444261113,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847482.38531944
+      },
+      {
+        "bytes": 445716529,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847482.644430136
+      },
+      {
+        "bytes": 447174101,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847482.903696704
+      },
+      {
+        "bytes": 448633647,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847483.162876489
+      },
+      {
+        "bytes": 450089613,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847483.421854502
+      },
+      {
+        "bytes": 451544493,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847483.681107413
+      },
+      {
+        "bytes": 453000649,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847483.940132233
+      },
+      {
+        "bytes": 454457157,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847484.199292237
+      },
+      {
+        "bytes": 455941798,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847484.458430485
+      },
+      {
+        "bytes": 457425456,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847484.717500785
+      },
+      {
+        "bytes": 460291811,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847495.529934149
+      },
+      {
+        "bytes": 461775723,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847495.788979223
+      },
+      {
+        "bytes": 463624075,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847496.046655184
+      },
+      {
+        "bytes": 466125900,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847506.107344088
+      },
+      {
+        "bytes": 467581259,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847506.366468932
+      },
+      {
+        "bytes": 469038923,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847506.625660926
+      },
+      {
+        "bytes": 470538722,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847506.883940826
+      },
+      {
+        "bytes": 471276290,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847507.143050621
+      },
+      {
+        "bytes": 473412735,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847516.199857688
+      },
+      {
+        "bytes": 474922064,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847516.710284178
+      },
+      {
+        "bytes": 477174655,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847516.969437732
+      },
+      {
+        "bytes": 477548499,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847517.228665331
+      },
+      {
+        "bytes": 480403981,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847517.487781639
+      },
+      {
+        "bytes": 483811363,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847517.998325847
+      },
+      {
+        "bytes": 484676562,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847518.257458523
+      },
+      {
+        "bytes": 485605700,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847518.516650655
+      },
+      {
+        "bytes": 487450557,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847519.27825006
+      },
+      {
+        "bytes": 489295665,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847519.788730707
+      },
+      {
+        "bytes": 492668601,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847520.801968059
+      },
+      {
+        "bytes": 496043646,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847521.81494449
+      },
+      {
+        "bytes": 496936895,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847522.325161787
+      },
+      {
+        "bytes": 497830295,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847522.584350632
+      },
+      {
+        "bytes": 499514719,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847522.843194957
+      },
+      {
+        "bytes": 501856972,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847523.353645569
+      },
+      {
+        "bytes": 502255923,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847523.612742451
+      },
+      {
+        "bytes": 503056285,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847523.871936879
+      },
+      {
+        "bytes": 504143381,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847524.131130292
+      },
+      {
+        "bytes": 505229913,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847524.390201816
+      },
+      {
+        "bytes": 506861801,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847524.649389943
+      },
+      {
+        "bytes": 507949309,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847524.908445647
+      },
+      {
+        "bytes": 509585711,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847525.167615545
+      },
+      {
+        "bytes": 511215798,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847525.426907611
+      },
+      {
+        "bytes": 512303284,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847525.685982447
+      },
+      {
+        "bytes": 513933091,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847525.945254313
+      },
+      {
+        "bytes": 515021035,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847526.204526537
+      },
+      {
+        "bytes": 516650839,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847526.463582486
+      },
+      {
+        "bytes": 518283261,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847526.72271502
+      },
+      {
+        "bytes": 519406910,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847526.982597838
+      },
+      {
+        "bytes": 520511818,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847527.241798658
+      },
+      {
+        "bytes": 522159296,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847527.501059594
+      },
+      {
+        "bytes": 525048976,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847537.055362057
+      },
+      {
+        "bytes": 526680452,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847537.31454494
+      },
+      {
+        "bytes": 527769945,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847537.573693491
+      },
+      {
+        "bytes": 529453226,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847537.832894458
+      },
+      {
+        "bytes": 530541169,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847538.092033201
+      },
+      {
+        "bytes": 531100709,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847538.35109691
+      },
+      {
+        "bytes": 533990389,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847546.902099591
+      },
+      {
+        "bytes": 535621176,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847547.161077573
+      },
+      {
+        "bytes": 537252583,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847547.420267979
+      },
+      {
+        "bytes": 538339115,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847547.679468306
+      },
+      {
+        "bytes": 539618432,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847547.938804347
+      },
+      {
+        "bytes": 541110968,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847548.197962555
+      },
+      {
+        "bytes": 542213782,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847548.457137499
+      },
+      {
+        "bytes": 546098374,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847558.016061838
+      },
+      {
+        "bytes": 547202923,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847558.274730447
+      },
+      {
+        "bytes": 548544338,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847558.533796407
+      },
+      {
+        "bytes": 549325923,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847558.792992695
+      },
+      {
+        "bytes": 550145377,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847559.052066591
+      },
+      {
+        "bytes": 550964932,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847559.311259487
+      },
+      {
+        "bytes": 552013521,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847559.570313678
+      },
+      {
+        "bytes": 553859686,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847559.832430875
+      },
+      {
+        "bytes": 554218048,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847560.091678134
+      },
+      {
+        "bytes": 554621613,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847560.35366166
+      },
+      {
+        "bytes": 555131145,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847577.953176082
+      },
+      {
+        "bytes": 558087887,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847578.21245716
+      },
+      {
+        "bytes": 560871045,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847578.471640511
+      },
+      {
+        "bytes": 563835541,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847578.730830486
+      },
+      {
+        "bytes": 566210193,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847578.990210446
+      },
+      {
+        "bytes": 568789948,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847579.249282913
+      },
+      {
+        "bytes": 570954717,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847579.509485634
+      },
+      {
+        "bytes": 571481675,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847598.617311079
+      },
+      {
+        "bytes": 575717442,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847609.931656085
+      },
+      {
+        "bytes": 576129053,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847610.190791519
+      },
+      {
+        "bytes": 578136790,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847610.449811226
+      },
+      {
+        "bytes": 578403805,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847610.708943229
+      },
+      {
+        "bytes": 582874267,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847611.219380904
+      },
+      {
+        "bytes": 583877297,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847611.4784225
+      },
+      {
+        "bytes": 586177290,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847611.988927587
+      },
+      {
+        "bytes": 589337962,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847612.750489277
+      },
+      {
+        "bytes": 589579626,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847613.010358664
+      },
+      {
+        "bytes": 590679551,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847613.269498282
+      },
+      {
+        "bytes": 592697430,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847613.528479178
+      },
+      {
+        "bytes": 594763020,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847613.787565599
+      },
+      {
+        "bytes": 597230779,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847614.046756523
+      },
+      {
+        "bytes": 599040732,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847614.306078441
+      },
+      {
+        "bytes": 599823715,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847614.565215008
+      },
+      {
+        "bytes": 601035470,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847614.827308745
+      },
+      {
+        "bytes": 602416446,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847628.400726083
+      },
+      {
+        "bytes": 604146456,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847628.660033567
+      },
+      {
+        "bytes": 605723271,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847628.919354539
+      },
+      {
+        "bytes": 605757471,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847629.177734109
+      },
+      {
+        "bytes": 608788607,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847629.436991924
+      },
+      {
+        "bytes": 609565351,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847629.696071337
+      },
+      {
+        "bytes": 609927782,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847629.955179305
+      },
+      {
+        "bytes": 611086476,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847630.214268368
+      },
+      {
+        "bytes": 612245471,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847630.724683815
+      },
+      {
+        "bytes": 614433526,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847631.235074188
+      },
+      {
+        "bytes": 615203574,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847631.745589634
+      },
+      {
+        "bytes": 617225271,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847632.004638932
+      },
+      {
+        "bytes": 617823882,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847632.263723759
+      },
+      {
+        "bytes": 618967017,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847632.522827316
+      },
+      {
+        "bytes": 621344648,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847632.781832467
+      },
+      {
+        "bytes": 623754130,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847633.040923713
+      },
+      {
+        "bytes": 625190267,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847633.300033558
+      },
+      {
+        "bytes": 626362457,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847633.559161582
+      },
+      {
+        "bytes": 627431768,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847633.818300681
+      },
+      {
+        "bytes": 628127272,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847634.077376598
+      },
+      {
+        "bytes": 629072807,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847634.339436232
+      },
+      {
+        "bytes": 630259366,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847651.433281556
+      },
+      {
+        "bytes": 633119804,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847651.692318615
+      },
+      {
+        "bytes": 635477985,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847651.950866614
+      },
+      {
+        "bytes": 637478268,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847652.210056659
+      },
+      {
+        "bytes": 638722020,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847652.469159359
+      },
+      {
+        "bytes": 639590221,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847652.728259226
+      },
+      {
+        "bytes": 640456938,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847652.987399505
+      },
+      {
+        "bytes": 641324940,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847653.246443857
+      },
+      {
+        "bytes": 642310144,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847653.505575472
+      },
+      {
+        "bytes": 643066281,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847653.764890936
+      },
+      {
+        "bytes": 643956812,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847654.023990748
+      },
+      {
+        "bytes": 644510004,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847654.283259487
+      },
+      {
+        "bytes": 645204959,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847654.542439969
+      },
+      {
+        "bytes": 646101538,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847654.801521636
+      },
+      {
+        "bytes": 646828199,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847655.060688917
+      },
+      {
+        "bytes": 647696334,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847655.319732736
+      },
+      {
+        "bytes": 648510786,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847655.577964446
+      },
+      {
+        "bytes": 649286369,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847655.836997122
+      },
+      {
+        "bytes": 649839587,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847656.096099789
+      },
+      {
+        "bytes": 650572619,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847656.355199551
+      },
+      {
+        "bytes": 651262672,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847656.614241838
+      },
+      {
+        "bytes": 652550590,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847656.873288389
+      },
+      {
+        "bytes": 653838324,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847657.132358353
+      },
+      {
+        "bytes": 655774139,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847657.391400344
+      },
+      {
+        "bytes": 657062263,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847657.650494331
+      },
+      {
+        "bytes": 658354541,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847657.909643364
+      },
+      {
+        "bytes": 660294960,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847658.168817319
+      },
+      {
+        "bytes": 661585636,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847658.428625202
+      },
+      {
+        "bytes": 662873376,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847658.687906891
+      },
+      {
+        "bytes": 664806510,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847658.946983138
+      },
+      {
+        "bytes": 666096142,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847659.206085322
+      },
+      {
+        "bytes": 667383879,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847659.465142503
+      },
+      {
+        "bytes": 669319014,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847659.724274166
+      },
+      {
+        "bytes": 669969083,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847659.983368646
+      },
+      {
+        "bytes": 671956208,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847660.242483659
+      },
+      {
+        "bytes": 673247358,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847660.502041402
+      },
+      {
+        "bytes": 673973176,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847660.761136688
+      },
+      {
+        "bytes": 678361272,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847680.872882625
+      },
+      {
+        "bytes": 679650887,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847681.132556014
+      },
+      {
+        "bytes": 681640283,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847681.391855576
+      },
+      {
+        "bytes": 682933615,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847681.651278267
+      },
+      {
+        "bytes": 684224779,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847681.910602316
+      },
+      {
+        "bytes": 684950597,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847682.169933604
+      },
+      {
+        "bytes": 688694826,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847701.273528017
+      },
+      {
+        "bytes": 690628046,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847701.532982265
+      },
+      {
+        "bytes": 691915975,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847701.792251754
+      },
+      {
+        "bytes": 693204315,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847702.051573759
+      },
+      {
+        "bytes": 694498291,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847702.310921568
+      },
+      {
+        "bytes": 696485464,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847702.570258731
+      },
+      {
+        "bytes": 697773198,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847702.829566488
+      },
+      {
+        "bytes": 698499098,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847703.08882599
+      },
+      {
+        "bytes": 702242475,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847722.945825642
+      },
+      {
+        "bytes": 703422486,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847723.204891002
+      },
+      {
+        "bytes": 704727525,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847723.463899079
+      },
+      {
+        "bytes": 706314119,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847723.722941653
+      },
+      {
+        "bytes": 707239798,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847723.982057393
+      },
+      {
+        "bytes": 708098891,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847724.241208615
+      },
+      {
+        "bytes": 708958219,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847724.500325734
+      },
+      {
+        "bytes": 709749768,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847724.759502015
+      },
+      {
+        "bytes": 711888054,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847725.018635199
+      },
+      {
+        "bytes": 712058417,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847725.281065767
+      },
+      {
+        "bytes": 712079849,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847741.876631294
+      },
+      {
+        "bytes": 715490228,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847742.135721886
+      },
+      {
+        "bytes": 716531147,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847742.394890774
+      },
+      {
+        "bytes": 717938776,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847742.905378119
+      },
+      {
+        "bytes": 719346620,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847743.415751456
+      },
+      {
+        "bytes": 719474688,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847743.926222757
+      },
+      {
+        "bytes": 721933886,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847744.185283565
+      },
+      {
+        "bytes": 724525617,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847744.695591093
+      },
+      {
+        "bytes": 727123575,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847744.954603446
+      },
+      {
+        "bytes": 729671589,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847745.213705497
+      },
+      {
+        "bytes": 731071637,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847745.473039351
+      },
+      {
+        "bytes": 731693393,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847745.732146336
+      },
+      {
+        "bytes": 732923062,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847745.99135061
+      },
+      {
+        "bytes": 733302290,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847746.250423383
+      },
+      {
+        "bytes": 734877059,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847746.508982556
+      },
+      {
+        "bytes": 735786128,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847746.771386108
+      },
+      {
+        "bytes": 737935316,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847764.118512618
+      },
+      {
+        "bytes": 740711973,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847764.377837847
+      },
+      {
+        "bytes": 742870137,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847764.637151264
+      },
+      {
+        "bytes": 743728720,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847764.896553508
+      },
+      {
+        "bytes": 744587458,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847765.155903764
+      },
+      {
+        "bytes": 746201240,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847765.666617617
+      },
+      {
+        "bytes": 748137571,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847765.925866973
+      },
+      {
+        "bytes": 750501403,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847766.185550651
+      },
+      {
+        "bytes": 753047802,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847766.444920382
+      },
+      {
+        "bytes": 754116737,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847766.704179345
+      },
+      {
+        "bytes": 755121520,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847766.963551812
+      },
+      {
+        "bytes": 756412944,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847767.226189823
+      },
+      {
+        "bytes": 757072387,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847784.823047535
+      },
+      {
+        "bytes": 757794741,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847785.082141227
+      },
+      {
+        "bytes": 758759785,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847785.341238564
+      },
+      {
+        "bytes": 759602236,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847785.600530762
+      },
+      {
+        "bytes": 760565609,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847785.859010032
+      },
+      {
+        "bytes": 761431989,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847786.118087414
+      },
+      {
+        "bytes": 762484159,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847786.377152146
+      },
+      {
+        "bytes": 763421207,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847786.636273911
+      },
+      {
+        "bytes": 764265257,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847786.895260238
+      },
+      {
+        "bytes": 765209433,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847787.154281921
+      },
+      {
+        "bytes": 766326090,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847787.664659383
+      },
+      {
+        "bytes": 766447652,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847787.923815533
+      },
+      {
+        "bytes": 767260287,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847788.182948886
+      },
+      {
+        "bytes": 768676161,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847788.441953106
+      },
+      {
+        "bytes": 769531652,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847788.700970022
+      },
+      {
+        "bytes": 770083886,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847788.960130544
+      },
+      {
+        "bytes": 771999317,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847789.469791486
+      },
+      {
+        "bytes": 773914803,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847789.980296915
+      },
+      {
+        "bytes": 777353775,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847790.993514798
+      },
+      {
+        "bytes": 780794660,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847792.006714318
+      },
+      {
+        "bytes": 781782097,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847792.26569759
+      },
+      {
+        "bytes": 782769569,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847792.524669095
+      },
+      {
+        "bytes": 784579907,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847792.783775214
+      },
+      {
+        "bytes": 786701895,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847793.294298275
+      },
+      {
+        "bytes": 787322784,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847793.55334609
+      },
+      {
+        "bytes": 787943489,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847793.812438407
+      },
+      {
+        "bytes": 788581359,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847794.071542396
+      },
+      {
+        "bytes": 789253813,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847794.329879515
+      },
+      {
+        "bytes": 789861524,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847794.589051
+      },
+      {
+        "bytes": 790540054,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847794.848136311
+      },
+      {
+        "bytes": 791042681,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847795.107169718
+      },
+      {
+        "bytes": 791804239,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847795.366384371
+      },
+      {
+        "bytes": 792566435,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847795.625412007
+      },
+      {
+        "bytes": 793331656,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847795.884533112
+      },
+      {
+        "bytes": 794093017,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847796.143669581
+      },
+      {
+        "bytes": 794854775,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847796.402716669
+      },
+      {
+        "bytes": 795629653,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847796.66205619
+      },
+      {
+        "bytes": 796413271,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847796.921052712
+      },
+      {
+        "bytes": 797305469,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847797.180094908
+      },
+      {
+        "bytes": 798085035,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847797.439183755
+      },
+      {
+        "bytes": 798992877,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847797.698222406
+      },
+      {
+        "bytes": 799755055,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847797.957233035
+      },
+      {
+        "bytes": 800534309,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847798.216338851
+      },
+      {
+        "bytes": 801445082,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847798.475379948
+      },
+      {
+        "bytes": 802129487,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847798.734444899
+      },
+      {
+        "bytes": 802714089,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847798.993783501
+      },
+      {
+        "bytes": 803562237,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847799.253041299
+      },
+      {
+        "bytes": 804410380,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847799.511842503
+      },
+      {
+        "bytes": 805213995,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847799.770938154
+      },
+      {
+        "bytes": 805819946,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847800.03007442
+      },
+      {
+        "bytes": 806425932,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847800.289053254
+      },
+      {
+        "bytes": 807335204,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847800.547998151
+      },
+      {
+        "bytes": 808877158,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847800.807039889
+      },
+      {
+        "bytes": 809672933,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847801.066107858
+      },
+      {
+        "bytes": 810291790,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847801.32534492
+      },
+      {
+        "bytes": 810990873,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847801.584708139
+      },
+      {
+        "bytes": 811662776,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847801.843858831
+      },
+      {
+        "bytes": 812297268,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847802.102975996
+      },
+      {
+        "bytes": 812859329,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847802.36198419
+      },
+      {
+        "bytes": 814048593,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847804.630972181
+      },
+      {
+        "bytes": 817511337,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847804.89269688
+      },
+      {
+        "bytes": 820507288,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847805.151906965
+      },
+      {
+        "bytes": 823740423,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847805.411263335
+      },
+      {
+        "bytes": 826222111,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847805.670478817
+      },
+      {
+        "bytes": 830115652,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847805.929887742
+      },
+      {
+        "bytes": 832539529,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847806.189145415
+      },
+      {
+        "bytes": 835109387,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847806.44865744
+      },
+      {
+        "bytes": 837602222,
+        "kernelPids": [
+          3219505
+        ],
+        "monotonic": 1847806.711843761
       }
     ],
     "exit": 0,
-    "launcherStdout": "{\n  \"exitCode\": 0,\n  \"wallSeconds\": 237.97000257507898,\n  \"unit\": \"s11c-guard-0ec795d7211b\",\n  \"stderrBytes\": 0,\n  \"limitsVerified\": true,\n  \"childOutcome\": {\n    \"exitCode\": 0,\n    \"guardReason\": null,\n    \"wallSeconds\": 237.90373283205554,\n    \"childPid\": 1240246\n  }\n}\n",
+    "launcherStdout": "{\n  \"exitCode\": 0,\n  \"wallSeconds\": 835.5647927629761,\n  \"unit\": \"s11c-guard-f51ead273f9a\",\n  \"stderrBytes\": 0,\n  \"limitsVerified\": true,\n  \"childOutcome\": {\n    \"exitCode\": 0,\n    \"guardReason\": null,\n    \"wallSeconds\": 835.4716348950751,\n    \"childPid\": 3219505\n  }\n}\n",
     "launcherStderr": "",
     "outcome": {
       "exitCode": 0,
-      "wallSeconds": 237.97000257507898,
-      "unit": "s11c-guard-0ec795d7211b",
+      "wallSeconds": 835.5647927629761,
+      "unit": "s11c-guard-f51ead273f9a",
       "stderrBytes": 0,
       "limitsVerified": true,
       "childOutcome": {
         "exitCode": 0,
         "guardReason": null,
-        "wallSeconds": 237.90373283205554,
-        "childPid": 1240246
+        "wallSeconds": 835.4716348950751,
+        "childPid": 3219505
       }
     }
   }

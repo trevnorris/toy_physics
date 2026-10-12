@@ -83,6 +83,39 @@ def everywhere(variable, condition, domain):
     return eq(sp.ConditionSet(variable, sp.Not(condition), domain), sp.EmptySet)
 
 
+def density_parts(value, density):
+    """One object with exhaustive sign labels, not a positivity gate."""
+    if density is None:
+        return cas(value)
+    return cas(('LOCAL_BULK_DENSITY_PARTS',
+                ('RHO_POSITIVE',sp.Gt(density,0)),
+                ('RHO_NONPOSITIVE',sp.Le(density,0)),
+                ('OBJECT_ON_BOTH_PARTS',value)))
+
+
+def bulk_responses(rho0, K, n, m, s, fractional_change):
+    """Amendment 8: the supplied responses on both density-sign parts."""
+    density=rho0*(1+fractional_change)
+    # Supplied c_s^2 = n K rho^(n-1)/m, retaining the density power.
+    # Pow uses the supplied zero-exponent value 1, including at density 0.
+    def square(at):
+        return n*K*at**(n-1)/m
+    anchor_square=square(rho0)
+    local_square=square(density)
+    local_sound_speed = sp.sqrt(local_square)  # K9a
+    anchor_speed=sp.sqrt(anchor_square)
+    fixed_ratio_response=local_sound_speed/anchor_speed
+    power_density = density  # K9b
+    power_response=(power_density/rho0)**s
+    numerator_square=sp.powdenest(local_sound_speed**2)
+    fixed_definition=sp.And(sp.Contains(numerator_square,sp.S.Reals),
+                            sp.Ge(numerator_square,0),
+                            sp.Contains(anchor_square,sp.S.Reals),sp.Gt(anchor_square,0))
+    return (('CONSTANT',sp.S.One,sp.true),
+            ('FIXED_RATIO',fixed_ratio_response,fixed_definition),
+            ('POWER',power_response,sp.true))
+
+
 class Jet:
     """R[d,V,H]/(d**2,V**3,H**2); discarded grades never get evaluated."""
     def __init__(self, values=0):
@@ -636,7 +669,7 @@ def build(branch_demo=None):
     RE,RR,bmin = sp.symbols('r_E r_R s9b_b_min',positive=True)
     GM,K,n,s = sp.symbols('GM K n s',real=True)
     rho0,m = sp.symbols('rho_0 m',positive=True)
-    rho_bulk = sp.Symbol('rho_bulk',positive=True)
+    rho_bulk = sp.Symbol('rho_bulk',real=True)
     jn = sp.Function('j_n',real=True)(r)
     delta,velocity,xi,rho,f = Delta(r),Velocity(r),Embedding(r),Density(r),BulkChange(r)
     geometry = vector_dispersion(c0,r)
@@ -924,7 +957,7 @@ def build(branch_demo=None):
                     attached_domain(joining),(left_sign,right_sign),eq(Velocity(z),0),eq(sp.Subs(sp.diff(velocity,r),r,z),right),
                     eq(jn.subs(r,z),zero_exchange)))
         return (condition,tuple(branches),solution)
-    def emit_condition(prefix,replacement,own_domain=sp.true,implied=True,gate_replacement=None):
+    def emit_condition(prefix,replacement,own_domain=sp.true,implied=True,gate_replacement=None,partition_density=None):
         physical=replacement if gate_replacement is None else gate_replacement
         domain=sp.And(substitute_domain(gate,physical),own_domain)
         for name,mass in condition_mass.items():
@@ -933,15 +966,17 @@ def build(branch_demo=None):
             condition=cas(('RADIAL_DIFFERENTIAL_IDENTITY',r,attached_domain(sp.Interval.open(bmin,sp.oo)),attached_domain(domain),eq(GM,local_mass)))
             tag=prefix+'CONDITION_'+name
             progress(tag)
-            emit(tag,condition)
-            objects['s9b_'+tag.lower()]=condition
+            labelled=density_parts(condition,partition_density)
+            emit(tag,labelled)
+            objects['s9b_'+tag.lower()]=labelled
             if implied:
                 tag=prefix+'IMPLIED_JN_'+name
                 progress(tag+': solve velocity and evaluate mass divergence')
                 value=cas(implied_exchange(condition,local_mass,replacement,domain))
                 progress(tag)
-                emit(tag,value)
-                objects['s9b_'+tag.lower()]=value
+                labelled=density_parts(value,partition_density)
+                emit(tag,labelled)
+                objects['s9b_'+tag.lower()]=labelled
                 velocity_reductions[tag]=value[-1]
     def emit_comparisons(prefix,replacement,domain):
         gamma_domain=substitute_domain(branch_domain,replacement)
@@ -982,28 +1017,27 @@ def build(branch_demo=None):
         emit_comparisons(prefix,replacement,domain)
         emit_condition(prefix+'B_',replacement)
     f_symbol=sp.Symbol('s9b_fractional_bulk_change',real=True)
-    cs_ratio=sp.powsimp(sp.powdenest(cs_squared.subs(rho_bulk,rho0*(1+f_symbol))/cs0_squared,force=True),force=True)
-    fixed_ratio_response = sp.sqrt(cs_ratio)  # K9a
-    power_response = (1+f_symbol)**s  # K9b
-    responses=(sp.S.One,fixed_ratio_response,power_response)
+    emit('ASYMPTOTIC_BULK_DENSITY_PREMISE',('SUPPLIED_DIRECTIVE_ITEM_9',sp.Gt(rho0,0,evaluate=False)))
+    responses=bulk_responses(rho0,K,n,m,s,f_symbol)
     response_rows=[]
-    for label,response in zip(('CONSTANT','FIXED_RATIO','POWER'),responses):
+    for label,response,definition in responses:
         coefficient=sp.simplify(sp.diff(response,f_symbol).subs(f_symbol,0))
         replacement={Delta:lambda x,a=coefficient:a*BulkChange(x)}
         exact_replacement={Delta:lambda x,response=response:response.subs(f_symbol,BulkChange(x))-1}
         local=response.subs(f_symbol,f)
-        domain=sp.And(sp.Contains(local,sp.S.Reals),sp.Gt(local,0))
-        if label!='CONSTANT': domain=sp.And(domain,sp.Gt(rho0*(1+f),0))
-        if label=='FIXED_RATIO': domain=sp.And(domain,sp.Gt(cs0_squared,0),sp.Gt(cs_squared.subs(rho_bulk,rho0*(1+f)),0))
+        definition=definition.subs(f_symbol,f)
+        domain=sp.And(definition,sp.Contains(local,sp.S.Reals),sp.Gt(local,0))
+        partition_density=rho0*(1+f) if label!='CONSTANT' else None
         progress('C_'+label+'_RESPONSE')
-        emit('C_'+label+'_RESPONSE',(response,coefficient*f,attached_domain(domain)))
-        emit_condition('C_'+label+'_',replacement,domain,gate_replacement=exact_replacement)
+        emit('C_'+label+'_RESPONSE',density_parts((('RESPONSE_ON_DEFINITION_DOMAIN',response,attached_domain(definition.subs(f,f_symbol))),
+             coefficient*f,attached_domain(domain)),partition_density))
+        emit_condition('C_'+label+'_',replacement,domain,gate_replacement=exact_replacement,partition_density=partition_density)
         progress('C_'+label+'_N_DEPENDENCE')
-        emit('C_'+label+'_N_DEPENDENCE',(tuple(sp.diff(substitute(value,replacement),n) for value in condition_mass.values()),attached_domain(domain)))
-        response_rows.append((label,replacement,domain,exact_replacement))
+        emit('C_'+label+'_N_DEPENDENCE',density_parts((tuple(sp.diff(substitute(value,replacement),n) for value in condition_mass.values()),attached_domain(domain)),partition_density))
+        response_rows.append((label,replacement,domain,exact_replacement,partition_density))
         if label!='CONSTANT':
             zeros={Velocity:lambda x:sp.S.Zero,Embedding:lambda x:sp.S.Zero}
-            emit_condition('R_BULK_ONLY_C_'+label+'_',replacement|zeros,domain,gate_replacement=exact_replacement|zeros)
+            emit_condition('R_BULK_ONLY_C_'+label+'_',replacement|zeros,domain,gate_replacement=exact_replacement|zeros,partition_density=partition_density)
     Phi=sp.Symbol('Phi',real=True)
     liveV=sp.Function('s9b_mass_V')(r)
     progress('F_MASS_SOLUTION: solve supplied zero-exchange balance')
@@ -1028,9 +1062,9 @@ def build(branch_demo=None):
         emit_comparisons(prefix,replacement,domain)
         emit_condition(prefix+'B_',replacement,implied=False)
         if label=='LIVE':
-            for response_label,response_map,response_domain,exact_map in response_rows:
+            for response_label,response_map,response_domain,exact_map,partition_density in response_rows:
                 emit_condition(prefix+'C_'+response_label+'_',replacement|response_map,response_domain,False,
-                               gate_replacement=replacement|exact_map)
+                               gate_replacement=replacement|exact_map,partition_density=partition_density)
     progress('VELOCITY_REDUCTIONS')
     emit('VELOCITY_REDUCTIONS',velocity_reductions)
     labels={tag:('FORWARD_NO_FAR_ZONE_LOSS',attached_domain(eq(jn,0)),'Phi is the live outward coordinate-sphere mass flux')

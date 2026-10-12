@@ -67,12 +67,39 @@ farSpeedIdentification = c0^2 == muPerpInfinity/rhoBrInfinity;
 massBalanceInput = divRhoV == -jn[r];
 referenceTheta = (1 + gamma) 2 GM/(b c0^2);
 referenceRadar = 2 (1 + gamma) GM/c0^3 Log[4 rE rR/b^2];
-bulkPressure = K rho^n;
-bulkSoundSquared = D[bulkPressure, rho]/m;
+(* The zero-exponent convention is supplied by directive item 9. Keep the
+   symbolic density power as one object until its exponent is known; this
+   prevents a later zero-density substitution from forming built-in 0^0.
+   Its exact definition is printed with the supplied inputs below. *)
+densityPower[base_, 0] := 1;
+densityPower[1, exponent_] := 1;
+densityPower[0, exponent_?NumericQ] /; TrueQ[Re[exponent] < 0] := Undefined;
+densityPower[base_, exponent_?NumericQ] := base^exponent;
+(* Differentiate the ordinary power by CAS, then apply the supplied zero
+   exponent convention. Test the computed prefactor before evaluating a
+   potentially singular power: derivatives of a constant stay zero at zero. *)
+densityDerivativeFactor[j_Integer] := densityDerivativeFactor[j] =
+  Simplify[D[densityBase^densityExponent,{densityBase,j}]/
+    densityBase^(densityExponent-j),densityBase > 0];
+densityPowerDerivative[j_Integer,base_,exponent_] := Module[{factor},
+  factor = densityDerivativeFactor[j] /. densityExponent -> exponent;
+  If[TrueQ[factor == 0],0,
+    Piecewise[{{0,factor == 0}},factor densityPower[base,exponent-j]]]];
+densityPower /: Derivative[j_Integer,0][densityPower] :=
+  Function[{base,exponent},densityPowerDerivative[j,base,exponent]];
+(* Apply the same zero-aware power before differentiating the supplied
+   pressure, so the CAS-derived zero prefactor is retained at n=0 too. *)
+bulkPressure = K densityPower[rho,n];
+bulkSoundSquared = D[bulkPressure,rho]/m;
 localSoundSquared = bulkSoundSquared /. rho -> rho0 (1 + fLocal); (* K9a *)
 localBulkDensity = rho0 (1 + fLocal); (* K9b *)
-responseInputs = {c0, c0 Sqrt[localSoundSquared/(bulkSoundSquared /. rho -> rho0)],
-  c0 (localBulkDensity/rho0)^s};
+asymptoticSoundSquared = bulkSoundSquared /. rho -> rho0;
+responseInputDomains = {rho0 > 0,
+  rho0 > 0 && Element[{localSoundSquared,asymptoticSoundSquared},Reals] &&
+    localSoundSquared >= 0 && asymptoticSoundSquared > 0, rho0 > 0};
+responseValues = {c0, c0 Sqrt[localSoundSquared]/Sqrt[asymptoticSoundSquared],
+  c0 densityPower[localBulkDensity/rho0,s]};
+responseInputs = MapThread[ConditionalExpression,{responseValues,responseInputDomains}];
 rayDerivative[z_, x_] := D[z, x]; (* K4a,K4b: freeze only at differentiation *)
 rayDerivative[z_, x_, j_Integer] := Nest[rayDerivative[#, x] &, z, j];
 
@@ -81,6 +108,9 @@ emit["LOCAL_SUPPLIED_INPUTS", <|"Dispersion" -> dispersion == 0,
   "Metric" -> metric3, "Balance" -> massBalanceInput,
   "References" -> {referenceTheta, referenceRadar, gamma == 1},
   "Pressure" -> bulkPressure, "Responses" -> responseInputs,
+  "SuppliedBulkDensityPremise" -> (rho0 > 0),
+  "DensityPowerDefinition" -> HoldForm[densityPower[densityBase,densityExponent] ==
+    Piecewise[{{1,densityExponent == 0}},densityBase^densityExponent]],
   "Embedding" -> {w == xiLive[r], xiLive[r] == ell h[r]},
   "Polarizations" -> {cGamma1[r] == cGamma[r], cGamma2[r] == cGamma[r]},
   "ReferenceSpeed" -> (c0 == Inactive[Limit][cGamma[r], r -> Infinity]),
@@ -570,30 +600,40 @@ emitA[prefix_,rules_,wrapper_,which_] := (
 emitA["",{},Identity,Keys[allA]];
 emitComparisons["",{},True,Identity,True];
 progress["exact Part C responses and first-order series"];
-responseDeltas = (Simplify[Normal[Series[#/c0 - 1,{fLocal,0,1}]],
-  rho0 > 0 && c0 > 0 && Element[{n,s,fLocal},Reals]] &) /@ responseInputs;
+(* Taylor coefficients are computed on the supplied positive asymptotic
+   anchor, where ordinary Power is the same analytic germ as densityPower.
+   The exact response and its domain never use this germ in place of it. *)
+responseGerms = responseValues /. densityPower -> Power;
+responseDeltas = Table[Simplify[Normal[Series[responseGerms[[i]]/c0 - 1,{fLocal,0,1}]],
+  rho0 > 0 && c0 > 0 && Element[{n,s,fLocal},Reals] &&
+    If[i == 2, (asymptoticSoundSquared /. densityPower -> Power) > 0, True]], {i,3}];
 responseRules = Table[{deltaProfile -> Function[{r}, Evaluate[responseDeltas[[i]] /. fLocal -> fProfile[r]]]}, {i,3}];
 responseNames = {"CONSTANT","FIXED_RATIO","POWER"};
 responseGateRules = Table[{deltaProfile -> Function[{r},
   Evaluate[responseInputs[[i]]/c0 - 1 /. fLocal -> fProfile[r]]]}, {i,3}];
-responseDomain[i_] := With[{resp = responseInputs[[i]]},
-  Element[resp,Reals] && resp > 0 &&
-    If[i == 2, Element[{Sqrt[localSoundSquared],
-      Sqrt[bulkSoundSquared /. rho -> rho0]},Reals] &&
-      (bulkSoundSquared /. rho -> rho0) > 0, True]] /. fLocal -> fProfile[r];
-emit["LOCAL_C_RESPONSES", <|"Responses" -> responseInputs,"DeltaSeries" -> responseDeltas,
-  "Domains" -> Table[responseDomain[i],{i,3}]|>];
+responseDomain[i_] := (responseInputDomains[[i]] &&
+  Element[responseValues[[i]],Reals] && responseValues[[i]] > 0) /. fLocal -> fProfile[r];
+(* Labels partition the supplied physical density, even when a knife replaces
+   a density at a response site. They are not added to any response domain. *)
+densityParts[i_, object_] := If[i == 1, object, <|
+  "SuppliedBulkDensityPremise" -> (rho0 > 0),
+  "DensityParts" -> {<|"Label" -> "rho > 0", "LabelCondition" -> (rho0 (1+fProfile[r]) > 0),
+      "Object" -> object|>,
+    <|"Label" -> "rho <= 0", "LabelCondition" -> (rho0 (1+fProfile[r]) <= 0),
+      "Object" -> object|>}|>];
+emit["LOCAL_C_RESPONSES", <|"Responses" -> Table[densityParts[i,responseInputs[[i]]],{i,3}],
+  "DeltaSeries" -> responseDeltas, "Domains" -> Table[responseDomain[i],{i,3}]|>];
 emitC[prefix_, additional_, wrapper_, withJn_, indices_] := Do[
   cRules = Join[responseRules[[i]],additional];
   progress[prefix <> "C_" <> responseNames[[i]] <> "_CONDITIONS"];
   cConditions = conditionPair[cRules,responseDomain[i],Join[responseGateRules[[i]],additional]];
-  Do[emit[prefix <> "C_" <> responseNames[[i]] <> "_CONDITION_" <> observations[[j]],wrapper[cConditions[[j]]]];
+  Do[emit[prefix <> "C_" <> responseNames[[i]] <> "_CONDITION_" <> observations[[j]],wrapper[densityParts[i,cConditions[[j]]]]];
     If[withJn, emit[prefix <> "C_" <> responseNames[[i]] <> "_IMPLIED_JN_" <> observations[[j]],
-      wrapper[impliedExchange[cConditions[[j]],cRules]]]], {j,2}];
-  If[prefix == "", emit["C_" <> responseNames[[i]] <> "_N_DEPENDENCE", <|
+      wrapper[densityParts[i,impliedExchange[cConditions[[j]],cRules]]]]], {j,2}];
+  If[prefix == "", emit["C_" <> responseNames[[i]] <> "_N_DEPENDENCE", densityParts[i,<|
     "ResponseDerivative" -> D[responseDeltas[[i]],n],
     "KernelDerivatives" -> D[{comparisonThetaKernel,comparisonRadarKernel} /. cRules,n],
-    "ConditionGMderivatives" -> (D[(GM /. First[#["Cases"][[1]]["GM"]]),n] & /@ cConditions)|>]], {i,indices}];
+    "ConditionGMderivatives" -> (D[(GM /. First[#["Cases"][[1]]["GM"]]),n] & /@ cConditions)|>]]], {i,indices}];
 emitC["",{},Identity,True,Range[3]];
 zeroDelta = {deltaProfile -> Function[{r},0]};
 zeroVelocity = {velocityProfile -> Function[{r},0]};

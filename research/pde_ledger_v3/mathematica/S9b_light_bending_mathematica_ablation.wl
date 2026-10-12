@@ -8,7 +8,7 @@ scope = Replace[Environment["S9B_ABLATION_SCOPE"], $Failed -> "ALL"];
 If[!MemberQ[{"ALL", "K11"}, scope], Quit[94]];
 root = Directory[];
 engine = FileNameJoin[{root, "research", "pde_ledger_v3", "mathematica", "S9b_light_bending_mathematica_audit.wl"}];
-work = FileNameJoin[{root, "_scratch", "s9b_wl_repair4", "ablation-final"}];
+work = FileNameJoin[{root, "_scratch", "s9b_wl_repair5", "ablation-final4"}];
 If[!DirectoryQ[work], CreateDirectory[work, CreateIntermediateDirectories -> True]];
 source = Import[engine, "Text"];
 S9bHarness`progress = OpenWrite[FileNameJoin[{work, "progress.log"}]];
@@ -61,38 +61,96 @@ logicalObjectQ[z_] := MemberQ[{True,False},z] ||
   MemberQ[{Equal,Unequal,Less,LessEqual,Greater,GreaterEqual,Inequality,
     And,Or,Not,Xor,Equivalent,Implies,Element,Exists,ForAll},Head[z]] ||
   MemberQ[{Inactive[ForAll],Inactive[Exists]},Head[z]];
-(* Canonical exact subtraction, with an equality short circuit before any
-   traversal. Logical leaves use signed indicator subtraction, including
-   relations/predicates used as values. No assumption, sampling, global
-   Simplify/Reduce or exponential Boolean expansion is introduced. *)
+(* Mathematical comparison is three-valued. Normalize inside containers and
+   quantifiers, then ask the CAS for equality/equivalence. Opaque functionals
+   are replaced by shared algebraic indeterminates only during a proof:
+   a proved identity in that abstraction is valid for the original objects.
+   A nonzero structural/algebraic residual alone NEVER proves a change. *)
+normalCache = <||>;
+opaqueQ[z_] := Module[{head = Head[z]}, !AtomQ[z] &&
+  (Head[head] =!= Symbol || Context[Evaluate[head]] =!= "System`")];
+(* Exact polynomial identity proof. Every non-polynomial operand, including
+   complete reciprocals and noninteger powers, is a shared indeterminate
+   during the proof and is restored afterward. No relation between those
+   operands is assumed. No unknown denominator is canceled. An unresolved
+   equality stays UNDECIDED with complete original operands and residual.
+   Every term participates. No size cutoff, sampling or timed fallback. *)
+polynomialNormal[z_] := Module[{objects,slots,algebra},
+  objects = DeleteDuplicates[Cases[z,q_ /; !AtomQ[q] &&
+    (!MemberQ[{Plus,Times,Power},Head[q]] ||
+     (Head[q] === Power && (!IntegerQ[Last[q]] || Last[q] < 0))),{0,Infinity}]];
+  slots = Table[Unique["S9bHarness`proofAtom"],{Length[objects]}];
+  algebra = z /. Thread[objects -> slots];
+  Expand[algebra] /. Thread[slots -> objects]];
+relationNormal[z_] := Module[{head=Head[z],d,factor},
+  If[Length[z] != 2,Return[z]];
+  d=polynomialNormal[z[[1]]-z[[2]]];
+  factor=If[Head[d]===Times && NumberQ[First[d]],First[d],1];
+  (* Positive numeric scaling preserves inequalities; any nonzero numeric
+     scaling preserves equality. Never divide by an unknown profile. *)
+  If[MemberQ[{Equal,Unequal},head] || TrueQ[factor>0],d=d/factor];
+  head[d,0]];
+booleanNormal[z_] := Module[{atoms,slots,algebra,result},
+  atoms=DeleteDuplicates[Cases[z,q_ /; !MemberQ[{True,False},q] &&
+    !MemberQ[{And,Or,Not,Xor,Equivalent,Implies},Head[q]],{0,Infinity}]];
+  slots=Table[Unique["S9bHarness`proofBoolean"],{Length[atoms]}];
+  algebra=z /. Thread[atoms->slots];
+  result=BooleanMinimize[algebra];
+  result /. Thread[slots->atoms]];
+proofSimplify[z_] := Which[
+  MemberQ[{Equal,Unequal,Less,LessEqual,Greater,GreaterEqual},Head[z]],relationNormal[z],
+  MemberQ[{And,Or,Not,Xor,Equivalent,Implies},Head[z]],booleanNormal[z],
+  logicalObjectQ[z],z,
+  True,polynomialNormal[z]];
+canonical[z_] := Module[{key = HoldComplete[z],result,head = Head[z]},
+  If[KeyExistsQ[normalCache,key],Return[normalCache[key]]];
+  result = Which[
+    AtomQ[z] || StringQ[z] || head === Function || head === HoldForm || head === HoldComplete, z,
+    AssociationQ[z], AssociationMap[canonical[z[#]] &,Keys[z]],
+    ListQ[z], canonical /@ z,
+    MemberQ[{ForAll,Exists,Inactive[ForAll],Inactive[Exists]},head],
+      head @@ Prepend[canonical /@ Rest[List @@ z],First[z]],
+    head === ImplicitRegion, With[{condition = canonical[z[[1]]],variables = z[[2]]}, ImplicitRegion[condition,variables]],
+    MemberQ[{And,Or,Not,Xor,Equivalent,Implies},head],
+      proofSimplify[head @@ (canonical /@ (List @@ z))],
+    head === Rule, First[z] -> canonical[Last[z]],
+    True,proofSimplify[z]];
+  AssociateTo[normalCache,key -> result];result];
+zeroTree[z_Association] := If[And @@ (SameQ[#,0] & /@ Values[z]),0,z];
+zeroTree[z_List] := If[And @@ (SameQ[#,0] & /@ z),0,z];
+leafDifference[a_,b_,asPredicate_:False] := Module[{na,nb,logical,proof,residual},
+  na = canonical[a]; nb = canonical[b];
+  If[SameQ[na,nb],Return[0]];
+  logical = (logicalObjectQ[na] && logicalObjectQ[nb]) ||
+    (asPredicate && (logicalObjectQ[na] || Head[na] === Symbol) &&
+      (logicalObjectQ[nb] || Head[nb] === Symbol));
+  proof = proofSimplify[If[logical,Equivalent[na,nb],na == nb]];
+  If[TrueQ[proof],Return[0]];
+  residual = If[logical,Boole[a]-Boole[b],
+    If[NumericQ[a] && NumericQ[b],a-b,Inactive[Subtract][a,b]]];
+  <|"Status" -> If[SameQ[proof,False],"CHANGED","UNDECIDED"],
+    "Equality" -> proof,"Residual" -> residual,"Corrupted" -> a,"Baseline" -> b|>];
 partDifference[a_,b_] := Which[
-  SameQ[a,b], 0,
-  AssociationQ[a] && AssociationQ[b], AssociationMap[
+  SameQ[a,b],0,
+  AssociationQ[a] && AssociationQ[b],zeroTree[AssociationMap[
     partDifference[Lookup[a,#,Missing["Unemitted"]],Lookup[b,#,Missing["Unemitted"]]] &,
-    Union[Keys[a],Keys[b]]],
-  ListQ[a] && ListQ[b] && Length[a] == Length[b], MapThread[partDifference,{a,b}],
-  logicalObjectQ[a] && logicalObjectQ[b], Boole[a]-Boole[b],
+    Union[Keys[a],Keys[b]]]],
+  ListQ[a] && ListQ[b] && Length[a] == Length[b],zeroTree[MapThread[partDifference,{a,b}]],
   Head[a] === Rule && Head[b] === Rule && SameQ[First[a],First[b]],
-    First[a] -> partDifference[Last[a],Last[b]],
-  ListQ[a] || ListQ[b] || StringQ[a] || StringQ[b] ||
-    !FreeQ[{a,b}, _String | _Association | _Rule | _Missing | _Piecewise],
-    <|"Changed" -> UnsameQ[a,b],"Corrupted" -> a,"Baseline" -> b|>,
-  True,a-b];
-(* Attachment predicates may be a bare Boolean parameter. Metadata-valued
-   domains retain structural comparison; symbolic predicates use indicators. *)
-attachedDifference[a_,b_] := Which[SameQ[a,b],0,
-  (logicalObjectQ[a] || Head[a] === Symbol) &&
-    (logicalObjectQ[b] || Head[b] === Symbol), Boole[a]-Boole[b],
-  True,partDifference[a,b]];
+    With[{d = partDifference[Last[a],Last[b]]},If[SameQ[d,0],0,First[a] -> d]],
+  True,leafDifference[a,b]];
+attachedDifference[a_,b_] := If[SameQ[a,b],0,
+  If[AssociationQ[a] || ListQ[a] || AssociationQ[b] || ListQ[b],partDifference[a,b],
+    leafDifference[a,b,True]]];
 domainDifference[a_Association,b_Association] := If[SameQ[a,b],0,
-  AssociationMap[attachedDifference[Lookup[a,#,Missing["Unemitted"]],
-    Lookup[b,#,Missing["Unemitted"]]] &,Union[Keys[a],Keys[b]]]];
+  zeroTree[AssociationMap[attachedDifference[Lookup[a,#,Missing["Unemitted"]],
+    Lookup[b,#,Missing["Unemitted"]]] &,Union[Keys[a],Keys[b]]]]];
 difference[a_,b_] := Module[{partsA = splitPayload[a],partsB = splitPayload[b]},
   <|"ValueDifference" -> partDifference[partsA["Value"],partsB["Value"]],
     "DomainDifference" -> domainDifference[partsA["Domain"],partsB["Domain"]]|>];
 (* END_DOMAIN_DIFFERENCE_METHOD *)
 run[path_, name_] := Module[{capture, result},
-  ClearSystemCache[]; note["engine begin", name];
+  ClearSystemCache[]; S9bHarness`normalCache = <||>; note["engine begin", name];
   capture = OpenWrite[FileNameJoin[{work, name <> ".stdout"}]];
   Block[{$Context = "Global`", $ContextPath = {"Global`", "System`"}, $Output = {capture}}, Get[path]];
   Close[capture]; result = Global`emitted; note["engine end", name]; result];

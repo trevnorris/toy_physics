@@ -34,73 +34,73 @@
     "directoryContents": [
       "S9b_light_bending_mathematica_audit.wl"
     ],
-    "repositoryOutputSHA256": "824917ebd0ecfe65f6c958b37b36e10e8eb73ea7fb1e0b758edd7558b8ad1685",
-    "isolatedOutputSHA256": "824917ebd0ecfe65f6c958b37b36e10e8eb73ea7fb1e0b758edd7558b8ad1685"
+    "repositoryOutputSHA256": "6519d10c86c9b16741bd32814a57216116c33717a0aec4150f61903617e9ffdb",
+    "isolatedOutputSHA256": "6519d10c86c9b16741bd32814a57216116c33717a0aec4150f61903617e9ffdb"
   },
   "runOutcomes": {
     "finished-repository": {
       "outcome": {
         "exitCode": 0,
-        "wallSeconds": 20.454437725013122,
-        "unit": "s11c-guard-01c3b6ef158c",
+        "wallSeconds": 23.511085689999163,
+        "unit": "s11c-guard-04fa1b038bd7",
         "stderrBytes": 0,
         "limitsVerified": true,
         "childOutcome": {
           "exitCode": 0,
           "guardReason": null,
-          "wallSeconds": 20.37243941705674,
-          "childPid": 1235399
+          "wallSeconds": 23.38114686193876,
+          "childPid": 3189819
         }
       },
-      "liveGrowthObservations": 29
+      "liveGrowthObservations": 35
     },
     "finished-isolated": {
       "outcome": {
         "exitCode": 0,
-        "wallSeconds": 22.256632823031396,
-        "unit": "s11c-guard-e852b19499e9",
+        "wallSeconds": 23.369208425981924,
+        "unit": "s11c-guard-bb1d106df7aa",
         "stderrBytes": 0,
         "limitsVerified": true,
         "childOutcome": {
           "exitCode": 0,
           "guardReason": null,
-          "wallSeconds": 22.177505471976474,
-          "childPid": 1237020
+          "wallSeconds": 23.27722091693431,
+          "childPid": 3191447
         }
       },
-      "liveGrowthObservations": 33
+      "liveGrowthObservations": 36
     },
     "measurements": {
       "outcome": {
         "exitCode": 0,
-        "wallSeconds": 23.28359479410574,
-        "unit": "s11c-guard-5d403e4d0b1d",
+        "wallSeconds": 25.462137928931043,
+        "unit": "s11c-guard-658cb1682fcc",
         "stderrBytes": 0,
         "limitsVerified": true,
         "childOutcome": {
           "exitCode": 0,
           "guardReason": null,
-          "wallSeconds": 23.182888082927093,
-          "childPid": 1259550
+          "wallSeconds": 25.38754843501374,
+          "childPid": 3217530
         }
       },
-      "liveGrowthObservations": 34
+      "liveGrowthObservations": 37
     },
     "finished-ablation": {
       "outcome": {
         "exitCode": 0,
-        "wallSeconds": 237.97000257507898,
-        "unit": "s11c-guard-0ec795d7211b",
+        "wallSeconds": 835.5647927629761,
+        "unit": "s11c-guard-f51ead273f9a",
         "stderrBytes": 0,
         "limitsVerified": true,
         "childOutcome": {
           "exitCode": 0,
           "guardReason": null,
-          "wallSeconds": 237.90373283205554,
-          "childPid": 1240246
+          "wallSeconds": 835.4716348950751,
+          "childPid": 3219505
         }
       },
-      "liveGrowthObservations": 102
+      "liveGrowthObservations": 583
     }
   },
   "printedVelocityResidualValues": [

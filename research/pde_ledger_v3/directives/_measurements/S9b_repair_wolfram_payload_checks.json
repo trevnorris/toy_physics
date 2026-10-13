@@ -1,7 +1,10 @@
 {
+  "changeProofIssues": [],
+  "changedLeaves": 219,
+  "provedExistenceCount": 219,
   "proofSymbolLeaks": [],
-  "undecidedRows": 2005,
-  "changedRows": 144,
+  "undecidedRows": 2000,
+  "changedRows": 73,
   "k11FieldIssues": [],
   "coverageVariants": [
     "<|\"Method\" -> \"exact symbolic mechanical prefix extraction\", \"Boundary\" -> \"(* COMPACT_K11_BOUNDARY *)\", \"RetainedGrades\" -> {{0, 0, 0}, {0, 0, 1}, {0, 1, 0}, {0, 1, 1}, {0, 2, 0}, {0, 2, 1}, {1, 0, 0}, {1, 0, 1}, {1, 1, 0}, {1, 1, 1}, {1, 2, 0}, {1, 2, 1}}, \"LocalConstructions\" -> \"untruncated dispersion/Fermat and retained-ring nonreciprocal one-form\", \"AdditionalTruncation\" -> None, \"SampleDomain\" -> \"symbolic constructor domains\", \"Arithmetic\" -> \"exact\", \"Samples\" -> {}, \"Seeds\" -> {}|>"
@@ -329,8 +332,8 @@
     "WL_LOCAL_S9B_ABLATION_K11_SITE"
   ],
   "formerFailureTagProgress": [
-    "{\"difference begin\", \"K1_WL_S9B_F_LIVE_BRANCH_TYPE\", 284118224, 300397368}",
-    "{\"difference end\", \"K1_WL_S9B_F_LIVE_BRANCH_TYPE\", 284261168, 300397368}"
+    "{\"difference begin\", \"K1_WL_S9B_F_LIVE_BRANCH_TYPE\", 294262688, 323305248}",
+    "{\"difference end\", \"K1_WL_S9B_F_LIVE_BRANCH_TYPE\", 294410616, 323305248}"
   ],
-  "completionEvent": "{\"complete\", \"ALL\", 575588360, 591418184}"
+  "completionEvent": "{\"complete\", \"ALL\", 580732560, 596550648}"
 }

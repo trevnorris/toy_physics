@@ -25,91 +25,121 @@
   ],
   "K11NotEvaluatedCount": 364,
   "K11BaselinePayloadsEqualFull": true,
-  "engineSourceMatchesRun": true,
+  "engineSourceUnchanged": true,
   "harnessSourceMatchesRun": true,
-  "baselineByteIdentical": true,
-  "isolation": {
-    "byteIdentical": true,
-    "nonempty": true,
-    "directoryContents": [
-      "S9b_light_bending_mathematica_audit.wl"
-    ],
-    "repositoryOutputSHA256": "6519d10c86c9b16741bd32814a57216116c33717a0aec4150f61903617e9ffdb",
-    "isolatedOutputSHA256": "6519d10c86c9b16741bd32814a57216116c33717a0aec4150f61903617e9ffdb"
-  },
+  "baselineByteIdenticalToRound5": true,
   "runOutcomes": {
-    "finished-repository": {
+    "comparison-measurements": {
       "outcome": {
         "exitCode": 0,
-        "wallSeconds": 23.511085689999163,
-        "unit": "s11c-guard-04fa1b038bd7",
+        "wallSeconds": 6.045607158914208,
+        "unit": "s11c-guard-6062641e1284",
         "stderrBytes": 0,
         "limitsVerified": true,
         "childOutcome": {
           "exitCode": 0,
           "guardReason": null,
-          "wallSeconds": 23.38114686193876,
-          "childPid": 3189819
+          "wallSeconds": 5.975300207035616,
+          "childPid": 347509
         }
       },
-      "liveGrowthObservations": 35
+      "liveGrowthObservations": 1
     },
-    "finished-isolated": {
+    "final-comparison-measurements": {
       "outcome": {
         "exitCode": 0,
-        "wallSeconds": 23.369208425981924,
-        "unit": "s11c-guard-bb1d106df7aa",
+        "wallSeconds": 6.354562473017722,
+        "unit": "s11c-guard-4cd392b462a5",
         "stderrBytes": 0,
         "limitsVerified": true,
         "childOutcome": {
           "exitCode": 0,
           "guardReason": null,
-          "wallSeconds": 23.27722091693431,
-          "childPid": 3191447
+          "wallSeconds": 6.2737224420998245,
+          "childPid": 347895
         }
       },
-      "liveGrowthObservations": 36
-    },
-    "measurements": {
-      "outcome": {
-        "exitCode": 0,
-        "wallSeconds": 25.462137928931043,
-        "unit": "s11c-guard-658cb1682fcc",
-        "stderrBytes": 0,
-        "limitsVerified": true,
-        "childOutcome": {
-          "exitCode": 0,
-          "guardReason": null,
-          "wallSeconds": 25.38754843501374,
-          "childPid": 3217530
-        }
-      },
-      "liveGrowthObservations": 37
+      "liveGrowthObservations": 2
     },
     "finished-ablation": {
       "outcome": {
         "exitCode": 0,
-        "wallSeconds": 835.5647927629761,
-        "unit": "s11c-guard-f51ead273f9a",
+        "wallSeconds": 997.0943235568702,
+        "unit": "s11c-guard-90aa0c209172",
         "stderrBytes": 0,
         "limitsVerified": true,
         "childOutcome": {
           "exitCode": 0,
           "guardReason": null,
-          "wallSeconds": 835.4716348950751,
-          "childPid": 3219505
+          "wallSeconds": 997.0247973178048,
+          "childPid": 348275
         }
       },
-      "liveGrowthObservations": 583
+      "liveGrowthObservations": 677
+    },
+    "final-source-comparison-measurements": {
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 6.5738775169011205,
+        "unit": "s11c-guard-ab19265462b9",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 6.4769799679052085,
+          "childPid": 377009
+        }
+      },
+      "liveGrowthObservations": 2
+    },
+    "final-finished-ablation": {
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 958.2498932578601,
+        "unit": "s11c-guard-d7d592aa3338",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 958.172918390017,
+          "childPid": 377307
+        }
+      },
+      "liveGrowthObservations": 684
+    },
+    "final2-source-comparison-measurements": {
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 6.555086299078539,
+        "unit": "s11c-guard-88a378738a21",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 6.480053741019219,
+          "childPid": 407415
+        }
+      },
+      "liveGrowthObservations": 1
+    },
+    "final2-finished-ablation": {
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 970.8333426110912,
+        "unit": "s11c-guard-e63108056bdb",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 970.7315944419242,
+          "childPid": 407702
+        }
+      },
+      "liveGrowthObservations": 696
     }
-  },
-  "printedVelocityResidualValues": [
-    "0"
-  ],
-  "printedBalanceResidualValues": [
-    "0"
-  ],
-  "baselineIndeterminateOccurrences": 0,
-  "measurementIndeterminateOccurrences": 0,
-  "outStatus": ""
+  }
 }

@@ -13,6 +13,7 @@ import ast
 import hashlib
 import os
 from functools import lru_cache
+from sympy.logic.algorithms.lra_theory import UnhandledInput
 from pathlib import Path
 import subprocess
 import sys
@@ -109,25 +110,24 @@ def compact_reduce(value, reducer, coordinates):
                       for point in COMPACT_POINTS))
 
 
-def _compact_difference(a,b):
+def _compact_difference(a,b,context=sp.true):
     # Arithmetic subtraction, including the 0/1 indicators of exact booleans.
     # An unresolved Boolean is not silently converted into a truth value.
-    if a==b:
+    if a==b or context is sp.false:
         return sp.S.Zero
-    if a in (sp.true,sp.false) and b in (sp.true,sp.false):
+    if a in (sp.true,sp.false) and b in (sp.true,sp.false) and context is sp.true:
         return sp.Integer(int(bool(b))-int(bool(a)))
     if isinstance(a,sp.Tuple) and isinstance(b,sp.Tuple) and len(a)==len(b):
-        parts=sp.Tuple(*(_compact_difference(x,y) for x,y in zip(a,b)))
+        parts=sp.Tuple(*(_compact_difference(x,y,context) for x,y in zip(a,b)))
         return sp.S.Zero if all(part==0 for part in parts) else parts
     if isinstance(a,sp.MatrixBase) and isinstance(b,sp.MatrixBase) and a.shape==b.shape:
-        parts=sp.Tuple(*(_compact_difference(x,y) for x,y in zip(a,b)))
+        parts=sp.Tuple(*(_compact_difference(x,y,context) for x,y in zip(a,b)))
         return sp.S.Zero if all(part==0 for part in parts) else sp.Tuple(Str('MATRIX_ENTRY_DIFFERENCES'),parts)
     if isinstance(a,sp.Expr) and isinstance(b,sp.Expr):
         residual=sp.factor(b-a)
         if residual.is_zero is True:return sp.S.Zero
-        if residual.is_zero is False:return residual
-        return undecided(a,b,residual)
-    return _value_difference(a,b)
+        return _value_difference(a,b,context)
+    return _value_difference(a,b,context)
 
 
 def compact_k11(baseline, source, mutant, folder):
@@ -209,6 +209,7 @@ def parse(path):
             raise ValueError(('untagged line',line[:100]))
         if tag in result:
             raise ValueError(('duplicate tag',tag))
+        progress("parse "+str(path)+" "+tag)
         result[tag] = eval(payload,namespace)
     if not result:
         raise ValueError(('empty stream',str(path)))
@@ -273,34 +274,159 @@ def _normalized_predicate(value):
     return visit(value)
 
 
-def _value_difference(a,b):
-    if a == b:
+# A nonzero rational polynomial in independent real coordinates is not the
+# zero function, even when it vanishes on a locus. Finite jets of the general
+# radial profiles are independent on open admissible local ranges: smooth
+# compactly supported radial perturbations preserve their asymptotic counting.
+# Density values are positive; its derivatives remain free. No integral, bound
+# variable, arbitrary function, or profile constraint is treated as a free jet.
+RADIAL_JET_PROFILES = frozenset(('s9b_delta','s9b_V','s9b_xi',
+                               'rho_br_profile','s9b_f'))
+
+
+def _real_coordinates(expressions):
+    whole=sp.Tuple(*expressions)
+    if whole.has(sp.Integral,sp.Limit,sp.Subs,sp.Set):
+        return None
+    jets={}
+    for node in whole.atoms(sp.Derivative):
+        f=node.expr
+        if not (isinstance(f,AppliedUndef) and f.func.__name__ in RADIAL_JET_PROFILES
+                and len(f.args)==1 and isinstance(f.args[0],sp.Symbol)
+                and all(v==f.args[0] for v in node.variables)):
+            return None
+        jets[node]=sp.Dummy('radial_jet',real=True)
+    for f in whole.xreplace(jets).atoms(AppliedUndef):
+        if not (f.func.__name__ in RADIAL_JET_PROFILES and len(f.args)==1
+                and isinstance(f.args[0],sp.Symbol)):
+            return None
+        jets[f]=sp.Dummy('radial_value',positive=True) if f.is_positive else sp.Dummy('radial_value',real=True)
+    # Distinct arguments could denote the same point. This certificate only
+    # covers one common radial coordinate, not independently sampled points.
+    radial_args={f.args[0] for f in whole.atoms(AppliedUndef)}
+    if len(radial_args)>1:return None
+    converted=tuple(expr.xreplace(jets) for expr in expressions)
+    symbols=sorted(sp.Tuple(*converted).free_symbols,key=sp.default_sort_key)
+    if any(x.is_real is not True for x in symbols):return None
+    return converted,symbols,jets
+
+
+def _rational_certificate(a,b,residual):
+    prepared=_real_coordinates((a,b,residual))
+    if prepared is None:return None
+    (left,right,delta),symbols,jets=prepared
+    if not symbols:return None
+    try:
+        fractions=[sp.fraction(sp.cancel(expr)) for expr in (left,right,delta)]
+        polys=[sp.Poly(piece,*symbols,domain=sp.QQ) for pair in fractions for piece in pair]
+    except (sp.PolynomialError,sp.CoercionFailed):
+        return None
+    if polys[-2].is_zero or any(polys[k].is_zero for k in (1,3,5)):return None
+    # The zero loci of finitely many nonzero polynomials cannot cover the
+    # open coordinate ranges (or their infinite integer grids). Thus there
+    # exists a common defined point with nonzero residual.
+    return sp.Tuple(Str('RATIONAL_NONIDENTITY'),residual,
+        sp.Tuple(Str('NUMERATOR'),fractions[-1][0]),
+        sp.Tuple(Str('COMMON_DENOMINATORS'),*(pair[1] for pair in fractions)),
+        sp.Tuple(Str('LOCAL_RADIAL_JETS'),*(sp.Tuple(k,v) for k,v in jets.items())))
+
+
+@lru_cache(maxsize=64)
+def _linear_existence(predicate):
+    if predicate is sp.false:return sp.S.Zero
+    if predicate is sp.true:return sp.Tuple(Str('EXISTENTIAL_DIFFERENCE'),sp.true)
+    prepared=_real_coordinates((predicate,))
+    if prepared is None:return None
+    (condition,),symbols,jets=prepared
+    if any(x.is_integer for x in symbols):return None
+    assumptions=[]
+    witness_slice=[]
+    for original,coordinate in jets.items():
+        if isinstance(original,AppliedUndef) and original.func.__name__=='s9b_delta':
+            witness_slice.append(coordinate>-1)
+    # Positive GM is only a witness slice, never an equality criterion. The
+    # compact radial perturbation extension satisfies supplied far-zone bounds
+    # there. Failure on this slice leaves a profile comparison undecided.
+    if jets:
+        witness_slice.extend(x>0 for x in symbols if str(x)=='GM')
+    for x in symbols:
+        if x.is_positive:assumptions.append(x>0)
+        elif x.is_negative:assumptions.append(x<0)
+        elif x.is_nonnegative:assumptions.append(x>=0)
+        elif x.is_nonpositive:assumptions.append(x<=0)
+        elif x.is_nonzero:assumptions.append(sp.Ne(x,0))
+    condition=sp.And(condition,*assumptions,*witness_slice)
+    if condition is sp.false:return None if witness_slice else sp.S.Zero
+    atoms=condition.atoms(sp.core.relational.Relational)
+    # LRA must see the arithmetic relations themselves, never free Boolean
+    # proxies for set equality, nonlinear arithmetic or quantified conditions.
+    if condition.atoms(sp.logic.boolalg.BooleanFunction)-condition.atoms(sp.And,sp.Or,sp.Not,sp.Xor,sp.Equivalent):return None
+    try:
+        for atom in atoms:
+            if not isinstance(atom.lhs,sp.Expr) or not isinstance(atom.rhs,sp.Expr):return None
+            if sp.Poly(atom.lhs-atom.rhs,*symbols,domain=sp.QQ).total_degree()>1:return None
+        if not atoms:return None
+        # SymPy's LRA backend accepts order predicates, but not Q.ne.
+        # Expand equality/disequality over the reals before CNF conversion.
+        condition=condition.replace(lambda node:isinstance(node,sp.Equality),
+            lambda node:sp.And(node.lhs<=node.rhs,node.lhs>=node.rhs))
+        condition=condition.replace(lambda node:isinstance(node,sp.Unequality),
+            lambda node:sp.Or(node.lhs<node.rhs,node.lhs>node.rhs))
+        model=sp.satisfiable(condition,use_lra_theory=True)
+    except (sp.PolynomialError,sp.CoercionFailed,UnhandledInput):
+        return None
+    if model is False:return None if witness_slice else sp.S.Zero
+    return sp.Tuple(Str('EXISTENTIAL_DIFFERENCE'),predicate,
+        sp.Tuple(Str('EXACT_LRA_MODEL'),*(sp.Tuple(k,sp.sympify(v)) for k,v in sorted(model.items(),key=lambda item:sp.default_sort_key(item[0])))),
+        sp.Tuple(Str('LOCAL_RADIAL_JETS'),*(sp.Tuple(k,v) for k,v in jets.items())))
+
+
+def _value_difference(a,b,context=sp.true):
+    if a == b or context is sp.false:
         return sp.S.Zero
     if isinstance(a,sp.Tuple) and isinstance(b,sp.Tuple) and len(a)==len(b):
-        parts=sp.Tuple(*(_value_difference(x,y) for x,y in zip(a,b)))
+        parts=sp.Tuple(*(_value_difference(x,y,context) for x,y in zip(a,b)))
         return sp.S.Zero if all(part==0 for part in parts) else parts
     if isinstance(a,sp.MatrixBase) and isinstance(b,sp.MatrixBase) and a.shape==b.shape:
-        parts=sp.Tuple(*(_value_difference(x,y) for x,y in zip(a,b)))
+        parts=sp.Tuple(*(_value_difference(x,y,context) for x,y in zip(a,b)))
         return sp.S.Zero if all(part==0 for part in parts) else sp.Tuple(Str('MATRIX_ENTRY_DIFFERENCES'),parts)
     if isinstance(a,sp.logic.boolalg.Boolean) and isinstance(b,sp.logic.boolalg.Boolean) and not isinstance(a,sp.Expr) and not isinstance(b,sp.Expr):
         left,right=_normalized_predicate(a),_normalized_predicate(b)
         if left==right:return sp.S.Zero
         result=sp.simplify_logic(sp.Xor(left,right),deep=False)
-        if result in (sp.true,sp.false):return sp.Integer(int(bool(result)))
-        return undecided(a,b,result)
+        if result is sp.false:return sp.S.Zero
+        if result is sp.true and context is sp.true:return sp.S.One
+        certificate=_linear_existence(sp.And(context,result))
+        return certificate if certificate is not None else undecided(a,b,result)
     if isinstance(a,sp.Set) and isinstance(b,sp.Set):
         left,right=_normalized_predicate(a),_normalized_predicate(b)
         if left==right:return sp.S.Zero
         if isinstance(left,sp.FiniteSet) and isinstance(right,sp.FiniteSet) and len(left)==len(right)==1:
-            if _value_difference(next(iter(left)),next(iter(right)))==0:return sp.S.Zero
+            return _value_difference(next(iter(left)),next(iter(right)),context)
         residual=sp.SymmetricDifference(left,right,evaluate=False)
+        # An exact member of just one set is an existential certificate.
+        if context is sp.true:
+            candidates=set()
+            for side in (left,right):
+                if isinstance(side,sp.FiniteSet):candidates.update(side)
+                elif isinstance(side,sp.Interval):
+                    candidates.update((side.start,side.end,(side.start+side.end)/2))
+            for point in sorted(candidates,key=sp.default_sort_key):
+                if point.has(sp.oo,-sp.oo,sp.zoo,sp.nan):continue
+                membership=sp.Xor(left.contains(point),right.contains(point))
+                if membership is sp.true:
+                    return sp.Tuple(Str('SET_DIFFERENCE_WITNESS'),point,residual)
         return undecided(a,b,residual)
     if isinstance(a,sp.Expr) and isinstance(b,sp.Expr):
         result=_arithmetic_reduce(b-a)
         if result.is_zero is True:return sp.S.Zero
-        if result.is_zero is False:return result
-        return undecided(a,b,result)
-    if isinstance(a,Str) and isinstance(b,Str):return sp.S.One
+        if context is sp.true:
+            if result.is_zero is False:return result
+            certificate=_rational_certificate(a,b,result)
+        else:
+            certificate=_linear_existence(sp.And(context,sp.Ne(result,0)))
+        return certificate if certificate is not None else undecided(a,b,result)
+    if isinstance(a,Str) and isinstance(b,Str) and context is sp.true:return sp.S.One
     return undecided(a,b,sp.Tuple(Str('EQUALITY_QUERY'),a,b))
 
 
@@ -327,10 +453,34 @@ def payload_roles(value):
     return visit(value,()),domains
 
 
+def _attached_predicate(domain,parent):
+    """Adapt the engine's domain carriers without treating a set as a bool."""
+    if isinstance(domain,sp.logic.boolalg.Boolean) and not isinstance(domain,sp.Expr):
+        return domain
+    if isinstance(domain,sp.Tuple):
+        return sp.And(*(_attached_predicate(part,parent) for part in domain))
+    if (isinstance(domain,sp.Set) and isinstance(parent,sp.Tuple) and len(parent)>1
+            and parent[0]==Str('RADIAL_DIFFERENTIAL_IDENTITY')):
+        # This carrier explicitly names its radial coordinate before the set.
+        return sp.Contains(parent[1],domain)
+    # A carrier without an explicit point association remains opaque for
+    # value witnesses. Its actual set/condition is still compared separately.
+    return sp.Dummy('unresolved_definition_domain')
+
+
 def role_difference(a,b,value_method):
     left,left_domains=payload_roles(a)
     right,right_domains=payload_roles(b)
-    value_delta=value_method(left,right)
+    def compare(x,y,path=(),context=sp.true):
+        if x==y:return sp.S.Zero
+        local=[_attached_predicate(domain,parent) for table,parent in ((left_domains,x),(right_domains,y))
+               for slot,domain in table.items() if slot[:-1]==path]
+        context=sp.And(context,*local)
+        if isinstance(x,sp.Tuple) and isinstance(y,sp.Tuple) and len(x)==len(y):
+            parts=sp.Tuple(*(compare(a,b,path+(j,),context) for j,(a,b) in enumerate(zip(x,y))))
+            return sp.S.Zero if all(part==0 for part in parts) else parts
+        return value_method(x,y,context)
+    value_delta=compare(left,right)
     if left_domains==right_domains:
         domain_delta=sp.S.Zero
     else:

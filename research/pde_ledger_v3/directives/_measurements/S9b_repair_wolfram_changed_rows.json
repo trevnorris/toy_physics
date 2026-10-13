@@ -1,0 +1,440 @@
+[
+  {
+    "knife": "K1",
+    "tag": "WL_LOCAL_S9B_BRANCH_FREQUENCIES",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K1",
+    "tag": "WL_LOCAL_S9B_FERMAT_OBJECT",
+    "field": "Difference",
+    "occurrences": 5
+  },
+  {
+    "knife": "K1",
+    "tag": "WL_LOCAL_S9B_HAMILTON_VELOCITY",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K1",
+    "tag": "WL_LOCAL_S9B_SUPPLIED_INPUTS",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K1",
+    "tag": "WL_S9B_B_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K1",
+    "tag": "WL_S9B_B_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K1",
+    "tag": "WL_S9B_C_CONSTANT_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K1",
+    "tag": "WL_S9B_C_CONSTANT_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K1",
+    "tag": "WL_S9B_C_FIXED_RATIO_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K1",
+    "tag": "WL_S9B_C_FIXED_RATIO_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K1",
+    "tag": "WL_S9B_C_POWER_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K1",
+    "tag": "WL_S9B_C_POWER_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K1",
+    "tag": "WL_S9B_R_FLOW_ONLY_B_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K1",
+    "tag": "WL_S9B_R_FLOW_ONLY_B_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K2",
+    "tag": "WL_LOCAL_S9B_BRANCH_FREQUENCIES",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K2",
+    "tag": "WL_LOCAL_S9B_FERMAT_OBJECT",
+    "field": "Difference",
+    "occurrences": 5
+  },
+  {
+    "knife": "K2",
+    "tag": "WL_LOCAL_S9B_HAMILTON_VELOCITY",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K2",
+    "tag": "WL_LOCAL_S9B_SUPPLIED_INPUTS",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K3",
+    "tag": "WL_LOCAL_S9B_BRANCH_FREQUENCIES",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K3",
+    "tag": "WL_LOCAL_S9B_FERMAT_OBJECT",
+    "field": "Difference",
+    "occurrences": 5
+  },
+  {
+    "knife": "K3",
+    "tag": "WL_LOCAL_S9B_HAMILTON_VELOCITY",
+    "field": "Difference",
+    "occurrences": 3
+  },
+  {
+    "knife": "K3",
+    "tag": "WL_LOCAL_S9B_SUPPLIED_INPUTS",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_B_CONDITION_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 3
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_B_CONDITION_RADAR",
+    "field": "Difference",
+    "occurrences": 3
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_B_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 6
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_B_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 6
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_C_CONSTANT_CONDITION_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 3
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_C_CONSTANT_CONDITION_RADAR",
+    "field": "Difference",
+    "occurrences": 3
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_C_CONSTANT_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 6
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_C_CONSTANT_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 6
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_C_FIXED_RATIO_CONDITION_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 6
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_C_FIXED_RATIO_CONDITION_RADAR",
+    "field": "Difference",
+    "occurrences": 6
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_C_FIXED_RATIO_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 12
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_C_FIXED_RATIO_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 12
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_C_POWER_CONDITION_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 6
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_C_POWER_CONDITION_RADAR",
+    "field": "Difference",
+    "occurrences": 6
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_C_POWER_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 12
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_C_POWER_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 12
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_R_FLOW_ONLY_B_CONDITION_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 3
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_R_FLOW_ONLY_B_CONDITION_RADAR",
+    "field": "Difference",
+    "occurrences": 3
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_R_FLOW_ONLY_B_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 6
+  },
+  {
+    "knife": "K4b",
+    "tag": "WL_S9B_R_FLOW_ONLY_B_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 6
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_B_CONDITION_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_B_CONDITION_RADAR",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_B_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_B_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_C_CONSTANT_CONDITION_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_C_CONSTANT_CONDITION_RADAR",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_C_CONSTANT_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_C_CONSTANT_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_C_FIXED_RATIO_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_C_FIXED_RATIO_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_C_POWER_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_C_POWER_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_F_LIVE_C_CONSTANT_CONDITION_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_F_LIVE_C_CONSTANT_CONDITION_RADAR",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_R_FLOW_ONLY_B_CONDITION_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_R_FLOW_ONLY_B_CONDITION_RADAR",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_R_FLOW_ONLY_B_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_R_FLOW_ONLY_B_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_R_SPEED_ONLY_B_CONDITION_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_R_SPEED_ONLY_B_CONDITION_RADAR",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_R_SPEED_ONLY_B_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_R_SPEED_ONLY_B_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_R_TILT_ONLY_B_CONDITION_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_R_TILT_ONLY_B_CONDITION_RADAR",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_R_TILT_ONLY_B_IMPLIED_JN_DEFLECTION",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K7",
+    "tag": "WL_S9B_R_TILT_ONLY_B_IMPLIED_JN_RADAR",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K9a",
+    "tag": "WL_S9B_C_FIXED_RATIO_N_DEPENDENCE",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K11",
+    "tag": "WL_LOCAL_S9B_SUPPLIED_INPUTS",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K11",
+    "tag": "WL_LOCAL_S9B_BRANCH_FREQUENCIES",
+    "field": "Difference",
+    "occurrences": 2
+  },
+  {
+    "knife": "K11",
+    "tag": "WL_LOCAL_S9B_HAMILTON_VELOCITY",
+    "field": "Difference",
+    "occurrences": 1
+  },
+  {
+    "knife": "K11",
+    "tag": "WL_LOCAL_S9B_FERMAT_OBJECT",
+    "field": "Difference",
+    "occurrences": 7
+  }
+]

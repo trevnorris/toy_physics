@@ -8,7 +8,7 @@ scope = Replace[Environment["S9B_ABLATION_SCOPE"], $Failed -> "ALL"];
 If[!MemberQ[{"ALL", "K11"}, scope], Quit[94]];
 root = Directory[];
 engine = FileNameJoin[{root, "research", "pde_ledger_v3", "mathematica", "S9b_light_bending_mathematica_audit.wl"}];
-work = FileNameJoin[{root, "_scratch", "s9b_wl_repair5", "ablation-final4"}];
+work = FileNameJoin[{root, "_scratch", "s9b_wl_repair6", "ablation-final2"}];
 If[!DirectoryQ[work], CreateDirectory[work, CreateIntermediateDirectories -> True]];
 source = Import[engine, "Text"];
 S9bHarness`progress = OpenWrite[FileNameJoin[{work, "progress.log"}]];
@@ -43,20 +43,21 @@ print[name_, value_] := (WriteString[First[$Output], "WL_LOCAL_S9B_ABLATION_" <>
 attachedDomainKeys = {"Domain", "Domains", "BranchDomain", "AlongRayDomain",
   "ConstantDomain", "GeneralConstantDomain", "FunctionalDomain", "Premise",
   "Component", "ZeroSetJoining"};
-splitPayload[payload_] := Module[{domains = <||>, walk, value},
+splitPayload[payload_] := Module[{domains = <||>, paths = {}, walk, value},
   walk[z_Association, path_] := Association[KeyValueMap[
     Function[{key, item}, If[MemberQ[attachedDomainKeys,key],
-      AssociateTo[domains, ToString[Append[path,key],InputForm] -> item]; Nothing,
+      AssociateTo[domains, ToString[Append[path,key],InputForm] -> item];
+      AppendTo[paths,{path,item}]; Nothing,
       key -> walk[item,Append[path,key]]]], z]];
   walk[z_List, path_] := MapIndexed[walk[#1,Join[path,#2]] &,z];
   walk[z_ConditionalExpression, path_] := (
     AssociateTo[domains, ToString[Append[path,"ConditionalExpression"],InputForm] -> z[[2]]];
-    walk[z[[1]],path]);
+    AppendTo[paths,{path,z[[2]]}]; walk[z[[1]],path]);
   (* Traverse other heads as well: nested ConditionalExpression attachments
      are separated without changing a relation into a domain. *)
   walk[z_, path_] := If[AtomQ[z] || FreeQ[z,_ConditionalExpression],z,
     MapIndexed[walk[#1,Join[path,#2]] &,z]];
-  value = walk[payload,{}]; <|"Value" -> value,"Domain" -> domains|>];
+  value = walk[payload,{}]; <|"Value" -> value,"Domain" -> domains,"DomainPaths" -> paths|>];
 logicalObjectQ[z_] := MemberQ[{True,False},z] ||
   MemberQ[{Equal,Unequal,Less,LessEqual,Greater,GreaterEqual,Inequality,
     And,Or,Not,Xor,Equivalent,Implies,Element,Exists,ForAll},Head[z]] ||
@@ -118,7 +119,66 @@ canonical[z_] := Module[{key = HoldComplete[z],result,head = Head[z]},
   AssociateTo[normalCache,key -> result];result];
 zeroTree[z_Association] := If[And @@ (SameQ[#,0] & /@ Values[z]),0,z];
 zeroTree[z_List] := If[And @@ (SameQ[#,0] & /@ z),0,z];
-leafDifference[a_,b_,asPredicate_:False] := Module[{na,nb,logical,proof,residual},
+(* Amendment 9: equality is universal, change is existential. An unresolved
+   pointwise equality is NOT evidence that no difference can be established.
+   Exact real quantifier elimination proves existence on the common defined
+   domain. Unsupported functional/analytic formulas retain their COMPLETE
+   existential obligation and UNDECIDED status; no samples, term cutoffs,
+   profile substitutions, timed fallbacks, or independent-jet assumptions.
+   Real noninteger powers are tested on their nonnegative-base chart, which
+   suffices for a change witness; failure there is never proof of equality. *)
+changeCache = <||>;
+realAlgebraicQ[z_] := Which[
+  NumberQ[z], TrueQ[Im[z] == 0],
+  Head[z] === Symbol, !NumericQ[z] && !MemberQ[{True,False,Reals,Complexes,Infinity,Indeterminate,Undefined},z],
+  MemberQ[{Plus,Times},Head[z]], And @@ (realAlgebraicQ /@ List @@ z),
+  Head[z] === Power, realAlgebraicQ[z[[1]]] && (IntegerQ[z[[2]]] || Head[z[[2]]] === Rational),
+  True,False];
+realFormulaQ[z_] := Which[
+  MemberQ[{True,False},z],True,
+  MemberQ[{And,Or,Not,Xor,Equivalent,Implies},Head[z]],And @@ (realFormulaQ /@ List @@ z),
+  MemberQ[{Equal,Unequal,Less,LessEqual,Greater,GreaterEqual},Head[z]],And @@ (realAlgebraicQ /@ List @@ z),
+  Head[z] === Element, z[[2]] === Reals && And @@ (realAlgebraicQ /@ Flatten[{z[[1]] /. Alternatives -> List}]),
+  MemberQ[{ForAll,Exists,Inactive[ForAll],Inactive[Exists]},Head[z]],
+    And @@ (realFormulaQ /@ Rest[List @@ z]),
+  True,False];
+realChart[z_] := And @@ DeleteDuplicates[Cases[z,
+  Power[base_,exponent_] /; IntegerQ[exponent] || Head[exponent] === Rational :>
+    Which[IntegerQ[exponent] && exponent < 0,base != 0,
+      IntegerQ[exponent],True,exponent < 0,base > 0,True,base >= 0],{0,Infinity}]];
+scalarVariables[z_] := DeleteDuplicates[Cases[z,q_Symbol /;
+  !NumericQ[q] && !MemberQ[{True,False,Reals,Complexes,Infinity,Indeterminate,Undefined},q],{0,Infinity}]];
+existentialChange[a_,b_,logical_,context_,equality_] := Module[
+  {key=HoldComplete[a,b,logical,context],condition,chart,variables,obligation,result,supported,complete},
+  If[KeyExistsQ[changeCache,key],Return[changeCache[key]]];
+  condition = $Assumptions && context && Which[
+    Head[a] === ImplicitRegion && Head[b] === ImplicitRegion && SameQ[a[[2]],b[[2]]],Xor[a[[1]],b[[1]]],
+    logical,Xor[a,b],SameQ[equality,False],True,True,a != b];
+  supported = realFormulaQ[condition] &&
+    (logical || (Head[a] === ImplicitRegion && Head[b] === ImplicitRegion && SameQ[a[[2]],b[[2]]]) ||
+      (StringQ[a] && StringQ[b]) || (realAlgebraicQ[a] && realAlgebraicQ[b]));
+  (* A power inside a binder needs its definedness condition inside that
+     binder. Leave that full obligation unresolved instead of moving it out. *)
+  If[!FreeQ[condition,q_ /; MemberQ[{ForAll,Exists,Inactive[ForAll],Inactive[Exists]},Head[q]] &&
+      !FreeQ[q,Power[_,exponent_] /; !IntegerQ[exponent] || exponent < 0]],supported=False];
+  (* Only an everywhere-defined polynomial formula can turn failure to
+     find a witness into zero. A chart excluding any pole or root boundary
+     is sufficient for a witness, never for a global equality proof. *)
+  complete = supported && FreeQ[{a,b,condition},Power[_,exponent_] /;
+    !IntegerQ[exponent] || exponent < 0];
+  chart = If[supported,realChart[{a,b,condition}],True];
+  variables = scalarVariables[condition && chart];
+  obligation = With[{v=variables,c=condition && chart},Inactive[Exists][v,c]];
+  result = If[supported,
+    With[{v=variables,c=Activate[condition && chart,ForAll|Exists]},
+      If[v === {},c,Resolve[Exists[v,c],Reals]]],Missing["UNDECIDED"]];
+  result = <|"ExistenceCondition" -> obligation,"ExistenceResult" -> result,
+    "Method" -> "exact real quantifier elimination on the common defined domain",
+    "SupportedFormula" -> supported,"CompleteRealDecision" -> complete|>;
+  AssociateTo[changeCache,key -> result];result];
+valueContext[paths_,path_] := And @@ Cases[paths,{anchor_,condition_} /;
+  Length[anchor] <= Length[path] && Take[path,Length[anchor]] === anchor :> condition];
+leafDifference[a_,b_,asPredicate_:False,context_:True] := Module[{na,nb,logical,proof,residual,change},
   na = canonical[a]; nb = canonical[b];
   If[SameQ[na,nb],Return[0]];
   logical = (logicalObjectQ[na] && logicalObjectQ[nb]) ||
@@ -126,19 +186,23 @@ leafDifference[a_,b_,asPredicate_:False] := Module[{na,nb,logical,proof,residual
       (logicalObjectQ[nb] || Head[nb] === Symbol));
   proof = proofSimplify[If[logical,Equivalent[na,nb],na == nb]];
   If[TrueQ[proof],Return[0]];
+  change = existentialChange[na,nb,logical,context,proof];
+  If[TrueQ[change["CompleteRealDecision"]] && SameQ[change["ExistenceResult"],False],Return[0]];
   residual = If[logical,Boole[a]-Boole[b],
     If[NumericQ[a] && NumericQ[b],a-b,Inactive[Subtract][a,b]]];
-  <|"Status" -> If[SameQ[proof,False],"CHANGED","UNDECIDED"],
-    "Equality" -> proof,"Residual" -> residual,"Corrupted" -> a,"Baseline" -> b|>];
-partDifference[a_,b_] := Which[
+  <|"Status" -> If[TrueQ[change["ExistenceResult"]],"CHANGED","UNDECIDED"],
+    "Equality" -> proof,"ChangeProof" -> change,
+    "Residual" -> residual,"Corrupted" -> a,"Baseline" -> b|>];
+partDifference[a_,b_,path_:{},paths_:{}] := Which[
   SameQ[a,b],0,
   AssociationQ[a] && AssociationQ[b],zeroTree[AssociationMap[
-    partDifference[Lookup[a,#,Missing["Unemitted"]],Lookup[b,#,Missing["Unemitted"]]] &,
+    partDifference[Lookup[a,#,Missing["Unemitted"]],Lookup[b,#,Missing["Unemitted"]],Append[path,#],paths] &,
     Union[Keys[a],Keys[b]]]],
-  ListQ[a] && ListQ[b] && Length[a] == Length[b],zeroTree[MapThread[partDifference,{a,b}]],
+  ListQ[a] && ListQ[b] && Length[a] == Length[b],zeroTree[Table[
+    partDifference[a[[i]],b[[i]],Append[path,i],paths],{i,Length[a]}]],
   Head[a] === Rule && Head[b] === Rule && SameQ[First[a],First[b]],
-    With[{d = partDifference[Last[a],Last[b]]},If[SameQ[d,0],0,First[a] -> d]],
-  True,leafDifference[a,b]];
+    With[{d = partDifference[Last[a],Last[b],Append[path,2],paths]},If[SameQ[d,0],0,First[a] -> d]],
+  True,leafDifference[a,b,False,valueContext[paths,path]]];
 attachedDifference[a_,b_] := If[SameQ[a,b],0,
   If[AssociationQ[a] || ListQ[a] || AssociationQ[b] || ListQ[b],partDifference[a,b],
     leafDifference[a,b,True]]];
@@ -146,11 +210,12 @@ domainDifference[a_Association,b_Association] := If[SameQ[a,b],0,
   zeroTree[AssociationMap[attachedDifference[Lookup[a,#,Missing["Unemitted"]],
     Lookup[b,#,Missing["Unemitted"]]] &,Union[Keys[a],Keys[b]]]]];
 difference[a_,b_] := Module[{partsA = splitPayload[a],partsB = splitPayload[b]},
-  <|"ValueDifference" -> partDifference[partsA["Value"],partsB["Value"]],
+  <|"ValueDifference" -> partDifference[partsA["Value"],partsB["Value"],{},
+      Join[partsA["DomainPaths"],partsB["DomainPaths"]]],
     "DomainDifference" -> domainDifference[partsA["Domain"],partsB["Domain"]]|>];
 (* END_DOMAIN_DIFFERENCE_METHOD *)
 run[path_, name_] := Module[{capture, result},
-  ClearSystemCache[]; S9bHarness`normalCache = <||>; note["engine begin", name];
+  ClearSystemCache[]; S9bHarness`normalCache = <||>; S9bHarness`changeCache = <||>; note["engine begin", name];
   capture = OpenWrite[FileNameJoin[{work, name <> ".stdout"}]];
   Block[{$Context = "Global`", $ContextPath = {"Global`", "System`"}, $Output = {capture}}, Get[path]];
   Close[capture]; result = Global`emitted; note["engine end", name]; result];

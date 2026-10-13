@@ -33,3 +33,26 @@ Both legs found:
 **Process.** Grok's first retry loop called the guard with its arguments out of order, so the guard admitted nothing.
 Grok saw that and relaunched correctly. Its Wolfram run exited 0. Its SymPy run exited 1 because SymPy 1.14 has no
 `ForAll`, which Grok reports. Codex's guarded checks completed.
+
+## Round 1
+
+**Artifact.** The working-tree directive at sha256 `5da3c7e2…`. Its exact bytes are preserved in
+`_scratch/s9b_build/preserved/S9b_repair_build_directive_amend10_r1.md`. Prompt:
+`_scratch/s9b_build/s9b_repair_build_directive_amend10_review_prompt_r1.md`.
+
+**Legs.**
+- **Codex (gpt-6.1-sol, xhigh): CLEAR, no findings.** Final message:
+  `_scratch/s9b_build/s9b_amend10_review_r1_codex_final.txt`. Full report and scripts:
+  `_scratch/s9b_build/s9b_amend10_review_r1_codex_evidence/` (`report.txt`).
+- **Grok: NEEDS REVISION, one finding.** Report: `_scratch/s9b_build/s9b_amend10_review_r1_grok.txt`. Scripts and
+  stdout: `_scratch/s9b_build/s9b_amend10_review_r1_grok_evidence/`.
+
+| # | Finding (leg) | Disposition | Round-2 text |
+|---|---|---|---|
+| B1 | A changed set prints undecided. A set is equal to another when the two have the same members, so the point at which two sets differ is an element, which is a value of the coordinate the set binds. The round-1 sentence lets a point for "a condition that binds variables, in a set or a quantifier" give values to free variables only. Once the free variables are fixed, a builder has no coordinate left to assign, and a set change that membership shows prints undecided. Grok keeps the free-variable rule for quantifiers. The SymPy engine builds set-valued objects (`roots`, `traversed`). (Grok 1) | **ACCEPT.** The two legs agree on the mathematics and differ on the text. Codex's run of the round-6 harness prints `UNDECIDED` for the pair `ConditionSet(r, r > a, Reals)` and `ConditionSet(r, r > a + 1, Reals)`, and its own membership check at `3/2` after `a = 1` prints `(True, False)`. Codex counts that check as a showing. Grok reads the round-1 sentence as excluding it. A new author could read it Grok's way, so the text must say it. Lookups (`S9b_repair_build_directive_amend10_review_r1_lookups.md`, generator `_scratch/s9b_build/gen/s9b_amend10_r1_lookups.sh`): the round-1 sentence, Codex's `R6_SET_DIFFERENCE` and membership lines, Grok's `set_decision.py.stdout`, and the engine lines. | Two sets differ at an element that one contains and the other does not, so a point for a set gives values to its free variables and to that element. A statement that binds variables, such as a quantifier or a test of whether a set is empty, is compared as the statement it makes on its free variables, so its point gives values to those only. |
+
+**Author.** B1 is in the sentence round 1 added, the first defect in material this amendment just changed. Under G4,
+a further defect in material a fold just changed moves the text to a new author.
+
+**Process.** Grok's guarded run directories date from 23:51 to 00:00, except `sat-bound-py-2`, from 01:45 (lookups).
+Codex retried an admission refusal until admitted, and its guarded checks completed.

@@ -60,10 +60,10 @@ this round. Reviewed until clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend9_review_disposition.md`.
 
 **Amendment 10** (orchestrator, 2026-10-12; a repair under the user's standing approval), for the build's repair
-round 7 after review r6 (`directives/_measurements/S9b_repair_build_r6_review_disposition.md`). Item 14 states what
-an admissible profile is, and that the harness may evaluate both parts at a point and a profile chosen for that test
-to show a change, which is not a profile choice under item 13. Parts 2 and 3 point at it. The engines do not change
-in this round. Reviewed until clear. Dispositions:
+round 7 after review r6 (`directives/_measurements/S9b_repair_build_r6_review_disposition.md`). Item 14 states the
+order in which a part's difference prints as zero, a change or undecided, and what a witness and an admissible
+profile are. A witness's point and profile are not a profile choice under item 13. Parts 2 and 3 point at it. The
+engines do not change in this round. Reviewed until clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend10_review_disposition.md`.
 
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
@@ -277,24 +277,33 @@ comparator, the production runs and the record.
       the domain changed. The domain is the condition a payload attaches to its computed object, such as the spec's
       branch-existence conditions or the condition that a case of a reduction carries. The value is the computed
       object itself, including when that object is a relation, a predicate such as a closedness test, or a
-      condition. Each part's difference is computed by the engine, so an unchanged part prints as zero and a
-      changed part prints as a change. A part is
+      condition. A part is
       unchanged when the knife leaves it equal to the baseline part as a mathematical object, in whatever form the
       corrupted copy rebuilds it: the same value, or for a domain the same condition on the same variables,
       including a condition carried inside a set or a quantifier. A part is changed when it differs from the
       baseline part at some point: for a value, a point of its variables where both parts are defined; for a domain,
       a point where one condition holds and the other does not; and for a part that carries a profile function,
-      such a point under some admissible profile. An admissible profile is a general radial function (item 13)
-      that meets the conditions the spec and the part's domain place on it. To show a change, the harness may
-      evaluate both parts at a point and, for a part that carries a profile function, at an admissible profile, both
-      chosen for this test only. That point and profile enter no engine object, and the profile is not a profile
-      choice under item 13. When the two evaluations differ, exactly or by more than their printed error bound, the
-      part prints as a change, with the point, the profile and both evaluations. Evaluations that agree establish
-      nothing; they never make a part print as zero. Where the engine cannot show a part unchanged, and the harness
-      has looked for such a point and profile and found none, its difference prints that it is undecided, so it
-      reads neither as zero nor as a change. This holds
-      for K11's compact differences and method residual too. K11's sample domain is coverage, not a domain in this
-      sense.
+      such a point under some admissible profile. A condition that binds variables, in a set or a quantifier, is
+      compared as the condition it states on its free variables, so its point gives values to those only.
+
+      Each part's difference is computed by the engine and prints by this rule, in this order:
+      1. **Zero,** where the engine shows the part unchanged, including an inert integral of zero against `0`. No
+         evaluation overrides this.
+      2. Otherwise **a change,** where the engine shows the part changed, symbolically or by a witness. A witness
+         is a point, and an admissible profile if the part carries a profile function, at which the two parts differ
+         as the definition of a changed part says. For a value, the two evaluations differ exactly, or by more than
+         a bound that covers the error of both. The change prints with the point, the profile when there is one,
+         both evaluations, and the bound when the arithmetic is not exact.
+      3. Otherwise **undecided,** once the harness has looked for a witness and found none. It reads neither as
+         zero nor as a change. Evaluations that agree establish nothing.
+
+      An admissible profile assigns one specific radial function, with fixed coefficients, to each live profile
+      the part carries (`δ`, `V`, `ξ_w`, and, where they enter, `ρ_br` and `f`). It is defined, with every
+      derivative the part takes, at the witness point. It need not meet the condition being compared, nor the
+      spec's order counting, which the computation does not test. A witness's point and profile are chosen for
+      this test only. They enter no engine object, and they are neither a profile choice nor a profile family
+      under item 13. This rule holds for K11's compact differences and method residual too. K11's sample domain is
+      coverage, not a domain in this sense.
     - A knife whose construction an engine does not contain is reported, not invented. The engine itself contains
       no control with an expected outcome.
 

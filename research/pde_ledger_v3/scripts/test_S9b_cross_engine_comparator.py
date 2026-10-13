@@ -39,15 +39,20 @@ def products(value):
     """
     if isinstance(value,list): return [products(x) for x in value]
     if not isinstance(value,dict): return value
+    if value.get('samples'):
+        value={k:v for k,v in value.items() if k not in ('residual','boolean_residual','zero_class')}
+        # Counts/configuration text cannot rescue a disabled computation.
+        value['samples']=[json.loads(x) for x in sorted({json.dumps(products(row),sort_keys=True) for row in value['samples']})]
     keys={'outcome','comparison','children','unpaired_metadata','residual','boolean_residual',
           'zero_class','samples','boolean_difference','same_exact_representation','coverage'}
     if 'outcome' in value or 'configuration' in value:
         return {k:products(v) for k,v in value.items() if k in keys}
-    return {k:products(v) for k,v in value.items() if k not in ('py','wl','point','profile','py_text','wl_text','representation')}
+    return {k:products(v) for k,v in value.items() if k not in ('py','wl','point','profile','py_text','wl_text','representation','unresolved','undefined','reason','precision_difference','method','reliability')}
 
 
 class Controls(unittest.TestCase):
     def fixture(self,py,wl,*,names=c.NAME_TABLE,joins=('SYNTHETIC',),suffix_py='',suffix_wl=''):
+        c._numeric_value.cache_clear()
         with tempfile.TemporaryDirectory() as tmp:
             p,w=Path(tmp)/'py.out',Path(tmp)/'wl.out'
             p.write_text(f'PY_S9B_SYNTHETIC: {py}\n'+suffix_py)
@@ -58,26 +63,34 @@ class Controls(unittest.TestCase):
         comparisons=[r['comparison'] for r in records if r['kind']=='comparison']
         return comparisons,[json.loads(line) for line in accounting.getvalue().splitlines()],records
 
-    def mutation(self,py,wl,changed,*,channel='leaf'):
+    def mutation(self,py,wl,changed,*,channel='numeric_value'):
         before=self.fixture(py,wl); after=self.fixture(py,changed)
         self.assertEqual([r['py'] for r in before[2] if r['kind']=='operands'],
                          [r['py'] for r in after[2] if r['kind']=='operands'])
         self.assertNotEqual(products(before[0]),products(after[0]),
                             'mutation must move a computed comparison product')
         # An operand echo or parse change cannot rescue a disabled comparison.
-        with patch.object(c.Comparator,channel,return_value=({'outcome':'not_formed'},False)):
+        disabled={'numeric_value':{'unresolved':'disabled'},'symbolic_difference':c.sp.S.Zero,'text_comparison':None,'evaluate_profile_derivative':c.sp.S.Zero}
+        original_translate=c.math_node
+        def drop_arguments(node,bindings,engine,scope=None):
+            target=node.args[0] if node.head=='Apply' else node
+            if target.head in ('Symbol','FunctionName'):
+                name=bindings.name(target.value,engine)
+                if bindings.kinds.get(name)=='profile': return c.sp.Symbol(name)
+            return original_translate(node,bindings,engine,scope)
+        with patch.object(c,channel,**({'side_effect':drop_arguments} if channel=='math_node' else {'return_value':disabled[channel]})):
             with self.assertRaises(AssertionError):
                 self.assertNotEqual(products(self.fixture(py,wl)[0]),products(self.fixture(py,changed)[0]))
         return before,after
 
     def test_one_sided_corruption(self):
-        self.mutation('Add(Symbol("GM"),Integer(7))','GM+7','GM+11')
+        self.mutation('Add(Symbol("GM"),Integer(7))','GM+7','GM+11',channel='symbolic_difference')
 
     def test_form_change(self):
-        self.mutation('Mul(Symbol("GM"),Symbol("b"))','GM*b','GM+b^2')
+        self.mutation('Mul(Symbol("GM"),Symbol("b"))','GM*b','GM+b^2',channel='symbolic_difference')
 
     def test_sign_coefficient(self):
-        self.mutation('Mul(Integer(3),Symbol("GM"))','3*GM','-5*GM')
+        self.mutation('Mul(Integer(3),Symbol("GM"))','3*GM','-5*GM',channel='symbolic_difference')
 
     def test_every_name_repoint(self):
         for row in c.NAME_TABLE:
@@ -88,12 +101,12 @@ class Controls(unittest.TestCase):
                 wl=f'{row.wl}[7]' if row.kind=='profile' else f'7+{row.wl}'
                 before=self.fixture(py,wl)[0]; after=self.fixture(py,wl,names=altered)[0]
                 self.assertNotEqual(products(before),products(after),'repoint must move computed residual')
-                with patch.object(c.Comparator,'leaf',return_value=({'outcome':'not_formed'},False)):
+                with patch.object(c,'numeric_value' if row.kind=='profile' else 'symbolic_difference',return_value={'unresolved':'disabled'} if row.kind=='profile' else c.sp.S.Zero):
                     with self.assertRaises(AssertionError):
                         self.assertNotEqual(products(self.fixture(py,wl)[0]),products(self.fixture(py,wl,names=altered)[0]))
 
     def test_argument_stripped(self):
-        self.mutation(function('s9b_V',symbol('s9b_r')),'velocityProfile[r]','velocityProfile')
+        self.mutation(function('s9b_V',symbol('s9b_r')),'velocityProfile[r]','velocityProfile',channel='math_node')
 
     def test_profile_constant(self):
         self.mutation(function('s9b_delta',symbol('s9b_r')),'deltaProfile[r]','3')
@@ -109,10 +122,10 @@ class Controls(unittest.TestCase):
         self.mutation(py,original,changed)
 
     def test_density_labels_swapped(self):
-        self.mutation(py_parts('Integer(7)'),wl_parts('7'),wl_parts('7',labels=('rho <= 0','rho > 0')))
+        self.mutation(py_parts('Integer(7)'),wl_parts('7'),wl_parts('7',labels=('rho <= 0','rho > 0')),channel='text_comparison')
 
     def test_marker_changed(self):
-        self.mutation(py_gate('Integer(7)'),wl_gate('7'),wl_gate('7',outside='UNAVAILABLE'))
+        self.mutation(py_gate('Integer(7)'),wl_gate('7'),wl_gate('7',outside='UNAVAILABLE'),channel='text_comparison')
 
     def test_marker_domain_changed(self):
         self.mutation(py_gate('Integer(7)'),wl_gate('7'),wl_gate('7',outside_domain='GM==0'))
@@ -146,7 +159,7 @@ class Controls(unittest.TestCase):
 
     def test_derivative_order(self):
         py='Derivative(Function("s9b_delta")(Symbol("s9b_r")),Tuple(Symbol("s9b_r"),Integer(1)))'
-        self.mutation(py,'Derivative[1][deltaProfile][r]','Derivative[2][deltaProfile][r]')
+        self.mutation(py,'Derivative[1][deltaProfile][r]','Derivative[2][deltaProfile][r]',channel='evaluate_profile_derivative')
 
     def test_integral_limits(self):
         py='Integral(Mul(Symbol("s9b_r"),Integer(2)),Tuple(Symbol("s9b_r"),Integer(1),Integer(3)))'
@@ -159,11 +172,15 @@ class Controls(unittest.TestCase):
     def test_nested_sibling_removed(self):
         py='Tuple(Tuple(Str("left"),Integer(2)),Tuple(Str("right"),Tuple(Integer(3),Integer(5))))'
         wl='<|"left"->2,"right"->{3,5}|>'; changed='<|"left"->2,"right"->{3}|>'
-        before=self.fixture(py,wl); after=self.fixture(py,changed)
-        self.assertNotEqual(products(before[0]),products(after[0]))
-        with patch.object(c.Comparator,'compare',return_value=({'outcome':'not_formed'},(set(),set()))):
-            with self.assertRaises(AssertionError):
-                self.assertNotEqual(products(self.fixture(py,wl)[0]),products(self.fixture(py,changed)[0]))
+        def missing(value):
+            if isinstance(value,dict):
+                return int(value.get('reason')=='nested sibling has no bound counterpart')+sum(missing(v) for v in value.values())
+            return sum(missing(v) for v in value) if isinstance(value,list) else 0
+        def check():
+            self.assertNotEqual(missing(self.fixture(py,wl)[0]),missing(self.fixture(py,changed)[0]))
+        check()
+        with patch.object(c.Comparator,'absent',return_value={'outcome':'not_formed','reason':'disabled missing-sibling comparison'}):
+            with self.assertRaises(AssertionError): check()
 
     def test_duplicate_join_and_names(self):
         with self.assertRaises(c.InputError): self.fixture('Integer(7)','7',joins=('SYNTHETIC','SYNTHETIC'))
@@ -198,7 +215,8 @@ class Controls(unittest.TestCase):
         cases=[c.sp.Integral(x**2,(x,1,3)),
                c.sp.Integral(c.sp.exp(-x),(x,0,c.sp.oo)),
                c.sp.Integral(1/c.sp.sqrt(x),(x,0,1)),
-               c.sp.Integral(c.sp.I*x,(x,0,1))]
+               c.sp.Integral(c.sp.I*x,(x,0,1)),
+               c.sp.Integral(1/((1+1/x)*x**2),(x,1,c.sp.oo))]
         for integral in cases:
             reference=complex(integral.doit().evalf(30))
             for digits in (18,30):
@@ -261,13 +279,144 @@ class Controls(unittest.TestCase):
         wl='Inactive[Integrate][deltaProfile[r],{r,2,3}]'
         comparison=self.fixture(py,wl)[0][0]
         rows=comparison['samples']
-        expected={f'p{i}/{profile}' for i in range(len(c.POINTS)) for profile in c.PROFILE_NAMES}
+        expected={f'p{i}/{profile}' for i in range(3) for profile in ('inverse','shifted','exponential','optical_zero','delta_zero','velocity_zero','tilt_zero','bulk_zero_at_point','bulk_negative_at_point','brane_zero_at_point','stiffness_zero_at_point')}
         self.assertEqual({r['configuration'] for r in rows},expected)
         self.assertTrue(all('py' in r and 'wl' in r and 'residual' in r for r in rows))
         # Disabling numerical evaluation must be observable in the computed
         # products, despite retaining every printed operand and configuration.
         with patch.object(c,'numeric_value',return_value={'unresolved':'disabled'}):
             self.assertNotEqual(products(comparison),products(self.fixture(py,wl)[0][0]))
+
+    def test_negative_density_probe_computes(self):
+        py='Piecewise(ExprCondPair(Integer(7),StrictLessThan(Add(Function("s9b_f")(Symbol("s9b_r")),Integer(1)),Integer(0))),ExprCondPair(Integer(3),true))'
+        self.mutation(py,'Piecewise[{{7,1+fProfile[r]<0}},3]','Piecewise[{{11,1+fProfile[r]<0}},3]')
+
+    def test_held_integral_derivative_is_not_artificially_undefined(self):
+        py='Subs(Derivative(Integral(Pow(Add(Symbol("s9b_r"),Mul(Integer(-1),Symbol("b"))),Rational(-1,2)),Tuple(Symbol("s9b_r"),Symbol("b"),Add(Symbol("b"),Integer(1)))),Tuple(Symbol("b"),Integer(2))),Tuple(Symbol("b")),Tuple(Integer(2)))'
+        # This derivative exists (the integral is invariant under translation).
+        # An evaluator unable to differentiate it must say unresolved.
+        result=self.fixture(py,'0')[0][0]
+        self.assertTrue(result['samples'])
+        self.assertTrue(all('undefined' not in r['py'] for r in result['samples']))
+        self.assertTrue(all(r['comparison'].get('coverage')!='numeric operands printed' for r in result['samples']))
+        self.assertTrue(all('unresolved' in r['py'] or 'exact' in r['py'] for r in result['samples']))
+        with patch.object(c,'evaluate_substitution',side_effect=lambda v:v.doit(deep=False)):
+            with self.assertRaises(AssertionError):
+                self.assertTrue(all('undefined' not in r['py'] for r in self.fixture(py,'0')[0][0]['samples']))
+
+    def test_interior_pole_never_prints_finite_quadrature(self):
+        py='Integral(Pow(Function("rho_br_profile")(Symbol("s9b_r")),Integer(-1)),Tuple(Symbol("s9b_r"),Integer(2),Integer(5)))'
+        wl='Inactive[Integrate][1/rhoBr[r],{r,2,5}]'
+        def check():
+            rows=self.fixture(py,wl)[0][0]['samples']
+            singular=[r for r in rows if r['profile']=='brane_zero_at_point']
+            self.assertEqual(len(singular),3)
+            self.assertTrue(all('unresolved' in r['py'] or 'undefined' in r['py'] for r in singular))
+            self.assertTrue(all(r['comparison']['coverage']!='residual formed' for r in singular))
+        check()
+        # Disable both safety channels to recreate the finite-value defect.
+        with patch.object(c,'integral_screen'),patch.object(c,'numerical_expression',return_value=c.mp.mpf(1)):
+            c.numerical_integral.cache_clear()
+            with self.assertRaises(AssertionError): check()
+
+    def test_unreliable_quadrature_is_unresolved(self):
+        py='Integral(Function("s9b_delta")(Symbol("s9b_r")),Tuple(Symbol("s9b_r"),Integer(2),Integer(3)))'
+        wl='Inactive[Integrate][deltaProfile[r],{r,2,3}]'
+        with patch.object(c,'numerical_expression',side_effect=lambda expr,digits:c.mp.mpf(digits)):
+            rows=self.fixture(py,wl)[0][0]['samples']
+        self.assertTrue(all('unresolved' in r['py'] for r in rows if r['profile']!='optical_zero' and r['profile']!='delta_zero'))
+
+    def test_quadrature_error_estimate_is_enforced(self):
+        py='Integral(Function("s9b_delta")(Symbol("s9b_r")),Tuple(Symbol("s9b_r"),Integer(2),Integer(3)))'
+        wl='Inactive[Integrate][deltaProfile[r],{r,2,3}]'
+        def check():
+            c.numerical_integral.cache_clear()
+            rows=self.fixture(py,wl)[0][0]['samples']
+            self.assertTrue(all('unresolved' in r['py'] for r in rows if r['profile'] not in ('optical_zero','delta_zero')))
+        with patch.object(c.mp,'quad',return_value=(c.mp.mpf(1),c.mp.mpf(1))):
+            check()
+            with patch.object(c,'quadrature_consistent',return_value=True):
+                with self.assertRaises(AssertionError): check()
+        c.numerical_integral.cache_clear()
+
+    def test_record_gate_marker_and_domain(self):
+        py='Tuple(Tuple(Tuple(Str("ATTACHED_DOMAIN"),true),Tuple(Str("condition"),true)),Tuple(Tuple(Str("ATTACHED_DOMAIN"),false),Str("NOT_ESTABLISHED")))'
+        wl=wl_gate('<|"condition"->True|>')
+        self.mutation(py,wl,wl_gate('<|"condition"->True|>',outside='UNAVAILABLE'),channel='text_comparison')
+        self.mutation(py,wl,wl_gate('<|"condition"->True|>',outside_domain='GM==0'))
+        result=self.fixture(py,wl)[0][0]['children']
+        self.assertEqual(result['outside']['children']['value']['outcome'],'marker')
+        self.assertEqual(result['outside']['children']['domain']['outcome'],'predicate')
+
+    def test_empty_piece_distinct_from_unresolved(self):
+        result=self.fixture('false','False')[0][0]
+        self.assertTrue(any(s['coverage']=='empty' for s in result['strata']))
+        self.assertTrue(any(s['coverage']=='sampled' for s in result['strata']))
+        with patch.object(c,'stratum_coverage',return_value='unresolved coverage'):
+            with self.assertRaises(AssertionError):
+                self.assertTrue(any(s['coverage']=='empty' for s in self.fixture('false','False')[0][0]['strata']))
+
+    def test_set_and_quantified_domains_are_sampled(self):
+        condition='Equality(ConditionSet(Symbol("q"),StrictLessThan(Symbol("q"),Symbol("GM")),Interval(Integer(0),Integer(1))),EmptySet)'
+        py=py_gate('Integer(7)',condition)
+        original=wl_gate('7','Inactive[ForAll][r,0<=r && r<=1,r>=GM]')
+        changed=wl_gate('7','Inactive[ForAll][r,0<=r && r<=1,r>GM]')
+        self.mutation(py,original,changed)
+        result=self.fixture(py,original)[0][0]['children']['on']['children']['domain']
+        self.assertEqual(result['outcome'],'predicate')
+        self.assertTrue(any('truth' in r['py'] and 'truth' in r['wl'] for r in result['samples']))
+
+    def test_exists_domain_and_unresolved_quantifier(self):
+        py=py_gate('Integer(7)','Unequality(ConditionSet(Symbol("q"),Equality(Pow(Symbol("q"),Integer(2)),Symbol("GM")),Reals),EmptySet)')
+        self.mutation(py,wl_gate('7','Exists[r,r^2==GM]'),wl_gate('7','Exists[r,r^2==-GM]'))
+        result=self.fixture(py,wl_gate('7','ForAll[r,Mystery[r]>GM]'))[0][0]
+        domain=result['children']['on']['children']['domain']
+        self.assertTrue(domain.get('samples'))
+        self.assertTrue(all('unresolved' in r['wl'] for r in domain['samples']))
+
+    def test_specific_evaluation_ablations_are_detected(self):
+        with patch.object(c,'numeric_value',return_value={'unresolved':'disabled'}):
+            for control in (self.test_profile_constant,self.test_integral_limits,self.test_zero_density_stratum,self.test_negative_density_probe_computes):
+                with self.subTest(control=control.__name__),self.assertRaises(AssertionError): control()
+        with patch.object(c,'evaluate_profile_derivative',return_value=c.sp.S.Zero):
+            with self.assertRaises(AssertionError): self.test_derivative_order()
+        with patch.object(c,'PROFILE_NAMES',tuple(p for p in c.PROFILE_NAMES if p not in ('bulk_zero_at_point','bulk_negative_at_point'))):
+            for control in (self.test_zero_density_stratum,self.test_negative_density_probe_computes,self.test_full_configuration_set_preserved):
+                with self.subTest(control=control.__name__),self.assertRaises(AssertionError): control()
+
+    def test_unpaired_attached_domain_still_sampled(self):
+        py='Tuple(Tuple(Str("value"),Integer(7)),Tuple(Str("Domain"),StrictGreaterThan(Symbol("GM"),Integer(0))))'
+        result=self.fixture(py,'<|"value"->7|>')[0][0]['children']['Domain']
+        rows=result['domain_comparison']['samples']
+        self.assertTrue(rows)
+        self.assertTrue(all('truth' in r['py'] and 'unresolved' in r['wl'] for r in rows))
+
+    def test_completion_counts_actual_sample_outcomes(self):
+        py='Integral(Function("rho_br_profile")(Symbol("s9b_r")),Tuple(Symbol("s9b_r"),Integer(2),Integer(5)))'
+        records=self.fixture(py,'Inactive[Integrate][rhoBr[r],{r,2,5}]')[2]
+        completion=next(r for r in records if r['kind']=='completion')
+        samples=next(r for r in records if r['kind']=='comparison')['comparison']['samples']
+        self.assertEqual(sum(completion['sample_outcomes'].values()),len(samples))
+        self.assertEqual(set(completion['sample_outcomes']),{r['comparison']['coverage'] for r in samples})
+
+    def test_undefined_predicate_boundary_is_unresolved(self):
+        condition='StrictGreaterThan(Mul(Function("s9b_delta")(Symbol("s9b_r")),Pow(Function("s9b_V")(Symbol("s9b_r")),Integer(-1))),Integer(0))'
+        result=self.fixture(py_gate('Integer(7)',condition),wl_gate('7','deltaProfile[r]/velocityProfile[r]>0'))[0][0]
+        samples=result['children']['on']['children']['domain']['samples']
+        boundary=[r for r in samples if r['profile']=='optical_zero']
+        self.assertEqual(len(boundary),3)
+        self.assertTrue(all('unresolved' in r['py'] and 'unresolved' in r['wl'] for r in boundary))
+        self.assertTrue(all(r['comparison']['coverage']=='unresolved coverage' for r in boundary))
+
+    def test_nonrational_quantifier_coefficients_stay_unresolved(self):
+        condition='Equality(ConditionSet(Symbol("q"),StrictLessThan(Add(Mul(pi,Pow(Symbol("q"),Integer(6))),Mul(Integer(-1),Symbol("q")),Integer(-1)),Integer(0)),Interval(Integer(0),Integer(1))),EmptySet)'
+        py=py_gate('Integer(7)',condition)
+        wl=wl_gate('7','ForAll[r,0<=r && r<=1,Pi*r^6-r-1>=0]')
+        with patch.object(c.Boolean,'as_set',side_effect=AssertionError('unsupported coefficient solver entered')):
+            samples=self.fixture(py,wl)[0][0]['children']['on']['children']['domain']['samples']
+        self.assertTrue(samples)
+        self.assertTrue(all('unresolved' in r['py'] and 'unresolved' in r['wl'] for r in samples))
+        self.assertTrue(all('non-rational coefficients' in r['py']['unresolved'] for r in samples))
 
     def test_ungrammatical_input(self):
         for py,wl in [('Integer(','7'),('Integer(7)','{7'),('evil.attribute()','7')]:

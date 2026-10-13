@@ -27,6 +27,7 @@ import sympy as sp
 from sympy.core.function import AppliedUndef
 from sympy.core.relational import Relational
 from sympy.logic.boolalg import Boolean
+from sympy.logic.boolalg import BooleanFunction
 
 HERE = Path(__file__).resolve().parent
 PY_SOURCE = 'research/pde_ledger_v3/scripts/S9b_light_bending_sympy_audit.py'
@@ -395,6 +396,21 @@ class Unsupported(Exception):
     """Parsed content for which no mathematical comparison is implemented."""
 
 
+class UnresolvedEvaluation(Exception):
+    """The evaluator has not established a value; this is not undefinedness."""
+
+
+class UndefinedIntegral(Exception):
+    """A proved nonintegrable pole, not a quadrature failure."""
+
+
+class Quantifier(BooleanFunction):
+    """Held scoped ForAll/Exists; never inferred from finitely many probes."""
+    @property
+    def free_symbols(self):
+        return (self.args[2].free_symbols | self.args[3].free_symbols)-set(self.args[1])
+
+
 class Bindings:
     def __init__(self, rows):
         self.maps = {'py': {r.py:r.py for r in rows}, 'wl': {r.wl:r.py for r in rows}}
@@ -424,7 +440,9 @@ WL_BUILTINS = {'Plus':'Add','Times':'Mul','Power':'Pow','Equal':'Equality',
                'Unequal':'Unequality','Greater':'StrictGreaterThan','Less':'StrictLessThan',
                'GreaterEqual':'GreaterThan','LessEqual':'LessThan', 'List':'Sequence',
                'Integrate':'Integral', 'Inactive/Integrate':'Integral',
-               'Inactive/Limit':'Limit','Element':'Contains'}
+               'Inactive/Limit':'Limit','Element':'Contains',
+               'Inactive/ForAll':'ForAll','Inactive/Exists':'Exists',
+               'ForAll':'ForAll','Exists':'Exists'}
 
 
 def math_node(n, bindings, engine, scope=None):
@@ -488,8 +506,9 @@ def math_node(n, bindings, engine, scope=None):
         return sp.Pow(base,exponent)
     if h == 'Rational': return sp.Rational(*(cv(x) for x in a))
     if h in RELATIONS:
-        if len(a)!=2 or any(x.head in ('Equality','StrictGreaterThan','StrictLessThan','LessThan','GreaterThan') for x in a):
-            raise Unsupported('chained or nonbinary relation')
+        if len(a)!=2: raise Unsupported('nonbinary relation')
+        if a[0].head in RELATIONS:
+            return sp.And(cv(a[0]),RELATIONS[h](cv(a[0].args[-1]),cv(a[1]),evaluate=False))
         return RELATIONS[h](*(cv(x) for x in a),evaluate=False)
     if h in ('And','Or','Not'):
         values = [cv(x) for x in a]
@@ -499,8 +518,22 @@ def math_node(n, bindings, engine, scope=None):
         left,right = cv(a[0]),cv(a[1])
         if isinstance(left,sp.Tuple): return sp.And(*(sp.Contains(x,right,evaluate=False) for x in left))
         return sp.Contains(left,right,evaluate=False)
+    if h in ('ForAll','Exists'):
+        variables=a[0].args if a[0].head=='Sequence' else (a[0],)
+        local=dict(scope)
+        for i,v in enumerate(variables): local[v.value]=sp.Symbol('_quant_'+str(len(scope)+i),real=True)
+        restriction=cv(a[1],local) if len(a)==3 else sp.true
+        return Quantifier(sp.Integer(h=='ForAll'),sp.Tuple(*(local[v.value] for v in variables)),restriction,cv(a[-1],local))
+    if h == 'ConditionSet':
+        variables=a[0].args if a[0].head=='Sequence' else (a[0],)
+        local=dict(scope)
+        for i,v in enumerate(variables): local[v.value]=sp.Symbol('_set_'+str(len(scope)+i),real=True)
+        bound=tuple(local[v.value] for v in variables)
+        return sp.ConditionSet(bound[0] if len(bound)==1 else sp.Tuple(*bound),cv(a[1],local),cv(a[2]))
+    if h in ('ProductSet','Intersection','Union','Complement'):
+        return getattr(sp,h)(*(cv(x) for x in a),**({'evaluate':False} if h in ('Intersection','Union') else {}))
     if h in ('Sequence','Alternatives','FiniteSet'): return (sp.Tuple if h in ('Sequence','Alternatives') else sp.FiniteSet)(*(cv(x) for x in a))
-    if h == 'Interval': return sp.Interval(*(cv(x) for x in a))
+    if h == 'Interval': return sp.Interval(*(cv(x) for x in a),**{k:ast.literal_eval(v) for k,v in n.options})
     if h in ('sin','cos','tan','log','exp','sqrt','Abs','Min','Max','re','im','acos','Sin','Cos','Tan','Log','Exp','Sqrt','Re','Im','ArcCos','Sec'):
         function = {'Sin':sp.sin,'Cos':sp.cos,'Tan':sp.tan,'Log':sp.log,'Exp':sp.exp,'Sqrt':sp.sqrt,'Re':sp.re,'Im':sp.im,'ArcCos':sp.acos,'Sec':sp.sec}.get(h,getattr(sp,h,None))
         return function(*(cv(x) for x in a))
@@ -551,7 +584,26 @@ class View:
 def is_text(n, value): return n.head=='Text' and n.value==value
 
 def attached(ref):
-    return ref.node.head=='Sequence' and len(ref.node.args)==2 and is_text(ref.node.args[0],'ATTACHED_DOMAIN')
+    return ((ref.node.head=='Sequence' and len(ref.node.args)==2 and is_text(ref.node.args[0],'ATTACHED_DOMAIN'))
+            or (ref.node.head=='Record' and set(ref.fields())=={'ATTACHED_DOMAIN'}))
+
+
+def domain_ref(ref):
+    return ref.fields()['ATTACHED_DOMAIN'] if ref.node.head=='Record' else ref.child(1)
+
+
+def gate_pair(ref):
+    if ref.node.head=='Sequence' and len(ref.node.args)==2 and attached(ref.child(0)):
+        return domain_ref(ref.child(0)),ref.child(1)
+    # Tuple((ATTACHED_DOMAIN, condition), (text, value), ...) is a record.
+    fields=ref.fields()
+    if 'ATTACHED_DOMAIN' in fields:
+        rest={k:v for k,v in fields.items() if k!='ATTACHED_DOMAIN'}
+        if len(rest)==1:
+            # A gate's second element can itself be a text/value pair. Keep
+            # that pair's original record entry and key in the value view.
+            return fields['ATTACHED_DOMAIN'],View(ref,'value',{k:extract(v,'py') for k,v in rest.items()})
+    return None
 
 
 def extract(ref, engine, role='value'):
@@ -562,16 +614,19 @@ def extract(ref, engine, role='value'):
     compared descendants contribute to comparison coverage.
     """
     n=ref.node; fields=ref.fields()
-    if attached(ref): return extract(ref.child(1),engine,'domain')
+    if attached(ref): return extract(domain_ref(ref),engine,'domain')
     if engine=='py' and n.head=='Sequence':
         a=n.args
         if len(a)==3 and is_text(a[0],'APPLICABLE_OBJECT') and attached(ref.child(1)):
             return View(ref,role,{'value':extract(ref.child(2),engine),
                                   'applicability':extract(ref.child(1),engine)})
-        if len(a)==2 and all(x.head=='Sequence' and len(x.args)==2 and attached(ref.child(i).child(0)) for i,x in enumerate(a)):
-            return View(ref,role,{name: View(ref.child(i), 'case', {
-                'domain':extract(ref.child(i).child(0),engine),
-                'value':extract(ref.child(i).child(1),engine)}) for i,name in enumerate(('on','outside'))})
+        if len(a)==2 and all(gate_pair(ref.child(i)) is not None for i in range(2)):
+            result={}
+            for i,name in enumerate(('on','outside')):
+                d,v=gate_pair(ref.child(i))
+                result[name]=View(ref.child(i),'case',{'domain':extract(d,engine,'domain'),
+                    'value':v if isinstance(v,View) else extract(v,engine)})
+            return View(ref,role,result)
         if len(a)==4 and is_text(a[0],'LOCAL_BULK_DENSITY_PARTS'):
             parts={}
             for i,name in ((1,'positive'),(2,'nonpositive')):
@@ -706,16 +761,30 @@ def substitute_profiles(expr,point,profile):
             return replace_fn(node.func(*args))
         if isinstance(node,sp.Derivative):
             value=sp.Derivative(*args,evaluate=False)
-            return value if value.has(sp.Integral) else value.doit()
+            return value if value.has(sp.Integral) else evaluate_profile_derivative(value)
         if isinstance(node,sp.Subs):
-            return sp.Subs(*args).doit(deep=False)
+            value=sp.Subs(*args)
+            return evaluate_substitution(value)
         return node.func(*args) if args!=node.args else node
     value=prepare(expr)
     prepare.cache_clear()
     substitutions={sp.Symbol(k):v for k,v in point.items()}
     substitutions[sp.Symbol('r_E')]=sp.sqrt(point['b']**2+point['Z_E']**2)
     substitutions[sp.Symbol('r_R')]=sp.sqrt(point['b']**2+point['Z_R']**2)
+    # SymPy ConditionSet._eval_subs can leave external parameters unchanged.
+    # Set binders were alpha-renamed by the reader, so this free-parameter
+    # replacement cannot capture their variables or rewrite derivatives in
+    # scalar operands outside the sets.
+    value=value.replace(lambda n:isinstance(n,sp.ConditionSet),lambda n:n.xreplace(substitutions))
     return value.subs(substitutions, simultaneous=True)
+
+
+def evaluate_profile_derivative(value):
+    return value.doit()
+
+
+def evaluate_substitution(value):
+    return value if value.has(sp.Derivative,sp.Integral) else value.doit(deep=False)
 
 
 def math_text(value):
@@ -732,65 +801,207 @@ def numeric_value(expr,point,profile):
     return _numeric_value(expr,tuple(sorted(point.items())),profile)
 
 
+def sampled_truth(value):
+    """Decide only established truth, including scoped sets and quantifiers."""
+    if value in (sp.true,sp.false): return {'truth':bool(value)}
+    if isinstance(value,(sp.And,sp.Or)):
+        results=[sampled_truth(v) for v in value.args]
+        decisive=False if isinstance(value,sp.And) else True
+        if any(r.get('truth') is decisive for r in results): return {'truth':decisive}
+        if all('truth' in r for r in results): return {'truth':not decisive}
+        return {'unresolved':'; '.join(sorted({r['unresolved'] for r in results if 'unresolved' in r}))}
+    if isinstance(value,sp.Not):
+        result=sampled_truth(value.args[0])
+        return {'truth':not result['truth']} if 'truth' in result else result
+    if isinstance(value,Quantifier):
+        universal,variables,restriction,predicate=value.args
+        counter=sp.And(restriction,sp.Not(predicate)) if universal else sp.And(restriction,predicate)
+        try:
+            empty=set_empty(sp.ConditionSet(variables[0] if len(variables)==1 else variables,counter,sp.S.Reals if len(variables)==1 else sp.ProductSet(*([sp.S.Reals]*len(variables)))))
+        except UnresolvedEvaluation as exc: return {'unresolved':str(exc)}
+        return {'truth':empty if universal else not empty} if empty is not None else {'unresolved':'quantified condition could not be decided over its full bound domain'}
+    if isinstance(value,(sp.Equality,sp.Unequality)) and (isinstance(value.lhs,sp.Set) or isinstance(value.rhs,sp.Set)):
+        if value.lhs==value.rhs: return {'truth':isinstance(value,sp.Equality)}
+        other=value.rhs if value.lhs==sp.EmptySet else value.lhs if value.rhs==sp.EmptySet else None
+        try:
+            empty=set_empty(other) if other is not None else None
+        except UnresolvedEvaluation as exc: return {'unresolved':str(exc)}
+        if empty is not None: return {'truth':empty if isinstance(value,sp.Equality) else not empty}
+        return {'unresolved':'set equality/emptiness could not be decided'}
+    if value.free_symbols: return {'unresolved':'free names '+','.join(sorted(map(str,value.free_symbols)))}
+    if value.has(sp.Integral,sp.Derivative,sp.Subs,sp.Limit):
+        return {'unresolved':'predicate contains an unevaluated functional'}
+    if value.has(sp.nan,sp.zoo): return {'unresolved':'predicate contains undefined scalar content'}
+    reduced=sp.simplify(value)
+    if reduced in (sp.true,sp.false): return {'truth':bool(reduced)}
+    return {'unresolved':'predicate truth not decided: '+math_text(reduced)}
+
+
+def set_empty(value):
+    if value==sp.EmptySet: return True
+    if isinstance(value,(sp.Interval,sp.FiniteSet)) or value==sp.S.Reals:
+        return value.is_empty
+    if isinstance(value,sp.ProductSet):
+        states=[set_empty(v) for v in value.args]
+        if True in states: return True
+        return False if all(v is False for v in states) else None
+    if isinstance(value,sp.ConditionSet):
+        if set_empty(value.base_set) is True: return True
+        variables=value.sym if isinstance(value.sym,sp.Tuple) else (value.sym,)
+        condition=value.condition
+        if condition is sp.false: return True
+        if condition is sp.true: return set_empty(value.base_set)
+        if isinstance(value.base_set,sp.FiniteSet):
+            truths=[sampled_truth(condition.subs(value.sym,x)) for x in value.base_set]
+            if any(t.get('truth') is True for t in truths): return False
+            if all(t.get('truth') is False for t in truths): return True
+        # Exact univariate polynomial/rational decision, not finite sampling.
+        # More general quantified ray constructions remain explicit coverage.
+        if len(variables)==1 and not (condition.free_symbols-set(variables)) and not condition.has(AppliedUndef,sp.Integral,sp.Derivative,sp.Subs,Quantifier,sp.Contains):
+            x=variables[0]
+            try:
+                if all((r.lhs-r.rhs).is_rational_function(x) for r in condition.atoms(Relational)):
+                    # as_set's general-coefficient solver can expand huge
+                    # radicals and launch numerical assumption checks. This
+                    # decision procedure supports rational coefficients;
+                    # other coefficient fields get a sampled unknown, never
+                    # a truth inferred from a finite set of point probes.
+                    for relation in condition.atoms(Relational):
+                        numerator,denominator=sp.together(relation.lhs-relation.rhs).as_numer_denom()
+                        for polynomial in (numerator,denominator):
+                            if not all(coefficient.is_Rational for coefficient in sp.Poly(polynomial,x).all_coeffs()):
+                                raise UnresolvedEvaluation('quantified/set truth requires root isolation with non-rational coefficients; not implemented')
+                    solution=condition.as_set()
+                    intersection=sp.Intersection(solution,value.base_set)
+                    return intersection.is_empty
+            except (NotImplementedError,ValueError,TypeError): pass
+    return None
+
+
 @lru_cache(maxsize=4096)
 def _numeric_value(expr,point_items,profile):
-    value=substitute_profiles(expr,dict(point_items),profile)
+    try:
+        value=substitute_profiles(expr,dict(point_items),profile)
+    except TypeError as exc:
+        # SymPy refuses to construct an order comparison with NaN or a
+        # non-real number. That is an undecidable sampled predicate, not an
+        # operational input error and not a truth value. Other TypeErrors
+        # remain bugs and propagate.
+        if str(exc)=='Invalid NaN comparison' or str(exc).startswith('Invalid comparison of non-real'):
+            return {'unresolved':'sampled predicate: '+str(exc)}
+        raise
+    if isinstance(value,Boolean) and not isinstance(value,sp.Expr): return sampled_truth(value)
+    if value.has(sp.Derivative,sp.Limit,sp.Subs):
+        return {'unresolved':'held derivative, substitution or limit; evaluation not established for the original object'}
     if value.free_symbols:
         return {'unresolved':'free names '+','.join(sorted(map(str,value.free_symbols)))}
-    if value.has(sp.Derivative,sp.Limit): return {'unresolved':'unevaluated derivative or limit'}
-    if value.has(sp.nan,sp.zoo): return {'undefined':math_text(value)}
-    if value in (sp.true,sp.false): return {'truth':bool(value)}
-    if isinstance(value,Boolean) and not isinstance(value,sp.Expr):
-        reduced=sp.simplify(value)
-        if reduced in (sp.true,sp.false): return {'truth':bool(reduced)}
-        return {'unresolved':'predicate '+math_text(reduced)}
-    if isinstance(value,sp.Set): return {'exact':math_text(value)}
-    # Independent precision evaluations retain their discrepancy; no tolerance
-    # becomes an equality claim. evalf's precision is not a certified bound.
+    if value.has(sp.nan,sp.zoo): return {'undefined':math_text(value),'reason':'exact substitution is undefined'}
+    if isinstance(value,sp.Set): return {'unresolved':'set is not a scalar truth value'}
     if value.has(sp.Integral):
-        for integral in value.atoms(sp.Integral):
-            if len(integral.limits)!=1: return {'unresolved':'multidimensional integral'}
         try:
             low=numerical_expression(value,18); high=numerical_expression(value,30)
-        except (ValueError,NotImplementedError) as exc:
+        except (UnresolvedEvaluation,ValueError,NotImplementedError,ZeroDivisionError) as exc:
             return {'unresolved':'quadrature '+type(exc).__name__+': '+str(exc)}
-        if not mp.isfinite(high): return {'undefined':str(high)}
-        with mp.workdps(40):
-            difference=mp.nstr(high-low,30)
-        return {'approx_18':mp.nstr(low,18),'approx_30':mp.nstr(high,30),
-                'precision_difference':difference,
-                'method':'compiled mpmath tanh-sinh; independent integral evaluation; fixed working precision',
-                'error_bound':'not certified; numerical evidence only'}
+        except UndefinedIntegral as exc:
+            return {'undefined':str(exc)}
+        with mp.workdps(50):
+            discrepancy=abs(high-low)
+            if not mp.isfinite(high) or discrepancy>mp.mpf('1e-14')*abs(high):
+                return {'unresolved':'independent quadrature precision check did not establish 12 printed digits'}
+            return {'approx_12':mp.nstr(high,12),'precision_difference':mp.nstr(discrepancy,5),
+                    'method':'convergence screening, tanh-sinh error estimate and independent precision/panel checks',
+                    'reliable_digits':12,'reliability':'numerical evidence, not a certified error bound'}
     if not isinstance(value,sp.Expr): return {'unresolved':'nonscalar sample '+math_text(value)}
+    if value.is_finite is False: return {'undefined':math_text(value),'reason':'nonfinite exact scalar'}
     return {'exact':math_text(value),'approx_30':math_text(value.evalf(30))}
 
+
+def integral_screen(integral):
+    """Conservative absolute-convergence screen before any quadrature.
+
+    All algebraic denominator roots are inspected, including interior roots.
+    Unknown singular sets or endpoint orders are unresolved, never finite values.
+    No Cauchy principal value replaces an improper integral.
+    """
+    if len(integral.limits)!=1: raise UnresolvedEvaluation('multidimensional integral')
+    (x,lo,hi),=integral.limits
+    f=integral.function
+    if f.has(sp.tan,sp.sec,sp.cot,sp.csc):
+        raise UnresolvedEvaluation('trigonometric pole set not established')
+    if f.has(sp.Integral): raise UnresolvedEvaluation('nested integral convergence not established')
+    if lo==hi: return
+    if (lo>hi) is sp.true: lo,hi=hi,lo
+    roots=set()
+    for power in f.atoms(sp.Pow):
+        if power.exp.is_negative:
+            base=power.base
+            if x not in base.free_symbols: continue
+            if not base.is_polynomial(x):
+                # exp is entire and has no zeros; other denominators require
+                # a separate proof, not successful quadrature nodes.
+                if base.func==sp.exp: continue
+                if base.is_rational_function(x):
+                    # Isolate numerator zeros of a rational denominator.
+                    # Its own poles occur among the nested negative powers
+                    # and are screened independently; no value is changed.
+                    base=sp.cancel(base).as_numer_denom()[0]
+                else: raise UnresolvedEvaluation('nonpolynomial denominator zero set not established')
+            try:
+                polynomial=sp.Poly(base,x)
+                roots.update(polynomial.real_roots())
+            except (sp.PolynomialError,NotImplementedError):
+                raise UnresolvedEvaluation('denominator real roots not established')
+    for root in roots:
+        inside=sp.And(root>lo,root<hi)
+        if inside is sp.true:
+            # Cancellation across summands and fractional singularities can
+            # be removable/integrable. We do not call them divergent without
+            # proving it; neither do we print an unvalidated finite value.
+            raise UnresolvedEvaluation('interior denominator zero at '+math_text(root)+'; local integrability not established')
+        if inside not in (sp.true,sp.false): raise UnresolvedEvaluation('singularity location undecided')
+    t=sp.Symbol('_endpoint_t',positive=True)
+    for endpoint,sign in ((lo,1),(hi,-1)):
+        if endpoint not in roots and endpoint not in (sp.oo,-sp.oo): continue
+        transformed=(f.subs(x,1/t)/t**2 if endpoint==sp.oo else
+                     f.subs(x,-1/t)/t**2 if endpoint==-sp.oo else f.subs(x,endpoint+sign*t))
+        try:
+            leading=transformed.as_leading_term(t,cdir=1)
+            exponent=leading.as_powers_dict().get(t,sp.S.Zero)
+            if leading.has(sp.exp,sp.log): raise NotImplementedError
+            if (exponent>-1) is not sp.true:
+                raise UnresolvedEvaluation('endpoint absolute integrability not established at '+math_text(endpoint))
+        except (NotImplementedError,sp.PoleError):
+            # A finite transformed limit proves boundedness at that endpoint.
+            limit=sp.limit(transformed,t,0,dir='+')
+            if limit.is_finite is not True:
+                raise UnresolvedEvaluation('endpoint convergence not established at '+math_text(endpoint))
 
 
 @lru_cache(maxsize=2048)
 def numerical_integral(integral,digits):
-    """Evaluate the original integral, with no cross-engine rewriting.
-
-    Compile once per distinct substituted integral/precision. SymPy evalf walks
-    the symbolic integrand at every node and repeatedly reintegrates a difference
-    to chase relative accuracy lost in cancellation. Instead evaluate each
-    integral independently, retain both precisions, and do arithmetic on those
-    numbers. This is numerical evidence, never a certified zero or error bound.
-    """
-    (variable,lower,upper),=integral.limits
     if integral.function.has(sp.Integral):
-        # Retain the original evaluator's nested-integral support. The fast
-        # path applies to single integrals; it never removes a supported case.
-        evaluated=integral.evalf(digits)
-        if evaluated.has(sp.Integral):
-            raise NotImplementedError('quadrature not formed')
-        real,imag=evaluated.as_real_imag()
-        with mp.workdps(digits+15):
-            return mp.mpc(str(real),str(imag))
+        evaluated=integral.doit()
+        if evaluated.has(sp.Integral): raise UnresolvedEvaluation("nested integral convergence not established")
+        with mp.workdps(digits+30): return mp.mpc(str(sp.re(evaluated.evalf(digits+30))),str(sp.im(evaluated.evalf(digits+30))))
+    integral_screen(integral)
+    (variable,lower,upper),=integral.limits
     function=sp.lambdify(variable,integral.function,modules='mpmath',cse=True)
     bounds=sp.lambdify((),(lower,upper),modules='mpmath',cse=True)
-    with mp.workdps(digits+15):
+    with mp.workdps(2*digits+30):
         lo,hi=bounds()
-        return +mp.quad(function,[lo,hi],method='tanh-sinh')
+        first,error=mp.quad(function,[lo,hi],method='tanh-sinh',error=True)
+    with mp.workdps(2*digits+50):
+        lo,hi=bounds()
+        middle=(lo+hi)/2 if mp.isfinite(lo) and mp.isfinite(hi) else lo+1 if mp.isfinite(lo) else hi-1 if mp.isfinite(hi) else mp.mpf(0)
+        second,error2=mp.quad(function,[lo,middle,hi],method='tanh-sinh',error=True)
+        tolerance=mp.power(10,-digits+4)*abs(second)
+        if not quadrature_consistent(first,second,error,error2,tolerance):
+            raise UnresolvedEvaluation('quadrature error/precision/panel consistency check did not converge')
+        return +second
+
+
+def quadrature_consistent(first,second,error,error2,tolerance):
+    return all(mp.isfinite(v) for v in (first,second,error,error2)) and max(error,error2,abs(second-first))<=tolerance
 
 
 def numerical_expression(value,digits):
@@ -820,13 +1031,21 @@ def progress_event(stage,**fields):
         print('S9B_COMPARATOR_PROGRESS '+json.dumps(dict(object=CURRENT_OBJECT,stage=stage,monotonic_seconds=time.monotonic(),**fields)),
               file=sys.stderr,flush=True)
 
-def sample_difference(a,b):
+def sample_difference(a,b,residual=None):
+    if 'undefined' in a or 'undefined' in b:
+        return {'coverage':'undefined operand; comparison not formed'}
+    if 'unresolved' in a or 'unresolved' in b:
+        return {'coverage':'unresolved coverage'}
+    if residual is not None:
+        if 'undefined' in residual: return {'coverage':'undefined residual; comparison not formed'}
+        if 'unresolved' in residual: return {'coverage':'unresolved coverage'}
+        return {'coverage':'residual formed','residual':residual}
     if 'truth' in a and 'truth' in b: return {'boolean_difference':a['truth']!=b['truth']}
     if 'exact' in a and 'exact' in b:
         # Re-evaluation uses already-created exact SymPy objects in compare_math;
         # this field carries no untrusted eval of printed text.
         return {'same_exact_representation':a['exact']==b['exact']}
-    return {'coverage':'unresolved' if 'unresolved' in a or 'unresolved' in b else 'numeric operands printed'}
+    return {'coverage':'unresolved coverage','reason':'no arithmetic comparison formed'}
 
 
 def condition_pieces(expr):
@@ -866,8 +1085,7 @@ def compare_math(left,right,role):
         result={'outcome':'predicate','py_condition':math_text(left),'wl_condition':math_text(right),
                 'boolean_residual':math_text(residual)}
     elif isinstance(left,sp.Expr) and isinstance(right,sp.Expr):
-        residual=left-right
-        if not residual.has(sp.Integral,sp.Derivative,sp.Subs,sp.Piecewise): residual=sp.cancel(residual)
+        residual=symbolic_difference(left,right)
         result={'outcome':'symbolic','py_value':math_text(left),'wl_value':math_text(right),'residual':math_text(residual),
                 'zero_class': 'zero' if residual.is_zero is True else 'nonzero' if residual.is_zero is False else 'unresolved'}
     else: return {'outcome':'not_formed','reason':'unsupported value type'},False
@@ -883,19 +1101,58 @@ def compare_math(left,right,role):
     for label,point,profile in configurations((left,right)):
         progress_event('sample',configuration=label,role=role)
         lv=numeric_value(left,point,profile); rv=numeric_value(right,point,profile)
+        sampled_residual=None if boolean else numeric_value(residual,point,profile)
         record={'configuration':label,'point':{k:str(v) for k,v in point.items()},'profile':profile,
                 'profile_formulas':{k:str(v) for k,v in profile_formulas(profile,point)[1].items()},
-                'py':lv,'wl':rv,'comparison':sample_difference(lv,rv)}
+                'py':lv,'wl':rv,'comparison':sample_difference(lv,rv,sampled_residual)}
         if not boolean:
-            record['residual']=numeric_value(residual,point,profile)
+            record['residual']=sampled_residual
         samples.append(record)
         for i,(_,_,piece) in enumerate(pieces):
             if i not in covered and numeric_value(piece,point,profile).get('truth') is True: covered.add(i)
     result['samples']=samples
     if pieces:
         result['strata']=[{'engine':eng,'piece':label,'condition':math_text(p),
-                           'coverage':'sampled' if i in covered else 'unresolved coverage'} for i,(eng,label,p) in enumerate(pieces)]
+                           'coverage':stratum_coverage(p,i in covered)} for i,(eng,label,p) in enumerate(pieces)]
     return result,True
+
+
+def stratum_coverage(piece,sampled):
+    return 'empty' if piece is sp.false else 'sampled' if sampled else 'unresolved coverage'
+
+
+def symbolic_difference(left,right):
+    residual=left-right
+    if not residual.has(sp.Integral,sp.Derivative,sp.Subs,sp.Piecewise): residual=sp.cancel(residual)
+    return residual
+
+
+def text_comparison(left,right,role):
+    lv=LABEL_TABLE.get(left,left) if role=='label' else left
+    return lv==right
+
+
+def compare_domains(left,right,bindings):
+    translated=[]; errors=[]
+    for node,engine in ((left,'py'),(right,'wl')):
+        if node is None:
+            translated.append(None); errors.append('no bound counterpart'); continue
+        try:
+            translated.append(math_node(node,bindings,engine)); errors.append(None)
+        except Unsupported as exc:
+            translated.append(None); errors.append(str(exc))
+    if not any(errors) and all(isinstance(e,Boolean) and not isinstance(e,sp.Expr) for e in translated):
+        return compare_math(*translated,'domain')
+    samples=[]
+    for label,point,profile in configurations(tuple(e for e in translated if e is not None)):
+        values=[{'unresolved':'domain translation: '+error} if error else numeric_value(expr,point,profile)
+                for expr,error in zip(translated,errors)]
+        samples.append({'configuration':label,'point':{k:str(v) for k,v in point.items()},'profile':profile,
+            'profile_formulas':{k:str(v) for k,v in profile_formulas(profile,point)[1].items()},
+            'py':values[0],'wl':values[1],'comparison':sample_difference(*values)})
+    return {'outcome':'predicate','samples':samples,'strata':[
+        {'engine':eng,'piece':'condition and complement','coverage':'unresolved coverage','reason':error}
+        for eng,error in zip(('py','wl'),errors) if error]},False
 def structural_delta(a,b,bindings):
     """Serialization diagnostic only; never a mathematical zero."""
     def signature(n,engine):
@@ -917,12 +1174,17 @@ class Comparator:
 
     def leaf(self,a,b,role):
         left,right=a.node,b.node
+        if role=='domain':
+            key=(left,right,role)
+            if key not in self.cache:
+                self.cache[key]=compare_domains(left,right,self.bindings)
+                if len(self.cache)>256: self.cache.popitem(last=False)
+            return self.cache[key]
         if left.head=='Text' or right.head=='Text':
             if left.head!=right.head:
                 return {'outcome':'not_formed','reason':'marker/text versus other value'},False
-            lv=LABEL_TABLE.get(left.value,left.value) if role=='label' else left.value
             return {'outcome':'label' if role=='label' else 'marker',
-                    'comparison':lv==right.value,'py_text':left.value,'wl_text':right.value},True
+                    'comparison':text_comparison(left.value,right.value,role),'py_text':left.value,'wl_text':right.value},True
         try:
             lv=math_node(left,self.bindings,'py'); rv=math_node(right,self.bindings,'wl')
         except Unsupported as exc:
@@ -968,10 +1230,17 @@ class Comparator:
         used=(leaf_paths(a.ref,False),leaf_paths(b.ref,False)) if consumed else (set(),set())
         return result,used
 
-    @staticmethod
-    def absent(view,engine):
-        return {'outcome':'not_formed','reason':'nested sibling has no bound counterpart','engine':engine,
+    def absent(self,view,engine):
+        result={'outcome':'not_formed','reason':'nested sibling has no bound counterpart','engine':engine,
                 'path':view.ref.path,'role':view.role,'parsed_leaves':census(view.ref.node)}
+        if view.children:
+            result['children']={k:self.absent(v,engine) for k,v in view.children.items()}
+        elif view.role=='domain':
+            # A missing counterpart must not suppress truth sampling of the
+            # attached condition that is present on the other engine.
+            result['domain_comparison']=compare_domains(view.ref.node if engine=='py' else None,
+                view.ref.node if engine=='wl' else None,self.bindings)[0]
+        return result
 
 
 def coverage_inventory(root,engine):
@@ -1032,9 +1301,9 @@ def run(py_path,wl_path,out,accounting,*,names=NAME_TABLE,joins=SHARED,progress=
                  'qualification':'boundary probe, outside propagating subset where its condition is false' if p in ('brane_zero_at_point','stiffness_zero_at_point') else 'radial test profile; optical tails within supplied counting',
                  'formulas':{k:str(v) for k,v in profile_formulas(p,POINTS[0])[1].items()}} for p in PROFILE_NAMES],
               'points':[{k:str(v) for k,v in p.items()} for p in POINTS],
-              'numeric_scope':'exact substitutions plus independent 18/30 digit compiled tanh-sinh quadrature with 15 guard digits; no certified integration error bound; residual arithmetic does not chase cancellation; unresolved strata are coverage findings',
+              'numeric_scope':'exact substitutions; absolute convergence screening and tanh-sinh error, precision and panel checks; 12 printed digits only after agreement; numerical evidence not a certified bound; held integral derivatives remain unresolved; unresolved strata are coverage findings',
               'target':'no residual target was supplied'})
-    summary=Counter()
+    summary=Counter(); sample_outcomes=Counter()
     allkeys=sorted(set(joins)|set(streams['py'].index)|set(streams['wl'].index))
     for key in allkeys:
         CURRENT_OBJECT=key
@@ -1070,6 +1339,16 @@ def run(py_path,wl_path,out,accounting,*,names=NAME_TABLE,joins=SHARED,progress=
         except Unsupported as exc:
             result={'outcome':'not_formed','reason':'extraction '+str(exc)}; used=(set(),set())
         emit(out,{'kind':'comparison','name':key,'comparison':result})
+        def count_samples(value):
+            if isinstance(value,dict):
+                for sample in value.get('samples',[]):
+                    finding=sample['comparison']
+                    sample_outcomes[finding.get('coverage','boolean comparison formed' if 'boolean_difference' in finding else 'exact representation comparison formed')]+=1
+                for k,v in value.items():
+                    if k!='samples': count_samples(v)
+            elif isinstance(value,list):
+                for v in value: count_samples(v)
+        count_samples(result)
         # Census is computed independently from parse, not from extracted views.
         row={'name':key,'accounting':'joined',
              **{e:{'parsed_leaves':parsed[e],'compared_leaves':len(used[i]),
@@ -1087,6 +1366,7 @@ def run(py_path,wl_path,out,accounting,*,names=NAME_TABLE,joins=SHARED,progress=
                        integrals_cache=numerical_integral.cache_info()._asdict())
     summary.update({'wall_seconds':time.monotonic()-started,
                     'peak_rss_kib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss})
+    summary['sample_outcomes']=dict(sample_outcomes)
     emit(out,{'kind':'completion',**summary})
     return dict(summary)
 

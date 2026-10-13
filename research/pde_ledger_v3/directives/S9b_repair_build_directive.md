@@ -283,8 +283,10 @@ comparator, the production runs and the record.
       including a condition carried inside a set or a quantifier. A part is changed when it differs from the
       baseline part at some point: for a value, a point of its variables where both parts are defined; for a domain,
       a point where one condition holds and the other does not; and for a part that carries a profile function,
-      such a point under some admissible profile. A condition that binds variables, in a set or a quantifier, is
-      compared as the condition it states on its free variables, so its point gives values to those only.
+      such a point under some admissible profile. Two sets differ at an element that one contains and the other does
+      not, so a point for a set gives values to its free variables and to that element. A statement that binds
+      variables, such as a quantifier or a test of whether a set is empty, is compared as the statement it makes on
+      its free variables, so its point gives values to those only.
 
       Each part's difference is computed by the engine and prints by this rule, in this order:
       1. **Zero,** where the engine shows the part unchanged, including an inert integral of zero against `0`. No

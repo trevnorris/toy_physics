@@ -56,3 +56,25 @@ a further defect in material a fold just changed moves the text to a new author.
 
 **Process.** Grok's guarded run directories date from 23:51 to 00:00, except `sat-bound-py-2`, from 01:45 (lookups).
 Codex retried an admission refusal until admitted, and its guarded checks completed.
+
+## Round 2
+
+**Artifact.** The working-tree directive at sha256 `faf60e3c…`, the accepted text. Prompt:
+`_scratch/s9b_build/s9b_repair_build_directive_amend10_review_prompt_r2.md`. Lookups:
+`S9b_repair_build_directive_amend10_review_r2_lookups.md` (generator `_scratch/s9b_build/gen/s9b_amend10_r2_lookups.sh`).
+
+**Legs.**
+- **Codex (gpt-6.1-sol, xhigh): CLEAR, no findings.** Final message:
+  `_scratch/s9b_build/s9b_amend10_review_r2_codex_final.txt`. Full report and scripts:
+  `_scratch/s9b_build/s9b_amend10_review_r2_codex_evidence/` (`report.txt`).
+- **Grok: CLEAR, no findings.** Report: `_scratch/s9b_build/s9b_amend10_review_r2_grok.txt`. Scripts and stdout:
+  `_scratch/s9b_build/s9b_amend10_review_r2_grok_evidence/`. Grok checked B1's sentence on the set-valued and
+  quantified objects both engines build, including sets nested in another set's condition, and the A4 rejection
+  against the same text.
+
+**Disposition.** Nothing outstanding changes what the harnesses compute or print. Amendment 10 is accepted.
+
+**Process.** The round-0 and round-1 preservation commits (`331e748d`, `192adc31`, both 06:16:01) put those texts at
+the directive's path for about a second, after which the round-2 text was restored. Codex was then in a guard
+admission retry loop; its final baseline check (06:47) reads `OK`. Grok's directive quotes date from 06:29 and carry
+the round-2 sentence.

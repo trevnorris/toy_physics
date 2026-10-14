@@ -279,8 +279,6 @@ NAME_TABLE = tuple(NameRow(*row) for row in [
     ('j_n', 'jn', 'live normal mass exchange; 69,80', 673, 67, 'profile'),
     ('s9b_mass_V', 'vForward', 'forward no-loss velocity; repair item 10', 1042, 651, 'profile'),
     ('s9b_velocity_squared', 'yProfile', 'velocity-square reduction; 236-240', 447, 504, 'profile'),
-    ('s9b_velocity_integration_constant', 'velocityIntegrationConstant',
-     'velocity reduction constant; repair item 6', 470, 524, 'parameter'),
 ])
 
 
@@ -436,13 +434,53 @@ def wl_head(n):
 
 RELATIONS = {'Equality':sp.Eq, 'Unequality':sp.Ne, 'StrictGreaterThan':sp.Gt,
              'StrictLessThan':sp.Lt, 'GreaterThan':sp.Ge, 'LessThan':sp.Le}
-WL_BUILTINS = {'Plus':'Add','Times':'Mul','Power':'Pow','Equal':'Equality',
-               'Unequal':'Unequality','Greater':'StrictGreaterThan','Less':'StrictLessThan',
-               'GreaterEqual':'GreaterThan','LessEqual':'LessThan', 'List':'Sequence',
-               'Integrate':'Integral', 'Inactive/Integrate':'Integral',
-               'Inactive/Limit':'Limit','Element':'Contains',
-               'Inactive/ForAll':'ForAll','Inactive/Exists':'Exists',
-               'ForAll':'ForAll','Exists':'Exists'}
+@dataclass(frozen=True)
+class FunctionRow:
+    py: str
+    wl: tuple[str, ...]
+    meaning: str
+
+
+# Native syntax aliases share ONE row; distinct rows have distinct targets.
+# These are mathematical constructors, not additional physical-name bindings.
+# Inactive aliases retain their binder and are never executed by a WL engine.
+FUNCTION_TABLE = tuple(FunctionRow(*r) for r in [
+    ('Add',('Plus',),'sum'), ('Mul',('Times',),'product'),
+    ('Pow',('Power','densityPower'),'power, including the source-defined zero exponent convention'),
+    ('Equality',('Equal',),'equality'), ('Unequality',('Unequal',),'inequality'),
+    ('StrictGreaterThan',('Greater',),'strict greater-than'),
+    ('StrictLessThan',('Less',),'strict less-than'),
+    ('GreaterThan',('GreaterEqual',),'greater-than or equal'),
+    ('LessThan',('LessEqual',),'less-than or equal'),
+    ('Sequence',('List',),'ordered tuple'),
+    ('Integral',('Integrate','Inactive/Integrate'),'held integral with scoped limits'),
+    ('Limit',('Inactive/Limit',),'held limit'),
+    ('Contains',('Element',),'set membership'),
+    ('ForAll',('ForAll','Inactive/ForAll'),'universal quantifier over a scoped real binder'),
+    ('Exists',('Exists','Inactive/Exists'),'existential quantifier over a scoped real binder'),
+    ('And',('And',),'logical conjunction'), ('Or',('Or',),'logical disjunction'),
+    ('Not',('Not',),'logical negation'), ('Piecewise',('Piecewise',),'ordered conditional branches'),
+    ('Rational',('Rational',),'exact rational number'),
+    ('Min',('Min',),'minimum'), ('Max',('Max',),'maximum'),
+    ('Abs',('Abs',),'absolute value'), ('sin',('Sin',),'sine'),
+    ('cos',('Cos',),'cosine'), ('tan',('Tan',),'tangent'),
+    ('sec',('Sec',),'secant'), ('acos',('ArcCos',),'principal inverse cosine'),
+    ('log',('Log',),'principal logarithm'), ('exp',('Exp',),'exponential'),
+    ('sqrt',('Sqrt',),'principal square root'),
+    ('re',('Re',),'real part'), ('im',('Im',),'imaginary part'),
+])
+
+
+def function_bindings(rows=None):
+    rows=FUNCTION_TABLE if rows is None else rows
+    targets=[r.py for r in rows]; aliases=[a for r in rows for a in r.wl]
+    if len(set(targets))!=len(targets) or len(set(aliases))!=len(aliases):
+        raise InputError('noninjective function-name table')
+    return {alias:row.py for row in rows for alias in row.wl}
+
+
+def mapped_function(head):
+    return function_bindings().get(head)
 
 
 def math_node(n, bindings, engine, scope=None):
@@ -471,8 +509,8 @@ def math_node(n, bindings, engine, scope=None):
         return sp.Symbol(key)
     if h == 'Apply':
         wh,wa = wl_head(n)
-        if wh in WL_BUILTINS or wh in ('And','Or','Not','Piecewise','ConditionalExpression','Rational','Min','Max','Abs','Sin','Cos','Tan','Sec','ArcCos','Log','Exp','Sqrt','Re','Im','densityPower'):
-            h,a = WL_BUILTINS.get(wh,wh),wa
+        if mapped_function(wh) is not None:
+            h,a = mapped_function(wh),wa
         else:
             head = a[0]
             # Derivative[k][f][x] and f'[x]; neither loses its argument.
@@ -499,7 +537,7 @@ def math_node(n, bindings, engine, scope=None):
         values = [cv(x) for x in a]
         if not all(isinstance(x,sp.Expr) for x in values): raise Unsupported('non-scalar arithmetic')
         return (sp.Add if h == 'Add' else sp.Mul)(*values)
-    if h in ('Pow','densityPower'):
+    if h == 'Pow':
         if len(a)!=2: raise Unsupported('power arity')
         base,exponent = cv(a[0]),cv(a[1])
         # Both native definitions make zero powers one, including at zero.
@@ -534,9 +572,19 @@ def math_node(n, bindings, engine, scope=None):
         return getattr(sp,h)(*(cv(x) for x in a),**({'evaluate':False} if h in ('Intersection','Union') else {}))
     if h in ('Sequence','Alternatives','FiniteSet'): return (sp.Tuple if h in ('Sequence','Alternatives') else sp.FiniteSet)(*(cv(x) for x in a))
     if h == 'Interval': return sp.Interval(*(cv(x) for x in a),**{k:ast.literal_eval(v) for k,v in n.options})
-    if h in ('sin','cos','tan','log','exp','sqrt','Abs','Min','Max','re','im','acos','Sin','Cos','Tan','Log','Exp','Sqrt','Re','Im','ArcCos','Sec'):
-        function = {'Sin':sp.sin,'Cos':sp.cos,'Tan':sp.tan,'Log':sp.log,'Exp':sp.exp,'Sqrt':sp.sqrt,'Re':sp.re,'Im':sp.im,'ArcCos':sp.acos,'Sec':sp.sec}.get(h,getattr(sp,h,None))
-        return function(*(cv(x) for x in a))
+    if h in ('sin','cos','tan','sec','log','exp','sqrt','Abs','Min','Max','re','im','acos','cbrt'):
+        return getattr(sp,h)(*(cv(x) for x in a))
+    if h == 'Limit':
+        if engine=='wl':
+            if len(a)!=2 or a[1].head!='Rule': raise Unsupported('limit binder grammar')
+            variable,destination=a[1].args
+        else:
+            if len(a) not in (3,4): raise Unsupported('limit arity')
+            variable,destination=a[1:3]
+        local=dict(scope); bound=sp.Symbol('_limit_'+str(len(scope)))
+        local[variable.value]=bound
+        direction=a[3].value if engine=='py' and len(a)==4 else '+'
+        return sp.Limit(cv(a[0],local),bound,cv(destination),dir=direction)
     if h == 'Integral':
         if len(a)<2: raise Unsupported('missing integral limits')
         local = dict(scope); limits = []
@@ -688,11 +736,11 @@ LABEL_TABLE={'RHO_POSITIVE':'rho > 0','RHO_NONPOSITIVE':'rho <= 0'}
 # Rational points are probes, not premises. Distinct endpoint distances and
 # independent GM/Phi values are deliberate; no orbital/profile identification.
 POINTS=tuple({k:sp.Rational(v) for k,v in row.items()} for row in [
-    dict(s9b_r='11/3',b='7/3',Z_E='101/3',Z_R='137/3',c_0='7/3',GM='1/101',
+    dict(s9b_r='11/3',b='7/3',Z_E='101/3',Z_R='137/3',c_0='19/8',GM='1/101',
          Phi='2/103',K='5/7',n='2',m='3/2',s='1/2',rho_0='11/7',s9b_gamma='2/3',s9b_b_min='1/7'),
-    dict(s9b_r='17/5',b='11/5',Z_E='151/5',Z_R='173/5',c_0='11/5',GM='2/107',
+    dict(s9b_r='17/5',b='11/5',Z_E='151/5',Z_R='173/5',c_0='29/12',GM='2/107',
          Phi='3/109',K='7/11',n='3',m='5/3',s='2',rho_0='13/11',s9b_gamma='3/5',s9b_b_min='1/11'),
-    dict(s9b_r='23/7',b='13/7',Z_E='211/7',Z_R='263/7',c_0='13/7',GM='3/113',
+    dict(s9b_r='23/7',b='13/7',Z_E='211/7',Z_R='263/7',c_0='31/16',GM='3/113',
          Phi='5/127',K='11/13',n='1/2',m='7/5',s='-1',rho_0='17/13',s9b_gamma='5/7',s9b_b_min='1/13')])
 PROFILE_CITATIONS = SPEC+':52-57,80,124-149,175-176,219-224; repair directive item 9 (density signs; no numeric f bound)'
 PROFILE_NAMES=('inverse','shifted','exponential','optical_zero','delta_zero','velocity_zero','tilt_zero',
@@ -736,10 +784,21 @@ def configurations(expressions=()):
             yield f'p{i}/{profile}',p,profile
     free=set().union(*(e.free_symbols for e in expressions if isinstance(e,sp.Basic)))
     p=POINTS[0]
-    for name in ('GM','Phi','K','n','s','s9b_velocity_integration_constant','rho_bulk','s9b_fractional_bulk_change'):
+    for name in ('GM','Phi','K','n','s','py::s9b_velocity_integration_constant','wl::velocityIntegrationConstant','rho_bulk','s9b_fractional_bulk_change'):
         if sp.Symbol(name) in free:
             for val in (sp.S.Zero,sp.S.One,-sp.S.One,sp.Rational(1,2)):
-                yield name+'='+str(val),dict(p,**{name:val}),'inverse'
+                yield name+'='+str(val),distinct_probe(p,name,val),'inverse'
+
+
+def distinct_probe(point,name,value):
+    result=dict(point,**{name:value})
+    occupied={value}
+    for key in sorted(result):
+        if key==name: continue
+        candidate=result[key]
+        while candidate in occupied: candidate+=sp.Rational(1,211)
+        result[key]=candidate; occupied.add(candidate)
+    return result
 
 
 def substitute_profiles(expr,point,profile):
@@ -907,13 +966,50 @@ def _numeric_value(expr,point_items,profile):
         with mp.workdps(50):
             discrepancy=abs(high-low)
             if not mp.isfinite(high) or discrepancy>mp.mpf('1e-14')*abs(high):
-                return {'unresolved':'independent quadrature precision check did not establish 12 printed digits'}
-            return {'approx_12':mp.nstr(high,12),'precision_difference':mp.nstr(discrepancy,5),
+                return {'unresolved':'independent quadrature precision check did not establish 12 printed digits',
+                        'evaluations':evaluation_pair(low,high)}
+            return {'evaluations':evaluation_pair(low,high),'approx_12':mp.nstr(high,12),'precision_difference':mp.nstr(discrepancy,5),
                     'method':'convergence screening, tanh-sinh error estimate and independent precision/panel checks',
                     'reliable_digits':12,'reliability':'numerical evidence, not a certified error bound'}
     if not isinstance(value,sp.Expr): return {'unresolved':'nonscalar sample '+math_text(value)}
     if value.is_finite is False: return {'undefined':math_text(value),'reason':'nonfinite exact scalar'}
-    return {'exact':math_text(value),'approx_30':math_text(value.evalf(30))}
+    return {'exact':math_text(value),'approx_30':math_text(value.evalf(30)),
+            'evaluations':evaluation_pair(*[scalar_number(value,d) for d in (48,60)])}
+
+
+def scalar_number(value,digits):
+    with mp.workdps(digits):
+        return mp.mpc(str(sp.re(value).evalf(digits)),str(sp.im(value).evalf(digits)))
+
+
+def evaluation_pair(low,high):
+    return [[mp.nstr(mp.re(x),65),mp.nstr(mp.im(x),65)] for x in (low,high)]
+
+
+def residual_scale(a,b):
+    return max(abs(x) for x in (*a,*b))
+
+
+def numerical_residual(left,right):
+    """Subtract computed operand evaluations; never gate on residual size.
+
+    Values are estimates at two working precisions. The reliability statement
+    is ABSOLUTE at operand scale, not significant digits of a near-zero result.
+    Even an unreliable computed difference retains both estimates.
+    """
+    if 'evaluations' not in left or 'evaluations' not in right:
+        return {'unresolved':'operand evaluations unavailable for subtraction'}
+    with mp.workdps(70):
+        a=[mp.mpc(*v) for v in left['evaluations']]
+        b=[mp.mpc(*v) for v in right['evaluations']]
+        low,high=(x-y for x,y in zip(a,b))
+        scale=residual_scale(a,b); discrepancy=abs(high-low)
+        reliable=all(mp.isfinite(x) for x in (*a,*b,low,high)) and discrepancy<=mp.mpf('1e-14')*scale
+        return {'computed_18':mp.nstr(low,50),'computed_30':mp.nstr(high,60),
+                'precision_difference':mp.nstr(discrepancy,12),'operand_scale':mp.nstr(scale,30),
+                'absolute_tolerance':mp.nstr(mp.mpf('1e-14')*scale,30),
+                'reliability_established':reliable,
+                'reliability':'absolute precision consistency at operand scale; numerical evidence, not a certified bound'}
 
 
 def integral_screen(integral):
@@ -1101,7 +1197,7 @@ def compare_math(left,right,role):
     for label,point,profile in configurations((left,right)):
         progress_event('sample',configuration=label,role=role)
         lv=numeric_value(left,point,profile); rv=numeric_value(right,point,profile)
-        sampled_residual=None if boolean else numeric_value(residual,point,profile)
+        sampled_residual=None if boolean else numerical_residual(lv,rv)
         record={'configuration':label,'point':{k:str(v) for k,v in point.items()},'profile':profile,
                 'profile_formulas':{k:str(v) for k,v in profile_formulas(profile,point)[1].items()},
                 'py':lv,'wl':rv,'comparison':sample_difference(lv,rv,sampled_residual)}
@@ -1114,7 +1210,14 @@ def compare_math(left,right,role):
     if pieces:
         result['strata']=[{'engine':eng,'piece':label,'condition':math_text(p),
                            'coverage':stratum_coverage(p,i in covered)} for i,(eng,label,p) in enumerate(pieces)]
-    return result,True
+    formed=any(sample_formed(row['comparison']) for row in samples)
+    result['comparison_formed']=formed
+    return result,formed
+
+
+def sample_formed(finding):
+    return (finding.get('coverage')=='residual formed' or 'boolean_difference' in finding
+            or 'same_exact_representation' in finding)
 
 
 def stratum_coverage(piece,sampled):
@@ -1171,6 +1274,7 @@ class Comparator:
     def __init__(self,names):
         self.bindings=Bindings(names)
         self.cache=OrderedDict()
+        self.attempted=[set(),set()]
 
     def leaf(self,a,b,role):
         left,right=a.node,b.node
@@ -1223,6 +1327,8 @@ class Comparator:
                 # Empty containers are values whose constructor is observable.
                 return {'outcome':'empty_container','comparison':a.ref.node.head==b.ref.node.head},(leaf_paths(a.ref),leaf_paths(b.ref))
             return {'outcome':'container','role':role,'children':result},tuple(used)
+        for i,ref in enumerate((a.ref,b.ref)):
+            self.attempted[i].update(leaf_paths(ref,False))
         result,consumed=self.leaf(a.ref,b.ref,role)
         result=dict(result,role=role,py_path=a.ref.path,wl_path=b.ref.path,
                     py_operand=data(a.ref.node),wl_operand=data(b.ref.node),
@@ -1236,6 +1342,7 @@ class Comparator:
         if view.children:
             result['children']={k:self.absent(v,engine) for k,v in view.children.items()}
         elif view.role=='domain':
+            self.attempted[0 if engine=='py' else 1].update(leaf_paths(view.ref,False))
             # A missing counterpart must not suppress truth sampling of the
             # attached condition that is present on the other engine.
             result['domain_comparison']=compare_domains(view.ref.node if engine=='py' else None,
@@ -1291,10 +1398,11 @@ def emit(out,value):
 def run(py_path,wl_path,out,accounting,*,names=NAME_TABLE,joins=SHARED,progress=True):
     global SHOW_PROGRESS,CURRENT_OBJECT
     SHOW_PROGRESS=progress
-    started=time.monotonic(); validate_tables(names,joins)
+    started=time.monotonic(); validate_tables(names,joins); function_bindings()
     streams={'py':Stream(py_path,'py'),'wl':Stream(wl_path,'wl')}
     comparator=Comparator(names)
     emit(out,{'kind':'configuration','name_table':[asdict(x) for x in names],
+              'function_table':[asdict(x) for x in FUNCTION_TABLE],
               'sources':{'py':PY_SOURCE,'wl':WL_SOURCE,'spec':SPEC},
               'input_sha256':{e:s.digest.hexdigest() for e,s in streams.items()},
               'profiles':[{'name':p,'admissibility':PROFILE_CITATIONS,
@@ -1332,6 +1440,7 @@ def run(py_path,wl_path,out,accounting,*,names=NAME_TABLE,joins=SHARED,progress=
         parsed={e:census(n) for e,n in nodes.items()}
         # Raw operands are emitted before extraction/comparison and any outcome.
         emit(out,{'kind':'operands','name':key,**{e:data(n) for e,n in nodes.items()}})
+        comparator.attempted=[set(),set()]
         try:
             views={e:extract(Ref(n),e) for e,n in nodes.items()}
             progress_event('compare')
@@ -1352,8 +1461,13 @@ def run(py_path,wl_path,out,accounting,*,names=NAME_TABLE,joins=SHARED,progress=
         # Census is computed independently from parse, not from extracted views.
         row={'name':key,'accounting':'joined',
              **{e:{'parsed_leaves':parsed[e],'compared_leaves':len(used[i]),
-                    'uncompared_leaves':parsed[e]-len(used[i])} for i,e in enumerate(('py','wl'))}}
-        if any(row[e]['compared_leaves']>parsed[e] for e in nodes):
+                    'uncompared_leaves':parsed[e]-len(used[i]),
+                    'attempted_leaves':len(comparator.attempted[i] | used[i]),
+                    'attempted_unformed_leaves':len(comparator.attempted[i]-used[i]),
+                    'unattempted_leaves':parsed[e]-len(comparator.attempted[i] | used[i])} for i,e in enumerate(('py','wl'))}}
+        row['comparison_formed']=any(used)
+        if not row['comparison_formed']: summary['rows_without_formed_comparison']+=1
+        if any(row[e]['attempted_leaves']>parsed[e] for e in nodes):
             raise RuntimeError('comparison coverage exceeds independent parse census')
         emit(accounting,row); emit(out,dict(kind='accounting',**row)); summary['joined']+=1
         if any(row[e]['uncompared_leaves'] for e in nodes): summary['rows_with_uncompared_leaves']+=1

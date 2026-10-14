@@ -6,6 +6,7 @@ fixed. The companion disabling check makes that same assertion fail when its
 comparison channel is disabled. No mutation assertion specifies a value.
 """
 from dataclasses import replace
+from contextlib import nullcontext
 import io
 import json
 from pathlib import Path
@@ -417,6 +418,151 @@ class Controls(unittest.TestCase):
         self.assertTrue(samples)
         self.assertTrue(all('unresolved' in r['py'] and 'unresolved' in r['wl'] for r in samples))
         self.assertTrue(all('non-rational coefficients' in r['py']['unresolved'] for r in samples))
+
+    def test_equal_functionals_form_residual_at_operand_scale(self):
+        # Integration by parts supplies two different forms of the same
+        # synthetic integral. No measured-stream target is used.
+        py='Integral(Mul(Symbol("s9b_r"),exp(Mul(Integer(-1),Symbol("s9b_r")))),Tuple(Symbol("s9b_r"),Integer(0),Integer(1)))'
+        wl='Inactive[Integrate][Exp[-r],{r,0,1}]-Exp[-1]'
+        def check():
+            rows=self.fixture(py,wl)[0][0]['samples']
+            self.assertTrue(rows)
+            self.assertTrue(all(r['comparison'].get('coverage')=='residual formed' for r in rows))
+            self.assertTrue(all(r['residual']['reliability_established'] for r in rows))
+            self.assertTrue(all('computed_18' in r['residual'] and 'computed_30' in r['residual'] for r in rows))
+        check()
+        with patch.object(c,'numerical_residual',return_value={'unresolved':'disabled'}):
+            with self.assertRaises(AssertionError): check()
+        with patch.object(c,'residual_scale',side_effect=lambda a,b:abs(a[-1]-b[-1])):
+            with self.assertRaises(AssertionError): check()
+        # A reliability failure retains the computed values and formed outcome.
+        with patch.object(c,'residual_scale',return_value=c.mp.mpf(0)):
+            rows=self.fixture(py,wl)[0][0]['samples']
+            self.assertTrue(all('computed_30' in r['residual'] and r['comparison']['coverage']=='residual formed' for r in rows))
+
+    def test_symbol_exchange_moves_numeric_comparison(self):
+        py='Integral(Mul(Symbol("b"),Symbol("s9b_r")),Tuple(Symbol("s9b_r"),Integer(1),Integer(2)))'
+        def check():
+            a=self.fixture(py,'Inactive[Integrate][b*r,{r,1,2}]')[0][0]['samples']
+            b=self.fixture(py,'Inactive[Integrate][c0*r,{r,1,2}]')[0][0]['samples']
+            self.assertEqual(len(a),33)
+            self.assertTrue(all(products(x['comparison'])!=products(y['comparison']) for x,y in zip(a,b)))
+        check()
+        with patch.object(c,'POINTS',tuple(dict(p,c_0=p['b']) for p in c.POINTS)):
+            with self.assertRaises(AssertionError): check()
+        # Includes parameter strata, where a probe could collide with another
+        # symbol even when the three generic points are distinct.
+        expressions=(sum(c.sp.Symbol(n) for n in ('GM','Phi','K','n','s','rho_bulk','s9b_fractional_bulk_change')),)
+        for _,point,_ in c.configurations(expressions):
+            self.assertEqual(len(set(point.values())),len(point))
+
+    def test_attempted_unformed_leaves_are_not_compared(self):
+        py='Integral(Symbol("s9b_r"),Tuple(Symbol("s9b_r"),Integer(0),Symbol("unassigned")))'
+        wl='Inactive[Integrate][r,{r,0,unassigned}]'
+        def check():
+            account=self.fixture(py,wl)[1][0]
+            self.assertFalse(account['comparison_formed'])
+            for engine in ('py','wl'):
+                counts=account[engine]
+                self.assertEqual(counts['compared_leaves'],0)
+                self.assertGreater(counts['attempted_unformed_leaves'],0)
+                self.assertEqual(counts['parsed_leaves'],counts['compared_leaves']+counts['attempted_unformed_leaves']+counts['unattempted_leaves'])
+        check()
+        with patch.object(c,'sample_formed',return_value=True):
+            with self.assertRaises(AssertionError): check()
+        account=self.fixture('Tuple(Integer(7),'+py+')','{7,'+wl+'}')[1][0]
+        for engine in ('py','wl'):
+            self.assertGreater(account[engine]['compared_leaves'],0)
+            self.assertGreater(account[engine]['attempted_unformed_leaves'],0)
+
+    def test_integration_constants_remain_engine_qualified(self):
+        py='Symbol("s9b_velocity_integration_constant")'
+        wl='velocityIntegrationConstant'
+        result=self.fixture(py,wl)[0][0]
+        self.assertIn('py::s9b_velocity_integration_constant',result['residual'])
+        self.assertIn('wl::velocityIntegrationConstant',result['residual'])
+        altered=c.NAME_TABLE+(c.NameRow('s9b_velocity_integration_constant','velocityIntegrationConstant','unproved binding',470,524,'parameter'),)
+        self.assertNotEqual(products(result),products(self.fixture(py,wl,names=altered)[0][0]))
+
+    def test_every_function_binding_repoint(self):
+        # Independent native fixtures, not synthesized from table targets.
+        # Baseline comparisons detect an already-corrupted mapping (including
+        # Sqrt -> cube root); mutations test whether the dispatch is actually used.
+        cases={
+            'Add':('Integer(8)','Plus[3,5]'), 'Mul':('Integer(15)','Times[3,5]'),
+            'Pow':('Integer(8)','Power[2,3]'),
+            'Equality':('true','Equal[3,3]'), 'Unequality':('false','Unequal[3,3]'),
+            'StrictGreaterThan':('false','Greater[3,3]'), 'StrictLessThan':('false','Less[3,3]'),
+            'GreaterThan':('true','GreaterEqual[3,3]'), 'LessThan':('true','LessEqual[3,3]'),
+            'Sequence':('true','Element[List[2,3],Reals]'),
+            'Integral':('Integral(Symbol("s9b_r"),Tuple(Symbol("s9b_r"),Integer(1),Integer(3)))','Integrate[r,{r,1,3}]'),
+            'Limit':('Limit(Symbol("s9b_r"),Symbol("s9b_r"),Integer(2))','Inactive[Limit][r,r->2]'),
+            'Contains':('true','Element[2,Reals]'),
+            'ForAll':('true','ForAll[r,r^2>=0]'), 'Exists':('true','Exists[r,r==2]'),
+            'And':('false','And[True,False]'), 'Or':('true','Or[True,False]'), 'Not':('false','Not[True]'),
+            'Piecewise':('Piecewise(ExprCondPair(Integer(3),true))','Piecewise[{{3,True}},5]'),
+            'Rational':('Rational(3,7)','Rational[3,7]'),
+            'Min':('Integer(3)','Min[3,5]'), 'Max':('Integer(5)','Max[3,5]'),
+            'Abs':('Integer(3)','Abs[-3]'), 'sin':('Rational(1,2)','Sin[Pi/6]'),
+            'cos':('Rational(1,2)','Cos[Pi/3]'), 'tan':('Integer(1)','Tan[Pi/4]'),
+            'sec':('Integer(2)','Sec[Pi/3]'), 'acos':('Mul(pi,Rational(1,3))','ArcCos[1/2]'),
+            'log':('Integer(1)','Log[E]'), 'exp':('Integer(1)','Exp[0]'),
+            'sqrt':('Pow(Integer(2),Rational(1,2))','Sqrt[2]'),
+            're':('Integer(2)','Re[2+3*I]'), 'im':('Integer(3)','Im[2+3*I]'),
+        }
+        # Index fixtures by the independent native source head, never by the
+        # table's mutable target. A wrong target must reach the comparison.
+        case_keys=dict(zip(
+            ('Plus','Times','Power','Equal','Unequal','Greater','Less','GreaterEqual','LessEqual',
+             'List','Integrate','Inactive/Limit','Element','ForAll','Exists','And','Or','Not',
+             'Piecewise','Rational','Min','Max','Abs','Sin','Cos','Tan','Sec','ArcCos','Log','Exp','Sqrt','Re','Im'),
+            ('Add','Mul','Pow','Equality','Unequality','StrictGreaterThan','StrictLessThan','GreaterThan','LessThan',
+             'Sequence','Integral','Limit','Contains','ForAll','Exists','And','Or','Not','Piecewise','Rational',
+             'Min','Max','Abs','sin','cos','tan','sec','acos','log','exp','sqrt','re','im')))
+        self.assertEqual({r.wl[0] for r in c.FUNCTION_TABLE},set(case_keys))
+        scalar_identity=self.fixture('Integer(7)','7')[0][0]['zero_class']
+        boolean_identity=self.fixture('true','True')[0][0]['samples'][0]['comparison']
+        for row in c.FUNCTION_TABLE:
+            case_key=case_keys[row.wl[0]]
+            py,wl=cases[case_key]
+            for alias in row.wl:
+                original=row.wl[0]
+                source=lambda name: ('Inactive['+name.split('/')[1]+']') if name.startswith('Inactive/') else name
+                native=wl.replace(source(original),source(alias))
+                with self.subTest(function=row.py,alias=alias):
+                    before=self.fixture(py,native)[0][0]
+                    if before['outcome']=='predicate':
+                        self.assertTrue(all(r['comparison']==boolean_identity for r in before['samples']))
+                    else:
+                        self.assertEqual(before.get('zero_class'),scalar_identity)
+                        if before['samples']: self.assertTrue(all(c.sample_formed(r['comparison']) for r in before['samples']))
+                    # Repoint to a distinct head. Numeric constructors use an
+                    # executable alternative; unsupported heads must change the
+                    # computed coverage outcome, not merely the operand text.
+                    target={'sqrt':'cbrt','Add':'Mul','Mul':'Add','sin':'cos','cos':'sin',
+                            'tan':'sin','sec':'cos','acos':'sin','log':'exp','exp':'log',
+                            'Abs':'re','Min':'Max','Max':'Min','re':'im','im':'re'}.get(case_key,'unbound_repoint_'+case_key)
+                    altered=tuple(replace(r,py=target) if r==row else r for r in c.FUNCTION_TABLE)
+                    # A swap keeps the table injective when the new target is
+                    # another row's target, just as physical-name repoints do.
+                    altered=tuple(replace(r,py=row.py) if r.py==target and r.wl!=row.wl else r for r in altered)
+                    with patch.object(c,'FUNCTION_TABLE',altered): after=self.fixture(py,native)[0][0]
+                    self.assertNotEqual(products(before),products(after))
+                    with patch.object(c,'mapped_function',return_value=None):
+                        disabled_before=self.fixture(py,native)[0]
+                        with patch.object(c,'FUNCTION_TABLE',altered): disabled_after=self.fixture(py,native)[0]
+                        with self.assertRaises(AssertionError): self.assertNotEqual(products(disabled_before),products(disabled_after))
+        row=c.FUNCTION_TABLE[0]
+        with self.assertRaises(c.InputError): c.function_bindings(c.FUNCTION_TABLE+(row,))
+
+    def test_wrong_sqrt_target_fails_through_comparison(self):
+        altered=tuple(replace(r,py='cbrt') if 'Sqrt' in r.wl else r for r in c.FUNCTION_TABLE)
+        # The table is still injective and its source aliases are unchanged.
+        # The native fixture must fail on the resulting mathematical residual.
+        with patch.object(c,'FUNCTION_TABLE',altered), patch.object(self,'subTest',side_effect=lambda **kw:nullcontext()):
+            c.function_bindings()
+            with self.assertRaisesRegex(AssertionError,"nonzero.*zero"):
+                self.test_every_function_binding_repoint()
 
     def test_ungrammatical_input(self):
         for py,wl in [('Integer(','7'),('Integer(7)','{7'),('evil.attribute()','7')]:

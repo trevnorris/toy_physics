@@ -950,13 +950,13 @@ def _numeric_value(expr,point_items,profile):
             return {'unresolved':'sampled predicate: '+str(exc)}
         raise
     if isinstance(value,Boolean) and not isinstance(value,sp.Expr): return sampled_truth(value)
-    if value.has(sp.Derivative,sp.Limit,sp.Subs):
-        return {'unresolved':'held derivative, substitution or limit; evaluation not established for the original object'}
+    if value.has(sp.Limit):
+        return {'unresolved':'held limit: limiting value not established'}
     if value.free_symbols:
         return {'unresolved':'free names '+','.join(sorted(map(str,value.free_symbols)))}
     if value.has(sp.nan,sp.zoo): return {'undefined':math_text(value),'reason':'exact substitution is undefined'}
     if isinstance(value,sp.Set): return {'unresolved':'set is not a scalar truth value'}
-    if value.has(sp.Integral):
+    if value.has(sp.Integral,sp.Derivative,sp.Subs):
         try:
             low=numerical_expression(value,18); high=numerical_expression(value,30)
         except (UnresolvedEvaluation,ValueError,NotImplementedError,ZeroDivisionError) as exc:
@@ -969,7 +969,7 @@ def _numeric_value(expr,point_items,profile):
                 return {'unresolved':'independent quadrature precision check did not establish 12 printed digits',
                         'evaluations':evaluation_pair(low,high)}
             return {'evaluations':evaluation_pair(low,high),'approx_12':mp.nstr(high,12),'precision_difference':mp.nstr(discrepancy,5),
-                    'method':'convergence screening, tanh-sinh error estimate and independent precision/panel checks',
+                    'method':'convergence screening; quadrature precision/panel checks; complete-functional derivative stencil/step checks where needed',
                     'reliable_digits':12,'reliability':'numerical evidence, not a certified error bound'}
     if not isinstance(value,sp.Expr): return {'unresolved':'nonscalar sample '+math_text(value)}
     if value.is_finite is False: return {'undefined':math_text(value),'reason':'nonfinite exact scalar'}
@@ -1012,6 +1012,117 @@ def numerical_residual(left,right):
                 'reliability':'absolute precision consistency at operand scale; numerical evidence, not a certified bound'}
 
 
+def trig_poles(function,x,lo,hi):
+    """Locate the real poles of affine-argument trig functions exactly.
+
+    The floor/ceiling bounds enumerate the entire closed interval, not a set
+    of numerical probes. Non-affine arguments remain an explicit limitation.
+    Also inspect reciprocal sin/cos written as powers instead of tan/sec.
+    """
+    roots=set()
+    for node in function.atoms(sp.tan,sp.sec,sp.cot,sp.csc,sp.sin,sp.cos):
+        if node.func in (sp.sin,sp.cos) and not any(
+                p.exp.is_negative and p.base==node for p in function.atoms(sp.Pow)):
+            continue
+        argument=node.args[0]
+        if x not in argument.free_symbols: continue
+        slope=sp.diff(argument,x); intercept=argument-slope*x
+        if x in slope.free_symbols or x in intercept.free_symbols or slope.is_real is not True or slope.is_zero is not False:
+            raise UnresolvedEvaluation('trigonometric pole locations: affine real argument not established for '+math_text(node))
+        a,b=(argument.subs(x,v) for v in (lo,hi))
+        if slope.is_negative: a,b=b,a
+        offset=sp.Rational(1,2) if node.func in (sp.tan,sp.sec,sp.cos) else sp.S.Zero
+        first=sp.ceiling(a/sp.pi-offset); last=sp.floor(b/sp.pi-offset)
+        if not (first.is_Integer and last.is_Integer):
+            raise UnresolvedEvaluation('trigonometric pole index bounds not established for '+math_text(node))
+        roots.update((sp.pi*(k+offset)-intercept)/slope for k in range(int(first),int(last)+1))
+    return roots
+
+
+def endpoint_power_bound(expr,t):
+    """Return q when |expr| = O(t**q), t -> 0+, or leave it unresolved.
+
+    A nonzero leading coefficient may contain exp/log of constants. An
+    exponential with a finite limit is bounded even when its own series
+    implementation cannot supply a leading term. Products/sums of these
+    bounds cover algebraic singularities multiplied by analytic profiles.
+    """
+    if not expr.has(t):
+        if expr.is_finite is True: return sp.S.Zero
+        raise UnresolvedEvaluation('endpoint coefficient finiteness not established')
+    if expr.is_Mul: return sum(endpoint_power_bound(a,t) for a in expr.args)
+    if expr.is_Add: return min(endpoint_power_bound(a,t) for a in expr.args)
+    try:
+        coefficient,power=expr.leadterm(t,cdir=1)
+        if not coefficient.has(t) and coefficient.is_finite is True and coefficient.is_zero is False:
+            return power
+    except (NotImplementedError,sp.PoleError,ValueError):
+        pass
+    try:
+        limit=sp.limit(expr,t,0,dir='+')
+    except (NotImplementedError,sp.PoleError,ValueError) as exc:
+        raise UnresolvedEvaluation('endpoint asymptotic bound unavailable for '+math_text(expr)) from exc
+    if limit.is_finite is True: return sp.S.Zero
+    raise UnresolvedEvaluation('endpoint power or boundedness not established for '+math_text(expr))
+
+
+def endpoint_convergence(function,x,endpoint,direction):
+    t=sp.Dummy('endpoint',positive=True)
+    transformed=(function.subs(x,1/t)/t**2 if endpoint==sp.oo else
+                 function.subs(x,-1/t)/t**2 if endpoint==-sp.oo else function.subs(x,endpoint+direction*t))
+    # First try the complete expression: cancellation and exponential decay
+    # can establish boundedness even when individual algebraic factors grow.
+    try:
+        bound=endpoint_power_bound(transformed,t)
+        if (bound>-1) is sp.true: return
+        detail='absolute power bound '+math_text(bound)+' is not greater than -1'
+    except UnresolvedEvaluation as exc:
+        detail=str(exc)
+    try:
+        if sp.limit(transformed,t,0,dir='+').is_finite is True: return
+    except (NotImplementedError,sp.PoleError,ValueError):
+        pass
+    raise UnresolvedEvaluation('endpoint convergence at '+math_text(endpoint)+': '+detail)
+
+
+def real_range_bound(expr,x,lo,hi):
+    """Elementary interval enclosure, with exact symbolic endpoints.
+
+    Used only as a sufficient nonzero-denominator certificate. In particular,
+    shifted profiles composed with sec on a pole-free first-quadrant range
+    do not become unsupported just because their denominators are not polynomials.
+    Dependency overestimation can refuse a certificate; it cannot admit a pole.
+    """
+    if expr==x: return lo,hi
+    if not expr.has(x):
+        if expr.is_real is True and expr.is_finite is True: return expr,expr
+        raise UnresolvedEvaluation('real interval coefficient not established')
+    ranges=[real_range_bound(a,x,lo,hi) for a in expr.args]
+    if expr.is_Add: return sum(a for a,b in ranges),sum(b for a,b in ranges)
+    if expr.is_Mul:
+        a=b=sp.S.One
+        for c,d in ranges:
+            values=(a*c,a*d,b*c,b*d); a,b=sp.Min(*values),sp.Max(*values)
+        return a,b
+    if expr.is_Pow:
+        a,b=ranges[0]; power=expr.exp
+        if not power.has(x) and power.is_real and ((a>0) is sp.true or (a==0 and power.is_positive)):
+            values=(a**power,b**power)
+            return sp.Min(*values),sp.Max(*values)
+        if power.is_Integer and power.is_nonnegative:
+            values=[a**power,b**power]
+            if (a<=0) is sp.true and (b>=0) is sp.true: values.append(sp.S.Zero)
+            return sp.Min(*values),sp.Max(*values)
+    if len(ranges)==1:
+        a,b=ranges[0]
+        if expr.func==sp.exp: return sp.exp(a),sp.exp(b)
+        if expr.func==sp.log and (a>0) is sp.true: return sp.log(a),sp.log(b)
+        if (a>=0) is sp.true and (b<sp.pi/2) is sp.true:
+            if expr.func in (sp.sin,sp.tan,sp.sec): return expr.func(a),expr.func(b)
+            if expr.func==sp.cos: return sp.cos(b),sp.cos(a)
+    raise UnresolvedEvaluation('real interval enclosure not established for '+math_text(expr))
+
+
 def integral_screen(integral):
     """Conservative absolute-convergence screen before any quadrature.
 
@@ -1022,12 +1133,10 @@ def integral_screen(integral):
     if len(integral.limits)!=1: raise UnresolvedEvaluation('multidimensional integral')
     (x,lo,hi),=integral.limits
     f=integral.function
-    if f.has(sp.tan,sp.sec,sp.cot,sp.csc):
-        raise UnresolvedEvaluation('trigonometric pole set not established')
     if f.has(sp.Integral): raise UnresolvedEvaluation('nested integral convergence not established')
     if lo==hi: return
     if (lo>hi) is sp.true: lo,hi=hi,lo
-    roots=set()
+    roots=trig_poles(f,x,lo,hi)
     for power in f.atoms(sp.Pow):
         if power.exp.is_negative:
             base=power.base
@@ -1036,12 +1145,19 @@ def integral_screen(integral):
                 # exp is entire and has no zeros; other denominators require
                 # a separate proof, not successful quadrature nodes.
                 if base.func==sp.exp: continue
+                if base.func in (sp.sin,sp.cos): continue # zeros screened above
                 if base.is_rational_function(x):
                     # Isolate numerator zeros of a rational denominator.
                     # Its own poles occur among the nested negative powers
                     # and are screened independently; no value is changed.
                     base=sp.cancel(base).as_numer_denom()[0]
-                else: raise UnresolvedEvaluation('nonpolynomial denominator zero set not established')
+                else:
+                    try:
+                        a,b=real_range_bound(base,x,lo,hi)
+                        if (a>0) is sp.true or (b<0) is sp.true: continue
+                    except UnresolvedEvaluation:
+                        pass
+                    raise UnresolvedEvaluation('nonpolynomial denominator zero set not established for '+math_text(base))
             try:
                 polynomial=sp.Poly(base,x)
                 roots.update(polynomial.real_roots())
@@ -1055,22 +1171,9 @@ def integral_screen(integral):
             # proving it; neither do we print an unvalidated finite value.
             raise UnresolvedEvaluation('interior denominator zero at '+math_text(root)+'; local integrability not established')
         if inside not in (sp.true,sp.false): raise UnresolvedEvaluation('singularity location undecided')
-    t=sp.Symbol('_endpoint_t',positive=True)
     for endpoint,sign in ((lo,1),(hi,-1)):
         if endpoint not in roots and endpoint not in (sp.oo,-sp.oo): continue
-        transformed=(f.subs(x,1/t)/t**2 if endpoint==sp.oo else
-                     f.subs(x,-1/t)/t**2 if endpoint==-sp.oo else f.subs(x,endpoint+sign*t))
-        try:
-            leading=transformed.as_leading_term(t,cdir=1)
-            exponent=leading.as_powers_dict().get(t,sp.S.Zero)
-            if leading.has(sp.exp,sp.log): raise NotImplementedError
-            if (exponent>-1) is not sp.true:
-                raise UnresolvedEvaluation('endpoint absolute integrability not established at '+math_text(endpoint))
-        except (NotImplementedError,sp.PoleError):
-            # A finite transformed limit proves boundedness at that endpoint.
-            limit=sp.limit(transformed,t,0,dir='+')
-            if limit.is_finite is not True:
-                raise UnresolvedEvaluation('endpoint convergence not established at '+math_text(endpoint))
+        endpoint_convergence(f,x,endpoint,sign)
 
 
 @lru_cache(maxsize=2048)
@@ -1100,20 +1203,124 @@ def quadrature_consistent(first,second,error,error2,tolerance):
     return all(mp.isfinite(v) for v in (first,second,error,error2)) and max(error,error2,abs(second-first))<=tolerance
 
 
-def numerical_expression(value,digits):
+@lru_cache(maxsize=32)
+def derivative_stencil(order):
+    radius=order+2
+    nodes=tuple(range(-radius,radius+1))
+    weights=tuple(sp.finite_diff_weights(order,nodes,0)[order][-1])
+    rate=2*radius+2-order if order%2==0 else 2*radius+1-order
+    return nodes,weights,rate
+
+
+def derivative_consistent(coarse,fine,scale,digits):
+    return all(mp.isfinite(v) for v in (coarse,fine,scale)) and abs(fine-coarse)<=mp.power(10,-digits+4)*scale
+
+
+def translation_independent(value,variable):
+    """Recognize an exactly parameter-independent complete functional.
+
+    Translate each finite integral's dummy coordinate by its lower bound.
+    This tests independence within one operand; it never substitutes another
+    engine's representation or differentiates singular boundary terms.
+    """
+    replacements={}
+    for integral in value.atoms(sp.Integral):
+        if len(integral.limits)!=1: return False
+        x,lo,hi=integral.limits[0]
+        if lo in (sp.oo,-sp.oo) or hi in (sp.oo,-sp.oo): return False
+        t=sp.Dummy('translated',real=True)
+        replacements[integral]=sp.Integral(integral.function.subs(x,t+lo),(t,0,hi-lo))
+    return not value.xreplace(replacements).has(variable)
+
+
+@lru_cache(maxsize=1024)
+def numerical_derivative(value,point_items,digits):
+    """Differentiate the complete functional, including its moving limits.
+
+    Never apply Leibniz's rule to singular boundary terms separately. Exact
+    rational, symmetric finite-difference stencils evaluate the original
+    functional at every node through the same convergence/precision checks.
+    Two step sizes and the caller's independent working precisions check the
+    estimate. This is numerical evidence, not a certified derivative bound.
+    No information from the other operand enters this evaluation.
+    """
+    points=dict(point_items)
+    variable,order=value.variable_count[0]
+    order=int(order)
+    if variable not in points:
+        raise UnresolvedEvaluation('held derivative: evaluation point unavailable for '+math_text(variable))
+    center=points[variable]
+    if center.is_real is not True or center.is_finite is not True:
+        raise UnresolvedEvaluation('held derivative: finite real evaluation point not established for '+math_text(variable))
+    if not 1<=order<=4:
+        raise UnresolvedEvaluation('held derivative: stencil order not implemented: '+str(order))
+    remainder=(sp.Derivative(value.expr,*value.variable_count[1:],evaluate=False)
+               if len(value.variable_count)>1 else value.expr)
+    if translation_independent(remainder,variable):
+        # Still establish that the undifferentiated integral exists at this
+        # point before returning the derivative of a constant functional.
+        numerical_expression(remainder,digits,points)
+        return mp.mpf(0)
+    nodes,weights,rate=derivative_stencil(order)
+    exponent=max(3,(digits+6+rate-1)//rate)
+    precision=digits+order*exponent+12
+    estimates=[]; scales=[]
+    for divisor in (1,2):
+        step=sp.Rational(1,divisor*10**exponent)
+        values=[]
+        for node in nodes:
+            shifted=dict(points); shifted[variable]=center+node*step
+            progress_event('derivative node',variable=math_text(variable),order=int(order),
+                           digits=digits,step=str(step),node=node)
+            try:
+                values.append(numerical_expression(remainder,precision,shifted))
+            except (UnresolvedEvaluation,UndefinedIntegral,ZeroDivisionError) as exc:
+                raise UnresolvedEvaluation('held derivative: complete functional unavailable at '+
+                    math_text(variable)+'='+math_text(shifted[variable])+': '+str(exc)) from exc
+        with mp.workdps(precision+30):
+            h=scalar_number(step,precision+30)
+            baseline=values[len(nodes)//2]
+            estimates.append(mp.fsum(scalar_number(w,precision+30)*(v-baseline)
+                                      for w,v in zip(weights,values))/h**order)
+            # An absolute step-consistency check at the functional's scale
+            # also permits derivatives that vanish; no residual-size test.
+            scales.append(max(abs(v) for v in values))
+    with mp.workdps(precision+30):
+        scale=max(*scales,*(abs(v) for v in estimates))
+        if not derivative_consistent(*estimates,scale,digits):
+            raise UnresolvedEvaluation('held derivative: independent step-size consistency not established for '+math_text(variable))
+        return +estimates[-1]
+
+
+def numerical_functional(value,digits,points):
+    if isinstance(value,sp.Subs):
+        locations=tuple(p.subs(points,simultaneous=True) for p in value.point)
+        local=dict(points); local.update(zip(value.variables,locations))
+        return numerical_expression(value.expr,digits,local)
+    if isinstance(value,sp.Derivative):
+        return numerical_derivative(value,tuple(sorted(points.items(),key=lambda p:sp.default_sort_key(p[0]))),digits)
+    if isinstance(value,sp.Integral):
+        return numerical_integral(value.subs(points,simultaneous=True),digits)
+    raise UnresolvedEvaluation('functional evaluator unavailable for '+type(value).__name__)
+
+
+def numerical_expression(value,digits,points=None):
+    points={} if points is None else points
     # Only outer integrals are independent quadrature terms. An inner integral
     # can depend on its outer binder and must remain inside that evaluator.
     integrals=set()
     traversal=sp.preorder_traversal(value)
     for node in traversal:
-        if isinstance(node,sp.Integral):
+        if isinstance(node,(sp.Integral,sp.Derivative,sp.Subs)):
             integrals.add(node)
             traversal.skip()
     integrals=sorted(integrals,key=sp.default_sort_key)
     slots=tuple(sp.Dummy('quadrature_'+str(i)) for i in range(len(integrals)))
-    expression=value.xreplace(dict(zip(integrals,slots)))
+    expression=value.xreplace(dict(zip(integrals,slots))).subs(points,simultaneous=True)
+    if expression.free_symbols-set(slots):
+        raise UnresolvedEvaluation('functional evaluation has unassigned names '+','.join(sorted(map(str,expression.free_symbols-set(slots)))))
     function=sp.lambdify(slots,expression,modules='mpmath',cse=True)
-    numbers=[numerical_integral(integral,digits) for integral in integrals]
+    numbers=[numerical_functional(integral,digits,points) for integral in integrals]
     with mp.workdps(digits+15):
         return +function(*numbers)
 
@@ -1235,6 +1442,14 @@ def text_comparison(left,right,role):
     return lv==right
 
 
+COMPARISON_KINDS=('value','domain','marker','label')
+
+
+def comparison_kind(result,role):
+    if result.get('outcome') in ('marker','label'): return result['outcome']
+    return 'label' if role=='label' else 'domain' if role=='domain' else 'value'
+
+
 def compare_domains(left,right,bindings):
     translated=[]; errors=[]
     for node,engine in ((left,'py'),(right,'wl')):
@@ -1275,6 +1490,7 @@ class Comparator:
         self.bindings=Bindings(names)
         self.cache=OrderedDict()
         self.attempted=[set(),set()]
+        self.formed_leaves={kind:[set(),set()] for kind in COMPARISON_KINDS}
 
     def leaf(self,a,b,role):
         left,right=a.node,b.node
@@ -1287,8 +1503,9 @@ class Comparator:
         if left.head=='Text' or right.head=='Text':
             if left.head!=right.head:
                 return {'outcome':'not_formed','reason':'marker/text versus other value'},False
+            comparison=text_comparison(left.value,right.value,role)
             return {'outcome':'label' if role=='label' else 'marker',
-                    'comparison':text_comparison(left.value,right.value,role),'py_text':left.value,'wl_text':right.value},True
+                    'comparison':comparison,'py_text':left.value,'wl_text':right.value},comparison is not None
         try:
             lv=math_node(left,self.bindings,'py'); rv=math_node(right,self.bindings,'wl')
         except Unsupported as exc:
@@ -1325,15 +1542,22 @@ class Comparator:
                     used[0].update(counts[0]); used[1].update(counts[1])
             if not ca and not cb:
                 # Empty containers are values whose constructor is observable.
-                return {'outcome':'empty_container','comparison':a.ref.node.head==b.ref.node.head},(leaf_paths(a.ref),leaf_paths(b.ref))
+                used=(leaf_paths(a.ref),leaf_paths(b.ref))
+                kind=comparison_kind({},role)
+                for i in range(2): self.formed_leaves[kind][i].update(used[i])
+                return {'outcome':'empty_container','comparison':a.ref.node.head==b.ref.node.head,
+                        'comparison_kind':kind,'comparison_formed':True},used
             return {'outcome':'container','role':role,'children':result},tuple(used)
         for i,ref in enumerate((a.ref,b.ref)):
             self.attempted[i].update(leaf_paths(ref,False))
         result,consumed=self.leaf(a.ref,b.ref,role)
+        kind=comparison_kind(result,role)
         result=dict(result,role=role,py_path=a.ref.path,wl_path=b.ref.path,
                     py_operand=data(a.ref.node),wl_operand=data(b.ref.node),
-                    representation=structural_delta(a.ref.node,b.ref.node,self.bindings))
+                    representation=structural_delta(a.ref.node,b.ref.node,self.bindings),
+                    comparison_kind=kind,comparison_formed=bool(consumed))
         used=(leaf_paths(a.ref,False),leaf_paths(b.ref,False)) if consumed else (set(),set())
+        for i in range(2): self.formed_leaves[kind][i].update(used[i])
         return result,used
 
     def absent(self,view,engine):
@@ -1409,9 +1633,11 @@ def run(py_path,wl_path,out,accounting,*,names=NAME_TABLE,joins=SHARED,progress=
                  'qualification':'boundary probe, outside propagating subset where its condition is false' if p in ('brane_zero_at_point','stiffness_zero_at_point') else 'radial test profile; optical tails within supplied counting',
                  'formulas':{k:str(v) for k,v in profile_formulas(p,POINTS[0])[1].items()}} for p in PROFILE_NAMES],
               'points':[{k:str(v) for k,v in p.items()} for p in POINTS],
-              'numeric_scope':'exact substitutions; absolute convergence screening and tanh-sinh error, precision and panel checks; 12 printed digits only after agreement; numerical evidence not a certified bound; held integral derivatives remain unresolved; unresolved strata are coverage findings',
+              'numeric_scope':'exact substitutions; absolute convergence screening and tanh-sinh error, precision and panel checks; complete-functional derivatives checked at two rational step sizes and working precisions; 12 printed digits only after reliability checks; numerical evidence not a certified bound; unresolved strata are coverage findings',
               'target':'no residual target was supplied'})
-    summary=Counter(); sample_outcomes=Counter()
+    summary=Counter(rows_without_formed_comparison=0,rows_without_formed_value_comparison=0)
+    sample_outcomes=Counter(); sample_outcomes_by_kind={kind:Counter() for kind in COMPARISON_KINDS}
+    rows_without_value=[]
     allkeys=sorted(set(joins)|set(streams['py'].index)|set(streams['wl'].index))
     for key in allkeys:
         CURRENT_OBJECT=key
@@ -1441,6 +1667,7 @@ def run(py_path,wl_path,out,accounting,*,names=NAME_TABLE,joins=SHARED,progress=
         # Raw operands are emitted before extraction/comparison and any outcome.
         emit(out,{'kind':'operands','name':key,**{e:data(n) for e,n in nodes.items()}})
         comparator.attempted=[set(),set()]
+        comparator.formed_leaves={kind:[set(),set()] for kind in COMPARISON_KINDS}
         try:
             views={e:extract(Ref(n),e) for e,n in nodes.items()}
             progress_event('compare')
@@ -1448,25 +1675,36 @@ def run(py_path,wl_path,out,accounting,*,names=NAME_TABLE,joins=SHARED,progress=
         except Unsupported as exc:
             result={'outcome':'not_formed','reason':'extraction '+str(exc)}; used=(set(),set())
         emit(out,{'kind':'comparison','name':key,'comparison':result})
-        def count_samples(value):
+        def count_samples(value,kind='value'):
             if isinstance(value,dict):
+                kind=value.get('comparison_kind', 'domain' if value.get('role')=='domain' else kind)
                 for sample in value.get('samples',[]):
                     finding=sample['comparison']
-                    sample_outcomes[finding.get('coverage','boolean comparison formed' if 'boolean_difference' in finding else 'exact representation comparison formed')]+=1
+                    outcome=finding.get('coverage','boolean comparison formed' if 'boolean_difference' in finding else 'exact representation comparison formed')
+                    sample_outcomes[outcome]+=1
+                    sample_outcomes_by_kind[kind][outcome]+=1
                 for k,v in value.items():
-                    if k!='samples': count_samples(v)
+                    if k!='samples': count_samples(v,'domain' if k=='domain_comparison' else kind)
             elif isinstance(value,list):
-                for v in value: count_samples(v)
+                for v in value: count_samples(v,kind)
         count_samples(result)
         # Census is computed independently from parse, not from extracted views.
         row={'name':key,'accounting':'joined',
              **{e:{'parsed_leaves':parsed[e],'compared_leaves':len(used[i]),
+                    'compared_leaves_by_kind':{kind:len(comparator.formed_leaves[kind][i]) for kind in COMPARISON_KINDS},
                     'uncompared_leaves':parsed[e]-len(used[i]),
                     'attempted_leaves':len(comparator.attempted[i] | used[i]),
                     'attempted_unformed_leaves':len(comparator.attempted[i]-used[i]),
                     'unattempted_leaves':parsed[e]-len(comparator.attempted[i] | used[i])} for i,e in enumerate(('py','wl'))}}
-        row['comparison_formed']=any(used)
+        row['comparison_kinds_formed']={kind:any(comparator.formed_leaves[kind]) for kind in COMPARISON_KINDS}
+        row['comparison_formed']=any(row['comparison_kinds_formed'].values())
+        row['value_comparison_formed']=row['comparison_kinds_formed']['value']
+        if not row['value_comparison_formed']:
+            summary['rows_without_formed_value_comparison']+=1
+            rows_without_value.append(key)
         if not row['comparison_formed']: summary['rows_without_formed_comparison']+=1
+        for kind,formed in row['comparison_kinds_formed'].items():
+            if formed: summary['rows_with_formed_'+kind+'_comparison']+=1
         if any(row[e]['attempted_leaves']>parsed[e] for e in nodes):
             raise RuntimeError('comparison coverage exceeds independent parse census')
         emit(accounting,row); emit(out,dict(kind='accounting',**row)); summary['joined']+=1
@@ -1481,6 +1719,8 @@ def run(py_path,wl_path,out,accounting,*,names=NAME_TABLE,joins=SHARED,progress=
     summary.update({'wall_seconds':time.monotonic()-started,
                     'peak_rss_kib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss})
     summary['sample_outcomes']=dict(sample_outcomes)
+    summary['sample_outcomes_by_kind']={kind:dict(counts) for kind,counts in sample_outcomes_by_kind.items()}
+    summary['rows_without_formed_value_comparison_names']=rows_without_value
     emit(out,{'kind':'completion',**summary})
     return dict(summary)
 

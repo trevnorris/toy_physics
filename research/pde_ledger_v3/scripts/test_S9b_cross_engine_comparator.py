@@ -54,6 +54,7 @@ def products(value):
 class Controls(unittest.TestCase):
     def fixture(self,py,wl,*,names=c.NAME_TABLE,joins=('SYNTHETIC',),suffix_py='',suffix_wl=''):
         c._numeric_value.cache_clear()
+        c.numerical_derivative.cache_clear()
         with tempfile.TemporaryDirectory() as tmp:
             p,w=Path(tmp)/'py.out',Path(tmp)/'wl.out'
             p.write_text(f'PY_S9B_SYNTHETIC: {py}\n'+suffix_py)
@@ -295,12 +296,12 @@ class Controls(unittest.TestCase):
     def test_held_integral_derivative_is_not_artificially_undefined(self):
         py='Subs(Derivative(Integral(Pow(Add(Symbol("s9b_r"),Mul(Integer(-1),Symbol("b"))),Rational(-1,2)),Tuple(Symbol("s9b_r"),Symbol("b"),Add(Symbol("b"),Integer(1)))),Tuple(Symbol("b"),Integer(2))),Tuple(Symbol("b")),Tuple(Integer(2)))'
         # This derivative exists (the integral is invariant under translation).
-        # An evaluator unable to differentiate it must say unresolved.
+        # Exact independence is recognized without splitting boundary terms.
         result=self.fixture(py,'0')[0][0]
         self.assertTrue(result['samples'])
         self.assertTrue(all('undefined' not in r['py'] for r in result['samples']))
         self.assertTrue(all(r['comparison'].get('coverage')!='numeric operands printed' for r in result['samples']))
-        self.assertTrue(all('unresolved' in r['py'] or 'exact' in r['py'] for r in result['samples']))
+        self.assertTrue(all(r['comparison']['coverage']=='residual formed' for r in result['samples']))
         with patch.object(c,'evaluate_substitution',side_effect=lambda v:v.doit(deep=False)):
             with self.assertRaises(AssertionError):
                 self.assertTrue(all('undefined' not in r['py'] for r in self.fixture(py,'0')[0][0]['samples']))
@@ -483,6 +484,150 @@ class Controls(unittest.TestCase):
         self.assertIn('wl::velocityIntegrationConstant',result['residual'])
         altered=c.NAME_TABLE+(c.NameRow('s9b_velocity_integration_constant','velocityIntegrationConstant','unproved binding',470,524,'parameter'),)
         self.assertNotEqual(products(result),products(self.fixture(py,wl,names=altered)[0][0]))
+
+    def test_comparison_kinds_do_not_count_markers_or_labels_as_values(self):
+        fixtures=[
+            ('Str("NOT_ESTABLISHED")','"NOT_ESTABLISHED"',{'marker'}),
+            (py_parts('Mystery(Integer(7))'),wl_parts('Mystery[7]'),{'label','domain'}),
+            ('Tuple(Tuple(Str("Domain"),true))','<|"Domain"->True|>',{'domain'}),
+        ]
+        def check():
+            for py,wl,kinds in fixtures:
+                _,account,records=self.fixture(py,wl)
+                row=account[0]
+                self.assertEqual({k for k,v in row['comparison_kinds_formed'].items() if v},kinds)
+                self.assertFalse(row['value_comparison_formed'])
+                self.assertTrue(row['comparison_formed'])
+                for engine in ('py','wl'):
+                    self.assertEqual(row[engine]['compared_leaves_by_kind']['value'],0)
+                    self.assertGreater(row[engine]['compared_leaves'],0)
+                completion=next(r for r in records if r['kind']=='completion')
+                self.assertEqual(completion['rows_without_formed_value_comparison'],1)
+                self.assertEqual(completion['rows_without_formed_value_comparison_names'],['SYNTHETIC'])
+                self.assertFalse(completion.get('rows_with_formed_value_comparison',0))
+                self.assertFalse(completion['sample_outcomes_by_kind']['value'])
+        check()
+        with patch.object(c,'comparison_kind',return_value='value'):
+            with self.assertRaises(AssertionError): check()
+        # One-sided mutation changes the computed kind/accounting, not just
+        # the marker text; the unchanged native operand is checked explicitly.
+        py,wl,_=fixtures[0]
+        before=self.fixture(py,wl); after=self.fixture(py,'7')
+        self.assertEqual([r['py'] for r in before[2] if r['kind']=='operands'],
+                         [r['py'] for r in after[2] if r['kind']=='operands'])
+        self.assertNotEqual(before[1][0]['comparison_kinds_formed'],after[1][0]['comparison_kinds_formed'])
+        with patch.object(c,'text_comparison',return_value=None):
+            with self.assertRaises(AssertionError):
+                self.assertNotEqual(self.fixture(py,wl)[1][0]['comparison_kinds_formed'],
+                                    self.fixture(py,'7')[1][0]['comparison_kinds_formed'])
+
+    def test_scalar_and_boolean_values_have_separate_value_accounting(self):
+        for py,wl in [('Integer(7)','7'),('true','True'),
+                      (py_gate('Integer(7)'),wl_gate('7'))]:
+            _,account,records=self.fixture(py,wl)
+            self.assertTrue(account[0]['value_comparison_formed'])
+            self.assertTrue(account[0]['comparison_kinds_formed']['value'])
+            self.assertTrue(all(account[0][e]['compared_leaves_by_kind']['value']>0 for e in ('py','wl')))
+            completion=next(r for r in records if r['kind']=='completion')
+            self.assertEqual(completion['rows_without_formed_value_comparison'],0)
+
+    def test_integrable_singularity_forms_with_nonrational_profile(self):
+        py='Integral(Mul(Function("s9b_delta")(Symbol("s9b_r")),Pow(Add(Symbol("s9b_r"),Integer(-1)),Rational(-1,2))),Tuple(Symbol("s9b_r"),Integer(1),Integer(3)))'
+        wl='Inactive[Integrate][deltaProfile[r]/Sqrt[r-1],{r,1,3}]'
+        def check():
+            c.numerical_integral.cache_clear()
+            rows=self.fixture(py,wl)[0][0]['samples']
+            for family in ('inverse','shifted','exponential'):
+                selected=[r for r in rows if r['profile']==family]
+                self.assertEqual(len(selected),len(c.POINTS))
+                self.assertTrue(all(r['comparison']['coverage']=='residual formed' for r in selected))
+                self.assertTrue(all(r[e].get('reliable_digits')==12 for r in selected for e in ('py','wl')))
+        check()
+        self.mutation(py,wl,'Inactive[Integrate][deltaProfile[r]^2/Sqrt[r-1],{r,1,3}]')
+        with patch.object(c,'endpoint_convergence',side_effect=c.UnresolvedEvaluation('disabled endpoint certificate')):
+            with self.assertRaises(AssertionError): check()
+        c.numerical_integral.cache_clear()
+
+    def test_nonintegrable_exponential_endpoint_is_not_printed_as_numeric(self):
+        py='Integral(Mul(exp(Mul(Integer(-1),Symbol("s9b_r"))),Pow(Add(Symbol("s9b_r"),Integer(-1)),Integer(-1))),Tuple(Symbol("s9b_r"),Integer(1),Integer(3)))'
+        wl='Inactive[Integrate][Exp[-r]/(r-1),{r,1,3}]'
+        def check():
+            c.numerical_integral.cache_clear()
+            rows=self.fixture(py,wl)[0][0]['samples']
+            self.assertTrue(all(r['comparison']['coverage']=='unresolved coverage' for r in rows))
+            self.assertTrue(all('endpoint convergence' in r[e]['unresolved'] for r in rows for e in ('py','wl')))
+        with patch.object(c.mp,'quad',return_value=(c.mp.mpf(1),c.mp.mpf(0))):
+            check()
+            with patch.object(c,'endpoint_convergence'):
+                with self.assertRaises(AssertionError): check()
+        c.numerical_integral.cache_clear()
+
+    def test_complete_variable_limit_derivative_forms(self):
+        # Its second derivative exists although differentiating the lower
+        # endpoint and the integrand separately produces singular terms.
+        py='Subs(Derivative(Integral(Pow(Add(Symbol("s9b_r"),Mul(Integer(-1),Symbol("q"))),Rational(1,2)),Tuple(Symbol("s9b_r"),Symbol("q"),Symbol("r_E"))),Tuple(Symbol("q"),Integer(2))),Tuple(Symbol("q")),Tuple(Symbol("b")))'
+        wl='1/(2*Sqrt[rE-b])'
+        def check():
+            rows=self.fixture(py,wl)[0][0]['samples']
+            self.assertTrue(rows)
+            self.assertTrue(all(r['comparison']['coverage']=='residual formed' for r in rows))
+            self.assertTrue(all(r['residual']['reliability_established'] for r in rows))
+            # Accuracy is checked against the independent synthetic native
+            # formula, not a measured-stream target or an operand echo.
+            for row in rows:
+                residual=row['residual']
+                with c.mp.workdps(60):
+                    difference=c.mp.mpc(*row['py']['evaluations'][-1])-c.mp.mpc(*row['wl']['evaluations'][-1])
+                    self.assertLessEqual(abs(difference),c.mp.mpf('1e-12')*c.mp.mpf(residual['operand_scale']))
+        check()
+        self.mutation(py,wl,'1/(3*Sqrt[rE-b])')
+        with patch.object(c,'numerical_derivative',side_effect=c.UnresolvedEvaluation('disabled complete derivative')):
+            with self.assertRaises(AssertionError): check()
+        with patch.object(c,'derivative_consistent',return_value=False):
+            with self.assertRaises(AssertionError): check()
+
+    def test_variable_limit_derivative_mutation_moves_comparison(self):
+        py='Subs(Derivative(Integral(exp(Mul(Integer(-1),Symbol("s9b_r"))),Tuple(Symbol("s9b_r"),Integer(1),Symbol("q"))),Tuple(Symbol("q"),Integer(1))),Tuple(Symbol("q")),Tuple(Symbol("b")))'
+        changed=py.replace('Integer(1),Symbol("q")))','Integer(1),Mul(Integer(2),Symbol("q"))))')
+        def check():
+            a=self.fixture(py,'Exp[-b]'); b=self.fixture(changed,'Exp[-b]')
+            self.assertEqual([r['wl'] for r in a[2] if r['kind']=='operands'],
+                             [r['wl'] for r in b[2] if r['kind']=='operands'])
+            self.assertNotEqual(products(a[0]),products(b[0]))
+            self.assertTrue(all(r['comparison']['coverage']=='residual formed' for result in (a,b) for r in result[0][0]['samples']))
+        check()
+        with patch.object(c,'numerical_derivative',side_effect=c.UnresolvedEvaluation('disabled complete derivative')):
+            with self.assertRaises(AssertionError): check()
+
+    def test_pole_free_trigonometric_integral_forms(self):
+        py='Integral(Mul(tan(Symbol("s9b_r")),Pow(Add(Integer(1),sec(Symbol("s9b_r"))),Integer(-1))),Tuple(Symbol("s9b_r"),Integer(0),Rational(1,2)))'
+        wl='Inactive[Integrate][Tan[r]/(1+Sec[r]),{r,0,1/2}]'
+        def check():
+            c.numerical_integral.cache_clear()
+            rows=self.fixture(py,wl)[0][0]['samples']
+            self.assertTrue(rows)
+            self.assertTrue(all(r['comparison']['coverage']=='residual formed' for r in rows))
+            self.assertTrue(all(r['residual']['reliability_established'] for r in rows))
+        check()
+        self.mutation(py,wl,'Inactive[Integrate][Tan[r]/(1+Sec[r]),{r,0,2/3}]')
+        with patch.object(c,'trig_poles',side_effect=c.UnresolvedEvaluation('disabled pole locations')):
+            with self.assertRaises(AssertionError): check()
+        c.numerical_integral.cache_clear()
+
+    def test_trigonometric_pole_is_not_admitted_by_range_screen(self):
+        py='Integral(sec(Symbol("s9b_r")),Tuple(Symbol("s9b_r"),Integer(0),Integer(2)))'
+        wl='Inactive[Integrate][Sec[r],{r,0,2}]'
+        def check():
+            c.numerical_integral.cache_clear()
+            rows=self.fixture(py,wl)[0][0]['samples']
+            self.assertTrue(all(r['comparison']['coverage']=='unresolved coverage' for r in rows))
+        # Isolate the safety check from quadrature's incidental ability to
+        # notice a pole. No successful quadrature nodes certify convergence.
+        with patch.object(c.mp,'quad',return_value=(c.mp.mpf(1),c.mp.mpf(0))):
+            check()
+            with patch.object(c,'trig_poles',return_value=set()):
+                with self.assertRaises(AssertionError): check()
+        c.numerical_integral.cache_clear()
 
     def test_every_function_binding_repoint(self):
         # Independent native fixtures, not synthesized from table targets.

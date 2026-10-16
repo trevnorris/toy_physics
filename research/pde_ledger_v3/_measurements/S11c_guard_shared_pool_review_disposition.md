@@ -71,3 +71,29 @@ file-cache records.
 
 **Route.** The author repairs Y1–Y4, and round 2 follows with fresh Codex and Grok legs. Y3 and Y4 are defects in this
 change's own repairs. If round 2 finds a defect in what round 2 changes, the author changes (G4).
+
+## Round 2
+
+**The change, round 2.** The author repaired Y1–Y4. Packet: the same directory.
+- after: `r2_s11c_guarded_run_after.py`, sha256 `93e61d5f…`;
+- diffs against `40dfecc9`: `r2_guard.diff` (`84a49377…`) and `r2_AGENTS.diff` (`7010516f…`);
+- `r2_repair_only.diff` (`cc35e036…`), the diff against round 1, which is committed at `0dfecf6e`;
+- baseline `r2_baseline.sha256`;
+- prompt `r2_review_prompt.md`, sha256 `18cdfdd6…`.
+
+**Legs (fresh).**
+- Codex (gpt-6.1-sol, xhigh), NEEDS REVISION, two findings. Report: `r2_review_codex_final.txt`; evidence:
+  `r2_codex_evidence/`.
+- Grok, NEEDS REVISION, one finding. Report: `r2_review_grok.txt`; evidence: `r2_grok_evidence/`.
+
+Both found Y1, Y3 and Y4 now hold, and X3, X4 and X6 still hold. Both found X2's procedure enough, provided no launch
+runs from the idle check through the empty-registry confirmation. Both found X5's reasoning right.
+
+| # | Finding (leg) | Disposition |
+|---|---|---|
+| Z1 | Y2 is not met. Round 2 reads every unit, then `MemAvailable`, then every unit again, and keeps the smaller of the two samples. A unit that frees memory and reallocates it between the two walks shows high use in both samples, while `MemAvailable` was read during the free. Codex's injected case admits caps 6 GiB past RAM; Grok's, 4 GiB past. A docstring caveat does not meet Y2, and `AGENTS.md` states no caveat. (Codex 1, Grok 1) | **ACCEPT.** No atomic snapshot of every unit and `MemAvailable` exists. Required: each `MemAvailable` reading is compared only with live usage read next to it, and admission refuses unless every such comparison passes. A free and reallocation between non-adjacent reads then cannot raise admission. Whatever window remains is stated exactly in the docstring and in `AGENTS.md`. |
+| Z2 | Round 2 keeps one sample per unit and drops the other before the limit and accounting checks. A second sample that shows an actual cap other than the reserved one, or inconsistent reclaimable accounting, is ignored, and an extra job is admitted. The one-sided branch overwrites the reclaimable figure, which also hides a malformed value. (Codex 2) | **ACCEPT.** Required: every sample of every live unit is validated against its reservation before any usage figure from it is used. The credit is carried separately from the raw accounting, which is never overwritten. |
+
+**Route.** Both findings are in material round 2 changed: the sampling repair for Y2. Under G4 the author changes:
+Codex writes the round-3 repair, and fresh Codex and Grok legs review it. Until it is accepted and installed, every
+checkout keeps the committed guard. S9b work continues under it, one guarded job at a time.

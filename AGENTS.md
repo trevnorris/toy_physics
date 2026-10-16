@@ -49,7 +49,8 @@ how you work in the repository.
   hard cap (`--memory-gib`, 1 GiB up to `MemTotal` rounded down to whole GiB). A job is admitted when the registry is
   clean, a CPU is free, the reserved caps plus its own fit within that budget, and available memory covers its cap
   plus the unused caps of jobs already admitted. Otherwise it is refused. A legacy (non-pooled) launch holds the
-  machine-wide admission lock for its whole run, so pooled launches wait until it ends.
+  machine-wide admission lock for its whole run: a pooled launch from another checkout waits until it ends, and one
+  from the same checkout is refused.
 - At most two Wolfram kernels at once (two licence seats). No automatic retries, and no replaying completed jobs.
 - Don't poll the model while waiting.
 

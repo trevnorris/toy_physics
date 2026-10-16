@@ -13,12 +13,14 @@ dedicated to this work (user, 2026-10-15), so there is no host-memory reserve,
 for pooled or legacy launches. A pooled job is admitted only when the registry
 holds no stale, malformed or unaccounted record, a CPU and job slot are free,
 the reserved caps plus its own fit the budget, and available memory covers its
-cap plus every reserved job's unused cap; a live job's use is credited only
-for memory the kernel cannot reclaim from it, since its file cache is already
-counted as available. Each job keeps its own hard memory cap. A legacy
-exclusive launch keeps its 2/4 GiB profile and holds the machine-wide
-admission lock for its whole run, so pooled admissions from every checkout
-wait until it ends. Native threads remain one. No workload
+cap plus every reserved job's unused cap. A live job's use is credited only
+for memory the kernel cannot reclaim from it (its file cache and reclaimable
+slab are already counted as available), and only the smaller of two samples
+taken around the available-memory read; memory a unit frees and re-allocates
+entirely within that millisecond window is not seen. Each job keeps its own hard memory
+cap. A legacy exclusive launch keeps its 2/4 GiB profile and holds the
+machine-wide admission lock for its whole run: a pooled launch from another
+checkout waits until it ends, and one from the same checkout is refused. Native threads remain one. No workload
 starts until actual cgroup memory, native address-space, inherited process
 affinity and duration enforcement is verified; pooled priority is desktop-managed.
 
@@ -131,15 +133,18 @@ def process_identity(pid):
         return None
 
 
+def core_of(cpu):
+    topology = Path('/sys/devices/system/cpu', 'cpu' + str(cpu), 'topology')
+    return tuple((topology / name).read_text().strip()
+                 for name in ('physical_package_id', 'core_id'))
+
+
 def pool_cpus():
-    # One logical CPU per physical core first, so admitted workers do not
-    # compete for sibling threads while idle physical cores are available;
-    # sibling threads follow.
+    # One logical CPU per physical core first, then their sibling threads.
+    # Admission re-ranks the free ones against the cores already occupied.
     physical, siblings = {}, []
     for cpu in sorted(os.sched_getaffinity(0), reverse=True):
-        topology = Path('/sys/devices/system/cpu', 'cpu' + str(cpu), 'topology')
-        key = tuple((topology / name).read_text().strip()
-                    for name in ('physical_package_id', 'core_id'))
+        key = core_of(cpu)
         if key in physical:
             siblings.append(cpu)
         else:
@@ -161,7 +166,9 @@ def service_resources(unit):
     actual = {name: (group / name).read_text().strip() for name in
               ('memory.max', 'memory.swap.max', 'memory.current', 'pids.max')}
     stat = dict(line.split() for line in (group / 'memory.stat').read_text().splitlines())
-    actual['memory.stat.file_lru'] = int(stat['active_file']) + int(stat['inactive_file'])
+    # The parts of the unit's memory that MemAvailable also counts as available.
+    actual['memory.stat.reclaimable'] = (int(stat['active_file']) + int(stat['inactive_file'])
+                                         + int(stat['slab_reclaimable']))
     actual['systemd.CPUAffinity'] = info.get('CPUAffinity')
     return actual
 
@@ -192,8 +199,26 @@ def write_reservations(directory, value):
         os.close(descriptor)
 
 
+def conservative_live(first, second):
+    # Live usage sampled before and after MemAvailable. Credit each unit the
+    # smaller unreclaimable use of the two samples, and nothing for a unit
+    # missing from either, so memory freed or allocated between the reads is
+    # never credited against memory that MemAvailable already reflects.
+    def credited(actual):
+        return int(actual['memory.current']) - actual['memory.stat.reclaimable']
+    live = {}
+    for unit in set(first) | set(second):
+        if unit in first and unit in second:
+            live[unit] = min(first[unit], second[unit], key=credited)
+        else:
+            sample = dict(first.get(unit) or second[unit])
+            sample['memory.stat.reclaimable'] = int(sample['memory.current'])
+            live[unit] = sample
+    return live
+
+
 def admission_plan(reservations, live, requested, cpus, available,
-                   identity=process_identity):
+                   identity=process_identity, core=core_of):
     # A reservation is written before requesting systemd launch. Never silently
     # reclaim a dead launcher's reservation: a queued start could still exist.
     # Unknown active services likewise block, even if a launcher lock vanished.
@@ -221,11 +246,11 @@ def admission_plan(reservations, live, requested, cpus, available,
             current = int(actual['memory.current'])
             if current < 0 or current > cap:
                 raise RuntimeError('live service memory accounting outside cap')
-            # File-LRU pages are reclaimable and already counted in available
-            # memory; credit only what the kernel cannot reclaim from the unit.
-            reclaimable = actual['memory.stat.file_lru']
+            # File-LRU pages and reclaimable slab are already counted in
+            # available memory; credit only what the kernel cannot reclaim.
+            reclaimable = actual['memory.stat.reclaimable']
             if type(reclaimable) is not int or not 0 <= reclaimable <= current:
-                raise RuntimeError('live service file-cache accounting inconsistent')
+                raise RuntimeError('live service reclaimable-memory accounting inconsistent')
             used = current - reclaimable
         elif identity(record['owner']['pid']) != record['owner']:
             raise RuntimeError('unconfirmed stale reservation; explicit reconciliation required: ' + unit)
@@ -235,7 +260,10 @@ def admission_plan(reservations, live, requested, cpus, available,
         raise RuntimeError('aggregate physical-memory reservation budget exceeded')
     if len(reservations) >= POOL_MAX_JOBS:
         raise RuntimeError('aggregate worker budget exhausted')
-    free = [cpu for cpu in cpus if cpu not in occupied]
+    # An idle physical core before a sibling of an occupied one; stable sort
+    # keeps the cores-first order within each group.
+    busy = {core(cpu) for cpu in occupied}
+    free = sorted((cpu for cpu in cpus if cpu not in occupied), key=lambda cpu: core(cpu) in busy)
     if not free:
         raise RuntimeError('no unreserved physical CPU available')
     if available < AVAILABLE_MIN + headroom + requested:
@@ -251,8 +279,11 @@ def reserve_pool(spec, directory=POOL_DIRECTORY):
     with (directory / 'admission.lock').open('a') as admission:
         fcntl.flock(admission, fcntl.LOCK_EX)
         records = read_reservations(directory)
-        live = {unit: service_resources(unit) for unit in active_units()}
-        plan = admission_plan(records, live, spec['memoryMax'], pool_cpus(), available_memory())
+        first = {unit: service_resources(unit) for unit in active_units()}
+        available = available_memory()
+        second = {unit: service_resources(unit) for unit in active_units()}
+        plan = admission_plan(records, conservative_live(first, second), spec['memoryMax'],
+                              pool_cpus(), available)
         spec.update(plan)
         spec['owner'] = process_identity(os.getpid())
         if not spec['owner']:

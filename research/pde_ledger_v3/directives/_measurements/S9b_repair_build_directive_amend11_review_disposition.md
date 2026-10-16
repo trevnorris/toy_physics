@@ -484,3 +484,60 @@ All completed.
 name no step a builder takes, but O1's "name no review" covered them too. Neither leg raised it. It does not change
 what is computed or claimed, and the earlier headers already give the form. The round-8 author may restore the
 pointers as history if they read as history, not as instructions.
+
+## Round 8
+
+**Artifact.** The working-tree directive at sha256 `930999fc…`, written by a fresh Codex session (gpt-6.1-sol,
+xhigh; session `01a14504…`). Brief and note: `_scratch/s9b_build/amend11_author7/brief.md`, `author_note.md`. The
+orchestrator copied it in unchanged after checking that the diff against round 7 (`899458a1`) is one hunk: item 14's
+solution-pairing paragraph (L306–310). Saved before launch in
+`_scratch/s9b_build/preserved/S9b_repair_build_directive_amend11_r8.md`. Prompt:
+`_scratch/s9b_build/s9b_repair_build_directive_amend11_review_prompt_r8.md` (`d0dc1534…`). Baseline: 22 files, all
+unchanged after both legs. Lookups: `S9b_repair_build_directive_amend11_review_r8_lookups.md` beside this file
+(gen `_scratch/s9b_build/gen/s9b_amend11_r8_lookups.sh`).
+
+**Legs** (Codex-written, so a fresh Claude agent and Grok, G1):
+- **Grok: CLEAR, no findings.** Report: `_scratch/s9b_build/s9b_amend11_review_r8_grok.txt`. Script and stdout:
+  `_scratch/s9b_build/s9b_amend11_review_r8_grok_evidence/`.
+- **Fresh Claude (opus): CLEAR, no findings.** Report: `_scratch/s9b_build/s9b_amend11_review_r8_claude.md`, saved
+  verbatim from the hand-back. Scripts and stdout: `_scratch/s9b_build/s9b_amend11_review_r8_claude_evidence/`.
+
+Both legs applied the paragraph to the emitted K4c objects. Claude covered both engines, including Wolfram's
+`rBoundary`, which no earlier leg had run. In each, the copies admit the same zeros `{2, 4}` at the witness inputs
+although the emitted equations differ. The matched differences are `0`, and the crossed pair is barred. Where
+the admitted sets are disjoint (K3's turning radii, and a decided-empty K4c case), each copy keeps its own
+solutions. Both legs confirm that everything earlier rounds confirmed still holds: the marks, the site rule, the K11
+pairs, O1, engines unchanged, no verdict, no leakage, and R1, R2 (as revised) and R4.
+
+**Disposition: accepted.** Nothing outstanding changes what the harnesses compute or print, how outputs are paired,
+or what may be claimed (G4). Claude observes again that the header has no build-review pointer and no "Reviewed
+until clear". It changes nothing computed or claimed. The provenance is here and in the acceptance commit.
+
+**Carried to the build review r8** (orchestrator's checklist, kept here and out of the builders' text):
+- each printed witness, and every reading choice behind it, against the engine's own reading of its object (the
+  user's choice after round 5);
+- that the named structural comparison is exact on approximate numbers (round 4, G3′);
+- that no join-branch decision rests on SymPy's native one-sided `Limit.doit()` (round 6, observation);
+- solution pairing, as round 8 states it;
+- the claim limits the record will carry: C2 is amplitude-only; comparisons are claimed only where formed; K11 is
+  local only; the reuse identity rests on the reviewers' reruns.
+
+**Summary of amendment 11.**
+
+| Round | Author | Findings |
+|---|---|---|
+| 0 | orchestrator | 3 |
+| 1 | orchestrator | 2 |
+| 2 | Codex | 9 → the user chose the smaller harness |
+| 3 | Codex (fresh text) | 9 |
+| 4 | Codex | 5 accepted, 1 rejected |
+| 5 | Codex | 3 → the user chose to print readings and check them at build round 8 |
+| 6 | Codex | 1, plus O1 |
+| 7 | Codex | 1 |
+| 8 | Codex | 0: both legs CLEAR |
+
+**Process.** The legs' guarded runs are under `_scratch/s11c/s9b-amend11-review-r8/`:
+- Claude: `claudeleg-{py-k4c,py-pair1,py-zfree1,wl-k4c,wl-pair2}`;
+- Grok: `grok-r8-pair2`.
+
+All completed. `claudeleg-wl-pair1` failed on the leg's own script and was superseded.

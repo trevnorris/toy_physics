@@ -303,10 +303,11 @@ comparator, the production runs and the record.
       A witness counts only if every choice, including solution selection, is the engine's own reading of its object
       under this directive, the spec and the knife's definition.
 
-      For value witnesses and compared domain conditions, pair solutions of a shared fixing equation at the same
-      solution admitted by both copies, or print and compare the complete sets of (solution, value) pairs, using
-      condition evaluations for domains. Never pair different solutions of that equation. Where the fixing
-      constructions differ, keep each copy's own solutions.
+      For value witnesses and compared domain conditions, compute and print the intersection of the solutions each
+      copy admits at the witness inputs, irrespective of whether the emitted fixing equations or constructions are
+      the same expression. If the intersection is nonempty, compare at a common solution, or print and compare the
+      complete sets of (solution, value) pairs, using condition evaluations for domains. Pair different solutions
+      only when the intersection is decided empty; keep each copy's own solutions.
 
       Print a concrete real point assigning all independent inputs free in either copy or its conditions after
       accounting for the printed roles; never substitute bound variables. Print a concrete admissible

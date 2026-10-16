@@ -289,35 +289,41 @@ comparator, the production runs and the record.
       is the gate after negation. For K11, the witness compares compact corrupted/unmutated parts of a reached tag
       whose computation the mutation enters, never the method's residual.
 
-      Attached conditions are entries stating where the part's value holds: domains, gates and premises, at every
-      containing payload level and in its object labels. A branch label qualifies only its own branch. Descriptive
-      entries such as `Profiles` and `Measure`, and computed values such as `Closedness`, are not conditions. Print
-      which entries were evaluated as conditions.
+      Attached conditions are the domains, gates and premises stating where the part holds, at every containing
+      level, in object labels, and in its case selection. Ordered cases require earlier cases to fail, including
+      for the default. A branch label qualifies only its own branch. Item 9's density-sign labels partition the
+      shared object; they add no attached condition. A witness may lie on either part, including `ρ ≤ 0`; print
+      which part contains its point. Descriptive entries (`Profiles`, `Measure`), computed values (`Closedness`),
+      and order-counting entries (including `OpticalCounting`) are not conditions. Print which conditions were
+      evaluated.
 
-      Print a concrete real point assigning every symbol free in either copy or its attached conditions after
-      accounting for binders; never substitute bound variables. Print a concrete admissible profile for every live
-      profile there. At these inputs, print both evaluations and every attached condition's evaluation, with the
-      computation establishing each. All conditions follow one test: an exact decision of their mathematical
-      content for that copy's object as defined by this directive and the spec, over their whole stated ranges,
-      with quantifiers active and bound variables bound. Inactive or unevaluated forms decide nothing. For a
-      worded condition, also print that mathematical statement. A set attached to a relation over a variable is
-      that variable's range; decide the relation over the whole range (item 6). The exterior half-line is
-      `(b_far, ∞)`, using the engine's cutoff (`s9b_b_min` or `bFar`). Neither `OpticalCounting` nor the spec's
-      order counting is evaluated.
+      Print a concrete real point assigning all independent inputs free in either copy or its conditions after
+      accounting for binders and stated ranges; never substitute bound variables. Each quantity fixed by a copy's
+      construction takes that copy's own computed value; print it and its computation. Print a concrete admissible
+      profile for every live profile there, both evaluations, and every attached condition's evaluation, with the
+      computation establishing each.
 
-      For a value witness, every attached condition is computed true; both values are finite in the ordinary sense,
-      with the required integrals, limits and derivatives existing ordinarily, without regularization, principal
-      value or analytic continuation. The values differ exactly, or by more than a printed bound covering both
-      errors. A numerical bound is a proved enclosure from exact or outward-rounded interval or ball arithmetic;
-      print its justification. For a domain witness, the compared condition is true in one copy and false in the
-      other; every other attached condition at its containing levels is computed true in both. Unresolved
-      evaluations furnish no witness.
+      All conditions require exact decisions of their mathematical content for that copy's object under this
+      directive and the spec, over their whole stated ranges, with quantifiers active. Inactive or unevaluated
+      forms decide nothing. For each worded condition, print its mathematical statement with variables and ranges
+      named in that engine's symbols; existence and convergence are ordinary. Relations are decided over their
+      whole stated ranges, whether carried by attached sets or domain formulas, including the radius of a reduced
+      every-`b` condition in both engines (item 6). The exterior radial half-line is `s9b_r > s9b_b_min` (SymPy) or
+      `r > bFar` (Wolfram).
 
-      An admissible profile assigns one specific radial function, with fixed coefficients, to each live profile
-      in the part or its conditions, including `δ`, `V`, `ξ_w`, `ρ_br`, `f`, `μ_⊥` and `j_n` where present. It is
-      defined, with every derivative the part takes, at the witness point. A witness's point and profile are
-      chosen for this test only. They enter no engine object, and they are neither a profile choice nor a profile
-      family under item 13. K11's sample domain describes coverage, not an attached condition.
+      For a value witness, every attached condition is computed true; both values are ordinary finite values,
+      with required integrals, limits and derivatives existing without regularization, principal value or analytic
+      continuation. Values differ exactly, or by more than a printed bound covering both errors: a proved enclosure
+      from exact or outward-rounded interval or ball arithmetic, with printed justification. For a domain witness,
+      the compared condition is true in one copy and false in the other; every other attached condition is computed
+      true in both. Print both emitted objects evaluated at these inputs, establishing that they differ there.
+      Unresolved evaluations furnish no witness.
+
+      An admissible profile assigns each live profile in the part or its conditions one specific radial function
+      with fixed coefficients, including `δ`, `V`, `ξ_w`, `ρ_br`, `f`, `μ_⊥` and `j_n` where present, defined with
+      all required derivatives at the witness point. Witness inputs are chosen for this test only, enter no engine
+      object, and are neither a profile choice nor a profile family under item 13. K11's sample domain is coverage,
+      not an attached condition.
     - A knife whose construction an engine does not contain is reported, not invented. The engine itself contains
       no control with an expected outcome.
 

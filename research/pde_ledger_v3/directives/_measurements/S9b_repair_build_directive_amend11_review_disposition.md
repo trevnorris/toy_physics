@@ -266,3 +266,52 @@ new cases of the same witness test, the loop goes to the user before another fol
 
 **Process.** The legs' guarded runs are under `_scratch/s11c/s9b-amend11-review-r4/` (Claude `claudeleg-*`; Grok `py1`, `py2`,
 `wl1`). All completed; two Claude runs (`claudeleg-py1`, `claudeleg-wl1`) failed on the leg's own script and were superseded.
+
+## Round 5
+
+**Artifact.** The working-tree directive at sha256 `efa14a51…`, written by a fresh Codex session (gpt-6.1-sol,
+xhigh; session `01a144aa…`). Brief and note: `_scratch/s9b_build/amend11_author4/brief.md`, `author_note.md`. The
+orchestrator copied it in unchanged after checking that the diff against round 4 (`46d32255`) touches only item 14.
+Saved before launch in `_scratch/s9b_build/preserved/S9b_repair_build_directive_amend11_r5.md`. Prompt:
+`_scratch/s9b_build/s9b_repair_build_directive_amend11_review_prompt_r5.md` (`d2673c87…`). Baseline: 19 files, all
+unchanged after both legs. Lookups: `S9b_repair_build_directive_amend11_review_r5_lookups.md` beside this file
+(gen `_scratch/s9b_build/gen/s9b_amend11_r5_lookups.sh`).
+
+**Legs** (Codex-written, so a fresh Claude agent and Grok, G1):
+- **Fresh Claude (opus): NEEDS REVISION, two findings.** Report: `_scratch/s9b_build/s9b_amend11_review_r5_claude.md`,
+  saved verbatim from the hand-back. Scripts and stdout: `_scratch/s9b_build/s9b_amend11_review_r5_claude_evidence/`.
+- **Grok: NEEDS REVISION, one finding.** Report: `_scratch/s9b_build/s9b_amend11_review_r5_grok.txt`. Scripts and
+  stdout: `_scratch/s9b_build/s9b_amend11_review_r5_grok_evidence/`.
+
+Both legs confirm these:
+- the marks;
+- the site rule;
+- C1′ and G1′ in form;
+- G2′'s half-line, ordinary existence and order counting;
+- the K11 pairs;
+- the rejected row's ground;
+- engines unchanged, no verdict, no leakage.
+
+Grok also finds C2′ and C4′ met.
+
+**Findings.** All three are supported by the legs' scripts and accepted.
+- **Claude 1 (C2′ only partly met).** "Takes that copy's own computed value" assumes exactly one value. Under K3, the
+  baseline turning condition has no solution where K3's has one (F1a). The flyby turning condition has two roots,
+  of which only one meets the rest of the construction (F1b). Wolfram fixes `impactRadar` by two equations
+  (L253–260, L348). SymPy's free `s9b_velocity_zero_radius` has the zero set `{2, 4}` on one branch, so a builder
+  who takes a different zero in each copy compares `j_n` at different radii, `−4` against `−8`, on a branch the knife
+  does not change.
+- **Claude 2 (C4′ generalized too far).** Nothing says which inequalities in a domain formula state a range. Wolfram's
+  baseline `r > bFar && rAnchor > bFar` and K7's `bFixed > bFar` have the same form (L411–413, L421). Read as a range,
+  K7's `bFixed` gives back the baseline's every-`b` quantifier, which undoes K7 in Wolfram alone (F2). Read as a range,
+  SymPy's `Gt(z, s9b_b_min)` takes the join branch out of every witness. Where the radius is ranged, a density label
+  holds on part of the range only, so "print which part contains its point" has no answer.
+- **Grok 1 (G2′).** Wolfram's worded `"required derivatives exist"` has two ordinary tests: at the witness point, or
+  at every radius on `r > bFar`. On `Abs(r−2)` at `r = 3` the K4a witness passes the first test and fails the second.
+
+**Disposition: held for the user.** The loop record in round 4 set this condition: if round 5 does not clear, or its
+findings are again new cases of the same witness test, the loop goes to the user before another fold. All three
+findings are such cases.
+
+**Process.** The legs' guarded runs are under `_scratch/s11c/s9b-amend11-review-r5/` (Claude `claudeleg-*`, of which
+`py4`, `wl4` and `wl5` carry the verdict; Grok `py-witness-attempt-*`, `wl-witness-attempt-1`). All completed.

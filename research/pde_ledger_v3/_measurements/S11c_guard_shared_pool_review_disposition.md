@@ -168,3 +168,31 @@ changed only the path, its import and the sentences that describe it. All 21 fun
 **Clearance.** Nothing outstanding changes what the launcher admits, refuses or says it does. **ACCEPTED** at
 launcher sha256 `c747c266…` and `AGENTS.md` sha256 `f11a05e8…`. Installation follows X2, with launches stopped
 throughout (`_scratch/s9b_build/gen/guard_shared_install.sh`). Its record is appended below when it runs.
+
+## Installation (X2)
+
+Run 2026-10-15 21:09 with `_scratch/s9b_build/gen/guard_shared_install.sh c747c266…`. The one agent session that
+could launch a guarded job, the comparator builder (codex pid 433893), was paused with `SIGSTOP` for the whole run
+and resumed with `SIGCONT` afterwards. The script checks for quiet and empty registries before and after copying.
+Literal stdout, `_scratch/s9b_build/guard_share_review/install.stdout`:
+```
+quiet: no guarded unit, queued job or launcher
+registries: every old per-checkout registry and the shared one empty or absent
+installed: /var/projects/toy_physics-o2-py/ (launcher was 6a6369424edf)
+installed: /var/projects/toy_physics-o2-wl/ (launcher was 6a6369424edf)
+installed: /var/projects/toy_physics-s9b-comparator/ (launcher was 6a6369424edf)
+installed: /var/projects/toy_physics-s9b-comparator-r3/ (launcher was 6a6369424edf)
+installed: /var/projects/toy_physics-s9b-py/ (launcher was 6a6369424edf)
+installed: /var/projects/toy_physics-s9b-r2-py/ (launcher was 6a6369424edf)
+installed: /var/projects/toy_physics-s9b-r2-wl/ (launcher was 6a6369424edf)
+installed: /var/projects/toy_physics-s9b-r7-py/ (launcher was 6a6369424edf)
+installed: /var/projects/toy_physics-s9b-r7-wl/ (launcher was 6a6369424edf)
+installed: /var/projects/toy_physics-s9b-wl/ (launcher was 6a6369424edf)
+launcher copies by sha256:
+     11 c747c266e78ed519d3e31add8fffed85a0aafabc9e01528ffd3eb157f8f1dcdd
+AGENTS.md copies by sha256:
+     11 f11a05e888d39d07084adf39b4f21e7c720d845503b30699a865d75a68caba2a
+quiet: no guarded unit, queued job or launcher
+registries: every old per-checkout registry and the shared one empty or absent
+done 2026-10-15 21:09:28
+```

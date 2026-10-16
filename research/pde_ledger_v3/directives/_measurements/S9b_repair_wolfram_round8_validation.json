@@ -1,0 +1,560 @@
+{
+  "tags": 374,
+  "shared": 330,
+  "local": 44,
+  "missingShared": [],
+  "baselineNotEstablished": 271,
+  "structuralCounts": {
+    "K1": {
+      "not compared": 317,
+      "identical": 57
+    },
+    "K2": {
+      "not compared": 238,
+      "identical": 136
+    },
+    "K3": {
+      "not compared": 338,
+      "identical": 36
+    },
+    "K4a": {
+      "identical": 270,
+      "not compared": 104
+    },
+    "K4b": {
+      "identical": 270,
+      "not compared": 104
+    },
+    "K4c": {
+      "not compared": 235,
+      "identical": 139
+    },
+    "K5": {
+      "identical": 336,
+      "not compared": 38
+    },
+    "K6": {
+      "identical": 320,
+      "not compared": 54
+    },
+    "K7": {
+      "identical": 327,
+      "not compared": 47
+    },
+    "K8": {
+      "identical": 190,
+      "not compared": 184
+    },
+    "K9a": {
+      "not compared": 13,
+      "identical": 361
+    },
+    "K9b": {
+      "not compared": 12,
+      "identical": 362
+    },
+    "K10": {
+      "identical": 49,
+      "not compared": 325
+    },
+    "K11": {
+      "DifferencePairComparison: not compared": 6,
+      "MethodResidualPairComparison: identical": 10,
+      "DifferencePairComparison: identical": 4,
+      "not evaluated": 364
+    },
+    "HARNESS_DEAD_PATH": {
+      "identical": 374
+    }
+  },
+  "witnessSearches": {
+    "K1": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_FERMAT_OBJECT\", \"PayloadLocation\" -> {\"TimePolynomial\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 147, \"EntryConstruction\" -> \"timePolynomial = Expand[\"|>",
+      "evaluations": "{-2249111/810000, -1279808/455625}",
+      "conditions": "{{True, True}, {True, True}}",
+      "solutionIntersection": "False"
+    },
+    "K2": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_FERMAT_OBJECT\", \"PayloadLocation\" -> {\"TimePolynomial\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 147, \"EntryConstruction\" -> \"timePolynomial = Expand[\"|>",
+      "evaluations": "{-21067/7500, -1279808/455625}",
+      "conditions": "{{True, True}, {True, True}}",
+      "solutionIntersection": "False"
+    },
+    "K3": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_FERMAT_OBJECT\", \"PayloadLocation\" -> {\"TimePolynomial\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 147, \"EntryConstruction\" -> \"timePolynomial = Expand[\"|>",
+      "evaluations": "{-5070551/1822500, -1279808/455625}",
+      "conditions": "{{True, True}, {True, True}}",
+      "solutionIntersection": "False"
+    },
+    "K4a": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_OPTICAL_COORDINATE\", \"PayloadLocation\" -> {\"PushedDensity\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 237, \"EntryConstruction\" -> \"opticalDensity += (-1)^j\"|>",
+      "evaluations": "{2917376911/2916000000, 323071723/324000000}",
+      "conditions": "{{True, True, True, True, True}, {True, True, True, True, True}}",
+      "solutionIntersection": "(vLocal == 1/30 && omega == (121515 - 301*Sqrt[656189101])/3645450 && cSquared == 90601/22500 && aMetric == 8101/8100) || (vLocal == 1/30 && omega == (121515 + 301*Sqrt[656189101])/3645450 && cSquared == 90601/22500 && aMetric == 8101/8100)"
+    },
+    "K4b": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_OPTICAL_COORDINATE\", \"PayloadLocation\" -> {\"PushedDensity\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 237, \"EntryConstruction\" -> \"opticalDensity += (-1)^j\"|>",
+      "evaluations": "{1937902843/1944000000, 323071723/324000000}",
+      "conditions": "{{True, True, True, True, True}, {True, True, True, True, True}}",
+      "solutionIntersection": "(vLocal == 1/30 && omega == (121515 - 301*Sqrt[656189101])/3645450 && cSquared == 90601/22500 && aMetric == 8101/8100) || (vLocal == 1/30 && omega == (121515 + 301*Sqrt[656189101])/3645450 && cSquared == 90601/22500 && aMetric == 8101/8100)"
+    },
+    "K4c": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_PROFILE_ANSATZ\", \"PayloadLocation\" -> {\"XiDerivative\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 123, \"EntryConstruction\" -> \"\\\"XiDerivative\\\" -> xiSlope\"|>",
+      "evaluations": "{0, -1/90}",
+      "conditions": "{{True}, {True}}",
+      "solutionIntersection": "{{}}"
+    },
+    "K5": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_NONRECIPROCAL_CONSTRUCTION\", \"PayloadLocation\" -> {\"OneForm\", 1}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 192, \"EntryConstruction\" -> \"oddOneFormLocal = D[\"|>",
+      "evaluations": "{0, -1207049/145800000}",
+      "conditions": "{{True, True, True, True, True}, {True, True, True, True, True}}",
+      "solutionIntersection": "(vLocal == 1/30 && omega == (121515 - 301*Sqrt[656189101])/3645450 && cSquared == 90601/22500 && aMetric == 8101/8100) || (vLocal == 1/30 && omega == (121515 + 301*Sqrt[656189101])/3645450 && cSquared == 90601/22500 && aMetric == 8101/8100)"
+    },
+    "K6": {
+      "result": "\"none found\"",
+      "site": "<|\"Tag\" -> \"WL_S9B_A_RADAR_LOG_G100\", \"PayloadLocation\" -> {\"OnDomain\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 362, \"EntryConstruction\" -> \"finiteSlope = Expand[\"|>"
+    },
+    "K7": {
+      "result": "\"none found\"",
+      "site": "<|\"Tag\" -> \"WL_S9B_B_CONDITION_DEFLECTION\", \"PayloadLocation\" -> {}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 409, \"EntryConstruction\" -> \"If[quantifierMode === \\\"FIXED_B\\\"\"|>"
+    },
+    "K8": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_MASS_BALANCE\", \"PayloadLocation\" -> {\"Divergence\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 467, \"EntryConstruction\" -> \"massVector = (massDensity\"|>",
+      "evaluations": "{2/135, 1/90}",
+      "conditions": "{{True}, {True}}",
+      "solutionIntersection": "{{}}"
+    },
+    "K9a": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_C_RESPONSES\", \"PayloadLocation\" -> {\"Responses\", 2, \"DensityParts\", 1, \"Object\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 100, \"EntryConstruction\" -> \"responseValues = {c0\"|>",
+      "evaluations": "{2, Sqrt[301/3]/5}",
+      "conditions": "{{True, True, True, True, True}, {True, True, True, True, True, True, True}}",
+      "solutionIntersection": "fLocal == 1/300"
+    },
+    "K9b": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_C_RESPONSES\", \"PayloadLocation\" -> {\"Responses\", 3, \"DensityParts\", 1, \"Object\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 100, \"EntryConstruction\" -> \"responseValues = {c0\"|>",
+      "evaluations": "{2, 90601/45000}",
+      "conditions": "{{True, True, True, True}, {True, True, True, True}}",
+      "solutionIntersection": "fLocal == 1/300"
+    },
+    "K10": {
+      "result": "\"none found\"",
+      "site": "<|\"Tag\" -> \"WL_S9B_A_NONRECIPROCAL_PATH_DEPENDENCE\", \"PayloadLocation\" -> {\"OnDomain\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 174, \"EntryConstruction\" -> \"physicalPropagation = branchGateLocal\"|>"
+    },
+    "K11": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_FERMAT_OBJECT\", \"PayloadLocation\" -> {\"TimePolynomial\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 147, \"EntryConstruction\" -> \"timePolynomial = Expand[\"|>",
+      "evaluations": "{-5238707/1822500, -1279808/455625}",
+      "conditions": "{{True, True}, {True, True}}",
+      "solutionIntersection": "False"
+    }
+  },
+  "K11Reached": 10,
+  "K11Unreached": 364,
+  "engineUnchanged": true,
+  "engineBytes": 41282,
+  "standaloneStreamsByteIdentical": true,
+  "standaloneDirectoryOnlyEngine": true,
+  "productionOutStatus": "",
+  "growthWhileKernelAlive": [
+    {
+      "beforeBytes": 0,
+      "afterBytes": 2819,
+      "kernelPids": [
+        736455
+      ]
+    },
+    {
+      "beforeBytes": 2819,
+      "afterBytes": 2902,
+      "kernelPids": [
+        736455
+      ]
+    },
+    {
+      "beforeBytes": 2902,
+      "afterBytes": 4629,
+      "kernelPids": [
+        736455
+      ]
+    },
+    {
+      "beforeBytes": 4629,
+      "afterBytes": 5598,
+      "kernelPids": [
+        736455
+      ]
+    },
+    {
+      "beforeBytes": 5598,
+      "afterBytes": 44016,
+      "kernelPids": [
+        736455
+      ]
+    },
+    {
+      "beforeBytes": 44016,
+      "afterBytes": 44115,
+      "kernelPids": [
+        736455
+      ]
+    },
+    {
+      "beforeBytes": 44115,
+      "afterBytes": 290476,
+      "kernelPids": [
+        736455
+      ]
+    },
+    {
+      "beforeBytes": 290476,
+      "afterBytes": 346879,
+      "kernelPids": [
+        736455
+      ]
+    },
+    {
+      "beforeBytes": 346879,
+      "afterBytes": 348717,
+      "kernelPids": [
+        736455
+      ]
+    },
+    {
+      "beforeBytes": 348717,
+      "afterBytes": 1559036,
+      "kernelPids": [
+        736455
+      ]
+    }
+  ],
+  "mutations": {
+    "K1": [
+      [
+        "(",
+        ""
+      ],
+      [
+        " - vVector.kCov)",
+        ""
+      ]
+    ],
+    "K2": [
+      [
+        "aMetric",
+        "1"
+      ]
+    ],
+    "K3": [
+      [
+        "Squared",
+        "0^2"
+      ]
+    ],
+    "K4a": [
+      [
+        "",
+        " /. HoldPattern[Derivative[j_][deltaProfile][arg_]] :> 0"
+      ]
+    ],
+    "K4b": [
+      [
+        "",
+        " /. HoldPattern[Derivative[j_][velocityProfile][arg_]] :> 0"
+      ]
+    ],
+    "K4c": [
+      [
+        "A",
+        "Co"
+      ],
+      [
+        "",
+        "t"
+      ],
+      [
+        "",
+        "n"
+      ],
+      [
+        "z",
+        ""
+      ]
+    ],
+    "K5": [
+      [
+        "-",
+        ""
+      ]
+    ],
+    "K6": [
+      [
+        "r",
+        ""
+      ],
+      [
+        "u",
+        ""
+      ],
+      [
+        "dTrip",
+        "eWayER"
+      ]
+    ],
+    "K7": [
+      [
+        "",
+        "FIX"
+      ],
+      [
+        "VERY",
+        "D"
+      ]
+    ],
+    "K8": [
+      [
+        "[r]",
+        "Constant"
+      ]
+    ],
+    "K9a": [
+      [
+        " (1 + fLocal)",
+        ""
+      ]
+    ],
+    "K9b": [
+      [
+        " (1 + fLocal)",
+        ""
+      ]
+    ],
+    "K10": [
+      [
+        "",
+        "Not["
+      ],
+      [
+        "",
+        "]"
+      ]
+    ],
+    "K11": [
+      [
+        "0",
+        "vLocal/r"
+      ]
+    ]
+  },
+  "runs": {
+    "s9b-r8-full-final": {
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 208.90914709097706,
+        "unit": "s11c-guard-8e6581892259",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 208.83573423797498,
+          "childPid": 758118
+        }
+      },
+      "invocation": {
+        "command": [
+          "math",
+          "-script",
+          "research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation.wl"
+        ],
+        "cwd": "/var/projects/toy_physics-s9b-r8-wl",
+        "unit": "s11c-guard-8e6581892259",
+        "seconds": 0,
+        "requestedSecondsArgumentIgnored": 0,
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null,
+        "cpu": 7,
+        "memoryMax": 13958643712,
+        "swapMax": 0,
+        "tasksMax": 64,
+        "minimumHostAvailableBytes": 0,
+        "startedUtc": "2026-10-16T14:50:05.288731+00:00",
+        "pool": "s9b",
+        "priorityPolicy": "desktop-managed",
+        "logDirectory": "/var/projects/toy_physics-s9b-r8-wl/_scratch/s11c/s9b-r8-full-final",
+        "affinityEnforcement": "systemd-and-inherited-process",
+        "reservedBeforeBytes": 0,
+        "outstandingHeadroomBytes": 0,
+        "hostAvailableBytes": 28542939136,
+        "poolMemoryMax": 33285996544,
+        "poolMaxJobs": 8,
+        "activeUnits": [],
+        "owner": {
+          "pid": 758112,
+          "startTicks": "31685323",
+          "bootId": "99bf4b06-e068-4c58-af78-1e85cca16b84"
+        }
+      },
+      "resourceSamples": "/var/projects/toy_physics-s9b-r8-wl/_scratch/s11c/s9b-r8-full-final/resource-samples.jsonl"
+    },
+    "s9b-r8-engine-repository": {
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 15.840563025965821,
+        "unit": "s11c-guard-952c6450ff52",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 15.774435869010631,
+          "childPid": 756133
+        }
+      },
+      "invocation": {
+        "command": [
+          "math",
+          "-script",
+          "research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl"
+        ],
+        "cwd": "/var/projects/toy_physics-s9b-r8-wl",
+        "unit": "s11c-guard-952c6450ff52",
+        "seconds": 0,
+        "requestedSecondsArgumentIgnored": 0,
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null,
+        "cpu": 7,
+        "memoryMax": 13958643712,
+        "swapMax": 0,
+        "tasksMax": 64,
+        "minimumHostAvailableBytes": 0,
+        "startedUtc": "2026-10-16T14:43:58.962102+00:00",
+        "pool": "s9b",
+        "priorityPolicy": "desktop-managed",
+        "logDirectory": "/var/projects/toy_physics-s9b-r8-wl/_scratch/s11c/s9b-r8-engine-repository",
+        "affinityEnforcement": "systemd-and-inherited-process",
+        "reservedBeforeBytes": 0,
+        "outstandingHeadroomBytes": 0,
+        "hostAvailableBytes": 28497444864,
+        "poolMemoryMax": 33285996544,
+        "poolMaxJobs": 8,
+        "activeUnits": [],
+        "owner": {
+          "pid": 756127,
+          "startTicks": "31648690",
+          "bootId": "99bf4b06-e068-4c58-af78-1e85cca16b84"
+        }
+      },
+      "resourceSamples": "/var/projects/toy_physics-s9b-r8-wl/_scratch/s11c/s9b-r8-engine-repository/resource-samples.jsonl"
+    },
+    "s9b-r8-engine-standalone": {
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 15.790312759985682,
+        "unit": "s11c-guard-ac98b055e07f",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 15.724726385029498,
+          "childPid": 736455
+        }
+      },
+      "invocation": {
+        "command": [
+          "math",
+          "-script",
+          "S9b_light_bending_mathematica_audit.wl"
+        ],
+        "cwd": "/var/projects/toy_physics-s9b-r8-wl/_scratch/s9b_wl_repair8/standalone",
+        "unit": "s11c-guard-ac98b055e07f",
+        "seconds": 0,
+        "requestedSecondsArgumentIgnored": 0,
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null,
+        "cpu": 7,
+        "memoryMax": 13958643712,
+        "swapMax": 0,
+        "tasksMax": 64,
+        "minimumHostAvailableBytes": 0,
+        "startedUtc": "2026-10-16T14:38:54.274124+00:00",
+        "pool": "s9b",
+        "priorityPolicy": "desktop-managed",
+        "logDirectory": "/var/projects/toy_physics-s9b-r8-wl/_scratch/s11c/s9b-r8-engine-standalone",
+        "affinityEnforcement": "systemd-and-inherited-process",
+        "reservedBeforeBytes": 0,
+        "outstandingHeadroomBytes": 0,
+        "hostAvailableBytes": 28366266368,
+        "poolMemoryMax": 33285996544,
+        "poolMaxJobs": 8,
+        "activeUnits": [],
+        "owner": {
+          "pid": 736449,
+          "startTicks": "31618222",
+          "bootId": "99bf4b06-e068-4c58-af78-1e85cca16b84"
+        }
+      },
+      "resourceSamples": "/var/projects/toy_physics-s9b-r8-wl/_scratch/s11c/s9b-r8-engine-standalone/resource-samples.jsonl"
+    },
+    "s9b-r8-structural-checks5": {
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 1.4395652180537581,
+        "unit": "s11c-guard-ee47bc6cbdff",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 1.3698718799860217,
+          "childPid": 758018
+        }
+      },
+      "invocation": {
+        "command": [
+          "math",
+          "-script",
+          "research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation_checks.wl"
+        ],
+        "cwd": "/var/projects/toy_physics-s9b-r8-wl",
+        "unit": "s11c-guard-ee47bc6cbdff",
+        "seconds": 0,
+        "requestedSecondsArgumentIgnored": 0,
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null,
+        "cpu": 7,
+        "memoryMax": 13958643712,
+        "swapMax": 0,
+        "tasksMax": 64,
+        "minimumHostAvailableBytes": 0,
+        "startedUtc": "2026-10-16T14:49:47.412023+00:00",
+        "pool": "s9b",
+        "priorityPolicy": "desktop-managed",
+        "logDirectory": "/var/projects/toy_physics-s9b-r8-wl/_scratch/s11c/s9b-r8-structural-checks5",
+        "affinityEnforcement": "systemd-and-inherited-process",
+        "reservedBeforeBytes": 0,
+        "outstandingHeadroomBytes": 0,
+        "hostAvailableBytes": 28548472832,
+        "poolMemoryMax": 33285996544,
+        "poolMaxJobs": 8,
+        "activeUnits": [],
+        "owner": {
+          "pid": 758012,
+          "startTicks": "31683535",
+          "bootId": "99bf4b06-e068-4c58-af78-1e85cca16b84"
+        }
+      },
+      "resourceSamples": "/var/projects/toy_physics-s9b-r8-wl/_scratch/s11c/s9b-r8-structural-checks5/resource-samples.jsonl"
+    }
+  }
+}

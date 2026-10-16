@@ -1,19 +1,18 @@
-(* One guarded kernel. The canonical engine is loaded unchanged for baseline.
-   Each copy has exactly one manifest replacement. No subprocess kernels.
-   Run from this repository root; all harness artifacts stay in _scratch. *)
+(* Amendment 11. One kernel; unchanged engine baseline; one source
+   replacement per knife. Literal frozen emitted syntax is the only tag
+   comparison. Witness searches are separate, one per knife. *)
 Begin["S9bHarness`"];
 $HistoryLength = 0;
-(* Optional scope changes execution selection only, never a knife or payload. *)
-scope = Replace[Environment["S9B_ABLATION_SCOPE"], $Failed -> "ALL"];
-If[!MemberQ[{"ALL", "K11"}, scope], Quit[94]];
 root = Directory[];
-engine = FileNameJoin[{root, "research", "pde_ledger_v3", "mathematica", "S9b_light_bending_mathematica_audit.wl"}];
-work = FileNameJoin[{root, "_scratch", "s9b_wl_repair7", "ablation-final4"}];
-If[!DirectoryQ[work], CreateDirectory[work, CreateIntermediateDirectories -> True]];
-source = Import[engine, "Text"];
-S9bHarness`progress = OpenWrite[FileNameJoin[{work, "progress.log"}]];
-note[stage_, name_] := (WriteString[S9bHarness`progress,
-  ToString[{stage, name, MemoryInUse[], MaxMemoryUsed[]}, InputForm] <> "\n"]; Flush[S9bHarness`progress]);
+engine = FileNameJoin[{root,"research","pde_ledger_v3","mathematica","S9b_light_bending_mathematica_audit.wl"}];
+work = FileNameJoin[{root,"_scratch","s9b_wl_repair8","ablation-final"}];
+If[!DirectoryQ[work],CreateDirectory[work,CreateIntermediateDirectories->True]];
+source = Import[engine,"Text"];
+S9bHarness`progress = OpenWrite[FileNameJoin[{work,"progress.log"}]];
+note[stage_,name_] := (WriteString[S9bHarness`progress,
+  ToString[{stage,name,MemoryInUse[],MaxMemoryUsed[]},InputForm]<>"\n"];Flush[S9bHarness`progress]);
+print[name_,value_] := (WriteString[First[$Output],"WL_LOCAL_S9B_ABLATION_"<>name<>": "<>
+  ToString[value,InputForm,PageWidth->Infinity]<>"\n"];Flush[First[$Output]]);
 knives = <|
  "K1" -> {"kineticSymbol = (omega - vVector.kCov)^2;", "kineticSymbol = omega^2;"},
  "K2" -> {"metric2 = DiagonalMatrix[{aMetric, r^2}];", "metric2 = DiagonalMatrix[{1, r^2}];"},
@@ -29,357 +28,274 @@ knives = <|
  "K9b" -> {"localBulkDensity = rho0 (1 + fLocal);", "localBulkDensity = rho0;"},
  "K10" -> {"branchGateLocal = propagatingLocal;", "branchGateLocal = Not[propagatingLocal];"},
  "K11" -> {"vVector = {vLocal, 0};", "vVector = {vLocal, vLocal/r};"}|>;
-print[name_, value_] := (WriteString[First[$Output], "WL_LOCAL_S9B_ABLATION_" <> name <> ": " <>
-  ToString[value, InputForm, PageWidth -> Infinity] <> "\n"]; Flush[First[$Output]]);
-(* BEGIN_DOMAIN_DIFFERENCE_METHOD
-   Domain attachment is a property of the engine's payload schema, not of
-   a predicate's head. In particular Closedness, ProfileEquation, Constraint,
-   ConstraintOnOtherInputs and NoRealVelocityDomain remain computed VALUES.
-   ConditionalExpression conditions and the named attachment fields below
-   are collected at their complete structural paths, including nested cases.
-   A predicate emitted alone is a value, not an attached domain. Coverage is
-   never passed to this projection (K11's sample domain is not an attachment).
-   Baseline and corrupted payloads are always printed in full separately. *)
-attachedDomainKeys = {"Domain", "Domains", "BranchDomain", "AlongRayDomain",
-  "ConstantDomain", "GeneralConstantDomain", "FunctionalDomain", "Premise",
-  "Component", "ZeroSetJoining"};
-splitPayload[payload_] := Module[{domains = <||>, paths = {}, walk, value},
-  walk[z_Association, path_] := Association[KeyValueMap[
-    Function[{key, item}, If[MemberQ[attachedDomainKeys,key],
-      AssociateTo[domains, ToString[Append[path,key],InputForm] -> item];
-      AppendTo[paths,{path,item}]; Nothing,
-      key -> walk[item,Append[path,key]]]], z]];
-  walk[z_List, path_] := MapIndexed[walk[#1,Join[path,#2]] &,z];
-  walk[z_ConditionalExpression, path_] := (
-    AssociateTo[domains, ToString[Append[path,"ConditionalExpression"],InputForm] -> z[[2]]];
-    AppendTo[paths,{path,z[[2]]}]; walk[z[[1]],path]);
-  (* Traverse other heads as well: nested ConditionalExpression attachments
-     are separated without changing a relation into a domain. *)
-  walk[z_, path_] := If[AtomQ[z] || FreeQ[z,_ConditionalExpression],z,
-    MapIndexed[walk[#1,Join[path,#2]] &,z]];
-  value = walk[payload,{}]; <|"Value" -> value,"Domain" -> domains,"DomainPaths" -> paths|>];
-logicalObjectQ[z_] := MemberQ[{True,False},z] ||
-  MemberQ[{Equal,Unequal,Less,LessEqual,Greater,GreaterEqual,Inequality,
-    And,Or,Not,Xor,Equivalent,Implies,Element,Exists,ForAll},Head[z]] ||
-  MemberQ[{Inactive[ForAll],Inactive[Exists]},Head[z]];
-(* Mathematical comparison is three-valued. Normalize inside containers and
-   quantifiers, then ask the CAS for equality/equivalence. Opaque functionals
-   are replaced by shared algebraic indeterminates only during a proof:
-   a proved identity in that abstraction is valid for the original objects.
-   A nonzero structural/algebraic residual alone NEVER proves a change. *)
-normalCache = <||>;
-opaqueQ[z_] := Module[{head = Head[z]}, !AtomQ[z] &&
-  (Head[head] =!= Symbol || Context[Evaluate[head]] =!= "System`")];
-(* Exact polynomial identity proof. Every non-polynomial operand, including
-   complete reciprocals and noninteger powers, is a shared indeterminate
-   during the proof and is restored afterward. No relation between those
-   operands is assumed. No unknown denominator is canceled. An unresolved
-   equality stays UNDECIDED with complete original operands and residual.
-   Every term participates. No size cutoff, sampling or timed fallback. *)
-polynomialNormal[z_] := Module[{objects,slots,algebra},
-  objects = DeleteDuplicates[Cases[z,q_ /; !AtomQ[q] &&
-    (!MemberQ[{Plus,Times,Power},Head[q]] ||
-     (Head[q] === Power && (!IntegerQ[Last[q]] || Last[q] < 0))),{0,Infinity}]];
-  slots = Table[Unique["S9bHarness`proofAtom"],{Length[objects]}];
-  algebra = z /. Thread[objects -> slots];
-  Expand[algebra] /. Thread[slots -> objects]];
-relationNormal[z_] := Module[{head=Head[z],d,factor},
-  If[Length[z] != 2,Return[z]];
-  d=polynomialNormal[z[[1]]-z[[2]]];
-  factor=If[Head[d]===Times && NumberQ[First[d]],First[d],1];
-  (* Positive numeric scaling preserves inequalities; any nonzero numeric
-     scaling preserves equality. Never divide by an unknown profile. *)
-  If[MemberQ[{Equal,Unequal},head] || TrueQ[factor>0],d=d/factor];
-  head[d,0]];
-booleanNormal[z_] := Module[{atoms,slots,algebra,result},
-  atoms=DeleteDuplicates[Cases[z,q_ /; !MemberQ[{True,False},q] &&
-    !MemberQ[{And,Or,Not,Xor,Equivalent,Implies},Head[q]],{0,Infinity}]];
-  slots=Table[Unique["S9bHarness`proofBoolean"],{Length[atoms]}];
-  algebra=z /. Thread[atoms->slots];
-  result=BooleanMinimize[algebra];
-  result /. Thread[slots->atoms]];
-proofSimplify[z_] := Which[
-  MemberQ[{Equal,Unequal,Less,LessEqual,Greater,GreaterEqual},Head[z]],relationNormal[z],
-  MemberQ[{And,Or,Not,Xor,Equivalent,Implies},Head[z]],booleanNormal[z],
-  logicalObjectQ[z],z,
-  True,polynomialNormal[z]];
-canonical[z_] := Module[{key = HoldComplete[z],result,head = Head[z]},
-  If[KeyExistsQ[normalCache,key],Return[normalCache[key]]];
-  result = Which[
-    !FreeQ[z, HoldPattern[Inactive[Integrate][0, ___]]],
-      canonical[z /. HoldPattern[Inactive[Integrate][0, ___]] -> 0],
-    AtomQ[z] || StringQ[z] || head === Function || head === HoldForm || head === HoldComplete, z,
-    AssociationQ[z], AssociationMap[canonical[z[#]] &,Keys[z]],
-    ListQ[z], canonical /@ z,
-    MemberQ[{ForAll,Exists,Inactive[ForAll],Inactive[Exists]},head],
-      head @@ Prepend[canonical /@ Rest[List @@ z],First[z]],
-    head === ImplicitRegion, With[{condition = canonical[z[[1]]],variables = z[[2]]}, ImplicitRegion[condition,variables]],
-    MemberQ[{And,Or,Not,Xor,Equivalent,Implies},head],
-      proofSimplify[head @@ (canonical /@ (List @@ z))],
-    head === Rule, First[z] -> canonical[Last[z]],
-    True,proofSimplify[z]];
-  AssociateTo[normalCache,key -> result];result];
-zeroTree[z_Association] := If[And @@ (SameQ[#,0] & /@ Values[z]),0,z];
-zeroTree[z_List] := If[And @@ (SameQ[#,0] & /@ z),0,z];
-(* Amendment 10: identity has priority over every evaluation. Exact
-   existential proofs are sufficient symbolic change proofs. Otherwise try
-   concrete exact points with a single fixed function for each radial profile;
-   failed or agreeing evaluations establish nothing. Bound variables are
-   alpha-renamed before point substitution. Sets are tested at an element,
-   but statements containing binders are evaluated on free variables only. *)
-profileHeads = {Global`deltaProfile,Global`velocityProfile,Global`xiProfile,
-  Global`fProfile,Global`rhoBr,Global`muPerp,Global`cGamma};
-changeCache = <||>;
-realAlgebraicQ[z_] := Which[
-  NumberQ[z], TrueQ[Im[z] == 0],
-  Head[z] === Symbol, !NumericQ[z] && !MemberQ[profileHeads,z] && !MemberQ[{True,False,Reals,Complexes,Infinity,Indeterminate,Undefined},z],
-  MemberQ[{Plus,Times},Head[z]], And @@ (realAlgebraicQ /@ List @@ z),
-  Head[z] === Power, realAlgebraicQ[z[[1]]] && (IntegerQ[z[[2]]] || Head[z[[2]]] === Rational),
-  True,False];
-realFormulaQ[z_] := Which[
-  MemberQ[{True,False},z],True,
-  MemberQ[{And,Or,Not,Xor,Equivalent,Implies},Head[z]],And @@ (realFormulaQ /@ List @@ z),
-  MemberQ[{Equal,Unequal,Less,LessEqual,Greater,GreaterEqual},Head[z]],And @@ (realAlgebraicQ /@ List @@ z),
-  Head[z] === Element, z[[2]] === Reals && And @@ (realAlgebraicQ /@ Flatten[{z[[1]] /. Alternatives -> List}]),
-  MemberQ[{ForAll,Exists,Inactive[ForAll],Inactive[Exists]},Head[z]],
-    And @@ (realFormulaQ /@ Rest[List @@ z]),
-  True,False];
-realChart[z_] := And @@ DeleteDuplicates[Cases[z,
-  Power[base_,exponent_] /; IntegerQ[exponent] || Head[exponent] === Rational :>
-    Which[IntegerQ[exponent] && exponent < 0,base != 0,
-      IntegerQ[exponent],True,exponent < 0,base > 0,True,base >= 0],{0,Infinity}]];
-scalarVariables[z_] := DeleteDuplicates[Cases[z,q_Symbol /;
-  !NumericQ[q] && !MemberQ[{True,False,Reals,Complexes,Infinity,Indeterminate,Undefined},q],{0,Infinity}]];
-existentialChange[a_,b_,logical_,context_,equality_] := Module[
-  {key=HoldComplete[a,b,logical,context],condition,chart,variables,obligation,result,supported,complete,aa,bb,elements},
-  If[KeyExistsQ[changeCache,key],Return[changeCache[key]]];
-  {aa,bb}=scoped /@ {a,b};
-  If[Head[aa]===ImplicitRegion && Head[bb]===ImplicitRegion && Length[aa[[2]]]===Length[bb[[2]]],
-    elements=Table[Unique["S9bHarness`element"],{Length[aa[[2]]]}];
-    aa=aa[[1]] /. Thread[aa[[2]]->elements];
-    bb=bb[[1]] /. Thread[bb[[2]]->elements]];
-  condition = comparisonAssumptions[a,b,context] && scoped[context] && Which[
-    logicalObjectQ[aa] && logicalObjectQ[bb],Xor[aa,bb],
-    SameQ[equality,False],True,True,aa != bb];
-  supported = realFormulaQ[condition] &&
-    (logical || (Head[a] === ImplicitRegion && Head[b] === ImplicitRegion && Length[a[[2]]]===Length[b[[2]]]) ||
-      (StringQ[a] && StringQ[b]) || (realAlgebraicQ[a] && realAlgebraicQ[b]));
-  (* A power inside a binder needs its definedness condition inside that
-     binder. Leave that full obligation unresolved instead of moving it out. *)
-  If[!FreeQ[condition,q_ /; MemberQ[{ForAll,Exists,Inactive[ForAll],Inactive[Exists]},Head[q]] &&
-      !FreeQ[q,Power[_,exponent_] /; !IntegerQ[exponent] || exponent < 0]],supported=False];
-  (* Only an everywhere-defined polynomial formula can turn failure to
-     find a witness into zero. A chart excluding any pole or root boundary
-     is sufficient for a witness, never for a global equality proof. *)
-  complete = supported && FreeQ[{a,b,condition},Power[_,exponent_] /;
-    !IntegerQ[exponent] || exponent < 0];
-  chart = If[supported,realChart[{aa,bb,condition}],True];
-  variables = witnessVariables[condition && chart];
-  obligation = With[{v=variables,c=condition && chart},Inactive[Exists][v,c]];
-  result = If[supported,
-    With[{v=variables,c=Activate[condition && chart,ForAll|Exists]},
-      If[v === {},Resolve[c,Reals],Resolve[Exists[v,c],Reals]]],Missing["UNDECIDED"]];
-  result = <|"ExistenceCondition" -> obligation,"ExistenceResult" -> result,
-    "Method" -> "exact real quantifier elimination on the common defined domain",
-    "SupportedFormula" -> supported,"CompleteRealDecision" -> complete|>;
-  AssociateTo[changeCache,key -> result];result];
-(* Capture-avoiding witness substitution. Fresh bound names are NEVER part
-   of a witness point. Integrals and quantifiers retain their whole domains. *)
-witnessCache = <||>; witnessEvaluationCache = <||>;
-scoped[z_] := Module[{h=Head[z],v,fresh,rules,args},
-  Which[
-    AtomQ[z],z,
-    MemberQ[{HoldForm,HoldComplete},h],z,
-    h===Function && Length[z]>=2 && (ListQ[First[z]] || Head[First[z]]===Symbol),
-      v=Flatten[{First[z]}];fresh=Table[Unique["S9bHarness`bound"],{Length[v]}];
-      rules=Thread[v->fresh];args=scoped /@ (Rest[List@@z] /. rules);
-      h@@Prepend[args,If[ListQ[First[z]],fresh,First[fresh]]],
-    MemberQ[{ForAll,Exists,Inactive[ForAll],Inactive[Exists]},h],
-      v=Flatten[{First[z]}]; fresh=Table[Unique["S9bHarness`bound"],{Length[v]}];
-      rules=Thread[v->fresh]; args=scoped /@ (Rest[List@@z] /. rules);
-      h@@Prepend[args,If[ListQ[First[z]],fresh,First[fresh]]],
-    h===Inactive[Integrate] && Length[z]===2 && ListQ[z[[2]]] && Length[z[[2]]]===3,
-      v=z[[2,1]]; fresh=Unique["S9bHarness`bound"];
-      Inactive[Integrate][scoped[z[[1]] /. v->fresh],
-        {fresh,scoped[z[[2,2]]],scoped[z[[2,3]]]}],
-    h===Inactive[Limit] && Head[z[[2]]]===Rule,
-      v=z[[2,1]]; fresh=Unique["S9bHarness`bound"];
-      Inactive[Limit][scoped[z[[1]] /. v->fresh],fresh->scoped[z[[2,2]]]],
-    h===ImplicitRegion,
-      v=z[[2]];fresh=Table[Unique["S9bHarness`bound"],{Length[v]}];
-      With[{c=scoped[z[[1]] /. Thread[v->fresh]],q=fresh},ImplicitRegion[c,q]],
-    AssociationQ[z],AssociationMap[scoped[z[#]]&,Keys[z]],
-    True,Map[scoped,z]]];
-witnessVariables[z_] := Select[scalarVariables[z],
-  !(Context[#]==="S9bHarness`" && StringStartsQ[SymbolName[#],"bound"]) &&
-  Context[#]=!="System`" && !MemberQ[profileHeads,#] &];
-comparisonAssumptions[a_,b_,context_] := Module[{variables,clauses},
-  variables=witnessVariables[scoped[{a,b,context}]];
-  clauses=If[Head[$Assumptions]===And,List@@$Assumptions,{$Assumptions}];
-  And@@Select[clauses,Complement[scalarVariables[#],variables]==={} &]];
-(* Four finite test configurations; no fitted jets or independent derivative
-   values. These entire rational functions are smooth on the real line.
-   They are witness-only and never enter an engine run or a baseline payload. *)
-witnessProfiles[index_] := Module[{d,v,x,f,rho},
-  {d,v,x,f,rho}=Switch[index,
-    1,{Function[{q},0],Function[{q},0],Function[{q},0],Function[{q},0],Function[{q},1]},
-    2,{Function[{q},1/(10(1+q^2))],Function[{q},1/(5(1+q^2))],
-       Function[{q},q/(10(1+q^2))],Function[{q},1/(3(1+q^2))],Function[{q},1+1/(1+q^2)]},
-    3,{Function[{q},-1/(5(1+q^2))],Function[{q},-1/(3(1+q^2))],
-       Function[{q},1/(7(1+q^2))],Function[{q},-2],Function[{q},2+q^2]},
-    4,{Function[{q},1/4],Function[{q},1/3],Function[{q},q/5],
-       Function[{q},-1],Function[{q},1+q^2]}];
-  {Global`deltaProfile->d,Global`velocityProfile->v,Global`xiProfile->x,
-    Global`fProfile->f,Global`rhoBr->rho,
-    Global`muPerp->Function[{q},Evaluate[4 rho[q](1+d[q])^2]],
-    Global`cGamma->Function[{q},Evaluate[2(1+d[q])]]}];
-witnessPoint[variables_,index_] := Map[Function[var,var->Switch[SymbolName[var],
-  "c0",2,"bFar",1,"b"|"bFixed"|"impact"|"impactRadar"|"rTurnFlyby"|"rTurnRadar",2,
-  "r"|"rr"|"rAnchor",3,"ZE",4,"ZR",5,"rho0"|"m"|"ell",1,
-  "n",2,"s",If[index==3,-1,2],_,{0,1,-1,2}[[index]]]],variables];
-(* Exact evaluation only. Rational integrals are attempted in full, with
-   their endpoints; unsupported analytic integrals stay inert. There is no
-   quadrature, endpoint cutoff, tolerance or numerical error estimate. *)
-exactWitnessEvaluation[z_] := Module[{key=HoldComplete[z],result,integrate},
-  If[KeyExistsQ[witnessEvaluationCache,key],Return[witnessEvaluationCache[key]]];
-  integrate[q_,{v_,lo_,hi_}] := Module[{t=Together[q]},
-    If[PolynomialQ[Numerator[t],v] && PolynomialQ[Denominator[t],v] &&
-       FreeQ[t, _Real] && FreeQ[{lo,hi},Indeterminate|Undefined|ComplexInfinity],
-      Integrate[t,{v,lo,hi},GenerateConditions->True,Assumptions->True],
-      Inactive[Integrate][q,{v,lo,hi}]]];
-  result=Check[
-  result=z /. HoldPattern[Inactive[Integrate][q_,range:{_,_,_}]] :> integrate[q,range];
-  result=result /. HoldPattern[Inactive[Integrate][0,___]]->0;
-  If[realFormulaQ[result],result=Resolve[Activate[result,ForAll|Exists],Reals]];
-  If[FreeQ[result,Inactive|Integrate|ForAll|Exists|ImplicitRegion] &&
-     (NumericQ[result] || logicalObjectQ[result]),result=FullSimplify[result,Assumptions->True]];
-  result,$Failed,{Power::infy,Infinity::indet,Integrate::idiv}];
-  If[result===$Failed,Return[$Failed]];
-  AssociateTo[witnessEvaluationCache,key->result];result];
-exactValueQ[z_] := MemberQ[{True,False},z] || StringQ[z] ||
-  (NumericQ[z] && Precision[z]===Infinity && FreeQ[z,Indeterminate|Undefined|DirectedInfinity]);
-(* Undefined arithmetic rejects that candidate only. Keep the candidate's
-   work local so a failed Check cannot leave a previously assigned witness.
-   Only mathematical singularity/divergence messages are caught; programming
-   errors remain visible. No result carrying such a message enters the cache. *)
-tryWitness[aa_,bb_,cc_,variables_,elements_,index_] := Module[
-  {profiles=witnessProfiles[index],point=witnessPoint[variables,index],
-   sa,sb,sc,condition,findCondition,instance,prepared,av,bv,cv,witness},
-  {sa,sb,sc}={aa,bb,cc}/.profiles;
-  condition=sc && If[logicalObjectQ[sa] && logicalObjectQ[sb],Xor[sa,sb],sa!=sb];
-  findCondition=condition && realChart[{sa,sb,sc}];
-  If[variables=!={} && !MemberQ[{True,False},findCondition] &&
-     realFormulaQ[findCondition] &&
-     Complement[scalarVariables[findCondition],variables]==={} &&
-     FreeQ[findCondition,_DirectedInfinity|Indeterminate|Undefined|_Real] &&
-     FreeQ[findCondition,
-      q_ /; MemberQ[{ForAll,Exists,Inactive[ForAll],Inactive[Exists]},Head[q]]],
-    instance=FindInstance[findCondition,variables,Reals,1];
-    If[ListQ[instance] && Length[instance]>0,point=Join[First[instance],
-      Select[point,!MemberQ[First/@First[instance],First[#]]&]]]];
-  prepared={sa,sb,sc}/.point;
-  cv=exactWitnessEvaluation[prepared[[3]]];
-  If[TrueQ[cv],
-    av=exactWitnessEvaluation[prepared[[1]]];bv=exactWitnessEvaluation[prepared[[2]]];
-    If[exactValueQ[av] && exactValueQ[bv] &&
-        TrueQ[If[MemberQ[{True,False},av] && MemberQ[{True,False},bv],Xor[av,bv],
-          If[StringQ[av] && StringQ[bv],av=!=bv,FullSimplify[av!=bv]]]],
-      witness=<|"Point"->Select[point,!MemberQ[elements,First[#]]&],
-        "SetElement"->(elements/.point),"Profiles"->profiles,
-        "CorruptedEvaluation"->av,"BaselineEvaluation"->bv,"CommonDomainEvaluation"->cv,
-        "Arithmetic"->"exact","ErrorBound"->0,
-        "Admissibility"->"fixed rational radial functions, smooth on the real line; all derivatives obtained from those functions"|>;
-      Return[<|"Witness"->witness,"Attempt"-><|"Configuration"->index,"Result"->"witness"|>|>]]];
-  <|"Witness"->Missing["NO_WITNESS_FOUND"],"Attempt"-><|"Configuration"->index,
-    "Point"->point,"CommonDomainEvaluation"->cv,"Result"->"no certified difference"|>|>];
-witnessSearch[a_,b_,logical_,context_] := Module[
-  {key=HoldComplete[a,b,logical,context],aa,bb,cc,variables,
-   attempts={},record,result,elements={},candidate},
-  If[KeyExistsQ[witnessCache,key],Return[witnessCache[key]]];
-  {aa,bb,cc}=scoped /@ {a,b,comparisonAssumptions[a,b,context] && context};
-  If[Head[aa]===ImplicitRegion && Head[bb]===ImplicitRegion && Length[aa[[2]]]===Length[bb[[2]]],
-    elements=Table[Unique["S9bHarness`element"],{Length[aa[[2]]]}];
-    aa=aa[[1]] /. Thread[aa[[2]]->elements];
-    bb=bb[[1]] /. Thread[bb[[2]]->elements]];
-  variables=witnessVariables[{aa,bb,cc}];
-  result=Missing["NO_WITNESS_FOUND"];
-  Do[
-    candidate=Quiet[Check[tryWitness[aa,bb,cc,variables,elements,index],
-      $Failed,{Power::infy,Infinity::indet,Integrate::idiv}],{Power::infy,Infinity::indet,Integrate::idiv}];
-    If[candidate===$Failed,
-      AppendTo[attempts,<|"Configuration"->index,
-        "Result"->"undefined candidate arithmetic or divergent integral"|>],
-      AppendTo[attempts,candidate["Attempt"]];
-      If[AssociationQ[candidate["Witness"]],result=candidate["Witness"];Break[]]],{index,4}];
-  record=<|"Witness"->result,"Attempts"->attempts,
-    "Search"->"four fixed smooth profile configurations and exact scalar points; algebraic FindInstance where supported"|>;
-  AssociateTo[witnessCache,key->record];record];
-valueContext[paths_,path_] := And @@ Cases[paths,{anchor_,condition_} /;
-  Length[anchor] <= Length[path] && Take[path,Length[anchor]] === anchor :> condition];
-leafDifference[a_,b_,asPredicate_:False,context_:True] := Module[{na,nb,logical,proof,residual,change,search},
-  na = canonical[a]; nb = canonical[b];
-  If[SameQ[na,nb],Return[0]];
-  logical = (logicalObjectQ[na] && logicalObjectQ[nb]) ||
-    (asPredicate && (logicalObjectQ[na] || Head[na] === Symbol) &&
-      (logicalObjectQ[nb] || Head[nb] === Symbol));
-  proof = proofSimplify[If[logical,Equivalent[na,nb],na == nb]];
-  If[TrueQ[proof],Return[0]];
-  change = existentialChange[na,nb,logical,context,proof];
-  If[TrueQ[change["CompleteRealDecision"]] && SameQ[change["ExistenceResult"],False],Return[0]];
-  search = witnessSearch[a,b,logical,context];
-  residual = If[logical,Boole[a]-Boole[b],
-    If[NumericQ[a] && NumericQ[b],a-b,Inactive[Subtract][a,b]]];
-  <|"Status" -> If[TrueQ[change["ExistenceResult"]] || AssociationQ[search["Witness"]],"CHANGED","UNDECIDED"],
-    "Equality" -> proof,"ChangeProof" -> change,"WitnessSearch" -> search,
-    "Residual" -> residual,"Corrupted" -> a,"Baseline" -> b|>];
-partDifference[a_,b_,path_:{},paths_:{}] := Which[
-  SameQ[a,b],0,
-  AssociationQ[a] && AssociationQ[b],zeroTree[AssociationMap[
-    partDifference[Lookup[a,#,Missing["Unemitted"]],Lookup[b,#,Missing["Unemitted"]],Append[path,#],paths] &,
-    Union[Keys[a],Keys[b]]]],
-  ListQ[a] && ListQ[b] && Length[a] == Length[b],zeroTree[Table[
-    partDifference[a[[i]],b[[i]],Append[path,i],paths],{i,Length[a]}]],
-  Head[a] === Rule && Head[b] === Rule && SameQ[First[a],First[b]],
-    With[{d = partDifference[Last[a],Last[b],Append[path,2],paths]},If[SameQ[d,0],0,First[a] -> d]],
-  True,leafDifference[a,b,False,valueContext[paths,path]]];
-attachedDifference[a_,b_] := If[SameQ[a,b],0,
-  If[AssociationQ[a] || ListQ[a] || AssociationQ[b] || ListQ[b],partDifference[a,b],
-    leafDifference[a,b,True]]];
-domainDifference[a_Association,b_Association] := If[SameQ[a,b],0,
-  zeroTree[AssociationMap[attachedDifference[Lookup[a,#,Missing["Unemitted"]],
-    Lookup[b,#,Missing["Unemitted"]]] &,Union[Keys[a],Keys[b]]]]];
-difference[a_,b_] := Module[{partsA = splitPayload[a],partsB = splitPayload[b]},
-  <|"ValueDifference" -> partDifference[partsA["Value"],partsB["Value"],{},
-      Join[partsA["DomainPaths"],partsB["DomainPaths"]]],
-    "DomainDifference" -> domainDifference[partsA["Domain"],partsB["Domain"]]|>];
-(* END_DOMAIN_DIFFERENCE_METHOD *)
-run[path_, name_] := Module[{capture, result},
-  ClearSystemCache[]; S9bHarness`normalCache = <||>; S9bHarness`changeCache = <||>; S9bHarness`witnessCache = <||>; S9bHarness`witnessEvaluationCache = <||>; note["engine begin", name];
-  capture = OpenWrite[FileNameJoin[{work, name <> ".stdout"}]];
-  Block[{$Context = "Global`", $ContextPath = {"Global`", "System`"}, $Output = {capture}}, Get[path]];
-  Close[capture]; result = Global`emitted; note["engine end", name]; result];
-mutate[name_] := Module[{pair = knives[name], target},
-  print[name <> "_SITE", <|"Construction" -> First[pair], "Mutation" -> Last[pair],
-    "Occurrences" -> StringCount[source, First[pair]]|>];
-  If[StringCount[source, First[pair]] != 1, Quit[92]];
-  target = FileNameJoin[{work, name <> ".wl"}];
-  Export[target, StringReplace[source, Rule @@ pair], "Text"]; target];
-baseline = run[engine, "BASELINE"];
-print["MANIFEST", knives];
-Do[copy = mutate[knife]; corrupted = run[copy, knife];
-  Do[note["difference begin", knife <> "_" <> tag]; print[knife <> "_" <> tag, <|"Baseline" -> Lookup[baseline, tag, Missing["Unemitted"]],
-    "Corrupted" -> Lookup[corrupted, tag, Missing["Unemitted"]],
-    "Difference" -> difference[Lookup[corrupted, tag, Missing["Unemitted"]],
-      Lookup[baseline, tag, Missing["Unemitted"]]]|>];
-    note["difference end", knife <> "_" <> tag], {tag, Union[Keys[baseline], Keys[corrupted]]}],
-  {knife, If[scope == "K11", {}, DeleteCases[Keys[knives], "K11"]]}];
-(* Compact evaluation is exact symbolic prefix evaluation. No points, seeds,
-   finite precision or extra grade truncation. Both copies have the same
-   extraction boundary. Later tags are explicitly unreached. *)
-copy = mutate["K11"];
-(* Fully qualified harness state survives ClearAll["Global`*"]. Prepare
-   and validate BOTH extracts before executing either. No fallback to a full
-   source is possible when the marker is missing or extraction is malformed. *)
+(* BEGIN_LITERAL_METHOD *)
+(* ToExpression's third argument wraps the parsed emitted syntax before
+   evaluation. BinarySerialize records its literal tree, including exact
+   binary approximate numbers. SameQ is applied to integer byte lists,
+   never to approximate operands. No normalization or arithmetic precedes
+   a mark. The original emitted text is retained for every printed operand. *)
+freeze[text_String] := Block[{$Context="Global`",$ContextPath={"Global`","System`"}},
+  ToExpression[text,InputForm,HoldComplete]];
+literalBytes[held_HoldComplete] := Normal[BinarySerialize[held]];
+literalMark[a_HoldComplete,b_HoldComplete] := If[
+  SameQ[literalBytes[a],literalBytes[b]],"identical","not compared"];
+numberEncodings[held_HoldComplete] := Cases[held,
+  q_Real :> <|"Number"->q,"LiteralBytes"->Normal[BinarySerialize[HoldComplete[q]]]|>,Infinity];
+comparison[a_HoldComplete,b_HoldComplete] := <|
+  "Mark"->literalMark[a,b],
+  "Comparison"->"SameQ on BinarySerialize integer bytes of HoldComplete parsed emitted InputForm; no evaluation",
+  "ApproximateNumberEncodings"->{numberEncodings[a],numberEncodings[b]}|>;
+(* END_LITERAL_METHOD *)
+
+run[path_,name_] := Module[{capture,text,lines,payloads,held,state},
+  ClearSystemCache[];note["engine begin",name];
+  capture=OpenWrite[FileNameJoin[{work,name<>".stdout"}]];
+  Block[{$Context="Global`",$ContextPath={"Global`","System`"},$Output={capture}},Get[path]];
+  Close[capture];
+  text=Import[FileNameJoin[{work,name<>".stdout"}],"Text"];
+  lines=StringSplit[text,"\n"];
+  payloads=Association[Map[Function[line,With[{pos=First[First[StringPosition[line,": "]]]},
+    StringTake[line,pos-1]->StringDrop[line,pos+1]]],lines]];
+  If[Length[payloads]!=Length[lines] || !And@@(StringStartsQ[#,"WL_"]&/@Keys[payloads]),Quit[95]];
+  held=AssociationMap[freeze[payloads[#]]&,Keys[payloads]];
+  state=<|"Assumptions"->$Assumptions,"LocalAssumptions"->Global`localAssumptions,
+    "Dispersion"->Global`dispersion,"Roots"->Global`frequencyRoots,
+    "SelectedRoot"->Global`positiveRoot,"Subcritical"->Global`subcritical,
+    "PhysicalPropagation"->Global`physicalPropagation,"PhysicalTraversal"->Global`physicalTraversal,
+    "SpeedChart"->Global`speedChart,"RadialMetric"->Global`atOne[Global`radialMetric],
+    "RayConstruction"->Global`rayConstruction|>;
+  note["engine end",name];<|"Text"->payloads,"Held"->held,"State"->state|>];
+object[data_,tag_] := ReleaseHold[data["Held"][tag]];
+mutate[name_] := Module[{pair=knives[name],target},
+  print[name<>"_SITE",<|"Construction"->First[pair],"Mutation"->Last[pair],
+    "Occurrences"->StringCount[source,First[pair]],"SourceLine"->sourceLine[First[pair]]|>];
+  If[StringCount[source,First[pair]]!=1,Quit[92]];
+  target=FileNameJoin[{work,name<>".wl"}];Export[target,StringReplace[source,Rule@@pair],"Text"];target];
+sourceLine[needle_] := 1+StringCount[StringTake[source,First[First[StringPosition[source,needle]]]-1],"\n"];
+emitPair[name_,a_,b_,tag_] := Module[{raw},
+  raw="<|\"Baseline\" -> "<>b["Text"][tag]<> ", \"Corrupted\" -> "<>a["Text"][tag]<>
+    ", \"StructuralComparison\" -> "<>ToString[comparison[a["Held"][tag],b["Held"][tag]],InputForm,PageWidth->Infinity]<>"|>";
+  WriteString[First[$Output],"WL_LOCAL_S9B_ABLATION_"<>name<>"_"<>tag<>": "<>raw<>"\n"];Flush[First[$Output]]];
+
+(* BEGIN_WITNESS_METHOD *)
+(* Deliberately bounded finite search, without computation deadlines. A
+   failed candidate, an unresolved equation or an agreeing evaluation is
+   never a claim of change. No symbolic inequality proof substitutes for
+   a concrete witness. These inputs never enter an engine execution. *)
+profileHeads={Global`deltaProfile,Global`velocityProfile,Global`xiProfile,
+  Global`rhoBr,Global`fProfile,Global`muPerp,Global`cGamma,Global`jn};
+profiles=<|
+  Global`deltaProfile->Function[{q},1/(100 q)],
+  Global`velocityProfile->Function[{q},1/(10 q)],
+  Global`xiProfile->Function[{q},1/(10 q)],
+  Global`rhoBr->Function[{q},1+1/q],
+  Global`fProfile->Function[{q},1/(100 q)],
+  Global`muPerp->Function[{q},4(1+1/q)(1+1/(100 q))^2],
+  Global`cGamma->Function[{q},2(1+1/(100 q))],
+  Global`jn->Function[{q},-1/(10 q^2)]|>;
+(* j_n above is the CAS divergence consequence of the chosen rho and V;
+   it is used only where that balance is relevant. Print its verification. *)
+point={Global`r->3,Global`rr->4,Global`c0->2,Global`ell->1,
+  Global`b->2,Global`bFar->1,Global`ZE->4,Global`ZR->5,Global`impact->2,
+  Global`GM->1,Global`n->2,System`K->1,Global`m->1,Global`s->2,Global`rho0->1,
+  Global`Phi->1,Global`rAnchor->2,Global`kr->1,Global`kphi->1,
+  Global`tau->1,Global`dr->1/2,Global`dphi->1/3,
+  Global`xD->1,Global`xV->1,Global`xW->1,
+  Global`xiConstant->0,Global`rhoBrConstant->4/3};
+(* There are no binders in any candidate accepted by this method. Full ray
+   candidates retain all binders and are recorded unresolved without point
+   substitution. In particular no inactive quantifier is treated as true. *)
+noBinderQ[z_] := FreeQ[z,Inactive|_Integrate|_Limit|_ForAll|_Exists|_ImplicitRegion|_Function|_HoldForm|_HoldComplete];
+scalarSymbols[z_] := DeleteDuplicates[Cases[z,q_Symbol /;
+  (Context[q]==="Global`" || q===System`K) && !MemberQ[profileHeads,q],{0,Infinity}]];
+evaluate[z_] := FullSimplify[z/.Normal[profiles]/.point,Assumptions->True];
+finiteExactQ[z_] := (NumericQ[z] && Precision[z]===Infinity &&
+  FreeQ[z,Indeterminate|Undefined|DirectedInfinity] && TrueQ[Im[z]==0]);
+part[data_,path_List] := Fold[If[AssociationQ[#1],#1[#2],Part[#1,#2]]&,object[data,First[path]],Rest[path]];
+heldEquation[left_,right_] := Inactive[Equal][left,right];
+profileCertificate[] := Module[{q=Unique["S9bHarness`radius"],derivatives,smooth,tail,balance},
+  derivatives=Association[KeyValueMap[Function[{head,fun},head->Table[D[fun[q],{q,j}],{j,0,4}]],profiles]];
+  smooth=Resolve[ForAll[q,q>0,And@@(Element[#,Reals]&/@Flatten[Values[derivatives]])],Reals];
+  tail={Limit[q profiles[Global`deltaProfile][q],q->Infinity],
+    Limit[Sqrt[q] profiles[Global`velocityProfile][q],q->Infinity],
+    Limit[q D[profiles[Global`xiProfile][q],q]^2,q->Infinity]};
+  balance=FullSimplify[D[q^2 profiles[Global`rhoBr][q] profiles[Global`velocityProfile][q],q]/q^2+
+    profiles[Global`jn][q],q>0];
+  <|"Profiles"->Normal[profiles],"DerivativeVariable"->q,"DerivativeRange"->q>0,
+    "DerivativesThroughOrder4"->derivatives,
+    "SmoothRealDecisionComputation"->Inactive[Resolve][Inactive[ForAll][q,q>0,
+      And@@(Element[#,Reals]&/@Flatten[Values[derivatives]])],Reals],
+    "SmoothRealDecision"->smooth,
+    "OpticalCountingComputations"->{Inactive[Limit][q profiles[Global`deltaProfile][q],q->Infinity],
+      Inactive[Limit][Sqrt[q] profiles[Global`velocityProfile][q],q->Infinity],
+      Inactive[Limit][q D[profiles[Global`xiProfile][q],q]^2,q->Infinity]},
+    "OpticalCountingEvaluations"->tail,"MassBalanceResidual"->balance|>];
+certificate=.;
+(* The only auxiliary local quantities are fixed by the same profile inputs
+   in each copy. The copied xiSlope construction is allowed to differ. *)
+localFix[data_] := {Global`aMetric->data["State"]["RadialMetric"],
+  Global`cSquared->Global`muPerp[Global`r]/Global`rhoBr[Global`r],
+  Global`vLocal->Global`velocityProfile[Global`r],
+  Global`fLocal->Global`fProfile[Global`r]};
+localEvaluate[z_,data_] := evaluate[z/.localFix[data]];
+fixedRules[data_,variables_] := Map[#->localEvaluate[#,data]&,variables];
+ruleCondition[rules_] := And@@(Equal@@#&/@(List@@@rules));
+frequencyReading[a_,b_] := Module[{ar,br,as,bs,var=Global`omega,variables,
+  fixes,sets,used,condition,intersection,common,decision,equations},
+  variables={Global`aMetric,Global`cSquared,Global`vLocal,Global`omega};
+  {ar,br}=Map[Function[data,localEvaluate[data["State"]["Roots"],data]],{a,b}];
+  {as,bs}=Map[Function[data,localEvaluate[data["State"]["SelectedRoot"],data]],{a,b}];
+  fixes=Map[fixedRules[#,Most[variables]]&,{a,b}];
+  sets=MapThread[Function[{rules,roots},Append[rules,var->#]&/@roots],{fixes,{ar,br}}];
+  used=MapThread[Append[#1,var->#2]&,{fixes,{as,bs}}];
+  condition=(Or@@(ruleCondition/@sets[[1]]))&&(Or@@(ruleCondition/@sets[[2]]));
+  intersection=Reduce[condition,variables,Reals];
+  decision=FreeQ[intersection,Reduce] && (SameQ[intersection,False] || TrueQ[FullSimplify[intersection/.used[[1]]]]);
+  common=TrueQ[FullSimplify[And@@MapThread[Equal,{Last/@used[[1]],Last/@used[[2]]}]]] &&
+    TrueQ[FullSimplify[intersection/.used[[1]]]];
+  equations=Map[Function[data,<|"Dispersion"->heldEquation[data["State"]["Dispersion"],0],
+    "LocalParameterEquations"->(heldEquation[First[#],Last[#]]&/@Take[localFix[data],3]),
+    "DispersionAtInputs"->heldEquation[localEvaluate[data["State"]["Dispersion"],data],0]|>],{a,b}];
+  <|"FixingEquations"->equations,"SolutionVariables"->variables,
+    "SolutionSets"->sets,"SolutionsUsed"->used,
+    "Selection"->"engine positive comoving root: positive when vLocal is set to zero",
+    "SelectionEvaluations"->Map[Function[data,localEvaluate[
+      (data["State"]["SelectedRoot"]/.Global`vLocal->0)>0,data]],{a,b}],
+    "SelectedSolutionEquationEvaluations"->MapThread[Function[{data,value},
+      localEvaluate[data["State"]["Dispersion"]/.var->value,data]==0],{{a,b},{as,bs}}],
+    "IntersectionComputation"->Inactive[Reduce][condition,variables,Reals],
+    "SolutionIntersection"->intersection,"IntersectionDecided"->decision,
+    "CommonSolutionUsed"->common,
+    "AdmissiblePairing"->(decision&&(SameQ[intersection,False]||common))|>];
+fixedReading[variables_,a_,b_] := Module[{sets,condition,intersection,used,common},
+  used=Map[fixedRules[#,variables]&,{a,b}];sets=List/@used;
+  condition=ruleCondition[used[[1]]]&&ruleCondition[used[[2]]];
+  intersection=If[variables==={},{{}},Reduce[condition,variables,Reals]];
+  common=And@@MapThread[TrueQ[FullSimplify[#1==#2]]&,{Last/@used[[1]],Last/@used[[2]]}];
+  <|"FixingEquations"->Map[Function[data,
+      heldEquation[#, #/.localFix[data]]&/@variables],{a,b}],
+    "SolutionVariables"->variables,"SolutionSets"->sets,"SolutionsUsed"->used,
+    "IntersectionComputation"->If[variables==={},Inactive[Intersection][{{}},{{}}],Inactive[Reduce][condition,variables,Reals]],
+    "SolutionIntersection"->intersection,"IntersectionDecided"->FreeQ[intersection,Reduce],
+    "CommonSolutionUsed"->common,
+    "AdmissiblePairing"->(FreeQ[intersection,Reduce]&&(intersection===False||common)),
+    "Reading"->If[variables==={},"no auxiliary quantity in this site part; common empty assignment",
+      "all fixed local quantities included in the joint solution sets and intersection"]|>];
+caseReadings[z_,data_] := Map[Function[piece,Module[{conditions,effective,ev,chosen},
+  conditions=Last/@piece[[1]];
+  effective=Append[Table[And@@Join[Not/@Take[conditions,j-1],{conditions[[j]]}],{j,Length[conditions]}],And@@(Not/@conditions)];
+  ev=localEvaluate[#,data]&/@effective;
+  chosen=Flatten[Position[ev,True]];
+  <|"Object"->piece,"ConditionsInOrder"->conditions,"EffectiveConditionsIncludingDefault"->effective,
+    "EvaluationComputation"->"localEvaluate of each effective condition, including all earlier-case negations",
+    "ConditionEvaluations"->ev,"SelectedCase"->chosen,
+    "SelectedCondition"->If[Length[chosen]===1,effective[[First[chosen]]],Missing["UNRESOLVED_CASE"]],
+    "SelectedConditionEvaluation"->If[Length[chosen]===1,ev[[First[chosen]]],False]|>]],
+  DeleteDuplicates[Cases[z,p_Piecewise:>p,{0,Infinity}]]];
+specs=<|
+ "K1"->{"local",{"WL_LOCAL_S9B_FERMAT_OBJECT","TimePolynomial"},"timePolynomial = Expand["},
+ "K2"->{"local",{"WL_LOCAL_S9B_FERMAT_OBJECT","TimePolynomial"},"timePolynomial = Expand["},
+ "K3"->{"local",{"WL_LOCAL_S9B_FERMAT_OBJECT","TimePolynomial"},"timePolynomial = Expand["},
+ "K4a"->{"optical",{"WL_LOCAL_S9B_OPTICAL_COORDINATE","PushedDensity"},"opticalDensity += (-1)^j"},
+ "K4b"->{"optical",{"WL_LOCAL_S9B_OPTICAL_COORDINATE","PushedDensity"},"opticalDensity += (-1)^j"},
+ "K4c"->{"slope",{"WL_LOCAL_S9B_PROFILE_ANSATZ","XiDerivative"},"\"XiDerivative\" -> xiSlope"},
+ "K5"->{"odd",{"WL_LOCAL_S9B_NONRECIPROCAL_CONSTRUCTION","OneForm",1},"oddOneFormLocal = D["},
+ "K6"->{"ray",{"WL_S9B_A_RADAR_LOG_G100","OnDomain"},"finiteSlope = Expand["},
+ "K7"->{"ray",{"WL_S9B_B_CONDITION_DEFLECTION"},"If[quantifierMode === \"FIXED_B\""},
+ "K8"->{"mass",{"WL_LOCAL_S9B_MASS_BALANCE","Divergence"},"massVector = (massDensity"},
+ "K9a"->{"response",{"WL_LOCAL_S9B_C_RESPONSES","Responses",2,"DensityParts",1,"Object"},"responseValues = {c0"},
+ "K9b"->{"response",{"WL_LOCAL_S9B_C_RESPONSES","Responses",3,"DensityParts",1,"Object"},"responseValues = {c0"},
+ "K10"->{"ray",{"WL_S9B_A_NONRECIPROCAL_PATH_DEPENDENCE","OnDomain"},"physicalPropagation = branchGateLocal"},
+ "K11"->{"local",{"WL_LOCAL_S9B_FERMAT_OBJECT","TimePolynomial"},"timePolynomial = Expand["}|>;
+searchWitness[name_,a_,b_] := Module[{spec=specs[name],kind,path,aa,bb,conditions,reading,
+  evaluatedConditions,values,roles,symbols,fixed,assigned,unknown,entry,ceConditions={True,True},
+  density,checks,location,detail,cases},
+  {kind,path}=Take[spec,2];note["witness begin",name];
+  aa=part[a,path];bb=part[b,path];
+  location=<|"Tag"->First[path],"PayloadLocation"->Rest[path],"SitePart"->"value",
+    "Source"->engine,"SourceLine"->sourceLine[Last[spec]],"EntryConstruction"->Last[spec]|>;
+  If[kind==="ray",
+    (* Read the full candidate and fixing equations. The finite search stops
+       at the unresolved full ray boundary problem; no guessed turning radius,
+       impact, endpoint cutoff or inactive-domain decision is used. *)
+    entry=<|"Result"->"none found","Site"->location,"Attempt"-><|
+      "CandidateParts"->{aa,bb},"ProfilesTried"->Normal[profiles],
+      "ConstructionEquationsAfterProfiles"->{a["State"]["RayConstruction"],b["State"]["RayConstruction"]}/.Normal[profiles],
+      "UnassignedDependentQuantities"->{Global`rTurnFlyby,Global`rTurnRadar,Global`impactRadar},
+      "Reason"->"no exact solution of the full endpoint/turning construction and all ranged conditions was obtained; no scalar point or bound-variable substitution was made"|>|>;
+    note["witness end",name];Return[entry]];
+  If[!ValueQ[certificate],certificate=profileCertificate[]];
+  If[kind==="response",
+    ceConditions=Map[If[Head[#]===ConditionalExpression,#[[2]],True]&,{aa,bb}];
+    {aa,bb}=Map[If[Head[#]===ConditionalExpression,#[[1]],#]&,{aa,bb}]];
+  conditions=MapThread[Function[{data,ce},Join[
+    {data["State"]["Assumptions"]},
+    If[MemberQ[{"local","optical","odd"},kind],{data["State"]["LocalAssumptions"]},{}],
+    If[MemberQ[{"optical","odd"},kind],
+      {data["State"]["PhysicalPropagation"],data["State"]["PhysicalTraversal"],data["State"]["SpeedChart"]},{}],
+    If[kind==="response",{ce,object[data,"WL_LOCAL_S9B_C_RESPONSES"]["Domains"][[If[name==="K9a",2,3]]],
+      object[data,"WL_LOCAL_S9B_C_RESPONSES"]["Responses"][[If[name==="K9a",2,3]]]["SuppliedBulkDensityPremise"]},{}]]],
+    {{a,b},ceConditions}];
+  If[!noBinderQ[{aa,bb,conditions}],
+    note["witness end",name];Return[<|"Result"->"none found","Site"->location,
+      "Attempt"->"candidate contains a binder or unevaluated functional outside the exact local evaluator"|>]];
+  cases=MapThread[caseReadings,{ {{aa,conditions[[1]]},{bb,conditions[[2]]}}, {a,b}}];
+  conditions=MapThread[Join[#1,Lookup[#2,"SelectedCondition",{}]]&,{conditions,cases}];
+  evaluatedConditions=MapThread[Function[{items,data},localEvaluate[#,data]&/@items],{conditions,{a,b}}];
+  values={localEvaluate[aa,a],localEvaluate[bb,b]};
+  symbols=scalarSymbols[{aa,bb,conditions}];
+  fixed=Intersection[symbols,{Global`aMetric,Global`cSquared,Global`vLocal,Global`fLocal}];
+  assigned=Complement[symbols,fixed];unknown=Complement[assigned,First/@point];
+  If[MemberQ[{"local","optical","odd"},kind],fixed=Union[fixed,{Global`aMetric,Global`cSquared,Global`vLocal}]];
+  reading=If[MemberQ[{"local","optical","odd"},kind],frequencyReading[a,b],fixedReading[fixed,a,b]];
+  roles=Join[Association[Map[#-><|"Role"->"assigned at the point","Value"->(#/.point)|>&,First/@point]],
+    Association[Map[Function[var,var-><|"Role"->"fixed by each copy's construction",
+      "Equations"->Map[Function[data,heldEquation[var,var/.localFix[data]]],{a,b}],
+      "Evaluations"->{localEvaluate[var,a],localEvaluate[var,b]}|>],fixed]],
+    If[MemberQ[{"local","optical","odd"},kind],<|Global`omega-><|"Role"->"fixed by each copy's dispersion solution and positive comoving root selection","Solutions"->reading["SolutionsUsed"]|>|>,<||>],
+    If[kind==="response",<|Global`rho-><|"Role"->"bound differentiation variable of pressure; then substituted by local or asymptotic density","Range"->Reals,"DerivativeOrder"->1|>|>,<||>],
+    Association[Map[#-><|"Role"->"assigned radial profile","Value"->profiles[#]|>&,
+      DeleteDuplicates[Cases[{aa,bb,conditions},q_ /; MemberQ[profileHeads,q],{0,Infinity},Heads->True]]]]];
+  density=If[kind==="response",<|"DensityComputation"->Global`rho0(1+Global`fProfile[Global`r]),
+    "DensityEvaluation"->evaluate[Global`rho0(1+Global`fProfile[Global`r])],
+    "Part"->If[TrueQ[evaluate[Global`rho0(1+Global`fProfile[Global`r])]>0],"rho > 0","rho <= 0"],
+    "PartitionLabelsAreConditions"->False|>,None];
+  detail=Switch[kind,
+    "slope",<|"BaselineDifferentiation"->Inactive[D][Global`xiProfile[Global`r],Global`r],
+      "CorruptedDifferentiation"->Inactive[D][Global`xiConstant,Global`r],"Evaluations"->{values[[2]],values[[1]]}|>,
+    "mass",<|"CoordinateDivergenceComputation"->Inactive[D][Global`r^2 Global`rhoBr[Global`r] Global`velocityProfile[Global`r],Global`r]/Global`r^2,
+      "ConstantDensity"->(Global`rhoBrConstant/.point)|>,
+    "response",<|"BulkPressure"->System`K Global`densityPower[Global`rho,Global`n],
+      "SoundSquareComputation"->Inactive[D][System`K Global`densityPower[Global`rho,Global`n],Global`rho]/Global`m,
+      "LocalFractionEquation"->heldEquation[Global`fLocal,Global`fProfile[Global`r]],
+      "DensityPowerReading"-><|"Exponent"->evaluate[Global`s],
+        "IsZeroExponent"->TrueQ[evaluate[Global`s]==0],
+        "OrdinaryPowerAtThisInput"->If[name==="K9b",{values[[1]],values[[2]]},None]|>,
+      "KnifeDefinition"->knives[name]|>,
+    "optical",<|"DerivativeConstruction"->knives[name],
+      "Reading"->"evaluate the emitted retained-ring coefficient sum at all counting markers equal to one; frozen derivatives are those of the copied rayDerivative, not independent fitted jets"|>,
+    _,<|"Reading"->"evaluate the emitted local construction; local metric/speed/velocity inputs are fixed from the printed physical profiles"|>];
+  checks=<|"AllSymbolsAssignedOrFixed"->(unknown==={}),
+    "ConditionsDecidedTrue"->And@@Flatten[evaluatedConditions],
+    "ExactFiniteValues"->And@@(finiteExactQ/@values),
+    "ExactDifferenceDecision"->If[And@@(finiteExactQ/@values),FullSimplify[values[[1]]!=values[[2]]],False],
+    "SolutionPairing"->reading["AdmissiblePairing"],
+    "SelectedSolutionsAdmissible"->If[MemberQ[{"local","optical","odd"},kind],
+      And@@Join[reading["SelectionEvaluations"],reading["SelectedSolutionEquationEvaluations"]],True],
+    "CaseSelectionsDecided"->And@@(TrueQ/@Flatten[Lookup[#, "SelectedConditionEvaluation",{}]&/@cases]),
+    "SmoothProfiles"->certificate["SmoothRealDecision"]|>;
+  entry=<|"Result"->If[And@@(TrueQ/@Values[checks]),"witness","none found"],
+    "OperandOrder"->{"corrupted","baseline"},"Site"->location,"IndependentPoint"->point,"SymbolRoles"->roles,
+    "RangedSymbolsInPart"->{},"BoundSymbolsInPart"->{},"UnknownSymbols"->unknown,
+    "AdmissibleProfiles"->certificate,"ReadingChoices"->detail,
+    "FixingAndSolutions"->reading,"OrderedCaseReadings"->cases,"AttachedConditions"->conditions,
+    "ConditionEvaluationComputation"->"substitute fixed radial functions and copy-local equations, then the printed point; FullSimplify with Assumptions -> True",
+    "ConditionEvaluations"->evaluatedConditions,"DensityPart"->density,
+    "OperandsAtInputs"->{aa/.localFix[a]/.Normal[profiles]/.point,bb/.localFix[b]/.Normal[profiles]/.point},
+    "Evaluations"->values,"Arithmetic"->"exact real algebraic","ErrorBound"->0,"Checks"->checks,
+    "Attempt"->"one printed exact profile configuration and scalar point; no unresolved condition certifies a witness"|>;
+  note["witness end",name];entry];
+(* END_WITNESS_METHOD *)
 S9bHarness`compactBoundary = "(* COMPACT_K11_BOUNDARY *)";
 S9bHarness`prepareCompact[path_, name_] := Module[{text, target, position, prefix},
   text = Import[path, "Text"];
@@ -393,28 +309,40 @@ S9bHarness`prepareCompact[path_, name_] := Module[{text, target, position, prefi
   target = FileNameJoin[{work, name <> ".wl"}];
   Export[target, prefix, "Text"];
   <|"Path" -> target, "Text" -> prefix|>];
-S9bHarness`compactInputs = {
-  S9bHarness`prepareCompact[engine, "K11_COMPACT_BASELINE"],
-  S9bHarness`prepareCompact[copy, "K11_COMPACT_CORRUPTED"]};
-If[S9bHarness`compactInputs[[2]]["Text"] =!=
-  StringReplace[S9bHarness`compactInputs[[1]]["Text"], Rule @@ knives["K11"]], Quit[93]];
-compactBaseline = run[S9bHarness`compactInputs[[1]]["Path"], "K11_COMPACT_BASELINE"];
-compactCorrupted = run[S9bHarness`compactInputs[[2]]["Path"], "K11_COMPACT_CORRUPTED"];
-coverage = <|"Method" -> "exact symbolic mechanical prefix extraction",
-  "Boundary" -> S9bHarness`compactBoundary, "RetainedGrades" -> Global`grades,
-  "LocalConstructions" -> "untruncated dispersion/Fermat and retained-ring nonreciprocal one-form",
-  "AdditionalTruncation" -> None, "SampleDomain" -> "symbolic constructor domains",
-  "Arithmetic" -> "exact", "Samples" -> {}, "Seeds" -> {}|>;
-Do[note["difference begin", "K11_" <> tag]; print["K11_" <> tag, If[KeyExistsQ[compactBaseline, tag] && KeyExistsQ[compactCorrupted, tag],
-  <|"Baseline" -> baseline[tag], "CompactBaseline" -> compactBaseline[tag],
-    "CompactCorrupted" -> compactCorrupted[tag],
-    "Difference" -> difference[compactCorrupted[tag], compactBaseline[tag]],
-    "MethodResidual" -> difference[compactBaseline[tag], baseline[tag]], "Coverage" -> coverage|>,
-  <|"Baseline" -> baseline[tag], "CompactBaseline" -> Missing["NOT_EVALUATED"],
-    "CompactCorrupted" -> Missing["NOT_EVALUATED"], "Difference" -> Missing["NOT_EVALUATED"],
-    "MethodResidual" -> Missing["NOT_EVALUATED"], "Coverage" -> coverage|>]]; note["difference end", "K11_" <> tag], {tag, Keys[baseline]}];
-(* Harness dead-path ablation: both inputs are the actual baseline. *)
-If[scope == "ALL", Do[note["difference begin", "HARNESS_DEAD_PATH_" <> tag]; print["HARNESS_DEAD_PATH_" <> tag, <|"Baseline" -> baseline[tag],
- "Corrupted" -> baseline[tag], "Difference" -> difference[baseline[tag], baseline[tag]]|>]; note["difference end", "HARNESS_DEAD_PATH_" <> tag], {tag, Keys[baseline]}]];
-note["complete", scope]; Close[S9bHarness`progress];
+baseline=run[engine,"BASELINE"];
+print["MANIFEST",knives];
+Do[copy=mutate[knife];corrupted=run[copy,knife];
+  If[Keys[corrupted["Text"]]=!=Keys[baseline["Text"]],Quit[96]];
+  Do[note["structural pair",knife<>"_"<>tag];emitPair[knife,corrupted,baseline,tag],{tag,Keys[baseline["Text"]]}];
+  print[knife<>"_WITNESS_SEARCH",searchWitness[knife,corrupted,baseline]],
+  {knife,DeleteCases[Keys[knives],"K11"]}];
+copy=mutate["K11"];
+S9bHarness`compactInputs={
+  S9bHarness`prepareCompact[engine,"K11_COMPACT_BASELINE"],
+  S9bHarness`prepareCompact[copy,"K11_COMPACT_CORRUPTED"]};
+If[S9bHarness`compactInputs[[2]]["Text"]=!=
+  StringReplace[S9bHarness`compactInputs[[1]]["Text"],Rule@@knives["K11"]],Quit[93]];
+compactBaseline=run[S9bHarness`compactInputs[[1]]["Path"],"K11_COMPACT_BASELINE"];
+compactCorrupted=run[S9bHarness`compactInputs[[2]]["Path"],"K11_COMPACT_CORRUPTED"];
+coverage=<|"Method"->"exact symbolic mechanical prefix extraction",
+  "Boundary"->S9bHarness`compactBoundary,"RetainedGrades"->Global`grades,
+  "LocalConstructions"->"untruncated dispersion/Fermat and retained-ring nonreciprocal one-form",
+  "AdditionalTruncation"->None,"SampleDomain"->"symbolic constructor domains; coverage only, not an attached condition",
+  "Arithmetic"->"exact","Samples"->{},"Seeds"->{}|>;
+Do[note["structural pair","K11_"<>tag];
+  If[KeyExistsQ[compactBaseline["Text"],tag]&&KeyExistsQ[compactCorrupted["Text"],tag],
+    raw="<|\"Baseline\" -> "<>baseline["Text"][tag]<>
+      ", \"DifferencePair\" -> {"<>compactCorrupted["Text"][tag]<>", "<>compactBaseline["Text"][tag]<>"}"<>
+      ", \"DifferencePairComparison\" -> "<>ToString[comparison[compactCorrupted["Held"][tag],compactBaseline["Held"][tag]],InputForm,PageWidth->Infinity]<>
+      ", \"MethodResidualPair\" -> {"<>compactBaseline["Text"][tag]<>", "<>baseline["Text"][tag]<>"}"<>
+      ", \"MethodResidualPairComparison\" -> "<>ToString[comparison[compactBaseline["Held"][tag],baseline["Held"][tag]],InputForm,PageWidth->Infinity]<>
+      ", \"Coverage\" -> "<>ToString[coverage,InputForm,PageWidth->Infinity]<>"|>",
+    raw="<|\"Baseline\" -> "<>baseline["Text"][tag]<>
+      ", \"DifferencePair\" -> Missing[\"NOT_EVALUATED\"], \"DifferencePairMark\" -> \"not compared\", \"MethodResidualPair\" -> Missing[\"NOT_EVALUATED\"], \"MethodResidualPairMark\" -> \"not compared\", \"Coverage\" -> "<>
+      ToString[coverage,InputForm,PageWidth->Infinity]<>"|>"];
+  WriteString[First[$Output],"WL_LOCAL_S9B_ABLATION_K11_"<>tag<>": "<>raw<>"\n"];Flush[First[$Output]],
+  {tag,Keys[baseline["Text"]]}];
+print["K11_WITNESS_SEARCH",searchWitness["K11",compactCorrupted,compactBaseline]];
+Do[note["structural pair","HARNESS_DEAD_PATH_"<>tag];emitPair["HARNESS_DEAD_PATH",baseline,baseline,tag],{tag,Keys[baseline["Text"]]}];
+note["complete","ALL"];Close[S9bHarness`progress];
 End[];

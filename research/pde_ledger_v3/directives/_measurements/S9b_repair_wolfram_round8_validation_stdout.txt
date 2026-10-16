@@ -1,0 +1,168 @@
+{
+  "tags": 374,
+  "shared": 330,
+  "local": 44,
+  "baselineNotEstablished": 271,
+  "K11Reached": 10,
+  "K11Unreached": 364,
+  "engineUnchanged": true,
+  "standaloneStreamsByteIdentical": true,
+  "standaloneDirectoryOnlyEngine": true,
+  "productionOutStatus": ""
+}
+{
+  "structuralCounts": {
+    "K1": {
+      "not compared": 317,
+      "identical": 57
+    },
+    "K2": {
+      "not compared": 238,
+      "identical": 136
+    },
+    "K3": {
+      "not compared": 338,
+      "identical": 36
+    },
+    "K4a": {
+      "identical": 270,
+      "not compared": 104
+    },
+    "K4b": {
+      "identical": 270,
+      "not compared": 104
+    },
+    "K4c": {
+      "not compared": 235,
+      "identical": 139
+    },
+    "K5": {
+      "identical": 336,
+      "not compared": 38
+    },
+    "K6": {
+      "identical": 320,
+      "not compared": 54
+    },
+    "K7": {
+      "identical": 327,
+      "not compared": 47
+    },
+    "K8": {
+      "identical": 190,
+      "not compared": 184
+    },
+    "K9a": {
+      "not compared": 13,
+      "identical": 361
+    },
+    "K9b": {
+      "not compared": 12,
+      "identical": 362
+    },
+    "K10": {
+      "identical": 49,
+      "not compared": 325
+    },
+    "K11": {
+      "DifferencePairComparison: not compared": 6,
+      "MethodResidualPairComparison: identical": 10,
+      "DifferencePairComparison: identical": 4,
+      "not evaluated": 364
+    },
+    "HARNESS_DEAD_PATH": {
+      "identical": 374
+    }
+  },
+  "witnessSearches": {
+    "K1": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_FERMAT_OBJECT\", \"PayloadLocation\" -> {\"TimePolynomial\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 147, \"EntryConstruction\" -> \"timePolynomial = Expand[\"|>",
+      "evaluations": "{-2249111/810000, -1279808/455625}",
+      "conditions": "{{True, True}, {True, True}}",
+      "solutionIntersection": "False"
+    },
+    "K2": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_FERMAT_OBJECT\", \"PayloadLocation\" -> {\"TimePolynomial\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 147, \"EntryConstruction\" -> \"timePolynomial = Expand[\"|>",
+      "evaluations": "{-21067/7500, -1279808/455625}",
+      "conditions": "{{True, True}, {True, True}}",
+      "solutionIntersection": "False"
+    },
+    "K3": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_FERMAT_OBJECT\", \"PayloadLocation\" -> {\"TimePolynomial\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 147, \"EntryConstruction\" -> \"timePolynomial = Expand[\"|>",
+      "evaluations": "{-5070551/1822500, -1279808/455625}",
+      "conditions": "{{True, True}, {True, True}}",
+      "solutionIntersection": "False"
+    },
+    "K4a": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_OPTICAL_COORDINATE\", \"PayloadLocation\" -> {\"PushedDensity\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 237, \"EntryConstruction\" -> \"opticalDensity += (-1)^j\"|>",
+      "evaluations": "{2917376911/2916000000, 323071723/324000000}",
+      "conditions": "{{True, True, True, True, True}, {True, True, True, True, True}}",
+      "solutionIntersection": "(vLocal == 1/30 && omega == (121515 - 301*Sqrt[656189101])/3645450 && cSquared == 90601/22500 && aMetric == 8101/8100) || (vLocal == 1/30 && omega == (121515 + 301*Sqrt[656189101])/3645450 && cSquared == 90601/22500 && aMetric == 8101/8100)"
+    },
+    "K4b": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_OPTICAL_COORDINATE\", \"PayloadLocation\" -> {\"PushedDensity\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 237, \"EntryConstruction\" -> \"opticalDensity += (-1)^j\"|>",
+      "evaluations": "{1937902843/1944000000, 323071723/324000000}",
+      "conditions": "{{True, True, True, True, True}, {True, True, True, True, True}}",
+      "solutionIntersection": "(vLocal == 1/30 && omega == (121515 - 301*Sqrt[656189101])/3645450 && cSquared == 90601/22500 && aMetric == 8101/8100) || (vLocal == 1/30 && omega == (121515 + 301*Sqrt[656189101])/3645450 && cSquared == 90601/22500 && aMetric == 8101/8100)"
+    },
+    "K4c": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_PROFILE_ANSATZ\", \"PayloadLocation\" -> {\"XiDerivative\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 123, \"EntryConstruction\" -> \"\\\"XiDerivative\\\" -> xiSlope\"|>",
+      "evaluations": "{0, -1/90}",
+      "conditions": "{{True}, {True}}",
+      "solutionIntersection": "{{}}"
+    },
+    "K5": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_NONRECIPROCAL_CONSTRUCTION\", \"PayloadLocation\" -> {\"OneForm\", 1}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 192, \"EntryConstruction\" -> \"oddOneFormLocal = D[\"|>",
+      "evaluations": "{0, -1207049/145800000}",
+      "conditions": "{{True, True, True, True, True}, {True, True, True, True, True}}",
+      "solutionIntersection": "(vLocal == 1/30 && omega == (121515 - 301*Sqrt[656189101])/3645450 && cSquared == 90601/22500 && aMetric == 8101/8100) || (vLocal == 1/30 && omega == (121515 + 301*Sqrt[656189101])/3645450 && cSquared == 90601/22500 && aMetric == 8101/8100)"
+    },
+    "K6": {
+      "result": "\"none found\"",
+      "site": "<|\"Tag\" -> \"WL_S9B_A_RADAR_LOG_G100\", \"PayloadLocation\" -> {\"OnDomain\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 362, \"EntryConstruction\" -> \"finiteSlope = Expand[\"|>"
+    },
+    "K7": {
+      "result": "\"none found\"",
+      "site": "<|\"Tag\" -> \"WL_S9B_B_CONDITION_DEFLECTION\", \"PayloadLocation\" -> {}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 409, \"EntryConstruction\" -> \"If[quantifierMode === \\\"FIXED_B\\\"\"|>"
+    },
+    "K8": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_MASS_BALANCE\", \"PayloadLocation\" -> {\"Divergence\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 467, \"EntryConstruction\" -> \"massVector = (massDensity\"|>",
+      "evaluations": "{2/135, 1/90}",
+      "conditions": "{{True}, {True}}",
+      "solutionIntersection": "{{}}"
+    },
+    "K9a": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_C_RESPONSES\", \"PayloadLocation\" -> {\"Responses\", 2, \"DensityParts\", 1, \"Object\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 100, \"EntryConstruction\" -> \"responseValues = {c0\"|>",
+      "evaluations": "{2, Sqrt[301/3]/5}",
+      "conditions": "{{True, True, True, True, True}, {True, True, True, True, True, True, True}}",
+      "solutionIntersection": "fLocal == 1/300"
+    },
+    "K9b": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_C_RESPONSES\", \"PayloadLocation\" -> {\"Responses\", 3, \"DensityParts\", 1, \"Object\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 100, \"EntryConstruction\" -> \"responseValues = {c0\"|>",
+      "evaluations": "{2, 90601/45000}",
+      "conditions": "{{True, True, True, True}, {True, True, True, True}}",
+      "solutionIntersection": "fLocal == 1/300"
+    },
+    "K10": {
+      "result": "\"none found\"",
+      "site": "<|\"Tag\" -> \"WL_S9B_A_NONRECIPROCAL_PATH_DEPENDENCE\", \"PayloadLocation\" -> {\"OnDomain\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 174, \"EntryConstruction\" -> \"physicalPropagation = branchGateLocal\"|>"
+    },
+    "K11": {
+      "result": "\"witness\"",
+      "site": "<|\"Tag\" -> \"WL_LOCAL_S9B_FERMAT_OBJECT\", \"PayloadLocation\" -> {\"TimePolynomial\"}, \"SitePart\" -> \"value\", \"Source\" -> \"/var/projects/toy_physics-s9b-r8-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl\", \"SourceLine\" -> 147, \"EntryConstruction\" -> \"timePolynomial = Expand[\"|>",
+      "evaluations": "{-5238707/1822500, -1279808/455625}",
+      "conditions": "{{True, True}, {True, True}}",
+      "solutionIntersection": "False"
+    }
+  }
+}

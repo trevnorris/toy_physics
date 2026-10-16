@@ -1,0 +1,41 @@
+{
+  "artifacts": {
+    "S9b_repair_wolfram_round8_harness.stdout.gz": {
+      "literalStdoutSha256": "ef8a932f8d2f250110589caec861b414ab99390b44f230108125e8b63b95b92c",
+      "literalStdoutBytes": 218998734,
+      "compressedBytes": 4891142
+    },
+    "S9b_repair_wolfram_round8_baseline.stdout.gz": {
+      "literalStdoutSha256": "6519d10c86c9b16741bd32814a57216116c33717a0aec4150f61903617e9ffdb",
+      "literalStdoutBytes": 8132732,
+      "compressedBytes": 176380
+    },
+    "S9b_repair_wolfram_round8_captures.json.gz": {
+      "compressedBytes": 2189230,
+      "compressedSha256": "ff0dc94c88b57f01a0a1523784f1d074bb4d7b7470555ca8c6797bdf5e5896c2",
+      "contents": "gzip JSON mapping filenames to all engine stdout captures and single-mutation/compact source copies; excludes process records"
+    }
+  },
+  "resources": {
+    "s9b-r8-full-final": {
+      "peakMemoryBytes": 2507247616,
+      "maximumSampledTasks": 32,
+      "maximumSampledSwapBytes": 0
+    },
+    "s9b-r8-engine-standalone": {
+      "peakMemoryBytes": 412295168,
+      "maximumSampledTasks": 26,
+      "maximumSampledSwapBytes": 0
+    },
+    "s9b-r8-engine-repository": {
+      "peakMemoryBytes": 412073984,
+      "maximumSampledTasks": 24,
+      "maximumSampledSwapBytes": 0
+    },
+    "s9b-r8-structural-checks5": {
+      "peakMemoryBytes": 132734976,
+      "maximumSampledTasks": 1,
+      "maximumSampledSwapBytes": 0
+    }
+  }
+}

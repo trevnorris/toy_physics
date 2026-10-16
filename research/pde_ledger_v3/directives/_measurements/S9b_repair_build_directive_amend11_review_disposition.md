@@ -416,3 +416,71 @@ Both legs confirm these:
 - Grok: `py-ranges-3` and `wl-rules-2`, with earlier attempts superseded.
 
 All completed.
+
+## Round 7
+
+**Artifact.** The working-tree directive at sha256 `263aa962…`, written by a fresh Codex session (gpt-6.1-sol,
+xhigh; session `01a144e9…`). Brief and note: `_scratch/s9b_build/amend11_author6/brief.md`, `author_note.md`. The
+orchestrator copied it in unchanged after checking that the diff against round 6 (`4f56d054`) touches only:
+- the amendment-11 header;
+- item 14;
+- the Part 2 and 3 round-8 lines.
+
+Saved before launch in `_scratch/s9b_build/preserved/S9b_repair_build_directive_amend11_r7.md`. Prompt:
+`_scratch/s9b_build/s9b_repair_build_directive_amend11_review_prompt_r7.md` (`b8b04410…`). Baseline: 21 files, all
+unchanged after both legs. Lookups: `S9b_repair_build_directive_amend11_review_r7_lookups.md` beside this file
+(gen `_scratch/s9b_build/gen/s9b_amend11_r7_lookups.sh`).
+
+**Legs** (Codex-written, so a fresh Claude agent and Grok, G1):
+- **Grok: CLEAR, no findings.** Report: `_scratch/s9b_build/s9b_amend11_review_r7_grok.txt`. Scripts and stdout:
+  `_scratch/s9b_build/s9b_amend11_review_r7_grok_evidence/`.
+- **Fresh Claude (opus): NEEDS REVISION, one finding and one observation.** Report:
+  `_scratch/s9b_build/s9b_amend11_review_r7_claude.md`, saved verbatim from the hand-back. Scripts and stdout:
+  `_scratch/s9b_build/s9b_amend11_review_r7_claude_evidence/`.
+
+Both legs confirm these:
+- O1 is met: no amendment-11 sentence names a review, reviewer or record step;
+- round 6's crossed K8 pair is barred;
+- the marks, the site rule, the K11 pairs and what earlier legs confirmed still stand;
+- engines unchanged, no verdict, no leakage.
+
+**Findings and dispositions.**
+- **Claude 1: accepted.** The pairing ban covers only "a shared fixing equation", and "where the fixing
+  constructions differ" keeps each copy's own solutions with no pairing rule (L306–309). Under K4c, SymPy's emitted
+  `squared` differs between the copies: the baseline's depends on `s9b_delta` and `s9b_xi`, K4c's on `s9b_delta`
+  only, so `SQUARED_IDENTICAL_AS_EMITTED False`. At round 6's inputs (`ξ ≡ 0`) both equal
+  `(r−4)²(r−2)²/r⁵` and admit the zeros `{2, 4}`.
+  - Matched at the same zero, every branch's `j_n` difference is `0`, and every attached domain is the same at these
+    inputs.
+  - Crossed, baseline `z = 2` against K4c `z = 4`, the difference is `3/16 − 3√2/4`.
+
+  On the as-emitted reading, the ban lapses at exactly the site parts where witnesses must lie. K9b's
+  `C_POWER_IMPLIED_JN_DEFLECTION` has the same shape. Grok's report tests the pairing on a shared equation only.
+
+  **Must be true in round 8:**
+  - Whether two copies' solutions are paired is decided by the solutions each copy admits at the witness inputs.
+    Whether the emitted equations or constructions are the same expression does not decide it.
+  - Wherever both copies admit a solution, no witness compares it with a different solution of the other copy. The
+    witness compares at common solutions, or compares the complete (solution, value) sets.
+  - Different solutions are compared only where the copies admit no common solution (C2′, K3's turning radii).
+- **Claude, observation: accepted, and acted on outside the text.** The builders' export (item 15) carried every
+  S9b review record under `directives/_measurements/` except the build-review ones. These records hold reviewers'
+  measurements and witnesses, for example round 4's K3 roots. Blindness is by absence (S1). So the export generator
+  `_scratch/s9b_build/gen/s9b_r8_exports.sh` now removes every `directives/_measurements/S9b_*review*` file as well
+  (94 files at `HEAD`, lookups).
+
+**Loop record.** This is the user-chosen path's third round: round 6 had one finding plus O1, round 7 has one
+finding. Both concern the solution-pairing rule. If round 8 does not clear, the loop goes to the user before another
+fold.
+
+**Process.** The legs' guarded runs are under `_scratch/s11c/s9b-amend11-review-r7/`:
+- Claude: `claudeleg-{inspect1,k9b-engine,k4c-engine,k4c-pair1,k4c-conj1,zfree1,k9b-sq1}`;
+- Grok: `grok-r7-pair1` and `grok-r7-wl1`.
+
+All completed.
+
+**Orchestrator note on the header.** Round 7 dropped the amendment-11 header's provenance: the build-review pointer,
+"Reviewed until clear" and the dispositions pointer. Every other amendment header carries these as history. They
+name no step a builder takes, but O1's "name no review" covered them too. Neither leg raised it. It does not change
+what is computed or claimed, and the earlier headers already give the form. The round-8 author may restore the
+pointers as history if they read as history, not as instructions.

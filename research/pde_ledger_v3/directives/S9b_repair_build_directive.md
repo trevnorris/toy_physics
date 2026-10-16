@@ -65,13 +65,9 @@ a profile choice under item 13. Parts 2 and 3 point at it. The engines do not ch
 clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend10_review_disposition.md`.
 
-**Amendment 11** (Codex author, 2026-10-16), for the build's repair round 8 after review r7
-(`directives/_measurements/S9b_repair_build_r7_review_disposition.md`). Item 14 implements the user's choices
-of 2026-10-16: narrowing the harness, choosing structural marks and a witness search per knife, then, after
-amendment review round 5, printing each witness's readings for build review round 8 to check. Parts 2 and 3
-point at it. The engines do not change in this round.
-Reviewed until clear. Dispositions:
-`directives/_measurements/S9b_repair_build_directive_amend11_review_disposition.md`.
+**Amendment 11** (Codex author, 2026-10-16), for repair round 8. Apply item 14's structural marks and witness
+search per knife, and print every reading choice behind each witness (the user's choices of 2026-10-16). Keep
+the engines unchanged.
 
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
 only. **Part D is held** (user decision, 2026-10-08) until the brane-material premise behind P1 is settled. This build
@@ -305,8 +301,12 @@ comparator, the production runs and the record.
       condition, print its mathematical statement in that engine's symbols, its variables and ranges, and the
       derivatives it requires.
       A witness counts only if every choice, including solution selection, is the engine's own reading of its object
-      under this directive, the spec and the knife's definition. The record claims it only after round-8 review
-      checks those choices.
+      under this directive, the spec and the knife's definition.
+
+      For value witnesses and compared domain conditions, pair solutions of a shared fixing equation at the same
+      solution admitted by both copies, or print and compare the complete sets of (solution, value) pairs, using
+      condition evaluations for domains. Never pair different solutions of that equation. Where the fixing
+      constructions differ, keep each copy's own solutions.
 
       Print a concrete real point assigning all independent inputs free in either copy or its conditions after
       accounting for the printed roles; never substitute bound variables. Print a concrete admissible
@@ -426,9 +426,7 @@ comparator, the production runs and the record.
 - **Repair round 5 (amendment 8).** Items 9 and 14 as amended hold after the repair.
 - **Repair round 6 (amendment 9).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Repair round 7 (amendment 10).** Item 14 as amended holds for the harness. The engine is unchanged.
-- **Repair round 8 (amendment 11).** Item 14 as amended holds for the harness. Round-8 review checks each printed
-  witness and its reading choices, and the structural comparison's exactness on approximate numbers. The engine
-  is unchanged.
+- **Repair round 8 (amendment 11).** Item 14 as amended holds for the harness. The engine is unchanged.
 
 ## Part 3. Wolfram engine (blind)
 
@@ -451,9 +449,7 @@ comparator, the production runs and the record.
 - **Repair round 5 (amendment 8).** Items 9 and 14 as amended hold after the repair.
 - **Repair round 6 (amendment 9).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Repair round 7 (amendment 10).** Item 14 as amended holds for the harness. The engine is unchanged.
-- **Repair round 8 (amendment 11).** Item 14 as amended holds for the harness. Round-8 review checks each printed
-  witness and its reading choices, and the structural comparison's exactness on approximate numbers. The engine
-  is unchanged.
+- **Repair round 8 (amendment 11).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Executable checks, with no expected values:**
   1. Copy the finished `.wl` alone into an empty scratch directory. Run it there and in the repository. Both runs
      exit 0, and their streams are non-empty and byte-identical. Afterwards the scratch directory holds only the

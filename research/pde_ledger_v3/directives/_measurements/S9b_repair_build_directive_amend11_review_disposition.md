@@ -138,3 +138,85 @@ user before any fold.
 
 **Process.** The legs' guarded runs are under `_scratch/s11c/s9b-amend11-review-r2/` (Claude `claudeleg-*`). All
 completed. The Claude leg's guarded copy of the Wolfram engine reproduces the production transcript byte for byte.
+
+**The user's decision (2026-10-16).** Two choices, both made through the question tool. The option texts are mine.
+Both are quoted from the session transcript.
+- 09:27 UTC. Question: "What should round 8 have to clear before the harness is accepted?" Chosen: "Narrowed bar
+  (Recommended)", whose description reads: "Round 8 must clear R1 everywhere (no false zeros) and R4 at every
+  knife's target in both engines. 'Undecided' is allowed away from the targets, and the record claims nothing from
+  those labels." Rounds 0–2 were written to this choice.
+- 11:13 UTC, after the round-2 findings. Question: "How should we get the harness finished?" Chosen: "Smaller
+  harness (Recommended)", whose description reads: "Replace the general 'did it change' rule with: 'identical' only
+  for literally identical outputs, otherwise 'not compared', plus one concrete, printed witness per knife per engine
+  that the reviewers check. A new author writes a short amendment, reviewed until clear". The other option was to
+  keep refining amendment 11's general rule.
+
+So round 2's findings are not folded. Round 3 replaces the general rule. Item 14's per-part classification (zero,
+change, undecided) is removed. Every tag is marked identical, when its two payloads are structurally the same
+expression, or not compared. Each knife has one concrete printed witness in each engine. R1 is answered because
+nothing prints a zero unless the payloads are identical. R4 is answered by the witness, which must lie at a site
+part. R2 is answered because the witness's attached conditions must be shown to hold at its point. Round 2's
+findings bear on round 3 only where they concern the witness test: free symbols such as `bFar`, definedness,
+conditions at every payload level, and worded conditions.
+
+## Round 3
+
+**Author.** The author changes again (G4): a fresh Codex author (gpt-6.1-sol, xhigh; session `01a1446c…`). It
+starts from the last accepted directive (`4b4db191`), so none of rounds 0–2's text carries over. Brief and note:
+`_scratch/s9b_build/amend11_author2/brief.md` and `author_note.md`. The brief states what must be true, from the
+user's choice.
+
+**Artifact.** The working-tree directive at sha256 `7d3283a4…`, Codex-written. The orchestrator copied it in
+unchanged after checking that the diff against `4b4db191` touches only these:
+- the amendment-11 header;
+- the earlier amendment headers that named the removed classification (amendments 3, 5, 6 and 7);
+- item 14;
+- K11's printing lines;
+- the Part 2 and Part 3 round-8 lines.
+
+Saved before launch in `_scratch/s9b_build/preserved/S9b_repair_build_directive_amend11_r3.md`. Prompt:
+`_scratch/s9b_build/s9b_repair_build_directive_amend11_review_prompt_r3.md` (`dd3e3146…`). Baseline: 17 files, all
+unchanged after both legs. Lookups: `S9b_repair_build_directive_amend11_review_r3_lookups.md` beside this file
+(gen `_scratch/s9b_build/gen/s9b_amend11_r3_lookups.sh`).
+
+**Legs** (Codex-written, so a fresh Claude agent and Grok, G1):
+- **Fresh Claude (opus): NEEDS REVISION, six findings.** Report: `_scratch/s9b_build/s9b_amend11_review_r3_claude.md`,
+  saved verbatim from the hand-back. Scripts and stdout: `_scratch/s9b_build/s9b_amend11_review_r3_claude_evidence/`.
+- **Grok: NEEDS REVISION, three findings.** Report: `_scratch/s9b_build/s9b_amend11_review_r3_grok.txt`. Scripts and
+  stdout: `_scratch/s9b_build/s9b_amend11_review_r3_grok_evidence/`.
+
+Both legs confirm these:
+- the marks claim only structural identity, and nothing prints zero, change or undecided at a tag;
+- one site rule covers K6, K10 and K11, and excludes the digest and K11's residual;
+- the point assigns domain parameters such as `bFar`;
+- finiteness is ordinary;
+- a witness's point and profile stay out of every engine object and out of item 13;
+- "The engine is unchanged" and "Print no verdict" are consistent with item 14;
+- there is no leakage.
+
+Claude confirms that no text outside K11 relies on the removed classification.
+
+**Findings and dispositions.** All are accepted. Each changes what a harness prints, or whether a printed witness
+shows a change in the emitted object. The column says what must be true; the wording is the author's.
+
+| # | Finding (evidence in the lookups file) | Must be true in round 4 |
+|---|---|---|
+| C1 | K11 still prints "their difference" and a residual, and nothing governs them. The text that held them to item 14's rule was removed. Both harnesses compute them with the r7 classifier, which prints `ValueDifference -> 0` for `x` on `x>0` against `2x` on `x<0` (WL C1–C3; SymPy L1020). R1 survives at K11. | No K11 difference or residual prints or implies a zero or a change. K11 pairs carry the same marks as tags. Any K11 claim of change is a witness. |
+| C2 | "Structurally the same under a structural comparison the harness names" admits a normalizing comparison. `SameQ[Together[e1],e2]` is True while `e1` is `Indeterminate` at `x=1` and `e2` is 2. `cancel` gives the same in SymPy. Machine `SameQ` is True across a 2⁻⁵² difference. | Identical means the payloads are the same expression as emitted. Nothing is evaluated, simplified or canonicalized first. Approximate numbers are identical only when they are exactly equal. |
+| C3 | A domain witness needs one copy's condition true and the other false, but nothing about the conditions that contain it. Container `x>−1`, `x>0` against `x>0 ∨ x<−5`, at `x=−6`: the part conditions differ and the effective sets are equal. | In a domain witness, every condition at the containing levels, other than the compared one, is computed true in both copies. |
+| C4 | Which entries are attached conditions is not stated. SymPy's `RHO_POSITIVE`/`RHO_NONPOSITIVE` are branch labels at the level containing every C-row object; read as conditions, no SymPy K9 value witness can exist (C2 `EmptySet`). SymPy attaches a set, `Interval.open(b_min, ∞)`, to `RADIAL_DIFFERENTIAL_IDENTITY` over `r` (L966). Read pointwise, it splits from the every-`r` reading at K7 and K1–K4 (D1/D2). Labels such as `"Measure"` and `"Profiles"` are left to the harness. | The text says which entries are attached conditions. They are the entries stating where the part's value holds: domains, gates and premises. A branch label qualifies only its own branch. Descriptive strings and entries that are themselves computed values (e.g. `Closedness`) are not conditions. The harness prints which entries it evaluated as conditions. A set attached to a relation over a variable is that variable's range. Such a relation is decided over the whole range, as the every-`b` reduction (item 6) states it. |
+| C5 | The admissible-profile list omits `j_n`. The spec makes `j_n` live (L80). Both engines attach `j_n = 0` to every forward object (SymPy L1050, L1070; WL `"NormalExchange"`, L659–661). | `j_n` is on the list where it enters. |
+| C6 | "A printed bound covering both errors" and "computed true" are met by a quadrature error estimate (E2: the values differ by 1.8×10⁻⁴; the estimates sum to 10⁻³⁶) or by sampling a quantifier (F1 all true; F2 counterexample `π`). | A numeric bound is a proved enclosure: exact, or outward-rounded interval or ball arithmetic. A condition is computed true or false only by an exact decision over its whole stated range. |
+| G1 | "Computed true" is not one test. `TrueQ` is False on a true `Inactive[ForAll]`, which `Resolve` decides as True. SymPy's `.doit()` leaves a ConditionSet emptiness undecided. `regularityDomain` mixes a formula, worded clauses and order-counting strings. `Closedness` is a value under one reading and a condition under another. | One decision procedure for every condition: an exact decision of the condition as stated, with its quantifiers active and its bound variables bound. A test that leaves a form inactive or unevaluated decides nothing. A worded condition is decided as its mathematical content for that object, as the directive and spec define it. The exterior half-line is fixed as one set. Order-counting strings (`OpticalCounting`, the spec's order counting) are not evaluated. |
+| G2 | "Every free symbol" by a symbol scan includes bound variables: a quantifier variable, an integral variable, a ConditionSet binder. Substituting a binder makes a false emptiness statement `True` (SymPy) or breaks the integral (WL). | The point assigns only the symbols that remain free once the bound variables are set aside. Bound variables are never substituted. |
+| G3 | "It need not meet the condition being compared" names no condition now that zero, change and undecided are gone. It reads as letting a value witness's profile leave its domain: `sqrt(x²)` against `x` at `x=−1` gives finite, differing values while `x>0` is false. | The phrase goes. In a value witness the profile makes every attached condition true. In a domain witness the compared condition is true in one copy and false in the other. |
+
+Round 2's witness-related findings are met or carried here: definedness and free symbols by both legs' checks; worded
+entries and the exterior half-line by G1; containing levels by C3.
+
+**Author for round 4.** Round 3's findings are gaps in new text, not defects bred by a fold, so the author stays
+Codex (gpt-6.1-sol, xhigh). The fold goes to a fresh session with this table, both reports and both evidence
+directories. The text is to stay short, saying what must be true and not how to compute it.
+
+**Process.** The legs' guarded runs are under `_scratch/s11c/s9b-amend11-review-r3/` (Claude `claudeleg-*`, Grok
+`bind-wl-1`, `cond-*`, `trueq-wl-1`). All completed.

@@ -33,8 +33,8 @@ change, with the spec's amendment 2. Parts 2 and 3 point at them. Reviewed until
 Dispositions: `directives/_measurements/S9b_SHARED_PHYSICS_amend2_review_disposition.md`.
 
 **Amendment 6** (orchestrator, 2026-10-10; a repair under the user's standing approval), for the build's repair
-round 3 after review r2 (`directives/_measurements/S9b_repair_build_r2_review_disposition.md`). Item 14 states what
-a difference shows for a payload that carries a domain. Parts 2 and 3 point at the items each engine's repair must
+round 3 after review r2 (`directives/_measurements/S9b_repair_build_r2_review_disposition.md`). Item 14's harness
+requirements change for payloads that carry domains. Parts 2 and 3 point at the items each engine's repair must
 meet. Reviewed until clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend6_review_disposition.md`.
 
@@ -48,29 +48,28 @@ Dispositions: `directives/_measurements/S9b_repair_build_directive_amend7_review
 round 5 after review r4 (`directives/_measurements/S9b_repair_build_r4_review_disposition.md`). Item 9 supplies the
 asymptotic bulk density's positivity as a premise, states that the local bulk density's sign is not a domain
 predicate, and has each row that reads the local bulk density label where it is positive and where it is not (the
-user's choices, 2026-10-11); each response is one object on both parts. Item 14 states what an unchanged part is,
-and what a difference prints when the engine cannot decide it. Parts 2 and 3 point at both items. Reviewed until
-clear. Dispositions:
+user's choices, 2026-10-11); each response is one object on both parts. Item 14's harness requirements also
+change. Parts 2 and 3 point at both items. Reviewed until clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend8_review_disposition.md`.
 
 **Amendment 9** (orchestrator, 2026-10-12; a repair under the user's standing approval), for the build's repair
-round 6 after review r5 (`directives/_measurements/S9b_repair_build_r5_review_disposition.md`). Item 14 states what
-a changed part is, and that a changed part prints as a change. Parts 2 and 3 point at it. The engines do not change in
-this round. Reviewed until clear. Dispositions:
+round 6 after review r5 (`directives/_measurements/S9b_repair_build_r5_review_disposition.md`). Item 14's harness
+requirements change. Parts 2 and 3 point at it. The engines do not change in this round. Reviewed until clear.
+Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend9_review_disposition.md`.
 
 **Amendment 10** (orchestrator, 2026-10-12; a repair under the user's standing approval), for the build's repair
-round 7 after review r6 (`directives/_measurements/S9b_repair_build_r6_review_disposition.md`). Item 14 states the
-order in which a part's difference prints as zero, a change or undecided, and what a witness and an admissible
-profile are. A witness's point and profile are not a profile choice under item 13. Parts 2 and 3 point at it. The
-engines do not change in this round. Reviewed until clear. Dispositions:
+round 7 after review r6 (`directives/_measurements/S9b_repair_build_r6_review_disposition.md`). Item 14's harness
+requirements change, including its witness and admissible-profile inputs. A witness's point and profile are not
+a profile choice under item 13. Parts 2 and 3 point at it. The engines do not change in this round. Reviewed until
+clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend10_review_disposition.md`.
 
-**Amendment 11** (2026-10-16; orchestrator-drafted in rounds 0 and 1, Codex-written in round 2), for the build's
-repair round 8 after review r7 (`directives/_measurements/S9b_repair_build_r7_review_disposition.md`). Item 14
-governs the witness-domain tests, site parts and printing obligations under the user's choice of 2026-10-16.
-Parts 2 and 3 point at it. The engines do not change in this round. Review discipline: physics-bearing text,
-reviewed until clear by non-authors. Dispositions:
+**Amendment 11** (Codex author, 2026-10-16), for the build's repair round 8 after review r7
+(`directives/_measurements/S9b_repair_build_r7_review_disposition.md`). Item 14 implements the user's two choices
+of 2026-10-16: first narrowing what the harness must show, then choosing this smaller harness with structural
+marks and a witness search per knife. Parts 2 and 3 point at it. The engines do not change in this round.
+Reviewed until clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend11_review_disposition.md`.
 
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
@@ -278,114 +277,36 @@ comparator, the production runs and the record.
 14. **Ablation harness** (`docs/development_pipeline.md` §4).
     - Each engine gets a committed harness that runs the live engine unchanged as the baseline. For each knife
       below, it runs a copy with exactly that one mutation at the named construction site.
-    - It prints the baseline payload, the corrupted payload and their difference for **every** tag, including tags
-      whose difference is zero. It prints no verdict.
-    - For a payload that carries a domain, the difference shows separately whether the value changed and whether
-      the domain changed. The domain is the condition a payload attaches to its computed object, such as the spec's
-      branch-existence conditions or the condition that a case of a reduction carries. The value is the computed
-      object itself, including when that object is a relation, a predicate such as a closedness test, or a
-      condition. A part is
-      unchanged when the knife leaves it equal to the baseline part as a mathematical object, in whatever form the
-      corrupted copy rebuilds it: the same value, or for a domain the same condition on the same variables,
-      including a condition carried inside a set or a quantifier. A part is changed when it differs from the
-      baseline part at some point: for a value, a real point of its variables at which both values are defined and
-      both attached domains hold; for a domain, a point where one condition holds and the other does not; and for a
-      part that carries a profile function, such a point under some admissible profile. The domains required for
-      a value witness include every domain attached to the value or its containing case in each copy, including
-      definition and applicability conditions. A condition that is itself the compared value is evaluated for its truth value;
-      it is not required to be true. For a domain difference, evaluate the two domains independently at the same
-      point, without assuming either. If the two attached domains share no point, that shows nothing about the
-      values. An empty common domain, an unusable candidate or an unsuccessful search is never evidence for zero.
+    - For **every** tag, print the baseline and corrupted payloads (K11 uses the compact pair below). Mark the tag
+      **identical** exactly when the payloads are structurally the same expression under a structural comparison
+      the harness names in its output; otherwise mark it **not compared**. These marks claim only structural
+      identity. Make no other claim of equality or change for a tag. Print no verdict.
+    - For each knife whose construction the engine contains, look for one witness. Print it, or print **none found**
+      and what was tried. A witness names a site part: a value or domain of an emitted payload whose computation
+      uses the mutated construction's result, with its payload location and the source location where that result
+      enters. Exclude the build-input digest and parts computed before the mutation enters. For K10, the result
+      is the gate after negation. For K11, the witness is a compact corrupted-versus-unmutated difference of a
+      reached tag whose computation the mutation enters, never the method's residual.
 
-      **Testing a condition at a witness point.** In the harness's evaluation of each copy:
-      - First express worded and structured conditions as the mathematical predicates specified below, binding
-        the variables that range over a region. Then substitute the point's free variables and the witness's
-        whole profile functions into the condition and the object it qualifies. Include functions appearing in
-        the attached domains. Obtain derivatives from those functions. Preserve bound variables and their complete
-        ranges in integrals, limits, sets and quantifiers; a witness does not assign values to bound variables.
-      - For a formula, compute its truth after these substitutions. Evaluate inactive operations needed by that
-        formula, and reduce quantified statements and set-emptiness or membership statements as statements over
-        their full declared domains. This includes inactive quantifiers and empty-counterexample-set encodings
-        of universal statements. Testing whether the stored, unevaluated formula is literally `True` is not this
-        computation. Finite samples of bound variables do not decide a quantified statement.
-      - Translate the worded conditions into these tests on the specialised object. For "required derivatives
-        exist", compute the domain of existence of every derivative used by the object and whether that domain
-        contains its stated radial region. Existence means the defining real difference-quotient limits exist
-        and are finite, rather than just that a formal derivative can be printed. For "displayed improper
-        integrals converge", compute the ordinary one-sided improper limits and their existence and finiteness
-        predicates for the displayed integrals, at every singular endpoint, interior singularity and infinity.
-        A principal value or analytic continuation does not establish ordinary convergence. For "Abel inverse
-        exists on the exterior half-line", compute the domain on which that engine's constructed Abel inverse
-        is finite and real, including existence of its defining integrals, limits and derivatives, and whether
-        this domain contains the entire exterior half-line. For the reduction's regularity domain, derivative
-        existence and integral convergence are also tested throughout that half-line, not just at the witness
-        radius. Component conditions test membership in the stated connected positive region or identically-zero
-        open interval of the computed squared velocity. Zero-set joining and boundary conditions test the stated
-        one-sided limits for finiteness and matching, and the derivative-existence domains of the real velocity
-        and coordinate mass flux at the join. Compute these predicates from the chosen functions and that copy's
-        constructions; neither a word's presence nor profile admissibility alone discharges it.
-      - For a structured domain, form the conjunction of its condition entries, recursively, retaining explicit
-        logical connectives and case alternatives. Use the attachments belonging to the part and case being
-        tested, rather than conjoining domains of other cases. Function inventories identify the functions to
-        substitute; labels and provenance are metadata. Omit the spec's order counting from this truth test,
-        including counting embedded in a mixed worded entry. An admissible profile need not meet that counting.
-        Any other worded condition must have its mathematical predicate identified and printed; an untranslated
-        condition remains unresolved.
-      - Print the specialised predicates, the mathematical objects used to test the worded conditions, and the
-        CAS truth reductions. Use exact reductions or certified bounds that decide the predicate. A condition
-        holds only on a computed Boolean `True`, and does not hold only on a computed Boolean `False`. Any
-        remaining expression is unresolved. An unresolved required condition makes that candidate unusable as a
-        witness; it establishes neither zero nor a change. For a value witness both attached domains must hold,
-        as well as both values being defined; for a domain witness one condition must hold and the other must not.
-        Symbolic showings of a change obey the same domain and definedness rules.
+      Print the witness's concrete real point, assigning every free symbol of both copies of the part and every
+      attached condition, and a concrete admissible profile for each live profile in either copy or its conditions.
+      At that point and those profiles, evaluate both copies and every condition attached to either, at every
+      payload level containing the part. Print each evaluation with the computation producing it. Conditions
+      retain their stated scopes and ranges. For a condition stated in words, print the harness's own mathematical
+      statement for that copy, point and profile, with its computed result. The spec's order counting is not evaluated.
 
-      Two sets differ at an element that one contains and the other does
-      not, so a point for a set gives values to its free variables and to that element. A statement that binds
-      variables, such as a quantifier or a test of whether a set is empty, is compared as the statement it makes on
-      its free variables, so its point gives values to those only.
-
-      Each part's difference is computed by the engine and prints by this rule, in this order:
-      1. **Zero,** where the engine shows the part unchanged, including an inert integral of zero against `0`. No
-         evaluation overrides this.
-      2. Otherwise **a change,** where the engine shows the part changed, symbolically or by a witness. A witness
-         is a point, and an admissible profile if the part carries a profile function, at which the two parts differ
-         as the definition of a changed part says. For a value, the two evaluations differ exactly, or by more than
-         a bound that covers the error of both. The change prints with the point, the profile when there is one,
-         both evaluations, and the bound when the arithmetic is not exact.
-      3. Otherwise **undecided,** once the harness has looked for a witness and found none. It reads neither as
-         zero nor as a change. Evaluations that agree establish nothing.
+      For a value witness, every attached condition is computed true; both values are finite in the ordinary sense,
+      with the required integrals, limits and derivatives existing ordinarily, without regularization, principal
+      value or analytic continuation. The values differ exactly, or by more than a printed bound covering both
+      errors. For a domain witness, one copy's condition is computed true and the other's false. Unresolved
+      evaluations do not furnish a witness.
 
       An admissible profile assigns one specific radial function, with fixed coefficients, to each live profile
       the part carries (`δ`, `V`, `ξ_w`, and, where they enter, `ρ_br` and `f`). It is defined, with every
       derivative the part takes, at the witness point. It need not meet the condition being compared, nor the
       spec's order counting, which the computation does not test. A witness's point and profile are chosen for
       this test only. They enter no engine object, and they are neither a profile choice nor a profile family
-      under item 13. This rule holds for K11's compact differences and method residual too. K11's sample domain is
-      coverage, not a domain in this sense.
-    - **What the harness must show** (the user's choice, 2026-10-16):
-      - every part that prints zero is shown unchanged as this item defines it;
-      - for each knife whose construction the engine contains: if any of its site parts differs from its baseline
-        part, at least one of its site parts prints as a change by rule 2.
-
-      Use one definition of site parts for all knives, applied to each engine's own computation: trace the result
-      of the replacement at the named construction site through every subsequent use as data or a condition.
-      A part is a site part when its computation uses that result, directly or through intervening constructions,
-      including a part emitted at the construction site. Trace values and attached domains separately. Membership
-      follows these uses even if the result later simplifies away; it does not depend on finding a difference.
-      Print the site-part inventory with each part's construction trace. Exclude the build-input digest, which
-      any source edit changes, and parts whose computation never uses the replacement's result.
-
-      K10 uses this same definition starting from the gate after negation. Follow its uses in emitted conditions,
-      classifications and attached domains as well as in observable gating; membership is not limited to a gating
-      wrapper's outputs. An emission from the condition before negation is outside this trace. For K11, apply the
-      definition to the compact corrupted-versus-unmutated differences of reached tags under their printed
-      coverage. The method must reach at least one such site part. Its residual compares unmutated computations
-      and cannot satisfy the knife's site obligation; unreached tags cannot satisfy it either.
-
-      The numbered print rule binds at every site part. Away from the knife's site parts, rule 1 still binds;
-      after looking for a witness, a differing part may print undecided even if the engine has shown it changed.
-      This is the sole exception to rules 2 and 3. Every printed change, at a site or away from it, must satisfy
-      the definition of a changed part and carry its showing. Undecided supplies no claim of equality or change.
+      under item 13. K11's sample domain describes coverage, not an attached condition.
     - A knife whose construction an engine does not contain is reported, not invented. The engine itself contains
       no control with an expected outcome.
 
@@ -419,12 +340,12 @@ comparator, the production runs and the record.
       every sample point and seed, every truncation order, and the arithmetic's precision.
     - For every tag, the harness prints:
       - the full baseline payload;
-      - both compact evaluations and their difference;
+      - both compact evaluations and their difference, with the structural mark on that pair;
       - the method's residual: the unmutated compact evaluation minus the full baseline payload reduced by the same
-        configuration.
+        configuration, printing both operands with their structural mark.
     - Each difference and residual is printed with its coverage: the retained grades it keeps, and its truncation
       order or sample domain. If the arithmetic is not exact, each also carries its precision and an error bound.
-    - A tag the method does not reach is printed as not evaluated.
+    - A tag the method does not reach is printed as not evaluated and not compared.
     - The engine, its baseline run and the other knives are unchanged.
 15. **Handoff.** Each builder works in its own fresh repository, exported from the commit that holds this
     directive, with no git history. The other engine's S9b files are absent from it. Builders are Codex

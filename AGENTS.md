@@ -46,9 +46,21 @@ how you work in the repository.
   for one for a specific run.
 - The machine is dedicated to this work; use all of it (user, 2026-10-15). There is no host-memory reserve. Pooled
   jobs (`--pool`) share one machine-wide registry across every checkout. Each takes one logical CPU and keeps its own
-  hard cap (`--memory-gib`, 1 GiB up to `MemTotal` rounded down to whole GiB). A job is admitted when the registry is
-  clean, a CPU is free, the reserved caps plus its own fit within that budget, and available memory covers its cap
-  plus the unused caps of jobs already admitted. Otherwise it is refused. A legacy (non-pooled) launch holds the
+  hard cap (`--memory-gib`, 1 GiB up to `MemTotal` rounded down to whole GiB). All available logical CPUs are used,
+  choosing an idle physical core whenever one exists, then sibling threads. A job is admitted when the registry is
+  clean, a CPU and job slot are free, the reserved caps plus its own fit within that budget, and both memory checks
+  pass: `MemAvailable` immediately before the first live-unit walk and immediately after the second must each cover
+  its cap plus the unused reserved caps in that paired walk. Only unreclaimable live usage is credited; file LRU
+  and reclaimable slab are excluded. Every observed sample is validated against its reservation before crediting
+  usage; raw accounting is never overwritten. A free and reallocation entirely between the walks cannot improve
+  either comparison. These are not atomic snapshots: memory can change between each `MemAvailable` read and any
+  cgroup read in its paired walk, between `memory.current` and `memory.stat` within a sample, or after the final read
+  before reservation and workload start. These intervals have no fixed time bound; changes by units or other
+  processes within them can still invalidate the observed headroom. Either failed comparison refuses admission.
+  A live unit with a dead launcher remains accounted and verified; once inactive, its dead owner's reservation
+  blocks admission until explicitly reconciled. Install the shared guard in every checkout only with launches
+  stopped, no live guarded unit, and no launch in flight or queued; keep launches stopped through installation and
+  confirmation that every old per-checkout registry is empty. A legacy (non-pooled) launch holds the
   machine-wide admission lock for its whole run: a pooled launch from another checkout waits until it ends, and one
   from the same checkout is refused.
 - At most two Wolfram kernels at once (two licence seats). No automatic retries, and no replaying completed jobs.

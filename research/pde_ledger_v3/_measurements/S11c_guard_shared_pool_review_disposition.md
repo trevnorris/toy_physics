@@ -97,3 +97,42 @@ runs from the idle check through the empty-registry confirmation. Both found X5'
 **Route.** Both findings are in material round 2 changed: the sampling repair for Y2. Under G4 the author changes:
 Codex writes the round-3 repair, and fresh Codex and Grok legs review it. Until it is accepted and installed, every
 checkout keeps the committed guard. S9b work continues under it, one guarded job at a time.
+
+## Round 3
+
+**The change, round 3.** Under G4 the author changed: Codex (gpt-6.1-sol, xhigh, session `01a14268…`) repaired Z1
+and Z2. Its brief is `r3_author_brief.md`, and its report, verification scripts and stdout are in
+`r3_author_workspace/`. Packet: the same directory.
+- after: `r3_s11c_guarded_run_after.py`, sha256 `1db855a3…`;
+- diffs against `40dfecc9`: `r3_guard.diff` (`9ab64725…`) and `r3_AGENTS.diff` (`ab42037e…`);
+- `r3_repair_only.diff` (`705120b4…`), the diff against round 2, which is committed at `f487979c`;
+- baseline `r3_baseline.sha256`;
+- prompt `r3_review_prompt.md`, sha256 `7a512cf7…`.
+
+**Legs.** The round-3 repair is Codex-written, so the legs are a fresh Claude agent and Grok (G1). The orchestrator's
+parts were reviewed by Codex legs in rounds 0–2.
+- Fresh Claude (opus), NEEDS REVISION, one finding. Report: `r3_review_claude.md`; evidence: `r3_claude_evidence/`.
+- Grok, CLEAR. Report: `r3_review_grok.txt`; evidence: `r3_grok_evidence/`.
+
+Both found that the four intended changes, and X1, X3, X4, X6, X7, Y1–Y4, Z1 and Z2, now hold. Both found the X2
+procedure enough and X5's reasoning right. Both found the remaining window stated in the docstring and in `AGENTS.md`:
+memory that changes inside both read pairs. Claude also checked the author's report against the code.
+
+| # | Finding (leg) | Disposition |
+|---|---|---|
+| W1 | The registry path is `Path.home()`, which follows `$HOME`, while `systemctl --user` reaches the same per-user manager whatever `HOME` is. Two launchers with different `HOME` therefore keep separate registries: in a real-process test, two pending 20 GiB jobs both got CPU 7 against a 31 GiB budget. The docstring and `AGENTS.md` say "one machine-wide registry". (Claude 1; the line dates from round 0) | **ACCEPT.** Lookup: every agent process running now has `HOME=/home/trevnorris` (`/proc/<pid>/environ`, below), so nothing has hit this. But the stated property is one registry per guarded-unit namespace, and `HOME` does not identify that namespace. Required: the registry path depends only on the user, matching `systemctl --user`. |
+| — | Claude, outside the filter: the `AGENTS.md` diff deletes "Memory budgets and parallel pooling are the user's call … Use it only when the user authorizes parallel jobs". | **NO CHANGE.** The user (2026-10-15) said that line was set by Codex, not by them, and that the machine is dedicated: "You can use every last resource available". |
+| — | Claude: a later checkout of a commit from before this change brings back the old guard with its own registry. | **PROCEDURE.** X2 covers it. Installation updates every checkout on this machine (11 copies of the launcher, below), and new builder exports come from commits after this change. |
+
+Lookups (mechanical):
+```
+$ for p in <codex wrapper/session pids> <this shell>; do grep HOME /proc/$p/environ; done
+433891 bash: HOME=/home/trevnorris
+433893 codex: HOME=/home/trevnorris
+467282 bash: HOME=/home/trevnorris
+$ ls -d /var/projects/toy_physics*/scripts/s11c_guarded_run.py | wc -l
+11
+```
+
+**Route.** W1 is in round-0 material, not in what round 3 changed, so the round-3 author repairs it. Round 4 is
+scoped to that repair, with a fresh Claude agent and Grok.

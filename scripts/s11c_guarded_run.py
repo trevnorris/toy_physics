@@ -15,10 +15,18 @@ holds no stale, malformed or unaccounted record, a CPU and job slot are free,
 the reserved caps plus its own fit the budget, and available memory covers its
 cap plus every reserved job's unused cap. A live job's use is credited only
 for memory the kernel cannot reclaim from it (its file cache and reclaimable
-slab are already counted as available), and only the smaller of two samples
-taken around the available-memory read; memory a unit frees and re-allocates
-entirely within that millisecond window is not seen. Each job keeps its own hard memory
-cap. A legacy exclusive launch keeps its 2/4 GiB profile and holds the
+slab are already counted as available). Admission checks two independent
+pairs: MemAvailable immediately before the first live-unit walk, and
+MemAvailable immediately after the second walk. Both comparisons must pass;
+every observed unit sample is validated before its usage is credited, and
+raw accounting is never overwritten. A free and reallocation entirely between
+the walks cannot improve either comparison. These are not atomic snapshots:
+memory can change between each MemAvailable read and any cgroup read in its
+paired walk, between memory.current and memory.stat within a sample, or after
+the final read before reservation and workload start. These intervals have no
+fixed time bound; changes by units or other processes within them can still
+invalidate the observed headroom. Each job keeps its own hard memory cap.
+A legacy exclusive launch keeps its 2/4 GiB profile and holds the
 machine-wide admission lock for its whole run: a pooled launch from another
 checkout waits until it ends, and one from the same checkout is refused. Native threads remain one. No workload
 starts until actual cgroup memory, native address-space, inherited process
@@ -199,24 +207,6 @@ def write_reservations(directory, value):
         os.close(descriptor)
 
 
-def conservative_live(first, second):
-    # Live usage sampled before and after MemAvailable. Credit each unit the
-    # smaller unreclaimable use of the two samples, and nothing for a unit
-    # missing from either, so memory freed or allocated between the reads is
-    # never credited against memory that MemAvailable already reflects.
-    def credited(actual):
-        return int(actual['memory.current']) - actual['memory.stat.reclaimable']
-    live = {}
-    for unit in set(first) | set(second):
-        if unit in first and unit in second:
-            live[unit] = min(first[unit], second[unit], key=credited)
-        else:
-            sample = dict(first.get(unit) or second[unit])
-            sample['memory.stat.reclaimable'] = int(sample['memory.current'])
-            live[unit] = sample
-    return live
-
-
 def admission_plan(reservations, live, requested, cpus, available,
                    identity=process_identity, core=core_of):
     # A reservation is written before requesting systemd launch. Never silently
@@ -279,11 +269,20 @@ def reserve_pool(spec, directory=POOL_DIRECTORY):
     with (directory / 'admission.lock').open('a') as admission:
         fcntl.flock(admission, fcntl.LOCK_EX)
         records = read_reservations(directory)
-        first = {unit: service_resources(unit) for unit in active_units()}
+        cpus = pool_cpus()
+        units = active_units()
         available = available_memory()
+        first = {unit: service_resources(unit) for unit in units}
+        first_plan = admission_plan(records, first, spec['memoryMax'], cpus, available)
         second = {unit: service_resources(unit) for unit in active_units()}
-        plan = admission_plan(records, conservative_live(first, second), spec['memoryMax'],
-                              pool_cpus(), available)
+        available = available_memory()
+        second_plan = admission_plan(records, second, spec['memoryMax'], cpus, available)
+        # Validate and compare each raw walk separately. Never pair a unit's
+        # usage with the other walk's availability, or hide a bad sample by
+        # selecting/rewriting raw accounting. Report the tighter passing pair.
+        plan = min((first_plan, second_plan),
+                   key=lambda p: p['hostAvailableBytes'] - p['outstandingHeadroomBytes'])
+        plan['activeUnits'] = sorted(set(first) | set(second))
         spec.update(plan)
         spec['owner'] = process_identity(os.getpid())
         if not spec['owner']:

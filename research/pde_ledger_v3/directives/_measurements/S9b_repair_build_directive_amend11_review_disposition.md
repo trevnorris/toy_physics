@@ -90,3 +90,51 @@ round-0 and round-1 sentences that survive have already had Codex and Grok. Auth
 orchestrator-drafted in rounds 0 and 1, Codex-written in round 2. Codex, the author, does not review.
 
 **Process.** Both legs' guarded runs are under `_scratch/s11c/s9b-amend11-review-r1/` (Codex `codex-8S0Pna-*`, Grok `defs-r1-*`, `resolve-wl-r1-*`, `shows-wl-r1-*`). All completed.
+
+## Round 2
+
+**Artifact.** The working-tree directive at sha256 `d8a54eda…`, Codex-written: author session note
+`_scratch/s9b_build/amend11_author/author_note.md`, brief `brief.md` beside it. The orchestrator copied the author's
+text in unchanged. The diff against round 1 touches only the amendment-11 header and item 14's amendment-11
+paragraphs. Saved before launch in `_scratch/s9b_build/preserved/S9b_repair_build_directive_amend11_r2.md`. Prompt:
+`_scratch/s9b_build/s9b_repair_build_directive_amend11_review_prompt_r2.md` (`6ac2be30…`).
+
+**Legs** (the text is Codex-written, so a fresh Claude agent and Grok, G1):
+- **Fresh Claude (opus): NEEDS REVISION, five findings.** Report: `_scratch/s9b_build/s9b_amend11_review_r2_claude.md`,
+  saved verbatim from the hand-back. Scripts and stdout: `_scratch/s9b_build/s9b_amend11_review_r2_claude_evidence/`.
+- **Grok: NEEDS REVISION, four findings.** Report: `_scratch/s9b_build/s9b_amend11_review_r2_grok.txt`. Script and
+  stdout: `_scratch/s9b_build/s9b_amend11_review_r2_grok_evidence/`.
+
+Both legs confirm what rounds 0 and 1 required:
+- disjoint domains no longer print zero;
+- a value equal on its domain no longer prints as a change;
+- K10's trace starts after the negation;
+- K11's residual and unreached tags cannot meet a knife's obligation;
+- no leakage.
+
+**Findings.**
+- **Both legs (Claude 1, Grok 3): identical worded conditions print zero when their translated predicates differ.**
+  Rule 1 prints zero for "the same condition on the same variables" (L289). Round 2 makes a worded condition a
+  predicate computed from each copy's own constructions (L325–326). Claude's K4a case: `WHOLE_DOMAIN_SAMEQ True`,
+  while "required derivatives exist" for `δ` is `False` on the baseline and `True` on the knifed copy. Grok's
+  classifier: carrier equality prints `ZERO`, and the translated predicates print `CHANGED`. This is a defect in
+  material round 2 added.
+- **Claude only:**
+  - 2: "unchanged" for a value that carries a domain has two readings, everywhere or on the common domain; the site
+    obligation's "differs" is undefined.
+  - 3: being "defined" has no test, so a regularized value could stand where an ordinary one diverges.
+  - 4: "its containing case" misses domains Wolfram attaches one level above the case.
+  - 5: the print obligation is unbounded across witness candidates.
+- **Grok only:**
+  - 1: the witness point leaves domain parameters such as `bFar` unassigned.
+  - 2: "the exterior half-line" is not one set (`(0,∞)` against `r > bFar`).
+  - 4: worded entries outside the listed tests have no shared predicate.
+
+**Disposition: held for the user.** This is the amendment's third round. The findings have gone from 3 to 2 to 9 as
+the text grew, and round 2's longest addition bred the defect both legs found. Each round has found new cases in a
+general rule for deciding whether any engine object changed. The review is past the point where the user asked to
+be consulted (2026-10-11), and the pattern points at the premise, not the wording. So I am putting the premise to the
+user before any fold.
+
+**Process.** The legs' guarded runs are under `_scratch/s11c/s9b-amend11-review-r2/` (Claude `claudeleg-*`). All
+completed. The Claude leg's guarded copy of the Wolfram engine reproduces the production transcript byte for byte.

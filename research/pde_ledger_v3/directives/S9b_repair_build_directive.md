@@ -66,10 +66,11 @@ profile are. A witness's point and profile are not a profile choice under item 1
 engines do not change in this round. Reviewed until clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend10_review_disposition.md`.
 
-**Amendment 11** (user and orchestrator, 2026-10-16), for the build's repair round 8 after review r7
-(`directives/_measurements/S9b_repair_build_r7_review_disposition.md`). Item 14 states where a value witness lies,
-when a condition holds at a point, and what the harness must show (the user's choice, 2026-10-16). Parts 2 and 3
-point at it. The engines do not change in this round. Reviewed until clear. Dispositions:
+**Amendment 11** (2026-10-16; orchestrator-drafted in rounds 0 and 1, Codex-written in round 2), for the build's
+repair round 8 after review r7 (`directives/_measurements/S9b_repair_build_r7_review_disposition.md`). Item 14
+governs the witness-domain tests, site parts and printing obligations under the user's choice of 2026-10-16.
+Parts 2 and 3 point at it. The engines do not change in this round. Review discipline: physics-bearing text,
+reviewed until clear by non-authors. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend11_review_disposition.md`.
 
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
@@ -289,10 +290,55 @@ comparator, the production runs and the record.
       including a condition carried inside a set or a quantifier. A part is changed when it differs from the
       baseline part at some point: for a value, a real point of its variables at which both values are defined and
       both attached domains hold; for a domain, a point where one condition holds and the other does not; and for a
-      part that carries a profile function, such a point under some admissible profile. A condition holds at a
-      point only where the harness shows that it holds there, whether it is stated as a formula or in words (such
-      as that the required derivatives exist). The spec's order counting is not such a condition: an admissible
-      profile need not meet it. If the two attached domains share no point, that shows nothing about the values.
+      part that carries a profile function, such a point under some admissible profile. The domains required for
+      a value witness include every domain attached to the value or its containing case in each copy, including
+      definition and applicability conditions. A condition that is itself the compared value is evaluated for its truth value;
+      it is not required to be true. For a domain difference, evaluate the two domains independently at the same
+      point, without assuming either. If the two attached domains share no point, that shows nothing about the
+      values. An empty common domain, an unusable candidate or an unsuccessful search is never evidence for zero.
+
+      **Testing a condition at a witness point.** In the harness's evaluation of each copy:
+      - First express worded and structured conditions as the mathematical predicates specified below, binding
+        the variables that range over a region. Then substitute the point's free variables and the witness's
+        whole profile functions into the condition and the object it qualifies. Include functions appearing in
+        the attached domains. Obtain derivatives from those functions. Preserve bound variables and their complete
+        ranges in integrals, limits, sets and quantifiers; a witness does not assign values to bound variables.
+      - For a formula, compute its truth after these substitutions. Evaluate inactive operations needed by that
+        formula, and reduce quantified statements and set-emptiness or membership statements as statements over
+        their full declared domains. This includes inactive quantifiers and empty-counterexample-set encodings
+        of universal statements. Testing whether the stored, unevaluated formula is literally `True` is not this
+        computation. Finite samples of bound variables do not decide a quantified statement.
+      - Translate the worded conditions into these tests on the specialised object. For "required derivatives
+        exist", compute the domain of existence of every derivative used by the object and whether that domain
+        contains its stated radial region. Existence means the defining real difference-quotient limits exist
+        and are finite, rather than just that a formal derivative can be printed. For "displayed improper
+        integrals converge", compute the ordinary one-sided improper limits and their existence and finiteness
+        predicates for the displayed integrals, at every singular endpoint, interior singularity and infinity.
+        A principal value or analytic continuation does not establish ordinary convergence. For "Abel inverse
+        exists on the exterior half-line", compute the domain on which that engine's constructed Abel inverse
+        is finite and real, including existence of its defining integrals, limits and derivatives, and whether
+        this domain contains the entire exterior half-line. For the reduction's regularity domain, derivative
+        existence and integral convergence are also tested throughout that half-line, not just at the witness
+        radius. Component conditions test membership in the stated connected positive region or identically-zero
+        open interval of the computed squared velocity. Zero-set joining and boundary conditions test the stated
+        one-sided limits for finiteness and matching, and the derivative-existence domains of the real velocity
+        and coordinate mass flux at the join. Compute these predicates from the chosen functions and that copy's
+        constructions; neither a word's presence nor profile admissibility alone discharges it.
+      - For a structured domain, form the conjunction of its condition entries, recursively, retaining explicit
+        logical connectives and case alternatives. Use the attachments belonging to the part and case being
+        tested, rather than conjoining domains of other cases. Function inventories identify the functions to
+        substitute; labels and provenance are metadata. Omit the spec's order counting from this truth test,
+        including counting embedded in a mixed worded entry. An admissible profile need not meet that counting.
+        Any other worded condition must have its mathematical predicate identified and printed; an untranslated
+        condition remains unresolved.
+      - Print the specialised predicates, the mathematical objects used to test the worded conditions, and the
+        CAS truth reductions. Use exact reductions or certified bounds that decide the predicate. A condition
+        holds only on a computed Boolean `True`, and does not hold only on a computed Boolean `False`. Any
+        remaining expression is unresolved. An unresolved required condition makes that candidate unusable as a
+        witness; it establishes neither zero nor a change. For a value witness both attached domains must hold,
+        as well as both values being defined; for a domain witness one condition must hold and the other must not.
+        Symbolic showings of a change obey the same domain and definedness rules.
+
       Two sets differ at an element that one contains and the other does
       not, so a point for a set gives values to its free variables and to that element. A statement that binds
       variables, such as a quantifier or a test of whether a set is empty, is compared as the statement it makes on
@@ -321,14 +367,25 @@ comparator, the production runs and the record.
       - for each knife whose construction the engine contains: if any of its site parts differs from its baseline
         part, at least one of its site parts prints as a change by rule 2.
 
-      A knife's site parts are the parts of the emitted objects whose computation uses the mutated construction,
-      including the object emitted at the construction site itself. They do not include the build-input digest,
-      which any edit of the source changes, or a part computed before the mutation enters. For K10 they are the
-      parts gated on the negated condition. For K11 they are the compact differences of the reached tags whose
-      computation the mutation enters, not the method's residual, and the method reaches at least one such tag.
+      Use one definition of site parts for all knives, applied to each engine's own computation: trace the result
+      of the replacement at the named construction site through every subsequent use as data or a condition.
+      A part is a site part when its computation uses that result, directly or through intervening constructions,
+      including a part emitted at the construction site. Trace values and attached domains separately. Membership
+      follows these uses even if the result later simplifies away; it does not depend on finding a difference.
+      Print the site-part inventory with each part's construction trace. Exclude the build-input digest, which
+      any source edit changes, and parts whose computation never uses the replacement's result.
 
-      A part that is not a site part of the knife and that differs may print undecided once the harness has looked
-      for a witness, even where the engine has shown it changed.
+      K10 uses this same definition starting from the gate after negation. Follow its uses in emitted conditions,
+      classifications and attached domains as well as in observable gating; membership is not limited to a gating
+      wrapper's outputs. An emission from the condition before negation is outside this trace. For K11, apply the
+      definition to the compact corrupted-versus-unmutated differences of reached tags under their printed
+      coverage. The method must reach at least one such site part. Its residual compares unmutated computations
+      and cannot satisfy the knife's site obligation; unreached tags cannot satisfy it either.
+
+      The numbered print rule binds at every site part. Away from the knife's site parts, rule 1 still binds;
+      after looking for a witness, a differing part may print undecided even if the engine has shown it changed.
+      This is the sole exception to rules 2 and 3. Every printed change, at a site or away from it, must satisfy
+      the definition of a changed part and carry its showing. Undecided supplies no claim of equality or change.
     - A knife whose construction an engine does not contain is reported, not invented. The engine itself contains
       no control with an expected outcome.
 

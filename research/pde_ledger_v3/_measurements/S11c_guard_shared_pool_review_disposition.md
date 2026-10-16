@@ -136,3 +136,35 @@ $ ls -d /var/projects/toy_physics*/scripts/s11c_guarded_run.py | wc -l
 
 **Route.** W1 is in round-0 material, not in what round 3 changed, so the round-3 author repairs it. Round 4 is
 scoped to that repair, with a fresh Claude agent and Grok.
+
+## Round 4 (scoped to W1)
+
+**The change, round 4.** The round-3 author (Codex, session `01a14268…`; note `r4_author_note.md`) repaired W1: the
+registry path is now `Path(pwd.getpwuid(os.getuid()).pw_dir) / '.local/state/s11c-guard/resource-pool'`. The
+docstring and `AGENTS.md` describe it. Packet: the same directory.
+- after: `r4_s11c_guarded_run_after.py`, sha256 `c747c266…`; `AGENTS.md` sha256 `f11a05e8…`;
+- diffs against `40dfecc9`: `r4_guard.diff` (`fbba0279…`) and `r4_AGENTS.diff` (`7920e08c…`);
+- `r4_repair_only.diff` (`23b860f6…`), the diff against round 3 (`ac5879d2`);
+- the author's workspace, `r4_author_workspace/`;
+- baseline `r4_baseline.sha256`;
+- prompt `r4_review_prompt.md`, sha256 `77fcdad6…`, scoped to W1 and to nothing else moving.
+
+**Legs (fresh).** The repair is Codex-written, so the legs are a fresh Claude agent and Grok.
+- Fresh Claude (opus), CLEAR. Report: `r4_review_claude.md`; evidence: `r4_claude_evidence/`.
+- Grok, CLEAR. Report: `r4_review_grok.txt`; evidence: `r4_grok_evidence/`.
+
+Both measured the registry path in real subprocesses, with `HOME` unset, empty, relative and moved, and with the
+XDG variables, the cwd and `PYTHONPATH` varied. The path was the same every time. Round 3's path, under the same
+variations, gave four (Claude) and seven (Grok) distinct paths: a FORM ablation of the repair. In both legs, two
+launchers with different environments shared one registry and refused jobs over budget. Both found the repair
+changed only the path, its import and the sentences that describe it. All 21 functions are unchanged from round 3
+(Grok, source and bytecode), and every round-3 property still holds (Claude, a differential run r3 vs r4).
+
+| # | Observation (leg) | Disposition |
+|---|---|---|
+| — | If an account's home field were empty, the path would be relative to the cwd. (Claude, outside the filter) | **NO CHANGE.** This account's entry is `/home/trevnorris`. |
+| — | A launcher in a sandbox with a private `/etc/passwd` or home would get its own registry. (Claude, outside the filter) | **NO CHANGE.** The docstring requires a host shell. No agent here runs the launcher that way. |
+
+**Clearance.** Nothing outstanding changes what the launcher admits, refuses or says it does. **ACCEPTED** at
+launcher sha256 `c747c266…` and `AGENTS.md` sha256 `f11a05e8…`. Installation follows X2, with launches stopped
+throughout (`_scratch/s9b_build/gen/guard_shared_install.sh`). Its record is appended below when it runs.

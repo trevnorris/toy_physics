@@ -6,7 +6,9 @@ cgroup limits cannot be verified. No scientific imports or automatic retries.
 Standing user policy: no wall-clock, worker or inactivity deadlines.
 The older runner remains frozen for existing source pins.
 Defaults remain 2 GiB and 32 tasks. Opt-in --pool jobs share one machine-wide
-registry and budget, across all pool names and all checkouts: the budget is
+registry and budget for the real user ID, across all pool names and all
+checkouts. The registry uses that user's account-database home, independent
+of $HOME, matching the scope of systemctl --user. The budget is
 MemTotal rounded down to whole GiB, and each job takes one logical CPU
 (distinct physical cores first, then their sibling threads). The machine is
 dedicated to this work (user, 2026-10-15), so there is no host-memory reserve,
@@ -48,6 +50,7 @@ from datetime import datetime, timezone
 import fcntl
 import json
 import os
+import pwd
 import re
 import resource
 from pathlib import Path
@@ -75,9 +78,9 @@ def physical_memory():
 
 POOL_MEMORY_MAX = physical_memory()
 POOL_MAX_JOBS = len(os.sched_getaffinity(0))
-# One registry for every checkout on this machine: the guarded-unit namespace is
-# machine-wide, so a per-checkout registry made other checkouts' jobs unaccounted.
-POOL_DIRECTORY = Path.home() / '.local/state/s11c-guard/resource-pool'
+# The guarded-unit namespace is per user ID, across every checkout. Resolve its
+# account-database home rather than $HOME, which launch environments can change.
+POOL_DIRECTORY = Path(pwd.getpwuid(os.getuid()).pw_dir) / '.local/state/s11c-guard/resource-pool'
 THREADS = ('OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS',
            'NUMEXPR_NUM_THREADS', 'VECLIB_MAXIMUM_THREADS', 'BLIS_NUM_THREADS')
 

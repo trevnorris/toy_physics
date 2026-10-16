@@ -45,7 +45,9 @@ how you work in the repository.
 - **No time limits** (user, 2026-09-30). Add no wall-clock, CPU-time or inactivity deadline unless the user asks
   for one for a specific run.
 - The machine is dedicated to this work; use all of it (user, 2026-10-15). There is no host-memory reserve. Pooled
-  jobs (`--pool`) share one machine-wide registry across every checkout. Each takes one logical CPU and keeps its own
+  jobs (`--pool`) share one machine-wide registry for the real user ID across every checkout, matching the scope of
+  `systemctl --user`. Its path uses that user's account-database home, independent of `$HOME`.
+  Each takes one logical CPU and keeps its own
   hard cap (`--memory-gib`, 1 GiB up to `MemTotal` rounded down to whole GiB). All available logical CPUs are used,
   choosing an idle physical core whenever one exists, then sibling threads. A job is admitted when the registry is
   clean, a CPU and job slot are free, the reserved caps plus its own fit within that budget, and both memory checks

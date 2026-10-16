@@ -44,9 +44,12 @@ how you work in the repository.
   After the 2026-09-20 host freeze (cause unconfirmed), ⛔ never fall back to an unguarded launch.
 - **No time limits** (user, 2026-09-30). Add no wall-clock, CPU-time or inactivity deadline unless the user asks
   for one for a specific run.
-- The machine is dedicated to this work; use all of it (user, 2026-10-15). Pooled jobs (`--pool`) share one
-  machine-wide budget equal to physical memory, across every checkout, with no host-memory reserve. Each job keeps
-  its own hard cap (`--memory-gib`), and jobs run in parallel whenever the available memory covers their caps.
+- The machine is dedicated to this work; use all of it (user, 2026-10-15). There is no host-memory reserve. Pooled
+  jobs (`--pool`) share one machine-wide registry across every checkout. Each takes one logical CPU and keeps its own
+  hard cap (`--memory-gib`, 1 GiB up to `MemTotal` rounded down to whole GiB). A job is admitted when the registry is
+  clean, a CPU is free, the reserved caps plus its own fit within that budget, and available memory covers its cap
+  plus the unused caps of jobs already admitted. Otherwise it is refused. A legacy (non-pooled) launch holds the
+  machine-wide admission lock for its whole run, so pooled launches wait until it ends.
 - At most two Wolfram kernels at once (two licence seats). No automatic retries, and no replaying completed jobs.
 - Don't poll the model while waiting.
 

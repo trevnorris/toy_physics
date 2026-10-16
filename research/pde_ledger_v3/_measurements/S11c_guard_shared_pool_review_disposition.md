@@ -40,3 +40,34 @@ or touched the live registry.
 
 **Route.** The orchestrator, as the author, repairs X1, X3, X4, X6 and X7. Round 1 follows, with fresh Codex and
 Grok legs. X2 is carried out at install time and recorded here.
+
+## Round 1
+
+**The change, round 1.** The round-0 change was repaired by its author, for X1, X3, X4, X6 and X7. Packet: the same
+directory.
+- after: `r1_s11c_guarded_run_after.py`, sha256 `c2c9ef01…`;
+- diffs: `r1_guard.diff` (`8179eea4…`), `r1_AGENTS.diff` (`541fd8d3…`), and `r1_repair_only.diff` (`66b8607a…`, the
+  diff against round 0, committed at `b9876bc3`);
+- baseline `r1_baseline.sha256`;
+- prompt `r1_review_prompt.md`, sha256 `b106429d…`: round 0's prompt plus these dispositions and checks on X1–X7.
+
+**Legs (fresh).**
+- Codex (gpt-6.1-sol, xhigh), NEEDS REVISION, four findings. Report: `r1_review_codex_final.txt`; evidence:
+  `r1_codex_evidence/`.
+- Grok, NEEDS REVISION, one finding. Report: `r1_review_grok.txt`; evidence: `r1_grok_evidence/` (scripts 01–04 and
+  their stdout).
+
+Both found X3, X4 and X6 now hold, the file-cache part of X1 holds, and the X5 reasoning is right. On X2, both found
+the switch-over procedure enough, provided launches stay stopped through the whole install and the empty-registry
+check. Both found these refusals intact: malformed, over-budget, duplicate-CPU, mismatched-limit and out-of-range
+file-cache records.
+
+| # | Finding (leg) | Disposition |
+|---|---|---|
+| Y1 | X1 is incomplete. Reclaimable slab is inside a unit's `memory.current` and also inside `MemAvailable`, but only the file LRU is subtracted. Grok's injected case admits caps 1 GiB past RAM; Codex's admits 3 GiB past. The committed guard refused both, because of its reserve. (Codex 1, Grok 1) | **ACCEPT.** This is the X1 property, not yet met. Required: the credited use excludes every part of a unit's memory that `MemAvailable` already counts. |
+| Y2 | Admission reads every live unit's memory, then `MemAvailable`. A worker that frees memory between the two reads has its earlier use credited while the freed memory is counted as available. Codex's trace admits 7 GiB past RAM. Reordering the reads alone does not close it. (Codex 2; present before, hidden by the reserve) | **ACCEPT.** Required: the credited use is a bound that cannot credit memory freed, or count memory allocated, between the samples. |
+| Y3 | "Distinct physical cores first" fails after releases. The CPU order is static and admission takes the first free entry, so once CPUs 7 and 6 are released CPU 7 is chosen beside its running sibling 3 while another core is idle. (Codex 3; introduced in round 0, when sibling threads were added) | **ACCEPT.** Required: a job is placed on an idle physical core whenever one exists. |
+| Y4 | The docstring and `AGENTS.md` say pooled launches wait while a legacy run holds the admission lock. A pooled launch from the legacy run's own checkout refuses at once, on that checkout's execution lock. (Codex 4) | **ACCEPT.** Required: the texts distinguish refusal in the same checkout from waiting in another. |
+
+**Route.** The author repairs Y1–Y4, and round 2 follows with fresh Codex and Grok legs. Y3 and Y4 are defects in this
+change's own repairs. If round 2 finds a defect in what round 2 changes, the author changes (G4).

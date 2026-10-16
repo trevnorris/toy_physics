@@ -6,12 +6,19 @@ cgroup limits cannot be verified. No scientific imports or automatic retries.
 Standing user policy: no wall-clock, worker or inactivity deadlines.
 The older runner remains frozen for existing source pins.
 Defaults remain 2 GiB and 32 tasks. Opt-in --pool jobs share one machine-wide
-budget equal to physical memory, across all pool names and all checkouts, with
-one logical CPU each (distinct physical cores first). The machine is dedicated
-to this work (user, 2026-10-15): there is no host-memory reserve; admission
-needs only that the memory actually available covers every admitted job's
-unused cap plus the new cap. Each job keeps its own hard memory cap. Legacy
-exclusive launches remain unchanged. Native threads remain one. No workload
+registry and budget, across all pool names and all checkouts: the budget is
+MemTotal rounded down to whole GiB, and each job takes one logical CPU
+(distinct physical cores first, then their sibling threads). The machine is
+dedicated to this work (user, 2026-10-15), so there is no host-memory reserve,
+for pooled or legacy launches. A pooled job is admitted only when the registry
+holds no stale, malformed or unaccounted record, a CPU and job slot are free,
+the reserved caps plus its own fit the budget, and available memory covers its
+cap plus every reserved job's unused cap; a live job's use is credited only
+for memory the kernel cannot reclaim from it, since its file cache is already
+counted as available. Each job keeps its own hard memory cap. A legacy
+exclusive launch keeps its 2/4 GiB profile and holds the machine-wide
+admission lock for its whole run, so pooled admissions from every checkout
+wait until it ends. Native threads remain one. No workload
 starts until actual cgroup memory, native address-space, inherited process
 affinity and duration enforcement is verified; pooled priority is desktop-managed.
 
@@ -153,6 +160,8 @@ def service_resources(unit):
     group = Path('/sys/fs/cgroup') / location.lstrip('/')
     actual = {name: (group / name).read_text().strip() for name in
               ('memory.max', 'memory.swap.max', 'memory.current', 'pids.max')}
+    stat = dict(line.split() for line in (group / 'memory.stat').read_text().splitlines())
+    actual['memory.stat.file_lru'] = int(stat['active_file']) + int(stat['inactive_file'])
     actual['systemd.CPUAffinity'] = info.get('CPUAffinity')
     return actual
 
@@ -197,7 +206,7 @@ def admission_plan(reservations, live, requested, cpus, available,
         cap = record['memoryMax']
         cpu = record['cpu']
         if (not isinstance(cap, int) or cap % (1024**3) or not 1024**3 <= cap <= POOL_MEMORY_MAX
-                or cpu in occupied or record.get('poolMemoryMax') != POOL_MEMORY_MAX
+                or type(cpu) is not int or cpu in occupied or record.get('poolMemoryMax') != POOL_MEMORY_MAX
                 or record.get('tasksMax') not in (32, 64)):
             raise RuntimeError('invalid or overlapping saved reservation')
         occupied.add(cpu)
@@ -209,9 +218,15 @@ def admission_plan(reservations, live, requested, cpus, available,
                     or actual['pids.max'] != str(record['tasksMax'])
                     or actual['systemd.CPUAffinity'] != str(cpu)):
                 raise RuntimeError('live service does not match reservation: ' + unit)
-            used = int(actual['memory.current'])
-            if used < 0 or used > cap:
+            current = int(actual['memory.current'])
+            if current < 0 or current > cap:
                 raise RuntimeError('live service memory accounting outside cap')
+            # File-LRU pages are reclaimable and already counted in available
+            # memory; credit only what the kernel cannot reclaim from the unit.
+            reclaimable = actual['memory.stat.file_lru']
+            if type(reclaimable) is not int or not 0 <= reclaimable <= current:
+                raise RuntimeError('live service file-cache accounting inconsistent')
+            used = current - reclaimable
         elif identity(record['owner']['pid']) != record['owner']:
             raise RuntimeError('unconfirmed stale reservation; explicit reconciliation required: ' + unit)
         headroom += cap - used
@@ -256,7 +271,8 @@ def release_pool(spec, directory=POOL_DIRECTORY):
             raise RuntimeError('service still active; reservation retained: ' + unit)
         records = read_reservations(directory)
         record = records.get(unit)
-        if record is None or record['owner'] != spec['owner']:
+        if (record is None or record['owner'] != spec['owner']
+                or record['owner'] != process_identity(os.getpid())):
             raise RuntimeError('reservation ownership mismatch; refusing release')
         del records[unit]
         write_reservations(directory, records)
@@ -400,6 +416,10 @@ def main():
     # Legacy and pooled launchers cannot overlap. A surviving service/reservation
     # also blocks a legacy launcher whose predecessor lost its lock.
     if not args.pool:
+        # Held from this check to the end of the run, so no pooled admission
+        # from any checkout can interleave with this launch or start beside it.
+        POOL_DIRECTORY.mkdir(parents=True, exist_ok=True)
+        admission = acquire_execution_lock(POOL_DIRECTORY / 'admission.lock')
         if active_units() or read_reservations(POOL_DIRECTORY):
             raise RuntimeError('another guarded service or reservation remains; refusing overlap')
     if available_memory() < AVAILABLE_MIN:

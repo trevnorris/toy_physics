@@ -289,13 +289,30 @@ comparator, the production runs and the record.
       is the gate after negation. For K11, the witness compares compact corrupted/unmutated parts of a reached tag
       whose computation the mutation enters, never the method's residual.
 
-      Enumerate all such values and domains recursively through payload containers and cases, treating each
-      mathematical expression or predicate as one part. Include engine-local tags and both item 9 density-sign
-      parts. Trace direct and transitive computational uses, and take the union of locations in the two copies
-      (the compact pair for K11), without filtering by structural marks. Print one witness, or **none found** only
-      after evaluating every site part in both copies at test inputs, with its attached conditions. For **none found**,
-      name each part tried by tag, payload location and value or domain, and print its inputs and the evaluations
-      actually performed.
+      Enumerate all such values and domains by mathematical object in both engines. Recurse through mappings'
+      keyed values; matrices', vectors' and lists' components; solution sets' represented branches and domains;
+      and cases' values and selectors. For equations, include the predicate and both sides. Keep other scalar
+      expressions and predicates whole. Identify locations by tag and mathematical key, component, side, solution
+      or case identity, never storage position in a sparse or reordered container. Include engine-local tags and
+      both item 9 density-sign parts. Trace direct and transitive computational uses, and take the union of
+      locations in the two copies (the compact pair for K11), without filtering by structural marks. Print the
+      site-part set and every excluded value/domain part with its reason.
+
+      For a part emitted by only one copy, evaluate that copy and its attached conditions; print **not emitted**
+      for the other. Use and print an absent entry's reading only if the engine defines it, with its computation;
+      supply no undefined value. Absence alone furnishes no witness; apply the witness tests below to any
+      engine-defined readings.
+
+      Count a part as tried only when its inputs, construction solutions, available values and attached conditions
+      meet the witness rules below, apart from establishing a difference. Decide values and conditions by the engine
+      CAS; substitution alone and unresolved evaluations do not count. Use no input choice that alone neutralizes
+      the mutation at its construction; print the CAS computation checking this. For each density-sign part,
+      compute and print the density at the trial inputs; count the trial only if it lies in that part in each
+      emitting copy, throughout any ranged radius.
+
+      Print one witness, or **none found** only after every site part counts as tried. For each attempt, print the
+      tag, location, value/domain role, inputs, performed evaluations or **not emitted**, whether it counts as tried,
+      and every unmet witness requirement.
 
       Attached conditions are the domains, gates and premises stating where the part holds, at every containing
       level, in object labels, and in its case selection. Ordered cases require earlier cases to fail, including
@@ -440,7 +457,7 @@ comparator, the production runs and the record.
 - **Repair round 7 (amendment 10).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Repair round 8 (amendment 11).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Repair round 9 (amendment 12).** Item 14 as amended holds for the harness. The engine is unchanged. Print
-  each software-check fixture's computed mark or value before the guard.
+  each software-check fixture's computed mark or value before that check can raise a failure.
 
 ## Part 3. Wolfram engine (blind)
 

@@ -1,0 +1,9 @@
+{
+  "standaloneFiles": [
+    "S9b_light_bending_mathematica_audit.wl"
+  ],
+  "streamsNonempty": true,
+  "streamsByteIdentical": true,
+  "baselineByteIdentical": true,
+  "productionOutStatus": ""
+}

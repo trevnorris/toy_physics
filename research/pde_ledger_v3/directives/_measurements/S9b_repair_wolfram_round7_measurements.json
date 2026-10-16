@@ -1,0 +1,478 @@
+{
+  "status": "BUILD_DEMONSTRATIONS_COMPLETE",
+  "initialRefusal": {
+    "status": "STOPPED_GUARD_ADMISSION_REFUSAL",
+    "command": "python scripts/s11c_guarded_run.py --pool s9b --memory-gib 16 --tasks-max 64 --log-directory _scratch/s11c/s9b-r7-comparison-dev1 -- math -script _scratch/s9b_wl_repair7/comparison_checks.wl",
+    "cwd": "/var/projects/toy_physics-s9b-r7-wl",
+    "exit_code": 1,
+    "literal_combined_output": "Traceback (most recent call last):\n  File \"/var/projects/toy_physics-s9b-r7-wl/scripts/s11c_guarded_run.py\", line 440, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/var/projects/toy_physics-s9b-r7-wl/scripts/s11c_guarded_run.py\", line 398, in main\n    reserve_pool(spec)\n  File \"/var/projects/toy_physics-s9b-r7-wl/scripts/s11c_guarded_run.py\", line 219, in reserve_pool\n    plan = admission_plan(records, live, spec['memoryMax'], pool_cpus(), available_memory())\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/var/projects/toy_physics-s9b-r7-wl/scripts/s11c_guarded_run.py\", line 171, in admission_plan\n    raise RuntimeError('unaccounted guarded service; refusing pooled overlap')\nRuntimeError: unaccounted guarded service; refusing pooled overlap\n",
+    "kernel_launched": false,
+    "full_harness_run": false,
+    "commits": [],
+    "sha256": {
+      "research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl": "2028badd3772d68d43659e06d6ebc6644843dd0fb77563fc6fff37255f241561",
+      "research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation.wl": "61de204f12b37d5a25f7a77316b46010852952972a5bd750572f13bc7b989d09",
+      "_scratch/s9b_wl_repair7/comparison_checks.wl": "91af91b6bdf6aa064d32e06d692e2a12e00e1b9711ec3464aac0e2ea28c72993"
+    }
+  },
+  "authorBugTerminations": [
+    {
+      "reason": "FindInstance::exvar and FindInstance::vlist in draft witness search; author bug, not a physics method failure",
+      "pids": [
+        479109
+      ],
+      "signal": "SIGTERM, then SIGKILL after kernel continued running"
+    },
+    {
+      "reason": "FindInstance::exvar from profile-name metadata; author comparator bug, not a physics-method failure",
+      "pids": [
+        485125
+      ],
+      "signal": "SIGKILL"
+    },
+    {
+      "reason": "unguarded singular arithmetic in a K6 witness candidate; no physics construction change",
+      "signal": "SIGKILL from local diagnostic supervisor",
+      "outcome": {
+        "exitCode": 137,
+        "wallSeconds": 3117.289644462988,
+        "unit": "s11c-guard-6fb019811fb5",
+        "stderrBytes": 119,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": -9,
+          "guardReason": null,
+          "wallSeconds": 3117.2263707380043,
+          "childPid": 490535
+        }
+      },
+      "authorStop": "kernel evaluation message: preserve diagnostics, stop erroneous computation, no automatic retry"
+    }
+  ],
+  "authorDiagnosticRuns": [
+    {
+      "name": "comparison-final2",
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics-s9b-r7-wl/scripts/s11c_guarded_run.py",
+        "--pool",
+        "s9b",
+        "--memory-gib",
+        "13",
+        "--tasks-max",
+        "64",
+        "--log-directory",
+        "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-comparison-final2",
+        "--",
+        "math",
+        "-script",
+        "/var/projects/toy_physics-s9b-r7-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation_checks.wl"
+      ],
+      "cwd": "/var/projects/toy_physics-s9b-r7-wl",
+      "log": "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-comparison-final2",
+      "exit": 0,
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 1.852149283979088,
+        "unit": "s11c-guard-0a27b3843015",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 1.7745522519689985,
+          "childPid": 479057
+        }
+      }
+    },
+    {
+      "name": "full-final",
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics-s9b-r7-wl/scripts/s11c_guarded_run.py",
+        "--pool",
+        "s9b",
+        "--memory-gib",
+        "13",
+        "--tasks-max",
+        "64",
+        "--log-directory",
+        "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-full-final",
+        "--",
+        "math",
+        "-script",
+        "/var/projects/toy_physics-s9b-r7-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation.wl"
+      ],
+      "cwd": "/var/projects/toy_physics-s9b-r7-wl",
+      "log": "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-full-final",
+      "exit": 137,
+      "outcome": {
+        "exitCode": 137,
+        "wallSeconds": 362.9915488479892,
+        "unit": "s11c-guard-21163ba07f4e",
+        "stderrBytes": 709,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": -9,
+          "guardReason": null,
+          "wallSeconds": 362.92488261597464,
+          "childPid": 479109
+        }
+      }
+    },
+    {
+      "name": "comparison-final2",
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics-s9b-r7-wl/scripts/s11c_guarded_run.py",
+        "--pool",
+        "s9b",
+        "--memory-gib",
+        "13",
+        "--tasks-max",
+        "64",
+        "--log-directory",
+        "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final2-comparison-final2",
+        "--",
+        "math",
+        "-script",
+        "/var/projects/toy_physics-s9b-r7-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation_checks.wl"
+      ],
+      "cwd": "/var/projects/toy_physics-s9b-r7-wl",
+      "log": "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final2-comparison-final2",
+      "exit": 0,
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 1.7918832330033183,
+        "unit": "s11c-guard-b963719e4dbc",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 1.718982379999943,
+          "childPid": 485072
+        }
+      }
+    },
+    {
+      "name": "full-final",
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics-s9b-r7-wl/scripts/s11c_guarded_run.py",
+        "--pool",
+        "s9b",
+        "--memory-gib",
+        "13",
+        "--tasks-max",
+        "64",
+        "--log-directory",
+        "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final2-full-final",
+        "--",
+        "math",
+        "-script",
+        "/var/projects/toy_physics-s9b-r7-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation.wl"
+      ],
+      "cwd": "/var/projects/toy_physics-s9b-r7-wl",
+      "log": "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final2-full-final",
+      "exit": 137,
+      "outcome": {
+        "exitCode": 137,
+        "wallSeconds": 278.6681232529809,
+        "unit": "s11c-guard-ca11c0d6e73e",
+        "stderrBytes": 596,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": -9,
+          "guardReason": null,
+          "wallSeconds": 278.60171154601267,
+          "childPid": 485125
+        }
+      }
+    },
+    {
+      "name": "comparison-final2",
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics-s9b-r7-wl/scripts/s11c_guarded_run.py",
+        "--pool",
+        "s9b",
+        "--memory-gib",
+        "13",
+        "--tasks-max",
+        "64",
+        "--log-directory",
+        "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final3-comparison-final2",
+        "--",
+        "math",
+        "-script",
+        "/var/projects/toy_physics-s9b-r7-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation_checks.wl"
+      ],
+      "cwd": "/var/projects/toy_physics-s9b-r7-wl",
+      "log": "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final3-comparison-final2",
+      "exit": 0,
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 1.837323336978443,
+        "unit": "s11c-guard-6116644b8432",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 1.7708880360005423,
+          "childPid": 490477
+        }
+      }
+    },
+    {
+      "name": "full-final",
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics-s9b-r7-wl/scripts/s11c_guarded_run.py",
+        "--pool",
+        "s9b",
+        "--memory-gib",
+        "13",
+        "--tasks-max",
+        "64",
+        "--log-directory",
+        "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final3-full-final",
+        "--",
+        "math",
+        "-script",
+        "/var/projects/toy_physics-s9b-r7-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation.wl"
+      ],
+      "cwd": "/var/projects/toy_physics-s9b-r7-wl",
+      "log": "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final3-full-final",
+      "exit": 137,
+      "outcome": {
+        "exitCode": 137,
+        "wallSeconds": 3117.289644462988,
+        "unit": "s11c-guard-6fb019811fb5",
+        "stderrBytes": 119,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": -9,
+          "guardReason": null,
+          "wallSeconds": 3117.2263707380043,
+          "childPid": 490535
+        }
+      }
+    }
+  ],
+  "finalRuns": [
+    {
+      "name": "comparison-final2",
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics-s9b-r7-wl/scripts/s11c_guarded_run.py",
+        "--pool",
+        "s9b",
+        "--memory-gib",
+        "13",
+        "--tasks-max",
+        "64",
+        "--log-directory",
+        "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final4-comparison-final2",
+        "--",
+        "math",
+        "-script",
+        "/var/projects/toy_physics-s9b-r7-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation_checks.wl"
+      ],
+      "cwd": "/var/projects/toy_physics-s9b-r7-wl",
+      "log": "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final4-comparison-final2",
+      "exit": 0,
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 2.2363789030350745,
+        "unit": "s11c-guard-57371f76d446",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 2.166152346006129,
+          "childPid": 516878
+        }
+      }
+    },
+    {
+      "name": "full-final",
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics-s9b-r7-wl/scripts/s11c_guarded_run.py",
+        "--pool",
+        "s9b",
+        "--memory-gib",
+        "13",
+        "--tasks-max",
+        "64",
+        "--log-directory",
+        "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final4-full-final",
+        "--",
+        "math",
+        "-script",
+        "/var/projects/toy_physics-s9b-r7-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation.wl"
+      ],
+      "cwd": "/var/projects/toy_physics-s9b-r7-wl",
+      "log": "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final4-full-final",
+      "exit": 0,
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 3883.652372639044,
+        "unit": "s11c-guard-8311e9aaa724",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 3883.5863135259715,
+          "childPid": 516932
+        }
+      }
+    },
+    {
+      "name": "engine-repository",
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics-s9b-r7-wl/scripts/s11c_guarded_run.py",
+        "--pool",
+        "s9b",
+        "--memory-gib",
+        "13",
+        "--tasks-max",
+        "64",
+        "--log-directory",
+        "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final4-engine-repository",
+        "--",
+        "math",
+        "-script",
+        "/var/projects/toy_physics-s9b-r7-wl/research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl"
+      ],
+      "cwd": "/var/projects/toy_physics-s9b-r7-wl",
+      "log": "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final4-engine-repository",
+      "exit": 0,
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 15.6935867019929,
+        "unit": "s11c-guard-3f9349ba979f",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 15.623570243013091,
+          "childPid": 548535
+        }
+      }
+    },
+    {
+      "name": "engine-standalone",
+      "command": [
+        "/usr/bin/python",
+        "/var/projects/toy_physics-s9b-r7-wl/scripts/s11c_guarded_run.py",
+        "--pool",
+        "s9b",
+        "--memory-gib",
+        "13",
+        "--tasks-max",
+        "64",
+        "--log-directory",
+        "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final4-engine-standalone",
+        "--",
+        "math",
+        "-script",
+        "/var/projects/toy_physics-s9b-r7-wl/_scratch/s9b_wl_repair7/standalone-final4/S9b_light_bending_mathematica_audit.wl"
+      ],
+      "cwd": "/var/projects/toy_physics-s9b-r7-wl/_scratch/s9b_wl_repair7/standalone-final4",
+      "log": "/var/projects/toy_physics-s9b-r7-wl/_scratch/s11c/s9b-r7-final4-engine-standalone",
+      "exit": 0,
+      "outcome": {
+        "exitCode": 0,
+        "wallSeconds": 15.793260288017336,
+        "unit": "s11c-guard-b85cdc77cffa",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 15.724126130982768,
+          "childPid": 549994
+        }
+      }
+    }
+  ],
+  "validation": {
+    "tags": 374,
+    "shared": 330,
+    "local": 44,
+    "missingShared": [],
+    "extraShared": [],
+    "localRegistryMatches": true,
+    "copyTagCounts": {
+      "K1": 374,
+      "K2": 374,
+      "K3": 374,
+      "K4a": 374,
+      "K4b": 374,
+      "K4c": 374,
+      "K5": 374,
+      "K6": 374,
+      "K7": 374,
+      "K8": 374,
+      "K9a": 374,
+      "K9b": 374,
+      "K10": 374
+    },
+    "copyTagSetsMatch": true,
+    "rowCounts": {
+      "K1": 374,
+      "K2": 374,
+      "K3": 374,
+      "K4a": 374,
+      "K4b": 374,
+      "K4c": 374,
+      "K5": 374,
+      "K6": 374,
+      "K7": 374,
+      "K8": 374,
+      "K9a": 374,
+      "K9b": 374,
+      "K10": 374,
+      "K11": 374,
+      "HARNESS_DEAD_PATH": 374
+    },
+    "changedRows": 164,
+    "undecidedRows": 1875,
+    "nonzeroRows": 1908,
+    "proofCounts": {
+      "changedLeaves": 546,
+      "undecidedLeaves": 11352,
+      "witnesses": 546,
+      "symbolicExistenceTrue": 219,
+      "unsuccessfulSearches": 11352
+    },
+    "notEstablishedTags": 271,
+    "k11Evaluated": 10,
+    "k11NotEvaluated": 364,
+    "issues": [],
+    "untaggedOutput": []
+  },
+  "executableChecks": {
+    "standaloneFiles": [
+      "S9b_light_bending_mathematica_audit.wl"
+    ],
+    "streamsNonempty": true,
+    "streamsByteIdentical": true,
+    "baselineByteIdentical": true,
+    "productionOutStatus": ""
+  },
+  "sourceHashes": {
+    "research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl": "2028badd3772d68d43659e06d6ebc6644843dd0fb77563fc6fff37255f241561",
+    "research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation.wl": "1f2861401e69e7118fc07c4f16e67bb9393d8cc5db9b36eadf767772b1dd165a",
+    "research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation_checks.wl": "bb2335de6d4e02e7297ac6d826e1b06c5b872c5ab00daee7cf9164a8398abda6",
+    "scripts/s11c_guarded_run.py": "c747c266e78ed519d3e31add8fffed85a0aafabc9e01528ffd3eb157f8f1dcdd"
+  },
+  "commits": []
+}

@@ -8,7 +8,7 @@ scope = Replace[Environment["S9B_ABLATION_SCOPE"], $Failed -> "ALL"];
 If[!MemberQ[{"ALL", "K11"}, scope], Quit[94]];
 root = Directory[];
 engine = FileNameJoin[{root, "research", "pde_ledger_v3", "mathematica", "S9b_light_bending_mathematica_audit.wl"}];
-work = FileNameJoin[{root, "_scratch", "s9b_wl_repair6", "ablation-final2"}];
+work = FileNameJoin[{root, "_scratch", "s9b_wl_repair7", "ablation-final4"}];
 If[!DirectoryQ[work], CreateDirectory[work, CreateIntermediateDirectories -> True]];
 source = Import[engine, "Text"];
 S9bHarness`progress = OpenWrite[FileNameJoin[{work, "progress.log"}]];
@@ -106,6 +106,8 @@ proofSimplify[z_] := Which[
 canonical[z_] := Module[{key = HoldComplete[z],result,head = Head[z]},
   If[KeyExistsQ[normalCache,key],Return[normalCache[key]]];
   result = Which[
+    !FreeQ[z, HoldPattern[Inactive[Integrate][0, ___]]],
+      canonical[z /. HoldPattern[Inactive[Integrate][0, ___]] -> 0],
     AtomQ[z] || StringQ[z] || head === Function || head === HoldForm || head === HoldComplete, z,
     AssociationQ[z], AssociationMap[canonical[z[#]] &,Keys[z]],
     ListQ[z], canonical /@ z,
@@ -119,18 +121,18 @@ canonical[z_] := Module[{key = HoldComplete[z],result,head = Head[z]},
   AssociateTo[normalCache,key -> result];result];
 zeroTree[z_Association] := If[And @@ (SameQ[#,0] & /@ Values[z]),0,z];
 zeroTree[z_List] := If[And @@ (SameQ[#,0] & /@ z),0,z];
-(* Amendment 9: equality is universal, change is existential. An unresolved
-   pointwise equality is NOT evidence that no difference can be established.
-   Exact real quantifier elimination proves existence on the common defined
-   domain. Unsupported functional/analytic formulas retain their COMPLETE
-   existential obligation and UNDECIDED status; no samples, term cutoffs,
-   profile substitutions, timed fallbacks, or independent-jet assumptions.
-   Real noninteger powers are tested on their nonnegative-base chart, which
-   suffices for a change witness; failure there is never proof of equality. *)
+(* Amendment 10: identity has priority over every evaluation. Exact
+   existential proofs are sufficient symbolic change proofs. Otherwise try
+   concrete exact points with a single fixed function for each radial profile;
+   failed or agreeing evaluations establish nothing. Bound variables are
+   alpha-renamed before point substitution. Sets are tested at an element,
+   but statements containing binders are evaluated on free variables only. *)
+profileHeads = {Global`deltaProfile,Global`velocityProfile,Global`xiProfile,
+  Global`fProfile,Global`rhoBr,Global`muPerp,Global`cGamma};
 changeCache = <||>;
 realAlgebraicQ[z_] := Which[
   NumberQ[z], TrueQ[Im[z] == 0],
-  Head[z] === Symbol, !NumericQ[z] && !MemberQ[{True,False,Reals,Complexes,Infinity,Indeterminate,Undefined},z],
+  Head[z] === Symbol, !NumericQ[z] && !MemberQ[profileHeads,z] && !MemberQ[{True,False,Reals,Complexes,Infinity,Indeterminate,Undefined},z],
   MemberQ[{Plus,Times},Head[z]], And @@ (realAlgebraicQ /@ List @@ z),
   Head[z] === Power, realAlgebraicQ[z[[1]]] && (IntegerQ[z[[2]]] || Head[z[[2]]] === Rational),
   True,False];
@@ -149,13 +151,18 @@ realChart[z_] := And @@ DeleteDuplicates[Cases[z,
 scalarVariables[z_] := DeleteDuplicates[Cases[z,q_Symbol /;
   !NumericQ[q] && !MemberQ[{True,False,Reals,Complexes,Infinity,Indeterminate,Undefined},q],{0,Infinity}]];
 existentialChange[a_,b_,logical_,context_,equality_] := Module[
-  {key=HoldComplete[a,b,logical,context],condition,chart,variables,obligation,result,supported,complete},
+  {key=HoldComplete[a,b,logical,context],condition,chart,variables,obligation,result,supported,complete,aa,bb,elements},
   If[KeyExistsQ[changeCache,key],Return[changeCache[key]]];
-  condition = $Assumptions && context && Which[
-    Head[a] === ImplicitRegion && Head[b] === ImplicitRegion && SameQ[a[[2]],b[[2]]],Xor[a[[1]],b[[1]]],
-    logical,Xor[a,b],SameQ[equality,False],True,True,a != b];
+  {aa,bb}=scoped /@ {a,b};
+  If[Head[aa]===ImplicitRegion && Head[bb]===ImplicitRegion && Length[aa[[2]]]===Length[bb[[2]]],
+    elements=Table[Unique["S9bHarness`element"],{Length[aa[[2]]]}];
+    aa=aa[[1]] /. Thread[aa[[2]]->elements];
+    bb=bb[[1]] /. Thread[bb[[2]]->elements]];
+  condition = comparisonAssumptions[a,b,context] && scoped[context] && Which[
+    logicalObjectQ[aa] && logicalObjectQ[bb],Xor[aa,bb],
+    SameQ[equality,False],True,True,aa != bb];
   supported = realFormulaQ[condition] &&
-    (logical || (Head[a] === ImplicitRegion && Head[b] === ImplicitRegion && SameQ[a[[2]],b[[2]]]) ||
+    (logical || (Head[a] === ImplicitRegion && Head[b] === ImplicitRegion && Length[a[[2]]]===Length[b[[2]]]) ||
       (StringQ[a] && StringQ[b]) || (realAlgebraicQ[a] && realAlgebraicQ[b]));
   (* A power inside a binder needs its definedness condition inside that
      binder. Leave that full obligation unresolved instead of moving it out. *)
@@ -166,19 +173,150 @@ existentialChange[a_,b_,logical_,context_,equality_] := Module[
      is sufficient for a witness, never for a global equality proof. *)
   complete = supported && FreeQ[{a,b,condition},Power[_,exponent_] /;
     !IntegerQ[exponent] || exponent < 0];
-  chart = If[supported,realChart[{a,b,condition}],True];
-  variables = scalarVariables[condition && chart];
+  chart = If[supported,realChart[{aa,bb,condition}],True];
+  variables = witnessVariables[condition && chart];
   obligation = With[{v=variables,c=condition && chart},Inactive[Exists][v,c]];
   result = If[supported,
     With[{v=variables,c=Activate[condition && chart,ForAll|Exists]},
-      If[v === {},c,Resolve[Exists[v,c],Reals]]],Missing["UNDECIDED"]];
+      If[v === {},Resolve[c,Reals],Resolve[Exists[v,c],Reals]]],Missing["UNDECIDED"]];
   result = <|"ExistenceCondition" -> obligation,"ExistenceResult" -> result,
     "Method" -> "exact real quantifier elimination on the common defined domain",
     "SupportedFormula" -> supported,"CompleteRealDecision" -> complete|>;
   AssociateTo[changeCache,key -> result];result];
+(* Capture-avoiding witness substitution. Fresh bound names are NEVER part
+   of a witness point. Integrals and quantifiers retain their whole domains. *)
+witnessCache = <||>; witnessEvaluationCache = <||>;
+scoped[z_] := Module[{h=Head[z],v,fresh,rules,args},
+  Which[
+    AtomQ[z],z,
+    MemberQ[{HoldForm,HoldComplete},h],z,
+    h===Function && Length[z]>=2 && (ListQ[First[z]] || Head[First[z]]===Symbol),
+      v=Flatten[{First[z]}];fresh=Table[Unique["S9bHarness`bound"],{Length[v]}];
+      rules=Thread[v->fresh];args=scoped /@ (Rest[List@@z] /. rules);
+      h@@Prepend[args,If[ListQ[First[z]],fresh,First[fresh]]],
+    MemberQ[{ForAll,Exists,Inactive[ForAll],Inactive[Exists]},h],
+      v=Flatten[{First[z]}]; fresh=Table[Unique["S9bHarness`bound"],{Length[v]}];
+      rules=Thread[v->fresh]; args=scoped /@ (Rest[List@@z] /. rules);
+      h@@Prepend[args,If[ListQ[First[z]],fresh,First[fresh]]],
+    h===Inactive[Integrate] && Length[z]===2 && ListQ[z[[2]]] && Length[z[[2]]]===3,
+      v=z[[2,1]]; fresh=Unique["S9bHarness`bound"];
+      Inactive[Integrate][scoped[z[[1]] /. v->fresh],
+        {fresh,scoped[z[[2,2]]],scoped[z[[2,3]]]}],
+    h===Inactive[Limit] && Head[z[[2]]]===Rule,
+      v=z[[2,1]]; fresh=Unique["S9bHarness`bound"];
+      Inactive[Limit][scoped[z[[1]] /. v->fresh],fresh->scoped[z[[2,2]]]],
+    h===ImplicitRegion,
+      v=z[[2]];fresh=Table[Unique["S9bHarness`bound"],{Length[v]}];
+      With[{c=scoped[z[[1]] /. Thread[v->fresh]],q=fresh},ImplicitRegion[c,q]],
+    AssociationQ[z],AssociationMap[scoped[z[#]]&,Keys[z]],
+    True,Map[scoped,z]]];
+witnessVariables[z_] := Select[scalarVariables[z],
+  !(Context[#]==="S9bHarness`" && StringStartsQ[SymbolName[#],"bound"]) &&
+  Context[#]=!="System`" && !MemberQ[profileHeads,#] &];
+comparisonAssumptions[a_,b_,context_] := Module[{variables,clauses},
+  variables=witnessVariables[scoped[{a,b,context}]];
+  clauses=If[Head[$Assumptions]===And,List@@$Assumptions,{$Assumptions}];
+  And@@Select[clauses,Complement[scalarVariables[#],variables]==={} &]];
+(* Four finite test configurations; no fitted jets or independent derivative
+   values. These entire rational functions are smooth on the real line.
+   They are witness-only and never enter an engine run or a baseline payload. *)
+witnessProfiles[index_] := Module[{d,v,x,f,rho},
+  {d,v,x,f,rho}=Switch[index,
+    1,{Function[{q},0],Function[{q},0],Function[{q},0],Function[{q},0],Function[{q},1]},
+    2,{Function[{q},1/(10(1+q^2))],Function[{q},1/(5(1+q^2))],
+       Function[{q},q/(10(1+q^2))],Function[{q},1/(3(1+q^2))],Function[{q},1+1/(1+q^2)]},
+    3,{Function[{q},-1/(5(1+q^2))],Function[{q},-1/(3(1+q^2))],
+       Function[{q},1/(7(1+q^2))],Function[{q},-2],Function[{q},2+q^2]},
+    4,{Function[{q},1/4],Function[{q},1/3],Function[{q},q/5],
+       Function[{q},-1],Function[{q},1+q^2]}];
+  {Global`deltaProfile->d,Global`velocityProfile->v,Global`xiProfile->x,
+    Global`fProfile->f,Global`rhoBr->rho,
+    Global`muPerp->Function[{q},Evaluate[4 rho[q](1+d[q])^2]],
+    Global`cGamma->Function[{q},Evaluate[2(1+d[q])]]}];
+witnessPoint[variables_,index_] := Map[Function[var,var->Switch[SymbolName[var],
+  "c0",2,"bFar",1,"b"|"bFixed"|"impact"|"impactRadar"|"rTurnFlyby"|"rTurnRadar",2,
+  "r"|"rr"|"rAnchor",3,"ZE",4,"ZR",5,"rho0"|"m"|"ell",1,
+  "n",2,"s",If[index==3,-1,2],_,{0,1,-1,2}[[index]]]],variables];
+(* Exact evaluation only. Rational integrals are attempted in full, with
+   their endpoints; unsupported analytic integrals stay inert. There is no
+   quadrature, endpoint cutoff, tolerance or numerical error estimate. *)
+exactWitnessEvaluation[z_] := Module[{key=HoldComplete[z],result,integrate},
+  If[KeyExistsQ[witnessEvaluationCache,key],Return[witnessEvaluationCache[key]]];
+  integrate[q_,{v_,lo_,hi_}] := Module[{t=Together[q]},
+    If[PolynomialQ[Numerator[t],v] && PolynomialQ[Denominator[t],v] &&
+       FreeQ[t, _Real] && FreeQ[{lo,hi},Indeterminate|Undefined|ComplexInfinity],
+      Integrate[t,{v,lo,hi},GenerateConditions->True,Assumptions->True],
+      Inactive[Integrate][q,{v,lo,hi}]]];
+  result=Check[
+  result=z /. HoldPattern[Inactive[Integrate][q_,range:{_,_,_}]] :> integrate[q,range];
+  result=result /. HoldPattern[Inactive[Integrate][0,___]]->0;
+  If[realFormulaQ[result],result=Resolve[Activate[result,ForAll|Exists],Reals]];
+  If[FreeQ[result,Inactive|Integrate|ForAll|Exists|ImplicitRegion] &&
+     (NumericQ[result] || logicalObjectQ[result]),result=FullSimplify[result,Assumptions->True]];
+  result,$Failed,{Power::infy,Infinity::indet,Integrate::idiv}];
+  If[result===$Failed,Return[$Failed]];
+  AssociateTo[witnessEvaluationCache,key->result];result];
+exactValueQ[z_] := MemberQ[{True,False},z] || StringQ[z] ||
+  (NumericQ[z] && Precision[z]===Infinity && FreeQ[z,Indeterminate|Undefined|DirectedInfinity]);
+(* Undefined arithmetic rejects that candidate only. Keep the candidate's
+   work local so a failed Check cannot leave a previously assigned witness.
+   Only mathematical singularity/divergence messages are caught; programming
+   errors remain visible. No result carrying such a message enters the cache. *)
+tryWitness[aa_,bb_,cc_,variables_,elements_,index_] := Module[
+  {profiles=witnessProfiles[index],point=witnessPoint[variables,index],
+   sa,sb,sc,condition,findCondition,instance,prepared,av,bv,cv,witness},
+  {sa,sb,sc}={aa,bb,cc}/.profiles;
+  condition=sc && If[logicalObjectQ[sa] && logicalObjectQ[sb],Xor[sa,sb],sa!=sb];
+  findCondition=condition && realChart[{sa,sb,sc}];
+  If[variables=!={} && !MemberQ[{True,False},findCondition] &&
+     realFormulaQ[findCondition] &&
+     Complement[scalarVariables[findCondition],variables]==={} &&
+     FreeQ[findCondition,_DirectedInfinity|Indeterminate|Undefined|_Real] &&
+     FreeQ[findCondition,
+      q_ /; MemberQ[{ForAll,Exists,Inactive[ForAll],Inactive[Exists]},Head[q]]],
+    instance=FindInstance[findCondition,variables,Reals,1];
+    If[ListQ[instance] && Length[instance]>0,point=Join[First[instance],
+      Select[point,!MemberQ[First/@First[instance],First[#]]&]]]];
+  prepared={sa,sb,sc}/.point;
+  cv=exactWitnessEvaluation[prepared[[3]]];
+  If[TrueQ[cv],
+    av=exactWitnessEvaluation[prepared[[1]]];bv=exactWitnessEvaluation[prepared[[2]]];
+    If[exactValueQ[av] && exactValueQ[bv] &&
+        TrueQ[If[MemberQ[{True,False},av] && MemberQ[{True,False},bv],Xor[av,bv],
+          If[StringQ[av] && StringQ[bv],av=!=bv,FullSimplify[av!=bv]]]],
+      witness=<|"Point"->Select[point,!MemberQ[elements,First[#]]&],
+        "SetElement"->(elements/.point),"Profiles"->profiles,
+        "CorruptedEvaluation"->av,"BaselineEvaluation"->bv,"CommonDomainEvaluation"->cv,
+        "Arithmetic"->"exact","ErrorBound"->0,
+        "Admissibility"->"fixed rational radial functions, smooth on the real line; all derivatives obtained from those functions"|>;
+      Return[<|"Witness"->witness,"Attempt"-><|"Configuration"->index,"Result"->"witness"|>|>]]];
+  <|"Witness"->Missing["NO_WITNESS_FOUND"],"Attempt"-><|"Configuration"->index,
+    "Point"->point,"CommonDomainEvaluation"->cv,"Result"->"no certified difference"|>|>];
+witnessSearch[a_,b_,logical_,context_] := Module[
+  {key=HoldComplete[a,b,logical,context],aa,bb,cc,variables,
+   attempts={},record,result,elements={},candidate},
+  If[KeyExistsQ[witnessCache,key],Return[witnessCache[key]]];
+  {aa,bb,cc}=scoped /@ {a,b,comparisonAssumptions[a,b,context] && context};
+  If[Head[aa]===ImplicitRegion && Head[bb]===ImplicitRegion && Length[aa[[2]]]===Length[bb[[2]]],
+    elements=Table[Unique["S9bHarness`element"],{Length[aa[[2]]]}];
+    aa=aa[[1]] /. Thread[aa[[2]]->elements];
+    bb=bb[[1]] /. Thread[bb[[2]]->elements]];
+  variables=witnessVariables[{aa,bb,cc}];
+  result=Missing["NO_WITNESS_FOUND"];
+  Do[
+    candidate=Quiet[Check[tryWitness[aa,bb,cc,variables,elements,index],
+      $Failed,{Power::infy,Infinity::indet,Integrate::idiv}],{Power::infy,Infinity::indet,Integrate::idiv}];
+    If[candidate===$Failed,
+      AppendTo[attempts,<|"Configuration"->index,
+        "Result"->"undefined candidate arithmetic or divergent integral"|>],
+      AppendTo[attempts,candidate["Attempt"]];
+      If[AssociationQ[candidate["Witness"]],result=candidate["Witness"];Break[]]],{index,4}];
+  record=<|"Witness"->result,"Attempts"->attempts,
+    "Search"->"four fixed smooth profile configurations and exact scalar points; algebraic FindInstance where supported"|>;
+  AssociateTo[witnessCache,key->record];record];
 valueContext[paths_,path_] := And @@ Cases[paths,{anchor_,condition_} /;
   Length[anchor] <= Length[path] && Take[path,Length[anchor]] === anchor :> condition];
-leafDifference[a_,b_,asPredicate_:False,context_:True] := Module[{na,nb,logical,proof,residual,change},
+leafDifference[a_,b_,asPredicate_:False,context_:True] := Module[{na,nb,logical,proof,residual,change,search},
   na = canonical[a]; nb = canonical[b];
   If[SameQ[na,nb],Return[0]];
   logical = (logicalObjectQ[na] && logicalObjectQ[nb]) ||
@@ -188,10 +326,11 @@ leafDifference[a_,b_,asPredicate_:False,context_:True] := Module[{na,nb,logical,
   If[TrueQ[proof],Return[0]];
   change = existentialChange[na,nb,logical,context,proof];
   If[TrueQ[change["CompleteRealDecision"]] && SameQ[change["ExistenceResult"],False],Return[0]];
+  search = witnessSearch[a,b,logical,context];
   residual = If[logical,Boole[a]-Boole[b],
     If[NumericQ[a] && NumericQ[b],a-b,Inactive[Subtract][a,b]]];
-  <|"Status" -> If[TrueQ[change["ExistenceResult"]],"CHANGED","UNDECIDED"],
-    "Equality" -> proof,"ChangeProof" -> change,
+  <|"Status" -> If[TrueQ[change["ExistenceResult"]] || AssociationQ[search["Witness"]],"CHANGED","UNDECIDED"],
+    "Equality" -> proof,"ChangeProof" -> change,"WitnessSearch" -> search,
     "Residual" -> residual,"Corrupted" -> a,"Baseline" -> b|>];
 partDifference[a_,b_,path_:{},paths_:{}] := Which[
   SameQ[a,b],0,
@@ -215,7 +354,7 @@ difference[a_,b_] := Module[{partsA = splitPayload[a],partsB = splitPayload[b]},
     "DomainDifference" -> domainDifference[partsA["Domain"],partsB["Domain"]]|>];
 (* END_DOMAIN_DIFFERENCE_METHOD *)
 run[path_, name_] := Module[{capture, result},
-  ClearSystemCache[]; S9bHarness`normalCache = <||>; S9bHarness`changeCache = <||>; note["engine begin", name];
+  ClearSystemCache[]; S9bHarness`normalCache = <||>; S9bHarness`changeCache = <||>; S9bHarness`witnessCache = <||>; S9bHarness`witnessEvaluationCache = <||>; note["engine begin", name];
   capture = OpenWrite[FileNameJoin[{work, name <> ".stdout"}]];
   Block[{$Context = "Global`", $ContextPath = {"Global`", "System`"}, $Output = {capture}}, Get[path]];
   Close[capture]; result = Global`emitted; note["engine end", name]; result];

@@ -1,0 +1,246 @@
+[
+  {
+    "name": "comparison-final2",
+    "outcome": {
+      "exitCode": 0,
+      "wallSeconds": 2.2363789030350745,
+      "unit": "s11c-guard-57371f76d446",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 2.166152346006129,
+        "childPid": 516878
+      }
+    },
+    "maxMemoryCurrent": 153210880,
+    "memoryPeak": 153473024,
+    "maxTasksSampled": 23,
+    "maxSwapCurrent": 0,
+    "captureGrewWhileKernelAlive": true,
+    "growthEvidenceEndpoints": [
+      {
+        "bytes": 0,
+        "kernelPids": [
+          516878
+        ],
+        "time": 279338.278622351
+      },
+      {
+        "bytes": 32634,
+        "kernelPids": [
+          516878
+        ],
+        "time": 279339.780044852
+      }
+    ],
+    "limits": {
+      "memory.max": "13958643712",
+      "memory.swap.max": "0",
+      "pids.max": "64",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-57371f76d446.service",
+      "nice": 0,
+      "affinity": [
+        6
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "nativeAddressSpaceBytes": [
+        13958643712,
+        13958643712
+      ],
+      "systemd.CPUAffinity": "6",
+      "affinityEnforcement": "systemd-and-inherited-process"
+    }
+  },
+  {
+    "name": "full-final",
+    "outcome": {
+      "exitCode": 0,
+      "wallSeconds": 3883.652372639044,
+      "unit": "s11c-guard-8311e9aaa724",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 3883.5863135259715,
+        "childPid": 516932
+      }
+    },
+    "maxMemoryCurrent": 4691382272,
+    "memoryPeak": 4692692992,
+    "maxTasksSampled": 32,
+    "maxSwapCurrent": 0,
+    "captureGrewWhileKernelAlive": true,
+    "growthEvidenceEndpoints": [
+      {
+        "bytes": 0,
+        "kernelPids": [
+          516932
+        ],
+        "time": 279340.595795398
+      },
+      {
+        "bytes": 1250390425,
+        "kernelPids": [
+          516932
+        ],
+        "time": 283223.164297485
+      }
+    ],
+    "limits": {
+      "memory.max": "13958643712",
+      "memory.swap.max": "0",
+      "pids.max": "64",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-8311e9aaa724.service",
+      "nice": 0,
+      "affinity": [
+        6
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "nativeAddressSpaceBytes": [
+        13958643712,
+        13958643712
+      ],
+      "systemd.CPUAffinity": "6",
+      "affinityEnforcement": "systemd-and-inherited-process"
+    }
+  },
+  {
+    "name": "engine-repository",
+    "outcome": {
+      "exitCode": 0,
+      "wallSeconds": 15.6935867019929,
+      "unit": "s11c-guard-3f9349ba979f",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 15.623570243013091,
+        "childPid": 548535
+      }
+    },
+    "maxMemoryCurrent": 386183168,
+    "memoryPeak": 412303360,
+    "maxTasksSampled": 24,
+    "maxSwapCurrent": 0,
+    "captureGrewWhileKernelAlive": true,
+    "growthEvidenceEndpoints": [
+      {
+        "bytes": 0,
+        "kernelPids": [
+          548535
+        ],
+        "time": 283224.334592078
+      },
+      {
+        "bytes": 8027039,
+        "kernelPids": [
+          548535
+        ],
+        "time": 283239.348534907
+      }
+    ],
+    "limits": {
+      "memory.max": "13958643712",
+      "memory.swap.max": "0",
+      "pids.max": "64",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-3f9349ba979f.service",
+      "nice": 0,
+      "affinity": [
+        7
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "nativeAddressSpaceBytes": [
+        13958643712,
+        13958643712
+      ],
+      "systemd.CPUAffinity": "7",
+      "affinityEnforcement": "systemd-and-inherited-process"
+    }
+  },
+  {
+    "name": "engine-standalone",
+    "outcome": {
+      "exitCode": 0,
+      "wallSeconds": 15.793260288017336,
+      "unit": "s11c-guard-b85cdc77cffa",
+      "stderrBytes": 0,
+      "limitsVerified": true,
+      "childOutcome": {
+        "exitCode": 0,
+        "guardReason": null,
+        "wallSeconds": 15.724126130982768,
+        "childPid": 549994
+      }
+    },
+    "maxMemoryCurrent": 386539520,
+    "memoryPeak": 412266496,
+    "maxTasksSampled": 24,
+    "maxSwapCurrent": 0,
+    "captureGrewWhileKernelAlive": true,
+    "growthEvidenceEndpoints": [
+      {
+        "bytes": 0,
+        "kernelPids": [
+          549994
+        ],
+        "time": 283240.118642428
+      },
+      {
+        "bytes": 8027039,
+        "kernelPids": [
+          549994
+        ],
+        "time": 283255.131439818
+      }
+    ],
+    "limits": {
+      "memory.max": "13958643712",
+      "memory.swap.max": "0",
+      "pids.max": "64",
+      "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-b85cdc77cffa.service",
+      "nice": 0,
+      "affinity": [
+        7
+      ],
+      "threads": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1",
+        "BLIS_NUM_THREADS": "1"
+      },
+      "nativeAddressSpaceBytes": [
+        13958643712,
+        13958643712
+      ],
+      "systemd.CPUAffinity": "7",
+      "affinityEnforcement": "systemd-and-inherited-process"
+    }
+  }
+]

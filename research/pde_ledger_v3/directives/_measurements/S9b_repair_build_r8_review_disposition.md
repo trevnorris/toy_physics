@@ -119,3 +119,16 @@ The repair is round 9 for the Wolfram harness. It is a compliance repair under t
 same builder session continues; this is its first repair. The SymPy build is unchanged unless the user's decision
 on K7 and K10 calls for more. The next review checks the repaired Wolfram harness against this round's required
 outcome, against item 14 and against the user's decision. It also confirms that nothing else moved.
+
+## The user's decision (2026-10-16, 22:00 UTC)
+
+The user chose through the question tool; the option texts are mine. Question: "How should we handle a knife whose
+genuine search finds no witness?" Chosen: "Search more parts (Recommended)", whose description reads: "Keeps your
+bar. A short amendment to item 14: a 'none found' only counts after every part the knife reaches has been tried.
+Reviewed until clear, then both harnesses are rebuilt (the SymPy run alone is about 5 h) and reviewed again. Roughly
+10–12 h before the harness can be accepted." The other option was to accept an honest "none found" and record the
+knife as not shown.
+
+So amendment 12 changes item 14's search rule, and repair round 9 rebuilds both harnesses to it. Finding 2 is folded
+in that SymPy rebuild, as carried above. The Wolfram compliance repair for Finding 1 started before this decision;
+it continues within repair round 9.

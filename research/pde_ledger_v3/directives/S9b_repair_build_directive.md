@@ -69,6 +69,9 @@ clear. Dispositions:
 search per knife, and print every reading choice behind each witness (the user's choices of 2026-10-16). Keep
 the engines unchanged.
 
+**Amendment 12** (Codex author, 2026-10-16), for repair round 9. Item 14's search rule now covers every site
+part before **none found**. Part 2 also adds fixture marks or values before software-check guards.
+
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
 only. **Part D is held** (user decision, 2026-10-08) until the brane-material premise behind P1 is settled. This build
 constructs and prints no Part D object. That narrows D7 item 3, which listed Part D. Not in this build: the
@@ -279,12 +282,20 @@ comparator, the production runs and the record.
       comparison, with no evaluation, simplification or canonicalization first. Approximate numbers must be exactly
       equal; their printing preserves every distinction. Otherwise mark it **not compared**. Marks claim only
       structural identity; any claim of change requires a witness. Claim no mathematical equality. Print no verdict.
-    - For each knife whose construction the engine contains, look for one witness. Print it, or print **none found**
-      and what was tried. A witness names a site part: a value or domain of an emitted payload whose computation
+    - For each knife whose construction the engine contains, look for one witness among its site parts.
+      A witness names a site part: a value or domain of an emitted payload whose computation
       uses the mutated construction's result, with its payload location and the source location where that result
       enters. Exclude the build-input digest and parts computed before the mutation enters. For K10, the result
       is the gate after negation. For K11, the witness compares compact corrupted/unmutated parts of a reached tag
       whose computation the mutation enters, never the method's residual.
+
+      Enumerate all such values and domains recursively through payload containers and cases, treating each
+      mathematical expression or predicate as one part. Include engine-local tags and both item 9 density-sign
+      parts. Trace direct and transitive computational uses, and take the union of locations in the two copies
+      (the compact pair for K11), without filtering by structural marks. Print one witness, or **none found** only
+      after evaluating every site part in both copies at test inputs, with its attached conditions. For **none found**,
+      name each part tried by tag, payload location and value or domain, and print its inputs and the evaluations
+      actually performed.
 
       Attached conditions are the domains, gates and premises stating where the part holds, at every containing
       level, in object labels, and in its case selection. Ordered cases require earlier cases to fail, including
@@ -428,6 +439,8 @@ comparator, the production runs and the record.
 - **Repair round 6 (amendment 9).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Repair round 7 (amendment 10).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Repair round 8 (amendment 11).** Item 14 as amended holds for the harness. The engine is unchanged.
+- **Repair round 9 (amendment 12).** Item 14 as amended holds for the harness. The engine is unchanged. Print
+  each software-check fixture's computed mark or value before the guard.
 
 ## Part 3. Wolfram engine (blind)
 
@@ -451,6 +464,7 @@ comparator, the production runs and the record.
 - **Repair round 6 (amendment 9).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Repair round 7 (amendment 10).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Repair round 8 (amendment 11).** Item 14 as amended holds for the harness. The engine is unchanged.
+- **Repair round 9 (amendment 12).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Executable checks, with no expected values:**
   1. Copy the finished `.wl` alone into an empty scratch directory. Run it there and in the repository. Both runs
      exit 0, and their streams are non-empty and byte-identical. Afterwards the scratch directory holds only the

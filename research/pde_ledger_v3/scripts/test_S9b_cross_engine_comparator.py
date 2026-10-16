@@ -101,9 +101,14 @@ class Controls(unittest.TestCase):
                 altered=tuple(replace(r,wl=other.wl) if r==row else replace(r,wl=row.wl) if r==other else r for r in c.NAME_TABLE)
                 py=function(row.py,'Integer(7)') if row.kind=='profile' else f'Add(Integer(7),{symbol(row.py)})'
                 wl=f'{row.wl}[7]' if row.kind=='profile' else f'7+{row.wl}'
+                channel='numeric_value' if row.kind=='profile' else 'symbolic_difference'
+                disabled={'unresolved':'disabled'} if row.kind=='profile' else c.sp.S.Zero
+                if row.kind=='label':
+                    py,wl=py_parts('Integer(7)'),wl_parts('7')
+                    channel,disabled='text_comparison',None
                 before=self.fixture(py,wl)[0]; after=self.fixture(py,wl,names=altered)[0]
-                self.assertNotEqual(products(before),products(after),'repoint must move computed residual')
-                with patch.object(c,'numeric_value' if row.kind=='profile' else 'symbolic_difference',return_value={'unresolved':'disabled'} if row.kind=='profile' else c.sp.S.Zero):
+                self.assertNotEqual(products(before),products(after),'repoint must move computed residual or label comparison')
+                with patch.object(c,channel,return_value=disabled):
                     with self.assertRaises(AssertionError):
                         self.assertNotEqual(products(self.fixture(py,wl)[0]),products(self.fixture(py,wl,names=altered)[0]))
 
@@ -125,6 +130,72 @@ class Controls(unittest.TestCase):
 
     def test_density_labels_swapped(self):
         self.mutation(py_parts('Integer(7)'),wl_parts('7'),wl_parts('7',labels=('rho <= 0','rho > 0')),channel='text_comparison')
+
+    def test_density_label_bindings_keep_both_emitted_strings(self):
+        def labels(node):
+            if isinstance(node,dict):
+                if node.get('outcome')=='label': yield node
+                else:
+                    for value in node.values(): yield from labels(value)
+            elif isinstance(node,list):
+                for value in node: yield from labels(value)
+        rows=[r for r in c.NAME_TABLE if r.kind=='label']
+        self.assertEqual(len(rows),2)
+        for swapped in (False,True):
+            names=tuple(replace(r,wl=next(s.wl for s in rows if s!=r)) if swapped and r.kind=='label' else r for r in c.NAME_TABLE)
+            result,_,records=self.fixture(py_parts('Integer(7)'),wl_parts('7'),names=names)
+            self.assertEqual({(r['py_text'],r['wl_text']) for r in labels(result)},
+                             {('RHO_POSITIVE','rho > 0'),('RHO_NONPOSITIVE','rho <= 0')})
+            printed=next(r['name_table'] for r in records if r['kind']=='configuration')
+            self.assertEqual([r for r in printed if r['kind']=='label'],[c.asdict(r) for r in names if r.kind=='label'])
+
+    def test_brane_density_derivative_corruption_moves_formed_residual(self):
+        # The reported corruption is invisible when rho=1+a/r. Use a native
+        # derivative leaf, not an echoed profile formula or a production file.
+        py='Derivative(Function("rho_br_profile")(Symbol("s9b_r")),Tuple(Symbol("s9b_r"),Integer(1)))'
+        wl='Derivative[1][rhoBr][r]'
+        changed='(1-rhoBr[r])/r'
+        def check():
+            before=self.fixture(py,wl); after=self.fixture(py,changed)
+            self.assertEqual([r['py'] for r in before[2] if r['kind']=='operands'],
+                             [r['py'] for r in after[2] if r['kind']=='operands'])
+            select=lambda result:{r['configuration']:r for r in result[0][0]['samples']
+                                  if r['profile'] in ('inverse','shifted','exponential')}
+            a,b=select(before),select(after)
+            self.assertTrue(a and a.keys()==b.keys())
+            self.assertTrue(all(r['comparison']['coverage']=='residual formed' for rows in (a,b) for r in rows.values()))
+            self.assertTrue(any(a[k]['residual']['computed_30']!=b[k]['residual']['computed_30'] for k in a),
+                            'rho derivative corruption must move a formed residual under a generic admissible profile')
+        check()
+        original=c.profile_formulas
+        def fixed_density(family,point):
+            x,forms=original(family,point)
+            return x,dict(forms,rho_br_profile=1+1/(13*x))
+        with patch.object(c,'profile_formulas',side_effect=fixed_density):
+            with self.assertRaises(AssertionError): check()
+        with patch.object(c,'numeric_value',return_value={'unresolved':'disabled'}):
+            with self.assertRaises(AssertionError): check()
+
+    def test_every_live_profile_has_distinct_functional_forms(self):
+        # Ratios at two distinct arguments remove pure rescaling. A fixed
+        # opposite operand turns the sampled shapes into computed residuals.
+        original=c.profile_formulas
+        for binding in (r for r in c.NAME_TABLE if r.kind=='profile'):
+            with self.subTest(profile=binding.py):
+                py=f'Mul({function(binding.py,symbol("s9b_r"))},Pow({function(binding.py,symbol("b"))},Integer(-1)))'
+                def check():
+                    result=self.fixture(py,'7')[0][0]
+                    selected=[r for r in result['samples'] if r['configuration'] in
+                              ('p0/inverse','p0/shifted','p0/exponential')]
+                    self.assertEqual(len(selected),3)
+                    self.assertTrue(all(r['comparison']['coverage']=='residual formed' for r in selected))
+                    self.assertEqual(len({r['residual']['computed_30'] for r in selected}),3,
+                                     'each live profile must have different sampled shapes, not just amplitudes')
+                check()
+                with patch.object(c,'profile_formulas',side_effect=lambda family,point:original('inverse',point)):
+                    with self.assertRaises(AssertionError): check()
+                with patch.object(c,'numeric_value',return_value={'unresolved':'disabled'}):
+                    with self.assertRaises(AssertionError): check()
 
     def test_marker_changed(self):
         self.mutation(py_gate('Integer(7)'),wl_gate('7'),wl_gate('7',outside='UNAVAILABLE'),channel='text_comparison')
@@ -244,6 +315,41 @@ class Controls(unittest.TestCase):
         c.numerical_expression(a,18)
         self.assertEqual(c.numerical_integral.cache_info().misses,after.misses+1)
 
+    def test_leaf_cache_distinguishes_both_operands(self):
+        # Both rows share one Comparator. The first primes the leaf cache;
+        # the later row changes only one operand, in each direction in turn.
+        for role in ('value','domain'):
+            if role=='value':
+                py,wl='Add(Symbol("GM"),Integer(7))','GM+7'
+                changed_py,changed_wl='Add(Symbol("GM"),Integer(11))','GM+11'
+            else:
+                py=py_gate('Integer(7)','StrictGreaterThan(Symbol("GM"),Integer(0))')
+                wl=wl_gate('7','GM>0')
+                changed_py=py_gate('Integer(7)','GreaterThan(Symbol("GM"),Integer(0))')
+                changed_wl=wl_gate('7','GM>=0')
+            for side in ('py','wl'):
+                with self.subTest(role=role,changed_operand=side):
+                    def check():
+                        def paired(p,w):
+                            return self.fixture(py,wl,joins=('SYNTHETIC','ZZ_SECOND'),
+                                suffix_py=f'PY_S9B_ZZ_SECOND: {p}\n',
+                                suffix_wl=f'WL_S9B_ZZ_SECOND: {w}\n')
+                        before=paired(py,wl)
+                        after=paired(changed_py if side=='py' else py,changed_wl if side=='wl' else wl)
+                        opposite='wl' if side=='py' else 'py'
+                        self.assertEqual([r[opposite] for r in before[2] if r['kind']=='operands'],
+                                         [r[opposite] for r in after[2] if r['kind']=='operands'])
+                        self.assertEqual(products(before[0][0]),products(after[0][0]))
+                        self.assertNotEqual(products(before[0][1]),products(after[0][1]),
+                                            'cached result must not substitute for a different operand pair')
+                    check()
+                    narrowed=(lambda left,right,kind:(right,kind)) if side=='py' else (lambda left,right,kind:(left,kind))
+                    with patch.object(c,'leaf_cache_key',side_effect=narrowed):
+                        with self.assertRaises(AssertionError): check()
+                    with patch.object(c,'symbolic_difference' if role=='value' else 'numeric_value',
+                                      return_value=c.sp.S.Zero if role=='value' else {'unresolved':'disabled'}):
+                        with self.assertRaises(AssertionError): check()
+
     def test_zero_profile_derivatives_at_distinct_arguments(self):
         py='Mul(Subs(Derivative(Function("s9b_xi")(Symbol("u")),Tuple(Symbol("u"),Integer(1))),Tuple(Symbol("u")),Tuple(Symbol("s9b_r"))),Subs(Derivative(Function("s9b_V")(Symbol("v")),Tuple(Symbol("v"),Integer(1))),Tuple(Symbol("v")),Tuple(Symbol("b"))))'
         wl='Derivative[1][xiProfile][r]*Derivative[1][velocityProfile][b]'
@@ -339,6 +445,37 @@ class Controls(unittest.TestCase):
             check()
             with patch.object(c,'quadrature_consistent',return_value=True):
                 with self.assertRaises(AssertionError): check()
+        c.numerical_integral.cache_clear()
+
+    def test_tiny_smooth_integral_forms_at_printed_precision(self):
+        py='Integral(exp(Mul(Integer(-1),Symbol("s9b_r"))),Tuple(Symbol("s9b_r"),Integer(500),Integer(501)))'
+        wl='Exp[-500]-Exp[-501]'
+        changed=py.replace('Integer(501)','Integer(502)')
+        def check():
+            c.numerical_integral.cache_clear()
+            before=self.fixture(py,wl); after=self.fixture(changed,wl)
+            self.assertEqual([r['wl'] for r in before[2] if r['kind']=='operands'],
+                             [r['wl'] for r in after[2] if r['kind']=='operands'])
+            for result in (before,after):
+                rows=result[0][0]['samples']
+                self.assertTrue(rows)
+                self.assertTrue(all(r['comparison']['coverage']=='residual formed' for r in rows))
+                self.assertTrue(all(r['py'].get('reliable_digits')==12 for r in rows))
+                self.assertTrue(all(r['residual']['reliability_established'] for r in rows))
+            self.assertNotEqual(products(before[0]),products(after[0]))
+            # An independent native antiderivative checks the actual printed
+            # precision at this small operand scale, not an absolute floor.
+            with c.mp.workdps(70):
+                for row in before[0][0]['samples']:
+                    scale=c.mp.mpf(row['residual']['operand_scale'])
+                    printed=c.mp.mpc(row['py']['approx_12'])
+                    reference=c.mp.mpc(*row['wl']['evaluations'][-1])
+                    self.assertLess(abs(printed-reference),c.mp.mpf('1e-11')*scale)
+        check()
+        with patch.object(c,'quadrature_scale',return_value=c.mp.mpf(1)):
+            with self.assertRaises(AssertionError): check()
+        with patch.object(c,'numeric_value',return_value={'unresolved':'disabled'}):
+            with self.assertRaises(AssertionError): check()
         c.numerical_integral.cache_clear()
 
     def test_record_gate_marker_and_domain(self):

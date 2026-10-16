@@ -248,7 +248,7 @@ class NameRow:
     kind: str
 
 
-# Explicit injective physical-name bindings. Bound integration coordinates are
+# Explicit injective physical-name and density-label bindings. Bound coordinates are
 # scoped by their own binders, not identified with a second physical coordinate.
 # No Part-D OPEN actions occur in this Parts-A--C vocabulary.
 NAME_TABLE = tuple(NameRow(*row) for row in [
@@ -279,6 +279,8 @@ NAME_TABLE = tuple(NameRow(*row) for row in [
     ('j_n', 'jn', 'live normal mass exchange; 69,80', 673, 67, 'profile'),
     ('s9b_mass_V', 'vForward', 'forward no-loss velocity; repair item 10', 1042, 651, 'profile'),
     ('s9b_velocity_squared', 'yProfile', 'velocity-square reduction; 236-240', 447, 504, 'profile'),
+    ('RHO_POSITIVE', 'rho > 0', 'positive local bulk density part; 219,248; repair item 9', 91, 620, 'label'),
+    ('RHO_NONPOSITIVE', 'rho <= 0', 'nonpositive local bulk density part; 219,248; repair item 9', 92, 622, 'label'),
 ])
 
 
@@ -729,8 +731,7 @@ def extract(ref, engine, role='value'):
 
 DOMAIN_KEYS={'Domain','BranchDomain','AlongRayDomain','ConstantDomain','GeneralConstantDomain',
              'NoRealVelocityDomain','LabelCondition','SuppliedBulkDensityPremise'}
-# Labels are role bindings, compared along with the conditions attached to them.
-LABEL_TABLE={'RHO_POSITIVE':'rho > 0','RHO_NONPOSITIVE':'rho <= 0'}
+# Density labels use the cited NAME_TABLE bindings, like all other names.
 
 
 # Rational points are probes, not premises. Distinct endpoint distances and
@@ -742,7 +743,7 @@ POINTS=tuple({k:sp.Rational(v) for k,v in row.items()} for row in [
          Phi='3/109',K='7/11',n='3',m='5/3',s='2',rho_0='13/11',s9b_gamma='3/5',s9b_b_min='1/11'),
     dict(s9b_r='23/7',b='13/7',Z_E='211/7',Z_R='263/7',c_0='31/16',GM='3/113',
          Phi='5/127',K='11/13',n='1/2',m='7/5',s='-1',rho_0='17/13',s9b_gamma='5/7',s9b_b_min='1/13')])
-PROFILE_CITATIONS = SPEC+':52-57,80,124-149,175-176,219-224; repair directive item 9 (density signs; no numeric f bound)'
+PROFILE_CITATIONS = SPEC+':52-57,69-80,83-87,124-149,175-176,219-224,236-240; repair directive items 9-10 (density signs; no numeric f bound; forward no-loss velocity)'
 PROFILE_NAMES=('inverse','shifted','exponential','optical_zero','delta_zero','velocity_zero','tilt_zero',
                'bulk_zero_at_point','bulk_negative_at_point','brane_zero_at_point','stiffness_zero_at_point')
 
@@ -757,11 +758,13 @@ def _profile_formulas(family,point_items):
     x=sp.Symbol('_profile_x'); c=point['c_0']; anchor=point['s9b_r']
     if family=='exponential':
         d,v,xi,f=sp.exp(-x)/107,c*sp.exp(-x)/23,sp.exp(-x)/29,sp.exp(-x)/31
+        rho=1+sp.exp(-x)/13
     elif family=='shifted':
         d,v,xi,f=1/(103*(x+1)),c/(19*sp.sqrt(x+1)),sp.log(1+x)/23,-1/(29*(x+1))
+        rho=1+1/(13*(x+1))
     else:
         d,v,xi,f=1/(101*x),c/(17*sp.sqrt(x)),2*sp.sqrt(x)/19,1/(23*x)
-    rho=1+1/(13*x)
+        rho=1+1/(13*x)
     if family=='optical_zero': d,v,xi,f=map(sp.sympify,(0,0,0,0))
     if family=='delta_zero': d=sp.S.Zero
     if family=='velocity_zero': v=sp.S.Zero
@@ -1186,17 +1189,54 @@ def numerical_integral(integral,digits):
     (variable,lower,upper),=integral.limits
     function=sp.lambdify(variable,integral.function,modules='mpmath',cse=True)
     bounds=sp.lambdify((),(lower,upper),modules='mpmath',cse=True)
+    # Condition the numerical quadrature, not the engine expression. mpmath's
+    # absolute error estimate must see the same amplitude for scaled copies of
+    # an integrand. The nonzero binary scale is exact at both precisions, and
+    # is removed from the result. Probes supply no convergence certificate:
+    # the original integral has already passed integral_screen above.
+    with mp.workdps(2*digits+50):
+        lo,hi=bounds()
+        scale=quadrature_scale(function,lo,hi)
+    normalized=lambda x:function(x)/scale
     with mp.workdps(2*digits+30):
         lo,hi=bounds()
-        first,error=mp.quad(function,[lo,hi],method='tanh-sinh',error=True)
+        first,error=mp.quad(normalized,[lo,hi],method='tanh-sinh',error=True)
     with mp.workdps(2*digits+50):
         lo,hi=bounds()
         middle=(lo+hi)/2 if mp.isfinite(lo) and mp.isfinite(hi) else lo+1 if mp.isfinite(lo) else hi-1 if mp.isfinite(hi) else mp.mpf(0)
-        second,error2=mp.quad(function,[lo,middle,hi],method='tanh-sinh',error=True)
+        second,error2=mp.quad(normalized,[lo,middle,hi],method='tanh-sinh',error=True)
         tolerance=mp.power(10,-digits+4)*abs(second)
         if not quadrature_consistent(first,second,error,error2,tolerance):
-            raise UnresolvedEvaluation('quadrature error/precision/panel consistency check did not converge')
-        return +second
+            if not all(mp.isfinite(v) for v in (first,second,error,error2)):
+                reason='finite quadrature estimates not established'
+            else:
+                failed=[]
+                if max(error,error2)>tolerance: failed.append('absolute error estimates exceed the requested relative precision after amplitude conditioning')
+                if abs(second-first)>tolerance: failed.append('independent precision/panel estimates differ beyond the requested relative precision')
+                reason='; '.join(failed)
+            raise UnresolvedEvaluation('quadrature value not established: '+reason)
+        return +(second*scale)
+
+
+def quadrature_scale(function,lo,hi):
+    """A nonzero exact binary amplitude; never a claim about existence/zeros."""
+    if mp.isfinite(lo) and mp.isfinite(hi):
+        points=[lo+(hi-lo)*q/4 for q in (1,2,3)]
+        width=abs(hi-lo)
+    else:
+        points=[lo+q if mp.isfinite(lo) else hi-q if mp.isfinite(hi) else mp.mpf(q)
+                for q in (1,2,3)]
+        width=mp.mpf(1)
+    magnitudes=[]
+    for point in points:
+        try:
+            magnitude=abs(function(point))*width
+            if mp.isfinite(magnitude) and magnitude: magnitudes.append(magnitude)
+        except (ValueError,ZeroDivisionError,OverflowError):
+            pass
+    if not magnitudes: return mp.mpf(1)
+    _,exponent=mp.frexp(max(magnitudes))
+    return mp.ldexp(mp.mpf(1),exponent)
 
 
 def quadrature_consistent(first,second,error,error2,tolerance):
@@ -1437,9 +1477,14 @@ def symbolic_difference(left,right):
     return residual
 
 
-def text_comparison(left,right,role):
-    lv=LABEL_TABLE.get(left,left) if role=='label' else left
-    return lv==right
+def text_comparison(left,right,role,bindings):
+    if role=='label':
+        return bindings.name(left,'py')==bindings.name(right,'wl')
+    return left==right
+
+
+def leaf_cache_key(left,right,role):
+    return left,right,role
 
 
 COMPARISON_KINDS=('value','domain','marker','label')
@@ -1495,7 +1540,7 @@ class Comparator:
     def leaf(self,a,b,role):
         left,right=a.node,b.node
         if role=='domain':
-            key=(left,right,role)
+            key=leaf_cache_key(left,right,role)
             if key not in self.cache:
                 self.cache[key]=compare_domains(left,right,self.bindings)
                 if len(self.cache)>256: self.cache.popitem(last=False)
@@ -1503,7 +1548,7 @@ class Comparator:
         if left.head=='Text' or right.head=='Text':
             if left.head!=right.head:
                 return {'outcome':'not_formed','reason':'marker/text versus other value'},False
-            comparison=text_comparison(left.value,right.value,role)
+            comparison=text_comparison(left.value,right.value,role,self.bindings)
             return {'outcome':'label' if role=='label' else 'marker',
                     'comparison':comparison,'py_text':left.value,'wl_text':right.value},comparison is not None
         try:
@@ -1511,7 +1556,7 @@ class Comparator:
         except Unsupported as exc:
             return {'outcome':'not_formed','reason':str(exc),
                     'representation':structural_delta(left,right,self.bindings)},False
-        key=(lv,rv,role)
+        key=leaf_cache_key(lv,rv,role)
         if key not in self.cache:
             self.cache[key]=compare_math(lv,rv,role)
             if len(self.cache)>256: self.cache.popitem(last=False)

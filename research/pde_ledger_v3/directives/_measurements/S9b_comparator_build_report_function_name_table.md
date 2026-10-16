@@ -1,6 +1,6 @@
 # Function-name table
 
-Native aliases are grouped in a single injective row. Meanings describe mathematical constructors; physical names and source citations are listed below. Repoint controls cover every row and alias.
+Native aliases are grouped in a single injective row. Meanings describe mathematical constructors; physical names, density labels and source citations are listed below. Repoint controls cover every row and alias; the two density-label repoint controls passed with the full 65-test guarded suite.
 
 | SymPy constructor | Wolfram aliases | Function denoted |
 |---|---|---|
@@ -38,9 +38,9 @@ Native aliases are grouped in a single injective row. Meanings describe mathemat
 | re | Re | real part |
 | im | Im | imaginary part |
 
-## Physical-name bindings
+## Physical-name and density-label bindings
 
-The following unchanged table is transcribed from the comparator source. Spec line citations refer to `S9b_SHARED_PHYSICS.md`, except entries explicitly citing the repair directive. Engine lines refer to `scripts/S9b_light_bending_sympy_audit.py` and `mathematica/S9b_light_bending_mathematica_audit.wl`. The two velocity integration constants are deliberately engine-qualified and absent from this table.
+The following 29-row table is transcribed from the comparator source (27 physical names and two density labels). Spec line citations refer to `S9b_SHARED_PHYSICS.md`, except entries explicitly citing the repair directive. Engine lines refer to `scripts/S9b_light_bending_sympy_audit.py` and `mathematica/S9b_light_bending_mathematica_audit.wl`. The two velocity integration constants are deliberately engine-qualified and absent from this table. Density labels are compared through these bindings while both emitted strings remain in the output.
 
 | SymPy name | Wolfram name | Spec object / lines | SymPy line | Wolfram line |
 |---|---|---|---:|---:|
@@ -71,3 +71,5 @@ The following unchanged table is transcribed from the comparator source. Spec li
 | `j_n` | `jn` | live normal mass exchange; 69,80 | 673 | 67 |
 | `s9b_mass_V` | `vForward` | forward no-loss velocity; repair item 10 | 1042 | 651 |
 | `s9b_velocity_squared` | `yProfile` | velocity-square reduction; 236-240 | 447 | 504 |
+| `RHO_POSITIVE` | `rho > 0` | positive local bulk density part; 219,248; repair item 9 | 91 | 620 |
+| `RHO_NONPOSITIVE` | `rho <= 0` | nonpositive local bulk density part; 219,248; repair item 9 | 92 | 622 |

@@ -66,6 +66,14 @@ profile are. A witness's point and profile are not a profile choice under item 1
 engines do not change in this round. Reviewed until clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend10_review_disposition.md`.
 
+**Amendment 11** (user and orchestrator, 2026-10-16), for the build's repair round 8 after review r7
+(`directives/_measurements/S9b_repair_build_r7_review_disposition.md`). Item 14 states that a value is compared apart
+from its domain. It also states what the harness must show (the user's choice, 2026-10-16): every printed zero is
+shown unchanged, and where a knife's mutated construction changes any part, at least one such part prints as a
+change. Any other part may print undecided. Parts 2 and 3 point at it. The engines do not change in this round.
+Reviewed until clear. Dispositions:
+`directives/_measurements/S9b_repair_build_directive_amend11_review_disposition.md`.
+
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
 only. **Part D is held** (user decision, 2026-10-08) until the brane-material premise behind P1 is settled. This build
 constructs and prints no Part D object. That narrows D7 item 3, which listed Part D. Not in this build: the
@@ -281,9 +289,11 @@ comparator, the production runs and the record.
       unchanged when the knife leaves it equal to the baseline part as a mathematical object, in whatever form the
       corrupted copy rebuilds it: the same value, or for a domain the same condition on the same variables,
       including a condition carried inside a set or a quantifier. A part is changed when it differs from the
-      baseline part at some point: for a value, a point of its variables where both parts are defined; for a domain,
-      a point where one condition holds and the other does not; and for a part that carries a profile function,
-      such a point under some admissible profile. Two sets differ at an element that one contains and the other does
+      baseline part at some point: for a value, a point of its variables where both values are defined; for a
+      domain, a point where one condition holds and the other does not; and for a part that carries a profile
+      function, such a point under some admissible profile. A value is compared apart from its domain: the point
+      need not satisfy either attached domain, and attached domains that share no point show nothing about the
+      values. Two sets differ at an element that one contains and the other does
       not, so a point for a set gives values to its free variables and to that element. A statement that binds
       variables, such as a quantifier or a test of whether a set is empty, is compared as the statement it makes on
       its free variables, so its point gives values to those only.
@@ -306,6 +316,13 @@ comparator, the production runs and the record.
       this test only. They enter no engine object, and they are neither a profile choice nor a profile family
       under item 13. This rule holds for K11's compact differences and method residual too. K11's sample domain is
       coverage, not a domain in this sense.
+    - **What the harness must show** (the user's choice, 2026-10-16):
+      - every part that prints zero is shown unchanged as this item defines it;
+      - for each knife whose construction the engine contains: if any part the engine computes from the mutated
+        construction differs from its baseline part, at least one such part prints as a change. The build-input
+        digest is not such a part, since any edit of the source changes it.
+
+      Any other part that differs may print undecided once the harness has looked for a witness.
     - A knife whose construction an engine does not contain is reported, not invented. The engine itself contains
       no control with an expected outcome.
 
@@ -398,6 +415,7 @@ comparator, the production runs and the record.
 - **Repair round 5 (amendment 8).** Items 9 and 14 as amended hold after the repair.
 - **Repair round 6 (amendment 9).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Repair round 7 (amendment 10).** Item 14 as amended holds for the harness. The engine is unchanged.
+- **Repair round 8 (amendment 11).** Item 14 as amended holds for the harness. The engine is unchanged.
 
 ## Part 3. Wolfram engine (blind)
 
@@ -420,6 +438,7 @@ comparator, the production runs and the record.
 - **Repair round 5 (amendment 8).** Items 9 and 14 as amended hold after the repair.
 - **Repair round 6 (amendment 9).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Repair round 7 (amendment 10).** Item 14 as amended holds for the harness. The engine is unchanged.
+- **Repair round 8 (amendment 11).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Executable checks, with no expected values:**
   1. Copy the finished `.wl` alone into an empty scratch directory. Run it there and in the repository. Both runs
      exit 0, and their streams are non-empty and byte-identical. Afterwards the scratch directory holds only the

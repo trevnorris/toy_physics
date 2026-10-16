@@ -67,11 +67,9 @@ engines do not change in this round. Reviewed until clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend10_review_disposition.md`.
 
 **Amendment 11** (user and orchestrator, 2026-10-16), for the build's repair round 8 after review r7
-(`directives/_measurements/S9b_repair_build_r7_review_disposition.md`). Item 14 states that a value is compared apart
-from its domain. It also states what the harness must show (the user's choice, 2026-10-16): every printed zero is
-shown unchanged, and where a knife's mutated construction changes any part, at least one such part prints as a
-change. Any other part may print undecided. Parts 2 and 3 point at it. The engines do not change in this round.
-Reviewed until clear. Dispositions:
+(`directives/_measurements/S9b_repair_build_r7_review_disposition.md`). Item 14 states where a value witness lies,
+when a condition holds at a point, and what the harness must show (the user's choice, 2026-10-16). Parts 2 and 3
+point at it. The engines do not change in this round. Reviewed until clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend11_review_disposition.md`.
 
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
@@ -289,11 +287,13 @@ comparator, the production runs and the record.
       unchanged when the knife leaves it equal to the baseline part as a mathematical object, in whatever form the
       corrupted copy rebuilds it: the same value, or for a domain the same condition on the same variables,
       including a condition carried inside a set or a quantifier. A part is changed when it differs from the
-      baseline part at some point: for a value, a point of its variables where both values are defined; for a
-      domain, a point where one condition holds and the other does not; and for a part that carries a profile
-      function, such a point under some admissible profile. A value is compared apart from its domain: the point
-      need not satisfy either attached domain, and attached domains that share no point show nothing about the
-      values. Two sets differ at an element that one contains and the other does
+      baseline part at some point: for a value, a real point of its variables at which both values are defined and
+      both attached domains hold; for a domain, a point where one condition holds and the other does not; and for a
+      part that carries a profile function, such a point under some admissible profile. A condition holds at a
+      point only where the harness shows that it holds there, whether it is stated as a formula or in words (such
+      as that the required derivatives exist). The spec's order counting is not such a condition: an admissible
+      profile need not meet it. If the two attached domains share no point, that shows nothing about the values.
+      Two sets differ at an element that one contains and the other does
       not, so a point for a set gives values to its free variables and to that element. A statement that binds
       variables, such as a quantifier or a test of whether a set is empty, is compared as the statement it makes on
       its free variables, so its point gives values to those only.
@@ -318,11 +318,17 @@ comparator, the production runs and the record.
       coverage, not a domain in this sense.
     - **What the harness must show** (the user's choice, 2026-10-16):
       - every part that prints zero is shown unchanged as this item defines it;
-      - for each knife whose construction the engine contains: if any part the engine computes from the mutated
-        construction differs from its baseline part, at least one such part prints as a change. The build-input
-        digest is not such a part, since any edit of the source changes it.
+      - for each knife whose construction the engine contains: if any of its site parts differs from its baseline
+        part, at least one of its site parts prints as a change by rule 2.
 
-      Any other part that differs may print undecided once the harness has looked for a witness.
+      A knife's site parts are the parts of the emitted objects whose computation uses the mutated construction,
+      including the object emitted at the construction site itself. They do not include the build-input digest,
+      which any edit of the source changes, or a part computed before the mutation enters. For K10 they are the
+      parts gated on the negated condition. For K11 they are the compact differences of the reached tags whose
+      computation the mutation enters, not the method's residual, and the method reaches at least one such tag.
+
+      A part that is not a site part of the knife and that differs may print undecided once the harness has looked
+      for a witness, even where the engine has shown it changed.
     - A knife whose construction an engine does not contain is reported, not invented. The engine itself contains
       no control with an expected outcome.
 

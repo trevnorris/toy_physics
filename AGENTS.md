@@ -40,12 +40,13 @@ how you work in the repository.
 
 ## Running computations
 
-- Run CAS and numerical jobs through `scripts/s11c_guarded_run.py`: memory cap, zero swap, host-memory reserve.
+- Run CAS and numerical jobs through `scripts/s11c_guarded_run.py`: per-job memory cap, zero swap.
   After the 2026-09-20 host freeze (cause unconfirmed), ⛔ never fall back to an unguarded launch.
 - **No time limits** (user, 2026-09-30). Add no wall-clock, CPU-time or inactivity deadline unless the user asks
   for one for a specific run.
-- Memory budgets and parallel pooling are the user's call, per task. The tested pool is 16 GiB aggregate with a
-  4 GiB host reserve. Use it only when the user authorizes parallel jobs for that task.
+- The machine is dedicated to this work; use all of it (user, 2026-10-15). Pooled jobs (`--pool`) share one
+  machine-wide budget equal to physical memory, across every checkout, with no host-memory reserve. Each job keeps
+  its own hard cap (`--memory-gib`), and jobs run in parallel whenever the available memory covers their caps.
 - At most two Wolfram kernels at once (two licence seats). No automatic retries, and no replaying completed jobs.
 - Don't poll the model while waiting.
 

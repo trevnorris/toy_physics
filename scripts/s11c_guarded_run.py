@@ -5,8 +5,12 @@ Requires a host shell and a systemd user manager. Fails closed if the actual
 cgroup limits cannot be verified. No scientific imports or automatic retries.
 Standing user policy: no wall-clock, worker or inactivity deadlines.
 The older runner remains frozen for existing source pins.
-Defaults remain 2 GiB and 32 tasks. Opt-in --pool jobs share one global 16 GiB
-budget across all pool names and at most six distinct physical cores. Legacy
+Defaults remain 2 GiB and 32 tasks. Opt-in --pool jobs share one machine-wide
+budget equal to physical memory, across all pool names and all checkouts, with
+one logical CPU each (distinct physical cores first). The machine is dedicated
+to this work (user, 2026-10-15): there is no host-memory reserve; admission
+needs only that the memory actually available covers every admitted job's
+unused cap plus the new cap. Each job keeps its own hard memory cap. Legacy
 exclusive launches remain unchanged. Native threads remain one. No workload
 starts until actual cgroup memory, native address-space, inherited process
 affinity and duration enforcement is verified; pooled priority is desktop-managed.
@@ -40,16 +44,29 @@ ROOT = Path(__file__).resolve().parents[1]
 STORE = ROOT / '_scratch/s11c'
 PAUSE = STORE / 'PAUSED_HOST_FREEZE.json'
 MEMORY_MAX = 2 * 1024**3
-AVAILABLE_MIN = 4 * 1024**3
-POOL_MEMORY_MAX = 16 * 1024**3
-POOL_MAX_JOBS = 6
-POOL_DIRECTORY = STORE / 'resource-pool'
+GIB = 1024**3
+# No host-memory reserve: the machine is dedicated to this work (user, 2026-10-15).
+AVAILABLE_MIN = 0
+
+
+def physical_memory():
+    for line in Path('/proc/meminfo').read_text().splitlines():
+        if line.startswith('MemTotal:'):
+            return int(line.split()[1]) * 1024 // GIB * GIB
+    raise RuntimeError('MemTotal unavailable; refusing launch')
+
+
+POOL_MEMORY_MAX = physical_memory()
+POOL_MAX_JOBS = len(os.sched_getaffinity(0))
+# One registry for every checkout on this machine: the guarded-unit namespace is
+# machine-wide, so a per-checkout registry made other checkouts' jobs unaccounted.
+POOL_DIRECTORY = Path.home() / '.local/state/s11c-guard/resource-pool'
 THREADS = ('OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS',
            'NUMEXPR_NUM_THREADS', 'VECLIB_MAXIMUM_THREADS', 'BLIS_NUM_THREADS')
 
 
 def resource_limits(memory_gib=2, tasks_max=32, pool=None):
-    allowed = range(1, 17) if pool else (2, 4)
+    allowed = range(1, POOL_MEMORY_MAX // GIB + 1) if pool else (2, 4)
     if memory_gib not in allowed or tasks_max not in (32, 64):
         raise ValueError('unsupported resource limits')
     return {'memoryMax': memory_gib * 1024**3, 'swapMax': 0,
@@ -108,15 +125,19 @@ def process_identity(pid):
 
 
 def pool_cpus():
-    # One logical CPU per physical core, so admitted workers do not compete
-    # for sibling threads while idle physical cores are available.
-    physical = {}
+    # One logical CPU per physical core first, so admitted workers do not
+    # compete for sibling threads while idle physical cores are available;
+    # sibling threads follow.
+    physical, siblings = {}, []
     for cpu in sorted(os.sched_getaffinity(0), reverse=True):
         topology = Path('/sys/devices/system/cpu', 'cpu' + str(cpu), 'topology')
         key = tuple((topology / name).read_text().strip()
                     for name in ('physical_package_id', 'core_id'))
-        physical.setdefault(key, cpu)
-    return list(physical.values())[:POOL_MAX_JOBS]
+        if key in physical:
+            siblings.append(cpu)
+        else:
+            physical[key] = cpu
+    return (list(physical.values()) + siblings)[:POOL_MAX_JOBS]
 
 
 def service_resources(unit):
@@ -196,14 +217,14 @@ def admission_plan(reservations, live, requested, cpus, available,
         headroom += cap - used
     if (requested < 1024**3 or requested > POOL_MEMORY_MAX or requested % (1024**3)
             or reserved + requested > POOL_MEMORY_MAX):
-        raise RuntimeError('aggregate 16 GiB reservation budget exceeded')
+        raise RuntimeError('aggregate physical-memory reservation budget exceeded')
     if len(reservations) >= POOL_MAX_JOBS:
         raise RuntimeError('aggregate worker budget exhausted')
     free = [cpu for cpu in cpus if cpu not in occupied]
     if not free:
         raise RuntimeError('no unreserved physical CPU available')
     if available < AVAILABLE_MIN + headroom + requested:
-        raise RuntimeError('host reserve plus outstanding memory commitments unavailable')
+        raise RuntimeError('available memory does not cover outstanding commitments plus this job')
     return {'cpu': free[0], 'reservedBeforeBytes': reserved,
             'outstandingHeadroomBytes': headroom,
             'hostAvailableBytes': available, 'poolMemoryMax': POOL_MEMORY_MAX,
@@ -313,7 +334,7 @@ def child_main(manifest):
     if not limits_match(actual, spec):
         raise RuntimeError('actual resource limits differ; no workload started')
     if available_memory() < AVAILABLE_MIN:
-        raise RuntimeError('less than 4 GiB available; no workload started')
+        raise RuntimeError('host available memory below the minimum; no workload started')
     save(folder / 'limit-validation.json', {'verified': True, 'actual': actual})
     started = time.monotonic()
     reason = None
@@ -338,7 +359,7 @@ def child_main(manifest):
                     telemetry.write(json.dumps(observation) + '\n'); telemetry.flush()
                     low_memory = low_memory + 1 if observation['hostAvailableBytes'] < AVAILABLE_MIN else 0
                     if low_memory >= 2:
-                        reason = 'host available memory below 4 GiB for two observations'
+                        reason = 'host available memory below the minimum for two observations'
                     if reason:
                         stop(child); code = 124; break
         finally:
@@ -355,8 +376,8 @@ def main():
     parser.add_argument('--seconds', type=int, default=0,
                         help='legacy compatibility argument; recorded but never imposes a deadline')
     parser.add_argument('--memory-gib', type=int, default=2,
-                        help='whole-job cap: legacy 2/4 GiB; pooled 1 through 16 GiB')
-    parser.add_argument('--pool', help='opt in to shared 16 GiB / six-worker admission; named purpose')
+                        help='whole-job cap: legacy 2/4 GiB; pooled 1 GiB through physical memory')
+    parser.add_argument('--pool', help='opt in to shared machine-wide admission; named purpose')
     parser.add_argument('--tasks-max', type=int, choices=(32, 64), default=32,
                         help='whole-job process/thread cap; 64 requires explicit job authorization')
     parser.add_argument('--child-manifest', type=Path, help=argparse.SUPPRESS)
@@ -382,7 +403,7 @@ def main():
         if active_units() or read_reservations(POOL_DIRECTORY):
             raise RuntimeError('another guarded service or reservation remains; refusing overlap')
     if available_memory() < AVAILABLE_MIN:
-        raise RuntimeError('less than 4 GiB available; refusing launch')
+        raise RuntimeError('host available memory below the minimum; refusing launch')
     folder.mkdir(parents=True, exist_ok=False)
     unit = 's11c-guard-' + uuid.uuid4().hex[:12]
     spec = {'command': command, 'cwd': str(Path.cwd()), 'unit': unit,

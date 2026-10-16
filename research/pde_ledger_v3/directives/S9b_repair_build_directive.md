@@ -66,9 +66,10 @@ clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend10_review_disposition.md`.
 
 **Amendment 11** (Codex author, 2026-10-16), for the build's repair round 8 after review r7
-(`directives/_measurements/S9b_repair_build_r7_review_disposition.md`). Item 14 implements the user's two choices
-of 2026-10-16: first narrowing what the harness must show, then choosing this smaller harness with structural
-marks and a witness search per knife. Parts 2 and 3 point at it. The engines do not change in this round.
+(`directives/_measurements/S9b_repair_build_r7_review_disposition.md`). Item 14 implements the user's choices
+of 2026-10-16: narrowing the harness, choosing structural marks and a witness search per knife, then, after
+amendment review round 5, printing each witness's readings for build review round 8 to check. Parts 2 and 3
+point at it. The engines do not change in this round.
 Reviewed until clear. Dispositions:
 `directives/_measurements/S9b_repair_build_directive_amend11_review_disposition.md`.
 
@@ -293,31 +294,38 @@ comparator, the production runs and the record.
       level, in object labels, and in its case selection. Ordered cases require earlier cases to fail, including
       for the default. A branch label qualifies only its own branch. Item 9's density-sign labels partition the
       shared object; they add no attached condition. A witness may lie on either part, including `ρ ≤ 0`; print
-      which part contains its point. Descriptive entries (`Profiles`, `Measure`), computed values (`Closedness`),
-      and order-counting entries (including `OpticalCounting`) are not conditions. Print which conditions were
-      evaluated.
+      its point's part, or each part's subrange where the radius is ranged. Descriptive entries (`Profiles`,
+      `Measure`), computed values (`Closedness`), and order-counting entries (including `OpticalCounting`) are not
+      conditions. Print which conditions were evaluated.
+
+      Print every reading choice behind the witness, with its computation. For each symbol in either copy or its
+      conditions, identify its role: assigned at the point; ranged, with its range; bound; or fixed by that copy's
+      construction. Print all equations fixing a quantity, each copy's solution set and the solution used, if any.
+      A copy with no admissible solution has a decided absence, not an unresolved evaluation. For each worded
+      condition, print its mathematical statement in that engine's symbols, its variables and ranges, and the
+      derivatives it requires.
+      A witness counts only if every choice, including solution selection, is the engine's own reading of its object
+      under this directive, the spec and the knife's definition. The record claims it only after round-8 review
+      checks those choices.
 
       Print a concrete real point assigning all independent inputs free in either copy or its conditions after
-      accounting for binders and stated ranges; never substitute bound variables. Each quantity fixed by a copy's
-      construction takes that copy's own computed value; print it and its computation. Print a concrete admissible
+      accounting for the printed roles; never substitute bound variables. Print a concrete admissible
       profile for every live profile there, both evaluations, and every attached condition's evaluation, with the
       computation establishing each.
 
-      All conditions require exact decisions of their mathematical content for that copy's object under this
-      directive and the spec, over their whole stated ranges, with quantifiers active. Inactive or unevaluated
-      forms decide nothing. For each worded condition, print its mathematical statement with variables and ranges
-      named in that engine's symbols; existence and convergence are ordinary. Relations are decided over their
-      whole stated ranges, whether carried by attached sets or domain formulas, including the radius of a reduced
-      every-`b` condition in both engines (item 6). The exterior radial half-line is `s9b_r > s9b_b_min` (SymPy) or
-      `r > bFar` (Wolfram).
+      Conditions require exact decisions over their whole stated ranges, with quantifiers active. Inactive or
+      unevaluated forms decide nothing. Existence and convergence are ordinary. A domain inequality alone does not
+      make its symbol ranged. A reduced every-`b` condition is decided over its full radial range (item 6), whether
+      carried by a set or formula: `s9b_r > s9b_b_min` (SymPy) or `r > bFar` (Wolfram).
 
-      For a value witness, every attached condition is computed true; both values are ordinary finite values,
-      with required integrals, limits and derivatives existing without regularization, principal value or analytic
+      For a value witness, both copies use the same independent inputs; each selected solution satisfies its copy's
+      whole construction. Every attached condition is computed true; both values are ordinary finite values, with
+      required integrals, limits and derivatives existing without regularization, principal value or analytic
       continuation. Values differ exactly, or by more than a printed bound covering both errors: a proved enclosure
       from exact or outward-rounded interval or ball arithmetic, with printed justification. For a domain witness,
       the compared condition is true in one copy and false in the other; every other attached condition is computed
-      true in both. Print both emitted objects evaluated at these inputs, establishing that they differ there.
-      Unresolved evaluations furnish no witness.
+      true in both. Print both emitted objects at these inputs, with their evaluations or decided absence of admissible
+      solutions, establishing that they differ there. Unresolved evaluations furnish no witness.
 
       An admissible profile assigns each live profile in the part or its conditions one specific radial function
       with fixed coefficients, including `δ`, `V`, `ξ_w`, `ρ_br`, `f`, `μ_⊥` and `j_n` where present, defined with
@@ -418,7 +426,9 @@ comparator, the production runs and the record.
 - **Repair round 5 (amendment 8).** Items 9 and 14 as amended hold after the repair.
 - **Repair round 6 (amendment 9).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Repair round 7 (amendment 10).** Item 14 as amended holds for the harness. The engine is unchanged.
-- **Repair round 8 (amendment 11).** Item 14 as amended holds for the harness. The engine is unchanged.
+- **Repair round 8 (amendment 11).** Item 14 as amended holds for the harness. Round-8 review checks each printed
+  witness and its reading choices, and the structural comparison's exactness on approximate numbers. The engine
+  is unchanged.
 
 ## Part 3. Wolfram engine (blind)
 
@@ -441,7 +451,9 @@ comparator, the production runs and the record.
 - **Repair round 5 (amendment 8).** Items 9 and 14 as amended hold after the repair.
 - **Repair round 6 (amendment 9).** Item 14 as amended holds for the harness. The engine is unchanged.
 - **Repair round 7 (amendment 10).** Item 14 as amended holds for the harness. The engine is unchanged.
-- **Repair round 8 (amendment 11).** Item 14 as amended holds for the harness. The engine is unchanged.
+- **Repair round 8 (amendment 11).** Item 14 as amended holds for the harness. Round-8 review checks each printed
+  witness and its reading choices, and the structural comparison's exactness on approximate numbers. The engine
+  is unchanged.
 - **Executable checks, with no expected values:**
   1. Copy the finished `.wl` alone into an empty scratch directory. Run it there and in the repository. Both runs
      exit 0, and their streams are non-empty and byte-identical. Afterwards the scratch directory holds only the

@@ -315,3 +315,104 @@ findings are such cases.
 
 **Process.** The legs' guarded runs are under `_scratch/s11c/s9b-amend11-review-r5/` (Claude `claudeleg-*`, of which
 `py4`, `wl4` and `wl5` carry the verdict; Grok `py-witness-attempt-*`, `wl-witness-attempt-1`). All completed.
+
+**The user's decision (2026-10-16, after round 5).** Made through the question tool. The option texts are mine, quoted
+from the session transcript. The question was how to finish amendment 11, given that each round finds another
+engine object on which the witness test can be read two ways. Chosen: "Print readings, check at r8 (Recommended)",
+whose description begins: "Fold these 3. Then stop trying to fix every reading in advance. The harness prints each
+choice behind its one witness: which variables it sets at the point, which it treats as ranges, which root each
+copy uses, which derivatives it checks. A witness counts only if those choices are the engine's own, and the
+round-8 review checks all ~28. The amendment review clears once that rule is stated." The other option was to keep
+folding until the general test has no two readings anywhere.
+
+So round 6 does two things: it folds round 5's three findings, and it states the reading rule. What must be true in
+round 6 (the wording is the author's):
+- **The reading rule.** A witness prints every reading choice it rests on, with the computation behind each:
+  - each symbol's role: assigned at the point; ranged over a stated range, with that range; bound; or fixed by an
+    equation of a copy's construction, with that copy's solution set and the solution used;
+  - for each worded condition, its mathematical statement, including the variables and range it covers.
+  A witness counts only if every printed choice is the engine's own reading of its object, as the directive and the
+  spec define that object, including the knife's own definition. The round-8 review checks the choices, and the
+  record claims a witness only after that review.
+- **Claude 1.** Where a copy's construction has no solution or several, the witness prints each copy's solution set.
+  A copy with no admissible solution is decided by that, not left unresolved. A value witness compares the two copies
+  at the same independent inputs, each copy at a solution its whole construction admits. A symbol that two equations
+  fix prints both.
+- **Claude 2 and Grok 1** are met by the reading rule: each printed role or range must be the engine's own (K7's
+  definition makes `bFixed` one point). Nothing in the text may make a range reading the default for an inequality
+  in a domain formula.
+- Everything earlier rounds' legs confirmed stays.
+
+The review legs for round 6 get the user's choice as part of their prompt. A reading choice that the text requires
+the harness to print, and that the round-8 review checks against the engine, is not a finding against the text. A
+finding is a text that lets an unprinted choice stand behind a witness, lets a choice that is not the engine's own
+count, or states a rule that is wrong. The build review r8 will check each printed witness and its choices, and
+whether the named structural comparison is exact on approximate numbers (round 4, G3′).
+
+## Round 6
+
+**Artifact.** The working-tree directive at sha256 `97de0851…`, written by a fresh Codex session (gpt-6.1-sol,
+xhigh; session `01a144cf…`). Brief and note: `_scratch/s9b_build/amend11_author5/brief.md`, `author_note.md`. The
+orchestrator copied it in unchanged after checking that the diff against round 5 (`dab6d4c5`) touches only:
+- the amendment-11 header;
+- item 14;
+- the Part 2 and 3 round-8 lines.
+
+Saved before launch in `_scratch/s9b_build/preserved/S9b_repair_build_directive_amend11_r6.md`. Prompt:
+`_scratch/s9b_build/s9b_repair_build_directive_amend11_review_prompt_r6.md` (`d6fdda07…`). It carries the user's
+choice after round 5 and the finding bar that follows from it. Baseline: 20 files, all unchanged after both legs.
+Lookups: `S9b_repair_build_directive_amend11_review_r6_lookups.md` beside this file (gen
+`_scratch/s9b_build/gen/s9b_amend11_r6_lookups.sh`).
+
+**Legs** (Codex-written, so a fresh Claude agent and Grok, G1):
+- **Grok: CLEAR, no findings.** Report: `_scratch/s9b_build/s9b_amend11_review_r6_grok.txt`. Scripts and stdout:
+  `_scratch/s9b_build/s9b_amend11_review_r6_grok_evidence/`.
+- **Fresh Claude (opus): NEEDS REVISION, one finding and one observation.** Report:
+  `_scratch/s9b_build/s9b_amend11_review_r6_claude.md`, saved verbatim from the hand-back. Scripts and stdout:
+  `_scratch/s9b_build/s9b_amend11_review_r6_claude_evidence/`.
+
+Both legs confirm these:
+- every entry of round 5's "What must be true in round 6" list;
+- the marks, the site rule and the K11 pairs;
+- what the round-3 to round-5 legs confirmed;
+- engines unchanged, no verdict, no leakage.
+
+**Findings and dispositions.**
+- **Claude 1: accepted.** The text gives each copy's solution set and "the solution used", but never says how the
+  two copies' solutions pair. Take SymPy's emitted `PY_S9B_B_IMPLIED_JN_DEFLECTION`, zero-locus branch 3, against
+  its K8 copy, rebuilt with the harness's own K8 string. Both copies admit the zeros `{2, 4}` and give the same
+  `j_n` at each zero. Comparing the baseline at `z = 2` against K8 at `z = 4` gives `−3√2/4` against `−3/16`. That
+  pair meets every clause of L321–325, although at the same `z` the copies are equal. Grok's report notes the same
+  two-zero case and leaves the selection to round 8. But the text gives round 8 no rule against such a pair, so
+  this changes what a witness may claim.
+  
+  **Must be true in round 7:** no witness compares one copy's value at one solution of an equation with the other
+  copy's value at a different solution of the same equation. Where both copies admit several solutions of an
+  equation they share, the witness compares at a solution both admit, or compares the copies' complete
+  solution-to-value sets. Where the constructions differ (K3's turning radii), each copy keeps its own solutions
+  (C2′). The same holds for the compared condition of a domain witness. Wolfram's `rBoundary` (L572–574) is the same
+  kind of symbol.
+- **Claude, observation: carried to the build review r8.** SymPy's native `Limit.doit()` gets the sign of a
+  one-sided limit wrong at a double zero: native `(−√2/4, −√2/4)` against explicit `(√2/4, −√2/4)`, with the numeric
+  left operand `0.3535534…`. The text already requires exact decisions printed with their computation. Round 8 checks
+  that no join-branch decision rests on native one-sided limits.
+- **Orchestrator item O1: accepted.** Raised by me from a measured incident (memory, 2026-09-05 and 2026-09-07):
+  builders read review steps in their directive as instructions and ran their own review legs. Round 6 put reviewer
+  and record process in builder-facing text:
+  - the header, L71: "for build review round 8 to check";
+  - item 14, L308: "The record claims it only after round-8 review checks those choices";
+  - Parts 2 and 3, L429 and L454: "Round-8 review checks each printed witness…".
+  
+  My round-6 list ("The round-8 review checks the choices, and the record claims a witness only after that review")
+  bred it. **Must be true in round 7:** builder-facing text states only the builder's obligations. The reading rule
+  stays: print every choice, and a witness counts only if every choice is the engine's own. What the review checks,
+  and when the record may claim a witness, stay in this file and out of the directive. The Part 2 and 3 lines say
+  only that item 14 as amended holds for the harness and that the engine is unchanged.
+
+**Author for round 7.** The same model, in a fresh Codex session, with this section and both reports.
+
+**Process.** The legs' guarded runs are under `_scratch/s11c/s9b-amend11-review-r6/`:
+- Claude: `claudeleg-{jn1,jn2,pair1,conj1,lim1,num1}`; the verdict rests on `pair1`, `conj1`, `lim1` and `num1`;
+- Grok: `py-ranges-3` and `wl-rules-2`, with earlier attempts superseded.
+
+All completed.

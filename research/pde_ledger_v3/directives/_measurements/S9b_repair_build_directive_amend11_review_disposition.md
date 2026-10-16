@@ -220,3 +220,49 @@ directories. The text is to stay short, saying what must be true and not how to 
 
 **Process.** The legs' guarded runs are under `_scratch/s11c/s9b-amend11-review-r3/` (Claude `claudeleg-*`, Grok
 `bind-wl-1`, `cond-*`, `trueq-wl-1`). All completed.
+
+## Round 4
+
+**Artifact.** The working-tree directive at sha256 `166c108d…`, written by a fresh Codex session (gpt-6.1-sol,
+xhigh; session `01a1448c…`). Brief and note: `_scratch/s9b_build/amend11_author3/brief.md`, `author_note.md`. The
+orchestrator copied it in unchanged after checking that the diff against round 3 (`a65f752c`) touches only item 14
+and K11's printing lines. Saved before launch in
+`_scratch/s9b_build/preserved/S9b_repair_build_directive_amend11_r4.md`. Prompt:
+`_scratch/s9b_build/s9b_repair_build_directive_amend11_review_prompt_r4.md` (`d85f21f7…`). Baseline: 18 files, all
+unchanged after both legs. Lookups: `S9b_repair_build_directive_amend11_review_r4_lookups.md` beside this file
+(gen `_scratch/s9b_build/gen/s9b_amend11_r4_lookups.sh`).
+
+**Legs** (Codex-written, so a fresh Claude agent and Grok, G1):
+- **Fresh Claude (opus): NEEDS REVISION, three findings.** Report: `_scratch/s9b_build/s9b_amend11_review_r4_claude.md`,
+  saved verbatim from the hand-back. Scripts and stdout: `_scratch/s9b_build/s9b_amend11_review_r4_claude_evidence/`.
+- **Grok: NEEDS REVISION, three findings.** Report: `_scratch/s9b_build/s9b_amend11_review_r4_grok.txt`. Scripts and
+  stdout: `_scratch/s9b_build/s9b_amend11_review_r4_grok_evidence/`.
+
+Both legs confirm these:
+- round 3's C1, C3, C5, G2 and G3 are met; Claude also finds C2, C6 and G1 met, and C4 met as far as it reaches;
+- K11 prints ordered operand pairs with the tag marks and no subtraction;
+- what round 3's legs confirmed still holds;
+- there is no leakage.
+
+**Findings and dispositions.** Five are accepted and one is rejected. Two of the accepted ones (C4′ and G1′ below)
+trace to wording in round 3's table that the author used as written: "a set attached to a relation" and "a branch
+label". So this table states outcomes only. The wording is the author's.
+
+| # | Finding (evidence in the lookups file) | Disposition: what must be true in round 5 |
+|---|---|---|
+| C1′ | Ordered cases hide a domain witness. Wolfram's `branchTypes` is a `Piecewise`: a later case holds only where every earlier case fails. K10 makes the third case's condition true in one copy and false in the other, with no containing condition, while the emitted classification at that point is the same in both (A1–A4). | **Accepted.** An attached condition includes whatever the engine's own structure makes a case depend on, including the failure of earlier cases in an ordered case object. A domain witness shows that the emitted object differs at its point. |
+| C2′ | A symbol each copy's own construction fixes gets one shared value. Item 5 fixes each turning radius by that ray's own construction (L157–158). Wolfram's gates leave `rTurnFlyby`, `rTurnRadar` and `impactRadar` free, each fixed by `turningCondition` or `radarEndpointEquation`. Under K3 the roots differ: (3+√21)/2 against 3 (B2), so a shared value meets only one copy's construction (B3). SymPy's free `s9b_velocity_zero_radius` (76 occurrences in `B_IMPLIED_JN_DEFLECTION`) is the same kind of symbol. | **Accepted.** Here a quantity that varies between copies would be held fixed (M3). A symbol that a copy's own construction fixes takes, in each copy, the value that copy's construction gives, printed with its computation. The point assigns only the independent inputs. |
+| C4′ | The range rule covers only SymPy's attached set. Wolfram emits the reduced identity as `"ProfileEquation"` with `"ProfileEquationRadius" -> r`, and its range is the domain formula `r > bFar`. Read pointwise against every-`r`, the two readings split (P1). P2 shows that the every-`r` reading can furnish a witness. | **Accepted.** In both engines, the radius of a reduced every-`b` condition is decided over its stated range, whatever carries that range. |
+| G1′ | The density-sign labels are not tied to one part. Item 9 makes each fixed-ratio and power response one object on both parts. SymPy's tuple carries `RHO_POSITIVE` and `RHO_NONPOSITIVE` beside `OBJECT_ON_BOTH_PARTS`. Their conjunction is `EmptySet`, so a reader who counts both as conditions finds no SymPy K9 witness. Wolfram nests one `LabelCondition` in each part. "Branch label" elsewhere means branch existence. | **Accepted.** Item 9's density-sign labels are not attached conditions of the shared object. A witness may lie on either part, and it prints which part its point lies on. Parts at `ρ ≤ 0` are kept, not excluded. |
+| G2′ | Wolfram's worded domain still has more than one test. The engine's `abelInverse` uses `GenerateConditions -> False`, which returns `0` for a kernel whose ordinary limit is `Infinity` (ABEL). The half-line's coordinate is open: `r > bFar` (`Radius`) against `b > bFar` (`FarZone`, K7's domain) (HALFLINE). "Not evaluated" for `OpticalCounting`, together with "Unresolved evaluations furnish no witness", can block every witness under that domain. | **Accepted.** A worded "exists" or "converges" means ordinary existence or convergence. Each worded condition names the variable it ranges over in each engine. Order-counting entries are not attached conditions, so they cannot leave a witness unresolved. |
+| G3′ | Unequal approximate payloads can still be marked identical: machine `SameQ[1., 1.+2^-52]` is `True`. | **Rejected: already met.** Round 4 says that approximate numbers "must be exactly equal" and that "their printing preserves every distinction" (L282–283). A comparison that marks that pair identical breaks the text as written. Whether the named comparison is exact on approximate numbers is a check for the build review r8, and its prompt will ask for it. |
+
+**Author for round 5.** The same model, in a fresh Codex session, with this table, both reports and both evidence
+directories. Its brief says to keep item 14 short and to state each outcome in its own words.
+
+**Loop record.** Amendment 11 has had five rounds; the smaller harness, two. Findings in the smaller harness went
+from 9 to 5 accepted, and each round has taken about 35 minutes. If round 5 does not clear, or its findings are again
+new cases of the same witness test, the loop goes to the user before another fold.
+
+**Process.** The legs' guarded runs are under `_scratch/s11c/s9b-amend11-review-r4/` (Claude `claudeleg-*`; Grok `py1`, `py2`,
+`wl1`). All completed; two Claude runs (`claudeleg-py1`, `claudeleg-wl1`) failed on the leg's own script and were superseded.

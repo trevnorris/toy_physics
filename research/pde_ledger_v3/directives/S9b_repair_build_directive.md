@@ -278,35 +278,46 @@ comparator, the production runs and the record.
     - Each engine gets a committed harness that runs the live engine unchanged as the baseline. For each knife
       below, it runs a copy with exactly that one mutation at the named construction site.
     - For **every** tag, print the baseline and corrupted payloads (K11 uses the compact pair below). Mark the tag
-      **identical** exactly when the payloads are structurally the same expression under a structural comparison
-      the harness names in its output; otherwise mark it **not compared**. These marks claim only structural
-      identity. Make no other claim of equality or change for a tag. Print no verdict.
+      **identical** exactly when they are the same expression as emitted, under a named literal structural
+      comparison, with no evaluation, simplification or canonicalization first. Approximate numbers must be exactly
+      equal; their printing preserves every distinction. Otherwise mark it **not compared**. Marks claim only
+      structural identity; any claim of change requires a witness. Claim no mathematical equality. Print no verdict.
     - For each knife whose construction the engine contains, look for one witness. Print it, or print **none found**
       and what was tried. A witness names a site part: a value or domain of an emitted payload whose computation
       uses the mutated construction's result, with its payload location and the source location where that result
       enters. Exclude the build-input digest and parts computed before the mutation enters. For K10, the result
-      is the gate after negation. For K11, the witness is a compact corrupted-versus-unmutated difference of a
-      reached tag whose computation the mutation enters, never the method's residual.
+      is the gate after negation. For K11, the witness compares compact corrupted/unmutated parts of a reached tag
+      whose computation the mutation enters, never the method's residual.
 
-      Print the witness's concrete real point, assigning every free symbol of both copies of the part and every
-      attached condition, and a concrete admissible profile for each live profile in either copy or its conditions.
-      At that point and those profiles, evaluate both copies and every condition attached to either, at every
-      payload level containing the part. Print each evaluation with the computation producing it. Conditions
-      retain their stated scopes and ranges. For a condition stated in words, print the harness's own mathematical
-      statement for that copy, point and profile, with its computed result. The spec's order counting is not evaluated.
+      Attached conditions are entries stating where the part's value holds: domains, gates and premises, at every
+      containing payload level and in its object labels. A branch label qualifies only its own branch. Descriptive
+      entries such as `Profiles` and `Measure`, and computed values such as `Closedness`, are not conditions. Print
+      which entries were evaluated as conditions.
+
+      Print a concrete real point assigning every symbol free in either copy or its attached conditions after
+      accounting for binders; never substitute bound variables. Print a concrete admissible profile for every live
+      profile there. At these inputs, print both evaluations and every attached condition's evaluation, with the
+      computation establishing each. All conditions follow one test: an exact decision of their mathematical
+      content for that copy's object as defined by this directive and the spec, over their whole stated ranges,
+      with quantifiers active and bound variables bound. Inactive or unevaluated forms decide nothing. For a
+      worded condition, also print that mathematical statement. A set attached to a relation over a variable is
+      that variable's range; decide the relation over the whole range (item 6). The exterior half-line is
+      `(b_far, ∞)`, using the engine's cutoff (`s9b_b_min` or `bFar`). Neither `OpticalCounting` nor the spec's
+      order counting is evaluated.
 
       For a value witness, every attached condition is computed true; both values are finite in the ordinary sense,
       with the required integrals, limits and derivatives existing ordinarily, without regularization, principal
       value or analytic continuation. The values differ exactly, or by more than a printed bound covering both
-      errors. For a domain witness, one copy's condition is computed true and the other's false. Unresolved
-      evaluations do not furnish a witness.
+      errors. A numerical bound is a proved enclosure from exact or outward-rounded interval or ball arithmetic;
+      print its justification. For a domain witness, the compared condition is true in one copy and false in the
+      other; every other attached condition at its containing levels is computed true in both. Unresolved
+      evaluations furnish no witness.
 
       An admissible profile assigns one specific radial function, with fixed coefficients, to each live profile
-      the part carries (`δ`, `V`, `ξ_w`, and, where they enter, `ρ_br` and `f`). It is defined, with every
-      derivative the part takes, at the witness point. It need not meet the condition being compared, nor the
-      spec's order counting, which the computation does not test. A witness's point and profile are chosen for
-      this test only. They enter no engine object, and they are neither a profile choice nor a profile family
-      under item 13. K11's sample domain describes coverage, not an attached condition.
+      in the part or its conditions, including `δ`, `V`, `ξ_w`, `ρ_br`, `f`, `μ_⊥` and `j_n` where present. It is
+      defined, with every derivative the part takes, at the witness point. A witness's point and profile are
+      chosen for this test only. They enter no engine object, and they are neither a profile choice nor a profile
+      family under item 13. K11's sample domain describes coverage, not an attached condition.
     - A knife whose construction an engine does not contain is reported, not invented. The engine itself contains
       no control with an expected outcome.
 
@@ -340,11 +351,13 @@ comparator, the production runs and the record.
       every sample point and seed, every truncation order, and the arithmetic's precision.
     - For every tag, the harness prints:
       - the full baseline payload;
-      - both compact evaluations and their difference, with the structural mark on that pair;
-      - the method's residual: the unmutated compact evaluation minus the full baseline payload reduced by the same
-        configuration, printing both operands with their structural mark.
-    - Each difference and residual is printed with its coverage: the retained grades it keeps, and its truncation
-      order or sample domain. If the arithmetic is not exact, each also carries its precision and an error bound.
+      - the difference pair: compact corrupted and compact unmutated evaluations;
+      - the method's residual pair: unmutated compact evaluation and full baseline payload reduced by the same
+        configuration.
+      Both pairs print as ordered operands with the same structural marks as tags, without subtraction or any
+      zero/change classification. Only a witness may claim change; the residual cannot furnish one.
+    - Each pair carries its coverage: retained grades and truncation order or sample domain. Inexact evaluations
+      carry their precision and proved error enclosures as above.
     - A tag the method does not reach is printed as not evaluated and not compared.
     - The engine, its baseline run and the other knives are unchanged.
 15. **Handoff.** Each builder works in its own fresh repository, exported from the commit that holds this

@@ -281,7 +281,8 @@ comparator, the production runs and the record.
       **identical** exactly when they are the same expression as emitted, under a named literal structural
       comparison, with no evaluation, simplification or canonicalization first. Approximate numbers must be exactly
       equal; their printing preserves every distinction. Otherwise mark it **not compared**. Marks claim only
-      structural identity; any claim of change requires a witness. Claim no mathematical equality. Print no verdict.
+      structural identity; any claim of change requires a witness. Infer no mathematical equality from these marks.
+      Print no verdict.
     - For each knife whose construction the engine contains, look for one witness among its site parts.
       A witness names a site part: a value or domain of an emitted payload whose computation
       uses the mutated construction's result, with its payload location and the source location where that result
@@ -290,9 +291,10 @@ comparator, the production runs and the record.
       whose computation the mutation enters, never the method's residual.
 
       Enumerate all direct and transitive site parts, including engine-local tags and both item 9 signs.
-      Take the union across copies (K11's compact pair), without filtering by structural marks. Print the set and
-      all exclusions with reasons. Print every reading and its computation: parts versus containers; case lists as
-      ordered first-match or branch sets; conditional values; location identities across copies; absent entries.
+      Take the union across copies without filtering by structural marks. For K11 include every tag whose computation
+      the mutation enters, whether or not the compact method reaches it. Print the set and all exclusions with reasons.
+      Print every reading and its computation: parts versus containers; case lists as ordered first-match or branch
+      sets; conditional values; location identities across copies; absent entries.
       Use only engine-defined readings, identical for the same mathematical object in both engines; never use
       storage positions. Evaluate one-copy parts and their conditions; print **not emitted** for the other.
       Cite source lines defining absent-entry readings; invent none. Absence alone is no witness.
@@ -367,8 +369,9 @@ comparator, the production runs and the record.
       An admissible profile assigns each live profile in the part or its conditions one specific radial function
       with fixed coefficients, including `δ`, `V`, `ξ_w`, `ρ_br`, `f`, `μ_⊥` and `j_n` where present, defined with
       all required derivatives at the witness point. Witness inputs are chosen for this test only, enter no engine
-      object, and are neither a profile choice nor a profile family under item 13. K11's sample domain is coverage,
-      not an attached condition.
+      object, and are neither a profile choice nor a profile family under item 13. Require K11 no-change decisions
+      over every admissible input; use neither the method's sample domain nor truncation to restrict that coverage
+      or supply an attached condition.
     - A knife whose construction an engine does not contain is reported, not invented. The engine itself contains
       no control with an expected outcome.
 
@@ -405,11 +408,12 @@ comparator, the production runs and the record.
       - the difference pair: compact corrupted and compact unmutated evaluations;
       - the method's residual pair: unmutated compact evaluation and full baseline payload reduced by the same
         configuration.
-      Both pairs print as ordered operands with the same structural marks as tags, without subtraction or any
-      zero/change classification. Only a witness may claim change; the residual cannot furnish one.
+      Print both pairs as ordered operands with the tags' structural marks, without subtraction or mathematical
+      equality or zero/change claims; print search decisions separately. Only a witness may claim change; the residual
+      cannot furnish one.
     - Each pair carries its coverage: retained grades and truncation order or sample domain. Inexact evaluations
       carry their precision and proved error enclosures as above.
-    - A tag the method does not reach is printed as not evaluated and not compared.
+    - Print a tag the method does not reach as not evaluated and not compared, without a no-change decision.
     - The engine, its baseline run and the other knives are unchanged.
 15. **Handoff.** Each builder works in its own fresh repository, exported from the commit that holds this
     directive, with no git history. The other engine's S9b files are absent from it. Builders are Codex

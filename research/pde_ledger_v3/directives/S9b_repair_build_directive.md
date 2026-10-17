@@ -298,8 +298,10 @@ comparator, the production runs and the record.
       Cite source lines defining absent-entry readings; invent none. Absence alone is no witness.
 
       Include reached text only when the engine writes it as a literal status or label with no mathematical reading.
-      Exclude parts whose difference comes from expression names or structure, or the knife's replacement text; print
-      the reason. For text parts replace mathematical witness requirements with literal comparison: print both texts
+      Exclude exactly two additional kinds of part in both engines, printing each reason: lists of symbol, function
+      or row names extracted from expressions, whether emitted as text or symbols; and text parts whose literal
+      difference is the knife's replacement source. For text parts replace mathematical witness requirements with
+      literal comparison: print both texts
       and location, count the part tried whether equal or different, and count a literal difference as a witness in
       both engines. One-copy text parts follow the one-copy rule.
 
@@ -308,7 +310,8 @@ comparator, the production runs and the record.
       only after running its witness test's CAS operations at printed inputs: solve fixing equations and evaluate values
       and attached conditions. Before listing an untried part, print the actual unresolved evaluation or requirement the
       CAS decided cannot be met; without those evaluations, continue the search. Print each copy's CAS-evaluated output
-      of the construction defined by the knife list at trial inputs; exclude inputs giving the same output.
+      of the construction defined by the knife list at trial inputs; count no attempt at inputs giving the same
+      output. Limit each printed unmet requirement to the printed inputs.
 
       Try item 9's shared object on each sign even if stored once; label trials do not try it. Count a sign trial
       only at a printed concrete input or throughout a printed subrange of the part's stated interval, with printed

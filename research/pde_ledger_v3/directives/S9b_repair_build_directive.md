@@ -297,19 +297,24 @@ comparator, the production runs and the record.
       storage positions. Evaluate one-copy parts and their conditions; print **not emitted** for the other.
       Cite source lines defining absent-entry readings; invent none. Absence alone is no witness.
 
-      Include reached status, label and other text with no mathematical reading as site parts. Replace their
-      mathematical witness requirements with literal comparison: print both texts and location. A literal difference
-      is a witness in both engines.
+      Include reached text only when the engine writes it as a literal status or label with no mathematical reading.
+      Exclude parts whose difference comes from expression names or structure, or the knife's replacement text; print
+      the reason. For text parts replace mathematical witness requirements with literal comparison: print both texts
+      and location, count the part tried whether equal or different, and count a literal difference as a witness in
+      both engines. One-copy text parts follow the one-copy rule.
 
-      Otherwise count a part tried only when all witness requirements except difference hold. Decide values and
-      conditions by engine CAS; substitution alone and unresolved evaluations do not count. Print each copy's
-      CAS-evaluated output of the construction defined by the knife list at trial inputs; exclude inputs giving the
-      same output.
+      For mathematical parts count a part tried only when all witness requirements except difference hold. Decide
+      values and conditions by engine CAS; substitution alone and unresolved evaluations do not count. Count an attempt
+      only after running its witness test's CAS operations at printed inputs: solve fixing equations and evaluate values
+      and attached conditions. Before listing an untried part, print the actual unresolved evaluation or requirement the
+      CAS decided cannot be met; without those evaluations, continue the search. Print each copy's CAS-evaluated output
+      of the construction defined by the knife list at trial inputs; exclude inputs giving the same output.
 
-      Try item 9's shared object on each sign even if stored once; label trials do not try it. Count sign trials
-      only with printed density evaluations in that sign in each emitting copy throughout any ranged radius.
-      Respect the spec's profile definitions, including ρ₀ as asymptotic bulk density. Print a CAS decision and unmet
-      requirement for an unreachable sign part.
+      Try item 9's shared object on each sign even if stored once; label trials do not try it. Count a sign trial
+      only at a printed concrete input or throughout a printed subrange of the part's stated interval, with printed
+      density evaluations in that sign in each emitting copy. Respect the spec's profile definitions, including ρ₀
+      as asymptotic bulk density. If no such input meets the sign on that interval, print the CAS decision and unmet
+      requirement; retain the part as untried, with no witness.
 
       End each search after finitely many attempts with exactly one outcome: a witness; otherwise, after attempting
       every part, **none found** if all count as tried, or **undecided**, listing each untried part and unmet

@@ -300,29 +300,27 @@ comparator, the production runs and the record.
       Include reached text only when the engine writes it as a literal status or label with no mathematical reading.
       Exclude exactly two additional kinds of part in both engines, printing each reason: lists of symbol, function
       or row names extracted from expressions, whether emitted as text or symbols; and text parts whose literal
-      difference is the knife's replacement source. For text parts replace mathematical witness requirements with
-      literal comparison: print both texts
-      and location, count the part tried whether equal or different, and count a literal difference as a witness in
-      both engines. One-copy text parts follow the one-copy rule.
+      difference is the knife's replacement source. For text parts replace mathematical tests with engine CAS literal
+      comparison: print both texts, location and decision; use a literal difference as a witness and literal equality
+      as **no change** in both engines. One-copy text parts follow the one-copy rule.
 
-      For mathematical parts count a part tried only when all witness requirements except difference hold. Decide
-      values and conditions by engine CAS; substitution alone and unresolved evaluations do not count. Count an attempt
-      only after running its witness test's CAS operations at printed inputs: solve fixing equations and evaluate values
-      and attached conditions. Before listing an untried part, print the actual unresolved evaluation or requirement the
-      CAS decided cannot be met; without those evaluations, continue the search. Print each copy's CAS-evaluated output
-      of the construction defined by the knife list at trial inputs; count no attempt at inputs giving the same
-      output. Limit each printed unmet requirement to the printed inputs.
+      For mathematical parts report **no change** only on an engine CAS decision of agreement between the copies in
+      the part and its attached conditions at every admissible input. Report **cannot be tried** only on an
+      engine CAS decision that no admissible input meets the witness requirements apart from difference. For every
+      no-change or cannot-be-tried decision, print its statement, CAS result and full input coverage: all inputs and
+      live profiles admitted by the spec's definitions and supplied premises on the part's stated interval. Infer
+      neither decision from samples or unresolved evaluations.
 
       Try item 9's shared object on each sign even if stored once; label trials do not try it. Count a sign trial
       only at a printed concrete input or throughout a printed subrange of the part's stated interval, with printed
       density evaluations in that sign in each emitting copy. Respect the spec's profile definitions, including ρ₀
-      as asymptotic bulk density. If no such input meets the sign on that interval, print the CAS decision and unmet
-      requirement; retain the part as untried, with no witness.
+      as asymptotic bulk density. If the CAS decides no such input meets the sign on that interval, retain the part
+      as **cannot be tried**, printing the unmet requirement.
 
-      End each search after finitely many attempts with exactly one outcome: a witness; otherwise, after attempting
-      every part, **none found** if all count as tried, or **undecided**, listing each untried part and unmet
-      requirement. Print each attempt's tag, location, role, inputs, evaluations or **not emitted**, whether tried, and
-      unmet requirements.
+      Stop at the first witness and print it. Otherwise end after finitely many attempts at every site part with
+      exactly one outcome: **none found** only with a no-change decision at every part; **undecided** otherwise,
+      listing every part without one and what the CAS left unsettled or decided there. Print each attempt's tag,
+      location, role, inputs, CAS operations and evaluations or **not emitted**, and unmet requirements.
 
       Attached conditions are the domains, gates and premises stating where the part holds, at every containing
       level, in object labels, and in its case selection. Ordered cases require earlier cases to fail, including

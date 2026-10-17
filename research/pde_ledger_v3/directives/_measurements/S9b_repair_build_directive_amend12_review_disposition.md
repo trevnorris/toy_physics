@@ -118,3 +118,119 @@ object). Each round surfaces more forms. This is the many-rounds signal (G4), so
 round 2.
 
 **Outcome.** Not clear. No fold until the user decides how to finish.
+
+### The user's decisions after round 1 (2026-10-16, 23:59 UTC)
+
+Two choices, made through the question tool. The option texts are mine.
+- **How to finish.** Question: "How should we finish it?" Chosen: "Print choices, check at build (Recommended)",
+  whose description reads: "Same move you approved after amendment 11 round 5. One short fold fixes only the
+  outcomes: witness, none found, or 'undecided', with every part listed. It also fixes the floor on what counts as a
+  try. The harness then prints how it read each part (what it counted as a part, missing entries, case lists,
+  conditional values), and the build review checks those readings against the engine. About 1–2 h of amendment
+  review, then the builds (SymPy 5–10+ h), then the build review." The other option was to fold all seven points into
+  the text and review until clear.
+- **Label changes.** Question: "Should a literal change in a status or label text count as a shown change at a
+  knife?" Chosen: "Yes, it counts (Recommended)", whose description reads: "A status text has no other mathematical
+  reading, so a literal difference is decided exactly, and it is the engine's own statement changing. K7 likely gets a
+  witness in both engines this way." The other option was values and domains only.
+
+### Must be true in round 2
+
+A fresh Codex author writes round 2, in a new session (G4: round 1's text bred two defects, F's try clause and H).
+Write your own wording; these say what must be true, not the text.
+1. **Outcomes (F).** Each knife prints exactly one outcome, and the search ends:
+   - a witness;
+   - **none found**, when every enumerated site part counts as tried and none gives a witness;
+   - **undecided**, when there is no witness and some part cannot count as tried. Each such part is listed with the
+     requirement it did not meet.
+2. **Print the readings, checked at the build (I, J, K, L, and the forms behind F and G).** For each knife, the
+   harness prints its enumerated site-part set and every reading behind it:
+   - what it treats as a part and what as a container;
+   - how it reads a case list (ordered first-match, or a set of branches) and a value that carries its own
+     condition;
+   - how it names a location in both copies (never by storage position);
+   - how it reads an entry that one copy does not emit.
+
+   A reading counts only if it is the engine's own, and an absent entry takes only a reading the engine's code
+   defines, cited by source line. Absence alone is never a witness. The same mathematical object is read the same way
+   in both engines. The text does not need to define each payload form; the build review checks the printed readings
+   against the engines.
+3. **The floor on a try (H).** Keep round 1's floor. An excluded input choice is one at which the knife's
+   construction, as the knife list defines it, gives the same output in both copies. The printed CAS check evaluates
+   that construction's output in both copies at the trial inputs.
+4. **Density sign (G).** The object that both item-9 sign parts share is tried on each sign, at inputs whose computed
+   density lies in that sign in each emitting copy. A trial of a label predicate does not try the object. Witness
+   profiles meet the spec's definitions, including ρ₀ as the asymptotic bulk density. A sign part that no such input
+   reaches over its ranged radius gets a printed, decided outcome.
+5. **Text entries (I; the user's decision).** A literal change in an emitted status, label or other text entry that
+   has no mathematical reading is a witness. It is decided by literal comparison of the emitted text, the same way in
+   both engines, and printed with its location.
+6. **Keep what held.** Everything the round-0 and round-1 legs found sound stays.
+7. **Shorter.** Where a printed reading replaces a definition, cut the definition.
+
+**Carried to the round-9 build review.**
+- Every printed reading is the engine's own, and the enumerated set is complete.
+- Each text-entry witness is a literal change at a site part.
+- Each undecided part is listed with a true unmet requirement.
+- Each density-sign object trial lies in its sign.
+
+## Round 2
+
+**Artifact.** sha256 `0cca29c8…`; `git diff bc2efcd1` shows round 2's changes. The reviewed text is saved at
+`_scratch/s9b_build/preserved/S9b_repair_build_directive_amend12_r2.md`. A new Codex author wrote it, in a fresh
+session (brief and note in `_scratch/s9b_build/amend12_author2/`). Item 14 went from 1,632 to 1,629 words.
+
+**Legs.** These were a fresh Claude agent and Grok, on the identical prompt
+`_scratch/s9b_build/s9b_repair_build_directive_amend12_review_prompt_r2.md` (sha256 `fafd9c25…`). Both reported
+before I adjudicated.
+- **Fresh Claude (opus): NEEDS REVISION, two findings.** Report `_scratch/s9b_build/s9b_amend12_review_r2_claude.md`
+  (verbatim); evidence in `…_claude_evidence/`.
+- **Grok: NEEDS REVISION, two findings.** Report `_scratch/s9b_build/s9b_amend12_review_r2_grok.txt` (from
+  "**Verdict**"); evidence in `…_grok_evidence/`.
+
+**Verification.** Mechanical lookups, in `S9b_repair_build_directive_amend12_review_r2_lookups.md`, generated by
+`_scratch/s9b_build/gen/s9b_amend12_r2_lookups.sh`. I ran no CAS (E1).
+
+**Agreement.** Both legs found these sound:
+- the three outcomes;
+- **none found** requiring every part to count as tried;
+- the printed readings;
+- the knife-list construction check;
+- the shared object on each sign;
+- the Part 2 and Part 3 lines;
+- the builder-facing wording and the absence of leakage;
+- K6, K10 and K11.
+
+### Findings
+
+| # | Leg | Finding | Disposition |
+|---|---|---|---|
+| M | Claude 1 | **An undecided part needs no attempt.** The floor on what counts as tried has no counterpart for what counts as an attempt. A part never evaluated is "untried" with a true unmet requirement, so the knife prints **undecided**. Round 8's Wolfram ray branch (harness lines 217–225) would meet every printed field of round 2 if relabelled. That is round-8 Finding 1 coming back under a new name. | **Accepted.** |
+| N | Claude 2 | **Lists of names computed from expression structure become text witnesses.** SymPy's `PY_LOCAL_S9B_EXPORT_CLOSURE` is a list of symbol names taken from the bind-set's atoms (engine lines 333–334 and 1085–1091). It differs at K1, K2, K4b, K4c, K7, K8 and K9b. At K8 the only difference is the name the knife's own replacement creates (harness line 42). Differing names do not mean differing values (leg stdout). Wolfram emits no such list. | **Accepted.** The user's decision covers text the engine writes as a status or label, not names read off expression structure. |
+| O | Grok 1 | **"throughout any ranged radius" fixes no single sign trial.** The C-row conditions carry the far ray: SymPy has `Interval.open(bmin, oo)` (engine line 966), and Wolfram has `r > bFar` (lines 400 and 421). With ρ₀ the asymptotic density (spec line 223), no profile stays at ρ ≤ 0 on the whole ray. One stays there at a point and on a subrange inside it (leg stdout), which item 14 already allows (line 323). One builder marks the part unreachable, and another counts a point trial. | **Accepted.** |
+| P | Grok 2 | **An equal text entry has no tried rule.** A literal difference is a witness, but the tried rule asks for finite values, which a text cannot meet. So when the two texts are equal, one builder leaves the part untried and another counts it tried. The texts exist in both engines: SymPy `kind` and `reason` (engine lines 444–446 and 478), and Wolfram `Status` (lines 498, 511 and 544). | **Accepted.** |
+
+### Must be true in round 3
+
+The round-2 author folds once. Write your own wording.
+1. **An attempt (M).** A part is listed as untried only after the harness has run, at printed inputs, the CAS
+   evaluations its witness test calls for: solving its fixing equations and evaluating its values and attached
+   conditions. Its record prints the evaluation that stayed unresolved, or the requirement the CAS decided cannot be
+   met. A record without those evaluations is not an attempt, and the search has not ended.
+2. **Text entries (N).** A text witness is text the engine writes as a literal status or label. A part whose
+   difference comes from the names or structure of expressions, or from the knife's replacement text, is excluded
+   with a printed reason, as the digest is.
+3. **Sign trials (O).** A sign trial counts at a concrete input, or throughout a printed subrange, where the computed
+   density lies in that sign in each emitting copy. The profiles keep the spec's asymptotic ρ₀. If no such input meets
+   the sign on the interval the part states, print the CAS decision and the unmet requirement. The part stays in the
+   set, does not count as tried, and is not a witness.
+4. **Equal texts (P).** Once both copies' texts are printed, a text part counts as tried whether or not they differ.
+   A difference is the witness. A text part emitted by one copy only follows the one-copy rule.
+5. **Keep what held.** Everything the legs of rounds 0–2 found sound stays. No other change.
+
+**Carried to the round-9 build review** (in addition to the list after round 1):
+- every untried part has a real attempt;
+- every text witness is a literal status or label;
+- name and structure lists are excluded.
+
+**Outcome.** Not clear. The round-2 author folds round 3; this is its first fold.

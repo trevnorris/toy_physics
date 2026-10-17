@@ -69,8 +69,8 @@ clear. Dispositions:
 search per knife, and print every reading choice behind each witness (the user's choices of 2026-10-16). Keep
 the engines unchanged.
 
-**Amendment 12** (Codex author, 2026-10-16), for repair round 9. Item 14's search rule now covers every site
-part before **none found**. Part 2 also adds fixture marks or values before software-check guards.
+**Amendment 12** (Codex author, 2026-10-16), for repair round 9. Apply item 14's finite search and printed
+readings. In Part 2, print fixture marks or values before the software check can raise a failure.
 
 **Scope.** This implements D6 and D7 item 3 of `directives/S9b_repair_decision_list.md` (`79055918`) for Parts A–C
 only. **Part D is held** (user decision, 2026-10-08) until the brane-material premise behind P1 is settled. This build
@@ -289,30 +289,32 @@ comparator, the production runs and the record.
       is the gate after negation. For K11, the witness compares compact corrupted/unmutated parts of a reached tag
       whose computation the mutation enters, never the method's residual.
 
-      Enumerate all such values and domains by mathematical object in both engines. Recurse through mappings'
-      keyed values; matrices', vectors' and lists' components; solution sets' represented branches and domains;
-      and cases' values and selectors. For equations, include the predicate and both sides. Keep other scalar
-      expressions and predicates whole. Identify locations by tag and mathematical key, component, side, solution
-      or case identity, never storage position in a sparse or reordered container. Include engine-local tags and
-      both item 9 density-sign parts. Trace direct and transitive computational uses, and take the union of
-      locations in the two copies (the compact pair for K11), without filtering by structural marks. Print the
-      site-part set and every excluded value/domain part with its reason.
+      Enumerate all direct and transitive site parts, including engine-local tags and both item 9 signs.
+      Take the union across copies (K11's compact pair), without filtering by structural marks. Print the set and
+      all exclusions with reasons. Print every reading and its computation: parts versus containers; case lists as
+      ordered first-match or branch sets; conditional values; location identities across copies; absent entries.
+      Use only engine-defined readings, identical for the same mathematical object in both engines; never use
+      storage positions. Evaluate one-copy parts and their conditions; print **not emitted** for the other.
+      Cite source lines defining absent-entry readings; invent none. Absence alone is no witness.
 
-      For a part emitted by only one copy, evaluate that copy and its attached conditions; print **not emitted**
-      for the other. Use and print an absent entry's reading only if the engine defines it, with its computation;
-      supply no undefined value. Absence alone furnishes no witness; apply the witness tests below to any
-      engine-defined readings.
+      Include reached status, label and other text with no mathematical reading as site parts. Replace their
+      mathematical witness requirements with literal comparison: print both texts and location. A literal difference
+      is a witness in both engines.
 
-      Count a part as tried only when its inputs, construction solutions, available values and attached conditions
-      meet the witness rules below, apart from establishing a difference. Decide values and conditions by the engine
-      CAS; substitution alone and unresolved evaluations do not count. Use no input choice that alone neutralizes
-      the mutation at its construction; print the CAS computation checking this. For each density-sign part,
-      compute and print the density at the trial inputs; count the trial only if it lies in that part in each
-      emitting copy, throughout any ranged radius.
+      Otherwise count a part tried only when all witness requirements except difference hold. Decide values and
+      conditions by engine CAS; substitution alone and unresolved evaluations do not count. Print each copy's
+      CAS-evaluated output of the construction defined by the knife list at trial inputs; exclude inputs giving the
+      same output.
 
-      Print one witness, or **none found** only after every site part counts as tried. For each attempt, print the
-      tag, location, value/domain role, inputs, performed evaluations or **not emitted**, whether it counts as tried,
-      and every unmet witness requirement.
+      Try item 9's shared object on each sign even if stored once; label trials do not try it. Count sign trials
+      only with printed density evaluations in that sign in each emitting copy throughout any ranged radius.
+      Respect the spec's profile definitions, including ρ₀ as asymptotic bulk density. Print a CAS decision and unmet
+      requirement for an unreachable sign part.
+
+      End each search after finitely many attempts with exactly one outcome: a witness; otherwise, after attempting
+      every part, **none found** if all count as tried, or **undecided**, listing each untried part and unmet
+      requirement. Print each attempt's tag, location, role, inputs, evaluations or **not emitted**, whether tried, and
+      unmet requirements.
 
       Attached conditions are the domains, gates and premises stating where the part holds, at every containing
       level, in object labels, and in its case selection. Ordered cases require earlier cases to fail, including

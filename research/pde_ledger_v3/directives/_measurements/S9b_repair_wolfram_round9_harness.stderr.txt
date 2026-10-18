@@ -1,0 +1,12 @@
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are
+    ignored.
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are
+    ignored.
+
+Limit::alimv: Warning: Assumptions that involve the limit variable are
+    ignored.
+
+General::stop: Further output of Limit::alimv
+     will be suppressed during this calculation.

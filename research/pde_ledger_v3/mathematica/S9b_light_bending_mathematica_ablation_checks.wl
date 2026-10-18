@@ -32,3 +32,39 @@ Print["COMMON_FIXED_SOLUTION_SETS: ",ToString[S9bHarness`fixedReading[{Global`fL
 Print["DISJOINT_FIXED_SOLUTION_SETS: ",ToString[S9bHarness`fixedReading[{Global`aMetric},fixture1,fixture2],InputForm,PageWidth->Infinity]];
 Print["ORDERED_CASE_SELECTION: ",ToString[S9bHarness`caseReadings[
  Piecewise[{{11,Global`n==0},{12,Global`n==1}},13],fixture1],InputForm,PageWidth->Infinity]];
+
+(* Domain decisions and binder substitution use the real round-9 helpers. *)
+Print["DOMAIN_BOOLEAN_DECISION: ",ToString[<|"Operands"->{False,True},
+ "Decision"->S9bHarness`domainDifferenceDecision[False,True]|>,InputForm]];
+Print["DOMAIN_UNRESOLVED_DECISION: ",ToString[<|"Operands"->{x>0,True},
+ "Decision"->S9bHarness`domainDifferenceDecision[x>0,True]|>,InputForm]];
+Print["BOUND_VARIABLE_SCOPE: ",ToString[S9bHarness`siteEvaluate[
+ Inactive[ForAll][Global`r,Global`r>1,Global`r^2>0] &&
+ Inactive[Integrate][Global`r,{Global`r,1,2}]>0,fixture1],InputForm,PageWidth->Infinity]];
+
+Print["BOUND_ASSOCIATION_SCOPE: ",ToString[S9bHarness`siteEvaluate[
+ <|"Primitive"->Inactive[Integrate][Global`r,{Global`r,1,2}],"Domain"->Global`r>1|>,fixture1],InputForm,PageWidth->Infinity]];
+
+S9bHarness`object[data_,tag_] := ReleaseHold[data["Held"][tag]];
+(* Amendment-12 fixtures print computations before any external validation.
+   These synthetic objects test readings, not expected engine physics values. *)
+fixtureCatalog=<|"Held"-><|"WL_S9B_B_CONDITION_DEFLECTION"->HoldComplete[
+ <|"Domain"->True,"Cases"->{<|"GM"->{{Global`GM->1}},
+   "VelocityReduction"-><|"Status"->"fixture status","Cases"->{
+     <|"Component"->"each connected open component of squared velocity > 0","Velocity"->-Sqrt[Global`r],"Domain"->Global`r>1|>,
+     <|"Component"->"each connected open component of squared velocity > 0","Velocity"->Sqrt[Global`r],"Domain"->Global`r>1|>}|>|>}|>]|>|>;
+Print["SEMANTIC_BRANCH_CATALOG: ",ToString[KeyValueMap[
+ Function[{id,rec},S9bHarness`publicPart[rec]],S9bHarness`catalog[fixtureCatalog]["Parts"]],InputForm,PageWidth->Infinity]];
+fixtureDensity=<|"Held"-><|"WL_LOCAL_S9B_C_RESPONSES"->HoldComplete[
+ <|"Responses"->{1,<|"SuppliedBulkDensityPremise"->Global`rho0>0,"DensityParts"->{
+   <|"Label"->"rho > 0","LabelCondition"->Global`rho0(1+Global`fProfile[Global`r])>0,"Object"->ConditionalExpression[Global`r,Global`r>0]|>,
+   <|"Label"->"rho <= 0","LabelCondition"->Global`rho0(1+Global`fProfile[Global`r])<=0,"Object"->ConditionalExpression[Global`r,Global`r>0]|>}|>,3}|>]|>|>;
+Print["DENSITY_SIGN_CATALOG: ",ToString[KeyValueMap[Function[{id,rec},S9bHarness`publicPart[rec]],
+ S9bHarness`catalog[fixtureDensity]["Parts"]],InputForm,PageWidth->Infinity]];
+Print["TEXT_COMPARISON_DECISIONS: ",ToString[<|"Operations"->{Inactive[SameQ]["one","two"],Inactive[SameQ]["one","one"]},
+ "Decisions"->{SameQ["one","two"],SameQ["one","one"]}|>,InputForm]];
+Print["NEGATIVE_DENSITY_ASYMPTOTE: ",ToString[<|"Profile"->Function[{q},-9/q],
+ "DensityAtPointComputation"->Inactive[ReplaceAll][1-9/Global`r,Global`r->3],
+ "DensityAtPoint"->(1-9/Global`r/.Global`r->3),
+ "AsymptoticComputation"->Inactive[Limit][1-9/Global`r,Global`r->Infinity],
+ "AsymptoticDensity"->Limit[1-9/Global`r,Global`r->Infinity]|>,InputForm]];

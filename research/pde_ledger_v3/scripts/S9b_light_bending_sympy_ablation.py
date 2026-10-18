@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """S9b amendment 12: literal marks and finite searches of emitted site parts.
 
-Run through scripts/s11c_guarded_run.py --pool s9b --memory-gib 22 (user authorization for this round).
+Run through scripts/s11c_guarded_run.py --pool s9b --memory-gib 18 (user authorization for this round).
 No deadlines, retries, full K11 worker, or mathematical equality classifications.
 Raw engine payloads are preserved. Only the per-knife witness search evaluates
 selected site parts; failure to decide a condition produces no witness.
@@ -11,6 +11,7 @@ import ast
 from collections import Counter
 from contextlib import contextmanager
 import hashlib
+from itertools import product
 import json
 from pathlib import Path
 import os
@@ -249,10 +250,104 @@ def specialize_profiles(value,profiles):
     return value.doit(deep=True)
 
 
+def substitute_inputs(value,point):
+    """Substitute free inputs, including parameters inside ConditionSets.
+
+    SymPy's ConditionSet._eval_subs can leave its condition unchanged when
+    the new value is numeric. Walk scopes explicitly instead. In particular,
+    the set's base is outside its binder, just as integral endpoints are
+    outside their own integration variable's scope.
+    """
+    if not point:return value
+    if isinstance(value,sp.MatrixBase):return value.applyfunc(lambda x:substitute_inputs(x,point))
+    if isinstance(value,sp.Symbol):return point.get(value,value)
+    if not value.args:return value
+    def without(variables):return {s:v for s,v in point.items() if s not in variables}
+    if isinstance(value,sp.ConditionSet):
+        return sp.ConditionSet(value.sym,substitute_inputs(value.condition,without(value.bound_symbols)),
+            substitute_inputs(value.base_set,point))
+    if isinstance(value,(sp.Integral,sp.Sum,sp.Product)):
+        scoped=dict(point)
+        limits=[]
+        for limit in reversed(value.limits):
+            limits.append((limit[0],*(substitute_inputs(x,scoped) for x in limit[1:])))
+            scoped.pop(limit[0],None)
+        return value.func(substitute_inputs(value.function,scoped),*reversed(limits))
+    if isinstance(value,sp.Limit):
+        body,variable,target,direction=value.args
+        return sp.Limit(substitute_inputs(body,without((variable,))),variable,
+            substitute_inputs(target,point),direction)
+    if isinstance(value,sp.Subs):
+        return sp.Subs(substitute_inputs(value.expr,without(value.variables)),value.variables,
+            tuple(substitute_inputs(x,point) for x in value.point))
+    if isinstance(value,sp.Lambda):
+        return sp.Lambda(value.variables,substitute_inputs(value.expr,without(value.variables)))
+    if isinstance(value,sp.Derivative):
+        # SymPy represents a derivative at a numeric coordinate by Subs,
+        # rather than differentiating with respect to that number.
+        return value.subs(point,simultaneous=True)
+    if isinstance(value,(sp.Intersection,sp.Union,sp.SymmetricDifference)):
+        return value.func(*(substitute_inputs(arg,point) for arg in value.args),evaluate=False)
+    return value.func(*(substitute_inputs(arg,point) for arg in value.args))
+
+
 def evaluate(value,profiles,point):
     value=specialize_profiles(value,profiles)
-    value=value.subs(point,simultaneous=True)
+    value=substitute_inputs(value,point)
     return sp.simplify(value.doit(deep=True))
+
+
+def condition_solutions(condition,variable,domain):
+    """Exact scalar rational decisions; retain unsupported predicates active."""
+    if condition is sp.true:return domain
+    if condition is sp.false:return sp.EmptySet
+    if isinstance(condition,sp.And):
+        return sp.Intersection(*(condition_solutions(c,variable,domain) for c in condition.args))
+    if isinstance(condition,sp.Or):
+        return sp.Union(*(condition_solutions(c,variable,domain) for c in condition.args))
+    if isinstance(condition,sp.Not):
+        return sp.Complement(domain,condition_solutions(condition.args[0],variable,domain))
+    if isinstance(condition,sp.core.relational.Relational):
+        if (condition.free_symbols <= {variable} and all(isinstance(x,sp.Expr) for x in condition.args)
+            and (condition.lhs-condition.rhs).is_rational_function(variable)):
+            if domain.has(sp.ConditionSet):
+                # SymPy's eager membership uses xreplace across nested set
+                # binders. Solve the scalar predicate in Reals, then retain
+                # its exact intersection with the constructed ray domain.
+                return sp.Intersection(sp.solveset(condition,variable,domain=sp.S.Reals),domain,evaluate=False)
+            return sp.solveset(condition,variable,domain=domain)
+    return sp.ConditionSet(variable,condition,domain)
+
+
+def evaluate_attempt(value,profiles,point):
+    """Exact finite trial, with inputs applied before any integration.
+
+    A bound ray root is not a numeric input. Integrals still parameterized
+    by such roots stay ordinary unevaluated integrals, and forbid a witness
+    unless the surrounding CAS logic decides the condition without them.
+    This changes no domain, root construction or existence convention.
+    """
+    value=value.replace(lambda x:isinstance(x,AppliedUndef) and x.func.__name__ in profiles,
+        lambda x:profiles[x.func.__name__].subs(RADIUS,x.args[0]))
+    value=value.replace(lambda x:isinstance(x,sp.Derivative),lambda x:x.doit(deep=False))
+    value=substitute_inputs(value,point)
+    def reduce(node):
+        if isinstance(node,sp.MatrixBase):return node.applyfunc(reduce)
+        if not node.args:return node
+        args=tuple(reduce(arg) for arg in node.args)
+        node=node.func(*args,evaluate=False) if isinstance(node,(sp.Intersection,sp.Union,sp.SymmetricDifference)) else node.func(*args)
+        if isinstance(node,(sp.Integral,sp.Limit)):
+            return node if node.free_symbols else node.doit(deep=False)
+        if isinstance(node,(sp.Derivative,sp.Subs)):
+            return node.doit(deep=False)
+        if isinstance(node,sp.ConditionSet) and isinstance(node.sym,sp.Symbol):
+            if not node.condition.has(sp.Integral,sp.Limit,sp.ConditionSet,sp.Derivative,sp.Subs):
+                return condition_solutions(node.condition,node.sym,node.base_set)
+        return node
+    result=reduce(value)
+    if not result.has(sp.Integral,sp.Limit,sp.ConditionSet,sp.Derivative,sp.Subs):result=sp.simplify(result)
+    if set(point)&result.free_symbols:raise ValueError(('input substitution incomplete',set(point)&result.free_symbols))
+    return result
 
 
 def finite_exact(value):
@@ -288,13 +383,13 @@ def binders(value):
     rows=[]
     for node in sp.preorder_traversal(value):
         if isinstance(node,sp.Integral):rows.append(('Integral',node.variables,node.limits))
-        elif isinstance(node,sp.ConditionSet):rows.append(('ConditionSet',(node.sym,),node.base_set))
+        elif isinstance(node,sp.ConditionSet):rows.append(('ConditionSet',tuple(node.bound_symbols),node.base_set))
         elif isinstance(node,sp.Limit):rows.append(('Limit',(node.args[1],),node.args[2:]))
         elif isinstance(node,sp.Subs):rows.append(('Subs',node.variables,node.point))
     return rows
 
 
-def input_reading(parts,conditions,profiles,point,fixings=()):
+def input_reading(parts,conditions,profiles,point,fixings=(),ranged=(),strict_profiles=True):
     whole=sp.Tuple(*parts,*(condition for group in conditions for path,condition in group),*fixings)
     free=whole.free_symbols
     roles=[]
@@ -304,6 +399,7 @@ def input_reading(parts,conditions,profiles,point,fixings=()):
         if symbol in free:
             if symbol in fixed:occurrences.append(('fixed by construction',tuple(eq for eq in fixings if eq.lhs==symbol)))
             elif symbol in point:occurrences.append(('assigned at point',point[symbol]))
+            elif any(symbol==variable for variable,domain in ranged):occurrences.append(('ranged',tuple(domain for variable,domain in ranged if variable==symbol)))
             else:occurrences.append(('unresolved free input',symbol))
         for kind,variables,ranges in binders(whole):
             if symbol in variables:occurrences.append(('bound',kind,ranges))
@@ -311,7 +407,10 @@ def input_reading(parts,conditions,profiles,point,fixings=()):
     function_rows=[]
     for function in sorted(functions_in(whole),key=str):
         name=function.__name__
-        if name not in profiles:raise ValueError(('unassigned witness profile',name))
+        if name not in profiles:
+            if strict_profiles:raise ValueError(('unassigned witness profile',name))
+            function_rows.append((Str(name),Str('unfixed profile; witness requirement unmet')))
+            continue
         expression=profiles[name]
         required=max([0]+[int(order) for d in whole.atoms(sp.Derivative)
             if any(a.func==function for a in d.atoms(AppliedUndef)) for variable,order in d.variable_count])
@@ -784,7 +883,8 @@ def finite_attempt(key,pair,source,knife):
 
     A symbolic reflexivity decision covers general inputs. A failed or
     unresolved concrete trial cannot decide no change or impossibility.
-    No joint ray solver or new physics construction is introduced here.
+    Bound ray constructions retain all their solutions; no ray is selected
+    independently of the engine construction.
     """
     tag,identity,partition=key
     missing='not evaluated' if knife=='K11' else 'not emitted'
@@ -839,58 +939,147 @@ def finite_attempt(key,pair,source,knife):
     # Reduced identities range over the whole engine interval; their radius
     # cannot be converted into a single test coordinate.
     ranged={variable for rows in range_rows for variable,domain in rows}
+    fixings=[]
+    fs=next((s for s in free if s.name=='s9b_fractional_bulk_change'),None)
+    f=next((f for f in functions_in(wholes) if f.__name__=='s9b_f'),None)
+    r=next((s for s in free if s.name=='s9b_r'),None)
+    if fs is not None and f is not None and r is not None:
+        fixings=[sp.Eq(fs,f(r),evaluate=False)]
+    unknowns=tuple(eq.lhs for eq in fixings)
     input_point=POINT|({'x_1':COMPACT_POINTS[0][0],'x_2':COMPACT_POINTS[0][1],'x_3':COMPACT_POINTS[0][2],
         's9b_azimuthal':COMPACT_AZIMUTHAL} if knife=='K11' else {})
-    point={s:sp.sympify(input_point[s.name]) for s in free-ranged if s.name in input_point}
-    profile_rules=lambda x:profiles[x.func.__name__].subs(RADIUS,x.args[0])
+    point={s:sp.sympify(input_point[s.name]) for s in free-ranged-set(unknowns) if s.name in input_point}
+    ranges=[[(variable,substitute_inputs(domain,point)) for variable,domain in rows] for rows in range_rows]
+    equations=[]
+    solutions=[]
+    for copy in range(2):
+        if pair[copy] is None:
+            equations.append(missing);solutions.append(missing);continue
+        eqs=tuple(sp.Eq(eq.lhs,evaluate(eq.rhs,profiles,point),evaluate=False) for eq in fixings)
+        equations.append(eqs)
+        solved=tuple(sp.solveset(eq,x,domain=sp.S.Reals) for x,eq in zip(unknowns,eqs))
+        solutions.append(sp.FiniteSet(*(sp.Tuple(*row) for row in product(*solved)))
+            if all(isinstance(s,sp.FiniteSet) for s in solved) else sp.ProductSet(*solved))
+    intersection=sp.Intersection(*solutions) if all(p is not None for p in pair) else missing
+    selected=[None,None]
+    selection='unresolved solution intersection; no independent solution choice'
+    if isinstance(intersection,sp.FiniteSet) and intersection:
+        common=next(iter(intersection))
+        selected=[common,common]
+        selection='common solution of the printed fixing equations'
+    elif intersection is sp.EmptySet:
+        if all(isinstance(s,sp.FiniteSet) and s for s in solutions):
+            selected=[next(iter(s)) for s in solutions]
+            selection='intersection decided empty; each copy uses its own solution'
+        else:selection='decided absence of a fixing solution; no value witness'
     partial=[]
-    for value,group in zip(values,conditions):
+    condition_decisions=[]
+    assignment_rows=[]
+    for copy,(value,group) in enumerate(zip(values,conditions)):
+        assignments=point|dict(zip(unknowns,selected[copy] or ()))
+        assignment_rows.append(assignments)
         def prepare(expr):
-            # Substitution evaluates algebra, but deliberately does not
-            # claim that unevaluated integrals/ConditionSets were decided.
-            return expr.replace(lambda x:isinstance(x,AppliedUndef) and x.func.__name__ in profiles,profile_rules).subs(point,simultaneous=True)
+            result=evaluate_attempt(expr,profiles,assignments)
+            remaining=set(assignments)&result.free_symbols
+            if remaining:raise ValueError(('input substitution incomplete',tag,identity,copy,remaining))
+            return result
+        evaluated_conditions=[]
+        condition_computations=[]
+        for path,c in group:
+            result=prepare(c)
+            computation={'location':path,'at_inputs':result,'range_decision':()}
+            # An Interval carrier of a radial differential identity denotes
+            # its full radial range, not a free numeric coordinate.
+            if isinstance(result,sp.Interval) and ranges[copy]:
+                covered=[domain.is_subset(result) for variable,domain in ranges[copy]]
+                computation['range_decision']=('stated-range subset of interval carrier',ranges[copy],result,covered)
+                if all(answer is True for answer in covered):result=sp.true
+            elif len(ranges[copy])==1 and result not in (sp.true,sp.false):
+                variable,domain=ranges[copy][0]
+                if result.free_symbols <= {variable} and isinstance(result,sp.logic.boolalg.Boolean):
+                    solution=condition_solutions(result,variable,domain)
+                    computation['range_decision']=('condition solution set on full stated interval',variable,domain,solution,sp.Eq(solution,domain))
+                    if sp.Eq(solution,domain) is sp.true:result=sp.true
+                    elif solution is sp.EmptySet:result=sp.false
+            evaluated_conditions.append((path,c,result))
+            computation['decision']=result
+            condition_computations.append(computation)
+        condition_decisions.append(all(result is sp.true for path,c,result in evaluated_conditions))
         partial.append({'part':prepare(value) if value is not None else missing,
-            'conditions':[(path,c,prepare(c)) for path,c in group]})
+            'conditions':evaluated_conditions,'condition_computations':condition_computations})
     density=[]
     if partition:
         for copy,p in enumerate(pair):
             if p is None:density.append(missing);continue
             condition=decode(partition[1])
-            tested=condition.replace(lambda x:isinstance(x,AppliedUndef) and x.func.__name__ in profiles,profile_rules)
-            symbols=tested.free_symbols
-            density_point={s:sp.sympify(POINT[s.name]) for s in symbols if s.name in POINT and s.name!='s9b_r'}
-            tested=tested.subs(density_point,simultaneous=True)
-            r=next((s for s in tested.free_symbols if s.name=='s9b_r'),None)
-            density_value=condition.lhs.replace(lambda x:isinstance(x,AppliedUndef) and x.func.__name__ in profiles,profile_rules).subs(density_point,simultaneous=True)
-            if r is None or r not in ranged:
-                assignments=({r:point[r]} if r is not None else {})
-                density.append({'condition':condition,'point':density_point|assignments,
-                    'density_evaluation':density_value.subs(assignments,simultaneous=True),
-                    'CAS_operations':'subs at the same printed concrete input',
-                    'sign_met':sp.simplify(tested.subs(assignments,simultaneous=True))})
+            assignments=assignment_rows[copy]
+            tested=evaluate_attempt(condition,profiles,assignments)
+            density_value=evaluate_attempt(condition.lhs,profiles,assignments)
+            variable=next((s for s in tested.free_symbols if s.name=='s9b_r'),None)
+            if variable is None or variable not in ranged:
+                density.append({'condition':condition,'point':assignments,
+                    'density_evaluation':density_value,'CAS_operations':'fixed profiles; scope-aware free-input substitution; exact evaluation',
+                    'sign_met':tested})
             else:
                 domain=sp.Interval.open(1,2) if partition[0]=='RHO_NONPOSITIVE' else sp.Interval.open(3,sp.oo)
-                for variable,stated in range_rows[copy]:
-                    if variable==r:domain=sp.Intersection(domain,stated.subs(point,simultaneous=True))
-                solution=sp.solveset(tested,r,domain=domain)
+                for v,stated in ranges[copy]:
+                    if v==variable:domain=sp.Intersection(domain,stated)
+                solution=sp.solveset(tested,variable,domain=domain)
                 density.append({'condition':condition,'at_profile':tested,'subrange':domain,'CAS_operations':'solveset(sign, r, domain=subrange)',
                     'sign_solution_set':solution,'covers_subrange':sp.Eq(solution,domain),
                     'nonempty_subrange':sp.sympify(domain.is_empty is False),
                     'density':density_value,'rho_0':sp.S.One})
-    unassigned=sorted(free-set(point)-ranged,key=sp.default_sort_key)
+    unassigned=sorted(free-set(point)-ranged-set(unknowns),key=sp.default_sort_key)
     unfixed=sorted({f.__name__ for f in functions_in(wholes)}-set(profiles))
+    reading=input_reading(tuple(v for v in values if v is not None),conditions,profiles,point,fixings,
+        tuple(row for rows in ranges for row in rows),strict_profiles=False)
+    reading['reading_scope']='The enumerated mathematical part with all containing and object-label conditions. Mapping/field/case identities and source computations are printed in SITE_PARTS. No extra on-shell equation or independently chosen turning radius is introduced.'
+    reading['bound_solution_reading']='ConditionSet and quantified expressions retain their complete engine-defined sets and active binders. No individual bound root or momentum is selected as an independent input.'
+    reading['fixing_equations_source']=((source_location(source,'local=response.subs(f_symbol,f)'),) if fixings else ())
+    reading['ordered_case_exclusions']=[path for group in conditions for path,c in group]
+    evaluated=[row['part'] for row in partial]
+    finite=all(p is not None and finite_exact(value) for p,value in zip(pair,evaluated))
+    different=different_exact(*evaluated) if finite else False
+    solution_ready=all(solution is not None for solution in selected)
+    conditions_true=all(condition_decisions)
+    sign_met=all(isinstance(row,dict) and (row.get('sign_met') is sp.true or
+        (row.get('covers_subrange') is sp.true and row.get('nonempty_subrange') is sp.true)) for row in density)
+    role=pair[0]['role'] if pair[0] else None
+    domain_decided=all(value in (sp.true,sp.false) for value in evaluated)
+    certified=all(p is not None and p['role']==role for p in pair) and role!='text' and not unassigned and not unfixed and solution_ready and conditions_true and sign_met and finite and different
+    if role=='domain':certified=certified and domain_decided
     no_change=decision is sp.true
-    return base|{'status':'no change' if no_change else 'undecided','statement':statement,'CAS_result':decision,
+    unmet=[]
+    if not no_change:
+        if not all(pair):unmet.append('One-copy part: absence is not a difference witness.')
+        if unassigned:unmet.append(('Unassigned independent inputs',unassigned))
+        if unfixed:unmet.append(('Unfixed profile functions',unfixed))
+        if not solution_ready:unmet.append(('Fixing solution selection not established',solutions,intersection))
+        if not conditions_true:unmet.append(('Attached conditions not computed true in both copies',condition_decisions))
+        if not sign_met:unmet.append('The density-sign trial is not established in each emitting copy.')
+        if not finite:unmet.append('Ordinary finite exact evaluations not established in both copies; unevaluated binders/integrals/derivatives decide nothing.')
+        elif not different:unmet.append('No exact separation at these inputs; a sample does not decide general agreement.')
+        if role=='domain' and not domain_decided:unmet.append('Compared domain is not decided true/false in both copies.')
+        if not certified:unmet.append('No full-input agreement or impossibility decision.')
+    return base|{'status':'no change' if no_change else ('witness' if certified else 'undecided'),
+        'site_part':role,'statement':statement,'CAS_result':decision,
         'full_input_coverage':universal_coverage(pair) if no_change else 'No full-input decision.',
         'CAS_operations':('Eq on general part and condition tuples (when both mathematical parts emitted)',
-            'replace fixed profile functions; simultaneous free-input subs; no bound-variable substitution; active quantifiers retained'),
-        'inputs':{'point':point,'ranged':[[ (variable,domain.subs(point,simultaneous=True)) for variable,domain in rows] for rows in range_rows],
+            'fixed full profiles; differentiate before scope-aware free-input substitution; exact algebra and scalar ConditionSet solveset with quantifiers active; ordinary numeric-parameter integrals evaluated, bound-parameter integrals retained and unresolved',
+            'solveset fixing equations; cross-copy Intersection; common solution unless intersection decided empty',
+            'decide all attached conditions; exact finite-value or true/false domain separation'),
+        'inputs':{'point':point,'ranged':ranges,
             'fixed_profiles':[(name,sp.Lambda(RADIUS,expr)) for name,expr in profiles.items()],
             'f_asymptotic_limit':sp.limit(profiles['s9b_f'],RADIUS,sp.oo),'rho_0':1,
             'bound_occurrences':binders(wholes),'unassigned_inputs':unassigned,'unfixed_profiles':unfixed},
-        'evaluations':partial,'density_sign_evaluations':density,
-        'unmet_requirements':() if no_change else ('No agreement decision at every admissible input. No impossibility decision.',
-            'This partial trial does not solve the joint fixing equations and their cross-copy intersection, decide every active quantified condition, or certify ordinary finite unequal values. No witness is inferred.')}
+        'reading':reading,'selected_parts':values,'copy_fixing_equations':equations,
+        'implicit_solution_variables':unknowns,'copy_solution_sets':solutions,
+        'solution_intersection':intersection,'selected_solutions':selected,'solution_selection':selection,
+        'emitted_objects_at_inputs':evaluated,'evaluations':partial,'density_sign_evaluations':density,
+        'all_attached_conditions_true':conditions_true,'finite_exact_evaluations':finite,
+        'exact_separation_computation':exact_separation(*evaluated) if finite else 'ordinary finite values not established',
+        'arithmetic':'EXACT; ordinary existence only; no regularization, principal value or analytic continuation',
+        'unmet_requirements':tuple(unmet)}
 
 
 def finite_search(knife,left,right,source,folder):
@@ -922,7 +1111,7 @@ def finite_search(knife,left,right,source,folder):
         counts[trial['status']]+=1
         if trial['status']=='witness':
             emit(knife+'_WITNESS',trial)
-            return {'status':'witness','tag':key[0],'site_part':'text','site_part_count':len(parts),'attempt_count':sum(counts.values())}
+            return {'status':'witness','tag':key[0],'site_part':trial.get('site_part','text'),'site_part_count':len(parts),'attempt_count':sum(counts.values())}
         if trial['status']!='no change':unresolved.append((key,trial['status'],trial['unmet_requirements']))
     outcome=search_outcome(['undecided'] if unresolved else ['no change'])
     emit(knife+'_SEARCH_OUTCOME',{'status':outcome,'parts_without_no_change_decision':unresolved,
@@ -1101,6 +1290,39 @@ def self_checks():
     check('density_labels_are_not_conditions',attached_conditions(outer,(3,1,1)),lambda value:len(value)==1)
     check('derivative_before_point',evaluate(sp.diff(function(x),x),PROFILES,{x:2}),lambda value:value==-sp.Rational(1,40))
     check('integral_bound_not_substituted',evaluate(sp.Integral(function(x),(x,1,2)),PROFILES,{x:99}),lambda value:value==sp.Rational(1,20))
+    parameter=sp.Symbol('b',real=True)
+    nested=sp.ConditionSet(x,sp.Gt(x,parameter),sp.Interval(0,parameter))
+    check('conditionset_numeric_parameter_reaches_condition',{
+        'input':nested,'point':{x:99,parameter:2},'evaluation':substitute_inputs(nested,{x:99,parameter:2})},
+        lambda value:value['evaluation']==sp.ConditionSet(x,sp.Gt(x,2),sp.Interval(0,2))
+        and parameter not in value['evaluation'].free_symbols and value['evaluation'].sym==x)
+    y=sp.Symbol('self_check_y',real=True)
+    nested=sp.ConditionSet(sp.Tuple(x,y),sp.And(sp.Gt(x,parameter),sp.Gt(y,x)),
+        sp.ProductSet(sp.Interval(0,parameter),sp.S.Reals))
+    check('conditionset_tuple_binders_are_protected',substitute_inputs(nested,{x:99,y:98,parameter:2}),
+        lambda value:value.sym==sp.Tuple(x,y) and parameter not in value.free_symbols
+        and value.condition==sp.And(sp.Gt(x,2),sp.Gt(y,x)))
+    nested=sp.Integral(sp.Integral(x+y+parameter,(x,0,y)),(y,0,parameter))
+    check('nested_integral_scopes_and_endpoints',substitute_inputs(nested,{x:99,y:98,parameter:2}),
+        lambda value:value==sp.Integral(sp.Integral(x+y+2,(x,0,y)),(y,0,2)))
+    check('limit_variable_is_bound',substitute_inputs(sp.Limit(x+parameter,x,parameter),{x:99,parameter:2}),
+        lambda value:value==sp.Limit(x+2,x,2))
+    check('subs_variable_is_bound',substitute_inputs(sp.Subs(x+parameter,x,parameter),{x:99,parameter:2}),
+        lambda value:value==sp.Subs(x+2,x,2))
+    check('trial_integrates_after_numeric_inputs',evaluate_attempt(sp.Integral(parameter*x,(x,0,parameter)),PROFILES,{parameter:2,x:99}),
+        lambda value:value==4)
+    check('trial_retains_bound_parameter_integral',evaluate_attempt(sp.ConditionSet(y,
+        sp.Eq(sp.Integral(sp.exp(x**3),(x,0,y)),parameter),sp.S.Reals),PROFILES,{parameter:2,y:99}),
+        lambda value:value.has(sp.Integral) and parameter not in value.free_symbols and not finite_exact(value))
+    roots=sp.ConditionSet(sp.Tuple(x,y),sp.Eq(x*y,parameter),sp.ProductSet(sp.S.Reals,sp.S.Reals))
+    traversed=sp.ConditionSet(x,sp.Ne(sp.Intersection(roots,
+        sp.ProductSet(sp.Interval(0,x),sp.S.Reals),evaluate=False),sp.EmptySet,evaluate=False),sp.S.Reals)
+    constrained=sp.ConditionSet(x,sp.Eq(x*x,8),traversed)
+    check('scalar_solver_preserves_nested_ray_binders',{
+        'input':constrained,'point':{parameter:2},'evaluation':evaluate_attempt(constrained,PROFILES,{parameter:2})},
+        lambda value:parameter not in value['evaluation'].free_symbols and value['evaluation'].has(sp.ConditionSet)
+        and all(isinstance(symbol,sp.Symbol) for node in sp.preorder_traversal(value['evaluation'])
+            if isinstance(node,sp.ConditionSet) for symbol in node.bound_symbols))
     check('empty_unknown_tuple_is_a_solution',sp.Intersection(sp.FiniteSet(sp.Tuple()),sp.FiniteSet(sp.Tuple())),lambda value:value==sp.FiniteSet(sp.Tuple()))
     check('finite_tuple_witness',{'values':(sp.Tuple(1),sp.Tuple(2)),'finite':finite_exact(sp.Tuple(1,sp.Tuple(2,3))),
         'different':different_exact(sp.Tuple(1),sp.Tuple(2))},lambda value:value['finite'] and value['different'])
@@ -1108,8 +1330,47 @@ def self_checks():
         'finite':finite_exact(sp.Integral(function(x),(x,1,sp.oo)))},lambda value:not value['finite'])
     source=ENGINE.read_text()
     r=sp.Symbol('s9b_r',positive=True)
+    # These are arbitrary software fixtures, not expected physics outputs.
+    # Exercise the same mathematical path used by K10, with a quantified
+    # attached condition whose free numeric input must reach its body.
+    quantified=sp.Eq(sp.ConditionSet(x,sp.Lt(parameter,0),sp.S.Reals),sp.EmptySet,evaluate=False)
+    def trial_part(expression,role='value',condition=quantified):
+        return {'payload_location':(),'expression':render(expression),'role':role,
+            'conditions':[((0,),render(condition))],'source_entry':source_location(source,KNIVES['K10'][0]),'ranged_inputs':()}
+    trial_key=('PY_LOCAL_S9B_SOFTWARE_MATH',('mathematical_part',),None)
+    check('finite_attempt_can_certify_mathematical_value',finite_attempt(trial_key,
+        (trial_part(r),trial_part(r+1)),source,'K10'),
+        lambda value:value['status']=='witness' and value['emitted_objects_at_inputs']==[2,3]
+        and value['all_attached_conditions_true'] and value['solution_intersection']==sp.FiniteSet(sp.Tuple()))
+    check('finite_attempt_can_certify_domain',finite_attempt(trial_key,
+        (trial_part(sp.Gt(parameter,5),'domain'),trial_part(sp.Gt(parameter,20),'domain')),source,'K10'),
+        lambda value:value['status']=='witness' and value['emitted_objects_at_inputs']==[sp.true,sp.false]
+        and all(row['conditions'][0][2] is sp.true for row in value['evaluations']))
+    check('false_attached_condition_blocks_witness',finite_attempt(trial_key,
+        (trial_part(r,condition=sp.false),trial_part(r+1,condition=sp.false)),source,'K10'),
+        lambda value:value['status']=='undecided' and not value['all_attached_conditions_true'])
+    unresolved=sp.Function('self_check_unfixed',real=True)(r)
+    check('unresolved_condition_blocks_witness',finite_attempt(trial_key,
+        (trial_part(r,condition=sp.Gt(unresolved,0)),trial_part(r+1,condition=sp.Gt(unresolved,0))),source,'K10'),
+        lambda value:value['status']=='undecided' and not value['all_attached_conditions_true'])
+    quantified_range=sp.Eq(sp.ConditionSet(r,sp.Le(r,parameter),sp.Interval.open(13,sp.oo)),sp.EmptySet,evaluate=False)
+    ranged_trial=[dict(trial_part(sp.Integer(v),condition=quantified_range),
+        ranged_inputs=((render(r),render(sp.Interval.open(13,sp.oo))),)) for v in (1,2)]
+    check('full_range_quantifier_can_certify_witness',finite_attempt(trial_key,ranged_trial,source,'K10'),
+        lambda value:value['status']=='witness' and r not in value['inputs']['point']
+        and value['all_attached_conditions_true'])
+    held_set_condition=sp.Ne(sp.ConditionSet(x,sp.Gt(x,r),sp.S.Reals),sp.EmptySet,evaluate=False)
+    held_trial=[dict(trial_part(sp.Integer(v),condition=held_set_condition),
+        ranged_inputs=((render(r),render(sp.Interval.open(1,sp.oo))),)) for v in (1,2)]
+    check('unsupported_ranged_set_predicate_stays_active',finite_attempt(trial_key,held_trial,source,'K10'),
+        lambda value:value['status']=='undecided' and not value['all_attached_conditions_true'])
     fs=sp.Symbol('s9b_fractional_bulk_change',real=True)
     f=function(r)
+    check('finite_attempt_uses_common_constructed_solution',finite_attempt(trial_key,
+        (trial_part(fs+f,condition=sp.Gt(fs,0)),trial_part(fs+f+1,condition=sp.Gt(fs,0))),source,'K10'),
+        lambda value:value['status']=='witness' and value['implicit_solution_variables']==(fs,)
+        and value['selected_solutions'][0]==value['selected_solutions'][1]
+        and value['solution_intersection']==sp.FiniteSet(sp.Tuple(sp.Rational(1,40))))
     def response_fixture(response):
         return sp.Tuple(Str('LOCAL_BULK_DENSITY_PARTS'),
             sp.Tuple(Str('RHO_POSITIVE'),sp.Gt(1+f,0)),
@@ -1241,7 +1502,7 @@ def make_inventory(scratch,runs,pins,k11,command):
             'not_evaluated_count':len(k11['not_evaluated_tags']),
             'tags':json.loads((scratch/knife/'marks.json').read_text())['tags']}
     inventory={'status':'BUILD_RUN_COMPLETE_STOPPED_FOR_HANDOFF','commits':[],
-        'authority':'S9b repair build directive amendment 12, repair round 9; Parts A-C shared physics',
+        'authority':'S9b repair build directive amendment 12, repair round 10; Parts A-C shared physics',
         'builder':'Codex gpt-6.1-sol at xhigh effort; fresh harness author',
         'inventory_format':'Names, provenance, markers, structural flags and counts only; no tag payload copied.',
         'structural_comparison':{'method_id':'literal_ast_with_original_constant_tokens','source':str(HERE.relative_to(REPOSITORY)),'function':'literal_key','source_sha256':sha(HERE)},

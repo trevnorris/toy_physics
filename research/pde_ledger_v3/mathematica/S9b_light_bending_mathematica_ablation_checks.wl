@@ -68,3 +68,18 @@ Print["NEGATIVE_DENSITY_ASYMPTOTE: ",ToString[<|"Profile"->Function[{q},-9/q],
  "DensityAtPoint"->(1-9/Global`r/.Global`r->3),
  "AsymptoticComputation"->Inactive[Limit][1-9/Global`r,Global`r->Infinity],
  "AsymptoticDensity"->Limit[1-9/Global`r,Global`r->Infinity]|>,InputForm]];
+
+(* Round-10 scoped fixtures: every computed value is printed before inspection. *)
+knifeManifest=StringSplit[StringSplit[src,"knives = "][[2]],"(* BEGIN_LITERAL_METHOD *)"][[1]];
+Block[{$Context="S9bHarness`",$ContextPath={"System`"}},ToExpression["knives = "<>Global`knifeManifest]];
+Print["WHOLE_BRANCH_CONDITION_NEGATION: ",ToString[<|
+ "ActualK10SourceReplacement"->S9bHarness`knives["K10"],
+ "SyntheticWholeNegation"->Not[Inactive[ForAll][x,0<=x<=1,x>0]],
+ "SyntheticPointwiseNegation"->Inactive[ForAll][x,0<=x<=1,Not[x>0]],
+ "ActiveDecisions"->{Resolve[Not[ForAll[x,0<=x<=1,x>0]],Reals],
+   Resolve[ForAll[x,0<=x<=1,Not[x>0]],Reals]}|>,InputForm,PageWidth->Infinity]];
+fixtureProfiles=<|"Held"-><|"WL_LOCAL_S9B_ABEL_REDUCTION"->HoldComplete[
+ <|"Domain"-><|"Profiles"->{Global`deltaProfile,Global`velocityProfile,Global`xiProfile,Global`rhoBr,Global`fProfile}|>|>]|>|>;
+Print["LITERAL_PROFILES_READING: ",ToString[<|
+ "Parts"->Values[S9bHarness`catalog[fixtureProfiles]["Parts"]],
+ "ExtractedNameKeys"->S9bHarness`extractedNameKeys|>,InputForm,PageWidth->Infinity]];

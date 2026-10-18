@@ -1,0 +1,81 @@
+{
+  "status": "round-10 full harness and checks completed from final code at 8 GiB",
+  "artifacts": {
+    "S9b_repair_wolfram_round10_harness.stdout.gz": {
+      "literalStdoutSha256": "2b5d23c5c1d4f6299582de72b5face7ebda96cca9b3f6f936a8c066196bc3bda",
+      "literalStdoutBytes": 334145188,
+      "compressedBytes": 7150273
+    },
+    "S9b_repair_wolfram_round10_baseline.stdout.gz": {
+      "literalStdoutSha256": "6519d10c86c9b16741bd32814a57216116c33717a0aec4150f61903617e9ffdb",
+      "literalStdoutBytes": 8132732,
+      "compressedBytes": 176380
+    },
+    "S9b_repair_wolfram_round10_captures.json.gz": {
+      "compressedSha256": "1b6278170e4966f9c32145c897fb76ebf71b8dede419f35f8aaab7e6e5e91170",
+      "compressedBytes": 2189117,
+      "contents": [
+        "BASELINE.stdout",
+        "K1.stdout",
+        "K1.wl",
+        "K10.stdout",
+        "K10.wl",
+        "K11.wl",
+        "K11_COMPACT_BASELINE.stdout",
+        "K11_COMPACT_BASELINE.wl",
+        "K11_COMPACT_CORRUPTED.stdout",
+        "K11_COMPACT_CORRUPTED.wl",
+        "K2.stdout",
+        "K2.wl",
+        "K3.stdout",
+        "K3.wl",
+        "K4a.stdout",
+        "K4a.wl",
+        "K4b.stdout",
+        "K4b.wl",
+        "K4c.stdout",
+        "K4c.wl",
+        "K5.stdout",
+        "K5.wl",
+        "K6.stdout",
+        "K6.wl",
+        "K7.stdout",
+        "K7.wl",
+        "K8.stdout",
+        "K8.wl",
+        "K9a.stdout",
+        "K9a.wl",
+        "K9b.stdout",
+        "K9b.wl"
+      ],
+      "qualification": "current complete 8-GiB runs; K11.wl is a source-only full mutation; only its two extracted compact prefixes were executed"
+    },
+    "S9b_repair_wolfram_round10_site_inventory.txt.gz": {
+      "sha256": "8c62a5eac1f90a7914c3fd186351f00c3805f76a5678a78ab6a3aaf59fa2b019",
+      "bytes": 2223200
+    },
+    "S9b_repair_wolfram_round10_witness_searches.txt": {
+      "sha256": "a7fc4c61632ce4fd051e1a46fdf34f4b4e8e963de5a8347f96a02d7a10263542",
+      "bytes": 572156
+    },
+    "S9b_repair_wolfram_round10_structural_checks.txt": {
+      "sha256": "88f13472f723bb7d548c0d2843cf21e286f65052108a9c22057040989c599ef4",
+      "bytes": 18815
+    },
+    "S9b_repair_wolfram_round10_harness.stderr.txt": {
+      "sha256": "2e924a82affd0fd30c1449ce5a71697d6b764e3538b88a0cd2bb9ae8b2bde132",
+      "bytes": 351
+    },
+    "S9b_repair_wolfram_round10_input_sources.json.gz": {
+      "compressedSha256": "b5c5225af219210ceb930477590abec9b7e8ff41fbbc522e839b8d458434340b",
+      "bytes": 18632,
+      "contents": [
+        "before_harness.wl",
+        "before_checks.wl",
+        "before_round8_measurements.md"
+      ],
+      "qualification": "handed-in source snapshots only; not superseded CAS measurements"
+    }
+  },
+  "qualification": "All measurements are from the current 8-GiB final-code runs. Process logs remain under ignored scratch paths."
+}

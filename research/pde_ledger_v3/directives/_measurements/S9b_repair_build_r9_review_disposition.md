@@ -59,3 +59,19 @@ engines. Findings 3 and 4 change printed statements.
 - Both harnesses rerun from final code, and the measurements and reports are regenerated.
 
 The round-9 harnesses and files, as reviewed, are preserved before the repair overwrites them.
+
+## The user's decision (2026-10-17)
+
+The user chose through the question tool; the option texts are mine. Question: "Both reviewers want revisions. The two
+main problems are both in K10. SymPy's K10 search can't actually find a witness (a reviewer found one at the
+harness's own preferred part), and Wolfram's K10 negates a different condition than SymPy's, so the two engines
+don't test the same knife. How should we finish?" Chosen: "Repair both (Recommended)", whose description reads: "Fix
+SymPy's K10 search so it can find a witness and records the real inputs. Fix Wolfram's K10 to negate the same
+condition SymPy does, plus two small text fixes. SymPy and Wolfram rerun in parallel, then a fresh two-leg review.
+About 12–14 h, mostly SymPy's 8–10 h run; another round is possible." The other option was to repair Wolfram only
+and record SymPy's K10 as not shown.
+
+So repair round 10 rebuilds both harnesses to the "What must be true after the repair" list above. The same builder
+session continues per engine. For each engine this is its second repair after its round-8 build, so G4 does not
+yet call for a new author. The two guarded jobs run in parallel, sized to fit together: SymPy at 18 GiB, from its measured
+round-9 peak of 15.6 GiB, and Wolfram at 8 GiB.

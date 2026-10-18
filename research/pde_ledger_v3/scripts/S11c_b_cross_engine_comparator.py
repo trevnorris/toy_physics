@@ -312,6 +312,8 @@ def py_residual_map(raw: str) -> list[tuple[str, str]]:
 # The inherited S11c-a map is applied first.  These are spelling-only S11c-b
 # extensions for heads present in the measured WL payload; no energy-basis
 # representative identity is encoded here.
+LIVE_BACKGROUND_HEADS = frozenset({"widthBackground", "modulusBackground", "eWBackground"})
+
 EXTRA_HEAD = {
     "widthBackground": "W_bg",
     "modulusBackground": "mu_R_bg",
@@ -395,6 +397,8 @@ def _extra_basic(value: sp.Basic) -> sp.Basic:
                 return sp.Symbol(s11ca.canon_jet_name(target + "_" + suffix.replace("X", "_")))
         target = EXTRA_HEAD.get(name)
         if target is not None:
+            if name in LIVE_BACKGROUND_HEADS:
+                return sp.Function(target)(*node.args)
             return sp.Symbol(target)
         return node
 
@@ -1437,7 +1441,12 @@ def run(argv: Sequence[str] | None = None) -> int:
         default=0.1,
         help="seconds for the optional leaf factorization before exact expand/cancel fallback",
     )
+    parser.add_argument("--p2b", action="store_true", help="emit full-parse action fixtures for the section 3a bridge")
     arguments = parser.parse_args(argv)
+    if arguments.p2b:
+        import S11c_b_handcoded_comparison as H
+        H.p2b_parse_controls()
+        return 0
     started = time.monotonic()
     try:
         py_tags = load_py(arguments.py)

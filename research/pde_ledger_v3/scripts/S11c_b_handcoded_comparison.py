@@ -2,11 +2,12 @@
 """S11c-b hand-coded cross-engine reconciliation for the parsed core families.
 
 The imported T7 comparator remains the case extractor and accounting authority.
-This layer adds only the explicitly enumerated, source-verified spelling map
-below, then observes whether each joined residual is zero.  It has no expected
+This layer adds the enumerated spelling map and the section 3a coefficient
+bridge built from emitted invariant objects, then measures joined residuals.  It has no expected
 zero/nonzero payload and never asserts on a measured result.
 
-The energy-basis quotient representatives are compared exactly as emitted
+The section 3a invariants remain unfolded; only coefficient atoms acquire the
+supplied source normalization. Other energy-basis representatives are compared
 after spelling reconciliation.  The coupling adjointness cases use the
 comparator's already compact-support-IBP-reduced context and receive no further
 physics-bearing fold.
@@ -20,6 +21,7 @@ import io
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
+from types import MappingProxyType
 from typing import Sequence
 
 import sympy as sp
@@ -104,18 +106,6 @@ WL_TO_PY_RENAME = {
     "tauA": "tau_A",  # WL:216-219; PY:343-351; spec:137-143 (affinity relaxation time).
     "tauV": "tau_V",  # WL:216-219; PY:343-351; spec:137-143 (velocity relaxation time).
     "tauX": "tau_X",  # WL:216-219; PY:343-351; spec:137-143 (traction relaxation time).
-    "gammaWidthUTheta": "gamma_s11cb_w_bg_04",  # WL:390-435; PY:291-303,1073-1090,1270-1283; spec:242-269 (W-jet u*theta invariant).
-    "gammaWidthUEw": "gamma_s11cb_w_bg_05",  # WL:390-435; PY:291-303,1073-1090,1270-1283; spec:242-269 (W-jet u*e_W invariant).
-    "gammaWidthUDiv": "gamma_s11cb_w_bg_01",  # WL:390-435; PY:291-303,1073-1090,1270-1283; spec:242-269 (W-jet u*div(u) invariant).
-    "gammaWidthShearGradTheta": "gamma_s11cb_w_bg_06",  # WL:390-435; PY:291-303,1073-1090,1270-1283; spec:242-269 (W-jet grad(u)*grad(theta)).
-    "gammaWidthShearGradEw": "gamma_s11cb_w_bg_09",  # WL:390-435; PY:291-303,1073-1090,1270-1283; spec:242-269 (W-jet grad(u)*grad(e_W)).
-    "gammaWidthThetaGradEw": "gamma_s11cb_w_bg_13",  # WL:390-435; PY:291-303,1073-1090,1270-1283; spec:242-269 (W-jet theta*grad(e_W)).
-    "gammaModulusUTheta": "gamma_s11cb_mu_r_bg_04",  # WL:390-435; PY:291-303,1073-1090,1270-1283; spec:242-269 (mu-jet u*theta invariant).
-    "gammaModulusUEw": "gamma_s11cb_mu_r_bg_05",  # WL:390-435; PY:291-303,1073-1090,1270-1283; spec:242-269 (mu-jet u*e_W invariant).
-    "gammaModulusUDiv": "gamma_s11cb_mu_r_bg_01",  # WL:390-435; PY:291-303,1073-1090,1270-1283; spec:242-269 (mu-jet u*div(u) invariant).
-    "gammaModulusShearGradTheta": "gamma_s11cb_mu_r_bg_06",  # WL:390-435; PY:291-303,1073-1090,1270-1283; spec:242-269 (mu-jet grad(u)*grad(theta)).
-    "gammaModulusShearGradEw": "gamma_s11cb_mu_r_bg_09",  # WL:390-435; PY:291-303,1073-1090,1270-1283; spec:242-269 (mu-jet grad(u)*grad(e_W)).
-    "gammaModulusThetaGradEw": "gamma_s11cb_mu_r_bg_13",  # WL:390-435; PY:291-303,1073-1090,1270-1283; spec:242-269 (mu-jet theta*grad(e_W)).
     "theta_d1": "grad_theta_1",  # WL:239,246-252; PY:192-210; spec:244-250 (theta first jet 1).
     "theta_d2": "grad_theta_2",  # WL:239,246-252; PY:192-210; spec:244-250 (theta first jet 2).
     "theta_d3": "grad_theta_3",  # WL:239,246-252; PY:192-210; spec:244-250 (theta first jet 3).
@@ -152,14 +142,11 @@ WL_TO_PY_RENAME = {
     "tractionHoldLowerW": "t_hold_minus_0_4",  # WL:1361-1394; PY:278-289; spec:211-230 (lower thickness traction).
 }
 
-# The WL heads below are evaluation syntax for PY's algebraic field/jet
-# symbols.  Their derivatives are decoded first; only the remaining base
-# applications lose inert coordinate arguments.  The cited engine definitions
+# These trial/test/support heads have bare PY images. Their derivatives are
+# decoded first; their remaining base applications lose evaluation arguments.
+# Live backgrounds are classified separately below and retain their arguments.  The cited engine definitions
 # show the same independent trial/test/support object in both constructions.
-BARE_APPLIED = {
-    "widthBackground",
-    "modulusBackground",
-    "eWBackground",
+TRIAL_TEST_SUPPORT_APPLIED = {
     "thetaWave",
     "eWave",
     "eWField",
@@ -200,20 +187,23 @@ PROFILE_JET_HEADS = {
     "modulusProfileJet": "m1_profile",
 }
 
-# Intentionally absent from WL_TO_PY_RENAME:
-#   * WL bRho is B_rho, whereas PY B_rho_3 == B_rho*W_0
-#     (WL:471-479; PY:132-138,1133-1140; spec:98-103).
-#   * WL gamma{Width,Modulus}DivGrad{Theta,Ew} multiply omitted PY
-#     candidates 08/11, not the selected PY quotient representatives 07/10
-#     (WL:390-435; PY:972-1003,1073-1090,1270-1298; spec:105-114,242-269).
-# A scale substitution or quotient identity would be physics-bearing, so all
-# of these names remain visible in the measured residuals.
+# Section 3a coefficients are deliberately absent from the string table.
+# Their images are built from emitted invariant objects by GammaBridge below.
 
 # Inherited verbatim from the hand-verified S11c-a reconciliation: WL has no
 # x-jets/Derivative of either branch operand, so its coordinate arguments are
 # inert.  Current heads are different: w is physical and is always preserved;
 # only the implicit x/time evaluation arguments are removed.
 INERT_APPLIED = {"mu_theta_L", "mu_theta_M"}
+LIVE_BACKGROUND_APPLIED = frozenset(C.LIVE_BACKGROUND_HEADS)
+# Keep the complete decode domain separate from the removable applications.
+BARE_APPLIED = frozenset(TRIAL_TEST_SUPPORT_APPLIED | INERT_APPLIED)
+JET_APPLIED = BARE_APPLIED | LIVE_BACKGROUND_APPLIED
+APPLIED_HEAD_CLASSES = {
+    **{name: "INERT" for name in INERT_APPLIED},
+    **{name: "LIVE_BACKGROUND" for name in LIVE_BACKGROUND_APPLIED},
+    **{name: "TRIAL_TEST_SUPPORT" for name in TRIAL_TEST_SUPPORT_APPLIED},
+}
 CURRENT_KEEP_W = "delta_j_bulk"
 
 W = C.BOUND_BINDER
@@ -271,12 +261,14 @@ def _jet_target(name: str, active_map: dict[str, str]) -> str | None:
         return None
     base, suffix = name.split("XJETX", 1)
     target = active_map.get(base)
-    if target is None or base not in BARE_APPLIED:
+    if target is None or base not in JET_APPLIED:
         return None
     return C.s11ca.canon_jet_name(target + "_" + suffix.replace("X", "_"))
 
 
-def _reconcile_basic(expr: sp.Basic, active_map: dict[str, str]) -> sp.Basic:
+def _reconcile_basic(expr: sp.Basic, active_map: dict[str, str], *, coefficients: bool = True) -> sp.Basic:
+    if any(name.startswith(("gammaWJET", "gammaMUJET", "gamma_s11cb_")) for name in active_map):
+        raise C.InputError("section 3a coefficients cannot enter the string rename table")
     substitutions: dict[sp.Basic, sp.Basic] = {}
     for applied in expr.atoms(AppliedUndef):
         name = applied.func.__name__
@@ -309,22 +301,25 @@ def _reconcile_basic(expr: sp.Basic, active_map: dict[str, str]) -> sp.Basic:
             substitutions[symbol] = sp.Symbol(jet_target)
         elif symbol.name in active_map:
             substitutions[symbol] = sp.Symbol(active_map[symbol.name])
-    return expr.xreplace(substitutions) if substitutions else expr
+    output = expr.xreplace(substitutions) if substitutions else expr
+    return gamma_bridge().apply(output) if coefficients and any(
+        atom.name.startswith(("gammaWJET", "gammaMUJET")) for atom in output.atoms(sp.Symbol)
+    ) else output
 
 
-def reconcile(expr: object, active_map: dict[str, str] | None = None) -> object:
+def reconcile(expr: object, active_map: dict[str, str] | None = None, *, coefficients: bool = True) -> object:
     """Apply only the enumerated spelling and verified jet/applied rules."""
     names = WL_TO_PY_RENAME if active_map is None else active_map
     if isinstance(expr, C.Association):
         return C.Association(
-            tuple((key, reconcile(item, names)) for key, item in expr.entries)
+            tuple((key, reconcile(item, names, coefficients=coefficients)) for key, item in expr.entries)
         )
     if isinstance(expr, tuple):
-        return tuple(reconcile(item, names) for item in expr)
+        return tuple(reconcile(item, names, coefficients=coefficients) for item in expr)
     if isinstance(expr, sp.MatrixBase):
-        return expr.applyfunc(lambda item: _reconcile_basic(item, names))
+        return expr.applyfunc(lambda item: _reconcile_basic(item, names, coefficients=coefficients))
     if isinstance(expr, sp.Basic):
-        return _reconcile_basic(expr, names)
+        return _reconcile_basic(expr, names, coefficients=coefficients)
     return expr
 
 
@@ -449,6 +444,9 @@ def _run_family(
     wl_tags: dict[str, str],
     active_map: dict[str, str],
 ) -> None:
+    if family == "ENERGY_BASIS_NEW_INVARIANTS":
+        emit_gamma_certificate(gamma_bridge())
+        return
     cases = C.extract_family(family, py_tags.get(family), wl_tags.get(family))
     capture = io.StringIO()
     with contextlib.redirect_stdout(capture):
@@ -489,6 +487,309 @@ def _run_family(
         print(f"A_minus_B {family} {record.key} = {residual}")
 
 
+# ---- P2b: immutable coefficient-only bridge, built from invariant objects ----
+# These factors are supplied premises. No ratio or representative fold can
+# enter this closed source-to-symbol map.
+P2B_FACTORS = MappingProxyType({"W_BG": sp.Symbol("W_0"), "MU_R_BG": sp.Symbol("mu_R")})
+
+
+def p2b_emit(tag: str, value: sp.Basic) -> None:
+    """Only CAS payloads; tags name quantities, independently of their values."""
+    if not isinstance(value, sp.Basic):
+        raise TypeError(type(value).__name__)
+    print(f"{tag} = {sp.srepr(value)}", flush=True)
+
+
+@dataclass(frozen=True)
+class GammaRecord:
+    branch: str
+    source: str
+    coefficient: sp.Symbol
+    invariant: sp.Expr
+    action: sp.Expr
+
+
+@dataclass(frozen=True)
+class GammaPair:
+    wl: GammaRecord
+    py: GammaRecord
+
+    @property
+    def factor(self) -> sp.Symbol:
+        return P2B_FACTORS[self.wl.source]
+
+    @property
+    def image(self) -> sp.Expr:
+        # Reuse the expression-valued field_symbol mechanism, never Symbol(str).
+        return C.s11ca.field_symbol(self.py.coefficient.name, scale=self.factor.name)
+
+
+@dataclass(frozen=True)
+class GammaBridge:
+    pairs: tuple[GammaPair, ...]
+
+    def apply(self, value: sp.Basic) -> sp.Basic:
+        # Only coefficient atoms are substitution keys. Invariant expressions,
+        # factors and background jets have no representable fold in this API.
+        substitutions = {pair.wl.coefficient: pair.image for pair in self.pairs}
+        return value.xreplace(substitutions)
+
+
+_GAMMA_BRIDGE: GammaBridge | None = None
+
+
+def gamma_bridge() -> GammaBridge:
+    global _GAMMA_BRIDGE
+    if _GAMMA_BRIDGE is None:
+        install_gamma_bridge(C.load_py(C.DEFAULT_PY), C.load_wl(C.DEFAULT_WL))
+    return _GAMMA_BRIDGE
+
+
+def gamma_records(py_tags: dict[str, str], wl_tags: dict[str, str]) -> tuple[tuple[GammaRecord, ...], tuple[GammaRecord, ...]]:
+    family = "ENERGY_BASIS_NEW_INVARIANTS"
+    py_records, wl_records = [], []
+    for branch_raw, wrapped in C.py_top_pairs(py_tags[family]):
+        key = C.decode_py_key(branch_raw, ("BRANCH",))
+        branch = C.key_dict(key)["BRANCH"]
+        rows = C.parse_py_value(C.py_field(wrapped), key, coefficient=False)
+        for row in rows:
+            source, label, invariant, coefficient, term, dimensions = row
+            source = source.value
+            invariant = reconcile(invariant, coefficients=False)
+            term = reconcile(term, coefficients=False)
+            # The PY stream carries the quadratic wave bookkeeper in ENERGY_TERM.
+            action = sp.expand(term).coeff(C.s11ca.EPSILON, 2)
+            py_records.append(GammaRecord(branch, source, coefficient, invariant, action))
+    for branch, rows in C.wl_assoc_pairs(wl_tags[family]):
+        key = C.make_key((("BRANCH", branch),))
+        for label, raw in C.wl_assoc_pairs(rows):
+            source = next((source for prefix, source in (("WJET_", "W_BG"), ("MUJET_", "MU_R_BG")) if label.startswith(prefix)), None)
+            if source is None:
+                raise C.InputError(f"unrecognised invariant source {label}")
+            values = {
+                name: reconcile(C.parse_wl_value(C.wl_field(raw, name), key), coefficients=False)
+                for name in ("INVARIANT", "COEFFICIENT", "ENERGY_TERM")
+            }
+            wl_records.append(GammaRecord(branch, source, values["COEFFICIENT"], values["INVARIANT"], values["ENERGY_TERM"]))
+    return tuple(py_records), tuple(wl_records)
+
+
+def pair_gamma_records(py_records: tuple[GammaRecord, ...], wl_records: tuple[GammaRecord, ...], *, tag: str = "P2B_PAIRING") -> GammaBridge:
+    for engine, records in (("PY", py_records), ("WL", wl_records)):
+        keys = [(row.branch, row.coefficient) for row in records]
+        duplicate_count = sp.Integer(len(keys) - len(set(keys)))
+        p2b_emit(f"{tag}_{engine}_duplicate_count", duplicate_count)
+        if duplicate_count != 0:
+            raise C.InputError("duplicate emitted coefficient key")
+    pairs = []
+    degrees = {id(row): 0 for row in py_records}
+    for wl in sorted(wl_records, key=lambda row: (row.branch, row.source, row.coefficient.name)):
+        factor = P2B_FACTORS[wl.source]
+        candidates = tuple(py for py in py_records if py.branch == wl.branch and py.source == wl.source)
+        residuals = tuple(sp.expand(py.invariant - factor * wl.invariant) for py in candidates)
+        matches = tuple(py for py, residual in zip(candidates, residuals) if residual == 0)
+        p2b_emit(f"{tag}_forward_degree_{wl.branch}_{wl.coefficient}", sp.Integer(len(matches)))
+        for py, residual in sorted(zip(candidates, residuals), key=lambda item: item[0].coefficient.name):
+            p2b_emit(f"{tag}_candidate_{wl.branch}_{wl.coefficient}_{py.coefficient}", sp.Tuple(wl.invariant, py.invariant, factor, residual))
+        if len(matches) != 1:
+            raise C.InputError("invariant pairing degree")
+        degrees[id(matches[0])] += 1
+        pairs.append(GammaPair(wl, matches[0]))
+    for py in sorted(py_records, key=lambda row: (row.branch, row.coefficient.name)):
+        p2b_emit(f"{tag}_reverse_degree_{py.branch}_{py.coefficient}", sp.Integer(degrees[id(py)]))
+        if degrees[id(py)] != 1:
+            raise C.InputError("reverse invariant pairing degree")
+    for branch in sorted(C.BRANCHES):
+        for source in sorted(C.SOURCES):
+            counts = sp.Tuple(*(sp.Integer(sum(row.branch == branch and row.source == source for row in records)) for records in (wl_records, py_records)))
+            p2b_emit(f"{tag}_source_counts_{branch}_{source}", counts)
+            if counts != sp.Tuple(15, 15):
+                raise C.InputError("source cardinality")
+        counts = sp.Tuple(*(sp.Integer(sum(row.branch == branch for row in records)) for records in (wl_records, py_records)))
+        p2b_emit(f"{tag}_branch_counts_{branch}", counts)
+        if counts != sp.Tuple(30, 30):
+            raise C.InputError("branch cardinality")
+    counts = sp.Tuple(sp.Integer(len(wl_records)), sp.Integer(len(py_records)))
+    p2b_emit(f"{tag}_overall_counts", counts)
+    if counts != sp.Tuple(60, 60):
+        raise C.InputError("overall cardinality")
+    bridge = GammaBridge(tuple(pairs))
+    by_name = {}
+    for pair in bridge.pairs:
+        previous = by_name.setdefault(pair.wl.coefficient, pair.image)
+        residual = sp.expand(previous - pair.image)
+        p2b_emit(f"{tag}_branch_image_residual_{pair.wl.branch}_{pair.wl.coefficient}", residual)
+        if residual != 0:
+            raise C.InputError("branch-dependent coefficient image")
+    return bridge
+
+
+def install_gamma_bridge(py_tags: dict[str, str], wl_tags: dict[str, str]) -> GammaBridge:
+    global _GAMMA_BRIDGE
+    _GAMMA_BRIDGE = pair_gamma_records(*gamma_records(py_tags, wl_tags))
+    return _GAMMA_BRIDGE
+
+
+def gamma_certificate_objects(bridge: GammaBridge) -> tuple[tuple[str, sp.Tuple], ...]:
+    rows = []
+    for pair in bridge.pairs:
+        wl, py = pair.wl, pair.py
+        image = reconcile(wl.coefficient)
+        invariant_residual = sp.expand(py.invariant - pair.factor * wl.invariant)
+        # Actions are the engines' emitted energy terms, not reconstructed answers.
+        left, right = py.action, reconcile(wl.action)
+        term_residual = sp.expand(left - right)
+        # Also bind each emitted action to its emitted invariant by differentiation.
+        py_action_residual = sp.expand(sp.diff(py.action, py.coefficient) - py.invariant)
+        wl_action_residual = sp.expand(sp.diff(wl.action, wl.coefficient) - wl.invariant)
+        factor_lock = sp.sympify(image == pair.image and isinstance(image, sp.Mul))
+        rows.append((f"{wl.branch}_{wl.coefficient}", sp.Tuple(wl.coefficient, py.coefficient, wl.invariant, py.invariant, pair.factor, image, invariant_residual, left, right, term_residual, py_action_residual, wl_action_residual, factor_lock)))
+    return tuple(rows)
+
+
+def emit_gamma_certificate(bridge: GammaBridge) -> None:
+    for name, row in gamma_certificate_objects(bridge):
+        for label, value in zip(("wl_coefficient", "py_coefficient", "wl_invariant", "py_invariant", "family_factor", "coefficient_image", "invariant_residual", "py_action", "wl_action_image", "term_residual", "py_action_invariant_residual", "wl_action_invariant_residual", "factor_lock"), row):
+            p2b_emit(f"P2B_CERTIFICATE_{name}_{label}", value)
+        if any(row[index] != 0 for index in (6, 9, 10, 11)) or row[12] != sp.true:
+            raise C.InputError("coefficient bridge certificate")
+
+
+def p2b_parse_controls() -> None:
+    # Action/ansatz construction is the sole input to these full-parser probes.
+    coordinates = sp.symbols("xOne xTwo xThree time")
+    shifted = sp.symbols("chiOne chiTwo chiThree time")
+    probe = sp.Symbol("p2b_variation")
+    key = C.make_key((("BRANCH", "LAB_HELD"),))
+    for head in sorted(LIVE_BACKGROUND_APPLIED | INERT_APPLIED | {"thetaWave"}):
+        # Use engine spellings at the WL boundary, not internal underscore names.
+        branch = next((branch for branch, image in C.s11ca.MU_HEAD_BY_BRANCH.items() if image == head), "LAB_HELD")
+        key = C.make_key((("BRANCH", branch),))
+        input_head = "muThetaOperand" if head in INERT_APPLIED else head
+        left_action = probe * sp.Function(input_head)(*coordinates)
+        right_action = probe * sp.Function(input_head)(*shifted)
+        # Mathematica printer supplies concrete WL syntax; parsing includes
+        # canonical_value -> _extra_basic -> _reconcile_basic without bypasses.
+        from sympy.printing.mathematica import mathematica_code
+        left = reconcile(C.parse_wl_value(mathematica_code(sp.diff(left_action, probe)), key))
+        right = reconcile(C.parse_wl_value(mathematica_code(sp.diff(right_action, probe)), key))
+        full_residual = reconcile(C.parse_wl_value(mathematica_code(sp.diff(left_action - right_action, probe)), key))
+        residual = sp.expand(full_residual)
+        parse_linearity_residual = sp.expand(residual - (left - right))
+        p2b_emit(f"P2B_PARSE_{head}_action", sp.Tuple(left_action, right_action))
+        p2b_emit(f"P2B_PARSE_{head}_operands", sp.Tuple(left, right))
+        p2b_emit(f"P2B_PARSE_{head}_residual", residual)
+        p2b_emit(f"P2B_PARSE_{head}_linearity_residual", parse_linearity_residual)
+        if parse_linearity_residual != 0:
+            raise C.InputError("full residual parse linearity")
+        if (head in LIVE_BACKGROUND_APPLIED and residual == 0) or (head not in LIVE_BACKGROUND_APPLIED and residual != 0):
+            raise C.InputError("applied argument fixture")
+    for head, classification in sorted(APPLIED_HEAD_CLASSES.items()):
+        p2b_emit(f"P2B_HEAD_{head}_class", sp.Symbol(classification))
+    coverage = sp.sympify(set(APPLIED_HEAD_CLASSES) == set(JET_APPLIED))
+    p2b_emit("P2B_HEAD_classification_coverage", coverage)
+    if coverage != sp.true:
+        raise C.InputError("applied-head classification coverage")
+    # Print the engine's Derivative form from the differentiated AST. SymPy's
+    # generic Mathematica printer uses Hold[D[...]], outside the stream grammar.
+    from sympy.printing.mathematica import MCodePrinter
+
+    class JetPrinter(MCodePrinter):
+        def _print_Derivative(self, expression):
+            orders = dict(expression.variable_count)
+            application = expression.expr
+            counters = ", ".join(str(orders.get(arg, 0)) for arg in application.args)
+            arguments = ", ".join(self._print(arg) for arg in application.args)
+            return f"Derivative[{counters}][{application.func.__name__}][{arguments}]"
+
+    printer = JetPrinter()
+    # Both derivative decoding entry points remain live, including backgrounds.
+    for head in sorted(LIVE_BACKGROUND_APPLIED):
+        action = probe * sp.Function(head)(*coordinates)
+        derivative = sp.diff(action, probe, coordinates[0])
+        from sympy.printing.mathematica import mathematica_code
+        parsed = reconcile(C.parse_wl_value(printer.doprint(derivative), key))
+        direct = reconcile(C.s11ca.canonical_value(C.parse_wolfram_payload(C.preprocess_wl(printer.doprint(derivative))), "WL", "LAB_HELD"))
+        p2b_emit(f"P2B_JET_{head}_action", action)
+        p2b_emit(f"P2B_JET_{head}_operands", sp.Tuple(parsed, direct))
+        residual = sp.expand(parsed - direct)
+        p2b_emit(f"P2B_JET_{head}_residual", residual)
+        p2b_emit(f"P2B_JET_{head}_atom_test", sp.sympify(isinstance(parsed, sp.Symbol) and isinstance(direct, sp.Symbol)))
+        if residual != 0 or not isinstance(parsed, sp.Symbol) or not isinstance(direct, sp.Symbol):
+            raise C.InputError("background jet decode fixture")
+
+
+def p2b_action_controls(bridge: GammaBridge) -> None:
+    # Mutations are made while constructing the control action. Every output
+    # invariant/term is subsequently extracted by symbolic differentiation.
+    for branch in sorted(C.BRANCHES):
+        for source in sorted(C.SOURCES):
+            pairs = tuple(pair for pair in bridge.pairs if pair.wl.branch == branch and pair.wl.source == source)
+            first, second = pairs[:2]
+            for package in ("pairing", "coefficient_scale", "family_factor", "string_image"):
+                pair = first
+                if package == "pairing":
+                    action = second.wl.action.xreplace({second.wl.coefficient: pair.wl.coefficient})
+                    factor = pair.factor
+                    image_action = reconcile(action)
+                else:
+                    # The fold control changes the action normalization before
+                    # extracting its invariant. Its energy cancellation alone
+                    # cannot certify the supplied source factor.
+                    action = pair.factor * pair.wl.action if package == "family_factor" else pair.wl.action
+                    factor = sp.S.One if package == "family_factor" else pair.factor
+                    if package == "string_image":
+                        image = sp.Symbol(str(pair.image))
+                    else:
+                        image = pair.py.coefficient
+                    # This is a control action with a deliberately different
+                    # coefficient ansatz, never a mutation of a residual.
+                    image_action = reconcile(action.xreplace({pair.wl.coefficient: image}))
+                invariant = sp.diff(action, pair.wl.coefficient)
+                invariant_residual = sp.expand(pair.py.invariant - factor * invariant)
+                term_residual = sp.expand(pair.py.action - image_action)
+                factor_lock = sp.sympify(factor == P2B_FACTORS[source])
+                name = f"P2B_CONTROL_{package}_{branch}_{source}"
+                for label, value in (("actions", sp.Tuple(pair.py.action, action, image_action)), ("invariants", sp.Tuple(pair.py.invariant, invariant)), ("family_factor", factor), ("invariant_residual", invariant_residual), ("term_residual", term_residual), ("factor_lock", factor_lock)):
+                    p2b_emit(f"{name}_{label}", value)
+                if package == "pairing" and invariant_residual == 0:
+                    raise C.InputError("pairing control")
+                if package != "pairing" and term_residual == 0 and factor_lock == sp.true:
+                    raise C.InputError("coefficient control")
+
+
+def p2b_run(py_path: Path, wl_path: Path) -> int:
+    py_records, wl_records = gamma_records(C.load_py(py_path), C.load_wl(wl_path))
+    global _GAMMA_BRIDGE
+    _GAMMA_BRIDGE = pair_gamma_records(py_records, wl_records)
+    bridge = _GAMMA_BRIDGE
+    emit_gamma_certificate(bridge)
+    baseline = gamma_certificate_objects(bridge)
+    for engine, py, wl in (("PY", tuple(reversed(py_records)), wl_records), ("WL", py_records, tuple(reversed(wl_records)))):
+        permuted = pair_gamma_records(py, wl, tag=f"P2B_PERMUTATION_{engine}")
+        # Compare complete certificates and mappings, not only their zero tests.
+        pairing_equal = sp.sympify(permuted == bridge)
+        certificate_equal = sp.sympify(gamma_certificate_objects(permuted) == baseline)
+        p2b_emit(f"P2B_PERMUTATION_{engine}_pairing_equality", pairing_equal)
+        p2b_emit(f"P2B_PERMUTATION_{engine}_certificate_equality", certificate_equal)
+        if pairing_equal != sp.true or certificate_equal != sp.true:
+            raise C.InputError("record-order dependence")
+    for engine, py, wl in (("PY", py_records + py_records[:1], wl_records), ("WL", py_records, wl_records + wl_records[:1])):
+        rejected = False
+        try:
+            pair_gamma_records(py, wl, tag=f"P2B_DUPLICATE_{engine}")
+        except C.InputError as error:
+            if str(error) != "duplicate emitted coefficient key":
+                raise
+            rejected = True
+        p2b_emit(f"P2B_DUPLICATE_{engine}_rejection", sp.sympify(rejected))
+        if not rejected:
+            raise C.InputError("duplicate fixture")
+    p2b_action_controls(bridge)
+    p2b_parse_controls()
+    return 0
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--py", type=Path, default=C.DEFAULT_PY)
@@ -499,7 +800,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         choices=tuple(WL_TO_PY_RENAME),
         help="remove one verified spelling equivalence for a one-sided ablation",
     )
+    parser.add_argument("--p2b", action="store_true", help="emit the section 3a bridge certificate and action controls")
     arguments = parser.parse_args(argv)
+    if arguments.p2b:
+        return p2b_run(arguments.py, arguments.wl)
     try:
         active_map = dict(WL_TO_PY_RENAME)
         if arguments.drop_rename is not None:
@@ -507,6 +811,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             _disable_imported_prepass_for_drop(arguments.drop_rename)
         py_tags = C.load_py(arguments.py)
         wl_tags = C.load_wl(arguments.wl)
+        install_gamma_bridge(py_tags, wl_tags)
         for family in CORE_FAMILIES:
             _run_family(family, py_tags, wl_tags, active_map)
         for family in NAMESPACE_INCOMPLETE_FAMILIES:

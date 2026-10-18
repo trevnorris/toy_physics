@@ -51,23 +51,11 @@ BRIDGE_D_SOURCES = (
     "scripts/S11c_b_brane_operator_sympy_audit.py:1850-1869",
 )
 
-PROTECTED_ATOM_NAMES = frozenset(
-    {
-        "gamma_s11cb_w_bg_07",
-        "gamma_s11cb_w_bg_10",
-        "gamma_s11cb_mu_r_bg_07",
-        "gamma_s11cb_mu_r_bg_10",
-        "gammaWidthDivGradTheta",
-        "gammaWidthDivGradEw",
-        "gammaModulusDivGradTheta",
-        "gammaModulusDivGradEw",
-    }
-)
+PROTECTED_ATOM_NAMES = frozenset()
 
 ENERGY_STRUCTURE_FAMILIES = frozenset(
     {
         "ENERGY_BASIS_VARIABLE",
-        "ENERGY_BASIS_NEW_INVARIANTS",
         "ENERGY_BASIS_OMISSIONS",
     }
 )
@@ -82,7 +70,7 @@ WEAK_ORIGIN_SOURCES = (
     "scripts/S11c_b_brane_operator_sympy_audit.py:1996",
 )
 
-# Bridge A, and no other algebraic normalization:
+# Bridge A (the separate section 3a coefficient bridge lives in H):
 #   WL theta^2 coefficient: bRho*anchoredWidth/2, anchoredWidth=W_bg
 #     mathematica/S11c_b_brane_operator_mathematica_audit.wl:472-479
 #   WL homogeneous coefficient: bRho*WZero/2
@@ -1318,6 +1306,79 @@ def _run_divergence_fixtures() -> None:
     print(f"fixture_BridgeD_D_noncommutator = {C.serialise(noncommutator)}", flush=True)
 
 
+def p2b_run(py_path: Path, wl_path: Path) -> int:
+    """P2b only: action-derived certificates through the production transform.
+
+    No classification verdict is emitted. The protection fixture queries the
+    existing classifier's measured route count and prints its boolean predicate.
+    """
+    import contextlib
+    import io
+
+    bridge = H.install_gamma_bridge(C.load_py(py_path), C.load_wl(wl_path))
+    H.emit_gamma_certificate(bridge)
+    names = dict(WL_TO_PY_RENAME)
+    for pair in bridge.pairs:
+        left = transform(pair.py.action, names, bridge_a=True, bridge_d=False, collapse=None)
+        right = transform(pair.wl.action, names, bridge_a=True, bridge_d=False, collapse=None)
+        residual = _expr_residual(left, right)
+        prefix = f"P2B_APPLY_{pair.wl.branch}_{pair.wl.coefficient}"
+        H.p2b_emit(prefix + "_actions", sp.Tuple(pair.py.action, pair.wl.action))
+        H.p2b_emit(prefix + "_operands", sp.Tuple(left, right))
+        H.p2b_emit(prefix + "_residual", residual)
+        if residual != 0:
+            raise C.InputError("adjudicated action bridge")
+        # The bilinear operator is the action Hessian. Coefficient substitution
+        # must commute with both variations, using the very same transform.
+        fields = tuple(sorted((atom for atom in pair.py.invariant.free_symbols if atom.name.startswith(("u_", "grad_theta_", "e_W")) or atom.name == "theta"), key=lambda atom: atom.name))
+        py_operator = sp.ImmutableMatrix(sp.hessian(pair.py.action, fields))
+        wl_operator = sp.ImmutableMatrix(sp.hessian(pair.wl.action, fields))
+        left_operator = transform(py_operator, names, bridge_a=True, bridge_d=False, collapse=None)
+        right_operator = transform(wl_operator, names, bridge_a=True, bridge_d=False, collapse=None)
+        operator_residual = _arithmetic_residual(left_operator, right_operator)
+        H.p2b_emit(prefix + "_variation_fields", sp.Tuple(*fields))
+        H.p2b_emit(prefix + "_operator_operands", sp.Tuple(left_operator, right_operator))
+        H.p2b_emit(prefix + "_operator_residual", operator_residual)
+        if not _zero_object(operator_residual):
+            raise C.InputError("adjudicated operator bridge")
+
+    global PROTECTED_ATOM_NAMES
+    original_protection = PROTECTED_ATOM_NAMES
+    for pair in bridge.pairs:
+        if not pair.py.coefficient.name.endswith(("_07", "_10")):
+            continue
+        probe = sp.Symbol("p2b_variation")
+        # Plant in the action, vary, and pass both resulting rows through the
+        # real transform and classifier. Never overwrite a computed residual.
+        left_action = pair.py.action + probe * pair.py.coefficient
+        right_action = pair.wl.action
+        left = transform(sp.diff(left_action, probe), names, bridge_a=True, bridge_d=False, collapse=None)
+        right = transform(sp.diff(right_action, probe), names, bridge_a=True, bridge_d=False, collapse=None)
+        residual = _expr_residual(left, right)
+        prefix = f"P2B_PROTECTION_{pair.wl.branch}_{pair.py.coefficient}"
+        H.p2b_emit(prefix + "_actions", sp.Tuple(left_action, right_action))
+        H.p2b_emit(prefix + "_operands", sp.Tuple(left, right))
+        H.p2b_emit(prefix + "_residual", residual)
+        if residual == 0:
+            raise C.InputError("planted action variation")
+        key = C.make_key((("BRANCH", pair.wl.branch), ("SOURCE", pair.wl.source)))
+        case = JoinedCase("SLAB_OPERATOR", key, left, right)
+        try:
+            for package, protection in (("current", original_protection), ("restored", original_protection | {pair.py.coefficient.name})):
+                PROTECTED_ATOM_NAMES = protection
+                state = RunState(Counter(), Counter(), Counter(), Counter(), Counter(), Counter(), [])
+                with contextlib.redirect_stdout(io.StringIO()):
+                    _classify_case(case, left, right, left, right, state, divergence=False)
+                routed = sp.sympify(state.route_counts["PROTECTED_UNREDUCED"] != 0)
+                H.p2b_emit(prefix + f"_{package}_protection_membership", sp.sympify(pair.py.coefficient.name in protection))
+                H.p2b_emit(prefix + f"_{package}_route_predicate", routed)
+                if bool(routed) != (package == "restored"):
+                    raise C.InputError("protection routing fixture")
+        finally:
+            PROTECTED_ATOM_NAMES = original_protection
+    return 0
+
+
 def run(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--py", type=Path, default=C.DEFAULT_PY)
@@ -1334,7 +1395,10 @@ def run(argv: Sequence[str] | None = None) -> int:
     hooks.add_argument("--drop-bridge-d", action="store_true")
     hooks.add_argument("--drop-divergence", action="store_true")
     hooks.add_argument("--drop-rename", metavar="WLname")
+    parser.add_argument("--p2b", action="store_true", help="emit section 3a action, routing, and residual-path controls")
     arguments = parser.parse_args(argv)
+    if arguments.p2b:
+        return p2b_run(arguments.py, arguments.wl)
 
     started = time.monotonic()
     try:
@@ -1360,6 +1424,9 @@ def run(argv: Sequence[str] | None = None) -> int:
 
         py_tags = C.load_py(arguments.py)
         wl_tags = C.load_wl(arguments.wl)
+        H.install_gamma_bridge(py_tags, wl_tags)
+        bridge_a_state = H.gamma_bridge()
+        H.emit_gamma_certificate(bridge_a_state)
         state = RunState(Counter(), Counter(), Counter(), Counter(), Counter(), Counter(), [])
         bridge_a = not arguments.drop_bridge_a
         bridge_d = not arguments.drop_bridge_d
@@ -1383,6 +1450,8 @@ def run(argv: Sequence[str] | None = None) -> int:
             print("DIVERGENCE_FIXTURES = TextAtom('DROPPED')", flush=True)
 
         for family in H.CORE_FAMILIES:
+            if family == "ENERGY_BASIS_NEW_INVARIANTS":
+                continue  # emitted by the shared gamma certificate above
             for case in _family_cases(family, py_tags, wl_tags, state):
                 raw_values = (case.operand_a, case.operand_b)
                 state.captured_names.update(_token_names(case.operand_a))

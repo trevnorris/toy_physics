@@ -4,6 +4,7 @@ No CAS is performed in this driver; the single math child inherits the guard.
 The AST conversion below is syntax-only, never an independently typed operand.
 """
 import ast
+import argparse
 import hashlib
 import json
 import pathlib
@@ -21,7 +22,7 @@ SOURCES = {
 }
 PY_TAGS = ['PY_LOCAL_S9B_GENERAL_PROFILES', 'PY_LOCAL_S9B_COUNTING',
  'PY_LOCAL_S9B_VECTOR_DISPERSION', 'PY_LOCAL_S9B_VECTOR_ADVECTION',
- 'PY_LOCAL_S9B_SPEED_IDENTIFICATION']
+ 'PY_LOCAL_S9B_SPEED_IDENTIFICATION', 'PY_LOCAL_S9B_MASS_BALANCE']
 WL_TAGS = ['WL_LOCAL_S9B_SUPPLIED_INPUTS', 'WL_LOCAL_S9B_PROFILE_ANSATZ',
  'WL_LOCAL_S9B_RETAINED_GRADES', 'WL_LOCAL_S9B_RESTRICTION_FLOW_ONLY']
 for route in ['DEFLECTION', 'RADAR']:
@@ -80,7 +81,9 @@ def wl(n):
  heads={'Tuple':'List','Add':'Plus','Mul':'Times','Pow':'Power','Rational':'Rational',
  'Equality':'Equal','Unequality':'Unequal','StrictGreaterThan':'Greater',
  'StrictLessThan':'Less','GreaterThan':'GreaterEqual','LessThan':'LessEqual',
- 'ImmutableDenseMatrix':'Identity','Integral':'Inactive[Integrate]', 'acos':'ArcCos'}
+ 'ImmutableDenseMatrix':'Identity','Integral':'Inactive[Integrate]', 'acos':'ArcCos',
+ 'ConditionSet':'sourceConditionSet','Interval':'sourceInterval','ProductSet':'sourceProductSet',
+ 'Intersection':'sourceIntersection','Union':'sourceUnion','Contains':'sourceContains'}
  return heads.get(h,h)+'['+','.join(wl(x) for x in a)+']'
 
 
@@ -88,14 +91,40 @@ def node_record(n):
  return {'raw': ast.unparse(n), 'wl': wl(n)}
 
 
-def algebraic_predicates(domain):
- # Select only literal top-level scalar constraints; retain the complete domain
- # separately. This is AST selection, not symbolic inference.
- result=[]
- for predicate in domain.args[1].args:
-  heads={x.func.id for x in ast.walk(predicate) if isinstance(x,ast.Call) and isinstance(x.func,ast.Name)}
-  if not heads.intersection({'Function','Limit','Derivative','ConditionSet','Integral','Subs'}):
-   result.append(node_record(predicate))
+def declared_assumptions(tree):
+ # Interpret the actual srepr keyword declarations, never infer from names.
+ declarations={}
+ for n in ast.walk(tree):
+  constructor=n.func if isinstance(n,ast.Call) else None
+  if isinstance(constructor,ast.Call) and isinstance(constructor.func,ast.Name) and constructor.func.id=='Function':
+   attrs={}
+   for kw in constructor.keywords:
+    if kw.arg is None: attrs.update(ast.literal_eval(kw.value))
+    else: attrs[kw.arg]=ast.literal_eval(kw.value)
+  elif isinstance(constructor,ast.Name) and constructor.id=='Symbol':
+   attrs={kw.arg:ast.literal_eval(kw.value) for kw in n.keywords}
+  else: continue
+  expression=wl(n)
+  predicates=[]
+  for prop,head in [('positive','Greater'),('negative','Less'),('nonnegative','GreaterEqual'),('nonpositive','LessEqual'),('zero','Equal'),('nonzero','Unequal')]:
+   if attrs.get(prop) is True: predicates.append(head+'['+expression+',0]')
+  if attrs.get('real') is True or attrs.get('positive') is True or attrs.get('negative') is True:
+   predicates.append('Element['+expression+',Reals]')
+  for predicate in predicates: declarations[predicate]={'wl':predicate,'raw':ast.unparse(n)}
+ return list(declarations.values())
+
+
+def attached_domain(tree):
+ # First tuple contains the exterior interval and the general ray predicate.
+ radial=tree.args[0].args[1]
+ interval=tree.args[0].args[2].args[1]
+ lower,upper,left_open,right_open=interval.args
+ relation='Greater' if left_open.id=='true' else 'GreaterEqual'
+ result=[{'wl':relation+'['+wl(radial)+','+wl(lower)+']','raw':ast.unparse(interval)}]
+ if not isinstance(upper,ast.Name) or upper.id!='oo':
+  relation='Less' if right_open.id=='true' else 'LessEqual'
+  result.append({'wl':relation+'['+wl(radial)+','+wl(upper)+']','raw':ast.unparse(interval)})
+ result.append(node_record(tree.args[0].args[3].args[1]))
  return result
 
 
@@ -110,17 +139,23 @@ def extract_py(record):
                 'domain_raw':ast.unparse(fields[1]),
                 'raw':ast.unparse(case),
                 'velocity':node_record(eqs[0]), 'exchange':node_record(eqs[-1]),
-                'algebraic_domain':algebraic_predicates(fields[1])})
+                'domain':node_record(fields[1].args[1]),
+                'velocity_derivative':node_record(eqs[1]) if len(eqs)>2 else None})
  return {'raw':record['raw'], 'line':record['line'], 'source':record['source'],
          'metadata_raw':ast.unparse(a.args[2]), 'domain_raw':ast.unparse(a.args[0]),
+         'declared':declared_assumptions(a),'attached':attached_domain(a),
+         'constants':node_record(meta['constants']),
          'definition':node_record(meta['definition']),
          'squared':node_record(meta['squared']),
          'general':node_record(meta['general_solution']), 'cases':cases}
 
 
 def main():
+ parser=argparse.ArgumentParser()
+ parser.add_argument('--control',choices=['baseline','visser_form','hl_spatial_form'],default='baseline')
+ args=parser.parse_args()
  data={'provenance':{}, 'py':{}, 'wl':{}, 'quotes':json.loads((ASSETS/'oracle_quotes.json').read_text()),
-       'map':json.loads((ASSETS/'identification_map.json').read_text())}
+       'map':json.loads((ASSETS/'identification_map.json').read_text()),'control':args.control}
  for engine, path in SOURCES.items():
   annex_target=subprocess.check_output(['git','show','503736ff:'+str(path.relative_to(ROOT))],cwd=ROOT,text=True).strip()
   if path.readlink().as_posix()!=annex_target:
@@ -131,7 +166,9 @@ def main():
    if engine=='PY':
     if 'IMPLIED_JN' in tag: data['py'][tag]=extract_py(record)
     else:
-     record['wl']=wl(ast.parse(record['raw'],mode='eval').body)
+     tree=ast.parse(record['raw'],mode='eval').body
+     record['wl']=wl(tree)
+     record['declared']=declared_assumptions(tree)
      data['py'][tag]=record
    else: data['wl'][tag]=record
  for f in ['gr-qc_0411060.pdf','gr-qc_9712010.pdf']:
@@ -143,11 +180,12 @@ def main():
  print('WORKING_ON: native Wolfram computation from both transcript representations',flush=True)
  messages=[]
  completed=False
- with (HERE/'latest_kernel.out').open('w') as output:
-  proc=subprocess.Popen(['math','-script',str(ASSETS/'S9b_flow_oracle_check.wl')],stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+ with (HERE/('latest_kernel_'+args.control+'.out')).open('w') as output:
+  proc=subprocess.Popen(['math','-script',str(ASSETS/'S9b_flow_oracle_check.wl')],stdin=subprocess.DEVNULL,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
   for line in proc.stdout:
    print(line,end='',flush=True)
    output.write(line)
+   output.flush()
    if re.match(r'^[A-Za-z$][A-Za-z0-9$]*::',line): messages.append(line.rstrip())
    if line.startswith('INSTRUMENT_COMPLETION: '): completed=True
   code=proc.wait()

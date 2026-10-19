@@ -152,7 +152,7 @@ def extract_py(record):
 
 def main():
  parser=argparse.ArgumentParser()
- parser.add_argument('--control',choices=['baseline','visser_form','hl_spatial_form'],default='baseline')
+ parser.add_argument('--control',choices=['baseline','visser_form'],default='baseline')
  args=parser.parse_args()
  data={'provenance':{}, 'py':{}, 'wl':{}, 'quotes':json.loads((ASSETS/'oracle_quotes.json').read_text()),
        'map':json.loads((ASSETS/'identification_map.json').read_text()),'control':args.control}

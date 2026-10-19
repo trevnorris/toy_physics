@@ -38,11 +38,21 @@ makeDomain[id_,parts_Association] := Module[{full=And@@Values[parts],cas},
     functional/integral existence problems afresh. *)
  cas=And@@KeyValueMap[If[MemberQ[{"ray_domain","along_ray"},#1],opaqueAtom[#2],domainLogic[#2]]&,parts];
  <|"id"->id,"CAS"->cas|>];
+(* A separate zero test leaves the residual and every downstream operand
+   unchanged. FullSimplify uses exactly the printed domain, including its
+   equalities. Cache only identical expression/domain pairs; no time limit. *)
+residualZeroTest[x_,ass_] := residualZeroTest[x,ass] = Module[{test},
+ (* Clear only internal CAS caches, not operands, domains or memoized tests. *)
+ ClearSystemCache[];
+ test=FullSimplify[Equal[x,0], Assumptions->ass, TimeConstraint->Infinity];
+ ClearSystemCache[];test];
 report[tag_,a_,b_,dom_] := Module[{ans},
  progress[{tag,dom["id"]}];
  emit["RESIDUAL_OPERANDS",{a,b}];
  emit["RESIDUAL_ASSUMPTIONS",dom];
- ans=domainSimplify[a-b,dom["CAS"]];emit[tag,ans];ans];
+ ans=domainSimplify[a-b,dom["CAS"]];emit[tag,ans];
+ emit["RESIDUAL_ZERO_TEST",<|"residual_tag"->tag,"domain"->dom["id"],
+   "value"->residualZeroTest[ans,dom["CAS"]]|>];ans];
 activateOperand[x_, ass_] := Block[{$Assumptions=ass}, domainSimplify[Activate[x, Integrate], ass]];
 quoteMany[keys_] := Scan[quote, keys];
 emit["KERNEL_THREAD_OPTIONS",{SystemOptions["ParallelOptions"],SystemOptions["InequalitySolvingOptions" -> "ThreadOr"]}];
@@ -82,9 +92,7 @@ emit["CONTROL_VARIANT",data["control"]];
 If[data["control"]=="visser_form",
  visContinuity=visContinuity/.Inactive[Div][Times[scalar_,vector_List],coords_List]:>Times[scalar,Inactive[Div][vector,coords]];
  emit["CONTROL_CHANGED_ORACLE_OPERATOR",visContinuity]];
-If[data["control"]=="hl_spatial_form",
- hlLine=Plus[hlLine,Times[Power[hlProfile[[2]],2],Power[differentialPlaceholder,2]]/.differentialPlaceholder->odr];
- emit["CONTROL_CHANGED_HL_LINE_ELEMENT",hlLine]];
+
 
 (* Hessian extraction, orthonormal spatial basis, inverse-metric eikonal
    contraction and frequency-coefficient normalization are computations. *)

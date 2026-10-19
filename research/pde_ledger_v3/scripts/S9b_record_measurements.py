@@ -26,6 +26,7 @@ BASELINE = '36f59ff1'
 REGISTER_BEFORE = 'caa0710d'
 ROUND_BEFORE = 'd1511b20'
 ROUND3_BEFORE = '4760e6e2'
+ROUND4_BEFORE = 'd877e857'
 
 
 @functools.lru_cache(None)
@@ -386,6 +387,40 @@ def line_kind_inventory():
     source_lines(COMPARATOR,'research/pde_ledger_v3/scripts/S9b_cross_engine_comparator.py',1622,1769)
 
 
+def brane_zero_values():
+    """Retrieve literal value-sample outcomes for the named boundary profile."""
+    path='research/pde_ledger_v3/scripts/out/S9b_cross_engine_comparator.out'
+    print('SOURCE git show '+COMPARATOR+':'+path+' (annex payload)')
+    totals=collections.Counter(); unresolved=collections.Counter(); by_outcome=collections.Counter()
+    with revision_file(COMPARATOR,path).open() as stream:
+        for number,line in enumerate(stream,1):
+            row=json.loads(line)
+            if row['kind']!='comparison':continue
+            counts=collections.Counter()
+            def walk(value,location=''):
+                if isinstance(value,dict):
+                    if value.get('role')=='value':
+                        for i,sample in enumerate(value.get('samples',[])):
+                            if sample.get('profile')!='brane_zero_at_point':continue
+                            finding=sample['comparison']
+                            label=finding.get('coverage','boolean comparison formed' if 'boolean_difference' in finding else 'exact representation comparison formed')
+                            counts[label]+=1;totals[label]+=1
+                            if label=='unresolved coverage':
+                                unresolved[row['name']]+=1;by_outcome[value['outcome']]+=1
+                                print('BRANE_ZERO_UNRESOLVED_VALUE',json.dumps(dict(name=row['name'],line=number,
+                                    path=location+'/samples/'+str(i),node_outcome=value['outcome'],
+                                    comparison_kind=value.get('comparison_kind'),sample=sample),sort_keys=True))
+                    for key,child in value.items():
+                        if key!='samples':walk(child,location+'/'+key)
+                elif isinstance(value,list):
+                    for i,child in enumerate(value):walk(child,location+'/'+str(i))
+            walk(row['comparison'])
+            print('BRANE_ZERO_VALUE_ROW',json.dumps(dict(name=row['name'],line=number,outcomes=dict(counts)),sort_keys=True))
+    print('BRANE_ZERO_VALUE_TOTALS',json.dumps(totals,sort_keys=True))
+    print('BRANE_ZERO_UNRESOLVED_VALUE_ROWS',json.dumps(unresolved,sort_keys=True))
+    print('BRANE_ZERO_UNRESOLVED_BY_NODE_OUTCOME',json.dumps(by_outcome,sort_keys=True))
+
+
 def section(name):
     print('PINNED_READS native/harness='+BUILD+' comparator='+COMPARATOR+' register_before='+REGISTER_BEFORE+' repository_context='+BASELINE)
     if name=='M1':
@@ -430,7 +465,8 @@ def section(name):
         new=(ROOT/p).read_text()
         prior=revision_text(ROUND_BEFORE,p)
         round2=revision_text(ROUND3_BEFORE,p)
-        for label,s in [(REGISTER_BEFORE,old),(ROUND_BEFORE,prior),(ROUND3_BEFORE,round2),('WORKTREE',new)]:
+        round3=revision_text(ROUND4_BEFORE,p)
+        for label,s in [(REGISTER_BEFORE,old),(ROUND_BEFORE,prior),(ROUND3_BEFORE,round2),(ROUND4_BEFORE,round3),('WORKTREE',new)]:
             rows=[l for l in s.splitlines() if l.startswith('### R-')]
             print(label,'ENTRY_COUNT',len(rows));print('\n'.join(rows))
         print('BEFORE REGISTER git show '+REGISTER_BEFORE+':'+p);print(old)
@@ -443,11 +479,12 @@ def section(name):
                 source_block=block.split('- **source**',1)[1].split('- **requirement**',1)[0]
                 if 'S9b' in source_block:found.append(entry)
             return found
-        for label,text in [(REGISTER_BEFORE,old),(ROUND_BEFORE,prior),(ROUND3_BEFORE,round2),('WORKTREE',new)]:
+        for label,text in [(REGISTER_BEFORE,old),(ROUND_BEFORE,prior),(ROUND3_BEFORE,round2),(ROUND4_BEFORE,round3),('WORKTREE',new)]:
             print(label,'S9B_SOURCE_ENTRIES',json.dumps(sourced_entries(text)))
         print('S9B_SOURCE_GAINS_SINCE_'+REGISTER_BEFORE,json.dumps([x for x in sourced_entries(new) if x not in sourced_entries(old)]))
         print('S9B_SOURCE_GAINS_SINCE_'+ROUND_BEFORE,json.dumps([x for x in sourced_entries(new) if x not in sourced_entries(prior)]))
         print('S9B_SOURCE_GAINS_SINCE_'+ROUND3_BEFORE,json.dumps([x for x in sourced_entries(new) if x not in sourced_entries(round2)]))
+        print('S9B_SOURCE_GAINS_SINCE_'+ROUND4_BEFORE,json.dumps([x for x in sourced_entries(new) if x not in sourced_entries(round3)]))
     elif name=='M13':condition_pairs()
     elif name=='M14':harness_retrieval()
     elif name=='M15':
@@ -469,6 +506,8 @@ def section(name):
     elif name=='M18':restriction_objects()
     elif name=='M19':branch_objects()
     elif name=='M20':line_kind_inventory()
+    elif name=='M21':source_lines('4760e6e2','research/pde_ledger_v3/directives/_measurements/S9b_record_r2_review_disposition.md',19,21)
+    elif name=='M22':brane_zero_values()
     else:raise ValueError(name)
 
 
@@ -491,9 +530,9 @@ def main():
                       'M5 counts literal JSON fields, without numeric interpretation, tolerance or algebra. '
                       'M11 preserves the full Wolfram native stream, including every restricted/forward/response domain; compact fields do not replace those gates. M6 preserves the complete row accounting; M7 preserves the accepted report, paired-comparison coverage-reason appendix and function/name table, not the raw stratum inventory. '
                       'M13 performs literal within-engine condition-payload comparisons only; M14 retrieves harness coverage/marks; M15 preserves repository prior-art sources; M16 retrieves mass and N-dependence objects by engine. '
-                      'M17 retrieves gamma objects and their strata; M18 retrieves complete single-mechanism conditions/exchange; M19 retrieves branch constructors and same-named native rows; M20 counts every comparator line kind and inventories stratum coverage labels, sizes and named objects. '
+                      'M17 retrieves gamma objects and their strata; M18 retrieves complete single-mechanism conditions/exchange; M19 retrieves branch constructors and same-named native rows; M20 counts every comparator line kind and inventories stratum coverage labels, sizes and named objects. M21 retrieves the written post-record oracle decision; M22 retrieves brane-zero value-sample outcomes by comparator row. '
                       'All revision-bearing reads use explicit git revisions, including caa0710d for the pre-S9b register; only the after-pass register is read from the worktree. HEAD is not an input.\n\n')
-            for i in range(1,21):
+            for i in range(1,23):
                 key='M'+str(i);cmd=[sys.executable,SCRIPT,'--section',key]
                 out.write(f'## {key}\n\n~~~~~~text\n$ python3 {SCRIPT} --section {key}\n');out.flush()
                 subprocess.run(cmd,cwd=ROOT,stdout=out,check=True)

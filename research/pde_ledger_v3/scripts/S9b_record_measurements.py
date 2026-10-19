@@ -9,17 +9,66 @@ only the measurements file; it does not author the physics record or register.
 from pathlib import Path
 import argparse
 import collections
+import functools
+import gzip
+import hashlib
 import json
+import re
 import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[3]
 BASE = ROOT / 'research/pde_ledger_v3'
 SCRIPT = 'research/pde_ledger_v3/scripts/S9b_record_measurements.py'
-NATIVE = {'py': BASE/'scripts/out/S9b_light_bending_sympy_audit.out',
-          'wl': BASE/'mathematica/out/S9b_light_bending_mathematica_audit.out'}
-CMP = BASE/'scripts/out/S9b_cross_engine_comparator.out'
-ACCOUNT = BASE/'scripts/out/S9b_cross_engine_comparator_accounting.jsonl'
+BUILD = 'fb2d6d25'
+COMPARATOR = '88bb1f41'
+BASELINE = '36f59ff1'
+REGISTER_BEFORE = 'caa0710d'
+
+
+@functools.lru_cache(None)
+def revision_bytes(rev, path):
+    """Read the named revision, resolving annex content only in this checkout."""
+    data = subprocess.run(['git', 'show', rev+':'+path], cwd=ROOT,
+                          check=True, capture_output=True).stdout
+    mode = subprocess.run(['git', 'ls-tree', rev, '--', path], cwd=ROOT,
+                          check=True, capture_output=True, text=True).stdout.split()[0]
+    if mode == '120000':
+        target = (ROOT/path).parent/data.decode().strip()
+        target = target.resolve()
+        if not target.is_relative_to(ROOT/'.git/annex'):
+            raise ValueError('annex target outside this checkout: '+path)
+        if not target.is_file():
+            subprocess.run(['datalad', 'get', path], cwd=ROOT, check=True)
+        return target
+    return data
+
+
+def revision_text(rev, path):
+    data = revision_bytes(rev, path)
+    return data.read_text() if isinstance(data, Path) else data.decode()
+
+
+def revision_file(rev, path):
+    data = revision_bytes(rev, path)
+    if isinstance(data, Path):
+        return data
+    scratch = ROOT/'_scratch/s9b_record/pinned'
+    scratch.mkdir(parents=True, exist_ok=True)
+    target = scratch/(rev+'_'+Path(path).name)
+    target.write_bytes(data)
+    return target
+
+
+def native_file(engine):
+    path = {'py': 'scripts/out/S9b_light_bending_sympy_audit.out',
+            'wl': 'mathematica/out/S9b_light_bending_mathematica_audit.out'}[engine]
+    return revision_file(BUILD, 'research/pde_ledger_v3/'+path)
+
+
+def source(rev, path):
+    print('SOURCE git show '+rev+':'+path)
+    print(revision_text(rev, path))
 
 
 def split(s):
@@ -58,7 +107,7 @@ def native(engine,tag):
     prefix=engine.upper()+('_LOCAL_S9B_' if tag.startswith('LOCAL_') else '_S9B_')
     if tag.startswith('LOCAL_'):tag=tag[6:]
     prefix+=tag+': '
-    with NATIVE[engine].open() as f:
+    with native_file(engine).open() as f:
         for line in f:
             if line.startswith(prefix):return line[len(prefix):].rstrip('\n')
     raise KeyError(prefix)
@@ -66,7 +115,7 @@ def native(engine,tag):
 
 def native_fields(engine):
     """Compact original fields. Full gates are separately retrieved, never replaced."""
-    with NATIVE[engine].open() as f:
+    with native_file(engine).open() as f:
         for lineno,line in enumerate(f,1):
             if ': ' not in line:continue
             tag,s=line.rstrip('\n').split(': ',1)
@@ -87,7 +136,7 @@ def native_fields(engine):
 
 def comparator():
     counts=collections.Counter(); samples=collections.Counter(); reps=collections.Counter(); exceptions=collections.Counter(); symbolic=collections.Counter(); boolean=collections.Counter(); residual30_rows=collections.Counter()
-    with CMP.open() as f:
+    with revision_file(COMPARATOR, 'research/pde_ledger_v3/scripts/out/S9b_cross_engine_comparator.out').open() as f:
         for lineno,line in enumerate(f,1):
             d=json.loads(line)
             if d.get('kind')=='configuration':
@@ -141,12 +190,97 @@ def comparator():
     print('COMPUTED30_NONZERO_LITERAL_COUNTS',sum(residual30_rows.values()),len(residual30_rows))
 
 
+def condition_pairs():
+    """Compare only original strings at stored syntax paths, never conditions."""
+    for engine in ('py', 'wl'):
+        objects = {}
+        with native_file(engine).open() as stream:
+            for line in stream:
+                tag, sep, payload = line.rstrip('\n').partition(': ')
+                if sep and ('_CONDITION_DEFLECTION' in tag or '_CONDITION_RADAR' in tag):
+                    objects[tag] = payload
+        for tag, left in objects.items():
+            if not tag.endswith('_CONDITION_DEFLECTION'):continue
+            other = tag[:-len('DEFLECTION')]+'RADAR'
+            right = objects[other]
+            print('PAIR', tag, other, 'whole_payload_literal_equal', left == right)
+            equal=[]; different=[]
+            def walk(a,b,path):
+                if a==b:
+                    equal.append(path)
+                    print('IDENTICAL_FIELD',path,'bytes',len(a.encode()),'sha256',hashlib.sha256(a.encode()).hexdigest())
+                    if len(a)<20000:print(a)
+                    return
+                ac,bc=children(a,engine),children(b,engine)
+                if ac and bc and ac.keys()==bc.keys():
+                    for k in ac:walk(ac[k],bc[k],path+'/'+str(k))
+                else:
+                    different.append(path)
+                    print('DIFFERING_FIELD',path,'DEFLECTION',a,'RADAR',b,sep='\n')
+            # Even identical whole payloads get their immediate stored fields listed.
+            lc,rc=children(left,engine),children(right,engine)
+            if lc and rc and lc.keys()==rc.keys():
+                for k in lc:walk(lc[k],rc[k],str(k))
+            else:walk(left,right,'<payload>')
+            print('PAIR_SUMMARY',tag,json.dumps({'identical_paths':equal,'differing_paths':different},sort_keys=True))
+
+
+def harness_retrieval():
+    prefix = 'research/pde_ledger_v3/directives/_measurements/'
+    path = prefix+'S9b_repair_sympy_tag_inventory.json'
+    print('SOURCE git show '+BUILD+':'+path)
+    inventory = json.loads(revision_text(BUILD, path))
+    print('PY flag_qualification', inventory['flag_qualification'])
+    print('PY source_pins', json.dumps(inventory['source_pins'], sort_keys=True))
+    print('PY K11', json.dumps(inventory['K11'], sort_keys=True))
+    for run in inventory['runs']:
+        if run['id']=='full_harness':
+            print('PY harness provenance',json.dumps({k:v for k,v in run.items() if k!='tags'},sort_keys=True))
+            for row in run['tags']:
+                if 'A_NONRECIPROCAL_' in row['name']:print('PY HARNESS_TAG',json.dumps(row,sort_keys=True))
+    for knife, data in inventory['comparison_counts_by_knife'].items():
+        grouped=collections.defaultdict(list)
+        for row in data['tags']:
+            if 'A_NONRECIPROCAL_' in row['tag']:
+                print('PY STORED_MARK',knife,json.dumps(row,sort_keys=True))
+                grouped[row.get('mark', 'NOT_EVALUATED' if row.get('evaluated') is False else '<absent>')].append(row['tag'])
+        print('PY SHARED_NONRECIPROCAL_MARKS',knife,json.dumps(grouped,sort_keys=True))
+    for knife in inventory['knives']:
+        print('PY STORED_WITNESS_LOCATION',json.dumps(knife,sort_keys=True))
+    path=prefix+'S9b_repair_wolfram_round11_harness.stdout.gz'
+    print('SOURCE gzip text of git show '+BUILD+':'+path+' (annex content)')
+    marks=collections.defaultdict(lambda:collections.defaultdict(list))
+    with gzip.open(revision_file(BUILD,path),'rt') as stream:
+        for lineno,line in enumerate(stream,1):
+            tag,sep,payload=line.rstrip('\n').partition(': ')
+            match=re.fullmatch(r'WL_LOCAL_S9B_ABLATION_(K[0-9]+[abc]?)_(WL_S9B_(?:F_FLOW_|F_LIVE_)?A_NONRECIPROCAL_.+)',tag)
+            if match:
+                knife,obj=match.groups()
+                # Last printed structural mark; no mathematical comparison is performed.
+                found=re.findall(r'"Mark" -> "([^"]+)"',payload)
+                mark=found[-1] if found else '<absent>'
+                marks[knife][mark].append(obj)
+                suffix=payload[payload.rfind('"StructuralComparison"'):]
+                print('WL HARNESS_TAG',lineno,tag,'Baseline_field', '"Baseline" ->' in payload,'Corrupted_field','"Corrupted" ->' in payload,'NOT_EVALUATED_literal','NOT_EVALUATED' in payload)
+                print(suffix if found else payload)
+            elif 'K11' in tag and ('COVERAGE' in tag or 'MANIFEST' in tag):
+                print('WL K11 COVERAGE',lineno,line.rstrip())
+            elif ('WITNESS' in tag or 'SEARCH' in tag) and 'A_NONRECIPROCAL_' in payload:
+                print('WL STORED_WITNESS',lineno,line.rstrip())
+    for knife,grouped in marks.items():
+        print('WL SHARED_NONRECIPROCAL_MARKS',knife,json.dumps(grouped,sort_keys=True))
+
+
+
 def section(name):
+    print('PINNED_READS native/harness='+BUILD+' comparator='+COMPARATOR+' register_before='+REGISTER_BEFORE+' repository_context='+BASELINE)
     if name=='M1':
         paths=['directives/S9b_record_directive.md','directives/S9b_repair_decision_list.md',
                'directives/_measurements/S9b_production_runs.md','directives/_measurements/S9b_comparator_production_run.md']
-        for p in paths:print('FILE',p);print((BASE/p).read_text())
-        print('SPEC A-C');print((BASE/'directives/S9b_SHARED_PHYSICS.md').read_text().split('## Part D inputs:')[0])
+        for p in paths:
+            rev = '79055918' if p.endswith('S9b_repair_decision_list.md') else (BUILD if p.endswith('S9b_production_runs.md') else (COMPARATOR if p.endswith('S9b_comparator_production_run.md') else BASELINE))
+            source(rev, 'research/pde_ledger_v3/'+p)
+        print('SPEC A-C git show 34a994d5:research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md');print(revision_text('34a994d5', 'research/pde_ledger_v3/directives/S9b_SHARED_PHYSICS.md').split('## Part D inputs:')[0])
     elif name=='M2':
         for engine in ('py','wl'):
             for tag in ('BRANCH_EXISTENCE','PATH_TRAVERSAL','BRANCH_TYPE'):
@@ -154,34 +288,54 @@ def section(name):
     elif name=='M3':native_fields('wl')
     elif name=='M4':native_fields('py')
     elif name=='M5':comparator()
-    elif name=='M6':print(ACCOUNT.read_text(),end='')
+    elif name=='M6':source(COMPARATOR, 'research/pde_ledger_v3/scripts/out/S9b_cross_engine_comparator_accounting.jsonl')
     elif name=='M7':
         for p in ['S9b_comparator_build_report.md','S9b_comparator_build_report_coverage_reasons.md','S9b_comparator_build_report_function_name_table.md']:
-            print('FILE',p);print((BASE/'directives/_measurements'/p).read_text())
+            source(COMPARATOR, 'research/pde_ledger_v3/directives/_measurements/'+p)
     elif name=='M8':
         for stem,n in [('S9b_repair_build_r',12),('S9b_comparator_build_r',5)]:
             for i in range(n):
                 p=BASE/'directives/_measurements'/f'{stem}{i}_review_disposition.md'
-                print('FILE',p.relative_to(ROOT));print(p.read_text())
+                source(BUILD if stem=='S9b_repair_build_r' else COMPARATOR, str(p.relative_to(ROOT)))
     elif name=='M9':
-        p=BASE/'steps/O2_steady_brane_balance.md';print('FILE',p.relative_to(ROOT));print(p.read_text())
+        source('72866fcf', 'research/pde_ledger_v3/steps/O2_steady_brane_balance.md')
     elif name=='M12':
         pins=[('34a994d5','directives/S9b_SHARED_PHYSICS.md'),('79055918','directives/S9b_repair_decision_list.md'),('72866fcf','steps/O2_steady_brane_balance.md'),('503736ff','scripts/S9b_light_bending_sympy_audit.py'),('503736ff','mathematica/S9b_light_bending_mathematica_audit.wl'),('88bb1f41','scripts/S9b_cross_engine_comparator.py')]
         for rev,path in pins:
-            old=subprocess.run(['git','show',rev+':research/pde_ledger_v3/'+path],cwd=ROOT,check=True,capture_output=True).stdout
-            print(rev,path,'literal_bytes_match',old==(BASE/path).read_bytes())
+            other = BUILD if path.endswith(('_audit.py', '_audit.wl')) else BASELINE
+            old=revision_text(rev, 'research/pde_ledger_v3/'+path)
+            new=revision_text(other, 'research/pde_ledger_v3/'+path)
+            print('git show',rev+':research/pde_ledger_v3/'+path,'versus git show',other+':research/pde_ledger_v3/'+path,'literal_bytes_match',old==new)
         print('PY B_GAMMA_DIFFERENCE on-domain value (original substring)')
         print(children(children(native('py','B_GAMMA_DIFFERENCE'),'py')[0],'py')[1])
     elif name=='M11':
-        print(NATIVE['wl'].read_text(),end='')
+        print(native_file('wl').read_text(),end='')
     elif name=='M10':
         p='research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md'
-        old=subprocess.run(['git','show','HEAD:'+p],cwd=ROOT,check=True,capture_output=True,text=True).stdout
+        old=revision_text(REGISTER_BEFORE, p)
         new=(ROOT/p).read_text()
-        for label,s in [('HEAD',old),('WORKTREE',new)]:
+        for label,s in [(REGISTER_BEFORE,old),('WORKTREE',new)]:
             rows=[l for l in s.splitlines() if l.startswith('### R-')]
             print(label,'ENTRY_COUNT',len(rows));print('\n'.join(rows))
+        print('BEFORE REGISTER git show '+REGISTER_BEFORE+':'+p);print(old)
         print('WORKTREE REGISTER');print(new)
+    elif name=='M13':condition_pairs()
+    elif name=='M14':harness_retrieval()
+    elif name=='M15':
+        source(BASELINE, 'docs/medium_requirements_and_prior_art.md')
+        source(BASELINE, 'research/pde_ledger_v3/directives/O2_steady_brane_balance_scoping.md')
+        source(BASELINE, 'research/pde_ledger_v3/directives/prior_art_4d_bulk_search_prompt.md')
+    elif name=='M16':
+        for engine in ('py','wl'):
+            for tag in ('F_MASS_SOLUTION','C_CONSTANT_N_DEPENDENCE','C_FIXED_RATIO_N_DEPENDENCE','C_POWER_N_DEPENDENCE'):
+                print(engine,tag);print(native(engine,tag))
+        for path,first,last in [('scripts/S9b_light_bending_sympy_audit.py',1031,1050),
+                                ('mathematica/S9b_light_bending_mathematica_audit.wl',633,636),
+                                ('mathematica/S9b_light_bending_mathematica_audit.wl',651,664)]:
+            full='research/pde_ledger_v3/'+path
+            print('SOURCE git show '+BUILD+':'+full, 'lines', first, last)
+            for n,line in enumerate(revision_text(BUILD,full).splitlines(),1):
+                if first<=n<=last:print(str(n)+': '+line)
     else:raise ValueError(name)
 
 
@@ -202,8 +356,10 @@ def main():
                       'Native compact listings preserve retrieved substrings; Named domain fields and scalar fields of 20000 characters or more are omitted from the compact views, not evaluated or asserted; full native retrieval remains available. '
                       'M2 retains the general gates in full; every complete tagged object remains retrievable with `--native ENGINE TAG`. '
                       'M5 counts literal JSON fields, without numeric interpretation, tolerance or algebra. '
-                      'M11 preserves the full Wolfram native stream, including every restricted/forward/response domain; compact fields do not replace those gates. M6/M7 preserve the complete row accounting and remaining-coverage inventory.\n\n')
-            for i in range(1,13):
+                      'M11 preserves the full Wolfram native stream, including every restricted/forward/response domain; compact fields do not replace those gates. M6/M7 preserve the complete row accounting and remaining-coverage inventory. '
+                      'M13 performs literal within-engine condition-payload comparisons only; M14 retrieves harness coverage/marks; M15 preserves repository prior-art sources; M16 retrieves mass and N-dependence objects by engine. '
+                      'All revision-bearing reads use explicit git revisions, including caa0710d for the pre-S9b register; only the after-pass register is read from the worktree. HEAD is not an input.\n\n')
+            for i in range(1,17):
                 key='M'+str(i);cmd=[sys.executable,SCRIPT,'--section',key]
                 out.write(f'## {key}\n\n~~~~~~text\n$ python3 {SCRIPT} --section {key}\n');out.flush()
                 subprocess.run(cmd,cwd=ROOT,stdout=out,check=True)

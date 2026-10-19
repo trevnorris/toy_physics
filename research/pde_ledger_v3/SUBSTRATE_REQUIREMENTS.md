@@ -538,7 +538,7 @@ other three.
 
 ### R-S21-01 — conditional deflection and radar-slope profile requirements
 
-- **source** S9b (`steps/S9b_light_bending.md`, §§3–6; measurements M3–M7/M11–M12)
+- **source** S9b (`steps/S9b_light_bending.md`, §§3–6; measurements M3–M7/M11–M13)
   · **target** S21 (integration/knit; S9b record §7, O2 record §7 and the record directive's
   2026-10-08/09 user decisions) · **status** OPEN
 - **requirement** — On S9b's isolated spherical, steady far-zone, leading-eikonal, LAB_HELD
@@ -560,9 +560,20 @@ other three.
   components, zero-locus differentiability/flux joins, excluded nonreal branches and printed
   integration-constant domains retained. The complete implied-exchange values remain uncompared.
   The requirements keep δ, ξw, ρbr, f, n, s, GM and all remaining printed inputs free;
-  they select no profile, exponent, flux value/sign or GM normalization. The deflection and
-  radar conditions are not counted as independent constraints where each engine prints the
-  same condition.
+  they select no profile, exponent, flux value/sign or GM normalization. M13 retrieves all 14
+  within-engine deflection/radar condition pairs: every PY paired payload is byte-identical,
+  so those pairs establish no second independent profile test. Every WL paired payload differs.
+  WL `GM`, `ProfileEquation`, `ProfileEquationRadius`, outer `Domain`/`BranchDomain` and case
+  `Domain` match literally; `InverseWeight` and `ReferenceInverse` differ in every pair.
+  `VelocityReduction/SquaredVelocityEquation` additionally differs for general B, R_FLOW_ONLY B
+  and combined C_CONSTANT/C_FIXED_RATIO/C_POWER; `VelocityReduction/Cases/0/Domain` differs
+  for R_SPEED_ONLY B, R_TILT_ONLY B, both R_BULK_ONLY C pairs and all conditional forward B/C
+  pairs. These paths are relative to `Cases/0`, within each density part's `Object` and the
+  outer forward `Object` where present. M13 retains every identical subtree and differing
+  payload; density labels/label conditions, bulk premise and forward premise match within
+  their pairs. Whether the differing fields state the same condition is OPEN, no owner named;
+  the WL separate-test count remains OPEN. Text differences alone do not establish independent
+  physical tests, and the matching GM/profile fields do not settle the complete conditions.
 - **on failure** — The conditional reference-matching statement for the affected observable
   cannot be realized on that domain. The computed conditional functionals and the reported
   cross-engine coverage do not become a GR-matching result.
@@ -807,10 +818,11 @@ or erased by this pass.
 ### S9b pass — conditional light bending and radar slope · populated 2026-10-19; review pending
 
 Source: `steps/S9b_light_bending.md`, Parts A–C, §§1–8 and appendices. Retrieval commands and
-literal output: `steps/_measurements/S9b_record_measurements.md`, M1–M12; generator
-`scripts/S9b_record_measurements.py`. **16 → 17 entries**, all OPEN. **New entry by target:
+literal output: `steps/_measurements/S9b_record_measurements.md`, M1–M16; generator
+`scripts/S9b_record_measurements.py`. **16 (`caa0710d`, before S9b) → 17 entries**, all OPEN;
+round 1 itself keeps 17 → 17 from `36f59ff1`. **New entry by target:
 S21, `R-S21-01`.** Existing entries gaining a source: **`R-S8-01`, `R-S8-06`**.
-No status is changed to DELIVERED or RETIRED. This pass is authored, not independently reviewed.
+No status is changed to DELIVERED or RETIRED. This pass is revised for record review round 1; the revision awaits review.
 
 **First route / rest-on test.** The reported optical functionals rest on the supplied local
 transverse stiffness and on the identification of displacement, density and advected velocity
@@ -820,8 +832,11 @@ printed Part B profile condition for each observable and Part C rewrites, with t
 exchange/domain restrictions. That condition is an obligation for S21's integration/knit and
 passes the test; it does not establish that the substrate satisfies it. `R-S21-01` specifies
 only the required objects and failure consequence, no means of meeting them, no balance or
-candidate material, and no effect of the adopted density link. The distinct deflection/radar
-labels are retained without turning equal within-engine conditions into two independent tests.
+candidate material, and no effect of the adopted density link. The deflection/radar
+conditions retain M13's explicit distinction, detailed in R-S21-01: PY paired payloads are
+byte-identical; WL GM/profile fields match but inverse and velocity-reduction fields differ.
+Whether the differing WL fields state the same condition, and the WL separate-test count,
+remain OPEN. No second independent test follows from the identical PY pairs.
 The source's full difference and unresolved-coverage ledger travels with the requirement.
 
 | Candidate/source dependence | Application of the same rest-on test |
@@ -842,12 +857,32 @@ not derived requirements. No ansatz or defect register is changed. The source's 
 premises are re-tested at the knit supplies no new A–C constitutive law; held Part-D choices
 have no present A–C rest-on consumer to duplicate as a new entry.
 
-**Second route.** The identified prior-art objects in this pass are the supplied GR/PPN
-comparison references. S9b establishes conditional profile requirements, not a reproduced GR
-solution or mechanical medium, and no sourced historic objection to a banked reproduction is
-established here. This route supplies no new entry. Existing MacCullagh carrier/frame questions
-remain OPEN; neither radial flow nor the printed within-engine equality of profile conditions
-answers them. No new search, oracle check or physical reconciliation is performed.
+**Second route.** the repository identifies more than GR/PPN references. The inventory below
+names the prior-art objects relevant to the optical, flow, embedding and carried mechanical
+questions. `survey` means repository-root `docs/medium_requirements_and_prior_art.md` at
+`36f59ff1`; `scoping` means `directives/O2_steady_brane_balance_scoping.md` §5 at that revision.
+M15 retrieves both sources and `directives/prior_art_4d_bulk_search_prompt.md`; M10 retrieves
+the pre-S9b register's O2 second route. The access qualifications below are the sources' reports,
+not fresh literature verification. **No oracle is applied in the S9b record.**
+
+| Identified object and repository source | Use in this pass |
+|---|---|
+| GR/PPN deflection and logarithmic radar references, A–C spec (M1) | Supplied comparison inputs in the accepted constructions; no new oracle check or GR solution reproduced here. |
+| Cahill (2003) inflow; Hamilton–Lisle (2008), *The river model of black holes*; Sbitnev inflow; Unruh acoustic sinks — survey line 246, cautions 263–266; 4D search prompt | All identified, none applied. Survey scopes them to 3D with no off-sheet bulk and flags Cahill's status. No inflow profile or GM relation is imported. |
+| Hamilton–Lisle (2008), AJP 76, 519–532; Visser (1998), *Acoustic black holes*; Unruh (1981), *Experimental Black-Hole Evaporation?* — scoping §5 | None applied. Scoping reports manuscripts read for Hamilton–Lisle/Visser, only abstract/metadata for Unruh. GR river and barotropic/inviscid/irrotational scalar acoustics require matching time, velocity, dimension, EOS/exchange and independent mass calibration; they supply no shear-sheet/off-sheet law. |
+| Gurtin–Murdoch (1975), *A continuum theory of elastic material surfaces*; Scriven (1960), *Dynamics of a fluid interface*; Helfrich (1973), *Elastic Properties of Lipid Bilayers* — scoping §5; O2 register second route | None applied. Surface stress/traction, Newtonian surface-fluid and curvature-sector candidates; Gurtin–Murdoch abstract/bibliography only, Scriven/Helfrich full texts unverified. Ordinary 2D surfaces in 3D bulk do not establish this 3D-brane/4D-bulk law. |
+| Abels–Garcke–Grün (2012), *Thermodynamically Consistent, Frame Indifferent Diffuse Interface Models…*; Rodriguez–Hoger–McCulloch (1994), *Stress-dependent finite growth in soft elastic tissues* — scoping §5; O2 register second route | None applied. Diffusive exchange-momentum and evolving-reference/growth candidates; manuscript read for the former, metadata only/full text unverified for the latter. No two-fluid, mobility, growth or reference law is adopted. |
+| MacCullagh (1839) curl-only light / Whittaker Ch. V; Cauchy–Navier elasticity — survey attribution table; register R-S8-04/05 (M10) | None applied as an oracle. Existing light-carrier, longitudinal/compression, angular-momentum and objectivity obligations remain OPEN; the supplied optical ratio does not re-certify them. |
+| Structural acoustics (fluid-loaded plate, radiation impedance, added mass); Fruchart–Scheibner–Vitelli (2023) passivity/Onsager–Casimir; Cembranos–Dobado–Maroto (2003) branon fluctuation — survey attribution table | None applied. Adjacent interface, driven-response and embedding context; no interface law, drive or curvature dynamics is computed in A–C. |
+| Analog/emergent gravity (Unruh, BLV, BEC); Volovik/³He; Sakharov/Volovik induced gravity — survey prior-art table/unified findings | None applied. The survey's kinematics-versus-dynamics and undelivered-G qualifications remain; optical conditional requirements are not a derivation of gravity or G. |
+| Rubakov–Shaposhnikov (1983), Akama (1982), RS2, DGP (2000); material-medium superfluid-vacuum class (Volovik, Sbitnev, Consoli, Huang, Fedi) — survey 4D-bulk table | None applied. Adjacent embedding/material-bulk context only; no localization or material model is supplied to A–C by these names. |
+
+This route supplies no new entry: no additional sourced requirement follows from an oracle result
+applied here. It does not restrict the register's route to reproduced results or erase identified
+candidates. Existing MacCullagh obligations remain OPEN; the conditional optical functionals and
+M13's bounded condition comparison do not discharge them. Applicability checks of these candidate
+oracles remain unperformed, not negative results. The register's earlier pass-2 disagreement stays
+unresolved (M10).
 
 **Directive/register relation.** No new operative disagreement for S9b: the directive expressly
 conditions the optical entry on this register's rest-on test and keeps postulates distinct.

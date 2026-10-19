@@ -1,15 +1,18 @@
 # S9b — light bending and radar delay: Parts A–C
 
-**Record author:** Codex, 2026-10-19. **Standing:** authored for the record STOP; this record and its
-register pass have not had their own review. No commit. Part D is held, not built or accepted.
+**Record author:** Codex, 2026-10-19; record review round 1 revision. **Standing:** revised for
+the record STOP from `36f59ff1`; this revision awaits review. No new commit. Part D is held, not built or accepted.
 
 The accepted constructions give conditional optical functionals and profile requirements, not a
 substrate-derived light equation or a demonstrated match to GR. At the selected comparison grades,
-each engine prints the same profile condition for deflection and radar slope within that engine.
-The two observables therefore supply no separately demonstrated profile tests at this model point.
+M13 retrieves byte-identical paired condition payloads in PY. In WL, `GM` and `ProfileEquation`
+match literally but `InverseWeight`, `ReferenceInverse` and velocity-reduction fields differ (§3).
+Whether those differing fields state the same condition is OPEN. The record therefore establishes
+no second independent test from the PY pairs and leaves the WL separate-test count OPEN; it does
+not collapse both engines to one test or infer independence from differing text.
 Their complete cross-engine conditions, implied exchange and effective γ objects remain uncompared.
 The numerical comparisons that do form retain their printed residuals and unresolved coverage (§6).
-Sources: `B_CONDITION_*`, `B_GAMMA_DIFFERENCE`, `B_RESIDUAL_*`, measurements M3–M7/M12.
+Sources: `B_CONDITION_*`, `B_GAMMA_DIFFERENCE`, `B_RESIDUAL_*`, measurements M3–M7/M12–M13.
 
 ## 1. Sources and retrieval contract
 
@@ -37,7 +40,14 @@ gates. M5 retrieves comparator configuration, comparison fields, literal counts 
 sample whose `computed_18` or `computed_30` string differs from `(0.0 + 0.0j)`; no tolerance is applied.
 M6 is the complete accounting; M7 is the accepted report, full coverage appendix and name table;
 M8 preserves the acceptance history; M9 is O2; M10 is the register census/pass; M12 verifies literal
-source-version matches and retains the PY γ-difference solution sets. Full native objects can also
+source-version matches and retains the PY γ-difference solution sets. M13 compares literal within-engine
+condition payloads and fields; M14 retrieves accepted harness marks/coverage; M15 preserves the
+repository's prior-art sources; M16 retrieves complete engine-specific mass and N-dependence objects.
+Every source read is pinned with `git show REV:path`; annex targets are resolved from that revision
+inside this checkout. Native/harness sources use `fb2d6d25`, comparator sources `88bb1f41`, and
+repository context `36f59ff1`, except the explicit spec/decision/O2 pins above. M10 reads the
+pre-S9b register explicitly at `caa0710d`; its after-pass text is labelled WORKTREE. Advancing HEAD
+alone cannot change these measurements. Full native objects can also
 be retrieved by `--native py TAG` or `--native wl TAG`. Compact listings never replace attached domains.
 The final generator is `scripts/S9b_record_measurements.py`; regenerate with `--write`.
 The current instruction to commit nothing governs the directive's description of a “committed generator”.
@@ -96,7 +106,33 @@ Endpoint-dependent terms independent of `b` are not compared. The supplied refer
 They are comparison inputs, not a demanded construction outcome. The nonreciprocal path-dependence
 predicate prints `False` on its domain in each engine: endpoint-only in this radial setting, not
 zero one-way nonreciprocity in general; outside that domain it is `NOT_ESTABLISHED`.
-(M1; M3/M4 `A_NONRECIPROCAL_PATH_DEPENDENCE`; M5/M6.)
+(M1; M3/M4 `A_NONRECIPROCAL_PATH_DEPENDENCE`; M5/M6.) The build's K11 limit applies to
+all these shared nonreciprocal objects, including conditional forward copies: “The SymPy harness
+evaluates 3 tags and prints 376 `NOT_EVALUATED`. The Wolfram harness reaches 10 tags and
+prints 364 `NOT_EVALUATED`. Neither reaches the shared `A_NONRECIPROCAL_*` tags. Claim limit:
+K11 supports claims about the local one-form and closedness construction only, not item 8's
+shared observables.” (Build r7, lines 72–74; unchanged through r11, M8/M14.)
+
+The accepted harnesses print baseline/corrupted shared objects for K1–K10 (including K4a/b/c,
+K9a/b), with literal structural marks. This is emitted-object reach, not a witness at every object.
+For the 13 general `A_NONRECIPROCAL_*` tags, the marks are:
+
+| Knives | PY | WL |
+|---|---|---|
+| K1, K2, K3, K4c, K10 | all 13 `not compared` | all 13 `not compared` |
+| K4b | all 13 `not compared` | all 13 `identical` |
+| K5 | G010/G011/G110/G111 `not compared`; other 9 `identical` | same named mark partition |
+| K4a, K6, K7, K8, K9a, K9b | all 13 `identical` | all 13 `identical` |
+| K11 | all 13 not evaluated; difference/residual pairs `not compared` | all 13 not evaluated; difference/residual pairs `not compared` |
+
+These marks describe printed reach and literal structure, not a mathematical change verdict.
+K10's WL witness is specifically the shared path-dependence **domain**, with corrupted/baseline
+`{False, True}`; PY's K10 witness is instead at `A_DEFLECTION_G000`, not a nonreciprocal value.
+M14 retains every mark separately, including the 24 conditional forward grade objects: K8 marks
+those `not compared`, though its 13 general tags are `identical`; other engine-specific forward
+partitions are retained there too. No local K11 witness validates a shared nonreciprocal observable.
+The K11 quoted limit also governs §6's comparator rows; cross-engine samples do not enlarge
+that knife's reach. (M8 r7–r11; M14.)
 
 ## 3. Each mechanism alone
 
@@ -119,9 +155,36 @@ restriction prints zero. The other monomials remain individually printed; an ina
 zero is left as printed, not privately evaluated. WL conditions instead give the `GM` rule at
 `rAnchor`, together with a profile equation over `r`: respectively
 `V²=2r(rV′²+V(V′+rV″))`, `2δ′+rδ″=0`, and `ξ′(ξ′+2rξ″)=0`.
-The deflection and radar copies print the same rule/profile equation within WL. The PY/WL
-condition representations have no formed value comparison; no equivalence proof is supplied here.
-(M3/M4 `R_*_B_CONDITION_*`, M6.)
+M13 verifies literal identity of the WL `GM` and `ProfileEquation` fields just quoted, not of
+whole conditions. The PY/WL condition representations have no formed value comparison; no
+cross-engine equivalence proof is supplied here. (M3/M4 `R_*_B_CONDITION_*`, M6/M13.)
+
+**Within-engine condition retrieval, all cases.** M13 reads all 14 deflection/radar condition
+pairs in each accepted transcript: general B; the three single optical restrictions; constant,
+fixed-ratio and power C; the two bulk-only C restrictions; and the five conditional forward
+B/C pairs. All 14 PY paired payloads are byte-identical, including their attached domains and
+both density-label wrappers where present; no field differs. None of the 14 WL paired payloads
+is byte-identical. At the condition's `Cases/0` location, every WL pair has identical `GM`,
+`ProfileEquation`, `ProfileEquationRadius` and `Domain`; outer `Domain` and `BranchDomain` also
+match literally. The complete differing-field inventory is:
+
+| WL pair family | Differing fields relative to `Cases/0` |
+|---|---|
+| General B, R_FLOW_ONLY B, combined C_CONSTANT/C_FIXED_RATIO/C_POWER | `InverseWeight`, `ReferenceInverse`, `VelocityReduction/SquaredVelocityEquation` |
+| R_SPEED_ONLY B, R_TILT_ONLY B, R_BULK_ONLY C_FIXED_RATIO/C_POWER | `InverseWeight`, `ReferenceInverse`, `VelocityReduction/Cases/0/Domain` |
+| Conditional F_FLOW B, F_LIVE B, F_LIVE C_CONSTANT/C_FIXED_RATIO/C_POWER | `InverseWeight`, `ReferenceInverse`, `VelocityReduction/Cases/0/Domain` |
+
+Fixed-ratio/power locations are under each `DensityParts/0/Object` and `DensityParts/1/Object`;
+forward locations have the additional outer `Object`. Their density labels/label conditions,
+`SuppliedBulkDensityPremise`, and forward `Premise` match literally within each pair. M13 lists
+all other identical subtrees and retrieves every differing field verbatim. For example, general
+WL `ReferenceInverse` is `(2*GM)/(c0^2*r)` for deflection and `(2*GM)/(c0^3*r)` for radar.
+No rescaling or equivalence calculation is made. Whether any differing fields state the same
+condition is OPEN, no owner named. Consequently PY supplies no second independent profile test
+from these identical pairs; WL's separate-test count remains OPEN. Matching `GM`/`ProfileEquation`
+fields alone do not settle the full conditions, and differing serialization alone does not
+establish independent physical tests. These limits apply to every condition comparison in
+§§3–5, Appendix A and the register. (M13.)
 
 **Implied exchange and domain.** Speed-only and tilt-only both print `jn=0`, with `ρbr` still
 symbolic. Flow-only prints both velocity signs on each positive-squared-velocity component, the
@@ -160,7 +223,7 @@ WL prints those anchor rules with profile equations `(n−1)(2f′+rf″)=0` and
 including their degenerate values; no division by `n−1` or `s` and no chosen f-profile is made here.
 The exact response domains below travel with both labelled parts. These rows have label/domain
 comparisons only, no formed condition or implied-exchange value comparison. (M3/M4
-`R_BULK_ONLY_C_{FIXED_RATIO,POWER}_{CONDITION,IMPLIED_JN}_*`; M5–M7/M11.)
+`R_BULK_ONLY_C_{FIXED_RATIO,POWER}_{CONDITION,IMPLIED_JN}_*`; M5–M7/M11/M13.)
 
 **Cross-engine status of the three optical restrictions.** All their deflection/radar/residual rows
 have formed value samples; their full along-ray domains do not. Their conditions and implied-jn
@@ -180,8 +243,9 @@ GM = r [2c₀²rδ′ + c₀²ξ′² − 2rVV′ + V²]/4.
 This is a condition on the combination of live speed gradient, embedding slope and radial velocity
 and its gradient, relative to independent orbital `GM`, at every far-zone radius on the printed
 domain. It does not determine all three profiles. WL prints its `GM` anchor rule and profile
-equation quoted in Appendix A; its deflection/radar copies print the same pair. The identity is not
-asserted to have been cross-engine compared. No profile is selected and no matching outcome is
+equation quoted in Appendix A; M13 verifies just those paired WL fields as identical while
+`InverseWeight`, `ReferenceInverse` and `VelocityReduction/SquaredVelocityEquation` differ.
+The whole-condition equivalence is OPEN; the identity is not asserted to have been cross-engine compared. No profile is selected and no matching outcome is
 claimed. (M3/M4 `B_CONDITION_*`; M6/M7.)
 
 The printed effective-γ objects preserve the `GM=0` stratum. PY's difference solution set is `{0}`
@@ -189,10 +253,11 @@ when `GM≠0`; when `GM=0` and both printed observable functionals vanish it is 
 the other three combinations of vanishing/nonvanishing functionals print `EmptySet`. WL prints
 `(gammaDifference==0 && GM!=0) || (GM==0 && radarFunctional==0 && deflectionFunctional==0)`.
 No nonzero-mass division is extended across `GM=0`. These two emitted forms are recorded separately;
-M6 counts marker-only comparisons for all 18 γ-family rows. Since the within-engine conditions do
-not differ, the record counts no independent profile test from the pair of observables at the
-selected grades. It does not extend this statement to mixed grades or to the full radar time.
-(M3 `B_GAMMA_*`; M4/M12 PY solution sets; M6/M8.)
+M6 counts marker-only comparisons for all 18 γ-family rows. The PY payload identity and the WL
+field differences retrieved in M13 yield §3's bounded counting conclusion: no second independent
+test established by PY, WL count OPEN. The printed γ relation does not settle equivalence of
+the differing WL condition fields. Nothing extends this to mixed grades or full radar time.
+(M3 `B_GAMMA_*`; M4/M12 PY solution sets; M6/M8/M13.)
 
 The general implied exchange leaves δ, ξ and `ρbr` live. WL's squared-velocity field is
 
@@ -230,8 +295,11 @@ when an individual exponent/parameter choice has no admissible point in a part. 
 `f=0` is promoted to a finite-negative-density accuracy claim. (M3/M4 `LOCAL_C_*`, `C_*`, M8 r5,
 M11 exact response domains.)
 
-The constant and power N-dependence fields print zero response/kernel/condition-GM derivatives;
-the fixed-ratio N-dependence retains f and its derivative. This states where the EOS exponent n
+WL's constant and power N-dependence objects print zero `ResponseDerivative`, `KernelDerivatives`
+and `ConditionGMderivatives`; its fixed-ratio fields retain f and its derivative. PY's
+N-dependence objects instead print a pair of condition-GM derivative entries, with attached
+domains: both zero for constant/power, both `c₀²r²f′/4` for fixed ratio. Those PY tags do not
+print WL's response/kernel derivative fields. (M3/M4/M16.) This states where the EOS exponent n
 enters the printed first-order conditions, not a selected n or a new stiffness/density relation.
 Each combined response has its own signed-velocity reduction and implied `jn`, with live `ρbr`
 and its derivative; no relation between bulk and brane densities is supplied. First order in f
@@ -245,16 +313,18 @@ premise:** material leaves the brane only through throats, `jn≡0` in the far z
 crosses each sphere. `Φ=∮ρbr V·nout dA` uses the coordinate sphere and outward normal, with no supplied
 value or sign and no supplied relation to `GM` (user 2026-10-06/07/08; M1).
 
-Under that premise, `F_MASS_SOLUTION` prints `V=Φ/(4πr²ρbr)` and a mass residual 0.
-WL also prints the general `C[1]/(r²rhoBr[r])` solution; the flux fixes the displayed integration
-constant expression. This is a mass-balance solution only. The full forward mass object has no
+Under that premise, both engines' `F_MASS_SOLUTION` prints the flux velocity `Φ/(4πr²ρbr)`.
+PY's tuple prints the attached `jn=0` domain, `Φ=4π C1`, and the velocity equality; it prints
+no mass-residual field. WL prints `Premise/{NormalExchange,Flux,Measure}` and
+`Object/{GeneralSolution,FluxVelocity,Residual}`: the general `C[1]/(r²rhoBr[r])` solution,
+the flux velocity, and `Residual -> 0`. The zero residual is attributed to WL only. (M16.) This is a mass-balance solution only. The full forward mass object has no
 formed comparator value comparison. (M3/M4 `F_MASS_SOLUTION`, M6.)
 
 Conditional `F_FLOW_` substitutes this velocity with δ=ξ=0 into Part A, Part B and branch/traversal
 objects. WL's conditional `GM` anchor rule is
 `Φ²(5ρbr+2rρbr′)/(64π²r³ρbr³)` at `rAnchor`, with its printed profile equation
 `Φ[15ρbr+6r²ρbr′²/ρbr−2r(−7ρbr′+rρbr″)]=0`. PY retains its substituted radial identity.
-Conditional `F_LIVE_` keeps δ and ξ live and prints the anchor rule
+WL's conditional `F_LIVE_` keeps δ and ξ live and prints the anchor rule
 
 ```
 GM -> (5*Phi^2)/(64*Pi^2*rAnchor^3*rhoBr[rAnchor]^2)
@@ -263,13 +333,18 @@ GM -> (5*Phi^2)/(64*Pi^2*rAnchor^3*rhoBr[rAnchor]^2)
  + (c0^2*rAnchor*Derivative[1][xiProfile][rAnchor]^2)/4
 ```
 
-with its profile equation and Part C rewrites, all conditional on the same premise. Each engine's
-conditional deflection/radar copies have the same native condition fields; their cross-engine
-condition comparison is unformed. These are computed relations among Φ, free profiles and GM,
+with its profile equation and Part C rewrites, all conditional on the same premise. M13 verifies
+byte-identical PY forward condition pairs. WL's forward `GM`/`ProfileEquation` fields match,
+but `InverseWeight`, `ReferenceInverse` and `VelocityReduction/Cases/0/Domain` differ in each
+pair (with the wrappers listed in §3); equivalence and the WL separate-test count remain OPEN.
+Their cross-engine condition comparison is unformed. These are computed relations among Φ, free profiles and GM,
 not supplied flux normalization and not a matching outcome. No implied `jn` is printed for this
 case: `jn=0` is already its premise. Full conditional gates and objects: M3/M4/M11, `F_FLOW_*`,
 `F_LIVE_*`; comparison status M5–M7. All conditional forward observable samples inherit §6's
-numeric differences, domain gap and vanishing-brane-density coverage limitation.
+numeric differences, domain gap and vanishing-brane-density coverage limitation. Their shared
+nonreciprocal rows also carry §2's r7 K11 limit: K11 supports only the local one-form/closedness
+construction and reaches none of the shared observables; the conditional forward marks from
+K1–K10 are retrieved separately in M14.
 
 ## 6. Cross-engine evidence and limits
 
@@ -289,8 +364,8 @@ transcript enters the production comparison. (M5 completion, M6/M7, M8.)
 
 | Printed row class | What the production comparison reaches | What it does not establish |
 |---|---|---|
-| A_DEFLECTION, A_ROUND_TRIP, A_ONE_WAY_ER/RE, A_NONRECIPROCAL, A_RADAR_LOG; conditional F_FLOW/F_LIVE copies | Formed value samples and markers; all twelve applicable grades retained, four radar grades | No full along-ray domain comparison; no all-profile equality; unresolved brane-zero samples and printed numeric differences remain |
-| A_NONRECIPROCAL_PATH_DEPENDENCE | 33 value Boolean samples print `boolean_difference:false`; native on-domain predicate False | No along-ray domain equality or nonradial path statement |
+| A_DEFLECTION, A_ROUND_TRIP, A_ONE_WAY_ER/RE, A_NONRECIPROCAL, A_RADAR_LOG; conditional F_FLOW/F_LIVE copies | Formed value samples and markers; all twelve applicable grades retained, four radar grades | No full along-ray domain comparison; no all-profile equality; unresolved brane-zero samples and printed numeric differences remain. Shared nonreciprocal objects retain §2/M14: K11 supports local one-form/closedness only and reaches no shared observable. |
+| A_NONRECIPROCAL_PATH_DEPENDENCE | 33 value Boolean samples print `boolean_difference:false`; native on-domain predicate False | No along-ray domain equality or nonradial path statement. K11 does not reach this shared object; only local one-form/closedness claims are supported by K11 (§2/M14). |
 | B_RESIDUAL_DEFLECTION/RADAR and R_*/conditional F_* copies | Formed value samples, with printed differences retained | No selected profiles or GR match, and no domain equality |
 | B_GAMMA_DEFLECTION/RADAR/DIFFERENCE and R_*/conditional F_* copies (18 rows) | Markers only | γ values/solution sets and their differences uncompared: container/scalar mismatch |
 | B_CONDITION_*, B_IMPLIED_JN_*; R_FLOW/SPEED/TILT copies; conditional F_* conditions | No formed value comparison | Full relation/domain/velocity/constant/exchange equivalence OPEN |
@@ -367,8 +442,12 @@ spec-object name**, with no omitted reason. Reason/sample pairs overlap: **2 not
 - Build r5 retains exact fixed-ratio response-domain dependence on both density parts. Build r11
   accepts each final K10 gate witness in its own engine; it does not compare full engines. The
   `WholeEmittedObjectsEvaluated` flag means absence of unevaluated heads, not correct values. Superseded
-  runs mentioned by the disposition source no result here. K11 unreached parts remain “not evaluated”
-  and “not compared”; identity marks or witness absence cannot supply cross-engine equality.
+  runs mentioned by the disposition source no result here. The r7 K11 claim limit remains unchanged
+  through r11: PY evaluates 3 tags/376 `NOT_EVALUATED`; WL reaches 10/364 `NOT_EVALUATED`;
+  neither reaches shared `A_NONRECIPROCAL_*`. K11 supports the local one-form and closedness
+  construction only, not the shared observables. §2/M14 give the other knives' printed reach
+  and structural marks. Unreached parts remain “not evaluated” and “not compared”; identity
+  marks or witness absence cannot supply cross-engine equality.
   This record cites no software-check Boolean as physics evidence.
 
 ## 7. Conditional premises and remaining owners
@@ -435,12 +514,12 @@ no new entry is created for this interpretation. (M1 D5, M9 §§4/8.)
 ## 8. Register pass, source tensions and open questions
 
 The S9b pass in [`SUBSTRATE_REQUIREMENTS.md`](../SUBSTRATE_REQUIREMENTS.md) applies its rest-on test
-and both routes. **16 → 17 entries**, all OPEN. One new entry, **R-S21-01**, target **S21**, records
+and both routes. **16 (`caa0710d`, before S9b) → 17 entries**, all OPEN; round 1 itself keeps 17 → 17. One new entry, **R-S21-01**, target **S21**, records
 the conditional optical requirement, both observable conditions and Part C rewrites, with symbolic
 ρbr, the printed implied-jn branches and all free quantities retained. It names no means of meeting
 it. Existing **R-S8-01** and **R-S8-06** gain S9b sources for the supplied transverse stiffness input
 and material identity respectively, without widening their original inertia/stiffness domains into
-a completed live constitutive law. M10 retrieves before/after headings and the full pass.
+a completed live constitutive law. M10 retrieves the explicitly pinned before text/headings and the full after-pass register.
 
 The requirement is admitted because the reported conditional reference-matching statement rests
 on these printed profile conditions; failure removes that match, while the conditional functionals
@@ -449,12 +528,32 @@ excluded effects and unresolved engine differences remain handoffs rather than a
 Adopted premises retain their dates/status for knit re-testing; no postulate is renamed a derivation.
 No ansatz or defect register is edited.
 
-For the second route the identified prior-art objects are the supplied GR/PPN references. S9b
-prints conditional matching requirements, not a reproduced GR solution or a reproduced mechanical
-medium. No sourced historical objection to an established reproduction arises here; no new oracle
-or search is performed. Existing MacCullagh obligations remain OPEN, not discharged by radial
-advection or by equal within-engine comparison conditions. The register's earlier pass-2 disagreement
-is retained verbatim in M10, not adjudicated by this pass.
+For the second route, the repository identifies more than GR/PPN references. The inventory below
+names the prior-art objects relevant to the optical, flow, embedding and carried mechanical
+questions. `survey` means repository-root `docs/medium_requirements_and_prior_art.md` at
+`36f59ff1`; `scoping` means `directives/O2_steady_brane_balance_scoping.md` §5 at that revision.
+M15 retrieves both sources and `directives/prior_art_4d_bulk_search_prompt.md`; M10 retrieves
+the pre-S9b register's O2 second route. The access qualifications below are the sources' reports,
+not fresh literature verification. **No oracle is applied in this record.**
+
+| Identified object and repository source | Use in this pass |
+|---|---|
+| GR/PPN deflection and logarithmic radar references, A–C spec (M1) | Supplied comparison inputs in the accepted constructions; no new oracle check or GR solution reproduced here. |
+| Cahill (2003) inflow; Hamilton–Lisle (2008), *The river model of black holes*; Sbitnev inflow; Unruh acoustic sinks — survey line 246, cautions 263–266; 4D search prompt | All identified, none applied. Survey scopes them to 3D with no off-sheet bulk and flags Cahill's status. No inflow profile or GM relation is imported. |
+| Hamilton–Lisle (2008), AJP 76, 519–532; Visser (1998), *Acoustic black holes*; Unruh (1981), *Experimental Black-Hole Evaporation?* — scoping §5 | None applied. Scoping reports manuscripts read for Hamilton–Lisle/Visser, only abstract/metadata for Unruh. GR river and barotropic/inviscid/irrotational scalar acoustics require matching time, velocity, dimension, EOS/exchange and independent mass calibration; they supply no shear-sheet/off-sheet law. |
+| Gurtin–Murdoch (1975), *A continuum theory of elastic material surfaces*; Scriven (1960), *Dynamics of a fluid interface*; Helfrich (1973), *Elastic Properties of Lipid Bilayers* — scoping §5; O2 register second route | None applied. Surface stress/traction, Newtonian surface-fluid and curvature-sector candidates; Gurtin–Murdoch abstract/bibliography only, Scriven/Helfrich full texts unverified. Ordinary 2D surfaces in 3D bulk do not establish this 3D-brane/4D-bulk law. |
+| Abels–Garcke–Grün (2012), *Thermodynamically Consistent, Frame Indifferent Diffuse Interface Models…*; Rodriguez–Hoger–McCulloch (1994), *Stress-dependent finite growth in soft elastic tissues* — scoping §5; O2 register second route | None applied. Diffusive exchange-momentum and evolving-reference/growth candidates; manuscript read for the former, metadata only/full text unverified for the latter. No two-fluid, mobility, growth or reference law is adopted. |
+| MacCullagh (1839) curl-only light / Whittaker Ch. V; Cauchy–Navier elasticity — survey attribution table; register R-S8-04/05 (M10) | None applied as an oracle. Existing light-carrier, longitudinal/compression, angular-momentum and objectivity obligations remain OPEN; the supplied optical ratio does not re-certify them. |
+| Structural acoustics (fluid-loaded plate, radiation impedance, added mass); Fruchart–Scheibner–Vitelli (2023) passivity/Onsager–Casimir; Cembranos–Dobado–Maroto (2003) branon fluctuation — survey attribution table | None applied. Adjacent interface, driven-response and embedding context; no interface law, drive or curvature dynamics is computed in A–C. |
+| Analog/emergent gravity (Unruh, BLV, BEC); Volovik/³He; Sakharov/Volovik induced gravity — survey prior-art table/unified findings | None applied. The survey's kinematics-versus-dynamics and undelivered-G qualifications remain; optical conditional requirements are not a derivation of gravity or G. |
+| Rubakov–Shaposhnikov (1983), Akama (1982), RS2, DGP (2000); material-medium superfluid-vacuum class (Volovik, Sbitnev, Consoli, Huang, Fedi) — survey 4D-bulk table | None applied. Adjacent embedding/material-bulk context only; no localization or material model is supplied to A–C by these names. |
+
+This route supplies no new entry: no additional sourced requirement follows from an oracle result
+applied here. It does not restrict the register's route to reproduced results or erase identified
+candidates. Existing MacCullagh obligations remain OPEN; the conditional optical functionals and
+M13's bounded condition comparison do not discharge them. Applicability checks of these candidate
+oracles remain unperformed, not negative results. The register's earlier pass-2 disagreement stays
+unresolved (M10).
 
 **Source tensions, with both sides.**
 
@@ -479,7 +578,8 @@ is retained verbatim in M10, not adjudicated by this pass.
   sector with identified prior art”**. S9b follows the register's method; the prior disagreement
   stays unresolved. There is no new operative S9b directive/register disagreement. (M10.)
 
-Questions requiring work beyond retrieval remain OPEN: complete cross-engine equivalence or
+Questions requiring work beyond retrieval remain OPEN: whether differing within-WL condition fields
+state the same condition and whether the observables furnish separate WL tests; complete cross-engine equivalence or
 physical interpretation of numeric/domain/condition/γ/exchange differences; the free turning-radius,
 constant and uncovered stratum questions; a substrate derivation and physical holder for the local
 wave equation; optical/relaxation compatibility; whether any joint live profiles and a physical
@@ -489,9 +589,10 @@ questions is part of this record.
 
 ## Appendix A. Native WL combined-condition fields
 
-Retrieved by M3/M11, `B_CONDITION_DEFLECTION` and `B_CONDITION_RADAR`, `Cases/0`; domains are §2/M11.
-These identical within-WL fields are quoted separately from the PY radial identity; cross-engine
-comparison remains unformed.
+Retrieved by M3/M11/M13, `B_CONDITION_DEFLECTION` and `B_CONDITION_RADAR`, `Cases/0`; domains
+are §2/M11. M13 verifies literal identity of the two fields quoted here, `GM` and `ProfileEquation`.
+`InverseWeight`, `ReferenceInverse` and `VelocityReduction/SquaredVelocityEquation` differ;
+whole-condition equivalence remains OPEN (§3). Cross-engine comparison remains unformed.
 
 ```
 GM -> -1/4*(rAnchor*(-velocityProfile[rAnchor]^2

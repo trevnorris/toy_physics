@@ -12,8 +12,8 @@ build objects the record reports are defined below instead.
 It was folded once on 2026-10-13: three findings, all accepted
 (`directives/_measurements/S9b_record_directive_review_disposition.md`).
 
-**Commits marked ⟨at acceptance⟩** are the acceptance commits of work still under review. The orchestrator fills them
-in mechanically when that work is accepted, before the record author starts. Filling them changes no decision here.
+**The acceptance commits** below were filled in mechanically on 2026-10-19, once that work was accepted and before the
+record author started. Filling them changed no decision here.
 
 ## Deliverable
 
@@ -27,13 +27,14 @@ in mechanically when that work is accepted, before the record author starts. Fil
   (`97580010`). It is not a source for any computed claim.
 - **The governing decisions:** `directives/S9b_repair_decision_list.md` at `79055918`: D2 (adopted premises) and D5
   (the O2 record's returned obligation).
-- **The accepted constructions** ⟨at acceptance⟩: the two engine sources, unchanged since `503736ff`, their
+- **The accepted constructions** (accepted with the build at `fb2d6d25`): the two engine sources, unchanged since `503736ff`, their
   production transcripts and the run record `directives/_measurements/S9b_production_runs.md`.
   - The transcripts are git-annex content: run `datalad get` first.
   - The two ablation harnesses and their outputs are evidence about their own engine only.
-- **The build's acceptance:** its review disposition ⟨at acceptance⟩, and the earlier build-review dispositions it
+- **The build's acceptance:** its review disposition `directives/_measurements/S9b_repair_build_r11_review_disposition.md`
+  (at `fb2d6d25`), and the earlier build-review dispositions it
   cites. Their notes name limits and items routed to the comparator or the record.
-- **The accepted comparator** ⟨at acceptance⟩: `scripts/S9b_cross_engine_comparator.py`, its production output, its
+- **The accepted comparator** (accepted at `88bb1f41`): `scripts/S9b_cross_engine_comparator.py`, its production output, its
   run record, and its acceptance disposition with the earlier comparator review dispositions.
 - **O2:** `steps/O2_steady_brane_balance.md` at `72866fcf`, §8, for the obligation D5 routes here.
 - **The register:** `SUBSTRATE_REQUIREMENTS.md`: its entry schema, its requirement/postulate/defect distinction, and

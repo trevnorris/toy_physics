@@ -10,7 +10,9 @@ its output is used.
 
 It was folded once on 2026-10-19: three findings, all confirmed
 (`directives/_measurements/S9b_flow_oracle_check_decision_list_review_disposition.md`). The fold changes what the check
-computes, so the revised content gets its own review before the builder starts.
+computes, so the revised content gets its own review before the builder starts. That review's second pass found
+two defects in comparison 3, repaired on 2026-10-19
+(`directives/_measurements/S9b_flow_oracle_check_decision_list_review_p2_disposition.md`).
 
 **Why it exists.** The user chose "Queue it after record"
 (`directives/_measurements/S9b_record_r2_review_disposition.md` at `4760e6e2`, lines 19–21). The accepted S9b record
@@ -35,14 +37,24 @@ never a premise.
     constant domains, and `Cases/*/ImpliedExchange` with each case's attached domains and boundary qualifications.
     `WL_LOCAL_S9B_MASS_BALANCE` is the unsubstituted balance, not the flow-only operand.
   - **The supplied optical input.** The leading-eikonal dispersion `(ω − Vⁱkᵢ)² = cγ² gⁱʲkᵢkⱼ` (record lines
-    68–73), as each engine prints it: `PY_LOCAL_S9B_VECTOR_DISPERSION`; `WL_LOCAL_S9B_SUPPLIED_INPUTS` (its metric)
-    and `WL_LOCAL_S9B_FERMAT_OBJECT`. It is a supplied input of S9b, not an S9b result.
+    68–73). It is a supplied input of S9b, not an S9b result. Each engine prints it in its own symbols:
+    - PY: `PY_LOCAL_S9B_VECTOR_DISPERSION`, a polynomial in `s9b_chi`, `s9b_A`, `s9b_U` and the wave-vector
+      components;
+    - WL: the `Dispersion` field of `WL_LOCAL_S9B_SUPPLIED_INPUTS`, in `cSquared`, `aMetric` and `vLocal`.
+
+    That tag's `Metric` field is the spatial metric, not the dispersion. `WL_LOCAL_S9B_FERMAT_OBJECT` is constructed
+    by the engine, not supplied. Where the transcript does not bind a dispersion symbol to `V`, `cγ` or `g`, that
+    binding is an open identification.
 - **The oracles.** Those whose equations the scoping survey opened (`directives/O2_steady_brane_balance_scoping.md`,
   §5, at `36f59ff1`):
-  - Hamilton and Lisle (2008), "The river model of black holes", AJP 76, 519–532, manuscript gr-qc/0411060, §§I–II,
-    equations (2) and (4);
-  - Visser (1998), "Acoustic black holes", CQG 15, 1767–1791, manuscript gr-qc/9712010, §§2 and 7–8, and §10's
-    eikonal equations (85)–(86).
+  - Hamilton and Lisle (2008), "The river model of black holes", AJP 76, 519–532, manuscript gr-qc/0411060, §§I–II:
+    the river line element (1), the velocity profile (2) and its mass-function form (4);
+  - Visser (1998), "Acoustic black holes", CQG 15, 1767–1791, manuscript gr-qc/9712010:
+    - the acoustic metric (4);
+    - §2's continuity (5) and Euler (6) equations;
+    - §7's background and its line element (53);
+    - §8's velocity (54) and line element (55);
+    - §10's eikonal equation (86) and ray form (87). (85) there is the metric with its overall factor removed.
 
   §5 also gives each oracle's conditions for comparison.
 - **The repository's survey** `docs/medium_requirements_and_prior_art.md` (repository root), lines 246 and 263–266.
@@ -67,22 +79,24 @@ Three comparisons, for each oracle that states the object and for each engine. E
    - *S9b operand:* the flow-only squared velocity and each signed component. It is taken with the general solution's
      integration constant live, and again on the retained branch.
    - *Oracle operands:* Hamilton–Lisle's river velocity profile, (2), and its mass-function form, (4). Visser's §7 and
-     §8 background velocities, each with the conditions the paper attaches to it.
+     §8 background velocities (§7's background and (54)), each with the conditions the paper attaches to it.
    - *Residual:* the difference of the profiles, under each identification the sources leave open.
 2. **Continuity and exchange.**
    - *S9b operand:* each engine's printed implied exchange, with `ρ_br` live.
-   - *Oracle operands:* Visser's background continuity equation (§2) and the density conditions of its §7 and §8
+   - *Oracle operands:* Visser's background continuity equation (5) and the density conditions of its §7 and §8
      backgrounds, quoted as stated, including §7's statement about which profiles continuity admits. Hamilton–Lisle
      states no continuity operand, so it is `UNMATCHED`.
    - *Residual:* S9b's exchange less the oracle's, as a function of live `ρ_br`, with the set of `ρ_br` on which it
      vanishes. No oracle density law is substituted into S9b's operand.
 3. **Optical characteristics.**
-   - *S9b operand:* the supplied leading-eikonal dispersion on the flow-only restriction. This comparison checks a
-     supplied input against the oracle, not an S9b result, and its output says so.
-   - *Oracle operands:* the characteristic cone of Hamilton–Lisle's river line element and of Visser's acoustic line
-     element (§2, with §10's eikonal form), from the line elements as the papers state them.
-   - *Residual:* the difference of the characteristic cones at leading eikonal order, with the overall conformal
-     factor printed explicitly. S9b prints no line element, so a full line-element residual is `UNMATCHED`.
+   - *S9b operand:* each engine's printed dispersion (Sources, above), on the flow-only restriction.
+     `WL_LOCAL_S9B_RESTRICTION_FLOW_ONLY` sets only the two profiles to zero and does not rewrite the dispersion. This
+     comparison checks a supplied input against the oracle, not an S9b result, and its output says so.
+   - *Oracle operands:* the null cones of Hamilton–Lisle's (1) and of Visser's (4), (53) and (55), each with its
+     overall factor printed. Visser's eikonal form (86) and ray form (87) are quoted with them.
+   - *Residual:* the difference of the characteristic cones at leading eikonal order, under each open
+     identification of the dispersion's symbols, with every overall conformal factor printed explicitly. S9b prints
+     no line element, so a full line-element residual is `UNMATCHED`.
 
 **The identification map.** One entry for each condition §5 names, each citing the source that fixes it or printing
 `UNMATCHED`:

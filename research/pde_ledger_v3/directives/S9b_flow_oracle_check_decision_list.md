@@ -8,6 +8,10 @@ the object the check computes, so that content is reviewed until clear (spec row
 that. The check is a Codex-written instrument, reviewed by a fresh Claude agent and Grok until clear (G1, E1), before
 its output is used.
 
+It was folded once on 2026-10-19: three findings, all confirmed
+(`directives/_measurements/S9b_flow_oracle_check_decision_list_review_disposition.md`). The fold changes what the check
+computes, so the revised content gets its own review before the builder starts.
+
 **Why it exists.** The user chose "Queue it after record"
 (`directives/_measurements/S9b_record_r2_review_disposition.md` at `4760e6e2`, lines 19–21). The accepted S9b record
 (`ff3bac63`) names these oracles and applies none. M3: prior art is an oracle, checked against our computed result,
@@ -23,16 +27,22 @@ never a premise.
   - `scripts/out/S9b_light_bending_sympy_audit.out`;
   - `mathematica/out/S9b_light_bending_mathematica_audit.out`.
 
-  Both are git-annex content: run `datalad get` first. The tags are each engine's `R_FLOW_ONLY_B_*` condition and
-  implied-exchange objects: PY's squared velocity, general solution with its integration constant, velocity
-  components and `IMPLIED_JN`; and WL's `GeneralSquaredVelocity`, `SquaredVelocity`, constant domains, cases and
-  `Exchange`. The record `steps/S9b_light_bending.md` at `ff3bac63`, §3, transcribes them, but the transcripts are
-  the source.
+  Both are git-annex content: run `datalad get` first. The record `steps/S9b_light_bending.md` at `ff3bac63`
+  transcribes the objects below (§2 lines 68–73, §3), but the transcripts are the source.
+  - **Flow-only velocity and exchange.** PY: `PY_S9B_R_FLOW_ONLY_B_IMPLIED_JN_*`, its `squared`, `general_solution`
+    with `s9b_velocity_integration_constant`, its signed velocity components and their exchange equalities, with
+    their domains. WL: `WL_S9B_R_FLOW_ONLY_B_IMPLIED_JN_*`, its `GeneralSquaredVelocity`, `SquaredVelocity`,
+    constant domains, and `Cases/*/ImpliedExchange` with each case's attached domains and boundary qualifications.
+    `WL_LOCAL_S9B_MASS_BALANCE` is the unsubstituted balance, not the flow-only operand.
+  - **The supplied optical input.** The leading-eikonal dispersion `(ω − Vⁱkᵢ)² = cγ² gⁱʲkᵢkⱼ` (record lines
+    68–73), as each engine prints it: `PY_LOCAL_S9B_VECTOR_DISPERSION`; `WL_LOCAL_S9B_SUPPLIED_INPUTS` (its metric)
+    and `WL_LOCAL_S9B_FERMAT_OBJECT`. It is a supplied input of S9b, not an S9b result.
 - **The oracles.** Those whose equations the scoping survey opened (`directives/O2_steady_brane_balance_scoping.md`,
   §5, at `36f59ff1`):
   - Hamilton and Lisle (2008), "The river model of black holes", AJP 76, 519–532, manuscript gr-qc/0411060, §§I–II,
     equations (2) and (4);
-  - Visser (1998), "Acoustic black holes", CQG 15, 1767–1791, manuscript gr-qc/9712010, §§2 and 7–8.
+  - Visser (1998), "Acoustic black holes", CQG 15, 1767–1791, manuscript gr-qc/9712010, §§2 and 7–8, and §10's
+    eikonal equations (85)–(86).
 
   §5 also gives each oracle's conditions for comparison.
 - **The repository's survey** `docs/medium_requirements_and_prior_art.md` (repository root), lines 246 and 263–266.
@@ -47,24 +57,54 @@ never a premise.
 - **Transfer.** Only through the printed identification map below.
 
 ## What the check computes
-For each oracle above and each engine, the check prints the following.
-1. **The oracle's object.** Hamilton–Lisle's river velocity profile and its mass-function form. Visser's flowing-fluid
-   background: its velocity, its continuity and density conditions, and its acoustic line element as the paper
-   states them. Each is quoted verbatim, with section and equation number.
-2. **The identification map.** The correspondence between S9b's symbols and the oracle's, for each condition §5
-   names:
-   - velocity, and the frame it is measured in;
-   - free-fall versus lab time;
-   - units, and `c₀` against the oracle's light or sound speed;
-   - spatial dimension;
-   - mass calibration: S9b's orbital `GM` against the oracle's mass parameter;
-   - for Visser, also continuity, exchange and density, against S9b's implied `j_n` and live `ρ_br`.
+Three comparisons, for each oracle that states the object and for each engine. Each prints, in turn:
+- the oracle's operand, quoted verbatim with section and equation number;
+- S9b's operand;
+- the identification-map entries it uses;
+- its residual, or `UNMATCHED` where one side has no operand.
 
-   Each entry either cites the source that fixes it or prints `UNMATCHED`.
-3. **The residual.** The difference between each engine's printed object and the oracle's object, under each
-   identification the sources leave open. It is computed at S9b's retained order. Where the oracle's object is exact
-   or covers more than S9b's restriction, the check prints the order used and what is left out. The comparison
-   covers the general solution with its integration constant live, as well as the retained branch.
+1. **Flow profile.**
+   - *S9b operand:* the flow-only squared velocity and each signed component. It is taken with the general solution's
+     integration constant live, and again on the retained branch.
+   - *Oracle operands:* Hamilton–Lisle's river velocity profile, (2), and its mass-function form, (4). Visser's §7 and
+     §8 background velocities, each with the conditions the paper attaches to it.
+   - *Residual:* the difference of the profiles, under each identification the sources leave open.
+2. **Continuity and exchange.**
+   - *S9b operand:* each engine's printed implied exchange, with `ρ_br` live.
+   - *Oracle operands:* Visser's background continuity equation (§2) and the density conditions of its §7 and §8
+     backgrounds, quoted as stated, including §7's statement about which profiles continuity admits. Hamilton–Lisle
+     states no continuity operand, so it is `UNMATCHED`.
+   - *Residual:* S9b's exchange less the oracle's, as a function of live `ρ_br`, with the set of `ρ_br` on which it
+     vanishes. No oracle density law is substituted into S9b's operand.
+3. **Optical characteristics.**
+   - *S9b operand:* the supplied leading-eikonal dispersion on the flow-only restriction. This comparison checks a
+     supplied input against the oracle, not an S9b result, and its output says so.
+   - *Oracle operands:* the characteristic cone of Hamilton–Lisle's river line element and of Visser's acoustic line
+     element (§2, with §10's eikonal form), from the line elements as the papers state them.
+   - *Residual:* the difference of the characteristic cones at leading eikonal order, with the overall conformal
+     factor printed explicitly. S9b prints no line element, so a full line-element residual is `UNMATCHED`.
+
+**The identification map.** One entry for each condition §5 names, each citing the source that fixes it or printing
+`UNMATCHED`:
+- velocity, and the frame it is measured in;
+- free-fall versus lab time;
+- units, and `c₀` and `cγ` against the oracle's light or sound speed;
+- spatial dimension;
+- mass calibration: S9b's orbital `GM` against the oracle's mass parameter;
+- for Visser, also:
+  - background continuity and force accounting (Euler's equation);
+  - barotropic, inviscid and irrotational flow;
+  - the equation of state and density conditions of each background;
+  - scalar acoustics against S9b's transverse optical branch;
+  - no shear-bearing sheet and no off-sheet exchange.
+
+A profile residual is not read as a force balance or as the acoustic comparison.
+
+**Order.** Every residual is at S9b's retained order. Where an oracle's object is exact, or covers more than S9b's
+restriction, the check prints the order used and what is left out.
+
+**What the output can support.** Comparison 1 can support at most a conditional correspondence of profiles. No
+comparison establishes equivalence of a wave equation, a force law or a material law.
 
 ## What must be true of the check
 1. Every S9b operand is read from the transcript, not retyped, so the check fails if its transcript is missing. Each

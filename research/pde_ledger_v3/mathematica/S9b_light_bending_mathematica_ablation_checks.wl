@@ -83,3 +83,28 @@ fixtureProfiles=<|"Held"-><|"WL_LOCAL_S9B_ABEL_REDUCTION"->HoldComplete[
 Print["LITERAL_PROFILES_READING: ",ToString[<|
  "Parts"->Values[S9bHarness`catalog[fixtureProfiles]["Parts"]],
  "ExtractedNameKeys"->S9bHarness`extractedNameKeys|>,InputForm,PageWidth->Infinity]];
+
+(* K10's actual replacement applied to synthetic gate factors. The branch
+   range differs from each constructor range, as in the engine. Print the
+   operands and literal decisions; no expected physics value is supplied. *)
+Block[{Global`rayConstruction,Global`traversedRadii,Global`propagationGate,
+ Global`traversalGate,Global`rayGate,Global`r},
+ Global`traversedRadii=(Global`r>=2 || 3<=Global`r<=4);
+ Global`rayConstruction=Inactive[ForAll][Global`r,Global`r>=2,Global`r>0] && Global`fixtureEndpointEquation;
+ Global`propagationGate=Global`rayConstruction &&
+   Inactive[ForAll][Global`r,Global`traversedRadii,Global`fixtureBranchPredicate];
+ Global`traversalGate=Global`rayConstruction &&
+   Inactive[ForAll][Global`r,Global`traversedRadii,Global`fixtureTraversalPredicate];
+ beforeK10={Global`rayConstruction,Global`propagationGate,Global`traversalGate};
+ Block[{$Context="Global`",$ContextPath={"Global`","System`"}},
+   ToExpression[S9bHarness`knives["K10"][[2]]]];
+ Print["K10_GATE_FACTOR_READING: ",ToString[<|
+   "OriginalFactors"->beforeK10,"ObservableGateAfterReplacement"->Global`rayGate,
+   "DiagnosticFactorsAfterReplacement"->{Global`rayConstruction,Global`propagationGate,Global`traversalGate},
+   "DiagnosticFactorsLiteralIdentity"->SameQ[beforeK10,{Global`rayConstruction,Global`propagationGate,Global`traversalGate}],
+   "NegatedQuantifiers"->Cases[Global`rayGate,Not[q:Inactive[ForAll][___]]:>q,Infinity]|>,InputForm,PageWidth->Infinity]]];
+
+(* Exercise K10's whole-object reading on both sides of an active domain. *)
+Print["K10_CONDITIONAL_OBJECT_READING: ",ToString[S9bHarness`k10ObjectEvaluate[
+ <|"OnDomain"->ConditionalExpression[False,Inactive[ForAll][x,x>0,x>1]],
+   "OutsideDomain"->ConditionalExpression["NOT_ESTABLISHED",Not[Inactive[ForAll][x,x>0,x>1]]]|>,fixture1],InputForm,PageWidth->Infinity]];

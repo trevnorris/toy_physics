@@ -1,0 +1,8 @@
+{
+  "research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl": "2028badd3772d68d43659e06d6ebc6644843dd0fb77563fc6fff37255f241561",
+  "research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation.wl": "76659e389e9e17ded980c1b704279072bcb7d57d90e4d1db2d46780dfb40f008",
+  "research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_ablation_checks.wl": "1fd77df88c1e8065fc0ec4ec225db02d3ef254883ab82719c3d11c8e875f9516",
+  "research/pde_ledger_v3/directives/_measurements/S9b_repair_wolfram_round11_validate.py": "a95554bbd7f040753d692239c9aa885595f358eca3eeec3cce91d891ac81afaf",
+  "scripts/s11c_guarded_run.py": "c747c266e78ed519d3e31add8fffed85a0aafabc9e01528ffd3eb157f8f1dcdd",
+  "research/pde_ledger_v3/directives/_measurements/S9b_repair_wolfram_round11_package.py": "d2fe7b09f430903bf7e664228cf33d89658585ff31090211403eb31971b76439"
+}

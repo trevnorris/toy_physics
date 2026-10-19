@@ -5,7 +5,7 @@ Begin["S9bHarness`"];
 $HistoryLength = 0;
 root = Directory[];
 engine = FileNameJoin[{root,"research","pde_ledger_v3","mathematica","S9b_light_bending_mathematica_audit.wl"}];
-work = FileNameJoin[{root,"_scratch","s9b_wl_repair10","ablation-final"}];
+work = FileNameJoin[{root,"_scratch","s9b_wl_repair11","ablation-final"}];
 If[!DirectoryQ[work],CreateDirectory[work,CreateIntermediateDirectories->True]];
 source = Import[engine,"Text"];
 S9bHarness`progress = OpenWrite[FileNameJoin[{work,"progress.log"}]];
@@ -26,7 +26,7 @@ knives = <|
  "K8" -> {"massDensity = rhoBr[r];", "massDensity = rhoBrConstant;"},
  "K9a" -> {"localSoundSquared = bulkSoundSquared /. rho -> rho0 (1 + fLocal);", "localSoundSquared = bulkSoundSquared /. rho -> rho0;"},
  "K9b" -> {"localBulkDensity = rho0 (1 + fLocal);", "localBulkDensity = rho0;"},
- "K10" -> {"propagationGate = rayConstruction && Inactive[ForAll][r, traversedRadii,\n  physicalPropagation && speedChart && rhoBr[r] != 0 &&\n  Element[{velocityProfile[r],xiProfile[r],muPerp[r],rhoBr[r]},Reals]];", "propagationGate = Not[rayConstruction && Inactive[ForAll][r, traversedRadii,\n  physicalPropagation && speedChart && rhoBr[r] != 0 &&\n  Element[{velocityProfile[r],xiProfile[r],muPerp[r],rhoBr[r]},Reals]]];"},
+ "K10" -> {"rayGate = propagationGate && traversalGate;", "rayGate = With[{domain = traversedRadii}, propagationGate /.\n  HoldPattern[Inactive[ForAll][r, domain, predicate_]] :>\n    Not[Inactive[ForAll][r, domain, predicate]]] && traversalGate;"},
  "K11" -> {"vVector = {vLocal, 0};", "vVector = {vLocal, vLocal/r};"}|>;
 (* BEGIN_LITERAL_METHOD *)
 (* ToExpression's third argument wraps the parsed emitted syntax before
@@ -280,7 +280,7 @@ searchReachedSite["K6",mutatedData_,baselineData_] := Module[{tag="WL_LOCAL_S9B_
     "Evaluations"->values,"Arithmetic"->"exact","ErrorBound"->0,"Checks"->checks,
     "Attempt"->"evaluated grade-100 local radar kernels, finite-endpoint source integrals and the printed constructor conditions at one exact profile/point configuration"|>];
 
-(* Round 10: decide the engine's full branch condition. The flat profiles are
+(* K10: decide the observable's post-negation domain. The flat profiles are
    witness inputs only. The ray equations are read from each actual copy;
    no turning radius or radar impact is assigned independently. *)
 k10Exact[z_,assumptions_:True] := Block[{$Assumptions=True},Module[{result=z},
@@ -335,18 +335,38 @@ k10Construction[data_] := Module[{scope,input,variables={Global`rTurnFlyby,Globa
    "CASOperations"->{"Solve turning equalities","Reduce original nonintegral conjuncts","ordinary Integrate with GenerateConditions -> True on the derived open impact range","active Resolve","evaluate the closed endpoint","Reduce full intersection of constructor constraints","Solve the resulting complete real solution set"},
    "Checks"->checks|>];
 
+(* Resolve acts only on the conditional domain. A conditional payload is
+   not a Boolean formula: decide its domain first, then evaluate its value
+   only on that domain, retaining the engine's decided absence otherwise. *)
+k10ObjectEvaluate[z_,data_] := Module[{records,condition,value,result},Which[
+ AssociationQ[z],
+   records=AssociationMap[k10ObjectEvaluate[z[#],data]&,Keys[z]];
+   <|"Object"->z,"FieldEvaluationRecords"->records,
+     "Evaluation"->AssociationMap[records[#]["Evaluation"]&,Keys[z]]|>,
+ Head[z]===ConditionalExpression,
+   condition=siteEvaluate[z[[2]],data];
+   value=Missing["not evaluated outside a decided true domain"];
+   result=Which[TrueQ[condition["Evaluation"]],
+       value=siteEvaluate[z[[1]],data];value["Evaluation"],
+     SameQ[condition["Evaluation"],False],ConditionalExpression[z[[1]],False],
+     True,Missing["UNDECIDED_DOMAIN"]];
+   <|"Object"->z,"DomainEvaluationRecord"->condition,
+     "ConditionalValueEvaluationRecord"->value,"Evaluation"->result,
+     "Computation"->"decide the scoped domain with active real quantifiers; evaluate the conditional value only if true; otherwise evaluate ConditionalExpression with its decided false domain"|>,
+ True,siteEvaluate[z,data]]];
+
 searchReachedSite["K10",mutatedData_,baselineData_] := Block[{profiles=<|
  Global`deltaProfile->Function[{q},0],Global`velocityProfile->Function[{q},0],Global`xiProfile->Function[{q},0],
  Global`rhoBr->Function[{q},1],Global`fProfile->Function[{q},0],Global`muPerp->Function[{q},4],
  Global`cGamma->Function[{q},2],Global`jn->Function[{q},0]|>,
  point=Join[DeleteCases[point,Rule[Global`GM|Global`ZE|Global`ZR,_]],{Global`GM->0,Global`ZE->2,Global`ZR->2}]},
- Module[{tag="WL_S9B_BRANCH_EXISTENCE",datasets={mutatedData,baselineData},construction,variables,
-  sets,used,intersection,reading,records,conditionRecords,traversalRecords,values,roles,scopeSymbols,boundRoles,checks},
+ Module[{tag="WL_S9B_A_NONRECIPROCAL_PATH_DEPENDENCE",path={"OnDomain","conditional domain"},datasets={mutatedData,baselineData},construction,variables,
+  sets,used,intersection,reading,records,emittedRecords,conditionRecords,traversalRecords,values,roles,scopeSymbols,boundRoles,checks},
  construction=k10Construction/@datasets;variables={Global`rTurnFlyby,Global`rTurnRadar,Global`impactRadar};
  If[!And@@(TrueQ/@Lookup[construction,"Decided"]),Return[<|"Result"->"undecided",
-   "Site"->siteLocation[tag,{},"domain","propagationGate = rayConstruction"],
+   "Site"->siteLocation[tag,path,"domain","rayGate = propagationGate && traversalGate;"],
    "IndependentPoint"->point,"AdmissibleProfiles"->profileCertificate[],"ConstructionReadings"->construction,
-   "Attempt"->"actual completed branch-condition site; turning/endpoint construction remained unsettled"|>]];
+   "Attempt"->"actual observable domain; turning/endpoint construction remained unsettled"|>]];
  sets=Lookup[construction,"SolutionStatement"];used=Lookup[construction,"SolutionsUsed"];
  intersection=Reduce[And@@sets,variables,Reals];
  reading=<|"FixingEquations"->Lookup[construction,"FixingEquations"],"SolutionVariables"->variables,
@@ -355,7 +375,8 @@ searchReachedSite["K10",mutatedData_,baselineData_] := Block[{profiles=<|
    "IntersectionDecided"->FreeQ[intersection,Reduce],
    "CommonSolutionUsed"->And@@(TrueQ[FullSimplify[intersection/.#]]&/@used),
    "Reading"->"both full ray constructions are solved at the same independent inputs before either post-construction gate is evaluated"|>;
- records=MapThread[Function[{data,solution},siteEvaluate[object[data,tag]/.solution,data]],{datasets,used}];
+ records=MapThread[Function[{data,solution},siteEvaluate[object[data,tag]["OnDomain"][[2]]/.solution,data]],{datasets,used}];
+ emittedRecords=MapThread[Function[{data,solution},k10ObjectEvaluate[object[data,tag]/.solution,data]],{datasets,used}];
  values=Lookup[records,"Evaluation"];
  conditionRecords=MapThread[Function[{data,solution},siteEvaluate[data["State"]["Assumptions"]/.solution,data]],{datasets,used}];
  traversalRecords=MapThread[Function[{data,solution},siteEvaluate[object[data,"WL_S9B_PATH_TRAVERSAL"]/.solution,data]],{datasets,used}];
@@ -368,23 +389,23 @@ searchReachedSite["K10",mutatedData_,baselineData_] := Block[{profiles=<|
    "ComparedConditionsDecided"->And@@(decidedBooleanQ/@values),
    "ExactDifferenceDecision"->domainDifferenceDecision@@values,
    "IntersectionDecidedAndCommonSolutionUsed"->(TrueQ[reading["IntersectionDecided"]]&&TrueQ[reading["CommonSolutionUsed"]]),
-   "WholeEmittedObjectsEvaluated"->FreeQ[values,Inactive|Integrate|ForAll|Exists|Limit|ConditionalExpression],
+   "WholeEmittedObjectsEvaluated"->FreeQ[Lookup[emittedRecords,"Evaluation"],Inactive|Integrate|ForAll|Exists|Limit|ConditionalExpression|_Missing],
    "SmoothProfiles"->profileCertificate[]["SmoothRealDecision"]|>;
  <|"Result"->If[And@@(TrueQ/@Values[checks]),"witness","undecided"],"OperandOrder"->{"corrupted","baseline"},
-   "Site"->siteLocation[tag,{},"domain","propagationGate = rayConstruction"],
+   "Site"->siteLocation[tag,path,"domain","rayGate = propagationGate && traversalGate;"],
    "IndependentPoint"->point,"SymbolRoles"->roles["Roles"],"BoundSymbolRoles"->boundRoles,
    "UnknownSymbols"->roles["UnknownSymbols"],"AdmissibleProfiles"->profileCertificate[],
    "FixingAndSolutions"->reading,"ConstructionReadings"->construction,
-   "ReadingChoices"-><|"ComparedCondition"->"the complete propagationGate is negated, after rayConstruction and the along-ray ForAll are assembled; the local predicate and the interior of that ForAll are unchanged",
-     "PayloadReading"->"BRANCH_EXISTENCE directly emits this full condition at engine 275; there is no containing conditional value or additional case selection",
-     "SourceLocations"->{262,263,264,266,271,275},
+   "ReadingChoices"-><|"ComparedCondition"->"the observable domain uses rayConstruction AND NOT the computed along-ray branch-existence ForAll AND traversalGate; only that ForAll is negated when rayGate is assembled",
+     "PayloadReading"->"OnDomain is a ConditionalExpression: its second operand is the compared domain, its first is the computed path-dependence predicate. A false domain gives a decided absence (Undefined); OutsideDomain supplies NOT_ESTABLISHED. The containing association adds no condition",
+     "SourceLocations"->{262,263,264,265,266,271,272,287},
      "OtherGate"->"PATH_TRAVERSAL is an independently emitted condition; it is computed true in both copies, not assumed",
      "BoundVariableReading"->"integral and quantified radii are alpha-renamed before any point substitution; their whole source ranges are retained"|>,
    "AttachedConditions"->Lookup[conditionRecords,"ScopedObject"],"ConditionEvaluationRecords"->conditionRecords,
    "ConditionEvaluations"->Lookup[conditionRecords,"Evaluation"],"OtherTraversalGateRecords"->traversalRecords,
-   "DomainEvaluationRecords"->records,"EmittedObjectEvaluationRecords"->records,"Evaluations"->values,
+   "DomainEvaluationRecords"->records,"EmittedObjectEvaluationRecords"->emittedRecords,"Evaluations"->values,
    "Arithmetic"->"exact ordinary integration and active real quantifier decisions","ErrorBound"->0,"Checks"->checks,
-   "Attempt"->"both full post-construction branch conditions at one exact flat profile/point configuration; both complete turning/endpoint solution sets and their intersection are computed"|>]];
+   "Attempt"->"the emitted observable domains at one exact flat profile/point configuration; both complete turning/endpoint solution sets, their intersection and both whole emitted objects are computed"|>]];
 
 (* END_ROUND9_SITE_SEARCH *)
 
@@ -401,7 +422,7 @@ semanticPaths=<|
  "K6"->{"IntegralKernels","100"},"K8"->{"Divergence"},
  "K9a"->{"Responses","FIXED_RATIO","DensityParts","rho > 0","Object"},
  "K9b"->{"Responses","POWER","DensityParts","rho > 0","Object"},
- "K10"->{},"K11"->{"TimePolynomial"}|>;
+ "K10"->{"OnDomain","conditional domain"},"K11"->{"TimePolynomial"}|>;
 rowNames={"CONSTANT","FIXED_RATIO","POWER"};
 sourceRanges=<|"local dispersion"->{58,188},"odd form"->{192,204},
  "optical density"->{230,242},"ray domain"->{247,281},"radar source"->{356,377},
@@ -533,12 +554,12 @@ catalog[data_] := Module[{entries=<||>,containers={},walk,add,tag},
         True,"one named mathematical object; nested Piecewise has ordered first-match semantics; arithmetic subexpressions are not exposed parts"]]]];
  Scan[Function[t,tag=t;walk[object[data,t],{},{}]],Keys[data["Held"]]];
  <|"Parts"->entries,"Containers"->containers|>];
-(* K10 is introduced only at propagationGate (262-264). Direct fields
-   are the emitted branch condition and ray-gate domains; a child also
-   depends on it when one of those fields is an attached condition. *)
+(* K10 enters only rayGate (266), leaving propagationGate and every
+   diagnostic emission unchanged. Direct parts are observable/reduction
+   ray-gate domains; children inherit their attached conditions. *)
 k10DirectSiteQ[tag_,path_] := Module[{p=ToString[path,InputForm]},
  If[StringContainsQ[tag,"LOCAL_S9B_"]||MemberQ[path,"Premise"],Return[False]];
- If[StringEndsQ[tag,"BRANCH_EXISTENCE"],Return[True]];
+ If[StringEndsQ[tag,"BRANCH_EXISTENCE"],Return[False]];
  If[StringEndsQ[tag,"PATH_TRAVERSAL"]||StringEndsQ[tag,"BRANCH_TYPE"],Return[False]];
  If[MemberQ[path,"BranchDomain"]||MemberQ[path,"AlongRayDomain"],Return[True]];
  MemberQ[path,"conditional domain"]&&(MemberQ[path,"OnDomain"]||MemberQ[path,"OutsideDomain"])];
@@ -593,7 +614,7 @@ specs=<|
  "K8"->{"mass",{"WL_LOCAL_S9B_MASS_BALANCE","Divergence"},"massVector = (massDensity"},
  "K9a"->{"response",{"WL_LOCAL_S9B_C_RESPONSES","Responses",2,"DensityParts",1,"Object"},"responseValues = {c0"},
  "K9b"->{"response",{"WL_LOCAL_S9B_C_RESPONSES","Responses",3,"DensityParts",1,"Object"},"responseValues = {c0"},
- "K10"->{"ray",{"WL_S9B_BRANCH_EXISTENCE"},"propagationGate = rayConstruction"},
+ "K10"->{"ray",{"WL_S9B_A_NONRECIPROCAL_PATH_DEPENDENCE","OnDomain"},"rayGate = propagationGate && traversalGate;"},
  "K11"->{"local",{"WL_LOCAL_S9B_FERMAT_OBJECT","TimePolynomial"},"timePolynomial = Expand["}|>;
 primaryAttempt[name_,a_,b_] := Module[{spec=specs[name],kind,path,aa,bb,conditions,reading,
   evaluatedConditions,values,roles,symbols,fixed,assigned,unknown,entry,ceConditions={True,True},

@@ -24,6 +24,7 @@ BUILD = 'fb2d6d25'
 COMPARATOR = '88bb1f41'
 BASELINE = '36f59ff1'
 REGISTER_BEFORE = 'caa0710d'
+ROUND_BEFORE = 'd1511b20'
 
 
 @functools.lru_cache(None)
@@ -272,6 +273,71 @@ def harness_retrieval():
 
 
 
+def source_lines(rev, path, first, last):
+    print('SOURCE git show '+rev+':'+path, 'lines', first, last)
+    for n,line in enumerate(revision_text(rev,path).splitlines(),1):
+        if first<=n<=last:print(str(n)+(':' if not line else ': '+line))
+
+
+def gamma_strata():
+    source_lines(BASELINE, 'research/pde_ledger_v3/directives/S9b_record_directive.md',109,113)
+    for engine in ('py','wl'):
+        for prefix in ('','R_FLOW_ONLY_','R_SPEED_ONLY_','R_TILT_ONLY_','F_FLOW_','F_LIVE_'):
+            for suffix in ('DEFLECTION','RADAR','DIFFERENCE'):
+                tag=prefix+'B_GAMMA_'+suffix
+                raw=native(engine,tag)
+                print(engine,tag,'COMPLETE_OBJECT');print(raw)
+                obj=children(raw,engine)
+                if engine=='py':value=children(obj[0],engine)[1]
+                else:
+                    if 'Object' in obj:obj=children(obj['Object'],engine)
+                    value=children(obj['OnDomain'],engine)[0]
+                print(engine,tag,'ON_DOMAIN_VALUE');print(value)
+    source_lines(BUILD,'research/pde_ledger_v3/scripts/S9b_light_bending_sympy_audit.py',610,663)
+    source_lines(BUILD,'research/pde_ledger_v3/mathematica/S9b_light_bending_mathematica_audit.wl',430,460)
+
+
+def restriction_objects():
+    for engine in ('py','wl'):
+        for prefix in ('R_FLOW_ONLY_B_','R_SPEED_ONLY_B_','R_TILT_ONLY_B_',
+                       'R_BULK_ONLY_C_FIXED_RATIO_','R_BULK_ONLY_C_POWER_'):
+            for object_name in ('CONDITION','IMPLIED_JN'):
+                for observable in ('DEFLECTION','RADAR'):
+                    tag=prefix+object_name+'_'+observable
+                    print(engine,tag,'COMPLETE_OBJECT');print(native(engine,tag))
+    for path,first,last in [('scripts/S9b_light_bending_sympy_audit.py',435,490),
+                            ('scripts/S9b_light_bending_sympy_audit.py',910,982),
+                            ('mathematica/S9b_light_bending_mathematica_audit.wl',488,578)]:
+        source_lines(BUILD,'research/pde_ledger_v3/'+path,first,last)
+
+
+def branch_objects():
+    for path,first,last in [('scripts/S9b_light_bending_sympy_audit.py',78,87),
+                            ('scripts/S9b_light_bending_sympy_audit.py',527,575),
+                            ('scripts/S9b_light_bending_sympy_audit.py',666,724),
+                            ('scripts/S9b_light_bending_sympy_audit.py',770,773),
+                            ('scripts/S9b_light_bending_sympy_audit.py',910,923),
+                            ('scripts/S9b_light_bending_sympy_audit.py',1041,1062),
+                            ('scripts/S9b_light_bending_sympy_audit.py',1070,1077),
+                            ('mathematica/S9b_light_bending_mathematica_audit.wl',120,185),
+                            ('mathematica/S9b_light_bending_mathematica_audit.wl',240,282),
+                            ('mathematica/S9b_light_bending_mathematica_audit.wl',650,670)]:
+        source_lines(BUILD,'research/pde_ledger_v3/'+path,first,last)
+    names=[]
+    for prefix in ('','F_FLOW_','F_LIVE_'):
+        for suffix in ('BRANCH_EXISTENCE','PATH_TRAVERSAL','BRANCH_TYPE'):
+            tag=prefix+suffix;names.append(tag)
+            pair=[]
+            for engine in ('py','wl'):
+                raw=native(engine,tag);pair.append(raw)
+                print(engine,tag,'COMPLETE_OBJECT');print(raw)
+            print('SAME_NAMED_NATIVE_PAYLOADS',tag,'literal_equal',pair[0]==pair[1])
+    with revision_file(COMPARATOR,'research/pde_ledger_v3/scripts/out/S9b_cross_engine_comparator_accounting.jsonl').open() as stream:
+        for line in stream:
+            row=json.loads(line)
+            if row.get('name') in names:print('ACCOUNTING',line.rstrip())
+
+
 def section(name):
     print('PINNED_READS native/harness='+BUILD+' comparator='+COMPARATOR+' register_before='+REGISTER_BEFORE+' repository_context='+BASELINE)
     if name=='M1':
@@ -314,11 +380,24 @@ def section(name):
         p='research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md'
         old=revision_text(REGISTER_BEFORE, p)
         new=(ROOT/p).read_text()
-        for label,s in [(REGISTER_BEFORE,old),('WORKTREE',new)]:
+        prior=revision_text(ROUND_BEFORE,p)
+        for label,s in [(REGISTER_BEFORE,old),(ROUND_BEFORE,prior),('WORKTREE',new)]:
             rows=[l for l in s.splitlines() if l.startswith('### R-')]
             print(label,'ENTRY_COUNT',len(rows));print('\n'.join(rows))
         print('BEFORE REGISTER git show '+REGISTER_BEFORE+':'+p);print(old)
         print('WORKTREE REGISTER');print(new)
+        def sourced_entries(text):
+            found=[]
+            for block in re.split(r'(?m)^### ',text)[1:]:
+                if not block.startswith('R-'):continue
+                entry=block.split(' ',1)[0]
+                source_block=block.split('- **source**',1)[1].split('- **requirement**',1)[0]
+                if 'S9b' in source_block:found.append(entry)
+            return found
+        for label,text in [(REGISTER_BEFORE,old),(ROUND_BEFORE,prior),('WORKTREE',new)]:
+            print(label,'S9B_SOURCE_ENTRIES',json.dumps(sourced_entries(text)))
+        print('S9B_SOURCE_GAINS_SINCE_'+REGISTER_BEFORE,json.dumps([x for x in sourced_entries(new) if x not in sourced_entries(old)]))
+        print('S9B_SOURCE_GAINS_SINCE_'+ROUND_BEFORE,json.dumps([x for x in sourced_entries(new) if x not in sourced_entries(prior)]))
     elif name=='M13':condition_pairs()
     elif name=='M14':harness_retrieval()
     elif name=='M15':
@@ -336,6 +415,9 @@ def section(name):
             print('SOURCE git show '+BUILD+':'+full, 'lines', first, last)
             for n,line in enumerate(revision_text(BUILD,full).splitlines(),1):
                 if first<=n<=last:print(str(n)+': '+line)
+    elif name=='M17':gamma_strata()
+    elif name=='M18':restriction_objects()
+    elif name=='M19':branch_objects()
     else:raise ValueError(name)
 
 
@@ -358,8 +440,9 @@ def main():
                       'M5 counts literal JSON fields, without numeric interpretation, tolerance or algebra. '
                       'M11 preserves the full Wolfram native stream, including every restricted/forward/response domain; compact fields do not replace those gates. M6/M7 preserve the complete row accounting and remaining-coverage inventory. '
                       'M13 performs literal within-engine condition-payload comparisons only; M14 retrieves harness coverage/marks; M15 preserves repository prior-art sources; M16 retrieves mass and N-dependence objects by engine. '
+                      'M17 retrieves gamma objects and their strata; M18 retrieves complete single-mechanism conditions/exchange; M19 retrieves branch constructors and same-named native rows. '
                       'All revision-bearing reads use explicit git revisions, including caa0710d for the pre-S9b register; only the after-pass register is read from the worktree. HEAD is not an input.\n\n')
-            for i in range(1,17):
+            for i in range(1,20):
                 key='M'+str(i);cmd=[sys.executable,SCRIPT,'--section',key]
                 out.write(f'## {key}\n\n~~~~~~text\n$ python3 {SCRIPT} --section {key}\n');out.flush()
                 subprocess.run(cmd,cwd=ROOT,stdout=out,check=True)

@@ -45,7 +45,7 @@ the second repair, by the same author. The reviewed round-1 record is preserved 
    strata. Whether the differing Wolfram fields state the same condition stays open, as its own question.
 2. Each single-mechanism restriction is reported as each engine prints it, with its domain, integration constants
    and their domains, implied `j_n` and cross-engine status, in the record and in `R-S21-01`.
-3. The record states what each engine's `BRANCH_EXISTENCE`, `PATH_TRAVERSAL` and `BRANCH_TYPE` tags bind, from the
+3. The record states what each engine's `BRANCH_EXISTENCE` and `PATH_TRAVERSAL` tags bind, from the
    engine sources, and lists each printed difference between same-named rows as an open difference. No same-named
    tag is presented as one cross-engine object.
 4. The S9b pass enters S9b as a source on each register entry whose requirement a kept S9b result rests on, by the

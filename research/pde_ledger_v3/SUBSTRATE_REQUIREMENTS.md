@@ -11,7 +11,7 @@ O2 adds sources to six existing entries and one separate supplier/budget entry w
 its four adopted premises retain their
 conditional-input labels in the O2 pass below. Entry counts for that pass are retrieved in
 `steps/_measurements/O2_record_measurements.md`, M11. S9b adds one S21 requirement and sources
-two existing entries; its before/after census is `steps/_measurements/S9b_record_measurements.md`, M10.
+six existing entries; its before/after census is `steps/_measurements/S9b_record_measurements.md`, M10.
 
 ## Why this exists
 
@@ -68,16 +68,16 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 
 | target | id | the object owed | source |
 |---|---|---|---|
-| **S1** | `R-S1-02` | the substructure's shear response as a function of `χ_B`, both phases | S9, O2 conditional premises |
+| **S1** | `R-S1-02` | the substructure's shear response as a function of `χ_B`, both phases | S9, O2 conditional premises, S9b brane optical shear only |
 | **S1** *(register inference)* | `R-S1-03` | whether the substructure's microdynamics is time-reversible | S11b-B / unified S11b |
-| **S1.5** | `R-S1.5-01` | the mode content of the linearised GNLS, including the bulk acoustic branch | S9, S11, S11b-A/B |
+| **S1.5** | `R-S1.5-01` | the mode content of the linearised GNLS, including the bulk acoustic branch | S9, S11, S11b-A/B, S9b Part C bulk acoustic input only |
 | **S6** | `R-S6-01` | the brane's compression modulus `B_comp` | S11 |
 | **S6** | `R-S6-02` | the first variation of the substrate action at `v₀ = 0` | S9, S10, S11, S11b-A/B, S11c uniform |
-| **S6** | `R-S1-01` | the brane's spatial dimension `D_brane` ⚠ *id kept; target corrected to S6* | S10, S11 |
+| **S6** | `R-S1-01` | the brane's spatial dimension `D_brane` ⚠ *id kept; target corrected to S6* | S10, S11, S9b coordinate dimension only |
 | **S7** | `R-S7-01` | the slab-width flat direction under a non-uniform width | S11, unified S11b |
 | **S8** | `R-S8-01` | the form of the brane's quadratic stiffness functional | S9, S10, S11, S11b-B, unified S11b, S11c uniform, S9b supplied transverse input |
 | **S8** | `R-S8-02` | the quadratic operator on `u` **and** `h` together | S10, S11 |
-| **S8** | `R-S8-03` | the **sign** of the physical transverse stiffness | S9, S10, S11, unified S11b, S11c uniform |
+| **S8** | `R-S8-03` | the **sign** of the physical transverse stiffness | S9, S10, S11, unified S11b, S11c uniform, S9b local optical sign/ratio gate |
 | **S8** | `R-S8-04` | what carries the brane's **internal angular momentum** | S9, S10, S11, O2 carried obligation |
 | **S8** | `R-S8-05` | the **frame** the brane's rotational stiffness is measured against | S9, S10, S11, O2 carried obligation |
 | **S8** *(register inference for original entry)* | `R-S8-06` | material displacement and original quadratic slab inertia; O2 adds the material identification only | S11, S11b-B, O2 and S9b identification |
@@ -130,7 +130,7 @@ other three.
 
 ### R-S1-01 — the brane's spatial dimension
 
-- **source** S10 (`steps/S10_two_transverse_photons.md`); S11
+- **source** S9b (coordinate dimension only; `steps/S9b_light_bending.md`, §§2–4/8); S10 (`steps/S10_two_transverse_photons.md`); S11
   (`steps/S11_stray_longitudinal.md`, moves 2–3 / finite census) · **target** S6 · **status** OPEN
 - **requirement** — the brane's spatial dimension `D_brane`, as a derived quantity or an explicitly
   re-affirmed postulate.
@@ -150,9 +150,16 @@ other three.
   separation use `D_brane = 3`. Its proper-rotation invariant count explicitly warns that the sector
   separation is not dimension-independent. This is the same dimension obligation, not a new knob.
 
+- **S9b scope** — The kept optical/mass construction uses three far-field spatial coordinates,
+  coordinate `d³x`, spherical `r² sin θ` measure and the `4πr²` flux. It consumes `D_brane=3`
+  without deriving it. If that dimension is not delivered or re-affirmed, these coordinate
+  functionals and the flux/velocity relation do not transfer unchanged to the substrate.
+  This adds no dimensional derivation or selected wall thickness (S9b §§2/5; M1/M19).
+
+
 ### R-S1-02 — the substructure's shear response, as a function of the order parameter
 
-- **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
+- **source** S9b (brane optical shear only; `steps/S9b_light_bending.md`, §§2–4/8); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
 - **requirement** — the shear response of the substructure as a function of `χ_B`, across **both** phases.
 - **on failure** — the two halves fail differently, and both are fatal:
   - **ordered phase carries no shear** ⇒ `μ_R = 0`, the brane has no transverse sector, and **photons do
@@ -172,9 +179,18 @@ other three.
   material/load object to that substrate. No flowing pressure law, tangential bulk stress or optical
   compatibility result follows (`directives/O2_SHARED_PHYSICS.md`, §§2, 3.1, 3.3, 7).
 
+- **S9b scope** — The supplied light branch is the transverse displacement of shear-carrying
+  brane material, with the real positive optical ratio `μ⊥/ρbr`. A kept A–C optical wave is
+  conditional on that brane shear response; without it the reported propagating optical
+  interpretation fails its own gate. S9b therefore consumes the brane optical half of this
+  existing phase-response requirement. It derives no `χ_B` response, bulk shear-free result
+  or confinement result; O2 P4 is only carried as an adopted premise, unused by A–C
+  (S9b §§2/7; M1/M19).
+
+
 ### R-S1.5-01 — the GNLS's own mode content
 
-- **source** S9; S11 (`steps/S11_stray_longitudinal.md`, move 6 / `KW_ZERO_LOCUS`);
+- **source** S9b (Part C bulk acoustic input only; `steps/S9b_light_bending.md`, §§2–4/8); S9; S11 (`steps/S11_stray_longitudinal.md`, move 6 / `KW_ZERO_LOCUS`);
   S11b-A (`steps/S11bA_interface_response.md`, computed bulk response) and S11b-B
   (`steps/S11bB_interface_assembly.md`, breathing slice) · **target** S1.5 · **status** OPEN
 - **requirement** — the mode content of the linearised GNLS about uniform `ρ₀`: which excitations it
@@ -192,6 +208,15 @@ other three.
   S11's threshold, A's radiation resistance/added mass, and B's radiative breathing load rest on that
   supplied branch. Failure leaves those results conditional on a bulk operator the GNLS has not yet
   delivered. This requests neither an EOS exponent nor a numerical light/sound speed ratio.
+
+- **S9b scope** — Part C uses the supplied bulk acoustic quantity
+  `c_s²=nKρ^(n−1)/m`, including its asymptotic value, and its fixed-ratio response uses the
+  exact nonnegative sound-speed roots and their domains. If the bulk does not deliver that
+  acoustic branch on the stated domain, the fixed-ratio optical rewrite cannot be read as
+  a light/sound response of that substrate. This is a consumer of the existing acoustic-mode
+  requirement only: no GNLS mode derivation, EOS exponent, light/sound identification or
+  numerical ratio is supplied by S9b (S9b §§3–4; M1/M18).
+
 
 ### R-S6-02 — the reference state must be an equilibrium
 
@@ -317,7 +342,7 @@ other three.
 
 ### R-S8-03 — the SIGN of the physical transverse stiffness
 
-- **source** S9, S10; S11 (`steps/S11_stray_longitudinal.md`, unchanged transverse branch);
+- **source** S9b (local optical sign/ratio gate; `steps/S9b_light_bending.md`, §§2–4/8); S9, S10; S11 (`steps/S11_stray_longitudinal.md`, unchanged transverse branch);
   unified S11b (`steps/S11b_interface_coupling_law.md`, transverse mode); S11c
   (`steps/S11c_PARTIAL_CLOSEOUT.md`, conditional uniform result;
   `steps/S11c_d_profile_conditioned_scattering.md`, uniform check) · **target** S8 · **status** OPEN
@@ -341,6 +366,17 @@ other three.
   coefficient map. The obligation concerns the sign of `μ_⊥`, not a basis-dependent sign of `μ_S` or
   either engine's bare `μ_R`. Stable real-frequency uniform modes require `μ_⊥ ≥ 0`; decoupling alone
   does not exclude growth. S11c's selected finite-current check keeps its tested-input and review scope.
+
+- **S9b scope** — Every kept A–C observable is gated on a real positive optical ratio
+  `μ⊥/ρbr`, with the nonnegative speed chart and its engine-specific ray conditions.
+  The conditional wave/ray interpretation fails outside those gates; supplying the stiffness
+  form alone does not supply this sign condition. S9b is therefore a source on this existing
+  physical transverse-sign requirement. Its local strict-positive ratio domain is kept
+  separate from the earlier uniform `μ⊥≥0` statement. PY declares positive `ρbr`; WL keeps
+  real nonzero `ρbr`, so this pass does not infer unconditional `μ⊥>0` for both engines.
+  No sign is derived from the substrate and no existing status closes
+  (S9b §2; M1/M19, complete restriction domains M18).
+
 
 ### R-S8-04 — what carries the brane's internal angular momentum
 
@@ -538,7 +574,7 @@ other three.
 
 ### R-S21-01 — conditional deflection and radar-slope profile requirements
 
-- **source** S9b (`steps/S9b_light_bending.md`, §§3–6; measurements M3–M7/M11–M13)
+- **source** S9b (`steps/S9b_light_bending.md`, §§3–6; measurements M3–M7/M11–M13/M17–M19)
   · **target** S21 (integration/knit; S9b record §7, O2 record §7 and the record directive's
   2026-10-08/09 user decisions) · **status** OPEN
 - **requirement** — On S9b's isolated spherical, steady far-zone, leading-eikonal, LAB_HELD
@@ -562,7 +598,7 @@ other three.
   The requirements keep δ, ξw, ρbr, f, n, s, GM and all remaining printed inputs free;
   they select no profile, exponent, flux value/sign or GM normalization. M13 retrieves all 14
   within-engine deflection/radar condition pairs: every PY paired payload is byte-identical,
-  so those pairs establish no second independent profile test. Every WL paired payload differs.
+  while every WL paired payload differs (M13).
   WL `GM`, `ProfileEquation`, `ProfileEquationRadius`, outer `Domain`/`BranchDomain` and case
   `Domain` match literally; `InverseWeight` and `ReferenceInverse` differ in every pair.
   `VelocityReduction/SquaredVelocityEquation` additionally differs for general B, R_FLOW_ONLY B
@@ -571,9 +607,9 @@ other three.
   pairs. These paths are relative to `Cases/0`, within each density part's `Object` and the
   outer forward `Object` where present. M13 retains every identical subtree and differing
   payload; density labels/label conditions, bulk premise and forward premise match within
-  their pairs. Whether the differing fields state the same condition is OPEN, no owner named;
-  the WL separate-test count remains OPEN. Text differences alone do not establish independent
-  physical tests, and the matching GM/profile fields do not settle the complete conditions.
+  their pairs. Whether the differing fields state the same condition is OPEN, no owner named,
+  separately from the item-5 counting decision below. The matching GM/profile fields alone
+  do not settle full-condition equivalence. (M13.)
 - **on failure** — The conditional reference-matching statement for the affected observable
   cannot be realized on that domain. The computed conditional functionals and the reported
   cross-engine coverage do not become a GR-matching result.
@@ -586,6 +622,122 @@ other three.
   exchange. Conditions/exchange/γ values have no formed cross-engine comparison; the domains
   and every printed difference retain record §6's limits. This entry asserts no realized match.
 
+
+**Counting the two observables under item 5.** The rule is “It counts the deflection
+and the radar slope as separate tests only where the printed objects show their conditions differ.”
+M17 retrieves that rule and both engines' complete γ objects, including their attached gates,
+for general B, R_FLOW_ONLY, R_SPEED_ONLY, R_TILT_ONLY and conditional F_FLOW/F_LIVE.
+On each object's on-domain `GM≠0` stratum, PY's γ-difference solution set is `{0}` and WL's
+relation contains `gammaDifference==0 && GM!=0`. Thus the two observables are **not counted
+as separate tests at these selected grades on that stratum**, in either engine. This is a
+count of the printed reference-comparison constraints, not a claim of cross-engine equivalence
+or observational redundancy outside this model point. (M17; paired conditions M13.)
+
+At `GM=0`, PY separately prints the full real interval when both observable compatibility
+functionals vanish, and `EmptySet` on the other three printed vanishing/nonvanishing combinations.
+WL prints `GM==0` with both functionals zero, without a constraint on `gammaDifference`, and
+no further compatible alternative. Each engine's individual γ objects retain the corresponding
+unconstrained/empty singular strata. The record does not replace these by γ-difference zero:
+γ is unidentifiable on the compatible singular stratum, and the incompatible strata supply no
+joint γ solution. These strata establish no additional separate γ test under item 5; two
+independent tests are not counted from the unrestricted difference. Outside the respective gates,
+the objects are `NOT_ESTABLISHED`. (M17.)
+
+Whether the differing WL `InverseWeight`, `ReferenceInverse` and velocity-reduction fields in
+M13 state the same condition remains **a separate OPEN question, no owner named**. That question
+does not put the above counting decision on hold. Nor are the differing strings treated as a
+shown physical difference of conditions: the printed γ strata are part of the counting evidence.
+Part C/bulk-only condition rewrites retain M13's field distinctions and earn no additional
+separate test here; no unprinted Part C γ object is invented. (M13/M17.)
+
+**Engine-specific restrictions, constants, exchange and domains.** M18 retrieves both
+observables' complete `CONDITION` and `IMPLIED_JN` objects for all five restrictions below;
+no compact domain omission is used as evidence. In the following readable transcriptions,
+`r=s9b_r` for PY, `ρbr=rho_br_profile[r]` for PY and `rhoBr[r]` for WL. Engine-qualified
+constants are not identified across engines.
+
+**PY flow-only (`R_FLOW_ONLY_B_*`).** Its printed solution dictionary has
+`squared = 2*GM/r`, `integrating_factor = 1/r`,
+`general_solution: s9b_velocity_squared(r) = r*(2*GM/r² + C_PY)`, and `residual = 0`,
+where `C_PY` names the printed real `s9b_velocity_integration_constant`.
+The `constants` field retains `C_PY=0`; its `C_PY≠0` branch is labelled
+`EXCLUDED_BY_SUPPLIED_V_OVER_C0_O_EPSILON_HALF`, with the printed limit of `C_PY` retained.
+The `nonreal_branch` is `2*GM/r<0`, labelled `EXCLUDED_BY_REAL_MATERIAL_VELOCITY`.
+The two positive-component entries print, respectively,
+
+| PY velocity equality | PY implied exchange equality |
+|---|---|
+| `V = −√2 √GM / √r` | `jn = √2 √GM ρbr′/√r + (3/2)√2 √GM ρbr/r^(3/2)` |
+| `V = +√2 √GM / √r` | `jn = −√2 √GM ρbr′/√r − (3/2)√2 √GM ρbr/r^(3/2)` |
+
+Their attached domain keeps the solved ray/applicability gate, `2*GM/r≥0` throughout
+`(s9b_b_min,∞)`, and `2*GM/r>0` on each named positive component. The condition itself keeps
+its exterior interval and the δ=ξ=0-substituted gate, and prints `GM=r(V²−2rVV′)/4`.
+Four further entries retain sign pairs `(-1,-1),(-1,1),(1,-1),(1,1)` at zero radius `z`:
+`z>s9b_b_min`, `2*GM/z=0`, matching real one-sided limits of
+`σ √2 √GM/(√q (q−z))`, `V(z)=0`, `V′(z)` equal to the right-hand limit, and
+`jn(z)=−ρbr(z)` times that right-hand limit. These are the printed differentiable-zero-join
+objects, including zero intervals; their limits are not evaluated in this record. The density
+function retains PY's positive declaration. (M18, tuple paths `0`, `1/0..5`, `2`.)
+
+**WL flow-only (`R_FLOW_ONLY_B_*`).** Write `I(r)` only as an abbreviation for the printed
+`Inactive[Integrate][(-4*GM)/tailRadius^3,{tailRadius,r,Infinity}]`, without evaluating it.
+WL prints `GeneralSquaredVelocity = r*C_WL − r*I(r)` with
+`GeneralConstantDomain: Element[C_WL,Reals]`, and `SquaredVelocity = −r*I(r)`;
+`C_WL` names `velocityIntegrationConstant`. The retained `ConstantDomain` is `C_WL==0`;
+real nonzero `C_WL` branches are excluded by the supplied `V/c0=O(r^(-1/2))` counting.
+Each positive-component case lists `IntegrationConstants -> {C_WL}`, domain
+`C_WL==0 && −r*I(r)>0`, and its own substituted `AlongRayDomain`. It prints
+
+| WL velocity | WL implied exchange |
+|---|---|
+| `−√(−r I(r))` | `[-ρbr(4GM+5r²I(r))−2r³I(r)ρbr′]/[2r²√(−r I(r))]` |
+| `+√(−r I(r))` | `[ρbr(4GM+5r²I(r))+2r³I(r)ρbr′]/[2r²√(−r I(r))]` |
+
+The zero-interval case has `C_WL==0 && −r*I(r)==0`, `V=V′=jn=0` and the same listed
+constant/domain. `NoRealVelocityDomain` retains the negative-squared branch. `ZeroSetJoining`
+and each `AtComponentBoundary` retain differentiable real velocity/flux and finite matching
+one-sided limits. The enclosing condition retains `r>bFar`, `rAnchor>bFar`, functional
+regularity/convergence/Abel-invertibility requirements, its `BranchDomain`, the anchor GM
+rule and all-radius profile equation; each velocity case carries `AlongRayDomain` with its
+own substitution. WL keeps real nonzero density and its optical-ratio gate. No evaluation of
+`I(r)`, identification with PY's `2GM/r`, or identification of constants is claimed.
+These flow-condition/exchange value and domain differences remain OPEN across engines,
+no owner named. (M18; M6/M7.)
+
+**Zero-velocity restrictions.** The following table reports each engine's own condition and
+exchange-domain fields for both observables. PY's full attached gate at condition path `3`
+is obtained by that restriction's substitutions; its radial interval is `(s9b_b_min,∞)`.
+For bulk-only rows the condition is inside `OBJECT_ON_BOTH_PARTS`, with both density-label
+conditions and the exact response domain. WL's enclosing `Domain` and `BranchDomain`, and
+each case's `AlongRayDomain`, remain attached in every row; its `Domain` includes exterior
+radius/anchor and functional requirements. The residual equalities below are WL's additional
+`Cases/0/Domain` entries in `IMPLIED_JN` (also inside the velocity reduction of `CONDITION`),
+not replacements for those gates. M18 preserves every domain verbatim.
+
+| Restriction | PY printed condition and exchange | WL printed condition and exchange-case domain |
+|---|---|---|
+| Speed-only, V=ξ=0 | `GM=c₀²r²δ′/2`; `VELOCITY_FIXED_BY_RESTRICTION`, `V=0`, attached speed-only gate, `jn=0` | GM anchor rule plus `2δ′+rδ″=0`; deflection domain `−2GM/(c₀²r)+rδ′==0`, radar domain `−2GM/(c₀³r)+rδ′/c₀==0`; `V=V′=jn=0` |
+| Tilt-only, δ=V=0 | `GM=c₀²rξ′²/4`; `VELOCITY_FIXED_BY_RESTRICTION`, `V=0`, attached tilt-only gate, `jn=0` | GM anchor rule plus `ξ′(ξ′+2rξ″)=0`; deflection domain `−2GM/(c₀²r)+ξ′²/2==0`, radar domain `−2GM/(c₀³r)+ξ′²/(2c₀)==0`; `V=V′=jn=0` |
+| Bulk-only fixed ratio, V=ξ=0 | `GM=c₀²(n−1)r²f′/4`; fixed-velocity tuple, `V=jn=0`, exact fixed-ratio/substituted-ray domain on both labels | anchor rule plus `(n−1)(2f′+rf″)=0`; deflection domain `−2GM/(c₀²r)+(n−1)rf′/2==0`, radar domain `−2GM/(c₀³r)+(n−1)rf′/(2c₀)==0`, conjoined with the exact fixed-ratio domain on each label; `V=V′=jn=0` |
+| Bulk-only power, V=ξ=0 | `GM=c₀²sr²f′/2`; fixed-velocity tuple, `V=jn=0`, exact power/substituted-ray domain on both labels | anchor rule plus `2sf′+rsf″=0`; deflection domain `−2GM/(c₀²r)+rsf′==0`, radar domain `−2GM/(c₀³r)+rsf′/c₀==0`, conjoined with the exact power domain on each label; `V=V′=jn=0` |
+
+In **each** of these four restrictions PY emits no integration-constant field or solved-velocity
+dictionary: velocity is prescribed zero. WL explicitly prints `IntegrationConstants -> {}` and
+status “prescribed by the labelled substitution”, with no `ConstantDomain` field. Neither engine
+selects δ, ξ or f, or prints a solved-profile integration constant for those live profiles here.
+The fixed-ratio domain retains real local/asymptotic sound-speed squares, local square ≥0,
+asymptotic square >0 and the exact nonnegative-root ratio real and >0. The power domain retains
+`c₀ densityPower[1+f,s]` real and >0; `ρ₀>0` and the exact ray substitutions travel with both.
+Both keep `ρ>0` and `ρ≤0` labels; no germ-equivalent response replaces an exact domain.
+
+For **each** flow/speed/tilt optical restriction, deflection/radar/residual value samples form
+but retain printed numeric differences and unresolved domains; γ rows compare markers only,
+and full conditions/exchange have no formed value comparison. For **each** bulk-only response,
+only label/domain comparisons form, not condition/exchange values. The WL/PY constant,
+squared-velocity, signed-exchange, zero-join and domain representations above are retained as
+OPEN differences, no owner named; no equivalence is supplied by the zero exchange entries.
+(M18; M5–M7, with the counting rule separately applied in M17.)
 
 ## Population passes
 
@@ -818,16 +970,22 @@ or erased by this pass.
 ### S9b pass — conditional light bending and radar slope · populated 2026-10-19; review pending
 
 Source: `steps/S9b_light_bending.md`, Parts A–C, §§1–8 and appendices. Retrieval commands and
-literal output: `steps/_measurements/S9b_record_measurements.md`, M1–M16; generator
+literal output: `steps/_measurements/S9b_record_measurements.md`, M1–M19; generator
 `scripts/S9b_record_measurements.py`. **16 (`caa0710d`, before S9b) → 17 entries**, all OPEN;
-round 1 itself keeps 17 → 17 from `36f59ff1`. **New entry by target:
-S21, `R-S21-01`.** Existing entries gaining a source: **`R-S8-01`, `R-S8-06`**.
-No status is changed to DELIVERED or RETIRED. This pass is revised for record review round 1; the revision awaits review.
+round 2 itself keeps 17 → 17 from `d1511b20`. **New entry by target:
+S21, `R-S21-01`.** Existing entries gaining a source over `caa0710d`: **`R-S1-01`, `R-S1-02`, `R-S1.5-01`,
+`R-S8-01`, `R-S8-03`, `R-S8-06`**. The first three and `R-S8-03` gain their source in this
+round; `R-S8-01/06` already carried it in `d1511b20`. M10 retrieves both censuses and source lists.
+No status is changed to DELIVERED or RETIRED. This pass is revised for record review round 2; the revision awaits review.
 
 **First route / rest-on test.** The reported optical functionals rest on the supplied local
 transverse stiffness and on the identification of displacement, density and advected velocity
-with the same material. Those consumers merge into the two existing entries, with the original
-scope retained. The separately reported conditional reference-matching statement rests on the
+with the same material. Those consumers remain in R-S8-01/06. The kept positive optical-ratio
+gate additionally rests on R-S8-03; coordinate d³x/spherical flux on R-S1-01; the material's
+optical shear on the brane half of R-S1-02; and the supplied Part C acoustic branch on the
+acoustic part of R-S1.5-01. Failure of each breaks the scoped interpretation stated in its
+entry. These are six existing requirements with S9b consumers, without widening them into
+unselected full material laws. The separately reported conditional reference-matching statement rests on the
 printed Part B profile condition for each observable and Part C rewrites, with their printed
 exchange/domain restrictions. That condition is an obligation for S21's integration/knit and
 passes the test; it does not establish that the substrate satisfies it. `R-S21-01` specifies
@@ -835,19 +993,21 @@ only the required objects and failure consequence, no means of meeting them, no 
 candidate material, and no effect of the adopted density link. The deflection/radar
 conditions retain M13's explicit distinction, detailed in R-S21-01: PY paired payloads are
 byte-identical; WL GM/profile fields match but inverse and velocity-reduction fields differ.
-Whether the differing WL fields state the same condition, and the WL separate-test count,
-remain OPEN. No second independent test follows from the identical PY pairs.
+Whether the differing WL fields state the same condition remains a separate OPEN question
+(M13). Item 5, applied to each engine's γ-difference zero on GM≠0, does not count the two
+observables as separate tests there; the printed GM=0 unconstrained/empty strata earn no
+additional separate γ test. This is not a count awaiting WL field-equivalence work (M17).
 The source's full difference and unresolved-coverage ledger travels with the requirement.
 
 | Candidate/source dependence | Application of the same rest-on test |
 |---|---|
-| Supplied transverse stiffness input, material identity | Selected inputs to the reported functionals: merge into R-S8-01 and R-S8-06 as scoped above. No live inertia or full-stress widening. |
+| Supplied transverse stiffness input, material identity, positive optical ratio, dimension, brane shear and Part C acoustic input | Selected inputs: R-S8-01/06, R-S8-03, R-S1-01, R-S1-02 and R-S1.5-01, with the scoped failure consequences above. No live inertia/full-stress or bulk-confinement widening. |
 | Part B/Part C matching conditions and single-mechanism restrictions | Derived conditional requirements relative to independent GM: R-S21-01, with complete values still uncompared across engines. No realized matching outcome. |
 | No-far-zone-loss forward premise | Adopted conditional input (user 2026-10-06/07/08), re-tested at knit; not a derived general exchange requirement. Its Φ–GM relation remains open. No separate entry. |
 | w-parity, P5, P6, density link | Adopted conditional inputs from D2, with dates/scope retained in record §7 and re-tested at knit. Scoped to held Part D, used by no A–C computed object. No derived requirement or effect of the link inferred. |
 | O2 P1–P4 | Adopted substrate inputs to a conditional model (2026-10-06). S9b records them without deriving a mechanical/relaxation/loading law; its optical dispersion is separately supplied. O2's existing entries/status are not re-certified. |
 | S8/O1/O7 constitutive responses; S11c nonuniform operator; O3–O6 maps, supports, reactions | Unselected closures or excluded work. Owners remain in record §7; no new closure-form entry merely because a later physical realization needs them. |
-| Positive-real optical ratio/constructed ray; restricted response domains | Travel with R-S21-01. No new uniform-stiffness sign result or expanded R-S8-03 domain is inferred; PY/WL brane-density assumptions remain an open domain difference. |
+| Positive-real optical ratio/constructed ray; restricted response domains | Travel with R-S21-01 and add the scoped sign consumer to R-S8-03. No substrate sign result is derived; PY/WL brane-density assumptions and all nine same-named branch-row differences remain OPEN (M19). |
 | Historical limits, normal-drain correction, direction/polarization/coupled/subprincipal exclusions | Remain explicitly scoped handoffs. S12 drain/return ownership and the existing R-S12-02 qualification persist; S9b does not deliver that correction or add a flowing-equilibrium source to R-S6-02. |
 | O2 derivative-key interpretation and other engine differences | Undischarged interpretation owned by the orchestrator; an unresolved difference alone establishes no substrate delivery requirement. No entry. |
 
@@ -856,6 +1016,31 @@ Part-D scopes) remain in S9b §7 for re-testing at the knit. Adopted values/form
 not derived requirements. No ansatz or defect register is changed. The source's statement that
 premises are re-tested at the knit supplies no new A–C constitutive law; held Part-D choices
 have no present A–C rest-on consumer to duplicate as a new entry.
+
+
+**Rest-on census, every entry.** This applies the same failure test to the kept A–C object,
+not to a future completed substrate or a proposed Part D solve. M1/M18/M19 supply the kept
+inputs and gates; M10 retrieves the schema, entries, source lists and this pass.
+
+| Entry | S9b consumer / disposition |
+|---|---|
+| R-S6-01 | No `B_comp` input or compression-mode result is used; no source gain. |
+| R-S7-01 | ℓ is a supplied reduction scale, not a wall-width solution; no nonuniform-width flat-direction result is consumed; no source gain. |
+| R-S1-01 (target S6) | Coordinate d³x, spherical geometry and `4πr²` flux consume D_brane=3; source added. |
+| R-S1-02 | Propagating brane optical shear is consumed; source added on that half only, without a bulk-confinement claim. |
+| R-S1.5-01 | Part C's exact fixed-ratio light/sound response consumes the supplied bulk acoustic branch; source added on that branch only. |
+| R-S6-02 | The kept local LAB_HELD construction does not assert a substrate equilibrium/first variation at the unstrained rest state. Its historical uniform anchor is a supplied input, not a newly banked equilibrium result; no source gain. |
+| R-S8-01 | Supplied local transverse stiffness form; existing S9b source retained. |
+| R-S8-02 | No coupled fluctuating `(u,h)` spectrum, block diagonality or h/transverse degeneracy is claimed. ξ is a supplied background embedding here; the full coupled operator is outside the kept object, so no source gain. |
+| R-S8-03 | Every A–C observable's real positive optical-ratio gate; source added, engine-qualified. |
+| R-S8-04 | No curl-only live energy or internal angular-momentum/couple-stress result is consumed by the supplied local symbol; original admissibility question stays OPEN, no new source. |
+| R-S8-05 | No physical rotational-stiffness frame is selected by LAB_HELD or radial flow; original frame question stays OPEN, no new source. |
+| R-S1-03 | No Onsager–Casimir/microscopic time-reversal result is claimed or used; no source gain. |
+| R-S8-06 | Displacement/density/advection material identity; existing S9b source retained without a live kinetic-law claim. |
+| R-S12-01 | No non-passive interface response is used in A–C; held P1/P6 supply no A–C power law, so no reservoir/budget consumer added. |
+| R-S12-02 | Native normal drain/return functions and their boundary data are not inputs to these conditional optical functionals. `jn` is a live coordinate exchange or an implied output; its identification with `v_dr` remains OPEN. No native drain-data source gain is inferred from a future profile solve. |
+| R-O2-01 | No closure requiring computed net supply is kept in A–C; no net-power supplier/budget consumer added. |
+| R-S21-01 | New in the original S9b pass: engine-specific conditional optical conditions/restrictions and their exchange/domain requirements. Retained, all qualifications above apply; no means of satisfying them selected. |
 
 **Second route.** the repository identifies more than GR/PPN references. The inventory below
 names the prior-art objects relevant to the optical, flow, embedding and carried mechanical

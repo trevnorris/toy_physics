@@ -1,18 +1,19 @@
 # S9b — light bending and radar delay: Parts A–C
 
-**Record author:** Codex, 2026-10-19; record review round 1 revision. **Standing:** revised for
-the record STOP from `36f59ff1`; this revision awaits review. No new commit. Part D is held, not built or accepted.
+**Record author:** Codex, 2026-10-19; record review round 2 revision. **Standing:** revised for
+the record STOP from `d1511b20`; this revision awaits review. No new commit. Part D is held, not built or accepted.
 
 The accepted constructions give conditional optical functionals and profile requirements, not a
 substrate-derived light equation or a demonstrated match to GR. At the selected comparison grades,
 M13 retrieves byte-identical paired condition payloads in PY. In WL, `GM` and `ProfileEquation`
 match literally but `InverseWeight`, `ReferenceInverse` and velocity-reduction fields differ (§3).
-Whether those differing fields state the same condition is OPEN. The record therefore establishes
-no second independent test from the PY pairs and leaves the WL separate-test count OPEN; it does
-not collapse both engines to one test or infer independence from differing text.
+Whether those differing fields state the same condition is a separate OPEN question. Under item 5,
+the two observables are not counted as separate tests on either engine's printed nonzero-GM
+γ stratum: each prints γ-difference zero. The GM=0 compatible/unconstrained and incompatible
+strata are retained separately and earn no additional separate γ test (M17; §3).
 Their complete cross-engine conditions, implied exchange and effective γ objects remain uncompared.
 The numerical comparisons that do form retain their printed residuals and unresolved coverage (§6).
-Sources: `B_CONDITION_*`, `B_GAMMA_DIFFERENCE`, `B_RESIDUAL_*`, measurements M3–M7/M12–M13.
+Sources: `B_CONDITION_*`, `B_GAMMA_DIFFERENCE`, `B_RESIDUAL_*`, measurements M3–M7/M12–M13/M17.
 
 ## 1. Sources and retrieval contract
 
@@ -43,6 +44,10 @@ M8 preserves the acceptance history; M9 is O2; M10 is the register census/pass; 
 source-version matches and retains the PY γ-difference solution sets. M13 compares literal within-engine
 condition payloads and fields; M14 retrieves accepted harness marks/coverage; M15 preserves the
 repository's prior-art sources; M16 retrieves complete engine-specific mass and N-dependence objects.
+M17 retrieves the counting rule and each engine's complete γ objects/strata; M18 preserves all
+single-mechanism conditions and implied-exchange objects, including complete domains/constants;
+M19 reads each engine's branch constructors and the same-named general/forward rows. M10 also
+retrieves the round-1 census at `d1511b20` and source gains from the entry source fields.
 Every source read is pinned with `git show REV:path`; annex targets are resolved from that revision
 inside this checkout. Native/harness sources use `fb2d6d25`, comparator sources `88bb1f41`, and
 repository context `36f59ff1`, except the explicit spec/decision/O2 pins above. M10 reads the
@@ -80,15 +85,62 @@ G100, G101, G110, G111, G120, G121, with supplied ε powers
 Part B. The other retained grades remain printed, not compared with a first-order reference.
 The counting is owned by gravity/S12, not derived here. (M1, M3/M4 retained-grade fields.)
 
-The native gates require real coefficients, nonzero material density, a real positive optical
-ratio `μ⊥/ρbr`, its equality to `c₀²(1+δ)²` with the nonnegative speed, and the ray's own turning
-and angular-closure construction. Traversal additionally requires the printed along-ray inequality
-`μ⊥/ρbr > V²(1+ξw′²)`. The turning roots, outward monotonicity and finite-endpoint closure stay
-attached; a pointwise inequality alone is not the full domain. WL uses its turning-radius/impact
-conditions; PY uses its constructed ray-root sets. Their equivalence is not established by the
-comparator. PY declares `rho_br_profile` positive; WL's gate states real, nonzero `rhoBr` and the
-ratio condition. This literal assumption/domain difference remains OPEN, no adjudication owner named;
-it is distinct from the bulk-density partition below. (M2–M4/M11.)
+The A–C observable domains retain real coefficients, nonzero material density, the real positive
+optical ratio `μ⊥/ρbr`, the nonnegative speed identification and the respective engine's constructed
+ray and traversal conditions. The printed inequalities include `μ⊥/ρbr > V²(1+ξw′²)` for
+traversal; a pointwise inequality is not the full applicability domain. PY declares
+`rho_br_profile` positive; WL's gate states real nonzero `rhoBr` with the ratio condition.
+This is an OPEN assumption/domain difference, no owner named, distinct from the bulk-density
+labels. The tags themselves bind different parts of these constructions, as follows. (M2/M19.)
+
+**Engine-specific branch bindings and open differences.** A same-named row is a join key,
+not an established common cross-engine object. M19 reads both accepted sources at `fb2d6d25`
+and retrieves all nine general/forward branch rows in full, with their comparator accounting.
+
+- **PY** constructs `existence` from the positive radial-frequency discriminant and nonzero
+  density, and `traversal` from the negative product of its two radial group speeds (source
+  lines 680–699). `BRANCH_EXISTENCE` emits `real_domain`: `everywhere(existence, traversed)`,
+  represented by emptiness of the violating `ConditionSet`. `traversed` is the union of radii
+  selected by its three constructed FLYBY/ER/RE root sets; the ray-root `ConditionSet`s retain their
+  turning/angular conditions. This tag does **not** separately assert nonempty ray-root sets
+  or the speed identification. `PATH_TRAVERSAL` emits `travel_domain`: all three root sets nonempty
+  **and** the radial-speed-product inequality everywhere on that union. The additional
+  nonnegative-root `speed_identity`/`root_domain` enters the observable applicability `gate`
+  (770–773), not the `BRANCH_EXISTENCE` tag. Forward rows use `substitute_domain`: if δ is
+  prescribed it also substitutes `mu_perp=ρbr c₀²(1+δ)²` (910–923, 1051–1060).
+- **WL** emits `propagationGate` as `BRANCH_EXISTENCE`: `rayConstruction` **and** an inactive
+  all-traversed-radii quantifier containing `physicalPropagation`, `speedChart`, nonzero density
+  and explicit real-coefficient membership (240–282). `rayConstruction` includes the radar
+  angular closure, both turning conditions, endpoint ordering and outward monotonicity.
+  `PATH_TRAVERSAL` emits `traversalGate`: that same construction **and** its all-radii
+  `physicalTraversal`, sourced from the Fermat coefficient's `subcritical` predicate
+  `−timeCoefficients[[3]]>0`. `physicalPropagation` comes from real positive `relativeNorm`
+  and `Det[metric2]>0`, under `branchRules` using the signed stiffness/density ratio;
+  `speedChart` is a separately conjoined nonnegative-root identification. Traversed radii
+  are stated using the free `rTurnFlyby`, `rTurnRadar`
+  and radar endpoints. Forward `emitGates` performs `/. stageRules` and wraps `Premise/Object`
+  (650–670); it does not call PY's `substitute_domain` or its stiffness substitution.
+
+Every row below is an **OPEN cross-engine construction/content difference; no owner named**.
+No equivalence, contradiction or representational-only classification is inferred. All nine
+same-named rows have **no formed comparison of any kind** in the accepted accounting (M19/M6).
+
+| Same-named row | PY printed object | WL printed object / difference retained |
+|---|---|---|
+| `BRANCH_EXISTENCE` | violating radial-discriminant `ConditionSet` equals `EmptySet` | ray construction plus explicit all-radii propagation, speed-chart and reality clauses; neither binding is identified with the other |
+| `PATH_TRAVERSAL` | nonempty constructed ray-root sets plus no violating radial-speed-product point | explicit turning/closure construction plus all-radii traversal, with free turning radii |
+| `BRANCH_TYPE` | three domain-labelled alternatives from the radial discriminant and traversal inequality | `LocalClassification` from full frequency roots, `Radii`, and `TraversalClassification`; different content and domain packaging |
+| Conditional `F_FLOW_BRANCH_EXISTENCE` | literal `true` | `Premise/Object` containing nontrivial ray construction and propagation/speed-chart/reality clauses; PY's `true` is not a cross-engine existence result or proof of an admissible ray |
+| Conditional `F_FLOW_PATH_TRAVERSAL` | flux-substituted nonempty ray-root sets and speed-product condition | wrapped flux/δ=ξ=0-substituted ray construction and all-radii traversal |
+| Conditional `F_FLOW_BRANCH_TYPE` | growing/decaying and absent entries have literal `false` domains; remaining traversal alternative retained | wrapped full-frequency local classification still carries `muPerp/rhoBr`, plus radii and traversal classification |
+| Conditional `F_LIVE_BRANCH_EXISTENCE` | flux-substituted `ConditionSet` emptiness; δ, ξ and stiffness remain live | wrapped flux-substituted construction and explicit propagation/speed-chart/reality clauses |
+| Conditional `F_LIVE_PATH_TRAVERSAL` | flux-substituted root nonemptiness and all-radii speed-product condition | wrapped flux-substituted construction and all-radii traversal with free turning radii |
+| Conditional `F_LIVE_BRANCH_TYPE` | flux-substituted radial-discriminant/traversal alternatives | wrapped full-frequency local classification, radii and traversal classification |
+
+The `F_` rows are conditional on no far-zone loss and the live flux premise. The observable
+applicability domains, the γ gates and the individually named branch tags must not be conflated.
+Their complete printed expressions and source bindings, including the forward wrappers, are M19;
+none of the above differences is repaired or reconciled here.
 
 WL's condition domain additionally prints `r>bFar`, `rAnchor>bFar`, required derivatives, convergence
 of the displayed improper integrals and existence of the Abel inverse on the exterior half-line,
@@ -180,40 +232,126 @@ forward locations have the additional outer `Object`. Their density labels/label
 all other identical subtrees and retrieves every differing field verbatim. For example, general
 WL `ReferenceInverse` is `(2*GM)/(c0^2*r)` for deflection and `(2*GM)/(c0^3*r)` for radar.
 No rescaling or equivalence calculation is made. Whether any differing fields state the same
-condition is OPEN, no owner named. Consequently PY supplies no second independent profile test
-from these identical pairs; WL's separate-test count remains OPEN. Matching `GM`/`ProfileEquation`
-fields alone do not settle the full conditions, and differing serialization alone does not
-establish independent physical tests. These limits apply to every condition comparison in
-§§3–5, Appendix A and the register. (M13.)
+condition is OPEN, no owner named. This field-equivalence question is distinct from the count
+under item 5 below. Matching `GM`/`ProfileEquation` fields alone do not settle full-condition
+equivalence. These field distinctions apply in §§3–5, Appendix A and the register. (M13.)
 
-**Implied exchange and domain.** Speed-only and tilt-only both print `jn=0`, with `ρbr` still
-symbolic. Flow-only prints both velocity signs on each positive-squared-velocity component, the
-zero intervals, differentiable zero-set joins, and excludes negative squared velocity. WL prints
+**Counting the two observables under item 5.** The rule is “It counts the deflection
+and the radar slope as separate tests only where the printed objects show their conditions differ.”
+M17 retrieves that rule and both engines' complete γ objects, including their attached gates,
+for general B, R_FLOW_ONLY, R_SPEED_ONLY, R_TILT_ONLY and conditional F_FLOW/F_LIVE.
+On each object's on-domain `GM≠0` stratum, PY's γ-difference solution set is `{0}` and WL's
+relation contains `gammaDifference==0 && GM!=0`. Thus the two observables are **not counted
+as separate tests at these selected grades on that stratum**, in either engine. This is a
+count of the printed reference-comparison constraints, not a claim of cross-engine equivalence
+or observational redundancy outside this model point. (M17; paired conditions M13.)
 
-```
-Y = -r Inactive[Integrate][(-4 GM)/tailRadius^3, {tailRadius,r,Infinity}],
-V = -√Y or +√Y,
-```
+At `GM=0`, PY separately prints the full real interval when both observable compatibility
+functionals vanish, and `EmptySet` on the other three printed vanishing/nonvanishing combinations.
+WL prints `GM==0` with both functionals zero, without a constraint on `gammaDifference`, and
+no further compatible alternative. Each engine's individual γ objects retain the corresponding
+unconstrained/empty singular strata. The record does not replace these by γ-difference zero:
+γ is unidentifiable on the compatible singular stratum, and the incompatible strata supply no
+joint γ solution. These strata establish no additional separate γ test under item 5; two
+independent tests are not counted from the unrestricted difference. Outside the respective gates,
+the objects are `NOT_ESTABLISHED`. (M17.)
 
-with its general `r velocityIntegrationConstant` term excluded by supplied asymptotic counting,
-and the retained constant domain `velocityIntegrationConstant==0`. Its two positive-component
-exchange numerators are the negative and positive versions, respectively, of the literal field
+Whether the differing WL `InverseWeight`, `ReferenceInverse` and velocity-reduction fields in
+M13 state the same condition remains **a separate OPEN question, no owner named**. That question
+does not put the above counting decision on hold. Nor are the differing strings treated as a
+shown physical difference of conditions: the printed γ strata are part of the counting evidence.
+Part C/bulk-only condition rewrites retain M13's field distinctions and earn no additional
+separate test here; no unprinted Part C γ object is invented. (M13/M17.)
 
-```
-(rhoBr[r]*(4*GM + 5*r^2*Inactive[Integrate][(-4*GM)/tailRadius^3,
- {tailRadius,r,Infinity}]) + 2*r^3*Inactive[Integrate][(-4*GM)/tailRadius^3,
- {tailRadius,r,Infinity}]*Derivative[1][rhoBr][r]) /
- (2*r^2*Sqrt[-r*Inactive[Integrate][(-4*GM)/tailRadius^3,
- {tailRadius,r,Infinity}]])
-```
 
-No integral is evaluated here. PY separately prints its signed-component and zero-locus exchange
-objects. The common coordinate mass expression is printed engine-locally as
-`jn=−ρbr V′−Vρbr′−2ρbr V/r`; each restriction retains its own computed substitutions, not a
-constant-density shortcut. WL prints component-boundary limits and zero-interval `jn=0`; PY prints
-one-sided differentiable-join conditions and the corresponding exchange. Constants with different
-engine names are not identified. (M3/M4 `LOCAL_MASS_BALANCE`, `R_FLOW_ONLY_B_IMPLIED_JN_*`;
-full WL restrictions M11; cross-engine bounds M6/M8.)
+**Engine-specific restrictions, constants, exchange and domains.** M18 retrieves both
+observables' complete `CONDITION` and `IMPLIED_JN` objects for all five restrictions below;
+no compact domain omission is used as evidence. In the following readable transcriptions,
+`r=s9b_r` for PY, `ρbr=rho_br_profile[r]` for PY and `rhoBr[r]` for WL. Engine-qualified
+constants are not identified across engines.
+
+**PY flow-only (`R_FLOW_ONLY_B_*`).** Its printed solution dictionary has
+`squared = 2*GM/r`, `integrating_factor = 1/r`,
+`general_solution: s9b_velocity_squared(r) = r*(2*GM/r² + C_PY)`, and `residual = 0`,
+where `C_PY` names the printed real `s9b_velocity_integration_constant`.
+The `constants` field retains `C_PY=0`; its `C_PY≠0` branch is labelled
+`EXCLUDED_BY_SUPPLIED_V_OVER_C0_O_EPSILON_HALF`, with the printed limit of `C_PY` retained.
+The `nonreal_branch` is `2*GM/r<0`, labelled `EXCLUDED_BY_REAL_MATERIAL_VELOCITY`.
+The two positive-component entries print, respectively,
+
+| PY velocity equality | PY implied exchange equality |
+|---|---|
+| `V = −√2 √GM / √r` | `jn = √2 √GM ρbr′/√r + (3/2)√2 √GM ρbr/r^(3/2)` |
+| `V = +√2 √GM / √r` | `jn = −√2 √GM ρbr′/√r − (3/2)√2 √GM ρbr/r^(3/2)` |
+
+Their attached domain keeps the solved ray/applicability gate, `2*GM/r≥0` throughout
+`(s9b_b_min,∞)`, and `2*GM/r>0` on each named positive component. The condition itself keeps
+its exterior interval and the δ=ξ=0-substituted gate, and prints `GM=r(V²−2rVV′)/4`.
+Four further entries retain sign pairs `(-1,-1),(-1,1),(1,-1),(1,1)` at zero radius `z`:
+`z>s9b_b_min`, `2*GM/z=0`, matching real one-sided limits of
+`σ √2 √GM/(√q (q−z))`, `V(z)=0`, `V′(z)` equal to the right-hand limit, and
+`jn(z)=−ρbr(z)` times that right-hand limit. These are the printed differentiable-zero-join
+objects, including zero intervals; their limits are not evaluated in this record. The density
+function retains PY's positive declaration. (M18, tuple paths `0`, `1/0..5`, `2`.)
+
+**WL flow-only (`R_FLOW_ONLY_B_*`).** Write `I(r)` only as an abbreviation for the printed
+`Inactive[Integrate][(-4*GM)/tailRadius^3,{tailRadius,r,Infinity}]`, without evaluating it.
+WL prints `GeneralSquaredVelocity = r*C_WL − r*I(r)` with
+`GeneralConstantDomain: Element[C_WL,Reals]`, and `SquaredVelocity = −r*I(r)`;
+`C_WL` names `velocityIntegrationConstant`. The retained `ConstantDomain` is `C_WL==0`;
+real nonzero `C_WL` branches are excluded by the supplied `V/c0=O(r^(-1/2))` counting.
+Each positive-component case lists `IntegrationConstants -> {C_WL}`, domain
+`C_WL==0 && −r*I(r)>0`, and its own substituted `AlongRayDomain`. It prints
+
+| WL velocity | WL implied exchange |
+|---|---|
+| `−√(−r I(r))` | `[-ρbr(4GM+5r²I(r))−2r³I(r)ρbr′]/[2r²√(−r I(r))]` |
+| `+√(−r I(r))` | `[ρbr(4GM+5r²I(r))+2r³I(r)ρbr′]/[2r²√(−r I(r))]` |
+
+The zero-interval case has `C_WL==0 && −r*I(r)==0`, `V=V′=jn=0` and the same listed
+constant/domain. `NoRealVelocityDomain` retains the negative-squared branch. `ZeroSetJoining`
+and each `AtComponentBoundary` retain differentiable real velocity/flux and finite matching
+one-sided limits. The enclosing condition retains `r>bFar`, `rAnchor>bFar`, functional
+regularity/convergence/Abel-invertibility requirements, its `BranchDomain`, the anchor GM
+rule and all-radius profile equation; each velocity case carries `AlongRayDomain` with its
+own substitution. WL keeps real nonzero density and its optical-ratio gate. No evaluation of
+`I(r)`, identification with PY's `2GM/r`, or identification of constants is claimed.
+These flow-condition/exchange value and domain differences remain OPEN across engines,
+no owner named. (M18; M6/M7.)
+
+**Zero-velocity restrictions.** The following table reports each engine's own condition and
+exchange-domain fields for both observables. PY's full attached gate at condition path `3`
+is obtained by that restriction's substitutions; its radial interval is `(s9b_b_min,∞)`.
+For bulk-only rows the condition is inside `OBJECT_ON_BOTH_PARTS`, with both density-label
+conditions and the exact response domain. WL's enclosing `Domain` and `BranchDomain`, and
+each case's `AlongRayDomain`, remain attached in every row; its `Domain` includes exterior
+radius/anchor and functional requirements. The residual equalities below are WL's additional
+`Cases/0/Domain` entries in `IMPLIED_JN` (also inside the velocity reduction of `CONDITION`),
+not replacements for those gates. M18 preserves every domain verbatim.
+
+| Restriction | PY printed condition and exchange | WL printed condition and exchange-case domain |
+|---|---|---|
+| Speed-only, V=ξ=0 | `GM=c₀²r²δ′/2`; `VELOCITY_FIXED_BY_RESTRICTION`, `V=0`, attached speed-only gate, `jn=0` | GM anchor rule plus `2δ′+rδ″=0`; deflection domain `−2GM/(c₀²r)+rδ′==0`, radar domain `−2GM/(c₀³r)+rδ′/c₀==0`; `V=V′=jn=0` |
+| Tilt-only, δ=V=0 | `GM=c₀²rξ′²/4`; `VELOCITY_FIXED_BY_RESTRICTION`, `V=0`, attached tilt-only gate, `jn=0` | GM anchor rule plus `ξ′(ξ′+2rξ″)=0`; deflection domain `−2GM/(c₀²r)+ξ′²/2==0`, radar domain `−2GM/(c₀³r)+ξ′²/(2c₀)==0`; `V=V′=jn=0` |
+| Bulk-only fixed ratio, V=ξ=0 | `GM=c₀²(n−1)r²f′/4`; fixed-velocity tuple, `V=jn=0`, exact fixed-ratio/substituted-ray domain on both labels | anchor rule plus `(n−1)(2f′+rf″)=0`; deflection domain `−2GM/(c₀²r)+(n−1)rf′/2==0`, radar domain `−2GM/(c₀³r)+(n−1)rf′/(2c₀)==0`, conjoined with the exact fixed-ratio domain on each label; `V=V′=jn=0` |
+| Bulk-only power, V=ξ=0 | `GM=c₀²sr²f′/2`; fixed-velocity tuple, `V=jn=0`, exact power/substituted-ray domain on both labels | anchor rule plus `2sf′+rsf″=0`; deflection domain `−2GM/(c₀²r)+rsf′==0`, radar domain `−2GM/(c₀³r)+rsf′/c₀==0`, conjoined with the exact power domain on each label; `V=V′=jn=0` |
+
+In **each** of these four restrictions PY emits no integration-constant field or solved-velocity
+dictionary: velocity is prescribed zero. WL explicitly prints `IntegrationConstants -> {}` and
+status “prescribed by the labelled substitution”, with no `ConstantDomain` field. Neither engine
+selects δ, ξ or f, or prints a solved-profile integration constant for those live profiles here.
+The fixed-ratio domain retains real local/asymptotic sound-speed squares, local square ≥0,
+asymptotic square >0 and the exact nonnegative-root ratio real and >0. The power domain retains
+`c₀ densityPower[1+f,s]` real and >0; `ρ₀>0` and the exact ray substitutions travel with both.
+Both keep `ρ>0` and `ρ≤0` labels; no germ-equivalent response replaces an exact domain.
+
+For **each** flow/speed/tilt optical restriction, deflection/radar/residual value samples form
+but retain printed numeric differences and unresolved domains; γ rows compare markers only,
+and full conditions/exchange have no formed value comparison. For **each** bulk-only response,
+only label/domain comparisons form, not condition/exchange values. The WL/PY constant,
+squared-velocity, signed-exchange, zero-join and domain representations above are retained as
+OPEN differences, no owner named; no equivalence is supplied by the zero exchange entries.
+(M18; M5–M7, with the counting rule separately applied in M17.)
 
 **Bulk density alone, before combined Part C.** `R_BULK_ONLY_` sets V=ξ=0, with `ρbr` symbolic.
 On each separately printed `ρ>0` and `ρ≤0` part, PY's condition is
@@ -254,10 +392,11 @@ the other three combinations of vanishing/nonvanishing functionals print `EmptyS
 `(gammaDifference==0 && GM!=0) || (GM==0 && radarFunctional==0 && deflectionFunctional==0)`.
 No nonzero-mass division is extended across `GM=0`. These two emitted forms are recorded separately;
 M6 counts marker-only comparisons for all 18 γ-family rows. The PY payload identity and the WL
-field differences retrieved in M13 yield §3's bounded counting conclusion: no second independent
-test established by PY, WL count OPEN. The printed γ relation does not settle equivalence of
-the differing WL condition fields. Nothing extends this to mixed grades or full radar time.
-(M3 `B_GAMMA_*`; M4/M12 PY solution sets; M6/M8/M13.)
+field differences in M13 are kept separate from §3's counting decision. Item 5 counts no separate
+tests on either engine's on-domain GM≠0 stratum, where its printed γ difference is zero;
+the GM=0 unconstrained/empty strata earn no additional separate γ test. The differing WL
+field-equivalence question remains OPEN. Nothing extends the count to mixed grades or full radar
+time. (M17; M3 `B_GAMMA_*`; M4/M12 PY solution sets; M6/M8/M13.)
 
 The general implied exchange leaves δ, ξ and `ρbr` live. WL's squared-velocity field is
 
@@ -320,8 +459,10 @@ no mass-residual field. WL prints `Premise/{NormalExchange,Flux,Measure}` and
 the flux velocity, and `Residual -> 0`. The zero residual is attributed to WL only. (M16.) This is a mass-balance solution only. The full forward mass object has no
 formed comparator value comparison. (M3/M4 `F_MASS_SOLUTION`, M6.)
 
-Conditional `F_FLOW_` substitutes this velocity with δ=ξ=0 into Part A, Part B and branch/traversal
-objects. WL's conditional `GM` anchor rule is
+Conditional `F_FLOW_` substitutes this velocity with δ=ξ=0 into each engine's own Part A,
+Part B and branch/traversal objects. In particular PY `F_FLOW_BRANCH_EXISTENCE` is literal `true`,
+while WL retains its wrapped ray-construction/propagation predicate; this is an OPEN difference,
+not one common cross-engine existence object (§2, M19). WL's conditional `GM` anchor rule is
 `Φ²(5ρbr+2rρbr′)/(64π²r³ρbr³)` at `rAnchor`, with its printed profile equation
 `Φ[15ρbr+6r²ρbr′²/ρbr−2r(−7ρbr′+rρbr″)]=0`. PY retains its substituted radial identity.
 WL's conditional `F_LIVE_` keeps δ and ξ live and prints the anchor rule
@@ -336,7 +477,9 @@ GM -> (5*Phi^2)/(64*Pi^2*rAnchor^3*rhoBr[rAnchor]^2)
 with its profile equation and Part C rewrites, all conditional on the same premise. M13 verifies
 byte-identical PY forward condition pairs. WL's forward `GM`/`ProfileEquation` fields match,
 but `InverseWeight`, `ReferenceInverse` and `VelocityReduction/Cases/0/Domain` differ in each
-pair (with the wrappers listed in §3); equivalence and the WL separate-test count remain OPEN.
+pair (with the wrappers listed in §3); their equivalence remains OPEN (M13). The conditional
+forward γ-difference objects print zero on GM≠0 in both engines and retain their GM=0 strata;
+item 5 does not count these as separate tests, with §3's singular-domain qualifications (M17).
 Their cross-engine condition comparison is unformed. These are computed relations among Φ, free profiles and GM,
 not supplied flux normalization and not a matching outcome. No implied `jn` is printed for this
 case: `jn=0` is already its premise. Full conditional gates and objects: M3/M4/M11, `F_FLOW_*`,
@@ -371,7 +514,7 @@ transcript enters the production comparison. (M5 completion, M6/M7, M8.)
 | B_CONDITION_*, B_IMPLIED_JN_*; R_FLOW/SPEED/TILT copies; conditional F_* conditions | No formed value comparison | Full relation/domain/velocity/constant/exchange equivalence OPEN |
 | C_CONSTANT conditions/exchange/N-dependence; conditional F_LIVE_C_CONSTANT conditions | No formed value comparison | Complete response-rewritten objects uncompared |
 | C_FIXED_RATIO/C_POWER conditions/exchange/N-dependence, R_BULK_ONLY, conditional F_LIVE copies | Label and label-domain comparisons on 22 rows | The condition, N-dependence or exchange value is not compared by a label match |
-| BRANCH_EXISTENCE, PATH_TRAVERSAL, BRANCH_TYPE and conditional F_* copies | Stored objects and attempted predicates | No formed along-ray comparison; no equivalence of type/turning-ray constructions |
+| BRANCH_EXISTENCE, PATH_TRAVERSAL, BRANCH_TYPE and conditional F_* copies | Engine-specific stored objects and attempted predicates; same names are join keys only | No formed comparison of any kind for these nine rows; all construction/content differences in §2/M19 remain OPEN |
 | Conditional F_MASS_SOLUTION | Raw operands/accounting | No formed comparison of the full mass solution |
 | Engine-local rows | Native inventory and parse census only | No cross-engine comparison |
 
@@ -400,6 +543,12 @@ cross-engine comparison, no adjudication owner named. Domain/predicate residual 
 attempted truth comparisons with the same unresolved membership/free-name qualifications; no
 unresolved Boolean expression is promoted to True or False. Appendix C names every row with a
 numeric residual-string exception at either printed precision.
+
+The nine same-named branch rows in §2/M19 are joined without a formed comparison of any kind.
+Their source bindings and payload differences, especially PY `F_FLOW_BRANCH_EXISTENCE=true`
+versus WL's wrapped ray predicate, remain OPEN content differences, no owner named. A row name
+supplies no cross-engine object identity. The single-mechanism constants and exchange differences
+are likewise explicitly retained in §3/M18; their equivalence remains OPEN.
 
 **Every remaining coverage reason and every affected object is retained in M7**, verbatim from the
 accepted coverage appendix, including the full no-value/local lists. The two remaining `not_formed`
@@ -514,12 +663,18 @@ no new entry is created for this interpretation. (M1 D5, M9 §§4/8.)
 ## 8. Register pass, source tensions and open questions
 
 The S9b pass in [`SUBSTRATE_REQUIREMENTS.md`](../SUBSTRATE_REQUIREMENTS.md) applies its rest-on test
-and both routes. **16 (`caa0710d`, before S9b) → 17 entries**, all OPEN; round 1 itself keeps 17 → 17. One new entry, **R-S21-01**, target **S21**, records
+and both routes. **16 (`caa0710d`, before S9b) → 17 entries**, all OPEN; round 2 itself keeps 17 → 17 from `d1511b20`. One new entry, **R-S21-01**, target **S21**, records
 the conditional optical requirement, both observable conditions and Part C rewrites, with symbolic
 ρbr, the printed implied-jn branches and all free quantities retained. It names no means of meeting
-it. Existing **R-S8-01** and **R-S8-06** gain S9b sources for the supplied transverse stiffness input
-and material identity respectively, without widening their original inertia/stiffness domains into
-a completed live constitutive law. M10 retrieves the explicitly pinned before text/headings and the full after-pass register.
+it. Six existing entries gain S9b as a source over the pre-S9b register: **R-S1-01** (three-dimensional
+coordinate geometry), **R-S1-02** (brane optical shear only), **R-S1.5-01** (Part C's supplied bulk
+acoustic branch only), **R-S8-01** (transverse stiffness form), **R-S8-03** (its optical sign/ratio
+gate), and **R-S8-06** (material identity). The first three and R-S8-03 are new source gains in
+round 2; R-S8-01/06 were already sourced in `d1511b20`. Their scoped failure consequences are
+recorded in the entries; no full live constitutive/inertia law or bulk confinement is claimed.
+The pass audits all 17 entries against the kept consumers, including explicit exclusions for
+unconsumed equilibrium, coupled-mode, width, native drain-data, admissibility/frame and power objects.
+Sources: M1/M18/M19 for the consumers, M10 for the entry-by-entry rest-on audit and source census. M10 retrieves the explicitly pinned before text/headings and the full after-pass register.
 
 The requirement is admitted because the reported conditional reference-matching statement rests
 on these printed profile conditions; failure removes that match, while the conditional functionals
@@ -579,7 +734,8 @@ unresolved (M10).
   stays unresolved. There is no new operative S9b directive/register disagreement. (M10.)
 
 Questions requiring work beyond retrieval remain OPEN: whether differing within-WL condition fields
-state the same condition and whether the observables furnish separate WL tests; complete cross-engine equivalence or
+state the same condition (distinct from the item-5 count in M17); the engine-specific branch
+bindings and every same-named branch-row difference in M19; complete cross-engine equivalence or
 physical interpretation of numeric/domain/condition/γ/exchange differences; the free turning-radius,
 constant and uncovered stratum questions; a substrate derivation and physical holder for the local
 wave equation; optical/relaxation compatibility; whether any joint live profiles and a physical

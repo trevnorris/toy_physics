@@ -82,6 +82,52 @@ Wolfram harness, checks script, report and round-11 measurement files are accept
 
 ## SymPy
 
-Under review: prompt `_scratch/s9b_build/s9b_repair_build_review_prompt_r11py.md` (sha256 `6f45c0f9…`), baseline
-`_scratch/s9b_build/s9b_repair_build_review_baseline_r11py.sha256` (paths relative to
-`/var/projects/toy_physics-s9b-r11-py`). Its disposition follows when both legs report.
+### The round
+- **Artifacts.** The ablation harness, the tag inventory, the run measurements and the rewritten build report. They
+  are in the baseline `_scratch/s9b_build/s9b_repair_build_review_baseline_r11py.sha256` with the engine, the export
+  delta, the spec and the directive: 8 files, all OK at review in the builder's checkout
+  (`/var/projects/toy_physics-s9b-r11-py`, where the legs reviewed them) and, after the copy, in this repository.
+- **Contract.** As for Wolfram; the SymPy half of the round-10 disposition's "What must be true after the repair".
+- **Run history.** The builder ran its probes and checks, then the full harness `s9b-round11-full-3` (exit 0,
+  20,247 s, 18 GiB) and checks `s9b-round11-checks2-1` (exit 0), both started after its last edit. The guard refused
+  admission 21 times, each only because other jobs held memory. The full run reached its 18 GiB `memory.max`
+  (14,250 throttle events, no OOM kill) and finished.
+- **Prompt and legs.** The prompt is `_scratch/s9b_build/s9b_repair_build_review_prompt_r11py.md` (sha256
+  `6f45c0f9…`). The legs were a fresh Claude agent (opus) and Grok (`grok-4.7`, effort high), with scratch under
+  `/var/projects/_review_scratch/s9b-r11py-{claude,grok}/`. Their reports are
+  `_scratch/s9b_build/s9b_repair_build_review_r11py_claude.md` and `…_r11py_grok.txt`. Grok returned **CLEAR**;
+  Claude returned **NEEDS REVISION**, with one finding about the record.
+- **Lookups.** `S9b_repair_build_r11py_review_lookups.md` beside this file (generator
+  `_scratch/s9b_build/gen/s9b_build_r11py_lookups.sh`).
+
+### Findings
+
+| # | Leg | Finding | Disposition |
+|---|---|---|---|
+| 1 | Claude 1 | **The measurements and the report omit three admitted runs.** `s9b-round11-probe-19` and `s9b-round11-gate1-1` are exploratory K10 runs of the builder's scratch scripts; `s9b-round11-checks1-1` is a checks run of a superseded harness (`53ebc382…`). All three exited 0. The measurements' `guard_runs` name only `full` and `checks2`, and the report says "**21** memory-contention admission refusals … no other refusal, guard kill or item 12 event." No record calls a superseded run final, and nothing printed comes from these runs. Suggested fix: list the three with command, log, source hash and exit code, labelled superseded or exploratory. No rerun. | **Facts confirmed; no repair.** The lookups show the three runs and that neither file names them. As for Wolfram, the record's own statements are true. Item 17 asks for every guard refusal or kill, and all 21 refusals are reported; none of the three runs was refused or killed. The brief asked that nothing in the report describe a superseded run, and that the measurement files come from the final runs. No witness, decision, mark, fixture or inventory row rests on these runs: both legs matched the final output's source pins to the baseline. The three runs are recorded here, with the leg's evidence (`…_r11py_claude_evidence/out/run_records.stdout`). So nothing outstanding changes what the harness or inventory computes, or what may be claimed from them. |
+
+**Sound, both legs, each with its own scripts and stdout.**
+- **K10's inputs and root sets.** The witness is at `PY_S9B_A_DEFLECTION_G000`, the `branch_complement` domain
+  part, engine line 771, at `c_0=1, Z_R=Z_E=b=12` with profiles `V=0, xi=0, rho_br=1, mu_perp=1`. Every free
+  input and live profile of that part is assigned; `j_n` and `Phi` do not occur in it. Each leg decided the engine's
+  own ray `ConditionSet`s at those inputs with its own code: each ray set is `{(12, 12)}`, with the negative
+  turning-point root kept and rejected by the base set. Both got baseline False and corrupted True, as printed.
+- **K10's mutation** is unchanged: `observable_gate = real_domain` → `sp.Not(real_domain)` at engine line 770.
+- **Form ablations.** Keeping only the first root of each solution set (Claude), or keeping a true candidate only
+  under an added sign condition (Grok), removed the witness or failed the root-retention fixture after printing its
+  value. Leaving evaluations undone (Claude) made the attempt "undecided": an unresolved evaluation furnishes no
+  witness.
+- **Nothing else moved.** Against round 10, 5,433 of 5,462 common lines are identical. The 16 non-K10 attempt and
+  witness lines that differ are equal after sorting their point tuples (set printing order). The other differences
+  are this round's new fixture fields. Every fixture result is unchanged and true. The engine and the export delta
+  are byte-identical to `86097a44`.
+- **The inventory** names every printed tag with the run, source hash and markers, and copies no payload.
+- **No verdict, target or expected value** is printed by any artifact.
+
+**Clear.** Under G4 nothing outstanding changes what the SymPy harness or inventory computes or what may be claimed
+from them. The SymPy harness, inventory, run measurements and report are accepted as reviewed.
+
+## Both engines
+K10 now ablates the same check in both engines, the along-ray branch-existence condition, and each engine prints a
+K10 witness that both of its legs reproduced. With round 11, every knife in both harnesses has a reviewed outcome,
+and the S9b harnesses are accepted. Next on the S9b path is the S9b record.

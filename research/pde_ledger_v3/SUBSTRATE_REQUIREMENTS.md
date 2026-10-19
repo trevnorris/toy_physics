@@ -970,13 +970,14 @@ or erased by this pass.
 ### S9b pass — conditional light bending and radar slope · populated 2026-10-19; review pending
 
 Source: `steps/S9b_light_bending.md`, Parts A–C, §§1–8 and appendices. Retrieval commands and
-literal output: `steps/_measurements/S9b_record_measurements.md`, M1–M19; generator
+literal output: `steps/_measurements/S9b_record_measurements.md`, M1–M20; generator
 `scripts/S9b_record_measurements.py`. **16 (`caa0710d`, before S9b) → 17 entries**, all OPEN;
-round 2 itself keeps 17 → 17 from `d1511b20`. **New entry by target:
+round 2 kept 17 → 17 from `d1511b20`; round 3 keeps 17 → 17 from `4760e6e2`. **New entry by target:
 S21, `R-S21-01`.** Existing entries gaining a source over `caa0710d`: **`R-S1-01`, `R-S1-02`, `R-S1.5-01`,
-`R-S8-01`, `R-S8-03`, `R-S8-06`**. The first three and `R-S8-03` gain their source in this
-round; `R-S8-01/06` already carried it in `d1511b20`. M10 retrieves both censuses and source lists.
-No status is changed to DELIVERED or RETIRED. This pass is revised for record review round 2; the revision awaits review.
+`R-S8-01`, `R-S8-03`, `R-S8-06`**. The first three and `R-S8-03` gained their source in
+round 2; `R-S8-01/06` already carried it in `d1511b20`. Round 3 adds no source gains. M10 retrieves
+the pinned censuses and source lists.
+No status is changed to DELIVERED or RETIRED. This pass is revised for record review round 3; the revision awaits review.
 
 **First route / rest-on test.** The reported optical functionals rest on the supplied local
 transverse stiffness and on the identification of displacement, density and advected velocity
@@ -1050,24 +1051,38 @@ M15 retrieves both sources and `directives/prior_art_4d_bulk_search_prompt.md`; 
 the pre-S9b register's O2 second route. The access qualifications below are the sources' reports,
 not fresh literature verification. **No oracle is applied in the S9b record.**
 
-| Identified object and repository source | Use in this pass |
-|---|---|
-| GR/PPN deflection and logarithmic radar references, A–C spec (M1) | Supplied comparison inputs in the accepted constructions; no new oracle check or GR solution reproduced here. |
-| Cahill (2003) inflow; Hamilton–Lisle (2008), *The river model of black holes*; Sbitnev inflow; Unruh acoustic sinks — survey line 246, cautions 263–266; 4D search prompt | All identified, none applied. Survey scopes them to 3D with no off-sheet bulk and flags Cahill's status. No inflow profile or GM relation is imported. |
-| Hamilton–Lisle (2008), AJP 76, 519–532; Visser (1998), *Acoustic black holes*; Unruh (1981), *Experimental Black-Hole Evaporation?* — scoping §5 | None applied. Scoping reports manuscripts read for Hamilton–Lisle/Visser, only abstract/metadata for Unruh. GR river and barotropic/inviscid/irrotational scalar acoustics require matching time, velocity, dimension, EOS/exchange and independent mass calibration; they supply no shear-sheet/off-sheet law. |
-| Gurtin–Murdoch (1975), *A continuum theory of elastic material surfaces*; Scriven (1960), *Dynamics of a fluid interface*; Helfrich (1973), *Elastic Properties of Lipid Bilayers* — scoping §5; O2 register second route | None applied. Surface stress/traction, Newtonian surface-fluid and curvature-sector candidates; Gurtin–Murdoch abstract/bibliography only, Scriven/Helfrich full texts unverified. Ordinary 2D surfaces in 3D bulk do not establish this 3D-brane/4D-bulk law. |
-| Abels–Garcke–Grün (2012), *Thermodynamically Consistent, Frame Indifferent Diffuse Interface Models…*; Rodriguez–Hoger–McCulloch (1994), *Stress-dependent finite growth in soft elastic tissues* — scoping §5; O2 register second route | None applied. Diffusive exchange-momentum and evolving-reference/growth candidates; manuscript read for the former, metadata only/full text unverified for the latter. No two-fluid, mobility, growth or reference law is adopted. |
-| MacCullagh (1839) curl-only light / Whittaker Ch. V; Cauchy–Navier elasticity — survey attribution table; register R-S8-04/05 (M10) | None applied as an oracle. Existing light-carrier, longitudinal/compression, angular-momentum and objectivity obligations remain OPEN; the supplied optical ratio does not re-certify them. |
-| Structural acoustics (fluid-loaded plate, radiation impedance, added mass); Fruchart–Scheibner–Vitelli (2023) passivity/Onsager–Casimir; Cembranos–Dobado–Maroto (2003) branon fluctuation — survey attribution table | None applied. Adjacent interface, driven-response and embedding context; no interface law, drive or curvature dynamics is computed in A–C. |
-| Analog/emergent gravity (Unruh, BLV, BEC); Volovik/³He; Sakharov/Volovik induced gravity — survey prior-art table/unified findings | None applied. The survey's kinematics-versus-dynamics and undelivered-G qualifications remain; optical conditional requirements are not a derivation of gravity or G. |
-| Rubakov–Shaposhnikov (1983), Akama (1982), RS2, DGP (2000); material-medium superfluid-vacuum class (Volovik, Sbitnev, Consoli, Huang, Fedi) — survey 4D-bulk table | None applied. Adjacent embedding/material-bulk context only; no localization or material model is supplied to A–C by these names. |
+| Identified object and repository source | Use in this pass | Open handoff / owner |
+|---|---|---|
+| GR/PPN deflection and logarithmic radar references, A–C spec (M1) | Supplied comparison inputs in the accepted constructions; no new oracle check or GR solution reproduced here. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Cahill (2003) inflow; Hamilton–Lisle (2008), *The river model of black holes*; Sbitnev inflow; Unruh acoustic sinks — survey line 246, cautions 263–266; 4D search prompt | All identified, none applied. Survey scopes them to 3D with no off-sheet bulk and flags Cahill's status. No inflow profile or GM relation is imported. | OPEN: applicability and second-route questions for each named oracle; no owner named. River/acoustic-flow check queued after record acceptance by the 2026-10-19 user decision below. |
+| Hamilton–Lisle (2008), AJP 76, 519–532; Visser (1998), *Acoustic black holes*; Unruh (1981), *Experimental Black-Hole Evaporation?* — scoping §5 | None applied. Scoping reports manuscripts read for Hamilton–Lisle/Visser, only abstract/metadata for Unruh. GR river and barotropic/inviscid/irrotational scalar acoustics require matching time, velocity, dimension, EOS/exchange and independent mass calibration; they supply no shear-sheet/off-sheet law. | OPEN: applicability and second-route questions for each named oracle; no owner named. River/acoustic-flow check queued after record acceptance by the 2026-10-19 user decision below. |
+| Gurtin–Murdoch (1975), *A continuum theory of elastic material surfaces*; Scriven (1960), *Dynamics of a fluid interface*; Helfrich (1973), *Elastic Properties of Lipid Bilayers* — scoping §5; O2 register second route | None applied. Surface stress/traction, Newtonian surface-fluid and curvature-sector candidates; Gurtin–Murdoch abstract/bibliography only, Scriven/Helfrich full texts unverified. Ordinary 2D surfaces in 3D bulk do not establish this 3D-brane/4D-bulk law. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Abels–Garcke–Grün (2012), *Thermodynamically Consistent, Frame Indifferent Diffuse Interface Models…*; Rodriguez–Hoger–McCulloch (1994), *Stress-dependent finite growth in soft elastic tissues* — scoping §5; O2 register second route | None applied. Diffusive exchange-momentum and evolving-reference/growth candidates; manuscript read for the former, metadata only/full text unverified for the latter. No two-fluid, mobility, growth or reference law is adopted. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| MacCullagh (1839) curl-only light / Whittaker Ch. V; Cauchy–Navier elasticity — survey attribution table; register R-S8-04/05 (M10) | None applied as an oracle. Existing light-carrier, longitudinal/compression, angular-momentum and objectivity obligations remain OPEN; the supplied optical ratio does not re-certify them. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Structural acoustics (fluid-loaded plate, radiation impedance, added mass); Fruchart–Scheibner–Vitelli (2023) passivity/Onsager–Casimir; Cembranos–Dobado–Maroto (2003) branon fluctuation — survey attribution table | None applied. Adjacent interface, driven-response and embedding context; no interface law, drive or curvature dynamics is computed in A–C. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Analog/emergent gravity (Unruh, BLV, BEC); Volovik/³He; Sakharov/Volovik induced gravity — survey prior-art table/unified findings | None applied. The survey's kinematics-versus-dynamics and undelivered-G qualifications remain; optical conditional requirements are not a derivation of gravity or G. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Rubakov–Shaposhnikov (1983), Akama (1982), RS2, DGP (2000); material-medium superfluid-vacuum class (Volovik, Sbitnev, Consoli, Huang, Fedi) — survey 4D-bulk table | None applied. Adjacent embedding/material-bulk context only; no localization or material model is supplied to A–C by these names. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
 
-This route supplies no new entry: no additional sourced requirement follows from an oracle result
-applied here. It does not restrict the register's route to reproduced results or erase identified
-candidates. Existing MacCullagh obligations remain OPEN; the conditional optical functionals and
-M13's bounded condition comparison do not discharge them. Applicability checks of these candidate
-oracles remain unperformed, not negative results. The register's earlier pass-2 disagreement stays
-unresolved (M10).
+**Open prior-art handoffs.** Every named oracle in the table whose applicability check is
+unperformed remains an individual OPEN item, including each member of a grouped row; **no owner
+named** for these checks. Each carries both questions: does the oracle apply to this model point,
+with its live profiles, domains, retained order and physical identifications; and, under the
+register's second route, which of its failure modes or historical objections transfer here, and
+have those objections been answered? Both questions remain open for each oracle. The source
+access qualifications and applicability cautions in the table are not answers to either question.
+The supplied GR/PPN comparison references do not constitute an applied oracle check.
+
+**User decision, 2026-10-19:** a check of the flow-only condition against the river/acoustic-flow
+prior art is queued for **after this record is accepted**. It is separate new computation, outside
+this record; **no owner named** in that decision. This queues the check without selecting an
+oracle's applicability, importing a flow profile, or answering its second-route question. The
+identified river/inflow/acoustic candidates in the table remain open with that handoff.
+
+No oracle is applied and no oracle result is stated in this record. No new requirement entry is
+entered on an unapplied oracle result; the second route remains open with the handoffs above.
+Existing MacCullagh obligations remain OPEN; the conditional optical functionals and M13's bounded
+condition comparison do not discharge them. Applicability checks remain unperformed, not negative
+results. The register's earlier pass-2 disagreement stays unresolved (M10).
 
 **Directive/register relation.** No new operative disagreement for S9b: the directive expressly
 conditions the optical entry on this register's rest-on test and keeps postulates distinct.

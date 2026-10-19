@@ -1,7 +1,7 @@
 # S9b — light bending and radar delay: Parts A–C
 
-**Record author:** Codex, 2026-10-19; record review round 2 revision. **Standing:** revised for
-the record STOP from `d1511b20`; this revision awaits review. No new commit. Part D is held, not built or accepted.
+**Record author:** Codex, 2026-10-19; record review round 3 revision. **Standing:** revised for
+the record STOP from `4760e6e2`; this revision awaits review. No new commit. Part D is held, not built or accepted.
 
 The accepted constructions give conditional optical functionals and profile requirements, not a
 substrate-derived light equation or a demonstrated match to GR. At the selected comparison grades,
@@ -39,7 +39,8 @@ M3/M4 retrieve original WL/PY field substrings with native tags, line numbers an
 M2 preserves general gates; M11 preserves the entire WL stream, including restricted/response/forward
 gates. M5 retrieves comparator configuration, comparison fields, literal counts and every numeric
 sample whose `computed_18` or `computed_30` string differs from `(0.0 + 0.0j)`; no tolerance is applied.
-M6 is the complete accounting; M7 is the accepted report, full coverage appendix and name table;
+M6 is the complete accounting; M7 is the accepted report, paired-comparison coverage-reason
+appendix and function/name table; it does not contain the raw `stratum_inventory` lines;
 M8 preserves the acceptance history; M9 is O2; M10 is the register census/pass; M12 verifies literal
 source-version matches and retains the PY γ-difference solution sets. M13 compares literal within-engine
 condition payloads and fields; M14 retrieves accepted harness marks/coverage; M15 preserves the
@@ -47,7 +48,10 @@ repository's prior-art sources; M16 retrieves complete engine-specific mass and 
 M17 retrieves the counting rule and each engine's complete γ objects/strata; M18 preserves all
 single-mechanism conditions and implied-exchange objects, including complete domains/constants;
 M19 reads each engine's branch constructors and the same-named general/forward rows. M10 also
-retrieves the round-1 census at `d1511b20` and source gains from the entry source fields.
+retrieves the round-1 census at `d1511b20`, the round-2 census at `4760e6e2`, and source gains
+from the entry source fields. M20
+retrieves every comparator line kind, its size, coverage labels and named objects, including the
+raw stratum inventory's per-row entry/path counts; it does not evaluate their predicates.
 Every source read is pinned with `git show REV:path`; annex targets are resolved from that revision
 inside this checkout. Native/harness sources use `fb2d6d25`, comparator sources `88bb1f41`, and
 repository context `36f59ff1`, except the explicit spec/decision/O2 pins above. M10 reads the
@@ -368,7 +372,7 @@ have formed value samples; their full along-ray domains do not. Their conditions
 rows have no formed comparison; their three γ rows compare only `NOT_ESTABLISHED` markers.
 Each active contribution also has printed numeric residuals other than the literal zero string,
 retained OPEN in M5/§6. Thus “formed” does not mean equality, and no restriction is reported as a
-verified GR-matching substrate. (M5/M6, full coverage M7.)
+verified GR-matching substrate. (M5/M6, paired-comparison coverage M7; raw inventory census M20.)
 
 ## 4. Combined Part B and Part C conditions
 
@@ -505,6 +509,51 @@ list and each reason are M6/M7, including engine-local optical/Abel/mass/respons
 endpoint certificates, import/export metadata and progress names. No export delta or ablation
 transcript enters the production comparison. (M5 completion, M6/M7, M8.)
 
+**Every printed JSON line kind.** M20 reads the accepted production output explicitly at
+`88bb1f41`. The sizes below are counts of stored lines and UTF-8 bytes including their newlines;
+they are not counts of distinct mathematical objects. A missing coverage label is reported as
+absent, not inferred from the line's presence. M20 lists every line-kind object name, all 660
+inventory row/engine locations and their entry/path/role/coverage counts, plus the comparator
+source that constructs and emits them.
+
+| Line kind | Printed coverage label / accounting | Size: lines; bytes | Objects left uncompared by this kind |
+|---|---|---|---|
+| `configuration` | No `coverage` field; `target`: `no residual target was supplied`; `numeric_scope` quoted above | 1; 15,885 | All native objects: profiles, points, bindings and hashes specify the comparison, not its result. Full configuration in M5; census M20. |
+| `operands` | No `coverage` field; raw parsed PY/WL operands | 330; 264,046,357 | All 330 named operand pairs remain untested by this line kind itself. The separate `comparison`/`accounting` rows determine which descendants form comparisons. M20 lists every pair. |
+| `comparison` | Literal nested `coverage` fields: `residual formed` 5,786; `unresolved coverage` 168,236; `sampled` 2,895; `empty` 3 | 330; 352,608,040 | The 77 no-value rows, 37 no-comparison rows, all 330 rows' uncompared leaves, and unresolved samples/strata remain as listed in M5–M7. M20 lists the named objects for each literal coverage label. `sampled`/`empty` are paired strata labels, not whole-object equality. |
+| `accounting` | `accounting`: `joined` 330; `local` 93 (49 PY / 44 WL); no `coverage` field and no `unjoined` row in this run | 423; 238,903 | Every counted unformed/unattempted leaf and every local object remains uncompared; counting itself forms no mathematical comparison. Full named ledger M6; line-kind census M20. |
+| `stratum_inventory` | Every stored entry: `unresolved coverage unless sampled in paired comparison` | 660 (330 per engine); 731,307,877 | All inventoried condition/complement objects are an independent occurrence inventory; this kind compares none. A formed comparison must be established separately by the paired comparison. Complete named size census M20; details below. |
+| `completion` | No `coverage` field; `sample_outcomes` / `sample_outcomes_by_kind` report `residual formed`, `boolean comparison formed`, `unresolved coverage` | 1; 3,148 | All remaining gaps in the accumulated ledger persist. Completion adds no comparisons or equality claim. Full summary M5; line-kind census M20. |
+
+Within `comparison`, the 168,236 literal `unresolved coverage` fields include the sample and
+paired-stratum findings; they must not be substituted for the 319 unresolved **value samples**.
+The top-level outcomes are `container` 173, `wrapper` 155 and `predicate` 2. Across all nested
+outcome fields M20 counts `container` 954, `wrapper` 408, `predicate` 3,207, `symbolic` 252,
+`label` 44, `marker` 271 and `not_formed` 8,740. These are literal field occurrences, not new
+formed-row counts. The table below and M5–M7 retain their value/domain/marker/label distinctions.
+
+**Raw stratum inventory, separate from paired strata.** The 660 lines contain **19,534 entries**:
+PY **9,980** and WL **9,554**, with **119,000 occurrence paths** (PY **53,774**, WL **65,226**).
+The constructor groups identical serialized conditions within one row, retaining each occurrence
+path and a printed complement; these are not 19,534 distinct physical strata across the run.
+Every entry carries the exact unresolved label in the table, including conditions inside
+unsupported quantified/set constructions. There are 329 nonempty inventories per engine;
+WL `C_CONSTANT_N_DEPENDENCE` and PY `F_FLOW_BRANCH_EXISTENCE` have empty inventories. Empty
+inventories are not a comparison or proof of an empty physical domain. (M20.)
+
+PY's stored roles are `attached domain` (915) and `predicate and boundary audit` (9,065).
+WL's are `conditional domain` (568), `piecewise stratum` (54), `predicate and boundary audit`
+(8,070), `union and complement` (356), `union piece (overlap retained)` (78), plus attached
+`AlongRayDomain` (60), `BranchDomain` (46), `ConstantDomain` (20), `Domain` (196),
+`GeneralConstantDomain` (20), `LabelCondition` (44), `NoRealVelocityDomain` (20) and
+`SuppliedBulkDensityPremise` (22). Each WL attached-role spelling is prefixed `attached domain `
+in the output. The objects include the general, restricted and conditional-forward observable,
+condition, exchange, branch and response domains named individually in M20. Their raw inventory
+label is not replaced by a sampled label from a different object or by a parse match. Any
+unestablished coverage remains OPEN, no owner named. M20 retrieves counts and literal labels by
+named row; it does not reproduce the 731,307,877-byte raw inventory's condition/complement payloads
+or all occurrence paths, and performs no predicate evaluation. Those remain in the pinned output.
+
 | Printed row class | What the production comparison reaches | What it does not establish |
 |---|---|---|
 | A_DEFLECTION, A_ROUND_TRIP, A_ONE_WAY_ER/RE, A_NONRECIPROCAL, A_RADAR_LOG; conditional F_FLOW/F_LIVE copies | Formed value samples and markers; all twelve applicable grades retained, four radar grades | No full along-ray domain comparison; no all-profile equality; unresolved brane-zero samples and printed numeric differences remain. Shared nonreciprocal objects retain §2/M14: K11 supports local one-form/closedness only and reaches no shared observable. |
@@ -550,8 +599,11 @@ versus WL's wrapped ray predicate, remain OPEN content differences, no owner nam
 supplies no cross-engine object identity. The single-mechanism constants and exchange differences
 are likewise explicitly retained in §3/M18; their equivalence remains OPEN.
 
-**Every remaining coverage reason and every affected object is retained in M7**, verbatim from the
-accepted coverage appendix, including the full no-value/local lists. The two remaining `not_formed`
+**Every remaining paired-comparison coverage reason and its affected-object list is retained
+in M7**, verbatim from the accepted coverage-reason appendix, including the full no-value/local
+lists. M7 does not contain the comparator's raw `stratum_inventory` lines, their complete
+condition/complement payloads or occurrence paths. M20 supplies their coverage/size/object census;
+this inventory remains distinct from the paired-comparison reason lists. The two remaining `not_formed`
 reasons are **“container/scalar representation differs” (18)** and
 **“nested sibling has no bound counterpart” (8722)**. The first is a diagnosed representation/coverage
 mismatch for the γ containers (r3/r4 dispositions), not a proof of mathematical equivalence. The
@@ -561,8 +613,9 @@ its source labels these **“representation only; not a mathematical residual”
 content behind those diagnostic differences remains OPEN except the sourced density-label spelling
 map. The two velocity integration constants remain engine-qualified (M7/M8).
 
-Appendix B reproduces the remaining reason/count inventory compactly; M7 gives **every affected native
-spec-object name**, with no omitted reason. Reason/sample pairs overlap: **2 not-formed reasons /
+Appendix B reproduces the paired-comparison reason/count inventory compactly; M7 gives **every
+affected native spec-object name in that appendix**, with no omitted reason from it. This is not
+an inventory of all raw stratum objects (M20). Reason/sample pairs overlap: **2 not-formed reasons /
 8740 occurrences; 31 sample-unresolved reasons / 197319 occurrences; 8 stratum-unresolved reasons /
 56637 occurrences** are not counts of distinct samples or values. No absent sample is called agreement.
 
@@ -663,7 +716,7 @@ no new entry is created for this interpretation. (M1 D5, M9 §§4/8.)
 ## 8. Register pass, source tensions and open questions
 
 The S9b pass in [`SUBSTRATE_REQUIREMENTS.md`](../SUBSTRATE_REQUIREMENTS.md) applies its rest-on test
-and both routes. **16 (`caa0710d`, before S9b) → 17 entries**, all OPEN; round 2 itself keeps 17 → 17 from `d1511b20`. One new entry, **R-S21-01**, target **S21**, records
+and both routes. **16 (`caa0710d`, before S9b) → 17 entries**, all OPEN; round 2 kept 17 → 17 from `d1511b20`, and round 3 keeps 17 → 17 from `4760e6e2`. One new entry, **R-S21-01**, target **S21**, records
 the conditional optical requirement, both observable conditions and Part C rewrites, with symbolic
 ρbr, the printed implied-jn branches and all free quantities retained. It names no means of meeting
 it. Six existing entries gain S9b as a source over the pre-S9b register: **R-S1-01** (three-dimensional
@@ -691,24 +744,38 @@ M15 retrieves both sources and `directives/prior_art_4d_bulk_search_prompt.md`; 
 the pre-S9b register's O2 second route. The access qualifications below are the sources' reports,
 not fresh literature verification. **No oracle is applied in this record.**
 
-| Identified object and repository source | Use in this pass |
-|---|---|
-| GR/PPN deflection and logarithmic radar references, A–C spec (M1) | Supplied comparison inputs in the accepted constructions; no new oracle check or GR solution reproduced here. |
-| Cahill (2003) inflow; Hamilton–Lisle (2008), *The river model of black holes*; Sbitnev inflow; Unruh acoustic sinks — survey line 246, cautions 263–266; 4D search prompt | All identified, none applied. Survey scopes them to 3D with no off-sheet bulk and flags Cahill's status. No inflow profile or GM relation is imported. |
-| Hamilton–Lisle (2008), AJP 76, 519–532; Visser (1998), *Acoustic black holes*; Unruh (1981), *Experimental Black-Hole Evaporation?* — scoping §5 | None applied. Scoping reports manuscripts read for Hamilton–Lisle/Visser, only abstract/metadata for Unruh. GR river and barotropic/inviscid/irrotational scalar acoustics require matching time, velocity, dimension, EOS/exchange and independent mass calibration; they supply no shear-sheet/off-sheet law. |
-| Gurtin–Murdoch (1975), *A continuum theory of elastic material surfaces*; Scriven (1960), *Dynamics of a fluid interface*; Helfrich (1973), *Elastic Properties of Lipid Bilayers* — scoping §5; O2 register second route | None applied. Surface stress/traction, Newtonian surface-fluid and curvature-sector candidates; Gurtin–Murdoch abstract/bibliography only, Scriven/Helfrich full texts unverified. Ordinary 2D surfaces in 3D bulk do not establish this 3D-brane/4D-bulk law. |
-| Abels–Garcke–Grün (2012), *Thermodynamically Consistent, Frame Indifferent Diffuse Interface Models…*; Rodriguez–Hoger–McCulloch (1994), *Stress-dependent finite growth in soft elastic tissues* — scoping §5; O2 register second route | None applied. Diffusive exchange-momentum and evolving-reference/growth candidates; manuscript read for the former, metadata only/full text unverified for the latter. No two-fluid, mobility, growth or reference law is adopted. |
-| MacCullagh (1839) curl-only light / Whittaker Ch. V; Cauchy–Navier elasticity — survey attribution table; register R-S8-04/05 (M10) | None applied as an oracle. Existing light-carrier, longitudinal/compression, angular-momentum and objectivity obligations remain OPEN; the supplied optical ratio does not re-certify them. |
-| Structural acoustics (fluid-loaded plate, radiation impedance, added mass); Fruchart–Scheibner–Vitelli (2023) passivity/Onsager–Casimir; Cembranos–Dobado–Maroto (2003) branon fluctuation — survey attribution table | None applied. Adjacent interface, driven-response and embedding context; no interface law, drive or curvature dynamics is computed in A–C. |
-| Analog/emergent gravity (Unruh, BLV, BEC); Volovik/³He; Sakharov/Volovik induced gravity — survey prior-art table/unified findings | None applied. The survey's kinematics-versus-dynamics and undelivered-G qualifications remain; optical conditional requirements are not a derivation of gravity or G. |
-| Rubakov–Shaposhnikov (1983), Akama (1982), RS2, DGP (2000); material-medium superfluid-vacuum class (Volovik, Sbitnev, Consoli, Huang, Fedi) — survey 4D-bulk table | None applied. Adjacent embedding/material-bulk context only; no localization or material model is supplied to A–C by these names. |
+| Identified object and repository source | Use in this pass | Open handoff / owner |
+|---|---|---|
+| GR/PPN deflection and logarithmic radar references, A–C spec (M1) | Supplied comparison inputs in the accepted constructions; no new oracle check or GR solution reproduced here. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Cahill (2003) inflow; Hamilton–Lisle (2008), *The river model of black holes*; Sbitnev inflow; Unruh acoustic sinks — survey line 246, cautions 263–266; 4D search prompt | All identified, none applied. Survey scopes them to 3D with no off-sheet bulk and flags Cahill's status. No inflow profile or GM relation is imported. | OPEN: applicability and second-route questions for each named oracle; no owner named. River/acoustic-flow check queued after record acceptance by the 2026-10-19 user decision below. |
+| Hamilton–Lisle (2008), AJP 76, 519–532; Visser (1998), *Acoustic black holes*; Unruh (1981), *Experimental Black-Hole Evaporation?* — scoping §5 | None applied. Scoping reports manuscripts read for Hamilton–Lisle/Visser, only abstract/metadata for Unruh. GR river and barotropic/inviscid/irrotational scalar acoustics require matching time, velocity, dimension, EOS/exchange and independent mass calibration; they supply no shear-sheet/off-sheet law. | OPEN: applicability and second-route questions for each named oracle; no owner named. River/acoustic-flow check queued after record acceptance by the 2026-10-19 user decision below. |
+| Gurtin–Murdoch (1975), *A continuum theory of elastic material surfaces*; Scriven (1960), *Dynamics of a fluid interface*; Helfrich (1973), *Elastic Properties of Lipid Bilayers* — scoping §5; O2 register second route | None applied. Surface stress/traction, Newtonian surface-fluid and curvature-sector candidates; Gurtin–Murdoch abstract/bibliography only, Scriven/Helfrich full texts unverified. Ordinary 2D surfaces in 3D bulk do not establish this 3D-brane/4D-bulk law. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Abels–Garcke–Grün (2012), *Thermodynamically Consistent, Frame Indifferent Diffuse Interface Models…*; Rodriguez–Hoger–McCulloch (1994), *Stress-dependent finite growth in soft elastic tissues* — scoping §5; O2 register second route | None applied. Diffusive exchange-momentum and evolving-reference/growth candidates; manuscript read for the former, metadata only/full text unverified for the latter. No two-fluid, mobility, growth or reference law is adopted. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| MacCullagh (1839) curl-only light / Whittaker Ch. V; Cauchy–Navier elasticity — survey attribution table; register R-S8-04/05 (M10) | None applied as an oracle. Existing light-carrier, longitudinal/compression, angular-momentum and objectivity obligations remain OPEN; the supplied optical ratio does not re-certify them. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Structural acoustics (fluid-loaded plate, radiation impedance, added mass); Fruchart–Scheibner–Vitelli (2023) passivity/Onsager–Casimir; Cembranos–Dobado–Maroto (2003) branon fluctuation — survey attribution table | None applied. Adjacent interface, driven-response and embedding context; no interface law, drive or curvature dynamics is computed in A–C. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Analog/emergent gravity (Unruh, BLV, BEC); Volovik/³He; Sakharov/Volovik induced gravity — survey prior-art table/unified findings | None applied. The survey's kinematics-versus-dynamics and undelivered-G qualifications remain; optical conditional requirements are not a derivation of gravity or G. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Rubakov–Shaposhnikov (1983), Akama (1982), RS2, DGP (2000); material-medium superfluid-vacuum class (Volovik, Sbitnev, Consoli, Huang, Fedi) — survey 4D-bulk table | None applied. Adjacent embedding/material-bulk context only; no localization or material model is supplied to A–C by these names. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
 
-This route supplies no new entry: no additional sourced requirement follows from an oracle result
-applied here. It does not restrict the register's route to reproduced results or erase identified
-candidates. Existing MacCullagh obligations remain OPEN; the conditional optical functionals and
-M13's bounded condition comparison do not discharge them. Applicability checks of these candidate
-oracles remain unperformed, not negative results. The register's earlier pass-2 disagreement stays
-unresolved (M10).
+**Open prior-art handoffs.** Every named oracle in the table whose applicability check is
+unperformed remains an individual OPEN item, including each member of a grouped row; **no owner
+named** for these checks. Each carries both questions: does the oracle apply to this model point,
+with its live profiles, domains, retained order and physical identifications; and, under the
+register's second route, which of its failure modes or historical objections transfer here, and
+have those objections been answered? Both questions remain open for each oracle. The source
+access qualifications and applicability cautions in the table are not answers to either question.
+The supplied GR/PPN comparison references do not constitute an applied oracle check.
+
+**User decision, 2026-10-19:** a check of the flow-only condition against the river/acoustic-flow
+prior art is queued for **after this record is accepted**. It is separate new computation, outside
+this record; **no owner named** in that decision. This queues the check without selecting an
+oracle's applicability, importing a flow profile, or answering its second-route question. The
+identified river/inflow/acoustic candidates in the table remain open with that handoff.
+
+No oracle is applied and no oracle result is stated in this record. No new requirement entry is
+entered on an unapplied oracle result; the second route remains open with the handoffs above.
+Existing MacCullagh obligations remain OPEN; the conditional optical functionals and M13's bounded
+condition comparison do not discharge them. Applicability checks remain unperformed, not negative
+results. The register's earlier pass-2 disagreement stays unresolved (M10).
 
 **Source tensions, with both sides.**
 
@@ -733,7 +800,8 @@ unresolved (M10).
   sector with identified prior art”**. S9b follows the register's method; the prior disagreement
   stays unresolved. There is no new operative S9b directive/register disagreement. (M10.)
 
-Questions requiring work beyond retrieval remain OPEN: whether differing within-WL condition fields
+Questions requiring work beyond retrieval remain OPEN: each prior-art applicability and
+second-route handoff above, including the queued post-acceptance river/acoustic-flow check; whether differing within-WL condition fields
 state the same condition (distinct from the item-5 count in M17); the engine-specific branch
 bindings and every same-named branch-row difference in M19; complete cross-engine equivalence or
 physical interpretation of numeric/domain/condition/γ/exchange differences; the free turning-radius,

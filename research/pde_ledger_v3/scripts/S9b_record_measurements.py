@@ -25,6 +25,7 @@ COMPARATOR = '88bb1f41'
 BASELINE = '36f59ff1'
 REGISTER_BEFORE = 'caa0710d'
 ROUND_BEFORE = 'd1511b20'
+ROUND3_BEFORE = '4760e6e2'
 
 
 @functools.lru_cache(None)
@@ -338,6 +339,53 @@ def branch_objects():
             if row.get('name') in names:print('ACCOUNTING',line.rstrip())
 
 
+def line_kind_inventory():
+    """Census stored JSON line kinds and literal coverage fields; no evaluation."""
+    path='research/pde_ledger_v3/scripts/out/S9b_cross_engine_comparator.out'
+    print('SOURCE git show '+COMPARATOR+':'+path+' (annex payload)')
+    kinds=collections.Counter(); sizes=collections.Counter(); names=collections.defaultdict(list)
+    coverage=collections.Counter(); outcomes=collections.Counter(); accounting=collections.Counter()
+    coverage_names=collections.defaultdict(set); top_outcomes=collections.Counter()
+    entries=collections.Counter(); occurrences=collections.Counter(); roles=collections.Counter()
+    with revision_file(COMPARATOR,path).open() as stream:
+        for number,line in enumerate(stream,1):
+            row=json.loads(line); kind=row['kind']; kinds[kind]+=1; sizes[kind]+=len(line.encode())
+            if 'name' in row:names[kind].append([row['name'],row.get('engine')])
+            if kind=='accounting':accounting[row['accounting']]+=1
+            if kind=='comparison':
+                top_outcomes[row['comparison']['outcome']]+=1
+                def walk(value):
+                    if isinstance(value,dict):
+                        if 'coverage' in value:
+                            label=value['coverage'];coverage[label]+=1;coverage_names[label].add(row['name'])
+                        if 'outcome' in value:outcomes[value['outcome']]+=1
+                        for child in value.values():walk(child)
+                    elif isinstance(value,list):
+                        for child in value:walk(child)
+                walk(row['comparison'])
+            if kind=='stratum_inventory':
+                engine=row['engine']; local=collections.Counter(); local_roles=collections.Counter()
+                for item in row['strata']:
+                    label=item['coverage'];count=len(item['paths'])
+                    entries[engine,label]+=1;occurrences[engine,label]+=count
+                    roles[engine,item['role']]+=1;local[label]+=1;local_roles[item['role']]+=1
+                print('STRATUM_INVENTORY_ROW',json.dumps(dict(line=number,name=row['name'],engine=engine,
+                    entries=len(row['strata']),path_occurrences=sum(len(x['paths']) for x in row['strata']),
+                    coverage=dict(local),roles=dict(local_roles)),sort_keys=True))
+    print('LINE_KIND_COUNTS',json.dumps(kinds,sort_keys=True))
+    print('LINE_KIND_UTF8_BYTES_INCLUDING_NEWLINES',json.dumps(sizes,sort_keys=True))
+    for kind,rows in names.items():print('LINE_KIND_OBJECTS',kind,json.dumps(rows))
+    print('ACCOUNTING_LABEL_COUNTS',json.dumps(accounting,sort_keys=True))
+    print('COMPARISON_TOP_OUTCOME_COUNTS',json.dumps(top_outcomes,sort_keys=True))
+    print('COMPARISON_ALL_OUTCOME_FIELD_COUNTS',json.dumps(outcomes,sort_keys=True))
+    print('COMPARISON_COVERAGE_FIELD_COUNTS',json.dumps(coverage,sort_keys=True))
+    for label,rows in sorted(coverage_names.items()):print('COMPARISON_COVERAGE_OBJECTS',json.dumps(label),json.dumps(sorted(rows)))
+    print('INVENTORY_ENTRY_COUNTS',json.dumps([[*k,v] for k,v in sorted(entries.items())]))
+    print('INVENTORY_PATH_OCCURRENCE_COUNTS',json.dumps([[*k,v] for k,v in sorted(occurrences.items())]))
+    print('INVENTORY_ROLE_COUNTS',json.dumps([[*k,v] for k,v in sorted(roles.items())]))
+    source_lines(COMPARATOR,'research/pde_ledger_v3/scripts/S9b_cross_engine_comparator.py',1622,1769)
+
+
 def section(name):
     print('PINNED_READS native/harness='+BUILD+' comparator='+COMPARATOR+' register_before='+REGISTER_BEFORE+' repository_context='+BASELINE)
     if name=='M1':
@@ -381,7 +429,8 @@ def section(name):
         old=revision_text(REGISTER_BEFORE, p)
         new=(ROOT/p).read_text()
         prior=revision_text(ROUND_BEFORE,p)
-        for label,s in [(REGISTER_BEFORE,old),(ROUND_BEFORE,prior),('WORKTREE',new)]:
+        round2=revision_text(ROUND3_BEFORE,p)
+        for label,s in [(REGISTER_BEFORE,old),(ROUND_BEFORE,prior),(ROUND3_BEFORE,round2),('WORKTREE',new)]:
             rows=[l for l in s.splitlines() if l.startswith('### R-')]
             print(label,'ENTRY_COUNT',len(rows));print('\n'.join(rows))
         print('BEFORE REGISTER git show '+REGISTER_BEFORE+':'+p);print(old)
@@ -394,10 +443,11 @@ def section(name):
                 source_block=block.split('- **source**',1)[1].split('- **requirement**',1)[0]
                 if 'S9b' in source_block:found.append(entry)
             return found
-        for label,text in [(REGISTER_BEFORE,old),(ROUND_BEFORE,prior),('WORKTREE',new)]:
+        for label,text in [(REGISTER_BEFORE,old),(ROUND_BEFORE,prior),(ROUND3_BEFORE,round2),('WORKTREE',new)]:
             print(label,'S9B_SOURCE_ENTRIES',json.dumps(sourced_entries(text)))
         print('S9B_SOURCE_GAINS_SINCE_'+REGISTER_BEFORE,json.dumps([x for x in sourced_entries(new) if x not in sourced_entries(old)]))
         print('S9B_SOURCE_GAINS_SINCE_'+ROUND_BEFORE,json.dumps([x for x in sourced_entries(new) if x not in sourced_entries(prior)]))
+        print('S9B_SOURCE_GAINS_SINCE_'+ROUND3_BEFORE,json.dumps([x for x in sourced_entries(new) if x not in sourced_entries(round2)]))
     elif name=='M13':condition_pairs()
     elif name=='M14':harness_retrieval()
     elif name=='M15':
@@ -418,6 +468,7 @@ def section(name):
     elif name=='M17':gamma_strata()
     elif name=='M18':restriction_objects()
     elif name=='M19':branch_objects()
+    elif name=='M20':line_kind_inventory()
     else:raise ValueError(name)
 
 
@@ -438,11 +489,11 @@ def main():
                       'Native compact listings preserve retrieved substrings; Named domain fields and scalar fields of 20000 characters or more are omitted from the compact views, not evaluated or asserted; full native retrieval remains available. '
                       'M2 retains the general gates in full; every complete tagged object remains retrievable with `--native ENGINE TAG`. '
                       'M5 counts literal JSON fields, without numeric interpretation, tolerance or algebra. '
-                      'M11 preserves the full Wolfram native stream, including every restricted/forward/response domain; compact fields do not replace those gates. M6/M7 preserve the complete row accounting and remaining-coverage inventory. '
+                      'M11 preserves the full Wolfram native stream, including every restricted/forward/response domain; compact fields do not replace those gates. M6 preserves the complete row accounting; M7 preserves the accepted report, paired-comparison coverage-reason appendix and function/name table, not the raw stratum inventory. '
                       'M13 performs literal within-engine condition-payload comparisons only; M14 retrieves harness coverage/marks; M15 preserves repository prior-art sources; M16 retrieves mass and N-dependence objects by engine. '
-                      'M17 retrieves gamma objects and their strata; M18 retrieves complete single-mechanism conditions/exchange; M19 retrieves branch constructors and same-named native rows. '
+                      'M17 retrieves gamma objects and their strata; M18 retrieves complete single-mechanism conditions/exchange; M19 retrieves branch constructors and same-named native rows; M20 counts every comparator line kind and inventories stratum coverage labels, sizes and named objects. '
                       'All revision-bearing reads use explicit git revisions, including caa0710d for the pre-S9b register; only the after-pass register is read from the worktree. HEAD is not an input.\n\n')
-            for i in range(1,20):
+            for i in range(1,21):
                 key='M'+str(i);cmd=[sys.executable,SCRIPT,'--section',key]
                 out.write(f'## {key}\n\n~~~~~~text\n$ python3 {SCRIPT} --section {key}\n');out.flush()
                 subprocess.run(cmd,cwd=ROOT,stdout=out,check=True)

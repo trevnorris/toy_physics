@@ -764,9 +764,11 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
     question "whether matter directly observes the second cone" the owner "derived matter/interface
     coupling". The record says "A second cone is only a departure if matter COUPLES to it", and describes
     matter as "a throat held open by a trapped brane-shear standing wave".
-  - The photon survey, E32–E34 and E38 (`PHOTON_POLARIZATION_SURVEY.md` §4). Each is "In apparent conflict"
-    under the condition that the extra longitudinal branch couples to matter and acts as an additional
-    radiating mode. (C6, C7.)
+  - The photon survey, E32–E34 and E38 (`PHOTON_POLARIZATION_SURVEY.md` §4). Each is "In apparent conflict",
+    under conditions that differ by entry. In the survey's words, the classification rests on "E32–E34 on
+    matter coupling and, for the blackbody comparison, ordinary thermal-radiation participation; E38
+    additionally on the extra branch's cosmological relativistic population, energy/perturbation mapping and
+    decoupling history". (C6, C7.)
 - **target** S22 (the nonlinear throat solve), together with Q2 (the mouth source and its held datum) and
   S12 (the throat's order-conversion source and its boundary data). These owners were chosen by the user on
   2026-10-19; the S11 record itself names only "derived matter/interface coupling". (C8.)

@@ -1,4 +1,4 @@
-# Measurements: light-sector closeout (generated 2026-10-19 18:49)
+# Measurements: light-sector closeout (generated 2026-10-19 19:16)
 
 Generator: `_scratch/s9b_oracle/gen/light_sector_closeout_lookups.sh`. Literal retrieval and counting only.
 The oracle-check transcript is `scripts/out/S9b_flow_oracle_check.out` at `8d91f448`; its other outcome
@@ -307,6 +307,11 @@ $ sed -n '110,111p' /var/projects/toy_physics/research/pde_ledger_v3/steps/S11_s
 ```
 
 ```
+$ sed -n '280p' /var/projects/toy_physics/research/pde_ledger_v3/PHOTON_POLARIZATION_SURVEY.md | grep -o 'E32–E34 on matter coupling.\{220\}'
+E32–E34 on matter coupling and, for the blackbody comparison, ordinary thermal-radiation participation; E38 additionally on the extra branch's cosmological relativistic population, energy/perturbation mapping and decoupling history. E22's equal-s
+```
+
+```
 $ sed -n '1198,1204p' /var/projects/toy_physics/research/pde_ledger_v3/V3_STEP_PLAN.md
 | **a bound state** — a localized mode with a **discrete** frequency spectrum, trapped by a defect | ⭐ a linear wave equation in a **varying** medium (Sturm–Liouville) | ⭐⭐ **reachable, LINEAR.** No `ħ`, no nonlinearity |
 | **a soliton** — one allowed lump, energy fixed by a size–amplitude relation | the nonlinear shear action | ⛔ **C6** — the real wall, and what the user actually wants |
@@ -356,7 +361,7 @@ DEFECT_REGISTER.md at 8d91f448: 0
 
 ```
 $ grep -c -i 'thermal\|blackbody\|Stefan\|N_eff' /var/projects/toy_physics/research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
-4
+5
 ```
 
 ## C10. Register: acceptance commits of the earlier passes, and the census before and after
@@ -580,7 +585,7 @@ $ sed -n '386,387p' /var/projects/toy_physics/research/pde_ledger_v3/V3_STEP_PLA
 
 ```
 $ grep -n 'reproduces MacCullagh' /var/projects/toy_physics/research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md | cut -c1-200
-1236:the records only capture what their authors thought to doubt — and the sector reproduces MacCullagh's
+1238:the records only capture what their authors thought to doubt — and the sector reproduces MacCullagh's
 ```
 
 ```

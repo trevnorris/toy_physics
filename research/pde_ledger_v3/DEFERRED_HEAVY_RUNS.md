@@ -3,8 +3,8 @@
 Entries distinguish memory limits, symbolic runtime limits, and the results
 that depend on them.
 
-Some in-band engine self-checks OOM'd the earlier **30 GB** dev box, and several still do not fit the 64 GB box
-in use since 2026-10-18 (see *Parked* below). The un-reduced variable-coefficient
+Some in-band engine self-checks OOM'd the earlier **30 GB** dev box. On the 64 GB box in use since 2026-10-18,
+several did not complete at the caps tried, and the memory they need is unknown (see *Parked* below). The un-reduced variable-coefficient
 operators are ~50k+ LeafCount, and several are held or expanded at once. Where that happens we run a memory-fitting
 variant in-band and prove the skipped/scoped checks **out-of-band** (independent build-leg ablations + numerics),
 recording the provenance. This file lists exactly what to re-run, and how, on a machine with more RAM to get the

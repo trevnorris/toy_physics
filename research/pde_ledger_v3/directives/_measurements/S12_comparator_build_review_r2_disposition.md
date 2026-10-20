@@ -58,6 +58,13 @@ The mechanical lookups behind each disposition are in `S12_comparator_build_revi
 
 ## Outcome
 
-One finding, confirmed. It is confined to the `engine` identification row. The reviewed build is preserved unchanged
-in the commit that adds this file. It is not accepted. This was the comparator's third review round, and the finding
-is in code that the last repair changed. How to finish is raised with the user.
+- **The finding.** One finding, confirmed, confined to the `engine` identification row. The reviewed build was
+  preserved unchanged at `72607874`.
+- **How to finish.** This was the comparator's third review round, and the finding is in code the last repair
+  changed, so how to finish was raised with the user. The user chose: "Accept, note the engine row".
+- **Accepted.** The comparator is accepted as reviewed in this round, byte for byte, together with its reviewed
+  production run `_scratch/s12/cmp_work/r2_comparison_01.jsonl`, which is filed as
+  `scripts/out/S12_cross_engine_comparator.out` (`S12_comparator_production_run.md`).
+- **The engine-row note.** The `engine` row identifies which programs ran in each engine. Its two parts are not
+  counterparts, so its paired comparison carries no information, and no claim rests on it. In the three rounds, no
+  leg found any other component pair that joins different objects. The S12 record carries this note.

@@ -56,10 +56,15 @@ flow profile, the exchange of brane material, and the optical cone.
   Variants that carry a clock or speed factor print the matching identification with that factor.
 - **Under the labelled common-parameter substitution,** both operands are `2GM/r` and the test prints `True`.
   Each engine's case-1 deflection domain has 10 such tests, from Hamilton–Lisle (2), Hamilton–Lisle (4) and
-  Visser §7 (C2).
+  Visser §7 (C2). This substitution also puts both sides in common clock and speed units. With a clock factor
+  kept, the test instead prints conditions such as `GM == clockRate^2*gmH` (C2).
+- **The signed velocity.** Under the same substitution, the signed comparison prints `True` for one radial
+  orientation and `False` for the other. For example, against Hamilton–Lisle (2) it prints `False` in case 1
+  (transcript lines 724–729) and `True` in case 2 (line 741). In all, 40 signed tests print `False` (C2).
+  Which orientation corresponds to the oracle's river is the `UNMATCHED` frame identification.
 - **On the general branch,** S9b's velocity integration constant is live. There the 10 tests without oracle
-  parameters reduce to `constant == 0`, in each general domain (O). S9b's kept branch sets that constant to zero by its supplied
-  velocity counting (R-S21-01).
+  parameters reduce to `constant == 0`, in each general domain (O). S9b's kept branch sets that constant to
+  zero by its supplied velocity counting (R-S21-01).
 - **Against Visser §8,** the test reduces to `2*py`GM*py`s9b$r^3 == radius0O^4*soundO^2`, which reads
   `2GM r³ = r₀⁴ c²`. That equation holds at one radius, so it does not identify two profiles (O: "against
   Visser section 8").
@@ -69,15 +74,20 @@ flow profile, the exchange of brane material, and the optical cone.
   (5) gives S9b's own implied exchange `j_n`. The balance-operator zero test prints `True` in all 18
   comparisons (O: "Comparison 2").
 - **The zero-exchange density.** In cases 1–2 of each family, `j_n` vanishes only if `3ρ_br + 2rρ_br′ = 0`;
-  in the remaining cases, whose velocity is zero, the test is `True`. Both engines solve that equation as `ρ_br = C₁/r^(3/2)`
+  in the remaining cases, whose velocity is zero, the test is `True` and imposes no density law. On the
+  nonzero-velocity components, both engines solve the equation as `ρ_br = C₁/r^(3/2)`
   (O: `DENSITY_ODE_SOLUTIONS_ON_OPEN_COMPONENT`). Visser's §7 background quotes the same law,
   `ρ ∝ r^(−3/2)`. The check imposes no oracle density law: the power law comes out as the zero-exchange
   solution for S9b's live density.
 - **Hamilton–Lisle** states no continuity operand. That comparison prints `UNMATCHED`, 18 times (O).
-- **Light speed on this background.** WL's attached domain prints `c0 == Sqrt[muPerp[r]/rhoBr[r]]` (O). On a
-  zero-exchange background the density varies with radius. So whether light keeps the speed `c₀` there
-  depends on how the brane's shear response varies with its density. That is the object of R-S1-02, and
-  nothing here answers it.
+- **Light speed on this background.** WL's attached flow-only domain prints `c0 == Sqrt[muPerp[r]/rhoBr[r]]`
+  (O). The flow-only restriction sets S9b's speed profile `δ` to zero (R-S21-01), so it holds the local
+  light speed at `c₀`.
+  - On a nonzero-velocity, zero-exchange background the density falls as `r^(−3/2)`. There the restriction
+    also needs `μ⊥/ρ_br` to equal `c₀²` at every radius.
+  - If it does not, `δ` is not zero and the flow-only restriction does not apply. R-S21-01's general
+    condition, with `δ` live, then governs.
+  - No register entry asks how `μ⊥` varies with brane density, and this record adds none.
 
 **3. Optical cone.**
 - **The cone is a supplied input.** The optics compared are supplied, not an S9b result: the transcript prints
@@ -119,10 +129,16 @@ In addition, S9b prints no line element, and Hamilton–Lisle has no continuity 
 
 ## What this supports and what it does not
 
-**It supports a conditional correspondence.** Suppose S9b's orbital `GM` is identified with each oracle's
-mass parameter; the check does not supply that identification. Then S9b's kept flow-only profile is the
-river-model profile and Visser's §7 profile. With zero exchange, S9b's live brane density then follows the
-`r^(−3/2)` law of Visser §7.
+**It supports a conditional correspondence of squared speeds.** Two identifications are needed, and the
+check supplies neither:
+- S9b's orbital `GM` with each oracle's mass parameter;
+- S9b's lab clock and speed units with the oracle's.
+
+Under both, S9b's kept flow-only squared speed equals the river model's and Visser §7's. The signed
+velocity then matches for one radial orientation per component; which one corresponds to the oracle's flow
+is a third identification, also `UNMATCHED`. On the nonzero-velocity components, zero exchange makes S9b's
+live brane density follow the `r^(−3/2)` law of Visser §7. The zero-velocity components impose no density
+law.
 
 **It does not support:**
 - that the brane is the river model's medium or Visser's acoustic fluid (the equation-of-state,
@@ -136,7 +152,7 @@ Whether each oracle applies here remains open.
 ## Second route: what the analog leaves out, and who owns it here
 
 The register's second route asks why a prior result was limited, and whether that objection is answered
-here. The check names the following objections. It answers none of them.
+here. The check and the quoted papers name the following objections. The check answers none of them.
 
 1. **What drives the flow.** Visser's background obeys the force balance (6)–(7), which includes an
    externally imposed driving potential `Φ`. The check computes no force comparison
@@ -150,7 +166,9 @@ here. The check names the following objections. It answers none of them.
    drain produces is again S12's object (R-S12-02), and whether the knit can meet it belongs to R-S21-01.
 3. **Scalar sound versus transverse light.** The analog carries a scalar wave, while light here is transverse
    with two polarizations. A shared cone does not identify the two wave equations
-   (`scalar_acoustics_vs_transverse_optics`). The polarization and direction exclusions stay as S9b scopes
+   (`scalar_acoustics_vs_transverse_optics`). Even for scalar sound, Visser notes that the §7 metric is
+   "conformal to the Painlevé–Gullstrand form of the Schwarzschild geometry but not identical to it". Its
+   varying density therefore affects the "frequency-dependent greybody factors" (local copy, p. 15; C4). The polarization and direction exclusions stay as S9b scopes
    them; no owner is added.
 4. **The kinematics of analog gravity are not its dynamics.** The survey's limit on analog gravity applies
    unchanged: a matching flow profile does not derive `GM` or a law of gravity. It stays where the S9b

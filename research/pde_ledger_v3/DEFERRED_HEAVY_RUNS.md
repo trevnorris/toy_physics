@@ -33,9 +33,11 @@ is MemTotal rounded down to whole GiB, and a job is admitted only when available
 | *S11c-c1 T7*, comparator on all 50 families | — | — | Not run. |
 | *S11c-c2* | — | — | No run defined. |
 
-The rest of the cross-engine residual chain waits on P2b. If any of this work resumes, P2b's full-family
-runs need more memory than this box admits, or a script change, which would get its own review. Every
-procedure in the entries below still applies:
+The rest of the cross-engine residual chain waits on P2b. P2b's full-family completion is unvalidated after
+the OOM kills at 54 GiB, and the memory needed to finish is unknown. The guard's pool budget was 62 GiB, and
+each round-3 admission recorded more host memory available than the 54 GiB cap (C11). A script change to
+reduce memory would get its own review. If any of this work resumes, every procedure in the entries below
+still applies:
 - run each job through the guard (`scripts/s11c_guarded_run.py --pool --memory-gib`);
 - send output to a new log directory;
 - launch two review legs, chosen by authorship, before reading results;

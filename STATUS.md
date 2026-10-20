@@ -10,10 +10,11 @@ in its light-closing pass (review pending). S12 is next.
   - O2, the steady brane balance: [record](research/pde_ledger_v3/steps/O2_steady_brane_balance.md), `72866fcf`;
   - S9b, conditional light bending and radar slope: [record](research/pde_ledger_v3/steps/S9b_light_bending.md), `ff3bac63`;
   - the S9b flow-only oracle check, `8d91f448`. Its [record](research/pde_ledger_v3/steps/S9b_flow_oracle_comparison.md) is under review.
-- **What the oracle check shows:** suppose S9b's orbital GM is identified with each oracle's mass parameter;
-  the check does not supply that identification. Then S9b's flow-only profile is the river-model profile and
-  Visser's §7 profile, and with no exchange the brane density falls as r^(−3/2). The check does not show that
-  the brane is that fluid. Its optics are a supplied input.
+- **What the oracle check shows:** S9b's flow-only squared speed equals the river model's and Visser §7's.
+  This holds only if S9b's orbital GM, clock and speed units are identified with each oracle's, and the check
+  supplies none of these identifications. The signed velocity then matches for one radial orientation. Where
+  the velocity is nonzero, no exchange makes the brane density fall as r^(−3/2). The check does not show
+  that the brane is that fluid, and its optics are a supplied input.
 - **New requirement R-S22-01:** how the energy a throat releases splits among light, the extra longitudinal
   wave and the bulk. It is needed to decide whether matter observes S11's extra wave, and whether the model conflicts
   with the blackbody, CMB and N_eff measurements (photon survey E32–E34, E38). Its owners are S22, Q2 and S12.

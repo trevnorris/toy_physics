@@ -628,10 +628,14 @@ other three.
 - **oracle comparison (evidence only, 2026-10-19)** — the accepted flow-only check (`8d91f448`;
   record `steps/S9b_flow_oracle_comparison.md`) compares the flow-only restriction with Hamilton–Lisle
   (2008) and Visser (1998).
-  - Identify the orbital `GM` with each oracle's mass parameter; the check prints that identification as
-    `UNMATCHED`. Under it, the kept flow-only profile is the river-model and Visser §7 profile.
-  - In both engines the exchange `jn` vanishes only on `ρbr = C₁/r^(3/2)`, the density law Visser §7
-    quotes.
+  - Two identifications are needed: the orbital `GM` with each oracle's mass parameter, and S9b's clock
+    and speed units with the oracle's. The check supplies neither, and prints both as `UNMATCHED`. Under
+    both, the kept flow-only squared speed equals the river model's and Visser §7's. The signed velocity
+    matches for one radial orientation per component, and the frame identification that would choose it is
+    also `UNMATCHED`.
+  - On the nonzero-velocity components, in both engines, the exchange `jn` vanishes only on
+    `ρbr = C₁/r^(3/2)`, the density law Visser §7 quotes. On the zero-velocity components the exchange
+    vanishes with the density left free.
 
   The comparison selects no profile and no exchange value, and it delivers nothing of this entry. The
   requirement, its free inputs and its failure consequence are unchanged.
@@ -769,33 +773,45 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
 - **status** OPEN
 - **requirement** — Consider a throat held open by its trapped shear wave. The trapped-wave state can change,
   the throat can move, and its mouth can change shape. When any of these happens, the object is the energy
-  released and how it splits among three channels:
+  released, with its frequency content and rate, and how it splits among three channels:
   - the free transverse waves (light);
   - the extra longitudinal wave (S11's second cone);
   - the bulk.
 
   The entry also requires the reverse: how much of the energy each channel carries in is taken up by a
-  throat.
+  throat, at each frequency.
 - **on failure** — S11's departure cannot be classified. The record makes the second cone a departure only
   if matter couples to it, and without these objects nothing decides whether matter observes it. E32–E34
   and E38 stay "in apparent conflict", with their condition undecided.
-- **note: what a delivered split would decide** —
-  - **Thermal equilibrium.** The thermal entries apply when the extra wave takes part in thermal
-    equilibrium as an additional radiating mode: in a laboratory blackbody (E33) and in the CMB (E34). E38
-    also needs the mode to be populated in the early universe while relativistic.
-  - **The falsifier.** Suppose the delivered emission and uptake bring the extra wave into equilibrium with
-    matter on those timescales. Then the model conflicts with the blackbody, CMB and `N_eff` measurements
-    those entries cite. A small share alone does not keep the mode out. Whether the mode is populated
-    depends on its emission and uptake rates compared with those timescales.
+- **note: what a delivered split would and would not decide** —
+  - **Each measurement has its own conditions** (survey §4):
+    - **E33**, the laboratory blackbody, needs the extra wave to be an additional ordinary thermal mode,
+      with the usual occupation, energy and dispersion, and a calibrated emission and absorption response.
+    - **E34**, the CMB spectrum, needs its power to enter the calibrated CMB radiance rather than cancel in
+      the sky/reference comparison.
+    - **E38**, `N_eff`, needs it to be extra gravitating radiation, populated and relativistic in the early
+      universe. The survey adds that a weak population or earlier decoupling is not generically excluded.
+  - **The split alone decides none of them.** Whether the extra wave is populated depends on several things:
+    - its emission and uptake rates, compared with each measurement's timescale;
+    - its escape into the bulk;
+    - its initial population and the expansion history.
+
+    What a populated wave then carries depends on its own speed. In S11 that speed is set by `B_comp/ρ_br`
+    (`R-S6-01`), not by light's `μ_R/ρ_br`. So a share comparable to light's is not by itself a conflict,
+    and neither is equilibrium with matter. Nor does a small share by itself rule one out.
+  - **The falsifier** is each measurement, applied under its own conditions to the population and power
+    that these objects, the extra wave's speed and its escape into the bulk predict. That application is
+    later work. This entry states no bound; compare the note in `R-S12-01`.
   - **The quantum part.** The survey's conditions also assume the usual quantum occupation. The plan
     assigns that to a separate project (`V3_STEP_PLAN.md:1198–1204`; survey [P8]), so a classical split
-    does not settle that part.
-  - **No numerical bound** is added; compare the note in R-S12-01. (C7.)
+    does not settle that part. (C7.)
 - **relation** —
-  - S22's linear tests 1–2 ask whether light passing a supplied defect profile converts into the
-    longitudinal mode, and whether the longitudinal mode radiates into the bulk. S11c asked how much light
-    converts where the brane changes (`V3_STEP_PLAN.md:508`). All of these concern incoming light; none is a
-    throat's own emission.
+  - S22's linear test 1 asks how much light passing a supplied defect profile converts into the
+    longitudinal mode. S11c asked how much light converts where the brane changes (`V3_STEP_PLAN.md:508`).
+    Both concern incoming light; neither is a throat's own emission.
+  - S22's linear test 2 asks whether the longitudinal mode radiates into the bulk, and needs the interface
+    law (`V3_STEP_PLAN.md:1181`). That escape enters the extra wave's population. So applying any
+    measurement under this entry also needs test 2's result.
   - The S11 record adds that at homogeneous linear order "the mode's bulk leakage and direct observability
     require the brane–bulk interface law". S11b supplies that law conditionally, for a uniform brane only.
   - The S11 record states that `c_L` is not a gravitational wave, so this entry is not about the carrier of
@@ -1195,8 +1211,9 @@ here. The comparison record lists them with their owners:
 
 These are handoffs, not entries. No owner is added to any other oracle check.
 
-**Prior art.** The positive light results reproduce known prior art: MacCullagh's curl-only medium, and,
-under the unsupplied mass identification, the river-model and acoustic flow profile. The register's
+**Prior art.** The positive light results reproduce known prior art: MacCullagh's curl-only medium, and the
+squared flow speed of the river model and of Visser's §7 acoustic flow. The flow match holds only under the
+unsupplied mass, clock and speed-unit identifications. The register's
 MacCullagh obligations (`R-S8-04`, `R-S8-05`) remain OPEN.
 
 

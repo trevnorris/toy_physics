@@ -1,4 +1,4 @@
-# Measurements: light-sector closeout (generated 2026-10-19 18:19)
+# Measurements: light-sector closeout (generated 2026-10-19 18:49)
 
 Generator: `_scratch/s9b_oracle/gen/light_sector_closeout_lookups.sh`. Literal retrieval and counting only.
 The oracle-check transcript is `scripts/out/S9b_flow_oracle_check.out` at `8d91f448`; its other outcome
@@ -41,6 +41,34 @@ $ grep -n -F '"residual_tag" -> "FLOW_SQUARED_RESIDUAL", "domain" -> "WL_S9B_R_F
       1 "equations" -> {"HL4"} | RESIDUAL_OPERANDS: {(2*GM)/r, (2*GM)/r}
       2 "equations" -> {"V7background"} | RESIDUAL_OPERANDS: {(2*GM)/r, (2*GM)/r}
       2 "equations" -> {"V7background", "V53", "V86", "V87"} | RESIDUAL_OPERANDS: {(2*GM)/r, (2*GM)/r}
+```
+
+### C2b. The signed comparison under the same substitution, and a clock-factor variant
+```
+$ sed -n '724,729p;741p' /var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S9b_flow_oracle_check.out | grep -E '^(RESIDUAL_OPERANDS|FLOW_SIGNED_RESIDUAL|RESIDUAL_ZERO_TEST)'
+RESIDUAL_ZERO_TEST: <|"residual_tag" -> "FLOW_SQUARED_RESIDUAL", "domain" -> "PY_S9B_R_FLOW_ONLY_B_IMPLIED_JN_DEFLECTION/case/1", "value" -> True|>
+RESIDUAL_OPERANDS: {-(Sqrt[2]*Sqrt[py`GM/py`s9b$r]), Sqrt[2]*py`c$0*Sqrt[py`GM/(py`c$0^2*py`s9b$r)]}
+FLOW_SIGNED_RESIDUAL: -2*Sqrt[2]*Sqrt[py`GM/py`s9b$r]
+RESIDUAL_ZERO_TEST: <|"residual_tag" -> "FLOW_SIGNED_RESIDUAL", "domain" -> "PY_S9B_R_FLOW_ONLY_B_IMPLIED_JN_DEFLECTION/case/1", "value" -> False|>
+RESIDUAL_ZERO_TEST: <|"residual_tag" -> "FLOW_SIGNED_RESIDUAL", "domain" -> "PY_S9B_R_FLOW_ONLY_B_IMPLIED_JN_DEFLECTION/case/2", "value" -> True|>
+```
+
+```
+$ grep '^RESIDUAL_ZERO_TEST: <|"residual_tag" -> "FLOW_SIGNED_RESIDUAL"' /var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S9b_flow_oracle_check.out | grep -o '"value" -> [A-Za-z]*|>' | sort | uniq -c
+     40 "value" -> False|>
+    140 "value" -> True|>
+```
+
+```
+$ grep -m1 -F 'py`GM == clockRate^2*gmH|>' /var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S9b_flow_oracle_check.out
+RESIDUAL_ZERO_TEST: <|"residual_tag" -> "FLOW_SQUARED_RESIDUAL", "domain" -> "PY_S9B_R_FLOW_ONLY_B_IMPLIED_JN_DEFLECTION/case/1", "value" -> py`GM == clockRate^2*gmH|>
+```
+
+```
+$ grep '^RESIDUAL_ZERO_TEST: <|"residual_tag" -> "EXCHANGE_RESIDUAL"' /var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S9b_flow_oracle_check.out | grep -o '"value" -> .*' | sort | uniq -c
+      4 "value" -> 3*py`rho$br$profile[py`s9b$r] + 2*py`s9b$r*Derivative[1][py`rho$br$profile][py`s9b$r] == 0|>
+      4 "value" -> 3*rhoBr[r] + 2*r*Derivative[1][rhoBr][r] == 0|>
+     10 "value" -> True|>
 ```
 
 ## C3. The optical comparison: oracles in the identification map, and the oracle beside each printed zero
@@ -146,6 +174,26 @@ $ python3 -I -c 'import json,sys; print(json.dumps({sys.argv[2]: json.load(open(
  is live, not assumed constant."}}
 ```
 
+### C4b. Visser, local copy, page 15: the section-7 background and its conformal factor
+```
+$ pdftotext -f 15 -l 15 -layout /var/projects/toy_physics/_scratch/s9b_oracle_check/sources/gr-qc_9712010.pdf - | sed -n '15,20p;39,47p'
+      Given the Painlevé–Gullstrand line element, it might seem trivial to force
+the acoustic
+       p       metric into this form: simply take ρ and c to be constants, and set
+v = 2GM/r? While this certainly forces the acoustic metric into the Painlevé–
+Gullstrand form the problem with this is that this assignment is incompatible
+with the continuity equation ∇   ~ · (ρ~v ) 6= 0 that was used in deriving the acoustic
+The net result is conformal to the Painlevé–Gullstrand form of the Schwarzschild
+geometry but not identical to it. For many purposes this is quite good enough:
+we have an event horizon, we can define surface gravity, we can analyze Hawking
+radiation. Since surface gravity and Hawking temperature are conformal invari-
+ants [34] this is sufficient for analyzing basic features of the Hawking radiation
+process. The only way in which the conformal factor can influence the Hawk-
+ing radiation is through backscattering off the acoustic metric. (The phonons
+are minimally coupled scalars, not conformally coupled scalars so there will in
+general be effects on the frequency-dependent greybody factors.)
+```
+
 ## C5. The check's identification notes (every UNMATCHED row) and its controls record (opening paragraphs)
 ```
 $ grep -c '^| `' /var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S9b_flow_oracle_check_identifications.md
@@ -243,6 +291,22 @@ $ grep -n 'field quantization in a separate project' /var/projects/toy_physics/r
 ```
 
 ```
+$ grep -n -o '.\{60\}earlier decoupling is not generically excluded' /var/projects/toy_physics/research/pde_ledger_v3/PHOTON_POLARIZATION_SURVEY.md
+278:ond the fitted allowance; a sufficiently weak population or earlier decoupling is not generically excluded
+```
+
+```
+$ grep -n -o '.\{60\}rather than cancel in the sky/reference comparison' /var/projects/toy_physics/research/pde_ledger_v3/PHOTON_POLARIZATION_SURVEY.md | head -2
+274:sumptions; its power must enter the calibrated CMB radiance rather than cancel in the sky/reference comparison
+```
+
+```
+$ sed -n '110,111p' /var/projects/toy_physics/research/pde_ledger_v3/steps/S11_stray_longitudinal.md
+| transverse | `ω² = (μ_R/ρ_br)k²`, nullity `D−1`, kernel ⊥ `k` ⭐ **unchanged from S9/S10** |
+| longitudinal | `ω² = (B_comp/ρ_br)k²`, nullity `1`, kernel ∥ `k` |
+```
+
+```
 $ sed -n '1198,1204p' /var/projects/toy_physics/research/pde_ledger_v3/V3_STEP_PLAN.md
 | **a bound state** — a localized mode with a **discrete** frequency spectrum, trapped by a defect | ⭐ a linear wave equation in a **varying** medium (Sturm–Liouville) | ⭐⭐ **reachable, LINEAR.** No `ħ`, no nonlinearity |
 | **a soliton** — one allowed lump, energy fixed by a size–amplitude relation | the nonlinear shear action | ⛔ **C6** — the real wall, and what the user actually wants |
@@ -279,20 +343,20 @@ S11c asked how much light converts into other motion where the brane changes. It
 
 ```
 $ grep -n 'uniform light decouples from the bulk' /var/projects/toy_physics/STATUS.md | cut -c1-160
-34:- **CONDITIONAL:** uniform light decouples from the bulk in the supplied linear model. SymPy and independent
+35:- **CONDITIONAL:** uniform light decouples from the bulk in the supplied linear model. SymPy and independent
 ```
 
-## C9. Was the thermal conflict captured downstream? (before this packet: HEAD; after: working tree)
+## C9. Was the thermal conflict captured downstream? (before this packet: 8d91f448; after: working tree)
 ```
-$ for f in SUBSTRATE_REQUIREMENTS.md V3_STEP_PLAN.md DEFECT_REGISTER.md; do printf '%s HEAD: ' $f; git -C /var/projects/toy_physics show HEAD:research/pde_ledger_v3/$f | grep -c -i 'thermal\|blackbody\|Stefan\|N_eff'; done
-SUBSTRATE_REQUIREMENTS.md HEAD: 0
-V3_STEP_PLAN.md HEAD: 0
-DEFECT_REGISTER.md HEAD: 0
+$ for f in SUBSTRATE_REQUIREMENTS.md V3_STEP_PLAN.md DEFECT_REGISTER.md; do printf '%s at 8d91f448: ' $f; git -C /var/projects/toy_physics show 8d91f448:research/pde_ledger_v3/$f | grep -c -i 'thermal\|blackbody\|Stefan\|N_eff'; done
+SUBSTRATE_REQUIREMENTS.md at 8d91f448: 0
+V3_STEP_PLAN.md at 8d91f448: 0
+DEFECT_REGISTER.md at 8d91f448: 0
 ```
 
 ```
 $ grep -c -i 'thermal\|blackbody\|Stefan\|N_eff' /var/projects/toy_physics/research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
-5
+4
 ```
 
 ## C10. Register: acceptance commits of the earlier passes, and the census before and after
@@ -312,7 +376,7 @@ ff3bac63 2026-10-19 Accept the S9b record and its register pass (review clear)
 ```
 
 ```
-$ git -C /var/projects/toy_physics show HEAD:research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md | grep -c '^### R-'
+$ git -C /var/projects/toy_physics show 8d91f448:research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md | grep -c '^### R-'
 17
 ```
 
@@ -472,6 +536,13 @@ $ sed -n '13,23p' /var/projects/toy_physics-p2b/research/pde_ledger_v3/directive
 ```
 
 ```
+$ for d in h-all a-all baseline; do printf '%s ' $d; grep -o '"memoryMax": [0-9]*\|"hostAvailableBytes": [0-9]*\|"poolMemoryMax": [0-9]*' /var/projects/toy_physics-p2b/_scratch/s11c/p2b-r3-$d-54-1/invocation.json | tr '\n' ' '; echo; done
+h-all "memoryMax": 57982058496 "hostAvailableBytes": 60376612864 "poolMemoryMax": 66571993088 
+a-all "memoryMax": 57982058496 "hostAvailableBytes": 61462528000 "poolMemoryMax": 66571993088 
+baseline "memoryMax": 57982058496 "hostAvailableBytes": 61191802880 "poolMemoryMax": 66571993088 
+```
+
+```
 $ git -C /var/projects/toy_physics-p2b log --format='%h %ad %s' --date=short -2
 215726b 2026-10-19 Park the P2b build after repair round 3 (unreviewed, not accepted)
 1131c39 2026-10-18 P2b build as reviewed in round 0 (main repo 77161062)
@@ -509,7 +580,7 @@ $ sed -n '386,387p' /var/projects/toy_physics/research/pde_ledger_v3/V3_STEP_PLA
 
 ```
 $ grep -n 'reproduces MacCullagh' /var/projects/toy_physics/research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md | cut -c1-200
-1219:the records only capture what their authors thought to doubt — and the sector reproduces MacCullagh's
+1236:the records only capture what their authors thought to doubt — and the sector reproduces MacCullagh's
 ```
 
 ```

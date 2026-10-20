@@ -7,12 +7,14 @@ Paths are relative to `research/pde_ledger_v3/`.
 author starts only after that. The record is physics-bearing prose. Two non-author legs (fresh Claude + Grok) review
 it, source-first, until clear on what may be claimed. No build directive is in the record author's or the record
 legs' packet (`CLAUDE.md`, step-record row). This follows the S9b record (`directives/S9b_record_directive.md`).
+Pass 1 was folded once (`directives/_measurements/S12_record_decision_list_review_p1_disposition.md`).
 
 ## Deliverable
 - `steps/S12_order_source.md`: the S12 step record.
 - `steps/_measurements/S12_record_measurements.md`, produced by a committed generator script.
 - An S12 pass in `SUBSTRATE_REQUIREMENTS.md`.
-- The status lines that still call accepted work "review pending", updated to its acceptance (item 9).
+- The status lines that describe the accepted light-sector closeout as awaiting review, updated to its acceptance
+  (item 9).
 
 ## Sources (read-only)
 - **The step's decision list:** `directives/S12_decision_list.md`, revision 4, cleared at `b08673a2`. It holds the
@@ -73,9 +75,14 @@ legs' packet (`CLAUDE.md`, step-record row). This follows the S9b record (`direc
 4. **The inventories.** The record inventories what the step's decision list names under "Inventories", kept apart as
    the plan requires, by pointing at each source row. It answers, or lists as open with an owner, the question the
    list raises there about v2's return controllers.
-5. **Conditional premises.** For each of U1–U4, the "Fields at a face" rule and the fast-ordering assumption of item
-   2: its source and date, its status (adopted, conditional, re-tested at the knit), and which printed objects
-   depend on it. One that enters no computed object is listed as such.
+5. **Premises and their standing.** This covers each of U1–U4, how U1 enters (the support condition and U1's
+   re-ordering clause, which it does not encode), the "Fields at a face" rule, and the fast-ordering assumption of
+   item 2. For each one, the record states:
+   - its source and date;
+   - its standing as the step's decision list gives it, quoted from that list;
+   - which printed objects depend on it.
+
+   The record gives no standing the list does not give. One that enters no computed object is listed as such.
 6. **What remains open.** Each item the step's decision list retains as OPEN is stated with its owner, as the sources
    state them. None is closed here.
 7. **What a conversion law must meet.** If the register's rest-on test admits it, the S12 pass adds entries whose
@@ -92,9 +99,10 @@ legs' packet (`CLAUDE.md`, step-record row). This follows the S9b record (`direc
    - Merge into existing entries, `R-S12-01`, `R-S12-02` and `R-S21-01` included; don't duplicate them.
    - Carry the framing decision above to the entry that owns the flow comparison.
    - Where this list and the register disagree, the register wins, and the disagreement is reported.
-9. **Status lines.** The light-sector closeout was accepted at `e070c7f3`. Wherever the register, the S9b flow-only
-   oracle comparison record or `../../STATUS.md` still calls that work "review pending" or "under review", the line
-   states its acceptance instead. `../../STATUS.md` also states where S12 stands, as the record does.
+9. **Status lines.** The light-sector closeout was accepted at `e070c7f3`. In the register, the S9b flow-only oracle
+   comparison record and `../../STATUS.md`, every line that describes that work as awaiting review, in whatever
+   words, states its acceptance instead. This includes a line that makes later work wait on that review.
+   `../../STATUS.md` also states where S12 stands, as the record does.
 
 ## Exclusions
 - No new CAS, derivation, oracle check, closure or profile choice.

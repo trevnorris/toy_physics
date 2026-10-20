@@ -3,8 +3,9 @@
 Entries distinguish memory limits, symbolic runtime limits, and the results
 that depend on them.
 
-Some in-band engine self-checks OOM the current **30 GB** dev box (the un-reduced variable-coefficient
-operators are ~50k+ LeafCount and several are held/expanded at once). Where that happens we run a memory-fitting
+Some in-band engine self-checks OOM'd the earlier **30 GB** dev box, and several still do not fit the 64 GB box
+in use since 2026-10-18 (see *Parked* below). The un-reduced variable-coefficient
+operators are ~50k+ LeafCount, and several are held or expanded at once. Where that happens we run a memory-fitting
 variant in-band and prove the skipped/scoped checks **out-of-band** (independent build-leg ablations + numerics),
 recording the provenance. This file lists exactly what to re-run, and how, on a machine with more RAM to get the
 full-fidelity in-band run. The tower/heavy in-band CONTROLS listed here are **already verified out-of-band** —
@@ -16,52 +17,29 @@ belt-and-suspenders.
 Guidance for the re-run box: the operators peak ~15–16 GB per engine on the current controls; give it **≥64 GB**
 of headroom to be safe. Watch RSS; a Mathematica kernel can balloon and orphan — `kill -9` by exact pid if so.
 
-## Run plan for the 64 GB box (user-approved 2026-10-18)
+## Parked (user decision, 2026-10-19)
 
-The user approved this order on 2026-10-18, before the RAM upgrade from 32 GB to 64 GB. The backlog runs beside
-the S9b path (S9b → light register pass → S12), not in its place. Each item points at its entry below. The memory
-caps are estimates. A job killed at its cap needed more than the cap, and its peak is still unknown. Rerun it with
-a larger cap once the guard admits it.
+The user parked every run in this file on 2026-10-19 and closed the light sector for now. The run order of
+2026-10-18 is withdrawn. Nothing here is scheduled. The box has `MemTotal` 65779560 kB. The guard's budget
+is MemTotal rounded down to whole GiB, and a job is admitted only when available memory covers its cap
+(`scripts/s11c_guarded_run.py`, lines 11–18). The largest cap any run used was 54 GiB (C11). The outcomes below are the only measurements of these runs on this box. Lookups:
+`directives/_measurements/light_sector_closeout_lookups.md`, C11.
 
-**Before the first launch**
-- Run `free -g`. The guard's ceiling is MemTotal rounded down to whole GiB (`scripts/s11c_guarded_run.py:79`), so
-  the guard sees the new RAM with no code change. About 60 GiB of usable memory is assumed below; use the measured
-  figure.
-- Check `git log` for each script an item runs, and confirm the command below still names the committed script.
-  Last changes when this plan was written: the SymPy S11c-b engine `72d6fe0b` (2026-10-05), the Wolfram S11c-b
-  engine `06048d15` (2026-09-03), the S11c-c1 comparator `704308af` (2026-09-05).
-- Run every job through the guard with `--pool` and `--memory-gib` set to its cap (`--tasks-max 64` for Wolfram),
-  and only one Wolfram kernel at a time. The entries' bare commands predate the guard. Write output to a new log
-  directory, not over the committed `.out`.
-- The guard reserves each running job's whole cap until it exits, and admits a job only if every reserved cap plus
-  the new one fits under its ceiling. Launch a job only when the guard has room for its cap. A refused launch waits.
+| Run | Log directory or location | Cap | Outcome |
+|---|---|---:|---|
+| *PY — S11c-b #89/#90*, one full SymPy run | `_scratch/s11c/s11cb-89-90-full-1` | 30 GiB | Exit 1 after 57486 s, with no child outcome recorded. The last sample shows memory at the cap and the cgroup's `max` event count at 43. |
+| *WL — S11c-b #89b*, full Wolfram run | `_scratch/s11c/s11cb-89b-wl-full-1` | 24 GiB | Exit 1 after 4584 s. The kernel printed `No more memory available.`; the sampled cgroup peak is 24155074560 bytes. |
+| *Cross-engine residual*: the P2b build | Checkout `/var/projects/toy_physics-p2b`, branch `p2b-build`, with no remote. Round 0 was reviewed and preserved at `77161062`. Repair rounds 1–3 are unreviewed and committed only in that checkout, at `215726b`. | 6, 48, 54 GiB | The round-1 control runs finished at 6 GiB. Every full-family run (H, A and the first-commit baseline) was OOM-killed: at 48 GiB in round 2 and at 54 GiB in round 3. The round-3 sampled peaks were 55718088704, 55622627328 and 56083570688 bytes. The build report lives in that checkout. |
+| *S11c-c1 T7*, comparator on all 50 families | — | — | Not run. |
+| *S11c-c2* | — | — | No run defined. |
 
-**Wave 1, launched together**
-- The S9b repair-round-10 build review: two legs at 13 GiB each. A leg may retry a killed SymPy job at 18 GiB. The
-  review starts once the SymPy round-10 builder has finished. If the shutdown interrupted that builder, resume it
-  first (`_scratch/s9b_build/repair_build/resume_py_r10b.md`, at 18 GiB).
-- *PY — S11c-b #89* and *#90*: one full SymPy run without `S11CB_PRIMARIES_ONLY` covers both, at about 30 GiB. Its
-  peak is unmeasured; on the 30 GB box it ran out of memory 3.5 h in.
-- Codex starts the P2b build (*Cross-engine residual*, below). It needs little memory.
-
-**Wave 2, once the S9b review legs have finished their Wolfram runs**
-- *WL — S11c-b #89b*: the full Wolfram run, at about 24 GiB (about 16 GB per case; the engine frees memory between
-  cases).
-- *S11c-c1 T7*: the comparator on all 50 families, at about 16 GiB (peak unmeasured). This run is one measurement.
-  The entry's open reconciliations (`DTN_OPERATOR`, `DTN_HERMITIAN_PART` / `DTN_REACTIVE_PART`, `ENERGY_*`, and the
-  full per-family symbolic residual) still need their own work afterwards. The comparator compares `DTN_OPERATOR`
-  by its outer operator signature and defers exact canonicalization of oversized leaves, so that work may need a
-  comparator change, built by Codex and reviewed by two legs.
-- While the Wave 1 SymPy job still holds its 30 GiB, only one of these two jobs fits under the guard's ceiling.
-  Start the other when the guard has room for it.
-
-**Then**
-- *Cross-engine residual*: the chain in its entry, from the P2b build through to adjudication.
-- *S11c-c2*: no run is defined. Write its decision list, have two legs review it, then hand it to a builder.
-
-**After each run**, check only that it finished and its output exists, then launch two review legs chosen by
-authorship, before looking at the results. The comparison with the committed `.out` is recorded after both legs
-report. The new output is committed only after that (`datalad save`, `datalad push --to gin`, `git push`).
+The rest of the cross-engine residual chain waits on P2b. If any of this work resumes, P2b's full-family
+runs need more memory than this box admits, or a script change, which would get its own review. Every
+procedure in the entries below still applies:
+- run each job through the guard (`scripts/s11c_guarded_run.py --pool --memory-gib`);
+- send output to a new log directory;
+- launch two review legs, chosen by authorship, before reading results;
+- commit only after both legs report.
 
 > ⚠ **CROSS-ENGINE RESIDUAL — ≥64 GB-GATED (measured 2026-09-03; STEP 0's on-box claim OVERTURNED;
 > `directives/_measurements/S11c_b_step0_residual_scope.md`).** STEP 0 measured only `evaluatedModel` + one

@@ -1,9 +1,10 @@
 # Substrate requirements — what the force sectors oblige the unbuilt steps to deliver
 
-**Status: passes 1 (S9, S10) and 2 (S11, S11b-A/B, S11c PARTIAL) complete; pass-2 review pending.
-O2 pass populated 2026-10-07; its record/pass review is pending.
-S9b pass populated 2026-10-19; its record/pass review is pending.**
-Seventeen entries, all OPEN. Pass 2 was populated 2026-10-05 from the kept results and their stated
+**Status: the light sector is closed for now (user decision, 2026-10-19). Passes 1 (S9, S10), 2 (S11,
+S11b-A/B, S11c PARTIAL; accepted `22be0137`), O2 (accepted `72866fcf`) and S9b (accepted `ff3bac63`) are
+complete. The light-closing pass (2026-10-19) adds the oracle comparison and the throat energy split; its
+review is pending.**
+Eighteen entries, all OPEN. Pass 2 was populated 2026-10-05 from the kept results and their stated
 conditions; it does not close the substrate or upgrade S11c's unresolved work. Later sectors remain to
 be read as they close. The two 2026-08-07 prior-art entries retain their provenance; the second route is
 recorded under Population passes.
@@ -12,6 +13,8 @@ its four adopted premises retain their
 conditional-input labels in the O2 pass below. Entry counts for that pass are retrieved in
 `steps/_measurements/O2_record_measurements.md`, M11. S9b adds one S21 requirement and sources
 six existing entries; its before/after census is `steps/_measurements/S9b_record_measurements.md`, M10.
+The light-closing pass adds one S22 entry and oracle-comparison evidence to `R-S21-01`; its lookups are
+`directives/_measurements/light_sector_closeout_lookups.md`.
 
 ## Why this exists
 
@@ -83,10 +86,11 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 | **S8** *(register inference for original entry)* | `R-S8-06` | material displacement and original quadratic slab inertia; O2 adds the material identification only | S11, S11b-B, O2 and S9b identification |
 | **S12** *(register inference; no live owner named)* | `R-S12-01` | a reservoir and power budget if a non-passive interface response is adopted | S11b-B / unified S11b, O2 carried condition |
 | **S12** | `R-S12-02` | background drain/return and separate boundary data | S11b-A/B, S11c uniform, O2 |
-| **S21** | `R-S21-01` | conditional deflection and radar-slope profile requirements, with Part C rewrites and implied exchange | S9b A–C |
+| **S21** | `R-S21-01` | conditional deflection and radar-slope profile requirements, with Part C rewrites and implied exchange | S9b A–C; flow-only oracle comparison (evidence only) |
+| **S22**, with Q2 and S12 | `R-S22-01` | how the energy a throat releases splits among light, the extra longitudinal wave and the bulk | S11 departure; photon survey E32–E34, E38 |
 | **no owner named** | `R-O2-01` | the physical net-power supplier and its stated budget, if a conditional closure requires net supply | O2 |
 
-⚠ Entries below are in the order they were found, ⛔ not in step order. All **seventeen** are **OPEN**.
+⚠ Entries below are in the order they were found, ⛔ not in step order. All **eighteen** are **OPEN**.
 ⭐ `R-S8-01`, `-03`, `-04`, `-05` are one family: the stiffness functional's **form**, its **sign**, its
 **mechanical admissibility**, and its **reference frame**. ⛔ Delivering the form does not deliver the
 other three.
@@ -621,6 +625,16 @@ other three.
   Speed-, tilt- and bulk-only exchange prints zero; flow-only retains the signed live-density
   exchange. Conditions/exchange/γ values have no formed cross-engine comparison; the domains
   and every printed difference retain record §6's limits. This entry asserts no realized match.
+- **oracle comparison (evidence only, 2026-10-19)** — the accepted flow-only check (`8d91f448`;
+  record `steps/S9b_flow_oracle_comparison.md`) compares the flow-only restriction with Hamilton–Lisle
+  (2008) and Visser (1998).
+  - Identify the orbital `GM` with each oracle's mass parameter; the check prints that identification as
+    `UNMATCHED`. Under it, the kept flow-only profile is the river-model and Visser §7 profile.
+  - In both engines the exchange `jn` vanishes only on `ρbr = C₁/r^(3/2)`, the density law Visser §7
+    quotes.
+
+  The comparison selects no profile and no exchange value, and it delivers nothing of this entry. The
+  requirement, its free inputs and its failure consequence are unchanged.
 
 
 **Counting the two observables under item 5.** The rule is “It counts the deflection
@@ -739,6 +753,54 @@ squared-velocity, signed-exchange, zero-join and domain representations above ar
 OPEN differences, no owner named; no equivalence is supplied by the zero exchange entries.
 (M18; M5–M7, with the counting rule separately applied in M17.)
 
+### R-S22-01 — how the energy a throat releases splits among light, the extra wave and the bulk
+
+- **source**
+  - S11 (`steps/S11_stray_longitudinal.md`, departure table and the paragraphs after it). The table gives the
+    question "whether matter directly observes the second cone" the owner "derived matter/interface
+    coupling". The record says "A second cone is only a departure if matter COUPLES to it", and describes
+    matter as "a throat held open by a trapped brane-shear standing wave".
+  - The photon survey, E32–E34 and E38 (`PHOTON_POLARIZATION_SURVEY.md` §4). Each is "In apparent conflict"
+    under the condition that the extra longitudinal branch couples to matter and acts as an additional
+    radiating mode. (C6, C7.)
+- **target** S22 (the nonlinear throat solve), together with Q2 (the mouth source and its held datum) and
+  S12 (the throat's order-conversion source and its boundary data). These owners were chosen by the user on
+  2026-10-19; the S11 record itself names only "derived matter/interface coupling". (C8.)
+- **status** OPEN
+- **requirement** — Consider a throat held open by its trapped shear wave. The trapped-wave state can change,
+  the throat can move, and its mouth can change shape. When any of these happens, the object is the energy
+  released and how it splits among three channels:
+  - the free transverse waves (light);
+  - the extra longitudinal wave (S11's second cone);
+  - the bulk.
+
+  The entry also requires the reverse: how much of the energy each channel carries in is taken up by a
+  throat.
+- **on failure** — S11's departure cannot be classified. The record makes the second cone a departure only
+  if matter couples to it, and without these objects nothing decides whether matter observes it. E32–E34
+  and E38 stay "in apparent conflict", with their condition undecided.
+- **note: what a delivered split would decide** —
+  - **Thermal equilibrium.** The thermal entries apply when the extra wave takes part in thermal
+    equilibrium as an additional radiating mode: in a laboratory blackbody (E33) and in the CMB (E34). E38
+    also needs the mode to be populated in the early universe while relativistic.
+  - **The falsifier.** Suppose the delivered emission and uptake bring the extra wave into equilibrium with
+    matter on those timescales. Then the model conflicts with the blackbody, CMB and `N_eff` measurements
+    those entries cite. A small share alone does not keep the mode out. Whether the mode is populated
+    depends on its emission and uptake rates compared with those timescales.
+  - **The quantum part.** The survey's conditions also assume the usual quantum occupation. The plan
+    assigns that to a separate project (`V3_STEP_PLAN.md:1198–1204`; survey [P8]), so a classical split
+    does not settle that part.
+  - **No numerical bound** is added; compare the note in R-S12-01. (C7.)
+- **relation** —
+  - S22's linear tests 1–2 ask whether light passing a supplied defect profile converts into the
+    longitudinal mode, and whether the longitudinal mode radiates into the bulk. S11c asked how much light
+    converts where the brane changes (`V3_STEP_PLAN.md:508`). All of these concern incoming light; none is a
+    throat's own emission.
+  - The S11 record adds that at homogeneous linear order "the mode's bulk leakage and direct observability
+    require the brane–bulk interface law". S11b supplies that law conditionally, for a uniform brane only.
+  - The S11 record states that `c_L` is not a gravitational wave, so this entry is not about the carrier of
+    gravity. (C6, C8.)
+
 ## Population passes
 
 **Pass 1 — S9 and S10. ⭐ DONE 2026-08-06**, alongside S10's step record and from the same reading.
@@ -760,7 +822,7 @@ Seven entries added, against the two that existed. The calibration it produced, 
   identifications* first; they are where the requirements are.
 
 
-### Pass 2 — S11, S11b-A/B and S11c PARTIAL · populated 2026-10-05; review pending
+### Pass 2 — S11, S11b-A/B and S11c PARTIAL · populated 2026-10-05; accepted `22be0137`
 
 Read `steps/S11_stray_longitudinal.md`, all three S11b records (the unified record and the historical A/B
 records), `steps/S11c_PARTIAL_CLOSEOUT.md`, and the a/b/c1/c2/d records in full. Applied the schema,
@@ -866,7 +928,7 @@ calibration of the draining model.
 | Unit frame, incident frequency `omega` and the two tangential momenta | P, `unit_frame` / `parameters`; d, uniform check / benchmark | no owner named |
 | Numerical regulator, quadrature/basis/cutoff and source/domain intervals | d, benchmark and controls; `_measurements/S11c_d_numerical_radiating_balance_report.md`, controls and their limits | no owner named |
 
-### O2 pass — conditional live steady balance · populated 2026-10-07; review pending
+### O2 pass — conditional live steady balance · populated 2026-10-07; accepted with the O2 record, `72866fcf`
 
 Source: `steps/O2_steady_brane_balance.md`, §§1–9; governing inputs and accepted constructions/comparator
 are identified there. Commands and literal retrieval output: `steps/_measurements/O2_record_measurements.md`,
@@ -967,7 +1029,7 @@ The earlier pass-2 second-route disagreement, quoted above, remains unresolved a
 or erased by this pass.
 
 
-### S9b pass — conditional light bending and radar slope · populated 2026-10-19; review pending
+### S9b pass — conditional light bending and radar slope · populated 2026-10-19; accepted with the S9b record, `ff3bac63`
 
 Source: `steps/S9b_light_bending.md`, Parts A–C, §§1–8 and appendices. Retrieval commands and
 literal output: `steps/_measurements/S9b_record_measurements.md`, M1–M22; generator
@@ -977,7 +1039,7 @@ S21, `R-S21-01`.** Existing entries gaining a source over `caa0710d`: **`R-S1-01
 `R-S8-01`, `R-S8-03`, `R-S8-06`**. The first three and `R-S8-03` gained their source in
 round 2; `R-S8-01/06` already carried it in `d1511b20`. Rounds 3–4 add no source gains. M10 retrieves
 the pinned censuses and source lists.
-No status is changed to DELIVERED or RETIRED. This pass is revised for record review round 4; the revision awaits review.
+No status is changed to DELIVERED or RETIRED. This pass was accepted with the S9b record at `ff3bac63`.
 
 **First route / rest-on test.** The reported optical functionals rest on the supplied local
 transverse stiffness and on the identification of displacement, density and advected velocity
@@ -1054,8 +1116,8 @@ not fresh literature verification. **No oracle is applied in the S9b record.**
 | Identified object and repository source | Use in this pass | Open handoff / owner |
 |---|---|---|
 | GR/PPN deflection and logarithmic radar references, A–C spec (M1) | Supplied comparison inputs in the accepted constructions; no new oracle check or GR solution reproduced here. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
-| Cahill (2003) inflow; Hamilton–Lisle (2008), *The river model of black holes*; Sbitnev inflow; Unruh acoustic sinks — survey line 246, cautions 263–266; 4D search prompt | All identified, none applied. Survey scopes them to 3D with no off-sheet bulk and flags Cahill's status. No inflow profile or GM relation is imported. | OPEN: applicability and second-route questions for each named oracle. River/acoustic-flow check queued after record acceptance; Codex writes the check and it is reviewed under G1, per the written 2026-10-19 decision below (M21). |
-| Hamilton–Lisle (2008), AJP 76, 519–532; Visser (1998), *Acoustic black holes*; Unruh (1981), *Experimental Black-Hole Evaporation?* — scoping §5 | None applied. Scoping reports manuscripts read for Hamilton–Lisle/Visser, only abstract/metadata for Unruh. GR river and barotropic/inviscid/irrotational scalar acoustics require matching time, velocity, dimension, EOS/exchange and independent mass calibration; they supply no shear-sheet/off-sheet law. | OPEN: applicability and second-route questions for each named oracle. River/acoustic-flow check queued after record acceptance; Codex writes the check and it is reviewed under G1, per the written 2026-10-19 decision below (M21). |
+| Cahill (2003) inflow; Hamilton–Lisle (2008), *The river model of black holes*; Sbitnev inflow; Unruh acoustic sinks — survey line 246, cautions 263–266; 4D search prompt | All identified, none applied. Survey scopes them to 3D with no off-sheet bulk and flags Cahill's status. No inflow profile or GM relation is imported. | OPEN: applicability and second-route questions for each named oracle. The river/acoustic-flow check, assigned by the written 2026-10-19 decision below (M21), ran after record acceptance (Codex-written, G1-reviewed, accepted `8d91f448`) and compared Hamilton–Lisle and Visser only. Its outcome and open questions are in the light-closing pass below. |
+| Hamilton–Lisle (2008), AJP 76, 519–532; Visser (1998), *Acoustic black holes*; Unruh (1981), *Experimental Black-Hole Evaporation?* — scoping §5 | None applied. Scoping reports manuscripts read for Hamilton–Lisle/Visser, only abstract/metadata for Unruh. GR river and barotropic/inviscid/irrotational scalar acoustics require matching time, velocity, dimension, EOS/exchange and independent mass calibration; they supply no shear-sheet/off-sheet law. | OPEN: applicability and second-route questions for each named oracle. The river/acoustic-flow check, assigned by the written 2026-10-19 decision below (M21), ran after record acceptance (Codex-written, G1-reviewed, accepted `8d91f448`) and compared Hamilton–Lisle and Visser only. Its outcome and open questions are in the light-closing pass below. |
 | Gurtin–Murdoch (1975), *A continuum theory of elastic material surfaces*; Scriven (1960), *Dynamics of a fluid interface*; Helfrich (1973), *Elastic Properties of Lipid Bilayers* — scoping §5; O2 register second route | None applied. Surface stress/traction, Newtonian surface-fluid and curvature-sector candidates; Gurtin–Murdoch abstract/bibliography only, Scriven/Helfrich full texts unverified. Ordinary 2D surfaces in 3D bulk do not establish this 3D-brane/4D-bulk law. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
 | Abels–Garcke–Grün (2012), *Thermodynamically Consistent, Frame Indifferent Diffuse Interface Models…*; Rodriguez–Hoger–McCulloch (1994), *Stress-dependent finite growth in soft elastic tissues* — scoping §5; O2 register second route | None applied. Diffusive exchange-momentum and evolving-reference/growth candidates; manuscript read for the former, metadata only/full text unverified for the latter. No two-fluid, mobility, growth or reference law is adopted. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
 | MacCullagh (1839) curl-only light / Whittaker Ch. V; Cauchy–Navier elasticity — survey attribution table; register R-S8-04/05 (M10) | None applied as an oracle. Existing light-carrier, longitudinal/compression, angular-momentum and objectivity obligations remain OPEN; the supplied optical ratio does not re-certify them. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
@@ -1065,8 +1127,8 @@ not fresh literature verification. **No oracle is applied in the S9b record.**
 
 **Open prior-art handoffs.** Every named oracle in the table whose applicability check is
 unperformed remains an individual OPEN item, including each member of a grouped row. The
-river/acoustic-flow check is assigned to Codex to write, with G1 review, by the written decision
-below (M21); every other check retains **no owner named**. Each carries both questions: does the oracle apply to this model point,
+river/acoustic-flow check assigned by the written decision below (M21) has since run for Hamilton–Lisle
+and Visser (light-closing pass); every other check retains **no owner named**. Each carries both questions: does the oracle apply to this model point,
 with its live profiles, domains, retained order and physical identifications; and, under the
 register's second route, which of its failure modes or historical objections transfer here, and
 have those objections been answered? Both questions remain open for each oracle. The source
@@ -1094,6 +1156,48 @@ The older pass-2 second-route disagreement remains quoted above, unresolved. O2'
 “relative O(ε)” statement and S9b D4's “No source supplies that order” are retained as a source
 tension in S9b §8; this pass claims only coordinate-d³x exchange. Part D is held by the later user
 scope despite its earlier planned description. These qualifications do not close any entry.
+
+### Light-closing pass — the oracle comparison and the extra wave · 2026-10-19; review pending
+
+**Sources:**
+- `steps/S9b_flow_oracle_comparison.md`, on the accepted check `8d91f448`;
+- the S11 departure (`steps/S11_stray_longitudinal.md`);
+- photon survey §4, E32–E34 and E38.
+
+Lookups: `directives/_measurements/light_sector_closeout_lookups.md`, C1–C11.
+
+**Census:** 17 entries at `8d91f448` → 18, all OPEN (C10). One entry is new, `R-S22-01`. `R-S21-01`
+gains an evidence line only; its source, requirement and status are unchanged. No other entry changes, and
+no status changes.
+
+**The user's decision.** On 2026-10-19 the user chose to close the light sector for now, after a
+reassessment against the charter's goal ("ONE medium supports the LINEAR part of every force"). The user's
+words: "follow your recommendations to wrap up the light sector before we move on to S12". This pass is that
+wrap-up. Everything still open in the light sector travels in the entries above. The parked work is:
+- S11c, PARTIAL;
+- the heavy backlog runs, in `DEFERRED_HEAVY_RUNS.md`;
+- the applicability checks of every other named oracle, which still have no owner named.
+
+**First route / rest-on test.**
+- **The oracle comparison** asks nothing new of the substrate. Its conditional correspondence rests on an
+  identification the check does not supply (S9b's orbital `GM` equals each oracle's mass parameter) and on
+  R-S21-01's own objects. So it adds evidence to `R-S21-01` and creates no new entry.
+- **The S11 departure and the thermal entries** need an object that no record carried as a requirement:
+  the throat's energy split. The phrases "thermal", "blackbody", "Stefan" and "N_eff" had no hits in this
+  register, the plan or the defect register before this pass (C9). That object is now `R-S22-01`.
+
+**Second route.** The comparison names four objections to the analog: what drives the flow, where the
+material goes, scalar sound versus transverse light, and analog kinematics versus dynamics. None is answered
+here. The comparison record lists them with their owners:
+- the first two belong to S12 (`R-S12-02`) and to O2's carried handoffs;
+- the third stays a scoped S9b exclusion;
+- the fourth stays in the S9b pass's analog-gravity row.
+
+These are handoffs, not entries. No owner is added to any other oracle check.
+
+**Prior art.** The positive light results reproduce known prior art: MacCullagh's curl-only medium, and,
+under the unsupplied mass identification, the river-model and acoustic flow profile. The register's
+MacCullagh obligations (`R-S8-04`, `R-S8-05`) remain OPEN.
 
 
 ### Method for population passes

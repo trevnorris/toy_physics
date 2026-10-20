@@ -11,7 +11,13 @@ It was folded once on 2026-10-19, after a pass with six findings, all confirmed
 A second pass on that revision found six more, all confirmed and all in the material the first fold changed
 (`directives/_measurements/S12_decision_list_review_p2_disposition.md`; revision 1 preserved at `ea711e24`). This is
 revision 2. It points at sources instead of paraphrasing them. Each fold changed what the build computes, so each
-revision gets its own review before the builder starts.
+revision gets its own review before the builder starts. Revision 2 was cleared by a scoped third pass (`a48ce830`).
+
+**Revision 3, 2026-10-20.** The build's review rounds 0 and 1 (`63d99406`, `04a24c36`) found three defects with one
+cause: this list never said what kind of function each field is at a face, so each build pass chose
+(`directives/_measurements/S12_build_review_r{0,1}_disposition.md`). The user chose to state it here, and to leave
+order carried along a face out for now. Revision 3 states that in item 1, under "Fields at a face", and adds one
+OPEN item. Its own review comes before the builder repairs.
 
 ## Filing and framing
 S12 is the plan's step "The throat's non-variational SOURCE, plus its boundary data" (`V3_STEP_PLAN.md:579`). The
@@ -74,8 +80,17 @@ Both engines, constructed independently, `.wl` blind:
 
 1. **The source the committed law requires on order fields satisfying U1's support condition.** The object is `n Γ_B`, with `n`, `u`, `J_χ`,
    the two faces and the interior order all live functions. It covers each part of the domain the condition
-   distinguishes: outside the region, inside it, and at its faces, including any part concentrated on a face if the
-   order jumps there. No flow profile is imposed, and the river profile does not enter.
+   distinguishes: outside the region, inside it, and at its faces, including every part concentrated on a face. No
+   flow profile is imposed, and the river profile does not enter.
+
+   **Fields at a face.** This holds for `n`, `u` and `J_χ`, and for the order inside the region (U1 sets it to zero
+   outside):
+   - on each of the three regions (outside below, inside, outside above), the field is a live function with its own
+     one-sided value at each face;
+   - it may jump across a face, and nothing about the jump is chosen;
+   - no field has a part concentrated on a face itself.
+
+   Item 1 also includes what the total-material balance requires at each face.
 2. **A labelled conditional specialization.** The same object where the interior order is a live function
    `G(w − w₋, w₊ − w)` of the offsets from both faces, with `G` general in both arguments. This assumes ordering keeps
    pace with the slab. It is a specialization, not a limit
@@ -110,6 +125,8 @@ row instead of restating it:
 - the material branch, A13. The committed law is written for a real ordered fraction; a phase-carrying branch would
   add content not computed here;
 - U1's re-ordering clause, as an admissibility requirement;
+- any part of a field concentrated on a face, such as order carried along a face. The user chose "Leave it out for
+  now" on 2026-10-20: it is not in the object at this step, and it stays an open possibility;
 - the interior order's law, including any dependence on history or strain; the faces' law; the form of `J_χ`;
 - "the projected order-loss source · the definition of `J` · the profile-dependent `J → Q` map · the controlled
   `ω → 0` return law" (S14a; `V3_STEP_PLAN.md:636–637`);

@@ -8,7 +8,10 @@ object the build computes, so that content is reviewed until clear (spec row). T
 
 It was folded once on 2026-10-19, after a pass with six findings, all confirmed
 (`directives/_measurements/S12_decision_list_review_p1_disposition.md`; reviewed version preserved at `cd505a87`).
-The fold changes what the build computes, so the revised content gets its own review before the builder starts.
+A second pass on that revision found six more, all confirmed and all in the material the first fold changed
+(`directives/_measurements/S12_decision_list_review_p2_disposition.md`; revision 1 preserved at `ea711e24`). This is
+revision 2. It points at sources instead of paraphrasing them. Each fold changed what the build computes, so each
+revision gets its own review before the builder starts.
 
 ## Filing and framing
 S12 is the plan's step "The throat's non-variational SOURCE, plus its boundary data" (`V3_STEP_PLAN.md:579`). The
@@ -59,6 +62,9 @@ formula for the order.
 - **Inside it,** `χ_B` is a live field, between 0 and 1. It may depend on history or strain. No profile, rate or sign
   is chosen.
 - **At a face,** `χ_B` may be continuous or may jump. Neither is chosen.
+- **Not encoded: U1's re-ordering clause.** Bulk material that settles into the region re-orders. The support
+  condition above does not impose this. It stays an OPEN admissibility requirement, with no rate and no local sign
+  chosen.
 
 This reading is wrong if order can persist outside the shear-holding region, or if the region's extent is itself
 defined by the order.
@@ -66,40 +72,32 @@ defined by the order.
 ## What the build computes
 Both engines, constructed independently, `.wl` blind:
 
-1. **The source the committed law requires on order fields U1 allows.** The object is `n Γ_B`, with `n`, `u`, `J_χ`,
+1. **The source the committed law requires on order fields satisfying U1's support condition.** The object is `n Γ_B`, with `n`, `u`, `J_χ`,
    the two faces and the interior order all live functions. It covers each part of the domain the condition
    distinguishes: outside the region, inside it, and at its faces, including any part concentrated on a face if the
    order jumps there. No flow profile is imposed, and the river profile does not enter.
-2. **A labelled conditional specialization.** The same object where the interior order is a given function of
-   position relative to the faces. This assumes ordering keeps pace with the slab. It is a specialization, not a limit
+2. **A labelled conditional specialization.** The same object where the interior order is a live function
+   `G(w − w₋, w₊ − w)` of the offsets from both faces, with `G` general in both arguments. This assumes ordering keeps
+   pace with the slab. It is a specialization, not a limit
    earned from item 1, and it is labelled so wherever it is printed.
 3. **Dimensional homogeneity** of both balances and of objects 1 and 2.
 
 A name may name an object, never its value or a comparison outcome. The script prints objects and never states
 conclusions. No acceptance criterion references an expected value.
 
-## Inventories (record, sourced; not computed)
-Kept apart, as the plan requires (`V3_STEP_PLAN.md:609–612`):
-- **Source and controller functions.** `Γ_return`, `Γ_drain`, `J_χ`, and v2's return controllers. Whether the
-  controllers have a role once the law conserves material locally is an open question for the record.
-- **Boundary and domain data.** The mouth, the collar, the IR/return conditions and the `𝔅` branch selection
-  (`V3_STEP_PLAN.md:612`). The IR/return scheme stays OPEN: one- or two-sided return, the return or absorber law, and
-  far-field truncation (`../../docs/two_throat_simulation_handoff_spec.md:340`). U3 is a statement about the bulk's
-  IR condition. No galactic or expansion setting is imposed.
-- **The S9b/O2 domain, as recorded.** One isolated mass at rest with its drain flowing, Eulerian steady profiles,
-  and lab time in the brane's far-field rest frame (`steps/O2_steady_brane_balance.md:74–75`). Its restrictions
-  (isolation, steadiness, the far-field rest frame) are named as restrictions.
-- **Momentum and energy partners of conversion.** O2 premise 3 closes the transported momentum only
-  (`directives/O2_premise_decision_list.md:32–35`). OPEN with S12:
-  - the additional momentum partners and the system that carries their reaction;
-  - the bulk-direction carry, which is not `j_n` times one velocity (`directives/O2_SHARED_PHYSICS.md:243`);
-  - the carried total energy, and the conversion-energy partners with their supply systems (`:280`).
-
-  `R-S12-01` (the conditional reservoir) and `R-O2-01` (the net supplier) are separate obligations, and neither is
-  assigned to S12 as a whole (`SUBSTRATE_REQUIREMENTS.md:521, 568`).
-- **Native identifications (O6, `𝒥_map`).** The common exchanged material, and compatible mass, momentum, traction
-  and work geometry and measures, between the 4D balance and the brane (`steps/O2_steady_brane_balance.md:399`;
-  `directives/O2_SHARED_PHYSICS.md:605`). They are an OPEN S12 handoff, inventoried and not computed here.
+## Inventories (for the record, under its own review; not computed, not used by the builder)
+The record inventories these, kept apart as the plan requires (`V3_STEP_PLAN.md:609–612`), by pointing at each source
+row instead of restating it:
+- **source and controller functions:** `V3_STEP_PLAN.md:610–611`; `../pde_ledger_v2/notes/stage045_nonvariational_block_prep.md:45, 50`.
+  Whether v2's return controllers have a role once the law conserves material locally is an open question for the
+  record;
+- **boundary and domain data:** `V3_STEP_PLAN.md:612`; `../../docs/two_throat_simulation_handoff_spec.md:340`. U3
+  bears on the bulk's IR condition. No galactic or expansion setting is imposed;
+- **the S9b/O2 domain:** `steps/O2_steady_brane_balance.md:74–76`, with its restrictions named as restrictions;
+- **momentum and energy partners of conversion:** `directives/O2_premise_decision_list.md:32–35`;
+  `directives/O2_SHARED_PHYSICS.md:134, 243–248, 280, 584`; `steps/O2_steady_brane_balance.md:396`. `R-S12-01` and
+  `R-O2-01` are separate obligations, and neither is assigned to S12 as a whole (`SUBSTRATE_REQUIREMENTS.md:521, 568`);
+- **native identifications (O6, `𝒥_map`):** `steps/O2_steady_brane_balance.md:399`; `directives/O2_SHARED_PHYSICS.md:605`.
 
 ## Model point
 - **Regime:** none chosen. The objects are local, with every field live.
@@ -111,16 +109,18 @@ Kept apart, as the plan requires (`V3_STEP_PLAN.md:609–612`):
 ## Retained OPEN
 - the material branch, A13. The committed law is written for a real ordered fraction; a phase-carrying branch would
   add content not computed here;
+- U1's re-ordering clause, as an admissibility requirement;
 - the interior order's law, including any dependence on history or strain; the faces' law; the form of `J_χ`;
-- the projected order-loss source, `J`, the `J → Q` map and the return law (S14a; `V3_STEP_PLAN.md:636–637`);
+- "the projected order-loss source · the definition of `J` · the profile-dependent `J → Q` map · the controlled
+  `ω → 0` return law" (S14a; `V3_STEP_PLAN.md:636–637`);
 - the link between drain strength and mass (S13);
 - the flow profile (each force's requirement; S21);
 - the slab's material law (S8/S22).
 
 ## Intended claim
-The source the committed order law requires on order fields U1 allows, with every field live, and its labelled
-fast-ordering specialization. Plus sourced inventories of the source functions, the boundary data, the conversion
-partners and the native identifications. It is not a drain law, a throat solve or a flow.
+The source the committed order law requires on order fields satisfying U1's support condition, with every field
+live, and its labelled fast-ordering specialization. The record adds the sourced inventories. It is not a drain law,
+a throat solve or a flow.
 
 ## Next
 A build directive for Codex derived from this list. Then G1 review of the build (fresh Claude + Grok, until clear),

@@ -2,16 +2,13 @@
 """S12: SymPy construction from the supplied balances and U1.
 
 No imports of the Wolfram engine, its transcript, or any other derived result.
-The scalar material-balance coefficient is extracted before substituting U1;
-the two-factor support is differentiated by SymPy. Every requested quantity
-is emitted, without an expected-value guard or cross-engine comparison.
-
-Distribution calculus retains the original differentiable n and u. J has
-independent restrictions on all three open regions, independent one-sided
-traces, and arbitrary distributions supported at the faces. Derivatives of
-the supported distributions remain formal. No form, continuity, exterior
-vanishing, boundary condition, or pointwise face value is selected for J.
-The order can jump. No live field is frozen.
+Revision 4 gives n, u and J independent live restrictions and one-sided traces
+in three open regions. Order is live inside and zero outside by U1. Input
+fields have no face-concentrated parts. The source and total-material balance
+are differentiated distributionally, with conserved products formed region
+by region. Material-balance coefficients are extracted locally before their
+bulk contributions are removed. No jump or point value is selected; no live
+field is frozen. There is no expected-value guard or cross-engine comparison.
 """
 
 from pathlib import Path
@@ -123,21 +120,14 @@ class Dimensions:
 def main(p):
     p.working("supplied_inputs")
     p.emit("engine", (sys.version, s.__version__))
-    p.emit(
-        "governing_input",
-        "S12_decision_list.md; supplied equations and U1 encoding are unfalsifiable inputs",
-    )
-    p.emit(
-        "calculus_scope",
-        (
-            "distributional order; n and u retain differentiable bulk fields with traces",
-            "J has independent restrictions and one-sided traces in all three open regions",
-            "J also has arbitrary distributions supported at each face; their derivatives remain formal and distributional",
-            "no continuity, exterior vanishing, or boundary condition on J",
-            "pointwise face values unspecified",
-            "interior range and strict face order are supplied domain conditions",
-        ),
-    )
+    p.emit("governing_input", "S12_decision_list.md revision 4, b08673a2; supplied equations and face rules are unfalsifiable inputs")
+    p.emit("calculus_scope", (
+        "n, u and J have independent live restrictions and one-sided traces in all three open regions",
+        "order is a live interior field, zero outside by U1",
+        "no input field has a face-concentrated part; those possibilities remain OPEN outside this object",
+        "the computed source can have face-concentrated parts",
+        "pointwise face values and jumps are unspecified",
+    ))
     time = s.Symbol("t", real=True)
     spatial = s.symbols("x1 x2 x3 w", real=True)
     coordinates = (time,) + spatial
@@ -155,32 +145,26 @@ def main(p):
     rates = [fun(*coordinates) for fun in rate_heads]
     faces = [fun(*slab_coordinates) for fun in face_heads]
 
-    # BEGIN SUPPLIED BALANCES: the only authored physical combinations besides U1.
-    material = s.Eq(
-        s.diff(density, time)
-        + sum(s.diff(density * v, x) for v, x in zip(velocity, spatial)),
-        0,
+    # BEGIN SUPPLIED BALANCES. The spacetime current components are retained
+    # as undifferentiated operands, so discontinuous products can be formed
+    # separately in their open regions before distributional differentiation.
+    material_current = (density,) + tuple(density * v for v in velocity)
+    order_current = (chi * density,) + tuple(
+        chi * density * v + j for v, j in zip(velocity, flux)
     )
-    ordered = s.Eq(
-        s.diff(chi * density, time)
-        + sum(
-            s.diff(chi * density * v + j, x)
-            for v, j, x in zip(velocity, flux, spatial)
-        ),
-        density * rates[0],
-    )
+    material = s.Eq(sum(s.diff(c, z) for c, z in zip(material_current, coordinates)), 0)
+    ordered = s.Eq(sum(s.diff(c, z) for c, z in zip(order_current, coordinates)), density * rates[0])
     conversion = s.Eq(rates[0], rates[1] - rates[2])
     # END SUPPLIED BALANCES.
-    # BEGIN U1 ENCODING: two offsets, each nonnegative in the region.
+    # BEGIN U1 ENCODING.
     offsets = (w - faces[0], faces[1] - w)
     steps = tuple(s.Heaviside(offset) for offset in offsets)
     support = s.Mul(*steps)
     interior = f_head(*coordinates)
     conditional_interior = g_head(*offsets)
     packages = (
-        ("general_order", interior * support, (s.S.Zero, interior, s.S.Zero)),
-        ("conditional_fast_ordering", conditional_interior * support,
-         (s.S.Zero, conditional_interior, s.S.Zero)),
+        ("general_order", (s.S.Zero, interior, s.S.Zero)),
+        ("conditional_fast_ordering", (s.S.Zero, conditional_interior, s.S.Zero)),
     )
     domains = (
         s.And(faces[0] < faces[1], w < faces[0]),
@@ -188,33 +172,34 @@ def main(p):
         s.And(faces[0] < faces[1], w > faces[1]),
     )
     # END U1 ENCODING.
-    # Restrict J independently to each of U1's open strata. The masks only
-    # locate the restrictions, and impose no constitutive profile. Keep an
-    # independent arbitrary supported distribution at each face as well;
-    # this is a distribution field with the same units as J, not a trace or
-    # a chosen delta profile. No live field is set to zero in this encoding.
     regional_masks = (
         s.Heaviside(s.Mul(-1, offsets[0])), support,
         s.Heaviside(s.Mul(-1, offsets[1])),
     )
+    region_n_heads = [s.Function(f"n_region{r + 1}") for r in range(len(domains))]
+    region_u_heads = [
+        [s.Function(f"u{c + 1}_region{r + 1}") for c in range(len(spatial))]
+        for r in range(len(domains))
+    ]
     region_j_heads = [
         [s.Function(f"j{c + 1}_region{r + 1}") for c in range(len(spatial))]
         for r in range(len(domains))
     ]
-    face_j_heads = [
-        [s.Function(f"j{c + 1}_face{k + 1}") for c in range(len(spatial))]
-        for k in range(len(faces))
-    ]
+    regional_density = [fun(*coordinates) for fun in region_n_heads]
+    regional_velocity = [[fun(*coordinates) for fun in row] for row in region_u_heads]
     regional_flux = [[fun(*coordinates) for fun in row] for row in region_j_heads]
-    supported_flux = [[fun(*coordinates) for fun in row] for row in face_j_heads]
-    distributed_flux = [
-        s.Add(
-            *(s.Mul(mask, row[c]) for mask, row in zip(regional_masks, regional_flux)),
-            *(row[c] for row in supported_flux),
-        )
-        for c in range(len(spatial))
+    generic_fields = [density] + velocity + flux
+    region_maps = [
+        dict(zip(generic_fields, [n] + u + j))
+        for n, u, j in zip(regional_density, regional_velocity, regional_flux)
     ]
-    flux_substitution = dict(zip(flux, distributed_flux))
+    # Only these smooth regional products are multiplied by a partition mask.
+    mass_currents = [tuple(c.xreplace(mapping) for c in material_current) for mapping in region_maps]
+    mass_local = [s.expand(sum(s.diff(c, z) for c, z in zip(row, coordinates))) for row in mass_currents]
+    mass_current_field = tuple(
+        s.Add(*(mask * row[c] for mask, row in zip(regional_masks, mass_currents)))
+        for c in range(len(coordinates))
+    )
     p.obj("supplied/material_balance", material)
     p.obj("supplied/order_balance", ordered)
     p.obj("supplied/conversion_identity", conversion)
@@ -222,53 +207,31 @@ def main(p):
     p.obj("supplied/domain", (faces[0] < faces[1], s.And(interior >= 0, interior <= 1)))
     p.obj("live_fields", (density, velocity, flux, chi, faces))
     p.obj("region_domains", domains)
-    p.obj("flux/region_indicators", regional_masks)
+    p.obj("fields/region_indicators", regional_masks)
+    p.obj("density/region_fields", regional_density)
+    p.obj("velocity/region_fields", regional_velocity)
     p.obj("flux/region_fields", regional_flux)
-    p.obj("flux/face_supported_fields", supported_flux)
-    p.obj("flux/face_support_domains", list(zip(supported_flux, [s.Eq(w, face) for face in faces])))
-    p.obj("flux/distribution_field", distributed_flux)
-
-    p.working("material_balance_extraction")
-    expanded_order = s.expand(ordered.lhs)
-    material_weight = expanded_order.coeff(s.diff(density, time))
-    material_multiple = s.expand(s.Mul(material_weight, material.lhs))
-    transport_expression = s.expand(s.Add(expanded_order, -material_multiple))
-    p.obj("material_extraction/order_operand", expanded_order)
-    p.obj("material_extraction/coefficient", material_weight)
-    p.obj("material_extraction/balance_multiple", material_multiple)
-    p.obj("material_extraction/source_expression", transport_expression)
-
-    # Extract the linear flux differential operator from the supplied law.
-    # Apply its computed jet coefficients to each supported distribution.
-    # No face-source formula is inserted and no J is set to zero to isolate it.
-    flux_operator = [
-        (c, x, s.diff(field, x), transport_expression.coeff(s.diff(field, x)))
-        for c, field in enumerate(flux) for x in spatial
-    ]
-    p.obj("flux/differential_operator_operands", flux_operator)
-    supported_sources = [
-        s.Add(*(weight * s.diff(row[c], x) for c, x, jet, weight in flux_operator))
-        for row in supported_flux
-    ]
-    p.obj("flux/face_supported_sources", supported_sources)
+    p.obj("density/distribution_field", s.Add(*(mask * n for mask, n in zip(regional_masks, regional_density))))
+    p.obj("velocity/distribution_field", [s.Add(*(mask * row[c] for mask, row in zip(regional_masks, regional_velocity))) for c in range(len(spatial))])
+    p.obj("flux/distribution_field", [s.Add(*(mask * row[c] for mask, row in zip(regional_masks, regional_flux))) for c in range(len(spatial))])
 
     p.working("order_flux_dimensions")
     length_unit, time_unit = s.Matrix([1, 0]), s.Matrix([0, 1])
     dimensionless = s.zeros(2, 1)
     primitive_units = {n_head: s.Matrix([-4, 0]), chi_head: dimensionless,
                        f_head: dimensionless, g_head: dimensionless}
-    primitive_units.update((head, s.Matrix([1, -1])) for head in u_heads)
+    primitive_units.update((head, s.Matrix([-4, 0])) for head in region_n_heads)
+    all_u_heads = u_heads + [head for row in region_u_heads for head in row]
+    primitive_units.update((head, s.Matrix([1, -1])) for head in all_u_heads)
     primitive_units.update((head, length_unit) for head in face_heads)
     primitive_units.update((head, s.Matrix([0, -1])) for head in rate_heads)
     unknown_units = s.symbols("j_length j_time")
-    all_j_heads = j_heads + [head for row in region_j_heads + face_j_heads for head in row]
+    all_j_heads = j_heads + [head for row in region_j_heads for head in row]
     primitive_units.update((head, s.Matrix(unknown_units)) for head in all_j_heads)
-    dimensions = Dimensions(
-        coordinates, primitive_units, [time_unit] + [length_unit] * len(spatial)
-    )
+    dimensions = Dimensions(coordinates, primitive_units, [time_unit] + [length_unit] * len(spatial))
     p.emit("dimension_basis", ("length", "time", "number count dimensionless"))
     p.obj("primitive_function_dimensions", primitive_units)
-    terms = s.Add.make_args(expanded_order)
+    terms = s.Add.make_args(s.expand(ordered.lhs))
     vectors = [dimensions.of(term) for term in terms]
     reference_unit = dimensions.of(ordered.rhs)
     p.emit("order_flux_dimension_inference/operands", (list(zip(terms, vectors)), (ordered.rhs, reference_unit)))
@@ -287,34 +250,94 @@ def main(p):
     dimensions.report(p, "supplied/order_balance_rhs", ordered.rhs)
     dimensions.report(p, "supplied/conversion_identity_rhs", conversion.rhs, conversion.lhs)
 
-    # Dirac factors and their normalization are generated by differentiating
-    # the actual U1 steps, with one slot retained for each supplied face.
     delta_factors = [
         s.expand(s.diff(step, w) / s.diff(offset, w), diracdelta=True, wrt=w)
         for step, offset in zip(steps, offsets)
     ]
-    for label, order_field, regional_orders in packages:
-        p.working(label + "/source")
+    p.working("material/balance_distribution")
+    p.obj("material/region_current_operands", mass_currents)
+    p.obj("material/region_balance_operands", [s.Eq(lhs, material.rhs) for lhs in mass_local])
+    p.obj("material/conserved_current_operand", mass_current_field)
+    mass_raw = s.expand(sum(s.diff(c, z) for c, z in zip(mass_current_field, coordinates)), diracdelta=True, wrt=w)
+    p.obj("material/balance_distribution_operand", mass_raw)
+    mass_bulk_operand = s.expand(s.Add(*(mask * lhs for mask, lhs in zip(regional_masks, mass_local))))
+    p.obj("material/bulk_balance_operand", mass_bulk_operand)
+    mass_required = s.expand(mass_raw - mass_bulk_operand)
+    p.obj("material/balance_distribution", mass_required)
+    dimensions.report(p, "material/balance_distribution_operand", mass_raw, s.diff(density, time))
+    dimensions.report(p, "material/balance_distribution", mass_required, s.diff(density, time))
+    for r, lhs in enumerate(mass_local, 1):
+        p.obj(f"material/region/{r}/balance", s.Eq(lhs, material.rhs))
+        dimensions.report(p, f"material/region/{r}/balance_lhs", lhs, s.diff(density, time))
+    mass_face_equations, mass_face_terms = [], []
+    for k, (face, delta) in enumerate(zip(faces, delta_factors), 1):
+        name = f"material/face/{k}"
+        p.working(name)
+        coefficient = mass_raw.coeff(delta)
+        jacobian = s.Abs(s.diff(delta.args[0], w))
+        trace = s.expand(coefficient.subs(w, face) / jacobian)
+        term = trace * s.DiracDelta(s.expand(delta.args[0] / s.diff(delta.args[0], w)))
+        p.obj(name + "/coefficient_operand", coefficient)
+        p.obj(name + "/trace_coefficient", trace)
+        p.emit(name + "/balance_operands", (trace, material.rhs))
+        p.emit(name + "/balance_residual", trace - material.rhs)
+        equation = s.Eq(trace, material.rhs)
+        p.obj(name + "/requirement", equation)
+        p.obj(name + "/balance_contribution", term)
+        dimensions.report(p, name + "/trace_coefficient", trace)
+        dimensions.report(p, name + "/balance_contribution", term, s.diff(density, time))
+        mass_face_equations.append(equation)
+        mass_face_terms.append(term)
+    p.obj("material/face_requirements", mass_face_equations)
+    p.obj("material/balance_with_face_traces", s.Add(*mass_face_terms))
+
+    for label, regional_orders in packages:
+        p.working(label + "/conserved_operands")
+        order_field = s.Add(*(mask * q for mask, q in zip(regional_masks, regional_orders)))
         p.obj(label + "/order_field", order_field)
+        p.obj(label + "/region_order_operands", regional_orders)
         if label == "conditional_fast_ordering":
             p.emit(label + "/premise", "conditional specialization: ordering keeps pace with the slab; G is general in both offsets")
             p.obj(label + "/interior_range", s.And(conditional_interior >= 0, conditional_interior <= 1))
-        source_operand = transport_expression.subs(chi, order_field).subs(flux_substitution, simultaneous=True)
-        p.obj(label + "/flux_substitution_operand", source_operand)
-        source = s.expand(source_operand.doit(), diracdelta=True, wrt=w)
+        order_currents = []
+        for mapping, q in zip(region_maps, regional_orders):
+            field_map = dict(mapping)
+            field_map[chi] = q
+            order_currents.append(tuple(c.xreplace(field_map) for c in order_current))
+        p.obj(label + "/region_current_operands", order_currents)
+        current_field = tuple(
+            s.Add(*(mask * row[c] for mask, row in zip(regional_masks, order_currents)))
+            for c in range(len(coordinates))
+        )
+        p.obj(label + "/conserved_current_operand", current_field)
+        # Extract the coefficient of the regional material density's time
+        # derivative from each local order equation. Remove only this local
+        # bulk balance. Multiplying a global material delta by a jumping chi
+        # would choose an undefined distribution product and is never used.
+        local_order = [s.expand(sum(s.diff(c, z) for c, z in zip(row, coordinates))) for row in order_currents]
+        weights = [lhs.coeff(s.diff(n, time)) for lhs, n in zip(local_order, regional_density)]
+        local_multiples = [s.expand(weight * mass) for weight, mass in zip(weights, mass_local)]
+        p.obj(label + "/material_extraction/coefficients", weights)
+        p.obj(label + "/material_extraction/local_operands", list(zip(local_order, local_multiples)))
+        bulk_multiple = s.expand(s.Add(*(mask * part for mask, part in zip(regional_masks, local_multiples))))
+        p.obj(label + "/material_elimination_operand", bulk_multiple)
+        p.working(label + "/source")
+        raw = s.expand(sum(s.diff(c, z) for c, z in zip(current_field, coordinates)), diracdelta=True, wrt=w)
+        p.obj(label + "/balance_source_operand", raw)
+        source = s.expand(raw - bulk_multiple)
         p.obj(label + "/source_distribution", source)
-        regular = s.expand(source - s.Add(*supported_sources)).xreplace(dict.fromkeys(delta_factors, s.S.Zero))
+        regular = source.xreplace(dict.fromkeys(delta_factors, s.S.Zero))
         p.obj(label + "/regular_distribution_part", regular)
         dimensions.report(p, label + "/order_field", order_field)
+        dimensions.report(p, label + "/balance_source_operand", raw, ordered.rhs)
         dimensions.report(p, label + "/source_distribution", source, ordered.rhs)
         dimensions.report(p, label + "/regular_distribution_part", regular, ordered.rhs)
-        for k, (domain, regional_order, regional_j) in enumerate(zip(domains, regional_orders, regional_flux), 1):
-            name = label + f"/region/{k}"
+        for r, (domain, q, lhs, part) in enumerate(zip(domains, regional_orders, local_order, local_multiples), 1):
+            name = label + f"/region/{r}"
             p.working(name)
             p.obj(name + "/domain", domain)
-            p.obj(name + "/order_operand", regional_order)
-            p.obj(name + "/flux_operand", regional_j)
-            restricted = s.expand(transport_expression.subs(chi, regional_order).subs(dict(zip(flux, regional_j)), simultaneous=True).doit())
+            p.obj(name + "/field_operands", (regional_density[r - 1], regional_velocity[r - 1], regional_flux[r - 1], q))
+            restricted = s.expand(lhs - part)
             p.obj(name + "/source", restricted)
             dimensions.report(p, name + "/source", restricted, ordered.rhs)
         face_terms = []
@@ -324,24 +347,28 @@ def main(p):
             coefficient = source.coeff(delta)
             jacobian = s.Abs(s.diff(delta.args[0], w))
             trace = s.expand(coefficient.subs(w, face) / jacobian)
-            normalized_delta = s.DiracDelta(
-                s.expand(delta.args[0] / s.diff(delta.args[0], w))
-            )
-            term = s.Add(s.Mul(trace, normalized_delta), supported_sources[k - 1])
+            normalized_delta = s.DiracDelta(s.expand(delta.args[0] / s.diff(delta.args[0], w)))
+            term = s.Mul(trace, normalized_delta)
+            trace_fields = [
+                (regional_density[r].subs(w, face),
+                 [v.subs(w, face) for v in regional_velocity[r]],
+                 [j.subs(w, face) for j in regional_flux[r]],
+                 regional_orders[r].subs(w, face))
+                for r in (k - 1, k)
+            ]
             p.obj(name + "/locus", s.Eq(w, face))
+            p.obj(name + "/field_trace_operands", trace_fields)
             p.obj(name + "/delta_operand", delta)
             p.obj(name + "/normalization_operand", jacobian)
             p.obj(name + "/coefficient_operand", coefficient)
             p.obj(name + "/trace_coefficient", trace)
-            p.obj(name + "/supported_flux_operand", supported_flux[k - 1])
-            p.obj(name + "/supported_flux_source", supported_sources[k - 1])
             p.obj(name + "/source_contribution", term)
+            p.obj(name + "/material_requirement", mass_face_equations[k - 1])
             dimensions.report(p, name + "/trace_coefficient", trace)
-            dimensions.report(p, name + "/supported_flux_source", supported_sources[k - 1], ordered.rhs)
             dimensions.report(p, name + "/source_contribution", term, ordered.rhs)
             face_terms.append(term)
         p.obj(label + "/source_with_face_traces", s.Add(regular, *face_terms))
-    p.emit("completion", ("general_order", "conditional_fast_ordering", "dimensional_objects"))
+    p.emit("completion", ("material_face_requirements", "general_order", "conditional_fast_ordering", "dimensional_objects"))
 
 
 if __name__ == "__main__":

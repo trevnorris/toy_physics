@@ -4,12 +4,12 @@ SetSystemOptions["InequalitySolvingOptions" -> "ThreadOr" -> False];
    Supplied input: the two conservation laws, signed conversion identity,
    and U1's live interior field between two live faces. All subsequent physical
    expressions are differentiation, elimination, restriction, or extraction.
-   Distribution convention: n and u retain their original differentiable
-   bulk-field class. J has independent differentiable restrictions on the
-   three open regions, independent one-sided traces, and an arbitrary
-   distribution supported at each face. Derivatives of those distributions
-   stay formal; no face-flux form, continuity, or boundary condition is imposed.
-   The order can jump. No point value at a face is selected.
+   Revision 4: n, u and J have independent differentiable restrictions and
+   one-sided traces on the three open regions. The order is live inside,
+   zero outside. No input field has a face-concentrated part. Conserved
+   products are formed within a region before applying the region indicators.
+   Both balances are differentiated distributionally, including the material
+   balance at each face. No point value or jump is selected.
    This script computes and prints; it has no expected-value acceptance guard. *)
 $HistoryLength = 0;
 transcriptPath = "/var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/S12_order_source.out";
@@ -31,8 +31,11 @@ unit[fun_] := Switch[fun,
   um | u1 | u2 | u3, {1, -1},
   wm | wp, {1, 0}, gb | gr | gd, {0, -1},
   j1 | j2 | j3 | jm, fluxUnit,
-  _, If[MemberQ[fluxFunctionHeads, fun], fluxUnit,
-    Throw[{"unassigned_function_dimension", HoldForm[fun]}]]
+  _, Which[
+    MemberQ[densityFunctionHeads, fun], {-4, 0},
+    MemberQ[velocityFunctionHeads, fun], {1, -1},
+    MemberQ[fluxFunctionHeads, fun], fluxUnit,
+    True, Throw[{"unassigned_function_dimension", HoldForm[fun]}]]
 ];
 dimension[e_?NumberQ] := {0, 0};
 dimension[t] := {0, 1};
@@ -67,60 +70,66 @@ dimReport[tag_String, expression_, reference_:None] := Module[{pieces, dims, ref
 
 main[] := Module[{space, coordinates, density, velocity, flux, fraction,
     faces, levels, assumptions, regions, material, order, conversion,
-    timeRule, fluxUnknowns, dimTerms, dimVectors, dimReference, dimResidual,
-    fluxRules, packages, label, orderField, raw, source, regular,
-    restricted, delta, coefficient, trace, faceTerm, fullFaces, branchAssumptions,
-    regionIndicators, regionFluxHeads, faceFluxHeads, regionFlux, faceFlux,
-    markers, markerRules, markedFlux, fluxReplacement, toField, markedSource,
-    supportedSources},
+    materialDensity, materialCurrent, orderDensity, orderCurrent,
+    fluxUnknowns, dimTerms, dimVectors, dimReference, dimResidual, fluxRules,
+    packages, label, orderField, interiorOrder, regionalOrders, raw, source,
+    regular, restricted, delta, coefficient, trace, faceTerm, fullFaces,
+    regionIndicators, regionDensityHeads, regionVelocityHeads, regionFluxHeads,
+    regionDensity, regionVelocity, regionFlux, fieldRules, toField,
+    materialDensities, materialCurrents, localMaterial, timeRules,
+    materialDensityField, materialCurrentField, materialRaw, materialRequired,
+    materialFaceEquations, materialFaceTerms, orderDensities, orderCurrents,
+    orderDensityField, orderCurrentField, localOrder, fieldTraces},
   working["supplied_inputs"];
   emit["engine", {$Version, $SystemID}];
-  emit["governing_input", "S12_decision_list.md; supplied equations and U1 encoding are unfalsifiable inputs"];
-  emit["calculus_scope", {"distributional order; n and u retain differentiable bulk fields with traces",
-    "J has independent restrictions and one-sided traces in all three open regions",
-    "J also retains arbitrary face-supported distributions; their derivatives are distributional and remain formal",
-    "no continuity, exterior vanishing, or boundary condition on J",
-    "pointwise face values unspecified", "interior range and strict face order are supplied domain conditions"}];
+  emit["governing_input", "S12_decision_list.md revision 4, b08673a2; supplied equations and face rules are unfalsifiable inputs"];
+  emit["calculus_scope", {
+    "n, u and J are independent live functions in all three open regions with unrestricted one-sided traces",
+    "order is a live interior field, zero outside by U1",
+    "input fields have no face-concentrated parts; those possibilities remain OPEN outside this object",
+    "the computed source may have face-concentrated parts",
+    "pointwise face values and jumps are unspecified"}];
   coordinates = {t, x1, x2, x3, w}; space = Rest[coordinates];
   density = n @@ coordinates;
   velocity = (#[Sequence @@ coordinates] & /@ {u1, u2, u3, um});
   flux = (#[Sequence @@ coordinates] & /@ {j1, j2, j3, jm});
   fraction = chi @@ coordinates;
   faces = {wm[t, x1, x2, x3], wp[t, x1, x2, x3]};
-  (* BEGIN SUPPLIED BALANCES *)
-  material = D[density, t] + Total[MapThread[D[#1, #2] &, {density velocity, space}]] == 0;
-  order = D[fraction density, t] + Total[MapThread[D[#1, #2] &, {fraction density velocity + flux, space}]] == density (gb @@ coordinates);
+  (* BEGIN SUPPLIED BALANCES. Retain the undifferentiated conserved operands
+     so products can be restricted before distributional differentiation. *)
+  materialDensity = density; materialCurrent = density velocity;
+  orderDensity = fraction density; orderCurrent = fraction density velocity + flux;
+  material = D[materialDensity, t] + Total[MapThread[D[#1, #2] &, {materialCurrent, space}]] == 0;
+  order = D[orderDensity, t] + Total[MapThread[D[#1, #2] &, {orderCurrent, space}]] == density (gb @@ coordinates);
   conversion = (gb @@ coordinates) == (gr @@ coordinates) - (gd @@ coordinates);
   (* END SUPPLIED BALANCES *)
-  (* BEGIN U1 ENCODING. The difference of steps describes the same two
-     strictly ordered faces without selecting a point value at either face. *)
+  (* BEGIN U1 ENCODING *)
   levels = (w - # & /@ faces);
   assumptions = Element[coordinates, Reals] && (Less @@ faces);
   regions = {w < First[faces], First[faces] < w < Last[faces], w > Last[faces]};
   packages = {
-    {"general_order", (f @@ coordinates) (Subtract @@ (HeavisideTheta /@ levels))},
-    {"conditional_fast_ordering", g[w - First[faces], Last[faces] - w] (Subtract @@ (HeavisideTheta /@ levels))}
+    {"general_order", f @@ coordinates},
+    {"conditional_fast_ordering", g[w - First[faces], Last[faces] - w]}
   };
   (* END U1 ENCODING *)
-  (* Partition the unrestricted flux using the already computed ordered-face
-     indicators. These are restrictions of J, not a constitutive profile.
-     The additional face fields denote arbitrary supported distributions,
-     not values or traces of the regional fields. Markers isolate their
-     differentiated contributions algebraically, without setting a field to 0. *)
   regionIndicators = -Differences[Join[{1}, HeavisideTheta /@ levels, {0}]];
+  regionDensityHeads = Table[Symbol["nRegion" <> ToString[r]], {r, Length[regions]}];
+  regionVelocityHeads = Table[Symbol["u" <> ToString[c] <> "Region" <> ToString[r]],
+    {r, Length[regions]}, {c, Length[space]}];
   regionFluxHeads = Table[Symbol["j" <> ToString[c] <> "Region" <> ToString[r]],
     {r, Length[regions]}, {c, Length[space]}];
-  faceFluxHeads = Table[Symbol["j" <> ToString[c] <> "Face" <> ToString[k]],
-    {k, Length[faces]}, {c, Length[space]}];
-  fluxFunctionHeads = Join[Flatten[regionFluxHeads], Flatten[faceFluxHeads]];
+  densityFunctionHeads = regionDensityHeads;
+  velocityFunctionHeads = Flatten[regionVelocityHeads];
+  fluxFunctionHeads = Flatten[regionFluxHeads];
+  regionDensity = (# @@ coordinates & /@ regionDensityHeads);
+  regionVelocity = Map[(# @@ coordinates) &, regionVelocityHeads, {2}];
   regionFlux = Map[(# @@ coordinates) &, regionFluxHeads, {2}];
-  faceFlux = Map[(# @@ coordinates) &, faceFluxHeads, {2}];
-  markers = Table[Unique["faceFluxMarker$"], {Length[faces]}];
-  markerRules = Thread[markers -> ConstantArray[1, Length[faces]]];
-  markedFlux = regionIndicators . regionFlux + markers . faceFlux;
   toField[expr_] := Function[{tt, xx1, xx2, xx3, ww},
     Evaluate[expr /. Thread[coordinates -> {tt, xx1, xx2, xx3, ww}]]];
-  fluxReplacement = Thread[{j1, j2, j3, jm} -> (toField /@ markedFlux)];
+  fieldRules = Table[
+    Thread[Join[{n}, {u1, u2, u3, um}, {j1, j2, j3, jm}] ->
+      (toField /@ Join[{regionDensity[[r]]}, regionVelocity[[r]], regionFlux[[r]]])],
+    {r, Length[regions]}];
   object["supplied/material_balance", material];
   object["supplied/order_balance", order];
   object["supplied/conversion_identity", conversion];
@@ -128,14 +137,13 @@ main[] := Module[{space, coordinates, density, velocity, flux, fraction,
   object["supplied/domain", {assumptions, 0 <= (f @@ coordinates) <= 1}];
   object["live_fields", {density, velocity, flux, fraction, faces}];
   object["region_domains", regions];
-  object["flux/region_indicators", regionIndicators];
+  object["fields/region_indicators", regionIndicators];
+  object["density/region_fields", regionDensity];
+  object["velocity/region_fields", regionVelocity];
   object["flux/region_fields", regionFlux];
-  object["flux/face_supported_fields", faceFlux];
-  object["flux/face_support_domains", Table[{faceFlux[[k]], w == faces[[k]]}, {k, Length[faces]}]];
-  object["flux/distribution_field", markedFlux /. markerRules];
-  working["material_elimination"];
-  timeRule = First[Solve[material, D[density, t]]];
-  object["material/time_derivative_rule", timeRule];
+  object["density/distribution_field", regionIndicators . regionDensity];
+  object["velocity/distribution_field", regionIndicators . regionVelocity];
+  object["flux/distribution_field", regionIndicators . regionFlux];
 
   working["order_flux_dimensions"];
   emit["dimension_basis", {"length", "time", "number count dimensionless"}];
@@ -158,60 +166,123 @@ main[] := Module[{space, coordinates, density, velocity, flux, fraction,
   dimReport["supplied/order_balance_rhs", Last[order]];
   dimReport["supplied/conversion_identity_rhs", Last[conversion], First[conversion]];
 
+  working["material/region_balances"];
+  materialDensities = Table[materialDensity /. fieldRules[[r]], {r, Length[regions]}];
+  materialCurrents = Table[materialCurrent /. fieldRules[[r]], {r, Length[regions]}];
+  localMaterial = Table[material /. fieldRules[[r]], {r, Length[regions]}];
+  timeRules = Flatten[Table[First[Solve[localMaterial[[r]], D[regionDensity[[r]], t]]],
+    {r, Length[regions]}]];
+  object["material/region_density_operands", materialDensities];
+  object["material/region_current_operands", materialCurrents];
+  object["material/region_balance_operands", localMaterial];
+  object["material/time_derivative_rules", timeRules];
+  materialDensityField = regionIndicators . materialDensities;
+  materialCurrentField = regionIndicators . materialCurrents;
+  object["material/conserved_density_operand", materialDensityField];
+  object["material/conserved_current_operand", materialCurrentField];
+  materialRaw = Expand[D[materialDensityField, t] +
+    Total[MapThread[D[#1, #2] &, {materialCurrentField, space}]]];
+  object["material/balance_distribution_operand", materialRaw];
+  materialRequired = Expand[materialRaw /. timeRules];
+  object["material/balance_distribution", materialRequired];
+  dimReport["material/balance_distribution_operand", materialRaw, D[density, t]];
+  dimReport["material/balance_distribution", materialRequired, D[density, t]];
   Do[
-    label = package[[1]]; orderField = package[[2]];
+    object["material/region/" <> ToString[r] <> "/balance", localMaterial[[r]]];
+    dimReport["material/region/" <> ToString[r] <> "/balance_lhs", First[localMaterial[[r]]], D[density, t]],
+    {r, Length[regions]}];
+  materialFaceEquations = {}; materialFaceTerms = {};
+  Do[
+    working["material/face/" <> ToString[k]];
+    delta = DiracDelta[levels[[k]]];
+    coefficient = Coefficient[materialRaw, delta];
+    trace = Expand[coefficient /. w -> faces[[k]]];
+    faceTerm = trace delta;
+    object["material/face/" <> ToString[k] <> "/coefficient_operand", coefficient];
+    object["material/face/" <> ToString[k] <> "/trace_coefficient", trace];
+    emit["material/face/" <> ToString[k] <> "/balance_operands", {trace, Last[material]}];
+    emit["material/face/" <> ToString[k] <> "/balance_residual", trace - Last[material]];
+    AppendTo[materialFaceEquations, trace == Last[material]];
+    object["material/face/" <> ToString[k] <> "/requirement", Last[materialFaceEquations]];
+    object["material/face/" <> ToString[k] <> "/balance_contribution", faceTerm];
+    dimReport["material/face/" <> ToString[k] <> "/trace_coefficient", trace];
+    dimReport["material/face/" <> ToString[k] <> "/balance_contribution", faceTerm, D[density, t]];
+    AppendTo[materialFaceTerms, faceTerm],
+    {k, Length[faces]}];
+  object["material/face_requirements", materialFaceEquations];
+  object["material/balance_with_face_traces", Total[materialFaceTerms]];
+
+  Do[
+    label = package[[1]]; interiorOrder = package[[2]];
+    (* Regional order values are exactly U1: only the interior is live. *)
+    regionalOrders = {0, interiorOrder, 0};
+    orderField = regionIndicators . regionalOrders;
     working[label <> "/order_field"];
     object[label <> "/order_field", orderField];
+    object[label <> "/region_order_operands", regionalOrders];
     If[label === "conditional_fast_ordering",
       emit[label <> "/premise", "conditional specialization: ordering keeps pace with the slab; G is general in both offsets"];
-      object[label <> "/interior_range", 0 <= g[w - First[faces], Last[faces] - w] <= 1]
+      object[label <> "/interior_range", 0 <= interiorOrder <= 1]
     ];
+    working[label <> "/conserved_operands"];
+    orderDensities = Table[orderDensity /. Join[fieldRules[[r]], {chi -> toField[regionalOrders[[r]]]}],
+      {r, Length[regions]}];
+    orderCurrents = Table[orderCurrent /. Join[fieldRules[[r]], {chi -> toField[regionalOrders[[r]]]}],
+      {r, Length[regions]}];
+    object[label <> "/region_density_operands", orderDensities];
+    object[label <> "/region_current_operands", orderCurrents];
+    orderDensityField = regionIndicators . orderDensities;
+    orderCurrentField = regionIndicators . orderCurrents;
+    object[label <> "/conserved_density_operand", orderDensityField];
+    object[label <> "/conserved_current_operand", orderCurrentField];
     working[label <> "/source"];
-    (* Substitution into the supplied balance precedes all eliminations. *)
-    raw = Expand[First[order] /. Join[{chi -> toField[orderField]}, fluxReplacement]];
+    raw = Expand[D[orderDensityField, t] +
+      Total[MapThread[D[#1, #2] &, {orderCurrentField, space}]]];
     object[label <> "/balance_source_operand", raw];
-    object[label <> "/material_elimination_operand", timeRule];
-    markedSource = Expand[raw /. timeRule];
-    object[label <> "/source_with_flux_markers", markedSource];
-    supportedSources = (Coefficient[markedSource, #] & /@ markers);
-    object[label <> "/face_supported_flux_sources", supportedSources];
-    source = Expand[markedSource /. markerRules];
+    object[label <> "/material_elimination_operand", timeRules];
+    source = Expand[raw /. timeRules];
     object[label <> "/source_distribution", source];
-    regular = Expand[source - Total[supportedSources]] /. DiracDelta[_] -> 0;
+    regular = source /. DiracDelta[_] -> 0;
     object[label <> "/regular_distribution_part", regular];
     dimReport[label <> "/order_field", orderField];
+    dimReport[label <> "/balance_source_operand", raw, Last[order]];
     dimReport[label <> "/source_distribution", source, Last[order]];
     dimReport[label <> "/regular_distribution_part", regular, Last[order]];
+    localOrder = Table[Expand[D[orderDensities[[r]], t] +
+      Total[MapThread[D[#1, #2] &, {orderCurrents[[r]], space}]]], {r, Length[regions]}];
     Do[
-      working[label <> "/region/" <> ToString[k]];
-      branchAssumptions = assumptions && regions[[k]];
-      object[label <> "/region/" <> ToString[k] <> "/domain", branchAssumptions];
-      restricted = Refine[regular, branchAssumptions];
-      object[label <> "/region/" <> ToString[k] <> "/source", restricted];
-      dimReport[label <> "/region/" <> ToString[k] <> "/source", restricted, Last[order]],
-      {k, Length[regions]}];
+      working[label <> "/region/" <> ToString[r]];
+      object[label <> "/region/" <> ToString[r] <> "/domain", assumptions && regions[[r]]];
+      object[label <> "/region/" <> ToString[r] <> "/field_operands",
+        {regionDensity[[r]], regionVelocity[[r]], regionFlux[[r]], regionalOrders[[r]]}];
+      restricted = Expand[localOrder[[r]] /. timeRules];
+      object[label <> "/region/" <> ToString[r] <> "/source", restricted];
+      dimReport[label <> "/region/" <> ToString[r] <> "/source", restricted, Last[order]],
+      {r, Length[regions]}];
     fullFaces = {};
     Do[
       working[label <> "/face/" <> ToString[k]];
       delta = DiracDelta[levels[[k]]];
       coefficient = Coefficient[source, delta];
       trace = Expand[coefficient /. w -> faces[[k]]];
-      faceTerm = trace delta + supportedSources[[k]];
+      faceTerm = trace delta;
+      fieldTraces = Table[
+        {regionDensity[[r]], regionVelocity[[r]], regionFlux[[r]], regionalOrders[[r]]} /. w -> faces[[k]],
+        {r, k, k + 1}];
       object[label <> "/face/" <> ToString[k] <> "/locus", w == faces[[k]]];
+      object[label <> "/face/" <> ToString[k] <> "/field_trace_operands", fieldTraces];
       object[label <> "/face/" <> ToString[k] <> "/delta", delta];
       object[label <> "/face/" <> ToString[k] <> "/coefficient_operand", coefficient];
       object[label <> "/face/" <> ToString[k] <> "/trace_coefficient", trace];
-      object[label <> "/face/" <> ToString[k] <> "/supported_flux_operand", faceFlux[[k]]];
-      object[label <> "/face/" <> ToString[k] <> "/supported_flux_source", supportedSources[[k]]];
       object[label <> "/face/" <> ToString[k] <> "/source_contribution", faceTerm];
+      object[label <> "/face/" <> ToString[k] <> "/material_requirement", materialFaceEquations[[k]]];
       dimReport[label <> "/face/" <> ToString[k] <> "/trace_coefficient", trace];
-      dimReport[label <> "/face/" <> ToString[k] <> "/supported_flux_source", supportedSources[[k]], Last[order]];
       dimReport[label <> "/face/" <> ToString[k] <> "/source_contribution", faceTerm, Last[order]];
       AppendTo[fullFaces, faceTerm],
       {k, Length[faces]}];
     object[label <> "/source_with_face_traces", regular + Total[fullFaces]],
     {package, packages}];
-  emit["completion", {"general_order", "conditional_fast_ordering", "dimensional_objects"}];
+  emit["completion", {"material_face_requirements", "general_order", "conditional_fast_ordering", "dimensional_objects"}];
 ];
 result = Catch[Check[main[]; "completed", {"wolfram_messages", $MessageList}]];
 emit["execution", result];

@@ -1,41 +1,39 @@
-# S12 build run record — flux face repair
+# S12 build run record — decision-list revision 4
 
-2026-10-20. Contract: `../S12_decision_list.md`; repair authorized against the reviewed baseline at `63d99406`. No new review, engine-output comparison, or commit was performed.
+2026-10-20. Contract: `../S12_decision_list.md`, revision 4 cleared at `b08673a2`; reviewed build baseline preserved at `04a24c36`. This is the authorized build update, with no new review, engine-output comparison, or commit. Paths below are relative to `research/pde_ledger_v3/` unless absolute.
 
-Both engines now represent J independently in all three open regions, with free one-sided traces, and retain arbitrary distributions supported at either face. The supplied balance is differentiated to obtain the jump contributions. The additional supported-flux derivatives remain formal because their forms are OPEN. No continuity, exterior vanishing, boundary condition, or delta profile is imposed. The previous n, u, faces, general interior order, conditional two-offset G specialization, and dimensional computations retain their generality.
+Both engines give n, every velocity component, and every order-flux component independent live functions and one-sided traces in all three open regions. Order remains a live interior field and zero outside under U1. Conserved products are formed within each region before distributional differentiation. The computed source includes its face-concentrated terms, and total-material face requirements are printed separately. No input field has a concentrated face part: those terms from the previous build were removed, as revision 4 requires. Their possible inclusion remains OPEN outside this object.
 
-Wolfram isolates supported-flux contributions with algebraic markers after substitution into the balance. SymPy extracts the flux differential operator from the supplied balance and applies it to the supported distributions. The implementations import neither each other nor each other's outputs.
+Wolfram eliminates the three regional density time derivatives using their material balances. SymPy extracts and removes regional bulk material-balance multiples. Neither multiplies a jumping order field by the global material-balance distribution. Both retain the general interior order, the labelled conditional two-offset G specialization, and dimensional operands/residuals, without choosing jumps or field laws.
 
-Both final runs used the pooled guard serially, Wolfram first: 50 GiB memory cap, zero swap, 32 tasks, verified limits, no execution deadlines. Each final transcript equals its own guard stdout. Output-tag and field-identifier coverage checks found no omissions; they do not adjudicate the physics.
+Final-code runs were serial, Wolfram first, through the requested pooled guard: 50 GiB cap, zero swap, 32 tasks, verified limits and no execution deadline.
 
 ## Wolfram
 
-Script: `research/pde_ledger_v3/mathematica/S12_order_source.wl` (repository relative). Source SHA256: `57aa7e0f35b62fbdb1cb5660393c8fb060e333b2accca0fa1408f0e071786033`.
+Script: `mathematica/S12_order_source.wl`. Source SHA256: `f116251b1f47fb31d2b67bac6867f653683fa6a76216b09feab72c4a73bcdda9`.
 
 ```bash
-python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --pool s12 --memory-gib 50 --log-directory /var/projects/toy_physics/_scratch/s12/guard/wolfram_flux_faces_02 -- math -script /var/projects/toy_physics/research/pde_ledger_v3/mathematica/S12_order_source.wl
+python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --pool s12 --memory-gib 50 --log-directory /var/projects/toy_physics/_scratch/s12/guard/wolfram_revision4_01 -- math -script /var/projects/toy_physics/research/pde_ledger_v3/mathematica/S12_order_source.wl
 ```
 
-Guard and child exit **0**, `limitsVerified: true`, `guardReason: null`, stderr **0 bytes**. Workload wall time: **4.317915863997769 s**; guard wall time: **4.38882244497654 s**. Peak guarded-cgroup memory: **222773248 bytes** (maximum recorded `memory.peak`).
+Guard/child exit **0**, `limitsVerified: true`, `guardReason: null`, stderr **0 bytes**. Workload wall time: **4.618431990005774 s**; guard wall time: **4.701620332984021 s**. Peak guarded-cgroup memory: **223019008 bytes**, from the maximum recorded `memory.peak`.
 
-Transcript: `research/pde_ledger_v3/mathematica/out/S12_order_source.out` (repository relative), **199694 bytes**. SHA256: `eab1149dd2b5cd0a05a982ab2c382710cdd23254032012b180627e9524935d84`.
+Transcript: `mathematica/out/S12_order_source.out`, **303204 bytes**. SHA256: `ec0d1acdd0666456cb50ce785b0c5188208b55e88f19b339535a97bcaf7c9055`.
 
 ## SymPy
 
-Script: `research/pde_ledger_v3/scripts/S12_order_source.py` (repository relative). Source SHA256: `b052834f2d78909daa584de36761d3609adc73153c1ff017f7c178fbc308a0ee`.
+Script: `scripts/S12_order_source.py`. Source SHA256: `871495c15867462eb766da203bd338786d11fdb45474c4abc86b2df79e1cf926`.
 
 ```bash
-python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --pool s12 --memory-gib 50 --log-directory /var/projects/toy_physics/_scratch/s12/guard/sympy_flux_faces_01 -- python3 /var/projects/toy_physics/research/pde_ledger_v3/scripts/S12_order_source.py
+python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --pool s12 --memory-gib 50 --log-directory /var/projects/toy_physics/_scratch/s12/guard/sympy_revision4_01 -- python3 /var/projects/toy_physics/research/pde_ledger_v3/scripts/S12_order_source.py
 ```
 
-Guard and child exit **0**, `limitsVerified: true`, `guardReason: null`, stderr **0 bytes**. Workload wall time: **1.167489800020121 s**; guard wall time: **1.2381242029950954 s**. Peak guarded-cgroup memory: **55160832 bytes** (maximum recorded `memory.peak`).
+Guard/child exit **0**, `limitsVerified: true`, `guardReason: null`, stderr **0 bytes**. Workload wall time: **1.5678965460101608 s**; guard wall time: **1.6370442509942222 s**. Peak guarded-cgroup memory: **55709696 bytes**, from the maximum recorded `memory.peak`.
 
-Transcript: `research/pde_ledger_v3/scripts/out/S12_order_source.out` (repository relative), **204491 bytes**. SHA256: `440a207292b29c7ceb52180a01897bc42bf5a6258cf16148c55ce72261d7113d`.
+Transcript: `scripts/out/S12_order_source.out`, **366976 bytes**. SHA256: `988149e6eb2162c78329eb6cbfa90762bf505fea448c716f7de2f33686036a97`.
 
-## Coverage and run evidence
+## Production checks and scope
 
-Both final transcripts contain the general source, both exterior regions, the interior, both face contributions, the labelled conditional G specialization, and dimensional operands/residuals. Face objects include unrestricted regional flux traces and formal derivatives of arbitrary face-supported flux distributions. Requested objects not produced: **none**. Contract OPEN items remain untouched; inventories were not undertaken.
+Each transcript equals its own guard stdout. Separate structural checks found all requested source, regional, face, material-face-requirement and dimensional output tags; all regional density, velocity and flux identifiers occur in the face operands. Excluded concentrated-input identifiers and output tags are absent. These checks concern output coverage, not a scientific verdict. Requested objects not produced: **none**. No guard refusal, kill, or code-error attempt occurred in this update.
 
-An earlier admitted Wolfram attempt used the same Wolfram command above with log directory `/var/projects/toy_physics/_scratch/s12/guard/wolfram_flux_faces_01`: child/guard exit **1**, `limitsVerified: true`, `guardReason: null`, workload **4.36955198799842 s**, guard **4.440165937994607 s**, peak **223039488 bytes**. This was a pure-function binding bug in the repair, fixed before the final run; no guard refusal or kill occurred. Its partial transcript is `_scratch/s12/build_work/repair_flux_faces/wolfram_flux_faces_01.partial.out`.
-
-Guard receipts, limit/duration validations, and resource samples are in the command log directories. `_scratch/s12/guard` remains the existing alias to `_scratch/s11c/s12_guard`; the guard was not changed. Working scripts and mechanical coverage/hash metadata are in `_scratch/s12/build_work/repair_flux_faces/`. The committed annex transcript objects were preserved; new transcripts replace their working-tree links. Commits: **none**.
+Working scripts and hash/coverage metadata: repository-relative `_scratch/s12/build_work/revision4/`. Guard receipts and resource samples are in the two command log directories; `_scratch/s12/guard` remains the existing alias to `_scratch/s11c/s12_guard`. The guard and committed annex objects were unchanged. Inventories and the remaining OPEN questions were not undertaken. Commits: **none**.

@@ -74,8 +74,8 @@ class Controls(unittest.TestCase):
         WORK.mkdir(parents=True,exist_ok=True)
         with tempfile.TemporaryDirectory(prefix='fixture_',dir=WORK) as folder:
             p,w=Path(folder)/'py.out',Path(folder)/'wl.out'
-            p.write_text(f'{DOMAIN_TAG}: {py}\n'+suffix_py)
-            w.write_text(f'{DOMAIN_TAG}: {wl}\n'+suffix_wl)
+            p.write_text(f'{corr.tag}: {py}\n'+suffix_py)
+            w.write_text(f'{corr.tag}: {wl}\n'+suffix_wl)
             out=io.StringIO()
             c.run(p,w,out,names=names,correspondences=(corr,),progress=False,
                   sample_options=sample_options,probe_metadata=False)
@@ -84,10 +84,10 @@ class Controls(unittest.TestCase):
         accounting=[r for r in records if r['kind']=='accounting']
         return comparisons,accounting,records
 
-    def assert_moved(self,before,after,*,samples_only=False,accounting=False):
+    def assert_moved(self,before,after,*,samples_only=False,accounting=False,unchanged='py'):
         old=[r for r in before[2] if r['kind']=='operands']
         new=[r for r in after[2] if r['kind']=='operands']
-        self.assertEqual([r['py'] for r in old],[r['py'] for r in new])
+        self.assertEqual([r[unchanged] for r in old],[r[unchanged] for r in new])
         if accounting:
             def count_products(rows):
                 return [{k:v for k,v in r.items() if k in ('accounting','parsed_leaves','actually_compared_leaves',
@@ -233,10 +233,89 @@ class Controls(unittest.TestCase):
         changed=f'Piecewise[{{{{x1+2,{cond}}}}},0]'
         self.mutation('0','0',changed,samples_only=True,channel='sample_values',disabled=[])
 
-    def test_changed_label(self):
-        corr=replace(SYNTH,kind='text')
-        self.mutation('"a supplied premise"','"a supplied premise"','"a different premise"',
-                      corr=corr,channel='text_difference')
+    @staticmethod
+    def native_label(value,engine):
+        if engine=='py':
+            return c.s.sstr(value)
+        if isinstance(value,str):
+            return json.dumps(value)
+        return '{'+', '.join(json.dumps(x) for x in value)+'}'
+
+    def label_fixture(self,tag,py,wl):
+        return self.fixture(self.native_label(py,'py'),self.native_label(wl,'wl'),
+                            corr=c.correspondence(tag,c.CORRESPONDENCES))
+
+    def label_content_control(self,tag,value):
+        before=self.label_fixture(tag,value,value)
+        values=(value,) if isinstance(value,str) else value
+        for i,text in enumerate(values):
+            replacement=text+' revised'
+            changed=replacement if isinstance(value,str) else type(value)(
+                replacement if j==i else x for j,x in enumerate(value))
+            after_wl=self.label_fixture(tag,value,changed)
+            after_py=self.label_fixture(tag,changed,value)
+            self.assert_moved(before,after_wl)
+            self.assert_moved(before,after_py,unchanged='wl')
+            if not isinstance(value,str):
+                # Compare each string's computed difference with an
+                # independently serialized scalar-label comparison. This
+                # checks the character offset inside that string, without
+                # prescribing a difference value or counting an echo.
+                for result,py,wl in ((before,text,text),
+                                     (after_wl,text,replacement),
+                                     (after_py,replacement,text)):
+                    reference=self.label_fixture('governing_input',py,wl)
+                    self.assertEqual(computed(result[0][0]['components'][i]),
+                                     computed(reference[0][0]))
+                self.assertEqual(before[1][0]['parsed_leaves'],
+                                 before[1][0]['actually_compared_leaves'])
+
+    def assert_label_ablations(self,control,*,text=True):
+        control()
+        reader=c.read_label
+        for engine in ('py','wl'):
+            with self.subTest(disabled_reader=engine):
+                def blank(text,side,tag):
+                    return c.atom('Text','') if side==engine else reader(text,side,tag)
+                with patch.object(c,'read_label',side_effect=blank):
+                    with self.assertRaises(AssertionError):
+                        control()
+        channels=[(c.Comparator,'label')]+([(c,'text_difference')] if text else [])
+        for target,name in channels:
+            with self.subTest(disabled_comparison=name):
+                with patch.object(target,name,return_value={}):
+                    with self.assertRaises(AssertionError):
+                        control()
+
+    def test_changed_scalar_label(self):
+        self.assert_label_ablations(lambda:self.label_content_control(
+            'governing_input','a supplied premise, with punctuation (and a scope)'))
+
+    def test_changed_label_list(self):
+        # Synthetic strings obey each source's serialization layout, including
+        # the two embedded scope commas and the dynamic runtime's commas.
+        examples={'dimension_basis':('distance label','duration label','count label'),
+                  'completion':('object alpha','object beta','object gamma','object delta'),
+                  'calculus_scope':('first, clause','second, clause','third scope',
+                                    'fourth scope','fifth scope'),
+                  'engine':('runtime (branch, date) [compiler]','library version')}
+        for tag,values in examples.items():
+            for container in (tuple,list):
+                with self.subTest(tag=tag,container=container.__name__):
+                    self.assert_label_ablations(lambda:self.label_content_control(tag,container(values)))
+
+    def test_label_list_structure(self):
+        values=('distance label','duration label','count label')
+        def control():
+            before=self.label_fixture('dimension_basis',values,values)
+            for changed in (values[:-1],values[0]):
+                after=self.label_fixture('dimension_basis',values,changed)
+                self.assert_moved(before,after)
+                self.assertTrue(c.has_key(after[0],'not_formed'))
+        self.assert_label_ablations(control,text=False)
+        with patch.object(c,'label_shape',return_value=True):
+            with self.assertRaises(AssertionError):
+                control()
 
     def test_parsed_uncompared_leaf_count(self):
         corr=replace(SYNTH,kind='nested_ledger')

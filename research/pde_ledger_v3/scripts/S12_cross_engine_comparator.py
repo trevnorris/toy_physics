@@ -307,6 +307,57 @@ def data(n):
 
 LABELS = {'engine','governing_input','calculus_scope','dimension_basis','completion','execution'}
 
+# Ordered text components constructed by the accepted sources. SymPy sstr
+# omits string quotes even inside a tuple. For the literal scope tuple its
+# internal comma-space counts therefore belong to the source-defined layout,
+# not to a generic comma splitter. None denotes the dynamic version string:
+# the final separator precedes the SymPy version (which contains no comma).
+LABEL_LISTS = {
+    'engine': {'schema':('runtime version','engine-specific version/platform text'),
+               'py_commas':None,'py_line':'122','wl_line':'84'},
+    'calculus_scope': {'schema':('regional fields and traces','interior order',
+                                'input singular parts','source singular parts','face values and jumps'),
+                       'py_commas':(1,1,0,0,0),'py_line':'124-130','wl_line':'86-91'},
+    'dimension_basis': {'schema':('length label','time label','number-count label'),
+                        'py_commas':(0,0,0),'py_line':'232','wl_line':'149'},
+    'completion': {'schema':('material-face object label','general-order object label',
+                            'conditional-order object label','dimension object label'),
+                   'py_commas':(0,0,0,0),'py_line':'371','wl_line':'285'},
+}
+
+
+def read_label(text,engine,tag):
+    if engine=='wl':
+        return wl_parse(text)
+    if tag not in LABEL_LISTS:
+        return atom('Text',text)
+    if not ((text.startswith('(') and text.endswith(')')) or
+            (text.startswith('[') and text.endswith(']'))):
+        return atom('Text',text)
+    body=text[1:-1]
+    counts=LABEL_LISTS[tag]['py_commas']
+    if counts is None:
+        parts=body.rsplit(', ',1)
+    else:
+        tokens=body.split(', ') if body else []
+        if any(counts):
+            if len(tokens)!=len(counts)+sum(counts):
+                # The unquoted serialization no longer has the source's
+                # recoverable layout. Keep its content and withhold pairing.
+                return Node('UnisolatedLabel',tuple(atom('Text',x) for x in tokens))
+            parts=[]
+            offset=0
+            for count in counts:
+                parts.append(', '.join(tokens[offset:offset+count+1]))
+                offset+=count+1
+        else:
+            parts=tokens
+    return seq(*(atom('Text',x) for x in parts))
+
+
+def label_shape(n,schema):
+    return n.head=='Sequence' and len(n.args)==len(schema) and all(x.head=='Text' for x in n.args)
+
 
 def is_label(tag):
     return tag in LABELS or tag == 'WORKING_ON' or tag.endswith(
@@ -343,8 +394,8 @@ class Stream:
             raise InputError('empty input '+str(path))
         for tag,text,line in entries:
             try:
-                if is_label(tag) and engine == 'py':
-                    node = atom('Text',text)
+                if is_label(tag):
+                    node = read_label(text,engine,tag)
                 else:
                     node = (py_parse if engine == 'py' else wl_parse)(text)
             except InputError as exc:
@@ -545,7 +596,7 @@ def contracts():
         rows.append(Correspondence(tag,kind,obj,str(py),str(wl),schema))
     for tag,py,wl in [('engine',122,84),('governing_input',123,85),('calculus_scope','124-130','86-91'),
                       ('dimension_basis',232,149),('completion',371,285)]:
-        add(tag,'text',tag,py,wl)
+        add(tag,'text',tag,py,wl,LABEL_LISTS[tag]['schema'] if tag in LABEL_LISTS else None)
     for tag,py,wl in [('supplied/material_balance','151,155','100,102'),('supplied/order_balance','152-156','101,103'),
                       ('supplied/conversion_identity',157,104)]:
         add(tag,'value',tag,py,wl)
@@ -1088,14 +1139,27 @@ class Comparator:
             self.compared[1].add(wp)
         return {'components':components,'unpaired_components':extras}
 
+    def label(self,p,w,c):
+        if c.schema is None:
+            if p.head!='Text' or w.head!='Text':
+                return {'not_formed':'scalar label correspondence has a non-text operand'}
+            self.compared=[leaf_paths(p),leaf_paths(w)]
+            return {'py_text':p.value,'wl_text':w.value,
+                    'text_difference':text_difference(p.value,w.value)}
+        if not all(label_shape(n,c.schema) for n in (p,w)):
+            return {'not_formed':'label list does not have its source-defined string layout'}
+        components=[]
+        for i,(name,a,b) in enumerate(zip(c.schema,p.args,w.args)):
+            components.append({'part':name,'py_path':[i],'wl_path':[i],
+                               'py_text':a.value,'wl_text':b.value,
+                               'text_difference':text_difference(a.value,b.value)})
+        self.compared=[leaf_paths(p),leaf_paths(w)]
+        return {'components':components}
+
     def compare(self,p,w,tag,c,streams):
         kind=c.kind
         if kind=='text':
-            a=label_text(p,streams['py'].index[tag][0].raw)
-            b=label_text(w,streams['wl'].index[tag][0].raw)
-            result=text_difference(a,b)
-            self.compared=[leaf_paths(p),leaf_paths(w)]
-            return {'py_text':a,'wl_text':b,'text_difference':result}
+            return self.label(p,w,c)
         if kind=='incompatible':
             return {'not_formed':'SymPy prints a distributional bulk multiple; Wolfram prints time-derivative substitution rules. These are different kinds of object.'}
         if kind=='value':
@@ -1144,10 +1208,6 @@ class Comparator:
         raise InputError('unknown correspondence kind '+kind)
 
 
-def label_text(n,raw):
-    return n.value if n.head=='Text' else raw
-
-
 def has_key(obj,key):
     if isinstance(obj,dict):
         return key in obj or any(has_key(v,key) for v in obj.values())
@@ -1173,6 +1233,7 @@ def run(py_path,wl_path,out,*,names=NAME_TABLE,correspondences=CORRESPONDENCES,p
     emit(out,{'kind':'configuration','name_table':[asdict(r) for r in names],
               'sources':{'py':'scripts/S12_order_source.py at a3da43d9',
                          'wl':'mathematica/S12_order_source.wl at a3da43d9'},
+              'label_list_layouts':LABEL_LISTS,
               'input_sha256':{e:st.sha256 for e,st in streams.items()},
               'domain':'real coordinates; strict lower-face < upper-face; 0 <= interior order <= 1, supplied by engines',
               'forms':FORMS,'strata':STRATA,'base_points':[[str(x) for x in p] for p in BASE_POINTS],

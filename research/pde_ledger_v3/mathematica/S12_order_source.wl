@@ -4,9 +4,12 @@ SetSystemOptions["InequalitySolvingOptions" -> "ThreadOr" -> False];
    Supplied input: the two conservation laws, signed conversion identity,
    and U1's live interior field between two live faces. All subsequent physical
    expressions are differentiation, elimination, restriction, or extraction.
-   Distribution convention: the live bulk functions admit differentiation and
-   traces; the order can jump. No point value at a face is selected. Additional
-   singularities of the primitive bulk fields are not modelled by this calculus.
+   Distribution convention: n and u retain their original differentiable
+   bulk-field class. J has independent differentiable restrictions on the
+   three open regions, independent one-sided traces, and an arbitrary
+   distribution supported at each face. Derivatives of those distributions
+   stay formal; no face-flux form, continuity, or boundary condition is imposed.
+   The order can jump. No point value at a face is selected.
    This script computes and prints; it has no expected-value acceptance guard. *)
 $HistoryLength = 0;
 transcriptPath = "/var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/S12_order_source.out";
@@ -28,7 +31,8 @@ unit[fun_] := Switch[fun,
   um | u1 | u2 | u3, {1, -1},
   wm | wp, {1, 0}, gb | gr | gd, {0, -1},
   j1 | j2 | j3 | jm, fluxUnit,
-  _, Throw[{"unassigned_function_dimension", HoldForm[fun]}]
+  _, If[MemberQ[fluxFunctionHeads, fun], fluxUnit,
+    Throw[{"unassigned_function_dimension", HoldForm[fun]}]]
 ];
 dimension[e_?NumberQ] := {0, 0};
 dimension[t] := {0, 1};
@@ -65,11 +69,17 @@ main[] := Module[{space, coordinates, density, velocity, flux, fraction,
     faces, levels, assumptions, regions, material, order, conversion,
     timeRule, fluxUnknowns, dimTerms, dimVectors, dimReference, dimResidual,
     fluxRules, packages, label, orderField, raw, source, regular,
-    restricted, delta, coefficient, trace, faceTerm, fullFaces, branchAssumptions},
+    restricted, delta, coefficient, trace, faceTerm, fullFaces, branchAssumptions,
+    regionIndicators, regionFluxHeads, faceFluxHeads, regionFlux, faceFlux,
+    markers, markerRules, markedFlux, fluxReplacement, toField, markedSource,
+    supportedSources},
   working["supplied_inputs"];
   emit["engine", {$Version, $SystemID}];
   emit["governing_input", "S12_decision_list.md; supplied equations and U1 encoding are unfalsifiable inputs"];
-  emit["calculus_scope", {"distributional order; differentiable bulk fields with face traces",
+  emit["calculus_scope", {"distributional order; n and u retain differentiable bulk fields with traces",
+    "J has independent restrictions and one-sided traces in all three open regions",
+    "J also retains arbitrary face-supported distributions; their derivatives are distributional and remain formal",
+    "no continuity, exterior vanishing, or boundary condition on J",
     "pointwise face values unspecified", "interior range and strict face order are supplied domain conditions"}];
   coordinates = {t, x1, x2, x3, w}; space = Rest[coordinates];
   density = n @@ coordinates;
@@ -92,6 +102,25 @@ main[] := Module[{space, coordinates, density, velocity, flux, fraction,
     {"conditional_fast_ordering", g[w - First[faces], Last[faces] - w] (Subtract @@ (HeavisideTheta /@ levels))}
   };
   (* END U1 ENCODING *)
+  (* Partition the unrestricted flux using the already computed ordered-face
+     indicators. These are restrictions of J, not a constitutive profile.
+     The additional face fields denote arbitrary supported distributions,
+     not values or traces of the regional fields. Markers isolate their
+     differentiated contributions algebraically, without setting a field to 0. *)
+  regionIndicators = -Differences[Join[{1}, HeavisideTheta /@ levels, {0}]];
+  regionFluxHeads = Table[Symbol["j" <> ToString[c] <> "Region" <> ToString[r]],
+    {r, Length[regions]}, {c, Length[space]}];
+  faceFluxHeads = Table[Symbol["j" <> ToString[c] <> "Face" <> ToString[k]],
+    {k, Length[faces]}, {c, Length[space]}];
+  fluxFunctionHeads = Join[Flatten[regionFluxHeads], Flatten[faceFluxHeads]];
+  regionFlux = Map[(# @@ coordinates) &, regionFluxHeads, {2}];
+  faceFlux = Map[(# @@ coordinates) &, faceFluxHeads, {2}];
+  markers = Table[Unique["faceFluxMarker$"], {Length[faces]}];
+  markerRules = Thread[markers -> ConstantArray[1, Length[faces]]];
+  markedFlux = regionIndicators . regionFlux + markers . faceFlux;
+  toField[expr_] := Function[{tt, xx1, xx2, xx3, ww},
+    Evaluate[expr /. Thread[coordinates -> {tt, xx1, xx2, xx3, ww}]]];
+  fluxReplacement = Thread[{j1, j2, j3, jm} -> (toField /@ markedFlux)];
   object["supplied/material_balance", material];
   object["supplied/order_balance", order];
   object["supplied/conversion_identity", conversion];
@@ -99,6 +128,11 @@ main[] := Module[{space, coordinates, density, velocity, flux, fraction,
   object["supplied/domain", {assumptions, 0 <= (f @@ coordinates) <= 1}];
   object["live_fields", {density, velocity, flux, fraction, faces}];
   object["region_domains", regions];
+  object["flux/region_indicators", regionIndicators];
+  object["flux/region_fields", regionFlux];
+  object["flux/face_supported_fields", faceFlux];
+  object["flux/face_support_domains", Table[{faceFlux[[k]], w == faces[[k]]}, {k, Length[faces]}]];
+  object["flux/distribution_field", markedFlux /. markerRules];
   working["material_elimination"];
   timeRule = First[Solve[material, D[density, t]]];
   object["material/time_derivative_rule", timeRule];
@@ -134,13 +168,16 @@ main[] := Module[{space, coordinates, density, velocity, flux, fraction,
     ];
     working[label <> "/source"];
     (* Substitution into the supplied balance precedes all eliminations. *)
-    raw = Expand[First[order] /. chi -> Function[{tt, xx1, xx2, xx3, ww},
-      Evaluate[orderField /. Thread[coordinates -> {tt, xx1, xx2, xx3, ww}]]]];
+    raw = Expand[First[order] /. Join[{chi -> toField[orderField]}, fluxReplacement]];
     object[label <> "/balance_source_operand", raw];
     object[label <> "/material_elimination_operand", timeRule];
-    source = Expand[raw /. timeRule];
+    markedSource = Expand[raw /. timeRule];
+    object[label <> "/source_with_flux_markers", markedSource];
+    supportedSources = (Coefficient[markedSource, #] & /@ markers);
+    object[label <> "/face_supported_flux_sources", supportedSources];
+    source = Expand[markedSource /. markerRules];
     object[label <> "/source_distribution", source];
-    regular = source /. DiracDelta[_] -> 0;
+    regular = Expand[source - Total[supportedSources]] /. DiracDelta[_] -> 0;
     object[label <> "/regular_distribution_part", regular];
     dimReport[label <> "/order_field", orderField];
     dimReport[label <> "/source_distribution", source, Last[order]];
@@ -159,13 +196,16 @@ main[] := Module[{space, coordinates, density, velocity, flux, fraction,
       delta = DiracDelta[levels[[k]]];
       coefficient = Coefficient[source, delta];
       trace = Expand[coefficient /. w -> faces[[k]]];
-      faceTerm = trace delta;
+      faceTerm = trace delta + supportedSources[[k]];
       object[label <> "/face/" <> ToString[k] <> "/locus", w == faces[[k]]];
       object[label <> "/face/" <> ToString[k] <> "/delta", delta];
       object[label <> "/face/" <> ToString[k] <> "/coefficient_operand", coefficient];
       object[label <> "/face/" <> ToString[k] <> "/trace_coefficient", trace];
+      object[label <> "/face/" <> ToString[k] <> "/supported_flux_operand", faceFlux[[k]]];
+      object[label <> "/face/" <> ToString[k] <> "/supported_flux_source", supportedSources[[k]]];
       object[label <> "/face/" <> ToString[k] <> "/source_contribution", faceTerm];
       dimReport[label <> "/face/" <> ToString[k] <> "/trace_coefficient", trace];
+      dimReport[label <> "/face/" <> ToString[k] <> "/supported_flux_source", supportedSources[[k]], Last[order]];
       dimReport[label <> "/face/" <> ToString[k] <> "/source_contribution", faceTerm, Last[order]];
       AppendTo[fullFaces, faceTerm],
       {k, Length[faces]}];

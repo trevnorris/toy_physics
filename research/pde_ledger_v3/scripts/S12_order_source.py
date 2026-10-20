@@ -6,10 +6,12 @@ The scalar material-balance coefficient is extracted before substituting U1;
 the two-factor support is differentiated by SymPy. Every requested quantity
 is emitted, without an expected-value guard or cross-engine comparison.
 
-Distribution calculus uses differentiable primitive bulk functions admitting
-face traces. It permits an order jump; the face's point value is unspecified.
-Additional singularities of the primitive bulk fields are outside this formal
-calculus. No live field is frozen.
+Distribution calculus retains the original differentiable n and u. J has
+independent restrictions on all three open regions, independent one-sided
+traces, and arbitrary distributions supported at the faces. Derivatives of
+the supported distributions remain formal. No form, continuity, exterior
+vanishing, boundary condition, or pointwise face value is selected for J.
+The order can jump. No live field is frozen.
 """
 
 from pathlib import Path
@@ -128,7 +130,10 @@ def main(p):
     p.emit(
         "calculus_scope",
         (
-            "distributional order; differentiable bulk fields with face traces",
+            "distributional order; n and u retain differentiable bulk fields with traces",
+            "J has independent restrictions and one-sided traces in all three open regions",
+            "J also has arbitrary distributions supported at each face; their derivatives remain formal and distributional",
+            "no continuity, exterior vanishing, or boundary condition on J",
             "pointwise face values unspecified",
             "interior range and strict face order are supplied domain conditions",
         ),
@@ -183,6 +188,33 @@ def main(p):
         s.And(faces[0] < faces[1], w > faces[1]),
     )
     # END U1 ENCODING.
+    # Restrict J independently to each of U1's open strata. The masks only
+    # locate the restrictions, and impose no constitutive profile. Keep an
+    # independent arbitrary supported distribution at each face as well;
+    # this is a distribution field with the same units as J, not a trace or
+    # a chosen delta profile. No live field is set to zero in this encoding.
+    regional_masks = (
+        s.Heaviside(s.Mul(-1, offsets[0])), support,
+        s.Heaviside(s.Mul(-1, offsets[1])),
+    )
+    region_j_heads = [
+        [s.Function(f"j{c + 1}_region{r + 1}") for c in range(len(spatial))]
+        for r in range(len(domains))
+    ]
+    face_j_heads = [
+        [s.Function(f"j{c + 1}_face{k + 1}") for c in range(len(spatial))]
+        for k in range(len(faces))
+    ]
+    regional_flux = [[fun(*coordinates) for fun in row] for row in region_j_heads]
+    supported_flux = [[fun(*coordinates) for fun in row] for row in face_j_heads]
+    distributed_flux = [
+        s.Add(
+            *(s.Mul(mask, row[c]) for mask, row in zip(regional_masks, regional_flux)),
+            *(row[c] for row in supported_flux),
+        )
+        for c in range(len(spatial))
+    ]
+    flux_substitution = dict(zip(flux, distributed_flux))
     p.obj("supplied/material_balance", material)
     p.obj("supplied/order_balance", ordered)
     p.obj("supplied/conversion_identity", conversion)
@@ -190,6 +222,11 @@ def main(p):
     p.obj("supplied/domain", (faces[0] < faces[1], s.And(interior >= 0, interior <= 1)))
     p.obj("live_fields", (density, velocity, flux, chi, faces))
     p.obj("region_domains", domains)
+    p.obj("flux/region_indicators", regional_masks)
+    p.obj("flux/region_fields", regional_flux)
+    p.obj("flux/face_supported_fields", supported_flux)
+    p.obj("flux/face_support_domains", list(zip(supported_flux, [s.Eq(w, face) for face in faces])))
+    p.obj("flux/distribution_field", distributed_flux)
 
     p.working("material_balance_extraction")
     expanded_order = s.expand(ordered.lhs)
@@ -201,6 +238,20 @@ def main(p):
     p.obj("material_extraction/balance_multiple", material_multiple)
     p.obj("material_extraction/source_expression", transport_expression)
 
+    # Extract the linear flux differential operator from the supplied law.
+    # Apply its computed jet coefficients to each supported distribution.
+    # No face-source formula is inserted and no J is set to zero to isolate it.
+    flux_operator = [
+        (c, x, s.diff(field, x), transport_expression.coeff(s.diff(field, x)))
+        for c, field in enumerate(flux) for x in spatial
+    ]
+    p.obj("flux/differential_operator_operands", flux_operator)
+    supported_sources = [
+        s.Add(*(weight * s.diff(row[c], x) for c, x, jet, weight in flux_operator))
+        for row in supported_flux
+    ]
+    p.obj("flux/face_supported_sources", supported_sources)
+
     p.working("order_flux_dimensions")
     length_unit, time_unit = s.Matrix([1, 0]), s.Matrix([0, 1])
     dimensionless = s.zeros(2, 1)
@@ -210,7 +261,8 @@ def main(p):
     primitive_units.update((head, length_unit) for head in face_heads)
     primitive_units.update((head, s.Matrix([0, -1])) for head in rate_heads)
     unknown_units = s.symbols("j_length j_time")
-    primitive_units.update((head, s.Matrix(unknown_units)) for head in j_heads)
+    all_j_heads = j_heads + [head for row in region_j_heads + face_j_heads for head in row]
+    primitive_units.update((head, s.Matrix(unknown_units)) for head in all_j_heads)
     dimensions = Dimensions(
         coordinates, primitive_units, [time_unit] + [length_unit] * len(spatial)
     )
@@ -227,7 +279,7 @@ def main(p):
     unit_rules = dict(zip(unknown_units, next(iter(solution), unknown_units)))
     flux_unit = s.Matrix(unknown_units).subs(unit_rules)
     p.obj("order_flux_dimension_inference/object", flux_unit)
-    primitive_units.update((head, flux_unit) for head in j_heads)
+    primitive_units.update((head, flux_unit) for head in all_j_heads)
     dimensions.report(p, "supplied/material_balance_lhs", material.lhs, s.diff(density, time))
     p.obj("supplied/material_balance_rhs", material.rhs)
     p.emit("supplied/material_balance_rhs/dimension", "additive identity has no intrinsic unit")
@@ -237,26 +289,32 @@ def main(p):
 
     # Dirac factors and their normalization are generated by differentiating
     # the actual U1 steps, with one slot retained for each supplied face.
-    delta_factors = [s.diff(step, w) / s.diff(offset, w) for step, offset in zip(steps, offsets)]
+    delta_factors = [
+        s.expand(s.diff(step, w) / s.diff(offset, w), diracdelta=True, wrt=w)
+        for step, offset in zip(steps, offsets)
+    ]
     for label, order_field, regional_orders in packages:
         p.working(label + "/source")
         p.obj(label + "/order_field", order_field)
         if label == "conditional_fast_ordering":
             p.emit(label + "/premise", "conditional specialization: ordering keeps pace with the slab; G is general in both offsets")
             p.obj(label + "/interior_range", s.And(conditional_interior >= 0, conditional_interior <= 1))
-        source = s.expand(transport_expression.subs(chi, order_field).doit())
+        source_operand = transport_expression.subs(chi, order_field).subs(flux_substitution, simultaneous=True)
+        p.obj(label + "/flux_substitution_operand", source_operand)
+        source = s.expand(source_operand.doit(), diracdelta=True, wrt=w)
         p.obj(label + "/source_distribution", source)
-        regular = source.xreplace(dict.fromkeys(delta_factors, s.S.Zero))
+        regular = s.expand(source - s.Add(*supported_sources)).xreplace(dict.fromkeys(delta_factors, s.S.Zero))
         p.obj(label + "/regular_distribution_part", regular)
         dimensions.report(p, label + "/order_field", order_field)
         dimensions.report(p, label + "/source_distribution", source, ordered.rhs)
         dimensions.report(p, label + "/regular_distribution_part", regular, ordered.rhs)
-        for k, (domain, regional_order) in enumerate(zip(domains, regional_orders), 1):
+        for k, (domain, regional_order, regional_j) in enumerate(zip(domains, regional_orders, regional_flux), 1):
             name = label + f"/region/{k}"
             p.working(name)
             p.obj(name + "/domain", domain)
             p.obj(name + "/order_operand", regional_order)
-            restricted = s.expand(transport_expression.subs(chi, regional_order).doit())
+            p.obj(name + "/flux_operand", regional_j)
+            restricted = s.expand(transport_expression.subs(chi, regional_order).subs(dict(zip(flux, regional_j)), simultaneous=True).doit())
             p.obj(name + "/source", restricted)
             dimensions.report(p, name + "/source", restricted, ordered.rhs)
         face_terms = []
@@ -269,14 +327,17 @@ def main(p):
             normalized_delta = s.DiracDelta(
                 s.expand(delta.args[0] / s.diff(delta.args[0], w))
             )
-            term = s.Mul(trace, normalized_delta)
+            term = s.Add(s.Mul(trace, normalized_delta), supported_sources[k - 1])
             p.obj(name + "/locus", s.Eq(w, face))
             p.obj(name + "/delta_operand", delta)
             p.obj(name + "/normalization_operand", jacobian)
             p.obj(name + "/coefficient_operand", coefficient)
             p.obj(name + "/trace_coefficient", trace)
+            p.obj(name + "/supported_flux_operand", supported_flux[k - 1])
+            p.obj(name + "/supported_flux_source", supported_sources[k - 1])
             p.obj(name + "/source_contribution", term)
             dimensions.report(p, name + "/trace_coefficient", trace)
+            dimensions.report(p, name + "/supported_flux_source", supported_sources[k - 1], ordered.rhs)
             dimensions.report(p, name + "/source_contribution", term, ordered.rhs)
             face_terms.append(term)
         p.obj(label + "/source_with_face_traces", s.Add(regular, *face_terms))

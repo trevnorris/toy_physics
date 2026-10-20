@@ -65,6 +65,10 @@ def clear_evaluation_caches():
     c.evaluate.cache_clear()
 
 
+def exact_products(result):
+    return [r['as_computed_residual'] for r in result[2] if r['kind']=='residual_before_domain']
+
+
 class Controls(unittest.TestCase):
     def fixture(self,py,wl,*,corr=SYNTH,names=c.NAME_TABLE,suffix_py='',suffix_wl='',sample_options=None):
         WORK.mkdir(parents=True,exist_ok=True)
@@ -97,7 +101,7 @@ class Controls(unittest.TestCase):
         before=self.fixture(py,wl,corr=corr,sample_options=options)
         after=self.fixture(py,changed,corr=corr,sample_options=options)
         self.assert_moved(before,after,samples_only=samples_only)
-        target=c.Comparator if channel=='scalar' else c
+        target=c.Comparator if channel in ('scalar','unit','currents') else c
         if disabled is None: disabled={}
         with patch.object(target,channel,return_value=disabled):
             with self.assertRaises(AssertionError):
@@ -134,9 +138,64 @@ class Controls(unittest.TestCase):
                 def residuals(result):
                     return [r['as_computed_residual'] for r in result[2] if r['kind']=='residual_before_domain']
                 self.assertNotEqual(residuals(before),residuals(after))
+                self.assert_moved(before,after,samples_only=True)
                 with patch.object(c.Comparator,'scalar',return_value={}):
                     with self.assertRaises(AssertionError):
                         self.assert_moved(self.fixture(py,wl,names=names),self.fixture(py,wl,names=altered))
+                with patch.object(c,'sample_values',return_value=[]):
+                    with self.assertRaises(AssertionError):
+                        self.assert_moved(self.fixture(py,wl,names=names),
+                                          self.fixture(py,wl,names=altered),samples_only=True)
+
+    def test_each_live_function_is_distinguished_in_each_form_and_stratum(self):
+        fields=[row for row in c.NAME_TABLE if row.arity]
+        py='('+','.join('0' for _ in fields)+',)'
+        wl='{'+','.join(row.wl+'['+','.join(ARGS_W.split(',')[:row.arity])+']' for row in fields)+'}'
+        corr=replace(SYNTH,kind='tree',schema=tuple(row.object for row in fields))
+        def measured():
+            return self.fixture(py,wl,corr=corr)
+        def distinguish(result):
+            components=result[0][0]['components']
+            for form in c.FORMS:
+                for stratum in c.STRATA:
+                    signatures={}
+                    for row,component in zip(fields,components):
+                        signature=tuple(x['residual'] for x in component['samples']
+                                        if x['form']==form and x['stratum']==stratum)
+                        self.assertTrue(signature)
+                        group=signatures.setdefault(row.arity,set())
+                        self.assertNotIn(signature,group,(row.py,form,stratum))
+                        group.add(signature)
+        before=measured()
+        distinguish(before)
+        original=c.profile
+        source=next(row for row in fields if row.arity==5)
+        target=next(row for row in fields if row.arity==source.arity and row!=source)
+        target_index=fields.index(target)
+        def mutated_object(result):
+            # Keep the mutated object's samples separate: a residual also
+            # printed for another object/stratum cannot mask its change.
+            return ([result[0][0]['components'][target_index]],result[1],result[2])
+        def collision(name,arity,form,stratum):
+            if name==target.py and form==c.FORMS[0] and stratum==c.STRATA[0]:
+                name=source.py
+            return original(name,arity,form,stratum)
+        clear_evaluation_caches()
+        try:
+            with patch.object(c,'profile',side_effect=collision):
+                after=measured()
+                self.assert_moved(mutated_object(before),mutated_object(after),samples_only=True)
+                with self.assertRaises(AssertionError):
+                    distinguish(after)
+            with patch.object(c,'sample_values',return_value=[]):
+                with self.assertRaises(AssertionError):
+                    distinguish(measured())
+                disabled_before=measured()
+                with patch.object(c,'profile',side_effect=collision):
+                    with self.assertRaises(AssertionError):
+                        self.assert_moved(mutated_object(disabled_before),mutated_object(measured()),samples_only=True)
+        finally:
+            clear_evaluation_caches()
 
     def test_stripped_applied_function_argument(self):
         self.mutation(f'n({ARGS_P})',f'n[{ARGS_W}]','n')
@@ -204,6 +263,84 @@ class Controls(unittest.TestCase):
         wl='2*t*Derivative[1,0][g][t^2,x1]'
         changed='Derivative[1,0][g][t^2,x1]'
         self.mutation(py,wl,changed,channel='sample_values',disabled=[],samples_only=True)
+        # The differentiation variable can occupy one slot and also enter a
+        # different slot through a composite. Both contributions stay live.
+        py='Derivative(G(t,t**2),t)'
+        wl='Derivative[1,0][g][t,t^2]+2*t*Derivative[0,1][g][t,t^2]'
+        reference=self.fixture('Derivative(G(t,x1),t)','Derivative[1,0][g][t,x1]')
+        def coherence():
+            self.assertEqual(exact_products(reference),exact_products(self.fixture(py,wl)))
+        coherence()
+        self.mutation(py,wl,'Derivative[1,0][g][t,t^2]',channel='exact_difference',disabled=c.s.S.Zero)
+        with patch.object(c,'normalize_partial',side_effect=lambda value:value):
+            with self.assertRaises(AssertionError):
+                coherence()
+
+    def test_composite_partial_notation_and_exact_structure_controls(self):
+        reference=self.fixture('Derivative(G(t,x1),t)','Derivative[1,0][g][t,x1]')
+        first=f'w-{FACE_W}'
+        second=f'{OTHER_W}-w'
+        wl=f'Derivative[1,0][g][{first},{second}]'
+        py=f'Subs(Derivative(G(a,wplus(t,x1,x2,x3)-w),a),a,w-{FACE_P})'
+        def coherence():
+            self.assertEqual(exact_products(reference),exact_products(self.fixture(py,wl)))
+        coherence()
+        full=f'Subs(Derivative(G(a,b),a),(a,b),(w-{FACE_P},wplus(t,x1,x2,x3)-w))'
+        self.assertEqual(exact_products(self.fixture(py,wl)),exact_products(self.fixture(full,wl)))
+        for changed in (f'Derivative[0,1][g][{first},{second}]',
+                        f'Derivative[2,0][g][{first},{second}]',
+                        f'Derivative[1,0][g][{first}+1,{second}]'):
+            with self.subTest(mutation=changed):
+                self.mutation(py,wl,changed,channel='exact_difference',disabled=c.s.S.Zero)
+        with patch.object(c,'normalize_partial',side_effect=lambda value:value):
+            with self.assertRaises(AssertionError):
+                coherence()
+
+    def test_second_slot_partial_notation_and_trace_arguments(self):
+        py=f'Subs(Derivative(G(w-{FACE_P},b),b),b,wplus(t,x1,x2,x3)-w)'
+        wl=f'Derivative[0,1][g][w-{FACE_W},{OTHER_W}-w]'
+        reference=self.fixture('Derivative(G(t,x1),x1)','Derivative[0,1][g][t,x1]')
+        def coherence():
+            self.assertEqual(exact_products(reference),exact_products(self.fixture(py,wl)))
+        coherence()
+        changed=f'Derivative[1,0][g][w-{FACE_W},{OTHER_W}-w]'
+        self.mutation(py,wl,changed,channel='exact_difference',disabled=c.s.S.Zero)
+        trace_py=f'Subs(Derivative(n({ARGS_P}),w),w,{FACE_P})'
+        trace_wl=f'Derivative[0,0,0,0,1][n][t,x1,x2,x3,{FACE_W}]'
+        trace_ref=self.fixture(f'Derivative(n({ARGS_P}),w)',f'Derivative[0,0,0,0,1][n][{ARGS_W}]')
+        self.assertEqual(exact_products(trace_ref),exact_products(self.fixture(trace_py,trace_wl)))
+        self.mutation(trace_py,trace_wl,f'Derivative[0,0,0,0,2][n][t,x1,x2,x3,{FACE_W}]',
+                      channel='exact_difference',disabled=c.s.S.Zero)
+        with patch.object(c,'normalize_partial',side_effect=lambda value:value):
+            with self.assertRaises(AssertionError):
+                coherence()
+
+    def test_inequality_notation_and_relation_mutations(self):
+        for py,wl,opposite,mutations in (
+                ('x1<x2','x1<x2','x2>x1',('x2>=x1','x2>x1+1','x2<x1')),
+                ('x1<=x2','x1<=x2','x2>=x1',('x2>x1','x2>=x1+1','x2<=x1'))):
+            with self.subTest(relation=py):
+                reference=self.fixture(py,wl)
+                def coherence():
+                    self.assertEqual(exact_products(reference),exact_products(self.fixture(py,opposite)))
+                coherence()
+                for changed in mutations:
+                    self.mutation(py,opposite,changed,channel='exact_difference',disabled=c.s.false)
+        # Nested relations are the case in which Xor itself does not orient
+        # its arguments. This fixture exercises native chained-inequality
+        # syntax and a conjunction of the same two supplied bounds.
+        py='And(G(t,x1)>=0,G(t,x1)<=1)'
+        wl='0<=g[t,x1]<=1'
+        reference=self.fixture(py,'g[t,x1]>=0 && g[t,x1]<=1')
+        def nested_coherence():
+            self.assertEqual(exact_products(reference),exact_products(self.fixture(py,wl)))
+        nested_coherence()
+        self.mutation(py,wl,'0<g[t,x1]<=1',channel='exact_difference',disabled=c.s.false)
+        def unoriented(head,left,right):
+            return c.RELATIONS[head](left,right,evaluate=False)
+        with patch.object(c,'native_relation',side_effect=unoriented):
+            with self.assertRaises(AssertionError):
+                nested_coherence()
 
     def test_generic_profiles_separate_each_argument(self):
         for row in c.NAME_TABLE:
@@ -267,6 +404,70 @@ class Controls(unittest.TestCase):
                 self.assert_moved(self.fixture('(x1,x2)','{x1,x2}',corr=corr),
                                   self.fixture('(x1,x2)','{x1,x2}',corr=swapped))
 
+    def test_production_current_pairing_and_unpaired_time_density(self):
+        for regional in (False,True):
+            with self.subTest(regional=regional):
+                groups=range(3) if regional else (0,)
+                # Independently serialized spatial-reference payloads contain
+                # exactly the components Wolfram's current payload contains.
+                vectors=[[f'{name}+{7*r}' for name in c.SPACE] for r in groups]
+                densities=[f'n({ARGS_P})+{r}' for r in groups]
+                py_vectors=['('+','.join([rho]+vec)+')' for rho,vec in zip(densities,vectors)]
+                py_refs=['('+','.join(vec)+')' for vec in vectors]
+                wl_vectors=['{'+','.join(vec)+'}' for vec in vectors]
+                py='['+','.join(py_vectors)+']' if regional else py_vectors[0]
+                reference_py='['+','.join(py_refs)+']' if regional else py_refs[0]
+                wl='{'+','.join(wl_vectors)+'}' if regional else wl_vectors[0]
+                corr=replace(SYNTH,kind='regional_current' if regional else 'current')
+                schema=tuple((r,c.SPACE) for r in c.REGIONS) if regional else c.SPACE
+                ref_corr=replace(SYNTH,kind='tree',schema=schema)
+                def check():
+                    result=self.fixture(py,wl,corr=corr)
+                    reference=self.fixture(reference_py,wl,corr=ref_corr)
+                    self.assertEqual(exact_products(result),exact_products(reference))
+                    self.assertEqual(computed(result[0],True),computed(reference[0],True))
+                    extras=result[0][0]['unpaired_components']
+                    parsed=c.py_parse(py)
+                    expected=set()
+                    for i in groups:
+                        prefix=(i,) if regional else ()
+                        node=c.node_at(parsed,prefix+(0,))
+                        expected.update(c.leaf_paths(node,prefix+(0,)))
+                    self.assertEqual({tuple(p) for p in result[1][0]['uncompared_leaf_paths']['py']},expected)
+                    self.assertEqual([tuple(e['path']) for e in extras],
+                                     [(i,0) if regional else (0,) for i in groups])
+                    changed=wl.replace(vectors[-1][-1],f'({vectors[-1][-1]})+19')
+                    self.assert_moved(result,self.fixture(py,changed,corr=corr))
+                    # A larger time-density subtree changes parse accounting,
+                    # while leaving the compared spatial values unchanged.
+                    changed_py=py.replace(densities[0],f'({densities[0]})*exp(x1)',1)
+                    density_changed=self.fixture(changed_py,wl,corr=corr)
+                    old_operands=[r['wl'] for r in result[2] if r['kind']=='operands']
+                    new_operands=[r['wl'] for r in density_changed[2] if r['kind']=='operands']
+                    self.assertEqual(old_operands,new_operands)
+                    self.assertEqual(exact_products(result),exact_products(density_changed))
+                    self.assertNotEqual(result[1][0]['parsed_leaves'],density_changed[1][0]['parsed_leaves'])
+                    self.assertEqual(result[1][0]['actually_compared_leaves'],density_changed[1][0]['actually_compared_leaves'])
+                check()
+                with patch.object(c.Comparator,'scalar',return_value={}):
+                    with self.assertRaises(AssertionError):
+                        check()
+
+    def test_dimension_binding_keys_are_not_compared_values(self):
+        py='[(x1,Matrix([[t],[x2]])),(x3,Matrix([[w],[x1]]))]'
+        wl='{{x3,{w,x1}},{x1,{t,x2}}}'
+        changed='{{x3,{w,x1}},{x1,{t,x2+1}}}'
+        corr=replace(SYNTH,kind='ledger')
+        result,_=self.mutation(py,wl,changed,corr=corr,channel='unit')
+        ref_corr=replace(SYNTH,kind='tree',schema=(('first',c.UNIT),('second',c.UNIT)))
+        reference=self.fixture('((t,x2),(w,x1))','{{t,x2},{w,x1}}',corr=ref_corr)
+        self.assertEqual(exact_products(result),exact_products(reference))
+        self.assertEqual(result[1][0]['actually_compared_leaves'],reference[1][0]['actually_compared_leaves'])
+        parsed=c.py_parse(py)
+        key_paths=set().union(*(c.leaf_paths(pair.args[0],(i,0)) for i,pair in enumerate(parsed.args)))
+        missing={tuple(p) for p in result[1][0]['uncompared_leaf_paths']['py']}
+        self.assertTrue(key_paths.issubset(missing))
+
     def test_joined_structure_mismatch_is_not_formed(self):
         corr=replace(SYNTH,kind='tree',schema=('first coordinate','second coordinate'))
         before,after=self.mutation('(x1,x2)','{x1,x2}','{{x1,x2}}',corr=corr,channel='shaped',disabled=False)
@@ -294,15 +495,29 @@ class Controls(unittest.TestCase):
         py='Subs(Derivative(G(a,b),a),(a,b),(1,2))'
         wl='Derivative[1,0][g][1,2]'
         changed='Derivative[0,1][g][1,2]'
-        self.assert_moved(self.fixture(py,wl),self.fixture(py,changed),samples_only=True)
-        original=c.profile
-        def symmetric(name,arity,form,stratum):
-            return sum(c.FORMAL[:arity]) if name=='G' else original(name,arity,form,stratum)
-        clear_evaluation_caches()
-        with patch.object(c,'profile',side_effect=symmetric):
-            with self.assertRaises(AssertionError):
-                self.assert_moved(self.fixture(py,wl),self.fixture(py,changed),samples_only=True)
-        clear_evaluation_caches()
+        # The reduction targets the basic forms. Deliberately asymmetric
+        # order-zero strata must not rescue this dedicated coverage control.
+        options={'strata':('generic',)}
+        self.mutation(py,wl,changed,options=options,channel='sample_values',disabled=[],samples_only=True)
+        def symmetric(form,args,seed):
+            total=sum(args)
+            constant=c.s.Rational(seed+1,7)
+            return {'affine':constant+(seed+1)*total/31,
+                    'quadratic':constant+(seed+1)*total**2/37,
+                    'rational':constant+(seed+1)*total/(41*(1+total**2))}[form]
+        def clear_forms():
+            c.profile.cache_clear()
+            c.face_forms.cache_clear()
+            c.point_for.cache_clear()
+            clear_evaluation_caches()
+        clear_forms()
+        try:
+            with patch.object(c,'basic_form',side_effect=symmetric):
+                with self.assertRaises(AssertionError):
+                    self.assert_moved(self.fixture(py,wl,sample_options=options),
+                                      self.fixture(py,changed,sample_options=options),samples_only=True)
+        finally:
+            clear_forms()
 
     def test_equivalent_delta_coefficient_away_from_support(self):
         py=f'(w+2)*DiracDelta(w-{FACE_P})'

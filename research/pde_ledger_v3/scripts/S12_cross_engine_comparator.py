@@ -372,6 +372,60 @@ def call(n,name):
     return n.head=='Apply' and n.args[0].head=='Symbol' and n.args[0].value==name
 
 
+def partial_signature(expr):
+    """Read a partial's head, orders and evaluation arguments, including Subs.
+
+    Only differentiation in distinct argument slots is recognized here. A
+    derivative through a composite argument remains a chain-rule operation.
+    """
+    if isinstance(expr,s.Subs):
+        inner=partial_signature(expr.expr)
+        if inner is None:
+            return None
+        head,orders,points=inner
+        return head,orders,tuple(s.Subs(p,expr.variables,expr.point).doit() for p in points)
+    if not isinstance(expr,s.Derivative) or not isinstance(expr.expr,AppliedUndef):
+        return None
+    fun=expr.expr
+    counts=dict(expr.variable_count)
+    if any(not isinstance(v,s.Symbol) or fun.args.count(v)!=1 or
+           any(p!=v and p.has(v) for p in fun.args) for v in counts):
+        return None
+    return fun.func,tuple(int(counts.get(p,0)) for p in fun.args),fun.args
+
+
+def partial_derivative(head,orders,points):
+    """One notation for a partial at its arguments, without identifying values."""
+    if not any(orders):
+        return head(*points)
+    direct=all(isinstance(p,s.Symbol) for p in points) and len(set(points))==len(points)
+    slots=points if direct else s.symbols('_s12_partial0:'+str(len(points)),real=True)
+    derivative=s.Derivative(head(*slots),*((v,k) for v,k in zip(slots,orders) if k),evaluate=False)
+    return derivative if direct else s.Subs(derivative,slots,points)
+
+
+def normalize_partial(expr):
+    """Translate SymPy's partial-slot/Subs notation, retaining all arguments."""
+    signature=partial_signature(expr)
+    if signature is not None:
+        return partial_derivative(*signature)
+    if isinstance(expr,s.Derivative):
+        # The ordinary derivative of a composite is a chain-rule derivative,
+        # rather than a partial in the composite expression as a variable.
+        expanded=expr.doit()
+        if expanded!=expr:
+            return expanded.replace(lambda x:isinstance(x,(s.Derivative,s.Subs)),normalize_partial)
+    return expr
+
+
+def native_relation(head,left,right):
+    """Oppositely oriented inequality notations denote the same relation."""
+    if head in ('StrictGreaterThan','GreaterThan'):
+        head={'StrictGreaterThan':'StrictLessThan','GreaterThan':'LessThan'}[head]
+        left,right=right,left
+    return RELATIONS[head](left,right,evaluate=False)
+
+
 def math_node(n,b,engine,scope=None):
     scope = {} if scope is None else scope
     def cv(x,local=None):
@@ -406,16 +460,8 @@ def math_node(n,b,engine,scope=None):
             key = b.name(fun.value,engine)
             if b.arities.get(key)!=len(args):
                 raise Unsupported('unbound derivative function/arity '+key)
-            slots = tuple(s.Dummy('arg'+str(i),real=True) for i in range(len(args)))
-            deriv = s.Derivative(s.Function(key,real=True)(*slots),
-                                 *((v,int(cv(k))) for v,k in zip(slots,orders) if int(cv(k))),
-                                 evaluate=False)
             points = tuple(cv(x) for x in args)
-            # Coordinate-only partials use their original coordinate variables.
-            if all(isinstance(x,s.Symbol) for x in points) and len(set(points))==len(points):
-                return s.Derivative(s.Function(key,real=True)(*points),
-                       *((v,int(cv(k))) for v,k in zip(points,orders) if int(cv(k))),evaluate=False)
-            return s.Subs(deriv,slots,points)
+            return partial_derivative(s.Function(key,real=True),tuple(int(cv(k)) for k in orders),points)
         if head.head!='Symbol':
             raise Unsupported('unsupported composite application head')
         name = head.value
@@ -431,8 +477,8 @@ def math_node(n,b,engine,scope=None):
         if len(a)!=2:
             raise Unsupported('relation arity')
         if a[0].head in RELATIONS:
-            return s.And(cv(a[0]),RELATIONS[h](cv(a[0].args[-1]),cv(a[1]),evaluate=False),evaluate=False)
-        return RELATIONS[h](*(cv(x) for x in a),evaluate=False)
+            return s.And(cv(a[0]),native_relation(h,cv(a[0].args[-1]),cv(a[1])),evaluate=False)
+        return native_relation(h,*(cv(x) for x in a))
     if h in ('And','Or','Not'):
         return getattr(s,h)(*(cv(x) for x in a),evaluate=False)
     if h=='Element':
@@ -448,7 +494,7 @@ def math_node(n,b,engine,scope=None):
         specs = []
         for x in a[1:]:
             specs.append((cv(x.args[0]),int(cv(x.args[1]))) if x.head=='Sequence' else cv(x))
-        return s.Derivative(cv(a[0]),*specs,evaluate=False)
+        return normalize_partial(s.Derivative(cv(a[0]),*specs,evaluate=False))
     if h=='Subs':
         def members(x):
             return x.args if x.head=='Sequence' else (x,)
@@ -458,7 +504,7 @@ def math_node(n,b,engine,scope=None):
         local=dict(scope)
         for i,v in enumerate(variables):
             local[v.value]=s.Symbol('_slot'+str(len(scope)+i),real=True)
-        return s.Subs(cv(a[0],local),tuple(local[v.value] for v in variables),tuple(cv(x) for x in points))
+        return normalize_partial(s.Subs(cv(a[0],local),tuple(local[v.value] for v in variables),tuple(cv(x) for x in points)))
     if h=='Piecewise':
         branches=a[0].args if engine=='wl' else a
         pairs=[]
@@ -500,67 +546,67 @@ def contracts():
     for tag,py,wl in [('engine',122,84),('governing_input',123,85),('calculus_scope','124-130','86-91'),
                       ('dimension_basis',232,149),('completion',371,285)]:
         add(tag,'text',tag,py,wl)
-    for tag,py,wl in [('supplied/material_balance',203,133),('supplied/order_balance',204,134),
-                      ('supplied/conversion_identity',205,135)]:
+    for tag,py,wl in [('supplied/material_balance','151,155','100,102'),('supplied/order_balance','152-156','101,103'),
+                      ('supplied/conversion_identity',157,104)]:
         add(tag,'value',tag,py,wl)
-    add('supplied/faces','tree','lower and upper live faces',206,136,('lower face','upper face'))
-    add('supplied/domain','tree','face order/coordinate assumptions; interior range',207,137,
+    add('supplied/faces','tree','lower and upper live faces',146,97,('lower face','upper face'))
+    add('supplied/domain','tree','face order/coordinate assumptions; interior range','146,163,207','97,108,111,137',
         ('face order and real coordinates','interior range'))
-    add('live_fields','tree','generic density, spatial velocity/flux, fraction, faces',208,138,
+    add('live_fields','tree','generic density, spatial velocity/flux, fraction, faces','141-146,208','93-97,138',
         (('density',None),('velocity',SPACE),('order flux',SPACE),('fraction',None),('faces',('lower','upper'))))
     for tag,obj,py,wl,sch in [
-        ('region_domains','three open region domains',209,139,REGIONS),
-        ('fields/region_indicators','indicators of the three open regions',210,140,REGIONS),
-        ('density/region_fields','regional densities',211,141,REGIONS),
-        ('velocity/region_fields','regional spatial velocities',212,142,tuple((r,SPACE) for r in REGIONS)),
-        ('flux/region_fields','regional spatial fluxes',213,143,tuple((r,SPACE) for r in REGIONS)),
+        ('region_domains','three open region domains','169-173',109,REGIONS),
+        ('fields/region_indicators','indicators of the three open regions','160-162,175-178','107,115',REGIONS),
+        ('density/region_fields','regional densities','179,188','116,124',REGIONS),
+        ('velocity/region_fields','regional spatial velocities','180-183,189','117-118,125',tuple((r,SPACE) for r in REGIONS)),
+        ('flux/region_fields','regional spatial fluxes','184-187,190','119-120,126',tuple((r,SPACE) for r in REGIONS)),
         ('density/distribution_field','density distribution',214,144,None),
         ('velocity/distribution_field','spatial velocity distributions',215,145,SPACE),
         ('flux/distribution_field','spatial flux distributions',216,146,SPACE)]:
         add(tag,'value' if sch is None else 'tree',obj,py,wl,sch)
-    add('order_flux_dimension_inference/operands','inference','expanded order terms and reference with units',237,155)
-    add('order_flux_dimension_inference/residual','inference_residual','term-associated unit residuals',239,157)
-    add('order_flux_dimension_inference/object','unit','inferred flux units',244,161)
-    add('supplied/material_balance_rhs','value','material balance right hand side',247,163)
+    add('order_flux_dimension_inference/operands','inference','expanded order terms and reference with units','234-237','152-155')
+    add('order_flux_dimension_inference/residual','inference_residual','term-associated unit residuals',238,156)
+    add('order_flux_dimension_inference/object','unit','inferred flux units','240,242-243','158,160')
+    add('supplied/material_balance_rhs','value','material balance right hand side','155,247','102,163')
     add('supplied/material_balance_rhs/dimension','text','dimension note',248,164)
     add('supplied/order_balance_rhs/dimension_comparison','text','dimension comparison note',
         '111-113,250','63-64,166')
-    add('material/region_current_operands','regional_current','regional conserved mass currents: spatial components only',258,176)
-    add('material/region_balance_operands','tree','regional material equations',259,177,REGIONS)
-    add('material/conserved_current_operand','current','conserved mass current: spatial components only',260,182)
-    for tag,py,wl in [('balance_distribution_operand',262,185),('balance_distribution',266,187),
-                     ('face_requirements',291,212),('balance_with_face_traces',292,213)]:
+    add('material/region_current_operands','regional_current','regional conserved mass currents: spatial components only','151,192-197','100,129-132,171')
+    add('material/region_balance_operands','tree','regional material equations','198,259','102,172',REGIONS)
+    add('material/conserved_current_operand','current','conserved mass current: spatial components only','199-202',180)
+    for tag,py,wl in [('balance_distribution_operand',261,'183-184'),('balance_distribution',265,186),
+                     ('face_requirements','284,289','205,210'),('balance_with_face_traces','279,290,292','200,210,213')]:
         add('material/'+tag,'tree' if tag=='face_requirements' else 'value','material '+tag,py,wl,
             ('lower','upper') if tag=='face_requirements' else None)
     for r in (1,2,3):
-        add(f'material/region/{r}/balance','value',f'material equation in region {r}',270,191)
+        add(f'material/region/{r}/balance','value',f'material equation in region {r}','198,270','102,172')
     for k in (1,2):
-        for tag,kind,py,wl,sch in [('coefficient_operand','value',280,201,None),('trace_coefficient','value',281,202,None),
-            ('balance_operands','tree',282,203,('trace','material rhs')),('balance_residual','value',283,204,None),
-            ('requirement','value',285,206,None),('balance_contribution','value',286,207,None)]:
+        for tag,kind,py,wl,sch in [('coefficient_operand','value',276,198,None),('trace_coefficient','value','277-278',199,None),
+            ('balance_operands','tree','155,278,282','102,199,203',('trace','material rhs')),('balance_residual','value',283,204,None),
+            ('requirement','value',284,205,None),('balance_contribution','value',279,200,None)]:
             add(f'material/face/{k}/'+tag,kind,f'material face {k} '+tag,py,wl,sch)
     for package in ('general_order','conditional_fast_ordering'):
         for tag,kind,py,wl,sch in [
-            ('order_field','value',297,221,None),('region_order_operands','tree',298,222,REGIONS),
-            ('region_current_operands','regional_current',307,233,None),
-            ('conserved_current_operand','current',312,237,None),
-            ('material_elimination_operand','incompatible',323,242,None),
-            ('balance_source_operand','value',326,241,None),('source_distribution','value',328,244,None),
-            ('regular_distribution_part','value',330,246,None),('source_with_face_traces','value',370,283,None)]:
+            ('order_field','value',296,219,None),('region_order_operands','tree','163-168',218,REGIONS),
+            ('region_current_operands','regional_current','152-154,303-306','101,228-231',None),
+            ('conserved_current_operand','current','308-311',235,None),
+            ('material_elimination_operand','incompatible','317-319,322','173-174,242',None),
+            ('balance_source_operand','value',325,'239-240',None),('source_distribution','value',327,243,None),
+            ('regular_distribution_part','value',329,245,None),('source_with_face_traces','value','329,351,369-370','245,268,281,283',None)]:
             add(package+'/'+tag,kind,package+' '+tag,py,wl,sch)
         for r in (1,2,3):
-            for tag,kind,py,wl,sch in [('domain','value',338,255,None),('field_operands','tree',339,256,FIELDS),
-                                     ('source','value',341,259,None)]:
+            for tag,kind,py,wl,sch in [('domain','value','169-173','108-109,255',None),('field_operands','tree','188-190,335,339','124-126,218,256-257',FIELDS),
+                                     ('source','value','317-319,340','251-252,258',None)]:
                 add(f'{package}/region/{r}/'+tag,kind,f'region {r} '+tag,py,wl,sch)
         for k in (1,2):
             for tag,kind,py,wl,sch in [
-                ('locus','value',359,272,None),('field_trace_operands','tree',360,273,
+                ('locus','value','146,359','97,272',None),('field_trace_operands','tree','352-358','269-271',
                         tuple((r,FIELDS) for r in REGIONS[k-1:k+1])),
-                ('coefficient_operand','value',363,275,None),('trace_coefficient','value',364,276,None),
-                ('source_contribution','value',365,277,None),('material_requirement','value',366,278,None)]:
+                ('coefficient_operand','value',347,266,None),('trace_coefficient','value','348-349',267,None),
+                ('source_contribution','value','350-351',268,None),('material_requirement','value','284,289,366','205,210,278',None)]:
                 add(f'{package}/face/{k}/'+tag,kind,f'face {k} '+tag,py,wl,sch)
     add('conditional_fast_ordering/premise','text','conditional specialization label',300,224)
-    add('conditional_fast_ordering/interior_range','value','conditional interior range',301,225)
+    add('conditional_fast_ordering/interior_range','value','conditional interior range','164,301','112,225')
     return tuple(rows)
 
 
@@ -581,8 +627,10 @@ def correspondence(tag,rows):
     if suffix in ('dimension_operands','dimension_residual','dimension_reference_operand',
                   'nested_dimension_operands','nested_dimension_residual'):
         # Only dimension reports actually emitted by the sources are bound.
-        roots={'supplied/material_balance_lhs':('246','162'), 'supplied/order_balance_lhs':('249','165'),
-               'supplied/order_balance_rhs':('250','166'), 'supplied/conversion_identity_rhs':('251','167')}
+        roots={'supplied/material_balance_lhs':('151,155; 246','100,102; 162'),
+               'supplied/order_balance_lhs':('152-156; 249','101,103; 165'),
+               'supplied/order_balance_rhs':('141,145,156; 250','93,103; 166'),
+               'supplied/conversion_identity_rhs':('145,157; 251','104; 167')}
         parent=correspondence(base,rows)
         if base.endswith('/balance_lhs'):
             parent=correspondence(base[:-4],rows)
@@ -591,7 +639,13 @@ def correspondence(tag,rows):
             kind={'dimension_operands':'ledger','dimension_residual':'ledger_residual',
                   'dimension_reference_operand':'reference','nested_dimension_operands':'nested_ledger',
                   'nested_dimension_residual':'nested_ledger'}[suffix]
-            return Correspondence(tag,kind,'dimension report '+base,'97-117; '+py,'56-68; '+wl)
+            builders={'dimension_operands':('100-102','58-60'),
+                      'dimension_residual':('100-101,115-117','58-59,65-67'),
+                      'dimension_reference_operand':('115-116','65-66'),
+                      'nested_dimension_operands':('83-89,104-105','43-45,61'),
+                      'nested_dimension_residual':('83-89,107-108','43-45,62')}
+            pb,wb=builders[suffix]
+            return Correspondence(tag,kind,'dimension report '+base,pb+'; '+py,wb+'; '+wl)
     return None
 
 
@@ -606,6 +660,21 @@ BASE_POINTS = ((s.Rational(1,7),s.Rational(2,9),s.Rational(-1,5),s.Rational(3,11
                (s.Rational(-2,7),s.Rational(1,6),s.Rational(3,10),s.Rational(-1,8)),
                (s.Rational(3,8),s.Rational(-2,11),s.Rational(1,9),s.Rational(2,7)))
 FORMAL = s.symbols('a0:5',real=True)
+
+
+# An injective code per live name, plus distinct common-trace codes. The codes
+# select probes only; they are not identifications between physical objects.
+PROFILE_CODES = {name:i+1 for i,name in enumerate(
+    tuple(r.py for r in NAME_TABLE if r.arity)+
+    tuple('trace:'+stem for stem in ('n','u1','u2','u3','u4','j1','j2','j3','j4')))}
+
+
+def function_seed(name):
+    if name in PROFILE_CODES:
+        return PROFILE_CODES[name]
+    # Synthetic name-table rows have a disjoint, injective bounded extension.
+    code=int.from_bytes(b'\x01'+name.encode('utf-8'),'big')
+    return len(PROFILE_CODES)+1+s.Rational(code,code+1)
 
 
 def basic_form(form,args,seed):
@@ -637,7 +706,7 @@ def profile(name,arity,form,stratum):
     lo,hi=lower.xreplace(toargs),upper.xreplace(toargs)
     if name in ('wminus','wplus'):
         return (lo,hi)[name=='wplus']
-    seed=1+int(hashlib.sha256(name.encode()).hexdigest()[:4],16)%13
+    seed=function_seed(name)
     base=basic_form(form,args,seed)
     if name in ('f','G','chi'):
         # These finite probes are checked against the supplied ranges at every
@@ -654,7 +723,7 @@ def profile(name,arity,form,stratum):
         return base
     if '_region' in name and ('jumps_zero' in stratum or 'jumps_and_order_zero' in stratum):
         stem,region=name.split('_region')
-        common_seed=1+int(hashlib.sha256(stem.encode()).hexdigest()[:4],16)%13
+        common_seed=function_seed('trace:'+stem)
         base=basic_form(form,args,common_seed)
         distance=args[4]-(lo if stratum.endswith('lower') else hi)
         base+=int(region)*distance**2*(1+sum((i+1)*a*a for i,a in enumerate(args)))/47
@@ -1011,7 +1080,8 @@ class Comparator:
             if residual:
                 components.append(self.unit(p.args[i],w.args[j],tag,'unit residual of '+str(key),pp+(i,),wp+(j,)))
             else:
-                components.append(self.scalar(p.args[i].args[0],w.args[j].args[0],tag,'term '+str(key),pp+(i,0),wp+(j,0)))
+                # The term is a binding key, not a compared value. Its leaves
+                # remain in the independent census and receive no credit.
                 components.append(self.unit(p.args[i].args[1],w.args[j].args[1],tag,'units of '+str(key),pp+(i,1),wp+(j,1)))
         if not p.args and not w.args:
             self.compared[0].add(pp)

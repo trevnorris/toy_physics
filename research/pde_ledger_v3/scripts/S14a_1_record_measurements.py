@@ -35,6 +35,7 @@ TITLES = {
     'M14': 'Run records, builder report and comparator decision list',
     'M15': 'S12 acceptance, J1/J2 sources, baseline and final affected text',
     'M16': 'Final S14a register pass, status and exact allowed ancillary diff',
+    'M17': 'Round-0 repair sources and stored sample cardinalities by form',
 }
 
 
@@ -241,6 +242,31 @@ def retrieve(section, rows):
         print('The pre-existing .claude/skills/prep-for-compact/SKILL.md modification is outside this work; its contents are not retrieved.', file=out)
         print('$ git diff ' + BASE + ' -- ' + ' '.join(paths), file=out)
         print(git('diff', BASE, '--', *paths), end='', file=out)
+    elif section == 'M17':
+        source(out, V3 + 'directives/_measurements/S14a_1_record_r0_review_disposition.md')
+        print('$ git show --format=%h --name-only 25cb3a86 -- research/pde_ledger_v3/directives/_measurements/S14a_1_record_r0_review_disposition.md research/pde_ledger_v3/directives/_measurements/S14a_1_record_r0_review_lookups.md', file=out)
+        print(git('show', '--format=%h', '--name-only', '25cb3a86', '--',
+                  V3 + 'directives/_measurements/S14a_1_record_r0_review_disposition.md',
+                  V3 + 'directives/_measurements/S14a_1_record_r0_review_lookups.md'), end='', file=out)
+        source(out, V3 + 'directives/_measurements/S14a_1_comparator_build_review_r0_disposition.md', 54, 67)
+        source(out, V3 + 'directives/_measurements/S14a_1_comparator_build_review_r1_disposition.md', 90, 100)
+        for row in rows:
+            if row['kind'] != 'comparison' or row['binding'] not in [
+                    'b50', 'b72', 'b128', 'b148', 'b171', 'b173', 'b174']:
+                continue
+            all_samples = []
+            for index, part in enumerate(row['comparison']['components']):
+                samples = part['samples']
+                all_samples.extend(samples)
+                print(dump({'binding': row['binding'], 'component_index': index,
+                            'part': part['part'], 'stored_samples_count': len(samples),
+                            'stored_sample_form_literal_counts': dict(Counter(sample['form'] for sample in samples)),
+                            'stored_sample_residual_literal_counts_by_form': {
+                                form: literal_counts([sample for sample in samples if sample['form'] == form], 'residual')
+                                for form in ['affine', 'quadratic', 'cubic']}}), file=out)
+            print(dump({'binding': row['binding'], 'all_components_stored_samples_count': len(all_samples),
+                        'all_components_stored_sample_form_literal_counts': dict(Counter(
+                            sample['form'] for sample in all_samples))}), file=out)
     else:
         raise ValueError(section)
     return out.getvalue()

@@ -7,7 +7,7 @@ accepted at `ac909aaf`; its source forms remain OPEN under **"Keep S12"**. (Retr
 
 The committed material/order balances give the printed closed-slab projected balances, including
 live moving/tilted faces and their full concentrated parts. In the **labelled spherical
-specialization**, the record reports the two material-loss channels, their sum `J`, the signed
+specialization**, the record reports the two channels by which material leaves the slab, their sum `J`, the signed
 order lost, storage and outward material flux at a free outer radius. Velocity and its volume
 flux are reported only where projected density is nonzero. These are conditional balance objects;
 the supplied law, U1 support identification and spherical restriction are not derived here.
@@ -30,6 +30,7 @@ it imports neither engine nor comparator and performs no new CAS, evaluation or 
 | M07/M08/M09/M10 | Every comparison and pre-domain residual; exact/text differences; explicit coverage; literal counts and binding references. |
 | M11/M12/M13 | Separate source-row inventories; register schema/method/census; second-route prior art and inherited handoffs. |
 | M14/M15/M16 | Run records/comparator contract; S12 acceptance and J1/J2; final pass/status and ancillary diff against `f5d283c1`. |
+| M17 | Round-0 T1–T4 dispositions, comparator derivative-point limitation and stored sample cardinalities by form for the seven unresolved bindings. |
 
 ## 1. Supplied objects, domain and premises
 
@@ -55,7 +56,7 @@ law holds and the shear-holding region has two faces over the in-plane coordinat
 |---|---|---|
 | Committed balances and signed rate split; user 2026-07-24, carried by the 2026-10-21 list | **"Supplied equations (committed; unfalsifiable in this build)"** | Regional currents/equations, both projected balances/sources and all shell objects. The primitive dimension assignments are inputs to the dimensional audit. |
 | U1, user 2026-10-19; S12 revision 4, cleared `b08673a2`, incorporated 2026-10-21 | **"Both are adopted premises, not results of this build"**: live shear-holding faces and order vanishing outside. S12 calls the encoding **"an identification, flagged"**, and the user inputs **"adopted substrate input to a conditional model"**. | Masks, differentiated distributions, face/source parts, both projections and every dependent shell object. No shear response or order profile is derived. The region is not defined by the support of a chosen profile. |
-| U1 interior `0≤f≤1`, permitted jumps and no concentrated input fields; S12 encoding and user "Leave it out for now", 2026-10-20 | The list says U1 and its encoding are **"as the S12 decision list states them"**. | The regional/traced function class of the same objects. The no-concentrated-input restriction does not remove concentrated source parts. |
+| U1 interior `0≤f≤1`, permitted jumps and no concentrated input fields; S12 encoding and user "Leave it out for now", 2026-10-20 | The list says U1 and its encoding are **"as the S12 decision list states them"**. | The bound `0≤f≤1` enters no computed object. Permitted jumps and no concentrated input fields define the regional/traced function class of the same objects. The no-concentrated-input restriction does not remove concentrated source parts (M17, T2). |
 | U1 re-ordering admissibility clause; user 2026-10-19, inherited S12 encoding | S12: **"Not encoded: U1's re-ordering clause"**; **"OPEN admissibility requirement, with no rate and no local sign chosen"**. | Enters no computed object as an enforced clause. |
 | Material face factor; accepted S12 record 2026-10-20, supplied by the 2026-10-21 list | **"It is supplied and unfalsifiable in this build. The build's face terms are reached by its own integration."** | Printed one-sided factor `a_{r,s}=u_r^w−∂t w_s−u_r^i∂i w_s`; it is not a derivation target substituted to build the face terms. |
 | Spherical symmetry; 2026-10-21 step list | **"labelled specialization"**, **"not a limit earned from item 1"** | Separately built radial projections, geometric measure, both channels, `J`, order lost, storage, outer flux/radius dependence and velocity objects. Native fields retain `(r,w,t)`; faces retain `(r,t)`. |
@@ -98,11 +99,13 @@ regional current/equation components are separately bound, not inferred from tho
 (Retrieve M03/M05/M07/M10.)
 
 Closed integrals of the differential operands are also printed: b50/b72 and spherical b128/b148.
-Their exact residuals are **not resolved to literal zero**; each has 54 stored sample residuals `0`.
+Their exact residuals are **not resolved to literal zero**; each has 54 stored sample residuals `0`,
+18 per form. Only the 18 quadratic-form samples can move when a derivative is taken at another
+point; the 18 affine and 18 cubic samples do not make that check.
 They stay open exact cross-engine differences, **no owner named** (§5). The independently bound
 integration-check operands b60/b61/b80/b81/b138/b139/b156/b157 do print exact residual `0`.
 Those distinct comparisons do not close the unresolved integral rows. (Retrieve M07/M08; M02,
-comparator round-1 "Carried".)
+comparator round-1 "Carried"; M17 for the per-form counts and limitation.)
 
 ## 3. Items 2 and 3: labelled spherical shell, channels and flux
 
@@ -121,12 +124,16 @@ not a new equivalence verdict. (Retrieve M03/M04/M07/M08; M02 comparator round 0
 | Drain rate | `J=Jface+Jcore`, user 2026-10-21 definition | b168 exact `0`; no sign imposed. |
 | Signed order lost | `Lχ=−∫shell Sχ`, including both face parts | b169 exact `0`. Positive denotes a net drain, negative net re-ordering; neither sign is enforced. |
 | Outward outer material flux | `Φ(R,t)=4πR²F_r(R,t)` | b170 exact `0`; evaluated at a free outer radius, with no radius limit. |
-| Storage | `K=∂t∫shellΣ` | b171 exact residual unresolved; 54 stored samples `0`. |
-| Shell balance and its residual | `K+Φ+J=0`; residual is the printed lhs | b173 lhs and b174 unresolved exact residuals, 54 samples `0` each; b173 rhs exact `0`. |
+| Storage | `K=∂t∫shellΣ` | b171 exact residual unresolved; 54 stored samples `0`, 18 per form. Only its 18 quadratic-form samples can move for a derivative taken at another point; affine/cubic samples do not make that check (M17). |
+| Shell balance and its residual | `K+Φ+J=0`; residual is the printed lhs | b173 lhs and b174 unresolved exact residuals, 54 samples `0` each, 18 per form. Only the 18 quadratic-form samples per unresolved part can move for a derivative taken at another point; affine/cubic samples do not make that check. b173 rhs exact `0` (M17). |
 | Face channel minus order lost | The printed difference `Jface−Lχ`, with both separate operands also printed by SymPy | Difference b175 exact `0` **between engines**. It is not asserted to vanish as a physical constraint; the separate operand pair is unjoined. |
 | Outer-radius dependence | `∂R Φ(R,t)`, printed with the live fields and face derivatives | b172 exact `0`. The derivative is not set to zero. |
 | Projected velocity | At free `r`, `vproj=F_r/Σ` only on `Σ(r,t)≠0`; at outer `R`, the same quotient on `Σ(R,t)≠0` | Free-radius SymPy occurrence unjoined. Outer-radius b176 condition residual `False`, value exact `0` on the common condition; 45 value sample residuals `0`, 9 excluded samples. |
 | Outward projected-velocity volume flux | `Vflux(R,t)=4πR²F_r(R,t)/Σ(R,t)` only on `Σ(R,t)≠0` | b177 condition `False`, conditional value exact `0`; 45 value sample residuals `0`, 9 excluded. No value at zero density is supplied. |
+
+For b173 as a whole, both sides together have 108 stored samples: 36 affine, 36 quadratic and
+36 cubic. Only 18 of those quadratic samples belong to its unresolved lhs; the other 18 belong
+to the rhs. The rhs samples do not enlarge the derivative-point check on the lhs. (Retrieve M17.)
 
 The velocity restriction does not restrict the densities, material fluxes or balances to a
 nonzero-density subdomain. In particular the printed outer material flux is distinct from the
@@ -196,7 +203,7 @@ in M06, not suppressed by the bound-end counts. (Retrieve M05/M06/M10/M14.)
 
 | Difference | Classification and permitted reading | Owner / evidence |
 |---|---|---|
-| b50/b72/b128/b148 closed differential-operand integrals; b171 storage; b173 shell-balance lhs; b174 residual | **Open exact cross-engine differences.** Each exact expression stays printed; each has 54 stored sample residuals `0`. Finite sample agreement is the resolved check, not a new exact-equivalence proof. | No owner named. M07/M08; comparator round-1 "Carried" in M02. |
+| b50/b72/b128/b148 closed differential-operand integrals; b171 storage; b173 shell-balance lhs; b174 residual | **Open exact cross-engine differences.** Each exact expression stays printed; each has 54 stored sample residuals `0`, 18 per form. Only its 18 quadratic-form samples can move for a derivative taken at another point; its 18 affine and 18 cubic samples do not make that check. Finite sample agreement is the resolved check, not a new exact-equivalence proof. | No owner named. M07/M08/M17; comparator round-1 "Carried" in M02. |
 | b165 shell-domain payload | **Printed domain difference**, retained open at payload level. Exclusive-or remains printed; all 54 samples are `False` in the positive-radius probe domain. Source declarations/round-0 disposition give the context, not permission to rewrite either payload. | No owner named. M03/M04/M07/M08; M02 comparator round 0. |
 | b188/b189 external dimension contexts | **Open cross-engine validity-context difference.** SymPy operand `True`; Wolfram `Ne(0,Integral(... at outer_radius ...))`. Exact residual `Eq(0,Integral(...))`; each diagnostic has 45 `False` and 9 `True` samples, the latter in `density_zero`. Bound dimension values are compared only on the common condition; no standalone dimension-value error is asserted. | No owner named. M07/M08; M02 comparator round-1 "Carried". |
 | b191–b227, all 37 bound comparison notes | **Textual/representational wording difference, not physical evidence.** SymPy **"No second route; nothing to compare it with."**; Wolfram **"There is nothing to compare this object with."** Every `equal_text` is `false`. The engine helpers themselves establish that these are no-counterpart notes. Every binding's object/tag pair is in M05/M10 and every literal pair in M08. | No owner named for changing wording; none needed to read the printed notes. M03/M04 (SymPy `object_`, Wolfram `alone`), M07/M08/M10. |
@@ -275,11 +282,15 @@ engine-local zero does not prove the shared face construction. (Retrieve M02–M
 The repaired Wolfram order-lost object uses the supplied projected `nΓ_B` source plus face parts;
 the distinct projected divergence/source-law residual objects stay printed under their own names.
 No supplied equation is applied by this record to erase the distinction. The comparator's repaired
-nested binders retain variable identity, and its coupled quadratic probes detect derivative-point
-changes where the unresolved exact residual cannot resolve them; affine/cubic forms are unchanged.
+nested binders retain variable identity. For each of the seven unresolved exact parts, only the
+18 coupled quadratic-form samples can move when a derivative is taken at another point; the
+18 affine and 18 cubic samples cannot make that check. b173's 36 quadratic samples across both
+sides include only 18 on its unresolved lhs (M17). The comparator round-1 disposition's sentence
+"The affine and cubic forms are unchanged" describes what its repair left alone, not sensitivity
+to derivative-point changes.
 These are the accepted instrument's reported controls, not new runs here. The comparator has three
 forms, six strata and three rational base points. Probe functions need not satisfy the supplied
-balances. Its finite tests cannot establish arbitrary-function equivalence. (Retrieve M01/M02/M04/M05/M14.)
+balances. Its finite tests cannot establish arbitrary-function equivalence. (Retrieve M01/M02/M04/M05/M14/M17.)
 
 Provenance N1 is corrected: the first builder wrote both first engines, with Wolfram first; that
 author repaired SymPy twice. A fresh author rewrote the current Wolfram engine after SymPy repair 1
@@ -350,7 +361,7 @@ S12's inventory. No O2 material law or displacement identification is imported. 
   status-line edits are accepted as reviewed in round 3."** The current status follows acceptance
   at `ac909aaf`; only item-9 acceptance/J1/J2 edits are made to those S12 texts. (Retrieve M02/M15/M16.)
 - The record contract calls the measurements generator **"a committed generator script"** and
-  also excludes **"No commit and no push"**; the current user expressly says **"Commit nothing."**
+  also says **"No commit and no push"**. The contract's no-commit instruction governs this deliverable.
   The durable generator is supplied in the working tree, uncommitted, with the final regenerated
   measurements. No acceptance/commit is invented. (Retrieve M01/M16.)
 
@@ -429,11 +440,13 @@ against `f5d283c1`; M16 retrieves their exact `git diff`:
 
 | File | Every change |
 |---|---|
-| `SUBSTRATE_REQUIREMENTS.md` | S12 acceptance in status and pass heading/provenance; J1 account names the S9b oracle status edit and register-header light-closing status edit; J2 round-3 count cites S12 M12. Adds S14a status/census summary and pass, source/provenance and by-target qualifications for `R-S1-01`, `R-S1-02`, `R-S12-02`, `R-S21-01`. No other S12-pass content changes; no new entry/status. |
+| `SUBSTRATE_REQUIREMENTS.md` | S12 acceptance in status and pass heading/provenance; J1 account names the S9b oracle status edit and register-header light-closing status edit; J2 round-3 count cites S12 M12. Adds S14a status/census summary and pass, source/provenance and by-target qualifications for `R-S1-01`, `R-S1-02`, `R-S12-02`, `R-S21-01`; T1's sample-evidence qualification states that only 18 quadratic samples per unresolved part can detect a derivative taken at another point. No other S12-pass content changes; no new entry/status. |
 | `steps/S12_order_source.md` | Acceptance replaces its header and final awaiting-review text; J1 explicitly accounts for those same two retained status-only edits; J2 cites S12 M12 for the round-3 `18→18` count. No other S12 content changes. |
 | `directives/_measurements/S14a_1_build_runs.md` | Line 5 only: replaces the stale construction-order sentence with the first-build/current-rewrite authorship/order from build round 2/N1. |
 | Repository-root `STATUS.md` | Heading and all current S12 review-status lines become acceptance at `ac909aaf`; identifies J1/J2 repairs. Adds S14a construction/comparator acceptance and record/pass written-for-review status, S13 folding, conditional output/remaining bridge and S14/S15/S20 standing; distinguishes historical S12 census and adds the S14a census/source gains. |
 
+The orchestrator's round-0 review disposition and lookups, filed at `25cb3a86`, are read-only review
+artifacts, not files changed by this author. The edit account above remains against `f5d283c1`.
 The pre-existing `.claude/skills/prep-for-compact/SKILL.md` modification is unrelated, predates this
 work and was left untouched; it is not an edit by this deliverable. No other checkout or orchestrator
 memory was read. Generator working files are under `_scratch/s14a/rec/work/`. No engine/comparator

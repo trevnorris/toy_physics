@@ -10744,62 +10744,66 @@ FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
 1525: to zero. Agreement of bound dimension values constrains their interpretation only at their
 1526: printed domains; primitive dimension assignments and unpaired audit trees are not new laws.
 1527: Closed differential-operand integrals retain b50/b72/b128/b148's unresolved exact comparison
-1528: and printed sample evidence; no new exact equivalence is required by assertion (M03/M07–M10).
-1529: The pending controlled return law, mass link, core solution, source-map completion and profile
-1530: knit enter no completed part-1 result as supplied forms; they retain their step assignments and
-1531: do not generate duplicate entries merely because they remain OPEN (record §7, M01/M11).
-1532: 
-1533: **Rest-on census, every existing entry:**
-1534: 
-1535: | Entry | S14a part 1 dependence/effect |
-1536: |---|---|
-1537: | `R-S6-01` | No compression modulus used; no source gain. |
-1538: | `R-S7-01` | Live faces select no width/flatness result; no source gain. |
-1539: | `R-S1-01` | Three in-plane/one bulk coordinates and spherical area; coordinate-domain consumer only; source added, no dimension derived. |
-1540: | `R-S1-02` | Adopted U1 shear-region/support identification; conditional interpretation source only. No shear response/confinement derived. |
-1541: | `R-S1.5-01` | No GNLS linear-mode/acoustic input; no source gain. |
-1542: | `R-S6-02` | No equilibrium/first-variation input; no source gain. |
-1543: | `R-S8-01` | No stiffness functional used; no source gain. |
-1544: | `R-S8-02` | No coupled displacement/width quadratic operator used; no source gain. |
-1545: | `R-S8-03` | No optical-stiffness sign/gate result; no source gain. |
-1546: | `R-S8-04` | No new angular-momentum/couple-stress consumer; inherited second-route obligation remains. |
-1547: | `R-S8-05` | No rotational frame selected or used; inherited second-route obligation remains. |
-1548: | `R-S1-03` | No microscopic time-reversal/Onsager input; no source gain. |
-1549: | `R-S8-06` | No displacement/quadratic-inertia identification used; number conservation does not supply it. O2 comparison remains OPEN; no source gain. |
-1550: | `R-S12-01` | No non-passive response or computed power consumer; distinct carried condition, no live owner newly assigned. |
-1551: | `R-S12-02` | Projected/face/source and labelled shell compatibility objects merge here; source added, native forms/data remain OPEN. |
-1552: | `R-O2-01` | No net-power/supplier result or adopted net-supply closure; no source gain/owner change. |
-1553: | `R-S21-01` | Framing provenance only: each force states flow needs, S21 compares, mismatch reopens S9b. No new optical profile evidence or comparison result. |
-1554: | `R-S22-01` | No energy split or conversion-work/thermal-transfer result used; no source gain. Core exclusion keeps its existing owner, not a new computed energy requirement. |
-1555: 
-1556: **Second route.** Apply the register's broader rule for every sector with identified prior art.
-1557: Read O2 scoping §5 and the O2/S9b/light-closing source rows (M13), rather than treating this
-1558: record's own questions as an exhaustive prior-art inventory. Each named candidate remains
-1559: individual: Gurtin–Murdoch, Abels–Garcke–Grün, Scriven, Helfrich, Rodriguez–Hoger–McCulloch,
-1560: Hamilton–Lisle, Visser, Unruh and the inherited Cahill/Sbitnev class. For each, applicability,
-1561: transferable historical failures/objections and whether they are answered here remain OPEN,
-1562: **no owner named for a new S14a part 1 check**. The original access, dimension, material and
-1563: exchange limitations remain as the source rows state them. No part-1 result is claimed to
-1564: reproduce an applied oracle, so no new requirement is founded on such a match.
-1565: 
-1566: Every other candidate in the inherited S9b inventory retains its source row and original OPEN
-1567: handoff (M13). The river/acoustic objections are carried, not answered: S12 drain/source-boundary
-1568: realization versus O2's force balance; S12's produced density/exchange versus S21 knit compatibility;
-1569: scalar sound versus transverse light as S9b's scoped exclusion; analog kinematics versus dynamics
-1570: as its existing handoff. Neither global nor local conservation chooses a drive or response law.
-1571: MacCullagh's `R-S8-04/-05` remain OPEN. No literature search, new oracle check or candidate
-1572: selection is performed by this pass.
-1573: 
-1574: **Directive/register relation and source tensions.** The current contract expressly defers to
-1575: this rest-on test and both-route method; no operative disagreement is found. The historical
-1576: second-route directive says **"Run it only on a prior result that a record in the reading list
-1577: identifies as reproduced by the sector"**, while the register says **"Run this route for every
-1578: sector with identified prior art"** (M13). The register wins. The material-conservation and
-1579: S13-filing disagreements are quoted with both sides in record §6 (M01/M11/M15), not resolved by
-1580: new physics or an owner reassignment. The plan's four bridge objects are not all closed:
-1581: S14/S15/S20 remain **"CONDITIONAL, not carried results"**. No frozen DC completion or profile
-1582: is adopted to close them.
-1583: 
+1528: and printed sample evidence: of each unresolved part's 54 stored samples, only the 18 quadratic-form
+1529: samples can move when a derivative is taken at another point; the 18 affine and 18 cubic samples
+1530: do not make that check. The same limitation qualifies b171, b173's unresolved lhs and b174;
+1531: b173 has 36 quadratic samples across both sides, of which only 18 belong to its unresolved lhs.
+1532: No new exact equivalence is required by assertion (M03/M07–M10/M17).
+1533: The pending controlled return law, mass link, core solution, source-map completion and profile
+1534: knit enter no completed part-1 result as supplied forms; they retain their step assignments and
+1535: do not generate duplicate entries merely because they remain OPEN (record §7, M01/M11).
+1536: 
+1537: **Rest-on census, every existing entry:**
+1538: 
+1539: | Entry | S14a part 1 dependence/effect |
+1540: |---|---|
+1541: | `R-S6-01` | No compression modulus used; no source gain. |
+1542: | `R-S7-01` | Live faces select no width/flatness result; no source gain. |
+1543: | `R-S1-01` | Three in-plane/one bulk coordinates and spherical area; coordinate-domain consumer only; source added, no dimension derived. |
+1544: | `R-S1-02` | Adopted U1 shear-region/support identification; conditional interpretation source only. No shear response/confinement derived. |
+1545: | `R-S1.5-01` | No GNLS linear-mode/acoustic input; no source gain. |
+1546: | `R-S6-02` | No equilibrium/first-variation input; no source gain. |
+1547: | `R-S8-01` | No stiffness functional used; no source gain. |
+1548: | `R-S8-02` | No coupled displacement/width quadratic operator used; no source gain. |
+1549: | `R-S8-03` | No optical-stiffness sign/gate result; no source gain. |
+1550: | `R-S8-04` | No new angular-momentum/couple-stress consumer; inherited second-route obligation remains. |
+1551: | `R-S8-05` | No rotational frame selected or used; inherited second-route obligation remains. |
+1552: | `R-S1-03` | No microscopic time-reversal/Onsager input; no source gain. |
+1553: | `R-S8-06` | No displacement/quadratic-inertia identification used; number conservation does not supply it. O2 comparison remains OPEN; no source gain. |
+1554: | `R-S12-01` | No non-passive response or computed power consumer; distinct carried condition, no live owner newly assigned. |
+1555: | `R-S12-02` | Projected/face/source and labelled shell compatibility objects merge here; source added, native forms/data remain OPEN. |
+1556: | `R-O2-01` | No net-power/supplier result or adopted net-supply closure; no source gain/owner change. |
+1557: | `R-S21-01` | Framing provenance only: each force states flow needs, S21 compares, mismatch reopens S9b. No new optical profile evidence or comparison result. |
+1558: | `R-S22-01` | No energy split or conversion-work/thermal-transfer result used; no source gain. Core exclusion keeps its existing owner, not a new computed energy requirement. |
+1559: 
+1560: **Second route.** Apply the register's broader rule for every sector with identified prior art.
+1561: Read O2 scoping §5 and the O2/S9b/light-closing source rows (M13), rather than treating this
+1562: record's own questions as an exhaustive prior-art inventory. Each named candidate remains
+1563: individual: Gurtin–Murdoch, Abels–Garcke–Grün, Scriven, Helfrich, Rodriguez–Hoger–McCulloch,
+1564: Hamilton–Lisle, Visser, Unruh and the inherited Cahill/Sbitnev class. For each, applicability,
+1565: transferable historical failures/objections and whether they are answered here remain OPEN,
+1566: **no owner named for a new S14a part 1 check**. The original access, dimension, material and
+1567: exchange limitations remain as the source rows state them. No part-1 result is claimed to
+1568: reproduce an applied oracle, so no new requirement is founded on such a match.
+1569: 
+1570: Every other candidate in the inherited S9b inventory retains its source row and original OPEN
+1571: handoff (M13). The river/acoustic objections are carried, not answered: S12 drain/source-boundary
+1572: realization versus O2's force balance; S12's produced density/exchange versus S21 knit compatibility;
+1573: scalar sound versus transverse light as S9b's scoped exclusion; analog kinematics versus dynamics
+1574: as its existing handoff. Neither global nor local conservation chooses a drive or response law.
+1575: MacCullagh's `R-S8-04/-05` remain OPEN. No literature search, new oracle check or candidate
+1576: selection is performed by this pass.
+1577: 
+1578: **Directive/register relation and source tensions.** The current contract expressly defers to
+1579: this rest-on test and both-route method; no operative disagreement is found. The historical
+1580: second-route directive says **"Run it only on a prior result that a record in the reading list
+1581: identifies as reproduced by the sector"**, while the register says **"Run this route for every
+1582: sector with identified prior art"** (M13). The register wins. The material-conservation and
+1583: S13-filing disagreements are quoted with both sides in record §6 (M01/M11/M15), not resolved by
+1584: new physics or an owner reassignment. The plan's four bridge objects are not all closed:
+1585: S14/S15/S20 remain **"CONDITIONAL, not carried results"**. No frozen DC completion or profile
+1586: is adopted to close them.
+1587: 
 FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
 1: # Substrate requirements — what the force sectors oblige the unbuilt steps to deliver
 2: 
@@ -10967,7 +10971,12 @@ $ git diff f5d283c1 --name-only
 STATUS.md
 research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
 research/pde_ledger_v3/directives/_measurements/S14a_1_build_runs.md
+research/pde_ledger_v3/directives/_measurements/S14a_1_record_r0_review_disposition.md
+research/pde_ledger_v3/directives/_measurements/S14a_1_record_r0_review_lookups.md
+research/pde_ledger_v3/scripts/S14a_1_record_measurements.py
 research/pde_ledger_v3/steps/S12_order_source.md
+research/pde_ledger_v3/steps/S14a_1_projection.md
+research/pde_ledger_v3/steps/_measurements/S14a_1_record_measurements.md
 The pre-existing .claude/skills/prep-for-compact/SKILL.md modification is outside this work; its contents are not retrieved.
 $ git diff f5d283c1 -- research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md research/pde_ledger_v3/steps/S12_order_source.md research/pde_ledger_v3/directives/_measurements/S14a_1_build_runs.md STATUS.md
 diff --git a/STATUS.md b/STATUS.md
@@ -11023,7 +11032,7 @@ index ec45ff34..87d12aa2 100644
  questions about flow drive separate S12's source/boundary realization from O2's carried
  force-balance handoffs. Material destination separates S12's drain-produced density/exchange
 diff --git a/research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md b/research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
-index 9876761c..52d01fe5 100644
+index 9876761c..d5600d1a 100644
 --- a/research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
 +++ b/research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
 @@ -3,8 +3,10 @@
@@ -11193,7 +11202,7 @@ index 9876761c..52d01fe5 100644
  **User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms. This record closes only
  S12's requirements part, and the forms come once the brane is defined, after the force sectors.
  Every owner the sources and you gave stays as written, and the record says it delivers none of
-@@ -1440,6 +1480,107 @@ this register says **"Run this route for every sector with identified prior art"
+@@ -1440,6 +1480,111 @@ this register says **"Run this route for every sector with identified prior art"
  register's broader rule governs this pass. All comparator differences/coverage limits stay in
  S12 §4 and M06–M09; the accepted engine-row comparison carries no information.
  
@@ -11242,7 +11251,11 @@ index 9876761c..52d01fe5 100644
 +to zero. Agreement of bound dimension values constrains their interpretation only at their
 +printed domains; primitive dimension assignments and unpaired audit trees are not new laws.
 +Closed differential-operand integrals retain b50/b72/b128/b148's unresolved exact comparison
-+and printed sample evidence; no new exact equivalence is required by assertion (M03/M07–M10).
++and printed sample evidence: of each unresolved part's 54 stored samples, only the 18 quadratic-form
++samples can move when a derivative is taken at another point; the 18 affine and 18 cubic samples
++do not make that check. The same limitation qualifies b171, b173's unresolved lhs and b174;
++b173 has 36 quadratic samples across both sides, of which only 18 belong to its unresolved lhs.
++No new exact equivalence is required by assertion (M03/M07–M10/M17).
 +The pending controlled return law, mass link, core solution, source-map completion and profile
 +knit enter no completed part-1 result as supplied forms; they retain their step assignments and
 +do not generate duplicate entries merely because they remain OPEN (record §7, M01/M11).
@@ -11361,5 +11374,147 @@ index 25c1f95e..1d989c8d 100644
 +`ac909aaf` under "Accept, note both"; the subsequent S14a part 1 record repairs only the acceptance
 +status and J1/J2 in this file.
  Commits made for this deliverable: **none**. (Retrieve M15, M19, M20.)
+```
+
+## M17 — Round-0 repair sources and stored sample cardinalities by form
+
+```text
+$ python3 research/pde_ledger_v3/scripts/S14a_1_record_measurements.py --section M17
+FILE research/pde_ledger_v3/directives/_measurements/S14a_1_record_r0_review_disposition.md
+1: # S14a part 1 record, review round 0: dispositions (orchestrator)
+2: 
+3: The mechanical lookups behind each disposition are in `S14a_1_record_r0_review_lookups.md`, beside this file
+4: (generator `_scratch/s14a/gen/rec_r0_lookups.sh`). "K-n" cites a section of that file. Every computed result quoted
+5: here is a leg's saved stdout.
+6: 
+7: ## The round
+8: 
+9: - **Artifact.** The record, its measurements file and generator, the S14a part 1 register pass and the status and
+10:   provenance edits, written by Codex (`gpt-6.1-sol`, effort xhigh, session `01a16048…`) to the record decision list
+11:   at `f5d283c1`. It exited 0 after 239,180 tokens (K1). Reviewed as the seven files of the round-0 baseline:
+12:   - `steps/S14a_1_projection.md`;
+13:   - `steps/_measurements/S14a_1_record_measurements.md` and `scripts/S14a_1_record_measurements.py`;
+14:   - `SUBSTRATE_REQUIREMENTS.md`, `steps/S12_order_source.md`, `directives/_measurements/S14a_1_build_runs.md` and
+15:     `../../STATUS.md`.
+16: 
+17:   All seven matched the baseline after the round. The working tree was unchanged apart from the lookups file itself
+18:   (K1).
+19: - **Prompt and legs.** `_scratch/s14a/rec/s14a1_record_review_prompt_r0.md`, sha256 `eeaeebef…` (K1). The record is
+20:   Codex-written, so the legs are a fresh Claude agent (Opus) and Grok (`grok-4.7`, effort high) (G1), run in parallel
+21:   with the identical prompt. Reports: `/var/projects/_review_scratch/s14a1-record-r0-claude/REVIEW.md` and
+22:   `/var/projects/_review_scratch/s14a1-record-r0-grok/REVIEW.md`.
+23: - **Verdicts.** Claude: NEEDS REVISION, 4 findings. Grok: CLEAR (K1). Both legs reran the generator into scratch and
+24:   got the filed measurements file byte for byte (K1).
+25: 
+26: ## Findings
+27: 
+28: **T1. The seven unresolved exact rows do not carry which samples can see a derivative at another point.** (Claude 1.)
+29: **CONFIRMED.**
+30: - **The record.** b50, b72, b128 and b148 each "has 54 stored sample residuals `0`"; b171, b173 and b174 likewise
+31:   (l.100–105, l.122–125). In §5 they are open exact differences checked by finite samples (l.197–199). The controls
+32:   paragraph ends "its coupled quadratic probes detect derivative-point changes where the unresolved exact residual
+33:   cannot resolve them; affine/cubic forms are unchanged" (l.276–280, K2).
+34: - **The sources.** The comparator's round 1 carries to this record: "A derivative moved to another point moves these
+35:   samples through the quadratic form only" (l.96). Its sentence "The affine and cubic forms are unchanged" (l.44)
+36:   says the repair left those forms alone. Round 0 found those forms additively separable, so that a face derivative
+37:   at another point "changes no sample" (l.60–64) (K2).
+38: - **The evidence.** Only the quadratic form has a cross-argument product (396 of 396 functions; none in the affine or
+39:   cubic form). Each of the seven rows splits its samples equally across the three forms: 18/18/18, and 36/36/36 for
+40:   b173 (K2).
+41: - **Effect.** A reader counts 54 samples per row toward a check that only 18 of them can make. The record's reuse of
+42:   "affine/cubic forms are unchanged" does not say this, and read as a statement about the samples it says the
+43:   opposite.
+44: - **What must be true.** Wherever the record states the sample check for these seven rows, it states that only the
+45:   quadratic-form samples can move when a derivative is taken at another point, and how many those are. No sentence
+46:   presents the affine or cubic samples as making that check.
+47: 
+48: **T2. The U1 interior bound is given a dependence that no computed object has.** (Claude 2.) **CONFIRMED, minor.**
+49: - **The record.** The premises table row "U1 interior `0≤f≤1`, permitted jumps and no concentrated input fields"
+50:   lists "The regional/traced function class of the same objects" as what depends on it (l.58, K3).
+51: - **The evidence.** Neither engine nor either transcript has a line where the order field carries an inequality or
+52:   an assumption. The only declarations are the positive radii and an angle range (K3).
+53: - **The list.** Item 5: "One that enters no computed object is listed as such" (K3).
+54: - **What must be true.** The bound is listed as entering no computed object. The rest of the row keeps the dependence
+55:   its sources give.
+56: 
+57: **T3. An instruction is attributed to the user.** (Claude 3.) **CONFIRMED, minor.**
+58: - **The record.** "the current user expressly says **"Commit nothing."**" (l.352–355, K4).
+59: - **The source.** The sentence is line 5 of the orchestrator's brief to the record author. It is not in the
+60:   measurements file (count 0, K4). The user did not say it.
+61: - **What must be true.** No sentence attributes it to the user. If the record cites it, it names its actual source.
+62: 
+63: **T4. The headline calls the channels "material-loss".** (Claude 4.) **CONFIRMED, minor.**
+64: - **The record.** "the two material-loss channels" (l.10). It is the only occurrence (K5).
+65: - **The sources.** The step's decision list: "both channels by which material leaves the slab around a throat"
+66:   (l.54). Stage 006: "Total material is conserved" (l.87) (K5).
+67: - **Effect.** "Loss" reads as material destroyed, which the committed law does not do. That is the conservation
+68:   conflict the plan names as the reason for S14a.
+69: - **What must be true.** The channels are named as the step's decision list names them: material leaving the slab.
+70: 
+71: ## Checked and found sound by both legs
+72: 
+73: The enumeration of the comparator output against every count the record gives; the objects and their notation; the
+74: labelled specialization, the conditioned velocity objects and the plan's standing for S14, S15 and S20; the premise
+75: standings apart from T2; the measurements' retrieval-only commands and their byte-for-byte regeneration; no printed
+76: difference reconciled; the build's and comparator's notes carried; the inventories and OPEN items; the register pass
+77: (18 → 18, no new entry, merges into existing entries, no means named); the status and provenance lines, J1 and J2;
+78: and the account of edits against `git diff f5d283c1`.
+79: 
+80: ## Outcome
+81: 
+82: T1 changes what may be claimed from the sample check. T2–T4 each correct one claim: a standing, an attribution and a
+83: name. The reviewed version is preserved before the repair. The repair goes to the same author, in a resumed session,
+84: with these dispositions. Then review round 1, in full.
+85: 
+86: **For the orchestrator's own record.** The sentence the record reused in T1 is the orchestrator's, from the
+87: comparator's round-1 disposition (l.44), where its referent is the repair. Dispositions that hand limits on should
+88: state the limit, not the repair's history.
+$ git show --format=%h --name-only 25cb3a86 -- research/pde_ledger_v3/directives/_measurements/S14a_1_record_r0_review_disposition.md research/pde_ledger_v3/directives/_measurements/S14a_1_record_r0_review_lookups.md
+25cb3a86
+
+research/pde_ledger_v3/directives/_measurements/S14a_1_record_r0_review_disposition.md
+research/pde_ledger_v3/directives/_measurements/S14a_1_record_r0_review_lookups.md
+FILE research/pde_ledger_v3/directives/_measurements/S14a_1_comparator_build_review_r0_disposition.md
+54: resolved check.** (Claude F2.) **CONFIRMED.**
+55: - **The list.**
+56:   - Item 1: "another derivative slot, order or point" is read as different.
+57:   - Item 5: evaluation is "added beside" an exact residual, "never in its place", and stands alone only where exact
+58:     subtraction is not feasible.
+59: - **The gap.**
+60:   - The test functions are additively separable: each form is a constant plus a sum of one-argument terms. The faces
+61:     are built from the same forms (E3). Claude's probe finds every mixed second partial of a face to be zero, in every
+62:     form and stratum (E3).
+63:   - So a face's time derivative takes the same value at every radius. A face derivative evaluated at another point
+64:     changes no sample.
+65:   - For storage (b171) and the shell balance (b173, b174), the exact residual prints as two integrals of opposite
+66:     sign, over the same variable and range, left uncombined (E3). Their samples are all zero, so the samples are the
+67:     only resolved check on these parts.
+FILE research/pde_ledger_v3/directives/_measurements/S14a_1_comparator_build_review_r1_disposition.md
+90: 
+91: ## Carried to the S14a part 1 record (not findings)
+92: 
+93: - **Exact residuals not literally 0 or False** (E9).
+94:   - Seven integral parts: b50, b72, b128, b148, b171, b173 and b174. For each, the exact residual as computed is
+95:     printed, and the samples beside it are the resolved check. A derivative moved to another point moves these
+96:     samples through the quadratic form only (E3).
+97:   - b165, the shell domain: dispositioned in round 0.
+98:   - b188 and b189, the projected-velocity and volume-flux dimensions: their "external printed domain contexts" part
+99:     is not literally zero. SymPy's operand there is `True`. Wolfram's is `Ne(0, Integral(...))`: the projected
+100:     density at the outer radius is nonzero (E9).
+{"binding":"b50","component_index":0,"part":"item 1: closed integral of material differential operand","stored_samples_count":54,"stored_sample_form_literal_counts":{"affine":18,"quadratic":18,"cubic":18},"stored_sample_residual_literal_counts_by_form":{"affine":{"\"0\"":18},"quadratic":{"\"0\"":18},"cubic":{"\"0\"":18}}}
+{"binding":"b50","all_components_stored_samples_count":54,"all_components_stored_sample_form_literal_counts":{"affine":18,"quadratic":18,"cubic":18}}
+{"binding":"b72","component_index":0,"part":"item 1: closed integral of order differential operand","stored_samples_count":54,"stored_sample_form_literal_counts":{"affine":18,"quadratic":18,"cubic":18},"stored_sample_residual_literal_counts_by_form":{"affine":{"\"0\"":18},"quadratic":{"\"0\"":18},"cubic":{"\"0\"":18}}}
+{"binding":"b72","all_components_stored_samples_count":54,"all_components_stored_sample_form_literal_counts":{"affine":18,"quadratic":18,"cubic":18}}
+{"binding":"b128","component_index":0,"part":"item 1: closed integral of material differential operand","stored_samples_count":54,"stored_sample_form_literal_counts":{"affine":18,"quadratic":18,"cubic":18},"stored_sample_residual_literal_counts_by_form":{"affine":{"\"0\"":18},"quadratic":{"\"0\"":18},"cubic":{"\"0\"":18}}}
+{"binding":"b128","all_components_stored_samples_count":54,"all_components_stored_sample_form_literal_counts":{"affine":18,"quadratic":18,"cubic":18}}
+{"binding":"b148","component_index":0,"part":"item 1: closed integral of order differential operand","stored_samples_count":54,"stored_sample_form_literal_counts":{"affine":18,"quadratic":18,"cubic":18},"stored_sample_residual_literal_counts_by_form":{"affine":{"\"0\"":18},"quadratic":{"\"0\"":18},"cubic":{"\"0\"":18}}}
+{"binding":"b148","all_components_stored_samples_count":54,"all_components_stored_sample_form_literal_counts":{"affine":18,"quadratic":18,"cubic":18}}
+{"binding":"b171","component_index":0,"part":"items 2-3: storage","stored_samples_count":54,"stored_sample_form_literal_counts":{"affine":18,"quadratic":18,"cubic":18},"stored_sample_residual_literal_counts_by_form":{"affine":{"\"0\"":18},"quadratic":{"\"0\"":18},"cubic":{"\"0\"":18}}}
+{"binding":"b171","all_components_stored_samples_count":54,"all_components_stored_sample_form_literal_counts":{"affine":18,"quadratic":18,"cubic":18}}
+{"binding":"b173","component_index":0,"part":"shell left","stored_samples_count":54,"stored_sample_form_literal_counts":{"affine":18,"quadratic":18,"cubic":18},"stored_sample_residual_literal_counts_by_form":{"affine":{"\"0\"":18},"quadratic":{"\"0\"":18},"cubic":{"\"0\"":18}}}
+{"binding":"b173","component_index":1,"part":"shell source","stored_samples_count":54,"stored_sample_form_literal_counts":{"affine":18,"quadratic":18,"cubic":18},"stored_sample_residual_literal_counts_by_form":{"affine":{"\"0\"":18},"quadratic":{"\"0\"":18},"cubic":{"\"0\"":18}}}
+{"binding":"b173","all_components_stored_samples_count":108,"all_components_stored_sample_form_literal_counts":{"affine":36,"quadratic":36,"cubic":36}}
+{"binding":"b174","component_index":0,"part":"item 2: shell balance residual","stored_samples_count":54,"stored_sample_form_literal_counts":{"affine":18,"quadratic":18,"cubic":18},"stored_sample_residual_literal_counts_by_form":{"affine":{"\"0\"":18},"quadratic":{"\"0\"":18},"cubic":{"\"0\"":18}}}
+{"binding":"b174","all_components_stored_samples_count":54,"all_components_stored_sample_form_literal_counts":{"affine":18,"quadratic":18,"cubic":18}}
 ```
 

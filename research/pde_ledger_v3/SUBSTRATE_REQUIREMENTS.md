@@ -1525,7 +1525,11 @@ The difference `face channel minus order lost` is required **as the printed diff
 to zero. Agreement of bound dimension values constrains their interpretation only at their
 printed domains; primitive dimension assignments and unpaired audit trees are not new laws.
 Closed differential-operand integrals retain b50/b72/b128/b148's unresolved exact comparison
-and printed sample evidence; no new exact equivalence is required by assertion (M03/M07–M10).
+and printed sample evidence: of each unresolved part's 54 stored samples, only the 18 quadratic-form
+samples can move when a derivative is taken at another point; the 18 affine and 18 cubic samples
+do not make that check. The same limitation qualifies b171, b173's unresolved lhs and b174;
+b173 has 36 quadratic samples across both sides, of which only 18 belong to its unresolved lhs.
+No new exact equivalence is required by assertion (M03/M07–M10/M17).
 The pending controlled return law, mass link, core solution, source-map completion and profile
 knit enter no completed part-1 result as supplied forms; they retain their step assignments and
 do not generate duplicate entries merely because they remain OPEN (record §7, M01/M11).

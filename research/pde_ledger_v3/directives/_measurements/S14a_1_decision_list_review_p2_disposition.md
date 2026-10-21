@@ -53,3 +53,8 @@ Grok's three readings (K3) bear out the finding.
 
 Q1 changes the sign of one printed object and nothing else. P1 to P5 are repaired, and both legs found no other
 defect in revision 2. The next pass would be the third, so the user decides how to finish.
+
+## User decision (2026-10-21): "Fix, narrow check"
+
+The combination is restated as the face channel minus the order lost (revision 3). Codex and Grok then check only
+that edit and that nothing else in the list has moved since revision 2 (`ccfb8e8e`). The builder starts after that.

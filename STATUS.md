@@ -4,7 +4,11 @@ On 2026-10-19 the user closed the light sector **for now**. Its accepted results
 open is carried as requirements in the [substrate register](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md),
 in its light-closing pass (accepted `e070c7f3`). S12's constructions (`a3da43d9`) and comparator
 (`fe485b73`, with the engine-row note) are accepted. Its [step record](research/pde_ledger_v3/steps/S12_order_source.md)
-and register pass are repaired for round-1 review from preserved baseline `8608bc71`.
+and register pass are repaired for scoped round-2 review from preserved baseline `4c37473c`.
+
+**User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms."** This record closes
+only S12's requirements part and delivers none of the forms. The forms come once the brane is
+defined, after the force sectors; every owner the sources and user gave is retained.
 
 ## Light sector at close
 
@@ -20,8 +24,8 @@ and register pass are repaired for round-1 review from preserved baseline `8608b
 - **New requirement R-S22-01:** how the energy a throat releases splits among light, the extra longitudinal
   wave and the bulk. It is needed to decide whether matter observes S11's extra wave, and whether the model conflicts
   with the blackbody, CMB and N_eff measurements (photon survey E32–E34, E38). S22 owns the split and
-  Q2 the mouth/held datum; conversion/source-boundary inputs formerly assigned to S12 remain OPEN
-  with no live owner named.
+  Q2 the mouth/held datum; S12 retains the throat's order-conversion source and its boundary data,
+  as the user chose on 2026-10-19 and retained under "Keep S12" on 2026-10-20. Those forms remain OPEN.
 - **Parked:**
   - S11c (PARTIAL);
   - every heavy backlog run ([DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md));
@@ -62,9 +66,9 @@ Read the [short closeout](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md)
 | Direct c2 `[0,2]` entry is set to zero without an order-counting justification; whether the full response needs a nonzero term is unresolved. | S11c-c2/d if reused; [joint disposition, mixed-term issue](research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_joint_disposition.md). |
 | N6 premises: physical correctness of Φ, the V transform and extracted-block leakage remain open. | S11c-c2/d if reused; [c2, review caveats](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md), [N6 disposition, §7](research/pde_ledger_v3/_measurements/S11c_c2_N6_reconcile_disposition.md). |
 | Full cross-engine composition, b sign/control debts, c1 giants and accepted scattering/work/loss | S11c-b/c1/c2/d if reopened; the backlog runs are parked (2026-10-19), [DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md), [d limits](research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md). |
-| How a throat's released energy splits among light, the extra wave and the bulk | S22 with Q2; conversion/source-boundary inputs formerly assigned to S12 are OPEN with no live owner named; [R-S22-01](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). |
+| How a throat's released energy splits among light, the extra wave and the bulk | S22 with Q2 and S12, as chosen by the user on 2026-10-19 and retained on 2026-10-20; [R-S22-01](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). |
 | Conversion observable and strong-edge interpretation | S11c-e; [split and d weak-limit obligation](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md#actual-downstream-uses-and-next-step). |
-| Dynamical drain/return source, boundary data and any change to the drain-frozen symmetry result | **OPEN, no live owner named** for undelivered forms/data; the earlier S12 assignment is historical under its requirements-first framing. [R-S12-02](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). No automatic transfer of the one-engine no-leak rule. |
+| Dynamical drain/return source, boundary data and any change to the drain-frozen symmetry result | **S12, OPEN for the forms** under "Keep S12" (2026-10-20); [R-S12-02](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). This record delivers only the requirements part. No automatic transfer of the one-engine no-leak rule. |
 | Real defect profile, holder, response and charge-force sign | Q2/Q3/S22; [plan, charge phase/S22](research/pde_ledger_v3/V3_STEP_PLAN.md). |
 | Physical light/sound speed ratio | S20a calibration; S22/R10 proposed derivation; [plan, S20a/S22](research/pde_ledger_v3/V3_STEP_PLAN.md). |
 | Material admissibility and unbuilt substrate, including shear response and physical dimension | S1–S8; [SUBSTRATE_REQUIREMENTS, entries/passes](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). S9/S10 requirements pass 1 is recorded, but the substrate steps have not run. |
@@ -94,15 +98,17 @@ differences are labelled representation diagnostics confined off their respectiv
 not open differences in the S12 distribution; both raw expressions remain retrievable. The record
 preserves all comparator coverage limits and the accepted engine-row
 note. It supplies no drain law, throat solution or flow. Native source/controller forms, distinct
-boundary data, native identifications and additional conversion partners formerly assigned to S12
-remain OPEN with no live owner named; the record lists their ownership as questions for the user.
+boundary data, native identifications and additional conversion partners retain their sourced S12
+ownership and remain OPEN. None of their forms is delivered here; they come once the brane is
+defined, after the force sectors.
 The register stays at 18 OPEN entries,
-with compatibility constraints merged into `R-S12-02` and flow-comparison framing in `R-S21-01`.
+with compatibility constraints merged into `R-S12-02` and the comparison of force sectors' flow
+requirements owed by `R-S21-01`, consistently in its by-target row and requirement field.
 [Record](research/pde_ledger_v3/steps/S12_order_source.md),
 [measurements](research/pde_ledger_v3/steps/_measurements/S12_record_measurements.md).
 The light closeout was accepted at `e070c7f3`; its review no longer gates S12. The oracle comparison's
-questions about flow drive separate the unowned source/boundary realization from O2's carried
-force-balance handoffs. Material destination separates the unowned drain-produced density/exchange
+questions about flow drive separate S12's source/boundary realization from O2's carried
+force-balance handoffs. Material destination separates S12's drain-produced density/exchange
 choice from S21's knit compatibility (`R-S21-01`). Each force states the flow it
 needs; S21 compares them, and a mismatch reopens S9b (user, 2026-10-19).
 

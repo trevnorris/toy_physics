@@ -2,8 +2,8 @@
 
 **Status, 2026-10-20:** record and register pass written for review. The constructions are accepted at
 `a3da43d9`; the comparator and its filed production output are accepted at `fe485b73`, with the engine-row
-note below. This is the round-1 repair of reviewed baseline `8608bc71`, awaiting its own review
-(`directives/_measurements/S12_record_r0_review_disposition.md`, retrieved in M17). No drain law, throat solution or flow is delivered.
+note below. This is the round-2 repair of reviewed baseline `4c37473c`, awaiting scoped review
+(`directives/_measurements/S12_record_r1_review_disposition.md`, retrieved in M18). No drain law, throat solution or flow is delivered.
 The light-sector closeout, including the flow-only oracle-comparison record, is accepted at `e070c7f3`.
 
 The result is conditional: the committed material/order balances require the printed three regional
@@ -11,6 +11,13 @@ sources and two face sources on fields satisfying **U1's support condition**, an
 the total-material face balances. The second order object is a labelled fast-ordering specialization.
 Neither the support identification nor fast ordering is derived. Source/controller forms and boundary
 data remain distinct and OPEN. (Retrieve M01–M04, M07, M11.)
+
+**User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms. This record closes only
+S12's requirements part, and the forms come once the brane is defined, after the force sectors.
+Every owner the sources and you gave stays as written, and the record says it delivers none of
+the forms yet."** This replaces round 0's C1 owner obligation. S12 retains the native drain/return
+functions, their boundary data, the throat's order-conversion source and every other sourced S12
+assignment; this record delivers none of those forms. (Retrieve M18.)
 
 ## Evidence and retrieval
 
@@ -33,6 +40,7 @@ neither engine nor comparator and performs no algebra, probe evaluation, normali
 | M11 / M12 / M13 | Inventory source rows / register schema, rest-on method and census / identified prior-art sources and historical second-route disagreement. |
 | M14 / M15 / M16 | Filed run records and comparator contract / final register pass and status / literal residual and outcome counts. |
 | M17 | Round-0 findings; original owner handoffs; all six raw coefficient operands and their stored parts; primitive-unit attribution. |
+| M18 | Round-1 findings and the dated "Keep S12" decision; A13 owner sources; prior owner disagreements; S21 by-target/source statements. |
 
 ## 1. Supplied object, domain and standing
 
@@ -260,7 +268,7 @@ computed objects, imposed profiles or completed closures. Retrieve M11 for the l
 | Restricted S9b/O2 domain | `steps/O2_steady_brane_balance.md:74–76`, the complete setting sentence. Its isolated spherical mass at rest with flowing drain, far-field steady profiles, far-field brane-rest lab time, linear optics and leading eikonal are **restrictions**, not S12 results. |
 | Momentum/energy partners | `directives/O2_premise_decision_list.md:32–35`; `directives/O2_SHARED_PHYSICS.md:134`, `:243–248`, `:280`, `:584`; `steps/O2_steady_brane_balance.md:396`. Those rows preserve additional partners/reactions, the OPEN bulk-direction reduction and its normal-response/map operands, and conversion/carried-energy partners with reaction/supply systems. Local transported momentum fixes no carried total energy. |
 | Native identifications | `steps/O2_steady_brane_balance.md:399`, O6 `𝒥_map`; `directives/O2_SHARED_PHYSICS.md:605`, S12 interface. These are the distinct native exchange/projection/measure and source/boundary handoffs, not the S14a bridge. |
-| Separate power obligations | `SUBSTRATE_REQUIREMENTS.md`, `R-S12-01` and `R-O2-01` (retrieve M12). Both have live target **no owner named**; the former retains its historical S12 register inference as provenance only. Neither whole obligation is assigned to S12. U3's material supply is not either power budget. |
+| Separate power obligations | `SUBSTRATE_REQUIREMENTS.md`, `R-S12-01` and `R-O2-01` (retrieve M12). The former retains its original S12 **register-inference** target with **no live owner named**, as the sources qualify it; the latter has target **no owner named**. Neither whole obligation is assigned to S12 by the sources. U3's material supply is not either power budget. |
 
 **Return controllers: OPEN.** Stage 045 calls `I_ret/P_ret` projectors enforcing exact global
 mass/momentum/energy closure **"despite the local sink"**. Its surrounding text says to re-host
@@ -268,38 +276,36 @@ the machinery on dynamical order conversion, while the committed law supplies lo
 of total material. Those are the two sourced statements; the old mass-sink purpose cannot be
 imported as an operative requirement. Whether these controllers have a remaining role, and which
 global order/momentum/energy closure would call for it, needs a new assessment beyond retrieval.
-It remains OPEN in the source/controller inventory (`R-S12-02`), with **no live owner named**:
-the earlier S12 assignment names no later delivery step under the user's framing. Who should own
-that assessment is a question for the user (§6). No controller is chosen or discarded here.
-(Retrieve M01, M11, M12, M17.)
+It remains OPEN in S12's source/controller inventory (`R-S12-02`), under **"Keep S12"**
+(2026-10-20). The assessment and forms are not delivered here; no controller is chosen or discarded.
+(Retrieve M01, M11, M12, M17, M18.)
 
 ## 6. What remains OPEN, with its source's owner
 
 | OPEN item | Owner / source limit |
 |---|---|
-| A13 material branch; phase-carrying content absent from this real-fraction object | S1 gate, propagated through S5; O2's branch row also names S12 as a consumer (M11). The gate is not discharged here. |
+| A13 material branch; phase-carrying content absent from this real-fraction object | O2 shared physics: **"S1's A13 gate, propagated through S5/S12"** and **"Owners: S1, S5 and S12."** O2 input contract: **"S1's A13 gate, propagated at S5 and S12"**. The plan requires **"the conversion balance must use the branch chosen at S1"**. The printed objects are on the real-fraction branch until S1's gate decides; A13 remains OPEN (M01, M11, M18). |
 | U1's re-ordering admissibility clause | No owner named; not encoded, with no rate or local sign chosen (M01). |
 | Concentrated input fields, including order carried along a face | No owner named; explicitly left out for now, 2026-10-20 (M01). |
-| Interior-order law/history/strain; faces' law; source/flux forms | OPEN with no live owner named for these undelivered forms; the earlier S12 source/flux assignment names no later delivery step. Slab material completion remains separately S8/S22 (M01, M11, M17). |
+| Interior-order law/history/strain; faces' law; source/flux forms | No separate owner named for the first two; source/flux forms remain S12's. Slab material completion remains separately S8/S22. None of the forms is delivered here (M01, M11, M18). |
 | "the projected order-loss source · the definition of `J` · the profile-dependent `J → Q` map · the controlled `ω → 0` return law" | S14a, plan `:636–637` (M01, M11). |
 | Drain-strength/mass link | S13 (M01); no `GM` link delivered. |
 | Flow profile | Each force states its requirement; S21 compares them (M01). A mismatch reopens S9b. |
 | Slab's material law; puncture interior | S8/S22 for the former; S22 for the excluded interior (M01). |
-| Controller role; separate boundary laws/data; native O6 conversion/source-boundary identifications | OPEN with no live owner named for the formerly S12-assigned parts (`R-S12-02`). The normal-response input to the native reduction keeps its sourced owners: S5–S8 ingredients, Q1/Q2 static domains, S8/S22 live completion. Boundary work retains O2 accounting, unowned native data and Q2/S22 core response; core/holder data remain Q2/S22 (M11, M17). |
-| Conversion work, energy carried with exchanged material, additional non-variational momentum/energy partners and reaction/supply systems | OPEN with no live owner named for the formerly S12-assigned parts. O3's native bulk-direction carry remains separately through O6/normal response; local transported momentum fixes no carried total energy (M11, M17). |
-| Throat energy split and its conversion/source-boundary inputs | S22 split, Q2 mouth/held datum (`R-S22-01`); no live owner named for the undelivered conversion/source-boundary inputs formerly assigned to S12 (M12, M17). |
-| What drives the flow; material destination | Drain source/boundary realization: OPEN, no live owner named (`R-S12-02`); force balance: O2's carried handoffs. Which density/exchange alternative the drain produces is likewise unowned; whether the knit can meet it remains S21 (`R-S21-01`). These are the oracle record's distinct handoffs (M17). |
+| Controller role; separate boundary laws/data; native O6 conversion/source-boundary identifications | S12 retains its sourced parts (`R-S12-02`). The normal-response input to the native reduction keeps its sourced owners: S5–S8 ingredients, Q1/Q2 static domains, S8/S22 live completion. Boundary work retains O2 accounting, S12 native data and Q2/S22 core response; core/holder data remain Q2/S22. None of S12's forms is delivered here (M11, M17, M18). |
+| Conversion work, energy carried with exchanged material, additional non-variational momentum/energy partners and reaction/supply systems | S12 retains these sourced assignments, OPEN and undelivered here. O3's native bulk-direction carry remains separately through O6/normal response; local transported momentum fixes no carried total energy (M11, M17, M18). |
+| Throat energy split and its conversion/source-boundary inputs | `R-S22-01`: **"S22 (the nonlinear throat solve), together with Q2 (the mouth source and its held datum) and S12 (the throat's order-conversion source and its boundary data)"**; **"These owners were chosen by the user on 2026-10-19"**. All are retained under "Keep S12"; the S12 forms remain OPEN and undelivered here (M12, M18). |
+| What drives the flow; material destination | Drain source/boundary realization: S12 (`R-S12-02`); force balance: O2's carried handoffs. Which density/exchange alternative the drain produces is S12's object; whether the knit can meet it remains S21 (`R-S21-01`). These are the oracle record's distinct handoffs (M17, M18). |
 | Non-passive reservoir and budget; net-power supplier and budget | Separate existing `R-S12-01` and `R-O2-01`, live owner no owner named (M12). |
 | Unpaired/nested ledger/component coverage | No owner named; every tag and leaf remains in M06/M09. The six unrestricted coefficient diagnostics are classified in §4, not handed on as an open difference in the S12 object. |
 | Prior-art applicability and historical objections for each candidate named below | No owner named for a new S12 check; none performed here (M13). |
 
-**Ownership questions for the user:** which later step should deliver the native drain/return and
-order-flux forms, separate boundary laws/data, controller-role assessment, O6 conversion/native
-identifications, conversion/carried-energy work and additional momentum/energy partners with their reaction/supply systems? Who
-should own the unassigned U1 re-ordering admissibility, concentrated-input possibility, interior/face
-laws, the two distinct unowned power obligations, and the unowned comparison/prior-art handoffs in
-the table? The existing S1, S8/S22, Q1/Q2, S13, S14a and S21 assignments stay as sourced; no owner is
-selected by this record. (Retrieve M01, M11–M13, M17.)
+**Remaining unassigned ownership questions:** who should own the unassigned U1 re-ordering
+admissibility, concentrated-input possibility, interior/face laws, the two distinct power obligations
+whose sources name no live owner, and the unowned comparison/prior-art handoffs in the table?
+All sourced owners, including S1/S5/S12 for A13 and S22/Q2/S12 for the energy-split inputs, remain
+as written. S12's forms come once the brane is defined, after the force sectors, under the user's
+2026-10-20 decision. (Retrieve M01, M11–M13, M18.)
 
 Questions requiring computation beyond retrieval are therefore left open: controller re-hosting,
 any cross-engine extension to unpaired components or nested/term ledgers,
@@ -322,10 +328,13 @@ Four existing entries gain S12 source/provenance: `R-S1-01` (coordinate dimensio
 and `R-S21-01` (framing decision only, no new optical evidence). `R-S12-01` and `R-O2-01` remain
 distinct carried conditions without a computed S12 power consumer; neither is delivered or duplicated.
 The full per-entry rest-on census is the S12 register pass (M12, M15).
-This repair of `8608bc71` is also 18 → 18, with no additional source gain. `R-S12-01` and
-`R-S12-02` now have live target **no owner named**; `R-S22-01` retains S22/Q2 and records no live
-owner for the formerly S12-assigned conversion inputs. Their historical assignments remain
-reported, not live promises of delivery by S12. (Retrieve M12, M15, M17.)
+This repair of `4c37473c` is also 18 → 18, with no additional source gain. It restores the sourced
+S12 owners under **"Keep S12"** (2026-10-20), including S12 in `R-S22-01`'s user-chosen target;
+`R-S12-01` retains its original register-inference/no-live-owner qualification. It also adds the
+**comparison of force sectors' flow requirements** to `R-S21-01`'s requirement field, matching its
+by-target row and citing the 2026-10-19 user framing. This is owed by S21, not a comparison performed
+here. S12 stays OPEN for its forms; this record closes only its requirements part. (Retrieve M12,
+M15, M18.)
 
 **Second route:** the register requires it for every sector with identified prior art, including
 objects outside a step record's own doubts. Accordingly the pass reads the inherited O2 scoping §5
@@ -338,9 +347,9 @@ questions of applicability, transferable historical failures/objections and thei
 OPEN, **no owner named**. The source access limitations remain those reported in scoping §5; no
 fresh literature verification is claimed. The other inherited S9b candidates, each individually,
 retain their existing OPEN handoffs and no S12 result is attributed to them. No new entry rests on
-an unapplied oracle. The four inherited river/acoustic objections remain: driving flow has unowned
+an unapplied oracle. The four inherited river/acoustic objections remain: driving flow has S12's
 drain/source-boundary realization (`R-S12-02`) and O2's carried force-balance handoffs; material
-destination has an unowned drain-produced density/exchange choice (`R-S12-02`) and S21's knit
+destination has S12's drain-produced density/exchange choice (`R-S12-02`) and S21's knit
 compatibility question (`R-S21-01`); scalar sound versus shear light as S9b's scoped exclusion; kinematics versus
 dynamics in the analog-gravity handoff. This source identity is not an answer to them (M13, M15, M17).
 
@@ -351,12 +360,27 @@ dynamics in the analog-gravity handoff. This source identity is not an answer to
   decision list instead supplies **"`∂_t n + ∇₄·(n u) = 0` (total material)"** and says
   **"The frozen-wall mass sink with a remote return stays ruled out."** The source also calls for
   re-hosting. The unresolved role question is retained, not answered with the old sink (M01, M11).
-- The earlier register owner line says **"S12 owns the drain/return data"**, following S11c's
-  assignment; the 2026-10-19 user framing says S12 **"states what any conversion law must satisfy
-  and leaves the forms open"**. That assignment/framing disagreement stays reported. The native
-  functions/data obligation remains OPEN, with the printed compatibility constraints merged into
-  it, but its live target is now **no owner named**. Who should deliver the undelivered parts is a
-  question for the user; S12 record completion is not their delivery (M01, M12, M15, M17).
+- Assignment/framing tension: the earlier register says **"S12 owns the drain/return data"**;
+  the 2026-10-19 user framing says S12 **"states what any conversion law must satisfy and leaves
+  the forms open"**. The 2026-10-20 decision **"Keep S12"** resolves the ownership reading:
+  **"This record closes only S12's requirements part"**; S12 stays open for the forms, which
+  **"come once the brane is defined, after the force sectors"**. S12 retains its assignments;
+  none of those forms is delivered by this requirements part (M01, M12, M18).
+- A13 disagreement in the reviewed record (`4c37473c`): **"S1 gate, propagated through S5;
+  O2's branch row also names S12 as a consumer"** differs from the source's **"S1's A13 gate,
+  propagated through S5/S12"** and **"Owners: S1, S5 and S12."** The row now quotes and retains
+  the source owners; the printed real-fraction branch does not decide the gate (M18).
+- Oracle-owner disagreement in that reviewed record: **"Drain source/boundary realization:
+  OPEN, no live owner named"** differs from the accepted oracle record's **"The drain's source
+  and boundary data belong to S12 (R-S12-02)"** and **"is again S12's object (R-S12-02)"**.
+  S12 is restored, and the distinct **"whether the knit can meet it belongs to R-S21-01"**
+  handoff is retained (M17, M18).
+- Energy-input owner disagreement in that reviewed record: **"no live owner named for the
+  undelivered conversion/source-boundary inputs formerly assigned to S12"** differs from the
+  user's 2026-10-19 target, **"S22 (the nonlinear throat solve), together with Q2 (the mouth
+  source and its held datum) and S12 (the throat's order-conversion source and its boundary
+  data)"**. The source says **"These owners were chosen by the user on 2026-10-19"**; all
+  three are restored under **"Keep S12"**, not replaced with new owners (M18).
 - Historical second-route disagreement: the earlier directive says **"Run it only on a prior result
   that a record in the reading list identifies as reproduced by the sector"**; the register says
   **"Run this route for every sector with identified prior art"** and records that its MacCullagh
@@ -365,7 +389,10 @@ dynamics in the analog-gravity handoff. This source identity is not an answer to
 - The accepted comparator intended counterpart components; its engine row pairs library-version text
   with a platform identifier. Both sides and the user's acceptance qualification remain in §4 and M02/M08.
 
-The status-only edits record light-closeout acceptance at `e070c7f3` in the register, the S9b oracle
-record and repository `STATUS.md`, including the former wait-on-review line. `STATUS.md` states S12's
-accepted constructions/comparator and this record's own review-pending standing. No other scientific
-record is upgraded. Commits made for this deliverable: **none**. (Retrieve M15.)
+This round repairs the A13 owner/branch row, restores the sourced owners under the dated user
+decision, quotes the owner/framing disagreements, and aligns `R-S21-01`'s requirement field with
+its by-target row. The register and `STATUS.md` carry those same owners and S12's requirements/forms
+split. The generator adds their retrievals and census; the measurements are regenerated. The C2
+diagnostic classification and G1 unit attributions remain unchanged. The earlier light-closeout
+acceptance edits at `e070c7f3` are retained; the S9b oracle record is not edited in this round.
+This repair awaits scoped review. Commits made for this deliverable: **none**. (Retrieve M15, M18.)

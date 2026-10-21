@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parents[3]
 V3 = ROOT / 'research/pde_ledger_v3'
 BASELINE = '560c6c51'
 REPAIR_BASELINE = '8608bc71'
+ROUND2_BASELINE = '4c37473c'
 SCRIPT = 'research/pde_ledger_v3/scripts/S12_record_measurements.py'
 OUTPUT = V3 / 'steps/_measurements/S12_record_measurements.md'
 COMPARATOR = V3 / 'scripts/out/S12_cross_engine_comparator.out'
@@ -107,6 +108,7 @@ TITLES = {
     'M15': 'Final S12 register pass and status lines',
     'M16': 'Literal residual/outcome counts across stored comparisons',
     'M17': 'Round-1 repair: owner handoffs, coefficient diagnostics and unit attribution',
+    'M18': 'Round-2 repair: Keep S12 decision, A13 owners, disagreements and S21 obligation',
 }
 
 
@@ -190,8 +192,10 @@ def retrieve(section, rows):
         path = 'research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md'
         before = subprocess.check_output(['git', 'show', f'{BASELINE}:{path}'], cwd=ROOT, text=True)
         reviewed = subprocess.check_output(['git', 'show', f'{REPAIR_BASELINE}:{path}'], cwd=ROOT, text=True)
+        round1 = subprocess.check_output(['git', 'show', f'{ROUND2_BASELINE}:{path}'], cwd=ROOT, text=True)
         after = (ROOT / path).read_text()
         for name, text in [('before ' + BASELINE, before), ('before repair ' + REPAIR_BASELINE, reviewed),
+                           ('before round-2 repair ' + ROUND2_BASELINE, round1),
                            ('after working tree', after)]:
             headings = [line for line in text.splitlines() if line.startswith('### R-')]
             print(name + ': entry headings cardinality ' + str(len(headings)), file=out)
@@ -285,6 +289,21 @@ def retrieve(section, rows):
             if row['kind'] == 'accounting' and row['tag'] == 'primitive_function_dimensions':
                 print(dump({key: value for key, value in row.items()
                             if key not in ['parse', 'original_operand']}), file=out)
+    elif section == 'M18':
+        source(out, 'research/pde_ledger_v3/directives/_measurements/S12_record_r1_review_disposition.md')
+        source(out, 'research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md', 127, 129)
+        source(out, 'research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md', 395, 399)
+        source(out, 'research/pde_ledger_v3/directives/O2_input_contract.md', 85, 92)
+        source(out, 'research/pde_ledger_v3/steps/O2_steady_brane_balance.md', 402, 402)
+        source(out, 'research/pde_ledger_v3/V3_STEP_PLAN.md', 616, 617)
+        source(out, 'research/pde_ledger_v3/steps/S9b_flow_oracle_comparison.md', 156, 178)
+        source(out, 'research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md', 772, 774, revision=BASELINE)
+        source(out, 'research/pde_ledger_v3/steps/S12_order_source.md', 270, 305, revision=ROUND2_BASELINE)
+        path = 'research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md'
+        print('FILE ' + path + ' — R-S21-01 by-target row', file=out)
+        for i, line in enumerate((ROOT / path).read_text().splitlines(), 1):
+            if line.startswith('| **S21** | `R-S21-01`'):
+                print(f'{i}: {line}', file=out)
     else:
         raise ValueError(section)
     return out.getvalue()

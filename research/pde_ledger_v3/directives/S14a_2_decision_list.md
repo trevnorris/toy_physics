@@ -7,6 +7,10 @@ Paths are relative to `research/pde_ledger_v3/`. The setup lookups behind each p
 **Gate.** This is a pre-builder decision list. It gets one Codex + Grok pass and is folded once (G2). It also names the
 objects the build computes, so that content is reviewed until clear (spec row). The builder starts only after that.
 
+**Revision 2.** Revision 2 is the one fold of the G2 pass (dispositions:
+`directives/_measurements/S14a_2_decision_list_review_p1_disposition.md`; the pass-1 text is at `d72bb551`). It
+defines the limit (Q1, Q2) and names the totals and budgets exactly (Q3).
+
 ## Filing and framing
 - **The plan's step.** S14a, "The drain bridge" (`V3_STEP_PLAN.md:626`), asks for "the projected order-loss source ·
   the definition of `J` · the profile-dependent `J → Q` map · the controlled `ω → 0` return law" (`:636–637`).
@@ -67,61 +71,85 @@ Not chosen: the slowly moving throat, with drive frequency `ω = k·V` (the G0 c
 `../../software/em_charge_attribute/g0_closure_card_v0.md:396`); v2's exchange-free far region as a specialization;
 and a split of the far flux into a throat share and a re-ordering share.
 
-**How steady throughput enters (the user's definition, made operational here).**
-- **Constant rates.** The drain and re-ordering source densities, `n Γ_drain` and `n Γ_return`, are independent of
-  time. Each stays a live function of position.
-- **The spreading stays live.** Neither the faces' motion nor the change in time of the projected material is set to
-  zero. Whatever part of either persists in the limit stays a live object. The slab may spread by thickening, by
-  growing in area, or both; neither is chosen.
-- **What else it requires is derived.** What steady throughput requires of `n`, `u`, `χ_B`, `J_χ` and the faces is
-  derived by the build from the time-dependent balances, and printed. It is not supplied here.
+**The limit: the DC part (`ω → 0`).** This defines the limit for every item below. The plan calls the frozen
+completions it replaces "DC sink/return completions" (`V3_STEP_PLAN.md:633`). No condition is placed on
+`n Γ_return`, `n Γ_drain` or any other native field at a point.
+- **What it acts on.** The projected objects of part 1 item 1, which are functions of in-plane position and time:
+  the time rates of the projected material and order densities, the projected fluxes, the face terms, and the
+  projected order source and its parts (below). In the specialization, also the shell objects of items 2 and 3, at
+  fixed inner and outer radii. The integration in `w` between the live faces comes first, so no frame in `w` is
+  chosen. The in-plane frame is the throat's: the throat is at rest, at the origin of the specialization.
+- **The operation.** The DC part of such an object `X` is its zero-frequency part, the long-time average
+
+  ```
+  ⟨X⟩ = lim_{T→∞} (1/T) ∫_{t₀}^{t₀+T} X dt
+  ```
+
+  at fixed in-plane position, or at fixed radii. Whether it exists is printed as a condition on the live fields,
+  never imposed. The DC part of a product or a quotient is the DC part of that whole object.
+- **What the limit drops** is `X − ⟨X⟩`, for each object.
+- **Steady throughput, as the user chose it.** The DC parts do not change in time, so the drain and re-ordering run
+  at constant rates. The DC part of each projected density's time rate is the slab's steady spreading, and it stays
+  live. No DC part is set to zero, and the slab may spread by thickening, by growing in area, or both.
+- **Order of limits.** The average is taken at fixed position and fixed radii. Any far-radius limit (item 3) is
+  taken after it, on the DC objects.
+
+**The parts of the projected order source.** Part 1's projected order source is `Sχ = ∫n₂Γ_B,2 dw + C₋ + C₊`
+(`steps/S14a_1_projection.md:89`), where `C₋` and `C₊` are its parts concentrated on the faces (`:87`). With
+`Γ_B = Γ_return − Γ_drain`:
+- the **return part** is `∫n₂Γ_return,2 dw` and the **drain part** is `∫n₂Γ_drain,2 dw`, each over the regular part
+  inside the region only;
+- the **face part** is `C₋ + C₊`, net. It is not split into return and drain: no such split is supplied.
+
+Each concentrated part is counted once, in the face part.
 
 ## What the build computes
 Both engines construct these independently, with the `.wl` blind.
 
-1. **The steady-throughput limit of the projected balances.** Start from the time-dependent projected balances of
-   part 1 item 1, and take the limit as defined above.
-   - Print each requirement the limit places on the fields and faces, as an object.
-   - Print both projected balances in the limit. The return and drain parts of the projected order source, and its
-     face parts, are printed separately.
-   - **What the limit drops.** For each balance, print the time-dependent object, the limit object and their
-     difference, so nothing is dropped unseen.
-   - Every field not constrained by a printed requirement stays live.
-2. **The return in steady throughput.** In part 1's labelled specialization (spherical symmetry about the throat, the
-   shell between an inner sphere around the excluded core and an outer sphere) and in the limit of item 1, print
-   separately:
-   - **the re-ordering total** over the shell, from `Γ_return`, and **the drain total**, from `Γ_drain`;
-   - **the order lost** over the shell, as part 1 defines it;
-   - **the order budget over the shell:** the storage of projected order, the in-plane order flux through each
-     sphere, the order crossing the faces, and the projected order source, with its return, drain and face parts
-     separate;
+1. **The DC part of the projected balances.** Apply the operation above to both time-dependent projected balances
+   of part 1 item 1.
+   - Print the DC part of each balance. The DC parts of the return, drain and face parts of the projected order
+     source are printed separately.
+   - **What the limit drops.** For each balance, print the time-dependent object, its DC part and what the limit
+     drops, so nothing is dropped unseen.
+   - Every field stays live.
+2. **The return at DC.** In part 1's labelled specialization (spherical symmetry about the throat, the shell between
+   an inner sphere around the excluded core and an outer sphere), print the DC parts of, separately:
+   - **the re-ordering total, the drain total and the face total:** the return, drain and face parts integrated over
+     the shell, `∫shell` as part 1 writes it (`steps/S14a_1_projection.md:112`);
+   - **the order lost** over the shell, as part 1 defines it (`Lχ = −∫shell Sχ`, `:125`);
+   - **the order budget over the shell:** part 1's projected order balance (`:91`) integrated over the shell. Its
+     terms are the storage of projected order, `∂t∫shell Σχ`; the in-plane order flux `4πr²H_r` (`H` as at `:84`),
+     outward through the outer sphere and inward through the inner sphere, as part 1 orients its outer flux and core
+     channel (`:126`, `:123`); the face terms as that balance carries them, after the full concentrated part
+     (`:88`); and `∫shell Sχ`, as the three totals;
    - **the material budget over the shell:** part 1's face channel, core channel, `J`, storage and outer flux, and
      the balance relating them.
 
-   It also prints the balance that relates the re-ordering total to the drain total and the other shell objects.
-3. **The far flux with exchange live** (user decision above). In the same specialization and limit, print as
-   functions of the outer radius:
-   - every object of item 2;
-   - the outer material flux and, where the projected material density at the outer radius is nonzero, the volume
-     flux of the projected velocity through the outer sphere. That condition is carried wherever the velocity or its
-     volume flux is printed;
+   For each budget, print the time-dependent object, its DC part and what the limit drops.
+3. **The far flux with exchange live** (user decision above). In the same specialization, print as functions of the
+   outer radius:
+   - the DC part of every object of item 2;
+   - the DC part of the outer material flux, and, where the projected material density at the outer radius is
+     nonzero over the average, the DC part of the volume flux of the projected velocity through the outer sphere.
+     That condition is carried wherever the velocity or its volume flux is printed;
    - the dependence of each on the outer radius, with the exchange and storage between the inner and outer spheres
      kept.
 
-   A far-radius limit is printed only where the build shows it exists. The condition on the live fields that it needs
-   is printed as an object, never imposed.
+   A far-radius limit is printed only where the build shows it exists, after the average. The condition on the live
+   fields that it needs is printed as an object, never imposed.
 4. **Dimensional homogeneity** of every new object in items 1–3.
 
 A name may name an object, never its value or a comparison outcome. The script prints objects and never states
 conclusions. No acceptance criterion references an expected value. Spherical symmetry is labelled as a
-specialization wherever it is printed. Steady throughput is labelled as the user's limit wherever it is printed.
-Neither is a limit earned from the general balances.
+specialization wherever it is printed; it is not a limit earned from item 1. The DC part is labelled as the user's
+steady-throughput limit wherever it is printed.
 
 ## Model point
-- **Regime:** steady throughput, the user's limit (2026-10-21), reached from the time-dependent balances. The
-  time-dependent objects are printed beside it.
-- **Freezes:** none intended beyond the user's definition. `J_χ` stays live, the faces keep their motion unless a
-  printed requirement constrains it, and no exchange sign is imposed: U2 leaves the sign free. U3 and U4 enter no
+- **Regime:** the DC part (`ω → 0`), the user's steady throughput (2026-10-21), reached from the time-dependent
+  balances by the operation above. The time-dependent objects and what the limit drops are printed beside it.
+- **Freezes:** none intended. The operation acts on whole projected objects and sets no DC part to zero. `J_χ`
+  stays live, the faces keep their motion, and no exchange sign is imposed: U2 leaves the sign free. U3 and U4 enter no
   computed object, as in S12 (`steps/S12_order_source.md:154–155`). The user's premise that brane material leaves only
   in throats (2026-10-06) is not imposed.
 - **Transfer:** wherever the committed law holds and the shear-holding region has two faces over the in-plane
@@ -154,11 +182,11 @@ The record points at each source row, without restating it:
 - the readings the user did not choose (above). They are not computed, and no owner is named.
 
 ## Intended claim
-What the committed law gives in the user's steady-throughput limit, for the projected balances. For a throat at rest
-with spherical symmetry: the re-ordering and drain totals over a shell, the order and material budgets, `J`'s two
-channels and the outer flux. How each depends on the outer radius, with exchange live. What the limit requires of the
-fields, and what it drops. A far-radius limit only where one is printed with its condition. It is not a mass, a drain
-law, a return form, a throat solve or a flow.
+What the committed law gives at DC, the user's steady-throughput limit, for the projected balances. For a throat at
+rest with spherical symmetry: the DC re-ordering, drain and face totals over a shell, the order and material budgets,
+`J`'s two channels and the outer flux. How each depends on the outer radius, with exchange live. What the limit
+drops. A far-radius limit only where one is printed with its condition. It is not a mass, a drain law, a return form,
+a throat solve or a flow.
 
 ## Next
 A build directive for Codex derived from this list. Then:

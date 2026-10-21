@@ -8,6 +8,8 @@ Paths are relative to `research/pde_ledger_v3/`. The lookups behind this list ar
 author starts only after that. The record is physics-bearing prose. Two non-author legs (fresh Claude + Grok) review
 it, source-first, until clear on what may be claimed. No build directive is in the record author's or the record
 legs' packet (`CLAUDE.md`, step-record row). This follows the S12 record (`directives/S12_record_decision_list.md`).
+Pass 1 was folded once (`directives/_measurements/S14a_1_record_decision_list_review_p1_disposition.md`; the
+reviewed text is at `dcd6fd44`).
 
 ## Deliverable
 - `steps/S14a_1_projection.md`: the S14a part 1 step record.
@@ -104,9 +106,13 @@ None of the three files exists yet (L3).
    - Merge into existing entries wherever one covers the same requirement; don't duplicate.
    - Where this list and the register disagree, the register wins, and the disagreement is reported.
 9. **Status and provenance lines.**
-   - The S12 record and register pass were accepted at `ac909aaf`. The stale status text and the known items J1 and
-     J2 are updated as the S12 record's round-3 disposition states them (L8). Nothing else in the S12 record or in
-     the register's S12 pass changes.
+   - The S12 record and register pass were accepted at `ac909aaf` (L1). In the S12 record, the register (its status
+     and its S12 pass) and `../../STATUS.md`, every line that describes S12's record or register pass as written for,
+     under or awaiting review states that acceptance instead, heading or not (L8).
+   - The S12 known items J1 and J2 (the S12 record's round-3 disposition, L8) are repaired, in the record and in the
+     S12 pass. The account of edits names the two status-only edits J1 lists. The "18 → 18" sentence for the round-3
+     repair cites the section that holds its count.
+   - Nothing else in the S12 record or in the register's S12 pass changes.
    - The run record's construction-order sentence (N1) states the authorship and order the build's round-2
      disposition gives (L6).
    - `../../STATUS.md` states where S14a part 1 stands, as the record does.

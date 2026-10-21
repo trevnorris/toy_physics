@@ -87,3 +87,8 @@ C1 changes what may be claimed. G1 changes what is printed as two of the list's 
 comparison line in the SymPy engine, and which source the Wolfram engine's order lost is built from. Neither leg found
 a defect in the other objects. On Claude's witnesses, every printed object matches an independent derivation. A third
 review round would follow a repair, so the user decides how to finish.
+
+## User decision (2026-10-21): "Fix both, scoped check"
+
+Each engine's author repairs its own finding: the SymPy author C1, the Wolfram author G1. A fresh Claude agent and Grok
+then check only those two edits, and that nothing else moved since `eaccd417`. The comparator follows.

@@ -1,10 +1,20 @@
-# Project status — light sector closed for now; S12 record written for review
+# Project status — light sector closed for now; S12 accepted; S14a part 1 record written for review
 
 On 2026-10-19 the user closed the light sector **for now**. Its accepted results are conditional. What stays
 open is carried as requirements in the [substrate register](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md),
 in its light-closing pass (accepted `e070c7f3`). S12's constructions (`a3da43d9`) and comparator
 (`fe485b73`, with the engine-row note) are accepted. Its [step record](research/pde_ledger_v3/steps/S12_order_source.md)
-and register pass are repaired for narrow round-3 review from preserved baseline `fa5d1396`.
+and register pass are accepted at `ac909aaf` under "Accept, note both". Their known J1/J2 account/citation
+items are repaired in the S14a part 1 record work.
+
+S14a part 1's constructions (`94fddf2f`) and comparator (`de81b9fc`) are accepted. Its
+[projection record](research/pde_ledger_v3/steps/S14a_1_projection.md) and register pass are written for
+source-first review, with [retrieval measurements](research/pde_ledger_v3/steps/_measurements/S14a_1_record_measurements.md).
+S13 is folded into S14a (user, 2026-10-21). This part prints the projected balances and spherical
+two-channel `J`, signed order loss, storage, finite-radius flux and conditioned velocity objects.
+It preserves the comparator differences and coverage limits. It chooses no flow or conversion law;
+the controlled return law remains with later S14a and the profile-dependent `J→Q` completion remains
+OPEN. S14/S15/S20 remain CONDITIONAL, not carried results.
 
 **User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms."** This record closes
 only S12's requirements part and delivers none of the forms. The forms come once the brane is
@@ -91,7 +101,7 @@ The following are **OPEN** carry-overs, not instructions to resume. [Part F](res
 
 ## Next and paused work
 
-**S12's record is written for review:** its accepted constructions and comparator report the source
+**S12's record and register pass are accepted at `ac909aaf`:** its accepted constructions and comparator report the source
 required by the committed order balance on live fields satisfying U1's support condition, including both material face
 requirements and the labelled fast-ordering specialization. The six unrestricted face-coefficient
 differences are labelled representation diagnostics confined off their respective delta supports,
@@ -101,11 +111,14 @@ note. It supplies no drain law, throat solution or flow. Native source/controlle
 boundary data, native identifications and additional conversion partners retain their sourced S12
 ownership and remain OPEN. None of their forms is delivered here; they come once the brane is
 defined, after the force sectors.
-The register stays at 18 OPEN entries,
+The S12 pass left 18 OPEN entries,
 with compatibility constraints merged into `R-S12-02` and the comparison of force sectors' flow
 requirements owed by `R-S21-01`, consistently in its by-target row and requirement field.
 [Record](research/pde_ledger_v3/steps/S12_order_source.md),
 [measurements](research/pde_ledger_v3/steps/_measurements/S12_record_measurements.md).
+The S14a part 1 pass also leaves 18 OPEN entries, adding scoped source/provenance to `R-S1-01`,
+`R-S1-02`, `R-S12-02` and `R-S21-01`, with no new entry or status change. Its printed compatibility
+constraints merge into `R-S12-02`; S21 retains the comparison of force sectors' flow requirements.
 The light closeout was accepted at `e070c7f3`; its review no longer gates S12. The oracle comparison's
 questions about flow drive separate S12's source/boundary realization from O2's carried
 force-balance handoffs. Material destination separates S12's drain-produced density/exchange

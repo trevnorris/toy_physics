@@ -1,9 +1,9 @@
 # S12 — the source required by the order balance, with separate boundary data
 
-**Status, 2026-10-20:** record and register pass written for review. The constructions are accepted at
+**Status, 2026-10-20:** record and register pass accepted at `ac909aaf` (user: "Accept, note both"). The constructions are accepted at
 `a3da43d9`; the comparator and its filed production output are accepted at `fe485b73`, with the engine-row
-note below. This is the round-3 repair of reviewed baseline `fa5d1396`, awaiting the narrow check of H1/H2
-(`directives/_measurements/S12_record_r2_review_disposition.md`, retrieved in M19). No drain law, throat solution or flow is delivered.
+note below. The round-3 record acceptance is in
+`directives/_measurements/S12_record_r3_review_disposition.md`; its known items J1/J2 are repaired below. No drain law, throat solution or flow is delivered.
 The light-sector closeout, including the flow-only oracle-comparison record, is accepted at `e070c7f3`.
 
 The result is conditional: the committed material/order balances require the printed three regional
@@ -340,7 +340,7 @@ M15, M18.)
 The present repair of `fa5d1396` is also 18 → 18, with no additional source gain. It carries the
 real-fraction/A13 condition into `R-S12-02`, its by-target summary and the common handoff of the
 S12 pass: the printed requirements rest on the real-fraction branch and A13 stays OPEN until
-S1's gate decides. It also supplies the accepted-pass edit account below (M19/M20).
+S1's gate decides. It also supplies the accepted-pass edit account below (M12 for the count; M19/M20 for the edits).
 
 **Edits to already-accepted population passes.** Relative to the accepted register at `e070c7f3`,
 the net edits to pre-existing Population passes are the following two edits to the light-closing
@@ -356,6 +356,11 @@ in the census and rest-on table, separately from these amendments to accepted pa
 Both accepted and current blocks, with their literal line breaks, are retrieved in M20. The handoff
 wording is a substantive amendment to an accepted pass, not only an acceptance-status update.
 It preserves the oracle record's split and changes no computed result or owner.
+
+**Two additional status-only edits retained from the S12 deliverable (J1).** The S9b oracle record's
+status changed from "its own review is pending" to accepted at `e070c7f3`; the register header's
+light-closing sentence likewise records acceptance at `e070c7f3`. These are separate from the two
+light-closing Population-pass edits above. Source: `directives/_measurements/S12_record_r3_review_disposition.md`, J1.
 
 **Second route:** the register requires it for every sector with identified prior art, including
 objects outside a step record's own doubts. Accordingly the pass reads the inherited O2 scoping §5
@@ -417,5 +422,7 @@ for them explicitly. The generator adds their retrievals and the current census;
 are regenerated. Only the review-round status reference changes in `STATUS.md`. All owners and the
 "Keep S12" requirements/forms split remain unchanged, as do the computed objects, C2 diagnostic
 classification, G1 unit attributions and S21 obligation. The S9b oracle record and the accepted
-Population-pass texts are not edited in this round. This repair awaits the narrow check of H1/H2.
+Population-pass texts were not edited in that round. The record and register pass were accepted at
+`ac909aaf` under "Accept, note both"; the subsequent S14a part 1 record repairs only the acceptance
+status and J1/J2 in this file.
 Commits made for this deliverable: **none**. (Retrieve M15, M19, M20.)

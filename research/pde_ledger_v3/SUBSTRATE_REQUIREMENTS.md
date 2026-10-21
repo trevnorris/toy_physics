@@ -3,8 +3,10 @@
 **Status: the light sector is closed for now (user decision, 2026-10-19). Passes 1 (S9, S10), 2 (S11,
 S11b-A/B, S11c PARTIAL; accepted `22be0137`), O2 (accepted `72866fcf`) and S9b (accepted `ff3bac63`) are
 complete. The light-closing pass (2026-10-19), including the oracle-comparison record and throat energy
-split, is accepted at `e070c7f3`. The S12 record and register pass (2026-10-20) are written for review;
+split, is accepted at `e070c7f3`. The S12 record and register pass (2026-10-20) are accepted at `ac909aaf`;
 their constructions and comparator are accepted at `a3da43d9` and `fe485b73`.**
+The S14a part 1 record and register pass (2026-10-21) are written for source-first review;
+their constructions and comparator are accepted at `94fddf2f` and `de81b9fc`.
 Eighteen entries, all OPEN. Pass 2 was populated 2026-10-05 from the kept results and their stated
 conditions; it does not close the substrate or upgrade S11c's unresolved work. Later sectors remain to
 be read as they close. The two 2026-08-07 prior-art entries retain their provenance; the second route is
@@ -19,6 +21,9 @@ The light-closing pass adds one S22 entry and oracle-comparison evidence to `R-S
 S12 merges its printed regional/face compatibility objects into `R-S12-02` and adds scoped source or
 decision provenance to four existing entries; it adds no entry and closes none. Its retrievals and
 before/after census are `steps/_measurements/S12_record_measurements.md`, M12/M15.
+S14a part 1 merges projected/shell compatibility into `R-S12-02` and adds scoped
+source/provenance to four existing entries, with no new entry or status change. Its census and
+pass are retrieved in `steps/_measurements/S14a_1_record_measurements.md`, M12/M16.
 
 ## Why this exists
 
@@ -75,12 +80,12 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 
 | target | id | the object owed | source |
 |---|---|---|---|
-| **S1** | `R-S1-02` | the substructure's shear response as a function of `χ_B`, both phases | S9, O2 conditional premises, S9b brane optical shear only, S12 support identification only |
+| **S1** | `R-S1-02` | the substructure's shear response as a function of `χ_B`, both phases | S9, O2 conditional premises, S9b brane optical shear only, S12 and S14a part 1 support identification only |
 | **S1** *(register inference)* | `R-S1-03` | whether the substructure's microdynamics is time-reversible | S11b-B / unified S11b |
 | **S1.5** | `R-S1.5-01` | the mode content of the linearised GNLS, including the bulk acoustic branch | S9, S11, S11b-A/B, S9b Part C bulk acoustic input only |
 | **S6** | `R-S6-01` | the brane's compression modulus `B_comp` | S11 |
 | **S6** | `R-S6-02` | the first variation of the substrate action at `v₀ = 0` | S9, S10, S11, S11b-A/B, S11c uniform |
-| **S6** | `R-S1-01` | the brane's spatial dimension `D_brane` ⚠ *id kept; target corrected to S6* | S10, S11, S9b and S12 coordinate dimension only |
+| **S6** | `R-S1-01` | the brane's spatial dimension `D_brane` ⚠ *id kept; target corrected to S6* | S10, S11, S9b, S12 and S14a part 1 coordinate dimension only |
 | **S7** | `R-S7-01` | the slab-width flat direction under a non-uniform width | S11, unified S11b |
 | **S8** | `R-S8-01` | the form of the brane's quadratic stiffness functional | S9, S10, S11, S11b-B, unified S11b, S11c uniform, S9b supplied transverse input |
 | **S8** | `R-S8-02` | the quadratic operator on `u` **and** `h` together | S10, S11 |
@@ -89,8 +94,8 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 | **S8** | `R-S8-05` | the **frame** the brane's rotational stiffness is measured against | S9, S10, S11, O2 carried obligation |
 | **S8** *(register inference for original entry)* | `R-S8-06` | material displacement and original quadratic slab inertia; O2 adds the material identification only | S11, S11b-B, O2 and S9b identification |
 | **S12** *(register inference; no live owner named)* | `R-S12-01` | a reservoir and power budget if a non-passive interface response is adopted | S11b-B / unified S11b, O2 carried condition |
-| **S12** | `R-S12-02` | native drain/return, printed regional/face compatibility on the real-fraction branch (A13 OPEN), and separate boundary data | S11b-A/B, S11c uniform, O2, S12 |
-| **S21** | `R-S21-01` | conditional deflection and radar-slope profile requirements, with Part C rewrites and implied exchange; comparison of force sectors' flow requirements | S9b A–C; flow-only oracle comparison (evidence only); S12 framing decision only |
+| **S12** | `R-S12-02` | native drain/return, printed regional/face and projected/shell compatibility on the real-fraction branch (A13 OPEN), and separate boundary data | S11b-A/B, S11c uniform, O2, S12, S14a part 1 |
+| **S21** | `R-S21-01` | conditional deflection and radar-slope profile requirements, with Part C rewrites and implied exchange; comparison of force sectors' flow requirements | S9b A–C; flow-only oracle comparison (evidence only); S12 and S14a part 1 framing decision only |
 | **S22**, with Q2 and S12 | `R-S22-01` | how the energy a throat releases splits among light, the extra longitudinal wave and the bulk | S11 departure; photon survey E32–E34, E38 |
 | **no owner named** | `R-O2-01` | the physical net-power supplier and its stated budget, if a conditional closure requires net supply | O2 |
 
@@ -138,7 +143,7 @@ other three.
 
 ### R-S1-01 — the brane's spatial dimension
 
-- **source** S12 (coordinate dimension only; `steps/S12_order_source.md`, §§1–2/7); S9b (coordinate dimension only; `steps/S9b_light_bending.md`, §§2–4/8); S10 (`steps/S10_two_transverse_photons.md`); S11
+- **source** S14a part 1 (coordinate dimension only; `steps/S14a_1_projection.md`, §§1–4/8); S12 (coordinate dimension only; `steps/S12_order_source.md`, §§1–2/7); S9b (coordinate dimension only; `steps/S9b_light_bending.md`, §§2–4/8); S10 (`steps/S10_two_transverse_photons.md`); S11
   (`steps/S11_stray_longitudinal.md`, moves 2–3 / finite census) · **target** S6 · **status** OPEN
 - **requirement** — the brane's spatial dimension `D_brane`, as a derived quantity or an explicitly
   re-affirmed postulate.
@@ -173,10 +178,16 @@ other three.
   those objects do not transfer unchanged. No dimension or brane construction is derived
   (`steps/S12_order_source.md`, §§1–2; its retrievals M01/M04/M06/M10/M17).
 
+- **S14a part 1 scope** — The projection uses three in-plane coordinates and one bulk coordinate;
+  its labelled spherical shell uses the printed `4πr²` area. This adds a coordinate-domain consumer
+  of the existing dimension obligation, not a dimensional derivation or selected thickness.
+  Failure to deliver/reaffirm that setting prevents transferring those projected/shell objects
+  unchanged (`steps/S14a_1_projection.md`, §§1–4; its retrievals M01/M03/M04/M07).
+
 
 ### R-S1-02 — the substructure's shear response, as a function of the order parameter
 
-- **source** S12 (support identification only; `steps/S12_order_source.md`, §§1–3/7); S9b (brane optical shear only; `steps/S9b_light_bending.md`, §§2–4/8); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
+- **source** S14a part 1 (support identification only; `steps/S14a_1_projection.md`, §§1/8); S12 (support identification only; `steps/S12_order_source.md`, §§1–3/7); S9b (brane optical shear only; `steps/S9b_light_bending.md`, §§2–4/8); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
 - **requirement** — the shear response of the substructure as a function of `χ_B`, across **both** phases.
 - **on failure** — the two halves fail differently, and both are fatal:
   - **ordered phase carries no shear** ⇒ `μ_R = 0`, the brane has no transverse sector, and **photons do
@@ -211,6 +222,13 @@ other three.
   the algebra does not establish shear response, confinement or a constitutive relation to
   `χ_B`. U1's re-ordering clause enters no computed object and remains OPEN
   (`steps/S12_order_source.md`, §§1–3; retrievals M01/M03/M04).
+
+- **S14a part 1 scope** — U1's shear-holding-region/support identification is inherited as an
+  adopted input, not derived from the projection. It adds only this conditional material
+  interpretation to the existing phase-response obligation. If the identification fails, the
+  shear-region interpretation fails; no shear modulus, confinement result or profile follows.
+  U1's re-ordering clause enters no computed object as an enforced clause
+  (`steps/S14a_1_projection.md`, §1; its retrievals M01/M03/M04).
 
 
 ### R-S1.5-01 — the GNLS's own mode content
@@ -549,7 +567,7 @@ other three.
 
 ### R-S12-02 — background drain/return and separate boundary data
 
-- **source** S12 (`steps/S12_order_source.md`, §§1–2/5–7; retrievals M01/M03/M07/M11); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-A/B (`steps/S11b_interface_coupling_law.md:158–164`, background-flow limit); S11c
+- **source** S14a part 1 (`steps/S14a_1_projection.md`, §§2–5/7–8; its retrievals M03/M05–M10); S12 (`steps/S12_order_source.md`, §§1–2/5–7; retrievals M01/M03/M07/M11); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-A/B (`steps/S11b_interface_coupling_law.md:158–164`, background-flow limit); S11c
   (`steps/S11c_PARTIAL_CLOSEOUT.md:7`, uniform result;
   `steps/S11c_d_profile_conditioned_scattering.md:21–25`, selected uniform check)
   · **target** S12 · **status** OPEN
@@ -609,6 +627,21 @@ other three.
   This merges source/face/flux compatibility into the existing native-conversion obligation,
   without duplicating an entry or prescribing a law, material, premise or candidate.
 
+- **S14a part 1 projected/shell compatibility** — The required objects also include the printed
+  projected material and order balances, their densities/in-plane fluxes, both interior and
+  closed-projection face terms, concentrated source parts and projected order source; in the
+  labelled spherical specialization, the printed face/core channels, `J`, signed order lost,
+  storage, shell balance, face-channel-minus-order-loss difference, outer flux/radius dependence
+  and the conditioned projected-velocity/volume-flux relations. These are the object requirements
+  listed by native tag/binding in the S14a part 1 pass below. Their full values/domain are
+  `steps/S14a_1_projection.md`, §§2–4, with all cross-engine differences/limits in §5 and retrievals
+  M03/M05–M10. Future data violating them cannot realize the reported conditional projection.
+  The requirements retain the real-fraction/A13 condition above, the live two-face function class,
+  full concentrated parts, spherical restriction where used and nonzero-density velocity domain.
+  No means of meeting them is named. S12's forms and separate boundary data remain OPEN under
+  "Keep S12"; these constraints deliver neither. Unresolved exact differences and unpaired
+  decompositions are not silently promoted to exact-equivalence requirements.
+
 ### R-O2-01 — the net-power supplier and its stated budget
 
 - **source** O2 (`steps/O2_steady_brane_balance.md`, energy accounting and register handoff)
@@ -638,7 +671,9 @@ other three.
 ### R-S21-01 — conditional deflection and radar-slope profile requirements
 
 - **source** S9b (`steps/S9b_light_bending.md`, §§3–6; measurements M3–M7/M11–M13/M17–M19);
-  S12 framing decision only (`steps/S12_order_source.md`, §§6–7; user 2026-10-19, retrieved M01)
+  S12 framing decision only (`steps/S12_order_source.md`, §§6–7; user 2026-10-19, retrieved M01);
+  S14a part 1 framing decision only (`steps/S14a_1_projection.md`, §§1/7–8; user 2026-10-19,
+  carried in its decision list 2026-10-21, retrieved M01)
   · **target** S21 (integration/knit; S9b record §7, O2 record §7 and the record directive's
   2026-10-08/09 user decisions) · **status** OPEN
 - **requirement** — On S9b's isolated spherical, steady far-zone, leading-eikonal, LAB_HELD
@@ -1295,11 +1330,11 @@ unsupplied mass, clock and speed-unit identifications. The register's
 MacCullagh obligations (`R-S8-04`, `R-S8-05`) remain OPEN.
 
 
-### S12 pass — local order-source compatibility and separate inventories · 2026-10-20; written for review
+### S12 pass — local order-source compatibility and separate inventories · 2026-10-20; accepted `ac909aaf`
 
 Source: `steps/S12_order_source.md`, §§1–7. Its constructions are accepted at `a3da43d9`, and the
-comparator with its engine-row note at `fe485b73`; this is the round-3 repair of reviewed baseline
-`fa5d1396`, awaiting the narrow check of H1/H2 (M19).
+comparator with its engine-row note at `fe485b73`. The record and register pass were accepted in
+round 3 under "Accept, note both" at `ac909aaf` (`directives/_measurements/S12_record_r3_review_disposition.md`); J1/J2 are repaired here.
 Commands and literal stdout: `steps/_measurements/S12_record_measurements.md`, generated by
 `scripts/S12_record_measurements.py`. M01/M03/M07–M11 retrieve the conditional object and inventories;
 M12 retrieves the schema, rest-on method and entry census; M13 the second-route sources.
@@ -1314,7 +1349,7 @@ owes the comparison of force sectors' flow requirements, matching its by-target 
 the 2026-10-19 user framing; no comparison is performed here (M12/M15/M18).
 The present repair of `fa5d1396` is also 18 → 18, with no additional source gain. It adds the
 real-fraction/A13 qualification to the S12 handoffs and reports the accepted-pass edits below;
-it changes no owner, computed object or comparison claim (M19/M20).
+it changes no owner, computed object or comparison claim (M12 for the count; M19/M20 for the edits).
 
 **Edits to already-accepted population passes.** Relative to the accepted register at `e070c7f3`,
 the net edits to pre-existing Population passes are the following two edits to the light-closing
@@ -1330,6 +1365,11 @@ in the census and rest-on table, separately from these amendments to accepted pa
 Both accepted and current blocks, with their literal line breaks, are retrieved in M20. The handoff
 wording is a substantive amendment to an accepted pass, not only an acceptance-status update.
 It preserves the oracle record's split and changes no computed result or owner.
+
+**Two additional status-only edits retained from the S12 deliverable (J1).** The S9b oracle record's
+status changed from "its own review is pending" to accepted at `e070c7f3`; the register header's
+light-closing sentence likewise records acceptance at `e070c7f3`. These are separate from the two
+light-closing Population-pass edits above. Source: `directives/_measurements/S12_record_r3_review_disposition.md`, J1.
 
 **User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms. This record closes only
 S12's requirements part, and the forms come once the brane is defined, after the force sectors.
@@ -1439,6 +1479,107 @@ on a prior result that a record in the reading list identifies as reproduced by 
 this register says **"Run this route for every sector with identified prior art"** (M13). The
 register's broader rule governs this pass. All comparator differences/coverage limits stay in
 S12 §4 and M06–M09; the accepted engine-row comparison carries no information.
+
+### S14a part 1 pass — closed projection and two-channel shell compatibility · 2026-10-21; written for source-first review
+
+Source: `steps/S14a_1_projection.md`, §§1–8. Constructions accepted `94fddf2f`; comparator accepted
+`de81b9fc`. This record/pass is written, not yet accepted. Commands and literal stdout:
+`steps/_measurements/S14a_1_record_measurements.md`, generated by
+`scripts/S14a_1_record_measurements.py`. M01/M03/M05–M10 retrieve the conditional printed objects,
+their domains and comparison limits; M12 retrieves the schema/rest-on method and census;
+M13 the second-route sources; M16 this pass and the exact ancillary diff against `f5d283c1`.
+
+**Census:** 18 entries before (`f5d283c1`) → 18 after, all OPEN. **New entries by target: none.**
+Four existing entries gain scoped source/provenance: `R-S1-01`, `R-S1-02`, `R-S12-02`, `R-S21-01`.
+The last gains user-framing provenance only, not new optical evidence or a selected flow.
+No target or status changes. The S12 pass itself changes only acceptance status/provenance and
+known J1/J2: its account now names the S9b oracle status edit and register-header light-closing
+status edit; its round-3 `18 → 18` sentence cites S12 M12. S12 acceptance is `ac909aaf` (M15/M16).
+
+**First route / rest-on test.** The printed objects rest on supplied material/order balances,
+the coordinate dimension, adopted U1 support identification and the live regional/two-face function
+class. Spherical symmetry is a labelled restriction, not an earned limit. Each is kept at that
+standing, not entered as a new derived substrate property. No chosen interior, face, source,
+flux or profile form is required by these identities. Their printed compatibility objects do
+constrain future data that would realize the conditional projection; these merge into the
+existing `R-S12-02` compatibility requirement. No method of satisfying them is prescribed.
+
+**Common domain of every handoff below:** the real-fraction branch, **A13 OPEN** at S1's gate,
+propagated through S5/S12; two live graph faces and the inherited regional field class; full
+endpoint-concentrated parts. Shell objects additionally keep the labelled spherical specialization;
+velocity objects keep nonzero projected density. Every comparison qualification in the record §5
+travels with its object. In particular the seven exact integral residuals, shell-domain difference,
+external dimension-context differences, unjoined decompositions and unpaired components are not
+resolved by this pass. Source/flux forms and distinct boundary data remain S12's, OPEN under
+the 2026-10-20 **"Keep S12"** decision. These requirements deliver none of the forms.
+
+| Required printed object; native tag family / bound references | Entry / target / status | What fails if future data violate the object |
+|---|---|---|
+| `General/{material,order}/projected density`, `/projected in-plane flux`, `/closed projected balance/operands`; corresponding Wolfram `general projection/...` objects (b51/b52/b59/b73/b74/b79) | `R-S12-02` / S12 / OPEN | The reported closed-slab material/order balance is not realized on this domain. |
+| Each `General/{material,order}/face {0,1}/{interior leaving term,closed-projection leaving term}`, `/concentrated face parts`; material face-equation coefficients; `General/order/projected source` (b49/b53–b58/b71/b75–b78/b82) | `R-S12-02` / S12 / OPEN | The reported relative face transport, full concentrated parts or projected source are not realized. Material face requirements remain distinct; none is solved or imposed by this pass. |
+| The separately constructed `SphericalSpecialization` projected counterparts (b127/b129–b137/b147/b149–b155/b158) | `R-S12-02` / S12 / OPEN | The labelled radial projection is not realized. No transfer outside its restriction is required. |
+| Spherical `face channel`, `core channel`, `J`, `order lost`, `outward outer flux`, `storage`, `shell balance`, `face channel minus order lost` (b166–b171/b173–b175; Wolfram `spherical specialization / shell/...`) | `R-S12-02` / S12 / OPEN | The reported two-channel definition and shell/source/storage relations are not realized. Storage and shell-balance exact comparison remain unresolved as recorded, not replaced with an exact-match claim. |
+| Spherical `outer flux radius derivative`, `outer projected velocity`, `outer volume flux`, with the printed predicates (b172/b176/b177) | `R-S12-02` / S12 / OPEN | The reported live-radius flux/conditioned-velocity relation is not realized. No zero-density velocity value is owed. |
+
+The difference `face channel minus order lost` is required **as the printed difference**, not set
+to zero. Agreement of bound dimension values constrains their interpretation only at their
+printed domains; primitive dimension assignments and unpaired audit trees are not new laws.
+Closed differential-operand integrals retain b50/b72/b128/b148's unresolved exact comparison
+and printed sample evidence; no new exact equivalence is required by assertion (M03/M07–M10).
+The pending controlled return law, mass link, core solution, source-map completion and profile
+knit enter no completed part-1 result as supplied forms; they retain their step assignments and
+do not generate duplicate entries merely because they remain OPEN (record §7, M01/M11).
+
+**Rest-on census, every existing entry:**
+
+| Entry | S14a part 1 dependence/effect |
+|---|---|
+| `R-S6-01` | No compression modulus used; no source gain. |
+| `R-S7-01` | Live faces select no width/flatness result; no source gain. |
+| `R-S1-01` | Three in-plane/one bulk coordinates and spherical area; coordinate-domain consumer only; source added, no dimension derived. |
+| `R-S1-02` | Adopted U1 shear-region/support identification; conditional interpretation source only. No shear response/confinement derived. |
+| `R-S1.5-01` | No GNLS linear-mode/acoustic input; no source gain. |
+| `R-S6-02` | No equilibrium/first-variation input; no source gain. |
+| `R-S8-01` | No stiffness functional used; no source gain. |
+| `R-S8-02` | No coupled displacement/width quadratic operator used; no source gain. |
+| `R-S8-03` | No optical-stiffness sign/gate result; no source gain. |
+| `R-S8-04` | No new angular-momentum/couple-stress consumer; inherited second-route obligation remains. |
+| `R-S8-05` | No rotational frame selected or used; inherited second-route obligation remains. |
+| `R-S1-03` | No microscopic time-reversal/Onsager input; no source gain. |
+| `R-S8-06` | No displacement/quadratic-inertia identification used; number conservation does not supply it. O2 comparison remains OPEN; no source gain. |
+| `R-S12-01` | No non-passive response or computed power consumer; distinct carried condition, no live owner newly assigned. |
+| `R-S12-02` | Projected/face/source and labelled shell compatibility objects merge here; source added, native forms/data remain OPEN. |
+| `R-O2-01` | No net-power/supplier result or adopted net-supply closure; no source gain/owner change. |
+| `R-S21-01` | Framing provenance only: each force states flow needs, S21 compares, mismatch reopens S9b. No new optical profile evidence or comparison result. |
+| `R-S22-01` | No energy split or conversion-work/thermal-transfer result used; no source gain. Core exclusion keeps its existing owner, not a new computed energy requirement. |
+
+**Second route.** Apply the register's broader rule for every sector with identified prior art.
+Read O2 scoping §5 and the O2/S9b/light-closing source rows (M13), rather than treating this
+record's own questions as an exhaustive prior-art inventory. Each named candidate remains
+individual: Gurtin–Murdoch, Abels–Garcke–Grün, Scriven, Helfrich, Rodriguez–Hoger–McCulloch,
+Hamilton–Lisle, Visser, Unruh and the inherited Cahill/Sbitnev class. For each, applicability,
+transferable historical failures/objections and whether they are answered here remain OPEN,
+**no owner named for a new S14a part 1 check**. The original access, dimension, material and
+exchange limitations remain as the source rows state them. No part-1 result is claimed to
+reproduce an applied oracle, so no new requirement is founded on such a match.
+
+Every other candidate in the inherited S9b inventory retains its source row and original OPEN
+handoff (M13). The river/acoustic objections are carried, not answered: S12 drain/source-boundary
+realization versus O2's force balance; S12's produced density/exchange versus S21 knit compatibility;
+scalar sound versus transverse light as S9b's scoped exclusion; analog kinematics versus dynamics
+as its existing handoff. Neither global nor local conservation chooses a drive or response law.
+MacCullagh's `R-S8-04/-05` remain OPEN. No literature search, new oracle check or candidate
+selection is performed by this pass.
+
+**Directive/register relation and source tensions.** The current contract expressly defers to
+this rest-on test and both-route method; no operative disagreement is found. The historical
+second-route directive says **"Run it only on a prior result that a record in the reading list
+identifies as reproduced by the sector"**, while the register says **"Run this route for every
+sector with identified prior art"** (M13). The register wins. The material-conservation and
+S13-filing disagreements are quoted with both sides in record §6 (M01/M11/M15), not resolved by
+new physics or an owner reassignment. The plan's four bridge objects are not all closed:
+S14/S15/S20 remain **"CONDITIONAL, not carried results"**. No frozen DC completion or profile
+is adopted to close them.
 
 ### Method for population passes
 

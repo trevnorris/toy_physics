@@ -2,7 +2,7 @@
 
 Deliverable: two independently constructed CAS engines, their final-code guarded transcripts, and this run record. Contract: `directives/S14a_1_decision_list.md`, revision 3, at HEAD `e9eed6145b4b170719d0c852e2199d44e9a86da8`. No commits were made.
 
-The Wolfram source was written before the SymPy source. Neither engine reads the other engine or its output. No cross-engine comparison or scientific interpretation was performed. Formal integrals retain the live fields; velocity objects carry their nonzero-density domain. All contract OPEN items remain OPEN.
+The first builder wrote both engines, with the first Wolfram source written before the SymPy source; that author repaired SymPy twice. A fresh author rewrote the current Wolfram engine after SymPy repair 1 had finished, then repaired Wolfram once (build round-2 disposition, authorship/order and N1). Neither engine reads the other engine or its output. No cross-engine comparison or scientific interpretation was performed. Formal integrals retain the live fields; velocity objects carry their nonzero-density domain. All contract OPEN items remain OPEN.
 
 The requested `_scratch/s14a/guard` scratch path is a symlink to `_scratch/s11c/s14a`, satisfying the unchanged guard's log-root restriction. Runs were sequential, without time limits; each used pool `s14a`, a 50 GiB cap, zero swap and the default 32-task cap.
 

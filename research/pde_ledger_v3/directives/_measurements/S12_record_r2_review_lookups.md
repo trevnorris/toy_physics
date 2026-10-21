@@ -21,9 +21,15 @@ dc2a40a18f5ef2fcc06ee572e514ad2cbdec2ce432fb7c5340e3ee67f9684f4e  _scratch/s12/r
 
 ```
 $ git -C /var/projects/toy_physics status --porcelain | diff /var/projects/toy_physics/_scratch/s12/rec/status_before_record_r2.txt - && echo 'status unchanged apart from lines shown'
-6a7,8
-> ?? research/pde_ledger_v3/directives/_measurements/S12_record_r2_review_disposition.md
-> ?? research/pde_ledger_v3/directives/_measurements/S12_record_r2_review_lookups.md
+2,6c2,3
+<  M STATUS.md
+<  M research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
+<  M research/pde_ledger_v3/scripts/S12_record_measurements.py
+<  M research/pde_ledger_v3/steps/S12_order_source.md
+<  M research/pde_ledger_v3/steps/_measurements/S12_record_measurements.md
+---
+>  M research/pde_ledger_v3/directives/_measurements/S12_record_r2_review_disposition.md
+>  M research/pde_ledger_v3/directives/_measurements/S12_record_r2_review_lookups.md
 ```
 
 ```
@@ -138,17 +144,19 @@ $ grep -n 'acceptance edits at' /var/projects/toy_physics/research/pde_ledger_v3
 397:acceptance edits at `e070c7f3` are retained; the S9b oracle record is not edited in this round.
 ```
 
+The round-0 sentence, counted across line breaks:
+
 ```
-$ grep -c 'No other scientific record' /var/projects/toy_physics/research/pde_ledger_v3/steps/S12_order_source.md
+$ tr '\n' ' ' < /var/projects/toy_physics/research/pde_ledger_v3/steps/S12_order_source.md | grep -o 'No other scientific *record is upgraded' | wc -l
 0
 ```
 
 ```
-$ git -C /var/projects/toy_physics show 4c37473c:research/pde_ledger_v3/steps/S12_order_source.md | grep -c 'No other scientific record'
-0
+$ git -C /var/projects/toy_physics show 4c37473c:research/pde_ledger_v3/steps/S12_order_source.md | tr '\n' ' ' | grep -o 'No other scientific *record is upgraded' | wc -l
+1
 ```
 
 ```
-$ git -C /var/projects/toy_physics show 8608bc71:research/pde_ledger_v3/steps/S12_order_source.md | grep -c 'No other scientific record'
-0
+$ git -C /var/projects/toy_physics show 8608bc71:research/pde_ledger_v3/steps/S12_order_source.md | tr '\n' ' ' | grep -o 'No other scientific *record is upgraded' | wc -l
+1
 ```

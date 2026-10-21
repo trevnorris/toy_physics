@@ -52,7 +52,8 @@ The mechanical lookups behind each disposition are in `S12_record_r2_review_look
   - The S12 pass describes its light-closing edits only as "The light-closeout status lines now record its
     acceptance".
   - The record says "The earlier light-closeout acceptance edits at `e070c7f3` are retained".
-  - The round-0 record's "No other scientific record is upgraded" has been absent since round 1 (K4).
+  - The record's earlier "No other scientific record is upgraded", present at `8608bc71` and `4c37473c`, was dropped
+    in this round (K4).
 - **Origin.** The edit came in round 1 and was kept in round 2. The new text matches the oracle record. The defect is
   that the change to an accepted pass is not reported.
 - **What must be true.** The record and the S12 pass report every edit made to an accepted pass. For this one, they

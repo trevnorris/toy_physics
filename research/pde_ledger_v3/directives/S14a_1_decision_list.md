@@ -6,6 +6,9 @@ Paths are relative to `research/pde_ledger_v3/`.
 **Gate.** This is a pre-builder decision list. It gets one Codex + Grok pass and is folded once (G2). It also names the
 object the build computes, so that content is reviewed until clear (spec row). The builder starts only after that.
 
+**Revision 2**, the one fold of the G2 pass (dispositions:
+`directives/_measurements/S14a_1_decision_list_review_p1_disposition.md`; the reviewed text is at `82fa9fa3`).
+
 ## Filing and framing
 - **The plan's steps.** This covers the plan's S13, "The drain rate `J`, and what it is not" (`V3_STEP_PLAN.md:619`),
   and the first part of S14a, "The drain bridge" (`V3_STEP_PLAN.md:626`). S14a asks for "the projected order-loss
@@ -32,6 +35,14 @@ The committed law, user decision of 2026-07-24 (`V3_STEP_PLAN.md:589–601`;
   cleared at `b08673a2`): "How U1 enters", and item 1's "Fields at a face". The shear-holding region is bounded by
   two live faces `w₋(x,t) < w₊(x,t)`, and `χ_B` vanishes outside it. Both are adopted premises, not results of this
   build.
+- **The material factor at a face**, as the accepted S12 record writes it (`steps/S12_order_source.md:79–80`), for
+  region `r` at face `s`, using that region's one-sided trace at `w = w_s`:
+
+  ```
+  a_{r,s} = u_r^w − ∂_t w_s − u_r^i ∂_i w_s
+  ```
+
+  It is supplied and unfalsifiable in this build. The build's face terms are reached by its own integration.
 - **v2's labels**, as v2 defined them, for comparison in the record only. The build does not use them:
   - `J`: "Number-rate flux lim_{S_R} int n_3 v_brane.n dS in a no-leakage steady region"
     (`../../software/stage1_solver/reports/pathA_21_emergent_G_mass_bridge.md:65`);
@@ -49,31 +60,42 @@ order lost over the same region, so nothing is hidden in the sum.
 Both engines construct these independently, with the `.wl` blind.
 
 1. **The projected balances.** Integrate both committed balances in `w` over the closed shear-holding region, with
-   each face's concentrated part counted in full.
+   each face's concentrated part counted in full. The limits are the live faces, which move and tilt.
    - The result is the projected total-material balance and the projected order balance, at each in-plane point and
-     time.
+     time. Each is a balance for the time rate of a projected density and the in-plane divergence of its projected
+     flux, with the faces' motion and tilt kept.
    - Every field stays live, as S12 kept them.
    - The build prints, as objects:
      - the projected densities and their in-plane fluxes;
-     - every term the integration leaves at each face;
+     - every term that leaves at each face;
      - the projected order source, including its face parts.
 2. **The drain rate and its channels.** Work in a labelled specialization: spherical symmetry about the throat in
-   the three in-plane coordinates, with every profile a live function of radius and time. The region is the shell
-   between an inner sphere around the excluded core and an outer sphere. The build prints, separately:
-   - **the face channel:** the net rate at which material leaves the shear-holding region through its faces over the
-     shell;
+   the three in-plane coordinates, and no other restriction.
+   - The native fields keep their dependence on radius, `w` and time.
+   - The faces depend on radius and time, and so do the projected objects.
+
+   The region is the shell between an inner sphere around the excluded core and an outer sphere. The build prints,
+   separately:
+   - **the face channel:** the net rate at which material crosses the faces over the shell, leaving the
+     shear-holding region, measured relative to the faces' own motion;
    - **the core channel:** the net rate at which projected material crosses the inner sphere inward, in-plane;
    - **`J`**, the sum of the two channels (user decision above);
-   - **the order lost** over the shell, including face parts;
+   - **the order lost** over the shell: minus the projected order source integrated over the shell, including its
+     face parts. In stage 006's sign (`Γ_B < 0` is the drain, `Γ_B > 0` re-ordering; stage 006 `:86–87`), it is
+     positive for a net drain and negative for net re-ordering. No sign is imposed;
    - **the outward in-plane flux of projected material** through the outer sphere;
    - **storage:** the rate of change of the projected material in the shell.
 
    It also prints the balance that relates them, and the difference between the face channel and the order lost.
    Each is a computed object, not a typed one.
 3. **The far-field flux.** In the same specialization, the build prints how the outer-sphere flux depends on the
-   outer radius, and the volume flux of the projected velocity through the outer sphere. The projected velocity is
-   the projected material flux divided by the projected material density. Profiles stay live, and no limit in
-   radius is taken.
+   outer radius.
+   - **Where the projected material density is nonzero,** the projected velocity is the projected material flux
+     divided by it. There, the build also prints the volume flux of the projected velocity through the outer sphere.
+   - That condition is carried wherever the velocity or its volume flux is printed. No value is filled in where the
+     density vanishes.
+   - The densities, fluxes and balances stay on the full domain.
+   - Every field stays live, and no limit in radius is taken.
 4. **Dimensional homogeneity** of the projected balances and of objects 2 and 3.
 
 A name may name an object, never its value or a comparison outcome. The script prints objects and never states
@@ -113,14 +135,19 @@ The record points at each source row, without restating it:
   drain amplitude (`steps/S9b_light_bending.md:79–80`);
 - the core's interior (S22);
 - the flow profile (each force's requirement; S21);
-- the conversion law's forms, the faces' law and the form of `J_χ` (S12, under "Keep S12");
+- the slab's laws and S12's forms, with the owners the accepted S12 record gives (`steps/S12_order_source.md:292`).
+  This list assigns none:
+  - the interior-order law (history, strain) and the faces' law: "No separate owner named";
+  - the source and flux forms: S12's, under "Keep S12";
+  - slab material completion: S8/S22 (also the S12 decision list, `:140`);
+- the form of `J_χ`, OPEN as the S12 decision list leaves it (`:135`);
 - the material branch, A13 (S1's gate, propagated through S5/S12). The committed law is written for a real ordered
   fraction.
 
 ## Intended claim
 What the committed law gives for the slab-projected balances. For a throat with spherical symmetry: its drain rate,
 the two channels that make up that rate, the order lost over the same shell, and its flux at any outer radius, all
-with every profile live. It is not a mass, a drain law, a throat solve or a flow.
+with every field live; and, where the projected density is nonzero, the volume flux of its projected velocity. It is not a mass, a drain law, a throat solve or a flow.
 
 ## Next
 A build directive for Codex derived from this list. Then:

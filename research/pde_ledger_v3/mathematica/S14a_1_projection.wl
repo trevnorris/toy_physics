@@ -171,13 +171,13 @@ projection[data_, measure_, prefix_] := Module[
   If[s == 1,
    alone[prefix <> "/" <> eq <> "/face balance operands", atoms];
    alone[prefix <> "/" <> eq <> "/projected balance", Inactive[Equal][left, bulkSource]],
-   alone[prefix <> "/" <> eq <> "/projected required order source bulk", nativeIntegral[regular]];
-   alone[prefix <> "/" <> eq <> "/projected required order source face parts", atoms];
-   alone[prefix <> "/" <> eq <> "/projected required order source", required];
-   alone[prefix <> "/" <> eq <> "/projected supplied bulk source with required face parts", suppliedSource];
+   alone[prefix <> "/" <> eq <> "/projected order divergence bulk", nativeIntegral[regular]];
+   alone[prefix <> "/" <> eq <> "/projected order source face parts", atoms];
+   alone[prefix <> "/" <> eq <> "/projected order divergence", required];
+   alone[prefix <> "/" <> eq <> "/projected order source", suppliedSource];
    alone[prefix <> "/" <> eq <> "/source law residual", nativeIntegral[Expand[regular - data["rhs"][[s, 2]]]]];
    alone[prefix <> "/" <> eq <> "/projected balance", Inactive[Equal][left, suppliedSource]]];
-  AssociateTo[result, eq -> <|"density" -> density, "plane_flux" -> planeFlux, "faces" -> closedFace, "interior_faces" -> partial, "atoms" -> atoms, "derivative" -> projectedDerivative, "left" -> left, "source" -> required, "supplied_source" -> suppliedSource, "bulk" -> regular, "native_current" -> currents[[2]]|>],
+  AssociateTo[result, eq -> <|"density" -> density, "plane_flux" -> planeFlux, "faces" -> closedFace, "interior_faces" -> partial, "atoms" -> atoms, "derivative" -> projectedDerivative, "left" -> left, "source" -> If[s == 2, suppliedSource, required], "supplied_source" -> suppliedSource, "bulk" -> regular, "native_current" -> currents[[2]]|>],
  {s, 2}];
  result
 ];

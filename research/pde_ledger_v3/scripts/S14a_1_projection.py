@@ -202,7 +202,7 @@ def construct(label, coordinates, clock, arguments, face_arguments, measure):
         emit(label + "/" + kind + "/projection integration/residual",
              sp.expand(linearize_integrals(left) - linearize_integrals(integrated_distribution)))
         emit(label + "/" + kind + "/projection integration/comparison",
-             "Differentiation of projected integrals versus integration of the regional differential operand with full face parts.")
+             "Compares the time and in-plane endpoint pieces; bulk-direction endpoint pieces (bulk_parts) and face-concentrated parts (atoms) are shared by both operands and are not tested by this residual.")
         result[kind] = {"density": projected_density, "flux": projected_flux,
                         "derivative": projected_derivative, "faces": leaving,
                         "source": source, "balance": (left, source), "atoms": atoms}

@@ -7,6 +7,9 @@ Paths are relative to `research/pde_ledger_v3/`. The mechanical lookups behind t
 **Gate.** This is a pre-builder decision list. It gets one Codex + Grok pass and is folded once (G2). No builder starts
 before then. The comparator it describes is an instrument written by Codex, reviewed by two non-author build legs
 (fresh Claude + Grok) until clear.
+- **Pass 1** (Codex + Grok) returned one finding, K1, confirmed. The list as reviewed is preserved at `f1b41e77`, with
+  `_measurements/S14a_1_comparator_decision_list_review_p1_{disposition,lookups}.md`.
+- **This revision** folds K1 into item 2, item 7 and the builder report. It is the one fold G2 allows.
 
 ## Object
 `scripts/S14a_1_cross_engine_comparator.py`, with synthetic tests in `scripts/test_S14a_1_cross_engine_comparator.py`
@@ -41,26 +44,30 @@ it finds. It decides nothing.
    - This translates each engine's notation. It does not reconcile two representations, and content that one engine
      prints and the other does not stays in the residual.
 
-2. **Join through an explicit tag table; a row is a binding.** The two streams share no tag name (L2). A join is made
-   only through a table in the comparator's source.
-   - Each row pairs one tag of each stream. It cites the object both denote, by the S14a part 1 decision list's item
-     or supplied equation where the list names it, and the line in each engine that builds the printed object.
-   - The table is injective. No row is made by similarity of names, by position, or because two payloads are
-     identical.
-   - A row is a binding, never agreement: agreement comes only from the content compared beneath it.
-   - Each tag occurs once per stream, and a repeat is reported. Every tag is on a row, or is listed as unjoined with
-     its engine and the reason. Nothing is skipped silently.
+2. **Join through an explicit binding table; a binding is not agreement.** The two streams share no tag name (L2). A
+   join is made only through a table in the comparator's source.
+   - Each binding joins one end in each stream. An end is a tag, or a component of a tag's payload named by its tag
+     and its place in the payload: one engine may print under several tags what the other prints as components of one
+     tag. Each binding cites the object both ends denote, by the S14a part 1 decision list's item or supplied equation
+     where the list names it, and the line in each engine that builds it.
+   - The table is injective at its ends: no tag or component is bound twice, and a repeat is reported. No binding is
+     made by similarity of names, by position, or because two payloads are identical.
+   - A binding is never agreement: agreement comes only from the content compared beneath it.
+   - Each tag occurs once per stream, and a repeat is reported. Every tag is bound, or is listed as unjoined with its
+     engine and the reason. Every component of a bound tag is bound, or is printed unpaired with its reason. Nothing
+     is skipped silently.
+   - An object that both engines print and the S14a part 1 decision list names is compared. It is left unjoined only
+     where the cited lines build different objects, and its reason says so.
    - An engine's own checks (its comparison notes, operand pairs and residuals) check that engine's construction. A
-     row joins two of them only where both check the same object against the same counterpart. Otherwise each is
+     binding joins two of them only where both check the same object against the same counterpart. Otherwise each is
      listed as unjoined with that reason.
-   - A row can bind payloads that are not constituted the same way. Before a row's payloads are compared as values,
-     the comparator establishes which components of the two payloads denote the same object, citing the line in each
-     engine that builds them. A component pair is made only where the cited lines build the same object; otherwise
-     the components stay printed, unpaired. A row without such a correspondence is listed as not compared, with its
-     reason.
+   - A binding can join payloads that are not constituted the same way. Before bound payloads are compared as values,
+     the comparator establishes which of their components denote the same object, citing the line in each engine that
+     builds them. A component pair is made only where the cited lines build the same object; otherwise the components
+     stay printed, unpaired. A binding without such a correspondence is listed as not compared, with its reason.
    - A structural mismatch is printed as a comparison that could not be formed, for example different component
      counts or different kinds of object. No pairing is made by position alone.
-   - Both operands stay printed under their original tags. The comparator prints the table, each row with its
+   - Both operands stay printed under their original tags. The comparator prints the table, each binding with its
      citations, before its comparisons.
 
 3. **Symbols and functions through an explicit table.** Any map between the engines' names is an explicit, injective
@@ -143,8 +150,8 @@ it finds. It decides nothing.
    - one-sided corruption of an operand;
    - a form change, not a rescaling;
    - a coefficient or sign change;
-   - a repoint of every tag-table row (item 2) and of every name-table row (item 3), checked by evaluation as well as
-     by the exact residual;
+   - a repoint of every binding (item 2) and of every name-table row (item 3), checked by evaluation as well as by the
+     exact residual;
    - two distinct live functions given the same test function;
    - a stripped argument of an applied function;
    - a live function replaced by a constant;
@@ -164,7 +171,9 @@ it finds. It decides nothing.
      must move);
    - on one side only, a supplied equation applied (the as-computed residual must move);
    - a repoint of a component correspondence (item 2), through each place where the comparator pairs components;
-   - a joined row whose payloads differ in structure (it must be printed as not formed, not compared position by
+   - split-against-grouped packaging: one side prints under several tags what the other prints as components of one
+     tag, and each counterpart component is mutated on its own (that component's comparison must move);
+   - a binding whose payloads differ in structure (it must be printed as not formed, not compared position by
      position).
 
    Coverage controls: for each of these reductions there is a fixture difference that it would miss. The reductions
@@ -178,11 +187,11 @@ it finds. It decides nothing.
    - a delta at an endpoint inside an integral on one side, against its face part counted in full outside the integral
      on the other.
 
-   One further test: a duplicate join or name row is rejected.
+   One further test: a duplicate binding end or name row is rejected.
 
-   Run on the real streams, the comparator also prints per-row accounting (joined, or unjoined with its reason) and
-   two leaf counts per joined row: one enumerated independently from each stream's parse, and the count actually
-   compared. A row compared below its parsed count stays visible.
+   Run on the real streams, the comparator also prints per-tag accounting (bound, or unjoined with its reason) and
+   two leaf counts per binding: one enumerated independently from each stream's parse, and the count actually
+   compared. A binding compared below its parsed count stays visible.
 
 8. **Running.** Run every CAS job through `scripts/s11c_guarded_run.py` in pooled mode (`--pool s14a1-comparator
    --memory-gib 50`, with the log directory under `_scratch/s11c/`), one job at a time. There are no time limits.
@@ -194,9 +203,10 @@ it finds. It decides nothing.
 - The engines' intermediate objects that only one engine prints are not paired with anything (item 2).
 
 ## Builder report (at most 40 lines)
-- Where the tag table and the name table are in the source, their row counts, and where the output prints them.
-- Every joined row that was not compared or could not be formed, with its reason; every unjoined tag's reason, grouped.
-- Per-row accounting and leaf-count totals, and every row compared below its parsed count.
+- Where the binding table and the name table are in the source, their sizes, and where the output prints them.
+- Every binding that was not compared or could not be formed, with its reason; every unjoined tag's reason, grouped;
+  every object the S14a part 1 decision list names that is left unjoined, with its reason.
+- Per-tag accounting and leaf-count totals, and every binding compared below its parsed count.
 - The test functions and points, the strata covered, and the integrals evaluated numerically or left unresolved.
 - Which machinery you reused, and what you re-verified on these streams.
 - The commands for, and outcomes of, the tests and the full guarded run.

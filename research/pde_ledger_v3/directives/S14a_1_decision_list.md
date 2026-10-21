@@ -6,8 +6,10 @@ Paths are relative to `research/pde_ledger_v3/`.
 **Gate.** This is a pre-builder decision list. It gets one Codex + Grok pass and is folded once (G2). It also names the
 object the build computes, so that content is reviewed until clear (spec row). The builder starts only after that.
 
-**Revision 2**, the one fold of the G2 pass (dispositions:
-`directives/_measurements/S14a_1_decision_list_review_p1_disposition.md`; the reviewed text is at `82fa9fa3`).
+**Revision 3.** Revision 2 was the one fold of the G2 pass (dispositions:
+`directives/_measurements/S14a_1_decision_list_review_p1_disposition.md`; the pass-1 text is at `82fa9fa3`).
+Revision 3 repairs pass 2's Q1, under the user's "Fix, narrow check" (dispositions:
+`directives/_measurements/S14a_1_decision_list_review_p2_disposition.md`; revision 2 is at `ccfb8e8e`).
 
 ## Filing and framing
 - **The plan's steps.** This covers the plan's S13, "The drain rate `J`, and what it is not" (`V3_STEP_PLAN.md:619`),
@@ -86,7 +88,7 @@ Both engines construct these independently, with the `.wl` blind.
    - **the outward in-plane flux of projected material** through the outer sphere;
    - **storage:** the rate of change of the projected material in the shell.
 
-   It also prints the balance that relates them, and the difference between the face channel and the order lost.
+   It also prints the balance that relates them, and the face channel minus the order lost.
    Each is a computed object, not a typed one.
 3. **The far-field flux.** In the same specialization, the build prints how the outer-sphere flux depends on the
    outer radius.

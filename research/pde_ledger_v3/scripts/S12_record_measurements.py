@@ -21,6 +21,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[3]
 V3 = ROOT / 'research/pde_ledger_v3'
 BASELINE = '560c6c51'
+REPAIR_BASELINE = '8608bc71'
 SCRIPT = 'research/pde_ledger_v3/scripts/S12_record_measurements.py'
 OUTPUT = V3 / 'steps/_measurements/S12_record_measurements.md'
 COMPARATOR = V3 / 'scripts/out/S12_cross_engine_comparator.out'
@@ -105,6 +106,7 @@ TITLES = {
     'M14': 'Filed build/comparator run records and comparator contract',
     'M15': 'Final S12 register pass and status lines',
     'M16': 'Literal residual/outcome counts across stored comparisons',
+    'M17': 'Round-1 repair: owner handoffs, coefficient diagnostics and unit attribution',
 }
 
 
@@ -187,8 +189,10 @@ def retrieve(section, rows):
     elif section == 'M12':
         path = 'research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md'
         before = subprocess.check_output(['git', 'show', f'{BASELINE}:{path}'], cwd=ROOT, text=True)
+        reviewed = subprocess.check_output(['git', 'show', f'{REPAIR_BASELINE}:{path}'], cwd=ROOT, text=True)
         after = (ROOT / path).read_text()
-        for name, text in [('before ' + BASELINE, before), ('after working tree', after)]:
+        for name, text in [('before ' + BASELINE, before), ('before repair ' + REPAIR_BASELINE, reviewed),
+                           ('after working tree', after)]:
             headings = [line for line in text.splitlines() if line.startswith('### R-')]
             print(name + ': entry headings cardinality ' + str(len(headings)), file=out)
             print('\n'.join(headings), file=out)
@@ -197,7 +201,7 @@ def retrieve(section, rows):
         lines = after.splitlines()
         for heading in ['### Method for population passes', '### R-S1-01', '### R-S1-02',
                         '### R-S12-01', '### R-S12-02',
-                        '### R-O2-01', '### R-S21-01']:
+                        '### R-O2-01', '### R-S21-01', '### R-S22-01']:
             start = next(i for i, line in enumerate(lines) if line.startswith(heading))
             stop = next((i for i in range(start + 1, len(lines)) if lines[i].startswith('### ')), len(lines))
             source(out, path, start + 1, stop)
@@ -247,6 +251,40 @@ def retrieve(section, rows):
         for key in ['face_order', 'f_range', 'G_range']:
             print('probe_domain/' + key + ' ' + dump(dict(Counter(
                 r['supplied_domain_values'][key] for r in rows if r['kind'] == 'probe_domain'))), file=out)
+    elif section == 'M17':
+        source(out, 'research/pde_ledger_v3/directives/_measurements/S12_record_r0_review_disposition.md')
+        source(out, 'research/pde_ledger_v3/steps/S9b_flow_oracle_comparison.md', 151, 178)
+        source(out, 'research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md', 14, 33)
+        source(out, 'research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md', 821, 826, revision=REPAIR_BASELINE)
+        source(out, 'research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md', 129, 140)
+        source(out, 'research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md', 236, 248)
+        source(out, 'research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md', 276, 282)
+        source(out, 'research/pde_ledger_v3/directives/S12_comparator_decision_list.md', 51, 59)
+        source(out, 'research/pde_ledger_v3/directives/S12_comparator_decision_list.md', 118, 119)
+        tags = [f'{package}/face/{face}/coefficient_operand'
+                for package in ['material', 'general_order', 'conditional_fast_ordering']
+                for face in [1, 2]]
+        for row in rows:
+            if row.get('tag') not in tags:
+                continue
+            if row['kind'] == 'operands':
+                print(dump({'kind': row['kind'], 'tag': row['tag'],
+                            'py': {key: row['py'][key] for key in ['tag', 'line', 'raw']},
+                            'wl': {key: row['wl'][key] for key in ['tag', 'line', 'raw']}}), file=out)
+            elif row['kind'] == 'comparison':
+                print(dump(comparison_projection(row)), file=out)
+        source(out, 'research/pde_ledger_v3/scripts/S12_order_source.py', 219, 244)
+        source(out, 'research/pde_ledger_v3/mathematica/S12_order_source.wl', 25, 42)
+        source(out, 'research/pde_ledger_v3/scripts/out/S12_order_source.out', 35, 123)
+        for folder in ['scripts', 'mathematica']:
+            path = V3 / folder / 'out/S12_order_source.out'
+            print(str(path.relative_to(ROOT)) + ' primitive_function_dimensions tag literal count ' +
+                  str(sum(line.startswith('primitive_function_dimensions: ')
+                          for line in path.read_text().splitlines())), file=out)
+        for row in rows:
+            if row['kind'] == 'accounting' and row['tag'] == 'primitive_function_dimensions':
+                print(dump({key: value for key, value in row.items()
+                            if key not in ['parse', 'original_operand']}), file=out)
     else:
         raise ValueError(section)
     return out.getvalue()

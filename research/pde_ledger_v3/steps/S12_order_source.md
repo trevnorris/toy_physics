@@ -2,7 +2,8 @@
 
 **Status, 2026-10-20:** record and register pass written for review. The constructions are accepted at
 `a3da43d9`; the comparator and its filed production output are accepted at `fe485b73`, with the engine-row
-note below. This record has not had its own review. No drain law, throat solution or flow is delivered.
+note below. This is the round-1 repair of reviewed baseline `8608bc71`, awaiting its own review
+(`directives/_measurements/S12_record_r0_review_disposition.md`, retrieved in M17). No drain law, throat solution or flow is delivered.
 The light-sector closeout, including the flow-only oracle-comparison record, is accepted at `e070c7f3`.
 
 The result is conditional: the committed material/order balances require the printed three regional
@@ -31,6 +32,7 @@ neither engine nor comparator and performs no algebra, probe evaluation, normali
 | M07 / M08 / M09 | Every comparison with stored sample counts / every residual other than literal `"0"` and false text comparison / every explicit coverage item. |
 | M11 / M12 / M13 | Inventory source rows / register schema, rest-on method and census / identified prior-art sources and historical second-route disagreement. |
 | M14 / M15 / M16 | Filed run records and comparator contract / final register pass and status / literal residual and outcome counts. |
+| M17 | Round-0 findings; original owner handoffs; all six raw coefficient operands and their stored parts; primitive-unit attribution. |
 
 ## 1. Supplied object, domain and standing
 
@@ -107,12 +109,20 @@ has been earned. (Retrieve M01, M03.)
 
 ### Item 3 — dimensional output
 
-The engines use a length/time basis with number count dimensionless. They assign density `(-4,0)`,
-order `(0,0)`, velocity `(1,−1)`, faces `(1,0)` and rates `(0,−1)`. They print the inference of
-order-flux dimensions as `(-3,−1)`, and dimensional operands/residuals for both balances, both source
+The SymPy construction assigns density `(-4,0)`, order `(0,0)`, velocity `(1,−1)`, faces `(1,0)`
+and rates `(0,−1)` in `scripts/S12_order_source.py:219–228`, using a length/time basis with number
+count dimensionless. Its transcript prints those assignments in `primitive_function_dimensions`.
+The Wolfram construction assigns the same pairs in `mathematica/S12_order_source.wl:29–37`; its
+transcript does **not** print that primitive-unit table. The comparator leaves the SymPy table
+unjoined, so it is not a compared dimension object. (Retrieve M04, M06, M10, M17.)
+
+Both transcripts print `dimension_basis`, the order-flux dimension inference operands/residuals and
+its `object` value `(-3,−1)`, and dimensional operands/residuals for both balances, both source
 objects, their regular parts and face terms, and the material face objects. The printed source and
 balance term vectors are `(-4,−1)`; face trace term vectors are `(-3,−1)`. The additive zero has
-**"no intrinsic unit"**. (Retrieve M03, M10.)
+**"no intrinsic unit"**. These are the shared printed dimensional objects, subject to the comparison
+coverage below; SymPy's inference `solutions` and Wolfram's `rules` remain unjoined. (Retrieve M06,
+M07, M10.)
 
 The flux units are solved from the order balance: homogeneity is **definitional for `J_χ` and
 informative for the other terms**, as the acceptance notes state. The pre-inference residuals involving
@@ -196,7 +206,7 @@ or explained away by this record. (Retrieve M07, M08, M16.)
 | Difference/family | Printed finding and classification |
 |---|---|
 | SymPy face-step factor | As-computed differences occur at both faces in the balance/source distributions, traced distributions, face contributions/trace coefficients and material requirements, including `material/face_requirements`. They print `0` on the supplied domain. The build acceptance explicitly settles the representation: SymPy carries a step in `w₊−w₋`, set to one by strict face order; Wolfram does not. **Representational on that supplied domain**, with every raw difference retained. (M02, M07, M08.) |
-| Six unrestricted coefficient diagnostics | `material/face/{1,2}/coefficient_operand`, `general_order/face/{1,2}/coefficient_operand`, `conditional_fast_ordering/face/{1,2}/coefficient_operand`: nonzero expressions persist on the supplied domain in `regular/above` for face 1 and `regular/below` for face 2, and their stored rational samples differ. They are explicitly **not delta parts**. Their face-supported comparisons are reported separately, above. No cited disposition settles the unrestricted expressions' difference: **OPEN cross-engine diagnostic differences; no owner named**. (M07–M09.) |
+| Six unrestricted coefficient diagnostics | `material/face/{1,2}/coefficient_operand`, `general_order/face/{1,2}/coefficient_operand`, `conditional_fast_ordering/face/{1,2}/coefficient_operand`: the only stored parts whose as-computed and supplied-domain residuals are not literal `"0"` are `regular/above` for face 1 and `regular/below` for face 2; their stored rational samples differ. Every other stored part, including the coefficient's own delta parts, has literal `"0"` in both residual fields. Under strict `w₋<w₊`, these differing regions are off the respective delta support. **Differences in labelled representation diagnostics, confined off delta support**, carrying no data about the S12 distribution there: the comparator contract item 3 says **"A delta's coefficient carries data about the distribution only on that delta's support"**, and labels an unrestricted coefficient a diagnostic, never the delta's part. Both raw expressions and every stored part remain printed/retrievable in M03/M07/M08/M17. No cause for their difference is inferred. (M14, M17.) |
 | Domain Boolean representations | `supplied/domain`, `region_domains`, and both packages' `region/{1,2,3}/domain`: extra face-order/real-coordinate content appears in the as-computed XOR operands. Sources explicitly supply strict ordering and real coordinates (SymPy real symbols; Wolfram `Element`); the comparator prints `False` on that domain. **Representational under those supplied assumptions**, not a domain derived here. `conditional_fast_ordering/interior_range` and the supplied interior-range component already print `False` as computed. (M01, M03–M05, M07, M08.) |
 | Three scope-label differences | `calculus_scope`: "regional fields and traces" differs at character 11 ("independent live restrictions and one-sided traces" / "independent live functions ... unrestricted one-sided traces"); "input singular parts" at 0 ("no input field has" / "input fields have no"); "source singular parts" at 20 ("can" / "may"). M08 retains the complete strings. **Representational wording**: the revision-4 face rule and accepted build checks explicitly settle their common function class, including source face parts. (M01, M02, M04, M08.) |
 | Two `engine` text differences | Runtime text is Python `3.12.3 ...` versus Wolfram `15.0.1 ...`; the second is SymPy `1.14.0` versus platform `Linux-x86-64`. The acceptance says **"Its two parts are not counterparts, so its paired comparison carries no information, and no claim rests on it."** **Accepted pairing defect / identification metadata**, not a physics difference or evidence of equivalence. User: **"Accept, note the engine row"**, 2026-10-20. (M02, M08.) |
@@ -250,7 +260,7 @@ computed objects, imposed profiles or completed closures. Retrieve M11 for the l
 | Restricted S9b/O2 domain | `steps/O2_steady_brane_balance.md:74–76`, the complete setting sentence. Its isolated spherical mass at rest with flowing drain, far-field steady profiles, far-field brane-rest lab time, linear optics and leading eikonal are **restrictions**, not S12 results. |
 | Momentum/energy partners | `directives/O2_premise_decision_list.md:32–35`; `directives/O2_SHARED_PHYSICS.md:134`, `:243–248`, `:280`, `:584`; `steps/O2_steady_brane_balance.md:396`. Those rows preserve additional partners/reactions, the OPEN bulk-direction reduction and its normal-response/map operands, and conversion/carried-energy partners with reaction/supply systems. Local transported momentum fixes no carried total energy. |
 | Native identifications | `steps/O2_steady_brane_balance.md:399`, O6 `𝒥_map`; `directives/O2_SHARED_PHYSICS.md:605`, S12 interface. These are the distinct native exchange/projection/measure and source/boundary handoffs, not the S14a bridge. |
-| Separate power obligations | `SUBSTRATE_REQUIREMENTS.md`, `R-S12-01` and `R-O2-01` (retrieve M12). The former's S12 target is a historical register inference, live owner **no owner named**; the latter's target is **no owner named**. Neither whole obligation is assigned to S12. U3's material supply is not either power budget. |
+| Separate power obligations | `SUBSTRATE_REQUIREMENTS.md`, `R-S12-01` and `R-O2-01` (retrieve M12). Both have live target **no owner named**; the former retains its historical S12 register inference as provenance only. Neither whole obligation is assigned to S12. U3's material supply is not either power budget. |
 
 **Return controllers: OPEN.** Stage 045 calls `I_ret/P_ret` projectors enforcing exact global
 mass/momentum/energy closure **"despite the local sink"**. Its surrounding text says to re-host
@@ -258,29 +268,42 @@ the machinery on dynamical order conversion, while the committed law supplies lo
 of total material. Those are the two sourced statements; the old mass-sink purpose cannot be
 imported as an operative requirement. Whether these controllers have a remaining role, and which
 global order/momentum/energy closure would call for it, needs a new assessment beyond retrieval.
-It remains with the S12 source/controller inventory (`R-S12-02`); **no separate owner is named for
-that assessment**. No controller is chosen or discarded here. (Retrieve M01, M11, M12.)
+It remains OPEN in the source/controller inventory (`R-S12-02`), with **no live owner named**:
+the earlier S12 assignment names no later delivery step under the user's framing. Who should own
+that assessment is a question for the user (§6). No controller is chosen or discarded here.
+(Retrieve M01, M11, M12, M17.)
 
 ## 6. What remains OPEN, with its source's owner
 
 | OPEN item | Owner / source limit |
 |---|---|
-| A13 material branch; phase-carrying content absent from this real-fraction object | S1 gate, propagated through S5/S12 (O2 record's branch row, M11); current decision list retains A13. |
+| A13 material branch; phase-carrying content absent from this real-fraction object | S1 gate, propagated through S5; O2's branch row also names S12 as a consumer (M11). The gate is not discharged here. |
 | U1's re-ordering admissibility clause | No owner named; not encoded, with no rate or local sign chosen (M01). |
 | Concentrated input fields, including order carried along a face | No owner named; explicitly left out for now, 2026-10-20 (M01). |
-| Interior-order law/history/strain; faces' law; form of `J_χ` | No separate owner named for the first two; source/flux forms remain the S12 inventory. Slab material completion is separately S8/S22 (M01, M11). |
+| Interior-order law/history/strain; faces' law; source/flux forms | OPEN with no live owner named for these undelivered forms; the earlier S12 source/flux assignment names no later delivery step. Slab material completion remains separately S8/S22 (M01, M11, M17). |
 | "the projected order-loss source · the definition of `J` · the profile-dependent `J → Q` map · the controlled `ω → 0` return law" | S14a, plan `:636–637` (M01, M11). |
 | Drain-strength/mass link | S13 (M01); no `GM` link delivered. |
 | Flow profile | Each force states its requirement; S21 compares them (M01). A mismatch reopens S9b. |
 | Slab's material law; puncture interior | S8/S22 for the former; S22 for the excluded interior (M01). |
-| Controller role; separate boundary laws/data; native O6 identifications; conversion momentum/energy partners | S12 inventory and the normal-response/map/holder owners in the individual O2 rows; no completed native reduction (M11). |
+| Controller role; separate boundary laws/data; native O6 conversion/source-boundary identifications | OPEN with no live owner named for the formerly S12-assigned parts (`R-S12-02`). The normal-response input to the native reduction keeps its sourced owners: S5–S8 ingredients, Q1/Q2 static domains, S8/S22 live completion. Boundary work retains O2 accounting, unowned native data and Q2/S22 core response; core/holder data remain Q2/S22 (M11, M17). |
+| Conversion work, energy carried with exchanged material, additional non-variational momentum/energy partners and reaction/supply systems | OPEN with no live owner named for the formerly S12-assigned parts. O3's native bulk-direction carry remains separately through O6/normal response; local transported momentum fixes no carried total energy (M11, M17). |
+| Throat energy split and its conversion/source-boundary inputs | S22 split, Q2 mouth/held datum (`R-S22-01`); no live owner named for the undelivered conversion/source-boundary inputs formerly assigned to S12 (M12, M17). |
+| What drives the flow; material destination | Drain source/boundary realization: OPEN, no live owner named (`R-S12-02`); force balance: O2's carried handoffs. Which density/exchange alternative the drain produces is likewise unowned; whether the knit can meet it remains S21 (`R-S21-01`). These are the oracle record's distinct handoffs (M17). |
 | Non-passive reservoir and budget; net-power supplier and budget | Separate existing `R-S12-01` and `R-O2-01`, live owner no owner named (M12). |
-| Unrestricted coefficient differences; unpaired/nested ledger/component coverage | No owner named; every tag and leaf remains in M06/M08/M09. |
+| Unpaired/nested ledger/component coverage | No owner named; every tag and leaf remains in M06/M09. The six unrestricted coefficient diagnostics are classified in §4, not handed on as an open difference in the S12 object. |
 | Prior-art applicability and historical objections for each candidate named below | No owner named for a new S12 check; none performed here (M13). |
 
+**Ownership questions for the user:** which later step should deliver the native drain/return and
+order-flux forms, separate boundary laws/data, controller-role assessment, O6 conversion/native
+identifications, conversion/carried-energy work and additional momentum/energy partners with their reaction/supply systems? Who
+should own the unassigned U1 re-ordering admissibility, concentrated-input possibility, interior/face
+laws, the two distinct unowned power obligations, and the unowned comparison/prior-art handoffs in
+the table? The existing S1, S8/S22, Q1/Q2, S13, S14a and S21 assignments stay as sourced; no owner is
+selected by this record. (Retrieve M01, M11–M13, M17.)
+
 Questions requiring computation beyond retrieval are therefore left open: controller re-hosting,
-any cross-engine extension to unpaired components or nested/term ledgers, adjudication of the six
-unrestricted coefficient differences, enforcement of U1's re-ordering clause, constitutive source/
+any cross-engine extension to unpaired components or nested/term ledgers,
+enforcement of U1's re-ordering clause, constitutive source/
 face/flux laws, native reductions, and the already assigned S13/S14a/S21/S22 objects. They are not
 prerequisites solved inside this record.
 
@@ -299,6 +322,10 @@ Four existing entries gain S12 source/provenance: `R-S1-01` (coordinate dimensio
 and `R-S21-01` (framing decision only, no new optical evidence). `R-S12-01` and `R-O2-01` remain
 distinct carried conditions without a computed S12 power consumer; neither is delivered or duplicated.
 The full per-entry rest-on census is the S12 register pass (M12, M15).
+This repair of `8608bc71` is also 18 → 18, with no additional source gain. `R-S12-01` and
+`R-S12-02` now have live target **no owner named**; `R-S22-01` retains S22/Q2 and records no live
+owner for the formerly S12-assigned conversion inputs. Their historical assignments remain
+reported, not live promises of delivery by S12. (Retrieve M12, M15, M17.)
 
 **Second route:** the register requires it for every sector with identified prior art, including
 objects outside a step record's own doubts. Accordingly the pass reads the inherited O2 scoping §5
@@ -311,9 +338,11 @@ questions of applicability, transferable historical failures/objections and thei
 OPEN, **no owner named**. The source access limitations remain those reported in scoping §5; no
 fresh literature verification is claimed. The other inherited S9b candidates, each individually,
 retain their existing OPEN handoffs and no S12 result is attributed to them. No new entry rests on
-an unapplied oracle. The four inherited river/acoustic objections remain: driving flow and material
-destination with S12/O2; scalar sound versus shear light as S9b's scoped exclusion; kinematics versus
-dynamics in the analog-gravity handoff. This source identity is not an answer to them (M13, M15).
+an unapplied oracle. The four inherited river/acoustic objections remain: driving flow has unowned
+drain/source-boundary realization (`R-S12-02`) and O2's carried force-balance handoffs; material
+destination has an unowned drain-produced density/exchange choice (`R-S12-02`) and S21's knit
+compatibility question (`R-S21-01`); scalar sound versus shear light as S9b's scoped exclusion; kinematics versus
+dynamics in the analog-gravity handoff. This source identity is not an answer to them (M13, M15, M17).
 
 **Source disagreements, preserved:**
 
@@ -322,10 +351,12 @@ dynamics in the analog-gravity handoff. This source identity is not an answer to
   decision list instead supplies **"`∂_t n + ∇₄·(n u) = 0` (total material)"** and says
   **"The frozen-wall mass sink with a remote return stays ruled out."** The source also calls for
   re-hosting. The unresolved role question is retained, not answered with the old sink (M01, M11).
-- The register's `R-S12-02` asks for **"the native drain/return functions and their separate boundary
-  data"**; the 2026-10-19 user framing says S12 **"states what any conversion law must satisfy and
-  leaves the forms open"**. The obligation remains OPEN, with the newly printed compatibility
-  constraints merged into it; S12 record completion is not delivery of those functions (M01, M12, M15).
+- The earlier register owner line says **"S12 owns the drain/return data"**, following S11c's
+  assignment; the 2026-10-19 user framing says S12 **"states what any conversion law must satisfy
+  and leaves the forms open"**. That assignment/framing disagreement stays reported. The native
+  functions/data obligation remains OPEN, with the printed compatibility constraints merged into
+  it, but its live target is now **no owner named**. Who should deliver the undelivered parts is a
+  question for the user; S12 record completion is not their delivery (M01, M12, M15, M17).
 - Historical second-route disagreement: the earlier directive says **"Run it only on a prior result
   that a record in the reading list identifies as reproduced by the sector"**; the register says
   **"Run this route for every sector with identified prior art"** and records that its MacCullagh

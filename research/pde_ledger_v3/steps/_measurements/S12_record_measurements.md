@@ -13007,6 +13007,25 @@ before 560c6c51: entry headings cardinality 18
 ### R-O2-01 — the net-power supplier and its stated budget
 ### R-S21-01 — conditional deflection and radar-slope profile requirements
 ### R-S22-01 — how the energy a throat releases splits among light, the extra wave and the bulk
+before repair 8608bc71: entry headings cardinality 18
+### R-S6-01 — `B_comp` must be retired or re-affirmed
+### R-S7-01 — the slab-width flat direction, under a non-uniform width
+### R-S1-01 — the brane's spatial dimension
+### R-S1-02 — the substructure's shear response, as a function of the order parameter
+### R-S1.5-01 — the GNLS's own mode content
+### R-S6-02 — the reference state must be an equilibrium
+### R-S8-01 — the form of the brane's quadratic stiffness functional
+### R-S8-02 — the in-plane and out-of-plane sectors must decouple at quadratic order
+### R-S8-03 — the SIGN of the physical transverse stiffness
+### R-S8-04 — what carries the brane's internal angular momentum
+### R-S8-05 — the frame the brane's rotational stiffness is measured against
+### R-S1-03 — the substructure's microscopic time-reversibility
+### R-S8-06 — material displacement and the slab's quadratic inertia
+### R-S12-01 — the reservoir and its power budget
+### R-S12-02 — background drain/return and separate boundary data
+### R-O2-01 — the net-power supplier and its stated budget
+### R-S21-01 — conditional deflection and radar-slope profile requirements
+### R-S22-01 — how the energy a throat releases splits among light, the extra wave and the bulk
 after working tree: entry headings cardinality 18
 ### R-S6-01 — `B_comp` must be retired or re-affirmed
 ### R-S7-01 — the slab-width flat direction, under a non-uniform width
@@ -13073,48 +13092,48 @@ FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md AT 560c6c51
 839:   flagged inside S10 **at the moment the identification was made**. ⇒ read a record for its *flagged
 840:   identifications* first; they are where the requirements are.
 FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
-1366: ### Method for population passes
-1367: 
-1368: Method for a pass, per step record: read it for every statement of the form *this assumes*, *this rests
-1369: on*, *this is postulated at*, *this is deferred to*, *X enters at S**n***, and for every named retirement
-1370: condition. Each becomes an entry keyed by the step that must deliver. Where the record asserts something
-1371: about a step that has no record yet, that is a requirement by definition.
-1372: 
-1373: Two things to watch for, both seen already:
-1374: - A requirement can point **sideways**, not only backwards — S11's questions reduce to the S11b interface
-1375:   law, which is a sibling step, not a substrate one.
-1376: - The same object can be required by several sectors. Charge and magnetism ride the same brane–bulk
-1377:   coupling as light, so an entry may gain sources rather than being duplicated.
-1378: 
-1379: ⭐⭐ **A SECOND ROUTE, added 2026-08-07 — ⛔ the method above would never have found `R-S8-04` or `R-S8-05`.**
-1380: Both came from asking, of a **known prior result our sector reproduces**, *why was it rejected in its own
-1381: time, and has that objection been answered here?* ⛔ Neither is anywhere in S9's or S10's records, because
-1382: the records only capture what their authors thought to doubt — and the sector reproduces MacCullagh's
-1383: algebra so cleanly that the objection to it never came up.
-1384: 
-1385: ⇒ ⭐ **Run this route for every sector with identified prior art**, ⛔ not only the light sector.
-1386: ⚠ It is the sharpest use of `CLAUDE.md` rule 16 available: the prior work's **failure modes** transfer as
-1387: obligations even where its **results** transfer as corroboration — and a result that matches prior art
-1388: tells you nothing about whether you inherited its problems.
-1389: ⚠⚠ **The tell that this was overdue:** the closer a sector's agreement with prior art, the *less* anyone
-1390: thinks to ask what that prior art could not do. ⇒ ⛔ a clean reproduction is exactly when to run it.
-1391: 
-1392: **Honest sizing, now measured rather than guessed.** Pass 1 read two records and produced **seven**
-1393: entries, bringing the file from two entries to **nine total**, from a third of the sector. ⚠ That rate
-1394: is the argument for
-1395: running the pass **as each step closes**: reconstructing it at Phase 5, across five sectors, is precisely
-1396: where an implicit assumption goes missing.
-1397: 
-1398: ⛔ **And pass 1 found no way to make this mechanical.** Every one of the seven came from reading prose for a
-1399: *flagged identification*, a *postulate with a live retirement condition*, or a *consequence stated about a
-1400: step that does not exist yet*. ⇒ ⛔ there is no grep for it, and a pass that produces entries quickly is a
-1401: pass that missed some.
-1402: 
-1403: ## When this is done
-1404: 
-1405: Phase 5 knits the sectors and builds the substrate. At that point this file is the checklist the
-1406: substrate is tested against — the thing that answers *"is the brane–bulk we built sufficient to carry all
-1407: five forces"* by enumeration rather than by recollection.
+1397: ### Method for population passes
+1398: 
+1399: Method for a pass, per step record: read it for every statement of the form *this assumes*, *this rests
+1400: on*, *this is postulated at*, *this is deferred to*, *X enters at S**n***, and for every named retirement
+1401: condition. Each becomes an entry keyed by the step that must deliver. Where the record asserts something
+1402: about a step that has no record yet, that is a requirement by definition.
+1403: 
+1404: Two things to watch for, both seen already:
+1405: - A requirement can point **sideways**, not only backwards — S11's questions reduce to the S11b interface
+1406:   law, which is a sibling step, not a substrate one.
+1407: - The same object can be required by several sectors. Charge and magnetism ride the same brane–bulk
+1408:   coupling as light, so an entry may gain sources rather than being duplicated.
+1409: 
+1410: ⭐⭐ **A SECOND ROUTE, added 2026-08-07 — ⛔ the method above would never have found `R-S8-04` or `R-S8-05`.**
+1411: Both came from asking, of a **known prior result our sector reproduces**, *why was it rejected in its own
+1412: time, and has that objection been answered here?* ⛔ Neither is anywhere in S9's or S10's records, because
+1413: the records only capture what their authors thought to doubt — and the sector reproduces MacCullagh's
+1414: algebra so cleanly that the objection to it never came up.
+1415: 
+1416: ⇒ ⭐ **Run this route for every sector with identified prior art**, ⛔ not only the light sector.
+1417: ⚠ It is the sharpest use of `CLAUDE.md` rule 16 available: the prior work's **failure modes** transfer as
+1418: obligations even where its **results** transfer as corroboration — and a result that matches prior art
+1419: tells you nothing about whether you inherited its problems.
+1420: ⚠⚠ **The tell that this was overdue:** the closer a sector's agreement with prior art, the *less* anyone
+1421: thinks to ask what that prior art could not do. ⇒ ⛔ a clean reproduction is exactly when to run it.
+1422: 
+1423: **Honest sizing, now measured rather than guessed.** Pass 1 read two records and produced **seven**
+1424: entries, bringing the file from two entries to **nine total**, from a third of the sector. ⚠ That rate
+1425: is the argument for
+1426: running the pass **as each step closes**: reconstructing it at Phase 5, across five sectors, is precisely
+1427: where an implicit assumption goes missing.
+1428: 
+1429: ⛔ **And pass 1 found no way to make this mechanical.** Every one of the seven came from reading prose for a
+1430: *flagged identification*, a *postulate with a live retirement condition*, or a *consequence stated about a
+1431: step that does not exist yet*. ⇒ ⛔ there is no grep for it, and a pass that produces entries quickly is a
+1432: pass that missed some.
+1433: 
+1434: ## When this is done
+1435: 
+1436: Phase 5 knits the sectors and builds the substrate. At that point this file is the checklist the
+1437: substrate is tested against — the thing that answers *"is the brane–bulk we built sufficient to carry all
+1438: five forces"* by enumeration rather than by recollection.
 FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
 139: ### R-S1-01 — the brane's spatial dimension
 140: 
@@ -13145,351 +13164,449 @@ FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
 165:   This adds no dimensional derivation or selected wall thickness (S9b §§2/5; M1/M19).
 166: 
 167: - **S12 scope** — The supplied balances and printed regional/face objects have three in-plane
-168:   coordinates and one bulk coordinate; the density's assigned dimension is `L⁻⁴`. This adds a
-169:   coordinate-domain consumer only. If that dimensional setting is not delivered or reaffirmed,
-170:   those objects do not transfer unchanged. No dimension or brane construction is derived
-171:   (`steps/S12_order_source.md`, §§1–2; its retrievals M01/M03/M04/M10).
-172: 
-173: 
-FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
-174: ### R-S1-02 — the substructure's shear response, as a function of the order parameter
+168:   coordinates and one bulk coordinate. Density's `L⁻⁴` assignment is shown by the SymPy
+169:   construction (`scripts/S12_order_source.py:219–222`) and its printed, unjoined
+170:   `primitive_function_dimensions` table, and by the Wolfram source's `unit` switch
+171:   (`mathematica/S12_order_source.wl:29–37`), not a Wolfram primitive-unit transcript table. This adds a
+172:   coordinate-domain consumer only. If that dimensional setting is not delivered or reaffirmed,
+173:   those objects do not transfer unchanged. No dimension or brane construction is derived
+174:   (`steps/S12_order_source.md`, §§1–2; its retrievals M01/M04/M06/M10/M17).
 175: 
-176: - **source** S12 (support identification only; `steps/S12_order_source.md`, §§1–3/7); S9b (brane optical shear only; `steps/S9b_light_bending.md`, §§2–4/8); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
-177: - **requirement** — the shear response of the substructure as a function of `χ_B`, across **both** phases.
-178: - **on failure** — the two halves fail differently, and both are fatal:
-179:   - **ordered phase carries no shear** ⇒ `μ_R = 0`, the brane has no transverse sector, and **photons do
-180:     not exist**;
-181:   - **disordered phase carries shear** ⇒ light is not confined to the brane, it leaks into the bulk — an
-182:     energy sink with no observational room — **and** the throat's trapped brane-shear standing wave
-183:     radiates away, so the outward pressure vanishes and **the geon closes**.
-184: - **note** — ⭐ **Three independent consumers** (photon propagation, photon confinement, geon support), and
-185:   it is **one object**, not three. S9 records it as its own LIVE falsifier and as a knit question: can one
-186:   substructure be ordered-and-shear-bearing in one phase and unstructured-and-shear-free in the other?
-187:   ⚠ Stressed hardest at the throat, where the brane is bent into `±w`. Currently the only machine check
-188:   on the bulk half anywhere in the corpus is **dimensional**.
-189: - **O2 scope** — Premises 1 and 4 adopt optical-regime elastic shear in the brane and the postulated
-190:   shear-free scalar bulk with face-normal mechanical loading. O2 derives neither phase response.
-191:   The existing shear-response retirement question gains this conditional consumer, not a new
-192:   entry for an adopted value. Failure to realize those responses prevents promoting O2's conditional
-193:   material/load object to that substrate. No flowing pressure law, tangential bulk stress or optical
-194:   compatibility result follows (`directives/O2_SHARED_PHYSICS.md`, §§2, 3.1, 3.3, 7).
-195: 
-196: - **S9b scope** — The supplied light branch is the transverse displacement of shear-carrying
-197:   brane material, with the real positive optical ratio `μ⊥/ρbr`. A kept A–C optical wave is
-198:   conditional on that brane shear response; without it the reported propagating optical
-199:   interpretation fails its own gate. S9b therefore consumes the brane optical half of this
-200:   existing phase-response requirement. It derives no `χ_B` response, bulk shear-free result
-201:   or confinement result; O2 P4 is only carried as an adopted premise, unused by A–C
-202:   (S9b §§2/7; M1/M19).
-203: 
-204: - **S12 scope** — U1 and its flagged support identification are adopted inputs: order vanishes
-205:   outside the independently bounded shear-holding region, and remains live inside. This adds
-206:   only the conditional material interpretation as a consumer of the existing phase-response
-207:   obligation. Failure of that identification removes the claimed shear-region interpretation;
-208:   the algebra does not establish shear response, confinement or a constitutive relation to
-209:   `χ_B`. U1's re-ordering clause enters no computed object and remains OPEN
-210:   (`steps/S12_order_source.md`, §§1–3; retrievals M01/M03/M04).
-211: 
-212: 
+176: 
 FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
-515: ### R-S12-01 — the reservoir and its power budget
-516: 
-517: - **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-B (`steps/S11bB_interface_assembly.md`, standing rule); unified S11b
-518:   (`steps/S11b_interface_coupling_law.md`, passivity region) · **target** S12
-519:   (**register inference**) · **status** OPEN
-520: - **requirement** — a named reservoir and a stated power budget for any adopted non-passive interface
-521:   coupling.
-522:   The unified record names the candidate: *"The model supplies a candidate reservoir — the
-523:   background drain `v₀`."* (`steps/S11b_interface_coupling_law.md:62–63`). That `v₀` is the bulk's normal
-524:   drain, standard name `v_bulk_normal_0` (`directives/S11b_SHARED_PHYSICS.md:101–104`;
-525:   `directives/S11b_unified_decisions.md:33–40`). B says the reference state carrying that flow is *"a
-526:   **driven steady state with a reservoir attached.**"* (`steps/S11bB_interface_assembly.md:46–48`).
-527: - **on failure** — the finite-memory velocity channel outside the passive region cannot be inherited
-528:   as a physically supplied response. The computed region remains a classification, not a prohibition,
-529:   and naming `v_bulk_normal_0` alone does not supply the missing power.
-530: - **note** — this is the records' explicit condition for retaining that channel, not a requirement
-531:   that the model choose it. A numerical observational bound also needs matter-to-compression coupling;
-532:   B says that is unbuilt and reports only a structural test, so no numerical-bound requirement is added.
-533: - **owner/target** — the records do not name S12; that target is a register inference. They hand the
-534:   reservoir-and-budget condition to *"S11b-C"* (`steps/S11bB_interface_assembly.md:195–197`).
-535: - **O2 scope** — O2 carries this same conditional non-passive-interface obligation: if a later
-536:   closure adopts that response, name its reservoir and state its power budget. No such response is
-537:   selected. Its live owner is **no owner named**; the historical S11b-C → S11c handoff has no recorded
-538:   live successor, and S12 remains only the original register inference. This object is separate
-539:   from S12's additional non-variational source partners, premise 1's relaxation power, and the
-540:   net-supplier/budget obligation `R-O2-01`
-541:   (`directives/O2_SHARED_PHYSICS.md:312–317`; `directives/O2_input_contract.md:459–465`).
-542: - **S12 pass** — Carried separately in the S12 inventory, without a new computed power consumer.
-543:   U3's endless material supply in the bulk IR is not a named reservoir or a power budget. The
-544:   source compatibility objects deliver neither. The live owner remains **no owner named**;
-545:   this does not assign the whole obligation to S12 (`steps/S12_order_source.md`, §§3/5/7).
-546: 
+177: ### R-S1-02 — the substructure's shear response, as a function of the order parameter
+178: 
+179: - **source** S12 (support identification only; `steps/S12_order_source.md`, §§1–3/7); S9b (brane optical shear only; `steps/S9b_light_bending.md`, §§2–4/8); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
+180: - **requirement** — the shear response of the substructure as a function of `χ_B`, across **both** phases.
+181: - **on failure** — the two halves fail differently, and both are fatal:
+182:   - **ordered phase carries no shear** ⇒ `μ_R = 0`, the brane has no transverse sector, and **photons do
+183:     not exist**;
+184:   - **disordered phase carries shear** ⇒ light is not confined to the brane, it leaks into the bulk — an
+185:     energy sink with no observational room — **and** the throat's trapped brane-shear standing wave
+186:     radiates away, so the outward pressure vanishes and **the geon closes**.
+187: - **note** — ⭐ **Three independent consumers** (photon propagation, photon confinement, geon support), and
+188:   it is **one object**, not three. S9 records it as its own LIVE falsifier and as a knit question: can one
+189:   substructure be ordered-and-shear-bearing in one phase and unstructured-and-shear-free in the other?
+190:   ⚠ Stressed hardest at the throat, where the brane is bent into `±w`. Currently the only machine check
+191:   on the bulk half anywhere in the corpus is **dimensional**.
+192: - **O2 scope** — Premises 1 and 4 adopt optical-regime elastic shear in the brane and the postulated
+193:   shear-free scalar bulk with face-normal mechanical loading. O2 derives neither phase response.
+194:   The existing shear-response retirement question gains this conditional consumer, not a new
+195:   entry for an adopted value. Failure to realize those responses prevents promoting O2's conditional
+196:   material/load object to that substrate. No flowing pressure law, tangential bulk stress or optical
+197:   compatibility result follows (`directives/O2_SHARED_PHYSICS.md`, §§2, 3.1, 3.3, 7).
+198: 
+199: - **S9b scope** — The supplied light branch is the transverse displacement of shear-carrying
+200:   brane material, with the real positive optical ratio `μ⊥/ρbr`. A kept A–C optical wave is
+201:   conditional on that brane shear response; without it the reported propagating optical
+202:   interpretation fails its own gate. S9b therefore consumes the brane optical half of this
+203:   existing phase-response requirement. It derives no `χ_B` response, bulk shear-free result
+204:   or confinement result; O2 P4 is only carried as an adopted premise, unused by A–C
+205:   (S9b §§2/7; M1/M19).
+206: 
+207: - **S12 scope** — U1 and its flagged support identification are adopted inputs: order vanishes
+208:   outside the independently bounded shear-holding region, and remains live inside. This adds
+209:   only the conditional material interpretation as a consumer of the existing phase-response
+210:   obligation. Failure of that identification removes the claimed shear-region interpretation;
+211:   the algebra does not establish shear response, confinement or a constitutive relation to
+212:   `χ_B`. U1's re-ordering clause enters no computed object and remains OPEN
+213:   (`steps/S12_order_source.md`, §§1–3; retrievals M01/M03/M04).
+214: 
+215: 
 FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
-547: ### R-S12-02 — background drain/return and separate boundary data
-548: 
-549: - **source** S12 (`steps/S12_order_source.md`, §§1–2/5–7; retrievals M01/M03/M07/M11); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-A/B (`steps/S11b_interface_coupling_law.md:158–164`, background-flow limit); S11c
-550:   (`steps/S11c_PARTIAL_CLOSEOUT.md:7`, uniform result;
-551:   `steps/S11c_d_profile_conditioned_scattering.md:21–25`, selected uniform check)
-552:   · **target** S12 · **status** OPEN
-553: - **requirement** — the native drain/return functions and their separate boundary data; the
-554:   printed regional order-source objects and normalized face-source objects, with the separately
-555:   printed total-material face balances, as compatibility requirements on conversion, face and
-556:   order-flux forms. The objects are `general_order/region/{1,2,3}/source`,
-557:   `general_order/face/{1,2}/{trace_coefficient,source_contribution}` and
-558:   `material/face/{1,2}/requirement`. The distinct labelled conditional specialization is
-559:   `conditional_fast_ordering/region/{1,2,3}/source` and its two face objects. Their full values,
-560:   domain and cross-engine limits are S12 §2/4 and retrievals M03/M07–M09.
-561: - **on failure** — the kept selected uniform check cannot be transferred to a flowing background: it is
-562:   a strict-rest-bulk calculation, and its finite samples do not prove flowing-background behaviour
-563:   (`steps/S11c_d_profile_conditioned_scattering.md:21–25`). S11b records why the rest-frame limitation
-564:   matters: its linearisation discards a relative correction of order
-565:   `O(v₀|q_n|/ω)` (`steps/S11bB_interface_assembly.md:150–154`), where that record's `v₀` is the steady
-566:   background normal flow, standard name `v_bulk_normal_0` (`directives/S11b_SHARED_PHYSICS.md:101–104`;
-567:   `directives/S11b_unified_decisions.md:33–40`). The unified record calls the correction uncarried and
-568:   unbounded (`steps/S11b_interface_coupling_law.md:158–164`) and carries the limit
-569:   to *"C (and to the nonlinear program for the DC/harmonic/sideband radiation audit)"*; S11c-a inherited
-570:   it as a standing limit but *"computes geometry only and does not address it"*
-571:   (`steps/S11c_a_interface_shape_derivatives.md:257–260`).
-572: - **owner** — S12 owns the drain/return data (`steps/S11c_PARTIAL_CLOSEOUT.md:21`) and is next for
-573:   dynamical bulk-to-brane order conversion with separate boundary data
-574:   (`steps/S11c_PARTIAL_CLOSEOUT.md:33`).
-575: - **O2 scope** — Premise 2 makes dynamical order conversion the drive, with no separate body force.
-576:   O2's local source/controller and boundary/domain inventories remain distinct, as do additional
-577:   S12 momentum/energy partners and their reaction/supply systems. O2 adds a consumer for the stated
-578:   drain identity and distinct source/boundary accounting; without those roles its adopted drive is
-579:   unidentified or conflated with another load/partner. The original native drain/return functions
-580:   retain their sourced domains, and O2 demands no new functional forms for them. Local in-plane
-581:   carried `j_n V^i` does not deliver
-582:   these data, the live `𝒥_map`, bulk-direction carry, energy partners or a `GM` coupling
-583:   (`directives/O2_SHARED_PHYSICS.md`, §§3.3, 5, 6, 10). Those remain OPEN handoffs, not extra entries
-584:   merely because a later profile solve would need them.
-585: - **S12 scope and rest-on condition** — The conditional result rests on these printed compatibility
-586:   objects, not on any chosen means of meeting them. Below and above, the order source is the
-587:   regional order-flux divergence; inside it includes live material transport of order; each face
-588:   carries the printed source coefficient and a distinct material requirement. If candidate data
-589:   violate one of those objects on the stated domain, they cannot realize that conditional result.
-590:   Source, face and flux forms are not selected, and separate boundary data are not supplied. The
-591:   native-data obligation remains OPEN under the user's 2026-10-19 requirements-first framing.
-592:   The printed constraints are not its delivery. The fast-ordering object is conditional, not an
-593:   earned limit; concentrated input fields are outside the current object. The six unrestricted
-594:   coefficient diagnostic differences and every unpaired/ledger leaf limit remain in S12 §4.
-595:   This merges source/face/flux compatibility into the existing native-conversion obligation,
-596:   without duplicating an entry or prescribing a law, material, premise or candidate.
-597: 
+518: ### R-S12-01 — the reservoir and its power budget
+519: 
+520: - **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-B (`steps/S11bB_interface_assembly.md`, standing rule); unified S11b
+521:   (`steps/S11b_interface_coupling_law.md`, passivity region) · **target** no owner named
+522:   (historical S12 **register inference**) · **status** OPEN
+523: - **requirement** — a named reservoir and a stated power budget for any adopted non-passive interface
+524:   coupling.
+525:   The unified record names the candidate: *"The model supplies a candidate reservoir — the
+526:   background drain `v₀`."* (`steps/S11b_interface_coupling_law.md:62–63`). That `v₀` is the bulk's normal
+527:   drain, standard name `v_bulk_normal_0` (`directives/S11b_SHARED_PHYSICS.md:101–104`;
+528:   `directives/S11b_unified_decisions.md:33–40`). B says the reference state carrying that flow is *"a
+529:   **driven steady state with a reservoir attached.**"* (`steps/S11bB_interface_assembly.md:46–48`).
+530: - **on failure** — the finite-memory velocity channel outside the passive region cannot be inherited
+531:   as a physically supplied response. The computed region remains a classification, not a prohibition,
+532:   and naming `v_bulk_normal_0` alone does not supply the missing power.
+533: - **note** — this is the records' explicit condition for retaining that channel, not a requirement
+534:   that the model choose it. A numerical observational bound also needs matter-to-compression coupling;
+535:   B says that is unbuilt and reports only a structural test, so no numerical-bound requirement is added.
+536: - **owner/target** — no live owner named. The earlier S12 target was a register inference;
+537:   the records do not name S12. They hand the
+538:   reservoir-and-budget condition to *"S11b-C"* (`steps/S11bB_interface_assembly.md:195–197`).
+539: - **O2 scope** — O2 carries this same conditional non-passive-interface obligation: if a later
+540:   closure adopts that response, name its reservoir and state its power budget. No such response is
+541:   selected. Its live owner is **no owner named**; the historical S11b-C → S11c handoff has no recorded
+542:   live successor, and S12 is only the historical register inference. This object is separate
+543:   from the additional non-variational source partners formerly assigned to S12 (no live owner named), premise 1's relaxation power, and the
+544:   net-supplier/budget obligation `R-O2-01`
+545:   (`directives/O2_SHARED_PHYSICS.md:312–317`; `directives/O2_input_contract.md:459–465`).
+546: - **S12 pass** — Carried separately in the S12 inventory, without a new computed power consumer.
+547:   U3's endless material supply in the bulk IR is not a named reservoir or a power budget. The
+548:   source compatibility objects deliver neither. The live owner remains **no owner named**;
+549:   this does not assign the whole obligation to S12 (`steps/S12_order_source.md`, §§3/5/7).
+550: 
 FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
-598: ### R-O2-01 — the net-power supplier and its stated budget
-599: 
-600: - **source** O2 (`steps/O2_steady_brane_balance.md`, energy accounting and register handoff)
-601:   · **target** no owner named · **status** OPEN
-602: - **requirement** — the physical supplier of net power and its stated power budget, represented by
-603:   the OPEN `𝒮_E,net` / `𝒫_E,supply` inputs, accompanying any conditional closure requiring net supply.
-604: - **on failure** — such a closure cannot be claimed physically supplied. Naming the drain alone
-605:   supplies neither available energy nor a budget; O2 measures no net supply and imposes no passive
-606:   sign or relaxation law.
-607: - **owner** — the spec calls this an **O2 requirement; source/holder/supplier forms retain their
-608:   owners** (`directives/O2_SHARED_PHYSICS.md:282`). It names no future owner of the net-supplier/budget
-609:   object. S12 source forms and Q2/S22 holder forms keep their separate assignments; none is assigned
-610:   this entire obligation.
-611: - **scope** — this is an accounting requirement on conditional relations requiring net supply,
-612:   fixed by adopted premise 1, not a derived supplier, budget value or additive energy-channel law.
-613:   It is separate from the conditional non-passive-interface reservoir obligation `R-S12-01` and
-614:   from explicit reference/relaxation power with its unassigned reference owner
-615:   (`directives/O2_SHARED_PHYSICS.md:270–282, 307–317`; `directives/O2_input_contract.md`, §8).
-616: - **S12 pass** — The energy-partner inventory carries this obligation separately from
-617:   `R-S12-01` and from conversion partners. No S12 object computes net supply or consumes a
-618:   conditional net-supply closure, so it adds no computed source and changes no owner or status
-619:   (`steps/S12_order_source.md`, §§3/5/7).
-620: 
-621: ---
-622: 
-623: 
+551: ### R-S12-02 — background drain/return and separate boundary data
+552: 
+553: - **source** S12 (`steps/S12_order_source.md`, §§1–2/5–7; retrievals M01/M03/M07/M11); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-A/B (`steps/S11b_interface_coupling_law.md:158–164`, background-flow limit); S11c
+554:   (`steps/S11c_PARTIAL_CLOSEOUT.md:7`, uniform result;
+555:   `steps/S11c_d_profile_conditioned_scattering.md:21–25`, selected uniform check)
+556:   · **target** no owner named (historical S12 assignment) · **status** OPEN
+557: - **requirement** — the native drain/return functions and their separate boundary data; the
+558:   printed regional order-source objects and normalized face-source objects, with the separately
+559:   printed total-material face balances, as compatibility requirements on conversion, face and
+560:   order-flux forms. The objects are `general_order/region/{1,2,3}/source`,
+561:   `general_order/face/{1,2}/{trace_coefficient,source_contribution}` and
+562:   `material/face/{1,2}/requirement`. The distinct labelled conditional specialization is
+563:   `conditional_fast_ordering/region/{1,2,3}/source` and its two face objects. Their full values,
+564:   domain and cross-engine limits are S12 §2/4 and retrievals M03/M07–M09.
+565: - **on failure** — the kept selected uniform check cannot be transferred to a flowing background: it is
+566:   a strict-rest-bulk calculation, and its finite samples do not prove flowing-background behaviour
+567:   (`steps/S11c_d_profile_conditioned_scattering.md:21–25`). S11b records why the rest-frame limitation
+568:   matters: its linearisation discards a relative correction of order
+569:   `O(v₀|q_n|/ω)` (`steps/S11bB_interface_assembly.md:150–154`), where that record's `v₀` is the steady
+570:   background normal flow, standard name `v_bulk_normal_0` (`directives/S11b_SHARED_PHYSICS.md:101–104`;
+571:   `directives/S11b_unified_decisions.md:33–40`). The unified record calls the correction uncarried and
+572:   unbounded (`steps/S11b_interface_coupling_law.md:158–164`) and carries the limit
+573:   to *"C (and to the nonlinear program for the DC/harmonic/sideband radiation audit)"*; S11c-a inherited
+574:   it as a standing limit but *"computes geometry only and does not address it"*
+575:   (`steps/S11c_a_interface_shape_derivatives.md:257–260`).
+576: - **owner** — no live owner named for the undelivered forms/data. The earlier assignment said
+577:   **"S12 owns the drain/return data"**, following `steps/S11c_PARTIAL_CLOSEOUT.md:21`, whose
+578:   `:33` calls S12 next for dynamical conversion and separate boundary data. The later user framing
+579:   says S12 **"states what any conversion law must satisfy and leaves the forms open"**. S12
+580:   delivers the compatibility objects, not those forms/data; no source names a later delivery
+581:   step. The assignment/framing disagreement remains reported, and who should own the undelivered
+582:   parts is a question for the user (`steps/S12_order_source.md`, §§5–7; retrievals M01/M12/M17).
+583: - **O2 scope** — Premise 2 makes dynamical order conversion the drive, with no separate body force.
+584:   O2's local source/controller and boundary/domain inventories remain distinct, as do additional
+585:   momentum/energy partners and their reaction/supply systems, historically assigned to S12 and
+586:   now OPEN with no live owner named. O2 adds a consumer for the stated
+587:   drain identity and distinct source/boundary accounting; without those roles its adopted drive is
+588:   unidentified or conflated with another load/partner. The original native drain/return functions
+589:   retain their sourced domains, and O2 demands no new functional forms for them. Local in-plane
+590:   carried `j_n V^i` does not deliver
+591:   these data, the live `𝒥_map`, bulk-direction carry, energy partners or a `GM` coupling
+592:   (`directives/O2_SHARED_PHYSICS.md`, §§3.3, 5, 6, 10). Those remain OPEN handoffs, not extra entries
+593:   merely because a later profile solve would need them.
+594: - **S12 scope and rest-on condition** — The conditional result rests on these printed compatibility
+595:   objects, not on any chosen means of meeting them. Below and above, the order source is the
+596:   regional order-flux divergence; inside it includes live material transport of order; each face
+597:   carries the printed source coefficient and a distinct material requirement. If candidate data
+598:   violate one of those objects on the stated domain, they cannot realize that conditional result.
+599:   Source, face and flux forms are not selected, and separate boundary data are not supplied. The
+600:   native-data obligation remains OPEN under the user's 2026-10-19 requirements-first framing.
+601:   The printed constraints are not its delivery. The fast-ordering object is conditional, not an
+602:   earned limit; concentrated input fields are outside the current object. The six unrestricted
+603:   coefficient differences are labelled representation diagnostics confined off their respective
+604:   delta supports, not open differences in the S12 distribution (contract item 3; retrieval M17).
+605:   Both raw expressions and every unpaired/ledger leaf limit remain in S12 §4 and its retrievals.
+606:   This merges source/face/flux compatibility into the existing native-conversion obligation,
+607:   without duplicating an entry or prescribing a law, material, premise or candidate.
+608: 
 FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
-624: ### R-S21-01 — conditional deflection and radar-slope profile requirements
-625: 
-626: - **source** S9b (`steps/S9b_light_bending.md`, §§3–6; measurements M3–M7/M11–M13/M17–M19);
-627:   S12 framing decision only (`steps/S12_order_source.md`, §§6–7; user 2026-10-19, retrieved M01)
-628:   · **target** S21 (integration/knit; S9b record §7, O2 record §7 and the record directive's
-629:   2026-10-08/09 user decisions) · **status** OPEN
-630: - **requirement** — On S9b's isolated spherical, steady far-zone, leading-eikonal, LAB_HELD
-631:   domain and selected G100/G010/G020/G001 grades, the printed Part B profile condition for
-632:   **each** observable, deflection and radar logarithmic slope, relative to independent orbital
-633:   `GM`, for every far-zone impact parameter. PY prints for each
-634:   `GM=r[2c₀²rδ′+c₀²ξw′²−2rVV′+V²]/4` as a radial identity. WL prints its `GM` anchor rule
-635:   plus the all-radius profile equation (S9b Appendix A), with derivatives, convergence, Abel
-636:   invertibility and constructed-ray/branch/traversal domains. Their complete cross-engine
-637:   equivalence is not established; neither form is discarded.
-638:   Part C carries the separately printed constant-speed condition
-639:   `GM=r[c₀²ξw′²−2rVV′+V²]/4`, fixed-ratio condition
-640:   `GM=r[c₀²(n−1)rf′+c₀²ξw′²−2rVV′+V²]/4`, and power condition
-641:   `GM=r[2c₀²srf′+c₀²ξw′²−2rVV′+V²]/4`, with WL's corresponding anchor/profile equations.
-642:   Fixed-ratio and power objects retain both `ρ>0` and `ρ≤0` labels and exact response domains;
-643:   `ρ₀>0` remains supplied. The first-order-f expressions supply no finite-density or f–ε extension.
-644:   Each condition includes its printed implied `jn`, with `ρbr` symbolic and differentiated:
-645:   the coordinate mass expression is `jn=−ρbr V′−Vρbr′−2ρbr V/r`, with both signed-velocity
-646:   components, zero-locus differentiability/flux joins, excluded nonreal branches and printed
-647:   integration-constant domains retained. The complete implied-exchange values remain uncompared.
-648:   The requirements keep δ, ξw, ρbr, f, n, s, GM and all remaining printed inputs free;
-649:   they select no profile, exponent, flux value/sign or GM normalization. M13 retrieves all 14
-650:   within-engine deflection/radar condition pairs: every PY paired payload is byte-identical,
-651:   while every WL paired payload differs (M13).
-652:   WL `GM`, `ProfileEquation`, `ProfileEquationRadius`, outer `Domain`/`BranchDomain` and case
-653:   `Domain` match literally; `InverseWeight` and `ReferenceInverse` differ in every pair.
-654:   `VelocityReduction/SquaredVelocityEquation` additionally differs for general B, R_FLOW_ONLY B
-655:   and combined C_CONSTANT/C_FIXED_RATIO/C_POWER; `VelocityReduction/Cases/0/Domain` differs
-656:   for R_SPEED_ONLY B, R_TILT_ONLY B, both R_BULK_ONLY C pairs and all conditional forward B/C
-657:   pairs. These paths are relative to `Cases/0`, within each density part's `Object` and the
-658:   outer forward `Object` where present. M13 retains every identical subtree and differing
-659:   payload; density labels/label conditions, bulk premise and forward premise match within
-660:   their pairs. Whether the differing fields state the same condition is OPEN, no owner named,
-661:   separately from the item-5 counting decision below. The matching GM/profile fields alone
-662:   do not settle full-condition equivalence. (M13.)
-663: - **on failure** — The conditional reference-matching statement for the affected observable
-664:   cannot be realized on that domain. The computed conditional functionals and the reported
-665:   cross-engine coverage do not become a GR-matching result.
-666: - **Flow comparison decision, user 2026-10-19** — Each force states the flow it needs; S21
-667:   compares those requirements, and a mismatch reopens S9b. S12 states the source compatibility
-668:   requirements and leaves forms open; it fits no flow and adds no optical calculation or
-669:   profile to this entry. This decision provenance adds no claim of cross-sector compatibility.
-670: - **evidence and limits** — `B_CONDITION_*`, `B_IMPLIED_JN_*`, `C_*_CONDITION_*`,
-671:   `C_*_IMPLIED_JN_*`, and the `R_FLOW_ONLY_`, `R_SPEED_ONLY_`, `R_TILT_ONLY_`,
-672:   `R_BULK_ONLY_` restrictions (S9b §§3–4, measurements M3/M4/M11). Flow-only constrains
-673:   `r(V²−2rVV′)/4`; speed-only `c₀²r²δ′/2`; tilt-only `c₀²rξw′²/4`; bulk-only
-674:   fixed ratio `c₀²(n−1)r²f′/4` and power `c₀²sr²f′/2`, each relative to GM.
-675:   Speed-, tilt- and bulk-only exchange prints zero; flow-only retains the signed live-density
-676:   exchange. Conditions/exchange/γ values have no formed cross-engine comparison; the domains
-677:   and every printed difference retain record §6's limits. This entry asserts no realized match.
-678: - **oracle comparison (evidence only, 2026-10-19)** — the accepted flow-only check (`8d91f448`;
-679:   record `steps/S9b_flow_oracle_comparison.md`) compares the flow-only restriction with Hamilton–Lisle
-680:   (2008) and Visser (1998).
-681:   - Two identifications are needed: the orbital `GM` with each oracle's mass parameter, and S9b's clock
-682:     and speed units with the oracle's. The check supplies neither, and prints both as `UNMATCHED`. Under
-683:     both, the kept flow-only squared speed equals the river model's and Visser §7's. The signed velocity
-684:     matches for one radial orientation per component, and the frame identification that would choose it is
-685:     also `UNMATCHED`.
-686:   - On the nonzero-velocity components, in both engines, the exchange `jn` vanishes only on
-687:     `ρbr = C₁/r^(3/2)`, the density law Visser §7 quotes. On the zero-velocity components the exchange
-688:     vanishes with the density left free.
-689: 
-690:   The comparison selects no profile and no exchange value, and it delivers nothing of this entry. The
-691:   requirement, its free inputs and its failure consequence are unchanged.
-692: 
-693: 
-694: **Counting the two observables under item 5.** The rule is “It counts the deflection
-695: and the radar slope as separate tests only where the printed objects show their conditions differ.”
-696: M17 retrieves that rule and both engines' complete γ objects, including their attached gates,
-697: for general B, R_FLOW_ONLY, R_SPEED_ONLY, R_TILT_ONLY and conditional F_FLOW/F_LIVE.
-698: On each object's on-domain `GM≠0` stratum, PY's γ-difference solution set is `{0}` and WL's
-699: relation contains `gammaDifference==0 && GM!=0`. Thus the two observables are **not counted
-700: as separate tests at these selected grades on that stratum**, in either engine. This is a
-701: count of the printed reference-comparison constraints, not a claim of cross-engine equivalence
-702: or observational redundancy outside this model point. (M17; paired conditions M13.)
+609: ### R-O2-01 — the net-power supplier and its stated budget
+610: 
+611: - **source** O2 (`steps/O2_steady_brane_balance.md`, energy accounting and register handoff)
+612:   · **target** no owner named · **status** OPEN
+613: - **requirement** — the physical supplier of net power and its stated power budget, represented by
+614:   the OPEN `𝒮_E,net` / `𝒫_E,supply` inputs, accompanying any conditional closure requiring net supply.
+615: - **on failure** — such a closure cannot be claimed physically supplied. Naming the drain alone
+616:   supplies neither available energy nor a budget; O2 measures no net supply and imposes no passive
+617:   sign or relaxation law.
+618: - **owner** — the spec calls this an **O2 requirement; source/holder/supplier forms retain their
+619:   owners** (`directives/O2_SHARED_PHYSICS.md:282`). It names no future owner of the net-supplier/budget
+620:   object. Source forms formerly assigned to S12 have no live owner named; Q2/S22 holder forms
+621:   keep their separate assignments. None is assigned this entire obligation.
+622: - **scope** — this is an accounting requirement on conditional relations requiring net supply,
+623:   fixed by adopted premise 1, not a derived supplier, budget value or additive energy-channel law.
+624:   It is separate from the conditional non-passive-interface reservoir obligation `R-S12-01` and
+625:   from explicit reference/relaxation power with its unassigned reference owner
+626:   (`directives/O2_SHARED_PHYSICS.md:270–282, 307–317`; `directives/O2_input_contract.md`, §8).
+627: - **S12 pass** — The energy-partner inventory carries this obligation separately from
+628:   `R-S12-01` and from conversion partners. No S12 object computes net supply or consumes a
+629:   conditional net-supply closure, so it adds no computed source and changes no owner or status
+630:   (`steps/S12_order_source.md`, §§3/5/7).
+631: 
+632: ---
+633: 
+634: 
+FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
+635: ### R-S21-01 — conditional deflection and radar-slope profile requirements
+636: 
+637: - **source** S9b (`steps/S9b_light_bending.md`, §§3–6; measurements M3–M7/M11–M13/M17–M19);
+638:   S12 framing decision only (`steps/S12_order_source.md`, §§6–7; user 2026-10-19, retrieved M01)
+639:   · **target** S21 (integration/knit; S9b record §7, O2 record §7 and the record directive's
+640:   2026-10-08/09 user decisions) · **status** OPEN
+641: - **requirement** — On S9b's isolated spherical, steady far-zone, leading-eikonal, LAB_HELD
+642:   domain and selected G100/G010/G020/G001 grades, the printed Part B profile condition for
+643:   **each** observable, deflection and radar logarithmic slope, relative to independent orbital
+644:   `GM`, for every far-zone impact parameter. PY prints for each
+645:   `GM=r[2c₀²rδ′+c₀²ξw′²−2rVV′+V²]/4` as a radial identity. WL prints its `GM` anchor rule
+646:   plus the all-radius profile equation (S9b Appendix A), with derivatives, convergence, Abel
+647:   invertibility and constructed-ray/branch/traversal domains. Their complete cross-engine
+648:   equivalence is not established; neither form is discarded.
+649:   Part C carries the separately printed constant-speed condition
+650:   `GM=r[c₀²ξw′²−2rVV′+V²]/4`, fixed-ratio condition
+651:   `GM=r[c₀²(n−1)rf′+c₀²ξw′²−2rVV′+V²]/4`, and power condition
+652:   `GM=r[2c₀²srf′+c₀²ξw′²−2rVV′+V²]/4`, with WL's corresponding anchor/profile equations.
+653:   Fixed-ratio and power objects retain both `ρ>0` and `ρ≤0` labels and exact response domains;
+654:   `ρ₀>0` remains supplied. The first-order-f expressions supply no finite-density or f–ε extension.
+655:   Each condition includes its printed implied `jn`, with `ρbr` symbolic and differentiated:
+656:   the coordinate mass expression is `jn=−ρbr V′−Vρbr′−2ρbr V/r`, with both signed-velocity
+657:   components, zero-locus differentiability/flux joins, excluded nonreal branches and printed
+658:   integration-constant domains retained. The complete implied-exchange values remain uncompared.
+659:   The requirements keep δ, ξw, ρbr, f, n, s, GM and all remaining printed inputs free;
+660:   they select no profile, exponent, flux value/sign or GM normalization. M13 retrieves all 14
+661:   within-engine deflection/radar condition pairs: every PY paired payload is byte-identical,
+662:   while every WL paired payload differs (M13).
+663:   WL `GM`, `ProfileEquation`, `ProfileEquationRadius`, outer `Domain`/`BranchDomain` and case
+664:   `Domain` match literally; `InverseWeight` and `ReferenceInverse` differ in every pair.
+665:   `VelocityReduction/SquaredVelocityEquation` additionally differs for general B, R_FLOW_ONLY B
+666:   and combined C_CONSTANT/C_FIXED_RATIO/C_POWER; `VelocityReduction/Cases/0/Domain` differs
+667:   for R_SPEED_ONLY B, R_TILT_ONLY B, both R_BULK_ONLY C pairs and all conditional forward B/C
+668:   pairs. These paths are relative to `Cases/0`, within each density part's `Object` and the
+669:   outer forward `Object` where present. M13 retains every identical subtree and differing
+670:   payload; density labels/label conditions, bulk premise and forward premise match within
+671:   their pairs. Whether the differing fields state the same condition is OPEN, no owner named,
+672:   separately from the item-5 counting decision below. The matching GM/profile fields alone
+673:   do not settle full-condition equivalence. (M13.)
+674: - **on failure** — The conditional reference-matching statement for the affected observable
+675:   cannot be realized on that domain. The computed conditional functionals and the reported
+676:   cross-engine coverage do not become a GR-matching result.
+677: - **Flow comparison decision, user 2026-10-19** — Each force states the flow it needs; S21
+678:   compares those requirements, and a mismatch reopens S9b. S12 states the source compatibility
+679:   requirements and leaves forms open; it fits no flow and adds no optical calculation or
+680:   profile to this entry. This decision provenance adds no claim of cross-sector compatibility.
+681: - **evidence and limits** — `B_CONDITION_*`, `B_IMPLIED_JN_*`, `C_*_CONDITION_*`,
+682:   `C_*_IMPLIED_JN_*`, and the `R_FLOW_ONLY_`, `R_SPEED_ONLY_`, `R_TILT_ONLY_`,
+683:   `R_BULK_ONLY_` restrictions (S9b §§3–4, measurements M3/M4/M11). Flow-only constrains
+684:   `r(V²−2rVV′)/4`; speed-only `c₀²r²δ′/2`; tilt-only `c₀²rξw′²/4`; bulk-only
+685:   fixed ratio `c₀²(n−1)r²f′/4` and power `c₀²sr²f′/2`, each relative to GM.
+686:   Speed-, tilt- and bulk-only exchange prints zero; flow-only retains the signed live-density
+687:   exchange. Conditions/exchange/γ values have no formed cross-engine comparison; the domains
+688:   and every printed difference retain record §6's limits. This entry asserts no realized match.
+689: - **oracle comparison (evidence only, 2026-10-19)** — the accepted flow-only check (`8d91f448`;
+690:   record `steps/S9b_flow_oracle_comparison.md`) compares the flow-only restriction with Hamilton–Lisle
+691:   (2008) and Visser (1998).
+692:   - Two identifications are needed: the orbital `GM` with each oracle's mass parameter, and S9b's clock
+693:     and speed units with the oracle's. The check supplies neither, and prints both as `UNMATCHED`. Under
+694:     both, the kept flow-only squared speed equals the river model's and Visser §7's. The signed velocity
+695:     matches for one radial orientation per component, and the frame identification that would choose it is
+696:     also `UNMATCHED`.
+697:   - On the nonzero-velocity components, in both engines, the exchange `jn` vanishes only on
+698:     `ρbr = C₁/r^(3/2)`, the density law Visser §7 quotes. On the zero-velocity components the exchange
+699:     vanishes with the density left free.
+700: 
+701:   The comparison selects no profile and no exchange value, and it delivers nothing of this entry. The
+702:   requirement, its free inputs and its failure consequence are unchanged.
 703: 
-704: At `GM=0`, PY separately prints the full real interval when both observable compatibility
-705: functionals vanish, and `EmptySet` on the other three printed vanishing/nonvanishing combinations.
-706: WL prints `GM==0` with both functionals zero, without a constraint on `gammaDifference`, and
-707: no further compatible alternative. Each engine's individual γ objects retain the corresponding
-708: unconstrained/empty singular strata. The record does not replace these by γ-difference zero:
-709: γ is unidentifiable on the compatible singular stratum, and the incompatible strata supply no
-710: joint γ solution. These strata establish no additional separate γ test under item 5; two
-711: independent tests are not counted from the unrestricted difference. Outside the respective gates,
-712: the objects are `NOT_ESTABLISHED`. (M17.)
-713: 
-714: Whether the differing WL `InverseWeight`, `ReferenceInverse` and velocity-reduction fields in
-715: M13 state the same condition remains **a separate OPEN question, no owner named**. That question
-716: does not put the above counting decision on hold. Nor are the differing strings treated as a
-717: shown physical difference of conditions: the printed γ strata are part of the counting evidence.
-718: Part C/bulk-only condition rewrites retain M13's field distinctions and earn no additional
-719: separate test here; no unprinted Part C γ object is invented. (M13/M17.)
-720: 
-721: **Engine-specific restrictions, constants, exchange and domains.** M18 retrieves both
-722: observables' complete `CONDITION` and `IMPLIED_JN` objects for all five restrictions below;
-723: no compact domain omission is used as evidence. In the following readable transcriptions,
-724: `r=s9b_r` for PY, `ρbr=rho_br_profile[r]` for PY and `rhoBr[r]` for WL. Engine-qualified
-725: constants are not identified across engines.
-726: 
-727: **PY flow-only (`R_FLOW_ONLY_B_*`).** Its printed solution dictionary has
-728: `squared = 2*GM/r`, `integrating_factor = 1/r`,
-729: `general_solution: s9b_velocity_squared(r) = r*(2*GM/r² + C_PY)`, and `residual = 0`,
-730: where `C_PY` names the printed real `s9b_velocity_integration_constant`.
-731: The `constants` field retains `C_PY=0`; its `C_PY≠0` branch is labelled
-732: `EXCLUDED_BY_SUPPLIED_V_OVER_C0_O_EPSILON_HALF`, with the printed limit of `C_PY` retained.
-733: The `nonreal_branch` is `2*GM/r<0`, labelled `EXCLUDED_BY_REAL_MATERIAL_VELOCITY`.
-734: The two positive-component entries print, respectively,
-735: 
-736: | PY velocity equality | PY implied exchange equality |
-737: |---|---|
-738: | `V = −√2 √GM / √r` | `jn = √2 √GM ρbr′/√r + (3/2)√2 √GM ρbr/r^(3/2)` |
-739: | `V = +√2 √GM / √r` | `jn = −√2 √GM ρbr′/√r − (3/2)√2 √GM ρbr/r^(3/2)` |
-740: 
-741: Their attached domain keeps the solved ray/applicability gate, `2*GM/r≥0` throughout
-742: `(s9b_b_min,∞)`, and `2*GM/r>0` on each named positive component. The condition itself keeps
-743: its exterior interval and the δ=ξ=0-substituted gate, and prints `GM=r(V²−2rVV′)/4`.
-744: Four further entries retain sign pairs `(-1,-1),(-1,1),(1,-1),(1,1)` at zero radius `z`:
-745: `z>s9b_b_min`, `2*GM/z=0`, matching real one-sided limits of
-746: `σ √2 √GM/(√q (q−z))`, `V(z)=0`, `V′(z)` equal to the right-hand limit, and
-747: `jn(z)=−ρbr(z)` times that right-hand limit. These are the printed differentiable-zero-join
-748: objects, including zero intervals; their limits are not evaluated in this record. The density
-749: function retains PY's positive declaration. (M18, tuple paths `0`, `1/0..5`, `2`.)
-750: 
-751: **WL flow-only (`R_FLOW_ONLY_B_*`).** Write `I(r)` only as an abbreviation for the printed
-752: `Inactive[Integrate][(-4*GM)/tailRadius^3,{tailRadius,r,Infinity}]`, without evaluating it.
-753: WL prints `GeneralSquaredVelocity = r*C_WL − r*I(r)` with
-754: `GeneralConstantDomain: Element[C_WL,Reals]`, and `SquaredVelocity = −r*I(r)`;
-755: `C_WL` names `velocityIntegrationConstant`. The retained `ConstantDomain` is `C_WL==0`;
-756: real nonzero `C_WL` branches are excluded by the supplied `V/c0=O(r^(-1/2))` counting.
-757: Each positive-component case lists `IntegrationConstants -> {C_WL}`, domain
-758: `C_WL==0 && −r*I(r)>0`, and its own substituted `AlongRayDomain`. It prints
-759: 
-760: | WL velocity | WL implied exchange |
-761: |---|---|
-762: | `−√(−r I(r))` | `[-ρbr(4GM+5r²I(r))−2r³I(r)ρbr′]/[2r²√(−r I(r))]` |
-763: | `+√(−r I(r))` | `[ρbr(4GM+5r²I(r))+2r³I(r)ρbr′]/[2r²√(−r I(r))]` |
-764: 
-765: The zero-interval case has `C_WL==0 && −r*I(r)==0`, `V=V′=jn=0` and the same listed
-766: constant/domain. `NoRealVelocityDomain` retains the negative-squared branch. `ZeroSetJoining`
-767: and each `AtComponentBoundary` retain differentiable real velocity/flux and finite matching
-768: one-sided limits. The enclosing condition retains `r>bFar`, `rAnchor>bFar`, functional
-769: regularity/convergence/Abel-invertibility requirements, its `BranchDomain`, the anchor GM
-770: rule and all-radius profile equation; each velocity case carries `AlongRayDomain` with its
-771: own substitution. WL keeps real nonzero density and its optical-ratio gate. No evaluation of
-772: `I(r)`, identification with PY's `2GM/r`, or identification of constants is claimed.
-773: These flow-condition/exchange value and domain differences remain OPEN across engines,
-774: no owner named. (M18; M6/M7.)
+704: 
+705: **Counting the two observables under item 5.** The rule is “It counts the deflection
+706: and the radar slope as separate tests only where the printed objects show their conditions differ.”
+707: M17 retrieves that rule and both engines' complete γ objects, including their attached gates,
+708: for general B, R_FLOW_ONLY, R_SPEED_ONLY, R_TILT_ONLY and conditional F_FLOW/F_LIVE.
+709: On each object's on-domain `GM≠0` stratum, PY's γ-difference solution set is `{0}` and WL's
+710: relation contains `gammaDifference==0 && GM!=0`. Thus the two observables are **not counted
+711: as separate tests at these selected grades on that stratum**, in either engine. This is a
+712: count of the printed reference-comparison constraints, not a claim of cross-engine equivalence
+713: or observational redundancy outside this model point. (M17; paired conditions M13.)
+714: 
+715: At `GM=0`, PY separately prints the full real interval when both observable compatibility
+716: functionals vanish, and `EmptySet` on the other three printed vanishing/nonvanishing combinations.
+717: WL prints `GM==0` with both functionals zero, without a constraint on `gammaDifference`, and
+718: no further compatible alternative. Each engine's individual γ objects retain the corresponding
+719: unconstrained/empty singular strata. The record does not replace these by γ-difference zero:
+720: γ is unidentifiable on the compatible singular stratum, and the incompatible strata supply no
+721: joint γ solution. These strata establish no additional separate γ test under item 5; two
+722: independent tests are not counted from the unrestricted difference. Outside the respective gates,
+723: the objects are `NOT_ESTABLISHED`. (M17.)
+724: 
+725: Whether the differing WL `InverseWeight`, `ReferenceInverse` and velocity-reduction fields in
+726: M13 state the same condition remains **a separate OPEN question, no owner named**. That question
+727: does not put the above counting decision on hold. Nor are the differing strings treated as a
+728: shown physical difference of conditions: the printed γ strata are part of the counting evidence.
+729: Part C/bulk-only condition rewrites retain M13's field distinctions and earn no additional
+730: separate test here; no unprinted Part C γ object is invented. (M13/M17.)
+731: 
+732: **Engine-specific restrictions, constants, exchange and domains.** M18 retrieves both
+733: observables' complete `CONDITION` and `IMPLIED_JN` objects for all five restrictions below;
+734: no compact domain omission is used as evidence. In the following readable transcriptions,
+735: `r=s9b_r` for PY, `ρbr=rho_br_profile[r]` for PY and `rhoBr[r]` for WL. Engine-qualified
+736: constants are not identified across engines.
+737: 
+738: **PY flow-only (`R_FLOW_ONLY_B_*`).** Its printed solution dictionary has
+739: `squared = 2*GM/r`, `integrating_factor = 1/r`,
+740: `general_solution: s9b_velocity_squared(r) = r*(2*GM/r² + C_PY)`, and `residual = 0`,
+741: where `C_PY` names the printed real `s9b_velocity_integration_constant`.
+742: The `constants` field retains `C_PY=0`; its `C_PY≠0` branch is labelled
+743: `EXCLUDED_BY_SUPPLIED_V_OVER_C0_O_EPSILON_HALF`, with the printed limit of `C_PY` retained.
+744: The `nonreal_branch` is `2*GM/r<0`, labelled `EXCLUDED_BY_REAL_MATERIAL_VELOCITY`.
+745: The two positive-component entries print, respectively,
+746: 
+747: | PY velocity equality | PY implied exchange equality |
+748: |---|---|
+749: | `V = −√2 √GM / √r` | `jn = √2 √GM ρbr′/√r + (3/2)√2 √GM ρbr/r^(3/2)` |
+750: | `V = +√2 √GM / √r` | `jn = −√2 √GM ρbr′/√r − (3/2)√2 √GM ρbr/r^(3/2)` |
+751: 
+752: Their attached domain keeps the solved ray/applicability gate, `2*GM/r≥0` throughout
+753: `(s9b_b_min,∞)`, and `2*GM/r>0` on each named positive component. The condition itself keeps
+754: its exterior interval and the δ=ξ=0-substituted gate, and prints `GM=r(V²−2rVV′)/4`.
+755: Four further entries retain sign pairs `(-1,-1),(-1,1),(1,-1),(1,1)` at zero radius `z`:
+756: `z>s9b_b_min`, `2*GM/z=0`, matching real one-sided limits of
+757: `σ √2 √GM/(√q (q−z))`, `V(z)=0`, `V′(z)` equal to the right-hand limit, and
+758: `jn(z)=−ρbr(z)` times that right-hand limit. These are the printed differentiable-zero-join
+759: objects, including zero intervals; their limits are not evaluated in this record. The density
+760: function retains PY's positive declaration. (M18, tuple paths `0`, `1/0..5`, `2`.)
+761: 
+762: **WL flow-only (`R_FLOW_ONLY_B_*`).** Write `I(r)` only as an abbreviation for the printed
+763: `Inactive[Integrate][(-4*GM)/tailRadius^3,{tailRadius,r,Infinity}]`, without evaluating it.
+764: WL prints `GeneralSquaredVelocity = r*C_WL − r*I(r)` with
+765: `GeneralConstantDomain: Element[C_WL,Reals]`, and `SquaredVelocity = −r*I(r)`;
+766: `C_WL` names `velocityIntegrationConstant`. The retained `ConstantDomain` is `C_WL==0`;
+767: real nonzero `C_WL` branches are excluded by the supplied `V/c0=O(r^(-1/2))` counting.
+768: Each positive-component case lists `IntegrationConstants -> {C_WL}`, domain
+769: `C_WL==0 && −r*I(r)>0`, and its own substituted `AlongRayDomain`. It prints
+770: 
+771: | WL velocity | WL implied exchange |
+772: |---|---|
+773: | `−√(−r I(r))` | `[-ρbr(4GM+5r²I(r))−2r³I(r)ρbr′]/[2r²√(−r I(r))]` |
+774: | `+√(−r I(r))` | `[ρbr(4GM+5r²I(r))+2r³I(r)ρbr′]/[2r²√(−r I(r))]` |
 775: 
-776: **Zero-velocity restrictions.** The following table reports each engine's own condition and
-777: exchange-domain fields for both observables. PY's full attached gate at condition path `3`
-778: is obtained by that restriction's substitutions; its radial interval is `(s9b_b_min,∞)`.
-779: For bulk-only rows the condition is inside `OBJECT_ON_BOTH_PARTS`, with both density-label
-780: conditions and the exact response domain. WL's enclosing `Domain` and `BranchDomain`, and
-781: each case's `AlongRayDomain`, remain attached in every row; its `Domain` includes exterior
-782: radius/anchor and functional requirements. The residual equalities below are WL's additional
-783: `Cases/0/Domain` entries in `IMPLIED_JN` (also inside the velocity reduction of `CONDITION`),
-784: not replacements for those gates. M18 preserves every domain verbatim.
-785: 
-786: | Restriction | PY printed condition and exchange | WL printed condition and exchange-case domain |
-787: |---|---|---|
-788: | Speed-only, V=ξ=0 | `GM=c₀²r²δ′/2`; `VELOCITY_FIXED_BY_RESTRICTION`, `V=0`, attached speed-only gate, `jn=0` | GM anchor rule plus `2δ′+rδ″=0`; deflection domain `−2GM/(c₀²r)+rδ′==0`, radar domain `−2GM/(c₀³r)+rδ′/c₀==0`; `V=V′=jn=0` |
-789: | Tilt-only, δ=V=0 | `GM=c₀²rξ′²/4`; `VELOCITY_FIXED_BY_RESTRICTION`, `V=0`, attached tilt-only gate, `jn=0` | GM anchor rule plus `ξ′(ξ′+2rξ″)=0`; deflection domain `−2GM/(c₀²r)+ξ′²/2==0`, radar domain `−2GM/(c₀³r)+ξ′²/(2c₀)==0`; `V=V′=jn=0` |
-790: | Bulk-only fixed ratio, V=ξ=0 | `GM=c₀²(n−1)r²f′/4`; fixed-velocity tuple, `V=jn=0`, exact fixed-ratio/substituted-ray domain on both labels | anchor rule plus `(n−1)(2f′+rf″)=0`; deflection domain `−2GM/(c₀²r)+(n−1)rf′/2==0`, radar domain `−2GM/(c₀³r)+(n−1)rf′/(2c₀)==0`, conjoined with the exact fixed-ratio domain on each label; `V=V′=jn=0` |
-791: | Bulk-only power, V=ξ=0 | `GM=c₀²sr²f′/2`; fixed-velocity tuple, `V=jn=0`, exact power/substituted-ray domain on both labels | anchor rule plus `2sf′+rsf″=0`; deflection domain `−2GM/(c₀²r)+rsf′==0`, radar domain `−2GM/(c₀³r)+rsf′/c₀==0`, conjoined with the exact power domain on each label; `V=V′=jn=0` |
-792: 
-793: In **each** of these four restrictions PY emits no integration-constant field or solved-velocity
-794: dictionary: velocity is prescribed zero. WL explicitly prints `IntegrationConstants -> {}` and
-795: status “prescribed by the labelled substitution”, with no `ConstantDomain` field. Neither engine
-796: selects δ, ξ or f, or prints a solved-profile integration constant for those live profiles here.
-797: The fixed-ratio domain retains real local/asymptotic sound-speed squares, local square ≥0,
-798: asymptotic square >0 and the exact nonnegative-root ratio real and >0. The power domain retains
-799: `c₀ densityPower[1+f,s]` real and >0; `ρ₀>0` and the exact ray substitutions travel with both.
-800: Both keep `ρ>0` and `ρ≤0` labels; no germ-equivalent response replaces an exact domain.
-801: 
-802: For **each** flow/speed/tilt optical restriction, deflection/radar/residual value samples form
-803: but retain printed numeric differences and unresolved domains; γ rows compare markers only,
-804: and full conditions/exchange have no formed value comparison. For **each** bulk-only response,
-805: only label/domain comparisons form, not condition/exchange values. The WL/PY constant,
-806: squared-velocity, signed-exchange, zero-join and domain representations above are retained as
-807: OPEN differences, no owner named; no equivalence is supplied by the zero exchange entries.
-808: (M18; M5–M7, with the counting rule separately applied in M17.)
-809: 
+776: The zero-interval case has `C_WL==0 && −r*I(r)==0`, `V=V′=jn=0` and the same listed
+777: constant/domain. `NoRealVelocityDomain` retains the negative-squared branch. `ZeroSetJoining`
+778: and each `AtComponentBoundary` retain differentiable real velocity/flux and finite matching
+779: one-sided limits. The enclosing condition retains `r>bFar`, `rAnchor>bFar`, functional
+780: regularity/convergence/Abel-invertibility requirements, its `BranchDomain`, the anchor GM
+781: rule and all-radius profile equation; each velocity case carries `AlongRayDomain` with its
+782: own substitution. WL keeps real nonzero density and its optical-ratio gate. No evaluation of
+783: `I(r)`, identification with PY's `2GM/r`, or identification of constants is claimed.
+784: These flow-condition/exchange value and domain differences remain OPEN across engines,
+785: no owner named. (M18; M6/M7.)
+786: 
+787: **Zero-velocity restrictions.** The following table reports each engine's own condition and
+788: exchange-domain fields for both observables. PY's full attached gate at condition path `3`
+789: is obtained by that restriction's substitutions; its radial interval is `(s9b_b_min,∞)`.
+790: For bulk-only rows the condition is inside `OBJECT_ON_BOTH_PARTS`, with both density-label
+791: conditions and the exact response domain. WL's enclosing `Domain` and `BranchDomain`, and
+792: each case's `AlongRayDomain`, remain attached in every row; its `Domain` includes exterior
+793: radius/anchor and functional requirements. The residual equalities below are WL's additional
+794: `Cases/0/Domain` entries in `IMPLIED_JN` (also inside the velocity reduction of `CONDITION`),
+795: not replacements for those gates. M18 preserves every domain verbatim.
+796: 
+797: | Restriction | PY printed condition and exchange | WL printed condition and exchange-case domain |
+798: |---|---|---|
+799: | Speed-only, V=ξ=0 | `GM=c₀²r²δ′/2`; `VELOCITY_FIXED_BY_RESTRICTION`, `V=0`, attached speed-only gate, `jn=0` | GM anchor rule plus `2δ′+rδ″=0`; deflection domain `−2GM/(c₀²r)+rδ′==0`, radar domain `−2GM/(c₀³r)+rδ′/c₀==0`; `V=V′=jn=0` |
+800: | Tilt-only, δ=V=0 | `GM=c₀²rξ′²/4`; `VELOCITY_FIXED_BY_RESTRICTION`, `V=0`, attached tilt-only gate, `jn=0` | GM anchor rule plus `ξ′(ξ′+2rξ″)=0`; deflection domain `−2GM/(c₀²r)+ξ′²/2==0`, radar domain `−2GM/(c₀³r)+ξ′²/(2c₀)==0`; `V=V′=jn=0` |
+801: | Bulk-only fixed ratio, V=ξ=0 | `GM=c₀²(n−1)r²f′/4`; fixed-velocity tuple, `V=jn=0`, exact fixed-ratio/substituted-ray domain on both labels | anchor rule plus `(n−1)(2f′+rf″)=0`; deflection domain `−2GM/(c₀²r)+(n−1)rf′/2==0`, radar domain `−2GM/(c₀³r)+(n−1)rf′/(2c₀)==0`, conjoined with the exact fixed-ratio domain on each label; `V=V′=jn=0` |
+802: | Bulk-only power, V=ξ=0 | `GM=c₀²sr²f′/2`; fixed-velocity tuple, `V=jn=0`, exact power/substituted-ray domain on both labels | anchor rule plus `2sf′+rsf″=0`; deflection domain `−2GM/(c₀²r)+rsf′==0`, radar domain `−2GM/(c₀³r)+rsf′/c₀==0`, conjoined with the exact power domain on each label; `V=V′=jn=0` |
+803: 
+804: In **each** of these four restrictions PY emits no integration-constant field or solved-velocity
+805: dictionary: velocity is prescribed zero. WL explicitly prints `IntegrationConstants -> {}` and
+806: status “prescribed by the labelled substitution”, with no `ConstantDomain` field. Neither engine
+807: selects δ, ξ or f, or prints a solved-profile integration constant for those live profiles here.
+808: The fixed-ratio domain retains real local/asymptotic sound-speed squares, local square ≥0,
+809: asymptotic square >0 and the exact nonnegative-root ratio real and >0. The power domain retains
+810: `c₀ densityPower[1+f,s]` real and >0; `ρ₀>0` and the exact ray substitutions travel with both.
+811: Both keep `ρ>0` and `ρ≤0` labels; no germ-equivalent response replaces an exact domain.
+812: 
+813: For **each** flow/speed/tilt optical restriction, deflection/radar/residual value samples form
+814: but retain printed numeric differences and unresolved domains; γ rows compare markers only,
+815: and full conditions/exchange have no formed value comparison. For **each** bulk-only response,
+816: only label/domain comparisons form, not condition/exchange values. The WL/PY constant,
+817: squared-velocity, signed-exchange, zero-join and domain representations above are retained as
+818: OPEN differences, no owner named; no equivalence is supplied by the zero exchange entries.
+819: (M18; M5–M7, with the counting rule separately applied in M17.)
+820: 
+FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
+821: ### R-S22-01 — how the energy a throat releases splits among light, the extra wave and the bulk
+822: 
+823: - **source**
+824:   - S11 (`steps/S11_stray_longitudinal.md`, departure table and the paragraphs after it). The table gives the
+825:     question "whether matter directly observes the second cone" the owner "derived matter/interface
+826:     coupling". The record says "A second cone is only a departure if matter COUPLES to it", and describes
+827:     matter as "a throat held open by a trapped brane-shear standing wave".
+828:   - The photon survey, E32–E34 and E38 (`PHOTON_POLARIZATION_SURVEY.md` §4). Each is "In apparent conflict",
+829:     under conditions that differ by entry. In the survey's words, the classification rests on "E32–E34 on
+830:     matter coupling and, for the blackbody comparison, ordinary thermal-radiation participation; E38
+831:     additionally on the extra branch's cosmological relativistic population, energy/perturbation mapping and
+832:     decoupling history". (C6, C7.)
+833: - **target** S22 (the nonlinear throat solve), together with Q2 (the mouth source and its held datum).
+834:   The throat's order-conversion/source-boundary inputs are OPEN with **no live owner named**.
+835:   The user on 2026-10-19 also assigned those inputs to S12 (C8); that assignment is retained as
+836:   historical provenance, not a future delivery by S12, whose requirements-first framing leaves
+837:   their forms open. Who should deliver them is a question for the user (S12 record §§5–7, M17).
+838:   The S11 record itself names only "derived matter/interface coupling".
+839: - **status** OPEN
+840: - **requirement** — Consider a throat held open by its trapped shear wave. The trapped-wave state can change,
+841:   the throat can move, and its mouth can change shape. When any of these happens, the object is the energy
+842:   released, with its frequency content and rate, and how it splits among three channels:
+843:   - the free transverse waves (light);
+844:   - the extra longitudinal wave (S11's second cone);
+845:   - the bulk.
+846: 
+847:   The entry also requires the reverse: how much of the energy each channel carries in is taken up by a
+848:   throat, at each frequency.
+849: - **on failure** — S11's departure cannot be classified. The record makes the second cone a departure only
+850:   if matter couples to it, and without these objects nothing decides whether matter observes it. E32–E34
+851:   and E38 stay "in apparent conflict", with their condition undecided.
+852: - **note: what a delivered split would and would not decide** —
+853:   - **Each measurement has its own conditions** (survey §4):
+854:     - **E33**, the laboratory blackbody, needs the extra wave to be an additional ordinary thermal mode,
+855:       with the usual occupation, energy and dispersion, and a calibrated emission and absorption response.
+856:     - **E34**, the CMB spectrum, needs its power to enter the calibrated CMB radiance rather than cancel in
+857:       the sky/reference comparison.
+858:     - **E38**, `N_eff`, needs it to be extra gravitating radiation, populated and relativistic in the early
+859:       universe. The survey adds that a weak population or earlier decoupling is not generically excluded.
+860:   - **The split alone decides none of them.** Whether the extra wave is populated depends on several things:
+861:     - its emission and uptake rates, compared with each measurement's timescale;
+862:     - its escape into the bulk;
+863:     - its initial population and the expansion history.
+864: 
+865:     What a populated wave then carries depends on its own speed. In S11 that speed is set by `B_comp/ρ_br`
+866:     (`R-S6-01`), not by light's `μ_R/ρ_br`. So a share comparable to light's is not by itself a conflict,
+867:     and neither is equilibrium with matter. Nor does a small share by itself rule one out.
+868:   - **The falsifier** is each measurement, applied under its own conditions to the population and power
+869:     that these objects, the extra wave's speed and its escape into the bulk predict. That application is
+870:     later work. This entry states no bound; compare the note in `R-S12-01`.
+871:   - **The quantum part.** The survey's conditions also assume the usual quantum occupation. The plan
+872:     assigns that to a separate project (`V3_STEP_PLAN.md:1198–1204`; survey [P8]), so a classical split
+873:     does not settle that part. (C7.)
+874: - **relation** —
+875:   - S22's linear test 1 asks how much light passing a supplied defect profile converts into the
+876:     longitudinal mode. S11c asked how much light converts where the brane changes (`V3_STEP_PLAN.md:508`).
+877:     Both concern incoming light; neither is a throat's own emission.
+878:   - S22's linear test 2 asks whether the longitudinal mode radiates into the bulk, and needs the interface
+879:     law (`V3_STEP_PLAN.md:1181`). That escape enters the extra wave's population. So applying any
+880:     measurement under this entry also needs test 2's result.
+881:   - The S11 record adds that at homogeneous linear order "the mode's bulk leakage and direct observability
+882:     require the brane–bulk interface law". S11b supplies that law conditionally, for a uniform brane only.
+883:   - The S11 record states that `c_L` is not a gravitational wave, so this entry is not about the carrier of
+884:     gravity. (C6, C8.)
+885: 
+886: ## Population passes
+887: 
+888: **Pass 1 — S9 and S10. ⭐ DONE 2026-08-06**, alongside S10's step record and from the same reading.
+889: Seven entries added, against the two that existed. The calibration it produced, for pass 2:
+890: 
+891: - ⭐ **Consolidate rather than duplicate.** S9 states its shear requirement twice — once for the ordered
+892:   phase and once for the disordered — and a third consumer (the geon's trapped mode) appears elsewhere in
+893:   the record. It is **one object**, `R-S1-02`, with three consumers, ⛔ not three entries.
+894: - ⚠ **Distinguish a requirement from an ansatz by asking whether a retirement condition is LIVE.** `μ_R`'s
+895:   **magnitude** is postulated and defect `B2` closed the polar-`P` route to deriving it ⇒ ansatz, ⛔ no
+896:   entry. Its **form** has no such closure ⇒ `R-S8-01`, a live requirement. The two sit in the same
+897:   sentence of S9's record and go to different registers.
+898: - ⛔ **A requirement is not everything a later step would find useful.** A simulation needs `ρ_br` and
+899:   `μ_R` separately rather than only their ratio; that is a *consumer's* need pointing **forward**, ⛔ not
+900:   an obligation on which a banked result rests. It got no entry.
+901: - ⭐ **The load-bearing ones are the identifications nobody computed.** `R-S8-02` — that the in-plane and
+902:   out-of-plane sectors decouple — is the single entry on which S10's headline number depends, and it was
+903:   flagged inside S10 **at the moment the identification was made**. ⇒ read a record for its *flagged
+904:   identifications* first; they are where the requirements are.
+905: 
+906: 
 FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md AT 560c6c51
 135: ### R-S1-01 — the brane's spatial dimension
 136: 
@@ -14719,100 +14836,112 @@ FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
 21: before/after census are `steps/_measurements/S12_record_measurements.md`, M12/M15.
 22: 
 FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
-1272: ### S12 pass — local order-source compatibility and separate inventories · 2026-10-20; written for review
-1273: 
-1274: Source: `steps/S12_order_source.md`, §§1–7. Its constructions are accepted at `a3da43d9`, and the
-1275: comparator with its engine-row note at `fe485b73`; this record/pass has not had its own review.
-1276: Commands and literal stdout: `steps/_measurements/S12_record_measurements.md`, generated by
-1277: `scripts/S12_record_measurements.py`. M01/M03/M07–M11 retrieve the conditional object and inventories;
-1278: M12 retrieves the schema, rest-on method and entry census; M13 the second-route sources.
-1279: 
-1280: **Census:** 18 entries before (`560c6c51`) → 18 after, all OPEN. **New entries by target: none.**
-1281: Four existing entries gain S12 source/provenance: `R-S1-01`, `R-S1-02`, `R-S12-02` and `R-S21-01`.
-1282: The last gains the user's framing decision only, not new optical evidence. No status changes.
-1283: The light-closeout status lines now record its acceptance at `e070c7f3`.
-1284: 
-1285: **First route / one rest-on criterion.** The reported object is conditional on supplied balances,
-1286: coordinate dimension, the adopted U1 support identification and the stated regional function class.
-1287: It does not rest on a selected interior-order, face, flux, drain/return, momentum-partner or energy
-1288: law. The printed compatibility objects do support a conditional requirement: any future realization
-1289: on this domain must meet those objects, or it cannot realize the reported source. They merge into
-1290: the native-conversion requirement `R-S12-02`, with no choice of how to meet them. Its status stays
-1291: OPEN: the source constraints supply neither native source functions nor boundary data.
+1291: ### S12 pass — local order-source compatibility and separate inventories · 2026-10-20; written for review
 1292: 
-1293: | Printed object required | Existing entry / target / status | Source and failure meaning |
-1294: |---|---|---|
-1295: | `general_order/region/1/source` below and `region/3/source` above | `R-S12-02` / S12 / OPEN | M03/M07: the respective live order-flux divergences. Data violating either cannot realize the reported exterior source. |
-1296: | `general_order/region/2/source` inside | `R-S12-02` / S12 / OPEN | M03/M07: live order transport plus order-flux divergence. Data violating it cannot realize the interior object. |
-1297: | `general_order/face/{1,2}/trace_coefficient` and `/source_contribution` | `R-S12-02` / S12 / OPEN | M03/M07/M08: normalized source parts at each live face, retaining the supplied-domain and diagnostic qualifications. No face-concentrated source is set to zero. |
-1298: | `material/face/{1,2}/requirement` | `R-S12-02` / S12 / OPEN | M03/M07: distinct total-material conditions at both faces; printed, not solved. Violation prevents locally conserved material in this function class. |
-1299: | `conditional_fast_ordering/region/{1,2,3}/source` and both face trace/source objects | `R-S12-02` / S12 / OPEN | M03/M07: only the labelled specialization, general in two offsets. Violation prevents that conditional specialization; it is not a universal fast-ordering limit. |
-1300: 
-1301: These requirement objects specify no law, material, premise or candidate as a means of satisfying
-1302: them. Their standing is distinct from the supplied balances, adopted inputs and flagged support
-1303: identification that qualify their domain. U1–U4 remain **"an adopted substrate input to a conditional
-1304: model"** each, as the source says; they are not newly derived substrate requirements. U1's unencoded
-1305: re-ordering clause, face-concentrated input fields and the generality of the live functions remain
-1306: OPEN handoffs. No named retirement condition makes an uncomputed constitutive form a new entry.
-1307: The two existing dimension/shear obligations have live retirement questions already, so they gain
-1308: only the limited conditional consumers stated in their own entries.
-1309: 
-1310: **Rest-on census, every entry:**
-1311: 
-1312: | Existing entry | S12 dependence / effect |
-1313: |---|---|
-1314: | R-S6-01 | No compression-modulus input or result; no source gain. |
-1315: | R-S7-01 | Live faces impose no selected width or nonuniform-width flatness result; no source gain. |
-1316: | R-S1-01 (target S6) | Three in-plane coordinates and four-dimensional material balance; coordinate-only source added, no dimensional derivation. |
-1317: | R-S1-02 | Adopted U1 shear-region/support identification; conditional interpretation source added, no computed shear response or confinement. |
-1318: | R-S1.5-01 | No GNLS mode/acoustic input; no source gain. |
-1319: | R-S6-02 | No stationary/equilibrium state or substrate first variation; no source gain. |
-1320: | R-S8-01 | No stiffness functional supplied or derived; no source gain. |
-1321: | R-S8-02 | No coupled `(u,h)` operator or block-diagonality input; no source gain. |
-1322: | R-S8-03 | No optical-stiffness sign calculation or propagating optical gate; no source gain. |
-1323: | R-S8-04 | No angular-momentum/couple-stress result used; inherited inventory only, no source gain. |
-1324: | R-S8-05 | No rotational reference frame selected; inherited inventory only, no source gain. |
-1325: | R-S1-03 | No microscopic time-reversal or Onsager–Casimir result used; no source gain. |
-1326: | R-S8-06 | No displacement identification or quadratic slab inertia used; material conservation alone does not supply either; no source gain. |
-1327: | R-S12-01 | Separate conditional non-passive-interface reservoir/budget retained. No computed S12 power consumer, no source gain, no live owner added. |
-1328: | R-S12-02 | Printed regional/face conversion compatibility and distinct material face conditions merge here; S12 source added. Native functions/data remain OPEN. |
-1329: | R-O2-01 | Separate net-supplier/budget condition retained; no S12 net-power calculation or consumer, no source gain or owner change. |
-1330: | R-S21-01 | User framing provenance added: each force states its flow requirement, S21 compares, a mismatch reopens S9b. No new optical evidence or fitted flow. |
-1331: | R-S22-01 | No throat energy split, matter coupling or thermal/cosmological transfer result computed or used; carried inventory only, no source gain. |
-1332: 
-1333: **Second route.** Apply the register's broader rule, including prior-art candidates outside S12's
-1334: record. Read the O2 scoping §5 and the S9b second-route inventory (M13). Gurtin–Murdoch,
-1335: Abels–Garcke–Grün, Scriven, Helfrich and Rodriguez–Hoger–McCulloch identify surface/exchange/reference
-1336: candidates; Hamilton–Lisle, Visser, Unruh and the inherited Cahill/Sbitnev class identify flow
-1337: candidates. Their model/dimension/exchange and source-access restrictions travel with each row.
-1338: For **each named candidate individually**, applicability, historical failure modes/objections that
-1339: transfer and whether they are answered here remain OPEN, **no owner named for a new S12 check**.
-1340: S12 reproduces no identified candidate result: its balances are supplied and its support model is
-1341: adopted. Thus no derived S12 requirement is entered on an oracle match, and none of those historical
-1342: obligations is claimed discharged. The remaining S9b candidates each keep their original OPEN
-1343: handoffs; the positive light-sector oracle check does not become an S12 oracle check.
-1344: 
-1345: The inherited river/acoustic objections are still carried, not answered: what drives the flow and
-1346: where material goes remain S12/O2 questions; scalar acoustics versus transverse light is a scoped
-1347: S9b exclusion; kinematics versus dynamics stays in the analog-gravity handoff. Local material/order
-1348: identities name compatibility but select no flow, closure or response dynamics. Existing MacCullagh
-1349: admissibility/frame entries stay OPEN. No fresh oracle computation or literature check is done here.
-1350: 
-1351: **Directive/register relation and source tensions.** No new operative disagreement with the S12
-1352: record contract: its item 7 expressly defers to this rest-on test. Its 2026-10-19 framing says S12
-1353: **"states what any conversion law must satisfy and leaves the forms open"**, while the older
-1354: `R-S12-02` requires **"the native drain/return functions and their separate boundary data"**.
-1355: The older obligation remains OPEN; the current constraints merge into it without claiming its
-1356: delivery. Stage 045's controllers close globally **"despite the local sink"**, whereas the current
-1357: law supplies **"total material"** conservation and rules out **"The frozen-wall mass sink with a
-1358: remote return"**. Whether the controllers retain a role after re-hosting is OPEN in the S12
-1359: inventory; no separate owner is named for that assessment. Both sides are retrieved in M01/M11.
-1360: The earlier pass-2 second-route disagreement stays unresolved: the old directive says **"Run it only
-1361: on a prior result that a record in the reading list identifies as reproduced by the sector"**, and
-1362: this register says **"Run this route for every sector with identified prior art"** (M13). The
-1363: register's broader rule governs this pass. All comparator differences/coverage limits stay in
-1364: S12 §4 and M06–M09; the accepted engine-row comparison carries no information.
-1365: 
+1293: Source: `steps/S12_order_source.md`, §§1–7. Its constructions are accepted at `a3da43d9`, and the
+1294: comparator with its engine-row note at `fe485b73`; this is the round-1 repair of reviewed baseline
+1295: `8608bc71`, awaiting its own review (M17).
+1296: Commands and literal stdout: `steps/_measurements/S12_record_measurements.md`, generated by
+1297: `scripts/S12_record_measurements.py`. M01/M03/M07–M11 retrieve the conditional object and inventories;
+1298: M12 retrieves the schema, rest-on method and entry census; M13 the second-route sources.
+1299: 
+1300: **Census:** 18 entries before (`560c6c51`) → 18 after, all OPEN. **New entries by target: none.**
+1301: Four existing entries gain S12 source/provenance: `R-S1-01`, `R-S1-02`, `R-S12-02` and `R-S21-01`.
+1302: The last gains the user's framing decision only, not new optical evidence. No status changes.
+1303: The repair of `8608bc71` is also 18 → 18, with no additional source gain. Live targets for
+1304: `R-S12-01` and `R-S12-02` are now **no owner named**; `R-S22-01` keeps S22/Q2 while its formerly
+1305: S12-assigned conversion/source-boundary inputs have no live owner named. Historical assignments
+1306: remain reported; the record asks the user who should own the undelivered parts (M12/M15/M17).
+1307: The light-closeout status lines now record its acceptance at `e070c7f3`.
+1308: 
+1309: **First route / one rest-on criterion.** The reported object is conditional on supplied balances,
+1310: coordinate dimension, the adopted U1 support identification and the stated regional function class.
+1311: It does not rest on a selected interior-order, face, flux, drain/return, momentum-partner or energy
+1312: law. The printed compatibility objects do support a conditional requirement: any future realization
+1313: on this domain must meet those objects, or it cannot realize the reported source. They merge into
+1314: the native-conversion requirement `R-S12-02`, with no choice of how to meet them. Its status stays
+1315: OPEN: the source constraints supply neither native source functions nor boundary data.
+1316: No source names a later step to deliver the formerly S12-assigned forms/data, so the live target
+1317: is **no owner named**, including for future realizations of the following compatibility objects.
+1318: 
+1319: | Printed object required | Existing entry / target / status | Source and failure meaning |
+1320: |---|---|---|
+1321: | `general_order/region/1/source` below and `region/3/source` above | `R-S12-02` / no owner named / OPEN | M03/M07: the respective live order-flux divergences. Data violating either cannot realize the reported exterior source. |
+1322: | `general_order/region/2/source` inside | `R-S12-02` / no owner named / OPEN | M03/M07: live order transport plus order-flux divergence. Data violating it cannot realize the interior object. |
+1323: | `general_order/face/{1,2}/trace_coefficient` and `/source_contribution` | `R-S12-02` / no owner named / OPEN | M03/M07/M08: normalized source parts at each live face, retaining the supplied-domain and diagnostic qualifications. No face-concentrated source is set to zero. |
+1324: | `material/face/{1,2}/requirement` | `R-S12-02` / no owner named / OPEN | M03/M07: distinct total-material conditions at both faces; printed, not solved. Violation prevents locally conserved material in this function class. |
+1325: | `conditional_fast_ordering/region/{1,2,3}/source` and both face trace/source objects | `R-S12-02` / no owner named / OPEN | M03/M07: only the labelled specialization, general in two offsets. Violation prevents that conditional specialization; it is not a universal fast-ordering limit. |
+1326: 
+1327: These requirement objects specify no law, material, premise or candidate as a means of satisfying
+1328: them. Their standing is distinct from the supplied balances, adopted inputs and flagged support
+1329: identification that qualify their domain. U1–U4 remain **"an adopted substrate input to a conditional
+1330: model"** each, as the source says; they are not newly derived substrate requirements. U1's unencoded
+1331: re-ordering clause, face-concentrated input fields and the generality of the live functions remain
+1332: OPEN handoffs. No named retirement condition makes an uncomputed constitutive form a new entry.
+1333: The two existing dimension/shear obligations have live retirement questions already, so they gain
+1334: only the limited conditional consumers stated in their own entries.
+1335: 
+1336: **Rest-on census, every entry:**
+1337: 
+1338: | Existing entry | S12 dependence / effect |
+1339: |---|---|
+1340: | R-S6-01 | No compression-modulus input or result; no source gain. |
+1341: | R-S7-01 | Live faces impose no selected width or nonuniform-width flatness result; no source gain. |
+1342: | R-S1-01 (target S6) | Three in-plane coordinates and four-dimensional material balance; coordinate-only source added, no dimensional derivation. |
+1343: | R-S1-02 | Adopted U1 shear-region/support identification; conditional interpretation source added, no computed shear response or confinement. |
+1344: | R-S1.5-01 | No GNLS mode/acoustic input; no source gain. |
+1345: | R-S6-02 | No stationary/equilibrium state or substrate first variation; no source gain. |
+1346: | R-S8-01 | No stiffness functional supplied or derived; no source gain. |
+1347: | R-S8-02 | No coupled `(u,h)` operator or block-diagonality input; no source gain. |
+1348: | R-S8-03 | No optical-stiffness sign calculation or propagating optical gate; no source gain. |
+1349: | R-S8-04 | No angular-momentum/couple-stress result used; inherited inventory only, no source gain. |
+1350: | R-S8-05 | No rotational reference frame selected; inherited inventory only, no source gain. |
+1351: | R-S1-03 | No microscopic time-reversal or Onsager–Casimir result used; no source gain. |
+1352: | R-S8-06 | No displacement identification or quadratic slab inertia used; material conservation alone does not supply either; no source gain. |
+1353: | R-S12-01 | Separate conditional non-passive-interface reservoir/budget retained. No computed S12 power consumer, no source gain, no live owner added. |
+1354: | R-S12-02 | Printed regional/face conversion compatibility and distinct material face conditions merge here; S12 source added. Native functions/data remain OPEN. |
+1355: | R-O2-01 | Separate net-supplier/budget condition retained; no S12 net-power calculation or consumer, no source gain or owner change. |
+1356: | R-S21-01 | User framing provenance added: each force states its flow requirement, S21 compares, a mismatch reopens S9b. No new optical evidence or fitted flow. |
+1357: | R-S22-01 | No throat energy split, matter coupling or thermal/cosmological transfer result computed or used; carried inventory only, no source gain. |
+1358: 
+1359: **Second route.** Apply the register's broader rule, including prior-art candidates outside S12's
+1360: record. Read the O2 scoping §5 and the S9b second-route inventory (M13). Gurtin–Murdoch,
+1361: Abels–Garcke–Grün, Scriven, Helfrich and Rodriguez–Hoger–McCulloch identify surface/exchange/reference
+1362: candidates; Hamilton–Lisle, Visser, Unruh and the inherited Cahill/Sbitnev class identify flow
+1363: candidates. Their model/dimension/exchange and source-access restrictions travel with each row.
+1364: For **each named candidate individually**, applicability, historical failure modes/objections that
+1365: transfer and whether they are answered here remain OPEN, **no owner named for a new S12 check**.
+1366: S12 reproduces no identified candidate result: its balances are supplied and its support model is
+1367: adopted. Thus no derived S12 requirement is entered on an oracle match, and none of those historical
+1368: obligations is claimed discharged. The remaining S9b candidates each keep their original OPEN
+1369: handoffs; the positive light-sector oracle check does not become an S12 oracle check.
+1370: 
+1371: The inherited river/acoustic objections are still carried, not answered: flow drive separates
+1372: unowned drain/source-boundary realization (`R-S12-02`) from O2's carried force-balance handoffs;
+1373: material destination separates the unowned drain-produced density/exchange choice (`R-S12-02`)
+1374: from S21's knit compatibility (`R-S21-01`). Scalar acoustics versus transverse light is a scoped
+1375: S9b exclusion; kinematics versus dynamics stays in the analog-gravity handoff. Local material/order
+1376: identities name compatibility but select no flow, closure or response dynamics. Existing MacCullagh
+1377: admissibility/frame entries stay OPEN. No fresh oracle computation or literature check is done here.
+1378: 
+1379: **Directive/register relation and source tensions.** No new operative disagreement with the S12
+1380: record contract: its item 7 expressly defers to this rest-on test. Its 2026-10-19 framing says S12
+1381: **"states what any conversion law must satisfy and leaves the forms open"**, while the older
+1382: `R-S12-02` requires **"the native drain/return functions and their separate boundary data"**.
+1383: The older obligation remains OPEN; the current constraints merge into it without claiming its
+1384: delivery. Its earlier owner line **"S12 owns the drain/return data"** conflicts with that framing:
+1385: no source names a later delivery step, so its live target is **no owner named**, and the record
+1386: asks the user who should own the undelivered parts. Stage 045's controllers close globally **"despite the local sink"**, whereas the current
+1387: law supplies **"total material"** conservation and rules out **"The frozen-wall mass sink with a
+1388: remote return"**. Whether the controllers retain a role after re-hosting is OPEN in the
+1389: source/controller inventory, with no live owner named for that assessment. Both sides and the
+1390: split oracle handoffs are retrieved in M01/M11/M17.
+1391: The earlier pass-2 second-route disagreement stays unresolved: the old directive says **"Run it only
+1392: on a prior result that a record in the reading list identifies as reproduced by the sector"**, and
+1393: this register says **"Run this route for every sector with identified prior art"** (M13). The
+1394: register's broader rule governs this pass. All comparator differences/coverage limits stay in
+1395: S12 §4 and M06–M09; the accepted engine-row comparison carries no information.
+1396: 
 FILE research/pde_ledger_v3/steps/S9b_flow_oracle_comparison.md
 1: # S9b flow-only oracle comparison: the river and acoustic-flow check
 2: 
@@ -14829,7 +14958,7 @@ FILE STATUS.md
 4: open is carried as requirements in the [substrate register](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md),
 5: in its light-closing pass (accepted `e070c7f3`). S12's constructions (`a3da43d9`) and comparator
 6: (`fe485b73`, with the engine-row note) are accepted. Its [step record](research/pde_ledger_v3/steps/S12_order_source.md)
-7: and register pass are written for review; that record has not had its own review.
+7: and register pass are repaired for round-1 review from preserved baseline `8608bc71`.
 8: 
 9: ## Light sector at close
 10: 
@@ -14844,90 +14973,98 @@ FILE STATUS.md
 19:   that the brane is that fluid, and its optics are a supplied input.
 20: - **New requirement R-S22-01:** how the energy a throat releases splits among light, the extra longitudinal
 21:   wave and the bulk. It is needed to decide whether matter observes S11's extra wave, and whether the model conflicts
-22:   with the blackbody, CMB and N_eff measurements (photon survey E32–E34, E38). Its owners are S22, Q2 and S12.
-23: - **Parked:**
-24:   - S11c (PARTIAL);
-25:   - every heavy backlog run ([DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md));
-26:   - the applicability checks of the other named oracles.
-27: 
-28: ## S11c, closed PARTIAL
+22:   with the blackbody, CMB and N_eff measurements (photon survey E32–E34, E38). S22 owns the split and
+23:   Q2 the mouth/held datum; conversion/source-boundary inputs formerly assigned to S12 remain OPEN
+24:   with no live owner named.
+25: - **Parked:**
+26:   - S11c (PARTIAL);
+27:   - every heavy backlog run ([DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md));
+28:   - the applicability checks of the other named oracles.
 29: 
-30: The light model has a useful uniform result, but no accepted number for light lost at a defect.
-31: S11c is closed **PARTIAL**. No nonuniform build, numerical continuation or review resumes automatically.
-32: Read the [short closeout](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md) first; the
-33: [canonical d record](research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md) gives the evidence and limits.
-34: 
-35: ## What later work may use
+30: ## S11c, closed PARTIAL
+31: 
+32: The light model has a useful uniform result, but no accepted number for light lost at a defect.
+33: S11c is closed **PARTIAL**. No nonuniform build, numerical continuation or review resumes automatically.
+34: Read the [short closeout](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md) first; the
+35: [canonical d record](research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md) gives the evidence and limits.
 36: 
-37: - **CONDITIONAL:** uniform light decouples from the bulk in the supplied linear model. SymPy and independent
-38:   Wolfram work support it, with documented engine/repair reviews and comparison limits; stability needs
-39:   nonnegative stiffness. [S11b, transverse mode and review provenance](research/pde_ledger_v3/steps/S11b_interface_coupling_law.md).
-40: - **CONDITIONAL:** a later SymPy check found finite modes, nonzero energy current and zero face drives
-41:   (light does not push on the bulk) at, above and below the tested light/sound speed matches, with the bulk
-42:   at rest and other inputs fixed. Claude/Grok cleared the method, not a fresh review of the executed result.
-43:   [Uniform completion, coverage/limits](research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_result.md).
-44: - **UNRESOLVED:** the held-profile omega=3 benchmark at ratio approximately 0.12 found no numerically resolved
-45:   loss. Its 1 ppm empirical floor is not a physical upper bound; it is not a matched-speed defect result.
-46:   [Benchmark, signed-current table/controls](research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_report.md).
-47: - **CONDITIONAL:** four equation repairs have scoped support, not full composition clearance. Original b/c2
-48:   checks were on pre-repair equations. [b changes](research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md#changed-after-close),
-49:   [c2 changes](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md#changed-after-close).
-50: - **CONDITIONAL:** the bounded S10/S11 Lean contracts retain their reviewed proof status; they do not supply
-51:   the missing physical scattering/work result. [S10 closure](research/pde_ledger_v3/lean/s10/FIDELITY_REVIEW.md),
-52:   [S11 contracts and application limits](research/pde_ledger_v3/lean/s11/README.md).
-53: 
-54: ## Open questions and owners
+37: ## What later work may use
+38: 
+39: - **CONDITIONAL:** uniform light decouples from the bulk in the supplied linear model. SymPy and independent
+40:   Wolfram work support it, with documented engine/repair reviews and comparison limits; stability needs
+41:   nonnegative stiffness. [S11b, transverse mode and review provenance](research/pde_ledger_v3/steps/S11b_interface_coupling_law.md).
+42: - **CONDITIONAL:** a later SymPy check found finite modes, nonzero energy current and zero face drives
+43:   (light does not push on the bulk) at, above and below the tested light/sound speed matches, with the bulk
+44:   at rest and other inputs fixed. Claude/Grok cleared the method, not a fresh review of the executed result.
+45:   [Uniform completion, coverage/limits](research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_result.md).
+46: - **UNRESOLVED:** the held-profile omega=3 benchmark at ratio approximately 0.12 found no numerically resolved
+47:   loss. Its 1 ppm empirical floor is not a physical upper bound; it is not a matched-speed defect result.
+48:   [Benchmark, signed-current table/controls](research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_report.md).
+49: - **CONDITIONAL:** four equation repairs have scoped support, not full composition clearance. Original b/c2
+50:   checks were on pre-repair equations. [b changes](research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md#changed-after-close),
+51:   [c2 changes](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md#changed-after-close).
+52: - **CONDITIONAL:** the bounded S10/S11 Lean contracts retain their reviewed proof status; they do not supply
+53:   the missing physical scattering/work result. [S10 closure](research/pde_ledger_v3/lean/s10/FIDELITY_REVIEW.md),
+54:   [S11 contracts and application limits](research/pde_ledger_v3/lean/s11/README.md).
 55: 
-56: | Question | Owner / evidence |
-57: | --- | --- |
-58: | Replaying the uniform check needs its intermediate caches regenerated from the kept b/c2 engines and the S10/S11 export chain repaired (H4). The original caches are not in git. They stay on local disk under `_scratch/` (Phase 5). | S11c-d if reused; [H3](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). |
-59: | S10/S11 exports pin their pre-2026-09-11 producers. Regenerate them from the current producers under review, or revert the producer edits. The S10 edit may be what the S10 Lean D3 link relies on, so a revert is not automatic. | S10/S11 maintenance; [H4](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). Not run in this cleanup. |
-60: | Direct c2 `[0,2]` entry is set to zero without an order-counting justification; whether the full response needs a nonzero term is unresolved. | S11c-c2/d if reused; [joint disposition, mixed-term issue](research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_joint_disposition.md). |
-61: | N6 premises: physical correctness of Φ, the V transform and extracted-block leakage remain open. | S11c-c2/d if reused; [c2, review caveats](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md), [N6 disposition, §7](research/pde_ledger_v3/_measurements/S11c_c2_N6_reconcile_disposition.md). |
-62: | Full cross-engine composition, b sign/control debts, c1 giants and accepted scattering/work/loss | S11c-b/c1/c2/d if reopened; the backlog runs are parked (2026-10-19), [DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md), [d limits](research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md). |
-63: | How a throat's released energy splits among light, the extra wave and the bulk | S22 with Q2/S12; [R-S22-01](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). |
-64: | Conversion observable and strong-edge interpretation | S11c-e; [split and d weak-limit obligation](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md#actual-downstream-uses-and-next-step). |
-65: | Dynamical drain/return source, boundary data and any change to the drain-frozen symmetry result | **S12**; [plan, S12](research/pde_ledger_v3/V3_STEP_PLAN.md). No automatic transfer of the one-engine no-leak rule. |
-66: | Real defect profile, holder, response and charge-force sign | Q2/Q3/S22; [plan, charge phase/S22](research/pde_ledger_v3/V3_STEP_PLAN.md). |
-67: | Physical light/sound speed ratio | S20a calibration; S22/R10 proposed derivation; [plan, S20a/S22](research/pde_ledger_v3/V3_STEP_PLAN.md). |
-68: | Material admissibility and unbuilt substrate, including shear response and physical dimension | S1–S8; [SUBSTRATE_REQUIREMENTS, entries/passes](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). S9/S10 requirements pass 1 is recorded, but the substrate steps have not run. |
-69: | Muonium/gravity dependency quarantine, PN geometry-independence and structural audit | S16/species matching; [correction note, §§2–5](notes/muonium_gravity_corrections.md). No withdrawn throat geometry may supply a prediction. |
-70: 
-71: The following are **OPEN** carry-overs, not instructions to resume. [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over) maps every grouped item to the old STATUS and its disposition.
+56: ## Open questions and owners
+57: 
+58: | Question | Owner / evidence |
+59: | --- | --- |
+60: | Replaying the uniform check needs its intermediate caches regenerated from the kept b/c2 engines and the S10/S11 export chain repaired (H4). The original caches are not in git. They stay on local disk under `_scratch/` (Phase 5). | S11c-d if reused; [H3](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). |
+61: | S10/S11 exports pin their pre-2026-09-11 producers. Regenerate them from the current producers under review, or revert the producer edits. The S10 edit may be what the S10 Lean D3 link relies on, so a revert is not automatic. | S10/S11 maintenance; [H4](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). Not run in this cleanup. |
+62: | Direct c2 `[0,2]` entry is set to zero without an order-counting justification; whether the full response needs a nonzero term is unresolved. | S11c-c2/d if reused; [joint disposition, mixed-term issue](research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_joint_disposition.md). |
+63: | N6 premises: physical correctness of Φ, the V transform and extracted-block leakage remain open. | S11c-c2/d if reused; [c2, review caveats](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md), [N6 disposition, §7](research/pde_ledger_v3/_measurements/S11c_c2_N6_reconcile_disposition.md). |
+64: | Full cross-engine composition, b sign/control debts, c1 giants and accepted scattering/work/loss | S11c-b/c1/c2/d if reopened; the backlog runs are parked (2026-10-19), [DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md), [d limits](research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md). |
+65: | How a throat's released energy splits among light, the extra wave and the bulk | S22 with Q2; conversion/source-boundary inputs formerly assigned to S12 are OPEN with no live owner named; [R-S22-01](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). |
+66: | Conversion observable and strong-edge interpretation | S11c-e; [split and d weak-limit obligation](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md#actual-downstream-uses-and-next-step). |
+67: | Dynamical drain/return source, boundary data and any change to the drain-frozen symmetry result | **OPEN, no live owner named** for undelivered forms/data; the earlier S12 assignment is historical under its requirements-first framing. [R-S12-02](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). No automatic transfer of the one-engine no-leak rule. |
+68: | Real defect profile, holder, response and charge-force sign | Q2/Q3/S22; [plan, charge phase/S22](research/pde_ledger_v3/V3_STEP_PLAN.md). |
+69: | Physical light/sound speed ratio | S20a calibration; S22/R10 proposed derivation; [plan, S20a/S22](research/pde_ledger_v3/V3_STEP_PLAN.md). |
+70: | Material admissibility and unbuilt substrate, including shear response and physical dimension | S1–S8; [SUBSTRATE_REQUIREMENTS, entries/passes](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). S9/S10 requirements pass 1 is recorded, but the substrate steps have not run. |
+71: | Muonium/gravity dependency quarantine, PN geometry-independence and structural audit | S16/species matching; [correction note, §§2–5](notes/muonium_gravity_corrections.md). No withdrawn throat geometry may supply a prediction. |
 72: 
-73: | Other debt | Owner / register |
-74: | --- | --- |
-75: | μ_S shear normalization | S11b/S11c-b if reused; [inertia report, final paragraph](research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md). |
-76: | S11c-a full-axis KEYING and control-form characterization | S11c-a/b; [a record, standing limits/owed items](research/pde_ledger_v3/steps/S11c_a_interface_shape_derivatives.md). |
-77: | F/G interpretation re-grounding; unresolved historical publication-review closure; unreviewed sheet/N6 trace repairs | S11c-c2/d if reused; [c2 record](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md), [Part F conflicts](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#carry-over-conflicts-and-questions). |
-78: | b control namespace/admissibility coverage, kernel optimization, five off-path export checks | S11c-b/export maintenance; [Part F, carry-over evidence](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). |
-79: | S10 CAS/export/naming debts and unreviewed record corrections; S11 deferred loci/T7 checks; S11b comparison/passivity limits | S10/S11/S11b maintenance; [DEFECT_REGISTER, C19/C20 and WL entries](research/pde_ledger_v3/DEFECT_REGISTER.md), [REBUILD_HANDOFF, owed-item sections](research/pde_ledger_v3/REBUILD_HANDOFF.md), [S11b scope](research/pde_ledger_v3/steps/S11b_interface_coupling_law.md). Lean closure does not discharge these. |
-80: | Review owed for CLAUDE.md L control and lean/FORMALIZATION_POLICY.md (`c2bdb663`) | Policy maintainers; [Phase 2 review, F6](research/pde_ledger_v3/cleanup_2026_10/PHASE2_REVIEW.md). Non-author S10 fidelity review is confirmed separately. |
-81: | ≥64 GB remote compute setup and outstanding licensing/acceptance questions | Infrastructure owner; [plan](notes/remote_compute_plan.md), [requirements, §§8–10](notes/remote_compute_requirements.md). Planning only; no run authorized here. |
-82: | Earlier v2 dimension, provenance, integration and normalization debts | Dormant v2 maintenance; [DIMENSION_REWRITE, §§8–12](research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md), [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). Not a revived v2 queue. |
-83: | Remaining model gaps, including species identity and old EM boundary-operator limitations | Named owners in [DEFECT_REGISTER](research/pde_ledger_v3/DEFECT_REGISTER.md); Q2/Q3/S22 and later matching, with [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over) retaining historical limits. |
-84: | Memory-note compaction and temporary-path evidence portability | Documentation maintenance; [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). Phase 3 keeps cited outputs; uniform replay caches remain on local disk; no live-memory size remeasurement. |
-85: 
-86: ## Next and paused work
+73: The following are **OPEN** carry-overs, not instructions to resume. [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over) maps every grouped item to the old STATUS and its disposition.
+74: 
+75: | Other debt | Owner / register |
+76: | --- | --- |
+77: | μ_S shear normalization | S11b/S11c-b if reused; [inertia report, final paragraph](research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md). |
+78: | S11c-a full-axis KEYING and control-form characterization | S11c-a/b; [a record, standing limits/owed items](research/pde_ledger_v3/steps/S11c_a_interface_shape_derivatives.md). |
+79: | F/G interpretation re-grounding; unresolved historical publication-review closure; unreviewed sheet/N6 trace repairs | S11c-c2/d if reused; [c2 record](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md), [Part F conflicts](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#carry-over-conflicts-and-questions). |
+80: | b control namespace/admissibility coverage, kernel optimization, five off-path export checks | S11c-b/export maintenance; [Part F, carry-over evidence](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). |
+81: | S10 CAS/export/naming debts and unreviewed record corrections; S11 deferred loci/T7 checks; S11b comparison/passivity limits | S10/S11/S11b maintenance; [DEFECT_REGISTER, C19/C20 and WL entries](research/pde_ledger_v3/DEFECT_REGISTER.md), [REBUILD_HANDOFF, owed-item sections](research/pde_ledger_v3/REBUILD_HANDOFF.md), [S11b scope](research/pde_ledger_v3/steps/S11b_interface_coupling_law.md). Lean closure does not discharge these. |
+82: | Review owed for CLAUDE.md L control and lean/FORMALIZATION_POLICY.md (`c2bdb663`) | Policy maintainers; [Phase 2 review, F6](research/pde_ledger_v3/cleanup_2026_10/PHASE2_REVIEW.md). Non-author S10 fidelity review is confirmed separately. |
+83: | ≥64 GB remote compute setup and outstanding licensing/acceptance questions | Infrastructure owner; [plan](notes/remote_compute_plan.md), [requirements, §§8–10](notes/remote_compute_requirements.md). Planning only; no run authorized here. |
+84: | Earlier v2 dimension, provenance, integration and normalization debts | Dormant v2 maintenance; [DIMENSION_REWRITE, §§8–12](research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md), [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). Not a revived v2 queue. |
+85: | Remaining model gaps, including species identity and old EM boundary-operator limitations | Named owners in [DEFECT_REGISTER](research/pde_ledger_v3/DEFECT_REGISTER.md); Q2/Q3/S22 and later matching, with [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over) retaining historical limits. |
+86: | Memory-note compaction and temporary-path evidence portability | Documentation maintenance; [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). Phase 3 keeps cited outputs; uniform replay caches remain on local disk; no live-memory size remeasurement. |
 87: 
-88: **S12's record is written for review:** its accepted constructions and comparator report the source
-89: required by the committed order balance on live fields satisfying U1's support condition, including both material face
-90: requirements and the labelled fast-ordering specialization. The record preserves the six unrestricted
-91: face-coefficient diagnostic differences, all comparator coverage limits and the accepted engine-row
-92: note. It supplies no drain law, throat solution or flow. Native source/controller forms, distinct
-93: boundary data and the other retained OPEN handoffs remain open. The register stays at 18 OPEN entries,
-94: with compatibility constraints merged into `R-S12-02` and flow-comparison framing in `R-S21-01`.
-95: [Record](research/pde_ledger_v3/steps/S12_order_source.md),
-96: [measurements](research/pde_ledger_v3/steps/_measurements/S12_record_measurements.md).
-97: The light closeout was accepted at `e070c7f3`; its review no longer gates S12. The oracle comparison's
-98: questions about the flow drive and material destination remain OPEN. Each force states the flow it
-99: needs; S21 compares them, and a mismatch reopens S9b (user, 2026-10-19).
-100: 
-101: The [throat/EM notes](docs/light_em_investigation_handoff.md) remain **exploratory and paused**, as input to
-102: S22/Q2 (with S12/Q3 connections), not adopted constitutive laws. Mixed numerical recovery, centre-drive
-103: implementation and new leakage workers remain parked. [Closeout, paused notes](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md).
-104: 
-105: Cleanup is complete: history rebuilt and pushed at `bdc181c0`; archive tag `archive/pre-cleanup-2026-10-04` is on both remotes; nine uniform-cache runs are kept on local disk ([preservation list](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#phase-5-preservation-list--keep-on-disk)).
+88: ## Next and paused work
+89: 
+90: **S12's record is written for review:** its accepted constructions and comparator report the source
+91: required by the committed order balance on live fields satisfying U1's support condition, including both material face
+92: requirements and the labelled fast-ordering specialization. The six unrestricted face-coefficient
+93: differences are labelled representation diagnostics confined off their respective delta supports,
+94: not open differences in the S12 distribution; both raw expressions remain retrievable. The record
+95: preserves all comparator coverage limits and the accepted engine-row
+96: note. It supplies no drain law, throat solution or flow. Native source/controller forms, distinct
+97: boundary data, native identifications and additional conversion partners formerly assigned to S12
+98: remain OPEN with no live owner named; the record lists their ownership as questions for the user.
+99: The register stays at 18 OPEN entries,
+100: with compatibility constraints merged into `R-S12-02` and flow-comparison framing in `R-S21-01`.
+101: [Record](research/pde_ledger_v3/steps/S12_order_source.md),
+102: [measurements](research/pde_ledger_v3/steps/_measurements/S12_record_measurements.md).
+103: The light closeout was accepted at `e070c7f3`; its review no longer gates S12. The oracle comparison's
+104: questions about flow drive separate the unowned source/boundary realization from O2's carried
+105: force-balance handoffs. Material destination separates the unowned drain-produced density/exchange
+106: choice from S21's knit compatibility (`R-S21-01`). Each force states the flow it
+107: needs; S21 compares them, and a mismatch reopens S9b (user, 2026-10-19).
+108: 
+109: The [throat/EM notes](docs/light_em_investigation_handoff.md) remain **exploratory and paused**, as input to
+110: S22/Q2 (with S12/Q3 connections), not adopted constitutive laws. Mixed numerical recovery, centre-drive
+111: implementation and new leakage workers remain parked. [Closeout, paused notes](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md).
+112: 
+113: Cleanup is complete: history rebuilt and pushed at `bdc181c0`; archive tag `archive/pre-cleanup-2026-10-04` is on both remotes; nine uniform-cache runs are kept on local disk ([preservation list](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#phase-5-preservation-list--keep-on-disk)).
 ```
 
 ## M16 — Literal residual/outcome counts across stored comparisons
@@ -14947,5 +15084,373 @@ wl_coverage {"[]":49}
 probe_domain/face_order {"True":315}
 probe_domain/f_range {"True":315}
 probe_domain/G_range {"True":315}
+```
+
+## M17 — Round-1 repair: owner handoffs, coefficient diagnostics and unit attribution
+
+```text
+$ python3 research/pde_ledger_v3/scripts/S12_record_measurements.py --section M17
+FILE research/pde_ledger_v3/directives/_measurements/S12_record_r0_review_disposition.md
+1: # S12 record, review round 0: dispositions (orchestrator)
+2: 
+3: The mechanical lookups behind each disposition are in `S12_record_r0_review_lookups.md`, beside this file (generator
+4: `_scratch/s12/gen/rec_r0_lookups.sh`). "K-n" cites a section of that file.
+5: 
+6: ## The round
+7: 
+8: - **Artifact.** Codex wrote it, on top of `560c6c51`, under `directives/S12_record_decision_list.md`. It is preserved
+9:   unchanged in the commit that adds this file. It has six files:
+10:   - `steps/S12_order_source.md`;
+11:   - `steps/_measurements/S12_record_measurements.md`;
+12:   - `scripts/S12_record_measurements.py`;
+13:   - the S12 pass in `SUBSTRATE_REQUIREMENTS.md`;
+14:   - the status-line edits in `../../STATUS.md` and `steps/S9b_flow_oracle_comparison.md`.
+15: 
+16:   All six matched the baseline after the round, and the working tree was unchanged (K1).
+17: - **Prompt and legs.** `_scratch/s12/rec/s12_record_review_prompt_r0.md`, sha256 `a0f00d94…` (K1). Both legs
+18:   received it identically, in parallel:
+19:   - a fresh Claude agent (Opus), report `/var/projects/_review_scratch/s12-record-r0-claude/REVIEW.md`;
+20:   - Grok (`grok-4.7`, effort high), report `/var/projects/_review_scratch/s12-record-r0-grok/REVIEW.md`.
+21: 
+22:   The record is Codex-written, so these are its two non-author legs.
+23: - **Verdicts.** Claude: NEEDS REVISION, 2 findings. Grok: NEEDS REVISION, 1 finding (K2).
+24: - **Both legs** reran the generator to their scratch directories and reproduced the filed measurements file byte for
+25:   byte. Each enumerated the comparator output itself and found every row class, count and difference family in the
+26:   record.
+27: 
+28: ## Findings
+29: 
+30: **C1. What S12 does not deliver is still shown as S12's to deliver.** (Claude 1.) **CONFIRMED.**
+31: - **The sources.**
+32:   - The register's schema defines `target` as "the step that must deliver it". It calls a requirement "an obligation
+33:     on a *future* step", and its method keys each entry "by the step that must deliver" (K3).
+34:   - The record says "S12 record completion is not delivery of those functions" (K3).
+35: - **What the pass hands on** (K3).
+36:   - `R-S12-02` keeps `target` S12. It keeps the owner line "S12 owns the drain/return data … and is next for dynamical
+37:     bulk-to-brane order conversion with separate boundary data".
+38:   - The by-target table lists `R-S12-02` under **S12** with no qualifier. `R-S12-01` in the same table carries
+39:     *(register inference; no live owner named)*.
+40:   - The record gives "the S12 inventory" as owner of the source/flux forms, the controller-role assessment, the
+41:     boundary laws and data, the native O6 identifications and the conversion partners (§5 l.261, §6 l.271 and l.276).
+42:   - `STATUS.md:65` lists **S12** as owner of the dynamical drain/return source and its boundary data.
+43: - **The gap.** Once this record is accepted, these items would show as owned by a step that has finished without
+44:   delivering them.
+45: - **Part of a handoff is lost.**
+46:   - The S9b oracle record splits the material-destination question: what the drain produces "is again S12's object
+47:     (R-S12-02), and whether the knit can meet it belongs to R-S21-01" (K3, oracle record l.166).
+48:   - The record's §7 says only "material destination with S12/O2" (K3, l.315).
+49: - **What must be true.**
+50:   - In the register, the record and `STATUS.md`, no obligation S12 does not deliver shows S12 as the step that will
+51:     deliver it.
+52:   - Where no source names a later step, the obligation is OPEN with no live owner named, in the register's own
+53:     convention. The record lists who should own it as a question for the user.
+54:   - The disagreement between the earlier S12 assignment and the user's framing stays reported.
+55:   - Each handoff the sources split keeps every part, with its owner as the source gives it.
+56: 
+57: **C2. Differences the comparator's contract settles are handed on as open.** (Claude 2.) **CONFIRMED.**
+58: - **The record and its hand-on** (K4).
+59:   - §4 says the six unrestricted coefficient operands differ "in `regular/above` for face 1 and `regular/below` for
+60:     face 2". They are "explicitly **not delta parts**". It then says "No cited disposition settles the unrestricted
+61:     expressions' difference: **OPEN cross-engine diagnostic differences; no owner named**".
+62:   - §6 lists "adjudication of the six" as needing computation.
+63:   - `SUBSTRATE_REQUIREMENTS.md:593` and `STATUS.md:90` carry the six forward.
+64: - **The source.** The accepted comparator contract, item 3, says (K4):
+65:   - "A delta's coefficient carries data about the distribution only on that delta's support."
+66:   - An unrestricted raw coefficient "is a separately labelled representation diagnostic, never the delta's part."
+67:   - Its equivalence control changes a coefficient "away from its face only, so the distribution is unchanged".
+68: - **The filed output** (K4). In each of the six, the only stored parts whose as-computed and supplied-domain
+69:   residuals are not the literal `"0"` are:
+70:   - `regular/above` (outside above) for face 1, whose delta sits at `w₋`;
+71:   - `regular/below` (outside below) for face 2, whose delta sits at `w₊`.
+72: 
+73:   Under the supplied strict order `w₋ < w₊`, each lies off its delta's support. Every other stored part is the
+74:   literal `"0"` on both fields, the coefficient's own delta parts included.
+75: - **The leg disagreement.** Grok listed the six as soundly kept open. The contract's wording and the stored parts
+76:   settle it as above.
+77: - **What must be true.**
+78:   - The record classifies the six as differences in a labelled diagnostic, confined to parts off each delta's
+79:     support. It cites the contract's statement that values there carry no data about the distribution.
+80:   - Both raw expressions stay printed and retrievable.
+81:   - No statement in the record, the register or `STATUS.md` hands them on as an open difference in the S12 object.
+82:   - The record claims nothing about why the expressions differ beyond what a retrieval shows.
+83: 
+84: **G1. Component units are attributed to both transcripts, and one does not print them.** (Grok 1.) **CONFIRMED.**
+85: - **The record.** The record's item 3 says "They assign density `(-4,0)`, order `(0,0)`, velocity `(1,−1)`, faces
+86:   `(1,0)` and rates `(0,−1)`", citing the transcripts' retrievals M03 and M10 (K5).
+87: - **The transcripts** (K5).
+88:   - SymPy prints these in `primitive_function_dimensions`: `n` `[-4],[0]`, `u1` and `uw` `[1],[-1]`, `wminus` and
+89:     `wplus` `[1],[0]`.
+90:   - The comparator leaves that tag unjoined: "tag absent in other engine".
+91:   - The Wolfram transcript has no such tag, and no `{-4, 0}` or `{1, -1}`.
+92:   - The Wolfram source assigns the same pairs in its `unit` switch (l.29–32), which the record's M04 covers.
+93: - **The hand-on.** `R-S1-01` gives "the density's assigned dimension is `L⁻⁴`" (K5).
+94: - **What must be true.**
+95:   - Each unit assignment is attributed to the construction or transcript that shows it: the sources' assignments,
+96:     and SymPy's printed table, which is unjoined.
+97:   - Only dimension objects that both transcripts print are presented as printed by both, or as compared.
+98:   - `R-S1-01` rests the density's dimension on what shows it.
+99: 
+100: ## Outcome
+101: 
+102: Three findings, all confirmed. None changes a computed object. They change what the record, the register and
+103: `STATUS.md` hand on and attribute. The reviewed record is preserved as-is in this commit. A repair round by the same
+104: author follows, and then round 1, with the same pairing (fresh Claude + Grok). Round 1 is review round 2 of the
+105: record, so if anything remains after it, the user decides how to finish.
+FILE research/pde_ledger_v3/steps/S9b_flow_oracle_comparison.md
+151: 
+152: ## Second route: what the analog leaves out, and who owns it here
+153: 
+154: The register's second route asks why a prior result was limited, and whether that objection is answered
+155: here. The check and the quoted papers name the following objections. The check answers none of them.
+156: 
+157: 1. **What drives the flow.** Visser's background obeys the force balance (6)–(7), which includes an
+158:    externally imposed driving potential `Φ`. The check computes no force comparison
+159:    (`force_accounting_Visser`). So it is not known whether this model's drain sustains the flow without an
+160:    imposed potential. The drain's source and boundary data belong to S12 (R-S12-02), and the force balance
+161:    to O2's carried handoffs.
+162: 2. **Where the material goes.** Visser's continuity has no source. In that setting the §7 velocity forces the
+163:    `r^(−3/2)` density. Here the brane can exchange material with the bulk through `j_n`, which the oracles
+164:    lack (`no_off_sheet_exchange`). So this model can carry the same flow in two ways: with that density and
+165:    zero exchange, or with another density and nonzero exchange. The check selects neither. Which one the
+166:    drain produces is again S12's object (R-S12-02), and whether the knit can meet it belongs to R-S21-01.
+167: 3. **Scalar sound versus transverse light.** The analog carries a scalar wave, while light here is transverse
+168:    with two polarizations. A shared cone does not identify the two wave equations
+169:    (`scalar_acoustics_vs_transverse_optics`). Even for scalar sound, Visser notes that the §7 metric is
+170:    "conformal to the Painlevé–Gullstrand form of the Schwarzschild geometry but not identical to it". Its
+171:    varying density therefore affects the "frequency-dependent greybody factors" (local copy, p. 15; C4). The polarization and direction exclusions stay as S9b scopes
+172:    them; no owner is added.
+173: 4. **The kinematics of analog gravity are not its dynamics.** The survey's limit on analog gravity applies
+174:    unchanged: a matching flow profile does not derive `GM` or a law of gravity. It stays where the S9b
+175:    register pass lists it.
+176: 
+177: These questions are carried as handoffs, not as new requirement entries. The register's light-closing pass
+178: adds this comparison to R-S21-01 as evidence.
+FILE research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md
+14: | --- | --- |
+15: | [a: interface shape derivatives](S11c_a_interface_shape_derivatives.md), per-family comparison and limits | Geometric/substrate dependencies remain conditional; affected S11c consumers if reused. |
+16: | [b: variable-coefficient operator](S11c_b_variable_coefficient_operator.md), original per-engine close plus later scoped repairs | Full cross-engine residual/composition: **S11c-b**. Original checks describe pre-repair equations. |
+17: | [c1: curved bulk response](S11c_c1_curved_bulk_closure.md), kernel/pressure/flux agreement on measured domains | Traction, energy, operand and deferred family comparisons: **S11c-c1/c2**. |
+18: | [c2: self-energy fold](S11c_c2_self_energy_fold.md), original wiring close plus later scoped repairs | Direct mixed entry and full composition: **S11c-c2/d**. Original “VALUES unaffected” describes the pre-repair operator. |
+19: | [d: supplied-profile scattering](S11c_d_profile_conditioned_scattering.md), selected uniform success and unresolved defect benchmark | Complete response/work/loss: **S11c-d if reopened**; observable/strong edges: **S11c-e**. |
+20: | [Clean-condition symmetry rule](S11c_d_profile_conditioned_scattering.md#clean-condition-result-and-its-owner), measured on SymPy only | No-leak interpretation needs drain frozen; live conversion belongs to **S12**, with no automatic transfer. |
+21: | Supplied-profile calculations do not determine a real particle. [Plan, Q2/Q3/S20a/S22](../V3_STEP_PLAN.md) | Holder/charge response: **Q2/Q3/S22**; speed-ratio calibration: **S20a**, derivation: **S22/R10**; drain/return data: **S12**. |
+22: 
+23: ## Claims future work must not inherit
+24: 
+25: - **UNRESOLVED:** c2 sets the direct three-leg `[0,2]` entry to zero while keeping the iterated product. Retaining `eta*sigma_W` means order counting does not justify that zero. **Whether the complete closed response has a nonzero direct term is unresolved.** This is not proof of a missing physical term or its effect on the benchmark. [Joint disposition, mixed-term issue](../_measurements/S11c_upstream_repair_review_joint_disposition.md); [d, equations](S11c_d_profile_conditioned_scattering.md#equations-what-was-repaired-and-what-remains-open).
+26: - **UNRESOLVED:** the omega=3 benchmark establishes neither “leakage below 1 ppm” nor physical gain. Source identities, finite packet checks and first-order flux cancellation do not constitute a complete loss calculation. [d, benchmark and intermediate results](S11c_d_profile_conditioned_scattering.md).
+27: - **OPEN — material audit/Q2/S22:** uniform confinement is derived within the supplied linear model; nonuniform confinement and the physical admissibility of rotational stiffness are not established. That is the useful but limited MacCullagh distinction. [Native interpretation, §§5.7, 14.3](../../../docs/native_light_em_and_vortex_throat_interpretation.md); [framing essay, differentiators](../../../docs/s11_maccullagh_differentiation.md).
+28: 
+29: ## Actual downstream uses and next step
+30: 
+31: **OPEN:** S11c-e owns the conversion observable and must recover d's weak limit in a future finite-contrast calculation. The plan's charge preamble asks whether linear nonuniform physics can support charge; PARTIAL closure answers neither that question nor all Q-sector work. **S22 items 1/4** concern conversion/birefringence and supplied defect profiles; physical magnitude needs interior input. Items 2/3 name S11b and S5–S7 instead. [Split, table/N5](../directives/S11c_decisions.md); [d spec, §3d](../directives/S11c_d_SHARED_PHYSICS.md); [plan, charge preamble/S22](../V3_STEP_PLAN.md).
+32: 
+33: **S12 is next:** dynamical bulk-to-brane order conversion and separate boundary data. It does not require a numerical S11c loss factor and does not automatically settle light leakage. [Plan, S12](../V3_STEP_PLAN.md).
+FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md AT 8608bc71
+821:     decoupling history". (C6, C7.)
+822: - **target** S22 (the nonlinear throat solve), together with Q2 (the mouth source and its held datum) and
+823:   S12 (the throat's order-conversion source and its boundary data). These owners were chosen by the user on
+824:   2026-10-19; the S11 record itself names only "derived matter/interface coupling". (C8.)
+825: - **status** OPEN
+826: - **requirement** — Consider a throat held open by its trapped shear wave. The trapped-wave state can change,
+FILE research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+129: | `𝔅_A13`; **OPEN**, C §2 | Real/dissipative versus complex/inertial order-field branch, its action, degrees of freedom and conversion content. Branch dependence stays attached to the material and source responses; premise 1 does not decide A13. | S1's A13 gate, propagated through S5/S12. |
+130: | `𝒯_br^live`; **OPEN form**, with character fixed by **adopted premise 1**, C §3 | Full live in-plane and normal stress, including any relaxation content. It enters the internal material-force accounting once, with the live reference/strain state. No conservative/dissipative split is adopted. | O2 carries it; S1.5/S8 antecedents, S22 nonlinear completion; relaxation ownership unassigned. |
+131: | `𝒫_br^cons`; **OPEN conservative antecedent**, C §3 | Conservative material momentum input to the live momentum description. It is not an additional external force or a second momentum species. No live reduction into `ℐ_br^live` is supplied. | S1.5/S8. |
+132: | `𝒯_br^cons`; **OPEN conservative antecedent**, C §3 | Conservative in-plane/normal-stress content, retained as an antecedent to the material-force description. It is not added beside the full live stress as another stress. Its relation to that stress remains unspecified. | S1.5/S8; nonlinear completion S22. |
+133: | `ℐ_br^live`; **OPEN**, C §3 | Flowing/embedded inertial and kinetic response, entering momentum storage and transport. No identification with `ρ_br V`, a quadratic live kinetic energy, or a constant inertia is supplied. | S8, with S1.5 antecedents when available. |
+134: | `𝒩_br^live`; **OPEN**, C §3 | Normal material response, keeping embedding, centre and thickness content distinct. It qualifies the normal material accounting jointly with the stress and inertia inputs; their overlap/identification remains unresolved, rather than being treated as three additive normal forces. | S5–S8 ingredients, Q1/Q2 static sector, S8/S22 live completion. |
+135: | `𝒜_rot^live`; **OPEN**, C §3 | Whether internal angular momentum/couple stress is present and its physical rotational reference frame. Retain its effect on the admissible momentum/stress action and on the corresponding power accounting. No stress symmetry, vanishing couple content or chosen carrier is assumed. | S8 requirements; register assignments retain pass-2-review-pending status. |
+136: | `ℛ_ref/strain^live`; **OPEN form**, **adopted premise 1**, C §4 | Reference/strain evolution and relaxation, including carrier, transport, formation/renewal through conversion/return, and work content. It enters through the material's evolving state/history and its explicit energy partner, not as an independently postulated body force. | Relaxation/reference ownership **unassigned**; O2 carries it. S8/S22 links are inferences; conversion/return functions remain S12's. |
+137: | `ℳ_⊥` (O1); **OPEN**, C §6 | General stiffness response, including frequency regime and loading/material history, bulk/flow/embedding/thickness/projection dependence and gradients. It is a constitutive input to the linked optical/material description; no relation to `𝒯_br^live` is supplied. It is not a separate force. | S8, substrate reduction and S22 completion. |
+138: | `ℛ_br` (O7); **OPEN**, C §6 | General brane-density response with live bulk, flow, embedding, thickness/projection dependence and gradients. It is input to the density in mass/momentum/energy accounting; it is not inferred from the bulk EOS or slab factorization. | S8, substrate reduction and S22 completion. |
+139: | `ℰ_h^live` (O4); **OPEN**, C §5 | Live embedding/longitudinal relation with flow, exchange, variable coefficients and gradients. Keep it as a coupled input with `ξ_w=ℓh`. Its identity with or independence from O2's normal relation remains **unsettled**. Do not impose a second normal equation or use it as a duplicate normal force. | Q1/Q2 static ingredients; O4 live identification, S8/S22 completion. |
+140: 
+FILE research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+236: retains `𝒥_map`, the live geometry and any unsupplied face-to-material velocity identification. Do
+237: not choose an independent converted-material velocity, replace it with `v_dr`, or identify it with a
+238: native bulk velocity. The premise-3 identification applies to the material after the specified
+239: conversion/transfer; it does not fix how a native bulk current acquires that momentum. Any additional
+240: non-variational conversion momentum partner and its reaction system remain OPEN with S12.
+241: 
+242: **Bulk-direction carried component.** Premise 3 applies to each native transfer at its own location.
+243: It does not supply the reduced bulk-direction component `(Π_n^carry)^w` as `j_n` times one
+244: bulk-direction velocity. In a finite-thickness realization, the transfers at different faces need
+245: not share one current or one local bulk-direction velocity, and premise 3 supplies no such equality.
+246: The reduced component therefore depends on the OPEN `𝒥_map` and the normal material response
+247: `𝒩_br^live`, with the live geometry and any unsupplied face-to-material velocity identification. Print
+248: it as an unevaluated OPEN action with those operands named, in the same outward convention.
+FILE research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+276: | OPEN operand (C §8) | Required content and entry | Owner |
+277: | --- | --- | --- |
+278: | `ℰ_br^live`, `𝒥_E^live` | Material energy storage and transport compatible with the live stress, inertia, normal response, reference evolution and rotational content. Retain live transport in the steady setting. | S1.5 antecedents, S8 material, S22 completion. |
+279: | `𝒫_ref/relax^live` | Explicit power associated with `ℛ_ref/strain^live`, with no formula, sign or vanishing assumed. | O2 requirement; relaxation/reference ownership unassigned. |
+280: | `𝒫_convert/exchange^live` | Order-conversion work, energy carried with exchanged material, and additional non-variational energy partners, with their reaction/supply systems. Premise 3 fixes transported momentum, not the carried total energy. | S12. |
+281: | `𝒫_boundary^live` | Mechanical face/support work and other energy transfer through the live bulk/boundary data; any explicitly supplied hold is identified. | O2 accounting; S12 native data; Q2/S22 core response. |
+282: | `𝒮_E,net`, `𝒫_E,supply` | Identity of the physical supplier of any net power and its stated power budget. Both stay general OPEN inputs. Naming the drain does not specify available energy or a budget. | O2 requirement; source/holder/supplier forms retain their owners. |
+FILE research/pde_ledger_v3/directives/S12_comparator_decision_list.md
+51: 3. **Distributions compared part by part.** An object that carries steps or deltas in `w` is compared in parts: its
+52:    regular part on each region, and each face delta's part. Each part is compared with its counterpart.
+53:    - A delta's coefficient carries data about the distribution only on that delta's support. A delta's part is
+54:      therefore its coefficient restricted to the delta's support (its value on the face), with the delta's
+55:      normalization in `w`. The comparator derives it from the printed distribution itself.
+56:    - A raw coefficient, unrestricted, may also be compared. If so, it is a separately labelled representation
+57:      diagnostic, never the delta's part.
+58:    - Content that falls in no such part (another singular atom, or a part the comparator cannot isolate) is printed as
+59:      that outcome, as a coverage finding.
+FILE research/pde_ledger_v3/directives/S12_comparator_decision_list.md
+118:    One equivalence control: a delta's coefficient is changed away from its face only, so the distribution is
+119:    unchanged. The test fails if the delta part's comparison moves.
+{"kind":"operands","tag":"conditional_fast_ordering/face/1/coefficient_operand","py":{"tag":"conditional_fast_ordering/face/1/coefficient_operand","line":7622,"raw":"-G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x1) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x2) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x3) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3)) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), t) + j1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - j1_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x1) + j2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - j2_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x2) + j3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j3_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x3) - j4_region1(t, x1, x2, x3, w) + j4_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))"},"wl":{"tag":"conditional_fast_ordering/face/1/coefficient_operand","line":402,"raw":"-j4Region1[t, x1, x2, x3, w] + j4Region2[t, x1, x2, x3, w] + g[w - wm[t, x1, x2, x3], -w + wp[t, x1, x2, x3]]*nRegion2[t, x1, x2, x3, w]*u4Region2[t, x1, x2, x3, w] + j3Region1[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wm][t, x1, x2, x3] - j3Region2[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wm][t, x1, x2, x3] - g[w - wm[t, x1, x2, x3], -w + wp[t, x1, x2, x3]]*nRegion2[t, x1, x2, x3, w]*u3Region2[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wm][t, x1, x2, x3] + j2Region1[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wm][t, x1, x2, x3] - j2Region2[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wm][t, x1, x2, x3] - g[w - wm[t, x1, x2, x3], -w + wp[t, x1, x2, x3]]*nRegion2[t, x1, x2, x3, w]*u2Region2[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wm][t, x1, x2, x3] + j1Region1[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wm][t, x1, x2, x3] - j1Region2[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wm][t, x1, x2, x3] - g[w - wm[t, x1, x2, x3], -w + wp[t, x1, x2, x3]]*nRegion2[t, x1, x2, x3, w]*u1Region2[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wm][t, x1, x2, x3] - g[w - wm[t, x1, x2, x3], -w + wp[t, x1, x2, x3]]*nRegion2[t, x1, x2, x3, w]*Derivative[1, 0, 0, 0][wm][t, x1, x2, x3]"}}
+{"kind":"comparison","tag":"conditional_fast_ordering/face/1/coefficient_operand","comparison":{"component":"face 1 coefficient_operand","distribution_parts":[{"part":"regular/below","py_operand":"-G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) + j1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - j1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - j2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region1(t, x1, x2, x3, w) + j4_region2(t, x1, x2, x3, w)","wl_operand":"-G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) + j1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - j1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - j2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region1(t, x1, x2, x3, w) + j4_region2(t, x1, x2, x3, w)","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"regular/inside","py_operand":"-G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) + j1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - j1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - j2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region1(t, x1, x2, x3, w) + j4_region2(t, x1, x2, x3, w)","wl_operand":"-G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) + j1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - j1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - j2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region1(t, x1, x2, x3, w) + j4_region2(t, x1, x2, x3, w)","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"regular/above","py_operand":"j1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region1(t, x1, x2, x3, w)","wl_operand":"-G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) + j1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - j1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - j2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region1(t, x1, x2, x3, w) + j4_region2(t, x1, x2, x3, w)","as_computed_residual":"G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w)","on_supplied_domain_residual":"G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w)","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"-18956591759276274385631895762526095773/239999105307599220205894943847656250\"":1,"\"-16370197558774832775361191346533737/194861435117033986560000000000000\"":1,"\"-795257458297177964021012547212210508107/7635468950854804970810527186944000000\"":1,"\"-329780985915366872759019121166219552326318217027376115981744533593128596949813184912851089909373/620303512865366361181307543640657688367949980059301948725685691693797707557678222656250000000\"":1,"\"-227909057767042151240543269722989415150670005347600914895513005065516701857964723593/324229932615765484005177189782980282023936000000000000000000000000000000000000000\"":1,"\"-2558117096237122235340231888942049023558902027313058624903575090269196218271406898405509567168958519/2438330523438408213726587151854903461042379724230827788413022418282488004608000000000000000000000\"":1,"\"-312802964348890293668403095664253598094664987038000059718600703/1222751704873765505181554803638335937620141601562500000000000\"":1,"\"-14947290438392200930204133345493017751321393294654443353/53577046079653064837790316953600000000000000000000000\"":1,"\"-2551335778529944556398696241885629320381204234712871151959862119/6994340449164417297756982428432420489884105441280000000000000\"":1,"\"-914446676513201768085383849467216825409428221429275209441/21622335206714108214646665693581936425209045410156250000\"":1,"\"-363471182636688315464951172207215910595121094554633/7579369352599177348035072000000000000000000000000\"":1,"\"-62749919898456989691142782126550667834451089491519150137107/1001834781685572164155011417608055928305745920000000000000\"":1,"\"-10665717605109437723441340837575426680699/479998210615198440411789887695312500000\"":1,"\"-3031692234728544735641304373666533737/129907623411355991040000000000000000\"":1,"\"-55313814260300943949214427902304500556107/2036125053561281325549473916518400000000\"":1,"\"-24044029672380139420537154188751009642883133780085451272181747223285469474819290730655810637021222630619454772229407/111770504043229568716195154228350318342359755211065045453907417355650037447230715770274400711059570312500000000000\"":1,"\"-3983025137638080992318457749415538150558513860748678063286769941075728805861287368006596296407351337/12611312305009337418962173009236757645659419443200000000000000000000000000000000000000000000000000\"":1,"\"-167238965907355420803686321436529131674349140461087755520968169039918797347303225912477469058994072501541296063000735519/319928526112689921847047135256052141911245566293702053865504041783156302578826507389501440000000000000000000000000000\"":1,"\"-144225248221216392643208345850378336304136060895879895613842350703/4891006819495062020726219214553343750480566406250000000000000000\"":1,"\"-1146324813785520276108539786258528852671529307884334443353/35718030719768709891860211302400000000000000000000000000\"":1,"\"-74843627108355092590261451641860063148175580992090184679166262119/1865157453110511279401861980915312130635761451008000000000000000\"":1,"\"-56164208492873229874556126984802354633754273577590620946633832069332247/20343135580091658865351689439930662365716169892210960388183593750000\"":1,"\"-102757552326728492902457094481702556364692620237679202876058099/25398994207046779393646070360637440000000000000000000000000\"":1,"\"-276362188459640648464222458502702595660596933277589939733935877146110119/47663544137418804259580007647793610371408303074854934937600000000000\"":1,"\"-2192460940710463871554159461453694224923030291314071871817868569959554392780802049338733011860945022933208576351/182376786873210949232159130187768915294772341601963227993522348841332876840533572249114513397216796875000000\"":1,"\"-332391154295872774878100503243070006917658602673505358725992087276497135782325867016102494962519/18353328882516763426662873957707133228447537561600000000000000000000000000000000000000000000\"":1,"\"-8122590937378426759950208263068942302268666678255143852914911101818456176839568227768624250526653134199609695962287/304517397685284368434081215479799190766736343438676593362570506375492545048586323104890880000000000000000000000\"":1,"\"-120040734711971100750794155392212125041637345738916724504559107475076744662909/11412821967345390332333176374046179851648766804290542602539062500000000000\"":1,"\"-15726574881670937030168320023957671377335793566403506191211159618853/1010925733393988030280435485164830720000000000000000000000000000\"":1,"\"-16081699667192423142374839248670317141740380662370455606684166476027030638166821/714687401693970395409343668613655851804205178614770287457075200000000000000\"":1,"\"-3938893451575651388615280978027455794456957523568313330588200415686699712136685610486579673/3665564470372603448418081426151439531042112244675538178422223776578903198242187500000000\"":1,"\"-1742055860312155624597281258867403154712673111724210600971573054912005235399891/987924358476132940651136281961425993728000000000000000000000000000000000000\"":1,"\"-17719776355681686319622938404804143882878424034259513258254223620670246264785393763554287119/6253839370262357991242368947370570288382458940814102344448765138567168000000000000000000\"":1,"\"-12412932727646120892320671313382042914109628002535317370088441853358394747/81372542320366635461406757759722649462864679568843841552734375000000000\"":1,"\"-3484548825305176626692754752985035469491530905427333602876058099/16932662804697852929097380240424960000000000000000000000000000\"":1,"\"-3847222607868909447269738544029799419885209674668320144835390909466110119/12710278436645014469221335372744962765708880819961315983360000000000000\"":1,"\"-144354606069906380287565479120442024396663063492090257368068339282575263207186056066793529092568074540111478303395295581084057521509/32861889336144639042457798638156463388506349278756884908632202798194748083139525922834707216679817065596580505371093750000000000\"":1,"\"-5398976900500803387441013615449306188993206456129813331983735996464466062062243868836286773183413774902875199671/713874750880148533596164478033768195480341110503505920000000000000000000000000000000000000000000000000000000\"":1,"\"-506038824078594200063715828196067853450634061901595767718719173143458669447444570229272153616852021965229586965500044686780045831683287/39955125558508306629949964573447660495215821318955632585956180534324022558763228999362827772754290278400000000000000000000000000000\"":1,"\"-9483994733922233838597013932417135528455921510052470087325341647677218932162909/45651287869381561329332705496184719406595067217162170410156250000000000000000\"":1,"\"-224159870015592911493246259265827312734731480183481693868011159618853/673950488929325353520290323443220480000000000000000000000000000000\"":1,"\"-118602284419944100021766828675136057160568966470535081498488231170829298798166821/190583307118392105442491644963641560481121380963938743321886720000000000000000\"":1,"\"-39695011748148262359698938611464876384652042559153000027171037512446421219683065416426089359341/2286994063552133861327062795130721103415872663669454061520192874102273330867938962778505859375\"":1,"\"-33778401996424551143300441909890714408071579524260093421321292149145172564347795105228304578809648576414077225042130607/2221176858606683001016847069695482500497832516582980722196068109074833695005457155802912257495585332664089958582031250\"":1,"\"-140141274699086174910291746588782926281650582806944297044577365462790212036033003139739397081019961332608220219041933487456081636159558/7920680947309745079496193556918190466245921725422333094239852443978744993029524077510812694578303129616056431774186545177459716796875\"":1,"\"-587183372207660378219063263623341697314912628351062961954788426215117360593725042958492832051593714527605616781941830581253701828080393559584473076509760780223357145343/3045702719318897952122043398162356658475473014159686653652982854490311811132700339218177480297419550846424617543402870551324550969801653588015586137771606445312500000\"":1,"\"-732599309403990995620949698891592173686815564508554702657186753152149854216524438763323083180515880433124738936673879575632843869314120009669389109957476998264768647084793034287078988719841147/2758921858485934191511016499602276651030585429884218586104313995859468579855879918912436714893755582318581069347897543465361522559685770544090214498611200000000000000000000000000000000000000\"":1,"\"-42053113703960377739371995972890558683450425394081803215435005961907067158791665973531059277663190790471400933529695644437033736011743367318977877723526179807859405410357804782585914558536892882787608213529952894972498373813/98114619619531590643102015501330490814048819506993791658879446666857611655764816636158836600163615760296435333718132241232139244612743404903403484711110583287322122021585673259057152000000000000000000000000000000000000000\"":1,"\"-278689971905391765868989141250585764484872229597533738875804127476301757937734818217773384576614703674218230598904358603276235594466873/6003735454250362944903026718560004280194607648075551106591191258244505860055380421878245501348533578733191321686991583203125000000000\"":1,"\"-19084548872106992324885513822557443886629838581877136859874159248300922721309901040841227969120982578572042434040511366956632981824537636961728898394174256592958187/455895241841948182499915176693672212418566514331289828977664914574137414171563365351845945227714968936801628275614274403787309051143317813120000000000000000000000\"":1,"\"-15394037648684990602410846355863655643624356968862370740560410711780016220955672931978928482252506847364854244678147531281679226758384901406500882523519717774805072478402442664689270809413/281441357544735264205476550271332448623284677445084419365555617045327194655417282938380911835859929247241787939605054395654662965979489121913040277033320320000000000000000000000000000000\"":1,"\"-53208156826284227113492777458499203512110318570344738972783421070094885220542583160092825524620355813390279880609/4528419102844111246770419172629520524548563914822173611288972299203876803434345778647956346761390686035156250000\"":1,"\"-847101661427538510968445535370905883660263236613845545535626087465035709185330277779895947248260442802910750004689959110216934948201/77623844858703740650630266839433446932492177117264092333048251917517112639417127244870831761006097229442026816710156250000000000000\"":1,"\"-222649209463225840074138306845011787722579338568682220916062186160520149213868673674662889725628684931638101399166985908252370043975347707259474533422471/17177799731002060536065931772382558079711689822782938832521598456816042005846315373946022052039824950942585190591247355223081620742187500000000000000000\"":1,"\"-872811949382974130789947527932065541887926921724897240551703386440126886311839612318347641831251/100527211584709180717673089895855872677620776425030947759129357103396629928261053308945312500000\"":1,"\"-5064307332675690494352458194774541772602289638736470198682411349632836802477380632686711575534007364014788828312323063653/634621959601909428861956305627280714427952147595137349198876602592809627144416330229403502141595809332597131023437500000\"":1,"\"-37674786971031828110653269291316114289177397005219962791783649577738022103372567065373270298995863844225574900096545015020052713900665991/4224363171898530709064636563689701581997824920225244316927921303455330662949079508005766770441761669128563430279566157427978515625000000\"":1,"\"-504389107691366291031465354809841740555945089750283951855236714407242743523221639914262444341499241487932916199447133590727084062241637567147168697622621280968893836480081242386180066007/6030718922954278657506747782531906192588136518453802261453199449130281307298505502090560924378757860617789605526702512926881372053396351756737589306381414644420146942138671875000000000\"":1,"\"-36194453342494152227871355328788710999341586829927537396797770687459614057286042044346345133463474368498992561921965914104554086924669077787321935782914964817701164198167280020695894972192536591041420059013/289249532054017772236794609088490763002199075465936773500891153762126851147682685989223506603370608843611840942236367736219393136889621747269654450622320640000000000000000000000000000000000000000000000000\"":1,"\"-23389545896182088027958312098272907338367549003382368716337122092512039516977754413306057331779459016580620119701739349426161330463211267622035925053049046229090483100433138518202160972474599691971147538866726413251842801324984710880570582203/106391943932560631049056066716374138344364308480315849214053740357629236238185493833175564785719611139187567732270154174501359079823038488015367615881730716734978787043462776917361263319879516160000000000000000000000000000000000000000000000\"":1,"\"-3042926463934653276561213368006914432519910250929081202500439466085384028056859548225711312122806801026995723974998641111795393942553603/263900459527488481094638537079560627700861874640683565124887527834923334507928809752889912147188289175085332821406223437500000000000000\"":1,"\"-477179653088842808130035295675552249792577388557855588256668298010468550535576800969183967091502427210695094408618472975657451492654989276105114781908937019296077241/43418594461137922142849064447016401182720620412503793235968087102298801349672701462080566212163330374933488407201359467027362766775554077440000000000000000000000000\"":1,"\"-8158944260896515428584616368572262413353389854539707235517362051135889769872802114011128576121420381030384481269417907025722910399571787149313962925222828961839536913141335411853267136803/620256435360298102932179725115884184293740335967128196948882902579233486843894838431693469610710587872709174522545574425685207638522290075841411078861312000000000000000000000000000000000\"":1}},{"part":"delta/lower","py_operand":"0","wl_operand":"0","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"delta/upper","py_operand":"0","wl_operand":"0","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}}],"py_coverage":[],"wl_coverage":[],"normalization":"coefficient on support divided by absolute derivative of delta argument in w","role":"unrestricted coefficient representation diagnostic; not a delta part"}}
+{"kind":"operands","tag":"conditional_fast_ordering/face/2/coefficient_operand","py":{"tag":"conditional_fast_ordering/face/2/coefficient_operand","line":7978,"raw":"G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x1) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x2) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x3) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3)) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x1) - j1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x2) - j2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x3) - j3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3)) + j4_region3(t, x1, x2, x3, w)"},"wl":{"tag":"conditional_fast_ordering/face/2/coefficient_operand","line":428,"raw":"-j4Region2[t, x1, x2, x3, w] + j4Region3[t, x1, x2, x3, w] - g[w - wm[t, x1, x2, x3], -w + wp[t, x1, x2, x3]]*nRegion2[t, x1, x2, x3, w]*u4Region2[t, x1, x2, x3, w] + j3Region2[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wp][t, x1, x2, x3] - j3Region3[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wp][t, x1, x2, x3] + g[w - wm[t, x1, x2, x3], -w + wp[t, x1, x2, x3]]*nRegion2[t, x1, x2, x3, w]*u3Region2[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wp][t, x1, x2, x3] + j2Region2[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wp][t, x1, x2, x3] - j2Region3[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wp][t, x1, x2, x3] + g[w - wm[t, x1, x2, x3], -w + wp[t, x1, x2, x3]]*nRegion2[t, x1, x2, x3, w]*u2Region2[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wp][t, x1, x2, x3] + j1Region2[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wp][t, x1, x2, x3] - j1Region3[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wp][t, x1, x2, x3] + g[w - wm[t, x1, x2, x3], -w + wp[t, x1, x2, x3]]*nRegion2[t, x1, x2, x3, w]*u1Region2[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wp][t, x1, x2, x3] + g[w - wm[t, x1, x2, x3], -w + wp[t, x1, x2, x3]]*nRegion2[t, x1, x2, x3, w]*Derivative[1, 0, 0, 0][wp][t, x1, x2, x3]"}}
+{"kind":"comparison","tag":"conditional_fast_ordering/face/2/coefficient_operand","comparison":{"component":"face 2 coefficient_operand","distribution_parts":[{"part":"regular/below","py_operand":"-j1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + j4_region3(t, x1, x2, x3, w)","wl_operand":"G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w) + j4_region3(t, x1, x2, x3, w)","as_computed_residual":"-G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) - j1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + j4_region2(t, x1, x2, x3, w)","on_supplied_domain_residual":"-G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) - j1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + j4_region2(t, x1, x2, x3, w)","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"-2636866234869537316664922098537939/3166345648255277281627968750000000\"":1,"\"-2644515390818583622995534433/1294519525384207500000000000\"":1,"\"-39353111134878607404671690059/19061363573271040190400000000\"":1,"\"-1754397201052223536993036222810143766553029554419561/2149811992118238456465300322917900000000000000000000\"":1,"\"16249268900465800234157281479808847730811/25221615830480160721350000000000000000000\"":1,"\"61230112735428076419890302425515089893389/87802113655823667412740341760000000000000\"":1,"\"6546372871472311317430579624791708453809028962869905736537785365231072395353204424399/1090602389181462033854447942407470903704566616853470973014831542968750000000000000000\"":1,"\"657660912367745191069317334845704519018530457442804863608797898580191/152632580546147573770287577609176000000000000000000000000000000000000\"":1,"\"2297818700643360378333429415453144245734925879759521755565758894890194769333691/144300115318323977278166377511834489204035150263651139584000000000000000000000\"":1,"\"-11863183726473427417739125744868537939/12665382593021109126511875000000000000\"":1,"\"-2913076732339599420516135534433/863013016922805000000000000000\"":1,"\"-18284892040125777129793139690059/5083030286205610717440000000000\"":1,"\"-513443486199019907583750089448671360423156046295093601/570533685108102628628071162395070678710937500000000000\"":1,"\"-142739302792201538198697572925804135209968897/50351890363249211761500000000000000000000000\"":1,"\"-7230974831056767670140669040826908421250300887059/2501003820062609223505371625807872000000000000000\"":1,"\"-10396470413369044078989498184269370781760268970859419561/8599247968472953825861201291671600000000000000000000000\"":1,"\"-72184001757864877530768689063996592072269189/16814410553653440480900000000000000000000000\"":1,"\"-100692482600502949796612009832519525530906611/23413896974886311310064091136000000000000000\"":1,"\"783903638433240655318725233445747045290353429928853523499235301664481505132158504146841324372055667122741/196512152875748063222238229825360355674966553682786857356297227128595113754272460937500000000000000000000\"":1,"\"17729820774597122763234438142395502645506695276792870140750940304577561779093303014719/5936827379439065258883859676202031531200000000000000000000000000000000000000000000000\"":1,"\"192563456056617602232796806643268715255714689512340274024096769438742635760594725772874628779186691/18933332773352667807188207782798601864623898352325744199221512366981120000000000000000000000000000\"":1,"\"14046901194194820086808479656856638513380230518499363598189638489746089977/41662741668027717356240259972977996524986715939248046875000000000000000\"":1,"\"918407965981170453383849006728483099274333004215211893/1513898027363227569678191564121093750000000000000000\"":1,"\"142458050142325077893193113473877052957974736270337532205097258165931/137915347619846077139988448054958363343195321397149696000000000000\"":1,"\"793218673918569532299241673727834837340874339855034542325397729434170546076264127/654456862895454063217313665993304137412946883625236875000000000000000000000000\"":1,"\"8644581261070363906335382096760794764477851313405651836990699/3856375630927993889924756947192500000000000000000000000000\"":1,"\"514944747134477042155090334243622580727016512679088284826210617904764391033/131997525431067227284527125556600149934287303969926545408000000000000000\"":1,"\"4135719395312634399504835569528806435404048047295367391536541573657541536317305715078246295047193245057426917952783/2988061276130688192219695188996405908189550044806565527445870163416397854155302047729492187500000000000000000000\"":1,"\"182647844859789557665150902941944964400908069585501198363274323237779212745646644615377577/70012393503253034311915870505169423021116400000000000000000000000000000000000000000000\"":1,"\"86691542770528820654064764808189390195980922426838158558365417490402605000605390952554099950819869543830440409/18747377221562522682358230858439173978448602703819234717455335548136607629567223398400000000000000000000000\"":1,"\"8290204091995171594782115172942983968614304922285973184485313486727246089977/166650966672110869424961039891911986099946863756992187500000000000000000000\"":1,"\"71780953907302143517275600367766831462766108204215211893/1009265351575485046452127709414062500000000000000000000\"":1,"\"3802800966649828856342401029379346744261081760452936639307878698165931/36777426031958953903996919481322230224852085705906585600000000000000\"":1,"\"1135402402407440774361376577691133383324534684847003019698701801223378050384606653854884062243/7507076035323091862360230760758148159574245877095502189408714294433593750000000000000000000\"":1,"\"16964594214006431088901148937892706302838029556599102410839689992646037/58884880451925572195716874716366886718750000000000000000000000000000\"":1,"\"9607175981840086960796321402232946606893857172228975232761185584666186874629297507138931/18095600029694322891326299037530585325180726101892657246668880609280000000000000000000\"":1,"\"173667380620352890813746115954089348942017317351306556429913271968514635033576264127/2617827451581816252869254663973216549651787534500947500000000000000000000000000000\"":1,"\"263456231020553742705394468465756724055620192508259251836990699/2570917087285329259949837964795000000000000000000000000000000\"":1,"\"6147781330183749846901846354544821329687587905220117769963235739164284391033/35199340114951260609207233481760039982476614391980412108800000000000000000\"":1,"\"287752752827930749079728310735539399090081200893424641188518849133396534515788864315619297710731497564609231797064556612161001636028597/538409194883393766071628572887555496157288026583152802343030010645622752594157992719723843038082122802734375000000000000000000000000\"":1,"\"3058257891618489524907294496258342182651070503541078683326890057409401629980602956859762150805904578469193/2723216060181230673203142082343170911713947717680000000000000000000000000000000000000000000000000000000\"":1,"\"5490181110198816326208776708774690472667332951254526805415335520623503995408236537468754176211650230376868041393152340692645687409/2459806291771837238348968465169896356334701371586610556168500082146622744210699184850449897357312000000000000000000000000000000\"":1,"\"287760267368482403667443883799805538222347721029680054595477806113656879483531/44146558196835930264938309916294067393687760931016107050349208377136113281250\"":1,"\"59085043344756073816511026638119543923158528316353223417299573526389907422373885924152894551213850319/10488731962244569753289190008670343083889295199051476028183051622970719973192237719054332181203125000\"":1,"\"1959887977755072213231335375225261377203529280659537623569999125116102756796708257239597520082989337694638501/251196736496729820523535787192199811022812176485161972077829049874110220918792204868667829520629882812500000\"":1,"\"55104499972753543868728135853609947674006076520590189016711359887603573711199845166358189894325157398709398300793/3798763158965474154748599621777970287869409738589671369542435161794925406525270961066795786468750000000000000000\"":1,"\"10226613266775714132167479013815207375939416814424174990067148292382744549482411242921757188365089102210938185546662130008966476921927/810753877586609925399258378404153095901217824504909331905829823517755439656058589519455307731598354529568568051233062500000000000000\"":1,"\"141870947959114501691151323218233854554283462251989674502866039314625473925431900380165387220965971050329439591514212168757938752057401478263821/7139376882021119177309786266626913644542431764971377031761757984170006896518576861308432509085771482312308825721064453125000000000000000000000\"":1,"\"74340326728520270362535498302351856135248010315339105555418219457026336566858893482141907762715582604674132161433742584791461601954524814366428313/1927117437381196252728170301064536447008491251917541315606137998763740415322963997817444898430777248715206958512415587902069091796875000000000000\"":1,"\"261335196385990277297977421383790232749582755811612282303684058356157067247831118856771274863342509783665640856818843178856051279121852697881893593890586936414087/4906404782135001168822856227212992346333521171980090418356907441745842284880612198875261868425155279857742282465271354491331690000000000000000000000000000000000\"":1,"\"5092772461567849040774124065761035433817398707394533742403570480074352090417520172195737209673544144046266804228325005616955632971321246251909120961514575456548515472763738842829/50793721815303183251515457213210124958656995429510710951165489323635283489719616315021903080550585547187594890951529867615275810012084032000000000000000000000000000000000000000\"":1,"\"19380692838728745381930919621463369306913194070485819857326956534846283659054928521/4480875656978846921891238456503847840459307734498134865610444650279315498046875000\"":1,"\"81470958994106304174290938560330664452526543172636619209024383815652929843016358878896621335897430947207/20977463924489139506578380017340686167778590398102952056366103245941439946384475438108664362406250000000\"":1,"\"1000234525614964407508193039338220814125847135976855745631824513104822768581834934641288823496801855441234028003/200957389197383856418828629753759848818249741188129577662263239899288176735033763894934263616503906250000000000\"":1,"\"93597485147287138495582147635335091076850268273303329373956491523718247653767038677268510767261299/18349878155251103741431786686750794814003512984139977873114022919508803627388020586013793945312500\"":1,"\"3928888847904333505804375550922932178794686176087493813492300137551865353536734422268085781201442322221573610139473/855286826309973236976702290178707334716089735684163567898141745361412407172494584419037977749503125000000000000000\"":1,"\"244328751545427749523938504194994922272510005260648825872708878666083502590365798912914815101568069059126572393450380599632183/38912664754516653943430527542199328377678617966201962350026421107192157427813526366957004579561153419375000000000000000000000\"":1,"\"229367291305361018847601661270717008471515552707907984818199917625682141046189127372269977941359051140826518988174977/40059684221817727450076141466022232126622866334218352624265679888019213377902857407613482839125000000000000000000000\"":1,"\"2851836403481466203746492771193089212628198853222554821407493307985878644384412959603130453977183958230072433035541384260087983256886927/540502585057739950266172252269435397267478549669939554603886549011836959770705726346303538487732236353045712034155375000000000000000000\"":1,"\"94419203473350910925380600384777421453929021370459281827602513949651905684442451897542710712587989575688584947183371032644603117332316273913984247/13326836846439422464311601031036905469812539294613237125955281570450679540168010141109074016960106766982976474679320312500000000000000000000000000\"":1,"\"18316227309047413258301715531224847381043320711366451226097881687628455092514673604864988590808350057949587825594750727627850327309828855368434985228379722907318132763/915453865130252566244230958324314809238340398420429968153782532394745581601478459421717616753183270058236232473077402421049939701333642005920410156250000000000000000\"":1,"\"103263099506504843522457667939897894027422593950901925599367542939018957940835645987061867524520719071208482023671800608792561747935399456272565899444288160498046237811904547411/3600764182771310046467312837451358356631281249237207413782904589351596805305156003960225673332802354649107837117465804878598786426000000000000000000000000000000000000000000000\"":1,"\"127349638718797080942477679725242368085494413076122936478201355287005560223385579282850367446934023793344443072284813387350503162471255736205794318636296137789736786255697126225900177002555089523428847/2285938521123359009727937451969890063212132585333086038656366684459880200291806936749298184777088124248473657560439736658934752762706976149030543573319680000000000000000000000000000000000000000000000\"":1}},{"part":"regular/inside","py_operand":"G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w) + j4_region3(t, x1, x2, x3, w)","wl_operand":"G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w) + j4_region3(t, x1, x2, x3, w)","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"regular/above","py_operand":"G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w) + j4_region3(t, x1, x2, x3, w)","wl_operand":"G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + G(w - wminus(t, x1, x2, x3), -w + wplus(t, x1, x2, x3))*n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w) + j4_region3(t, x1, x2, x3, w)","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"delta/lower","py_operand":"0","wl_operand":"0","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"delta/upper","py_operand":"0","wl_operand":"0","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}}],"py_coverage":[],"wl_coverage":[],"normalization":"coefficient on support divided by absolute derivative of delta argument in w","role":"unrestricted coefficient representation diagnostic; not a delta part"}}
+{"kind":"operands","tag":"general_order/face/1/coefficient_operand","py":{"tag":"general_order/face/1/coefficient_operand","line":4163,"raw":"-f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x1) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x2) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x3) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3)) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), t) + j1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - j1_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x1) + j2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - j2_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x2) + j3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j3_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x3) - j4_region1(t, x1, x2, x3, w) + j4_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))"},"wl":{"tag":"general_order/face/1/coefficient_operand","line":260,"raw":"-j4Region1[t, x1, x2, x3, w] + j4Region2[t, x1, x2, x3, w] + f[t, x1, x2, x3, w]*nRegion2[t, x1, x2, x3, w]*u4Region2[t, x1, x2, x3, w] + j3Region1[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wm][t, x1, x2, x3] - j3Region2[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wm][t, x1, x2, x3] - f[t, x1, x2, x3, w]*nRegion2[t, x1, x2, x3, w]*u3Region2[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wm][t, x1, x2, x3] + j2Region1[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wm][t, x1, x2, x3] - j2Region2[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wm][t, x1, x2, x3] - f[t, x1, x2, x3, w]*nRegion2[t, x1, x2, x3, w]*u2Region2[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wm][t, x1, x2, x3] + j1Region1[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wm][t, x1, x2, x3] - j1Region2[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wm][t, x1, x2, x3] - f[t, x1, x2, x3, w]*nRegion2[t, x1, x2, x3, w]*u1Region2[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wm][t, x1, x2, x3] - f[t, x1, x2, x3, w]*nRegion2[t, x1, x2, x3, w]*Derivative[1, 0, 0, 0][wm][t, x1, x2, x3]"}}
+{"kind":"comparison","tag":"general_order/face/1/coefficient_operand","comparison":{"component":"face 1 coefficient_operand","distribution_parts":[{"part":"regular/below","py_operand":"-f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) + j1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - j1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - j2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region1(t, x1, x2, x3, w) + j4_region2(t, x1, x2, x3, w)","wl_operand":"-f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) + j1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - j1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - j2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region1(t, x1, x2, x3, w) + j4_region2(t, x1, x2, x3, w)","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"regular/inside","py_operand":"-f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) + j1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - j1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - j2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region1(t, x1, x2, x3, w) + j4_region2(t, x1, x2, x3, w)","wl_operand":"-f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) + j1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - j1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - j2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region1(t, x1, x2, x3, w) + j4_region2(t, x1, x2, x3, w)","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"regular/above","py_operand":"j1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region1(t, x1, x2, x3, w)","wl_operand":"-f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) + j1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - j1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - j2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region1(t, x1, x2, x3, w) + j4_region2(t, x1, x2, x3, w)","as_computed_residual":"f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w)","on_supplied_domain_residual":"f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w)","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"-587801053731867720214861788403610255657/7439972264535575826382743259277343750\"":1,"\"-126904328686497824254499959214471927/1510176122157013395840000000000000\"":1,"\"-6165483529158362455888864726626872962949/59174884369124738523781585698816000000\"":1,"\"-1278310176924907294113847390416275640194587277925135401021715436182838103051848077075314700315929/2403676112353294649577566731607548542425806172729795051312032055313466116786003112792968750000\"":1,"\"-1766925770168938040794539444096236677814214809289006585494635939058655290031884492503/2512781977772182501040123220818097185685504000000000000000000000000000000000000000\"":1,"\"-19834469618186377857105302776019906677377583683651713917965989385925664947147745292923702928335747033/18897061556647663656381050426875501823078442862788915360200923741689282035712000000000000000000000\"":1,"\"-1212484010286909690208124508984377743363324280333045978020577519/4738162856385841332578524864098551758278048706054687500000000\"":1,"\"-115880993686595524902164412324159651458552935380578163463/415222107117311252492874956390400000000000000000000000\"":1,"\"-19781498107943320169200729930372394030390136755829528848368632233/54206138481024234057616613820351258796601817169920000000000000\"":1,"\"-1771813600007992006103586957130259354223924725016491513734/41893274463008584665877914781315001823842525482177734375\"":1,"\"-2817042171639819449595310793393784361046513450368343/58740112482643624447271808000000000000000000000000\"":1,"\"-486346300629629341735569864691100694748665653668282940101949/7764219558063184272201338486462433444369530880000000000000\"":1,"\"-41329664889123715129226462809340109718127/1859993066133893956595685814819335937500\"":1,"\"-23495650116752214571465559622194471927/1006784081438008930560000000000000000\"":1,"\"-428684298744687548841137833728592120834949/15779969165099930273008422853017600000000\"":1,"\"-93177139710731249907624434907279292521482752729262136397820935228332548007494782573875660086772781367765511739995761/433110703167514578775256222634857483576644051442877051133891242253143895108019023609813302755355834960937500000000\"":1,"\"-30870954883402589451801295214709333669033601697615242392674499508537440773676340544188276861544201527/97737670363822364996956840821584871753860500684800000000000000000000000000000000000000000000000000\"":1,"\"-1296241351020215477994563538500815116761001322426106354012686590376070207319515792766298574817874204144373212845527186033/2479446077373346894314615298234404099812153138776190917457656323819461344985905432268636160000000000000000000000000000\"":1,"\"-558873209380648481294675402683501448229273733427095391250250108769/18952651425543365330314099456394207033112194824218750000000000000\"":1,"\"-8884056799626838107534265722400187372090164273450598163463/276814738078207501661916637593600000000000000000000000000\"":1,"\"-580046755914088217431637084280174256195796556625503708684218232233/14454970261606462415364430352093669012427151245312000000000000000\"":1,"\"-7717002296706766705369641532704764846442429591415179738892272996801553111/2784975260914548098666646284326507677866543658243680477142333984375000\"":1,"\"-7065483479423696707882801573460798351706828417890978310203681131/1738561153472352049495073516185632768000000000000000000000000\"":1,"\"-19020954497538177626728842886103754536716784100254603491732367652725888359/3262569596206317151568251523491472629922898345473820296478720000000000\"":1,"\"-301288492973141255015111039678629811695158579055030921050476286925132032726882484546977189673146205388372350570013/24967382122942578949882584922705564503854333565308765912313209556378470839469046040903776884078979492187500000\"":1,"\"-22858130717107944745891903005629460788541257883844317766604334529210557929572109972526245121920111/1256285362008272456555073722405053269487233946091520000000000000000000000000000000000000000000\"":1,"\"-559129718022036180484397595975473877527199903236019873047670504294565569351097969280765532221105231104458543036029807/20844215871557715019312859199592254607983102708377412815667951161402464708575733816529780736000000000000000000000\"":1,"\"-16495941180950688424819766955477340567372942395728811305959549500397558823527367/1562415327329583936496411845606922021690716175507375282287597656250000000000\"":1,"\"-1081490885880061187763025032446004693976465298430541950302515027438957/69197866450818480672695808959532662784000000000000000000000000000\"":1,"\"-1106998683233755364027854072162649497584256348842597908921890102478552151060890981/48920352645952273565769574116604743055997844476181026176436797440000000000000\"":1,"\"-539683300486445376833381628045699535614169466709497362499616729929331364689085796723930137099/501815775994009412088435347240132071799665166296081176626002435013651847839355468750000000\"":1,"\"-119370024684916293806956178952994810640758786880515864267452378870198453926543179/67623422337691299787570278500259609270681600000000000000000000000000000000000\"":1,"\"-1214517520776616612421904608914594842268631338445724344916359883202041250795763561963479985359/428075304894458404500540154447515536239779314498725305477517973734922649600000000000000000\"":1,"\"-1699358612568786371694242810550486997438689543085727971696405791111274209361/11139901043658192394666585137306030711466174632974721908569335937500000000\"":1,"\"-238549096114798471465828676298013936255238909039122821990203681131/1159040768981568032996715677457088512000000000000000000000000000\"":1,"\"-263446350206102626904966418940433532154891526248450086030926964615029888359/870018558988351240418200406264392701312772892126352079060992000000000000\"":1,"\"-19780347662100076092749102920842169113820596071737549140700012721555134435840668006459304792576938672876495858174209507112745851009167/4498792650118201084912472633563619837886519216261817543991748563072861012581801098836071417963466956280171871185302734375000000000\"":1,"\"-369981739777320182086213684808480896985039225969239551102378129743869812199464446148486815004109433065843779233999/48864726697746167124657458521411432980629349013964980224000000000000000000000000000000000000000000000000000000\"":1,"\"-34686622079882163356222044489750607003152400482334510437053156768477032020664829785640154467673767358276889560723157897395938661063910807/2734928344479893588820075075052492360897522969282513050508700557574479344147343025006385561045031169556480000000000000000000000000000\"":1,"\"-1298421243672835657235967254430189354494788444490254266676124679254070824292277367/6249661309318335745985647382427688086762864702029501129150390625000000000000000\"":1,"\"-15348749937797020339760709973551981644890200047369543896779475027438957/46131910967212320448463872639688441856000000000000000000000000000000\"":1,"\"-8124532709559607646422235748404229401873073047411466551215878330837767406612890981/13045427372253939617538553097761264814932758526981606980383145984000000000000000\"":1,"\"-27914658790878073207660770211710810950670049316422285372554011328503059897625934218323878612419016403592/1608206470195986762981419791682288966389297188734781655922058799056891667309229012918521366732177734375\"":1,"\"-1674031720197938823891627792448733952286461576090723867103794480132197003729747515659682857059045067151463855971443668186282667919495464892167/110075541027798529393827515818166200386498854155657454426901062463291157912756887835212292565447489397818408563004404460974339303483017578125\"":1,"\"-1678103934051460018935129093704091472678208088214838231505038126875779307906509281253596984163915160781317663272215925555415101275783690687952686222444733299869/94839809631955507516053407941782416814369938210900078673532466637368239111667834818039869125857251118014818007296329367567242295451275465881249237060546875000\"":1,"\"-103234513010254446860042767782238766960168548253263369245787666041494865114732656225172245425857276169677939248272839380329082077378049961899010273231432206298620152660493762779/535431956029485617798211903507422039869840362631063644954766579585327229677847884922268871628262648887480845192398564500682624127916711376734982762602157890796661376953125000\"":1,"\"-18154146274902547458745005932742412917838231822095696657986941130334365419928027889847612190180182927614676318705941751858566668518681539786354227067693471846337316389226769881394217301656964140597435938538170782641/68362367240031375559147657161653560814319993179633088392201430089737400021482165600634230349204509371753761482621682468497737815145527960076734168363859757715114198704386432000000000000000000000000000000000000000\"":1,"\"-251791572192151806063767921242176472317909218154681142339697051132833057694125712710861671039866825472377934054952636130245428795747735165537494640070668205719466071724041500336672788104847389077720044073420534080676967602312928992971302480177503917/587397214250158596169502014800622783018682625575654335155082215695176581598263888734326740282848541244573578460068649429848956769173000810596061518786655776201062653995941790296154619604510779710961929420800000000000000000000000000000000000000000\"":1,"\"-48996789698408951401500052625269543149516820233052658876772095187858875998519035429928928454569382192906836500741414774489449614449284811657369/1055451603126819429898495534201046501230175525249399263834757301120531044462306927650503883942360331122641870720338436061724230957031250000000\"":1,"\"-472917958864393983203292425692279816830060075165842515189423755846971317977688548909497115830081085360571638377473112672107721951078500814396383100416094001847362570483448573642113077761/11296469977908609056223512557938751316329913933201291646556719936319008912655209843746428213955682153362857945307460685933804044864939732721853338471453686182863200000000000000000000000\"":1,"\"-92169755349854861460568571145648361870526381319645602006213430843229120736766286403944413279503272090613750440004600011381734756511885678830205163628976046191958784865925181461924874612280288644539224794408944317/1684946341713693677382779727448437448036191290424952175719283124563027117163004962688944426753894017492655862796202420564271632721353067531310917729938305041684781484458938657728000000000000000000000000000000000\"":1,"\"-77383125266064548189276026239871448627378762562661459187708175409759418676755743110729030473233980240800063185898892659887/6585853979371455211081631573182024437219779385427980370679534891008558236124648926121864279187511870159387588500976562500\"":1,"\"-73465540852408993753950808902524661615068745779592282504420839951641129630472206071914914837074548481633085743911480597241775555996868217683174663499144023/6731950092650089872654392799947415351373170960706420564276146392743184805670085629899346500132324901124881105579138233954324050968767528808593750000000000\"":1,"\"-161290440503561774769980266491669700680849817781801706109782215664348474572489029798974801728435039249313722695854977369902136978758222939211770757904046467181302121025180226664369/12443743873399471540388274687572433522572951131916430617715927809001871802978824751689225472115644442836361044772562301860541449675018297173864811030591089843750000000000000000000\"":1,"\"-13963003984984943104107024288897638535950864919816117548861889483905552210623118257067035496565612539679023/1608206470195986762981419791682288966389297188734781655922058799056891667309229012918521366732177734375000\"":1,"\"-439203547191089648207468459703280656289323243802929351849302155485491773914540382903307388680129004325465499673328243780832039241040066247152719/55037770513899264696913757909083100193249427077828727213450531231645578956378443917606146282723744698909204281502202230487169651741508789062500\"":1,"\"-225553279832508586201557133462041519765884356869204470585392903520092496954056767476375627674401031996945258612196765273637508476863475138965096267475595501737369/25290615901854802004280908784475311150498650189573354312941991103298197096444755951477298433561933631470618135279021164684597945453673457568333129882812500000000\"":1,"\"-733564327222111358990971923996274083876997880072509643387560191208381866550914755888482582773088450536572626876715466512142168690446724659691385405947931610011894916376114298125279128547307443401/8770706358045417639696327858555446130262471602304880450273100723020324659703971072496397744305258809032538624024382314468673109401060089975231308787555103832255554152652621269226074218750000000\"":1,"\"-3139023946929989780770444563822343115880339594608048380920450476278823256561050329910058695799427013573406089858787475183028918322394001977114657958829697826145929082585361255153653058679303615820649646112494997601414212175677499/25085248194733098019091689646142539925905219987864571063403257217513621308637496317314991985931400353071779786607070619162091600051542307931477995844475112339987027317410901286400000000000000000000000000000000000000000000000000\"":1,"\"-16943985587381517636260047050991961967940350384720910712581945965577107292425863080121509169891469711750796414295899178714251679750121327734851776838818218565991447352377270089560817507460988137693264606894404049564276631118812525263902116453286796461329876208396389917/77071226887137040607211942728235150069174290641800437502948037574690653711330693483128206132427514478899917397447878963947089939517855941046226895212263241571505901647395150968703065491360492658608691050673296526802944000000000000000000000000000000000000000000000000\"":1,"\"-4425445233034048759647631814065373468134375292807482509109836958586241673005391903016473966074232438751512998202124425868415171488123570532772829/383800582955207065417634739709471454992791100090690641394457200407465834349929791872910503251767393135506134807395794931536083984375000000000000\"":1,"\"-41383555833691278718927930653641074688933579704331802283803220223488488502952163605743541144086109910815653879989243350337073427079339331200631319669404906653797245461809772485153953927943/3765489992636203018741170852646250438776637977733763882185573312106336304218403281248809404651894051120952648435820228644601348288313244240617779490484562060954400000000000000000000000000\"":1,"\"-5910416456214458490270239713935641360738647534922533739970521258782599113887486153029889929817058203758046319412210229514188178850130331840319254207937704867148068833765709471098511498024398175959181031211490819317/449319024456984980635407927319583319476317677446653913525142166550140564576801323383718513801038404664708230078987312150472435392360818008349578061316881344449275062522383642060800000000000000000000000000000000000\"":1}},{"part":"delta/lower","py_operand":"0","wl_operand":"0","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"delta/upper","py_operand":"0","wl_operand":"0","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}}],"py_coverage":[],"wl_coverage":[],"normalization":"coefficient on support divided by absolute derivative of delta argument in w","role":"unrestricted coefficient representation diagnostic; not a delta part"}}
+{"kind":"operands","tag":"general_order/face/2/coefficient_operand","py":{"tag":"general_order/face/2/coefficient_operand","line":4519,"raw":"f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x1) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x2) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x3) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3)) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x1) - j1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x2) - j2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x3) - j3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3)) + j4_region3(t, x1, x2, x3, w)"},"wl":{"tag":"general_order/face/2/coefficient_operand","line":286,"raw":"-j4Region2[t, x1, x2, x3, w] + j4Region3[t, x1, x2, x3, w] - f[t, x1, x2, x3, w]*nRegion2[t, x1, x2, x3, w]*u4Region2[t, x1, x2, x3, w] + j3Region2[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wp][t, x1, x2, x3] - j3Region3[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wp][t, x1, x2, x3] + f[t, x1, x2, x3, w]*nRegion2[t, x1, x2, x3, w]*u3Region2[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wp][t, x1, x2, x3] + j2Region2[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wp][t, x1, x2, x3] - j2Region3[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wp][t, x1, x2, x3] + f[t, x1, x2, x3, w]*nRegion2[t, x1, x2, x3, w]*u2Region2[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wp][t, x1, x2, x3] + j1Region2[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wp][t, x1, x2, x3] - j1Region3[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wp][t, x1, x2, x3] + f[t, x1, x2, x3, w]*nRegion2[t, x1, x2, x3, w]*u1Region2[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wp][t, x1, x2, x3] + f[t, x1, x2, x3, w]*nRegion2[t, x1, x2, x3, w]*Derivative[1, 0, 0, 0][wp][t, x1, x2, x3]"}}
+{"kind":"comparison","tag":"general_order/face/2/coefficient_operand","comparison":{"component":"face 2 coefficient_operand","distribution_parts":[{"part":"regular/below","py_operand":"-j1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + j4_region3(t, x1, x2, x3, w)","wl_operand":"f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w) + j4_region3(t, x1, x2, x3, w)","as_computed_residual":"-f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) - j1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + j4_region2(t, x1, x2, x3, w)","on_supplied_domain_residual":"-f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) - j1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + j4_region2(t, x1, x2, x3, w)","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"-5898123384657695930208946278167/7082014076184242116195312500000\"":1,"\"-4068036680583727433016959/1990580619390398437500000\"":1,"\"-18345745740213751601965781/8882008639541279550000000\"":1,"\"-3924928215371765435735796553901321762745978719333/4808381800553058596711710678965000000000000000000\"":1,"\"24873177135830417270799380966182946153/38783238628218501109218750000000000000\"":1,"\"28405064436085567726941843041232638251/40913082060644145168875520000000000000\"":1,"\"14638132227222649004630153858408227759450942102295256016127116818600309761906946547/2439298273060990119010670001055670852441671365256681108474731445312500000000000000\"":1,"\"1010975142748564034399072614614408150693022496617326642321469731893/234702876831873749349152525093475000000000000000000000000000000000\"":1,"\"1070269830817841266187945411932055159397319713742264147382792037837629035469/67239411599146874934210523431741058882351636276051968000000000000000000000\"":1,"\"-26533816786255891050410460425778167/28328056304736968464781250000000000\"":1,"\"-4479435036949046323846079459/1327053746260265625000000000\"":1,"\"-2840068405139303725051196927/789511879070335960000000000\"":1,"\"-1148400436378003112701692859293106356664379903057453/1276085442882480626801602166973101806640625000000000\"":1,"\"-24388471906165784561346531307504680652459/8602891320881423967187500000000000000000\"":1,"\"-1123180323015676187222308075834624422010037927/388463596390196037401126946048000000000000000\"":1,"\"-23253289755142337675899491899688344307174376150469333/19233527202212234386846842715860000000000000000000000\"":1,"\"-36999112741049393221708150151942628642949/8618497472937444690937500000000000000000\"":1,"\"-15639907818179742932370585403887331320583/3636718405390590681677824000000000000000\"":1,"\"1753258748349380106202472233653807149637497185337636673059806047931896967725874455796872398725109125873/439529346258888164494183630922523162043575985870591095097057290114462375640869140625000000000000000000\"":1,"\"3029098584340073827650865383482516298493331951608424036117061409998720423677327893/1014338893091991969937167382948980255000000000000000000000000000000000000000000000\"":1,"\"29907276869428022577290896363947913802063573887153932663530128486329984239153864701887263620823/2940783409361134670228246960010605348140837185957281496391829422080000000000000000000000000000\"":1,"\"480547014078920078833713961223053490304113788660637223688220837546408539969/1425907333588248626517322897575171931067670353020764404296875000000000000\"":1,"\"491016688827091640316251485989188076273505603471694539/809580624789163493316189160656944274902343750000000\"":1,"\"1083561534626726733918281022632223632629617501421275202005183452624939/1048922838286495997803578807706877774537968861070544076800000000000\"":1,"\"27134873483541192734806526758326129571508621517401025546126088696989126391597622519/22398786132596915313612560218620834102958107092073732046875000000000000000000000\"":1,"\"4621641311783575536159991991633709435365366336794355426189077/2062257124507977982541793851838489257812500000000000000000\"":1,"\"3916782065784921331571031343637582098886993405287615405978305422846650736377/1003914512861839078625097971594364473666885106304608003686400000000000000\"":1,"\"141476762485229913995735162652562888038391841796245914541399437134315886167984714159780029473752172924812674665143751/102266397175572803378719067843401992207787350283504705176834906342926216558465212583541870117187500000000000000000\"":1,"\"97648698748381870587145508264071136755320498198509013641452205355086541336906714163453271/37440221369513048426958135438115992232776699843750000000000000000000000000000000000000\"":1,"\"659394942466533535743800036522801325261738580197826450993585628520255545884424510792094166146946938364573010521/142584218979550519734157878028906828758311872786269624045535302029994532471541826846720000000000000000000000\"":1,"\"283732026869242350192780585538940761363008261364402428743550034543474846039969/5703629334352994506069291590300687724270681412083057617187500000000000000000\"":1,"\"38385870358228815126436488834919461087843911950659194539/539720416526108995544126107104629516601562500000000000\"":1,"\"28922502938508797137790312338602157007040470368676709522136893404624939/279712756876398932747621015388500739876791696285478420480000000000000\"":1,"\"38855824996335552279485245790388665352826677513077402644091219842847791624791203455200746417371/256929677308932818989278897786947620761428565143593562432513246726989746093750000000000000000\"":1,"\"9071618798101556089577428782141444150080601238680199564520170997747851/31489609897924261068725156830744635905456542968750000000000000000000\"":1,"\"73069278150336139465873450344532797572410679386693979941642219279589157763391925296861939/137627091336952933545698352124329840612068966852728043170498319745024000000000000000000\"":1,"\"5943753066100255838592325799003698949804059883584329362148821084529518023476285122519/89595144530387661254450240874483336411832428368294928187500000000000000000000000000\"":1,"\"140886152452694804276750573725678798185198907389823487613689077/1374838083005318655027862567892326171875000000000000000000000\"":1,"\"46757633633531890607672747964706143695148228051891334101270457595092666736377/267710536763157087633359459091830526311169361681228800983040000000000000000\"":1,"\"9847249057171751935360593486773606262986421554834305262270110577350102966209399054056646627288752245468406918386643948965759060432818109/18427054694884151643801487907076586855983182709808404660190202114346438707535057300832548527978360652923583984375000000000000000000000\"":1,"\"1635351318525285818659019507064426335812245521356550484279030447800640983206928046368063343432373742212439/1456282338432853434224649027628047257084529072462468750000000000000000000000000000000000000000000000000\"":1,"\"41756763231890170432736858783138211724681949311118812785024007718521552723365321476694840409334098844938625846619710643963513953521/18708193407975806551665210160097711732345589876122610285525981180326258537913595467001477274900889600000000000000000000000000000\"":1,"\"207204557562874580063022682598330392834382954075153594596287557578343978059202731/31788733172694151979947890262587146199321967946009484860669084778052668457031250\"":1,"\"3181390195763557875316893106748189508104072485028601468069961418813218604422960608787813796452230726560876196822047/564768679218959622179450349059539481375158988637902988684561850733037635860443036752073540781458366255105039062500\"":1,"\"319894655835632608484338150397055201746982609222702926023125843786129861872966722969964690384320680193204459720521411991/41000913217722590201599437781976021631655039697421239921086315811018992403241911380405236781584577866168212890625000000\"":1,"\"2479871913048803690152882424047478798142388031467985594282324348952004508077799429422990447216981559486060191882673/170961612551130242838501224094813456524037138957794382912175572917003569476022287612449320102294921875000000000000\"":1,"\"275317632165209547216813301303389437582196292575463655880737260603648317303500761603544437508188445657618232486051367915592823431157385489080700063/21827633610262096258105279076056828869221499044256311308725194839921246495681721297400038678860868783465030586217404366045331966640625000000000000\"":1,"\"162093011909157318869421051603051676350860641864985549564594764980732770206890693150695841170149809711493299573122338442985139798044758116167541245085903777/8157139429258528209669583662743205272959047347898132988606861451007513344324077233659524321363229759606402484720205171886005371093750000000000000000000000\"":1,"\"3345518060297573321724939104917234176413621869829376973583497767889902801282279843436195279070436947256093391632758665111470916938988422959190675893/86729045977116012332366561119681888926401925494168752082445138459034489196163342196437864408066599007153397143751240801066160202026367187500000000\"":1,"\"7035499270848774632530362844723096019343521653556784562978442471259266354050062292921477836925961461116754593353587019728376479728652287756612134593164406851069485225025027103/132093362595900792499097652292056553722273507185360380394647503460426274323517414151993618865042381389323682259850283249183992755968944480662500000000000000000000000000000000\"":1,"\"285114482839143190116720717020688885717019936653838411414670637374282871787692325553810106172443461232631314170909426207944110380419302189751705013686966759365513339868488018058398086469311377/2843699445124975519988926227957213674730598551556011990349334885401595368163341543990003345645580895434489468888509060457215332150634349687641531324800000000000000000000000000000000000000000\"":1,"\"240612215896383171777495576322091526334327584363236936452471195856625112865464068187/55630283052214765964908807959527505848813443905516598506170898361592169799804687500\"":1,"\"2193413091918438672699463617832093746188565273050014349253140413649851634727357736018563671363262319359478852588559633/564768679218959622179450349059539481375158988637902988684561850733037635860443036752073540781458366255105039062500000\"":1,"\"163260587872612573299960919926264354673215107887309208364575228878346963183619607647777787612489385592685854331802619860973/32800730574178072161279550225580817305324031757936991936869052648815193922593529104324189425267662292934570312500000000000\"":1,"\"6391081458773135028812832851154077819177142787676803658053086792867264414282274183048534928867288254/1252980324924244435189350170472732920041953903685989704049151763198931663205084479510784149169921875\"":1,"\"105775802648313885035255094350894207145795081858061424388778346958191398479857380190909875085457617382563837646520343737285460287/23026578092910374482407061495901110666105302991464991853744711382057000515676063360708598382540629880012386394531250000000000000\"":1,"\"39879853967278903899491717699029159894227291534656628476794163215596232929344107623553916121696031018053170781902533177521742450200203353/6351415280791437014880560583206096650202030966055688920085976428346069940264269086757267339389493001963076293468750000000000000000000000\"":1,"\"31323662729740790693434630332624645354241156528285325722820307048857925009376080050901782145163347414450604204664920759/5470771601636167770832039171034030608769188446649420253189618333344114223232713203598378243273437500000000000000000000\"":1,"\"76778950952764442284397626905486462850804783029876689146231127275985947851633811206220947548168422360998508445827546389983675163256865402037069081313/14551755740174730838736852717371219246147666029504207539150129893280830997121147531600025785907245855643353724144936244030221311093750000000000000000\"":1,"\"15411318587614460824225649906023138153317462056902166183537798647631428688546328952916387008389831412011791991594387550221568388419046571348827406124842778777/2175237181135607522578555643398188072789079292772835463628496386935336891819753928975873152363527935895040662592054712502934765625000000000000000000000000000\"":1,"\"2501347918212893410074216332792328183401928402537334623121426905273790891369030956695926867071775758476746954115770095375634029007248288618943064744840699815959307823821/125019433009784241750844157523774449679804787974827432139062159065873896960567809866883124925441748847575110578070653043046319202403537929058074951171875000000000000000\"":1,"\"2780090037196918647688989438244020758289826197680904706324733459043169011183150494185523629850650331977467418616246326568162746177896736668650345282417556947552631083671385345977305737282909/96942072645333517079309473643062077828156505475154989205779023096177970780045246119599513171669084433875694526709218628620951302541872798278202500000000000000000000000000000000000000000000\"":1,"\"20786215683441993728521004496452103083912933023009226986836513445909688949014393271488283340725689512764872285580971479599016492558359245660261471956297217873976310205566241962148314846905790110540697531704377377/373116180698661735052716925542563830095611764922658080259959054937114282647298320152639266224743760405055790551231805037001592996017066936582973230844805040881664000000000000000000000000000000000000000000000000\"":1}},{"part":"regular/inside","py_operand":"f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w) + j4_region3(t, x1, x2, x3, w)","wl_operand":"f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w) + j4_region3(t, x1, x2, x3, w)","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"regular/above","py_operand":"f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w) + j4_region3(t, x1, x2, x3, w)","wl_operand":"f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + f(t, x1, x2, x3, w)*n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) + j1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - j1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + j2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - j2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + j3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - j4_region2(t, x1, x2, x3, w) + j4_region3(t, x1, x2, x3, w)","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"delta/lower","py_operand":"0","wl_operand":"0","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"delta/upper","py_operand":"0","wl_operand":"0","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}}],"py_coverage":[],"wl_coverage":[],"normalization":"coefficient on support divided by absolute derivative of delta argument in w","role":"unrestricted coefficient representation diagnostic; not a delta part"}}
+{"kind":"operands","tag":"material/face/1/coefficient_operand","py":{"tag":"material/face/1/coefficient_operand","line":1561,"raw":"n_region1(t, x1, x2, x3, w)*u1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + n_region1(t, x1, x2, x3, w)*u2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + n_region1(t, x1, x2, x3, w)*u3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - n_region1(t, x1, x2, x3, w)*u4_region1(t, x1, x2, x3, w) + n_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) - n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x1) - n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x2) - n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), x3) + n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3)) - n_region2(t, x1, x2, x3, w)*Heaviside(-w + wplus(t, x1, x2, x3))*Derivative(wminus(t, x1, x2, x3), t)"},"wl":{"tag":"material/face/1/coefficient_operand","line":121,"raw":"-(nRegion1[t, x1, x2, x3, w]*u4Region1[t, x1, x2, x3, w]) + nRegion2[t, x1, x2, x3, w]*u4Region2[t, x1, x2, x3, w] + nRegion1[t, x1, x2, x3, w]*u3Region1[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wm][t, x1, x2, x3] - nRegion2[t, x1, x2, x3, w]*u3Region2[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wm][t, x1, x2, x3] + nRegion1[t, x1, x2, x3, w]*u2Region1[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wm][t, x1, x2, x3] - nRegion2[t, x1, x2, x3, w]*u2Region2[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wm][t, x1, x2, x3] + nRegion1[t, x1, x2, x3, w]*u1Region1[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wm][t, x1, x2, x3] - nRegion2[t, x1, x2, x3, w]*u1Region2[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wm][t, x1, x2, x3] + nRegion1[t, x1, x2, x3, w]*Derivative[1, 0, 0, 0][wm][t, x1, x2, x3] - nRegion2[t, x1, x2, x3, w]*Derivative[1, 0, 0, 0][wm][t, x1, x2, x3]"}}
+{"kind":"comparison","tag":"material/face/1/coefficient_operand","comparison":{"component":"material face 1 coefficient_operand","distribution_parts":[{"part":"regular/below","py_operand":"n_region1(t, x1, x2, x3, w)*u1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + n_region1(t, x1, x2, x3, w)*u2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + n_region1(t, x1, x2, x3, w)*u3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - n_region1(t, x1, x2, x3, w)*u4_region1(t, x1, x2, x3, w) + n_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) - n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t)","wl_operand":"n_region1(t, x1, x2, x3, w)*u1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + n_region1(t, x1, x2, x3, w)*u2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + n_region1(t, x1, x2, x3, w)*u3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - n_region1(t, x1, x2, x3, w)*u4_region1(t, x1, x2, x3, w) + n_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) - n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t)","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"regular/inside","py_operand":"n_region1(t, x1, x2, x3, w)*u1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + n_region1(t, x1, x2, x3, w)*u2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + n_region1(t, x1, x2, x3, w)*u3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - n_region1(t, x1, x2, x3, w)*u4_region1(t, x1, x2, x3, w) + n_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) - n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t)","wl_operand":"n_region1(t, x1, x2, x3, w)*u1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + n_region1(t, x1, x2, x3, w)*u2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + n_region1(t, x1, x2, x3, w)*u3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - n_region1(t, x1, x2, x3, w)*u4_region1(t, x1, x2, x3, w) + n_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) - n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t)","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"regular/above","py_operand":"n_region1(t, x1, x2, x3, w)*u1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + n_region1(t, x1, x2, x3, w)*u2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + n_region1(t, x1, x2, x3, w)*u3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - n_region1(t, x1, x2, x3, w)*u4_region1(t, x1, x2, x3, w) + n_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t)","wl_operand":"n_region1(t, x1, x2, x3, w)*u1_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + n_region1(t, x1, x2, x3, w)*u2_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + n_region1(t, x1, x2, x3, w)*u3_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - n_region1(t, x1, x2, x3, w)*u4_region1(t, x1, x2, x3, w) + n_region1(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t) - n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) - n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) - n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) + n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t)","as_computed_residual":"n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t)","on_supplied_domain_residual":"n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x1) + n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x2) + n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), x3) - n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + n_region2(t, x1, x2, x3, w)*Derivative(wminus(t, x1, x2, x3), t)","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"-17585128567821252816585488/103171901213922361734375\"":3,"\"-32621707595566162821829/178170429300192000000\"":3,"\"-28182026792203384793159393/120203977208099838197760\"":3,"\"-49007113717323444728443246080097937761307529832412254068991908018100463466992851511/33332360067535737942464257614784786755738739026941706716828048229217529296875000\"":2,"\"-582769009336899792598814744072395179699695142658886447111062031889799781/296457768831619380445081915901342515200000000000000000000000000000000\"":2,"\"-114103231839969632967129192916451514815878238373268357551081886878137677537568717954981/38386250870994873364561009226194623815898711405461122883183255224320000000000000000\"":2,"\"-44652092388670403833592635749558839200505079129821/65705254371002865122940850973253105468750000000\"":2,"\"-36498855389155326926364541444179310457619701/48987863067490550104043520000000000000000\"":2,"\"-108861529422013176185772240841828003329873976451381/110110792846970735017351735122341344051200000000\"":2,"\"-23889349619809976946072362425111968533766596720378/3051358256559169728315435569628321331787109375\"":3,"\"-12776222536807080570250902692034811359944011/1103030795574433042026393600000000000000\"":3,"\"-10263513992232629850028891588973154636978547136479/613626681956490194209267168093001440296960000\"":3,"\"-484457161203321044668476592958144196100620541901719191409829277518149466527932815987430137/13677756613265339556681658564811705952824368156230175398876169463619589805603027343750\"":2,"\"-42665041273893631613751178005295600573524690641344698583298166062039598493391/797050733335930484257983946987870715904000000000000000000000000000000000\"":2,"\"-309829278598457045097879802318962448334782740178630019770947660890798012653661727783422870567/3920396683068926011564084501345586285240187673046289103468023865040437248000000000000000\"":2,"\"-26488897416427946886101454063893454238776552059625461483/855930208093867419663339323594788802783203125000000\"":2,"\"-2016086085815143417184358832471634082379072178317/43902613106737343961014476800000000000000000\"":2,"\"-612708879134781380489968958565464178855990942273184234061/9200978795726747028419780092336563657029713920000000\"":2,"\"-54231962372949525547984787202753949122546463650089719801306934378334536/2081861598471385550474899357341806610697368432702546442170281228828125\"":3,"\"-227528356009548678553425833732663181147654598515106410319310504151645838051370114419448703767758254/10430621755441182441528432177963851448227611512244446866419804108933604428159224624399164773165625\"":3,"\"-34561746113470512977332326658019459910907391951587781868476036831118136337706817333971115340210376218461021601/1293213916929025351537642357971019319089030990560773888341770459573435994358043244058093003519028946533203125\"":3,"\"-175750238823361437789015318693085196438337646139218240264303267191732414268341236461672908629582473082354675004332123943880783748161750444467791/346564713085739966634911161328851531003337824245210248362436639353841381689678531834866675770226374028582005091282251190394163131713867187500\"":2,"\"-1539963959950449082693730836019809589226499605149917802000621422829571642133654077700276486351917779883313116399147321638506328453809278488868423789399148717265105024075939/2159311046242488553411626048488085413531120018655788244962011204881028329764499689890583278466210147200095708475965566309574707405168640000000000000000000000000000000000\"":2,"\"-9444775114018604727351464434389949082226452238918346767777479012655640773390637947651950751465389187184166673329743346665499906128108120671337221281948259155179669671614000004071531936053352876073293/8009613844455611705774902604772138911164075242811395195666890416789023056869206758982619436837605750010403797207944052488126058195069400107976312618072087031971840000000000000000000000000000000000\"":2,"\"-71575396964087645157396111276847082718187094146383399486929378158726695156892400657614810861887024069010185401/683153625581113535295052965832184192169179609722688727395662912918022607899663176968391843429969921875000000\"":2,"\"-33246184133812610495031549129004222261380015713109872318792436089458356761285238457911001495481520112847356621017132647573148594240576089526419/356813161855532973564353222116789760668499346262280504240287811129310114905569977692732946056172535601349248238683019051264000000000000000000\"":2,"\"-2907100405661182492232773618179546084904275153779365199693116342850312511891883635670506223321882699928540332435108691494093270604712526540568732936348497373484893/22975542304848772112858142639375046995170278657159210423819201546944875112148444330689410186251691341979423951475351161239312339853414400000000000000000000000000\"":2}},{"part":"delta/lower","py_operand":"0","wl_operand":"0","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"delta/upper","py_operand":"0","wl_operand":"0","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}}],"py_coverage":[],"wl_coverage":[],"normalization":"coefficient on support divided by absolute derivative of delta argument in w","role":"unrestricted coefficient representation diagnostic; not a delta part"}}
+{"kind":"operands","tag":"material/face/2/coefficient_operand","py":{"tag":"material/face/2/coefficient_operand","line":1805,"raw":"n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x1) + n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x2) + n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), x3) - n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3)) + n_region2(t, x1, x2, x3, w)*Heaviside(w - wminus(t, x1, x2, x3))*Derivative(wplus(t, x1, x2, x3), t) - n_region3(t, x1, x2, x3, w)*u1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - n_region3(t, x1, x2, x3, w)*u2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - n_region3(t, x1, x2, x3, w)*u3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + n_region3(t, x1, x2, x3, w)*u4_region3(t, x1, x2, x3, w) - n_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t)"},"wl":{"tag":"material/face/2/coefficient_operand","line":143,"raw":"-(nRegion2[t, x1, x2, x3, w]*u4Region2[t, x1, x2, x3, w]) + nRegion3[t, x1, x2, x3, w]*u4Region3[t, x1, x2, x3, w] + nRegion2[t, x1, x2, x3, w]*u3Region2[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wp][t, x1, x2, x3] - nRegion3[t, x1, x2, x3, w]*u3Region3[t, x1, x2, x3, w]*Derivative[0, 0, 0, 1][wp][t, x1, x2, x3] + nRegion2[t, x1, x2, x3, w]*u2Region2[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wp][t, x1, x2, x3] - nRegion3[t, x1, x2, x3, w]*u2Region3[t, x1, x2, x3, w]*Derivative[0, 0, 1, 0][wp][t, x1, x2, x3] + nRegion2[t, x1, x2, x3, w]*u1Region2[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wp][t, x1, x2, x3] - nRegion3[t, x1, x2, x3, w]*u1Region3[t, x1, x2, x3, w]*Derivative[0, 1, 0, 0][wp][t, x1, x2, x3] + nRegion2[t, x1, x2, x3, w]*Derivative[1, 0, 0, 0][wp][t, x1, x2, x3] - nRegion3[t, x1, x2, x3, w]*Derivative[1, 0, 0, 0][wp][t, x1, x2, x3]"}}
+{"kind":"comparison","tag":"material/face/2/coefficient_operand","comparison":{"component":"material face 2 coefficient_operand","distribution_parts":[{"part":"regular/below","py_operand":"-n_region3(t, x1, x2, x3, w)*u1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - n_region3(t, x1, x2, x3, w)*u2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - n_region3(t, x1, x2, x3, w)*u3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + n_region3(t, x1, x2, x3, w)*u4_region3(t, x1, x2, x3, w) - n_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t)","wl_operand":"n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) - n_region3(t, x1, x2, x3, w)*u1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - n_region3(t, x1, x2, x3, w)*u2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - n_region3(t, x1, x2, x3, w)*u3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + n_region3(t, x1, x2, x3, w)*u4_region3(t, x1, x2, x3, w) - n_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t)","as_computed_residual":"-n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t)","on_supplied_domain_residual":"-n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) - n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t)","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"13265652599901993919/42536343522540656250\"":3,"\"9518115874969939/2367272923312500\"":3,"\"2800679428464959/600160049700750\"":3,"\"34067363061433002663061811745156113581/28880340797918585868866820000000000000\"":2,"\"687059396375594586736619138687/46122477928608296250000000000\"":2,"\"42067557419216495446850768711/2764509511239924940800000000\"":2,"\"136990001107054423041282070216704872680156421096225068209811947361782421/14651034039283815524116863602912855941256906002235412597656250000000000\"":2,"\"1873823396868882074043007047464339801874841293677904320147/279117439371932510003451791400000000000000000000000000000\"":2,"\"147555047380292068660510815345310208651898173084631406323751016209/4543387677821187003135973311873525878235039006720000000000000000\"":2,"\"336503054116180678136720538411933426809116191924557/390573856839573725224375752912425130468750000000\"":3,"\"424175150184701222943848430421306877/262983034986122379786108398437500\"":3,"\"20058554442592591010926367246762742609613835651/7102160670792710581125777408483812966400000\"":3,"\"21070922576469767044128589849527450625443413487826856789707/6135307731616841664146816271527446138350000000000000000\"":2,"\"4316062029496613665199830909266690309293411/669900712688252929092628125000000000000\"":2,"\"76964138463939281481087569019734347647452347856908993/6797413412918696090735653141501598446387200000000\"":2,"\"110293816157980715057563610660150744888137811074549370959809075256896121538963675540425568603/28012045543967415412084036740734373791384305983959399216898395061492919921875000000000000\"":2,"\"91493487536811271958000563057337570396301537841548692888971396712591953/12162029012083900211456053878599101500000000000000000000000000000000\"":2,"\"12992892943353622837517973830018433517527560949934418793504443304493017378555176281651489/965424715097745767229138224326631768429912252030705551484442441154560000000000000000\"":2,"\"26863168809443241486788178365830590516550237798277009528/4078962471507460508689056186497588433956218182190390625\"":3,"\"65016810979353409973754316524484109248847054871213123643926143500165177679407659/12313742078715793585251583027114265256911521935713479153445156948973439822540625\"":3,"\"37806482725340352948939435270311844663436889543793286500188158353457846753009103019/4394253081887482313807502943229512828649705614920168848819773222947489833984375000\"":3,"\"1322072722548236422933872550537608574218403350003606510095701827624615822540003004701097937/50141467086185979228778409842529022893975694553691677147928165670342776625000000000000000\"":2,"\"7026067437737899775238090514789258895894276056594643384221338163513364600269548126559737803400660474860471237299/317274263907105618124903351595297901649733637362723149473249252385271376763706973166115228069214337500000000000\"":2,"\"79442008579744322677929746482192183165535267795269834956889036652232718051115657153882088750016325549407456133401238617/2039887454883810038961888301918640938299253563673408472660373978704868203891362119445377393307031250000000000000000000\"":2,"\"2194272484680713055004055351913709929596523644606707908840658459013907545665274969010079509605323142005014136692347751357617/25436830756245246043416694690906776569650289565716755409741409278371908366747297075587558977857828140258789062500000000000\"":2,"\"239767621460296255407765066384183892290569658666299012136150473410740178645351339617835006957244839170897634291380846020218375278861626527219/1920035178019720666065790719857038003679405639853000420240910032746642091384405148012316345917173353764366134000000000000000000000000000000\"":2,"\"178950094974055289314869286222132869522547252880970491829277687937987466956953359598942776869861297352654344352002632404139224587082342833316522016087638217/711134935705981384287648632520180952849774742267639144487003999059014970552320734448942849338036335983826879126504616960000000000000000000000000000000000\"":2}},{"part":"regular/inside","py_operand":"n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) - n_region3(t, x1, x2, x3, w)*u1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - n_region3(t, x1, x2, x3, w)*u2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - n_region3(t, x1, x2, x3, w)*u3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + n_region3(t, x1, x2, x3, w)*u4_region3(t, x1, x2, x3, w) - n_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t)","wl_operand":"n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) - n_region3(t, x1, x2, x3, w)*u1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - n_region3(t, x1, x2, x3, w)*u2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - n_region3(t, x1, x2, x3, w)*u3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + n_region3(t, x1, x2, x3, w)*u4_region3(t, x1, x2, x3, w) - n_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t)","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"regular/above","py_operand":"n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) - n_region3(t, x1, x2, x3, w)*u1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - n_region3(t, x1, x2, x3, w)*u2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - n_region3(t, x1, x2, x3, w)*u3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + n_region3(t, x1, x2, x3, w)*u4_region3(t, x1, x2, x3, w) - n_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t)","wl_operand":"n_region2(t, x1, x2, x3, w)*u1_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) + n_region2(t, x1, x2, x3, w)*u2_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) + n_region2(t, x1, x2, x3, w)*u3_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) - n_region2(t, x1, x2, x3, w)*u4_region2(t, x1, x2, x3, w) + n_region2(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t) - n_region3(t, x1, x2, x3, w)*u1_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x1) - n_region3(t, x1, x2, x3, w)*u2_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x2) - n_region3(t, x1, x2, x3, w)*u3_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), x3) + n_region3(t, x1, x2, x3, w)*u4_region3(t, x1, x2, x3, w) - n_region3(t, x1, x2, x3, w)*Derivative(wplus(t, x1, x2, x3), t)","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"delta/lower","py_operand":"0","wl_operand":"0","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}},{"part":"delta/upper","py_operand":"0","wl_operand":"0","as_computed_residual":"0","on_supplied_domain_residual":"0","stored_samples_count":63,"stored_sample_residual_literal_counts":{"\"0\"":63}}],"py_coverage":[],"wl_coverage":[],"normalization":"coefficient on support divided by absolute derivative of delta argument in w","role":"unrestricted coefficient representation diagnostic; not a delta part"}}
+FILE research/pde_ledger_v3/scripts/S12_order_source.py
+219:     length_unit, time_unit = s.Matrix([1, 0]), s.Matrix([0, 1])
+220:     dimensionless = s.zeros(2, 1)
+221:     primitive_units = {n_head: s.Matrix([-4, 0]), chi_head: dimensionless,
+222:                        f_head: dimensionless, g_head: dimensionless}
+223:     primitive_units.update((head, s.Matrix([-4, 0])) for head in region_n_heads)
+224:     all_u_heads = u_heads + [head for row in region_u_heads for head in row]
+225:     primitive_units.update((head, s.Matrix([1, -1])) for head in all_u_heads)
+226:     primitive_units.update((head, length_unit) for head in face_heads)
+227:     primitive_units.update((head, s.Matrix([0, -1])) for head in rate_heads)
+228:     unknown_units = s.symbols("j_length j_time")
+229:     all_j_heads = j_heads + [head for row in region_j_heads for head in row]
+230:     primitive_units.update((head, s.Matrix(unknown_units)) for head in all_j_heads)
+231:     dimensions = Dimensions(coordinates, primitive_units, [time_unit] + [length_unit] * len(spatial))
+232:     p.emit("dimension_basis", ("length", "time", "number count dimensionless"))
+233:     p.obj("primitive_function_dimensions", primitive_units)
+234:     terms = s.Add.make_args(s.expand(ordered.lhs))
+235:     vectors = [dimensions.of(term) for term in terms]
+236:     reference_unit = dimensions.of(ordered.rhs)
+237:     p.emit("order_flux_dimension_inference/operands", (list(zip(terms, vectors)), (ordered.rhs, reference_unit)))
+238:     residuals = [v - reference_unit for v in vectors]
+239:     p.emit("order_flux_dimension_inference/residual", residuals)
+240:     solution = s.linsolve([r for v in residuals for r in v], unknown_units)
+241:     p.obj("order_flux_dimension_inference/solutions", solution)
+242:     unit_rules = dict(zip(unknown_units, next(iter(solution), unknown_units)))
+243:     flux_unit = s.Matrix(unknown_units).subs(unit_rules)
+244:     p.obj("order_flux_dimension_inference/object", flux_unit)
+FILE research/pde_ledger_v3/mathematica/S12_order_source.wl
+25: 
+26: (* Dimension vectors use {length,time}; material count is dimensionless.
+27:    Only primitive meanings are assigned. The order-flux units are solved
+28:    from the supplied order balance, rather than prescribed. *)
+29: unit[fun_] := Switch[fun,
+30:   n, {-4, 0}, chi | f | g, {0, 0},
+31:   um | u1 | u2 | u3, {1, -1},
+32:   wm | wp, {1, 0}, gb | gr | gd, {0, -1},
+33:   j1 | j2 | j3 | jm, fluxUnit,
+34:   _, Which[
+35:     MemberQ[densityFunctionHeads, fun], {-4, 0},
+36:     MemberQ[velocityFunctionHeads, fun], {1, -1},
+37:     MemberQ[fluxFunctionHeads, fun], fluxUnit,
+38:     True, Throw[{"unassigned_function_dimension", HoldForm[fun]}]]
+39: ];
+40: dimension[e_?NumberQ] := {0, 0};
+41: dimension[t] := {0, 1};
+42: dimension[x1 | x2 | x3 | w] := {1, 0};
+FILE research/pde_ledger_v3/scripts/out/S12_order_source.out
+35: primitive_function_dimensions: {G: Matrix([
+36: [0],
+37: [0]]), GammaB: Matrix([
+38: [ 0],
+39: [-1]]), GammaDrain: Matrix([
+40: [ 0],
+41: [-1]]), GammaReturn: Matrix([
+42: [ 0],
+43: [-1]]), chi: Matrix([
+44: [0],
+45: [0]]), f: Matrix([
+46: [0],
+47: [0]]), j1: Matrix([
+48: [j_length],
+49: [  j_time]]), j1_region1: Matrix([
+50: [j_length],
+51: [  j_time]]), j1_region2: Matrix([
+52: [j_length],
+53: [  j_time]]), j1_region3: Matrix([
+54: [j_length],
+55: [  j_time]]), j2: Matrix([
+56: [j_length],
+57: [  j_time]]), j2_region1: Matrix([
+58: [j_length],
+59: [  j_time]]), j2_region2: Matrix([
+60: [j_length],
+61: [  j_time]]), j2_region3: Matrix([
+62: [j_length],
+63: [  j_time]]), j3: Matrix([
+64: [j_length],
+65: [  j_time]]), j3_region1: Matrix([
+66: [j_length],
+67: [  j_time]]), j3_region2: Matrix([
+68: [j_length],
+69: [  j_time]]), j3_region3: Matrix([
+70: [j_length],
+71: [  j_time]]), j4_region1: Matrix([
+72: [j_length],
+73: [  j_time]]), j4_region2: Matrix([
+74: [j_length],
+75: [  j_time]]), j4_region3: Matrix([
+76: [j_length],
+77: [  j_time]]), jw: Matrix([
+78: [j_length],
+79: [  j_time]]), n: Matrix([
+80: [-4],
+81: [ 0]]), n_region1: Matrix([
+82: [-4],
+83: [ 0]]), n_region2: Matrix([
+84: [-4],
+85: [ 0]]), n_region3: Matrix([
+86: [-4],
+87: [ 0]]), u1: Matrix([
+88: [ 1],
+89: [-1]]), u1_region1: Matrix([
+90: [ 1],
+91: [-1]]), u1_region2: Matrix([
+92: [ 1],
+93: [-1]]), u1_region3: Matrix([
+94: [ 1],
+95: [-1]]), u2: Matrix([
+96: [ 1],
+97: [-1]]), u2_region1: Matrix([
+98: [ 1],
+99: [-1]]), u2_region2: Matrix([
+100: [ 1],
+101: [-1]]), u2_region3: Matrix([
+102: [ 1],
+103: [-1]]), u3: Matrix([
+104: [ 1],
+105: [-1]]), u3_region1: Matrix([
+106: [ 1],
+107: [-1]]), u3_region2: Matrix([
+108: [ 1],
+109: [-1]]), u3_region3: Matrix([
+110: [ 1],
+111: [-1]]), u4_region1: Matrix([
+112: [ 1],
+113: [-1]]), u4_region2: Matrix([
+114: [ 1],
+115: [-1]]), u4_region3: Matrix([
+116: [ 1],
+117: [-1]]), uw: Matrix([
+118: [ 1],
+119: [-1]]), wminus: Matrix([
+120: [1],
+121: [0]]), wplus: Matrix([
+122: [1],
+123: [0]])}
+research/pde_ledger_v3/scripts/out/S12_order_source.out primitive_function_dimensions tag literal count 1
+research/pde_ledger_v3/mathematica/out/S12_order_source.out primitive_function_dimensions tag literal count 0
+{"kind":"accounting","tag":"primitive_function_dimensions","accounting":"unjoined","engine":"py","occurrence":0,"reason":"tag absent in other engine; no differently named pairing","line":35,"parsed_leaves":199}
 ```
 

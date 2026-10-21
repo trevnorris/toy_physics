@@ -303,6 +303,155 @@ class Controls(unittest.TestCase):
             self.mutation(py,wl,changed,samples=True,channel='sample_values',disabled=[])
             self.mutation(py,wl,changed,channel='compare_values')
 
+    def test_nested_integral_variable_identity(self):
+        py='Integral(radius**2*Integral(radius*w,(w,0,1)),(radius,1,2))'
+        wl='Inactive[Integrate][r^2*Inactive[Integrate][r*w,{w,0,1}],{r,1,2}]'
+        changed='Inactive[Integrate][r^2*Inactive[Integrate][w^2,{w,0,1}],{r,1,2}]'
+        before,after=self.mutation(py,wl,changed,samples=True,channel='compare_values')
+        self.moved(before,after)
+        # The other engine's inner-variable substitution must be visible too.
+        py_changed='Integral(radius**2*Integral(w**2,(w,0,1)),(radius,1,2))'
+        self.moved(before,self.fixture(py_changed,wl),samples=True,unchanged='wl')
+        with patch.object(c,'compare_values',return_value={}):
+            with self.assertRaises(AssertionError):
+                self.moved(self.fixture(py,wl),self.fixture(py_changed,wl),samples=True,unchanged='wl')
+
+        # Reintroduce the actual scope defect, not merely a disabled parser.
+        def capture(value):
+            if not value.args:
+                return value
+            rebuilt=value.func(*(capture(a) for a in value.args))
+            if isinstance(rebuilt,c.s.Integral):
+                return rebuilt.xreplace({v:c.s.Symbol('_int'+str(i),real=True)
+                                         for i,v in enumerate(rebuilt.variables)})
+            return rebuilt
+        with patch.object(c,'alpha_integrals',side_effect=capture):
+            with self.assertRaises(AssertionError):
+                self.moved(self.fixture(py,wl),self.fixture(py,changed),samples=True)
+        self.equivalent(py,wl,'Inactive[Integrate][q^2*Inactive[Integrate][q*p,{p,0,1}],{q,1,2}]')
+
+    def test_every_live_first_partial_at_another_argument_point(self):
+        # H2 requires one discriminating form/stratum. The quadratic probes
+        # cover every derivative slot crossed with every evaluation argument;
+        # production still samples all forms, strata and rational points.
+        options={'forms':('quadratic',),'strata':('generic',)}
+        for field in (r for r in c.NAME_TABLE if r.arity):
+            with self.subTest(function=field.py):
+                print('WORKING_ON: derivative points '+field.py,flush=True)
+                spherical=field.py.startswith('SphericalSpecialization_')
+                chart='SphericalSpecialization' if spherical else 'General'
+                pa=['radius','w','t'] if spherical else ['x','y','z','w','t']
+                wa=['r','w','t'] if spherical else ['x1','x2','x3','w','t']
+                if '_face_' in field.py:
+                    pa.remove('w')
+                    wa.remove('w')
+                py_parts=[]
+                wl_parts=[]
+                changed_parts=[]
+                labels=[]
+                for derivative_slot in range(field.arity):
+                    orders=','.join(str(int(k==derivative_slot)) for k in range(field.arity))
+                    for point_slot in range(field.arity):
+                        py_parts.append('Derivative('+field.py+'('+','.join(pa)+'),'+pa[derivative_slot]+')')
+                        prefix='Derivative['+orders+']['+field.wl+']'
+                        wl_parts.append(prefix+'['+','.join(wa)+']')
+                        shifted=list(wa)
+                        shifted[point_slot]='('+shifted[point_slot]+'+1/29)'
+                        changed_parts.append(prefix+'['+','.join(shifted)+']')
+                        labels.append('slot '+str(derivative_slot)+' at argument '+str(point_slot))
+                row=replace(SYN,py_shape=(c.V,)*len(labels),wl_shape=(c.V,)*len(labels),
+                            components=c.vector_components(labels),chart=chart)
+                py='('+','.join(py_parts)+')'
+                wl='{'+','.join(wl_parts)+'}'
+                changed='{'+','.join(changed_parts)+'}'
+                def measure(value):
+                    return self.fixture(py,value,row=row,options=options)
+                def check_component(before,after,index):
+                    self.assertEqual([r['py'] for r in before if r['kind']=='operands'],
+                                     [r['py'] for r in after if r['kind']=='operands'])
+                    a=self.comparison(before)[0]['comparison']['components'][index]
+                    b=self.comparison(after)[0]['comparison']['components'][index]
+                    self.assertTrue(a.get('samples'))
+                    self.assertTrue(b.get('samples'))
+                    self.assertTrue(all('residual' in sample for part in (a,b) for sample in part['samples']))
+                    self.assertNotEqual(products(a,True),products(b,True))
+                before,after=measure(wl),measure(changed)
+                for i,label in enumerate(labels):
+                    with self.subTest(pair=label):
+                        check_component(before,after,i)
+                with patch.object(c,'sample_values',return_value=[]):
+                    disabled_before,disabled_after=measure(wl),measure(changed)
+                    for i in range(len(labels)):
+                        with self.assertRaises(AssertionError):
+                            check_component(disabled_before,disabled_after,i)
+
+    def test_face_derivative_point_inside_shell_integral(self):
+        pface='SphericalSpecialization_face_lower(radius,t)'
+        py=f'Integral(radius**2*SphericalSpecialization_inside_n(radius,{pface},t)*Derivative({pface},t),(radius,inner_radius,outer_radius))'
+        wl='Inactive[Integrate][r^2*sn2[r,swLower[r,t],t]*Derivative[0,1][swLower][r,t],{r,ri,ro}]'
+        changed='Inactive[Integrate][r^2*sn2[r,swLower[r,t],t]*Derivative[0,1][swLower][ri,t],{r,ri,ro}]'
+        row=replace(SYN,chart='SphericalSpecialization')
+        self.mutation(py,wl,changed,row=row,samples=True,channel='sample_values',disabled=[])
+        clear_caches()
+        try:
+            with patch.object(c,'argument_coupling',return_value=c.s.S.Zero):
+                with self.assertRaises(AssertionError):
+                    self.moved(self.fixture(py,wl,row=row),self.fixture(py,changed,row=row),samples=True)
+        finally:
+            clear_caches()
+
+    def test_unjoined_spaced_comparison_note(self):
+        tag='transverse integration / comparison'
+        note='native comparison note'
+        row=replace(SYN,py=c.End('contract'),wl=c.End(tag),components=(c.Component('note',kind='text'),))
+        with patch.object(c,'read_label',wraps=c.read_label) as reader:
+            self.mutation(note,json.dumps(note),json.dumps(note+' revised'),row=row,channel='component')
+            reader.assert_any_call(json.dumps(note),'wl',tag)
+        def check():
+            records=self.fixture('x','x1',extra_wl=tag+': '+json.dumps(note)+'\n')
+            entry=next(r for r in records if r['kind']=='tag_accounting' and r['engine']=='wl' and r['tag']==tag)
+            self.assertEqual(entry.get('classification'),'engine-local comparison note')
+            self.assertTrue(entry.get('read_as_label'))
+            self.assertIn('current-run accounting',entry.get('reason_basis',''))
+        check()
+        with patch.object(c,'unjoined_accounting',return_value={}):
+            with self.assertRaises(AssertionError):
+                check()
+
+    def test_freed_component_bindings_have_current_accounting(self):
+        # These fixtures exercise every component-ended production binding.
+        # Samples are immaterial to this accounting control; value comparison
+        # and its independent parse census still use the production path.
+        for row in c.BINDING_TABLE:
+            if not (row.py.path or row.wl.path):
+                continue
+            with self.subTest(binding=row.key):
+                py=wrap_end(serialize_shape(row.py_shape,'py'),row.py.path,'py',c.ROOT_SCHEMAS.get(('py',row.py.tag)))
+                wl=wrap_end(serialize_shape(row.wl_shape,'wl'),row.wl.path,'wl',c.ROOT_SCHEMAS.get(('wl',row.wl.tag)))
+                def measure(rows):
+                    return self.fixture(py,wl,row=row,rows=rows,options={'forms':()})
+                before=measure((row,))
+                def check(after):
+                    tags={(r['engine'],r['tag']):r for r in after if r['kind']=='tag_accounting'}
+                    for engine,other in (('py','wl'),('wl','py')):
+                        entry=tags[engine,getattr(row,engine).tag]
+                        self.assertEqual(entry['accounting'],'unjoined')
+                        self.assertIn('curated_binding_candidates',entry)
+                        candidate=next(x for x in entry['curated_binding_candidates'] if x['curated_binding']==row.key)
+                        self.assertFalse(candidate['active_binding_rows'])
+                        self.assertFalse(candidate['counterpart_tag_accounted_bindings'])
+                        counterpart=tags[other,getattr(row,other).tag]
+                        self.assertEqual(candidate['counterpart_occurrences'],
+                                         sum(r['kind']=='tag_accounting' and r.get('engine')==other and r.get('tag')==getattr(row,other).tag for r in after))
+                        self.assertEqual(candidate['counterpart_tag_compared_leaves'],counterpart['actually_compared_leaves'])
+                        self.assertIn('computed',entry['reason_basis'])
+                        prior=next(r for r in before if r['kind']=='tag_accounting' and r['engine']==engine and r['tag']==entry['tag'])
+                        self.assertNotEqual(prior['accounting'],entry['accounting'])
+                check(measure(()))
+                with patch.object(c,'unjoined_accounting',return_value={'reason':'counterpart bound or absent'}):
+                    with self.assertRaises(AssertionError):
+                        check(measure(()))
+
     def test_condition_only_mutation_and_failure_stratum(self):
         row=next(r for r in c.BINDING_TABLE if r.py.tag=='SphericalSpecialization/outer projected velocity')
         py='{domain: Ne(Integral(SphericalSpecialization_inside_n(radius,w,t),(w,SphericalSpecialization_face_lower(radius,t),SphericalSpecialization_face_upper(radius,t))),0), object: radius+2}'

@@ -1,34 +1,35 @@
 # S14a part 1 comparator builder report
-Built the comparator and synthetic controls; no commits were made. Contract `43174e8c`; accepted input/source commit `94fddf2f`.
-Name table: `scripts/S14a_1_cross_engine_comparator.py:220–258`, 77 injective rows (66 live functions); binding table: `:302–439`, 227 bindings / 326 explicit components. The first JSONL record prints both tables, citations and full-container schemas.
-Read [run record](S14a_1_comparator_run_record.md), [full output](/var/projects/toy_physics/_scratch/s14a/cmp_work/full_02.jsonl), [inventory with every unjoined tag and grouped reason](/var/projects/toy_physics/_scratch/s14a/cmp_work/full_02_inventory.json), and [partial-tag details](/var/projects/toy_physics/_scratch/s14a/cmp_work/full_02_unpaired_components.json).
-Per-tag accounting: SymPy 600 tags = 187 bound + 413 unjoined; Wolfram 383 = 140 bound + 243 unjoined. All 619 / 397 physical lines are assigned, including progress and multiline payloads.
-Independent payload-leaf census (progress markers accounted separately): SymPy 46826, Wolfram 104927. Bound-end census / actually compared: 21714 / 21714 and 24948 / 24948. External domain diagnostics earn no additional value-leaf credit.
-Bindings not compared: none. Comparisons not formed: none. Bindings compared below their parsed count: none.
-Partial tags: four SymPy face-equation rhs zeros have no Wolfram rhs occurrence (py197; wl172); the SymPy volume-flux dimension operand has only its predicate bound (py305–306,337; wl238,256); two Wolfram conditional dimension wrappers retain constructor/domain leaves without standalone value credit. Exact paths/counts/reasons are in partial-tag details.
-Unjoined tags, grouped below; the linked inventory gives every engine/tag member and the cited source lines:
-- 11: SymPy-only geometry, premise, engine metadata or redundant construction occurrence (py220-238,127-217,249-277); no unused Wolfram occurrence of this object.
-- 312: Engine-local comparison note; no unused note about the same two counterparts, or split/grouped note has no injective note counterpart (py27-36,201-205; wl14-15,146,162).
-- 16: SymPy redundant supplied-field/equation occurrence (py109-148,197); corresponding current and regional equation components are bound where both are printed (wl129-136,172). No unused counterpart for this occurrence.
-- 8: Only SymPy prints the encoded global current before differentiation (py157-158,164-165); Wolfram prints regional currents and their differentiated distribution (wl129-138).
-- 4: Regional differential objects are already compared through supplied equation lhs components (py120-121,163,167; wl130,136); this redundant standalone occurrence has no unused counterpart.
-- 8: Native-w derivative integral or its endpoints (py171-176); Wolfram prints the pulled z-current derivative and relative endpoints (wl143,151-155). Different printed integrands/current objects.
-- 4: Only SymPy prints the standalone projected differential expansion (py181,192); Wolfram prints it combined with face terms (wl158-170).
-- 2: Material source literal zero is already compared in the projected balance rhs (py188,198-200; wl163,173); this redundant occurrence has no unused counterpart.
-- 8: Construction residuals subtract the two integration routes in opposite orders (py201-205; wl161-162,15); no residual or note binding.
-- 14: SymPy prints the one-sided trace w=face (py213-216); Wolfram prints unrestricted w-dependent factors (wl48,118). Different objects; faces are not substituted to reconcile them.
-- 1: Only SymPy prints shell-integrated transport by individual face (py251,263); Wolfram shell objects group interior/concentrated contributions across both faces (wl201-203,222).
-- 1: Only SymPy prints the two operands separately (py270,33-34); Wolfram prints their difference (wl215,222), which is bound to the SymPy residual.
-- 1: SymPy prints velocity at free radius (py271,275); Wolfram prints it only at outer radius ro (wl218-219). The outer-radius conditional counterpart is bound separately.
-- 194: Engine-specific dimension audit occurrence: SymPy operand/sum/reference expression trees (py305-313,316-337), or Wolfram assignments/atoms/derivative/source/term ledgers and extra shell objects (wl244-256). No unused source-cited counterpart; term identity and position do not create bindings.
-- 33: Wolfram-only intermediate or redundant occurrence (wl114-123,134-180,199-222); no unused SymPy occurrence of this object. Named projected/shell objects are bound separately.
-- 33: Wolfram-only fixed-slab coordinate construction; SymPy prints native-w integration objects (py171-185; wl64-99,108-125,143-155). Different printed objects; no coordinate reconciliation.
-- 6: Wolfram construction checks subtract native supplied rhs (wl137,178); no SymPy check against that same counterpart is printed.
-Named objects with an unjoined occurrence: native-w bulk integration versus pulled-current z integration; traced versus unrestricted supplied face factors; shell face channel split by face versus split by interior/concentrated contribution; free-radius projected velocity versus outer-radius velocity. Their different objects are cited above. Shared projected balances, densities, fluxes, face terms, order source, shell channels/rates/storage/balance, outer flux/radius derivative and outer conditional velocity/volume flux are bound; redundant occurrences remain identified.
-Probes: affine, quadratic and cubic polynomial forms with distinct live-function codes and argument weights, printed for all 66 live functions; three rational base points, both charts, three open regions and both faces. Exact formulas and all evaluated points/operands are in the output.
-Strata: generic; equal one-sided field traces at either face; interior order zero at either face; projected-density zero with nonconstant native density. There are 72 conditional-value exclusions and 54 exclusive-condition sample rows; these count rows, not distinct points.
-Compared integral evaluations are exact after substitution: numerical integrals 0, unresolved evaluations 0. Accepted streams contain no compared endpoint-delta integral; the synthetic full-endpoint and alpha-variable controls exercise that path.
-Reused S12/S9b native AST/InputForm readers, parse census and partial-slot translation; adapted scoped integrals. Re-verified framing, all source-cited end/component joins, native derivatives, relation orientation, labels, conditions, distributions and integral evaluation on these streams.
-Commands and output hashes: run record above. Final guarded tests: 27 tests, 0 errors, 0 failures; final guarded full comparison: exit 0. Both limits verified, guardReason null; no admission refusal or guard kill.
-Script runtime / peak RSS: tests 52.55848163200426 s / 104144 KiB; full comparison 94.5033581770258 s / 180496 KiB. Guard wall / cgroup peak: tests 53.10758459099452 s / 103006208 bytes; full 95.52405627901317 s / 196194304 bytes.
-No residual target was given. No residual is interpreted. Open questions: non-author build review and the S14a record’s interpretation remain with the orchestrator.
+Repaired H1–H3 from reviewed baseline `88bf7bf9`, under contract `43174e8c`; engine inputs/sources remain `94fddf2f`. No commits.
+Name table: `scripts/S14a_1_cross_engine_comparator.py:220–258`, 77 injective rows / 66 live functions; binding table `:302–439`, 227 bindings / 326 components. Both tables and citations print in the first output record and are unchanged.
+H1 (`:719–822`): fresh integral binders, renamed only after conversion with distinct lexical depths. Nested-variable corruptions in either engine and alpha equivalence use the production path; the controls also fail under the original capture defect and with comparison disabled.
+H2 (`:870–885`): quadratic probes add pairwise argument couplings. Tests evaluate all 1190 derivative-slot/point-argument pairs, plus a shifted face-time derivative inside a shell integral; disabling samples or suppressing coupling defeats the targeted controls.
+H3 (`:494–500,1344–1424`): spaced comparison note follows the label path; freed binding candidates report computed current occurrence/binding/leaf facts. All 125 component-ended bindings have removal controls; disabling the accounting step defeats those controls.
+Read [run record](S14a_1_comparator_run_record.md), [output](/var/projects/toy_physics/_scratch/s14a/cmp_work/r1_full_01.jsonl), [all unjoined tags/reasons](/var/projects/toy_physics/_scratch/s14a/cmp_work/r1_full_01_inventory.json), and [partial tags](/var/projects/toy_physics/_scratch/s14a/cmp_work/r1_full_01_unpaired_components.json).
+Accounting: SymPy 600 tags = 187 bound + 413 unjoined; Wolfram 383 = 140 bound + 243 unjoined. All 619 / 397 physical lines are assigned, including progress and multiline payloads.
+Payload-leaf census: 46826 / 104927. Bound-end parsed / compared leaves: 21714 / 21714 (SymPy), 24948 / 24948 (Wolfram). External domain diagnostics receive no extra value-leaf credit.
+Bindings not compared: none; not formed: none; below their parsed count: none. Partial tags retain four face-equation rhs zeros, the native volume-flux audit expression/keys, and two conditional-dimension wrapper/domain subtrees; exact paths, counts and reasons are linked above.
+The following semantic reasons rest on source/reference-table curation except note classification and active-table facts; they are not a computed completeness proof. Full engine/tag members and qualifications are in the inventory:
+- 44: No end declared in the reference table; no semantic counterpart absence is claimed.
+- 313: Engine-local comparison notes have no active unique join; includes the spaced WL71 note.
+- 16: Redundant supplied-field/equation occurrences; reference curation selects current/equation components (py109–148,197; wl129–136,172).
+- 8: Encoded global currents versus regional/differentiated currents (py157–165; wl129–138).
+- 4: Redundant regular parts; reference curation selects regional equation lhs components (py120–121,163,167; wl130,136).
+- 8: Native-w integrals/endpoints versus pulled-z current objects (py171–176; wl143,151–155).
+- 4: Standalone projected differential expansion versus the face-combined operand (py181,192; wl158–170).
+- 2: Repeated material source zero; reference curation selects projected-balance rhs (py188,198–200; wl163,173).
+- 8: Construction residuals subtract integration routes in opposite orders (py201–205; wl15,161–162).
+- 14: Traced versus unrestricted supplied face factors (py213–216; wl48,118).
+- 1: Shell channel by face versus interior/concentrated grouping (py251,263; wl201–203,222).
+- 1: Separate operand pair versus its printed difference (py33–34,270; wl215,222).
+- 1: Free-radius versus outer-radius projected velocity (py271,275; wl218–219).
+- 194: Engine-specific dimension audit trees/assignments and redundant occurrences (py305–337; wl244–256).
+- 32: Fixed-slab coordinate intermediates versus native-w integration (py171–185; wl64–99,108–155).
+- 6: Wolfram regional/source-law checks use different counterparts (wl137,178).
+Named unjoined occurrences: native-w versus pulled-z integration, traced versus unrestricted supplied factors, by-face versus interior/concentrated shell grouping, and free-radius versus outer-radius velocity. Reasons/citations are above; completeness of the named-object comparison remains a statement of table curation.
+Probes: affine, pairwise-coupled quadratic, cubic; all 66 live functions remain distinct, with differing argument weights. Three rational points, both charts, three regions and both faces; formulas/points/operand values print in the output.
+Strata: generic, equal one-sided traces at either face, interior order zero at either face, and projected density zero with nonconstant native density. There are 72 conditional-value exclusion rows and 54 exclusive-condition rows, not distinct-point counts.
+Compared integral evaluations: numerical 0; unresolved 0. Compared endpoint-delta integrals in these streams: 0; synthetic endpoint/full-weight and alpha-variable controls remain exercised.
+Reused S12/S9b native readers, census and partial-slot translation; retained the existing tables and comparison paths. Re-verified nested binding identity, derivative-point sensitivity, native labels, active accounting, distributions, conditions and exact probe integration.
+Commands/output sha256s and guard receipts are in the run record. Final tests: 32, errors 0, failures 0; full comparison: exit 0. Both guards verified limits, child/guard exit 0, guardReason null; no refusal or guard kill.
+Script runtime / peak RSS: tests 75.62683781099622 s / 106296 KiB; full 105.5439142069954 s / 200432 KiB. Guard wall / cgroup peak: tests 76.3144247730088 s / 105504768 bytes; full 106.72195675599505 s / 216891392 bytes.
+All 22 pre-existing scratch files are unchanged. New outputs use new r1_ names. No residual target was given; no measured residual is interpreted. Open questions: non-author review and interpretation remain with the orchestrator.

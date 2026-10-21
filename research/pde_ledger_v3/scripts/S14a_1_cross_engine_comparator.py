@@ -491,8 +491,13 @@ def application(n):
     return None,n.args[1:]
 
 
+def is_comparison_note(tag):
+    # The extra spelling is emitted literally at WL71, outside alone().
+    return tag.endswith('/comparison') or tag=='transverse integration / comparison'
+
+
 def is_label(tag):
-    return tag in ('contract','engine','WORKING_ON') or tag.endswith(('/comparison','/representation'))
+    return tag in ('contract','engine','WORKING_ON') or is_comparison_note(tag) or tag.endswith('/representation')
 
 
 def read_label(text,engine,tag):
@@ -711,10 +716,42 @@ def native_relation(head,*args):
     return RELATIONS[head](left,right,evaluate=False)
 
 
+def alpha_integrals(expr):
+    """Name integral binders by active lexical depth, without capture.
+
+    Conversion first uses fresh Dummies. Only the completed expression is
+    renamed: an inner integral cannot give an outer variable its own name.
+    Flattened multi-limit integrals and nested integral syntax share the
+    same outside-in binder order. Sibling scopes may reuse names safely.
+    """
+    def walk(value,env,depth):
+        if isinstance(value,s.Integral):
+            local=dict(env)
+            for i,var in enumerate(reversed(value.variables)):
+                local[var]=s.Symbol('_int'+str(depth+i),real=True)
+            inner_depth=depth+len(value.limits)
+            limits=[(local[var],walk(lo,local,inner_depth),walk(hi,local,inner_depth))
+                    for var,lo,hi in value.limits]
+            return s.Integral(walk(value.function,local,inner_depth),*limits)
+        if not value.args:
+            return env.get(value,value)
+        args=tuple(walk(arg,env,depth) for arg in value.args)
+        if args==value.args:
+            return value
+        if isinstance(value,(s.Derivative,Relational)):
+            return value.func(*args,evaluate=False)
+        return value.func(*args)
+    return walk(expr,{},0)
+
+
 def math_node(n,b,engine,scope=None):
+    return alpha_integrals(_math_node(n,b,engine,scope))
+
+
+def _math_node(n,b,engine,scope=None):
     scope={} if scope is None else scope
     def cv(x,local=None):
-        return math_node(x,b,engine,scope if local is None else local)
+        return _math_node(x,b,engine,scope if local is None else local)
     h,a=n.head,n.args
     if h=='Number':
         if n.value=='None':
@@ -772,7 +809,7 @@ def math_node(n,b,engine,scope=None):
         for spec in a[1:]:
             if spec.head!='Sequence' or len(spec.args)!=3 or spec.args[0].head!='Symbol':
                 raise Unsupported('definite integral binder grammar')
-            var=s.Symbol('_bound'+str(len(local)),real=True)
+            var=s.Dummy('integral_bound',real=True)
             local[spec.args[0].value]=var
             variables.append(var)
         limits=[]
@@ -781,11 +818,7 @@ def math_node(n,b,engine,scope=None):
             bounds_scope.pop(spec.args[0].value,None)
             bounds_scope.update({k:v for k,v in scope.items() if k==spec.args[0].value})
             limits.append((var,cv(spec.args[1],bounds_scope),cv(spec.args[2],bounds_scope)))
-        integral=s.Integral(cv(a[0],local),*limits)
-        # Integral construction can flatten nested limits. Rename only its
-        # bound variables, inside out, after that flattening; free coordinates
-        # remain untouched. This is alpha notation, not a physical rewrite.
-        return integral.xreplace({var:s.Symbol('_int'+str(i),real=True) for i,var in enumerate(integral.variables)})
+        return s.Integral(cv(a[0],local),*limits)
     if h=='Derivative':
         specs=[]
         for q in a[1:]:
@@ -834,11 +867,17 @@ def seed(name):
     return len(NAME_CODES)+1+s.Rational(code,code+1)
 
 
+def argument_coupling(args,code):
+    """Every first partial depends on every other argument in this form."""
+    return (code+1)*sum((i+1)*(j+1)*args[i]*args[j]
+                        for i in range(len(args)) for j in range(i+1,len(args)))/211
+
+
 def basic_form(form,args,code):
     if form=='affine':
         return (code+1)/7+sum((i+1)*(code+1)*q/101 for i,q in enumerate(args))
     if form=='quadratic':
-        return (code+1)/7+sum(((i+1)**2*(code+1)*q*q+(i+1)*q)/103 for i,q in enumerate(args))
+        return (code+1)/7+sum(((i+1)**2*(code+1)*q*q+(i+1)*q)/103 for i,q in enumerate(args))+argument_coupling(args,code)
     if form=='cubic':
         return (code+1)/7+sum(((i+1)**3*(code+1)*q**3+(i+1)**2*q)/107 for i,q in enumerate(args))
     raise InputError('unknown probe form '+form)
@@ -1302,9 +1341,8 @@ class Comparator:
         return result
 
 
-def unjoined_reason(tag,engine):
-    if tag.endswith('/comparison'):
-        return 'Engine-local comparison note; no unused note about the same two counterparts, or split/grouped note has no injective note counterpart (py27-36,201-205; wl14-15,146,162).'
+def curated_unjoined_rationale(tag,engine):
+    """Source/table curation only; not evidence about active bindings."""
     if '/projection integration/' in tag or '/closed integration/' in tag:
         return 'Construction residuals subtract the two integration routes in opposite orders (py201-205; wl161-162,15); no residual or note binding.'
     if '/coordinate ' in tag or '/pulled current' in tag or '/transverse ' in tag or tag.startswith('transverse integration'):
@@ -1333,9 +1371,44 @@ def unjoined_reason(tag,engine):
         return 'Material source literal zero is already compared in the projected balance rhs (py188,198-200; wl163,173); this redundant occurrence has no unused counterpart.'
     if '/supplied/' in tag or '/supplied material face equation/' in tag or tag.endswith('/velocity'):
         return 'SymPy redundant supplied-field/equation occurrence (py109-148,197); corresponding current and regional equation components are bound where both are printed (wl129-136,172). No unused counterpart for this occurrence.'
-    if engine=='wl':
-        return 'Wolfram-only intermediate or redundant occurrence (wl114-123,134-180,199-222); no unused SymPy occurrence of this object. Named projected/shell objects are bound separately.'
-    return 'SymPy-only geometry, premise, engine metadata or redundant construction occurrence (py220-238,127-217,249-277); no unused Wolfram occurrence of this object.'
+    return 'No source-cited end for this tag is declared in the reference table; no semantic counterpart absence or completeness claim is made.'
+
+
+def unjoined_accounting(entry,engine,streams,bindings,bound_tags,used):
+    """Separate curated meaning from computed current-table accounting.
+
+    Reference candidates are declared ends, never inferred from payloads or
+    similar names. Their occurrence counts and active binding membership are
+    obtained from this run, including when component bindings are removed.
+    """
+    tag=entry.tag
+    other='wl' if engine=='py' else 'py'
+    candidates=[]
+    for curated in BINDING_TABLE:
+        if getattr(curated,engine).tag!=tag:
+            continue
+        counterpart=getattr(curated,other)
+        candidates.append({'curated_binding':curated.key,
+            'local_end':asdict(getattr(curated,engine)),
+            'counterpart_engine':other,'counterpart_end':asdict(counterpart),
+            'py_line':curated.py_line,'wl_line':curated.wl_line,
+            'counterpart_occurrences':len(streams[other].index.get(counterpart.tag,[])),
+            'active_binding_rows':[r.key for r in bindings if r.py==curated.py and r.wl==curated.wl],
+            'counterpart_tag_accounted_bindings':list(bound_tags[other][counterpart.tag]),
+            'counterpart_tag_compared_leaves':len(used[other][counterpart.tag])})
+    if is_comparison_note(tag):
+        result={'reason':'Engine-local comparison note; this occurrence has no unique join under the active table.',
+                'classification':'engine-local comparison note','read_as_label':is_label(tag),
+                'reason_basis':'reader label classification and current-run accounting; py27-36,201-205; wl14-15,71,146,162'}
+    elif candidates:
+        result={'reason':'No unique join formed under the active table; curated candidate endpoints and computed current-run facts are listed separately.',
+                'reason_basis':'candidate meanings rest on reference-table curation; occurrence counts and active rows are computed'}
+    else:
+        result={'reason':'Reference-table/source curation (not computed active-table or counterpart-completeness evidence): '+curated_unjoined_rationale(tag,engine),
+                'reason_basis':'source/table curation only; completeness of named-object comparison is not computed'}
+    if candidates:
+        result['curated_binding_candidates']=candidates
+    return result
 
 
 def unpaired_subtrees(ref,covered,reason='No unused source-cited component correspondence; the subtree is retained, not counted as compared.'):
@@ -1497,8 +1570,11 @@ def run(py_path,wl_path,out,*,names=NAME_TABLE,bindings=BINDING_TABLE,progress=T
                         reason='Py305-306,337 prints the native volume-flux expression; wl238,256 prints its dimension vector and condition. Only the predicate is a corresponding component here.'
                     record.update(bindings=keys,unpaired_components=unpaired_subtrees(Ref(entry.node),used[e][tag],reason))
                 else:
-                    record.update(reason='Repeated tag; binding rejected.' if len(entries)>1 else unjoined_reason(tag,e),
-                                  raw=entry.raw,parse=data(entry.node))
+                    if len(entries)>1:
+                        record.update(reason='Repeated tag; binding rejected.',reason_basis='computed occurrence count')
+                    else:
+                        record.update(unjoined_accounting(entry,e,streams,bindings,bound_tags,used))
+                    record.update(raw=entry.raw,parse=data(entry.node))
                     total['unjoined_tags_'+e]+=1
                 total['parsed_leaves_'+e]+=leaves
                 emit(out,record)

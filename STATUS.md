@@ -1,15 +1,17 @@
-# Project status — light sector closed for now; S12 next
+# Project status — light sector closed for now; S12 record written for review
 
 On 2026-10-19 the user closed the light sector **for now**. Its accepted results are conditional. What stays
 open is carried as requirements in the [substrate register](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md),
-in its light-closing pass (review pending). S12 is next.
+in its light-closing pass (accepted `e070c7f3`). S12's constructions (`a3da43d9`) and comparator
+(`fe485b73`, with the engine-row note) are accepted. Its [step record](research/pde_ledger_v3/steps/S12_order_source.md)
+and register pass are written for review; that record has not had its own review.
 
 ## Light sector at close
 
 - **Accepted after S11c closed PARTIAL:**
   - O2, the steady brane balance: [record](research/pde_ledger_v3/steps/O2_steady_brane_balance.md), `72866fcf`;
   - S9b, conditional light bending and radar slope: [record](research/pde_ledger_v3/steps/S9b_light_bending.md), `ff3bac63`;
-  - the S9b flow-only oracle check, `8d91f448`. Its [record](research/pde_ledger_v3/steps/S9b_flow_oracle_comparison.md) is under review.
+  - the S9b flow-only oracle check, `8d91f448`. Its [record](research/pde_ledger_v3/steps/S9b_flow_oracle_comparison.md) and the light-sector closeout are accepted at `e070c7f3`.
 - **What the oracle check shows:** S9b's flow-only squared speed equals the river model's and Visser §7's.
   This holds only if S9b's orbital GM, clock and speed units are identified with each oracle's, and the check
   supplies none of these identifications. The signed velocity then matches for one radial orientation. Where
@@ -83,10 +85,18 @@ The following are **OPEN** carry-overs, not instructions to resume. [Part F](res
 
 ## Next and paused work
 
-**S12 is next in the physics plan:** define bulk-to-brane order conversion and its separate boundary data.
-It does not require a finished S11c leakage factor. [Plan, S12](research/pde_ledger_v3/V3_STEP_PLAN.md).
-S12 starts once the light closeout's review is clear. The oracle comparison hands S12 two questions:
-what drives the flow, and where the brane material goes.
+**S12's record is written for review:** its accepted constructions and comparator report the source
+required by the committed order balance on live fields satisfying U1's support condition, including both material face
+requirements and the labelled fast-ordering specialization. The record preserves the six unrestricted
+face-coefficient diagnostic differences, all comparator coverage limits and the accepted engine-row
+note. It supplies no drain law, throat solution or flow. Native source/controller forms, distinct
+boundary data and the other retained OPEN handoffs remain open. The register stays at 18 OPEN entries,
+with compatibility constraints merged into `R-S12-02` and flow-comparison framing in `R-S21-01`.
+[Record](research/pde_ledger_v3/steps/S12_order_source.md),
+[measurements](research/pde_ledger_v3/steps/_measurements/S12_record_measurements.md).
+The light closeout was accepted at `e070c7f3`; its review no longer gates S12. The oracle comparison's
+questions about the flow drive and material destination remain OPEN. Each force states the flow it
+needs; S21 compares them, and a mismatch reopens S9b (user, 2026-10-19).
 
 The [throat/EM notes](docs/light_em_investigation_handoff.md) remain **exploratory and paused**, as input to
 S22/Q2 (with S12/Q3 connections), not adopted constitutive laws. Mixed numerical recovery, centre-drive

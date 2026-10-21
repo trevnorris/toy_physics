@@ -1,7 +1,7 @@
 # S9b flow-only oracle comparison: the river and acoustic-flow check
 
-**Status:** this record interprets the accepted check (`8d91f448`). The orchestrator wrote it; its own review
-is pending. It changes nothing in the S9b record (`steps/S9b_light_bending.md`, accepted `ff3bac63`), which
+**Status:** this record interprets the accepted check (`8d91f448`). The orchestrator wrote it; the record
+was accepted with the light-sector closeout at `e070c7f3`. It changes nothing in the S9b record (`steps/S9b_light_bending.md`, accepted `ff3bac63`), which
 applies no oracle.
 
 **Evidence.**

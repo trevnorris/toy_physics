@@ -4,7 +4,7 @@ On 2026-10-19 the user closed the light sector **for now**. Its accepted results
 open is carried as requirements in the [substrate register](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md),
 in its light-closing pass (accepted `e070c7f3`). S12's constructions (`a3da43d9`) and comparator
 (`fe485b73`, with the engine-row note) are accepted. Its [step record](research/pde_ledger_v3/steps/S12_order_source.md)
-and register pass are repaired for scoped round-2 review from preserved baseline `4c37473c`.
+and register pass are repaired for narrow round-3 review from preserved baseline `fa5d1396`.
 
 **User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms."** This record closes
 only S12's requirements part and delivers none of the forms. The forms come once the brane is

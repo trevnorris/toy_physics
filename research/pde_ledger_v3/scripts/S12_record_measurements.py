@@ -23,6 +23,7 @@ V3 = ROOT / 'research/pde_ledger_v3'
 BASELINE = '560c6c51'
 REPAIR_BASELINE = '8608bc71'
 ROUND2_BASELINE = '4c37473c'
+ROUND3_BASELINE = 'fa5d1396'
 SCRIPT = 'research/pde_ledger_v3/scripts/S12_record_measurements.py'
 OUTPUT = V3 / 'steps/_measurements/S12_record_measurements.md'
 COMPARATOR = V3 / 'scripts/out/S12_cross_engine_comparator.out'
@@ -109,6 +110,8 @@ TITLES = {
     'M16': 'Literal residual/outcome counts across stored comparisons',
     'M17': 'Round-1 repair: owner handoffs, coefficient diagnostics and unit attribution',
     'M18': 'Round-2 repair: Keep S12 decision, A13 owners, disagreements and S21 obligation',
+    'M19': 'Round-3 repair: H1/H2 dispositions, branch sources and qualified S12 handoffs',
+    'M20': 'Accepted population passes: amended blocks, settling sources and unchanged-block literal counts',
 }
 
 
@@ -193,9 +196,11 @@ def retrieve(section, rows):
         before = subprocess.check_output(['git', 'show', f'{BASELINE}:{path}'], cwd=ROOT, text=True)
         reviewed = subprocess.check_output(['git', 'show', f'{REPAIR_BASELINE}:{path}'], cwd=ROOT, text=True)
         round1 = subprocess.check_output(['git', 'show', f'{ROUND2_BASELINE}:{path}'], cwd=ROOT, text=True)
+        round2 = subprocess.check_output(['git', 'show', f'{ROUND3_BASELINE}:{path}'], cwd=ROOT, text=True)
         after = (ROOT / path).read_text()
         for name, text in [('before ' + BASELINE, before), ('before repair ' + REPAIR_BASELINE, reviewed),
                            ('before round-2 repair ' + ROUND2_BASELINE, round1),
+                           ('before round-3 repair ' + ROUND3_BASELINE, round2),
                            ('after working tree', after)]:
             headings = [line for line in text.splitlines() if line.startswith('### R-')]
             print(name + ': entry headings cardinality ' + str(len(headings)), file=out)
@@ -304,6 +309,48 @@ def retrieve(section, rows):
         for i, line in enumerate((ROOT / path).read_text().splitlines(), 1):
             if line.startswith('| **S21** | `R-S21-01`'):
                 print(f'{i}: {line}', file=out)
+    elif section == 'M19':
+        source(out, 'research/pde_ledger_v3/directives/_measurements/S12_record_r2_review_disposition.md')
+        source(out, 'research/pde_ledger_v3/directives/S12_decision_list.md', 130, 131)
+        source(out, 'research/pde_ledger_v3/V3_STEP_PLAN.md', 616, 617)
+        source(out, 'research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md', 395, 399)
+        path = 'research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md'
+        lines = (ROOT / path).read_text().splitlines()
+        print('FILE ' + path + ' — R-S12-02 by-target row', file=out)
+        for i, line in enumerate(lines, 1):
+            if line.startswith('| **S12** | `R-S12-02`'):
+                print(f'{i}: {line}', file=out)
+        for heading in ['### R-S12-02', '### S12 pass']:
+            start = next(i for i, line in enumerate(lines) if line.startswith(heading))
+            stop = next((i for i in range(start + 1, len(lines))
+                         if lines[i].startswith('### ')), len(lines))
+            source(out, path, start + 1, stop)
+    elif section == 'M20':
+        path = 'research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md'
+        accepted_revision = 'e070c7f3'
+        accepted = subprocess.check_output(
+            ['git', 'show', f'{accepted_revision}:{path}'], cwd=ROOT, text=True)
+        current = (ROOT / path).read_text()
+
+        def pass_range(text, heading):
+            lines = text.splitlines(keepends=True)
+            start = next(i for i, line in enumerate(lines) if line.startswith(heading))
+            stop = next((i for i in range(start + 1, len(lines))
+                         if lines[i].startswith('### ')), len(lines))
+            return start + 1, stop, ''.join(lines[start:stop])
+
+        print('FILE ' + path + ' AT ' + accepted_revision +
+              ' — full accepted pass blocks counted literally in current register', file=out)
+        for heading in ['**Pass 1 —', '### Pass 2 —', '### O2 pass —', '### S9b pass —']:
+            first, last, block = pass_range(accepted, heading)
+            print(dump({'accepted_pass_heading': block.splitlines()[0],
+                        'accepted_lines': [first, last],
+                        'current_literal_occurrences': current.count(block)}), file=out)
+        for revision, text in [(accepted_revision, accepted), (None, current)]:
+            first, last, _ = pass_range(text, '### Light-closing pass —')
+            source(out, path, first, last, revision=revision)
+        source(out, 'research/pde_ledger_v3/steps/S9b_flow_oracle_comparison.md', 156, 178)
+        source(out, 'research/pde_ledger_v3/directives/_measurements/light_sector_closeout_review_r2_disposition.md', 49)
     else:
         raise ValueError(section)
     return out.getvalue()

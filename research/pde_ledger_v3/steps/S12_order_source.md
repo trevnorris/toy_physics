@@ -2,8 +2,8 @@
 
 **Status, 2026-10-20:** record and register pass written for review. The constructions are accepted at
 `a3da43d9`; the comparator and its filed production output are accepted at `fe485b73`, with the engine-row
-note below. This is the round-2 repair of reviewed baseline `4c37473c`, awaiting scoped review
-(`directives/_measurements/S12_record_r1_review_disposition.md`, retrieved in M18). No drain law, throat solution or flow is delivered.
+note below. This is the round-3 repair of reviewed baseline `fa5d1396`, awaiting the narrow check of H1/H2
+(`directives/_measurements/S12_record_r2_review_disposition.md`, retrieved in M19). No drain law, throat solution or flow is delivered.
 The light-sector closeout, including the flow-only oracle-comparison record, is accepted at `e070c7f3`.
 
 The result is conditional: the committed material/order balances require the printed three regional
@@ -41,6 +41,8 @@ neither engine nor comparator and performs no algebra, probe evaluation, normali
 | M14 / M15 / M16 | Filed run records and comparator contract / final register pass and status / literal residual and outcome counts. |
 | M17 | Round-0 findings; original owner handoffs; all six raw coefficient operands and their stored parts; primitive-unit attribution. |
 | M18 | Round-1 findings and the dated "Keep S12" decision; A13 owner sources; prior owner disagreements; S21 by-target/source statements. |
+| M19 | Round-2 H1/H2 dispositions; branch sources and the qualified S12 register handoffs. |
+| M20 | Every net edit to an accepted Population pass: accepted/current blocks, settling sources and literal counts for the unchanged passes. |
 
 ## 1. Supplied object, domain and standing
 
@@ -328,13 +330,32 @@ Four existing entries gain S12 source/provenance: `R-S1-01` (coordinate dimensio
 and `R-S21-01` (framing decision only, no new optical evidence). `R-S12-01` and `R-O2-01` remain
 distinct carried conditions without a computed S12 power consumer; neither is delivered or duplicated.
 The full per-entry rest-on census is the S12 register pass (M12, M15).
-This repair of `4c37473c` is also 18 → 18, with no additional source gain. It restores the sourced
+The round-2 repair of `4c37473c` was also 18 → 18, with no additional source gain. It restored the sourced
 S12 owners under **"Keep S12"** (2026-10-20), including S12 in `R-S22-01`'s user-chosen target;
-`R-S12-01` retains its original register-inference/no-live-owner qualification. It also adds the
+`R-S12-01` retained its original register-inference/no-live-owner qualification. It also added the
 **comparison of force sectors' flow requirements** to `R-S21-01`'s requirement field, matching its
 by-target row and citing the 2026-10-19 user framing. This is owed by S21, not a comparison performed
 here. S12 stays OPEN for its forms; this record closes only its requirements part. (Retrieve M12,
 M15, M18.)
+The present repair of `fa5d1396` is also 18 → 18, with no additional source gain. It carries the
+real-fraction/A13 condition into `R-S12-02`, its by-target summary and the common handoff of the
+S12 pass: the printed requirements rest on the real-fraction branch and A13 stays OPEN until
+S1's gate decides. It also supplies the accepted-pass edit account below (M19/M20).
+
+**Edits to already-accepted population passes.** Relative to the accepted register at `e070c7f3`,
+the net edits to pre-existing Population passes are the following two edits to the light-closing
+pass. Pass 1, Pass 2, O2 and S9b have no net text edit; their accepted blocks each have one literal
+occurrence in the current register (M20). Existing-entry additions and sources are accounted for
+in the census and rest-on table, separately from these amendments to accepted pass text.
+
+| Edit | Accepted text at `e070c7f3` | Current text | Source that settles it / retrieval |
+|---|---|---|---|
+| Light-closing acceptance heading | **"### Light-closing pass — the oracle comparison and the extra wave · 2026-10-19; review pending"** | **"### Light-closing pass — the oracle comparison and the extra wave · 2026-10-19; accepted `e070c7f3`"** | `light_sector_closeout_review_r2_disposition.md`, Outcome: **"The light-sector closeout packet is accepted as revision 2"**; filed acceptance commit `e070c7f3`. Retrieve M20. |
+| Light-closing second-route handoffs | **"the first two belong to S12 (`R-S12-02`) and to O2's carried handoffs;"** | **"the flow-drive question separates S12's drain source/boundary realization (`R-S12-02`) from the force balance in O2's carried handoffs;"** and **"the material-destination question separates which density/exchange alternative the drain produces (S12, `R-S12-02`) from whether the knit can meet it (`R-S21-01`, S21), as the oracle record states;"** | Accepted `steps/S9b_flow_oracle_comparison.md`, second-route items 1–2, lines 156–166: drain source/boundary data with S12 and force balance with O2's carried handoffs; what the drain produces **"is again S12's object (R-S12-02), and whether the knit can meet it belongs to R-S21-01"**. Retrieve M20. |
+
+Both accepted and current blocks, with their literal line breaks, are retrieved in M20. The handoff
+wording is a substantive amendment to an accepted pass, not only an acceptance-status update.
+It preserves the oracle record's split and changes no computed result or owner.
 
 **Second route:** the register requires it for every sector with identified prior art, including
 objects outside a step record's own doubts. Accordingly the pass reads the inherited O2 scoping §5
@@ -389,10 +410,12 @@ dynamics in the analog-gravity handoff. This source identity is not an answer to
 - The accepted comparator intended counterpart components; its engine row pairs library-version text
   with a platform identifier. Both sides and the user's acceptance qualification remain in §4 and M02/M08.
 
-This round repairs the A13 owner/branch row, restores the sourced owners under the dated user
-decision, quotes the owner/framing disagreements, and aligns `R-S21-01`'s requirement field with
-its by-target row. The register and `STATUS.md` carry those same owners and S12's requirements/forms
-split. The generator adds their retrievals and census; the measurements are regenerated. The C2
-diagnostic classification and G1 unit attributions remain unchanged. The earlier light-closeout
-acceptance edits at `e070c7f3` are retained; the S9b oracle record is not edited in this round.
-This repair awaits scoped review. Commits made for this deliverable: **none**. (Retrieve M15, M18.)
+This round adds the real-fraction/A13 condition to the register's future S12 handoffs and reports
+both amendments to the accepted light-closing pass with accepted/current quotations and settling
+sources. Those accepted-pass amendments predate this round and are retained; the new text accounts
+for them explicitly. The generator adds their retrievals and the current census; the measurements
+are regenerated. Only the review-round status reference changes in `STATUS.md`. All owners and the
+"Keep S12" requirements/forms split remain unchanged, as do the computed objects, C2 diagnostic
+classification, G1 unit attributions and S21 obligation. The S9b oracle record and the accepted
+Population-pass texts are not edited in this round. This repair awaits the narrow check of H1/H2.
+Commits made for this deliverable: **none**. (Retrieve M15, M19, M20.)

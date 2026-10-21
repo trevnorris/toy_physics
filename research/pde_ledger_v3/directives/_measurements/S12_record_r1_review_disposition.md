@@ -73,3 +73,13 @@ question only the user can answer: once S12's record states the requirements and
 delivers the native conversion forms, the boundary data and the throat's conversion source? Earlier the sources and
 the user named S12. This is the record's second review round with findings, so the user decides how to finish, and
 the ownership question goes to the user with it. The reviewed version is preserved as-is in this commit.
+
+## User decisions (2026-10-20)
+
+- **Owner: "Keep S12".** As the option put it, "S12 stays open for the forms. This record closes only S12's
+  requirements part, and the forms come once the brane is defined, after the force sectors. Every owner the sources
+  and you gave stays as written, and the record says it delivers none of the forms yet." This replaces round 0's C1
+  "What must be true" on owners. C1's concern, a finished step shown as owner, is met because S12 is not finished: it
+  stays open for the forms.
+- **Finish: "Fix, scoped review".** The same author fixes F1–F3 under this decision. A fresh Claude and Grok then
+  check only those edits and that nothing else moved.

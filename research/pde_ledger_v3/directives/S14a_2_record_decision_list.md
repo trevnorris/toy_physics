@@ -2,12 +2,14 @@
 
 **Author:** Claude (orchestrator), 2026-10-21. **Author of the record:** Codex. `AGENTS.md` and `CLAUDE.md` apply.
 Paths are relative to `research/pde_ledger_v3/`. The lookups behind this list are in
-`directives/_measurements/S14a_2_record_setup_lookups.md` ("L-n").
+`directives/_measurements/S14a_2_record_setup_lookups.md` ("L-n") and in the review lookups
+`directives/_measurements/S14a_2_record_decision_list_review_p1_lookups.md` ("N-n").
 
 **Gate.** This is a pre-builder decision list. It gets one Codex + Grok pass and is folded once (G2). The record
 author starts only after that. The record is physics-bearing prose. Two non-author legs (fresh Claude + Grok) review
 it, source-first, until clear on what may be claimed. This follows the S14a part 1 record
-(`directives/S14a_1_record_decision_list.md`).
+(`directives/S14a_1_record_decision_list.md`). The G2 pass is complete and this revision is its one fold
+(`directives/_measurements/S14a_2_record_decision_list_review_p1_disposition.md`; reviewed text at `ee6791c1`).
 
 ## Deliverable
 - `steps/S14a_2_slow_limit.md`: the S14a part 2 step record.
@@ -53,10 +55,9 @@ None of the three files exists yet (L1).
      object.
    - Each witness is stated with its pass, its leg and its standing: a review leg's instrument, not an accepted
      build.
-   - A statement reaches only as far as the witnesses reach: particular solutions of the committed balances on which
-     one choice of family, average or order of limits gives one value and another choice another. Neither a
-     general theorem nor the orchestrator's reading in the pass-2 disposition is presented as a computed result.
-     That reading is quoted as a reading, with its source.
+   - Each witness is described by what its own source and its disposition say it constructs, checks and compares,
+     and by no more (N4). Neither a general theorem nor the orchestrator's reading in the pass-2 disposition is
+     presented as a computed result. That reading is quoted as a reading, with its source.
 3. **The plan's objects.** The record states which of the plan's four S14a objects (`V3_STEP_PLAN.md:636–637`) are
    printed, and by which part, as its sources state them. It states that the remaining two are not derived, and the
    standing of S14, S15 and S20 as the plan gives it (`:639`). Nothing is claimed for them beyond what the user's
@@ -72,9 +73,10 @@ None of the three files exists yet (L1).
 5. **What remains open.** Each item the step's decision list retains as OPEN is stated with its owner, as the sources
    state them. The readings the user did not choose are listed as not computed. None is closed here.
 6. **Status and provenance lines.**
-   - S14a part 1's record and register pass were accepted at `4a4dfaf5` (L4). Every line that still describes them as
-     written for, under or awaiting review states that acceptance instead, heading or not: in the part 1 record, the
-     register (its status and the S14a part 1 pass heading) and `../../STATUS.md` (L7).
+   - S14a part 1's record and register pass were accepted at `4a4dfaf5` (L4). In the part 1 record, the register (its
+     status and its S14a part 1 pass) and `../../STATUS.md`, every statement that presents them as not yet accepted,
+     or their review as still to come, states that acceptance instead, heading or not. The lines found so far are in
+     L7 and N5; that list is not claimed to be complete. Statements about S12's earlier state stay as they are.
    - The two notes carried from the part 1 record's round-1 review are repaired in the part 1 record: the l.59
      citation names its actual source, and the §6 quotation of the earlier population directive is retrieved from
      that directive, `directives/S11_requirements_pass2_directive.md` (L7).

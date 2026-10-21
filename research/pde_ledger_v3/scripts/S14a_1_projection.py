@@ -87,6 +87,25 @@ def boundary_differentiation(integrand, variable, faces, coordinate):
     )
 
 
+def bulk_direction_integration(integrand, variable, faces):
+    """Integrate a total derivative with an opaque primitive, then apply it."""
+    lower, upper = sp.symbols("integration_lower integration_upper", real=True)
+    primitive = sp.Function("integration_primitive")(variable)
+    evaluated = sp.Integral(sp.Derivative(primitive, variable), (variable, lower, upper)).doit()
+    return tuple(
+        evaluated.coeff(primitive.subs(variable, bound)) * integrand.subs(variable, face)
+        for bound, face in zip((lower, upper), faces)
+    )
+
+
+def linearize_integrals(expression):
+    """Apply definite-integral linearity for the projection-route residual."""
+    return expression.replace(
+        lambda q: isinstance(q, sp.Integral) and len(q.limits) == 1,
+        lambda q: integral(q.function, *q.limits[0]),
+    )
+
+
 def supplied(n, velocity, chi, extra, gamma, gamma_return, gamma_drain, coordinates, clock, measure):
     # SUPPLIED BALANCES. These are native physical products, not derived answers.
     material_density = n
@@ -148,7 +167,14 @@ def construct(label, coordinates, clock, arguments, face_arguments, measure):
         object_(label + "/" + kind + "/regular parts", regular)
         object_(label + "/" + kind + "/concentrated face parts", atoms)
         # All concentrated parts at both closed endpoints receive their full weight.
-        integrated_regular = integral(regular[1], bulk, lower, upper)
+        working(label + "/" + kind + "/bulk-direction integration")
+        bulk_integrand = measure * fluxes[1][-1]
+        bulk_differential = sp.diff(bulk_integrand, bulk) / measure
+        bulk_integral = sp.Integral(sp.Derivative(bulk_integrand, bulk, evaluate=False), (bulk, lower, upper)) / measure
+        bulk_parts = tuple(part / measure for part in bulk_direction_integration(bulk_integrand, bulk, faces))
+        object_(label + "/" + kind + "/bulk derivative integral", bulk_integral)
+        object_(label + "/" + kind + "/bulk derivative integral by face", bulk_parts)
+        integrated_regular = integral(sp.expand(regular[1] - bulk_differential), bulk, lower, upper) + sp.Add(*bulk_parts)
         integrated_distribution = sp.Add(integrated_regular, *atoms)
         projected_density = integral(densities[1], bulk, lower, upper)
         projected_flux = tuple(integral(f, bulk, lower, upper) for f in fluxes[1][:-1])
@@ -157,20 +183,26 @@ def construct(label, coordinates, clock, arguments, face_arguments, measure):
         for component, coordinate in zip(fluxes[1][:-1], coordinates[:-1]):
             pieces = boundary_differentiation(measure * component, bulk, faces, coordinate)
             endpoint_parts = [old + new / measure for old, new in zip(endpoint_parts, pieces)]
-        leaving = tuple(sp.expand(atom - endpoint) for atom, endpoint in zip(atoms, endpoint_parts))
+        interior_leaving = tuple(sp.expand(part - endpoint) for part, endpoint in zip(bulk_parts, endpoint_parts))
+        leaving = tuple(sp.expand(atom + inside) for atom, inside in zip(atoms, interior_leaving))
         source = integral(data[1]["order_source"], bulk, lower, upper) + sp.Add(*atoms) if kind == "order" else sp.S.Zero
         object_(label + "/" + kind + "/closed integral of differential operand", integrated_distribution)
         object_(label + "/" + kind + "/projected density", projected_density)
         object_(label + "/" + kind + "/projected in-plane flux", projected_flux)
         object_(label + "/" + kind + "/projected differential expansion", projected_derivative)
-        for index, (edge, inside, atom) in enumerate(zip(leaving, endpoint_parts, atoms)):
-            object_(label + f"/{kind}/face {index}/interior leaving term", sp.expand(-inside))
+        for index, (edge, inside, atom) in enumerate(zip(leaving, interior_leaving, atoms)):
+            object_(label + f"/{kind}/face {index}/interior leaving term", inside)
             object_(label + f"/{kind}/face {index}/closed-projection leaving term", edge)
             if kind == "material":
                 balance(label + f"/{kind}/face {index}/supplied material face equation", atom, sp.S.Zero)
         object_(label + "/" + kind + "/projected source", source)
         left = sp.Add(projected_derivative, *leaving)
         balance(label + "/" + kind + "/closed projected balance", left, source)
+        emit(label + "/" + kind + "/projection integration/operands", (left, integrated_distribution))
+        emit(label + "/" + kind + "/projection integration/residual",
+             sp.expand(linearize_integrals(left) - linearize_integrals(integrated_distribution)))
+        emit(label + "/" + kind + "/projection integration/comparison",
+             "Differentiation of projected integrals versus integration of the regional differential operand with full face parts.")
         result[kind] = {"density": projected_density, "flux": projected_flux,
                         "derivative": projected_derivative, "faces": leaving,
                         "source": source, "balance": (left, source), "atoms": atoms}

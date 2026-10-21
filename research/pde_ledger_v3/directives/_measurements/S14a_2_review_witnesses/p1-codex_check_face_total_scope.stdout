@@ -1,0 +1,16 @@
+domain: 1 <= r <= 2; fixed faces w=0,1; core r<1 excluded
+fields: n=1/r^2, u_r=-2, u_w=-1 in all regions; interior chi=1
+J_chi^w: below=0, inside=0, above=1/r^2; all other J_chi components=0
+material regular residual = 0
+material face jump residuals = (0, 0)
+regular order source = 0
+computed lower/upper face source coefficients = (-1/r**2, 2/r**2)
+chosen full source split minus computed order source = 0
+regular-only return/drain totals/(4*pi) = (0, 0)
+full-source return/drain totals/(4*pi) = (2, 1)
+separately printed face-source total/(4*pi) = 1
+net in-plane order flux through both spheres/(4*pi) = 0
+closed-projection order flux through faces/(4*pi) = 1
+order budget residual with regular totals plus face source = 0
+order budget residual with full totals, faces counted within them = 0
+order budget residual if full totals plus face source are added = -1

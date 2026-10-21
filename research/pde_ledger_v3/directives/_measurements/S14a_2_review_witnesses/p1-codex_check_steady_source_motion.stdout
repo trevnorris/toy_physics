@@ -1,0 +1,21 @@
+domain: 1 <= r <= 2; t >= 0; 0 <= w <= 1+t/4; core r<1 excluded
+fields: n=1/r^2 in all regions, u_r=-2, u_w=-1, interior chi=1, J_chi=0
+material regular residual = 0
+material face jump residuals = (0, 0)
+order-source lower/upper delta coefficients = (-1/r**2, 5/(4*r**2))
+return total/(4*pi) = 5/4
+drain total/(4*pi) = 1
+time derivatives of those totals = (0, 0)
+return first w moment/(4*pi) = 5*t/16 + 5/4
+time derivative of return first w moment/(4*pi) = 5/16
+projected material storage/(4*pi) = 1/4
+material shell budget residual/(4*pi) = 0
+order shell budget residual/(4*pi) = 0
+converse witness: n=1, u_r=-2/r^2, u_w=0, chi_inside=w*(h-w)/h^2, h=1+t/4
+converse J_chi^w inside = 2*w**2*(3*t - 16*w + 12)/(3*(t + 4)**3)
+converse J_chi^w below/above = (0, -1/24)
+converse material/order regular residuals = (0, 0)
+converse order face coefficients = (0, 0)
+converse each source density/time derivative = (1, 0)
+converse each return/drain total/(4*pi) = 7*t/12 + 7/3
+converse time derivative of each total/(4*pi) = 7/12

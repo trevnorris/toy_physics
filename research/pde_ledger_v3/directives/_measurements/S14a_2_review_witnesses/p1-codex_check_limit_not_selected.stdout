@@ -1,0 +1,19 @@
+domain: 1 <= r <= 2; fixed faces w=0,1; all real t; core r<1 excluded
+fields: n=1+sin(t)/4; u_r=(-r*cos(t)/12-1/r^2)/n; u_w=0
+interior chi=1/2; exterior chi=0; J_chi=0; Gamma_return=Gamma_drain=1/n
+density range = (3/4, 5/4)
+material regular residual = 0
+order regular residual = 0
+order face coefficients = (0, 0)
+material face jump coefficients = (0, 0)
+source densities = (1, 1)
+source-density time derivatives = (0, 0)
+return/drain shell totals/(4*pi) = (7/3, 7/3)
+projected density time derivative = cos(t)/4
+material storage/(4*pi) = 7*cos(t)/12
+core channel J/(4*pi) = cos(t)/12 + 1
+material shell budget residual/(4*pi) = 0
+density at t=0, pi/2 = (1, 5/4)
+possible slow-family material residual = 0
+fixed-t epsilon->0 density/storage = (1, 0)
+at t=tau/epsilon density/storage divided by epsilon = (sin(tau)/4 + 1, 7*cos(tau)/12)

@@ -1,0 +1,65 @@
+=== 1. Storage of a density that changes without bound ===
+partial_t Sigma: c
+radial divergence of F: -c
+balance residual: 0
+Cesaro of partial_t Sigma: c
+Cesaro of Sigma: oo
+shell storage: 4*pi*c*(R**3 - a**3)/3
+Cesaro of shell storage: 4*pi*c*(R**3 - a**3)/3
+shell-content window average: 2*pi*c*(t0**2*(-R**3 + a**3) + (R**3 - a**3)*(T + t0)**2)/(3*T)
+Cesaro of shell content: oo*sign(R**3 - a**3)
+outer material flux Phi: 4*pi*(-R**3*c + 3*beta*t)/3
+core channel: 4*pi*(a**3*c - 3*beta*t)/3
+K + Phi + Jcore: 0
+Cesaro of Phi: oo
+Cesaro of Jcore: -oo
+Cesaro of K+Phi+Jcore: 0
+=== 2. Volume flux, two readings of the density condition ===
+projected velocity: -R/(3*t) + beta/(R**2*c)
+volume flux: -4*pi*R**3/(3*t) + 4*pi*beta/c
+Cesaro of volume flux: 4*pi*beta/c
+Sigma nonzero for every t>0: True
+reading A prints volume flux (finite nonzero Cesaro of Sigma): False
+reading A Cesaro of Sigma: oo
+reading B prints volume flux (Sigma nonzero and Cesaro of V finite): True
+reading B value: 4*pi*beta/c
+Cesaro of F: oo
+quotient of Cesaros F/Sigma: not a finite quotient; Cesaro of F and of Sigma are both infinite
+=== 3. Product and quotient are not the images of the factors ===
+product window average: (18*T + sin(2*t0) - sin(2*T + 2*t0) + 16*cos(t0) - 16*cos(T + t0))/(4*T)
+Cesaro of n*u: 9/2
+Cesaro of n: 2
+Cesaro of u: 2
+(Cesaro n)*(Cesaro u): 4
+product difference: 1/2
+Cesaro of 1/den: sqrt(3)/3
+1/(Cesaro den): 1/2
+quotient difference: -1/2 + sqrt(3)/3
+=== 4. A fixed-frequency oscillation and the omega -> 0 family ===
+finite-window average of A + B*cos(omega*t): (A*T*omega - B*sin(omega*t0) + B*sin(omega*(T + t0)))/(T*omega)
+Cesaro at fixed nonzero omega: A
+Cesaro of 4 + 7*cos(t): 4
+omega -> 0 of the family at fixed t: A + B
+Cesaro of that frozen family: 11
+Cesaro of a constant storage rate c: c
+storage removed by setting the time-rate term to zero: 0
+=== 5. w-integral before the average keeps a moving face ===
+projected density with a thickening face: s*t + 1
+Cesaro of its time rate: s
+same integral with the face frozen at t=0: 1
+time rate of the frozen integral: 0
+=== 6. Return, drain and face signs ===
+return - drain + face - Schi: 0
+return + drain + face - Schi: 2*nGamma_drain
+sample Schi: 5
+sample signed assembly: 5
+sample all-positive assembly: 9
+=== 7. Shell order-budget orientation ===
+shell integral of the radial divergence: 4*pi*(R**2*H(R) - a**2*H(a))
+outward outer + inward inner - divergence integral: 0
+both outward minus divergence integral: 8*pi*a**2*H(a)
+=== 8. t0 independence when the average exists ===
+Cesaro of sin from t0: 0
+same with t0 replaced by t0+7: 0
+finite-window average of sin: (cos(t0) - cos(T + t0))/T
+its T->oo limit: 0

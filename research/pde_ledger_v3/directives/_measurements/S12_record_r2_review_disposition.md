@@ -69,3 +69,8 @@ stand.
 Two findings, both confirmed, both text in the register's S12 hand-on and in the record's account of its own edits.
 Neither changes a computed object, a cross-engine claim or an owner. The reviewed version is preserved as-is in this
 commit. The user decides how to finish.
+
+## User decision (2026-10-20)
+
+**"Fix, narrow check".** The same author fixes H1 and H2. A fresh Claude and Grok then check only those two edits
+and that nothing else moved.

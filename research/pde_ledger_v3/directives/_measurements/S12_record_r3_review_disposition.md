@@ -57,3 +57,20 @@ command is in M12.
 This meets the substantive exit (`CLAUDE.md` G4). Each of the last three repairs has produced a new defect in the
 record's account of its own edits, while the physics content has been unchanged and found sound since round 1. That
 is the stop signal. The user decides how to finish.
+
+## Outcome: accepted (user, 2026-10-20)
+
+**User decision: "Accept, note both".** The S12 record, its measurements file and generator, the S12 register pass
+and the status-line edits are accepted as reviewed in round 3. They are byte-for-byte the files preserved at
+`a6e8b5fa`, with no repair. Four review rounds preceded acceptance: two full and two scoped.
+
+**Known items, carried open.** Neither changes a claim:
+- **J1.** The record's account of its own edits does not mention two status-only edits: the S9b oracle record's
+  status line and the register header's light-closing sentence. Both are as the record decision list's item 9
+  orders, and both are visible in `git diff 560c6c51`.
+- **J2.** The "18 → 18" sentence for the round-3 repair cites M19/M20. Its count is in M12.
+
+**Stale status text.** The accepted files still describe S12's record and register pass as written for, or under,
+review: the record header, the register's status and S12 pass heading, and `STATUS.md`. The S9b record's acceptance
+left the same kind of text, and S12's item 9 then repaired it for the light closeout. The next step's record list
+updates these lines to this acceptance, and picks up J1 and J2.

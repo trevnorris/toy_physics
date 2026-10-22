@@ -1,6 +1,7 @@
 # S14a part 1 — slab projection, the two-channel drain rate and finite-radius flux
 
-**Status, 2026-10-21:** record and register pass written for source-first review. The constructions
+**Status, 2026-10-21:** record and register pass accepted at `4a4dfaf5` (round 1 clear;
+acceptance retrieved in S14a part 2 M01/M11). The constructions
 are accepted at `94fddf2f`; the comparator and its filed production output at `de81b9fc`.
 Starting commit: `f5d283c1`. No commit is made by this work. S12's record and register pass were
 accepted at `ac909aaf`; its source forms remain OPEN under **"Keep S12"**. (Retrieve M01/M02/M14.)
@@ -56,7 +57,7 @@ law holds and the shear-holding region has two faces over the in-plane coordinat
 |---|---|---|
 | Committed balances and signed rate split; user 2026-07-24, carried by the 2026-10-21 list | **"Supplied equations (committed; unfalsifiable in this build)"** | Regional currents/equations, both projected balances/sources and all shell objects. The primitive dimension assignments are inputs to the dimensional audit. |
 | U1, user 2026-10-19; S12 revision 4, cleared `b08673a2`, incorporated 2026-10-21 | **"Both are adopted premises, not results of this build"**: live shear-holding faces and order vanishing outside. S12 calls the encoding **"an identification, flagged"**, and the user inputs **"adopted substrate input to a conditional model"**. | Masks, differentiated distributions, face/source parts, both projections and every dependent shell object. No shear response or order profile is derived. The region is not defined by the support of a chosen profile. |
-| U1 interior `0≤f≤1`, permitted jumps and no concentrated input fields; S12 encoding and user "Leave it out for now", 2026-10-20 | The list says U1 and its encoding are **"as the S12 decision list states them"**. | The bound `0≤f≤1` enters no computed object. Permitted jumps and no concentrated input fields define the regional/traced function class of the same objects. The no-concentrated-input restriction does not remove concentrated source parts (M17, T2). |
+| U1 interior `0≤f≤1`, permitted jumps and no concentrated input fields; S12 encoding and user "Leave it out for now", 2026-10-20 | The list says U1 and its encoding are **"as the S12 decision list states them"**. | The bound `0≤f≤1` enters no computed object. Permitted jumps and no concentrated input fields define the regional/traced function class of the same objects. The no-concentrated-input restriction does not remove concentrated source parts (S12 decision list, item 1, retrieved in M01 and directly in S14a part 2 M11). |
 | U1 re-ordering admissibility clause; user 2026-10-19, inherited S12 encoding | S12: **"Not encoded: U1's re-ordering clause"**; **"OPEN admissibility requirement, with no rate and no local sign chosen"**. | Enters no computed object as an enforced clause. |
 | Material face factor; accepted S12 record 2026-10-20, supplied by the 2026-10-21 list | **"It is supplied and unfalsifiable in this build. The build's face terms are reached by its own integration."** | Printed one-sided factor `a_{r,s}=u_r^w−∂t w_s−u_r^i∂i w_s`; it is not a derivation target substituted to build the face terms. |
 | Spherical symmetry; 2026-10-21 step list | **"labelled specialization"**, **"not a limit earned from item 1"** | Separately built radial projections, geometric measure, both channels, `J`, order lost, storage, outer flux/radius dependence and velocity objects. Native fields retain `(r,w,t)`; faces retain `(r,t)`. |
@@ -348,10 +349,10 @@ S12's inventory. No O2 material law or displacement identification is imported. 
   that decision; the old plan text remains unedited. S12's accepted historical table still
   lists the mass link under S13. That is retained as historical source text, with C3 OPEN.
   (Retrieve M01/M11/M15.)
-- The earlier population directive says **"Run it only on a prior result that a record in the
+- The earlier population directive (`directives/S11_requirements_pass2_directive.md`, item 7) says **"Run it only on a prior result that a record in the
   reading list identifies as reproduced by the sector"**; the register says **"Run this route
   for every sector with identified prior art"**. The broader register rule governs this pass.
-  The historical disagreement remains; neither route is omitted. (Retrieve M13.)
+  The historical disagreement remains; neither route is omitted. (Retrieve S14a part 2 M11/M12 directly from the directive/register.)
 - The stale run record said **"The Wolfram source was written before the SymPy source."** The
   accepted round-2 disposition instead says **"The current Wolfram engine was rewritten by a
   separate author after repair 1 of the SymPy engine had finished"**. The distinction is first
@@ -451,5 +452,5 @@ The pre-existing `.claude/skills/prep-for-compact/SKILL.md` modification is unre
 work and was left untouched; it is not an edit by this deliverable. No other checkout or orchestrator
 memory was read. Generator working files are under `_scratch/s14a/rec/work/`. No engine/comparator
 or transcript is edited or rerun. No review round, commit or push is performed. The record,
-regenerated measurements, generator and register pass are the STOP deliverable; source-first
-record review remains next under the contract.
+regenerated measurements, generator and register pass were accepted at `4a4dfaf5`, after
+source-first record review round 1 (`directives/_measurements/S14a_1_record_r1_review_disposition.md`, retrieved in S14a part 2 M11).

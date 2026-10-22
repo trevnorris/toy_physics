@@ -1,4 +1,4 @@
-# Project status — light sector closed for now; S12 accepted; S14a part 1 record written for review
+# Project status — light sector closed for now; S12 and S14a part 1 accepted; S14a part 2 requirement recorded for review
 
 On 2026-10-19 the user closed the light sector **for now**. Its accepted results are conditional. What stays
 open is carried as requirements in the [substrate register](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md),
@@ -8,13 +8,23 @@ and register pass are accepted at `ac909aaf` under "Accept, note both". Their kn
 items are repaired in the S14a part 1 record work.
 
 S14a part 1's constructions (`94fddf2f`) and comparator (`de81b9fc`) are accepted. Its
-[projection record](research/pde_ledger_v3/steps/S14a_1_projection.md) and register pass are written for
-source-first review, with [retrieval measurements](research/pde_ledger_v3/steps/_measurements/S14a_1_record_measurements.md).
+[projection record](research/pde_ledger_v3/steps/S14a_1_projection.md) and register pass are accepted at
+`4a4dfaf5` (round 1 clear), with [retrieval measurements](research/pde_ledger_v3/steps/_measurements/S14a_1_record_measurements.md).
 S13 is folded into S14a (user, 2026-10-21). This part prints the projected balances and spherical
 two-channel `J`, signed order loss, storage, finite-radius flux and conditioned velocity objects.
 It preserves the comparator differences and coverage limits. It chooses no flow or conversion law;
-the controlled return law remains with later S14a and the profile-dependent `J→Q` completion remains
-OPEN. S14/S15/S20 remain CONDITIONAL, not carried results.
+its historical handoff left the controlled return law with later S14a and the profile-dependent
+`J→Q` completion OPEN.
+
+S14a part 2's [record](research/pde_ledger_v3/steps/S14a_2_slow_limit.md) and register pass are written
+for source-first review, with [retrieval measurements](research/pde_ledger_v3/steps/_measurements/S14a_2_record_measurements.md).
+The user chose **"Record as requirement"** (2026-10-21): no build ran. The slab's own dynamics
+(the OPEN S12 forms under "Keep S12") must select the slow limit and far behaviour. The controlled
+`ω→0` return law and profile-dependent `J→Q` map remain not derived. The filed witnesses retain
+their separate pass/leg scopes as review instruments; they are not an accepted part 2 build.
+The obligation merges into existing `R-S12-02`, target S12 for its forms; S14/S15/S20 remain
+**CONDITIONAL, not carried results**, now on that named requirement. The two carried part-1
+citation notes are repaired in its record; other part-1 claims retain their accepted standing.
 
 **User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms."** This record closes
 only S12's requirements part and delivers none of the forms. The forms come once the brane is
@@ -119,6 +129,10 @@ requirements owed by `R-S21-01`, consistently in its by-target row and requireme
 The S14a part 1 pass also leaves 18 OPEN entries, adding scoped source/provenance to `R-S1-01`,
 `R-S1-02`, `R-S12-02` and `R-S21-01`, with no new entry or status change. Its printed compatibility
 constraints merge into `R-S12-02`; S21 retains the comparison of force sectors' flow requirements.
+The S14a part 2 pass also leaves 18 OPEN entries, with no new entry or target/status change.
+Only existing `R-S12-02` gains a source: the dynamically selected slow-limit/far-behaviour
+requirement, its user-decision provenance and scoped filed-review evidence. The record/pass
+await source-first review; no derivation or profile is supplied by recording this obligation.
 The light closeout was accepted at `e070c7f3`; its review no longer gates S12. The oracle comparison's
 questions about flow drive separate S12's source/boundary realization from O2's carried
 force-balance handoffs. Material destination separates S12's drain-produced density/exchange

@@ -1,4 +1,4 @@
-# Measurements: S16 decision list, setup lookups (generated 2026-10-21 19:36)
+# Measurements: S16 decision list, setup lookups (generated 2026-10-21 19:57)
 
 Generator: `_scratch/s14a/gen/s16_setup_lookups.sh` (sed/grep/git/sha256sum only; this file is written by
 it). Mechanical lookups only: existence, verbatim retrieval by line, literal-match counts.
@@ -7,8 +7,8 @@ it). Mechanical lookups only: existence, verbatim retrieval by line, literal-mat
 
 ```
 $ cd /var/projects/toy_physics && sha256sum research/pde_ledger_v3/directives/S16_decision_list.md && git log -1 --format='%h %s'
-d32222e41ade8d192f436f69e14ecac546267711dc50fd099ed02679e1a8dbfe  research/pde_ledger_v3/directives/S16_decision_list.md
-ffaa2824 Preserve the S16 decision list as reviewed in pass 1
+29d3225e559741b5ae71a677bd926de52903ee702a0fc24df0be9f2ef39a9980  research/pde_ledger_v3/directives/S16_decision_list.md
+6ad2d816 Record the S16 decision list review pass 2 (spec content)
 ```
 
 ## L1. The plan's S16 section
@@ -278,9 +278,9 @@ Ward: 0
 
 ```
 $ grep -nF -- 'potential' /var/projects/toy_physics/research/pde_ledger_v3/directives/S16_decision_list.md
-22:  - No source normalization is used, because no potential is supplied.
-40:- **Outside field — "No potential":** "The outside field enters only as the live flow and stress around the region.
-52:The two later decisions narrow the last two sentences of "No potential". The gradient-form condition and the two
-131:  compactness, vanishing dipole, boundary-flux suppression, potential, mass-to-count ratio, or symmetry of the
-192:- no potential;
+24:  - No source normalization is used, because no potential is supplied.
+42:- **Outside field — "No potential":** "The outside field enters only as the live flow and stress around the region.
+54:The two later decisions narrow the last two sentences of "No potential". The gradient-form condition and the two
+137:  compactness, vanishing dipole, boundary-flux suppression, potential, mass-to-count ratio, or symmetry of the
+205:- no potential;
 ```

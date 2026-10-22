@@ -4,9 +4,11 @@
 Paths are relative to `research/pde_ledger_v3/`. The lookups behind this list are in
 `directives/_measurements/S16_setup_lookups.md` ("L-n").
 
-**Revision 2: the G2 fold.** Pass 1 (Codex + Grok) is preserved at `ffaa2824`, with its dispositions D1–D6 and the
-user's two decisions on them in `directives/_measurements/S16_decision_list_review_p1_disposition.md`. The fold
-changes what is computed, so its spec content is reviewed until clear before any builder.
+**Revision 3.** Revision 2 was the G2 fold of pass 1 (Codex + Grok, preserved at `ffaa2824`). Pass 1's
+dispositions D1–D6 and the user's two decisions on them are in
+`directives/_measurements/S16_decision_list_review_p1_disposition.md`. Revision 3 repairs pass 2's findings E1–E3
+on revision 2 (`ef82fb3b`; dispositions in `directives/_measurements/S16_decision_list_review_p2_disposition.md`).
+The spec content is reviewed until clear before any builder.
 
 ## Filing and framing
 - **The plan's step.** S16, "The worldtube reduction" (`V3_STEP_PLAN.md:670–746`). The plan says: "Rewrite S16 as a
@@ -17,8 +19,8 @@ changes what is computed, so its spec content is reviewed until clear before any
   - The region's material count and its moments are printed from live fields.
   - The boundary fluxes are printed, each as its own object.
   - No mass is defined, so `M` stays an input the reduction would need.
-  - Compactness and a field of the surroundings are filed as requirements, because the region's fields do not
-    determine them (D1).
+  - The body's compactness and a field of the surroundings are filed as separate requirements, because the
+    region's fields do not determine them (D1, E3).
   - No source normalization is used, because no potential is supplied.
 
   All of these stay debts for S22's table.
@@ -75,7 +77,8 @@ between its live faces.
 
   - `G^i` is the projected momentum density, `Π^{ij}` its flux and `f^i` the force density. All three are general
     live fields of `x` and `t`.
-  - `f^i` includes every exchange of momentum with the faces and the bulk.
+  - `f^i` includes every exchange of momentum with the faces and the bulk. The projected inputs do not divide it by
+    face or by the faces' motion, so it stays undivided (E2).
   - `G^i` is not related to `F^i` or `Σ` by any supplied law, and `Π^{ij}` is not assumed symmetric.
 
 ## The region
@@ -84,6 +87,7 @@ between its live faces.
 - **The region** lies between that inner surface and an outer surface around it, and both surfaces move. The build
   may take them as spheres about `X_c(t)` with live radii `r_in(t)` and `R(t)`. That is a choice of control surface,
   not a symmetry of the fields, and it is labelled where printed. `r_in` is not identified with the mouth radius.
+  Below, "surfaces" means these two control surfaces, and "faces" means the slab's faces.
 - **The fields are the total fields on the region.** No object of the build depends on values inside the core or on
   a split of a field into parts (D1).
 
@@ -96,8 +100,9 @@ Both engines construct these independently, with the `.wl` blind.
    - its first moment about `X_c`;
    - the momentum `P(t)`, the integral of `G^i`.
 
-   For each rate, the build prints separately the face terms and the integrated force density. At each surface,
-   it prints the material flux and the momentum flux. Each surface term is printed in two parts, kept apart:
+   For each rate, the build prints the integrated force density separately, and for the count and its moment the
+   face terms of the material balance as well. At each surface, it prints the material flux and the momentum flux.
+   Each surface term is printed in two parts, kept apart:
    - the part present when that surface is at rest;
    - the part due to that surface's motion.
 2. **The centre of the material count.** `X(t)` is the first moment over `N`, about `X_c`. The build prints the
@@ -108,9 +113,10 @@ Both engines construct these independently, with the `.wl` blind.
    - the relation between `X` and `X_c`.
 
    Any rate that no supplied balance governs stays a printed term.
-3. **The momentum the region receives.** This is the rate of `P`, from item 1: the stresses and the momentum carried
-   across both surfaces, plus the integrated force density. It is printed as its own object, apart from item 2's
-   kinematic terms and from the parts due to the surfaces' motion.
+3. **The momentum the region receives.** The stresses and the momentum carried across both surfaces, plus the
+   integrated force density. It is printed as its own object, apart from item 2's kinematic terms and from the parts
+   due to the surfaces' motion. The rate of `P` in item 1 is a different object, and the list does not equate the two
+   (E1). Momentum exchanged at the faces, including any due to their motion, stays inside `f^i` (E2).
 4. **Moments.** The material count's moments about `X_c` through second order: the count, the dipole and the
    second-moment tensor. No scalar width is defined from the tensor (D5).
 5. **Dimensional homogeneity** of items 1–4.
@@ -140,7 +146,12 @@ conclusions. No acceptance criterion references an expected value.
 - **Requirements the user's decisions file.** The record files each requirement once, against the owner the sources
   assign. Where no owner is assigned, it says so; no owner is invented.
   - **For a passive factor:** a named field of the surroundings, a rule separating it from the body's own field, and
-    its normalization. Compactness belongs here too, as a statement about that field.
+    its normalization.
+  - **The body's compactness, separately:** its size, small against the scale over which a field of the surroundings
+    varies. This is the source's "Compact support / small body" assumption (`4d_1pn_full.tex:697–700`), listed apart
+    from its smooth-field assumption (`:702–704`). The region's count moments do not settle it (E3).
+  - **For the faces:** the momentum exchanged at each face, and its split by the faces' motion. These stay inside
+    `f^i` (E2).
   - **For an inertial factor:** the law relating momentum density to the material fields, which the accepted O2
     spec keeps OPEN (`directives/O2_SHARED_PHYSICS.md:133`, S8). The slab's density response is also OPEN there
     (`:138`, S8 and S22).
@@ -167,7 +178,9 @@ conclusions. No acceptance criterion references an expected value.
 - **No owner named:** the faces' law (same row).
 - **Filed by this step as requirements:**
   - the field of the surroundings, its separation rule and its normalization;
-  - the momentum–material law and the density response (O2, S8/S22).
+  - the body's compactness;
+  - the momentum–material law and the density response (O2, S8/S22);
+  - the momentum exchanged at each face and its split by the faces' motion, with the faces' law (no owner named).
 - **S22:**
   - the core's interior, count and momentum;
   - the `a_WT`/`a_mouth` bridge, under A11.
@@ -180,7 +193,7 @@ conclusions. No acceptance criterion references an expected value.
 ## Intended claim
 What the supplied balances give for a region around one throat that moves through its surroundings, with every term
 live:
-- the region's material and momentum balances, with the parts due to the surfaces' motion kept apart;
+- the region's material and momentum balances, with the parts due to the control surfaces' motion kept apart;
 - the relations for the centre of the material count;
 - the momentum the region receives;
 - the material moments.

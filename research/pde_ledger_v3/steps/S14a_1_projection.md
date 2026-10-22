@@ -363,8 +363,8 @@ S12's inventory. No O2 material law or displacement identification is imported. 
   at `ac909aaf`; only item-9 acceptance/J1/J2 edits are made to those S12 texts. (Retrieve M02/M15/M16.)
 - The record contract calls the measurements generator **"a committed generator script"** and
   also says **"No commit and no push"**. The contract's no-commit instruction governs this deliverable.
-  The durable generator is supplied in the working tree, uncommitted, with the final regenerated
-  measurements. No acceptance/commit is invented. (Retrieve M01/M16.)
+  The durable generator and final regenerated measurements were subsequently committed and
+  accepted at `4a4dfaf5`. (Retrieve S14a part 2 M11/M16 for acceptance and generator provenance.)
 
 The record-list/register relation otherwise has no operative conflict: the record list expressly
 defers to the register's rest-on test and both-route method. The printed domain/context differences

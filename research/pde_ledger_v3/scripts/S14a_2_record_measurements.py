@@ -39,6 +39,7 @@ TITLES = {
     "M13": "Plan, v2 and G0 comparison inventories, retrieved only",
     "M14": "Second-route candidates and existing objection handoffs",
     "M15": "Final pass/status and exact ancillary diff against the starting commit",
+    "M16": "Record round-0 dispositions, V2 user decision and committed-generator provenance",
 }
 WITNESS_NAMES = {
     "M04": "p1-codex_check_steady_source_motion",
@@ -177,6 +178,15 @@ def retrieve(section):
         command(out, "git", "status", "--short", "--", REGISTER, PART1, "STATUS.md",
                 V3 + "steps/S14a_2_slow_limit.md",
                 V3 + "steps/_measurements/S14a_2_record_measurements.md", SCRIPT)
+    elif section == "M16":
+        cat(out, DM + "S14a_2_record_r0_review_disposition.md", "12aa65d5")
+        command(out, "git", "show", "-s", "--format=%H %s", "2ae682e4", "12aa65d5")
+        command(out, "git", "ls-tree", "4a4dfaf5", "--",
+                V3 + "scripts/S14a_1_record_measurements.py")
+        command(out, "git", "ls-tree", "2ae682e4", "--", SCRIPT,
+                V3 + "steps/_measurements/S14a_2_record_measurements.md",
+                DM + "S14a_2_record_r0_review_disposition.md",
+                DM + "S14a_2_record_r0_review_lookups.md")
     else:
         raise ValueError(section)
     return out.getvalue()

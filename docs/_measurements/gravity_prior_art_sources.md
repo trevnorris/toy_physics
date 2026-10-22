@@ -363,7 +363,8 @@ curl -s 'https://api.crossref.org/works/<DOI>' | python3 -I -c 'import json,sys;
   - "Remark. Lagally [52], Landweber and Yih [53, 54], Faber [55] and Currie [56] obtained the same result of
     Theorem 2 for the special case where the velocity field is steady."; "[52] M. Lagally, Z. Angew. Math. Mech. 2,
     409 (1922)."
-  - Theorem 3: "a source or a sink is moving in the fluid with a velocity vs , then there is a force FQ = −ρ Q (uf −
+  - Theorem 3 (`wang_raw.txt` l.535–539): "Suppose the presuppositions (1), (2), (3), (4) and (5) in Theorem 2 are
+    valid and a source or a sink is moving in the fluid with a velocity vs , then there is a force FQ = −ρ Q (uf −
     vs )". Its proof is "The velocity of the fluid relative to the source at the location of the source is uf − vs .
     Let us select the coordinates that is attached to the source and set the origin of the coordinates at the
     location of the source. Then (27) can be arrived following the same procedures in the proof of Theorem 2."

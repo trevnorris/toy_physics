@@ -107,3 +107,18 @@ does not address.
 V1, V3 and the two minor notes are technical repairs. V2's deliverer question goes to the user first. Then the
 author repairs, with no "Commit nothing" sentence in the orchestrator's brief, and round 1 reviews the whole record
 again.
+
+## The user's decision on V2 (2026-10-21)
+
+Asked who the register should say must deliver the selection, the user selected **"All the slab's laws
+(Recommended)"**. The option text is the orchestrator's: "The selection is owed jointly by S12's source and flux
+forms, the slab's material law (S8/S22), and the face and interior laws, which have no owner yet. The register says
+so and states the missing owner as missing; it invents none. The record reports the disagreement with both sides
+quoted."
+
+This decision replaces the list's item 4 sentence "Its target follows the sources' owners (the S12 record for the
+forms, under "Keep S12")". Every other requirement of item 4 still holds: the register's schema, rest-on test and
+method, both routes included; the object named, not a route, law, material, premise or candidate; the merge into an
+existing entry where one covers the same requirement; and the register winning any disagreement with the list, which
+is then reported. The earlier selected option text, "(the open S12 forms)", is quoted as it was given, together with
+this decision.

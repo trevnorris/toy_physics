@@ -8,7 +8,9 @@ Paths are relative to `research/pde_ledger_v3/`. The lookups behind this list ar
 dispositions D1–D6 and the user's two decisions on them are in
 `directives/_measurements/S16_decision_list_review_p1_disposition.md`. Revision 3 repairs pass 2's findings E1–E3
 on revision 2 (`ef82fb3b`; dispositions in `directives/_measurements/S16_decision_list_review_p2_disposition.md`).
-The spec content is reviewed until clear before any builder.
+Revision 4 repairs pass 3's findings F1–F3 on revision 3 (`c9da00e8`; dispositions in
+`directives/_measurements/S16_decision_list_review_p3_disposition.md`). The spec content is reviewed until clear
+before any builder.
 
 ## Filing and framing
 - **The plan's step.** S16, "The worldtube reduction" (`V3_STEP_PLAN.md:670–746`). The plan says: "Rewrite S16 as a
@@ -23,7 +25,9 @@ The spec content is reviewed until clear before any builder.
     region's fields do not determine them (D1, E3).
   - No source normalization is used, because no potential is supplied.
 
-  All of these stay debts for S22's table.
+  What stays a debt for S22's table is what this step does not deliver: `M`, `a`, the multipoles of `M`,
+  compactness, the source normalization, and any suppression of the boundary fluxes. The count, its moments and the
+  boundary fluxes are printed objects, not those debts (F2).
 - **The framing carries over** (user, 2026-10-19). This step states what the supplied balances give. It picks no
   material law, drain law or flow. Each force states the flow it needs, and S21 compares them
   (`SUBSTRATE_REQUIREMENTS.md:729`). Under "Keep S12" (user, 2026-10-20; `steps/S12_order_source.md:15`), the
@@ -102,21 +106,25 @@ Both engines construct these independently, with the `.wl` blind.
 
    For each rate, the build prints the integrated force density separately, and for the count and its moment the
    face terms of the material balance as well. At each surface, it prints the material flux and the momentum flux.
-   Each surface term is printed in two parts, kept apart:
+   Each surface term is printed in two parts, kept apart. Rest and motion are in the coordinates `x` of the supplied
+   equations (F1):
    - the part present when that surface is at rest;
-   - the part due to that surface's motion.
+   - the part due to that surface's motion. It is printed in two pieces: the piece from the motion of `X_c`, and the
+     piece from the rest of the surface's motion (for spheres, the change of its radius).
 2. **The centre of the material count.** `X(t)` is the first moment over `N`, about `X_c`. The build prints the
    relations the material balance gives for the rate and the acceleration of `X`, with every term printed. These
    include:
    - the change of `N`;
-   - the motion of both surfaces, with the terms that come only from that motion kept apart;
+   - the motion of both surfaces, with the terms that come only from that motion kept apart, in item 1's
+     coordinates and two pieces;
    - the relation between `X` and `X_c`.
 
    Any rate that no supplied balance governs stays a printed term.
 3. **The momentum the region receives.** The stresses and the momentum carried across both surfaces, plus the
    integrated force density. It is printed as its own object, apart from item 2's kinematic terms and from the parts
-   due to the surfaces' motion. The rate of `P` in item 1 is a different object, and the list does not equate the two
-   (E1). Momentum exchanged at the faces, including any due to their motion, stays inside `f^i` (E2).
+   due to the surfaces' motion, both pieces. The rate of `P` in item 1 is a different object, and the list does not
+   equate the two (E1). Momentum exchanged at the faces, including any due to their motion, stays inside `f^i`
+   (E2).
 4. **Moments.** The material count's moments about `X_c` through second order: the count, the dipole and the
    second-moment tensor. No scalar width is defined from the tensor (D5).
 5. **Dimensional homogeneity** of items 1–4.
@@ -147,9 +155,10 @@ conclusions. No acceptance criterion references an expected value.
   assign. Where no owner is assigned, it says so; no owner is invented.
   - **For a passive factor:** a named field of the surroundings, a rule separating it from the body's own field, and
     its normalization.
-  - **The body's compactness, separately:** its size, small against the scale over which a field of the surroundings
-    varies. This is the source's "Compact support / small body" assumption (`4d_1pn_full.tex:697–700`), listed apart
-    from its smooth-field assumption (`:702–704`). The region's count moments do not settle it (E3).
+  - **The body's compactness, separately:** its size, small compared with the separation between bodies and with the
+    scale over which a field of the surroundings varies. These are the two comparisons of the source's "Compact
+    support / small body" assumption (`4d_1pn_full.tex:697–700`), which it lists apart from its smooth-field
+    assumption (`:702–704`). The region's count moments do not settle it (E3, F3).
   - **For the faces:** the momentum exchanged at each face, and its split by the faces' motion. These stay inside
     `f^i` (E2).
   - **For an inertial factor:** the law relating momentum density to the material fields, which the accepted O2

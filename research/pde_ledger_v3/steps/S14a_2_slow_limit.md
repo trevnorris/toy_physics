@@ -3,11 +3,11 @@
 **Status, 2026-10-21:** record and register pass written for source-first review. By the user's
 **"Record as requirement"** decision, no build ran and this part reports no computed bridge
 object. The slab's own dynamics must select the slow limit and the far behaviour; that obligation
-is merged into **`R-S12-02`**. The user's V2 decision makes selection owed jointly by S12's
+has its own entry, **`R-S14a-01`**. The user's V2 decision makes selection owed jointly by S12's
 source/flux forms, S8/S22's material law and the face/interior laws with no owner named. S14,
 S15 and S20 remain **"CONDITIONAL, not carried results"**, now on that named requirement.
-Starting commit: `978c359c`; reviewed version preserved at `2ae682e4`. This repair makes no
-commit. (Retrieve M01/M03/M12/M13/M15/M16.)
+Starting commit: `978c359c`; round-1 reviewed version preserved at `85904c4e`. This repair makes
+no commit. (Retrieve M01/M03/M12/M13/M15–M17.)
 
 Of the plan's four S14a objects, accepted part 1 prints the projected order-loss source and the
 definition of `J`, with finite-radius flux objects and their recorded limitations. The
@@ -31,10 +31,11 @@ imports a witness and performs no CAS, numerical evaluation, limit or new equiva
 | M04–M07 | Pass 1: three Codex instruments and one Grok instrument, each complete source and literal saved stdout. |
 | M08–M10 | Pass 2: two Codex instruments and one Grok instrument, each complete source and literal saved stdout. |
 | M11 | Accepted part 1 and its reviews; direct sources for the two carried citations; accepted S12 owners. |
-| M12 | Register schema, before/after census, existing entry, both-route method and this pass. |
+| M12 | Register schema, before/after census, unchanged S12 entry, new selection entry, both-route method and this pass. |
 | M13/M14 | Plan and historical comparison rows; inherited prior-art candidates and objection handoffs. |
 | M15 | Final register pass/status and exact ancillary diff against `978c359c`. |
 | M16 | Record round-0 dispositions and the user's V2 decision at `12aa65d5`; preserved review and committed-generator provenance. |
+| M17 | Record round-1 dispositions and preserved review provenance at `85904c4e`. |
 
 ## 1. The decisions and the objects attempted
 
@@ -90,10 +91,10 @@ sources state. (Retrieve M03–M07.)
 
 | Finding and disposition | Review-leg instrument, construction/check and filed evidence |
 |---|---|
-| **Q1, CONFIRMED:** pointwise constant source densities are not the selected constant-rate condition. | **Pass 1, Codex**, `p1-codex_check_steady_source_motion`: source calls it a **"Small admissible shell witness, not a construction of the proposed build"**. It constructs a moving slab on `1≤r≤2` and its distributional order source, printing material regular/face and shell checks; its separate converse prints material/order regular residuals and order face coefficients. Its return/drain totals are `5/4, 1`, their derivatives `(0, 0)`, while the return first-`w`-moment derivative is `5/16`. In the converse, each stationary source-density/time-derivative pair is `(1, 0)` but each total grows at `7/12`. The first configuration includes face-concentrated source measures; it is not a computed regular-only return law for revision 2. Retrieve M04; disposition M03 Q1. |
+| **Q1, CONFIRMED:** pointwise constant source densities are not the selected constant-rate condition. | **Pass 1, Codex**, `p1-codex_check_steady_source_motion`: source calls it a **"Small admissible shell witness, not a construction of the proposed build"**. It constructs a moving slab on `1≤r≤2` and its distributional order source, printing material regular and shell residuals; its material-face zeros use identical operands, not a jump check. Its separate converse prints material/order regular residuals and order face coefficients. Its return/drain totals are `5/4, 1`, their derivatives `(0, 0)`, while the return first-`w`-moment derivative is `5/16`. In the converse, each stationary source-density/time-derivative pair is `(1, 0)` but each total grows at `7/12`. The first configuration includes face-concentrated source measures; it is not a computed regular-only return law for revision 2. Retrieve M04; disposition M03 Q1. |
 | **Q1/Q2, CONFIRMED:** the steady condition and persisting part were not selected. | **Pass 1, Grok**, `p1-grok_steady_throughput_and_budget`: constructs homologous interior spreading families, prints their regular material/order residuals, source-density derivatives and projected storage, and compares them with a fixed-face family. Family S has storage `n0*s` and sample source-density derivative `-2*n0*s/h0`; A has storage `0`; E retains secular order change with source-density derivatives `0`. Its modulated spreading-profile limit prints the same nonzero sample derivative. These interior/family checks are not a full distributional two-face construction. Retrieve M07; disposition M03 Q1/Q2. |
-| **Q2, CONFIRMED:** constant sources and balances did not define one controlled limit or discarded part. | **Pass 1, Codex**, `p1-codex_check_limit_not_selected`: its source says it **"only checks a single family against the supplied laws"** and neither solves source forms nor implements the build. The fixed-face configuration prints material/order regular residuals `0`, face coefficients `(0, 0)` and shell residual `0`, constant source densities `(1, 1)` and totals `(7/3, 7/3)`, but storage `7*cos(t)/12` and core channel `cos(t)/12 + 1`. Its possible slow family prints fixed-`t` density/storage `(1, 0)` and slow-time density/storage divided by `epsilon` `(sin(tau)/4 + 1, 7*cos(tau)/12)`. These are the stored family/time-scaling comparisons. Retrieve M05; disposition M03 Q2. |
-| **Q3, CONFIRMED:** totals and order-budget assembly were ambiguous. | **Pass 1, Codex**, `p1-codex_check_face_total_scope`: a fixed field configuration checks material regular/jump residuals and an explicitly chosen face-source split. Regular return/drain totals are `(0, 0)`, full-source totals `(2, 1)`, net face total `1`. Regular totals plus face source and full totals counting faces internally each give budget residual `0`; adding the separate face source to full totals gives `-1`. This is a witness to distinct total meanings and double counting, not a universal face split. Retrieve M06; disposition M03 Q3. |
+| **Q2, CONFIRMED:** constant sources and balances did not define one controlled limit or discarded part. | **Pass 1, Codex**, `p1-codex_check_limit_not_selected`: its source says it **"only checks a single family against the supplied laws"** and neither solves source forms nor implements the build. The fixed-face configuration prints material/order regular residuals `0`, order face coefficients `(0, 0)` and shell residual `0`; its separate material-face zeros use identical operands, not a jump check. It prints constant source densities `(1, 1)` and totals `(7/3, 7/3)`, but storage `7*cos(t)/12` and core channel `cos(t)/12 + 1`. Its possible slow family prints fixed-`t` density/storage `(1, 0)` and slow-time density/storage divided by `epsilon` `(sin(tau)/4 + 1, 7*cos(tau)/12)`. These are the stored family/time-scaling comparisons. Retrieve M05; disposition M03 Q2. |
+| **Q3, CONFIRMED:** totals and order-budget assembly were ambiguous. | **Pass 1, Codex**, `p1-codex_check_face_total_scope`: a fixed field configuration prints the material regular residual and compares an explicitly chosen face-source split with the constructed source. Its material-jump zeros use identical operands, not a check. Regular return/drain totals are `(0, 0)`, full-source totals `(2, 1)`, net face total `1`. Regular totals plus face source and full totals counting faces internally each give budget residual `0`; adding the separate face source to full totals gives `-1`. This is a witness to distinct total meanings and double counting, not a universal face split. Retrieve M06; disposition M03 Q3. |
 | **Q3, CONFIRMED**, independently. | **Pass 1, Grok**, the same M07 instrument additionally constructs symbolic before/after-face assemblies, sphere-orientation identities and signed total comparisons. `after_minus_before_minus_C` is `0`; its concrete before-minus-after value is `-2`. The both-plus sphere-orientation residual is `2*a**2*H_r(a)`, sample `32`; the sign-choice difference is `2*int_n_Gamma_drain - 2*int_n_Gamma_return`. These symbolic/sample assembly checks support the names/signs repair only. Retrieve M07; disposition M03 Q3. |
 
 ## 3. Pass 2: definite averaging did not deliver the controlled bridge
@@ -107,19 +108,21 @@ as a new or separately filed accepted build. (Retrieve M03.)
 
 **R1, CONFIRMED (pass 2, Codex).** `p2-codex_check_dc_vs_slow` calls itself **"Two exact solution
 probes, not an S14a construction or acceptance test"**. Family A prints regular material/order
-residuals `0`, material jump residuals `(0, 0)`, order face coefficients `(0, 1/8)` and both
+residuals `0`, material-face identity displays `(0, 0)`, order face coefficients `(0, 1/8)` and both
 shell residuals `0`. With constant return/drain totals `(1, 1)` and a growing slab, its
 `J/(4*pi)` is `17/12 - cos(omega*t)`: long-time average `17/12`, fixed-`t` `omega→0` value
 `5/12`, discarded part in that limit `-1`. Family B, with printed density range
-`Interval(3/4, 5/4)`, prints regular and face checks and compares the whole volume-flux
+`Interval(3/4, 5/4)`, prints regular residuals and face coefficients and compares the whole volume-flux
 quotient: DC value `-4*sqrt(15)/15`, fixed-`t` slow value `-4/5`, both divided by `4*pi`.
+Both families' material-face zeros subtract identical operands; they are not jump checks.
 The disposition uses these particular probes to reject revision 2's identification of its
 average with the required slow limit. (Retrieve M08; disposition M03 R1.)
 
 **R2, CONFIRMED (pass 2, Codex).** `p2-codex_check_spreading_order` constructs its stated
 **"expanding, finite-excess slab with constant global rates"**, on `t≥0,r≥1`, with the same
 material fields in all three regions, exterior order zero and `J_χ=0`. It prints regular
-balance/face coefficients, both full shell residuals `0`, finite-shell objects and two orders
+balance residuals, typed material-face zeros `(0, 0)` (not checks), order-face coefficients,
+both full shell residuals `0`, finite-shell objects and two orders
 of limits. Global storage, net face source and `J`, divided by `4*pi`, are `1/6`, `7/12`,
 `11/6`, with derivatives `(0, 0, 0)`. DC finite-shell storage/face channel/face source are each
 `0`; DC then far storage stays `0`, versus far then DC `1/6`. Outer flux divided by `4*pi`
@@ -127,6 +130,12 @@ is `-3` in the DC-then-far order and `-2` in the far-then-DC order; far-first fa
 `-7/6`. The disposition's finding concerns this loss of persisting spreading/exchange under
 the prescribed order, even where the printed limits exist. No general interchange theorem
 is inferred. (Retrieve M09; disposition M03 R2.)
+
+The five Codex instruments' material-face zero displays are limited by their source forms:
+M04 uses `n*a_lo-n*a_lo` and `n*a_hi-n*a_hi`; M05 uses `n*0-n*0`; M06 uses `n*uw-n*uw`;
+M08 uses identical-operand subtractions in both families; M09 prints `s.Tuple(0,0)` directly.
+These displays are not evidence from a falsifiable material-jump check. No witness is rerun
+or repaired here. (Retrieve M04–M06/M08/M09; record review X3 in M17.)
 
 **R3, CONFIRMED (pass 2, Grok).** `p2-grok_dc_limit_objects` first checks **one spherical
 projected material balance, fixed faces, no face channel**, with `Σ=c*t` and
@@ -183,7 +192,7 @@ dimensional audit, return law or far-limit result is reported. (Retrieve M01–M
 | Projected order-loss source | Printed by accepted part 1; its full face/source and comparison qualifications remain in part 1 §§2–5. |
 | Definition of `J` | Printed by accepted part 1 as the two-channel sum, separately from signed order loss, with finite-radius objects; no mass identification. |
 | Profile-dependent `J→Q` map | Not derived. Part 2 covered this obligation but supplied no build. S15's source-map row also names S22 for `{J,Θ_Q,N_∞,3,Q}`. V2 assigns joint delivery of selection, without repartitioning the complete map obligation. |
-| Controlled `ω→0` return law | Not derived. Part 2 covered this obligation but supplied no build. The slow-limit/far-behaviour requirement is recorded in `R-S12-02`. |
+| Controlled `ω→0` return law | Not derived. Part 2 covered this obligation but supplied no build. The slow-limit/far-behaviour requirement is recorded in `R-S14a-01`. |
 
 Part 1's record/pass acceptance is `4a4dfaf5`, following its round-1 outcome; constructions
 and comparator are accepted at `94fddf2f` and `de81b9fc`. The plan's `:639` standing remains
@@ -192,11 +201,12 @@ force/source-map rows do not gain a result here. (Retrieve M01/M11/M13.)
 
 ## 5. Register pass: object, target, rest-on test and both routes
 
-**Census:** 18 entries at `978c359c` → 18, all OPEN. **New entries by target: none.** One existing
-entry gains a source: **`R-S12-02`**, S14a part 2 requirement/decision and filed-review provenance.
-No status changes. The added selection obligation has the joint deliverers named by V2;
-the existing S12 obligations keep their target. Prior regional/face and projected/shell
-compatibility objects retain all their branch/domain/comparison limits. (Retrieve M12/M15/M16.)
+**Census:** 18 entries at `978c359c` → 19, all OPEN. **One new entry by target:** `R-S14a-01`,
+jointly S12 (source/flux forms), S8/S22 (material law), and **no owner named** for face/interior
+laws, as V2 assigns. **Existing entries gaining a source: none.** No existing target/status
+changes; `R-S12-02` retains its block and by-target row at `978c359c`. Prior regional/face and
+projected/shell compatibility objects retain all their branch/domain/comparison limits.
+(Retrieve M12/M15–M17.)
 
 **First route.** Under the register's schema and rest-on method, this is an explicitly required
 future delivery for S14/S15/S20 to stand beyond their conditional status. The object is **the
@@ -208,16 +218,20 @@ It names no averaging recipe, imposed limit order, law, material, premise or can
 Recording it delivers none of the forms, the slow return law or the source map; their complete
 obligations are not reassigned by the selection requirement. (Retrieve M01–M10/M12/M13/M16.)
 
-The existing native drain/return/source/flux and separate-boundary-data entry covers the S12
-forms, so this merges into `R-S12-02`. For selection, the user's **"All the slab's laws
-(Recommended)"** decision makes delivery joint: S12's source and flux forms under **"Keep
-S12"**, the slab's material law at S8/S22, and face/interior laws with no owner named. The
-entry's target field and by-target row state that scope; the earlier S12-only target sentence
-is superseded. S12's forms still come after the brane is defined; no missing owner is invented.
-Failure to deliver the named selection leaves
-S14/S15/S20 CONDITIONAL. The other 17 entries gain no source: this retrieval-only record adopts
+**Merge test and keying by deliverer.** No entry among the 18 at `978c359c` covers the same
+selection object with V2's joint deliverers. `R-S12-02` covers S12's native source/flux forms,
+separate boundary data and regional/face/projected/shell compatibility; that is neither the
+selection object nor its joint S12/S8/S22/unowned deliverers. `R-S22-01` has a different joint
+object, the throat energy split; `R-O2-01` has a different unowned object, the net-power
+supplier/budget. The schema and method therefore require a separate entry, **`R-S14a-01`**,
+rather than a target split by obligation inside `R-S12-02`. M12 retrieves every baseline entry,
+the unchanged S12 entry and the new entry; M17 retrieves W1's disposition. No missing owner is
+invented. The new target field and by-target row name the joint deliverers from the user's
+**"All the slab's laws (Recommended)"** decision. S12's forms still come after the brane is
+defined under **"Keep S12"**. Failure to deliver the named selection leaves S14/S15/S20
+CONDITIONAL. All 18 existing entries gain no source: this retrieval-only record adopts
 no new substrate form or computed consumer, and the repeated flow-framing decision does not
-constitute a new S21 comparison. Their existing obligations remain OPEN. (Retrieve M11/M12/M15/M16.)
+constitute a new S21 comparison. Their existing obligations remain OPEN. (Retrieve M11/M12/M15–M17.)
 
 **Second route.** The register's broader prior-art rule is applied, including candidates outside
 this record's own doubts. M14 retrieves O2 scoping §5 and the O2/S9b/light-closing/part-1 inventories.
@@ -274,8 +288,8 @@ No fresh literature verification is claimed. (Retrieve M12/M14.)
   and superseding decision are separately stated above. (Retrieve M11/M12/M16.)
 - **Generator/commit wording:** the contract requests **"a committed generator script"** and
   also **"No commit and no push"**. The list's no-commit instruction governs this repair.
-  The reviewed generator and measurements are preserved at `2ae682e4`; this repair is supplied
-  uncommitted, with no acceptance claimed. (Retrieve M01/M16.)
+  The round-1 reviewed generator and measurements are preserved at `85904c4e`; this repair is
+  supplied uncommitted, with no acceptance claimed. (Retrieve M01/M16/M17.)
 
 The step-list's separate comparison inventories remain source rows, not part-2 results: v2
 pathA_21 `:19,:22,:62–66` (`S_leak,W_eff,N_∞,3,J,Θ_Q`) and stage 004 `:148–150`; the plan at
@@ -290,7 +304,7 @@ compare, and neither picture supplies the missing selection. (Retrieve M02/M11/M
 
 | OPEN item | Owner/standing retained |
 |---|---|
-| Controlled slow return and profile-dependent `J→Q` completion | S14a's remaining obligations, covered by part 2 but not derived; S15's map row also names S22. The selection requirement in `R-S12-02` is owed jointly by S12's source/flux forms, S8/S22's material law and face/interior laws with no owner named, by the user's V2 decision at `12aa65d5`. This does not repartition the complete return-law/map obligations. |
+| Controlled slow return and profile-dependent `J→Q` completion | S14a's remaining obligations, covered by part 2 but not derived; S15's map row also names S22. The selection requirement in `R-S14a-01` is owed jointly by S12's source/flux forms, S8/S22's material law and face/interior laws with no owner named, by the user's V2 decision at `12aa65d5`. This does not repartition the complete return-law/map obligations. |
 | `J`–mass link, C3 GAP, and any orbital-`GM` link | S13 folded into S14a; no separate successor owner for a `GM` link named. Part 1 records S9b's orbital `GM` as independent of drain amplitude. |
 | Core interior and fate of inward core flux | S22. |
 | Flow profile | Each force states its requirement; S21 compares, mismatch reopens S9b. |
@@ -315,13 +329,14 @@ work** against `978c359c`; M15 retrieves their exact `git diff`.
 
 | File | Every change |
 |---|---|
-| `SUBSTRATE_REQUIREMENTS.md` | Part-1 acceptance at `4a4dfaf5` in the header and part-1 pass heading/provenance only. Adds part-2 status/census summary and population pass; adds the slow-limit/far-behaviour requirement and S14a part-2 source/evidence/consumer/failure scope to existing `R-S12-02`, including its by-target row, requirement and target fields. V2's sourced joint selection deliverers are S12, S8/S22 and no owner named for face/interior laws; existing S12 obligations retain S12. Rewords **"The objects are"** to **"The printed S12 objects are"**. V3 keeps the required object as selection for the still-underived return/map obligations, without including those complete obligations. The pass cites the V2 decision/disagreement and the list's own no-commit instruction (V1). No new entry or status change; other accepted-pass text is unchanged. |
+| `SUBSTRATE_REQUIREMENTS.md` | Part-1 acceptance at `4a4dfaf5` in the header and part-1 pass heading/provenance only. Adds part-2 status/census summary and population pass. Adds the separate `R-S14a-01` entry and by-target row for the selected slow limit/far behaviour, with source/evidence, S14/S15/S20 consumers, failure consequence and V2's joint deliverers (S12, S8/S22 and no owner named for face/interior laws). States the merge-test/keying reason for its own entry; the object does not include the complete return-law/map obligations. Updates both current total-count lines to 19 OPEN entries; the new pass records `18→19` with one new entry and no existing-entry source/target/status change. Its decision/disagreement and no-commit provenance cite the filed sources. `R-S12-02`'s block and by-target row have no net edit from `978c359c`; other accepted-pass text is unchanged. |
 | `steps/S14a_1_projection.md` | Header and closing pending-review wording become acceptance at `4a4dfaf5`; the generator/measurements provenance also states their subsequent commit and acceptance there instead of presenting them as uncommitted. The no-concentrated-input/source sentence cites its actual source, S12 decision-list item 1 (part-1 M01, directly retrieved here in M11), instead of `(M17, T2)`. The earlier population-directive quotation cites the directive itself, retrieved directly in this record's M11. No other part-1 content changes. |
-| Repository-root `STATUS.md` | Heading and part-1 pending-review lines state acceptance at `4a4dfaf5`. Adds part-2 record/pass written-for-review standing, the user's no-build requirement decision, the two still-underived bridge objects and `R-S12-02`; the older part-1 allocation is identified as its historical handoff. Moves **"S14/S15/S20 remain CONDITIONAL, not carried results"** from the part-1 paragraph into part 2 with its named-requirement qualification. Adds **"The filed witnesses retain their separate pass/leg scopes as review instruments; they are not an accepted part 2 build."**, **"The two carried part-1 citation notes are repaired in its record; other part-1 claims retain their accepted standing."**, and **"The record/pass await source-first review; no derivation or profile is supplied by recording this obligation."** Adds the `18→18` census, no new entries/status change and the one existing-entry source gain. V2 replaces the S12-only selection gloss/target with joint delivery by S12, S8/S22 and the unowned face/interior laws, citing the decision at `12aa65d5`; existing S12 obligations keep their target. |
+| Repository-root `STATUS.md` | Heading changes **"Project status — light sector closed for now; S12 accepted; S14a part 1 record written for review"** to **"Project status — light sector closed for now; S12 and S14a part 1 accepted; S14a part 2 requirement recorded for review"**. Part-1 pending-review lines state acceptance at `4a4dfaf5`; the older part-1 allocation is identified as its historical handoff. Adds part-2 record/pass written-for-review standing, the user's no-build requirement decision, the two still-underived bridge objects and new `R-S14a-01`, separately from the unchanged S12 scope of `R-S12-02`. Adds joint selection delivery by S12, S8/S22 and the unowned face/interior laws, citing V2 at `12aa65d5`. Moves **"S14/S15/S20 remain CONDITIONAL, not carried results"** from the part-1 paragraph into part 2 with its named-requirement qualification. Adds **"The filed witnesses retain their separate pass/leg scopes as review instruments; they are not an accepted part 2 build."**, **"The two carried part-1 citation notes are repaired in its record; other part-1 claims retain their accepted standing."**, and **"The record/pass await source-first review; no derivation or profile is supplied by recording this obligation."** Adds the `18→19` census, one new jointly owed entry, no existing-entry source/target/status change and the reason no existing entry covers this selection object/deliverers. |
 
 The round-0 disposition and lookups are read-only orchestrator artifacts preserved at `2ae682e4`;
 the V2 decision was appended to the disposition at `12aa65d5`. They are not edits by this author;
-the account above still runs against `978c359c`. (Retrieve M16.)
+the round-1 disposition and lookups are read-only orchestrator artifacts preserved at `85904c4e`.
+The account above still runs against `978c359c`. (Retrieve M16/M17.)
 The pre-existing `.claude/skills/prep-for-compact/SKILL.md` modification is unrelated and untouched;
 only its filename is retrieved in M15. No other checkout or orchestrator memory was read. The
 generator's working files are under `_scratch/s14a2/rec/work/`; other jobs' files are untouched.

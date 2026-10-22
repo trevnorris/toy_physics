@@ -9,8 +9,8 @@ The S14a part 1 record and register pass (2026-10-21) are accepted at `4a4dfaf5`
 their constructions and comparator are accepted at `94fddf2f` and `de81b9fc`.
 The S14a part 2 record and register pass (2026-10-21) are written for source-first review.
 By the user's "Record as requirement" decision, no build ran: the slab's own dynamics must select
-the slow limit and far behaviour (`R-S12-02`); S14/S15/S20 remain CONDITIONAL on that requirement.
-Eighteen entries, all OPEN. Pass 2 was populated 2026-10-05 from the kept results and their stated
+the slow limit and far behaviour (`R-S14a-01`); S14/S15/S20 remain CONDITIONAL on that requirement.
+Nineteen entries, all OPEN. Pass 2 was populated 2026-10-05 from the kept results and their stated
 conditions; it does not close the substrate or upgrade S11c's unresolved work. Later sectors remain to
 be read as they close. The two 2026-08-07 prior-art entries retain their provenance; the second route is
 recorded under Population passes.
@@ -27,10 +27,10 @@ before/after census are `steps/_measurements/S12_record_measurements.md`, M12/M1
 S14a part 1 merges projected/shell compatibility into `R-S12-02` and adds scoped
 source/provenance to four existing entries, with no new entry or status change. Its census and
 pass are retrieved in `steps/_measurements/S14a_1_record_measurements.md`, M12/M16.
-S14a part 2 adds the slow-limit/far-behaviour obligation and scoped source/evidence to existing
-`R-S12-02`: 18 → 18 OPEN entries, no new entry or status change. Selection is owed jointly by
-S12, S8/S22 and the face/interior laws with no owner named (user's V2 decision, `12aa65d5`);
-the existing S12 obligations retain their target. Its retrievals and exact
+S14a part 2 adds `R-S14a-01`, the slow-limit/far-behaviour obligation: 18 → 19 OPEN entries.
+Selection is owed jointly by S12, S8/S22 and the face/interior laws with no owner named
+(user's V2 decision, `12aa65d5`). No existing entry gains a source or changes target/status;
+`R-S12-02` retains its scope at `978c359c`. This pass's retrievals and exact
 ancillary diff are `steps/_measurements/S14a_2_record_measurements.md`, M12/M15.
 
 ## Why this exists
@@ -102,12 +102,13 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 | **S8** | `R-S8-05` | the **frame** the brane's rotational stiffness is measured against | S9, S10, S11, O2 carried obligation |
 | **S8** *(register inference for original entry)* | `R-S8-06` | material displacement and original quadratic slab inertia; O2 adds the material identification only | S11, S11b-B, O2 and S9b identification |
 | **S12** *(register inference; no live owner named)* | `R-S12-01` | a reservoir and power budget if a non-passive interface response is adopted | S11b-B / unified S11b, O2 carried condition |
-| **S12**; selection jointly with **S8/S22** and **no owner named** for face/interior laws | `R-S12-02` | native drain/return, printed regional/face and projected/shell compatibility on the real-fraction branch (A13 OPEN), separate boundary data, and the slab's dynamically selected slow limit and far behaviour | S11b-A/B, S11c uniform, O2, S12, S14a parts 1–2 (part 2: requirement for S14/S15/S20; joint deliverers by user V2 decision, `12aa65d5`) |
+| **S12** | `R-S12-02` | native drain/return, printed regional/face and projected/shell compatibility on the real-fraction branch (A13 OPEN), and separate boundary data | S11b-A/B, S11c uniform, O2, S12, S14a part 1 |
 | **S21** | `R-S21-01` | conditional deflection and radar-slope profile requirements, with Part C rewrites and implied exchange; comparison of force sectors' flow requirements | S9b A–C; flow-only oracle comparison (evidence only); S12 and S14a part 1 framing decision only |
 | **S22**, with Q2 and S12 | `R-S22-01` | how the energy a throat releases splits among light, the extra longitudinal wave and the bulk | S11 departure; photon survey E32–E34, E38 |
 | **no owner named** | `R-O2-01` | the physical net-power supplier and its stated budget, if a conditional closure requires net supply | O2 |
+| **jointly S12** (source/flux forms), **S8/S22** (material law), **no owner named** (face/interior laws) | `R-S14a-01` | the slow limit and far behaviour selected by the slab's own dynamics | S14a part 2; requirement for S14/S15/S20; user V2 decision, `12aa65d5` |
 
-⚠ Entries below are in the order they were found, ⛔ not in step order. All **eighteen** are **OPEN**.
+⚠ Entries below are in the order they were found, ⛔ not in step order. All **nineteen** are **OPEN**.
 ⭐ `R-S8-01`, `-03`, `-04`, `-05` are one family: the stiffness functional's **form**, its **sign**, its
 **mechanical admissibility**, and its **reference frame**. ⛔ Delivering the form does not deliver the
 other three.
@@ -575,17 +576,14 @@ other three.
 
 ### R-S12-02 — background drain/return and separate boundary data
 
-- **source** S14a part 2 (`steps/S14a_2_slow_limit.md`, §§1–5/7; its retrievals M01–M13/M16, filed review instruments only, no build; joint deliverers by the user's V2 decision at `12aa65d5`); S14a part 1 (`steps/S14a_1_projection.md`, §§2–5/7–8; its retrievals M03/M05–M10); S12 (`steps/S12_order_source.md`, §§1–2/5–7; retrievals M01/M03/M07/M11); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-A/B (`steps/S11b_interface_coupling_law.md:158–164`, background-flow limit); S11c
+- **source** S14a part 1 (`steps/S14a_1_projection.md`, §§2–5/7–8; its retrievals M03/M05–M10); S12 (`steps/S12_order_source.md`, §§1–2/5–7; retrievals M01/M03/M07/M11); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-A/B (`steps/S11b_interface_coupling_law.md:158–164`, background-flow limit); S11c
   (`steps/S11c_PARTIAL_CLOSEOUT.md:7`, uniform result;
   `steps/S11c_d_profile_conditioned_scattering.md:21–25`, selected uniform check)
-  · **target** S12 for existing source/flux/boundary obligations; for S14a part 2 selection,
-  jointly S12 (source/flux forms), S8/S22 (material law), and no owner named (face/interior laws)
-  · **status** OPEN
+  · **target** S12 · **status** OPEN
 - **requirement** — the native drain/return functions and their separate boundary data; the
   printed regional order-source objects and normalized face-source objects, with the separately
   printed total-material face balances, as compatibility requirements on conversion, face and
-  order-flux forms; also the slow limit and far behaviour selected by the slab's own dynamics
-  (S14a part 2 scope below). The printed S12 objects are `general_order/region/{1,2,3}/source`,
+  order-flux forms. The objects are `general_order/region/{1,2,3}/source`,
   `general_order/face/{1,2}/{trace_coefficient,source_contribution}` and
   `material/face/{1,2}/requirement`. The distinct labelled conditional specialization is
   `conditional_fast_ordering/region/{1,2,3}/source` and its two face objects. Their full values,
@@ -652,29 +650,6 @@ other three.
   No means of meeting them is named. S12's forms and separate boundary data remain OPEN under
   "Keep S12"; these constraints deliver neither. Unresolved exact differences and unpaired
   decompositions are not silently promoted to exact-equivalence requirements.
-
-- **S14a part 2 slow limit and far behaviour** — The required object is the slow limit and far
-  behaviour selected by the slab's own dynamics, for the controlled `ω→0` return law and the
-  profile-dependent `J→Q` completion. The selected steady-throughput and exchange-live decisions
-  keep spreading, exchange and storage live; no average, solution family, density gate, order of
-  limits, law, material or profile is selected here. **Consumers: S14, S15 and S20. On failure:**
-  those steps remain **CONDITIONAL, not carried results**. This records the user's 2026-10-21
-  **"Record as requirement"** decision, not a derived law or a general non-selection theorem.
-  Evidence: `steps/S14a_2_slow_limit.md`, §§1–4; the step-list pass-1 Q1–Q3 and pass-2 R1–R3
-  dispositions, with their separately scoped Codex/Grok instruments filed in
-  `directives/_measurements/S14a_2_review_witnesses/` (retrievals M03–M10). Each is a review-leg
-  instrument, not an accepted build; the pass-2 adjudication's dynamics reading remains a reading.
-  No build ran by the user's decision. For selection, the user's V2 choice **"All the slab's
-  laws (Recommended)"** makes delivery joint: S12's source and flux forms, the slab's material
-  law (S8/S22), and face/interior laws with no owner named. Source:
-  `directives/_measurements/S14a_2_record_r0_review_disposition.md`, "The user's decision on V2",
-  at `12aa65d5` (retrieval M16). It replaces item 4's S12-only target sentence; the earlier
-  **"(the open S12 forms)"** option text and accepted S12's different ownership statements are
-  quoted in record §§4/6. The existing source/flux/boundary obligations keep S12 under
-  **"Keep S12"**; no missing owner is invented. The real-fraction/A13 and part-1 domain/comparison
-  qualifications remain. Recording the requirement delivers none of the forms, the slow return
-  law or the source map; it does not repartition those complete obligations (record §§5/7,
-  retrievals M11–M13/M16).
 
 ### R-O2-01 — the net-power supplier and its stated budget
 
@@ -959,6 +934,43 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
     require the brane–bulk interface law". S11b supplies that law conditionally, for a uniform brane only.
   - The S11 record states that `c_L` is not a gravitational wave, so this entry is not about the carrier of
     gravity. (C6, C8.)
+
+### R-S14a-01 — the dynamically selected slow limit and far behaviour
+
+- **source** S14a part 2 (`steps/S14a_2_slow_limit.md`, §§1–5/7; retrievals M01–M13/M16/M17),
+  for the conditional consumers S14, S15 and S20.
+- **target** jointly S12 (source and flux forms), S8/S22 (the slab's material law), and
+  **no owner named** for the face and interior laws, by the user's V2 decision at `12aa65d5`.
+- **status** OPEN
+- **requirement** — the slow limit and far behaviour selected by the slab's own dynamics,
+  for S14a's still-underived controlled return and profile-dependent `J→Q` obligations.
+  The selected steady-throughput and exchange-live decisions keep spreading, exchange and
+  storage live. No average, solution family, density gate, order of limits, law, material,
+  profile, premise or candidate is selected here.
+- **on failure** — S14, S15 and S20 remain **CONDITIONAL, not carried results**.
+- **decision and owners** — The user chose **"Record as requirement"** (2026-10-21), then
+  **"All the slab's laws (Recommended)"** for V2. The latter is recorded in
+  `directives/_measurements/S14a_2_record_r0_review_disposition.md`, "The user's decision on V2",
+  at `12aa65d5` (M16). It replaces item 4's S12-only target sentence. The earlier
+  **"(the open S12 forms)"** option text and accepted S12's different ownership statements are
+  quoted in record §§4/6. No missing owner is invented. S12's source/flux forms and separate
+  boundary data remain OPEN under **"Keep S12"**; the complete return-law/map obligations
+  are not repartitioned. Recording this requirement delivers none of the forms, the slow
+  return law or the source map.
+- **evidence and limits** — The step-list pass-1 Q1–Q3 and pass-2 R1–R3 dispositions and the
+  separately scoped Codex/Grok instruments in `directives/_measurements/S14a_2_review_witnesses/`
+  are retrieved in M03–M10. Each is a review-leg instrument, not an accepted build; their
+  constructions/checks differ as record §§2–3 states. The material-face zeros made from
+  identical operands or typed zeros are displays, not checks. The pass-2 adjudication's
+  dynamics reading remains a reading. No build ran by the user's decision. The inherited
+  real-fraction/A13, live-face and part-1 domain/comparison qualifications remain (M11–M13).
+- **entry rather than merge** — The register keys an entry by its deliverer and merges only
+  the same requirement with the same deliverers. None of the 18 entries at `978c359c` covers
+  this selection object with V2's joint deliverers. `R-S12-02` covers S12's native forms/data
+  and compatibility objects, not the jointly owed selection; `R-S22-01` concerns the throat
+  energy split, and `R-O2-01` concerns a net-power supplier/budget. Their objects and targets
+  remain as recorded. This is a separate entry under the schema and method, not a second
+  obligation added to `R-S12-02`'s target (record §5; M12/M17).
 
 ## Population passes
 
@@ -1628,13 +1640,14 @@ revisions; M03 the review dispositions, lookup existence and assembly-audit exce
 witness's complete source and saved stdout; M11 the accepted part-1/S12 sources and owners; M12 the schema/method/census;
 M13/M14 the plan/comparison inventories and second-route handoffs; M15 this pass and the
 exact ancillary diff against `978c359c`; M16 the record round-0 dispositions, V2 user decision
-and committed-generator provenance. No build or witness rerun is performed here.
+and committed-generator provenance; M17 the record round-1 dispositions. No build or witness rerun is performed here.
 
-**Census:** 18 entries before (`978c359c`) → 18 after, all OPEN. **New entries by target: none.**
-One existing entry gains a source: **`R-S12-02`**, with S14a part 2's user-required obligation
-and scoped filed-review evidence. No status changes. The added selection obligation has joint
-deliverers by V2; existing S12 obligations retain S12. The part-1 pass changes only its acceptance
-heading/provenance to `4a4dfaf5`; its other content is unchanged.
+**Census:** 18 entries before (`978c359c`) → 19 after, all OPEN. **One new entry by target:**
+`R-S14a-01`, jointly S12 (source/flux forms), S8/S22 (material law), and **no owner named** for
+face/interior laws, as V2 assigns. **Existing entries gaining a source: none.** No existing
+entry changes target/status; `R-S12-02` retains its block and by-target row at `978c359c`.
+The part-1 pass changes only its acceptance heading/provenance to `4a4dfaf5`; its other
+content is unchanged.
 
 **First route / rest-on test.** The user chose **"Record as requirement"** after the two
 step-list reviews. The object required is **the slow limit and far behaviour selected by
@@ -1645,9 +1658,15 @@ claims, not an assumed form or a defect in an accepted part-2 result. No such re
 The register method makes an assertion about a step with no record a requirement; this one
 is explicitly required by the user, not entered merely because a future solve could use it.
 
-The existing native-conversion/source/flux and separate-boundary-data obligation already
-covers the OPEN S12 forms, so the new scope merges into `R-S12-02`. The user's subsequent V2
-choice **"All the slab's laws (Recommended)"** (2026-10-21) replaces item 4's S12-only target
+The register's merge test is applied to the selection object and its joint deliverers,
+not just S12's forms. No existing entry covers that same requirement with those deliverers.
+`R-S12-02` covers S12's native source/flux forms, separate data and compatibility objects;
+it does not cover selection owed jointly with S8/S22 and unowned face/interior laws.
+`R-S22-01`'s joint energy-split obligation and `R-O2-01`'s unowned supplier/budget obligation
+are different objects. The method keys each entry by its deliverer, so selection has its own
+entry, **`R-S14a-01`**; `R-S12-02` is unchanged from `978c359c` (M12/M17).
+
+The user's V2 choice **"All the slab's laws (Recommended)"** (2026-10-21) replaces item 4's S12-only target
 sentence. Its source is `directives/_measurements/S14a_2_record_r0_review_disposition.md`,
 "The user's decision on V2", committed at `12aa65d5` (M16). The selected orchestrator option says:
 
@@ -1656,7 +1675,7 @@ sentence. Its source is `directives/_measurements/S14a_2_record_r0_review_dispos
 > states the missing owner as missing; it invents none. The record reports the disagreement
 > with both sides quoted."
 
-The target field and by-target row state those joint deliverers for selection. Existing S12
+The new entry's target field and by-target row state those joint deliverers for selection. Existing S12
 source/flux/boundary obligations remain with S12 under **"Keep S12"**. No missing owner is
 invented, and the selection requirement does not repartition the complete return-law/map
 obligations. Recording it delivers none of the forms, the slow return law or the source map.
@@ -1671,7 +1690,7 @@ instruments and one pass-2 Grok instrument. Their constructions/checks differ, a
 not both native balances. The pass-2 orchestrator reading is quoted as a reading. The user
 decision, not an extrapolation from these probes, supplies the requirement's standing.
 
-All other 17 entries retain their sources/targets/statuses. No new computed consumer of
+All 18 existing entries retain their sources/targets/statuses. No new computed consumer of
 their dimension, shear, stiffness, inertia, equilibrium, mode, width, power or energy-split
 objects is supplied by this retrieval-only record. The repeated flow-framing decision keeps
 S21's existing comparison obligation; no new S21 source/comparison result is added.
@@ -1702,8 +1721,8 @@ for every sector with identified prior art"** (M12). The register governs. The p
 DC/slow-limit, historical material-conservation and S13-filing tensions remain quoted with
 both sides in record §6 (M02/M03/M11/M13). The contract requests **"a committed generator script"**
 and says **"No commit and no push"**; the list's own no-commit instruction governs this repair.
-The reviewed generator and measurements are preserved at `2ae682e4`; the repair is uncommitted
-and claims no acceptance (M16). No physics disagreement is closed by this pass.
+The round-1 reviewed generator and measurements are preserved at `85904c4e`; the repair is
+uncommitted and claims no acceptance (M16/M17). No physics disagreement is closed by this pass.
 
 ### Method for population passes
 

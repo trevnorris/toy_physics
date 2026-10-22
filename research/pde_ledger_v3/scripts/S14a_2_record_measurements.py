@@ -35,11 +35,12 @@ TITLES = {
     "M09": "Pass 2 Codex: spreading and the order of limits",
     "M10": "Pass 2 Grok: projected balance and two volume-flux gates",
     "M11": "Accepted part 1, carried citation sources and S12 owners",
-    "M12": "Register schema, both-route method, census and affected entry",
+    "M12": "Register schema, both-route method, census and selection entry",
     "M13": "Plan, v2 and G0 comparison inventories, retrieved only",
     "M14": "Second-route candidates and existing objection handoffs",
     "M15": "Final pass/status and exact ancillary diff against the starting commit",
     "M16": "Record round-0 dispositions, V2 user decision and committed-generator provenance",
+    "M17": "Record round-1 dispositions and preserved review provenance",
 }
 WITNESS_NAMES = {
     "M04": "p1-codex_check_steady_source_motion",
@@ -149,6 +150,7 @@ def retrieve(section):
                 excerpt(out, REGISTER, "1,115p")
             stored_block(out, REGISTER, "### R-S12-02", revision)
             stored_block(out, REGISTER, "### Method for population passes", revision)
+        stored_block(out, REGISTER, "### R-S14a-01")
         stored_block(out, REGISTER, "### S14a part 2 pass")
     elif section == "M13":
         excerpt(out, V3 + "V3_STEP_PLAN.md", "566,675p")
@@ -172,7 +174,7 @@ def retrieve(section):
         cat(out, "STATUS.md")
         command(out, "git", "diff", BASE, "--name-only")
         print("The pre-existing .claude/skills/prep-for-compact/SKILL.md change is unrelated; "
-              "its contents are not retrieved. New untracked deliverables do not appear in git diff.", file=out)
+              "its contents are not retrieved.", file=out)
         command(out, "git", "diff", "--no-ext-diff", "--no-textconv", BASE, "--",
                 REGISTER, PART1, "STATUS.md")
         command(out, "git", "status", "--short", "--", REGISTER, PART1, "STATUS.md",
@@ -187,6 +189,12 @@ def retrieve(section):
                 V3 + "steps/_measurements/S14a_2_record_measurements.md",
                 DM + "S14a_2_record_r0_review_disposition.md",
                 DM + "S14a_2_record_r0_review_lookups.md")
+    elif section == "M17":
+        cat(out, DM + "S14a_2_record_r1_review_disposition.md", "85904c4e")
+        command(out, "git", "show", "-s", "--format=%H %s", "85904c4e")
+        command(out, "git", "ls-tree", "85904c4e", "--",
+                DM + "S14a_2_record_r1_review_disposition.md",
+                DM + "S14a_2_record_r1_review_lookups.md")
     else:
         raise ValueError(section)
     return out.getvalue()

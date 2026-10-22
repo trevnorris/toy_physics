@@ -22,7 +22,8 @@ The user chose **"Record as requirement"** (2026-10-21): no build ran. The requi
 the slow limit and far behaviour selected by the slab's own dynamics. The controlled
 `ω→0` return law and profile-dependent `J→Q` map remain not derived. The filed witnesses retain
 their separate pass/leg scopes as review instruments; they are not an accepted part 2 build.
-The obligation merges into existing `R-S12-02`. The user's V2 choice **"All the slab's laws
+The obligation has its own entry, `R-S14a-01`; `R-S12-02` retains its existing S12 scope.
+The user's V2 choice **"All the slab's laws
 (Recommended)"** makes selection owed jointly by S12's source/flux forms, S8/S22's material law
 and the face/interior laws with no owner named ([decision](research/pde_ledger_v3/directives/_measurements/S14a_2_record_r0_review_disposition.md), `12aa65d5`). S14/S15/S20 remain
 **CONDITIONAL, not carried results**, now on that named requirement. The two carried part-1
@@ -131,10 +132,10 @@ requirements owed by `R-S21-01`, consistently in its by-target row and requireme
 The S14a part 1 pass also leaves 18 OPEN entries, adding scoped source/provenance to `R-S1-01`,
 `R-S1-02`, `R-S12-02` and `R-S21-01`, with no new entry or status change. Its printed compatibility
 constraints merge into `R-S12-02`; S21 retains the comparison of force sectors' flow requirements.
-The S14a part 2 pass also leaves 18 OPEN entries, with no new entry or status change; its
-selection obligation has the joint deliverers named by V2, while existing S12 obligations keep S12.
-Only existing `R-S12-02` gains a source: the dynamically selected slow-limit/far-behaviour
-requirement, its user-decision provenance and scoped filed-review evidence. The record/pass
+The S14a part 2 pass brings 18 → 19 OPEN entries. Its new `R-S14a-01` selection obligation
+has V2's joint deliverers; no existing entry gains a source or changes target/status.
+No existing entry covers the same selection requirement with those deliverers, so it is
+separate from `R-S12-02`'s S12 forms/data and compatibility objects. The record/pass
 await source-first review; no derivation or profile is supplied by recording this obligation.
 The light closeout was accepted at `e070c7f3`; its review no longer gates S12. The oracle comparison's
 questions about flow drive separate S12's source/boundary realization from O2's carried

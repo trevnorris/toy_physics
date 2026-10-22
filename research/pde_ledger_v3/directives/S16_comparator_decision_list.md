@@ -7,6 +7,9 @@ Paths are relative to `research/pde_ledger_v3/`. The mechanical lookups behind t
 **Gate.** This is a pre-builder decision list. It gets one Codex + Grok pass and is folded once (G2). No builder starts
 before then. The comparator it describes is an instrument written by Codex, reviewed by two non-author build legs
 (fresh Claude + Grok) until clear.
+- **Pass 1** (Codex + Grok) returned two findings, K1 and K2, both confirmed. The list as reviewed is preserved at
+  `958a55a9`, with `_measurements/S16_comparator_decision_list_review_p1_{disposition,lookups}.md`.
+- **This revision** folds K1 and K2 into item 5 and item 7. It is the one fold G2 allows.
 
 ## Object
 `scripts/S16_cross_engine_comparator.py`, with synthetic tests in `scripts/test_S16_cross_engine_comparator.py`
@@ -129,17 +132,25 @@ prints what it finds. It decides nothing.
        both operands' values.
      - Distinct live functions get distinct test functions in every form and stratum. That includes `Π^{ij}` and
        `Π^{ji}`.
-     - For a function of several arguments, the test functions separate each argument's dependence: at the evaluation
-       points, its derivatives in different arguments differ.
+     - For a function of several arguments, the test functions tell its arguments apart: at the evaluation points,
+       its derivatives in different arguments differ.
+     - A derivative taken at another point is a different object (item 1), and evaluation sees it. For every compared
+       value whose exact residual is not resolved, a live function's derivative taken at another point, in any one
+       argument, moves the samples in at least one form and stratum. That includes a derivative inside a
+       substitution, a derivative at a composite argument, and a derivative inside a volume or surface integral.
      - The geometry stays inside the printed domains: `0 < r_in < R`.
    - **Integrals.** An integral is evaluated after the substitution, exactly where feasible. Otherwise it is evaluated
      numerically, and the working precision and an error estimate are printed. An integral that cannot be evaluated is
      printed as unresolved coverage.
    - **Domains.** A residual's dependence on the printed domains is printed: the residual as computed, and its value on
      the supplied domain, side by side. A normalized object is evaluated where `N` is nonzero, and that is printed.
+     The unnormalized balances and moments keep the full domain, including where `N` is zero (S16 decision list, the
+     paragraph after item 5).
    - **Strata.** The evaluation covers the generic case, and strata where the velocity of `X_c` vanishes at the point,
-     where both radii's velocities vanish, and where both vanish. In each, the higher time derivatives stay generic. A
-     stratum the comparator cannot evaluate is printed as unresolved coverage.
+     where both radii's velocities vanish, and where both vanish. In each, the higher time derivatives stay generic.
+     It also covers a stratum where `N` vanishes at the point, with the fields and the geometry live. There the
+     unnormalized objects are compared, and each normalized object is printed as outside its domain. A stratum the
+     comparator cannot evaluate is printed as unresolved coverage.
    - **No supplied equation applied.** No supplied equation is applied to an operand to make two operands meet. That
      covers the two balances and the face factor. Where a pair differs by a supplied equation, the residual as
      computed is printed. The residual after that equation is applied may be printed beside it, naming the equation
@@ -188,6 +199,9 @@ prints what it finds. It decides nothing.
    - a leaf that is parsed but not compared (it must show in the leaf counts);
    - changed derivative structure, including a derivative inside a substitution and a derivative at a composite
      argument;
+   - on one side, a live function's derivative taken at another point, in each of its arguments in turn: inside a
+     substitution, at a composite argument, and inside a volume and a surface integral (its samples must move);
+   - an unnormalized binding evaluated under the normalized objects' domain (its zero-count coverage must move);
    - a nested sibling removed;
    - on one side only, a factor that equals one on the supplied domain changed or removed (the as-computed residual
      must move);
@@ -202,8 +216,10 @@ prints what it finds. It decides nothing.
    **Coverage controls.** Each of these reductions has a fixture difference that it would miss:
    - evaluation at one point only;
    - one test-function form only;
-   - forms that do not separate a function's arguments;
-   - the generic stratum only.
+   - forms that do not tell a function's arguments apart;
+   - forms in which a derivative in one argument does not depend on the other arguments;
+   - the generic stratum only;
+   - evaluation of the unnormalized objects only where `N` is nonzero.
 
    Each coverage control fails under its own reduction, run alone.
 

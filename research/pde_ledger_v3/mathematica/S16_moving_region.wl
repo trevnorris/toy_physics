@@ -57,40 +57,57 @@ emit["surfaces.chart", chart]; emit["surfaces.normal", normal];
 emit["surfaces.velocity", velocity]; emit["surfaces.normalSpeed", normalSpeed];
 emit["surfaces.measure", area]; emit["volume.measure", volumeJacobian];
 
-(* Generic weak derivative: differentiate a weighted density times the
-   region indicator, solve the supplied balance, then move each spatial
-   flux derivative onto its coefficient by integration by parts. *)
+(* Partial differentiation in independent geometric jet coordinates. Every
+   geometric jet present in the operand is included, with no degree bound.
+   Restoring the jets retains their live time dependence. These coordinates
+   distinguish field evolution from derivatives of the moving reference. *)
+geometryHeads = Join[{c1, c2, c3}, {rin, rout}];
+geometryChain[z_] := Module[{jets, center, radial, geometry, slots, frozen, restore, rate},
+ jets = DeleteDuplicates[Cases[z, Derivative[n_][h_][t] /; MemberQ[geometryHeads, h], {0, Infinity}]];
+ center = Join[cc, Select[jets, MemberQ[{c1, c2, c3}, #[[0, 1]]] &]];
+ radial = Join[radii, Select[jets, MemberQ[{rin, rout}, #[[0, 1]]] &]];
+ geometry = Join[center, radial]; slots = Table[Unique["geometry"], Length[geometry]];
+ frozen = z /. Thread[geometry -> slots];
+ restore[v_] := v /. Thread[slots -> geometry];
+ rate[group_] := Total[Map[Function[g, restore[D[frozen, slots[[First[FirstPosition[geometry, g]]]]]] D[g, t]], group]];
+ <|"localEvolution" -> restore[D[frozen, t]], "centerMotion" -> rate[center], "radiusMotion" -> rate[radial]|>];
+windowRates = geometryChain[window];
+
+(* Weak differentiation has separate operands for the weighted local law
+   and the moving window. Only the former undergoes spatial integration by
+   parts. Window motion is differentiated before multiplying the integrand;
+   its origin therefore does not depend on the integrand's velocity degree. *)
 windowRules = Join[Thread[(HeavisideTheta /@ level) -> {h1, h2}], Thread[(DiracDelta /@ level) -> {d1, d2}]];
 windowPolynomial[z_] := Expand[z /. windowRules];
 reduceWindow[z_] := Module[{p = windowPolynomial[z]},
  {Coefficient[Coefficient[p, h1], h2] /. {d1 -> 0, d2 -> 0},
   Table[at[k, Coefficient[p, {d1, d2}[[k]]] /. {h1 -> 1, h2 -> 1, d1 -> 0, d2 -> 0}], {k, 2}]}];
-weak[w_, den_, flux_, balance_] := Module[{localRate, raw, integrated, jet, coeff, reduced},
+weak[w_, den_, flux_, balance_] := Module[{localRate, raw, integrated, jet, coeff, rest, reduced},
  localRate = First[Solve[balance == 0, D[den, t]]];
  raw = Expand[D[w den window, t] /. localRate];
- integrated = raw;
+ integrated = Expand[window (D[w den, t] /. localRate)];
  Do[jet = D[flux[[j]], xx[[j]]]; coeff = Coefficient[integrated, jet];
     integrated = Expand[integrated - coeff jet - D[coeff, xx[[j]]] flux[[j]]], {j, 3}];
- reduced = reduceWindow[integrated];
- <|"localRate" -> localRate, "windowDerivative" -> raw, "afterParts" -> integrated, "reduced" -> reduced|>];
+ rest = reduceWindow[integrated]; reduced = reduceWindow[integrated + w den D[window, t]];
+ <|"localRate" -> localRate, "windowDerivative" -> raw, "afterParts" -> Expand[integrated + w den D[window, t]],
+   "reduced" -> reduced, "rest" -> rest,
+   "centerMotion" -> reduceWindow[w den windowRates["centerMotion"]],
+   "radiusMotion" -> reduceWindow[w den windowRates["radiusMotion"]]|>];
 
-(* Linear extraction by velocity monomials, without specializing any field. *)
-centerJets = D[cc, t]; radiusJets = D[radii, t];
-splitMotion[z_] := Module[{cpart, rpart},
- cpart = Total[(Coefficient[Expand[z], #] #) & /@ centerJets];
- rpart = Total[(Coefficient[Expand[z], #] #) & /@ radiusJets];
- {Expand[z - cpart - rpart], cpart, rpart}];
 terms[z_] := If[Head[Expand[z]] === Plus, List @@ Expand[z], {Expand[z]}];
 selectTerms[z_, heads_] := Total[Select[terms[z], !FreeQ[#, Alternatives @@ heads] &]];
-rateParts[tag_, w_, den_, flux_, balance_, sources_] := Module[{derivation, body, components, picked, remainder, parts},
+rateParts[tag_, w_, den_, flux_, balance_, sources_] := Module[{derivation, body, components, picked, remainder, reference},
  working[tag]; derivation = weak[w, den, flux, balance];
- write[tag <> ".derivation", KeyDrop[derivation, "reduced"]];
+ write[tag <> ".derivation", KeyDrop[derivation, {"reduced", "rest", "centerMotion", "radiusMotion"}]];
  body = derivation["reduced"][[1]]; remainder = body; components = <||>;
  Do[picked = selectTerms[body, {sources[[k]]}]; remainder = Expand[remainder - picked];
     AssociateTo[components, "bulkSource" <> ToString[k] -> V[picked]], {k, Length[sources]}];
+ reference = geometryChain[w];
+ Do[picked = Expand[den reference[origin]]; remainder = Expand[remainder - picked];
+    AssociateTo[components, "bulkReference." <> origin -> V[picked]], {origin, {"centerMotion", "radiusMotion"}}];
  AssociateTo[components, "bulkWeight" -> V[remainder]];
- Do[parts = splitMotion[derivation["reduced"][[2, k]]];
-    Do[AssociateTo[components, "surface" <> ToString[k] <> {".rest", ".centerMotion", ".radiusMotion"}[[j]] -> B[k, parts[[j]]]], {j, 3}], {k, 2}];
+ Do[Do[AssociateTo[components, "surface" <> ToString[k] <> "." <> origin -> B[k, derivation[origin][[2, k]]]],
+       {origin, {"rest", "centerMotion", "radiusMotion"}}], {k, 2}];
  KeyValueMap[emit[tag <> "." <> #1, #2] &, components];
  emit[tag <> ".rate", Total[Values[components]]];
  emit[tag <> ".integratedForceCompanion", V /@ force]; components];
@@ -124,32 +141,46 @@ time[B[k_, z_]] := boundTime[k, z];
 time[z_] := D[z, t];
 (* Substitute the governed Sigma time jet at arbitrary live arguments;
    rates of F, n, a and f have no supplied evolution and remain derivatives. *)
-(* A chain-rule partition of each derivative by geometric origin. Live
-   position/speed jets are restored after partial differentiation; this is
-   a coordinate operation, not a specialization of any physical field. *)
-timeParts[V[z_]] := Module[{red = reduceWindow[D[z window, t]], result, pieces},
- result = <|"localEvolution" -> V[red[[1]]]|>;
- Do[pieces = splitMotion[red[[2, k]]];
-    AssociateTo[result, "surface" <> ToString[k] <> ".centerMotion" -> B[k, pieces[[2]]]];
-    AssociateTo[result, "surface" <> ToString[k] <> ".radiusMotion" -> B[k, pieces[[3]]]], {k, 2}]; result];
-timeParts[B[k_, z_]] := Module[{center, radial, geometry, slots, integrand, restore, result, off, group},
- center = Join[cc, D[cc, t]]; radial = Join[radii, D[radii, t]];
- geometry = Join[center, radial]; slots = Table[Unique["geometry"], Length[geometry]];
- integrand = z area[[k]] /. Thread[geometry -> slots];
- restore[v_] := v /. Thread[slots -> geometry];
- result = <|"localEvolution" -> B[k, Expand[restore[D[integrand, t]]/area[[k]]]]|>; off = 0;
- Do[group = {center, radial}[[j]];
-    AssociateTo[result, "surface" <> ToString[k] <> {".centerMotion", ".radiusMotion"}[[j]] ->
-     B[k, Expand[Sum[restore[D[integrand, slots[[off + m]]]] D[group[[m]], t], {m, Length[group]}]/area[[k]]]]];
-    off += Length[group], {j, 2}]; result];
+(* The integrand and the integration domain are differentiated separately.
+   A motion jet in z is a coefficient of the window derivative, not another
+   attribution for it. This preserves squares and mixed velocity products. *)
+timeParts[V[z_]] := Module[{local = geometryChain[z], result, red},
+ result = <|"localEvolution" -> V[local["localEvolution"]],
+            "bulk.centerMotion" -> V[local["centerMotion"]],
+            "bulk.radiusMotion" -> V[local["radiusMotion"]]|>;
+ Do[red = reduceWindow[z windowRates[origin]];
+    Do[AssociateTo[result, "surface" <> ToString[k] <> "." <> origin -> B[k, red[[2, k]]]], {k, 2}],
+    {origin, {"centerMotion", "radiusMotion"}}]; result];
+timeParts[B[k_, z_]] := Module[{local = geometryChain[z area[[k]]]},
+ <|"localEvolution" -> B[k, Expand[local["localEvolution"]/area[[k]]]],
+   "surface" <> ToString[k] <> ".centerMotion" -> B[k, Expand[local["centerMotion"]/area[[k]]]],
+   "surface" <> ToString[k] <> ".radiusMotion" -> B[k, Expand[local["radiusMotion"]/area[[k]]]]|>];
+(* Linear integral comparison: residuals are integrands on the same printed
+   measures. The operands are the direct product derivative and the sum of
+   the separately differentiated origins. No expected-value guard is used. *)
+integralResidual[left_, right_] := Module[{delta = Expand[left - right], vs, bs, all, residual},
+ vs = DeleteDuplicates[Cases[delta, _V, {0, Infinity}]];
+ bs = Table[DeleteDuplicates[Cases[delta, B[k, _], {0, Infinity}]], {k, 2}];
+ all = Join[vs, Flatten[bs]];
+ residual = <|"outsideIntegrals" -> Expand[delta - Total[(Coefficient[delta, #] # &) /@ all]],
+               "volumeIntegrand" -> Cancel[Total[(Coefficient[delta, #] #[[1]] &) /@ vs]]|>;
+ Do[AssociateTo[residual, "surface" <> ToString[k] <> "Integrand" -> Cancel[Total[(Coefficient[delta, #] #[[2]] &) /@ bs[[k]]]]], {k, 2}]; residual];
+partitionReport[tag_, direct_, pieces_Association] := Module[{total = Total[Values[pieces]], residual},
+ write[tag <> ".direct", direct]; AssociateTo[objects, tag <> ".direct" -> direct];
+ write[tag <> ".partsSum", total]; AssociateTo[objects, tag <> ".partsSum" -> total];
+ residual = integralResidual[direct, total];
+ write[tag <> ".residual", residual];
+ write[tag <> ".routes", {"direct product derivative", "chain-rule origins and window-only motion"}]];
 materialRHS = D[density, t] /. First[Solve[materialBalance == 0, D[density, t]]];
 governed[z_] := z /. Derivative[0, 0, 0, 1][Sigma][u_, v_, w_, s_] :> (materialRHS /. Thread[args -> {u, v, w, s}]);
 working["centerKinematics"];
 rateAliases = <||>; derivativeAliases = <||>;
-bindParts[p_, prefix_] := Association[KeyValueMap[Function[{key, value}, Module[{name = Symbol[prefix <> StringReplace[key, "." -> ""]][t], dv},
+bindParts[p_, prefix_] := Association[KeyValueMap[Function[{key, value}, Module[{name = Symbol[prefix <> StringReplace[key, "." -> ""]][t], dv, pieces},
  emit[prefix <> ".term." <> key, name -> value]; dv = governed[time[value]];
  emit[prefix <> ".termRate." <> key, D[name, t] -> dv];
- KeyValueMap[emit[prefix <> ".termRatePart." <> key <> "." <> #1, governed[#2]] &, timeParts[value]];
+ pieces = Map[governed, timeParts[value]];
+ KeyValueMap[emit[prefix <> ".termRatePart." <> key <> "." <> #1, #2] &, pieces];
+ partitionReport[prefix <> ".termRatePartition." <> key, dv, pieces];
  AssociateTo[rateAliases, name -> value]; AssociateTo[derivativeAliases, D[name, t] -> dv]; key -> name]], p]];
 namesN = bindParts[countParts, "nrate"];
 namesD = Table[bindParts[dipParts[[i]], "drate" <> ToString[i]], {i, 3}];

@@ -135,3 +135,20 @@ D1, D2, D4 and the inertial part of D3 change what the user's "No potential" and
 deliver, so they go to the user first. The rest of D3, D5 and D6 are technical repairs. The list is then folded
 once. The fold changes what is computed, so its spec content is reviewed again until clear (pass 2) before any
 builder.
+
+## The user's decisions on D1, D2, D4 and the inertial part of D3 (2026-10-21)
+
+The user selected these options. The wording, including the question, is the orchestrator's.
+- **Passive mass — "Record what it needs (Recommended)":** "The build prints the momentum the region receives:
+  stresses and momentum carried across both surfaces, plus the force density. It prints this apart from the terms
+  caused only by the surfaces moving. It computes no passive factor. What one needs (a named field of the
+  surroundings, a rule separating it from the body's own field, and its normalization) goes to the register as a
+  requirement. The missing owner is stated as missing."
+- **Mass — "Count material; mass open (Recommended)":** "The region's content and centre come from the material
+  count, which the supplied balance governs. No mass is defined. How the region's momentum relates to its motion
+  (inertial mass) is printed as open. The law it needs goes to the register, as O2 keeps it (S8)."
+
+The options not selected were "Supply a momentum-flux law" and "Constant mass per particle". These decisions narrow
+the earlier "No potential" decision's last two sentences: the gradient-form condition and the two masses are filed
+as requirements rather than printed as computed objects. They replace the list's `m`. The other parts of the three
+earlier decisions stand.

@@ -1,4 +1,4 @@
-# Measurements: S16 decision list, setup lookups (generated 2026-10-21 18:55)
+# Measurements: S16 decision list, setup lookups (generated 2026-10-21 19:36)
 
 Generator: `_scratch/s14a/gen/s16_setup_lookups.sh` (sed/grep/git/sha256sum only; this file is written by
 it). Mechanical lookups only: existence, verbatim retrieval by line, literal-match counts.
@@ -7,8 +7,8 @@ it). Mechanical lookups only: existence, verbatim retrieval by line, literal-mat
 
 ```
 $ cd /var/projects/toy_physics && sha256sum research/pde_ledger_v3/directives/S16_decision_list.md && git log -1 --format='%h %s'
-e1fa73f98a55f129df79e97a5459c1b0d4c4e24682996d10760fed3c40d0ebde  research/pde_ledger_v3/directives/S16_decision_list.md
-79511272 Accept the S14a part 2 record and its register pass (round 2 clear)
+d32222e41ade8d192f436f69e14ecac546267711dc50fd099ed02679e1a8dbfe  research/pde_ledger_v3/directives/S16_decision_list.md
+ffaa2824 Preserve the S16 decision list as reviewed in pass 1
 ```
 
 ## L1. The plan's S16 section
@@ -135,6 +135,15 @@ The reduction carried out below uses the following explicit assumptions.
 ```
 
 ```
+$ sed -n '761,765p' /var/projects/toy_physics/research/pde_ledger_v3/../4d_1pn_full/paper/4d_1pn_full.tex
+For the isotropic Gaussian \eqref{eq:defect-gaussian-profile},
+\begin{equation}
+Q_{ij}=\frac{Ma^2}{2}\,\delta_{ij}.
+\label{eq:defect-isotropic-second-moment}
+\end{equation}
+```
+
+```
 $ sed -n '885,891p' /var/projects/toy_physics/research/pde_ledger_v3/../4d_1pn_full/paper/4d_1pn_full.tex
 \begin{equation}
 M\ddot{\mathbf X}_{\rm cm}
@@ -199,7 +208,27 @@ $ sed -n '171p' /var/projects/toy_physics/research/pde_ledger_v3/DEFECT_REGISTER
 | **C3** | **`m_defect` is a GAP** — `INFLOW_MASS_SOURCE_MISSING` / `BLOCKS_MASS_EMERGENCE`. Only a dimensional bridge `α_J ħJ/c_γ²` exists; pathA_21's verdict is `MASS_BRIDGE_FORM_NOT_DERIVED`, *"No action-level, boundary-source, Noether, or Hamiltonian equation"* | `stage004:181`; `parameter_register.md:152-153`; `pathA_21_emergent_G_mass_bridge.md:98` | **OPEN** |
 ```
 
-## L6. O2's S16 rows and the S12 owner row
+```
+$ sed -n '21,25p' /var/projects/toy_physics/notes/muonium_gravity_corrections.md
+2. **Three-mass ledger — keep them separate.** Inertial `m_i`, **passive** `m_p` (response: how it falls — what
+   LEMING measures), **active** `m_a` (source: the field it produces). Define each independently; report
+   `κ^pass = m_p/m_i` and `κ^act = m_a/m_i` separately. Equality `m_i=m_p=m_a` must **emerge as a Ward-identity
+   theorem** if it holds — ⛔ never assumed. (This is "keep every varying quantity live; a required freeze is the
+   finding.")
+```
+
+## L6. O2's S16 rows, its inertia and density rows, and the S12 owner row
+
+```
+$ cd /var/projects/toy_physics && git log -1 --format='%h %s' 72866fcf
+72866fcf Accept the O2 record r4 (sub-step 7 closed; O2 closed)
+```
+
+```
+$ sed -n '133p;138p' /var/projects/toy_physics/research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+| `ℐ_br^live`; **OPEN**, C §3 | Flowing/embedded inertial and kinetic response, entering momentum storage and transport. No identification with `ρ_br V`, a quadratic live kinetic energy, or a constant inertia is supplied. | S8, with S1.5 antecedents when available. |
+| `ℛ_br` (O7); **OPEN**, C §6 | General brane-density response with live bulk, flow, embedding, thickness/projection dependence and gradients. It is input to the density in mass/momentum/energy accounting; it is not inferred from the bulk EOS or slab factorization. | S8, substrate reduction and S22 completion. |
+```
 
 ```
 $ sed -n '607p' /var/projects/toy_physics/research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
@@ -249,8 +278,9 @@ Ward: 0
 
 ```
 $ grep -nF -- 'potential' /var/projects/toy_physics/research/pde_ledger_v3/directives/S16_decision_list.md
-18:  no potential is supplied.
-34:- **Outside field — "No potential":** "The outside field enters only as the live flow and stress around the region.
-118:  - a potential;
-163:no potential, no force law between bodies, and no throat solve.
+22:  - No source normalization is used, because no potential is supplied.
+40:- **Outside field — "No potential":** "The outside field enters only as the live flow and stress around the region.
+52:The two later decisions narrow the last two sentences of "No potential". The gradient-form condition and the two
+131:  compactness, vanishing dipole, boundary-flux suppression, potential, mass-to-count ratio, or symmetry of the
+192:- no potential;
 ```

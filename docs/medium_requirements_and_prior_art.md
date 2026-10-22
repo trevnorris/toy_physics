@@ -243,7 +243,7 @@ Eringen micropolar texts; Ericksen (1968); Kelvin gyrostat papers (1889–90); W
 | bulk is a **material medium** with density and flow | **KNOWN** separately | superfluid-vacuum theory — Volovik, Sbitnev, Consoli, Huang, Fedi |
 | matter = **topological puncture THROUGH** the sheet | **ADJACENT** | domain-wall localization traps matter **ON** the wall (potential / zero modes) — ⛔ the opposite construction |
 | **charge sign = puncture orientation ±`w`** (`Z₂`) | ⭐⭐ **NOT FOUND** | searched charge/orientation/puncture/throat/membrane + `Z₂`, R7-branes, topological `Z₂` |
-| gravity = **medium flowing into** the defect | **KNOWN** separately | Cahill (2003); ⭐ Hamilton–Lisle *river model*, *Am. J. Phys.* **76** 519 (2008); Sbitnev; Unruh acoustic sinks — ⛔ all **3D**, no off-sheet bulk |
+| gravity = **medium flowing into** the defect | **KNOWN** separately | Cahill (2003); ⭐ Hamilton–Lisle *river model*, *Am. J. Phys.* **76** 519 (2008); Sbitnev; Unruh acoustic sinks — ⛔ all **3D**, no off-sheet bulk. ⇒ Full gravity pass (Riemann 1853, Lagally 1922, the GR problem of motion): § *ATTRIBUTION PASS — the gravity sector and S16* (2026-10-22) below |
 | **shear on the sheet, none in the bulk** ⇒ light confined | **ADJACENT** | ⛔ no "shear only on a 3-sheet, fluid bulk, traps light" package found |
 
 ### ⭐⭐ THE DIFFERENCES — this is the paper's positioning section
@@ -364,6 +364,104 @@ ferroelectric nematics Chen–Clark *PNAS 2020* (arXiv 2003.03020), Mertelj–La
 MacCullagh ether Darrigol/O'Raifeartaigh (EPJ-H 2010), Kelvin-gyrostat instability arXiv 1907.04144; Rubakov–Shaposhnikov (1983),
 Dvali–Shifman (1996–97), Coleman *Q-balls* (1985), Davies–George–Volkas arXiv 0705.1584 + arXiv 1008.2054, Zel'dovich–Kobzarev–Okun
 (1975).
+
+---
+
+## ⭐⭐ ATTRIBUTION PASS — the gravity sector and S16 (the worldtube), named piece by piece (2026-10-22)
+
+⭐ **Purpose: paper attribution, and an oracle for the S16 record.** A literature search was run against the S16
+decision list (`research/pde_ledger_v3/directives/S16_decision_list.md` at `0464b80a`: "Supplied equations", "The
+region", "What the build computes"). It also covered this document's one gravity row (4D-bulk table, "gravity =
+medium flowing into the defect"). ⭐ Every row cites a source that was **opened**; its query, URL and quoted
+sentence are in `docs/_measurements/gravity_prior_art_sources.md`, under the same row IDs `G1`–`G13`. "Secondary
+only" marks a claim seen only in a secondary source.
+⭐ **Oracle, ⛔ NOT a premise** (`CLAUDE.md` M3): each prior result holds under its own conditions, listed in its
+row. ⛔ None says what S16 computes, and ⛔ none is handed to a builder. ⚠ Toy-analogue framing throughout: these
+attribute the model's mathematics, ⛔ they make no claim about real gravity. ⇒ [[feedback-framing-split]]
+
+⛔⛔ **THE HEADLINE: S16's algebra is not new, and the drain-gravity architecture is 173 years old.**
+- The region's balances with moving surfaces are the **Reynolds transport theorem**. Reynolds wrote it down in 1903,
+  inside his own ether account of gravitation (`G1`, `G2`).
+- "A body's motion from surfaces outside it, its interior not needed" is the **problem of motion** in GR
+  (Einstein–Infeld–Hoffmann 1938 → Thorne–Hartle 1985) and for **superfluid vortices** (Thouless–Ao–Niu 1996)
+  (`G5`, `G6`).
+- The force on a drain from the flow around it is **Lagally's theorem** (1922), which **Wang** (2005/2008) applied to
+  sink-flow gravity. Like sources attracting by an inverse square is in **Lamb** (1906). The pulsating-body version is
+  in C. A. and V. **Bjerknes** (`G7`, `G9`, `G11`).
+- ⭐⭐ **Riemann (1853):** a space-filling, incompressible, inertia-free substance flows into the ponderable atoms,
+  with inflow ∝ mass, as the cause of gravity. Light is **another motion of the same substance** (`G10`). He left the
+  force on an atom as a printed question mark, and left open how two memory functions must be chosen.
+
+⚠ **This does not invalidate S16.** It still derives these objects, and standard ground is solid ground.
+⭐ **But the S16 record should cite `G1`, `G2` and `G5`–`G7`, and a paper should cite Riemann as the
+architecture's ancestor.** ⭐ What no source opened here has: a drain through a **sheet** whose material leaves
+through its **faces** into a bulk, and a momentum density left **general** instead of ρ × velocity (NOT FOUND below).
+
+| our piece | status | attribution |
+|---|---|---|
+| `G1` S16 item 1: rates of a count over a region whose surfaces move, with the sink and face terms kept, each surface term split into a part at rest and a part from the surface's motion | **STANDARD** | ⭐ **Reynolds transport theorem**: Reynolds, *The Sub-Mechanics of the Universe* (*Papers* vol. 3, 1903) §14 "Moving Surface", pp. 12–13. Transport is taken relative to the surface's own velocity, and *"The instantaneous rate of production within the surface is not altered by the continuous motion of the surface"*. For variable mass (sources inside a material volume, or mass flowing through the surface of a non-material volume): **Irschik & Holl**, *Appl. Mech. Rev.* **57** 145 (2004). ⚠ Splitting a sphere's surface velocity into the centre's motion and the radius change was not looked up as a separate result. ⭐ Lineage: Reynolds' memoir is a granular-ether account in which gravitation appears (*"if matter represents negative mass"*), ⛔ not a drain |
+| `G2` S16 items 1 and 3: the rate of `P` beside the momentum the region receives (stresses and momentum carried across both surfaces, plus the integrated force density) | **STANDARD** | **Lamb**, *Hydrodynamics* (3rd ed. 1906) Art. 346, p. 598: the momentum in a fixed space changes by *"the forces acting on the substance"* and by *"the flux of matter across the boundary, carrying its momentum with it"*. Reynolds (1903) gives it for any entity over a moving surface, and Irschik & Holl (2004) for non-material volumes. ⚠ Conditions: Lamb and Irschik–Holl balance the momentum of matter, mass × velocity (Reynolds states the theorem for any entity), whereas S16 relates `G^i` to nothing |
+| `G3` S16 item 2: the centre `X` of the region's content, its rate and its acceleration, while the count changes and the surfaces move | **ADJACENT** | GR form: **Racine & Flanagan**, *PRD* **71** 044010 (2005), a surface-integral derivation of *"the second time derivative of its mass dipole moment in terms of its other multipole and tidal moments"*. ⚠ Conditions: post-1-Newtonian GR, vacuum field equations between the bodies, moments defined from the metric, no drain. ⚠ A flat, open-region source for the first-moment relations was **not located**; Irschik–Holl's abstract covers mass and linear momentum only ⇒ unattributed, ⛔ not new |
+| `G4` S16 items 2 and 4: moments through second order about a moving reference point `X_c`, with `X_c` kept apart from the centre `X` | **ADJACENT** | **Mathisson** (1937; English in *GRG* **42** 1011, 2010), **Papapetrou**, *Proc. R. Soc. A* **209** 248 (1951), and **Dixon**, *Proc. R. Soc. A* **314** 499 (1970). Spin is the angular momentum about a reference point in the body, and the equations *"must therefore be supplemented by three additional constraints which serve to determine which point in the body has velocity"* `V^μ`. Dixon fixes the centre by `p_β S^{αβ} = 0`. ⚠ Conditions: curved spacetime, Papapetrou's *test* particles in a given gravitational field, no drain |
+| `G5` S16's architecture: what must be supplied about a body for its motion to follow from surfaces outside it, with its interior not needed | **KNOWN** (GR) | ⭐ **Einstein, Infeld, Hoffmann**, *Ann. Math.* **39** 65 (1938): *"for two-dimensional spatial surfaces containing singularities certain surface integral conditions are valid which determine the motion"*. ⭐ **Thorne & Hartle**, *PRD* **31** 1815 (1985): the rates of momentum come from *"the momentum flux … over a closed two surface in the buffer region"*, and the moments *"carry no information as to whether the source is compact or diffuse"*. Also Damour's **effacing principle** (Damour 1983, via Blanchet, *Living Rev. Relativ.*). ⚠ Conditions: curved spacetime; the motion follows from **vacuum field equations** outside the body, whereas S16 supplies no field equation for the surroundings; the moments vary slowly (Thorne–Hartle); no drain |
+| `G6` the same, for a defect in a superfluid | **KNOWN** | ⭐ **Thouless, Ao, Niu**, *PRL* **76** 3758 (1996): the force on a vortex *"is determined by the one-particle density matrix far away from the vortex core"*, and *"contributions of the localized core states do not change this force"*. The classical form balances momentum on *"a very large cylinder centered on the vortex"*. EIH (1938) cite Helmholtz's vortices as the fluid precedent. ⚠ Conditions: a line defect carrying circulation, an infinite homogeneous neutral superfluid, a scalar order parameter, a uniform background, no drain |
+| `G7` the force a drain feels from the flow around it. This is S16's **passive factor**, which S16 files as OPEN and ⛔ does not compute | **KNOWN** | ⭐⭐ **Lagally**, *ZAMM* **2** 409 (1922): for **steady** flow, the force and moment on a closed surface depend only on the sources and vortices and on the velocity at their location, and on the boundary's shape only through that velocity. Unsteady flow and moving bodies: **Landweber & Yih**, *JFM* **1** 319 (1956). Multipoles and deformable bodies: **Landweber & Miloh**, *JFM* **96** 33 (1980). For a sink as gravity: **Wang** (`G11`), Theorem 2 `F_Q = −ρ Q u₀`, and Theorem 3 `F_Q = −ρ Q (u_f − v_s)` for a moving sink. ⭐ Riemann (1853) asked it as a question (`G10`). ⚠ Conditions: inviscid and incompressible, and Lagally's flow is steady. Wang adds: irrotational, barotropic, a uniform constant density, an unbounded fluid at rest at infinity, a point sink, and a control volume between two spheres, fixed in space and then shrunk onto the sink. All 3D, no sheet |
+| `G8` the force on a **non-draining** body from a non-uniform surrounding flow | **ADJACENT** | **G. I. Taylor**, *Proc. R. Soc. A* **120** 260 (1928): a body in a converging stream, with the wind-tunnel "horizontal buoyancy" `−V dp/dx`, where `V` is the body's volume. **Auton, Hunt, Prud'homme**, *JFM* **197** 241 (1988): the force on a body moving through an unsteady non-uniform flow, including an added-mass part. ⚠ Conditions: inviscid flow, and (Auton et al.) a body small compared with the scale over which the strain rate changes. The force is set by the body's **volume and added-mass coefficient**, ⛔ not by a drain |
+| `G9` two drains attracting. ⛔ S16 gives no force law; this is an oracle for a later step | **KNOWN** | ⭐ **Lamb**, *Hydrodynamics* (1906) Art. 144, p. 192: *"two sources of like sign attract, and two of unlike sign repel, with forces varying inversely as the square of the distance"*. Also **Wang**, Corollary 4. Pulsating bodies: **V. Bjerknes**, *Fields of Force* (1906) pp. 32–33, after **C. A. Bjerknes**. Bodies pulsating in the same phase attract, with a force *"proportional to the product of the two intensities of pulsation"* that falls as the inverse square. ⚠ Bjerknes draws the analogy to **charges**, with the sign reversed, ⛔ not to gravity. A pulsation theory **of gravity** is credited to Kelvin and C. A. Bjerknes (1871) by Wikipedia only (secondary only). ⚠ Conditions: incompressible potential flow. Lamb's sources are the ends of narrow tubes, so the fluid is conserved overall. Bjerknes' forces are averages over synchronous pulsation |
+| `G10` gravity = the medium **draining into matter**, and light = **another motion of the same medium** | **KNOWN** (an unexecuted 1853 sketch) | ⭐⭐⭐ **Riemann**, "Gravitation und Licht" and "Neue mathematische Principien der Naturphilosophie" (footnote *"Gefunden am 1. März 1853"*), in *Gesammelte mathematische Werke* (ed. Weber with Dedekind, 1876), pp. 496–506. Space is filled with a substance *"welcher fortwährend in die ponderablen Atome strömt und dort aus der Erscheinungswelt (Körperwelt) verschwindet"*, passing into the *"Geisteswelt"*. It is an incompressible homogeneous fluid *"ohne Trägheit"*, and the inflow into an atom is ∝ its mass. The substance's velocity is ∝ the gravitational force, and its real motion is the gravity motion plus the light motion. Resistance to **change of volume** carries gravitation and electrostatics. Resistance of a **line element to change of length** carries light, heat, and electrodynamic or magnetic forces. He asks whether the pressure on an atom is ∝ the substance's velocity there (his own "?"). He asks how two functions, which weight a substance element's earlier forms by elapsed time, must be chosen for gravitation, light and radiant heat to be carried by the substance; the fragment closes on the two-resistance split without choosing them. ⚠ Conditions: a 3D substance, with no sheet or throats; inertia-free; light comes from line-element resistance, ⛔ not MacCullagh's rotation; no deflection computation was found in the fragments. Before him: Newton's 1675 ether-flow letter (secondary only) |
+| `G11` sink-flow gravity in modern form | **KNOWN** | **Wang**, *Prog. Phys.* **4** 25 (2008), `arXiv:physics/0506062`. Particles are sinks in an ideal-fluid "Ω(0) substratum", and *"the inverse-square law of gravitation is derived by methods of hydrodynamics based on a sink flow model of particles"*. ⚠ A single-author line of work; no independent assessment was found. ADJACENT: the **Hamilton–Lisle** river model (*Am. J. Phys.* **76** 519, 2008; the 4D-bulk row above): space falls inward at the Newtonian escape velocity. Also **Kulangiev** (Qeios preprint, 2026): Painlevé–Gullstrand inflow in a superfluid vacuum, with soliton cores as sinks. A core absorption rate that does not vary with position balances that inflow *"at one radius only"* |
+| `G12` the link between the drain rate and mass (S16's retained-OPEN gap "C3", `DEFECT_REGISTER.md:171`; ⚠ not this document's C3) | **KNOWN as posits**, ⛔ not derivations | Riemann posits an inflow ∝ mass. Wang's Assumption 6 and `dm/dt = −ρQ` make mass the accumulated inflow, *"increasing linearly"*. Yarkovsky (1888, secondary only) has the absorbed ether become new matter |
+| `G13` objections to the sink ether | **KNOWN** | A moving drain feels a drag: Wang's formula (32) gives *"a universal damping force"*. Energy disappears without explanation, some drag must arise, and no process that creates matter is known (Wikipedia, secondary only). For pulsation, every pulsation in the universe would have to be in phase (same source) |
+
+### ⛔ NOT FOUND — ⚠ a search-failure statement, ⛔ NOT a proof of originality
+
+- A **worldtube or problem-of-motion treatment of a draining body in an analogue-gravity medium**, acoustic or BEC.
+  The searches (Q19, Q23, Q24 in the sources file) paired "problem of motion" and "worldtube" with analogue gravity,
+  acoustic sinks and Bjerknes forces; Scholar Gateway was unavailable. Closest: Wang (`G7`, an ideal-fluid sink) and
+  Thouless–Ao–Niu (`G6`, a vortex, no drain).
+- **Region balances with live inner and outer radii around a moving drain, used for gravity**, with each surface
+  term split into the centre's motion and the radius change. Wang's control volume is fixed in space at the
+  instant and then shrunk onto the sink. Thorne–Hartle's are closed two-surfaces of constant `r` in the buffer region.
+  ⚠ The theorem itself is STANDARD (`G1`).
+- A drain whose material leaves through the **faces of a sheet into a bulk** (S16's face terms). Every sink found
+  is a point or volume sink in 3D.
+- A force on a drain with the **momentum density left general**. Every fluid treatment opened takes it as ρ ×
+  velocity (Wang's `K = ∫ρu dV`; Lamb; Thouless–Ao–Niu's `ρ_s u_s + ρ_n u_n`).
+- **Gravity as drain-flow between throats while light is MacCullagh on the same sheet**: the 2026-08-04 entry in
+  the light pass above **stands**. ⭐ Riemann 1853 (`G10`) is now its **closest adjacent**: drain into atoms and
+  light in the same medium. But Riemann's medium is a 3D substance with no sheet or throats, and his light comes from
+  line-element resistance, ⛔ not MacCullagh's rotation.
+- A flat, open-region source for the **centre-of-content relations** (`G3`): not located ⇒ unattributed, ⛔ not new.
+
+⇒ ⭐ **The novel-looking residual, if any, is again the ARCHITECTURE**: a drain through a sheet into a bulk, with
+light on that sheet. ⛔ It is not the region algebra, the force on a drain, or drain gravity as such.
+
+### ⭐ Reading list — the gravity sector, most useful first
+
+1. **Riemann**, *Werke* (1876) pp. 496–506 — the ancestor. Read it before any claim about the architecture.
+2. **Wang**, `arXiv:physics/0506062` — the closest computation: a control volume around a sink, Lagally's force,
+   and sink gravity.
+3. **Thorne & Hartle**, *PRD* **31** 1815 (1985) — buffer-region surface integrals for the rates of `M` and `P`.
+4. **Thouless, Ao, Niu**, *PRL* **76** 3758 (1996) — a defect's force from a far-field balance, independent of the core.
+5. **Landweber & Miloh**, *JFM* **96** 33 (1980) — the unsteady Lagally theorem for multipoles and deformable bodies.
+6. **Irschik & Holl**, *Appl. Mech. Rev.* **57** 145 (2004) — mass and momentum balances with mass sources or flow through a non-material surface.
+7. **Racine & Flanagan**, *PRD* **71** 044010 (2005) — the second derivative of the mass dipole from surface integrals.
+8. **V. Bjerknes**, *Fields of Force* (1906) pp. 32–33, and **Lamb**, *Hydrodynamics* (1906) Art. 144 — attracting
+   pulsators and sources.
+
+### Sources (gravity pass)
+Reynolds, *Papers on Mechanical and Physical Subjects* vol. 3 (1903); Irschik & Holl, *Appl. Mech. Rev.* 57, 145
+(2004); Lamb, *Hydrodynamics*, 3rd ed. (1906); Racine & Flanagan, *PRD* 71, 044010 (2005), *gr-qc/0404101*; Mathisson,
+*Acta Phys. Polon.* 6, 163 (1937), Engl. *GRG* 42, 1011 (2010); Papapetrou, *Proc. R. Soc. A* 209, 248 (1951); Dixon,
+*Proc. R. Soc. A* 314, 499 (1970); Einstein–Infeld–Hoffmann, *Ann. Math.* 39, 65 (1938); Blanchet, *Living Rev.
+Relativ.*, *1310.1528*; Thorne & Hartle, *PRD* 31, 1815 (1985); Thouless–Ao–Niu, *PRL* 76, 3758 (1996),
+*cond-mat/9603196*; Lagally, *ZAMM* 2, 409 (1922); Landweber & Yih, *JFM* 1, 319 (1956); Landweber & Miloh, *JFM* 96, 33
+(1980); Wang, *physics/0506062*, *Prog. Phys.* 4, 25 (2008); G. I. Taylor, *Proc. R. Soc. A* 120, 260 (1928);
+Auton–Hunt–Prud'homme, *JFM* 197, 241 (1988); V. Bjerknes, *Fields of Force* (1906); Riemann, *Gesammelte mathematische
+Werke* (1876) pp. 496–506; Galindo & Cervantes-Cota, *Rev. Mex. Fís. E* 64, 162 (2018), *1807.09230*; Bottazzini &
+Tazzioli, *Rev. Hist. Math.* 1, 3 (1995); Hamilton & Lisle, *Am. J. Phys.* 76, 519 (2008); Kulangiev, Qeios
+`10.32388/INA4A7.3` (2026); Wikipedia, *Mechanical explanations of gravitation* (rev. 1360707870). Queries, URLs and
+quoted text: `docs/_measurements/gravity_prior_art_sources.md`.
 
 ---
 

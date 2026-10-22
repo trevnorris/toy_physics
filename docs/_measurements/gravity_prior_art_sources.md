@@ -4,6 +4,11 @@ This file grounds the section "ATTRIBUTION PASS — the gravity sector and S16 (
 `docs/medium_requirements_and_prior_art.md`. Row IDs `G1`–`G13` are that section's table rows. A claim in the
 section without an entry here should be discarded.
 
+**Round 1 repair (2026-10-22).** Review round 0 (`gravity_prior_art_review_r0_disposition.md`, findings R1–R7)
+changed the entries for [S2] (full text opened), [S5], [S9], [S13], [S15] and [S18], and one row of the leads
+table. The G5 and G6 relabelling (R2) also uses quotes already filed under [S6] and [S8]. Each new quote below was printed from a file I downloaded myself; the reviewers' files were used only to
+find the sources.
+
 ## How the material was gathered
 
 - **Tools.** WebSearch (standard and extended) and WebFetch found the sources. Full texts were downloaded with
@@ -93,16 +98,49 @@ curl -s 'https://api.crossref.org/works/<DOI>' | python3 -I -c 'import json,sys;
 
 ### [S2] H. Irschik & H. J. Holl, "Mechanics of variable-mass systems—Part 1: Balance of mass and linear momentum", *Appl. Mech. Rev.* 57(2), 145–160 (2004), DOI 10.1115/1.1687409
 - **Rows:** G1, G2, G3.
-- **Query:** Q16 (it did not surface the paper); found by a Crossref bibliographic query.
-- **Opened:** `https://api.crossref.org/works/10.1115/1.1687409` (metadata and abstract).
+- **Query:** Q16 (it did not surface the paper); found by a Crossref bibliographic query. The full text was located
+  in round 1 from the Codex review leg's evidence file `ih_centres_excerpt.txt` (finding R1).
+- **Opened:** `https://api.crossref.org/works/10.1115/1.1687409` (metadata and abstract); round 1, the full text at
+  `https://www.mobt3ath.com/uplode/book/book-98207.pdf` (a third-party copy of the ASME PDF; its pages carry
+  "Downloaded from http://asmedigitalcollection.asme.org/appliedmechanicsreviews/article-pdf/57/2/B12/5440527/145_1.pdf
+  by guest on 26 August 2020").
+- **Retrieval (round 1):** `curl -sL -A 'Mozilla/5.0' <url> -o ih.pdf; pdftotext ih.pdf ih.txt; sed -n 1353,1372p ih.txt;
+  sed -n 1040,1060p ih.txt; sed -n 1080,1120p ih.txt; sed -n 1755,1880p ih.txt` (in `dl_irschik_holl/`).
 - **Quotes (abstract):** "mass is not conserved when sources of mass are present or when the equations of balance
   are applied to a non-material volume."; "We first summarize the general balance law and review the Reynolds
   transport theorem for a non-material volume."; "the equations of balance of mass and linear momentum in the
   presence of sources of mass in the interior of a material volume"; "when mass is flowing through the surface of a
   non-material volume in the absence of sources of mass in the interior"; "Our review remains within the framework
   of the classical, non-relativistic continuum mechanics of solids and fluids."
-- **Not in the abstract:** any centre-of-mass relation. This is why G3 says the flat, open-region first-moment form
-  was not located.
+- **Not in the abstract:** any centre-of-mass relation. Round 0's G3 therefore said the flat form was not located.
+  ⇒ **Corrected in round 1 (R1):** the full text has it.
+- **Quotes (full text, round 1; equation layout lost in extraction):**
+  - l.1353, the heading: "4 VARIABLE MASS CONTAINED IN A NONMATERIAL VOLUME".
+  - l.1366–1370: "Recall that the control surface s(t) enclosing the volume v (t) moves at a velocity u, which
+    generally differs from the velocity of the material particles instantaneously located on this surface. In the
+    present section, we do not take into account sources of mass within v (t), since such sources have been
+    discussed in Section 3 of the present review."
+  - l.623–624, the heading of §3: "3 SOURCES OF MASS IN THE INTERIOR OF A MATERIAL VOLUME"; §3 defines the centre at
+    eq. (3.13) (l.1040–1048) and reaches (3.18) at l.1103–1116.
+  - l.1760–1763 (p. 157): "In an analogy to Eq. 共3.13兲, we now introduce the center of mass of the non-material volume
+    under consideration. The instantaneous position of the center of mass is given by a vector c u defined through the
+    relation" [eq. (4.13), `c_u M_u = ∫_{v(t)} ρ p dv`, l.1764–1773].
+  - l.1775: "Differentiating with respect to time gives"; eq. (4.15) carries the surface term
+    `∫_S da·(u − ṗ) ρ p` (l.1777–1793, layout lost).
+  - l.1799–1800: "But, for a material volume in the absence of sources of mass in the interior, we may write" [eq.
+    (4.16): the material-volume integral of `ρ ṗ` is the momentum `P_u`].
+  - l.1832–1837: "Putting Eqs. 共4.15兲–共4.17兲 into Eq. 共4.14兲, we arrive at the following relation for the linear
+    momentum contained in the non-material volume: P u ⫽M u ċ u ⫹Ṁ u 共 c u ⫺ĉ u 兲 (4.18)".
+  - l.1851: "The equation of balance of linear momentum for the nonmaterial volume, Eq. 共4.7兲, then can be
+    rewritten as" [eq. (4.20), `M_u c̈_u = F + Ṁ_u (w_u − 2ċ_u + dĉ_u/dt) − M̈_u (c_u − ĉ_u)`, l.1855–1863].
+  - l.1865–1869: "In the present context of a non-material volume, we thus have arrived at a relation for the motion
+    of the center of mass in complete analogy to the result of Federhofer 关65兴 for a material volume with sources of
+    mass in the interior, Eq. 共3.18兲."
+  - l.1870–1872: "For the case of a rocket motion with internal flow, Eq. 共4.20兲 was derived in the expositions of
+    Rankin 关74兴, and independently by Leitmann 关83兴." (Rankin, Leitmann and Federhofer were not opened.)
+  - The doc quotes these with the extraction's bracket glyphs dropped: "we now introduce the center of mass of the
+    non-material volume under consideration"; "in complete analogy to the result of Federhofer"; "for a material
+    volume with sources of mass in the interior".
 
 ### [S3] H. Lamb, *Hydrodynamics*, 3rd ed. (Cambridge, 1906)
 - **Rows:** G2 (Art. 346), G9 (Art. 144).
@@ -169,7 +207,11 @@ curl -s 'https://api.crossref.org/works/<DOI>' | python3 -I -c 'import json,sys;
   - Dixon, abstract (Crossref): "Definitions are proposed for the total momentum vector pα and spin tensor Sαβ of an
     extended body in arbitrary gravitational and electromagnetic fields."; "used to support the definition pβSαβ = 0
     for the centre of mass."
-- **Not opened:** Dixon II (1970) and III (1974); Mathisson's original German text.
+- **Not opened:** Dixon II (1970) and III (1974); Mathisson's original German text; Papapetrou's and Dixon's full
+  texts (abstracts only).
+- **Round 1 (R4):** the two Wikipedia sentences above are Wikipedia's summary, not the papers' text. The section now
+  marks them secondary only. Its only primary quote in G4 is Dixon's abstract ("the definition pβSαβ = 0 for the
+  centre of mass").
 
 ### [S6] A. Einstein, L. Infeld & B. Hoffmann, "The Gravitational Equations and the Problem of Motion", *Ann. Math.* 39(1), 65–100 (1938), DOI 10.2307/1968714
 - **Rows:** G5, G6 (the Helmholtz remark).
@@ -232,6 +274,8 @@ curl -s 'https://api.crossref.org/works/<DOI>' | python3 -I -c 'import json,sys;
 - **Opened:** `https://arxiv.org/pdf/cond-mat/9603196`. Crossref confirms the journal data.
 - **Retrieval:** `curl -sL https://arxiv.org/pdf/cond-mat/9603196v1 -o tan.pdf; pdftotext tan.pdf tan.txt; sed -n 11,18p tan.txt; sed -n 355,390p tan.txt`
 - **Quotes:**
+  - Abstract, l.13–14 (round 1, R2): "We have derived an exact expression for the total nondissipative transverse
+    force acting on a quantized vortex moving in a uniform background."
   - "The derivation is valid for neutral boson or fermion superfluids, provided the order parameter is a complex
     scalar quantity. This force is determined by the oneparticle density matrix far away from the vortex core, and is
     found to be the Magnus force proportional to the superfluid density. We conclude that contributions of the
@@ -324,6 +368,12 @@ curl -s 'https://api.crossref.org/works/<DOI>' | python3 -I -c 'import json,sys;
     Let us select the coordinates that is attached to the source and set the origin of the coordinates at the
     location of the source. Then (27) can be arrived following the same procedures in the proof of Theorem 2."
   - Corollary 4: "F21 = −ρQ2 Q1/(4πr²) r̂21 + ρQ2 v2" [fraction layout flattened].
+  - Round 1 (R6), Corollary 4's conditions and symbols, from `pdftotext` without `-layout` (`wang_raw.txt`
+    l.580–583 and l.615–618): "Suppose the presuppositions (1), (2), (3), (4) and (5) in Theorem 2 are valid and a
+    source or a sink with strength Q2 is exposed to the velocity field of another source or sink with strength Q1";
+    "r is the distance between the two singularities, v2 is the velocity of the source with strength Q2." So the
+    inverse-square term alone is the force on a sink at rest (`v2 = 0`); the doc writes the term as
+    `−ρQ₂Q₁/(4πr²) r̂₂₁` and the velocity term as `ρQ₂v₂`.
   - Mass from inflow: "Assumption 6 All the microscopic particles were made up of a kind of elementary sinks of Ω(0)
     substratum."; eq. (30) "dm/dt = −ρQ" [layout flattened]; "From (31), we also see that the mass of a monad or a
     particle is increasing linearly."
@@ -347,7 +397,13 @@ curl -s 'https://api.crossref.org/works/<DOI>' | python3 -I -c 'import json,sys;
 ### [S15] T. R. Auton, J. C. R. Hunt & M. Prud'homme, "The force exerted on a body in inviscid unsteady non-uniform rotational flow", *J. Fluid Mech.* 197, 241–257 (1988), DOI 10.1017/S0022112088003246
 - **Rows:** G8.
 - **Query:** Crossref bibliographic query (no WebSearch).
-- **Opened:** Crossref (abstract).
+- **Opened:** Crossref (abstract). Round 1 (R7): re-fetched with
+  `curl -s 'https://api.crossref.org/works/10.1017/S0022112088003246' -o auton.json` (in `dl_crossref/`) and printed
+  with the Crossref one-liner above.
+- **Round 1 quote (R7), the sentence's second half:** "It is assumed that the radius is small compared with the scale
+  over which the strain rate changes, though for the sphere it is also assumed that the changes in the ambient
+  velocity field over the scale of the sphere are small compared with the velocity of the body relative to the
+  flow."
 - **Quotes (abstract):** "A general expression is derived for the fluid force on a body of simple shape moving with a
   velocity v through inviscid fluid in which there is an unsteady non-uniform rotational velocity field u0(x, t) in
   two or three dimensions." [JATS markup removed]; "It is assumed that the radius is small compared with the scale
@@ -411,7 +467,16 @@ curl -s 'https://api.crossref.org/works/<DOI>' | python3 -I -c 'import json,sys;
 - **Retrieval:** `curl -sL <url> -o rw.txt`, then `sed -n 2974,2985p rw.txt` (title page), `sed -n 37808,37965p rw.txt`
   (pp. 496–498), `sed -n 38312,38440p rw.txt` (pp. 502–504) and `sed -n 38500,38616p rw.txt` (pp. 505–506).
 - **Edition (title page):** "HERAUSGEGEBEN UNTER MITWIRKUNG VON R. DEDEKIND [VON] H. WEBER. … 1876."
-- **"2. Gravitation und Licht"** (l.37838; p. 496):
+- **Round 1 (R3): the two fragments are separate.** Fragment 2, "Gravitation und Licht", runs from its heading at
+  l.37838 (p. 496) to l.38352 (p. 502); fragment 3, "Neue mathematische Principien", runs from its heading at l.38353
+  (p. 502) to the end of the text at l.38616 (p. 506), before "Bernhard Riemann's Lebenslauf". The page heads are
+  l.37808 (496), 38312 (502), 38433 (504) and 38556 (506). Inside fragment 3, `grep -n '^[0-9]\+\. \|^[IVX]\+\. '`
+  finds only its own heading and page heads, so pp. 502–506 are one fragment. Only fragment 3 carries the date
+  footnote. Retrieval: `sed -n 37838,38352p rw.txt > frag2.txt; sed -n 38353,38620p rw.txt > frag3.txt`.
+- **Search statement (R3):** `grep -c -i` over `frag2.txt` gives `verschwind` 0, `Atom` 0, `einström` 1 (the
+  conservation passage below); over `frag3.txt`, `verschwind` 4, `Atom` 7. No inflow into atoms is stated in
+  fragment 2.
+- **"2. Gravitation und Licht"** (l.37838; p. 496; no date):
   - l.37885–37892: "Die nach Grösse und Richtung bestimmte Ursache (beschleunigende Schwerkraft), welche nach 3. in
     jedem Punkte des Raumes stattfindet, suche ich in der Bewegungsform eines durch den ganzen unendlichen Raum stetig
     verbreiteten Stoffes, und zwar nehme ich an, dass die Richtung der Bewegung der Richtung der aus ihr zu
@@ -424,7 +489,13 @@ curl -s 'https://api.crossref.org/works/<DOI>' | python3 -I -c 'import json,sys;
     muss."
   - l.37960–37963: "behält der Stoff, wenn er in Einem Zeitpunkte überall gleich dicht ist, stets allenthalben
     dieselbe’Dichtigkeit".
-- **"3. Neue mathematische Principien der Naturphilosophie"** (p. 502):
+  - l.37956–37959 (round 1): "der Bewegung, welche die Gravitationserscheinungen verursacht, durch ,, %,, U, der
+    Bewegung, welche die Lichterscheinungen verursacht, durch w,, 20,, %0,, der wirklichen Bewegung durch ®,, %,, %,,
+    so dass v=u-+ w." [OCR; the reading is v = u + w].
+  - l.38287–38296 (p. 501, round 1): "Die Gleichung (I) beweist unsere frühere Behauptung, dass bei der
+    Stoffbewegung die Dichtigkeit ungeändert bleibe; denn … drückt die in das Raum- element dx, dx,dx, im
+    Zeitelement dt einströmende Stoffmenge aus, und die in ihm enthaltene Stoffimenge bleibt daher constant."
+- **"3. Neue mathematische Principien der Naturphilosophie"** (pp. 502–506; dated):
   - footnote l.38372: "*) Gefunden am 1. März 1853."
   - l.38400–38403 (p. 503): "Von dieser Thatsache geleitet, mache ich die Hypothese, dass der Weltraum mit einem Stoff
     erfüllt ist, welcher fortwährend in die pon- derablen Atome strömt und dort aus der Erscheinungswelt (Körper-
@@ -434,11 +505,17 @@ curl -s 'https://api.crossref.org/works/<DOI>' | python3 -I -c 'import json,sys;
     Flüssigkeit ohne Trägheit sei, und dass in jedes ponderable Atom in gleichen Zeiten stets gleiche, seiner Masse
     pro- … portionale Mengen einströmen, so wird offenbar der Druck, den das ponderable Atom erfährt, (der
     Geschwindigkeit der Stoffbewegung an dem Orte des Atoms proportional sein?)"
+    [The word "pro- portionale" is split by the page break and the footnote; the doc quotes it rejoined as "seiner
+    Masse proportionale Mengen".]
   - footnote l.38425–38426: "In jedes ponderable Atom tritt in jedem Augenblick eine bestimmte, der
     Gravitationskraft proportionale Stoffmenge ein und verschwindet dort."
+    [This footnote's inflow law (∝ the gravitational force) differs from the text's (∝ the mass). The doc gives both
+    (R3).]
   - l.38440–38443 (p. 504): "Es kann also die Wirkung der allgemeinen Gravitation auf ein ponderables Atom durch den
     Druck des raumerfüllenden Stoffes in der unmittelbaren Umgebung desselben ausgedrückt und von demselben abhängig
     gedacht werden."
+  - l.38445–38447 (p. 504, round 1): "Aus unserer Hypothese folgt nothwendig, dass der raumerfüllende Stoff die
+    Schwingungen fortpflanzen muss, welche wir als Licht und Wärme wahrnehmen."
   - l.38512–38516 (p. 505): "dass der Einfluss einer früheren Form (caeteris paribus) desto geringer wird, je länger
     vor £ [t] sie stattfand"
   - l.38564–38565 (p. 506): "Es ist nun kein Grund vorhanden, apzunelimen [anzunehmen], das die Wirkungen beider
@@ -524,7 +601,7 @@ curl -s 'https://api.crossref.org/works/<DOI>' | python3 -I -c 'import json,sys;
 | Riemann 1853, two fragments, printed 1876 by Dedekind and Weber | **Verified** [S18]: pp. 496–506; edited by H. Weber "unter Mitwirkung von R. Dedekind". "Neue mathematische Principien" carries the footnote "Gefunden am 1. März 1853". |
 | Riemann: "Gravitation und Licht" tied to his letter of 28 Dec 1853 | **Unverified**: no opened source gives it. |
 | Riemann: the substance vanishes into "another world" | **Corrected** [S18, S17]: Riemann's word is **"Geisteswelt"** (the mental or spirit world, from Herbart's psychology). "Another world or dimension" is Wikipedia's retelling. |
-| Riemann: inflow ∝ mass; incompressible, inertia-free; speed ∝ force (so v ∝ 1/r², not the river model's escape speed) | **Verified** [S18]: "incompressible homogene Flüssigkeit ohne Trägheit", "seiner Masse proportionale Mengen", "Geschwindigkeit der Grösse der Kraft proportional"; the force he must reproduce is inverse-square (his item 4). The river model's escape speed: [S21]. |
+| Riemann: inflow ∝ mass; incompressible, inertia-free; speed ∝ force (so v ∝ 1/r², not the river model's escape speed) | **Verified, from two fragments** [S18]: the drain, "incompressible homogene Flüssigkeit ohne Trägheit" and "seiner Masse proportionale Mengen" are in fragment 3 (dated), which also has a footnote with inflow ∝ the gravitational force; "Geschwindigkeit der Grösse der Kraft proportional" and the inverse-square force he must reproduce (his item 4) are in fragment 2 (undated), whose substance is conserved in each volume element. The river model's escape speed: [S21]. |
 | Riemann: volume resistance → gravity and electrostatics; line-element resistance → light, heat, magnetism | **Verified** [S18]. The text says "electrodynamische oder magnetische" attraction and repulsion. |
 | Riemann: stops on how to choose two memory kernels (Bottazzini & Tazzioli) | **Verified from Riemann himself** [S18]: the question near the end (l.38582–38586) is about the two functions weighting a substance element's earlier forms; the fragment then closes on the two-resistance split (l.38607–38616) without choosing them. The Bottazzini & Tazzioli attribution is **not verified** (sample pages only) [S20]. |
 | Riemann: never computed it, no light-bending number | **Search statement only** [S18]: no deflection term found in pp. 494–506. |

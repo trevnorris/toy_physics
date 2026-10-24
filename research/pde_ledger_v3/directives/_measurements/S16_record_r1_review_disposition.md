@@ -67,6 +67,36 @@ disagreement is not reported.** (Claude 1.) **CONFIRMED.**
 
 One finding is confirmed. It decides whether up to four of the six new entries are register entries or OPEN items. That
 changes the census, the by-target rows and `../../STATUS.md`. Whether a forward need with no banked result resting on
-it goes on the register has so far been the user's decision (S14a part 2). So the user is asked whether to require
+it goes on the register has so far been the user's decision (S14a part 2). So the user was asked whether to require
 these filings. The reviewed version is preserved with these dispositions. The record's author repairs it to what must
 be true, given the user's answer. The repair gets a round 2 review by a fresh Claude agent and Grok.
+
+## The user's decision (2026-10-24)
+
+The orchestrator asked, verbatim:
+
+> S16 found four things it can't determine: (1) the body's compactness, i.e. its size compared with the distance to
+> other bodies and with how fast a field of the surroundings varies; (2) the momentum exchanged at each slab face; (3)
+> the slab's density response; (4) the list of inputs S22's debt table still needs. My decision list put all four on
+> the substrate requirements register, but you never asked for them there. The register's rule, as earlier passes
+> applied it, takes a need nothing proven yet rests on only when you require it, as you did for S14a part 2 ('Record
+> as requirement'). Otherwise it stays an open item in the S16 record and STATUS, off the register. Should the
+> register list them?
+
+The user selected the option labelled **"Require all four (Recommended)"**. Its text was:
+
+> You require all four on the register now, and each entry cites today's decision as its reason. The register is
+> where we collect what the brane must support before designing it, and these are laws or properties the slab and
+> bodies must have. The record also notes that my decision list and the register disagreed and that you settled it.
+
+The other option offered was "Register's rule decides". The option texts are the orchestrator's wording; the user
+chose among them.
+
+**What must be true of W1, given this decision.**
+- `R-S16-02`, `-03`, `-05` and `R-S22-02` each rest their admission on this user decision, quoted with its date. They
+  do not rest it on the record list's item 7.
+- The record and the pass report the disagreement between the record list (item 7 against item 9) and the register's
+  earlier applications of its rest-on test, with both sides quoted, and say that the user's decision settled it.
+- Each entry keeps its own source, its filer and the owner the sources assign. The decision adds an admission
+  ground. It assigns no owner and selects no law, form or material.
+- The census, the by-target rows, the record and `../../STATUS.md` follow from this.

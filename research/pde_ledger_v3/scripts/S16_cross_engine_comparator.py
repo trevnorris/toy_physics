@@ -232,8 +232,8 @@ PARTS = (('bulk.faceMinus','bulkSource1'), ('bulk.facePlus','bulkSource2'),
          ('bulk.weight','bulkWeight'),
          *((f'surface{k}.{o}',f'surface{k+1}.{o}') for k in range(2)
            for o in ('rest','centerMotion','radiusMotion')))
-SURFACE_TABLE=({'object':'inner sphere','py_index':0,'wl_index':1,'py_line':'39,53-54,108-111','wl_line':'21,38,47-53'},
-               {'object':'outer sphere','py_index':1,'wl_index':2,'py_line':'39,53-54,108-111','wl_line':'21,38,47-53'})
+SURFACE_TABLE=({'object':'inner sphere','py_index':0,'wl_index':1,'py_line':'39,51-54,108-110','wl_line':'21,38,47-53'},
+               {'object':'outer sphere','py_index':1,'wl_index':2,'py_line':'39,51-54,108-110','wl_line':'21,38,47-53'})
 FAMILIES = (('Nrate','nrate'), *((f'Drate{i}',f'drate{i+1}') for i in range(3)))
 
 def name_contract():
@@ -257,13 +257,13 @@ def name_contract():
     for p,w in (('n1','n1'),('n3','n3'),('a_minus','aminus'),('a_plus','aplus')):
         add(p,w,'supplied material face quantity '+p,'45','28',4)
     # q has two explicitly printed arities, for the volume and surface templates.
-    add('q','q','integral definition test integrand','106-111','52-53',-1)
+    add('q','q','integral definition test integrand','105,109','52-53',-1)
     for p,w in (('unitLength','"length"'),('unitTime','"time"'),('unitCount','"count"'),('unitMomentum','"momentum"')):
-        add(p,w,'item 5 dimension basis '+p,'342,359','205,217')
+        add(p,w,'item 5 dimension basis '+p,'342,356','205,217')
     for pf,wf in FAMILIES:
         for pp,wp in PARTS:
             add(pf+'_'+pp.replace('.','_'),wf+wp.replace('.',''),
-                'item 2 named rate term '+pf+'.'+pp,'306-312','178-184',1,pf+'.term.'+pp)
+                'item 2 named rate term '+pf+'.'+pp,'309-313,320-321','178-184',1,pf+'.term.'+pp)
     return tuple(rows)
 
 NAME_TABLE=name_contract()
@@ -302,40 +302,40 @@ def binding_contract():
         for path in shape_paths(shape):
             add(rule,p,w,obj+': '+str(path),pl,wl,kind,path,path,normalized)
     for mode in ('unnormalized','normalized'):
-        add('domains','domain.'+mode,'domain.'+mode,'region and item 2 domain: '+mode,'100-105','40,50-51','condition')
+        add('domains','domain.'+mode,'domain.'+mode,'region and item 2 domain: '+mode,'100,104','40,50-51','condition')
     for p,w in (('Volume','V'),('Surface.0','B.1'),('Surface.1','B.2')):
-        add('integral_definitions','integral.'+p,'integral.'+w,'region integral definition: '+p,'106-111','47-53')
-    add('supplied_material','supplied.material','supplied.material','supplied material equation','49,112','30,54')
-    group('supplied_momentum','supplied.momentum','supplied.momentum',('v',)*3,'supplied momentum equation','50,113','31,55')
+        add('integral_definitions','integral.'+p,'integral.'+w,'region integral definition: '+p,'105-110','47-53')
+    add('supplied_material','supplied.material','supplied.material','supplied material equation','49,111','30,54')
+    group('supplied_momentum','supplied.momentum','supplied.momentum',('v',)*3,'supplied momentum equation','50,112','31,55')
     for p,w,shape in (('surfaces','surfaces.chart',(('v',)*3,)*2),('normal','surfaces.normal',(('v',)*3,)*2),
                       ('areaMeasure','surfaces.measure',('v',)*2),('volumeMeasure','volume.measure','v')):
-        group('geometry_'+p,'geometry.'+p,w,shape,'region '+p,'51-74,114-122','37-46,56-58')
+        group('geometry_'+p,'geometry.'+p,w,shape,'region '+p,'51-54,64-68,74,114-117','37-46,56-58')
     indices=[(),*((i,) for i in range(3)),*product(range(3),repeat=2)]
     for k,idx in enumerate(indices):
-        add('moments','moment.'+str(idx),'moment.'+str(k),'item 4 moment: '+str(idx),'56-57,203-207','116-119')
+        add('moments','moment.'+str(idx),'moment.'+str(k),'item 4 moment: '+str(idx),'56-57,197-200','116-119')
     defs=[('count.definition','count.definition')]+[(f'{obj}.definition.{i}',f'{obj}.definition.{i+1}') for obj in ('dipole','momentum') for i in range(3)]
     for p,w in defs:
-        group('definitions',p,w,{'lhs':'v','rhs':'v'},'item 1 definition: '+p,'208-211','120-122')
+        group('definitions',p,w,{'lhs':'v','rhs':'v'},'item 1 definition: '+p,'101-103,197,201-204','120-122')
     for pf,wf,is_momentum in [('count','count',False)]+[(f'{obj}.{i}',f'{obj}.{i+1}',obj=='momentum') for obj in ('dipole','momentum') for i in range(3)]:
         parts=((('bulk.force','bulkSource1'),)+PARTS[2:]) if is_momentum else PARTS
         for pp,wp in (*parts,('rate','rate')):
-            add('rates_'+pp,pf+'.'+pp,wf+'.'+wp,'item 1 rate piece: '+pf+'.'+pp,'169-199,212-216','99-125')
-        group('force_companion',pf+'.integratedForceCompanion',wf+'.integratedForceCompanion',('v',)*3,'item 1 integrated force companion','198','113')
+            add('rates_'+pp,pf+'.'+pp,wf+'.'+wp,'item 1 rate piece: '+pf+'.'+pp,'159-193,205-209','99-125')
+        group('force_companion',pf+'.integratedForceCompanion',wf+'.integratedForceCompanion',('v',)*3,'item 1 integrated force companion','193,205-209','113')
         # The local evolution equation is split-vs-grouped, not a positional join.
-        add('local_rate',pf+'.localRate',wf+'.derivation','item 1 solved local rate: '+pf,'171,182','86,92,101',wp=('localRate',0,'rhs'))
+        add('local_rate',pf+'.localRate',wf+'.derivation','item 1 solved local rate: '+pf,'161,170,205-209','86,92,101',wp=('localRate',0,'rhs'))
         ROOT_SHAPES['wl',wf+'.derivation']={'localRate':({'lhs':'v','rhs':'v'},),'windowDerivative':'v','afterParts':'v'}
     for p in ('momentumReceived','momentumRate'):
-        group(p,p,p,('v',)*3,'item 3 '+p,'218-222','127-129')
+        group(p,p,p,('v',)*3,'item 3 '+p,'211-214','127-129')
     for i in range(3):
         for k in range(2):
             for origin in ('centerMotion','radiusMotion'):
-                add('momentum_surface_motion','momentumSurfaceMotion','momentumSurfaceMotion','item 1 momentum surface motion','223-224','130',pp=(i,f'surface{k}.{origin}'),wp=(i,f'surface{k+1}.{origin}'))
+                add('momentum_surface_motion','momentumSurfaceMotion','momentumSurfaceMotion','item 1 momentum surface motion','215-216','130',pp=(i,f'surface{k}.{origin}'),wp=(i,f'surface{k+1}.{origin}'))
     ROOT_SHAPES['py','momentumSurfaceMotion']=tuple({p:'v' for p,_ in PARTS if p.endswith('Motion')} for i in range(3))
     ROOT_SHAPES['wl','momentumSurfaceMotion']=tuple({w:'v' for _,w in PARTS if w.startswith('surface') and w.endswith('Motion')} for i in range(3))
     for pf,wf in FAMILIES:
         for pp,wp in PARTS:
             for sub in ('term','termRate'):
-                group('aliases_'+sub,pf+'.'+sub+'.'+pp,wf+'.'+sub+'.'+wp,{'lhs':'v','rhs':'v'},'item 2 '+sub+': '+pf+'.'+pp,'306-313','178-184')
+                group('aliases_'+sub,pf+'.'+sub+'.'+pp,wf+'.'+sub+'.'+wp,{'lhs':'v','rhs':'v'},'item 2 '+sub+': '+pf+'.'+pp,'309-315,320-321','178-184')
             origins=[('localEvolution','localEvolution')]
             if pp.startswith('bulk.'):
                 origins += [('bulk.centerMotion','bulk.centerMotion'),('bulk.radiusMotion','bulk.radiusMotion')]
@@ -344,21 +344,21 @@ def binding_contract():
                 origins += [(pp.split('.')[0]+'.'+o,wp.split('.')[0]+'.'+o) for o in ('centerMotion','radiusMotion')]
             for po,wo in origins:
                 add('derivative_piece_'+po.split('.')[-1],pf+'.termRatePart.'+pp+'.'+po,wf+'.termRatePart.'+wp+'.'+wo,
-                    'item 2 derivative origin: '+pf+'.'+pp+'.'+po,'252-268,313-315','147-157,181-183')
+                    'item 2 derivative origin: '+pf+'.'+pp+'.'+po,'243-259,315-317,320-321','147-157,181-183')
             for suffix in ('direct','partsSum'):
                 add('partition_'+suffix,pf+'.termRatePartition.'+pp+'.'+suffix,wf+'.termRatePartition.'+wp+'.'+suffix,
-                    'item 2 same direct derivative versus same origin sum: '+suffix,'285-293,316','168-173,183')
+                    'item 2 same direct derivative versus same origin sum: '+suffix,'221-238,281-287,315-318','168-173,183')
             for pk,wk in [('outsideIntegrals','outsideIntegrals'),('volumeIntegrand','volumeIntegrand'),('surface0Integrand','surface1Integrand'),('surface1Integrand','surface2Integrand')]:
                 add('partition_residual',pf+'.termRatePartition.'+pp+'.residual',wf+'.termRatePartition.'+wp+'.residual',
-                    'item 2 partition residual component: '+pk,'273-284,292','161-167,172','value',(pk,),(wk,))
+                    'item 2 partition residual component: '+pk,'266-279,288,318','161-167,172','value',(pk,),(wk,))
             add('partition_routes',pf+'.termRatePartition.'+pp+'.routes',wf+'.termRatePartition.'+wp+'.routes',
-                'item 2 partition route labels','293','173','label')
+                'item 2 partition route labels','289,318','173','label')
     for family in ('relative','absolute'):
         for obj in ('definition','rate','acceleration'):
             p='center.'+family+'.'+obj
-            group('center_'+obj,p,p,('v',)*3,'item 2 '+p,'327-333','189-196',normalized=True)
+            group('center_'+obj,p,p,('v',)*3,'item 2 '+p,'322-333','189-196',normalized=True)
     for obj in ('rateForNormalization','accelerationForNormalization'):
-        add('count_normalization','count.'+obj,'count.'+obj,'item 2 unnormalized count '+obj,'334-335','197-198')
+        add('count_normalization','count.'+obj,'count.'+obj,'item 2 unnormalized count '+obj,'322-323,334-335','197-198')
     # Dimensional leaves follow each source's independent dimensional walker.
     # Scalar set-of-units versus set-of-exponent-vectors is one dimension value.
     originals=tuple(rows)
@@ -369,17 +369,17 @@ def binding_contract():
         ptag='.'.join((row.py.tag,*(str(v) for v in ppath),'dimensions'))
         # Py dictionary dimension keys are verbatim, including embedded dots.
         wtag=row.wl.tag+'.dimensions'
-        add('dimensions',ptag,wtag,'item 5 dimension of '+row.object,'398-445','230-243','dimension',(),wpath)
+        add('dimensions',ptag,wtag,'item 5 dimension of '+row.object,'359-407,425-428','230-243','dimension',(),wpath)
     # Labels stay text; no paraphrase changes their content.
     for p,w in [('Volume','V'),('Surface','B'),('X','X'),('premises','physicalPremises'),('shapeChoice','shapeChoice'),('momentOrderChoice','momentOrderChoice'),('f','forceScope'),('Pi','PiScope')]:
         add('schema','schema','schema','schema entry: '+p,'92-99','49','label',(p,),(w,))
-    add('dimension_basis','dimensions.basis','dimensions.basis','item 5 dimension basis','359','217','basis')
+    add('dimension_basis','dimensions.basis','dimensions.basis','item 5 dimension basis','342,356','217','basis')
     for n in NAME_TABLE:
         if n.arity and n.py!='q':
             if n.alias: continue  # WL prints fields before aliases are inserted (217 vs 234).
-            add('dimension_fields','dimensions.fields','dimensions.fields','item 5 field dimension: '+n.object,'343-358,360','207-217','dimension_field',(n.py,),(n.wl,))
+            add('dimension_fields','dimensions.fields','dimensions.fields','item 5 field dimension: '+n.object,'344-355,357','207-217','dimension_field',(n.py,),(n.wl,))
     for p in ('objects','ungovernedRates','fluxDecomposition'):
-        add('coverage','coverage.'+p,'coverage.'+p,'coverage label: '+p,'446-448','244-246','label')
+        add('coverage','coverage.'+p,'coverage.'+p,'coverage label: '+p,'435-437','244-246','label')
     # Comparison notes only for two fully corresponding emitted objects.
     roots={}
     for r in originals:
@@ -1127,30 +1127,30 @@ def unpaired(ref,used,reason):
 
 def unpaired_reason(tag,engine):
     if engine=='py' and tag=='momentumSurfaceMotion':
-        return 'Py 223-224 includes bulk reference-motion entries; WL 130 prints only the four surface-motion entries. Those extra values stay unpaired. Dictionary keys and constructor leaves are not separately compared values.'
+        return 'Py 215-216 includes bulk reference-motion entries; WL 130 prints only the four surface-motion entries. Those extra values stay unpaired. Dictionary keys and constructor leaves are not separately compared values.'
     if engine=='wl' and tag.endswith('.derivation'):
-        return 'WL 86,92,101 prints the solved-law lhs and window-weighted windowDerivative/afterParts intermediates; Py 182 prints only the solved rhs and Py 183-185 prints unwindowed intermediates. These are different components. Dictionary keys are not compared values.'
+        return 'WL 86,92,101 prints the solved-law lhs and window-weighted windowDerivative/afterParts intermediates; Py 170 prints only the solved rhs and Py 171-173 prints unwindowed intermediates. These are different components. Dictionary keys are not compared values.'
     if tag=='dimensions.fields':
-        return 'Py 357-360 prints alias dimensions with the field table; WL prints its table at 217 before adding aliases at 234, so the alias entries have no printed counterpart. Field-name keys establish identities through the name table and are not compared values.'
+        return 'Py 354-357 prints alias dimensions with the field table; WL prints its table at 217 before adding aliases at 234, so the alias entries have no printed counterpart. Field-name keys establish identities through the name table and are not compared values.'
     if tag.endswith('.comparison') or tag=='coverage.fluxDecomposition':
-        return 'Missing constructor and reason-code metadata (WL 15,246) has no separate Py text component (Py 23-26,448). The message text itself is compared; metadata remains unpaired.'
+        return 'Missing constructor and reason-code metadata (WL 15,246) has no separate Py text component (Py 23-26,437). The message text itself is compared; metadata remains unpaired.'
     return 'No source-cited value selection covers this component. Constructor and key leaves are not separately compared values; any unselected content remains printed. The binding table supplies the selected component identities and native layouts.'
 
 
 def unjoined_reason(tag,engine):
     if '.dimensionSum.' in tag:
-        return 'Engine-local dimension-sum audit: sums and reference addends are enumerated from different native expression trees (py 418-445; wl 238-243); no term/reference correspondence by tree ordinal.'
+        return 'Engine-local dimension-sum audit: sums and reference addends are enumerated from different native expression trees (py 409-434; wl 238-243); no term/reference correspondence by tree ordinal.'
     if tag.startswith('calculus.'):
-        return 'SymPy-only Leibniz and generic pullback diagnostic (py 123-130); Wolfram window differentiation is a different intermediate (wl 74-95).'
+        return 'SymPy-only Leibniz and generic pullback diagnostic (py 60-63,122-128); Wolfram window differentiation is a different intermediate (wl 74-95).'
     if tag in ('geometry.chart','geometry.centerVelocity','geometry.radiusVelocity','geometry.centerNormalSpeed','geometry.radiusNormalSpeed','surfaces.velocity','surfaces.normalSpeed') or any(tag.startswith(k+'.') for k in ('geometry.chart','geometry.centerVelocity','geometry.radiusVelocity','geometry.centerNormalSpeed','geometry.radiusNormalSpeed','surfaces.velocity','surfaces.normalSpeed')):
-        return 'Different printed geometry objects: free-rho chart or split centre/radius velocities/speeds (py 114-122), versus surface charts and total velocities/speeds (wl 56-58). Surface charts themselves are bound; totals cannot bind individual parts.'
-    if tag=='moment.indices': return 'Wolfram-only explicit moment index labels (wl 119); SymPy encodes indices in tags (py 205-207).'
+        return 'Different printed geometry objects: free-rho chart or split centre/radius velocities/speeds (py 51-54,69-73,113,118-121), versus surface charts and total velocities/speeds (wl 56-58). Surface charts themselves are bound; totals cannot bind individual parts.'
+    if tag=='moment.indices': return 'Wolfram-only explicit moment index labels (wl 119); SymPy encodes indices in tags (py 198-200).'
     if any(k in tag for k in ('.weightedLocalRate','.afterParts.bulk','.afterParts.current')):
-        return 'SymPy unwindowed IBP intermediates (py 183-185); Wolfram prints window-weighted intermediates (wl 87-95,101), different objects.'
+        return 'SymPy unwindowed IBP intermediates (py 171-173); Wolfram prints window-weighted intermediates (wl 87-95,101), different objects.'
     if tag.endswith('.comparison'):
         return 'Engine-local note on an unjoined construction object (py 23-26; wl 15); no same object/counterpart binding.'
     if tag.endswith('.dimensions'):
-        return 'Dimension of an engine-only or differently packaged construction object; native dimension walkers py 398-445 and wl 230-243. No unused source-cited counterpart.'
+        return 'Dimension of an engine-only or differently packaged construction object; native dimension walkers py 359-407,425-434 and wl 230-243. No unused source-cited counterpart.'
     return 'No declared source-cited counterpart; retained for accounting, not a completeness claim.'
 
 

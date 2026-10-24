@@ -244,11 +244,11 @@ def name_contract():
         add(n,n,'region coordinate '+n,'33-36','18-19,37-43')
     for i in range(1,4):
         add(f'Xc{i}',f'c{i}',f'region centre component {i}','38','20',1)
-        add(f'D{i}',f'dip[{i}]',f'item 1 dipole component {i}','103','121',1)
-        add(f'P{i}',f'mom[{i}]',f'item 1 momentum component {i}','104','122',1)
+        add(f'D{i}',f'dip[{i}]',f'item 1 dipole component {i}','102','121',1)
+        add(f'P{i}',f'mom[{i}]',f'item 1 momentum component {i}','103','122',1)
     for p,w in (('r_in','rin'),('R','rout')):
         add(p,w,'region inner radius' if p=='r_in' else 'region outer radius','39','21',1)
-    add('N','count','item 1 material count','102','120',1)
+    add('N','count','item 1 material count','101','120',1)
     add('Sigma','Sigma','supplied material density','40','22',4)
     for stem,pl,wl,obj in (('F','41','23','material flux'),('G','42','24','momentum density'),('f','44','25','force density')):
         for i in range(1,4): add(f'{stem}{i}',f'{stem}{i}',f'supplied {obj} component {i}',pl,wl,4)
@@ -760,7 +760,11 @@ class Names:
         q=qcalls[0]; integrand=args[-1]
         if key=='volume':
             coords=tuple(s.Symbol(self.name(n,engine)) for n in ('x1','x2','x3','t'))
-            integrand=integrand.subs(dict(zip(coords,q.args)),simultaneous=True)
+            # x is bound Cartesian position (Py 82; WL 49 integral schema).
+            # Sequential substitution retains Subs around partial derivatives;
+            # simultaneous=True instead differentiates the time-dependent chart.
+            # The chart contains no Cartesian x, so replacements cannot cascade.
+            integrand=integrand.subs(list(zip(coords,q.args)))
         return template.xreplace({q:integrand})
     def load(self,streams):
         for engine,stream in streams.items():
@@ -845,7 +849,35 @@ def profile(name,arity,form,stratum,point,options=None):
         elif name=='N': base=s.S.Zero if stratum=='count_zero' else s.Rational(code,13)
         result=base+slope*z+(code+1+coefficient(52)/103)*z**2/103+(code+3+coefficient(53)/107)*z**3/107
         if degree==4: result+=(code+5+coefficient(54)/109)*z**4/109
+    if name=='Sigma' and arity==4 and stratum=='count_zero':
+        # Subtract a constant spatial mean at this stratum's anchor time.
+        # All spatial and time derivatives remain those of the live profile.
+        result-=zero_count_mean(form,point,tuple(sorted(options.items())))
     return s.expand(result)
+
+@lru_cache(maxsize=128)
+def zero_count_mean(form,point,opts=()):
+    """Exact mean of the generic density over the concentric spherical shell.
+
+    Odd centred Cartesian moments vanish. For even powers p_i, the angular
+    mean is prod((p_i-1)!!)/(sum(p_i)+1)!!; the radial mean supplies the rest.
+    This chooses test fields only, and applies no supplied balance equation.
+    """
+    options=dict(opts); anchor=POINTS[point][3]
+    def at(name):
+        return profile(name,1,form,'generic',point,options).subs(FORMAL[0],anchor)
+    inner,outer=at('r_in'),at('R')
+    shifted=profile('Sigma',4,form,'generic',point,options).subs(
+        {**{FORMAL[i]:FORMAL[i]+at('Xc'+str(i+1)) for i in range(3)},
+         FORMAL[3]:anchor},simultaneous=True)
+    mean=s.S.Zero
+    for powers,coefficient in s.Poly(shifted,*FORMAL[:3]).terms():
+        if any(p%2 for p in powers): continue
+        degree=sum(powers)
+        angular=s.prod(s.factorial2(p-1) for p in powers)/s.factorial2(degree+1)
+        radial=3*(outer**(degree+3)-inner**(degree+3))/((degree+3)*(outer**3-inner**3))
+        mean+=coefficient*angular*radial
+    return s.cancel(mean)
 
 @lru_cache(maxsize=8192)
 def substituted(expr,form,stratum,point,opts=()):
@@ -970,6 +1002,32 @@ def exact_difference(a,b):
         if integrand!=0: residual+=s.Integral(integrand,*limits)
     return s.expand(residual)
 
+def resolved_exact_difference(residual):
+    """Evaluate canonical substitution wrappers without changing derivative jets.
+
+    A partial derivative is rebuilt from its slot orders and evaluation point,
+    never by inserting the point into its differentiated function. Other Subs
+    nodes use SymPy's substitution semantics, after resolving their children.
+    Integrals remain integrals; only zero integrands and linearity are reduced.
+    """
+    def walk(value):
+        signature=partial_signature(value)
+        if signature is not None:
+            head,orders,points=signature
+            return partial_derivative(head,orders,tuple(walk(p) for p in points))
+        if not value.args: return value
+        args=tuple(walk(arg) for arg in value.args)
+        rebuilt=value.func(*args,evaluate=False) if isinstance(value,(s.Derivative,Relational)) else value.func(*args)
+        if isinstance(rebuilt,s.Subs):
+            evaluated=rebuilt.doit(deep=False)
+            return walk(evaluated) if evaluated!=rebuilt else rebuilt
+        if isinstance(rebuilt,s.Integral) and rebuilt.function==0: return s.S.Zero
+        return rebuilt
+    resolved=walk(residual)
+    if resolved in (s.true,s.false) or isinstance(resolved,Relational) or resolved.func in (s.And,s.Or,s.Not,s.Xor,s.Contains):
+        return resolved
+    return exact_difference(resolved,s.S.Zero)
+
 def label(n):
     if n.head in ('Text','Symbol','Number'): return n.value
     if call(n,'Missing'):
@@ -1019,6 +1077,8 @@ def compare_value(a,b,row,names,conditions,options,output=None):
     residual=exact_difference(aa,bb)
     result={'py_value':str(original[0]),'wl_value':str(original[1]),'py_alias_resolved':str(aa),'wl_alias_resolved':str(bb),
             'exact_residual':str(residual),'exact_method':'subtraction, expanded; predicates use symmetric difference',
+            'resolved_exact_residual':str(resolved_exact_difference(residual)),
+            'resolution_method':'evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption',
             'domain_context':[str(v) for v in conditions],
             'condition_residual':str(s.Xor(*conditions,evaluate=False)),
             'one_sided_domains':{'py_only':str(s.And(conditions[0],s.Not(conditions[1]))),'wl_only':str(s.And(conditions[1],s.Not(conditions[0])))},
@@ -1105,6 +1165,7 @@ def run(py_path,wl_path,out,*,names=NAME_TABLE,bindings=BINDING_TABLE,options=No
               'table_sizes':{'rules':len(RULES),'bindings':len(bindings),'names':len(names)},
               'root_shapes':[{'engine':e,'tag':tag,'shape':shape} for (e,tag),shape in ROOT_SHAPES.items()],
               'forms':FORMS,'strata':STRATA,'points':[[str(v) for v in p] for p in POINTS],
+              'count_zero_construction':'Sigma is its generic live polynomial minus its exact spatial mean on the shell at the probe time; N vanishes at that time. The subtracted mean is constant in x and t, preserving all density derivatives. No supplied balance is imposed.',
               'residual_target':'No residual target was given.'})
     if metadata:
         for form in FORMS:

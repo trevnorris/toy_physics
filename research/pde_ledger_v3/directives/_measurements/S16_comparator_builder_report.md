@@ -1,44 +1,35 @@
 # S16 comparator builder report
 
-The builder's final message, copied verbatim from its transcript (`_scratch/s16/cmp_build/build_resume_2.log`, lines 1707–1746).
+The builder's final message from repair 1 (round 0 findings K1–K4), copied verbatim from its transcript (`_scratch/s16/cmp_repair1/repair.log`, lines 38117–38147). The round 0 build's report is preserved at `98936790`.
 
-Completed the [comparator](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S16_cross_engine_comparator.py), [synthetic tests](/var/projects/toy_physics/research/pde_ledger_v3/scripts/test_S16_cross_engine_comparator.py), and [run record](/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S16_comparator_run_record.md).
+Repaired K1–K4 in the [comparator](/var/projects/toy_physics/research/pde_ledger_v3/scripts/S16_cross_engine_comparator.py) and [tests](/var/projects/toy_physics/research/pde_ledger_v3/scripts/test_S16_cross_engine_comparator.py): fixed partial-time reading, live zero-count fields, additional wrapper-resolved residuals, and corrected citations.
 
-`binding_contract` defines 47 rules generating 2028 bindings; `name_contract` defines 91 name rows. All tables and citations appear in the first [full-output](/var/projects/toy_physics/_scratch/s16/cmp_work/full_05.jsonl) record.
+The [rewritten run record](/var/projects/toy_physics/research/pde_ledger_v3/directives/_measurements/S16_comparator_run_record.md) contains the exact guarded commands, outcomes, output paths and SHA256 hashes.
 
-All 2028 bindings were compared; none was unformed or not compared. The 426 below-count bindings are `coverage:1602` and `comparison_notes:1603`–`comparison_notes:2027`: WL `Missing` metadata remains unpaired while its message is compared.
+- All **17 synthetic control groups completed**, including individual K1–K3 ablations.
+- Tests and full comparison exited **0**, with verified limits and no guard kill.
+- All **2028 bindings** were compared; none was unformed or not compared.
+- The first [output](/var/projects/toy_physics/_scratch/s16/cmp_work/repair_r1_full_01.jsonl) record prints all **47 rules, 2028 bindings and 91 name rows**, defined in `RULES`, `BINDING_TABLE` and `name_contract`.
+- Accounting: **26028 / 37578** Py/WL tags; **238488 / 580543** parsed leaves; **161466 / 212319** compared leaves.
+- The **426** bindings below their parsed counts are `coverage:1602` and `comparison_notes:1603`–`2027`; only WL `Missing` constructor/reason metadata remains unpaired.
 
-| Engine | Tags | Unjoined tags | Parsed leaves | Compared leaves |
-|---|---:|---:|---:|---:|
-| Py | 26028 | 24322 | 238488 | 161466 |
-| WL | 37578 | 36021 | 580543 | 212319 |
+Unjoined tags, grouped by reason:
 
-Bound-end parsed leaves: Py 161466; WL 213171. Every tag and unpaired component is enumerated in the output.
-
-| Unjoined reason | Py | WL |
+| Reason | Py | WL |
 |---|---:|---:|
-| Dimension audits use different expression-tree terms/reference addends | 24264 | 36014 |
-| Free-radial chart or split velocities/speeds versus surface totals | 26 | 6 |
-| Unwindowed IBP versus window-weighted intermediates | 21 | 0 |
-| Engine-specific Leibniz/pullback diagnostics | 5 | 0 |
-| Py-only bulk reference-motion dimensions | 6 | 0 |
-| Explicit moment-index labels versus indices encoded in tags | 0 | 1 |
+| Different native dimension-sum audits | 24264 | 36014 |
+| Free-radius chart and split velocities/speeds versus surface totals | 26 | 6 |
+| Extra bulk-reference dimensions without counterparts | 6 | 0 |
+| Unwindowed versus window-weighted intermediates | 21 | 0 |
+| Engine-only calculus diagnostics | 5 | 0 |
+| Explicit moment-index labels | 0 | 1 |
 
-Unpaired bound content includes Py bulk reference-motion entries and alias dimensions, WL solved-law/windowed intermediates, and constructor/key/`Missing` metadata. Source citations and complete membership are retained.
+Every member and reason remains printed. No shared requested balance, moment, rate or derivative piece was left unjoined.
 
-Evaluation used three polynomial forms with live geometry derivatives, at `(1/5,2/7,-1/4,1/6)`, `(-2/9,3/8,4/11,-1/7)`, and `(3/10,-1/3,2/5,2/9)`. Strata: generic, center velocity zero, radius velocities zero, both zero, and count zero. There were 39663 evaluated samples and 162 normalized zero-count exclusions; numerical integral fallbacks and unresolved coverage were both 0.
+Evaluation used three printed polynomial forms, three rational points and all five strata. Both `N` and the printed count vanish at every count-zero probe. There are **39663 evaluated samples**, **162 normalized-domain exclusions**, **0 unresolved coverage** and **0 numerical integral fallbacks**. All **885** exact comparisons retain both residual forms.
 
-Reused S14a_1 AST/InputForm readers and derivative-slot machinery (`de81b9fc`); reverified native reading, mappings, aliases, domains, dimensions, integrals, mutation controls, and accounting.
+Reused S14a_1 readers and derivative-slot machinery; re-exercised mappings, aliases, domains, dimensions, integrals and accounting.
 
-All 13 synthetic control groups completed. Tests and final full run both returned exit code 0, with verified limits and `guardReason: null`. Exact commands, output SHA256 hashes, and receipts are in the run record.
+Script runtimes: tests **19.954204236004443 s**; full comparison **7720.600736742999 s**. Peak RSS: **79856 / 1035920 KiB**.
 
-| Run | Guard wall seconds | Observed cgroup peak bytes |
-|---|---:|---:|
-| Tests | 14.437464013986755 | 76738560 |
-| Full | 7616.337004225 | 1114296320 |
-
-The reboot-interrupted output is preserved separately. Final accounting and hashes were validated; no reservation remains. No commit was made. Inputs remain at `1d990ee6`, under gate `5994e9ac`.
-
-No residual target was given. Scientific interpretation and non-author review remain for the S16 record.
-hook: Stop
-hook: Stop Completed
+No residual target was given. No commit was made; reviewed baseline remains `98936790`, and round 0 outputs remain intact. Open work belongs to the orchestrator: round 1 review and interpretation of the residuals.

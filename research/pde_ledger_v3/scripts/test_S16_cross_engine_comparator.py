@@ -210,6 +210,102 @@ def integral_and_domains():
     detects(a,b,True)
 
 
+def volume_partial_time():
+    # The independent operand spells out evaluation AFTER differentiation,
+    # bypassing the volume head whose Cartesian binding is under test.
+    point='Xc1(t)+rho*sin(theta)*cos(phi),Xc2(t)+rho*sin(theta)*sin(phi),Xc3(t)+rho*cos(theta),t'
+    explicit='Integral(rho**2*sin(theta)*Subs(Derivative(F1(u,v,w,z),z),(u,v,w,z),('+point+')),(rho,r_in(t),R(t)),(theta,0,pi),(phi,0,2*pi))'
+    wexplicit='Inactive[Integrate][rho^2*Sin[theta]*Derivative[0,0,0,1][F1][c1[t]+rho*Sin[theta]*Cos[phi],c2[t]+rho*Sin[theta]*Sin[phi],c3[t]+rho*Cos[theta],t],{rho,rin[t],rout[t]},{theta,0,Pi},{phi,0,2*Pi}]'
+    options={**FAST,'strata':c.STRATA}
+    for py,wl in [('Volume(Derivative(F1(x1,x2,x3,t),t))',wexplicit),
+                  (explicit,'V[Derivative[0,0,0,1][F1][x1,x2,x3,t]]')]:
+        records=fixture_run({'object':py},{'object':wl},options=options)
+        assert samples(records) and samples(records)==samples(records,'wl'), 'partial time became chart time'
+    partial=fixture_run({'object':'Volume(Derivative(F1(x1,x2,x3,t),t))'},
+                        {'object':'V[Derivative[0,0,0,1][F1][x1,x2,x3,t]]'},options=options)
+    convective='+'.join('Derivative(Xc%d(t),t)*Derivative(F1(x1,x2,x3,t),x%d)'%(i,i) for i in (1,2,3))
+    along=fixture_run({'object':'Volume(Derivative(F1(x1,x2,x3,t),t)+'+convective+')'},
+                      {'object':'V[Derivative[0,0,0,1][F1][x1,x2,x3,t]]'},options=options)
+    detects(partial,along,True)
+    assert [r.get('resolved_exact_residual') for r in partial if r['kind']=='comparison'] != [r.get('resolved_exact_residual') for r in along if r['kind']=='comparison']
+
+
+def count_zero_fields():
+    options={'forms':c.FORMS,'strata':('count_zero',),'points':range(len(c.POINTS))}
+    for py,wl in [('Volume(Sigma(x1,x2,x3,t))','0'),
+                  ('0','V[Sigma[x1,x2,x3,t]]'),('N(t)','0')]:
+        records=fixture_run({'object':py},{'object':wl},options=options)
+        assert samples(records) and samples(records)==samples(records,'wl'), 'printed count does not vanish'
+    live=fixture_run({'object':'Derivative(Sigma(x1,x2,x3,t),x1)+Derivative(Sigma(x1,x2,x3,t),t)'},
+                     {'object':'0'},options=options)
+    assert samples(live)!=samples(live,'wl'), 'density was frozen'
+    # A witness in the printed count, rather than just the separate N symbol.
+    generic=fixture_run({'object':'Volume(Sigma(x1,x2,x3,t))'},{'object':'0'})
+    witness='(Volume(Sigma(x1,x2,x3,t))-('+samples(generic)[0]+'))*F1(x1,x2,x3,t)'
+    full=fixture_run({'object':witness},{'object':'0'},options={**FAST,'strata':('generic','count_zero')})
+    reduced=fixture_run({'object':witness},{'object':'0'},options={**FAST,'strata':('generic','count_zero'),'normalize_all':True})
+    assert samples(full)!=samples(full,'wl') and samples(reduced)==samples(reduced,'wl')
+    normalized=fixture_run({'object':'Volume(Sigma(x1,x2,x3,t))/N(t)'},{'object':'V[Sigma[x1,x2,x3,t]]/count[t]'},
+                          (basic_row(normalized=True),),options=options)
+    coverage=[v['coverage'] for r in normalized if r['kind']=='comparison' for v in r.get('samples',[])]
+    assert coverage and set(coverage)=={'outside normalized domain'}
+
+
+def wrapper_resolution():
+    identity=fixture_run({'object':F},{'object':F})
+    def resolved(records):
+        return [r['resolved_exact_residual'] for r in records if r['kind']=='comparison']
+    for context in ('plain','volume','surface'):
+        py='Subs(u*Derivative(F1(u,v,w,z),z),(u,v,w,z),(x1,x2,x3,t))'
+        wl='x1*Derivative[0,0,0,1][F1][x1,x2,x3,t]'
+        wrap=lambda p,w:(p,w)
+        if context=='volume': wrap=lambda p,w:('Volume('+p+')','V['+w+']')
+        if context=='surface': wrap=lambda p,w:('Surface(0,'+p+')','B[1,'+w+']')
+        a,b=wrap(py,wl)
+        base=fixture_run({'object':a},{'object':b})
+        assert resolved(base)==resolved(identity), 'feasible wrapper remains unresolved'
+        assert all('exact_residual' in r for r in base if r['kind']=='comparison')
+        for changed in (py.replace('),z)', '),u)'),py.replace('),z)', '),(z,2))'),
+                        py.replace('(x1,x2,x3,t))','(x1,x2,x3,t+1/7))')):
+            a,_=wrap(changed,wl)
+            mutated=fixture_run({'object':a},{'object':b})
+            detects(base,mutated,True)
+            assert resolved(mutated)!=resolved(base), 'wrapper resolution lost derivative identity'
+    # Composite points retain partial time, even when the point moves in time.
+    base=fixture_run({'object':'Subs(u*Derivative(F1(u,v,w,z),z),(u,v,w,z),(Xc1(t),x2,x3,t))'},
+                     {'object':'c1[t]*Derivative[0,0,0,1][F1][c1[t],x2,x3,t]'})
+    assert resolved(base)==resolved(identity)
+
+
+def repair_ablations():
+    def clears():
+        c.substituted.cache_clear(); c.evaluate_cached.cache_clear()
+    def rejected(control):
+        try: control()
+        except AssertionError: return
+        raise AssertionError('repair control survived its targeted ablation')
+    original=c.Names.integral
+    def old_volume(self,engine,head,args):
+        if head not in ('Volume','V'): return original(self,engine,head,args)
+        template=self.templates[engine,'volume']
+        q=next(f for f in template.atoms(AppliedUndef) if f.func.__name__==self.name('q',engine))
+        coords=tuple(s.Symbol(self.name(n,engine)) for n in ('x1','x2','x3','t'))
+        return template.xreplace({q:args[-1].subs(dict(zip(coords,q.args)),simultaneous=True)})
+    try:
+        c.Names.integral=old_volume; clears(); rejected(volume_partial_time)
+    finally: c.Names.integral=original; clears()
+    original_profile=c.profile
+    try:
+        c.profile=lambda name,arity,form,stratum,point,options=None:original_profile(name,arity,form,'generic' if name=='Sigma' and stratum=='count_zero' else stratum,point,options)
+        clears(); rejected(count_zero_fields)
+    finally: c.profile=original_profile; clears()
+    original_resolution=c.resolved_exact_difference
+    try:
+        c.resolved_exact_difference=lambda residual:residual
+        rejected(wrapper_resolution)
+    finally: c.resolved_exact_difference=original_resolution
+
+
 def schema_fixture(row,e,value):
     end=getattr(row,e); shape=c.ROOT_SHAPES.get((e,end.tag))
     def build(shape):
@@ -440,7 +536,7 @@ def quadrature_path():
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);args=parser.parse_args()
     start=time.monotonic()
-    tests=[mutation_control,own_labels,equivalents,derivative_points,integral_and_domains,binding_repoints,name_repoints,piece_and_packaging,domain_and_balance_factor,coverage_controls,alias_mutation,duplicates,quadrature_path]
+    tests=[mutation_control,own_labels,equivalents,derivative_points,integral_and_domains,volume_partial_time,count_zero_fields,wrapper_resolution,repair_ablations,binding_repoints,name_repoints,piece_and_packaging,domain_and_balance_factor,coverage_controls,alias_mutation,duplicates,quadrature_path]
     try:
         for fn in tests:test(fn.__name__,fn)
     except Exception:

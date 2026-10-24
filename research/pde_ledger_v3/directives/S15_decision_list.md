@@ -7,6 +7,9 @@ Paths are relative to `research/pde_ledger_v3/`. The lookups behind this list ar
 **Gate.** This list gets one Codex + Grok pass and is folded once (G2). It also names the objects the build computes,
 so that content is reviewed until clear before any builder (spec row).
 
+**Revision 2** folds pass 1 once (`directives/_measurements/S15_decision_list_review_p1_disposition.md`, D1–D5). The
+reviewed revision 1 is preserved at `d6e4f74a`.
+
 ## Filing and framing
 - **The plan's step.** S15, "Two drains attract" (`V3_STEP_PLAN.md:652–669`) (L1). The plan:
   - takes the drain strengths as "given", with a "Noether stress at infinity" (`:660`);
@@ -29,17 +32,14 @@ so that content is reviewed until clear before any builder (spec row).
   (L2).
 
 ## User decisions (2026-10-24)
-The user selected these options. The wording is the orchestrator's option text. The build directive carries the
-choices, not the options' reasons (M2).
-- **Stress law, "Use P5 + P6":** "S15 adopts P5 and P6 as labelled premises. It computes the momentum the two drains'
-  combined flow carries into a region around one drain, piece by piece (carried flow momentum, pressure, viscosity).
-  The result is conditional on P5/P6 and on S14a's open far-flow requirement. It is not yet called the force on the
-  throat."
-- **Inflow, "Keep it general":** "Any radial inflow and density profile around each drain. S15 then says which
-  profiles give an inverse-square pull, and that becomes gravity's flow requirement, compared with light's in S21.
-  S14a left the far flow open, so supplying it would freeze it."
-- **Motion, "Let them move":** "Keep each drain's velocity live. A moving drain that swallows material picks up a
-  drag, the classic objection to 'gravity as inflow' (prior-art row G13). Holding the drains still would hide it."
+The user selected three options. Their verbatim text is kept in the pass 1 disposition ("The user's decisions"),
+and the record quotes it from there. What each choice puts in this step:
+- **Stress law, "Use P5 + P6":** P5 and P6 are adopted as labelled premises (below). The build computes the momentum
+  the two drains' combined flow carries into a region around one drain, piece by piece. The result is conditional on
+  P5 and P6 and on `R-S14a-01`. No printed object is called the force on the throat.
+- **Inflow, "Keep it general":** each drain's inflow and density are general radial profiles (below). No far flow is
+  supplied.
+- **Motion, "Let them move":** both drains' centres move, and their velocities stay live in every object.
 
 Which profiles give which dependence on the separation is the record's reading of the printed objects. The build
 prints the objects.
@@ -92,23 +92,32 @@ between its live faces (L4).
 ## What the build computes
 Both engines construct these independently, with the `.wl` blind.
 
-1. **The momentum crossing each surface.** For the inner and the outer surface, two parts, kept apart, in the
-   coordinates `x` of the supplied equations:
-   - **The rest part:** `−Π^{ij}` contracted with the surface normal and integrated over the surface, in four pieces
-     kept apart: the carried current, the pressure, the viscous stress and `Π_o`.
-   - **The transport of `G` by the surface's motion,** in two pieces: from the motion of `X_2`, and from the change
-     of the surface's radius.
+1. **The momentum crossing each surface into the region.** For the inner and the outer surface, two parts, kept
+   apart, in the coordinates `x` of the supplied equations. On each surface `n` is the region's outward unit normal,
+   so on the inner surface it points toward `X_2`. `v_S` is the velocity of a point of the surface.
+   - **The rest part:** `−∮ Π^{ij} n_j dS`, in four pieces kept apart: the carried current, the pressure, the viscous
+     stress and `Π_o`.
+   - **The transport of `G` by the surface's motion:** `∮ G^i (v_S · n) dS`, in two pieces: the part of `v_S` from
+     the motion of `X_2`, and the part from the change of the surface's radius.
 
-   Within each piece, the terms that contain fields of both drains are printed apart from the terms that contain
-   one drain's fields only, and every term that contains a remainder is printed apart. The pressure of the total
-   density does not split this way. It is printed whole, and beside it, as a labelled choice, its expansion through
-   first order in `ρ_1` about `ρ_2 + ϱ`, with its order printed.
+   **Grouping by drain.** Each field of the split carries one label: drain 1 (`ρ_1`, `V_1`), drain 2 (`ρ_2`, `V_2`)
+   or remainder (`ϱ`, `W`). Within each piece built from the split fields, every term is put in the group named by
+   exactly the set of labels its factors carry, with one group for each nonempty set. Each term then lies in one
+   group, and the groups add up to the piece. `η`, `ζ`, `n` and `v_S` carry no label. `Π_o` is not built from the
+   split fields and is printed whole, as is the whole pressure (below).
+
+   **The pressure.** The pressure of the total density is printed whole, where `p_br` is defined at `ρ_br`. Beside
+   it, as a labelled choice, its expansion through first order in `ρ_1` about `ρ_2 + ϱ`, grouped as above (a
+   function of `ρ_2 + ϱ` carries the labels drain 2 and remainder), with its order printed, and the whole pressure
+   minus the expansion. The expansion exists only where `p_br` is defined and differentiable at `ρ_2 + ϱ`; that
+   condition is labelled where it is printed.
 2. **The region's momentum balance.** From the supplied balance: the rate of the region's momentum, the integral of
    `G^i`, beside item 1's parts at both surfaces and the integrated force density, each printed apart. The integrated
    force density stays undivided.
 3. **Dimensional homogeneity** of items 1 and 2.
 
-Every object is stated on its domain: `|X_1 − X_2| > R > r_in > 0`, with both cores excluded.
+Every object is stated on its domain: `|X_1 − X_2| > R > r_in > 0`, with both cores excluded, and each pressure
+object where its condition above holds.
 
 The build computes no force law, coefficient, normalization or mass. It gives no relation of any printed object to
 S14a's `J` or to the plan's `Q`, `Θ_Q` or `N_∞,3`. It identifies no printed object with the force on a throat.
@@ -123,22 +132,26 @@ conclusions. No acceptance criterion references an expected value.
   The force density and the other current stay general.
 - **Labelled choices:**
   - each drain's fields as radial profiles about its moving centre;
-  - the split of the total fields into those profiles and the remainders;
+  - the split of the total fields into those profiles and the remainders, and the grouping of terms by it;
   - the control surfaces' shape;
-  - the pressure's expansion through first order in `ρ_1`.
+  - the pressure's expansion through first order in `ρ_1`, where it exists.
 - **Adopted premises:** P5 and P6, labelled, with the two flagged identifications above.
 - **Transfer:** wherever S14a part 1's projected domain and P5 and P6 hold, outside both cores, with drain 1 outside
   the outer surface.
 
 ## For the record and its register pass (not in the build directive)
+- **The user's decisions.** The record quotes them from the pass 1 disposition ("The user's decisions").
 - **What the record reads from the printed objects.** From the printed objects alone, it states:
-  - which conditions on the profiles, the remainders, `Π_o` and `f` give the crossing momentum a stated dependence on
-    the separation, including which give an inverse-square one, as the user's "Keep it general" asks;
+  - which conditions on the profiles, the remainders, `Π_o` and `f` give a named printed piece, or a named sum of
+    printed pieces, a stated dependence on the separation, including which give an inverse-square one, as the user's
+    "Keep it general" asks. Each such dependence is stated with the conditions on the surfaces under which it holds:
+    both radii, their rates, and the motion of `X_2`;
   - the terms that depend on each drain's velocity;
   - the sign of a printed piece only on its stated conditions, and only for that piece (`:666–668`).
 - **Requirements.** The record files each requirement as the register's rest-on test admits it, or on a user decision
-  that it quotes. The user's "Keep it general" files gravity's flow requirement for S21's comparison. It merges into
-  `R-S21-01` where the register's merge test says the two cover the same requirement.
+  that it quotes. The user's "Keep it general" files gravity's flow requirement for S21's comparison, as a condition
+  on the named object, with its conditions on the surfaces. It is not called a pull or the force on a throat (Retained
+  OPEN). It merges into `R-S21-01` where the register's merge test says the two cover the same requirement.
 - **Carried from S16's acceptance.** The status lines that still present S16 as written for review are updated to its
   acceptance at `4f907e9d` (`directives/_measurements/S16_record_r2_review_disposition.md`, "Carried to the next step
   record").
@@ -159,7 +172,7 @@ conclusions. No acceptance criterion references an expected value.
 ## Retained OPEN
 - **No owner assigned here:** the forms of `f^i` and `Π_o^{ij}`. The slab's material law goes to S8/S22
   (`steps/S12_order_source.md:292`).
-- **Whether the crossing momentum acts on the throat.** That needs the momentum exchanged at the faces (`R-S16-03`, no
+- **Whether any printed momentum acts on the throat.** That needs the momentum exchanged at the faces (`R-S16-03`, no
   owner named) and the core's content (S22). This step does not make the identification.
 - **S22:** the source map `{J, Θ_Q, N_∞,3, Q}`, the normalization and `I_F,12` (`V3_STEP_PLAN.md:1306–1307`), and
   the cores' content.
@@ -176,6 +189,6 @@ general radial profiles and every term live, piece by piece. It is conditional o
 step gives no force law, no normalization, no mass, no map from `J` to a drain strength, and no force on a throat.
 
 ## Next
-This pass: one Codex + Grok pass, folded once, with the spec content reviewed until clear. Then the build directive,
-the build and its G1 review (fresh Claude + Grok) until clear, a cross-engine comparison, and the record and its
-register pass, each reviewed until clear.
+Pass 1 is folded once, here. The spec content changed, so it gets a second Codex + Grok pass, and is reviewed until
+clear. Then the build directive, the build and its G1 review (fresh Claude + Grok) until clear, a cross-engine
+comparison, and the record and its register pass, each reviewed until clear.

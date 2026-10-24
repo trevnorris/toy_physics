@@ -4,8 +4,9 @@
 S16 decision list is revision 4, cleared at `0464b80a`; the constructions are accepted at
 `1d990ee6`, and the comparator at `f08db34a`, with its scoped citation-containment claim.
 Acceptance of those instruments is not acceptance of this record. No engine or comparator was
-rerun. The round-0 record is preserved at `4ae7e6cf`; this repair addresses Y1–Y4 and makes
-no new commit. The edit account remains against `4d4d22cb`. (Retrieve M01–M03/M16–M17.)
+rerun. Round 0 is preserved at `4ae7e6cf` and the reviewed Y1–Y4 repair at `fa1fa413`
+(not accepted). The user's W1 decision is recorded at `4e5a94bc`; this W1 repair makes no
+new commit. The edit account remains against `4d4d22cb`. (Retrieve M01–M03/M16–M17/M19.)
 
 **Deliverable:** record what the supplied balances give for a moving region outside one throat's
 excluded core, preserve the cross-engine findings, file the specified future requirements and
@@ -25,6 +26,7 @@ membership, M11 sample coverage, M12 every unjoined tag and unpaired component, 
 binding's parsed/compared counts. These are retrievals, not a new comparison instrument.
 M17 retrieves the preserved round-0 dispositions and repair scope; M18 retrieves the supplied,
 integral-definition and geometry comparisons added to the status account for Y4.
+M19 retrieves the round-1 W1 dispositions, the user's dated admission decision and their provenance.
 
 ## 1. Supplied inputs, choices and their standing
 
@@ -473,20 +475,29 @@ The register's schema and rest-on method govern. A requirement names a future ob
 postulate is assumed here, and a defect is already wrong. The user's selected options
 expressly file the passive-factor needs and inertial relation. The list author separately
 files compactness (E3/F3), face momentum (E2), density response (O2 `:138`) and the S22
-debt account. The current contract, item 7, directs this record to file the list's named
-objects. Their admission grounds are the distinct sourced future-delivery conditions below,
-not attribution of every filing to the user or a claim that the unsolved regional balances
-require a selected material state. A future owner alone does not admit an unspecified
-closure form. (Retrieve M01–M02/M04/M14/M17.)
+debt account. Their original sources, filers and owners remain as recorded. Admission of
+those four now rests on the user's **2026-10-24** selection of **"Require all four (Recommended)"**.
+The option text was written by the orchestrator and selected by the user:
+
+> You require all four on the register now, and each entry cites today's decision as its reason. The register is
+> where we collect what the brane must support before designing it, and these are laws or properties the slab and
+> bodies must have. The record also notes that my decision list and the register disagreed and that you settled it.
+
+The decision supplies the four admission grounds, not a new computed dependence of the
+regional balances. It assigns no owner and selects no law, form or material. The prior
+version used record-list item 7 to admit these filings; the conflict with item 9 and the
+register's earlier rest-on applications is quoted in §7 and settled for these four by this
+decision. A future owner alone still does not admit an unspecified closure form.
+(Retrieve M01–M02/M04/M14/M19.)
 
 | Entry; status | Object filed once | Target; source/failure boundary |
 |---|---|---|
 | `R-S16-01`; OPEN | Named surroundings field, separation from the body's own field, normalization | **No owner named**. User's 2026-10-21 "Record what it needs": "What one needs … goes to the register as a requirement" (list `:49–53`; pass-1 decision). Admitted on that express passive-factor requirement; without it received momentum cannot be given that interpretation. |
-| `R-S16-02`; OPEN | Body compactness relative to both separation and surroundings-field variation scale | **No owner named** for physical delivery; S22 receives the debt. Orchestrator's list filing `:158–161`, "The body's compactness, separately", from E3/F3 and source assumption `:697–700`. Admitted as the named small-body condition of the later response approximation, not a user-selected or imposed compactness premise; count moments settle neither comparison. |
-| `R-S16-03`; OPEN | Momentum exchanged at each slab face, split by the faces' motion | **No owner named**. Orchestrator's list filing `:162–163`, "For the faces", from E2's direction to keep "the face-resolved momentum accounting OPEN". Admitted as that explicitly retained missing accounting object; undivided `f` and regional control-surface motion do not deliver it. |
+| `R-S16-02`; OPEN | Body compactness relative to both separation and surroundings-field variation scale | **No owner named** for physical delivery; S22 receives the debt. Original filer/source: orchestrator's list `:158–161`, "The body's compactness, separately", E3/F3 and source assumption `:697–700`. **Admission: user's 2026-10-24 "Require all four (Recommended)" decision**, quoted above/M19, not item 7. No compactness value is imposed; count moments settle neither comparison. |
+| `R-S16-03`; OPEN | Momentum exchanged at each slab face, split by the faces' motion | **No owner named**. Original filer/source: orchestrator's list `:162–163`, "For the faces", E2's direction to keep "the face-resolved momentum accounting OPEN". **Admission: user's 2026-10-24 "Require all four (Recommended)" decision**, quoted above/M19, not item 7. Undivided `f` and regional control-surface motion do not deliver it. |
 | `R-S16-04`; OPEN | Momentum–material relation needed for an inertial factor | **S8**, with S1.5 antecedents when available. User's 2026-10-21 "Count material; mass open": "The law it needs goes to the register, as O2 keeps it (S8)" (list `:54–56`, O2 `:133`). Admitted on this express future inertial-relation requirement; no inertia follows from printing `P` beside the count centre. |
-| `R-S16-05`; OPEN | Slab density response | **S8** substrate reduction / **S22** completion. Orchestrator's list filing `:164–166`: "The slab's density response is also OPEN there", citing O2 `:138`. Admitted as the list's expressly carried future density-response delivery, required to give that interpretation to material/mass accounting; retaining live `Σ` does not supply it. It is not admitted merely because O2 names an owner. |
-| `R-S22-02`; OPEN | S22's missing reduction-data inventory: `M`, `a`/`a_WT`, multipoles of `M`, source normalization, any boundary-flux suppression, and the separately identified `a_WT`/`a_mouth` bridge | **S22 for the debt-table account**, not an invented physical supplier. Orchestrator's filing `:28–30`, "What stays a debt for S22's table is what this step does not deliver", and plan A11/debt rows. Admitted as the named debt-account delivery; compactness is cross-referenced to `R-S16-02`, not filed twice. Printed count/moments/fluxes are not these debts. |
+| `R-S16-05`; OPEN | Slab density response | **S8** substrate reduction / **S22** completion. Original filer/source: orchestrator's list `:164–166`, "The slab's density response is also OPEN there", O2 `:138`. **Admission: user's 2026-10-24 "Require all four (Recommended)" decision**, quoted above/M19, not item 7 or a future owner alone. Retaining live `Σ` does not supply a density response; no new dependency of O2's object is claimed. |
+| `R-S22-02`; OPEN | S22's missing reduction-data inventory: `M`, `a`/`a_WT`, multipoles of `M`, source normalization, any boundary-flux suppression, and the separately identified `a_WT`/`a_mouth` bridge | **S22 for the debt-table account**, not an invented physical supplier. Original filer/source: orchestrator's list `:28–30`, "What stays a debt for S22's table is what this step does not deliver", and plan A11/debt rows. **Admission: user's 2026-10-24 "Require all four (Recommended)" decision**, quoted above/M19, not item 7. Compactness is cross-referenced to `R-S16-02`, not filed twice. Printed count/moments/fluxes are not these debts. |
 
 Each entry has the register's source, target, requirement, on-failure and OPEN fields.
 None names a kinetic/material/drain law, candidate, premise or means of meeting the
@@ -532,8 +543,10 @@ and historic objection without assuming its applicability. It adds six entries:
 **one S8/S22**, **one S22 debt-table account**. Exactly **four** existing entries gain
 source/provenance: `R-S1-01`, `R-S1-02`, `R-S12-02` and `R-S21-01`. The Y1–Y4 repair is
 **25 → 25**, with no new entry and two additional existing-entry S16 sources. No status
-changes or requirement closes. The original before-count is the register at `4d4d22cb`,
-not an estimate from the decision list. (Retrieve M14/M16–M17.)
+changes or requirement closes. This W1 repair is also **25 → 25**: no new entries or
+additional S16 consumer sources; `R-S16-02`, `-03`, `-05` and `R-S22-02` gain the user's
+dated admission decision. The original before-count is the register at `4d4d22cb`, not an
+estimate from the decision list. (Retrieve M14/M16–M17/M19.)
 
 ## 7. What stays OPEN, and source disagreements
 
@@ -561,6 +574,24 @@ Every retained-OPEN item of the list remains open with its sourced owner:
 The following disagreements/qualifications are preserved with both sides, not repaired by
 new calculation:
 
+- **Record-list/register admission disagreement, settled by the user.** Record-list item 7
+  says **"The record and the pass file each one as that section states"**; item 9 says
+  **"Where this list and the register disagree, the register wins, and the disagreement
+  is reported."** The register's method says **"Each becomes an entry keyed by the step
+  that must deliver"**, but its earlier applications say **"A requirement is not everything
+  a later step would find useful"**, **"an OPEN item sources no entry under the rest-on
+  test"**, and **"An unspecified response form needed only to select or solve a later
+  closed material state is an OPEN handoff, not an additional delivery condition of this
+  unsolved named object. A future closure owner alone does not satisfy this test."**
+  O2's density row says **"No new density-response entry"**; S14a part 2's forward object
+  instead **"is explicitly required by the user, not entered merely because a future
+  solve could use it."** The prior S16 version relied on item 7 for the four list-author
+  filings without establishing their admission under those earlier applications. The
+  user's **2026-10-24 "Require all four (Recommended)"** decision, quoted in §6, settled
+  this disagreement for `R-S16-02`, `-03`, `-05` and `R-S22-02`: each now cites that
+  explicit user requirement as its admission ground. Original sources, filers and owners
+  are retained; no law, form or material is selected. Earlier passes are not retrospectively
+  rewritten and no general ambiguity of the method is decided. (Retrieve M01/M14/M19.)
 - **Who files the requirements.** The orchestrator's heading says **"Requirements the
   user's decisions file"**. The selected passive option instead specifies **"What one
   needs (a named field of the surroundings, a rule separating it from the body's own
@@ -570,8 +601,9 @@ new calculation:
   momentum and density response are the orchestrator's separate list filings at
   `:158–166`, from E3/F3, E2 and O2 `:138`; the S22 debt account is its filing at
   `:28–30`. The heading's broader attribution disagrees with the option texts. Each
-  entry retains its own filer and admission ground in §6/the register; none of those
-  three additions is relabelled a user decision. (Retrieve M01–M02/M04/M14/M17.)
+  entry retains its original filer in §6/the register; none of those original filings is
+  relabelled a 2026-10-21 user decision. The separate 2026-10-24 user decision now adds
+  register admission for all four list-author filings. (Retrieve M01–M02/M04/M14/M17/M19.)
 - **Plan versus the later user-selected object.** The plan says **"Rewrite S16 as a
   conditional response-side monopole approximation"** and calls `M`, `a`, multipoles,
   compactness, source normalization and boundary-flux suppression **"supplied inputs"**.
@@ -616,10 +648,9 @@ new calculation:
   as reproduced by the sector"**, whereas its method says **"Run this route for every
   sector with identified prior art"**. The broader register route is used. The current
   contract requests **"a committed generator script"** and also says **"No commit
-  and no push"**. The reviewed generator and measurements are preserved at `4ae7e6cf`;
-  this repair is supplied uncommitted under the no-commit instruction. No operative
-  register/list conflict is left by that choice;
-  the conflicting wording is reported, not silently satisfied. (Retrieve M01/M14–M17.)
+  and no push"**. The reviewed generator and measurements are preserved at `4ae7e6cf`
+  and `fa1fa413`; this W1 repair is supplied uncommitted under the no-commit instruction.
+  The conflicting wording is reported, not silently satisfied. (Retrieve M01/M14–M17/M19.)
 
 The two unresolved domain predicates, native inventory comparison and all unpaired/unjoined
 coverage in §3 remain as measured. No owner is named for extending their comparison. Whether
@@ -638,14 +669,19 @@ source, accepted engine, comparator or transcript changes.
 
 | File | Changes |
 |---|---|
-| `SUBSTRATE_REQUIREMENTS.md` | Updates S14a part 2 header/pass heading and generator/measurement provenance to acceptance at `79511272`; no other part-2 pass content changes. Adds the source-step-id note for `R-S14a-01`. Adds S16 status/census summary and population pass with both routes, merge/rest-on applications and limitations. Adds six entries and six by-target rows for §6's objects, all OPEN; updates the two current total-count lines from nineteen to twenty-five. Each new entry names its filer, source quotation/line/finding and admission ground: selected user options for passive/inertial needs, list-author filings for compactness/face momentum/density response/debt account. Reports the heading/option-text disagreement. Adds inherited coordinate-dimension/support-identification S16 sources and scope/rest-on paragraphs to `R-S1-01`/`R-S1-02`, supplied-projection/Keep-S12 provenance to `R-S12-02`, and framing provenance to `R-S21-01`, including all four by-target rows. Records four existing-source gains overall and 25→25 for Y1–Y4, plus preserved-review/no-new-commit provenance and the OPEN S19-gate/charter-feedback handoffs; no existing requirement/target/status changes. |
+| `SUBSTRATE_REQUIREMENTS.md` | Updates S14a part 2 header/pass heading and generator/measurement provenance to acceptance at `79511272`; no other part-2 pass content changes. Adds the source-step-id note for `R-S14a-01`. Adds S16 status/census summary and population pass with both routes, merge/rest-on applications and limitations. Adds six entries and six by-target rows for §6's objects, all OPEN; updates the two current total-count lines from nineteen to twenty-five. Each new entry keeps its filer/source; passive/inertial admission rests on the 2026-10-21 user options, and each of the four list-author filings now quotes the 2026-10-24 "Require all four (Recommended)" decision as its admission ground. Their by-target source cells carry the added decision. Reports the heading/option-text disagreement and quotes the item-7/item-9 versus earlier rest-on applications disagreement, settled for these four by the user; no owner, law, form or material is added. Adds inherited coordinate-dimension/support-identification S16 sources and scope/rest-on paragraphs to `R-S1-01`/`R-S1-02`, supplied-projection/Keep-S12 provenance to `R-S12-02`, and framing provenance to `R-S21-01`, including all four by-target rows. Records four existing-source gains overall, 25→25 for Y1–Y4 and W1, four added admission-decision citations in W1, preserved-review/no-new-commit provenance and the OPEN S19-gate/charter-feedback handoffs; no existing requirement/target/status changes. |
 | `steps/S14a_2_slow_limit.md` | Header and starting-commit/repair lines state acceptance at `79511272`. Generator/measurements/repair provenance states their subsequent commit and acceptance there. A provenance sentence makes the quoted historical pending-review/commit account refer to the earlier authoring pass. Closing authoring/review/STOP provenance is historical and states subsequent acceptance instead of review still to come. No other part-2 content changes. |
-| Repository-root `STATUS.md` | Heading and part-2 paragraph/closing register paragraph state S14a part-2 acceptance at `79511272`. Adds `R-S14a-01` to the open-question table with its exact joint owners. Adds S16's accepted construction/comparator versus written-for-review record/pass status, conditional regional claim and limits, 19→25 OPEN census and no closure. Distinguishes the user-selected passive/inertial filings from the list-author filings; names the four existing entries gaining scoped S16 provenance and 25→25 repair census. States preservation at `4ae7e6cf` with repair awaiting review. Adds two open-question rows for S16 requirements, distinguishing missing physical owners from S22's debt-table recipient, and separately carries the plan's S19 trust gate and charter feedback in prose and two open-question rows, each OPEN with no disposition owner named and no decision made here. |
+| Repository-root `STATUS.md` | Heading and part-2 paragraph/closing register paragraph state S14a part-2 acceptance at `79511272`. Adds `R-S14a-01` to the open-question table with its exact joint owners. Adds S16's accepted construction/comparator versus written-for-review record/pass status, conditional regional claim and limits, 19→25 OPEN census and no closure. Distinguishes original user-selected passive/inertial filings from list-author filings, then records the 2026-10-24 user decision as admission for all four latter filings and settlement of the record-list/register disagreement, without changing filers/owners or selecting any law/form/material. Names the four existing entries gaining scoped S16 provenance and the 25→25 repair censuses; W1 adds no entry or S16 consumer source. States round-1 preservation at `fa1fa413` and decision provenance at `4e5a94bc`, with W1 repair awaiting review. Adds two open-question rows for S16 requirements, distinguishing missing physical owners from S22's debt-table recipient, and separately carries the plan's S19 trust gate and charter feedback in prose and two open-question rows, each OPEN with no disposition owner named and no decision made here. |
 
 The round-0 disposition and lookups, `directives/_measurements/S16_record_r0_review_disposition.md`
 and `S16_record_r0_review_lookups.md`, are read-only orchestrator additions preserved at
 `4ae7e6cf`, not edits by this author. M17 retrieves them and their commit provenance;
 their filenames also appear in M16's whole-tree diff inventory against `4d4d22cb`.
+The round-1 disposition and lookups, `directives/_measurements/S16_record_r1_review_disposition.md`
+and `S16_record_r1_review_lookups.md`, are read-only orchestrator additions preserved at
+`fa1fa413`; the user's decision was appended to the disposition at `4e5a94bc`. M19 retrieves
+those files and their provenance. They are not edits by this author, and M16's account still
+runs against `4d4d22cb`.
 The pre-existing `.claude/skills/prep-for-compact/SKILL.md` modification is unrelated and
 untouched; its filename is visible in M16's whole-tree edit inventory and is excluded from
 this author's account above. No orchestrator memory or other checkout was read. Generator

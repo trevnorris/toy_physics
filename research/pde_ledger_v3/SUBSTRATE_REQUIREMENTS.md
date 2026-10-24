@@ -37,10 +37,12 @@ ancillary diff are `steps/_measurements/S14a_2_record_measurements.md`, M12/M15.
 S16 adds six entries (19 → 25 OPEN) and scoped source/provenance to `R-S1-01`, `R-S1-02`,
 `R-S12-02` and `R-S21-01`. The user selected the passive-factor and inertial filings;
 the list author filed compactness, face momentum, density response and S22's reduction-debt account.
-Each has its own sourced admission ground. The inherited coordinate/support conditions merge
-into the existing entries; no physical response is derived. The Y1–Y4 repair is 25 → 25.
+The user's 2026-10-24 "Require all four (Recommended)" decision now supplies admission for those
+four list-author filings, settling the record-list/register disagreement; their original filers
+and owners remain. The inherited coordinate/support conditions merge into the existing entries;
+no physical response is derived. Both the Y1–Y4 repair and this W1 repair are 25 → 25.
 Retrievals, both-route applications and the exact ancillary diff are
-`steps/_measurements/S16_record_measurements.md`, M01–M18.
+`steps/_measurements/S16_record_measurements.md`, M01–M19.
 
 ## Why this exists
 
@@ -117,11 +119,11 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 | **no owner named** | `R-O2-01` | the physical net-power supplier and its stated budget, if a conditional closure requires net supply | O2 |
 | **jointly S12** (source/flux forms), **S8/S22** (material law), **no owner named** (face/interior laws) | `R-S14a-01` | the slow limit and far behaviour selected by the slab's own dynamics | S14a part 2; requirement for S14/S15/S20; user V2 decision, `12aa65d5` |
 | **no owner named** | `R-S16-01` | surroundings field, separation from the body's own field, and normalization for a passive factor | User's selected "Record what it needs" option; S16 list `:49–53` |
-| **no owner named**; S22 receives the debt in its table | `R-S16-02` | compactness relative to both separation and surroundings-field variation scale | Orchestrator's S16 list filing `:158–161`, E3/F3 |
-| **no owner named** | `R-S16-03` | momentum exchanged at each slab face, split by face motion | Orchestrator's S16 list filing `:162–163`, E2 |
+| **no owner named**; S22 receives the debt in its table | `R-S16-02` | compactness relative to both separation and surroundings-field variation scale | Orchestrator's S16 list filing `:158–161`, E3/F3; admission: user's 2026-10-24 "Require all four (Recommended)" |
+| **no owner named** | `R-S16-03` | momentum exchanged at each slab face, split by face motion | Orchestrator's S16 list filing `:162–163`, E2; admission: user's 2026-10-24 "Require all four (Recommended)" |
 | **S8** | `R-S16-04` | momentum–material relation needed for an inertial factor | User's selected "Count material; mass open" option; S16 list `:54–56`, O2 `:133` |
-| **S8/S22** | `R-S16-05` | slab density response | Orchestrator's S16 list filing `:164–166`, O2 `:138` |
-| **S22** (debt-table account only; physical suppliers not assigned by this entry) | `R-S22-02` | missing response-reduction inputs and width bridge, with compactness cross-referenced to `R-S16-02` | Orchestrator's S16 list filing `:28–30`; plan A11/debt rows |
+| **S8/S22** | `R-S16-05` | slab density response | Orchestrator's S16 list filing `:164–166`, O2 `:138`; admission: user's 2026-10-24 "Require all four (Recommended)" |
+| **S22** (debt-table account only; physical suppliers not assigned by this entry) | `R-S22-02` | missing response-reduction inputs and width bridge, with compactness cross-referenced to `R-S16-02` | Orchestrator's S16 list filing `:28–30`; plan A11/debt rows; admission: user's 2026-10-24 "Require all four (Recommended)" |
 
 ⚠ Entries below are in the order they were found, ⛔ not in step order. All **twenty-five** are **OPEN**.
 ⭐ `R-S8-01`, `-03`, `-04`, `-05` are one family: the stiffness functional's **form**, its **sign**, its
@@ -1038,10 +1040,14 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
   variation of a field of the surroundings, kept as two comparisons.
 - **on failure** — the compact-body response approximation cannot be claimed. S16's conditional
   region balances and count moments do not determine either comparison.
-- **standing** — an explicit requirement filed by the list author, not a user-selected or imposed
-  compactness premise. Its admission ground is the named small-body condition of the later
-  response approximation, which the source assumption and E3/F3 keep separate from the
-  surroundings-field condition; the record contract item 7 directs its filing (S16 M01–M02/M04/M17).
+- **standing** — the original filing is the list author's separate small-body requirement from
+  E3/F3, not an imposed compactness value or a derived property of the regional fields.
+- **admission ground** — user's decision of **2026-10-24**, **"Require all four (Recommended)"**:
+  **"You require all four on the register now, and each entry cites today's decision as its reason."**
+  `directives/_measurements/S16_record_r1_review_disposition.md`, "The user's decision" (S16 M19).
+  This explicit user requirement admits the entry; record-list item 7 is not its admission ground.
+  The decision adds no owner and selects no law, form or material. The list-author source above
+  and this entry's target remain unchanged.
   S22's debt-table recipient is not evidence of a physical compactness deliverer. The C10/tail
   question remains S19's. Count moments, control radii, profile width and mouth radius are not identified.
 
@@ -1057,9 +1063,14 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
   that face, separately identifiable within the projected total exchange.
 - **on failure** — S16's undivided force-density input supplies no face-resolved momentum account.
   Its moving control-surface pieces do not deliver a slab-face split.
-- **standing and admission ground** — the list author expressly retains this missing face-resolved
-  accounting object after E2 identifies what the projected inputs cannot determine. Record contract
-  item 7 directs its filing; it is not a user-selected law or a defect in the undivided supplied balance.
+- **standing** — the list author's original filing retains the missing face-resolved accounting
+  object identified by E2; the undivided supplied balance is not a defect or a face-resolution law.
+- **admission ground** — user's decision of **2026-10-24**, **"Require all four (Recommended)"**:
+  **"You require all four on the register now, and each entry cites today's decision as its reason."**
+  `directives/_measurements/S16_record_r1_review_disposition.md`, "The user's decision" (S16 M19).
+  This explicit user requirement admits the entry; record-list item 7 is not its admission ground.
+  The decision adds no owner and selects no law, form or material. The list-author source above
+  and this entry's target remain unchanged.
   The faces' law remains unowned. `R-S12-02` retains S12's source/flux/data and material-face scope;
   it does not assign this momentum object or the faces' law to S12.
 
@@ -1095,12 +1106,17 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
   thickness/projection dependence and gradients, needed for the open material/mass accounting.
 - **on failure** — that density-response interpretation remains unavailable. S16's supplied
   projected count balance and its live-density derivatives still supply no such response.
-- **standing and admission ground** — the list author expressly carries the future density-response
-  delivery into this record's filing (contract item 7), for the named material/mass interpretation.
-  Live projected count and its derivatives do not deliver it. It is not a user-selected response,
-  nor admitted merely because O2 names an owner. O2's pass entered no response-form requirement
-  merely for a future solve; that decision remains unchanged (S16 M01/M04/M14/M17). No bulk
-  equation of state, factorization, response form or material is selected here.
+- **standing** — the original source and filer are the list author's O2 `:138` density-response
+  handoff. Live projected count and its derivatives do not deliver that response. O2's earlier
+  "No new density-response entry" remains its historical application of the rest-on test;
+  the S16 admission below is a later explicit user requirement, not a new dependence of O2's object.
+- **admission ground** — user's decision of **2026-10-24**, **"Require all four (Recommended)"**:
+  **"You require all four on the register now, and each entry cites today's decision as its reason."**
+  `directives/_measurements/S16_record_r1_review_disposition.md`, "The user's decision" (S16 M19).
+  This explicit user requirement admits the entry; record-list item 7 is not its admission ground.
+  The decision adds no owner and selects no law, form or material. The list-author source above
+  and this entry's target remain unchanged. No bulk equation of state, factorization or response
+  form is selected here (S16 M01/M04/M14/M19).
 
 ### R-S22-02 — the missing response-reduction inputs in S22's debt table
 
@@ -1115,9 +1131,13 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
   the multipoles of `M`, source normalization and any suppression of boundary fluxes, with the
   `a_WT`/`a_mouth` bridge separately identified under A11. Compactness is filed once as
   `R-S16-02` and cross-referenced in this table account.
-- **admission ground** — this expressly named S22 debt-table account is a future delivery under
-  the list's filing and record contract item 7; it is not an assignment of every physical supplier
-  or a new premise of the regional balances (S16 M01/M04/M17).
+- **admission ground** — user's decision of **2026-10-24**, **"Require all four (Recommended)"**:
+  **"You require all four on the register now, and each entry cites today's decision as its reason."**
+  `directives/_measurements/S16_record_r1_review_disposition.md`, "The user's decision" (S16 M19).
+  This explicit user requirement admits the entry; record-list item 7 is not its admission ground.
+  The decision adds no owner and selects no law, form or material. The list-author source above
+  and this entry's target remain unchanged; no physical supplier or new regional-balance premise
+  is inferred from the decision.
 - **on failure** — the conditional response-side monopole reduction cannot be treated as
   delivered or interior independent. Count, count moments and live boundary fluxes are printed
   objects; none is substituted for a missing mass object or for flux suppression.
@@ -1885,9 +1905,10 @@ No physics disagreement is closed by this pass.
 Source: `steps/S16_moving_region.md`, §§1–8. The governing list is revision 4 at `0464b80a`;
 the constructions are accepted at `1d990ee6`, the comparator at `f08db34a` with its citation
 containment claim. Commands and literal stdout: `steps/_measurements/S16_record_measurements.md`,
-generated by `scripts/S16_record_measurements.py` (M01–M18). The reviewed record, generator and
-measurements are preserved at `4ae7e6cf`; this Y1–Y4 repair is uncommitted under the contract's
-"No commit and no push" instruction (M17).
+generated by `scripts/S16_record_measurements.py` (M01–M19). Round 0 is preserved at `4ae7e6cf`
+and the reviewed Y1–Y4 repair at `fa1fa413` (not accepted). The W1 user decision is recorded
+at `4e5a94bc`; this W1 repair is uncommitted under the contract's "No commit and no push"
+instruction (M17/M19).
 
 **Census:** 19 entries at `4d4d22cb` → 25, all OPEN. **Six new entries by target:** three with
 no physical owner named (`R-S16-01/-02/-03`; compactness is also owed to S22's debt table),
@@ -1897,18 +1918,42 @@ and one S22 debt-table account (`R-S22-02`, without assigning missing physical s
 `R-S1-02` (inherited support identification only), `R-S12-02` (supplied projected material object
 and "Keep S12" only) and `R-S21-01` (the 2026-10-19 framing only). None changes requirement,
 target or status. The Y1–Y4 repair is **25 → 25**, with no new entries and two additional
-existing-entry S16 sources. No entry closes; `R-S14a-01` remains OPEN with its existing joint target.
+existing-entry S16 sources. This W1 repair is also **25 → 25**: no new entries or additional
+S16 consumer sources; four entries gain the user's 2026-10-24 admission decision. No entry
+closes; `R-S14a-01` remains OPEN with its existing joint target.
 
 **First route / rest-on test.** As the schema says, a requirement is a future obligation;
 an adopted value/form belongs to the ansatz ledger, and an already-wrong object to the defect
 register. The selected user options expressly file the passive needs (`R-S16-01`) and inertial
 relation (`R-S16-04`). The orchestrator's list separately files compactness from E3/F3
 (`R-S16-02`), face momentum from E2 (`R-S16-03`), density response from O2 `:138`
-(`R-S16-05`) and the S22 debt account (`R-S22-02`). Each entry's source and admission-ground
-fields quote or locate its own filing and name what later interpretation/account would fail.
-Record contract item 7 directs these named filings. None is admitted merely from a future owner;
-none asserts that S16's live unsolved balances require a selected closure. O2's earlier refusal
-to enter unspecified response forms merely for a future solve stays; no substrate response is derived.
+(`R-S16-05`) and the S22 debt account (`R-S22-02`). Those four retain their original sources,
+filers and targets, but their admission now rests on the user's **2026-10-24** selection of
+**"Require all four (Recommended)"**. The option text, written by the orchestrator and selected
+by the user, is:
+
+> You require all four on the register now, and each entry cites today's decision as its reason. The register is
+> where we collect what the brane must support before designing it, and these are laws or properties the slab and
+> bodies must have. The record also notes that my decision list and the register disagreed and that you settled it.
+
+Each of `R-S16-02`, `-03`, `-05` and `R-S22-02` quotes the dated decision in its admission
+field (M19). It adds an admission ground, not a physical owner or a selected law, form or material.
+No substrate response is derived and no new dependency is imposed on the regional balances.
+
+**Record-list/register disagreement, settled by the user.** Record-list item 7 says
+"The record and the pass file each one as that section states"; item 9 says "Where this list
+and the register disagree, the register wins, and the disagreement is reported" (M01).
+The register's generic method says "Each becomes an entry keyed by the step that must deliver",
+but its earlier applications say "A requirement is not everything a later step would find useful",
+"an OPEN item sources no entry under the rest-on test", and "An unspecified response form needed
+only to select or solve a later closed material state is an OPEN handoff, not an additional delivery
+condition of this unsolved named object. A future closure owner alone does not satisfy this test."
+O2's density row explicitly says "No new density-response entry". S14a part 2's forward object
+instead "is explicitly required by the user, not entered merely because a future solve could use it"
+(M14/M19). The prior S16 admission on item 7 followed one side of that disagreement and did not
+establish admission under those earlier applications. The user's 2026-10-24 decision settles
+admission of these four as explicit requirements. Item 7 is not their admission ground; the
+earlier passes are not retrospectively changed and no general ambiguity in the method is decided.
 
 The same rest-on test admits two dependencies of the present conditional object, inherited
 through the supplied part-1 balance. Its three in-plane coordinates and shell measures consume
@@ -1968,17 +2013,18 @@ and `STATUS.md` retain each with no owner named for its disposition. Neither is 
 The list heading "Requirements the user's decisions file" over-attributes its additions:
 the selected options file passive-factor needs ("goes to the register as a requirement") and
 the inertial relation ("The law it needs goes to the register, as O2 keeps it (S8)"). Compactness,
-face momentum and density response are the list author's filings at `:158–166`, not selected
-user options. Record §7 quotes both sides; the individual entry sources/admission grounds govern
-(M01–M02/M04/M14/M17). The
+face momentum and density response are the list author's original filings at `:158–166`, not
+2026-10-21 selected user options. The separate 2026-10-24 decision now admits all four list-author
+filings without changing those filers. Record §7 quotes both sides; the individual entry
+sources/admission grounds govern (M01–M02/M04/M14/M17/M19). The
 governing list's "committed generator script"/"No commit and no push" conflict is reported there;
 the latter governs this authoring STOP. The list's revision heading still says "Revision 3" while
 its body and acceptance say revision 4. Accepted S12's historical mass-link owner is "S13";
 the current S16 list retains "C3, a gap", and the later user filing folds S13 into S14a.
 Record §7 quotes those distinct source assignments without inferring a new mass-link owner.
-No source is repaired by this pass. No operative
-directive/register conflict remains: explicitly required future objects are distinguished from
-unselected closure forms and adopted premises throughout.
+No source is repaired by this pass. The record-list item-7/item-9 disagreement with the earlier
+rest-on applications is reported above and settled for these four entries by the user's dated
+decision (M19). Original filers and owners remain distinct from that admission ground.
 
 ### Method for population passes
 

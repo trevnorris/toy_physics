@@ -243,7 +243,7 @@ def m13():
 
 
 def m14():
-    for version in (BASE, "4ae7e6cf", None):
+    for version in (BASE, "4ae7e6cf", "fa1fa413", None):
         path = V3 + "SUBSTRATE_REQUIREMENTS.md"
         text = (subprocess.run(["git", "show", f"{version}:{path}"], cwd=ROOT,
                                text=True, capture_output=True, check=True).stdout
@@ -300,6 +300,16 @@ def m18():
     emit({"literal_rule_counts": dict(counts)})
 
 
+def m19():
+    command(["git", "log", "-1", "--format=%H %s", "fa1fa413"])
+    command(["git", "log", "-1", "--format=%H %s", "4e5a94bc"])
+    source_set(["S16_record_r1_review_disposition", "S16_record_r1_review_lookups"])
+    paths = [V3 + "directives/_measurements/S16_record_r1_review_disposition.md",
+             V3 + "directives/_measurements/S16_record_r1_review_lookups.md"]
+    command(["git", "show", "--format=", "--name-only", "fa1fa413", "--", *paths])
+    command(["git", "show", "--format=", "--name-only", "4e5a94bc", "--", *paths])
+
+
 SECTIONS = {
     "M01": ("Contract, decisions and accepted versions", m01),
     "M02": ("Step-list and build dispositions, with build run record", m02),
@@ -319,6 +329,7 @@ SECTIONS = {
     "M16": ("Exact ancillary diff against the starting commit and edit inventory", m16),
     "M17": ("Preserved round-0 record review and repair scope Y1–Y4", m17),
     "M18": ("Supplied-equation, integral-definition and geometry comparisons", m18),
+    "M19": ("Round-1 W1 dispositions and the user's dated admission decision", m19),
 }
 
 

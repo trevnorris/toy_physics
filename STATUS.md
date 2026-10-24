@@ -40,10 +40,18 @@ domain/text differences and unpaired coverage retain the record's separate quali
 The pass brings 19 → 25 OPEN entries: the selected user options file passive-factor needs and
 the inertial relation; the list author separately files compactness, face momentum, density response
 and the S22 reduction-debt account. Each entry names its own source and admission ground.
+The user's **2026-10-24 "Require all four (Recommended)"** decision now requires admission of
+those four list-author filings: **"You require all four on the register now, and each entry cites
+today's decision as its reason."** This settles the record-list item-7/item-9 disagreement with
+the register's earlier rest-on applications. The original filers and owners remain; no law, form
+or material is selected ([decision](research/pde_ledger_v3/directives/_measurements/S16_record_r1_review_disposition.md),
+`4e5a94bc`; S16 measurements M19).
 S16 also adds scoped provenance to `R-S1-01` (coordinate dimension, S6), `R-S1-02` (inherited
 support identification, S1), `R-S12-02` and `R-S21-01`. The Y1–Y4 repair is 25 → 25, with
 no new entry; no existing requirement, target or status changes. The reviewed version is preserved
-at `4ae7e6cf`; this repair remains for review, with no acceptance claimed.
+at `fa1fa413` (round 1, not accepted). This W1 repair is also 25 → 25: no new entry or S16
+consumer source, with the four added admission-decision citations. It remains for review,
+with no acceptance claimed.
 
 The plan's **"S16 must be run BEFORE S19 is trusted"** gate and **"its result feeds back into
 the charter"** handoff remain OPEN beside this regional delivery. The cited plan rows name

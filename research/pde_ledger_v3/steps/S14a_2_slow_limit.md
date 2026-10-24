@@ -1,13 +1,14 @@
 # S14a part 2 — slow limit and far behaviour, recorded as a requirement
 
-**Status, 2026-10-21:** record and register pass written for source-first review. By the user's
+**Status:** record and register pass accepted at `79511272` (round 2 clear). By the user's
 **"Record as requirement"** decision, no build ran and this part reports no computed bridge
 object. The slab's own dynamics must select the slow limit and the far behaviour; that obligation
 has its own entry, **`R-S14a-01`**. The user's V2 decision makes selection owed jointly by S12's
 source/flux forms, S8/S22's material law and the face/interior laws with no owner named. S14,
 S15 and S20 remain **"CONDITIONAL, not carried results"**, now on that named requirement.
-Starting commit: `978c359c`; round-1 reviewed version preserved at `85904c4e`. This repair makes
-no commit. (Retrieve M01/M03/M12/M13/M15–M17.)
+Starting commit: `978c359c`; round-1 reviewed version preserved at `85904c4e`. The repaired
+record and pass were subsequently committed and accepted at `79511272` (round 2 clear;
+acceptance disposition retrieved in S16 M15). (Retrieve M01/M03/M12/M13/M15–M17.)
 
 Of the plan's four S14a objects, accepted part 1 prints the projected order-loss source and the
 definition of `J`, with finite-radius flux objects and their recorded limitations. The
@@ -288,8 +289,10 @@ No fresh literature verification is claimed. (Retrieve M12/M14.)
   and superseding decision are separately stated above. (Retrieve M11/M12/M16.)
 - **Generator/commit wording:** the contract requests **"a committed generator script"** and
   also **"No commit and no push"**. The list's no-commit instruction governs this repair.
-  The round-1 reviewed generator and measurements are preserved at `85904c4e`; this repair is
-  supplied uncommitted, with no acceptance claimed. (Retrieve M01/M16/M17.)
+  The round-1 reviewed generator and measurements are preserved at `85904c4e`; the repaired
+  record, generator, measurements and register pass were subsequently committed and accepted
+  at `79511272` (round 2 clear). (Retrieve M01/M16/M17; acceptance disposition
+  `directives/_measurements/S14a_2_record_r2_review_disposition.md`, retrieved in S16 M15.)
 
 The step-list's separate comparison inventories remain source rows, not part-2 results: v2
 pathA_21 `:19,:22,:62–66` (`S_leak,W_eff,N_∞,3,J,Θ_Q`) and stage 004 `:148–150`; the plan at
@@ -333,6 +336,8 @@ work** against `978c359c`; M15 retrieves their exact `git diff`.
 | `steps/S14a_1_projection.md` | Header and closing pending-review wording become acceptance at `4a4dfaf5`; the generator/measurements provenance also states their subsequent commit and acceptance there instead of presenting them as uncommitted. The no-concentrated-input/source sentence cites its actual source, S12 decision-list item 1 (part-1 M01, directly retrieved here in M11), instead of `(M17, T2)`. The earlier population-directive quotation cites the directive itself, retrieved directly in this record's M11. No other part-1 content changes. |
 | Repository-root `STATUS.md` | Heading changes **"Project status — light sector closed for now; S12 accepted; S14a part 1 record written for review"** to **"Project status — light sector closed for now; S12 and S14a part 1 accepted; S14a part 2 requirement recorded for review"**. Part-1 pending-review lines state acceptance at `4a4dfaf5`; the older part-1 allocation is identified as its historical handoff. Adds part-2 record/pass written-for-review standing, the user's no-build requirement decision, the two still-underived bridge objects and new `R-S14a-01`, separately from the unchanged S12 scope of `R-S12-02`. Adds joint selection delivery by S12, S8/S22 and the unowned face/interior laws, citing V2 at `12aa65d5`. Moves **"S14/S15/S20 remain CONDITIONAL, not carried results"** from the part-1 paragraph into part 2 with its named-requirement qualification. Adds **"The filed witnesses retain their separate pass/leg scopes as review instruments; they are not an accepted part 2 build."**, **"The two carried part-1 citation notes are repaired in its record; other part-1 claims retain their accepted standing."**, and **"The record/pass await source-first review; no derivation or profile is supplied by recording this obligation."** Adds the `18→19` census, one new jointly owed entry, no existing-entry source/target/status change and the reason no existing entry covers this selection object/deliverers. |
 
+The pending-review/commit wording quoted in the edit account above describes that authoring
+pass; the record and register pass were subsequently committed and accepted at `79511272`.
 The round-0 disposition and lookups are read-only orchestrator artifacts preserved at `2ae682e4`;
 the V2 decision was appended to the disposition at `12aa65d5`. They are not edits by this author;
 the round-1 disposition and lookups are read-only orchestrator artifacts preserved at `85904c4e`.
@@ -340,7 +345,9 @@ The account above still runs against `978c359c`. (Retrieve M16/M17.)
 The pre-existing `.claude/skills/prep-for-compact/SKILL.md` modification is unrelated and untouched;
 only its filename is retrieved in M15. No other checkout or orchestrator memory was read. The
 generator's working files are under `_scratch/s14a2/rec/work/`; other jobs' files are untouched.
-No witness, engine or comparator is rerun or edited. No review is launched, and no commit or push
-is performed. The record, final regenerated measurements, generator, register pass and specified
-corrections are the deliverable at this STOP. Source-first review of this part-2 record remains
-with the orchestrator under the contract. (Retrieve M01/M15.)
+The authoring pass reran or edited no witness, engine or comparator; it launched no review and
+made no commit or push. The record, final regenerated measurements, generator, register pass and specified
+corrections were the deliverable at that authoring STOP. Source-first review subsequently
+accepted this part-2 record and its register pass at `79511272` (round 2 clear;
+`directives/_measurements/S14a_2_record_r2_review_disposition.md`, retrieved in S16 M15).
+(Retrieve M01/M15 for the original authoring scope.)

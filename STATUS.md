@@ -1,4 +1,4 @@
-# Project status — light sector closed for now; S12 and S14a part 1 accepted; S14a part 2 requirement recorded for review
+# Project status — light sector closed for now; S12 and S14a accepted; S16 record written for review
 
 On 2026-10-19 the user closed the light sector **for now**. Its accepted results are conditional. What stays
 open is carried as requirements in the [substrate register](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md),
@@ -16,8 +16,8 @@ It preserves the comparator differences and coverage limits. It chooses no flow 
 its historical handoff left the controlled return law with later S14a and the profile-dependent
 `J→Q` completion OPEN.
 
-S14a part 2's [record](research/pde_ledger_v3/steps/S14a_2_slow_limit.md) and register pass are written
-for source-first review, with [retrieval measurements](research/pde_ledger_v3/steps/_measurements/S14a_2_record_measurements.md).
+S14a part 2's [record](research/pde_ledger_v3/steps/S14a_2_slow_limit.md) and register pass are accepted
+at `79511272` (round 2 clear), with [retrieval measurements](research/pde_ledger_v3/steps/_measurements/S14a_2_record_measurements.md).
 The user chose **"Record as requirement"** (2026-10-21): no build ran. The required object is
 the slow limit and far behaviour selected by the slab's own dynamics. The controlled
 `ω→0` return law and profile-dependent `J→Q` map remain not derived. The filed witnesses retain
@@ -28,6 +28,17 @@ The user's V2 choice **"All the slab's laws
 and the face/interior laws with no owner named ([decision](research/pde_ledger_v3/directives/_measurements/S14a_2_record_r0_review_disposition.md), `12aa65d5`). S14/S15/S20 remain
 **CONDITIONAL, not carried results**, now on that named requirement. The two carried part-1
 citation notes are repaired in its record; other part-1 claims retain their accepted standing.
+
+S16's constructions (`1d990ee6`) and comparator (`f08db34a`, scoped citation review with the
+containment claim) are accepted. Its [moving-region record](research/pde_ledger_v3/steps/S16_moving_region.md)
+and register pass are written for source-first review, with
+[retrieval measurements](research/pde_ledger_v3/steps/_measurements/S16_record_measurements.md).
+The supplied balances give live regional count/momentum rates, count-centre relations, received
+momentum and count moments through second order. They supply no mass, inertial/passive factor,
+surroundings field, potential, inter-body force law or throat solve. Exact/resolved residuals,
+domain/text differences and unpaired coverage retain the record's separate qualifications.
+The pass brings 19 → 25 OPEN entries; it files the user's passive-field, compactness, face-momentum,
+inertial and density-response requirements, and the S22 reduction-debt inventory. No entry is closed.
 
 **User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms."** This record closes
 only S12's requirements part and delivers none of the forms. The forms come once the brane is
@@ -84,6 +95,9 @@ Read the [short closeout](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md)
 
 | Question | Owner / evidence |
 | --- | --- |
+| `R-S14a-01`: slow limit and far behaviour selected by the slab's own dynamics | Jointly S12 (source/flux forms), S8/S22 (material law), and **no owner named** (face/interior laws); [register entry](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md#r-s14a-01--the-dynamically-selected-slow-limit-and-far-behaviour). Record/pass accepted `79511272`; requirement OPEN. |
+| S16 passive-field/separation/normalization, compactness and face-momentum requirements | **No owner named** for delivery; `R-S16-01/-02/-03`, [S16 record §6](research/pde_ledger_v3/steps/S16_moving_region.md). Compactness is also a debt for S22's table. |
+| S16 momentum–material relation, density response and reduction-debt inventory | S8 (`R-S16-04`); S8/S22 (`R-S16-05`); S22 for the debt-table inventory (`R-S22-02`, without inventing physical suppliers). [S16 register pass](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). |
 | Replaying the uniform check needs its intermediate caches regenerated from the kept b/c2 engines and the S10/S11 export chain repaired (H4). The original caches are not in git. They stay on local disk under `_scratch/` (Phase 5). | S11c-d if reused; [H3](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). |
 | S10/S11 exports pin their pre-2026-09-11 producers. Regenerate them from the current producers under review, or revert the producer edits. The S10 edit may be what the S10 Lean D3 link relies on, so a revert is not automatic. | S10/S11 maintenance; [H4](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). Not run in this cleanup. |
 | Direct c2 `[0,2]` entry is set to zero without an order-counting justification; whether the full response needs a nonzero term is unresolved. | S11c-c2/d if reused; [joint disposition, mixed-term issue](research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_joint_disposition.md). |
@@ -136,7 +150,7 @@ The S14a part 2 pass brings 18 → 19 OPEN entries. Its new `R-S14a-01` selectio
 has V2's joint deliverers; no existing entry gains a source or changes target/status.
 No existing entry covers the same selection requirement with those deliverers, so it is
 separate from `R-S12-02`'s S12 forms/data and compatibility objects. The record/pass
-await source-first review; no derivation or profile is supplied by recording this obligation.
+were accepted at `79511272` (round 2 clear); no derivation or profile is supplied by recording this obligation.
 The light closeout was accepted at `e070c7f3`; its review no longer gates S12. The oracle comparison's
 questions about flow drive separate S12's source/boundary realization from O2's carried
 force-balance handoffs. Material destination separates S12's drain-produced density/exchange

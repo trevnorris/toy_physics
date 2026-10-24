@@ -34,10 +34,13 @@ Selection is owed jointly by S12, S8/S22 and the face/interior laws with no owne
 (user's V2 decision, `12aa65d5`). No existing entry gains a source or changes target/status;
 `R-S12-02` retains its scope at `978c359c`. This pass's retrievals and exact
 ancillary diff are `steps/_measurements/S14a_2_record_measurements.md`, M12/M15.
-S16 adds six entries (19 → 25 OPEN) and scoped source/provenance to `R-S12-02` and `R-S21-01`.
-The new objects are explicit user-required future deliveries and S22's reduction-debt account;
-they are not prerequisites silently imposed on the live conditional balances. Retrievals, both-route
-applications and the exact ancillary diff are `steps/_measurements/S16_record_measurements.md`, M01–M16.
+S16 adds six entries (19 → 25 OPEN) and scoped source/provenance to `R-S1-01`, `R-S1-02`,
+`R-S12-02` and `R-S21-01`. The user selected the passive-factor and inertial filings;
+the list author filed compactness, face momentum, density response and S22's reduction-debt account.
+Each has its own sourced admission ground. The inherited coordinate/support conditions merge
+into the existing entries; no physical response is derived. The Y1–Y4 repair is 25 → 25.
+Retrievals, both-route applications and the exact ancillary diff are
+`steps/_measurements/S16_record_measurements.md`, M01–M18.
 
 ## Why this exists
 
@@ -94,12 +97,12 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 
 | target | id | the object owed | source |
 |---|---|---|---|
-| **S1** | `R-S1-02` | the substructure's shear response as a function of `χ_B`, both phases | S9, O2 conditional premises, S9b brane optical shear only, S12 and S14a part 1 support identification only |
+| **S1** | `R-S1-02` | the substructure's shear response as a function of `χ_B`, both phases | S9, O2 conditional premises, S9b brane optical shear only, S12, S14a part 1 and S16 support identification only |
 | **S1** *(register inference)* | `R-S1-03` | whether the substructure's microdynamics is time-reversible | S11b-B / unified S11b |
 | **S1.5** | `R-S1.5-01` | the mode content of the linearised GNLS, including the bulk acoustic branch | S9, S11, S11b-A/B, S9b Part C bulk acoustic input only |
 | **S6** | `R-S6-01` | the brane's compression modulus `B_comp` | S11 |
 | **S6** | `R-S6-02` | the first variation of the substrate action at `v₀ = 0` | S9, S10, S11, S11b-A/B, S11c uniform |
-| **S6** | `R-S1-01` | the brane's spatial dimension `D_brane` ⚠ *id kept; target corrected to S6* | S10, S11, S9b, S12 and S14a part 1 coordinate dimension only |
+| **S6** | `R-S1-01` | the brane's spatial dimension `D_brane` ⚠ *id kept; target corrected to S6* | S10, S11, S9b, S12, S14a part 1 and S16 coordinate dimension only |
 | **S7** | `R-S7-01` | the slab-width flat direction under a non-uniform width | S11, unified S11b |
 | **S8** | `R-S8-01` | the form of the brane's quadratic stiffness functional | S9, S10, S11, S11b-B, unified S11b, S11c uniform, S9b supplied transverse input |
 | **S8** | `R-S8-02` | the quadratic operator on `u` **and** `h` together | S10, S11 |
@@ -113,12 +116,12 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 | **S22**, with Q2 and S12 | `R-S22-01` | how the energy a throat releases splits among light, the extra longitudinal wave and the bulk | S11 departure; photon survey E32–E34, E38 |
 | **no owner named** | `R-O2-01` | the physical net-power supplier and its stated budget, if a conditional closure requires net supply | O2 |
 | **jointly S12** (source/flux forms), **S8/S22** (material law), **no owner named** (face/interior laws) | `R-S14a-01` | the slow limit and far behaviour selected by the slab's own dynamics | S14a part 2; requirement for S14/S15/S20; user V2 decision, `12aa65d5` |
-| **no owner named** | `R-S16-01` | surroundings field, separation from the body's own field, and normalization for a passive factor | S16 user requirement |
-| **no owner named**; S22 receives the debt in its table | `R-S16-02` | compactness relative to both separation and surroundings-field variation scale | S16 user requirement |
-| **no owner named** | `R-S16-03` | momentum exchanged at each slab face, split by face motion | S16 user requirement |
-| **S8** | `R-S16-04` | momentum–material relation needed for an inertial factor | S16 user requirement; O2 OPEN interface |
-| **S8/S22** | `R-S16-05` | slab density response | S16 user requirement; O2 OPEN interface |
-| **S22** (debt-table account only; physical suppliers not assigned by this entry) | `R-S22-02` | missing response-reduction inputs and width bridge, with compactness cross-referenced to `R-S16-02` | S16 filing decision and plan debt rows |
+| **no owner named** | `R-S16-01` | surroundings field, separation from the body's own field, and normalization for a passive factor | User's selected "Record what it needs" option; S16 list `:49–53` |
+| **no owner named**; S22 receives the debt in its table | `R-S16-02` | compactness relative to both separation and surroundings-field variation scale | Orchestrator's S16 list filing `:158–161`, E3/F3 |
+| **no owner named** | `R-S16-03` | momentum exchanged at each slab face, split by face motion | Orchestrator's S16 list filing `:162–163`, E2 |
+| **S8** | `R-S16-04` | momentum–material relation needed for an inertial factor | User's selected "Count material; mass open" option; S16 list `:54–56`, O2 `:133` |
+| **S8/S22** | `R-S16-05` | slab density response | Orchestrator's S16 list filing `:164–166`, O2 `:138` |
+| **S22** (debt-table account only; physical suppliers not assigned by this entry) | `R-S22-02` | missing response-reduction inputs and width bridge, with compactness cross-referenced to `R-S16-02` | Orchestrator's S16 list filing `:28–30`; plan A11/debt rows |
 
 ⚠ Entries below are in the order they were found, ⛔ not in step order. All **twenty-five** are **OPEN**.
 ⭐ `R-S8-01`, `-03`, `-04`, `-05` are one family: the stiffness functional's **form**, its **sign**, its
@@ -165,7 +168,7 @@ other three.
 
 ### R-S1-01 — the brane's spatial dimension
 
-- **source** S14a part 1 (coordinate dimension only; `steps/S14a_1_projection.md`, §§1–4/8); S12 (coordinate dimension only; `steps/S12_order_source.md`, §§1–2/7); S9b (coordinate dimension only; `steps/S9b_light_bending.md`, §§2–4/8); S10 (`steps/S10_two_transverse_photons.md`); S11
+- **source** S16 (coordinate dimension only; `steps/S16_moving_region.md`, §§1/6; S16 M01/M04/M14/M17); S14a part 1 (coordinate dimension only; `steps/S14a_1_projection.md`, §§1–4/8); S12 (coordinate dimension only; `steps/S12_order_source.md`, §§1–2/7); S9b (coordinate dimension only; `steps/S9b_light_bending.md`, §§2–4/8); S10 (`steps/S10_two_transverse_photons.md`); S11
   (`steps/S11_stray_longitudinal.md`, moves 2–3 / finite census) · **target** S6 · **status** OPEN
 - **requirement** — the brane's spatial dimension `D_brane`, as a derived quantity or an explicitly
   re-affirmed postulate.
@@ -207,9 +210,17 @@ other three.
   unchanged (`steps/S14a_1_projection.md`, §§1–4; its retrievals M01/M03/M04/M07).
 
 
+- **S16 scope** — The supplied balances use part 1's projected domain, "in-plane coordinates
+  x^i (three) and time t" (`directives/S16_decision_list.md:63–64`), and the shell geometry
+  and measures use that same coordinate dimension. If this setting is not delivered or
+  reaffirmed, the printed regional objects cannot transfer unchanged. This is a coordinate-domain
+  consumer of the existing S6 obligation, not a dimension derivation; control shape, retained
+  moment order and independent dimensional-audit units are separate choices (S16 §§1/6;
+  S16 M01/M04/M06–M07/M14/M17).
+
 ### R-S1-02 — the substructure's shear response, as a function of the order parameter
 
-- **source** S14a part 1 (support identification only; `steps/S14a_1_projection.md`, §§1/8); S12 (support identification only; `steps/S12_order_source.md`, §§1–3/7); S9b (brane optical shear only; `steps/S9b_light_bending.md`, §§2–4/8); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
+- **source** S16 (inherited support identification only; `steps/S16_moving_region.md`, §§1/6; S16 M01/M04/M14/M17); S14a part 1 (support identification only; `steps/S14a_1_projection.md`, §§1/8); S12 (support identification only; `steps/S12_order_source.md`, §§1–3/7); S9b (brane optical shear only; `steps/S9b_light_bending.md`, §§2–4/8); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
 - **requirement** — the shear response of the substructure as a function of `χ_B`, across **both** phases.
 - **on failure** — the two halves fail differently, and both are fatal:
   - **ordered phase carries no shear** ⇒ `μ_R = 0`, the brane has no transverse sector, and **photons do
@@ -252,6 +263,14 @@ other three.
   U1's re-ordering clause enters no computed object as an enforced clause
   (`steps/S14a_1_projection.md`, §1; its retrievals M01/M03/M04).
 
+
+- **S16 scope** — S16 supplies part 1's projected material balance on part 1's domain.
+  Its interpretation as material in the shear-holding region inherits the flagged, adopted
+  U1 support identification (part-1 record §1). If that identification fails, the interpretation
+  fails while the conditional balance algebra remains. This adds a consumer of the existing
+  phase-response obligation for support identification only: no shear response, confinement,
+  order profile or material law is derived, and U1's re-ordering clause is not enforced
+  (S16 §§1/6; S16 M01/M04/M14/M17).
 
 ### R-S1.5-01 — the GNLS's own mode content
 
@@ -989,9 +1008,11 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
 
 ### R-S16-01 — the surroundings object needed for a passive factor
 
-- **source** S16, user's 2026-10-21 "Record what it needs" decision, carried in
-  `directives/S16_decision_list.md`, "User decisions" and "For the record and its register pass";
-  `steps/S16_moving_region.md`, §§1/6 (S16 retrievals M01/M04/M07/M14).
+- **source** user's selected 2026-10-21 "Record what it needs" option: "What one needs
+  (a named field of the surroundings, a rule separating it from the body's own field, and its
+  normalization) goes to the register as a requirement" (`directives/S16_decision_list.md:49–53`;
+  pass-1 disposition, "The user's decisions"). `steps/S16_moving_region.md`, §§1/6
+  (S16 M01–M02/M04/M07/M14/M17).
 - **target** no owner named
 - **status** OPEN
 - **requirement** — a named field of the surroundings, its separation from the body's own field,
@@ -1002,11 +1023,13 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
   assumed or derived. G7 is an oracle under its own conditions, not this object's delivery (S16 §5).
   This is distinct from source normalization in S22's debt account and from S21's comparison of
   force-sector flow requirements. No owner is inferred from those neighbouring interfaces.
+- **admission ground** — the selected option expressly requires this future object for a passive
+  interpretation; this is not an unselected closure form inferred from a later owner.
 
 ### R-S16-02 — the body's compactness in both comparisons
 
-- **source** S16, user's 2026-10-21 decisions as filed in
-  `directives/S16_decision_list.md`, "Filing and framing" and "For the record and its register pass";
+- **source** orchestrator's S16 list filing `directives/S16_decision_list.md:158–161`,
+  "The body's compactness, separately", from pass-2 E3 and pass-3 F3; filing/framing `:24–30`;
   source assumption `research/4d_1pn_full/paper/4d_1pn_full.tex:697–700`;
   `steps/S16_moving_region.md`, §§4/6 (S16 M01/M04/M14).
 - **target** no owner named for physical delivery; S22 is the named recipient of this debt in its table
@@ -1015,29 +1038,36 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
   variation of a field of the surroundings, kept as two comparisons.
 - **on failure** — the compact-body response approximation cannot be claimed. S16's conditional
   region balances and count moments do not determine either comparison.
-- **standing** — an explicit user-filed requirement, not an imposed compactness premise.
+- **standing** — an explicit requirement filed by the list author, not a user-selected or imposed
+  compactness premise. Its admission ground is the named small-body condition of the later
+  response approximation, which the source assumption and E3/F3 keep separate from the
+  surroundings-field condition; the record contract item 7 directs its filing (S16 M01–M02/M04/M17).
   S22's debt-table recipient is not evidence of a physical compactness deliverer. The C10/tail
   question remains S19's. Count moments, control radii, profile width and mouth radius are not identified.
 
 ### R-S16-03 — momentum exchange at each slab face
 
-- **source** S16, `directives/S16_decision_list.md`, supplied momentum equation and
-  "For the record and its register pass"; `steps/S16_moving_region.md`, §§1–2/6
-  (S16 M01/M02/M04/M07/M14).
+- **source** orchestrator's S16 list filing `directives/S16_decision_list.md:162–163`,
+  "For the faces", from pass-2 E2's direction to keep "the face-resolved momentum accounting
+  OPEN"; supplied momentum input `:84–85`. `steps/S16_moving_region.md`, §§1–2/6
+  (S16 M01–M02/M04/M07/M14/M17).
 - **target** no owner named
 - **status** OPEN
 - **requirement** — the momentum exchanged at each slab face and its split by the motion of
   that face, separately identifiable within the projected total exchange.
 - **on failure** — S16's undivided force-density input supplies no face-resolved momentum account.
   Its moving control-surface pieces do not deliver a slab-face split.
-- **standing** — expressly carried requirement, not a defect in the undivided supplied balance.
+- **standing and admission ground** — the list author expressly retains this missing face-resolved
+  accounting object after E2 identifies what the projected inputs cannot determine. Record contract
+  item 7 directs its filing; it is not a user-selected law or a defect in the undivided supplied balance.
   The faces' law remains unowned. `R-S12-02` retains S12's source/flux/data and material-face scope;
   it does not assign this momentum object or the faces' law to S12.
 
 ### R-S16-04 — the momentum–material relation needed for inertia
 
-- **source** S16, user's 2026-10-21 "Count material; mass open" decision and
-  `directives/S16_decision_list.md`, register section;
+- **source** user's selected 2026-10-21 "Count material; mass open" option: "The law it needs
+  goes to the register, as O2 keeps it (S8)" (`directives/S16_decision_list.md:54–56`;
+  pass-1 disposition, "The user's decisions"); list filing `:164–166`;
   `directives/O2_SHARED_PHYSICS.md:133`; `steps/S16_moving_region.md`, §§1/6
   (S16 M01/M04/M14).
 - **target** S8, with S1.5 antecedents when available as the O2 row states
@@ -1046,6 +1076,8 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
   needed to define an inertial factor.
 - **on failure** — the separately printed momentum and material-count centre relations do not
   supply an inertial factor or a relation between momentum and count-centre acceleration.
+- **admission ground** — the selected option expressly requires the missing momentum–material
+  relation for that future inertial interpretation; no kinetic form is selected (S16 M01–M02/M17).
 - **entry rather than merge** — `R-S8-06` requires material displacement identification and the
   original homogeneous quadratic/slab inertia. Its O2 scope expressly excludes a live momentum-map
   widening. The present explicitly user-required live object has a different domain and requirement;
@@ -1053,7 +1085,8 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
 
 ### R-S16-05 — the slab density response
 
-- **source** S16, `directives/S16_decision_list.md`, "For the record and its register pass";
+- **source** orchestrator's S16 list filing `directives/S16_decision_list.md:164–166`:
+  "The slab's density response is also OPEN there", citing
   `directives/O2_SHARED_PHYSICS.md:138`; `steps/S16_moving_region.md`, §§1/6
   (S16 M01/M04/M14).
 - **target** S8 (substrate reduction) and S22 (completion), as the O2 row states
@@ -1062,13 +1095,17 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
   thickness/projection dependence and gradients, needed for the open material/mass accounting.
 - **on failure** — that density-response interpretation remains unavailable. S16's supplied
   projected count balance and its live-density derivatives still supply no such response.
-- **standing** — explicitly carried by the user's S16 requirement filing. O2's pass entered no
-  response-form requirement merely for a future solve; that decision remains unchanged. No bulk
+- **standing and admission ground** — the list author expressly carries the future density-response
+  delivery into this record's filing (contract item 7), for the named material/mass interpretation.
+  Live projected count and its derivatives do not deliver it. It is not a user-selected response,
+  nor admitted merely because O2 names an owner. O2's pass entered no response-form requirement
+  merely for a future solve; that decision remains unchanged (S16 M01/M04/M14/M17). No bulk
   equation of state, factorization, response form or material is selected here.
 
 ### R-S22-02 — the missing response-reduction inputs in S22's debt table
 
-- **source** S16 filing decision, `directives/S16_decision_list.md`, "Filing and framing";
+- **source** orchestrator's S16 filing `directives/S16_decision_list.md:28–30`: "What stays a
+  debt for S22's table is what this step does not deliver";
   `V3_STEP_PLAN.md:732–741,1303–1305`; `steps/S16_moving_region.md`, §§4/6
   (S16 M01/M04/M14).
 - **target** S22 for the debt-table account; no physical supplier is assigned here where the
@@ -1078,6 +1115,9 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
   the multipoles of `M`, source normalization and any suppression of boundary fluxes, with the
   `a_WT`/`a_mouth` bridge separately identified under A11. Compactness is filed once as
   `R-S16-02` and cross-referenced in this table account.
+- **admission ground** — this expressly named S22 debt-table account is a future delivery under
+  the list's filing and record contract item 7; it is not an assignment of every physical supplier
+  or a new premise of the regional balances (S16 M01/M04/M17).
 - **on failure** — the conditional response-side monopole reduction cannot be treated as
   delivered or interior independent. Count, count moments and live boundary fluxes are printed
   objects; none is substituted for a missing mass object or for flux suppression.
@@ -1845,25 +1885,38 @@ No physics disagreement is closed by this pass.
 Source: `steps/S16_moving_region.md`, §§1–8. The governing list is revision 4 at `0464b80a`;
 the constructions are accepted at `1d990ee6`, the comparator at `f08db34a` with its citation
 containment claim. Commands and literal stdout: `steps/_measurements/S16_record_measurements.md`,
-generated by `scripts/S16_record_measurements.py` (M01–M16). The generator and record are supplied
-uncommitted under this record contract's "No commit and no push" instruction.
+generated by `scripts/S16_record_measurements.py` (M01–M18). The reviewed record, generator and
+measurements are preserved at `4ae7e6cf`; this Y1–Y4 repair is uncommitted under the contract's
+"No commit and no push" instruction (M17).
 
 **Census:** 19 entries at `4d4d22cb` → 25, all OPEN. **Six new entries by target:** three with
 no physical owner named (`R-S16-01/-02/-03`; compactness is also owed to S22's debt table),
 one S8 (`R-S16-04`, retaining the O2 antecedent qualification), one S8/S22 (`R-S16-05`),
 and one S22 debt-table account (`R-S22-02`, without assigning missing physical suppliers).
-**Existing entries gaining source/provenance:** `R-S12-02` (supplied projected material object
-and "Keep S12" only) and `R-S21-01` (the 2026-10-19 framing only). Neither changes requirement,
-target or status. No entry closes; `R-S14a-01` remains OPEN with its existing joint target.
+**Four existing entries gaining source/provenance:** `R-S1-01` (coordinate dimension only),
+`R-S1-02` (inherited support identification only), `R-S12-02` (supplied projected material object
+and "Keep S12" only) and `R-S21-01` (the 2026-10-19 framing only). None changes requirement,
+target or status. The Y1–Y4 repair is **25 → 25**, with no new entries and two additional
+existing-entry S16 sources. No entry closes; `R-S14a-01` remains OPEN with its existing joint target.
 
 **First route / rest-on test.** As the schema says, a requirement is a future obligation;
 an adopted value/form belongs to the ansatz ledger, and an already-wrong object to the defect
-register. These six entries are the user's explicit future requirements and the decision list's
-named S22 debt filing, not closure forms inferred merely from a future owner. Failure blocks the
-named later interpretation or debt account, not S16's live unsolved balances. That is the same
-criterion that admits the explicitly user-required S14a selection object. O2's earlier refusal to
-enter unspecified live response forms merely for a future solve is retained; S16 now expressly
-requires the inertia and density objects. Those are not derived substrate responses.
+register. The selected user options expressly file the passive needs (`R-S16-01`) and inertial
+relation (`R-S16-04`). The orchestrator's list separately files compactness from E3/F3
+(`R-S16-02`), face momentum from E2 (`R-S16-03`), density response from O2 `:138`
+(`R-S16-05`) and the S22 debt account (`R-S22-02`). Each entry's source and admission-ground
+fields quote or locate its own filing and name what later interpretation/account would fail.
+Record contract item 7 directs these named filings. None is admitted merely from a future owner;
+none asserts that S16's live unsolved balances require a selected closure. O2's earlier refusal
+to enter unspecified response forms merely for a future solve stays; no substrate response is derived.
+
+The same rest-on test admits two dependencies of the present conditional object, inherited
+through the supplied part-1 balance. Its three in-plane coordinates and shell measures consume
+the existing dimension obligation `R-S1-01` at S6; failure to deliver/reaffirm that domain
+prevents unchanged transfer. Its shear-holding-region interpretation consumes the flagged,
+adopted U1 support identification in `R-S1-02` at S1; failure removes that interpretation,
+not the conditional algebra. They merge as scoped sources, as the earlier passes did. No new
+dimension, shear law, confinement result or enforced U1 re-ordering clause follows (M01/M04/M14/M17).
 
 No further entry has a printed object as its requirement. The supplied material/momentum balances,
 their integrals, count-centre definitions and moments are conditional identities on the list's
@@ -1872,8 +1925,8 @@ The count projection and its S12 provenance already fall within `R-S12-02`; sour
 stay OPEN. General `G`, `Pi` and `f` forms have no owner assigned here, while S12 gives slab material
 completion to S8/S22 and names no face-law owner. Neither the unowned momentum balance nor the
 core's excluded content is assigned to S12. Control shape, moment truncation and independent
-dimension units are labelled supplied/construction choices, not new physical-dimension or
-shear-response identifications; `R-S1-01/-02` gain no S16 source. No O2 premise is silently adopted.
+dimension units are labelled supplied/construction choices, distinct from the inherited coordinate
+dimension and support identification tested above. No O2 premise is silently adopted.
 
 **Merge test.** `R-S16-01` is distinct from source normalization and from S21's knit;
 `R-S16-02` is distinct from count moments and the width bridge; `R-S16-03` is distinct from S12's
@@ -1910,6 +1963,14 @@ tag and unpaired component, below-count bindings and normalized-domain exclusion
 claim whole-stream identity or a motion-free sum of `localEvolution` pieces. The plan/O2 interface
 describes a compact-body calibrated-potential reduction; the later user list supplies no potential,
 mass or compactness and computes only regional objects. Both sides are quoted in record §7. The
+plan's S19 trust gate and charter-feedback handoffs remain OPEN beside that delivery; record §4
+and `STATUS.md` retain each with no owner named for its disposition. Neither is decided here.
+The list heading "Requirements the user's decisions file" over-attributes its additions:
+the selected options file passive-factor needs ("goes to the register as a requirement") and
+the inertial relation ("The law it needs goes to the register, as O2 keeps it (S8)"). Compactness,
+face momentum and density response are the list author's filings at `:158–166`, not selected
+user options. Record §7 quotes both sides; the individual entry sources/admission grounds govern
+(M01–M02/M04/M14/M17). The
 governing list's "committed generator script"/"No commit and no push" conflict is reported there;
 the latter governs this authoring STOP. The list's revision heading still says "Revision 3" while
 its body and acceptance say revision 4. Accepted S12's historical mass-link owner is "S13";

@@ -2179,7 +2179,22 @@ FILE notes/muonium_gravity_corrections.md lines 21:25
 23:    `κ^pass = m_p/m_i` and `κ^act = m_a/m_i` separately. Equality `m_i=m_p=m_a` must **emerge as a Ward-identity
 24:    theorem** if it holds — ⛔ never assumed. (This is "keep every varying quantity live; a required freeze is the
 25:    finding.")
-FILE research/pde_ledger_v3/steps/S14a_1_projection.md lines 50:103
+FILE research/pde_ledger_v3/steps/S14a_1_projection.md lines 35:103
+35: 
+36: ## 1. Supplied objects, domain and premises
+37: 
+38: The user's committed law (2026-07-24) is supplied, **"unfalsifiable in this build"**:
+39: 
+40: ```text
+41: ∂t n + ∇₄·(n u) = 0
+42: ∂t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n Γ_B
+43: Γ_B = Γ_return − Γ_drain,       [Γ_B] = T⁻¹.
+44: ```
+45: 
+46: There are three in-plane coordinates `x¹,x²,x³`, bulk coordinate `w` and time `t`. The two
+47: live graph faces obey `w₋(x,t)<w₊(x,t)`. Regions 1, 2 and 3 are below, inside and above.
+48: U1 sets exterior order to zero; interior order `f(x,w,t)` stays live. The inherited field
+49: class has independent regional fields and one-sided traces, permits jumps and supplies no
 50: face-concentrated part of `n,u,J_χ,f`; the source may have a concentrated part. The closed
 51: projection counts each endpoint's concentrated part in full. Face deltas use coordinate `w`,
 52: not true surface area. The core is excluded, with S22. Transfer is only **"wherever the committed
@@ -78372,7 +78387,7 @@ Phase 5 knits the sectors and builds the substrate. At that point this file is t
 substrate is tested against — the thing that answers *"is the brane–bulk we built sufficient to carry all
 five forces"* by enumeration rather than by recollection.
 
-REGISTER working tree
+REGISTER 4ae7e6cf
 ENTRY_HEADING_LITERAL_COUNT 25
 127: ⚠ `R-S1-01`'s id encodes its original target; the id is stable and the **target** field governs.
 128: ⚠ `R-S14a-01`'s id names its source step, not its deliverer; its **target** field governs.
@@ -78438,6 +78453,2036 @@ ENTRY_HEADING_LITERAL_COUNT 25
 1069: ### R-S22-02 — the missing response-reduction inputs in S22's debt table
 1074: - **target** S22 for the debt-table account; no physical supplier is assigned here where the
 1076: - **status** OPEN
+# Substrate requirements — what the force sectors oblige the unbuilt steps to deliver
+
+**Status: the light sector is closed for now (user decision, 2026-10-19). Passes 1 (S9, S10), 2 (S11,
+S11b-A/B, S11c PARTIAL; accepted `22be0137`), O2 (accepted `72866fcf`) and S9b (accepted `ff3bac63`) are
+complete. The light-closing pass (2026-10-19), including the oracle-comparison record and throat energy
+split, is accepted at `e070c7f3`. The S12 record and register pass (2026-10-20) are accepted at `ac909aaf`;
+their constructions and comparator are accepted at `a3da43d9` and `fe485b73`.**
+The S14a part 1 record and register pass (2026-10-21) are accepted at `4a4dfaf5`;
+their constructions and comparator are accepted at `94fddf2f` and `de81b9fc`.
+The S14a part 2 record and register pass (2026-10-21) are accepted at `79511272` (round 2 clear).
+By the user's "Record as requirement" decision, no build ran: the slab's own dynamics must select
+the slow limit and far behaviour (`R-S14a-01`); S14/S15/S20 remain CONDITIONAL on that requirement.
+Twenty-five entries, all OPEN. S16's record and register pass are written for source-first review;
+its constructions and comparator are accepted at `1d990ee6` and `f08db34a`.
+Pass 2 was populated 2026-10-05 from the kept results and their stated
+conditions; it does not close the substrate or upgrade S11c's unresolved work. Later sectors remain to
+be read as they close. The two 2026-08-07 prior-art entries retain their provenance; the second route is
+recorded under Population passes.
+O2 adds sources to six existing entries and one separate supplier/budget entry with no owner named;
+its four adopted premises retain their
+conditional-input labels in the O2 pass below. Entry counts for that pass are retrieved in
+`steps/_measurements/O2_record_measurements.md`, M11. S9b adds one S21 requirement and sources
+six existing entries; its before/after census is `steps/_measurements/S9b_record_measurements.md`, M10.
+The light-closing pass adds one S22 entry and oracle-comparison evidence to `R-S21-01`; its lookups are
+`directives/_measurements/light_sector_closeout_lookups.md`.
+S12 merges its printed regional/face compatibility objects into `R-S12-02` and adds scoped source or
+decision provenance to four existing entries; it adds no entry and closes none. Its retrievals and
+before/after census are `steps/_measurements/S12_record_measurements.md`, M12/M15.
+S14a part 1 merges projected/shell compatibility into `R-S12-02` and adds scoped
+source/provenance to four existing entries, with no new entry or status change. Its census and
+pass are retrieved in `steps/_measurements/S14a_1_record_measurements.md`, M12/M16.
+S14a part 2 adds `R-S14a-01`, the slow-limit/far-behaviour obligation: 18 → 19 OPEN entries.
+Selection is owed jointly by S12, S8/S22 and the face/interior laws with no owner named
+(user's V2 decision, `12aa65d5`). No existing entry gains a source or changes target/status;
+`R-S12-02` retains its scope at `978c359c`. This pass's retrievals and exact
+ancillary diff are `steps/_measurements/S14a_2_record_measurements.md`, M12/M15.
+S16 adds six entries (19 → 25 OPEN) and scoped source/provenance to `R-S12-02` and `R-S21-01`.
+The new objects are explicit user-required future deliveries and S22's reduction-debt account;
+they are not prerequisites silently imposed on the live conditional balances. Retrievals, both-route
+applications and the exact ancillary diff are `steps/_measurements/S16_record_measurements.md`, M01–M16.
+
+## Why this exists
+
+v3 is requirements-first: each sector states what it needs, and the knit happens last. The light sector
+(S9, S10, S11, S11b) is built on **S1–S8, none of which have been run** — there are no step records for
+them. That is the design, not an oversight: the substrate gets built once every sector has said what it
+requires, so it can be checked against all of them at once rather than rebuilt per sector.
+
+The bet only pays if the requirements are **captured**. Measured 2026-08-05: exactly two obligations are
+recorded, both from S11, both about one quantity, both as inline anchors in a 1200-line plan. Everything
+else a built sector assumes about the substrate is implicit prose spread across four step records.
+
+`DEFECT_REGISTER.md` records what is *wrong*. `ANSATZ_LEDGER.md` records what is *postulated and not
+derived*. Neither records **what a later step must deliver for an earlier result to stand.** That is this
+file.
+
+## The failure this prevents
+
+At Phase 5 the sectors are knitted and the substrate is built against their combined requirements. If a
+requirement was never written down, one of two things happens: the substrate is built without it and the
+sector's result silently loses its footing, or it is rediscovered late and the substrate is rebuilt. Both
+were survivable with one sector. With five they are not.
+
+The S7 entry below is the shape of the problem. Standing at S7, the honest answer is "the slab width is
+not selected" — a real result, bankable, and **insufficient**. Only S11 knows that the question must be
+asked again with the width made position- and time-dependent. Nobody at S7 would think to ask.
+
+## Entry schema
+
+| field | meaning |
+|---|---|
+| `id` | stable identifier, cited from both ends |
+| `source` | the step that needs it |
+| `target` | the step that must deliver it |
+| `requirement` | **the object required**, named — not a derivation path for it |
+| `on failure` | what breaks in the source step if the target cannot deliver |
+| `status` | OPEN · DELIVERED · RETIRED (with the commit that changed it) |
+
+Name the object; do not prescribe how the target should obtain it. A requirement that specifies a
+derivation route manufactures arguments about the route — see `CLAUDE.md` rule 3.
+
+Distinguish carefully:
+- a **requirement** is an obligation on a *future* step;
+- a **postulate** is a value or form assumed *here* and not derived — that belongs in `ANSATZ_LEDGER.md`;
+- a **defect** is something already wrong — that belongs in `DEFECT_REGISTER.md`.
+
+A postulate with a named retirement condition generates a requirement. `B_comp` below is exactly that.
+
+---
+
+## Entries
+
+⭐ **By target step** — what each unbuilt step owes the sectors that are already banked:
+
+| target | id | the object owed | source |
+|---|---|---|---|
+| **S1** | `R-S1-02` | the substructure's shear response as a function of `χ_B`, both phases | S9, O2 conditional premises, S9b brane optical shear only, S12 and S14a part 1 support identification only |
+| **S1** *(register inference)* | `R-S1-03` | whether the substructure's microdynamics is time-reversible | S11b-B / unified S11b |
+| **S1.5** | `R-S1.5-01` | the mode content of the linearised GNLS, including the bulk acoustic branch | S9, S11, S11b-A/B, S9b Part C bulk acoustic input only |
+| **S6** | `R-S6-01` | the brane's compression modulus `B_comp` | S11 |
+| **S6** | `R-S6-02` | the first variation of the substrate action at `v₀ = 0` | S9, S10, S11, S11b-A/B, S11c uniform |
+| **S6** | `R-S1-01` | the brane's spatial dimension `D_brane` ⚠ *id kept; target corrected to S6* | S10, S11, S9b, S12 and S14a part 1 coordinate dimension only |
+| **S7** | `R-S7-01` | the slab-width flat direction under a non-uniform width | S11, unified S11b |
+| **S8** | `R-S8-01` | the form of the brane's quadratic stiffness functional | S9, S10, S11, S11b-B, unified S11b, S11c uniform, S9b supplied transverse input |
+| **S8** | `R-S8-02` | the quadratic operator on `u` **and** `h` together | S10, S11 |
+| **S8** | `R-S8-03` | the **sign** of the physical transverse stiffness | S9, S10, S11, unified S11b, S11c uniform, S9b local optical sign/ratio gate |
+| **S8** | `R-S8-04` | what carries the brane's **internal angular momentum** | S9, S10, S11, O2 carried obligation |
+| **S8** | `R-S8-05` | the **frame** the brane's rotational stiffness is measured against | S9, S10, S11, O2 carried obligation |
+| **S8** *(register inference for original entry)* | `R-S8-06` | material displacement and original quadratic slab inertia; O2 adds the material identification only | S11, S11b-B, O2 and S9b identification |
+| **S12** *(register inference; no live owner named)* | `R-S12-01` | a reservoir and power budget if a non-passive interface response is adopted | S11b-B / unified S11b, O2 carried condition |
+| **S12** | `R-S12-02` | native drain/return, printed regional/face and projected/shell compatibility on the real-fraction branch (A13 OPEN), and separate boundary data | S11b-A/B, S11c uniform, O2, S12, S14a part 1; S16 supplied projection/Keep S12 provenance only |
+| **S21** | `R-S21-01` | conditional deflection and radar-slope profile requirements, with Part C rewrites and implied exchange; comparison of force sectors' flow requirements | S9b A–C; flow-only oracle comparison (evidence only); S12, S14a part 1 and S16 framing decision only |
+| **S22**, with Q2 and S12 | `R-S22-01` | how the energy a throat releases splits among light, the extra longitudinal wave and the bulk | S11 departure; photon survey E32–E34, E38 |
+| **no owner named** | `R-O2-01` | the physical net-power supplier and its stated budget, if a conditional closure requires net supply | O2 |
+| **jointly S12** (source/flux forms), **S8/S22** (material law), **no owner named** (face/interior laws) | `R-S14a-01` | the slow limit and far behaviour selected by the slab's own dynamics | S14a part 2; requirement for S14/S15/S20; user V2 decision, `12aa65d5` |
+| **no owner named** | `R-S16-01` | surroundings field, separation from the body's own field, and normalization for a passive factor | S16 user requirement |
+| **no owner named**; S22 receives the debt in its table | `R-S16-02` | compactness relative to both separation and surroundings-field variation scale | S16 user requirement |
+| **no owner named** | `R-S16-03` | momentum exchanged at each slab face, split by face motion | S16 user requirement |
+| **S8** | `R-S16-04` | momentum–material relation needed for an inertial factor | S16 user requirement; O2 OPEN interface |
+| **S8/S22** | `R-S16-05` | slab density response | S16 user requirement; O2 OPEN interface |
+| **S22** (debt-table account only; physical suppliers not assigned by this entry) | `R-S22-02` | missing response-reduction inputs and width bridge, with compactness cross-referenced to `R-S16-02` | S16 filing decision and plan debt rows |
+
+⚠ Entries below are in the order they were found, ⛔ not in step order. All **twenty-five** are **OPEN**.
+⭐ `R-S8-01`, `-03`, `-04`, `-05` are one family: the stiffness functional's **form**, its **sign**, its
+**mechanical admissibility**, and its **reference frame**. ⛔ Delivering the form does not deliver the
+other three.
+⚠ `R-S1-01`'s id encodes its original target; the id is stable and the **target** field governs.
+⚠ `R-S14a-01`'s id names its source step, not its deliverer; its **target** field governs.
+
+### R-S6-01 — `B_comp` must be retired or re-affirmed
+
+- **source** S11 (`steps/S11_stray_longitudinal.md`, moves 1–5) · **target** S6 · **status** OPEN
+- **requirement** — the brane's compression modulus `B_comp` (`Q.brane.B_comp`), as a derived quantity or
+  an explicitly re-affirmed postulate.
+- **on failure** — S11's knob count stays an upper bound and the longitudinal mode keeps a postulated
+  constant underneath it. Entered as a postulated knob on the user's explicit call (2026-08-02) precisely
+  so the retirement would be visible when it happens.
+- **note** — recorded at `V3_STEP_PLAN.md` `{#s6-b-comp-callback}`, written into S6 on purpose: a note
+  living only in S11's record is a note nobody reads on arrival at S6.
+- **pass-2 scope** — No S11b record rests on `B_comp`: B's enlarged energy basis is not a derivation of
+  `B_comp` from the substrate. Its scorecard limits the
+  static series-compliance claim to impermeable faces; with active transfer the static row is `μ_θ = 0`.
+  This entry does not identify `B_comp` with `B_eff` or impose a series law on that permeable case.
+
+### R-S7-01 — the slab-width flat direction, under a non-uniform width
+
+- **source** S11 (`steps/S11_stray_longitudinal.md:90–92`); unified S11b
+  (`steps/S11b_interface_coupling_law.md:156–157`) · **target** S7 · **status** OPEN
+- **requirement** — whether the slab-width flat direction survives when the width is made **position- and
+  time-dependent**. A uniform-width statement does not answer it.
+- **on failure** — S11 says, *"Two channels accommodating additive shares of one strain, i.e.
+  **springs in series**, so compliances add and `B_comp` is **softer than either channel alone**"*, then
+  *"If that flatness survived, `B_wall = 0`, hence `B_comp = 0`, and S10's zero would never lift"*
+  (`steps/S11_stray_longitudinal.md:84–88`). S11b-B's whole P3 row instead says *"compliances add at
+  `ω → 0`"* (prediction) and *"⚠ partial — impermeable only; with active transfer the static row is
+  `μ_θ = 0`"* (outcome) (`steps/S11bB_interface_assembly.md:172`). The records disagree
+  on the unqualified series-law failure statement; this is unresolved. S11's own answer is that gradients
+  lift the flat direction — a wave
+  modulates the width, tilting and stretching the interfaces at cost proportional to `σ_wall|∇W|²`, so
+  flat at `k=0` and stiff as `k²`. S7 must confirm or refute that.
+- **named freeze** — S11 says its cone is *"computed with the wall width FROZEN"*
+  (`steps/S11_stray_longitudinal.md:90–92`); the unified record calls the same imported-width identity
+  *"a recorded **freeze**, ⛔ not a fix"* (`steps/S11b_interface_coupling_law.md:156–157`).
+- **note** — `V3_STEP_PLAN.md` `{#s7-b-comp-callback}`. The charge anchor rests on this.
+
+### R-S1-01 — the brane's spatial dimension
+
+- **source** S14a part 1 (coordinate dimension only; `steps/S14a_1_projection.md`, §§1–4/8); S12 (coordinate dimension only; `steps/S12_order_source.md`, §§1–2/7); S9b (coordinate dimension only; `steps/S9b_light_bending.md`, §§2–4/8); S10 (`steps/S10_two_transverse_photons.md`); S11
+  (`steps/S11_stray_longitudinal.md`, moves 2–3 / finite census) · **target** S6 · **status** OPEN
+- **requirement** — the brane's spatial dimension `D_brane`, as a derived quantity or an explicitly
+  re-affirmed postulate.
+- **on failure** — S10's headline reads *"light having exactly two polarisations is a statement that our
+  space is three-dimensional."* Read backwards it says the opposite: `D_brane = 3` went in and `D−1 = 2`
+  came out. Without a delivered `D_brane` the sentence is an assumption restated, ⛔ not a result.
+- **note** — ⚠ **The target is S6, not S1.** S1 owns `D = 4` and the two-phase split; `D_brane` is a
+  property of the **wall**, and S5–S6 are what construct it — S6 (the kink) is the first step at which a
+  codimension-1 surface exists to have a dimension.
+  ⛔⛔ **An earlier draft of this entry ruled out the obvious route on bad reasoning**, and a leg caught
+  it. It argued that because S10's *mode-count computation* contains no codimension, `D_bulk − 1` is not
+  the route. ⚠ **Non sequitur.** That the count does not *use* a codimension says nothing about whether
+  `D_brane` can be *derived* as one elsewhere — a domain wall in a `D = 4` bulk is exactly codimension 1,
+  and that is the natural derivation. ⇒ ⭐ **this entry does not prescribe a route**, per the schema; it
+  asks for the object.
+- **pass-2 consumer** — S11's selected homogeneous three-mode census and transverse/longitudinal
+  separation use `D_brane = 3`. Its proper-rotation invariant count explicitly warns that the sector
+  separation is not dimension-independent. This is the same dimension obligation, not a new knob.
+
+- **S9b scope** — The kept optical/mass construction uses three far-field spatial coordinates,
+  coordinate `d³x`, spherical `r² sin θ` measure and the `4πr²` flux. It consumes `D_brane=3`
+  without deriving it. If that dimension is not delivered or re-affirmed, these coordinate
+  functionals and the flux/velocity relation do not transfer unchanged to the substrate.
+  This adds no dimensional derivation or selected wall thickness (S9b §§2/5; M1/M19).
+
+- **S12 scope** — The supplied balances and printed regional/face objects have three in-plane
+  coordinates and one bulk coordinate. Density's `L⁻⁴` assignment is shown by the SymPy
+  construction (`scripts/S12_order_source.py:219–222`) and its printed, unjoined
+  `primitive_function_dimensions` table, and by the Wolfram source's `unit` switch
+  (`mathematica/S12_order_source.wl:29–37`), not a Wolfram primitive-unit transcript table. This adds a
+  coordinate-domain consumer only. If that dimensional setting is not delivered or reaffirmed,
+  those objects do not transfer unchanged. No dimension or brane construction is derived
+  (`steps/S12_order_source.md`, §§1–2; its retrievals M01/M04/M06/M10/M17).
+
+- **S14a part 1 scope** — The projection uses three in-plane coordinates and one bulk coordinate;
+  its labelled spherical shell uses the printed `4πr²` area. This adds a coordinate-domain consumer
+  of the existing dimension obligation, not a dimensional derivation or selected thickness.
+  Failure to deliver/reaffirm that setting prevents transferring those projected/shell objects
+  unchanged (`steps/S14a_1_projection.md`, §§1–4; its retrievals M01/M03/M04/M07).
+
+
+### R-S1-02 — the substructure's shear response, as a function of the order parameter
+
+- **source** S14a part 1 (support identification only; `steps/S14a_1_projection.md`, §§1/8); S12 (support identification only; `steps/S12_order_source.md`, §§1–3/7); S9b (brane optical shear only; `steps/S9b_light_bending.md`, §§2–4/8); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
+- **requirement** — the shear response of the substructure as a function of `χ_B`, across **both** phases.
+- **on failure** — the two halves fail differently, and both are fatal:
+  - **ordered phase carries no shear** ⇒ `μ_R = 0`, the brane has no transverse sector, and **photons do
+    not exist**;
+  - **disordered phase carries shear** ⇒ light is not confined to the brane, it leaks into the bulk — an
+    energy sink with no observational room — **and** the throat's trapped brane-shear standing wave
+    radiates away, so the outward pressure vanishes and **the geon closes**.
+- **note** — ⭐ **Three independent consumers** (photon propagation, photon confinement, geon support), and
+  it is **one object**, not three. S9 records it as its own LIVE falsifier and as a knit question: can one
+  substructure be ordered-and-shear-bearing in one phase and unstructured-and-shear-free in the other?
+  ⚠ Stressed hardest at the throat, where the brane is bent into `±w`. Currently the only machine check
+  on the bulk half anywhere in the corpus is **dimensional**.
+- **O2 scope** — Premises 1 and 4 adopt optical-regime elastic shear in the brane and the postulated
+  shear-free scalar bulk with face-normal mechanical loading. O2 derives neither phase response.
+  The existing shear-response retirement question gains this conditional consumer, not a new
+  entry for an adopted value. Failure to realize those responses prevents promoting O2's conditional
+  material/load object to that substrate. No flowing pressure law, tangential bulk stress or optical
+  compatibility result follows (`directives/O2_SHARED_PHYSICS.md`, §§2, 3.1, 3.3, 7).
+
+- **S9b scope** — The supplied light branch is the transverse displacement of shear-carrying
+  brane material, with the real positive optical ratio `μ⊥/ρbr`. A kept A–C optical wave is
+  conditional on that brane shear response; without it the reported propagating optical
+  interpretation fails its own gate. S9b therefore consumes the brane optical half of this
+  existing phase-response requirement. It derives no `χ_B` response, bulk shear-free result
+  or confinement result; O2 P4 is only carried as an adopted premise, unused by A–C
+  (S9b §§2/7; M1/M19).
+
+- **S12 scope** — U1 and its flagged support identification are adopted inputs: order vanishes
+  outside the independently bounded shear-holding region, and remains live inside. This adds
+  only the conditional material interpretation as a consumer of the existing phase-response
+  obligation. Failure of that identification removes the claimed shear-region interpretation;
+  the algebra does not establish shear response, confinement or a constitutive relation to
+  `χ_B`. U1's re-ordering clause enters no computed object and remains OPEN
+  (`steps/S12_order_source.md`, §§1–3; retrievals M01/M03/M04).
+
+- **S14a part 1 scope** — U1's shear-holding-region/support identification is inherited as an
+  adopted input, not derived from the projection. It adds only this conditional material
+  interpretation to the existing phase-response obligation. If the identification fails, the
+  shear-region interpretation fails; no shear modulus, confinement result or profile follows.
+  U1's re-ordering clause enters no computed object as an enforced clause
+  (`steps/S14a_1_projection.md`, §1; its retrievals M01/M03/M04).
+
+
+### R-S1.5-01 — the GNLS's own mode content
+
+- **source** S9b (Part C bulk acoustic input only; `steps/S9b_light_bending.md`, §§2–4/8); S9; S11 (`steps/S11_stray_longitudinal.md`, move 6 / `KW_ZERO_LOCUS`);
+  S11b-A (`steps/S11bA_interface_response.md`, computed bulk response) and S11b-B
+  (`steps/S11bB_interface_assembly.md`, breathing slice) · **target** S1.5 · **status** OPEN
+- **requirement** — the mode content of the linearised GNLS about uniform `ρ₀`: which excitations it
+  carries and their polarisation.
+- **on failure** — S9's opening move is *"a single-component scalar superfluid cannot carry transverse
+  light"*, and the entire requirements-first framing of the light sector rests on it. ⛔ It is cited from
+  **one external review document** (`decisions/15`) and **no script in this repo executes it**; the S9
+  rebuild did not add one. If the GNLS does carry a transverse excitation, light needs no substructure and
+  S9 has no bill to present.
+- **note** — a weaker in-repo form exists (`v = (ħ/m)∇θ ⇒ ∇×v ≡ 0`) but is never wired into a no-shear
+  proof. ⚠ This is a **premise awaiting execution**, not a postulate: it is the kind of claim a CAS can
+  settle, and nothing has been asked to.
+- **pass-2 consumer** — the same mode-content question now includes the rest-bulk acoustic branch used
+  in `q² = ω²/c_s0² − k²`, its polarisation and the regime in which that acoustic approximation applies.
+  S11's threshold, A's radiation resistance/added mass, and B's radiative breathing load rest on that
+  supplied branch. Failure leaves those results conditional on a bulk operator the GNLS has not yet
+  delivered. This requests neither an EOS exponent nor a numerical light/sound speed ratio.
+
+- **S9b scope** — Part C uses the supplied bulk acoustic quantity
+  `c_s²=nKρ^(n−1)/m`, including its asymptotic value, and its fixed-ratio response uses the
+  exact nonnegative sound-speed roots and their domains. If the bulk does not deliver that
+  acoustic branch on the stated domain, the fixed-ratio optical rewrite cannot be read as
+  a light/sound response of that substrate. This is a consumer of the existing acoustic-mode
+  requirement only: no GNLS mode derivation, EOS exponent, light/sound identification or
+  numerical ratio is supplied by S9b (S9b §§3–4; M1/M18).
+
+
+### R-S6-02 — the reference state must be an equilibrium
+
+- **source** S9, S10; S11 (`steps/S11_stray_longitudinal.md`, homogeneous action);
+  S11b-A/B (`steps/S11b_interface_coupling_law.md`, standing limits); S11c
+  (`steps/S11c_PARTIAL_CLOSEOUT.md`, conditional uniform result;
+  `steps/S11c_d_profile_conditioned_scattering.md`, uniform check) · **target** S6 · **status** OPEN
+- **requirement** — the **first variation of the substrate's action**, evaluated at the state S9 and S10
+  linearise about: the unstrained brane at rest, `v₀ = 0`.
+- **on failure** — every result in the light sector is a linear response, and a linear response about a
+  state that is not an equilibrium is not a linear response at all: the expansion has a term linear in the
+  displacement that nothing cancels. `ω² = (μ_R/ρ_br)k²`, the mode count, and the dimensions all inherit
+  the defect. ⛔ Nothing in the sector tests it, because the substrate is absent from S9's and S10's
+  actions.
+- **note** — ⚠ **The standing warning applies here**: ask *whose* equilibrium, and check that the
+  reference state is not being held in place by an assumption rather than by the dynamics. S6's kink is
+  the candidate stationary solution; S6 has no record yet.
+- **pass-2 scope** — the kept homogeneous and selected uniform results use the rest reference state.
+  S11b-B states verbatim: *"⛔⛔ **Passivity and reciprocity are properties of fluctuations about an
+  EQUILIBRIUM. This model's reference state is not one.** It carries a steady background normal flow
+  `v₀` — the dark-energy drain — ⇒ a **driven steady state with a reservoir attached.**"*
+  (`steps/S11bB_interface_assembly.md:46–48`). In that quote S11b's `v₀` is the bulk's normal drain,
+  standard name `v_bulk_normal_0`; it is distinct from the brane rest velocity `v₀ = 0` in this requirement
+  (`directives/S11b_SHARED_PHYSICS.md:101–104`; `directives/S11b_unified_decisions.md:33–40`). For S11b, the
+  rest-frame linearisation discards a relative correction of order `O(v₀|q_n|/ω)`, where `v₀` again denotes
+  the steady background normal flow (`steps/S11bB_interface_assembly.md:150–154`), and the unified record
+  calls that correction uncarried
+  (`steps/S11b_interface_coupling_law.md:158–164`). The kept S11c results state that the bulk is at rest
+  (`steps/S11c_PARTIAL_CLOSEOUT.md:7`; `steps/S11c_d_profile_conditioned_scattering.md:9,23`). This is an
+  unresolved tension between the driven reference state and the recorded rest-state calculations. The
+  rest-state obligation remains here; live drain/return data are `R-S12-02`, which also records the
+  uncarried correction and its record-named owner, and the power supply is `R-S12-01`. No equilibrium result
+  is promoted to a result about the driven state.
+
+### R-S8-01 — the form of the brane's quadratic stiffness functional
+
+- **source** S9b (`steps/S9b_light_bending.md`, §§2/8, supplied transverse input only); S9, S10; S11 (`steps/S11_stray_longitudinal.md`, moves 2–3 / FORM control);
+  S11b-B (`steps/S11bB_interface_assembly.md`, energy basis / breathing stability); unified S11b
+  (`steps/S11b_interface_coupling_law.md`, energy quotient); S11c
+  (`steps/S11c_PARTIAL_CLOSEOUT.md`, conditional uniform result) · **target** S8 · **status** OPEN
+- **requirement** — the quadratic brane Lagrangian's **stiffness functional**, as delivered by the
+  substructure rather than chosen.
+- **on failure** — this is the one input the light sector's central claim is **measurably** sensitive to,
+  and S9's own controls prove it:
+  - the gradient-elastic form `−½ μ_R Σ(∂_i u_j)²` — an ordinary elastic solid — carries **the same two
+    transverse modes at the same `c² = μ_R/ρ_br`**, and *also* propagates the longitudinal;
+  - the divergence-only form makes the roles **swap**: the transverse pair drops to `ω² = 0` and the
+    longitudinal propagates.
+  ⇒ ⭐ **What curl-only buys is the ABSENCE of a propagating longitudinal mode, ⛔ not the presence of the
+  transverse ones.** If S8 delivers any other form, S9's and S10's transverse results may survive while
+  the no-longitudinal claim — Maxwell's third demand, and the whole reason the sector exists — does not.
+- **note** — S9 classifies the curl-only form as **postulated (structural)**, justified by *"forced by
+  Maxwell's no longitudinal mode"*. ⚠ That is a justification from the target, ⛔ not from the substrate.
+  Defect `B2` closes the route from a polar substructure `P` to `μ_R` — ⚠ **the whole quantity, not only
+  its magnitude**, as `DEFECT_REGISTER.md#B2` scopes it. ⛔ But it closes **one route**, and it says
+  nothing about the **form**, so this requirement is live.
+- **pass-2 consumers** — S11's unchanged transverse root rests on adding the trace invariant. As a
+  first-route source only, its record says: *"The form control's `4/3` independently reproduces the
+  corpus's rejected-Cauchy-branch coefficient"* (`steps/S11_stray_longitudinal.md:126–127`); the record
+  names no prior-art objection to that branch.
+  S11b-B needs the complete quadratic stored energy on `u, θ, e_W` under its whole stated symmetry group
+  (`directives/S11bB_SHARED_PHYSICS.md:353–362`). The unified record's ten-dimensional quotient is likewise
+  defined under its whole stated symmetry group (`directives/S11b_SHARED_PHYSICS.md:280–288`) and has different
+  valid representatives; no individual representative coefficient is the required object. Its
+  constrained breathing stiffness is `K₀ = B_ρ⁽³⁾ − 2CW₀ + k_W W₀²`. The stability claim is only the
+  `k = 0`, impermeable, zero-reciprocal-traction slice. On that slice B hands forward `K₀ > 0` as
+  *"an **empirical** constraint — the brane is here"* (`steps/S11bB_interface_assembly.md:192`). Failure
+  to supply this energy leaves the
+  decoupling and slice stability conditional; no sign or magnitude of an individual scalar coefficient
+  is inferred. S11c's uniform result inherits that qualification, not a nonuniform confinement law.
+
+- **S9b scope** — Parts A–C assume an isotropic transverse spatial stiffness with local
+  `cγ²=μ⊥/ρbr`, on their supplied leading-eikonal optical domain. S9b therefore gains a source on
+  the existing requirement for a substrate-delivered transverse stiffness input. It neither derives
+  that input nor widens this entry into a completed live stress/relaxation or nonuniform operator law.
+  The latter stays the unfinished S11c handoff; other unselected material response forms are not
+  newly entered. No curl-only, no-longitudinal, mechanical-admissibility or physical-frame result
+  follows from the optical comparison (`steps/S9b_light_bending.md`, §§2/6–8; measurements M1/M8).
+
+### R-S8-02 — the in-plane and out-of-plane sectors must decouple at quadratic order
+
+- **source** S10; S11 (`steps/S11_stray_longitudinal.md:278–280`, in-plane, frozen-wall-width spectrum)
+  · **target** S8 · **status** OPEN
+- **requirement** — the quadratic operator on the brane's **full** displacement, in-plane `u` **and**
+  out-of-plane `h` together, and whether it is block-diagonal in that split.
+- **on failure** — ⛔ **S10's headline number changes** — but ⚠ **not by the mechanism an earlier draft of
+  this entry named, and a leg corrected it.** Mixing is **not** the failure mode: under the rotation group
+  that acts on the brane, `h` and `u_L` are both **scalars** and `u_T` is a **vector**, so `h` can mix with
+  `u_L` freely and the transverse count stays `D − 1` regardless. ⭐ **The condition that gives 3 is `h`
+  being DEGENERATE WITH THE TRANSVERSE PAIR** — the brane's elasticity being isotropic in `D+1` rather
+  than in `D`. That is what *"belonging to the same elastic sector"* has to mean, and it is what S8 must
+  settle.
+- **note** — ⭐ **This is the most load-bearing open item in the sector**, and it was flagged inside S10 at
+  the moment the identification was made rather than found later: `h ≠ u_L`, stated in three places in the
+  corpus, **user-confirmed as the picture** — but ⛔ confirmed as a picture, not computed. `V3_STEP_PLAN`
+  puts *"transverse and longitudinal sectors; the reduced `h`/`u_L` operator"* in S8, so the object is
+  already scheduled.
+  ⚠⚠ **And v3 is not starting from nothing — a leg found the computation already exists in v2 and this
+  entry did not cite it.** `research/pde_ledger_v2/paper/stages/stage_030.tex:99-125` builds the coupled
+  `(u_L, h)` scalar block with stiffness `K = [[B_eff, C_hu], [C_hu, K_h]]` — explicitly **not**
+  block-diagonal, with `C_hu` a registered free-unreduced parameter — and `R79` records that the mixed
+  poles are cone-coincident only when `C_hu = 0`. ⇒ ⛔ *"nothing computes that"* is true of **v3** and
+  misleading about the **corpus**; S8 should start from `stage_030`, ⛔ not from scratch.
+  ⭐ Note this is the `(u_L, h)` block — the scalar sector — so it bears on the **longitudinal** slot and
+  the charge anchor, ⛔ and not directly on the transverse count, which is what the corrected on-failure
+  above turns on.
+- **pass-2 source** — S11's result here is the one its record names as the in-plane, frozen-wall-width
+  spectrum with `hBranon` excluded: *"⚠ Scope caveats, none touching the decoupling: (i) this is the
+  **in-plane, frozen-wall-width** spectrum (`WALL_WIDTH_FIELDS={}`, `hBranon` excluded,
+  `INTERFACE_EQUATIONS_SUPPLIED={}`) — it does not decide inhomogeneous mode conversion,"*
+  (`steps/S11_stray_longitudinal.md:278–280`). S11's decoupling statement, with its own limit, reads:
+  *"Thus the homogeneous \(D=3\) quadratic transverse and longitudinal eigenbranches have zero linear
+  cross-block under the selected action. This does not establish decoupling at nonlinear order, on a
+  nonuniform slab, at an interface or defect, or after additional allowed fields are introduced."*
+  (`steps/S11_stray_longitudinal.md:74–76`). This entry's object is the joint `u`/`h` operator that the
+  spectrum leaves out.
+- **excluded field** — in that caveat S11's record freezes the wall width and excludes `hBranon`
+  (`steps/S11_stray_longitudinal.md:279–280`); its Mathematica audit binds the token as
+  `"OUT_OF_PLANE_FIELD_EXCLUDED" -> hBranon`
+  (`mathematica/S11_stray_longitudinal_mathematica_audit.wl:1082`). If S8 does not deliver the joint
+  operator, S11's spectrum is not extended beyond that stated scope. The record does not say what its
+  roots or census would be with `hBranon` included, and this register does not infer it.
+
+### R-S8-03 — the SIGN of the physical transverse stiffness
+
+- **source** S9b (local optical sign/ratio gate; `steps/S9b_light_bending.md`, §§2–4/8); S9, S10; S11 (`steps/S11_stray_longitudinal.md`, unchanged transverse branch);
+  unified S11b (`steps/S11b_interface_coupling_law.md`, transverse mode); S11c
+  (`steps/S11c_PARTIAL_CLOSEOUT.md`, conditional uniform result;
+  `steps/S11c_d_profile_conditioned_scattering.md`, uniform check) · **target** S8 · **status** OPEN
+- **requirement** — the **sign** of the physical transverse stiffness in the quadratic brane
+  Lagrangian, as delivered by the substructure: `μ_R` in S9/S10's selected action, `μ_⊥` in the enlarged
+  S11b action. `R-S8-01` asks for the stiffness **functional**; this asks for its transverse sign.
+- **on failure** — ⛔ **the transverse sector is two exponentially growing modes rather than two waves,
+  and every mode count in S9 and S10 is unchanged.** S10's `XFORM_SIGNFLIP` control measures exactly this:
+  with the sign flipped, `ω² = −μ_R k²/ρ_br` and **every nullity is identical to the baseline's** — the
+  count cannot tell a wave from an instability. What distinguishes them is a single emitted object,
+  `ROOT2_Q3_SIGN`.
+- **note** — ⭐ **Found by a review leg reading the register against S10's own controls**, ⛔ not by the
+  pass that wrote the register: `R-S8-01` is entirely about form and never mentions sign or positivity,
+  so the pass consolidated one and dropped the other.
+  ⚠ **It is not closed by defect `B2`**, which shuts the route for deriving `μ_R` — its sign as well as
+  its magnitude — from a polar substructure `P`. Other substrate routes remain open: a step that
+  delivers the stiffness functional delivers its sign with it, so the retirement condition is exactly
+  as live as `R-S8-01`'s.
+- **pass-2 object** — in the enlarged S11b action this is the physical transverse stiffness `μ_⊥`:
+  WL-`μ_R` and SymPy-`(μ_R + μ_S/2)` are its two representatives under the unified record's invertible
+  coefficient map. The obligation concerns the sign of `μ_⊥`, not a basis-dependent sign of `μ_S` or
+  either engine's bare `μ_R`. Stable real-frequency uniform modes require `μ_⊥ ≥ 0`; decoupling alone
+  does not exclude growth. S11c's selected finite-current check keeps its tested-input and review scope.
+
+- **S9b scope** — Every kept A–C observable is gated on a real positive optical ratio
+  `μ⊥/ρbr`, with the nonnegative speed chart and its engine-specific ray conditions.
+  The conditional wave/ray interpretation fails outside those gates; supplying the stiffness
+  form alone does not supply this sign condition. S9b is therefore a source on this existing
+  physical transverse-sign requirement. Its local strict-positive ratio domain is kept
+  separate from the earlier uniform `μ⊥≥0` statement. PY declares positive `ρbr`; WL keeps
+  real nonzero `ρbr`, so this pass does not infer unconditional `μ⊥>0` for both engines.
+  No sign is derived from the substrate and no existing status closes
+  (S9b §2; M1/M19, complete restriction domains M18).
+
+
+### R-S8-04 — what carries the brane's internal angular momentum
+
+- **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9, S10, S11 · **target** S8 · **status** OPEN
+- **requirement** — the object in the substructure that carries **internal angular momentum** on the brane,
+  or the couple-stress it supports. ⛔ Not a mechanism, ⛔ not a model: the object, or a statement that there
+  is none.
+- **on failure** — ⛔⛔ **the curl-only stiffness functional is not an admissible continuum mechanics.** An
+  energy in `(∇×u)²` alone has an **antisymmetric** Cauchy stress, and balance of angular momentum forces
+  the Cauchy stress to be **symmetric** unless the medium carries distributed couples or internal spin. If
+  the substructure supplies neither, the light sector's central form is inadmissible **regardless of its
+  mode content** — S9's and S10's mode counts, dimensions and speeds would all be computed from a
+  functional no medium can have.
+- **note** — ⚠ **This is the objection that sank MacCullagh's aether**, and it is the one part of that
+  theory the 19th century never answered: Stokes pressed it, and Kelvin's gyrostatic models were attempts to
+  supply exactly this object. ⇒ ⭐ **prior art is the oracle here** — it tells us the obligation is real and
+  that answers exist, ⛔ it tells us nothing about whether **ours** delivers one ⇒ `CLAUDE.md` rule 16.
+  ⭐ Known families a delivered answer might fall into, ⛔ **none assumed and none prescribed**: continua
+  with an independent microrotation degree of freedom (Cosserat/micropolar), and media with stored internal
+  angular momentum.
+  ⛔ **One family is the wrong one and should not be reached for:** modern *odd elasticity* buys an
+  antisymmetric modulus tensor by making the solid **active and non-conservative**. MacCullagh's medium is
+  **conservative** — it has a genuine energy functional — so a non-conservative realisation would be
+  answering a different question.
+  ⚠ `R-S8-01` asks for the **form** and is silent on admissibility; a substructure could deliver the
+  curl-only form and still owe this.
+- **O2 scope** — OPEN `𝒜_rot^live` carries this existing S8 obligation, including whether internal
+  angular momentum/couple stress is present. O2 selects no stress symmetry or carrier and does not
+  establish a curl-only live stress. The original conservative-MacCullagh objection keeps its
+  original domain; it is not newly proved for an unspecified viscoelastic stress. The O2 addition
+  carries the explicitly required carrier/admissibility question within its named material and
+  corresponding power accounting; it adds no flowing constitutive response form. The accounting
+  remains conditional with that question OPEN
+  (`directives/O2_SHARED_PHYSICS.md`, §§3.2, 4, 6).
+
+### R-S8-05 — the frame the brane's rotational stiffness is measured against
+
+- **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9, S10, S11 · **target** S8 · **status** OPEN
+- **requirement** — the frame with respect to which the brane's rotational stiffness is defined: **what
+  `∇×u` is measured against.**
+- **on failure** — for an infinitesimal rigid rotation `u = ω × r` the curl is `2ω ≠ 0`, so a curl-only
+  energy is **nonzero when the whole medium is turned**. ⇒ if the reference is external, the medium knows
+  an absolute orientation, and every result in the sector inherits a preferred-orientation signature that
+  something later must hide. ⛔ That is a falsifiable consequence, ⛔ not a philosophical discomfort.
+- **note** — ⭐ **A brane may escape this where a bulk aether cannot**, and the difference is the whole
+  point of the entry. For a bulk medium *"rotation relative to what"* has no local answer — the 1839
+  objection. For a **domain wall**, the wall supplies its own local frame (its normal, its induced
+  geometry), rotation relative to the wall is meaningful and local, and rotating everything rotates the wall
+  too ⇒ the stiffness would be **relative**, and the objection would not arise.
+  ⚠⚠ **That is a HYPOTHESIS, ⛔ not a result.** Nothing in the corpus computes it. The slab-in-bulk
+  calculation is where it is settled ⇒ **S11b-A** (interface response) is the existing partial artifact,
+  built under the old pattern and on the rebuild list.
+  ⚠ **A flowing medium does NOT answer this.** Flow bears on the **velocity** frame — whether a background
+  drift is detectable — and the analog-gravity route hides it in an effective metric. ⛔ Orientation is a
+  **separate** objection: being carried is not being turned. ⇒ ⭐ do not let one argument discharge both.
+- **O2 scope** — OPEN `𝒜_rot^live` retains the physical rotational frame as an existing S8
+  obligation explicitly carried by the spec. Neither radial flow, the graph normal nor LAB_HELD
+  chooses that material frame. O2's named force/power accounting retains the frame question OPEN;
+  this addition supplies no frame or new rotational-response form. O2 does not extend the original
+  curl-only objection to an unspecified live stress
+  (`directives/O2_SHARED_PHYSICS.md`, §§1, 3.2, 6, 7).
+
+### R-S1-03 — the substructure's microscopic time-reversibility
+
+- **source** S11b-B (`steps/S11bB_interface_assembly.md`, limits of the passive region), unified S11b
+  (`steps/S11b_interface_coupling_law.md`, conditional Onsager–Casimir test) · **target** S1
+  (**register inference; no owner named by the records**) · **status** OPEN
+- **requirement** — whether the substructure's microdynamics is time-reversible, the premise of the
+  conditional Onsager–Casimir relation `Λ_X(ω) = −Λ_V(ω)`.
+- **on failure** — that relation cannot be imposed on the physical interface as an unconditional law.
+  The conditional calculation and the independently computed passivity region still stand; neither
+  selects a reciprocal medium. The records explicitly say microscopic reversibility is not postulated.
+- **note** — this is a first-route obligation from B's hand-forward: `Λ_X(ω) = −Λ_V(ω)` is
+  *"**conditional** on microscopic time-reversibility, which the model does not postulate"*
+  (`steps/S11bB_interface_assembly.md:190`). The records name no step that owns the missing premise, so S1
+  is a register inference. Onsager–Casimir is a second-route candidate only, not a reproduced prior result.
+  The equilibrium issue is `R-S6-02`; the driven state and power budget are separately `R-S12-02` and
+  `R-S12-01`.
+
+### R-S8-06 — material displacement and the slab's quadratic inertia
+
+- **source** S9b (material identification only; `steps/S9b_light_bending.md`, §§2/8); O2 (material identification only; `steps/O2_steady_brane_balance.md`, register handoff); S11 (`steps/S11_stray_longitudinal.md`, move 1 / finite census); S11b-B
+  (`steps/S11bB_interface_assembly.md`, breathing quadratic) · **target** S8
+  (**register inference for the original S11/S11b records; O2 names S8 for the material identification**) · **status** OPEN
+- **requirement** — `u` as the material displacement of the stuff whose density is `ρ_br`, and the
+  quadratic kinetic form of that material and the thickness degree of freedom (B's `μ_W`) on the
+  original homogeneous/slab domain. O2 is a consumer of the material identification only.
+- **on failure** — if `u` is a director rather than that displacement, S11's continuity identification
+  `δρ_br = −ρ_br ∇·u` and its compression argument do not follow. Its finite census requires nonzero
+  `ρ_br`; B's breathing-root interpretation also rests on the stated inertial model. A stiffness
+  functional alone (`R-S8-01`) does not supply this identification or the kinetic form.
+- **note** — this asks for the field identity and inertia, not numerical benchmark values of `ρ_br`
+  or `μ_W`, and does not identify the thickness mode with S10's out-of-plane displacement. The cited
+  records name no future owner for this object; S8 is a register inference
+  (`steps/S11_stray_longitudinal.md:32–38`; `steps/S11bB_interface_assembly.md:80–85`).
+- **O2 scope** — O2 accounts for the material whose displacement is `u`, density is `ρ_br` and live
+  background velocity is `V`. This recorded/supplied identification fixes which material the named
+  conditional balance describes; without it the stated material object and its force/velocity
+  pairings are not identified. It gains O2 as a consumer on that identification alone
+  (`directives/O2_input_contract.md:55–71`; `directives/O2_SHARED_PHYSICS.md:107–109`).
+  The original homogeneous quadratic/slab and thickness inertia obligations keep their domains.
+  O2 adds no flowing/embedded inertial-response requirement: `ℐ_br^live` and the momentum map remain
+  unselected OPEN closure inputs, treated by the same criterion as O1 and O7 in the pass below.
+  No live identification of momentum density with `ρ_br V` follows from the homogeneous anchor.
+  S8's original assignment remains a register inference; O2's input contract names S8 for material
+  identity while supplying no new live kinetic law.
+
+- **S9b scope** — The supplied advection and coordinate mass law identify `u`, `ρbr` and `V`
+  with the same material; this is a condition on the reported local optical object. Failure of the
+  identification removes that object's material interpretation. S9b adds this source only: P5
+  momentum density/carriage is scoped to held Part D, and Parts A–C derive no live kinetic/inertia
+  law. The original homogeneous/slab inertia domain is unchanged (S9b record §§2/7; measurements M1).
+
+### R-S12-01 — the reservoir and its power budget
+
+- **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-B (`steps/S11bB_interface_assembly.md`, standing rule); unified S11b
+  (`steps/S11b_interface_coupling_law.md`, passivity region) · **target** S12
+  (**register inference**) · **status** OPEN
+- **requirement** — a named reservoir and a stated power budget for any adopted non-passive interface
+  coupling.
+  The unified record names the candidate: *"The model supplies a candidate reservoir — the
+  background drain `v₀`."* (`steps/S11b_interface_coupling_law.md:62–63`). That `v₀` is the bulk's normal
+  drain, standard name `v_bulk_normal_0` (`directives/S11b_SHARED_PHYSICS.md:101–104`;
+  `directives/S11b_unified_decisions.md:33–40`). B says the reference state carrying that flow is *"a
+  **driven steady state with a reservoir attached.**"* (`steps/S11bB_interface_assembly.md:46–48`).
+- **on failure** — the finite-memory velocity channel outside the passive region cannot be inherited
+  as a physically supplied response. The computed region remains a classification, not a prohibition,
+  and naming `v_bulk_normal_0` alone does not supply the missing power.
+- **note** — this is the records' explicit condition for retaining that channel, not a requirement
+  that the model choose it. A numerical observational bound also needs matter-to-compression coupling;
+  B says that is unbuilt and reports only a structural test, so no numerical-bound requirement is added.
+- **owner/target** — the records do not name S12; that target is a register inference. They hand the
+  reservoir-and-budget condition to *"S11b-C"* (`steps/S11bB_interface_assembly.md:195–197`).
+- **O2 scope** — O2 carries this same conditional non-passive-interface obligation: if a later
+  closure adopts that response, name its reservoir and state its power budget. No such response is
+  selected. Its live owner is **no owner named**; the historical S11b-C → S11c handoff has no recorded
+  live successor, and S12 remains only the original register inference. This object is separate
+  from S12's additional non-variational source partners, premise 1's relaxation power, and the
+  net-supplier/budget obligation `R-O2-01`
+  (`directives/O2_SHARED_PHYSICS.md:312–317`; `directives/O2_input_contract.md:459–465`).
+- **S12 pass** — Carried separately in the S12 inventory, without a new computed power consumer.
+  U3's endless material supply in the bulk IR is not a named reservoir or a power budget. The
+  source compatibility objects deliver neither. The live owner remains **no owner named**;
+  this does not assign the whole obligation to S12 (`steps/S12_order_source.md`, §§3/5/7).
+
+### R-S12-02 — background drain/return and separate boundary data
+
+- **source** S16 (supplied projection and "Keep S12" provenance only; `steps/S16_moving_region.md`, §§1/6; S16 M01/M04/M14); S14a part 1 (`steps/S14a_1_projection.md`, §§2–5/7–8; its retrievals M03/M05–M10); S12 (`steps/S12_order_source.md`, §§1–2/5–7; retrievals M01/M03/M07/M11); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-A/B (`steps/S11b_interface_coupling_law.md:158–164`, background-flow limit); S11c
+  (`steps/S11c_PARTIAL_CLOSEOUT.md:7`, uniform result;
+  `steps/S11c_d_profile_conditioned_scattering.md:21–25`, selected uniform check)
+  · **target** S12 · **status** OPEN
+- **requirement** — the native drain/return functions and their separate boundary data; the
+  printed regional order-source objects and normalized face-source objects, with the separately
+  printed total-material face balances, as compatibility requirements on conversion, face and
+  order-flux forms. The objects are `general_order/region/{1,2,3}/source`,
+  `general_order/face/{1,2}/{trace_coefficient,source_contribution}` and
+  `material/face/{1,2}/requirement`. The distinct labelled conditional specialization is
+  `conditional_fast_ordering/region/{1,2,3}/source` and its two face objects. Their full values,
+  domain and cross-engine limits are S12 §2/4 and retrievals M03/M07–M09.
+  **Branch condition:** these printed compatibility requirements rest on the **real-fraction
+  branch; A13 stays OPEN**. The decision list says **"The committed law is written for a real
+  ordered fraction; a phase-carrying branch would add content not computed here"**. The plan
+  requires **"the conversion balance must use the branch chosen at S1"**. The printed objects
+  remain on the real-fraction branch until S1's gate decides; the owners remain S1, S5 and S12
+  (S12 record §6; retrievals M18/M19). This qualification travels with the future-form handoff.
+- **on failure** — the kept selected uniform check cannot be transferred to a flowing background: it is
+  a strict-rest-bulk calculation, and its finite samples do not prove flowing-background behaviour
+  (`steps/S11c_d_profile_conditioned_scattering.md:21–25`). S11b records why the rest-frame limitation
+  matters: its linearisation discards a relative correction of order
+  `O(v₀|q_n|/ω)` (`steps/S11bB_interface_assembly.md:150–154`), where that record's `v₀` is the steady
+  background normal flow, standard name `v_bulk_normal_0` (`directives/S11b_SHARED_PHYSICS.md:101–104`;
+  `directives/S11b_unified_decisions.md:33–40`). The unified record calls the correction uncarried and
+  unbounded (`steps/S11b_interface_coupling_law.md:158–164`) and carries the limit
+  to *"C (and to the nonlinear program for the DC/harmonic/sideband radiation audit)"*; S11c-a inherited
+  it as a standing limit but *"computes geometry only and does not address it"*
+  (`steps/S11c_a_interface_shape_derivatives.md:257–260`).
+- **owner** — S12 owns the drain/return data (`steps/S11c_PARTIAL_CLOSEOUT.md:21`) and is next for
+  dynamical bulk-to-brane order conversion with separate boundary data
+  (`steps/S11c_PARTIAL_CLOSEOUT.md:33`). Under the user's 2026-10-20 **"Keep S12"** decision,
+  S12 stays OPEN for these forms: this record closes only its requirements part and delivers
+  none of the forms. They come once the brane is defined, after the force sectors (S12 record,
+  §§5–7; retrieval M18). The earlier assignment/framing disagreement is quoted there.
+- **O2 scope** — Premise 2 makes dynamical order conversion the drive, with no separate body force.
+  O2's local source/controller and boundary/domain inventories remain distinct, as do additional
+  S12 momentum/energy partners and their reaction/supply systems. O2 adds a consumer for the stated
+  drain identity and distinct source/boundary accounting; without those roles its adopted drive is
+  unidentified or conflated with another load/partner. The original native drain/return functions
+  retain their sourced domains, and O2 demands no new functional forms for them. Local in-plane
+  carried `j_n V^i` does not deliver
+  these data, the live `𝒥_map`, bulk-direction carry, energy partners or a `GM` coupling
+  (`directives/O2_SHARED_PHYSICS.md`, §§3.3, 5, 6, 10). Those remain OPEN handoffs, not extra entries
+  merely because a later profile solve would need them.
+- **S12 scope and rest-on condition** — The conditional result rests on these printed compatibility
+  objects, not on any chosen means of meeting them. Below and above, the order source is the
+  regional order-flux divergence; inside it includes live material transport of order; each face
+  carries the printed source coefficient and a distinct material requirement. If candidate data
+  violate one of those objects on the stated domain, they cannot realize that conditional result.
+  Source, face and flux forms are not selected, and separate boundary data are not supplied. The
+  native-data obligation remains OPEN under the user's 2026-10-19 requirements-first framing.
+  The printed constraints are not its delivery. The fast-ordering object is conditional, not an
+  earned limit; concentrated input fields are outside the current object. The six unrestricted
+  coefficient differences are labelled representation diagnostics confined off their respective
+  delta supports, not open differences in the S12 distribution (contract item 3; retrieval M17).
+  Both raw expressions and every unpaired/ledger leaf limit remain in S12 §4 and its retrievals.
+  This merges source/face/flux compatibility into the existing native-conversion obligation,
+  without duplicating an entry or prescribing a law, material, premise or candidate.
+
+- **S14a part 1 projected/shell compatibility** — The required objects also include the printed
+  projected material and order balances, their densities/in-plane fluxes, both interior and
+  closed-projection face terms, concentrated source parts and projected order source; in the
+  labelled spherical specialization, the printed face/core channels, `J`, signed order lost,
+  storage, shell balance, face-channel-minus-order-loss difference, outer flux/radius dependence
+  and the conditioned projected-velocity/volume-flux relations. These are the object requirements
+  listed by native tag/binding in the S14a part 1 pass below. Their full values/domain are
+  `steps/S14a_1_projection.md`, §§2–4, with all cross-engine differences/limits in §5 and retrievals
+  M03/M05–M10. Future data violating them cannot realize the reported conditional projection.
+  The requirements retain the real-fraction/A13 condition above, the live two-face function class,
+  full concentrated parts, spherical restriction where used and nonzero-density velocity domain.
+  No means of meeting them is named. S12's forms and separate boundary data remain OPEN under
+  "Keep S12"; these constraints deliver neither. Unresolved exact differences and unpaired
+  decompositions are not silently promoted to exact-equivalence requirements.
+
+### R-O2-01 — the net-power supplier and its stated budget
+
+- **source** O2 (`steps/O2_steady_brane_balance.md`, energy accounting and register handoff)
+  · **target** no owner named · **status** OPEN
+- **requirement** — the physical supplier of net power and its stated power budget, represented by
+  the OPEN `𝒮_E,net` / `𝒫_E,supply` inputs, accompanying any conditional closure requiring net supply.
+- **on failure** — such a closure cannot be claimed physically supplied. Naming the drain alone
+  supplies neither available energy nor a budget; O2 measures no net supply and imposes no passive
+  sign or relaxation law.
+- **owner** — the spec calls this an **O2 requirement; source/holder/supplier forms retain their
+  owners** (`directives/O2_SHARED_PHYSICS.md:282`). It names no future owner of the net-supplier/budget
+  object. S12 source forms and Q2/S22 holder forms keep their separate assignments; none is assigned
+  this entire obligation.
+- **scope** — this is an accounting requirement on conditional relations requiring net supply,
+  fixed by adopted premise 1, not a derived supplier, budget value or additive energy-channel law.
+  It is separate from the conditional non-passive-interface reservoir obligation `R-S12-01` and
+  from explicit reference/relaxation power with its unassigned reference owner
+  (`directives/O2_SHARED_PHYSICS.md:270–282, 307–317`; `directives/O2_input_contract.md`, §8).
+- **S12 pass** — The energy-partner inventory carries this obligation separately from
+  `R-S12-01` and from conversion partners. No S12 object computes net supply or consumes a
+  conditional net-supply closure, so it adds no computed source and changes no owner or status
+  (`steps/S12_order_source.md`, §§3/5/7).
+
+---
+
+
+### R-S21-01 — conditional deflection and radar-slope profile requirements
+
+- **source** S9b (`steps/S9b_light_bending.md`, §§3–6; measurements M3–M7/M11–M13/M17–M19);
+  S16 framing decision only (`steps/S16_moving_region.md`, §§1/6; user 2026-10-19,
+  carried in its decision list 2026-10-21; S16 M01/M14);
+  S12 framing decision only (`steps/S12_order_source.md`, §§6–7; user 2026-10-19, retrieved M01);
+  S14a part 1 framing decision only (`steps/S14a_1_projection.md`, §§1/7–8; user 2026-10-19,
+  carried in its decision list 2026-10-21, retrieved M01)
+  · **target** S21 (integration/knit; S9b record §7, O2 record §7 and the record directive's
+  2026-10-08/09 user decisions) · **status** OPEN
+- **requirement** — On S9b's isolated spherical, steady far-zone, leading-eikonal, LAB_HELD
+  domain and selected G100/G010/G020/G001 grades, the printed Part B profile condition for
+  **each** observable, deflection and radar logarithmic slope, relative to independent orbital
+  `GM`, for every far-zone impact parameter. PY prints for each
+  `GM=r[2c₀²rδ′+c₀²ξw′²−2rVV′+V²]/4` as a radial identity. WL prints its `GM` anchor rule
+  plus the all-radius profile equation (S9b Appendix A), with derivatives, convergence, Abel
+  invertibility and constructed-ray/branch/traversal domains. Their complete cross-engine
+  equivalence is not established; neither form is discarded.
+  Part C carries the separately printed constant-speed condition
+  `GM=r[c₀²ξw′²−2rVV′+V²]/4`, fixed-ratio condition
+  `GM=r[c₀²(n−1)rf′+c₀²ξw′²−2rVV′+V²]/4`, and power condition
+  `GM=r[2c₀²srf′+c₀²ξw′²−2rVV′+V²]/4`, with WL's corresponding anchor/profile equations.
+  Fixed-ratio and power objects retain both `ρ>0` and `ρ≤0` labels and exact response domains;
+  `ρ₀>0` remains supplied. The first-order-f expressions supply no finite-density or f–ε extension.
+  Each condition includes its printed implied `jn`, with `ρbr` symbolic and differentiated:
+  the coordinate mass expression is `jn=−ρbr V′−Vρbr′−2ρbr V/r`, with both signed-velocity
+  components, zero-locus differentiability/flux joins, excluded nonreal branches and printed
+  integration-constant domains retained. The complete implied-exchange values remain uncompared.
+  The requirements keep δ, ξw, ρbr, f, n, s, GM and all remaining printed inputs free;
+  they select no profile, exponent, flux value/sign or GM normalization. M13 retrieves all 14
+  within-engine deflection/radar condition pairs: every PY paired payload is byte-identical,
+  while every WL paired payload differs (M13).
+  WL `GM`, `ProfileEquation`, `ProfileEquationRadius`, outer `Domain`/`BranchDomain` and case
+  `Domain` match literally; `InverseWeight` and `ReferenceInverse` differ in every pair.
+  `VelocityReduction/SquaredVelocityEquation` additionally differs for general B, R_FLOW_ONLY B
+  and combined C_CONSTANT/C_FIXED_RATIO/C_POWER; `VelocityReduction/Cases/0/Domain` differs
+  for R_SPEED_ONLY B, R_TILT_ONLY B, both R_BULK_ONLY C pairs and all conditional forward B/C
+  pairs. These paths are relative to `Cases/0`, within each density part's `Object` and the
+  outer forward `Object` where present. M13 retains every identical subtree and differing
+  payload; density labels/label conditions, bulk premise and forward premise match within
+  their pairs. Whether the differing fields state the same condition is OPEN, no owner named,
+  separately from the item-5 counting decision below. The matching GM/profile fields alone
+  do not settle full-condition equivalence. (M13.)
+  Also owed is the **comparison of force sectors' flow requirements**, as the user's
+  2026-10-19 framing states (`directives/S12_decision_list.md`, "Filing and framing"; S12
+  record M01/M18): each force states the flow it needs, S21 compares them, and a mismatch
+  reopens S9b. This is an OPEN S21 deliverable, not a comparison performed by S12 or a
+  cross-sector compatibility result. It matches this entry's by-target row.
+- **on failure** — The conditional reference-matching statement for the affected observable
+  cannot be realized on that domain. The computed conditional functionals and the reported
+  cross-engine coverage do not become a GR-matching result.
+- **Flow comparison decision, user 2026-10-19** — Each force states the flow it needs; S21
+  compares those requirements, and a mismatch reopens S9b. S12 states the source compatibility
+  requirements and leaves forms open; it fits no flow and adds no optical calculation or
+  profile to this entry. This decision provenance adds no claim of cross-sector compatibility.
+- **evidence and limits** — `B_CONDITION_*`, `B_IMPLIED_JN_*`, `C_*_CONDITION_*`,
+  `C_*_IMPLIED_JN_*`, and the `R_FLOW_ONLY_`, `R_SPEED_ONLY_`, `R_TILT_ONLY_`,
+  `R_BULK_ONLY_` restrictions (S9b §§3–4, measurements M3/M4/M11). Flow-only constrains
+  `r(V²−2rVV′)/4`; speed-only `c₀²r²δ′/2`; tilt-only `c₀²rξw′²/4`; bulk-only
+  fixed ratio `c₀²(n−1)r²f′/4` and power `c₀²sr²f′/2`, each relative to GM.
+  Speed-, tilt- and bulk-only exchange prints zero; flow-only retains the signed live-density
+  exchange. Conditions/exchange/γ values have no formed cross-engine comparison; the domains
+  and every printed difference retain record §6's limits. This entry asserts no realized match.
+- **oracle comparison (evidence only, 2026-10-19)** — the accepted flow-only check (`8d91f448`;
+  record `steps/S9b_flow_oracle_comparison.md`) compares the flow-only restriction with Hamilton–Lisle
+  (2008) and Visser (1998).
+  - Two identifications are needed: the orbital `GM` with each oracle's mass parameter, and S9b's clock
+    and speed units with the oracle's. The check supplies neither, and prints both as `UNMATCHED`. Under
+    both, the kept flow-only squared speed equals the river model's and Visser §7's. The signed velocity
+    matches for one radial orientation per component, and the frame identification that would choose it is
+    also `UNMATCHED`.
+  - On the nonzero-velocity components, in both engines, the exchange `jn` vanishes only on
+    `ρbr = C₁/r^(3/2)`, the density law Visser §7 quotes. On the zero-velocity components the exchange
+    vanishes with the density left free.
+
+  The comparison selects no profile and no exchange value, and it delivers nothing of this entry. The
+  requirement, its free inputs and its failure consequence are unchanged.
+
+
+**Counting the two observables under item 5.** The rule is “It counts the deflection
+and the radar slope as separate tests only where the printed objects show their conditions differ.”
+M17 retrieves that rule and both engines' complete γ objects, including their attached gates,
+for general B, R_FLOW_ONLY, R_SPEED_ONLY, R_TILT_ONLY and conditional F_FLOW/F_LIVE.
+On each object's on-domain `GM≠0` stratum, PY's γ-difference solution set is `{0}` and WL's
+relation contains `gammaDifference==0 && GM!=0`. Thus the two observables are **not counted
+as separate tests at these selected grades on that stratum**, in either engine. This is a
+count of the printed reference-comparison constraints, not a claim of cross-engine equivalence
+or observational redundancy outside this model point. (M17; paired conditions M13.)
+
+At `GM=0`, PY separately prints the full real interval when both observable compatibility
+functionals vanish, and `EmptySet` on the other three printed vanishing/nonvanishing combinations.
+WL prints `GM==0` with both functionals zero, without a constraint on `gammaDifference`, and
+no further compatible alternative. Each engine's individual γ objects retain the corresponding
+unconstrained/empty singular strata. The record does not replace these by γ-difference zero:
+γ is unidentifiable on the compatible singular stratum, and the incompatible strata supply no
+joint γ solution. These strata establish no additional separate γ test under item 5; two
+independent tests are not counted from the unrestricted difference. Outside the respective gates,
+the objects are `NOT_ESTABLISHED`. (M17.)
+
+Whether the differing WL `InverseWeight`, `ReferenceInverse` and velocity-reduction fields in
+M13 state the same condition remains **a separate OPEN question, no owner named**. That question
+does not put the above counting decision on hold. Nor are the differing strings treated as a
+shown physical difference of conditions: the printed γ strata are part of the counting evidence.
+Part C/bulk-only condition rewrites retain M13's field distinctions and earn no additional
+separate test here; no unprinted Part C γ object is invented. (M13/M17.)
+
+**Engine-specific restrictions, constants, exchange and domains.** M18 retrieves both
+observables' complete `CONDITION` and `IMPLIED_JN` objects for all five restrictions below;
+no compact domain omission is used as evidence. In the following readable transcriptions,
+`r=s9b_r` for PY, `ρbr=rho_br_profile[r]` for PY and `rhoBr[r]` for WL. Engine-qualified
+constants are not identified across engines.
+
+**PY flow-only (`R_FLOW_ONLY_B_*`).** Its printed solution dictionary has
+`squared = 2*GM/r`, `integrating_factor = 1/r`,
+`general_solution: s9b_velocity_squared(r) = r*(2*GM/r² + C_PY)`, and `residual = 0`,
+where `C_PY` names the printed real `s9b_velocity_integration_constant`.
+The `constants` field retains `C_PY=0`; its `C_PY≠0` branch is labelled
+`EXCLUDED_BY_SUPPLIED_V_OVER_C0_O_EPSILON_HALF`, with the printed limit of `C_PY` retained.
+The `nonreal_branch` is `2*GM/r<0`, labelled `EXCLUDED_BY_REAL_MATERIAL_VELOCITY`.
+The two positive-component entries print, respectively,
+
+| PY velocity equality | PY implied exchange equality |
+|---|---|
+| `V = −√2 √GM / √r` | `jn = √2 √GM ρbr′/√r + (3/2)√2 √GM ρbr/r^(3/2)` |
+| `V = +√2 √GM / √r` | `jn = −√2 √GM ρbr′/√r − (3/2)√2 √GM ρbr/r^(3/2)` |
+
+Their attached domain keeps the solved ray/applicability gate, `2*GM/r≥0` throughout
+`(s9b_b_min,∞)`, and `2*GM/r>0` on each named positive component. The condition itself keeps
+its exterior interval and the δ=ξ=0-substituted gate, and prints `GM=r(V²−2rVV′)/4`.
+Four further entries retain sign pairs `(-1,-1),(-1,1),(1,-1),(1,1)` at zero radius `z`:
+`z>s9b_b_min`, `2*GM/z=0`, matching real one-sided limits of
+`σ √2 √GM/(√q (q−z))`, `V(z)=0`, `V′(z)` equal to the right-hand limit, and
+`jn(z)=−ρbr(z)` times that right-hand limit. These are the printed differentiable-zero-join
+objects, including zero intervals; their limits are not evaluated in this record. The density
+function retains PY's positive declaration. (M18, tuple paths `0`, `1/0..5`, `2`.)
+
+**WL flow-only (`R_FLOW_ONLY_B_*`).** Write `I(r)` only as an abbreviation for the printed
+`Inactive[Integrate][(-4*GM)/tailRadius^3,{tailRadius,r,Infinity}]`, without evaluating it.
+WL prints `GeneralSquaredVelocity = r*C_WL − r*I(r)` with
+`GeneralConstantDomain: Element[C_WL,Reals]`, and `SquaredVelocity = −r*I(r)`;
+`C_WL` names `velocityIntegrationConstant`. The retained `ConstantDomain` is `C_WL==0`;
+real nonzero `C_WL` branches are excluded by the supplied `V/c0=O(r^(-1/2))` counting.
+Each positive-component case lists `IntegrationConstants -> {C_WL}`, domain
+`C_WL==0 && −r*I(r)>0`, and its own substituted `AlongRayDomain`. It prints
+
+| WL velocity | WL implied exchange |
+|---|---|
+| `−√(−r I(r))` | `[-ρbr(4GM+5r²I(r))−2r³I(r)ρbr′]/[2r²√(−r I(r))]` |
+| `+√(−r I(r))` | `[ρbr(4GM+5r²I(r))+2r³I(r)ρbr′]/[2r²√(−r I(r))]` |
+
+The zero-interval case has `C_WL==0 && −r*I(r)==0`, `V=V′=jn=0` and the same listed
+constant/domain. `NoRealVelocityDomain` retains the negative-squared branch. `ZeroSetJoining`
+and each `AtComponentBoundary` retain differentiable real velocity/flux and finite matching
+one-sided limits. The enclosing condition retains `r>bFar`, `rAnchor>bFar`, functional
+regularity/convergence/Abel-invertibility requirements, its `BranchDomain`, the anchor GM
+rule and all-radius profile equation; each velocity case carries `AlongRayDomain` with its
+own substitution. WL keeps real nonzero density and its optical-ratio gate. No evaluation of
+`I(r)`, identification with PY's `2GM/r`, or identification of constants is claimed.
+These flow-condition/exchange value and domain differences remain OPEN across engines,
+no owner named. (M18; M6/M7.)
+
+**Zero-velocity restrictions.** The following table reports each engine's own condition and
+exchange-domain fields for both observables. PY's full attached gate at condition path `3`
+is obtained by that restriction's substitutions; its radial interval is `(s9b_b_min,∞)`.
+For bulk-only rows the condition is inside `OBJECT_ON_BOTH_PARTS`, with both density-label
+conditions and the exact response domain. WL's enclosing `Domain` and `BranchDomain`, and
+each case's `AlongRayDomain`, remain attached in every row; its `Domain` includes exterior
+radius/anchor and functional requirements. The residual equalities below are WL's additional
+`Cases/0/Domain` entries in `IMPLIED_JN` (also inside the velocity reduction of `CONDITION`),
+not replacements for those gates. M18 preserves every domain verbatim.
+
+| Restriction | PY printed condition and exchange | WL printed condition and exchange-case domain |
+|---|---|---|
+| Speed-only, V=ξ=0 | `GM=c₀²r²δ′/2`; `VELOCITY_FIXED_BY_RESTRICTION`, `V=0`, attached speed-only gate, `jn=0` | GM anchor rule plus `2δ′+rδ″=0`; deflection domain `−2GM/(c₀²r)+rδ′==0`, radar domain `−2GM/(c₀³r)+rδ′/c₀==0`; `V=V′=jn=0` |
+| Tilt-only, δ=V=0 | `GM=c₀²rξ′²/4`; `VELOCITY_FIXED_BY_RESTRICTION`, `V=0`, attached tilt-only gate, `jn=0` | GM anchor rule plus `ξ′(ξ′+2rξ″)=0`; deflection domain `−2GM/(c₀²r)+ξ′²/2==0`, radar domain `−2GM/(c₀³r)+ξ′²/(2c₀)==0`; `V=V′=jn=0` |
+| Bulk-only fixed ratio, V=ξ=0 | `GM=c₀²(n−1)r²f′/4`; fixed-velocity tuple, `V=jn=0`, exact fixed-ratio/substituted-ray domain on both labels | anchor rule plus `(n−1)(2f′+rf″)=0`; deflection domain `−2GM/(c₀²r)+(n−1)rf′/2==0`, radar domain `−2GM/(c₀³r)+(n−1)rf′/(2c₀)==0`, conjoined with the exact fixed-ratio domain on each label; `V=V′=jn=0` |
+| Bulk-only power, V=ξ=0 | `GM=c₀²sr²f′/2`; fixed-velocity tuple, `V=jn=0`, exact power/substituted-ray domain on both labels | anchor rule plus `2sf′+rsf″=0`; deflection domain `−2GM/(c₀²r)+rsf′==0`, radar domain `−2GM/(c₀³r)+rsf′/c₀==0`, conjoined with the exact power domain on each label; `V=V′=jn=0` |
+
+In **each** of these four restrictions PY emits no integration-constant field or solved-velocity
+dictionary: velocity is prescribed zero. WL explicitly prints `IntegrationConstants -> {}` and
+status “prescribed by the labelled substitution”, with no `ConstantDomain` field. Neither engine
+selects δ, ξ or f, or prints a solved-profile integration constant for those live profiles here.
+The fixed-ratio domain retains real local/asymptotic sound-speed squares, local square ≥0,
+asymptotic square >0 and the exact nonnegative-root ratio real and >0. The power domain retains
+`c₀ densityPower[1+f,s]` real and >0; `ρ₀>0` and the exact ray substitutions travel with both.
+Both keep `ρ>0` and `ρ≤0` labels; no germ-equivalent response replaces an exact domain.
+
+For **each** flow/speed/tilt optical restriction, deflection/radar/residual value samples form
+but retain printed numeric differences and unresolved domains; γ rows compare markers only,
+and full conditions/exchange have no formed value comparison. For **each** bulk-only response,
+only label/domain comparisons form, not condition/exchange values. The WL/PY constant,
+squared-velocity, signed-exchange, zero-join and domain representations above are retained as
+OPEN differences, no owner named; no equivalence is supplied by the zero exchange entries.
+(M18; M5–M7, with the counting rule separately applied in M17.)
+
+### R-S22-01 — how the energy a throat releases splits among light, the extra wave and the bulk
+
+- **source**
+  - S11 (`steps/S11_stray_longitudinal.md`, departure table and the paragraphs after it). The table gives the
+    question "whether matter directly observes the second cone" the owner "derived matter/interface
+    coupling". The record says "A second cone is only a departure if matter COUPLES to it", and describes
+    matter as "a throat held open by a trapped brane-shear standing wave".
+  - The photon survey, E32–E34 and E38 (`PHOTON_POLARIZATION_SURVEY.md` §4). Each is "In apparent conflict",
+    under conditions that differ by entry. In the survey's words, the classification rests on "E32–E34 on
+    matter coupling and, for the blackbody comparison, ordinary thermal-radiation participation; E38
+    additionally on the extra branch's cosmological relativistic population, energy/perturbation mapping and
+    decoupling history". (C6, C7.)
+- **target** S22 (the nonlinear throat solve), together with Q2 (the mouth source and its held datum) and
+  S12 (the throat's order-conversion source and its boundary data). These owners were chosen by the user on
+  2026-10-19; the S11 record itself names only "derived matter/interface coupling". (C8.)
+  The user's 2026-10-20 **"Keep S12"** decision retains every owner. S12 stays OPEN for its
+  forms, delivered only after the brane is defined following the force sectors; this requirements
+  record delivers none of those forms (S12 record §§5–7, retrieval M18).
+- **status** OPEN
+- **requirement** — Consider a throat held open by its trapped shear wave. The trapped-wave state can change,
+  the throat can move, and its mouth can change shape. When any of these happens, the object is the energy
+  released, with its frequency content and rate, and how it splits among three channels:
+  - the free transverse waves (light);
+  - the extra longitudinal wave (S11's second cone);
+  - the bulk.
+
+  The entry also requires the reverse: how much of the energy each channel carries in is taken up by a
+  throat, at each frequency.
+- **on failure** — S11's departure cannot be classified. The record makes the second cone a departure only
+  if matter couples to it, and without these objects nothing decides whether matter observes it. E32–E34
+  and E38 stay "in apparent conflict", with their condition undecided.
+- **note: what a delivered split would and would not decide** —
+  - **Each measurement has its own conditions** (survey §4):
+    - **E33**, the laboratory blackbody, needs the extra wave to be an additional ordinary thermal mode,
+      with the usual occupation, energy and dispersion, and a calibrated emission and absorption response.
+    - **E34**, the CMB spectrum, needs its power to enter the calibrated CMB radiance rather than cancel in
+      the sky/reference comparison.
+    - **E38**, `N_eff`, needs it to be extra gravitating radiation, populated and relativistic in the early
+      universe. The survey adds that a weak population or earlier decoupling is not generically excluded.
+  - **The split alone decides none of them.** Whether the extra wave is populated depends on several things:
+    - its emission and uptake rates, compared with each measurement's timescale;
+    - its escape into the bulk;
+    - its initial population and the expansion history.
+
+    What a populated wave then carries depends on its own speed. In S11 that speed is set by `B_comp/ρ_br`
+    (`R-S6-01`), not by light's `μ_R/ρ_br`. So a share comparable to light's is not by itself a conflict,
+    and neither is equilibrium with matter. Nor does a small share by itself rule one out.
+  - **The falsifier** is each measurement, applied under its own conditions to the population and power
+    that these objects, the extra wave's speed and its escape into the bulk predict. That application is
+    later work. This entry states no bound; compare the note in `R-S12-01`.
+  - **The quantum part.** The survey's conditions also assume the usual quantum occupation. The plan
+    assigns that to a separate project (`V3_STEP_PLAN.md:1198–1204`; survey [P8]), so a classical split
+    does not settle that part. (C7.)
+- **relation** —
+  - S22's linear test 1 asks how much light passing a supplied defect profile converts into the
+    longitudinal mode. S11c asked how much light converts where the brane changes (`V3_STEP_PLAN.md:508`).
+    Both concern incoming light; neither is a throat's own emission.
+  - S22's linear test 2 asks whether the longitudinal mode radiates into the bulk, and needs the interface
+    law (`V3_STEP_PLAN.md:1181`). That escape enters the extra wave's population. So applying any
+    measurement under this entry also needs test 2's result.
+  - The S11 record adds that at homogeneous linear order "the mode's bulk leakage and direct observability
+    require the brane–bulk interface law". S11b supplies that law conditionally, for a uniform brane only.
+  - The S11 record states that `c_L` is not a gravitational wave, so this entry is not about the carrier of
+    gravity. (C6, C8.)
+
+### R-S14a-01 — the dynamically selected slow limit and far behaviour
+
+- **source** S14a part 2 (`steps/S14a_2_slow_limit.md`, §§1–5/7; retrievals M01–M13/M16/M17),
+  for the conditional consumers S14, S15 and S20.
+- **target** jointly S12 (source and flux forms), S8/S22 (the slab's material law), and
+  **no owner named** for the face and interior laws, by the user's V2 decision at `12aa65d5`.
+- **status** OPEN
+- **requirement** — the slow limit and far behaviour selected by the slab's own dynamics,
+  for S14a's still-underived controlled return and profile-dependent `J→Q` obligations.
+  The selected steady-throughput and exchange-live decisions keep spreading, exchange and
+  storage live. No average, solution family, density gate, order of limits, law, material,
+  profile, premise or candidate is selected here.
+- **on failure** — S14, S15 and S20 remain **CONDITIONAL, not carried results**.
+- **decision and owners** — The user chose **"Record as requirement"** (2026-10-21), then
+  **"All the slab's laws (Recommended)"** for V2. The latter is recorded in
+  `directives/_measurements/S14a_2_record_r0_review_disposition.md`, "The user's decision on V2",
+  at `12aa65d5` (M16). It replaces item 4's S12-only target sentence. The earlier
+  **"(the open S12 forms)"** option text and accepted S12's different ownership statements are
+  quoted in record §§4/6. No missing owner is invented. S12's source/flux forms and separate
+  boundary data remain OPEN under **"Keep S12"**; the complete return-law/map obligations
+  are not repartitioned. Recording this requirement delivers none of the forms, the slow
+  return law or the source map.
+- **evidence and limits** — The step-list pass-1 Q1–Q3 and pass-2 R1–R3 dispositions and the
+  separately scoped Codex/Grok instruments in `directives/_measurements/S14a_2_review_witnesses/`
+  are retrieved in M03–M10. Each is a review-leg instrument, not an accepted build; their
+  constructions/checks differ as record §§2–3 states. The material-face zeros made from
+  identical operands or typed zeros are displays, not checks. The pass-2 adjudication's
+  dynamics reading remains a reading. No build ran by the user's decision. The inherited
+  real-fraction/A13, live-face and part-1 domain/comparison qualifications remain (M11–M13).
+- **entry rather than merge** — The register keys an entry by its deliverer and merges only
+  the same requirement with the same deliverers. None of the 18 entries at `978c359c` covers
+  this selection object with V2's joint deliverers. `R-S12-02` covers S12's native forms/data
+  and compatibility objects, not the jointly owed selection; `R-S22-01` concerns the throat
+  energy split, and `R-O2-01` concerns a net-power supplier/budget. Their objects and targets
+  remain as recorded. This is a separate entry under the schema and method, not a second
+  obligation added to `R-S12-02`'s target (record §5; M12/M17).
+
+### R-S16-01 — the surroundings object needed for a passive factor
+
+- **source** S16, user's 2026-10-21 "Record what it needs" decision, carried in
+  `directives/S16_decision_list.md`, "User decisions" and "For the record and its register pass";
+  `steps/S16_moving_region.md`, §§1/6 (S16 retrievals M01/M04/M07/M14).
+- **target** no owner named
+- **status** OPEN
+- **requirement** — a named field of the surroundings, its separation from the body's own field,
+  and its normalization, for the open passive-factor/gradient-form interpretation.
+- **on failure** — received momentum cannot be promoted to that passive-factor interpretation.
+  The supplied regional balances and received-momentum object remain conditional objects.
+- **standing** — explicit future requirement selected by the user; no passive factor or field is
+  assumed or derived. G7 is an oracle under its own conditions, not this object's delivery (S16 §5).
+  This is distinct from source normalization in S22's debt account and from S21's comparison of
+  force-sector flow requirements. No owner is inferred from those neighbouring interfaces.
+
+### R-S16-02 — the body's compactness in both comparisons
+
+- **source** S16, user's 2026-10-21 decisions as filed in
+  `directives/S16_decision_list.md`, "Filing and framing" and "For the record and its register pass";
+  source assumption `research/4d_1pn_full/paper/4d_1pn_full.tex:697–700`;
+  `steps/S16_moving_region.md`, §§4/6 (S16 M01/M04/M14).
+- **target** no owner named for physical delivery; S22 is the named recipient of this debt in its table
+- **status** OPEN
+- **requirement** — the body's size small relative to inter-body separation and to the scale of
+  variation of a field of the surroundings, kept as two comparisons.
+- **on failure** — the compact-body response approximation cannot be claimed. S16's conditional
+  region balances and count moments do not determine either comparison.
+- **standing** — an explicit user-filed requirement, not an imposed compactness premise.
+  S22's debt-table recipient is not evidence of a physical compactness deliverer. The C10/tail
+  question remains S19's. Count moments, control radii, profile width and mouth radius are not identified.
+
+### R-S16-03 — momentum exchange at each slab face
+
+- **source** S16, `directives/S16_decision_list.md`, supplied momentum equation and
+  "For the record and its register pass"; `steps/S16_moving_region.md`, §§1–2/6
+  (S16 M01/M02/M04/M07/M14).
+- **target** no owner named
+- **status** OPEN
+- **requirement** — the momentum exchanged at each slab face and its split by the motion of
+  that face, separately identifiable within the projected total exchange.
+- **on failure** — S16's undivided force-density input supplies no face-resolved momentum account.
+  Its moving control-surface pieces do not deliver a slab-face split.
+- **standing** — expressly carried requirement, not a defect in the undivided supplied balance.
+  The faces' law remains unowned. `R-S12-02` retains S12's source/flux/data and material-face scope;
+  it does not assign this momentum object or the faces' law to S12.
+
+### R-S16-04 — the momentum–material relation needed for inertia
+
+- **source** S16, user's 2026-10-21 "Count material; mass open" decision and
+  `directives/S16_decision_list.md`, register section;
+  `directives/O2_SHARED_PHYSICS.md:133`; `steps/S16_moving_region.md`, §§1/6
+  (S16 M01/M04/M14).
+- **target** S8, with S1.5 antecedents when available as the O2 row states
+- **status** OPEN
+- **requirement** — the relation of projected momentum density to the material fields and motion
+  needed to define an inertial factor.
+- **on failure** — the separately printed momentum and material-count centre relations do not
+  supply an inertial factor or a relation between momentum and count-centre acceleration.
+- **entry rather than merge** — `R-S8-06` requires material displacement identification and the
+  original homogeneous quadratic/slab inertia. Its O2 scope expressly excludes a live momentum-map
+  widening. The present explicitly user-required live object has a different domain and requirement;
+  no homogeneous kinetic form or constant inertia is prescribed here.
+
+### R-S16-05 — the slab density response
+
+- **source** S16, `directives/S16_decision_list.md`, "For the record and its register pass";
+  `directives/O2_SHARED_PHYSICS.md:138`; `steps/S16_moving_region.md`, §§1/6
+  (S16 M01/M04/M14).
+- **target** S8 (substrate reduction) and S22 (completion), as the O2 row states
+- **status** OPEN
+- **requirement** — the slab density response with live bulk, flow, embedding,
+  thickness/projection dependence and gradients, needed for the open material/mass accounting.
+- **on failure** — that density-response interpretation remains unavailable. S16's supplied
+  projected count balance and its live-density derivatives still supply no such response.
+- **standing** — explicitly carried by the user's S16 requirement filing. O2's pass entered no
+  response-form requirement merely for a future solve; that decision remains unchanged. No bulk
+  equation of state, factorization, response form or material is selected here.
+
+### R-S22-02 — the missing response-reduction inputs in S22's debt table
+
+- **source** S16 filing decision, `directives/S16_decision_list.md`, "Filing and framing";
+  `V3_STEP_PLAN.md:732–741,1303–1305`; `steps/S16_moving_region.md`, §§4/6
+  (S16 M01/M04/M14).
+- **target** S22 for the debt-table account; no physical supplier is assigned here where the
+  sources name none
+- **status** OPEN
+- **requirement** — the outstanding reduction-data inventory: `M`, `a` (`a_WT` in the plan),
+  the multipoles of `M`, source normalization and any suppression of boundary fluxes, with the
+  `a_WT`/`a_mouth` bridge separately identified under A11. Compactness is filed once as
+  `R-S16-02` and cross-referenced in this table account.
+- **on failure** — the conditional response-side monopole reduction cannot be treated as
+  delivered or interior independent. Count, count moments and live boundary fluxes are printed
+  objects; none is substituted for a missing mass object or for flux suppression.
+- **scope** — this target files the debt account; it neither assigns S22 every physical supplier
+  nor directs S22 to suppress a flux. The core interior/count/momentum remains an S22 OPEN handoff.
+  C3's drain–mass gap remains a defect-register gap, not a delivered mass relation. No law,
+  material, premise or candidate for meeting any listed debt is selected.
+
+## Population passes
+
+**Pass 1 — S9 and S10. ⭐ DONE 2026-08-06**, alongside S10's step record and from the same reading.
+Seven entries added, against the two that existed. The calibration it produced, for pass 2:
+
+- ⭐ **Consolidate rather than duplicate.** S9 states its shear requirement twice — once for the ordered
+  phase and once for the disordered — and a third consumer (the geon's trapped mode) appears elsewhere in
+  the record. It is **one object**, `R-S1-02`, with three consumers, ⛔ not three entries.
+- ⚠ **Distinguish a requirement from an ansatz by asking whether a retirement condition is LIVE.** `μ_R`'s
+  **magnitude** is postulated and defect `B2` closed the polar-`P` route to deriving it ⇒ ansatz, ⛔ no
+  entry. Its **form** has no such closure ⇒ `R-S8-01`, a live requirement. The two sit in the same
+  sentence of S9's record and go to different registers.
+- ⛔ **A requirement is not everything a later step would find useful.** A simulation needs `ρ_br` and
+  `μ_R` separately rather than only their ratio; that is a *consumer's* need pointing **forward**, ⛔ not
+  an obligation on which a banked result rests. It got no entry.
+- ⭐ **The load-bearing ones are the identifications nobody computed.** `R-S8-02` — that the in-plane and
+  out-of-plane sectors decouple — is the single entry on which S10's headline number depends, and it was
+  flagged inside S10 **at the moment the identification was made**. ⇒ read a record for its *flagged
+  identifications* first; they are where the requirements are.
+
+
+### Pass 2 — S11, S11b-A/B and S11c PARTIAL · populated 2026-10-05; accepted `22be0137`
+
+Read `steps/S11_stray_longitudinal.md`, all three S11b records (the unified record and the historical A/B
+records), `steps/S11c_PARTIAL_CLOSEOUT.md`, and the a/b/c1/c2/d records in full. Applied the schema,
+rest-on test and both routes below: **11 → 15 entries**, four new and seven existing entries gaining
+sources (`R-S7-01`, `R-S1-01`, `R-S1.5-01`, `R-S6-02`, `R-S8-01`, `R-S8-02`, `R-S8-03`). New entries:
+S1 `R-S1-03`; S8 `R-S8-06`; S12 `R-S12-01`/`02`.
+All use schema status OPEN; CONDITIONAL is a qualification of the source result, not a status value.
+
+S11c contributes only conditions of its kept uniform/selected-uniform results, with the closeout and d
+record's review limits retained. The clean-condition packet sources no entry: the closeout marks only
+uniform decoupling CONDITIONAL (`steps/S11c_PARTIAL_CLOSEOUT.md:7`), while its no-leak reading is OPEN
+(`V3_STEP_PLAN.md:532–534`; `steps/S11c_d_profile_conditioned_scattering.md:64`). Its UNRESOLVED direct
+mixed term, numerical loss, and OPEN nonuniform confinement/material, observable and real-throat questions
+source no entry.
+**Supplied objects.** The unified spec's names are the §1b branch prescription and the §4 face closure.
+It heads §1b *"COMPLEX FREQUENCY — SUPPLIED"* (`directives/S11b_SHARED_PHYSICS.md:113`) and §4 *"THE FACE
+CLOSURE — SUPPLIED, and the affinity is the canonical driver"* (`directives/S11b_SHARED_PHYSICS.md:208`).
+Its supplied column reads *"§2 bulk acoustics; the §1b branch prescription; the §4 closure, affinity `𝒜`
+and its normalization; the §5 term list (⛔ but its **closedness** is tested); the §6 balance-law route and
+virtual-displacement rule"* (`directives/S11b_SHARED_PHYSICS.md:995`). B's record lists five supplied
+objects: *"The affinity, the branch prescription, the mass balance, the virtual-displacement rule and the
+row structure are **supplied**"* (`steps/S11bB_interface_assembly.md:136–137`). It then says *"⭐ Their
+verification comes from the independent reviewer derivations above, ⛔ **not from the engines
+agreeing.**"* (`steps/S11bB_interface_assembly.md:138–139`). What the reviewers re-derived is a different
+list: *"the affinity `𝒜 = μ_s − δp/ρ_m` (**three times**), the complex-frequency continuation (**three
+times**), the interfacial mass balance, the `Z_perm` reduction, the virtual-displacement rule, the
+ten-element basis, the dimension table, and `K₀`"* (`steps/S11bB_interface_assembly.md:126–129`).
+Separately, B says *"**Radiated-energy direction is inherited** from the supplied continuation"*
+(`steps/S11bB_interface_assembly.md:158–159`). This register draws no postulate inference from
+"supplied", and leaves open whether any supplied object belongs in the ansatz ledger; v3 has no ansatz
+ledger yet.
+Reading a/b/c1/c2 did not promote their pre-repair closure language or deferred comparisons to accepted
+nonuniform physics. The clean-condition packet does not establish a support law; the
+exploratory throat/EM documents supply candidates only. No new requirement is inferred just because
+a future scattering calculation would need an input. S11's deferred interface/spectral and nonlinear
+questions are not recast as dependencies of its closed homogeneous census.
+
+**Bulk EOS exponent (`n`, rule 6).** No kept S9, S11, S11b or S11c result read here rests on selecting
+`n`: S9's supplied bulk-sound formula carries the inheritance, while its light result uses the brane
+stiffness/inertia ratio; S11 and S11b use `c_s0` in the bulk acoustic branch, and the kept S11c uniform
+checks fix or vary effective sound speed without deriving the EOS. **No S2 entry is added.**
+`n_eos = 5` is inherited. Its original light-side justification took light's phase speed to be the bulk
+sound speed (`research/1pn_optics/paper/1pn_optics.tex:720–737`, `:975–978`); that paper's competing
+constructions and reasons for preferring `n = 5` are at `:2165–2343`. Whether, and where, `n` enters
+light bending and delay under v3's light picture remains open — **no owner named** in the records read.
+`V3_STEP_PLAN.md:208–250` retains the provisional medium EOS and its half-two parent-action debt;
+**O-02 stays open**. This pass does not decide whether `K` and the exponent count as one entry or two.
+
+**Second route, by step.** S11 has **no identified prior-art route**: its record names the
+rejected-Cauchy-branch coefficient but no objection to that branch, so the Cauchy branch is a candidate
+only. The FORM outcome stays solely in `R-S8-01` as a first-route source, quoted from the S11 record.
+S11b-A, S11b-B/unified S11b, and S11c-a/b/c1/c2/d each have **no identified prior-art route** meeting the
+directive's record-and-objection test. The S11c closeout, which is a record, does name MacCullagh, in an
+item it marks OPEN: *"**OPEN — material audit/Q2/S22:** uniform confinement is derived within the
+supplied linear model; nonuniform confinement and the physical admissibility of rotational stiffness are
+not established. That is the useful but limited MacCullagh distinction."*
+(`steps/S11c_PARTIAL_CLOSEOUT.md:27`). That item is listed under *"Claims future work must not inherit"*
+(`steps/S11c_PARTIAL_CLOSEOUT.md:23`), and an OPEN item sources no entry under the rest-on test, so it
+sources none here. Onsager–Casimir is a candidate only; `R-S1-03` instead rests on B's
+first-route hand-forward, *"conditional on microscopic time-reversibility"*. A's memoryless reduction is
+by construction, and internal cross-engine reproductions are not prior art. The two pre-existing
+prior-art entries are not re-certified by this pass. The obsolete rebuild schedule is replaced by this
+completed population pass. Record qualifications/disagreements are reported at STOP, not adjudicated
+here.
+
+**Directive/register disagreement on the second route — unresolved.** The second-route results above
+apply the directive's test: *"Run it only on a prior result that a record in the reading list identifies
+as reproduced by the sector, with the objection taken from that record or from a source the record
+cites."* (`directives/S11_requirements_pass2_directive.md:56–57`). This register's own second route, under
+"Method for population passes" below, found `R-S8-04` and `R-S8-05` outside the records — *"⛔ Neither is
+anywhere in S9's or S10's records, because the records only capture what their authors thought to
+doubt"* — and says *"⇒ ⭐ **Run this route for every sector with identified prior art**, ⛔ not only the
+light sector."* The directive also says *"Where this directive and the register disagree, the register
+wins, and you report the disagreement."* (`directives/S11_requirements_pass2_directive.md:21–22`). Both
+sides are quoted here; this pass does not resolve the disagreement.
+
+#### Inputs a future nonuniform calculation must define
+
+These are input assignments used by the S11c calculations, not physical values earned by a kept
+result and not requirements on a substrate step. Fixed-input uniform checks retain their stated
+domain; they do not select those inputs for a real defect. No values are copied here. The table has
+**11 grouped rows**; every owner below is from the closeout, with **no owner named** where it assigns
+none to that input. The structural objects above are distinct from these numerical assignments.
+
+Input-map provenance **P**: `steps/S11c_d_profile_conditioned_scattering.md` →
+`_measurements/S11c_d_sympy_builder_report.md`, “Retained user-approved solver/export contract,” items 2–3 →
+`archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_channel_preflight_input.json`
+(`unit_frame`, `profiles`, `parameters`). P records the original development case; the d record's
+“omega=3 benchmark” and “uniform check” sections record later frequency/speed choices. None is a
+calibration of the draining model.
+
+| Input family (values not reproduced) | Where recorded | Owner named by the closeout |
+|---|---|---|
+| Supplied thickness/modulus profiles `w₁`, `m₁`, their end data, contrast `eta_bg` and width scale `L_W` (with the physical `sigma_W` binding) | P, `profiles` / `parameters`; builder report, retained contract 2–3; d, benchmark | Q2/Q3/S22 for a physical holder/charge profile |
+| Reference thickness `W_0` | P, `parameters`; a, background ansatz | no owner named |
+| Density assignments `rho_br`, `rho_m` and the selected density/anchoring case | P, `parameters`; d, uniform check / benchmark | no owner named |
+| Physical transverse stiffness, represented in the input map by `mu_R`, `mu_S` | P, `parameters`; unified S11b, transverse mode / representative split | no owner named for these absolute assignments |
+| Thickness inertia `mu_W` | P, `parameters` | no owner named |
+| Scalar stored-energy inputs `B_rho_3`, `C`, `k_W` | P, `parameters`; S11b-B, breathing stability | no owner named |
+| Gradient/mixed stored-energy inputs `kappa_W`, `kappa_theta`, `kappa_theta_W`, `G_W_u`, `G_theta_u` and any remaining constitutive bindings | P, `parameters`; b, energy basis; builder report, retained complete-parameter-map contract | no owner named |
+| Face-response amplitudes `Lambda_A_0`, `Lambda_V_0`, `Lambda_X_0` and memory times `tau_A`, `tau_V`, `tau_X` | P, `parameters`; S11b-A/B, interface response | no owner named for these numerical assignments |
+| Effective bulk sound speed / actual transverse phase-speed ratio, distinguished from the bare S9 ratio | P, `c_s0` and brane coefficients; d, uniform check / benchmark; `_measurements/S11c_d_near_unity_uniform_continue_result.md`, coverage | S20a (calibration); S22/R10 (derivation) |
+| Unit frame, incident frequency `omega` and the two tangential momenta | P, `unit_frame` / `parameters`; d, uniform check / benchmark | no owner named |
+| Numerical regulator, quadrature/basis/cutoff and source/domain intervals | d, benchmark and controls; `_measurements/S11c_d_numerical_radiating_balance_report.md`, controls and their limits | no owner named |
+
+### O2 pass — conditional live steady balance · populated 2026-10-07; accepted with the O2 record, `72866fcf`
+
+Source: `steps/O2_steady_brane_balance.md`, §§1–9; governing inputs and accepted constructions/comparator
+are identified there. Commands and literal retrieval output: `steps/_measurements/O2_record_measurements.md`,
+M1, M4, M6–M12; generator `scripts/O2_record_measurements.py`. The pass follows this register's schema,
+rest-on test and both routes. **15 → 16 entries**, all OPEN. **New entries by target: no owner named,
+`R-O2-01`.** Six existing
+entries gain the O2 source: `R-S1-02`, `R-S8-04`, `R-S8-05`, `R-S8-06`, `R-S12-01`, `R-S12-02`.
+Original target inferences and review qualifications are retained; no DELIVERED or RETIRED status is assigned.
+Repair 4 against preserved r3 `7ce97e8a` is **16 → 16**: no new entries by target and no newly sourced
+existing entry in this repair. The O2 source on `R-S8-06` remains limited to material identification.
+
+**First route / one rest-on criterion.** Enter an O2 source only for a sourced condition on which the
+presently reported conditional object rests: its stated material/phase identifications and its
+explicitly carried accounting/admissibility obligations. An unspecified response form needed only
+to select or solve a later closed material state is an OPEN handoff, not an additional delivery
+condition of this unsolved named object. A future closure owner alone does not satisfy this test.
+This applies alike to every S8 deferral in the record; the table below states each application.
+
+The material identity, adopted shear-bearing/shear-free setting, expressly carried angular-momentum/
+frame questions, conditional non-passive-interface condition and distinct native source/boundary
+accounting merge into the six existing objects. `R-S8-06` gains only O2's supplied material
+identification; its original quadratic/slab inertia domain is retained, and the r1 flowing-inertia
+widening is withdrawn. `R-S12-01` carries only the conditional non-passive
+interface reservoir obligation, with no live owner named. The distinct O2 net-supplier/budget
+requirement is `R-O2-01`, with no owner named for its delivery; spec §6 expressly requires that object
+to accompany any relation requiring net supply. It is entered on that rest-on condition, not simply
+because a future solve might use it. Relaxation power remains separately explicit and its reference
+owner unassigned. None of these sources proves the substrate can deliver the object.
+
+| S8-related dependence named by the O2 record | Application of the same criterion / O2 entry effect |
+|---|---|
+| Material identity: `u`, `ρ_br`, `V` (contract §2; spec §3.1) | The stated conditional object assumes this identification. O2 sources `R-S8-06` for this identification only, with no new kinetic form. |
+| Angular-momentum/couple carrier and physical rotational frame, `𝒜_rot^live` (contract §3; spec §§3.2, 6) | The sources expressly carry the existing S8 admissibility/frame obligations into the material and paired power accounting. O2 sources `R-S8-04`/`05` for those questions only; no new rotational-response form or historical-objection extension. |
+| Live inertia `ℐ_br^live` and momentum map (spec §3.2) | Unselected closure forms; no O2 inertial widening of `R-S8-06`. The material identification above supplies neither `ρ_br V` nor a live kinetic law. |
+| O1 `ℳ_⊥` stiffness response (spec §3.2) | Unselected closure form, just as live inertia. No O2 addition to `R-S8-01`/`03`: the supplied optical ratio and premise 1 do not select a general response functional or establish its physical sign. |
+| O7 `ℛ_br` density response (spec §3.2) | Unselected closure form, just as live inertia and O1. No new density-response entry; retaining/differentiating live `ρ_br` in the coordinate mass input uses no density-response law. |
+| `𝒫_br^cons`, `𝒯_br^cons`; energy-reference/improvement convention including `C_ref` (spec §§3.2, 8.6) | OPEN antecedents/conventions, not selected live response forms used by the reported result. No O2 addition for their S1.5/S8 completion. |
+| Full live stress `𝒯_br^live` and normal response `𝒩_br^live` (spec §3.2) | Their forms remain OPEN; premise 1 supplies character only. No O2 response-form entry or widening of the original quadratic/stiffness entries. S5–S8 ingredients and S8/S22 completion remain handoffs. |
+| O4 `ℰ_h^live` and its S8/S22 completion (spec §3.2) | OPEN live equation/identification, not an assumed equality with O2's normal content. No O2 equation or coupled-operator requirement is added. |
+| Material energy storage/transport `ℰ_br^live`, `𝒥_E^live` (spec §6) | OPEN forms. O2 carries their force/power compatibility and accounting conditions without selecting a stored-energy/transport law or entering an S8 energy-form requirement. |
+| Reference/strain evolution `ℛ_ref/strain^live`, with inferred S8/S22 links (spec §3.2) | OPEN form under adopted premise 1; owner remains unassigned. No new S8 response-law entry. Explicit relaxation power and conditional net-supplier accounting remain separate obligations, not delivery of this form. |
+
+The four user-selected choices have the exact provenance label **adopted substrate input to a
+conditional model (2026-10-06)** (`directives/O2_premise_decision_list.md`, premises 1–4). They are
+postulates for this conditional result, not newly derived requirements. The existing live retirement
+condition for the two-phase shear response is retained in `R-S1-02`; the new premise choices supply
+no additional named retirement conditions requiring duplicate entries. Their provenance is kept here
+for S21; this pass edits neither an ansatz ledger nor the defect register.
+
+| Adopted premise | Content retained for S21 | Unresolved form / owner boundary |
+|---|---|---|
+| 1 — material reference | Optical shear response elastic; relaxation under steady load; explicit relaxation power, sign OPEN, net supply with named supplier/budget | `ℛ_ref/strain^live` and full live response OPEN; relaxation/reference owner unassigned. Optical consequences deferred; S9's no-dissipation/frequency-independent limits are revisited. |
+| 2 — drive | Dynamical order-conversion drain; no separate external body force | O2 chooses the absent separate-body-force representation. Source/return and partners S12; S14a/S14 source bridge and S16 response matching remain OPEN, with S16 assignment an inference. |
+| 3 — exchange | Converted material carries local brane material velocity `V`; closes transported momentum only | In-plane carried `j_n V^i` in the outward-loss convention; bulk-direction reduction and additional reaction/energy partners remain OPEN through `𝒥_map`, normal response and S12. Momentum density remains OPEN. |
+| 4 — bulk | Postulated shear-free scalar bulk; native face-normal mechanical load; no independent tangential bulk stress | Signed normal-load amplitude, geometry/projection and complete support partition OPEN; tilted loading can project in-plane. External supports and exchange remain distinct. |
+
+O1/O3–O7, A13, live stress/energy/reference forms, missing grades/scales, core selection, source/response
+`GM` matching and S21's integration/sort remain the record's OPEN handoff. They are not entered merely
+because a later closed profile calculation would use them. The banked claim is not a solution that
+already rests on those deliveries. In particular, the emitted mass residual is unsolved, no induced-
+measure mass law is derived, and no steady equilibrium, power sign, passive response, optical outcome
+or physical holder is earned. Existing rest-reference `R-S6-02` is not extended to a flowing equilibrium;
+quadratic form/sign, mode-count, compression, width and EOS entries gain no new O2 source on that basis.
+All cross-engine OPEN-content differences remain open; they are not recorded as substrate defects.
+The pass inherits the record's whole difference ledger and its comparison bounds (§§3–5), carried
+with each applicable accounting/admissibility condition in its Part D handoff (§8). In particular,
+the record's literal counts agree only at the joint stored `(role, orientation, open_free)`
+classification tuple count level (M7). The comparator prints empty head/role/orientation differences
+at the unioned balance-role inventory level (M6), and zeros at the balance closed-part level (M8).
+Its single `hold_normal`/`OPEN_free` comparison does not compare the three stored occurrences
+per engine separately. These bounds travel with every condition below:
+the power-accounting conditions retain the eight one-sided declared-role actions, the four paired
+`energy_balance` action-orientation differences `[["argument",1]]` (stream line 207), and the stored
+PY density/flux nesting in `OPEN_JointPowerAccounting` in `energy_power` and `energy_balance`
+(lines 202/206; M6/M12). None settles compatibility or judges either engine to duplicate power.
+The comparator acceptance assigns the WL-only `xi_w''` interpretation to the O2 record, sub-step 7;
+the directive allows retrieval only. It remains an **undischarged sub-step-7 obligation returned
+to the orchestrator under M1**, as quoted and bounded in record §§4/9 (M1). It is not unowned,
+not computed here, and not a new substrate-delivery entry. The handoff carries that status alongside
+every admissible-dependence and force/power condition it bears on.
+
+**Second route.** Read the O2 record against scoping §5 and its source qualifications. That section
+identifies surface-mechanics, diffuse-interface/evolving-reference and river/acoustic-flow **candidate
+oracles**, with explicit dimension, model and access limits. O2 reproduces no identified prior-art
+result; no oracle was applied by this record. There is therefore no O2 reproduced result whose historic
+objection can generate a new entry under this register's second route. The earlier MacCullagh
+admissibility/frame entries remain OPEN and gain only O2's explicit carried S8 obligations; they are
+not re-certified. No new search, oracle check or prior-art model was introduced.
+
+**Directive/register relation.** No operative disagreement is found for this O2 pass: directive item 5
+says to preserve the distinction between a derived requirement and an adopted substrate premise;
+this register says “a **postulate** is a value or form assumed *here* and not derived” and “A postulate
+with a named retirement condition generates a requirement.” O2's premise provenance is retained as
+conditional adopted input; the same rest-on criterion above excludes every unselected S8 closure form,
+including live inertia, O1 and O7, while retaining the sourced identifications and explicit carried
+obligations. No closure-form delivery is inferred merely from its future owner.
+The earlier pass-2 second-route disagreement, quoted above, remains unresolved and is not adjudicated
+or erased by this pass.
+
+
+### S9b pass — conditional light bending and radar slope · populated 2026-10-19; accepted with the S9b record, `ff3bac63`
+
+Source: `steps/S9b_light_bending.md`, Parts A–C, §§1–8 and appendices. Retrieval commands and
+literal output: `steps/_measurements/S9b_record_measurements.md`, M1–M22; generator
+`scripts/S9b_record_measurements.py`. **16 (`caa0710d`, before S9b) → 17 entries**, all OPEN;
+round 2 kept 17 → 17 from `d1511b20`; round 3 kept 17 → 17 from `4760e6e2`; round 4 keeps 17 → 17 from `d877e857`. **New entry by target:
+S21, `R-S21-01`.** Existing entries gaining a source over `caa0710d`: **`R-S1-01`, `R-S1-02`, `R-S1.5-01`,
+`R-S8-01`, `R-S8-03`, `R-S8-06`**. The first three and `R-S8-03` gained their source in
+round 2; `R-S8-01/06` already carried it in `d1511b20`. Rounds 3–4 add no source gains. M10 retrieves
+the pinned censuses and source lists.
+No status is changed to DELIVERED or RETIRED. This pass was accepted with the S9b record at `ff3bac63`.
+
+**First route / rest-on test.** The reported optical functionals rest on the supplied local
+transverse stiffness and on the identification of displacement, density and advected velocity
+with the same material. Those consumers remain in R-S8-01/06. The kept positive optical-ratio
+gate additionally rests on R-S8-03; coordinate d³x/spherical flux on R-S1-01; the material's
+optical shear on the brane half of R-S1-02; and the supplied Part C acoustic branch on the
+acoustic part of R-S1.5-01. Failure of each breaks the scoped interpretation stated in its
+entry. These are six existing requirements with S9b consumers, without widening them into
+unselected full material laws. The separately reported conditional reference-matching statement rests on the
+printed Part B profile condition for each observable and Part C rewrites, with their printed
+exchange/domain restrictions. That condition is an obligation for S21's integration/knit and
+passes the test; it does not establish that the substrate satisfies it. `R-S21-01` specifies
+only the required objects and failure consequence, no means of meeting them, no balance or
+candidate material, and no effect of the adopted density link. The deflection/radar
+conditions retain M13's explicit distinction, detailed in R-S21-01: PY paired payloads are
+byte-identical; WL GM/profile fields match but inverse and velocity-reduction fields differ.
+Whether the differing WL fields state the same condition remains a separate OPEN question
+(M13). Item 5, applied to each engine's γ-difference zero on GM≠0, does not count the two
+observables as separate tests there; the printed GM=0 unconstrained/empty strata earn no
+additional separate γ test. This is not a count awaiting WL field-equivalence work (M17).
+The source's full difference and unresolved-coverage ledger travels with the requirement.
+
+| Candidate/source dependence | Application of the same rest-on test |
+|---|---|
+| Supplied transverse stiffness input, material identity, positive optical ratio, dimension, brane shear and Part C acoustic input | Selected inputs: R-S8-01/06, R-S8-03, R-S1-01, R-S1-02 and R-S1.5-01, with the scoped failure consequences above. No live inertia/full-stress or bulk-confinement widening. |
+| Part B/Part C matching conditions and single-mechanism restrictions | Derived conditional requirements relative to independent GM: R-S21-01, with complete values still uncompared across engines. No realized matching outcome. |
+| No-far-zone-loss forward premise | Adopted conditional input (user 2026-10-06/07/08), re-tested at knit; not a derived general exchange requirement. Its Φ–GM relation remains open. No separate entry. |
+| w-parity, P5, P6, density link | Adopted conditional inputs from D2, with dates/scope retained in record §7 and re-tested at knit. Scoped to held Part D, used by no A–C computed object. No derived requirement or effect of the link inferred. |
+| O2 P1–P4 | Adopted substrate inputs to a conditional model (2026-10-06). S9b records them without deriving a mechanical/relaxation/loading law; its optical dispersion is separately supplied. O2's existing entries/status are not re-certified. |
+| S8/O1/O7 constitutive responses; S11c nonuniform operator; O3–O6 maps, supports, reactions | Unselected closures or excluded work. Owners remain in record §7; no new closure-form entry merely because a later physical realization needs them. |
+| Positive-real optical ratio/constructed ray; restricted response domains | Travel with R-S21-01 and add the scoped sign consumer to R-S8-03. No substrate sign result is derived; PY/WL brane-density assumptions and all nine same-named branch-row differences remain OPEN (M19). |
+| Historical limits, normal-drain correction, direction/polarization/coupled/subprincipal exclusions | Remain explicitly scoped handoffs. S12 drain/return ownership and the existing R-S12-02 qualification persist; S9b does not deliver that correction or add a flowing-equilibrium source to R-S6-02. |
+| O2 derivative-key interpretation and other engine differences | Undischarged interpretation owned by the orchestrator; an unresolved difference alone establishes no substrate delivery requirement. No entry. |
+
+The source dates and complete adopted contents (including live α, ccomp, η and ζ in their held
+Part-D scopes) remain in S9b §7 for re-testing at the knit. Adopted values/forms are postulates,
+not derived requirements. No ansatz or defect register is changed. The source's statement that
+premises are re-tested at the knit supplies no new A–C constitutive law; held Part-D choices
+have no present A–C rest-on consumer to duplicate as a new entry.
+
+
+**Rest-on census, every entry.** This applies the same failure test to the kept A–C object,
+not to a future completed substrate or a proposed Part D solve. M1/M18/M19 supply the kept
+inputs and gates; M10 retrieves the schema, entries, source lists and this pass.
+
+| Entry | S9b consumer / disposition |
+|---|---|
+| R-S6-01 | No `B_comp` input or compression-mode result is used; no source gain. |
+| R-S7-01 | ℓ is a supplied reduction scale, not a wall-width solution; no nonuniform-width flat-direction result is consumed; no source gain. |
+| R-S1-01 (target S6) | Coordinate d³x, spherical geometry and `4πr²` flux consume D_brane=3; source added. |
+| R-S1-02 | Propagating brane optical shear is consumed; source added on that half only, without a bulk-confinement claim. |
+| R-S1.5-01 | Part C's exact fixed-ratio light/sound response consumes the supplied bulk acoustic branch; source added on that branch only. |
+| R-S6-02 | The kept local LAB_HELD construction does not assert a substrate equilibrium/first variation at the unstrained rest state. Its historical uniform anchor is a supplied input, not a newly banked equilibrium result; no source gain. |
+| R-S8-01 | Supplied local transverse stiffness form; existing S9b source retained. |
+| R-S8-02 | No coupled fluctuating `(u,h)` spectrum, block diagonality or h/transverse degeneracy is claimed. ξ is a supplied background embedding here; the full coupled operator is outside the kept object, so no source gain. |
+| R-S8-03 | Every A–C observable's real positive optical-ratio gate; source added, engine-qualified. |
+| R-S8-04 | No curl-only live energy or internal angular-momentum/couple-stress result is consumed by the supplied local symbol; original admissibility question stays OPEN, no new source. |
+| R-S8-05 | No physical rotational-stiffness frame is selected by LAB_HELD or radial flow; original frame question stays OPEN, no new source. |
+| R-S1-03 | No Onsager–Casimir/microscopic time-reversal result is claimed or used; no source gain. |
+| R-S8-06 | Displacement/density/advection material identity; existing S9b source retained without a live kinetic-law claim. |
+| R-S12-01 | No non-passive interface response is used in A–C; held P1/P6 supply no A–C power law, so no reservoir/budget consumer added. |
+| R-S12-02 | Native normal drain/return functions and their boundary data are not inputs to these conditional optical functionals. `jn` is a live coordinate exchange or an implied output; its identification with `v_dr` remains OPEN. No native drain-data source gain is inferred from a future profile solve. |
+| R-O2-01 | No closure requiring computed net supply is kept in A–C; no net-power supplier/budget consumer added. |
+| R-S21-01 | New in the original S9b pass: engine-specific conditional optical conditions/restrictions and their exchange/domain requirements. Retained, all qualifications above apply; no means of satisfying them selected. |
+
+**Second route.** the repository identifies more than GR/PPN references. The inventory below
+names the prior-art objects relevant to the optical, flow, embedding and carried mechanical
+questions. `survey` means repository-root `docs/medium_requirements_and_prior_art.md` at
+`36f59ff1`; `scoping` means `directives/O2_steady_brane_balance_scoping.md` §5 at that revision.
+M15 retrieves both sources and `directives/prior_art_4d_bulk_search_prompt.md`; M10 retrieves
+the pre-S9b register's O2 second route. The access qualifications below are the sources' reports,
+not fresh literature verification. **No oracle is applied in the S9b record.**
+
+| Identified object and repository source | Use in this pass | Open handoff / owner |
+|---|---|---|
+| GR/PPN deflection and logarithmic radar references, A–C spec (M1) | Supplied comparison inputs in the accepted constructions; no new oracle check or GR solution reproduced here. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Cahill (2003) inflow; Hamilton–Lisle (2008), *The river model of black holes*; Sbitnev inflow; Unruh acoustic sinks — survey line 246, cautions 263–266; 4D search prompt | All identified, none applied. Survey scopes them to 3D with no off-sheet bulk and flags Cahill's status. No inflow profile or GM relation is imported. | OPEN: applicability and second-route questions for each named oracle. The river/acoustic-flow check, assigned by the written 2026-10-19 decision below (M21), ran after record acceptance (Codex-written, G1-reviewed, accepted `8d91f448`) and compared Hamilton–Lisle and Visser only. Its outcome and open questions are in the light-closing pass below. |
+| Hamilton–Lisle (2008), AJP 76, 519–532; Visser (1998), *Acoustic black holes*; Unruh (1981), *Experimental Black-Hole Evaporation?* — scoping §5 | None applied. Scoping reports manuscripts read for Hamilton–Lisle/Visser, only abstract/metadata for Unruh. GR river and barotropic/inviscid/irrotational scalar acoustics require matching time, velocity, dimension, EOS/exchange and independent mass calibration; they supply no shear-sheet/off-sheet law. | OPEN: applicability and second-route questions for each named oracle. The river/acoustic-flow check, assigned by the written 2026-10-19 decision below (M21), ran after record acceptance (Codex-written, G1-reviewed, accepted `8d91f448`) and compared Hamilton–Lisle and Visser only. Its outcome and open questions are in the light-closing pass below. |
+| Gurtin–Murdoch (1975), *A continuum theory of elastic material surfaces*; Scriven (1960), *Dynamics of a fluid interface*; Helfrich (1973), *Elastic Properties of Lipid Bilayers* — scoping §5; O2 register second route | None applied. Surface stress/traction, Newtonian surface-fluid and curvature-sector candidates; Gurtin–Murdoch abstract/bibliography only, Scriven/Helfrich full texts unverified. Ordinary 2D surfaces in 3D bulk do not establish this 3D-brane/4D-bulk law. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Abels–Garcke–Grün (2012), *Thermodynamically Consistent, Frame Indifferent Diffuse Interface Models…*; Rodriguez–Hoger–McCulloch (1994), *Stress-dependent finite growth in soft elastic tissues* — scoping §5; O2 register second route | None applied. Diffusive exchange-momentum and evolving-reference/growth candidates; manuscript read for the former, metadata only/full text unverified for the latter. No two-fluid, mobility, growth or reference law is adopted. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| MacCullagh (1839) curl-only light / Whittaker Ch. V; Cauchy–Navier elasticity — survey attribution table; register R-S8-04/05 (M10) | None applied as an oracle. Existing light-carrier, longitudinal/compression, angular-momentum and objectivity obligations remain OPEN; the supplied optical ratio does not re-certify them. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Structural acoustics (fluid-loaded plate, radiation impedance, added mass); Fruchart–Scheibner–Vitelli (2023) passivity/Onsager–Casimir; Cembranos–Dobado–Maroto (2003) branon fluctuation — survey attribution table | None applied. Adjacent interface, driven-response and embedding context; no interface law, drive or curvature dynamics is computed in A–C. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Analog/emergent gravity (Unruh, BLV, BEC); Volovik/³He; Sakharov/Volovik induced gravity — survey prior-art table/unified findings | None applied. The survey's kinematics-versus-dynamics and undelivered-G qualifications remain; optical conditional requirements are not a derivation of gravity or G. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+| Rubakov–Shaposhnikov (1983), Akama (1982), RS2, DGP (2000); material-medium superfluid-vacuum class (Volovik, Sbitnev, Consoli, Huang, Fedi) — survey 4D-bulk table | None applied. Adjacent embedding/material-bulk context only; no localization or material model is supplied to A–C by these names. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+
+**Open prior-art handoffs.** Every named oracle in the table whose applicability check is
+unperformed remains an individual OPEN item, including each member of a grouped row. The
+river/acoustic-flow check assigned by the written decision below (M21) has since run for Hamilton–Lisle
+and Visser (light-closing pass); every other check retains **no owner named**. Each carries both questions: does the oracle apply to this model point,
+with its live profiles, domains, retained order and physical identifications; and, under the
+register's second route, which of its failure modes or historical objections transfer here, and
+have those objections been answered? Both questions remain open for each oracle. The source
+access qualifications and applicability cautions in the table are not answers to either question.
+The supplied GR/PPN comparison references do not constitute an applied oracle check.
+
+**User decision, 2026-10-19:** the written source is
+`directives/_measurements/S9b_record_r2_review_disposition.md` at `4760e6e2`, lines 19–21,
+retrieved verbatim in M21. The user chose **"Queue it after record"** for the check of the
+flow-only condition against the river/acoustic-flow prior art. The check is new computation,
+done **after the record is accepted and outside it: Codex writes the check and it is reviewed
+under G1**. This queues the check without selecting an oracle's applicability, importing a flow
+profile, or answering its second-route question. The identified river/inflow/acoustic candidates
+in the table remain open with that handoff; no oracle is applied here.
+
+No oracle is applied and no oracle result is stated in this record. No new requirement entry is
+entered on an unapplied oracle result; the second route remains open with the handoffs above.
+Existing MacCullagh obligations remain OPEN; the conditional optical functionals and M13's bounded
+condition comparison do not discharge them. Applicability checks remain unperformed, not negative
+results. The register's earlier pass-2 disagreement stays unresolved (M10).
+
+**Directive/register relation.** No new operative disagreement for S9b: the directive expressly
+conditions the optical entry on this register's rest-on test and keeps postulates distinct.
+The older pass-2 second-route disagreement remains quoted above, unresolved. O2's induced-measure
+“relative O(ε)” statement and S9b D4's “No source supplies that order” are retained as a source
+tension in S9b §8; this pass claims only coordinate-d³x exchange. Part D is held by the later user
+scope despite its earlier planned description. These qualifications do not close any entry.
+
+### Light-closing pass — the oracle comparison and the extra wave · 2026-10-19; accepted `e070c7f3`
+
+**Sources:**
+- `steps/S9b_flow_oracle_comparison.md`, on the accepted check `8d91f448`;
+- the S11 departure (`steps/S11_stray_longitudinal.md`);
+- photon survey §4, E32–E34 and E38.
+
+Lookups: `directives/_measurements/light_sector_closeout_lookups.md`, C1–C11.
+
+**Census:** 17 entries at `8d91f448` → 18, all OPEN (C10). One entry is new, `R-S22-01`. `R-S21-01`
+gains an evidence line only; its source, requirement and status are unchanged. No other entry changes, and
+no status changes.
+
+**The user's decision.** On 2026-10-19 the user chose to close the light sector for now, after a
+reassessment against the charter's goal ("ONE medium supports the LINEAR part of every force"). The user's
+words: "follow your recommendations to wrap up the light sector before we move on to S12". This pass is that
+wrap-up. Everything still open in the light sector travels in the entries above. The parked work is:
+- S11c, PARTIAL;
+- the heavy backlog runs, in `DEFERRED_HEAVY_RUNS.md`;
+- the applicability checks of every other named oracle, which still have no owner named.
+
+**First route / rest-on test.**
+- **The oracle comparison** asks nothing new of the substrate. Its conditional correspondence rests on an
+  identification the check does not supply (S9b's orbital `GM` equals each oracle's mass parameter) and on
+  R-S21-01's own objects. So it adds evidence to `R-S21-01` and creates no new entry.
+- **The S11 departure and the thermal entries** need an object that no record carried as a requirement:
+  the throat's energy split. The phrases "thermal", "blackbody", "Stefan" and "N_eff" had no hits in this
+  register, the plan or the defect register before this pass (C9). That object is now `R-S22-01`.
+
+**Second route.** The comparison names four objections to the analog: what drives the flow, where the
+material goes, scalar sound versus transverse light, and analog kinematics versus dynamics. None is answered
+here. The comparison record lists them with their owners:
+- the flow-drive question separates S12's drain source/boundary realization (`R-S12-02`)
+  from the force balance in O2's carried handoffs;
+- the material-destination question separates which density/exchange alternative the drain
+  produces (S12, `R-S12-02`) from whether the knit can meet it
+  (`R-S21-01`, S21), as the oracle record states;
+- the third stays a scoped S9b exclusion;
+- the fourth stays in the S9b pass's analog-gravity row.
+
+These are handoffs, not entries. No owner is added to any other oracle check.
+
+**Prior art.** The positive light results reproduce known prior art: MacCullagh's curl-only medium, and the
+squared flow speed of the river model and of Visser's §7 acoustic flow. The flow match holds only under the
+unsupplied mass, clock and speed-unit identifications. The register's
+MacCullagh obligations (`R-S8-04`, `R-S8-05`) remain OPEN.
+
+
+### S12 pass — local order-source compatibility and separate inventories · 2026-10-20; accepted `ac909aaf`
+
+Source: `steps/S12_order_source.md`, §§1–7. Its constructions are accepted at `a3da43d9`, and the
+comparator with its engine-row note at `fe485b73`. The record and register pass were accepted in
+round 3 under "Accept, note both" at `ac909aaf` (`directives/_measurements/S12_record_r3_review_disposition.md`); J1/J2 are repaired here.
+Commands and literal stdout: `steps/_measurements/S12_record_measurements.md`, generated by
+`scripts/S12_record_measurements.py`. M01/M03/M07–M11 retrieve the conditional object and inventories;
+M12 retrieves the schema, rest-on method and entry census; M13 the second-route sources.
+
+**Census:** 18 entries before (`560c6c51`) → 18 after, all OPEN. **New entries by target: none.**
+Four existing entries gain S12 source/provenance: `R-S1-01`, `R-S1-02`, `R-S12-02` and `R-S21-01`.
+The last gains the user's framing decision only, not new optical evidence. No status changes.
+The round-2 repair of `4c37473c` was also 18 → 18, with no additional source gain. It restored the sourced
+S12 owners, including S12 in `R-S22-01`'s user-chosen target. `R-S12-01` retains its original
+S12 register-inference/no-live-owner qualification. `R-S21-01`'s requirement field now explicitly
+owes the comparison of force sectors' flow requirements, matching its by-target row and citing
+the 2026-10-19 user framing; no comparison is performed here (M12/M15/M18).
+The present repair of `fa5d1396` is also 18 → 18, with no additional source gain. It adds the
+real-fraction/A13 qualification to the S12 handoffs and reports the accepted-pass edits below;
+it changes no owner, computed object or comparison claim (M12 for the count; M19/M20 for the edits).
+
+**Edits to already-accepted population passes.** Relative to the accepted register at `e070c7f3`,
+the net edits to pre-existing Population passes are the following two edits to the light-closing
+pass. Pass 1, Pass 2, O2 and S9b have no net text edit; their accepted blocks each have one literal
+occurrence in the current register (M20). Existing-entry additions and sources are accounted for
+in the census and rest-on table, separately from these amendments to accepted pass text.
+
+| Edit | Accepted text at `e070c7f3` | Current text | Source that settles it / retrieval |
+|---|---|---|---|
+| Light-closing acceptance heading | **"### Light-closing pass — the oracle comparison and the extra wave · 2026-10-19; review pending"** | **"### Light-closing pass — the oracle comparison and the extra wave · 2026-10-19; accepted `e070c7f3`"** | `light_sector_closeout_review_r2_disposition.md`, Outcome: **"The light-sector closeout packet is accepted as revision 2"**; filed acceptance commit `e070c7f3`. Retrieve M20. |
+| Light-closing second-route handoffs | **"the first two belong to S12 (`R-S12-02`) and to O2's carried handoffs;"** | **"the flow-drive question separates S12's drain source/boundary realization (`R-S12-02`) from the force balance in O2's carried handoffs;"** and **"the material-destination question separates which density/exchange alternative the drain produces (S12, `R-S12-02`) from whether the knit can meet it (`R-S21-01`, S21), as the oracle record states;"** | Accepted `steps/S9b_flow_oracle_comparison.md`, second-route items 1–2, lines 156–166: drain source/boundary data with S12 and force balance with O2's carried handoffs; what the drain produces **"is again S12's object (R-S12-02), and whether the knit can meet it belongs to R-S21-01"**. Retrieve M20. |
+
+Both accepted and current blocks, with their literal line breaks, are retrieved in M20. The handoff
+wording is a substantive amendment to an accepted pass, not only an acceptance-status update.
+It preserves the oracle record's split and changes no computed result or owner.
+
+**Two additional status-only edits retained from the S12 deliverable (J1).** The S9b oracle record's
+status changed from "its own review is pending" to accepted at `e070c7f3`; the register header's
+light-closing sentence likewise records acceptance at `e070c7f3`. These are separate from the two
+light-closing Population-pass edits above. Source: `directives/_measurements/S12_record_r3_review_disposition.md`, J1.
+
+**User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms. This record closes only
+S12's requirements part, and the forms come once the brane is defined, after the force sectors.
+Every owner the sources and you gave stays as written, and the record says it delivers none of
+the forms yet."** This replaces round 0's C1 owner obligation. S12 retains the native drain/return
+functions, their boundary data, the throat's order-conversion source and its other sourced
+assignments, all OPEN. None of those forms is delivered by this record (M18).
+
+**First route / one rest-on criterion.** The reported object is conditional on supplied balances,
+coordinate dimension, the adopted U1 support identification and the stated regional function class.
+It does not rest on a selected interior-order, face, flux, drain/return, momentum-partner or energy
+law. The printed compatibility objects do support a conditional requirement: any future realization
+on this domain must meet those objects, or it cannot realize the reported source. They merge into
+the native-conversion requirement `R-S12-02`, with no choice of how to meet them. Its status stays
+OPEN: the source constraints supply neither native source functions nor boundary data.
+S12 retains the forms/data under "Keep S12"; the following requirements constrain that future
+delivery without selecting a form or claiming it has been delivered.
+**Branch condition for every requirement below:** the printed compatibility objects rest on
+the **real-fraction branch; A13 stays OPEN**. The decision list says **"The committed law is
+written for a real ordered fraction; a phase-carrying branch would add content not computed here"**;
+the plan requires **"the conversion balance must use the branch chosen at S1"**. These are the
+real-fraction objects until S1's gate decides, with the sourced S1/S5/S12 owners retained. This
+condition also qualifies `R-S12-02` and its by-target summary (M18/M19).
+
+| Printed object required | Existing entry / target / status | Source and failure meaning |
+|---|---|---|
+| `general_order/region/1/source` below and `region/3/source` above | `R-S12-02` / S12 / OPEN | M03/M07: the respective live order-flux divergences. Data violating either cannot realize the reported exterior source. |
+| `general_order/region/2/source` inside | `R-S12-02` / S12 / OPEN | M03/M07: live order transport plus order-flux divergence. Data violating it cannot realize the interior object. |
+| `general_order/face/{1,2}/trace_coefficient` and `/source_contribution` | `R-S12-02` / S12 / OPEN | M03/M07/M08: normalized source parts at each live face, retaining the supplied-domain and diagnostic qualifications. No face-concentrated source is set to zero. |
+| `material/face/{1,2}/requirement` | `R-S12-02` / S12 / OPEN | M03/M07: distinct total-material conditions at both faces; printed, not solved. Violation prevents locally conserved material in this function class. |
+| `conditional_fast_ordering/region/{1,2,3}/source` and both face trace/source objects | `R-S12-02` / S12 / OPEN | M03/M07: only the labelled specialization, general in two offsets. Violation prevents that conditional specialization; it is not a universal fast-ordering limit. |
+
+These requirement objects specify no law, material, premise or candidate as a means of satisfying
+them. Their standing is distinct from the supplied balances, adopted inputs and flagged support
+identification that qualify their domain. U1–U4 remain **"an adopted substrate input to a conditional
+model"** each, as the source says; they are not newly derived substrate requirements. U1's unencoded
+re-ordering clause, face-concentrated input fields and the generality of the live functions remain
+OPEN handoffs. No named retirement condition makes an uncomputed constitutive form a new entry.
+The two existing dimension/shear obligations have live retirement questions already, so they gain
+only the limited conditional consumers stated in their own entries.
+
+**Rest-on census, every entry:**
+
+| Existing entry | S12 dependence / effect |
+|---|---|
+| R-S6-01 | No compression-modulus input or result; no source gain. |
+| R-S7-01 | Live faces impose no selected width or nonuniform-width flatness result; no source gain. |
+| R-S1-01 (target S6) | Three in-plane coordinates and four-dimensional material balance; coordinate-only source added, no dimensional derivation. |
+| R-S1-02 | Adopted U1 shear-region/support identification; conditional interpretation source added, no computed shear response or confinement. |
+| R-S1.5-01 | No GNLS mode/acoustic input; no source gain. |
+| R-S6-02 | No stationary/equilibrium state or substrate first variation; no source gain. |
+| R-S8-01 | No stiffness functional supplied or derived; no source gain. |
+| R-S8-02 | No coupled `(u,h)` operator or block-diagonality input; no source gain. |
+| R-S8-03 | No optical-stiffness sign calculation or propagating optical gate; no source gain. |
+| R-S8-04 | No angular-momentum/couple-stress result used; inherited inventory only, no source gain. |
+| R-S8-05 | No rotational reference frame selected; inherited inventory only, no source gain. |
+| R-S1-03 | No microscopic time-reversal or Onsager–Casimir result used; no source gain. |
+| R-S8-06 | No displacement identification or quadratic slab inertia used; material conservation alone does not supply either; no source gain. |
+| R-S12-01 | Separate conditional non-passive-interface reservoir/budget retained. No computed S12 power consumer, no source gain, no live owner added. |
+| R-S12-02 | Printed regional/face conversion compatibility and distinct material face conditions merge here; S12 source added. Native functions/data remain OPEN. |
+| R-O2-01 | Separate net-supplier/budget condition retained; no S12 net-power calculation or consumer, no source gain or owner change. |
+| R-S21-01 | User framing provenance added: each force states its flow requirement, S21 compares, a mismatch reopens S9b. No new optical evidence or fitted flow. |
+| R-S22-01 | No throat energy split, matter coupling or thermal/cosmological transfer result computed or used; carried inventory only, no source gain. |
+
+**Second route.** Apply the register's broader rule, including prior-art candidates outside S12's
+record. Read the O2 scoping §5 and the S9b second-route inventory (M13). Gurtin–Murdoch,
+Abels–Garcke–Grün, Scriven, Helfrich and Rodriguez–Hoger–McCulloch identify surface/exchange/reference
+candidates; Hamilton–Lisle, Visser, Unruh and the inherited Cahill/Sbitnev class identify flow
+candidates. Their model/dimension/exchange and source-access restrictions travel with each row.
+For **each named candidate individually**, applicability, historical failure modes/objections that
+transfer and whether they are answered here remain OPEN, **no owner named for a new S12 check**.
+S12 reproduces no identified candidate result: its balances are supplied and its support model is
+adopted. Thus no derived S12 requirement is entered on an oracle match, and none of those historical
+obligations is claimed discharged. The remaining S9b candidates each keep their original OPEN
+handoffs; the positive light-sector oracle check does not become an S12 oracle check.
+
+The inherited river/acoustic objections are still carried, not answered: flow drive separates
+S12's drain/source-boundary realization (`R-S12-02`) from O2's carried force-balance handoffs;
+material destination separates S12's drain-produced density/exchange choice (`R-S12-02`)
+from S21's knit compatibility (`R-S21-01`). Scalar acoustics versus transverse light is a scoped
+S9b exclusion; kinematics versus dynamics stays in the analog-gravity handoff. Local material/order
+identities name compatibility but select no flow, closure or response dynamics. Existing MacCullagh
+admissibility/frame entries stay OPEN. No fresh oracle computation or literature check is done here.
+
+**Directive/register relation and source tensions.** No new operative disagreement with the S12
+record contract: its item 7 expressly defers to this rest-on test. Its 2026-10-19 framing says S12
+**"states what any conversion law must satisfy and leaves the forms open"**, while the older
+`R-S12-02` requires **"the native drain/return functions and their separate boundary data"**.
+The older obligation remains OPEN; the current constraints merge into it without claiming its
+delivery. The earlier owner line **"S12 owns the drain/return data"** and the requirements-only
+framing are kept side by side. The user's 2026-10-20 **"Keep S12"** resolves their ownership
+reading: **"This record closes only S12's requirements part"**, and the forms **"come once the
+brane is defined, after the force sectors"**. S12 stays open; the record delivers none of its
+forms. The reviewed record's replacement **"OPEN, no live owner named"** disagreed with the
+oracle's **"The drain's source and boundary data belong to S12 (R-S12-02)"**; its removal of
+S12 from the energy-input target disagreed with the user-chosen **"S22 (the nonlinear throat
+solve), together with Q2 (the mouth source and its held datum) and S12 (the throat's
+order-conversion source and its boundary data)"**. The record quotes both sides of these
+disagreements and the A13 owner disagreement; all sourced owners are restored (M18).
+Stage 045's controllers close globally **"despite the local sink"**, whereas the current
+law supplies **"total material"** conservation and rules out **"The frozen-wall mass sink with a
+remote return"**. Whether the controllers retain a role after re-hosting is OPEN in the
+S12 source/controller inventory. Both sides and the split oracle handoffs are retrieved in
+M01/M11/M17/M18.
+The earlier pass-2 second-route disagreement stays unresolved: the old directive says **"Run it only
+on a prior result that a record in the reading list identifies as reproduced by the sector"**, and
+this register says **"Run this route for every sector with identified prior art"** (M13). The
+register's broader rule governs this pass. All comparator differences/coverage limits stay in
+S12 §4 and M06–M09; the accepted engine-row comparison carries no information.
+
+### S14a part 1 pass — closed projection and two-channel shell compatibility · 2026-10-21; accepted `4a4dfaf5`
+
+Source: `steps/S14a_1_projection.md`, §§1–8. Constructions accepted `94fddf2f`; comparator accepted
+`de81b9fc`. This record/pass is accepted at `4a4dfaf5` (record review round 1). Commands and literal stdout:
+`steps/_measurements/S14a_1_record_measurements.md`, generated by
+`scripts/S14a_1_record_measurements.py`. M01/M03/M05–M10 retrieve the conditional printed objects,
+their domains and comparison limits; M12 retrieves the schema/rest-on method and census;
+M13 the second-route sources; M16 this pass and the exact ancillary diff against `f5d283c1`.
+
+**Census:** 18 entries before (`f5d283c1`) → 18 after, all OPEN. **New entries by target: none.**
+Four existing entries gain scoped source/provenance: `R-S1-01`, `R-S1-02`, `R-S12-02`, `R-S21-01`.
+The last gains user-framing provenance only, not new optical evidence or a selected flow.
+No target or status changes. The S12 pass itself changes only acceptance status/provenance and
+known J1/J2: its account now names the S9b oracle status edit and register-header light-closing
+status edit; its round-3 `18 → 18` sentence cites S12 M12. S12 acceptance is `ac909aaf` (M15/M16).
+
+**First route / rest-on test.** The printed objects rest on supplied material/order balances,
+the coordinate dimension, adopted U1 support identification and the live regional/two-face function
+class. Spherical symmetry is a labelled restriction, not an earned limit. Each is kept at that
+standing, not entered as a new derived substrate property. No chosen interior, face, source,
+flux or profile form is required by these identities. Their printed compatibility objects do
+constrain future data that would realize the conditional projection; these merge into the
+existing `R-S12-02` compatibility requirement. No method of satisfying them is prescribed.
+
+**Common domain of every handoff below:** the real-fraction branch, **A13 OPEN** at S1's gate,
+propagated through S5/S12; two live graph faces and the inherited regional field class; full
+endpoint-concentrated parts. Shell objects additionally keep the labelled spherical specialization;
+velocity objects keep nonzero projected density. Every comparison qualification in the record §5
+travels with its object. In particular the seven exact integral residuals, shell-domain difference,
+external dimension-context differences, unjoined decompositions and unpaired components are not
+resolved by this pass. Source/flux forms and distinct boundary data remain S12's, OPEN under
+the 2026-10-20 **"Keep S12"** decision. These requirements deliver none of the forms.
+
+| Required printed object; native tag family / bound references | Entry / target / status | What fails if future data violate the object |
+|---|---|---|
+| `General/{material,order}/projected density`, `/projected in-plane flux`, `/closed projected balance/operands`; corresponding Wolfram `general projection/...` objects (b51/b52/b59/b73/b74/b79) | `R-S12-02` / S12 / OPEN | The reported closed-slab material/order balance is not realized on this domain. |
+| Each `General/{material,order}/face {0,1}/{interior leaving term,closed-projection leaving term}`, `/concentrated face parts`; material face-equation coefficients; `General/order/projected source` (b49/b53–b58/b71/b75–b78/b82) | `R-S12-02` / S12 / OPEN | The reported relative face transport, full concentrated parts or projected source are not realized. Material face requirements remain distinct; none is solved or imposed by this pass. |
+| The separately constructed `SphericalSpecialization` projected counterparts (b127/b129–b137/b147/b149–b155/b158) | `R-S12-02` / S12 / OPEN | The labelled radial projection is not realized. No transfer outside its restriction is required. |
+| Spherical `face channel`, `core channel`, `J`, `order lost`, `outward outer flux`, `storage`, `shell balance`, `face channel minus order lost` (b166–b171/b173–b175; Wolfram `spherical specialization / shell/...`) | `R-S12-02` / S12 / OPEN | The reported two-channel definition and shell/source/storage relations are not realized. Storage and shell-balance exact comparison remain unresolved as recorded, not replaced with an exact-match claim. |
+| Spherical `outer flux radius derivative`, `outer projected velocity`, `outer volume flux`, with the printed predicates (b172/b176/b177) | `R-S12-02` / S12 / OPEN | The reported live-radius flux/conditioned-velocity relation is not realized. No zero-density velocity value is owed. |
+
+The difference `face channel minus order lost` is required **as the printed difference**, not set
+to zero. Agreement of bound dimension values constrains their interpretation only at their
+printed domains; primitive dimension assignments and unpaired audit trees are not new laws.
+Closed differential-operand integrals retain b50/b72/b128/b148's unresolved exact comparison
+and printed sample evidence: of each unresolved part's 54 stored samples, only the 18 quadratic-form
+samples can move when a derivative is taken at another point; the 18 affine and 18 cubic samples
+do not make that check. The same limitation qualifies b171, b173's unresolved lhs and b174;
+b173 has 36 quadratic samples across both sides, of which only 18 belong to its unresolved lhs.
+No new exact equivalence is required by assertion (M03/M07–M10/M17).
+The pending controlled return law, mass link, core solution, source-map completion and profile
+knit enter no completed part-1 result as supplied forms; they retain their step assignments and
+do not generate duplicate entries merely because they remain OPEN (record §7, M01/M11).
+
+**Rest-on census, every existing entry:**
+
+| Entry | S14a part 1 dependence/effect |
+|---|---|
+| `R-S6-01` | No compression modulus used; no source gain. |
+| `R-S7-01` | Live faces select no width/flatness result; no source gain. |
+| `R-S1-01` | Three in-plane/one bulk coordinates and spherical area; coordinate-domain consumer only; source added, no dimension derived. |
+| `R-S1-02` | Adopted U1 shear-region/support identification; conditional interpretation source only. No shear response/confinement derived. |
+| `R-S1.5-01` | No GNLS linear-mode/acoustic input; no source gain. |
+| `R-S6-02` | No equilibrium/first-variation input; no source gain. |
+| `R-S8-01` | No stiffness functional used; no source gain. |
+| `R-S8-02` | No coupled displacement/width quadratic operator used; no source gain. |
+| `R-S8-03` | No optical-stiffness sign/gate result; no source gain. |
+| `R-S8-04` | No new angular-momentum/couple-stress consumer; inherited second-route obligation remains. |
+| `R-S8-05` | No rotational frame selected or used; inherited second-route obligation remains. |
+| `R-S1-03` | No microscopic time-reversal/Onsager input; no source gain. |
+| `R-S8-06` | No displacement/quadratic-inertia identification used; number conservation does not supply it. O2 comparison remains OPEN; no source gain. |
+| `R-S12-01` | No non-passive response or computed power consumer; distinct carried condition, no live owner newly assigned. |
+| `R-S12-02` | Projected/face/source and labelled shell compatibility objects merge here; source added, native forms/data remain OPEN. |
+| `R-O2-01` | No net-power/supplier result or adopted net-supply closure; no source gain/owner change. |
+| `R-S21-01` | Framing provenance only: each force states flow needs, S21 compares, mismatch reopens S9b. No new optical profile evidence or comparison result. |
+| `R-S22-01` | No energy split or conversion-work/thermal-transfer result used; no source gain. Core exclusion keeps its existing owner, not a new computed energy requirement. |
+
+**Second route.** Apply the register's broader rule for every sector with identified prior art.
+Read O2 scoping §5 and the O2/S9b/light-closing source rows (M13), rather than treating this
+record's own questions as an exhaustive prior-art inventory. Each named candidate remains
+individual: Gurtin–Murdoch, Abels–Garcke–Grün, Scriven, Helfrich, Rodriguez–Hoger–McCulloch,
+Hamilton–Lisle, Visser, Unruh and the inherited Cahill/Sbitnev class. For each, applicability,
+transferable historical failures/objections and whether they are answered here remain OPEN,
+**no owner named for a new S14a part 1 check**. The original access, dimension, material and
+exchange limitations remain as the source rows state them. No part-1 result is claimed to
+reproduce an applied oracle, so no new requirement is founded on such a match.
+
+Every other candidate in the inherited S9b inventory retains its source row and original OPEN
+handoff (M13). The river/acoustic objections are carried, not answered: S12 drain/source-boundary
+realization versus O2's force balance; S12's produced density/exchange versus S21 knit compatibility;
+scalar sound versus transverse light as S9b's scoped exclusion; analog kinematics versus dynamics
+as its existing handoff. Neither global nor local conservation chooses a drive or response law.
+MacCullagh's `R-S8-04/-05` remain OPEN. No literature search, new oracle check or candidate
+selection is performed by this pass.
+
+**Directive/register relation and source tensions.** The current contract expressly defers to
+this rest-on test and both-route method; no operative disagreement is found. The historical
+second-route directive says **"Run it only on a prior result that a record in the reading list
+identifies as reproduced by the sector"**, while the register says **"Run this route for every
+sector with identified prior art"** (M13). The register wins. The material-conservation and
+S13-filing disagreements are quoted with both sides in record §6 (M01/M11/M15), not resolved by
+new physics or an owner reassignment. The plan's four bridge objects are not all closed:
+S14/S15/S20 remain **"CONDITIONAL, not carried results"**. No frozen DC completion or profile
+is adopted to close them.
+
+### S14a part 2 pass — dynamically selected slow limit and far behaviour · 2026-10-21; accepted `79511272` (round 2 clear)
+
+Source: `steps/S14a_2_slow_limit.md`, §§1–7. Commands and literal stdout:
+`steps/_measurements/S14a_2_record_measurements.md`, generated by
+`scripts/S14a_2_record_measurements.py`. M01/M02 retrieve the contract and both step-list
+revisions; M03 the review dispositions, lookup existence and assembly-audit excerpt; M04–M10 each
+witness's complete source and saved stdout; M11 the accepted part-1/S12 sources and owners; M12 the schema/method/census;
+M13/M14 the plan/comparison inventories and second-route handoffs; M15 this pass and the
+exact ancillary diff against `978c359c`; M16 the record round-0 dispositions, V2 user decision
+and committed-generator provenance; M17 the record round-1 dispositions. No build or witness rerun is performed here.
+
+**Census:** 18 entries before (`978c359c`) → 19 after, all OPEN. **One new entry by target:**
+`R-S14a-01`, jointly S12 (source/flux forms), S8/S22 (material law), and **no owner named** for
+face/interior laws, as V2 assigns. **Existing entries gaining a source: none.** No existing
+entry changes target/status; `R-S12-02` retains its block and by-target row at `978c359c`.
+The part-1 pass changes only its acceptance heading/provenance to `4a4dfaf5`; its other
+content is unchanged.
+
+**First route / rest-on test.** The user chose **"Record as requirement"** after the two
+step-list reviews. The object required is **the slow limit and far behaviour selected by
+the slab's own dynamics**, for S14a's still-underived controlled return and profile-dependent
+`J→Q` obligations. Its consumers are **S14, S15 and S20**: without that delivery they remain
+**CONDITIONAL, not carried results**. This is a named future delivery condition for those
+claims, not an assumed form or a defect in an accepted part-2 result. No such result exists.
+The register method makes an assertion about a step with no record a requirement; this one
+is explicitly required by the user, not entered merely because a future solve could use it.
+
+The register's merge test is applied to the selection object and its joint deliverers,
+not just S12's forms. No existing entry covers that same requirement with those deliverers.
+`R-S12-02` covers S12's native source/flux forms, separate data and compatibility objects;
+it does not cover selection owed jointly with S8/S22 and unowned face/interior laws.
+`R-S22-01`'s joint energy-split obligation and `R-O2-01`'s unowned supplier/budget obligation
+are different objects. The method keys each entry by its deliverer, so selection has its own
+entry, **`R-S14a-01`**; `R-S12-02` is unchanged from `978c359c` (M12/M17).
+
+The user's V2 choice **"All the slab's laws (Recommended)"** (2026-10-21) replaces item 4's S12-only target
+sentence. Its source is `directives/_measurements/S14a_2_record_r0_review_disposition.md`,
+"The user's decision on V2", committed at `12aa65d5` (M16). The selected orchestrator option says:
+
+> "The selection is owed jointly by S12's source and flux forms, the slab's material law
+> (S8/S22), and the face and interior laws, which have no owner yet. The register says so and
+> states the missing owner as missing; it invents none. The record reports the disagreement
+> with both sides quoted."
+
+The new entry's target field and by-target row state those joint deliverers for selection. Existing S12
+source/flux/boundary obligations remain with S12 under **"Keep S12"**. No missing owner is
+invented, and the selection requirement does not repartition the complete return-law/map
+obligations. Recording it delivers none of the forms, the slow return law or the source map.
+The inherited real-fraction/A13, live-face and part-1
+comparison qualifications remain. No new averaging operation, solution family, density gate,
+limit order, drain/return law, material, profile, premise or candidate is prescribed.
+
+The evidence is pass 1 Q1–Q3 and pass 2 R1–R3 as filed, not an accepted build or a universal
+theorem: three pass-1 Codex instruments, one pass-1 Grok instrument, two pass-2 Codex
+instruments and one pass-2 Grok instrument. Their constructions/checks differ, as record
+§§2–3 states. In particular, pass-2 Grok's gate example checks one projected material balance,
+not both native balances. The pass-2 orchestrator reading is quoted as a reading. The user
+decision, not an extrapolation from these probes, supplies the requirement's standing.
+
+All 18 existing entries retain their sources/targets/statuses. No new computed consumer of
+their dimension, shear, stiffness, inertia, equilibrium, mode, width, power or energy-split
+objects is supplied by this retrieval-only record. The repeated flow-framing decision keeps
+S21's existing comparison obligation; no new S21 source/comparison result is added.
+
+**Second route.** Apply the register's broader rule for every sector with identified prior
+art. M14 retrieves O2 scoping §5 and the O2/S9b/light-closing/part-1 source inventories. For
+each candidate individually—Gurtin–Murdoch, Abels–Garcke–Grün, Scriven, Helfrich,
+Rodriguez–Hoger–McCulloch, Hamilton–Lisle, Visser, Unruh, Cahill and Sbitnev—applicability,
+transferable historical objections/failures and whether those are answered here remain OPEN,
+no owner named for a new part-2 check. All other individually named S9b candidates keep their
+original OPEN handoffs and filed access/model qualifications. No candidate is applied or
+selected, no literature verification is performed, and no part-2 prior result is reproduced.
+
+The four inherited river/acoustic objections remain distinct: S12 source/boundary realization
+versus O2's carried force balance; S12 produced density/exchange versus S21 knit compatibility;
+the scoped scalar-sound/transverse-light exclusion; and analog kinematics versus dynamics.
+None is answered here. MacCullagh's `R-S8-04/-05` stay OPEN. No new requirement rests on an
+unapplied oracle; both-route questions are preserved, not treated as negative findings.
+
+**Directive/register relation and disagreements.** The current contract defers to this schema,
+rest-on test and both routes. Its original S12-only target sentence and the earlier option's
+**"(the open S12 forms)"** gloss disagree with accepted S12's material/face/interior ownership
+statements; both sides are quoted in record §6 (M01/M11/M16). The V2 user decision quoted above
+supersedes that target sentence with joint delivery. The historical population
+directive says **"Run it only on a prior result that a record in the reading list identifies
+as reproduced by the sector"** (direct retrieval M11); this register says **"Run this route
+for every sector with identified prior art"** (M12). The register governs. The pointwise-rate,
+DC/slow-limit, historical material-conservation and S13-filing tensions remain quoted with
+both sides in record §6 (M02/M03/M11/M13). The contract requests **"a committed generator script"**
+and says **"No commit and no push"**; the list's own no-commit instruction governs this repair.
+The round-1 reviewed generator and measurements are preserved at `85904c4e`; the repaired record,
+generator, measurements and register pass were subsequently committed and accepted at `79511272`
+(round 2 clear; `directives/_measurements/S14a_2_record_r2_review_disposition.md`, retrieved in S16 M15).
+No physics disagreement is closed by this pass.
+
+### S16 pass — live moving-region balances and separate response requirements · 2026-10-24; written for source-first review
+
+Source: `steps/S16_moving_region.md`, §§1–8. The governing list is revision 4 at `0464b80a`;
+the constructions are accepted at `1d990ee6`, the comparator at `f08db34a` with its citation
+containment claim. Commands and literal stdout: `steps/_measurements/S16_record_measurements.md`,
+generated by `scripts/S16_record_measurements.py` (M01–M16). The generator and record are supplied
+uncommitted under this record contract's "No commit and no push" instruction.
+
+**Census:** 19 entries at `4d4d22cb` → 25, all OPEN. **Six new entries by target:** three with
+no physical owner named (`R-S16-01/-02/-03`; compactness is also owed to S22's debt table),
+one S8 (`R-S16-04`, retaining the O2 antecedent qualification), one S8/S22 (`R-S16-05`),
+and one S22 debt-table account (`R-S22-02`, without assigning missing physical suppliers).
+**Existing entries gaining source/provenance:** `R-S12-02` (supplied projected material object
+and "Keep S12" only) and `R-S21-01` (the 2026-10-19 framing only). Neither changes requirement,
+target or status. No entry closes; `R-S14a-01` remains OPEN with its existing joint target.
+
+**First route / rest-on test.** As the schema says, a requirement is a future obligation;
+an adopted value/form belongs to the ansatz ledger, and an already-wrong object to the defect
+register. These six entries are the user's explicit future requirements and the decision list's
+named S22 debt filing, not closure forms inferred merely from a future owner. Failure blocks the
+named later interpretation or debt account, not S16's live unsolved balances. That is the same
+criterion that admits the explicitly user-required S14a selection object. O2's earlier refusal to
+enter unspecified live response forms merely for a future solve is retained; S16 now expressly
+requires the inertia and density objects. Those are not derived substrate responses.
+
+No further entry has a printed object as its requirement. The supplied material/momentum balances,
+their integrals, count-centre definitions and moments are conditional identities on the list's
+domain, not a selected material state. No printed nonzero boundary flux is required to vanish.
+The count projection and its S12 provenance already fall within `R-S12-02`; source and face forms
+stay OPEN. General `G`, `Pi` and `f` forms have no owner assigned here, while S12 gives slab material
+completion to S8/S22 and names no face-law owner. Neither the unowned momentum balance nor the
+core's excluded content is assigned to S12. Control shape, moment truncation and independent
+dimension units are labelled supplied/construction choices, not new physical-dimension or
+shear-response identifications; `R-S1-01/-02` gain no S16 source. No O2 premise is silently adopted.
+
+**Merge test.** `R-S16-01` is distinct from source normalization and from S21's knit;
+`R-S16-02` is distinct from count moments and the width bridge; `R-S16-03` is distinct from S12's
+material-face compatibility. `R-S16-04` does not widen the original homogeneous/slab object in
+`R-S8-06`. `R-S16-05` has no existing density-response entry. S22's existing `R-S22-01` concerns
+energy partition, not the reduction-debt account. Compactness is cross-referenced there once.
+The record's requirements table names each target and OPEN status; no means of meeting them is filed.
+
+**Second route.** Read every gravity prior-art row G1–G13 with its stated conditions and access
+qualifications (record §5, M05). G1/G2 attribute the standard transport algebra; their abstract
+any-entity statement is compared only by retrieval with S16's integral/measure and rest/motion
+objects. No external result is imported as a premise and no new residual is computed. G3/G4 and
+G5/G6/G8 have other objects or conditions; G7 is the prior result for the open passive requirement,
+not an identification; G9/G11 give no S16 force-law result; G10 is an unexecuted architectural
+sketch; G12 gives posits, not a mass derivation. The quoted condition table in record §5 keeps
+each comparison open where computation or a condition change would be needed.
+
+G13's objections are each preserved: moving-drain damping (Wang), unexplained energy disappearance,
+drag and matter creation (the last three from a secondary source), and universal pulsation phase
+(secondary source). S16 supplies no energy balance, mass-creation relation, sink-force law or
+pulsation model and answers none of them. Drag remains a question beside the passive/inertial
+requirements without an assigned applicability-check owner; energy destination remains beside
+S12's exchange and `R-S22-01`'s split without a new energy result; mass creation remains beside
+C3 and S22's debt account; synchrony is an unapplied-oracle question with no owner named. None is
+a defect found here or a new assumed property of an unbuilt substrate. No new entry follows merely
+from these objections before applicability/reproduction under matching conditions is established.
+This applies the broader "every sector with identified prior art" rule, not the historical
+reproduced-result-only restriction. G7's no-external-body-force assumption is retained; O2's
+different drive premise is not imported into S16 to make it match.
+
+**Limits and disagreements.** The pass inherits the complete record §3 ledger: exact/as-computed
+versus resolved residuals, open domain differences, native text/route differences, every unjoined
+tag and unpaired component, below-count bindings and normalized-domain exclusions. It does not
+claim whole-stream identity or a motion-free sum of `localEvolution` pieces. The plan/O2 interface
+describes a compact-body calibrated-potential reduction; the later user list supplies no potential,
+mass or compactness and computes only regional objects. Both sides are quoted in record §7. The
+governing list's "committed generator script"/"No commit and no push" conflict is reported there;
+the latter governs this authoring STOP. The list's revision heading still says "Revision 3" while
+its body and acceptance say revision 4. Accepted S12's historical mass-link owner is "S13";
+the current S16 list retains "C3, a gap", and the later user filing folds S13 into S14a.
+Record §7 quotes those distinct source assignments without inferring a new mass-link owner.
+No source is repaired by this pass. No operative
+directive/register conflict remains: explicitly required future objects are distinguished from
+unselected closure forms and adopted premises throughout.
+
+### Method for population passes
+
+Method for a pass, per step record: read it for every statement of the form *this assumes*, *this rests
+on*, *this is postulated at*, *this is deferred to*, *X enters at S**n***, and for every named retirement
+condition. Each becomes an entry keyed by the step that must deliver. Where the record asserts something
+about a step that has no record yet, that is a requirement by definition.
+
+Two things to watch for, both seen already:
+- A requirement can point **sideways**, not only backwards — S11's questions reduce to the S11b interface
+  law, which is a sibling step, not a substrate one.
+- The same object can be required by several sectors. Charge and magnetism ride the same brane–bulk
+  coupling as light, so an entry may gain sources rather than being duplicated.
+
+⭐⭐ **A SECOND ROUTE, added 2026-08-07 — ⛔ the method above would never have found `R-S8-04` or `R-S8-05`.**
+Both came from asking, of a **known prior result our sector reproduces**, *why was it rejected in its own
+time, and has that objection been answered here?* ⛔ Neither is anywhere in S9's or S10's records, because
+the records only capture what their authors thought to doubt — and the sector reproduces MacCullagh's
+algebra so cleanly that the objection to it never came up.
+
+⇒ ⭐ **Run this route for every sector with identified prior art**, ⛔ not only the light sector.
+⚠ It is the sharpest use of `CLAUDE.md` rule 16 available: the prior work's **failure modes** transfer as
+obligations even where its **results** transfer as corroboration — and a result that matches prior art
+tells you nothing about whether you inherited its problems.
+⚠⚠ **The tell that this was overdue:** the closer a sector's agreement with prior art, the *less* anyone
+thinks to ask what that prior art could not do. ⇒ ⛔ a clean reproduction is exactly when to run it.
+
+**Honest sizing, now measured rather than guessed.** Pass 1 read two records and produced **seven**
+entries, bringing the file from two entries to **nine total**, from a third of the sector. ⚠ That rate
+is the argument for
+running the pass **as each step closes**: reconstructing it at Phase 5, across five sectors, is precisely
+where an implicit assumption goes missing.
+
+⛔ **And pass 1 found no way to make this mechanical.** Every one of the seven came from reading prose for a
+*flagged identification*, a *postulate with a live retirement condition*, or a *consequence stated about a
+step that does not exist yet*. ⇒ ⛔ there is no grep for it, and a pass that produces entries quickly is a
+pass that missed some.
+
+## When this is done
+
+Phase 5 knits the sectors and builds the substrate. At that point this file is the checklist the
+substrate is tested against — the thing that answers *"is the brane–bulk we built sufficient to carry all
+five forces"* by enumeration rather than by recollection.
+
+REGISTER working tree
+ENTRY_HEADING_LITERAL_COUNT 25
+130: ⚠ `R-S1-01`'s id encodes its original target; the id is stable and the **target** field governs.
+131: ⚠ `R-S14a-01`'s id names its source step, not its deliverer; its **target** field governs.
+133: ### R-S6-01 — `B_comp` must be retired or re-affirmed
+135: - **source** S11 (`steps/S11_stray_longitudinal.md`, moves 1–5) · **target** S6 · **status** OPEN
+148: ### R-S7-01 — the slab-width flat direction, under a non-uniform width
+151:   (`steps/S11b_interface_coupling_law.md:156–157`) · **target** S7 · **status** OPEN
+169: ### R-S1-01 — the brane's spatial dimension
+172:   (`steps/S11_stray_longitudinal.md`, moves 2–3 / finite census) · **target** S6 · **status** OPEN
+221: ### R-S1-02 — the substructure's shear response, as a function of the order parameter
+223: - **source** S16 (inherited support identification only; `steps/S16_moving_region.md`, §§1/6; S16 M01/M04/M14/M17); S14a part 1 (support identification only; `steps/S14a_1_projection.md`, §§1/8); S12 (support identification only; `steps/S12_order_source.md`, §§1–3/7); S9b (brane optical shear only; `steps/S9b_light_bending.md`, §§2–4/8); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
+275: ### R-S1.5-01 — the GNLS's own mode content
+279:   (`steps/S11bB_interface_assembly.md`, breathing slice) · **target** S1.5 · **status** OPEN
+305: ### R-S6-02 — the reference state must be an equilibrium
+310:   `steps/S11c_d_profile_conditioned_scattering.md`, uniform check) · **target** S6 · **status** OPEN
+338: ### R-S8-01 — the form of the brane's quadratic stiffness functional
+343:   (`steps/S11c_PARTIAL_CLOSEOUT.md`, conditional uniform result) · **target** S8 · **status** OPEN
+383: ### R-S8-02 — the in-plane and out-of-plane sectors must decouple at quadratic order
+386:   · **target** S8 · **status** OPEN
+427: ### R-S8-03 — the SIGN of the physical transverse stiffness
+432:   `steps/S11c_d_profile_conditioned_scattering.md`, uniform check) · **target** S8 · **status** OPEN
+465: ### R-S8-04 — what carries the brane's internal angular momentum
+467: - **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9, S10, S11 · **target** S8 · **status** OPEN
+499: ### R-S8-05 — the frame the brane's rotational stiffness is measured against
+501: - **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9, S10, S11 · **target** S8 · **status** OPEN
+526: ### R-S1-03 — the substructure's microscopic time-reversibility
+529:   (`steps/S11b_interface_coupling_law.md`, conditional Onsager–Casimir test) · **target** S1
+530:   (**register inference; no owner named by the records**) · **status** OPEN
+543: ### R-S8-06 — material displacement and the slab's quadratic inertia
+546:   (`steps/S11bB_interface_assembly.md`, breathing quadratic) · **target** S8
+547:   (**register inference for the original S11/S11b records; O2 names S8 for the material identification**) · **status** OPEN
+577: ### R-S12-01 — the reservoir and its power budget
+580:   (`steps/S11b_interface_coupling_law.md`, passivity region) · **target** S12
+581:   (**register inference**) · **status** OPEN
+609: ### R-S12-02 — background drain/return and separate boundary data
+614:   · **target** S12 · **status** OPEN
+686: ### R-O2-01 — the net-power supplier and its stated budget
+689:   · **target** no owner named · **status** OPEN
+712: ### R-S21-01 — conditional deflection and radar-slope profile requirements
+720:   · **target** S21 (integration/knit; S9b record §7, O2 record §7 and the record directive's
+721:   2026-10-08/09 user decisions) · **status** OPEN
+907: ### R-S22-01 — how the energy a throat releases splits among light, the extra wave and the bulk
+919: - **target** S22 (the nonlinear throat solve), together with Q2 (the mouth source and its held datum) and
+925: - **status** OPEN
+972: ### R-S14a-01 — the dynamically selected slow limit and far behaviour
+976: - **target** jointly S12 (source and flux forms), S8/S22 (the slab's material law), and
+978: - **status** OPEN
+1009: ### R-S16-01 — the surroundings object needed for a passive factor
+1016: - **target** no owner named
+1017: - **status** OPEN
+1029: ### R-S16-02 — the body's compactness in both comparisons
+1035: - **target** no owner named for physical delivery; S22 is the named recipient of this debt in its table
+1036: - **status** OPEN
+1048: ### R-S16-03 — momentum exchange at each slab face
+1054: - **target** no owner named
+1055: - **status** OPEN
+1066: ### R-S16-04 — the momentum–material relation needed for inertia
+1073: - **target** S8, with S1.5 antecedents when available as the O2 row states
+1074: - **status** OPEN
+1086: ### R-S16-05 — the slab density response
+1092: - **target** S8 (substrate reduction) and S22 (completion), as the O2 row states
+1093: - **status** OPEN
+1105: ### R-S22-02 — the missing response-reduction inputs in S22's debt table
+1111: - **target** S22 for the debt-table account; no physical supplier is assigned here where the
+1113: - **status** OPEN
 FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md lines 1:EOF
 1: # Substrate requirements — what the force sectors oblige the unbuilt steps to deliver
 2: 
@@ -78475,1933 +80520,1994 @@ FILE research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md lines 1:EOF
 34: (user's V2 decision, `12aa65d5`). No existing entry gains a source or changes target/status;
 35: `R-S12-02` retains its scope at `978c359c`. This pass's retrievals and exact
 36: ancillary diff are `steps/_measurements/S14a_2_record_measurements.md`, M12/M15.
-37: S16 adds six entries (19 → 25 OPEN) and scoped source/provenance to `R-S12-02` and `R-S21-01`.
-38: The new objects are explicit user-required future deliveries and S22's reduction-debt account;
-39: they are not prerequisites silently imposed on the live conditional balances. Retrievals, both-route
-40: applications and the exact ancillary diff are `steps/_measurements/S16_record_measurements.md`, M01–M16.
-41: 
-42: ## Why this exists
-43: 
-44: v3 is requirements-first: each sector states what it needs, and the knit happens last. The light sector
-45: (S9, S10, S11, S11b) is built on **S1–S8, none of which have been run** — there are no step records for
-46: them. That is the design, not an oversight: the substrate gets built once every sector has said what it
-47: requires, so it can be checked against all of them at once rather than rebuilt per sector.
-48: 
-49: The bet only pays if the requirements are **captured**. Measured 2026-08-05: exactly two obligations are
-50: recorded, both from S11, both about one quantity, both as inline anchors in a 1200-line plan. Everything
-51: else a built sector assumes about the substrate is implicit prose spread across four step records.
-52: 
-53: `DEFECT_REGISTER.md` records what is *wrong*. `ANSATZ_LEDGER.md` records what is *postulated and not
-54: derived*. Neither records **what a later step must deliver for an earlier result to stand.** That is this
-55: file.
-56: 
-57: ## The failure this prevents
-58: 
-59: At Phase 5 the sectors are knitted and the substrate is built against their combined requirements. If a
-60: requirement was never written down, one of two things happens: the substrate is built without it and the
-61: sector's result silently loses its footing, or it is rediscovered late and the substrate is rebuilt. Both
-62: were survivable with one sector. With five they are not.
-63: 
-64: The S7 entry below is the shape of the problem. Standing at S7, the honest answer is "the slab width is
-65: not selected" — a real result, bankable, and **insufficient**. Only S11 knows that the question must be
-66: asked again with the width made position- and time-dependent. Nobody at S7 would think to ask.
-67: 
-68: ## Entry schema
-69: 
-70: | field | meaning |
-71: |---|---|
-72: | `id` | stable identifier, cited from both ends |
-73: | `source` | the step that needs it |
-74: | `target` | the step that must deliver it |
-75: | `requirement` | **the object required**, named — not a derivation path for it |
-76: | `on failure` | what breaks in the source step if the target cannot deliver |
-77: | `status` | OPEN · DELIVERED · RETIRED (with the commit that changed it) |
-78: 
-79: Name the object; do not prescribe how the target should obtain it. A requirement that specifies a
-80: derivation route manufactures arguments about the route — see `CLAUDE.md` rule 3.
+37: S16 adds six entries (19 → 25 OPEN) and scoped source/provenance to `R-S1-01`, `R-S1-02`,
+38: `R-S12-02` and `R-S21-01`. The user selected the passive-factor and inertial filings;
+39: the list author filed compactness, face momentum, density response and S22's reduction-debt account.
+40: Each has its own sourced admission ground. The inherited coordinate/support conditions merge
+41: into the existing entries; no physical response is derived. The Y1–Y4 repair is 25 → 25.
+42: Retrievals, both-route applications and the exact ancillary diff are
+43: `steps/_measurements/S16_record_measurements.md`, M01–M18.
+44: 
+45: ## Why this exists
+46: 
+47: v3 is requirements-first: each sector states what it needs, and the knit happens last. The light sector
+48: (S9, S10, S11, S11b) is built on **S1–S8, none of which have been run** — there are no step records for
+49: them. That is the design, not an oversight: the substrate gets built once every sector has said what it
+50: requires, so it can be checked against all of them at once rather than rebuilt per sector.
+51: 
+52: The bet only pays if the requirements are **captured**. Measured 2026-08-05: exactly two obligations are
+53: recorded, both from S11, both about one quantity, both as inline anchors in a 1200-line plan. Everything
+54: else a built sector assumes about the substrate is implicit prose spread across four step records.
+55: 
+56: `DEFECT_REGISTER.md` records what is *wrong*. `ANSATZ_LEDGER.md` records what is *postulated and not
+57: derived*. Neither records **what a later step must deliver for an earlier result to stand.** That is this
+58: file.
+59: 
+60: ## The failure this prevents
+61: 
+62: At Phase 5 the sectors are knitted and the substrate is built against their combined requirements. If a
+63: requirement was never written down, one of two things happens: the substrate is built without it and the
+64: sector's result silently loses its footing, or it is rediscovered late and the substrate is rebuilt. Both
+65: were survivable with one sector. With five they are not.
+66: 
+67: The S7 entry below is the shape of the problem. Standing at S7, the honest answer is "the slab width is
+68: not selected" — a real result, bankable, and **insufficient**. Only S11 knows that the question must be
+69: asked again with the width made position- and time-dependent. Nobody at S7 would think to ask.
+70: 
+71: ## Entry schema
+72: 
+73: | field | meaning |
+74: |---|---|
+75: | `id` | stable identifier, cited from both ends |
+76: | `source` | the step that needs it |
+77: | `target` | the step that must deliver it |
+78: | `requirement` | **the object required**, named — not a derivation path for it |
+79: | `on failure` | what breaks in the source step if the target cannot deliver |
+80: | `status` | OPEN · DELIVERED · RETIRED (with the commit that changed it) |
 81: 
-82: Distinguish carefully:
-83: - a **requirement** is an obligation on a *future* step;
-84: - a **postulate** is a value or form assumed *here* and not derived — that belongs in `ANSATZ_LEDGER.md`;
-85: - a **defect** is something already wrong — that belongs in `DEFECT_REGISTER.md`.
-86: 
-87: A postulate with a named retirement condition generates a requirement. `B_comp` below is exactly that.
-88: 
-89: ---
-90: 
-91: ## Entries
-92: 
-93: ⭐ **By target step** — what each unbuilt step owes the sectors that are already banked:
-94: 
-95: | target | id | the object owed | source |
-96: |---|---|---|---|
-97: | **S1** | `R-S1-02` | the substructure's shear response as a function of `χ_B`, both phases | S9, O2 conditional premises, S9b brane optical shear only, S12 and S14a part 1 support identification only |
-98: | **S1** *(register inference)* | `R-S1-03` | whether the substructure's microdynamics is time-reversible | S11b-B / unified S11b |
-99: | **S1.5** | `R-S1.5-01` | the mode content of the linearised GNLS, including the bulk acoustic branch | S9, S11, S11b-A/B, S9b Part C bulk acoustic input only |
-100: | **S6** | `R-S6-01` | the brane's compression modulus `B_comp` | S11 |
-101: | **S6** | `R-S6-02` | the first variation of the substrate action at `v₀ = 0` | S9, S10, S11, S11b-A/B, S11c uniform |
-102: | **S6** | `R-S1-01` | the brane's spatial dimension `D_brane` ⚠ *id kept; target corrected to S6* | S10, S11, S9b, S12 and S14a part 1 coordinate dimension only |
-103: | **S7** | `R-S7-01` | the slab-width flat direction under a non-uniform width | S11, unified S11b |
-104: | **S8** | `R-S8-01` | the form of the brane's quadratic stiffness functional | S9, S10, S11, S11b-B, unified S11b, S11c uniform, S9b supplied transverse input |
-105: | **S8** | `R-S8-02` | the quadratic operator on `u` **and** `h` together | S10, S11 |
-106: | **S8** | `R-S8-03` | the **sign** of the physical transverse stiffness | S9, S10, S11, unified S11b, S11c uniform, S9b local optical sign/ratio gate |
-107: | **S8** | `R-S8-04` | what carries the brane's **internal angular momentum** | S9, S10, S11, O2 carried obligation |
-108: | **S8** | `R-S8-05` | the **frame** the brane's rotational stiffness is measured against | S9, S10, S11, O2 carried obligation |
-109: | **S8** *(register inference for original entry)* | `R-S8-06` | material displacement and original quadratic slab inertia; O2 adds the material identification only | S11, S11b-B, O2 and S9b identification |
-110: | **S12** *(register inference; no live owner named)* | `R-S12-01` | a reservoir and power budget if a non-passive interface response is adopted | S11b-B / unified S11b, O2 carried condition |
-111: | **S12** | `R-S12-02` | native drain/return, printed regional/face and projected/shell compatibility on the real-fraction branch (A13 OPEN), and separate boundary data | S11b-A/B, S11c uniform, O2, S12, S14a part 1; S16 supplied projection/Keep S12 provenance only |
-112: | **S21** | `R-S21-01` | conditional deflection and radar-slope profile requirements, with Part C rewrites and implied exchange; comparison of force sectors' flow requirements | S9b A–C; flow-only oracle comparison (evidence only); S12, S14a part 1 and S16 framing decision only |
-113: | **S22**, with Q2 and S12 | `R-S22-01` | how the energy a throat releases splits among light, the extra longitudinal wave and the bulk | S11 departure; photon survey E32–E34, E38 |
-114: | **no owner named** | `R-O2-01` | the physical net-power supplier and its stated budget, if a conditional closure requires net supply | O2 |
-115: | **jointly S12** (source/flux forms), **S8/S22** (material law), **no owner named** (face/interior laws) | `R-S14a-01` | the slow limit and far behaviour selected by the slab's own dynamics | S14a part 2; requirement for S14/S15/S20; user V2 decision, `12aa65d5` |
-116: | **no owner named** | `R-S16-01` | surroundings field, separation from the body's own field, and normalization for a passive factor | S16 user requirement |
-117: | **no owner named**; S22 receives the debt in its table | `R-S16-02` | compactness relative to both separation and surroundings-field variation scale | S16 user requirement |
-118: | **no owner named** | `R-S16-03` | momentum exchanged at each slab face, split by face motion | S16 user requirement |
-119: | **S8** | `R-S16-04` | momentum–material relation needed for an inertial factor | S16 user requirement; O2 OPEN interface |
-120: | **S8/S22** | `R-S16-05` | slab density response | S16 user requirement; O2 OPEN interface |
-121: | **S22** (debt-table account only; physical suppliers not assigned by this entry) | `R-S22-02` | missing response-reduction inputs and width bridge, with compactness cross-referenced to `R-S16-02` | S16 filing decision and plan debt rows |
-122: 
-123: ⚠ Entries below are in the order they were found, ⛔ not in step order. All **twenty-five** are **OPEN**.
-124: ⭐ `R-S8-01`, `-03`, `-04`, `-05` are one family: the stiffness functional's **form**, its **sign**, its
-125: **mechanical admissibility**, and its **reference frame**. ⛔ Delivering the form does not deliver the
-126: other three.
-127: ⚠ `R-S1-01`'s id encodes its original target; the id is stable and the **target** field governs.
-128: ⚠ `R-S14a-01`'s id names its source step, not its deliverer; its **target** field governs.
-129: 
-130: ### R-S6-01 — `B_comp` must be retired or re-affirmed
-131: 
-132: - **source** S11 (`steps/S11_stray_longitudinal.md`, moves 1–5) · **target** S6 · **status** OPEN
-133: - **requirement** — the brane's compression modulus `B_comp` (`Q.brane.B_comp`), as a derived quantity or
-134:   an explicitly re-affirmed postulate.
-135: - **on failure** — S11's knob count stays an upper bound and the longitudinal mode keeps a postulated
-136:   constant underneath it. Entered as a postulated knob on the user's explicit call (2026-08-02) precisely
-137:   so the retirement would be visible when it happens.
-138: - **note** — recorded at `V3_STEP_PLAN.md` `{#s6-b-comp-callback}`, written into S6 on purpose: a note
-139:   living only in S11's record is a note nobody reads on arrival at S6.
-140: - **pass-2 scope** — No S11b record rests on `B_comp`: B's enlarged energy basis is not a derivation of
-141:   `B_comp` from the substrate. Its scorecard limits the
-142:   static series-compliance claim to impermeable faces; with active transfer the static row is `μ_θ = 0`.
-143:   This entry does not identify `B_comp` with `B_eff` or impose a series law on that permeable case.
-144: 
-145: ### R-S7-01 — the slab-width flat direction, under a non-uniform width
-146: 
-147: - **source** S11 (`steps/S11_stray_longitudinal.md:90–92`); unified S11b
-148:   (`steps/S11b_interface_coupling_law.md:156–157`) · **target** S7 · **status** OPEN
-149: - **requirement** — whether the slab-width flat direction survives when the width is made **position- and
-150:   time-dependent**. A uniform-width statement does not answer it.
-151: - **on failure** — S11 says, *"Two channels accommodating additive shares of one strain, i.e.
-152:   **springs in series**, so compliances add and `B_comp` is **softer than either channel alone**"*, then
-153:   *"If that flatness survived, `B_wall = 0`, hence `B_comp = 0`, and S10's zero would never lift"*
-154:   (`steps/S11_stray_longitudinal.md:84–88`). S11b-B's whole P3 row instead says *"compliances add at
-155:   `ω → 0`"* (prediction) and *"⚠ partial — impermeable only; with active transfer the static row is
-156:   `μ_θ = 0`"* (outcome) (`steps/S11bB_interface_assembly.md:172`). The records disagree
-157:   on the unqualified series-law failure statement; this is unresolved. S11's own answer is that gradients
-158:   lift the flat direction — a wave
-159:   modulates the width, tilting and stretching the interfaces at cost proportional to `σ_wall|∇W|²`, so
-160:   flat at `k=0` and stiff as `k²`. S7 must confirm or refute that.
-161: - **named freeze** — S11 says its cone is *"computed with the wall width FROZEN"*
-162:   (`steps/S11_stray_longitudinal.md:90–92`); the unified record calls the same imported-width identity
-163:   *"a recorded **freeze**, ⛔ not a fix"* (`steps/S11b_interface_coupling_law.md:156–157`).
-164: - **note** — `V3_STEP_PLAN.md` `{#s7-b-comp-callback}`. The charge anchor rests on this.
-165: 
-166: ### R-S1-01 — the brane's spatial dimension
-167: 
-168: - **source** S14a part 1 (coordinate dimension only; `steps/S14a_1_projection.md`, §§1–4/8); S12 (coordinate dimension only; `steps/S12_order_source.md`, §§1–2/7); S9b (coordinate dimension only; `steps/S9b_light_bending.md`, §§2–4/8); S10 (`steps/S10_two_transverse_photons.md`); S11
-169:   (`steps/S11_stray_longitudinal.md`, moves 2–3 / finite census) · **target** S6 · **status** OPEN
-170: - **requirement** — the brane's spatial dimension `D_brane`, as a derived quantity or an explicitly
-171:   re-affirmed postulate.
-172: - **on failure** — S10's headline reads *"light having exactly two polarisations is a statement that our
-173:   space is three-dimensional."* Read backwards it says the opposite: `D_brane = 3` went in and `D−1 = 2`
-174:   came out. Without a delivered `D_brane` the sentence is an assumption restated, ⛔ not a result.
-175: - **note** — ⚠ **The target is S6, not S1.** S1 owns `D = 4` and the two-phase split; `D_brane` is a
-176:   property of the **wall**, and S5–S6 are what construct it — S6 (the kink) is the first step at which a
-177:   codimension-1 surface exists to have a dimension.
-178:   ⛔⛔ **An earlier draft of this entry ruled out the obvious route on bad reasoning**, and a leg caught
-179:   it. It argued that because S10's *mode-count computation* contains no codimension, `D_bulk − 1` is not
-180:   the route. ⚠ **Non sequitur.** That the count does not *use* a codimension says nothing about whether
-181:   `D_brane` can be *derived* as one elsewhere — a domain wall in a `D = 4` bulk is exactly codimension 1,
-182:   and that is the natural derivation. ⇒ ⭐ **this entry does not prescribe a route**, per the schema; it
-183:   asks for the object.
-184: - **pass-2 consumer** — S11's selected homogeneous three-mode census and transverse/longitudinal
-185:   separation use `D_brane = 3`. Its proper-rotation invariant count explicitly warns that the sector
-186:   separation is not dimension-independent. This is the same dimension obligation, not a new knob.
-187: 
-188: - **S9b scope** — The kept optical/mass construction uses three far-field spatial coordinates,
-189:   coordinate `d³x`, spherical `r² sin θ` measure and the `4πr²` flux. It consumes `D_brane=3`
-190:   without deriving it. If that dimension is not delivered or re-affirmed, these coordinate
-191:   functionals and the flux/velocity relation do not transfer unchanged to the substrate.
-192:   This adds no dimensional derivation or selected wall thickness (S9b §§2/5; M1/M19).
-193: 
-194: - **S12 scope** — The supplied balances and printed regional/face objects have three in-plane
-195:   coordinates and one bulk coordinate. Density's `L⁻⁴` assignment is shown by the SymPy
-196:   construction (`scripts/S12_order_source.py:219–222`) and its printed, unjoined
-197:   `primitive_function_dimensions` table, and by the Wolfram source's `unit` switch
-198:   (`mathematica/S12_order_source.wl:29–37`), not a Wolfram primitive-unit transcript table. This adds a
-199:   coordinate-domain consumer only. If that dimensional setting is not delivered or reaffirmed,
-200:   those objects do not transfer unchanged. No dimension or brane construction is derived
-201:   (`steps/S12_order_source.md`, §§1–2; its retrievals M01/M04/M06/M10/M17).
-202: 
-203: - **S14a part 1 scope** — The projection uses three in-plane coordinates and one bulk coordinate;
-204:   its labelled spherical shell uses the printed `4πr²` area. This adds a coordinate-domain consumer
-205:   of the existing dimension obligation, not a dimensional derivation or selected thickness.
-206:   Failure to deliver/reaffirm that setting prevents transferring those projected/shell objects
-207:   unchanged (`steps/S14a_1_projection.md`, §§1–4; its retrievals M01/M03/M04/M07).
-208: 
-209: 
-210: ### R-S1-02 — the substructure's shear response, as a function of the order parameter
+82: Name the object; do not prescribe how the target should obtain it. A requirement that specifies a
+83: derivation route manufactures arguments about the route — see `CLAUDE.md` rule 3.
+84: 
+85: Distinguish carefully:
+86: - a **requirement** is an obligation on a *future* step;
+87: - a **postulate** is a value or form assumed *here* and not derived — that belongs in `ANSATZ_LEDGER.md`;
+88: - a **defect** is something already wrong — that belongs in `DEFECT_REGISTER.md`.
+89: 
+90: A postulate with a named retirement condition generates a requirement. `B_comp` below is exactly that.
+91: 
+92: ---
+93: 
+94: ## Entries
+95: 
+96: ⭐ **By target step** — what each unbuilt step owes the sectors that are already banked:
+97: 
+98: | target | id | the object owed | source |
+99: |---|---|---|---|
+100: | **S1** | `R-S1-02` | the substructure's shear response as a function of `χ_B`, both phases | S9, O2 conditional premises, S9b brane optical shear only, S12, S14a part 1 and S16 support identification only |
+101: | **S1** *(register inference)* | `R-S1-03` | whether the substructure's microdynamics is time-reversible | S11b-B / unified S11b |
+102: | **S1.5** | `R-S1.5-01` | the mode content of the linearised GNLS, including the bulk acoustic branch | S9, S11, S11b-A/B, S9b Part C bulk acoustic input only |
+103: | **S6** | `R-S6-01` | the brane's compression modulus `B_comp` | S11 |
+104: | **S6** | `R-S6-02` | the first variation of the substrate action at `v₀ = 0` | S9, S10, S11, S11b-A/B, S11c uniform |
+105: | **S6** | `R-S1-01` | the brane's spatial dimension `D_brane` ⚠ *id kept; target corrected to S6* | S10, S11, S9b, S12, S14a part 1 and S16 coordinate dimension only |
+106: | **S7** | `R-S7-01` | the slab-width flat direction under a non-uniform width | S11, unified S11b |
+107: | **S8** | `R-S8-01` | the form of the brane's quadratic stiffness functional | S9, S10, S11, S11b-B, unified S11b, S11c uniform, S9b supplied transverse input |
+108: | **S8** | `R-S8-02` | the quadratic operator on `u` **and** `h` together | S10, S11 |
+109: | **S8** | `R-S8-03` | the **sign** of the physical transverse stiffness | S9, S10, S11, unified S11b, S11c uniform, S9b local optical sign/ratio gate |
+110: | **S8** | `R-S8-04` | what carries the brane's **internal angular momentum** | S9, S10, S11, O2 carried obligation |
+111: | **S8** | `R-S8-05` | the **frame** the brane's rotational stiffness is measured against | S9, S10, S11, O2 carried obligation |
+112: | **S8** *(register inference for original entry)* | `R-S8-06` | material displacement and original quadratic slab inertia; O2 adds the material identification only | S11, S11b-B, O2 and S9b identification |
+113: | **S12** *(register inference; no live owner named)* | `R-S12-01` | a reservoir and power budget if a non-passive interface response is adopted | S11b-B / unified S11b, O2 carried condition |
+114: | **S12** | `R-S12-02` | native drain/return, printed regional/face and projected/shell compatibility on the real-fraction branch (A13 OPEN), and separate boundary data | S11b-A/B, S11c uniform, O2, S12, S14a part 1; S16 supplied projection/Keep S12 provenance only |
+115: | **S21** | `R-S21-01` | conditional deflection and radar-slope profile requirements, with Part C rewrites and implied exchange; comparison of force sectors' flow requirements | S9b A–C; flow-only oracle comparison (evidence only); S12, S14a part 1 and S16 framing decision only |
+116: | **S22**, with Q2 and S12 | `R-S22-01` | how the energy a throat releases splits among light, the extra longitudinal wave and the bulk | S11 departure; photon survey E32–E34, E38 |
+117: | **no owner named** | `R-O2-01` | the physical net-power supplier and its stated budget, if a conditional closure requires net supply | O2 |
+118: | **jointly S12** (source/flux forms), **S8/S22** (material law), **no owner named** (face/interior laws) | `R-S14a-01` | the slow limit and far behaviour selected by the slab's own dynamics | S14a part 2; requirement for S14/S15/S20; user V2 decision, `12aa65d5` |
+119: | **no owner named** | `R-S16-01` | surroundings field, separation from the body's own field, and normalization for a passive factor | User's selected "Record what it needs" option; S16 list `:49–53` |
+120: | **no owner named**; S22 receives the debt in its table | `R-S16-02` | compactness relative to both separation and surroundings-field variation scale | Orchestrator's S16 list filing `:158–161`, E3/F3 |
+121: | **no owner named** | `R-S16-03` | momentum exchanged at each slab face, split by face motion | Orchestrator's S16 list filing `:162–163`, E2 |
+122: | **S8** | `R-S16-04` | momentum–material relation needed for an inertial factor | User's selected "Count material; mass open" option; S16 list `:54–56`, O2 `:133` |
+123: | **S8/S22** | `R-S16-05` | slab density response | Orchestrator's S16 list filing `:164–166`, O2 `:138` |
+124: | **S22** (debt-table account only; physical suppliers not assigned by this entry) | `R-S22-02` | missing response-reduction inputs and width bridge, with compactness cross-referenced to `R-S16-02` | Orchestrator's S16 list filing `:28–30`; plan A11/debt rows |
+125: 
+126: ⚠ Entries below are in the order they were found, ⛔ not in step order. All **twenty-five** are **OPEN**.
+127: ⭐ `R-S8-01`, `-03`, `-04`, `-05` are one family: the stiffness functional's **form**, its **sign**, its
+128: **mechanical admissibility**, and its **reference frame**. ⛔ Delivering the form does not deliver the
+129: other three.
+130: ⚠ `R-S1-01`'s id encodes its original target; the id is stable and the **target** field governs.
+131: ⚠ `R-S14a-01`'s id names its source step, not its deliverer; its **target** field governs.
+132: 
+133: ### R-S6-01 — `B_comp` must be retired or re-affirmed
+134: 
+135: - **source** S11 (`steps/S11_stray_longitudinal.md`, moves 1–5) · **target** S6 · **status** OPEN
+136: - **requirement** — the brane's compression modulus `B_comp` (`Q.brane.B_comp`), as a derived quantity or
+137:   an explicitly re-affirmed postulate.
+138: - **on failure** — S11's knob count stays an upper bound and the longitudinal mode keeps a postulated
+139:   constant underneath it. Entered as a postulated knob on the user's explicit call (2026-08-02) precisely
+140:   so the retirement would be visible when it happens.
+141: - **note** — recorded at `V3_STEP_PLAN.md` `{#s6-b-comp-callback}`, written into S6 on purpose: a note
+142:   living only in S11's record is a note nobody reads on arrival at S6.
+143: - **pass-2 scope** — No S11b record rests on `B_comp`: B's enlarged energy basis is not a derivation of
+144:   `B_comp` from the substrate. Its scorecard limits the
+145:   static series-compliance claim to impermeable faces; with active transfer the static row is `μ_θ = 0`.
+146:   This entry does not identify `B_comp` with `B_eff` or impose a series law on that permeable case.
+147: 
+148: ### R-S7-01 — the slab-width flat direction, under a non-uniform width
+149: 
+150: - **source** S11 (`steps/S11_stray_longitudinal.md:90–92`); unified S11b
+151:   (`steps/S11b_interface_coupling_law.md:156–157`) · **target** S7 · **status** OPEN
+152: - **requirement** — whether the slab-width flat direction survives when the width is made **position- and
+153:   time-dependent**. A uniform-width statement does not answer it.
+154: - **on failure** — S11 says, *"Two channels accommodating additive shares of one strain, i.e.
+155:   **springs in series**, so compliances add and `B_comp` is **softer than either channel alone**"*, then
+156:   *"If that flatness survived, `B_wall = 0`, hence `B_comp = 0`, and S10's zero would never lift"*
+157:   (`steps/S11_stray_longitudinal.md:84–88`). S11b-B's whole P3 row instead says *"compliances add at
+158:   `ω → 0`"* (prediction) and *"⚠ partial — impermeable only; with active transfer the static row is
+159:   `μ_θ = 0`"* (outcome) (`steps/S11bB_interface_assembly.md:172`). The records disagree
+160:   on the unqualified series-law failure statement; this is unresolved. S11's own answer is that gradients
+161:   lift the flat direction — a wave
+162:   modulates the width, tilting and stretching the interfaces at cost proportional to `σ_wall|∇W|²`, so
+163:   flat at `k=0` and stiff as `k²`. S7 must confirm or refute that.
+164: - **named freeze** — S11 says its cone is *"computed with the wall width FROZEN"*
+165:   (`steps/S11_stray_longitudinal.md:90–92`); the unified record calls the same imported-width identity
+166:   *"a recorded **freeze**, ⛔ not a fix"* (`steps/S11b_interface_coupling_law.md:156–157`).
+167: - **note** — `V3_STEP_PLAN.md` `{#s7-b-comp-callback}`. The charge anchor rests on this.
+168: 
+169: ### R-S1-01 — the brane's spatial dimension
+170: 
+171: - **source** S16 (coordinate dimension only; `steps/S16_moving_region.md`, §§1/6; S16 M01/M04/M14/M17); S14a part 1 (coordinate dimension only; `steps/S14a_1_projection.md`, §§1–4/8); S12 (coordinate dimension only; `steps/S12_order_source.md`, §§1–2/7); S9b (coordinate dimension only; `steps/S9b_light_bending.md`, §§2–4/8); S10 (`steps/S10_two_transverse_photons.md`); S11
+172:   (`steps/S11_stray_longitudinal.md`, moves 2–3 / finite census) · **target** S6 · **status** OPEN
+173: - **requirement** — the brane's spatial dimension `D_brane`, as a derived quantity or an explicitly
+174:   re-affirmed postulate.
+175: - **on failure** — S10's headline reads *"light having exactly two polarisations is a statement that our
+176:   space is three-dimensional."* Read backwards it says the opposite: `D_brane = 3` went in and `D−1 = 2`
+177:   came out. Without a delivered `D_brane` the sentence is an assumption restated, ⛔ not a result.
+178: - **note** — ⚠ **The target is S6, not S1.** S1 owns `D = 4` and the two-phase split; `D_brane` is a
+179:   property of the **wall**, and S5–S6 are what construct it — S6 (the kink) is the first step at which a
+180:   codimension-1 surface exists to have a dimension.
+181:   ⛔⛔ **An earlier draft of this entry ruled out the obvious route on bad reasoning**, and a leg caught
+182:   it. It argued that because S10's *mode-count computation* contains no codimension, `D_bulk − 1` is not
+183:   the route. ⚠ **Non sequitur.** That the count does not *use* a codimension says nothing about whether
+184:   `D_brane` can be *derived* as one elsewhere — a domain wall in a `D = 4` bulk is exactly codimension 1,
+185:   and that is the natural derivation. ⇒ ⭐ **this entry does not prescribe a route**, per the schema; it
+186:   asks for the object.
+187: - **pass-2 consumer** — S11's selected homogeneous three-mode census and transverse/longitudinal
+188:   separation use `D_brane = 3`. Its proper-rotation invariant count explicitly warns that the sector
+189:   separation is not dimension-independent. This is the same dimension obligation, not a new knob.
+190: 
+191: - **S9b scope** — The kept optical/mass construction uses three far-field spatial coordinates,
+192:   coordinate `d³x`, spherical `r² sin θ` measure and the `4πr²` flux. It consumes `D_brane=3`
+193:   without deriving it. If that dimension is not delivered or re-affirmed, these coordinate
+194:   functionals and the flux/velocity relation do not transfer unchanged to the substrate.
+195:   This adds no dimensional derivation or selected wall thickness (S9b §§2/5; M1/M19).
+196: 
+197: - **S12 scope** — The supplied balances and printed regional/face objects have three in-plane
+198:   coordinates and one bulk coordinate. Density's `L⁻⁴` assignment is shown by the SymPy
+199:   construction (`scripts/S12_order_source.py:219–222`) and its printed, unjoined
+200:   `primitive_function_dimensions` table, and by the Wolfram source's `unit` switch
+201:   (`mathematica/S12_order_source.wl:29–37`), not a Wolfram primitive-unit transcript table. This adds a
+202:   coordinate-domain consumer only. If that dimensional setting is not delivered or reaffirmed,
+203:   those objects do not transfer unchanged. No dimension or brane construction is derived
+204:   (`steps/S12_order_source.md`, §§1–2; its retrievals M01/M04/M06/M10/M17).
+205: 
+206: - **S14a part 1 scope** — The projection uses three in-plane coordinates and one bulk coordinate;
+207:   its labelled spherical shell uses the printed `4πr²` area. This adds a coordinate-domain consumer
+208:   of the existing dimension obligation, not a dimensional derivation or selected thickness.
+209:   Failure to deliver/reaffirm that setting prevents transferring those projected/shell objects
+210:   unchanged (`steps/S14a_1_projection.md`, §§1–4; its retrievals M01/M03/M04/M07).
 211: 
-212: - **source** S14a part 1 (support identification only; `steps/S14a_1_projection.md`, §§1/8); S12 (support identification only; `steps/S12_order_source.md`, §§1–3/7); S9b (brane optical shear only; `steps/S9b_light_bending.md`, §§2–4/8); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
-213: - **requirement** — the shear response of the substructure as a function of `χ_B`, across **both** phases.
-214: - **on failure** — the two halves fail differently, and both are fatal:
-215:   - **ordered phase carries no shear** ⇒ `μ_R = 0`, the brane has no transverse sector, and **photons do
-216:     not exist**;
-217:   - **disordered phase carries shear** ⇒ light is not confined to the brane, it leaks into the bulk — an
-218:     energy sink with no observational room — **and** the throat's trapped brane-shear standing wave
-219:     radiates away, so the outward pressure vanishes and **the geon closes**.
-220: - **note** — ⭐ **Three independent consumers** (photon propagation, photon confinement, geon support), and
-221:   it is **one object**, not three. S9 records it as its own LIVE falsifier and as a knit question: can one
-222:   substructure be ordered-and-shear-bearing in one phase and unstructured-and-shear-free in the other?
-223:   ⚠ Stressed hardest at the throat, where the brane is bent into `±w`. Currently the only machine check
-224:   on the bulk half anywhere in the corpus is **dimensional**.
-225: - **O2 scope** — Premises 1 and 4 adopt optical-regime elastic shear in the brane and the postulated
-226:   shear-free scalar bulk with face-normal mechanical loading. O2 derives neither phase response.
-227:   The existing shear-response retirement question gains this conditional consumer, not a new
-228:   entry for an adopted value. Failure to realize those responses prevents promoting O2's conditional
-229:   material/load object to that substrate. No flowing pressure law, tangential bulk stress or optical
-230:   compatibility result follows (`directives/O2_SHARED_PHYSICS.md`, §§2, 3.1, 3.3, 7).
-231: 
-232: - **S9b scope** — The supplied light branch is the transverse displacement of shear-carrying
-233:   brane material, with the real positive optical ratio `μ⊥/ρbr`. A kept A–C optical wave is
-234:   conditional on that brane shear response; without it the reported propagating optical
-235:   interpretation fails its own gate. S9b therefore consumes the brane optical half of this
-236:   existing phase-response requirement. It derives no `χ_B` response, bulk shear-free result
-237:   or confinement result; O2 P4 is only carried as an adopted premise, unused by A–C
-238:   (S9b §§2/7; M1/M19).
-239: 
-240: - **S12 scope** — U1 and its flagged support identification are adopted inputs: order vanishes
-241:   outside the independently bounded shear-holding region, and remains live inside. This adds
-242:   only the conditional material interpretation as a consumer of the existing phase-response
-243:   obligation. Failure of that identification removes the claimed shear-region interpretation;
-244:   the algebra does not establish shear response, confinement or a constitutive relation to
-245:   `χ_B`. U1's re-ordering clause enters no computed object and remains OPEN
-246:   (`steps/S12_order_source.md`, §§1–3; retrievals M01/M03/M04).
-247: 
-248: - **S14a part 1 scope** — U1's shear-holding-region/support identification is inherited as an
-249:   adopted input, not derived from the projection. It adds only this conditional material
-250:   interpretation to the existing phase-response obligation. If the identification fails, the
-251:   shear-region interpretation fails; no shear modulus, confinement result or profile follows.
-252:   U1's re-ordering clause enters no computed object as an enforced clause
-253:   (`steps/S14a_1_projection.md`, §1; its retrievals M01/M03/M04).
-254: 
-255: 
-256: ### R-S1.5-01 — the GNLS's own mode content
-257: 
-258: - **source** S9b (Part C bulk acoustic input only; `steps/S9b_light_bending.md`, §§2–4/8); S9; S11 (`steps/S11_stray_longitudinal.md`, move 6 / `KW_ZERO_LOCUS`);
-259:   S11b-A (`steps/S11bA_interface_response.md`, computed bulk response) and S11b-B
-260:   (`steps/S11bB_interface_assembly.md`, breathing slice) · **target** S1.5 · **status** OPEN
-261: - **requirement** — the mode content of the linearised GNLS about uniform `ρ₀`: which excitations it
-262:   carries and their polarisation.
-263: - **on failure** — S9's opening move is *"a single-component scalar superfluid cannot carry transverse
-264:   light"*, and the entire requirements-first framing of the light sector rests on it. ⛔ It is cited from
-265:   **one external review document** (`decisions/15`) and **no script in this repo executes it**; the S9
-266:   rebuild did not add one. If the GNLS does carry a transverse excitation, light needs no substructure and
-267:   S9 has no bill to present.
-268: - **note** — a weaker in-repo form exists (`v = (ħ/m)∇θ ⇒ ∇×v ≡ 0`) but is never wired into a no-shear
-269:   proof. ⚠ This is a **premise awaiting execution**, not a postulate: it is the kind of claim a CAS can
-270:   settle, and nothing has been asked to.
-271: - **pass-2 consumer** — the same mode-content question now includes the rest-bulk acoustic branch used
-272:   in `q² = ω²/c_s0² − k²`, its polarisation and the regime in which that acoustic approximation applies.
-273:   S11's threshold, A's radiation resistance/added mass, and B's radiative breathing load rest on that
-274:   supplied branch. Failure leaves those results conditional on a bulk operator the GNLS has not yet
-275:   delivered. This requests neither an EOS exponent nor a numerical light/sound speed ratio.
+212: 
+213: - **S16 scope** — The supplied balances use part 1's projected domain, "in-plane coordinates
+214:   x^i (three) and time t" (`directives/S16_decision_list.md:63–64`), and the shell geometry
+215:   and measures use that same coordinate dimension. If this setting is not delivered or
+216:   reaffirmed, the printed regional objects cannot transfer unchanged. This is a coordinate-domain
+217:   consumer of the existing S6 obligation, not a dimension derivation; control shape, retained
+218:   moment order and independent dimensional-audit units are separate choices (S16 §§1/6;
+219:   S16 M01/M04/M06–M07/M14/M17).
+220: 
+221: ### R-S1-02 — the substructure's shear response, as a function of the order parameter
+222: 
+223: - **source** S16 (inherited support identification only; `steps/S16_moving_region.md`, §§1/6; S16 M01/M04/M14/M17); S14a part 1 (support identification only; `steps/S14a_1_projection.md`, §§1/8); S12 (support identification only; `steps/S12_order_source.md`, §§1–3/7); S9b (brane optical shear only; `steps/S9b_light_bending.md`, §§2–4/8); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
+224: - **requirement** — the shear response of the substructure as a function of `χ_B`, across **both** phases.
+225: - **on failure** — the two halves fail differently, and both are fatal:
+226:   - **ordered phase carries no shear** ⇒ `μ_R = 0`, the brane has no transverse sector, and **photons do
+227:     not exist**;
+228:   - **disordered phase carries shear** ⇒ light is not confined to the brane, it leaks into the bulk — an
+229:     energy sink with no observational room — **and** the throat's trapped brane-shear standing wave
+230:     radiates away, so the outward pressure vanishes and **the geon closes**.
+231: - **note** — ⭐ **Three independent consumers** (photon propagation, photon confinement, geon support), and
+232:   it is **one object**, not three. S9 records it as its own LIVE falsifier and as a knit question: can one
+233:   substructure be ordered-and-shear-bearing in one phase and unstructured-and-shear-free in the other?
+234:   ⚠ Stressed hardest at the throat, where the brane is bent into `±w`. Currently the only machine check
+235:   on the bulk half anywhere in the corpus is **dimensional**.
+236: - **O2 scope** — Premises 1 and 4 adopt optical-regime elastic shear in the brane and the postulated
+237:   shear-free scalar bulk with face-normal mechanical loading. O2 derives neither phase response.
+238:   The existing shear-response retirement question gains this conditional consumer, not a new
+239:   entry for an adopted value. Failure to realize those responses prevents promoting O2's conditional
+240:   material/load object to that substrate. No flowing pressure law, tangential bulk stress or optical
+241:   compatibility result follows (`directives/O2_SHARED_PHYSICS.md`, §§2, 3.1, 3.3, 7).
+242: 
+243: - **S9b scope** — The supplied light branch is the transverse displacement of shear-carrying
+244:   brane material, with the real positive optical ratio `μ⊥/ρbr`. A kept A–C optical wave is
+245:   conditional on that brane shear response; without it the reported propagating optical
+246:   interpretation fails its own gate. S9b therefore consumes the brane optical half of this
+247:   existing phase-response requirement. It derives no `χ_B` response, bulk shear-free result
+248:   or confinement result; O2 P4 is only carried as an adopted premise, unused by A–C
+249:   (S9b §§2/7; M1/M19).
+250: 
+251: - **S12 scope** — U1 and its flagged support identification are adopted inputs: order vanishes
+252:   outside the independently bounded shear-holding region, and remains live inside. This adds
+253:   only the conditional material interpretation as a consumer of the existing phase-response
+254:   obligation. Failure of that identification removes the claimed shear-region interpretation;
+255:   the algebra does not establish shear response, confinement or a constitutive relation to
+256:   `χ_B`. U1's re-ordering clause enters no computed object and remains OPEN
+257:   (`steps/S12_order_source.md`, §§1–3; retrievals M01/M03/M04).
+258: 
+259: - **S14a part 1 scope** — U1's shear-holding-region/support identification is inherited as an
+260:   adopted input, not derived from the projection. It adds only this conditional material
+261:   interpretation to the existing phase-response obligation. If the identification fails, the
+262:   shear-region interpretation fails; no shear modulus, confinement result or profile follows.
+263:   U1's re-ordering clause enters no computed object as an enforced clause
+264:   (`steps/S14a_1_projection.md`, §1; its retrievals M01/M03/M04).
+265: 
+266: 
+267: - **S16 scope** — S16 supplies part 1's projected material balance on part 1's domain.
+268:   Its interpretation as material in the shear-holding region inherits the flagged, adopted
+269:   U1 support identification (part-1 record §1). If that identification fails, the interpretation
+270:   fails while the conditional balance algebra remains. This adds a consumer of the existing
+271:   phase-response obligation for support identification only: no shear response, confinement,
+272:   order profile or material law is derived, and U1's re-ordering clause is not enforced
+273:   (S16 §§1/6; S16 M01/M04/M14/M17).
+274: 
+275: ### R-S1.5-01 — the GNLS's own mode content
 276: 
-277: - **S9b scope** — Part C uses the supplied bulk acoustic quantity
-278:   `c_s²=nKρ^(n−1)/m`, including its asymptotic value, and its fixed-ratio response uses the
-279:   exact nonnegative sound-speed roots and their domains. If the bulk does not deliver that
-280:   acoustic branch on the stated domain, the fixed-ratio optical rewrite cannot be read as
-281:   a light/sound response of that substrate. This is a consumer of the existing acoustic-mode
-282:   requirement only: no GNLS mode derivation, EOS exponent, light/sound identification or
-283:   numerical ratio is supplied by S9b (S9b §§3–4; M1/M18).
-284: 
-285: 
-286: ### R-S6-02 — the reference state must be an equilibrium
-287: 
-288: - **source** S9, S10; S11 (`steps/S11_stray_longitudinal.md`, homogeneous action);
-289:   S11b-A/B (`steps/S11b_interface_coupling_law.md`, standing limits); S11c
-290:   (`steps/S11c_PARTIAL_CLOSEOUT.md`, conditional uniform result;
-291:   `steps/S11c_d_profile_conditioned_scattering.md`, uniform check) · **target** S6 · **status** OPEN
-292: - **requirement** — the **first variation of the substrate's action**, evaluated at the state S9 and S10
-293:   linearise about: the unstrained brane at rest, `v₀ = 0`.
-294: - **on failure** — every result in the light sector is a linear response, and a linear response about a
-295:   state that is not an equilibrium is not a linear response at all: the expansion has a term linear in the
-296:   displacement that nothing cancels. `ω² = (μ_R/ρ_br)k²`, the mode count, and the dimensions all inherit
-297:   the defect. ⛔ Nothing in the sector tests it, because the substrate is absent from S9's and S10's
-298:   actions.
-299: - **note** — ⚠ **The standing warning applies here**: ask *whose* equilibrium, and check that the
-300:   reference state is not being held in place by an assumption rather than by the dynamics. S6's kink is
-301:   the candidate stationary solution; S6 has no record yet.
-302: - **pass-2 scope** — the kept homogeneous and selected uniform results use the rest reference state.
-303:   S11b-B states verbatim: *"⛔⛔ **Passivity and reciprocity are properties of fluctuations about an
-304:   EQUILIBRIUM. This model's reference state is not one.** It carries a steady background normal flow
-305:   `v₀` — the dark-energy drain — ⇒ a **driven steady state with a reservoir attached.**"*
-306:   (`steps/S11bB_interface_assembly.md:46–48`). In that quote S11b's `v₀` is the bulk's normal drain,
-307:   standard name `v_bulk_normal_0`; it is distinct from the brane rest velocity `v₀ = 0` in this requirement
-308:   (`directives/S11b_SHARED_PHYSICS.md:101–104`; `directives/S11b_unified_decisions.md:33–40`). For S11b, the
-309:   rest-frame linearisation discards a relative correction of order `O(v₀|q_n|/ω)`, where `v₀` again denotes
-310:   the steady background normal flow (`steps/S11bB_interface_assembly.md:150–154`), and the unified record
-311:   calls that correction uncarried
-312:   (`steps/S11b_interface_coupling_law.md:158–164`). The kept S11c results state that the bulk is at rest
-313:   (`steps/S11c_PARTIAL_CLOSEOUT.md:7`; `steps/S11c_d_profile_conditioned_scattering.md:9,23`). This is an
-314:   unresolved tension between the driven reference state and the recorded rest-state calculations. The
-315:   rest-state obligation remains here; live drain/return data are `R-S12-02`, which also records the
-316:   uncarried correction and its record-named owner, and the power supply is `R-S12-01`. No equilibrium result
-317:   is promoted to a result about the driven state.
-318: 
-319: ### R-S8-01 — the form of the brane's quadratic stiffness functional
-320: 
-321: - **source** S9b (`steps/S9b_light_bending.md`, §§2/8, supplied transverse input only); S9, S10; S11 (`steps/S11_stray_longitudinal.md`, moves 2–3 / FORM control);
-322:   S11b-B (`steps/S11bB_interface_assembly.md`, energy basis / breathing stability); unified S11b
-323:   (`steps/S11b_interface_coupling_law.md`, energy quotient); S11c
-324:   (`steps/S11c_PARTIAL_CLOSEOUT.md`, conditional uniform result) · **target** S8 · **status** OPEN
-325: - **requirement** — the quadratic brane Lagrangian's **stiffness functional**, as delivered by the
-326:   substructure rather than chosen.
-327: - **on failure** — this is the one input the light sector's central claim is **measurably** sensitive to,
-328:   and S9's own controls prove it:
-329:   - the gradient-elastic form `−½ μ_R Σ(∂_i u_j)²` — an ordinary elastic solid — carries **the same two
-330:     transverse modes at the same `c² = μ_R/ρ_br`**, and *also* propagates the longitudinal;
-331:   - the divergence-only form makes the roles **swap**: the transverse pair drops to `ω² = 0` and the
-332:     longitudinal propagates.
-333:   ⇒ ⭐ **What curl-only buys is the ABSENCE of a propagating longitudinal mode, ⛔ not the presence of the
-334:   transverse ones.** If S8 delivers any other form, S9's and S10's transverse results may survive while
-335:   the no-longitudinal claim — Maxwell's third demand, and the whole reason the sector exists — does not.
-336: - **note** — S9 classifies the curl-only form as **postulated (structural)**, justified by *"forced by
-337:   Maxwell's no longitudinal mode"*. ⚠ That is a justification from the target, ⛔ not from the substrate.
-338:   Defect `B2` closes the route from a polar substructure `P` to `μ_R` — ⚠ **the whole quantity, not only
-339:   its magnitude**, as `DEFECT_REGISTER.md#B2` scopes it. ⛔ But it closes **one route**, and it says
-340:   nothing about the **form**, so this requirement is live.
-341: - **pass-2 consumers** — S11's unchanged transverse root rests on adding the trace invariant. As a
-342:   first-route source only, its record says: *"The form control's `4/3` independently reproduces the
-343:   corpus's rejected-Cauchy-branch coefficient"* (`steps/S11_stray_longitudinal.md:126–127`); the record
-344:   names no prior-art objection to that branch.
-345:   S11b-B needs the complete quadratic stored energy on `u, θ, e_W` under its whole stated symmetry group
-346:   (`directives/S11bB_SHARED_PHYSICS.md:353–362`). The unified record's ten-dimensional quotient is likewise
-347:   defined under its whole stated symmetry group (`directives/S11b_SHARED_PHYSICS.md:280–288`) and has different
-348:   valid representatives; no individual representative coefficient is the required object. Its
-349:   constrained breathing stiffness is `K₀ = B_ρ⁽³⁾ − 2CW₀ + k_W W₀²`. The stability claim is only the
-350:   `k = 0`, impermeable, zero-reciprocal-traction slice. On that slice B hands forward `K₀ > 0` as
-351:   *"an **empirical** constraint — the brane is here"* (`steps/S11bB_interface_assembly.md:192`). Failure
-352:   to supply this energy leaves the
-353:   decoupling and slice stability conditional; no sign or magnitude of an individual scalar coefficient
-354:   is inferred. S11c's uniform result inherits that qualification, not a nonuniform confinement law.
-355: 
-356: - **S9b scope** — Parts A–C assume an isotropic transverse spatial stiffness with local
-357:   `cγ²=μ⊥/ρbr`, on their supplied leading-eikonal optical domain. S9b therefore gains a source on
-358:   the existing requirement for a substrate-delivered transverse stiffness input. It neither derives
-359:   that input nor widens this entry into a completed live stress/relaxation or nonuniform operator law.
-360:   The latter stays the unfinished S11c handoff; other unselected material response forms are not
-361:   newly entered. No curl-only, no-longitudinal, mechanical-admissibility or physical-frame result
-362:   follows from the optical comparison (`steps/S9b_light_bending.md`, §§2/6–8; measurements M1/M8).
-363: 
-364: ### R-S8-02 — the in-plane and out-of-plane sectors must decouple at quadratic order
-365: 
-366: - **source** S10; S11 (`steps/S11_stray_longitudinal.md:278–280`, in-plane, frozen-wall-width spectrum)
-367:   · **target** S8 · **status** OPEN
-368: - **requirement** — the quadratic operator on the brane's **full** displacement, in-plane `u` **and**
-369:   out-of-plane `h` together, and whether it is block-diagonal in that split.
-370: - **on failure** — ⛔ **S10's headline number changes** — but ⚠ **not by the mechanism an earlier draft of
-371:   this entry named, and a leg corrected it.** Mixing is **not** the failure mode: under the rotation group
-372:   that acts on the brane, `h` and `u_L` are both **scalars** and `u_T` is a **vector**, so `h` can mix with
-373:   `u_L` freely and the transverse count stays `D − 1` regardless. ⭐ **The condition that gives 3 is `h`
-374:   being DEGENERATE WITH THE TRANSVERSE PAIR** — the brane's elasticity being isotropic in `D+1` rather
-375:   than in `D`. That is what *"belonging to the same elastic sector"* has to mean, and it is what S8 must
-376:   settle.
-377: - **note** — ⭐ **This is the most load-bearing open item in the sector**, and it was flagged inside S10 at
-378:   the moment the identification was made rather than found later: `h ≠ u_L`, stated in three places in the
-379:   corpus, **user-confirmed as the picture** — but ⛔ confirmed as a picture, not computed. `V3_STEP_PLAN`
-380:   puts *"transverse and longitudinal sectors; the reduced `h`/`u_L` operator"* in S8, so the object is
-381:   already scheduled.
-382:   ⚠⚠ **And v3 is not starting from nothing — a leg found the computation already exists in v2 and this
-383:   entry did not cite it.** `research/pde_ledger_v2/paper/stages/stage_030.tex:99-125` builds the coupled
-384:   `(u_L, h)` scalar block with stiffness `K = [[B_eff, C_hu], [C_hu, K_h]]` — explicitly **not**
-385:   block-diagonal, with `C_hu` a registered free-unreduced parameter — and `R79` records that the mixed
-386:   poles are cone-coincident only when `C_hu = 0`. ⇒ ⛔ *"nothing computes that"* is true of **v3** and
-387:   misleading about the **corpus**; S8 should start from `stage_030`, ⛔ not from scratch.
-388:   ⭐ Note this is the `(u_L, h)` block — the scalar sector — so it bears on the **longitudinal** slot and
-389:   the charge anchor, ⛔ and not directly on the transverse count, which is what the corrected on-failure
-390:   above turns on.
-391: - **pass-2 source** — S11's result here is the one its record names as the in-plane, frozen-wall-width
-392:   spectrum with `hBranon` excluded: *"⚠ Scope caveats, none touching the decoupling: (i) this is the
-393:   **in-plane, frozen-wall-width** spectrum (`WALL_WIDTH_FIELDS={}`, `hBranon` excluded,
-394:   `INTERFACE_EQUATIONS_SUPPLIED={}`) — it does not decide inhomogeneous mode conversion,"*
-395:   (`steps/S11_stray_longitudinal.md:278–280`). S11's decoupling statement, with its own limit, reads:
-396:   *"Thus the homogeneous \(D=3\) quadratic transverse and longitudinal eigenbranches have zero linear
-397:   cross-block under the selected action. This does not establish decoupling at nonlinear order, on a
-398:   nonuniform slab, at an interface or defect, or after additional allowed fields are introduced."*
-399:   (`steps/S11_stray_longitudinal.md:74–76`). This entry's object is the joint `u`/`h` operator that the
-400:   spectrum leaves out.
-401: - **excluded field** — in that caveat S11's record freezes the wall width and excludes `hBranon`
-402:   (`steps/S11_stray_longitudinal.md:279–280`); its Mathematica audit binds the token as
-403:   `"OUT_OF_PLANE_FIELD_EXCLUDED" -> hBranon`
-404:   (`mathematica/S11_stray_longitudinal_mathematica_audit.wl:1082`). If S8 does not deliver the joint
-405:   operator, S11's spectrum is not extended beyond that stated scope. The record does not say what its
-406:   roots or census would be with `hBranon` included, and this register does not infer it.
-407: 
-408: ### R-S8-03 — the SIGN of the physical transverse stiffness
-409: 
-410: - **source** S9b (local optical sign/ratio gate; `steps/S9b_light_bending.md`, §§2–4/8); S9, S10; S11 (`steps/S11_stray_longitudinal.md`, unchanged transverse branch);
-411:   unified S11b (`steps/S11b_interface_coupling_law.md`, transverse mode); S11c
-412:   (`steps/S11c_PARTIAL_CLOSEOUT.md`, conditional uniform result;
-413:   `steps/S11c_d_profile_conditioned_scattering.md`, uniform check) · **target** S8 · **status** OPEN
-414: - **requirement** — the **sign** of the physical transverse stiffness in the quadratic brane
-415:   Lagrangian, as delivered by the substructure: `μ_R` in S9/S10's selected action, `μ_⊥` in the enlarged
-416:   S11b action. `R-S8-01` asks for the stiffness **functional**; this asks for its transverse sign.
-417: - **on failure** — ⛔ **the transverse sector is two exponentially growing modes rather than two waves,
-418:   and every mode count in S9 and S10 is unchanged.** S10's `XFORM_SIGNFLIP` control measures exactly this:
-419:   with the sign flipped, `ω² = −μ_R k²/ρ_br` and **every nullity is identical to the baseline's** — the
-420:   count cannot tell a wave from an instability. What distinguishes them is a single emitted object,
-421:   `ROOT2_Q3_SIGN`.
-422: - **note** — ⭐ **Found by a review leg reading the register against S10's own controls**, ⛔ not by the
-423:   pass that wrote the register: `R-S8-01` is entirely about form and never mentions sign or positivity,
-424:   so the pass consolidated one and dropped the other.
-425:   ⚠ **It is not closed by defect `B2`**, which shuts the route for deriving `μ_R` — its sign as well as
-426:   its magnitude — from a polar substructure `P`. Other substrate routes remain open: a step that
-427:   delivers the stiffness functional delivers its sign with it, so the retirement condition is exactly
-428:   as live as `R-S8-01`'s.
-429: - **pass-2 object** — in the enlarged S11b action this is the physical transverse stiffness `μ_⊥`:
-430:   WL-`μ_R` and SymPy-`(μ_R + μ_S/2)` are its two representatives under the unified record's invertible
-431:   coefficient map. The obligation concerns the sign of `μ_⊥`, not a basis-dependent sign of `μ_S` or
-432:   either engine's bare `μ_R`. Stable real-frequency uniform modes require `μ_⊥ ≥ 0`; decoupling alone
-433:   does not exclude growth. S11c's selected finite-current check keeps its tested-input and review scope.
-434: 
-435: - **S9b scope** — Every kept A–C observable is gated on a real positive optical ratio
-436:   `μ⊥/ρbr`, with the nonnegative speed chart and its engine-specific ray conditions.
-437:   The conditional wave/ray interpretation fails outside those gates; supplying the stiffness
-438:   form alone does not supply this sign condition. S9b is therefore a source on this existing
-439:   physical transverse-sign requirement. Its local strict-positive ratio domain is kept
-440:   separate from the earlier uniform `μ⊥≥0` statement. PY declares positive `ρbr`; WL keeps
-441:   real nonzero `ρbr`, so this pass does not infer unconditional `μ⊥>0` for both engines.
-442:   No sign is derived from the substrate and no existing status closes
-443:   (S9b §2; M1/M19, complete restriction domains M18).
-444: 
-445: 
-446: ### R-S8-04 — what carries the brane's internal angular momentum
-447: 
-448: - **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9, S10, S11 · **target** S8 · **status** OPEN
-449: - **requirement** — the object in the substructure that carries **internal angular momentum** on the brane,
-450:   or the couple-stress it supports. ⛔ Not a mechanism, ⛔ not a model: the object, or a statement that there
-451:   is none.
-452: - **on failure** — ⛔⛔ **the curl-only stiffness functional is not an admissible continuum mechanics.** An
-453:   energy in `(∇×u)²` alone has an **antisymmetric** Cauchy stress, and balance of angular momentum forces
-454:   the Cauchy stress to be **symmetric** unless the medium carries distributed couples or internal spin. If
-455:   the substructure supplies neither, the light sector's central form is inadmissible **regardless of its
-456:   mode content** — S9's and S10's mode counts, dimensions and speeds would all be computed from a
-457:   functional no medium can have.
-458: - **note** — ⚠ **This is the objection that sank MacCullagh's aether**, and it is the one part of that
-459:   theory the 19th century never answered: Stokes pressed it, and Kelvin's gyrostatic models were attempts to
-460:   supply exactly this object. ⇒ ⭐ **prior art is the oracle here** — it tells us the obligation is real and
-461:   that answers exist, ⛔ it tells us nothing about whether **ours** delivers one ⇒ `CLAUDE.md` rule 16.
-462:   ⭐ Known families a delivered answer might fall into, ⛔ **none assumed and none prescribed**: continua
-463:   with an independent microrotation degree of freedom (Cosserat/micropolar), and media with stored internal
-464:   angular momentum.
-465:   ⛔ **One family is the wrong one and should not be reached for:** modern *odd elasticity* buys an
-466:   antisymmetric modulus tensor by making the solid **active and non-conservative**. MacCullagh's medium is
-467:   **conservative** — it has a genuine energy functional — so a non-conservative realisation would be
-468:   answering a different question.
-469:   ⚠ `R-S8-01` asks for the **form** and is silent on admissibility; a substructure could deliver the
-470:   curl-only form and still owe this.
-471: - **O2 scope** — OPEN `𝒜_rot^live` carries this existing S8 obligation, including whether internal
-472:   angular momentum/couple stress is present. O2 selects no stress symmetry or carrier and does not
-473:   establish a curl-only live stress. The original conservative-MacCullagh objection keeps its
-474:   original domain; it is not newly proved for an unspecified viscoelastic stress. The O2 addition
-475:   carries the explicitly required carrier/admissibility question within its named material and
-476:   corresponding power accounting; it adds no flowing constitutive response form. The accounting
-477:   remains conditional with that question OPEN
-478:   (`directives/O2_SHARED_PHYSICS.md`, §§3.2, 4, 6).
-479: 
-480: ### R-S8-05 — the frame the brane's rotational stiffness is measured against
-481: 
-482: - **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9, S10, S11 · **target** S8 · **status** OPEN
-483: - **requirement** — the frame with respect to which the brane's rotational stiffness is defined: **what
-484:   `∇×u` is measured against.**
-485: - **on failure** — for an infinitesimal rigid rotation `u = ω × r` the curl is `2ω ≠ 0`, so a curl-only
-486:   energy is **nonzero when the whole medium is turned**. ⇒ if the reference is external, the medium knows
-487:   an absolute orientation, and every result in the sector inherits a preferred-orientation signature that
-488:   something later must hide. ⛔ That is a falsifiable consequence, ⛔ not a philosophical discomfort.
-489: - **note** — ⭐ **A brane may escape this where a bulk aether cannot**, and the difference is the whole
-490:   point of the entry. For a bulk medium *"rotation relative to what"* has no local answer — the 1839
-491:   objection. For a **domain wall**, the wall supplies its own local frame (its normal, its induced
-492:   geometry), rotation relative to the wall is meaningful and local, and rotating everything rotates the wall
-493:   too ⇒ the stiffness would be **relative**, and the objection would not arise.
-494:   ⚠⚠ **That is a HYPOTHESIS, ⛔ not a result.** Nothing in the corpus computes it. The slab-in-bulk
-495:   calculation is where it is settled ⇒ **S11b-A** (interface response) is the existing partial artifact,
-496:   built under the old pattern and on the rebuild list.
-497:   ⚠ **A flowing medium does NOT answer this.** Flow bears on the **velocity** frame — whether a background
-498:   drift is detectable — and the analog-gravity route hides it in an effective metric. ⛔ Orientation is a
-499:   **separate** objection: being carried is not being turned. ⇒ ⭐ do not let one argument discharge both.
-500: - **O2 scope** — OPEN `𝒜_rot^live` retains the physical rotational frame as an existing S8
-501:   obligation explicitly carried by the spec. Neither radial flow, the graph normal nor LAB_HELD
-502:   chooses that material frame. O2's named force/power accounting retains the frame question OPEN;
-503:   this addition supplies no frame or new rotational-response form. O2 does not extend the original
-504:   curl-only objection to an unspecified live stress
-505:   (`directives/O2_SHARED_PHYSICS.md`, §§1, 3.2, 6, 7).
-506: 
-507: ### R-S1-03 — the substructure's microscopic time-reversibility
-508: 
-509: - **source** S11b-B (`steps/S11bB_interface_assembly.md`, limits of the passive region), unified S11b
-510:   (`steps/S11b_interface_coupling_law.md`, conditional Onsager–Casimir test) · **target** S1
-511:   (**register inference; no owner named by the records**) · **status** OPEN
-512: - **requirement** — whether the substructure's microdynamics is time-reversible, the premise of the
-513:   conditional Onsager–Casimir relation `Λ_X(ω) = −Λ_V(ω)`.
-514: - **on failure** — that relation cannot be imposed on the physical interface as an unconditional law.
-515:   The conditional calculation and the independently computed passivity region still stand; neither
-516:   selects a reciprocal medium. The records explicitly say microscopic reversibility is not postulated.
-517: - **note** — this is a first-route obligation from B's hand-forward: `Λ_X(ω) = −Λ_V(ω)` is
-518:   *"**conditional** on microscopic time-reversibility, which the model does not postulate"*
-519:   (`steps/S11bB_interface_assembly.md:190`). The records name no step that owns the missing premise, so S1
-520:   is a register inference. Onsager–Casimir is a second-route candidate only, not a reproduced prior result.
-521:   The equilibrium issue is `R-S6-02`; the driven state and power budget are separately `R-S12-02` and
-522:   `R-S12-01`.
-523: 
-524: ### R-S8-06 — material displacement and the slab's quadratic inertia
+277: - **source** S9b (Part C bulk acoustic input only; `steps/S9b_light_bending.md`, §§2–4/8); S9; S11 (`steps/S11_stray_longitudinal.md`, move 6 / `KW_ZERO_LOCUS`);
+278:   S11b-A (`steps/S11bA_interface_response.md`, computed bulk response) and S11b-B
+279:   (`steps/S11bB_interface_assembly.md`, breathing slice) · **target** S1.5 · **status** OPEN
+280: - **requirement** — the mode content of the linearised GNLS about uniform `ρ₀`: which excitations it
+281:   carries and their polarisation.
+282: - **on failure** — S9's opening move is *"a single-component scalar superfluid cannot carry transverse
+283:   light"*, and the entire requirements-first framing of the light sector rests on it. ⛔ It is cited from
+284:   **one external review document** (`decisions/15`) and **no script in this repo executes it**; the S9
+285:   rebuild did not add one. If the GNLS does carry a transverse excitation, light needs no substructure and
+286:   S9 has no bill to present.
+287: - **note** — a weaker in-repo form exists (`v = (ħ/m)∇θ ⇒ ∇×v ≡ 0`) but is never wired into a no-shear
+288:   proof. ⚠ This is a **premise awaiting execution**, not a postulate: it is the kind of claim a CAS can
+289:   settle, and nothing has been asked to.
+290: - **pass-2 consumer** — the same mode-content question now includes the rest-bulk acoustic branch used
+291:   in `q² = ω²/c_s0² − k²`, its polarisation and the regime in which that acoustic approximation applies.
+292:   S11's threshold, A's radiation resistance/added mass, and B's radiative breathing load rest on that
+293:   supplied branch. Failure leaves those results conditional on a bulk operator the GNLS has not yet
+294:   delivered. This requests neither an EOS exponent nor a numerical light/sound speed ratio.
+295: 
+296: - **S9b scope** — Part C uses the supplied bulk acoustic quantity
+297:   `c_s²=nKρ^(n−1)/m`, including its asymptotic value, and its fixed-ratio response uses the
+298:   exact nonnegative sound-speed roots and their domains. If the bulk does not deliver that
+299:   acoustic branch on the stated domain, the fixed-ratio optical rewrite cannot be read as
+300:   a light/sound response of that substrate. This is a consumer of the existing acoustic-mode
+301:   requirement only: no GNLS mode derivation, EOS exponent, light/sound identification or
+302:   numerical ratio is supplied by S9b (S9b §§3–4; M1/M18).
+303: 
+304: 
+305: ### R-S6-02 — the reference state must be an equilibrium
+306: 
+307: - **source** S9, S10; S11 (`steps/S11_stray_longitudinal.md`, homogeneous action);
+308:   S11b-A/B (`steps/S11b_interface_coupling_law.md`, standing limits); S11c
+309:   (`steps/S11c_PARTIAL_CLOSEOUT.md`, conditional uniform result;
+310:   `steps/S11c_d_profile_conditioned_scattering.md`, uniform check) · **target** S6 · **status** OPEN
+311: - **requirement** — the **first variation of the substrate's action**, evaluated at the state S9 and S10
+312:   linearise about: the unstrained brane at rest, `v₀ = 0`.
+313: - **on failure** — every result in the light sector is a linear response, and a linear response about a
+314:   state that is not an equilibrium is not a linear response at all: the expansion has a term linear in the
+315:   displacement that nothing cancels. `ω² = (μ_R/ρ_br)k²`, the mode count, and the dimensions all inherit
+316:   the defect. ⛔ Nothing in the sector tests it, because the substrate is absent from S9's and S10's
+317:   actions.
+318: - **note** — ⚠ **The standing warning applies here**: ask *whose* equilibrium, and check that the
+319:   reference state is not being held in place by an assumption rather than by the dynamics. S6's kink is
+320:   the candidate stationary solution; S6 has no record yet.
+321: - **pass-2 scope** — the kept homogeneous and selected uniform results use the rest reference state.
+322:   S11b-B states verbatim: *"⛔⛔ **Passivity and reciprocity are properties of fluctuations about an
+323:   EQUILIBRIUM. This model's reference state is not one.** It carries a steady background normal flow
+324:   `v₀` — the dark-energy drain — ⇒ a **driven steady state with a reservoir attached.**"*
+325:   (`steps/S11bB_interface_assembly.md:46–48`). In that quote S11b's `v₀` is the bulk's normal drain,
+326:   standard name `v_bulk_normal_0`; it is distinct from the brane rest velocity `v₀ = 0` in this requirement
+327:   (`directives/S11b_SHARED_PHYSICS.md:101–104`; `directives/S11b_unified_decisions.md:33–40`). For S11b, the
+328:   rest-frame linearisation discards a relative correction of order `O(v₀|q_n|/ω)`, where `v₀` again denotes
+329:   the steady background normal flow (`steps/S11bB_interface_assembly.md:150–154`), and the unified record
+330:   calls that correction uncarried
+331:   (`steps/S11b_interface_coupling_law.md:158–164`). The kept S11c results state that the bulk is at rest
+332:   (`steps/S11c_PARTIAL_CLOSEOUT.md:7`; `steps/S11c_d_profile_conditioned_scattering.md:9,23`). This is an
+333:   unresolved tension between the driven reference state and the recorded rest-state calculations. The
+334:   rest-state obligation remains here; live drain/return data are `R-S12-02`, which also records the
+335:   uncarried correction and its record-named owner, and the power supply is `R-S12-01`. No equilibrium result
+336:   is promoted to a result about the driven state.
+337: 
+338: ### R-S8-01 — the form of the brane's quadratic stiffness functional
+339: 
+340: - **source** S9b (`steps/S9b_light_bending.md`, §§2/8, supplied transverse input only); S9, S10; S11 (`steps/S11_stray_longitudinal.md`, moves 2–3 / FORM control);
+341:   S11b-B (`steps/S11bB_interface_assembly.md`, energy basis / breathing stability); unified S11b
+342:   (`steps/S11b_interface_coupling_law.md`, energy quotient); S11c
+343:   (`steps/S11c_PARTIAL_CLOSEOUT.md`, conditional uniform result) · **target** S8 · **status** OPEN
+344: - **requirement** — the quadratic brane Lagrangian's **stiffness functional**, as delivered by the
+345:   substructure rather than chosen.
+346: - **on failure** — this is the one input the light sector's central claim is **measurably** sensitive to,
+347:   and S9's own controls prove it:
+348:   - the gradient-elastic form `−½ μ_R Σ(∂_i u_j)²` — an ordinary elastic solid — carries **the same two
+349:     transverse modes at the same `c² = μ_R/ρ_br`**, and *also* propagates the longitudinal;
+350:   - the divergence-only form makes the roles **swap**: the transverse pair drops to `ω² = 0` and the
+351:     longitudinal propagates.
+352:   ⇒ ⭐ **What curl-only buys is the ABSENCE of a propagating longitudinal mode, ⛔ not the presence of the
+353:   transverse ones.** If S8 delivers any other form, S9's and S10's transverse results may survive while
+354:   the no-longitudinal claim — Maxwell's third demand, and the whole reason the sector exists — does not.
+355: - **note** — S9 classifies the curl-only form as **postulated (structural)**, justified by *"forced by
+356:   Maxwell's no longitudinal mode"*. ⚠ That is a justification from the target, ⛔ not from the substrate.
+357:   Defect `B2` closes the route from a polar substructure `P` to `μ_R` — ⚠ **the whole quantity, not only
+358:   its magnitude**, as `DEFECT_REGISTER.md#B2` scopes it. ⛔ But it closes **one route**, and it says
+359:   nothing about the **form**, so this requirement is live.
+360: - **pass-2 consumers** — S11's unchanged transverse root rests on adding the trace invariant. As a
+361:   first-route source only, its record says: *"The form control's `4/3` independently reproduces the
+362:   corpus's rejected-Cauchy-branch coefficient"* (`steps/S11_stray_longitudinal.md:126–127`); the record
+363:   names no prior-art objection to that branch.
+364:   S11b-B needs the complete quadratic stored energy on `u, θ, e_W` under its whole stated symmetry group
+365:   (`directives/S11bB_SHARED_PHYSICS.md:353–362`). The unified record's ten-dimensional quotient is likewise
+366:   defined under its whole stated symmetry group (`directives/S11b_SHARED_PHYSICS.md:280–288`) and has different
+367:   valid representatives; no individual representative coefficient is the required object. Its
+368:   constrained breathing stiffness is `K₀ = B_ρ⁽³⁾ − 2CW₀ + k_W W₀²`. The stability claim is only the
+369:   `k = 0`, impermeable, zero-reciprocal-traction slice. On that slice B hands forward `K₀ > 0` as
+370:   *"an **empirical** constraint — the brane is here"* (`steps/S11bB_interface_assembly.md:192`). Failure
+371:   to supply this energy leaves the
+372:   decoupling and slice stability conditional; no sign or magnitude of an individual scalar coefficient
+373:   is inferred. S11c's uniform result inherits that qualification, not a nonuniform confinement law.
+374: 
+375: - **S9b scope** — Parts A–C assume an isotropic transverse spatial stiffness with local
+376:   `cγ²=μ⊥/ρbr`, on their supplied leading-eikonal optical domain. S9b therefore gains a source on
+377:   the existing requirement for a substrate-delivered transverse stiffness input. It neither derives
+378:   that input nor widens this entry into a completed live stress/relaxation or nonuniform operator law.
+379:   The latter stays the unfinished S11c handoff; other unselected material response forms are not
+380:   newly entered. No curl-only, no-longitudinal, mechanical-admissibility or physical-frame result
+381:   follows from the optical comparison (`steps/S9b_light_bending.md`, §§2/6–8; measurements M1/M8).
+382: 
+383: ### R-S8-02 — the in-plane and out-of-plane sectors must decouple at quadratic order
+384: 
+385: - **source** S10; S11 (`steps/S11_stray_longitudinal.md:278–280`, in-plane, frozen-wall-width spectrum)
+386:   · **target** S8 · **status** OPEN
+387: - **requirement** — the quadratic operator on the brane's **full** displacement, in-plane `u` **and**
+388:   out-of-plane `h` together, and whether it is block-diagonal in that split.
+389: - **on failure** — ⛔ **S10's headline number changes** — but ⚠ **not by the mechanism an earlier draft of
+390:   this entry named, and a leg corrected it.** Mixing is **not** the failure mode: under the rotation group
+391:   that acts on the brane, `h` and `u_L` are both **scalars** and `u_T` is a **vector**, so `h` can mix with
+392:   `u_L` freely and the transverse count stays `D − 1` regardless. ⭐ **The condition that gives 3 is `h`
+393:   being DEGENERATE WITH THE TRANSVERSE PAIR** — the brane's elasticity being isotropic in `D+1` rather
+394:   than in `D`. That is what *"belonging to the same elastic sector"* has to mean, and it is what S8 must
+395:   settle.
+396: - **note** — ⭐ **This is the most load-bearing open item in the sector**, and it was flagged inside S10 at
+397:   the moment the identification was made rather than found later: `h ≠ u_L`, stated in three places in the
+398:   corpus, **user-confirmed as the picture** — but ⛔ confirmed as a picture, not computed. `V3_STEP_PLAN`
+399:   puts *"transverse and longitudinal sectors; the reduced `h`/`u_L` operator"* in S8, so the object is
+400:   already scheduled.
+401:   ⚠⚠ **And v3 is not starting from nothing — a leg found the computation already exists in v2 and this
+402:   entry did not cite it.** `research/pde_ledger_v2/paper/stages/stage_030.tex:99-125` builds the coupled
+403:   `(u_L, h)` scalar block with stiffness `K = [[B_eff, C_hu], [C_hu, K_h]]` — explicitly **not**
+404:   block-diagonal, with `C_hu` a registered free-unreduced parameter — and `R79` records that the mixed
+405:   poles are cone-coincident only when `C_hu = 0`. ⇒ ⛔ *"nothing computes that"* is true of **v3** and
+406:   misleading about the **corpus**; S8 should start from `stage_030`, ⛔ not from scratch.
+407:   ⭐ Note this is the `(u_L, h)` block — the scalar sector — so it bears on the **longitudinal** slot and
+408:   the charge anchor, ⛔ and not directly on the transverse count, which is what the corrected on-failure
+409:   above turns on.
+410: - **pass-2 source** — S11's result here is the one its record names as the in-plane, frozen-wall-width
+411:   spectrum with `hBranon` excluded: *"⚠ Scope caveats, none touching the decoupling: (i) this is the
+412:   **in-plane, frozen-wall-width** spectrum (`WALL_WIDTH_FIELDS={}`, `hBranon` excluded,
+413:   `INTERFACE_EQUATIONS_SUPPLIED={}`) — it does not decide inhomogeneous mode conversion,"*
+414:   (`steps/S11_stray_longitudinal.md:278–280`). S11's decoupling statement, with its own limit, reads:
+415:   *"Thus the homogeneous \(D=3\) quadratic transverse and longitudinal eigenbranches have zero linear
+416:   cross-block under the selected action. This does not establish decoupling at nonlinear order, on a
+417:   nonuniform slab, at an interface or defect, or after additional allowed fields are introduced."*
+418:   (`steps/S11_stray_longitudinal.md:74–76`). This entry's object is the joint `u`/`h` operator that the
+419:   spectrum leaves out.
+420: - **excluded field** — in that caveat S11's record freezes the wall width and excludes `hBranon`
+421:   (`steps/S11_stray_longitudinal.md:279–280`); its Mathematica audit binds the token as
+422:   `"OUT_OF_PLANE_FIELD_EXCLUDED" -> hBranon`
+423:   (`mathematica/S11_stray_longitudinal_mathematica_audit.wl:1082`). If S8 does not deliver the joint
+424:   operator, S11's spectrum is not extended beyond that stated scope. The record does not say what its
+425:   roots or census would be with `hBranon` included, and this register does not infer it.
+426: 
+427: ### R-S8-03 — the SIGN of the physical transverse stiffness
+428: 
+429: - **source** S9b (local optical sign/ratio gate; `steps/S9b_light_bending.md`, §§2–4/8); S9, S10; S11 (`steps/S11_stray_longitudinal.md`, unchanged transverse branch);
+430:   unified S11b (`steps/S11b_interface_coupling_law.md`, transverse mode); S11c
+431:   (`steps/S11c_PARTIAL_CLOSEOUT.md`, conditional uniform result;
+432:   `steps/S11c_d_profile_conditioned_scattering.md`, uniform check) · **target** S8 · **status** OPEN
+433: - **requirement** — the **sign** of the physical transverse stiffness in the quadratic brane
+434:   Lagrangian, as delivered by the substructure: `μ_R` in S9/S10's selected action, `μ_⊥` in the enlarged
+435:   S11b action. `R-S8-01` asks for the stiffness **functional**; this asks for its transverse sign.
+436: - **on failure** — ⛔ **the transverse sector is two exponentially growing modes rather than two waves,
+437:   and every mode count in S9 and S10 is unchanged.** S10's `XFORM_SIGNFLIP` control measures exactly this:
+438:   with the sign flipped, `ω² = −μ_R k²/ρ_br` and **every nullity is identical to the baseline's** — the
+439:   count cannot tell a wave from an instability. What distinguishes them is a single emitted object,
+440:   `ROOT2_Q3_SIGN`.
+441: - **note** — ⭐ **Found by a review leg reading the register against S10's own controls**, ⛔ not by the
+442:   pass that wrote the register: `R-S8-01` is entirely about form and never mentions sign or positivity,
+443:   so the pass consolidated one and dropped the other.
+444:   ⚠ **It is not closed by defect `B2`**, which shuts the route for deriving `μ_R` — its sign as well as
+445:   its magnitude — from a polar substructure `P`. Other substrate routes remain open: a step that
+446:   delivers the stiffness functional delivers its sign with it, so the retirement condition is exactly
+447:   as live as `R-S8-01`'s.
+448: - **pass-2 object** — in the enlarged S11b action this is the physical transverse stiffness `μ_⊥`:
+449:   WL-`μ_R` and SymPy-`(μ_R + μ_S/2)` are its two representatives under the unified record's invertible
+450:   coefficient map. The obligation concerns the sign of `μ_⊥`, not a basis-dependent sign of `μ_S` or
+451:   either engine's bare `μ_R`. Stable real-frequency uniform modes require `μ_⊥ ≥ 0`; decoupling alone
+452:   does not exclude growth. S11c's selected finite-current check keeps its tested-input and review scope.
+453: 
+454: - **S9b scope** — Every kept A–C observable is gated on a real positive optical ratio
+455:   `μ⊥/ρbr`, with the nonnegative speed chart and its engine-specific ray conditions.
+456:   The conditional wave/ray interpretation fails outside those gates; supplying the stiffness
+457:   form alone does not supply this sign condition. S9b is therefore a source on this existing
+458:   physical transverse-sign requirement. Its local strict-positive ratio domain is kept
+459:   separate from the earlier uniform `μ⊥≥0` statement. PY declares positive `ρbr`; WL keeps
+460:   real nonzero `ρbr`, so this pass does not infer unconditional `μ⊥>0` for both engines.
+461:   No sign is derived from the substrate and no existing status closes
+462:   (S9b §2; M1/M19, complete restriction domains M18).
+463: 
+464: 
+465: ### R-S8-04 — what carries the brane's internal angular momentum
+466: 
+467: - **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9, S10, S11 · **target** S8 · **status** OPEN
+468: - **requirement** — the object in the substructure that carries **internal angular momentum** on the brane,
+469:   or the couple-stress it supports. ⛔ Not a mechanism, ⛔ not a model: the object, or a statement that there
+470:   is none.
+471: - **on failure** — ⛔⛔ **the curl-only stiffness functional is not an admissible continuum mechanics.** An
+472:   energy in `(∇×u)²` alone has an **antisymmetric** Cauchy stress, and balance of angular momentum forces
+473:   the Cauchy stress to be **symmetric** unless the medium carries distributed couples or internal spin. If
+474:   the substructure supplies neither, the light sector's central form is inadmissible **regardless of its
+475:   mode content** — S9's and S10's mode counts, dimensions and speeds would all be computed from a
+476:   functional no medium can have.
+477: - **note** — ⚠ **This is the objection that sank MacCullagh's aether**, and it is the one part of that
+478:   theory the 19th century never answered: Stokes pressed it, and Kelvin's gyrostatic models were attempts to
+479:   supply exactly this object. ⇒ ⭐ **prior art is the oracle here** — it tells us the obligation is real and
+480:   that answers exist, ⛔ it tells us nothing about whether **ours** delivers one ⇒ `CLAUDE.md` rule 16.
+481:   ⭐ Known families a delivered answer might fall into, ⛔ **none assumed and none prescribed**: continua
+482:   with an independent microrotation degree of freedom (Cosserat/micropolar), and media with stored internal
+483:   angular momentum.
+484:   ⛔ **One family is the wrong one and should not be reached for:** modern *odd elasticity* buys an
+485:   antisymmetric modulus tensor by making the solid **active and non-conservative**. MacCullagh's medium is
+486:   **conservative** — it has a genuine energy functional — so a non-conservative realisation would be
+487:   answering a different question.
+488:   ⚠ `R-S8-01` asks for the **form** and is silent on admissibility; a substructure could deliver the
+489:   curl-only form and still owe this.
+490: - **O2 scope** — OPEN `𝒜_rot^live` carries this existing S8 obligation, including whether internal
+491:   angular momentum/couple stress is present. O2 selects no stress symmetry or carrier and does not
+492:   establish a curl-only live stress. The original conservative-MacCullagh objection keeps its
+493:   original domain; it is not newly proved for an unspecified viscoelastic stress. The O2 addition
+494:   carries the explicitly required carrier/admissibility question within its named material and
+495:   corresponding power accounting; it adds no flowing constitutive response form. The accounting
+496:   remains conditional with that question OPEN
+497:   (`directives/O2_SHARED_PHYSICS.md`, §§3.2, 4, 6).
+498: 
+499: ### R-S8-05 — the frame the brane's rotational stiffness is measured against
+500: 
+501: - **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9, S10, S11 · **target** S8 · **status** OPEN
+502: - **requirement** — the frame with respect to which the brane's rotational stiffness is defined: **what
+503:   `∇×u` is measured against.**
+504: - **on failure** — for an infinitesimal rigid rotation `u = ω × r` the curl is `2ω ≠ 0`, so a curl-only
+505:   energy is **nonzero when the whole medium is turned**. ⇒ if the reference is external, the medium knows
+506:   an absolute orientation, and every result in the sector inherits a preferred-orientation signature that
+507:   something later must hide. ⛔ That is a falsifiable consequence, ⛔ not a philosophical discomfort.
+508: - **note** — ⭐ **A brane may escape this where a bulk aether cannot**, and the difference is the whole
+509:   point of the entry. For a bulk medium *"rotation relative to what"* has no local answer — the 1839
+510:   objection. For a **domain wall**, the wall supplies its own local frame (its normal, its induced
+511:   geometry), rotation relative to the wall is meaningful and local, and rotating everything rotates the wall
+512:   too ⇒ the stiffness would be **relative**, and the objection would not arise.
+513:   ⚠⚠ **That is a HYPOTHESIS, ⛔ not a result.** Nothing in the corpus computes it. The slab-in-bulk
+514:   calculation is where it is settled ⇒ **S11b-A** (interface response) is the existing partial artifact,
+515:   built under the old pattern and on the rebuild list.
+516:   ⚠ **A flowing medium does NOT answer this.** Flow bears on the **velocity** frame — whether a background
+517:   drift is detectable — and the analog-gravity route hides it in an effective metric. ⛔ Orientation is a
+518:   **separate** objection: being carried is not being turned. ⇒ ⭐ do not let one argument discharge both.
+519: - **O2 scope** — OPEN `𝒜_rot^live` retains the physical rotational frame as an existing S8
+520:   obligation explicitly carried by the spec. Neither radial flow, the graph normal nor LAB_HELD
+521:   chooses that material frame. O2's named force/power accounting retains the frame question OPEN;
+522:   this addition supplies no frame or new rotational-response form. O2 does not extend the original
+523:   curl-only objection to an unspecified live stress
+524:   (`directives/O2_SHARED_PHYSICS.md`, §§1, 3.2, 6, 7).
 525: 
-526: - **source** S9b (material identification only; `steps/S9b_light_bending.md`, §§2/8); O2 (material identification only; `steps/O2_steady_brane_balance.md`, register handoff); S11 (`steps/S11_stray_longitudinal.md`, move 1 / finite census); S11b-B
-527:   (`steps/S11bB_interface_assembly.md`, breathing quadratic) · **target** S8
-528:   (**register inference for the original S11/S11b records; O2 names S8 for the material identification**) · **status** OPEN
-529: - **requirement** — `u` as the material displacement of the stuff whose density is `ρ_br`, and the
-530:   quadratic kinetic form of that material and the thickness degree of freedom (B's `μ_W`) on the
-531:   original homogeneous/slab domain. O2 is a consumer of the material identification only.
-532: - **on failure** — if `u` is a director rather than that displacement, S11's continuity identification
-533:   `δρ_br = −ρ_br ∇·u` and its compression argument do not follow. Its finite census requires nonzero
-534:   `ρ_br`; B's breathing-root interpretation also rests on the stated inertial model. A stiffness
-535:   functional alone (`R-S8-01`) does not supply this identification or the kinetic form.
-536: - **note** — this asks for the field identity and inertia, not numerical benchmark values of `ρ_br`
-537:   or `μ_W`, and does not identify the thickness mode with S10's out-of-plane displacement. The cited
-538:   records name no future owner for this object; S8 is a register inference
-539:   (`steps/S11_stray_longitudinal.md:32–38`; `steps/S11bB_interface_assembly.md:80–85`).
-540: - **O2 scope** — O2 accounts for the material whose displacement is `u`, density is `ρ_br` and live
-541:   background velocity is `V`. This recorded/supplied identification fixes which material the named
-542:   conditional balance describes; without it the stated material object and its force/velocity
-543:   pairings are not identified. It gains O2 as a consumer on that identification alone
-544:   (`directives/O2_input_contract.md:55–71`; `directives/O2_SHARED_PHYSICS.md:107–109`).
-545:   The original homogeneous quadratic/slab and thickness inertia obligations keep their domains.
-546:   O2 adds no flowing/embedded inertial-response requirement: `ℐ_br^live` and the momentum map remain
-547:   unselected OPEN closure inputs, treated by the same criterion as O1 and O7 in the pass below.
-548:   No live identification of momentum density with `ρ_br V` follows from the homogeneous anchor.
-549:   S8's original assignment remains a register inference; O2's input contract names S8 for material
-550:   identity while supplying no new live kinetic law.
-551: 
-552: - **S9b scope** — The supplied advection and coordinate mass law identify `u`, `ρbr` and `V`
-553:   with the same material; this is a condition on the reported local optical object. Failure of the
-554:   identification removes that object's material interpretation. S9b adds this source only: P5
-555:   momentum density/carriage is scoped to held Part D, and Parts A–C derive no live kinetic/inertia
-556:   law. The original homogeneous/slab inertia domain is unchanged (S9b record §§2/7; measurements M1).
-557: 
-558: ### R-S12-01 — the reservoir and its power budget
-559: 
-560: - **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-B (`steps/S11bB_interface_assembly.md`, standing rule); unified S11b
-561:   (`steps/S11b_interface_coupling_law.md`, passivity region) · **target** S12
-562:   (**register inference**) · **status** OPEN
-563: - **requirement** — a named reservoir and a stated power budget for any adopted non-passive interface
-564:   coupling.
-565:   The unified record names the candidate: *"The model supplies a candidate reservoir — the
-566:   background drain `v₀`."* (`steps/S11b_interface_coupling_law.md:62–63`). That `v₀` is the bulk's normal
-567:   drain, standard name `v_bulk_normal_0` (`directives/S11b_SHARED_PHYSICS.md:101–104`;
-568:   `directives/S11b_unified_decisions.md:33–40`). B says the reference state carrying that flow is *"a
-569:   **driven steady state with a reservoir attached.**"* (`steps/S11bB_interface_assembly.md:46–48`).
-570: - **on failure** — the finite-memory velocity channel outside the passive region cannot be inherited
-571:   as a physically supplied response. The computed region remains a classification, not a prohibition,
-572:   and naming `v_bulk_normal_0` alone does not supply the missing power.
-573: - **note** — this is the records' explicit condition for retaining that channel, not a requirement
-574:   that the model choose it. A numerical observational bound also needs matter-to-compression coupling;
-575:   B says that is unbuilt and reports only a structural test, so no numerical-bound requirement is added.
-576: - **owner/target** — the records do not name S12; that target is a register inference. They hand the
-577:   reservoir-and-budget condition to *"S11b-C"* (`steps/S11bB_interface_assembly.md:195–197`).
-578: - **O2 scope** — O2 carries this same conditional non-passive-interface obligation: if a later
-579:   closure adopts that response, name its reservoir and state its power budget. No such response is
-580:   selected. Its live owner is **no owner named**; the historical S11b-C → S11c handoff has no recorded
-581:   live successor, and S12 remains only the original register inference. This object is separate
-582:   from S12's additional non-variational source partners, premise 1's relaxation power, and the
-583:   net-supplier/budget obligation `R-O2-01`
-584:   (`directives/O2_SHARED_PHYSICS.md:312–317`; `directives/O2_input_contract.md:459–465`).
-585: - **S12 pass** — Carried separately in the S12 inventory, without a new computed power consumer.
-586:   U3's endless material supply in the bulk IR is not a named reservoir or a power budget. The
-587:   source compatibility objects deliver neither. The live owner remains **no owner named**;
-588:   this does not assign the whole obligation to S12 (`steps/S12_order_source.md`, §§3/5/7).
-589: 
-590: ### R-S12-02 — background drain/return and separate boundary data
-591: 
-592: - **source** S16 (supplied projection and "Keep S12" provenance only; `steps/S16_moving_region.md`, §§1/6; S16 M01/M04/M14); S14a part 1 (`steps/S14a_1_projection.md`, §§2–5/7–8; its retrievals M03/M05–M10); S12 (`steps/S12_order_source.md`, §§1–2/5–7; retrievals M01/M03/M07/M11); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-A/B (`steps/S11b_interface_coupling_law.md:158–164`, background-flow limit); S11c
-593:   (`steps/S11c_PARTIAL_CLOSEOUT.md:7`, uniform result;
-594:   `steps/S11c_d_profile_conditioned_scattering.md:21–25`, selected uniform check)
-595:   · **target** S12 · **status** OPEN
-596: - **requirement** — the native drain/return functions and their separate boundary data; the
-597:   printed regional order-source objects and normalized face-source objects, with the separately
-598:   printed total-material face balances, as compatibility requirements on conversion, face and
-599:   order-flux forms. The objects are `general_order/region/{1,2,3}/source`,
-600:   `general_order/face/{1,2}/{trace_coefficient,source_contribution}` and
-601:   `material/face/{1,2}/requirement`. The distinct labelled conditional specialization is
-602:   `conditional_fast_ordering/region/{1,2,3}/source` and its two face objects. Their full values,
-603:   domain and cross-engine limits are S12 §2/4 and retrievals M03/M07–M09.
-604:   **Branch condition:** these printed compatibility requirements rest on the **real-fraction
-605:   branch; A13 stays OPEN**. The decision list says **"The committed law is written for a real
-606:   ordered fraction; a phase-carrying branch would add content not computed here"**. The plan
-607:   requires **"the conversion balance must use the branch chosen at S1"**. The printed objects
-608:   remain on the real-fraction branch until S1's gate decides; the owners remain S1, S5 and S12
-609:   (S12 record §6; retrievals M18/M19). This qualification travels with the future-form handoff.
-610: - **on failure** — the kept selected uniform check cannot be transferred to a flowing background: it is
-611:   a strict-rest-bulk calculation, and its finite samples do not prove flowing-background behaviour
-612:   (`steps/S11c_d_profile_conditioned_scattering.md:21–25`). S11b records why the rest-frame limitation
-613:   matters: its linearisation discards a relative correction of order
-614:   `O(v₀|q_n|/ω)` (`steps/S11bB_interface_assembly.md:150–154`), where that record's `v₀` is the steady
-615:   background normal flow, standard name `v_bulk_normal_0` (`directives/S11b_SHARED_PHYSICS.md:101–104`;
-616:   `directives/S11b_unified_decisions.md:33–40`). The unified record calls the correction uncarried and
-617:   unbounded (`steps/S11b_interface_coupling_law.md:158–164`) and carries the limit
-618:   to *"C (and to the nonlinear program for the DC/harmonic/sideband radiation audit)"*; S11c-a inherited
-619:   it as a standing limit but *"computes geometry only and does not address it"*
-620:   (`steps/S11c_a_interface_shape_derivatives.md:257–260`).
-621: - **owner** — S12 owns the drain/return data (`steps/S11c_PARTIAL_CLOSEOUT.md:21`) and is next for
-622:   dynamical bulk-to-brane order conversion with separate boundary data
-623:   (`steps/S11c_PARTIAL_CLOSEOUT.md:33`). Under the user's 2026-10-20 **"Keep S12"** decision,
-624:   S12 stays OPEN for these forms: this record closes only its requirements part and delivers
-625:   none of the forms. They come once the brane is defined, after the force sectors (S12 record,
-626:   §§5–7; retrieval M18). The earlier assignment/framing disagreement is quoted there.
-627: - **O2 scope** — Premise 2 makes dynamical order conversion the drive, with no separate body force.
-628:   O2's local source/controller and boundary/domain inventories remain distinct, as do additional
-629:   S12 momentum/energy partners and their reaction/supply systems. O2 adds a consumer for the stated
-630:   drain identity and distinct source/boundary accounting; without those roles its adopted drive is
-631:   unidentified or conflated with another load/partner. The original native drain/return functions
-632:   retain their sourced domains, and O2 demands no new functional forms for them. Local in-plane
-633:   carried `j_n V^i` does not deliver
-634:   these data, the live `𝒥_map`, bulk-direction carry, energy partners or a `GM` coupling
-635:   (`directives/O2_SHARED_PHYSICS.md`, §§3.3, 5, 6, 10). Those remain OPEN handoffs, not extra entries
-636:   merely because a later profile solve would need them.
-637: - **S12 scope and rest-on condition** — The conditional result rests on these printed compatibility
-638:   objects, not on any chosen means of meeting them. Below and above, the order source is the
-639:   regional order-flux divergence; inside it includes live material transport of order; each face
-640:   carries the printed source coefficient and a distinct material requirement. If candidate data
-641:   violate one of those objects on the stated domain, they cannot realize that conditional result.
-642:   Source, face and flux forms are not selected, and separate boundary data are not supplied. The
-643:   native-data obligation remains OPEN under the user's 2026-10-19 requirements-first framing.
-644:   The printed constraints are not its delivery. The fast-ordering object is conditional, not an
-645:   earned limit; concentrated input fields are outside the current object. The six unrestricted
-646:   coefficient differences are labelled representation diagnostics confined off their respective
-647:   delta supports, not open differences in the S12 distribution (contract item 3; retrieval M17).
-648:   Both raw expressions and every unpaired/ledger leaf limit remain in S12 §4 and its retrievals.
-649:   This merges source/face/flux compatibility into the existing native-conversion obligation,
-650:   without duplicating an entry or prescribing a law, material, premise or candidate.
-651: 
-652: - **S14a part 1 projected/shell compatibility** — The required objects also include the printed
-653:   projected material and order balances, their densities/in-plane fluxes, both interior and
-654:   closed-projection face terms, concentrated source parts and projected order source; in the
-655:   labelled spherical specialization, the printed face/core channels, `J`, signed order lost,
-656:   storage, shell balance, face-channel-minus-order-loss difference, outer flux/radius dependence
-657:   and the conditioned projected-velocity/volume-flux relations. These are the object requirements
-658:   listed by native tag/binding in the S14a part 1 pass below. Their full values/domain are
-659:   `steps/S14a_1_projection.md`, §§2–4, with all cross-engine differences/limits in §5 and retrievals
-660:   M03/M05–M10. Future data violating them cannot realize the reported conditional projection.
-661:   The requirements retain the real-fraction/A13 condition above, the live two-face function class,
-662:   full concentrated parts, spherical restriction where used and nonzero-density velocity domain.
-663:   No means of meeting them is named. S12's forms and separate boundary data remain OPEN under
-664:   "Keep S12"; these constraints deliver neither. Unresolved exact differences and unpaired
-665:   decompositions are not silently promoted to exact-equivalence requirements.
-666: 
-667: ### R-O2-01 — the net-power supplier and its stated budget
-668: 
-669: - **source** O2 (`steps/O2_steady_brane_balance.md`, energy accounting and register handoff)
-670:   · **target** no owner named · **status** OPEN
-671: - **requirement** — the physical supplier of net power and its stated power budget, represented by
-672:   the OPEN `𝒮_E,net` / `𝒫_E,supply` inputs, accompanying any conditional closure requiring net supply.
-673: - **on failure** — such a closure cannot be claimed physically supplied. Naming the drain alone
-674:   supplies neither available energy nor a budget; O2 measures no net supply and imposes no passive
-675:   sign or relaxation law.
-676: - **owner** — the spec calls this an **O2 requirement; source/holder/supplier forms retain their
-677:   owners** (`directives/O2_SHARED_PHYSICS.md:282`). It names no future owner of the net-supplier/budget
-678:   object. S12 source forms and Q2/S22 holder forms keep their separate assignments; none is assigned
-679:   this entire obligation.
-680: - **scope** — this is an accounting requirement on conditional relations requiring net supply,
-681:   fixed by adopted premise 1, not a derived supplier, budget value or additive energy-channel law.
-682:   It is separate from the conditional non-passive-interface reservoir obligation `R-S12-01` and
-683:   from explicit reference/relaxation power with its unassigned reference owner
-684:   (`directives/O2_SHARED_PHYSICS.md:270–282, 307–317`; `directives/O2_input_contract.md`, §8).
-685: - **S12 pass** — The energy-partner inventory carries this obligation separately from
-686:   `R-S12-01` and from conversion partners. No S12 object computes net supply or consumes a
-687:   conditional net-supply closure, so it adds no computed source and changes no owner or status
-688:   (`steps/S12_order_source.md`, §§3/5/7).
-689: 
-690: ---
-691: 
-692: 
-693: ### R-S21-01 — conditional deflection and radar-slope profile requirements
-694: 
-695: - **source** S9b (`steps/S9b_light_bending.md`, §§3–6; measurements M3–M7/M11–M13/M17–M19);
-696:   S16 framing decision only (`steps/S16_moving_region.md`, §§1/6; user 2026-10-19,
-697:   carried in its decision list 2026-10-21; S16 M01/M14);
-698:   S12 framing decision only (`steps/S12_order_source.md`, §§6–7; user 2026-10-19, retrieved M01);
-699:   S14a part 1 framing decision only (`steps/S14a_1_projection.md`, §§1/7–8; user 2026-10-19,
-700:   carried in its decision list 2026-10-21, retrieved M01)
-701:   · **target** S21 (integration/knit; S9b record §7, O2 record §7 and the record directive's
-702:   2026-10-08/09 user decisions) · **status** OPEN
-703: - **requirement** — On S9b's isolated spherical, steady far-zone, leading-eikonal, LAB_HELD
-704:   domain and selected G100/G010/G020/G001 grades, the printed Part B profile condition for
-705:   **each** observable, deflection and radar logarithmic slope, relative to independent orbital
-706:   `GM`, for every far-zone impact parameter. PY prints for each
-707:   `GM=r[2c₀²rδ′+c₀²ξw′²−2rVV′+V²]/4` as a radial identity. WL prints its `GM` anchor rule
-708:   plus the all-radius profile equation (S9b Appendix A), with derivatives, convergence, Abel
-709:   invertibility and constructed-ray/branch/traversal domains. Their complete cross-engine
-710:   equivalence is not established; neither form is discarded.
-711:   Part C carries the separately printed constant-speed condition
-712:   `GM=r[c₀²ξw′²−2rVV′+V²]/4`, fixed-ratio condition
-713:   `GM=r[c₀²(n−1)rf′+c₀²ξw′²−2rVV′+V²]/4`, and power condition
-714:   `GM=r[2c₀²srf′+c₀²ξw′²−2rVV′+V²]/4`, with WL's corresponding anchor/profile equations.
-715:   Fixed-ratio and power objects retain both `ρ>0` and `ρ≤0` labels and exact response domains;
-716:   `ρ₀>0` remains supplied. The first-order-f expressions supply no finite-density or f–ε extension.
-717:   Each condition includes its printed implied `jn`, with `ρbr` symbolic and differentiated:
-718:   the coordinate mass expression is `jn=−ρbr V′−Vρbr′−2ρbr V/r`, with both signed-velocity
-719:   components, zero-locus differentiability/flux joins, excluded nonreal branches and printed
-720:   integration-constant domains retained. The complete implied-exchange values remain uncompared.
-721:   The requirements keep δ, ξw, ρbr, f, n, s, GM and all remaining printed inputs free;
-722:   they select no profile, exponent, flux value/sign or GM normalization. M13 retrieves all 14
-723:   within-engine deflection/radar condition pairs: every PY paired payload is byte-identical,
-724:   while every WL paired payload differs (M13).
-725:   WL `GM`, `ProfileEquation`, `ProfileEquationRadius`, outer `Domain`/`BranchDomain` and case
-726:   `Domain` match literally; `InverseWeight` and `ReferenceInverse` differ in every pair.
-727:   `VelocityReduction/SquaredVelocityEquation` additionally differs for general B, R_FLOW_ONLY B
-728:   and combined C_CONSTANT/C_FIXED_RATIO/C_POWER; `VelocityReduction/Cases/0/Domain` differs
-729:   for R_SPEED_ONLY B, R_TILT_ONLY B, both R_BULK_ONLY C pairs and all conditional forward B/C
-730:   pairs. These paths are relative to `Cases/0`, within each density part's `Object` and the
-731:   outer forward `Object` where present. M13 retains every identical subtree and differing
-732:   payload; density labels/label conditions, bulk premise and forward premise match within
-733:   their pairs. Whether the differing fields state the same condition is OPEN, no owner named,
-734:   separately from the item-5 counting decision below. The matching GM/profile fields alone
-735:   do not settle full-condition equivalence. (M13.)
-736:   Also owed is the **comparison of force sectors' flow requirements**, as the user's
-737:   2026-10-19 framing states (`directives/S12_decision_list.md`, "Filing and framing"; S12
-738:   record M01/M18): each force states the flow it needs, S21 compares them, and a mismatch
-739:   reopens S9b. This is an OPEN S21 deliverable, not a comparison performed by S12 or a
-740:   cross-sector compatibility result. It matches this entry's by-target row.
-741: - **on failure** — The conditional reference-matching statement for the affected observable
-742:   cannot be realized on that domain. The computed conditional functionals and the reported
-743:   cross-engine coverage do not become a GR-matching result.
-744: - **Flow comparison decision, user 2026-10-19** — Each force states the flow it needs; S21
-745:   compares those requirements, and a mismatch reopens S9b. S12 states the source compatibility
-746:   requirements and leaves forms open; it fits no flow and adds no optical calculation or
-747:   profile to this entry. This decision provenance adds no claim of cross-sector compatibility.
-748: - **evidence and limits** — `B_CONDITION_*`, `B_IMPLIED_JN_*`, `C_*_CONDITION_*`,
-749:   `C_*_IMPLIED_JN_*`, and the `R_FLOW_ONLY_`, `R_SPEED_ONLY_`, `R_TILT_ONLY_`,
-750:   `R_BULK_ONLY_` restrictions (S9b §§3–4, measurements M3/M4/M11). Flow-only constrains
-751:   `r(V²−2rVV′)/4`; speed-only `c₀²r²δ′/2`; tilt-only `c₀²rξw′²/4`; bulk-only
-752:   fixed ratio `c₀²(n−1)r²f′/4` and power `c₀²sr²f′/2`, each relative to GM.
-753:   Speed-, tilt- and bulk-only exchange prints zero; flow-only retains the signed live-density
-754:   exchange. Conditions/exchange/γ values have no formed cross-engine comparison; the domains
-755:   and every printed difference retain record §6's limits. This entry asserts no realized match.
-756: - **oracle comparison (evidence only, 2026-10-19)** — the accepted flow-only check (`8d91f448`;
-757:   record `steps/S9b_flow_oracle_comparison.md`) compares the flow-only restriction with Hamilton–Lisle
-758:   (2008) and Visser (1998).
-759:   - Two identifications are needed: the orbital `GM` with each oracle's mass parameter, and S9b's clock
-760:     and speed units with the oracle's. The check supplies neither, and prints both as `UNMATCHED`. Under
-761:     both, the kept flow-only squared speed equals the river model's and Visser §7's. The signed velocity
-762:     matches for one radial orientation per component, and the frame identification that would choose it is
-763:     also `UNMATCHED`.
-764:   - On the nonzero-velocity components, in both engines, the exchange `jn` vanishes only on
-765:     `ρbr = C₁/r^(3/2)`, the density law Visser §7 quotes. On the zero-velocity components the exchange
-766:     vanishes with the density left free.
-767: 
-768:   The comparison selects no profile and no exchange value, and it delivers nothing of this entry. The
-769:   requirement, its free inputs and its failure consequence are unchanged.
-770: 
-771: 
-772: **Counting the two observables under item 5.** The rule is “It counts the deflection
-773: and the radar slope as separate tests only where the printed objects show their conditions differ.”
-774: M17 retrieves that rule and both engines' complete γ objects, including their attached gates,
-775: for general B, R_FLOW_ONLY, R_SPEED_ONLY, R_TILT_ONLY and conditional F_FLOW/F_LIVE.
-776: On each object's on-domain `GM≠0` stratum, PY's γ-difference solution set is `{0}` and WL's
-777: relation contains `gammaDifference==0 && GM!=0`. Thus the two observables are **not counted
-778: as separate tests at these selected grades on that stratum**, in either engine. This is a
-779: count of the printed reference-comparison constraints, not a claim of cross-engine equivalence
-780: or observational redundancy outside this model point. (M17; paired conditions M13.)
-781: 
-782: At `GM=0`, PY separately prints the full real interval when both observable compatibility
-783: functionals vanish, and `EmptySet` on the other three printed vanishing/nonvanishing combinations.
-784: WL prints `GM==0` with both functionals zero, without a constraint on `gammaDifference`, and
-785: no further compatible alternative. Each engine's individual γ objects retain the corresponding
-786: unconstrained/empty singular strata. The record does not replace these by γ-difference zero:
-787: γ is unidentifiable on the compatible singular stratum, and the incompatible strata supply no
-788: joint γ solution. These strata establish no additional separate γ test under item 5; two
-789: independent tests are not counted from the unrestricted difference. Outside the respective gates,
-790: the objects are `NOT_ESTABLISHED`. (M17.)
-791: 
-792: Whether the differing WL `InverseWeight`, `ReferenceInverse` and velocity-reduction fields in
-793: M13 state the same condition remains **a separate OPEN question, no owner named**. That question
-794: does not put the above counting decision on hold. Nor are the differing strings treated as a
-795: shown physical difference of conditions: the printed γ strata are part of the counting evidence.
-796: Part C/bulk-only condition rewrites retain M13's field distinctions and earn no additional
-797: separate test here; no unprinted Part C γ object is invented. (M13/M17.)
-798: 
-799: **Engine-specific restrictions, constants, exchange and domains.** M18 retrieves both
-800: observables' complete `CONDITION` and `IMPLIED_JN` objects for all five restrictions below;
-801: no compact domain omission is used as evidence. In the following readable transcriptions,
-802: `r=s9b_r` for PY, `ρbr=rho_br_profile[r]` for PY and `rhoBr[r]` for WL. Engine-qualified
-803: constants are not identified across engines.
-804: 
-805: **PY flow-only (`R_FLOW_ONLY_B_*`).** Its printed solution dictionary has
-806: `squared = 2*GM/r`, `integrating_factor = 1/r`,
-807: `general_solution: s9b_velocity_squared(r) = r*(2*GM/r² + C_PY)`, and `residual = 0`,
-808: where `C_PY` names the printed real `s9b_velocity_integration_constant`.
-809: The `constants` field retains `C_PY=0`; its `C_PY≠0` branch is labelled
-810: `EXCLUDED_BY_SUPPLIED_V_OVER_C0_O_EPSILON_HALF`, with the printed limit of `C_PY` retained.
-811: The `nonreal_branch` is `2*GM/r<0`, labelled `EXCLUDED_BY_REAL_MATERIAL_VELOCITY`.
-812: The two positive-component entries print, respectively,
-813: 
-814: | PY velocity equality | PY implied exchange equality |
-815: |---|---|
-816: | `V = −√2 √GM / √r` | `jn = √2 √GM ρbr′/√r + (3/2)√2 √GM ρbr/r^(3/2)` |
-817: | `V = +√2 √GM / √r` | `jn = −√2 √GM ρbr′/√r − (3/2)√2 √GM ρbr/r^(3/2)` |
-818: 
-819: Their attached domain keeps the solved ray/applicability gate, `2*GM/r≥0` throughout
-820: `(s9b_b_min,∞)`, and `2*GM/r>0` on each named positive component. The condition itself keeps
-821: its exterior interval and the δ=ξ=0-substituted gate, and prints `GM=r(V²−2rVV′)/4`.
-822: Four further entries retain sign pairs `(-1,-1),(-1,1),(1,-1),(1,1)` at zero radius `z`:
-823: `z>s9b_b_min`, `2*GM/z=0`, matching real one-sided limits of
-824: `σ √2 √GM/(√q (q−z))`, `V(z)=0`, `V′(z)` equal to the right-hand limit, and
-825: `jn(z)=−ρbr(z)` times that right-hand limit. These are the printed differentiable-zero-join
-826: objects, including zero intervals; their limits are not evaluated in this record. The density
-827: function retains PY's positive declaration. (M18, tuple paths `0`, `1/0..5`, `2`.)
-828: 
-829: **WL flow-only (`R_FLOW_ONLY_B_*`).** Write `I(r)` only as an abbreviation for the printed
-830: `Inactive[Integrate][(-4*GM)/tailRadius^3,{tailRadius,r,Infinity}]`, without evaluating it.
-831: WL prints `GeneralSquaredVelocity = r*C_WL − r*I(r)` with
-832: `GeneralConstantDomain: Element[C_WL,Reals]`, and `SquaredVelocity = −r*I(r)`;
-833: `C_WL` names `velocityIntegrationConstant`. The retained `ConstantDomain` is `C_WL==0`;
-834: real nonzero `C_WL` branches are excluded by the supplied `V/c0=O(r^(-1/2))` counting.
-835: Each positive-component case lists `IntegrationConstants -> {C_WL}`, domain
-836: `C_WL==0 && −r*I(r)>0`, and its own substituted `AlongRayDomain`. It prints
+526: ### R-S1-03 — the substructure's microscopic time-reversibility
+527: 
+528: - **source** S11b-B (`steps/S11bB_interface_assembly.md`, limits of the passive region), unified S11b
+529:   (`steps/S11b_interface_coupling_law.md`, conditional Onsager–Casimir test) · **target** S1
+530:   (**register inference; no owner named by the records**) · **status** OPEN
+531: - **requirement** — whether the substructure's microdynamics is time-reversible, the premise of the
+532:   conditional Onsager–Casimir relation `Λ_X(ω) = −Λ_V(ω)`.
+533: - **on failure** — that relation cannot be imposed on the physical interface as an unconditional law.
+534:   The conditional calculation and the independently computed passivity region still stand; neither
+535:   selects a reciprocal medium. The records explicitly say microscopic reversibility is not postulated.
+536: - **note** — this is a first-route obligation from B's hand-forward: `Λ_X(ω) = −Λ_V(ω)` is
+537:   *"**conditional** on microscopic time-reversibility, which the model does not postulate"*
+538:   (`steps/S11bB_interface_assembly.md:190`). The records name no step that owns the missing premise, so S1
+539:   is a register inference. Onsager–Casimir is a second-route candidate only, not a reproduced prior result.
+540:   The equilibrium issue is `R-S6-02`; the driven state and power budget are separately `R-S12-02` and
+541:   `R-S12-01`.
+542: 
+543: ### R-S8-06 — material displacement and the slab's quadratic inertia
+544: 
+545: - **source** S9b (material identification only; `steps/S9b_light_bending.md`, §§2/8); O2 (material identification only; `steps/O2_steady_brane_balance.md`, register handoff); S11 (`steps/S11_stray_longitudinal.md`, move 1 / finite census); S11b-B
+546:   (`steps/S11bB_interface_assembly.md`, breathing quadratic) · **target** S8
+547:   (**register inference for the original S11/S11b records; O2 names S8 for the material identification**) · **status** OPEN
+548: - **requirement** — `u` as the material displacement of the stuff whose density is `ρ_br`, and the
+549:   quadratic kinetic form of that material and the thickness degree of freedom (B's `μ_W`) on the
+550:   original homogeneous/slab domain. O2 is a consumer of the material identification only.
+551: - **on failure** — if `u` is a director rather than that displacement, S11's continuity identification
+552:   `δρ_br = −ρ_br ∇·u` and its compression argument do not follow. Its finite census requires nonzero
+553:   `ρ_br`; B's breathing-root interpretation also rests on the stated inertial model. A stiffness
+554:   functional alone (`R-S8-01`) does not supply this identification or the kinetic form.
+555: - **note** — this asks for the field identity and inertia, not numerical benchmark values of `ρ_br`
+556:   or `μ_W`, and does not identify the thickness mode with S10's out-of-plane displacement. The cited
+557:   records name no future owner for this object; S8 is a register inference
+558:   (`steps/S11_stray_longitudinal.md:32–38`; `steps/S11bB_interface_assembly.md:80–85`).
+559: - **O2 scope** — O2 accounts for the material whose displacement is `u`, density is `ρ_br` and live
+560:   background velocity is `V`. This recorded/supplied identification fixes which material the named
+561:   conditional balance describes; without it the stated material object and its force/velocity
+562:   pairings are not identified. It gains O2 as a consumer on that identification alone
+563:   (`directives/O2_input_contract.md:55–71`; `directives/O2_SHARED_PHYSICS.md:107–109`).
+564:   The original homogeneous quadratic/slab and thickness inertia obligations keep their domains.
+565:   O2 adds no flowing/embedded inertial-response requirement: `ℐ_br^live` and the momentum map remain
+566:   unselected OPEN closure inputs, treated by the same criterion as O1 and O7 in the pass below.
+567:   No live identification of momentum density with `ρ_br V` follows from the homogeneous anchor.
+568:   S8's original assignment remains a register inference; O2's input contract names S8 for material
+569:   identity while supplying no new live kinetic law.
+570: 
+571: - **S9b scope** — The supplied advection and coordinate mass law identify `u`, `ρbr` and `V`
+572:   with the same material; this is a condition on the reported local optical object. Failure of the
+573:   identification removes that object's material interpretation. S9b adds this source only: P5
+574:   momentum density/carriage is scoped to held Part D, and Parts A–C derive no live kinetic/inertia
+575:   law. The original homogeneous/slab inertia domain is unchanged (S9b record §§2/7; measurements M1).
+576: 
+577: ### R-S12-01 — the reservoir and its power budget
+578: 
+579: - **source** O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-B (`steps/S11bB_interface_assembly.md`, standing rule); unified S11b
+580:   (`steps/S11b_interface_coupling_law.md`, passivity region) · **target** S12
+581:   (**register inference**) · **status** OPEN
+582: - **requirement** — a named reservoir and a stated power budget for any adopted non-passive interface
+583:   coupling.
+584:   The unified record names the candidate: *"The model supplies a candidate reservoir — the
+585:   background drain `v₀`."* (`steps/S11b_interface_coupling_law.md:62–63`). That `v₀` is the bulk's normal
+586:   drain, standard name `v_bulk_normal_0` (`directives/S11b_SHARED_PHYSICS.md:101–104`;
+587:   `directives/S11b_unified_decisions.md:33–40`). B says the reference state carrying that flow is *"a
+588:   **driven steady state with a reservoir attached.**"* (`steps/S11bB_interface_assembly.md:46–48`).
+589: - **on failure** — the finite-memory velocity channel outside the passive region cannot be inherited
+590:   as a physically supplied response. The computed region remains a classification, not a prohibition,
+591:   and naming `v_bulk_normal_0` alone does not supply the missing power.
+592: - **note** — this is the records' explicit condition for retaining that channel, not a requirement
+593:   that the model choose it. A numerical observational bound also needs matter-to-compression coupling;
+594:   B says that is unbuilt and reports only a structural test, so no numerical-bound requirement is added.
+595: - **owner/target** — the records do not name S12; that target is a register inference. They hand the
+596:   reservoir-and-budget condition to *"S11b-C"* (`steps/S11bB_interface_assembly.md:195–197`).
+597: - **O2 scope** — O2 carries this same conditional non-passive-interface obligation: if a later
+598:   closure adopts that response, name its reservoir and state its power budget. No such response is
+599:   selected. Its live owner is **no owner named**; the historical S11b-C → S11c handoff has no recorded
+600:   live successor, and S12 remains only the original register inference. This object is separate
+601:   from S12's additional non-variational source partners, premise 1's relaxation power, and the
+602:   net-supplier/budget obligation `R-O2-01`
+603:   (`directives/O2_SHARED_PHYSICS.md:312–317`; `directives/O2_input_contract.md:459–465`).
+604: - **S12 pass** — Carried separately in the S12 inventory, without a new computed power consumer.
+605:   U3's endless material supply in the bulk IR is not a named reservoir or a power budget. The
+606:   source compatibility objects deliver neither. The live owner remains **no owner named**;
+607:   this does not assign the whole obligation to S12 (`steps/S12_order_source.md`, §§3/5/7).
+608: 
+609: ### R-S12-02 — background drain/return and separate boundary data
+610: 
+611: - **source** S16 (supplied projection and "Keep S12" provenance only; `steps/S16_moving_region.md`, §§1/6; S16 M01/M04/M14); S14a part 1 (`steps/S14a_1_projection.md`, §§2–5/7–8; its retrievals M03/M05–M10); S12 (`steps/S12_order_source.md`, §§1–2/5–7; retrievals M01/M03/M07/M11); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S11b-A/B (`steps/S11b_interface_coupling_law.md:158–164`, background-flow limit); S11c
+612:   (`steps/S11c_PARTIAL_CLOSEOUT.md:7`, uniform result;
+613:   `steps/S11c_d_profile_conditioned_scattering.md:21–25`, selected uniform check)
+614:   · **target** S12 · **status** OPEN
+615: - **requirement** — the native drain/return functions and their separate boundary data; the
+616:   printed regional order-source objects and normalized face-source objects, with the separately
+617:   printed total-material face balances, as compatibility requirements on conversion, face and
+618:   order-flux forms. The objects are `general_order/region/{1,2,3}/source`,
+619:   `general_order/face/{1,2}/{trace_coefficient,source_contribution}` and
+620:   `material/face/{1,2}/requirement`. The distinct labelled conditional specialization is
+621:   `conditional_fast_ordering/region/{1,2,3}/source` and its two face objects. Their full values,
+622:   domain and cross-engine limits are S12 §2/4 and retrievals M03/M07–M09.
+623:   **Branch condition:** these printed compatibility requirements rest on the **real-fraction
+624:   branch; A13 stays OPEN**. The decision list says **"The committed law is written for a real
+625:   ordered fraction; a phase-carrying branch would add content not computed here"**. The plan
+626:   requires **"the conversion balance must use the branch chosen at S1"**. The printed objects
+627:   remain on the real-fraction branch until S1's gate decides; the owners remain S1, S5 and S12
+628:   (S12 record §6; retrievals M18/M19). This qualification travels with the future-form handoff.
+629: - **on failure** — the kept selected uniform check cannot be transferred to a flowing background: it is
+630:   a strict-rest-bulk calculation, and its finite samples do not prove flowing-background behaviour
+631:   (`steps/S11c_d_profile_conditioned_scattering.md:21–25`). S11b records why the rest-frame limitation
+632:   matters: its linearisation discards a relative correction of order
+633:   `O(v₀|q_n|/ω)` (`steps/S11bB_interface_assembly.md:150–154`), where that record's `v₀` is the steady
+634:   background normal flow, standard name `v_bulk_normal_0` (`directives/S11b_SHARED_PHYSICS.md:101–104`;
+635:   `directives/S11b_unified_decisions.md:33–40`). The unified record calls the correction uncarried and
+636:   unbounded (`steps/S11b_interface_coupling_law.md:158–164`) and carries the limit
+637:   to *"C (and to the nonlinear program for the DC/harmonic/sideband radiation audit)"*; S11c-a inherited
+638:   it as a standing limit but *"computes geometry only and does not address it"*
+639:   (`steps/S11c_a_interface_shape_derivatives.md:257–260`).
+640: - **owner** — S12 owns the drain/return data (`steps/S11c_PARTIAL_CLOSEOUT.md:21`) and is next for
+641:   dynamical bulk-to-brane order conversion with separate boundary data
+642:   (`steps/S11c_PARTIAL_CLOSEOUT.md:33`). Under the user's 2026-10-20 **"Keep S12"** decision,
+643:   S12 stays OPEN for these forms: this record closes only its requirements part and delivers
+644:   none of the forms. They come once the brane is defined, after the force sectors (S12 record,
+645:   §§5–7; retrieval M18). The earlier assignment/framing disagreement is quoted there.
+646: - **O2 scope** — Premise 2 makes dynamical order conversion the drive, with no separate body force.
+647:   O2's local source/controller and boundary/domain inventories remain distinct, as do additional
+648:   S12 momentum/energy partners and their reaction/supply systems. O2 adds a consumer for the stated
+649:   drain identity and distinct source/boundary accounting; without those roles its adopted drive is
+650:   unidentified or conflated with another load/partner. The original native drain/return functions
+651:   retain their sourced domains, and O2 demands no new functional forms for them. Local in-plane
+652:   carried `j_n V^i` does not deliver
+653:   these data, the live `𝒥_map`, bulk-direction carry, energy partners or a `GM` coupling
+654:   (`directives/O2_SHARED_PHYSICS.md`, §§3.3, 5, 6, 10). Those remain OPEN handoffs, not extra entries
+655:   merely because a later profile solve would need them.
+656: - **S12 scope and rest-on condition** — The conditional result rests on these printed compatibility
+657:   objects, not on any chosen means of meeting them. Below and above, the order source is the
+658:   regional order-flux divergence; inside it includes live material transport of order; each face
+659:   carries the printed source coefficient and a distinct material requirement. If candidate data
+660:   violate one of those objects on the stated domain, they cannot realize that conditional result.
+661:   Source, face and flux forms are not selected, and separate boundary data are not supplied. The
+662:   native-data obligation remains OPEN under the user's 2026-10-19 requirements-first framing.
+663:   The printed constraints are not its delivery. The fast-ordering object is conditional, not an
+664:   earned limit; concentrated input fields are outside the current object. The six unrestricted
+665:   coefficient differences are labelled representation diagnostics confined off their respective
+666:   delta supports, not open differences in the S12 distribution (contract item 3; retrieval M17).
+667:   Both raw expressions and every unpaired/ledger leaf limit remain in S12 §4 and its retrievals.
+668:   This merges source/face/flux compatibility into the existing native-conversion obligation,
+669:   without duplicating an entry or prescribing a law, material, premise or candidate.
+670: 
+671: - **S14a part 1 projected/shell compatibility** — The required objects also include the printed
+672:   projected material and order balances, their densities/in-plane fluxes, both interior and
+673:   closed-projection face terms, concentrated source parts and projected order source; in the
+674:   labelled spherical specialization, the printed face/core channels, `J`, signed order lost,
+675:   storage, shell balance, face-channel-minus-order-loss difference, outer flux/radius dependence
+676:   and the conditioned projected-velocity/volume-flux relations. These are the object requirements
+677:   listed by native tag/binding in the S14a part 1 pass below. Their full values/domain are
+678:   `steps/S14a_1_projection.md`, §§2–4, with all cross-engine differences/limits in §5 and retrievals
+679:   M03/M05–M10. Future data violating them cannot realize the reported conditional projection.
+680:   The requirements retain the real-fraction/A13 condition above, the live two-face function class,
+681:   full concentrated parts, spherical restriction where used and nonzero-density velocity domain.
+682:   No means of meeting them is named. S12's forms and separate boundary data remain OPEN under
+683:   "Keep S12"; these constraints deliver neither. Unresolved exact differences and unpaired
+684:   decompositions are not silently promoted to exact-equivalence requirements.
+685: 
+686: ### R-O2-01 — the net-power supplier and its stated budget
+687: 
+688: - **source** O2 (`steps/O2_steady_brane_balance.md`, energy accounting and register handoff)
+689:   · **target** no owner named · **status** OPEN
+690: - **requirement** — the physical supplier of net power and its stated power budget, represented by
+691:   the OPEN `𝒮_E,net` / `𝒫_E,supply` inputs, accompanying any conditional closure requiring net supply.
+692: - **on failure** — such a closure cannot be claimed physically supplied. Naming the drain alone
+693:   supplies neither available energy nor a budget; O2 measures no net supply and imposes no passive
+694:   sign or relaxation law.
+695: - **owner** — the spec calls this an **O2 requirement; source/holder/supplier forms retain their
+696:   owners** (`directives/O2_SHARED_PHYSICS.md:282`). It names no future owner of the net-supplier/budget
+697:   object. S12 source forms and Q2/S22 holder forms keep their separate assignments; none is assigned
+698:   this entire obligation.
+699: - **scope** — this is an accounting requirement on conditional relations requiring net supply,
+700:   fixed by adopted premise 1, not a derived supplier, budget value or additive energy-channel law.
+701:   It is separate from the conditional non-passive-interface reservoir obligation `R-S12-01` and
+702:   from explicit reference/relaxation power with its unassigned reference owner
+703:   (`directives/O2_SHARED_PHYSICS.md:270–282, 307–317`; `directives/O2_input_contract.md`, §8).
+704: - **S12 pass** — The energy-partner inventory carries this obligation separately from
+705:   `R-S12-01` and from conversion partners. No S12 object computes net supply or consumes a
+706:   conditional net-supply closure, so it adds no computed source and changes no owner or status
+707:   (`steps/S12_order_source.md`, §§3/5/7).
+708: 
+709: ---
+710: 
+711: 
+712: ### R-S21-01 — conditional deflection and radar-slope profile requirements
+713: 
+714: - **source** S9b (`steps/S9b_light_bending.md`, §§3–6; measurements M3–M7/M11–M13/M17–M19);
+715:   S16 framing decision only (`steps/S16_moving_region.md`, §§1/6; user 2026-10-19,
+716:   carried in its decision list 2026-10-21; S16 M01/M14);
+717:   S12 framing decision only (`steps/S12_order_source.md`, §§6–7; user 2026-10-19, retrieved M01);
+718:   S14a part 1 framing decision only (`steps/S14a_1_projection.md`, §§1/7–8; user 2026-10-19,
+719:   carried in its decision list 2026-10-21, retrieved M01)
+720:   · **target** S21 (integration/knit; S9b record §7, O2 record §7 and the record directive's
+721:   2026-10-08/09 user decisions) · **status** OPEN
+722: - **requirement** — On S9b's isolated spherical, steady far-zone, leading-eikonal, LAB_HELD
+723:   domain and selected G100/G010/G020/G001 grades, the printed Part B profile condition for
+724:   **each** observable, deflection and radar logarithmic slope, relative to independent orbital
+725:   `GM`, for every far-zone impact parameter. PY prints for each
+726:   `GM=r[2c₀²rδ′+c₀²ξw′²−2rVV′+V²]/4` as a radial identity. WL prints its `GM` anchor rule
+727:   plus the all-radius profile equation (S9b Appendix A), with derivatives, convergence, Abel
+728:   invertibility and constructed-ray/branch/traversal domains. Their complete cross-engine
+729:   equivalence is not established; neither form is discarded.
+730:   Part C carries the separately printed constant-speed condition
+731:   `GM=r[c₀²ξw′²−2rVV′+V²]/4`, fixed-ratio condition
+732:   `GM=r[c₀²(n−1)rf′+c₀²ξw′²−2rVV′+V²]/4`, and power condition
+733:   `GM=r[2c₀²srf′+c₀²ξw′²−2rVV′+V²]/4`, with WL's corresponding anchor/profile equations.
+734:   Fixed-ratio and power objects retain both `ρ>0` and `ρ≤0` labels and exact response domains;
+735:   `ρ₀>0` remains supplied. The first-order-f expressions supply no finite-density or f–ε extension.
+736:   Each condition includes its printed implied `jn`, with `ρbr` symbolic and differentiated:
+737:   the coordinate mass expression is `jn=−ρbr V′−Vρbr′−2ρbr V/r`, with both signed-velocity
+738:   components, zero-locus differentiability/flux joins, excluded nonreal branches and printed
+739:   integration-constant domains retained. The complete implied-exchange values remain uncompared.
+740:   The requirements keep δ, ξw, ρbr, f, n, s, GM and all remaining printed inputs free;
+741:   they select no profile, exponent, flux value/sign or GM normalization. M13 retrieves all 14
+742:   within-engine deflection/radar condition pairs: every PY paired payload is byte-identical,
+743:   while every WL paired payload differs (M13).
+744:   WL `GM`, `ProfileEquation`, `ProfileEquationRadius`, outer `Domain`/`BranchDomain` and case
+745:   `Domain` match literally; `InverseWeight` and `ReferenceInverse` differ in every pair.
+746:   `VelocityReduction/SquaredVelocityEquation` additionally differs for general B, R_FLOW_ONLY B
+747:   and combined C_CONSTANT/C_FIXED_RATIO/C_POWER; `VelocityReduction/Cases/0/Domain` differs
+748:   for R_SPEED_ONLY B, R_TILT_ONLY B, both R_BULK_ONLY C pairs and all conditional forward B/C
+749:   pairs. These paths are relative to `Cases/0`, within each density part's `Object` and the
+750:   outer forward `Object` where present. M13 retains every identical subtree and differing
+751:   payload; density labels/label conditions, bulk premise and forward premise match within
+752:   their pairs. Whether the differing fields state the same condition is OPEN, no owner named,
+753:   separately from the item-5 counting decision below. The matching GM/profile fields alone
+754:   do not settle full-condition equivalence. (M13.)
+755:   Also owed is the **comparison of force sectors' flow requirements**, as the user's
+756:   2026-10-19 framing states (`directives/S12_decision_list.md`, "Filing and framing"; S12
+757:   record M01/M18): each force states the flow it needs, S21 compares them, and a mismatch
+758:   reopens S9b. This is an OPEN S21 deliverable, not a comparison performed by S12 or a
+759:   cross-sector compatibility result. It matches this entry's by-target row.
+760: - **on failure** — The conditional reference-matching statement for the affected observable
+761:   cannot be realized on that domain. The computed conditional functionals and the reported
+762:   cross-engine coverage do not become a GR-matching result.
+763: - **Flow comparison decision, user 2026-10-19** — Each force states the flow it needs; S21
+764:   compares those requirements, and a mismatch reopens S9b. S12 states the source compatibility
+765:   requirements and leaves forms open; it fits no flow and adds no optical calculation or
+766:   profile to this entry. This decision provenance adds no claim of cross-sector compatibility.
+767: - **evidence and limits** — `B_CONDITION_*`, `B_IMPLIED_JN_*`, `C_*_CONDITION_*`,
+768:   `C_*_IMPLIED_JN_*`, and the `R_FLOW_ONLY_`, `R_SPEED_ONLY_`, `R_TILT_ONLY_`,
+769:   `R_BULK_ONLY_` restrictions (S9b §§3–4, measurements M3/M4/M11). Flow-only constrains
+770:   `r(V²−2rVV′)/4`; speed-only `c₀²r²δ′/2`; tilt-only `c₀²rξw′²/4`; bulk-only
+771:   fixed ratio `c₀²(n−1)r²f′/4` and power `c₀²sr²f′/2`, each relative to GM.
+772:   Speed-, tilt- and bulk-only exchange prints zero; flow-only retains the signed live-density
+773:   exchange. Conditions/exchange/γ values have no formed cross-engine comparison; the domains
+774:   and every printed difference retain record §6's limits. This entry asserts no realized match.
+775: - **oracle comparison (evidence only, 2026-10-19)** — the accepted flow-only check (`8d91f448`;
+776:   record `steps/S9b_flow_oracle_comparison.md`) compares the flow-only restriction with Hamilton–Lisle
+777:   (2008) and Visser (1998).
+778:   - Two identifications are needed: the orbital `GM` with each oracle's mass parameter, and S9b's clock
+779:     and speed units with the oracle's. The check supplies neither, and prints both as `UNMATCHED`. Under
+780:     both, the kept flow-only squared speed equals the river model's and Visser §7's. The signed velocity
+781:     matches for one radial orientation per component, and the frame identification that would choose it is
+782:     also `UNMATCHED`.
+783:   - On the nonzero-velocity components, in both engines, the exchange `jn` vanishes only on
+784:     `ρbr = C₁/r^(3/2)`, the density law Visser §7 quotes. On the zero-velocity components the exchange
+785:     vanishes with the density left free.
+786: 
+787:   The comparison selects no profile and no exchange value, and it delivers nothing of this entry. The
+788:   requirement, its free inputs and its failure consequence are unchanged.
+789: 
+790: 
+791: **Counting the two observables under item 5.** The rule is “It counts the deflection
+792: and the radar slope as separate tests only where the printed objects show their conditions differ.”
+793: M17 retrieves that rule and both engines' complete γ objects, including their attached gates,
+794: for general B, R_FLOW_ONLY, R_SPEED_ONLY, R_TILT_ONLY and conditional F_FLOW/F_LIVE.
+795: On each object's on-domain `GM≠0` stratum, PY's γ-difference solution set is `{0}` and WL's
+796: relation contains `gammaDifference==0 && GM!=0`. Thus the two observables are **not counted
+797: as separate tests at these selected grades on that stratum**, in either engine. This is a
+798: count of the printed reference-comparison constraints, not a claim of cross-engine equivalence
+799: or observational redundancy outside this model point. (M17; paired conditions M13.)
+800: 
+801: At `GM=0`, PY separately prints the full real interval when both observable compatibility
+802: functionals vanish, and `EmptySet` on the other three printed vanishing/nonvanishing combinations.
+803: WL prints `GM==0` with both functionals zero, without a constraint on `gammaDifference`, and
+804: no further compatible alternative. Each engine's individual γ objects retain the corresponding
+805: unconstrained/empty singular strata. The record does not replace these by γ-difference zero:
+806: γ is unidentifiable on the compatible singular stratum, and the incompatible strata supply no
+807: joint γ solution. These strata establish no additional separate γ test under item 5; two
+808: independent tests are not counted from the unrestricted difference. Outside the respective gates,
+809: the objects are `NOT_ESTABLISHED`. (M17.)
+810: 
+811: Whether the differing WL `InverseWeight`, `ReferenceInverse` and velocity-reduction fields in
+812: M13 state the same condition remains **a separate OPEN question, no owner named**. That question
+813: does not put the above counting decision on hold. Nor are the differing strings treated as a
+814: shown physical difference of conditions: the printed γ strata are part of the counting evidence.
+815: Part C/bulk-only condition rewrites retain M13's field distinctions and earn no additional
+816: separate test here; no unprinted Part C γ object is invented. (M13/M17.)
+817: 
+818: **Engine-specific restrictions, constants, exchange and domains.** M18 retrieves both
+819: observables' complete `CONDITION` and `IMPLIED_JN` objects for all five restrictions below;
+820: no compact domain omission is used as evidence. In the following readable transcriptions,
+821: `r=s9b_r` for PY, `ρbr=rho_br_profile[r]` for PY and `rhoBr[r]` for WL. Engine-qualified
+822: constants are not identified across engines.
+823: 
+824: **PY flow-only (`R_FLOW_ONLY_B_*`).** Its printed solution dictionary has
+825: `squared = 2*GM/r`, `integrating_factor = 1/r`,
+826: `general_solution: s9b_velocity_squared(r) = r*(2*GM/r² + C_PY)`, and `residual = 0`,
+827: where `C_PY` names the printed real `s9b_velocity_integration_constant`.
+828: The `constants` field retains `C_PY=0`; its `C_PY≠0` branch is labelled
+829: `EXCLUDED_BY_SUPPLIED_V_OVER_C0_O_EPSILON_HALF`, with the printed limit of `C_PY` retained.
+830: The `nonreal_branch` is `2*GM/r<0`, labelled `EXCLUDED_BY_REAL_MATERIAL_VELOCITY`.
+831: The two positive-component entries print, respectively,
+832: 
+833: | PY velocity equality | PY implied exchange equality |
+834: |---|---|
+835: | `V = −√2 √GM / √r` | `jn = √2 √GM ρbr′/√r + (3/2)√2 √GM ρbr/r^(3/2)` |
+836: | `V = +√2 √GM / √r` | `jn = −√2 √GM ρbr′/√r − (3/2)√2 √GM ρbr/r^(3/2)` |
 837: 
-838: | WL velocity | WL implied exchange |
-839: |---|---|
-840: | `−√(−r I(r))` | `[-ρbr(4GM+5r²I(r))−2r³I(r)ρbr′]/[2r²√(−r I(r))]` |
-841: | `+√(−r I(r))` | `[ρbr(4GM+5r²I(r))+2r³I(r)ρbr′]/[2r²√(−r I(r))]` |
-842: 
-843: The zero-interval case has `C_WL==0 && −r*I(r)==0`, `V=V′=jn=0` and the same listed
-844: constant/domain. `NoRealVelocityDomain` retains the negative-squared branch. `ZeroSetJoining`
-845: and each `AtComponentBoundary` retain differentiable real velocity/flux and finite matching
-846: one-sided limits. The enclosing condition retains `r>bFar`, `rAnchor>bFar`, functional
-847: regularity/convergence/Abel-invertibility requirements, its `BranchDomain`, the anchor GM
-848: rule and all-radius profile equation; each velocity case carries `AlongRayDomain` with its
-849: own substitution. WL keeps real nonzero density and its optical-ratio gate. No evaluation of
-850: `I(r)`, identification with PY's `2GM/r`, or identification of constants is claimed.
-851: These flow-condition/exchange value and domain differences remain OPEN across engines,
-852: no owner named. (M18; M6/M7.)
-853: 
-854: **Zero-velocity restrictions.** The following table reports each engine's own condition and
-855: exchange-domain fields for both observables. PY's full attached gate at condition path `3`
-856: is obtained by that restriction's substitutions; its radial interval is `(s9b_b_min,∞)`.
-857: For bulk-only rows the condition is inside `OBJECT_ON_BOTH_PARTS`, with both density-label
-858: conditions and the exact response domain. WL's enclosing `Domain` and `BranchDomain`, and
-859: each case's `AlongRayDomain`, remain attached in every row; its `Domain` includes exterior
-860: radius/anchor and functional requirements. The residual equalities below are WL's additional
-861: `Cases/0/Domain` entries in `IMPLIED_JN` (also inside the velocity reduction of `CONDITION`),
-862: not replacements for those gates. M18 preserves every domain verbatim.
-863: 
-864: | Restriction | PY printed condition and exchange | WL printed condition and exchange-case domain |
-865: |---|---|---|
-866: | Speed-only, V=ξ=0 | `GM=c₀²r²δ′/2`; `VELOCITY_FIXED_BY_RESTRICTION`, `V=0`, attached speed-only gate, `jn=0` | GM anchor rule plus `2δ′+rδ″=0`; deflection domain `−2GM/(c₀²r)+rδ′==0`, radar domain `−2GM/(c₀³r)+rδ′/c₀==0`; `V=V′=jn=0` |
-867: | Tilt-only, δ=V=0 | `GM=c₀²rξ′²/4`; `VELOCITY_FIXED_BY_RESTRICTION`, `V=0`, attached tilt-only gate, `jn=0` | GM anchor rule plus `ξ′(ξ′+2rξ″)=0`; deflection domain `−2GM/(c₀²r)+ξ′²/2==0`, radar domain `−2GM/(c₀³r)+ξ′²/(2c₀)==0`; `V=V′=jn=0` |
-868: | Bulk-only fixed ratio, V=ξ=0 | `GM=c₀²(n−1)r²f′/4`; fixed-velocity tuple, `V=jn=0`, exact fixed-ratio/substituted-ray domain on both labels | anchor rule plus `(n−1)(2f′+rf″)=0`; deflection domain `−2GM/(c₀²r)+(n−1)rf′/2==0`, radar domain `−2GM/(c₀³r)+(n−1)rf′/(2c₀)==0`, conjoined with the exact fixed-ratio domain on each label; `V=V′=jn=0` |
-869: | Bulk-only power, V=ξ=0 | `GM=c₀²sr²f′/2`; fixed-velocity tuple, `V=jn=0`, exact power/substituted-ray domain on both labels | anchor rule plus `2sf′+rsf″=0`; deflection domain `−2GM/(c₀²r)+rsf′==0`, radar domain `−2GM/(c₀³r)+rsf′/c₀==0`, conjoined with the exact power domain on each label; `V=V′=jn=0` |
-870: 
-871: In **each** of these four restrictions PY emits no integration-constant field or solved-velocity
-872: dictionary: velocity is prescribed zero. WL explicitly prints `IntegrationConstants -> {}` and
-873: status “prescribed by the labelled substitution”, with no `ConstantDomain` field. Neither engine
-874: selects δ, ξ or f, or prints a solved-profile integration constant for those live profiles here.
-875: The fixed-ratio domain retains real local/asymptotic sound-speed squares, local square ≥0,
-876: asymptotic square >0 and the exact nonnegative-root ratio real and >0. The power domain retains
-877: `c₀ densityPower[1+f,s]` real and >0; `ρ₀>0` and the exact ray substitutions travel with both.
-878: Both keep `ρ>0` and `ρ≤0` labels; no germ-equivalent response replaces an exact domain.
-879: 
-880: For **each** flow/speed/tilt optical restriction, deflection/radar/residual value samples form
-881: but retain printed numeric differences and unresolved domains; γ rows compare markers only,
-882: and full conditions/exchange have no formed value comparison. For **each** bulk-only response,
-883: only label/domain comparisons form, not condition/exchange values. The WL/PY constant,
-884: squared-velocity, signed-exchange, zero-join and domain representations above are retained as
-885: OPEN differences, no owner named; no equivalence is supplied by the zero exchange entries.
-886: (M18; M5–M7, with the counting rule separately applied in M17.)
-887: 
-888: ### R-S22-01 — how the energy a throat releases splits among light, the extra wave and the bulk
+838: Their attached domain keeps the solved ray/applicability gate, `2*GM/r≥0` throughout
+839: `(s9b_b_min,∞)`, and `2*GM/r>0` on each named positive component. The condition itself keeps
+840: its exterior interval and the δ=ξ=0-substituted gate, and prints `GM=r(V²−2rVV′)/4`.
+841: Four further entries retain sign pairs `(-1,-1),(-1,1),(1,-1),(1,1)` at zero radius `z`:
+842: `z>s9b_b_min`, `2*GM/z=0`, matching real one-sided limits of
+843: `σ √2 √GM/(√q (q−z))`, `V(z)=0`, `V′(z)` equal to the right-hand limit, and
+844: `jn(z)=−ρbr(z)` times that right-hand limit. These are the printed differentiable-zero-join
+845: objects, including zero intervals; their limits are not evaluated in this record. The density
+846: function retains PY's positive declaration. (M18, tuple paths `0`, `1/0..5`, `2`.)
+847: 
+848: **WL flow-only (`R_FLOW_ONLY_B_*`).** Write `I(r)` only as an abbreviation for the printed
+849: `Inactive[Integrate][(-4*GM)/tailRadius^3,{tailRadius,r,Infinity}]`, without evaluating it.
+850: WL prints `GeneralSquaredVelocity = r*C_WL − r*I(r)` with
+851: `GeneralConstantDomain: Element[C_WL,Reals]`, and `SquaredVelocity = −r*I(r)`;
+852: `C_WL` names `velocityIntegrationConstant`. The retained `ConstantDomain` is `C_WL==0`;
+853: real nonzero `C_WL` branches are excluded by the supplied `V/c0=O(r^(-1/2))` counting.
+854: Each positive-component case lists `IntegrationConstants -> {C_WL}`, domain
+855: `C_WL==0 && −r*I(r)>0`, and its own substituted `AlongRayDomain`. It prints
+856: 
+857: | WL velocity | WL implied exchange |
+858: |---|---|
+859: | `−√(−r I(r))` | `[-ρbr(4GM+5r²I(r))−2r³I(r)ρbr′]/[2r²√(−r I(r))]` |
+860: | `+√(−r I(r))` | `[ρbr(4GM+5r²I(r))+2r³I(r)ρbr′]/[2r²√(−r I(r))]` |
+861: 
+862: The zero-interval case has `C_WL==0 && −r*I(r)==0`, `V=V′=jn=0` and the same listed
+863: constant/domain. `NoRealVelocityDomain` retains the negative-squared branch. `ZeroSetJoining`
+864: and each `AtComponentBoundary` retain differentiable real velocity/flux and finite matching
+865: one-sided limits. The enclosing condition retains `r>bFar`, `rAnchor>bFar`, functional
+866: regularity/convergence/Abel-invertibility requirements, its `BranchDomain`, the anchor GM
+867: rule and all-radius profile equation; each velocity case carries `AlongRayDomain` with its
+868: own substitution. WL keeps real nonzero density and its optical-ratio gate. No evaluation of
+869: `I(r)`, identification with PY's `2GM/r`, or identification of constants is claimed.
+870: These flow-condition/exchange value and domain differences remain OPEN across engines,
+871: no owner named. (M18; M6/M7.)
+872: 
+873: **Zero-velocity restrictions.** The following table reports each engine's own condition and
+874: exchange-domain fields for both observables. PY's full attached gate at condition path `3`
+875: is obtained by that restriction's substitutions; its radial interval is `(s9b_b_min,∞)`.
+876: For bulk-only rows the condition is inside `OBJECT_ON_BOTH_PARTS`, with both density-label
+877: conditions and the exact response domain. WL's enclosing `Domain` and `BranchDomain`, and
+878: each case's `AlongRayDomain`, remain attached in every row; its `Domain` includes exterior
+879: radius/anchor and functional requirements. The residual equalities below are WL's additional
+880: `Cases/0/Domain` entries in `IMPLIED_JN` (also inside the velocity reduction of `CONDITION`),
+881: not replacements for those gates. M18 preserves every domain verbatim.
+882: 
+883: | Restriction | PY printed condition and exchange | WL printed condition and exchange-case domain |
+884: |---|---|---|
+885: | Speed-only, V=ξ=0 | `GM=c₀²r²δ′/2`; `VELOCITY_FIXED_BY_RESTRICTION`, `V=0`, attached speed-only gate, `jn=0` | GM anchor rule plus `2δ′+rδ″=0`; deflection domain `−2GM/(c₀²r)+rδ′==0`, radar domain `−2GM/(c₀³r)+rδ′/c₀==0`; `V=V′=jn=0` |
+886: | Tilt-only, δ=V=0 | `GM=c₀²rξ′²/4`; `VELOCITY_FIXED_BY_RESTRICTION`, `V=0`, attached tilt-only gate, `jn=0` | GM anchor rule plus `ξ′(ξ′+2rξ″)=0`; deflection domain `−2GM/(c₀²r)+ξ′²/2==0`, radar domain `−2GM/(c₀³r)+ξ′²/(2c₀)==0`; `V=V′=jn=0` |
+887: | Bulk-only fixed ratio, V=ξ=0 | `GM=c₀²(n−1)r²f′/4`; fixed-velocity tuple, `V=jn=0`, exact fixed-ratio/substituted-ray domain on both labels | anchor rule plus `(n−1)(2f′+rf″)=0`; deflection domain `−2GM/(c₀²r)+(n−1)rf′/2==0`, radar domain `−2GM/(c₀³r)+(n−1)rf′/(2c₀)==0`, conjoined with the exact fixed-ratio domain on each label; `V=V′=jn=0` |
+888: | Bulk-only power, V=ξ=0 | `GM=c₀²sr²f′/2`; fixed-velocity tuple, `V=jn=0`, exact power/substituted-ray domain on both labels | anchor rule plus `2sf′+rsf″=0`; deflection domain `−2GM/(c₀²r)+rsf′==0`, radar domain `−2GM/(c₀³r)+rsf′/c₀==0`, conjoined with the exact power domain on each label; `V=V′=jn=0` |
 889: 
-890: - **source**
-891:   - S11 (`steps/S11_stray_longitudinal.md`, departure table and the paragraphs after it). The table gives the
-892:     question "whether matter directly observes the second cone" the owner "derived matter/interface
-893:     coupling". The record says "A second cone is only a departure if matter COUPLES to it", and describes
-894:     matter as "a throat held open by a trapped brane-shear standing wave".
-895:   - The photon survey, E32–E34 and E38 (`PHOTON_POLARIZATION_SURVEY.md` §4). Each is "In apparent conflict",
-896:     under conditions that differ by entry. In the survey's words, the classification rests on "E32–E34 on
-897:     matter coupling and, for the blackbody comparison, ordinary thermal-radiation participation; E38
-898:     additionally on the extra branch's cosmological relativistic population, energy/perturbation mapping and
-899:     decoupling history". (C6, C7.)
-900: - **target** S22 (the nonlinear throat solve), together with Q2 (the mouth source and its held datum) and
-901:   S12 (the throat's order-conversion source and its boundary data). These owners were chosen by the user on
-902:   2026-10-19; the S11 record itself names only "derived matter/interface coupling". (C8.)
-903:   The user's 2026-10-20 **"Keep S12"** decision retains every owner. S12 stays OPEN for its
-904:   forms, delivered only after the brane is defined following the force sectors; this requirements
-905:   record delivers none of those forms (S12 record §§5–7, retrieval M18).
-906: - **status** OPEN
-907: - **requirement** — Consider a throat held open by its trapped shear wave. The trapped-wave state can change,
-908:   the throat can move, and its mouth can change shape. When any of these happens, the object is the energy
-909:   released, with its frequency content and rate, and how it splits among three channels:
-910:   - the free transverse waves (light);
-911:   - the extra longitudinal wave (S11's second cone);
-912:   - the bulk.
-913: 
-914:   The entry also requires the reverse: how much of the energy each channel carries in is taken up by a
-915:   throat, at each frequency.
-916: - **on failure** — S11's departure cannot be classified. The record makes the second cone a departure only
-917:   if matter couples to it, and without these objects nothing decides whether matter observes it. E32–E34
-918:   and E38 stay "in apparent conflict", with their condition undecided.
-919: - **note: what a delivered split would and would not decide** —
-920:   - **Each measurement has its own conditions** (survey §4):
-921:     - **E33**, the laboratory blackbody, needs the extra wave to be an additional ordinary thermal mode,
-922:       with the usual occupation, energy and dispersion, and a calibrated emission and absorption response.
-923:     - **E34**, the CMB spectrum, needs its power to enter the calibrated CMB radiance rather than cancel in
-924:       the sky/reference comparison.
-925:     - **E38**, `N_eff`, needs it to be extra gravitating radiation, populated and relativistic in the early
-926:       universe. The survey adds that a weak population or earlier decoupling is not generically excluded.
-927:   - **The split alone decides none of them.** Whether the extra wave is populated depends on several things:
-928:     - its emission and uptake rates, compared with each measurement's timescale;
-929:     - its escape into the bulk;
-930:     - its initial population and the expansion history.
-931: 
-932:     What a populated wave then carries depends on its own speed. In S11 that speed is set by `B_comp/ρ_br`
-933:     (`R-S6-01`), not by light's `μ_R/ρ_br`. So a share comparable to light's is not by itself a conflict,
-934:     and neither is equilibrium with matter. Nor does a small share by itself rule one out.
-935:   - **The falsifier** is each measurement, applied under its own conditions to the population and power
-936:     that these objects, the extra wave's speed and its escape into the bulk predict. That application is
-937:     later work. This entry states no bound; compare the note in `R-S12-01`.
-938:   - **The quantum part.** The survey's conditions also assume the usual quantum occupation. The plan
-939:     assigns that to a separate project (`V3_STEP_PLAN.md:1198–1204`; survey [P8]), so a classical split
-940:     does not settle that part. (C7.)
-941: - **relation** —
-942:   - S22's linear test 1 asks how much light passing a supplied defect profile converts into the
-943:     longitudinal mode. S11c asked how much light converts where the brane changes (`V3_STEP_PLAN.md:508`).
-944:     Both concern incoming light; neither is a throat's own emission.
-945:   - S22's linear test 2 asks whether the longitudinal mode radiates into the bulk, and needs the interface
-946:     law (`V3_STEP_PLAN.md:1181`). That escape enters the extra wave's population. So applying any
-947:     measurement under this entry also needs test 2's result.
-948:   - The S11 record adds that at homogeneous linear order "the mode's bulk leakage and direct observability
-949:     require the brane–bulk interface law". S11b supplies that law conditionally, for a uniform brane only.
-950:   - The S11 record states that `c_L` is not a gravitational wave, so this entry is not about the carrier of
-951:     gravity. (C6, C8.)
-952: 
-953: ### R-S14a-01 — the dynamically selected slow limit and far behaviour
-954: 
-955: - **source** S14a part 2 (`steps/S14a_2_slow_limit.md`, §§1–5/7; retrievals M01–M13/M16/M17),
-956:   for the conditional consumers S14, S15 and S20.
-957: - **target** jointly S12 (source and flux forms), S8/S22 (the slab's material law), and
-958:   **no owner named** for the face and interior laws, by the user's V2 decision at `12aa65d5`.
-959: - **status** OPEN
-960: - **requirement** — the slow limit and far behaviour selected by the slab's own dynamics,
-961:   for S14a's still-underived controlled return and profile-dependent `J→Q` obligations.
-962:   The selected steady-throughput and exchange-live decisions keep spreading, exchange and
-963:   storage live. No average, solution family, density gate, order of limits, law, material,
-964:   profile, premise or candidate is selected here.
-965: - **on failure** — S14, S15 and S20 remain **CONDITIONAL, not carried results**.
-966: - **decision and owners** — The user chose **"Record as requirement"** (2026-10-21), then
-967:   **"All the slab's laws (Recommended)"** for V2. The latter is recorded in
-968:   `directives/_measurements/S14a_2_record_r0_review_disposition.md`, "The user's decision on V2",
-969:   at `12aa65d5` (M16). It replaces item 4's S12-only target sentence. The earlier
-970:   **"(the open S12 forms)"** option text and accepted S12's different ownership statements are
-971:   quoted in record §§4/6. No missing owner is invented. S12's source/flux forms and separate
-972:   boundary data remain OPEN under **"Keep S12"**; the complete return-law/map obligations
-973:   are not repartitioned. Recording this requirement delivers none of the forms, the slow
-974:   return law or the source map.
-975: - **evidence and limits** — The step-list pass-1 Q1–Q3 and pass-2 R1–R3 dispositions and the
-976:   separately scoped Codex/Grok instruments in `directives/_measurements/S14a_2_review_witnesses/`
-977:   are retrieved in M03–M10. Each is a review-leg instrument, not an accepted build; their
-978:   constructions/checks differ as record §§2–3 states. The material-face zeros made from
-979:   identical operands or typed zeros are displays, not checks. The pass-2 adjudication's
-980:   dynamics reading remains a reading. No build ran by the user's decision. The inherited
-981:   real-fraction/A13, live-face and part-1 domain/comparison qualifications remain (M11–M13).
-982: - **entry rather than merge** — The register keys an entry by its deliverer and merges only
-983:   the same requirement with the same deliverers. None of the 18 entries at `978c359c` covers
-984:   this selection object with V2's joint deliverers. `R-S12-02` covers S12's native forms/data
-985:   and compatibility objects, not the jointly owed selection; `R-S22-01` concerns the throat
-986:   energy split, and `R-O2-01` concerns a net-power supplier/budget. Their objects and targets
-987:   remain as recorded. This is a separate entry under the schema and method, not a second
-988:   obligation added to `R-S12-02`'s target (record §5; M12/M17).
-989: 
-990: ### R-S16-01 — the surroundings object needed for a passive factor
-991: 
-992: - **source** S16, user's 2026-10-21 "Record what it needs" decision, carried in
-993:   `directives/S16_decision_list.md`, "User decisions" and "For the record and its register pass";
-994:   `steps/S16_moving_region.md`, §§1/6 (S16 retrievals M01/M04/M07/M14).
-995: - **target** no owner named
-996: - **status** OPEN
-997: - **requirement** — a named field of the surroundings, its separation from the body's own field,
-998:   and its normalization, for the open passive-factor/gradient-form interpretation.
-999: - **on failure** — received momentum cannot be promoted to that passive-factor interpretation.
-1000:   The supplied regional balances and received-momentum object remain conditional objects.
-1001: - **standing** — explicit future requirement selected by the user; no passive factor or field is
-1002:   assumed or derived. G7 is an oracle under its own conditions, not this object's delivery (S16 §5).
-1003:   This is distinct from source normalization in S22's debt account and from S21's comparison of
-1004:   force-sector flow requirements. No owner is inferred from those neighbouring interfaces.
-1005: 
-1006: ### R-S16-02 — the body's compactness in both comparisons
-1007: 
-1008: - **source** S16, user's 2026-10-21 decisions as filed in
-1009:   `directives/S16_decision_list.md`, "Filing and framing" and "For the record and its register pass";
-1010:   source assumption `research/4d_1pn_full/paper/4d_1pn_full.tex:697–700`;
-1011:   `steps/S16_moving_region.md`, §§4/6 (S16 M01/M04/M14).
-1012: - **target** no owner named for physical delivery; S22 is the named recipient of this debt in its table
-1013: - **status** OPEN
-1014: - **requirement** — the body's size small relative to inter-body separation and to the scale of
-1015:   variation of a field of the surroundings, kept as two comparisons.
-1016: - **on failure** — the compact-body response approximation cannot be claimed. S16's conditional
-1017:   region balances and count moments do not determine either comparison.
-1018: - **standing** — an explicit user-filed requirement, not an imposed compactness premise.
-1019:   S22's debt-table recipient is not evidence of a physical compactness deliverer. The C10/tail
-1020:   question remains S19's. Count moments, control radii, profile width and mouth radius are not identified.
-1021: 
-1022: ### R-S16-03 — momentum exchange at each slab face
-1023: 
-1024: - **source** S16, `directives/S16_decision_list.md`, supplied momentum equation and
-1025:   "For the record and its register pass"; `steps/S16_moving_region.md`, §§1–2/6
-1026:   (S16 M01/M02/M04/M07/M14).
-1027: - **target** no owner named
-1028: - **status** OPEN
-1029: - **requirement** — the momentum exchanged at each slab face and its split by the motion of
-1030:   that face, separately identifiable within the projected total exchange.
-1031: - **on failure** — S16's undivided force-density input supplies no face-resolved momentum account.
-1032:   Its moving control-surface pieces do not deliver a slab-face split.
-1033: - **standing** — expressly carried requirement, not a defect in the undivided supplied balance.
-1034:   The faces' law remains unowned. `R-S12-02` retains S12's source/flux/data and material-face scope;
-1035:   it does not assign this momentum object or the faces' law to S12.
-1036: 
-1037: ### R-S16-04 — the momentum–material relation needed for inertia
-1038: 
-1039: - **source** S16, user's 2026-10-21 "Count material; mass open" decision and
-1040:   `directives/S16_decision_list.md`, register section;
-1041:   `directives/O2_SHARED_PHYSICS.md:133`; `steps/S16_moving_region.md`, §§1/6
-1042:   (S16 M01/M04/M14).
-1043: - **target** S8, with S1.5 antecedents when available as the O2 row states
-1044: - **status** OPEN
-1045: - **requirement** — the relation of projected momentum density to the material fields and motion
-1046:   needed to define an inertial factor.
-1047: - **on failure** — the separately printed momentum and material-count centre relations do not
-1048:   supply an inertial factor or a relation between momentum and count-centre acceleration.
-1049: - **entry rather than merge** — `R-S8-06` requires material displacement identification and the
-1050:   original homogeneous quadratic/slab inertia. Its O2 scope expressly excludes a live momentum-map
-1051:   widening. The present explicitly user-required live object has a different domain and requirement;
-1052:   no homogeneous kinetic form or constant inertia is prescribed here.
-1053: 
-1054: ### R-S16-05 — the slab density response
-1055: 
-1056: - **source** S16, `directives/S16_decision_list.md`, "For the record and its register pass";
-1057:   `directives/O2_SHARED_PHYSICS.md:138`; `steps/S16_moving_region.md`, §§1/6
-1058:   (S16 M01/M04/M14).
-1059: - **target** S8 (substrate reduction) and S22 (completion), as the O2 row states
-1060: - **status** OPEN
-1061: - **requirement** — the slab density response with live bulk, flow, embedding,
-1062:   thickness/projection dependence and gradients, needed for the open material/mass accounting.
-1063: - **on failure** — that density-response interpretation remains unavailable. S16's supplied
-1064:   projected count balance and its live-density derivatives still supply no such response.
-1065: - **standing** — explicitly carried by the user's S16 requirement filing. O2's pass entered no
-1066:   response-form requirement merely for a future solve; that decision remains unchanged. No bulk
-1067:   equation of state, factorization, response form or material is selected here.
-1068: 
-1069: ### R-S22-02 — the missing response-reduction inputs in S22's debt table
-1070: 
-1071: - **source** S16 filing decision, `directives/S16_decision_list.md`, "Filing and framing";
-1072:   `V3_STEP_PLAN.md:732–741,1303–1305`; `steps/S16_moving_region.md`, §§4/6
-1073:   (S16 M01/M04/M14).
-1074: - **target** S22 for the debt-table account; no physical supplier is assigned here where the
-1075:   sources name none
-1076: - **status** OPEN
-1077: - **requirement** — the outstanding reduction-data inventory: `M`, `a` (`a_WT` in the plan),
-1078:   the multipoles of `M`, source normalization and any suppression of boundary fluxes, with the
-1079:   `a_WT`/`a_mouth` bridge separately identified under A11. Compactness is filed once as
-1080:   `R-S16-02` and cross-referenced in this table account.
-1081: - **on failure** — the conditional response-side monopole reduction cannot be treated as
-1082:   delivered or interior independent. Count, count moments and live boundary fluxes are printed
-1083:   objects; none is substituted for a missing mass object or for flux suppression.
-1084: - **scope** — this target files the debt account; it neither assigns S22 every physical supplier
-1085:   nor directs S22 to suppress a flux. The core interior/count/momentum remains an S22 OPEN handoff.
-1086:   C3's drain–mass gap remains a defect-register gap, not a delivered mass relation. No law,
-1087:   material, premise or candidate for meeting any listed debt is selected.
-1088: 
-1089: ## Population passes
-1090: 
-1091: **Pass 1 — S9 and S10. ⭐ DONE 2026-08-06**, alongside S10's step record and from the same reading.
-1092: Seven entries added, against the two that existed. The calibration it produced, for pass 2:
-1093: 
-1094: - ⭐ **Consolidate rather than duplicate.** S9 states its shear requirement twice — once for the ordered
-1095:   phase and once for the disordered — and a third consumer (the geon's trapped mode) appears elsewhere in
-1096:   the record. It is **one object**, `R-S1-02`, with three consumers, ⛔ not three entries.
-1097: - ⚠ **Distinguish a requirement from an ansatz by asking whether a retirement condition is LIVE.** `μ_R`'s
-1098:   **magnitude** is postulated and defect `B2` closed the polar-`P` route to deriving it ⇒ ansatz, ⛔ no
-1099:   entry. Its **form** has no such closure ⇒ `R-S8-01`, a live requirement. The two sit in the same
-1100:   sentence of S9's record and go to different registers.
-1101: - ⛔ **A requirement is not everything a later step would find useful.** A simulation needs `ρ_br` and
-1102:   `μ_R` separately rather than only their ratio; that is a *consumer's* need pointing **forward**, ⛔ not
-1103:   an obligation on which a banked result rests. It got no entry.
-1104: - ⭐ **The load-bearing ones are the identifications nobody computed.** `R-S8-02` — that the in-plane and
-1105:   out-of-plane sectors decouple — is the single entry on which S10's headline number depends, and it was
-1106:   flagged inside S10 **at the moment the identification was made**. ⇒ read a record for its *flagged
-1107:   identifications* first; they are where the requirements are.
-1108: 
-1109: 
-1110: ### Pass 2 — S11, S11b-A/B and S11c PARTIAL · populated 2026-10-05; accepted `22be0137`
-1111: 
-1112: Read `steps/S11_stray_longitudinal.md`, all three S11b records (the unified record and the historical A/B
-1113: records), `steps/S11c_PARTIAL_CLOSEOUT.md`, and the a/b/c1/c2/d records in full. Applied the schema,
-1114: rest-on test and both routes below: **11 → 15 entries**, four new and seven existing entries gaining
-1115: sources (`R-S7-01`, `R-S1-01`, `R-S1.5-01`, `R-S6-02`, `R-S8-01`, `R-S8-02`, `R-S8-03`). New entries:
-1116: S1 `R-S1-03`; S8 `R-S8-06`; S12 `R-S12-01`/`02`.
-1117: All use schema status OPEN; CONDITIONAL is a qualification of the source result, not a status value.
-1118: 
-1119: S11c contributes only conditions of its kept uniform/selected-uniform results, with the closeout and d
-1120: record's review limits retained. The clean-condition packet sources no entry: the closeout marks only
-1121: uniform decoupling CONDITIONAL (`steps/S11c_PARTIAL_CLOSEOUT.md:7`), while its no-leak reading is OPEN
-1122: (`V3_STEP_PLAN.md:532–534`; `steps/S11c_d_profile_conditioned_scattering.md:64`). Its UNRESOLVED direct
-1123: mixed term, numerical loss, and OPEN nonuniform confinement/material, observable and real-throat questions
-1124: source no entry.
-1125: **Supplied objects.** The unified spec's names are the §1b branch prescription and the §4 face closure.
-1126: It heads §1b *"COMPLEX FREQUENCY — SUPPLIED"* (`directives/S11b_SHARED_PHYSICS.md:113`) and §4 *"THE FACE
-1127: CLOSURE — SUPPLIED, and the affinity is the canonical driver"* (`directives/S11b_SHARED_PHYSICS.md:208`).
-1128: Its supplied column reads *"§2 bulk acoustics; the §1b branch prescription; the §4 closure, affinity `𝒜`
-1129: and its normalization; the §5 term list (⛔ but its **closedness** is tested); the §6 balance-law route and
-1130: virtual-displacement rule"* (`directives/S11b_SHARED_PHYSICS.md:995`). B's record lists five supplied
-1131: objects: *"The affinity, the branch prescription, the mass balance, the virtual-displacement rule and the
-1132: row structure are **supplied**"* (`steps/S11bB_interface_assembly.md:136–137`). It then says *"⭐ Their
-1133: verification comes from the independent reviewer derivations above, ⛔ **not from the engines
-1134: agreeing.**"* (`steps/S11bB_interface_assembly.md:138–139`). What the reviewers re-derived is a different
-1135: list: *"the affinity `𝒜 = μ_s − δp/ρ_m` (**three times**), the complex-frequency continuation (**three
-1136: times**), the interfacial mass balance, the `Z_perm` reduction, the virtual-displacement rule, the
-1137: ten-element basis, the dimension table, and `K₀`"* (`steps/S11bB_interface_assembly.md:126–129`).
-1138: Separately, B says *"**Radiated-energy direction is inherited** from the supplied continuation"*
-1139: (`steps/S11bB_interface_assembly.md:158–159`). This register draws no postulate inference from
-1140: "supplied", and leaves open whether any supplied object belongs in the ansatz ledger; v3 has no ansatz
-1141: ledger yet.
-1142: Reading a/b/c1/c2 did not promote their pre-repair closure language or deferred comparisons to accepted
-1143: nonuniform physics. The clean-condition packet does not establish a support law; the
-1144: exploratory throat/EM documents supply candidates only. No new requirement is inferred just because
-1145: a future scattering calculation would need an input. S11's deferred interface/spectral and nonlinear
-1146: questions are not recast as dependencies of its closed homogeneous census.
-1147: 
-1148: **Bulk EOS exponent (`n`, rule 6).** No kept S9, S11, S11b or S11c result read here rests on selecting
-1149: `n`: S9's supplied bulk-sound formula carries the inheritance, while its light result uses the brane
-1150: stiffness/inertia ratio; S11 and S11b use `c_s0` in the bulk acoustic branch, and the kept S11c uniform
-1151: checks fix or vary effective sound speed without deriving the EOS. **No S2 entry is added.**
-1152: `n_eos = 5` is inherited. Its original light-side justification took light's phase speed to be the bulk
-1153: sound speed (`research/1pn_optics/paper/1pn_optics.tex:720–737`, `:975–978`); that paper's competing
-1154: constructions and reasons for preferring `n = 5` are at `:2165–2343`. Whether, and where, `n` enters
-1155: light bending and delay under v3's light picture remains open — **no owner named** in the records read.
-1156: `V3_STEP_PLAN.md:208–250` retains the provisional medium EOS and its half-two parent-action debt;
-1157: **O-02 stays open**. This pass does not decide whether `K` and the exponent count as one entry or two.
+890: In **each** of these four restrictions PY emits no integration-constant field or solved-velocity
+891: dictionary: velocity is prescribed zero. WL explicitly prints `IntegrationConstants -> {}` and
+892: status “prescribed by the labelled substitution”, with no `ConstantDomain` field. Neither engine
+893: selects δ, ξ or f, or prints a solved-profile integration constant for those live profiles here.
+894: The fixed-ratio domain retains real local/asymptotic sound-speed squares, local square ≥0,
+895: asymptotic square >0 and the exact nonnegative-root ratio real and >0. The power domain retains
+896: `c₀ densityPower[1+f,s]` real and >0; `ρ₀>0` and the exact ray substitutions travel with both.
+897: Both keep `ρ>0` and `ρ≤0` labels; no germ-equivalent response replaces an exact domain.
+898: 
+899: For **each** flow/speed/tilt optical restriction, deflection/radar/residual value samples form
+900: but retain printed numeric differences and unresolved domains; γ rows compare markers only,
+901: and full conditions/exchange have no formed value comparison. For **each** bulk-only response,
+902: only label/domain comparisons form, not condition/exchange values. The WL/PY constant,
+903: squared-velocity, signed-exchange, zero-join and domain representations above are retained as
+904: OPEN differences, no owner named; no equivalence is supplied by the zero exchange entries.
+905: (M18; M5–M7, with the counting rule separately applied in M17.)
+906: 
+907: ### R-S22-01 — how the energy a throat releases splits among light, the extra wave and the bulk
+908: 
+909: - **source**
+910:   - S11 (`steps/S11_stray_longitudinal.md`, departure table and the paragraphs after it). The table gives the
+911:     question "whether matter directly observes the second cone" the owner "derived matter/interface
+912:     coupling". The record says "A second cone is only a departure if matter COUPLES to it", and describes
+913:     matter as "a throat held open by a trapped brane-shear standing wave".
+914:   - The photon survey, E32–E34 and E38 (`PHOTON_POLARIZATION_SURVEY.md` §4). Each is "In apparent conflict",
+915:     under conditions that differ by entry. In the survey's words, the classification rests on "E32–E34 on
+916:     matter coupling and, for the blackbody comparison, ordinary thermal-radiation participation; E38
+917:     additionally on the extra branch's cosmological relativistic population, energy/perturbation mapping and
+918:     decoupling history". (C6, C7.)
+919: - **target** S22 (the nonlinear throat solve), together with Q2 (the mouth source and its held datum) and
+920:   S12 (the throat's order-conversion source and its boundary data). These owners were chosen by the user on
+921:   2026-10-19; the S11 record itself names only "derived matter/interface coupling". (C8.)
+922:   The user's 2026-10-20 **"Keep S12"** decision retains every owner. S12 stays OPEN for its
+923:   forms, delivered only after the brane is defined following the force sectors; this requirements
+924:   record delivers none of those forms (S12 record §§5–7, retrieval M18).
+925: - **status** OPEN
+926: - **requirement** — Consider a throat held open by its trapped shear wave. The trapped-wave state can change,
+927:   the throat can move, and its mouth can change shape. When any of these happens, the object is the energy
+928:   released, with its frequency content and rate, and how it splits among three channels:
+929:   - the free transverse waves (light);
+930:   - the extra longitudinal wave (S11's second cone);
+931:   - the bulk.
+932: 
+933:   The entry also requires the reverse: how much of the energy each channel carries in is taken up by a
+934:   throat, at each frequency.
+935: - **on failure** — S11's departure cannot be classified. The record makes the second cone a departure only
+936:   if matter couples to it, and without these objects nothing decides whether matter observes it. E32–E34
+937:   and E38 stay "in apparent conflict", with their condition undecided.
+938: - **note: what a delivered split would and would not decide** —
+939:   - **Each measurement has its own conditions** (survey §4):
+940:     - **E33**, the laboratory blackbody, needs the extra wave to be an additional ordinary thermal mode,
+941:       with the usual occupation, energy and dispersion, and a calibrated emission and absorption response.
+942:     - **E34**, the CMB spectrum, needs its power to enter the calibrated CMB radiance rather than cancel in
+943:       the sky/reference comparison.
+944:     - **E38**, `N_eff`, needs it to be extra gravitating radiation, populated and relativistic in the early
+945:       universe. The survey adds that a weak population or earlier decoupling is not generically excluded.
+946:   - **The split alone decides none of them.** Whether the extra wave is populated depends on several things:
+947:     - its emission and uptake rates, compared with each measurement's timescale;
+948:     - its escape into the bulk;
+949:     - its initial population and the expansion history.
+950: 
+951:     What a populated wave then carries depends on its own speed. In S11 that speed is set by `B_comp/ρ_br`
+952:     (`R-S6-01`), not by light's `μ_R/ρ_br`. So a share comparable to light's is not by itself a conflict,
+953:     and neither is equilibrium with matter. Nor does a small share by itself rule one out.
+954:   - **The falsifier** is each measurement, applied under its own conditions to the population and power
+955:     that these objects, the extra wave's speed and its escape into the bulk predict. That application is
+956:     later work. This entry states no bound; compare the note in `R-S12-01`.
+957:   - **The quantum part.** The survey's conditions also assume the usual quantum occupation. The plan
+958:     assigns that to a separate project (`V3_STEP_PLAN.md:1198–1204`; survey [P8]), so a classical split
+959:     does not settle that part. (C7.)
+960: - **relation** —
+961:   - S22's linear test 1 asks how much light passing a supplied defect profile converts into the
+962:     longitudinal mode. S11c asked how much light converts where the brane changes (`V3_STEP_PLAN.md:508`).
+963:     Both concern incoming light; neither is a throat's own emission.
+964:   - S22's linear test 2 asks whether the longitudinal mode radiates into the bulk, and needs the interface
+965:     law (`V3_STEP_PLAN.md:1181`). That escape enters the extra wave's population. So applying any
+966:     measurement under this entry also needs test 2's result.
+967:   - The S11 record adds that at homogeneous linear order "the mode's bulk leakage and direct observability
+968:     require the brane–bulk interface law". S11b supplies that law conditionally, for a uniform brane only.
+969:   - The S11 record states that `c_L` is not a gravitational wave, so this entry is not about the carrier of
+970:     gravity. (C6, C8.)
+971: 
+972: ### R-S14a-01 — the dynamically selected slow limit and far behaviour
+973: 
+974: - **source** S14a part 2 (`steps/S14a_2_slow_limit.md`, §§1–5/7; retrievals M01–M13/M16/M17),
+975:   for the conditional consumers S14, S15 and S20.
+976: - **target** jointly S12 (source and flux forms), S8/S22 (the slab's material law), and
+977:   **no owner named** for the face and interior laws, by the user's V2 decision at `12aa65d5`.
+978: - **status** OPEN
+979: - **requirement** — the slow limit and far behaviour selected by the slab's own dynamics,
+980:   for S14a's still-underived controlled return and profile-dependent `J→Q` obligations.
+981:   The selected steady-throughput and exchange-live decisions keep spreading, exchange and
+982:   storage live. No average, solution family, density gate, order of limits, law, material,
+983:   profile, premise or candidate is selected here.
+984: - **on failure** — S14, S15 and S20 remain **CONDITIONAL, not carried results**.
+985: - **decision and owners** — The user chose **"Record as requirement"** (2026-10-21), then
+986:   **"All the slab's laws (Recommended)"** for V2. The latter is recorded in
+987:   `directives/_measurements/S14a_2_record_r0_review_disposition.md`, "The user's decision on V2",
+988:   at `12aa65d5` (M16). It replaces item 4's S12-only target sentence. The earlier
+989:   **"(the open S12 forms)"** option text and accepted S12's different ownership statements are
+990:   quoted in record §§4/6. No missing owner is invented. S12's source/flux forms and separate
+991:   boundary data remain OPEN under **"Keep S12"**; the complete return-law/map obligations
+992:   are not repartitioned. Recording this requirement delivers none of the forms, the slow
+993:   return law or the source map.
+994: - **evidence and limits** — The step-list pass-1 Q1–Q3 and pass-2 R1–R3 dispositions and the
+995:   separately scoped Codex/Grok instruments in `directives/_measurements/S14a_2_review_witnesses/`
+996:   are retrieved in M03–M10. Each is a review-leg instrument, not an accepted build; their
+997:   constructions/checks differ as record §§2–3 states. The material-face zeros made from
+998:   identical operands or typed zeros are displays, not checks. The pass-2 adjudication's
+999:   dynamics reading remains a reading. No build ran by the user's decision. The inherited
+1000:   real-fraction/A13, live-face and part-1 domain/comparison qualifications remain (M11–M13).
+1001: - **entry rather than merge** — The register keys an entry by its deliverer and merges only
+1002:   the same requirement with the same deliverers. None of the 18 entries at `978c359c` covers
+1003:   this selection object with V2's joint deliverers. `R-S12-02` covers S12's native forms/data
+1004:   and compatibility objects, not the jointly owed selection; `R-S22-01` concerns the throat
+1005:   energy split, and `R-O2-01` concerns a net-power supplier/budget. Their objects and targets
+1006:   remain as recorded. This is a separate entry under the schema and method, not a second
+1007:   obligation added to `R-S12-02`'s target (record §5; M12/M17).
+1008: 
+1009: ### R-S16-01 — the surroundings object needed for a passive factor
+1010: 
+1011: - **source** user's selected 2026-10-21 "Record what it needs" option: "What one needs
+1012:   (a named field of the surroundings, a rule separating it from the body's own field, and its
+1013:   normalization) goes to the register as a requirement" (`directives/S16_decision_list.md:49–53`;
+1014:   pass-1 disposition, "The user's decisions"). `steps/S16_moving_region.md`, §§1/6
+1015:   (S16 M01–M02/M04/M07/M14/M17).
+1016: - **target** no owner named
+1017: - **status** OPEN
+1018: - **requirement** — a named field of the surroundings, its separation from the body's own field,
+1019:   and its normalization, for the open passive-factor/gradient-form interpretation.
+1020: - **on failure** — received momentum cannot be promoted to that passive-factor interpretation.
+1021:   The supplied regional balances and received-momentum object remain conditional objects.
+1022: - **standing** — explicit future requirement selected by the user; no passive factor or field is
+1023:   assumed or derived. G7 is an oracle under its own conditions, not this object's delivery (S16 §5).
+1024:   This is distinct from source normalization in S22's debt account and from S21's comparison of
+1025:   force-sector flow requirements. No owner is inferred from those neighbouring interfaces.
+1026: - **admission ground** — the selected option expressly requires this future object for a passive
+1027:   interpretation; this is not an unselected closure form inferred from a later owner.
+1028: 
+1029: ### R-S16-02 — the body's compactness in both comparisons
+1030: 
+1031: - **source** orchestrator's S16 list filing `directives/S16_decision_list.md:158–161`,
+1032:   "The body's compactness, separately", from pass-2 E3 and pass-3 F3; filing/framing `:24–30`;
+1033:   source assumption `research/4d_1pn_full/paper/4d_1pn_full.tex:697–700`;
+1034:   `steps/S16_moving_region.md`, §§4/6 (S16 M01/M04/M14).
+1035: - **target** no owner named for physical delivery; S22 is the named recipient of this debt in its table
+1036: - **status** OPEN
+1037: - **requirement** — the body's size small relative to inter-body separation and to the scale of
+1038:   variation of a field of the surroundings, kept as two comparisons.
+1039: - **on failure** — the compact-body response approximation cannot be claimed. S16's conditional
+1040:   region balances and count moments do not determine either comparison.
+1041: - **standing** — an explicit requirement filed by the list author, not a user-selected or imposed
+1042:   compactness premise. Its admission ground is the named small-body condition of the later
+1043:   response approximation, which the source assumption and E3/F3 keep separate from the
+1044:   surroundings-field condition; the record contract item 7 directs its filing (S16 M01–M02/M04/M17).
+1045:   S22's debt-table recipient is not evidence of a physical compactness deliverer. The C10/tail
+1046:   question remains S19's. Count moments, control radii, profile width and mouth radius are not identified.
+1047: 
+1048: ### R-S16-03 — momentum exchange at each slab face
+1049: 
+1050: - **source** orchestrator's S16 list filing `directives/S16_decision_list.md:162–163`,
+1051:   "For the faces", from pass-2 E2's direction to keep "the face-resolved momentum accounting
+1052:   OPEN"; supplied momentum input `:84–85`. `steps/S16_moving_region.md`, §§1–2/6
+1053:   (S16 M01–M02/M04/M07/M14/M17).
+1054: - **target** no owner named
+1055: - **status** OPEN
+1056: - **requirement** — the momentum exchanged at each slab face and its split by the motion of
+1057:   that face, separately identifiable within the projected total exchange.
+1058: - **on failure** — S16's undivided force-density input supplies no face-resolved momentum account.
+1059:   Its moving control-surface pieces do not deliver a slab-face split.
+1060: - **standing and admission ground** — the list author expressly retains this missing face-resolved
+1061:   accounting object after E2 identifies what the projected inputs cannot determine. Record contract
+1062:   item 7 directs its filing; it is not a user-selected law or a defect in the undivided supplied balance.
+1063:   The faces' law remains unowned. `R-S12-02` retains S12's source/flux/data and material-face scope;
+1064:   it does not assign this momentum object or the faces' law to S12.
+1065: 
+1066: ### R-S16-04 — the momentum–material relation needed for inertia
+1067: 
+1068: - **source** user's selected 2026-10-21 "Count material; mass open" option: "The law it needs
+1069:   goes to the register, as O2 keeps it (S8)" (`directives/S16_decision_list.md:54–56`;
+1070:   pass-1 disposition, "The user's decisions"); list filing `:164–166`;
+1071:   `directives/O2_SHARED_PHYSICS.md:133`; `steps/S16_moving_region.md`, §§1/6
+1072:   (S16 M01/M04/M14).
+1073: - **target** S8, with S1.5 antecedents when available as the O2 row states
+1074: - **status** OPEN
+1075: - **requirement** — the relation of projected momentum density to the material fields and motion
+1076:   needed to define an inertial factor.
+1077: - **on failure** — the separately printed momentum and material-count centre relations do not
+1078:   supply an inertial factor or a relation between momentum and count-centre acceleration.
+1079: - **admission ground** — the selected option expressly requires the missing momentum–material
+1080:   relation for that future inertial interpretation; no kinetic form is selected (S16 M01–M02/M17).
+1081: - **entry rather than merge** — `R-S8-06` requires material displacement identification and the
+1082:   original homogeneous quadratic/slab inertia. Its O2 scope expressly excludes a live momentum-map
+1083:   widening. The present explicitly user-required live object has a different domain and requirement;
+1084:   no homogeneous kinetic form or constant inertia is prescribed here.
+1085: 
+1086: ### R-S16-05 — the slab density response
+1087: 
+1088: - **source** orchestrator's S16 list filing `directives/S16_decision_list.md:164–166`:
+1089:   "The slab's density response is also OPEN there", citing
+1090:   `directives/O2_SHARED_PHYSICS.md:138`; `steps/S16_moving_region.md`, §§1/6
+1091:   (S16 M01/M04/M14).
+1092: - **target** S8 (substrate reduction) and S22 (completion), as the O2 row states
+1093: - **status** OPEN
+1094: - **requirement** — the slab density response with live bulk, flow, embedding,
+1095:   thickness/projection dependence and gradients, needed for the open material/mass accounting.
+1096: - **on failure** — that density-response interpretation remains unavailable. S16's supplied
+1097:   projected count balance and its live-density derivatives still supply no such response.
+1098: - **standing and admission ground** — the list author expressly carries the future density-response
+1099:   delivery into this record's filing (contract item 7), for the named material/mass interpretation.
+1100:   Live projected count and its derivatives do not deliver it. It is not a user-selected response,
+1101:   nor admitted merely because O2 names an owner. O2's pass entered no response-form requirement
+1102:   merely for a future solve; that decision remains unchanged (S16 M01/M04/M14/M17). No bulk
+1103:   equation of state, factorization, response form or material is selected here.
+1104: 
+1105: ### R-S22-02 — the missing response-reduction inputs in S22's debt table
+1106: 
+1107: - **source** orchestrator's S16 filing `directives/S16_decision_list.md:28–30`: "What stays a
+1108:   debt for S22's table is what this step does not deliver";
+1109:   `V3_STEP_PLAN.md:732–741,1303–1305`; `steps/S16_moving_region.md`, §§4/6
+1110:   (S16 M01/M04/M14).
+1111: - **target** S22 for the debt-table account; no physical supplier is assigned here where the
+1112:   sources name none
+1113: - **status** OPEN
+1114: - **requirement** — the outstanding reduction-data inventory: `M`, `a` (`a_WT` in the plan),
+1115:   the multipoles of `M`, source normalization and any suppression of boundary fluxes, with the
+1116:   `a_WT`/`a_mouth` bridge separately identified under A11. Compactness is filed once as
+1117:   `R-S16-02` and cross-referenced in this table account.
+1118: - **admission ground** — this expressly named S22 debt-table account is a future delivery under
+1119:   the list's filing and record contract item 7; it is not an assignment of every physical supplier
+1120:   or a new premise of the regional balances (S16 M01/M04/M17).
+1121: - **on failure** — the conditional response-side monopole reduction cannot be treated as
+1122:   delivered or interior independent. Count, count moments and live boundary fluxes are printed
+1123:   objects; none is substituted for a missing mass object or for flux suppression.
+1124: - **scope** — this target files the debt account; it neither assigns S22 every physical supplier
+1125:   nor directs S22 to suppress a flux. The core interior/count/momentum remains an S22 OPEN handoff.
+1126:   C3's drain–mass gap remains a defect-register gap, not a delivered mass relation. No law,
+1127:   material, premise or candidate for meeting any listed debt is selected.
+1128: 
+1129: ## Population passes
+1130: 
+1131: **Pass 1 — S9 and S10. ⭐ DONE 2026-08-06**, alongside S10's step record and from the same reading.
+1132: Seven entries added, against the two that existed. The calibration it produced, for pass 2:
+1133: 
+1134: - ⭐ **Consolidate rather than duplicate.** S9 states its shear requirement twice — once for the ordered
+1135:   phase and once for the disordered — and a third consumer (the geon's trapped mode) appears elsewhere in
+1136:   the record. It is **one object**, `R-S1-02`, with three consumers, ⛔ not three entries.
+1137: - ⚠ **Distinguish a requirement from an ansatz by asking whether a retirement condition is LIVE.** `μ_R`'s
+1138:   **magnitude** is postulated and defect `B2` closed the polar-`P` route to deriving it ⇒ ansatz, ⛔ no
+1139:   entry. Its **form** has no such closure ⇒ `R-S8-01`, a live requirement. The two sit in the same
+1140:   sentence of S9's record and go to different registers.
+1141: - ⛔ **A requirement is not everything a later step would find useful.** A simulation needs `ρ_br` and
+1142:   `μ_R` separately rather than only their ratio; that is a *consumer's* need pointing **forward**, ⛔ not
+1143:   an obligation on which a banked result rests. It got no entry.
+1144: - ⭐ **The load-bearing ones are the identifications nobody computed.** `R-S8-02` — that the in-plane and
+1145:   out-of-plane sectors decouple — is the single entry on which S10's headline number depends, and it was
+1146:   flagged inside S10 **at the moment the identification was made**. ⇒ read a record for its *flagged
+1147:   identifications* first; they are where the requirements are.
+1148: 
+1149: 
+1150: ### Pass 2 — S11, S11b-A/B and S11c PARTIAL · populated 2026-10-05; accepted `22be0137`
+1151: 
+1152: Read `steps/S11_stray_longitudinal.md`, all three S11b records (the unified record and the historical A/B
+1153: records), `steps/S11c_PARTIAL_CLOSEOUT.md`, and the a/b/c1/c2/d records in full. Applied the schema,
+1154: rest-on test and both routes below: **11 → 15 entries**, four new and seven existing entries gaining
+1155: sources (`R-S7-01`, `R-S1-01`, `R-S1.5-01`, `R-S6-02`, `R-S8-01`, `R-S8-02`, `R-S8-03`). New entries:
+1156: S1 `R-S1-03`; S8 `R-S8-06`; S12 `R-S12-01`/`02`.
+1157: All use schema status OPEN; CONDITIONAL is a qualification of the source result, not a status value.
 1158: 
-1159: **Second route, by step.** S11 has **no identified prior-art route**: its record names the
-1160: rejected-Cauchy-branch coefficient but no objection to that branch, so the Cauchy branch is a candidate
-1161: only. The FORM outcome stays solely in `R-S8-01` as a first-route source, quoted from the S11 record.
-1162: S11b-A, S11b-B/unified S11b, and S11c-a/b/c1/c2/d each have **no identified prior-art route** meeting the
-1163: directive's record-and-objection test. The S11c closeout, which is a record, does name MacCullagh, in an
-1164: item it marks OPEN: *"**OPEN — material audit/Q2/S22:** uniform confinement is derived within the
-1165: supplied linear model; nonuniform confinement and the physical admissibility of rotational stiffness are
-1166: not established. That is the useful but limited MacCullagh distinction."*
-1167: (`steps/S11c_PARTIAL_CLOSEOUT.md:27`). That item is listed under *"Claims future work must not inherit"*
-1168: (`steps/S11c_PARTIAL_CLOSEOUT.md:23`), and an OPEN item sources no entry under the rest-on test, so it
-1169: sources none here. Onsager–Casimir is a candidate only; `R-S1-03` instead rests on B's
-1170: first-route hand-forward, *"conditional on microscopic time-reversibility"*. A's memoryless reduction is
-1171: by construction, and internal cross-engine reproductions are not prior art. The two pre-existing
-1172: prior-art entries are not re-certified by this pass. The obsolete rebuild schedule is replaced by this
-1173: completed population pass. Record qualifications/disagreements are reported at STOP, not adjudicated
-1174: here.
-1175: 
-1176: **Directive/register disagreement on the second route — unresolved.** The second-route results above
-1177: apply the directive's test: *"Run it only on a prior result that a record in the reading list identifies
-1178: as reproduced by the sector, with the objection taken from that record or from a source the record
-1179: cites."* (`directives/S11_requirements_pass2_directive.md:56–57`). This register's own second route, under
-1180: "Method for population passes" below, found `R-S8-04` and `R-S8-05` outside the records — *"⛔ Neither is
-1181: anywhere in S9's or S10's records, because the records only capture what their authors thought to
-1182: doubt"* — and says *"⇒ ⭐ **Run this route for every sector with identified prior art**, ⛔ not only the
-1183: light sector."* The directive also says *"Where this directive and the register disagree, the register
-1184: wins, and you report the disagreement."* (`directives/S11_requirements_pass2_directive.md:21–22`). Both
-1185: sides are quoted here; this pass does not resolve the disagreement.
-1186: 
-1187: #### Inputs a future nonuniform calculation must define
-1188: 
-1189: These are input assignments used by the S11c calculations, not physical values earned by a kept
-1190: result and not requirements on a substrate step. Fixed-input uniform checks retain their stated
-1191: domain; they do not select those inputs for a real defect. No values are copied here. The table has
-1192: **11 grouped rows**; every owner below is from the closeout, with **no owner named** where it assigns
-1193: none to that input. The structural objects above are distinct from these numerical assignments.
-1194: 
-1195: Input-map provenance **P**: `steps/S11c_d_profile_conditioned_scattering.md` →
-1196: `_measurements/S11c_d_sympy_builder_report.md`, “Retained user-approved solver/export contract,” items 2–3 →
-1197: `archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_channel_preflight_input.json`
-1198: (`unit_frame`, `profiles`, `parameters`). P records the original development case; the d record's
-1199: “omega=3 benchmark” and “uniform check” sections record later frequency/speed choices. None is a
-1200: calibration of the draining model.
-1201: 
-1202: | Input family (values not reproduced) | Where recorded | Owner named by the closeout |
-1203: |---|---|---|
-1204: | Supplied thickness/modulus profiles `w₁`, `m₁`, their end data, contrast `eta_bg` and width scale `L_W` (with the physical `sigma_W` binding) | P, `profiles` / `parameters`; builder report, retained contract 2–3; d, benchmark | Q2/Q3/S22 for a physical holder/charge profile |
-1205: | Reference thickness `W_0` | P, `parameters`; a, background ansatz | no owner named |
-1206: | Density assignments `rho_br`, `rho_m` and the selected density/anchoring case | P, `parameters`; d, uniform check / benchmark | no owner named |
-1207: | Physical transverse stiffness, represented in the input map by `mu_R`, `mu_S` | P, `parameters`; unified S11b, transverse mode / representative split | no owner named for these absolute assignments |
-1208: | Thickness inertia `mu_W` | P, `parameters` | no owner named |
-1209: | Scalar stored-energy inputs `B_rho_3`, `C`, `k_W` | P, `parameters`; S11b-B, breathing stability | no owner named |
-1210: | Gradient/mixed stored-energy inputs `kappa_W`, `kappa_theta`, `kappa_theta_W`, `G_W_u`, `G_theta_u` and any remaining constitutive bindings | P, `parameters`; b, energy basis; builder report, retained complete-parameter-map contract | no owner named |
-1211: | Face-response amplitudes `Lambda_A_0`, `Lambda_V_0`, `Lambda_X_0` and memory times `tau_A`, `tau_V`, `tau_X` | P, `parameters`; S11b-A/B, interface response | no owner named for these numerical assignments |
-1212: | Effective bulk sound speed / actual transverse phase-speed ratio, distinguished from the bare S9 ratio | P, `c_s0` and brane coefficients; d, uniform check / benchmark; `_measurements/S11c_d_near_unity_uniform_continue_result.md`, coverage | S20a (calibration); S22/R10 (derivation) |
-1213: | Unit frame, incident frequency `omega` and the two tangential momenta | P, `unit_frame` / `parameters`; d, uniform check / benchmark | no owner named |
-1214: | Numerical regulator, quadrature/basis/cutoff and source/domain intervals | d, benchmark and controls; `_measurements/S11c_d_numerical_radiating_balance_report.md`, controls and their limits | no owner named |
+1159: S11c contributes only conditions of its kept uniform/selected-uniform results, with the closeout and d
+1160: record's review limits retained. The clean-condition packet sources no entry: the closeout marks only
+1161: uniform decoupling CONDITIONAL (`steps/S11c_PARTIAL_CLOSEOUT.md:7`), while its no-leak reading is OPEN
+1162: (`V3_STEP_PLAN.md:532–534`; `steps/S11c_d_profile_conditioned_scattering.md:64`). Its UNRESOLVED direct
+1163: mixed term, numerical loss, and OPEN nonuniform confinement/material, observable and real-throat questions
+1164: source no entry.
+1165: **Supplied objects.** The unified spec's names are the §1b branch prescription and the §4 face closure.
+1166: It heads §1b *"COMPLEX FREQUENCY — SUPPLIED"* (`directives/S11b_SHARED_PHYSICS.md:113`) and §4 *"THE FACE
+1167: CLOSURE — SUPPLIED, and the affinity is the canonical driver"* (`directives/S11b_SHARED_PHYSICS.md:208`).
+1168: Its supplied column reads *"§2 bulk acoustics; the §1b branch prescription; the §4 closure, affinity `𝒜`
+1169: and its normalization; the §5 term list (⛔ but its **closedness** is tested); the §6 balance-law route and
+1170: virtual-displacement rule"* (`directives/S11b_SHARED_PHYSICS.md:995`). B's record lists five supplied
+1171: objects: *"The affinity, the branch prescription, the mass balance, the virtual-displacement rule and the
+1172: row structure are **supplied**"* (`steps/S11bB_interface_assembly.md:136–137`). It then says *"⭐ Their
+1173: verification comes from the independent reviewer derivations above, ⛔ **not from the engines
+1174: agreeing.**"* (`steps/S11bB_interface_assembly.md:138–139`). What the reviewers re-derived is a different
+1175: list: *"the affinity `𝒜 = μ_s − δp/ρ_m` (**three times**), the complex-frequency continuation (**three
+1176: times**), the interfacial mass balance, the `Z_perm` reduction, the virtual-displacement rule, the
+1177: ten-element basis, the dimension table, and `K₀`"* (`steps/S11bB_interface_assembly.md:126–129`).
+1178: Separately, B says *"**Radiated-energy direction is inherited** from the supplied continuation"*
+1179: (`steps/S11bB_interface_assembly.md:158–159`). This register draws no postulate inference from
+1180: "supplied", and leaves open whether any supplied object belongs in the ansatz ledger; v3 has no ansatz
+1181: ledger yet.
+1182: Reading a/b/c1/c2 did not promote their pre-repair closure language or deferred comparisons to accepted
+1183: nonuniform physics. The clean-condition packet does not establish a support law; the
+1184: exploratory throat/EM documents supply candidates only. No new requirement is inferred just because
+1185: a future scattering calculation would need an input. S11's deferred interface/spectral and nonlinear
+1186: questions are not recast as dependencies of its closed homogeneous census.
+1187: 
+1188: **Bulk EOS exponent (`n`, rule 6).** No kept S9, S11, S11b or S11c result read here rests on selecting
+1189: `n`: S9's supplied bulk-sound formula carries the inheritance, while its light result uses the brane
+1190: stiffness/inertia ratio; S11 and S11b use `c_s0` in the bulk acoustic branch, and the kept S11c uniform
+1191: checks fix or vary effective sound speed without deriving the EOS. **No S2 entry is added.**
+1192: `n_eos = 5` is inherited. Its original light-side justification took light's phase speed to be the bulk
+1193: sound speed (`research/1pn_optics/paper/1pn_optics.tex:720–737`, `:975–978`); that paper's competing
+1194: constructions and reasons for preferring `n = 5` are at `:2165–2343`. Whether, and where, `n` enters
+1195: light bending and delay under v3's light picture remains open — **no owner named** in the records read.
+1196: `V3_STEP_PLAN.md:208–250` retains the provisional medium EOS and its half-two parent-action debt;
+1197: **O-02 stays open**. This pass does not decide whether `K` and the exponent count as one entry or two.
+1198: 
+1199: **Second route, by step.** S11 has **no identified prior-art route**: its record names the
+1200: rejected-Cauchy-branch coefficient but no objection to that branch, so the Cauchy branch is a candidate
+1201: only. The FORM outcome stays solely in `R-S8-01` as a first-route source, quoted from the S11 record.
+1202: S11b-A, S11b-B/unified S11b, and S11c-a/b/c1/c2/d each have **no identified prior-art route** meeting the
+1203: directive's record-and-objection test. The S11c closeout, which is a record, does name MacCullagh, in an
+1204: item it marks OPEN: *"**OPEN — material audit/Q2/S22:** uniform confinement is derived within the
+1205: supplied linear model; nonuniform confinement and the physical admissibility of rotational stiffness are
+1206: not established. That is the useful but limited MacCullagh distinction."*
+1207: (`steps/S11c_PARTIAL_CLOSEOUT.md:27`). That item is listed under *"Claims future work must not inherit"*
+1208: (`steps/S11c_PARTIAL_CLOSEOUT.md:23`), and an OPEN item sources no entry under the rest-on test, so it
+1209: sources none here. Onsager–Casimir is a candidate only; `R-S1-03` instead rests on B's
+1210: first-route hand-forward, *"conditional on microscopic time-reversibility"*. A's memoryless reduction is
+1211: by construction, and internal cross-engine reproductions are not prior art. The two pre-existing
+1212: prior-art entries are not re-certified by this pass. The obsolete rebuild schedule is replaced by this
+1213: completed population pass. Record qualifications/disagreements are reported at STOP, not adjudicated
+1214: here.
 1215: 
-1216: ### O2 pass — conditional live steady balance · populated 2026-10-07; accepted with the O2 record, `72866fcf`
-1217: 
-1218: Source: `steps/O2_steady_brane_balance.md`, §§1–9; governing inputs and accepted constructions/comparator
-1219: are identified there. Commands and literal retrieval output: `steps/_measurements/O2_record_measurements.md`,
-1220: M1, M4, M6–M12; generator `scripts/O2_record_measurements.py`. The pass follows this register's schema,
-1221: rest-on test and both routes. **15 → 16 entries**, all OPEN. **New entries by target: no owner named,
-1222: `R-O2-01`.** Six existing
-1223: entries gain the O2 source: `R-S1-02`, `R-S8-04`, `R-S8-05`, `R-S8-06`, `R-S12-01`, `R-S12-02`.
-1224: Original target inferences and review qualifications are retained; no DELIVERED or RETIRED status is assigned.
-1225: Repair 4 against preserved r3 `7ce97e8a` is **16 → 16**: no new entries by target and no newly sourced
-1226: existing entry in this repair. The O2 source on `R-S8-06` remains limited to material identification.
-1227: 
-1228: **First route / one rest-on criterion.** Enter an O2 source only for a sourced condition on which the
-1229: presently reported conditional object rests: its stated material/phase identifications and its
-1230: explicitly carried accounting/admissibility obligations. An unspecified response form needed only
-1231: to select or solve a later closed material state is an OPEN handoff, not an additional delivery
-1232: condition of this unsolved named object. A future closure owner alone does not satisfy this test.
-1233: This applies alike to every S8 deferral in the record; the table below states each application.
+1216: **Directive/register disagreement on the second route — unresolved.** The second-route results above
+1217: apply the directive's test: *"Run it only on a prior result that a record in the reading list identifies
+1218: as reproduced by the sector, with the objection taken from that record or from a source the record
+1219: cites."* (`directives/S11_requirements_pass2_directive.md:56–57`). This register's own second route, under
+1220: "Method for population passes" below, found `R-S8-04` and `R-S8-05` outside the records — *"⛔ Neither is
+1221: anywhere in S9's or S10's records, because the records only capture what their authors thought to
+1222: doubt"* — and says *"⇒ ⭐ **Run this route for every sector with identified prior art**, ⛔ not only the
+1223: light sector."* The directive also says *"Where this directive and the register disagree, the register
+1224: wins, and you report the disagreement."* (`directives/S11_requirements_pass2_directive.md:21–22`). Both
+1225: sides are quoted here; this pass does not resolve the disagreement.
+1226: 
+1227: #### Inputs a future nonuniform calculation must define
+1228: 
+1229: These are input assignments used by the S11c calculations, not physical values earned by a kept
+1230: result and not requirements on a substrate step. Fixed-input uniform checks retain their stated
+1231: domain; they do not select those inputs for a real defect. No values are copied here. The table has
+1232: **11 grouped rows**; every owner below is from the closeout, with **no owner named** where it assigns
+1233: none to that input. The structural objects above are distinct from these numerical assignments.
 1234: 
-1235: The material identity, adopted shear-bearing/shear-free setting, expressly carried angular-momentum/
-1236: frame questions, conditional non-passive-interface condition and distinct native source/boundary
-1237: accounting merge into the six existing objects. `R-S8-06` gains only O2's supplied material
-1238: identification; its original quadratic/slab inertia domain is retained, and the r1 flowing-inertia
-1239: widening is withdrawn. `R-S12-01` carries only the conditional non-passive
-1240: interface reservoir obligation, with no live owner named. The distinct O2 net-supplier/budget
-1241: requirement is `R-O2-01`, with no owner named for its delivery; spec §6 expressly requires that object
-1242: to accompany any relation requiring net supply. It is entered on that rest-on condition, not simply
-1243: because a future solve might use it. Relaxation power remains separately explicit and its reference
-1244: owner unassigned. None of these sources proves the substrate can deliver the object.
-1245: 
-1246: | S8-related dependence named by the O2 record | Application of the same criterion / O2 entry effect |
-1247: |---|---|
-1248: | Material identity: `u`, `ρ_br`, `V` (contract §2; spec §3.1) | The stated conditional object assumes this identification. O2 sources `R-S8-06` for this identification only, with no new kinetic form. |
-1249: | Angular-momentum/couple carrier and physical rotational frame, `𝒜_rot^live` (contract §3; spec §§3.2, 6) | The sources expressly carry the existing S8 admissibility/frame obligations into the material and paired power accounting. O2 sources `R-S8-04`/`05` for those questions only; no new rotational-response form or historical-objection extension. |
-1250: | Live inertia `ℐ_br^live` and momentum map (spec §3.2) | Unselected closure forms; no O2 inertial widening of `R-S8-06`. The material identification above supplies neither `ρ_br V` nor a live kinetic law. |
-1251: | O1 `ℳ_⊥` stiffness response (spec §3.2) | Unselected closure form, just as live inertia. No O2 addition to `R-S8-01`/`03`: the supplied optical ratio and premise 1 do not select a general response functional or establish its physical sign. |
-1252: | O7 `ℛ_br` density response (spec §3.2) | Unselected closure form, just as live inertia and O1. No new density-response entry; retaining/differentiating live `ρ_br` in the coordinate mass input uses no density-response law. |
-1253: | `𝒫_br^cons`, `𝒯_br^cons`; energy-reference/improvement convention including `C_ref` (spec §§3.2, 8.6) | OPEN antecedents/conventions, not selected live response forms used by the reported result. No O2 addition for their S1.5/S8 completion. |
-1254: | Full live stress `𝒯_br^live` and normal response `𝒩_br^live` (spec §3.2) | Their forms remain OPEN; premise 1 supplies character only. No O2 response-form entry or widening of the original quadratic/stiffness entries. S5–S8 ingredients and S8/S22 completion remain handoffs. |
-1255: | O4 `ℰ_h^live` and its S8/S22 completion (spec §3.2) | OPEN live equation/identification, not an assumed equality with O2's normal content. No O2 equation or coupled-operator requirement is added. |
-1256: | Material energy storage/transport `ℰ_br^live`, `𝒥_E^live` (spec §6) | OPEN forms. O2 carries their force/power compatibility and accounting conditions without selecting a stored-energy/transport law or entering an S8 energy-form requirement. |
-1257: | Reference/strain evolution `ℛ_ref/strain^live`, with inferred S8/S22 links (spec §3.2) | OPEN form under adopted premise 1; owner remains unassigned. No new S8 response-law entry. Explicit relaxation power and conditional net-supplier accounting remain separate obligations, not delivery of this form. |
-1258: 
-1259: The four user-selected choices have the exact provenance label **adopted substrate input to a
-1260: conditional model (2026-10-06)** (`directives/O2_premise_decision_list.md`, premises 1–4). They are
-1261: postulates for this conditional result, not newly derived requirements. The existing live retirement
-1262: condition for the two-phase shear response is retained in `R-S1-02`; the new premise choices supply
-1263: no additional named retirement conditions requiring duplicate entries. Their provenance is kept here
-1264: for S21; this pass edits neither an ansatz ledger nor the defect register.
-1265: 
-1266: | Adopted premise | Content retained for S21 | Unresolved form / owner boundary |
-1267: |---|---|---|
-1268: | 1 — material reference | Optical shear response elastic; relaxation under steady load; explicit relaxation power, sign OPEN, net supply with named supplier/budget | `ℛ_ref/strain^live` and full live response OPEN; relaxation/reference owner unassigned. Optical consequences deferred; S9's no-dissipation/frequency-independent limits are revisited. |
-1269: | 2 — drive | Dynamical order-conversion drain; no separate external body force | O2 chooses the absent separate-body-force representation. Source/return and partners S12; S14a/S14 source bridge and S16 response matching remain OPEN, with S16 assignment an inference. |
-1270: | 3 — exchange | Converted material carries local brane material velocity `V`; closes transported momentum only | In-plane carried `j_n V^i` in the outward-loss convention; bulk-direction reduction and additional reaction/energy partners remain OPEN through `𝒥_map`, normal response and S12. Momentum density remains OPEN. |
-1271: | 4 — bulk | Postulated shear-free scalar bulk; native face-normal mechanical load; no independent tangential bulk stress | Signed normal-load amplitude, geometry/projection and complete support partition OPEN; tilted loading can project in-plane. External supports and exchange remain distinct. |
-1272: 
-1273: O1/O3–O7, A13, live stress/energy/reference forms, missing grades/scales, core selection, source/response
-1274: `GM` matching and S21's integration/sort remain the record's OPEN handoff. They are not entered merely
-1275: because a later closed profile calculation would use them. The banked claim is not a solution that
-1276: already rests on those deliveries. In particular, the emitted mass residual is unsolved, no induced-
-1277: measure mass law is derived, and no steady equilibrium, power sign, passive response, optical outcome
-1278: or physical holder is earned. Existing rest-reference `R-S6-02` is not extended to a flowing equilibrium;
-1279: quadratic form/sign, mode-count, compression, width and EOS entries gain no new O2 source on that basis.
-1280: All cross-engine OPEN-content differences remain open; they are not recorded as substrate defects.
-1281: The pass inherits the record's whole difference ledger and its comparison bounds (§§3–5), carried
-1282: with each applicable accounting/admissibility condition in its Part D handoff (§8). In particular,
-1283: the record's literal counts agree only at the joint stored `(role, orientation, open_free)`
-1284: classification tuple count level (M7). The comparator prints empty head/role/orientation differences
-1285: at the unioned balance-role inventory level (M6), and zeros at the balance closed-part level (M8).
-1286: Its single `hold_normal`/`OPEN_free` comparison does not compare the three stored occurrences
-1287: per engine separately. These bounds travel with every condition below:
-1288: the power-accounting conditions retain the eight one-sided declared-role actions, the four paired
-1289: `energy_balance` action-orientation differences `[["argument",1]]` (stream line 207), and the stored
-1290: PY density/flux nesting in `OPEN_JointPowerAccounting` in `energy_power` and `energy_balance`
-1291: (lines 202/206; M6/M12). None settles compatibility or judges either engine to duplicate power.
-1292: The comparator acceptance assigns the WL-only `xi_w''` interpretation to the O2 record, sub-step 7;
-1293: the directive allows retrieval only. It remains an **undischarged sub-step-7 obligation returned
-1294: to the orchestrator under M1**, as quoted and bounded in record §§4/9 (M1). It is not unowned,
-1295: not computed here, and not a new substrate-delivery entry. The handoff carries that status alongside
-1296: every admissible-dependence and force/power condition it bears on.
-1297: 
-1298: **Second route.** Read the O2 record against scoping §5 and its source qualifications. That section
-1299: identifies surface-mechanics, diffuse-interface/evolving-reference and river/acoustic-flow **candidate
-1300: oracles**, with explicit dimension, model and access limits. O2 reproduces no identified prior-art
-1301: result; no oracle was applied by this record. There is therefore no O2 reproduced result whose historic
-1302: objection can generate a new entry under this register's second route. The earlier MacCullagh
-1303: admissibility/frame entries remain OPEN and gain only O2's explicit carried S8 obligations; they are
-1304: not re-certified. No new search, oracle check or prior-art model was introduced.
+1235: Input-map provenance **P**: `steps/S11c_d_profile_conditioned_scattering.md` →
+1236: `_measurements/S11c_d_sympy_builder_report.md`, “Retained user-approved solver/export contract,” items 2–3 →
+1237: `archive/pre-cleanup-2026-10-04:research/pde_ledger_v3/_measurements/S11c_d_channel_preflight_input.json`
+1238: (`unit_frame`, `profiles`, `parameters`). P records the original development case; the d record's
+1239: “omega=3 benchmark” and “uniform check” sections record later frequency/speed choices. None is a
+1240: calibration of the draining model.
+1241: 
+1242: | Input family (values not reproduced) | Where recorded | Owner named by the closeout |
+1243: |---|---|---|
+1244: | Supplied thickness/modulus profiles `w₁`, `m₁`, their end data, contrast `eta_bg` and width scale `L_W` (with the physical `sigma_W` binding) | P, `profiles` / `parameters`; builder report, retained contract 2–3; d, benchmark | Q2/Q3/S22 for a physical holder/charge profile |
+1245: | Reference thickness `W_0` | P, `parameters`; a, background ansatz | no owner named |
+1246: | Density assignments `rho_br`, `rho_m` and the selected density/anchoring case | P, `parameters`; d, uniform check / benchmark | no owner named |
+1247: | Physical transverse stiffness, represented in the input map by `mu_R`, `mu_S` | P, `parameters`; unified S11b, transverse mode / representative split | no owner named for these absolute assignments |
+1248: | Thickness inertia `mu_W` | P, `parameters` | no owner named |
+1249: | Scalar stored-energy inputs `B_rho_3`, `C`, `k_W` | P, `parameters`; S11b-B, breathing stability | no owner named |
+1250: | Gradient/mixed stored-energy inputs `kappa_W`, `kappa_theta`, `kappa_theta_W`, `G_W_u`, `G_theta_u` and any remaining constitutive bindings | P, `parameters`; b, energy basis; builder report, retained complete-parameter-map contract | no owner named |
+1251: | Face-response amplitudes `Lambda_A_0`, `Lambda_V_0`, `Lambda_X_0` and memory times `tau_A`, `tau_V`, `tau_X` | P, `parameters`; S11b-A/B, interface response | no owner named for these numerical assignments |
+1252: | Effective bulk sound speed / actual transverse phase-speed ratio, distinguished from the bare S9 ratio | P, `c_s0` and brane coefficients; d, uniform check / benchmark; `_measurements/S11c_d_near_unity_uniform_continue_result.md`, coverage | S20a (calibration); S22/R10 (derivation) |
+1253: | Unit frame, incident frequency `omega` and the two tangential momenta | P, `unit_frame` / `parameters`; d, uniform check / benchmark | no owner named |
+1254: | Numerical regulator, quadrature/basis/cutoff and source/domain intervals | d, benchmark and controls; `_measurements/S11c_d_numerical_radiating_balance_report.md`, controls and their limits | no owner named |
+1255: 
+1256: ### O2 pass — conditional live steady balance · populated 2026-10-07; accepted with the O2 record, `72866fcf`
+1257: 
+1258: Source: `steps/O2_steady_brane_balance.md`, §§1–9; governing inputs and accepted constructions/comparator
+1259: are identified there. Commands and literal retrieval output: `steps/_measurements/O2_record_measurements.md`,
+1260: M1, M4, M6–M12; generator `scripts/O2_record_measurements.py`. The pass follows this register's schema,
+1261: rest-on test and both routes. **15 → 16 entries**, all OPEN. **New entries by target: no owner named,
+1262: `R-O2-01`.** Six existing
+1263: entries gain the O2 source: `R-S1-02`, `R-S8-04`, `R-S8-05`, `R-S8-06`, `R-S12-01`, `R-S12-02`.
+1264: Original target inferences and review qualifications are retained; no DELIVERED or RETIRED status is assigned.
+1265: Repair 4 against preserved r3 `7ce97e8a` is **16 → 16**: no new entries by target and no newly sourced
+1266: existing entry in this repair. The O2 source on `R-S8-06` remains limited to material identification.
+1267: 
+1268: **First route / one rest-on criterion.** Enter an O2 source only for a sourced condition on which the
+1269: presently reported conditional object rests: its stated material/phase identifications and its
+1270: explicitly carried accounting/admissibility obligations. An unspecified response form needed only
+1271: to select or solve a later closed material state is an OPEN handoff, not an additional delivery
+1272: condition of this unsolved named object. A future closure owner alone does not satisfy this test.
+1273: This applies alike to every S8 deferral in the record; the table below states each application.
+1274: 
+1275: The material identity, adopted shear-bearing/shear-free setting, expressly carried angular-momentum/
+1276: frame questions, conditional non-passive-interface condition and distinct native source/boundary
+1277: accounting merge into the six existing objects. `R-S8-06` gains only O2's supplied material
+1278: identification; its original quadratic/slab inertia domain is retained, and the r1 flowing-inertia
+1279: widening is withdrawn. `R-S12-01` carries only the conditional non-passive
+1280: interface reservoir obligation, with no live owner named. The distinct O2 net-supplier/budget
+1281: requirement is `R-O2-01`, with no owner named for its delivery; spec §6 expressly requires that object
+1282: to accompany any relation requiring net supply. It is entered on that rest-on condition, not simply
+1283: because a future solve might use it. Relaxation power remains separately explicit and its reference
+1284: owner unassigned. None of these sources proves the substrate can deliver the object.
+1285: 
+1286: | S8-related dependence named by the O2 record | Application of the same criterion / O2 entry effect |
+1287: |---|---|
+1288: | Material identity: `u`, `ρ_br`, `V` (contract §2; spec §3.1) | The stated conditional object assumes this identification. O2 sources `R-S8-06` for this identification only, with no new kinetic form. |
+1289: | Angular-momentum/couple carrier and physical rotational frame, `𝒜_rot^live` (contract §3; spec §§3.2, 6) | The sources expressly carry the existing S8 admissibility/frame obligations into the material and paired power accounting. O2 sources `R-S8-04`/`05` for those questions only; no new rotational-response form or historical-objection extension. |
+1290: | Live inertia `ℐ_br^live` and momentum map (spec §3.2) | Unselected closure forms; no O2 inertial widening of `R-S8-06`. The material identification above supplies neither `ρ_br V` nor a live kinetic law. |
+1291: | O1 `ℳ_⊥` stiffness response (spec §3.2) | Unselected closure form, just as live inertia. No O2 addition to `R-S8-01`/`03`: the supplied optical ratio and premise 1 do not select a general response functional or establish its physical sign. |
+1292: | O7 `ℛ_br` density response (spec §3.2) | Unselected closure form, just as live inertia and O1. No new density-response entry; retaining/differentiating live `ρ_br` in the coordinate mass input uses no density-response law. |
+1293: | `𝒫_br^cons`, `𝒯_br^cons`; energy-reference/improvement convention including `C_ref` (spec §§3.2, 8.6) | OPEN antecedents/conventions, not selected live response forms used by the reported result. No O2 addition for their S1.5/S8 completion. |
+1294: | Full live stress `𝒯_br^live` and normal response `𝒩_br^live` (spec §3.2) | Their forms remain OPEN; premise 1 supplies character only. No O2 response-form entry or widening of the original quadratic/stiffness entries. S5–S8 ingredients and S8/S22 completion remain handoffs. |
+1295: | O4 `ℰ_h^live` and its S8/S22 completion (spec §3.2) | OPEN live equation/identification, not an assumed equality with O2's normal content. No O2 equation or coupled-operator requirement is added. |
+1296: | Material energy storage/transport `ℰ_br^live`, `𝒥_E^live` (spec §6) | OPEN forms. O2 carries their force/power compatibility and accounting conditions without selecting a stored-energy/transport law or entering an S8 energy-form requirement. |
+1297: | Reference/strain evolution `ℛ_ref/strain^live`, with inferred S8/S22 links (spec §3.2) | OPEN form under adopted premise 1; owner remains unassigned. No new S8 response-law entry. Explicit relaxation power and conditional net-supplier accounting remain separate obligations, not delivery of this form. |
+1298: 
+1299: The four user-selected choices have the exact provenance label **adopted substrate input to a
+1300: conditional model (2026-10-06)** (`directives/O2_premise_decision_list.md`, premises 1–4). They are
+1301: postulates for this conditional result, not newly derived requirements. The existing live retirement
+1302: condition for the two-phase shear response is retained in `R-S1-02`; the new premise choices supply
+1303: no additional named retirement conditions requiring duplicate entries. Their provenance is kept here
+1304: for S21; this pass edits neither an ansatz ledger nor the defect register.
 1305: 
-1306: **Directive/register relation.** No operative disagreement is found for this O2 pass: directive item 5
-1307: says to preserve the distinction between a derived requirement and an adopted substrate premise;
-1308: this register says “a **postulate** is a value or form assumed *here* and not derived” and “A postulate
-1309: with a named retirement condition generates a requirement.” O2's premise provenance is retained as
-1310: conditional adopted input; the same rest-on criterion above excludes every unselected S8 closure form,
-1311: including live inertia, O1 and O7, while retaining the sourced identifications and explicit carried
-1312: obligations. No closure-form delivery is inferred merely from its future owner.
-1313: The earlier pass-2 second-route disagreement, quoted above, remains unresolved and is not adjudicated
-1314: or erased by this pass.
-1315: 
-1316: 
-1317: ### S9b pass — conditional light bending and radar slope · populated 2026-10-19; accepted with the S9b record, `ff3bac63`
-1318: 
-1319: Source: `steps/S9b_light_bending.md`, Parts A–C, §§1–8 and appendices. Retrieval commands and
-1320: literal output: `steps/_measurements/S9b_record_measurements.md`, M1–M22; generator
-1321: `scripts/S9b_record_measurements.py`. **16 (`caa0710d`, before S9b) → 17 entries**, all OPEN;
-1322: round 2 kept 17 → 17 from `d1511b20`; round 3 kept 17 → 17 from `4760e6e2`; round 4 keeps 17 → 17 from `d877e857`. **New entry by target:
-1323: S21, `R-S21-01`.** Existing entries gaining a source over `caa0710d`: **`R-S1-01`, `R-S1-02`, `R-S1.5-01`,
-1324: `R-S8-01`, `R-S8-03`, `R-S8-06`**. The first three and `R-S8-03` gained their source in
-1325: round 2; `R-S8-01/06` already carried it in `d1511b20`. Rounds 3–4 add no source gains. M10 retrieves
-1326: the pinned censuses and source lists.
-1327: No status is changed to DELIVERED or RETIRED. This pass was accepted with the S9b record at `ff3bac63`.
-1328: 
-1329: **First route / rest-on test.** The reported optical functionals rest on the supplied local
-1330: transverse stiffness and on the identification of displacement, density and advected velocity
-1331: with the same material. Those consumers remain in R-S8-01/06. The kept positive optical-ratio
-1332: gate additionally rests on R-S8-03; coordinate d³x/spherical flux on R-S1-01; the material's
-1333: optical shear on the brane half of R-S1-02; and the supplied Part C acoustic branch on the
-1334: acoustic part of R-S1.5-01. Failure of each breaks the scoped interpretation stated in its
-1335: entry. These are six existing requirements with S9b consumers, without widening them into
-1336: unselected full material laws. The separately reported conditional reference-matching statement rests on the
-1337: printed Part B profile condition for each observable and Part C rewrites, with their printed
-1338: exchange/domain restrictions. That condition is an obligation for S21's integration/knit and
-1339: passes the test; it does not establish that the substrate satisfies it. `R-S21-01` specifies
-1340: only the required objects and failure consequence, no means of meeting them, no balance or
-1341: candidate material, and no effect of the adopted density link. The deflection/radar
-1342: conditions retain M13's explicit distinction, detailed in R-S21-01: PY paired payloads are
-1343: byte-identical; WL GM/profile fields match but inverse and velocity-reduction fields differ.
-1344: Whether the differing WL fields state the same condition remains a separate OPEN question
-1345: (M13). Item 5, applied to each engine's γ-difference zero on GM≠0, does not count the two
-1346: observables as separate tests there; the printed GM=0 unconstrained/empty strata earn no
-1347: additional separate γ test. This is not a count awaiting WL field-equivalence work (M17).
-1348: The source's full difference and unresolved-coverage ledger travels with the requirement.
-1349: 
-1350: | Candidate/source dependence | Application of the same rest-on test |
-1351: |---|---|
-1352: | Supplied transverse stiffness input, material identity, positive optical ratio, dimension, brane shear and Part C acoustic input | Selected inputs: R-S8-01/06, R-S8-03, R-S1-01, R-S1-02 and R-S1.5-01, with the scoped failure consequences above. No live inertia/full-stress or bulk-confinement widening. |
-1353: | Part B/Part C matching conditions and single-mechanism restrictions | Derived conditional requirements relative to independent GM: R-S21-01, with complete values still uncompared across engines. No realized matching outcome. |
-1354: | No-far-zone-loss forward premise | Adopted conditional input (user 2026-10-06/07/08), re-tested at knit; not a derived general exchange requirement. Its Φ–GM relation remains open. No separate entry. |
-1355: | w-parity, P5, P6, density link | Adopted conditional inputs from D2, with dates/scope retained in record §7 and re-tested at knit. Scoped to held Part D, used by no A–C computed object. No derived requirement or effect of the link inferred. |
-1356: | O2 P1–P4 | Adopted substrate inputs to a conditional model (2026-10-06). S9b records them without deriving a mechanical/relaxation/loading law; its optical dispersion is separately supplied. O2's existing entries/status are not re-certified. |
-1357: | S8/O1/O7 constitutive responses; S11c nonuniform operator; O3–O6 maps, supports, reactions | Unselected closures or excluded work. Owners remain in record §7; no new closure-form entry merely because a later physical realization needs them. |
-1358: | Positive-real optical ratio/constructed ray; restricted response domains | Travel with R-S21-01 and add the scoped sign consumer to R-S8-03. No substrate sign result is derived; PY/WL brane-density assumptions and all nine same-named branch-row differences remain OPEN (M19). |
-1359: | Historical limits, normal-drain correction, direction/polarization/coupled/subprincipal exclusions | Remain explicitly scoped handoffs. S12 drain/return ownership and the existing R-S12-02 qualification persist; S9b does not deliver that correction or add a flowing-equilibrium source to R-S6-02. |
-1360: | O2 derivative-key interpretation and other engine differences | Undischarged interpretation owned by the orchestrator; an unresolved difference alone establishes no substrate delivery requirement. No entry. |
-1361: 
-1362: The source dates and complete adopted contents (including live α, ccomp, η and ζ in their held
-1363: Part-D scopes) remain in S9b §7 for re-testing at the knit. Adopted values/forms are postulates,
-1364: not derived requirements. No ansatz or defect register is changed. The source's statement that
-1365: premises are re-tested at the knit supplies no new A–C constitutive law; held Part-D choices
-1366: have no present A–C rest-on consumer to duplicate as a new entry.
-1367: 
+1306: | Adopted premise | Content retained for S21 | Unresolved form / owner boundary |
+1307: |---|---|---|
+1308: | 1 — material reference | Optical shear response elastic; relaxation under steady load; explicit relaxation power, sign OPEN, net supply with named supplier/budget | `ℛ_ref/strain^live` and full live response OPEN; relaxation/reference owner unassigned. Optical consequences deferred; S9's no-dissipation/frequency-independent limits are revisited. |
+1309: | 2 — drive | Dynamical order-conversion drain; no separate external body force | O2 chooses the absent separate-body-force representation. Source/return and partners S12; S14a/S14 source bridge and S16 response matching remain OPEN, with S16 assignment an inference. |
+1310: | 3 — exchange | Converted material carries local brane material velocity `V`; closes transported momentum only | In-plane carried `j_n V^i` in the outward-loss convention; bulk-direction reduction and additional reaction/energy partners remain OPEN through `𝒥_map`, normal response and S12. Momentum density remains OPEN. |
+1311: | 4 — bulk | Postulated shear-free scalar bulk; native face-normal mechanical load; no independent tangential bulk stress | Signed normal-load amplitude, geometry/projection and complete support partition OPEN; tilted loading can project in-plane. External supports and exchange remain distinct. |
+1312: 
+1313: O1/O3–O7, A13, live stress/energy/reference forms, missing grades/scales, core selection, source/response
+1314: `GM` matching and S21's integration/sort remain the record's OPEN handoff. They are not entered merely
+1315: because a later closed profile calculation would use them. The banked claim is not a solution that
+1316: already rests on those deliveries. In particular, the emitted mass residual is unsolved, no induced-
+1317: measure mass law is derived, and no steady equilibrium, power sign, passive response, optical outcome
+1318: or physical holder is earned. Existing rest-reference `R-S6-02` is not extended to a flowing equilibrium;
+1319: quadratic form/sign, mode-count, compression, width and EOS entries gain no new O2 source on that basis.
+1320: All cross-engine OPEN-content differences remain open; they are not recorded as substrate defects.
+1321: The pass inherits the record's whole difference ledger and its comparison bounds (§§3–5), carried
+1322: with each applicable accounting/admissibility condition in its Part D handoff (§8). In particular,
+1323: the record's literal counts agree only at the joint stored `(role, orientation, open_free)`
+1324: classification tuple count level (M7). The comparator prints empty head/role/orientation differences
+1325: at the unioned balance-role inventory level (M6), and zeros at the balance closed-part level (M8).
+1326: Its single `hold_normal`/`OPEN_free` comparison does not compare the three stored occurrences
+1327: per engine separately. These bounds travel with every condition below:
+1328: the power-accounting conditions retain the eight one-sided declared-role actions, the four paired
+1329: `energy_balance` action-orientation differences `[["argument",1]]` (stream line 207), and the stored
+1330: PY density/flux nesting in `OPEN_JointPowerAccounting` in `energy_power` and `energy_balance`
+1331: (lines 202/206; M6/M12). None settles compatibility or judges either engine to duplicate power.
+1332: The comparator acceptance assigns the WL-only `xi_w''` interpretation to the O2 record, sub-step 7;
+1333: the directive allows retrieval only. It remains an **undischarged sub-step-7 obligation returned
+1334: to the orchestrator under M1**, as quoted and bounded in record §§4/9 (M1). It is not unowned,
+1335: not computed here, and not a new substrate-delivery entry. The handoff carries that status alongside
+1336: every admissible-dependence and force/power condition it bears on.
+1337: 
+1338: **Second route.** Read the O2 record against scoping §5 and its source qualifications. That section
+1339: identifies surface-mechanics, diffuse-interface/evolving-reference and river/acoustic-flow **candidate
+1340: oracles**, with explicit dimension, model and access limits. O2 reproduces no identified prior-art
+1341: result; no oracle was applied by this record. There is therefore no O2 reproduced result whose historic
+1342: objection can generate a new entry under this register's second route. The earlier MacCullagh
+1343: admissibility/frame entries remain OPEN and gain only O2's explicit carried S8 obligations; they are
+1344: not re-certified. No new search, oracle check or prior-art model was introduced.
+1345: 
+1346: **Directive/register relation.** No operative disagreement is found for this O2 pass: directive item 5
+1347: says to preserve the distinction between a derived requirement and an adopted substrate premise;
+1348: this register says “a **postulate** is a value or form assumed *here* and not derived” and “A postulate
+1349: with a named retirement condition generates a requirement.” O2's premise provenance is retained as
+1350: conditional adopted input; the same rest-on criterion above excludes every unselected S8 closure form,
+1351: including live inertia, O1 and O7, while retaining the sourced identifications and explicit carried
+1352: obligations. No closure-form delivery is inferred merely from its future owner.
+1353: The earlier pass-2 second-route disagreement, quoted above, remains unresolved and is not adjudicated
+1354: or erased by this pass.
+1355: 
+1356: 
+1357: ### S9b pass — conditional light bending and radar slope · populated 2026-10-19; accepted with the S9b record, `ff3bac63`
+1358: 
+1359: Source: `steps/S9b_light_bending.md`, Parts A–C, §§1–8 and appendices. Retrieval commands and
+1360: literal output: `steps/_measurements/S9b_record_measurements.md`, M1–M22; generator
+1361: `scripts/S9b_record_measurements.py`. **16 (`caa0710d`, before S9b) → 17 entries**, all OPEN;
+1362: round 2 kept 17 → 17 from `d1511b20`; round 3 kept 17 → 17 from `4760e6e2`; round 4 keeps 17 → 17 from `d877e857`. **New entry by target:
+1363: S21, `R-S21-01`.** Existing entries gaining a source over `caa0710d`: **`R-S1-01`, `R-S1-02`, `R-S1.5-01`,
+1364: `R-S8-01`, `R-S8-03`, `R-S8-06`**. The first three and `R-S8-03` gained their source in
+1365: round 2; `R-S8-01/06` already carried it in `d1511b20`. Rounds 3–4 add no source gains. M10 retrieves
+1366: the pinned censuses and source lists.
+1367: No status is changed to DELIVERED or RETIRED. This pass was accepted with the S9b record at `ff3bac63`.
 1368: 
-1369: **Rest-on census, every entry.** This applies the same failure test to the kept A–C object,
-1370: not to a future completed substrate or a proposed Part D solve. M1/M18/M19 supply the kept
-1371: inputs and gates; M10 retrieves the schema, entries, source lists and this pass.
-1372: 
-1373: | Entry | S9b consumer / disposition |
-1374: |---|---|
-1375: | R-S6-01 | No `B_comp` input or compression-mode result is used; no source gain. |
-1376: | R-S7-01 | ℓ is a supplied reduction scale, not a wall-width solution; no nonuniform-width flat-direction result is consumed; no source gain. |
-1377: | R-S1-01 (target S6) | Coordinate d³x, spherical geometry and `4πr²` flux consume D_brane=3; source added. |
-1378: | R-S1-02 | Propagating brane optical shear is consumed; source added on that half only, without a bulk-confinement claim. |
-1379: | R-S1.5-01 | Part C's exact fixed-ratio light/sound response consumes the supplied bulk acoustic branch; source added on that branch only. |
-1380: | R-S6-02 | The kept local LAB_HELD construction does not assert a substrate equilibrium/first variation at the unstrained rest state. Its historical uniform anchor is a supplied input, not a newly banked equilibrium result; no source gain. |
-1381: | R-S8-01 | Supplied local transverse stiffness form; existing S9b source retained. |
-1382: | R-S8-02 | No coupled fluctuating `(u,h)` spectrum, block diagonality or h/transverse degeneracy is claimed. ξ is a supplied background embedding here; the full coupled operator is outside the kept object, so no source gain. |
-1383: | R-S8-03 | Every A–C observable's real positive optical-ratio gate; source added, engine-qualified. |
-1384: | R-S8-04 | No curl-only live energy or internal angular-momentum/couple-stress result is consumed by the supplied local symbol; original admissibility question stays OPEN, no new source. |
-1385: | R-S8-05 | No physical rotational-stiffness frame is selected by LAB_HELD or radial flow; original frame question stays OPEN, no new source. |
-1386: | R-S1-03 | No Onsager–Casimir/microscopic time-reversal result is claimed or used; no source gain. |
-1387: | R-S8-06 | Displacement/density/advection material identity; existing S9b source retained without a live kinetic-law claim. |
-1388: | R-S12-01 | No non-passive interface response is used in A–C; held P1/P6 supply no A–C power law, so no reservoir/budget consumer added. |
-1389: | R-S12-02 | Native normal drain/return functions and their boundary data are not inputs to these conditional optical functionals. `jn` is a live coordinate exchange or an implied output; its identification with `v_dr` remains OPEN. No native drain-data source gain is inferred from a future profile solve. |
-1390: | R-O2-01 | No closure requiring computed net supply is kept in A–C; no net-power supplier/budget consumer added. |
-1391: | R-S21-01 | New in the original S9b pass: engine-specific conditional optical conditions/restrictions and their exchange/domain requirements. Retained, all qualifications above apply; no means of satisfying them selected. |
-1392: 
-1393: **Second route.** the repository identifies more than GR/PPN references. The inventory below
-1394: names the prior-art objects relevant to the optical, flow, embedding and carried mechanical
-1395: questions. `survey` means repository-root `docs/medium_requirements_and_prior_art.md` at
-1396: `36f59ff1`; `scoping` means `directives/O2_steady_brane_balance_scoping.md` §5 at that revision.
-1397: M15 retrieves both sources and `directives/prior_art_4d_bulk_search_prompt.md`; M10 retrieves
-1398: the pre-S9b register's O2 second route. The access qualifications below are the sources' reports,
-1399: not fresh literature verification. **No oracle is applied in the S9b record.**
-1400: 
-1401: | Identified object and repository source | Use in this pass | Open handoff / owner |
-1402: |---|---|---|
-1403: | GR/PPN deflection and logarithmic radar references, A–C spec (M1) | Supplied comparison inputs in the accepted constructions; no new oracle check or GR solution reproduced here. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
-1404: | Cahill (2003) inflow; Hamilton–Lisle (2008), *The river model of black holes*; Sbitnev inflow; Unruh acoustic sinks — survey line 246, cautions 263–266; 4D search prompt | All identified, none applied. Survey scopes them to 3D with no off-sheet bulk and flags Cahill's status. No inflow profile or GM relation is imported. | OPEN: applicability and second-route questions for each named oracle. The river/acoustic-flow check, assigned by the written 2026-10-19 decision below (M21), ran after record acceptance (Codex-written, G1-reviewed, accepted `8d91f448`) and compared Hamilton–Lisle and Visser only. Its outcome and open questions are in the light-closing pass below. |
-1405: | Hamilton–Lisle (2008), AJP 76, 519–532; Visser (1998), *Acoustic black holes*; Unruh (1981), *Experimental Black-Hole Evaporation?* — scoping §5 | None applied. Scoping reports manuscripts read for Hamilton–Lisle/Visser, only abstract/metadata for Unruh. GR river and barotropic/inviscid/irrotational scalar acoustics require matching time, velocity, dimension, EOS/exchange and independent mass calibration; they supply no shear-sheet/off-sheet law. | OPEN: applicability and second-route questions for each named oracle. The river/acoustic-flow check, assigned by the written 2026-10-19 decision below (M21), ran after record acceptance (Codex-written, G1-reviewed, accepted `8d91f448`) and compared Hamilton–Lisle and Visser only. Its outcome and open questions are in the light-closing pass below. |
-1406: | Gurtin–Murdoch (1975), *A continuum theory of elastic material surfaces*; Scriven (1960), *Dynamics of a fluid interface*; Helfrich (1973), *Elastic Properties of Lipid Bilayers* — scoping §5; O2 register second route | None applied. Surface stress/traction, Newtonian surface-fluid and curvature-sector candidates; Gurtin–Murdoch abstract/bibliography only, Scriven/Helfrich full texts unverified. Ordinary 2D surfaces in 3D bulk do not establish this 3D-brane/4D-bulk law. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
-1407: | Abels–Garcke–Grün (2012), *Thermodynamically Consistent, Frame Indifferent Diffuse Interface Models…*; Rodriguez–Hoger–McCulloch (1994), *Stress-dependent finite growth in soft elastic tissues* — scoping §5; O2 register second route | None applied. Diffusive exchange-momentum and evolving-reference/growth candidates; manuscript read for the former, metadata only/full text unverified for the latter. No two-fluid, mobility, growth or reference law is adopted. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
-1408: | MacCullagh (1839) curl-only light / Whittaker Ch. V; Cauchy–Navier elasticity — survey attribution table; register R-S8-04/05 (M10) | None applied as an oracle. Existing light-carrier, longitudinal/compression, angular-momentum and objectivity obligations remain OPEN; the supplied optical ratio does not re-certify them. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
-1409: | Structural acoustics (fluid-loaded plate, radiation impedance, added mass); Fruchart–Scheibner–Vitelli (2023) passivity/Onsager–Casimir; Cembranos–Dobado–Maroto (2003) branon fluctuation — survey attribution table | None applied. Adjacent interface, driven-response and embedding context; no interface law, drive or curvature dynamics is computed in A–C. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
-1410: | Analog/emergent gravity (Unruh, BLV, BEC); Volovik/³He; Sakharov/Volovik induced gravity — survey prior-art table/unified findings | None applied. The survey's kinematics-versus-dynamics and undelivered-G qualifications remain; optical conditional requirements are not a derivation of gravity or G. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
-1411: | Rubakov–Shaposhnikov (1983), Akama (1982), RS2, DGP (2000); material-medium superfluid-vacuum class (Volovik, Sbitnev, Consoli, Huang, Fedi) — survey 4D-bulk table | None applied. Adjacent embedding/material-bulk context only; no localization or material model is supplied to A–C by these names. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+1369: **First route / rest-on test.** The reported optical functionals rest on the supplied local
+1370: transverse stiffness and on the identification of displacement, density and advected velocity
+1371: with the same material. Those consumers remain in R-S8-01/06. The kept positive optical-ratio
+1372: gate additionally rests on R-S8-03; coordinate d³x/spherical flux on R-S1-01; the material's
+1373: optical shear on the brane half of R-S1-02; and the supplied Part C acoustic branch on the
+1374: acoustic part of R-S1.5-01. Failure of each breaks the scoped interpretation stated in its
+1375: entry. These are six existing requirements with S9b consumers, without widening them into
+1376: unselected full material laws. The separately reported conditional reference-matching statement rests on the
+1377: printed Part B profile condition for each observable and Part C rewrites, with their printed
+1378: exchange/domain restrictions. That condition is an obligation for S21's integration/knit and
+1379: passes the test; it does not establish that the substrate satisfies it. `R-S21-01` specifies
+1380: only the required objects and failure consequence, no means of meeting them, no balance or
+1381: candidate material, and no effect of the adopted density link. The deflection/radar
+1382: conditions retain M13's explicit distinction, detailed in R-S21-01: PY paired payloads are
+1383: byte-identical; WL GM/profile fields match but inverse and velocity-reduction fields differ.
+1384: Whether the differing WL fields state the same condition remains a separate OPEN question
+1385: (M13). Item 5, applied to each engine's γ-difference zero on GM≠0, does not count the two
+1386: observables as separate tests there; the printed GM=0 unconstrained/empty strata earn no
+1387: additional separate γ test. This is not a count awaiting WL field-equivalence work (M17).
+1388: The source's full difference and unresolved-coverage ledger travels with the requirement.
+1389: 
+1390: | Candidate/source dependence | Application of the same rest-on test |
+1391: |---|---|
+1392: | Supplied transverse stiffness input, material identity, positive optical ratio, dimension, brane shear and Part C acoustic input | Selected inputs: R-S8-01/06, R-S8-03, R-S1-01, R-S1-02 and R-S1.5-01, with the scoped failure consequences above. No live inertia/full-stress or bulk-confinement widening. |
+1393: | Part B/Part C matching conditions and single-mechanism restrictions | Derived conditional requirements relative to independent GM: R-S21-01, with complete values still uncompared across engines. No realized matching outcome. |
+1394: | No-far-zone-loss forward premise | Adopted conditional input (user 2026-10-06/07/08), re-tested at knit; not a derived general exchange requirement. Its Φ–GM relation remains open. No separate entry. |
+1395: | w-parity, P5, P6, density link | Adopted conditional inputs from D2, with dates/scope retained in record §7 and re-tested at knit. Scoped to held Part D, used by no A–C computed object. No derived requirement or effect of the link inferred. |
+1396: | O2 P1–P4 | Adopted substrate inputs to a conditional model (2026-10-06). S9b records them without deriving a mechanical/relaxation/loading law; its optical dispersion is separately supplied. O2's existing entries/status are not re-certified. |
+1397: | S8/O1/O7 constitutive responses; S11c nonuniform operator; O3–O6 maps, supports, reactions | Unselected closures or excluded work. Owners remain in record §7; no new closure-form entry merely because a later physical realization needs them. |
+1398: | Positive-real optical ratio/constructed ray; restricted response domains | Travel with R-S21-01 and add the scoped sign consumer to R-S8-03. No substrate sign result is derived; PY/WL brane-density assumptions and all nine same-named branch-row differences remain OPEN (M19). |
+1399: | Historical limits, normal-drain correction, direction/polarization/coupled/subprincipal exclusions | Remain explicitly scoped handoffs. S12 drain/return ownership and the existing R-S12-02 qualification persist; S9b does not deliver that correction or add a flowing-equilibrium source to R-S6-02. |
+1400: | O2 derivative-key interpretation and other engine differences | Undischarged interpretation owned by the orchestrator; an unresolved difference alone establishes no substrate delivery requirement. No entry. |
+1401: 
+1402: The source dates and complete adopted contents (including live α, ccomp, η and ζ in their held
+1403: Part-D scopes) remain in S9b §7 for re-testing at the knit. Adopted values/forms are postulates,
+1404: not derived requirements. No ansatz or defect register is changed. The source's statement that
+1405: premises are re-tested at the knit supplies no new A–C constitutive law; held Part-D choices
+1406: have no present A–C rest-on consumer to duplicate as a new entry.
+1407: 
+1408: 
+1409: **Rest-on census, every entry.** This applies the same failure test to the kept A–C object,
+1410: not to a future completed substrate or a proposed Part D solve. M1/M18/M19 supply the kept
+1411: inputs and gates; M10 retrieves the schema, entries, source lists and this pass.
 1412: 
-1413: **Open prior-art handoffs.** Every named oracle in the table whose applicability check is
-1414: unperformed remains an individual OPEN item, including each member of a grouped row. The
-1415: river/acoustic-flow check assigned by the written decision below (M21) has since run for Hamilton–Lisle
-1416: and Visser (light-closing pass); every other check retains **no owner named**. Each carries both questions: does the oracle apply to this model point,
-1417: with its live profiles, domains, retained order and physical identifications; and, under the
-1418: register's second route, which of its failure modes or historical objections transfer here, and
-1419: have those objections been answered? Both questions remain open for each oracle. The source
-1420: access qualifications and applicability cautions in the table are not answers to either question.
-1421: The supplied GR/PPN comparison references do not constitute an applied oracle check.
-1422: 
-1423: **User decision, 2026-10-19:** the written source is
-1424: `directives/_measurements/S9b_record_r2_review_disposition.md` at `4760e6e2`, lines 19–21,
-1425: retrieved verbatim in M21. The user chose **"Queue it after record"** for the check of the
-1426: flow-only condition against the river/acoustic-flow prior art. The check is new computation,
-1427: done **after the record is accepted and outside it: Codex writes the check and it is reviewed
-1428: under G1**. This queues the check without selecting an oracle's applicability, importing a flow
-1429: profile, or answering its second-route question. The identified river/inflow/acoustic candidates
-1430: in the table remain open with that handoff; no oracle is applied here.
-1431: 
-1432: No oracle is applied and no oracle result is stated in this record. No new requirement entry is
-1433: entered on an unapplied oracle result; the second route remains open with the handoffs above.
-1434: Existing MacCullagh obligations remain OPEN; the conditional optical functionals and M13's bounded
-1435: condition comparison do not discharge them. Applicability checks remain unperformed, not negative
-1436: results. The register's earlier pass-2 disagreement stays unresolved (M10).
-1437: 
-1438: **Directive/register relation.** No new operative disagreement for S9b: the directive expressly
-1439: conditions the optical entry on this register's rest-on test and keeps postulates distinct.
-1440: The older pass-2 second-route disagreement remains quoted above, unresolved. O2's induced-measure
-1441: “relative O(ε)” statement and S9b D4's “No source supplies that order” are retained as a source
-1442: tension in S9b §8; this pass claims only coordinate-d³x exchange. Part D is held by the later user
-1443: scope despite its earlier planned description. These qualifications do not close any entry.
-1444: 
-1445: ### Light-closing pass — the oracle comparison and the extra wave · 2026-10-19; accepted `e070c7f3`
-1446: 
-1447: **Sources:**
-1448: - `steps/S9b_flow_oracle_comparison.md`, on the accepted check `8d91f448`;
-1449: - the S11 departure (`steps/S11_stray_longitudinal.md`);
-1450: - photon survey §4, E32–E34 and E38.
-1451: 
-1452: Lookups: `directives/_measurements/light_sector_closeout_lookups.md`, C1–C11.
-1453: 
-1454: **Census:** 17 entries at `8d91f448` → 18, all OPEN (C10). One entry is new, `R-S22-01`. `R-S21-01`
-1455: gains an evidence line only; its source, requirement and status are unchanged. No other entry changes, and
-1456: no status changes.
-1457: 
-1458: **The user's decision.** On 2026-10-19 the user chose to close the light sector for now, after a
-1459: reassessment against the charter's goal ("ONE medium supports the LINEAR part of every force"). The user's
-1460: words: "follow your recommendations to wrap up the light sector before we move on to S12". This pass is that
-1461: wrap-up. Everything still open in the light sector travels in the entries above. The parked work is:
-1462: - S11c, PARTIAL;
-1463: - the heavy backlog runs, in `DEFERRED_HEAVY_RUNS.md`;
-1464: - the applicability checks of every other named oracle, which still have no owner named.
-1465: 
-1466: **First route / rest-on test.**
-1467: - **The oracle comparison** asks nothing new of the substrate. Its conditional correspondence rests on an
-1468:   identification the check does not supply (S9b's orbital `GM` equals each oracle's mass parameter) and on
-1469:   R-S21-01's own objects. So it adds evidence to `R-S21-01` and creates no new entry.
-1470: - **The S11 departure and the thermal entries** need an object that no record carried as a requirement:
-1471:   the throat's energy split. The phrases "thermal", "blackbody", "Stefan" and "N_eff" had no hits in this
-1472:   register, the plan or the defect register before this pass (C9). That object is now `R-S22-01`.
-1473: 
-1474: **Second route.** The comparison names four objections to the analog: what drives the flow, where the
-1475: material goes, scalar sound versus transverse light, and analog kinematics versus dynamics. None is answered
-1476: here. The comparison record lists them with their owners:
-1477: - the flow-drive question separates S12's drain source/boundary realization (`R-S12-02`)
-1478:   from the force balance in O2's carried handoffs;
-1479: - the material-destination question separates which density/exchange alternative the drain
-1480:   produces (S12, `R-S12-02`) from whether the knit can meet it
-1481:   (`R-S21-01`, S21), as the oracle record states;
-1482: - the third stays a scoped S9b exclusion;
-1483: - the fourth stays in the S9b pass's analog-gravity row.
+1413: | Entry | S9b consumer / disposition |
+1414: |---|---|
+1415: | R-S6-01 | No `B_comp` input or compression-mode result is used; no source gain. |
+1416: | R-S7-01 | ℓ is a supplied reduction scale, not a wall-width solution; no nonuniform-width flat-direction result is consumed; no source gain. |
+1417: | R-S1-01 (target S6) | Coordinate d³x, spherical geometry and `4πr²` flux consume D_brane=3; source added. |
+1418: | R-S1-02 | Propagating brane optical shear is consumed; source added on that half only, without a bulk-confinement claim. |
+1419: | R-S1.5-01 | Part C's exact fixed-ratio light/sound response consumes the supplied bulk acoustic branch; source added on that branch only. |
+1420: | R-S6-02 | The kept local LAB_HELD construction does not assert a substrate equilibrium/first variation at the unstrained rest state. Its historical uniform anchor is a supplied input, not a newly banked equilibrium result; no source gain. |
+1421: | R-S8-01 | Supplied local transverse stiffness form; existing S9b source retained. |
+1422: | R-S8-02 | No coupled fluctuating `(u,h)` spectrum, block diagonality or h/transverse degeneracy is claimed. ξ is a supplied background embedding here; the full coupled operator is outside the kept object, so no source gain. |
+1423: | R-S8-03 | Every A–C observable's real positive optical-ratio gate; source added, engine-qualified. |
+1424: | R-S8-04 | No curl-only live energy or internal angular-momentum/couple-stress result is consumed by the supplied local symbol; original admissibility question stays OPEN, no new source. |
+1425: | R-S8-05 | No physical rotational-stiffness frame is selected by LAB_HELD or radial flow; original frame question stays OPEN, no new source. |
+1426: | R-S1-03 | No Onsager–Casimir/microscopic time-reversal result is claimed or used; no source gain. |
+1427: | R-S8-06 | Displacement/density/advection material identity; existing S9b source retained without a live kinetic-law claim. |
+1428: | R-S12-01 | No non-passive interface response is used in A–C; held P1/P6 supply no A–C power law, so no reservoir/budget consumer added. |
+1429: | R-S12-02 | Native normal drain/return functions and their boundary data are not inputs to these conditional optical functionals. `jn` is a live coordinate exchange or an implied output; its identification with `v_dr` remains OPEN. No native drain-data source gain is inferred from a future profile solve. |
+1430: | R-O2-01 | No closure requiring computed net supply is kept in A–C; no net-power supplier/budget consumer added. |
+1431: | R-S21-01 | New in the original S9b pass: engine-specific conditional optical conditions/restrictions and their exchange/domain requirements. Retained, all qualifications above apply; no means of satisfying them selected. |
+1432: 
+1433: **Second route.** the repository identifies more than GR/PPN references. The inventory below
+1434: names the prior-art objects relevant to the optical, flow, embedding and carried mechanical
+1435: questions. `survey` means repository-root `docs/medium_requirements_and_prior_art.md` at
+1436: `36f59ff1`; `scoping` means `directives/O2_steady_brane_balance_scoping.md` §5 at that revision.
+1437: M15 retrieves both sources and `directives/prior_art_4d_bulk_search_prompt.md`; M10 retrieves
+1438: the pre-S9b register's O2 second route. The access qualifications below are the sources' reports,
+1439: not fresh literature verification. **No oracle is applied in the S9b record.**
+1440: 
+1441: | Identified object and repository source | Use in this pass | Open handoff / owner |
+1442: |---|---|---|
+1443: | GR/PPN deflection and logarithmic radar references, A–C spec (M1) | Supplied comparison inputs in the accepted constructions; no new oracle check or GR solution reproduced here. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+1444: | Cahill (2003) inflow; Hamilton–Lisle (2008), *The river model of black holes*; Sbitnev inflow; Unruh acoustic sinks — survey line 246, cautions 263–266; 4D search prompt | All identified, none applied. Survey scopes them to 3D with no off-sheet bulk and flags Cahill's status. No inflow profile or GM relation is imported. | OPEN: applicability and second-route questions for each named oracle. The river/acoustic-flow check, assigned by the written 2026-10-19 decision below (M21), ran after record acceptance (Codex-written, G1-reviewed, accepted `8d91f448`) and compared Hamilton–Lisle and Visser only. Its outcome and open questions are in the light-closing pass below. |
+1445: | Hamilton–Lisle (2008), AJP 76, 519–532; Visser (1998), *Acoustic black holes*; Unruh (1981), *Experimental Black-Hole Evaporation?* — scoping §5 | None applied. Scoping reports manuscripts read for Hamilton–Lisle/Visser, only abstract/metadata for Unruh. GR river and barotropic/inviscid/irrotational scalar acoustics require matching time, velocity, dimension, EOS/exchange and independent mass calibration; they supply no shear-sheet/off-sheet law. | OPEN: applicability and second-route questions for each named oracle. The river/acoustic-flow check, assigned by the written 2026-10-19 decision below (M21), ran after record acceptance (Codex-written, G1-reviewed, accepted `8d91f448`) and compared Hamilton–Lisle and Visser only. Its outcome and open questions are in the light-closing pass below. |
+1446: | Gurtin–Murdoch (1975), *A continuum theory of elastic material surfaces*; Scriven (1960), *Dynamics of a fluid interface*; Helfrich (1973), *Elastic Properties of Lipid Bilayers* — scoping §5; O2 register second route | None applied. Surface stress/traction, Newtonian surface-fluid and curvature-sector candidates; Gurtin–Murdoch abstract/bibliography only, Scriven/Helfrich full texts unverified. Ordinary 2D surfaces in 3D bulk do not establish this 3D-brane/4D-bulk law. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+1447: | Abels–Garcke–Grün (2012), *Thermodynamically Consistent, Frame Indifferent Diffuse Interface Models…*; Rodriguez–Hoger–McCulloch (1994), *Stress-dependent finite growth in soft elastic tissues* — scoping §5; O2 register second route | None applied. Diffusive exchange-momentum and evolving-reference/growth candidates; manuscript read for the former, metadata only/full text unverified for the latter. No two-fluid, mobility, growth or reference law is adopted. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+1448: | MacCullagh (1839) curl-only light / Whittaker Ch. V; Cauchy–Navier elasticity — survey attribution table; register R-S8-04/05 (M10) | None applied as an oracle. Existing light-carrier, longitudinal/compression, angular-momentum and objectivity obligations remain OPEN; the supplied optical ratio does not re-certify them. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+1449: | Structural acoustics (fluid-loaded plate, radiation impedance, added mass); Fruchart–Scheibner–Vitelli (2023) passivity/Onsager–Casimir; Cembranos–Dobado–Maroto (2003) branon fluctuation — survey attribution table | None applied. Adjacent interface, driven-response and embedding context; no interface law, drive or curvature dynamics is computed in A–C. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+1450: | Analog/emergent gravity (Unruh, BLV, BEC); Volovik/³He; Sakharov/Volovik induced gravity — survey prior-art table/unified findings | None applied. The survey's kinematics-versus-dynamics and undelivered-G qualifications remain; optical conditional requirements are not a derivation of gravity or G. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+1451: | Rubakov–Shaposhnikov (1983), Akama (1982), RS2, DGP (2000); material-medium superfluid-vacuum class (Volovik, Sbitnev, Consoli, Huang, Fedi) — survey 4D-bulk table | None applied. Adjacent embedding/material-bulk context only; no localization or material model is supplied to A–C by these names. | OPEN: applicability and second-route questions for each named oracle; no owner named. |
+1452: 
+1453: **Open prior-art handoffs.** Every named oracle in the table whose applicability check is
+1454: unperformed remains an individual OPEN item, including each member of a grouped row. The
+1455: river/acoustic-flow check assigned by the written decision below (M21) has since run for Hamilton–Lisle
+1456: and Visser (light-closing pass); every other check retains **no owner named**. Each carries both questions: does the oracle apply to this model point,
+1457: with its live profiles, domains, retained order and physical identifications; and, under the
+1458: register's second route, which of its failure modes or historical objections transfer here, and
+1459: have those objections been answered? Both questions remain open for each oracle. The source
+1460: access qualifications and applicability cautions in the table are not answers to either question.
+1461: The supplied GR/PPN comparison references do not constitute an applied oracle check.
+1462: 
+1463: **User decision, 2026-10-19:** the written source is
+1464: `directives/_measurements/S9b_record_r2_review_disposition.md` at `4760e6e2`, lines 19–21,
+1465: retrieved verbatim in M21. The user chose **"Queue it after record"** for the check of the
+1466: flow-only condition against the river/acoustic-flow prior art. The check is new computation,
+1467: done **after the record is accepted and outside it: Codex writes the check and it is reviewed
+1468: under G1**. This queues the check without selecting an oracle's applicability, importing a flow
+1469: profile, or answering its second-route question. The identified river/inflow/acoustic candidates
+1470: in the table remain open with that handoff; no oracle is applied here.
+1471: 
+1472: No oracle is applied and no oracle result is stated in this record. No new requirement entry is
+1473: entered on an unapplied oracle result; the second route remains open with the handoffs above.
+1474: Existing MacCullagh obligations remain OPEN; the conditional optical functionals and M13's bounded
+1475: condition comparison do not discharge them. Applicability checks remain unperformed, not negative
+1476: results. The register's earlier pass-2 disagreement stays unresolved (M10).
+1477: 
+1478: **Directive/register relation.** No new operative disagreement for S9b: the directive expressly
+1479: conditions the optical entry on this register's rest-on test and keeps postulates distinct.
+1480: The older pass-2 second-route disagreement remains quoted above, unresolved. O2's induced-measure
+1481: “relative O(ε)” statement and S9b D4's “No source supplies that order” are retained as a source
+1482: tension in S9b §8; this pass claims only coordinate-d³x exchange. Part D is held by the later user
+1483: scope despite its earlier planned description. These qualifications do not close any entry.
 1484: 
-1485: These are handoffs, not entries. No owner is added to any other oracle check.
+1485: ### Light-closing pass — the oracle comparison and the extra wave · 2026-10-19; accepted `e070c7f3`
 1486: 
-1487: **Prior art.** The positive light results reproduce known prior art: MacCullagh's curl-only medium, and the
-1488: squared flow speed of the river model and of Visser's §7 acoustic flow. The flow match holds only under the
-1489: unsupplied mass, clock and speed-unit identifications. The register's
-1490: MacCullagh obligations (`R-S8-04`, `R-S8-05`) remain OPEN.
+1487: **Sources:**
+1488: - `steps/S9b_flow_oracle_comparison.md`, on the accepted check `8d91f448`;
+1489: - the S11 departure (`steps/S11_stray_longitudinal.md`);
+1490: - photon survey §4, E32–E34 and E38.
 1491: 
-1492: 
-1493: ### S12 pass — local order-source compatibility and separate inventories · 2026-10-20; accepted `ac909aaf`
-1494: 
-1495: Source: `steps/S12_order_source.md`, §§1–7. Its constructions are accepted at `a3da43d9`, and the
-1496: comparator with its engine-row note at `fe485b73`. The record and register pass were accepted in
-1497: round 3 under "Accept, note both" at `ac909aaf` (`directives/_measurements/S12_record_r3_review_disposition.md`); J1/J2 are repaired here.
-1498: Commands and literal stdout: `steps/_measurements/S12_record_measurements.md`, generated by
-1499: `scripts/S12_record_measurements.py`. M01/M03/M07–M11 retrieve the conditional object and inventories;
-1500: M12 retrieves the schema, rest-on method and entry census; M13 the second-route sources.
-1501: 
-1502: **Census:** 18 entries before (`560c6c51`) → 18 after, all OPEN. **New entries by target: none.**
-1503: Four existing entries gain S12 source/provenance: `R-S1-01`, `R-S1-02`, `R-S12-02` and `R-S21-01`.
-1504: The last gains the user's framing decision only, not new optical evidence. No status changes.
-1505: The round-2 repair of `4c37473c` was also 18 → 18, with no additional source gain. It restored the sourced
-1506: S12 owners, including S12 in `R-S22-01`'s user-chosen target. `R-S12-01` retains its original
-1507: S12 register-inference/no-live-owner qualification. `R-S21-01`'s requirement field now explicitly
-1508: owes the comparison of force sectors' flow requirements, matching its by-target row and citing
-1509: the 2026-10-19 user framing; no comparison is performed here (M12/M15/M18).
-1510: The present repair of `fa5d1396` is also 18 → 18, with no additional source gain. It adds the
-1511: real-fraction/A13 qualification to the S12 handoffs and reports the accepted-pass edits below;
-1512: it changes no owner, computed object or comparison claim (M12 for the count; M19/M20 for the edits).
+1492: Lookups: `directives/_measurements/light_sector_closeout_lookups.md`, C1–C11.
+1493: 
+1494: **Census:** 17 entries at `8d91f448` → 18, all OPEN (C10). One entry is new, `R-S22-01`. `R-S21-01`
+1495: gains an evidence line only; its source, requirement and status are unchanged. No other entry changes, and
+1496: no status changes.
+1497: 
+1498: **The user's decision.** On 2026-10-19 the user chose to close the light sector for now, after a
+1499: reassessment against the charter's goal ("ONE medium supports the LINEAR part of every force"). The user's
+1500: words: "follow your recommendations to wrap up the light sector before we move on to S12". This pass is that
+1501: wrap-up. Everything still open in the light sector travels in the entries above. The parked work is:
+1502: - S11c, PARTIAL;
+1503: - the heavy backlog runs, in `DEFERRED_HEAVY_RUNS.md`;
+1504: - the applicability checks of every other named oracle, which still have no owner named.
+1505: 
+1506: **First route / rest-on test.**
+1507: - **The oracle comparison** asks nothing new of the substrate. Its conditional correspondence rests on an
+1508:   identification the check does not supply (S9b's orbital `GM` equals each oracle's mass parameter) and on
+1509:   R-S21-01's own objects. So it adds evidence to `R-S21-01` and creates no new entry.
+1510: - **The S11 departure and the thermal entries** need an object that no record carried as a requirement:
+1511:   the throat's energy split. The phrases "thermal", "blackbody", "Stefan" and "N_eff" had no hits in this
+1512:   register, the plan or the defect register before this pass (C9). That object is now `R-S22-01`.
 1513: 
-1514: **Edits to already-accepted population passes.** Relative to the accepted register at `e070c7f3`,
-1515: the net edits to pre-existing Population passes are the following two edits to the light-closing
-1516: pass. Pass 1, Pass 2, O2 and S9b have no net text edit; their accepted blocks each have one literal
-1517: occurrence in the current register (M20). Existing-entry additions and sources are accounted for
-1518: in the census and rest-on table, separately from these amendments to accepted pass text.
-1519: 
-1520: | Edit | Accepted text at `e070c7f3` | Current text | Source that settles it / retrieval |
-1521: |---|---|---|---|
-1522: | Light-closing acceptance heading | **"### Light-closing pass — the oracle comparison and the extra wave · 2026-10-19; review pending"** | **"### Light-closing pass — the oracle comparison and the extra wave · 2026-10-19; accepted `e070c7f3`"** | `light_sector_closeout_review_r2_disposition.md`, Outcome: **"The light-sector closeout packet is accepted as revision 2"**; filed acceptance commit `e070c7f3`. Retrieve M20. |
-1523: | Light-closing second-route handoffs | **"the first two belong to S12 (`R-S12-02`) and to O2's carried handoffs;"** | **"the flow-drive question separates S12's drain source/boundary realization (`R-S12-02`) from the force balance in O2's carried handoffs;"** and **"the material-destination question separates which density/exchange alternative the drain produces (S12, `R-S12-02`) from whether the knit can meet it (`R-S21-01`, S21), as the oracle record states;"** | Accepted `steps/S9b_flow_oracle_comparison.md`, second-route items 1–2, lines 156–166: drain source/boundary data with S12 and force balance with O2's carried handoffs; what the drain produces **"is again S12's object (R-S12-02), and whether the knit can meet it belongs to R-S21-01"**. Retrieve M20. |
+1514: **Second route.** The comparison names four objections to the analog: what drives the flow, where the
+1515: material goes, scalar sound versus transverse light, and analog kinematics versus dynamics. None is answered
+1516: here. The comparison record lists them with their owners:
+1517: - the flow-drive question separates S12's drain source/boundary realization (`R-S12-02`)
+1518:   from the force balance in O2's carried handoffs;
+1519: - the material-destination question separates which density/exchange alternative the drain
+1520:   produces (S12, `R-S12-02`) from whether the knit can meet it
+1521:   (`R-S21-01`, S21), as the oracle record states;
+1522: - the third stays a scoped S9b exclusion;
+1523: - the fourth stays in the S9b pass's analog-gravity row.
 1524: 
-1525: Both accepted and current blocks, with their literal line breaks, are retrieved in M20. The handoff
-1526: wording is a substantive amendment to an accepted pass, not only an acceptance-status update.
-1527: It preserves the oracle record's split and changes no computed result or owner.
-1528: 
-1529: **Two additional status-only edits retained from the S12 deliverable (J1).** The S9b oracle record's
-1530: status changed from "its own review is pending" to accepted at `e070c7f3`; the register header's
-1531: light-closing sentence likewise records acceptance at `e070c7f3`. These are separate from the two
-1532: light-closing Population-pass edits above. Source: `directives/_measurements/S12_record_r3_review_disposition.md`, J1.
-1533: 
-1534: **User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms. This record closes only
-1535: S12's requirements part, and the forms come once the brane is defined, after the force sectors.
-1536: Every owner the sources and you gave stays as written, and the record says it delivers none of
-1537: the forms yet."** This replaces round 0's C1 owner obligation. S12 retains the native drain/return
-1538: functions, their boundary data, the throat's order-conversion source and its other sourced
-1539: assignments, all OPEN. None of those forms is delivered by this record (M18).
-1540: 
-1541: **First route / one rest-on criterion.** The reported object is conditional on supplied balances,
-1542: coordinate dimension, the adopted U1 support identification and the stated regional function class.
-1543: It does not rest on a selected interior-order, face, flux, drain/return, momentum-partner or energy
-1544: law. The printed compatibility objects do support a conditional requirement: any future realization
-1545: on this domain must meet those objects, or it cannot realize the reported source. They merge into
-1546: the native-conversion requirement `R-S12-02`, with no choice of how to meet them. Its status stays
-1547: OPEN: the source constraints supply neither native source functions nor boundary data.
-1548: S12 retains the forms/data under "Keep S12"; the following requirements constrain that future
-1549: delivery without selecting a form or claiming it has been delivered.
-1550: **Branch condition for every requirement below:** the printed compatibility objects rest on
-1551: the **real-fraction branch; A13 stays OPEN**. The decision list says **"The committed law is
-1552: written for a real ordered fraction; a phase-carrying branch would add content not computed here"**;
-1553: the plan requires **"the conversion balance must use the branch chosen at S1"**. These are the
-1554: real-fraction objects until S1's gate decides, with the sourced S1/S5/S12 owners retained. This
-1555: condition also qualifies `R-S12-02` and its by-target summary (M18/M19).
-1556: 
-1557: | Printed object required | Existing entry / target / status | Source and failure meaning |
-1558: |---|---|---|
-1559: | `general_order/region/1/source` below and `region/3/source` above | `R-S12-02` / S12 / OPEN | M03/M07: the respective live order-flux divergences. Data violating either cannot realize the reported exterior source. |
-1560: | `general_order/region/2/source` inside | `R-S12-02` / S12 / OPEN | M03/M07: live order transport plus order-flux divergence. Data violating it cannot realize the interior object. |
-1561: | `general_order/face/{1,2}/trace_coefficient` and `/source_contribution` | `R-S12-02` / S12 / OPEN | M03/M07/M08: normalized source parts at each live face, retaining the supplied-domain and diagnostic qualifications. No face-concentrated source is set to zero. |
-1562: | `material/face/{1,2}/requirement` | `R-S12-02` / S12 / OPEN | M03/M07: distinct total-material conditions at both faces; printed, not solved. Violation prevents locally conserved material in this function class. |
-1563: | `conditional_fast_ordering/region/{1,2,3}/source` and both face trace/source objects | `R-S12-02` / S12 / OPEN | M03/M07: only the labelled specialization, general in two offsets. Violation prevents that conditional specialization; it is not a universal fast-ordering limit. |
+1525: These are handoffs, not entries. No owner is added to any other oracle check.
+1526: 
+1527: **Prior art.** The positive light results reproduce known prior art: MacCullagh's curl-only medium, and the
+1528: squared flow speed of the river model and of Visser's §7 acoustic flow. The flow match holds only under the
+1529: unsupplied mass, clock and speed-unit identifications. The register's
+1530: MacCullagh obligations (`R-S8-04`, `R-S8-05`) remain OPEN.
+1531: 
+1532: 
+1533: ### S12 pass — local order-source compatibility and separate inventories · 2026-10-20; accepted `ac909aaf`
+1534: 
+1535: Source: `steps/S12_order_source.md`, §§1–7. Its constructions are accepted at `a3da43d9`, and the
+1536: comparator with its engine-row note at `fe485b73`. The record and register pass were accepted in
+1537: round 3 under "Accept, note both" at `ac909aaf` (`directives/_measurements/S12_record_r3_review_disposition.md`); J1/J2 are repaired here.
+1538: Commands and literal stdout: `steps/_measurements/S12_record_measurements.md`, generated by
+1539: `scripts/S12_record_measurements.py`. M01/M03/M07–M11 retrieve the conditional object and inventories;
+1540: M12 retrieves the schema, rest-on method and entry census; M13 the second-route sources.
+1541: 
+1542: **Census:** 18 entries before (`560c6c51`) → 18 after, all OPEN. **New entries by target: none.**
+1543: Four existing entries gain S12 source/provenance: `R-S1-01`, `R-S1-02`, `R-S12-02` and `R-S21-01`.
+1544: The last gains the user's framing decision only, not new optical evidence. No status changes.
+1545: The round-2 repair of `4c37473c` was also 18 → 18, with no additional source gain. It restored the sourced
+1546: S12 owners, including S12 in `R-S22-01`'s user-chosen target. `R-S12-01` retains its original
+1547: S12 register-inference/no-live-owner qualification. `R-S21-01`'s requirement field now explicitly
+1548: owes the comparison of force sectors' flow requirements, matching its by-target row and citing
+1549: the 2026-10-19 user framing; no comparison is performed here (M12/M15/M18).
+1550: The present repair of `fa5d1396` is also 18 → 18, with no additional source gain. It adds the
+1551: real-fraction/A13 qualification to the S12 handoffs and reports the accepted-pass edits below;
+1552: it changes no owner, computed object or comparison claim (M12 for the count; M19/M20 for the edits).
+1553: 
+1554: **Edits to already-accepted population passes.** Relative to the accepted register at `e070c7f3`,
+1555: the net edits to pre-existing Population passes are the following two edits to the light-closing
+1556: pass. Pass 1, Pass 2, O2 and S9b have no net text edit; their accepted blocks each have one literal
+1557: occurrence in the current register (M20). Existing-entry additions and sources are accounted for
+1558: in the census and rest-on table, separately from these amendments to accepted pass text.
+1559: 
+1560: | Edit | Accepted text at `e070c7f3` | Current text | Source that settles it / retrieval |
+1561: |---|---|---|---|
+1562: | Light-closing acceptance heading | **"### Light-closing pass — the oracle comparison and the extra wave · 2026-10-19; review pending"** | **"### Light-closing pass — the oracle comparison and the extra wave · 2026-10-19; accepted `e070c7f3`"** | `light_sector_closeout_review_r2_disposition.md`, Outcome: **"The light-sector closeout packet is accepted as revision 2"**; filed acceptance commit `e070c7f3`. Retrieve M20. |
+1563: | Light-closing second-route handoffs | **"the first two belong to S12 (`R-S12-02`) and to O2's carried handoffs;"** | **"the flow-drive question separates S12's drain source/boundary realization (`R-S12-02`) from the force balance in O2's carried handoffs;"** and **"the material-destination question separates which density/exchange alternative the drain produces (S12, `R-S12-02`) from whether the knit can meet it (`R-S21-01`, S21), as the oracle record states;"** | Accepted `steps/S9b_flow_oracle_comparison.md`, second-route items 1–2, lines 156–166: drain source/boundary data with S12 and force balance with O2's carried handoffs; what the drain produces **"is again S12's object (R-S12-02), and whether the knit can meet it belongs to R-S21-01"**. Retrieve M20. |
 1564: 
-1565: These requirement objects specify no law, material, premise or candidate as a means of satisfying
-1566: them. Their standing is distinct from the supplied balances, adopted inputs and flagged support
-1567: identification that qualify their domain. U1–U4 remain **"an adopted substrate input to a conditional
-1568: model"** each, as the source says; they are not newly derived substrate requirements. U1's unencoded
-1569: re-ordering clause, face-concentrated input fields and the generality of the live functions remain
-1570: OPEN handoffs. No named retirement condition makes an uncomputed constitutive form a new entry.
-1571: The two existing dimension/shear obligations have live retirement questions already, so they gain
-1572: only the limited conditional consumers stated in their own entries.
+1565: Both accepted and current blocks, with their literal line breaks, are retrieved in M20. The handoff
+1566: wording is a substantive amendment to an accepted pass, not only an acceptance-status update.
+1567: It preserves the oracle record's split and changes no computed result or owner.
+1568: 
+1569: **Two additional status-only edits retained from the S12 deliverable (J1).** The S9b oracle record's
+1570: status changed from "its own review is pending" to accepted at `e070c7f3`; the register header's
+1571: light-closing sentence likewise records acceptance at `e070c7f3`. These are separate from the two
+1572: light-closing Population-pass edits above. Source: `directives/_measurements/S12_record_r3_review_disposition.md`, J1.
 1573: 
-1574: **Rest-on census, every entry:**
-1575: 
-1576: | Existing entry | S12 dependence / effect |
-1577: |---|---|
-1578: | R-S6-01 | No compression-modulus input or result; no source gain. |
-1579: | R-S7-01 | Live faces impose no selected width or nonuniform-width flatness result; no source gain. |
-1580: | R-S1-01 (target S6) | Three in-plane coordinates and four-dimensional material balance; coordinate-only source added, no dimensional derivation. |
-1581: | R-S1-02 | Adopted U1 shear-region/support identification; conditional interpretation source added, no computed shear response or confinement. |
-1582: | R-S1.5-01 | No GNLS mode/acoustic input; no source gain. |
-1583: | R-S6-02 | No stationary/equilibrium state or substrate first variation; no source gain. |
-1584: | R-S8-01 | No stiffness functional supplied or derived; no source gain. |
-1585: | R-S8-02 | No coupled `(u,h)` operator or block-diagonality input; no source gain. |
-1586: | R-S8-03 | No optical-stiffness sign calculation or propagating optical gate; no source gain. |
-1587: | R-S8-04 | No angular-momentum/couple-stress result used; inherited inventory only, no source gain. |
-1588: | R-S8-05 | No rotational reference frame selected; inherited inventory only, no source gain. |
-1589: | R-S1-03 | No microscopic time-reversal or Onsager–Casimir result used; no source gain. |
-1590: | R-S8-06 | No displacement identification or quadratic slab inertia used; material conservation alone does not supply either; no source gain. |
-1591: | R-S12-01 | Separate conditional non-passive-interface reservoir/budget retained. No computed S12 power consumer, no source gain, no live owner added. |
-1592: | R-S12-02 | Printed regional/face conversion compatibility and distinct material face conditions merge here; S12 source added. Native functions/data remain OPEN. |
-1593: | R-O2-01 | Separate net-supplier/budget condition retained; no S12 net-power calculation or consumer, no source gain or owner change. |
-1594: | R-S21-01 | User framing provenance added: each force states its flow requirement, S21 compares, a mismatch reopens S9b. No new optical evidence or fitted flow. |
-1595: | R-S22-01 | No throat energy split, matter coupling or thermal/cosmological transfer result computed or used; carried inventory only, no source gain. |
+1574: **User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms. This record closes only
+1575: S12's requirements part, and the forms come once the brane is defined, after the force sectors.
+1576: Every owner the sources and you gave stays as written, and the record says it delivers none of
+1577: the forms yet."** This replaces round 0's C1 owner obligation. S12 retains the native drain/return
+1578: functions, their boundary data, the throat's order-conversion source and its other sourced
+1579: assignments, all OPEN. None of those forms is delivered by this record (M18).
+1580: 
+1581: **First route / one rest-on criterion.** The reported object is conditional on supplied balances,
+1582: coordinate dimension, the adopted U1 support identification and the stated regional function class.
+1583: It does not rest on a selected interior-order, face, flux, drain/return, momentum-partner or energy
+1584: law. The printed compatibility objects do support a conditional requirement: any future realization
+1585: on this domain must meet those objects, or it cannot realize the reported source. They merge into
+1586: the native-conversion requirement `R-S12-02`, with no choice of how to meet them. Its status stays
+1587: OPEN: the source constraints supply neither native source functions nor boundary data.
+1588: S12 retains the forms/data under "Keep S12"; the following requirements constrain that future
+1589: delivery without selecting a form or claiming it has been delivered.
+1590: **Branch condition for every requirement below:** the printed compatibility objects rest on
+1591: the **real-fraction branch; A13 stays OPEN**. The decision list says **"The committed law is
+1592: written for a real ordered fraction; a phase-carrying branch would add content not computed here"**;
+1593: the plan requires **"the conversion balance must use the branch chosen at S1"**. These are the
+1594: real-fraction objects until S1's gate decides, with the sourced S1/S5/S12 owners retained. This
+1595: condition also qualifies `R-S12-02` and its by-target summary (M18/M19).
 1596: 
-1597: **Second route.** Apply the register's broader rule, including prior-art candidates outside S12's
-1598: record. Read the O2 scoping §5 and the S9b second-route inventory (M13). Gurtin–Murdoch,
-1599: Abels–Garcke–Grün, Scriven, Helfrich and Rodriguez–Hoger–McCulloch identify surface/exchange/reference
-1600: candidates; Hamilton–Lisle, Visser, Unruh and the inherited Cahill/Sbitnev class identify flow
-1601: candidates. Their model/dimension/exchange and source-access restrictions travel with each row.
-1602: For **each named candidate individually**, applicability, historical failure modes/objections that
-1603: transfer and whether they are answered here remain OPEN, **no owner named for a new S12 check**.
-1604: S12 reproduces no identified candidate result: its balances are supplied and its support model is
-1605: adopted. Thus no derived S12 requirement is entered on an oracle match, and none of those historical
-1606: obligations is claimed discharged. The remaining S9b candidates each keep their original OPEN
-1607: handoffs; the positive light-sector oracle check does not become an S12 oracle check.
-1608: 
-1609: The inherited river/acoustic objections are still carried, not answered: flow drive separates
-1610: S12's drain/source-boundary realization (`R-S12-02`) from O2's carried force-balance handoffs;
-1611: material destination separates S12's drain-produced density/exchange choice (`R-S12-02`)
-1612: from S21's knit compatibility (`R-S21-01`). Scalar acoustics versus transverse light is a scoped
-1613: S9b exclusion; kinematics versus dynamics stays in the analog-gravity handoff. Local material/order
-1614: identities name compatibility but select no flow, closure or response dynamics. Existing MacCullagh
-1615: admissibility/frame entries stay OPEN. No fresh oracle computation or literature check is done here.
-1616: 
-1617: **Directive/register relation and source tensions.** No new operative disagreement with the S12
-1618: record contract: its item 7 expressly defers to this rest-on test. Its 2026-10-19 framing says S12
-1619: **"states what any conversion law must satisfy and leaves the forms open"**, while the older
-1620: `R-S12-02` requires **"the native drain/return functions and their separate boundary data"**.
-1621: The older obligation remains OPEN; the current constraints merge into it without claiming its
-1622: delivery. The earlier owner line **"S12 owns the drain/return data"** and the requirements-only
-1623: framing are kept side by side. The user's 2026-10-20 **"Keep S12"** resolves their ownership
-1624: reading: **"This record closes only S12's requirements part"**, and the forms **"come once the
-1625: brane is defined, after the force sectors"**. S12 stays open; the record delivers none of its
-1626: forms. The reviewed record's replacement **"OPEN, no live owner named"** disagreed with the
-1627: oracle's **"The drain's source and boundary data belong to S12 (R-S12-02)"**; its removal of
-1628: S12 from the energy-input target disagreed with the user-chosen **"S22 (the nonlinear throat
-1629: solve), together with Q2 (the mouth source and its held datum) and S12 (the throat's
-1630: order-conversion source and its boundary data)"**. The record quotes both sides of these
-1631: disagreements and the A13 owner disagreement; all sourced owners are restored (M18).
-1632: Stage 045's controllers close globally **"despite the local sink"**, whereas the current
-1633: law supplies **"total material"** conservation and rules out **"The frozen-wall mass sink with a
-1634: remote return"**. Whether the controllers retain a role after re-hosting is OPEN in the
-1635: S12 source/controller inventory. Both sides and the split oracle handoffs are retrieved in
-1636: M01/M11/M17/M18.
-1637: The earlier pass-2 second-route disagreement stays unresolved: the old directive says **"Run it only
-1638: on a prior result that a record in the reading list identifies as reproduced by the sector"**, and
-1639: this register says **"Run this route for every sector with identified prior art"** (M13). The
-1640: register's broader rule governs this pass. All comparator differences/coverage limits stay in
-1641: S12 §4 and M06–M09; the accepted engine-row comparison carries no information.
-1642: 
-1643: ### S14a part 1 pass — closed projection and two-channel shell compatibility · 2026-10-21; accepted `4a4dfaf5`
-1644: 
-1645: Source: `steps/S14a_1_projection.md`, §§1–8. Constructions accepted `94fddf2f`; comparator accepted
-1646: `de81b9fc`. This record/pass is accepted at `4a4dfaf5` (record review round 1). Commands and literal stdout:
-1647: `steps/_measurements/S14a_1_record_measurements.md`, generated by
-1648: `scripts/S14a_1_record_measurements.py`. M01/M03/M05–M10 retrieve the conditional printed objects,
-1649: their domains and comparison limits; M12 retrieves the schema/rest-on method and census;
-1650: M13 the second-route sources; M16 this pass and the exact ancillary diff against `f5d283c1`.
-1651: 
-1652: **Census:** 18 entries before (`f5d283c1`) → 18 after, all OPEN. **New entries by target: none.**
-1653: Four existing entries gain scoped source/provenance: `R-S1-01`, `R-S1-02`, `R-S12-02`, `R-S21-01`.
-1654: The last gains user-framing provenance only, not new optical evidence or a selected flow.
-1655: No target or status changes. The S12 pass itself changes only acceptance status/provenance and
-1656: known J1/J2: its account now names the S9b oracle status edit and register-header light-closing
-1657: status edit; its round-3 `18 → 18` sentence cites S12 M12. S12 acceptance is `ac909aaf` (M15/M16).
-1658: 
-1659: **First route / rest-on test.** The printed objects rest on supplied material/order balances,
-1660: the coordinate dimension, adopted U1 support identification and the live regional/two-face function
-1661: class. Spherical symmetry is a labelled restriction, not an earned limit. Each is kept at that
-1662: standing, not entered as a new derived substrate property. No chosen interior, face, source,
-1663: flux or profile form is required by these identities. Their printed compatibility objects do
-1664: constrain future data that would realize the conditional projection; these merge into the
-1665: existing `R-S12-02` compatibility requirement. No method of satisfying them is prescribed.
-1666: 
-1667: **Common domain of every handoff below:** the real-fraction branch, **A13 OPEN** at S1's gate,
-1668: propagated through S5/S12; two live graph faces and the inherited regional field class; full
-1669: endpoint-concentrated parts. Shell objects additionally keep the labelled spherical specialization;
-1670: velocity objects keep nonzero projected density. Every comparison qualification in the record §5
-1671: travels with its object. In particular the seven exact integral residuals, shell-domain difference,
-1672: external dimension-context differences, unjoined decompositions and unpaired components are not
-1673: resolved by this pass. Source/flux forms and distinct boundary data remain S12's, OPEN under
-1674: the 2026-10-20 **"Keep S12"** decision. These requirements deliver none of the forms.
-1675: 
-1676: | Required printed object; native tag family / bound references | Entry / target / status | What fails if future data violate the object |
-1677: |---|---|---|
-1678: | `General/{material,order}/projected density`, `/projected in-plane flux`, `/closed projected balance/operands`; corresponding Wolfram `general projection/...` objects (b51/b52/b59/b73/b74/b79) | `R-S12-02` / S12 / OPEN | The reported closed-slab material/order balance is not realized on this domain. |
-1679: | Each `General/{material,order}/face {0,1}/{interior leaving term,closed-projection leaving term}`, `/concentrated face parts`; material face-equation coefficients; `General/order/projected source` (b49/b53–b58/b71/b75–b78/b82) | `R-S12-02` / S12 / OPEN | The reported relative face transport, full concentrated parts or projected source are not realized. Material face requirements remain distinct; none is solved or imposed by this pass. |
-1680: | The separately constructed `SphericalSpecialization` projected counterparts (b127/b129–b137/b147/b149–b155/b158) | `R-S12-02` / S12 / OPEN | The labelled radial projection is not realized. No transfer outside its restriction is required. |
-1681: | Spherical `face channel`, `core channel`, `J`, `order lost`, `outward outer flux`, `storage`, `shell balance`, `face channel minus order lost` (b166–b171/b173–b175; Wolfram `spherical specialization / shell/...`) | `R-S12-02` / S12 / OPEN | The reported two-channel definition and shell/source/storage relations are not realized. Storage and shell-balance exact comparison remain unresolved as recorded, not replaced with an exact-match claim. |
-1682: | Spherical `outer flux radius derivative`, `outer projected velocity`, `outer volume flux`, with the printed predicates (b172/b176/b177) | `R-S12-02` / S12 / OPEN | The reported live-radius flux/conditioned-velocity relation is not realized. No zero-density velocity value is owed. |
-1683: 
-1684: The difference `face channel minus order lost` is required **as the printed difference**, not set
-1685: to zero. Agreement of bound dimension values constrains their interpretation only at their
-1686: printed domains; primitive dimension assignments and unpaired audit trees are not new laws.
-1687: Closed differential-operand integrals retain b50/b72/b128/b148's unresolved exact comparison
-1688: and printed sample evidence: of each unresolved part's 54 stored samples, only the 18 quadratic-form
-1689: samples can move when a derivative is taken at another point; the 18 affine and 18 cubic samples
-1690: do not make that check. The same limitation qualifies b171, b173's unresolved lhs and b174;
-1691: b173 has 36 quadratic samples across both sides, of which only 18 belong to its unresolved lhs.
-1692: No new exact equivalence is required by assertion (M03/M07–M10/M17).
-1693: The pending controlled return law, mass link, core solution, source-map completion and profile
-1694: knit enter no completed part-1 result as supplied forms; they retain their step assignments and
-1695: do not generate duplicate entries merely because they remain OPEN (record §7, M01/M11).
-1696: 
-1697: **Rest-on census, every existing entry:**
+1597: | Printed object required | Existing entry / target / status | Source and failure meaning |
+1598: |---|---|---|
+1599: | `general_order/region/1/source` below and `region/3/source` above | `R-S12-02` / S12 / OPEN | M03/M07: the respective live order-flux divergences. Data violating either cannot realize the reported exterior source. |
+1600: | `general_order/region/2/source` inside | `R-S12-02` / S12 / OPEN | M03/M07: live order transport plus order-flux divergence. Data violating it cannot realize the interior object. |
+1601: | `general_order/face/{1,2}/trace_coefficient` and `/source_contribution` | `R-S12-02` / S12 / OPEN | M03/M07/M08: normalized source parts at each live face, retaining the supplied-domain and diagnostic qualifications. No face-concentrated source is set to zero. |
+1602: | `material/face/{1,2}/requirement` | `R-S12-02` / S12 / OPEN | M03/M07: distinct total-material conditions at both faces; printed, not solved. Violation prevents locally conserved material in this function class. |
+1603: | `conditional_fast_ordering/region/{1,2,3}/source` and both face trace/source objects | `R-S12-02` / S12 / OPEN | M03/M07: only the labelled specialization, general in two offsets. Violation prevents that conditional specialization; it is not a universal fast-ordering limit. |
+1604: 
+1605: These requirement objects specify no law, material, premise or candidate as a means of satisfying
+1606: them. Their standing is distinct from the supplied balances, adopted inputs and flagged support
+1607: identification that qualify their domain. U1–U4 remain **"an adopted substrate input to a conditional
+1608: model"** each, as the source says; they are not newly derived substrate requirements. U1's unencoded
+1609: re-ordering clause, face-concentrated input fields and the generality of the live functions remain
+1610: OPEN handoffs. No named retirement condition makes an uncomputed constitutive form a new entry.
+1611: The two existing dimension/shear obligations have live retirement questions already, so they gain
+1612: only the limited conditional consumers stated in their own entries.
+1613: 
+1614: **Rest-on census, every entry:**
+1615: 
+1616: | Existing entry | S12 dependence / effect |
+1617: |---|---|
+1618: | R-S6-01 | No compression-modulus input or result; no source gain. |
+1619: | R-S7-01 | Live faces impose no selected width or nonuniform-width flatness result; no source gain. |
+1620: | R-S1-01 (target S6) | Three in-plane coordinates and four-dimensional material balance; coordinate-only source added, no dimensional derivation. |
+1621: | R-S1-02 | Adopted U1 shear-region/support identification; conditional interpretation source added, no computed shear response or confinement. |
+1622: | R-S1.5-01 | No GNLS mode/acoustic input; no source gain. |
+1623: | R-S6-02 | No stationary/equilibrium state or substrate first variation; no source gain. |
+1624: | R-S8-01 | No stiffness functional supplied or derived; no source gain. |
+1625: | R-S8-02 | No coupled `(u,h)` operator or block-diagonality input; no source gain. |
+1626: | R-S8-03 | No optical-stiffness sign calculation or propagating optical gate; no source gain. |
+1627: | R-S8-04 | No angular-momentum/couple-stress result used; inherited inventory only, no source gain. |
+1628: | R-S8-05 | No rotational reference frame selected; inherited inventory only, no source gain. |
+1629: | R-S1-03 | No microscopic time-reversal or Onsager–Casimir result used; no source gain. |
+1630: | R-S8-06 | No displacement identification or quadratic slab inertia used; material conservation alone does not supply either; no source gain. |
+1631: | R-S12-01 | Separate conditional non-passive-interface reservoir/budget retained. No computed S12 power consumer, no source gain, no live owner added. |
+1632: | R-S12-02 | Printed regional/face conversion compatibility and distinct material face conditions merge here; S12 source added. Native functions/data remain OPEN. |
+1633: | R-O2-01 | Separate net-supplier/budget condition retained; no S12 net-power calculation or consumer, no source gain or owner change. |
+1634: | R-S21-01 | User framing provenance added: each force states its flow requirement, S21 compares, a mismatch reopens S9b. No new optical evidence or fitted flow. |
+1635: | R-S22-01 | No throat energy split, matter coupling or thermal/cosmological transfer result computed or used; carried inventory only, no source gain. |
+1636: 
+1637: **Second route.** Apply the register's broader rule, including prior-art candidates outside S12's
+1638: record. Read the O2 scoping §5 and the S9b second-route inventory (M13). Gurtin–Murdoch,
+1639: Abels–Garcke–Grün, Scriven, Helfrich and Rodriguez–Hoger–McCulloch identify surface/exchange/reference
+1640: candidates; Hamilton–Lisle, Visser, Unruh and the inherited Cahill/Sbitnev class identify flow
+1641: candidates. Their model/dimension/exchange and source-access restrictions travel with each row.
+1642: For **each named candidate individually**, applicability, historical failure modes/objections that
+1643: transfer and whether they are answered here remain OPEN, **no owner named for a new S12 check**.
+1644: S12 reproduces no identified candidate result: its balances are supplied and its support model is
+1645: adopted. Thus no derived S12 requirement is entered on an oracle match, and none of those historical
+1646: obligations is claimed discharged. The remaining S9b candidates each keep their original OPEN
+1647: handoffs; the positive light-sector oracle check does not become an S12 oracle check.
+1648: 
+1649: The inherited river/acoustic objections are still carried, not answered: flow drive separates
+1650: S12's drain/source-boundary realization (`R-S12-02`) from O2's carried force-balance handoffs;
+1651: material destination separates S12's drain-produced density/exchange choice (`R-S12-02`)
+1652: from S21's knit compatibility (`R-S21-01`). Scalar acoustics versus transverse light is a scoped
+1653: S9b exclusion; kinematics versus dynamics stays in the analog-gravity handoff. Local material/order
+1654: identities name compatibility but select no flow, closure or response dynamics. Existing MacCullagh
+1655: admissibility/frame entries stay OPEN. No fresh oracle computation or literature check is done here.
+1656: 
+1657: **Directive/register relation and source tensions.** No new operative disagreement with the S12
+1658: record contract: its item 7 expressly defers to this rest-on test. Its 2026-10-19 framing says S12
+1659: **"states what any conversion law must satisfy and leaves the forms open"**, while the older
+1660: `R-S12-02` requires **"the native drain/return functions and their separate boundary data"**.
+1661: The older obligation remains OPEN; the current constraints merge into it without claiming its
+1662: delivery. The earlier owner line **"S12 owns the drain/return data"** and the requirements-only
+1663: framing are kept side by side. The user's 2026-10-20 **"Keep S12"** resolves their ownership
+1664: reading: **"This record closes only S12's requirements part"**, and the forms **"come once the
+1665: brane is defined, after the force sectors"**. S12 stays open; the record delivers none of its
+1666: forms. The reviewed record's replacement **"OPEN, no live owner named"** disagreed with the
+1667: oracle's **"The drain's source and boundary data belong to S12 (R-S12-02)"**; its removal of
+1668: S12 from the energy-input target disagreed with the user-chosen **"S22 (the nonlinear throat
+1669: solve), together with Q2 (the mouth source and its held datum) and S12 (the throat's
+1670: order-conversion source and its boundary data)"**. The record quotes both sides of these
+1671: disagreements and the A13 owner disagreement; all sourced owners are restored (M18).
+1672: Stage 045's controllers close globally **"despite the local sink"**, whereas the current
+1673: law supplies **"total material"** conservation and rules out **"The frozen-wall mass sink with a
+1674: remote return"**. Whether the controllers retain a role after re-hosting is OPEN in the
+1675: S12 source/controller inventory. Both sides and the split oracle handoffs are retrieved in
+1676: M01/M11/M17/M18.
+1677: The earlier pass-2 second-route disagreement stays unresolved: the old directive says **"Run it only
+1678: on a prior result that a record in the reading list identifies as reproduced by the sector"**, and
+1679: this register says **"Run this route for every sector with identified prior art"** (M13). The
+1680: register's broader rule governs this pass. All comparator differences/coverage limits stay in
+1681: S12 §4 and M06–M09; the accepted engine-row comparison carries no information.
+1682: 
+1683: ### S14a part 1 pass — closed projection and two-channel shell compatibility · 2026-10-21; accepted `4a4dfaf5`
+1684: 
+1685: Source: `steps/S14a_1_projection.md`, §§1–8. Constructions accepted `94fddf2f`; comparator accepted
+1686: `de81b9fc`. This record/pass is accepted at `4a4dfaf5` (record review round 1). Commands and literal stdout:
+1687: `steps/_measurements/S14a_1_record_measurements.md`, generated by
+1688: `scripts/S14a_1_record_measurements.py`. M01/M03/M05–M10 retrieve the conditional printed objects,
+1689: their domains and comparison limits; M12 retrieves the schema/rest-on method and census;
+1690: M13 the second-route sources; M16 this pass and the exact ancillary diff against `f5d283c1`.
+1691: 
+1692: **Census:** 18 entries before (`f5d283c1`) → 18 after, all OPEN. **New entries by target: none.**
+1693: Four existing entries gain scoped source/provenance: `R-S1-01`, `R-S1-02`, `R-S12-02`, `R-S21-01`.
+1694: The last gains user-framing provenance only, not new optical evidence or a selected flow.
+1695: No target or status changes. The S12 pass itself changes only acceptance status/provenance and
+1696: known J1/J2: its account now names the S9b oracle status edit and register-header light-closing
+1697: status edit; its round-3 `18 → 18` sentence cites S12 M12. S12 acceptance is `ac909aaf` (M15/M16).
 1698: 
-1699: | Entry | S14a part 1 dependence/effect |
-1700: |---|---|
-1701: | `R-S6-01` | No compression modulus used; no source gain. |
-1702: | `R-S7-01` | Live faces select no width/flatness result; no source gain. |
-1703: | `R-S1-01` | Three in-plane/one bulk coordinates and spherical area; coordinate-domain consumer only; source added, no dimension derived. |
-1704: | `R-S1-02` | Adopted U1 shear-region/support identification; conditional interpretation source only. No shear response/confinement derived. |
-1705: | `R-S1.5-01` | No GNLS linear-mode/acoustic input; no source gain. |
-1706: | `R-S6-02` | No equilibrium/first-variation input; no source gain. |
-1707: | `R-S8-01` | No stiffness functional used; no source gain. |
-1708: | `R-S8-02` | No coupled displacement/width quadratic operator used; no source gain. |
-1709: | `R-S8-03` | No optical-stiffness sign/gate result; no source gain. |
-1710: | `R-S8-04` | No new angular-momentum/couple-stress consumer; inherited second-route obligation remains. |
-1711: | `R-S8-05` | No rotational frame selected or used; inherited second-route obligation remains. |
-1712: | `R-S1-03` | No microscopic time-reversal/Onsager input; no source gain. |
-1713: | `R-S8-06` | No displacement/quadratic-inertia identification used; number conservation does not supply it. O2 comparison remains OPEN; no source gain. |
-1714: | `R-S12-01` | No non-passive response or computed power consumer; distinct carried condition, no live owner newly assigned. |
-1715: | `R-S12-02` | Projected/face/source and labelled shell compatibility objects merge here; source added, native forms/data remain OPEN. |
-1716: | `R-O2-01` | No net-power/supplier result or adopted net-supply closure; no source gain/owner change. |
-1717: | `R-S21-01` | Framing provenance only: each force states flow needs, S21 compares, mismatch reopens S9b. No new optical profile evidence or comparison result. |
-1718: | `R-S22-01` | No energy split or conversion-work/thermal-transfer result used; no source gain. Core exclusion keeps its existing owner, not a new computed energy requirement. |
-1719: 
-1720: **Second route.** Apply the register's broader rule for every sector with identified prior art.
-1721: Read O2 scoping §5 and the O2/S9b/light-closing source rows (M13), rather than treating this
-1722: record's own questions as an exhaustive prior-art inventory. Each named candidate remains
-1723: individual: Gurtin–Murdoch, Abels–Garcke–Grün, Scriven, Helfrich, Rodriguez–Hoger–McCulloch,
-1724: Hamilton–Lisle, Visser, Unruh and the inherited Cahill/Sbitnev class. For each, applicability,
-1725: transferable historical failures/objections and whether they are answered here remain OPEN,
-1726: **no owner named for a new S14a part 1 check**. The original access, dimension, material and
-1727: exchange limitations remain as the source rows state them. No part-1 result is claimed to
-1728: reproduce an applied oracle, so no new requirement is founded on such a match.
-1729: 
-1730: Every other candidate in the inherited S9b inventory retains its source row and original OPEN
-1731: handoff (M13). The river/acoustic objections are carried, not answered: S12 drain/source-boundary
-1732: realization versus O2's force balance; S12's produced density/exchange versus S21 knit compatibility;
-1733: scalar sound versus transverse light as S9b's scoped exclusion; analog kinematics versus dynamics
-1734: as its existing handoff. Neither global nor local conservation chooses a drive or response law.
-1735: MacCullagh's `R-S8-04/-05` remain OPEN. No literature search, new oracle check or candidate
-1736: selection is performed by this pass.
-1737: 
-1738: **Directive/register relation and source tensions.** The current contract expressly defers to
-1739: this rest-on test and both-route method; no operative disagreement is found. The historical
-1740: second-route directive says **"Run it only on a prior result that a record in the reading list
-1741: identifies as reproduced by the sector"**, while the register says **"Run this route for every
-1742: sector with identified prior art"** (M13). The register wins. The material-conservation and
-1743: S13-filing disagreements are quoted with both sides in record §6 (M01/M11/M15), not resolved by
-1744: new physics or an owner reassignment. The plan's four bridge objects are not all closed:
-1745: S14/S15/S20 remain **"CONDITIONAL, not carried results"**. No frozen DC completion or profile
-1746: is adopted to close them.
-1747: 
-1748: ### S14a part 2 pass — dynamically selected slow limit and far behaviour · 2026-10-21; accepted `79511272` (round 2 clear)
-1749: 
-1750: Source: `steps/S14a_2_slow_limit.md`, §§1–7. Commands and literal stdout:
-1751: `steps/_measurements/S14a_2_record_measurements.md`, generated by
-1752: `scripts/S14a_2_record_measurements.py`. M01/M02 retrieve the contract and both step-list
-1753: revisions; M03 the review dispositions, lookup existence and assembly-audit excerpt; M04–M10 each
-1754: witness's complete source and saved stdout; M11 the accepted part-1/S12 sources and owners; M12 the schema/method/census;
-1755: M13/M14 the plan/comparison inventories and second-route handoffs; M15 this pass and the
-1756: exact ancillary diff against `978c359c`; M16 the record round-0 dispositions, V2 user decision
-1757: and committed-generator provenance; M17 the record round-1 dispositions. No build or witness rerun is performed here.
-1758: 
-1759: **Census:** 18 entries before (`978c359c`) → 19 after, all OPEN. **One new entry by target:**
-1760: `R-S14a-01`, jointly S12 (source/flux forms), S8/S22 (material law), and **no owner named** for
-1761: face/interior laws, as V2 assigns. **Existing entries gaining a source: none.** No existing
-1762: entry changes target/status; `R-S12-02` retains its block and by-target row at `978c359c`.
-1763: The part-1 pass changes only its acceptance heading/provenance to `4a4dfaf5`; its other
-1764: content is unchanged.
-1765: 
-1766: **First route / rest-on test.** The user chose **"Record as requirement"** after the two
-1767: step-list reviews. The object required is **the slow limit and far behaviour selected by
-1768: the slab's own dynamics**, for S14a's still-underived controlled return and profile-dependent
-1769: `J→Q` obligations. Its consumers are **S14, S15 and S20**: without that delivery they remain
-1770: **CONDITIONAL, not carried results**. This is a named future delivery condition for those
-1771: claims, not an assumed form or a defect in an accepted part-2 result. No such result exists.
-1772: The register method makes an assertion about a step with no record a requirement; this one
-1773: is explicitly required by the user, not entered merely because a future solve could use it.
-1774: 
-1775: The register's merge test is applied to the selection object and its joint deliverers,
-1776: not just S12's forms. No existing entry covers that same requirement with those deliverers.
-1777: `R-S12-02` covers S12's native source/flux forms, separate data and compatibility objects;
-1778: it does not cover selection owed jointly with S8/S22 and unowned face/interior laws.
-1779: `R-S22-01`'s joint energy-split obligation and `R-O2-01`'s unowned supplier/budget obligation
-1780: are different objects. The method keys each entry by its deliverer, so selection has its own
-1781: entry, **`R-S14a-01`**; `R-S12-02` is unchanged from `978c359c` (M12/M17).
-1782: 
-1783: The user's V2 choice **"All the slab's laws (Recommended)"** (2026-10-21) replaces item 4's S12-only target
-1784: sentence. Its source is `directives/_measurements/S14a_2_record_r0_review_disposition.md`,
-1785: "The user's decision on V2", committed at `12aa65d5` (M16). The selected orchestrator option says:
-1786: 
-1787: > "The selection is owed jointly by S12's source and flux forms, the slab's material law
-1788: > (S8/S22), and the face and interior laws, which have no owner yet. The register says so and
-1789: > states the missing owner as missing; it invents none. The record reports the disagreement
-1790: > with both sides quoted."
-1791: 
-1792: The new entry's target field and by-target row state those joint deliverers for selection. Existing S12
-1793: source/flux/boundary obligations remain with S12 under **"Keep S12"**. No missing owner is
-1794: invented, and the selection requirement does not repartition the complete return-law/map
-1795: obligations. Recording it delivers none of the forms, the slow return law or the source map.
-1796: The inherited real-fraction/A13, live-face and part-1
-1797: comparison qualifications remain. No new averaging operation, solution family, density gate,
-1798: limit order, drain/return law, material, profile, premise or candidate is prescribed.
-1799: 
-1800: The evidence is pass 1 Q1–Q3 and pass 2 R1–R3 as filed, not an accepted build or a universal
-1801: theorem: three pass-1 Codex instruments, one pass-1 Grok instrument, two pass-2 Codex
-1802: instruments and one pass-2 Grok instrument. Their constructions/checks differ, as record
-1803: §§2–3 states. In particular, pass-2 Grok's gate example checks one projected material balance,
-1804: not both native balances. The pass-2 orchestrator reading is quoted as a reading. The user
-1805: decision, not an extrapolation from these probes, supplies the requirement's standing.
-1806: 
-1807: All 18 existing entries retain their sources/targets/statuses. No new computed consumer of
-1808: their dimension, shear, stiffness, inertia, equilibrium, mode, width, power or energy-split
-1809: objects is supplied by this retrieval-only record. The repeated flow-framing decision keeps
-1810: S21's existing comparison obligation; no new S21 source/comparison result is added.
-1811: 
-1812: **Second route.** Apply the register's broader rule for every sector with identified prior
-1813: art. M14 retrieves O2 scoping §5 and the O2/S9b/light-closing/part-1 source inventories. For
-1814: each candidate individually—Gurtin–Murdoch, Abels–Garcke–Grün, Scriven, Helfrich,
-1815: Rodriguez–Hoger–McCulloch, Hamilton–Lisle, Visser, Unruh, Cahill and Sbitnev—applicability,
-1816: transferable historical objections/failures and whether those are answered here remain OPEN,
-1817: no owner named for a new part-2 check. All other individually named S9b candidates keep their
-1818: original OPEN handoffs and filed access/model qualifications. No candidate is applied or
-1819: selected, no literature verification is performed, and no part-2 prior result is reproduced.
-1820: 
-1821: The four inherited river/acoustic objections remain distinct: S12 source/boundary realization
-1822: versus O2's carried force balance; S12 produced density/exchange versus S21 knit compatibility;
-1823: the scoped scalar-sound/transverse-light exclusion; and analog kinematics versus dynamics.
-1824: None is answered here. MacCullagh's `R-S8-04/-05` stay OPEN. No new requirement rests on an
-1825: unapplied oracle; both-route questions are preserved, not treated as negative findings.
+1699: **First route / rest-on test.** The printed objects rest on supplied material/order balances,
+1700: the coordinate dimension, adopted U1 support identification and the live regional/two-face function
+1701: class. Spherical symmetry is a labelled restriction, not an earned limit. Each is kept at that
+1702: standing, not entered as a new derived substrate property. No chosen interior, face, source,
+1703: flux or profile form is required by these identities. Their printed compatibility objects do
+1704: constrain future data that would realize the conditional projection; these merge into the
+1705: existing `R-S12-02` compatibility requirement. No method of satisfying them is prescribed.
+1706: 
+1707: **Common domain of every handoff below:** the real-fraction branch, **A13 OPEN** at S1's gate,
+1708: propagated through S5/S12; two live graph faces and the inherited regional field class; full
+1709: endpoint-concentrated parts. Shell objects additionally keep the labelled spherical specialization;
+1710: velocity objects keep nonzero projected density. Every comparison qualification in the record §5
+1711: travels with its object. In particular the seven exact integral residuals, shell-domain difference,
+1712: external dimension-context differences, unjoined decompositions and unpaired components are not
+1713: resolved by this pass. Source/flux forms and distinct boundary data remain S12's, OPEN under
+1714: the 2026-10-20 **"Keep S12"** decision. These requirements deliver none of the forms.
+1715: 
+1716: | Required printed object; native tag family / bound references | Entry / target / status | What fails if future data violate the object |
+1717: |---|---|---|
+1718: | `General/{material,order}/projected density`, `/projected in-plane flux`, `/closed projected balance/operands`; corresponding Wolfram `general projection/...` objects (b51/b52/b59/b73/b74/b79) | `R-S12-02` / S12 / OPEN | The reported closed-slab material/order balance is not realized on this domain. |
+1719: | Each `General/{material,order}/face {0,1}/{interior leaving term,closed-projection leaving term}`, `/concentrated face parts`; material face-equation coefficients; `General/order/projected source` (b49/b53–b58/b71/b75–b78/b82) | `R-S12-02` / S12 / OPEN | The reported relative face transport, full concentrated parts or projected source are not realized. Material face requirements remain distinct; none is solved or imposed by this pass. |
+1720: | The separately constructed `SphericalSpecialization` projected counterparts (b127/b129–b137/b147/b149–b155/b158) | `R-S12-02` / S12 / OPEN | The labelled radial projection is not realized. No transfer outside its restriction is required. |
+1721: | Spherical `face channel`, `core channel`, `J`, `order lost`, `outward outer flux`, `storage`, `shell balance`, `face channel minus order lost` (b166–b171/b173–b175; Wolfram `spherical specialization / shell/...`) | `R-S12-02` / S12 / OPEN | The reported two-channel definition and shell/source/storage relations are not realized. Storage and shell-balance exact comparison remain unresolved as recorded, not replaced with an exact-match claim. |
+1722: | Spherical `outer flux radius derivative`, `outer projected velocity`, `outer volume flux`, with the printed predicates (b172/b176/b177) | `R-S12-02` / S12 / OPEN | The reported live-radius flux/conditioned-velocity relation is not realized. No zero-density velocity value is owed. |
+1723: 
+1724: The difference `face channel minus order lost` is required **as the printed difference**, not set
+1725: to zero. Agreement of bound dimension values constrains their interpretation only at their
+1726: printed domains; primitive dimension assignments and unpaired audit trees are not new laws.
+1727: Closed differential-operand integrals retain b50/b72/b128/b148's unresolved exact comparison
+1728: and printed sample evidence: of each unresolved part's 54 stored samples, only the 18 quadratic-form
+1729: samples can move when a derivative is taken at another point; the 18 affine and 18 cubic samples
+1730: do not make that check. The same limitation qualifies b171, b173's unresolved lhs and b174;
+1731: b173 has 36 quadratic samples across both sides, of which only 18 belong to its unresolved lhs.
+1732: No new exact equivalence is required by assertion (M03/M07–M10/M17).
+1733: The pending controlled return law, mass link, core solution, source-map completion and profile
+1734: knit enter no completed part-1 result as supplied forms; they retain their step assignments and
+1735: do not generate duplicate entries merely because they remain OPEN (record §7, M01/M11).
+1736: 
+1737: **Rest-on census, every existing entry:**
+1738: 
+1739: | Entry | S14a part 1 dependence/effect |
+1740: |---|---|
+1741: | `R-S6-01` | No compression modulus used; no source gain. |
+1742: | `R-S7-01` | Live faces select no width/flatness result; no source gain. |
+1743: | `R-S1-01` | Three in-plane/one bulk coordinates and spherical area; coordinate-domain consumer only; source added, no dimension derived. |
+1744: | `R-S1-02` | Adopted U1 shear-region/support identification; conditional interpretation source only. No shear response/confinement derived. |
+1745: | `R-S1.5-01` | No GNLS linear-mode/acoustic input; no source gain. |
+1746: | `R-S6-02` | No equilibrium/first-variation input; no source gain. |
+1747: | `R-S8-01` | No stiffness functional used; no source gain. |
+1748: | `R-S8-02` | No coupled displacement/width quadratic operator used; no source gain. |
+1749: | `R-S8-03` | No optical-stiffness sign/gate result; no source gain. |
+1750: | `R-S8-04` | No new angular-momentum/couple-stress consumer; inherited second-route obligation remains. |
+1751: | `R-S8-05` | No rotational frame selected or used; inherited second-route obligation remains. |
+1752: | `R-S1-03` | No microscopic time-reversal/Onsager input; no source gain. |
+1753: | `R-S8-06` | No displacement/quadratic-inertia identification used; number conservation does not supply it. O2 comparison remains OPEN; no source gain. |
+1754: | `R-S12-01` | No non-passive response or computed power consumer; distinct carried condition, no live owner newly assigned. |
+1755: | `R-S12-02` | Projected/face/source and labelled shell compatibility objects merge here; source added, native forms/data remain OPEN. |
+1756: | `R-O2-01` | No net-power/supplier result or adopted net-supply closure; no source gain/owner change. |
+1757: | `R-S21-01` | Framing provenance only: each force states flow needs, S21 compares, mismatch reopens S9b. No new optical profile evidence or comparison result. |
+1758: | `R-S22-01` | No energy split or conversion-work/thermal-transfer result used; no source gain. Core exclusion keeps its existing owner, not a new computed energy requirement. |
+1759: 
+1760: **Second route.** Apply the register's broader rule for every sector with identified prior art.
+1761: Read O2 scoping §5 and the O2/S9b/light-closing source rows (M13), rather than treating this
+1762: record's own questions as an exhaustive prior-art inventory. Each named candidate remains
+1763: individual: Gurtin–Murdoch, Abels–Garcke–Grün, Scriven, Helfrich, Rodriguez–Hoger–McCulloch,
+1764: Hamilton–Lisle, Visser, Unruh and the inherited Cahill/Sbitnev class. For each, applicability,
+1765: transferable historical failures/objections and whether they are answered here remain OPEN,
+1766: **no owner named for a new S14a part 1 check**. The original access, dimension, material and
+1767: exchange limitations remain as the source rows state them. No part-1 result is claimed to
+1768: reproduce an applied oracle, so no new requirement is founded on such a match.
+1769: 
+1770: Every other candidate in the inherited S9b inventory retains its source row and original OPEN
+1771: handoff (M13). The river/acoustic objections are carried, not answered: S12 drain/source-boundary
+1772: realization versus O2's force balance; S12's produced density/exchange versus S21 knit compatibility;
+1773: scalar sound versus transverse light as S9b's scoped exclusion; analog kinematics versus dynamics
+1774: as its existing handoff. Neither global nor local conservation chooses a drive or response law.
+1775: MacCullagh's `R-S8-04/-05` remain OPEN. No literature search, new oracle check or candidate
+1776: selection is performed by this pass.
+1777: 
+1778: **Directive/register relation and source tensions.** The current contract expressly defers to
+1779: this rest-on test and both-route method; no operative disagreement is found. The historical
+1780: second-route directive says **"Run it only on a prior result that a record in the reading list
+1781: identifies as reproduced by the sector"**, while the register says **"Run this route for every
+1782: sector with identified prior art"** (M13). The register wins. The material-conservation and
+1783: S13-filing disagreements are quoted with both sides in record §6 (M01/M11/M15), not resolved by
+1784: new physics or an owner reassignment. The plan's four bridge objects are not all closed:
+1785: S14/S15/S20 remain **"CONDITIONAL, not carried results"**. No frozen DC completion or profile
+1786: is adopted to close them.
+1787: 
+1788: ### S14a part 2 pass — dynamically selected slow limit and far behaviour · 2026-10-21; accepted `79511272` (round 2 clear)
+1789: 
+1790: Source: `steps/S14a_2_slow_limit.md`, §§1–7. Commands and literal stdout:
+1791: `steps/_measurements/S14a_2_record_measurements.md`, generated by
+1792: `scripts/S14a_2_record_measurements.py`. M01/M02 retrieve the contract and both step-list
+1793: revisions; M03 the review dispositions, lookup existence and assembly-audit excerpt; M04–M10 each
+1794: witness's complete source and saved stdout; M11 the accepted part-1/S12 sources and owners; M12 the schema/method/census;
+1795: M13/M14 the plan/comparison inventories and second-route handoffs; M15 this pass and the
+1796: exact ancillary diff against `978c359c`; M16 the record round-0 dispositions, V2 user decision
+1797: and committed-generator provenance; M17 the record round-1 dispositions. No build or witness rerun is performed here.
+1798: 
+1799: **Census:** 18 entries before (`978c359c`) → 19 after, all OPEN. **One new entry by target:**
+1800: `R-S14a-01`, jointly S12 (source/flux forms), S8/S22 (material law), and **no owner named** for
+1801: face/interior laws, as V2 assigns. **Existing entries gaining a source: none.** No existing
+1802: entry changes target/status; `R-S12-02` retains its block and by-target row at `978c359c`.
+1803: The part-1 pass changes only its acceptance heading/provenance to `4a4dfaf5`; its other
+1804: content is unchanged.
+1805: 
+1806: **First route / rest-on test.** The user chose **"Record as requirement"** after the two
+1807: step-list reviews. The object required is **the slow limit and far behaviour selected by
+1808: the slab's own dynamics**, for S14a's still-underived controlled return and profile-dependent
+1809: `J→Q` obligations. Its consumers are **S14, S15 and S20**: without that delivery they remain
+1810: **CONDITIONAL, not carried results**. This is a named future delivery condition for those
+1811: claims, not an assumed form or a defect in an accepted part-2 result. No such result exists.
+1812: The register method makes an assertion about a step with no record a requirement; this one
+1813: is explicitly required by the user, not entered merely because a future solve could use it.
+1814: 
+1815: The register's merge test is applied to the selection object and its joint deliverers,
+1816: not just S12's forms. No existing entry covers that same requirement with those deliverers.
+1817: `R-S12-02` covers S12's native source/flux forms, separate data and compatibility objects;
+1818: it does not cover selection owed jointly with S8/S22 and unowned face/interior laws.
+1819: `R-S22-01`'s joint energy-split obligation and `R-O2-01`'s unowned supplier/budget obligation
+1820: are different objects. The method keys each entry by its deliverer, so selection has its own
+1821: entry, **`R-S14a-01`**; `R-S12-02` is unchanged from `978c359c` (M12/M17).
+1822: 
+1823: The user's V2 choice **"All the slab's laws (Recommended)"** (2026-10-21) replaces item 4's S12-only target
+1824: sentence. Its source is `directives/_measurements/S14a_2_record_r0_review_disposition.md`,
+1825: "The user's decision on V2", committed at `12aa65d5` (M16). The selected orchestrator option says:
 1826: 
-1827: **Directive/register relation and disagreements.** The current contract defers to this schema,
-1828: rest-on test and both routes. Its original S12-only target sentence and the earlier option's
-1829: **"(the open S12 forms)"** gloss disagree with accepted S12's material/face/interior ownership
-1830: statements; both sides are quoted in record §6 (M01/M11/M16). The V2 user decision quoted above
-1831: supersedes that target sentence with joint delivery. The historical population
-1832: directive says **"Run it only on a prior result that a record in the reading list identifies
-1833: as reproduced by the sector"** (direct retrieval M11); this register says **"Run this route
-1834: for every sector with identified prior art"** (M12). The register governs. The pointwise-rate,
-1835: DC/slow-limit, historical material-conservation and S13-filing tensions remain quoted with
-1836: both sides in record §6 (M02/M03/M11/M13). The contract requests **"a committed generator script"**
-1837: and says **"No commit and no push"**; the list's own no-commit instruction governs this repair.
-1838: The round-1 reviewed generator and measurements are preserved at `85904c4e`; the repaired record,
-1839: generator, measurements and register pass were subsequently committed and accepted at `79511272`
-1840: (round 2 clear; `directives/_measurements/S14a_2_record_r2_review_disposition.md`, retrieved in S16 M15).
-1841: No physics disagreement is closed by this pass.
-1842: 
-1843: ### S16 pass — live moving-region balances and separate response requirements · 2026-10-24; written for source-first review
-1844: 
-1845: Source: `steps/S16_moving_region.md`, §§1–8. The governing list is revision 4 at `0464b80a`;
-1846: the constructions are accepted at `1d990ee6`, the comparator at `f08db34a` with its citation
-1847: containment claim. Commands and literal stdout: `steps/_measurements/S16_record_measurements.md`,
-1848: generated by `scripts/S16_record_measurements.py` (M01–M16). The generator and record are supplied
-1849: uncommitted under this record contract's "No commit and no push" instruction.
-1850: 
-1851: **Census:** 19 entries at `4d4d22cb` → 25, all OPEN. **Six new entries by target:** three with
-1852: no physical owner named (`R-S16-01/-02/-03`; compactness is also owed to S22's debt table),
-1853: one S8 (`R-S16-04`, retaining the O2 antecedent qualification), one S8/S22 (`R-S16-05`),
-1854: and one S22 debt-table account (`R-S22-02`, without assigning missing physical suppliers).
-1855: **Existing entries gaining source/provenance:** `R-S12-02` (supplied projected material object
-1856: and "Keep S12" only) and `R-S21-01` (the 2026-10-19 framing only). Neither changes requirement,
-1857: target or status. No entry closes; `R-S14a-01` remains OPEN with its existing joint target.
-1858: 
-1859: **First route / rest-on test.** As the schema says, a requirement is a future obligation;
-1860: an adopted value/form belongs to the ansatz ledger, and an already-wrong object to the defect
-1861: register. These six entries are the user's explicit future requirements and the decision list's
-1862: named S22 debt filing, not closure forms inferred merely from a future owner. Failure blocks the
-1863: named later interpretation or debt account, not S16's live unsolved balances. That is the same
-1864: criterion that admits the explicitly user-required S14a selection object. O2's earlier refusal to
-1865: enter unspecified live response forms merely for a future solve is retained; S16 now expressly
-1866: requires the inertia and density objects. Those are not derived substrate responses.
-1867: 
-1868: No further entry has a printed object as its requirement. The supplied material/momentum balances,
-1869: their integrals, count-centre definitions and moments are conditional identities on the list's
-1870: domain, not a selected material state. No printed nonzero boundary flux is required to vanish.
-1871: The count projection and its S12 provenance already fall within `R-S12-02`; source and face forms
-1872: stay OPEN. General `G`, `Pi` and `f` forms have no owner assigned here, while S12 gives slab material
-1873: completion to S8/S22 and names no face-law owner. Neither the unowned momentum balance nor the
-1874: core's excluded content is assigned to S12. Control shape, moment truncation and independent
-1875: dimension units are labelled supplied/construction choices, not new physical-dimension or
-1876: shear-response identifications; `R-S1-01/-02` gain no S16 source. No O2 premise is silently adopted.
-1877: 
-1878: **Merge test.** `R-S16-01` is distinct from source normalization and from S21's knit;
-1879: `R-S16-02` is distinct from count moments and the width bridge; `R-S16-03` is distinct from S12's
-1880: material-face compatibility. `R-S16-04` does not widen the original homogeneous/slab object in
-1881: `R-S8-06`. `R-S16-05` has no existing density-response entry. S22's existing `R-S22-01` concerns
-1882: energy partition, not the reduction-debt account. Compactness is cross-referenced there once.
-1883: The record's requirements table names each target and OPEN status; no means of meeting them is filed.
+1827: > "The selection is owed jointly by S12's source and flux forms, the slab's material law
+1828: > (S8/S22), and the face and interior laws, which have no owner yet. The register says so and
+1829: > states the missing owner as missing; it invents none. The record reports the disagreement
+1830: > with both sides quoted."
+1831: 
+1832: The new entry's target field and by-target row state those joint deliverers for selection. Existing S12
+1833: source/flux/boundary obligations remain with S12 under **"Keep S12"**. No missing owner is
+1834: invented, and the selection requirement does not repartition the complete return-law/map
+1835: obligations. Recording it delivers none of the forms, the slow return law or the source map.
+1836: The inherited real-fraction/A13, live-face and part-1
+1837: comparison qualifications remain. No new averaging operation, solution family, density gate,
+1838: limit order, drain/return law, material, profile, premise or candidate is prescribed.
+1839: 
+1840: The evidence is pass 1 Q1–Q3 and pass 2 R1–R3 as filed, not an accepted build or a universal
+1841: theorem: three pass-1 Codex instruments, one pass-1 Grok instrument, two pass-2 Codex
+1842: instruments and one pass-2 Grok instrument. Their constructions/checks differ, as record
+1843: §§2–3 states. In particular, pass-2 Grok's gate example checks one projected material balance,
+1844: not both native balances. The pass-2 orchestrator reading is quoted as a reading. The user
+1845: decision, not an extrapolation from these probes, supplies the requirement's standing.
+1846: 
+1847: All 18 existing entries retain their sources/targets/statuses. No new computed consumer of
+1848: their dimension, shear, stiffness, inertia, equilibrium, mode, width, power or energy-split
+1849: objects is supplied by this retrieval-only record. The repeated flow-framing decision keeps
+1850: S21's existing comparison obligation; no new S21 source/comparison result is added.
+1851: 
+1852: **Second route.** Apply the register's broader rule for every sector with identified prior
+1853: art. M14 retrieves O2 scoping §5 and the O2/S9b/light-closing/part-1 source inventories. For
+1854: each candidate individually—Gurtin–Murdoch, Abels–Garcke–Grün, Scriven, Helfrich,
+1855: Rodriguez–Hoger–McCulloch, Hamilton–Lisle, Visser, Unruh, Cahill and Sbitnev—applicability,
+1856: transferable historical objections/failures and whether those are answered here remain OPEN,
+1857: no owner named for a new part-2 check. All other individually named S9b candidates keep their
+1858: original OPEN handoffs and filed access/model qualifications. No candidate is applied or
+1859: selected, no literature verification is performed, and no part-2 prior result is reproduced.
+1860: 
+1861: The four inherited river/acoustic objections remain distinct: S12 source/boundary realization
+1862: versus O2's carried force balance; S12 produced density/exchange versus S21 knit compatibility;
+1863: the scoped scalar-sound/transverse-light exclusion; and analog kinematics versus dynamics.
+1864: None is answered here. MacCullagh's `R-S8-04/-05` stay OPEN. No new requirement rests on an
+1865: unapplied oracle; both-route questions are preserved, not treated as negative findings.
+1866: 
+1867: **Directive/register relation and disagreements.** The current contract defers to this schema,
+1868: rest-on test and both routes. Its original S12-only target sentence and the earlier option's
+1869: **"(the open S12 forms)"** gloss disagree with accepted S12's material/face/interior ownership
+1870: statements; both sides are quoted in record §6 (M01/M11/M16). The V2 user decision quoted above
+1871: supersedes that target sentence with joint delivery. The historical population
+1872: directive says **"Run it only on a prior result that a record in the reading list identifies
+1873: as reproduced by the sector"** (direct retrieval M11); this register says **"Run this route
+1874: for every sector with identified prior art"** (M12). The register governs. The pointwise-rate,
+1875: DC/slow-limit, historical material-conservation and S13-filing tensions remain quoted with
+1876: both sides in record §6 (M02/M03/M11/M13). The contract requests **"a committed generator script"**
+1877: and says **"No commit and no push"**; the list's own no-commit instruction governs this repair.
+1878: The round-1 reviewed generator and measurements are preserved at `85904c4e`; the repaired record,
+1879: generator, measurements and register pass were subsequently committed and accepted at `79511272`
+1880: (round 2 clear; `directives/_measurements/S14a_2_record_r2_review_disposition.md`, retrieved in S16 M15).
+1881: No physics disagreement is closed by this pass.
+1882: 
+1883: ### S16 pass — live moving-region balances and separate response requirements · 2026-10-24; written for source-first review
 1884: 
-1885: **Second route.** Read every gravity prior-art row G1–G13 with its stated conditions and access
-1886: qualifications (record §5, M05). G1/G2 attribute the standard transport algebra; their abstract
-1887: any-entity statement is compared only by retrieval with S16's integral/measure and rest/motion
-1888: objects. No external result is imported as a premise and no new residual is computed. G3/G4 and
-1889: G5/G6/G8 have other objects or conditions; G7 is the prior result for the open passive requirement,
-1890: not an identification; G9/G11 give no S16 force-law result; G10 is an unexecuted architectural
-1891: sketch; G12 gives posits, not a mass derivation. The quoted condition table in record §5 keeps
-1892: each comparison open where computation or a condition change would be needed.
-1893: 
-1894: G13's objections are each preserved: moving-drain damping (Wang), unexplained energy disappearance,
-1895: drag and matter creation (the last three from a secondary source), and universal pulsation phase
-1896: (secondary source). S16 supplies no energy balance, mass-creation relation, sink-force law or
-1897: pulsation model and answers none of them. Drag remains a question beside the passive/inertial
-1898: requirements without an assigned applicability-check owner; energy destination remains beside
-1899: S12's exchange and `R-S22-01`'s split without a new energy result; mass creation remains beside
-1900: C3 and S22's debt account; synchrony is an unapplied-oracle question with no owner named. None is
-1901: a defect found here or a new assumed property of an unbuilt substrate. No new entry follows merely
-1902: from these objections before applicability/reproduction under matching conditions is established.
-1903: This applies the broader "every sector with identified prior art" rule, not the historical
-1904: reproduced-result-only restriction. G7's no-external-body-force assumption is retained; O2's
-1905: different drive premise is not imported into S16 to make it match.
-1906: 
-1907: **Limits and disagreements.** The pass inherits the complete record §3 ledger: exact/as-computed
-1908: versus resolved residuals, open domain differences, native text/route differences, every unjoined
-1909: tag and unpaired component, below-count bindings and normalized-domain exclusions. It does not
-1910: claim whole-stream identity or a motion-free sum of `localEvolution` pieces. The plan/O2 interface
-1911: describes a compact-body calibrated-potential reduction; the later user list supplies no potential,
-1912: mass or compactness and computes only regional objects. Both sides are quoted in record §7. The
-1913: governing list's "committed generator script"/"No commit and no push" conflict is reported there;
-1914: the latter governs this authoring STOP. The list's revision heading still says "Revision 3" while
-1915: its body and acceptance say revision 4. Accepted S12's historical mass-link owner is "S13";
-1916: the current S16 list retains "C3, a gap", and the later user filing folds S13 into S14a.
-1917: Record §7 quotes those distinct source assignments without inferring a new mass-link owner.
-1918: No source is repaired by this pass. No operative
-1919: directive/register conflict remains: explicitly required future objects are distinguished from
-1920: unselected closure forms and adopted premises throughout.
-1921: 
-1922: ### Method for population passes
-1923: 
-1924: Method for a pass, per step record: read it for every statement of the form *this assumes*, *this rests
-1925: on*, *this is postulated at*, *this is deferred to*, *X enters at S**n***, and for every named retirement
-1926: condition. Each becomes an entry keyed by the step that must deliver. Where the record asserts something
-1927: about a step that has no record yet, that is a requirement by definition.
-1928: 
-1929: Two things to watch for, both seen already:
-1930: - A requirement can point **sideways**, not only backwards — S11's questions reduce to the S11b interface
-1931:   law, which is a sibling step, not a substrate one.
-1932: - The same object can be required by several sectors. Charge and magnetism ride the same brane–bulk
-1933:   coupling as light, so an entry may gain sources rather than being duplicated.
-1934: 
-1935: ⭐⭐ **A SECOND ROUTE, added 2026-08-07 — ⛔ the method above would never have found `R-S8-04` or `R-S8-05`.**
-1936: Both came from asking, of a **known prior result our sector reproduces**, *why was it rejected in its own
-1937: time, and has that objection been answered here?* ⛔ Neither is anywhere in S9's or S10's records, because
-1938: the records only capture what their authors thought to doubt — and the sector reproduces MacCullagh's
-1939: algebra so cleanly that the objection to it never came up.
-1940: 
-1941: ⇒ ⭐ **Run this route for every sector with identified prior art**, ⛔ not only the light sector.
-1942: ⚠ It is the sharpest use of `CLAUDE.md` rule 16 available: the prior work's **failure modes** transfer as
-1943: obligations even where its **results** transfer as corroboration — and a result that matches prior art
-1944: tells you nothing about whether you inherited its problems.
-1945: ⚠⚠ **The tell that this was overdue:** the closer a sector's agreement with prior art, the *less* anyone
-1946: thinks to ask what that prior art could not do. ⇒ ⛔ a clean reproduction is exactly when to run it.
-1947: 
-1948: **Honest sizing, now measured rather than guessed.** Pass 1 read two records and produced **seven**
-1949: entries, bringing the file from two entries to **nine total**, from a third of the sector. ⚠ That rate
-1950: is the argument for
-1951: running the pass **as each step closes**: reconstructing it at Phase 5, across five sectors, is precisely
-1952: where an implicit assumption goes missing.
-1953: 
-1954: ⛔ **And pass 1 found no way to make this mechanical.** Every one of the seven came from reading prose for a
-1955: *flagged identification*, a *postulate with a live retirement condition*, or a *consequence stated about a
-1956: step that does not exist yet*. ⇒ ⛔ there is no grep for it, and a pass that produces entries quickly is a
-1957: pass that missed some.
-1958: 
-1959: ## When this is done
-1960: 
-1961: Phase 5 knits the sectors and builds the substrate. At that point this file is the checklist the
-1962: substrate is tested against — the thing that answers *"is the brane–bulk we built sufficient to carry all
-1963: five forces"* by enumeration rather than by recollection.
+1885: Source: `steps/S16_moving_region.md`, §§1–8. The governing list is revision 4 at `0464b80a`;
+1886: the constructions are accepted at `1d990ee6`, the comparator at `f08db34a` with its citation
+1887: containment claim. Commands and literal stdout: `steps/_measurements/S16_record_measurements.md`,
+1888: generated by `scripts/S16_record_measurements.py` (M01–M18). The reviewed record, generator and
+1889: measurements are preserved at `4ae7e6cf`; this Y1–Y4 repair is uncommitted under the contract's
+1890: "No commit and no push" instruction (M17).
+1891: 
+1892: **Census:** 19 entries at `4d4d22cb` → 25, all OPEN. **Six new entries by target:** three with
+1893: no physical owner named (`R-S16-01/-02/-03`; compactness is also owed to S22's debt table),
+1894: one S8 (`R-S16-04`, retaining the O2 antecedent qualification), one S8/S22 (`R-S16-05`),
+1895: and one S22 debt-table account (`R-S22-02`, without assigning missing physical suppliers).
+1896: **Four existing entries gaining source/provenance:** `R-S1-01` (coordinate dimension only),
+1897: `R-S1-02` (inherited support identification only), `R-S12-02` (supplied projected material object
+1898: and "Keep S12" only) and `R-S21-01` (the 2026-10-19 framing only). None changes requirement,
+1899: target or status. The Y1–Y4 repair is **25 → 25**, with no new entries and two additional
+1900: existing-entry S16 sources. No entry closes; `R-S14a-01` remains OPEN with its existing joint target.
+1901: 
+1902: **First route / rest-on test.** As the schema says, a requirement is a future obligation;
+1903: an adopted value/form belongs to the ansatz ledger, and an already-wrong object to the defect
+1904: register. The selected user options expressly file the passive needs (`R-S16-01`) and inertial
+1905: relation (`R-S16-04`). The orchestrator's list separately files compactness from E3/F3
+1906: (`R-S16-02`), face momentum from E2 (`R-S16-03`), density response from O2 `:138`
+1907: (`R-S16-05`) and the S22 debt account (`R-S22-02`). Each entry's source and admission-ground
+1908: fields quote or locate its own filing and name what later interpretation/account would fail.
+1909: Record contract item 7 directs these named filings. None is admitted merely from a future owner;
+1910: none asserts that S16's live unsolved balances require a selected closure. O2's earlier refusal
+1911: to enter unspecified response forms merely for a future solve stays; no substrate response is derived.
+1912: 
+1913: The same rest-on test admits two dependencies of the present conditional object, inherited
+1914: through the supplied part-1 balance. Its three in-plane coordinates and shell measures consume
+1915: the existing dimension obligation `R-S1-01` at S6; failure to deliver/reaffirm that domain
+1916: prevents unchanged transfer. Its shear-holding-region interpretation consumes the flagged,
+1917: adopted U1 support identification in `R-S1-02` at S1; failure removes that interpretation,
+1918: not the conditional algebra. They merge as scoped sources, as the earlier passes did. No new
+1919: dimension, shear law, confinement result or enforced U1 re-ordering clause follows (M01/M04/M14/M17).
+1920: 
+1921: No further entry has a printed object as its requirement. The supplied material/momentum balances,
+1922: their integrals, count-centre definitions and moments are conditional identities on the list's
+1923: domain, not a selected material state. No printed nonzero boundary flux is required to vanish.
+1924: The count projection and its S12 provenance already fall within `R-S12-02`; source and face forms
+1925: stay OPEN. General `G`, `Pi` and `f` forms have no owner assigned here, while S12 gives slab material
+1926: completion to S8/S22 and names no face-law owner. Neither the unowned momentum balance nor the
+1927: core's excluded content is assigned to S12. Control shape, moment truncation and independent
+1928: dimension units are labelled supplied/construction choices, distinct from the inherited coordinate
+1929: dimension and support identification tested above. No O2 premise is silently adopted.
+1930: 
+1931: **Merge test.** `R-S16-01` is distinct from source normalization and from S21's knit;
+1932: `R-S16-02` is distinct from count moments and the width bridge; `R-S16-03` is distinct from S12's
+1933: material-face compatibility. `R-S16-04` does not widen the original homogeneous/slab object in
+1934: `R-S8-06`. `R-S16-05` has no existing density-response entry. S22's existing `R-S22-01` concerns
+1935: energy partition, not the reduction-debt account. Compactness is cross-referenced there once.
+1936: The record's requirements table names each target and OPEN status; no means of meeting them is filed.
+1937: 
+1938: **Second route.** Read every gravity prior-art row G1–G13 with its stated conditions and access
+1939: qualifications (record §5, M05). G1/G2 attribute the standard transport algebra; their abstract
+1940: any-entity statement is compared only by retrieval with S16's integral/measure and rest/motion
+1941: objects. No external result is imported as a premise and no new residual is computed. G3/G4 and
+1942: G5/G6/G8 have other objects or conditions; G7 is the prior result for the open passive requirement,
+1943: not an identification; G9/G11 give no S16 force-law result; G10 is an unexecuted architectural
+1944: sketch; G12 gives posits, not a mass derivation. The quoted condition table in record §5 keeps
+1945: each comparison open where computation or a condition change would be needed.
+1946: 
+1947: G13's objections are each preserved: moving-drain damping (Wang), unexplained energy disappearance,
+1948: drag and matter creation (the last three from a secondary source), and universal pulsation phase
+1949: (secondary source). S16 supplies no energy balance, mass-creation relation, sink-force law or
+1950: pulsation model and answers none of them. Drag remains a question beside the passive/inertial
+1951: requirements without an assigned applicability-check owner; energy destination remains beside
+1952: S12's exchange and `R-S22-01`'s split without a new energy result; mass creation remains beside
+1953: C3 and S22's debt account; synchrony is an unapplied-oracle question with no owner named. None is
+1954: a defect found here or a new assumed property of an unbuilt substrate. No new entry follows merely
+1955: from these objections before applicability/reproduction under matching conditions is established.
+1956: This applies the broader "every sector with identified prior art" rule, not the historical
+1957: reproduced-result-only restriction. G7's no-external-body-force assumption is retained; O2's
+1958: different drive premise is not imported into S16 to make it match.
+1959: 
+1960: **Limits and disagreements.** The pass inherits the complete record §3 ledger: exact/as-computed
+1961: versus resolved residuals, open domain differences, native text/route differences, every unjoined
+1962: tag and unpaired component, below-count bindings and normalized-domain exclusions. It does not
+1963: claim whole-stream identity or a motion-free sum of `localEvolution` pieces. The plan/O2 interface
+1964: describes a compact-body calibrated-potential reduction; the later user list supplies no potential,
+1965: mass or compactness and computes only regional objects. Both sides are quoted in record §7. The
+1966: plan's S19 trust gate and charter-feedback handoffs remain OPEN beside that delivery; record §4
+1967: and `STATUS.md` retain each with no owner named for its disposition. Neither is decided here.
+1968: The list heading "Requirements the user's decisions file" over-attributes its additions:
+1969: the selected options file passive-factor needs ("goes to the register as a requirement") and
+1970: the inertial relation ("The law it needs goes to the register, as O2 keeps it (S8)"). Compactness,
+1971: face momentum and density response are the list author's filings at `:158–166`, not selected
+1972: user options. Record §7 quotes both sides; the individual entry sources/admission grounds govern
+1973: (M01–M02/M04/M14/M17). The
+1974: governing list's "committed generator script"/"No commit and no push" conflict is reported there;
+1975: the latter governs this authoring STOP. The list's revision heading still says "Revision 3" while
+1976: its body and acceptance say revision 4. Accepted S12's historical mass-link owner is "S13";
+1977: the current S16 list retains "C3, a gap", and the later user filing folds S13 into S14a.
+1978: Record §7 quotes those distinct source assignments without inferring a new mass-link owner.
+1979: No source is repaired by this pass. No operative
+1980: directive/register conflict remains: explicitly required future objects are distinguished from
+1981: unselected closure forms and adopted premises throughout.
+1982: 
+1983: ### Method for population passes
+1984: 
+1985: Method for a pass, per step record: read it for every statement of the form *this assumes*, *this rests
+1986: on*, *this is postulated at*, *this is deferred to*, *X enters at S**n***, and for every named retirement
+1987: condition. Each becomes an entry keyed by the step that must deliver. Where the record asserts something
+1988: about a step that has no record yet, that is a requirement by definition.
+1989: 
+1990: Two things to watch for, both seen already:
+1991: - A requirement can point **sideways**, not only backwards — S11's questions reduce to the S11b interface
+1992:   law, which is a sibling step, not a substrate one.
+1993: - The same object can be required by several sectors. Charge and magnetism ride the same brane–bulk
+1994:   coupling as light, so an entry may gain sources rather than being duplicated.
+1995: 
+1996: ⭐⭐ **A SECOND ROUTE, added 2026-08-07 — ⛔ the method above would never have found `R-S8-04` or `R-S8-05`.**
+1997: Both came from asking, of a **known prior result our sector reproduces**, *why was it rejected in its own
+1998: time, and has that objection been answered here?* ⛔ Neither is anywhere in S9's or S10's records, because
+1999: the records only capture what their authors thought to doubt — and the sector reproduces MacCullagh's
+2000: algebra so cleanly that the objection to it never came up.
+2001: 
+2002: ⇒ ⭐ **Run this route for every sector with identified prior art**, ⛔ not only the light sector.
+2003: ⚠ It is the sharpest use of `CLAUDE.md` rule 16 available: the prior work's **failure modes** transfer as
+2004: obligations even where its **results** transfer as corroboration — and a result that matches prior art
+2005: tells you nothing about whether you inherited its problems.
+2006: ⚠⚠ **The tell that this was overdue:** the closer a sector's agreement with prior art, the *less* anyone
+2007: thinks to ask what that prior art could not do. ⇒ ⛔ a clean reproduction is exactly when to run it.
+2008: 
+2009: **Honest sizing, now measured rather than guessed.** Pass 1 read two records and produced **seven**
+2010: entries, bringing the file from two entries to **nine total**, from a third of the sector. ⚠ That rate
+2011: is the argument for
+2012: running the pass **as each step closes**: reconstructing it at Phase 5, across five sectors, is precisely
+2013: where an implicit assumption goes missing.
+2014: 
+2015: ⛔ **And pass 1 found no way to make this mechanical.** Every one of the seven came from reading prose for a
+2016: *flagged identification*, a *postulate with a live retirement condition*, or a *consequence stated about a
+2017: step that does not exist yet*. ⇒ ⛔ there is no grep for it, and a pass that produces entries quickly is a
+2018: pass that missed some.
+2019: 
+2020: ## When this is done
+2021: 
+2022: Phase 5 knits the sectors and builds the substrate. At that point this file is the checklist the
+2023: substrate is tested against — the thing that answers *"is the brane–bulk we built sufficient to carry all
+2024: five forces"* by enumeration rather than by recollection.
 ````
 
 ## M15. S14a part 2 acceptance and current provenance/status text
@@ -80875,131 +82981,144 @@ FILE STATUS.md lines 1:EOF
 37: momentum and count moments through second order. They supply no mass, inertial/passive factor,
 38: surroundings field, potential, inter-body force law or throat solve. Exact/resolved residuals,
 39: domain/text differences and unpaired coverage retain the record's separate qualifications.
-40: The pass brings 19 → 25 OPEN entries; it files the user's passive-field, compactness, face-momentum,
-41: inertial and density-response requirements, and the S22 reduction-debt inventory. No entry is closed.
-42: 
-43: **User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms."** This record closes
-44: only S12's requirements part and delivers none of the forms. The forms come once the brane is
-45: defined, after the force sectors; every owner the sources and user gave is retained.
-46: 
-47: ## Light sector at close
-48: 
-49: - **Accepted after S11c closed PARTIAL:**
-50:   - O2, the steady brane balance: [record](research/pde_ledger_v3/steps/O2_steady_brane_balance.md), `72866fcf`;
-51:   - S9b, conditional light bending and radar slope: [record](research/pde_ledger_v3/steps/S9b_light_bending.md), `ff3bac63`;
-52:   - the S9b flow-only oracle check, `8d91f448`. Its [record](research/pde_ledger_v3/steps/S9b_flow_oracle_comparison.md) and the light-sector closeout are accepted at `e070c7f3`.
-53: - **What the oracle check shows:** S9b's flow-only squared speed equals the river model's and Visser §7's.
-54:   This holds only if S9b's orbital GM, clock and speed units are identified with each oracle's, and the check
-55:   supplies none of these identifications. The signed velocity then matches for one radial orientation. Where
-56:   the velocity is nonzero, no exchange makes the brane density fall as r^(−3/2). The check does not show
-57:   that the brane is that fluid, and its optics are a supplied input.
-58: - **New requirement R-S22-01:** how the energy a throat releases splits among light, the extra longitudinal
-59:   wave and the bulk. It is needed to decide whether matter observes S11's extra wave, and whether the model conflicts
-60:   with the blackbody, CMB and N_eff measurements (photon survey E32–E34, E38). S22 owns the split and
-61:   Q2 the mouth/held datum; S12 retains the throat's order-conversion source and its boundary data,
-62:   as the user chose on 2026-10-19 and retained under "Keep S12" on 2026-10-20. Those forms remain OPEN.
-63: - **Parked:**
-64:   - S11c (PARTIAL);
-65:   - every heavy backlog run ([DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md));
-66:   - the applicability checks of the other named oracles.
-67: 
-68: ## S11c, closed PARTIAL
-69: 
-70: The light model has a useful uniform result, but no accepted number for light lost at a defect.
-71: S11c is closed **PARTIAL**. No nonuniform build, numerical continuation or review resumes automatically.
-72: Read the [short closeout](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md) first; the
-73: [canonical d record](research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md) gives the evidence and limits.
-74: 
-75: ## What later work may use
-76: 
-77: - **CONDITIONAL:** uniform light decouples from the bulk in the supplied linear model. SymPy and independent
-78:   Wolfram work support it, with documented engine/repair reviews and comparison limits; stability needs
-79:   nonnegative stiffness. [S11b, transverse mode and review provenance](research/pde_ledger_v3/steps/S11b_interface_coupling_law.md).
-80: - **CONDITIONAL:** a later SymPy check found finite modes, nonzero energy current and zero face drives
-81:   (light does not push on the bulk) at, above and below the tested light/sound speed matches, with the bulk
-82:   at rest and other inputs fixed. Claude/Grok cleared the method, not a fresh review of the executed result.
-83:   [Uniform completion, coverage/limits](research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_result.md).
-84: - **UNRESOLVED:** the held-profile omega=3 benchmark at ratio approximately 0.12 found no numerically resolved
-85:   loss. Its 1 ppm empirical floor is not a physical upper bound; it is not a matched-speed defect result.
-86:   [Benchmark, signed-current table/controls](research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_report.md).
-87: - **CONDITIONAL:** four equation repairs have scoped support, not full composition clearance. Original b/c2
-88:   checks were on pre-repair equations. [b changes](research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md#changed-after-close),
-89:   [c2 changes](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md#changed-after-close).
-90: - **CONDITIONAL:** the bounded S10/S11 Lean contracts retain their reviewed proof status; they do not supply
-91:   the missing physical scattering/work result. [S10 closure](research/pde_ledger_v3/lean/s10/FIDELITY_REVIEW.md),
-92:   [S11 contracts and application limits](research/pde_ledger_v3/lean/s11/README.md).
-93: 
-94: ## Open questions and owners
-95: 
-96: | Question | Owner / evidence |
-97: | --- | --- |
-98: | `R-S14a-01`: slow limit and far behaviour selected by the slab's own dynamics | Jointly S12 (source/flux forms), S8/S22 (material law), and **no owner named** (face/interior laws); [register entry](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md#r-s14a-01--the-dynamically-selected-slow-limit-and-far-behaviour). Record/pass accepted `79511272`; requirement OPEN. |
-99: | S16 passive-field/separation/normalization, compactness and face-momentum requirements | **No owner named** for delivery; `R-S16-01/-02/-03`, [S16 record §6](research/pde_ledger_v3/steps/S16_moving_region.md). Compactness is also a debt for S22's table. |
-100: | S16 momentum–material relation, density response and reduction-debt inventory | S8 (`R-S16-04`); S8/S22 (`R-S16-05`); S22 for the debt-table inventory (`R-S22-02`, without inventing physical suppliers). [S16 register pass](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). |
-101: | Replaying the uniform check needs its intermediate caches regenerated from the kept b/c2 engines and the S10/S11 export chain repaired (H4). The original caches are not in git. They stay on local disk under `_scratch/` (Phase 5). | S11c-d if reused; [H3](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). |
-102: | S10/S11 exports pin their pre-2026-09-11 producers. Regenerate them from the current producers under review, or revert the producer edits. The S10 edit may be what the S10 Lean D3 link relies on, so a revert is not automatic. | S10/S11 maintenance; [H4](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). Not run in this cleanup. |
-103: | Direct c2 `[0,2]` entry is set to zero without an order-counting justification; whether the full response needs a nonzero term is unresolved. | S11c-c2/d if reused; [joint disposition, mixed-term issue](research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_joint_disposition.md). |
-104: | N6 premises: physical correctness of Φ, the V transform and extracted-block leakage remain open. | S11c-c2/d if reused; [c2, review caveats](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md), [N6 disposition, §7](research/pde_ledger_v3/_measurements/S11c_c2_N6_reconcile_disposition.md). |
-105: | Full cross-engine composition, b sign/control debts, c1 giants and accepted scattering/work/loss | S11c-b/c1/c2/d if reopened; the backlog runs are parked (2026-10-19), [DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md), [d limits](research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md). |
-106: | How a throat's released energy splits among light, the extra wave and the bulk | S22 with Q2 and S12, as chosen by the user on 2026-10-19 and retained on 2026-10-20; [R-S22-01](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). |
-107: | Conversion observable and strong-edge interpretation | S11c-e; [split and d weak-limit obligation](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md#actual-downstream-uses-and-next-step). |
-108: | Dynamical drain/return source, boundary data and any change to the drain-frozen symmetry result | **S12, OPEN for the forms** under "Keep S12" (2026-10-20); [R-S12-02](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). This record delivers only the requirements part. No automatic transfer of the one-engine no-leak rule. |
-109: | Real defect profile, holder, response and charge-force sign | Q2/Q3/S22; [plan, charge phase/S22](research/pde_ledger_v3/V3_STEP_PLAN.md). |
-110: | Physical light/sound speed ratio | S20a calibration; S22/R10 proposed derivation; [plan, S20a/S22](research/pde_ledger_v3/V3_STEP_PLAN.md). |
-111: | Material admissibility and unbuilt substrate, including shear response and physical dimension | S1–S8; [SUBSTRATE_REQUIREMENTS, entries/passes](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). S9/S10 requirements pass 1 is recorded, but the substrate steps have not run. |
-112: | Muonium/gravity dependency quarantine, PN geometry-independence and structural audit | S16/species matching; [correction note, §§2–5](notes/muonium_gravity_corrections.md). No withdrawn throat geometry may supply a prediction. |
-113: 
-114: The following are **OPEN** carry-overs, not instructions to resume. [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over) maps every grouped item to the old STATUS and its disposition.
-115: 
-116: | Other debt | Owner / register |
-117: | --- | --- |
-118: | μ_S shear normalization | S11b/S11c-b if reused; [inertia report, final paragraph](research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md). |
-119: | S11c-a full-axis KEYING and control-form characterization | S11c-a/b; [a record, standing limits/owed items](research/pde_ledger_v3/steps/S11c_a_interface_shape_derivatives.md). |
-120: | F/G interpretation re-grounding; unresolved historical publication-review closure; unreviewed sheet/N6 trace repairs | S11c-c2/d if reused; [c2 record](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md), [Part F conflicts](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#carry-over-conflicts-and-questions). |
-121: | b control namespace/admissibility coverage, kernel optimization, five off-path export checks | S11c-b/export maintenance; [Part F, carry-over evidence](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). |
-122: | S10 CAS/export/naming debts and unreviewed record corrections; S11 deferred loci/T7 checks; S11b comparison/passivity limits | S10/S11/S11b maintenance; [DEFECT_REGISTER, C19/C20 and WL entries](research/pde_ledger_v3/DEFECT_REGISTER.md), [REBUILD_HANDOFF, owed-item sections](research/pde_ledger_v3/REBUILD_HANDOFF.md), [S11b scope](research/pde_ledger_v3/steps/S11b_interface_coupling_law.md). Lean closure does not discharge these. |
-123: | Review owed for CLAUDE.md L control and lean/FORMALIZATION_POLICY.md (`c2bdb663`) | Policy maintainers; [Phase 2 review, F6](research/pde_ledger_v3/cleanup_2026_10/PHASE2_REVIEW.md). Non-author S10 fidelity review is confirmed separately. |
-124: | ≥64 GB remote compute setup and outstanding licensing/acceptance questions | Infrastructure owner; [plan](notes/remote_compute_plan.md), [requirements, §§8–10](notes/remote_compute_requirements.md). Planning only; no run authorized here. |
-125: | Earlier v2 dimension, provenance, integration and normalization debts | Dormant v2 maintenance; [DIMENSION_REWRITE, §§8–12](research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md), [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). Not a revived v2 queue. |
-126: | Remaining model gaps, including species identity and old EM boundary-operator limitations | Named owners in [DEFECT_REGISTER](research/pde_ledger_v3/DEFECT_REGISTER.md); Q2/Q3/S22 and later matching, with [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over) retaining historical limits. |
-127: | Memory-note compaction and temporary-path evidence portability | Documentation maintenance; [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). Phase 3 keeps cited outputs; uniform replay caches remain on local disk; no live-memory size remeasurement. |
+40: The pass brings 19 → 25 OPEN entries: the selected user options file passive-factor needs and
+41: the inertial relation; the list author separately files compactness, face momentum, density response
+42: and the S22 reduction-debt account. Each entry names its own source and admission ground.
+43: S16 also adds scoped provenance to `R-S1-01` (coordinate dimension, S6), `R-S1-02` (inherited
+44: support identification, S1), `R-S12-02` and `R-S21-01`. The Y1–Y4 repair is 25 → 25, with
+45: no new entry; no existing requirement, target or status changes. The reviewed version is preserved
+46: at `4ae7e6cf`; this repair remains for review, with no acceptance claimed.
+47: 
+48: The plan's **"S16 must be run BEFORE S19 is trusted"** gate and **"its result feeds back into
+49: the charter"** handoff remain OPEN beside this regional delivery. The cited plan rows name
+50: **no owner** for disposition of either; S19 retains the separate C10/tail question. This record
+51: does not decide the gate or charter feedback, and supplies no charter amendment or scope-boundary
+52: decision ([record §4](research/pde_ledger_v3/steps/S16_moving_region.md); measurements M04/M17).
+53: 
+54: **User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms."** This record closes
+55: only S12's requirements part and delivers none of the forms. The forms come once the brane is
+56: defined, after the force sectors; every owner the sources and user gave is retained.
+57: 
+58: ## Light sector at close
+59: 
+60: - **Accepted after S11c closed PARTIAL:**
+61:   - O2, the steady brane balance: [record](research/pde_ledger_v3/steps/O2_steady_brane_balance.md), `72866fcf`;
+62:   - S9b, conditional light bending and radar slope: [record](research/pde_ledger_v3/steps/S9b_light_bending.md), `ff3bac63`;
+63:   - the S9b flow-only oracle check, `8d91f448`. Its [record](research/pde_ledger_v3/steps/S9b_flow_oracle_comparison.md) and the light-sector closeout are accepted at `e070c7f3`.
+64: - **What the oracle check shows:** S9b's flow-only squared speed equals the river model's and Visser §7's.
+65:   This holds only if S9b's orbital GM, clock and speed units are identified with each oracle's, and the check
+66:   supplies none of these identifications. The signed velocity then matches for one radial orientation. Where
+67:   the velocity is nonzero, no exchange makes the brane density fall as r^(−3/2). The check does not show
+68:   that the brane is that fluid, and its optics are a supplied input.
+69: - **New requirement R-S22-01:** how the energy a throat releases splits among light, the extra longitudinal
+70:   wave and the bulk. It is needed to decide whether matter observes S11's extra wave, and whether the model conflicts
+71:   with the blackbody, CMB and N_eff measurements (photon survey E32–E34, E38). S22 owns the split and
+72:   Q2 the mouth/held datum; S12 retains the throat's order-conversion source and its boundary data,
+73:   as the user chose on 2026-10-19 and retained under "Keep S12" on 2026-10-20. Those forms remain OPEN.
+74: - **Parked:**
+75:   - S11c (PARTIAL);
+76:   - every heavy backlog run ([DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md));
+77:   - the applicability checks of the other named oracles.
+78: 
+79: ## S11c, closed PARTIAL
+80: 
+81: The light model has a useful uniform result, but no accepted number for light lost at a defect.
+82: S11c is closed **PARTIAL**. No nonuniform build, numerical continuation or review resumes automatically.
+83: Read the [short closeout](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md) first; the
+84: [canonical d record](research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md) gives the evidence and limits.
+85: 
+86: ## What later work may use
+87: 
+88: - **CONDITIONAL:** uniform light decouples from the bulk in the supplied linear model. SymPy and independent
+89:   Wolfram work support it, with documented engine/repair reviews and comparison limits; stability needs
+90:   nonnegative stiffness. [S11b, transverse mode and review provenance](research/pde_ledger_v3/steps/S11b_interface_coupling_law.md).
+91: - **CONDITIONAL:** a later SymPy check found finite modes, nonzero energy current and zero face drives
+92:   (light does not push on the bulk) at, above and below the tested light/sound speed matches, with the bulk
+93:   at rest and other inputs fixed. Claude/Grok cleared the method, not a fresh review of the executed result.
+94:   [Uniform completion, coverage/limits](research/pde_ledger_v3/_measurements/S11c_d_near_unity_uniform_continue_result.md).
+95: - **UNRESOLVED:** the held-profile omega=3 benchmark at ratio approximately 0.12 found no numerically resolved
+96:   loss. Its 1 ppm empirical floor is not a physical upper bound; it is not a matched-speed defect result.
+97:   [Benchmark, signed-current table/controls](research/pde_ledger_v3/_measurements/S11c_d_numerical_radiating_balance_report.md).
+98: - **CONDITIONAL:** four equation repairs have scoped support, not full composition clearance. Original b/c2
+99:   checks were on pre-repair equations. [b changes](research/pde_ledger_v3/steps/S11c_b_variable_coefficient_operator.md#changed-after-close),
+100:   [c2 changes](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md#changed-after-close).
+101: - **CONDITIONAL:** the bounded S10/S11 Lean contracts retain their reviewed proof status; they do not supply
+102:   the missing physical scattering/work result. [S10 closure](research/pde_ledger_v3/lean/s10/FIDELITY_REVIEW.md),
+103:   [S11 contracts and application limits](research/pde_ledger_v3/lean/s11/README.md).
+104: 
+105: ## Open questions and owners
+106: 
+107: | Question | Owner / evidence |
+108: | --- | --- |
+109: | `R-S14a-01`: slow limit and far behaviour selected by the slab's own dynamics | Jointly S12 (source/flux forms), S8/S22 (material law), and **no owner named** (face/interior laws); [register entry](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md#r-s14a-01--the-dynamically-selected-slow-limit-and-far-behaviour). Record/pass accepted `79511272`; requirement OPEN. |
+110: | S16 passive-field/separation/normalization, compactness and face-momentum requirements | **No owner named** for delivery; `R-S16-01/-02/-03`, [S16 record §6](research/pde_ledger_v3/steps/S16_moving_region.md). Compactness is also a debt for S22's table. |
+111: | S16 momentum–material relation, density response and reduction-debt inventory | S8 (`R-S16-04`); S8/S22 (`R-S16-05`); S22 for the debt-table inventory (`R-S22-02`, without inventing physical suppliers). [S16 register pass](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). |
+112: | Plan's S19 trust gate: "S16 must be run BEFORE S19 is trusted" | **OPEN; no owner named** for disposition in the cited plan rows. S19's separate C10/tail ownership is retained; no gate decision here ([S16 record §4](research/pde_ledger_v3/steps/S16_moving_region.md), M04/M17). |
+113: | Plan's charter feedback: "its result feeds back into the charter" | **OPEN; no owner named** for disposition in the cited plan rows. No charter or scope-boundary decision here ([S16 record §4](research/pde_ledger_v3/steps/S16_moving_region.md), M04/M17). |
+114: | Replaying the uniform check needs its intermediate caches regenerated from the kept b/c2 engines and the S10/S11 export chain repaired (H4). The original caches are not in git. They stay on local disk under `_scratch/` (Phase 5). | S11c-d if reused; [H3](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). |
+115: | S10/S11 exports pin their pre-2026-09-11 producers. Regenerate them from the current producers under review, or revert the producer edits. The S10 edit may be what the S10 Lean D3 link relies on, so a revert is not automatic. | S10/S11 maintenance; [H4](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). Not run in this cleanup. |
+116: | Direct c2 `[0,2]` entry is set to zero without an order-counting justification; whether the full response needs a nonzero term is unresolved. | S11c-c2/d if reused; [joint disposition, mixed-term issue](research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_joint_disposition.md). |
+117: | N6 premises: physical correctness of Φ, the V transform and extracted-block leakage remain open. | S11c-c2/d if reused; [c2, review caveats](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md), [N6 disposition, §7](research/pde_ledger_v3/_measurements/S11c_c2_N6_reconcile_disposition.md). |
+118: | Full cross-engine composition, b sign/control debts, c1 giants and accepted scattering/work/loss | S11c-b/c1/c2/d if reopened; the backlog runs are parked (2026-10-19), [DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md), [d limits](research/pde_ledger_v3/steps/S11c_d_profile_conditioned_scattering.md). |
+119: | How a throat's released energy splits among light, the extra wave and the bulk | S22 with Q2 and S12, as chosen by the user on 2026-10-19 and retained on 2026-10-20; [R-S22-01](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). |
+120: | Conversion observable and strong-edge interpretation | S11c-e; [split and d weak-limit obligation](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md#actual-downstream-uses-and-next-step). |
+121: | Dynamical drain/return source, boundary data and any change to the drain-frozen symmetry result | **S12, OPEN for the forms** under "Keep S12" (2026-10-20); [R-S12-02](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). This record delivers only the requirements part. No automatic transfer of the one-engine no-leak rule. |
+122: | Real defect profile, holder, response and charge-force sign | Q2/Q3/S22; [plan, charge phase/S22](research/pde_ledger_v3/V3_STEP_PLAN.md). |
+123: | Physical light/sound speed ratio | S20a calibration; S22/R10 proposed derivation; [plan, S20a/S22](research/pde_ledger_v3/V3_STEP_PLAN.md). |
+124: | Material admissibility and unbuilt substrate, including shear response and physical dimension | S1–S8; [SUBSTRATE_REQUIREMENTS, entries/passes](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). S9/S10 requirements pass 1 is recorded, but the substrate steps have not run. |
+125: | Muonium/gravity dependency quarantine, PN geometry-independence and structural audit | S16/species matching; [correction note, §§2–5](notes/muonium_gravity_corrections.md). No withdrawn throat geometry may supply a prediction. |
+126: 
+127: The following are **OPEN** carry-overs, not instructions to resume. [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over) maps every grouped item to the old STATUS and its disposition.
 128: 
-129: ## Next and paused work
-130: 
-131: **S12's record and register pass are accepted at `ac909aaf`:** its accepted constructions and comparator report the source
-132: required by the committed order balance on live fields satisfying U1's support condition, including both material face
-133: requirements and the labelled fast-ordering specialization. The six unrestricted face-coefficient
-134: differences are labelled representation diagnostics confined off their respective delta supports,
-135: not open differences in the S12 distribution; both raw expressions remain retrievable. The record
-136: preserves all comparator coverage limits and the accepted engine-row
-137: note. It supplies no drain law, throat solution or flow. Native source/controller forms, distinct
-138: boundary data, native identifications and additional conversion partners retain their sourced S12
-139: ownership and remain OPEN. None of their forms is delivered here; they come once the brane is
-140: defined, after the force sectors.
-141: The S12 pass left 18 OPEN entries,
-142: with compatibility constraints merged into `R-S12-02` and the comparison of force sectors' flow
-143: requirements owed by `R-S21-01`, consistently in its by-target row and requirement field.
-144: [Record](research/pde_ledger_v3/steps/S12_order_source.md),
-145: [measurements](research/pde_ledger_v3/steps/_measurements/S12_record_measurements.md).
-146: The S14a part 1 pass also leaves 18 OPEN entries, adding scoped source/provenance to `R-S1-01`,
-147: `R-S1-02`, `R-S12-02` and `R-S21-01`, with no new entry or status change. Its printed compatibility
-148: constraints merge into `R-S12-02`; S21 retains the comparison of force sectors' flow requirements.
-149: The S14a part 2 pass brings 18 → 19 OPEN entries. Its new `R-S14a-01` selection obligation
-150: has V2's joint deliverers; no existing entry gains a source or changes target/status.
-151: No existing entry covers the same selection requirement with those deliverers, so it is
-152: separate from `R-S12-02`'s S12 forms/data and compatibility objects. The record/pass
-153: were accepted at `79511272` (round 2 clear); no derivation or profile is supplied by recording this obligation.
-154: The light closeout was accepted at `e070c7f3`; its review no longer gates S12. The oracle comparison's
-155: questions about flow drive separate S12's source/boundary realization from O2's carried
-156: force-balance handoffs. Material destination separates S12's drain-produced density/exchange
-157: choice from S21's knit compatibility (`R-S21-01`). Each force states the flow it
-158: needs; S21 compares them, and a mismatch reopens S9b (user, 2026-10-19).
-159: 
-160: The [throat/EM notes](docs/light_em_investigation_handoff.md) remain **exploratory and paused**, as input to
-161: S22/Q2 (with S12/Q3 connections), not adopted constitutive laws. Mixed numerical recovery, centre-drive
-162: implementation and new leakage workers remain parked. [Closeout, paused notes](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md).
-163: 
-164: Cleanup is complete: history rebuilt and pushed at `bdc181c0`; archive tag `archive/pre-cleanup-2026-10-04` is on both remotes; nine uniform-cache runs are kept on local disk ([preservation list](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#phase-5-preservation-list--keep-on-disk)).
+129: | Other debt | Owner / register |
+130: | --- | --- |
+131: | μ_S shear normalization | S11b/S11c-b if reused; [inertia report, final paragraph](research/pde_ledger_v3/_measurements/S11c_inertia_repair_report.md). |
+132: | S11c-a full-axis KEYING and control-form characterization | S11c-a/b; [a record, standing limits/owed items](research/pde_ledger_v3/steps/S11c_a_interface_shape_derivatives.md). |
+133: | F/G interpretation re-grounding; unresolved historical publication-review closure; unreviewed sheet/N6 trace repairs | S11c-c2/d if reused; [c2 record](research/pde_ledger_v3/steps/S11c_c2_self_energy_fold.md), [Part F conflicts](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#carry-over-conflicts-and-questions). |
+134: | b control namespace/admissibility coverage, kernel optimization, five off-path export checks | S11c-b/export maintenance; [Part F, carry-over evidence](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). |
+135: | S10 CAS/export/naming debts and unreviewed record corrections; S11 deferred loci/T7 checks; S11b comparison/passivity limits | S10/S11/S11b maintenance; [DEFECT_REGISTER, C19/C20 and WL entries](research/pde_ledger_v3/DEFECT_REGISTER.md), [REBUILD_HANDOFF, owed-item sections](research/pde_ledger_v3/REBUILD_HANDOFF.md), [S11b scope](research/pde_ledger_v3/steps/S11b_interface_coupling_law.md). Lean closure does not discharge these. |
+136: | Review owed for CLAUDE.md L control and lean/FORMALIZATION_POLICY.md (`c2bdb663`) | Policy maintainers; [Phase 2 review, F6](research/pde_ledger_v3/cleanup_2026_10/PHASE2_REVIEW.md). Non-author S10 fidelity review is confirmed separately. |
+137: | ≥64 GB remote compute setup and outstanding licensing/acceptance questions | Infrastructure owner; [plan](notes/remote_compute_plan.md), [requirements, §§8–10](notes/remote_compute_requirements.md). Planning only; no run authorized here. |
+138: | Earlier v2 dimension, provenance, integration and normalization debts | Dormant v2 maintenance; [DIMENSION_REWRITE, §§8–12](research/pde_ledger_v2/manifests/DIMENSION_REWRITE.md), [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). Not a revived v2 queue. |
+139: | Remaining model gaps, including species identity and old EM boundary-operator limitations | Named owners in [DEFECT_REGISTER](research/pde_ledger_v3/DEFECT_REGISTER.md); Q2/Q3/S22 and later matching, with [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over) retaining historical limits. |
+140: | Memory-note compaction and temporary-path evidence portability | Documentation maintenance; [Part F](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#f-status-debt-carry-over). Phase 3 keeps cited outputs; uniform replay caches remain on local disk; no live-memory size remeasurement. |
+141: 
+142: ## Next and paused work
+143: 
+144: **S12's record and register pass are accepted at `ac909aaf`:** its accepted constructions and comparator report the source
+145: required by the committed order balance on live fields satisfying U1's support condition, including both material face
+146: requirements and the labelled fast-ordering specialization. The six unrestricted face-coefficient
+147: differences are labelled representation diagnostics confined off their respective delta supports,
+148: not open differences in the S12 distribution; both raw expressions remain retrievable. The record
+149: preserves all comparator coverage limits and the accepted engine-row
+150: note. It supplies no drain law, throat solution or flow. Native source/controller forms, distinct
+151: boundary data, native identifications and additional conversion partners retain their sourced S12
+152: ownership and remain OPEN. None of their forms is delivered here; they come once the brane is
+153: defined, after the force sectors.
+154: The S12 pass left 18 OPEN entries,
+155: with compatibility constraints merged into `R-S12-02` and the comparison of force sectors' flow
+156: requirements owed by `R-S21-01`, consistently in its by-target row and requirement field.
+157: [Record](research/pde_ledger_v3/steps/S12_order_source.md),
+158: [measurements](research/pde_ledger_v3/steps/_measurements/S12_record_measurements.md).
+159: The S14a part 1 pass also leaves 18 OPEN entries, adding scoped source/provenance to `R-S1-01`,
+160: `R-S1-02`, `R-S12-02` and `R-S21-01`, with no new entry or status change. Its printed compatibility
+161: constraints merge into `R-S12-02`; S21 retains the comparison of force sectors' flow requirements.
+162: The S14a part 2 pass brings 18 → 19 OPEN entries. Its new `R-S14a-01` selection obligation
+163: has V2's joint deliverers; no existing entry gains a source or changes target/status.
+164: No existing entry covers the same selection requirement with those deliverers, so it is
+165: separate from `R-S12-02`'s S12 forms/data and compatibility objects. The record/pass
+166: were accepted at `79511272` (round 2 clear); no derivation or profile is supplied by recording this obligation.
+167: The light closeout was accepted at `e070c7f3`; its review no longer gates S12. The oracle comparison's
+168: questions about flow drive separate S12's source/boundary realization from O2's carried
+169: force-balance handoffs. Material destination separates S12's drain-produced density/exchange
+170: choice from S21's knit compatibility (`R-S21-01`). Each force states the flow it
+171: needs; S21 compares them, and a mismatch reopens S9b (user, 2026-10-19).
+172: 
+173: The [throat/EM notes](docs/light_em_investigation_handoff.md) remain **exploratory and paused**, as input to
+174: S22/Q2 (with S12/Q3 connections), not adopted constitutive laws. Mixed numerical recovery, centre-drive
+175: implementation and new leakage workers remain parked. [Closeout, paused notes](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md).
+176: 
+177: Cleanup is complete: history rebuilt and pushed at `bdc181c0`; archive tag `archive/pre-cleanup-2026-10-04` is on both remotes; nine uniform-cache runs are kept on local disk ([preservation list](research/pde_ledger_v3/cleanup_2026_10/FINDINGS.md#phase-5-preservation-list--keep-on-disk)).
 ````
 
 ## M16. Exact ancillary diff against the starting commit and edit inventory
@@ -81008,7 +83127,7 @@ FILE STATUS.md lines 1:EOF
 $ python3 research/pde_ledger_v3/scripts/S16_record_measurements.py --lookup M16
 $ git diff --no-ext-diff --no-color 4d4d22cb -- research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md research/pde_ledger_v3/steps/S14a_2_slow_limit.md STATUS.md
 diff --git a/STATUS.md b/STATUS.md
-index 09aef542..5518d551 100644
+index 09aef542..bd02120c 100644
 --- a/STATUS.md
 +++ b/STATUS.md
 @@ -1,4 +1,4 @@
@@ -81028,7 +83147,7 @@ index 09aef542..5518d551 100644
  The user chose **"Record as requirement"** (2026-10-21): no build ran. The required object is
  the slow limit and far behaviour selected by the slab's own dynamics. The controlled
  `ω→0` return law and profile-dependent `J→Q` map remain not derived. The filed witnesses retain
-@@ -29,6 +29,17 @@ and the face/interior laws with no owner named ([decision](research/pde_ledger_v
+@@ -29,6 +29,28 @@ and the face/interior laws with no owner named ([decision](research/pde_ledger_v
  **CONDITIONAL, not carried results**, now on that named requirement. The two carried part-1
  citation notes are repaired in its record; other part-1 claims retain their accepted standing.
  
@@ -81040,23 +83159,36 @@ index 09aef542..5518d551 100644
 +momentum and count moments through second order. They supply no mass, inertial/passive factor,
 +surroundings field, potential, inter-body force law or throat solve. Exact/resolved residuals,
 +domain/text differences and unpaired coverage retain the record's separate qualifications.
-+The pass brings 19 → 25 OPEN entries; it files the user's passive-field, compactness, face-momentum,
-+inertial and density-response requirements, and the S22 reduction-debt inventory. No entry is closed.
++The pass brings 19 → 25 OPEN entries: the selected user options file passive-factor needs and
++the inertial relation; the list author separately files compactness, face momentum, density response
++and the S22 reduction-debt account. Each entry names its own source and admission ground.
++S16 also adds scoped provenance to `R-S1-01` (coordinate dimension, S6), `R-S1-02` (inherited
++support identification, S1), `R-S12-02` and `R-S21-01`. The Y1–Y4 repair is 25 → 25, with
++no new entry; no existing requirement, target or status changes. The reviewed version is preserved
++at `4ae7e6cf`; this repair remains for review, with no acceptance claimed.
++
++The plan's **"S16 must be run BEFORE S19 is trusted"** gate and **"its result feeds back into
++the charter"** handoff remain OPEN beside this regional delivery. The cited plan rows name
++**no owner** for disposition of either; S19 retains the separate C10/tail question. This record
++does not decide the gate or charter feedback, and supplies no charter amendment or scope-boundary
++decision ([record §4](research/pde_ledger_v3/steps/S16_moving_region.md); measurements M04/M17).
 +
  **User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms."** This record closes
  only S12's requirements part and delivers none of the forms. The forms come once the brane is
  defined, after the force sectors; every owner the sources and user gave is retained.
-@@ -84,6 +95,9 @@ Read the [short closeout](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md)
+@@ -84,6 +106,11 @@ Read the [short closeout](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md)
  
  | Question | Owner / evidence |
  | --- | --- |
 +| `R-S14a-01`: slow limit and far behaviour selected by the slab's own dynamics | Jointly S12 (source/flux forms), S8/S22 (material law), and **no owner named** (face/interior laws); [register entry](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md#r-s14a-01--the-dynamically-selected-slow-limit-and-far-behaviour). Record/pass accepted `79511272`; requirement OPEN. |
 +| S16 passive-field/separation/normalization, compactness and face-momentum requirements | **No owner named** for delivery; `R-S16-01/-02/-03`, [S16 record §6](research/pde_ledger_v3/steps/S16_moving_region.md). Compactness is also a debt for S22's table. |
 +| S16 momentum–material relation, density response and reduction-debt inventory | S8 (`R-S16-04`); S8/S22 (`R-S16-05`); S22 for the debt-table inventory (`R-S22-02`, without inventing physical suppliers). [S16 register pass](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). |
++| Plan's S19 trust gate: "S16 must be run BEFORE S19 is trusted" | **OPEN; no owner named** for disposition in the cited plan rows. S19's separate C10/tail ownership is retained; no gate decision here ([S16 record §4](research/pde_ledger_v3/steps/S16_moving_region.md), M04/M17). |
++| Plan's charter feedback: "its result feeds back into the charter" | **OPEN; no owner named** for disposition in the cited plan rows. No charter or scope-boundary decision here ([S16 record §4](research/pde_ledger_v3/steps/S16_moving_region.md), M04/M17). |
  | Replaying the uniform check needs its intermediate caches regenerated from the kept b/c2 engines and the S10/S11 export chain repaired (H4). The original caches are not in git. They stay on local disk under `_scratch/` (Phase 5). | S11c-d if reused; [H3](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). |
  | S10/S11 exports pin their pre-2026-09-11 producers. Regenerate them from the current producers under review, or revert the producer edits. The S10 edit may be what the S10 Lean D3 link relies on, so a revert is not automatic. | S10/S11 maintenance; [H4](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). Not run in this cleanup. |
  | Direct c2 `[0,2]` entry is set to zero without an order-counting justification; whether the full response needs a nonzero term is unresolved. | S11c-c2/d if reused; [joint disposition, mixed-term issue](research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_joint_disposition.md). |
-@@ -136,7 +150,7 @@ The S14a part 2 pass brings 18 → 19 OPEN entries. Its new `R-S14a-01` selectio
+@@ -136,7 +163,7 @@ The S14a part 2 pass brings 18 → 19 OPEN entries. Its new `R-S14a-01` selectio
  has V2's joint deliverers; no existing entry gains a source or changes target/status.
  No existing entry covers the same selection requirement with those deliverers, so it is
  separate from `R-S12-02`'s S12 forms/data and compatibility objects. The record/pass
@@ -81066,7 +83198,7 @@ index 09aef542..5518d551 100644
  questions about flow drive separate S12's source/boundary realization from O2's carried
  force-balance handoffs. Material destination separates S12's drain-produced density/exchange
 diff --git a/research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md b/research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
-index 256882ea..2cdc679c 100644
+index 256882ea..390da776 100644
 --- a/research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
 +++ b/research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
 @@ -7,10 +7,12 @@ split, is accepted at `e070c7f3`. The S12 record and register pass (2026-10-20)
@@ -81084,18 +83216,36 @@ index 256882ea..2cdc679c 100644
  conditions; it does not close the substrate or upgrade S11c's unresolved work. Later sectors remain to
  be read as they close. The two 2026-08-07 prior-art entries retain their provenance; the second route is
  recorded under Population passes.
-@@ -32,6 +34,10 @@ Selection is owed jointly by S12, S8/S22 and the face/interior laws with no owne
+@@ -32,6 +34,13 @@ Selection is owed jointly by S12, S8/S22 and the face/interior laws with no owne
  (user's V2 decision, `12aa65d5`). No existing entry gains a source or changes target/status;
  `R-S12-02` retains its scope at `978c359c`. This pass's retrievals and exact
  ancillary diff are `steps/_measurements/S14a_2_record_measurements.md`, M12/M15.
-+S16 adds six entries (19 → 25 OPEN) and scoped source/provenance to `R-S12-02` and `R-S21-01`.
-+The new objects are explicit user-required future deliveries and S22's reduction-debt account;
-+they are not prerequisites silently imposed on the live conditional balances. Retrievals, both-route
-+applications and the exact ancillary diff are `steps/_measurements/S16_record_measurements.md`, M01–M16.
++S16 adds six entries (19 → 25 OPEN) and scoped source/provenance to `R-S1-01`, `R-S1-02`,
++`R-S12-02` and `R-S21-01`. The user selected the passive-factor and inertial filings;
++the list author filed compactness, face momentum, density response and S22's reduction-debt account.
++Each has its own sourced admission ground. The inherited coordinate/support conditions merge
++into the existing entries; no physical response is derived. The Y1–Y4 repair is 25 → 25.
++Retrievals, both-route applications and the exact ancillary diff are
++`steps/_measurements/S16_record_measurements.md`, M01–M18.
  
  ## Why this exists
  
-@@ -102,17 +108,24 @@ A postulate with a named retirement condition generates a requirement. `B_comp`
+@@ -88,12 +97,12 @@ A postulate with a named retirement condition generates a requirement. `B_comp`
+ 
+ | target | id | the object owed | source |
+ |---|---|---|---|
+-| **S1** | `R-S1-02` | the substructure's shear response as a function of `χ_B`, both phases | S9, O2 conditional premises, S9b brane optical shear only, S12 and S14a part 1 support identification only |
++| **S1** | `R-S1-02` | the substructure's shear response as a function of `χ_B`, both phases | S9, O2 conditional premises, S9b brane optical shear only, S12, S14a part 1 and S16 support identification only |
+ | **S1** *(register inference)* | `R-S1-03` | whether the substructure's microdynamics is time-reversible | S11b-B / unified S11b |
+ | **S1.5** | `R-S1.5-01` | the mode content of the linearised GNLS, including the bulk acoustic branch | S9, S11, S11b-A/B, S9b Part C bulk acoustic input only |
+ | **S6** | `R-S6-01` | the brane's compression modulus `B_comp` | S11 |
+ | **S6** | `R-S6-02` | the first variation of the substrate action at `v₀ = 0` | S9, S10, S11, S11b-A/B, S11c uniform |
+-| **S6** | `R-S1-01` | the brane's spatial dimension `D_brane` ⚠ *id kept; target corrected to S6* | S10, S11, S9b, S12 and S14a part 1 coordinate dimension only |
++| **S6** | `R-S1-01` | the brane's spatial dimension `D_brane` ⚠ *id kept; target corrected to S6* | S10, S11, S9b, S12, S14a part 1 and S16 coordinate dimension only |
+ | **S7** | `R-S7-01` | the slab-width flat direction under a non-uniform width | S11, unified S11b |
+ | **S8** | `R-S8-01` | the form of the brane's quadratic stiffness functional | S9, S10, S11, S11b-B, unified S11b, S11c uniform, S9b supplied transverse input |
+ | **S8** | `R-S8-02` | the quadratic operator on `u` **and** `h` together | S10, S11 |
+@@ -102,17 +111,24 @@ A postulate with a named retirement condition generates a requirement. `B_comp`
  | **S8** | `R-S8-05` | the **frame** the brane's rotational stiffness is measured against | S9, S10, S11, O2 carried obligation |
  | **S8** *(register inference for original entry)* | `R-S8-06` | material displacement and original quadratic slab inertia; O2 adds the material identification only | S11, S11b-B, O2 and S9b identification |
  | **S12** *(register inference; no live owner named)* | `R-S12-01` | a reservoir and power budget if a non-passive interface response is adopted | S11b-B / unified S11b, O2 carried condition |
@@ -81108,12 +83258,12 @@ index 256882ea..2cdc679c 100644
  | **jointly S12** (source/flux forms), **S8/S22** (material law), **no owner named** (face/interior laws) | `R-S14a-01` | the slow limit and far behaviour selected by the slab's own dynamics | S14a part 2; requirement for S14/S15/S20; user V2 decision, `12aa65d5` |
 -
 -⚠ Entries below are in the order they were found, ⛔ not in step order. All **nineteen** are **OPEN**.
-+| **no owner named** | `R-S16-01` | surroundings field, separation from the body's own field, and normalization for a passive factor | S16 user requirement |
-+| **no owner named**; S22 receives the debt in its table | `R-S16-02` | compactness relative to both separation and surroundings-field variation scale | S16 user requirement |
-+| **no owner named** | `R-S16-03` | momentum exchanged at each slab face, split by face motion | S16 user requirement |
-+| **S8** | `R-S16-04` | momentum–material relation needed for an inertial factor | S16 user requirement; O2 OPEN interface |
-+| **S8/S22** | `R-S16-05` | slab density response | S16 user requirement; O2 OPEN interface |
-+| **S22** (debt-table account only; physical suppliers not assigned by this entry) | `R-S22-02` | missing response-reduction inputs and width bridge, with compactness cross-referenced to `R-S16-02` | S16 filing decision and plan debt rows |
++| **no owner named** | `R-S16-01` | surroundings field, separation from the body's own field, and normalization for a passive factor | User's selected "Record what it needs" option; S16 list `:49–53` |
++| **no owner named**; S22 receives the debt in its table | `R-S16-02` | compactness relative to both separation and surroundings-field variation scale | Orchestrator's S16 list filing `:158–161`, E3/F3 |
++| **no owner named** | `R-S16-03` | momentum exchanged at each slab face, split by face motion | Orchestrator's S16 list filing `:162–163`, E2 |
++| **S8** | `R-S16-04` | momentum–material relation needed for an inertial factor | User's selected "Count material; mass open" option; S16 list `:54–56`, O2 `:133` |
++| **S8/S22** | `R-S16-05` | slab density response | Orchestrator's S16 list filing `:164–166`, O2 `:138` |
++| **S22** (debt-table account only; physical suppliers not assigned by this entry) | `R-S22-02` | missing response-reduction inputs and width bridge, with compactness cross-referenced to `R-S16-02` | Orchestrator's S16 list filing `:28–30`; plan A11/debt rows |
 +
 +⚠ Entries below are in the order they were found, ⛔ not in step order. All **twenty-five** are **OPEN**.
  ⭐ `R-S8-01`, `-03`, `-04`, `-05` are one family: the stiffness functional's **form**, its **sign**, its
@@ -81124,7 +83274,50 @@ index 256882ea..2cdc679c 100644
  
  ### R-S6-01 — `B_comp` must be retired or re-affirmed
  
-@@ -576,7 +589,7 @@ other three.
+@@ -152,7 +168,7 @@ other three.
+ 
+ ### R-S1-01 — the brane's spatial dimension
+ 
+-- **source** S14a part 1 (coordinate dimension only; `steps/S14a_1_projection.md`, §§1–4/8); S12 (coordinate dimension only; `steps/S12_order_source.md`, §§1–2/7); S9b (coordinate dimension only; `steps/S9b_light_bending.md`, §§2–4/8); S10 (`steps/S10_two_transverse_photons.md`); S11
++- **source** S16 (coordinate dimension only; `steps/S16_moving_region.md`, §§1/6; S16 M01/M04/M14/M17); S14a part 1 (coordinate dimension only; `steps/S14a_1_projection.md`, §§1–4/8); S12 (coordinate dimension only; `steps/S12_order_source.md`, §§1–2/7); S9b (coordinate dimension only; `steps/S9b_light_bending.md`, §§2–4/8); S10 (`steps/S10_two_transverse_photons.md`); S11
+   (`steps/S11_stray_longitudinal.md`, moves 2–3 / finite census) · **target** S6 · **status** OPEN
+ - **requirement** — the brane's spatial dimension `D_brane`, as a derived quantity or an explicitly
+   re-affirmed postulate.
+@@ -194,9 +210,17 @@ other three.
+   unchanged (`steps/S14a_1_projection.md`, §§1–4; its retrievals M01/M03/M04/M07).
+ 
+ 
++- **S16 scope** — The supplied balances use part 1's projected domain, "in-plane coordinates
++  x^i (three) and time t" (`directives/S16_decision_list.md:63–64`), and the shell geometry
++  and measures use that same coordinate dimension. If this setting is not delivered or
++  reaffirmed, the printed regional objects cannot transfer unchanged. This is a coordinate-domain
++  consumer of the existing S6 obligation, not a dimension derivation; control shape, retained
++  moment order and independent dimensional-audit units are separate choices (S16 §§1/6;
++  S16 M01/M04/M06–M07/M14/M17).
++
+ ### R-S1-02 — the substructure's shear response, as a function of the order parameter
+ 
+-- **source** S14a part 1 (support identification only; `steps/S14a_1_projection.md`, §§1/8); S12 (support identification only; `steps/S12_order_source.md`, §§1–3/7); S9b (brane optical shear only; `steps/S9b_light_bending.md`, §§2–4/8); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
++- **source** S16 (inherited support identification only; `steps/S16_moving_region.md`, §§1/6; S16 M01/M04/M14/M17); S14a part 1 (support identification only; `steps/S14a_1_projection.md`, §§1/8); S12 (support identification only; `steps/S12_order_source.md`, §§1–3/7); S9b (brane optical shear only; `steps/S9b_light_bending.md`, §§2–4/8); O2 (`steps/O2_steady_brane_balance.md`, register handoff); S9 (`steps/S9_light_requires_shear.md`) · **target** S1 · **status** OPEN
+ - **requirement** — the shear response of the substructure as a function of `χ_B`, across **both** phases.
+ - **on failure** — the two halves fail differently, and both are fatal:
+   - **ordered phase carries no shear** ⇒ `μ_R = 0`, the brane has no transverse sector, and **photons do
+@@ -240,6 +264,14 @@ other three.
+   (`steps/S14a_1_projection.md`, §1; its retrievals M01/M03/M04).
+ 
+ 
++- **S16 scope** — S16 supplies part 1's projected material balance on part 1's domain.
++  Its interpretation as material in the shear-holding region inherits the flagged, adopted
++  U1 support identification (part-1 record §1). If that identification fails, the interpretation
++  fails while the conditional balance algebra remains. This adds a consumer of the existing
++  phase-response obligation for support identification only: no shear response, confinement,
++  order profile or material law is derived, and U1's re-ordering clause is not enforced
++  (S16 §§1/6; S16 M01/M04/M14/M17).
++
+ ### R-S1.5-01 — the GNLS's own mode content
+ 
+ - **source** S9b (Part C bulk acoustic input only; `steps/S9b_light_bending.md`, §§2–4/8); S9; S11 (`steps/S11_stray_longitudinal.md`, move 6 / `KW_ZERO_LOCUS`);
+@@ -576,7 +608,7 @@ other three.
  
  ### R-S12-02 — background drain/return and separate boundary data
  
@@ -81133,7 +83326,7 @@ index 256882ea..2cdc679c 100644
    (`steps/S11c_PARTIAL_CLOSEOUT.md:7`, uniform result;
    `steps/S11c_d_profile_conditioned_scattering.md:21–25`, selected uniform check)
    · **target** S12 · **status** OPEN
-@@ -680,6 +693,8 @@ other three.
+@@ -680,6 +712,8 @@ other three.
  ### R-S21-01 — conditional deflection and radar-slope profile requirements
  
  - **source** S9b (`steps/S9b_light_bending.md`, §§3–6; measurements M3–M7/M11–M13/M17–M19);
@@ -81142,15 +83335,17 @@ index 256882ea..2cdc679c 100644
    S12 framing decision only (`steps/S12_order_source.md`, §§6–7; user 2026-10-19, retrieved M01);
    S14a part 1 framing decision only (`steps/S14a_1_projection.md`, §§1/7–8; user 2026-10-19,
    carried in its decision list 2026-10-21, retrieved M01)
-@@ -972,6 +987,105 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
+@@ -972,6 +1006,126 @@ OPEN differences, no owner named; no equivalence is supplied by the zero exchang
    remain as recorded. This is a separate entry under the schema and method, not a second
    obligation added to `R-S12-02`'s target (record §5; M12/M17).
  
 +### R-S16-01 — the surroundings object needed for a passive factor
 +
-+- **source** S16, user's 2026-10-21 "Record what it needs" decision, carried in
-+  `directives/S16_decision_list.md`, "User decisions" and "For the record and its register pass";
-+  `steps/S16_moving_region.md`, §§1/6 (S16 retrievals M01/M04/M07/M14).
++- **source** user's selected 2026-10-21 "Record what it needs" option: "What one needs
++  (a named field of the surroundings, a rule separating it from the body's own field, and its
++  normalization) goes to the register as a requirement" (`directives/S16_decision_list.md:49–53`;
++  pass-1 disposition, "The user's decisions"). `steps/S16_moving_region.md`, §§1/6
++  (S16 M01–M02/M04/M07/M14/M17).
 +- **target** no owner named
 +- **status** OPEN
 +- **requirement** — a named field of the surroundings, its separation from the body's own field,
@@ -81161,11 +83356,13 @@ index 256882ea..2cdc679c 100644
 +  assumed or derived. G7 is an oracle under its own conditions, not this object's delivery (S16 §5).
 +  This is distinct from source normalization in S22's debt account and from S21's comparison of
 +  force-sector flow requirements. No owner is inferred from those neighbouring interfaces.
++- **admission ground** — the selected option expressly requires this future object for a passive
++  interpretation; this is not an unselected closure form inferred from a later owner.
 +
 +### R-S16-02 — the body's compactness in both comparisons
 +
-+- **source** S16, user's 2026-10-21 decisions as filed in
-+  `directives/S16_decision_list.md`, "Filing and framing" and "For the record and its register pass";
++- **source** orchestrator's S16 list filing `directives/S16_decision_list.md:158–161`,
++  "The body's compactness, separately", from pass-2 E3 and pass-3 F3; filing/framing `:24–30`;
 +  source assumption `research/4d_1pn_full/paper/4d_1pn_full.tex:697–700`;
 +  `steps/S16_moving_region.md`, §§4/6 (S16 M01/M04/M14).
 +- **target** no owner named for physical delivery; S22 is the named recipient of this debt in its table
@@ -81174,29 +83371,36 @@ index 256882ea..2cdc679c 100644
 +  variation of a field of the surroundings, kept as two comparisons.
 +- **on failure** — the compact-body response approximation cannot be claimed. S16's conditional
 +  region balances and count moments do not determine either comparison.
-+- **standing** — an explicit user-filed requirement, not an imposed compactness premise.
++- **standing** — an explicit requirement filed by the list author, not a user-selected or imposed
++  compactness premise. Its admission ground is the named small-body condition of the later
++  response approximation, which the source assumption and E3/F3 keep separate from the
++  surroundings-field condition; the record contract item 7 directs its filing (S16 M01–M02/M04/M17).
 +  S22's debt-table recipient is not evidence of a physical compactness deliverer. The C10/tail
 +  question remains S19's. Count moments, control radii, profile width and mouth radius are not identified.
 +
 +### R-S16-03 — momentum exchange at each slab face
 +
-+- **source** S16, `directives/S16_decision_list.md`, supplied momentum equation and
-+  "For the record and its register pass"; `steps/S16_moving_region.md`, §§1–2/6
-+  (S16 M01/M02/M04/M07/M14).
++- **source** orchestrator's S16 list filing `directives/S16_decision_list.md:162–163`,
++  "For the faces", from pass-2 E2's direction to keep "the face-resolved momentum accounting
++  OPEN"; supplied momentum input `:84–85`. `steps/S16_moving_region.md`, §§1–2/6
++  (S16 M01–M02/M04/M07/M14/M17).
 +- **target** no owner named
 +- **status** OPEN
 +- **requirement** — the momentum exchanged at each slab face and its split by the motion of
 +  that face, separately identifiable within the projected total exchange.
 +- **on failure** — S16's undivided force-density input supplies no face-resolved momentum account.
 +  Its moving control-surface pieces do not deliver a slab-face split.
-+- **standing** — expressly carried requirement, not a defect in the undivided supplied balance.
++- **standing and admission ground** — the list author expressly retains this missing face-resolved
++  accounting object after E2 identifies what the projected inputs cannot determine. Record contract
++  item 7 directs its filing; it is not a user-selected law or a defect in the undivided supplied balance.
 +  The faces' law remains unowned. `R-S12-02` retains S12's source/flux/data and material-face scope;
 +  it does not assign this momentum object or the faces' law to S12.
 +
 +### R-S16-04 — the momentum–material relation needed for inertia
 +
-+- **source** S16, user's 2026-10-21 "Count material; mass open" decision and
-+  `directives/S16_decision_list.md`, register section;
++- **source** user's selected 2026-10-21 "Count material; mass open" option: "The law it needs
++  goes to the register, as O2 keeps it (S8)" (`directives/S16_decision_list.md:54–56`;
++  pass-1 disposition, "The user's decisions"); list filing `:164–166`;
 +  `directives/O2_SHARED_PHYSICS.md:133`; `steps/S16_moving_region.md`, §§1/6
 +  (S16 M01/M04/M14).
 +- **target** S8, with S1.5 antecedents when available as the O2 row states
@@ -81205,6 +83409,8 @@ index 256882ea..2cdc679c 100644
 +  needed to define an inertial factor.
 +- **on failure** — the separately printed momentum and material-count centre relations do not
 +  supply an inertial factor or a relation between momentum and count-centre acceleration.
++- **admission ground** — the selected option expressly requires the missing momentum–material
++  relation for that future inertial interpretation; no kinetic form is selected (S16 M01–M02/M17).
 +- **entry rather than merge** — `R-S8-06` requires material displacement identification and the
 +  original homogeneous quadratic/slab inertia. Its O2 scope expressly excludes a live momentum-map
 +  widening. The present explicitly user-required live object has a different domain and requirement;
@@ -81212,7 +83418,8 @@ index 256882ea..2cdc679c 100644
 +
 +### R-S16-05 — the slab density response
 +
-+- **source** S16, `directives/S16_decision_list.md`, "For the record and its register pass";
++- **source** orchestrator's S16 list filing `directives/S16_decision_list.md:164–166`:
++  "The slab's density response is also OPEN there", citing
 +  `directives/O2_SHARED_PHYSICS.md:138`; `steps/S16_moving_region.md`, §§1/6
 +  (S16 M01/M04/M14).
 +- **target** S8 (substrate reduction) and S22 (completion), as the O2 row states
@@ -81221,13 +83428,17 @@ index 256882ea..2cdc679c 100644
 +  thickness/projection dependence and gradients, needed for the open material/mass accounting.
 +- **on failure** — that density-response interpretation remains unavailable. S16's supplied
 +  projected count balance and its live-density derivatives still supply no such response.
-+- **standing** — explicitly carried by the user's S16 requirement filing. O2's pass entered no
-+  response-form requirement merely for a future solve; that decision remains unchanged. No bulk
++- **standing and admission ground** — the list author expressly carries the future density-response
++  delivery into this record's filing (contract item 7), for the named material/mass interpretation.
++  Live projected count and its derivatives do not deliver it. It is not a user-selected response,
++  nor admitted merely because O2 names an owner. O2's pass entered no response-form requirement
++  merely for a future solve; that decision remains unchanged (S16 M01/M04/M14/M17). No bulk
 +  equation of state, factorization, response form or material is selected here.
 +
 +### R-S22-02 — the missing response-reduction inputs in S22's debt table
 +
-+- **source** S16 filing decision, `directives/S16_decision_list.md`, "Filing and framing";
++- **source** orchestrator's S16 filing `directives/S16_decision_list.md:28–30`: "What stays a
++  debt for S22's table is what this step does not deliver";
 +  `V3_STEP_PLAN.md:732–741,1303–1305`; `steps/S16_moving_region.md`, §§4/6
 +  (S16 M01/M04/M14).
 +- **target** S22 for the debt-table account; no physical supplier is assigned here where the
@@ -81237,6 +83448,9 @@ index 256882ea..2cdc679c 100644
 +  the multipoles of `M`, source normalization and any suppression of boundary fluxes, with the
 +  `a_WT`/`a_mouth` bridge separately identified under A11. Compactness is filed once as
 +  `R-S16-02` and cross-referenced in this table account.
++- **admission ground** — this expressly named S22 debt-table account is a future delivery under
++  the list's filing and record contract item 7; it is not an assignment of every physical supplier
++  or a new premise of the regional balances (S16 M01/M04/M17).
 +- **on failure** — the conditional response-side monopole reduction cannot be treated as
 +  delivered or interior independent. Count, count moments and live boundary fluxes are printed
 +  objects; none is substituted for a missing mass object or for flux suppression.
@@ -81248,7 +83462,7 @@ index 256882ea..2cdc679c 100644
  ## Population passes
  
  **Pass 1 — S9 and S10. ⭐ DONE 2026-08-06**, alongside S10's step record and from the same reading.
-@@ -1631,7 +1745,7 @@ new physics or an owner reassignment. The plan's four bridge objects are not all
+@@ -1631,7 +1785,7 @@ new physics or an owner reassignment. The plan's four bridge objects are not all
  S14/S15/S20 remain **"CONDITIONAL, not carried results"**. No frozen DC completion or profile
  is adopted to close them.
  
@@ -81257,7 +83471,7 @@ index 256882ea..2cdc679c 100644
  
  Source: `steps/S14a_2_slow_limit.md`, §§1–7. Commands and literal stdout:
  `steps/_measurements/S14a_2_record_measurements.md`, generated by
-@@ -1721,8 +1835,89 @@ for every sector with identified prior art"** (M12). The register governs. The p
+@@ -1721,8 +1875,110 @@ for every sector with identified prior art"** (M12). The register governs. The p
  DC/slow-limit, historical material-conservation and S13-filing tensions remain quoted with
  both sides in record §6 (M02/M03/M11/M13). The contract requests **"a committed generator script"**
  and says **"No commit and no push"**; the list's own no-commit instruction governs this repair.
@@ -81273,25 +83487,38 @@ index 256882ea..2cdc679c 100644
 +Source: `steps/S16_moving_region.md`, §§1–8. The governing list is revision 4 at `0464b80a`;
 +the constructions are accepted at `1d990ee6`, the comparator at `f08db34a` with its citation
 +containment claim. Commands and literal stdout: `steps/_measurements/S16_record_measurements.md`,
-+generated by `scripts/S16_record_measurements.py` (M01–M16). The generator and record are supplied
-+uncommitted under this record contract's "No commit and no push" instruction.
++generated by `scripts/S16_record_measurements.py` (M01–M18). The reviewed record, generator and
++measurements are preserved at `4ae7e6cf`; this Y1–Y4 repair is uncommitted under the contract's
++"No commit and no push" instruction (M17).
 +
 +**Census:** 19 entries at `4d4d22cb` → 25, all OPEN. **Six new entries by target:** three with
 +no physical owner named (`R-S16-01/-02/-03`; compactness is also owed to S22's debt table),
 +one S8 (`R-S16-04`, retaining the O2 antecedent qualification), one S8/S22 (`R-S16-05`),
 +and one S22 debt-table account (`R-S22-02`, without assigning missing physical suppliers).
-+**Existing entries gaining source/provenance:** `R-S12-02` (supplied projected material object
-+and "Keep S12" only) and `R-S21-01` (the 2026-10-19 framing only). Neither changes requirement,
-+target or status. No entry closes; `R-S14a-01` remains OPEN with its existing joint target.
++**Four existing entries gaining source/provenance:** `R-S1-01` (coordinate dimension only),
++`R-S1-02` (inherited support identification only), `R-S12-02` (supplied projected material object
++and "Keep S12" only) and `R-S21-01` (the 2026-10-19 framing only). None changes requirement,
++target or status. The Y1–Y4 repair is **25 → 25**, with no new entries and two additional
++existing-entry S16 sources. No entry closes; `R-S14a-01` remains OPEN with its existing joint target.
 +
 +**First route / rest-on test.** As the schema says, a requirement is a future obligation;
 +an adopted value/form belongs to the ansatz ledger, and an already-wrong object to the defect
-+register. These six entries are the user's explicit future requirements and the decision list's
-+named S22 debt filing, not closure forms inferred merely from a future owner. Failure blocks the
-+named later interpretation or debt account, not S16's live unsolved balances. That is the same
-+criterion that admits the explicitly user-required S14a selection object. O2's earlier refusal to
-+enter unspecified live response forms merely for a future solve is retained; S16 now expressly
-+requires the inertia and density objects. Those are not derived substrate responses.
++register. The selected user options expressly file the passive needs (`R-S16-01`) and inertial
++relation (`R-S16-04`). The orchestrator's list separately files compactness from E3/F3
++(`R-S16-02`), face momentum from E2 (`R-S16-03`), density response from O2 `:138`
++(`R-S16-05`) and the S22 debt account (`R-S22-02`). Each entry's source and admission-ground
++fields quote or locate its own filing and name what later interpretation/account would fail.
++Record contract item 7 directs these named filings. None is admitted merely from a future owner;
++none asserts that S16's live unsolved balances require a selected closure. O2's earlier refusal
++to enter unspecified response forms merely for a future solve stays; no substrate response is derived.
++
++The same rest-on test admits two dependencies of the present conditional object, inherited
++through the supplied part-1 balance. Its three in-plane coordinates and shell measures consume
++the existing dimension obligation `R-S1-01` at S6; failure to deliver/reaffirm that domain
++prevents unchanged transfer. Its shear-holding-region interpretation consumes the flagged,
++adopted U1 support identification in `R-S1-02` at S1; failure removes that interpretation,
++not the conditional algebra. They merge as scoped sources, as the earlier passes did. No new
++dimension, shear law, confinement result or enforced U1 re-ordering clause follows (M01/M04/M14/M17).
 +
 +No further entry has a printed object as its requirement. The supplied material/momentum balances,
 +their integrals, count-centre definitions and moments are conditional identities on the list's
@@ -81300,8 +83527,8 @@ index 256882ea..2cdc679c 100644
 +stay OPEN. General `G`, `Pi` and `f` forms have no owner assigned here, while S12 gives slab material
 +completion to S8/S22 and names no face-law owner. Neither the unowned momentum balance nor the
 +core's excluded content is assigned to S12. Control shape, moment truncation and independent
-+dimension units are labelled supplied/construction choices, not new physical-dimension or
-+shear-response identifications; `R-S1-01/-02` gain no S16 source. No O2 premise is silently adopted.
++dimension units are labelled supplied/construction choices, distinct from the inherited coordinate
++dimension and support identification tested above. No O2 premise is silently adopted.
 +
 +**Merge test.** `R-S16-01` is distinct from source normalization and from S21's knit;
 +`R-S16-02` is distinct from count moments and the width bridge; `R-S16-03` is distinct from S12's
@@ -81338,6 +83565,14 @@ index 256882ea..2cdc679c 100644
 +claim whole-stream identity or a motion-free sum of `localEvolution` pieces. The plan/O2 interface
 +describes a compact-body calibrated-potential reduction; the later user list supplies no potential,
 +mass or compactness and computes only regional objects. Both sides are quoted in record §7. The
++plan's S19 trust gate and charter-feedback handoffs remain OPEN beside that delivery; record §4
++and `STATUS.md` retain each with no owner named for its disposition. Neither is decided here.
++The list heading "Requirements the user's decisions file" over-attributes its additions:
++the selected options file passive-factor needs ("goes to the register as a requirement") and
++the inertial relation ("The law it needs goes to the register, as O2 keeps it (S8)"). Compactness,
++face momentum and density response are the list author's filings at `:158–166`, not selected
++user options. Record §7 quotes both sides; the individual entry sources/admission grounds govern
++(M01–M02/M04/M14/M17). The
 +governing list's "committed generator script"/"No commit and no push" conflict is reported there;
 +the latter governs this authoring STOP. The list's revision heading still says "Revision 3" while
 +its body and acceptance say revision 4. Accepted S12's historical mass-link owner is "S13";
@@ -81411,14 +83646,401 @@ $ git diff --name-only 4d4d22cb
 .claude/skills/prep-for-compact/SKILL.md
 STATUS.md
 research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
+research/pde_ledger_v3/directives/_measurements/S16_record_r0_review_disposition.md
+research/pde_ledger_v3/directives/_measurements/S16_record_r0_review_lookups.md
+research/pde_ledger_v3/scripts/S16_record_measurements.py
 research/pde_ledger_v3/steps/S14a_2_slow_limit.md
+research/pde_ledger_v3/steps/S16_moving_region.md
+research/pde_ledger_v3/steps/_measurements/S16_record_measurements.md
 $ git status --short -- research/pde_ledger_v3/steps/S16_moving_region.md research/pde_ledger_v3/steps/_measurements/S16_record_measurements.md research/pde_ledger_v3/scripts/S16_record_measurements.py research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md research/pde_ledger_v3/steps/S14a_2_slow_limit.md STATUS.md .claude/skills/prep-for-compact/SKILL.md
  M .claude/skills/prep-for-compact/SKILL.md
  M STATUS.md
  M research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
- M research/pde_ledger_v3/steps/S14a_2_slow_limit.md
-?? research/pde_ledger_v3/scripts/S16_record_measurements.py
-?? research/pde_ledger_v3/steps/S16_moving_region.md
-?? research/pde_ledger_v3/steps/_measurements/S16_record_measurements.md
+ M research/pde_ledger_v3/scripts/S16_record_measurements.py
+ M research/pde_ledger_v3/steps/S16_moving_region.md
+ M research/pde_ledger_v3/steps/_measurements/S16_record_measurements.md
+````
+
+## M17. Preserved round-0 record review and repair scope Y1–Y4
+
+````text
+$ python3 research/pde_ledger_v3/scripts/S16_record_measurements.py --lookup M17
+$ git log -1 --format=%H %s 4ae7e6cf
+4ae7e6cf67e648b363222dd46e9467683b54c7f7 Preserve the S16 record as reviewed in round 0 (not accepted)
+FILE research/pde_ledger_v3/directives/_measurements/S16_record_r0_review_disposition.md lines 1:EOF
+1: # S16 record review, round 0: dispositions (orchestrator)
+2: 
+3: The mechanical lookups behind each disposition are in `S16_record_r0_review_lookups.md`, beside this file (generator
+4: `_scratch/s16/gen/rec_r0_lookups.sh`). "Y-n" cites a section of that file.
+5: 
+6: ## The round
+7: 
+8: - **Artifact.** These were written by Codex (`gpt-6.1-sol`, xhigh), starting from the record decision list at
+9:   `4d4d22cb`:
+10:   - the record `steps/S16_moving_region.md`;
+11:   - its measurements file `steps/_measurements/S16_record_measurements.md` and generator
+12:     `scripts/S16_record_measurements.py`;
+13:   - the S16 pass and other edits in `SUBSTRATE_REQUIREMENTS.md`;
+14:   - the edits to `steps/S14a_2_slow_limit.md` and `../../STATUS.md`.
+15: - **Prompt and legs.** `_scratch/s16/rec/s16_record_review_prompt_r0.md` (Y0). Codex wrote the artifact, so the legs
+16:   are a fresh Claude agent (Opus) and Grok (`grok-4.7`, high) (G1). They had the identical prompt and ran in parallel.
+17:   Grok exited 0.
+18: - **Baseline.** All six baseline files matched after the round. The working tree was unchanged (Y0).
+19: - **Verdicts.** Claude: NEEDS REVISION, four findings (one minor). Grok: CLEAR (Y0).
+20: - **Both legs' generator reruns** reproduced the filed measurements file byte for byte.
+21: 
+22: ## Findings
+23: 
+24: **Y1. The plan's S19 gate and charter feedback are not handed on.** (Claude 1.) **CONFIRMED.**
+25: - The plan (Y1): "S16 must be run BEFORE S19 is trusted, and its result feeds back into the charter. … Say so rather
+26:   than preserving the boundary."
+27: - The record says that the regional objects "do not deliver the plan's compact-body response approximation". It says
+28:   that "S19 owns the C10 tail question" and that "No broader charter scope or later-step result is earned by the
+29:   regional identities" (Y1). It does not say what this means for the plan's S19 gate or for the charter feedback, or
+30:   who disposes of either. `STATUS.md`'s edit mentions neither (Y1).
+31: - The record list, item 1: the record "states what of the plan's S16 rows this step prints and what stays with later
+32:   steps, as its sources state them; where they do not say, the record says so."
+33: - **What must be true.** The record and `STATUS.md` hand on the plan's S19 gate and its charter feedback beside what
+34:   this step delivers. Each is handed on with its owner as the sources state it, or "no owner named" where they state
+35:   none. Nothing about either is decided here.
+36: 
+37: **Y2. `R-S1-01` gains no S16 source, unlike the earlier steps on the same coordinates.** (Claude 2.) **CONFIRMED.**
+38: - `R-S1-01`'s sources list S10, S11, S9b, S12 and S14a part 1, each as "coordinate dimension only" (Y2).
+39: - S16 is built on S14a part 1's projected domain: "in-plane coordinates `x^i` (three) and time `t`" (the step list's
+40:   supplied equations, Y2).
+41: - The pass rules out an S16 source on the ground that "Control shape, moment truncation and independent dimension
+42:   units are labelled supplied/construction choices" (Y2). The coordinate dimension is none of those, and the pass
+43:   does not test it.
+44: - `R-S1-02` lists S14a part 1 for its "support identification only" (Y2). S16 is built on that same projected
+45:   balance. The pass does not test this either.
+46: - **What must be true.** The pass applies the register's rest-on test to the coordinate dimension, and to the support
+47:   identification S16 inherits through S14a part 1's balance, as the earlier passes did. The census, the record and
+48:   `STATUS.md` follow from the result.
+49: 
+50: **Y3. Requirements the user did not file are attributed to the user.** (Claude 3.) **CONFIRMED. Cause: the step
+51: list's heading.**
+52: - The user's option texts (Y3) send two things to the register:
+53:   - what a passive factor needs: "a named field of the surroundings, a rule separating it from the body's own field,
+54:     and its normalization";
+55:   - the inertial law: "The law it needs goes to the register, as O2 keeps it (S8)".
+56: - The step list's own filing adds the body's compactness (its pass-2 finding E3), the faces' momentum exchange (E2)
+57:   and the slab's density response (O2 `:138`). The orchestrator wrote that filing. The list's heading over all of
+58:   them reads "Requirements the user's decisions file" (Y3). That heading is the orchestrator's paraphrase, and the
+59:   record followed it.
+60: - The register, the record and `STATUS.md` call these "S16 user requirement" (`R-S16-02`, `-03`, `-05`), "an
+61:   explicit user-filed requirement" (`R-S16-02`), "the user's explicit future requirements" (the pass), and "the
+62:   user's … compactness, face-momentum" (`STATUS.md`) (Y3).
+63: - The pass rests its admission of the entries on that attribution (Y3).
+64: - **What must be true.**
+65:   - Each entry's source names who filed it: the user's decision, quoted, or the step list's filing, with the line
+66:     or finding it comes from.
+67:   - The disagreement between the step list's heading and the user's option texts is reported, with both sides
+68:     quoted.
+69:   - Each entry's admission ground rests on what its own source says.
+70: 
+71: **Y4. Twenty-two compared bindings get no cross-engine status.** (Claude 4.) **CONFIRMED; minor.**
+72: - The comparator compares the supplied equations (4 bindings), the integral definitions (3) and the geometry (15).
+73:   All 22 have an exact residual of `0` as computed, and every sample residual is `0` (Y4).
+74: - The record names none of these classes (Y4).
+75: - The record list, item 2: "The record covers every row class the comparator prints".
+76: - **What must be true.** The record states these comparisons' cross-engine status, with their counts and domain.
+77: 
+78: ## Not findings
+79: 
+80: - Both legs found the following sound:
+81:   - the comparison counts;
+82:   - the unreconciled domain difference;
+83:   - the carried build and comparator notes;
+84:   - the premise quotes, the inventories and the OPEN owners;
+85:   - the prior-art citations, with the passive-factor row kept apart from `R-S16-01`;
+86:   - the S14a part 2 status lines and the `R-S14a-01` row;
+87:   - the account of edits against `git diff 4d4d22cb`.
+88: - Grok reported no finding. Y1–Y3 are claims about what the sources assign and who filed what. Each is grounded in
+89:   the verbatim lines in Y1–Y3.
+90: 
+91: ## Outcome
+92: 
+93: Four findings confirmed. Y1–Y3 change what the record, the register and `STATUS.md` hand on. Y4 is an under-claim.
+94: The reviewed version is preserved with these dispositions. The record's author repairs it to what must be true, and
+95: the repair gets a round 1 review by a fresh Claude agent and Grok.
+FILE research/pde_ledger_v3/directives/_measurements/S16_record_r0_review_lookups.md lines 1:EOF
+1: # S16 record review, round 0: mechanical lookups
+2: 
+3: Generated by `_scratch/s16/gen/rec_r0_lookups.sh` (GNU grep, sed, jq, git, `LC_ALL=C`). Each block is a command and
+4: its literal output. Counts are literal-match counts over the stored records.
+5: 
+6: ## Y0. The baseline, the working tree, the prompt, the legs
+7: 
+8: ```
+9: $ git log -1 --format='%h %s' && sha256sum -c _scratch/s16/rec/s16_record_review_baseline_r0.sha256
+10: 4d4d22cb Clear the S16 record decision list (G2: one pass, both legs clear)
+11: research/pde_ledger_v3/steps/S16_moving_region.md: OK
+12: research/pde_ledger_v3/steps/_measurements/S16_record_measurements.md: OK
+13: research/pde_ledger_v3/scripts/S16_record_measurements.py: OK
+14: research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md: OK
+15: research/pde_ledger_v3/steps/S14a_2_slow_limit.md: OK
+16: STATUS.md: OK
+17: ```
+18: 
+19: ```
+20: $ git status --porcelain | diff _scratch/s16/rec/status_before_record_r0.txt - && echo 'status unchanged'
+21: 4a5
+22: > ?? research/pde_ledger_v3/directives/_measurements/S16_record_r0_review_lookups.md
+23: ```
+24: 
+25: ```
+26: $ sha256sum _scratch/s16/rec/s16_record_review_prompt_r0.md
+27: 5d04832171df10d7faffe3c0cbf7e49a8ad27d240ed2c21d6775e84e8a6a1143  _scratch/s16/rec/s16_record_review_prompt_r0.md
+28: ```
+29: 
+30: ```
+31: $ cat /var/projects/_review_scratch/s16-record-r0-grok/DONE; ls -l /var/projects/_review_scratch/s16-record-r0-claude/REVIEW.md /var/projects/_review_scratch/s16-record-r0-grok/REVIEW.md | awk '{print $5, $NF}'
+32: exit 0
+33: 10440 /var/projects/_review_scratch/s16-record-r0-claude/REVIEW.md
+34: 6564 /var/projects/_review_scratch/s16-record-r0-grok/REVIEW.md
+35: ```
+36: 
+37: ```
+38: $ /usr/bin/grep -n -E '^\*\*Verdict' /var/projects/_review_scratch/s16-record-r0-claude/REVIEW.md /var/projects/_review_scratch/s16-record-r0-grok/REVIEW.md | sed 's|/var/projects/_review_scratch/||' | cut -c1-120
+39: s16-record-r0-claude/REVIEW.md:3:**Verdict: NEEDS REVISION.** Three findings change what the record, register or status 
+40: s16-record-r0-grok/REVIEW.md:3:**Verdict: CLEAR**
+41: ```
+42: 
+43: ## Y1. The plan's S19 gate and charter feedback, and what the record says
+44: 
+45: ```
+46: $ sed -n '739,745p' research/pde_ledger_v3/V3_STEP_PLAN.md
+47: ⇒ **Rewrite S16 as a conditional response-side monopole approximation** — ⛔ not a source-generation or
+48: interior-independence theorem — and list `M`, `a`, the multipoles, compactness, source normalization and
+49: boundary-flux suppression as **supplied inputs** that belong in S22's debt table.
+50: 
+51: ⇒ **S16 must be run BEFORE S19 is trusted, and its result feeds back into the charter.** Two blocking
+52: legs. ⚠ Likely outcome: **the scope boundary is materially narrower than the charter claims.** Say so
+53: rather than preserving the boundary.
+54: ```
+55: 
+56: ```
+57: $ /usr/bin/grep -n -i -E 'charter|S19' research/pde_ledger_v3/steps/S16_moving_region.md | cut -c1-200
+58: 372:| Charter scope boundary | `CHARTER.md:74–80` and `:109–119` |
+59: 389:later work, not tasks run here. S19 owns the C10 tail question; S22 owns the core and the
+60: 394:sources do not assign an owner, this record says **no owner named**. No broader charter
+61: 515:| C10 tail question | S19, not run here. |
+62: ```
+63: 
+64: ```
+65: $ sed -n '8,13p;389,395p' research/pde_ledger_v3/steps/S16_moving_region.md
+66: 
+67: **Deliverable:** record what the supplied balances give for a moving region outside one throat's
+68: excluded core, preserve the cross-engine findings, file the specified future requirements and
+69: S22 debts, and correct the named status/provenance lines. The conditional regional objects do
+70: not deliver the plan's compact-body response approximation. No mass, inertial factor, passive
+71: factor, surroundings field, potential, inter-body force law or throat solve is computed.
+72: later work, not tasks run here. S19 owns the C10 tail question; S22 owns the core and the
+73: width bridge handoff. S15, conditional on S14a, owns the source-side question of what force
+74: a drain exerts. `R-S14a-01` remains OPEN for slow/far selection with its existing joint
+75: deliverers. O2's orbital-`GM` matching interface remains an inferred assignment; it does
+76: not assign the missing surroundings field's delivery or establish a coupling. Where these
+77: sources do not assign an owner, this record says **no owner named**. No broader charter
+78: scope or later-step result is earned by the regional identities. (Retrieve M01/M04/M14.)
+79: ```
+80: 
+81: ```
+82: $ git diff 4d4d22cb -- STATUS.md | /usr/bin/grep -c -i -E 'charter|S19'
+83: 0
+84: ```
+85: 
+86: ## Y2. R-S1-01 and R-S1-02: their sources, and the S16 pass
+87: 
+88: ```
+89: $ sed -n '102p;168p;212p' research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md | cut -c1-260
+90: | **S6** | `R-S1-01` | the brane's spatial dimension `D_brane` ⚠ *id kept; target corrected to S6* | S10, S11, S9b, S12 and S14a part 1 coordinate dimension only |
+91: - **source** S14a part 1 (coordinate dimension only; `steps/S14a_1_projection.md`, §§1–4/8); S12 (coordinate dimension only; `steps/S12_order_source.md`, §§1–2/7); S9b (coordinate dimension only; `steps/S9b_light_bending.md`, §§2–4/8); S10 (`steps/
+92: - **source** S14a part 1 (support identification only; `steps/S14a_1_projection.md`, §§1/8); S12 (support identification only; `steps/S12_order_source.md`, §§1–3/7); S9b (brane optical shear only; `steps/S9b_light_bending.md`, §§2–4/8); O2 (`steps/O2
+93: ```
+94: 
+95: ```
+96: $ sed -n '1874,1876p' research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
+97: core's excluded content is assigned to S12. Control shape, moment truncation and independent
+98: dimension units are labelled supplied/construction choices, not new physical-dimension or
+99: shear-response identifications; `R-S1-01/-02` gain no S16 source. No O2 premise is silently adopted.
+100: ```
+101: 
+102: ```
+103: $ sed -n '62,64p' research/pde_ledger_v3/directives/S16_decision_list.md
+104: ## Supplied equations (unfalsifiable in this build)
+105: On S14a part 1's projected domain: in-plane coordinates `x^i` (three) and time `t`, with the slab integrated in `w`
+106: between its live faces.
+107: ```
+108: 
+109: ## Y3. Who files which requirement
+110: 
+111: The user's option texts (the step list's pass-1 disposition) and the step list's heading:
+112: 
+113: ```
+114: $ sed -n '139,150p' research/pde_ledger_v3/directives/_measurements/S16_decision_list_review_p1_disposition.md
+115: ## The user's decisions on D1, D2, D4 and the inertial part of D3 (2026-10-21)
+116: 
+117: The user selected these options. The wording, including the question, is the orchestrator's.
+118: - **Passive mass — "Record what it needs (Recommended)":** "The build prints the momentum the region receives:
+119:   stresses and momentum carried across both surfaces, plus the force density. It prints this apart from the terms
+120:   caused only by the surfaces moving. It computes no passive factor. What one needs (a named field of the
+121:   surroundings, a rule separating it from the body's own field, and its normalization) goes to the register as a
+122:   requirement. The missing owner is stated as missing."
+123: - **Mass — "Count material; mass open (Recommended)":** "The region's content and centre come from the material
+124:   count, which the supplied balance governs. No mass is defined. How the region's momentum relates to its motion
+125:   (inertial mass) is printed as open. The law it needs goes to the register, as O2 keeps it (S8)."
+126: 
+127: ```
+128: 
+129: ```
+130: $ sed -n '153,155p' research/pde_ledger_v3/directives/S16_decision_list.md
+131: ## For the record and its register pass (not in the build directive)
+132: - **Requirements the user's decisions file.** The record files each requirement once, against the owner the sources
+133:   assign. Where no owner is assigned, it says so; no owner is invented.
+134: ```
+135: 
+136: How the register, the record and STATUS attribute the new entries:
+137: 
+138: ```
+139: $ sed -n '116,121p' research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md | cut -c1-220
+140: | **no owner named** | `R-S16-01` | surroundings field, separation from the body's own field, and normalization for a passive factor | S16 user requirement |
+141: | **no owner named**; S22 receives the debt in its table | `R-S16-02` | compactness relative to both separation and surroundings-field variation scale | S16 user requirement |
+142: | **no owner named** | `R-S16-03` | momentum exchanged at each slab face, split by face motion | S16 user requirement |
+143: | **S8** | `R-S16-04` | momentum–material relation needed for an inertial factor | S16 user requirement; O2 OPEN interface |
+144: | **S8/S22** | `R-S16-05` | slab density response | S16 user requirement; O2 OPEN interface |
+145: | **S22** (debt-table account only; physical suppliers not assigned by this entry) | `R-S22-02` | missing response-reduction inputs and width bridge, with compactness cross-referenced to `R-S16-02` | S16 filing decision 
+146: ```
+147: 
+148: ```
+149: $ /usr/bin/grep -n -E 'user-filed|user.s explicit future requirements' research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md | cut -c1-200
+150: 1018:- **standing** — an explicit user-filed requirement, not an imposed compactness premise.
+151: 1861:register. These six entries are the user's explicit future requirements and the decision list's
+152: ```
+153: 
+154: ```
+155: $ sed -n '450,453p;488p' research/pde_ledger_v3/steps/S16_moving_region.md
+156: deliveries are admitted, as for the user-required S14a selection object. Unspecified
+157: closure forms do not enter merely because a later solve has an owner. These S16 entries
+158: record the user's express future requirements and named debt account, not a claim that
+159: the printed unsolved balances require a closed material state. (Retrieve M01/M14.)
+160: `R-S1-01/-02` source. The explicit user requirements above concern future interpretations,
+161: ```
+162: 
+163: ```
+164: $ git diff 4d4d22cb -- STATUS.md | /usr/bin/grep -n -E 'files the user' | cut -c1-200
+165: 34:+The pass brings 19 → 25 OPEN entries; it files the user's passive-field, compactness, face-momentum,
+166: ```
+167: 
+168: ## Y4. Comparisons the status table does not name
+169: 
+170: ```
+171: $ jq -r 'select(.kind=="comparison") | .binding | split(":")[0]' research/pde_ledger_v3/scripts/out/S16_cross_engine_comparator.out | /usr/bin/grep -E '^(supplied_|integral_definitions|geometry_)' | sort | uniq -c
+172:       2 geometry_areaMeasure
+173:       6 geometry_normal
+174:       6 geometry_surfaces
+175:       1 geometry_volumeMeasure
+176:       3 integral_definitions
+177:       1 supplied_material
+178:       3 supplied_momentum
+179: ```
+180: 
+181: ```
+182: $ jq -r 'select(.kind=="comparison" and (.binding|test("^(supplied_|integral_definitions|geometry_)"))) | [(.exact_residual|tostring)=="0", ([.samples[]?|(.residual|tostring)]|all(.=="0"))] | @tsv' research/pde_ledger_v3/scripts/out/S16_cross_engine_comparator.out | sort | uniq -c
+183:      22 true	true
+184: ```
+185: 
+186: ```
+187: $ /usr/bin/grep -c -i -E 'geometry_|integral_definitions|supplied_material|supplied_momentum|areaMeasure|volumeMeasure' research/pde_ledger_v3/steps/S16_moving_region.md
+188: 0
+189: ```
+190: 
+191: ```
+192: $ sed -n '178,186p' research/pde_ledger_v3/steps/S16_moving_region.md | cut -c1-160
+193: ### Cross-engine status for the requested objects
+194: 
+195: | Printed object | Filed comparator status and limit |
+196: |---|---|
+197: | Count, dipole and momentum definitions, all rate totals, both material-face pieces, bulk force/reference/weight pieces, every surface's rest/centre/radius pie
+198: | Relative/absolute count-centre definitions and rates | All six definition and six rate bindings have as-computed exact residual `0`; `N ≠ 0` applies. |
+199: | Relative/absolute count-centre accelerations | Six nonzero-text as-computed residuals, each with resolved exact residual `0`; `N ≠ 0` applies. |
+200: | Normalization rate/acceleration, aliases, derivative-origin pieces and partition operands/residuals | Every value is exact `0` as computed or resolves to `0`,
+201: | Received momentum, momentum rate and the twelve shared surface-motion components | As-computed exact residuals `0`; six Py bulk-reference values in the groupe
+202: ```
+$ git show --format= --name-only 4ae7e6cf -- research/pde_ledger_v3/directives/_measurements/S16_record_r0_review_disposition.md research/pde_ledger_v3/directives/_measurements/S16_record_r0_review_lookups.md
+research/pde_ledger_v3/directives/_measurements/S16_record_r0_review_disposition.md
+research/pde_ledger_v3/directives/_measurements/S16_record_r0_review_lookups.md
+````
+
+## M18. Supplied-equation, integral-definition and geometry comparisons
+
+````text
+$ python3 research/pde_ledger_v3/scripts/S16_record_measurements.py --lookup M18
+{"configuration_line": 1, "stored_binding": {"key": "integral_definitions:2", "kind": "value", "normalized": false, "object": "region integral definition: Volume", "py": {"path": [], "tag": "integral.Volume"}, "py_line": "105-110", "rule": "integral_definitions", "wl": {"path": [], "tag": "integral.V"}, "wl_line": "47-53"}}
+{"configuration_line": 1, "stored_binding": {"key": "integral_definitions:3", "kind": "value", "normalized": false, "object": "region integral definition: Surface.0", "py": {"path": [], "tag": "integral.Surface.0"}, "py_line": "105-110", "rule": "integral_definitions", "wl": {"path": [], "tag": "integral.B.1"}, "wl_line": "47-53"}}
+{"configuration_line": 1, "stored_binding": {"key": "integral_definitions:4", "kind": "value", "normalized": false, "object": "region integral definition: Surface.1", "py": {"path": [], "tag": "integral.Surface.1"}, "py_line": "105-110", "rule": "integral_definitions", "wl": {"path": [], "tag": "integral.B.2"}, "wl_line": "47-53"}}
+{"configuration_line": 1, "stored_binding": {"key": "supplied_material:5", "kind": "value", "normalized": false, "object": "supplied material equation", "py": {"path": [], "tag": "supplied.material"}, "py_line": "49,111", "rule": "supplied_material", "wl": {"path": [], "tag": "supplied.material"}, "wl_line": "30,54"}}
+{"configuration_line": 1, "stored_binding": {"key": "supplied_momentum:6", "kind": "value", "normalized": false, "object": "supplied momentum equation: (0,)", "py": {"path": [0], "tag": "supplied.momentum"}, "py_line": "50,112", "rule": "supplied_momentum", "wl": {"path": [0], "tag": "supplied.momentum"}, "wl_line": "31,55"}}
+{"configuration_line": 1, "stored_binding": {"key": "supplied_momentum:7", "kind": "value", "normalized": false, "object": "supplied momentum equation: (1,)", "py": {"path": [1], "tag": "supplied.momentum"}, "py_line": "50,112", "rule": "supplied_momentum", "wl": {"path": [1], "tag": "supplied.momentum"}, "wl_line": "31,55"}}
+{"configuration_line": 1, "stored_binding": {"key": "supplied_momentum:8", "kind": "value", "normalized": false, "object": "supplied momentum equation: (2,)", "py": {"path": [2], "tag": "supplied.momentum"}, "py_line": "50,112", "rule": "supplied_momentum", "wl": {"path": [2], "tag": "supplied.momentum"}, "wl_line": "31,55"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_surfaces:9", "kind": "value", "normalized": false, "object": "region surfaces: (0, 0)", "py": {"path": [0, 0], "tag": "geometry.surfaces"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_surfaces", "wl": {"path": [0, 0], "tag": "surfaces.chart"}, "wl_line": "37-46,56-58"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_surfaces:10", "kind": "value", "normalized": false, "object": "region surfaces: (0, 1)", "py": {"path": [0, 1], "tag": "geometry.surfaces"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_surfaces", "wl": {"path": [0, 1], "tag": "surfaces.chart"}, "wl_line": "37-46,56-58"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_surfaces:11", "kind": "value", "normalized": false, "object": "region surfaces: (0, 2)", "py": {"path": [0, 2], "tag": "geometry.surfaces"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_surfaces", "wl": {"path": [0, 2], "tag": "surfaces.chart"}, "wl_line": "37-46,56-58"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_surfaces:12", "kind": "value", "normalized": false, "object": "region surfaces: (1, 0)", "py": {"path": [1, 0], "tag": "geometry.surfaces"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_surfaces", "wl": {"path": [1, 0], "tag": "surfaces.chart"}, "wl_line": "37-46,56-58"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_surfaces:13", "kind": "value", "normalized": false, "object": "region surfaces: (1, 1)", "py": {"path": [1, 1], "tag": "geometry.surfaces"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_surfaces", "wl": {"path": [1, 1], "tag": "surfaces.chart"}, "wl_line": "37-46,56-58"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_surfaces:14", "kind": "value", "normalized": false, "object": "region surfaces: (1, 2)", "py": {"path": [1, 2], "tag": "geometry.surfaces"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_surfaces", "wl": {"path": [1, 2], "tag": "surfaces.chart"}, "wl_line": "37-46,56-58"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_normal:15", "kind": "value", "normalized": false, "object": "region normal: (0, 0)", "py": {"path": [0, 0], "tag": "geometry.normal"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_normal", "wl": {"path": [0, 0], "tag": "surfaces.normal"}, "wl_line": "37-46,56-58"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_normal:16", "kind": "value", "normalized": false, "object": "region normal: (0, 1)", "py": {"path": [0, 1], "tag": "geometry.normal"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_normal", "wl": {"path": [0, 1], "tag": "surfaces.normal"}, "wl_line": "37-46,56-58"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_normal:17", "kind": "value", "normalized": false, "object": "region normal: (0, 2)", "py": {"path": [0, 2], "tag": "geometry.normal"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_normal", "wl": {"path": [0, 2], "tag": "surfaces.normal"}, "wl_line": "37-46,56-58"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_normal:18", "kind": "value", "normalized": false, "object": "region normal: (1, 0)", "py": {"path": [1, 0], "tag": "geometry.normal"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_normal", "wl": {"path": [1, 0], "tag": "surfaces.normal"}, "wl_line": "37-46,56-58"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_normal:19", "kind": "value", "normalized": false, "object": "region normal: (1, 1)", "py": {"path": [1, 1], "tag": "geometry.normal"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_normal", "wl": {"path": [1, 1], "tag": "surfaces.normal"}, "wl_line": "37-46,56-58"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_normal:20", "kind": "value", "normalized": false, "object": "region normal: (1, 2)", "py": {"path": [1, 2], "tag": "geometry.normal"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_normal", "wl": {"path": [1, 2], "tag": "surfaces.normal"}, "wl_line": "37-46,56-58"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_areaMeasure:21", "kind": "value", "normalized": false, "object": "region areaMeasure: (0,)", "py": {"path": [0], "tag": "geometry.areaMeasure"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_areaMeasure", "wl": {"path": [0], "tag": "surfaces.measure"}, "wl_line": "37-46,56-58"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_areaMeasure:22", "kind": "value", "normalized": false, "object": "region areaMeasure: (1,)", "py": {"path": [1], "tag": "geometry.areaMeasure"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_areaMeasure", "wl": {"path": [1], "tag": "surfaces.measure"}, "wl_line": "37-46,56-58"}}
+{"configuration_line": 1, "stored_binding": {"key": "geometry_volumeMeasure:23", "kind": "value", "normalized": false, "object": "region volumeMeasure: ()", "py": {"path": [], "tag": "geometry.volumeMeasure"}, "py_line": "51-54,64-68,74,114-117", "rule": "geometry_volumeMeasure", "wl": {"path": [], "tag": "volume.measure"}, "wl_line": "37-46,56-58"}}
+JSONL_LINE 123
+{"binding": "integral_definitions:2", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "Integral(rho**2*q(rho*sin(theta)*cos(phi) + Xc1(t), rho*sin(phi)*sin(theta) + Xc2(t), rho*cos(theta) + Xc3(t), t)*sin(theta), (rho, r_in(t), R(t)), (theta, 0, pi), (phi, 0, 2*pi))", "py_value": "Integral(rho**2*q(rho*sin(theta)*cos(phi) + Xc1(t), rho*sin(phi)*sin(theta) + Xc2(t), rho*cos(theta) + Xc3(t), t)*sin(theta), (rho, r_in(t), R(t)), (theta, 0, pi), (phi, 0, 2*pi))", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1825580040210061*pi/38960067240", "residual": "0", "stratum": "generic", "wl": "1825580040210061*pi/38960067240"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1416567786589496*pi/79543470615", "residual": "0", "stratum": "generic", "wl": "1416567786589496*pi/79543470615"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "31339926795924709*pi/350640605160", "residual": "0", "stratum": "generic", "wl": "31339926795924709*pi/350640605160"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1825580040210061*pi/38960067240", "residual": "0", "stratum": "center_velocity_zero", "wl": "1825580040210061*pi/38960067240"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1416567786589496*pi/79543470615", "residual": "0", "stratum": "center_velocity_zero", "wl": "1416567786589496*pi/79543470615"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "31339926795924709*pi/350640605160", "residual": "0", "stratum": "center_velocity_zero", "wl": "31339926795924709*pi/350640605160"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1825580040210061*pi/38960067240", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1825580040210061*pi/38960067240"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1416567786589496*pi/79543470615", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1416567786589496*pi/79543470615"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "31339926795924709*pi/350640605160", "residual": "0", "stratum": "radius_velocity_zero", "wl": "31339926795924709*pi/350640605160"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1825580040210061*pi/38960067240", "residual": "0", "stratum": "all_velocities_zero", "wl": "1825580040210061*pi/38960067240"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1416567786589496*pi/79543470615", "residual": "0", "stratum": "all_velocities_zero", "wl": "1416567786589496*pi/79543470615"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "31339926795924709*pi/350640605160", "residual": "0", "stratum": "all_velocities_zero", "wl": "31339926795924709*pi/350640605160"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1825580040210061*pi/38960067240", "residual": "0", "stratum": "count_zero", "wl": "1825580040210061*pi/38960067240"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1416567786589496*pi/79543470615", "residual": "0", "stratum": "count_zero", "wl": "1416567786589496*pi/79543470615"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "31339926795924709*pi/350640605160", "residual": "0", "stratum": "count_zero", "wl": "31339926795924709*pi/350640605160"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "462997686020650719481*pi/10213599803342544", "residual": "0", "stratum": "generic", "wl": "462997686020650719481*pi/10213599803342544"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "17922492054465679328*pi/1158487014730983", "residual": "0", "stratum": "generic", "wl": "17922492054465679328*pi/1158487014730983"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "2950991576200468844945*pi/34470899336281086", "residual": "0", "stratum": "generic", "wl": "2950991576200468844945*pi/34470899336281086"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "462997686020650719481*pi/10213599803342544", "residual": "0", "stratum": "center_velocity_zero", "wl": "462997686020650719481*pi/10213599803342544"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "17922492054465679328*pi/1158487014730983", "residual": "0", "stratum": "center_velocity_zero", "wl": "17922492054465679328*pi/1158487014730983"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "2950991576200468844945*pi/34470899336281086", "residual": "0", "stratum": "center_velocity_zero", "wl": "2950991576200468844945*pi/34470899336281086"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "462997686020650719481*pi/10213599803342544", "residual": "0", "stratum": "radius_velocity_zero", "wl": "462997686020650719481*pi/10213599803342544"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "17922492054465679328*pi/1158487014730983", "residual": "0", "stratum": "radius_velocity_zero", "wl": "17922492054465679328*pi/1158487014730983"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "2950991576200468844945*pi/34470899336281086", "residual": "0", "stratum": "radius_velocity_zero", "wl": "2950991576200468844945*pi/34470899336281086"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "462997686020650719481*pi/10213599803342544", "residual": "0", "stratum": "all_velocities_zero", "wl": "462997686020650719481*pi/10213599803342544"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "17922492054465679328*pi/1158487014730983", "residual": "0", "stratum": "all_velocities_zero", "wl": "17922492054465679328*pi/1158487014730983"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "2950991576200468844945*pi/34470899336281086", "residual": "0", "stratum": "all_velocities_zero", "wl": "2950991576200468844945*pi/34470899336281086"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "462997686020650719481*pi/10213599803342544", "residual": "0", "stratum": "count_zero", "wl": "462997686020650719481*pi/10213599803342544"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "17922492054465679328*pi/1158487014730983", "residual": "0", "stratum": "count_zero", "wl": "17922492054465679328*pi/1158487014730983"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "2950991576200468844945*pi/34470899336281086", "residual": "0", "stratum": "count_zero", "wl": "2950991576200468844945*pi/34470899336281086"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "65182750525932997100836767353*pi/1309025610251405018058240", "residual": "0", "stratum": "generic", "wl": "65182750525932997100836767353*pi/1309025610251405018058240"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "751012414991604159466914176*pi/32479440416394091521555", "residual": "0", "stratum": "generic", "wl": "751012414991604159466914176*pi/32479440416394091521555"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "2089210755329237145086031553333*pi/21206214886072761292543488", "residual": "0", "stratum": "generic", "wl": "2089210755329237145086031553333*pi/21206214886072761292543488"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "65182750525932997100836767353*pi/1309025610251405018058240", "residual": "0", "stratum": "center_velocity_zero", "wl": "65182750525932997100836767353*pi/1309025610251405018058240"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "751012414991604159466914176*pi/32479440416394091521555", "residual": "0", "stratum": "center_velocity_zero", "wl": "751012414991604159466914176*pi/32479440416394091521555"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "2089210755329237145086031553333*pi/21206214886072761292543488", "residual": "0", "stratum": "center_velocity_zero", "wl": "2089210755329237145086031553333*pi/21206214886072761292543488"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "65182750525932997100836767353*pi/1309025610251405018058240", "residual": "0", "stratum": "radius_velocity_zero", "wl": "65182750525932997100836767353*pi/1309025610251405018058240"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "751012414991604159466914176*pi/32479440416394091521555", "residual": "0", "stratum": "radius_velocity_zero", "wl": "751012414991604159466914176*pi/32479440416394091521555"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "2089210755329237145086031553333*pi/21206214886072761292543488", "residual": "0", "stratum": "radius_velocity_zero", "wl": "2089210755329237145086031553333*pi/21206214886072761292543488"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "65182750525932997100836767353*pi/1309025610251405018058240", "residual": "0", "stratum": "all_velocities_zero", "wl": "65182750525932997100836767353*pi/1309025610251405018058240"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "751012414991604159466914176*pi/32479440416394091521555", "residual": "0", "stratum": "all_velocities_zero", "wl": "751012414991604159466914176*pi/32479440416394091521555"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "2089210755329237145086031553333*pi/21206214886072761292543488", "residual": "0", "stratum": "all_velocities_zero", "wl": "2089210755329237145086031553333*pi/21206214886072761292543488"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "65182750525932997100836767353*pi/1309025610251405018058240", "residual": "0", "stratum": "count_zero", "wl": "65182750525932997100836767353*pi/1309025610251405018058240"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "751012414991604159466914176*pi/32479440416394091521555", "residual": "0", "stratum": "count_zero", "wl": "751012414991604159466914176*pi/32479440416394091521555"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "2089210755329237145086031553333*pi/21206214886072761292543488", "residual": "0", "stratum": "count_zero", "wl": "2089210755329237145086031553333*pi/21206214886072761292543488"}], "wl_alias_resolved": "Integral(rho**2*q(rho*sin(theta)*cos(phi) + Xc1(t), rho*sin(phi)*sin(theta) + Xc2(t), rho*cos(theta) + Xc3(t), t)*sin(theta), (rho, r_in(t), R(t)), (theta, 0, pi), (phi, 0, 2*pi))", "wl_value": "Integral(rho**2*q(rho*sin(theta)*cos(phi) + Xc1(t), rho*sin(phi)*sin(theta) + Xc2(t), rho*cos(theta) + Xc3(t), t)*sin(theta), (rho, r_in(t), R(t)), (theta, 0, pi), (phi, 0, 2*pi))"}
+JSONL_LINE 127
+{"binding": "integral_definitions:3", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "Integral(q(theta, phi, t)*r_in(t)**2*sin(theta), (theta, 0, pi), (phi, 0, 2*pi))", "py_value": "Integral(q(theta, phi, t)*r_in(t)**2*sin(theta), (theta, 0, pi), (phi, 0, 2*pi))", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "pi*(17311 + 5136*pi**2 + 94170*pi)/16", "residual": "0", "stratum": "generic", "wl": "pi*(17311 + 5136*pi**2 + 94170*pi)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "4*pi*(-9624 + 2996*pi**2 + 54471*pi)/21", "residual": "0", "stratum": "generic", "wl": "4*pi*(-9624 + 2996*pi**2 + 54471*pi)/21"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "25*pi*(52615 + 11556*pi**2 + 212202*pi)/324", "residual": "0", "stratum": "generic", "wl": "25*pi*(52615 + 11556*pi**2 + 212202*pi)/324"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "pi*(17311 + 5136*pi**2 + 94170*pi)/16", "residual": "0", "stratum": "center_velocity_zero", "wl": "pi*(17311 + 5136*pi**2 + 94170*pi)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "4*pi*(-9624 + 2996*pi**2 + 54471*pi)/21", "residual": "0", "stratum": "center_velocity_zero", "wl": "4*pi*(-9624 + 2996*pi**2 + 54471*pi)/21"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "25*pi*(52615 + 11556*pi**2 + 212202*pi)/324", "residual": "0", "stratum": "center_velocity_zero", "wl": "25*pi*(52615 + 11556*pi**2 + 212202*pi)/324"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "pi*(17311 + 5136*pi**2 + 94170*pi)/16", "residual": "0", "stratum": "radius_velocity_zero", "wl": "pi*(17311 + 5136*pi**2 + 94170*pi)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "4*pi*(-9624 + 2996*pi**2 + 54471*pi)/21", "residual": "0", "stratum": "radius_velocity_zero", "wl": "4*pi*(-9624 + 2996*pi**2 + 54471*pi)/21"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "25*pi*(52615 + 11556*pi**2 + 212202*pi)/324", "residual": "0", "stratum": "radius_velocity_zero", "wl": "25*pi*(52615 + 11556*pi**2 + 212202*pi)/324"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "pi*(17311 + 5136*pi**2 + 94170*pi)/16", "residual": "0", "stratum": "all_velocities_zero", "wl": "pi*(17311 + 5136*pi**2 + 94170*pi)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "4*pi*(-9624 + 2996*pi**2 + 54471*pi)/21", "residual": "0", "stratum": "all_velocities_zero", "wl": "4*pi*(-9624 + 2996*pi**2 + 54471*pi)/21"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "25*pi*(52615 + 11556*pi**2 + 212202*pi)/324", "residual": "0", "stratum": "all_velocities_zero", "wl": "25*pi*(52615 + 11556*pi**2 + 212202*pi)/324"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "pi*(17311 + 5136*pi**2 + 94170*pi)/16", "residual": "0", "stratum": "count_zero", "wl": "pi*(17311 + 5136*pi**2 + 94170*pi)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "4*pi*(-9624 + 2996*pi**2 + 54471*pi)/21", "residual": "0", "stratum": "count_zero", "wl": "4*pi*(-9624 + 2996*pi**2 + 54471*pi)/21"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "25*pi*(52615 + 11556*pi**2 + 212202*pi)/324", "residual": "0", "stratum": "count_zero", "wl": "25*pi*(52615 + 11556*pi**2 + 212202*pi)/324"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/336", "residual": "0", "stratum": "generic", "wl": "pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/336"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "2*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/7203", "residual": "0", "stratum": "generic", "wl": "2*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/7203"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "25*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824", "residual": "0", "stratum": "generic", "wl": "25*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/336", "residual": "0", "stratum": "center_velocity_zero", "wl": "pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/336"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "2*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/7203", "residual": "0", "stratum": "center_velocity_zero", "wl": "2*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/7203"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "25*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824", "residual": "0", "stratum": "center_velocity_zero", "wl": "25*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/336", "residual": "0", "stratum": "radius_velocity_zero", "wl": "pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/336"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "2*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/7203", "residual": "0", "stratum": "radius_velocity_zero", "wl": "2*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/7203"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "25*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824", "residual": "0", "stratum": "radius_velocity_zero", "wl": "25*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/336", "residual": "0", "stratum": "all_velocities_zero", "wl": "pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/336"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "2*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/7203", "residual": "0", "stratum": "all_velocities_zero", "wl": "2*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/7203"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "25*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824", "residual": "0", "stratum": "all_velocities_zero", "wl": "25*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/336", "residual": "0", "stratum": "count_zero", "wl": "pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/336"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "2*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/7203", "residual": "0", "stratum": "count_zero", "wl": "2*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/7203"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "25*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824", "residual": "0", "stratum": "count_zero", "wl": "25*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/221760", "residual": "0", "stratum": "generic", "wl": "pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/221760"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "2*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385", "residual": "0", "stratum": "generic", "wl": "2*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "5*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/4041576", "residual": "0", "stratum": "generic", "wl": "5*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/4041576"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/221760", "residual": "0", "stratum": "center_velocity_zero", "wl": "pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/221760"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "2*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385", "residual": "0", "stratum": "center_velocity_zero", "wl": "2*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "5*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/4041576", "residual": "0", "stratum": "center_velocity_zero", "wl": "5*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/4041576"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/221760", "residual": "0", "stratum": "radius_velocity_zero", "wl": "pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/221760"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "2*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385", "residual": "0", "stratum": "radius_velocity_zero", "wl": "2*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "5*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/4041576", "residual": "0", "stratum": "radius_velocity_zero", "wl": "5*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/4041576"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/221760", "residual": "0", "stratum": "all_velocities_zero", "wl": "pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/221760"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "2*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385", "residual": "0", "stratum": "all_velocities_zero", "wl": "2*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "5*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/4041576", "residual": "0", "stratum": "all_velocities_zero", "wl": "5*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/4041576"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/221760", "residual": "0", "stratum": "count_zero", "wl": "pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/221760"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "2*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385", "residual": "0", "stratum": "count_zero", "wl": "2*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "5*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/4041576", "residual": "0", "stratum": "count_zero", "wl": "5*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/4041576"}], "wl_alias_resolved": "Integral(q(theta, phi, t)*r_in(t)**2*sin(theta), (theta, 0, pi), (phi, 0, 2*pi))", "wl_value": "Integral(q(theta, phi, t)*r_in(t)**2*sin(theta), (theta, 0, pi), (phi, 0, 2*pi))"}
+JSONL_LINE 131
+{"binding": "integral_definitions:4", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "Integral(R(t)**2*q(theta, phi, t)*sin(theta), (theta, 0, pi), (phi, 0, 2*pi))", "py_value": "Integral(R(t)**2*q(theta, phi, t)*sin(theta), (theta, 0, pi), (phi, 0, 2*pi))", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "121*pi*(17311 + 5136*pi**2 + 94170*pi)/144", "residual": "0", "stratum": "generic", "wl": "121*pi*(17311 + 5136*pi**2 + 94170*pi)/144"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "12*pi*(-9624 + 2996*pi**2 + 54471*pi)/7", "residual": "0", "stratum": "generic", "wl": "12*pi*(-9624 + 2996*pi**2 + 54471*pi)/7"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "169*pi*(52615 + 11556*pi**2 + 212202*pi)/324", "residual": "0", "stratum": "generic", "wl": "169*pi*(52615 + 11556*pi**2 + 212202*pi)/324"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "121*pi*(17311 + 5136*pi**2 + 94170*pi)/144", "residual": "0", "stratum": "center_velocity_zero", "wl": "121*pi*(17311 + 5136*pi**2 + 94170*pi)/144"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "12*pi*(-9624 + 2996*pi**2 + 54471*pi)/7", "residual": "0", "stratum": "center_velocity_zero", "wl": "12*pi*(-9624 + 2996*pi**2 + 54471*pi)/7"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "169*pi*(52615 + 11556*pi**2 + 212202*pi)/324", "residual": "0", "stratum": "center_velocity_zero", "wl": "169*pi*(52615 + 11556*pi**2 + 212202*pi)/324"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "121*pi*(17311 + 5136*pi**2 + 94170*pi)/144", "residual": "0", "stratum": "radius_velocity_zero", "wl": "121*pi*(17311 + 5136*pi**2 + 94170*pi)/144"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "12*pi*(-9624 + 2996*pi**2 + 54471*pi)/7", "residual": "0", "stratum": "radius_velocity_zero", "wl": "12*pi*(-9624 + 2996*pi**2 + 54471*pi)/7"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "169*pi*(52615 + 11556*pi**2 + 212202*pi)/324", "residual": "0", "stratum": "radius_velocity_zero", "wl": "169*pi*(52615 + 11556*pi**2 + 212202*pi)/324"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "121*pi*(17311 + 5136*pi**2 + 94170*pi)/144", "residual": "0", "stratum": "all_velocities_zero", "wl": "121*pi*(17311 + 5136*pi**2 + 94170*pi)/144"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "12*pi*(-9624 + 2996*pi**2 + 54471*pi)/7", "residual": "0", "stratum": "all_velocities_zero", "wl": "12*pi*(-9624 + 2996*pi**2 + 54471*pi)/7"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "169*pi*(52615 + 11556*pi**2 + 212202*pi)/324", "residual": "0", "stratum": "all_velocities_zero", "wl": "169*pi*(52615 + 11556*pi**2 + 212202*pi)/324"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "121*pi*(17311 + 5136*pi**2 + 94170*pi)/144", "residual": "0", "stratum": "count_zero", "wl": "121*pi*(17311 + 5136*pi**2 + 94170*pi)/144"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "12*pi*(-9624 + 2996*pi**2 + 54471*pi)/7", "residual": "0", "stratum": "count_zero", "wl": "12*pi*(-9624 + 2996*pi**2 + 54471*pi)/7"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "169*pi*(52615 + 11556*pi**2 + 212202*pi)/324", "residual": "0", "stratum": "count_zero", "wl": "169*pi*(52615 + 11556*pi**2 + 212202*pi)/324"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "121*pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/3024", "residual": "0", "stratum": "generic", "wl": "121*pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/3024"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "6*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/2401", "residual": "0", "stratum": "generic", "wl": "6*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/2401"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "169*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824", "residual": "0", "stratum": "generic", "wl": "169*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "121*pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/3024", "residual": "0", "stratum": "center_velocity_zero", "wl": "121*pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/3024"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "6*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/2401", "residual": "0", "stratum": "center_velocity_zero", "wl": "6*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/2401"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "169*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824", "residual": "0", "stratum": "center_velocity_zero", "wl": "169*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "121*pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/3024", "residual": "0", "stratum": "radius_velocity_zero", "wl": "121*pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/3024"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "6*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/2401", "residual": "0", "stratum": "radius_velocity_zero", "wl": "6*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/2401"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "169*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824", "residual": "0", "stratum": "radius_velocity_zero", "wl": "169*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "121*pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/3024", "residual": "0", "stratum": "all_velocities_zero", "wl": "121*pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/3024"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "6*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/2401", "residual": "0", "stratum": "all_velocities_zero", "wl": "6*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/2401"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "169*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824", "residual": "0", "stratum": "all_velocities_zero", "wl": "169*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "121*pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/3024", "residual": "0", "stratum": "count_zero", "wl": "121*pi*(317978 + 11826*pi**3 + 128646*pi**2 + 1941435*pi)/3024"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "6*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/2401", "residual": "0", "stratum": "count_zero", "wl": "6*pi*(-7730010 + 225351*pi**3 + 2451421*pi**2 + 36654009*pi)/2401"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "169*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824", "residual": "0", "stratum": "count_zero", "wl": "169*pi*(159651*pi**3 + 6065722 + 1736721*pi**2 + 26252748*pi)/40824"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "11*pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/181440", "residual": "0", "stratum": "generic", "wl": "11*pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/181440"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "18*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385", "residual": "0", "stratum": "generic", "wl": "18*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "169*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/20207880", "residual": "0", "stratum": "generic", "wl": "169*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/20207880"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "11*pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/181440", "residual": "0", "stratum": "center_velocity_zero", "wl": "11*pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/181440"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "18*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385", "residual": "0", "stratum": "center_velocity_zero", "wl": "18*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "169*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/20207880", "residual": "0", "stratum": "center_velocity_zero", "wl": "169*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/20207880"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "11*pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/181440", "residual": "0", "stratum": "radius_velocity_zero", "wl": "11*pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/181440"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "18*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385", "residual": "0", "stratum": "radius_velocity_zero", "wl": "18*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "169*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/20207880", "residual": "0", "stratum": "radius_velocity_zero", "wl": "169*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/20207880"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "11*pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/181440", "residual": "0", "stratum": "all_velocities_zero", "wl": "11*pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/181440"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "18*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385", "residual": "0", "stratum": "all_velocities_zero", "wl": "18*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "169*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/20207880", "residual": "0", "stratum": "all_velocities_zero", "wl": "169*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/20207880"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "11*pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/181440", "residual": "0", "stratum": "count_zero", "wl": "11*pi*(322743745 + 76408920*pi**2 + 16658136*pi**4 + 1290314340*pi)/181440"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "18*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385", "residual": "0", "stratum": "count_zero", "wl": "18*pi*(-556683480 + 279524420*pi**2 + 61722507*pi**4 + 4735336235*pi)/924385"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "169*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/20207880", "residual": "0", "stratum": "count_zero", "wl": "169*pi*(4132998500 + 775400850*pi**2 + 168663627*pi**4 + 13086796590*pi)/20207880"}], "wl_alias_resolved": "Integral(R(t)**2*q(theta, phi, t)*sin(theta), (theta, 0, pi), (phi, 0, 2*pi))", "wl_value": "Integral(R(t)**2*q(theta, phi, t)*sin(theta), (theta, 0, pi), (phi, 0, 2*pi))"}
+JSONL_LINE 135
+{"binding": "supplied_material:5", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "-a_minus(x1, x2, x3, t)*n1(x1, x2, x3, t) + a_plus(x1, x2, x3, t)*n3(x1, x2, x3, t) + Derivative(F1(x1, x2, x3, t), x1) + Derivative(F2(x1, x2, x3, t), x2) + Derivative(F3(x1, x2, x3, t), x3) + Derivative(Sigma(x1, x2, x3, t), t)", "py_value": "-a_minus(x1, x2, x3, t)*n1(x1, x2, x3, t) + a_plus(x1, x2, x3, t)*n3(x1, x2, x3, t) + Derivative(F1(x1, x2, x3, t), x1) + Derivative(F2(x1, x2, x3, t), x2) + Derivative(F3(x1, x2, x3, t), x3) + Derivative(Sigma(x1, x2, x3, t), t)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "12595385968691/740880000", "residual": "0", "stratum": "generic", "wl": "12595385968691/740880000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "3328190242878388645/118087220224512", "residual": "0", "stratum": "generic", "wl": "3328190242878388645/118087220224512"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "17954637703/1093500", "residual": "0", "stratum": "generic", "wl": "17954637703/1093500"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "12595385968691/740880000", "residual": "0", "stratum": "center_velocity_zero", "wl": "12595385968691/740880000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "3328190242878388645/118087220224512", "residual": "0", "stratum": "center_velocity_zero", "wl": "3328190242878388645/118087220224512"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "17954637703/1093500", "residual": "0", "stratum": "center_velocity_zero", "wl": "17954637703/1093500"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "12595385968691/740880000", "residual": "0", "stratum": "radius_velocity_zero", "wl": "12595385968691/740880000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "3328190242878388645/118087220224512", "residual": "0", "stratum": "radius_velocity_zero", "wl": "3328190242878388645/118087220224512"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "17954637703/1093500", "residual": "0", "stratum": "radius_velocity_zero", "wl": "17954637703/1093500"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "12595385968691/740880000", "residual": "0", "stratum": "all_velocities_zero", "wl": "12595385968691/740880000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "3328190242878388645/118087220224512", "residual": "0", "stratum": "all_velocities_zero", "wl": "3328190242878388645/118087220224512"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "17954637703/1093500", "residual": "0", "stratum": "all_velocities_zero", "wl": "17954637703/1093500"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "12595385968691/740880000", "residual": "0", "stratum": "count_zero", "wl": "12595385968691/740880000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "3328190242878388645/118087220224512", "residual": "0", "stratum": "count_zero", "wl": "3328190242878388645/118087220224512"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "17954637703/1093500", "residual": "0", "stratum": "count_zero", "wl": "17954637703/1093500"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "370778207555866143979/10758502218240000", "residual": "0", "stratum": "generic", "wl": "370778207555866143979/10758502218240000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "5137545648745542343652075929/158085814149943837065216", "residual": "0", "stratum": "generic", "wl": "5137545648745542343652075929/158085814149943837065216"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-3417394818087679/116252718750", "residual": "0", "stratum": "generic", "wl": "-3417394818087679/116252718750"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "370778207555866143979/10758502218240000", "residual": "0", "stratum": "center_velocity_zero", "wl": "370778207555866143979/10758502218240000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "5137545648745542343652075929/158085814149943837065216", "residual": "0", "stratum": "center_velocity_zero", "wl": "5137545648745542343652075929/158085814149943837065216"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-3417394818087679/116252718750", "residual": "0", "stratum": "center_velocity_zero", "wl": "-3417394818087679/116252718750"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "370778207555866143979/10758502218240000", "residual": "0", "stratum": "radius_velocity_zero", "wl": "370778207555866143979/10758502218240000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "5137545648745542343652075929/158085814149943837065216", "residual": "0", "stratum": "radius_velocity_zero", "wl": "5137545648745542343652075929/158085814149943837065216"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-3417394818087679/116252718750", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-3417394818087679/116252718750"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "370778207555866143979/10758502218240000", "residual": "0", "stratum": "all_velocities_zero", "wl": "370778207555866143979/10758502218240000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "5137545648745542343652075929/158085814149943837065216", "residual": "0", "stratum": "all_velocities_zero", "wl": "5137545648745542343652075929/158085814149943837065216"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-3417394818087679/116252718750", "residual": "0", "stratum": "all_velocities_zero", "wl": "-3417394818087679/116252718750"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "370778207555866143979/10758502218240000", "residual": "0", "stratum": "count_zero", "wl": "370778207555866143979/10758502218240000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "5137545648745542343652075929/158085814149943837065216", "residual": "0", "stratum": "count_zero", "wl": "5137545648745542343652075929/158085814149943837065216"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-3417394818087679/116252718750", "residual": "0", "stratum": "count_zero", "wl": "-3417394818087679/116252718750"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "4294776315021394458488717371/86982490434470400000000", "residual": "0", "stratum": "generic", "wl": "4294776315021394458488717371/86982490434470400000000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-597948090087486932407233531416996089/43730239195985113616678161219584", "residual": "0", "stratum": "generic", "wl": "-597948090087486932407233531416996089/43730239195985113616678161219584"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-2528989255765454325077/70309644300000000", "residual": "0", "stratum": "generic", "wl": "-2528989255765454325077/70309644300000000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "4294776315021394458488717371/86982490434470400000000", "residual": "0", "stratum": "center_velocity_zero", "wl": "4294776315021394458488717371/86982490434470400000000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-597948090087486932407233531416996089/43730239195985113616678161219584", "residual": "0", "stratum": "center_velocity_zero", "wl": "-597948090087486932407233531416996089/43730239195985113616678161219584"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-2528989255765454325077/70309644300000000", "residual": "0", "stratum": "center_velocity_zero", "wl": "-2528989255765454325077/70309644300000000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "4294776315021394458488717371/86982490434470400000000", "residual": "0", "stratum": "radius_velocity_zero", "wl": "4294776315021394458488717371/86982490434470400000000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-597948090087486932407233531416996089/43730239195985113616678161219584", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-597948090087486932407233531416996089/43730239195985113616678161219584"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-2528989255765454325077/70309644300000000", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-2528989255765454325077/70309644300000000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "4294776315021394458488717371/86982490434470400000000", "residual": "0", "stratum": "all_velocities_zero", "wl": "4294776315021394458488717371/86982490434470400000000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-597948090087486932407233531416996089/43730239195985113616678161219584", "residual": "0", "stratum": "all_velocities_zero", "wl": "-597948090087486932407233531416996089/43730239195985113616678161219584"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-2528989255765454325077/70309644300000000", "residual": "0", "stratum": "all_velocities_zero", "wl": "-2528989255765454325077/70309644300000000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "4294776315021394458488717371/86982490434470400000000", "residual": "0", "stratum": "count_zero", "wl": "4294776315021394458488717371/86982490434470400000000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-597948090087486932407233531416996089/43730239195985113616678161219584", "residual": "0", "stratum": "count_zero", "wl": "-597948090087486932407233531416996089/43730239195985113616678161219584"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-2528989255765454325077/70309644300000000", "residual": "0", "stratum": "count_zero", "wl": "-2528989255765454325077/70309644300000000"}], "wl_alias_resolved": "-a_minus(x1, x2, x3, t)*n1(x1, x2, x3, t) + a_plus(x1, x2, x3, t)*n3(x1, x2, x3, t) + Derivative(F1(x1, x2, x3, t), x1) + Derivative(F2(x1, x2, x3, t), x2) + Derivative(F3(x1, x2, x3, t), x3) + Derivative(Sigma(x1, x2, x3, t), t)", "wl_value": "-a_minus(x1, x2, x3, t)*n1(x1, x2, x3, t) + a_plus(x1, x2, x3, t)*n3(x1, x2, x3, t) + Derivative(F1(x1, x2, x3, t), x1) + Derivative(F2(x1, x2, x3, t), x2) + Derivative(F3(x1, x2, x3, t), x3) + Derivative(Sigma(x1, x2, x3, t), t)"}
+JSONL_LINE 139
+{"binding": "supplied_momentum:6", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "-f1(x1, x2, x3, t) + Derivative(G1(x1, x2, x3, t), t) + Derivative(Pi11(x1, x2, x3, t), x1) + Derivative(Pi12(x1, x2, x3, t), x2) + Derivative(Pi13(x1, x2, x3, t), x3)", "py_value": "-f1(x1, x2, x3, t) + Derivative(G1(x1, x2, x3, t), t) + Derivative(Pi11(x1, x2, x3, t), x1) + Derivative(Pi12(x1, x2, x3, t), x2) + Derivative(Pi13(x1, x2, x3, t), x3)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "565696681/58800", "residual": "0", "stratum": "generic", "wl": "565696681/58800"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "283364386985/30735936", "residual": "0", "stratum": "generic", "wl": "283364386985/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "312295/36", "residual": "0", "stratum": "generic", "wl": "312295/36"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "565696681/58800", "residual": "0", "stratum": "center_velocity_zero", "wl": "565696681/58800"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "283364386985/30735936", "residual": "0", "stratum": "center_velocity_zero", "wl": "283364386985/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "312295/36", "residual": "0", "stratum": "center_velocity_zero", "wl": "312295/36"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "565696681/58800", "residual": "0", "stratum": "radius_velocity_zero", "wl": "565696681/58800"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "283364386985/30735936", "residual": "0", "stratum": "radius_velocity_zero", "wl": "283364386985/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "312295/36", "residual": "0", "stratum": "radius_velocity_zero", "wl": "312295/36"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "565696681/58800", "residual": "0", "stratum": "all_velocities_zero", "wl": "565696681/58800"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "283364386985/30735936", "residual": "0", "stratum": "all_velocities_zero", "wl": "283364386985/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "312295/36", "residual": "0", "stratum": "all_velocities_zero", "wl": "312295/36"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "565696681/58800", "residual": "0", "stratum": "count_zero", "wl": "565696681/58800"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "283364386985/30735936", "residual": "0", "stratum": "count_zero", "wl": "283364386985/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "312295/36", "residual": "0", "stratum": "count_zero", "wl": "312295/36"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "798269111/84000", "residual": "0", "stratum": "generic", "wl": "798269111/84000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "10904730596907667/1192800204288", "residual": "0", "stratum": "generic", "wl": "10904730596907667/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "14620841503/1701000", "residual": "0", "stratum": "generic", "wl": "14620841503/1701000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "798269111/84000", "residual": "0", "stratum": "center_velocity_zero", "wl": "798269111/84000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "10904730596907667/1192800204288", "residual": "0", "stratum": "center_velocity_zero", "wl": "10904730596907667/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "14620841503/1701000", "residual": "0", "stratum": "center_velocity_zero", "wl": "14620841503/1701000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "798269111/84000", "residual": "0", "stratum": "radius_velocity_zero", "wl": "798269111/84000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "10904730596907667/1192800204288", "residual": "0", "stratum": "radius_velocity_zero", "wl": "10904730596907667/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "14620841503/1701000", "residual": "0", "stratum": "radius_velocity_zero", "wl": "14620841503/1701000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "798269111/84000", "residual": "0", "stratum": "all_velocities_zero", "wl": "798269111/84000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "10904730596907667/1192800204288", "residual": "0", "stratum": "all_velocities_zero", "wl": "10904730596907667/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "14620841503/1701000", "residual": "0", "stratum": "all_velocities_zero", "wl": "14620841503/1701000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "798269111/84000", "residual": "0", "stratum": "count_zero", "wl": "798269111/84000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "10904730596907667/1192800204288", "residual": "0", "stratum": "count_zero", "wl": "10904730596907667/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "14620841503/1701000", "residual": "0", "stratum": "count_zero", "wl": "14620841503/1701000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "22979946003164383/2396005920000", "residual": "0", "stratum": "generic", "wl": "22979946003164383/2396005920000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "3445819482066057527/367382462920704", "residual": "0", "stratum": "generic", "wl": "3445819482066057527/367382462920704"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "6168525402949/721710000", "residual": "0", "stratum": "generic", "wl": "6168525402949/721710000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "22979946003164383/2396005920000", "residual": "0", "stratum": "center_velocity_zero", "wl": "22979946003164383/2396005920000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "3445819482066057527/367382462920704", "residual": "0", "stratum": "center_velocity_zero", "wl": "3445819482066057527/367382462920704"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "6168525402949/721710000", "residual": "0", "stratum": "center_velocity_zero", "wl": "6168525402949/721710000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "22979946003164383/2396005920000", "residual": "0", "stratum": "radius_velocity_zero", "wl": "22979946003164383/2396005920000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "3445819482066057527/367382462920704", "residual": "0", "stratum": "radius_velocity_zero", "wl": "3445819482066057527/367382462920704"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "6168525402949/721710000", "residual": "0", "stratum": "radius_velocity_zero", "wl": "6168525402949/721710000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "22979946003164383/2396005920000", "residual": "0", "stratum": "all_velocities_zero", "wl": "22979946003164383/2396005920000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "3445819482066057527/367382462920704", "residual": "0", "stratum": "all_velocities_zero", "wl": "3445819482066057527/367382462920704"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "6168525402949/721710000", "residual": "0", "stratum": "all_velocities_zero", "wl": "6168525402949/721710000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "22979946003164383/2396005920000", "residual": "0", "stratum": "count_zero", "wl": "22979946003164383/2396005920000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "3445819482066057527/367382462920704", "residual": "0", "stratum": "count_zero", "wl": "3445819482066057527/367382462920704"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "6168525402949/721710000", "residual": "0", "stratum": "count_zero", "wl": "6168525402949/721710000"}], "wl_alias_resolved": "-f1(x1, x2, x3, t) + Derivative(G1(x1, x2, x3, t), t) + Derivative(Pi11(x1, x2, x3, t), x1) + Derivative(Pi12(x1, x2, x3, t), x2) + Derivative(Pi13(x1, x2, x3, t), x3)", "wl_value": "-f1(x1, x2, x3, t) + Derivative(G1(x1, x2, x3, t), t) + Derivative(Pi11(x1, x2, x3, t), x1) + Derivative(Pi12(x1, x2, x3, t), x2) + Derivative(Pi13(x1, x2, x3, t), x3)"}
+JSONL_LINE 143
+{"binding": "supplied_momentum:7", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "-f2(x1, x2, x3, t) + Derivative(G2(x1, x2, x3, t), t) + Derivative(Pi21(x1, x2, x3, t), x1) + Derivative(Pi22(x1, x2, x3, t), x2) + Derivative(Pi23(x1, x2, x3, t), x3)", "py_value": "-f2(x1, x2, x3, t) + Derivative(G2(x1, x2, x3, t), t) + Derivative(Pi21(x1, x2, x3, t), x1) + Derivative(Pi22(x1, x2, x3, t), x2) + Derivative(Pi23(x1, x2, x3, t), x3)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "40275719/4200", "residual": "0", "stratum": "generic", "wl": "40275719/4200"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "283138646605/30735936", "residual": "0", "stratum": "generic", "wl": "283138646605/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "2574053/300", "residual": "0", "stratum": "generic", "wl": "2574053/300"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "40275719/4200", "residual": "0", "stratum": "center_velocity_zero", "wl": "40275719/4200"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "283138646605/30735936", "residual": "0", "stratum": "center_velocity_zero", "wl": "283138646605/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "2574053/300", "residual": "0", "stratum": "center_velocity_zero", "wl": "2574053/300"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "40275719/4200", "residual": "0", "stratum": "radius_velocity_zero", "wl": "40275719/4200"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "283138646605/30735936", "residual": "0", "stratum": "radius_velocity_zero", "wl": "283138646605/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "2574053/300", "residual": "0", "stratum": "radius_velocity_zero", "wl": "2574053/300"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "40275719/4200", "residual": "0", "stratum": "all_velocities_zero", "wl": "40275719/4200"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "283138646605/30735936", "residual": "0", "stratum": "all_velocities_zero", "wl": "283138646605/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "2574053/300", "residual": "0", "stratum": "all_velocities_zero", "wl": "2574053/300"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "40275719/4200", "residual": "0", "stratum": "count_zero", "wl": "40275719/4200"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "283138646605/30735936", "residual": "0", "stratum": "count_zero", "wl": "283138646605/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "2574053/300", "residual": "0", "stratum": "count_zero", "wl": "2574053/300"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "4999248976817/518616000", "residual": "0", "stratum": "generic", "wl": "4999248976817/518616000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "11104568917386617/1192800204288", "residual": "0", "stratum": "generic", "wl": "11104568917386617/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "22229209091/2551500", "residual": "0", "stratum": "generic", "wl": "22229209091/2551500"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "4999248976817/518616000", "residual": "0", "stratum": "center_velocity_zero", "wl": "4999248976817/518616000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "11104568917386617/1192800204288", "residual": "0", "stratum": "center_velocity_zero", "wl": "11104568917386617/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "22229209091/2551500", "residual": "0", "stratum": "center_velocity_zero", "wl": "22229209091/2551500"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "4999248976817/518616000", "residual": "0", "stratum": "radius_velocity_zero", "wl": "4999248976817/518616000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "11104568917386617/1192800204288", "residual": "0", "stratum": "radius_velocity_zero", "wl": "11104568917386617/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "22229209091/2551500", "residual": "0", "stratum": "radius_velocity_zero", "wl": "22229209091/2551500"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "4999248976817/518616000", "residual": "0", "stratum": "all_velocities_zero", "wl": "4999248976817/518616000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "11104568917386617/1192800204288", "residual": "0", "stratum": "all_velocities_zero", "wl": "11104568917386617/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "22229209091/2551500", "residual": "0", "stratum": "all_velocities_zero", "wl": "22229209091/2551500"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "4999248976817/518616000", "residual": "0", "stratum": "count_zero", "wl": "4999248976817/518616000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "11104568917386617/1192800204288", "residual": "0", "stratum": "count_zero", "wl": "11104568917386617/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "22229209091/2551500", "residual": "0", "stratum": "count_zero", "wl": "22229209091/2551500"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "381549276250531/39933432000", "residual": "0", "stratum": "generic", "wl": "381549276250531/39933432000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "2170287038980674349/236174440449024", "residual": "0", "stratum": "generic", "wl": "2170287038980674349/236174440449024"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "14630195193007/1683990000", "residual": "0", "stratum": "generic", "wl": "14630195193007/1683990000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "381549276250531/39933432000", "residual": "0", "stratum": "center_velocity_zero", "wl": "381549276250531/39933432000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "2170287038980674349/236174440449024", "residual": "0", "stratum": "center_velocity_zero", "wl": "2170287038980674349/236174440449024"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "14630195193007/1683990000", "residual": "0", "stratum": "center_velocity_zero", "wl": "14630195193007/1683990000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "381549276250531/39933432000", "residual": "0", "stratum": "radius_velocity_zero", "wl": "381549276250531/39933432000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "2170287038980674349/236174440449024", "residual": "0", "stratum": "radius_velocity_zero", "wl": "2170287038980674349/236174440449024"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "14630195193007/1683990000", "residual": "0", "stratum": "radius_velocity_zero", "wl": "14630195193007/1683990000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "381549276250531/39933432000", "residual": "0", "stratum": "all_velocities_zero", "wl": "381549276250531/39933432000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "2170287038980674349/236174440449024", "residual": "0", "stratum": "all_velocities_zero", "wl": "2170287038980674349/236174440449024"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "14630195193007/1683990000", "residual": "0", "stratum": "all_velocities_zero", "wl": "14630195193007/1683990000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "381549276250531/39933432000", "residual": "0", "stratum": "count_zero", "wl": "381549276250531/39933432000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "2170287038980674349/236174440449024", "residual": "0", "stratum": "count_zero", "wl": "2170287038980674349/236174440449024"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "14630195193007/1683990000", "residual": "0", "stratum": "count_zero", "wl": "14630195193007/1683990000"}], "wl_alias_resolved": "-f2(x1, x2, x3, t) + Derivative(G2(x1, x2, x3, t), t) + Derivative(Pi21(x1, x2, x3, t), x1) + Derivative(Pi22(x1, x2, x3, t), x2) + Derivative(Pi23(x1, x2, x3, t), x3)", "wl_value": "-f2(x1, x2, x3, t) + Derivative(G2(x1, x2, x3, t), t) + Derivative(Pi21(x1, x2, x3, t), x1) + Derivative(Pi22(x1, x2, x3, t), x2) + Derivative(Pi23(x1, x2, x3, t), x3)"}
+JSONL_LINE 147
+{"binding": "supplied_momentum:8", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "-f3(x1, x2, x3, t) + Derivative(G3(x1, x2, x3, t), t) + Derivative(Pi31(x1, x2, x3, t), x1) + Derivative(Pi32(x1, x2, x3, t), x2) + Derivative(Pi33(x1, x2, x3, t), x3)", "py_value": "-f3(x1, x2, x3, t) + Derivative(G3(x1, x2, x3, t), t) + Derivative(Pi31(x1, x2, x3, t), x1) + Derivative(Pi32(x1, x2, x3, t), x2) + Derivative(Pi33(x1, x2, x3, t), x3)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "240467867/25200", "residual": "0", "stratum": "generic", "wl": "240467867/25200"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "281460167783/30735936", "residual": "0", "stratum": "generic", "wl": "281460167783/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "69483359/8100", "residual": "0", "stratum": "generic", "wl": "69483359/8100"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "240467867/25200", "residual": "0", "stratum": "center_velocity_zero", "wl": "240467867/25200"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "281460167783/30735936", "residual": "0", "stratum": "center_velocity_zero", "wl": "281460167783/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "69483359/8100", "residual": "0", "stratum": "center_velocity_zero", "wl": "69483359/8100"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "240467867/25200", "residual": "0", "stratum": "radius_velocity_zero", "wl": "240467867/25200"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "281460167783/30735936", "residual": "0", "stratum": "radius_velocity_zero", "wl": "281460167783/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "69483359/8100", "residual": "0", "stratum": "radius_velocity_zero", "wl": "69483359/8100"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "240467867/25200", "residual": "0", "stratum": "all_velocities_zero", "wl": "240467867/25200"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "281460167783/30735936", "residual": "0", "stratum": "all_velocities_zero", "wl": "281460167783/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "69483359/8100", "residual": "0", "stratum": "all_velocities_zero", "wl": "69483359/8100"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "240467867/25200", "residual": "0", "stratum": "count_zero", "wl": "240467867/25200"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "281460167783/30735936", "residual": "0", "stratum": "count_zero", "wl": "281460167783/30735936"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "69483359/8100", "residual": "0", "stratum": "count_zero", "wl": "69483359/8100"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1250602484281/129654000", "residual": "0", "stratum": "generic", "wl": "1250602484281/129654000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "10990546044840113/1192800204288", "residual": "0", "stratum": "generic", "wl": "10990546044840113/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "10998094733/1275750", "residual": "0", "stratum": "generic", "wl": "10998094733/1275750"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1250602484281/129654000", "residual": "0", "stratum": "center_velocity_zero", "wl": "1250602484281/129654000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "10990546044840113/1192800204288", "residual": "0", "stratum": "center_velocity_zero", "wl": "10990546044840113/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "10998094733/1275750", "residual": "0", "stratum": "center_velocity_zero", "wl": "10998094733/1275750"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1250602484281/129654000", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1250602484281/129654000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "10990546044840113/1192800204288", "residual": "0", "stratum": "radius_velocity_zero", "wl": "10990546044840113/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "10998094733/1275750", "residual": "0", "stratum": "radius_velocity_zero", "wl": "10998094733/1275750"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1250602484281/129654000", "residual": "0", "stratum": "all_velocities_zero", "wl": "1250602484281/129654000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "10990546044840113/1192800204288", "residual": "0", "stratum": "all_velocities_zero", "wl": "10990546044840113/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "10998094733/1275750", "residual": "0", "stratum": "all_velocities_zero", "wl": "10998094733/1275750"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1250602484281/129654000", "residual": "0", "stratum": "count_zero", "wl": "1250602484281/129654000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "10990546044840113/1192800204288", "residual": "0", "stratum": "count_zero", "wl": "10990546044840113/1192800204288"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "10998094733/1275750", "residual": "0", "stratum": "count_zero", "wl": "10998094733/1275750"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "297348933358363/31116960000", "residual": "0", "stratum": "generic", "wl": "297348933358363/31116960000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "749304449881459679/81640547315712", "residual": "0", "stratum": "generic", "wl": "749304449881459679/81640547315712"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "3137272930369/360855000", "residual": "0", "stratum": "generic", "wl": "3137272930369/360855000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "297348933358363/31116960000", "residual": "0", "stratum": "center_velocity_zero", "wl": "297348933358363/31116960000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "749304449881459679/81640547315712", "residual": "0", "stratum": "center_velocity_zero", "wl": "749304449881459679/81640547315712"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "3137272930369/360855000", "residual": "0", "stratum": "center_velocity_zero", "wl": "3137272930369/360855000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "297348933358363/31116960000", "residual": "0", "stratum": "radius_velocity_zero", "wl": "297348933358363/31116960000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "749304449881459679/81640547315712", "residual": "0", "stratum": "radius_velocity_zero", "wl": "749304449881459679/81640547315712"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "3137272930369/360855000", "residual": "0", "stratum": "radius_velocity_zero", "wl": "3137272930369/360855000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "297348933358363/31116960000", "residual": "0", "stratum": "all_velocities_zero", "wl": "297348933358363/31116960000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "749304449881459679/81640547315712", "residual": "0", "stratum": "all_velocities_zero", "wl": "749304449881459679/81640547315712"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "3137272930369/360855000", "residual": "0", "stratum": "all_velocities_zero", "wl": "3137272930369/360855000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "297348933358363/31116960000", "residual": "0", "stratum": "count_zero", "wl": "297348933358363/31116960000"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "749304449881459679/81640547315712", "residual": "0", "stratum": "count_zero", "wl": "749304449881459679/81640547315712"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "3137272930369/360855000", "residual": "0", "stratum": "count_zero", "wl": "3137272930369/360855000"}], "wl_alias_resolved": "-f3(x1, x2, x3, t) + Derivative(G3(x1, x2, x3, t), t) + Derivative(Pi31(x1, x2, x3, t), x1) + Derivative(Pi32(x1, x2, x3, t), x2) + Derivative(Pi33(x1, x2, x3, t), x3)", "wl_value": "-f3(x1, x2, x3, t) + Derivative(G3(x1, x2, x3, t), t) + Derivative(Pi31(x1, x2, x3, t), x1) + Derivative(Pi32(x1, x2, x3, t), x2) + Derivative(Pi33(x1, x2, x3, t), x3)"}
+JSONL_LINE 151
+{"binding": "geometry_surfaces:9", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "Xc1(t) + r_in(t)*sin(theta)*cos(phi)", "py_value": "Xc1(t) + r_in(t)*sin(theta)*cos(phi)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "8/101 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "generic", "wl": "8/101 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "8/101 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "generic", "wl": "8/101 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "8/101 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "generic", "wl": "8/101 + 5*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "8/101 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "8/101 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "8/101 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "8/101 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "8/101 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "8/101 + 5*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "8/101 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "8/101 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "8/101 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "8/101 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "8/101 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "8/101 + 5*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "8/101 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "8/101 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "8/101 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "8/101 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "8/101 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "8/101 + 5*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "8/101 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "count_zero", "wl": "8/101 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "8/101 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "count_zero", "wl": "8/101 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "8/101 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "count_zero", "wl": "8/101 + 5*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "905/10403 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "generic", "wl": "905/10403 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "905/10403 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "generic", "wl": "905/10403 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "905/10403 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "generic", "wl": "905/10403 + 5*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "905/10403 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "905/10403 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "905/10403 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "905/10403 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "905/10403 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "905/10403 + 5*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "905/10403 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "905/10403 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "905/10403 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "905/10403 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "905/10403 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "905/10403 + 5*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "905/10403 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "905/10403 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "905/10403 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "905/10403 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "905/10403 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "905/10403 + 5*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "905/10403 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "count_zero", "wl": "905/10403 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "905/10403 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "count_zero", "wl": "905/10403 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "905/10403 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "count_zero", "wl": "905/10403 + 5*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "826/10403 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "generic", "wl": "826/10403 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "826/10403 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "generic", "wl": "826/10403 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "826/10403 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "generic", "wl": "826/10403 + 5*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "826/10403 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "826/10403 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "826/10403 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "826/10403 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "826/10403 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "826/10403 + 5*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "826/10403 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "826/10403 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "826/10403 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "826/10403 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "826/10403 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "826/10403 + 5*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "826/10403 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "826/10403 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "826/10403 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "826/10403 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "826/10403 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "826/10403 + 5*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "826/10403 + 3*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "count_zero", "wl": "826/10403 + 3*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "826/10403 + sin(3/5)*cos(2/3)", "residual": "0", "stratum": "count_zero", "wl": "826/10403 + sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "826/10403 + 5*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "count_zero", "wl": "826/10403 + 5*sin(4/5)*cos(1)/4"}], "wl_alias_resolved": "Xc1(t) + r_in(t)*sin(theta)*cos(phi)", "wl_value": "Xc1(t) + r_in(t)*sin(theta)*cos(phi)"}
+JSONL_LINE 155
+{"binding": "geometry_surfaces:10", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "Xc2(t) + r_in(t)*sin(phi)*sin(theta)", "py_value": "Xc2(t) + r_in(t)*sin(phi)*sin(theta)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1143/10403", "residual": "0", "stratum": "generic", "wl": "3*sin(1/3)*sin(2/5)/4 + 1143/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1143/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "generic", "wl": "1143/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1143/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "generic", "wl": "1143/10403 + 5*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1143/10403", "residual": "0", "stratum": "center_velocity_zero", "wl": "3*sin(1/3)*sin(2/5)/4 + 1143/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1143/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "1143/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1143/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1143/10403 + 5*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1143/10403", "residual": "0", "stratum": "radius_velocity_zero", "wl": "3*sin(1/3)*sin(2/5)/4 + 1143/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1143/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1143/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1143/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1143/10403 + 5*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1143/10403", "residual": "0", "stratum": "all_velocities_zero", "wl": "3*sin(1/3)*sin(2/5)/4 + 1143/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1143/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "1143/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1143/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1143/10403 + 5*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1143/10403", "residual": "0", "stratum": "count_zero", "wl": "3*sin(1/3)*sin(2/5)/4 + 1143/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1143/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "count_zero", "wl": "1143/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1143/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "count_zero", "wl": "1143/10403 + 5*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1132/10403", "residual": "0", "stratum": "generic", "wl": "3*sin(1/3)*sin(2/5)/4 + 1132/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1132/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "generic", "wl": "1132/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1132/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "generic", "wl": "1132/10403 + 5*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1132/10403", "residual": "0", "stratum": "center_velocity_zero", "wl": "3*sin(1/3)*sin(2/5)/4 + 1132/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1132/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "1132/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1132/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1132/10403 + 5*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1132/10403", "residual": "0", "stratum": "radius_velocity_zero", "wl": "3*sin(1/3)*sin(2/5)/4 + 1132/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1132/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1132/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1132/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1132/10403 + 5*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1132/10403", "residual": "0", "stratum": "all_velocities_zero", "wl": "3*sin(1/3)*sin(2/5)/4 + 1132/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1132/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "1132/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1132/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1132/10403 + 5*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1132/10403", "residual": "0", "stratum": "count_zero", "wl": "3*sin(1/3)*sin(2/5)/4 + 1132/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1132/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "count_zero", "wl": "1132/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1132/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "count_zero", "wl": "1132/10403 + 5*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1128/10403", "residual": "0", "stratum": "generic", "wl": "3*sin(1/3)*sin(2/5)/4 + 1128/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1128/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "generic", "wl": "1128/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1128/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "generic", "wl": "1128/10403 + 5*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1128/10403", "residual": "0", "stratum": "center_velocity_zero", "wl": "3*sin(1/3)*sin(2/5)/4 + 1128/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1128/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "1128/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1128/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1128/10403 + 5*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1128/10403", "residual": "0", "stratum": "radius_velocity_zero", "wl": "3*sin(1/3)*sin(2/5)/4 + 1128/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1128/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1128/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1128/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1128/10403 + 5*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1128/10403", "residual": "0", "stratum": "all_velocities_zero", "wl": "3*sin(1/3)*sin(2/5)/4 + 1128/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1128/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "1128/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1128/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1128/10403 + 5*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "3*sin(1/3)*sin(2/5)/4 + 1128/10403", "residual": "0", "stratum": "count_zero", "wl": "3*sin(1/3)*sin(2/5)/4 + 1128/10403"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1128/10403 + sin(3/5)*sin(2/3)", "residual": "0", "stratum": "count_zero", "wl": "1128/10403 + sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1128/10403 + 5*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "count_zero", "wl": "1128/10403 + 5*sin(4/5)*sin(1)/4"}], "wl_alias_resolved": "Xc2(t) + r_in(t)*sin(phi)*sin(theta)", "wl_value": "Xc2(t) + r_in(t)*sin(phi)*sin(theta)"}
+JSONL_LINE 159
+{"binding": "geometry_surfaces:11", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "Xc3(t) + r_in(t)*cos(theta)", "py_value": "Xc3(t) + r_in(t)*cos(theta)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1436/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "generic", "wl": "1436/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1436/10403 + cos(3/5)", "residual": "0", "stratum": "generic", "wl": "1436/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1436/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "generic", "wl": "1436/10403 + 5*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1436/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1436/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1436/10403 + cos(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "1436/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1436/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1436/10403 + 5*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1436/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1436/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1436/10403 + cos(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1436/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1436/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1436/10403 + 5*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1436/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1436/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1436/10403 + cos(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "1436/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1436/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1436/10403 + 5*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1436/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1436/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1436/10403 + cos(3/5)", "residual": "0", "stratum": "count_zero", "wl": "1436/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1436/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1436/10403 + 5*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1435/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "generic", "wl": "1435/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1435/10403 + cos(3/5)", "residual": "0", "stratum": "generic", "wl": "1435/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1435/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "generic", "wl": "1435/10403 + 5*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1435/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1435/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1435/10403 + cos(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "1435/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1435/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1435/10403 + 5*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1435/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1435/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1435/10403 + cos(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1435/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1435/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1435/10403 + 5*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1435/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1435/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1435/10403 + cos(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "1435/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1435/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1435/10403 + 5*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1435/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1435/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1435/10403 + cos(3/5)", "residual": "0", "stratum": "count_zero", "wl": "1435/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1435/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1435/10403 + 5*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1504/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "generic", "wl": "1504/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1504/10403 + cos(3/5)", "residual": "0", "stratum": "generic", "wl": "1504/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1504/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "generic", "wl": "1504/10403 + 5*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1504/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1504/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1504/10403 + cos(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "1504/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1504/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1504/10403 + 5*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1504/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1504/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1504/10403 + cos(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1504/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1504/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1504/10403 + 5*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1504/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1504/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1504/10403 + cos(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "1504/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1504/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1504/10403 + 5*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1504/10403 + 3*cos(2/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1504/10403 + 3*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1504/10403 + cos(3/5)", "residual": "0", "stratum": "count_zero", "wl": "1504/10403 + cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1504/10403 + 5*cos(4/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1504/10403 + 5*cos(4/5)/4"}], "wl_alias_resolved": "Xc3(t) + r_in(t)*cos(theta)", "wl_value": "Xc3(t) + r_in(t)*cos(theta)"}
+JSONL_LINE 163
+{"binding": "geometry_surfaces:12", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "R(t)*sin(theta)*cos(phi) + Xc1(t)", "py_value": "R(t)*sin(theta)*cos(phi) + Xc1(t)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "8/101 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "generic", "wl": "8/101 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "8/101 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "generic", "wl": "8/101 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "8/101 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "generic", "wl": "8/101 + 13*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "8/101 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "8/101 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "8/101 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "8/101 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "8/101 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "8/101 + 13*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "8/101 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "8/101 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "8/101 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "8/101 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "8/101 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "8/101 + 13*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "8/101 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "8/101 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "8/101 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "8/101 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "8/101 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "8/101 + 13*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "8/101 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "count_zero", "wl": "8/101 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "8/101 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "count_zero", "wl": "8/101 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "8/101 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "count_zero", "wl": "8/101 + 13*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "905/10403 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "generic", "wl": "905/10403 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "905/10403 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "generic", "wl": "905/10403 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "905/10403 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "generic", "wl": "905/10403 + 13*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "905/10403 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "905/10403 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "905/10403 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "905/10403 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "905/10403 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "905/10403 + 13*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "905/10403 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "905/10403 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "905/10403 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "905/10403 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "905/10403 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "905/10403 + 13*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "905/10403 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "905/10403 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "905/10403 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "905/10403 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "905/10403 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "905/10403 + 13*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "905/10403 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "count_zero", "wl": "905/10403 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "905/10403 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "count_zero", "wl": "905/10403 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "905/10403 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "count_zero", "wl": "905/10403 + 13*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "826/10403 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "generic", "wl": "826/10403 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "826/10403 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "generic", "wl": "826/10403 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "826/10403 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "generic", "wl": "826/10403 + 13*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "826/10403 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "826/10403 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "826/10403 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "826/10403 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "826/10403 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "826/10403 + 13*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "826/10403 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "826/10403 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "826/10403 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "826/10403 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "826/10403 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "826/10403 + 13*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "826/10403 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "826/10403 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "826/10403 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "826/10403 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "826/10403 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "826/10403 + 13*sin(4/5)*cos(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "826/10403 + 11*sin(2/5)*cos(1/3)/4", "residual": "0", "stratum": "count_zero", "wl": "826/10403 + 11*sin(2/5)*cos(1/3)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "826/10403 + 3*sin(3/5)*cos(2/3)", "residual": "0", "stratum": "count_zero", "wl": "826/10403 + 3*sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "826/10403 + 13*sin(4/5)*cos(1)/4", "residual": "0", "stratum": "count_zero", "wl": "826/10403 + 13*sin(4/5)*cos(1)/4"}], "wl_alias_resolved": "R(t)*sin(theta)*cos(phi) + Xc1(t)", "wl_value": "R(t)*sin(theta)*cos(phi) + Xc1(t)"}
+JSONL_LINE 167
+{"binding": "geometry_surfaces:13", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "R(t)*sin(phi)*sin(theta) + Xc2(t)", "py_value": "R(t)*sin(phi)*sin(theta) + Xc2(t)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1143/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "generic", "wl": "1143/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1143/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "generic", "wl": "1143/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1143/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "generic", "wl": "1143/10403 + 13*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1143/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1143/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1143/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "1143/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1143/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1143/10403 + 13*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1143/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1143/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1143/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1143/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1143/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1143/10403 + 13*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1143/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1143/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1143/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "1143/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1143/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1143/10403 + 13*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1143/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1143/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1143/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "count_zero", "wl": "1143/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1143/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "count_zero", "wl": "1143/10403 + 13*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1132/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "generic", "wl": "1132/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1132/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "generic", "wl": "1132/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1132/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "generic", "wl": "1132/10403 + 13*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1132/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1132/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1132/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "1132/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1132/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1132/10403 + 13*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1132/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1132/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1132/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1132/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1132/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1132/10403 + 13*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1132/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1132/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1132/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "1132/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1132/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1132/10403 + 13*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1132/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1132/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1132/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "count_zero", "wl": "1132/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1132/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "count_zero", "wl": "1132/10403 + 13*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1128/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "generic", "wl": "1128/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1128/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "generic", "wl": "1128/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1128/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "generic", "wl": "1128/10403 + 13*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1128/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1128/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1128/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "1128/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1128/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1128/10403 + 13*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1128/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1128/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1128/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1128/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1128/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1128/10403 + 13*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1128/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1128/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1128/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "1128/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1128/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1128/10403 + 13*sin(4/5)*sin(1)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1128/10403 + 11*sin(1/3)*sin(2/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1128/10403 + 11*sin(1/3)*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1128/10403 + 3*sin(3/5)*sin(2/3)", "residual": "0", "stratum": "count_zero", "wl": "1128/10403 + 3*sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1128/10403 + 13*sin(4/5)*sin(1)/4", "residual": "0", "stratum": "count_zero", "wl": "1128/10403 + 13*sin(4/5)*sin(1)/4"}], "wl_alias_resolved": "R(t)*sin(phi)*sin(theta) + Xc2(t)", "wl_value": "R(t)*sin(phi)*sin(theta) + Xc2(t)"}
+JSONL_LINE 171
+{"binding": "geometry_surfaces:14", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "R(t)*cos(theta) + Xc3(t)", "py_value": "R(t)*cos(theta) + Xc3(t)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1436/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "generic", "wl": "1436/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1436/10403 + 3*cos(3/5)", "residual": "0", "stratum": "generic", "wl": "1436/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1436/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "generic", "wl": "1436/10403 + 13*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1436/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1436/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1436/10403 + 3*cos(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "1436/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1436/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1436/10403 + 13*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1436/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1436/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1436/10403 + 3*cos(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1436/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1436/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1436/10403 + 13*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1436/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1436/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1436/10403 + 3*cos(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "1436/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1436/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1436/10403 + 13*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "1436/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1436/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "1436/10403 + 3*cos(3/5)", "residual": "0", "stratum": "count_zero", "wl": "1436/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "1436/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1436/10403 + 13*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1435/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "generic", "wl": "1435/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1435/10403 + 3*cos(3/5)", "residual": "0", "stratum": "generic", "wl": "1435/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1435/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "generic", "wl": "1435/10403 + 13*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1435/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1435/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1435/10403 + 3*cos(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "1435/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1435/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1435/10403 + 13*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1435/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1435/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1435/10403 + 3*cos(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1435/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1435/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1435/10403 + 13*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1435/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1435/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1435/10403 + 3*cos(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "1435/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1435/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1435/10403 + 13*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "1435/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1435/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "1435/10403 + 3*cos(3/5)", "residual": "0", "stratum": "count_zero", "wl": "1435/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "1435/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1435/10403 + 13*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1504/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "generic", "wl": "1504/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1504/10403 + 3*cos(3/5)", "residual": "0", "stratum": "generic", "wl": "1504/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1504/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "generic", "wl": "1504/10403 + 13*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1504/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1504/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1504/10403 + 3*cos(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "1504/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1504/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "1504/10403 + 13*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1504/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1504/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1504/10403 + 3*cos(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1504/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1504/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "1504/10403 + 13*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1504/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1504/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1504/10403 + 3*cos(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "1504/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1504/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "1504/10403 + 13*cos(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "1504/10403 + 11*cos(2/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1504/10403 + 11*cos(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "1504/10403 + 3*cos(3/5)", "residual": "0", "stratum": "count_zero", "wl": "1504/10403 + 3*cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "1504/10403 + 13*cos(4/5)/4", "residual": "0", "stratum": "count_zero", "wl": "1504/10403 + 13*cos(4/5)/4"}], "wl_alias_resolved": "R(t)*cos(theta) + Xc3(t)", "wl_value": "R(t)*cos(theta) + Xc3(t)"}
+JSONL_LINE 175
+{"binding": "geometry_normal:15", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "-sin(theta)*cos(phi)", "py_value": "-sin(theta)*cos(phi)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "generic", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "generic", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "generic", "wl": "-sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "count_zero", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "count_zero", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "count_zero", "wl": "-sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "generic", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "generic", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "generic", "wl": "-sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "count_zero", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "count_zero", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "count_zero", "wl": "-sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "generic", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "generic", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "generic", "wl": "-sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-sin(2/5)*cos(1/3)", "residual": "0", "stratum": "count_zero", "wl": "-sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-sin(3/5)*cos(2/3)", "residual": "0", "stratum": "count_zero", "wl": "-sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-sin(4/5)*cos(1)", "residual": "0", "stratum": "count_zero", "wl": "-sin(4/5)*cos(1)"}], "wl_alias_resolved": "-sin(theta)*cos(phi)", "wl_value": "-sin(theta)*cos(phi)"}
+JSONL_LINE 179
+{"binding": "geometry_normal:16", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "-sin(phi)*sin(theta)", "py_value": "-sin(phi)*sin(theta)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "generic", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "generic", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "generic", "wl": "-sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "count_zero", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "count_zero", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "count_zero", "wl": "-sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "generic", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "generic", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "generic", "wl": "-sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "count_zero", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "count_zero", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "count_zero", "wl": "-sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "generic", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "generic", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "generic", "wl": "-sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-sin(1/3)*sin(2/5)", "residual": "0", "stratum": "count_zero", "wl": "-sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-sin(3/5)*sin(2/3)", "residual": "0", "stratum": "count_zero", "wl": "-sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-sin(4/5)*sin(1)", "residual": "0", "stratum": "count_zero", "wl": "-sin(4/5)*sin(1)"}], "wl_alias_resolved": "-sin(phi)*sin(theta)", "wl_value": "-sin(phi)*sin(theta)"}
+JSONL_LINE 183
+{"binding": "geometry_normal:17", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "-cos(theta)", "py_value": "-cos(theta)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "generic", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "generic", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "generic", "wl": "-cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "count_zero", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "count_zero", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "count_zero", "wl": "-cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "generic", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "generic", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "generic", "wl": "-cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "count_zero", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "count_zero", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "count_zero", "wl": "-cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "generic", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "generic", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "generic", "wl": "-cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "-cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "-cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "-cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "-cos(2/5)", "residual": "0", "stratum": "count_zero", "wl": "-cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "-cos(3/5)", "residual": "0", "stratum": "count_zero", "wl": "-cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "-cos(4/5)", "residual": "0", "stratum": "count_zero", "wl": "-cos(4/5)"}], "wl_alias_resolved": "-cos(theta)", "wl_value": "-cos(theta)"}
+JSONL_LINE 187
+{"binding": "geometry_normal:18", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "sin(theta)*cos(phi)", "py_value": "sin(theta)*cos(phi)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "generic", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "generic", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "generic", "wl": "sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "count_zero", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "count_zero", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "count_zero", "wl": "sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "generic", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "generic", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "generic", "wl": "sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "count_zero", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "count_zero", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "count_zero", "wl": "sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "generic", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "generic", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "generic", "wl": "sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(4/5)*cos(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "sin(2/5)*cos(1/3)", "residual": "0", "stratum": "count_zero", "wl": "sin(2/5)*cos(1/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)*cos(2/3)", "residual": "0", "stratum": "count_zero", "wl": "sin(3/5)*cos(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "sin(4/5)*cos(1)", "residual": "0", "stratum": "count_zero", "wl": "sin(4/5)*cos(1)"}], "wl_alias_resolved": "sin(theta)*cos(phi)", "wl_value": "sin(theta)*cos(phi)"}
+JSONL_LINE 191
+{"binding": "geometry_normal:19", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "sin(phi)*sin(theta)", "py_value": "sin(phi)*sin(theta)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "generic", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "generic", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "generic", "wl": "sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "count_zero", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "count_zero", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "count_zero", "wl": "sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "generic", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "generic", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "generic", "wl": "sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "count_zero", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "count_zero", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "count_zero", "wl": "sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "generic", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "generic", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "generic", "wl": "sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(4/5)*sin(1)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "sin(1/3)*sin(2/5)", "residual": "0", "stratum": "count_zero", "wl": "sin(1/3)*sin(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)*sin(2/3)", "residual": "0", "stratum": "count_zero", "wl": "sin(3/5)*sin(2/3)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "sin(4/5)*sin(1)", "residual": "0", "stratum": "count_zero", "wl": "sin(4/5)*sin(1)"}], "wl_alias_resolved": "sin(phi)*sin(theta)", "wl_value": "sin(phi)*sin(theta)"}
+JSONL_LINE 195
+{"binding": "geometry_normal:20", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "cos(theta)", "py_value": "cos(theta)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "generic", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "generic", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "generic", "wl": "cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "count_zero", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "count_zero", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "count_zero", "wl": "cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "generic", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "generic", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "generic", "wl": "cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "count_zero", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "count_zero", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "count_zero", "wl": "cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "generic", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "generic", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "generic", "wl": "cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "cos(4/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "cos(2/5)", "residual": "0", "stratum": "count_zero", "wl": "cos(2/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "cos(3/5)", "residual": "0", "stratum": "count_zero", "wl": "cos(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "cos(4/5)", "residual": "0", "stratum": "count_zero", "wl": "cos(4/5)"}], "wl_alias_resolved": "cos(theta)", "wl_value": "cos(theta)"}
+JSONL_LINE 199
+{"binding": "geometry_areaMeasure:21", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "r_in(t)**2*sin(theta)", "py_value": "r_in(t)**2*sin(theta)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "generic", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "generic", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "generic", "wl": "25*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "center_velocity_zero", "wl": "25*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "radius_velocity_zero", "wl": "25*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "all_velocities_zero", "wl": "25*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "count_zero", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "count_zero", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "count_zero", "wl": "25*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "generic", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "generic", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "generic", "wl": "25*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "center_velocity_zero", "wl": "25*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "radius_velocity_zero", "wl": "25*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "all_velocities_zero", "wl": "25*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "count_zero", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "count_zero", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "count_zero", "wl": "25*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "generic", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "generic", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "generic", "wl": "25*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "center_velocity_zero", "wl": "25*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "radius_velocity_zero", "wl": "25*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "all_velocities_zero", "wl": "25*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "9*sin(2/5)/16", "residual": "0", "stratum": "count_zero", "wl": "9*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "sin(3/5)", "residual": "0", "stratum": "count_zero", "wl": "sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "25*sin(4/5)/16", "residual": "0", "stratum": "count_zero", "wl": "25*sin(4/5)/16"}], "wl_alias_resolved": "r_in(t)**2*sin(theta)", "wl_value": "r_in(t)**2*sin(theta)"}
+JSONL_LINE 203
+{"binding": "geometry_areaMeasure:22", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "R(t)**2*sin(theta)", "py_value": "R(t)**2*sin(theta)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "generic", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "generic", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "generic", "wl": "169*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "center_velocity_zero", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "center_velocity_zero", "wl": "169*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "radius_velocity_zero", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "radius_velocity_zero", "wl": "169*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "all_velocities_zero", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "all_velocities_zero", "wl": "169*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "count_zero", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "count_zero", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "count_zero", "wl": "169*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "generic", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "generic", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "generic", "wl": "169*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "center_velocity_zero", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "center_velocity_zero", "wl": "169*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "radius_velocity_zero", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "radius_velocity_zero", "wl": "169*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "all_velocities_zero", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "all_velocities_zero", "wl": "169*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "count_zero", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "count_zero", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "count_zero", "wl": "169*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "generic", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "generic", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "generic", "wl": "169*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "center_velocity_zero", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "center_velocity_zero", "wl": "169*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "radius_velocity_zero", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "radius_velocity_zero", "wl": "169*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "all_velocities_zero", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "all_velocities_zero", "wl": "169*sin(4/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "121*sin(2/5)/16", "residual": "0", "stratum": "count_zero", "wl": "121*sin(2/5)/16"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "9*sin(3/5)", "residual": "0", "stratum": "count_zero", "wl": "9*sin(3/5)"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "169*sin(4/5)/16", "residual": "0", "stratum": "count_zero", "wl": "169*sin(4/5)/16"}], "wl_alias_resolved": "R(t)**2*sin(theta)", "wl_value": "R(t)**2*sin(theta)"}
+JSONL_LINE 207
+{"binding": "geometry_volumeMeasure:23", "condition_residual": "((0 < r_in(t)) & (r_in(t) < R(t))) ^ (Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "domain_context": ["(0 < r_in(t)) & (r_in(t) < R(t))", "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))"], "exact_method": "subtraction, expanded; predicates use symmetric difference", "exact_residual": "0", "kind": "comparison", "one_sided_domains": {"py_only": "(0 < r_in(t)) & (r_in(t) < R(t)) & ~(Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)))", "wl_only": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t)) & ~((0 < r_in(t)) & (r_in(t) < R(t)))"}, "py_alias_resolved": "rho**2*sin(theta)", "py_value": "rho**2*sin(theta)", "residual_on_supplied_domain": {"meaning": "symbolic restriction; evaluated values are printed per sample without replacing the as-computed residual", "restricted_to": "Contains(phi, Reals) & Contains(t, Reals) & Contains(theta, Reals) & (0 < theta) & (theta < pi) & (0 < r_in(t)) & (r_in(t) < R(t))", "value": "0"}, "resolution_method": "evaluate substitution wrappers preserving partial derivative slots, orders and points; expand and group integrals; no supplied equation or domain assumption", "resolved_exact_residual": "0", "samples": [{"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "generic", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "generic", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "generic", "wl": "9*sin(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "count_zero", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "count_zero", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quadratic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "count_zero", "wl": "9*sin(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "generic", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "generic", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "generic", "wl": "9*sin(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "count_zero", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "count_zero", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_cubic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "count_zero", "wl": "9*sin(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "generic", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "generic", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "generic", "wl": "9*sin(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "center_velocity_zero", "wl": "9*sin(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "radius_velocity_zero", "wl": "9*sin(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "all_velocities_zero", "wl": "9*sin(4/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 0, "py": "9*sin(2/5)/4", "residual": "0", "stratum": "count_zero", "wl": "9*sin(2/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 1, "py": "9*sin(3/5)/4", "residual": "0", "stratum": "count_zero", "wl": "9*sin(3/5)/4"}, {"condition_residual": "False", "conditions": ["True", "True"], "coverage": "evaluated", "form": "mixed_quartic", "point": 2, "py": "9*sin(4/5)/4", "residual": "0", "stratum": "count_zero", "wl": "9*sin(4/5)/4"}], "wl_alias_resolved": "rho**2*sin(theta)", "wl_value": "rho**2*sin(theta)"}
+{"literal_rule_counts": {"geometry_areaMeasure": 2, "geometry_normal": 6, "geometry_surfaces": 6, "geometry_volumeMeasure": 1, "integral_definitions": 3, "supplied_material": 1, "supplied_momentum": 3}}
 ````
 

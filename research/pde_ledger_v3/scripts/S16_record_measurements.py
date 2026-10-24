@@ -88,7 +88,7 @@ def m04():
         (V3 + "directives/O2_SHARED_PHYSICS.md", [(125, 140), (607, 607)]),
         (V3 + "directives/O2_steady_brane_balance_scoping.md", [(164, 164)]),
         ("notes/muonium_gravity_corrections.md", [(21, 25)]),
-        (V3 + "steps/S14a_1_projection.md", [(50, 103)]),
+        (V3 + "steps/S14a_1_projection.md", [(35, 103)]),
         (V3 + "steps/S12_order_source.md", [(1, 24), (280, 303)]),
     ]:
         for start, end in spans:
@@ -243,7 +243,7 @@ def m13():
 
 
 def m14():
-    for version in (BASE, None):
+    for version in (BASE, "4ae7e6cf", None):
         path = V3 + "SUBSTRATE_REQUIREMENTS.md"
         text = (subprocess.run(["git", "show", f"{version}:{path}"], cwd=ROOT,
                                text=True, capture_output=True, check=True).stdout
@@ -271,6 +271,35 @@ def m16():
              MEASUREMENTS, SCRIPT, *ANCILLARY, ".claude/skills/prep-for-compact/SKILL.md"])
 
 
+def m17():
+    command(["git", "log", "-1", "--format=%H %s", "4ae7e6cf"])
+    source_set(["S16_record_r0_review_disposition", "S16_record_r0_review_lookups"])
+    command(["git", "show", "--format=", "--name-only", "4ae7e6cf", "--",
+             V3 + "directives/_measurements/S16_record_r0_review_disposition.md",
+             V3 + "directives/_measurements/S16_record_r0_review_lookups.md"])
+
+
+def m18():
+    # Y4: select only the seven literal rule names; retrieve their stored
+    # operands, domains, residuals and samples without evaluating an expression.
+    rules = {"supplied_material", "supplied_momentum", "integral_definitions",
+             "geometry_surfaces", "geometry_normal", "geometry_areaMeasure",
+             "geometry_volumeMeasure"}
+    counts = Counter()
+    for n, row in records():
+        if row["kind"] == "configuration":
+            for binding in row["binding_table"]:
+                if binding["rule"] in rules:
+                    emit({"configuration_line": n, "stored_binding": binding})
+        if row["kind"] == "comparison":
+            rule = row["binding"].split(":", 1)[0]
+            if rule in rules:
+                counts[rule] += 1
+                print("JSONL_LINE", n)
+                emit(row)
+    emit({"literal_rule_counts": dict(counts)})
+
+
 SECTIONS = {
     "M01": ("Contract, decisions and accepted versions", m01),
     "M02": ("Step-list and build dispositions, with build run record", m02),
@@ -288,6 +317,8 @@ SECTIONS = {
     "M14": ("Register before/after, schema, rest-on method and both routes", m14),
     "M15": ("S14a part 2 acceptance and current provenance/status text", m15),
     "M16": ("Exact ancillary diff against the starting commit and edit inventory", m16),
+    "M17": ("Preserved round-0 record review and repair scope Y1–Y4", m17),
+    "M18": ("Supplied-equation, integral-definition and geometry comparisons", m18),
 }
 
 

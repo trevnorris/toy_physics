@@ -37,8 +37,19 @@ The supplied balances give live regional count/momentum rates, count-centre rela
 momentum and count moments through second order. They supply no mass, inertial/passive factor,
 surroundings field, potential, inter-body force law or throat solve. Exact/resolved residuals,
 domain/text differences and unpaired coverage retain the record's separate qualifications.
-The pass brings 19 → 25 OPEN entries; it files the user's passive-field, compactness, face-momentum,
-inertial and density-response requirements, and the S22 reduction-debt inventory. No entry is closed.
+The pass brings 19 → 25 OPEN entries: the selected user options file passive-factor needs and
+the inertial relation; the list author separately files compactness, face momentum, density response
+and the S22 reduction-debt account. Each entry names its own source and admission ground.
+S16 also adds scoped provenance to `R-S1-01` (coordinate dimension, S6), `R-S1-02` (inherited
+support identification, S1), `R-S12-02` and `R-S21-01`. The Y1–Y4 repair is 25 → 25, with
+no new entry; no existing requirement, target or status changes. The reviewed version is preserved
+at `4ae7e6cf`; this repair remains for review, with no acceptance claimed.
+
+The plan's **"S16 must be run BEFORE S19 is trusted"** gate and **"its result feeds back into
+the charter"** handoff remain OPEN beside this regional delivery. The cited plan rows name
+**no owner** for disposition of either; S19 retains the separate C10/tail question. This record
+does not decide the gate or charter feedback, and supplies no charter amendment or scope-boundary
+decision ([record §4](research/pde_ledger_v3/steps/S16_moving_region.md); measurements M04/M17).
 
 **User decision, 2026-10-20: "Keep S12".** **"S12 stays open for the forms."** This record closes
 only S12's requirements part and delivers none of the forms. The forms come once the brane is
@@ -98,6 +109,8 @@ Read the [short closeout](research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md)
 | `R-S14a-01`: slow limit and far behaviour selected by the slab's own dynamics | Jointly S12 (source/flux forms), S8/S22 (material law), and **no owner named** (face/interior laws); [register entry](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md#r-s14a-01--the-dynamically-selected-slow-limit-and-far-behaviour). Record/pass accepted `79511272`; requirement OPEN. |
 | S16 passive-field/separation/normalization, compactness and face-momentum requirements | **No owner named** for delivery; `R-S16-01/-02/-03`, [S16 record §6](research/pde_ledger_v3/steps/S16_moving_region.md). Compactness is also a debt for S22's table. |
 | S16 momentum–material relation, density response and reduction-debt inventory | S8 (`R-S16-04`); S8/S22 (`R-S16-05`); S22 for the debt-table inventory (`R-S22-02`, without inventing physical suppliers). [S16 register pass](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md). |
+| Plan's S19 trust gate: "S16 must be run BEFORE S19 is trusted" | **OPEN; no owner named** for disposition in the cited plan rows. S19's separate C10/tail ownership is retained; no gate decision here ([S16 record §4](research/pde_ledger_v3/steps/S16_moving_region.md), M04/M17). |
+| Plan's charter feedback: "its result feeds back into the charter" | **OPEN; no owner named** for disposition in the cited plan rows. No charter or scope-boundary decision here ([S16 record §4](research/pde_ledger_v3/steps/S16_moving_region.md), M04/M17). |
 | Replaying the uniform check needs its intermediate caches regenerated from the kept b/c2 engines and the S10/S11 export chain repaired (H4). The original caches are not in git. They stay on local disk under `_scratch/` (Phase 5). | S11c-d if reused; [H3](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). |
 | S10/S11 exports pin their pre-2026-09-11 producers. Regenerate them from the current producers under review, or revert the producer edits. The S10 edit may be what the S10 Lean D3 link relies on, so a revert is not automatic. | S10/S11 maintenance; [H4](research/pde_ledger_v3/cleanup_2026_10/PHASE3_REVIEW.md). Not run in this cleanup. |
 | Direct c2 `[0,2]` entry is set to zero without an order-counting justification; whether the full response needs a nonzero term is unresolved. | S11c-c2/d if reused; [joint disposition, mixed-term issue](research/pde_ledger_v3/_measurements/S11c_upstream_repair_review_joint_disposition.md). |

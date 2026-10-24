@@ -7,8 +7,8 @@ command and its literal output: existence, verbatim retrieval by line, literal-m
 
 ```
 $ sha256sum research/pde_ledger_v3/directives/S15_decision_list.md && git log -1 --format='%h %s'
-d83e69e5046ec71be88acd240b4167971b466a2d07ed5f52936f4bf6d4239a01  research/pde_ledger_v3/directives/S15_decision_list.md
-d6e4f74a Preserve the S15 decision list as reviewed in pass 1 (not accepted)
+ccabfa672e91c771e9f6a07ecbf6649fd33e2139c519cc7b2fadc0412d0fd8aa  research/pde_ledger_v3/directives/S15_decision_list.md
+a674659c Record pass 2 of the S15 decision list (revision 2 as reviewed, not accepted)
 ```
 
 ## L1. The plan: S15, the S14a conditional, the S22 rows, S19's heading
@@ -247,13 +247,12 @@ $ /usr/bin/grep -n -E '^### R-S16-03' research/pde_ledger_v3/SUBSTRATE_REQUIREME
 
 ```
 $ /usr/bin/grep -n -F -- 'attract' research/pde_ledger_v3/directives/S15_decision_list.md | cut -c1-160; echo "count: $(/usr/bin/grep -c -F -- 'attract' research/pde_ledger_v3/directives/S15_decision_list.md)"
-14:- **The plan's step.** S15, "Two drains attract" (`V3_STEP_PLAN.md:652–669`) (L1). The plan:
-count: 1
+count: 0
 ```
 
 ```
 $ /usr/bin/grep -n -F -- 'inverse' research/pde_ledger_v3/directives/S15_decision_list.md | cut -c1-160; echo "count: $(/usr/bin/grep -c -F -- 'inverse' research/pde_ledger_v3/directives/S15_decision_list.md)"
-146:    printed pieces, a stated dependence on the separation, including which give an inverse-square one, as the user's
+147:    a named sum of printed pieces, a stated dependence on the separation, including which give an inverse-square one,
 count: 1
 ```
 
@@ -279,10 +278,10 @@ count: 0
 
 ```
 $ /usr/bin/grep -n -F -- 'sign' research/pde_ledger_v3/directives/S15_decision_list.md | cut -c1-160; echo "count: $(/usr/bin/grep -c -F -- 'sign' research/pde_ledger_v3/directives/S15_decision_list.md)"
-21:  - limits the sign claim to "the **leading matter-stress** contribution only" (`:666–668`).
-150:  - the sign of a printed piece only on its stated conditions, and only for that piece (`:666–668`).
-173:- **No owner assigned here:** the forms of `f^i` and `Π_o^{ij}`. The slab's material law goes to S8/S22
-179:- **The pieces of the full sign that P5 and P6 do not supply:** the plan's quantum, confinement and Maxwell residuals
+22:  - limits the sign claim to "the **leading matter-stress** contribution only" (`:666–668`).
+151:  - the sign of a printed piece only on its stated conditions, and only for that piece (`:666–668`).
+175:- **No owner assigned here:** the forms of `f^i` and `Π_o^{ij}`. The slab's material law goes to S8/S22
+181:- **The pieces of the full sign that P5 and P6 do not supply:** the plan's quantum, confinement and Maxwell residuals
 count: 4
 ```
 

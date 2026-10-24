@@ -8,10 +8,11 @@ Paths are relative to `research/pde_ledger_v3/`. The lookups behind this list ar
 so that content is reviewed until clear before any builder (spec row).
 
 **Revision 2** folds pass 1 once (`directives/_measurements/S15_decision_list_review_p1_disposition.md`, D1–D5). The
-reviewed revision 1 is preserved at `d6e4f74a`.
+reviewed revision 1 is preserved at `d6e4f74a`. **Revision 3** repairs pass 2's D6 and D7
+(`directives/_measurements/S15_decision_list_review_p2_disposition.md`) in the reviewed revision 2 (`cd853e16`).
 
 ## Filing and framing
-- **The plan's step.** S15, "Two drains attract" (`V3_STEP_PLAN.md:652–669`) (L1). The plan:
+- **The plan's step.** S15 (`V3_STEP_PLAN.md:652–669`) (L1). The plan:
   - takes the drain strengths as "given", with a "Noether stress at infinity" (`:660`);
   - makes the step "CONDITIONAL ON S14a" (`:653`; `:639`);
   - says S16 "does NOT license S15", which "carries **its own** Noether / control-surface assumptions"
@@ -142,16 +143,17 @@ conclusions. No acceptance criterion references an expected value.
 ## For the record and its register pass (not in the build directive)
 - **The user's decisions.** The record quotes them from the pass 1 disposition ("The user's decisions").
 - **What the record reads from the printed objects.** From the printed objects alone, it states:
-  - which conditions on the profiles, the remainders, `Π_o` and `f` give a named printed piece, or a named sum of
-    printed pieces, a stated dependence on the separation, including which give an inverse-square one, as the user's
-    "Keep it general" asks. Each such dependence is stated with the conditions on the surfaces under which it holds:
-    both radii, their rates, and the motion of `X_2`;
+  - which conditions on the profiles, the remainders, `p_br`, `η`, `ζ`, `Π_o` and `f` give a named printed piece, or
+    a named sum of printed pieces, a stated dependence on the separation, including which give an inverse-square one,
+    as the user's "Keep it general" asks. Each such dependence is stated with its conditions on every live quantity
+    the piece contains, and on the surfaces: both radii, their rates, and the motion of `X_2`;
   - the terms that depend on each drain's velocity;
   - the sign of a printed piece only on its stated conditions, and only for that piece (`:666–668`).
 - **Requirements.** The record files each requirement as the register's rest-on test admits it, or on a user decision
   that it quotes. The user's "Keep it general" files gravity's flow requirement for S21's comparison, as a condition
-  on the named object, with its conditions on the surfaces. It is not called a pull or the force on a throat (Retained
-  OPEN). It merges into `R-S21-01` where the register's merge test says the two cover the same requirement.
+  on the named object, with all its conditions, those on `p_br`, `η` and `ζ` included. It is not called a pull or the
+  force on a throat (Retained OPEN). It merges into `R-S21-01` where the register's merge test says the two cover the
+  same requirement.
 - **Carried from S16's acceptance.** The status lines that still present S16 as written for review are updated to its
   acceptance at `4f907e9d` (`directives/_measurements/S16_record_r2_review_disposition.md`, "Carried to the next step
   record").

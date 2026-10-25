@@ -169,11 +169,12 @@ Do[
  rhs=Total[Flatten[Table[Values[surfaceResults[[j,i]]],{j,2}]]]+forcing;
  emit[tag<>"/balance_parts",{surfaceResults[[1,i]],surfaceResults[[2,i]],forcing}];
  pair[tag<>"/balance",lhs,rhs];emit[tag<>"/balance_equation",Equal[lhs,rhs]];
+ emit[tag<>"/balance/reduction", "This balance residual has no reduction route in this engine using the supplied local balance."];
  dimensionAudit[tag<>"/balance_rhs",rhs];
  emit[tag<>"/balance_dimension_operand_a",dim[lhs]];emit[tag<>"/balance_dimension_operand_b",dim[rhs]];
  emit[tag<>"/balance_dimension_residuals",Flatten[Table[da-db,{da,dim[lhs]},{db,dim[rhs]}],1]],
  {i,3}];
-emit["balance_construction", "Leibniz differentiation of the moving spherical-chart momentum integral supplies the rate. Integrating the supplied local balance and applying divergence and moving-domain transport gives the separately printed surface parts plus undivided force. The residual is printed as an equation operand, not imposed on arbitrary independent live fields."];
+emit["balance_construction", "Printed objects: the chart momentum integral, its Leibniz time derivative, each surface contribution, the undivided force integral, and the balance operands, equation and residual."];
 emit["scope", "No force law, coefficient, normalization, mass, throat-force identification, or relation to J, Q, Theta_Q or N_infinity_3 is computed."];
 emit["END_OF_TRANSCRIPT", "S15 Wolfram objects"];
 , emit["ENGINE_MESSAGES", $MessageList]; Close[stream]; Exit[1]];

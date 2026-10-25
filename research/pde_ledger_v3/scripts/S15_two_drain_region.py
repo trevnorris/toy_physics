@@ -295,6 +295,7 @@ def main(log):
         rhs=sum(obj for surface in surface_parts for obj in surface[i].values())+forcing
         emit(tag+'/balance_parts',parts)
         pair(tag+'/balance',rate,rhs)
+        emit(tag+'/balance/reduction', 'No route in this engine reduces this balance residual with the supplied local balance.')
         emit(tag+'/balance_equation',S.Eq(rate,rhs,evaluate=False))
         dimension_audit(tag+'/balance_rhs',rhs)
         a,b=dim(rate),dim(rhs)
@@ -307,7 +308,7 @@ def main(log):
         emit('dimension_argument/operand_a',sorted(a))
         emit('dimension_argument/operand_b',sorted(b))
         emit('dimension_argument/residuals',[sub(da,db) for da in sorted(a) for db in sorted(b)])
-    emit('balance_construction','The rate differentiates the moving-domain momentum integral. Applying divergence and moving-domain transport to the supplied local balance produces the printed surface parts and undivided volume force. The balance residual is an equation operand, not imposed on arbitrary independent live fields.')
+    emit('balance_construction','Printed objects: the moving-domain momentum integral, its time derivative, the surface parts, the integrated force density, and the balance operands, equation and residual.')
     emit('scope','No force law, coefficient, normalization, mass, throat-force identification, or relation to J, Q, Theta_Q or N_infinity_3 is computed.')
     emit('END_OF_TRANSCRIPT','S15 SymPy objects')
 

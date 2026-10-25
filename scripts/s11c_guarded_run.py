@@ -34,6 +34,12 @@ checkout waits until it ends, and one from the same checkout is refused. Native 
 starts until actual cgroup memory, native address-space, inherited process
 affinity and duration enforcement is verified; pooled priority is desktop-managed.
 
+Opt-in --all-cpus-exclusive retains the pooled memory admission and cap but
+holds the existing machine-wide admission lock for the entire job, with no
+other reservations or live units allowed. This also excludes older launchers
+without changing their registry format or single-CPU default. All inherited
+CPUs are verified; workers never widen their own affinity.
+
 CPU allocation uses systemd CPUAffinity plus inherited process affinity, not a
 hard cgroup cpuset. The guard verifies both at startup; it does not authorize
 workers to change their allocated affinity. No delegated cpuset controller is
@@ -46,6 +52,7 @@ keep the old registry and run receipts when correcting such stale metadata.
 This tool does not authorize sharing mutable scientific output directories.
 """
 import argparse
+from contextlib import nullcontext
 from datetime import datetime, timezone
 import fcntl
 import json
@@ -93,6 +100,22 @@ def resource_limits(memory_gib=2, tasks_max=32, pool=None):
             'tasksMax': tasks_max}
 
 
+def affinity_cpus(value):
+    """Decode systemd's CPU list, including its canonical range spelling."""
+    if not isinstance(value, str) or not value.strip():
+        return None
+    cpus = []
+    for token in value.split():
+        if not re.fullmatch(r'[0-9]+(?:-[0-9]+)?', token):
+            return None
+        ends = list(map(int, token.split('-')))
+        lo, hi = ends[0], ends[-1]
+        if hi < lo or hi > 1048575:
+            return None
+        cpus.extend(range(lo, hi + 1))
+    return sorted(cpus) if len(cpus) == len(set(cpus)) else None
+
+
 def limits_match(actual, spec):
     # Legacy jobs retain their exact profile. Parallel jobs have an explicit,
     # separately accounted profile and desktop-managed priority.
@@ -104,14 +127,14 @@ def limits_match(actual, spec):
                and spec.get('priorityPolicy') == 'desktop-managed'
                and actual.get('nativeAddressSpaceBytes') == [spec['memoryMax']] * 2
                and spec.get('affinityEnforcement') == 'systemd-and-inherited-process'
-               and actual.get('systemd.CPUAffinity') == str(spec['cpu'])) if pooled else (
+               and affinity_cpus(actual.get('systemd.CPUAffinity')) == spec.get('cpus', [spec['cpu']])) if pooled else (
                    spec['memoryMax'] in (MEMORY_MAX, 2 * MEMORY_MAX)
                    and actual['nice'] >= 15)
     return (profile and spec['tasksMax'] in (32, 64) and spec['swapMax'] == 0
             and actual['memory.max'] == str(spec['memoryMax'])
             and actual['memory.swap.max'] == '0'
             and actual['pids.max'] == str(spec['tasksMax'])
-            and actual['affinity'] == [spec['cpu']]
+            and actual['affinity'] == spec.get('cpus', [spec['cpu']])
             and all(actual['threads'][name] == '1' for name in THREADS))
 
 
@@ -267,10 +290,10 @@ def admission_plan(reservations, live, requested, cpus, available,
             'poolMaxJobs': POOL_MAX_JOBS, 'activeUnits': sorted(live)}
 
 
-def reserve_pool(spec, directory=POOL_DIRECTORY):
+def reserve_pool(spec, directory=POOL_DIRECTORY, held_admission=None):
     directory.mkdir(parents=True, exist_ok=True)
-    with (directory / 'admission.lock').open('a') as admission:
-        fcntl.flock(admission, fcntl.LOCK_EX)
+    with (nullcontext(held_admission) if held_admission is not None else (directory / 'admission.lock').open('a')) as admission:
+        if held_admission is None: fcntl.flock(admission, fcntl.LOCK_EX)
         records = read_reservations(directory)
         cpus = pool_cpus()
         units = active_units()
@@ -296,9 +319,9 @@ def reserve_pool(spec, directory=POOL_DIRECTORY):
         return plan
 
 
-def release_pool(spec, directory=POOL_DIRECTORY):
-    with (directory / 'admission.lock').open('a') as admission:
-        fcntl.flock(admission, fcntl.LOCK_EX)
+def release_pool(spec, directory=POOL_DIRECTORY, held_admission=None):
+    with (nullcontext(held_admission) if held_admission is not None else (directory / 'admission.lock').open('a')) as admission:
+        if held_admission is None: fcntl.flock(admission, fcntl.LOCK_EX)
         unit = spec['unit'] + '.service'
         if unit in active_units():
             raise RuntimeError('service still active; reservation retained: ' + unit)
@@ -368,7 +391,7 @@ def child_main(manifest):
         'wallDeadlineSeconds': None, 'inactivityDeadlineSeconds': None})
     if spec.get('pool') is not None:
         resource.setrlimit(resource.RLIMIT_AS, (spec['memoryMax'], spec['memoryMax']))
-    os.sched_setaffinity(0, {spec['cpu']})
+    os.sched_setaffinity(0, spec.get('cpus', [spec['cpu']]))
     group = group_path()
     actual = {name: (group / name).read_text().strip()
               for name in ('memory.max', 'memory.swap.max', 'pids.max')}
@@ -427,6 +450,8 @@ def main():
     parser.add_argument('--memory-gib', type=int, default=2,
                         help='whole-job cap: legacy 2/4 GiB; pooled 1 GiB through physical memory')
     parser.add_argument('--pool', help='opt in to shared machine-wide admission; named purpose')
+    parser.add_argument('--all-cpus-exclusive', action='store_true',
+                        help='pooled cap with all available CPUs; holds machine-wide admission lock for entire run')
     parser.add_argument('--tasks-max', type=int, choices=(32, 64), default=32,
                         help='whole-job process/thread cap; 64 requires explicit job authorization')
     parser.add_argument('--child-manifest', type=Path, help=argparse.SUPPRESS)
@@ -441,14 +466,17 @@ def main():
         raise RuntimeError('S11c work is paused after the host freeze; see ' + str(PAUSE))
     if args.pool and not re.fullmatch(r'[a-zA-Z0-9][a-zA-Z0-9_-]{0,63}', args.pool):
         parser.error('--pool must be a short alphanumeric purpose name')
+    if args.all_cpus_exclusive and not args.pool:
+        parser.error('--all-cpus-exclusive requires --pool')
     profile = resource_limits(args.memory_gib, args.tasks_max, args.pool)
     folder = args.log_directory.resolve()
     folder.relative_to(STORE)
     STORE.mkdir(parents=True, exist_ok=True)
-    lock = acquire_execution_lock(STORE / 'resource-guard.lock', pooled=bool(args.pool))
+    lock = acquire_execution_lock(STORE / 'resource-guard.lock', pooled=bool(args.pool) and not args.all_cpus_exclusive)
     # Legacy and pooled launchers cannot overlap. A surviving service/reservation
     # also blocks a legacy launcher whose predecessor lost its lock.
-    if not args.pool:
+    admission = None
+    if not args.pool or args.all_cpus_exclusive:
         # Held from this check to the end of the run, so no pooled admission
         # from any checkout can interleave with this launch or start beside it.
         POOL_DIRECTORY.mkdir(parents=True, exist_ok=True)
@@ -469,7 +497,9 @@ def main():
     if args.pool:
         spec.update(pool=args.pool, priorityPolicy='desktop-managed', logDirectory=str(folder),
                     affinityEnforcement='systemd-and-inherited-process')
-        reserve_pool(spec)
+        reserve_pool(spec, held_admission=admission)
+        if args.all_cpus_exclusive:
+            spec.update(cpus=sorted(os.sched_getaffinity(0)), exclusiveAllCpus=True)
     save(folder / 'invocation.json', spec)
     launch = ['systemd-run', '--user', '--quiet', '--wait', '--pipe', '--collect',
               '--unit=' + unit, '--property=MemoryMax=' + str(spec['memoryMax']),
@@ -478,7 +508,7 @@ def main():
               '--property=TimeoutStopSec=5', '--property=KillMode=control-group',
               '--property=OOMPolicy=kill', '--property=IOSchedulingClass=idle']
     if args.pool:
-        launch += ['--property=CPUAffinity=' + str(spec['cpu'])]
+        launch += ['--property=CPUAffinity=' + ' '.join(map(str, spec.get('cpus', [spec['cpu']])))]
     else:
         launch += ['--property=Nice=15']
     launch += ['--setenv=' + name + '=1' for name in THREADS]
@@ -492,10 +522,10 @@ def main():
             subprocess.run(['systemctl', '--user', 'stop', unit],
                            stdout=stderr, stderr=stderr, check=False)
             if args.pool:
-                release_pool(spec)
+                release_pool(spec, held_admission=admission)
             raise
     if args.pool:
-        release_pool(spec)
+        release_pool(spec, held_admission=admission)
     outcome = {'exitCode': result.returncode, 'wallSeconds': time.monotonic()-started,
                'unit': unit, 'stderrBytes': (folder / 'stderr').stat().st_size,
                'limitsVerified': (folder / 'limit-validation.json').exists(),

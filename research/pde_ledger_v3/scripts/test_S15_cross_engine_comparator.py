@@ -7,9 +7,13 @@ Coverage controls are additionally run with each named reduction on its own.
 """
 import argparse
 from dataclasses import replace
+from contextlib import contextmanager
+from functools import lru_cache
 from io import StringIO
+import inspect
 import hashlib
 import json
+import multiprocessing
 import os
 import tempfile
 import importlib.util
@@ -26,7 +30,8 @@ ROOT=Path('/var/projects/toy_physics/_scratch/s15/cmp_work/fixtures')
 ROOT.mkdir(parents=True,exist_ok=True)
 FAST={'forms':c.FORMS[:1],'strata':('generic',),'points':(0,)}
 COUNTS={}
-OVERRIDE={}
+ABLATIONS=[]
+ACTIVE_CONTROL=''
 x=s.symbols('x_1 x_2 x_3 t'); F=s.Function('W_1')(*x)
 MAP={r.py:r.wl for r in c.NAME_TABLE}
 
@@ -76,8 +81,163 @@ def fixture_run(py,wl,rows=None,names=c.NAME_TABLE,options=None,workers=1,submis
         paths.append(path)
     out=StringIO()
     with tempfile.TemporaryDirectory(prefix='schedule_',dir=ROOT) as directory:
-        c.run(*paths,out,names=names,bindings=rows,options={**(FAST if options is None else options),**OVERRIDE},progress=False,metadata=False,workers=workers,spool=Path(directory)/'bindings',submission_order=submission_order)
-    return [json.loads(line) for line in out.getvalue().splitlines()]
+        c.run(*paths,out,names=names,bindings=rows,options=FAST if options is None else options,progress=False,metadata=False,workers=workers,spool=Path(directory)/'bindings',submission_order=submission_order)
+    result=Fixture(json.loads(line) for line in out.getvalue().splitlines())
+    result.recipe=(tuple(paths),tuple(rows),tuple(names),dict(FAST if options is None else options),tuple(c.SLOT_TABLE),workers,submission_order)
+    return result
+
+
+class Fixture(list):
+    """A native-stream result with the exact inputs needed for fault replay."""
+
+
+# Faults are confined to one production operation and one binding. The source
+# on disk is never modified. Each replacement must identify exactly one site.
+# In particular, no fault uses disable_comparison or removes all comparisons.
+FAULTS={
+    'exact':('compare_value','residual=exact_difference(aa,bb)','residual=exact_difference(aa,aa)'),
+    'sample_py':('compare_value','for v in (aa,bb)]','for v in (bb,bb)]'),
+    'sample_wl':('compare_value','for v in (aa,bb)]','for v in (aa,aa)]'),
+    'sample_offset':('compare_value',"rec.update(py=str(vals[0])", "vals[0]=s.Not(vals[0]) if vals[0] in (s.true,s.false) else vals[0]+1\n                rec.update(py=str(vals[0])"),
+    'text':('compare_value',"if aa!=bb else []","if False else []"),
+    'text_equality':('compare_value',"if aa!=bb else []","if True else []"),
+    'dimension':('compare_value','ca,cb=Counter(aa),Counter(bb)','ca,cb=Counter(aa),Counter(aa)'),
+    'dimension_sample':('compare_value',"'py':sorted(str(v.subs(env)) for v in aa)","'py':sorted(str(v.subs(env)) for v in bb)"),
+    'dimension_offset':('compare_value',"'py':sorted(str(v.subs(env)) for v in aa)","'py':sorted(str(2*v.subs(env)) for v in aa)"),
+    'formation':('compare_binding',"computed={'not_formed':str(exc)}","computed={}"),
+    'domain':('compare_value','domains=[evaluate_cached(v,form,stratum,index,opts) for v in conditions]','domains=[s.true for v in conditions]'),
+    'leaf_credit':('compare_binding',"if not options.get('omit_leaf_credit'):","if False:"),
+}
+
+
+@lru_cache(None)
+def altered_function(fault):
+    name,old,new=FAULTS[fault]
+    source=inspect.getsource(getattr(c,name))
+    assert source.count(old)==1, 'fault site absent or ambiguous: '+fault
+    namespace={}
+    exec(compile(source.replace(old,new),'<s15-test-fault:'+fault+'>','exec'),c.__dict__,namespace)
+    return namespace[name]
+
+
+@contextmanager
+def operation_fault(fault,binding):
+    name=FAULTS[fault][0];original=getattr(c,name);mutant=altered_function(fault)
+    def selected(*args,**kwargs):
+        row=args[2] if name=='compare_value' else args[0]
+        return (mutant if row.key==binding else original)(*args,**kwargs)
+    setattr(c,name,selected)
+    try:yield
+    finally:setattr(c,name,original)
+
+
+def replay(records,options=None):
+    paths,rows,names,opts,slots,workers,order=records.recipe
+    out=StringIO();old=c.SLOT_TABLE
+    try:
+        c.SLOT_TABLE=slots
+        with tempfile.TemporaryDirectory(prefix='ablation_',dir=ROOT) as directory:
+            c.run(*paths,out,names=names,bindings=rows,options={**opts,**(options or {})},progress=False,metadata=False,workers=workers,spool=Path(directory)/'bindings',submission_order=order)
+    finally:c.SLOT_TABLE=old
+    return list(map(json.loads,out.getvalue().splitlines()))
+
+
+def rejected_assertion(check,message):
+    # Only the intended assertion is evidence. Grammar errors, missing keys,
+    # an inactive baseline, or another assertion are test-harness bugs.
+    try:check()
+    except AssertionError as exc:
+        assert str(exc)==message, 'fault rejected at the wrong assertion: '+str(exc)
+    else:raise AssertionError('targeted control survived: '+message)
+
+
+def require(value,message):
+    assert value,message
+
+
+def audit_fault(fault,binding,fixtures,check,message):
+    check(*fixtures)
+    with operation_fault(fault,binding):mutants=[replay(q) for q in fixtures]
+    # Every non-target binding retains its full computation, not just operands.
+    for ordinary,mutated in zip(fixtures,mutants):
+        assert [q for q in comps(ordinary) if q['binding']!=binding]==[q for q in comps(mutated) if q['binding']!=binding], 'fault changed another binding'
+        for a,b in zip(comps(ordinary),comps(mutated)):
+            if a['binding']!=binding:continue
+            if fault in ('exact','text','dimension'):
+                assert a.get('samples')==b.get('samples') and a.get('dimension_evaluation')==b.get('dimension_evaluation'), 'residual fault disabled evaluation'
+            if fault.startswith('sample') or fault in ('domain','dimension_sample','dimension_offset'):
+                assert a.get('exact_residual')==b.get('exact_residual') and a.get('dimension_difference')==b.get('dimension_difference'), 'evaluation fault changed exact comparison'
+            if fault in ('sample_py','sample_wl'):
+                other='wl' if fault=='sample_py' else 'py'
+                assert [v.get(other) for v in a['samples']]==[v.get(other) for v in b['samples']], 'sample fault changed the other operand'
+    rejected_assertion(lambda:check(*mutants),message)
+    ABLATIONS.append({'control':ACTIVE_CONTROL,'instance':len(ABLATIONS)+1,'binding':binding,'fault':fault,
+        'site':FAULTS[fault][0],'removed':FAULTS[fault][1],'installed':FAULTS[fault][2],
+        'assertion':message,'fixtures':[[str(p) for p in q.recipe[0]] for q in fixtures],
+        'configurations':[{'options':q.recipe[3],
+            'name_rows_changed':[c.asdict(r) for r in q.recipe[2] if r not in c.NAME_TABLE],
+            'slot_rows':[c.asdict(r) for r in q.recipe[4]]} for q in fixtures],
+        'bindings':[[c.asdict(r) for r in q.recipe[1] if r.key==binding] for q in fixtures]})
+
+
+def comparison(records,binding):return next(q for q in comps(records) if q['binding']==binding)
+
+
+def equivalent_samples(records,message='native-equivalent samples changed'):
+    for row in comps(records):
+        if not row.get('samples'):continue
+        key=row['binding']
+        def check(q):
+            ss=comparison(q,key)['samples']
+            require(bool(ss) and all(v.get('coverage')=='evaluated' and v['py']==v['wl'] for v in ss),message)
+        audit_fault('sample_offset',key,(records,),check,message)
+
+
+def custom_fault(name,description,fixtures,check,message,owner,attribute,mutant):
+    check(*fixtures)
+    original=getattr(owner,attribute)
+    try:
+        setattr(owner,attribute,mutant)
+        altered=[replay(q) for q in fixtures]
+    finally:setattr(owner,attribute,original)
+    rejected_assertion(lambda:check(*altered),message)
+    ABLATIONS.append({'control':ACTIVE_CONTROL,'instance':len(ABLATIONS)+1,'fault':name,
+        'site':attribute,'installed':description,'assertion':message,
+        'fixtures':[[str(p) for p in q.recipe[0]] for q in fixtures]})
+
+
+def record_order_equivalent(first,reordered):
+    message='record order changed comparison'
+    def check(a,b):require(computed(a)==computed(b),message)
+    original=c.Stream
+    class OrdinalRecords(original):
+        def __init__(self,*args,**kwargs):
+            super().__init__(*args,**kwargs)
+            if self.engine!='py':return
+            for prefix in ('dimension_argument/name@','dimension_argument/operand_a@','dimension_argument/operand_b@','dimension_argument/residuals@','partition/unlabelled_coefficient@'):
+                keys=[k for k in self.index if k.startswith(prefix)]
+                values=[self.index[k] for k in keys]
+                for key,value in zip(sorted(keys),values):self.index[key]=value
+    custom_fault('record_ordinal','assign repeated records to sorted identities in stream order',
+        (first,reordered),check,message,c,'Stream',OrdinalRecords)
+
+
+def duplicate_control(invoke,raise_text):
+    def check():
+        try:invoke()
+        except c.InputError:return
+        raise AssertionError('duplicate accepted')
+    check()
+    original=c.validate_tables;source=inspect.getsource(original)
+    assert source.count(raise_text)==1,'duplicate validator fault site absent'
+    namespace={}
+    exec(compile(source.replace(raise_text,'pass'),'<s15-duplicate-fault>','exec'),c.__dict__,namespace)
+    try:
+        c.validate_tables=namespace['validate_tables']
+        rejected_assertion(check,'duplicate accepted')
+    finally:c.validate_tables=original
+    ABLATIONS.append({'control':ACTIVE_CONTROL,'instance':len(ABLATIONS)+1,'fault':'duplicate_validation',
+        'site':'validate_tables','removed':raise_text,'installed':'pass','assertion':'duplicate accepted'})
 
 
 def comps(records):return [q for q in records if q['kind']=='comparison']
@@ -95,14 +255,45 @@ def exacts(records):return [q.get('exact_residual',q.get('dimension_difference',
 
 
 def detects(base,changed,evaluation=False,engine='py',exact=False):
-    assert comps(base) and all('not_compared' not in q and 'not_formed' not in q for q in comps(base)), 'baseline comparison inactive'
+    targets=[(a,b) for a,b in zip(comps(base),comps(changed)) if computed([a])!=computed([b])]
     assert computed(base)!=computed(changed),'mutation invisible to comparison'
+    assert all('not_compared' not in a and 'not_formed' not in a for a,b in targets), 'target baseline comparison inactive'
     other='wl' if engine=='py' else 'py'
     a=[q[other] for q in base if q['kind']=='operands'];b=[q[other] for q in changed if q['kind']=='operands']
     assert a==b,'unchanged operand changed'
     if samples(base,other) and samples(changed,other):assert samples(base,other)==samples(changed,other),'other operand evaluation changed'
     if evaluation:assert samples(base,engine) and samples(changed,engine) and samples(base,engine)!=samples(changed,engine),'mutation invisible to samples'
     if exact:assert exacts(base)!=exacts(changed),'mutation invisible to exact residual'
+    exercised=0
+    for a,b in targets:
+        key=a['binding']
+        if 'not_formed' in b:
+            message='required formation diagnostic absent'
+            def check(p,q):require(bool(comparison(q,key).get('not_formed')),message)
+            audit_fault('formation',key,(base,changed),check,message);exercised+=1
+            continue
+        for field,fault in (('exact_residual','exact'),('text_difference','text'),('dimension_difference','dimension')):
+            if a.get(field)==b.get(field):continue
+            message='mutation invisible to '+field
+            def check(p,q):require(comparison(p,key).get(field)!=comparison(q,key).get(field),message)
+            audit_fault(fault,key,(base,changed),check,message);exercised+=1
+        if a.get('dimension_evaluation')!=b.get('dimension_evaluation'):
+            message='mutation invisible to dimension evaluation'
+            def check(p,q):require(comparison(p,key).get('dimension_evaluation')!=comparison(q,key).get('dimension_evaluation'),message)
+            audit_fault('dimension_sample',key,(base,changed),check,message);exercised+=1
+        av=[q.get(engine) for q in a.get('samples',[]) if q.get('coverage')=='evaluated']
+        bv=[q.get(engine) for q in b.get('samples',[]) if q.get('coverage')=='evaluated']
+        if av and bv and av!=bv:
+            message='mutation invisible to samples of '+engine
+            def check(p,q):
+                def values(records):return [v.get(engine) for v in comparison(records,key).get('samples',[]) if v.get('coverage')=='evaluated']
+                require(values(p)!=values(q),message)
+            audit_fault('sample_'+engine,key,(base,changed),check,message);exercised+=1
+        if any(v.get('coverage')=='unresolved' for v in b.get('samples',[])):
+            message='malformed domain was assumed satisfied'
+            def check(p,q):require(any(v.get('coverage')=='unresolved' for v in comparison(q,key).get('samples',[])),message)
+            audit_fault('domain',key,(base,changed),check,message);exercised+=1
+    assert exercised,'mutation has no targeted comparison assertion'
 
 
 def basic_mutations():
@@ -142,7 +333,7 @@ def equivalences():
     for py,wl in cases:
         row=basic_row('condition' if py.startswith('(r_') else 'value')
         records=fixture_run({'object':py},{'object':wl},(row,))
-        assert samples(records) and samples(records)==samples(records,'wl'),'native-equivalent samples changed'
+        equivalent_samples(records)
     # Same bindings with the alternate native representation must have the same
     # computed comparison as the independently serialized canonical expression.
     for payload in ([F,2*F],{'a':F,'b':2*F},{'lhs':F,'rhs':2*F},[[F,2*F],[3*F,4*F]]):
@@ -151,29 +342,35 @@ def equivalences():
         else:paths=((0,),(1,))
         rows=tuple(replace(basic_row(),key=str(path),py=c.End('object',path),wl=c.End('object',path)) for path in paths)
         records=fixture_run({'object':payload},{'object':payload},rows)
-        assert samples(records) and samples(records)==samples(records,'wl')
+        equivalent_samples(records)
     row=replace(basic_row(),py=c.End('object',(1,)),wl=c.End('object',(1,)))
     records=fixture_run({'object':'Matrix([\n[W_1(x_1,x_2,x_3,t)],\n[2*W_1(x_1,x_2,x_3,t)]])'},{'object':[F,2*F]},(row,))
-    assert samples(records) and samples(records)==samples(records,'wl')
+    equivalent_samples(records)
     row=basic_row('dimension');r=fixture_run({'object':[[1,2,-2]]},{'object':[[1,2,-2]]},(row,))
-    assert all(q['dimension_evaluation']['py']==q['dimension_evaluation']['wl'] for q in comps(r))
+    message='dimension notation changed value'
+    def check(q):require(all(v['dimension_evaluation']['py']==v['dimension_evaluation']['wl'] for v in comps(q)),message)
+    audit_fault('dimension_offset','synthetic',(r,),check,message)
     row=basic_row('label');row=replace(row,py=c.End('REGULARITY'),wl=c.End('REGULARITY'))
     a=fixture_run({'REGULARITY':'same label'},{'REGULARITY':'"same label"'},(row,))
     b=fixture_run({'REGULARITY':'other label'},{'REGULARITY':'"other label"'},(row,))
-    assert [q['text_difference'] for q in comps(a)]==[q['text_difference'] for q in comps(b)]
+    message='label notation changed comparison'
+    def check(a,b):require([q['text_difference'] for q in comps(a)]==[q['text_difference'] for q in comps(b)],message)
+    audit_fault('text_equality','synthetic',(a,b),check,message)
     th,ph=s.symbols('theta phi');r=s.Function('r_in')(x[3]);trig=s.sin(th)**2*s.cos(ph)**2+s.sin(th)**2*s.sin(ph)**2+s.cos(th)**2
     for integrand in (F, s.diff(F,x[1])):
         first=s.Integral(integrand*r**2*s.sin(th),(th,0,s.pi),(ph,0,2*s.pi))
         second=s.Integral(integrand*r**2*s.sin(th)*trig,(th,0,s.pi),(ph,0,2*s.pi))
         a=fixture_run({'object':first},{'object':first});b=fixture_run({'object':second},{'object':first})
-        assert samples(a) and samples(a)==samples(b) and samples(b)==samples(b,'wl'),'surface integral representation changed value'
+        assert samples(a) and samples(a)==samples(b),'surface integral representation changed value'
+        equivalent_samples(a,'surface integral representation changed value')
+        equivalent_samples(b,'surface integral representation changed value')
 
 
 def long_native_payload():
     py=' + '.join(f'{i}*W_1(x_1,x_2,x_3,t)' for i in range(1,1501))
     wl=' + '.join(f'{i}*ww[1][x,y,z,t]' for i in range(1,1501))
     base=fixture_run({'object':py},{'object':wl})
-    assert samples(base) and samples(base)==samples(base,'wl')
+    equivalent_samples(base)
     detects(base,fixture_run({'object':py+' + x_1**2'},{'object':wl}),True,exact=True)
 
 
@@ -253,7 +450,7 @@ def partial_time_semantics():
             return v
         options={**FAST,'strata':c.STRATA,'points':tuple(range(len(c.POINTS)))}
         base=fixture_run({'object':wrap(partial)},{'object':wrap(expected)},options=options)
-        assert samples(base) and samples(base)==samples(base,'wl'), 'partial time became chart time'
+        equivalent_samples(base,'partial time became chart time')
         changed=fixture_run({'object':wrap(total)},{'object':wrap(expected)},options=options)
         detects(base,changed,True,exact=True)
 
@@ -349,9 +546,8 @@ def bound_name_repoints():
         finally:c.SLOT_TABLE=original
     try:
         c.SLOT_TABLE=original+(original[0],)
-        try:c.validate_tables(c.NAME_TABLE,(basic_row(),))
-        except c.InputError:pass
-        else:raise AssertionError('duplicate bound-name row accepted')
+        duplicate_control(lambda:c.validate_tables(c.NAME_TABLE,(basic_row(),)),
+            "raise InputError('duplicate bound-name row '+field)")
     finally:c.SLOT_TABLE=original
 
 
@@ -417,9 +613,17 @@ def packaging_and_accounting():
     row=replace(basic_row(),py=c.End('object',(0,)),wl=c.End('object',(0,)))
     a=fixture_run({'object':[F]},{'object':[F]},(row,));b=fixture_run({'object':[F,2*F]},{'object':[F]},(row,))
     aa=next(q for q in a if q['kind']=='tag_accounting' and q['engine']=='py');bb=next(q for q in b if q['kind']=='tag_accounting' and q['engine']=='py')
-    assert aa['parsed_leaves']!=bb['parsed_leaves'] and aa['actually_compared_leaves']==bb['actually_compared_leaves'] and bb['unpaired_components']
+    message='uncompared parsed leaf disappeared'
+    def check(a,b):
+        aa=next(q for q in a if q['kind']=='tag_accounting' and q['engine']=='py')
+        bb=next(q for q in b if q['kind']=='tag_accounting' and q['engine']=='py')
+        require(aa['parsed_leaves']!=bb['parsed_leaves'] and aa['actually_compared_leaves']==bb['actually_compared_leaves'] and bb['unpaired_components'],message)
+    custom_fault('unpaired_leaf','omit unpaired-component enumeration',(a,b),check,message,c,'unpaired',lambda *args:[])
+    custom_fault('parsed_census','replace parsed subtree leaf count with one',(a,b),check,message,c,'census',lambda node:1)
     bad=fixture_run({'object':[F]},{'object':[F]},(row,),options={**FAST,'omit_leaf_credit':True})
-    assert [q for q in a if q['kind']=='binding_accounting']!=[q for q in bad if q['kind']=='binding_accounting']
+    message='omitted leaf credit invisible'
+    def check(a,b):require([q for q in a if q['kind']=='binding_accounting']!=[q for q in b if q['kind']=='binding_accounting'],message)
+    audit_fault('leaf_credit','synthetic',(a,bad),check,message)
     a=fixture_run({'object':'Matrix([\n[W_1(x_1,x_2,x_3,t)],\n[2*W_1(x_1,x_2,x_3,t)]])'},{'object':[F,2*F]},(row,))
     b=fixture_run({'object':'Matrix([\n[W_1(x_1,x_2,x_3,t)+1],\n[2*W_1(x_1,x_2,x_3,t)]])'},{'object':[F,2*F]},(row,))
     detects(a,b,True,exact=True)
@@ -436,21 +640,21 @@ def equation_relation_kind():
 
 def repeated_records():
     def record(key,value):return [('dimension_argument/name',repr((key,0,'x_1'))),('dimension_argument/operand_a',[[1,0,0]]),('dimension_argument/operand_b',value),('dimension_argument/residuals',[[0,0,0]])]
-    first=record('u_1',[[1,0,0]]);second=record('u_2',[[1,0,0]])
+    first=record('u_1',[[1,0,0]]);second=record('u_2',[[0,1,0]])
     key=json.dumps(c.data(c.py_parse(first[0][1])),separators=(',',':'))
     row=replace(basic_row('dimension'),py=c.End('dimension_argument/operand_b@'+key),wl=c.End('group',(0,)))
-    wl={'group':[[[1,0,0]],[[1,0,0]]]}
+    wl={'group':[[[1,0,0]],[[0,1,0]]]}
     a=fixture_run(first+second,wl,(row,));b=fixture_run(record('u_1',[[0,1,0]])+second,wl,(row,))
     detects(a,b,exact=True)
     detects(a,fixture_run(second,wl,(row,)))
     reordered=fixture_run(second+first,wl,(row,))
-    assert computed(a)==computed(reordered),'record order changed comparison'
+    record_order_equivalent(a,reordered)
     def partition(tag,value):return [(tag+'/dimension_pair_residuals',[]),('partition/unlabelled_coefficient',value)]
     row=replace(basic_row(),py=c.End('partition/unlabelled_coefficient@inner/carried/component_1'),wl=c.End('object'))
     first=partition('inner/carried/component_1',F);second=partition('outer/carried/component_1',2*F)
     a=fixture_run(first+second,{'object':F},(row,));b=fixture_run(partition('inner/carried/component_1',F+1)+second,{'object':F},(row,))
     detects(a,b,True,exact=True);detects(a,fixture_run(second,{'object':F},(row,)))
-    assert computed(a)==computed(fixture_run(second+first,{'object':F},(row,)))
+    record_order_equivalent(a,fixture_run(second+first,{'object':F},(row,)))
 
 
 def supplied_equation_and_alias():
@@ -486,7 +690,14 @@ def coverage_controls():
         options={**FAST,**(full or {})}
         a=fixture_run({'object':py},{'object':wl},options=options)
         b=fixture_run({'object':py},{'object':wl},options={**options,**reduction})
-        assert samples(a) and samples(a)!=samples(a,'wl'),'full coverage missed witness'
+        message='full coverage missed witness'
+        def check(q):require(samples(q) and samples(q)!=samples(q,'wl'),message)
+        check(a)
+        rejected_assertion(lambda:check(b),message)
+        assert exacts(a)==exacts(b),'coverage reduction changed exact comparison'
+        ABLATIONS.append({'control':ACTIVE_CONTROL,'instance':len(ABLATIONS)+1,'fault':'coverage_reduction',
+            'site':'sample grid or profile options','installed':reduction,'assertion':message,
+            'fixtures':[[str(p) for p in a.recipe[0]]]})
         assert samples(b) and samples(b)==samples(b,'wl'),'individual reduction did not miss its witness'
         return a,b
     witness((x[0]-c.POINTS[0][0])*F,s.S.Zero,{'points':(0,)},{'points':(0,1,2)})
@@ -534,18 +745,18 @@ def test_functions():
 
 
 def duplicates():
-    def rejected(fn):
-        try:fn()
-        except c.InputError:return
-        raise AssertionError('duplicate accepted')
     row=basic_row()
-    rejected(lambda:c.validate_tables(c.NAME_TABLE,(row,replace(row,key='other'))))
-    rejected(lambda:c.validate_tables(c.NAME_TABLE+(c.NAME_TABLE[0],),(row,)))
-    rejected(lambda:c.validate_tables(c.NAME_TABLE,(row,),('same','same')))
+    duplicate_control(lambda:c.validate_tables(c.NAME_TABLE,(row,replace(row,key='other'))),
+        "raise InputError('duplicate binding end '+field+' '+str(end))")
+    duplicate_control(lambda:c.validate_tables(c.NAME_TABLE+(c.NAME_TABLE[0],),(row,)),
+        "raise InputError('duplicate name row '+field)")
+    duplicate_control(lambda:c.validate_tables(c.NAME_TABLE,(row,),('same','same')),
+        "raise InputError('duplicate binding rule')")
     original_rules=c.RULE_NAMES
     try:
         c.RULE_NAMES=original_rules+(original_rules[0],)
-        rejected(lambda:fixture_run({'object':F},{'object':F}))
+        duplicate_control(lambda:fixture_run({'object':F},{'object':F}),
+            "raise InputError('duplicate binding rule')")
     finally:c.RULE_NAMES=original_rules
     a=fixture_run({'object':F},{'object':F})
     b=fixture_run([('object',F),('object',2*F)],{'object':F})
@@ -572,7 +783,7 @@ def dag_sampling():
                 for obj in objects:
                     polynomial=c.substituted(obj,form,stratum,index)
                     base=fixture_run({'object':obj},{'object':polynomial},options=options)
-                    assert samples(base) and samples(base)==samples(base,'wl'), 'DAG sampling changed a substituted value'
+                    equivalent_samples(base,'DAG sampling changed a substituted value')
                     detects(base,fixture_run({'object':obj+1},{'object':polynomial},options=options),True,exact=True)
 
 
@@ -603,10 +814,11 @@ def parallel_schedule():
     assert any(q.get('exact_residual') is not None for q in comps(base)), 'parallel comparison inactive'
     for workers,order in ((2,'forward'),(8,'forward'),(8,'reverse')):
         result=fixture_run(objects,wl,rows=rows,options=options,workers=workers,submission_order=order)
-        assert normalized(result)==normalized(base), 'scheduling changed mathematical output or accounting'
+        message='scheduling changed mathematical output or accounting'
+        def check(q):require(normalized(q)==normalized(base),message)
+        audit_fault('sample_offset','scalar',(result,),check,message)
         changed=fixture_run({**objects,'scalar':F+1},wl,rows=rows,options=options,workers=workers,submission_order=order)
-        assert computed(changed)!=computed(result) and samples(changed)!=samples(result),'parallel mutation invisible'
-        assert samples(changed,'wl')==samples(result,'wl'),'parallel other operand moved'
+        detects(result,changed,True,exact=True)
 
 
 def nested_radial_derivative():
@@ -632,7 +844,7 @@ def nested_radial_derivative():
             for index in range(len(c.POINTS)):
                 options={'forms':(form,),'strata':(stratum,),'points':(index,)}
                 base=fixture_run({'object':nested},{'object':reference},options=options)
-                assert samples(base) and samples(base)==samples(base,'wl'),'nested radial derivative lost its exact polynomial value'
+                equivalent_samples(base,'nested radial derivative lost its exact polynomial value')
                 mutated=s.Integral(boundary+s.Integral((derivative+1)*measure,radial),*angles)
                 detects(base,fixture_run({'object':mutated},{'object':reference},options=options),True,exact=True)
 
@@ -655,7 +867,7 @@ def nested_integral_parameters():
     options={'forms':c.FORMS,'strata':c.STRATA,'points':tuple(range(len(c.POINTS)))}
     base=fixture_run({'object':nested},{'object':flat},options=options)
     assert samples(base) and len(samples(base))==len(c.FORMS)*len(c.STRATA)*len(c.POINTS)
-    assert samples(base)==samples(base,'wl'),'nested integral lost outer parameters'
+    equivalent_samples(base,'nested integral lost outer parameters')
     for change in (integrand+s.sin(th),integrand.xreplace({derivative:s.Subs(s.diff(formal,c.FORMAL[0],c.FORMAL[3]),c.FORMAL,(points[0]+1,)+points[1:])})):
         mutated=s.Integral(boundary+s.Integral(change,radial),*angles)
         detects(base,fixture_run({'object':mutated},{'object':flat},options=options),True,exact=True)
@@ -667,7 +879,7 @@ def nested_integral_parameters():
         (s.Integral(s.Integral(s.Function('W_1')(r,s.cos(ph),x[2],time)*(1+s.cos(th)**2),(th,0,s.pi))+r,(ph,0,2*s.pi),(r,1,2)),
          s.Integral(s.Function('W_1')(r,s.cos(ph),x[2],time)*(1+s.cos(th)**2),(th,0,s.pi),(ph,0,2*s.pi),(r,1,2))+s.Integral(r,(ph,0,2*s.pi),(r,1,2)))):
         values=fixture_run({'object':nested},{'object':flat})
-        assert samples(values) and samples(values)==samples(values,'wl')
+        equivalent_samples(values)
         detects(values,fixture_run({'object':nested+1},{'object':flat}),True,exact=True)
 
 
@@ -680,7 +892,7 @@ def split_integral_evaluation():
     whole=s.Integral(field,(r,0,1))
     options={'forms':c.FORMS,'strata':c.STRATA,'points':tuple(range(len(c.POINTS)))}
     base=fixture_run({'object':first+second},{'object':whole},options=options)
-    assert samples(base) and samples(base)==samples(base,'wl'),'linear integral evaluation changed value'
+    equivalent_samples(base,'linear integral evaluation changed value')
     changed=fixture_run({'object':first+second+s.Integral(1,(r,0,1))},{'object':whole},options=options)
     detects(base,changed,True,exact=True)
     # Different bounds and a product stay distinct under the linear evaluator.
@@ -689,21 +901,32 @@ def split_integral_evaluation():
                 s.Integral(field,(r,0,2))*s.Integral(field,(r,0,1))):
         reference=c.substituted(obj,c.FORMS[0],c.STRATA[0],0)
         values=fixture_run({'object':obj},{'object':reference})
-        assert samples(values) and samples(values)==samples(values,'wl')
+        equivalent_samples(values)
         detects(values,fixture_run({'object':obj+1},{'object':reference}),True,exact=True)
 
 
 def sparse_integral_oracle():
-    # Independent dense expansion on synthetic polynomials only. No measured
-    # transcript or source is loaded. Compare through both native readers.
+    # Independent dense Fourier expansion on synthetic polynomials only.
+    # The oracle integrates each exponential mode at its endpoints. It neither
+    # calls angular_moment nor uses that function's beta/gamma moment formula.
     th,ph,r=s.symbols('theta phi s')
     sn,cs,sp,cp=s.sin(th),s.cos(th),s.sin(ph),s.cos(ph)
+    @lru_cache(None)
+    def fourier_moment(p,q,full):
+        terms=[]
+        for i in range(p+1):
+            for j in range(q+1):
+                frequency=p+q-2*(i+j)
+                coefficient=s.binomial(p,i)*s.binomial(q,j)*(-1)**i/(2**(p+q)*s.I**p)
+                endpoint=(2*s.pi if full else s.pi) if frequency==0 else (s.S.Zero if full else ((s.Integer(-1))**frequency-1)/(s.I*frequency))
+                terms.append(coefficient*endpoint)
+        return s.simplify(s.Add(*terms))
     def dense(integrand,radial=False):
         generators=(sn,cs,sp,cp,r) if radial else (sn,cs,sp,cp)
         polynomial=s.Poly(s.expand(integrand),*generators)
         terms=[]
         for powers,coefficient in polynomial.terms():
-            value=coefficient*c.angular_moment(*powers[:2],False)*c.angular_moment(*powers[2:4],True)
+            value=coefficient*fourier_moment(*powers[:2],False)*fourier_moment(*powers[2:4],True)
             if radial:value*=(s.Rational(5,2)**(powers[4]+1)-s.Rational(2,3)**(powers[4]+1))/(powers[4]+1)
             terms.append(value)
         return s.Add(*terms)
@@ -716,7 +939,25 @@ def sparse_integral_oracle():
         limits=((r,s.Rational(2,3),s.Rational(5,2)),(th,0,s.pi),(ph,0,2*s.pi)) if radial else ((th,0,s.pi),(ph,0,2*s.pi))
         integral=s.Integral(expression,*limits);oracle=dense(polynomial,radial)
         base=fixture_run({'object':integral},{'object':oracle})
-        assert samples(base) and samples(base)==samples(base,'wl'),'sparse moments differ from dense expansion'
+        equivalent_samples(base,'sparse moments differ from independent Fourier expansion')
+        # Alter the actual production moment, not the comparison's output.
+        # Clear evaluator caches so a previously evaluated integral cannot hide
+        # the defect; the already serialized Fourier oracle remains unchanged.
+        original=c.angular_moment
+        def clear():
+            for fn in (c.evaluated_node,c.evaluate_cached,c.integrate_exact):fn.cache_clear()
+        try:
+            clear();c.angular_moment=lambda p,q,full:original(p,q,full)/(2 if full else 1)
+            altered=replay(base)
+        finally:c.angular_moment=original;clear()
+        message='sparse moments differ from independent Fourier expansion'
+        rejected_assertion(lambda:require(samples(altered) and samples(altered)==samples(altered,'wl'),message),message)
+        assert samples(altered,'wl')==samples(base,'wl'),'moment defect changed the independent oracle'
+        assert exacts(altered)==exacts(base),'moment defect changed symbolic subtraction'
+        ABLATIONS.append({'control':ACTIVE_CONTROL,'instance':len(ABLATIONS)+1,'binding':'synthetic',
+            'fault':'full_range_moment_halved','site':'angular_moment','removed':'full-range moment',
+            'installed':'original moment / 2 for full=True only; evaluator caches cleared',
+            'assertion':message,'fixtures':[[str(p) for p in base.recipe[0]]]})
         changed=fixture_run({'object':s.Integral(expression+sn,*limits)},{'object':oracle})
         detects(base,changed,True,exact=True)
 
@@ -758,27 +999,49 @@ def exclusive_guard_controls():
 TESTS=(exclusive_guard_controls,nested_radial_derivative,nested_integral_parameters,split_integral_evaluation,sparse_integral_oracle,parallel_schedule,long_native_payload,basic_mutations,labels_and_conditions,equivalences,derivative_points,mixed_second_derivative_points,partial_time_semantics,integral_changes,binding_repoints,name_repoints,bound_name_repoints,pieces_groups_and_components,packaging_and_accounting,equation_relation_kind,repeated_records,supplied_equation_and_alias,coverage_controls,test_functions,duplicates,dag_sampling,quadrature)
 
 
+def control_job(name):
+    global ACTIVE_CONTROL,ABLATIONS,ROOT
+    ACTIVE_CONTROL=name;ABLATIONS=[]
+    ROOT=Path('/var/projects/toy_physics/_scratch/s15/cmp_work/fixtures')/name
+    ROOT.mkdir(parents=True,exist_ok=True)
+    print('WORKING_ON: control '+name,flush=True)
+    try:
+        globals()[name]()
+        return name,ABLATIONS,None
+    except Exception:return name,ABLATIONS,traceback.format_exc()
+
+
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--output',required=True,type=Path);args=parser.parse_args()
     started=time.monotonic()
+    global ACTIVE_CONTROL,ABLATIONS
     try:
+        # Independent synthetic groups share no comparator state. The scheduling
+        # control runs in the parent, separately, because it creates its own pool.
+        jobs=[fn.__name__ for fn in TESTS if fn!=parallel_schedule]
+        results={}
+        with multiprocessing.get_context('fork').Pool(8) as pool:
+            for name,ablations,error in pool.imap_unordered(control_job,jobs):
+                results[name]=(ablations,error)
+                print('WORKING_ON: completed '+name,flush=True)
+        if not any(error for _,error in results.values()):
+            name,ablations,error=control_job('parallel_schedule');results[name]=(ablations,error)
+        ABLATIONS=[]
+        errors=[]
         for fn in TESTS:
-            print('WORKING_ON: control '+fn.__name__,flush=True);fn();COUNTS[fn.__name__]='completed'
-        # Every comparison-targeting group must reject its own disabled path.
-        # Pure test-profile construction and duplicate-table checks do not target
-        # the comparison path, and have their direct defect controls above.
+            if fn.__name__ not in results:continue
+            ablations,error=results[fn.__name__]
+            for entry in ablations:entry['instance']=len(ABLATIONS)+1;ABLATIONS.append(entry)
+            if error:errors.append(fn.__name__+'\n'+error)
+            else:COUNTS[fn.__name__]='completed'
+        if errors:raise AssertionError('\n'.join(errors))
         for fn in TESTS:
-            if fn in (test_functions,exclusive_guard_controls):continue
-            print('WORKING_ON: comparison ablation '+fn.__name__,flush=True)
-            OVERRIDE['disable_comparison']=True
-            try:fn()
-            except (AssertionError,KeyError):COUNTS['disable_'+fn.__name__]='control rejected reduction'
-            else:raise AssertionError('control survived disabled comparison: '+fn.__name__)
-            finally:OVERRIDE.clear()
+            if fn in (exclusive_guard_controls,test_functions):continue
+            assert any(q['control']==fn.__name__ for q in ABLATIONS),'control has no targeted ablation: '+fn.__name__
     except Exception:
-        args.output.write_text(json.dumps({'completed':COUNTS,'exception':traceback.format_exc(),'runtime_seconds':time.monotonic()-started,'peak_rss_kib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss},indent=2)+'\n')
+        args.output.write_text(json.dumps({'completed':COUNTS,'targeted_ablations':ABLATIONS,'exception':traceback.format_exc(),'runtime_seconds':time.monotonic()-started,'peak_rss_kib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss},indent=2)+'\n')
         raise
-    args.output.write_text(json.dumps({'controls':COUNTS,'synthetic_only':True,'runtime_seconds':time.monotonic()-started,'peak_rss_kib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss},indent=2)+'\n')
-    print(json.dumps({'control_groups':len(COUNTS),'runtime_seconds':time.monotonic()-started}),flush=True)
+    args.output.write_text(json.dumps({'controls':COUNTS,'targeted_ablations':ABLATIONS,'synthetic_only':True,'runtime_seconds':time.monotonic()-started,'peak_rss_kib':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss},indent=2)+'\n')
+    print(json.dumps({'control_groups':len(COUNTS),'targeted_ablations':len(ABLATIONS),'runtime_seconds':time.monotonic()-started}),flush=True)
 
 if __name__=='__main__':main()

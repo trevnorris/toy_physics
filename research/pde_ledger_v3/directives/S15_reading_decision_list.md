@@ -7,6 +7,9 @@ Paths are relative to `research/pde_ledger_v3/`. The lookups behind this list ar
 **Gate.** This list gets one Codex + Grok pass and is folded once (G2). It also names the objects the build computes,
 so that content is reviewed until clear before any builder (spec row).
 
+**Revision 2** folds pass 1 once (`directives/_measurements/S15_reading_decision_list_review_p1_disposition.md`,
+F1–F4). The reviewed revision 1 is preserved at `1c6695df`.
+
 ## Why this build
 - The user's S15 choice **"Keep it general"** reads, verbatim: "Any radial inflow and density profile around each
   drain. S15 then says which profiles give an inverse-square pull, and that becomes gravity's flow requirement,
@@ -39,8 +42,15 @@ so that content is reviewed until clear before any builder (spec row).
   change.
 - **The departure from the inverse square:** `E_Q = 𝒟Q + 2Q`. `Q` falls off as the inverse square of the separation
   along the family exactly where `E_Q = 0` for every `D` on the domain.
-- **Its two parts:** `E_Q = E_Q^geo + E_Q^resp`. `E_Q^resp` holds every term that contains a change `F′`;
-  `E_Q^geo` holds the rest.
+- **Its two parts:** `E_Q = E_Q^geo + E_Q^resp`, where
+  - `E_Q^geo = (𝒟Q)|_{F′=0} + 2Q` is the departure when no quantity other than `X_1` changes along the family;
+  - `E_Q^resp = E_Q − E_Q^geo` is what the changes add.
+
+  The parts are these objects, whatever form an engine writes a term in.
+- **Where they exist.** Each departure object is stated where the separation derivative of its object exists, and it
+  carries the condition under which it does, labelled where it is printed. For instance, the separation derivative
+  of the whole pressure, and of the whole minus the expansion, needs `p_br` differentiable at the total density. The
+  response part of the expansion needs `p_br′` differentiable at `ρ_2 + ϱ`.
 
 ## The profile family (a labelled choice, items 3 and 4 only)
 `u_k(r, t) = A_k(t) r^{a_k}` and `ρ_k(r, t) = B_k(t) r^{b_k}`, for `k = 1, 2`. The amplitudes `A_k`, `B_k` are general
@@ -58,7 +68,8 @@ Both engines construct these independently, with the `.wl` blind.
 
 **For each `Q`:**
 1. `Q` itself.
-2. `E_Q^geo` and `E_Q^resp`, for general profiles, exact on the domain, with every live quantity kept.
+2. `E_Q^geo` and `E_Q^resp`, for general profiles, exact wherever they exist on the domain, with every live quantity
+   kept.
 3. `E_Q^geo` on the profile family, with its dependence on `d` explicit and exact. Where the integrand holds no general
    field besides the family's amplitudes, the region's quantities and the velocities, the integrals are evaluated in
    closed form. Otherwise the object is printed with the family substituted and left unevaluated.
@@ -70,7 +81,8 @@ Both engines construct these independently, with the `.wl` blind.
 5. For each drain `k`, the part of `Q` that depends on that drain's velocity: `Q` minus `Q` at `Ẋ_k = 0`.
 6. Dimensional homogeneity of items 2 and 5, each change `F′` carrying the dimension of `F`.
 
-Every object is exact on S15's domain, and each pressure object carries its condition. No limit or expansion is taken
+Every object is exact on S15's domain wherever it exists, and it carries the conditions under which it exists: S15's
+pressure conditions, and for each departure object the conditions above. No limit or expansion is taken
 in place of an exact object. Where an engine does not obtain an object exactly, it prints a label saying so, beside
 what it did print.
 
@@ -89,8 +101,11 @@ normalization or mass, and identifies no printed object with a pull or with the 
 - **The comparator** compares items 1–6 across engines. It also compares item 1 with the accepted S15 transcripts.
 - **The record.** Its decision list is written after this build's comparator is accepted. It reads S15's objects and
   this build's, as S15's list asks (`:145–156`):
-  - for each `Q`, the printed conditions under which its departure vanishes, and `E_Q^resp`;
-  - gravity's flow requirement for S21, stated as those printed conditions;
+  - for each `Q`, the printed conditions under which `E_Q^geo` vanishes. These are the conditions under which `Q`
+    falls off as the inverse square when no quantity other than `X_1` changes along the family. Beside them it reads
+    `E_Q^resp`, what any change adds. Neither is read as a condition for `E_Q = 0` while the changes are live;
+  - gravity's flow requirement for S21, stated as those conditions, with `E_Q^resp` and the conditions of existence
+    beside them;
   - the velocity-dependent parts.
 
   It checks the prior-art rows as S15's list says (`:160–163`).
@@ -98,15 +113,18 @@ normalization or mass, and identifies no printed object with a pull or with the 
 ## Retained OPEN
 - Everything S15's list retains as OPEN (`:174–186`).
 - For general profiles, the conditions under which `E_Q^geo` vanishes. Item 2 prints it; this build does not solve it.
-- Whether, and how, any quantity changes with the separation. `E_Q^resp` prints the terms such a change would add;
-  no change is modelled.
+- Whether, and how, any quantity changes with the separation. `E_Q^resp` prints what such a change would add. No
+  change is modelled, so no condition for `E_Q = 0` with the changes live is computed.
 
 ## Intended claim
 For each object S15 prints: its departure from the inverse square of the separation, exact, for general profiles,
-with every quantity's change along the family live. On the power-law profile family, the conditions under which each
-closed-form departure vanishes. The claim is conditional on P5, P6, `R-S14a-01` and the labelled choices. It gives
-no force law and no pull, and no printed object is the force on a throat.
+with every quantity's change along the family live, wherever it exists. On the power-law profile family, the
+conditions under which each closed-form geometric departure vanishes: the conditions under which the object falls off
+as the inverse square when no quantity other than `X_1` changes along the family. The claim is conditional on P5, P6,
+`R-S14a-01` and the labelled choices. It gives no force law and no pull, and no printed object is the force on a
+throat.
 
 ## Next
-One Codex + Grok pass; the spec content is reviewed until clear. Then the build (Codex) and its G1 review (fresh
-Claude + Grok) until clear; the comparator; and the S15 record list.
+Pass 1 is folded once, here. The spec content changed, so it gets a second Codex + Grok pass, and is reviewed until
+clear. Then the build (Codex) and its G1 review (fresh Claude + Grok) until clear; the comparator; and the S15 record
+list.

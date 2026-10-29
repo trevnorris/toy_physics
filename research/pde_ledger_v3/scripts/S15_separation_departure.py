@@ -27,9 +27,20 @@ def main(log):
         log.write(f'{name}: {obj}\n')
         log.flush()
 
+    current_object = 'construction'
     def progress(name):
+        nonlocal current_object
+        current_object = name
         print(f'WORKING_ON: {name}', flush=True)
         emit('WORKING_ON', name)
+
+    def cas_call(step, function, *args, **kwargs):
+        step += ' at source line ' + str(sys._getframe(1).f_lineno)
+        print(f'WORKING_ON: {current_object} / {step}', flush=True)
+        emit('WORKING_ON', current_object + ' / ' + step)
+        result = function(*args, **kwargs)
+        print(f'FINISHED_STEP: {current_object} / {step}', flush=True)
+        return result
 
     def solo(name, obj):
         if is_object(name): objects[name] = obj
@@ -144,10 +155,16 @@ def main(log):
     volume_measure = measure(chart(radius),(radius,theta,phi))
     def pull(expr,b):
         return expr.subs(dict(zip(xyz,chart(b))),simultaneous=True)
+    integral_origins={}
+    rate_origins={}
     def surface_integral(expr,b,area):
-        return S.Integral(pull(expr,b)*area,(theta,0,S.pi),(phi,0,2*S.pi))
+        obj=S.Integral(pull(expr,b)*area,(theta,0,S.pi),(phi,0,2*S.pi))
+        integral_origins[obj]=(expr,b,S.cancel(area/S.sin(theta)),False)
+        return obj
     def volume_integral(expr):
-        return S.Integral(pull(expr,radius)*volume_measure,(radius,rin,rout),(theta,0,S.pi),(phi,0,2*S.pi))
+        obj=S.Integral(pull(expr,radius)*volume_measure,(radius,rin,rout),(theta,0,S.pi),(phi,0,2*S.pi))
+        integral_origins[obj]=(expr,radius,S.cancel(volume_measure/S.sin(theta)),True)
+        return obj
 
     # Dimensional homogeneity is computed on expression trees. Density retains
     # an abstract independent dimension; no mass or normalization is inferred.
@@ -291,6 +308,7 @@ def main(log):
         momentum=volume_integral(strip(raw))
         # SymPy differentiates the live bounds and the translated integrand.
         rate=S.diff(momentum,t)
+        rate_origins[rate]=momentum
         forcing=volume_integral(force[i])
         for key,obj in [('momentum',momentum),('momentum_rate',rate),('integrated_force',forcing)]:
             solo(tag+'/'+key,obj); dimension_audit(tag+'/'+key,obj)
@@ -298,7 +316,9 @@ def main(log):
         for support,part in buckets.items():
             group_momentum=volume_integral(part)
             solo(tag+'/momentum_labels_'+names[support],group_momentum)
-            solo(tag+'/rate_labels_'+names[support],S.diff(group_momentum,t))
+            group_rate=S.diff(group_momentum,t)
+            rate_origins[group_rate]=group_momentum
+            solo(tag+'/rate_labels_'+names[support],group_rate)
         pair(tag+'/momentum_group_partition_integrand',strip(raw),sum(buckets.values()))
         parts=[surface_parts[0][i],surface_parts[1][i],forcing]
         rhs=sum(obj for surface in surface_parts for obj in surface[i].values())+forcing
@@ -406,40 +426,420 @@ def main(log):
         from sympy.core.function import AppliedUndef
         return any(q.func not in allowed_heads for q in expr.atoms(AppliedUndef))
 
+    # Item 3 uses the pre-chart integrands already constructed from Pi and G.
+    # The following kernels contain mathematical dummy variables only.
+    mu, az = S.symbols('mu az', real=True)
+    axis = S.symbols('axis_1:4', real=True)
+    nv = S.symbols('normal_1:4', real=True)
+    hh = S.Symbol('profile_distance', positive=True)
+    rr = S.Symbol('integration_radius', positive=True)
+    dd = S.Symbol('kernel_distance', positive=True)
+    ww = S.Symbol('squared_distance', positive=True)
+    pp, qq = S.symbols('kernel_power radial_power', real=True)
+    low, high = S.symbols('kernel_low kernel_high', positive=True)
+    sphere_gb = S.groebner([sum(z*z for z in axis)-1],*axis,domain='EX')
+    def unit_reduce(expr):
+        numerator,denominator=S.fraction(S.cancel(expr))
+        return S.cancel(sphere_gb.reduce(numerator)[1]/sphere_gb.reduce(denominator)[1])
+    pole=S.Matrix([0,0,1]); av=S.Matrix(axis)
+    hv=pole-av
+    rotation=S.eye(3)-hv*hv.T/(1-axis[2])
+    rotated=rotation*S.Matrix([S.sqrt(1-mu**2)*S.cos(az),S.sqrt(1-mu**2)*S.sin(az),mu])
+    pair('item3_kernel/rotation_metric',rotation.T*rotation,S.eye(3))
+    emit('item3_kernel/rotation_metric_unit_reduction',(rotation.T*rotation-S.eye(3)).applyfunc(unit_reduce))
+    emit('item3_kernel/rotation_chart_condition','axis is real unit; intermediate chart axis_3 != 1; polynomial moments extend to that pole by continuity.')
     @lru_cache(None)
-    def closed_route(expr):
-        # An exact, structural integration route. Angular polynomial integrands
-        # are integrated by SymPy; other angular powers remain exact integrals
-        # with an explicit gap. No expansion, special exponent or field freeze.
-        if isinstance(expr,S.Integral):
-            f=expr.function
-            # Chart identities are computed from the original radial distance.
-            # trigsimp is used only on the radial-distance bases, not on a large
-            # expanded physical integrand.
-            for base in list(f.atoms(S.Pow)):
-                if base.base.has(theta,phi) and not base.base.has(d):
-                    reduced=S.trigsimp(S.expand(base.base))
-                    f=f.xreplace({base.base:reduced})
-            f=S.expand_power_base(f,force=False)
-            trig_atoms={S.sin(theta),S.cos(theta),S.sin(phi),S.cos(phi)}
-            trig_symbols=S.symbols('angular_bookkeeping_0:4')
-            replacements=dict(zip(sorted(trig_atoms,key=str),trig_symbols))
-            test=f.xreplace(replacements)
+    def azimuth_moment(powers):
+        operand=S.expand(S.prod(v**n for v,n in zip(rotated,powers)))
+        answer=0
+        for term in S.Add.make_args(operand):
+            coefficient,angular=term.as_independent(az,as_Add=False)
+            answer+=coefficient*cas_call('integrate', S.integrate, angular,(az,0,2*S.pi))
+        answer=S.expand(unit_reduce(answer))
+        solo('item3_kernel/azimuth_operand',S.Integral(operand,(az,0,2*S.pi)))
+        solo('item3_kernel/azimuth_object',answer)
+        return answer
+    # The squared distance and Jacobian come from the rotated chart itself.
+    squared=S.trigsimp(S.expand((rr*rotated-dd*av).dot(rr*rotated-dd*av)))
+    squared=S.trigsimp(unit_reduce(squared))
+    solo('item3_kernel/distance_equation_operand',S.Eq(ww,squared))
+    distance_solutions=cas_call('solve', S.solve, S.Eq(ww,squared),mu)
+    solo('item3_kernel/distance_equation_solutions',distance_solutions)
+    mu_inverse=distance_solutions[0]
+    pair('item3_kernel/distance_change_relation',squared.subs(mu,mu_inverse),ww)
+    jacobian=-S.diff(mu_inverse,ww)
+    angular_bounds=[S.factor(squared.subs(mu,z)) for z in (1,-1)]
+    endpoint_distance=S.Symbol('endpoint_distance',positive=True)
+    endpoint_assumptions=S.Q.positive(dd-rr)&S.Q.negative(rr-dd)&S.Q.positive(dd+rr)
+    angular_distance_bounds=[S.refine(S.sqrt(bound),endpoint_assumptions) for bound in angular_bounds]
+    solo('item3_kernel/endpoint_domain',dd>rr)
+    solo('item3_kernel/distance_endpoints',angular_distance_bounds)
+    for bound,root in zip(angular_bounds,angular_distance_bounds):
+        pair('item3_kernel/distance_endpoint_relation',root**2,bound)
+    solo('item3_kernel/squared_distance',squared)
+    solo('item3_kernel/change_of_variable',(mu_inverse,jacobian,angular_bounds))
+    primitive_kernel=cas_call('integrate', S.integrate, ww**pp,ww,conds='piecewise')
+    solo('item3_kernel/power_primitive_operand',ww**pp)
+    solo('item3_kernel/power_primitive',primitive_kernel)
+    pair('item3_kernel/power_primitive_derivative',S.diff(primitive_kernel,ww),ww**pp)
+
+    # A finite-interval Appell representation avoids singular lower parameters
+    # at negative integer exponents. The coefficient identity derives the
+    # integration kernel; it is not a physical ansatz or a truncated expansion.
+    m,n=S.symbols('kernel_m kernel_n',integer=True,nonnegative=True)
+    aa,bb,xx,yy,zz=S.symbols('kernel_a kernel_b kernel_x kernel_y kernel_z')
+    binomial_coefficient=S.rf(-aa,m)*S.rf(-bb,n)/(S.factorial(m)*S.factorial(n))
+    integrated_coefficient=binomial_coefficient*cas_call('integrate', S.integrate, zz**(m+n),(zz,0,1))
+    appell_coefficient=binomial_coefficient*S.rf(1,m+n)/S.rf(2,m+n)
+    pair('item3_kernel/appell_coefficients',integrated_coefficient,appell_coefficient)
+    solo('item3_kernel/appell_coefficient_residual',S.simplify(integrated_coefficient-appell_coefficient))
+    emit('item3_kernel/appell_continuation','The coefficient identity defines the analytic germ of the integrated binomial product. Analytic continuation along the real integration interval is used only where both affine bases are positive; Appell lower parameter 2 is fixed, so all real powers are covered.')
+
+    @lru_cache(None)
+    def affine_integral(power_r, power_affine, sign):
+        print(f'WORKING_ON: {current_object} / finite-interval affine-power integration',flush=True)
+        emit('WORKING_ON',current_object+' / finite-interval affine-power integration')
+        # Substitute the endpoints into an affine unit-interval chart, derive
+        # its two binomial parameters and prefactor by evaluation/differentiation.
+        mapping=low+(high-low)*zz
+        bases=[mapping,dd+sign*mapping]
+        constants=[z.subs(zz,0) for z in bases]
+        parameters=[-S.diff(z,zz)/c for z,c in zip(bases,constants)]
+        return (S.diff(mapping,zz)*constants[0]**power_r*constants[1]**power_affine*
+                S.appellf1(1,-power_r,-power_affine,2,*parameters))
+
+    # Logarithmic angular branches are integrated by parts. The remaining
+    # rational-power integral uses the same nonsingular Appell kernel.
+    log_primitives={}
+    vv=S.Symbol('log_argument',positive=True)
+    for sign in (-1,1):
+        lp=cas_call('integrate', S.integrate, S.log(1+sign*vv)/vv,vv)
+        # On 0 < vv < 1 these polar arguments are the principal real branches.
+        lp=lp.replace(S.exp_polar,lambda arg:S.exp(arg))
+        log_primitives[sign]=lp
+        solo('item3_kernel/log_primitive_operand',S.log(1+sign*vv)/vv)
+        solo('item3_kernel/log_primitive',lp)
+        pair('item3_kernel/log_primitive_derivative',S.diff(lp,vv),S.log(1+sign*vv)/vv)
+    @lru_cache(None)
+    def radial_log(power_r,sign):
+        print(f'WORKING_ON: {current_object} / radial logarithm integration by parts',flush=True)
+        emit('WORKING_ON',current_object+' / radial logarithm integration by parts')
+        primitive=cas_call('integrate', S.integrate, rr**qq,rr,conds='none').subs(qq,power_r)
+        boundary=(primitive*S.log(dd+sign*rr)).subs(rr,high)-(primitive*S.log(dd+sign*rr)).subs(rr,low)
+        regular=boundary-sign*affine_integral(power_r+1,-1,sign)/(power_r+1)
+        special=S.log(dd)*S.log(high/low)+log_primitives[sign].subs(vv,high/dd)-log_primitives[sign].subs(vv,low/dd)
+        return S.Piecewise((regular,S.Ne(power_r,-1)),(special,True))
+
+    @lru_cache(None)
+    def radial_integral(expr):
+        print(f'WORKING_ON: {current_object} / radial term integration',flush=True)
+        emit('WORKING_ON',current_object+' / radial term integration')
+        # At most one endpoint power/log occurs in an angular monomial term.
+        expr=S.expand(expr,power_base=False,power_exp=False,log=False)
+        answer=0
+        for term in S.Add.make_args(expr):
+            term=S.factor_terms(term)
+            numerator,denominator=S.fraction(term)
+            numerator_powers=numerator.as_powers_dict()
+            denominator_powers=denominator.as_powers_dict()
+            power_r=(numerator_powers.pop(rr,S.Integer(0))-
+                     denominator_powers.pop(rr,S.Integer(0)))
+            # Rebuild the remaining product without expanding an affine power
+            # into a polynomial times another symbolic power.
+            rest=(S.prod(base**exponent for base,exponent in numerator_powers.items())/
+                  S.prod(base**exponent for base,exponent in denominator_powers.items()))
+            logs=list(rest.atoms(S.log))
+            if logs:
+                logarithm=logs[0]
+                sign=S.diff(logarithm.args[0],rr)
+                coefficient=S.cancel(rest/logarithm)
+                pair('item3_kernel/radial_log_factorization',term,coefficient*rr**power_r*logarithm)
+                emit('item3_kernel/radial_log_parts',(power_r,coefficient,logarithm,sign))
+                if coefficient.has(rr) or sign not in (-1,1):
+                    raise ValueError(('radial log factorization',term))
+                answer+=coefficient*radial_log(power_r,sign)
+            else:
+                affine_powers=[z for z in S.Mul.make_args(rest) if z.has(rr)]
+                if affine_powers:
+                    factor=affine_powers[0]
+                    base,exponent=factor.as_base_exp()
+                    sign=S.diff(base,rr)
+                    coefficient=S.cancel(rest/factor)
+                    pair('item3_kernel/radial_affine_factorization',term,coefficient*rr**power_r*base**exponent)
+                    emit('item3_kernel/radial_affine_parts',(power_r,coefficient,base,exponent,sign))
+                    if coefficient.has(rr) or sign not in (-1,1) or S.expand(base-sign*rr)!=dd:
+                        raise ValueError(('radial affine factorization',term))
+                    answer+=coefficient*affine_integral(power_r,exponent,sign)
+                else:
+                    integral=cas_call('integrate', S.integrate, rr**qq,(rr,low,high),conds='piecewise').subs(qq,power_r)
+                    answer+=rest*integral
+        return answer
+
+    @lru_cache(None)
+    def angular_kernel(powers,power,volume):
+        print(f'WORKING_ON: {current_object} / angular kernel integration',flush=True)
+        emit('WORKING_ON',current_object+' / angular kernel integration')
+        moment=azimuth_moment(powers)
+        if power.is_number:
+            value=cas_call('integrate', S.integrate, moment*squared**(power/2),(mu,-1,1))
+            return radial_integral(S.expand(value*rr**qq)) if volume else value
+        polynomial=S.Poly(S.expand(moment.subs(mu,mu_inverse)*jacobian),ww)
+        result=0
+        for (degree,),coefficient in polynomial.terms():
+            exponent=pp/2+degree
+            # Compute all exceptional powers from the primitive's conditions.
+            integral=primitive_kernel.subs(pp,exponent)
+            branches=[]
+            for primitive,condition in integral.args if isinstance(integral,S.Piecewise) else [(integral,S.true)]:
+                bounds=[]
+                # Simplify through a positive dummy distance first; only then
+                # substitute the positive roots derived on d > r > 0.
+                endpoint=S.expand_log(S.powdenest(primitive.subs(ww,endpoint_distance**2),force=True),force=True)
+                for root in angular_distance_bounds:
+                    bounds.append(endpoint.subs(endpoint_distance,root))
+                value=S.expand(coefficient*(bounds[1]-bounds[0]),power_base=False,power_exp=False,log=False)
+                if volume:
+                    value=radial_integral(S.expand(value*rr**qq,power_base=False,power_exp=False,log=False))
+                branches.append((value,condition))
+            result+=S.Piecewise(*branches).subs(pp,power)
+        return S.simplify(result) if power.is_number else result
+
+    trig_to_normal={S.cos(theta):nv[2],S.sin(theta):S.Symbol('chart_sine'),
+                    S.cos(phi):nv[0]/S.Symbol('chart_sine'),S.sin(phi):nv[1]/S.Symbol('chart_sine')}
+    @lru_cache(None)
+    def integrated_origin(obj):
+        print(f'WORKING_ON: {current_object} / profile integral construction',flush=True)
+        emit('WORKING_ON',current_object+' / profile integral construction')
+        raw,b,measure_without_sine,is_volume=integral_origins[obj]
+        # Lift positive radial distances before substituting power profiles.
+        distance_bases={S.expand(distances[0]**2):hh**2,S.expand(distances[1]**2):rr**2}
+        lifted=raw.replace(lambda z:z.is_Pow and z.base.has(*xyz) and S.expand(z.base) in distance_bases,
+                           lambda z:distance_bases[S.expand(z.base)]**z.exp)
+        lifted=lifted.replace(lambda z:z.func in profile_subs,lambda z:profile_subs[z.func](*z.args))
+        lifted=lifted.xreplace(jets).subs(dict(zip(xyz,centres[1]+rr*S.Matrix(nv))),simultaneous=True)
+        lifted=lifted.subs(d_subs,simultaneous=True).xreplace(trig_to_normal)
+        lifted=S.expand(S.powdenest(lifted,force=True))
+        measure_generic=S.simplify(measure_without_sine.subs(b,rr)) if not is_volume else measure_without_sine.subs(radius,rr)
+        lifted=S.expand(lifted*measure_generic)
+        polynomial=S.Poly(lifted,*nv)
+        answer=0
+        for powers,coefficient in polynomial.terms():
+            for term in S.Add.make_args(S.expand(coefficient)):
+                term=S.powsimp(term,force=True)
+                p=term.as_powers_dict().get(hh,S.Integer(0))
+                radial_power=term.as_powers_dict().get(rr,S.Integer(0))
+                prefactor=S.cancel(term/(hh**p*rr**radial_power))
+                pair('item3_kernel/profile_factorization',term,prefactor*hh**p*rr**radial_power)
+                emit('item3_kernel/profile_parts',(powers,p,radial_power,prefactor))
+                if prefactor.has(hh,rr,theta,phi):
+                    raise ValueError(('profile monomial factorization',prefactor))
+                kernel=angular_kernel(powers,p,is_volume)
+                substitutions={dd:d,**dict(zip(axis,direction_D))}
+                if is_volume: substitutions.update({qq:radial_power,low:rin,high:rout})
+                else: substitutions[rr]=b
+                answer+=prefactor*(1 if is_volume else b**radial_power)*kernel.subs(substitutions,simultaneous=True)
+        return answer.xreplace(back_jets)
+
+    # Differentiate the computed closed momentum with the chain rule for the
+    # time-dependent separation chart. The velocity coefficients are derived
+    # from X1(t), X2(t); they are not assigned by hand.
+    position_delta=centres[0]-centres[1]
+    distance_time=S.diff(separation,t)
+    direction_time=(position_delta/separation).diff(t)
+    radial_time=distance_time.xreplace(jets).subs(d_subs,simultaneous=True)
+    normal_time=direction_time.xreplace(jets).subs(d_subs,simultaneous=True)
+    # Reduce the unit-direction norm before restoring velocity jets.
+    norm=sum(z*z for z in direction_D)
+    radial_time=S.simplify(radial_time).subs(norm,1).xreplace(back_jets)
+    normal_time=normal_time.applyfunc(lambda z:S.simplify(z).subs(norm,1)).xreplace(back_jets)
+    solo('item3_kernel/separation_time_derivative',radial_time)
+    solo('item3_kernel/direction_time_derivative',normal_time)
+    geometry_distance=S.simplify(on_family(variation(separation,False))).subs(norm,1)
+    geometry_direction=[S.simplify(on_family(variation(z,False))).subs(norm,1) for z in position_delta/separation]
+    solo('item3_kernel/geometric_distance_derivative',geometry_distance)
+    solo('item3_kernel/geometric_direction_derivative',geometry_direction)
+    def closed_geometric_derivative(expr):
+        print(f'WORKING_ON: {current_object} / closed geometric differentiation',flush=True)
+        emit('WORKING_ON',current_object+' / closed geometric differentiation')
+        return geometry_distance*S.diff(expr,d)+sum(v*S.diff(expr,n) for n,v in zip(direction_D,geometry_direction))
+    @lru_cache(None)
+    def closed_q(obj):
+        if obj in rate_origins:
+            momentum_closed=closed_q(rate_origins[obj])
+            return S.diff(momentum_closed,t)+S.diff(momentum_closed,d)*radial_time+sum(S.diff(momentum_closed,n)*v for n,v in zip(direction_D,normal_time))
+        if isinstance(obj,S.Integral): return integrated_origin(obj)
+        if obj.is_Add: return S.Add(*(closed_q(z) for z in obj.args))
+        if obj.is_Mul: return S.Mul(*(closed_q(z) for z in obj.args))
+        return on_family(obj)
+
+    # Direction coefficients are reduced on the real unit sphere before
+    # attempting the d identity. Piecewise branches involve exponents only;
+    # distributing coefficients, not whole branches, avoids losing strata.
+    direction_zero=(0,0,0)
+    direction_basis=S.groebner([sum(n*n for n in direction_D)-1],*direction_D,domain='EX')
+    @lru_cache(None)
+    def direction_coefficients(expr):
+        if not expr.has(*direction_D): return {direction_zero:expr}
+        if isinstance(expr,S.Piecewise):
+            rows=[(direction_coefficients(value),condition) for value,condition in expr.args]
+            monomials=set().union(*(set(row) for row,condition in rows))
+            return {powers:S.Piecewise(*[(row.get(powers,0),condition) for row,condition in rows]) for powers in monomials}
+        if expr.is_Add:
+            result={}
+            for value in expr.args:
+                for powers,coefficient in direction_coefficients(value).items():
+                    result[powers]=result.get(powers,0)+coefficient
+            return result
+        if expr.is_Mul:
+            result={direction_zero:S.Integer(1)}
+            for value in expr.args:
+                following={}
+                for left,a in result.items():
+                    for right,b in direction_coefficients(value).items():
+                        powers=tuple(x+y for x,y in zip(left,right))
+                        following[powers]=following.get(powers,0)+a*b
+                result=following
+            return result
+        return dict(S.Poly(expr,*direction_D,domain='EX').terms())
+
+    def abbreviate_identity(coefficient,parameters):
+        # Exact definitions compress analytic kernels, retaining every free
+        # argument in the matching problem. They are not independent fields.
+        # The solver may fail to classify their identities; no analytic
+        # independence or complete solution is inferred from such a return.
+        definitions={};names={}
+        def descend(value):
+            if (isinstance(value,S.Piecewise) or value.func in (S.appellf1,S.polylog)
+                    or (value.is_Pow and value.exp.has(*parameters))):
+                if value not in names:
+                    arguments=tuple(sorted(value.free_symbols,key=str))
+                    abbreviation=S.Function('condition_kernel_'+str(len(names)))(*arguments)
+                    names[value]=abbreviation
+                    definitions[abbreviation]=value
+                return names[value]
+            if not value.args:return value
+            return value.func(*(descend(argument) for argument in value.args))
+        abbreviated=descend(coefficient)
+        return abbreviated,definitions
+
+    def solve_conditions(name,result,qclosed):
+        tag='reading/'+name+'/item4'
+        # Parameters are instant values/jets. For a polynomial in D direction,
+        # reduction on the unit sphere supplies necessary coefficient equations.
+        expr=result.xreplace(jets)
+        qjet=qclosed.xreplace(jets)
+        params=sorted(expr.atoms(S.Derivative)|expr.atoms(S.core.function.AppliedUndef)|
+                      qjet.atoms(S.Derivative)|qjet.atoms(S.core.function.AppliedUndef)|{rin,rout},key=str)
+        params+=list(exponents_u+exponents_rho)
+        slots=tuple(S.Symbol('condition_parameter_'+str(i),positive=True) if p in (rin,rout)
+                    else S.Symbol('condition_parameter_'+str(i),real=True) for i,p in enumerate(params))
+        forward=dict(zip(params,slots)); backward=dict(zip(slots,params))
+        lifted=expr.xreplace(forward)
+        emit(tag+'/parameter_slots',backward)
+        emit(tag+'/condition_domain',(rout>rin,rin>0,*[S.Contains(a,S.S.Reals) for a in (*exponents_u,*exponents_rho)]))
+        emit(tag+'/identity_operand',lifted)
+        coefficients=direction_coefficients(lifted)
+        polynomial=sum(coefficient*S.prod(n**p for n,p in zip(direction_D,powers)) for powers,coefficient in coefficients.items())
+        emit(tag+'/direction_reduction_operand',polynomial)
+        print(f'WORKING_ON: {current_object} / direction polynomial reduction',flush=True)
+        emit('WORKING_ON',current_object+' / direction polynomial reduction')
+        # Normal-form reduction is linear over the scalar coefficient field.
+        # Reduce the monomials in the fixed unit-sphere ideal, then recombine
+        # the untouched coefficient objects (including every Piecewise branch).
+        quotient=[S.Integer(0) for _ in direction_basis.polys]
+        reduced_coefficients={}
+        for powers,coefficient in coefficients.items():
+            monomial=S.prod(n**p for n,p in zip(direction_D,powers))
+            emit(tag+'/monomial_reduction_operand',monomial)
+            print(f'WORKING_ON: {current_object} / monomial reduction {powers}',flush=True)
+            emit('WORKING_ON',current_object+' / monomial reduction '+str(powers))
+            local_quotient,local_remainder=direction_basis.reduce(monomial)
+            emit(tag+'/monomial_reduction_return',(local_quotient,local_remainder))
+            quotient=[a+coefficient*b for a,b in zip(quotient,local_quotient)]
+            for remainder_power,number in S.Poly(local_remainder,*direction_D).terms():
+                reduced_coefficients[remainder_power]=reduced_coefficients.get(remainder_power,0)+coefficient*number
+        reduced=sum(coefficient*S.prod(n**p for n,p in zip(direction_D,powers))
+                    for powers,coefficient in reduced_coefficients.items())
+        emit(tag+'/direction_polynomial',polynomial)
+        emit(tag+'/unit_sphere_quotient',quotient)
+        emit(tag+'/unit_sphere_remainder',reduced)
+        print(f'WORKING_ON: {current_object} / unit-sphere reconstruction',flush=True)
+        emit('WORKING_ON',current_object+' / unit-sphere reconstruction')
+        pair(tag+'/unit_sphere_reconstruction',polynomial,reduced+sum(a*b.as_expr() for a,b in zip(quotient,direction_basis.polys)))
+        emit(tag+'/direction_coefficients',list(reduced_coefficients.items()))
+        emit(tag+'/identity_domain',(d>rout.xreplace(forward),S.Eq(sum(z*z for z in direction_D),1)))
+        attempted=[]
+        for powers,coefficient in reduced_coefficients.items():
+            emit(tag+'/scalar_identity_operand',(powers,coefficient))
+            print(f'WORKING_ON: {current_object} / kernel abbreviation {powers}',flush=True)
+            emit('WORKING_ON',current_object+' / kernel abbreviation '+str(powers))
+            solver_operand,definitions=abbreviate_identity(coefficient,slots) if coefficient.has(d) else (coefficient,{})
+            emit(tag+'/kernel_definitions',definitions)
+            emit(tag+'/scalar_solver_operand',(powers,solver_operand))
+            pair(tag+'/kernel_definition_reconstruction',coefficient,solver_operand.xreplace(definitions))
+            emit(tag+'/kernel_definition_scope','Exact abbreviations with every free argument retained. Coefficient matching does not establish analytic independence of these kernels or classify their exponent strata; an unresolved identity remains a gap.')
             try:
-                S.Poly(test,*trig_symbols)
-                angular_polynomial=not test.has(theta,phi)
-            except S.PolynomialError:
-                angular_polynomial=False
-            if not angular_polynomial:
-                return S.Integral(f,*expr.limits)
-            # Angular integrations first, then radial integration, with symbolic
-            # real exponents and SymPy's exact Piecewise exceptional branches.
-            for lim in sorted(expr.limits,key=lambda lim:lim[0]==radius):
-                f=S.integrate(f,lim,conds='piecewise')
-            return f
-        if expr.is_Add: return S.Add(*(closed_route(q) for q in expr.args))
-        if expr.is_Mul: return S.Mul(*(closed_route(q) for q in expr.args))
-        return expr
+                result_for_coefficient=cas_call('solve_undetermined_coeffs '+str(powers),S.solve_undetermined_coeffs,solver_operand,slots,d,dict=True)
+            except (NotImplementedError,S.PolynomialError) as exc:
+                result_for_coefficient=type(exc).__name__+': '+str(exc)
+            attempted.append((powers,result_for_coefficient))
+            emit(tag+'/scalar_identity_solver_return',(powers,result_for_coefficient))
+        emit(tag+'/identity_solver_return',attempted)
+        complete=(not reduced.has(d,*direction_D,S.Piecewise,S.appellf1,S.polylog))
+        if complete:
+            # Factor zero sets avoid division by any possibly zero amplitude
+            # or velocity. Positive radius powers are nonzero on the domain.
+            factored=S.factor_terms(reduced)
+            emit(tag+'/factor_operand',factored)
+            pair(tag+'/factorization',reduced,factored)
+            solutions=[]
+            if factored==0:
+                solutions=[{}]
+                emit(tag+'/factor_zero_set',S.S.UniversalSet)
+            else:
+                for factor in S.Mul.make_args(factored):
+                    if factor.is_nonzero is True:
+                        emit(tag+'/factor_zero_set',(factor,S.EmptySet))
+                        continue
+                    variables=sorted(factor.free_symbols & set(slots),key=str)
+                    if len(variables)!=1:
+                        emit(tag+'/factor_zero_set',(factor,'Unresolved multivariate factor after the identity-solver attempt.'))
+                        complete=False
+                        continue
+                    variable=variables[0]
+                    try:
+                        roots=cas_call('solveset', S.solveset, factor,variable,domain=S.S.Reals)
+                    except (NotImplementedError,ValueError,TypeError) as exc:
+                        roots=S.ConditionSet(variable,S.Eq(factor,0),S.S.Reals)
+                        emit(tag+'/factor_solver_exception',str(exc))
+                    emit(tag+'/factor_zero_set',(factor,variable,roots))
+                    if roots is S.EmptySet: continue
+                    if isinstance(roots,S.FiniteSet):
+                        solutions.extend({variable:root} for root in roots)
+                    else: complete=False
+        else: solutions=[]
+        if complete:
+            emit(tag+'/condition_union',S.Or(*(S.And(*(S.Eq(k.xreplace(backward),v.xreplace(backward),evaluate=False)
+                 for k,v in solution.items())) for solution in solutions)).xreplace(back_jets))
+        for branch,solution in enumerate(solutions):
+            restrictions={k.xreplace(backward):v.xreplace(backward) for k,v in solution.items()}
+            condition=S.And(rout>rin,rin>0,*(S.Eq(k,v,evaluate=False) for k,v in restrictions.items()))
+            emit(tag+'/condition_'+str(branch),condition.xreplace(back_jets))
+            # Restrict independent instantaneous slots. A(t)=0 at this instant
+            # must not silently replace its independent time derivative by zero.
+            operand=qjet.xreplace(forward)
+            substituted=operand.subs(solution,simultaneous=True)
+            solo(tag+'/condition_residual_'+str(branch),S.simplify(reduced.subs(solution,simultaneous=True)).xreplace(backward).xreplace(back_jets))
+            restricted=S.simplify(substituted).xreplace(backward).xreplace(back_jets)
+            solo(tag+'/Q_under_condition_'+str(branch),restricted)
+            pair(tag+'/restriction_substitution_'+str(branch),operand,substituted)
+        solo(tag+'/Q_on_family',qclosed)
+        if complete:
+            emit(tag+'/status','Computed factor zero-set conditions and Q after their substitutions are printed; the separation variables do not occur in the unit-sphere remainder.')
+        else:
+            reason='NOT OBTAINED EXACTLY: Unit-sphere monomial reduction, exact kernel abbreviation retaining all arguments, and solve_undetermined_coeffs on each scalar coefficient were attempted. Kernel identities and exceptional exponent strata remain unclassified; complete conditions and all corresponding restricted Q objects were not obtained.'
+            emit(tag+'/status',reason)
+            gaps.append((name,'item4',reason))
 
     existence=('SUFFICIENT existence condition (not necessary or complete): on an open neighborhood of the compact integration shell/surfaces, avoiding both cores, '
                'all field profiles and responses are C^4 in their displayed arguments, centres and radii are C^2 in time, and the epsilon-family admits these derivatives '
@@ -481,35 +881,22 @@ def main(log):
         if has_general_field(family_geo):
             result=family_geo
             status='Exact family object retained unevaluated: integrand contains a general field, as permitted by item 3.'
+            qclosed=family_q
         else:
-            result=closed_route(family_geo)
-            status='Closed form' if not result.has(S.Integral) else 'NOT OBTAINED IN CLOSED FORM: angular integrand is outside this engine\'s exact polynomial integration route.'
-            if result.has(S.Integral): gaps.append((name,'item3',status))
+            qclosed=closed_q(q)
+            solo(tag+'/item3/Q_closed_operand',qclosed)
+            result=closed_geometric_derivative(qclosed)+2*qclosed
+            status='Closed form from exact azimuth moments, squared-distance integration and finite-interval Appell integration, with logarithmic exponent branches.'
         solo(tag+'/item3/object',result)
+        if not has_general_field(family_geo) and result.has(S.Integral,S.nan,S.zoo,S.oo,-S.oo):
+            status='NOT OBTAINED IN CLOSED FORM: exact azimuth, squared-distance and Appell-kernel integration was attempted; an Integral or undefined/nonfinite expression remains in its return.'
+            gaps.append((name,'item3',status))
         emit(tag+'/item3/status',status)
-        # Emit the item-4 slot regardless of the value. Only the applicability
-        # (closed form or not) chooses the method, never whether Q is printed.
-        if result.has(S.Integral) or has_general_field(result):
-            emit(tag+'/item4/status','Not applicable to the printed item-3 form; any required item-3 closed-form gap is recorded above.')
+        if result.has(S.Integral,S.nan,S.zoo,S.oo,-S.oo) or has_general_field(result):
+            emit(tag+'/item4/status','Not applicable: the printed item-3 form retains a general field or is not a usable closed form.')
             solo(tag+'/item4/Q_on_family',family_q)
-        elif result.has(d,*direction_D):
-            emit(tag+'/item4/status','NOT OBTAINED EXACTLY: elimination of the universal separation and direction quantifiers is not supplied by this integration route.')
-            solo(tag+'/item4/equation_before_quantifier_elimination',S.Eq(result,0,evaluate=False))
-            solo(tag+'/item4/Q_on_family',family_q)
-            gaps.append((name,'item4','Universal separation/direction elimination unresolved.'))
         else:
-            # No D occurs, so the exact equation is already a condition in the
-            # named parameters. Piecewise integration branches retain every
-            # special exponent value; no solve/division discards a branch.
-            condition=S.Eq(result,0,evaluate=False)
-            solo(tag+'/item4/condition',condition)
-            emit(tag+'/item4/condition_domain',(rout>rin,rin>0,*[S.Contains(a,S.S.Reals) for a in (*exponents_u,*exponents_rho)]))
-            folded=S.piecewise_fold(result)
-            solo(tag+'/item4/exponent_branches',folded)
-            qclosed=closed_route(family_q) if not has_general_field(family_q) else family_q
-            solo(tag+'/item4/Q_under_condition',qclosed)
-            emit(tag+'/item4/Q_condition',condition)
-            emit(tag+'/item4/status','Exact implicit equation in the named parameters; its Piecewise branches include exceptional exponent values. Q is printed restricted to that equation.')
+            solve_conditions(name,result,qclosed)
     for name,item,reason in gaps: emit('EXACT_OBJECT_GAP',(name,item,reason))
     emit('reading/dimension_argument_audit',argument_audit)
     emit('END_OF_TRANSCRIPT','S15 separation departure SymPy objects')

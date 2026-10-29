@@ -11,7 +11,20 @@ $MaxExtraPrecision = 0;
 output = FileNameJoin[{DirectoryName[$InputFileName], "out", "S15_separation_departure.out"}];
 stream = OpenWrite[output];
 emit[name_, value_] := (WriteString[stream, name, ": ", ToString[value, InputForm, PageWidth -> Infinity], "\n"]);
-progress[name_] := (Print["WORKING_ON: ", name]; emit["WORKING_ON", name]);
+currentObject="construction";
+stepProgress[step_] := (Print["WORKING_ON: ",currentObject," / ",step];
+ emit["WORKING_ON",currentObject<>" / "<>step];Close[stream];stream=OpenAppend[output]);
+progress[name_] := (currentObject=name;stepProgress["object"]);
+SetAttributes[casStep,HoldRest];
+casStep[step_,expression_] := Module[{result},stepProgress[step];result=expression;
+ Print["FINISHED_STEP: ",currentObject," / ",step];result];
+SetAttributes[trackedIntegrate,HoldAll]; trackedIntegrate[args___] := casStep["Integrate "<>ToString[HoldForm[{args}],InputForm],Integrate[args]];
+SetAttributes[trackedSolve,HoldAll]; trackedSolve[args___] := casStep["Solve "<>ToString[HoldForm[{args}],InputForm],Solve[args]];
+SetAttributes[trackedSolveAlways,HoldAll]; trackedSolveAlways[args___] := casStep["SolveAlways "<>ToString[HoldForm[{args}],InputForm],SolveAlways[args]];
+SetAttributes[trackedResolve,HoldAll]; trackedResolve[args___] := casStep["Resolve "<>ToString[HoldForm[{args}],InputForm],Resolve[args]];
+SetAttributes[trackedReduce,HoldAll]; trackedReduce[args___] := casStep["Reduce "<>ToString[HoldForm[{args}],InputForm],Reduce[args]];
+SetAttributes[trackedPolynomialReduce,HoldAll]; trackedPolynomialReduce[args___] := casStep["PolynomialReduce "<>ToString[HoldForm[{args}],InputForm],PolynomialReduce[args]];
+SetAttributes[trackedFullSimplify,HoldAll]; trackedFullSimplify[args___] := casStep["FullSimplify "<>ToString[HoldForm[{args}],InputForm],FullSimplify[args]];
 qObjects=<||>;
 qName[name_] := StringMatchQ[name, ("inner"|"outer")~~"/"~~("carried"|"pressure"|"viscous"|"other"|"transport_centre"|"transport_radius")~~"/"~~__] ||
  Module[{parts=StringSplit[name,"/"]}, Length[parts]>=3 && First[parts]==="region" &&
@@ -83,17 +96,21 @@ direction = {Sin[theta] Cos[phi],Sin[theta] Sin[phi],Cos[theta]};
 chart[b_] := centres[[2]]+b direction;
 normal[orientation_] := orientation direction;
 surfaceVelocity[b_] := D[chart[b],t];
-metricMeasure[map_,coordinates_,assumptions_] := FullSimplify[Sqrt[Det[Table[D[map,q].D[map,r],{q,coordinates},{r,coordinates}]]],Assumptions->assumptions];
+metricMeasure[map_,coordinates_,assumptions_] := trackedFullSimplify[Sqrt[Det[Table[D[map,q].D[map,r],{q,coordinates},{r,coordinates}]]],Assumptions->assumptions];
 assumptions = 0 < theta < Pi && Element[phi,Reals] && rin[t]>0 && rout[t]>0 && s>0;
 volumeMap = chart[s];
 volumeMeasure = metricMeasure[volumeMap,{s,theta,phi},assumptions];
 pull[e_,b_] := e /. Thread[xyz -> chart[b]];
-sint[e_,b_,measure_] := Inactive[Integrate][pull[e,b] measure,{theta,0,Pi},{phi,0,2 Pi}];
-vint[e_] := Inactive[Integrate][pull[e,s] volumeMeasure,{s,rin[t],rout[t]},{theta,0,Pi},{phi,0,2 Pi}];
+integralOrigins=<||>;rateOrigins=<||>;
+sint[e_,b_,measure_] := Module[{obj=Inactive[Integrate][pull[e,b] measure,{theta,0,Pi},{phi,0,2 Pi}]},
+ AssociateTo[integralOrigins,obj->{e,b,Cancel[measure/Sin[theta]],False}];obj];
+vint[e_] := Module[{obj=Inactive[Integrate][pull[e,s] volumeMeasure,{s,rin[t],rout[t]},{theta,0,Pi},{phi,0,2 Pi}]},
+ AssociateTo[integralOrigins,obj->{e,s,Cancel[volumeMeasure/Sin[theta]],True}];obj];
 (* Generic Leibniz rule on the radial member of the chart integral. *)
-rate[e_] := Module[{integrand=pull[e,s] volumeMeasure,limits={rin[t],rout[t]},sgn={-1,1}},
- Inactive[Integrate][D[integrand,t],{s,limits[[1]],limits[[2]]},{theta,0,Pi},{phi,0,2 Pi}] +
- Total[Table[sgn[[j]] D[limits[[j]],t] Inactive[Integrate][integrand /. s->limits[[j]],{theta,0,Pi},{phi,0,2 Pi}],{j,2}]]];
+rate[e_] := Module[{integrand=pull[e,s] volumeMeasure,limits={rin[t],rout[t]},sgn={-1,1},obj},
+ obj=Inactive[Integrate][D[integrand,t],{s,limits[[1]],limits[[2]]},{theta,0,Pi},{phi,0,2 Pi}] +
+ Total[Table[sgn[[j]] D[limits[[j]],t] Inactive[Integrate][integrand /. s->limits[[j]],{theta,0,Pi},{phi,0,2 Pi}],{j,2}]];
+ AssociateTo[rateOrigins,obj->vint[e]];obj];
 
 (* Dimensional algebra. Dens is an abstract density unit, with no mass assignment.
    Exponents are {Dens,Length,Time}. Field signatures include their arguments. *)
@@ -254,23 +271,255 @@ emit["profile_family/chart_note","Arbitrary unit direction in the original Carte
 allowedHeads=Join[Flatten[Table[xx[k,j],{k,2},{j,3}]],{rin,rout},Table[AA[k],{k,2}],Table[BB[k],{k,2}]];
 hasGeneral[e_] := !FreeQ[e,uu|rr|ww|vr|eta|zeta|oo|ff|pb|change|centreVelocityChange];
 
-(* Exact integration route using finite Fourier polynomials in the angles.
-   Algebraic non-polynomial angular factors are retained and labelled, without
-   choosing an exponent or dropping a field. No timed Integrate is used. *)
-angularRoute[e:Inactive[Integrate][f_,ranges__]] := angularRoute[e] = Module[{integrand=f,rangeList={ranges},anglesPresent,poly,angularVars,angularMap,angularInput,answer},
- integrand=integrand/.Power[base_,exponent_]/;(!FreeQ[base,theta|phi] && FreeQ[base,dist]):>
-  Power[FullSimplify[base,Assumptions->assumptions,TimeConstraint->Infinity],exponent];
- angularVars=Table[Unique["angular"],{4}];
- angularMap=Thread[{Sin[theta],Cos[theta],Sin[phi],Cos[phi]}->angularVars];
- angularInput=integrand/.angularMap;
- poly=PolynomialQ[angularInput,angularVars] && FreeQ[angularInput,theta|phi];
- answer=If[poly,
-  Fold[Integrate[#1,Sequence@@{#2},Assumptions->(assumptions && Element[Join[Table[aa[k],{k,2}],Table[bb[k],{k,2}]],Reals]),GenerateConditions->True]&,integrand,SortBy[rangeList,If[First[#]===s,1,0]&]],
-  Inactive[Integrate][integrand,ranges]];
- answer];
-angularRoute[e_Plus] := angularRoute[e] = Total[angularRoute/@(List@@e)];
-angularRoute[e_Times] := angularRoute[e] = Times@@(angularRoute/@(List@@e));
-angularRoute[e_] := e;
+(* Item 3. Retain the pre-chart tensor integrands as provenance. The angular
+   integration below is derived with a generating polynomial in an auxiliary
+   source, independently of the Cartesian grouping and variation operators. *)
+normalSymbols={normalX,normalY,normalZ};
+sourceSymbols={sourceX,sourceY,sourceZ};
+axisSymbols={axisX,axisY,axisZ};
+axisAssumptions=Element[Join[axisSymbols,{mu}],Reals] && Total[axisSymbols^2]==1 && -1<mu<1;
+emit["item3_kernel/generating_chart_condition",axisAssumptions];
+angularGenerator[degree_] := angularGenerator[degree] = Module[{input,value},
+ input=Expand[(axial mu+transverse Sqrt[1-mu^2] Cos[azimuth])^degree];
+ value=trackedIntegrate[input,{azimuth,0,2 Pi},Assumptions->Element[{axial,transverse,mu},Reals] && -1<mu<1];
+ solo["item3_kernel/generator_operand",Inactive[Integrate][input,{azimuth,0,2 Pi}]];
+ solo["item3_kernel/generator_integral",value];
+ value=Expand[value]/.transverse^n_Integer?EvenQ:>(sourceSymbols.sourceSymbols-(sourceSymbols.axisSymbols)^2)^(n/2);
+ value=value/.axial->sourceSymbols.axisSymbols;
+ Expand[value]];
+angularMoment[powers_] := angularMoment[powers] = Module[{degree=Total[powers],generator,value},
+ generator=angularGenerator[degree];
+ value=Fold[D[#1,#2]&,generator,Flatten[MapThread[ConstantArray,{sourceSymbols,powers}]]]/Factorial[degree];
+ value=Expand[value/.Thread[sourceSymbols->0]];
+ solo["item3_kernel/angular_moment",{powers,value}];value];
+(* Derive the distance substitution from dot products on the unit sphere. *)
+(* The axis in this mathematical chart is the pole. The generating
+   polynomial retains its arbitrary direction in the Cartesian output. *)
+distanceChart={Sqrt[1-mu^2],0,mu};
+squaredDistance=trackedFullSimplify[(radial distanceChart-distance {0,0,1}).(radial distanceChart-distance {0,0,1}),Assumptions->Element[{radial,distance,mu},Reals]];
+muRule=First[trackedSolve[squared==squaredDistance,mu]];
+distanceJacobian=-D[mu/.muRule,squared];
+distanceBounds=Factor[squaredDistance/.mu->#]& /@ {1,-1};
+solo["item3_kernel/distance_substitution",{squaredDistance,muRule,distanceJacobian,distanceBounds}];
+
+(* Mellin primitive: Integrate supplies both ordinary and logarithmic branches. *)
+powerPrimitive=trackedIntegrate[squared^power,squared,Assumptions->squared>0 && Element[power,Reals],GenerateConditions->True];
+solo["item3_kernel/power_primitive_operand",squared^power];
+solo["item3_kernel/power_primitive_return",powerPrimitive];
+(* Compute the exceptional parameter from the primitive denominator and its
+   exact integral there, rather than dropping Integrate's excluded set. *)
+primitiveGeneric=trackedIntegrate[squared^power,squared,Assumptions->squared>0,GenerateConditions->False];
+primitiveDenominator=Denominator[Together[primitiveGeneric]];
+primitiveExceptions=trackedSolve[primitiveDenominator==0,power,Reals];
+primitiveBranches=Join[Table[{trackedIntegrate[squared^power/.rule,squared,Assumptions->squared>0],And@@(Equal@@#& /@ (List@@@rule))},{rule,primitiveExceptions}],{{primitiveGeneric,True}}];
+solo["item3_kernel/power_primitive_branches",primitiveBranches];
+pair["item3_kernel/power_primitive_derivative",D[primitiveGeneric,squared],squared^power];
+
+(* The Appell kernel uses fixed positive Euler parameters (1,2). Obtain its
+   coefficient normalization by exact Beta integration. No series truncation
+   is used to replace an object; continuation is along positive real bases. *)
+eulerMoment=trackedIntegrate[unitVariable^(index1+index2),{unitVariable,0,1},Assumptions->Element[{index1,index2},Integers] && index1>=0 && index2>=0];
+appellMoment=Pochhammer[1,index1+index2]/Pochhammer[2,index1+index2];
+pair["item3_kernel/Euler_moment",eulerMoment,appellMoment];
+solo["item3_kernel/Euler_moment_residual",trackedFullSimplify[eulerMoment-appellMoment,Assumptions->Element[{index1,index2},Integers] && index1>=0 && index2>=0]];
+emit["item3_kernel/Appell_domain","Euler continuation between positive endpoints, distance > upper > lower > 0. AppellF1 has fixed first/lower parameters 1 and 2; all real radial and affine powers are included."];
+affinePrimitiveIntegral[radialExponent_,affineExponent_,orientation_] := affinePrimitiveIntegral[radialExponent,affineExponent,orientation] = Module[{map,bases,constants,arguments},
+ stepProgress["finite-interval affine power integration"];
+ map=lower+(upper-lower) unitVariable;
+ bases={map,distance+orientation map};
+ constants=bases/.unitVariable->0;
+ arguments=-D[bases,unitVariable]/constants;
+ D[map,unitVariable] Times@@MapThread[Power,{constants,{radialExponent,affineExponent}}] AppellF1[1,-radialExponent,-affineExponent,2,Sequence@@arguments]];
+logPrimitive[orientation_] := logPrimitive[orientation] = trackedIntegrate[Log[1+orientation logVariable]/logVariable,logVariable,Assumptions->0<logVariable<1];
+Do[solo["item3_kernel/log_primitive_operand",Log[1+orientation logVariable]/logVariable];solo["item3_kernel/log_primitive",logPrimitive[orientation]];
+ pair["item3_kernel/log_primitive_derivative",D[logPrimitive[orientation],logVariable],Log[1+orientation logVariable]/logVariable],{orientation,{-1,1}}];
+radialLogIntegral[exponent_,orientation_] := Module[{primitive,boundary,generic,special},
+ stepProgress["radial logarithm integration by parts"];
+ primitive=trackedIntegrate[radial^radialExponent,radial,Assumptions->radial>0,GenerateConditions->False]/.radialExponent->exponent;
+ boundary=(primitive Log[distance+orientation radial]/.radial->upper)-(primitive Log[distance+orientation radial]/.radial->lower);
+ generic=boundary-orientation affinePrimitiveIntegral[exponent+1,-1,orientation]/(exponent+1);
+ special=Log[distance] Log[upper/lower]+(logPrimitive[orientation]/.logVariable->upper/distance)-(logPrimitive[orientation]/.logVariable->lower/distance);
+ Piecewise[{{special,exponent==-1}},generic]];
+monomialPower[expression_,variable_] := Total[Map[Which[#===variable,1,Head[#]===Power && First[#]===variable,Last[#],True,0]&,If[Head[expression]===Times,List@@expression,{expression}]]];
+radialIntegral[expression_] := Module[{answer=0,rpower,rest,logarithms,factors,factor,base,exponent,orientation,coefficient},
+ stepProgress["radial term integration"];
+ Do[
+  rpower=monomialPower[term,radial];
+  (* Exponent works for arbitrary real symbolic monomials after expanding only sums. *)
+  rest=Cancel[term/radial^rpower];
+  logarithms=Cases[rest,_Log,{0,Infinity}];
+  If[Length[logarithms]>0,
+   factor=First[logarithms];orientation=D[First[factor],radial];coefficient=Cancel[rest/factor];
+   emit["item3_kernel/radial_log_factors",{term,rpower,coefficient,factor,orientation}];
+   pair["item3_kernel/radial_log_factorization",term,coefficient radial^rpower factor];
+   If[!FreeQ[coefficient,radial] || !MemberQ[{-1,1},orientation],Throw[{"radial logarithm factorization",term}]];
+   answer+=coefficient radialLogIntegral[rpower,orientation],
+   factors=Select[If[Head[rest]===Times,List@@rest,{rest}],!FreeQ[#,radial]&];
+   If[Length[factors]>0,
+    factor=First[factors];{base,exponent}=If[Head[factor]===Power,List@@factor,{factor,1}];
+    orientation=D[base,radial];coefficient=Cancel[rest/factor];
+    emit["item3_kernel/radial_affine_factors",{term,rpower,coefficient,base,exponent,orientation}];
+    pair["item3_kernel/radial_affine_factorization",term,coefficient radial^rpower base^exponent];
+    If[!FreeQ[coefficient,radial] || !MemberQ[{-1,1},orientation] || Expand[base-orientation radial]=!=distance,Throw[{"radial affine factorization",term}]];
+    answer+=coefficient affinePrimitiveIntegral[rpower,exponent,orientation],
+    answer+=rest Piecewise[{{Log[upper/lower],rpower==-1}},(upper^(rpower+1)-lower^(rpower+1))/(rpower+1)]
+   ]
+  ],{term,terms[expression]}];answer];
+
+angularKernel[powers_,profileExponent_,volume_] := angularKernel[powers,profileExponent,volume] = Module[{polynomial,answer=0,coefficient,degree,integral,branches,primitive,condition,endpoints,value},
+ stepProgress["angular kernel integration "<>ToString[{powers,profileExponent,volume},InputForm]];
+ If[NumberQ[profileExponent],
+  value=trackedIntegrate[angularMoment[powers] squaredDistance^(profileExponent/2),{mu,-1,1},Assumptions->distance>radial>0];
+  Return[If[volume,radialIntegral[Expand[value radial^radialPower]],value]]];
+ polynomial=Expand[(angularMoment[powers]/.muRule) distanceJacobian];
+ Do[
+  degree=First[monomial][[1]];coefficient=Last[monomial];
+  branches=Table[
+   primitive=branch[[1]]/.power->profilePower/2+degree;
+   condition=branch[[2]]/.power->profilePower/2+degree;
+   endpoints=Table[PowerExpand[primitive/.squared->bound],{bound,distanceBounds}];
+   value=Expand[coefficient (endpoints[[2]]-endpoints[[1]])];
+   If[volume,value=radialIntegral[value radial^radialPower]];
+   {value,condition},{branch,primitiveBranches}];
+  answer+=Piecewise[Most[branches],Last[branches][[1]]],
+  {monomial,CoefficientRules[polynomial,{squared}]}];
+ If[NumberQ[profileExponent],trackedFullSimplify[answer/.profilePower->profileExponent,Assumptions->distance>radial>0 && Total[axisSymbols^2]==1],answer/.profilePower->profileExponent]];
+
+trigNormalRules={Cos[theta]->normalZ,Sin[theta]->chartSine,Cos[phi]->normalX/chartSine,Sin[phi]->normalY/chartSine};
+integratedOrigin[obj_] := integratedOrigin[obj] = Module[{origin=integralOrigins[obj],raw,b,measure,volume,lift,polynomial,answer=0,p,rpower,coefficient,kernel,rules},
+ stepProgress["profile integral construction"];
+ {raw,b,measure,volume}=origin;
+ lift=raw/.Thread[radii^2->{profileDistance^2,radial^2}];
+ lift=PowerExpand[lift/.profileRules];
+ lift=lift/.Thread[xyz->(centres[[2]]+radial normalSymbols)];
+ lift=Expand[PowerExpand[(lift/.separationChart)/.trigNormalRules]];
+ measure=If[volume,measure/.s->radial,measure/.b->radial];
+ polynomial=Expand[lift measure];
+ Do[
+  Do[
+   p=monomialPower[term,profileDistance];rpower=monomialPower[term,radial];
+   coefficient=Cancel[term/(profileDistance^p radial^rpower)];
+   emit["item3_kernel/profile_factors",{term,p,rpower,coefficient}];
+   pair["item3_kernel/profile_factorization",term,coefficient profileDistance^p radial^rpower];
+   If[!FreeQ[coefficient,profileDistance|radial|theta|phi],Throw[{"profile factorization",coefficient}]];
+   kernel=angularKernel[First[monomial],p,volume];
+   rules=Join[{distance->dist},Thread[axisSymbols->Table[directionSeparation[j],{j,3}]],If[volume,{radialPower->rpower,lower->rin[t],upper->rout[t]},{radial->b}]];
+   answer+=coefficient If[volume,1,b^rpower] (kernel/.rules),
+   {term,terms[Last[monomial]]}],
+  {monomial,CoefficientRules[polynomial,normalSymbols]}];answer];
+
+(* Time chain rule computed from the live separation, with independent jets. *)
+separationRate=trackedFullSimplify[D[sep,t]/.separationChart,Assumptions->dist>0 && unitDirection && Element[Table[directionSeparation[j],{j,3}],Reals]];
+directionRate=trackedFullSimplify[D[separationVector/sep,t]/.separationChart,Assumptions->dist>0 && unitDirection && Element[Table[directionSeparation[j],{j,3}],Reals]];
+solo["item3_kernel/separation_rate",separationRate];solo["item3_kernel/direction_rate",directionRate];
+directionDifferentiationSymbols={directionSlot1,directionSlot2,directionSlot3};
+directionDifferentiationRules=Thread[Table[directionSeparation[j],{j,3}]->directionDifferentiationSymbols];
+directionDifferentiationBack=Reverse/@directionDifferentiationRules;
+geometryDistance=trackedFullSimplify[familyObject[geometricDerivative[sep]],Assumptions->dist>0 && unitDirection && Element[Table[directionSeparation[j],{j,3}],Reals]];
+geometryDirection=trackedFullSimplify[familyObject[geometricDerivative[#]]& /@ (separationVector/sep),Assumptions->dist>0 && unitDirection && Element[Table[directionSeparation[j],{j,3}],Reals]];
+solo["item3_kernel/geometric_distance_derivative",geometryDistance];solo["item3_kernel/geometric_direction_derivative",geometryDirection];
+closedGeometricDerivative[value_] := (stepProgress["closed geometric differentiation"];D[value,dist] geometryDistance+((D[value/.directionDifferentiationRules,#]& /@ directionDifferentiationSymbols)/.directionDifferentiationBack).geometryDirection);
+closedFamilyQ[obj_] := closedFamilyQ[obj] = Module[{value},Which[
+ KeyExistsQ[rateOrigins,obj],stepProgress["closed momentum time differentiation"];value=closedFamilyQ[rateOrigins[obj]];D[value,t]+D[value,dist] separationRate+((D[value/.directionDifferentiationRules,#]& /@ directionDifferentiationSymbols)/.directionDifferentiationBack).directionRate,
+ MatchQ[obj,Inactive[Integrate][__]],integratedOrigin[obj],
+ Head[obj]===Plus,Total[closedFamilyQ/@(List@@obj)],
+ Head[obj]===Times,Times@@(closedFamilyQ/@(List@@obj)),True,familyObject[obj]]];
+
+(* A mathematical chart for the direction identity, derived by intersecting
+   a ray with the unit sphere. This does not specialize any physical field. *)
+identityRay={planeU rayParameter,planeV rayParameter,1-rayParameter};
+identityRayEquation=identityRay.identityRay==1;
+solo["item4_kernel/ray_equation",identityRayEquation];
+identityRaySolutions=trackedSolve[{identityRayEquation,rayParameter!=0},rayParameter,Reals];
+solo["item4_kernel/ray_solutions",identityRaySolutions];
+identityChart=identityRay/.First[identityRaySolutions];
+solo["item4_kernel/direction_chart",identityChart];
+pair["item4_kernel/chart_sphere_identity",Together[identityChart.identityChart],1];
+identityChartDenominator=Denominator[Together[identityChart[[1]]]];
+solo["item4_kernel/chart_denominator",identityChartDenominator];
+identityChartExcluded=trackedReduce[identityChartDenominator==0,{planeU,planeV},Reals];
+solo["item4_kernel/chart_excluded_real_parameters",identityChartExcluded];
+emit["item4_kernel/chart_condition","planeU and planeV are real. The ray chart omits its pole; a polynomial identity on this dense chart extends to the pole by continuity. All chart parameters remain symbolic."];
+
+(* Convert Piecewise values to exact indicator-weighted polynomials before
+   eliminating directions. The indicators retain their full exponent strata. *)
+directionPolynomial[e_] := Which[
+ FreeQ[e,Alternatives@@directionDifferentiationSymbols],e,
+ AtomQ[e],e,
+ Head[e]===Piecewise,Module[{prior=False,rows=Append[e[[1]],{e[[2]],True}],weight},
+  Total[Table[weight=Boole[row[[2]] && !prior];prior=prior || row[[2]];
+   weight directionPolynomial[row[[1]]],{row,rows}]]],
+ True,Map[directionPolynomial,e]];
+
+conditionAttempt[name_,object_,q_] := Module[{prefix="reading/"<>name<>"/item4",parameters,slots,lift,rules,inverse,query,answer,messages,branches,condition,substitutions,restricted,directionQuery,directionAnswer,polynomial,reduction,remainder,coefficientRows,coefficientSlots,formalPolynomial,formalAnswer,spherePolynomial,identityReturn,identityConditions,chartPullback,chartNumerator,chartCoefficients},
+ parameters=DeleteDuplicates[Join[Cases[object,Derivative[__][h_][t]/;MemberQ[allowedHeads,h],{0,Infinity}],Cases[object,h_[t]/;MemberQ[allowedHeads,h],{0,Infinity}],Table[aa[k],{k,2}],Table[bb[k],{k,2}],{rin[t],rout[t]}]];
+ slots=Table[Unique["parameter"],{Length[parameters]}];rules=Thread[parameters->slots];inverse=Thread[slots->parameters];
+ lift=(object/.rules)/.directionDifferentiationRules;
+ stepProgress["direction polynomial construction"];
+ polynomial=Expand[directionPolynomial[lift]];
+ spherePolynomial=(Subtract@@(List@@unitDirection))/.directionDifferentiationRules;
+ solo[prefix<>"/direction_polynomial_operand",polynomial];
+ coefficientRows=CoefficientRules[polynomial,directionDifferentiationSymbols];
+ coefficientSlots=Table[Unique["directionCoefficient"],{Length[coefficientRows]}];
+ formalPolynomial=Total[MapThread[#1 Times@@MapThread[Power,{directionDifferentiationSymbols,First[#2]}]&,{coefficientSlots,coefficientRows}]];
+ solo[prefix<>"/formal_direction_polynomial",formalPolynomial];
+ solo[prefix<>"/sphere_polynomial_operand",spherePolynomial];
+ Block[{$MessageList={}},reduction=Quiet[trackedPolynomialReduce[formalPolynomial,{spherePolynomial},directionDifferentiationSymbols]];messages=$MessageList];
+ solo[prefix<>"/polynomial_reduction_return",reduction];emit[prefix<>"/polynomial_reduction_messages",messages];
+ If[!MatchQ[reduction,{_List,_}],
+  emit[prefix<>"/status","NOT OBTAINED EXACTLY: indicator expansion and formal-coefficient PolynomialReduce were attempted; polynomial reduction did not return a quotient and remainder."];
+  AppendTo[exactGaps,{name,"item4","Indicator expansion and formal-coefficient PolynomialReduce did not return a quotient and remainder."}];
+  solo[prefix<>"/Q_on_family",q];Return[Null]];
+ remainder=reduction[[2]];
+ pair[prefix<>"/polynomial_reconstruction",formalPolynomial,reduction[[1]].{spherePolynomial}+remainder];
+ chartPullback=Together[remainder/.Thread[directionDifferentiationSymbols->identityChart]];
+ chartNumerator=Numerator[chartPullback];
+ chartCoefficients=Flatten[CoefficientList[chartNumerator,{planeU,planeV}]];
+ solo[prefix<>"/chart_pullback",chartPullback];
+ solo[prefix<>"/chart_numerator",chartNumerator];
+ solo[prefix<>"/chart_coefficients",chartCoefficients];
+ directionQuery=And@@Map[#==0&,chartCoefficients];
+ solo[prefix<>"/direction_identity_operand",directionQuery];emit[prefix<>"/parameter_slots",inverse];
+ emit[prefix<>"/direction_coefficient_substitution",Thread[coefficientSlots->(Last/@coefficientRows)]];
+ Block[{$MessageList={}},formalAnswer=Quiet[trackedReduce[directionQuery,coefficientSlots,Reals]];messages=$MessageList];
+ solo[prefix<>"/direction_solver_return",formalAnswer];emit[prefix<>"/direction_solver_messages",messages];
+ directionAnswer=formalAnswer/.Thread[coefficientSlots->(Last/@coefficientRows)];
+ solo[prefix<>"/direction_elimination_return",directionAnswer];
+ If[!FreeQ[directionAnswer,Reduce|Resolve|ForAll|Exists] || !FreeQ[directionAnswer,Alternatives@@directionDifferentiationSymbols],
+  emit[prefix<>"/status","NOT OBTAINED EXACTLY: exact indicator expansion, polynomial reduction and Reduce of the rational-chart coefficient equations were attempted; direction elimination remains unresolved."];
+  AppendTo[exactGaps,{name,"item4","Indicator expansion, PolynomialReduce and Reduce of the rational-chart coefficient equations returned unresolved."}];
+  solo[prefix<>"/Q_on_family",q];Return[Null]];
+ query=Implies[dist>rout[t]/.rules,directionAnswer];
+ solo[prefix<>"/identity_operand",query];
+ If[FreeQ[directionAnswer,dist],
+  Block[{$MessageList={}},answer=Quiet[trackedReduce[(rout[t]>rin[t]>0/.rules) && directionAnswer,slots,Reals]];messages=$MessageList],
+  (* SolveAlways is asked for the exact identity, including the separation
+     domain as an implication. Its unsupported return is kept, not promoted
+     to conditions. No numerical separation or exponent is substituted. *)
+  Block[{$MessageList={}},identityReturn=Quiet[trackedSolveAlways[query,dist]];messages=$MessageList];
+  solo[prefix<>"/identity_solver_return",identityReturn];emit[prefix<>"/identity_solver_messages",messages];
+  If[MatchQ[identityReturn,{{(_Rule|_RuleDelayed)...}...}] && messages==={},
+   identityConditions=Or@@Map[And@@(Equal@@#& /@ (List@@@#))&,identityReturn];
+   solo[prefix<>"/identity_candidate_conditions",identityConditions];
+   (* SolveAlways supplies generic solutions; a returned list is not a proof
+      of completeness on all exceptional parameter strata. Keep that gap. *)
+   answer=identityReturn,
+   answer=identityReturn]
+ ];
+ solo[prefix<>"/solver_return",answer];emit[prefix<>"/solver_messages",messages];
+ If[!FreeQ[answer,Reduce|SolveAlways|ForAll|Exists] || !FreeQ[answer,dist] || ListQ[answer],
+  emit[prefix<>"/status","NOT OBTAINED EXACTLY: indicator-polynomial direction elimination was computed; SolveAlways on the separation-domain implication, or Reduce for a separation-independent condition, did not return a complete exact parameter classification; SolveAlways lists, if present, are only candidate conditions without a completeness proof."];
+  AppendTo[exactGaps,{name,"item4","Indicator-polynomial direction elimination; SolveAlways on the separation-domain implication (Reduce for separation-independent conditions) returned unresolved."}],
+  branches=If[Head[LogicalExpand[answer]]===Or,List@@LogicalExpand[answer],{LogicalExpand[answer]}];
+  Do[
+   condition=branch/.inverse;
+   substitutions=Cases[branch,Equal[a_Symbol,b_]/;MemberQ[slots,a] && FreeQ[b,a]:>(a->b),{0,Infinity}]/.inverse;
+   restricted=trackedFullSimplify[q/.substitutions,Assumptions->condition && dist>rout[t]>rin[t]>0 && unitDirection];
+   solo[prefix<>"/condition",condition];emit[prefix<>"/restriction_substitutions",substitutions];
+   pair[prefix<>"/restriction_operands",q,q/.substitutions];solo[prefix<>"/Q_under_condition",restricted],
+   {branch,branches}];
+  emit[prefix<>"/status","Reduce conditions and Q simplified under each computed condition are printed."]
+ ];solo[prefix<>"/Q_on_family",q]];
 
 existenceCondition="SUFFICIENT condition under which the departure exists, not a necessary or complete condition: fields and their responses are C^4 in their displayed arguments on open neighborhoods of the compact surfaces/shell avoiding both cores; centres and radii are C^2 in time; mixed family derivatives exist uniformly with integrable majorants, permitting differentiation under the integrals; pb is C^3 on open intervals containing all used total and base densities. The S15 domain and pointwise pressure conditions hold as well.";
 exactGaps={};
@@ -304,31 +553,23 @@ Do[
  familyGeo=familyObject[geoDeparture]; familyQ=familyObject[qValue];
  solo[readingTag<>"/item3/family_integral",familyGeo];
  emit[readingTag<>"/item3/existence_condition",existenceCondition];
- familyResult=If[hasGeneral[familyGeo],familyGeo,angularRoute[familyGeo]];
+ If[hasGeneral[familyGeo],
+  familyResult=familyGeo;closedQ=familyQ;
+  item3Status="Exact family integral with general fields retained, as permitted by item 3.",
+  closedQ=closedFamilyQ[qValue];
+  solo[readingTag<>"/item3/Q_closed_operand",closedQ];
+  familyResult=closedGeometricDerivative[closedQ]+2 closedQ;
+  item3Status="Closed form from generating-polynomial angular moments, distance substitution and finite-interval Appell integration, including logarithmic branches."
+ ];
  solo[readingTag<>"/item3/object",familyResult];
- item3Status=Which[hasGeneral[familyGeo],"Exact family integral with general fields retained, as permitted by item 3.",
-  !FreeQ[familyResult,Inactive[Integrate]|Integrate],"NOT OBTAINED IN CLOSED FORM: non-polynomial angular factors remain outside this engine's exact integration route.",
-  !FreeQ[familyResult,ConditionalExpression],"NOT OBTAINED ON ALL EXPONENT BRANCHES: Integrate returned a ConditionalExpression; the complement is unresolved.",
-  True,"Closed form"];
+ If[!hasGeneral[familyGeo] && !FreeQ[familyResult,Inactive[Integrate]|Integrate|ConditionalExpression],
+  item3Status="NOT OBTAINED IN CLOSED FORM ON ALL BRANCHES: generating-polynomial, distance-substitution and Appell integration was attempted; its return contains an integral or ConditionalExpression.";
+  AppendTo[exactGaps,{objectName,"item3",item3Status}]];
  emit[readingTag<>"/item3/status",item3Status];
- If[!hasGeneral[familyGeo] && !FreeQ[familyResult,Inactive[Integrate]|Integrate|ConditionalExpression],AppendTo[exactGaps,{objectName,"item3",item3Status}]];
  If[hasGeneral[familyResult] || !FreeQ[familyResult,Inactive[Integrate]|Integrate|ConditionalExpression],
-  emit[readingTag<>"/item4/status","Not applicable to the printed item-3 form; required item-3 gaps remain recorded."];
+  emit[readingTag<>"/item4/status","Not applicable to the general-field family integral."];
   solo[readingTag<>"/item4/Q_on_family",familyQ],
-  If[!FreeQ[familyResult,dist|directionSeparation],
-   solo[readingTag<>"/item4/equation_before_quantifier_elimination",familyResult==0];
-   solo[readingTag<>"/item4/Q_on_family",familyQ];
-   emit[readingTag<>"/item4/status","NOT OBTAINED EXACTLY: universal separation and direction elimination is unresolved."];
-   AppendTo[exactGaps,{objectName,"item4","Universal separation/direction elimination unresolved."}],
-   parameterCondition=familyResult==0;
-   solo[readingTag<>"/item4/condition",parameterCondition];
-   emit[readingTag<>"/item4/condition_domain",{rout[t]>rin[t]>0,Element[Join[Table[aa[k],{k,2}],Table[bb[k],{k,2}]],Reals]}];
-   solo[readingTag<>"/item4/exponent_branches",PiecewiseExpand[familyResult]];
-   conditionedQ=If[hasGeneral[familyQ],familyQ,angularRoute[familyQ]];
-   solo[readingTag<>"/item4/Q_under_condition",conditionedQ];
-   emit[readingTag<>"/item4/Q_condition",parameterCondition];
-   emit[readingTag<>"/item4/status","Exact implicit equation in named parameters, retaining every Piecewise exponent branch; Q is restricted to the printed equation."]
-  ]
+  conditionAttempt[objectName,familyResult,closedQ]
  ],{objectName,Keys[qObjects]}];
 Scan[emit["EXACT_OBJECT_GAP",#]&,exactGaps];
 emit["END_OF_TRANSCRIPT","S15 separation departure Wolfram objects"];

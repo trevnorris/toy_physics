@@ -469,159 +469,6 @@ directionPolynomial[e_] := Which[
    weight directionPolynomial[row[[1]]],{row,rows}]]],
  True,Map[directionPolynomial,e]];
 
-(* Exact parameter equations from a regular polynomial differential system.
-   This construction uses rational integrand identities and native D closure.
-   No other engine's source or result is an input. *)
-identityWeight=iv^(ia-1) (1-iv)^(ic-ia-1) (1-ix iv)^(-ib) (1-iy iv)^(-id);
-identityLogDerivative=Together[D[identityWeight,iv]/identityWeight];
-identityRatios={1,Together[D[identityWeight,ix]/identityWeight],Together[D[identityWeight,iy]/identityWeight]};
-identitySecondRatios={Together[D[identityWeight,{ix,2}]/identityWeight],Together[D[identityWeight,{iy,2}]/identityWeight],Together[D[identityWeight,ix,iy]/identityWeight]};
-identityClosures=Table[
- identityBoundaryMultiplier=If[coordinate==1,iv (1-iv)/(1-ix iv),iv (1-iv)/(1-iy iv)];
- identityBoundaryRatio=Together[D[identityBoundaryMultiplier,iv]+identityBoundaryMultiplier identityLogDerivative];
- (* The unknowns are bookkeeping coefficients in an algebraic identity. *)
- identityClosureOperand=Together[identityBoundaryRatio-{identityU,identityV,identityW}.identityRatios-identityLast identitySecondRatios[[coordinate]]];
- solo["item4_kernel/IBP_operand",identityClosureOperand];
- identityClosureRules=First[trackedSolve[Thread[CoefficientList[Numerator[identityClosureOperand],iv]==0],{identityU,identityV,identityW,identityLast}]];
- solo["item4_kernel/IBP_solution",identityClosureRules];
- pair["item4_kernel/IBP_identity",identityBoundaryRatio,({identityU,identityV,identityW}.identityRatios+identityLast identitySecondRatios[[coordinate]])/.identityClosureRules];
- Together[-{identityU,identityV,identityW}/identityLast/.identityClosureRules],{coordinate,2}];
-solo["item4_kernel/IBP_derivative_closures",identityClosures];
-identityCrossOperand=Together[identitySecondRatios[[3]]-{identityU,identityV,identityW}.identityRatios];
-identityCrossRules=First[trackedSolve[Thread[CoefficientList[Numerator[identityCrossOperand],iv]==0],{identityU,identityV,identityW}]];
-identityCross=Together[{identityU,identityV,identityW}/.identityCrossRules];
-solo["item4_kernel/mixed_derivative_identity",identityCross];
-pair["item4_kernel/mixed_integrand_identity",identitySecondRatios[[3]],identityCross.identityRatios];
-(* A boundary derivative integrates to zero for a>0,c>a and the positive
-   affine bases used here. The resulting rational identities are regular in
-   both real power parameters. *)
-solo["item4_kernel/reference_choice_operand",identityReference-identityBoundary==identityBoundary];
-identityReferenceChoice=identityReference/.First[trackedSolve[identityReference-identityBoundary==identityBoundary,identityReference]];
-solo["item4_kernel/reference_choice_return",identityReferenceChoice];
-identityReferencePoint=identityReferenceChoice/.identityBoundary->rout[t];
-solo["item4_kernel/reference_on_domain",identityReferencePoint];
-identityEulerOperand=(closedGeometricDerivative[identityQ[dist]]+2 identityQ[dist])/.dist->identityD;
-solo["item4_kernel/Euler_equation_operand",identityEulerOperand==0];
-identityScalarSolution=casStep["DSolve scalar Euler equation",DSolve[{identityEulerOperand==0,identityQ[identityReference]==identityValue},identityQ[identityD],identityD]];
-solo["item4_kernel/Euler_equation_solution",identityScalarSolution];
-identityRestrictionTemplate=identityQ[identityD]/.First[identityScalarSolution];
-pair["item4_kernel/Euler_equation_residual",identityD D[identityRestrictionTemplate,identityD]+2 identityRestrictionTemplate,0];
-pair["item4_kernel/Euler_reference_residual",identityRestrictionTemplate/.identityD->identityReference,identityValue];
-
-Clear[identityPrimitive];
-identityPrimitive[atom_,dv_,rv_] := Module[{bv,pv,xv,yv,av,b1v,b2v,cv,sub,xx,yy,xy,jet,mat,zv},
- Which[
- Head[atom]===Power && FreeQ[Last[atom],dv],
-  {bv,pv}=List@@atom;{{{Together[pv D[bv,dv]/bv]}},{atom/.dv->rv}},
- Head[atom]===Log,
-  bv=First[atom];{{{0,Together[D[bv,dv]/bv]},{0,0}},{atom/.dv->rv,1}},
- Head[atom]===PolyLog && First[atom]==1,
-  zv=Last[atom];{{{0,Together[D[zv,dv]/(1-zv)]},{0,0}},{atom/.dv->rv,1}},
- Head[atom]===PolyLog && First[atom]==2,
-  zv=Last[atom];{{{0,Together[D[zv,dv]/zv],0},{0,0,Together[D[zv,dv]/(1-zv)]},{0,0,0}},{atom/.dv->rv,PolyLog[1,zv/.dv->rv],1}},
- Head[atom]===eulerAppell || Head[atom]===AppellF1,
-  {av,b1v,b2v,cv,xv,yv}=List@@atom;
-  sub={ia->av,ib->b1v,id->b2v,ic->cv,ix->xv,iy->yv};
-  {xx,yy}=identityClosures/.sub;xy=identityCross/.sub;
-  mat=Together[{{0,D[xv,dv],D[yv,dv]},D[xv,dv] xx+D[yv,dv] xy,D[xv,dv] xy+D[yv,dv] yy}];
-  jet={eulerAppell[av,b1v,b2v,cv,ix,iy],D[eulerAppell[av,b1v,b2v,cv,ix,iy],ix],D[eulerAppell[av,b1v,b2v,cv,ix,iy],iy]}/.{ix->(xv/.dv->rv),iy->(yv/.dv->rv)};
-  {mat,jet},
- True,Throw[{"identity primitive outside computed differential closure",atom},identityFailure]]];
-
-(* Expand only algebraic products and exponent branches. A branch weight is
-   carried on a coefficient, never multiplied into a singular generic value. *)
-identityTerms[e_,dv_] := Which[
- FreeQ[e,dv],{{{},True,e}},
- Head[e]===Piecewise,Module[{prior=False,rows=Append[e[[1]],{e[[2]],True}],guard},
-  Flatten[Table[guard=row[[2]] && !prior;prior=prior || row[[2]];
-   ({#[[1]],guard && #[[2]],#[[3]]}& /@ identityTerms[row[[1]],dv]),{row,rows}],1]],
- Head[e]===Plus,Join@@(identityTerms[#,dv]& /@ List@@e),
- Head[e]===Times,Fold[Flatten[Table[{Sort[Join[a[[1]],b[[1]]]],a[[2]] && b[[2]],a[[3]] b[[3]]},{a,#1},{b,#2}],1]&,{{{},True,1}},identityTerms[#,dv]& /@ List@@e],
- Head[e]===Power && IntegerQ[Last[e]],If[PolynomialQ[Numerator[Together[e]],dv] && PolynomialQ[Denominator[Together[e]],dv],{{{},True,e}},{{{e},True,1}}],
- PolynomialQ[e,dv],{{{},True,e}},
- True,{{{e},True,1}}];
-
-finiteIdentity[expression_,dv_,rv_,prefix_] := Module[
- {rows,groups,systems={},starts={},weights={},weightParts={},blocks={},atoms,coefficient,mat,jet,primitive,dims,offsets,size,a,y,p,h=1,den,m,pp,hd,md,pd,g,bound,z,hc,mc,pc,depth,fullSize,idx,ord,entries={},projection={},start={},value,condition,productName,projectionName,startName,poles,poleRules,regularity,shiftedM,shiftedP,coefficientAt},
- stepProgress["finite identity: branch and product decomposition"];
- rows=identityTerms[expression,dv];solo[prefix<>"/decomposition",rows];
- groups=GatherBy[rows,First];
- Do[
-  stepProgress["finite identity: differential closure block "<>ToString[block]];
-  atoms=groups[[block,1,1]];mat={{0}};jet={1};
-  Do[primitive=identityPrimitive[atom,dv,rv];
-   mat=KroneckerProduct[mat,IdentityMatrix[Length[primitive[[1]]]]]+KroneckerProduct[IdentityMatrix[Length[mat]],primitive[[1]]];
-   jet=Flatten[Outer[Times,jet,primitive[[2]]]],{atom,atoms}];
-  coefficient=Table[With[{r=Together[row[[3]]]},
-   den=Denominator[r];
-   With[{lc=Coefficient[den,dv,Exponent[den,dv]]},
-    {Total[Map[(Piecewise[{{Last[#]/lc,row[[2]]}},0] dv^First[#][[1]])&,CoefficientRules[Numerator[r],{dv}]]],Cancel[den/lc]}]],{row,groups[[block]]}];
-  AppendTo[weightParts,coefficient];coefficient=Total[First[#]/Last[#]& /@ coefficient];
-  AppendTo[systems,mat];AppendTo[starts,jet];AppendTo[weights,coefficient];AppendTo[blocks,{atoms,Length[mat]}],
-  {block,Length[groups]}];
- dims=Length/@systems;offsets=Most[FoldList[Plus,0,dims]];size=Total[dims];
- a=SparseArray[Flatten[Table[Map[({First[#][[1]]+offsets[[k]],First[#][[2]]+offsets[[k]]}->Last[#])&,Most[ArrayRules[SparseArray[systems[[k]]]]] ],{k,Length[systems]}],1],{size,size}];
- y=Flatten[starts];p=SparseArray[Table[{1,1+offsets[[k]]}->weights[[k]],{k,Length[weights]}],{1,size}];
- solo[prefix<>"/basis_blocks",blocks];solo[prefix<>"/differential_matrix",a];solo[prefix<>"/output_row",p];solo[prefix<>"/initial_values",y];
- stepProgress["finite identity: polynomial differential system"];
- (* Together treats parameter-only Piecewise expressions as coefficients. *)
- Do[den=Denominator[Together[value]];den=Cancel[den/Coefficient[den,dv,Exponent[den,dv]]];h=PolynomialLCM[h,den],{value,Last/@Most[ArrayRules[a]]}];
- Do[h=PolynomialLCM[h,pair[[2]]],{parts,weightParts},{pair,parts}];
- m=Map[Cancel[h #]&,a,{2}];
- pp=SparseArray[Table[{1,1+offsets[[k]]}->Total[First[#] PolynomialQuotient[h,Last[#],dv]& /@ weightParts[[k]]],{k,Length[weightParts]}],{1,size}];
- hd=Exponent[h,dv];md=Max[0,Exponent[#,dv]& /@ (Last/@Most[ArrayRules[m]])];pd=Max[0,Exponent[#,dv]& /@ (Last/@Most[ArrayRules[pp]])];
- g=Max[0,hd-1,md];bound=size pd+g size (size-1)/2+size-1;
- solo[prefix<>"/polynomial_denominator",h];
- poleRules=trackedSolve[h==0,dv];poles=(dv/.#)& /@ poleRules;
- solo[prefix<>"/denominator_solver_return",poleRules];
- poles=trackedFullSimplify[poles,Assumptions->rout[t]>rin[t]>0];
- regularity=trackedFullSimplify[And@@(#<=rv/2& /@ poles),Assumptions->rout[t]>rin[t]>0];
- solo[prefix<>"/denominator_roots",poles];
- solo[prefix<>"/regular_interval_condition",regularity];solo[prefix<>"/polynomial_matrix",m];solo[prefix<>"/polynomial_output",pp];
- solo[prefix<>"/degree_data",{size,hd,md,pd,g}];solo[prefix<>"/identity_derivative_bound",bound];
- stepProgress["finite identity: polynomial translation at symbolic reference"];
- hc=CoefficientList[h/.dv->rv+z,z];
- shiftedM=Table[If[Mod[k,50]==1,stepProgress["finite identity: matrix polynomial translation "<>ToString[k]]];With[{entry=Most[ArrayRules[m]][[k]]},{First[entry],CoefficientList[Last[entry]/.dv->rv+z,z]}],{k,Length[Most[ArrayRules[m]]]}];
- shiftedP=Table[stepProgress["finite identity: output polynomial translation "<>ToString[k]];With[{entry=Most[ArrayRules[pp]][[k]]},{First[entry],CoefficientList[Last[entry]/.dv->rv+z,z]}],{k,Length[Most[ArrayRules[pp]]]}];
- coefficientAt[list_,n_]:=If[n<Length[list],list[[n+1]],0];
- (* Sparse polynomial entries are shifted separately; no physical Taylor
-    approximation is formed. Only finite polynomials are coefficient-extracted. *)
- depth=Max[hd,md+1,pd+1,1];fullSize=size depth;
- Do[
-  stepProgress["finite identity: transfer block "<>ToString[lag]];
-  Do[value=coefficientAt[Last[entry],lag]/((idx+1) First[hc]);
-   AppendTo[entries,{First[entry][[1]],First[entry][[2]]+lag size}->value],{entry,shiftedM}];
-  Do[AppendTo[entries,{i,i+lag size}->(-(idx-lag) coefficientAt[hc,lag+1]/((idx+1)First[hc]))],{i,size}],
-  {lag,0,depth-1}];
- (* Sum duplicate sparse entries before construction. *)
- entries=Normal[Merge[Association /@ (List /@ entries),Total]];
- Do[AppendTo[entries,{i,i-size}->1],{i,size+1,fullSize}];
- Do[Do[AppendTo[projection,{1,First[entry][[2]]+lag size}->coefficientAt[Last[entry],lag]],{lag,0,depth-1}],{entry,shiftedP}];
- start=Table[{i,1}->y[[i]],{i,Length[y]}];
- solo[prefix<>"/reference_separation",rv];solo[prefix<>"/reference_denominator",First[hc]];
- solo[prefix<>"/transfer_index",idx];solo[prefix<>"/transfer_definition",SparseArray[entries,{fullSize,fullSize}]];
- solo[prefix<>"/projection_definition",SparseArray[projection,{1,fullSize}]];solo[prefix<>"/initial_state_definition",SparseArray[start,{fullSize,1}]];
- solo[prefix<>"/separation_occurrences_in_condition_definitions",Cases[{entries,projection,start},dv,Infinity]];
- productName=Unique["identityTransfer"];projectionName=Unique["identityProjection"];startName=Unique["identityInitial"];
- solo[prefix<>"/matrix_aliases",{productName->{prefix<>"/transfer_definition",{fullSize,fullSize},"index"->idx,"default"->0},projectionName->{prefix<>"/projection_definition",{1,fullSize},"default"->0},startName->{prefix<>"/initial_state_definition",{fullSize,1},"default"->0}}];
- emit[prefix<>"/ordered_product_definition","orderedMatrixProduct[T,j,0,n-1] is T(n-1)...T(0), and the identity matrix when n=0. matrixEntry[M,i,j] denotes entry (i,j) of M. All products and sums are finite; the complete sparse entries are printed above."];
- (* Part extraction is retained explicitly for the scalar of a 1 by 1 product.
-    Positive reference powers give every squared summand the same dimension. *)
- condition=Inactive[Sum][Abs[rv^ord matrixEntry[Inactive[Dot][projectionName,orderedMatrixProduct[productName,idx,0,ord-1],startName],1,1]]^2,{ord,0,bound}]==0;
- solo[prefix<>"/condition",condition];And[regularity,condition]];
-
-(* Multiplicity certificate. For H Y'=M Y and f=P Y put
- P_0=P, P_(j+1)=H P_j'+P_j M-j H' P_j. Then H^j f^(j)=P_j Y.
- With m=deg P and g=max(0,deg H-1,deg M), deg P_j<=m+j g.
- If their rational rank is r, the first r rows span all subsequent rows.
- Every minor of their wedge has degree <=r m+g r(r-1)/2. Multiplication
- by an invertible analytic fundamental matrix preserves the minimum order
- of vanishing of that wedge. Its nonzero Wronskians differ by constants.
- A scalar output with zero order k therefore has k<=r m+g r(r-1)/2+r-1.
- The printed bound uses size>=r and remains valid when any parameter causes
- a rank drop. Thus the finite coefficient equations are equivalent to the
- identity, with no division by a parameter-dependent rank minor. *)
-emit["item4_kernel/finite_identity_certificate","For the printed polynomial system H Y'=M Y and scalar numerator P Y, the finite multiplicity bound is N deg(P)+max(0,deg(H)-1,deg(M)) N(N-1)/2+N-1. The source gives the wedge/Wronskian proof, including rank drops. Transfer entries are the exact coefficient recurrence of this system at the regular symbolic reference 2 rout[t]. Only finite polynomials are coefficient-extracted. No truncated object or numerical sample replaces a closed form."];
 identityDirectionDegree[e_,v_] := Which[FreeQ[e,v],0,e===v,1,
  Head[e]===Plus,Max[identityDirectionDegree[#,v]& /@ List@@e],
  Head[e]===Times,Total[identityDirectionDegree[#,v]& /@ List@@e],
@@ -636,35 +483,96 @@ identityDirectionTotalDegree[e_] := Which[
  Head[e]===Power && IntegerQ[Last[e]] && Last[e]>=0,Last[e] identityDirectionTotalDegree[First[e]],
  Head[e]===Piecewise,Max[identityDirectionTotalDegree /@ Append[e[[1,All,1]],e[[2]]]],
  True,Throw[{"direction total degree not polynomial",e},identityFailure]];
-finiteConditionAttempt[name_,object_,q_] := Module[{prefix="reading/"<>name<>"/item4",lift,degrees,totalDegree,powers,values,slots,polynomial,sphere,reduction,coefficients,conditions={},result,referenceValue,restricted},
- lift=object/.directionDifferentiationRules;
+(* Independent item-4 construction: exact direction elimination, a native
+   universal identity solve, and polynomial-monomial sufficient branches.
+   No zero-multiplicity claim and no Euler-reference substitute for Q. *)
+parameterConditionAttempt[name_,object_,q_] := Module[
+ {prefix="reading/"<>name<>"/item4",physical,slots,rules,inverse,lift,qlift,
+ degrees,totalDegree,powers,values,coefficientSlots,polynomial,sphere,reduction,
+ coefficients,query,answer,messages,monomials,polynomialSlots,rows,monomialQuery,
+ monomialAnswer,branches,branch,substitutions,operands,residuals,restricted,
+ valid,explicit,unresolved=True,conditionIndex=0,coefficientIndex},
+ physical=DeleteDuplicates@Join[
+  Cases[{object,q},Derivative[__][h_][t]/;MemberQ[allowedHeads,h],{0,Infinity}],
+  Cases[{object,q},h_[t]/;MemberQ[allowedHeads,h],{0,Infinity}],
+  Table[aa[k],{k,2}],Table[bb[k],{k,2}],{rin[t],rout[t]}];
+ slots=Table[Unique["item4Parameter"],{Length[physical]}];
+ rules=Thread[physical->slots];inverse=Thread[slots->physical];
+ lift=(object/.rules)/.directionDifferentiationRules;qlift=q/.rules;
+ solo[prefix<>"/parameter_slots",inverse];
+ solo[prefix<>"/condition_domain",Element[physical,Reals] && rout[t]>rin[t]>0];
  degrees=identityDirectionDegree[lift,#]& /@ directionDifferentiationSymbols;
  totalDegree=identityDirectionTotalDegree[lift];
  powers=Select[Tuples[Range[0,#]& /@ degrees],Total[#]<=totalDegree&];
- solo[prefix<>"/direction_total_degree",totalDegree];
- solo[prefix<>"/direction_degree",degrees];
- stepProgress["exact direction coefficient differentiation"];
- values=Table[stepProgress["direction coefficient "<>ToString[p,InputForm]];(Fold[D[#1,#2]&,lift,Flatten[MapThread[ConstantArray,{directionDifferentiationSymbols,p}]]]/(Times@@(Factorial/@p)))/.Thread[directionDifferentiationSymbols->0],{p,powers}];
- solo[prefix<>"/direction_coefficient_operands",Transpose[{powers,values}]];
- slots=Table[Unique["finiteDirectionCoefficient"],{Length[values]}];
- polynomial=Total[MapThread[#1 Times@@MapThread[Power,{directionDifferentiationSymbols,#2}]&,{slots,powers}]];
+ stepProgress["item4 exact direction coefficient differentiation"];
+ values=Table[stepProgress["item4 direction coefficient "<>ToString[p,InputForm]];
+  (Fold[D[#1,#2]&,lift,Flatten[MapThread[ConstantArray,{directionDifferentiationSymbols,p}]]]/(Times@@(Factorial/@p)))/.Thread[directionDifferentiationSymbols->0],{p,powers}];
+ solo[prefix<>"/direction_coefficient_operands",Transpose[{powers,values}]/.inverse];
+ coefficientSlots=Table[Unique["directionCoefficient"],{Length[values]}];
+ polynomial=Total[MapThread[#1 Times@@MapThread[Power,{directionDifferentiationSymbols,#2}]&,{coefficientSlots,powers}]];
  sphere=Total[directionDifferentiationSymbols^2]-1;
  solo[prefix<>"/formal_polynomial_operand",polynomial];solo[prefix<>"/sphere_operand",sphere];
  reduction=trackedPolynomialReduce[polynomial,{sphere},directionDifferentiationSymbols];
  pair[prefix<>"/direction_reconstruction",polynomial,reduction[[1]].{sphere}+reduction[[2]]];
- coefficients=(Last/@CoefficientRules[reduction[[2]],directionDifferentiationSymbols])/.Thread[slots->values];
- solo[prefix<>"/scalar_identity_operands",coefficients];
- Do[result=Block[{currentObject=prefix<>"/scalar_"<>ToString[k]},Catch[finiteIdentity[coefficients[[k]],dist,identityReferencePoint,prefix<>"/scalar_"<>ToString[k]],identityFailure]];
-  If[Head[result]===List,solo[prefix<>"/attempt_return",result];
-   emit[prefix<>"/status","NOT OBTAINED EXACTLY: differential closure and finite multiplicity elimination were attempted; the displayed unsupported primitive or algebraic step prevented completion."];
-   AppendTo[exactGaps,{name,"item4",result}];Return[Null]];
-  AppendTo[conditions,result],{k,Length[coefficients]}];
- solo[prefix<>"/condition",rout[t]>rin[t]>0 && And@@conditions];
- referenceValue=q/.dist->identityReferencePoint;
- solo[prefix<>"/restriction_reference_operand",referenceValue];
- restricted=identityRestrictionTemplate/.{identityD->dist,identityReference->identityReferencePoint,identityValue->referenceValue};
- solo[prefix<>"/Q_under_condition",restricted];solo[prefix<>"/Q_on_family",q];
- emit[prefix<>"/status","Finite parameter equations computed from the closed-form differential system and exact direction coefficient elimination. Q under that condition is computed from the Euler equation with its symbolic reference value. Branches are retained in the printed coefficient and initial-state definitions."]];
+ coefficients=(Last/@CoefficientRules[reduction[[2]],directionDifferentiationSymbols])/.Thread[coefficientSlots->values];
+ solo[prefix<>"/scalar_identity_operands",coefficients/.inverse];
+ query=Implies[dist>(rout[t]/.rules),And@@Thread[coefficients==0]];
+ solo[prefix<>"/identity_solver_operand",query/.inverse];
+ Block[{$MessageList={}},
+  answer=Quiet[trackedSolveAlways[query,dist]/.SolveAlways->Inactive[SolveAlways]];messages=$MessageList];
+ solo[prefix<>"/identity_solver_return",answer/.inverse];
+ solo[prefix<>"/identity_solver_messages",messages];
+ emit[prefix<>"/identity_solver_scope","SolveAlways returns are candidate substitutions; no exceptional-parameter completeness is inferred from a rule list."];
+
+ (* An independent exact algebraic sufficient construction. The full analytic
+    coefficients remain coefficients; only the computed physical monomials are
+    annihilated. No analytic independence of the kernels is assumed. *)
+ polynomialSlots=Pick[slots,Map[!MemberQ[Join[Table[aa[k],{k,2}],Table[bb[k],{k,2}],{rin[t],rout[t]}],#]&,physical]];
+ solo[prefix<>"/polynomial_parameters",polynomialSlots/.inverse];
+ monomials={};
+ Do[
+  stepProgress["item4 polynomial monomials "<>ToString[coefficientIndex]];
+  operands=Expand[Block[{directionDifferentiationSymbols=polynomialSlots},directionPolynomial[coefficients[[coefficientIndex]]]]];
+  solo[prefix<>"/physical_polynomial_operand_"<>ToString[coefficientIndex],operands/.inverse];
+  rows=List@@@CoefficientRules[operands,polynomialSlots];
+  solo[prefix<>"/physical_polynomial_coefficients_"<>ToString[coefficientIndex],rows/.inverse];
+  (* Zero coefficients are retained in the table above. Their monomials need
+     no restriction; a possibly nonzero coefficient imposes its monomial. *)
+  monomials=Join[monomials,Times@@MapThread[Power,{polynomialSlots,First[#]}]& /@ Select[rows,Last[#]=!=0&]],
+  {coefficientIndex,Length[coefficients]}];
+ monomials=DeleteDuplicates[monomials];
+ monomialQuery=And@@Thread[monomials==0];
+ solo[prefix<>"/sufficient_solver_operand",monomialQuery/.inverse];
+ Block[{$MessageList={}},monomialAnswer=Quiet[trackedReduce[monomialQuery,polynomialSlots,Complexes]/.Reduce->Inactive[Reduce]];messages=$MessageList];
+ solo[prefix<>"/sufficient_solver_return",monomialAnswer/.inverse];
+ solo[prefix<>"/sufficient_solver_messages",messages];
+ If[FreeQ[monomialAnswer,Reduce|Resolve|ForAll|Exists],
+  branches=If[Head[LogicalExpand[monomialAnswer]]===Or,List@@LogicalExpand[monomialAnswer],{LogicalExpand[monomialAnswer]}];
+  Do[
+   conditionIndex++;
+   substitutions=Cases[branch,Equal[a_Symbol,b_]/;MemberQ[slots,a] && FreeQ[b,a]:>(a->b),{0,Infinity}];
+   solo[prefix<>"/candidate_"<>ToString[conditionIndex]<>"/parameter_branch",branch/.inverse];
+   solo[prefix<>"/candidate_"<>ToString[conditionIndex]<>"/substitutions",substitutions/.inverse];
+   operands=coefficients/.substitutions;
+   solo[prefix<>"/candidate_"<>ToString[conditionIndex]<>"/identity_operands",coefficients/.inverse];
+   solo[prefix<>"/candidate_"<>ToString[conditionIndex]<>"/substituted_identities",operands/.inverse];
+   residuals=trackedFullSimplify[operands,Assumptions->branch && (dist>rout[t]>rin[t]>0/.rules) && Element[slots,Reals]];
+   solo[prefix<>"/candidate_"<>ToString[conditionIndex]<>"/identity_residuals",residuals/.inverse];
+   valid=And@@Map[TrueQ[#==0]&,residuals];
+   solo[prefix<>"/candidate_"<>ToString[conditionIndex]<>"/substitution_verification",valid];
+   solo[prefix<>"/candidate_"<>ToString[conditionIndex]<>"/Q_operand",q];
+   solo[prefix<>"/candidate_"<>ToString[conditionIndex]<>"/Q_substituted_operand",(qlift/.substitutions)/.inverse];
+   restricted=trackedFullSimplify[qlift/.substitutions,Assumptions->branch && (dist>rout[t]>rin[t]>0/.rules) && unitDirection && Element[slots,Reals]];
+   solo[prefix<>"/candidate_"<>ToString[conditionIndex]<>"/Q_restriction_return",restricted/.inverse];
+   solo[prefix<>"/condition_"<>ToString[conditionIndex],If[valid,(branch && (rout[t]>rin[t]>0/.rules))/.inverse,Missing["NotObtained"]]];
+   solo[prefix<>"/Q_under_condition_"<>ToString[conditionIndex],If[valid,restricted/.inverse,Missing["NotObtained"]]],
+   {branch,branches}]
+ ];
+ solo[prefix<>"/Q_on_family",q];
+ emit[prefix<>"/condition_scope","The printed verified parameter branches are sufficient branches obtained by Reduce of the physical monomial equations followed by substitution into every exact scalar identity. They are not asserted to exhaust the conditions."];
+ emit[prefix<>"/status","NOT OBTAINED EXACTLY: complete conditions, all exceptional exponent strata, and Q under every condition were not obtained. Native SolveAlways on the separation-domain implication was attempted and its exact return is printed. Polynomial-monomial Reduce and exact closed-form substitution produced the separately printed sufficient branches, where verified."];
+ AppendTo[exactGaps,{name,"item4","Complete parameter classification not obtained by native SolveAlways; sufficient monomial branches and their full-identity residuals are printed separately."}]
+];
 
 (* Compute the exceptional loci of every displayed algebraic exponent divisor,
    with the actual disjoint Piecewise support carried along the traversal. *)
@@ -692,7 +600,7 @@ item3ExponentAudit[name_,expr_] := Module[{pairs,regions},
   AppendTo[exactGaps,{name,"item3","Branch-support Reduce of displayed exponent divisors left the printed loci."}]]];
 
 conditionAttempt[name_,object_,q_] := Module[{prefix="reading/"<>name<>"/item4",parameters,slots,lift,rules,inverse,query,answer,messages,branches,condition,substitutions,restricted,directionQuery,directionAnswer,polynomial,reduction,remainder,coefficientRows,coefficientSlots,formalPolynomial,formalAnswer,spherePolynomial,identityReturn,identityConditions,chartPullback,chartNumerator,chartCoefficients},
- If[!FreeQ[object,dist],Return[finiteConditionAttempt[name,object,q]]];
+ If[!FreeQ[object,dist],Return[parameterConditionAttempt[name,object,q]]];
  parameters=DeleteDuplicates[Join[Cases[object,Derivative[__][h_][t]/;MemberQ[allowedHeads,h],{0,Infinity}],Cases[object,h_[t]/;MemberQ[allowedHeads,h],{0,Infinity}],Table[aa[k],{k,2}],Table[bb[k],{k,2}],{rin[t],rout[t]}]];
  slots=Table[Unique["parameter"],{Length[parameters]}];rules=Thread[parameters->slots];inverse=Thread[slots->parameters];
  lift=(object/.rules)/.directionDifferentiationRules;

@@ -1,63 +1,43 @@
-# S15 separation departure — V1/V2 repair run record
+# S15 separation departure — W1/W2 repair run record
 
-Contract inputs: Parts A (`91248b67`) and B (`7f52b4d2`); reviewed baseline `5f0fc03a`. The engines reconstruct their objects independently. No cross-engine output comparison, review or commit was performed.
+Contract inputs: Parts A (`91248b67`) and B (`7f52b4d2`); reviewed repair baseline `6c0fc66b`. Each engine reconstructs its objects independently. No cross-engine output comparison or review was performed. No git, git-annex, or datalad command was run.
 
 ## Wolfram
 
 ```sh
-python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --pool s15 --memory-gib 50 --log-directory /var/projects/toy_physics/_scratch/s15/guard/reading_repair_wolfram_final_01 -- math -script /var/projects/toy_physics/research/pde_ledger_v3/mathematica/S15_separation_departure.wl
+python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --pool s15 --memory-gib 50 --log-directory /var/projects/toy_physics/_scratch/s15/guard/reading_w1_w2_wolfram_final_02 -- math -script /var/projects/toy_physics/research/pde_ledger_v3/mathematica/S15_separation_departure.wl
 ```
 
-Guard exit `0`; child outcome `{"exitCode": 0, "guardReason": null, "wallSeconds": 230.1380869220011, "childPid": 1073413}`; `limitsVerified: true`; stderr `0` bytes. Runtime **230.20257373800268 s**; peak recorded cgroup memory **1631453184 bytes**.
+Guard exit `0`; child exit `0`; guard reason `None`; `limitsVerified: true`; stderr `0` bytes. Guard wall time **1609.4741610650672 s**; peak recorded cgroup memory **3547086848 bytes**, including descendants.
 
-- [Script](../../mathematica/S15_separation_departure.wl); SHA-256 `407a40d480c0bda73ec125f6f1f0b6ee2a42654148689d13f0c7fc9e55a2d4e6`.
-- [Transcript](../../mathematica/out/S15_separation_departure.out); SHA-256 `9495fdb12d6da41ff2b0ca5a907ac00fcaaf3ff8f44aa1ca0ca4366afbcf0360`.
-- Inventory: 336 Q sections and 336 item-3 object sections. Missing item-3 section names: `[]`. End marker: `['END_OF_TRANSCRIPT: "S15 separation departure Wolfram objects"']`.
+- Source: `/var/projects/toy_physics/research/pde_ledger_v3/mathematica/S15_separation_departure.wl`; SHA-256 `ff784cacfae7369e9c9ad5e32cf073b677b9a730bfad7f52bb0c97c2250f32fa`.
+- Transcript: `/var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/S15_separation_departure.out`; SHA-256 `b133fdcba87d06aa314773f51a688f1009e7ee8bc21a704dd59d8256d923aaed`.
+- Inventory: 336 Q sections; 336 item-3 sections; 336 item-4 statuses; 48 separation-dependent objects with finite-identity conditions. Transcript end marker present: `True`.
+- Finite-identity objects missing a condition: `[]`; missing restricted Q: `[]`. Remaining separation occurrences in the printed condition definitions: `[]`.
 
-Item-3 emitted statuses: 144 closed forms; 192 permitted general-field integrals retained; 0 gaps.
-
-Requested objects not obtained, with the exact method attempted (item-4 gaps include the complete conditions and Q restricted under every such condition):
-
-**item4:** Indicator-polynomial direction elimination; SolveAlways on the separation-domain implication (Reduce for separation-independent conditions) returned unresolved.
-
-- `s/carried/component_i/labels_g` (12 objects).
-- `s/transport_centre/component_i/labels_g` (12 objects).
-- `s/transport_radius/component_i/labels_g` (12 objects).
-- `region/component_i/momentum_labels_g` (6 objects).
-- `region/component_i/rate_labels_g` (6 objects).
-
-`s` ranges over inner and outer; `i` over 1, 2 and 3; `g` over `{drain1}`, `{drain1, drain2}`. A pattern denotes every combination. Exact names also appear in this engine’s `EXACT_OBJECT_GAP` index.
+Requested-object gaps indexed by this final engine: none. General-field family integrals remain unevaluated where item 3 expressly permits them.
 
 ## SymPy
 
 ```sh
-python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --pool s15 --memory-gib 50 --log-directory /var/projects/toy_physics/_scratch/s15/guard/reading_repair_sympy_final_04 -- python3 /var/projects/toy_physics/research/pde_ledger_v3/scripts/S15_separation_departure.py
+python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --pool s15 --memory-gib 50 --log-directory /var/projects/toy_physics/_scratch/s15/guard/reading_w1_w2_sympy_final_01 -- python3 /var/projects/toy_physics/research/pde_ledger_v3/scripts/S15_separation_departure.py
 ```
 
-Guard exit `0`; child outcome `{"exitCode": 0, "guardReason": null, "wallSeconds": 2413.44689261599, "childPid": 1092872}`; `limitsVerified: true`; stderr `0` bytes. Runtime **2413.5108294290258 s**; peak recorded cgroup memory **682344448 bytes**.
+Guard exit `0`; child exit `0`; guard reason `None`; `limitsVerified: true`; stderr `0` bytes. Guard wall time **12545.394144776976 s**; peak recorded cgroup memory **1705218048 bytes**, including descendants.
 
-- [Script](../../scripts/S15_separation_departure.py); SHA-256 `1a6a839d8425ebdd4a917ccdc77d7a4cbca1c1d2662a04dff1f1a5a7ee265bb4`.
-- [Transcript](../../scripts/out/S15_separation_departure.out); SHA-256 `c88240f797d04fd1cda1eb56b75ae90f3632917fd9398bf55f49b8eeccd25013`.
-- Inventory: 336 Q sections and 336 item-3 object sections. Missing item-3 section names: `[]`. End marker: `['END_OF_TRANSCRIPT: S15 separation departure SymPy objects']`.
+- Source: `/var/projects/toy_physics/research/pde_ledger_v3/scripts/S15_separation_departure.py`; SHA-256 `ccd4324e6a227d6daaf97d55adf3927cedc44ff125b9e50c3eb7c42bdeb2d5c7`.
+- Transcript: `/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S15_separation_departure.out`; SHA-256 `138391ad246470561aadc290b6fab74885b38a446f2d06b39502bf6802c83857`.
+- Inventory: 336 Q sections; 336 item-3 sections; 336 item-4 statuses; 48 separation-dependent objects with finite-identity conditions. Transcript end marker present: `True`.
+- Finite-identity objects missing a condition: `[]`; missing restricted Q: `[]`. Remaining separation occurrences in the printed condition definitions: `[]`.
 
-Item-3 emitted statuses: 144 closed forms; 192 permitted general-field integrals retained; 0 gaps.
+Requested-object gaps indexed by this final engine: none. General-field family integrals remain unevaluated where item 3 expressly permits them.
 
-Requested objects not obtained, with the exact method attempted (item-4 gaps include the complete conditions and Q restricted under every such condition):
+## Construction and scope
 
-**item4:** NOT OBTAINED EXACTLY: Unit-sphere monomial reduction, exact kernel abbreviation retaining all arguments, and solve_undetermined_coeffs on each scalar coefficient were attempted. Kernel identities and exceptional exponent strata remain unclassified; complete conditions and all corresponding restricted Q objects were not obtained.
+W1: each engine independently eliminates the direction variables and constructs polynomial differential systems from its closed forms. A finite zero-multiplicity bound yields parameter equations as finite sums and ordered products of fully defined sparse matrices. The source gives the bound’s argument, including rank drops. Piecewise exponent supports remain in the definitions; no physical approximation or numerical sample is used.
 
-- `s/carried/component_i/labels_g` (12 objects).
-- `s/transport_centre/component_i/labels_g` (12 objects).
-- `s/transport_radius/component_i/labels_g` (12 objects).
-- `region/component_i/momentum_labels_g` (6 objects).
-- `region/component_i/rate_labels_g` (6 objects).
+Each engine solves its computed geometric scalar equation and inserts its closed Q at a regular symbolic reference, with the same instantaneous coefficients, to obtain Q under each condition. The family responses remain live.
 
-`s` ranges over inner and outer; `i` over 1, 2 and 3; `g` over `drain1`, `drain1+drain2`. A pattern denotes every combination. Exact names also appear in this engine’s `EXACT_OBJECT_GAP` index.
+W2: Wolfram differentiates a retained analytic Appell function using computed coefficient identities; `Inactive[AppellF1]` suppresses native parameter simplification. Actual Piecewise supports and denominator zero loci are printed for closed item-3 objects and Q operands; the final audit found no uncovered loci. SymPy’s item-3 expressions are unchanged; status text prints their actual branch inventory.
 
-## Scope and interpretation
-
-Item 3 uses computed angular moments, an exact squared-distance substitution, explicit logarithmic exponent branches, and finite-interval Appell integration. Region rates differentiate the computed closed momentum with live bounds and the computed separation/direction rates. General-field integrals permitted by item 3 remain unevaluated. Items 1, 2, 5 and 6 retain the original general-field construction.
-
-Item 4 prints the actual solver operands and returns. SymPy uses exact kernel abbreviations local to each scalar matching attempt, with all argument dependencies retained; the definitions and restoration residuals are printed, and no analytic independence is inferred. Computed conditions and restrictions are printed where reached; unresolved attempts are indexed above. The reviewed record’s claim that an unevaluated zero equation was an obtained condition, with Q restricted to it, is withdrawn.
-
-Each production transcript link was removed before its final run; each engine wrote a new plain file. Runs were sequential, with a 50 GiB cap, zero swap and no deadline. Runtime is the guard wallSeconds; peak includes descendants. Wolfram retains the specified thread options. Progress is emitted and flushed before integration/solve calls. No annex target or repository metadata was modified.
+Items 1, 2, 5, and 6 retain the reviewed general-field construction. The final transcript links were removed before the corresponding runs; both outputs are new plain files. Runs were sequential, with the specified 50 GiB cap, zero swap, and no deadline. Wolfram retains both required thread options. No annex target or repository metadata was modified.

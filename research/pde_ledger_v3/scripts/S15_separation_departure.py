@@ -14,6 +14,296 @@ import sympy as S
 OUT = Path(__file__).resolve().parent / 'out' / 'S15_separation_departure.out'
 
 
+"""Exact finite identity conditions for analytic rational differential systems.
+
+This file is inlined into the SymPy engine, not imported by its other engine.
+No physical formula is supplied here: the input is the computed scalar output.
+
+Multiplicity lemma used by the finite elimination:
+  H Y'=M Y; f=P Y, with polynomial H,M,P and H nonzero on the interval.
+  Write f^(j)=P_j Y/H^j. Then P_(j+1)=H P_j'+P_j M-j H' P_j.
+  If deg(P)<=m and g=max(0,deg(H)-1,deg(M)), deg(P_j)<=m+j*g.
+  Let r be the rational-function rank of these rows. The first r rows span
+  every later row (differentiate a first dependence). Their wedge minors
+  have degree <=r*m+g*r*(r-1)/2. Multiplication by the analytic invertible
+  fundamental solution preserves the minimum vanishing order of that wedge.
+  The scalar output solution space has dimension r. Its Wronskians differ by
+  constant factors. A nonzero output of zero order k makes their order at
+  least k-r+1. Thus k<=r*m+g*r*(r-1)/2+r-1, bounded by the same expression
+  with the full system dimension N. This includes rank drops and the zero
+  output without dividing by any parameter-dependent minor.
+  Consequently the first B+1 exact coefficient equations at any regular
+  point are necessary AND sufficient for the output to vanish identically.
+  Only coefficients of finite POLYNOMIALS are extracted below. No truncated
+  physical expansion is used as an object or as a replacement for one.
+"""
+
+import sympy as S
+from functools import lru_cache
+from itertools import product as cartesian_product
+from sympy.matrices.expressions.matexpr import MatrixElement
+
+
+class IdentityTransfer(S.MatrixExpr):
+    """Matrix whose complete, finite sparse entry definition is emitted."""
+    def __new__(cls, name, index, size):
+        return S.Basic.__new__(cls, S.Symbol(str(name)), S.sympify(index), S.Integer(size))
+    @property
+    def shape(self): return (self.args[2], self.args[2])
+
+
+class OrderedMatrixProduct(S.MatrixExpr):
+    """Finite ordered product: T(upper)...T(lower); empty product is I."""
+    def __new__(cls, matrix, index, lower, upper):
+        return S.Basic.__new__(cls, matrix, index, S.sympify(lower), S.sympify(upper))
+    @property
+    def shape(self): return self.args[0].shape
+
+
+def finite_identity_condition(expression, variable, reference, label, emit, progress):
+    """Return a finite parameter equation and its computed sparse definitions.
+
+    Every d-dependent kernel is represented by its explicit differential
+    system. In particular, no kernel containing d is an undefined coefficient.
+    Piecewise conditions depend only on parameters and remain on coefficients.
+    """
+    d=variable
+    serial=0
+    def note(step): progress(label+' / '+step)
+    def output(key,value):
+        emit(label+'/'+key,value)
+        emit(label+'/'+key+'/comparison','There is nothing to compare it with in this engine.')
+
+    # Linearize products and Piecewise branches while retaining their exact
+    # disjoint supports. The guards never involve the separation variable.
+    @lru_cache(None)
+    def terms(expr):
+        if not expr.has(d) or expr.is_rational_function(d):
+            return {((),S.true):expr}
+        if isinstance(expr,S.Piecewise):
+            result={};prior=S.false
+            for value,condition in expr.args:
+                support=S.And(condition,S.Not(prior));prior=S.Or(prior,condition)
+                for (atoms,guard),coefficient in terms(value).items():
+                    key=(atoms,S.And(support,guard))
+                    result[key]=result.get(key,S.Integer(0))+coefficient
+            return result
+        if expr.is_Add:
+            result={}
+            for value in expr.args:
+                for key,coefficient in terms(value).items():
+                    result[key]=result.get(key,S.Integer(0))+coefficient
+            return result
+        if expr.is_Mul:
+            result={((),S.true):S.Integer(1)}
+            for value in expr.args:
+                following={}
+                for (left,lc),(right,rc) in cartesian_product(result.items(),terms(value).items()):
+                    la,lg=left;ra,rg=right
+                    key=(tuple(sorted(la+ra,key=S.default_sort_key)),S.And(lg,rg))
+                    following[key]=following.get(key,S.Integer(0))+lc*rc
+                result=following
+            return result
+        if expr.is_Pow and not expr.exp.has(d) and expr.base.is_rational_function(d):
+            integer,remaining=expr.exp.as_coeff_Add()
+            if integer.is_Integer and integer and remaining:
+                atom=S.Pow(expr.base,remaining)
+                return {((atom,),S.true):expr.base**integer}
+        if expr.func==S.polylog and expr.args[0].is_Integer and expr.args[0]<=0:
+            return terms(S.expand_func(expr))
+        return {((expr,),S.true):S.Integer(1)}
+
+    # Systems are derived by differentiation, the Appell coefficient PDEs,
+    # and product closure. Their only d-poles are the explicit rational bases.
+    @lru_cache(None)
+    def atom_system(atom):
+        note('analytic kernel system '+str(atom.func))
+        if atom.is_Pow and not atom.exp.has(d) and atom.base.is_rational_function(d):
+            base,exponent=atom.args
+            return S.ImmutableSparseMatrix([[S.cancel(exponent*S.diff(base,d)/base)]]),S.ImmutableMatrix([atom.subs(d,reference)])
+        if atom.func==S.log and atom.args[0].is_rational_function(d):
+            base=atom.args[0]
+            return S.ImmutableSparseMatrix([[0,S.cancel(S.diff(base,d)/base)],[0,0]]),S.ImmutableMatrix([atom.subs(d,reference),1])
+        if atom.func==S.polylog:
+            order,z=atom.args;zp=S.diff(z,d)
+            if order==1:
+                return S.ImmutableSparseMatrix([[0,S.cancel(zp/(1-z))],[0,0]]),S.ImmutableMatrix([atom.subs(d,reference),1])
+            if order==2:
+                return S.ImmutableSparseMatrix([[0,S.cancel(zp/z),0],[0,0,S.cancel(zp/(1-z))],[0,0,0]]),S.ImmutableMatrix([atom.subs(d,reference),S.polylog(1,z.subs(d,reference)),1])
+        if atom.func==S.appellf1:
+            a,b1,b2,c,x,y=atom.args
+            cross=S.Matrix([[0,b2/(x-y),-b1/(x-y)]])
+            xx=(S.Matrix([[a*b1,-c+(a+b1+1)*x,b1*y]])-y*(1-x)*cross)/(x*(1-x))
+            yy=(S.Matrix([[a*b2,b2*x,-c+(a+b2+1)*y]])-x*(1-y)*cross)/(y*(1-y))
+            xp,yp=S.diff(x,d),S.diff(y,d)
+            matrix=S.Matrix.vstack(S.Matrix([[0,xp,yp]]),xp*xx+yp*cross,xp*cross+yp*yy)
+            matrix=matrix.applyfunc(S.cancel)
+            # Appell initial jets use its computed argument differentiation.
+            ux,uy=S.symbols('identity_appell_x identity_appell_y')
+            generic=S.appellf1(a,b1,b2,c,ux,uy)
+            values=S.Matrix([generic,S.diff(generic,ux),S.diff(generic,uy)])
+            values=values.subs({ux:x.subs(d,reference),uy:y.subs(d,reference)},simultaneous=True)
+            return S.ImmutableSparseMatrix(matrix),S.ImmutableMatrix(values)
+        raise ValueError(('analytic kernel outside constructed systems',atom))
+
+    note('separation expression decomposition')
+    decomposition=terms(expression)
+    output('decomposition',decomposition)
+    grouped={}
+    for (atoms,guard),coefficient in decomposition.items():
+        grouped.setdefault(atoms,[]).append((coefficient,guard))
+
+    def guarded_rational(coefficient,guard):
+        numerator,denominator=S.fraction(S.cancel(coefficient))
+        den=S.Poly(denominator,d)
+        monic=den.monic().as_expr()
+        poly=S.Poly(numerator,d)
+        # The parameter denominator is inside its Piecewise support, never
+        # multiplied afterwards by a zero indicator at an exceptional value.
+        guarded=sum(S.Piecewise((value/den.LC(),guard),(0,True))*d**power[0]
+                    for power,value in poly.terms())
+        return S.Poly(guarded,d),S.Poly(monic,d)
+
+    blocks=[];initial=[];outputs=[];basis=[]; row_parts={};offset=0
+    for block_number,(atoms,rows) in enumerate(grouped.items()):
+        note('product system '+str(block_number))
+        matrix=S.ImmutableSparseMatrix([[0]]);values=S.ImmutableMatrix([1])
+        for atom in atoms:
+            other,ov=atom_system(atom)
+            matrix=S.ImmutableSparseMatrix(S.kronecker_product(matrix,S.eye(other.rows))+
+                                          S.kronecker_product(S.eye(matrix.rows),other))
+            values=S.ImmutableMatrix(S.kronecker_product(values,ov))
+        parts=[guarded_rational(value,guard) for value,guard in rows]
+        row_parts[(0,offset)]=parts
+        coefficient=sum(n.as_expr()/den.as_expr() for n,den in parts)
+        offset+=matrix.rows
+        blocks.append(matrix);initial.extend(values)
+        outputs.extend([coefficient]+[S.Integer(0)]*(matrix.rows-1))
+        basis.append((atoms,matrix.rows))
+    matrix=S.ImmutableSparseMatrix(S.diag(*blocks))
+    row=S.ImmutableSparseMatrix(1,matrix.rows,outputs)
+    initial=S.ImmutableMatrix(initial)
+    output('basis_blocks',basis)
+    output('differential_matrix_entries',matrix.todok())
+    output('output_row_entries',row.todok())
+    output('initial_values',initial)
+
+    # Compute a common polynomial denominator; its d-independent factors
+    # remain in coefficients and do not create exceptional parameter divisions.
+    note('polynomial differential system')
+    denominator=S.Poly(1,d)
+    @lru_cache(None)
+    def polynomial_fraction(value):
+        return tuple(S.Poly(z,d) for z in S.fraction(S.cancel(value,d)))
+    rational_matrix={}
+    for number,(ij,value) in enumerate(matrix.todok().items()):
+        if number%10==0:note('rational system entry '+str(number))
+        rational_matrix[ij]=polynomial_fraction(value)
+    denominator_seen=set()
+    for number,(num,den) in enumerate(list(rational_matrix.values())+[pair for parts in row_parts.values() for pair in parts]):
+        if number%20==0:note('common denominator '+str(number))
+        if den.monic() not in denominator_seen:
+            denominator=S.lcm(denominator,den.monic())
+            denominator_seen.add(den.monic())
+    H=denominator.as_expr()
+    @lru_cache(None)
+    def denominator_quotient(den):return denominator.exquo(den)
+    @lru_cache(None)
+    def clear_fraction(num,den):return num*denominator_quotient(den)
+    M={}
+    for number,(ij,(num,den)) in enumerate(rational_matrix.items()):
+        if number%20==0:note('polynomial system entry '+str(number))
+        M[ij]=clear_fraction(num,den)
+    P={}
+    for ij,parts in row_parts.items():
+        note('polynomial output entry '+str(ij))
+        P[ij]=sum((clear_fraction(num,den) for num,den in parts),S.Poly(0,d))
+    N=matrix.rows
+    hd=int(denominator.degree())
+    md=max([int(x.degree()) for x in M.values() if not x.is_zero]+[0])
+    pd=max([int(x.degree()) for x in P.values() if not x.is_zero]+[0])
+    growth=max(0,hd-1,md)
+    bound=N*pd+growth*N*(N-1)//2+N-1
+    output('polynomial_denominator',H)
+    note('solve polynomial-system poles')
+    poles=S.solve(H,d)
+    output('denominator_roots',poles)
+    # All encountered poles are geometric, so these inequalities explicitly
+    # record the regular connected interval of the analytic identity.
+    regularity=S.And(*(S.Le(pole,reference/2) for pole in poles))
+    output('regular_interval_condition',regularity)
+    output('reference_regularity_condition',S.Ne(H.subs(d,reference),0,evaluate=False))
+    output('polynomial_matrix_entries',{ij:x.as_expr() for ij,x in M.items()})
+    output('polynomial_output_entries',{ij:x.as_expr() for ij,x in P.items()})
+    output('degree_data',dict(dimension=N,denominator_degree=hd,matrix_degree=md,output_degree=pd,row_degree_growth=growth))
+    output('identity_derivative_bound',bound)
+
+    # These are finite polynomial coefficient extractions, not approximations
+    # to E or Q. The resulting recurrence is an exact differential identity.
+    note('finite polynomial translation to reference')
+    shift=S.Dummy('polynomial_shift')
+    @lru_cache(None)
+    def translate(poly):
+        # Exact affine composition of a finite polynomial. Keep its parameter
+        # coefficients intact instead of globally expanding their branches.
+        degree=max(0,int(poly.degree())) if not poly.is_zero else 0
+        return S.Poly.from_dict({(j,):sum(S.binomial(k,j)*poly.nth(k)*reference**(k-j)
+            for k in range(j,degree+1)) for j in range(degree+1)},shift,domain='EX')
+    h=translate(denominator)
+    m={};p={}
+    for number,(ij,value) in enumerate(M.items()):
+        if number%20==0:note('matrix polynomial translation '+str(number))
+        m[ij]=translate(value)
+    for ij,value in P.items():
+        note('output polynomial translation '+str(ij))
+        p[ij]=translate(value)
+    depth=max(hd,md+1,pd+1,1)
+    size=N*depth
+    index=S.Symbol('identity_index',integer=True,nonnegative=True)
+    power=S.Symbol('identity_order',integer=True,nonnegative=True)
+    transfer={}
+    for lag in range(depth):
+        note('finite transfer block '+str(lag))
+        for (i,j),poly in m.items():
+            value=poly.nth(lag)/((index+1)*h.nth(0))
+            if value!=0:transfer[(i,j+lag*N)]=value
+        for i in range(N):
+            value=-(index-lag)*h.nth(lag+1)/((index+1)*h.nth(0))
+            key=(i,i+lag*N)
+            transfer[key]=transfer.get(key,S.Integer(0))+value
+    for i in range(N,size):transfer[(i,i-N)]=S.Integer(1)
+    projection={(0,j+lag*N):poly.nth(lag) for (i,j),poly in p.items()
+                for lag in range(depth) if poly.nth(lag)!=0}
+    start={(i,0):value for i,value in enumerate(initial) if value!=0}
+    output('reference_separation',reference)
+    output('reference_denominator',h.nth(0))
+    output('transfer_shape',(size,size))
+    output('transfer_index',index)
+    output('transfer_entries',transfer)
+    output('projection_shape',(1,size))
+    output('projection_entries',projection)
+    output('initial_state_shape',(size,1))
+    output('initial_state_entries',start)
+    output('condition_definition_free_symbols',sorted(set().union(*(v.free_symbols for v in [*transfer.values(),*projection.values(),*start.values()])),key=str))
+    # Names are local aliases for the complete finite sparse definitions above.
+    alias_stem=''.join(character if character.isalnum() else '_' for character in label)
+    transfer_name=alias_stem+'_T'
+    projection_name=alias_stem+'_P'
+    initial_name=alias_stem+'_Y'
+    T=IdentityTransfer(transfer_name,index,size)
+    R=S.MatrixSymbol(projection_name,1,size)
+    Y=S.MatrixSymbol(initial_name,size,1)
+    product=OrderedMatrixProduct(T,index,0,power-1)
+    scalar=MatrixElement(S.MatMul(R,product,Y,evaluate=False),0,0)
+    # Positive reference powers give every summand the same dimension.
+    equation=S.Eq(S.Sum(S.Abs(reference**power*scalar)**2,(power,0,bound)),0,evaluate=False)
+    output('matrix_aliases',{transfer_name:dict(shape=(size,size),entry_table=label+'/transfer_entries',default_entry=0,index=index),projection_name:dict(shape=(1,size),entry_table=label+'/projection_entries',default_entry=0),initial_name:dict(shape=(size,1),entry_table=label+'/initial_state_entries',default_entry=0)})
+    output('ordered_product_definition','OrderedMatrixProduct(T,j,l,u)=T(u) ... T(l), with the identity matrix for u<l. The index is an integer; all sums and products here are finite.')
+    equation=S.And(regularity,equation)
+    output('condition',equation)
+    return equation,dict(H=H,N=N,bound=bound,reference=reference,reference_denominator=h.nth(0))
+
+
 def main(log):
     objects = {}
     def is_object(name):
@@ -722,6 +1012,38 @@ def main(log):
         abbreviated=descend(coefficient)
         return abbreviated,definitions
 
+    # The Appell differential identities are checked by exact coefficient
+    # recurrences, independently of native Appell simplification.
+    ka,kb,kc,ke=S.symbols('kernel_a kernel_b1 kernel_b2 kernel_c')
+    ki,kj=S.symbols('kernel_i kernel_j',integer=True,nonnegative=True)
+    def kernel_coefficient(i,j):
+        return S.rf(ka,i+j)*S.rf(kb,i)*S.rf(kc,j)/(S.rf(ke,i+j)*S.factorial(i)*S.factorial(j))
+    kernel_base=kernel_coefficient(ki,kj)
+    kernel_x=cas_call('Appell x coefficient ratio',S.combsimp,kernel_coefficient(ki+1,kj)/kernel_base)
+    kernel_y=cas_call('Appell y coefficient ratio',S.combsimp,kernel_coefficient(ki,kj+1)/kernel_base)
+    pair('item4_kernel/Appell_x_coefficient_identity',(ki+1)*(ki+kj+ke)*kernel_x,(ki+kb)*(ki+kj+ka))
+    pair('item4_kernel/Appell_y_coefficient_identity',(kj+1)*(ki+kj+ke)*kernel_y,(kj+kc)*(ki+kj+ka))
+    pair('item4_kernel/Appell_mixed_coefficient_identity',(kj+1)*(ki+kb)*kernel_y,(ki+1)*(kj+kc)*kernel_x)
+    solo('item4_kernel/Appell_coefficient_residuals',[S.factor((ki+1)*(ki+kj+ke)*kernel_x-(ki+kb)*(ki+kj+ka)),S.factor((kj+1)*(ki+kj+ke)*kernel_y-(kj+kc)*(ki+kj+ka)),S.factor((kj+1)*(ki+kb)*kernel_y-(ki+1)*(kj+kc)*kernel_x)])
+    identity_distance,identity_reference=S.symbols('identity_distance identity_reference',positive=True)
+    identity_boundary=S.Symbol('identity_boundary',positive=True)
+    identity_reference_equation=S.Eq(identity_reference-identity_boundary,identity_boundary)
+    solo('item4_kernel/reference_choice_operand',identity_reference_equation)
+    identity_reference_choice=cas_call('solve symbolic regular reference',S.solve,identity_reference_equation,identity_reference)[0]
+    solo('item4_kernel/reference_choice_return',identity_reference_choice)
+    identity_reference_point=identity_reference_choice.subs(identity_boundary,rout)
+    solo('item4_kernel/reference_on_domain',identity_reference_point)
+    identity_value=S.Symbol('identity_value')
+    identity_function=S.Function('identity_function')
+    identity_ode=S.Eq((closed_geometric_derivative(identity_function(d))+2*identity_function(d)).subs(d,identity_distance),0)
+    solo('item4_kernel/Euler_equation_operand',identity_ode)
+    identity_euler_solution=cas_call('dsolve scalar Euler restriction',S.dsolve,identity_ode,ics={identity_function(identity_reference):identity_value})
+    solo('item4_kernel/Euler_equation_return',identity_euler_solution)
+    identity_euler_template=identity_euler_solution.rhs
+    pair('item4_kernel/Euler_residual',identity_distance*S.diff(identity_euler_template,identity_distance)+2*identity_euler_template,S.Integer(0))
+    pair('item4_kernel/reference_residual',identity_euler_template.subs(identity_distance,identity_reference),identity_value)
+    emit('item4_kernel/finite_identity_certificate','For H dY/dd=M Y and f=P Y the source proves a zero-multiplicity bound N deg(P)+max(0,deg(H)-1,deg(M)) N(N-1)/2+N-1, including every rank degeneration. The finite transfer equations test exactly those coefficients at symbolic reference 2 R(t). Only finite polynomial coefficients are extracted, with no truncated physical object or numerical sampling.')
+
     def solve_conditions(name,result,qclosed):
         tag='reading/'+name+'/item4'
         # Parameters are instant values/jets. For a polynomial in D direction,
@@ -768,6 +1090,25 @@ def main(log):
         pair(tag+'/unit_sphere_reconstruction',polynomial,reduced+sum(a*b.as_expr() for a,b in zip(quotient,direction_basis.polys)))
         emit(tag+'/direction_coefficients',list(reduced_coefficients.items()))
         emit(tag+'/identity_domain',(d>rout.xreplace(forward),S.Eq(sum(z*z for z in direction_D),1)))
+        if reduced.has(d):
+            condition_parts=[]
+            for powers,coefficient in reduced_coefficients.items():
+                scalar=coefficient.xreplace(backward).xreplace(back_jets)
+                scalar_tag=tag+'/finite_identity_'+''.join(map(str,powers))
+                def identity_progress(step):
+                    print('WORKING_ON: '+step,flush=True)
+                    emit('WORKING_ON',step)
+                condition,certificate=finite_identity_condition(scalar,d,identity_reference_point,scalar_tag,emit,identity_progress)
+                condition_parts.append(condition)
+            condition=S.And(rout>rin,rin>0,*condition_parts)
+            solo(tag+'/condition',condition)
+            reference_value=qclosed.subs(d,identity_reference_point)
+            solo(tag+'/restriction_reference_operand',reference_value)
+            restricted=identity_euler_template.subs({identity_distance:d,identity_reference:identity_reference_point,identity_value:reference_value},simultaneous=True)
+            solo(tag+'/Q_under_condition',restricted)
+            solo(tag+'/Q_on_family',qclosed)
+            emit(tag+'/status','Finite parameter equations computed from the closed-form differential system and unit-sphere coefficient reduction. Q under the condition is computed from the Euler equation and its symbolic reference value. Exponent branches remain in the coefficient and initial-state definitions.')
+            return
         attempted=[]
         for powers,coefficient in reduced_coefficients.items():
             emit(tag+'/scalar_identity_operand',(powers,coefficient))
@@ -886,11 +1227,12 @@ def main(log):
             qclosed=closed_q(q)
             solo(tag+'/item3/Q_closed_operand',qclosed)
             result=closed_geometric_derivative(qclosed)+2*qclosed
-            status='Closed form from exact azimuth moments, squared-distance integration and finite-interval Appell integration, with logarithmic exponent branches.'
+            status='Closed-form return from the exact moment, distance and finite-interval integration construction. The branch inventory is printed separately.'
         solo(tag+'/item3/object',result)
         if not has_general_field(family_geo) and result.has(S.Integral,S.nan,S.zoo,S.oo,-S.oo):
             status='NOT OBTAINED IN CLOSED FORM: exact azimuth, squared-distance and Appell-kernel integration was attempted; an Integral or undefined/nonfinite expression remains in its return.'
             gaps.append((name,'item3',status))
+        emit(tag+'/item3/exponent_branch_inventory',sorted({str(condition) for piece in result.atoms(S.Piecewise) for value,condition in piece.args}))
         emit(tag+'/item3/status',status)
         if result.has(S.Integral,S.nan,S.zoo,S.oo,-S.oo) or has_general_field(result):
             emit(tag+'/item4/status','Not applicable: the printed item-3 form retains a general field or is not a usable closed form.')

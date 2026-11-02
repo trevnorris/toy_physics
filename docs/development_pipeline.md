@@ -193,9 +193,10 @@ you can see) applied to the mandatory FORM ablation.
   payloads** must match the engine's committed tags — ⛔ not full stdout (progress, RSS, timestamps, banners
   are nondeterministic and already are on these engines). This is copy-identity, ⛔ not the cut
   byte-identical-**restore** quarantine.
-- **Commit the evidence, and ablate the harness itself.** Commit/annex the harness *and* its exact invocation,
+- **Commit the evidence, and ablate the harness itself.** Commit the harness *and* its exact invocation,
   source/output digests, and literal `(baseline, corrupted, diff)` transcript through the normal
-  `_measurements/` record — a committed-but-never-run harness is a capability, not evidence (E1). Verify the
+  `_measurements/` record (a full engine transcript is not committed; its run manifest is — CLAUDE.md,
+  Repository infrastructure) — a committed-but-never-run harness is a capability, not evidence (E1). Verify the
   harness by ablating **it**: a coefficient-rescale or dead-path mutation must **fail to report a bite**
   (Phase 4's "ablate the harness" applies to this artifact too).
 - **Both engines, never one — including an already-shipped sibling.** The comparator is only as trustworthy as

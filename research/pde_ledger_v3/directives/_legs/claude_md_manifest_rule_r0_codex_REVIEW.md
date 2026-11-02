@@ -1,0 +1,22 @@
+Independent review — manifest-rule-r0-codex
+
+Deliverable: review the four-file run-manifest amendment against the decision, evidence controls and consumers. **Findings: none.** All supplied hashes match, including at completion ([01_baseline.txt](01_baseline.txt), [36_final_baseline.txt](36_final_baseline.txt)). The exact review diff and command are in [02_diff.txt](02_diff.txt). No commits were made.
+
+**Fidelity.** CLAUDE.md:264–293 requires the command, script/input hashes, start/end times (hence runtime), exit/memory measurements, transcript path/size/hash and relied-on literal lines. It forbids new transcript commits, retains local transcripts and pre-repair copies while open, and deletes them at closure. Legacy annex history/retrieval remains; replacement removes the tracked path with the manifest commit. AGENTS.md:31 applies the prohibition to builders. Evidence: `nl -ba CLAUDE.md` and `git grep -n '^' -- AGENTS.md .gitignore`, with literal output in [05_claude.txt](05_claude.txt), [07_agents_ignore.txt](07_agents_ignore.txt).
+
+The controls hold with these necessary conditions, rather than permission to substitute summaries:
+
+- **E1 / quoting records:** manifests retain every relied-on literal line, including required operands/residuals; hashes alone are insufficient (CLAUDE.md:102–112,269–276; [05_claude.txt](05_claude.txt)).
+- **G3/G4 / review rounds:** source baselines remain committed; full reviewed transcripts are copied before overwrite, identified by manifest hashes and retained through closure. Subsequent replay establishes values, not historical byte identity (CLAUDE.md:164–184,277–283; [05_claude.txt](05_claude.txt)).
+- **M1 / comparator / fresh clone:** complete streams must be retrieved or regenerated from recorded source/input versions before comparison; Wolfram replay needs its licence. The actual comparator prints `raw=self.path.read_bytes()` and requires `--py`/`--wl`, so manifests cannot replace its inputs ([26_comparator_loader.txt](26_comparator_loader.txt), [27_comparator_main.txt](27_comparator_main.txt); CLAUDE.md:277–290).
+- **E2:** manifests retain the literal baseline/corrupted/diff triples, drift-guard production tags and harness-ablation evidence (pipeline:180–201; `sed -n '146,330p'` output in [11_pipeline_controls.txt](11_pipeline_controls.txt)).
+- **Observable gate / regression:** durable stdout references resolve to manifests/excerpts; the named real consumer still executes on complete inputs (CLAUDE.md:63–68; [05_claude.txt](05_claude.txt)). Pipeline:342 still says “Verify a structured artifact by running its consumer” ([20_pipeline_real_consumer.txt](20_pipeline_real_consumer.txt)).
+- **Later exports:** exports remain tracked plain-git inputs. `git ls-files -s` prints `100644` for S11/S11b exports; consumers import both ([33_consumer_file_modes.txt](33_consumer_file_modes.txt), [28_export_consumers.txt](28_export_consumers.txt), [22_gitattributes.txt](22_gitattributes.txt)).
+
+**Ignore tests.** `git check-ignore -v --non-matching` matches the four intended transcript/preservation probes and prints `::` for manifests, exports and an arbiter `.out` outside those directories ([18_ignore_matrix.txt](18_ignore_matrix.txt)). `git ls-files` lists existing transcripts ([14_transcripts_index.txt](14_transcripts_index.txt)); piping the entire list into `git check-ignore -v --stdin` produces no output, exit 1: none is ignored while tracked ([32_all_tracked_ignore.txt](32_all_tracked_ignore.txt)). Underlying patterns match with `--no-index` ([24_tracked_ignore_pattern.txt](24_tracked_ignore_pattern.txt)).
+
+**Leftovers:** no instruction to commit/annex a new full engine transcript found in the requested files and all six skills ([34_scanned_file_inventory.txt](34_scanned_file_inventory.txt), [08_leftover_scan.txt](08_leftover_scan.txt), [30_leftover_commit_context.txt](30_leftover_commit_context.txt)). Pipeline:196–199 requires ablation triples while explicitly excluding full engine transcripts. Generic baseline instructions remain governed by CLAUDE.md:182–183. The diff introduces no `_scratch` evidence dependency; existing references are inventoried in [31_scratch_references.txt](31_scratch_references.txt).
+
+Open questions: none for this amendment. This document/path review did not demonstrate computation or clone replay; the regeneration conditions above remain requirements.
+
+Verdict: **CLEAR** (no finding).

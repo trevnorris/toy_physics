@@ -28,7 +28,7 @@ how you work in the repository.
   Run state lives under `_scratch/`, which is ignored. Move a run output into the tree only when a record cites it.
 - ⛔ Never `git add -f`. A file that `.gitignore` excludes stays untracked.
 - ⛔ Never edit `.gitattributes` or `.gitignore` unless the user asks. The annex policy there is the user's.
-- Use `datalad save`. The large `out/*.out` files are annexed automatically. ⛔ Never annex a `*_exports.py`.
+- ⛔ Never stage or commit an engine transcript (`research/pde_ledger_v3/*/out/*.out`). Transcripts are regenerable and stay on local disk; a run's committed record is its run manifest (see CLAUDE.md, Repository infrastructure). ⛔ Never annex a `*_exports.py`.
 - ⛔ Never push, force-push, or move or delete tags. The user or Claude pushes after review.
 
 ## Reviews

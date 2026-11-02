@@ -19,7 +19,8 @@ weakens a gate.
 1. **Identify the object and the artifact's role.** Supply verified equations; withhold the target-answer
    criterion (the expected-value acceptance test, only); construct independently; preserve disagreement. (M1, M2)
 2. **Measure every claim.** Compute and emit *before* guards; interpret in records; attach the command and
-   its literal stdout in a `_measurements/` file — **this grounding duty binds the orchestrator too, CAS claims
+   its literal stdout in a `_measurements/` file (for an engine run, its run manifest with the lines relied on;
+   the full transcript is not committed) — **this grounding duty binds the orchestrator too, CAS claims
    included**. But I personally author/run only **mechanical fact-lookups**; a CAS computation that adjudicates a
    finding is a **Codex-written script reviewed under G1**, ⛔ never one I author or privately clear. (E1)
 3. **Pick two non-author legs.** Orchestrator-written → Codex + Grok; Codex-written → fresh Claude + Grok.
@@ -31,7 +32,7 @@ weakens a gate.
    checks by FORM; keep varying quantities live; change a defect-breeding author; no commit before both
    reports; commit the reviewed baseline before a repair overwrites it. (E2, G4, M3)
 6. **Enforce, don't merely promise.** Bound handoffs and leave visible evidence; never revive quarantine or
-   drop a control for cost; follow the annex/GIN policy for v3 `.out`. (S1, R11)
+   drop a control for cost; commit run manifests, never new transcripts (Repository infrastructure). (S1, R11)
 7. **Prove key results formally when it earns its keep (Lean, a third engine).** Machine-checked deduction — a
    different *kind* of check than the two CAS engines. Invest it in the theorem + a coverage contract + mutation
    controls that fail for the intended reason, fidelity-reviewed by non-authors; ⛔ not a byte-level re-check of
@@ -106,7 +107,9 @@ belongs to the step record. ⛔⛔ **This binds the orchestrator too** — the h
 review-leg prompt I write says *"a prose derivation is worth nothing; show the script and its literal
 stdout, or the claim is discarded,"* and the same standard applies to anything I claim. **A claim about an
 artifact carries the command that produced it**, and the commands + their literal output go in a
-`_measurements/` file beside the document — ⛔ **this grounding duty is unconditional; a CAS-backed claim is NOT
+`_measurements/` file beside the document (an engine run's full transcript is regenerable and not committed; its
+literal output enters the tree as the run manifest, which quotes verbatim every line a claim relies on — see
+Repository infrastructure) — ⛔ **this grounding duty is unconditional; a CAS-backed claim is NOT
 exempt from it.** ⛔⛔ **But grounding is NOT a licence to AUTHOR the instrument.** The only thing I author and
 run **myself** is a **mechanical fact-lookup**: existence, verbatim retrieval, literal-match counting, or the
 cardinality/shape of an explicitly named stored object — ⛔ with **no** derived predicate and **no** algebraic,
@@ -176,7 +179,8 @@ physics-CAS verification is Codex-written and reviewed under G1 (E1); I adjudica
 filed stdout + the legs, and author/run only mechanical fact-lookups myself.
 If successive revisions keep breeding defects in the material just changed, **change the author** — ⛔ don't
 fold a fourth time (author change waives neither review nor clearance). Commit the exact **reviewed
-baseline** before a repair overwrites it (recording unresolved findings); that preservation commit is not
+baseline** before a repair overwrites it (recording unresolved findings; for a transcript, commit its manifest and
+keep the file as a local preserved copy — Repository infrastructure); that preservation commit is not
 acceptance — accept the repaired result only after its own review and G4 clearance. *(evidence: L-R10, L-R13)*
 
 ---
@@ -255,25 +259,41 @@ diagnosis, and real-deliverable-verification obligations; ⛔ do not infer a wea
 
 ---
 
-## Repository infrastructure — the `.out` transcripts live in git-annex + GIN (set up 2026-09-01)
+## Repository infrastructure — commit run manifests, not transcripts (user 2026-11-02)
 
-The v3 CAS audit transcripts (`research/pde_ledger_v3/scripts/out/*.out` and
-`research/pde_ledger_v3/mathematica/out/*.out`, ~370 MB) are **git-annex content backed by GIN**
-(`gin.g-node.org/trevnorris/toy_physics`, public), NOT plain git blobs — one exceeded GitHub's 100 MB/file cap.
-The policy is the root `.gitattributes` (last-match-wins): everything is `annex.largefiles=nothing` (plain git)
-**except** those two `out/*.out` globs, which are `anything` (annex). GitHub is `annex-ignore` by design (git +
-tiny pointers only); GIN holds the bytes.
+An engine run's full transcript (`research/pde_ledger_v3/scripts/out/*.out`,
+`research/pde_ledger_v3/mathematica/out/*.out`) is regenerable by rerunning its committed script, so a new
+transcript is **not committed**, to git or to git-annex. User, 2026-11-02: *"We should be smart and not commit
+stuff users can regenerate."* What a transcript proves enters the tree as its **run manifest**.
 
-- **Generating/updating a v3 `.out`**: just `datalad save -m "…"` — the policy annexes `out/*.out` automatically
-  and keeps everything else in git. Then publish with **both** `datalad push --to gin` (content → GIN) **and**
-  `git push origin <branch>` (git + pointers → GitHub). ⛔ Never `git add -f` a big `.out`. ⛔ Never annex an
-  `*_exports.py` — they are hash-chained plain-git inputs the next step imports.
-- **After any fresh checkout/clone the `.out` are annex symlinks with NO content** until `datalad get <path>`.
-  `grep`-by-line still resolves once content is present (the symlink is followed), so a script/directive/leg
-  that reads a committed `.out` must `datalad get` it first — otherwise it reads a dangling link.
-- The GIN token is stored in the datalad keyring under credential name **`gin`**; use `--credential gin` with any
-  `create-sibling-gin`/publish. Full record, exact commands, and open follow-ups: the
-  `project-datalad-gin-out-storage` auto-memory.
+- **The run manifest** is a `_measurements/` file committed with the run's scripts. It holds:
+  - the exact command;
+  - the sha256 of every script and input the run read;
+  - the start and end time, the exit code, and the recorded peak memory;
+  - the transcript's path, size and sha256;
+  - verbatim, every transcript line that a record, a review disposition or a comparator claim relies on.
+
+  A committed claim quotes those lines, ⛔ never a file the tree does not hold.
+- **While a step is open**, its transcripts sit at their `out/` paths on local disk. Git ignores them there, and
+  the comparators and review legs read them in place. Before a repair overwrites a reviewed transcript, copy it to
+  `out/preserved/<name>.<round>.out` (also ignored), so the next round can compare against it. The reviewed
+  baseline's manifest carries its sha256. When the step closes, delete its local transcripts and preserved copies.
+- **A rerun is checked by value.** Term order can change between runs, so check a regenerated transcript against
+  the manifest's quoted lines. A byte-hash mismatch alone is not a finding. Rerunning the Wolfram half needs a
+  Mathematica licence.
+- ⛔ Never stage an engine transcript, meaning a `.out` in one of those two `out/` directories or a preserved copy
+  under them, and ⛔ never `git add -f` one. Any other `.out` (a `_measurements/` stdout file, a leg's derivation
+  output, a v2 audit transcript) is ordinary evidence and is committed as before. When a run replaces a
+  transcript that is still tracked, the commit that adds the new manifest removes the old file from the index
+  (`git rm --cached`); history keeps it.
+- **Legacy, 2026-09-01 → 2026-11-02:** the transcripts committed in that window are **git-annex content backed
+  by GIN** (`gin.g-node.org/trevnorris/toy_physics`, public). The root `.gitattributes` annexes the two `out/*.out`
+  globs; GitHub is `annex-ignore`, holding git and pointers only.
+  - After a fresh clone those files are annex symlinks with no content until `datalad get <path>`, so anything
+    that reads one must `datalad get` it first.
+  - To publish annex content, run `datalad push --to gin` (credential name **`gin`**).
+  - Full record: the `project-datalad-gin-out-storage` auto-memory.
+- ⛔ Never annex an `*_exports.py`: these are hash-chained plain-git inputs that the next step imports.
 
 ---
 

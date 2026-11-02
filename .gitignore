@@ -17,10 +17,18 @@ __pycache__
 *.toc
 *.vrb
 # ⛔ NOT a blanket `*.out`. A blanket rule silently dropped Mathematica arbiter/audit transcripts, which
-# are committed dual-engine evidence (Phase 4(a)). LaTeX hyperref aux is the only .out we ignore, and
-# only where LaTeX runs. Adding a per-directory `!` negation for each evidence tree does not scale —
+# were committed dual-engine evidence (Phase 4(a)). LaTeX hyperref aux is ignored only where LaTeX runs, and
+# the v3 engine transcripts only in their two out/ directories (below). Adding a per-directory `!` negation
+# for each evidence tree does not scale —
 # that is how 9 arbiter transcripts stayed invisible while one directory was protected.
 **/paper/*.out
+# v3 engine transcripts are regenerable and are not committed (user 2026-11-02; CLAUDE.md, Repository
+# infrastructure). Each run's committed record is its run manifest under _measurements/. Transcripts committed
+# 2026-09-01..11-02 stay tracked (git-annex + GIN); this rule only keeps new ones untracked.
+research/pde_ledger_v3/scripts/out/*.out
+research/pde_ledger_v3/mathematica/out/*.out
+research/pde_ledger_v3/scripts/out/preserved/
+research/pde_ledger_v3/mathematica/out/preserved/
 *.zip
 
 # Obsidian vault volatile state

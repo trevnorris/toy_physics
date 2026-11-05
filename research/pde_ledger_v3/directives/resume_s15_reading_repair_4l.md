@@ -9,7 +9,8 @@ The guard refused `repair4_size_wl_c1_momentum_02` at admission: `--memory-gib 5
 The user asked whether item 4 could be computed at much less cost, and chose this: supply the expansion below, try a construction of item 4 that uses it on one object in each engine, and report how it did, before any further measurement or final run.
 
 - The Wolfram attempts that `resume_s15_reading_repair_4j.md` and `resume_s15_reading_repair_4k.md` ask for are not made.
-- The two SymPy measurement attempts, `repair4_size_py_c1_momentum_01` (unit `s11c-guard-c4214c0da91a`) and `repair4_size_py_c1_rate_01` (unit `s11c-guard-fd3dd4540a3c`), keep running under their guard launchers. Do not stop or restart them, and do not wait for them; the orchestrator watches them.
+- The SymPy measurement attempt `repair4_size_py_c1_rate_01` (unit `s11c-guard-fd3dd4540a3c`) keeps running under its guard launcher. Do not stop or restart it, and do not wait for it; the orchestrator watches it.
+- The SymPy measurement attempt `repair4_size_py_c1_momentum_01` (unit `s11c-guard-c4214c0da91a`) ended on 2026-11-05 at 06:50:33Z, when the kernel's out-of-memory killer stopped it at its 2 GiB cap while it shared the machine. Under `resume_s15_reading_repair_4j.md` that is not running out of memory. It is not run again now, and its end is not a guard event for you to stop on.
 
 ## Supplied (unfalsifiable in this trial)
 
@@ -32,7 +33,7 @@ Everything under "What must be true" in `resume_s15_reading_repair_4.md`, `resum
 
 ## What to do now, and where to stop
 
-- Write the construction in each engine, in your work directory, and attempt `region/component_1/momentum_labels_{drain1, drain2}` with it, Wolfram first. Run through the guard, one job at a time, with the largest `--memory-gib` the guard admits beside the two running SymPy attempts, and poll each job until it ends. Each attempt stops 1 hour after it started. If an attempt ends on an error in your code, you may fix it and run that object again; report every attempt.
+- Write the construction in each engine, in your work directory, and attempt `region/component_1/momentum_labels_{drain1, drain2}` with it, Wolfram first. Run through the guard, one job at a time, with the largest `--memory-gib` the guard admits beside the running SymPy attempt, and poll each job until it ends. Each attempt stops 1 hour after it started. If an attempt ends on an error in your code, you may fix it and run that object again; report every attempt.
 - Then stop and write a short report. For each attempt, give the run, its start and end, whether it returned its conditions, ran out of memory, reached 1 hour or ended on an error in your code, its wall time and its peak memory. For an attempt that returned, list every branch its construction set aside without determining its conditions, if there was any, and say how the construction establishes that the printed conditions are complete. List the files you changed with their sha256. Do not attempt any other object, and do not start the final runs; the orchestrator will reply.
 
 Do not read the orchestrator's memory (~/.claude/projects/) or any other checkout of this repository (the /var/projects/toy_physics-* directories).

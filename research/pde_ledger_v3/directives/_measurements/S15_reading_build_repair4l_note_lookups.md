@@ -35,8 +35,8 @@ The user selected **"Prototype expansion route (Recommended)"**. The orchestrato
 
 ```
 $ sha256sum research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md; wc -c research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md
-4d46c703ac54bc5d1f434c3ef2f822d40e70c9feffc9c8ae3d9d45ff82dc1ddd  research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md
-4202 research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md
+622cd5605820a02da08ce47cb93190eb66fa765a96e1f090f7f255275967440a  research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md
+4493 research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md
 ```
 
 ## R1. Values and exponents (fixed strings, from the repair-4 gate), in the note
@@ -58,21 +58,22 @@ count: 0
 
 ```
 $ /usr/bin/grep -n -F -- '−1' research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md | cut -c1-200; echo "count: $(/usr/bin/grep -c -F -- '−1' research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md)"
-16:With the region's surfaces taken as spheres about `X_2` of radii `r_in` and `R` (`S15_decision_list.md:89–91`), write a point of the region as `x = X_2 + r e`, with `e` a unit vector and `r_in 
-21:  `g_n(s, μ) = Σ_{k=0}^{⌊n/2⌋} (−1)^k (−s/2)_{n−k} (2μ)^{n−2k} / (k! (n−2k)!)`,
-23:  with `(c)_0 = 1` and `(c)_m = c(c+1)⋯(c+m−1)`. The series converges absolutely and uniformly for `0 ≤ z ≤ z_0` and `−1 ≤ μ ≤ 1`, for every `z_0 < 1`.
-24:- For `−s/2 > −1/2` and `s ≠ 0`, `g_n(s, μ)` is the Gegenbauer polynomial `C_n^{(−s/2)}(μ)` (DLMF 18.5.10 and 18.12.4). Here `g_n` is defined by the formula above for every real `s`.
+17:With the region's surfaces taken as spheres about `X_2` of radii `r_in` and `R` (`S15_decision_list.md:89–91`), write a point of the region as `x = X_2 + r e`, with `e` a unit vector and `r_in 
+22:  `g_n(s, μ) = Σ_{k=0}^{⌊n/2⌋} (−1)^k (−s/2)_{n−k} (2μ)^{n−2k} / (k! (n−2k)!)`,
+24:  with `(c)_0 = 1` and `(c)_m = c(c+1)⋯(c+m−1)`. The series converges absolutely and uniformly for `0 ≤ z ≤ z_0` and `−1 ≤ μ ≤ 1`, for every `z_0 < 1`.
+25:- For `−s/2 > −1/2` and `s ≠ 0`, `g_n(s, μ)` is the Gegenbauer polynomial `C_n^{(−s/2)}(μ)` (DLMF 18.5.10 and 18.12.4). Here `g_n` is defined by the formula above for every real `s`.
 count: 4
 ```
 
 ```
 $ /usr/bin/grep -n -F -- '-1' research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md | cut -c1-200; echo "count: $(/usr/bin/grep -c -F -- '-1' research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md)"
-count: 0
+13:- The SymPy measurement attempt `repair4_size_py_c1_momentum_01` (unit `s11c-guard-c4214c0da91a`) ended on 2026-11-05 at 06:50:33Z, when the kernel's out-of-memory killer stopped it at its 2 GiB ca
+count: 1
 ```
 
 ```
 $ /usr/bin/grep -n -F -- '−2' research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md | cut -c1-200; echo "count: $(/usr/bin/grep -c -F -- '−2' research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md)"
-21:  `g_n(s, μ) = Σ_{k=0}^{⌊n/2⌋} (−1)^k (−s/2)_{n−k} (2μ)^{n−2k} / (k! (n−2k)!)`,
+22:  `g_n(s, μ) = Σ_{k=0}^{⌊n/2⌋} (−1)^k (−s/2)_{n−k} (2μ)^{n−2k} / (k! (n−2k)!)`,
 count: 1
 ```
 
@@ -133,7 +134,7 @@ count: 0
 
 ```
 $ /usr/bin/grep -n -F -- '/d' research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md | cut -c1-200; echo "count: $(/usr/bin/grep -c -F -- '/d' research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md)"
-16:With the region's surfaces taken as spheres about `X_2` of radii `r_in` and `R` (`S15_decision_list.md:89–91`), write a point of the region as `x = X_2 + r e`, with `e` a unit vector and `r_in 
+17:With the region's surfaces taken as spheres about `X_2` of radii `r_in` and `R` (`S15_decision_list.md:89–91`), write a point of the region as `x = X_2 + r e`, with `e` a unit vector and `r_in 
 count: 1
 ```
 
@@ -258,7 +259,7 @@ count: 0
 
 ```
 $ /usr/bin/grep -n -i -F -- 'Claude' research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md | cut -c1-200; echo "count: $(/usr/bin/grep -c -i -F -- 'Claude' research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md)"
-38:Do not read the orchestrator's memory (~/.claude/projects/) or any other checkout of this repository (the /var/projects/toy_physics-* directories).
+39:Do not read the orchestrator's memory (~/.claude/projects/) or any other checkout of this repository (the /var/projects/toy_physics-* directories).
 count: 1
 ```
 
@@ -335,7 +336,7 @@ count: 0
 ```
 $ /usr/bin/grep -n -i -F -- 'RAM' research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md | cut -c1-200; echo "count: $(/usr/bin/grep -c -i -F -- 'RAM' research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md)"
 11:- The Wolfram attempts that `resume_s15_reading_repair_4j.md` and `resume_s15_reading_repair_4k.md` ask for are not made.
-35:- Write the construction in each engine, in your work directory, and attempt `region/component_1/momentum_labels_{drain1, drain2}` with it, Wolfram first. Run through the guard, one job at a time, 
+36:- Write the construction in each engine, in your work directory, and attempt `region/component_1/momentum_labels_{drain1, drain2}` with it, Wolfram first. Run through the guard, one job at a time, 
 count: 2
 ```
 
@@ -373,7 +374,7 @@ $ /usr/bin/grep -c -F -- 'resume_s15_reading_repair_4i.md' research/pde_ledger_v
 
 ```
 $ /usr/bin/grep -c -F -- 'resume_s15_reading_repair_4j.md' research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md
-1
+2
 ```
 
 ```
@@ -552,11 +553,11 @@ b7f32997595560494d2bf9951aa145f65d3f973408459cb438cf985d9e612302  research/pde_l
 
 ```
 $ git status --short -- research/pde_ledger_v3
+ M research/pde_ledger_v3/directives/_measurements/S15_reading_build_repair4l_note_lookups.md
+ M research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md
  M research/pde_ledger_v3/mathematica/S15_separation_departure.wl
  T research/pde_ledger_v3/mathematica/out/S15_separation_departure.out
  M research/pde_ledger_v3/scripts/S15_separation_departure.py
-?? research/pde_ledger_v3/directives/_measurements/S15_reading_build_repair4l_note_lookups.md
-?? research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md
 ?? research/pde_ledger_v3/mathematica/S15_separation_departure_run.py
 ```
 
@@ -576,10 +577,11 @@ $ cat _scratch/s15/reading_note_4l/note_4l_baseline.sha256; sha256sum -c _scratc
 8da34e5e672465319c399e1a016382801fbfacdaea2192b13db76e8e27b02acb  research/pde_ledger_v3/directives/S15_reading_decision_list.md
 ccabfa672e91c771e9f6a07ecbf6649fd33e2139c519cc7b2fadc0412d0fd8aa  research/pde_ledger_v3/directives/S15_decision_list.md
 305e21e0f544f7933b9651963693dd106f237e89d1e2ca66438c7776b3c64352  research/pde_ledger_v3/directives/_measurements/S15_reading_item4_method_assessment.md
-research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md: OK
+research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md: FAILED
 research/pde_ledger_v3/directives/S15_reading_decision_list.md: OK
 research/pde_ledger_v3/directives/S15_decision_list.md: OK
 research/pde_ledger_v3/directives/_measurements/S15_reading_item4_method_assessment.md: OK
+sha256sum: WARNING: 1 computed checksum did NOT match
 ```
 
 ```
@@ -593,7 +595,10 @@ $ sha256sum _scratch/s15/reading_note_4l/note_4l_review_prompt_p1.md; cat _scrat
 
 ```
 $ git status --porcelain | /usr/bin/grep -v -F S15_reading_build_repair4l_note_lookups.md | diff - _scratch/s15/reading_note_4l/status_before_note_4l.txt && echo 'working tree status unchanged since before the legs launched, apart from this record'
-working tree status unchanged since before the legs launched, apart from this record
+2d1
+<  M research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md
+5a5
+> ?? research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md
 ```
 
 ```
@@ -779,3 +784,93 @@ of:
 Do not spawn agents or build `run_all`, `watch` or supervisor orchestration. Do not read the orchestrator's memory
 (~/.claude/projects/) or any other checkout of this repository (the /var/projects/toy_physics-* directories).
 ````
+
+## R7. One operational update after the review
+
+After both reports were in, the SymPy momentum measurement attempt ended. The note exactly as reviewed is committed at
+`37aeedeb`. The update changes only which SymPy measurement attempt is still running, that the ended one is not run again
+now, and the phrase that sets the trial cap beside the running one. It changes no supplied equation, no object, no
+contract, no stop rule and nothing a record may claim, so it is not physics-bearing and was not sent back to the legs. The
+baseline check in R6 therefore fails for the note alone; the diff below is the whole difference.
+
+```
+$ git diff 37aeedeb -- research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md
+diff --git a/research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md b/research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md
+index 01a0fce8..4b93c0e5 100644
+--- a/research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md
++++ b/research/pde_ledger_v3/directives/resume_s15_reading_repair_4l.md
+@@ -9,7 +9,8 @@ The guard refused `repair4_size_wl_c1_momentum_02` at admission: `--memory-gib 5
+ The user asked whether item 4 could be computed at much less cost, and chose this: supply the expansion below, try a construction of item 4 that uses it on one object in each engine, and report how it did, before any further measurement or final run.
+ 
+ - The Wolfram attempts that `resume_s15_reading_repair_4j.md` and `resume_s15_reading_repair_4k.md` ask for are not made.
+-- The two SymPy measurement attempts, `repair4_size_py_c1_momentum_01` (unit `s11c-guard-c4214c0da91a`) and `repair4_size_py_c1_rate_01` (unit `s11c-guard-fd3dd4540a3c`), keep running under their guard launchers. Do not stop or restart them, and do not wait for them; the orchestrator watches them.
++- The SymPy measurement attempt `repair4_size_py_c1_rate_01` (unit `s11c-guard-fd3dd4540a3c`) keeps running under its guard launcher. Do not stop or restart it, and do not wait for it; the orchestrator watches it.
++- The SymPy measurement attempt `repair4_size_py_c1_momentum_01` (unit `s11c-guard-c4214c0da91a`) ended on 2026-11-05 at 06:50:33Z, when the kernel's out-of-memory killer stopped it at its 2 GiB cap while it shared the machine. Under `resume_s15_reading_repair_4j.md` that is not running out of memory. It is not run again now, and its end is not a guard event for you to stop on.
+ 
+ ## Supplied (unfalsifiable in this trial)
+ 
+@@ -32,7 +33,7 @@ Everything under "What must be true" in `resume_s15_reading_repair_4.md`, `resum
+ 
+ ## What to do now, and where to stop
+ 
+-- Write the construction in each engine, in your work directory, and attempt `region/component_1/momentum_labels_{drain1, drain2}` with it, Wolfram first. Run through the guard, one job at a time, with the largest `--memory-gib` the guard admits beside the two running SymPy attempts, and poll each job until it ends. Each attempt stops 1 hour after it started. If an attempt ends on an error in your code, you may fix it and run that object again; report every attempt.
++- Write the construction in each engine, in your work directory, and attempt `region/component_1/momentum_labels_{drain1, drain2}` with it, Wolfram first. Run through the guard, one job at a time, with the largest `--memory-gib` the guard admits beside the running SymPy attempt, and poll each job until it ends. Each attempt stops 1 hour after it started. If an attempt ends on an error in your code, you may fix it and run that object again; report every attempt.
+ - Then stop and write a short report. For each attempt, give the run, its start and end, whether it returned its conditions, ran out of memory, reached 1 hour or ended on an error in your code, its wall time and its peak memory. For an attempt that returned, list every branch its construction set aside without determining its conditions, if there was any, and say how the construction establishes that the printed conditions are complete. List the files you changed with their sha256. Do not attempt any other object, and do not start the final runs; the orchestrator will reply.
+ 
+ Do not read the orchestrator's memory (~/.claude/projects/) or any other checkout of this repository (the /var/projects/toy_physics-* directories).
+```
+
+```
+$ cat _scratch/s11c/s15/repair4_size_py_c1_momentum_01/outcome.json; echo; test -e _scratch/s11c/s15/repair4_size_py_c1_momentum_01/child-outcome.json && echo 'child-outcome.json present' || echo 'child-outcome.json absent'
+{
+  "exitCode": 1,
+  "wallSeconds": 60837.17744581681,
+  "unit": "s11c-guard-c4214c0da91a",
+  "stderrBytes": 0,
+  "limitsVerified": true,
+  "childOutcome": null
+}
+
+child-outcome.json absent
+```
+
+```
+$ python3 -c "import json;e=json.load(open('_scratch/s11c/s15/repair4_size_py_c1_momentum_01/effective-limits.json'));print({k:v for k,v in e.items() if 'emory' in k or k in ('MemoryMax','memory.max')})"
+{'memory.max': '2147483648', 'memory.swap.max': '0'}
+```
+
+```
+$ journalctl --user -u s11c-guard-c4214c0da91a.service --since '2026-11-04 23:50' --until '2026-11-04 23:51' --no-pager | tail -5
+Nov 04 23:50:33 pop-os systemd[1646]: s11c-guard-c4214c0da91a.service: A process of this unit has been killed by the OOM killer.
+Nov 04 23:50:33 pop-os systemd[1646]: s11c-guard-c4214c0da91a.service: Killing process 237629 (python3) with signal SIGKILL.
+Nov 04 23:50:33 pop-os systemd[1646]: s11c-guard-c4214c0da91a.service: Main process exited, code=killed, status=9/KILL
+Nov 04 23:50:33 pop-os systemd[1646]: s11c-guard-c4214c0da91a.service: Failed with result 'oom-kill'.
+Nov 04 23:50:33 pop-os systemd[1646]: s11c-guard-c4214c0da91a.service: Consumed 16h 53min 37.290s CPU time, 2.0G memory peak, 0B memory swap peak.
+```
+
+```
+$ journalctl --since '2026-11-04 23:50' --until '2026-11-04 23:51' --no-pager | /usr/bin/grep -F 'Memory cgroup out of memory'
+Nov 04 23:50:33 pop-os kernel: Memory cgroup out of memory: Killed process 257033 (python3) total-vm:2095408kB, anon-rss:1998400kB, file-rss:6016kB, shmem-rss:0kB, UID:1000 pgtables:3984kB oom_score_adj:200
+Nov 04 23:50:33 pop-os kernel: Memory cgroup out of memory: Killed process 237629 (python3) total-vm:35160kB, anon-rss:8088kB, file-rss:7688kB, shmem-rss:0kB, UID:1000 pgtables:84kB oom_score_adj:200
+Nov 04 23:50:33 pop-os kernel: Memory cgroup out of memory: Killed process 237631 (python3) total-vm:39520kB, anon-rss:7296kB, file-rss:10500kB, shmem-rss:0kB, UID:1000 pgtables:100kB oom_score_adj:200
+Nov 04 23:50:33 pop-os kernel: Memory cgroup out of memory: Killed process 237632 (python3) total-vm:135064kB, anon-rss:107088kB, file-rss:8960kB, shmem-rss:0kB, UID:1000 pgtables:288kB oom_score_adj:200
+Nov 04 23:50:33 pop-os kernel: Memory cgroup out of memory: Killed process 257033 (python3) total-vm:2095408kB, anon-rss:1998400kB, file-rss:6016kB, shmem-rss:0kB, UID:1000 pgtables:3984kB oom_score_adj:200
+```
+
+```
+$ stat -c '%y' _scratch/s11c/s15/repair4_size_py_c1_momentum_01/stdout; echo "WORKING_ON lines: $(/usr/bin/grep -a -c WORKING_ON _scratch/s11c/s15/repair4_size_py_c1_momentum_01/stdout)"; /usr/bin/grep -a WORKING_ON _scratch/s11c/s15/repair4_size_py_c1_momentum_01/stdout | tail -1 | sed 's#.*item4 / ##'
+2026-11-04 22:52:26.845550257 -0700
+WORKING_ON lines: 26765
+sparse_scalar/coefficient_0/polynomial_branch_63/solve_linear_parameter
+```
+
+```
+$ /usr/bin/grep -n -F 'has not run out of memory' research/pde_ledger_v3/directives/resume_s15_reading_repair_4j.md | cut -c1-240
+18:- Run through the guard. Run the two SymPy attempts alongside one Wolfram attempt at a time, in the order the objects are named above. While jobs share the machine, size each cap from that object's measured peaks so that the caps fit the
+```
+
+```
+$ systemctl --user is-active s11c-guard-c4214c0da91a.service s11c-guard-fd3dd4540a3c.service
+inactive
+active
+```

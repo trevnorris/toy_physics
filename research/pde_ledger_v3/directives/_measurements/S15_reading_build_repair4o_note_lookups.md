@@ -56,8 +56,8 @@ s11c-guard-b4d073f2bd93.service active running
 
 ```
 $ sha256sum research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md; wc -c research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md
-1196390b199b67509b3cd65096a5b86d35a15f27a1d967c70a38071ea46d7a22  research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md
-2652 research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md
+f6329dd3cb9069bc29fd98ca40caa2fccadb3f9dde861afb1411c36723dfa2ff  research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md
+2927 research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md
 ```
 
 ## R1. Values and exponents (fixed strings, from the repair-4 gate), in the note
@@ -376,6 +376,31 @@ $ /usr/bin/grep -c -F -- 'Neither gives any object a label' research/pde_ledger_
 ```
 
 ```
+$ /usr/bin/grep -c -F -- 'is absent included' research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'every rule of the standing notes on what an item-4 object prints' research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'stays as it was' research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'every other kind of label' research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'is a result of this build' research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md
+1
+```
+
+```
 $ /usr/bin/grep -c -F -- 'Do not stop, signal or change it' research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md
 1
 ```
@@ -412,6 +437,30 @@ $ /usr/bin/grep -n -F -e '## What must be true' -e 'third kind of label' -e 'An 
 ```
 $ git log -1 --format='%h %s' -- research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
 266f2acf Accept the S15 reading build repair-4n note after two CLEAR legs (user: stop the SymPy attempts, label the six, finish)
+```
+
+```
+$ nl -ba _scratch/s15/reading_build/resume_s15_reading_repair_4.md | sed -n '18,26p' | cut -c1-260
+    18	## What must be true
+    19	
+    20	For each of the 48 objects, in each engine:
+    21	- the conditions under which the item-3 object vanishes for every `D` on the domain, computed exactly from the printed closed form, complete, with every special exponent value treated, and printed as equations and inequalities in the named quantities: v
+    22	- `Q` on the family under each condition: one per condition, computed on that condition;
+    23	- each engine's attempt on an object is one that can return conditions on the exponents. A not-obtained label stands only where such an attempt did not return them, and says what was attempted;
+    24	- no printed line or run-record sentence states a property that no computation in that engine produced;
+    25	- each engine reaches its conditions by its own construction;
+    26	- no object of items 1, 2, 3, 5 or 6, and no item-4 object where `d` is absent, changes by value. Every condition printed now that is true stays printed.
+```
+
+```
+$ /usr/bin/grep -n -F -e 'either with its conditions or with its label' _scratch/s15/reading_build/resume_s15_reading_repair_4d.md | cut -c1-200; /usr/bin/grep -n -F -e 'carries one of the two labels' research/pde_ledger_v3/directives/resume_s15_reading_repair_4h.md | cut -c1-200
+12:- the final run of each engine ends with exit 0 and prints every object, each item-4 object either with its conditions or with its label;
+19:- An item-4 object either prints its complete conditions or carries one of the two labels; no label is printed for any other reason. The assessment reports that each engine can print a not-obtained
+```
+
+```
+$ git log -1 --format='%h %s' -- research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md
+9f099eb1 Preserve the round-1 reviewed baseline of the S15 repair-4o note before its fold
 ```
 
 ```
@@ -472,6 +521,16 @@ stdout
 {'exitCode': 1, 'wallSeconds': 0.5348064810968935}
 ```
 
+What the stopped SymPy run printed for item 4 (key counts only, no values).
+
+```
+$ T=research/pde_ledger_v3/scripts/out/S15_separation_departure.out; ls -l $T | cut -c1-120; echo "item4 status lines: $(/usr/bin/grep -a -c -E '^[^ ]*/item4/status' $T)"; echo "END_OF_TRANSCRIPT: $(/usr/bin/grep -a -c -F END_OF_TRANSCRIPT $T)"; python3 -c "import json;i=json.load(open('_scratch/s11c/s15/repair4_decision_final_sympy_02/invocation.json'));print([a for a in i['command'] if a.startswith('S15_PY_TRANSCRIPT=')])"
+-rw-rw-r-- 1 trevnorris trevnorris 41588310 Nov  6 15:52 research/pde_ledger_v3/scripts/out/S15_separation_departure.out
+item4 status lines: 4
+END_OF_TRANSCRIPT: 0
+['S15_PY_TRANSCRIPT=/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S15_separation_departure.out']
+```
+
 The session end: its marker, and what is still running.
 
 ```
@@ -508,14 +567,14 @@ s11c-guard-b4d073f2bd93.service 8589934592 2037429 repair4_decision_final_wolfra
 
 ```
 $ ls -l --time-style=+%Y-%m-%dT%H:%M:%SZ _scratch/s11c/s15/repair4_decision_final_wolfram_01/; test -e _scratch/s11c/s15/repair4_decision_final_wolfram_01/outcome.json && echo 'outcome.json present' || echo 'outcome.json absent'
-total 6744
+total 7472
 -rw-rw-r-- 1 trevnorris trevnorris     164 2026-11-06T15:40:00Z duration-validation.json
 -rw-rw-r-- 1 trevnorris trevnorris     594 2026-11-06T15:40:00Z effective-limits.json
 -rw-rw-r-- 1 trevnorris trevnorris    1446 2026-11-06T15:40:00Z invocation.json
 -rw-rw-r-- 1 trevnorris trevnorris     676 2026-11-06T15:40:00Z limit-validation.json
--rw-rw-r-- 1 trevnorris trevnorris 1510640 2026-11-06T17:44:59Z resource-samples.jsonl
+-rw-rw-r-- 1 trevnorris trevnorris 1769366 2026-11-06T18:06:23Z resource-samples.jsonl
 -rw-rw-r-- 1 trevnorris trevnorris       0 2026-11-06T15:40:00Z stderr
--rw-rw-r-- 1 trevnorris trevnorris 5367900 2026-11-06T17:44:59Z stdout
+-rw-rw-r-- 1 trevnorris trevnorris 5854103 2026-11-06T18:06:24Z stdout
 outcome.json absent
 ```
 
@@ -542,13 +601,13 @@ ca79558aedf0fcfbb3c3c89e79fa48e5cb40767433947c121eed4d427bcce6b4  research/pde_l
 
 ```
 $ git status --short -- research/pde_ledger_v3
+ M research/pde_ledger_v3/directives/_measurements/S15_reading_build_repair4o_note_lookups.md
+ M research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md
  M research/pde_ledger_v3/mathematica/S15_separation_departure.wl
  T research/pde_ledger_v3/mathematica/out/S15_separation_departure.out
  M research/pde_ledger_v3/scripts/S15_separation_departure.py
  T research/pde_ledger_v3/scripts/out/S15_separation_departure.out
-?? research/pde_ledger_v3/directives/_measurements/S15_reading_build_repair4o_note_lookups.md
 ?? research/pde_ledger_v3/directives/_measurements/S15_separation_departure_attempt_history.json
 ?? research/pde_ledger_v3/directives/_measurements/S15_separation_departure_attempt_history.md
-?? research/pde_ledger_v3/directives/resume_s15_reading_repair_4o.md
 ?? research/pde_ledger_v3/mathematica/S15_separation_departure_run.py
 ```

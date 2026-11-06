@@ -18,8 +18,8 @@ The user's words: "Feels like we need to stop using sympy for this work. It was 
 ## What must be true
 
 Everything under "What must be true" in `resume_s15_reading_repair_4n.md` stands, with these changes for SymPy:
-- In SymPy's final run, no item-4 object is attempted. Each item-4 object is printed with a not-obtained label that says it was set by this decision and that the object was not attempted in SymPy. This is a fourth kind of label. In SymPy it replaces every other label an item-4 object could carry, the third kind of `resume_s15_reading_repair_4n.md` included. No Wolfram object carries it.
-- The run record lists `repair4_decision_final_sympy_01` and `repair4_decision_final_sympy_02` as history, each with how it ended as its own files record it. Neither gives any object a label.
+- In SymPy's final run, no item-4 object is attempted, the item-4 objects where `d` is absent included. Each item-4 object is printed with a not-obtained label that says it was set by this decision and that the object was not attempted in SymPy. This is a fourth kind of label. In SymPy it replaces every rule of the standing notes on what an item-4 object prints: its conditions, `Q` under each condition, the rule that an item-4 value or a printed condition stays as it was, and every other kind of label, the third kind of `resume_s15_reading_repair_4n.md` included. No Wolfram object carries it.
+- The run record lists `repair4_decision_final_sympy_01` and `repair4_decision_final_sympy_02` as history, each with how it ended as its own files record it. Neither gives any object a label, and nothing either printed for item 4 is a result of this build.
 - `repair4_decision_final_wolfram_01` is Wolfram's final run. Do not stop, signal or change it or its job.
 
 ## What to do now, and where to stop

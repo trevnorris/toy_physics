@@ -29,8 +29,8 @@ parallel. If we're not running it in parallel then it can use the whole box."
 
 ```
 $ sha256sum research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md; wc -c research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
-8f144178b5bfe9bb562b2cd4209b329ff71dc1e8e318ccddc582c2219e2755e7  research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
-5057 research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+426737b7bde411edcbd62c73e62cfd8dae3251778c2ea538fa8a12c84fcb9bab  research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+5366 research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
 ```
 
 ## R1. Values and exponents (fixed strings, from the repair-4 gate), in the note
@@ -442,6 +442,36 @@ $ /usr/bin/grep -c -F -- 'none of them gives any of the six' research/pde_ledger
 ```
 
 ```
+$ /usr/bin/grep -c -F -- 'every run made on it for item 4' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'together with any correction you recorded later' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'sympy_selection_audit_correction.json' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'whether its engine reports its memory exhausted or the guard' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'at any time during the attempt' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'in such a run' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+1
+```
+
+```
 $ /usr/bin/grep -c -F -- 'machine with more memory' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
 1
 ```
@@ -659,6 +689,37 @@ processes named codex: 1
 guard units: 0
 ```
 
+```
+$ for p in $(pgrep -x codex); do echo "codex pid $p cwd: $(readlink /proc/$p/cwd)"; done
+codex pid 1963369 cwd: /var/projects/_review_scratch/s15-singular-p2-codex
+```
+
+The correction file the note points at, and the guard memory limits set at launch.
+
+```
+$ find _scratch/s15/reading_build_work -name sympy_selection_audit_correction.json; python3 -c "import json; j=json.load(open('_scratch/s15/reading_build_work/repair3/method_trial/sympy_selection_audit_correction.json')); print(len(j)); [print(e['run'], e['recorded_result'], e['corrected_result']) for e in j]"
+_scratch/s15/reading_build_work/repair3/method_trial/sympy_selection_audit_correction.json
+6
+repair4_hour_py_c1_momentum_01 conditions construction_error
+repair4_hour_py_c1_rate_01 conditions construction_error
+repair4_hour_py_c2_momentum_01 conditions construction_error
+repair4_hour_py_c2_rate_01 conditions construction_error
+repair4_hour_py_c3_momentum_01 conditions construction_error
+repair4_hour_py_c3_rate_01 conditions construction_error
+```
+
+```
+$ /usr/bin/grep -n -F -e 'RLIMIT_AS' -e "'--property=MemoryMax='" scripts/s11c_guarded_run.py | cut -c1-200
+393:        resource.setrlimit(resource.RLIMIT_AS, (spec['memoryMax'], spec['memoryMax']))
+402:        actual['nativeAddressSpaceBytes'] = list(resource.getrlimit(resource.RLIMIT_AS))
+505:              '--unit=' + unit, '--property=MemoryMax=' + str(spec['memoryMax']),
+```
+
+```
+$ /usr/bin/grep -a -c -F 'No more memory available' _scratch/s11c/s15/repair4_series_unlimited_wl_c1_momentum_01/stdout
+1
+```
+
 Production sources, final runs.
 
 ```
@@ -670,13 +731,13 @@ b7f32997595560494d2bf9951aa145f65d3f973408459cb438cf985d9e612302  research/pde_l
 
 ```
 $ git status --short -- research/pde_ledger_v3
+ M research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+ M research/pde_ledger_v3/directives/_measurements/S15_item4_singular_side_test_lookups.md
  M research/pde_ledger_v3/directives/_measurements/S15_reading_build_repair4n_note_lookups.md
  M research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
  M research/pde_ledger_v3/mathematica/S15_separation_departure.wl
  T research/pde_ledger_v3/mathematica/out/S15_separation_departure.out
  M research/pde_ledger_v3/scripts/S15_separation_departure.py
-?? research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
-?? research/pde_ledger_v3/directives/_measurements/S15_item4_singular_side_test_lookups.md
 ?? research/pde_ledger_v3/mathematica/S15_separation_departure_run.py
 ```
 

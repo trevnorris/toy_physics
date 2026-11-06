@@ -16,8 +16,8 @@ request (their message was the install command) under /var/projects/_tools, with
 
 ```
 $ sha256sum research/pde_ledger_v3/directives/S15_item4_singular_side_test.md; wc -c research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
-37da68498b05513bf31e2a9c0fa308581dff9c7f0c31776cbc9f77da9d4f4b00  research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
-5516 research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+8f85d0a486977aaedef9053a9161c5df0c66f33aa1ab799c3d3ece31353c6217  research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+5590 research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
 ```
 
 ## R1. Values and exponents (fixed strings, from the repair-4 gate), in the directive
@@ -453,6 +453,11 @@ $ /usr/bin/grep -c -F -- 'no job of pool `s15`' research/pde_ledger_v3/directive
 ```
 
 ```
+$ /usr/bin/grep -c -F -- 'When you start, its final runs and every attempt they require have ended' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+1
+```
+
+```
 $ /usr/bin/grep -c -F -- 'stop and report it' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
 1
 ```
@@ -492,5 +497,5 @@ the series trial report lines 14, 16 and 20, the long-run Wolfram result, and th
 
 ```
 $ sha256sum research/pde_ledger_v3/directives/_measurements/S15_reading_build_repair4n_note_lookups.md
-23fd98e710e40dce904f64a251a53728e1f919d23aff38ac3b424f523570a76d  research/pde_ledger_v3/directives/_measurements/S15_reading_build_repair4n_note_lookups.md
+80bec45db0d08de8ce6aa1ade464d5b334a7a0b56c4b99b4ed027dda1c21c340  research/pde_ledger_v3/directives/_measurements/S15_reading_build_repair4n_note_lookups.md
 ```

@@ -16,8 +16,8 @@ request (their message was the install command) under /var/projects/_tools, with
 
 ```
 $ sha256sum research/pde_ledger_v3/directives/S15_item4_singular_side_test.md; wc -c research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
-fbc7cbd689a3e75f0847c887610ac00adc1f84543c947f922db3671b11e4294b  research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
-4481 research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+37da68498b05513bf31e2a9c0fa308581dff9c7f0c31776cbc9f77da9d4f4b00  research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+5516 research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
 ```
 
 ## R1. Values and exponents (fixed strings, from the repair-4 gate), in the directive
@@ -241,7 +241,7 @@ count: 0
 
 ```
 $ /usr/bin/grep -n -i -F -- 'Claude' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md | cut -c1-200; echo "count: $(/usr/bin/grep -c -i -F -- 'Claude' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md)"
-41:Do not read the orchestrator's memory (~/.claude/projects/) or any other checkout of this repository (the /var/projects/toy_physics-* directories).
+42:Do not read the orchestrator's memory (~/.claude/projects/) or any other checkout of this repository (the /var/projects/toy_physics-* directories).
 count: 1
 ```
 
@@ -272,13 +272,13 @@ count: 0
 
 ```
 $ /usr/bin/grep -n -i -F -- 'review' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md | cut -c1-200; echo "count: $(/usr/bin/grep -c -i -F -- 'review' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md)"
-39:This task ends at your report; it includes no review.
+40:This task ends at your report; it includes no review.
 count: 1
 ```
 
 ```
 $ /usr/bin/grep -n -i -F -- 'REVIEW' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md | cut -c1-200; echo "count: $(/usr/bin/grep -c -i -F -- 'REVIEW' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md)"
-39:This task ends at your report; it includes no review.
+40:This task ends at your report; it includes no review.
 count: 1
 ```
 
@@ -377,6 +377,101 @@ $ ls -d _scratch/singular_side_test 2>&1
 ls: cannot access '_scratch/singular_side_test': No such file or directory
 ```
 
+```
+$ ls -d _scratch/s11c/singular_side_test 2>&1
+ls: cannot access '_scratch/s11c/singular_side_test': No such file or directory
+```
+
+```
+$ /usr/bin/grep -n -F -e 'STORE = ROOT' -e 'folder.relative_to(STORE)' -e 'POOL_DIRECTORY = ' -e '--pool must be' -e 'unconfirmed stale reservation' -e 'available memory does not cover' -e 'aggregate physical-memory reservation budget exceeded' scripts/s11c_guarded_run.py | cut -c1-200
+71:STORE = ROOT / '_scratch/s11c'
+90:POOL_DIRECTORY = Path(pwd.getpwuid(os.getuid()).pw_dir) / '.local/state/s11c-guard/resource-pool'
+272:            raise RuntimeError('unconfirmed stale reservation; explicit reconciliation required: ' + unit)
+276:        raise RuntimeError('aggregate physical-memory reservation budget exceeded')
+286:        raise RuntimeError('available memory does not cover outstanding commitments plus this job')
+468:        parser.error('--pool must be a short alphanumeric purpose name')
+473:    folder.relative_to(STORE)
+```
+
+```
+$ for f in _scratch/s11c/s15/repair4_size_py_c1_rate_01/invocation.json _scratch/s11c/s15/repair4_series_unlimited_wl_c1_momentum_01/invocation.json; do printf '%s: ' $f; /usr/bin/grep -a -o -E '"pool": *"[^"]*"' $f; done
+_scratch/s11c/s15/repair4_size_py_c1_rate_01/invocation.json: "pool": "s15"
+_scratch/s11c/s15/repair4_series_unlimited_wl_c1_momentum_01/invocation.json: "pool": "s15"
+```
+
+```
+$ /usr/bin/grep -c -F -e '"s15"' ~/.local/state/s11c-guard/resource-pool/reservations.json.stale-20261106T054326Z; cat ~/.local/state/s11c-guard/resource-pool/reservations.json
+1
+{}
+```
+
+## R4b. The new sentences are present (count of each)
+
+```
+$ /usr/bin/grep -c -F -- 'finishes with a branch printed as not obtained' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'has not returned the conditions' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'that forming it needs' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'makes no other split' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'every split it makes is printed' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'every split into cases' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'finished with a branch not obtained' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'cover every case' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'no job of pool `s15`' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'stop and report it' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- '_scratch/s11c/singular_side_test/' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- '--pool singular_side' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'change nothing in it yourself' research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+1
+```
+
 ## R5. Facts the directive states
 
 The engines' output name of the object (progress lines of the last SymPy and Wolfram attempts on it).
@@ -397,5 +492,5 @@ the series trial report lines 14, 16 and 20, the long-run Wolfram result, and th
 
 ```
 $ sha256sum research/pde_ledger_v3/directives/_measurements/S15_reading_build_repair4n_note_lookups.md
-f7475dca1ebb514024cfe25d58300c2f5aaf7d0b4b93c1cba275807ff9720d98  research/pde_ledger_v3/directives/_measurements/S15_reading_build_repair4n_note_lookups.md
+23fd98e710e40dce904f64a251a53728e1f919d23aff38ac3b424f523570a76d  research/pde_ledger_v3/directives/_measurements/S15_reading_build_repair4n_note_lookups.md
 ```

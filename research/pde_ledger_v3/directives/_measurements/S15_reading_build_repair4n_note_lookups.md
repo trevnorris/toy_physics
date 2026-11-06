@@ -29,8 +29,8 @@ parallel. If we're not running it in parallel then it can use the whole box."
 
 ```
 $ sha256sum research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md; wc -c research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
-999174d9bb1e20dec8dc0ee84d937fad4edef92dd15a1fff9babba275396b70a  research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
-4526 research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+8f144178b5bfe9bb562b2cd4209b329ff71dc1e8e318ccddc582c2219e2755e7  research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+5057 research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
 ```
 
 ## R1. Values and exponents (fixed strings, from the repair-4 gate), in the note
@@ -260,7 +260,7 @@ count: 0
 
 ```
 $ /usr/bin/grep -n -i -F -- 'Claude' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md | cut -c1-200; echo "count: $(/usr/bin/grep -c -i -F -- 'Claude' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md)"
-31:Do not read the orchestrator's memory (~/.claude/projects/) or any other checkout of this repository (the /var/projects/toy_physics-* directories).
+32:Do not read the orchestrator's memory (~/.claude/projects/) or any other checkout of this repository (the /var/projects/toy_physics-* directories).
 count: 1
 ```
 
@@ -353,7 +353,7 @@ $ /usr/bin/grep -c -F -- 'resume_s15_reading_repair_4d.md' research/pde_ledger_v
 
 ```
 $ /usr/bin/grep -c -F -- 'resume_s15_reading_repair_4f.md' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
-1
+2
 ```
 
 ```
@@ -363,7 +363,7 @@ $ /usr/bin/grep -c -F -- 'resume_s15_reading_repair_4g.md' research/pde_ledger_v
 
 ```
 $ /usr/bin/grep -c -F -- 'resume_s15_reading_repair_4h.md' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
-1
+2
 ```
 
 ```
@@ -422,6 +422,31 @@ $ /usr/bin/grep -c -F -- 'the kind of each label' research/pde_ledger_v3/directi
 ```
 
 ```
+$ /usr/bin/grep -c -F -- 'For these six objects it replaces the rules' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'For every other object those rules stand' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'whether another guarded job was running during it' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'none of them gives any of the six' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+1
+```
+
+```
+$ /usr/bin/grep -c -F -- 'machine with more memory' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+1
+```
+
+```
 $ /usr/bin/grep -c -F -- 'final guarded run of each engine' research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
 1
 ```
@@ -476,6 +501,17 @@ $ /usr/bin/grep -n -F -e 'its label says what was attempted' -e 'the run record 
 13:- the run record lists, for each engine, every object that carries such a label.
 10:- its label says what was attempted, that the attempt ran out of memory, and where: the last step the attempt reported and the peak memory of the run;
 13:- the run record lists, for each engine, every object that carries such a label.
+```
+
+```
+$ /usr/bin/grep -n -F -e 'which of the two it is' research/pde_ledger_v3/directives/resume_s15_reading_repair_4f.md | cut -c1-200; /usr/bin/grep -n -F -e 'no label is printed for any other reason' research/pde_ledger_v3/directives/resume_s15_reading_repair_4h.md | cut -c1-200; /usr/bin/grep -n -F -e '## What must be true' -e '## Going on' research/pde_ledger_v3/directives/resume_s15_reading_repair_4f.md research/pde_ledger_v3/directives/resume_s15_reading_repair_4g.md research/pde_ledger_v3/directives/resume_s15_reading_repair_4h.md
+20:- the run record lists, for each engine, every object that carries such a label or the label for running out of memory, and which of the two it is.
+19:- An item-4 object either prints its complete conditions or carries one of the two labels; no label is printed for any other reason. The assessment reports that each engine can print a not-obtained
+research/pde_ledger_v3/directives/resume_s15_reading_repair_4f.md:13:## What must be true
+research/pde_ledger_v3/directives/resume_s15_reading_repair_4f.md:22:## Going on
+research/pde_ledger_v3/directives/resume_s15_reading_repair_4g.md:13:## What must be true
+research/pde_ledger_v3/directives/resume_s15_reading_repair_4g.md:19:## Going on
+research/pde_ledger_v3/directives/resume_s15_reading_repair_4h.md:13:## What must be true
 ```
 
 ```
@@ -581,12 +617,12 @@ $ tail -1 _scratch/s11c/s15/repair4_series_unlimited_py_c1_momentum_01/resource-
 
 ```
 $ journalctl --user -u s11c-guard-350cfe7325e2.service -u s11c-guard-fd3dd4540a3c.service --since '2026-11-06 05:35:00 UTC' --until '2026-11-06 05:45:00 UTC' -o short-iso-precise --no-pager | cut -c1-200
-2026-11-06T05:41:09.096152+00:00 pop-os systemd[1646]: Stopping s11c-guard-350cfe7325e2.service - /usr/bin/python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --child-manifest /var/projects/
-2026-11-06T05:41:09.106445+00:00 pop-os systemd[1646]: Stopped s11c-guard-350cfe7325e2.service - /usr/bin/python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --child-manifest /var/projects/t
-2026-11-06T05:41:09.106605+00:00 pop-os systemd[1646]: s11c-guard-350cfe7325e2.service: Consumed 11h 38min 36.537s CPU time, 1.7G memory peak, 0B memory swap peak.
-2026-11-06T05:42:51.396769+00:00 pop-os systemd[1646]: Stopping s11c-guard-fd3dd4540a3c.service - /usr/bin/python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --child-manifest /var/projects/
-2026-11-06T05:42:51.418999+00:00 pop-os systemd[1646]: Stopped s11c-guard-fd3dd4540a3c.service - /usr/bin/python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --child-manifest /var/projects/t
-2026-11-06T05:42:51.419263+00:00 pop-os systemd[1646]: s11c-guard-fd3dd4540a3c.service: Consumed 1d 15h 46min 4.258s CPU time, 375.2M memory peak, 0B memory swap peak.
+2026-11-05T22:41:09.096152-07:00 pop-os systemd[1646]: Stopping s11c-guard-350cfe7325e2.service - /usr/bin/python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --child-manifest /var/projects/
+2026-11-05T22:41:09.106445-07:00 pop-os systemd[1646]: Stopped s11c-guard-350cfe7325e2.service - /usr/bin/python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --child-manifest /var/projects/t
+2026-11-05T22:41:09.106605-07:00 pop-os systemd[1646]: s11c-guard-350cfe7325e2.service: Consumed 11h 38min 36.537s CPU time, 1.7G memory peak, 0B memory swap peak.
+2026-11-05T22:42:51.396769-07:00 pop-os systemd[1646]: Stopping s11c-guard-fd3dd4540a3c.service - /usr/bin/python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --child-manifest /var/projects/
+2026-11-05T22:42:51.418999-07:00 pop-os systemd[1646]: Stopped s11c-guard-fd3dd4540a3c.service - /usr/bin/python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --child-manifest /var/projects/t
+2026-11-05T22:42:51.419263-07:00 pop-os systemd[1646]: s11c-guard-fd3dd4540a3c.service: Consumed 1d 15h 46min 4.258s CPU time, 375.2M memory peak, 0B memory swap peak.
 ```
 
 ```
@@ -609,17 +645,17 @@ The guard registry and the kept copy.
 $ cat /home/trevnorris/.local/state/s11c-guard/resource-pool/reservations.json; ls -l --time-style=+%Y-%m-%dT%H:%M:%SZ /home/trevnorris/.local/state/s11c-guard/resource-pool/; python3 -c "import json;r=json.load(open('/home/trevnorris/.local/state/s11c-guard/resource-pool/reservations.json.stale-20261106T054326Z'));[print(k,v['memoryMax'],v['owner']['pid'],v['logDirectory'].rsplit('/',1)[1]) for k,v in r.items()]"
 {}
 total 12
--rw-rw-r-- 1 trevnorris trevnorris   0 2026-10-16T03:09:59Z admission.lock
--rw-rw-r-- 1 trevnorris trevnorris   3 2026-11-06T05:43:26Z reservations.json
--rw-rw-r-- 1 trevnorris trevnorris 413 2026-10-29T00:28:58Z reservations.json.stale-20261029T005431Z
--rw-rw-r-- 1 trevnorris trevnorris 405 2026-11-06T05:42:51Z reservations.json.stale-20261106T054326Z
+-rw-rw-r-- 1 trevnorris trevnorris   0 2026-10-15T21:09:59Z admission.lock
+-rw-rw-r-- 1 trevnorris trevnorris   3 2026-11-05T22:43:26Z reservations.json
+-rw-rw-r-- 1 trevnorris trevnorris 413 2026-10-28T18:28:58Z reservations.json.stale-20261029T005431Z
+-rw-rw-r-- 1 trevnorris trevnorris 405 2026-11-05T22:42:51Z reservations.json.stale-20261106T054326Z
 s11c-guard-350cfe7325e2.service 57982058496 1856816 repair4_series_unlimited_py_c1_momentum_01
 ```
 
 ```
 $ echo "WolframKernel processes: $(pgrep -c WolframKernel)"; echo "processes named codex: $(pgrep -c -x codex)"; echo "guard units: $(systemctl --user list-units --no-legend 's11c-guard-*' | wc -l)"
 WolframKernel processes: 0
-processes named codex: 0
+processes named codex: 1
 guard units: 0
 ```
 
@@ -634,11 +670,13 @@ b7f32997595560494d2bf9951aa145f65d3f973408459cb438cf985d9e612302  research/pde_l
 
 ```
 $ git status --short -- research/pde_ledger_v3
+ M research/pde_ledger_v3/directives/_measurements/S15_reading_build_repair4n_note_lookups.md
+ M research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
  M research/pde_ledger_v3/mathematica/S15_separation_departure.wl
  T research/pde_ledger_v3/mathematica/out/S15_separation_departure.out
  M research/pde_ledger_v3/scripts/S15_separation_departure.py
-?? research/pde_ledger_v3/directives/_measurements/S15_reading_build_repair4n_note_lookups.md
-?? research/pde_ledger_v3/directives/resume_s15_reading_repair_4n.md
+?? research/pde_ledger_v3/directives/S15_item4_singular_side_test.md
+?? research/pde_ledger_v3/directives/_measurements/S15_item4_singular_side_test_lookups.md
 ?? research/pde_ledger_v3/mathematica/S15_separation_departure_run.py
 ```
 

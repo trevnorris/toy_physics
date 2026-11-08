@@ -8,9 +8,20 @@ SetOptions[FullSimplify, TimeConstraint -> Infinity];
 SetOptions[Simplify, TimeConstraint -> Infinity];
 $HistoryLength = 0;
 $MaxExtraPrecision = 0;
-output = FileNameJoin[{DirectoryName[$InputFileName], "out", "S15_separation_departure.out"}];
-stream = OpenWrite[output];
-emit[name_, value_] := (WriteString[stream, name, ": ", ToString[value/.eulerAppell->Inactive[AppellF1], InputForm, PageWidth -> Infinity], "\n"]);
+(* Execution selection contains only object names and file paths. Each kernel
+   reconstructs the supplied fields and the selected closed object in this file;
+   no expression, condition or result is imported from another kernel. *)
+s15RunMode = Environment["S15_WL_MODE"];
+If[!MemberQ[{"base", "item4"}, s15RunMode], s15RunMode = "single"];
+s15SelectedObject = Environment["S15_WL_OBJECT"];
+s15OutputPath = Environment["S15_WL_TRANSCRIPT"];
+output = If[StringQ[s15OutputPath] && StringLength[s15OutputPath]>0,
+ s15OutputPath, FileNameJoin[{DirectoryName[$InputFileName], "out", "S15_separation_departure.out"}]];
+stream = If[s15RunMode === "item4", OpenAppend[output], OpenWrite[output]];
+emit[name_, value_] := If[s15RunMode =!= "item4" ||
+ StringStartsQ[name, "reading/"<>s15SelectedObject<>"/item4/"] ||
+ MemberQ[{"WORKING_ON", "ENGINE_MESSAGES", "EXACT_OBJECT_GAP", "END_OF_ITEM4_PASS"}, name],
+ WriteString[stream, name, ": ", ToString[value/.eulerAppell->Inactive[AppellF1], InputForm, PageWidth -> Infinity], "\n"]];
 currentObject="construction";
 stepProgress[step_] := (Print["WORKING_ON: ",currentObject," / ",step];
  emit["WORKING_ON",currentObject<>" / "<>step];Close[stream];stream=OpenAppend[output]);
@@ -486,12 +497,806 @@ identityDirectionTotalDegree[e_] := Which[
 (* Independent item-4 construction: exact direction elimination, a native
    universal identity solve, and polynomial-monomial sufficient branches.
    No zero-multiplicity claim and no Euler-reference substitute for Q. *)
+(* Exact parameter branching of a homogeneous linear system. *)
+Clear[S15LinearParameterBranches];
+S15LinearParameterBranches[inputMatrix_,inputVariables_,inputQ_,exponentVariables_,radiusVariables_,inputSupport_,writeFunction_,progressFunction_] := Module[
+ {ratio=Unique["item4RadiusRatio",{Temporary}],scale=Unique["item4RadiusScale",{Temporary}],forward,inverse,domain,matrix,q,support,
+  fractions,query,variables,answer,branches,branch,rules,pending,ready,closed,restricted,answers={},gaps={},serial=0,show,step,reconstruction},
+ forward=Thread[radiusVariables->{ratio scale,scale}];
+ inverse=Thread[{ratio,scale}->{First[radiusVariables]/Last[radiusVariables],Last[radiusVariables]}];
+ domain=0<ratio<1 && scale>0 && Element[exponentVariables,Reals];
+ show[key_,value_] := (writeFunction[key,value/.inverse];writeFunction[key<>"/comparison","There is nothing to compare it with in this engine."]);
+ step[key_] := progressFunction[key];
+ show["matrix_parameter_input",{inputMatrix,inputVariables,inputQ,inputSupport}];
+ show["radius_coordinate_operands",{radiusVariables,forward,inverse}];
+ reconstruction=Together/@(radiusVariables-(radiusVariables/.forward/.inverse));
+ show["radius_coordinate_reconstruction_residual",reconstruction];
+ If[!And@@(TrueQ[#===0]&/@reconstruction),Return[{{},{{"Radius coordinate reconstruction",reconstruction}}}]];
+ step["transform polynomial matrix and Q to radius ratio and scale"];
+ matrix=Map[Factor[PowerExpand[#/.forward,Assumptions->domain]]&,inputMatrix,{2}];
+ q=PowerExpand[inputQ/.forward,Assumptions->domain];support=inputSupport/.forward;
+ show["radius_coordinate_matrix",matrix];show["radius_coordinate_Q",q];
+ fractions=NumeratorDenominator[Together[#]]&/@(matrix.inputVariables);
+ query=And@@Thread[fractions[[All,1]]==0] && And@@Thread[fractions[[All,2]]!=0] && support && domain;
+ variables=Join[Select[exponentVariables,!FreeQ[query,#]&],{ratio,scale},inputVariables];
+ show["simultaneous_real_reduction_operands",{query,variables}];
+ step["Reduce simultaneous exponents radii and product coordinates"];
+ answer=Reduce[query,variables,Reals];show["simultaneous_real_reduction_return",answer];
+ If[!FreeQ[answer,Reduce|Resolve],
+  show["not_obtained",{"NOT OBTAINED EXACTLY: simultaneous real reduction including exponents returned unevaluated",answer}];
+  Return[{{},{{"Simultaneous real reduction including exponents",answer}}}]];
+ step["expand returned parameter alternatives"];
+ answer=LogicalExpand[answer];branches=If[Head[answer]===Or,List@@answer,{answer}];
+ show["simultaneous_real_reduction_alternatives",branches];
+ Do[
+  serial++;show["parameter_alternative_"<>ToString[serial]<>"/operand",branch];
+  If[branch===False,Continue[]];
+  rules=Cases[If[Head[branch]===And,List@@branch,{branch}],HoldPattern[Equal[left_,right_]]:>Which[
+   Head[left]===Symbol && MemberQ[variables,left] && FreeQ[right,left],left->right,
+   Head[right]===Symbol && MemberQ[variables,right] && FreeQ[left,right],right->left,
+   True,Nothing],{1}];
+  show["parameter_alternative_"<>ToString[serial]<>"/substitution_operand",rules];
+  pending=rules;closed={};
+  While[pending=!={},
+   ready=Select[pending,FreeQ[Last[#],Alternatives@@(First/@pending)]&];
+   show["parameter_alternative_"<>ToString[serial]<>"/dependency_ready",ready];
+   If[ready==={},Break[]];
+   closed=Join[closed,ready];pending=Select[pending,!MemberQ[First/@ready,First[#]]&];
+   pending=(First[#]->(Last[#]/.ready))&/@pending;
+  ];
+  show["parameter_alternative_"<>ToString[serial]<>"/dependency_remainder",pending];
+  If[pending=!={},
+   show["not_obtained",{"NOT OBTAINED EXACTLY: returned parameter substitution dependencies did not close",branch,pending}];
+   AppendTo[gaps,{"Parameter substitution dependencies",branch,pending}];Continue[]];
+  show["parameter_alternative_"<>ToString[serial]<>"/substitution_return",closed];
+  step["parameter alternative "<>ToString[serial]<>" substitute Q on returned condition"];
+  restricted=q/.closed;
+  show["parameter_alternative_"<>ToString[serial]<>"/Q_restriction_operands",{q,closed,restricted}];
+  show["parameter_alternative_"<>ToString[serial]<>"/Q_restriction_residual",(q/.closed)-restricted];
+  show["parameter_alternative_"<>ToString[serial]<>"/condition",branch];
+  show["parameter_alternative_"<>ToString[serial]<>"/Q_under_condition",restricted];
+  AppendTo[answers,{branch,restricted}],{branch,branches}];
+ {answers,gaps}/.inverse
+];
+
+(* Item-4 construction using native Euler integration, differential matrices,
+   polynomial elimination, and real parameter reduction. No external inputs. *)
+Clear[S15NativeItem4];
+S15NativeItem4[closedObject_, parameterList_, exponentList_, boundaryList_, distanceVariable_, directionList_, departureFunction_, writeFunction_, progressFunction_] := Module[
+ {parameters=parameterList,exponents=exponentList,lo=boundaryList[[1]],hi=boundaryList[[2]],d=distanceVariable,normals=directionList,
+ radial=Unique["item4Radial",{Temporary}],domain,baseDomain,sourceBounds=boundaryList,show,step,cas,normalize,directionReduce,factor,exactFactor,requiredConjuncts,reduceSupport,applyParameterRules,powerSubstitute,powerMultiplicity,liftEuler,directionCoefficients,endpointObject,differentialEliminate,primitiveRational,seriesNecessary,radialMoment,radialIntegrate,recordCondition,selectLaurentCoefficient,finiteParameterSystem,elementaryFactorEligible,
+ factorAlternatives,parameterBranches,boundaryAlternatives,canonicalSupport,classify,laurentObject,removeTranscendentals,conditions={},unobtained={},counter=0,seen=<||>,integralCache=<||>,strata,partition,primitiveConditions,walkPartition,selectPrimitive,momentPower=Unique["item4MomentPower",{Temporary}],momentGeneric,momentPrimitive,momentPoles,momentSpecial,momentFormula,chartFormula,chartOrigin=Unique["item4ChartOrigin",{Temporary}],chartSlope=Unique["item4ChartSlope",{Temporary}],chartLower=Unique["item4ChartLower",{Temporary}],chartUpper=Unique["item4ChartUpper",{Temporary}],chartVariable=Unique["item4ChartVariable",{Temporary}],cleanupResult},
+ domain=d>hi>lo>0 && Element[parameters,Reals];baseDomain=domain;
+ factor[value_] := If[FreeQ[value,Root|AlgebraicNumber],Factor[Refine[value,domain]],Cancel[Together[Refine[value,domain]],Extension->Automatic]];
+ exactFactor[value_] := If[FreeQ[value,Root|AlgebraicNumber],Factor[Refine[value,domain]],Factor[Refine[value,domain],Extension->Automatic]];
+ show[key_,value_] := (writeFunction[key,value];writeFunction[key<>"/comparison","There is nothing to compare it with in this engine."]);
+ step[key_] := progressFunction[key];
+ SetAttributes[cas,HoldRest];cas[key_,value_] := Module[{result},step[key];result=value;show[key<>"/return",result];result];
+ requiredConjuncts[value_] := If[Head[value]===And,List@@value,{value}];
+ reduceSupport[value_] := Refine[value /.
+  (relation:(_Equal|_Unequal))/;Length[relation]===2 :>
+   With[{difference=factor[Together[PowerExpand[relation[[1]]-relation[[2]],Assumptions->domain]]]},
+    Head[relation][difference,0]],domain];
+ powerMultiplicity[power_,form_] := Module[{pivot,multiple,remainder},
+  pivot=SelectFirst[exponents,Coefficient[form,#]=!=0&,Missing["NoAffineCoordinate"]];
+  If[MissingQ[pivot],Return[Missing["NoAffineCoordinate"]]];
+  multiple=Cancel[Coefficient[power,pivot]/Coefficient[form,pivot]];
+  remainder=Expand[power-multiple form];
+  If[(IntegerQ[multiple] || Head[multiple]===Rational) && multiple=!=0 && FreeQ[remainder,Alternatives@@exponents],
+   {multiple,remainder},Missing["DifferentExponentForm"]]
+ ];
+ powerSubstitute[value_,target_,replacement_] := If[
+  Head[target]===Power && !FreeQ[target[[2]],Alternatives@@exponents],
+  value/.Power[base_,power_]/;SameQ[base,target[[1]]] && !MissingQ[powerMultiplicity[power,target[[2]]]]:>
+   With[{parts=powerMultiplicity[power,target[[2]]]},replacement^First[parts] base^Last[parts]],
+  value/.target->replacement];
+ applyParameterRules[value_,substitutions_] := Module[{symbolRules,functionRules,prepared},
+  symbolRules=Select[substitutions,MemberQ[parameters,First[#]]&];
+  functionRules=Select[substitutions,!MemberQ[parameters,First[#]]&];
+  prepared=Fold[ReplaceAll,value,Reverse[symbolRules]];
+  prepared=PowerExpand[prepared/.Log[base_]:>Log[factor[base]],Assumptions->domain];
+  functionRules=(First[#]->Fold[ReplaceAll,Last[#],Reverse[symbolRules]])& /@ functionRules;
+  Fold[powerSubstitute[#1,First[#2],Last[#2]]&,prepared,functionRules]
+ ];
+ directionReduce[value_] := Module[{table,monomial,reduction,remainder=0,quotient=0,residual},
+  show["normalization_direction_operand",value];
+  table=CoefficientRules[Expand[value],normals];
+  show["normalization_direction_table",table];
+  Do[
+   monomial=Times@@MapThread[Power,{normals,First[entry]}];
+   reduction=cas["PolynomialReduce normalization direction monomial",PolynomialReduce[monomial,{normals.normals-1},normals]];
+   show["normalization_direction_monomial_operands",{monomial,reduction}];
+   residual=Expand[monomial-reduction[[1]].{normals.normals-1}-reduction[[2]]];
+   show["normalization_direction_monomial_residual",residual];
+   If[residual=!=0,Throw[{"Direction reduction residual",residual}]];
+   remainder+=Last[entry] reduction[[2]];quotient+=Last[entry] First[reduction[[1]]],
+  {entry,table}];
+  show["normalization_direction_reconstruction_operands",{value,remainder,quotient,normals.normals-1}];
+  step["rational direction reconstruction residual"];
+  residual=exactFactor[Together[Expand[value-remainder-quotient (normals.normals-1)]]];
+  show["normalization_direction_reconstruction_residual",residual];
+  If[residual=!=0,Throw[{"Direction reconstruction residual",residual}]];
+  Expand[remainder]
+ ];
+ normalize[value_,canonicalAlgebraicPowers_:False] := Module[{expanded,powers,coordinates,lift,rules,definitions,coefficient,constant,result,prepared,algebraicPowers,powerData,powerKeys,powerSlots,powerDefinitions,powerResiduals},
+  prepared=directionReduce[value]/.Power[base_,pow_]/;!FreeQ[pow,Alternatives@@exponents]:>Module[{rat=Together[base],num,den,positive},
+   num=Numerator[rat];den=Denominator[rat];
+   positive=FullSimplify[{num>0,den>0},domain && lo<radial<hi];
+   If[TrueQ[And@@positive],num^Expand[pow] den^(-Expand[pow]),
+    positive=FullSimplify[{num<0,den<0},domain && lo<radial<hi];
+    If[TrueQ[And@@positive],(-num)^Expand[pow] (-den)^(-Expand[pow]),base^Expand[pow]]]
+  ];
+  prepared=prepared/.Log[base_]:>Log[factor[base]];
+  expanded=Expand[PowerExpand[prepared/.Power[base_,pow_]/;!FreeQ[pow,Alternatives@@exponents] || (!IntegerQ[pow] && !FreeQ[base,d|radial]):>factor[base]^pow,Assumptions->domain && lo<radial<hi]];
+  powers=DeleteDuplicates[Cases[expanded,Power[base_,pow_]/;!FreeQ[pow,Alternatives@@exponents]:>base,Infinity]];
+  coordinates=Table[Unique["item4Power",{Temporary}],{Length[powers]},{Length[exponents]}];
+  definitions=Flatten[Table[coordinates[[i,j]]->powers[[i]]^exponents[[j]],{i,Length[powers]},{j,Length[exponents]}]];
+  lift=expanded/.Power[base_,pow_]/;MemberQ[powers,base] && !FreeQ[pow,Alternatives@@exponents]:>Module[{index=First@FirstPosition[powers,base,Missing["absent"],{1}],coefs},
+   coefs=Coefficient[pow,#]& /@ exponents;
+   (Times@@MapThread[Power,{coordinates[[index]],coefs}]) * base^Expand[pow-coefs.exponents]];
+  If[TrueQ[canonicalAlgebraicPowers],
+  algebraicPowers=DeleteDuplicates[Cases[lift,
+   p:Power[base_,pow_]/;!FreeQ[pow,Root|AlgebraicNumber] && FreeQ[pow,Alternatives@@exponents]:>p,Infinity]];
+  step["canonical algebraic power exponents"];
+  powerData=Table[With[{base=power[[1]],pow=power[[2]]},
+   {power,base,Floor[pow],RootReduce[pow-Floor[pow]],Refine[base>0,domain && lo<radial<hi]}],
+  {power,algebraicPowers}];
+  show["algebraic_power_coordinate_operands",powerData];
+  powerData=Select[powerData,IntegerQ[#[[3]]] && TrueQ[#[[5]]]&];
+  powerResiduals=RootReduce[#[[1,2]]-#[[3]]-#[[4]]]&/@powerData;
+  show["algebraic_power_exponent_residuals",powerResiduals];
+  If[!And@@(TrueQ[#===0]&/@powerResiduals),Throw[{"Algebraic exponent reconstruction",powerResiduals}]];
+  powerKeys=DeleteDuplicates[(#[[{2,4}]]&)/@powerData];
+  powerSlots=Table[Unique["item4AlgebraicPower",{Temporary}],{Length[powerKeys]}];
+  powerDefinitions=MapThread[Rule,{powerSlots,(Power@@#)&/@powerKeys}];
+  show["algebraic_power_coordinate_definitions",powerDefinitions];
+  lift=lift/.Table[entry[[1]]->entry[[2]]^entry[[3]] powerSlots[[First@FirstPosition[powerKeys,entry[[{2,4}]]]]],{entry,powerData}];
+  definitions=Join[definitions,powerDefinitions];
+  ];
+  step["rational algebra in positive power coordinates"];
+  result=If[FreeQ[lift,Root|AlgebraicNumber],factor[Together[lift]],Cancel[Together[Refine[lift,domain]],Extension->Automatic]]/.definitions;
+  result
+ ];
+ liftEuler[value_] := Module[{kernels,slots,chart,integrands,polynomial,coefficients,body,boundary},
+  kernels=DeleteDuplicates[Cases[value,HoldPattern[eulerAppell[__]],Infinity]];
+  If[kernels==={},Return[{0,value}]];
+  slots=Table[Unique["item4EulerIntegral",{Temporary}],{Length[kernels]}];
+  If[!ValueQ[chartFormula],
+   show["Euler_chart_equation_operands",{chartOrigin+chartSlope chartLower==0,chartOrigin+chartSlope chartUpper==1}];
+   chartFormula=(chartOrigin+chartSlope chartVariable)/.First[cas["Solve Euler integration chart",Solve[{chartOrigin+chartSlope chartLower==0,chartOrigin+chartSlope chartUpper==1},{chartOrigin,chartSlope}]]];
+   show["Euler_chart_template",chartFormula];
+   show["Euler_chart_endpoint_residuals",Together/@{chartFormula/.chartVariable->chartLower,(chartFormula/.chartVariable->chartUpper)-1}]
+  ];
+  chart=factor[chartFormula/.{chartVariable->radial,chartLower->lo,chartUpper->hi}];show["Euler_chart_substitution",chart];
+  integrands=Table[Module[{a,b,c,e,x,y,kernel=kernels[[index]],operand},
+   {a,b,c,e,x,y}=List@@kernel;
+   operand=a chart^(a-1)(1-x chart)^(-b)(1-y chart)^(-c) D[chart,radial];
+   show["Euler_change_of_variable_operands",{kernel,chart,operand}];
+   normalize[operand]],{index,Length[kernels]}];
+  polynomial=Expand[value/.Thread[kernels->slots]];
+  coefficients=Coefficient[polynomial,#]& /@ slots;
+  boundary=polynomial/.Thread[slots->0];
+  show["Euler_linear_reconstruction_operands",{polynomial,coefficients.slots+boundary}];
+  show["Euler_linear_reconstruction_residual",Expand[polynomial-coefficients.slots-boundary]];
+  body=normalize[coefficients.integrands];boundary=normalize[boundary];
+  show["Euler_radial_form",{body,boundary}];{body,boundary}
+ ];
+ directionCoefficients[value_] := Module[{polynomial,table,remainder=0,monomial,reduction},
+  polynomial=Expand[value];
+  show["direction_polynomial_operand",polynomial];
+  table=CoefficientRules[polynomial,normals];show["direction_coefficient_table",table];
+  Do[
+   monomial=Times@@MapThread[Power,{normals,First[entry]}];
+   reduction=cas["PolynomialReduce direction monomial",PolynomialReduce[monomial,{normals.normals-1},normals]];
+   show["direction_monomial_operands",{monomial,reduction}];
+   show["direction_monomial_residual",Expand[monomial-reduction[[1]].{normals.normals-1}-reduction[[2]]]];
+   remainder+=Last[entry] reduction[[2]],{entry,table}];
+  Last/@CoefficientRules[Expand[remainder],normals]
+ ];
+ radialMoment[power_] := Module[{},
+  If[!ValueQ[momentFormula],
+   show["radial_moment_operand",radial^momentPower];
+   momentPrimitive=cas["Integrate generic radial moment primitive",Integrate[radial^momentPower,radial,Assumptions->radial>0 && Element[momentPower,Reals],GenerateConditions->True]];
+   show["radial_moment_primitive_residual",FullSimplify[D[momentPrimitive,radial]-radial^momentPower,radial>0 && Element[momentPower,Reals]]];
+   momentPoles=cas["Solve radial moment primitive divisor",Solve[Denominator[Together[momentPrimitive]]==0,momentPower,Reals]];
+   momentGeneric=(momentPrimitive/.radial->hi)-(momentPrimitive/.radial->lo);
+   momentSpecial=Table[{cas["Integrate exceptional radial moment",Integrate[radial^momentPower/.rule,{radial,lo,hi},Assumptions->domain,GenerateConditions->True]],And@@(Equal@@#& /@ rule)},{rule,momentPoles}];
+   momentFormula=Piecewise[momentSpecial,momentGeneric];show["computed_radial_moment_family",momentFormula]
+  ];momentFormula/.momentPower->power
+ ];
+ radialIntegrate[value_] := Module[{terms,answer=0,power,coefficient},
+  terms=If[Head[Expand[value]]===Plus,List@@Expand[value],{Expand[value]}];
+  Do[
+   step["extract radial monomial power"];
+   power=Cancel[Together[PowerExpand[radial D[term,radial]/term,Assumptions->domain && lo<radial<hi]]];
+   step["extract radial monomial coefficient"];
+   coefficient=Cancel[Together[PowerExpand[term/radial^power,Assumptions->domain && lo<radial<hi]]];
+   show["radial_power_decomposition",{term,power,coefficient}];
+   show["radial_power_reconstruction_residual",FullSimplify[term-coefficient radial^power,domain && lo<radial<hi]];
+   If[FreeQ[{power,coefficient},radial],answer+=coefficient radialMoment[power],
+    answer+=cas["Integrate remaining radial coefficient",Integrate[term,{radial,lo,hi},Assumptions->domain,GenerateConditions->True]]],
+  {term,DeleteCases[terms,0]}];answer
+ ];
+ laurentObject[body_,boundary_] := Module[{den,degree,poly,table,integrals,result},
+  den=Denominator[Together[body]];
+  If[!PolynomialQ[den,d],Return[Missing["NotLaurent"]]];
+  degree=Exponent[den,d];
+  If[!FreeQ[Cancel[den/d^degree],d] || !PolynomialQ[Together[body d^degree],d],Return[Missing["NotLaurent"]]];
+  poly=Expand[Together[body d^degree]];
+  table=CoefficientRules[poly,{d}];show["finite_Laurent_table",{degree,table,boundary}];
+  show["finite_Laurent_reconstruction_residual",Together[body-Total[(Last[#] d^(First[#][[1]]-degree))& /@ table]]];
+  result=boundary;
+  Do[
+   If[!KeyExistsQ[integralCache,Last[entry]],AssociateTo[integralCache,Last[entry]->radialIntegrate[Last[entry]]]];
+   result+=d^(First[entry][[1]]-degree) integralCache[Last[entry]],{entry,table}];
+  show["finite_Laurent_departure",result];result
+ ];
+ selectLaurentCoefficient[value_,assume_] := Module[{scalars,rows={},minimum,polynomial,table,reconstructed,tested,answer=0,usable=True},
+  scalars=directionCoefficients[value];
+  Do[
+   minimum=Min[0,Exponent[Expand[scalar],d,Min]];
+   polynomial=Expand[scalar d^(-minimum)];
+   If[!PolynomialQ[polynomial,d],usable=False;Break[]];
+   table=Reverse[CoefficientRules[polynomial,{d}]];
+   table=SortBy[table,-First[#][[1]]&];
+   reconstructed=Total[(Last[#] d^(First[#][[1]]+minimum))& /@ table];
+   show["integrated_Laurent_coefficient_operands",{scalar,minimum,table}];
+   show["integrated_Laurent_coefficient_residual",Together[scalar-reconstructed]];
+   rows=Join[rows,Last/@table],{scalar,scalars}];
+  If[!usable,Return[value]];
+  Do[
+   tested=FullSimplify[selectPrimitive[row,assume],domain];
+   show["integrated_Laurent_selected_coefficient",{row,tested}];
+   If[tested=!=0,answer=tested;Break[]],{row,rows}];
+  show["integrated_Laurent_selection_return",answer];answer
+ ];
+ endpointObject[body_,boundary_] := Module[{h=body,b=boundary,terms,weights,weight,candidate},
+  terms=If[Head[Expand[h]]===Plus,List@@Expand[h],{h}];
+  weights=DeleteDuplicates[FullSimplify[(d D[#,d]+radial D[#,radial])/# +1,domain && lo<radial<hi]& /@ DeleteCases[terms,0]];
+  show["Euler_radial_weights",weights];
+  If[!FreeQ[weights,d|radial],Return[Missing["UnresolvedEulerWeight",weights]]];
+  Do[step["eliminate Euler integral "<>ToString[weight,InputForm]];
+   b=normalize[d D[b,d]-weight b-(radial h/.radial->hi)+(radial h/.radial->lo)];
+   h=normalize[d D[h,d]+radial D[h,radial]+(1-weight)h];
+   show["Euler_remaining_integrand",h],{weight,weights}];
+  show["Euler_endpoint_object",b];
+  If[h=!=0,Missing["UnresolvedEulerRemainder",{h,b}],b]
+ ];
+ removeTranscendentals[value_,assume_] := Module[{functions,next,derivatives,slots,equations,selected,reference,others,returns,coordinate,expanded,index,prepared},
+  prepared=value/.Power[base_,pow_]/;!FreeQ[pow,Alternatives@@exponents]:>Module[{rat=Together[base],num,den,positive},
+   num=Numerator[rat];den=Denominator[rat];
+   positive=FullSimplify[{num>0,den>0},domain && lo<radial<hi];
+   If[TrueQ[And@@positive],num^Expand[pow] den^(-Expand[pow]),
+    positive=FullSimplify[{num<0,den<0},domain && lo<radial<hi];
+    If[TrueQ[And@@positive],(-num)^Expand[pow] (-den)^(-Expand[pow]),base^Expand[pow]]]
+  ];
+  expanded=Expand[PowerExpand[(prepared/.Log[base_]:>Log[factor[base]])/.Power[base_,pow_]/;!IntegerQ[pow] && !FreeQ[base,d]:>factor[base]^pow,Assumptions->assume]];
+  functions=DeleteDuplicates[Cases[expanded,(f:HoldPattern[Log[__]|PolyLog[__]])/;!FreeQ[f,d]:>f,Infinity]];
+  If[functions==={},Return[expanded]];
+  While[True,
+   next=DeleteDuplicates@Join[functions,Flatten[Table[
+    step["differentiate logarithmic closure kernel"];
+    Cases[Expand[PowerExpand[FullSimplify[D[kernel,d],assume]/.Log[base_]:>Log[factor[base]],Assumptions->assume]],(f:HoldPattern[Log[__]|PolyLog[__]])/;!FreeQ[f,d]:>f,Infinity],{kernel,functions}]]];
+   show["logarithmic_differential_closure",next];
+   If[next===functions,Break[]];functions=next
+  ];
+  derivatives={expanded};
+  Do[step["differentiate logarithmic identity "<>ToString[index]];
+   AppendTo[derivatives,normalize[Expand[PowerExpand[D[Last[derivatives],d]/.Log[base_]:>Log[factor[base]],Assumptions->assume]]]],{index,Length[functions]}];
+  slots=Table[Unique["item4LogarithmicCoordinate",{Temporary}],{Length[functions]}];
+  equations=Numerator[Together[#]]& /@ (derivatives/.Thread[functions->slots]);
+  show["logarithmic_coordinate_definitions",Thread[slots->functions]];
+  show["differentiated_identity_operands",derivatives];show["logarithmic_polynomial_operands",equations];
+  Do[
+   selected=Select[equations,!FreeQ[#,coordinate]&];
+   If[selected=!={},
+    reference=First[selected];others=Delete[equations,FirstPosition[equations,reference]];
+    returns=Table[Module[{rawResult,normalizedResult},
+     show["logarithmic_resultant_operands",{reference,equation,coordinate}];
+     rawResult=cas["Resultant logarithmic elimination",Resultant[reference,equation,coordinate]];
+     step["normalize logarithmic resultant"];
+     normalizedResult=If[FreeQ[rawResult,Root|AlgebraicNumber],factor[Together[rawResult]],Cancel[Together[Refine[rawResult,domain]],Extension->Automatic]];
+     show["normalized_logarithmic_resultant",normalizedResult];normalizedResult],{equation,others}];
+    equations=DeleteCases[returns,0];show["logarithmic_elimination_return",equations]
+   ],{coordinate,slots}];
+  If[equations==={},Return[Missing["UnresolvedLogarithmicElimination",{value,derivatives}]]];
+  First[equations]
+ ];
+ primitiveRational[value_] := Module[{num,den,top,bottom,content,primitive},
+  step["extract parameter content of rational coefficient"];
+  {num,den}=NumeratorDenominator[Together[value]];
+  top=FactorTermsList[num,d];bottom=FactorTermsList[den,d];
+  content=First[top]/First[bottom];primitive=Last[top]/Last[bottom];
+  show["rational_coefficient_content",{value,content,primitive}];
+  show["rational_content_reconstruction_residual",Together[value-content primitive]];
+  {content,primitive}
+ ];
+ differentialEliminate[coefficients_,basis_,assume_] := Module[{active,exceptions={},pivot,rest,ratio,next,polynomial,index=0,rows,contents,normal,variables,idealRows},
+  active=Select[Transpose[{coefficients,basis}],First[#]=!=0&];
+  While[Length[active]>1,
+   index++;
+   normal=Table[contents=primitiveRational[First[entry]];AppendTo[exceptions,Numerator[Together[First[contents]]]];{Last[contents],Last[entry]},{entry,active}];
+   active=SortBy[normal,LeafCount[First[#]]&];pivot=First[active];rest=Rest[active];
+   polynomial=Numerator[Together[First[pivot]]];
+   show["differential_pivot_operand",{pivot,polynomial}];
+   rows=CoefficientList[polynomial,d];AppendTo[exceptions,Last[rows]];
+   ratio=factor[Together[D[First[pivot],d]/First[pivot]+D[Last[pivot],d]/Last[pivot]]];
+   show["differential_pivot_logarithmic_derivative",ratio];
+   next=Table[
+    step["differential elimination "<>ToString[index]<>" coefficient "<>ToString[j]];
+    {factor[Together[D[rest[[j,1]],d]+(D[rest[[j,2]],d]/rest[[j,2]]-ratio) rest[[j,1]]]],rest[[j,2]]},
+   {j,Length[rest]}];
+   show["differential_elimination_return",next];
+   active=Select[next,First[#]=!=0&]
+  ];
+  If[active==={},Return[Missing["UnresolvedDifferentialRemainder",exceptions]]];
+  show["differential_final_coefficient",active];
+  polynomial=Numerator[Together[active[[1,1]]]];
+  rows=CoefficientList[polynomial,d];show["differential_final_polynomial_coefficients",rows];
+  variables=Select[parameters,!FreeQ[rows,#]&];
+  show["differential_coefficient_ideal_operands",{rows,variables}];
+  If[variables=!={} && And@@(PolynomialQ[#,variables]& /@ rows),
+   idealRows=cas["GroebnerBasis differential coefficient ideal",GroebnerBasis[rows,variables]];
+   show["differential_coefficient_ideal_selection",idealRows];
+   If[ListQ[idealRows] && Length[idealRows]>0,rows=idealRows]
+  ];
+  Append[exceptions,First@SortBy[Select[rows,#=!=0&],LeafCount]]
+ ];
+ seriesNecessary[coefficientRows_,basisRows_,assume_] := Module[
+  {z=Unique["item4SeriesCoordinate",{Temporary}],x=Unique["item4EndpointCoordinate",{Temporary}],lambda=Unique["item4EulerEigenvalue",{Temporary}],
+   denominator,terms={},basis,coefficient,shift,power,table,expanded,groups,group,integerPart,form,offset,maxOffset,weight,
+   normals,row,reduced,pivot,echelon,pivots,indices,order,factors={},spectra={},polynomial,resultants,reconstruction,seriesFactor},
+  seriesFactor[value_] := Module[{result,parts,variables,collected},
+   result=factor[value];
+   If[FreeQ[result,Root|AlgebraicNumber],Return[result]];
+   parts=NumeratorDenominator[Together[result]];variables=Variables/@parts;
+   show["series_algebraic_coefficient_operands",{parts,variables}];
+   step["collect exact series algebraic coefficients"];
+   collected=MapThread[Collect[#1,#2,Function[c,If[RootReduce[c]===0,0,c]]]&,{parts,variables}];
+   show["series_algebraic_coefficient_return",collected];First[collected]/Last[collected]
+  ];
+  denominator=PolynomialLCM@@(Denominator[Together[#]]& /@ coefficientRows);
+  show["series_denominator_operand",{coefficientRows,denominator}];
+  Do[
+   basis=basisRows[[j]];coefficient=Cancel[coefficientRows[[j]] denominator];
+   If[basis===1,shift=0;power=0,
+    If[Head[basis]===Power,shift=Expand[basis[[1]]-d];power=Expand[basis[[2]]],shift=Expand[basis-d];power=1]];
+   polynomial=Expand[coefficient/.d->x-shift];table=CoefficientRules[polynomial,{x}];
+   expanded={shift,Expand[power+First[#][[1]]],Last[#]}& /@ table;
+   show["endpoint_polynomial_terms",{basis,coefficient,expanded}];
+   reconstruction=Total[#[[3]] (d+#[[1]])^#[[2]]& /@ expanded];
+   show["endpoint_polynomial_reconstruction_residual",normalize[basis coefficient-reconstruction]];
+   terms=Join[terms,expanded],{j,Length[basisRows]}];
+  terms=({#[[1,1]],#[[1,2]],seriesFactor[Total[#[[All,3]]]]}& /@ GatherBy[terms,Take[#,2]&]);
+  terms=Select[terms,Last[#]=!=0&];show["endpoint_constant_parameter_coefficients",terms];
+  AppendTo[factors,Last[First[SortBy[terms,LeafCount[Last[#]]&]]]];
+  terms=Table[integerPart=Floor[term[[2]]/.Thread[exponents->0]];
+   If[!IntegerQ[integerPart],integerPart=0];{term[[1]],Expand[term[[2]]-integerPart],integerPart,term[[3]]},{term,terms}];
+  groups=GatherBy[terms,#[[2]]&];
+  Do[
+   form=group[[1,2]];maxOffset=Max[group[[All,3]]];weight=Expand[form+maxOffset];
+   normals=z^(maxOffset-#[[3]])(1+#[[1]] z)^(form+#[[3]])& /@ group;
+   show["native_series_functions",{weight,normals}];
+   echelon={};pivots={};indices={};order=0;
+   While[Length[pivots]<Length[normals],
+    row=Table[cas["SeriesCoefficient "<>ToString[order]<>" column "<>ToString[j],seriesFactor[FunctionExpand[SeriesCoefficient[normals[[j]],{z,0,order}]]]],{j,Length[normals]}];
+    reduced=row;
+    Do[step["eliminate series pivot "<>ToString[j]];reduced=seriesFactor[Together[#]]& /@ (reduced-reduced[[pivots[[j]]]] echelon[[j]]),{j,Length[pivots]}];
+    show["native_series_row_operands",{order,row,reduced,pivots,echelon}];
+    pivot=SelectFirst[Range[Length[reduced]],reduced[[#]]=!=0&,Missing["NoPivot"]];
+    If[!MissingQ[pivot],
+     AppendTo[factors,Numerator[Together[reduced[[pivot]]]]];
+     AppendTo[pivots,pivot];AppendTo[indices,order];AppendTo[echelon,seriesFactor[Together[#/reduced[[pivot]]]]& /@ reduced];
+     show["native_series_pivot",{pivot,reduced[[pivot]],Last[echelon]}]
+    ];order++
+   ];
+   polynomial=CharacteristicPolynomial[DiagonalMatrix[weight-indices],lambda];
+   show["series_euler_characteristic_polynomial",{weight,indices,polynomial}];AppendTo[spectra,polynomial],
+  {group,groups}];
+  Do[AppendTo[factors,cas["Resultant Euler spectra "<>ToString[i]<>" "<>ToString[j],seriesFactor[Resultant[spectra[[i]],spectra[[j]],lambda]]]],{i,Length[spectra]},{j,i+1,Length[spectra]}];
+  show["native_series_candidate_factors",factors];Clear[seriesFactor];factors
+ ];
+ canonicalSupport[value_,scope_] := Module[{clauses,unique,slots,indices,lifted,canonical,residual},
+  clauses=requiredConjuncts[value];unique=Sort[DeleteDuplicates[clauses]];
+  slots=Table[Unique["item4BooleanClause",{Temporary}],{Length[unique]}];
+  indices=Table[First@FirstPosition[Map[SameQ[clause,#]&,unique],True],{clause,clauses}];
+  lifted=And@@slots[[indices]];canonical=And@@unique;
+  show[scope<>"/support_canonicalization_operands",{value,canonical,Thread[slots->unique],lifted,And@@slots}];
+  residual=cas[scope<>" BooleanConvert support canonicalization difference",BooleanConvert[Xor[lifted,And@@slots],"DNF"]];
+  show[scope<>"/support_canonicalization_residual",residual];
+  If[residual=!=False,Throw[{"Support canonicalization difference",residual}]];
+  canonical
+ ];
+ boundaryAlternatives[value_,support_] := Module[{variables=sourceBounds,others,table,degrees,coordinate,relation,substitutions,transformed,scaleTable,polynomial,degree,residual,range,answer,solutions,newRules,newCondition,branches={}},
+  others=Complement[parameters,variables];
+  If[!PolynomialQ[value,variables] || AnyTrue[variables,FreeQ[value,#]&] || !FreeQ[value,Alternatives@@others],Return[Missing["NotBoundaryPolynomial"]]];
+  table=CoefficientRules[value,variables];degrees=DeleteDuplicates[Total/@(First/@table)];
+  show["boundary_polynomial_homogeneity_operands",{value,variables,table,degrees}];
+  If[Length[degrees]=!=1,Return[Missing["NotHomogeneousBoundaryPolynomial"]]];
+  coordinate=Unique["item4BoundaryCoordinate",{Temporary}];relation=coordinate==Last[variables]/First[variables];
+  show["boundary_coordinate_relation",relation];
+  substitutions=cas["Solve homogeneous boundary coordinate",Solve[relation,Last[variables]]];
+  If[!MatchQ[substitutions,{{_Rule}}],Return[Missing["BoundaryCoordinateSubstitution",substitutions]]];
+  transformed=Expand[value/.First[substitutions]];scaleTable=CoefficientRules[transformed,{First[variables]}];
+  show["boundary_coordinate_polynomial_operands",{value,First[substitutions],transformed,scaleTable}];
+  If[Length[scaleTable]=!=1,Return[Missing["BoundaryScaleMonomial",scaleTable]]];
+  degree=First[First[First[scaleTable]]];polynomial=Last[First[scaleTable]];
+  residual=Together[value-(First[variables]^degree polynomial/.coordinate->Last[variables]/First[variables])];
+  show["boundary_coordinate_reconstruction_operands",{value,polynomial,degree,relation}];show["boundary_coordinate_reconstruction_residual",residual];
+  If[residual=!=0,Throw[{"Boundary coordinate reconstruction residual",residual}]];
+  range=cas["Reduce admissible boundary coordinate",With[{eliminated=DeleteDuplicates@Join[parameters,{d}],constraint=domain && relation},Reduce[Exists[eliminated,constraint],coordinate,Reals]]];
+  If[!FreeQ[range,Reduce|Resolve|Exists] || !FreeQ[range,Alternatives@@Join[parameters,{d}]],Return[Missing["BoundaryCoordinateRange",range]]];
+  show["boundary_coordinate_root_operands",{polynomial,range}];
+  answer=cas["Reduce homogeneous boundary polynomial on coordinate range",Reduce[polynomial==0 && range,coordinate,Reals]];
+  If[!FreeQ[answer,Reduce|Resolve],Return[Missing["BoundaryCoordinateRoots",answer]]];
+  solutions=cas["Solve reduced boundary coordinate roots",Solve[answer,coordinate,Reals]];
+  If[!ListQ[solutions] || !FreeQ[solutions,Solve],Return[Missing["BoundaryCoordinateRootRules",solutions]]];
+  Do[
+   newRules=First[substitutions]/.solution;
+   show["boundary_parameter_substitution_operands",{First[substitutions],solution,newRules}];
+   If[!FreeQ[newRules,coordinate],Return[Missing["BoundaryCoordinateRemaining",newRules]]];
+   newCondition=Refine[support && And@@(Equal@@#&/@newRules),domain];
+   show["boundary_parameter_branch",{newCondition,newRules}];
+   If[newCondition=!=False,AppendTo[branches,<|"Condition"->newCondition,"Rules"->newRules|>]],{solution,solutions}];
+  branches
+ ];
+ factorAlternatives[value_] := Module[{factored,numerator,factors,answer},
+  show["parameter_factor_input",value];step["factor individual necessary parameter expression"];
+  factored=exactFactor[value];numerator=Numerator[Together[factored]];
+  factors=If[Head[exactFactor[numerator]]===Times,List@@exactFactor[numerator],{exactFactor[numerator]}];
+  show["parameter_factor_product_operands",{numerator,factors}];
+  show["parameter_factor_product_residual",Together[numerator-Times@@factors]];
+  factors=Replace[#,Power[base_,power_Integer]/;power>0:>base,{0}]& /@ factors;
+  show["parameter_factorization_operands",{value,factored,factors}];
+  step["individual parameter factorization residual"];show["parameter_factorization_residual",Together[value-factored]];
+  DeleteDuplicates[factors]
+ ];
+ parameterBranches[expressions_,support_] := Module[{factors,remaining=support,answer,branches={},query,known,linear,pivot,coefficient,constant,solutions,elementary,coordinate,lift,target,variables,solved,newCondition,newRules,rawBranches,summands,positive,negative,logarithmic,expandedFactor,boundaryAnswer},
+  factors=SortBy[DeleteDuplicates[Flatten[factorAlternatives/@expressions]],{Boole[!MemberQ[Complement[parameters,exponents,sourceBounds],#]],LeafCount[#]}&];
+  Do[
+   show["parameter_factor_domain_operands",{factor,domain}];step["simplify individual parameter factor domain"];
+   query=FullSimplify[factor==0,domain];show["parameter_factor_query",query];
+   If[query===False,Continue[]];
+   summands=If[Head[Expand[factor]]===Plus,List@@Expand[factor],{Expand[factor]}];
+   If[Length[summands]==2,
+    positive=Select[summands,TrueQ[FullSimplify[#>0,domain]]&];
+    negative=Select[-summands,TrueQ[FullSimplify[#>0,domain]]&];
+    If[Length[positive]==1 && Length[negative]==1,
+     logarithmic=FullSimplify[PowerExpand[Log[First[positive]]-Log[First[negative]],Assumptions->domain],domain];
+     show["positive_power_parameter_operands",{factor,First[positive],First[negative],logarithmic}];
+     show["positive_power_parameter_ratio_residual",FullSimplify[Exp[logarithmic]-First[positive]/First[negative],domain]];
+     If[logarithmic=!=factor && PolynomialQ[logarithmic,exponents],
+      branches=Join[branches,parameterBranches[{logarithmic},remaining]];remaining=remaining && factor!=0;Continue[]]
+    ]
+   ];
+   linear=Select[parameters,PolynomialQ[factor,#] && Exponent[factor,#]===1&];
+   linear=SortBy[linear,{Boole[MemberQ[exponents,#]],Boole[MemberQ[sourceBounds,#]]}&];
+   solved=False;
+   If[linear=!={},
+    pivot=First[linear];coefficient=Coefficient[factor,pivot];constant=factor/.pivot->0;
+    show["linear_parameter_operands",{factor,pivot,coefficient,constant}];
+    show["linear_parameter_reconstruction_residual",Expand[factor-coefficient pivot-constant]];
+    solutions=cas["Solve linear named parameter",Solve[factor==0,pivot]];
+    Do[newCondition=Refine[remaining && coefficient!=0 && And@@(Equal@@#& /@ solution),domain];If[newCondition=!=False,AppendTo[branches,<|"Condition"->newCondition,"Rules"->solution|>]],{solution,solutions}];
+    branches=Join[branches,parameterBranches[{coefficient},remaining]];solved=True
+   ];
+   If[!solved,
+    boundaryAnswer=boundaryAlternatives[factor,remaining];
+    show["boundary_parameter_attempt_return",boundaryAnswer];
+    If[ListQ[boundaryAnswer],branches=Join[branches,boundaryAnswer];solved=True]
+   ];
+   If[!solved,
+    expandedFactor=PowerExpand[factor,Assumptions->domain];
+    show["elementary_parameter_expansion_operands",{factor,expandedFactor}];
+    elementary=DeleteDuplicates@Join[Cases[expandedFactor,HoldPattern[Log[arg_]]/;FreeQ[arg,d|radial]:>Log[arg],Infinity],Cases[expandedFactor,Power[base_,pow_]/;MemberQ[sourceBounds,base] && !FreeQ[pow,Alternatives@@exponents]:>base^Expand[pow-(pow/.Thread[exponents->0])],Infinity]];
+    Do[
+     coordinate=Unique["item4ElementaryValue",{Temporary}];lift=powerSubstitute[expandedFactor,target,coordinate];
+     If[PolynomialQ[lift,coordinate] && IntegerQ[Exponent[lift,coordinate]] && Exponent[lift,coordinate]>=1,
+      coefficient=Coefficient[lift,coordinate,Exponent[lift,coordinate]];constant=lift/.coordinate->0;
+      show["elementary_parameter_operands",{factor,target,lift,coefficient,constant}];show["elementary_parameter_reconstruction_residual",exactFactor[Together[PowerExpand[factor-(lift/.coordinate->target),Assumptions->domain]]]];
+      solutions=cas["Solve elementary named-parameter expression",Solve[lift==0,coordinate]];
+      Do[newRules=solution/.coordinate->target;newCondition=Refine[remaining && coefficient!=0 && And@@(Equal@@#& /@ newRules),domain];If[newCondition=!=False,AppendTo[branches,<|"Condition"->newCondition,"Rules"->newRules|>]],{solution,solutions}];
+      branches=Join[branches,parameterBranches[{coefficient},remaining]];solved=True;Break[]],
+    {target,elementary}]
+   ];
+   If[!solved,
+    variables=Select[parameters,!FreeQ[query,#]&];answer=cas["Reduce exact parameter factor",Quiet[Reduce[query,variables,Reals],Reduce::nsmet]];
+    If[!FreeQ[answer,Reduce|Resolve],AppendTo[unobtained,{"Real parameter reduction returned unevaluated",query,answer}];show["not_obtained",{"NOT OBTAINED EXACTLY by native real parameter reduction including exponents",query,answer}],
+     rawBranches=If[Head[LogicalExpand[answer]]===Or,List@@LogicalExpand[answer],{LogicalExpand[answer]}];
+     Do[newCondition=Refine[remaining && raw,domain];
+      newRules=Cases[requiredConjuncts[raw],HoldPattern[Equal[left_,right_]]:>Which[Head[left]===Symbol && MemberQ[parameters,left] && FreeQ[right,left],left->right,Head[right]===Symbol && MemberQ[parameters,right] && FreeQ[left,right],right->left,True,Nothing],{1}];
+      If[newCondition=!=False,AppendTo[branches,<|"Condition"->newCondition,"Rules"->newRules|>]],{raw,rawBranches}]]
+   ];remaining=remaining && factor!=0,
+  {factor,factors}];DeleteCases[DeleteDuplicates[branches],False]
+ ];
+ recordCondition[original_,support_,rules_,body_,boundary_,scope_] := Module[{record,restricted=original,evaluated,symbolRules,consistency,decisions},
+  record=support;
+  symbolRules=Select[rules,MemberQ[parameters,First[#]]&];
+  consistency=Table[Refine[normalize[applyParameterRules[First[rule]-Last[rule],symbolRules]],domain],{rule,Select[rules,!MemberQ[parameters,First[#]]&]}];
+  show[scope<>"/parameter_relation_consistency_operands",{rules,symbolRules}];
+  show[scope<>"/parameter_relation_consistency_residuals",consistency];
+  decisions=Table[If[FreeQ[residual,Alternatives@@parameters],FullSimplify[residual==0,domain],residual==0],{residual,consistency}];
+  show[scope<>"/parameter_relation_consistency_return",decisions];
+  If[MemberQ[decisions,False],Return[]];
+  If[AnyTrue[rules,!MemberQ[parameters,First[#]]&],
+   show[scope<>"/Q_parameter_relation_operand",{original,rules}];
+   evaluated=laurentObject[body,boundary];
+   If[!MissingQ[evaluated],restricted=selectPrimitive[applyParameterRules[evaluated,rules],domain && support]];
+   show[scope<>"/Q_parameter_relation_return",restricted]
+  ];
+  AppendTo[conditions,{record,restricted}];show[scope<>"/condition",record];show[scope<>"/Q_under_condition",restricted]
+ ];
+ elementaryFactorEligible[factor_] := Module[{query,terms,left,right,decisions,logarithmic,linear,eligible=False},
+  query=FullSimplify[factor==0,domain];show["elementary_factor_domain_operand",factor];show["elementary_factor_domain_return",query];
+  If[query===False,Return[True]];
+  If[MemberQ[parameters,factor],Return[True]];
+  linear=Select[exponents,PolynomialQ[factor,#] && Exponent[factor,#]===1 && FreeQ[Coefficient[factor,#],Alternatives@@parameters]&];
+  If[linear=!={},Return[True]];
+  terms=If[Head[Expand[factor]]===Plus,List@@Expand[factor],{Expand[factor]}];
+  If[Length[terms]=!=2,Return[False]];
+  Do[
+   left=terms[[index]];right=-terms[[3-index]];
+   decisions=FullSimplify[{left>0,right>0},domain];show["elementary_factor_log_operands",{left,right,decisions}];
+   If[And@@(TrueQ/@decisions),
+    logarithmic=FullSimplify[PowerExpand[Log[left]-Log[right],Assumptions->domain],domain];
+    show["elementary_factor_log_return",logarithmic];
+    show["elementary_factor_log_ratio_residual",FullSimplify[Exp[logarithmic]-left/right,domain]];
+    If[PolynomialQ[logarithmic,exponents],eligible=True;Break[]]],{index,2}];eligible
+ ];
+ finiteParameterSystem[original_,departure_,body_,boundary_,support_,scope_] := Module[
+  {qvalue,marker=Unique["item4JointObject",{Temporary}],joint,rows,entry,localCondition,exponentRules,localE,localQ,
+   powerDefinitions,logDefinitions,powerSlots,logSlots,bases,logs,steps,positive,coordinateDomain,liftFunction,
+   ampVars,ampTable,ampCoordinates,ampDefinitions,liftE,liftQ,jointTable,parts,coefficientList,fractions,equations,
+   variables,query,result,branches,branch,substitution,qRestricted,namedCondition,namedQ,residual,expandedCondition,
+   allDefinitions,base,index,form,coefficients,constant,amplitudeMarkers,ruleReturn,earlyScalars,earlyCoefficients,earlyCandidate,earlyFactors,earlyEligible,earlyBranches,finiteForms,finiteDecisions,productVariables,productPowers,productSlots,productDefinitions,productEquations,productQ,productMatrix,matrixAnswer},
+  qvalue=laurentObject[body,boundary];
+  show[scope<>"/joint_Q_integration_return",qvalue];
+  If[MissingQ[qvalue] || !FreeQ[qvalue,Integrate],Return[False]];
+  finiteForms=NumeratorDenominator[Together[#]]&/@{departure,qvalue};
+  finiteDecisions=Table[PolynomialQ[parts[[1]],d] && PolynomialQ[parts[[2]],d] && FreeQ[Cancel[parts[[2]]/d^Exponent[parts[[2]],d]],d],{parts,finiteForms}];
+  show[scope<>"/finite_Laurent_test_operands",{departure,qvalue,finiteForms}];show[scope<>"/finite_Laurent_test_return",finiteDecisions];
+  If[!And@@finiteDecisions,Return[False]];
+  joint=cas[scope<>" PiecewiseExpand Q and departure strata",PiecewiseExpand[PowerExpand[departure+marker qvalue,Assumptions->domain],domain]];
+  rows=If[Head[joint]===Piecewise,Append[joint[[1]],{joint[[2]],Not[Or@@joint[[1,All,2]]]}],{{joint,True}}];
+  Do[
+   show[scope<>"/joint_stratum_operand",entry];
+   localCondition=cas[scope<>" Reduce exponent stratum",Reduce[entry[[2]],exponents,Reals]];
+   If[localCondition===False,Continue[]];
+   exponentRules=cas[scope<>" Solve exponent stratum equalities",Quiet[Solve[And@@Cases[requiredConjuncts[localCondition],HoldPattern[Equal[_,_]],{1}],exponents,Reals],Solve::svars]];
+   exponentRules=If[Length[exponentRules]===1,First[exponentRules],{}];
+   localE=PowerExpand[(entry[[1]]/.marker->0)/.exponentRules,Assumptions->domain];
+   localQ=PowerExpand[Coefficient[entry[[1]],marker]/.exponentRules,Assumptions->domain];
+   earlyScalars=directionCoefficients[localE];
+   earlyCoefficients=Flatten[Table[With[{minimum=Min[0,Exponent[Expand[value],d,Min]]},Last/@CoefficientRules[Expand[value d^(-minimum)],{d}]],{value,earlyScalars}]];
+   earlyCandidate=Missing["NoElementaryParameterFactorization"];
+   Do[
+    earlyFactors=factorAlternatives[coefficient];
+    earlyEligible=elementaryFactorEligible/@earlyFactors;
+    show[scope<>"/elementary_coefficient_factorization",{coefficient,earlyFactors,earlyEligible}];
+    If[coefficient=!=0 && And@@earlyEligible,earlyCandidate=coefficient;Break[]],{coefficient,earlyCoefficients}];
+   If[!MissingQ[earlyCandidate],
+    earlyBranches=parameterBranches[{earlyCandidate},support && localCondition];
+    show[scope<>"/elementary_coefficient_parameter_return",earlyBranches];
+    Do[classify[localQ,support && localCondition && candidate["Condition"],candidate["Rules"]],{candidate,earlyBranches}];Continue[]];
+   bases=DeleteDuplicates[Cases[{localE,localQ},Power[base_,power_]/;!FreeQ[power,Alternatives@@exponents] && FreeQ[base,d|radial]:>base,Infinity]];
+   powerSlots=Table[Unique["item4ParameterPower",{Temporary}],{Length[bases]},{Length[exponents]}];
+   powerDefinitions=Flatten[Table[powerSlots[[i,j]]->bases[[i]]^exponents[[j]],{i,Length[bases]},{j,Length[exponents]}]];
+   logs=DeleteDuplicates[Cases[{localE,localQ},HoldPattern[Log[arg_]]/;FreeQ[arg,d|radial]:>Log[arg],Infinity]];
+   logSlots=Table[Unique["item4ParameterLog",{Temporary}],{Length[logs]}];logDefinitions=Thread[logSlots->logs];
+   liftFunction[value_] := (value/.Power[base_,power_]/;MemberQ[bases,base] && !FreeQ[power,Alternatives@@exponents]:>Module[{i=First@FirstPosition[bases,base,Missing["absent"],{1}],vector,remainder},
+    vector=Coefficient[power,#]&/@exponents;remainder=Expand[power-vector.exponents];
+    If[FreeQ[remainder,Alternatives@@exponents],base^remainder Times@@MapThread[Power,{powerSlots[[i]],vector}],base^power]])/.Thread[logs->logSlots];
+   liftE=liftFunction[localE];liftQ=liftFunction[localQ];
+   powerDefinitions=Select[powerDefinitions,!FreeQ[{liftE,liftQ},First[#]]&];
+   ampVars=Complement[parameters,exponents,sourceBounds];
+   jointTable=CoefficientRules[Expand[liftE+marker liftQ],ampVars];
+   ampCoordinates=Table[Unique["item4ParameterMonomial",{Temporary}],{Length[jointTable]}];
+   ampDefinitions=MapThread[Rule,{ampCoordinates,(Times@@MapThread[Power,{ampVars,First[#]}])&/@jointTable}];
+   parts=Total[MapThread[Times,{ampCoordinates,Last/@jointTable}]];
+   liftE=parts/.marker->0;liftQ=Coefficient[parts,marker];
+   allDefinitions=Join[ampDefinitions,powerDefinitions,logDefinitions];
+   show[scope<>"/joint_coordinate_definitions",allDefinitions];
+   show[scope<>"/joint_coordinate_operands",{localE,localQ,liftE,liftQ}];
+   show[scope<>"/joint_coordinate_reconstruction_residuals",Together/@{localE-(liftE/.allDefinitions),localQ-(liftQ/.allDefinitions)}];
+   coefficientList=directionCoefficients[liftE];
+   coefficientList=Flatten[Table[With[{minimum=Min[0,Exponent[Expand[value],d,Min]]},Last/@CoefficientRules[Expand[value d^(-minimum)],{d}]],{value,coefficientList}]];
+   fractions=NumeratorDenominator[Together[#]]&/@coefficientList;
+   equations=And@@Join[Thread[fractions[[All,1]]==0],Thread[fractions[[All,2]]!=0]];
+   variables=Join[ampCoordinates,Select[Join[exponents,Flatten[powerSlots],logSlots],!FreeQ[equations,#]&]];
+   positive=Table[FullSimplify[Last[definition]>0,domain],{definition,powerDefinitions}];
+   show[scope<>"/joint_coordinate_positivity_operands",powerDefinitions];show[scope<>"/joint_coordinate_positivity_return",positive];
+   coordinateDomain=And@@MapThread[If[TrueQ[#1],First[#2]>0,True]&,{positive,powerDefinitions}];
+   query=equations && localCondition && hi>lo>0 && coordinateDomain;
+   show[scope<>"/joint_parameter_system_operands",{coefficientList,fractions,query,variables}];
+   productVariables=Join[ampCoordinates,First/@powerDefinitions,logSlots];
+   productPowers=DeleteDuplicates[Flatten[(First/@CoefficientRules[Expand[#],productVariables])&/@Join[fractions[[All,1]],{liftQ}],1]];
+   productSlots=Table[Unique["item4ParameterProduct",{Temporary}],{Length[productPowers]}];
+   productDefinitions=MapThread[Rule,{productSlots,(Times@@MapThread[Power,{productVariables,#}])&/@productPowers}];
+   productEquations=Table[Total[(Last[#]*productSlots[[First@FirstPosition[productPowers,First[#]]]])&/@CoefficientRules[Expand[polynomial],productVariables]],{polynomial,fractions[[All,1]]}];
+   productQ=Total[(Last[#]*productSlots[[First@FirstPosition[productPowers,First[#]]]])&/@CoefficientRules[Expand[liftQ],productVariables]];
+   show[scope<>"/linear_product_definitions",productDefinitions];
+   show[scope<>"/linear_product_operands",{fractions[[All,1]],liftQ,productEquations,productQ}];
+   show[scope<>"/linear_product_reconstruction_residuals",Expand/@Join[fractions[[All,1]]-(productEquations/.productDefinitions),{liftQ-(productQ/.productDefinitions)}]];
+   productMatrix=Table[Coefficient[productEquations[[i]],productSlots[[j]]],{i,Length[productEquations]},{j,Length[productSlots]}];
+   show[scope<>"/linear_product_matrix",productMatrix];
+   show[scope<>"/linear_product_matrix_residual",Expand[productEquations-productMatrix.productSlots]];
+   matrixAnswer=S15LinearParameterBranches[productMatrix,productSlots,productQ,exponents,sourceBounds,localCondition && And@@Thread[fractions[[All,2]]!=0],Function[{k,v},show[scope<>"/"<>k,v]],step];
+   show[scope<>"/linear_parameter_return",matrixAnswer];
+   Do[
+    namedCondition=support && ((answer[[1]]/.productDefinitions)/.allDefinitions);
+    namedQ=(answer[[2]]/.productDefinitions)/.allDefinitions;
+    AppendTo[conditions,{namedCondition,namedQ}];show[scope<>"/condition",namedCondition];show[scope<>"/Q_under_condition",namedQ],{answer,matrixAnswer[[1]]}];
+   Do[AppendTo[unobtained,{support,localCondition,gap}];show[scope<>"/not_obtained",{"NOT OBTAINED EXACTLY by native exponent-sensitive matrix parameter reduction",gap}],{gap,matrixAnswer[[2]]}];
+   Continue[];
+,   {entry,rows}];Clear[liftFunction];True
+ ];
+ classify[value_,givenSupport_,rules_,inherited_:None,inheritedRules_:{}] := Module[{support=givenSupport,key,scope,assume,feasible,restricted,body,boundary,eh,eb,coefficients,endpoint,actual,parts,rows,kernels,slots,lift,bases,ratios,matrix,determinant,numerator,equations,candidateBranches,substitutions,branch,powerSpecifications,offsets,forms,record,primitiveRules,primitiveEqualities,necessaryFactors,candidateExpressions,activeRules,functionRule,rangeKinds,rangeQuery,rangeReturn,preflightRelations,preflightRelation,preflightValue,preflightRejected,branchBounds,branchDomain},
+  counter++;scope="branch_"<>ToString[counter];
+  support=canonicalSupport[support,scope];
+  step[scope<>" release completed CAS cache entries"];ClearSystemCache[];
+  assume=domain && support;
+  show[scope<>"/parameter_support_operand",assume];
+  If[TrueQ[assume===False],Return[]];
+  preflightRelations=Select[requiredConjuncts[assume],
+   MemberQ[{Unequal,Greater,Less,GreaterEqual,LessEqual},Head[#]] &&
+   And@@(FreeQ[Denominator[Together[#]],Alternatives@@parameters]& /@ (List@@#))&];
+  preflightRelations=SortBy[preflightRelations,LeafCount];preflightRejected=False;
+  Do[
+   show[scope<>"/parameter_support_preflight_operand",{preflightRelation,rules}];
+   step["Refine parameter support before rule composition"];
+   preflightValue=Refine[preflightRelation/.rules,domain];
+   show[scope<>"/parameter_support_preflight_return",preflightValue];
+   If[TrueQ[preflightValue===False],preflightRejected=True;Break[]],{preflightRelation,preflightRelations}];
+  show[scope<>"/parameter_support_preflight_rejection",preflightRejected];
+  If[preflightRejected,Return[]];
+  activeRules=Join[(First[#]->(applyParameterRules[Last[#],rules]))& /@ Select[inheritedRules,!MemberQ[First/@rules,First[#]]&],rules];
+  show[scope<>"/accumulated_parameter_rules",activeRules];
+  primitiveEqualities=Select[Cases[requiredConjuncts[support],HoldPattern[Equal[_,_]],{1}],FreeQ[#,Alternatives@@Complement[parameters,exponents]]&];
+  primitiveRules=If[primitiveEqualities==={},{},cas["Solve supplied branch equalities",Quiet[Solve[And@@primitiveEqualities,exponents,Reals],Solve::svars]]];
+  primitiveRules=If[Length[primitiveRules]==1,First[primitiveRules],{}];
+  preflightRelations=Select[requiredConjuncts[assume],
+   MemberQ[{Unequal,Greater,Less,GreaterEqual,LessEqual},Head[#]] &&
+   And@@(FreeQ[Denominator[Together[#]],Alternatives@@parameters]& /@ (List@@#))&];
+  preflightRelations=SortBy[preflightRelations,LeafCount];preflightRejected=False;
+  Do[
+   show[scope<>"/primitive_parameter_support_preflight_operand",{preflightRelation,primitiveRules}];
+   step["Refine parameter support before rule composition"];
+   preflightValue=Refine[preflightRelation/.primitiveRules,domain];
+   show[scope<>"/primitive_parameter_support_preflight_return",preflightValue];
+   If[TrueQ[preflightValue===False],preflightRejected=True;Break[]],{preflightRelation,preflightRelations}];
+  show[scope<>"/primitive_parameter_support_preflight_rejection",preflightRejected];
+  If[preflightRejected,Return[]];
+  activeRules=Join[(First[#]->applyParameterRules[Last[#],primitiveRules])& /@ Select[activeRules,!MemberQ[First/@primitiveRules,First[#]]&],primitiveRules];
+  show[scope<>"/feasibility_operand",assume/.activeRules];
+  step["local parameter-support substitution"];feasible=reduceSupport[assume/.activeRules];show[scope<>"/support",{support,rules,feasible}];
+  If[TrueQ[feasible===False],Return[]];
+  Do[
+   show[scope<>"/functional_range_operands",{functionRule,domain,feasible}];
+   step["FullSimplify functional expression range"];
+   rangeKinds=FullSimplify[{First[functionRule]>0,First[functionRule]<0,First[functionRule]==0},domain];
+   rangeQuery=And@@MapThread[If[TrueQ[#1],#2,True]&,
+    {rangeKinds,{Last[functionRule]>0,Last[functionRule]<0,Last[functionRule]==0}}];
+   show[scope<>"/functional_range_query",{rangeKinds,rangeQuery}];
+   step["FullSimplify substituted functional range"];
+   rangeReturn=FullSimplify[rangeQuery,feasible];show[scope<>"/functional_range_return",rangeReturn];
+   feasible=reduceSupport[feasible && rangeReturn];
+   show[scope<>"/functional_parameter_domain",feasible];
+   If[TrueQ[feasible===False],Break[]],
+  {functionRule,Select[activeRules,!MemberQ[parameters,First[#]]&]}];
+  If[TrueQ[feasible===False],Return[]];
+  restricted=PiecewiseExpand[applyParameterRules[value,Join[activeRules,primitiveRules]],domain];show[scope<>"/Q_substitution",restricted];
+  key=Hash[{restricted,support,Sort[activeRules]}];show[scope<>"/iteration_operand",{restricted,support,Sort[rules]}];
+  If[KeyExistsQ[seen,key],AppendTo[unobtained,{support,"Native parameter iteration repeated an unchanged input",seen[key]}];show[scope<>"/not_obtained",{"NOT OBTAINED EXACTLY: native exponent-sensitive parameter iteration repeated an unchanged input",seen[key]}];Return[]];AssociateTo[seen,key->scope];
+  branchBounds=applyParameterRules[sourceBounds,Join[activeRules,primitiveRules]];
+  branchDomain=baseDomain && applyParameterRules[baseDomain,Join[activeRules,primitiveRules]];
+  show[scope<>"/radial_interval_substitution_operands",{sourceBounds,baseDomain,Join[activeRules,primitiveRules]}];
+  show[scope<>"/radial_interval_substitution_return",{branchBounds,branchDomain}];
+  Block[{lo=First[branchBounds],hi=Last[branchBounds],domain=branchDomain,integralCache=<||>,momentFormula,momentPrimitive,momentPoles,momentGeneric,momentSpecial},
+  If[inherited===None,{body,boundary}=liftEuler[restricted],
+   show[scope<>"/radial_substitution_operands",inherited];{body,boundary}=normalize[applyParameterRules[#,Join[activeRules,primitiveRules]]]& /@ inherited;show[scope<>"/radial_substitution_return",{body,boundary}]];
+  eh=normalize[departureFunction[body]];eb=normalize[departureFunction[boundary]];
+  show[scope<>"/departure_radial_form",{eh,eb}];
+  coefficients=Join[directionCoefficients[eh],directionCoefficients[eb]];
+  If[And@@(TrueQ[#===0]& /@ coefficients),
+   recordCondition[restricted,support,Join[activeRules,primitiveRules],body,boundary,scope];Return[]];
+  actual=laurentObject[eh,eb];
+  If[MissingQ[actual],
+   endpoint=endpointObject[eh,eb];
+   If[MissingQ[endpoint],AppendTo[unobtained,{support,endpoint}];show[scope<>"/not_obtained",{"NOT OBTAINED EXACTLY by native Euler differential elimination",endpoint}];Return[]];
+   coefficients=directionCoefficients[endpoint];
+   If[And@@(TrueQ[#===0]& /@ coefficients),
+    actual=cas["Integrate remaining radial departure",Integrate[eh,{radial,lo,hi},Assumptions->assume,GenerateConditions->True]]+eb
+   ]
+  ];
+  If[!MissingQ[actual],
+   show[scope<>"/integrated_departure",actual];
+   If[finiteParameterSystem[restricted,actual,body,boundary,support,scope],Return[]];
+   actual=selectLaurentCoefficient[applyParameterRules[actual,Join[activeRules,primitiveRules]],assume];
+   actual=selectPrimitive[actual,assume];show[scope<>"/integrated_identity_operand",actual];
+   If[!FreeQ[actual,Integrate],AppendTo[unobtained,{support,actual}];show[scope<>"/not_obtained",{"NOT OBTAINED EXACTLY by native radial integration",actual}];Return[]];
+   If[!FreeQ[actual,Piecewise],
+    parts=DeleteDuplicates[Cases[actual,HoldPattern[Piecewise[rows_,default_]]:>rows[[All,2]],Infinity]//Flatten];
+    branch=First@Select[parts,!MemberQ[{True,False},FullSimplify[#,assume]]&];
+    show[scope<>"/integral_parameter_partition",{branch,Not[branch]}];
+    classify[restricted,support && branch,{}, {body,boundary},activeRules];
+    classify[restricted,support && Not[branch],{}, {body,boundary},activeRules];Return[]];
+   step["normalize integrated direction coefficients"];coefficients=normalize/@directionCoefficients[normalize[actual]];show[scope<>"/integrated_identity_reduction",coefficients];
+   If[And@@(TrueQ[#===0]& /@ coefficients),recordCondition[restricted,support,Join[activeRules,primitiveRules],body,boundary,scope];Return[]]
+  ];
+  endpoint=First@SortBy[Select[coefficients,!TrueQ[#===0]&],LeafCount];show[scope<>"/identity_candidate_operand",endpoint];
+  endpoint=removeTranscendentals[endpoint,assume];
+  If[MissingQ[endpoint],AppendTo[unobtained,{support,endpoint}];show[scope<>"/not_obtained",{"NOT OBTAINED EXACTLY by native logarithmic resultant elimination",endpoint}];Return[]];
+  endpoint=Expand[PowerExpand[endpoint,Assumptions->assume]];
+  bases=DeleteDuplicates[Cases[endpoint,Power[base_,power_]/;!FreeQ[base,d] && !IntegerQ[power]:>{base,power},Infinity]];
+  offsets=Floor[#[[2]]/.Thread[exponents->0]]& /@ bases;
+  offsets=Replace[offsets,x_/;!IntegerQ[x]:>0,{1}];
+  powerSpecifications=DeleteDuplicates[MapThread[{First[#1],Expand[Last[#1]-#2]}&,{bases,offsets}]];
+  slots=Table[Unique["item4DifferentialKernel",{Temporary}],{Length[powerSpecifications]}];
+  lift=endpoint/.Power[base_,power_]/;!FreeQ[base,d] && !IntegerQ[power]:>Module[{offset=Floor[power/.Thread[exponents->0]],index},
+   If[!IntegerQ[offset],offset=0];index=First@FirstPosition[powerSpecifications,{base,Expand[power-offset]},Missing["absent"],{1}];slots[[index]] base^offset];
+  step["normalize lifted kernel polynomial"];lift=factor[Together[lift]];
+  If[slots==={},equations=CoefficientList[Numerator[Together[endpoint]],d];candidateExpressions=None,
+   matrix=CoefficientRules[Expand[lift],slots];
+   rows=factor[Last[#]]&/@matrix;
+   bases=Power@@#&/@powerSpecifications;
+   kernels=(Times@@MapThread[Power,{bases,First[#]}])&/@matrix;
+   show[scope<>"/differential_kernel_operands",{endpoint,rows,kernels}];record=normalize[endpoint-rows.kernels,True];show[scope<>"/kernel_reconstruction_residual",record];If[record=!=0,AppendTo[unobtained,{support,record}];show[scope<>"/not_obtained",{"NOT OBTAINED EXACTLY: exponent-sensitive kernel reconstruction did not reduce to zero",record}];Return[]];
+   forms=Table[If[kernel===1,True,Head[kernel]===Power && FreeQ[Expand[kernel[[1]]-d],d]],{kernel,kernels}];
+   show[scope<>"/affine_kernel_operands",{kernels,forms}];
+   necessaryFactors=If[And@@forms,seriesNecessary[rows,kernels,assume],differentialEliminate[rows,kernels,assume]];
+   If[MissingQ[necessaryFactors],AppendTo[unobtained,{support,necessaryFactors}];show[scope<>"/not_obtained",{"NOT OBTAINED EXACTLY by native differential elimination including exponent parameters",necessaryFactors}];Return[]];
+   equations={Times@@necessaryFactors};candidateExpressions=necessaryFactors
+
+  ];
+  show[scope<>"/necessary_parameter_polynomials",equations];
+  If[And@@(TrueQ[#===0]& /@ equations),
+   AppendTo[unobtained,{support,equations}];show[scope<>"/not_obtained",{"NOT OBTAINED EXACTLY: native differential determinant gave no nonzero parameter polynomial",equations}];Return[]];
+  show[scope<>"/necessary_parameter_variable_check",FreeQ[equations,Alternatives@@Join[{d,radial},slots]]];
+  If[!FreeQ[equations,Alternatives@@Join[{d,radial},slots]],
+   AppendTo[unobtained,{support,equations}];show[scope<>"/not_obtained",{"NOT OBTAINED EXACTLY: exponent-sensitive elimination retained an independent variable or kernel coordinate",equations}];Return[]];
+  If[candidateExpressions===None,candidateExpressions={First@SortBy[Select[equations,!TrueQ[#===0]&],LeafCount]}];
+  show[scope<>"/necessary_parameter_factor_operands",candidateExpressions];
+  candidateBranches=parameterBranches[candidateExpressions,support];
+  Do[
+   branch=candidate["Condition"];substitutions=candidate["Rules"];
+   show[scope<>"/candidate_substitutions",{branch,substitutions}];
+   If[substitutions==={},AppendTo[unobtained,{support,branch}];show[scope<>"/not_obtained",{"NOT OBTAINED EXACTLY: native parameter reduction gave no substitution",branch}],classify[restricted,support && branch,substitutions,{body,boundary},activeRules]],
+  {candidate,candidateBranches}]
+  ]
+ ];
+ selectPrimitive[value_,assume_] := FixedPoint[
+  Function[expression,expression/.HoldPattern[Piecewise[rows_,default_]]:>Module[{tested,selected={}},
+   tested={First[#],FullSimplify[Last[#],domain && assume]}& /@ rows;
+   show["primitive_row_decisions",tested];
+   Do[If[Last[row]=!=False,AppendTo[selected,row]];If[TrueQ[Last[row]],Break[]],{row,tested}];
+   Piecewise[selected,default]
+  ]],value];
+ primitiveConditions=DeleteDuplicates[Cases[closedObject,HoldPattern[Piecewise[rows_,default_]]:>rows[[All,2]],Infinity]//Flatten];
+ primitiveConditions=DeleteDuplicates[Cases[primitiveConditions,HoldPattern[Equal[left_,right_]|Unequal[left_,right_]]:>factor[left-right],Infinity]];
+ show["primitive_parameter_boundaries",primitiveConditions];
+ walkPartition[value_,support_,index_] := Module[{boundary,nonzero,zero,variables,solutions,rule,restricted},
+  step["partition primitive boundary "<>ToString[index]];
+  If[index>Length[primitiveConditions],
+   restricted=selectPrimitive[value,support];show["selected_primitive_object",{support,restricted}];
+   If[FreeQ[restricted,Piecewise],classify[restricted,support,{}],AppendTo[unobtained,{"Unresolved primitive selection",support,restricted}]];Return[]];
+  boundary=primitiveConditions[[index]];
+  nonzero=FullSimplify[support && boundary!=0,domain];zero=FullSimplify[support && boundary==0,domain];
+  show["primitive_boundary_partition",{support,boundary,nonzero,zero}];
+  If[nonzero=!=False,walkPartition[value,nonzero,index+1]];
+  If[zero=!=False,walkPartition[value,zero,index+1]]
+ ];
+ walkPartition[closedObject,True,1];
+ cleanupResult={conditions,unobtained};
+ Clear[factor,exactFactor,show,step,requiredConjuncts,reduceSupport,powerMultiplicity,powerSubstitute,applyParameterRules,directionReduce,normalize,liftEuler,directionCoefficients,radialMoment,radialIntegrate,laurentObject,selectLaurentCoefficient,endpointObject,removeTranscendentals,primitiveRational,differentialEliminate,seriesNecessary,factorAlternatives,parameterBranches,boundaryAlternatives,canonicalSupport,recordCondition,elementaryFactorEligible,finiteParameterSystem,classify,selectPrimitive,walkPartition,cas];
+ ClearSystemCache[];cleanupResult
+];
+
 parameterConditionAttempt[name_,object_,q_] := Module[
  {prefix="reading/"<>name<>"/item4",physical,slots,rules,inverse,lift,qlift,
  degrees,totalDegree,powers,values,coefficientSlots,polynomial,sphere,reduction,
  coefficients,query,answer,messages,monomials,polynomialSlots,rows,monomialQuery,
  monomialAnswer,branches,branch,substitutions,operands,residuals,restricted,
- valid,explicit,unresolved=True,conditionIndex=0,coefficientIndex},
+ valid,explicit,unresolved=True,conditionIndex=0,coefficientIndex,nativeAnswer,nativeIndex,nativeEmit,attemptFailure},
  physical=DeleteDuplicates@Join[
   Cases[{object,q},Derivative[__][h_][t]/;MemberQ[allowedHeads,h],{0,Infinity}],
   Cases[{object,q},h_[t]/;MemberQ[allowedHeads,h],{0,Infinity}],
@@ -516,14 +1321,6 @@ parameterConditionAttempt[name_,object_,q_] := Module[
  pair[prefix<>"/direction_reconstruction",polynomial,reduction[[1]].{sphere}+reduction[[2]]];
  coefficients=(Last/@CoefficientRules[reduction[[2]],directionDifferentiationSymbols])/.Thread[coefficientSlots->values];
  solo[prefix<>"/scalar_identity_operands",coefficients/.inverse];
- query=Implies[dist>(rout[t]/.rules),And@@Thread[coefficients==0]];
- solo[prefix<>"/identity_solver_operand",query/.inverse];
- Block[{$MessageList={}},
-  answer=Quiet[trackedSolveAlways[query,dist]/.SolveAlways->Inactive[SolveAlways]];messages=$MessageList];
- solo[prefix<>"/identity_solver_return",answer/.inverse];
- solo[prefix<>"/identity_solver_messages",messages];
- emit[prefix<>"/identity_solver_scope","SolveAlways returns are candidate substitutions; no exceptional-parameter completeness is inferred from a rule list."];
-
  (* An independent exact algebraic sufficient construction. The full analytic
     coefficients remain coefficients; only the computed physical monomials are
     annihilated. No analytic independence of the kernels is assumed. *)
@@ -570,8 +1367,34 @@ parameterConditionAttempt[name_,object_,q_] := Module[
  ];
  solo[prefix<>"/Q_on_family",q];
  emit[prefix<>"/condition_scope","The printed verified parameter branches are sufficient branches obtained by Reduce of the physical monomial equations followed by substitution into every exact scalar identity. They are not asserted to exhaust the conditions."];
- emit[prefix<>"/status","NOT OBTAINED EXACTLY: complete conditions, all exceptional exponent strata, and Q under every condition were not obtained. Native SolveAlways on the separation-domain implication was attempted and its exact return is printed. Polynomial-monomial Reduce and exact closed-form substitution produced the separately printed sufficient branches, where verified."];
- AppendTo[exactGaps,{name,"item4","Complete parameter classification not obtained by native SolveAlways; sufficient monomial branches and their full-identity residuals are printed separately."}]
+ attemptFailure=Environment["S15_WL_ATTEMPT_FAILURE"];
+ If[StringQ[attemptFailure] && StringLength[attemptFailure]>0,
+  solo[prefix<>"/failed_attempt",attemptFailure];
+  emit[prefix<>"/label_kind",If[StringStartsQ[attemptFailure,"User decision 2026-11-06"],"user_decision_2026_11_06","resource_failure"]];
+  emit[prefix<>"/status","NOT OBTAINED EXACTLY: "<>attemptFailure];
+  AppendTo[exactGaps,{name,"item4",attemptFailure}];Return[Null]];
+ nativeEmit[key_,value_] := solo[prefix<>"/exact_attempt/"<>key,value/.inverse/.directionDifferentiationBack];
+ nativeAnswer=S15NativeItem4[
+  qlift/.directionDifferentiationRules,slots,
+  Join[Table[aa[k],{k,2}],Table[bb[k],{k,2}]]/.rules,
+  {rin[t],rout[t]}/.rules,dist,directionDifferentiationSymbols,
+  Function[value,(closedGeometricDerivative[value]+2 value)/.directionDifferentiationRules],
+  nativeEmit,Function[step,stepProgress["item4 exponent-sensitive / "<>step]]];
+ solo[prefix<>"/exponent_sensitive_return",nativeAnswer/.inverse/.directionDifferentiationBack];
+ Do[
+  conditionIndex++;
+  solo[prefix<>"/condition_"<>ToString[conditionIndex],
+   (nativeAnswer[[1,nativeIndex,1]] && (rout[t]>rin[t]>0/.rules))/.inverse];
+  solo[prefix<>"/Q_under_condition_"<>ToString[conditionIndex],
+   nativeAnswer[[1,nativeIndex,2]]/.inverse/.directionDifferentiationBack],
+ {nativeIndex,Length[nativeAnswer[[1]]]}];
+ solo[prefix<>"/unresolved_parameter_branches",nativeAnswer[[2]]/.inverse];
+ If[nativeAnswer[[2]]=!={},
+  emit[prefix<>"/classification_return_issue", "Unresolved branches returned; no resource-failure label applies."];
+  Close[stream];Print["ITEM4_CLASSIFICATION_RETURNED_UNRESOLVED: ",name];Quit[92],
+  emit[prefix<>"/status","The exponent-sensitive traversal returned the printed conditions, restricted Q objects, and unresolved-branch list."]];
+ Clear[nativeEmit];ClearSystemCache[];
+
 ];
 
 (* Compute the exceptional loci of every displayed algebraic exponent divisor,
@@ -600,7 +1423,10 @@ item3ExponentAudit[name_,expr_] := Module[{pairs,regions},
   AppendTo[exactGaps,{name,"item3","Branch-support Reduce of displayed exponent divisors left the printed loci."}]]];
 
 conditionAttempt[name_,object_,q_] := Module[{prefix="reading/"<>name<>"/item4",parameters,slots,lift,rules,inverse,query,answer,messages,branches,condition,substitutions,restricted,directionQuery,directionAnswer,polynomial,reduction,remainder,coefficientRows,coefficientSlots,formalPolynomial,formalAnswer,spherePolynomial,identityReturn,identityConditions,chartPullback,chartNumerator,chartCoefficients},
- If[!FreeQ[object,dist],Return[parameterConditionAttempt[name,object,q]]];
+ If[!FreeQ[object,dist],
+  If[s15RunMode === "base",
+   emit["ITEM4_WORKER_MANIFEST_ENTRY",name];Return[Null]];
+  Return[parameterConditionAttempt[name,object,q]]];
  parameters=DeleteDuplicates[Join[Cases[object,Derivative[__][h_][t]/;MemberQ[allowedHeads,h],{0,Infinity}],Cases[object,h_[t]/;MemberQ[allowedHeads,h],{0,Infinity}],Table[aa[k],{k,2}],Table[bb[k],{k,2}],{rin[t],rout[t]}]];
  slots=Table[Unique["parameter"],{Length[parameters]}];rules=Thread[parameters->slots];inverse=Thread[slots->parameters];
  lift=(object/.rules)/.directionDifferentiationRules;
@@ -722,9 +1548,12 @@ Do[
   emit[readingTag<>"/item4/status","Not applicable to the general-field family integral."];
   solo[readingTag<>"/item4/Q_on_family",familyQ],
   conditionAttempt[objectName,familyResult,closedQ]
- ],{objectName,Keys[qObjects]}];
+ ],{objectName,If[s15RunMode === "item4",{s15SelectedObject},Keys[qObjects]]}];
 Scan[emit["EXACT_OBJECT_GAP",#]&,exactGaps];
-emit["END_OF_TRANSCRIPT","S15 separation departure Wolfram objects"];
+Switch[s15RunMode,
+ "base",emit["END_OF_BASE_PASS","S15 separation departure Wolfram objects"],
+ "item4",emit["END_OF_ITEM4_PASS",s15SelectedObject],
+ _,emit["END_OF_TRANSCRIPT","S15 separation departure Wolfram objects"]];
 
 , emit["ENGINE_MESSAGES", $MessageList]; Close[stream]; Exit[1]];
 Close[stream];

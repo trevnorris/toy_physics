@@ -1,79 +1,75 @@
-# S15 separation departure — item-4 repair3 run record
+# S15 separation-departure final run record
 
-Contract inputs: Part A (`91248b67`) and Part B (`7f52b4d2`); reviewed build supplied for this repair: `4c4e2558`. These are provenance supplied in the brief, not commit inspections. Artifact paths below are relative to `research/pde_ledger_v3/` unless absolute. Each engine reconstructs its objects independently. No cross-engine output comparison or review was performed. No git, git-annex, or datalad command was run.
-
-This record supersedes the previous record's claims that finite-identity equations solved all requested conditions and supplied Q under every condition. Those claims were unsupported. The repaired engines print parameter branches obtained by exact attempts and their restricted Q, with explicit not-obtained labels for unresolved classifications. The repair does not establish all requested item-4 conditions.
-
-## Wolfram
-
-```sh
-python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --pool s15 --memory-gib 50 --log-directory /var/projects/toy_physics/_scratch/s15/guard/repair3_wolfram_final_01 -- math -script /var/projects/toy_physics/research/pde_ledger_v3/mathematica/S15_separation_departure.wl
-```
-
-Guard exit `0`; child exit `0`; guard reason `null`; `limitsVerified: true`; stderr `0` bytes. Guard wall time **653.0475128099788 s**; peak recorded cgroup memory **3055435776 bytes**, including descendants.
-
-- Source: `mathematica/S15_separation_departure.wl`; SHA-256 `952923eda122dd92ecf5d9882f377696bac6fc5057df0de5c6881f53edd62fc8`.
-- Transcript: `mathematica/out/S15_separation_departure.out`; SHA-256 `1dbe97d8e187fd550bbb79aa962dbfb4322dc045168a88a1d970eebccfe1ed6f`.
-- The 336 item-4 statuses and transcript end marker are present. There are 210 numbered sufficient conditions and 210 corresponding Q restrictions across the 48 separation-dependent objects; none of these entries is `Missing`.
-
-Missing requested objects: complete item-4 classifications, including all exceptional exponent strata, and Q under every condition, for all 48 separation-dependent objects. These are the three Cartesian components of each drain-1 and mixed drain-1/drain-2 group of carried current, centre transport and radius transport at each surface, and of region momentum and rate. Each object's `/item4/status` and final `EXACT_OBJECT_GAP` identify this omission.
-
-Attempt: direction-polynomial reduction of the printed closed form, native `SolveAlways` on the separation-domain implication, and `Reduce` of computed physical-monomial equations. Native identity-solver returns remain candidates or unevaluated returns. The monomial construction yields sufficient branches only. Each printed branch is substituted into all scalar identities; their operands and residuals are printed. Q is separately substituted and simplified on that branch. No completeness follows from these sufficient branches.
+User-supplied reviewed baseline: `90441b89`. No git command or new commit was made. This repair follows the user decisions of 2026-11-06: Wolfram retains the six deferred mixed-drain region objects with decision-set not-obtained labels; SymPy attempts no item-4 object, including those independent of separation. Its earlier item-4 output is not a result of this build. Neither engine output was compared with the other.
 
 ## SymPy
 
-```sh
-python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --pool s15 --memory-gib 50 --log-directory /var/projects/toy_physics/_scratch/s15/guard/repair3_sympy_final_02 -- python3 /var/projects/toy_physics/research/pde_ledger_v3/scripts/S15_separation_departure.py
+Final source SHA256: `8b4ecfe996341f3fdeeb55725e219fa874eaaf5bad8ec02e15c4da100c7725c8`. Final run `repair4_decision_final_sympy_03`: guard and child exit 0, limits verified; runtime 1820.2957905728836 seconds; peak 388288512 bytes.
+Transcript: `research/pde_ledger_v3/scripts/out/S15_separation_departure.out`; SHA256 `10160f89704d910139b0401fbbcc1419078e45e915a2f1e663f24807647182d6`.
+
+Exact argument vector:
+```json
+["python3", "/var/projects/toy_physics/scripts/s11c_guarded_run.py", "--pool", "s15", "--memory-gib", "2", "--log-directory", "/var/projects/toy_physics/_scratch/s15/guard/repair4_decision_final_sympy_03", "--", "env", "S15_PY_TRANSCRIPT=/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S15_separation_departure.out", "S15_PY_WORK_DIRECTORY=/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_sympy_03_work", "S15_PY_RUN_NAME=repair4_decision_final_sympy_03", "python3", "-u", "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_sympy_03.py"]
 ```
 
-Guard exit `0`; child exit `0`; guard reason `null`; `limitsVerified: true`; stderr `0` bytes. Guard wall time **5262.722074120073 s**; peak recorded cgroup memory **808783872 bytes**, including descendants.
+All 336 named item-4 entries carry `user_decision_sympy_no_item4_2026_11_06`. No conditions or Q under conditions were attempted or printed in this final run. The complete named list, command, limits, source hash and transcript hash are in [the SymPy run manifest](S15_separation_departure_sympy_run_manifest.json). Items 1, 2, 3, 5 and 6 were computed. The same-engine baseline audit retained 18,587 non-item-4 records: 18 textual differences in pressure objects were checked by exact bound-variable canonicalization and held-integrand expansion, and all 18 residuals were zero in the guarded audit `repair4_decision_sympy_baseline_audit_01`. Its operands, residuals and outcome are recorded in the manifest; there was no cross-engine comparison.
 
-- Source: `scripts/S15_separation_departure.py`; SHA-256 `472cf2430877bd3f5d6216f7118c568a54d3f0d23532447aa769bc461bf907bb`. This matches the source pinned for the final run.
-- Transcript: `scripts/out/S15_separation_departure.out`; SHA-256 `cf4267b547fd92ed46165b6ae150f3b8f5e87f375a07e43f300c74a01f7e829d`.
-- The 336 item-4 statuses and transcript end marker are present. The 48 separation-dependent objects have 782 numbered parameter branches and 782 corresponding Q restrictions. These are printed branches, which can overlap; they are not a count of distinct solution components. Across all item-4 objects there are 890 numbered conditions and 890 corresponding Q restrictions.
-- Nine separation-dependent objects have no unresolved branch entry: the three Cartesian components of the outer surface's drain-1 carried current, centre transport and radius transport. Their primitive-support partitions, necessary factor zero sets, full-identity residuals and Q substitutions are printed. This inventory observation is not an additional completeness theorem.
+History only: `repair4_decision_final_sympy_01` exited 1 before construction because the guard did not preserve a transcript-path environment setting. `repair4_decision_final_sympy_02` was stopped by the orchestrator at 2026-11-06T17:42:28Z with its launcher alive; guard exit 1, 7309.415392439114 seconds. Their recorded outcomes, peaks and source hashes are in the SymPy manifest. Neither run sets a label or supplies an item-4 result.
 
-Missing requested objects: complete item-4 classifications and Q under every condition for the following **39** objects (each row includes all three Cartesian components):
+## Wolfram
 
-| Objects | Groups | Count |
-|---|---|---:|
-| Inner carried current, centre transport, radius transport | drain 1 and mixed drain 1/drain 2 | 18 |
-| Outer carried current, centre transport, radius transport | mixed drain 1/drain 2 | 9 |
-| Region momentum and rate | drain 1 and mixed drain 1/drain 2 | 12 |
+Mathematical source SHA256: `366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2`; runner SHA256 `4aee6de98cafec2f5824a4536aacb9aec9efd7c0c32c771d2bd51c254cd6f61a`. The original final mathematical source stayed unchanged. After a shared-cap memory failure, execution resumed only unfinished objects, then retried the three affected drain-1 region-rate objects alone at the largest admitted cap. Completed objects were not replayed.
+Transcript: `research/pde_ledger_v3/mathematica/out/S15_separation_departure.out`; SHA256 `5779d92eb7820b11fa51068526145c3f61e04b69d2f10f86d6b1af923531abce`.
 
-The exact unresolved parameter branches are indexed beside each object's `/item4/unresolved_parameter_branches`, with the attempted construction and its return. Final `EXACT_OBJECT_GAP` lines index all 39 objects. Conditions and Q are printed for the obtained branches; those do not fill the unclassified alternatives.
+| Guarded segment | Guard exit | Runtime seconds | Peak bytes |
+|---|---:|---:|---:|
+| repair4_decision_final_wolfram_01 | 1 | 10590.804926368175 | 8383946752 |
+| repair4_decision_final_wolfram_remaining_01 | 0 | 78356.54220686108 | 8589934592 |
+| repair4_decision_final_wolfram_alone_01 | 0 | 44205.496096736984 | 26377646080 |
 
-Attempt: a computed affine exponent coordinate, partition by the closed primitive's exceptional supports, differential determinant equations used only as necessary candidate equations, exact factor zero sets, and substitution into the full scalar identities. The fallback recursively expands in instantaneous polynomial parameters while retaining exact analytic coefficient definitions, then applies `solve_undetermined_coeffs` to a stronger formal-coefficient identity. Its returned branches are tested against every original scalar identity, and Q is computed on each verified branch. The fallback supplies sufficient conditions only; analytic coefficient cancellations and exceptional exponent alternatives remain unclassified where labelled. Amplitude values and time derivatives remain independent instantaneous slots.
+Commands (argument vectors; the initial launch and resume records preserve the exact original paths):
 
-The first full SymPy attempt (`repair3_sympy_final_01`) was stopped by the author through its live guard after a prolonged silent direct coefficient-matching call. Its unit became inactive and its reservation was released. The fallback was changed, its guarded probe completed, and the final run above was executed from the revised source. This was not an external termination.
-
-## Scope and validation
-
-The old finite-jet condition and reference-point Euler template were removed from item 4 in both engines. No finite multiplicity bound or equivalence is claimed. Intermediate necessary equations are labelled as intermediate candidates rather than parameter conditions.
-
-The final outputs are checked separately against each engine's own pre-repair transcript. The audit excludes item-4 lines, item4-kernel lines, progress and final gap-index lines; it hashes every remaining line in order, including the outputs of items 1, 2, 3, 5 and 6. This is a preservation check, not a cross-engine comparison or a proof of the new item-4 classifications.
-
-Wolfram: all **20438** retained lines match its own baseline, SHA-256 `430af6f5089e3c6b78ed13efb557637e39aad679e01882bc11250ed09e9e3571`.
-
-SymPy: **18602** of **18608** retained lines match byte-for-byte. The six differing lines are `reading/outer/pressure/component_i/whole_minus_expansion/E_geo` and `/E_resp`, for `i = 1, 2, 3`. Exact parsing and bound-variable canonicalization alone retained differently factored integrands. Expanding the held integrands, without evaluating an integral, gave the literal residuals below. Thus these six differences are changes of written form, not value. The raw retained-output hashes are intentionally not reported as equal: baseline `c498b411fed7b180a345a3857e298ec59d9899156127fe54b2e1c191c705ec53`; final `835e957c8a8db08fe98b94368ea3b8e999b8faa438950073b6e25d78f00138a6`.
-
-The additional same-engine preservation check used:
-
-```sh
-python3 /var/projects/toy_physics/scripts/s11c_guarded_run.py --pool s15 --memory-gib 50 --log-directory /var/projects/toy_physics/_scratch/s15/guard/repair3_sympy_preservation_02 -- python3 /var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/verify_sympy_retained.py
+```json
+["python3", "/var/projects/toy_physics/scripts/s11c_guarded_run.py", "--pool", "s15", "--memory-gib", "8", "--log-directory", "/var/projects/toy_physics/_scratch/s15/guard/repair4_decision_final_wolfram_01", "--", "python3", "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01_runner.py", "--source", "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01.wl", "--transcript", "/var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/S15_separation_departure.out", "--work-directory", "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01_work"]
 ```
 
-Guard and child exits `0`; `limitsVerified: true`; stderr `0` bytes; wall time `9.089649471919984 s`. The script SHA-256 is `673216b8d643d2b562178dde349ced20a95e6f2214fa7bb742701467d30fe58f`; guard `stdout` SHA-256 is `d7953eb31afdbec6437ea2a104f58d470c85356fc7c43f5fd4e9c71831d8cc19`. It prints both baseline and final operands before these residuals:
-
-```text
-reading/outer/pressure/component_1/whole_minus_expansion/E_geo/expanded_integrand_residual: 0
-reading/outer/pressure/component_1/whole_minus_expansion/E_resp/expanded_integrand_residual: 0
-reading/outer/pressure/component_2/whole_minus_expansion/E_geo/expanded_integrand_residual: 0
-reading/outer/pressure/component_2/whole_minus_expansion/E_resp/expanded_integrand_residual: 0
-reading/outer/pressure/component_3/whole_minus_expansion/E_geo/expanded_integrand_residual: 0
-reading/outer/pressure/component_3/whole_minus_expansion/E_resp/expanded_integrand_residual: 0
+```json
+["python3", "/var/projects/toy_physics/scripts/s11c_guarded_run.py", "--pool", "s15", "--memory-gib", "8", "--log-directory", "/var/projects/toy_physics/_scratch/s15/guard/repair4_decision_final_wolfram_remaining_01", "--", "env", "S15_WL_RUN_NAME=repair4_decision_final_wolfram_remaining_01", "python3", "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_remaining_01_runner.py", "--source", "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01.wl", "--transcript", "/var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/S15_separation_departure.out", "--work-directory", "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01_work", "--resume", "--exclude-object", "region/component_1/rate_labels_{drain1}"]
 ```
 
-The final engine sources were not changed after their reported final runs. The preservation check changed neither source nor transcript.
+```json
+["python3", "/var/projects/toy_physics/scripts/s11c_guarded_run.py", "--pool", "s15", "--memory-gib", "56", "--log-directory", "/var/projects/toy_physics/_scratch/s15/guard/repair4_decision_final_wolfram_alone_01", "--", "env", "S15_ALONE_MAXIMUM_CAP=1", "S15_WL_RUN_NAME=repair4_decision_final_wolfram_alone_01", "python3", "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_alone_01_runner.py", "--source", "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01.wl", "--transcript", "/var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/S15_separation_departure.out", "--work-directory", "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01_work", "--resume"]
+```
 
-Both transcript links were removed before their respective runs, and the runs write new plain files. Runs are sequential with the specified 50 GiB cap, zero swap and no deadline. Wolfram retains both thread-limiting options. No annex target or repository metadata was modified. Source differences are confined to item 4. No commits or review verdicts are created by this record.
+The shared-cap failures are history, not out-of-memory labels. All three alone retries returned their conditions before six hours. No final Wolfram object carries a six-hour or memory-exhaustion label. The full per-kernel record and admission evidence are in [the Wolfram run manifest](S15_separation_departure_wolfram_run_manifest.json).
+
+Wolfram labelled objects:
+
+- `region/component_1/momentum_labels_{drain1, drain2}` — `user_decision_2026_11_06`.
+- `region/component_1/rate_labels_{drain1, drain2}` — `user_decision_2026_11_06`.
+- `region/component_2/momentum_labels_{drain1, drain2}` — `user_decision_2026_11_06`.
+- `region/component_2/rate_labels_{drain1, drain2}` — `user_decision_2026_11_06`.
+- `region/component_3/momentum_labels_{drain1, drain2}` — `user_decision_2026_11_06`.
+- `region/component_3/rate_labels_{drain1, drain2}` — `user_decision_2026_11_06`.
+
+The six `user_decision_2026_11_06` objects were not attempted in these final segments; each retained its previously printed sufficient conditions and corresponding Q objects. All 42 nondeferred separation-dependent item-4 traversals returned their computed conditions and restricted Q objects, with empty unresolved-branch lists. No complete condition set is claimed for any labelled object. The same-engine preservation audit retained 25,252 records outside the repaired item-4 entries. Its 270 text differences in retained item-4 intermediates were exact renamings of declared local parameter and direction-coefficient slots; no other retained record changed. All 210 prior numbered sufficient conditions and their 210 restricted Q objects were preserved. The declaration-derived maps and checks are in the manifest.
+
+## Earlier attempts and larger-memory follow-up
+
+[The attempt history](S15_separation_departure_attempt_history.md) and [its detailed inventory](S15_separation_departure_attempt_history.json) list the runs on each of the six mixed-drain region momentum/rate objects, for all three components, in each engine. They include trial designations, recorded results and later corrections (including the SymPy selection correction), start/end times, overlap with other guarded jobs, last steps, peaks and source provenance. These runs are history only and do not assign a six-hour or memory label to the six deferred objects.
+
+Three early overwritten probe entry files have no recoverable historical hash: `repair3_90441_direction_coefficients_probe_01`, `_02`, and `repair3_90441_endpoint_basis_01`. The inventory explicitly records that limitation; hashes of current bytes are not presented as hashes of those runs. Preserved classifier-module hashes are supplied where available.
+
+Larger-memory follow-up queue from the user decision: `region/component_i/momentum_labels_{drain1, drain2}` and `region/component_i/rate_labels_{drain1, drain2}`, for each `i=1,2,3`, in each engine. The current build makes no further attempt on those six. SymPy’s additional exclusion of all item 4 is recorded separately above.
+
+The preceding unlimited-series trial report is `_scratch/s15/reading_build_work/repair3/series_unlimited/series_unlimited_report.md`, with inventory and source hashes beside it. Wolfram exhausted memory; the SymPy unlimited trial and size-rate measurement ended on the later user decision. No trial outcome is a final item-4 label.
+
+
+## Changed artifacts
+
+- `scripts/S15_separation_departure.py`: removed item-4 attempts and their helper construction; prints the fourth decision label for every item-4 entry.
+- `mathematica/S15_separation_departure.wl`: prints the six decision labels through the runner, preserves the independently constructed item-4 conditions for other objects, and does not turn returned unresolved branches into unauthorized final labels.
+- `mathematica/S15_separation_departure_run.py`: preserves completed work across guarded segments, records shared-cap failures for alone retries, and applies only the authorized final resource-label rules.
+- Both `*/out/S15_separation_departure.out` transcripts: regenerated plain files, with source and output hashes recorded above.
+- This record, the two engine run manifests, and the Markdown/JSON attempt-history pair: commands, outcomes, per-object labels, preservation evidence and historical provenance.
+- Scratch unlimited-trial report, inventory, manifest and `series_unlimited_files.sha256`: completed the preceding trial report from the files left by those runs.

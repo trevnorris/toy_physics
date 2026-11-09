@@ -30,9 +30,10 @@ def utc() -> str:
 
 DECISION_FAILURES = {
     f'region/component_{i}/{kind}_labels_{{drain1, drain2}}':
-        'User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. '
-        'This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. '
-        'The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up.'
+        'User decision 2026-11-06: this not-obtained label is set by that decision. '
+        'This run computed the printed sufficient conditions and Q under each. '
+        'It made no exponent-sensitive attempt and did not obtain the complete conditions. '
+        'The run record lists the attempt history and the larger-memory follow-up.'
     for i in range(1,4) for kind in ('momentum','rate')
 }
 

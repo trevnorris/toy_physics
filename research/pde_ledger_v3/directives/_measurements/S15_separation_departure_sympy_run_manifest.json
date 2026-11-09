@@ -666,5 +666,24 @@
       ],
       "later_correction": "External user-decision unit stop at 2026-11-06T17:42:28Z, launcher alive. No earlier SymPy item4 print is a result of this build."
     }
-  ]
+  ],
+  "final_transcript_production": {
+    "reviewed_commit": "0d9675eb",
+    "reviewed_manifest": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/reviewed_sympy_manifest.json",
+    "reviewed_manifest_sha256": "b37e843440e83d03bfc44ebef66fd7a20e7916c6bf8cb74da4faaef51217cc55",
+    "run": "repair4_decision_final_sympy_03",
+    "source": "research/pde_ledger_v3/scripts/S15_separation_departure.py",
+    "source_sha256": "8b4ecfe996341f3fdeeb55725e219fa874eaaf5bad8ec02e15c4da100c7725c8",
+    "runner": "research/pde_ledger_v3/scripts/S15_separation_departure.py",
+    "runner_sha256": "8b4ecfe996341f3fdeeb55725e219fa874eaaf5bad8ec02e15c4da100c7725c8",
+    "runner_role": "Direct SymPy script entry point; no separate CAS launcher script. The recorded command invokes it through env and python3 under the guard.",
+    "assembly": "Single final run repair4_decision_final_sympy_03 produced the whole transcript. Round 5 reuses it unchanged: no rerun, replacement parts, or join.",
+    "verification": {
+      "transcript": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S15_separation_departure.out",
+      "preserved": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/preserved/S15_separation_departure.r4.out",
+      "transcript_sha256": "10160f89704d910139b0401fbbcc1419078e45e915a2f1e663f24807647182d6",
+      "preserved_sha256": "10160f89704d910139b0401fbbcc1419078e45e915a2f1e663f24807647182d6",
+      "assembly": "Whole transcript reused unchanged; no rerun, edits or joins."
+    }
+  }
 }

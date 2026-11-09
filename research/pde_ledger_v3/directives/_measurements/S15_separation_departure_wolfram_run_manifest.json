@@ -3,9 +3,9 @@
   "source": "research/pde_ledger_v3/mathematica/S15_separation_departure.wl",
   "source_sha256": "366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2",
   "runner": "research/pde_ledger_v3/mathematica/S15_separation_departure_run.py",
-  "runner_sha256": "4aee6de98cafec2f5824a4536aacb9aec9efd7c0c32c771d2bd51c254cd6f61a",
+  "runner_sha256": "a5b6c68cc1c489912dfe37331eb275b64c4dd9cfcae6d990cd03e3f1018a7ba6",
   "transcript": "research/pde_ledger_v3/mathematica/out/S15_separation_departure.out",
-  "transcript_sha256": "5779d92eb7820b11fa51068526145c3f61e04b69d2f10f86d6b1af923531abce",
+  "transcript_sha256": "7d8044652316b879e7d0c61495bcf6fd241ed243009b251687cf5353b2b710fb",
   "guarded_segments": [
     {
       "run": "repair4_decision_final_wolfram_01",
@@ -62,7 +62,12 @@
         }
       },
       "peak_memory_bytes": 8383946752,
-      "end_from_start_plus_guard_duration": "2026-11-06T18:36:31.339479+00:00"
+      "end_from_start_plus_guard_duration": "2026-11-06T18:36:31.339479+00:00",
+      "source": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01.wl",
+      "source_sha256": "366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2",
+      "runner": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01_runner.py",
+      "runner_sha256": "ca79558aedf0fcfbb3c3c89e79fa48e5cb40767433947c121eed4d427bcce6b4",
+      "role": "Original r4 transcript segment; only the six decision-labelled item-4 kernel blocks are superseded by repair5_wolfram_labels_01."
     },
     {
       "run": "repair4_decision_final_wolfram_remaining_01",
@@ -126,7 +131,12 @@
         }
       },
       "peak_memory_bytes": 8589934592,
-      "end_from_start_plus_guard_duration": "2026-11-07T17:03:22.886108+00:00"
+      "end_from_start_plus_guard_duration": "2026-11-07T17:03:22.886108+00:00",
+      "source": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01.wl",
+      "source_sha256": "366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2",
+      "runner": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_remaining_01_runner.py",
+      "runner_sha256": "4aee6de98cafec2f5824a4536aacb9aec9efd7c0c32c771d2bd51c254cd6f61a",
+      "role": "Original r4 transcript segment; only the six decision-labelled item-4 kernel blocks are superseded by repair5_wolfram_labels_01."
     },
     {
       "run": "repair4_decision_final_wolfram_alone_01",
@@ -187,7 +197,82 @@
         }
       },
       "peak_memory_bytes": 26377646080,
-      "end_from_start_plus_guard_duration": "2026-11-08T05:20:47.525637+00:00"
+      "end_from_start_plus_guard_duration": "2026-11-08T05:20:47.525637+00:00",
+      "source": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01.wl",
+      "source_sha256": "366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2",
+      "runner": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_alone_01_runner.py",
+      "runner_sha256": "4aee6de98cafec2f5824a4536aacb9aec9efd7c0c32c771d2bd51c254cd6f61a",
+      "role": "Original r4 transcript segment; only the six decision-labelled item-4 kernel blocks are superseded by repair5_wolfram_labels_01."
+    },
+    {
+      "run": "repair5_wolfram_labels_01",
+      "command": [
+        "python3",
+        "/var/projects/toy_physics/scripts/s11c_guarded_run.py",
+        "--pool",
+        "s15",
+        "--memory-gib",
+        "8",
+        "--log-directory",
+        "/var/projects/toy_physics/_scratch/s15/guard/repair5_wolfram_labels_01",
+        "--",
+        "python3",
+        "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/rerun_six.py"
+      ],
+      "invocation": {
+        "command": [
+          "python3",
+          "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/rerun_six.py"
+        ],
+        "cwd": "/var/projects/toy_physics",
+        "unit": "s11c-guard-83bd2b3b386a",
+        "seconds": 0,
+        "requestedSecondsArgumentIgnored": 0,
+        "wallDeadlineSeconds": null,
+        "inactivityDeadlineSeconds": null,
+        "cpu": 7,
+        "memoryMax": 8589934592,
+        "swapMax": 0,
+        "tasksMax": 32,
+        "minimumHostAvailableBytes": 0,
+        "startedUtc": "2026-11-08T21:08:03.118657+00:00",
+        "pool": "s15",
+        "priorityPolicy": "desktop-managed",
+        "logDirectory": "/var/projects/toy_physics/_scratch/s11c/s15/repair5_wolfram_labels_01",
+        "affinityEnforcement": "systemd-and-inherited-process",
+        "reservedBeforeBytes": 0,
+        "outstandingHeadroomBytes": 0,
+        "hostAvailableBytes": 60847484928,
+        "poolMemoryMax": 66571993088,
+        "poolMaxJobs": 8,
+        "activeUnits": [],
+        "owner": {
+          "pid": 3512367,
+          "startTicks": "144223232",
+          "bootId": "c3b7b2c7-a5fc-4b45-adf0-6cbde3d609bb"
+        }
+      },
+      "guard_outcome": {
+        "exitCode": 0,
+        "wallSeconds": 254.77337615098804,
+        "unit": "s11c-guard-83bd2b3b386a",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 254.70566171500832,
+          "childPid": 3512373
+        }
+      },
+      "peak_memory_bytes": 1176899584,
+      "source": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/source.wl",
+      "source_sha256": "366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2",
+      "runner": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/rerun_six.py",
+      "runner_sha256": "c6b6eba716c89afa5db44ec4eff7b02ebef7ba0f8f6af2c39f5a7d6b8916f504",
+      "label_policy_source": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/runner.py",
+      "label_policy_source_sha256": "a5b6c68cc1c489912dfe37331eb275b64c4dd9cfcae6d990cd03e3f1018a7ba6",
+      "role": "Six sufficient-condition and restricted-Q passes; no exponent-sensitive attempt; replacement parts in final transcript."
     }
   ],
   "execution": {
@@ -231,7 +316,6 @@
           "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01.wl"
         ],
         "source_sha256": "366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2",
-        "attempt_failure_label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up.",
         "pid": 2040753,
         "last_step": "WORKING_ON: reading/region/component_1/momentum_labels_{drain1, drain2} / FullSimplify HoldForm[{qlift$203236 /. substitutions$203236, Assumptions -> branch$203236 && (dist > rout[t] > rin[t] > 0 /. rules$203236) && unitDirection && Element[slots$203236, Reals]}]",
         "memory_exhausted": false,
@@ -239,7 +323,8 @@
         "stdout": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01_work/kernel_2.stdout",
         "returncode": 0,
         "ended": "2026-11-06T15:43:36.071677+00:00",
-        "wall_seconds": 17.033842283068225
+        "wall_seconds": 17.033842283068225,
+        "label_text_provenance": "Original descriptive text remains in preserved r4; superseded in current transcript. This kernel computed sufficient conditions and restricted Q, made no exponent-sensitive attempt, and did not obtain complete conditions."
       },
       {
         "mode": "item4",
@@ -251,7 +336,6 @@
           "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01.wl"
         ],
         "source_sha256": "366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2",
-        "attempt_failure_label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up.",
         "pid": 2041088,
         "last_step": "WORKING_ON: reading/region/component_1/rate_labels_{drain1, drain2} / FullSimplify HoldForm[{qlift$219457 /. substitutions$219457, Assumptions -> branch$219457 && (dist > rout[t] > rin[t] > 0 /. rules$219457) && unitDirection && Element[slots$219457, Reals]}]",
         "memory_exhausted": false,
@@ -259,7 +343,8 @@
         "stdout": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01_work/kernel_3.stdout",
         "returncode": 0,
         "ended": "2026-11-06T15:44:47.160337+00:00",
-        "wall_seconds": 71.03706769598648
+        "wall_seconds": 71.03706769598648,
+        "label_text_provenance": "Original descriptive text remains in preserved r4; superseded in current transcript. This kernel computed sufficient conditions and restricted Q, made no exponent-sensitive attempt, and did not obtain complete conditions."
       },
       {
         "mode": "item4",
@@ -271,7 +356,6 @@
           "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01.wl"
         ],
         "source_sha256": "366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2",
-        "attempt_failure_label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up.",
         "pid": 2041629,
         "last_step": "WORKING_ON: reading/region/component_2/momentum_labels_{drain1, drain2} / FullSimplify HoldForm[{qlift$203236 /. substitutions$203236, Assumptions -> branch$203236 && (dist > rout[t] > rin[t] > 0 /. rules$203236) && unitDirection && Element[slots$203236, Reals]}]",
         "memory_exhausted": false,
@@ -279,7 +363,8 @@
         "stdout": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01_work/kernel_4.stdout",
         "returncode": 0,
         "ended": "2026-11-06T15:45:02.164445+00:00",
-        "wall_seconds": 15.003116704989225
+        "wall_seconds": 15.003116704989225,
+        "label_text_provenance": "Original descriptive text remains in preserved r4; superseded in current transcript. This kernel computed sufficient conditions and restricted Q, made no exponent-sensitive attempt, and did not obtain complete conditions."
       },
       {
         "mode": "item4",
@@ -291,7 +376,6 @@
           "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01.wl"
         ],
         "source_sha256": "366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2",
-        "attempt_failure_label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up.",
         "pid": 2041958,
         "last_step": "WORKING_ON: reading/region/component_2/rate_labels_{drain1, drain2} / FullSimplify HoldForm[{qlift$219457 /. substitutions$219457, Assumptions -> branch$219457 && (dist > rout[t] > rin[t] > 0 /. rules$219457) && unitDirection && Element[slots$219457, Reals]}]",
         "memory_exhausted": false,
@@ -299,7 +383,8 @@
         "stdout": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01_work/kernel_5.stdout",
         "returncode": 0,
         "ended": "2026-11-06T15:46:10.199189+00:00",
-        "wall_seconds": 68.00943661201745
+        "wall_seconds": 68.00943661201745,
+        "label_text_provenance": "Original descriptive text remains in preserved r4; superseded in current transcript. This kernel computed sufficient conditions and restricted Q, made no exponent-sensitive attempt, and did not obtain complete conditions."
       },
       {
         "mode": "item4",
@@ -311,7 +396,6 @@
           "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01.wl"
         ],
         "source_sha256": "366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2",
-        "attempt_failure_label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up.",
         "pid": 2042514,
         "last_step": "WORKING_ON: reading/region/component_3/momentum_labels_{drain1, drain2} / FullSimplify HoldForm[{qlift$203236 /. substitutions$203236, Assumptions -> branch$203236 && (dist > rout[t] > rin[t] > 0 /. rules$203236) && unitDirection && Element[slots$203236, Reals]}]",
         "memory_exhausted": false,
@@ -319,7 +403,8 @@
         "stdout": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01_work/kernel_6.stdout",
         "returncode": 0,
         "ended": "2026-11-06T15:46:25.205326+00:00",
-        "wall_seconds": 15.004918279126287
+        "wall_seconds": 15.004918279126287,
+        "label_text_provenance": "Original descriptive text remains in preserved r4; superseded in current transcript. This kernel computed sufficient conditions and restricted Q, made no exponent-sensitive attempt, and did not obtain complete conditions."
       },
       {
         "mode": "item4",
@@ -331,7 +416,6 @@
           "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01.wl"
         ],
         "source_sha256": "366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2",
-        "attempt_failure_label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up.",
         "pid": 2042836,
         "last_step": "WORKING_ON: reading/region/component_3/rate_labels_{drain1, drain2} / FullSimplify HoldForm[{qlift$219457 /. substitutions$219457, Assumptions -> branch$219457 && (dist > rout[t] > rin[t] > 0 /. rules$219457) && unitDirection && Element[slots$219457, Reals]}]",
         "memory_exhausted": false,
@@ -339,7 +423,8 @@
         "stdout": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/final_decision/repair4_decision_final_wolfram_01_work/kernel_7.stdout",
         "returncode": 0,
         "ended": "2026-11-06T15:47:33.214429+00:00",
-        "wall_seconds": 68.00793451699428
+        "wall_seconds": 68.00793451699428,
+        "label_text_provenance": "Original descriptive text remains in preserved r4; superseded in current transcript. This kernel computed sufficient conditions and restricted Q, made no exponent-sensitive attempt, and did not obtain complete conditions."
       },
       {
         "mode": "item4",
@@ -1433,27 +1518,27 @@
     "failed_objects": {
       "region/component_1/momentum_labels_{drain1, drain2}": {
         "kind": "user_decision_2026_11_06",
-        "label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up."
+        "scope": "Historical decision kind; original descriptive text superseded by the replacement part."
       },
       "region/component_1/rate_labels_{drain1, drain2}": {
         "kind": "user_decision_2026_11_06",
-        "label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up."
+        "scope": "Historical decision kind; original descriptive text superseded by the replacement part."
       },
       "region/component_2/momentum_labels_{drain1, drain2}": {
         "kind": "user_decision_2026_11_06",
-        "label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up."
+        "scope": "Historical decision kind; original descriptive text superseded by the replacement part."
       },
       "region/component_2/rate_labels_{drain1, drain2}": {
         "kind": "user_decision_2026_11_06",
-        "label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up."
+        "scope": "Historical decision kind; original descriptive text superseded by the replacement part."
       },
       "region/component_3/momentum_labels_{drain1, drain2}": {
         "kind": "user_decision_2026_11_06",
-        "label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up."
+        "scope": "Historical decision kind; original descriptive text superseded by the replacement part."
       },
       "region/component_3/rate_labels_{drain1, drain2}": {
         "kind": "user_decision_2026_11_06",
-        "label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up."
+        "scope": "Historical decision kind; original descriptive text superseded by the replacement part."
       }
     },
     "requires_alone_memory_retry": "region/component_1/rate_labels_{drain1}",
@@ -1531,7 +1616,8 @@
     },
     "remaining_objects": [],
     "ended": "2026-11-08T05:18:52.741718+00:00",
-    "transcript_sha256": "5779d92eb7820b11fa51068526145c3f61e04b69d2f10f86d6b1af923531abce"
+    "transcript_sha256": "5779d92eb7820b11fa51068526145c3f61e04b69d2f10f86d6b1af923531abce",
+    "scope": "Historical execution of the preserved r4 transcript, before the six replacement blocks; its transcript_sha256 names r4."
   },
   "retry_bookkeeping_note": "The execution record retains historical pending/required retry requests; successful later kernel records and the final empty remaining_objects list resolve all three requests.",
   "remaining_requested_retries": [],
@@ -1824,12 +1910,12 @@
     "both_surfaces/sum_rest/component_3": "\"Not applicable to the general-field family integral.\"",
     "both_surfaces/sum_transport/component_3": "\"Not applicable to the general-field family integral.\"",
     "both_surfaces/sum_crossing/component_3": "\"Not applicable to the general-field family integral.\"",
-    "region/component_1/momentum_labels_{drain1, drain2}": "\"NOT OBTAINED EXACTLY: User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up.\"",
-    "region/component_1/rate_labels_{drain1, drain2}": "\"NOT OBTAINED EXACTLY: User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up.\"",
-    "region/component_2/momentum_labels_{drain1, drain2}": "\"NOT OBTAINED EXACTLY: User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up.\"",
-    "region/component_2/rate_labels_{drain1, drain2}": "\"NOT OBTAINED EXACTLY: User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up.\"",
-    "region/component_3/momentum_labels_{drain1, drain2}": "\"NOT OBTAINED EXACTLY: User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up.\"",
-    "region/component_3/rate_labels_{drain1, drain2}": "\"NOT OBTAINED EXACTLY: User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up.\"",
+    "region/component_1/momentum_labels_{drain1, drain2}": "\"NOT OBTAINED EXACTLY: User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up.\"",
+    "region/component_1/rate_labels_{drain1, drain2}": "\"NOT OBTAINED EXACTLY: User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up.\"",
+    "region/component_2/momentum_labels_{drain1, drain2}": "\"NOT OBTAINED EXACTLY: User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up.\"",
+    "region/component_2/rate_labels_{drain1, drain2}": "\"NOT OBTAINED EXACTLY: User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up.\"",
+    "region/component_3/momentum_labels_{drain1, drain2}": "\"NOT OBTAINED EXACTLY: User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up.\"",
+    "region/component_3/rate_labels_{drain1, drain2}": "\"NOT OBTAINED EXACTLY: User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up.\"",
     "region/component_1/momentum_labels_{drain1}": "\"The exponent-sensitive traversal returned the printed conditions, restricted Q objects, and unresolved-branch list.\"",
     "region/component_2/momentum_labels_{drain1}": "\"The exponent-sensitive traversal returned the printed conditions, restricted Q objects, and unresolved-branch list.\"",
     "region/component_3/momentum_labels_{drain1}": "\"The exponent-sensitive traversal returned the printed conditions, restricted Q objects, and unresolved-branch list.\"",
@@ -1876,27 +1962,33 @@
   "labelled_objects": {
     "region/component_1/momentum_labels_{drain1, drain2}": {
       "kind": "user_decision_2026_11_06",
-      "label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up."
+      "label": "User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up.",
+      "current_part_run": "repair5_wolfram_labels_01"
     },
     "region/component_1/rate_labels_{drain1, drain2}": {
       "kind": "user_decision_2026_11_06",
-      "label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up."
+      "label": "User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up.",
+      "current_part_run": "repair5_wolfram_labels_01"
     },
     "region/component_2/momentum_labels_{drain1, drain2}": {
       "kind": "user_decision_2026_11_06",
-      "label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up."
+      "label": "User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up.",
+      "current_part_run": "repair5_wolfram_labels_01"
     },
     "region/component_2/rate_labels_{drain1, drain2}": {
       "kind": "user_decision_2026_11_06",
-      "label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up."
+      "label": "User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up.",
+      "current_part_run": "repair5_wolfram_labels_01"
     },
     "region/component_3/momentum_labels_{drain1, drain2}": {
       "kind": "user_decision_2026_11_06",
-      "label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up."
+      "label": "User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up.",
+      "current_part_run": "repair5_wolfram_labels_01"
     },
     "region/component_3/rate_labels_{drain1, drain2}": {
       "kind": "user_decision_2026_11_06",
-      "label": "User decision 2026-11-06: complete item-4 conditions were not returned by the recorded prior attempts. This not-obtained label is set by that decision; the exponent-sensitive attempt was not made in this final run. The retained sufficient conditions are printed above. The run record lists the attempt history and the larger-memory follow-up."
+      "label": "User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up.",
+      "current_part_run": "repair5_wolfram_labels_01"
     }
   },
   "same_engine_baseline_audit": {
@@ -5711,5 +5803,1854 @@
     "unmatched_pairs": [],
     "non_item4_missing": [],
     "non_item4_added": []
+  },
+  "label_correction_execution": {
+    "source": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/source.wl",
+    "source_sha256": "366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2",
+    "runner": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/runner.py",
+    "runner_sha256": "a5b6c68cc1c489912dfe37331eb275b64c4dd9cfcae6d990cd03e3f1018a7ba6",
+    "part_runner": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/rerun_six.py",
+    "part_runner_sha256": "c6b6eba716c89afa5db44ec4eff7b02ebef7ba0f8f6af2c39f5a7d6b8916f504",
+    "started": "2026-11-08T21:08:03.210563+00:00",
+    "kernels": [
+      {
+        "object": "region/component_1/momentum_labels_{drain1, drain2}",
+        "command": [
+          "math",
+          "-script",
+          "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/source.wl"
+        ],
+        "environment": {
+          "S15_WL_MODE": "item4",
+          "S15_WL_OBJECT": "region/component_1/momentum_labels_{drain1, drain2}",
+          "S15_WL_TRANSCRIPT": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_1.out",
+          "S15_WL_ATTEMPT_FAILURE": "User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up."
+        },
+        "started": "2026-11-08T21:08:03.210729+00:00",
+        "part": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_1.out",
+        "returncode": 0,
+        "ended": "2026-11-08T21:08:27.267460+00:00",
+        "wall_seconds": 24.05661395401694,
+        "run_peak_bytes": 707346432,
+        "part_sha256": "2ebceadbee46e22cdba3924aa9e36d8ada6adf705a1c2b05b4ae8bc814e6d435"
+      },
+      {
+        "object": "region/component_1/rate_labels_{drain1, drain2}",
+        "command": [
+          "math",
+          "-script",
+          "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/source.wl"
+        ],
+        "environment": {
+          "S15_WL_MODE": "item4",
+          "S15_WL_OBJECT": "region/component_1/rate_labels_{drain1, drain2}",
+          "S15_WL_TRANSCRIPT": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_2.out",
+          "S15_WL_ATTEMPT_FAILURE": "User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up."
+        },
+        "started": "2026-11-08T21:08:27.269281+00:00",
+        "part": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_2.out",
+        "returncode": 0,
+        "ended": "2026-11-08T21:09:35.714874+00:00",
+        "wall_seconds": 68.44509669416584,
+        "run_peak_bytes": 1130246144,
+        "part_sha256": "fc42999abbe97aaf96aac7bd2800d84c525c973b7f34bd168c27846de4756861"
+      },
+      {
+        "object": "region/component_2/momentum_labels_{drain1, drain2}",
+        "command": [
+          "math",
+          "-script",
+          "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/source.wl"
+        ],
+        "environment": {
+          "S15_WL_MODE": "item4",
+          "S15_WL_OBJECT": "region/component_2/momentum_labels_{drain1, drain2}",
+          "S15_WL_TRANSCRIPT": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_3.out",
+          "S15_WL_ATTEMPT_FAILURE": "User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up."
+        },
+        "started": "2026-11-08T21:09:35.757861+00:00",
+        "part": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_3.out",
+        "returncode": 0,
+        "ended": "2026-11-08T21:09:50.563730+00:00",
+        "wall_seconds": 14.805328536080196,
+        "run_peak_bytes": 1130246144,
+        "part_sha256": "8755721f383b7458e84b8d97d87d64b679d6ddb5181aaf269cfbb8747046a071"
+      },
+      {
+        "object": "region/component_2/rate_labels_{drain1, drain2}",
+        "command": [
+          "math",
+          "-script",
+          "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/source.wl"
+        ],
+        "environment": {
+          "S15_WL_MODE": "item4",
+          "S15_WL_OBJECT": "region/component_2/rate_labels_{drain1, drain2}",
+          "S15_WL_TRANSCRIPT": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_4.out",
+          "S15_WL_ATTEMPT_FAILURE": "User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up."
+        },
+        "started": "2026-11-08T21:09:50.565484+00:00",
+        "part": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_4.out",
+        "returncode": 0,
+        "ended": "2026-11-08T21:10:56.899690+00:00",
+        "wall_seconds": 66.33372726500966,
+        "run_peak_bytes": 1155547136,
+        "part_sha256": "01d22845915795b57e29db4045eac60d37e757437273df302b8988e0febfeed1"
+      },
+      {
+        "object": "region/component_3/momentum_labels_{drain1, drain2}",
+        "command": [
+          "math",
+          "-script",
+          "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/source.wl"
+        ],
+        "environment": {
+          "S15_WL_MODE": "item4",
+          "S15_WL_OBJECT": "region/component_3/momentum_labels_{drain1, drain2}",
+          "S15_WL_TRANSCRIPT": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_5.out",
+          "S15_WL_ATTEMPT_FAILURE": "User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up."
+        },
+        "started": "2026-11-08T21:10:56.936040+00:00",
+        "part": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_5.out",
+        "returncode": 0,
+        "ended": "2026-11-08T21:11:11.591795+00:00",
+        "wall_seconds": 14.655237537110224,
+        "run_peak_bytes": 1155547136,
+        "part_sha256": "930c871d93ace7a27e0f0003b41afb4fbe6810188aee498e3d581465a1118ca4"
+      },
+      {
+        "object": "region/component_3/rate_labels_{drain1, drain2}",
+        "command": [
+          "math",
+          "-script",
+          "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/source.wl"
+        ],
+        "environment": {
+          "S15_WL_MODE": "item4",
+          "S15_WL_OBJECT": "region/component_3/rate_labels_{drain1, drain2}",
+          "S15_WL_TRANSCRIPT": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_6.out",
+          "S15_WL_ATTEMPT_FAILURE": "User decision 2026-11-06: this not-obtained label is set by that decision. This run computed the printed sufficient conditions and Q under each. It made no exponent-sensitive attempt and did not obtain the complete conditions. The run record lists the attempt history and the larger-memory follow-up."
+        },
+        "started": "2026-11-08T21:11:11.593523+00:00",
+        "part": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_6.out",
+        "returncode": 0,
+        "ended": "2026-11-08T21:12:17.823164+00:00",
+        "wall_seconds": 66.22910373401828,
+        "run_peak_bytes": 1176899584,
+        "part_sha256": "341a90b6c85e27181b46c76ad3e9b9942fbb49e0218f083c6b409fc02b53a889"
+      }
+    ],
+    "ended": "2026-11-08T21:12:17.859588+00:00"
+  },
+  "final_transcript_production": {
+    "reviewed_commit": "0d9675eb",
+    "reviewed_manifest": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/reviewed_wolfram_manifest.json",
+    "reviewed_manifest_sha256": "3ee6caa25b34c88ad58c8cdc2e177079418e06848a2f9b1e8e12eabf8f7422b3",
+    "preserved_transcript": "/var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/preserved/S15_separation_departure.r4.out",
+    "preserved_transcript_sha256": "5779d92eb7820b11fa51068526145c3f61e04b69d2f10f86d6b1af923531abce",
+    "original_join": "The original base pass and item-4 kernel outputs were appended in the execution.kernels order by the three recorded guarded segments, including partial failed passes and subsequent successful retries. The final continuation appended END_OF_TRANSCRIPT.",
+    "current_join": "Copy preserved r4 bytes [0,333550018), append part_1.out through part_6.out from repair5_wolfram_labels_01 in order, then copy preserved r4 bytes [398077694,EOF). Each replacement is a complete selected item-4 kernel block through END_OF_ITEM4_PASS. No algebraic expression is edited.",
+    "assembly_command": [
+      "python3",
+      "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/assemble.py"
+    ],
+    "assembly_script_sha256": "f04978d6fcd979938f940b1202bfab6a480f490df7c57e059e934cfa4de41378",
+    "verification": {
+      "preserved": "/var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/preserved/S15_separation_departure.r4.out",
+      "preserved_sha256": "5779d92eb7820b11fa51068526145c3f61e04b69d2f10f86d6b1af923531abce",
+      "parts": [
+        {
+          "start": 333550018,
+          "end": 333982795,
+          "marker": "END_OF_ITEM4_PASS: \"region/component_1/momentum_labels_{drain1, drain2}\"",
+          "object": "region/component_1/momentum_labels_{drain1, drain2}",
+          "old_part_sha256": "595bb3e37d20326eaa202331ef6c76fa44b96e7d13dacd5d32bbd172ba9b46c0",
+          "new_part": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_1.out",
+          "new_part_sha256": "2ebceadbee46e22cdba3924aa9e36d8ada6adf705a1c2b05b4ae8bc814e6d435",
+          "identical_lines": 227,
+          "condition_lines": 4,
+          "Q_under_condition_lines": 4,
+          "changes": [
+            {
+              "line": 43,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 88,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 100,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 101,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 102,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 103,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 104,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 105,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 106,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 107,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 108,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 109,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 110,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 111,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 112,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 113,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 114,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 115,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 116,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 117,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 118,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 119,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 120,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 121,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 122,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 123,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 124,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 125,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 139,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 159,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 172,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 181,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 196,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 205,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 220,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 229,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 244,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 253,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 263,
+              "key": "reading/region/component_1/momentum_labels_{drain1, drain2}/item4/failed_attempt",
+              "kind": "decision_label"
+            },
+            {
+              "line": 266,
+              "key": "reading/region/component_1/momentum_labels_{drain1, drain2}/item4/status",
+              "kind": "decision_label"
+            },
+            {
+              "line": 267,
+              "key": "EXACT_OBJECT_GAP",
+              "kind": "decision_label"
+            }
+          ]
+        },
+        {
+          "start": 333982795,
+          "end": 357487756,
+          "marker": "END_OF_ITEM4_PASS: \"region/component_1/rate_labels_{drain1, drain2}\"",
+          "object": "region/component_1/rate_labels_{drain1, drain2}",
+          "old_part_sha256": "cf82d7f2c71aef25363715533e44c540d8ca175cddfce0ff90fde590b2c24166",
+          "new_part": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_2.out",
+          "new_part_sha256": "fc42999abbe97aaf96aac7bd2800d84c525c973b7f34bd168c27846de4756861",
+          "identical_lines": 535,
+          "condition_lines": 16,
+          "Q_under_condition_lines": 16,
+          "changes": [
+            {
+              "line": 44,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 89,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 101,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 102,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 103,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 104,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 105,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 106,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 107,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 108,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 109,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 110,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 111,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 112,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 113,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 114,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 115,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 116,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 117,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 118,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 119,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 120,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 121,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 122,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 123,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 124,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 125,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 126,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 148,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 203,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 216,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 225,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 240,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 249,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 264,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 273,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 288,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 297,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 312,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 321,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 336,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 345,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 360,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 369,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 384,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 393,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 408,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 417,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 432,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 441,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 456,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 465,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 480,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 489,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 504,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 513,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 528,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 537,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 552,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 561,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 576,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 585,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 595,
+              "key": "reading/region/component_1/rate_labels_{drain1, drain2}/item4/failed_attempt",
+              "kind": "decision_label"
+            },
+            {
+              "line": 598,
+              "key": "reading/region/component_1/rate_labels_{drain1, drain2}/item4/status",
+              "kind": "decision_label"
+            },
+            {
+              "line": 599,
+              "key": "EXACT_OBJECT_GAP",
+              "kind": "decision_label"
+            }
+          ]
+        },
+        {
+          "start": 357487756,
+          "end": 357920533,
+          "marker": "END_OF_ITEM4_PASS: \"region/component_2/momentum_labels_{drain1, drain2}\"",
+          "object": "region/component_2/momentum_labels_{drain1, drain2}",
+          "old_part_sha256": "6e850a4e4904d3786be4d9637b9a64d48a374aaf348bade688ebf75183cab51b",
+          "new_part": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_3.out",
+          "new_part_sha256": "8755721f383b7458e84b8d97d87d64b679d6ddb5181aaf269cfbb8747046a071",
+          "identical_lines": 227,
+          "condition_lines": 4,
+          "Q_under_condition_lines": 4,
+          "changes": [
+            {
+              "line": 43,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 88,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 100,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 101,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 102,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 103,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 104,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 105,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 106,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 107,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 108,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 109,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 110,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 111,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 112,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 113,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 114,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 115,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 116,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 117,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 118,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 119,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 120,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 121,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 122,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 123,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 124,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 125,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 139,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 159,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 172,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 181,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 196,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 205,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 220,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 229,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 244,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 253,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 263,
+              "key": "reading/region/component_2/momentum_labels_{drain1, drain2}/item4/failed_attempt",
+              "kind": "decision_label"
+            },
+            {
+              "line": 266,
+              "key": "reading/region/component_2/momentum_labels_{drain1, drain2}/item4/status",
+              "kind": "decision_label"
+            },
+            {
+              "line": 267,
+              "key": "EXACT_OBJECT_GAP",
+              "kind": "decision_label"
+            }
+          ]
+        },
+        {
+          "start": 357920533,
+          "end": 377782725,
+          "marker": "END_OF_ITEM4_PASS: \"region/component_2/rate_labels_{drain1, drain2}\"",
+          "object": "region/component_2/rate_labels_{drain1, drain2}",
+          "old_part_sha256": "c6359be1ee7df57a64a586a6dcc069996263cb74669dc7899272d1b770571b08",
+          "new_part": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_4.out",
+          "new_part_sha256": "01d22845915795b57e29db4045eac60d37e757437273df302b8988e0febfeed1",
+          "identical_lines": 528,
+          "condition_lines": 16,
+          "Q_under_condition_lines": 16,
+          "changes": [
+            {
+              "line": 44,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 89,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 101,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 102,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 103,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 104,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 105,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 106,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 107,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 108,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 109,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 110,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 111,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 112,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 113,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 114,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 115,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 116,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 117,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 118,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 119,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 120,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 121,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 122,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 123,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 124,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 125,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 126,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 146,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 196,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 209,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 218,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 233,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 242,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 257,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 266,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 281,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 290,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 305,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 314,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 329,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 338,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 353,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 362,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 377,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 386,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 401,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 410,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 425,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 434,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 449,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 458,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 473,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 482,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 497,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 506,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 521,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 530,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 545,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 554,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 569,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 578,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 588,
+              "key": "reading/region/component_2/rate_labels_{drain1, drain2}/item4/failed_attempt",
+              "kind": "decision_label"
+            },
+            {
+              "line": 591,
+              "key": "reading/region/component_2/rate_labels_{drain1, drain2}/item4/status",
+              "kind": "decision_label"
+            },
+            {
+              "line": 592,
+              "key": "EXACT_OBJECT_GAP",
+              "kind": "decision_label"
+            }
+          ]
+        },
+        {
+          "start": 377782725,
+          "end": 378215502,
+          "marker": "END_OF_ITEM4_PASS: \"region/component_3/momentum_labels_{drain1, drain2}\"",
+          "object": "region/component_3/momentum_labels_{drain1, drain2}",
+          "old_part_sha256": "27b5375ce1216859acd76a7dfc1e37cf31ead9896df4640776f13d56c82b48f9",
+          "new_part": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_5.out",
+          "new_part_sha256": "930c871d93ace7a27e0f0003b41afb4fbe6810188aee498e3d581465a1118ca4",
+          "identical_lines": 227,
+          "condition_lines": 4,
+          "Q_under_condition_lines": 4,
+          "changes": [
+            {
+              "line": 43,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 88,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 100,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 101,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 102,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 103,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 104,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 105,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 106,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 107,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 108,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 109,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 110,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 111,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 112,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 113,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 114,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 115,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 116,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 117,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 118,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 119,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 120,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 121,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 122,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 123,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 124,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 125,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 139,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 159,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 172,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 181,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 196,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 205,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 220,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 229,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 244,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 253,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 263,
+              "key": "reading/region/component_3/momentum_labels_{drain1, drain2}/item4/failed_attempt",
+              "kind": "decision_label"
+            },
+            {
+              "line": 266,
+              "key": "reading/region/component_3/momentum_labels_{drain1, drain2}/item4/status",
+              "kind": "decision_label"
+            },
+            {
+              "line": 267,
+              "key": "EXACT_OBJECT_GAP",
+              "kind": "decision_label"
+            }
+          ]
+        },
+        {
+          "start": 378215502,
+          "end": 398077694,
+          "marker": "END_OF_ITEM4_PASS: \"region/component_3/rate_labels_{drain1, drain2}\"",
+          "object": "region/component_3/rate_labels_{drain1, drain2}",
+          "old_part_sha256": "597d0d6203e1719cb1edaf3261f66f94477beabd05ce751e915cb0048be0119b",
+          "new_part": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/part_6.out",
+          "new_part_sha256": "341a90b6c85e27181b46c76ad3e9b9942fbb49e0218f083c6b409fc02b53a889",
+          "identical_lines": 528,
+          "condition_lines": 16,
+          "Q_under_condition_lines": 16,
+          "changes": [
+            {
+              "line": 44,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 89,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 101,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 102,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 103,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 104,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 105,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 106,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 107,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 108,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 109,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 110,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 111,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 112,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 113,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 114,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 115,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 116,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 117,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 118,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 119,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 120,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 121,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 122,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 123,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 124,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 125,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 126,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 146,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 196,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 209,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 218,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 233,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 242,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 257,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 266,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 281,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 290,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 305,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 314,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 329,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 338,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 353,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 362,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 377,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 386,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 401,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 410,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 425,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 434,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 449,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 458,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 473,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 482,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 497,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 506,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 521,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 530,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 545,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 554,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 569,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 578,
+              "key": "WORKING_ON",
+              "kind": "local_module_number"
+            },
+            {
+              "line": 588,
+              "key": "reading/region/component_3/rate_labels_{drain1, drain2}/item4/failed_attempt",
+              "kind": "decision_label"
+            },
+            {
+              "line": 591,
+              "key": "reading/region/component_3/rate_labels_{drain1, drain2}/item4/status",
+              "kind": "decision_label"
+            },
+            {
+              "line": 592,
+              "key": "EXACT_OBJECT_GAP",
+              "kind": "decision_label"
+            }
+          ]
+        }
+      ],
+      "assembly_script": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/assemble.py",
+      "assembly_script_sha256": "f04978d6fcd979938f940b1202bfab6a480f490df7c57e059e934cfa4de41378",
+      "prefix_bytes": 333550018,
+      "suffix_start_in_preserved": 398077694,
+      "prefix_sha256": "75622128d04da2d934c2a52468505b4438fff9f17a902d7a6cd35993d769b6c4",
+      "suffix_sha256": "6dc5714ace02b1f609e4ee2a6e9d03dfe93e33be5c528e383af80e422daa44c0",
+      "transcript_sha256": "7d8044652316b879e7d0c61495bcf6fd241ed243009b251687cf5353b2b710fb",
+      "transcript": "/var/projects/toy_physics/research/pde_ledger_v3/mathematica/out/S15_separation_departure.out",
+      "sympy": {
+        "transcript": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/S15_separation_departure.out",
+        "preserved": "/var/projects/toy_physics/research/pde_ledger_v3/scripts/out/preserved/S15_separation_departure.r4.out",
+        "transcript_sha256": "10160f89704d910139b0401fbbcc1419078e45e915a2f1e663f24807647182d6",
+        "preserved_sha256": "10160f89704d910139b0401fbbcc1419078e45e915a2f1e663f24807647182d6",
+        "assembly": "Whole transcript reused unchanged; no rerun, edits or joins."
+      }
+    },
+    "audit_log": "/var/projects/toy_physics/_scratch/s15/reading_build_work/repair3/round5_labels/assembly.log",
+    "audit_log_sha256": "5ace3b12d9096091c7ae35e6253f34c40e9bcae6de1bf9104cf7130a9f1a9b78"
   }
 }

@@ -1,4 +1,76 @@
-# Project status — light sector closed for now; S12 and S14a accepted; S16 record written for review
+# Project status — S15 reading build accepted; item 4's Singular engine in its build (2026-11-09)
+
+## 2026-11-09: S15, and where the work stands
+
+**S16 is accepted.** Its record and register pass were accepted at `4f907e9d` (round 2 clear, fresh Claude + Grok).
+The superseded clause below still calls the S16 record "written for review"; that line is out of date.
+
+**What is committed for S15.** S15's results stay **conditional**, on `R-S14a-01`, as the clause below says.
+- The S15 decision list was cleared at `91248b67`. The S15 build was accepted at `3192123b` (round 1 clear). The
+  comparator's decision list was cleared at `e305f6d4`, and the comparator was accepted at `5a019394` (round 1).
+- The [reading decision list](research/pde_ledger_v3/directives/S15_reading_decision_list.md) was cleared at
+  `7f52b4d2` (scoped pass 3). Its items 1–6 ask for the separation-departure objects on the power-law profile family.
+  Item 4 asks, for each departure object in closed form, for the exact and complete conditions under which it vanishes
+  for every separation.
+- **The reading build.**
+  - Rounds 0–4 were preserved as reviewed, at `5f0fc03a`, `6c0fc66b`, `4c4e2558`, `90441b89` and `0d9675eb`.
+  - Between rounds, repair briefs 1–3 and repair notes 4 and 4b–4p were gated, checked or accepted, many of them
+    carrying user decisions.
+  - It was accepted at `cc62dc9f` after the round-5 review, where both legs (fresh Claude and Grok) were CLEAR.
+  - Its [run record](research/pde_ledger_v3/directives/_measurements/S15_separation_departure_run_record.md) lists each
+    object and how it ended. The SymPy and Wolfram run manifests are beside it.
+- **Item 4 has one engine in the accepted build: Wolfram.** By a user decision, the SymPy engine attempts no item-4
+  object (note 4o, `f7068356`). Six objects carry the label `user_decision_2026_11_06` (note 4n, `266f2acf`): the
+  two-drain region momentum and rate, for each Cartesian component. Their complete conditions were not obtained, and
+  they are queued for a larger-memory follow-up in each engine.
+- A Singular side test was gated at `07b1e751`. It ran, but its output has not been reviewed, so it is not evidence.
+- **Singular becomes item 4's second engine** (user, 2026-11-09: "Go with your recommendation. Sounds like Singular is
+  a solid choice for this"). The engine directive
+  ([directive](research/pde_ledger_v3/directives/S15_item4_singular_engine_directive.md)) was handled as follows:
+  - its reviewed pass-1 version was preserved at `51fd98fa`;
+  - it was accepted at `d4cd6d09` after two CLEAR pass-2 legs (Codex and Grok).
+  Singular 4.4.1 is installed at `/var/projects/_tools/singular`.
+- Since `de9efa9b` (user, 2026-11-02), each run commits a run manifest and no engine transcript.
+
+**In flight (uncommitted).**
+- A Codex builder (`gpt-6-astra`) is building the Singular engine. Its source and the README's Singular section exist.
+  Its run record and manifest do not exist yet.
+- Its first session ended during its first guarded run. That run kept going, but its guard reservation was left with
+  no live owner. The guard's explicit reconciliation rule must clear that reservation before it admits another job,
+  and the builder is then resumed with an operational note.
+- Before acting on any of this, check the guard's unit, the guard registry and the builder's DONE markers. Do not
+  assume any of it is still running.
+
+**NEXT, in order.**
+1. Finish the Singular build. Its stale guard reservation is reconciled by the guard's rule, and the builder is
+   resumed with an operational note. The builder then finishes its runs, and writes its run record, its manifest and
+   its final report.
+2. Check that the deliverable exists: the run record, the manifest and the final transcript. Then launch the build
+   review. Codex wrote the build, so the legs are a fresh Claude agent and Grok, with one identical prompt, reviewed
+   until clear. The Grok launch must let Grok take the guard's lock. If it cannot, the launch is fixed before the Grok
+   leg runs: `AGENTS.md` forbids any fallback to an unguarded launch.
+3. Adjudicate the findings. Commit the reviewed baseline before any repair, and accept only on clearance.
+4. Build the two comparators: item 4, Wolfram against Singular; and the reading build's items 1–3, 5 and 6. Each needs
+   a decision list (two legs, folded once), a build and a review.
+5. Write the S15 step record and its register pass. The record asks which returned conditions are compatible with a
+   steady sink that conserves mass. Riemann's sink ether and Lagally are oracles for that question, not premises.
+6. Close S15:
+   - If the six labelled objects are still not obtained, they go to
+     [DEFERRED_HEAVY_RUNS](research/pde_ledger_v3/DEFERRED_HEAVY_RUNS.md) through the record.
+   - 76 committed S15 files cite paths under the disposable scratch directory: 72 measurement files and 4
+     directives. Most were written before the user's 2026-11-02 rule. The evidence they rely on is moved out or quoted
+     in a manifest. The scope of that move is for the user to decide.
+   - The step's local transcripts and their preserved copies are deleted.
+
+**Also owed.**
+- The Grok launch for guarded review legs. In round 5, Grok's sandbox could not take the guard's lock (recorded in
+  the round-5 disposition).
+- The unsigned commits made while the user was remote, to be re-signed.
+- The `gin` remote's git branch is behind `origin`. `gin` holds the legacy annexed transcripts.
+
+The clause below is SUPERSEDED — kept for the artifact map.
+
+## Light sector closed for now; S12 and S14a accepted; S16 record written for review [SUPERSEDED by the clause above]
 
 On 2026-10-19 the user closed the light sector **for now**. Its accepted results are conditional. What stays
 open is carried as requirements in the [substrate register](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md),

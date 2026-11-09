@@ -35,9 +35,14 @@ profile family holds no general field besides the family's amplitudes, the regio
 each such `Q`, the engine prints:
 
 1. its item-3 object, `E_Q^geo` on the profile family, exact, with its dependence on `d` explicit;
-2. its item-4 objects: the conditions under which that object vanishes for every `D` on the domain, exact and complete,
-   with every special exponent value treated, printed as equations and inequalities in the named quantities; and `Q`
-   on the family under each condition.
+2. where it obtains that item-3 object exactly, its item-4 objects, as item 4 of the reading decision list states them:
+
+   > - the conditions under which that object vanishes for every `D` on the domain, exact, with every special exponent
+   >   value treated. A condition is on the exponents and, where they enter, on the amplitudes, the radii and their
+   >   rates, and the velocities. It is printed as equations and inequalities in the named quantities;
+   > - `Q` on the family under each condition.
+
+   The conditions are complete.
 
 Each object's name says its surface or the region, its piece or group, its component and its labels, so that a reader
 can match it with the reading decision list's objects.
@@ -61,13 +66,19 @@ can match it with the reading decision list's objects.
 - The script prints computed objects and never states conclusions. Before each step it prints a line that starts with
   `WORKING_ON:` and names the step. A name may name an object, never its value or a comparison outcome. Whether an
   object is printed does not depend on its value.
-- Where the engine does not obtain an object's conditions exactly and completely, it prints a label saying so, beside
-  what it did print, with what was attempted. A branch that the construction sets aside without determining its
-  conditions is printed as not obtained. An object with any branch printed as not obtained has not had its conditions
-  returned.
+- Where the engine does not obtain an object exactly, it prints a label saying so, beside what it did print, with what
+  was attempted. This covers an item-3 object it does not obtain exactly, and conditions it does not obtain exactly
+  and completely. A branch that the construction sets aside without determining its conditions is printed as not
+  obtained. An object with any branch printed as not obtained has not had its conditions returned.
 - An attempt ends when it returns its conditions, when it finishes with a branch printed as not obtained, when it runs
   out of memory at its cap, or on an error in your code. Nothing stops it for time or for a period without output. If
-  an attempt ends on an error in your code, you may fix the code and run again. The run record reports every attempt.
+  an attempt ends on an error in your code, you may fix the code and run again. An attempt that runs out of memory
+  ends that way for this build only if it ran at the largest `--memory-gib` the guard admits and no other guarded job
+  ran at any time during it; otherwise run it again that way. The run record reports every attempt.
+- In the final transcript, every object in scope ends with its item-3 object or a label and, where item 4 applies,
+  with its conditions returned or a label. Where an attempt ended for an object without either, whatever the reason,
+  the final transcript prints a label for that object beside what the attempt printed, saying how the attempt ended.
+  The run record lists every object in scope and how it ended.
 - The build computes no force law, coefficient, normalization or mass, and identifies no printed object with a pull or
   with the force on a throat. No acceptance criterion references an expected value.
 
@@ -103,7 +114,8 @@ can match it with the reading decision list's objects.
 When the final run has ended, write a short final report, and stop. Give:
 - your construction: which steps run in Singular and which run elsewhere;
 - for each attempt: the run, its start and end, its `--memory-gib`, its outcome, its wall time and its peak memory;
-- every object that carries a not-obtained label, and what was attempted for it;
+- every object in scope and how it ended: its conditions returned, or the label it carries and what was attempted for
+  it;
 - every file you wrote outside `_scratch/`, with its sha256.
 
 This task ends at your report. Commit nothing, and start no other agent or review.

@@ -29,6 +29,8 @@ research/pde_ledger_v3/scripts/out/*.out
 research/pde_ledger_v3/mathematica/out/*.out
 research/pde_ledger_v3/scripts/out/preserved/
 research/pde_ledger_v3/mathematica/out/preserved/
+research/pde_ledger_v3/singular/out/*.out
+research/pde_ledger_v3/singular/out/preserved/
 *.zip
 
 # Obsidian vault volatile state

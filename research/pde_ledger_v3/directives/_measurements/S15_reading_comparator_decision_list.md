@@ -164,3 +164,54 @@ Do[
   dimensionAudit[readingTag<>"/velocity_part_"<>ToString[k],velocityPart];
   emit[readingTag<>"/velocity_part_"<>ToString[k]<>"/dimension_reference_residuals",Flatten[Table[da-db,{da,dim[velocityPart]},{db,dim[qValue]}],1]],{k,2}];
 ```
+
+## Pass 1 verification
+
+The roster below derives the required tag names from the accepted scope before reading the engine inventories. The final check removes one object from both local sets to exercise detection of a shared omission.
+
+```text
+$ python3 - <<'PY'
+"""Mechanical roster from S15 §What the build computes and S15 reading §The objects Q."""
+from itertools import combinations
+import runpy
+from pathlib import Path
+
+groups = ['+'.join(group) for size in (1, 2, 3)
+          for group in combinations(('drain1', 'drain2', 'remainder'), size)]
+required = set()
+for component in ('component_1', 'component_2', 'component_3'):
+    for surface in ('inner', 'outer'):
+        for piece in ('carried', 'viscous', 'transport_centre', 'transport_radius'):
+            root = f'{surface}/{piece}/{component}'
+            required.add(root)
+            required.update(f'{root}/labels_{group}' for group in groups)
+        required.add(f'{surface}/other/{component}')
+        pressure = f'{surface}/pressure/{component}'
+        required.update([pressure, pressure+'/first_order_choice', pressure+'/whole_minus_expansion'])
+        required.update(f'{pressure}/expansion_labels_{group}' for group in groups)
+    region = f'region/{component}/'
+    required.update(region+field for field in ('momentum', 'momentum_rate', 'integrated_force'))
+    required.update(region+field+group for field in ('momentum_labels_', 'rate_labels_') for group in groups)
+    required.update(f'{surface}/sum_{part}/{component}' for surface in ('inner','outer','both_surfaces')
+                    for part in ('rest','transport','crossing'))
+build_index = runpy.run_path('research/pde_ledger_v3/scripts/S15_reading_input_inventory.py')['build_index']
+print('Required names from accepted specifications:', len(required))
+for side in ('sympy','wolfram'):
+    actual = set(build_index(side)['objects'])
+    print(side, 'missing', sorted(required-actual), 'extra', sorted(actual-required))
+    assert required == actual
+    missing_one = actual-{min(actual)}
+    assert required-missing_one == {min(actual)}
+print('Removing the same object from both manifests is detected in each comparison.')
+PY
+Required names from accepted specifications: 336
+sympy missing [] extra []
+wolfram missing [] extra []
+Removing the same object from both manifests is detected in each comparison.
+```
+
+```text
+$ sha256sum research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_review_p1_codex.md research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_review_p1_grok.md
+ffef520e946d80a029474c779d90d5e418e8dccad7a998c64d389370a3ba3952  research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_review_p1_codex.md
+ec37681a15db16cf8ed12693cafec0ba028e35b1e311902e1df86888af5897be  research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_review_p1_grok.md
+```

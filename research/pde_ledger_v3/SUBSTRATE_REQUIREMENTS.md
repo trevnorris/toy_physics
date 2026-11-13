@@ -10,8 +10,9 @@ their constructions and comparator are accepted at `94fddf2f` and `de81b9fc`.
 The S14a part 2 record and register pass (2026-10-21) are accepted at `79511272` (round 2 clear).
 By the user's "Record as requirement" decision, no build ran: the slab's own dynamics must select
 the slow limit and far behaviour (`R-S14a-01`); S14/S15/S20 remain CONDITIONAL on that requirement.
-Twenty-five entries, all OPEN. S16's record and register pass are written for source-first review;
-its constructions and comparator are accepted at `1d990ee6` and `f08db34a`.
+Twenty-five entries, all OPEN. S16’s record and register pass were accepted at `4f907e9d`.
+S16’s constructions and comparator are accepted at `1d990ee6` and `f08db34a`.
+The S15 pass adds the conditional gravity observable to `R-S21-01`.
 Pass 2 was populated 2026-10-05 from the kept results and their stated
 conditions; it does not close the substrate or upgrade S11c's unresolved work. Later sectors remain to
 be read as they close. The two 2026-08-07 prior-art entries retain their provenance; the second route is
@@ -114,7 +115,7 @@ A postulate with a named retirement condition generates a requirement. `B_comp` 
 | **S8** *(register inference for original entry)* | `R-S8-06` | material displacement and original quadratic slab inertia; O2 adds the material identification only | S11, S11b-B, O2 and S9b identification |
 | **S12** *(register inference; no live owner named)* | `R-S12-01` | a reservoir and power budget if a non-passive interface response is adopted | S11b-B / unified S11b, O2 carried condition |
 | **S12** | `R-S12-02` | native drain/return, printed regional/face and projected/shell compatibility on the real-fraction branch (A13 OPEN), and separate boundary data | S11b-A/B, S11c uniform, O2, S12, S14a part 1; S16 supplied projection/Keep S12 provenance only |
-| **S21** | `R-S21-01` | conditional deflection and radar-slope profile requirements, with Part C rewrites and implied exchange; comparison of force sectors' flow requirements | S9b A–C; flow-only oracle comparison (evidence only); S12, S14a part 1 and S16 framing decision only |
+| **S21** | `R-S21-01` | conditional deflection and radar-slope profile requirements, with Part C rewrites and implied exchange; comparison of force sectors' flow requirements | S9b A–C; flow-only oracle comparison (evidence only); S12, S14a part 1 and S16 framing decision only; S15 conditional signed shell-crossing test |
 | **S22**, with Q2 and S12 | `R-S22-01` | how the energy a throat releases splits among light, the extra longitudinal wave and the bulk | S11 departure; photon survey E32–E34, E38 |
 | **no owner named** | `R-O2-01` | the physical net-power supplier and its stated budget, if a conditional closure requires net supply | O2 |
 | **jointly S12** (source/flux forms), **S8/S22** (material law), **no owner named** (face/interior laws) | `R-S14a-01` | the slow limit and far behaviour selected by the slab's own dynamics | S14a part 2; requirement for S14/S15/S20; user V2 decision, `12aa65d5` |
@@ -719,6 +720,7 @@ other three.
   S12 framing decision only (`steps/S12_order_source.md`, §§6–7; user 2026-10-19, retrieved M01);
   S14a part 1 framing decision only (`steps/S14a_1_projection.md`, §§1/7–8; user 2026-10-19,
   carried in its decision list 2026-10-21, retrieved M01)
+  · S15 conditional signed shell crossing (`steps/S15_two_drain_region.md`, §§2–5)
   · **target** S21 (integration/knit; S9b record §7, O2 record §7 and the record directive's
   2026-10-08/09 user decisions) · **status** OPEN
 - **requirement** — On S9b's isolated spherical, steady far-zone, leading-eikonal, LAB_HELD
@@ -762,6 +764,15 @@ other three.
 - **on failure** — The conditional reference-matching statement for the affected observable
   cannot be realized on that domain. The computed conditional functionals and the reported
   cross-engine coverage do not become a GR-matching result.
+- **S15 gravity input to the comparison.** If inverse-square signed momentum crossing into the
+  shell around drain 2 is sought, each named component must satisfy `𝒟Q + 2Q = 0` along the
+  separation interval, including the field-response departure. Domain `d > R > r_in > 0`,
+  moving spherical boundaries, adopted projected P5/P6 and the sufficient derivative conditions
+  of the [record](steps/S15_two_drain_region.md) apply. Both engines retain live general-field
+  integrals for all three net components on the power-law family. Physical field responses,
+  nonzero amplitude and attractive direction are open. The eventual Newtonian observable is the
+  companion-induced free acceleration. The transfer from shell to core and its inertia remain
+  open. This filing supplies the gravity-side conditional to S21. It selects no shared profile.
 - **Flow comparison decision, user 2026-10-19** — Each force states the flow it needs; S21
   compares those requirements, and a mismatch reopens S9b. S12 states the source compatibility
   requirements and leaves forms open; it fits no flow and adds no optical calculation or
@@ -1900,15 +1911,14 @@ generator, measurements and register pass were subsequently committed and accept
 (round 2 clear; `directives/_measurements/S14a_2_record_r2_review_disposition.md`, retrieved in S16 M15).
 No physics disagreement is closed by this pass.
 
-### S16 pass — live moving-region balances and separate response requirements · 2026-10-24; written for source-first review
+### S16 pass — live moving-region balances and separate response requirements · 2026-10-24; accepted at `4f907e9d`
 
 Source: `steps/S16_moving_region.md`, §§1–8. The governing list is revision 4 at `0464b80a`;
 the constructions are accepted at `1d990ee6`, the comparator at `f08db34a` with its citation
 containment claim. Commands and literal stdout: `steps/_measurements/S16_record_measurements.md`,
 generated by `scripts/S16_record_measurements.py` (M01–M19). Round 0 is preserved at `4ae7e6cf`
 and the reviewed Y1–Y4 repair at `fa1fa413` (not accepted). The W1 user decision is recorded
-at `4e5a94bc`; this W1 repair is uncommitted under the contract's "No commit and no push"
-instruction (M17/M19).
+at `4e5a94bc`; the W1 repair and S16 record/pass were accepted at `4f907e9d` (M17/M19).
 
 **Census:** 19 entries at `4d4d22cb` → 25, all OPEN. **Six new entries by target:** three with
 no physical owner named (`R-S16-01/-02/-03`; compactness is also owed to S22's debt table),
@@ -2025,6 +2035,21 @@ Record §7 quotes those distinct source assignments without inferring a new mass
 No source is repaired by this pass. The record-list item-7/item-9 disagreement with the earlier
 rest-on applications is reported above and settled for these four entries by the user's dated
 decision (M19). Original filers and owners remain distinct from that admission ground.
+
+### S15 pass — conditional flow around two moving drains
+
+The first route adds the gravity-side test to the existing S21 comparison in `R-S21-01` on the
+user’s “Keep it general” decision. The three net family crossings retain unspecified fields.
+The new provenance covers the signed shell observable, its domain and the required total
+departure if that observable is to scale as the inverse square. The body-force identification,
+free acceleration and all-separation profile classification remain open.
+
+The second route checked G7, G9 and G13. Their body-force and damping results have different
+observables or assumptions. The existing material and supplier budgets and S19 retain the
+relevant open questions. The S14a/S16 requirements and S22 source and normalization debts keep
+their recorded owners. Census 25 → 25, all OPEN. One existing entry gains a source, `R-S21-01`
+(target S21). No new entry by any target. [Record, prior art and handoffs](steps/S15_two_drain_region.md)
+· [Native evidence](steps/_measurements/S15_record_measurements.md)
 
 ### Method for population passes
 

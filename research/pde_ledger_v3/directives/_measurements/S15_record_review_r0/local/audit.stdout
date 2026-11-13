@@ -1,0 +1,10 @@
+M4 144 eligible native objects {'condition': 5586, 'Q_under_condition': 5586, 'unresolved_parameter_branches': 42, 'status': 144}
+M4 Wolfram full sha256 7d8044652316b879e7d0c61495bcf6fd241ed243009b251687cf5353b2b710fb
+both_surfaces/sum_crossing/component_1 drain1 py_reading:177374202 0
+both_surfaces/sum_crossing/component_1 drain2 py_reading:177466790 2750-byte expression
+both_surfaces/sum_crossing/component_2 drain1 py_reading:184458547 0
+both_surfaces/sum_crossing/component_2 drain2 py_reading:184551137 2750-byte expression
+both_surfaces/sum_crossing/component_3 drain1 py_reading:191518452 0
+both_surfaces/sum_crossing/component_3 drain2 py_reading:191610668 2714-byte expression
+M3 336 objects 4176 role/field/operand rows {'precision_checks': 52, 'branch_checks': 7560} {'literal-zero-surface-drain1': 285, 'literal-zero-surface-drain2': 225}
+register {'OPEN': 25} -> {'OPEN': 25}

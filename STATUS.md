@@ -1,13 +1,12 @@
-# Project status — S15 comparator accepted with item 4 deferred
+# Project status — S15 conditional shell-crossing record
 
 ## Current S15 comparator status
 
-The [scoped comparator](research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_run_record.md) is accepted for items 1–3, 5 and 6. Its [final review](research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_build_review_r2/README.md) verifies the per-object exponent coverage and three later Wolfram time-argument declarations. Item 4 stays deferred. Next is the S15 record decision list.
+The [scoped comparator](research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_run_record.md) is accepted for items 1–3, 5 and 6. Its [final review](research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_build_review_r2/README.md) verifies the per-object exponent coverage and three later Wolfram time-argument declarations. Item 4 stays deferred. The [S15 record](research/pde_ledger_v3/steps/S15_two_drain_region.md) and its register pass file the conditional shell-crossing test for S21. The free-throat acceleration, physical field response and complete profile classification remain open.
 
 ## 2026-11-09: S15, and where the work stands
 
 **S16 is accepted.** Its record and register pass were accepted at `4f907e9d` (round 2 clear, fresh Claude + Grok).
-The superseded clause below still calls the S16 record "written for review"; that line is out of date.
 
 **What is committed for S15.** S15's results stay **conditional**, on `R-S14a-01`, as the clause below says.
 - The S15 decision list was cleared at `91248b67`. The S15 build was accepted at `3192123b` (round 1 clear). The
@@ -74,7 +73,7 @@ The superseded clause below still calls the S16 record "written for review"; tha
 
 The clause below is SUPERSEDED — kept for the artifact map.
 
-## Light sector closed for now; S12 and S14a accepted; S16 record written for review [SUPERSEDED by the clause above]
+## Light sector closed for now; S12 and S14a accepted; S16 record accepted at `4f907e9d`
 
 On 2026-10-19 the user closed the light sector **for now**. Its accepted results are conditional. What stays
 open is carried as requirements in the [substrate register](research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md),
@@ -107,7 +106,7 @@ citation notes are repaired in its record; other part-1 claims retain their acce
 
 S16's constructions (`1d990ee6`) and comparator (`f08db34a`, scoped citation review with the
 containment claim) are accepted. Its [moving-region record](research/pde_ledger_v3/steps/S16_moving_region.md)
-and register pass are written for source-first review, with
+and register pass were accepted at `4f907e9d`, with
 [retrieval measurements](research/pde_ledger_v3/steps/_measurements/S16_record_measurements.md).
 The supplied balances give live regional count/momentum rates, count-centre relations, received
 momentum and count moments through second order. They supply no mass, inertial/passive factor,
@@ -126,8 +125,7 @@ S16 also adds scoped provenance to `R-S1-01` (coordinate dimension, S6), `R-S1-0
 support identification, S1), `R-S12-02` and `R-S21-01`. The Y1–Y4 repair is 25 → 25, with
 no new entry; no existing requirement, target or status changes. The reviewed version is preserved
 at `fa1fa413` (round 1, not accepted). This W1 repair is also 25 → 25: no new entry or S16
-consumer source, with the four added admission-decision citations. It remains for review,
-with no acceptance claimed.
+consumer source, with the four added admission-decision citations. The W1 repair was accepted with the record at `4f907e9d`.
 
 The plan's **"S16 must be run BEFORE S19 is trusted"** gate and **"its result feeds back into
 the charter"** handoff remain OPEN beside this regional delivery. The cited plan rows name

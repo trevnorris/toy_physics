@@ -1,12 +1,11 @@
 # S16 — a live region around one moving throat
 
-**Status, 2026-10-24:** record and register pass written for source-first review. The governing
+**Status, 2026-10-24:** record and register pass accepted at `4f907e9d`. The governing
 S16 decision list is revision 4, cleared at `0464b80a`; the constructions are accepted at
 `1d990ee6`, and the comparator at `f08db34a`, with its scoped citation-containment claim.
-Acceptance of those instruments is not acceptance of this record. No engine or comparator was
+No engine or comparator was
 rerun. Round 0 is preserved at `4ae7e6cf` and the reviewed Y1–Y4 repair at `fa1fa413`
-(not accepted). The user's W1 decision is recorded at `4e5a94bc`; this W1 repair makes no
-new commit. The edit account remains against `4d4d22cb`. (Retrieve M01–M03/M16–M17/M19.)
+(not accepted). The user's W1 decision is recorded at `4e5a94bc`; the W1 repair is included in the accepted S16 commit. The edit account remains against `4d4d22cb`. (Retrieve M01–M03/M16–M17/M19.)
 
 **Deliverable:** record what the supplied balances give for a moving region outside one throat's
 excluded core, preserve the cross-engine findings, file the specified future requirements and
@@ -649,7 +648,7 @@ new calculation:
   sector with identified prior art"**. The broader register route is used. The current
   contract requests **"a committed generator script"** and also says **"No commit
   and no push"**. The reviewed generator and measurements are preserved at `4ae7e6cf`
-  and `fa1fa413`; this W1 repair is supplied uncommitted under the no-commit instruction.
+  and `fa1fa413`; the W1 repair was subsequently accepted at `4f907e9d`.
   The conflicting wording is reported, not silently satisfied. (Retrieve M01/M14–M17/M19.)
 
 The two unresolved domain predicates, native inventory comparison and all unpaired/unjoined
@@ -687,6 +686,5 @@ untouched; its filename is visible in M16's whole-tree edit inventory and is exc
 this author's account above. No orchestrator memory or other checkout was read. Generator
 working files are under `_scratch/s16/rec/work/`; no other job's scratch files are changed.
 The final generator regenerates the measurements after the deliverables and ancillary
-edits are written. No review is launched, no commit is made and nothing is pushed. The
-record's source-first review remains with the orchestrator at this authoring STOP.
+edits are written. The subsequent source-first review accepted the record and register pass at `4f907e9d`.
 (Retrieve M01/M16.)

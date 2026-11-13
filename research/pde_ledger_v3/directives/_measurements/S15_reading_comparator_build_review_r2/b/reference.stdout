@@ -1,0 +1,12 @@
+packet SHA256SUMS entries verified 17
+native hashes, bytes, object and inventory counts [('py', 192065031, '10160f89704d910139b0401fbbcc1419078e45e915a2f1e663f24807647182d6'), ('wl', 333550018, '75622128d04da2d934c2a52468505b4438fff9f17a902d7a6cd35993d769b6c4')] 336 336
+native input file hash matches for originals
+py_original 24641539 4839b124811e88b6c0cd99dda9a9518776418df93e16ac8073063e142f34fc8c
+wl_original 9797390 811bea8c58f18b52566f3de9661e501994aa5d8cd9fcde5e3610ae2aefc215a6
+object groups (native planes, feasible selections, with samples, without samples) : object counts [((2, 3, 3, 0), 6), ((3, 4, 4, 0), 6), ((4, 5, 5, 0), 12), ((6, 16, 7, 9), 6), ((8, 25, 9, 16), 6), ((8, 81, 15, 66), 6), ((14, 67, 15, 52), 6)]
+all objects with planes archive observations [('additional:unresolved', 1080), ('additional:within_estimate', 1440), ('base:separated', 52), ('base:within_estimate', 8768), ('high_precision:within_precision_estimate', 52), ('log:within_estimate', 1080)]
+without planes alias count 282 with planes alias count 0
+effective successful observations by status [('within_estimate', 11288), ('within_precision_estimate', 52)]
+missing selections by exact codimension [('2', 570), ('3', 192), ('4', 96)] totals {'objects_with_planes': 48, 'objects_with_gaps': 24, 'sampled': 378, 'untested': 858}
+native velocity argument evidence [('X_1_1_velocity_change', 'centreVelocityChange[1]', 1, [0, 0, 1]), ('X_1_2_velocity_change', 'centreVelocityChange[2]', 1, [0, 0, 1]), ('X_1_3_velocity_change', 'centreVelocityChange[3]', 1, [0, 0, 1])]
+final item 6 status counts {'matches_declared_slot': 393, 'sympy_only_bound_or_trig_check': 10, 'matches_source_declared_slot': 3}

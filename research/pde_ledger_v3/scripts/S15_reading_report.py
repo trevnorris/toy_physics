@@ -181,8 +181,6 @@ def main():
         if 'normalized_py' in row or row['field'] in ('family/choice','profile_family/chart_note'):
             report('family_context',field=row['field'],status=row['status'])
     report('kernel_checks',counts=Counter(q['status'] for q in aux['kernels']))
-    report('observed_argument_checks',counts=Counter(q['status'] for q in aux['argument_slots']),
-           python_empty=[q['argument'] for q in aux['argument_slots'] if not q['observed']])
     ds=aux['wolfram_divisor_loci']
     report('wolfram_native_divisor_audit',records=len(ds),supports=sum(v['branch_supports'] for v in ds),
            nonfalse=sum(v['other_returns'] for v in ds))
@@ -279,10 +277,6 @@ def main():
         run = guarded(opt.review_controls)
         report('native_mutations',verbatim=(opt.review_controls/'stdout').read_text().splitlines())
     outpath=publish/'scripts/out/S15_reading_comparator.out'
-    tmp=outpath.with_suffix('.out.tmp')
-    with tmp.open('w') as f:
-        for line in lines:f.write(line+'\n')
-    tmp.replace(outpath)
     # Operand archive includes the comparison referring to it and each source occurrence. Local regenerable output.
     archive=outpath.with_name('S15_reading_comparator_details.out')
     tmp=archive.with_suffix('.out.tmp')
@@ -318,10 +312,8 @@ def main():
                   guard_source_sha256=digest(REPO/'scripts/s11c_guarded_run.py'),runs=runs,
                   engine_sources={},reproduction_commands=[],controls_verbatim=controls,
                   versions=dict(python=sys.version,sympy=version('sympy'),scipy=version('scipy'),numpy=version('numpy')),
-                  transcript=dict(path=relative(outpath),bytes=outpath.stat().st_size,sha256=digest(outpath)),
                   detail_archive=dict(path=relative(archive),bytes=archive.stat().st_size,sha256=digest(archive),
                                       format='POSIX tar of JSON and gzip JSON records'),
-                  transcript_summary_lines_verbatim=[line for line in lines if json.loads(line)['record']!='exception'],
                   representative_exceptions_verbatim=[json.dumps({'record':'exception',**ex},ensure_ascii=False,
                       sort_keys=True,separators=(',',':')) for issues in sorted(examples.items()) for ex in issues[1]])
     import subprocess
@@ -361,6 +353,21 @@ def main():
         manifest['reused_exact']=config['reused_exact']
     manifest['runs'][root.name]['end_receipt_utc']=read(root.parent/(root.name+'.DONE.json'))['ended']
     manifest['versions']['mpmath']=version('mpmath')
+    from S15_reading_coverage import publish as publish_coverage
+    coverage_path=publish/'directives/_measurements/S15_reading_comparator_coverage.json'
+    coverage_counts, slot_counts=publish_coverage(manifest, archive, REPO, coverage_path)
+    manifest['final_coverage']=dict(path=relative(coverage_path),sha256=digest(coverage_path),
+                                    exponent_coverage=coverage_counts,argument_counts=slot_counts,
+                                    source_sha256=digest(source_path('S15_reading_coverage.py')))
+    report('item3_exponent_coverage',**coverage_counts)
+    report('observed_argument_checks',counts=slot_counts,
+           python_empty=[q['argument'] for q in aux['argument_slots'] if not q['observed']])
+    tmp=outpath.with_suffix('.out.tmp')
+    with tmp.open('w') as f:
+        for line in lines:f.write(line+'\n')
+    tmp.replace(outpath)
+    manifest['transcript']=dict(path=relative(outpath),bytes=outpath.stat().st_size,sha256=digest(outpath))
+    manifest['transcript_summary_lines_verbatim']=[line for line in lines if json.loads(line)['record']!='exception']
     path=publish/'directives/_measurements/S15_reading_comparator_run_manifest.json'
     path.write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+'\n')
     for kind in ('roster','reading_to_original','kernel_checks','observed_argument_checks'):

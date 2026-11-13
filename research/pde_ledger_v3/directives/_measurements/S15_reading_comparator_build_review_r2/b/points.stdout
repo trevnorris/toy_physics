@@ -1,0 +1,3 @@
+one archived generic case only ['mixed_quadratic', 'generic', 0, 'generic'] ['9/8', '9/4', '27/8', '9/2'] -> ['-3', '9/4', '-2', '9/2'] added simultaneous plane indices [(0, 7, 12)] sampled/untested (15, 52) -> (16, 51)
+one-sided Wolfram derivative centre [1,2] -> [2,2], all right-hand responses retained: source centre or velocity slot differs from declared binding
+native condition form a_1 + b_1 == -1 -> a_1**2 + b_1 == -1: rejected as non-affine

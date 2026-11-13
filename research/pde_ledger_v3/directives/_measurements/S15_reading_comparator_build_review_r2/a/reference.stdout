@@ -1,0 +1,8 @@
+native py 192065031 10160f89704d910139b0401fbbcc1419078e45e915a2f1e663f24807647182d6 inventories 336 emitted objects 336
+native wl 333550018 75622128d04da2d934c2a52468505b4438fff9f17a902d7a6cd35993d769b6c4 inventories 336 emitted objects 336
+aliases (has planes, resolved via archive alias): {(False, False): 6, (False, True): 282, (True, False): 48}
+scoped sample rows by archive phase {'additional': 2520, 'base': 8820, 'log': 1080, 'precision': 52} by form {'mixed_cubic': 6262, 'mixed_quadratic': 6210}
+(planes, sampled selections, untested selections) -> objects: {(2, 3, 0): 6, (3, 4, 0): 6, (4, 5, 0): 12, (6, 7, 9): 6, (8, 9, 16): 6, (8, 15, 66): 6, (14, 15, 52): 6}
+source-slot references: [('X_1_1_velocity_change', 'centreVelocityChange[1]', 1, [0, 0, 1]), ('X_1_2_velocity_change', 'centreVelocityChange[2]', 1, [0, 0, 1]), ('X_1_3_velocity_change', 'centreVelocityChange[3]', 1, [0, 0, 1])]
+native arrangement totals 48 24 378 858
+independent native reference written 28e2e91b3183fe1f7cc460b386c6d466fc64c291d14441f4ebfabbd064d620af

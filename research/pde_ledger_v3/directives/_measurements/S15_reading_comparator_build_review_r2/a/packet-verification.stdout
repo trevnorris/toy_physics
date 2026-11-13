@@ -1,0 +1,17 @@
+research/pde_ledger_v3/directives/S15_reading_comparator_decision_list.md: OK
+research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_coverage.json: OK
+research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_run_manifest.json: OK
+research/pde_ledger_v3/mathematica/S15_separation_departure.wl: OK
+research/pde_ledger_v3/scripts/S15_cross_engine_comparator.py: OK
+research/pde_ledger_v3/scripts/S15_reading_comparator.py: OK
+research/pde_ledger_v3/scripts/S15_reading_context_checks.py: OK
+research/pde_ledger_v3/scripts/S15_reading_coverage.py: OK
+research/pde_ledger_v3/scripts/S15_reading_input_inventory.py: OK
+research/pde_ledger_v3/scripts/S15_reading_log_branches.py: OK
+research/pde_ledger_v3/scripts/S15_reading_math.py: OK
+research/pde_ledger_v3/scripts/S15_reading_refinement.py: OK
+research/pde_ledger_v3/scripts/S15_reading_report.py: OK
+research/pde_ledger_v3/scripts/S15_reading_review_controls.py: OK
+research/pde_ledger_v3/scripts/S15_separation_departure.py: OK
+research/pde_ledger_v3/scripts/out/S15_reading_comparator.out: OK
+research/pde_ledger_v3/scripts/out/S15_reading_comparator_details.out: OK

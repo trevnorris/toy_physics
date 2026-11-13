@@ -39,7 +39,7 @@
     "S15_reading_log_branches.py": "ac20d68ef4708aa566eb3ddab25e1144a7309c0696cf516dd408069c4b931326",
     "S15_reading_context_checks.py": "3f66e976514c36107e2dc536152d72a44f2f2e1c7d88b336603ea1d721ccf7a7",
     "test_S15_reading_comparator.py": "a522e7c08b7ac83b9275abe8f546c25576ad57a6521894490ed30d6c2e8c52d3",
-    "S15_reading_report.py": "58fb07e44619219550f17ef55dc66687a6657fd1bcda56a5b8fefdc92055d449"
+    "S15_reading_report.py": "6d63d82b5116675ce025092d8d121ea55e879d454f3e08dc1b9c606e7897b5b1"
   },
   "guard_source_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
   "runs": {
@@ -448,16 +448,70 @@
     "numpy": "1.26.4",
     "mpmath": "1.3.0"
   },
-  "transcript": {
-    "path": "_scratch/s15/reading_comparator_build_review/repair_work/results/publication/scripts/out/S15_reading_comparator.out",
-    "bytes": 19052,
-    "sha256": "834aafbdc7493fa6a14cfc6d8489ea6e997b46f7359509c05dffd5044c28f4f6"
-  },
   "detail_archive": {
-    "path": "_scratch/s15/reading_comparator_build_review/repair_work/results/publication/scripts/out/S15_reading_comparator_details.out",
+    "path": "_scratch/s15/reading_comparator_build_review/r2/publication/scripts/out/S15_reading_comparator_details.out",
     "bytes": 15278080,
     "sha256": "206109b070a649e8bbcd9c6a77766acd1e8a98290a17c7ec9408af9609741ae4",
     "format": "POSIX tar of JSON and gzip JSON records"
+  },
+  "representative_exceptions_verbatim": [
+    "{\"field\":\"item3/exponent_branch_inventory\",\"object\":\"region/component_1/momentum_labels_drain1+drain2\",\"reason\":\"Unsupported: non-equality exponent branch Eq(-4, b_1) & Eq(-1, a_2)\",\"record\":\"exception\",\"role\":\"cross\",\"status\":\"unresolved\"}",
+    "{\"field\":\"item3/exponent_branch_inventory\",\"object\":\"region/component_1/rate_labels_drain1+drain2\",\"reason\":\"Unsupported: non-equality exponent branch Eq(-4, b_1) & Eq(-1, a_2)\",\"record\":\"exception\",\"role\":\"cross\",\"status\":\"unresolved\"}",
+    "{\"field\":\"item3/object\",\"first_case\":{\"case\":[\"mixed_cubic\",\"generic\",1,\"locus_6\"],\"exponents\":[\"-2\",\"13/4\",\"11/8\",\"5/2\"],\"refinement_delta\":0.0,\"residual\":-3.091814448907826e-07,\"status\":\"separated\",\"tolerance\":2.277143468649474e-07,\"values\":[[-227.7143468649474,-227.71434655576596],[-227.7143468649474,-227.71434655576596],[-227.7143468649474,-227.71434655576596]]},\"object\":\"inner/carried/component_2/labels_drain1+drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"separated\":40,\"within_estimate\":410},\"status\":\"sample_difference\"}",
+    "{\"field\":\"item3/object\",\"first_case\":{\"case\":[\"mixed_cubic\",\"generic\",1,\"locus_4\"],\"exponents\":[\"-1\",\"13/4\",\"11/8\",\"5/2\"],\"refinement_delta\":0.0,\"residual\":2.0355356511458922e-08,\"status\":\"separated\",\"tolerance\":1.415730162212571e-08,\"values\":[[14.15730162212571,14.157301601770353],[14.15730162212571,14.157301601770353],[14.15730162212571,14.157301601770353]]},\"object\":\"inner/transport_radius/component_2/labels_drain1+drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"separated\":12,\"within_estimate\":258},\"status\":\"sample_difference\"}"
+  ],
+  "accepted_artifacts": {
+    "decision": {
+      "git_object": "2603dc7c:research/pde_ledger_v3/directives/S15_reading_comparator_decision_list.md",
+      "sha256": "d0219b22a627d232ef127f7a416cb95be9d5bc83de44163b57886c0560c1c158"
+    },
+    "original manifest": {
+      "git_object": "3192123b:research/pde_ledger_v3/directives/_measurements/S15_build_run_record.md",
+      "sha256": "712fbb740ccdbcde49af5e7178ba273a699299b8d81a0044eba4641b348af068"
+    },
+    "SymPy manifest": {
+      "git_object": "cc62dc9f:research/pde_ledger_v3/directives/_measurements/S15_separation_departure_sympy_run_manifest.json",
+      "sha256": "4db3711ba500e588f5f3a63e671599f9bfb9b8be69dc0823ac29531a2bf2481a"
+    },
+    "Wolfram manifest": {
+      "git_object": "cc62dc9f:research/pde_ledger_v3/directives/_measurements/S15_separation_departure_wolfram_run_manifest.json",
+      "sha256": "112ee4351fa7bd55e84cd2603d5c74975829964f36a49688a149c56c369236d7"
+    }
+  },
+  "guarded_stage_source_notes": {
+    "context01": "Signed endpoints, full azimuth bounds, argument slots and native divisor flags.",
+    "precision01": "Closed-form precision refinements and compound exponent branches on the repaired profiles.",
+    "jointlogs01": "Remaining evaluable log-branch cases.",
+    "native_controls": "One-sided centre, domain, endpoint, azimuth and three native total response edits.",
+    "controls01": "Unit controls including 78 exact stationary velocity checks in two backends."
+  },
+  "report_command": "/usr/bin/python3 research/pde_ledger_v3/scripts/S15_reading_report.py /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/results/objects --guard-parent /var/projects/toy_physics/_scratch/s11c/s15-r1-calculation --context-run context01 --review-controls /var/projects/toy_physics/_scratch/s11c/s15-r1-controls/native-grid --unit-controls /var/projects/toy_physics/_scratch/s11c/s15-r1-controls/jets --publication /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/r2/publication",
+  "reused_exact": {
+    "archive_sha256": "d8ad01707a8e8b7e4ba70607ac85da16d100e45b6c5fd7baedbc16c6880ee40f",
+    "manifest_sha256": "2ebd3e71550b9e267427102dff68f44b11d0e340c05d7f026de1ccf15e6e3c72",
+    "build_id": "8b7b89aa50abf59f2573e2499c7cea5d731b4a396cfcb63d97b0f9a4b178c173",
+    "eligible_native_pairs": 2580
+  },
+  "final_coverage": {
+    "path": "_scratch/s15/reading_comparator_build_review/r2/publication/directives/_measurements/S15_reading_comparator_coverage.json",
+    "sha256": "141d8a7fc93cfc28d2b6fab6a99e3cc61fd99965a3e9c016355363d7838c76e6",
+    "exponent_coverage": {
+      "objects_with_planes": 48,
+      "objects_with_gaps": 24,
+      "sampled": 378,
+      "untested": 858
+    },
+    "argument_counts": {
+      "matches_declared_slot": 393,
+      "sympy_only_bound_or_trig_check": 10,
+      "matches_source_declared_slot": 3
+    },
+    "source_sha256": "bed6dccd9943be67bcc14b3953b5e798829f61c8422be739fa67bd4604b920ff"
+  },
+  "transcript": {
+    "path": "_scratch/s15/reading_comparator_build_review/r2/publication/scripts/out/S15_reading_comparator.out",
+    "bytes": 19175,
+    "sha256": "473997968d83faee9843fff93a07bf45c6ea9c77fbf1251567d41f5c19f33b54"
   },
   "transcript_summary_lines_verbatim": [
     "{\"counts\":{\"py_original\":2231,\"py_reading\":20811,\"wl_original\":1370,\"wl_reading\":26767},\"gaps\":{\"py\":{\"duplicate_manifest_keys\":[],\"manifest_extra\":[],\"manifest_missing\":[],\"stream_extra\":[],\"stream_missing\":[]},\"wl\":{\"duplicate_manifest_keys\":[],\"manifest_extra\":[],\"manifest_missing\":[],\"stream_extra\":[],\"stream_missing\":[]}},\"objects\":336,\"record\":\"roster\"}",
@@ -558,7 +612,6 @@
     "{\"field\":\"profile_family/substitution\",\"record\":\"family_context\",\"status\":\"same_values\"}",
     "{\"field\":\"family/response_dimension_signatures\",\"record\":\"family_context\",\"status\":\"same_values\"}",
     "{\"counts\":{\"exact_identity\":47},\"record\":\"kernel_checks\"}",
-    "{\"counts\":{\"matches_declared_slot\":393,\"no_wl_declared_slot\":3,\"sympy_only_bound_or_trig_check\":10},\"python_empty\":[[\"integral_bound\",\"theta\",\"0\"],[\"integral_bound\",\"phi\",\"0\"]],\"record\":\"observed_argument_checks\"}",
     "{\"nonfalse\":0,\"record\":\"wolfram_native_divisor_audit\",\"records\":288,\"supports\":1044}",
     "{\"counts\":{\"E_geo\":\"exact_identity\",\"E_resp\":\"sample_agreement\",\"Q\":\"exact_identity\",\"velocity_part_1/residual\":\"exact_identity\",\"velocity_part_2/residual\":\"exact_identity\"},\"object\":\"both_surfaces/sum_crossing/component_1\",\"record\":\"signed_crossing\"}",
     "{\"counts\":{\"E_geo\":\"exact_identity\",\"E_resp\":\"sample_agreement\",\"Q\":\"exact_identity\",\"velocity_part_1/residual\":\"exact_identity\",\"velocity_part_2/residual\":\"exact_identity\"},\"object\":\"both_surfaces/sum_crossing/component_2\",\"record\":\"signed_crossing\"}",
@@ -582,44 +635,8 @@
     "{\"counts\":{\"exact_identity\":96,\"sample_agreement\":48},\"form\":\"closed\",\"record\":\"final_family_result\"}",
     "{\"counts\":{\"exact_identity\":36,\"sample_agreement\":156},\"form\":\"integral\",\"record\":\"final_family_result\"}",
     "{\"exact\":4704,\"fields\":14,\"record\":\"all_dimension_records\",\"total\":4704}",
-    "{\"record\":\"native_mutations\",\"verbatim\":[\"family/centre_substitution X_1_1(t): -> X_2_1(t): value_difference\",\"family/centre_substitution  + X_1_1(t), ->  + X_2_1(t), value_difference\",\"profile_family/chart_condition Reals -> Integers value_difference\",\"profile_family/chart_condition  | aa[2] ->  value_difference\",\"positive endpoint 0 original exact_identity 0\",\"positive endpoint 0 modified remaining_symbolic_difference -2*(kernel_D - kernel_r)\",\"angular moment (3, 0, 0) original exact_identity (kernel_az, 0, 2*pi)\",\"angular moment (3, 0, 0) modified azimuth_domain_difference (kernel_az, 0, pi)\",\"net response None None 0 {'within_estimate': 30} [-471.62271433819564, -471.6227143381955] -1.1368683772161603e-13 2.7192633372925455e-06\",\"detected form/stratum pairs []\",\"net response change[oo[1, 2]] change[oo[1, 1]] 1 {'separated': 30} [-471.62271433819564, -471.51825510489994] -0.1044592332956995 2.7192633372925455e-06\",\"detected form/stratum pairs [('mixed_cubic', 'X1_velocity_zero'), ('mixed_cubic', 'X2_and_radii_velocity_zero'), ('mixed_cubic', 'X2_velocity_zero'), ('mixed_cubic', 'generic'), ('mixed_cubic', 'radii_velocity_zero'), ('mixed_quadratic', 'X1_velocity_zero'), ('mixed_quadratic', 'X2_and_radii_velocity_zero'), ('mixed_quadratic', 'X2_velocity_zero'), ('mixed_quadratic', 'generic'), ('mixed_quadratic', 'radii_velocity_zero')]\",\"net response change[oo[1, 2]] change[oo[1, 3]] 1 {'separated': 30} [-471.62271433819564, -471.50711003455945] -0.11560430363618934 2.7192633372925455e-06\",\"detected form/stratum pairs [('mixed_cubic', 'X1_velocity_zero'), ('mixed_cubic', 'X2_and_radii_velocity_zero'), ('mixed_cubic', 'X2_velocity_zero'), ('mixed_cubic', 'generic'), ('mixed_cubic', 'radii_velocity_zero'), ('mixed_quadratic', 'X1_velocity_zero'), ('mixed_quadratic', 'X2_and_radii_velocity_zero'), ('mixed_quadratic', 'X2_velocity_zero'), ('mixed_quadratic', 'generic'), ('mixed_quadratic', 'radii_velocity_zero')]\",\"net response change[oo[1, 1]] change[oo[1, 2]] 2 {'separated': 30} [-471.62271433819564, -473.701280510447] 2.078566172251385 2.7213419034647972e-06\",\"detected form/stratum pairs [('mixed_cubic', 'X1_velocity_zero'), ('mixed_cubic', 'X2_and_radii_velocity_zero'), ('mixed_cubic', 'X2_velocity_zero'), ('mixed_cubic', 'generic'), ('mixed_cubic', 'radii_velocity_zero'), ('mixed_quadratic', 'X1_velocity_zero'), ('mixed_quadratic', 'X2_and_radii_velocity_zero'), ('mixed_quadratic', 'X2_velocity_zero'), ('mixed_quadratic', 'generic'), ('mixed_quadratic', 'radii_velocity_zero')]\"]}"
-  ],
-  "representative_exceptions_verbatim": [
-    "{\"field\":\"item3/exponent_branch_inventory\",\"object\":\"region/component_1/momentum_labels_drain1+drain2\",\"reason\":\"Unsupported: non-equality exponent branch Eq(-4, b_1) & Eq(-1, a_2)\",\"record\":\"exception\",\"role\":\"cross\",\"status\":\"unresolved\"}",
-    "{\"field\":\"item3/exponent_branch_inventory\",\"object\":\"region/component_1/rate_labels_drain1+drain2\",\"reason\":\"Unsupported: non-equality exponent branch Eq(-4, b_1) & Eq(-1, a_2)\",\"record\":\"exception\",\"role\":\"cross\",\"status\":\"unresolved\"}",
-    "{\"field\":\"item3/object\",\"first_case\":{\"case\":[\"mixed_cubic\",\"generic\",1,\"locus_6\"],\"exponents\":[\"-2\",\"13/4\",\"11/8\",\"5/2\"],\"refinement_delta\":0.0,\"residual\":-3.091814448907826e-07,\"status\":\"separated\",\"tolerance\":2.277143468649474e-07,\"values\":[[-227.7143468649474,-227.71434655576596],[-227.7143468649474,-227.71434655576596],[-227.7143468649474,-227.71434655576596]]},\"object\":\"inner/carried/component_2/labels_drain1+drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"separated\":40,\"within_estimate\":410},\"status\":\"sample_difference\"}",
-    "{\"field\":\"item3/object\",\"first_case\":{\"case\":[\"mixed_cubic\",\"generic\",1,\"locus_4\"],\"exponents\":[\"-1\",\"13/4\",\"11/8\",\"5/2\"],\"refinement_delta\":0.0,\"residual\":2.0355356511458922e-08,\"status\":\"separated\",\"tolerance\":1.415730162212571e-08,\"values\":[[14.15730162212571,14.157301601770353],[14.15730162212571,14.157301601770353],[14.15730162212571,14.157301601770353]]},\"object\":\"inner/transport_radius/component_2/labels_drain1+drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"separated\":12,\"within_estimate\":258},\"status\":\"sample_difference\"}"
-  ],
-  "accepted_artifacts": {
-    "decision": {
-      "git_object": "2603dc7c:research/pde_ledger_v3/directives/S15_reading_comparator_decision_list.md",
-      "sha256": "d0219b22a627d232ef127f7a416cb95be9d5bc83de44163b57886c0560c1c158"
-    },
-    "original manifest": {
-      "git_object": "3192123b:research/pde_ledger_v3/directives/_measurements/S15_build_run_record.md",
-      "sha256": "712fbb740ccdbcde49af5e7178ba273a699299b8d81a0044eba4641b348af068"
-    },
-    "SymPy manifest": {
-      "git_object": "cc62dc9f:research/pde_ledger_v3/directives/_measurements/S15_separation_departure_sympy_run_manifest.json",
-      "sha256": "4db3711ba500e588f5f3a63e671599f9bfb9b8be69dc0823ac29531a2bf2481a"
-    },
-    "Wolfram manifest": {
-      "git_object": "cc62dc9f:research/pde_ledger_v3/directives/_measurements/S15_separation_departure_wolfram_run_manifest.json",
-      "sha256": "112ee4351fa7bd55e84cd2603d5c74975829964f36a49688a149c56c369236d7"
-    }
-  },
-  "guarded_stage_source_notes": {
-    "context01": "Signed endpoints, full azimuth bounds, argument slots and native divisor flags.",
-    "precision01": "Closed-form precision refinements and compound exponent branches on the repaired profiles.",
-    "jointlogs01": "Remaining evaluable log-branch cases.",
-    "native_controls": "One-sided centre, domain, endpoint, azimuth and three native total response edits.",
-    "controls01": "Unit controls including 78 exact stationary velocity checks in two backends."
-  },
-  "report_command": "/usr/bin/python3 /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/S15_reading_report.py /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/results/objects --guard-parent /var/projects/toy_physics/_scratch/s11c/s15-r1-calculation --context-run context01 --publication /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/results/publication --review-controls /var/projects/toy_physics/_scratch/s11c/s15-r1-controls/native-grid --unit-controls /var/projects/toy_physics/_scratch/s11c/s15-r1-controls/jets",
-  "reused_exact": {
-    "archive_sha256": "d8ad01707a8e8b7e4ba70607ac85da16d100e45b6c5fd7baedbc16c6880ee40f",
-    "manifest_sha256": "2ebd3e71550b9e267427102dff68f44b11d0e340c05d7f026de1ccf15e6e3c72",
-    "build_id": "8b7b89aa50abf59f2573e2499c7cea5d731b4a396cfcb63d97b0f9a4b178c173",
-    "eligible_native_pairs": 2580
-  }
+    "{\"record\":\"native_mutations\",\"verbatim\":[\"family/centre_substitution X_1_1(t): -> X_2_1(t): value_difference\",\"family/centre_substitution  + X_1_1(t), ->  + X_2_1(t), value_difference\",\"profile_family/chart_condition Reals -> Integers value_difference\",\"profile_family/chart_condition  | aa[2] ->  value_difference\",\"positive endpoint 0 original exact_identity 0\",\"positive endpoint 0 modified remaining_symbolic_difference -2*(kernel_D - kernel_r)\",\"angular moment (3, 0, 0) original exact_identity (kernel_az, 0, 2*pi)\",\"angular moment (3, 0, 0) modified azimuth_domain_difference (kernel_az, 0, pi)\",\"net response None None 0 {'within_estimate': 30} [-471.62271433819564, -471.6227143381955] -1.1368683772161603e-13 2.7192633372925455e-06\",\"detected form/stratum pairs []\",\"net response change[oo[1, 2]] change[oo[1, 1]] 1 {'separated': 30} [-471.62271433819564, -471.51825510489994] -0.1044592332956995 2.7192633372925455e-06\",\"detected form/stratum pairs [('mixed_cubic', 'X1_velocity_zero'), ('mixed_cubic', 'X2_and_radii_velocity_zero'), ('mixed_cubic', 'X2_velocity_zero'), ('mixed_cubic', 'generic'), ('mixed_cubic', 'radii_velocity_zero'), ('mixed_quadratic', 'X1_velocity_zero'), ('mixed_quadratic', 'X2_and_radii_velocity_zero'), ('mixed_quadratic', 'X2_velocity_zero'), ('mixed_quadratic', 'generic'), ('mixed_quadratic', 'radii_velocity_zero')]\",\"net response change[oo[1, 2]] change[oo[1, 3]] 1 {'separated': 30} [-471.62271433819564, -471.50711003455945] -0.11560430363618934 2.7192633372925455e-06\",\"detected form/stratum pairs [('mixed_cubic', 'X1_velocity_zero'), ('mixed_cubic', 'X2_and_radii_velocity_zero'), ('mixed_cubic', 'X2_velocity_zero'), ('mixed_cubic', 'generic'), ('mixed_cubic', 'radii_velocity_zero'), ('mixed_quadratic', 'X1_velocity_zero'), ('mixed_quadratic', 'X2_and_radii_velocity_zero'), ('mixed_quadratic', 'X2_velocity_zero'), ('mixed_quadratic', 'generic'), ('mixed_quadratic', 'radii_velocity_zero')]\",\"net response change[oo[1, 1]] change[oo[1, 2]] 2 {'separated': 30} [-471.62271433819564, -473.701280510447] 2.078566172251385 2.7213419034647972e-06\",\"detected form/stratum pairs [('mixed_cubic', 'X1_velocity_zero'), ('mixed_cubic', 'X2_and_radii_velocity_zero'), ('mixed_cubic', 'X2_velocity_zero'), ('mixed_cubic', 'generic'), ('mixed_cubic', 'radii_velocity_zero'), ('mixed_quadratic', 'X1_velocity_zero'), ('mixed_quadratic', 'X2_and_radii_velocity_zero'), ('mixed_quadratic', 'X2_velocity_zero'), ('mixed_quadratic', 'generic'), ('mixed_quadratic', 'radii_velocity_zero')]\"]}",
+    "{\"objects_with_gaps\":24,\"objects_with_planes\":48,\"record\":\"item3_exponent_coverage\",\"sampled\":378,\"untested\":858}",
+    "{\"counts\":{\"matches_declared_slot\":393,\"matches_source_declared_slot\":3,\"sympy_only_bound_or_trig_check\":10},\"python_empty\":[[\"integral_bound\",\"theta\",\"0\"],[\"integral_bound\",\"phi\",\"0\"]],\"record\":\"observed_argument_checks\"}"
+  ]
 }

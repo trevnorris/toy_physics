@@ -1,0 +1,11 @@
+per-object plane sets, IDs, every sampled/untested selection and gap codimension: 48 equal
+item3/object alias edges with identical per-engine payload digests: 282
+source-derived velocity entries equal: 3 unchanged other slot entries: 403 {'matches_declared_slot': 393, 'sympy_only_bound_or_trig_check': 10, 'matches_source_declared_slot': 3}
+normal transcript and manifest: 132 lines with all summary lines and four representative exceptions verbatim; 3 publication file hashes and 2 publisher code hashes equal
+fresh normal publisher coverage sha256: 141d8a7fc93cfc28d2b6fab6a99e3cc61fd99965a3e9c016355363d7838c76e6 byte identical
+one-sided input plane constant ['1', '0', '1/2', '0', '1'] -> ['1', '0', '1/2', '0', '-1'] sampled/untested 5 0 -> 4 1
+one-sided tuple ['9/8', '9/4', '27/8', '9/2'] -> ['-1', '-1', '-2', '-2'] unchanged ['mixed_quadratic', 'generic', 0, 'generic'] newly witnessed [(0, 2, 4, 6)] sampled/untested 16 65
+one-sided native input dimension timeDim -> lenDim: [('centreVelocityChange[1]', [0, 1, 0], 'slot_dimension_difference'), ('centreVelocityChange[2]', [0, 1, 0], 'slot_dimension_difference'), ('centreVelocityChange[3]', [0, 1, 0], 'slot_dimension_difference')]
+one-sided observed component 2 [0,0,1] -> [0,-1,1]: only centreVelocityChange[2] slot_dimension_difference
+one-sided native rule xx[1, 2] -> xx[2, 2]: source centre or velocity slot differs from declared binding
+all scoped publication and mutation comparisons passed

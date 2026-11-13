@@ -1,0 +1,14 @@
+normal report stdout
+{"counts":{"py_original":2231,"py_reading":20811,"wl_original":1370,"wl_reading":26767},"gaps":{"py":{"duplicate_manifest_keys":[],"manifest_extra":[],"manifest_missing":[],"stream_extra":[],"stream_missing":[]},"wl":{"duplicate_manifest_keys":[],"manifest_extra":[],"manifest_missing":[],"stream_extra":[],"stream_missing":[]}},"objects":336,"record":"roster"}
+{"counts":{"direct_exact_identity":309,"sum_exact_identity":27},"record":"reading_to_original","role":"py_same_engine"}
+{"counts":{"direct_exact_identity":309,"sum_exact_identity":27},"record":"reading_to_original","role":"wl_same_engine"}
+{"counts":{"exact_identity":47},"record":"kernel_checks"}
+{"counts":{"matches_declared_slot":393,"matches_source_declared_slot":3,"sympy_only_bound_or_trig_check":10},"python_empty":[["integral_bound","theta","0"],["integral_bound","phi","0"]],"record":"observed_argument_checks"}
+validated 336 object checkpoints; 132 transcript lines
+published and normal replay transcript bytes 19175 sha256 473997968d83faee9843fff93a07bf45c6ea9c77fbf1251567d41f5c19f33b54
+published and normal replay detail_archive bytes 15278080 sha256 206109b070a649e8bbcd9c6a77766acd1e8a98290a17c7ec9408af9609741ae4
+published and normal replay final_coverage bytes 170509 sha256 141d8a7fc93cfc28d2b6fab6a99e3cc61fd99965a3e9c016355363d7838c76e6
+normal report JSON transcript rows 132 verbatim manifest summary rows 124 both revised rows present once
+positive controls inner/carried/component_1/labels_drain1+drain2 (15, 52) velocity {'matches_source_declared_slot': 3}
+one-sided native registration timeDim to lenDim [('centreVelocityChange[1]', [[0, 0, 1]], [0, 1, 0], 'slot_dimension_difference'), ('centreVelocityChange[2]', [[0, 0, 1]], [0, 1, 0], 'slot_dimension_difference'), ('centreVelocityChange[3]', [[0, 0, 1]], [0, 1, 0], 'slot_dimension_difference')]
+one-sided checkpoint plane sign ['0', '0', '1', '0', '2'] -> ['0', '0', '1', '0', '-2'] native object comparison: native plane mismatch

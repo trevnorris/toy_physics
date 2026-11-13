@@ -1,0 +1,22 @@
+# S15 reading comparator publication, local independent review A
+
+**Verdict — scoped clear on the accepted S15 archive for item 3 emitted-object exponent coverage and the three item 6 source-centre velocity argument slots, including their normal publication.**
+
+I derived the reference from the two native branch inventories, the two engine sources at `cc62dc9f`, and the archived sample coordinates before inspecting the coverage publisher. The complete 192065031-byte SymPy stream and the 333550018-byte Wolfram base-pass prefix matched their accepted hashes. Each supplied 336 emitted-object offsets and 336 inventories. All 17 review-packet checksums matched.
+
+For each native inventory I constructed the rational hyperplanes in four real exponents. Each feasible equality set has an independent basis of at most four normals. I enumerated these bases, solved the consistent affine systems, identified all additional planes they imply, and constructed a rational witness avoiding all other planes. This checks mixed simultaneous equalities, parallel planes, dependent planes and codimensions. I classified the actual points from both archive function forms against those sets. All 282 archived aliases have matching per-engine operand hashes. All occur on objects with empty native plane inventories. For the 48 objects with planes, the archive contains 8820 base cases, 2520 additional cases, 52 precision rechecks and 1080 logarithmic rechecks. Each separated or unresolved case matches its successful recheck by case and exact exponent tuple.
+
+All 48 published entries match on name, native operand IDs, planes, feasible sampled and untested selections, and untested codimensions. The per-object sums are **378 sampled and 858 untested selections, with gaps in 24 objects**. Each of the six eight-plane regional mixed-drain objects has 15 sampled and 66 untested selections. The latter have codimensions 2, 3 and 4 in counts 18, 32 and 16. These numbers describe the archived exponent points. The 858 selections have no archived value comparison.
+
+In the native SymPy argument audit each of the three component-specific responses is applied to `t` at zero-based slot 0, with expected and observed dimensions `[0,0,1]`. The printed Wolfram rule maps the corresponding source-centre first derivative to `centreVelocityChange[j][t]`. Line 228 registers a single time argument for each component. The reported evidence distinguishes the source declaration from the earlier printed argument table. All three entries match the source and streams. The other 403 entries match the original archive, giving 393 ordinary declared-slot matches, 3 source-declared-slot matches and 10 SymPy-only bound or trigonometric checks.
+
+The two summary records in the 132-line normal transcript, their verbatim manifest lines and the coverage JSON agree. The manifest hashes match the published files and both report scripts. Running the publisher against the original archive reproduced the coverage JSON byte for byte. Five temporary one-sided controls exercised a plane-sign change, a four-plane mixed exponent point under an unchanged generic label, a change of input dimension in the native declaration, a single changed SymPy observation and a Wolfram rule rebound to the target centre. Each produced the measured changed selection, component-specific mismatch or binding error in [verify.stdout](verify.stdout).
+
+**Evidence and reproduction.** [Independent script](reference.py), [literal reference stdout](reference.stdout), [per-object reference](reference.json), [publication and mutation script](verify.py), [literal publication/mutation stdout](verify.stdout), [packet checksums](packet-verification.stdout). The reviewed baseline was `74d51a1f`; the candidate is identified by its packet and coverage SHA-256 `141d8a7fc93cfc28d2b6fab6a99e3cc61fd99965a3e9c016355363d7838c76e6`. From the repository root, use fresh guard log directories when reproducing the two commands.
+
+```sh
+python3 scripts/s11c_guarded_run.py --pool s15-r2-a --memory-gib 2 --log-directory _scratch/s11c/s15-r2-a-independent-02 -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r2/a/reference.py
+python3 scripts/s11c_guarded_run.py --pool s15-r2-a --memory-gib 3 --log-directory _scratch/s11c/s15-r2-a-verification-03 -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r2/a/verify.py
+```
+
+Signed by Codex, fresh local independent reviewer A, 2026-11-12 (America/Denver).

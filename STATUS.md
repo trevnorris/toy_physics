@@ -1,4 +1,8 @@
-# Project status — S15 reading build accepted; item 4's Singular engine in its build (2026-11-09)
+# Project status — S15 comparator accepted with item 4 deferred
+
+## Current S15 comparator status
+
+The [scoped comparator](research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_run_record.md) is accepted for items 1–3, 5 and 6. Its [final review](research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_build_review_r2/README.md) verifies the per-object exponent coverage and three later Wolfram time-argument declarations. Item 4 stays deferred. Next is the S15 record decision list.
 
 ## 2026-11-09: S15, and where the work stands
 

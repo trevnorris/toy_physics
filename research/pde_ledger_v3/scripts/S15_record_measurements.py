@@ -163,8 +163,17 @@ def main():
                     sections.extend(rows["departure_existence_condition"]["residual"])
                     sections.extend(rows["item3/status"]["residual"])
                     sections.append("E_resp first stored sample "+json.dumps(rows["E_resp"]["samples"][0]))
+            native_fields = ()
             if name == "inner/transport_centre/component_1/labels_drain2":
-                for key in ("item3/Q_closed_operand", "item3/object"):
+                native_fields = ("item3/Q_closed_operand", "item3/object")
+            elif name.startswith("both_surfaces/sum_crossing/") or (
+                name.startswith("region/") and name.split("/")[-1] in
+                ("momentum", "integrated_force", "momentum_rate")
+            ):
+                native_fields = ("velocity_part_1/residual", "velocity_part_2/residual")
+            if native_fields:
+                sections.append(name)
+                for key in native_fields:
                     r = rows[key]
                     for locator in r["left"]+r["right"]:
                         entry = spans[locator]

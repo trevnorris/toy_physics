@@ -1,0 +1,44 @@
+native change py family/centre_substitution X_1_2(t): => X_2_2(t): [('family/centre_substitution', 'value_difference')]
+native change py family/centre_substitution  + X_1_2(t), =>  + X_2_2(t), [('family/centre_substitution', 'value_difference')]
+native change wl profile_family/separation_chart xx[1, 2][t] -> => xx[2, 2][t] -> [('family/centre_substitution', 'value_difference'), ('profile_family/separation_chart', 'value_difference')]
+native change wl family/separation_vector xx[1, 2][t] - xx[2, 2][t] => xx[2, 2][t] - xx[1, 2][t] [('family/centre_substitution', 'value_difference')]
+native change wl profile_family/domain Reals => Integers [('profile_family/chart_condition', 'value_difference')]
+native change wl profile_family/domain  | bb[1] =>  [('profile_family/chart_condition', 'value_difference')]
+stored context argument check gaps [(['X_1_1_velocity_change', 0, 't'], [[0, 0, 1]], [[0, 0, 1]]), (['X_1_2_velocity_change', 0, 't'], [[0, 0, 1]], [[0, 0, 1]]), (['X_1_3_velocity_change', 0, 't'], [[0, 0, 1]], [[0, 0, 1]])]
+kernel ablation ('py', 'distance_endpoints', 0, ', integration_radius + kernel_distance', ', -integration_radius - kernel_distance') status {'remaining_symbolic_difference': 1} example [('positive endpoint 1', '-2*(kernel_D + kernel_r)')]
+kernel ablation ('wl', 'generator_operand', 0, '2*Pi', 'Pi') status {'azimuth_domain_difference': 9, 'exact_identity': 10} example [('angular moment (3, 0, 0)', '(kernel_az, 0, pi)')]
+kernel ablation None status {'exact_identity': 19} example [('angular moment (3, 0, 0)', '(kernel_az, 0, 2*pi)')]
+stationary generic zero heads () num exact zero checks in both backends 0 minimum live acceleration 0.1819210104628146 example first second ['833/9797', '954/9797', '1107/9797', '1188/9797', '1263/9797', '1349/9797', '1485/9797', '1538/9797'] ['1930/10609', '2078/10609', '2378/10609', '2622/10609', '2688/10609', '2938/10609', '3158/10609', '3354/10609']
+stationary X2_velocity_zero zero heads ('X_2_1', 'X_2_2', 'X_2_3') num exact zero checks in both backends 18 minimum live acceleration 0.1819210104628146 example first second ['833/9797', '954/9797', '1107/9797', '0', '0', '0', '1485/9797', '1538/9797'] ['1930/10609', '2078/10609', '2378/10609', '2622/10609', '2688/10609', '2938/10609', '3158/10609', '3354/10609']
+stationary radii_velocity_zero zero heads ('r_in', 'R') num exact zero checks in both backends 12 minimum live acceleration 0.1819210104628146 example first second ['833/9797', '954/9797', '1107/9797', '1188/9797', '1263/9797', '1349/9797', '0', '0'] ['1930/10609', '2078/10609', '2378/10609', '2622/10609', '2688/10609', '2938/10609', '3158/10609', '3354/10609']
+stationary X2_and_radii_velocity_zero zero heads ('X_2_1', 'X_2_2', 'X_2_3', 'r_in', 'R') num exact zero checks in both backends 30 minimum live acceleration 0.1819210104628146 example first second ['833/9797', '954/9797', '1107/9797', '0', '0', '0', '0', '0'] ['1930/10609', '2078/10609', '2378/10609', '2622/10609', '2688/10609', '2938/10609', '3158/10609', '3354/10609']
+stationary X1_velocity_zero zero heads ('X_1_1', 'X_1_2', 'X_1_3') num exact zero checks in both backends 18 minimum live acceleration 0.1819210104628146 example first second ['0', '0', '0', '1188/9797', '1263/9797', '1349/9797', '1485/9797', '1538/9797'] ['1930/10609', '2078/10609', '2378/10609', '2622/10609', '2688/10609', '2938/10609', '3158/10609', '3354/10609']
+velocity input region/component_1/momentum_rate drain 1
+py [88.83490981636027, 89.476219810543, -0.641309994182734] exact check [True, True]
+wl [88.83490981636027, 89.476219810543, -0.641309994182734] exact check [True, True]
+velocity input region/component_1/momentum_rate drain 2
+py [88.83490981636027, 81.66391839117964, 7.170991425180631] exact check [True, True]
+wl [88.83490981636027, 81.66391839117965, 7.170991425180617] exact check [True, True]
+velocity input inner/viscous/component_1 drain 1
+literal py_reading:54867979 0
+literal wl_reading:50097581 0
+py [-0.2564173454874801, -0.2564173454874801, 0.0] exact check [True, True]
+wl [-0.2564173454874801, -0.2564173454874801, 0.0] exact check [True, True]
+velocity input inner/viscous/component_1 drain 2
+literal py_reading:54899350 0
+literal wl_reading:50202692 0
+py [-0.2564173454874801, -0.2564173454874801, 0.0] exact check [True, True]
+wl [-0.2564173454874801, -0.2564173454874801, 0.0] exact check [True, True]
+velocity input outer/transport_centre/component_3 drain 1
+literal py_reading:150773113 0
+literal wl_reading:121093878 0
+py [10.757911582762352, 10.757911582762352, 0.0] exact check [True, True]
+wl [10.757911582762352, 10.757911582762352, 0.0] exact check [True, True]
+velocity input outer/transport_centre/component_3 drain 2
+py [10.757911582762352, 0.0, 10.757911582762352] exact check [True, True]
+wl [10.757911582762352, 0.0, 10.757911582762352] exact check [True, True]
+exceptional grounded by family integral item3/object ['mixed_cubic', 'generic', 1, 'locus_6'] ['-2', '13/4', '11/8', '5/2'] ('py_reading:39311427', 'wl_reading:31743924') ['-227.71434664775409649481171622264110911761279131783247790918088', '-227.71434664775409649481171622264110911761279131783247790918088'] difference 1.77568e-78
+exceptional grounded by family integral item3/family_integral ['mixed_cubic', 'generic', 1, 'locus_6'] ['-2', '13/4', '11/8', '5/2'] ('py_reading:38789758', 'wl_reading:31348371') ['-227.71434664775276', '-227.7143466477531'] difference 3.410605131648481e-13
+exceptional grounded by family integral item3/Q_closed_operand ['mixed_cubic', 'generic', 1, 'locus_6'] ['-2', '13/4', '11/8', '5/2'] ('py_reading:39189232', 'wl_reading:31590365') ['-101.18758499039841359630109136087304194597177273303375319328692', '-101.18758499039841359630109136087304194597177273303375319328692'] difference 6.52105e-79
+slot/evaluation-point values mixed_quadratic ['530393/127616', '454833/127616', '8129/63808', '871/3988', '8019/63808']
+slot/evaluation-point values mixed_cubic ['236119/63808', '620551/127616', '77131/510464', '16037/127616', '83923/510464']

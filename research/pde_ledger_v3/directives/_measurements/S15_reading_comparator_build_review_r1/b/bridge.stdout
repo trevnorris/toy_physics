@@ -1,0 +1,25 @@
+fixture generic both_surfaces/sum_crossing/component_2 Q ('py_reading:183070576', 'wl_reading:253361681') normalized by 4pi 2179468/15 native values [1825866.8420090822, 1825866.8420090822] native-minus-reference [5.122274160385132e-09, 5.122274160385132e-09]
+fixture generic both_surfaces/sum_crossing/component_2 E_resp ('py_reading:183509539', 'wl_reading:258436735') normalized by 4pi 1937425/3 native values [8115466.862508298, 8115466.862508299] native-minus-reference [2.421438694000244e-08, 2.514570951461792e-08]
+generic cumulative operand count 216 max abs error 5.960464477539063e-08
+fixture X2_velocity_zero both_surfaces/sum_crossing/component_2 Q ('py_reading:183070576', 'wl_reading:253361681') normalized by 4pi 2074403/15 native values [1737847.7934359054, 1737847.7934359054] native-minus-reference [4.6566128730773926e-09, 4.6566128730773926e-09]
+fixture X2_velocity_zero both_surfaces/sum_crossing/component_2 E_resp ('py_reading:183509539', 'wl_reading:258436735') normalized by 4pi 1853959/3 native values [7765845.299275596, 7765845.299275597] native-minus-reference [2.3283064365386963e-08, 2.421438694000244e-08]
+X2_velocity_zero cumulative operand count 288 max abs error 5.587935447692871e-08
+fixture radii_velocity_zero both_surfaces/sum_crossing/component_2 Q ('py_reading:183070576', 'wl_reading:253361681') normalized by 4pi 2846068/15 native values [2384316.3521112055, 2384316.3521112055] native-minus-reference [6.51925802230835e-09, 6.51925802230835e-09]
+fixture radii_velocity_zero both_surfaces/sum_crossing/component_2 E_resp ('py_reading:183509539', 'wl_reading:258436735') normalized by 4pi 2240563/3 native values [9385248.347606838, 9385248.34760684] native-minus-reference [2.7939677238464355e-08, 2.9802322387695312e-08]
+radii_velocity_zero cumulative operand count 360 max abs error 5.587935447692871e-08
+fixture X2_and_radii_velocity_zero both_surfaces/sum_crossing/component_2 Q ('py_reading:183070576', 'wl_reading:253361681') normalized by 4pi 2741003/15 native values [2296297.3035380286, 2296297.3035380286] native-minus-reference [6.51925802230835e-09, 6.51925802230835e-09]
+fixture X2_and_radii_velocity_zero both_surfaces/sum_crossing/component_2 E_resp ('py_reading:183509539', 'wl_reading:258436735') normalized by 4pi 2157097/3 native values [9035626.784374136, 9035626.784374136] native-minus-reference [2.60770320892334e-08, 2.60770320892334e-08]
+X2_and_radii_velocity_zero cumulative operand count 432 max abs error 5.587935447692871e-08
+fixture X1_velocity_zero both_surfaces/sum_crossing/component_2 Q ('py_reading:183070576', 'wl_reading:253361681') normalized by 4pi 2179468/15 native values [1825866.8420090822, 1825866.8420090822] native-minus-reference [5.122274160385132e-09, 5.122274160385132e-09]
+fixture X1_velocity_zero both_surfaces/sum_crossing/component_2 E_resp ('py_reading:183509539', 'wl_reading:258436735') normalized by 4pi 1937425/3 native values [8115466.862508298, 8115466.862508299] native-minus-reference [2.421438694000244e-08, 2.514570951461792e-08]
+X1_velocity_zero cumulative operand count 504 max abs error 5.587935447692871e-08
+one-sided actual native changes
+WL form snippet os[phi]*rin[t]^2*Sin[theta]^2*change[oo[2, 1]][Cos[phi]*rin[t]*Sin[theta] + xx[2, 1][t], rin[t]*Sin[phi]*Sin[theta] + xx[2, 2][t], Cos[t
+native baseline ('py_reading:183509539', 'wl_reading:258436735') number of changed tensor calls 0 PY 8115466.862508298 WL 8115466.862508299 difference -9.313225746154785e-10
+baseline all five differences [-9.313225746154785e-10, -9.313225746154785e-10, -1.862645149230957e-09, 0.0, -9.313225746154785e-10]
+native sign ('py_reading:183509539', 'wl_reading:258436735') number of changed tensor calls 0 PY 8115466.862508298 WL -8115466.862508299 difference 16230933.725016598
+sign all five differences [16230933.725016598, 15531690.598551191, 18770496.695213675, 18071253.568748273, 16230933.725016598]
+native form ('py_reading:183509539', 'wl_reading:258436735') number of changed tensor calls 2 PY 8115466.862508298 WL 8114997.718005363 difference 469.14450293499976
+form all five differences [469.14450293499976, 469.14450293499976, 469.14450293406844, 469.1445029359311, 469.14450293499976]
+raw sample {'case': ['mixed_cubic', 'X2_and_radii_velocity_zero', 1, 'generic'], 'exponents': ['17/8', '13/4', '11/8', '5/2'], 'values': [[-704.7555200582979, -704.7555200582976], [-704.7554912841562, -704.7554912841563], [-704.7554912841596, -704.7554912841596]], 'residual': 0.0, 'refinement_delta': 2.8774141696885636e-05, 'tolerance': 0.00023089788906636925, 'status': 'within_estimate'}
+recalculated [-704.7554912841596, -704.7554912841596] 0.0

@@ -1,0 +1,17 @@
+/usr/bin/python3 scripts/s11c_guarded_run.py --pool s15-r1-a --memory-gib 2 --log-directory _scratch/s11c/s15_r1_a_reference_20261112 -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r1/a/native_reference.py
+stdout file native_reference.stdout. Exit 0, verified cgroup memory.swap.max=0, no deadlines.
+
+/usr/bin/python3 scripts/s11c_guarded_run.py --pool s15-r1-a --memory-gib 4 --log-directory _scratch/s11c/s15_r1_a_archive_20261112 -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r1/a/archive_audit.py
+stdout file archive_audit.stdout. Exit 0, verified cgroup memory.swap.max=0, no deadlines.
+
+/usr/bin/python3 scripts/s11c_guarded_run.py --pool s15-r1-a --memory-gib 3 --log-directory _scratch/s11c/s15_r1_a_native_20261112 -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r1/a/native_challenges.py
+stdout file native_challenges.stdout. Exit 0, verified cgroup memory.swap.max=0, no deadlines.
+
+/usr/bin/python3 scripts/s11c_guarded_run.py --pool s15-r1-a --memory-gib 3 --log-directory _scratch/s11c/s15_r1_a_branch_20261112 -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r1/a/branch_probe.py
+stdout file branch_probe.stdout. Exit 0, verified cgroup memory.swap.max=0, no deadlines.
+
+/usr/bin/python3 scripts/s11c_guarded_run.py --pool s15-r1-a --memory-gib 3 --log-directory _scratch/s11c/s15_r1_a_velocity_20261112 -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r1/a/velocity_response.py
+stdout file velocity_response.stdout. Exit 0, verified cgroup memory.swap.max=0, no deadlines.
+
+/usr/bin/python3 scripts/s11c_guarded_run.py --pool s15-r1-a --memory-gib 2 --log-directory _scratch/s11c/s15_r1_a_strata_20261112 -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r1/a/branch_coverage.py
+stdout file branch_coverage.stdout. Exit 0, verified cgroup memory.swap.max=0, no deadlines.

@@ -1,0 +1,11 @@
+Run in /var/projects/toy_physics. For packet checksum verification, change into _scratch/s15/reading_comparator_build_review/r1/packet and run sha256sum -c SHA256SUMS. Literal output is checksums.stdout in this review directory.
+
+python3 scripts/s11c_guarded_run.py --pool s15-r1-b --memory-gib 2 --log-directory _scratch/s11c/s15_reading_r1_b_reference_run -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r1/b/native_reference.py
+python3 scripts/s11c_guarded_run.py --pool s15-r1-b --memory-gib 3 --log-directory _scratch/s11c/s15_reading_r1_b_archive -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r1/b/archive_audit.py
+python3 scripts/s11c_guarded_run.py --pool s15-r1-b --memory-gib 5 --log-directory _scratch/s11c/s15_reading_r1_b_bridge -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r1/b/bridge.py
+python3 scripts/s11c_guarded_run.py --pool s15-r1-b --memory-gib 4 --log-directory _scratch/s11c/s15_reading_r1_b_coverage -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r1/b/coverage_controls.py
+python3 scripts/s11c_guarded_run.py --pool s15-r1-b --memory-gib 5 --log-directory _scratch/s11c/s15_reading_r1_b_branches -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r1/b/branch_inventory.py
+python3 scripts/s11c_guarded_run.py --pool s15-r1-b --memory-gib 2 --log-directory _scratch/s11c/s15_reading_r1_b_detail -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r1/b/detail_coverage.py
+python3 scripts/s11c_guarded_run.py --pool s15-r1-b --memory-gib 2 --log-directory _scratch/s11c/s15_reading_r1_b_anchors -- /usr/bin/python3 -B _scratch/s15/reading_comparator_build_review/r1/b/extra_anchors.py
+
+Each successful command's guard stdout has been copied verbatim to its script basename with the .stdout suffix. The s15_reading_r1_b_reference directory records a pre-launch filesystem refusal. A second invocation in that directory stopped at the existing-log check. Neither ran the workload. All successful invocations used distinct fresh directories. Use fresh directories when reproducing.

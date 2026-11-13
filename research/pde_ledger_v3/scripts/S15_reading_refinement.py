@@ -21,12 +21,11 @@ import S15_reading_comparator as c
 
 @lru_cache(maxsize=65536)
 def jet(name,arity,orders,form,stratum,point):
-    if name.endswith('_velocity_change'):
-        alias='response_'+name
-        m.original.CODES[alias]=m.original.CODES[name]
-        name=alias
-    expr=m.original.profile_jet(name,arity,orders,form,stratum,point,())
-    return s.lambdify(m.original.FORMAL[:arity],expr,modules='mpmath',cse=True,docstring_limit=0)
+    expr, origin = m.sample_jet(name, arity, orders, form, stratum, point)
+    fn = s.lambdify(m.original.FORMAL[:arity], expr, modules='mpmath', cse=True, docstring_limit=0)
+    if origin is None:
+        return fn
+    return lambda t: fn(t - rational(origin))
 
 
 def rational(v):

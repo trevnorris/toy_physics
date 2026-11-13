@@ -52,6 +52,24 @@ class ComparatorChecks(unittest.TestCase):
             self.assertEqual(ctx.value(py),ctx.value(good))
             self.assertEqual(ctx.value(py)==ctx.value(bad),case=='generic')
 
+    def test_stationary_sample_jets(self):
+        import S15_reading_refinement as ref
+        centres = lambda i: [f'X_{i}_{j}' for j in (1,2,3)]
+        radii = ['R','r_in']
+        targets = {'X1_velocity_zero':centres(1),'X2_velocity_zero':centres(2),
+                   'radii_velocity_zero':radii,'X2_and_radii_velocity_zero':centres(2)+radii}
+        checked=0
+        for form in m.FORMS:
+            for stratum, names in targets.items():
+                for point,coords in enumerate(m.POINTS):
+                    for name in names:
+                        t=coords[-1]
+                        self.assertEqual(m.jet_function(name,1,(1,),form,stratum,point)(float(t)),0)
+                        self.assertEqual(ref.jet(name,1,(1,),form,stratum,point)(ref.rational(t)),0)
+                        self.assertNotEqual(m.jet_function(name,1,(2,),form,stratum,point)(float(t)),0)
+                        checked+=1
+        self.assertEqual(checked,78)
+
     def test_held_zero_and_live_velocity_change(self):
         self.assertEqual(m.parse('Inactive[Integrate][0,{theta,0,Pi}]','wl'),0)
         ctx=m.Sample(m.FORMS[0],'X1_velocity_zero',0,(1,2,3,4),16)

@@ -16,6 +16,7 @@ import os
 from pathlib import Path
 import re
 import sys
+import tarfile
 import time
 
 import sympy as s
@@ -222,6 +223,34 @@ def decoded_label(payload,engine):
     return json.loads(payload) if engine=='wl' and payload.startswith('"') else payload
 
 
+REUSED_EXACT = {}
+
+
+def load_prior_exact(archive_path, digests, manifest_path):
+    """Reuse only native-operand identities from the fingerprinted R0 archive."""
+    manifest = json.loads(manifest_path.read_text())
+    if sha(archive_path) != manifest['detail_archive']['sha256'] or digests != manifest['repository_inputs']:
+        raise InputError('prior exact results have a different archive or input streams')
+    exact = {}
+    with tarfile.open(archive_path,'r:') as archive:
+        def member(name):
+            with archive.extractfile(name) as f:
+                return json.loads(gzip.decompress(f.read()) if name.endswith('.gz') else f.read())
+        cfg = member('configuration.json')
+        if cfg['inputs'] != digests or cfg['build_id'] != manifest['implementation']:
+            raise InputError('prior archive configuration mismatch')
+        for i,name in enumerate(cfg['required_objects']):
+            obj = member(f'objects/{i:03d}.json.gz')
+            if (obj['object'],obj['build_id']) != (name,cfg['build_id']):
+                raise InputError('wrong prior object')
+            for row in obj['rows']:
+                if (row['status']=='exact_identity' and row.get('residual')=='0'
+                        and row.get('method') in ('identical native expression on same engine',
+                                                  'exact algebra on translated operands')):
+                    exact[(row['left'][0],tuple(row['right']))] = row['method']
+    return exact
+
+
 class ObjectComparison:
     def __init__(self,handles):
         self.handles=handles
@@ -244,6 +273,10 @@ class ObjectComparison:
         return self.parsed[key]
 
     def arithmetic(self,left,right,field,item,loci):
+        prior = REUSED_EXACT.get((left,tuple(right)))
+        if prior:
+            return dict(status='exact_identity', residual='0', method=prior,
+                        provenance='prior exact comparison in configuration.reused_exact')
         # All arithmetic publications refer to raw catalogue entries, including identical bytes.
         same_engine=LOCATOR[left][0][:2]==LOCATOR[right[0]][0][:2]
         if len(right)==1 and same_engine and LOCATOR[left][2]==LOCATOR[right[0]][2]:
@@ -363,6 +396,32 @@ def object_worker(job):
     return idx,len(rows)
 
 
+def declared_chart_reals():
+    """Read the symbol declarations from the accepted SymPy source."""
+    source = inputs.LEDGER/'scripts/S15_separation_departure.py'
+    native = ast.parse(inputs.accepted(source, inputs.READING))
+    declarations = {}
+    for node in ast.walk(native):
+        if not isinstance(node, ast.Assign) or len(node.targets) != 1:
+            continue
+        key = getattr(node.targets[0], 'id', None)
+        if key not in ('d', 'direction_D', 'exponents_u', 'exponents_rho'):
+            continue
+        call = node.value
+        if not (isinstance(call, ast.Call) and isinstance(call.func, ast.Attribute)
+                and getattr(call.func.value, 'id', None) == 'S'
+                and call.func.attr in ('Symbol', 'symbols') and len(call.args) == 1):
+            raise InputError('unknown chart declaration for ' + key)
+        if key in declarations:
+            raise InputError('ambiguous chart declaration for ' + key)
+        kwargs = {x.arg: ast.literal_eval(x.value) for x in call.keywords}
+        symbols = s.symbols(ast.literal_eval(call.args[0]), seq=True, **kwargs)
+        declarations[key] = {str(q) for q in symbols if q.is_real is True}
+    if len(declarations) != 4:
+        raise InputError('missing chart declarations in accepted source')
+    return sorted(set().union(*declarations.values()))
+
+
 def family_context(py,wl,get):
     """Source-defined correspondences for the family and the real separation chart."""
     ns=algebra.original
@@ -404,14 +463,28 @@ def family_context(py,wl,get):
               pairs(tree(other,'wl'),lambda q:cv(q,'wl'),lambda q:cv(q,'wl')),jet_definition=py['family/jet_notation'])
     tag='family/centre_substitution';other='family/separation_vector'
     ep=s.Symbol('family_epsilon')
-    shifts=[val(q.args[1],'py',(('family_epsilon',ep),)).diff(ep) for q in tree(tag,'py').args]
-    yield row(tag,other,shifts,[cv(q,'wl') for q in tree(other,'wl').args])
-    tag='profile_family/separation_chart'
-    yield row(tag,tag,*[pairs(tree(tag,e),lambda q:cv(q,e),lambda q:cv(q,e)) for e in ('py','wl')])
+    py_rules = [(val(q.args[0],'py'), val(q.args[1],'py',(('family_epsilon',ep),)))
+                for q in tree(tag,'py').args]
+    chart = 'profile_family/separation_chart'
+    wl_targets = [cv(q.args[0],'wl') for q in tree(chart,'wl').args]
+    wl_vector = [cv(q,'wl') for q in tree(other,'wl').args]
+    wl_rules = [(target, target + ep*shift)
+                for target,shift in zip(wl_targets,wl_vector,strict=True)]
+    def ordered(rules):
+        return sorted(((key,s.expand(value)) for key,value in rules),key=lambda r:str(r[0]))
+    yield row(tag,other,ordered(py_rules),ordered(wl_rules),wl_target_binding=wl[chart])
+    yield row(chart,chart,*[pairs(tree(chart,e),lambda q:cv(q,e),lambda q:cv(q,e)) for e in ('py','wl')])
     tag='profile_family/chart_condition';other='profile_family/domain'
     wlconds=tree(other,'wl').args
-    yield row(tag,other,tuple(cv(q,'py') for q in tree(tag,'py').args),tuple(cv(q,'wl') for q in wlconds[:2]),
-              additional_wolfram_clause='Explicit real domain for distance, direction and four exponents; retained in right operand.')
+    py_domain = (tuple(cv(q,'py') for q in tree(tag,'py').args), declared_chart_reals(), 'Reals')
+    if len(wlconds) == 3 and ns.call(wlconds[2],'Element') and len(wlconds[2].args)==3:
+        members,domain = wlconds[2].args[1:]
+        roster = members.args if members.head in ('Alternatives','Sequence') else (members,)
+        wl_domain = (tuple(cv(q,'wl') for q in wlconds[:2]), sorted(str(cv(q,'wl')) for q in roster),
+                     ns.key_text(domain))
+    else:
+        wl_domain = ('unrecognized full Wolfram domain',get(wl[other][0]))
+    yield row(tag,other,py_domain,wl_domain,py_declarations='S15_separation_departure.py @ '+inputs.READING)
     tag='profile_family/substitution';other='profile_family/definitions'
     def body(node):
         if not ns.call(node,'Lambda'): raise InputError('expected profile lambda')
@@ -499,10 +572,12 @@ def compare_context(global_tags):
 
 
 def main():
-    global ROOT,BUILD_ID,OBJECTS,LOCATOR,PATHS
+    global ROOT,BUILD_ID,OBJECTS,LOCATOR,PATHS,REUSED_EXACT
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--output',required=True,type=Path)
     ap.add_argument('--workers',type=int,default=1)
+    ap.add_argument('--reuse-exact',type=Path,nargs=3,metavar=('ARCHIVE','MANIFEST','MATH_SOURCE'),
+                    help='reuse R0 exact identities on the same four accepted streams')
     args=ap.parse_args()
     sys.setrecursionlimit(max(10000,sys.getrecursionlimit()))
     ROOT=args.output
@@ -512,17 +587,32 @@ def main():
         ap.error('worker count exceeds inherited affinity or is not positive')
     sources={f.name:sha(f) for f in (Path(__file__),Path(algebra.__file__),Path(inputs.__file__),Path(algebra.original.__file__))}
     streams,manifests,digests,counts=read_inputs()
-    BUILD_ID=hashlib.sha256(json.dumps([sources,digests],sort_keys=True).encode()).hexdigest()
+    reused = None
+    if args.reuse_exact:
+        archive, manifest, prior_math = args.reuse_exact
+        original_math = prior_math.read_bytes()
+        # Reuse requires the same translation and exact reducer. Sample-only
+        # changes begin after branch_loci; the prior manifest pins the originals.
+        previous = json.loads(manifest.read_text())
+        if (hashlib.sha256(original_math).hexdigest() != previous['source_sha256']['S15_reading_math.py']
+                or original_math.split(b'def branch_loci')[0].split(b'Unsupported =',1)[1] !=
+                Path(algebra.__file__).read_bytes().split(b'def branch_loci')[0].split(b'Unsupported =',1)[1]
+                or sources['S15_cross_engine_comparator.py'] != previous['source_sha256']['S15_cross_engine_comparator.py']):
+            raise InputError('exact comparison implementation changed')
+        REUSED_EXACT = load_prior_exact(archive, digests, manifest)
+        reused = dict(archive_sha256=sha(archive),manifest_sha256=sha(manifest),
+                      build_id=previous['implementation'],eligible_native_pairs=len(REUSED_EXACT))
+    BUILD_ID=hashlib.sha256(json.dumps([sources,digests,reused],sort_keys=True).encode()).hexdigest()
     config=ROOT/'configuration.json'
     if config.exists() and json.loads(config.read_text())['build_id']!=BUILD_ID:
         raise InputError('source/input fingerprint changed; select a fresh output directory')
     PATHS={key:path for key,(path,_) in streams.items()}
     OBJECTS,gaps,LOCATOR,globals_=input_plan(streams,manifests,ROOT)
-    save(config,dict(build_id=BUILD_ID,sources=sources,inputs=digests,occurrences=counts,roster=gaps,
+    save(config,dict(build_id=BUILD_ID,reused_exact=reused,sources=sources,inputs=digests,occurrences=counts,roster=gaps,
                      required_objects=sorted(OBJECTS),forms=algebra.FORMS,strata=algebra.STRATA,
                      points=[list(map(str,q)) for q in algebra.POINTS],quadrature_orders=algebra.RULES,
                      precision='IEEE float64; tensor Gauss-Legendre for chart integrals; normalized Gauss-Jacobi Euler integral for Appell F1; Li2 via scipy.special.spence.',
-                     evaluator='SymPy difference with original S15 profile jets, NumPy/SciPy numerical fallback. Geometric direction and distance computed from the two live centres.'))
+                     evaluator='SymPy difference, centred geometry and independently scaled smooth field profiles from S15_reading_math.sample_jet, NumPy/SciPy numerical fallback. Geometric direction and distance computed from the two live centres.'))
     save(ROOT/'context.json.gz',compare_context(globals_))
     jobs=[]
     for index,name in enumerate(sorted(OBJECTS)):

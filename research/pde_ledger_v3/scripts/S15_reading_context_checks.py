@@ -91,7 +91,17 @@ def kernel_checks(cat):
         pair('change_of_variable',tag,lambda n:n.args[2].args[k],lambda n:n.args[3].args[k],label=f'squared endpoint {k}')
         i,x=cat.kernel('distance_endpoints','py')
         j,y=cat.kernel(tag,'wl')
-        cat.note(f'positive endpoint {k}, squared on D > r > 0',i,j,value(x.args[k],'py')**2,value(y.args[3].args[k],'wl'))
+        signed = value(x.args[k],'py')
+        squared = value(y.args[3].args[k],'wl')
+        raw = s.sqrt(squared)
+        gap, radius = s.symbols('positive_gap positive_radius', positive=True)
+        on_domain = raw.xreplace({z[0]:radius+gap, z[1]:radius}).simplify()
+        on_domain = on_domain.xreplace({gap:z[0]-z[1], radius:z[1]})
+        cat.note(f'positive endpoint {k}', i, j, signed, raw)
+        residual = s.factor(signed - on_domain)
+        cat.rows[-1].update(domain='D > r > 0; D = r + positive_gap', signed_wl=str(on_domain),
+                            domain_residual=str(residual),
+                            status='exact_identity' if residual==0 else 'remaining_symbolic_difference')
     pair('power_primitive_operand','power_primitive_operand')
     i,x=cat.kernel('power_primitive','py')
     j,y=cat.kernel('power_primitive_branches','wl')
@@ -136,6 +146,20 @@ def angular_moments(cat):
         powers=tuple(int(v.value) for v in node.args[0].args)
         if powers in candidates:raise InputError('duplicate Wolfram angular powers')
         candidates[powers]=(rid,m.translate(node.args[1],'wl',wl_scope))
+    # Each Wolfram moment uses the full generator at the corresponding degree.
+    generator_bounds = {}
+    for k in range(len(cat.tags['wl','item3_kernel/generator_operand'])):
+        rid, node = cat.kernel('generator_operand','wl',k)
+        head, args = m.original.application(node)
+        if head != 'Integrate' or len(args) != 2:
+            raise InputError('unexpected angular generator')
+        axial, transverse = s.symbols('angular_axial angular_transverse')
+        scope = (('axial',axial),('transverse',transverse),('mu',mu),('azimuth',az))
+        polynomial = s.Poly(m.translate(args[0],'wl',scope),axial,transverse)
+        degree = polynomial.total_degree()
+        if not polynomial.is_homogeneous or degree in generator_bounds:
+            raise InputError('ambiguous angular generator degree')
+        generator_bounds[degree] = rid, m.translate(args[1],'wl',scope)
     # Exact rational points identify a candidate efficiently. Confirm the full
     # native integrand symbolically before accepting its binding.
     numbered=[(tuple(s.Rational(n,3) for n in ax),s.Rational(3,5),s.Rational(sn,5),s.Rational(cs,5))
@@ -149,6 +173,9 @@ def angular_moments(cat):
     assigned=set()
     for k in range(len(cat.tags['py','item3_kernel/azimuth_operand'])):
         input_id,integral=cat.kernel('azimuth_operand','py',k)
+        if not m.original.call(integral,'Integral') or len(integral.args)!=3:
+            raise InputError('unexpected azimuth integral')
+        py_bounds=m.translate(integral.args[2],'py',py_scope)
         body=integral.args[1]
         expr=m.translate(body,'py',py_scope)
         # Source emits operand and result as adjacent records with intervening /comparison labels.
@@ -162,7 +189,12 @@ def angular_moments(cat):
             raise InputError('unverified angular power tuple '+str(powers))
         assigned.add(powers)
         cat.note('angular moment '+str(powers),answer_id,wl_id,m.translate(ans,'py',py_scope),wl_result,unit=True)
-        cat.rows[-1].update(binding_operand=input_id,integrand_minus_rotated_monomial='0',powers=powers)
+        source, wl_bounds = generator_bounds[sum(powers)]
+        cat.rows[-1].update(binding_operand=input_id,integrand_minus_rotated_monomial='0',powers=powers,
+                            wl_generator=source, py_bounds=str(py_bounds), wl_bounds=str(wl_bounds))
+        if py_bounds != wl_bounds or py_bounds != s.Tuple(az,0,2*s.pi):
+            cat.rows[-1]['status'] = 'azimuth_domain_difference'
+
     if assigned!=set(candidates):raise InputError('angular roster mismatch')
 
 

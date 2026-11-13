@@ -1,0 +1,13 @@
+native WL Do[register[centreVelocityChange[j],lenDim-timeDim,{timeDim}],{j,3}]; time timeDim={0,0,1}
+native declaration operands ['wl_reading:2023576', 'wl_reading:9799912', 'wl_reading:9800134'] before registration time-head presence False later recorded RHS {Derivative[1][xx[1, 1]][t] -> centreVelocityChange[1][t], Derivative[1][xx[1, 2]][t] -> centreVelocityChange[2][t], Derivative[1][xx[1, 3]][t] -> centreVelocityChange[3][t]}
+supplemental dimension match 1 ['X_1_1_velocity_change', 0, 't'] [[0, 0, 1]] [[0, 0, 1]] lenDim-timeDim timeDim
+supplemental dimension match 2 ['X_1_2_velocity_change', 0, 't'] [[0, 0, 1]] [[0, 0, 1]] lenDim-timeDim timeDim
+supplemental dimension match 3 ['X_1_3_velocity_change', 0, 't'] [[0, 0, 1]] [[0, 0, 1]] lenDim-timeDim timeDim
+full WL generator wl_reading:16294200 wl_reading:16294619 3 (az, 0, 2*pi) residuals [0, 0]
+full WL generator wl_reading:16295904 wl_reading:16296205 2 (az, 0, 2*pi) residuals [0, 0]
+full WL generator wl_reading:16300791 wl_reading:16301012 1 (az, 0, 2*pi) residuals [0, 0]
+full WL generator wl_reading:127358432 wl_reading:127358605 0 (az, 0, 2*pi) residuals [0, 0]
+dimension one-sided actual [ (1, 4, -2) ] {{1, 4, -2}} exact_identity {'py_only': [], 'wl_only': []}
+dimension one-sided changed [(1,4,-2)] {{1,-4,-2}} dimension_difference {'py_only': [(1, 4, -2)], 'wl_only': [(1, -4, -2)]}
+dimension one-sided actual [] {} exact_identity {'py_only': [], 'wl_only': []}
+dimension one-sided changed [] {{0,0,0}} dimension_difference {'py_only': [], 'wl_only': [(0, 0, 0)]}

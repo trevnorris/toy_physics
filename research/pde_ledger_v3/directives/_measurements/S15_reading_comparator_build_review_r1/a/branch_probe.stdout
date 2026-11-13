@@ -1,0 +1,8 @@
+joint exponents ['-1', '9/4', '-2', '9/2'] point ['3/2', '2/7', '-1/4', '1/6'] distance 20.778200765319280213
+joint 55 decimal item3/Q_closed_operand -0.4353178640930685097104224362595218814498415146832948 -0.4353178640930685097104224362595218814498415146832949 1.00484590913e-52
+joint 55 decimal item3/object -0.4288680474196282094631604989224417642548390981210779 -0.4288680474196282094631604989224417642548390981210784 5.00862998966e-52
+independent native angular flux and geometric departure 30 [-0.43531786409306805, -0.42886804741962775]
+independent native angular flux and geometric departure 60 [-0.4353178640930679, -0.42886804741962764]
+independent native angular flux and geometric departure 90 [-0.43531786409306844, -0.4288680474196281]
+native gated form ablation signed synthetic delta WL-mutant minus WL, point 0 {'printed intersection': 1.0, 'generic': 0.0, 'locus_0': 0.0, 'locus_1': 0.0, 'locus_2': 0.0, 'locus_3': 0.0, 'locus_4': 0.0, 'locus_5': 0.0, 'locus_6': 0.0, 'locus_7': 0.0, 'locus_8': 0.0, 'locus_9': 0.0, 'locus_10': 0.0, 'locus_11': 0.0, 'locus_12': 0.0, 'locus_13': 0.0}
+archive flagged native 45/75 check identical True status within_precision_estimate high residual 9.19395505351082806533956127255998075752115625459822370201651505245408676646e-69

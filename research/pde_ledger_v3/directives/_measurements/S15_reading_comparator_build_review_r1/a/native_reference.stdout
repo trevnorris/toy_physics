@@ -1,0 +1,14 @@
+radius orientation 1/2 -1 rest/pi [1420487/15400, 33333901/207900, 9235679/69300] transport/pi [6538/825, 216433/9900, -119983/1650] crossing/pi [4627589/46200, 18939497/103950, 4196393/69300] other response/pi [392, 1445/2, 1200]
+radius orientation 3/2 1 rest/pi [-278508387/107800, -235871043/53900, -182140611/53900] transport/pi [2774547/5390, 4339809/5390, 886122/539] crossing/pi [-223017447/107800, -192472953/53900, -93528411/53900] other response/pi [-10584, -39015/2, -32400]
+net rest transport crossing other-response in pi [-12207499/4900, -278871857/66150, -71573443/22050] [42258929/80850, 401188027/485100, 127039133/80850] [-318329609/161700, -4931616773/1455300, -203095237/121275] [-10192, -18785, -31200]
+independent divergence test [0, 0, 0]
+moving rate/pi [-68009/60, 28793/20, -5516/3] X1 part/pi [-4021/6, 6205/12, -5477/4] X2 part/pi [-1837/12, 1837/3, 1837/6]
+target stationary rate/pi [-4902/5, 49639/60, -12869/6] X1 part/pi [-4021/6, 6205/12, -5477/4] X2 part/pi [0, 0, 0]
+radii stationary rate/pi [-3293/4, 13553/12, -12757/12] X1 part/pi [-4021/6, 6205/12, -5477/4] X2 part/pi [-1837/12, 1837/3, 1837/6]
+target and radii stationary rate/pi [-4021/6, 6205/12, -5477/4] X1 part/pi [-4021/6, 6205/12, -5477/4] X2 part/pi [0, 0, 0]
+source stationary rate/pi [-27799/60, 27677/30, -5633/12] X1 part/pi [0, 0, 0] X2 part/pi [-1837/12, 1837/3, 1837/6]
+stationary centre/radius reference jets, value derivative acceleration [[3, 0, 4], [4, 0, 6], [5, 0, 8], [6, 0, 10], [7, 0, 12], [8, 0, 14], [9, 0, 16], [10, 0, 18]]
+force dimensions density,length,time (1, 4, -2) momentum (1, 4, -1) vector zero [(0, 0, 0)] empty set []
+exponent -2 angular integral 2*pi*log((b + d)/(-b + d))/(b*d) samples d=5 b=2 0.532372946718957831413392263239168309
+both signed log intervals orientation +,- -log(6/5) + log(8/5) log(2/5) - log(4/5)
+full azimuth sine sine, sine cosine pi 0

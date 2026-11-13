@@ -1,0 +1,625 @@
+{
+  "status": "Builder run; independent build review pending",
+  "implementation": "d208b638ffe99e7ba5d719b148fafe2ca872fd84bdbcd31fb93cbe42f6269595",
+  "decision_commit": "2603dc7c",
+  "engine_commits": {
+    "reading": "cc62dc9f",
+    "original": "3192123b"
+  },
+  "previous_comparator_commit": "5a019394",
+  "repository_inputs": {
+    "py_original": {
+      "path": "research/pde_ledger_v3/scripts/out/S15_two_drain_region.out",
+      "sha256": "4839b124811e88b6c0cd99dda9a9518776418df93e16ac8073063e142f34fc8c",
+      "bytes": 24641539
+    },
+    "py_reading": {
+      "path": "research/pde_ledger_v3/scripts/out/S15_separation_departure.out",
+      "sha256": "10160f89704d910139b0401fbbcc1419078e45e915a2f1e663f24807647182d6",
+      "bytes": 192065031
+    },
+    "wl_original": {
+      "path": "research/pde_ledger_v3/mathematica/out/S15_two_drain_region.out",
+      "sha256": "811bea8c58f18b52566f3de9661e501994aa5d8cd9fcde5e3610ae2aefc215a6",
+      "bytes": 9797390
+    },
+    "wl_reading": {
+      "path": "research/pde_ledger_v3/mathematica/out/S15_separation_departure.out",
+      "sha256": "75622128d04da2d934c2a52468505b4438fff9f17a902d7a6cd35993d769b6c4",
+      "bytes": 333550018
+    }
+  },
+  "source_sha256": {
+    "S15_reading_comparator.py": "d85d0241e4db5c872cdb40c8837d82e15fa5d988fb5173503404c3b65b4cd47f",
+    "S15_reading_math.py": "303e9d77939fbb09422055c968f463e5a1ed16a6f37ffeed1c597f7287cc1c34",
+    "S15_reading_input_inventory.py": "82a6ed9efc952e013b8bc3e0c5f61fbc0b1ae6e76e451fa1185fc15998dcba7c",
+    "S15_cross_engine_comparator.py": "786ff802b0bcf54b1e8103f596bc7af3216eafc800a524106e23ee293fdd11aa",
+    "S15_reading_review_controls.py": "74b4a763452c914a851a2202564105ffde360a59d9f46217bef0bf55f893fb94",
+    "S15_reading_refinement.py": "9af79d343739c2b93e27980db4edb6b137facb0c0d3249670baa38b5d1065a2e",
+    "S15_reading_log_branches.py": "ac20d68ef4708aa566eb3ddab25e1144a7309c0696cf516dd408069c4b931326",
+    "S15_reading_context_checks.py": "3f66e976514c36107e2dc536152d72a44f2f2e1c7d88b336603ea1d721ccf7a7",
+    "test_S15_reading_comparator.py": "a522e7c08b7ac83b9275abe8f546c25576ad57a6521894490ed30d6c2e8c52d3",
+    "S15_reading_report.py": "58fb07e44619219550f17ef55dc66687a6657fd1bcda56a5b8fefdc92055d449"
+  },
+  "guard_source_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+  "runs": {
+    "objects": {
+      "directory": "_scratch/s11c/s15-r1-calculation/objects",
+      "unit": "s11c-guard-234d4442b388",
+      "actual_limits": {
+        "memory.max": "51539607552",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-234d4442b388.service",
+        "nice": 0,
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpaceBytes": [
+          51539607552,
+          51539607552
+        ],
+        "systemd.CPUAffinity": "0-7",
+        "affinityEnforcement": "systemd-and-inherited-process"
+      },
+      "guard_child_command": [
+        "/usr/bin/env",
+        "PYTHONPATH=/var/projects/toy_physics/research/pde_ledger_v3/scripts",
+        "/usr/bin/python3",
+        "-B",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/S15_reading_comparator.py",
+        "--output",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/results/objects",
+        "--workers",
+        "8",
+        "--reuse-exact",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/r0/packet/research/pde_ledger_v3/scripts/out/S15_reading_comparator_details.out",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/r0/packet/research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_run_manifest.json",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/r0/packet/research/pde_ledger_v3/scripts/S15_reading_math.py"
+      ],
+      "pool": "s15-r1-comparator",
+      "started_utc": "2026-11-13T05:38:15.403442+00:00",
+      "last_resource_sample_utc": "2026-11-13T06:02:35.199084+00:00",
+      "guard_runtime_seconds": 1459.7996311150491,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "sampled_memory_peak_bytes": 5234089984,
+      "guard_outcome": {
+        "exitCode": 0,
+        "wallSeconds": 1459.7996311150491,
+        "unit": "s11c-guard-234d4442b388",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 1459.729394536931,
+          "childPid": 583720
+        }
+      },
+      "guard_receipt_sha256": "0b44570c2b0f0e54589cb9439f57153069efd545a6d1a55e4749f0247bbc4ed5",
+      "end_receipt_utc": "2026-11-13T06:02:35.224338+00:00"
+    },
+    "context01": {
+      "directory": "_scratch/s11c/s15-r1-calculation/context01",
+      "unit": "s11c-guard-345b79f336d5",
+      "actual_limits": {
+        "memory.max": "5368709120",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-345b79f336d5.service",
+        "nice": 0,
+        "affinity": [
+          7
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpaceBytes": [
+          5368709120,
+          5368709120
+        ],
+        "systemd.CPUAffinity": "7",
+        "affinityEnforcement": "systemd-and-inherited-process"
+      },
+      "guard_child_command": [
+        "/usr/bin/env",
+        "PYTHONPATH=/var/projects/toy_physics/research/pde_ledger_v3/scripts",
+        "/usr/bin/python3",
+        "-B",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/S15_reading_context_checks.py",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/results/objects"
+      ],
+      "pool": "s15-r1-comparator",
+      "started_utc": "2026-11-13T06:02:35.256201+00:00",
+      "last_resource_sample_utc": "2026-11-13T06:02:39.483139+00:00",
+      "guard_runtime_seconds": 4.232775177806616,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "sampled_memory_peak_bytes": 140554240,
+      "guard_outcome": {
+        "exitCode": 0,
+        "wallSeconds": 4.232775177806616,
+        "unit": "s11c-guard-345b79f336d5",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 4.1674034770112485,
+          "childPid": 591057
+        }
+      },
+      "guard_receipt_sha256": "1fec12454058446c71918ecad1edf0c4adf509089b48cf02c5424ba68a1f636a"
+    },
+    "precision01": {
+      "directory": "_scratch/s11c/s15-r1-calculation/precision01",
+      "unit": "s11c-guard-be8387e98947",
+      "actual_limits": {
+        "memory.max": "51539607552",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-be8387e98947.service",
+        "nice": 0,
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpaceBytes": [
+          51539607552,
+          51539607552
+        ],
+        "systemd.CPUAffinity": "0-7",
+        "affinityEnforcement": "systemd-and-inherited-process"
+      },
+      "guard_child_command": [
+        "/usr/bin/env",
+        "PYTHONPATH=/var/projects/toy_physics/research/pde_ledger_v3/scripts",
+        "/usr/bin/python3",
+        "-B",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/S15_reading_refinement.py",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/results/objects"
+      ],
+      "pool": "s15-r1-comparator",
+      "started_utc": "2026-11-13T06:02:39.543193+00:00",
+      "last_resource_sample_utc": "2026-11-13T06:03:54.797215+00:00",
+      "guard_runtime_seconds": 75.25999565212987,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "sampled_memory_peak_bytes": 1247305728,
+      "guard_outcome": {
+        "exitCode": 0,
+        "wallSeconds": 75.25999565212987,
+        "unit": "s11c-guard-be8387e98947",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 75.1926082901191,
+          "childPid": 591077
+        }
+      },
+      "guard_receipt_sha256": "c7701ac7702d86337837fb0bdf85b791b958ecbd21923b867cdac3d034a3f8d3"
+    },
+    "jointlogs01": {
+      "directory": "_scratch/s11c/s15-r1-calculation/jointlogs01",
+      "unit": "s11c-guard-680b900cb683",
+      "actual_limits": {
+        "memory.max": "25769803776",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-680b900cb683.service",
+        "nice": 0,
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpaceBytes": [
+          25769803776,
+          25769803776
+        ],
+        "systemd.CPUAffinity": "0-7",
+        "affinityEnforcement": "systemd-and-inherited-process"
+      },
+      "guard_child_command": [
+        "/usr/bin/env",
+        "PYTHONPATH=/var/projects/toy_physics/research/pde_ledger_v3/scripts",
+        "/usr/bin/python3",
+        "-B",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/S15_reading_log_branches.py",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/results/objects"
+      ],
+      "pool": "s15-r1-comparator",
+      "started_utc": "2026-11-13T06:03:54.857117+00:00",
+      "last_resource_sample_utc": "2026-11-13T06:04:10.542560+00:00",
+      "guard_runtime_seconds": 15.69524832488969,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "sampled_memory_peak_bytes": 758820864,
+      "guard_outcome": {
+        "exitCode": 0,
+        "wallSeconds": 15.69524832488969,
+        "unit": "s11c-guard-680b900cb683",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 15.622506027808413,
+          "childPid": 591254
+        }
+      },
+      "guard_receipt_sha256": "b91efb412d0bca1d26f8808cd775a878a3467f7992f98dcaefaef748c4655a32"
+    },
+    "controls01": {
+      "directory": "_scratch/s11c/s15-r1-controls/jets",
+      "unit": "s11c-guard-e25a02a66b52",
+      "actual_limits": {
+        "memory.max": "6442450944",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-e25a02a66b52.service",
+        "nice": 0,
+        "affinity": [
+          7
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpaceBytes": [
+          6442450944,
+          6442450944
+        ],
+        "systemd.CPUAffinity": "7",
+        "affinityEnforcement": "systemd-and-inherited-process"
+      },
+      "guard_child_command": [
+        "/usr/bin/env",
+        "PYTHONPATH=/var/projects/toy_physics/research/pde_ledger_v3/scripts",
+        "/usr/bin/python3",
+        "-B",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/test_S15_reading_comparator.py"
+      ],
+      "pool": "s15-r1-controls",
+      "started_utc": "2026-11-13T05:33:41.896579+00:00",
+      "last_resource_sample_utc": "2026-11-13T05:33:43.136163+00:00",
+      "guard_runtime_seconds": 1.2429782259278,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "sampled_memory_peak_bytes": 82669568,
+      "guard_outcome": {
+        "exitCode": 0,
+        "wallSeconds": 1.2429782259278,
+        "unit": "s11c-guard-e25a02a66b52",
+        "stderrBytes": 740,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 1.1676882680039853,
+          "childPid": 576295
+        }
+      },
+      "guard_receipt_sha256": "ba7ad4fb198d04882e8714146b7ebb9c4337d53cf1779d141d1a2986afe762af"
+    },
+    "native_controls": {
+      "directory": "_scratch/s11c/s15-r1-controls/native-grid",
+      "unit": "s11c-guard-fda3396af110",
+      "actual_limits": {
+        "memory.max": "6442450944",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-fda3396af110.service",
+        "nice": 0,
+        "affinity": [
+          7
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpaceBytes": [
+          6442450944,
+          6442450944
+        ],
+        "systemd.CPUAffinity": "7",
+        "affinityEnforcement": "systemd-and-inherited-process"
+      },
+      "guard_child_command": [
+        "/usr/bin/env",
+        "PYTHONPATH=/var/projects/toy_physics/research/pde_ledger_v3/scripts",
+        "/usr/bin/python3",
+        "-B",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/S15_reading_review_controls.py",
+        "_scratch/s15/reading_comparator_build/full01"
+      ],
+      "pool": "s15-r1-grid",
+      "started_utc": "2026-11-13T05:35:35.227472+00:00",
+      "last_resource_sample_utc": "2026-11-13T05:36:52.986175+00:00",
+      "guard_runtime_seconds": 77.7594052401837,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "sampled_memory_peak_bytes": 403517440,
+      "guard_outcome": {
+        "exitCode": 0,
+        "wallSeconds": 77.7594052401837,
+        "unit": "s11c-guard-fda3396af110",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 77.69072123314254,
+          "childPid": 579967
+        }
+      },
+      "guard_receipt_sha256": "d8331f4957e87a55c46fe432ecf5b28b2a4c9a675ca91b0498742b76950ae0f8"
+    }
+  },
+  "engine_sources": {
+    "research/pde_ledger_v3/scripts/S15_separation_departure.py": "8b4ecfe996341f3fdeeb55725e219fa874eaaf5bad8ec02e15c4da100c7725c8",
+    "research/pde_ledger_v3/scripts/S15_two_drain_region.py": "55f1716333c04b64ce0ea2745463cf180ceef3d692f2b01ddf769570611986dc",
+    "research/pde_ledger_v3/mathematica/S15_separation_departure.wl": "366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2",
+    "research/pde_ledger_v3/mathematica/S15_two_drain_region.wl": "37fa7ec54b9c91c4a59b364f60f629c36180ac34f5836e8a3b7e0b9996d030ec"
+  },
+  "reproduction_commands": [
+    "python3 scripts/s11c_guarded_run.py --pool s15-reading-comparator --memory-gib 48 --all-cpus-exclusive --log-directory _scratch/s11c/s15-r1-calculation/objects -- /usr/bin/env PYTHONPATH=/var/projects/toy_physics/research/pde_ledger_v3/scripts /usr/bin/python3 -B /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/S15_reading_comparator.py --output /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/results/objects --workers 8 --reuse-exact /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/r0/packet/research/pde_ledger_v3/scripts/out/S15_reading_comparator_details.out /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/r0/packet/research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_run_manifest.json /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/r0/packet/research/pde_ledger_v3/scripts/S15_reading_math.py",
+    "python3 scripts/s11c_guarded_run.py --pool s15-reading-comparator --memory-gib 5 --log-directory _scratch/s11c/s15-r1-calculation/context01 -- /usr/bin/env PYTHONPATH=/var/projects/toy_physics/research/pde_ledger_v3/scripts /usr/bin/python3 -B /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/S15_reading_context_checks.py /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/results/objects",
+    "python3 scripts/s11c_guarded_run.py --pool s15-reading-comparator --memory-gib 48 --all-cpus-exclusive --log-directory _scratch/s11c/s15-r1-calculation/precision01 -- /usr/bin/env PYTHONPATH=/var/projects/toy_physics/research/pde_ledger_v3/scripts /usr/bin/python3 -B /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/S15_reading_refinement.py /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/results/objects",
+    "python3 scripts/s11c_guarded_run.py --pool s15-reading-comparator --memory-gib 24 --all-cpus-exclusive --log-directory _scratch/s11c/s15-r1-calculation/jointlogs01 -- /usr/bin/env PYTHONPATH=/var/projects/toy_physics/research/pde_ledger_v3/scripts /usr/bin/python3 -B /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/S15_reading_log_branches.py /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/results/objects",
+    "python3 scripts/s11c_guarded_run.py --pool s15-reading-comparator --memory-gib 6 --log-directory _scratch/s11c/s15-r1-controls/jets -- /usr/bin/env PYTHONPATH=/var/projects/toy_physics/research/pde_ledger_v3/scripts /usr/bin/python3 -B /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/test_S15_reading_comparator.py",
+    "python3 scripts/s11c_guarded_run.py --pool s15-reading-comparator --memory-gib 6 --log-directory _scratch/s11c/s15-r1-controls/native-grid -- /usr/bin/env PYTHONPATH=/var/projects/toy_physics/research/pde_ledger_v3/scripts /usr/bin/python3 -B /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/S15_reading_review_controls.py _scratch/s15/reading_comparator_build/full01"
+  ],
+  "controls_verbatim": [
+    "test_dimension_empty_and_nonzero_sign (__main__.ComparatorChecks.test_dimension_empty_and_nonzero_sign) ... ok",
+    "test_held_zero_and_live_velocity_change (__main__.ComparatorChecks.test_held_zero_and_live_velocity_change) ... ok",
+    "test_live_drain_slot_and_evaluation_point (__main__.ComparatorChecks.test_live_drain_slot_and_evaluation_point) ... ok",
+    "test_one_sided_branch_change (__main__.ComparatorChecks.test_one_sided_branch_change) ... ok",
+    "test_roster_and_signed_surface_sources (__main__.ComparatorChecks.test_roster_and_signed_surface_sources) ... ok",
+    "test_stationary_sample_jets (__main__.ComparatorChecks.test_stationary_sample_jets) ... ok",
+    "",
+    "----------------------------------------------------------------------",
+    "Ran 6 tests in 0.623s",
+    "",
+    "OK"
+  ],
+  "versions": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "sympy": "1.14.0",
+    "scipy": "1.15.3",
+    "numpy": "1.26.4",
+    "mpmath": "1.3.0"
+  },
+  "transcript": {
+    "path": "_scratch/s15/reading_comparator_build_review/repair_work/results/publication/scripts/out/S15_reading_comparator.out",
+    "bytes": 19052,
+    "sha256": "834aafbdc7493fa6a14cfc6d8489ea6e997b46f7359509c05dffd5044c28f4f6"
+  },
+  "detail_archive": {
+    "path": "_scratch/s15/reading_comparator_build_review/repair_work/results/publication/scripts/out/S15_reading_comparator_details.out",
+    "bytes": 15278080,
+    "sha256": "206109b070a649e8bbcd9c6a77766acd1e8a98290a17c7ec9408af9609741ae4",
+    "format": "POSIX tar of JSON and gzip JSON records"
+  },
+  "transcript_summary_lines_verbatim": [
+    "{\"counts\":{\"py_original\":2231,\"py_reading\":20811,\"wl_original\":1370,\"wl_reading\":26767},\"gaps\":{\"py\":{\"duplicate_manifest_keys\":[],\"manifest_extra\":[],\"manifest_missing\":[],\"stream_extra\":[],\"stream_missing\":[]},\"wl\":{\"duplicate_manifest_keys\":[],\"manifest_extra\":[],\"manifest_missing\":[],\"stream_extra\":[],\"stream_missing\":[]}},\"objects\":336,\"record\":\"roster\"}",
+    "{\"counts\":{\"progress\":18,\"source\":2213},\"record\":\"native_roles\",\"stream\":\"py_original\"}",
+    "{\"counts\":{\"excluded_item4\":1008,\"original_context\":2213,\"progress\":1216,\"reading_context\":2310,\"scoped\":14064},\"record\":\"native_roles\",\"stream\":\"py_reading\"}",
+    "{\"counts\":{\"progress\":17,\"source\":1353},\"record\":\"native_roles\",\"stream\":\"wl_original\"}",
+    "{\"counts\":{\"excluded_item4\":4862,\"original_context\":1352,\"progress\":1467,\"reading_context\":2862,\"scoped\":16224},\"record\":\"native_roles\",\"stream\":\"wl_reading\"}",
+    "{\"counts\":{\"direct_exact_identity\":309,\"sum_exact_identity\":27},\"record\":\"reading_to_original\",\"role\":\"py_same_engine\"}",
+    "{\"counts\":{\"direct_exact_identity\":309,\"sum_exact_identity\":27},\"record\":\"reading_to_original\",\"role\":\"wl_same_engine\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":33},\"field\":\"cross / E_geo\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / E_geo/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_geo/dimension_operands\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_geo/dimension_pair_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_geo/dimension_reference_operand\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_geo/dimension_reference_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":279,\"sample_agreement\":57},\"field\":\"cross / E_resp\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / E_resp/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_resp/dimension_operands\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_resp/dimension_pair_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_resp/dimension_reference_operand\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_resp/dimension_reference_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":33},\"field\":\"cross / Q\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / Q/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / Q_operand/item3/exponent_divisor_loci\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / Q_operand/item3/exponent_divisor_loci/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / Q_operand/item3/exponent_divisor_supports\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / Q_operand/item3/exponent_divisor_supports/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_difference\":336},\"field\":\"cross / departure_existence_condition\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":279,\"sample_agreement\":57},\"field\":\"cross / departure_partition/operand_a\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":279,\"sample_agreement\":57},\"field\":\"cross / departure_partition/operand_b\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / departure_partition/residual\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":96,\"sample_agreement\":48},\"field\":\"cross / item3/Q_closed_operand\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":144},\"field\":\"cross / item3/Q_closed_operand/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_difference\":336},\"field\":\"cross / item3/existence_condition\",\"record\":\"field\"}",
+    "{\"counts\":{\"same_exponent_loci\":330,\"unresolved\":6},\"field\":\"cross / item3/exponent_branch_inventory\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / item3/exponent_divisor_loci\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / item3/exponent_divisor_loci/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / item3/exponent_divisor_supports\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / item3/exponent_divisor_supports/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":108,\"sample_agreement\":228},\"field\":\"cross / item3/family_integral\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / item3/family_integral/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":132,\"sample_agreement\":202,\"sample_difference\":2},\"field\":\"cross / item3/object\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / item3/object/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":336},\"field\":\"cross / item3/retained_Appell_parameters\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_difference\":336},\"field\":\"cross / item3/status\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":279,\"sample_agreement\":57},\"field\":\"cross / separation_derivative\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / separation_derivative/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / velocity_part_1/dimension_operands\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / velocity_part_1/dimension_pair_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / velocity_part_1/dimension_reference_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":324,\"sample_agreement\":12},\"field\":\"cross / velocity_part_1/object\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / velocity_part_1/object/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":33},\"field\":\"cross / velocity_part_1/operand_a\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":33},\"field\":\"cross / velocity_part_1/operand_b\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":324,\"sample_agreement\":12},\"field\":\"cross / velocity_part_1/residual\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / velocity_part_2/dimension_operands\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / velocity_part_2/dimension_pair_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / velocity_part_2/dimension_reference_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":318,\"sample_agreement\":18},\"field\":\"cross / velocity_part_2/object\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / velocity_part_2/object/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":33},\"field\":\"cross / velocity_part_2/operand_a\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":33},\"field\":\"cross / velocity_part_2/operand_b\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":318,\"sample_agreement\":18},\"field\":\"cross / velocity_part_2/residual\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"py_same_engine / original_Q\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"wl_same_engine / original_Q\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":96,\"sample_agreement\":46,\"sample_difference\":2},\"form\":\"closed\",\"record\":\"family_result\"}",
+    "{\"counts\":{\"exact_identity\":36,\"sample_agreement\":156},\"form\":\"integral\",\"record\":\"family_result\"}",
+    "{\"counts\":{\"exact_identity\":3},\"field\":\"E_geo\",\"record\":\"different_literal_zero_spelling\"}",
+    "{\"counts\":{\"exact_identity\":72},\"field\":\"E_resp\",\"record\":\"different_literal_zero_spelling\"}",
+    "{\"counts\":{\"separated\":52,\"within_estimate\":40628},\"record\":\"separate_numerical_cases\"}",
+    "{\"counts\":{\"0\":294,\"2\":6,\"3\":6,\"4\":12,\"6\":6,\"8\":6,\"14\":6},\"record\":\"exponent_boundaries_per_object\"}",
+    "{\"counts\":{\"within_estimate\":990},\"field\":\"cross / E_geo\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":1710},\"field\":\"cross / E_resp\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":990},\"field\":\"cross / Q\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":1710},\"field\":\"cross / departure_partition/operand_a\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":1710},\"field\":\"cross / departure_partition/operand_b\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":8820},\"field\":\"cross / item3/Q_closed_operand\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":14220},\"field\":\"cross / item3/family_integral\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"separated\":52,\"within_estimate\":13448},\"field\":\"cross / item3/object\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":1710},\"field\":\"cross / separation_derivative\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":360},\"field\":\"cross / velocity_part_1/object\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":990},\"field\":\"cross / velocity_part_1/operand_a\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":990},\"field\":\"cross / velocity_part_1/operand_b\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":360},\"field\":\"cross / velocity_part_1/residual\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":540},\"field\":\"cross / velocity_part_2/object\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":990},\"field\":\"cross / velocity_part_2/operand_a\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":990},\"field\":\"cross / velocity_part_2/operand_b\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"within_estimate\":540},\"field\":\"cross / velocity_part_2/residual\",\"record\":\"sample_cases_per_field\"}",
+    "{\"field\":\"family/choice\",\"record\":\"family_context\",\"status\":\"text_difference\"}",
+    "{\"field\":\"profile_family/chart_note\",\"record\":\"family_context\",\"status\":\"text_difference\"}",
+    "{\"field\":\"family/changing_function_heads\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"family/changing_function_heads\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"family/held\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"family/centre_velocity_changes\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"family/centre_substitution\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"profile_family/separation_chart\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"profile_family/chart_condition\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"profile_family/substitution\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"family/response_dimension_signatures\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"counts\":{\"exact_identity\":47},\"record\":\"kernel_checks\"}",
+    "{\"counts\":{\"matches_declared_slot\":393,\"no_wl_declared_slot\":3,\"sympy_only_bound_or_trig_check\":10},\"python_empty\":[[\"integral_bound\",\"theta\",\"0\"],[\"integral_bound\",\"phi\",\"0\"]],\"record\":\"observed_argument_checks\"}",
+    "{\"nonfalse\":0,\"record\":\"wolfram_native_divisor_audit\",\"records\":288,\"supports\":1044}",
+    "{\"counts\":{\"E_geo\":\"exact_identity\",\"E_resp\":\"sample_agreement\",\"Q\":\"exact_identity\",\"velocity_part_1/residual\":\"exact_identity\",\"velocity_part_2/residual\":\"exact_identity\"},\"object\":\"both_surfaces/sum_crossing/component_1\",\"record\":\"signed_crossing\"}",
+    "{\"counts\":{\"E_geo\":\"exact_identity\",\"E_resp\":\"sample_agreement\",\"Q\":\"exact_identity\",\"velocity_part_1/residual\":\"exact_identity\",\"velocity_part_2/residual\":\"exact_identity\"},\"object\":\"both_surfaces/sum_crossing/component_2\",\"record\":\"signed_crossing\"}",
+    "{\"counts\":{\"E_geo\":\"exact_identity\",\"E_resp\":\"sample_agreement\",\"Q\":\"exact_identity\",\"velocity_part_1/residual\":\"exact_identity\",\"velocity_part_2/residual\":\"exact_identity\"},\"object\":\"both_surfaces/sum_crossing/component_3\",\"record\":\"signed_crossing\"}",
+    "{\"counts\":{\"within_precision_estimate\":52},\"record\":\"precision_rechecks\"}",
+    "{\"case\":[\"mixed_cubic\",\"generic\",1,\"locus_6\"],\"estimate\":\"2.27716660062e-32\",\"exponents\":[\"-2\",\"13/4\",\"11/8\",\"5/2\"],\"field\":\"item3/object\",\"object\":\"inner/carried/component_2/labels_drain1+drain2\",\"old_residual\":-3.091814448907826e-07,\"record\":\"precision_example\",\"status\":\"within_precision_estimate\",\"values_and_residual\":[[\"-227.714346647754096494811716222641109117636772\",\"-227.714346647754096494811716222641109117641709\",\"4.93739106114063346037550576294702209359812614e-39\"],[\"-227.714346647754096494811716222641109117612791317832477909180884521575199893\",\"-227.714346647754096494811716222641109117612791317832477909180884521575209087\",\"9.19395505351082806533956127255998075752115625459822370201651505245408676646e-69\"]]}",
+    "{\"occurrences\":4812,\"record\":\"unpaired_internal_kernel_occurrences\"}",
+    "{\"counts\":{\"within_estimate\":7560},\"record\":\"additional_branch_samples\"}",
+    "{\"elementary_boundaries\":8,\"explicit_wolfram_intersections\":6,\"objects\":6,\"record\":\"compound_branch_inventory\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":33},\"field\":\"Q\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":33},\"field\":\"E_geo\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":279,\"sample_agreement\":57},\"field\":\"E_resp\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":279,\"sample_agreement\":57},\"field\":\"separation_derivative\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"departure_partition/residual\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":132,\"sample_agreement\":204},\"field\":\"item3/object\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":96,\"sample_agreement\":48},\"field\":\"item3/Q_closed_operand\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":108,\"sample_agreement\":228},\"field\":\"item3/family_integral\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"same_elementary_loci\":6,\"same_exponent_loci\":330},\"field\":\"item3/exponent_branch_inventory\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":324,\"sample_agreement\":12},\"field\":\"velocity_part_1/residual\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":318,\"sample_agreement\":18},\"field\":\"velocity_part_2/residual\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":96,\"sample_agreement\":48},\"form\":\"closed\",\"record\":\"final_family_result\"}",
+    "{\"counts\":{\"exact_identity\":36,\"sample_agreement\":156},\"form\":\"integral\",\"record\":\"final_family_result\"}",
+    "{\"exact\":4704,\"fields\":14,\"record\":\"all_dimension_records\",\"total\":4704}",
+    "{\"record\":\"native_mutations\",\"verbatim\":[\"family/centre_substitution X_1_1(t): -> X_2_1(t): value_difference\",\"family/centre_substitution  + X_1_1(t), ->  + X_2_1(t), value_difference\",\"profile_family/chart_condition Reals -> Integers value_difference\",\"profile_family/chart_condition  | aa[2] ->  value_difference\",\"positive endpoint 0 original exact_identity 0\",\"positive endpoint 0 modified remaining_symbolic_difference -2*(kernel_D - kernel_r)\",\"angular moment (3, 0, 0) original exact_identity (kernel_az, 0, 2*pi)\",\"angular moment (3, 0, 0) modified azimuth_domain_difference (kernel_az, 0, pi)\",\"net response None None 0 {'within_estimate': 30} [-471.62271433819564, -471.6227143381955] -1.1368683772161603e-13 2.7192633372925455e-06\",\"detected form/stratum pairs []\",\"net response change[oo[1, 2]] change[oo[1, 1]] 1 {'separated': 30} [-471.62271433819564, -471.51825510489994] -0.1044592332956995 2.7192633372925455e-06\",\"detected form/stratum pairs [('mixed_cubic', 'X1_velocity_zero'), ('mixed_cubic', 'X2_and_radii_velocity_zero'), ('mixed_cubic', 'X2_velocity_zero'), ('mixed_cubic', 'generic'), ('mixed_cubic', 'radii_velocity_zero'), ('mixed_quadratic', 'X1_velocity_zero'), ('mixed_quadratic', 'X2_and_radii_velocity_zero'), ('mixed_quadratic', 'X2_velocity_zero'), ('mixed_quadratic', 'generic'), ('mixed_quadratic', 'radii_velocity_zero')]\",\"net response change[oo[1, 2]] change[oo[1, 3]] 1 {'separated': 30} [-471.62271433819564, -471.50711003455945] -0.11560430363618934 2.7192633372925455e-06\",\"detected form/stratum pairs [('mixed_cubic', 'X1_velocity_zero'), ('mixed_cubic', 'X2_and_radii_velocity_zero'), ('mixed_cubic', 'X2_velocity_zero'), ('mixed_cubic', 'generic'), ('mixed_cubic', 'radii_velocity_zero'), ('mixed_quadratic', 'X1_velocity_zero'), ('mixed_quadratic', 'X2_and_radii_velocity_zero'), ('mixed_quadratic', 'X2_velocity_zero'), ('mixed_quadratic', 'generic'), ('mixed_quadratic', 'radii_velocity_zero')]\",\"net response change[oo[1, 1]] change[oo[1, 2]] 2 {'separated': 30} [-471.62271433819564, -473.701280510447] 2.078566172251385 2.7213419034647972e-06\",\"detected form/stratum pairs [('mixed_cubic', 'X1_velocity_zero'), ('mixed_cubic', 'X2_and_radii_velocity_zero'), ('mixed_cubic', 'X2_velocity_zero'), ('mixed_cubic', 'generic'), ('mixed_cubic', 'radii_velocity_zero'), ('mixed_quadratic', 'X1_velocity_zero'), ('mixed_quadratic', 'X2_and_radii_velocity_zero'), ('mixed_quadratic', 'X2_velocity_zero'), ('mixed_quadratic', 'generic'), ('mixed_quadratic', 'radii_velocity_zero')]\"]}"
+  ],
+  "representative_exceptions_verbatim": [
+    "{\"field\":\"item3/exponent_branch_inventory\",\"object\":\"region/component_1/momentum_labels_drain1+drain2\",\"reason\":\"Unsupported: non-equality exponent branch Eq(-4, b_1) & Eq(-1, a_2)\",\"record\":\"exception\",\"role\":\"cross\",\"status\":\"unresolved\"}",
+    "{\"field\":\"item3/exponent_branch_inventory\",\"object\":\"region/component_1/rate_labels_drain1+drain2\",\"reason\":\"Unsupported: non-equality exponent branch Eq(-4, b_1) & Eq(-1, a_2)\",\"record\":\"exception\",\"role\":\"cross\",\"status\":\"unresolved\"}",
+    "{\"field\":\"item3/object\",\"first_case\":{\"case\":[\"mixed_cubic\",\"generic\",1,\"locus_6\"],\"exponents\":[\"-2\",\"13/4\",\"11/8\",\"5/2\"],\"refinement_delta\":0.0,\"residual\":-3.091814448907826e-07,\"status\":\"separated\",\"tolerance\":2.277143468649474e-07,\"values\":[[-227.7143468649474,-227.71434655576596],[-227.7143468649474,-227.71434655576596],[-227.7143468649474,-227.71434655576596]]},\"object\":\"inner/carried/component_2/labels_drain1+drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"separated\":40,\"within_estimate\":410},\"status\":\"sample_difference\"}",
+    "{\"field\":\"item3/object\",\"first_case\":{\"case\":[\"mixed_cubic\",\"generic\",1,\"locus_4\"],\"exponents\":[\"-1\",\"13/4\",\"11/8\",\"5/2\"],\"refinement_delta\":0.0,\"residual\":2.0355356511458922e-08,\"status\":\"separated\",\"tolerance\":1.415730162212571e-08,\"values\":[[14.15730162212571,14.157301601770353],[14.15730162212571,14.157301601770353],[14.15730162212571,14.157301601770353]]},\"object\":\"inner/transport_radius/component_2/labels_drain1+drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"separated\":12,\"within_estimate\":258},\"status\":\"sample_difference\"}"
+  ],
+  "accepted_artifacts": {
+    "decision": {
+      "git_object": "2603dc7c:research/pde_ledger_v3/directives/S15_reading_comparator_decision_list.md",
+      "sha256": "d0219b22a627d232ef127f7a416cb95be9d5bc83de44163b57886c0560c1c158"
+    },
+    "original manifest": {
+      "git_object": "3192123b:research/pde_ledger_v3/directives/_measurements/S15_build_run_record.md",
+      "sha256": "712fbb740ccdbcde49af5e7178ba273a699299b8d81a0044eba4641b348af068"
+    },
+    "SymPy manifest": {
+      "git_object": "cc62dc9f:research/pde_ledger_v3/directives/_measurements/S15_separation_departure_sympy_run_manifest.json",
+      "sha256": "4db3711ba500e588f5f3a63e671599f9bfb9b8be69dc0823ac29531a2bf2481a"
+    },
+    "Wolfram manifest": {
+      "git_object": "cc62dc9f:research/pde_ledger_v3/directives/_measurements/S15_separation_departure_wolfram_run_manifest.json",
+      "sha256": "112ee4351fa7bd55e84cd2603d5c74975829964f36a49688a149c56c369236d7"
+    }
+  },
+  "guarded_stage_source_notes": {
+    "context01": "Signed endpoints, full azimuth bounds, argument slots and native divisor flags.",
+    "precision01": "Closed-form precision refinements and compound exponent branches on the repaired profiles.",
+    "jointlogs01": "Remaining evaluable log-branch cases.",
+    "native_controls": "One-sided centre, domain, endpoint, azimuth and three native total response edits.",
+    "controls01": "Unit controls including 78 exact stationary velocity checks in two backends."
+  },
+  "report_command": "/usr/bin/python3 /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/S15_reading_report.py /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/results/objects --guard-parent /var/projects/toy_physics/_scratch/s11c/s15-r1-calculation --context-run context01 --publication /var/projects/toy_physics/_scratch/s15/reading_comparator_build_review/repair_work/results/publication --review-controls /var/projects/toy_physics/_scratch/s11c/s15-r1-controls/native-grid --unit-controls /var/projects/toy_physics/_scratch/s11c/s15-r1-controls/jets",
+  "reused_exact": {
+    "archive_sha256": "d8ad01707a8e8b7e4ba70607ac85da16d100e45b6c5fd7baedbc16c6880ee40f",
+    "manifest_sha256": "2ebd3e71550b9e267427102dff68f44b11d0e340c05d7f026de1ccf15e6e3c72",
+    "build_id": "8b7b89aa50abf59f2573e2499c7cea5d731b4a396cfcb63d97b0f9a4b178c173",
+    "eligible_native_pairs": 2580
+  }
+}

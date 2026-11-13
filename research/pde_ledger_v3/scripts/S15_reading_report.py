@@ -9,7 +9,7 @@ from pathlib import Path
 import sys
 import tarfile
 
-REPO=Path(__file__).resolve().parents[3]
+REPO=next(p for p in Path(__file__).resolve().parents if (p/'research/pde_ledger_v3').is_dir() and (p/'.git').exists())
 LEDGER=REPO/'research/pde_ledger_v3'
 MEASURE=LEDGER/'directives/_measurements'
 
@@ -51,6 +51,9 @@ def guarded(path):
 def main():
     cli=ArgumentParser(description=__doc__)
     cli.add_argument('root',type=Path)
+    cli.add_argument('--review-controls',type=Path,help='guard for the one-sided native mutations')
+    cli.add_argument('--unit-controls',type=Path,help='guard for the unit controls')
+    cli.add_argument('--publication',type=Path,help='optional alternate root for candidate outputs')
     cli.add_argument('--guard-parent',type=Path,required=True)
     cli.add_argument('--context-run',required=True)
     opt=cli.parse_args()
@@ -174,7 +177,9 @@ def main():
     report('separate_numerical_cases',counts=numsamples)
     report('exponent_boundaries_per_object',counts=widths['exponent_loci'])
     for key,v in sorted(sampled_residuals.items()):report('sample_cases_per_field',field=key,counts=v)
-    for row in context[:19]:report('family_context',field=row['field'],status=row['status'])
+    for row in context:
+        if 'normalized_py' in row or row['field'] in ('family/choice','profile_family/chart_note'):
+            report('family_context',field=row['field'],status=row['status'])
     report('kernel_checks',counts=Counter(q['status'] for q in aux['kernels']))
     report('observed_argument_checks',counts=Counter(q['status'] for q in aux['argument_slots']),
            python_empty=[q['argument'] for q in aux['argument_slots'] if not q['observed']])
@@ -267,7 +272,13 @@ def main():
     report('all_dimension_records',total=sum(sum(final_counts[k].values()) for k in dimension_fields),
            exact=sum(final_counts[k]['exact_identity'] for k in dimension_fields),fields=len(dimension_fields))
     for q in exceptions:report('exception',**q)
-    outpath=LEDGER/'scripts/out/S15_reading_comparator.out'
+    publish = opt.publication or LEDGER
+    (publish/'scripts/out').mkdir(parents=True,exist_ok=True)
+    (publish/'directives/_measurements').mkdir(parents=True,exist_ok=True)
+    if opt.review_controls:
+        run = guarded(opt.review_controls)
+        report('native_mutations',verbatim=(opt.review_controls/'stdout').read_text().splitlines())
+    outpath=publish/'scripts/out/S15_reading_comparator.out'
     tmp=outpath.with_suffix('.out.tmp')
     with tmp.open('w') as f:
         for line in lines:f.write(line+'\n')
@@ -281,12 +292,25 @@ def main():
                 tf.add(p,arcname=str(p.relative_to(root)),recursive=False)
     tmp.replace(archive)
     scripts={**config['sources']}
+    source_dir=Path(__file__).resolve().parent
+    def source_path(name):
+        candidate=source_dir/name
+        return candidate if candidate.exists() else LEDGER/'scripts'/name
+    if opt.review_controls:
+        name='S15_reading_review_controls.py'
+        scripts[name]=digest(source_path(name))
     for fn in ('S15_reading_refinement.py','S15_reading_log_branches.py','S15_reading_context_checks.py','test_S15_reading_comparator.py',Path(__file__).name):
-        scripts[fn]=digest(LEDGER/'scripts'/fn)
+        scripts[fn]=digest(source_path(fn))
     for fn,h in scripts.items():
-        if digest(LEDGER/'scripts'/fn)!=h:raise ValueError('comparator source changed: '+fn)
-    runs={name:guarded(opt.guard_parent/name) for name in ('controls01',root.name,opt.context_run,'precision01','divisors01','jointlogs01')}
-    controls=(opt.guard_parent/'controls01/stderr').read_text().splitlines()
+        if digest(source_path(fn))!=h:raise ValueError('comparator source changed: '+fn)
+    runs={name:guarded(opt.guard_parent/name) for name in (root.name,opt.context_run,'precision01','jointlogs01')}
+    unit_guard=opt.unit_controls or opt.guard_parent/'controls01'
+    runs['controls01']=guarded(unit_guard)
+    if opt.review_controls:
+        runs['native_controls']=guarded(opt.review_controls)
+    if (opt.guard_parent/'divisors01').exists():
+        runs['divisors01']=guarded(opt.guard_parent/'divisors01')
+    controls=(unit_guard/'stderr').read_text().splitlines()
     if not controls or controls[-1]!='OK':raise ValueError('builder controls not successful')
     manifest=dict(status='Builder run; independent build review pending',implementation=config['build_id'],
                   decision_commit='2603dc7c',engine_commits={'reading':'cc62dc9f','original':'3192123b'},
@@ -327,9 +351,17 @@ def main():
     if baseline.exists():
         manifest['runs'][opt.context_run]['source_sha256_at_launch']=digest(baseline)
     manifest['report_command']=shlex.join([sys.executable,*sys.argv])
+    if opt.review_controls:
+        manifest['guarded_stage_source_notes']={
+            opt.context_run:'Signed endpoints, full azimuth bounds, argument slots and native divisor flags.',
+            'precision01':'Closed-form precision refinements and compound exponent branches on the repaired profiles.',
+            'jointlogs01':'Remaining evaluable log-branch cases.',
+            'native_controls':'One-sided centre, domain, endpoint, azimuth and three native total response edits.',
+            'controls01':'Unit controls including 78 exact stationary velocity checks in two backends.'}
+        manifest['reused_exact']=config['reused_exact']
     manifest['runs'][root.name]['end_receipt_utc']=read(root.parent/(root.name+'.DONE.json'))['ended']
     manifest['versions']['mpmath']=version('mpmath')
-    path=MEASURE/'S15_reading_comparator_run_manifest.json'
+    path=publish/'directives/_measurements/S15_reading_comparator_run_manifest.json'
     path.write_text(json.dumps(manifest,indent=2,ensure_ascii=False)+'\n')
     for kind in ('roster','reading_to_original','kernel_checks','observed_argument_checks'):
         for line in lines:

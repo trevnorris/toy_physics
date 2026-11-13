@@ -2,6 +2,7 @@
 from collections import Counter
 from functools import lru_cache
 from itertools import product
+import hashlib
 import math
 import re
 
@@ -256,7 +257,7 @@ def branch_loci(text,engine):
 FORMS = original.FORMS[:2]
 STRATA = original.STRATA
 POINTS = original.POINTS
-RULES = (10, 16, 24)
+RULES = (16, 24, 32)
 GENERIC_EXP = ((1,2,3,4),(2,3,1,2),(3,1,2,3))
 
 def exponent_samples(point,loci):
@@ -271,16 +272,60 @@ def exponent_samples(point,loci):
         yield f'locus_{index}',tuple(values)
 
 
+def geometry_head(name):
+    return name in ('r_in', 'R') or re.fullmatch(r'X_[12]_[123]', name) is not None
+
+
 @lru_cache(maxsize=8192)
-def jet_function(name,arity,orders,form,stratum,point):
-    if name.endswith('_velocity_change'):
-        # A variation of instantaneous velocity is a free time function, also on a stationary stratum.
-        sample_head = 'response_' + name
-        original.CODES[sample_head] = original.CODES[name]
-    else:
-        sample_head = name
-    jet=original.profile_jet(sample_head,arity,orders,form,stratum,point,())
-    return s.lambdify(original.FORMAL[:arity],jet,modules='numpy',cse=True,docstring_limit=0)
+def sample_jet(name, arity, orders, form, stratum, point):
+    """Return the analytic jet and the time origin for its evaluation.
+
+    Geometry retains the original trajectories. In centred time the prescribed
+    slopes are exactly zero at the sample instant under both numerical backends.
+    All other fields, including velocity responses, have independent coefficients.
+    """
+    args = original.FORMAL[:arity]
+    if geometry_head(name):
+        instant = POINTS[point][-1]
+        jet = original.profile_jet(name, arity, orders, form, stratum, point, ())
+        return s.Poly(jet.subs(args[0], args[0] + instant), args[0]).as_expr(), instant
+    code = original.CODES[name]
+    degree = original.FORMS.index(form) + 2
+
+    def coefficient(slot):
+        key = f'{name}/{form}/{slot}'.encode()
+        number = int.from_bytes(hashlib.sha256(key).digest()[:4], 'big')
+        return s.Rational(1 + number % 997, 997)
+
+    # Scale the input coordinates before composing the fields. The two radial
+    # velocities are regular at the origin and pressure is a smooth function of
+    # the live total density. Neither the shell measures nor the operands change.
+    z = [arg / (32 if arity == 2 and j == 0 else 8 if arity == 4 and j < 3 else 1)
+         for j, arg in enumerate(args)]
+    radial = arity == 2 and name.startswith(('u_', 'rho_'))
+    if radial:
+        z[0] = z[0]**2
+    value = s.Rational(code, 128) + coefficient('offset')
+    for i, x in enumerate(z):
+        value += coefficient(('linear', i)) * x
+        if degree >= 3:
+            value += coefficient(('cubic', i)) * x**3
+        for j in range(i + 1):
+            value += coefficient(('quadratic', i, j)) * x*z[j]
+    if radial and name.startswith('u_'):
+        value *= args[0]/32
+    derivatives = [(arg, n) for arg, n in zip(args, orders, strict=True) if n]
+    return (s.diff(value, *derivatives) if derivatives else value), None
+
+
+@lru_cache(maxsize=8192)
+def jet_function(name, arity, orders, form, stratum, point):
+    jet, origin = sample_jet(name, arity, orders, form, stratum, point)
+    fn = s.lambdify(original.FORMAL[:arity], jet, modules='numpy', cse=True, docstring_limit=0)
+    if origin is None:
+        return fn
+    instant = float(origin)
+    return lambda t: fn(t - instant)
 
 
 @lru_cache(maxsize=32768)

@@ -1,0 +1,13 @@
+unique primary arithmetic sample rows 618 precision tallies {('high precision', 'within_precision_estimate'): 52, ('additional', 'within_estimate'): 7560} source of logged rechecks {'log replacements': 1620} unresolved early separated 0
+native source research/pde_ledger_v3/scripts/S15_two_drain_region.py 3192123b 55f1716333c04b64ce0ea2745463cf180ceef3d692f2b01ddf769570611986dc match True
+native source research/pde_ledger_v3/scripts/S15_separation_departure.py cc62dc9f 8b4ecfe996341f3fdeeb55725e219fa874eaaf5bad8ec02e15c4da100c7725c8 match True
+native source research/pde_ledger_v3/mathematica/S15_two_drain_region.wl 3192123b 37fa7ec54b9c91c4a59b364f60f629c36180ac34f5836e8a3b7e0b9996d030ec match True
+native source research/pde_ledger_v3/mathematica/S15_separation_departure.wl cc62dc9f 366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2 match True
+supplemental source declaration
+ {componentIndex,3}];
+changingHeads=Join[Table[uu[k],{k,2}],Table[rr[k],{k,2}],Table[ww[j],{j,3}],{vr,eta,zeta},Flatten[Table[oo[i,j],{i,3},{j,3}]],Table[ff[j],{j,3}]];
+Do[register[change[h],functionDims[ToString[h,InputForm]],argumentDims[ToString[h,InputForm]]],{h,changingHeads}];
+Do[register[centreVelocityChange[j],lenDim-timeDim,{timeDim}],{j,3}];
+centreVelocityAtoms=D[centres[[1]],t];
+all_sources_match_manifest True
+unpaired reasons {'Wolfram-only closed-family parameter or divisor audit': 1488} scoped missing ids []

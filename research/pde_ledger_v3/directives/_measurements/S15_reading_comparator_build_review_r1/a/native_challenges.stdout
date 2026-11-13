@@ -1,0 +1,34 @@
+geometry cases exact stationary slopes, nonzero orders 2,3 and live velocity responses mixed_quadratic generic 24
+geometry cases exact stationary slopes, nonzero orders 2,3 and live velocity responses mixed_quadratic X2_velocity_zero 24
+geometry cases exact stationary slopes, nonzero orders 2,3 and live velocity responses mixed_quadratic radii_velocity_zero 24
+geometry cases exact stationary slopes, nonzero orders 2,3 and live velocity responses mixed_quadratic X2_and_radii_velocity_zero 24
+geometry cases exact stationary slopes, nonzero orders 2,3 and live velocity responses mixed_quadratic X1_velocity_zero 24
+geometry cases exact stationary slopes, nonzero orders 2,3 and live velocity responses mixed_cubic generic 24
+geometry cases exact stationary slopes, nonzero orders 2,3 and live velocity responses mixed_cubic X2_velocity_zero 24
+geometry cases exact stationary slopes, nonzero orders 2,3 and live velocity responses mixed_cubic radii_velocity_zero 24
+geometry cases exact stationary slopes, nonzero orders 2,3 and live velocity responses mixed_cubic X2_and_radii_velocity_zero 24
+geometry cases exact stationary slopes, nonzero orders 2,3 and live velocity responses mixed_cubic X1_velocity_zero 24
+nonsymmetric native tensor response samples mixed_quadratic 9 [2.2314869291903485, 1.925350806238159, 2.2928804397567704, 2.197702397818455, 2.2789721790371114, 2.7518347887412236, 2.57243430012259, 2.3441428499038786, 2.136644154686281]
+nonsymmetric native tensor response samples mixed_cubic 9 [2.6168196885556845, 1.965235719453427, 2.0441734480680904, 1.8884154811354636, 2.5207454152324593, 1.9368696908932819, 2.598165764903289, 2.5943722518659134, 2.195365436864921]
+native binding py_reading:24642481 {X_1_1(t): family_epsilon*(X_1_1(t) - X_2_1(t)) + X_1_1(t), X_1_2(t): family_epsilon*(X_1_2(t) - X_2_2(t)) + X_1_2(t), X_1_3(t): family_epsilon*(X_1_3(t) - X_2_3(t)) + X_1_3(t)}
+native binding wl_reading:9802281 {xx[1, 1][t] -> dist*directionSeparation[1] + xx[2, 1][t], xx[1, 2][t] -> dist*directionSeparation[2] + xx[2, 2][t], xx[1, 3][t] -> dist*directionSeparation[3] + xx[2, 3][t]}
+native binding wl_reading:9802479 {dist > rout[t], directionSeparation[1]^2 + directionSeparation[2]^2 + directionSeparation[3]^2 == 1, Element[dist | directionSeparation[1] | directionSeparation[2] | directionSeparation[3] | aa[1] | aa[2] | bb[1] | bb[2], Reals]}
+one-sided context mutation wl profile_family/separation_chart xx[1, 2][t] -> => xx[2, 2][t] -> ['family/centre_substitution', 'profile_family/separation_chart']
+one-sided context mutation py family/centre_substitution  + X_1_2(t), =>  + X_2_2(t), ['family/centre_substitution']
+one-sided context mutation wl profile_family/domain Reals => Complexes ['profile_family/chart_condition']
+native kernel {'field': 'positive endpoint 0', 'left': 'py_reading:24648402', 'right': 'wl_reading:9803309', 'translated_py': 'kernel_D - kernel_r', 'translated_wl': 'Abs(kernel_D - kernel_r)', 'as_computed': 'kernel_D - kernel_r - Abs(kernel_D - kernel_r)', 'factored': 'kernel_D - kernel_r - Abs(kernel_D - kernel_r)', 'status': 'exact_identity', 'domain': 'D > r > 0; D = r + positive_gap', 'signed_wl': 'kernel_D - kernel_r', 'domain_residual': '0'}
+native kernel {'field': 'positive endpoint 1', 'left': 'py_reading:24648402', 'right': 'wl_reading:9803309', 'translated_py': 'kernel_D + kernel_r', 'translated_wl': 'Abs(kernel_D + kernel_r)', 'as_computed': 'kernel_D + kernel_r - Abs(kernel_D + kernel_r)', 'factored': 'kernel_D + kernel_r - Abs(kernel_D + kernel_r)', 'status': 'exact_identity', 'domain': 'D > r > 0; D = r + positive_gap', 'signed_wl': 'kernel_D + kernel_r', 'domain_residual': '0'}
+native kernel {'field': 'power primitive, exponent different from -1', 'left': 'py_reading:24649909', 'right': 'wl_reading:9804447', 'translated_py': 'kernel_w**(kernel_p + 1)/(kernel_p + 1)', 'translated_wl': 'kernel_w**(kernel_p + 1)/(kernel_p + 1)', 'as_computed': '0', 'factored': '0', 'status': 'exact_identity'}
+native kernel {'field': 'power primitive, exponent -1', 'left': 'py_reading:24649909', 'right': 'wl_reading:9804447', 'translated_py': 'log(kernel_w)', 'translated_wl': 'log(kernel_w)', 'as_computed': '0', 'factored': '0', 'status': 'exact_identity'}
+native kernel {'field': 'angular moment (0, 2, 0)', 'left': 'py_reading:25535183', 'right': 'wl_reading:16302002', 'translated_py': '3*pi*N_2**2*kernel_mu**2 - pi*N_2**2 - pi*kernel_mu**2 + pi', 'translated_wl': '3*pi*N_2**2*kernel_mu**2 - pi*N_2**2 - pi*kernel_mu**2 + pi', 'as_computed': '0', 'factored': '0', 'status': 'exact_identity', 'binding_operand': 'py_reading:25534286', 'integrand_minus_rotated_monomial': '0', 'powers': [0, 2, 0], 'wl_generator': 'wl_reading:16295904', 'py_bounds': '(kernel_az, 0, 2*pi)', 'wl_bounds': '(kernel_az, 0, 2*pi)'}
+full azimuth measured rows 19
+native Q/pi both_surfaces/sum_crossing/component_1 -318329609/161700 [-1968.643222016084, -1968.6432220160848]
+native Q/pi both_surfaces/sum_crossing/component_2 -4931616773/1455300 [-3388.7286284614847, -3388.7286284614847]
+native Q/pi both_surfaces/sum_crossing/component_3 -203095237/121275 [-1674.6669717583875, -1674.6669717583875]
+54 independent signed native sums max abs error in units of pi 1.9099388737231493e-11
+raw net response ('py_reading:183509539', 'wl_reading:258436735') 343089 668394
+archive actual accepted raw sample {'case': ['mixed_quadratic', 'generic', 0, 'generic'], 'exponents': ['9/8', '9/4', '27/8', '9/2'], 'values': [[-670.9094550225166, -670.9094550225165], [-670.9094550967478, -670.9094550967477], [-670.9094550967468, -670.9094550967469]], 'residual': 1.1368683772161603e-13, 'refinement_delta': 7.423125225614058e-08, 'tolerance': 1.2647594731458716e-06, 'status': 'within_estimate'}
+one-sided net native ablation wrong inner orientation -670.9094550967468 -671.1564699996496 0.24701490290283346 baseline empirical allowance 1.2647594731458716e-06
+one-sided net native ablation off diagonal same row -670.9094550967468 -670.8765776655126 -0.03287743123416931 baseline empirical allowance 1.2647594731458716e-06
+one-sided net native ablation transpose off diagonal -670.9094550967468 -670.8438116716796 -0.06564342506715093 baseline empirical allowance 1.2647594731458716e-06
+one-sided detections across all ten form/stratum pairs {'wrong inner orientation': 10, 'off diagonal same row': 10, 'transpose off diagonal': 10}

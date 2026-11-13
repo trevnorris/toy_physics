@@ -1,0 +1,2 @@
+Payload digests match native bytes before their respective accepted boundaries: {'py_original': 2213, 'py_reading': 18587, 'wl_original': 1353, 'wl_reading': 20438}
+Each referenced sum contains exactly its native component, surface(s), and original pressure/transport terms: [(('py', 'crossing'), 9), (('py', 'rest'), 9), (('py', 'transport'), 9), (('wl', 'crossing'), 9), (('wl', 'rest'), 9), (('wl', 'transport'), 9)]

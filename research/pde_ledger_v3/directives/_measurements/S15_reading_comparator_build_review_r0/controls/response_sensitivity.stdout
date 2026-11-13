@@ -1,0 +1,7 @@
+object both_surfaces/sum_crossing/component_1 E_resp native source occurrence IDs ['py_reading:176425206'] ['wl_reading:194089093']
+Two Wolfram occurrences of change[oo[1,1]] replaced with change[oo[1,2]], preserving the other fields and measures.
+Frozen published status sample_agreement {'within_estimate': 30} one-sided mutation sample_agreement {'within_estimate': 30}
+Isolated mutated Wolfram minus original Wolfram at quadrature order 24, first sample: -5340.914449136482
+Min/max of isolated signed changes across all 30 cases: -8509.085709066994 -169.77742498614634
+Nonzero isolated samples: 30 of 30
+First-case full baseline then mutated operands (order 24): [9.753159572506243e+25, 9.753159572506251e+25] [9.753159572506243e+25, 9.753159572506251e+25]

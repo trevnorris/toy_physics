@@ -1,0 +1,55 @@
+inner/transport_centre/component_1/labels_drain2 (values divided by pi; PY,WL; offsets are native payload start)
+Q (83615402, 60284893) -576 -576 diff/pi -1.14e-13
+E_geo (83635992, 60292098) -1152 -1152 diff/pi -2.27e-13
+E_resp (83642717, 60294765) -896 -896 diff/pi 3.41e-13
+separation_derivative (83622796, 60288123) -896 -896 diff/pi 3.41e-13
+departure_partition/operand_a (83655969, 60298692) -2048 -2048 diff/pi 0
+departure_partition/operand_b (83675535, 60304958) -2048 -2048 diff/pi 0
+departure_partition/residual (83695100, 60311223) 0 0 diff/pi 0
+item3/Q_closed_operand (83732737, 60330854) -512 -512 diff/pi 0
+item3/object (83733127, 60331358) -1024 -1024 diff/pi 0
+velocity_part_1/operand_a (83695988, 60312129) -576 -576 diff/pi -1.14e-13
+velocity_part_1/operand_b (83702557, 60314625) -576 -576 diff/pi -1.14e-13
+velocity_part_1/residual (83709125, 60317120) 0 0 diff/pi 0
+velocity_part_2/operand_a (83709662, 60317752) -576 -576 diff/pi -1.14e-13
+velocity_part_2/operand_b (83716231, 60320248) 0 0 diff/pi 0
+velocity_part_2/residual (83716358, 60320388) -576 -576 diff/pi -1.14e-13
+E_geo/dimension_reference_operand (83695382, 60311511) [(1, 4, -2)] {{1, 4, -2}}
+E_geo/dimension_pair_residuals (83695287, 60311414) [] {}
+E_geo/dimension_reference_residuals (83695489, 60311620) [(0, 0, 0)] {{0, 0, 0}}
+outer/transport_centre/component_1/labels_drain2 (values divided by pi; PY,WL; offsets are native payload start)
+Q (148363339, 119004863) 3024 3024 diff/pi 9.09e-13
+E_geo (148382922, 119012221) 6048 6048 diff/pi 1.82e-12
+E_resp (148389310, 119014949) 3216 3216 diff/pi 0
+separation_derivative (148370396, 119008154) 3216 3216 diff/pi 0
+departure_partition/operand_a (148401892, 119018968) 9264 9264 diff/pi 3.64e-12
+departure_partition/operand_b (148420451, 119025387) 9264 9264 diff/pi 3.64e-12
+departure_partition/residual (148439009, 119031805) 0 0 diff/pi 0
+item3/Q_closed_operand (148474358, 119050773) 3888 3888 diff/pi 0
+item3/object (148474744, 119051275) 7776 7776 diff/pi 0
+velocity_part_1/operand_a (148439897, 119032711) 3024 3024 diff/pi 9.09e-13
+velocity_part_1/operand_b (148446129, 119035268) 3024 3024 diff/pi 9.09e-13
+velocity_part_1/residual (148452360, 119037824) 0 0 diff/pi 0
+velocity_part_2/operand_a (148452897, 119038456) 3024 3024 diff/pi 9.09e-13
+velocity_part_2/operand_b (148459129, 119041013) 0 0 diff/pi 0
+velocity_part_2/residual (148459256, 119041153) 3024 3024 diff/pi 9.09e-13
+E_geo/dimension_reference_operand (148439291, 119032093) [(1, 4, -2)] {{1, 4, -2}}
+E_geo/dimension_pair_residuals (148439196, 119031996) [] {}
+E_geo/dimension_reference_residuals (148439398, 119032202) [(0, 0, 0)] {{0, 0, 0}}
+original inner/other/component_1 Q/pi 384 384 residual/pi 0 exact_zero True
+one-sided sign inner/other/component_1 Q/pi 384 -384 residual/pi 768 exact_zero False
+one-sided offdiagonal inner/other/component_1 Q/pi 384 469.333333333 residual/pi -85.3333333333 exact_zero False
+native derivative slot collapse y->z only on WL, component 1 response [63932833, 52397846]
+unchanged PY, WL baseline, WL changed -87350540.94736682 -87350540.94736682 -91136423.40796822
+good difference 0.0 exact_zero True
+bad difference 3785882.4606014043 exact_zero False
+signed original terms via exact difference with native reading Q
+py original 12 piece residual ==0 True
+wl original 12 piece residual ==0 True
+WL original reference inner other only sign reversed, exact difference zero? False equals twice native inner other? True
+native net E_resp only inner change[oo[1,2]] -> change[oo[1,3]]; native offsets 176425206 194089093
+raw cross status sample_agreement {'within_estimate': 30} -> sample_agreement {'within_estimate': 30}
+case ['mixed_quadratic', 'generic', 0, 'generic'] old [9.753159572506243e+25, 9.753159572506251e+25] -85899345920.0 changed [9.753159572506243e+25, 9.753159572506251e+25] -85899345920.0 tolerance 5.0019191518421305e+22
+unchanged PY value at all 30 points True
+number of changed rounded WL 24-node values 0
+isolated original minus mutated native WL at same point -90.54749767371234

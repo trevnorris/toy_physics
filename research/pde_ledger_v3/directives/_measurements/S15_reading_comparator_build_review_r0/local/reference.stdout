@@ -1,0 +1,11 @@
+angular second moment Matrix([[4*pi/3, 0, 0], [0, 4*pi/3, 0], [0, 0, 4*pi/3]])
+inner transport_centre component_1 drain2 Q, geometric, response, v1part, v2part: -576*pi -1152*pi -896*pi 0 -576*pi
+inner closed Q, E: -8*pi*A*B*radius**(a + b + 2)/3 -16*pi*A*B*radius**(a + b + 2)/3
+inner other last row independent; Q, sign flip, component 12<-13: 384*pi -384*pi 1408*pi/3
+outer transport_centre component_1 drain2 Q, geometric, response, v1part, v2part: 3024*pi 6048*pi 3216*pi 0 3024*pi
+outer closed Q, E: 8*pi*A*B*radius**(a + b + 2)/3 16*pi*A*B*radius**(a + b + 2)/3
+outer other last row independent; Q, sign flip, component 12<-13: -1296*pi 1296*pi -1584*pi
+crossing dimension (density,length,time) (1, 4, -2)
+angular branch k=-2 from r1^(-2) pi*log((d + r)/(d - r))/(d*r)
+angular branch k=-2 d=5 r=2 pi*log(7/3)/10
+angular k=0 4*pi

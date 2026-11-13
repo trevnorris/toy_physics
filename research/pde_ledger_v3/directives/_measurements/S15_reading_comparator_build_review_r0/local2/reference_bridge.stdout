@@ -1,0 +1,47 @@
+native sums/(4*pi) inner rest 1 ref 23/5 py,wl 4.600000000004191 4.6000000000041625 largest error 4.191313962564891e-12
+native sums/(4*pi) inner rest 2 ref -169/15 py,wl -11.266666666666653 -11.266666666666602 largest error 6.572520305780927e-14
+native sums/(4*pi) inner rest 3 ref -64/5 py,wl -12.799999999999986 -12.799999999999992 largest error 1.4210854715202004e-14
+native sums/(4*pi) inner transport 1 ref -1 py,wl -0.9999999999999934 -0.9999999999999934 largest error 6.5503158452884236e-15
+native sums/(4*pi) inner transport 2 ref -17/2 py,wl -8.499999999999996 -8.499999999999996 largest error 3.552713678800501e-15
+native sums/(4*pi) inner transport 3 ref -10 py,wl -10.000000000000002 -10.000000000000002 largest error 1.7763568394002505e-15
+native sums/(4*pi) inner crossing 1 ref 18/5 py,wl 3.6000000000041976 3.6000000000041696 largest error 4.197531211502792e-12
+native sums/(4*pi) inner crossing 2 ref -593/30 py,wl -19.766666666666648 -19.766666666666598 largest error 6.750155989720952e-14
+native sums/(4*pi) inner crossing 3 ref -114/5 py,wl -22.79999999999999 -22.799999999999994 largest error 1.0658141036401503e-14
+native sums/(4*pi) outer rest 1 ref -176/5 py,wl -35.200000000134 -35.2000000001341 largest error 1.340936250926461e-10
+native sums/(4*pi) outer rest 2 ref 1328/15 py,wl 88.53333333333313 88.53333333333283 largest error 4.973799150320701e-13
+native sums/(4*pi) outer rest 3 ref 528/5 py,wl 105.59999999999985 105.60000000000018 largest error 1.8474111129762605e-13
+native sums/(4*pi) outer transport 1 ref 8 py,wl 7.999999999999871 7.999999999999871 largest error 1.2878587085651816e-13
+native sums/(4*pi) outer transport 2 ref 400/9 py,wl 44.44444444444449 44.44444444444449 largest error 4.973799150320701e-14
+native sums/(4*pi) outer transport 3 ref 376/9 py,wl 41.77777777777793 41.77777777777793 largest error 1.4921397450962104e-13
+native sums/(4*pi) outer crossing 1 ref -136/5 py,wl -27.200000000134125 -27.200000000134228 largest error 1.3422862821244053e-10
+native sums/(4*pi) outer crossing 2 ref 5984/45 py,wl 132.97777777777762 132.97777777777733 largest error 4.547473508864641e-13
+native sums/(4*pi) outer crossing 3 ref 6632/45 py,wl 147.3777777777778 147.3777777777781 largest error 3.410605131648481e-13
+native sums/(4*pi) both_surfaces rest 1 ref -153/5 py,wl -30.600000000129807 -30.60000000012994 largest error 1.2993695008844952e-10
+native sums/(4*pi) both_surfaces rest 2 ref 1159/15 py,wl 77.26666666666648 77.26666666666624 largest error 4.263256414560601e-13
+native sums/(4*pi) both_surfaces rest 3 ref 464/5 py,wl 92.79999999999987 92.8000000000002 largest error 1.9895196601282805e-13
+native sums/(4*pi) both_surfaces transport 1 ref 7 py,wl 6.999999999999877 6.999999999999877 largest error 1.2256862191861728e-13
+native sums/(4*pi) both_surfaces transport 2 ref 647/18 py,wl 35.9444444444445 35.9444444444445 largest error 5.684341886080802e-14
+native sums/(4*pi) both_surfaces transport 3 ref 286/9 py,wl 31.77777777777793 31.77777777777793 largest error 1.5276668818842154e-13
+native sums/(4*pi) both_surfaces crossing 1 ref -118/5 py,wl -23.600000000129924 -23.600000000130056 largest error 1.3005418963984994e-10
+native sums/(4*pi) both_surfaces crossing 2 ref 10189/90 py,wl 113.21111111111098 113.21111111111074 largest error 3.694822225952521e-13
+native sums/(4*pi) both_surfaces crossing 3 ref 5606/45 py,wl 124.5777777777778 124.57777777777812 largest error 3.410605131648481e-13
+py family item3/Q_closed_operand ref 10 observed 10.0
+py family item3/family_integral ref 20 observed 20.000000000000004
+py family item3/object ref 20 observed 20.0
+wl family item3/Q_closed_operand ref 10 observed 10.0
+wl family item3/family_integral ref 20 observed 20.0
+wl family item3/object ref 20 observed 20.0
+py actual velocity part 1 original,cut,residual / (4*pi) [117.33333333333329, 117.33333333333329, 0.0]
+py actual velocity part 2 original,cut,residual / (4*pi) [117.33333333333329, 0.0, 117.33333333333329]
+wl actual velocity part 1 original,cut,residual / (4*pi) [117.33333333333331, 117.33333333333331, 0.0]
+wl actual velocity part 2 original,cut,residual / (4*pi) [117.33333333333331, 0.0, 117.33333333333331]
+baseline slot exact_identity None
+residual 0
+z slot to y sample_difference {'separated': 30}
+case ['mixed_quadratic', 'generic', 0, 'generic'] values [[-43531588.20307322, -37788779.528154], [-43531588.19693224, -37788779.52244356], [-43531588.19693209, -37788779.52244342]] residual -5742808.674488671 tolerance 0.09265940535086276 status separated
+case ['mixed_cubic', 'X1_velocity_zero', 2, 'generic'] values [[-207717661.0031657, -181584934.3890784], [-207717669.81264043, -181584943.12227738], [-207717669.81292495, -181584943.12256187]] residual -26132726.69036308 tolerance 70.68351556142974 status separated
+branch mutation, WL first log changed, remaining log count 71
+exp generic (9/8, 9/4, 27/8, 9/2) PY,WL,WLmut 1479367392129.0234 1479367392129.0537 1479367392129.0537 old,new residual -0.0302734375 -0.0302734375
+exp locus_0 (-35/8, 9/4, 27/8, 9/2) PY,WL,WLmut -71.23371804181716 -71.23371804021826 10379.069386909327 old,new residual -1.5988916857168078e-09 -10450.303104951145
+exp locus_1 (-51/8, 9/4, 27/8, 9/2) PY,WL,WLmut 47.818281797676 47.81828179767364 47.81828179767364 old,new residual 2.3590018827235326e-12 2.3590018827235326e-12
+exp locus_2 (-67/8, 9/4, 27/8, 9/2) PY,WL,WLmut 0.3849050963034827 0.38490509630348957 0.38490509630348957 old,new residual -6.8833827526759706e-15 -6.8833827526759706e-15

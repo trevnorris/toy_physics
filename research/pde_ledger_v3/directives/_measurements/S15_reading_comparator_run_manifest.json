@@ -1,0 +1,648 @@
+{
+  "status": "Builder run; independent build review pending",
+  "implementation": "8b7b89aa50abf59f2573e2499c7cea5d731b4a396cfcb63d97b0f9a4b178c173",
+  "decision_commit": "2603dc7c",
+  "engine_commits": {
+    "reading": "cc62dc9f",
+    "original": "3192123b"
+  },
+  "previous_comparator_commit": "5a019394",
+  "repository_inputs": {
+    "py_original": {
+      "path": "research/pde_ledger_v3/scripts/out/S15_two_drain_region.out",
+      "sha256": "4839b124811e88b6c0cd99dda9a9518776418df93e16ac8073063e142f34fc8c",
+      "bytes": 24641539
+    },
+    "py_reading": {
+      "path": "research/pde_ledger_v3/scripts/out/S15_separation_departure.out",
+      "sha256": "10160f89704d910139b0401fbbcc1419078e45e915a2f1e663f24807647182d6",
+      "bytes": 192065031
+    },
+    "wl_original": {
+      "path": "research/pde_ledger_v3/mathematica/out/S15_two_drain_region.out",
+      "sha256": "811bea8c58f18b52566f3de9661e501994aa5d8cd9fcde5e3610ae2aefc215a6",
+      "bytes": 9797390
+    },
+    "wl_reading": {
+      "path": "research/pde_ledger_v3/mathematica/out/S15_separation_departure.out",
+      "sha256": "75622128d04da2d934c2a52468505b4438fff9f17a902d7a6cd35993d769b6c4",
+      "bytes": 333550018
+    }
+  },
+  "source_sha256": {
+    "S15_reading_comparator.py": "9ae87142bff52d6035f1d4e3cec34deffdb629caf5cf43cb9f2f06d2208f780a",
+    "S15_reading_math.py": "86ecab4327d89dd528338eae8d06bcc062cfd4766347bd4666abdfaaedeff7bc",
+    "S15_reading_input_inventory.py": "82a6ed9efc952e013b8bc3e0c5f61fbc0b1ae6e76e451fa1185fc15998dcba7c",
+    "S15_cross_engine_comparator.py": "786ff802b0bcf54b1e8103f596bc7af3216eafc800a524106e23ee293fdd11aa",
+    "S15_reading_refinement.py": "9abc113451a2a77ecac3ba72f7b8d025ab6d30169b644d8edbb50a5299141a80",
+    "S15_reading_log_branches.py": "ac20d68ef4708aa566eb3ddab25e1144a7309c0696cf516dd408069c4b931326",
+    "S15_reading_context_checks.py": "26a028948fec23717f13e48bc503fbd690257f34e440272f44389eadc82a9bb0",
+    "test_S15_reading_comparator.py": "f644742bbc97e51dabdbc6890414617b509ef6e660bf0bd3458a7e649fba36c0",
+    "S15_reading_report.py": "15f4fb8d2788f5f563c89e0d178fedc4d6520ba4e479a405f9ef697759730a9a"
+  },
+  "guard_source_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+  "runs": {
+    "controls01": {
+      "directory": "_scratch/s11c/s15-reading-comparator/controls01",
+      "unit": "s11c-guard-bd223c2256f7",
+      "actual_limits": {
+        "memory.max": "4294967296",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-bd223c2256f7.service",
+        "nice": 0,
+        "affinity": [
+          7
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpaceBytes": [
+          4294967296,
+          4294967296
+        ],
+        "systemd.CPUAffinity": "7",
+        "affinityEnforcement": "systemd-and-inherited-process"
+      },
+      "guard_child_command": [
+        "python3",
+        "-B",
+        "research/pde_ledger_v3/scripts/test_S15_reading_comparator.py"
+      ],
+      "pool": "s15-reading-comparator",
+      "started_utc": "2026-11-13T03:59:41.223305+00:00",
+      "last_resource_sample_utc": "2026-11-13T03:59:41.904552+00:00",
+      "guard_runtime_seconds": 0.6847213089931756,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "sampled_memory_peak_bytes": 80154624,
+      "guard_outcome": {
+        "exitCode": 0,
+        "wallSeconds": 0.6847213089931756,
+        "unit": "s11c-guard-bd223c2256f7",
+        "stderrBytes": 649,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 0.616821717005223,
+          "childPid": 414844
+        }
+      },
+      "guard_receipt_sha256": "b56bce7fbec95219f007f15e1196446fec1eb76115c0d14b5d76175160b27e2d"
+    },
+    "full01": {
+      "directory": "_scratch/s11c/s15-reading-comparator/full01",
+      "unit": "s11c-guard-2c7cdd16e6b9",
+      "actual_limits": {
+        "memory.max": "51539607552",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-2c7cdd16e6b9.service",
+        "nice": 0,
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpaceBytes": [
+          51539607552,
+          51539607552
+        ],
+        "systemd.CPUAffinity": "0-7",
+        "affinityEnforcement": "systemd-and-inherited-process"
+      },
+      "guard_child_command": [
+        "/usr/bin/python3",
+        "-B",
+        "research/pde_ledger_v3/scripts/S15_reading_comparator.py",
+        "--output",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build/full01",
+        "--workers",
+        "8"
+      ],
+      "pool": "s15-reading-comparator",
+      "started_utc": "2026-11-13T04:00:40.192870+00:00",
+      "last_resource_sample_utc": "2026-11-13T04:28:36.565933+00:00",
+      "guard_runtime_seconds": 1676.393565224018,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "sampled_memory_peak_bytes": 6034681856,
+      "guard_outcome": {
+        "exitCode": 0,
+        "wallSeconds": 1676.393565224018,
+        "unit": "s11c-guard-2c7cdd16e6b9",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 1676.3085617551114,
+          "childPid": 416909
+        }
+      },
+      "guard_receipt_sha256": "d90738063ec95027aa30cde2ebc2e79f2f004e9b0e073cca488c74aff89592ff",
+      "end_receipt_utc": "2026-11-13T04:28:36.605385+00:00"
+    },
+    "context01": {
+      "directory": "_scratch/s11c/s15-reading-comparator/context01",
+      "unit": "s11c-guard-7152c8731f1b",
+      "actual_limits": {
+        "memory.max": "4294967296",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-7152c8731f1b.service",
+        "nice": 0,
+        "affinity": [
+          7
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpaceBytes": [
+          4294967296,
+          4294967296
+        ],
+        "systemd.CPUAffinity": "7",
+        "affinityEnforcement": "systemd-and-inherited-process"
+      },
+      "guard_child_command": [
+        "/usr/bin/python3",
+        "-B",
+        "research/pde_ledger_v3/scripts/S15_reading_context_checks.py",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build/full01"
+      ],
+      "pool": "s15-reading-comparator",
+      "started_utc": "2026-11-13T04:28:36.644057+00:00",
+      "last_resource_sample_utc": "2026-11-13T04:28:40.826878+00:00",
+      "guard_runtime_seconds": 4.188058896921575,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "sampled_memory_peak_bytes": 139100160,
+      "guard_outcome": {
+        "exitCode": 0,
+        "wallSeconds": 4.188058896921575,
+        "unit": "s11c-guard-7152c8731f1b",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 4.118914883118123,
+          "childPid": 437806
+        }
+      },
+      "guard_receipt_sha256": "2f773ae07110dabc04864218262dc7126bba996e78f340200d1318dcabff6639",
+      "source_sha256_at_launch": "25eff7922ecbaf6a0843a1477630520fee76fc080aa6633419c70a08e4bb9e37"
+    },
+    "precision01": {
+      "directory": "_scratch/s11c/s15-reading-comparator/precision01",
+      "unit": "s11c-guard-8403e8a3e109",
+      "actual_limits": {
+        "memory.max": "51539607552",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-8403e8a3e109.service",
+        "nice": 0,
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpaceBytes": [
+          51539607552,
+          51539607552
+        ],
+        "systemd.CPUAffinity": "0-7",
+        "affinityEnforcement": "systemd-and-inherited-process"
+      },
+      "guard_child_command": [
+        "/usr/bin/python3",
+        "-B",
+        "research/pde_ledger_v3/scripts/S15_reading_refinement.py",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build/full01"
+      ],
+      "pool": "s15-reading-comparator",
+      "started_utc": "2026-11-13T04:32:36.497614+00:00",
+      "last_resource_sample_utc": "2026-11-13T04:33:33.906228+00:00",
+      "guard_runtime_seconds": 57.4160436920356,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "sampled_memory_peak_bytes": 1357070336,
+      "guard_outcome": {
+        "exitCode": 0,
+        "wallSeconds": 57.4160436920356,
+        "unit": "s11c-guard-8403e8a3e109",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 57.3381295169238,
+          "childPid": 444705
+        }
+      },
+      "guard_receipt_sha256": "03eda40d88ed44da2523f16b508c0b41a3731714dfc596ee4407c94c19827562"
+    },
+    "divisors01": {
+      "directory": "_scratch/s11c/s15-reading-comparator/divisors01",
+      "unit": "s11c-guard-ac281c601063",
+      "actual_limits": {
+        "memory.max": "4294967296",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-ac281c601063.service",
+        "nice": 0,
+        "affinity": [
+          7
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpaceBytes": [
+          4294967296,
+          4294967296
+        ],
+        "systemd.CPUAffinity": "7",
+        "affinityEnforcement": "systemd-and-inherited-process"
+      },
+      "guard_child_command": [
+        "/usr/bin/python3",
+        "-B",
+        "research/pde_ledger_v3/scripts/S15_reading_context_checks.py",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build/full01",
+        "--divisors-only"
+      ],
+      "pool": "s15-reading-comparator",
+      "started_utc": "2026-11-13T04:34:28.618014+00:00",
+      "last_resource_sample_utc": "2026-11-13T04:34:30.202055+00:00",
+      "guard_runtime_seconds": 1.5854730331338942,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "sampled_memory_peak_bytes": 139100160,
+      "guard_outcome": {
+        "exitCode": 0,
+        "wallSeconds": 1.5854730331338942,
+        "unit": "s11c-guard-ac281c601063",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 1.518213456030935,
+          "childPid": 449096
+        }
+      },
+      "guard_receipt_sha256": "15dbb0675cee84e42277e187e2a9668e2249b5c98dba3be0f5d6810b2c9815de"
+    },
+    "jointlogs01": {
+      "directory": "_scratch/s11c/s15-reading-comparator/jointlogs01",
+      "unit": "s11c-guard-2fac84c1e9dd",
+      "actual_limits": {
+        "memory.max": "17179869184",
+        "memory.swap.max": "0",
+        "pids.max": "32",
+        "group": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/s11c-guard-2fac84c1e9dd.service",
+        "nice": 0,
+        "affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "BLIS_NUM_THREADS": "1"
+        },
+        "nativeAddressSpaceBytes": [
+          17179869184,
+          17179869184
+        ],
+        "systemd.CPUAffinity": "0-7",
+        "affinityEnforcement": "systemd-and-inherited-process"
+      },
+      "guard_child_command": [
+        "/usr/bin/python3",
+        "-B",
+        "research/pde_ledger_v3/scripts/S15_reading_log_branches.py",
+        "/var/projects/toy_physics/_scratch/s15/reading_comparator_build/full01"
+      ],
+      "pool": "s15-reading-comparator",
+      "started_utc": "2026-11-13T04:34:30.262217+00:00",
+      "last_resource_sample_utc": "2026-11-13T04:34:46.694003+00:00",
+      "guard_runtime_seconds": 16.438963329885155,
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "sampled_memory_peak_bytes": 753188864,
+      "guard_outcome": {
+        "exitCode": 0,
+        "wallSeconds": 16.438963329885155,
+        "unit": "s11c-guard-2fac84c1e9dd",
+        "stderrBytes": 0,
+        "limitsVerified": true,
+        "childOutcome": {
+          "exitCode": 0,
+          "guardReason": null,
+          "wallSeconds": 16.37082511303015,
+          "childPid": 449111
+        }
+      },
+      "guard_receipt_sha256": "fce8f66035995dda430b19090f90359e8020f025b933eabf8d59d338ae408b6d"
+    }
+  },
+  "engine_sources": {
+    "research/pde_ledger_v3/scripts/S15_separation_departure.py": "8b4ecfe996341f3fdeeb55725e219fa874eaaf5bad8ec02e15c4da100c7725c8",
+    "research/pde_ledger_v3/scripts/S15_two_drain_region.py": "55f1716333c04b64ce0ea2745463cf180ceef3d692f2b01ddf769570611986dc",
+    "research/pde_ledger_v3/mathematica/S15_separation_departure.wl": "366298d82e62d1f36a4ec715feeaa2a6a37903b69a9853d83a4fde50089f19d2",
+    "research/pde_ledger_v3/mathematica/S15_two_drain_region.wl": "37fa7ec54b9c91c4a59b364f60f629c36180ac34f5836e8a3b7e0b9996d030ec"
+  },
+  "reproduction_commands": [
+    "python3 scripts/s11c_guarded_run.py --pool s15-reading-comparator --memory-gib 4 --log-directory _scratch/s11c/s15-reading-comparator/controls01 -- python3 -B research/pde_ledger_v3/scripts/test_S15_reading_comparator.py",
+    "python3 scripts/s11c_guarded_run.py --pool s15-reading-comparator --memory-gib 48 --all-cpus-exclusive --log-directory _scratch/s11c/s15-reading-comparator/full01 -- /usr/bin/python3 -B research/pde_ledger_v3/scripts/S15_reading_comparator.py --output /var/projects/toy_physics/_scratch/s15/reading_comparator_build/full01 --workers 8",
+    "python3 scripts/s11c_guarded_run.py --pool s15-reading-comparator --memory-gib 4 --log-directory _scratch/s11c/s15-reading-comparator/context01 -- /usr/bin/python3 -B research/pde_ledger_v3/scripts/S15_reading_context_checks.py /var/projects/toy_physics/_scratch/s15/reading_comparator_build/full01",
+    "python3 scripts/s11c_guarded_run.py --pool s15-reading-comparator --memory-gib 48 --all-cpus-exclusive --log-directory _scratch/s11c/s15-reading-comparator/precision01 -- /usr/bin/python3 -B research/pde_ledger_v3/scripts/S15_reading_refinement.py /var/projects/toy_physics/_scratch/s15/reading_comparator_build/full01",
+    "python3 scripts/s11c_guarded_run.py --pool s15-reading-comparator --memory-gib 4 --log-directory _scratch/s11c/s15-reading-comparator/divisors01 -- /usr/bin/python3 -B research/pde_ledger_v3/scripts/S15_reading_context_checks.py /var/projects/toy_physics/_scratch/s15/reading_comparator_build/full01 --divisors-only",
+    "python3 scripts/s11c_guarded_run.py --pool s15-reading-comparator --memory-gib 16 --all-cpus-exclusive --log-directory _scratch/s11c/s15-reading-comparator/jointlogs01 -- /usr/bin/python3 -B research/pde_ledger_v3/scripts/S15_reading_log_branches.py /var/projects/toy_physics/_scratch/s15/reading_comparator_build/full01"
+  ],
+  "controls_verbatim": [
+    "test_dimension_empty_and_nonzero_sign (__main__.ComparatorChecks.test_dimension_empty_and_nonzero_sign) ... ok",
+    "test_held_zero_and_live_velocity_change (__main__.ComparatorChecks.test_held_zero_and_live_velocity_change) ... ok",
+    "test_live_drain_slot_and_evaluation_point (__main__.ComparatorChecks.test_live_drain_slot_and_evaluation_point) ... ok",
+    "test_one_sided_branch_change (__main__.ComparatorChecks.test_one_sided_branch_change) ... ok",
+    "test_roster_and_signed_surface_sources (__main__.ComparatorChecks.test_roster_and_signed_surface_sources) ... ok",
+    "",
+    "----------------------------------------------------------------------",
+    "Ran 5 tests in 0.149s",
+    "",
+    "OK"
+  ],
+  "versions": {
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "sympy": "1.14.0",
+    "scipy": "1.15.3",
+    "numpy": "1.26.4",
+    "mpmath": "1.3.0"
+  },
+  "transcript": {
+    "path": "research/pde_ledger_v3/scripts/out/S15_reading_comparator.out",
+    "bytes": 71699,
+    "sha256": "db7b9af21e938d351cc1629935ccb9d90c1583540e2cae2cbf837d24d00608a0"
+  },
+  "detail_archive": {
+    "path": "research/pde_ledger_v3/scripts/out/S15_reading_comparator_details.out",
+    "bytes": 15595520,
+    "sha256": "d8ad01707a8e8b7e4ba70607ac85da16d100e45b6c5fd7baedbc16c6880ee40f",
+    "format": "POSIX tar of JSON and gzip JSON records"
+  },
+  "transcript_summary_lines_verbatim": [
+    "{\"counts\":{\"py_original\":2231,\"py_reading\":20811,\"wl_original\":1370,\"wl_reading\":26767},\"gaps\":{\"py\":{\"duplicate_manifest_keys\":[],\"manifest_extra\":[],\"manifest_missing\":[],\"stream_extra\":[],\"stream_missing\":[]},\"wl\":{\"duplicate_manifest_keys\":[],\"manifest_extra\":[],\"manifest_missing\":[],\"stream_extra\":[],\"stream_missing\":[]}},\"objects\":336,\"record\":\"roster\"}",
+    "{\"counts\":{\"progress\":18,\"source\":2213},\"record\":\"native_roles\",\"stream\":\"py_original\"}",
+    "{\"counts\":{\"excluded_item4\":1008,\"original_context\":2213,\"progress\":1216,\"reading_context\":2310,\"scoped\":14064},\"record\":\"native_roles\",\"stream\":\"py_reading\"}",
+    "{\"counts\":{\"progress\":17,\"source\":1353},\"record\":\"native_roles\",\"stream\":\"wl_original\"}",
+    "{\"counts\":{\"excluded_item4\":4862,\"original_context\":1352,\"progress\":1467,\"reading_context\":2862,\"scoped\":16224},\"record\":\"native_roles\",\"stream\":\"wl_reading\"}",
+    "{\"counts\":{\"direct_exact_identity\":309,\"sum_exact_identity\":27},\"record\":\"reading_to_original\",\"role\":\"py_same_engine\"}",
+    "{\"counts\":{\"direct_exact_identity\":309,\"sum_exact_identity\":27},\"record\":\"reading_to_original\",\"role\":\"wl_same_engine\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":30,\"sample_coverage_incomplete\":3},\"field\":\"cross / E_geo\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / E_geo/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_geo/dimension_operands\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_geo/dimension_pair_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_geo/dimension_reference_operand\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_geo/dimension_reference_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":279,\"sample_agreement\":54,\"sample_coverage_incomplete\":3},\"field\":\"cross / E_resp\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / E_resp/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_resp/dimension_operands\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_resp/dimension_pair_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_resp/dimension_reference_operand\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / E_resp/dimension_reference_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":30,\"sample_coverage_incomplete\":3},\"field\":\"cross / Q\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / Q/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / Q_operand/item3/exponent_divisor_loci\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / Q_operand/item3/exponent_divisor_loci/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / Q_operand/item3/exponent_divisor_supports\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / Q_operand/item3/exponent_divisor_supports/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_difference\":336},\"field\":\"cross / departure_existence_condition\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":279,\"sample_agreement\":54,\"sample_coverage_incomplete\":3},\"field\":\"cross / departure_partition/operand_a\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":279,\"sample_agreement\":54,\"sample_coverage_incomplete\":3},\"field\":\"cross / departure_partition/operand_b\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / departure_partition/residual\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":96,\"sample_agreement\":42,\"sample_difference\":6},\"field\":\"cross / item3/Q_closed_operand\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":144},\"field\":\"cross / item3/Q_closed_operand/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_difference\":336},\"field\":\"cross / item3/existence_condition\",\"record\":\"field\"}",
+    "{\"counts\":{\"same_exponent_loci\":330,\"unresolved\":6},\"field\":\"cross / item3/exponent_branch_inventory\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / item3/exponent_divisor_loci\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / item3/exponent_divisor_loci/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / item3/exponent_divisor_supports\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":144},\"field\":\"cross / item3/exponent_divisor_supports/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":108,\"sample_agreement\":211,\"sample_coverage_incomplete\":17},\"field\":\"cross / item3/family_integral\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / item3/family_integral/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":132,\"sample_agreement\":194,\"sample_difference\":10},\"field\":\"cross / item3/object\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / item3/object/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"unpaired\":336},\"field\":\"cross / item3/retained_Appell_parameters\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_difference\":336},\"field\":\"cross / item3/status\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":279,\"sample_agreement\":54,\"sample_coverage_incomplete\":3},\"field\":\"cross / separation_derivative\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / separation_derivative/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / velocity_part_1/dimension_operands\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / velocity_part_1/dimension_pair_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / velocity_part_1/dimension_reference_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":324,\"sample_agreement\":6,\"sample_coverage_incomplete\":6},\"field\":\"cross / velocity_part_1/object\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / velocity_part_1/object/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":30,\"sample_coverage_incomplete\":3},\"field\":\"cross / velocity_part_1/operand_a\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":30,\"sample_coverage_incomplete\":3},\"field\":\"cross / velocity_part_1/operand_b\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":324,\"sample_agreement\":6,\"sample_coverage_incomplete\":6},\"field\":\"cross / velocity_part_1/residual\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / velocity_part_2/dimension_operands\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / velocity_part_2/dimension_pair_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"cross / velocity_part_2/dimension_reference_residuals\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":318,\"sample_agreement\":8,\"sample_coverage_incomplete\":9,\"sample_difference\":1},\"field\":\"cross / velocity_part_2/object\",\"record\":\"field\"}",
+    "{\"counts\":{\"text_identical\":336},\"field\":\"cross / velocity_part_2/object/comparison\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":30,\"sample_coverage_incomplete\":3},\"field\":\"cross / velocity_part_2/operand_a\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":30,\"sample_coverage_incomplete\":3},\"field\":\"cross / velocity_part_2/operand_b\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":318,\"sample_agreement\":8,\"sample_coverage_incomplete\":9,\"sample_difference\":1},\"field\":\"cross / velocity_part_2/residual\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"py_same_engine / original_Q\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"wl_same_engine / original_Q\",\"record\":\"field\"}",
+    "{\"counts\":{\"exact_identity\":96,\"sample_agreement\":38,\"sample_difference\":10},\"form\":\"closed\",\"record\":\"family_result\"}",
+    "{\"counts\":{\"exact_identity\":36,\"sample_agreement\":156},\"form\":\"integral\",\"record\":\"family_result\"}",
+    "{\"counts\":{\"exact_identity\":3},\"field\":\"E_geo\",\"record\":\"different_literal_zero_spelling\"}",
+    "{\"counts\":{\"exact_identity\":72},\"field\":\"E_resp\",\"record\":\"different_literal_zero_spelling\"}",
+    "{\"counts\":{\"poorly_resolved\":751,\"separated\":354,\"within_estimate\":39575},\"record\":\"separate_numerical_cases\"}",
+    "{\"counts\":{\"0\":294,\"2\":6,\"3\":6,\"4\":12,\"6\":6,\"8\":6,\"14\":6},\"record\":\"exponent_boundaries_per_object\"}",
+    "{\"counts\":{\"poorly_resolved\":74,\"within_estimate\":916},\"field\":\"cross / E_geo\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"poorly_resolved\":74,\"within_estimate\":1636},\"field\":\"cross / E_resp\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"poorly_resolved\":63,\"within_estimate\":927},\"field\":\"cross / Q\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"poorly_resolved\":81,\"within_estimate\":1629},\"field\":\"cross / departure_partition/operand_a\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"poorly_resolved\":81,\"within_estimate\":1629},\"field\":\"cross / departure_partition/operand_b\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"separated\":120,\"within_estimate\":8700},\"field\":\"cross / item3/Q_closed_operand\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"poorly_resolved\":338,\"within_estimate\":13882},\"field\":\"cross / item3/family_integral\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"separated\":233,\"within_estimate\":13267},\"field\":\"cross / item3/object\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"poorly_resolved\":74,\"within_estimate\":1636},\"field\":\"cross / separation_derivative\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"poorly_resolved\":18,\"within_estimate\":342},\"field\":\"cross / velocity_part_1/object\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"poorly_resolved\":63,\"within_estimate\":927},\"field\":\"cross / velocity_part_1/operand_a\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"poorly_resolved\":63,\"within_estimate\":927},\"field\":\"cross / velocity_part_1/operand_b\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"poorly_resolved\":18,\"within_estimate\":342},\"field\":\"cross / velocity_part_1/residual\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"poorly_resolved\":29,\"separated\":1,\"within_estimate\":510},\"field\":\"cross / velocity_part_2/object\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"poorly_resolved\":63,\"within_estimate\":927},\"field\":\"cross / velocity_part_2/operand_a\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"poorly_resolved\":63,\"within_estimate\":927},\"field\":\"cross / velocity_part_2/operand_b\",\"record\":\"sample_cases_per_field\"}",
+    "{\"counts\":{\"poorly_resolved\":29,\"separated\":1,\"within_estimate\":510},\"field\":\"cross / velocity_part_2/residual\",\"record\":\"sample_cases_per_field\"}",
+    "{\"field\":\"PRESSURE_DOMAIN\",\"record\":\"family_context\",\"status\":\"text_difference\"}",
+    "{\"field\":\"REGULARITY\",\"record\":\"family_context\",\"status\":\"text_difference\"}",
+    "{\"field\":\"PREMISES\",\"record\":\"family_context\",\"status\":\"text_difference\"}",
+    "{\"field\":\"CHOICES\",\"record\":\"family_context\",\"status\":\"text_difference\"}",
+    "{\"field\":\"BOOKKEEPING\",\"record\":\"family_context\",\"status\":\"text_difference\"}",
+    "{\"field\":\"dimension_convention\",\"record\":\"family_context\",\"status\":\"text_difference\"}",
+    "{\"field\":\"family/choice\",\"record\":\"family_context\",\"status\":\"text_difference\"}",
+    "{\"field\":\"profile_family/chart_note\",\"record\":\"family_context\",\"status\":\"text_difference\"}",
+    "{\"field\":\"DOMAIN_FOR_EVERY_OBJECT\",\"record\":\"family_context\",\"status\":\"same_relation\"}",
+    "{\"field\":\"dimension_basis\",\"record\":\"family_context\",\"status\":\"same_basis\"}",
+    "{\"field\":\"family/changing_function_heads\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"family/changing_function_heads\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"family/held\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"family/centre_velocity_changes\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"family/centre_substitution\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"profile_family/separation_chart\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"profile_family/chart_condition\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"profile_family/substitution\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"field\":\"family/response_dimension_signatures\",\"record\":\"family_context\",\"status\":\"same_values\"}",
+    "{\"counts\":{\"exact_identity\":47},\"record\":\"kernel_checks\"}",
+    "{\"counts\":{\"matches_declared_slot\":393,\"no_wl_declared_slot\":3,\"sympy_only_bound_or_trig_check\":10},\"python_empty\":[[\"integral_bound\",\"theta\",\"0\"],[\"integral_bound\",\"phi\",\"0\"]],\"record\":\"observed_argument_checks\"}",
+    "{\"nonfalse\":0,\"record\":\"wolfram_native_divisor_audit\",\"records\":288,\"supports\":1044}",
+    "{\"counts\":{\"E_geo\":\"exact_identity\",\"E_resp\":\"sample_agreement\",\"Q\":\"exact_identity\",\"velocity_part_1/residual\":\"exact_identity\",\"velocity_part_2/residual\":\"exact_identity\"},\"object\":\"both_surfaces/sum_crossing/component_1\",\"record\":\"signed_crossing\"}",
+    "{\"counts\":{\"E_geo\":\"exact_identity\",\"E_resp\":\"sample_agreement\",\"Q\":\"exact_identity\",\"velocity_part_1/residual\":\"exact_identity\",\"velocity_part_2/residual\":\"exact_identity\"},\"object\":\"both_surfaces/sum_crossing/component_2\",\"record\":\"signed_crossing\"}",
+    "{\"counts\":{\"E_geo\":\"exact_identity\",\"E_resp\":\"sample_agreement\",\"Q\":\"exact_identity\",\"velocity_part_1/residual\":\"exact_identity\",\"velocity_part_2/residual\":\"exact_identity\"},\"object\":\"both_surfaces/sum_crossing/component_3\",\"record\":\"signed_crossing\"}",
+    "{\"counts\":{\"exact_on_stratum\":1,\"within_precision_estimate\":353},\"record\":\"precision_rechecks\"}",
+    "{\"case\":[\"mixed_quadratic\",\"generic\",0,\"locus_1\"],\"estimate\":\"1.00918781042e-34\",\"exponents\":[\"-43/16\",\"9/4\",\"27/8\",\"9/2\"],\"field\":\"item3/object\",\"object\":\"inner/carried/component_1/labels_drain1\",\"old_residual\":-3.755703801289201e-07,\"record\":\"precision_example\",\"status\":\"within_precision_estimate\",\"values_and_residual\":[[\"-1.03008027767535855774106222821319889312546249e-37\",\"1.18396025353042004999853841153731726075957387e-38\",\"-1.14847630302840056274091606936693061920141988e-37\"],[\"2.54709889740834998911812765837993622726045959419451403246105349249980438349e-67\",\"-9.5012320495534067864335113466259178837076211552496610791709317901818299187e-68\",\"3.49722210236369066776147879304252801563122170971948014037814667151798737536e-67\"]]}",
+    "{\"both_operands_zero\":true,\"case\":[\"mixed_cubic\",\"X2_and_radii_velocity_zero\",0,\"generic\"],\"exact_residual\":\"0\",\"field\":\"velocity_part_2/residual\",\"object\":\"region/component_3/rate_labels_drain1\",\"old_residual\":128.0,\"record\":\"precision_example\",\"status\":\"exact_on_stratum\"}",
+    "{\"occurrences\":4816,\"record\":\"unpaired_internal_kernel_occurrences\"}",
+    "{\"counts\":{\"within_estimate\":7560},\"record\":\"additional_branch_samples\"}",
+    "{\"elementary_boundaries\":8,\"explicit_wolfram_intersections\":6,\"objects\":6,\"record\":\"compound_branch_inventory\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":30,\"sample_coverage_incomplete\":3},\"field\":\"Q\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":303,\"sample_agreement\":30,\"sample_coverage_incomplete\":3},\"field\":\"E_geo\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":279,\"sample_agreement\":54,\"sample_coverage_incomplete\":3},\"field\":\"E_resp\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":279,\"sample_agreement\":54,\"sample_coverage_incomplete\":3},\"field\":\"separation_derivative\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":336},\"field\":\"departure_partition/residual\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":132,\"sample_agreement\":204},\"field\":\"item3/object\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":96,\"sample_agreement\":48},\"field\":\"item3/Q_closed_operand\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":108,\"sample_agreement\":211,\"sample_coverage_incomplete\":17},\"field\":\"item3/family_integral\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"same_elementary_loci\":6,\"same_exponent_loci\":330},\"field\":\"item3/exponent_branch_inventory\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":324,\"sample_agreement\":6,\"sample_coverage_incomplete\":6},\"field\":\"velocity_part_1/residual\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":318,\"sample_agreement\":8,\"sample_coverage_incomplete\":10},\"field\":\"velocity_part_2/residual\",\"record\":\"final_field\"}",
+    "{\"counts\":{\"exact_identity\":96,\"sample_agreement\":48},\"form\":\"closed\",\"record\":\"final_family_result\"}",
+    "{\"counts\":{\"exact_identity\":36,\"sample_agreement\":156},\"form\":\"integral\",\"record\":\"final_family_result\"}",
+    "{\"field\":\"E_geo\",\"objects\":[\"region/component_1/rate_labels_drain2\",\"region/component_2/rate_labels_drain2\",\"region/component_3/rate_labels_drain2\"],\"record\":\"still_incomplete\"}",
+    "{\"field\":\"E_resp\",\"objects\":[\"region/component_1/rate_labels_drain2\",\"region/component_2/rate_labels_drain2\",\"region/component_3/rate_labels_drain2\"],\"record\":\"still_incomplete\"}",
+    "{\"field\":\"Q\",\"objects\":[\"region/component_1/rate_labels_drain2\",\"region/component_2/rate_labels_drain2\",\"region/component_3/rate_labels_drain2\"],\"record\":\"still_incomplete\"}",
+    "{\"field\":\"item3/family_integral\",\"objects\":[\"inner/carried/component_1/labels_drain1\",\"inner/carried/component_1/labels_drain2\",\"inner/carried/component_2/labels_drain1\",\"inner/carried/component_2/labels_drain2\",\"inner/carried/component_3/labels_drain1\",\"outer/carried/component_1/labels_drain1\",\"outer/carried/component_1/labels_drain2\",\"outer/carried/component_2/labels_drain1\",\"outer/carried/component_2/labels_drain2\",\"outer/carried/component_3/labels_drain1\",\"outer/carried/component_3/labels_drain2\",\"outer/transport_radius/component_1/labels_drain2\",\"region/component_1/momentum_labels_drain2\",\"region/component_1/rate_labels_drain2\",\"region/component_2/momentum_labels_drain2\",\"region/component_2/rate_labels_drain2\",\"region/component_3/rate_labels_drain2\"],\"record\":\"still_incomplete\"}",
+    "{\"field\":\"velocity_part_1/residual\",\"objects\":[\"region/component_1/momentum_rate\",\"region/component_1/rate_labels_drain1\",\"region/component_2/momentum_rate\",\"region/component_2/rate_labels_drain1\",\"region/component_3/momentum_rate\",\"region/component_3/rate_labels_drain1\"],\"record\":\"still_incomplete\"}",
+    "{\"field\":\"velocity_part_2/residual\",\"objects\":[\"region/component_1/rate_labels_drain1\",\"region/component_1/rate_labels_drain1+remainder\",\"region/component_1/rate_labels_drain2+remainder\",\"region/component_2/rate_labels_drain1\",\"region/component_2/rate_labels_drain1+remainder\",\"region/component_2/rate_labels_drain2+remainder\",\"region/component_3/rate_labels_drain1\",\"region/component_3/rate_labels_drain1+drain2\",\"region/component_3/rate_labels_drain1+remainder\",\"region/component_3/rate_labels_drain2+remainder\"],\"record\":\"still_incomplete\"}",
+    "{\"exact\":4704,\"fields\":14,\"record\":\"all_dimension_records\",\"total\":4704}"
+  ],
+  "representative_exceptions_verbatim": [
+    "{\"field\":\"E_geo\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":2.2980530047789216e-05,\"residual\":8.311573584916369e-07,\"status\":\"poorly_resolved\",\"tolerance\":0.00018384524038231372,\"values\":[[6.136592128314078e-05,6.046367741785167e-05],[3.838539123535156e-05,3.765210682547786e-05],[1.6093938029371202e-05,1.5262780670879565e-05]]},\"object\":\"region/component_1/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"E_geo\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":3.6139526855549775e-06,\"residual\":-5.404967960941445e-07,\"status\":\"poorly_resolved\",\"tolerance\":2.891262148443982e-05,\"values\":[[1.468185473640915e-06,1.3499162404146163e-06],[-2.1457672119140625e-06,-1.425190348534821e-06],[7.816124707460403e-07,1.3221092668401849e-06]]},\"object\":\"region/component_2/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"E_resp\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":2.402637619525194e-05,\"residual\":1.0845342087424768e-06,\"status\":\"poorly_resolved\",\"tolerance\":0.00019221200956201552,\"values\":[[6.300781387835741e-05,6.165081124046048e-05],[3.898143768310547e-05,3.842219133344392e-05],[1.667781180003658e-05,1.5593277591294103e-05]]},\"object\":\"region/component_1/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"E_resp\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":2.968967975975058e-06,\"residual\":-3.4301999824518327e-07,\"status\":\"poorly_resolved\",\"tolerance\":2.3752743807800463e-05,\"values\":[[1.3198141459724866e-06,1.4047576810347936e-06],[-1.430511474609375e-06,-1.5642102949402642e-06],[8.990464266389608e-07,1.2420664248841441e-06]]},\"object\":\"region/component_2/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"Q\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":1.1490265023894608e-05,\"residual\":4.1557867924581843e-07,\"status\":\"poorly_resolved\",\"tolerance\":9.192312019115687e-05,\"values\":[[3.068296064157039e-05,3.0231838708925836e-05],[1.919269561767578e-05,1.882605341273893e-05],[8.046969014685601e-06,7.631390335439783e-06]]},\"object\":\"region/component_1/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"Q\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":1.8069763427774888e-06,\"residual\":-2.7024839804707225e-07,\"status\":\"poorly_resolved\",\"tolerance\":1.445681074221991e-05,\"values\":[[7.340927368204575e-07,6.749581202073082e-07],[-1.0728836059570312e-06,-7.125951742674105e-07],[3.9080623537302017e-07,6.610546334200924e-07]]},\"object\":\"region/component_2/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":26,\"within_estimate\":4},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"departure_partition/operand_a\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":4.700690624304116e-05,\"residual\":1.9156915672341137e-06,\"status\":\"poorly_resolved\",\"tolerance\":0.0003760562499443293,\"values\":[[0.0001243737351614982,0.00012211448865831215],[7.736682891845703e-05,7.607429815892178e-05],[3.277174982940778e-05,3.085605826217367e-05]]},\"object\":\"region/component_1/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"departure_partition/operand_a\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":6.364278306136839e-06,\"residual\":-8.835167943393276e-07,\"status\":\"poorly_resolved\",\"tolerance\":5.0915226449094715e-05,\"values\":[[2.7879996196134016e-06,2.7546739214494097e-06],[-3.5762786865234375e-06,-2.989400643475085e-06],[1.6806588973850012e-06,2.5641756917243288e-06]]},\"object\":\"region/component_2/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"departure_partition/operand_b\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":4.700690624304116e-05,\"residual\":1.9156915672341137e-06,\"status\":\"poorly_resolved\",\"tolerance\":0.0003760562499443293,\"values\":[[0.0001243737351614982,0.00012211448865831215],[7.736682891845703e-05,7.607429815892178e-05],[3.277174982940778e-05,3.085605826217367e-05]]},\"object\":\"region/component_1/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"departure_partition/operand_b\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":6.364278306136839e-06,\"residual\":-8.835167943393276e-07,\"status\":\"poorly_resolved\",\"tolerance\":5.0915226449094715e-05,\"values\":[[2.7879996196134016e-06,2.7546739214494097e-06],[-3.5762786865234375e-06,-2.989400643475085e-06],[1.6806588973850012e-06,2.5641756917243288e-06]]},\"object\":\"region/component_2/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"item3/Q_closed_operand\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"locus_1\"],\"exponents\":[\"-43/16\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":0.0,\"residual\":-1.3019234756939113e-07,\"status\":\"separated\",\"tolerance\":1e-09,\"values\":[[-4.5047272578813136e-08,8.5145074990578e-08],[-4.5047272578813136e-08,8.5145074990578e-08],[-4.5047272578813136e-08,8.5145074990578e-08]]},\"object\":\"inner/carried/component_1/labels_drain1\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"separated\":20,\"within_estimate\":130},\"status\":\"sample_difference\"}",
+    "{\"field\":\"item3/Q_closed_operand\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"locus_1\"],\"exponents\":[\"-43/16\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":0.0,\"residual\":1.2609234545379877e-08,\"status\":\"separated\",\"tolerance\":1e-09,\"values\":[[4.292633093427867e-08,3.031709638889879e-08],[4.292633093427867e-08,3.031709638889879e-08],[4.292633093427867e-08,3.031709638889879e-08]]},\"object\":\"inner/carried/component_2/labels_drain1\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"separated\":20,\"within_estimate\":130},\"status\":\"sample_difference\"}",
+    "{\"field\":\"item3/exponent_branch_inventory\",\"object\":\"region/component_1/momentum_labels_drain1+drain2\",\"reason\":\"Unsupported: non-equality exponent branch Eq(-4, b_1) & Eq(-1, a_2)\",\"record\":\"exception\",\"role\":\"cross\",\"status\":\"unresolved\"}",
+    "{\"field\":\"item3/exponent_branch_inventory\",\"object\":\"region/component_1/rate_labels_drain1+drain2\",\"reason\":\"Unsupported: non-equality exponent branch Eq(-4, b_1) & Eq(-1, a_2)\",\"record\":\"exception\",\"role\":\"cross\",\"status\":\"unresolved\"}",
+    "{\"field\":\"item3/family_integral\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",2,\"locus_1\"],\"exponents\":[\"-35/16\",\"5/4\",\"19/8\",\"7/2\"],\"refinement_delta\":0.23695862193267203,\"residual\":1.1641532182693481e-10,\"status\":\"poorly_resolved\",\"tolerance\":1.8956689764613763,\"values\":[[-0.23696592722694731,-0.2369659272700062],[-7.3052942752838135e-06,-7.30541069060564e-06],[0.0,-1.1641532182693481e-10]]},\"object\":\"inner/carried/component_1/labels_drain1\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":10,\"within_estimate\":140},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"item3/family_integral\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",2,\"generic\"],\"exponents\":[\"25/8\",\"5/4\",\"19/8\",\"7/2\"],\"refinement_delta\":1.2639746273634955e-05,\"residual\":-6.17259502178058e-07,\"status\":\"poorly_resolved\",\"tolerance\":0.00010111897018907964,\"values\":[[3.273387119406834e-05,3.2852978620212525e-05],[2.0742416381835938e-05,2.0384788513183594e-05],[8.102670108200982e-06,8.71992961037904e-06]]},\"object\":\"inner/carried/component_1/labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":10,\"within_estimate\":20},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"item3/object\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"locus_1\"],\"exponents\":[\"-43/16\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":0.0,\"residual\":-3.755703801289201e-07,\"status\":\"separated\",\"tolerance\":1e-09,\"values\":[[-2.0346124074421823e-07,1.7210913938470185e-07],[-2.0346124074421823e-07,1.7210913938470185e-07],[-2.0346124074421823e-07,1.7210913938470185e-07]]},\"object\":\"inner/carried/component_1/labels_drain1\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"separated\":25,\"within_estimate\":125},\"status\":\"sample_difference\"}",
+    "{\"field\":\"item3/object\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"locus_1\"],\"exponents\":[\"-43/16\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":0.0,\"residual\":6.64658728055656e-08,\"status\":\"separated\",\"tolerance\":1e-09,\"values\":[[1.2947566574439406e-08,-5.351830623112619e-08],[1.2947566574439406e-08,-5.351830623112619e-08],[1.2947566574439406e-08,-5.351830623112619e-08]]},\"object\":\"inner/carried/component_2/labels_drain1\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"separated\":20,\"within_estimate\":130},\"status\":\"sample_difference\"}",
+    "{\"field\":\"separation_derivative\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":2.402637619525194e-05,\"residual\":1.0845342087424768e-06,\"status\":\"poorly_resolved\",\"tolerance\":0.00019221200956201552,\"values\":[[6.300781387835741e-05,6.165081124046048e-05],[3.898143768310547e-05,3.842219133344392e-05],[1.667781180003658e-05,1.5593277591294103e-05]]},\"object\":\"region/component_1/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"separation_derivative\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":2.968967975975058e-06,\"residual\":-3.4301999824518327e-07,\"status\":\"poorly_resolved\",\"tolerance\":2.3752743807800463e-05,\"values\":[[1.3198141459724866e-06,1.4047576810347936e-06],[-1.430511474609375e-06,-1.5642102949402642e-06],[8.990464266389608e-07,1.2420664248841441e-06]]},\"object\":\"region/component_2/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_1/object\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"X1_velocity_zero\",1,\"generic\"],\"exponents\":[\"17/8\",\"13/4\",\"11/8\",\"5/2\"],\"refinement_delta\":4.0,\"residual\":4.0,\"status\":\"poorly_resolved\",\"tolerance\":32.000000004,\"values\":[[0.0,0.0],[0.0,0.0],[4.0,0.0]]},\"object\":\"region/component_1/momentum_rate\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":2,\"within_estimate\":28},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_1/object\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"X1_velocity_zero\",2,\"generic\"],\"exponents\":[\"25/8\",\"5/4\",\"19/8\",\"7/2\"],\"refinement_delta\":4.0,\"residual\":0.0,\"status\":\"poorly_resolved\",\"tolerance\":32.000000001,\"values\":[[0.0,0.0],[4.0,0.0],[0.0,0.0]]},\"object\":\"region/component_1/rate_labels_drain1\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":3,\"within_estimate\":27},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_1/operand_a\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":1.1490265023894608e-05,\"residual\":4.1557867924581843e-07,\"status\":\"poorly_resolved\",\"tolerance\":9.192312019115687e-05,\"values\":[[3.068296064157039e-05,3.0231838708925836e-05],[1.919269561767578e-05,1.882605341273893e-05],[8.046969014685601e-06,7.631390335439783e-06]]},\"object\":\"region/component_1/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_1/operand_a\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":1.8069763427774888e-06,\"residual\":-2.7024839804707225e-07,\"status\":\"poorly_resolved\",\"tolerance\":1.445681074221991e-05,\"values\":[[7.340927368204575e-07,6.749581202073082e-07],[-1.0728836059570312e-06,-7.125951742674105e-07],[3.9080623537302017e-07,6.610546334200924e-07]]},\"object\":\"region/component_2/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":26,\"within_estimate\":4},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_1/operand_b\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":1.1490265023894608e-05,\"residual\":4.1557867924581843e-07,\"status\":\"poorly_resolved\",\"tolerance\":9.192312019115687e-05,\"values\":[[3.068296064157039e-05,3.0231838708925836e-05],[1.919269561767578e-05,1.882605341273893e-05],[8.046969014685601e-06,7.631390335439783e-06]]},\"object\":\"region/component_1/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_1/operand_b\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":1.8069763427774888e-06,\"residual\":-2.7024839804707225e-07,\"status\":\"poorly_resolved\",\"tolerance\":1.445681074221991e-05,\"values\":[[7.340927368204575e-07,6.749581202073082e-07],[-1.0728836059570312e-06,-7.125951742674105e-07],[3.9080623537302017e-07,6.610546334200924e-07]]},\"object\":\"region/component_2/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":26,\"within_estimate\":4},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_1/residual\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"X1_velocity_zero\",1,\"generic\"],\"exponents\":[\"17/8\",\"13/4\",\"11/8\",\"5/2\"],\"refinement_delta\":4.0,\"residual\":4.0,\"status\":\"poorly_resolved\",\"tolerance\":32.000000004,\"values\":[[0.0,0.0],[0.0,0.0],[4.0,0.0]]},\"object\":\"region/component_1/momentum_rate\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":2,\"within_estimate\":28},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_1/residual\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"X1_velocity_zero\",2,\"generic\"],\"exponents\":[\"25/8\",\"5/4\",\"19/8\",\"7/2\"],\"refinement_delta\":4.0,\"residual\":0.0,\"status\":\"poorly_resolved\",\"tolerance\":32.000000001,\"values\":[[0.0,0.0],[4.0,0.0],[0.0,0.0]]},\"object\":\"region/component_1/rate_labels_drain1\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":3,\"within_estimate\":27},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_2/object\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"X2_velocity_zero\",2,\"generic\"],\"exponents\":[\"25/8\",\"5/4\",\"19/8\",\"7/2\"],\"refinement_delta\":16.0,\"residual\":0.0,\"status\":\"poorly_resolved\",\"tolerance\":128.000000001,\"values\":[[0.0,0.0],[16.0,0.0],[0.0,0.0]]},\"object\":\"region/component_1/rate_labels_drain1\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":3,\"within_estimate\":27},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_2/object\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"X2_velocity_zero\",1,\"generic\"],\"exponents\":[\"17/8\",\"13/4\",\"11/8\",\"5/2\"],\"refinement_delta\":0.0078125,\"residual\":-0.0078125,\"status\":\"poorly_resolved\",\"tolerance\":0.062500001,\"values\":[[0.0,0.0],[0.0,0.0],[-0.0078125,0.0]]},\"object\":\"region/component_1/rate_labels_drain1+remainder\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":5,\"within_estimate\":25},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_2/operand_a\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":1.1490265023894608e-05,\"residual\":4.1557867924581843e-07,\"status\":\"poorly_resolved\",\"tolerance\":9.192312019115687e-05,\"values\":[[3.068296064157039e-05,3.0231838708925836e-05],[1.919269561767578e-05,1.882605341273893e-05],[8.046969014685601e-06,7.631390335439783e-06]]},\"object\":\"region/component_1/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_2/operand_a\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":1.8069763427774888e-06,\"residual\":-2.7024839804707225e-07,\"status\":\"poorly_resolved\",\"tolerance\":1.445681074221991e-05,\"values\":[[7.340927368204575e-07,6.749581202073082e-07],[-1.0728836059570312e-06,-7.125951742674105e-07],[3.9080623537302017e-07,6.610546334200924e-07]]},\"object\":\"region/component_2/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":26,\"within_estimate\":4},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_2/operand_b\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":1.1490265023894608e-05,\"residual\":4.1557867924581843e-07,\"status\":\"poorly_resolved\",\"tolerance\":9.192312019115687e-05,\"values\":[[3.068296064157039e-05,3.0231838708925836e-05],[1.919269561767578e-05,1.882605341273893e-05],[8.046969014685601e-06,7.631390335439783e-06]]},\"object\":\"region/component_1/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":30},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_2/operand_b\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"generic\",0,\"generic\"],\"exponents\":[\"9/8\",\"9/4\",\"27/8\",\"9/2\"],\"refinement_delta\":1.8069763427774888e-06,\"residual\":-2.7024839804707225e-07,\"status\":\"poorly_resolved\",\"tolerance\":1.445681074221991e-05,\"values\":[[7.340927368204575e-07,6.749581202073082e-07],[-1.0728836059570312e-06,-7.125951742674105e-07],[3.9080623537302017e-07,6.610546334200924e-07]]},\"object\":\"region/component_2/rate_labels_drain2\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":26,\"within_estimate\":4},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_2/residual\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"X2_velocity_zero\",2,\"generic\"],\"exponents\":[\"25/8\",\"5/4\",\"19/8\",\"7/2\"],\"refinement_delta\":16.0,\"residual\":0.0,\"status\":\"poorly_resolved\",\"tolerance\":128.000000001,\"values\":[[0.0,0.0],[16.0,0.0],[0.0,0.0]]},\"object\":\"region/component_1/rate_labels_drain1\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":3,\"within_estimate\":27},\"status\":\"sample_coverage_incomplete\"}",
+    "{\"field\":\"velocity_part_2/residual\",\"first_case\":{\"case\":[\"mixed_quadratic\",\"X2_velocity_zero\",1,\"generic\"],\"exponents\":[\"17/8\",\"13/4\",\"11/8\",\"5/2\"],\"refinement_delta\":0.0078125,\"residual\":-0.0078125,\"status\":\"poorly_resolved\",\"tolerance\":0.062500001,\"values\":[[0.0,0.0],[0.0,0.0],[-0.0078125,0.0]]},\"object\":\"region/component_1/rate_labels_drain1+remainder\",\"record\":\"exception\",\"role\":\"cross\",\"sample_counts\":{\"poorly_resolved\":5,\"within_estimate\":25},\"status\":\"sample_coverage_incomplete\"}"
+  ],
+  "accepted_artifacts": {
+    "decision": {
+      "git_object": "2603dc7c:research/pde_ledger_v3/directives/S15_reading_comparator_decision_list.md",
+      "sha256": "d0219b22a627d232ef127f7a416cb95be9d5bc83de44163b57886c0560c1c158"
+    },
+    "original manifest": {
+      "git_object": "3192123b:research/pde_ledger_v3/directives/_measurements/S15_build_run_record.md",
+      "sha256": "712fbb740ccdbcde49af5e7178ba273a699299b8d81a0044eba4641b348af068"
+    },
+    "SymPy manifest": {
+      "git_object": "cc62dc9f:research/pde_ledger_v3/directives/_measurements/S15_separation_departure_sympy_run_manifest.json",
+      "sha256": "4db3711ba500e588f5f3a63e671599f9bfb9b8be69dc0823ac29531a2bf2481a"
+    },
+    "Wolfram manifest": {
+      "git_object": "cc62dc9f:research/pde_ledger_v3/directives/_measurements/S15_separation_departure_wolfram_run_manifest.json",
+      "sha256": "112ee4351fa7bd55e84cd2603d5c74975829964f36a49688a149c56c369236d7"
+    }
+  },
+  "guarded_stage_source_notes": {
+    "context01": "Initial kernel and argument checks. Its initial Boolean-tag tally is superseded by divisors01.",
+    "divisors01": "Reads native Boolean False nodes; rechecks only divisor records.",
+    "precision01": "45- and 75-decimal closed forms, exact stationary substitution and compound exponent branches.",
+    "jointlogs01": "Li0(z)=z/(1-z) and Li1(z)=-log(1-z) for real |z|<1, previously unexercised log cases only."
+  },
+  "report_command": "/usr/bin/python3 research/pde_ledger_v3/scripts/S15_reading_report.py _scratch/s15/reading_comparator_build/full01 --guard-parent _scratch/s11c/s15-reading-comparator --context-run context01"
+}

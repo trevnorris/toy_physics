@@ -1,0 +1,16 @@
+verified full/prefix bytes and sha256 {'py_original': (24641539, '4839b124811e88b6c0cd99dda9a9518776418df93e16ac8073063e142f34fc8c'), 'py_reading': (192065031, '10160f89704d910139b0401fbbcc1419078e45e915a2f1e663f24807647182d6'), 'wl_original': (9797390, '811bea8c58f18b52566f3de9661e501994aa5d8cd9fcde5e3610ae2aefc215a6'), 'wl_reading': (333550018, '75622128d04da2d934c2a52468505b4438fff9f17a902d7a6cd35993d769b6c4')}
+one-sided ('wl_reading', 'profile_family/domain') offset 9802479 edit 'Reals' -> 'Integers'
+result same_values -> same_values same compared values? True
+frozen and mutated Wolfram domains {dist > rout[t], directionSeparation[1]^2 + directionSeparation[2]^2 + directionSeparation[3]^2 == 1, Element[dist | directionSeparation[1] | directionSeparation[2] | directionSeparation[3] | aa[1] | aa[2] | bb[1] | bb[2], Reals]} {dist > rout[t], directionSeparation[1]^2 + directionSeparation[2]^2 + directionSeparation[3]^2 == 1, Element[dist | directionSeparation[1] | directionSeparation[2] | directionSeparation[3] | aa[1] | aa[2] | bb[1] | bb[2], Integers]}
+admissible generic exponents (1, 2, 3, 4) (9/8, 9/4, 27/8, 9/2)
+one-sided ('py_reading', 'family/centre_substitution') offset 24642481 edit 'X_1_1(t):' -> 'X_2_1(t):'
+result same_values -> same_values same compared values? True
+frozen and corrupted SymPy target {X_1_1(t) {X_2_1(t)
+accepted ('py_reading', 'item3_kernel/distance_endpoints') 24648402 native [-integration_radius + kernel_distance, integration_radius + kernel_distance] r=2 d=5 3
+positive endpoint 0, squared on D > r > 0 (kernel_D - kernel_r)**2 (kernel_D - kernel_r)**2 0 exact_identity
+one-sided sign ('py_reading', 'item3_kernel/distance_endpoints') 24648402 native [integration_radius - kernel_distance, integration_radius + kernel_distance] r=2 d=5 -3
+positive endpoint 0, squared on D > r > 0 (-kernel_D + kernel_r)**2 (kernel_D - kernel_r)**2 (-kernel_D + kernel_r)**2 - (kernel_D - kernel_r)**2 exact_identity
+accepted power primitive, exponent different from -1 kernel_w**(kernel_p + 1)/(kernel_p + 1) kernel_w**(kernel_p + 1)/(kernel_p + 1) 0 exact_identity
+accepted power primitive, exponent -1 log(kernel_w) log(kernel_w) 0 exact_identity
+one-sided branch sign power primitive, exponent different from -1 kernel_w**(kernel_p + 1)/(kernel_p + 1) kernel_w**(kernel_p + 1)/(kernel_p + 1) 0 exact_identity
+one-sided branch sign power primitive, exponent -1 log(kernel_w) -log(kernel_w) 2*log(kernel_w) remaining_symbolic_difference

@@ -1,0 +1,32 @@
+mutation inner/other/component_1 Q oo[1, 2] to oo[1, 1] matching original occurrences 1 replaced 1
+baseline exact_identity None
+residual 0
+changed sample_difference {'separated': 30}
+case ['mixed_quadratic', 'generic', 0, 'generic'] values [[11113.32674432064, 11096.124630011493], [11113.326860635863, 11096.124608093302], [11113.326860635874, 11096.124608093312]] residual 17.202252542561837 tolerance 0.0009416351095810974 status separated
+case ['mixed_cubic', 'X1_velocity_zero', 2, 'generic'] values [[51496.86473248554, 51677.68176929924], [51496.897840866106, 51677.71972601878], [51496.897840868514, 51677.7197260216]] residual -180.8218851530837 tolerance 0.30370543405091277 status separated
+mutation outer/other/component_1 Q oo[1, 2] to (-1)*oo[1, 2] matching original occurrences 1 replaced 1
+baseline exact_identity None
+residual 0
+changed sample_difference {'separated': 30}
+case ['mixed_quadratic', 'generic', 0, 'generic'] values [[-547845.8318658863, -177948.2188746736], [-547845.8537594933, -177948.17263051902], [-547845.8537594943, -177948.17263051873]] residual -369897.6811289755 tolerance 0.3705010823964016 status separated
+case ['mixed_cubic', 'X1_velocity_zero', 2, 'generic'] values [[-927068.9244453035, -305496.5366073614], [-927072.8780308383, -305494.6841159684], [-927072.8780311181, -305494.68411584775]] residual -621578.1939152703 tolerance 31.629611351455598 status separated
+mutation inner/other/component_1 E_resp change[oo[1, 2]] to change[oo[1, 1]] matching original occurrences 1 replaced 1
+baseline exact_identity None
+residual 0
+changed sample_difference {'separated': 30}
+case ['mixed_quadratic', 'generic', 0, 'generic'] values [[11002.66721206617, 10965.559548507528], [11002.667313277985, 10965.559599910172], [11002.667313277994, 10965.559599910182]] residual 37.10771336781181 tolerance 0.000820697191236377 status separated
+case ['mixed_cubic', 'X1_velocity_zero', 2, 'generic'] values [[50868.550643047565, 51015.10760851902], [50868.5809448341, 51015.139038095695], [50868.580944836285, 51015.139038097914]] residual -146.55809326162853 tolerance 0.25148762852274104 status separated
+mutation both_surfaces/sum_crossing/component_1 E_resp change[oo[1, 2]] to change[oo[1, 1]] matching original occurrences 2 replaced 1
+changed sample_agreement {'within_estimate': 30}
+case ['mixed_quadratic', 'generic', 0, 'generic'] values [[9.75378480841561e+25, 9.753784808415612e+25], [9.75315956974079e+25, 9.753159569740777e+25], [9.753159572506243e+25, 9.753159572506251e+25]] residual -85899345920.0 tolerance 5.0019191518421305e+22 status within_estimate
+case ['mixed_cubic', 'X1_velocity_zero', 2, 'generic'] values [[6.382700026498542e+29, 6.382700026498542e+29], [6.381046221386047e+29, 6.381046221386049e+29], [6.38104653703109e+29, 6.38104653703109e+29]] residual 0.0 tolerance 1.3230447281003863e+27 status within_estimate
+dimensions E_geo/dimension_reference_operand [(1, 4, -2)] {{1, 4, -2}} {{1, 4, 2}}
+baseline exact_identity None
+residual {'py_only': [], 'wl_only': []}
+changed dimension_difference None
+residual {'py_only': [(1, 4, -2)], 'wl_only': [(1, 4, 2)]}
+dimensions E_resp/dimension_pair_residuals [] {} {{0,0,0}}
+baseline exact_identity None
+residual {'py_only': [], 'wl_only': []}
+changed dimension_difference None
+residual {'py_only': [], 'wl_only': [(0, 0, 0)]}

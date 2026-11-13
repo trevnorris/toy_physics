@@ -1,0 +1,36 @@
+initial field counts reconstructed from complete separate object files
+Q {'exact_identity': 303, 'sample_agreement': 30, 'sample_coverage_incomplete': 3}
+E_geo {'exact_identity': 303, 'sample_agreement': 30, 'sample_coverage_incomplete': 3}
+E_resp {'sample_agreement': 54, 'exact_identity': 279, 'sample_coverage_incomplete': 3}
+separation_derivative {'sample_agreement': 54, 'exact_identity': 279, 'sample_coverage_incomplete': 3}
+item3/family_integral {'sample_agreement': 211, 'sample_coverage_incomplete': 17, 'exact_identity': 108}
+item3/object {'sample_agreement': 194, 'sample_difference': 10, 'exact_identity': 132}
+velocity_part_1/residual {'exact_identity': 324, 'sample_coverage_incomplete': 6, 'sample_agreement': 6}
+velocity_part_2/residual {'exact_identity': 318, 'sample_agreement': 8, 'sample_coverage_incomplete': 9, 'sample_difference': 1}
+within-engine integral vs closed return where both sampled, prior to precision rechecks {('py', 'archived comparisons'): 8820, ('wl', 'archived comparisons'): 8820, ('py', 'initial flags'): 36}
+worst method-specific binary64 ratio (diagnostic; cancellation in closed form is possible) (1.0891920127369448, ('inner/transport_radius/component_3/labels_drain1+drain2', 'py', ('mixed_quadratic', 'generic', 1, 'locus_4'), 9965.461079947025, 9965.461069071374, 1.0875650332309306e-05, 2.4501787265762687e-09, 'within_estimate', 'separated'))
+stationary offsets mixed_quadratic X2_velocity_zero 0 [-3.469446951953614e-18, -6.938893903907228e-18, 0.0]
+stationary offsets mixed_quadratic X2_velocity_zero 1 [6.938893903907228e-18, 0.0, 0.0]
+stationary offsets mixed_quadratic X2_velocity_zero 2 [0.0, -6.938893903907228e-18, 0.0]
+stationary offsets mixed_quadratic radii_velocity_zero 0 [0.0, 0.0]
+stationary offsets mixed_quadratic radii_velocity_zero 1 [0.0, 6.938893903907228e-18]
+stationary offsets mixed_quadratic radii_velocity_zero 2 [0.0, 0.0]
+stationary offsets mixed_quadratic X2_and_radii_velocity_zero 0 [-3.469446951953614e-18, -6.938893903907228e-18, 0.0, 0.0, 0.0]
+stationary offsets mixed_quadratic X2_and_radii_velocity_zero 1 [6.938893903907228e-18, 0.0, 0.0, 0.0, 6.938893903907228e-18]
+stationary offsets mixed_quadratic X2_and_radii_velocity_zero 2 [0.0, -6.938893903907228e-18, 0.0, 0.0, 0.0]
+stationary offsets mixed_quadratic X1_velocity_zero 0 [0.0, -3.469446951953614e-18, -3.469446951953614e-18]
+stationary offsets mixed_quadratic X1_velocity_zero 1 [0.0, 6.938893903907228e-18, 6.938893903907228e-18]
+stationary offsets mixed_quadratic X1_velocity_zero 2 [-3.469446951953614e-18, -6.938893903907228e-18, 0.0]
+stationary offsets mixed_cubic X2_velocity_zero 0 [0.0, -3.469446951953614e-18, 0.0]
+stationary offsets mixed_cubic X2_velocity_zero 1 [6.938893903907228e-18, 0.0, 0.0]
+stationary offsets mixed_cubic X2_velocity_zero 2 [0.0, 0.0, 0.0]
+stationary offsets mixed_cubic radii_velocity_zero 0 [-6.938893903907228e-18, 0.0]
+stationary offsets mixed_cubic radii_velocity_zero 1 [6.938893903907228e-18, 0.0]
+stationary offsets mixed_cubic radii_velocity_zero 2 [6.938893903907228e-18, -6.938893903907228e-18]
+stationary offsets mixed_cubic X2_and_radii_velocity_zero 0 [0.0, -3.469446951953614e-18, 0.0, -6.938893903907228e-18, 0.0]
+stationary offsets mixed_cubic X2_and_radii_velocity_zero 1 [6.938893903907228e-18, 0.0, 0.0, 6.938893903907228e-18, 0.0]
+stationary offsets mixed_cubic X2_and_radii_velocity_zero 2 [0.0, 0.0, 0.0, 6.938893903907228e-18, -6.938893903907228e-18]
+stationary offsets mixed_cubic X1_velocity_zero 0 [0.0, -3.469446951953614e-18, 0.0]
+stationary offsets mixed_cubic X1_velocity_zero 1 [0.0, 0.0, 0.0]
+stationary offsets mixed_cubic X1_velocity_zero 2 [0.0, -3.469446951953614e-18, -6.938893903907228e-18]
+off/on intended stationary stratum (6 cases per stratum) {'X2_velocity_zero': 5, 'radii_velocity_zero': 4, 'X2_and_radii_velocity_zero': 6, 'X1_velocity_zero': 5} {'radii_velocity_zero': 2, 'X2_velocity_zero': 1, 'X1_velocity_zero': 1}

@@ -13,7 +13,7 @@ def aperture(x, r, center, radius):
     return x[ix] - center, r[ir], np.ix_(ix, ir)
 
 
-def probe(x, r, radius, pair, alone, current, fixed_rate):
+def probe(x, r, radius, pair, alone, current, isolated_current, fixed_rate):
     dx = x[1] - x[0]
     dv = 2 * np.pi * r * dx**2
     axial = x[:, None]
@@ -24,11 +24,14 @@ def probe(x, r, radius, pair, alone, current, fixed_rate):
     difference = ((pair - 1)**2 - (alone - 1)**2) / 2
     force = -np.sum(dv * difference * 6 * axial * base(0)**2 / radius**2)
 
-    def energy(offset):
-        return np.sum(dv * difference * base(offset)**3)
+    ring_volume = np.pi * dx * ((r + dx/2)**2 - (r - dx/2)**2)
+    def energy(offset, amplitude):
+        return np.sum(ring_volume * (amplitude - 1)**2 * base(offset)**3) / 2
 
     step = dx * 1e-4
-    difference_force = (energy(-step) - energy(step)) / (2 * step)
+    def displaced_force(amplitude):
+        return (energy(-step, amplitude) - energy(step, amplitude)) / (2 * step)
+    difference_force = displaced_force(pair) - displaced_force(alone)
 
     # Vary the amplitude by u*eta at fixed profile and test the induced
     # phase flux with eta. The amplitude boundary law is phase-independent.
@@ -37,14 +40,18 @@ def probe(x, r, radius, pair, alone, current, fixed_rate):
     mean = np.sum(dv * current * eta) / rate if fixed_rate else 0
     mixed = 2 * np.sum(dv * current * (eta - mean)**2)
 
-    def perturbed_current(epsilon):
-        result = current * (1 + epsilon * eta)**2
-        return result * (rate / np.sum(dv * result)) if fixed_rate else result
+    def prepared_current(epsilon, variation):
+        result = isolated_current * (pair * (1 + epsilon * variation) / alone)**2
+        return result * (0.25 / np.sum(ring_volume * result)) if fixed_rate else result
 
     eps = 1e-5
-    derivative = (perturbed_current(eps) - perturbed_current(-eps)) / (2 * eps)
+    np.testing.assert_allclose(current, prepared_current(0, eta), rtol=1e-11, atol=1e-14)
+    derivative = (prepared_current(eps, eta) - prepared_current(-eps, eta)) / (2 * eps)
     mixed_fd = np.sum(dv * eta * derivative)
-    return force, difference_force, mixed, mixed_fd
+    # A uniform amplitude change has nonzero current-weighted mean, unlike
+    # the nearly centered dipole. This distinguishes the two boundary laws.
+    uniform_fd = np.sum(ring_volume * (prepared_current(eps, 1) - prepared_current(-eps, 1))) / (2*eps)
+    return force, difference_force, mixed, mixed_fd, uniform_fd
 
 
 def main():
@@ -72,18 +79,26 @@ def main():
                                 raise ValueError("Isolated left mouth differs")
                             xc, rc, local = aperture(control["x"], control["r"], center, radius)
                             alone = abs(control["layers"][-1][local])
+                            isolated_current = control["currents"][0][local]
                     else:
                         with packet(right, "local_fields.npz") as control:
                             if float(control["radius"]) != radius:
                                 raise ValueError("Isolated right mouth differs")
                             xc, rc, local = aperture(control["x"], control["r"], center, radius)
-                            alone = abs(control["field"][-1][local])
+                            isolated_face = control["field"][-1][local]
+                            alone = abs(isolated_face)
+                            isolated_current = (isolated_face.conj()*control["normal"][local]).imag
                     np.testing.assert_array_equal(x, xc)
                     np.testing.assert_array_equal(r, rc)
-                    f, fd, mixed, mixed_fd = probe(x, r, radius, face[indices], alone,
-                                                  currents[i][indices], fixed_rate=(i == 0))
+                    current = currents[i][indices]
+                    f, fd, mixed, mixed_fd, uniform = probe(x, r, radius, face[indices], alone,
+                                                           current, isolated_current, fixed_rate=(i == 0))
+                    rate = np.sum(2*np.pi*r*(x[1]-x[0])**2 * current)
+                    uniform_expected = 0 if radius == 1 else 2*rate
                     print(f"{grid} d={distance} a={radius:g} restoring={f:.12g} energy_fd={fd:.12g} "
-                          f"mixed={mixed:.12g} current_fd={mixed_fd:.12g}", flush=True)
+                          f"mixed={mixed:.12g} current_fd={mixed_fd:.12g} "
+                          f"uniform_rate_fd={uniform:.12g} uniform_expected={uniform_expected:.12g}", flush=True)
+                    np.testing.assert_allclose(uniform, uniform_expected, rtol=1e-9, atol=1e-11)
                     np.testing.assert_allclose(f, fd, rtol=3e-6, atol=1e-15)
                     np.testing.assert_allclose(mixed, mixed_fd, rtol=3e-8, atol=1e-13)
                     if not mixed > 0:

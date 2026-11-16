@@ -1,0 +1,9 @@
+M1 rejected by ArithmeticError: Inconsistent angular (exit 1)
+M2 rejected by AssertionError: (exit 1)
+abs_U=0.01 per_speed_feed=24.9999997672 per_speed_aperture=24.9999985299 per_speed_layers=24.9992949661 aperture_minus_feed_per_speed=-1.2372357574e-06 layers_minus_feed_per_speed=-0.00070480111108
+M3 rejected by ArithmeticError: Interface momentum (exit 1)
+M4 rejected by AssertionError: (exit 1)
+M5 rejected by AssertionError: (exit 1)
+M6 compact: periodic full adjoint=7.48024030538638e-08 direct=7.48024030539214e-08; aperture adjoint=-2.10524747944386e-08 direct=-2.10524747943719e-08; fixed support, alternate stencil=7.37884454635937e-08
+M6 extended: periodic full adjoint=-9.47020536775432e-07 direct=-9.47020536728788e-07; aperture adjoint=-5.45296552012075e-07 direct=-5.45296552011479e-07; fixed support, alternate stencil=-9.42057263193731e-07
+Changing slope support alone preserves full-plane periodic summation by parts.

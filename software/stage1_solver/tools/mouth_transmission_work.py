@@ -32,6 +32,23 @@ def trace_balance():
     drive = sp.simplify(c * n * dx(log_jump) / 2)
     edge_flux = n * sp.diff(energy, n) - energy
     translated = sp.simplify(drive - dx(edge_flux))
+    # Build the full stress on each side from n, n_N and their tangential
+    # derivatives. Vary both density and coupling along a trace inside its support.
+    u_trace = 1 + y/7
+    n_trace = u_trace**2
+    trial_energy = (1-y**2)**3 * (n**2/3 + n**3/7 + y*n**2/9)
+    trial_en = sp.diff(trial_energy, n).subs(n, n_trace)
+    left_slope = y/11
+    right_slope = left_slope + u_trace * trial_en/c
+    carry = n_trace * (1+y/5) * (1-y/3)
+    def normal_flux(slope):
+        nz = 2*u_trace*slope
+        return carry + c*(sp.diff(n_trace, y)*nz/n_trace - sp.diff(nz, y))/2
+
+    stress_difference = normal_flux(left_slope) - normal_flux(right_slope)
+    trial_drive = drive.subs(energy, trial_energy).doit().subs(
+        {nx: sp.diff(n_trace, y), n: n_trace}, simultaneous=True)
+    stress_residual = sp.factor(stress_difference - trial_drive)
     lam, g = sp.symbols("lambda g", real=True)
     restoring = lam * c * g * (sp.sqrt(n) - 1)**2
     amp_jump = sp.simplify(match[right] - left).subs(energy_n, sp.diff(restoring, n)).subs(n, amp**2)
@@ -40,9 +57,11 @@ def trace_balance():
     print("outgoing minus incoming normal log-density slope =", log_jump)
     print("feeding minus receiving x momentum flux =", drive)
     print("after subtracting tangential divergence =", translated)
+    print("nonlinear two-sided stress minus trace formula =", stress_residual)
     print("receiving amplitude slope with restoring example =", receiving)
     print("receiving slopes at lambda=0,1 =", [receiving.subs(lam, k) for k in (0, 1)])
-    if current_jump != 0 or translated != sp.diff(energy, y) or receiving.subs(lam, 1) != 0:
+    if (current_jump != 0 or translated != sp.diff(energy, y) or stress_residual != 0
+            or sp.simplify(receiving - (lam-1)*g*(amp-1)) != 0):
         raise ArithmeticError("Interface momentum balance failed")
 
 
@@ -58,14 +77,21 @@ def signed_work(speed):
     def base(offset):
         return np.maximum(1 - (axial - offset)**2 - transverse2, 0)
 
-    if drive != speed or not np.array_equal(mouth, base(0) > 0) or not np.all(current[mouth] > 0):
+    if (drive != speed or not np.array_equal(mouth, base(0) > 0)
+            or not np.all(current[mouth] > 0) or np.any(current[~mouth] != 0)):
         raise ValueError("Unexpected mouth geometry, drive or inward current")
     # Odd part across opposite incident speeds on the same symmetric grid.
     # The reflected field is the negative-speed solution checked by the source readout.
     density_work = ((amplitude-1)**2 - (amplitude[::-1]-1)**2) / (4*speed)
     slope = dx**3 * np.sum(density_work * (-6*axial*base(0)**2))
     shift = 1e-4 * dx
-    differenced = dx**3 * np.sum(density_work * (base(-shift)**3-base(shift)**3)) / (2*shift)
+    def energy(field, offset):
+        return dx**3 * np.sum((field-1)**2 * base(offset)**3) / 2
+
+    def signed_force(field):
+        return (energy(field, -shift) - energy(field, shift)) / (2*shift)
+
+    differenced = (signed_force(amplitude) - signed_force(amplitude[::-1])) / (2*speed)
     rate = dx**3 * np.sum(current)
     print(f"abs_U={speed:g} inward_rate={rate:.12g} restoring_drive_per_speed={slope:.12g} "
           f"translated_energy_check={differenced:.12g} fraction_of_continuum_incoming={slope/rate:.12g}",

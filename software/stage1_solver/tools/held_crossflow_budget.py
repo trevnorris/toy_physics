@@ -7,7 +7,7 @@ from pathlib import Path
 
 import numpy as np
 
-from mouth_feed_weak_check import check_file
+from mouth_feed_weak_check import check_file, dx4
 
 
 def archived_packet(manifest, basename):
@@ -61,16 +61,29 @@ def signed_readings(path, zero_density, speed):
         feed = incident * rate
         opening = carry + stress
         direct = direct_carry + direct_stress
+        # Check the layer stress from its discrete integration-by-parts form.
+        # The mask belongs inside the differentiated density at the aperture rim.
+        logn = 2*np.log(abs(field[-4:]))
+        slope = (11*logn[-1] - 18*logn[-2] + 9*logn[-3] - 2*logn[-4]) / (6*dz)
+        layers_ibp = dx**3 * np.sum(slope * dx4(abs(field[-1])**2 * mouth, dx)) / 4
         print(f"U={incident:+.5f} feed_rate={rate:.12g} feed_momentum={feed:+.12g} "
               f"carried={carry:+.12g} stress={stress:+.12g} aperture={opening:+.12g} "
-              f"aperture_layers={direct:+.12g} residual={residual:.4g}", flush=True)
+              f"aperture_layers={direct:+.12g} layer_stress_ibp={layers_ibp:+.12g} residual={residual:.4g}",
+              flush=True)
+        np.testing.assert_allclose(direct - direct_carry, layers_ibp, rtol=1e-9, atol=1e-14)
         readings.append(np.array([feed, opening, direct]))
     pos, neg = readings
     odd = (pos - neg) / (2 * speed)
     print(f"abs_U={speed:g} per_speed_feed={odd[0]:.12g} per_speed_aperture={odd[1]:.12g} "
-          f"per_speed_layers={odd[2]:.12g} aperture_minus_feed_per_speed={odd[1]-odd[0]:+.12g}",
+          f"per_speed_layers={odd[2]:.12g} aperture_minus_feed_per_speed={odd[1]-odd[0]:+.12g} "
+          f"layers_minus_feed_per_speed={odd[2]-odd[0]:+.12g}",
           flush=True)
     np.testing.assert_allclose(neg, -pos, rtol=1e-11, atol=1e-14)
+    # Frozen-grid regression limits for these two speed magnitudes. They
+    # distinguish the observed discretization errors from a sign/scale error.
+    np.testing.assert_allclose(odd[0], dx**3 * current.sum(), rtol=0, atol=2e-7)
+    np.testing.assert_allclose(odd[1], odd[0], rtol=0, atol=1e-7)
+    np.testing.assert_allclose(odd[2], odd[0], rtol=0, atol=1e-5)
 
 
 def main():

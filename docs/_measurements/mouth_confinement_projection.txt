@@ -1,21 +1,22 @@
-Parent confinement projected onto rigid translation of each spherical cross-section. Working result pending independent review.
-Angular displacement is q(w)*mu with mu the x direction cosine. V_r is the unshifted radial potential derivative. n1 is the dipole coefficient of number density per unit incident speed. The force is minus the geometric energy derivative at fixed carrier.
+Parent confinement projected onto rigid translation of each spherical cross-section.
+Angular displacement is q(w)*mu with mu the x direction cosine. V_r is the unshifted radial potential derivative. n1 is the dipole coefficient of number density per unit incident speed. The force is minus the geometric energy derivative at fixed carrier. The linear incident-speed response is taken at U=0 with every cross-section held at its reference shape.
 For the axial work check f0 is an illustrative constant load per unit length and L is the interval length. With s=w/L the trial profiles are (1-s)^2(1+2s) and that expression plus s^2(1-s)^2. On the shrinking collar use L=h, the first profile, and a test load f0+f1*w. The genuine endpoint work weight is the value of this profile at the mouth.
 No numerical wall profile, endpoint traction or incident-flow fields are inputs to this symbolic calculation.
-Repository base 806ae7b67e83e07db740c4e7333c37591a57b4c8
-$ python3 scripts/s11c_guarded_run.py --pool mouth-confinement-projection --memory-gib 1 --log-directory _scratch/s11c/mouth_confinement_projection01 -- python3 software/stage1_solver/tools/mouth_confinement_projection.py
-Start UTC 2026-11-16T14:51:04.475084+00:00. End UTC 2026-11-16T14:51:05.116103+00:00 (start plus guard wall time).
-Guard and worker exit 0. Verified 1 GiB cap, zero swap, no deadline. Peak 55443456 bytes. Stderr empty.
-Stdout _scratch/s11c/mouth_confinement_projection01/stdout (580 bytes, SHA256 01af01482918fcb428c460f09f33c8a723fa27cb013888fd1ddd3074353a72a7).
-Run SHA256
+Repository base 6d56abecb63d7081bdcc9cb251021fa110a18466
+$ python3 scripts/s11c_guarded_run.py --pool mouth-confinement-projection --memory-gib 1 --log-directory _scratch/s11c/held_mouth_review/r1/mouth_confinement_projection -- python3 software/stage1_solver/tools/mouth_confinement_projection.py
+Start UTC 2026-11-16T15:16:27.015418+00:00. End UTC 2026-11-16T15:16:27.870793+00:00 (start plus guard wall time).
+Guard and worker exit 0. Verified 1 GiB cap, zero swap, no deadline. Peak 55451648 bytes. Stderr empty.
+Stdout _scratch/s11c/held_mouth_review/r1/mouth_confinement_projection/stdout (649 bytes, SHA256 b0906b3d30c09ffee3f14f1a9d532ac8eaa789c328339bfa145604eae8d90984).
+Run and input SHA256
 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
-30039b172778c29d391bf5fedd40263c5020ae0de1b0831b430f41a07a30537b  software/stage1_solver/tools/mouth_confinement_projection.py
+1ed588dbd45eb2fd7709b411cbe8da3bdee1181072d347f3e7eb009f04d2c39f  software/stage1_solver/tools/mouth_confinement_projection.py
 
 Literal stdout
 displacement projection, volume change = mu 0
 force minus opposite material body force (radial measure included) = 0
 undriven radial force integrand = 0
 force per unit w and U, before radial integration = 4*pi*V_r*n1*r**2/3
+cubic force coefficient at fixed cross-sections = 4*pi*V_r*n3*r**2/3
 trial extension trace differences (value,slope at 0,L) = [0, 0, 0, 0]
 difference of distributed works per unit mouth displacement = L*f0/30
 regular collar work per unit mouth displacement = h*(10*f0 + 3*f1*h)/20

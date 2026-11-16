@@ -1,0 +1,31 @@
+frozen 10 files 10
+verified held_crossflow_budget stdout bytes 1342 listed hashes 10
+verified mouth_confinement_projection stdout bytes 649 listed hashes 2
+verified mouth_transmission_work stdout bytes 814 listed hashes 8
+verified unequal_mouth_boundary_work stdout bytes 2155 listed hashes 28
+REJECT freeze_prepared_normalizer at assert_allclose(uniform, uniform_expected
+REJECT swap_fixed_law at assert_allclose(current, prepared_current
+REJECT corrupt_paired_j at assert_allclose(current, prepared_current
+REJECT drop_reference at assert_allclose(f, fd
+REJECT wrong_annular_measure at assert_allclose(
+REJECT flip_feed at assert_allclose(odd[0],
+REJECT flip_boundary_stress at assert_allclose(odd[1],
+REJECT flip_layer_stress at assert_allclose(direct - direct_carry,
+REJECT erase_layer_stress at assert_allclose(direct - direct_carry,
+REJECT omit_mask_rim at assert_allclose(direct - direct_carry,
+REJECT alter_layer_carry at assert_allclose(odd[2],
+REJECT halve_secant at assert_allclose(odd[0],
+REJECT nonlinear_trace_chain at Interface momentum balance failed
+REJECT one_side_quantum at Interface momentum balance failed
+REJECT change_general_lambda at Interface momentum balance failed
+REJECT zero_law at Interface momentum balance failed
+REJECT double_analytic_odd at assert_allclose(slope, differenced
+REJECT zero_analytic_odd at assert_allclose(slope, differenced
+REJECT omit_negative_energy at assert_allclose(slope, differenced
+REJECT off_aperture_current at Unexpected mouth geometry
+REJECT do_not_evaluate_zero at Inconsistent angular projection
+REJECT incorrect_cubic_scale at Inconsistent angular projection
+REJECT non_radial_baseline at Inconsistent angular projection
+REJECT endpoint_sign at Inconsistent angular projection
+verified discriminating mutations 24
+skew test correct variance / probed / raw uncentered / uniform 0.005652994690540647 0.005652994690545531 0.005856018808881237 -1.862932935462239e-13

@@ -1,12 +1,12 @@
-Unequal-mouth virtual work, paired minus matched isolation. Working result pending independent review.
+Unequal-mouth virtual work, paired minus matched isolation.
 Positive x points from radius 1 to radius 1.5. Restoring force and the centered energy difference have solver force units. Each derivative holds the carrier trace fixed.
-The last two columns test the amplitude dependence of the phase-current law. They are contractions with a dipole variation, not forces. The reciprocal contraction from varying the restoring law with phase is zero.
-Repository base 806ae7b67e83e07db740c4e7333c37591a57b4c8
-$ python3 scripts/s11c_guarded_run.py --pool unequal-mouth-boundary-work --memory-gib 2 --log-directory _scratch/s11c/unequal_mouth_boundary_work01 -- python3 software/stage1_solver/tools/unequal_mouth_boundary_work.py
-Start UTC 2026-11-16T14:31:02.614291+00:00. End UTC 2026-11-16T14:31:03.603633+00:00 (start plus guard wall time).
-Guard and worker exit 0. Verified 2 GiB cap, zero swap, no deadline. Peak 86142976 bytes. Stderr empty.
-Stdout _scratch/s11c/unequal_mouth_boundary_work01/stdout (1473 bytes, SHA256 8645ddd6c704d94c6fe4a587f0afe1b09878ec2acf0ad90c5750b5b7d9acecb1).
-Run and input SHA256:
+mixed and current_fd contract the amplitude response of the phase-current law with a dipole variation. uniform_rate_fd and uniform_expected give the integrated current response to a uniform fractional amplitude change. The reciprocal contraction from varying the restoring law with phase is zero.
+Repository base 6d56abecb63d7081bdcc9cb251021fa110a18466
+$ python3 scripts/s11c_guarded_run.py --pool unequal-mouth-boundary-work --memory-gib 2 --log-directory _scratch/s11c/held_mouth_review/r1/unequal_mouth_boundary_work -- python3 software/stage1_solver/tools/unequal_mouth_boundary_work.py
+Start UTC 2026-11-16T15:16:27.015430+00:00. End UTC 2026-11-16T15:16:28.109902+00:00 (start plus guard wall time).
+Guard and worker exit 0. Verified 2 GiB cap, zero swap, no deadline. Peak 86396928 bytes. Stderr empty.
+Stdout _scratch/s11c/held_mouth_review/r1/unequal_mouth_boundary_work/stdout (2155 bytes, SHA256 9d34243cf0117412188bdb2f72c3639198d1890f6d145751e7831cb98c7c3a58).
+Run and input SHA256
 76c4eec5331cbfdc280b5a3c022d8bc5647f445afbda59d242ae251c0c18f96c  _scratch/s11c/lateral_paired_acceleration_e24_c4_a1.5_01/fields/d4.npz
 a0a01a16cdede39afe098e111ddf1fb91cbc702c9ad507af17996d7003042407  _scratch/s11c/lateral_paired_acceleration_e24_c4_a1.5_01/fields/d8.npz
 c972b491b570377aa19ce11db660fc0394ead62a1054ffdc9bf7ebc8b7d4da78  _scratch/s11c/lateral_paired_acceleration_e24_c6_a1.5_01/fields/d4.npz
@@ -33,19 +33,19 @@ fac0bae77c0573d066c36f296b120b21cdf4e1e190c8ecb4736dfc171fc3cf96  docs/_measurem
 ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15  software/stage1_solver/tools/lateral_reservoir_readout.py
 2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c  software/stage1_solver/tools/lateral_source_rate.py
 a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61  software/stage1_solver/tools/mouth_feed_weak_check.py
-367b12a66ff3cd23f8033d42ff3b54e5f7c6479aa0d59cbbbabafb98007b2941  software/stage1_solver/tools/unequal_mouth_boundary_work.py
+8de42f4474742840a4ab6a303d9b97e44986e956346696e49bfa164572901de1  software/stage1_solver/tools/unequal_mouth_boundary_work.py
 26c6a37ef21ffd3e4c14bfc5f70858490264cae108eef019ba5e785e961b303c  software/stage1_solver/tools/unequal_mouth_holding_readout.py
 
 Literal stdout
-e24_c4 d=4 a=1 restoring=3.35024466158e-08 energy_fd=3.35024465778e-08 mixed=0.00603961253291 current_fd=0.00603961253293
-e24_c4 d=4 a=1.5 restoring=-7.5110748177e-08 energy_fd=-7.51107481378e-08 mixed=0.0198178745542 current_fd=0.0198178745544
-e24_c4 d=8 a=1 restoring=9.34273517283e-09 energy_fd=9.34273516265e-09 mixed=0.00603959064105 current_fd=0.00603959064098
-e24_c4 d=8 a=1.5 restoring=-1.90159510487e-08 energy_fd=-1.90159510387e-08 mixed=0.0198178331659 current_fd=0.0198178331663
-e24_c6 d=4 a=1 restoring=3.3317485982e-08 energy_fd=3.33174859642e-08 mixed=0.00588474598878 current_fd=0.00588474598882
-e24_c6 d=4 a=1.5 restoring=-7.49839349088e-08 energy_fd=-7.49839348915e-08 mixed=0.0196212818939 current_fd=0.0196212818939
-e24_c6 d=8 a=1 restoring=9.27574509459e-09 energy_fd=9.27574508977e-09 mixed=0.00588472419005 current_fd=0.00588472419016
-e24_c6 d=8 a=1.5 restoring=-1.89975272138e-08 energy_fd=-1.89975272094e-08 mixed=0.0196212397858 current_fd=0.0196212397857
-e48_c4 d=4 a=1 restoring=3.35197208668e-08 energy_fd=3.35197208288e-08 mixed=0.00603961253092 current_fd=0.00603961253085
-e48_c4 d=4 a=1.5 restoring=-7.53341337434e-08 energy_fd=-7.5334133704e-08 mixed=0.0198178744139 current_fd=0.0198178744142
-e48_c4 d=8 a=1 restoring=9.36032381319e-09 energy_fd=9.36032380299e-09 mixed=0.00603959065368 current_fd=0.00603959065364
-e48_c4 d=8 a=1.5 restoring=-1.94720351749e-08 energy_fd=-1.94720351647e-08 mixed=0.0198178330822 current_fd=0.0198178330826
+e24_c4 d=4 a=1 restoring=3.35024466158e-08 energy_fd=3.3502446575e-08 mixed=0.00603961253291 current_fd=0.00603961253278 uniform_rate_fd=-4.11262570471e-13 uniform_expected=0
+e24_c4 d=4 a=1.5 restoring=-7.5110748177e-08 energy_fd=-7.5110748157e-08 mixed=0.0198178745542 current_fd=0.0198178745544 uniform_rate_fd=1.68429632966 uniform_expected=1.68429632966
+e24_c4 d=8 a=1 restoring=9.34273517283e-09 energy_fd=9.34273516256e-09 mixed=0.00603959064105 current_fd=0.00603959064099 uniform_rate_fd=-1.57133968206e-13 uniform_expected=0
+e24_c4 d=8 a=1.5 restoring=-1.90159510487e-08 energy_fd=-1.90159510249e-08 mixed=0.0198178331659 current_fd=0.019817833166 uniform_rate_fd=1.68429850552 uniform_expected=1.68429850551
+e24_c6 d=4 a=1 restoring=3.3317485982e-08 energy_fd=3.33174859619e-08 mixed=0.00588474598878 current_fd=0.0058847459888 uniform_rate_fd=-3.47838339555e-12 uniform_expected=0
+e24_c6 d=4 a=1.5 restoring=-7.49839349088e-08 energy_fd=-7.49839349497e-08 mixed=0.0196212818939 current_fd=0.019621281894 uniform_rate_fd=1.68426427126 uniform_expected=1.68426427126
+e24_c6 d=8 a=1 restoring=9.27574509459e-09 energy_fd=9.27574509283e-09 mixed=0.00588472419005 current_fd=0.00588472419016 uniform_rate_fd=-5.05596172044e-13 uniform_expected=0
+e24_c6 d=8 a=1.5 restoring=-1.89975272138e-08 energy_fd=-1.89975272706e-08 mixed=0.0196212397858 current_fd=0.0196212397859 uniform_rate_fd=1.68426639749 uniform_expected=1.68426639749
+e48_c4 d=4 a=1 restoring=3.35197208668e-08 energy_fd=3.35197208315e-08 mixed=0.00603961253092 current_fd=0.00603961253086 uniform_rate_fd=1.81109870891e-12 uniform_expected=0
+e48_c4 d=4 a=1.5 restoring=-7.53341337434e-08 energy_fd=-7.53341336998e-08 mixed=0.0198178744139 current_fd=0.0198178744145 uniform_rate_fd=1.68429632367 uniform_expected=1.68429632367
+e48_c4 d=8 a=1 restoring=9.36032381319e-09 energy_fd=9.36032380383e-09 mixed=0.00603959065368 current_fd=0.00603959065377 uniform_rate_fd=2.85528785581e-13 uniform_expected=0
+e48_c4 d=8 a=1.5 restoring=-1.94720351749e-08 energy_fd=-1.947203517e-08 mixed=0.0198178330822 current_fd=0.0198178330825 uniform_rate_fd=1.68429850229 uniform_expected=1.68429850229

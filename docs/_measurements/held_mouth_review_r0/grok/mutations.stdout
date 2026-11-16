@@ -1,0 +1,29 @@
+witness exit=0
+PASS: kernel.mixed_pos: mixed=0.0057779336921
+PASS: kernel.mixed_fixed_rate_pos: mixed_fr=0.0057779336921
+SUMMARY failures=0 / 47
+M1 exit=1
+regular collar work per unit mouth displacement = h*(10*f0 + 3*f1*h)/20
+shrinking collar limit, endpoint force weight = 0 1
+axial elastic force on the lower endpoint in physical dipole normalization = 4*pi*T_w*q_w/3
+    raise ArithmeticError("Inconsistent angular projection or endpoint work")
+ArithmeticError: Inconsistent angular projection or endpoint work
+M2 exit=0
+U=+0.02000 feed_rate=0.249999997672 feed_momentum=+0.00499999995344 carried=+0.00499985009336 stress=+1.49612639404e-07 aperture=+0.004999999706 aperture_layers=+0.00499985898676 residual=3.077e-10
+U=-0.02000 feed_rate=0.249999997672 feed_momentum=-0.00499999995344 carried=-0.00499985009336 stress=-1.49612639404e-07 aperture=-0.004999999706 aperture_layers=-0.00499985898676 residual=3.077e-10
+abs_U=0.02 per_speed_feed=12.4999998836 per_speed_aperture=12.499999265 per_speed_layers=12.4996474669 aperture_minus_feed_per_speed=-6.18597441715e-07
+M3 exit=1
+after subtracting tangential divergence = Derivative(e(y, n), y)
+receiving amplitude slope with restoring example = g*(lambda - 1)*(u - 1)
+receiving slopes at lambda=0,1 = [-g*(u - 1), 0]
+    raise ArithmeticError("Interface momentum balance failed")
+ArithmeticError: Interface momentum balance failed
+M4 exit=1
+e24_c4 d=4 a=1 restoring=-3.35024466158e-08 energy_fd=3.35024465778e-08 mixed=0.00603961253291 current_fd=0.00603961253293
+ x: array(-3.350245e-08)
+ y: array(3.350245e-08)
+M5 exit=1
+        [0., 0., 0., ..., 0., 0., 0.],
+        [0., 0., 0., ..., 0., 0., 0.],...
+M6 exit=0
+fields: original IBP, direct, altered IBP, altered nonperiodic-gradient, altered same-stencil direct = 7.480240305386382e-08 7.480240305392137e-08 -9.470205367754319e-07 -9.420572631937312e-07 -9.470205367287875e-07

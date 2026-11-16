@@ -1,0 +1,51 @@
+Unequal-mouth virtual work, paired minus matched isolation. Working result pending independent review.
+Positive x points from radius 1 to radius 1.5. Restoring force and the centered energy difference have solver force units. Each derivative holds the carrier trace fixed.
+The last two columns test the amplitude dependence of the phase-current law. They are contractions with a dipole variation, not forces. The reciprocal contraction from varying the restoring law with phase is zero.
+Repository base 806ae7b67e83e07db740c4e7333c37591a57b4c8
+$ python3 scripts/s11c_guarded_run.py --pool unequal-mouth-boundary-work --memory-gib 2 --log-directory _scratch/s11c/unequal_mouth_boundary_work01 -- python3 software/stage1_solver/tools/unequal_mouth_boundary_work.py
+Start UTC 2026-11-16T14:31:02.614291+00:00. End UTC 2026-11-16T14:31:03.603633+00:00 (start plus guard wall time).
+Guard and worker exit 0. Verified 2 GiB cap, zero swap, no deadline. Peak 86142976 bytes. Stderr empty.
+Stdout _scratch/s11c/unequal_mouth_boundary_work01/stdout (1473 bytes, SHA256 8645ddd6c704d94c6fe4a587f0afe1b09878ec2acf0ad90c5750b5b7d9acecb1).
+Run and input SHA256:
+76c4eec5331cbfdc280b5a3c022d8bc5647f445afbda59d242ae251c0c18f96c  _scratch/s11c/lateral_paired_acceleration_e24_c4_a1.5_01/fields/d4.npz
+a0a01a16cdede39afe098e111ddf1fb91cbc702c9ad507af17996d7003042407  _scratch/s11c/lateral_paired_acceleration_e24_c4_a1.5_01/fields/d8.npz
+c972b491b570377aa19ce11db660fc0394ead62a1054ffdc9bf7ebc8b7d4da78  _scratch/s11c/lateral_paired_acceleration_e24_c6_a1.5_01/fields/d4.npz
+0a2a0ed2aca61451e0a9b1288b504085db470fb050097f21502a98234b60dd2e  _scratch/s11c/lateral_paired_acceleration_e24_c6_a1.5_01/fields/d8.npz
+a65e52349cc948b71ff69b03e2a6b61501c0baa22ef3f73e102f9cf14c8bbad9  _scratch/s11c/lateral_paired_acceleration_e48_c4_a1.5_01/fields/d4.npz
+d6eb21b9c6a98da9419fbc2679e9d1444057c428d19908f7dd26654fb3739c7d  _scratch/s11c/lateral_paired_acceleration_e48_c4_a1.5_01/fields/d8.npz
+6b0709b4c15dabe2b8cbaf03d3dcc99202ed620f476177bd55bcbdf487d22b31  _scratch/s11c/lateral_radius_momentum_e24_c4_a1.5_01/local_fields.npz
+cd3d1e8a922f8cdbbc8ac075d8a4ecbc89eb31f7e2b640c70e36d60a9ab22654  _scratch/s11c/lateral_radius_momentum_e24_c6_a1.5_01/local_fields.npz
+ddecb3ebff30472ed70ef927d4fb107fee4fa54fbe0dc9225eb4697d330d1f47  _scratch/s11c/lateral_radius_momentum_e48_c4_a1.5_01/local_fields.npz
+58db1c08e36ce24366e04d482a794ebec2d8e7d5a7d9a3ec41ac230652cb8d5b  _scratch/s11c/lateral_target_rate_e24_c4_01/fields/source_d4.npz
+22983a1bd1f4494fbd579b27faf4ddf6667cf1b048d4becf697342c03672b33f  _scratch/s11c/lateral_target_rate_e24_c4_01/fields/source_d8.npz
+6171b7a1d7892e2a18cc3f821c03bbc982d01b16dc76cfcea2e6513c2d374dbb  _scratch/s11c/lateral_target_rate_e24_c6_01/fields/source_d4.npz
+fe40ed2aa78db6af2d146f27ccd2a02dd7955220f3963fe781af05c80a84076b  _scratch/s11c/lateral_target_rate_e24_c6_01/fields/source_d8.npz
+d4fd8e749bd655124cb8a0f5d6ffe78efc31f52af35d170b84f1af134557b7df  _scratch/s11c/lateral_target_rate_e48_c4_01/fields/source_d4.npz
+24e6b3fda1e9345acbedbd412bd28ebb4e154963166cb768fb9da0c99d51f9d0  _scratch/s11c/lateral_target_rate_e48_c4_01/fields/source_d8.npz
+fac0bae77c0573d066c36f296b120b21cdf4e1e190c8ecb4736dfc171fc3cf96  docs/_measurements/lateral_paired_acceleration.json
+9e18d35243a24010709672a0dd21fc0f541afb3fd73e29f1adb4b32eb9f5695e  docs/_measurements/lateral_radius_momentum.json
+1509281ae8ed652a457da284ac92944cb902b5630e547c71ff7e266e12b9bce3  docs/_measurements/lateral_target_rate.json
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+0f04c0edb17b6c17bc1dfd2081412017caed4dfd7c1ef6808fe84f751394219b  software/stage1_solver/tools/lateral_mouth_acceleration.py
+4f0d9fafd7bd4b71251ae87bf91d60d8c60be0ee01170d2c4c184eb160954b08  software/stage1_solver/tools/lateral_mouth_radius.py
+42e94c2f007d335a233c31afda180e29e30ecfbb0d13b0790c0295c678fd672e  software/stage1_solver/tools/lateral_paired_acceleration.py
+2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c  software/stage1_solver/tools/lateral_reservoir_field.py
+ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15  software/stage1_solver/tools/lateral_reservoir_readout.py
+2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c  software/stage1_solver/tools/lateral_source_rate.py
+a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61  software/stage1_solver/tools/mouth_feed_weak_check.py
+367b12a66ff3cd23f8033d42ff3b54e5f7c6479aa0d59cbbbabafb98007b2941  software/stage1_solver/tools/unequal_mouth_boundary_work.py
+26c6a37ef21ffd3e4c14bfc5f70858490264cae108eef019ba5e785e961b303c  software/stage1_solver/tools/unequal_mouth_holding_readout.py
+
+Literal stdout
+e24_c4 d=4 a=1 restoring=3.35024466158e-08 energy_fd=3.35024465778e-08 mixed=0.00603961253291 current_fd=0.00603961253293
+e24_c4 d=4 a=1.5 restoring=-7.5110748177e-08 energy_fd=-7.51107481378e-08 mixed=0.0198178745542 current_fd=0.0198178745544
+e24_c4 d=8 a=1 restoring=9.34273517283e-09 energy_fd=9.34273516265e-09 mixed=0.00603959064105 current_fd=0.00603959064098
+e24_c4 d=8 a=1.5 restoring=-1.90159510487e-08 energy_fd=-1.90159510387e-08 mixed=0.0198178331659 current_fd=0.0198178331663
+e24_c6 d=4 a=1 restoring=3.3317485982e-08 energy_fd=3.33174859642e-08 mixed=0.00588474598878 current_fd=0.00588474598882
+e24_c6 d=4 a=1.5 restoring=-7.49839349088e-08 energy_fd=-7.49839348915e-08 mixed=0.0196212818939 current_fd=0.0196212818939
+e24_c6 d=8 a=1 restoring=9.27574509459e-09 energy_fd=9.27574508977e-09 mixed=0.00588472419005 current_fd=0.00588472419016
+e24_c6 d=8 a=1.5 restoring=-1.89975272138e-08 energy_fd=-1.89975272094e-08 mixed=0.0196212397858 current_fd=0.0196212397857
+e48_c4 d=4 a=1 restoring=3.35197208668e-08 energy_fd=3.35197208288e-08 mixed=0.00603961253092 current_fd=0.00603961253085
+e48_c4 d=4 a=1.5 restoring=-7.53341337434e-08 energy_fd=-7.5334133704e-08 mixed=0.0198178744139 current_fd=0.0198178744142
+e48_c4 d=8 a=1 restoring=9.36032381319e-09 energy_fd=9.36032380299e-09 mixed=0.00603959065368 current_fd=0.00603959065364
+e48_c4 d=8 a=1.5 restoring=-1.94720351749e-08 energy_fd=-1.94720351647e-08 mixed=0.0198178330822 current_fd=0.0198178330826

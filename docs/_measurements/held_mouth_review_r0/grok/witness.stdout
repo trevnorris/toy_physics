@@ -1,0 +1,48 @@
+PASS: conf.rim_shift: mu
+PASS: conf.volume: 0
+PASS: conf.reaction0: 0
+PASS: conf.reaction_mut_breaks: mu*r**2*(U*(2*mu*n1 + n2*(3*mu**2 - 1)) + 2*n0)*Subs(Derivative(Vwall(_xi_1), _xi_1), _xi_1, (-a + r)/ell)/ell
+PASS: conf.per_speed: 4*pi*V_r*n1*r**2/3
+PASS: conf.traces: [0, 0, 0, 0]
+PASS: conf.extra: L*f0/30
+PASS: conf.collar0: 0
+PASS: conf.elastic: 4*pi*T_w*q_w/3
+PASS: conf.elastic_mut_breaks: 2*T_w*q_w/3
+PASS: tx.current0: 0
+PASS: tx.translated: Derivative(e(y, n), y)
+PASS: tx.drive_alone_not_partial_y: n*(nx*Derivative(e(y, n), (n, 2)) + Derivative(e(y, n), n, y))
+PASS: tx.lam0: -g*(u - 1)
+PASS: tx.lam1: 0
+PASS: tx.lam1_mut_breaks: 2*g*(u - 1)
+PASS: xf.feed_mJU_0.01: feed=0.249999997672 rate=0.249999997672
+PASS: xf.aperture_vs_feed_0.01: diff=-1.2373e-08
+PASS: xf.stress_matches_tx_0.01: stress/U=7.48024030539e-06 tx=7.4812472343e-06
+PASS: xf.feed_mJU_0.02: feed=0.249999997672 rate=0.249999997672
+PASS: xf.aperture_vs_feed_0.02: diff=-1.2372e-08
+PASS: xf.stress_matches_tx_0.02: stress/U=7.4806319702e-06 tx=7.48163888963e-06
+PASS: xf.odd_defined: pos/neg pairs equal magnitude opposite sign in paste
+PASS: un.fd_e24_c4_d4_a1.0: f=3.35024466158e-08 fd=3.35024465778e-08
+PASS: un.mixed_pos_e24_c4_d4_a1.0: mixed=0.00603961253291
+PASS: un.sign_left_e24_c4_d4: 3.35024466158e-08
+PASS: un.fd_e24_c4_d4_a1.5: f=-7.5110748177e-08 fd=-7.51107481378e-08
+PASS: un.mixed_pos_e24_c4_d4_a1.5: mixed=0.0198178745542
+PASS: un.sign_right_e24_c4_d4: -7.5110748177e-08
+PASS: un.fd_e24_c4_d8_a1.0: f=9.34273517283e-09 fd=9.34273516265e-09
+PASS: un.mixed_pos_e24_c4_d8_a1.0: mixed=0.00603959064105
+PASS: un.sign_left_e24_c4_d8: 9.34273517283e-09
+PASS: un.fd_e24_c4_d8_a1.5: f=-1.90159510487e-08 fd=-1.90159510387e-08
+PASS: un.mixed_pos_e24_c4_d8_a1.5: mixed=0.0198178331659
+PASS: un.sign_right_e24_c4_d8: -1.90159510487e-08
+PASS: un.fd_e48_c4_d8_a1.0: f=9.36032381319e-09 fd=9.36032380299e-09
+PASS: un.mixed_pos_e48_c4_d8_a1.0: mixed=0.00603959065368
+PASS: un.sign_left_e48_c4_d8: 9.36032381319e-09
+PASS: un.fd_e48_c4_d8_a1.5: f=-1.94720351749e-08 fd=-1.94720351647e-08
+PASS: un.mixed_pos_e48_c4_d8_a1.5: mixed=0.0198178330822
+PASS: un.sign_right_e48_c4_d8: -1.94720351749e-08
+PASS: un.stress_vs_rest_L: stress=9.3768926443e-09 rest=9.36032381319e-09
+PASS: un.stress_vs_rest_R: stress=-1.94789077472e-08 rest=-1.94720351749e-08
+PASS: kernel.force_fd: force=-9.63285082396e-05 fd=-9.63285082334e-05
+PASS: kernel.sign_mut_breaks: mut=9.63285082396e-05 fd=-9.63285082334e-05
+PASS: kernel.mixed_pos: mixed=0.0057779336921
+PASS: kernel.mixed_fixed_rate_pos: mixed_fr=0.0057779336921
+SUMMARY failures=0 / 47

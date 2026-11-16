@@ -1,0 +1,16 @@
+asymmetric trace contraction: normalized analytic/difference, unnormalized difference: 0.014185930920646062 0.014185930920630273 0.014910217019080168
+explicit scalar surface polynomial: local chain residual, independent integrated stress, profile derivative 0 [-1165876296750481/3685560810750000, -1165876296750481/3685560810750000]
+freezing n(y) inside d_y e_n at y=0 loses amount 64/147
+lambda 0 normal-slope receiving, direct formula -0.03540736607142854 -0.03540736607142854
+lambda 1 normal-slope receiving, direct formula 2.7755575615628914e-17 0.0
+lambda 2 normal-slope receiving, direct formula 0.035407366071428595 0.03540736607142854
+held mouth q(0)=0 but q_U(w) nonzero inside; level-set geometry slope per q_U -80*pi/3
+imported readout rate ArithmeticError Incorrect saved aperture or intake
+imported readout aperture ArithmeticError Incorrect saved aperture or intake
+imported readout bulk ArithmeticError Large steady-equation residual 0.0016929276547592313
+imported readout normal_flux ArithmeticError Current or feed drive disagrees with input
+imported readout feed_phase ArithmeticError Current or feed drive disagrees with input
+unequal packet guard ValueError Unverified input run
+unequal packet worker ValueError Unverified input run
+unequal packet limits ValueError Unverified input run
+unequal packet checksum ValueError Input field checksum mismatch: /var/projects/toy_physics/_scratch/s11c/held_mouth_review/local_r0/forged.npz

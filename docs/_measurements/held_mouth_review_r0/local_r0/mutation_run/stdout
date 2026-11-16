@@ -1,0 +1,60 @@
+unequal_mouth_boundary_work sign: AssertionError  Not equal to tolerance rtol=3e-06, atol=1e-15  Mismatched elements: 1 / 1 (100%) Max absolute difference: 6.70048932e-08 Max relative difference: 2.  x: array(-3.350245e-08)  y: a | force/difference
+unequal_mouth_boundary_work mixed: AssertionError  Not equal to tolerance rtol=3e-08, atol=1e-13  Mismatched elements: 1 / 1 (100%) Max absolute difference: 0.00301981 Max relative difference: 0.5  x: array(0.009059)  y: array(0.0 | mixed/difference
+unequal_mouth_boundary_work zero_variation: ArithmeticError Degenerate current variation | degenerate variation
+unequal_mouth_boundary_work calibration: ValueError Isolated calibration differs for _scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz | matched reference
+unequal_mouth_boundary_work pair_geometry: ValueError Unexpected paired geometry | d
+unequal_mouth_boundary_work pair_radius: ValueError Unexpected paired geometry | pair radius
+unequal_mouth_boundary_work left_center: ValueError Isolated left mouth differs | off-center control
+unequal_mouth_boundary_work left_rate: ValueError Isolated left mouth differs | left rate
+unequal_mouth_boundary_work right_radius: ValueError Isolated right mouth differs | right radius
+unequal_mouth_boundary_work x_match: AssertionError  Arrays are not equal  Mismatched elements: 10 / 10 (100%) Max absolute difference: 1. Max relative difference: 8.  x: array([-1.125, -0.875, -0.625, -0.375, -0.125,  0.125,  0.375 | local x coordinates
+unequal_mouth_boundary_work r_match: AssertionError  Arrays are not equal  Mismatched elements: 5 / 5 (100%) Max absolute difference: 1. Max relative difference: 0.88888889  x: array([0.125, 0.375, 0.625, 0.875, 1.125])  y: array([1 | local r coordinates
+unequal_mouth_boundary_work wrong_rate: survived | current array doubled after checksum
+unequal_mouth_boundary_work wrong_law: survived | left/right phase laws exchanged
+unequal_mouth_boundary_work wrong_measure: survived | annular Jacobian removed both sides
+unequal_mouth_boundary_work fixed_rate_fd_omitted: survived | one-sided fixed-rate normalization deletion
+unequal_mouth_boundary_work unit_baseline: survived | substitutes uniform isolated amplitude instead of matched state
+held_crossflow_budget feed_scale: survived | feed/aperture sign not checked
+held_crossflow_budget aperture_stress: survived | one-sided stress sign
+held_crossflow_budget direct_flux: survived | one-sided layer stress sign
+held_crossflow_budget odd_normalizer: survived | difference denominator
+held_crossflow_budget parity: AssertionError  Not equal to tolerance rtol=1e-11, atol=1e-14  Mismatched elements: 3 / 3 (100%) Max absolute difference: 0.1 Max relative difference: 40.00112809  x: array([0.0975, 0.0975, 0.097 | antisymmetry
+held_crossflow_budget guard: ValueError Unverified run for _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz | guard
+held_crossflow_budget checksum: ValueError Checksum mismatch for _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz | digest
+held_crossflow_budget calibration_speed: ValueError Calibration is driven | calibration metadata
+held_crossflow_budget calibration_parity: AssertionError  Not equal to tolerance rtol=1e-12, atol=1e-14  Mismatched elements: 2048 / 32768 (6.25%) Max absolute difference: 0.00999998 Max relative difference: 0.01  x: array([[[1.009998, 1 | zero-drive parity
+held_crossflow_budget speed: ValueError Unexpected field or drive | speed metadata
+held_crossflow_budget field_shape: ValueError Unexpected field or drive | depth
+held_crossflow_budget current_shape: AssertionError  Not equal to tolerance rtol=1e-11, atol=1e-14  Mismatched elements: 2384 / 32768 (7.28%) Max absolute difference: 0.08025826 Max relative difference: 1814.88320764  x: array([[[0. | nonuniform current shape
+held_crossflow_budget support: ValueError Intake left its support or reversed | strict off-aperture support
+held_crossflow_budget inward: ValueError Intake left its support or reversed | inward
+held_crossflow_budget reflect_validation: ArithmeticError Large steady-equation residual 42.90092129852848 | signed stationary PDE
+held_crossflow_budget feed_phase: ArithmeticError Feed envelope is not the calibrated plane wave | feed envelope
+held_crossflow_budget mouth_mask: ValueError Intake left its support or reversed | mask
+held_crossflow_budget rate_invariant: AssertionError  Not equal to tolerance rtol=1e-11, atol=1e-14  x and y nan location mismatch:  x: array([    nan, -0.0025,     nan])  y: array([-0.0025, -0.0025, -0.0025]) | nonfinite normal spacing in signed reflected partner
+mouth_transmission_work imaginary_jump: ArithmeticError Interface momentum balance failed | current continuity
+mouth_transmission_work nonlinear: survived | varying density suppressed in both chain rules
+mouth_transmission_work log_density: ArithmeticError Interface momentum balance failed | surface stress coefficient
+mouth_transmission_work edge_sign: ArithmeticError Interface momentum balance failed | one-sided divergence
+mouth_transmission_work lambda_one: ArithmeticError Interface momentum balance failed | receiving at 1
+mouth_transmission_work lambda_zero: survived | lambda=0 and finite lambda
+mouth_transmission_work one_side_force: AssertionError  Not equal to tolerance rtol=2e-06, atol=1e-13  Mismatched elements: 1 / 1 (100%) Max absolute difference: 1.49624945e-05 Max relative difference: 2.  x: array(-7.481247e-06)  y: a | energy difference
+mouth_transmission_work odd_norm: survived | odd sign/speed normalization both branches
+mouth_transmission_work profile_null: survived | erase numerical force and energy
+mouth_transmission_work rate: AssertionError  Not equal to tolerance rtol=0, atol=1e-12  Mismatched elements: 1 / 1 (100%) Max absolute difference: 0.125 Max relative difference: 0.5  x: array(0.125)  y: array(0.25) | inward rate
+mouth_transmission_work speed: ValueError Unexpected mouth geometry, drive or inward current | drive
+mouth_transmission_work radius: ValueError Unexpected mouth geometry, drive or inward current | support geometry
+mouth_transmission_work inward: ValueError Unexpected mouth geometry, drive or inward current | inward
+mouth_transmission_work support_leak: survived | nonzero signed flux outside aperture, total J fixed
+mouth_confinement_projection rim: ArithmeticError Inconsistent angular projection or endpoint work | rim and body
+mouth_confinement_projection volume: ArithmeticError Inconsistent angular projection or endpoint work | volume
+mouth_confinement_projection reaction: ArithmeticError Inconsistent angular projection or endpoint work | force on geometry sign
+mouth_confinement_projection odd_measure: ArithmeticError Inconsistent angular projection or endpoint work | radial measure
+mouth_confinement_projection trace: ArithmeticError Inconsistent angular projection or endpoint work | equal endpoint slopes
+mouth_confinement_projection interior: ArithmeticError Inconsistent angular projection or endpoint work | interior shape
+mouth_confinement_projection collar: ArithmeticError Inconsistent angular projection or endpoint work | shrinking regular load
+mouth_confinement_projection endpoint: ArithmeticError Inconsistent angular projection or endpoint work | endpoint evaluation
+mouth_confinement_projection elastic: ArithmeticError Inconsistent angular projection or endpoint work | lower-end sign
+mouth_confinement_projection undriven: survived | undriven radial-force statement, anisotropic input
+mouth_confinement_projection affine_only: ArithmeticError Inconsistent angular projection or endpoint work | nonlinear odd U contamination through missing evaluation at U=0
+unexpected change in outcome []

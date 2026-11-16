@@ -1,0 +1,27 @@
+Tangential carrier momentum across a stationary neutral interface. Working result pending independent review.
+Both traces share a smooth nonzero surface value. The test energy e(y,n) has explicit profile coordinate y and implicit density n. nx is the tangential derivative of n. The normal points from the feeding side into the receiving side.
+The reported restoring drive is conditional on lambda=1 and on no other force term. It uses the current-carrying radius-1 archived trace and its reflected negative-speed partner. The two readings are odd differences divided by twice the positive speed. The translation check differences the energy with the trace fixed.
+Repository base 806ae7b67e83e07db740c4e7333c37591a57b4c8
+$ python3 scripts/s11c_guarded_run.py --pool mouth-transmission-work --memory-gib 2 --log-directory _scratch/s11c/mouth_transmission_work01 -- python3 software/stage1_solver/tools/mouth_transmission_work.py
+Start UTC 2026-11-16T14:44:04.380060+00:00. End UTC 2026-11-16T14:44:05.276462+00:00 (start plus guard wall time).
+Guard and worker exit 0. Verified 2 GiB cap, zero swap, no deadline. Peak 126464000 bytes. Stderr empty.
+Stdout _scratch/s11c/mouth_transmission_work01/stdout (763 bytes, SHA256 6affd66dc7f0ca1d411ff91ea67a07b389cafbce0c85d194c1ca351f2c33ed50).
+Run and input SHA256
+54048b7c5787e614cd9e1446b3e14e959f4d5d65f4fc45fc2fed9cf1819b4e23  _scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.01.npz
+303cb43b3375fca6251afbee3230be6c8cbd907d5cc3471415f52d29ff48be6a  _scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.02.npz
+94527d850bda9c0b610694b5b8cfc66f033c392aa536a4c02633d6af122de8ca  _scratch/s11c/mouth_redistribution_depth01/outcome.json
+f437841524cdf0166ffbc6950a663767a3ea9d0691236a07a6111d141bf00711  docs/_measurements/mouth_intake_redistribution.json
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+2a6f51be22dbd486ca182466eb63c03106f67148db8c78d1660a8e1ae4bbeee6  software/stage1_solver/tools/held_crossflow_budget.py
+a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61  software/stage1_solver/tools/mouth_feed_weak_check.py
+333353e0aae3cac3f26ed2abce8cafa9c2e775e34059579a895e9f26741701b2  software/stage1_solver/tools/mouth_transmission_work.py
+
+Literal stdout
+outgoing minus incoming normal number current, in units hbar/m = 0
+outgoing minus incoming normal log-density slope = 2*Derivative(e(y, n), n)/c
+feeding minus receiving x momentum flux = n*(nx*Derivative(e(y, n), (n, 2)) + Derivative(e(y, n), n, y))
+after subtracting tangential divergence = Derivative(e(y, n), y)
+receiving amplitude slope with restoring example = g*(lambda - 1)*(u - 1)
+receiving slopes at lambda=0,1 = [-g*(u - 1), 0]
+abs_U=0.01 inward_rate=0.25 restoring_drive_per_speed=7.4812472343e-06 translated_energy_check=7.48124723209e-06 fraction_of_continuum_incoming=2.99249889372e-05
+abs_U=0.02 inward_rate=0.25 restoring_drive_per_speed=7.48163888963e-06 translated_energy_check=7.48163888743e-06 fraction_of_continuum_incoming=2.99265555585e-05

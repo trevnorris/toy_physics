@@ -1,0 +1,27 @@
+record held_crossflow_budget byte-exact stdout 1106 verified hashes 10
+record mouth_confinement_projection byte-exact stdout 580 verified hashes 2
+record mouth_transmission_work byte-exact stdout 763 verified hashes 8
+record unequal_mouth_boundary_work byte-exact stdout 1473 verified hashes 28
+two sided full-stress difference - divergence - explicit force 0
+arbitrary current and tangential phase, carriage jump 0
+fixed-shape confinement, including cubic odd drive 4*pi*U*r**2*(U**2*n3 + n1)*Derivative(V(r), r)/3
+if section shifts with U, extra integrand times dq/dU at zero -4*pi*n0*r*(r*Derivative(V(r), (r, 2)) + 2*Derivative(V(r), r))/3
+level-set version of shape susceptibility, before dr -4*pi*n0*r**2*(a*Subs(Derivative(V(_xi_1), (_xi_1, 2)), _xi_1, -a + r) + 2*Subs(Derivative(V(_xi_1), _xi_1), _xi_1, -a + r))/(3*a)
+elastic force on lower end 4*pi*T(0)*Subs(Derivative(q(w), w), w, 0)/3 holder sign is the negative
+trial difference integral L/30 boundary values/slopes [(0, 0), (0, 0)]
+shrinking regular collar 9*f1*h**2/10 + h*(2*f0 - 3*f1*h)/4
+symmetric-secant slope for F=b1 U+b3 U^3, half speed does not determine all odd orders U**2 + 1
+unequal e24_c4 d=4 a=1.0 Fpair-Falone=3.35024465771e-08 old_mixed_stress=3.35572675307e-08 J=0.25 current_curl=0.00603961253289
+unequal e24_c4 d=4 a=1.5 Fpair-Falone=-7.51107481231e-08 old_mixed_stress=-7.51850383121e-08 J=0.842148164831 current_curl=0.0198178745543
+unequal e24_c4 d=8 a=1.0 Fpair-Falone=9.34273516044e-09 old_mixed_stress=9.35928062001e-09 J=0.25 current_curl=0.00603959064111
+unequal e24_c4 d=8 a=1.5 Fpair-Falone=-1.90159510757e-08 old_mixed_stress=-1.90227576994e-08 J=0.842149252757 current_curl=0.0198178331664
+unequal e24_c6 d=4 a=1.0 Fpair-Falone=3.33174859619e-08 old_mixed_stress=3.33188855286e-08 J=0.25 current_curl=0.00588474598889
+unequal e24_c6 d=4 a=1.5 Fpair-Falone=-7.4983934848e-08 old_mixed_stress=-7.49947959151e-08 J=0.842132135631 current_curl=0.0196212818939
+unequal e24_c6 d=8 a=1.0 Fpair-Falone=9.2757450833e-09 old_mixed_stress=9.27655755427e-09 J=0.25 current_curl=0.0058847241902
+unequal e24_c6 d=8 a=1.5 Fpair-Falone=-1.89975271689e-08 old_mixed_stress=-1.89976833401e-08 J=0.842133198743 current_curl=0.019621239786
+unequal e48_c4 d=4 a=1.0 Fpair-Falone=3.35197208294e-08 old_mixed_stress=3.35745846625e-08 J=0.25 current_curl=0.00603961253093
+unequal e48_c4 d=4 a=1.5 Fpair-Falone=-7.53341337167e-08 old_mixed_stress=-7.54084510351e-08 J=0.842148161835 current_curl=0.0198178744142
+unequal e48_c4 d=8 a=1.0 Fpair-Falone=9.36032380383e-09 old_mixed_stress=9.37689264396e-09 J=0.25 current_curl=0.00603959065369
+unequal e48_c4 d=8 a=1.5 Fpair-Falone=-1.9472035153e-08 old_mixed_stress=-1.94789077489e-08 J=0.842149251145 current_curl=0.019817833082
+periodic 0.01 odd feed, flux, layers, translated 0.249999997672 0.249999985299 0.249992949661 7.48124723275e-06
+periodic 0.02 odd feed, flux, layers, translated 0.249999997672 0.2499999853 0.249992949338 7.48163888723e-06

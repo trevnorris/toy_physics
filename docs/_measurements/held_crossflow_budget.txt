@@ -1,0 +1,27 @@
+Signed brane-side momentum current across the periodic radius-1 feed patch. Working result pending independent review.
+Positive speeds use archived solutions. The negative-speed fields are their x reflections. All four are checked against the signed bulk equation, feed drive, inward current law and depth flux.
+per_speed is the positive-minus-negative momentum current divided by twice the speed magnitude. aperture uses the boundary-law stress on the full opening. aperture_layers independently takes finite differences of the feeding field in the normal direction. Neither is a mechanical support measurement.
+Repository base 806ae7b67e83e07db740c4e7333c37591a57b4c8
+$ python3 scripts/s11c_guarded_run.py --pool held-crossflow-budget --memory-gib 2 --log-directory _scratch/s11c/held_crossflow_budget01 -- python3 software/stage1_solver/tools/held_crossflow_budget.py
+Start UTC 2026-11-16T14:37:47.289635+00:00. End UTC 2026-11-16T14:37:49.624375+00:00 (start plus guard wall time).
+Guard and worker exit 0. Verified 2 GiB cap, zero swap, no deadline. Peak 388648960 bytes. Stderr empty.
+Stdout _scratch/s11c/held_crossflow_budget01/stdout (1106 bytes, SHA256 7ca0323069089d87279ddf5302ddb296c1190cb275e290d692f4ea43d4ab6484).
+Run and input SHA256
+c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4  _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz
+1e8539bb858c53dcc3ea0bb7558046e59ce8860760045d72e227149e85b0c409  _scratch/s11c/mouth_feed_depth01/outcome.json
+54048b7c5787e614cd9e1446b3e14e959f4d5d65f4fc45fc2fed9cf1819b4e23  _scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.01.npz
+303cb43b3375fca6251afbee3230be6c8cbd907d5cc3471415f52d29ff48be6a  _scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.02.npz
+94527d850bda9c0b610694b5b8cfc66f033c392aa536a4c02633d6af122de8ca  _scratch/s11c/mouth_redistribution_depth01/outcome.json
+f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0  docs/_measurements/mouth_feed_weak_run.json
+f437841524cdf0166ffbc6950a663767a3ea9d0691236a07a6111d141bf00711  docs/_measurements/mouth_intake_redistribution.json
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+2a6f51be22dbd486ca182466eb63c03106f67148db8c78d1660a8e1ae4bbeee6  software/stage1_solver/tools/held_crossflow_budget.py
+a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61  software/stage1_solver/tools/mouth_feed_weak_check.py
+
+Literal stdout
+U=+0.01000 feed_rate=0.249999997672 feed_momentum=+0.00249999997672 carried=+0.00249992505059 stress=+7.48024030539e-08 aperture=+0.00249999985299 aperture_layers=+0.00249992949661 residual=3.078e-10
+U=-0.01000 feed_rate=0.249999997672 feed_momentum=-0.00249999997672 carried=-0.00249992505059 stress=-7.48024030539e-08 aperture=-0.00249999985299 aperture_layers=-0.00249992949661 residual=3.078e-10
+abs_U=0.01 per_speed_feed=0.249999997672 per_speed_aperture=0.249999985299 per_speed_layers=0.249992949661 aperture_minus_feed_per_speed=-1.23723575551e-08
+U=+0.02000 feed_rate=0.249999997672 feed_momentum=+0.00499999995344 carried=+0.00499985009336 stress=+1.49612639404e-07 aperture=+0.004999999706 aperture_layers=+0.00499985898676 residual=3.077e-10
+U=-0.02000 feed_rate=0.249999997672 feed_momentum=-0.00499999995344 carried=-0.00499985009336 stress=-1.49612639404e-07 aperture=-0.004999999706 aperture_layers=-0.00499985898676 residual=3.077e-10
+abs_U=0.02 per_speed_feed=0.249999997672 per_speed_aperture=0.2499999853 per_speed_layers=0.249992949338 aperture_minus_feed_per_speed=-1.23719488265e-08

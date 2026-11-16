@@ -1,0 +1,2 @@
+relative-flow control incident, drift, sum = [K*gamma/(K + gamma), -K*gamma/(K + gamma), 0] wall residuals = [0, 0, 0] drift minus imposed opposite = 0
+changed incident forcing incident, drift, sum = [2*K*gamma/(K + gamma), -K*gamma/(K + gamma), K*gamma/(K + gamma)] wall residuals = [0, 0, 0] drift minus imposed opposite = K*gamma/(K + gamma)

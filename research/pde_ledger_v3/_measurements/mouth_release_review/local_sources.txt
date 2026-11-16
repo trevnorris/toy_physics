@@ -1,0 +1,177 @@
+$ sed -n '36,37p;56,61p;194,195p;206,213p' software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+  gammaSigma: {value: 2/3, dimensions: [0, 0, 0], status: OPEN_INPUT, constraint: positive, source: U2_E5_field_Rayleigh}
+  tangentDtN: {value: 5/6, dimensions: [0, 0, 0], status: OPEN_INPUT, constraint: positive, source: U2_E5_field_surface_DtN}
+  - id: throat_surface_functional
+    status: OPEN_INPUT
+    root_type: ACTION
+    domain: field_functional_on_Sigma
+    dimensions: [2, -2, 1]
+    arguments: [field_traces, normal_derivatives, induced_metric]
+  E3:
+    condition: "permeable phase texture; no velocity trace tied to V"
+  E5:
+    condition: "v.normal=V.normal; tangentDtN*v.tangent+gammaSigma*(v.tangent-V.tangent)=0"
+    variational_class: Rayleigh
+    trace_unknowns: [normal, tangent, shear]
+    trace_system:
+      matrix: [[2, 0, 0], [1, "tangentDtN+gammaSigma", 0], [0, 1, 1]]
+      rhs: [2, "1+gammaSigma", "gammaSigma/(tangentDtN+gammaSigma)"]
+    channels: {var: [E5_normal_surface], flux: [outer_control_flux], constraint: [], Rayleigh: [E5_tangential_loss], rad: []}
+
+$ sed -n '86p;115,123p' software/em_charge_attribute/u1_body_mechanics_inputs.yaml
+  tangent_DtN: "tangentDtN"
+  E5:
+    boundary_class: Rayleigh
+    variational_class: Rayleigh
+    essential: {normal: 1}
+    natural: [tangent, shear]
+    primitive_id: E5_action_only_bare
+    rayleigh_root: E5_rayleigh
+    rayleigh_integrand: "gammaSigma*(v_tangent-V_tangent)^2/2"
+    rayleigh_surface: Sigma
+
+$ sed -n '25546,25557p' software/em_charge_attribute/reports/u1_body_dynamics_artifacts/b1_final_results_snapshot.yaml
+E5_rayleigh:
+  root: E5_rayleigh
+  domain: Sigma
+  field_level_density: gammaSigma*(-V_tangent + v_tangent)**2/2
+  F_Rayleigh_trace: gammaSigma*(V_tangent - v_tangent)
+  F_Rayleigh_sleeve: gammaSigma*(-V_tangent + v_tangent)
+  root_deleted_functional: '0'
+  gamma_functional_ablation_force_delta: gammaSigma*(V_tangent - v_tangent)
+  full_E5_trace_solution:
+  - '1'
+  - gammaSigma/(gammaSigma + tangentDtN)
+  - '0'
+
+$ sed -n '17p' software/em_charge_attribute/reports/u2_boundary_adjudication_artifacts/stage_1_production_v12/production_summary.md
+All 144 cells are `COMPUTATION_VALID` and remain `UNRESOLVED`. Each record names candidate-specific missing static structure and its active OPEN stratum, and carries an executed constructive challenge. The templates pose, but do not solve, the 16 operator-bearing branch BVPs and assert neither admissibility nor selection.
+
+$ sed -n '68,70p;81,86p' software/stage1_solver/tools/mouth_feed_weak_flow.py
+    def solve(self, speed, reference_density=None):
+        # Gauge out exp(i U x). The feed then has phase gradient U exactly;
+        # choose mu(U)=mu0+U^2/2 to keep its density and thermodynamic state.
+                # Keep the zero-drive normal-speed profile. A single scalar
+                # rescales it to preserve the total number rate as n changes.
+                raw_current = self.weight * n[-1] / reference_density
+                self.current = 0.25 * raw_current / (self.dx**3 * raw_current.sum())
+            derivative = (log_amp_z + 1j*self.current/n[-1])*wall
+            updated = self.elliptic_step(rhs, derivative)
+
+$ sed -n '3,6p' software/stage1_solver/tools/lateral_reservoir_field.py
+The brane is three-dimensional. x runs along the pair and r is radius in the other
+two brane directions. Both normal faces reflect except inside the open mouths.
+The cylindrical outer wall and endcaps fix psi=1 at their faces. No lateral
+current or inverse-distance profile is prescribed.
+
+$ sed -n '28,32p;46,50p' software/stage1_solver/tools/mouth_slow_drift.py
+    j = speed*n[-1]
+    rate = np.sum(slab.dv*j)
+    fields = SimpleNamespace(slab=slab, face=face, n=n, f=f, amp=amp, g=g,
+                             speed=speed, j=j, rate=rate)
+    carry, stress, interior = Translation.load(fields, u)
+
+    return dict(rate=rate, rate_slope=d_rate, rest=target_load(face, g, speed, slab),
+                redistribution=redistributed, velocity=carry-redistributed, carry=carry,
+                stress=stress, lab=lab, interior=interior, mouth_frame=lab-rate,
+                fd_1em4=odd_reading(1e-4), fd_5em5=odd_reading(5e-5))
+
+$ rg -o 'cells=(8|12|16) normal=32 reach=4 exterior=[^ ]+' docs/_measurements/mouth_drift_16x32_balance.json
+cells=8 normal=32 reach=4 exterior=-7.70694049967e-08
+cells=12 normal=32 reach=4 exterior=3.37709860077e-09
+cells=16 normal=32 reach=4 exterior=-1.73730982378e-09
+
+$ sed -n '38,40p' docs/_measurements/unequal_mouth_holding_readout.txt
+e48_c4 d=8 left_alone=2.36198917227e-07 right_alone=3.46944695195e-18 left_pair=0.000262146022291 right_pair=-0.000261178004586
+delta_left=0.000261909823373 carry=0.000261900446481 stress=9.3768926443e-09 delta_right=-0.000261178004586 carry=-0.000261158525678 stress=-1.94789077472e-08
+net=7.31818787465e-07 percent_of_mean=0.279807232 direct_left=0.000261784032372 direct_right=-0.000261142785927 direct_net=6.41246445455e-07 direct_percent=0.245252843
+
+$ sed -n '73p;83p;104p;124p' docs/held_drain_pair.md
+**Physical holding forces.** Neither packet records an external support reaction. Both centers are solver inputs. For a stationary mouth, let $E_i$ be the paired-minus-alone rate of $x$ momentum passed on from the receiving side of the cut, including traction and any other applied-force correction with the sign in the balance above. Then $\Delta H_i=-L_i+E_i$. Full retention would give outward holding forces equal to the negatives of the two tabulated loads. If both mouths instead pass on their entire load, both additional holding forces vanish. The same stored feeding-side fields admit either accounting until the mouth law fixes $E_i$. Determining the two physical reactions requires the actual sideways constraint force on each opening or an independently specified net momentum-transfer law for each radius. A measurement of just the sum cannot distinguish equal nonzero attraction from zero force on both mouths. [One-body force balance](em_u1_body_definition.md#L56) · [Force readout and boundary terms](drain_driven_initial_acceleration.md#what-would-turn-the-measured-held-force-into-a-release-acceleration)
+**Datum needed for gravity.** Use a common normal into a stationary opening. Let $T^-_{xN}$ and $T^+_{xN}$ denote the signed sideways momentum currents immediately on its feeding and receiving sides. Each includes carried momentum and stress. For a sheet with no changing momentum, and with any forces at its edge or on its surroundings accounted for separately, the interfacial drive is the integral of $T^-_{xN}-T^+_{xN}$. The extra hold cancels the paired-minus-alone change of that drive plus any independent force on the sheet. For example, even if the same mass current crosses both faces, the carried part of the jump still depends on the change of sideways momentum per unit mass across the opening. The equations used here give the feeding-side current and the restoring force. They leave the receiving-side tangential momentum and traction, or equivalently their net effect on the center, open. A mouth-only measurement can supply their combined effect. Hold the same radius fixed at weak sideways incident velocities $+U$ and $-U$, with inward drainage in both preparations. For total mechanical support readings $H_x(\pm U)$, the inferred drive per unit incident speed is $-[H_x(+U)-H_x(-U)]/(2U)$ in the linear limit. The same measurement at half speed tests that limit. An independent measurement at each radius gives the leading force per incident speed for slowly varying companion flow. The pinned-center solver has no output for this force. [Open transfer in the one-body balance](em_u1_body_definition.md#L56) · [Two-mouth measurement and isolated controls](#what-can-be-read-for-the-two-held-unequal-mouths)
+For a flat stationary cut, orient the same normal $N$ from the feeding side $(-)$ to the receiving side $(+)$. Take a single neutral carrier with the same constituent mass on both sides, positive number density, and no number stored or transported along the cut. The normal number current $j$ then agrees pointwise. The carried part of the sideways drive on the interface is $mj(v_x^- - v_x^+)$. A common differentiable phase trace makes the tangential velocities equal because $mv_x=\hbar\partial_x\theta$. All of this carried sideways momentum passes on, even if the intake redistributes across the opening. On a smooth cut with no singular interaction the normal density slope agrees as well, so the carrier gives zero localized force there. This statement concerns a cut through that carrier. Forces on a physical rim and any separately coupled fields still require their own terms. [Carrier transmission conditions](drain_driven_initial_acceleration.md#matching-the-core-to-the-receiving-bulk-at-0pn) · [Carrier momentum tensor](../software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md#L22)
+
+$ sed -n '264,270p;456,470p;709p;1306,1314p' docs/drain_driven_initial_acceleration.md
+For a stationary opening of radius $a$, let $N$ point from the brane into the throat. The inward mass rate is $D(a)=m\int_{B_a} n\,v_N\,d^3x$. In the neutral carrier $n=|\psi|^2$ and $v_N=(\hbar/m)\partial_N\theta$. The radius sets the region $B_a$. The feeding brane must also have a condition at the opening that determines its normal current. Specifying the density and phase at the distant boundary supplies the reservoir state. Conservation equates its net supply to the mouth uptake in the steady, closed-side setup. [Carrier current](#how-the-intake-density-and-phase-set-the-current-entering-the-sleeve) · [Branch flux and boundary data](../software/stage1_solver/reports/pathA_21b_force_closure_and_profile_bvp.md#L45)
+
+**A check with the same distant state and reference mouth.** Linearize the feeding-slab equation in solver units about the resting uniform field, $\psi=1+\epsilon(\eta+i\phi)$. Its phase perturbation satisfies $\nabla^2\phi=0$. The real density-restoring boundary law permits $\eta=0$. Fix $\phi=0$ at the lateral reservoir and keep the opposite slab face reflecting. For a lateral mode of wave number $k>0$, a prescribed normal phase slope with mode amplitude $q$ at the mouth face $w=H$ gives $\phi_k(w)=q\cosh(kw)/(k\sinh(kH))$. Its normal derivatives are zero at $w=0$ and $q$ at $w=H$. Thus the reservoir supplies whichever weak current the mouth condition selects. The exterior equations leave the amplitude of that condition free. [Exterior solver](../software/stage1_solver/tools/lateral_reservoir_field.py#L38) · [Symbolic calculation and output](_measurements/mouth_radius_current_selection.txt)
+
+Take the same inward-speed shape $g_a(r)=(1-r^2/a^2)^3$ inside the opening and zero outside. Set $v_N=\epsilon V(a)g_a$ as a trial law. At unit ambient number density in solver units, integration gives $D(a)=\epsilon(64\pi/315)m a^3 V(a)+O(\epsilon^2)$. Two possible laws, $V(a)=V_0$ and $V(a)=V_0a_0/a$, give the same speed profile throughout the reference mouth $a=a_0$. When the radius doubles they give **eight** and **four** times the reference intake, respectively, to first order. Both use radius as their only varying input. They demonstrate why a calibration at one radius cannot determine a physical $D(a)$. The example concerns weak intake in the exterior and does not establish either law for a nonlinear physical mouth. [Checked rates and doubling factors](_measurements/mouth_radius_current_selection.txt)
+
+**What is missing.** The ordinary particle mouth needs a relation between its feeding-side field and inward normal current at each radius in the common ambient state. For the integrated rate alone, an independently determined $D(a)$ on that branch suffices. The earlier ideal nozzle calculation gives a maximum current for an isentropic flow reaching the local sound speed at the constriction. The stationary physical equations leave open whether the particle mouth reaches that condition. An older stability calculation explicitly assumes a conductance and driving potential. Neither calculation selects the physical rate used here. Refining the present solver would test conservation and discretization for whichever current is supplied. In the 0PN force law, retain $D(a_t)$ for the target and use $Q_s=D(a_s)/\rho_{\infty,3}$ only where the steady exterior flux matches the source intake; $\rho_{\infty,3}$ is the effective ambient density in the three-dimensional exterior. [Ideal maximum and its assumptions](../software/stage1_solver/reports/pathA_20_velocity_constants.md#L38) · [Assumed conductance law](../software/stage1_solver/reports/pathA_26_derrick.md#L60) · [Free-fall requirements](../research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md#how-drain-rate-and-retained-momentum-must-scale-for-free-fall)
+### One isolated mouth at the instant a sideways force is applied
+
+Start the radius-1 mouth at rest with inward rate \(J=0.25\) and zero lateral feed velocity. Apply a finite step force \(F_x\) to the geometric mouth, with no impulse and with the feed and intake law unchanged. Count the brane-side mouth load \(L_x\) (inward carried momentum plus mixed stress) once. Let \(P_X\) be the momentum assigned to the translating mouth on the receiving side of that cut. Let \(R_x\) be the signed outward momentum rate plus the rate of storage in degrees of freedom on that side excluded from \(P_X\). The mouth-level balance and its integral relative to the undriven preparation are
+
+\[
+\dot P_X+R_x=F_x+L_x,\qquad
+\Delta P_X(t)-\Delta P_X(0)+\int_0^t\Delta R_x\,dt'
+   =F_x t+\int_0^t\Delta L_x\,dt'.
+\]
+
+This partition can be used without resolving the throat interior. The model's drainage scaling ties mass to the preparation and leaves the relation of this momentum to the geometric center velocity unnormalized. The one-body momentum balance likewise leaves the acceleration-dependent exchange open. [Moving-region balance](../research/pde_ledger_v3/steps/S16_moving_region.md#L149) · [Mass scaling of the draining preparation](../research/brane_bulk_ontology/paper/brane_bulk_ontology.tex#L1267) · [One-body exchange status](../software/em_charge_attribute/reports/u1_body_dynamics.md#L420)
+
+**What the exterior fixes at release.** In laboratory coordinates the finite-grid carrier linearization has the form \(\dot\eta=\mathcal A\eta+b\,\delta X\), with \(\eta(0)=0\). The load variation is \(D_\psi L_x[\eta]+(\partial_XL_x)_{\psi_0}\,\delta X\). Both follow from the translated intake and restoring conditions. If the opening starts with finite prescribed acceleration \(A\), \(\delta X=At^2/2\) gives \(\eta=bAt^3/6+O(t^4)\). The incremental brane load at \(t=0^+\) is therefore zero for either acceleration sign. The net incremental impulse on the right of the balance is \(F_xt+O(t^3)\) for bounded initial acceleration. Momentum conservation fixes this impulse but supplies no value of \(A\). [Carrier and load equations](../software/stage1_solver/tools/lateral_mouth_acceleration.py) · [Time-domain check](../software/stage1_solver/tools/mouth_release_onset.py)
+
+At reservoir size 48, the initial force derivative with the carrier held fixed was \((\partial_X L_x)_{\psi_0}=-0.05033807529\) solver force per unit displacement. The time-dependent carrier gave \(\Delta L_x/A=-1.57240\times10^{-9}\) at \(t=0.00025\) and \(-6.28588\times10^{-9}\) at \(t=0.0005\). These are responses to an imposed trajectory. The previously measured \(M_{\rm br}=0.00194689366385\) is a slow, already-established response of the brane on that grid. The time expansion here describes the initial-value problem on the finite grids. Its continuum short-time coefficient is open. [Four guarded grid checks and archived slow responses](_measurements/mouth_release_onset.json)
+Take two identical finite mouths in a flat brane, both pointing along the positive bulk coordinate $w$. Hold their centers at $X_1=-d\hat x/2$ and $X_2=+d\hat x/2$, with $d$ large compared with the core size. Match the distant brane and bulk, including their common replenishment and any ambient motion, across the two preparations. The rest-at-infinity condition applies to the reduced exterior benchmark. Prepare a stationary held solution if the chosen inputs admit one. Define $X$ by tracking translation of the mouth profile, using the same definition in the isolated and paired cases. At release, remove only the translational supports, without an impulse. Tilt and surrounding fields can respond. Since the orientation can also source an electric interaction, a drain-only comparison must isolate that contribution or report the total as such. [Body coordinates and mass/charge separation](em_u1_body_definition.md)
+Bulk material settles onto the slab and re-orders into the brane phase. The model assumes a small, approximately uniform background replenishment per unit brane area. Its rate and any local variation are physical inputs still to be determined. A throat drains inward into the bulk. Keep replenishment active in a reference patch with no *local* throat and in a matched patch containing the source throat. Match the outer supply, ambient evolution, frame, time and in-plane radii. In the reference patch the inner surface at $a$ is an ordinary measurement cut. Evaluate each state's integrals on its own slab faces. Give the reference the same distant environment even when the brane is spreading. [Model premise](conceptual_foundation.md) · [Earlier correction on replenishment](oriented_throat_return_source_correction.md) · [S12 decisions](../research/pde_ledger_v3/directives/S12_decision_list.md)
+
+Let $\delta$ denote source-throat minus reference for this one-body comparison. On fixed spherical cuts in the spherical specialization, each state's material budget gives an independent way to read the extra inward **number** flux. The direct and budget readings should satisfy
+
+$$
+-\delta\Phi(R)=\delta J_{\rm core}+\delta J_{\rm face}(a,R)+\delta K(a,R).
+$$
+
+The extra radial speed is $\delta v_r=(F_r/\Sigma)_{\rm throat}-(F_r/\Sigma)_{\rm ref}$, with positive density in each state. Evaluate each quotient before subtracting. Compare the flux and speed at $d$ and $2d$. A radius-independent extra number flux translates into an inverse-square speed under the appropriate density and background-flow conditions. In the general case compare the speeds directly. For a nonspherical state, integrate the normal number current over each sphere and measure the actual incident velocity at the future target position. The angular average alone cannot supply that directional measurement. [Finite-radius balance](../research/pde_ledger_v3/steps/S14a_1_projection.md) · [Regime qualifications](../research/pde_ledger_v3/steps/S14a_2_slow_limit.md)
+
+$ sed -n '76,105p' software/stage1_solver/tools/pair_holding_probe.py
+        for j, other in enumerate(centers):
+            if i == j:
+                continue
+            ell = np.arange(order + 1)
+            dx = center - other
+            other_coeff = coeff[j * (order + 1):(j + 1) * (order + 1), 0]
+            incident[i] += np.dot(other_coeff, -(ell + 1) * np.sign(dx)**(ell + 1) / abs(dx)**(ell + 2))
+
+    inertia = np.eye(count) + added
+    mobility = np.linalg.solve(inertia, np.eye(count))
+    all_results = []
+    for fraction in (0, 1):
+        # Controls from the one-intake benchmark: no lateral outlet stress;
+        # outward mass flow has mean axial velocity fraction * incident.
+        support = DENSITY * RATE * fraction * incident - steady
+        direct = np.linalg.solve(inertia, -support)
+        measured_cols = []
+        for i in range(count):
+            probe = PROBE * np.eye(count)[:, i]
+            plus = np.linalg.solve(inertia, probe - support)
+            minus = np.linalg.solve(inertia, -probe - support)
+            measured_cols.append((plus - minus) / (2 * PROBE))
+            if i == 0:
+                target_probes = (minus[0], plus[0])
+        measured_mobility = np.column_stack(measured_cols)
+        predicted = measured_mobility @ (-support)
+        discrepancy = np.max(np.abs(predicted - direct))
+        values = (support[0], *target_probes, direct[0], discrepancy)
+        print("k=%d H_target=%+.12g a_minus=%+.12g a_plus=%+.12g a_free=%+.12g prediction_error=%.2g" %
+              (fraction, *values), flush=True)
+
+$ sed -n '5,17p;47,50p' docs/_measurements/pair_holding_probe.txt
+Both centers initially at rest, both drains on. Untested for the native brane, sleeve and slab faces.
+Units R=s=M_displaced=1; rho=3/(4 pi), Q=4 pi per sphere and M=1. Fprobe=+/-3/200.
+Holding uses I_i = -integral rho(v_x v_normal - |v|^2 normal_x/2)dS.
+The outward normal is from body toward exterior. The effective driving load is I_i-L_i
+with L_i=rho Q k U_regular,i. The holding force cancels that signed load.
+At release the centers have zero velocity; motion of the coordinates contributes zero to the instant's
+potential time derivative. Solving the differentiated Neumann conditions for each independently
+accelerating center supplies the unsteady pressure, including cross-inertia. In mass units M=1
+the resulting force balance is (Id + added_mass) a = I-L+applied_probe. Both supports are off.
+The +/- probes on each body separately reconstruct the full acceleration response matrix. H and a
+are reported along +x at the left sphere. Pair-minus-alone subtracts zero by symmetry. This is
+a two-sphere potential-flow solution and a specified outgoing material law, not a physical outlet
+or later-time orbit solution. No gravity term appears in the field or force evaluation.
+k=0 H_target=-0.0300613289992 a_minus=+0.0100208448061 a_plus=+0.0300208441939 a_free=+0.0200208445 prediction_error=1e-17
+k=1 H_target=-3.06882925771e-05 a_minus=-0.00997956129167 a_plus=+0.0100204380961 a_free=+2.04384022301e-05 prediction_error=3.4e-21
+max_normal_error=6.44e-15 mobility_target_row=0.66666664626 0.000666666667507
+max_refinement_change=1.91e-16

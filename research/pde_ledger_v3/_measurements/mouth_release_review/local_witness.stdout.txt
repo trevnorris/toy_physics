@@ -1,0 +1,333 @@
+reviewed candidate and its two independent YAML inputs: all six hashes match
+two-unknown trace, wall force = (T + V*gamma)/(K + gamma) -gamma*(K*V - T)/(K + gamma)
+odd slopes [incident, translation, comoving] = [T_U*gamma/(K + gamma), -gamma*(K - T_V)/(K + gamma), -gamma*(K - T_U - T_V)/(K + gamma)]
+virtual power = -gamma*(-V + v)**2
+archive and independent Rayleigh density = gamma*(-V + v)**2/2 gamma*(-V + v)**2/2
+archive and independent traction = T T
+archive and independent trace = (T + V*gamma)/(K + gamma) (T + V*gamma)/(K + gamma)
+archive and independent tangential operator = K*v - V*gamma + gamma*v K*v - V*gamma + gamma*v
+archive and independent forced trace in traction equation = T T
+archive and independent wall force before solving = gamma*(-V + v) gamma*(-V + v)
+archive and independent solved wall force = -gamma*(K*V - T)/(K + gamma) -gamma*(K*V - T)/(K + gamma)
+archive and independent wall and material power = -gamma*(-V + v)**2 -gamma*(-V + v)**2
+archive and independent zero forcing trace per V = gamma/(K + gamma) gamma/(K + gamma)
+archive and independent zero forcing wall force per V = -K*gamma/(K + gamma) -K*gamma/(K + gamma)
+archive and independent wall incident slope = T_U*gamma/(K + gamma) T_U*gamma/(K + gamma)
+archive and independent wall translation slope = -gamma*(K - T_V)/(K + gamma) -gamma*(K - T_V)/(K + gamma)
+archive and independent wall slope sum = -gamma*(K - T_U - T_V)/(K + gamma) -gamma*(K - T_U - T_V)/(K + gamma)
+
+MUTATION tangent omits wall motion exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = T/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=v*(K + gamma) reference=K*v - V*gamma + gamma*v residual=V*gamma
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v) reference=gamma*(-V + v) residual=0
+solved wall force: result=-gamma*(K*V - T + V*gamma)/(K + gamma) reference=T*gamma/(K + gamma) residual=-V*gamma
+wall and material power: result=-gamma*(-V + v)**2 reference=-gamma*(-V + v)**2 residual=0
+zero forcing trace per V: result=0 reference=gamma/(K + gamma) residual=-gamma/(K + gamma)
+zero forcing wall force per V: result=-gamma reference=-K*gamma/(K + gamma) residual=-gamma**2/(K + gamma)
+wall incident slope: result=T_U*gamma/(K + gamma) reference=T_U*gamma/(K + gamma) residual=0
+wall translation slope: result=-gamma*(K - T_V + gamma)/(K + gamma) reference=-gamma*(K - T_V)/(K + gamma) residual=-gamma**2/(K + gamma)
+wall slope sum: result=-gamma*(K - T_U - T_V + gamma)/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=-gamma**2/(K + gamma)
+ArithmeticError: Inconsistent E5 wall calculation: tangential operator, solved wall force, zero forcing trace per V, zero forcing wall force per V, wall translation slope, wall slope sum
+
+MUTATION Rayleigh action deleted exit 1
+Rayleigh density = 0  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v residual=gamma*(-V + v)
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=0 reference=0 residual=0
+solved wall force: result=0 reference=-gamma*(K*V - T)/(K + gamma) residual=gamma*(K*V - T)/(K + gamma)
+wall and material power: result=0 reference=0 residual=0
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=0 reference=-K*gamma/(K + gamma) residual=K*gamma/(K + gamma)
+wall incident slope: result=0 reference=0 residual=0
+wall translation slope: result=0 reference=0 residual=0
+wall slope sum: result=0 reference=0 residual=0
+ArithmeticError: Inconsistent E5 wall calculation: tangential operator, solved wall force, zero forcing wall force per V
+
+MUTATION nonquadratic slip exit 1
+Rayleigh density = gamma*(-V + v)**2*(-V + v + 1)/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=(2*K*v + 3*V**2*gamma - 6*V*gamma*v - 2*V*gamma + 3*gamma*v**2 + 2*gamma*v)/2 residual=-3*gamma*(-V + v)**2/2
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v)*(-3*V + 3*v + 2)/2 reference=gamma*(-V + v)*(-3*V + 3*v + 2)/2 residual=0
+solved wall force: result=gamma*(K*V - T)*(3*K*V - 2*K - 3*T - 2*gamma)/(2*(K + gamma)**2) reference=-gamma*(K*V - T)/(K + gamma) residual=3*gamma*(K*V - T)**2/(2*(K + gamma)**2)
+wall and material power: result=-gamma*(-V + v)**2*(-3*V + 3*v + 2)/2 reference=-gamma*(-V + v)**2*(-V + v + 1) residual=-gamma*(-V + v)**3/2
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=K*gamma*(3*K*V - 2*K - 2*gamma)/(2*(K + gamma)**2) reference=-K*gamma/(K + gamma) residual=3*K**2*V*gamma/(2*(K + gamma)**2)
+wall incident slope: result=-T_U*gamma*(3*K*V - K - 3*T_U*U - 3*T_V*V - gamma)/(K + gamma)**2 reference=T_U*gamma*(-3*V + 3*v + 1)/(K - 3*V*gamma + 3*gamma*v + gamma) residual=-3*T_U*gamma*(K**2*v - K*T_U*U - K*T_V*V - 3*K*V**2*gamma + 3*K*V*gamma*v + K*gamma*v + 3*T_U*U*V*gamma - 3*T_U*U*gamma*v - T_U*U*gamma + 3*T_V*V**2*gamma - 3*T_V*V*gamma*v - T_V*V*gamma)/((K + gamma)**2*(K - 3*V*gamma + 3*gamma*v + gamma))
+wall translation slope: result=gamma*(K - T_V)*(3*K*V - K - 3*T_U*U - 3*T_V*V - gamma)/(K + gamma)**2 reference=-gamma*(K - T_V)*(-3*V + 3*v + 1)/(K - 3*V*gamma + 3*gamma*v + gamma) residual=3*gamma*(K - T_V)*(K**2*v - K*T_U*U - K*T_V*V - 3*K*V**2*gamma + 3*K*V*gamma*v + K*gamma*v + 3*T_U*U*V*gamma - 3*T_U*U*gamma*v - T_U*U*gamma + 3*T_V*V**2*gamma - 3*T_V*V*gamma*v - T_V*V*gamma)/((K + gamma)**2*(K - 3*V*gamma + 3*gamma*v + gamma))
+wall slope sum: result=gamma*(K - T_U - T_V)*(3*K*V - K - 3*T_U*U - 3*T_V*V - gamma)/(K + gamma)**2 reference=-gamma*(K - T_U - T_V)*(-3*V + 3*v + 1)/(K - 3*V*gamma + 3*gamma*v + gamma) residual=3*gamma*(K - T_U - T_V)*(K**2*v - K*T_U*U - K*T_V*V - 3*K*V**2*gamma + 3*K*V*gamma*v + K*gamma*v + 3*T_U*U*V*gamma - 3*T_U*U*gamma*v - T_U*U*gamma + 3*T_V*V**2*gamma - 3*T_V*V*gamma*v - T_V*V*gamma)/((K + gamma)**2*(K - 3*V*gamma + 3*gamma*v + gamma))
+ArithmeticError: Inconsistent E5 wall calculation: tangential operator, solved wall force, wall and material power, zero forcing wall force per V, wall incident slope, wall translation slope, wall slope sum
+
+MUTATION slip depends on absolute velocity sum exit 1
+Rayleigh density = gamma*(V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v + V*gamma + gamma*v residual=-2*V*gamma
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=-gamma*(V + v) reference=gamma*(V + v) residual=-2*gamma*(V + v)
+solved wall force: result=-gamma*(K*V + T + 2*V*gamma)/(K + gamma) reference=-gamma*(K*V - T)/(K + gamma) residual=-2*gamma*(T + V*gamma)/(K + gamma)
+wall and material power: result=-gamma*(V + v)**2 reference=-gamma*(V + v)**2 residual=0
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=-gamma*(K + 2*gamma)/(K + gamma) reference=-K*gamma/(K + gamma) residual=-2*gamma**2/(K + gamma)
+wall incident slope: result=-T_U*gamma/(K + gamma) reference=T_U*gamma/(K + gamma) residual=-2*T_U*gamma/(K + gamma)
+wall translation slope: result=-gamma*(K + T_V + 2*gamma)/(K + gamma) reference=gamma*(K + T_V)/(K + gamma) residual=-2*gamma*(K + T_V + gamma)/(K + gamma)
+wall slope sum: result=-gamma*(K + T_U + T_V + 2*gamma)/(K + gamma) reference=gamma*(K + T_U + T_V)/(K + gamma) residual=-2*gamma*(K + T_U + T_V + gamma)/(K + gamma)
+ArithmeticError: Inconsistent E5 wall calculation: tangential operator, wall force before solving, solved wall force, zero forcing wall force per V, wall incident slope, wall translation slope, wall slope sum
+
+MUTATION wrong exterior operator in independent input exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*V*v + K*v - V*gamma + gamma*v residual=-K*V*v
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v) reference=gamma*(-V + v) residual=0
+solved wall force: result=-gamma*(K*V - T)/(K + gamma) reference=-(K*T*V + K*V**2*gamma + K*V*gamma - T*gamma)/(K + gamma) residual=K*V*(T + V*gamma)/(K + gamma)
+wall and material power: result=-gamma*(-V + v)**2 reference=-gamma*(-V + v)**2 residual=0
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=-K*gamma/(K + gamma) reference=-K*gamma*(V + 1)/(K + gamma) residual=K*V*gamma/(K + gamma)
+wall incident slope: result=T_U*gamma/(K + gamma) reference=T_U*gamma/(K*V + K + gamma) residual=K*T_U*V*gamma/((K + gamma)*(K*V + K + gamma))
+wall translation slope: result=-gamma*(K - T_V)/(K + gamma) reference=(K**2*V*v + K**2*v - K*V*gamma - K*gamma + T_V*gamma)/(K*V + K + gamma) residual=-K*(K**2*V*v + K**2*v + K*V*gamma*v + K*gamma*v - T_V*V*gamma - V*gamma**2)/((K + gamma)*(K*V + K + gamma))
+wall slope sum: result=-gamma*(K - T_U - T_V)/(K + gamma) reference=(K**2*V*v + K**2*v - K*V*gamma - K*gamma + T_U*gamma + T_V*gamma)/(K*V + K + gamma) residual=-K*(K**2*V*v + K**2*v + K*V*gamma*v + K*gamma*v - T_U*V*gamma - T_V*V*gamma - V*gamma**2)/((K + gamma)*(K*V + K + gamma))
+ArithmeticError: Inconsistent E5 wall calculation: tangential operator, solved wall force, zero forcing wall force per V, wall incident slope, wall translation slope, wall slope sum
+
+MUTATION normal condition no longer follows wall exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=0 required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v - V*gamma + gamma*v residual=0
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v) reference=gamma*(-V + v) residual=0
+solved wall force: result=-gamma*(K*V - T)/(K + gamma) reference=-gamma*(K*V - T)/(K + gamma) residual=0
+wall and material power: result=-gamma*(-V + v)**2 reference=-gamma*(-V + v)**2 residual=0
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=-K*gamma/(K + gamma) reference=-K*gamma/(K + gamma) residual=0
+wall incident slope: result=T_U*gamma/(K + gamma) reference=T_U*gamma/(K + gamma) residual=0
+wall translation slope: result=-gamma*(K - T_V)/(K + gamma) reference=-gamma*(K - T_V)/(K + gamma) residual=0
+wall slope sum: result=-gamma*(K - T_U - T_V)/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=0
+ArithmeticError: Inconsistent E5 wall calculation: normal motion on wall
+
+MUTATION no essential normal trace exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=None required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v - V*gamma + gamma*v residual=0
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v) reference=gamma*(-V + v) residual=0
+solved wall force: result=-gamma*(K*V - T)/(K + gamma) reference=-gamma*(K*V - T)/(K + gamma) residual=0
+wall and material power: result=-gamma*(-V + v)**2 reference=-gamma*(-V + v)**2 residual=0
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=-K*gamma/(K + gamma) reference=-K*gamma/(K + gamma) residual=0
+wall incident slope: result=T_U*gamma/(K + gamma) reference=T_U*gamma/(K + gamma) residual=0
+wall translation slope: result=-gamma*(K - T_V)/(K + gamma) reference=-gamma*(K - T_V)/(K + gamma) residual=0
+wall slope sum: result=-gamma*(K - T_U - T_V)/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=0
+ArithmeticError: Inconsistent E5 wall calculation: normal trace imposed
+
+MUTATION aperture replaces wall domain exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Aperture required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v - V*gamma + gamma*v residual=0
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v) reference=gamma*(-V + v) residual=0
+solved wall force: result=-gamma*(K*V - T)/(K + gamma) reference=-gamma*(K*V - T)/(K + gamma) residual=0
+wall and material power: result=-gamma*(-V + v)**2 reference=-gamma*(-V + v)**2 residual=0
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=-K*gamma/(K + gamma) reference=-K*gamma/(K + gamma) residual=0
+wall incident slope: result=T_U*gamma/(K + gamma) reference=T_U*gamma/(K + gamma) residual=0
+wall translation slope: result=-gamma*(K - T_V)/(K + gamma) reference=-gamma*(K - T_V)/(K + gamma) residual=0
+wall slope sum: result=-gamma*(K - T_U - T_V)/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=0
+ArithmeticError: Inconsistent E5 wall calculation: Rayleigh surface
+
+MUTATION corrupt forced trace, retaining zero traction branch exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = T*V + (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v - V*gamma + gamma*v residual=0
+forced trace in traction equation: result=T*(K*V + V*gamma + 1) reference=T residual=T*V*(K + gamma)
+wall force before solving: result=gamma*(-V + v) reference=gamma*(-V + v) residual=0
+solved wall force: result=gamma*(K*T*V - K*V + T*V*gamma + T)/(K + gamma) reference=-(K**2*T*V + K*T*V*gamma + K*V*gamma - T*gamma)/(K + gamma) residual=T*V*(K + gamma)
+wall and material power: result=-gamma*(-V + v)**2 reference=-gamma*(-V + v)**2 residual=0
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=-K*gamma/(K + gamma) reference=-K*gamma/(K + gamma) residual=0
+wall incident slope: result=T_U*gamma*(K*V + V*gamma + 1)/(K + gamma) reference=T_U*gamma/(K + gamma) residual=T_U*V*gamma
+wall translation slope: result=gamma*(K*T_U*U + 2*K*T_V*V - K + T_U*U*gamma + 2*T_V*V*gamma + T_V)/(K + gamma) reference=-gamma*(K - T_V)/(K + gamma) residual=gamma*(T_U*U + 2*T_V*V)
+wall slope sum: result=gamma*(K*T_U*U + K*T_U*V + 2*K*T_V*V - K + T_U*U*gamma + T_U*V*gamma + T_U + 2*T_V*V*gamma + T_V)/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=gamma*(T_U*U + T_U*V + 2*T_V*V)
+ArithmeticError: Inconsistent E5 wall calculation: forced trace in traction equation, solved wall force, wall incident slope, wall translation slope, wall slope sum
+
+MUTATION wrong wall force sign exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v - V*gamma + gamma*v residual=0
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=-gamma*(-V + v) reference=gamma*(-V + v) residual=-2*gamma*(-V + v)
+solved wall force: result=gamma*(K*V - T)/(K + gamma) reference=-gamma*(K*V - T)/(K + gamma) residual=2*gamma*(K*V - T)/(K + gamma)
+wall and material power: result=-gamma*(-V + v)*(V + v) reference=-gamma*(-V + v)**2 residual=-2*V*gamma*(-V + v)
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=K*gamma/(K + gamma) reference=-K*gamma/(K + gamma) residual=2*K*gamma/(K + gamma)
+wall incident slope: result=-T_U*gamma/(K + gamma) reference=T_U*gamma/(K + gamma) residual=-2*T_U*gamma/(K + gamma)
+wall translation slope: result=gamma*(K - T_V)/(K + gamma) reference=-gamma*(K - T_V)/(K + gamma) residual=2*gamma*(K - T_V)/(K + gamma)
+wall slope sum: result=gamma*(K - T_U - T_V)/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=2*gamma*(K - T_U - T_V)/(K + gamma)
+ArithmeticError: Inconsistent E5 wall calculation: wall force before solving, solved wall force, wall and material power, zero forcing wall force per V, wall incident slope, wall translation slope, wall slope sum
+
+MUTATION wrong fluid force sign exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v - V*gamma + gamma*v residual=0
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v) reference=-gamma*(-V + v) residual=2*gamma*(-V + v)
+solved wall force: result=-gamma*(K*V - T)/(K + gamma) reference=-gamma*(K*V - T)/(K + gamma) residual=0
+wall and material power: result=gamma*(-V + v)*(V + v) reference=-gamma*(-V + v)**2 residual=2*gamma*v*(-V + v)
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=-K*gamma/(K + gamma) reference=-K*gamma/(K + gamma) residual=0
+wall incident slope: result=T_U*gamma/(K + gamma) reference=T_U*gamma/(K + gamma) residual=0
+wall translation slope: result=-gamma*(K - T_V)/(K + gamma) reference=-gamma*(K - T_V)/(K + gamma) residual=0
+wall slope sum: result=-gamma*(K - T_U - T_V)/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=0
+ArithmeticError: Inconsistent E5 wall calculation: wall force before solving, wall and material power
+
+MUTATION surface work omitted exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v - V*gamma + gamma*v residual=0
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v) reference=gamma*(-V + v) residual=0
+solved wall force: result=-gamma*(K*V - T)/(K + gamma) reference=-gamma*(K*V - T)/(K + gamma) residual=0
+wall and material power: result=-gamma*v*(-V + v) reference=-gamma*(-V + v)**2 residual=-V*gamma*(-V + v)
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=-K*gamma/(K + gamma) reference=-K*gamma/(K + gamma) residual=0
+wall incident slope: result=T_U*gamma/(K + gamma) reference=T_U*gamma/(K + gamma) residual=0
+wall translation slope: result=-gamma*(K - T_V)/(K + gamma) reference=-gamma*(K - T_V)/(K + gamma) residual=0
+wall slope sum: result=-gamma*(K - T_U - T_V)/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=0
+ArithmeticError: Inconsistent E5 wall calculation: wall and material power
+
+MUTATION solve force on archived branch only exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v - V*gamma + gamma*v residual=0
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v) reference=gamma*(-V + v) residual=0
+solved wall force: result=-K*V*gamma/(K + gamma) reference=-gamma*(K*V - T)/(K + gamma) residual=-T*gamma/(K + gamma)
+wall and material power: result=-gamma*(-V + v)**2 reference=-gamma*(-V + v)**2 residual=0
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=-K*gamma/(K + gamma) reference=-K*gamma/(K + gamma) residual=0
+wall incident slope: result=0 reference=T_U*gamma/(K + gamma) residual=-T_U*gamma/(K + gamma)
+wall translation slope: result=-K*gamma/(K + gamma) reference=-gamma*(K - T_V)/(K + gamma) residual=-T_V*gamma/(K + gamma)
+wall slope sum: result=-K*gamma/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=-gamma*(T_U + T_V)/(K + gamma)
+ArithmeticError: Inconsistent E5 wall calculation: solved wall force, wall incident slope, wall translation slope, wall slope sum
+
+MUTATION swapped drive and drift slopes exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v - V*gamma + gamma*v residual=0
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v) reference=gamma*(-V + v) residual=0
+solved wall force: result=-gamma*(K*V - T)/(K + gamma) reference=-gamma*(K*V - T)/(K + gamma) residual=0
+wall and material power: result=-gamma*(-V + v)**2 reference=-gamma*(-V + v)**2 residual=0
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=-K*gamma/(K + gamma) reference=-K*gamma/(K + gamma) residual=0
+wall incident slope: result=-gamma*(K - T_V)/(K + gamma) reference=T_U*gamma/(K + gamma) residual=-gamma*(K + T_U - T_V)/(K + gamma)
+wall translation slope: result=T_U*gamma/(K + gamma) reference=-gamma*(K - T_V)/(K + gamma) residual=gamma*(K + T_U - T_V)/(K + gamma)
+wall slope sum: result=-gamma*(K - T_U - T_V)/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=0
+ArithmeticError: Inconsistent E5 wall calculation: wall incident slope, wall translation slope
+
+MUTATION zero reported translation slope exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v - V*gamma + gamma*v residual=0
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v) reference=gamma*(-V + v) residual=0
+solved wall force: result=-gamma*(K*V - T)/(K + gamma) reference=-gamma*(K*V - T)/(K + gamma) residual=0
+wall and material power: result=-gamma*(-V + v)**2 reference=-gamma*(-V + v)**2 residual=0
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=-K*gamma/(K + gamma) reference=-K*gamma/(K + gamma) residual=0
+wall incident slope: result=T_U*gamma/(K + gamma) reference=T_U*gamma/(K + gamma) residual=0
+wall translation slope: result=0 reference=-gamma*(K - T_V)/(K + gamma) residual=gamma*(K - T_V)/(K + gamma)
+wall slope sum: result=T_U*gamma/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=gamma*(K - T_V)/(K + gamma)
+ArithmeticError: Inconsistent E5 wall calculation: wall translation slope, wall slope sum
+
+MUTATION wrong slope sum alone exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v - V*gamma + gamma*v residual=0
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v) reference=gamma*(-V + v) residual=0
+solved wall force: result=-gamma*(K*V - T)/(K + gamma) reference=-gamma*(K*V - T)/(K + gamma) residual=0
+wall and material power: result=-gamma*(-V + v)**2 reference=-gamma*(-V + v)**2 residual=0
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=-K*gamma/(K + gamma) reference=-K*gamma/(K + gamma) residual=0
+wall incident slope: result=T_U*gamma/(K + gamma) reference=T_U*gamma/(K + gamma) residual=0
+wall translation slope: result=-gamma*(K - T_V)/(K + gamma) reference=-gamma*(K - T_V)/(K + gamma) residual=0
+wall slope sum: result=gamma*(K + T_U - T_V)/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=2*gamma*(K - T_V)/(K + gamma)
+ArithmeticError: Inconsistent E5 wall calculation: wall slope sum
+
+MUTATION wrong zero-force drift readout alone exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v - V*gamma + gamma*v residual=0
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v) reference=gamma*(-V + v) residual=0
+solved wall force: result=-gamma*(K*V - T)/(K + gamma) reference=-gamma*(K*V - T)/(K + gamma) residual=0
+wall and material power: result=-gamma*(-V + v)**2 reference=-gamma*(-V + v)**2 residual=0
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=0 reference=-K*gamma/(K + gamma) residual=K*gamma/(K + gamma)
+wall incident slope: result=T_U*gamma/(K + gamma) reference=T_U*gamma/(K + gamma) residual=0
+wall translation slope: result=-gamma*(K - T_V)/(K + gamma) reference=-gamma*(K - T_V)/(K + gamma) residual=0
+wall slope sum: result=-gamma*(K - T_U - T_V)/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=0
+ArithmeticError: Inconsistent E5 wall calculation: zero forcing wall force per V
+
+MUTATION wrong archived matrix trace exit 1
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v - V*gamma + gamma*v residual=0
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v) reference=gamma*(-V + v) residual=0
+solved wall force: result=-gamma*(K*V - T)/(K + gamma) reference=-gamma*(K*V - T)/(K + gamma) residual=0
+wall and material power: result=-gamma*(-V + v)**2 reference=-gamma*(-V + v)**2 residual=0
+zero forcing trace per V: result=gamma/(K + gamma) reference=0 residual=gamma/(K + gamma)
+zero forcing wall force per V: result=-K*gamma/(K + gamma) reference=0 residual=-K*gamma/(K + gamma)
+wall incident slope: result=T_U*gamma/(K + gamma) reference=T_U*gamma/(K + gamma) residual=0
+wall translation slope: result=-gamma*(K - T_V)/(K + gamma) reference=-gamma*(K - T_V)/(K + gamma) residual=0
+wall slope sum: result=-gamma*(K - T_U - T_V)/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=0
+ArithmeticError: Inconsistent E5 wall calculation: zero forcing trace per V, zero forcing wall force per V
+
+RELEASE AND MOMENTUM
+equal inflow rates, common-direction total momentum jump plus rim = m*(u1 - u2) + rim + t1 - t2
+common tangential trace = rim + t1 - t2 | equal stress alone = m*(u1 - u2) + rim
+change of observer for matched rates = 0
+held acceleration = Matrix([[0, 0]]) | free plus chi*H = Matrix([[-e**2*h1**2, -e**2*h1*h2]])
+support-removal residual at order one = Matrix([[0, 0]])
+left and right incident flows = Q2/(4*pi*d**2) -Q1/(4*pi*d**2)
+conditional two Newton coefficients = A1*Q2/(4*pi*M1*M2) A2*Q1/(4*pi*M1*M2)
+18 one-sided controls rejected for the expected reason

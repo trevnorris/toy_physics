@@ -1,27 +1,33 @@
-$ python3 scripts/s11c_guarded_run.py --pool mouth-slip-traction --memory-gib 1 --log-directory _scratch/s11c/mouth_slip_traction01 -- python3 software/stage1_solver/tools/mouth_slip_traction.py
-Start UTC 2026-11-16T17:01:15.350617+00:00
-Guard outcome written UTC 2026-11-16T17:01:15.959580+00:00
+$ python3 scripts/s11c_guarded_run.py --pool mouth-slip-traction --memory-gib 1 --log-directory _scratch/s11c/mouth_release_review01/wall_r1 -- python3 software/stage1_solver/tools/mouth_slip_traction.py
+Start UTC 2026-11-16T17:28:06.660329+00:00
+Guard outcome written UTC 2026-11-16T17:28:07.267904+00:00
 Guard exit 0. Worker exit 0. Verified 1 GiB, zero swap. Stderr empty.
-Recorded peak bytes 55443456
+Recorded peak bytes 54665216
 
 SHA256 of script, model inputs and guard
-0fbea23c3426338f71b39830fd3d759b73f25d6eefae6074717fe491617a31a9  software/stage1_solver/tools/mouth_slip_traction.py
+f388b98c58aac58eecdab301f58d8610fc6ccc53d084922cde3e5365d798b84a  software/stage1_solver/tools/mouth_slip_traction.py
 eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee  software/em_charge_attribute/u1_body_dynamics_inputs.yaml
 6bb2ebe8ecf72ec59efba0f4d1929f97684b2c90f9e56857bc36f25d8d89e826  software/em_charge_attribute/u1_body_mechanics_inputs.yaml
 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
 
-stdout _scratch/s11c/mouth_slip_traction01/stdout (593 bytes)
-SHA256 7352630494aa486c488c5226bb45a662ee18018c9bb5251b393357c14dc9da47
+stdout _scratch/s11c/mouth_release_review01/wall_r1/stdout (1225 bytes)
+SHA256 9b2dc85787dcd27acc434a98cb5bc757561aaf78f1a03d6ee18887cac63c23d7
 
 Literal stdout
-surface = Sigma  normal condition = v.normal=V.normal
-tangential operator = K*v + gamma*(-V + v)  forcing = T
-Rayleigh density = gamma*(-V + v)**2/2  summed force power = -gamma*(-V + v)**2
-solved trace = (T + V*gamma)/(K + gamma)  equation residual = 0
-force on surface = -gamma*(2*V - 2*v)/2  solved force = -gamma*(K*V - T)/(K + gamma)
-zero forcing: trace per V = gamma/(K + gamma)  force per V = -K*gamma/(K + gamma)
-surface force slopes: A = T_U*gamma/(K + gamma)  B = -gamma*(K - T_V)/(K + gamma)  A+B = -gamma*(K - T_U - T_V)/(K + gamma)
-opposite-force residual = 0  power residual = 0
+Rayleigh density = gamma*(-V + v)**2/2  applied traction = T  solved trace = (T + V*gamma)/(K + gamma)
+Rayleigh surface: supplied=Sigma required=Sigma
+normal motion on wall: supplied=v.normal=V.normal required=v.normal=V.normal
+normal trace imposed: supplied=1 required=1
+tangential operator: result=K*v - V*gamma + gamma*v reference=K*v - V*gamma + gamma*v residual=0
+forced trace in traction equation: result=T reference=T residual=0
+wall force before solving: result=gamma*(-V + v) reference=gamma*(-V + v) residual=0
+solved wall force: result=-gamma*(K*V - T)/(K + gamma) reference=-gamma*(K*V - T)/(K + gamma) residual=0
+wall and material power: result=-gamma*(-V + v)**2 reference=-gamma*(-V + v)**2 residual=0
+zero forcing trace per V: result=gamma/(K + gamma) reference=gamma/(K + gamma) residual=0
+zero forcing wall force per V: result=-K*gamma/(K + gamma) reference=-K*gamma/(K + gamma) residual=0
+wall incident slope: result=T_U*gamma/(K + gamma) reference=T_U*gamma/(K + gamma) residual=0
+wall translation slope: result=-gamma*(K - T_V)/(K + gamma) reference=-gamma*(K - T_V)/(K + gamma) residual=0
+wall slope sum: result=-gamma*(K - T_U - T_V)/(K + gamma) reference=-gamma*(K - T_U - T_V)/(K + gamma) residual=0
 
 $ rg -n '^  (gammaSigma|tangentDtN):|condition:.*(permeable phase texture|tangentDtN)' software/em_charge_attribute/u1_body_dynamics_inputs.yaml
 36:  gammaSigma: {value: 2/3, dimensions: [0, 0, 0], status: OPEN_INPUT, constraint: positive, source: U2_E5_field_Rayleigh}

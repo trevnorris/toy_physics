@@ -1,0 +1,18 @@
+hash OK software/stage1_solver/tools/mouth_stress_response.py 04199b55280781b19076905d0b3864e65646fdc2284a5b6c2ec0544aeeef1cf6
+hash OK software/stage1_solver/tools/mouth_density_calibration_check.py ef65d0d5e931e1694223253594ec03a6e3499318fb414f1442a73acb99dc0705
+hash OK docs/_measurements/mouth_stress_response/force.md dc91ff28f24da97b55c93e2d2cf4d490ddecf1c04b7b0de3b98d4d84d518d51a
+hash OK docs/_measurements/mouth_stress_response/calibration.md 87420db7aa74ad805ece42740004559d77c6a49b0f37a9628db3320658b73012
+hash OK docs/_measurements/mouth_stress_response/force.stdout a4016f85d90df0853380db1d74411cce39af3c02b8ecc7fb9747a32f1de707cb
+hash OK docs/_measurements/mouth_stress_response/calibration.stdout 5db629217b884d47ae5f7e7b5e9991840366af554dce0b4ecd7f981153f661d6
+independent Fourier spline on z=1 U=0.01 value=-1.69608024595946e-05 frozen=-1.69608024596e-05
+independent Fourier spline on z=1 U=0.02 value=-1.69606371567387e-05 frozen=-1.69606371567e-05
+force_nominal PASS; literal output matches frozen archive lines
+receiver_nominal PASS; literal output matches frozen archive lines
+force_neighbor AssertionError z=1 mouth plane
+force_reference_depth AssertionError z=1 mouth plane
+force_state_drop_phase_part AssertionError z=1 mouth plane
+receiver_use_rate_for_bath AssertionError Receiver preparation or geometry differs
+receiver_use_bath_for_rate AssertionError Receiver preparation or geometry differs
+receiver_far_as_join AssertionError Receiver preparation or geometry differs
+receiver_face_as_center AssertionError Receiver preparation or geometry differs
+receiver_duplicate_prep ValueError draining and zero-rate receiver preparations

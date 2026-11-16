@@ -1,14 +1,18 @@
-Source revision before the two checks: 4b49fe61.
+Preserved baseline before archive-check corrections: ca13367e.
 
-$ python3 scripts/s11c_guarded_run.py --pool mouth-stress-response --memory-gib 1 --log-directory _scratch/s11c/mouth_stress_response01/guard -- python3 _scratch/s11c/mouth_stress_response01/calculate.py
+$ python3 scripts/s11c_guarded_run.py --pool mouth-stress-force --memory-gib 1 --log-directory _scratch/s11c/mouth_stress_review01/r1/force -- python3 software/stage1_solver/tools/mouth_stress_response.py
 Retained script: software/stage1_solver/tools/mouth_stress_response.py
-Started UTC 2026-11-16T16:07:12.973742+00:00. Guard and worker exit 0. Verified 1 GiB, zero swap, no deadline. Stderr empty.
+Started UTC 2026-11-16T16:46:06.750877+00:00. Guard and worker exit 0. Verified 1 GiB, zero swap, no deadline. Stderr empty.
 Literal stdout: docs/_measurements/mouth_stress_response/force.stdout
 
-$ python3 scripts/s11c_guarded_run.py --pool mouth-density-calibration --memory-gib 1 --log-directory _scratch/s11c/mouth_stress_review01/r0/calibration -- python3 software/stage1_solver/tools/mouth_density_calibration_check.py
+$ python3 scripts/s11c_guarded_run.py --pool mouth-stress-calibration --memory-gib 1 --log-directory _scratch/s11c/mouth_stress_review01/r1/calibration -- python3 software/stage1_solver/tools/mouth_density_calibration_check.py
 Retained script: software/stage1_solver/tools/mouth_density_calibration_check.py
-Started UTC 2026-11-16T16:30:22.667799+00:00. Guard and worker exit 0. Verified 1 GiB, zero swap, no deadline. Stderr empty.
+Started UTC 2026-11-16T16:46:05.889517+00:00. Guard and worker exit 0. Verified 1 GiB, zero swap, no deadline. Stderr empty.
 Literal stdout: docs/_measurements/mouth_stress_response/calibration.stdout
+
+$ python3 scripts/s11c_guarded_run.py --pool mouth-stress-controls --memory-gib 1 --log-directory _scratch/s11c/mouth_stress_review01/r1/controls -- python3 docs/_measurements/mouth_stress_response/review/verify_repairs.py
+Started UTC 2026-11-16T16:46:06.766304+00:00. Guard and worker exit 0. Verified 1 GiB, zero swap, no deadline. Stderr empty.
+Literal stdout: docs/_measurements/mouth_stress_response/review/verify_repairs.stdout
 
 Input, source and retained output digests (SHA256)
 c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4  _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz
@@ -23,6 +27,8 @@ a4016f85d90df0853380db1d74411cce39af3c02b8ecc7fb9747a32f1de707cb  docs/_measurem
 307063e864287fa795cebdfec9402f4e85f12c06a046c2295d51af13fc299bca  docs/_measurements/open_sleeve_current.txt
 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
 ffc771ee507b9b3512e0809b12d0bd0d5989a503372969ff51364fc62348b19f  software/stage1_solver/tools/held_crossflow_budget.py
-20db81332b9c75936adb66c9d3a8dfa80107b49728b5d1ae25cad3904ac49273  software/stage1_solver/tools/mouth_density_calibration_check.py
+ef65d0d5e931e1694223253594ec03a6e3499318fb414f1442a73acb99dc0705  software/stage1_solver/tools/mouth_density_calibration_check.py
 a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61  software/stage1_solver/tools/mouth_feed_weak_check.py
-cb330a1edf0da374e326158fb232016f0dbbbd627b0236a8a9ace39d2d611b06  software/stage1_solver/tools/mouth_stress_response.py
+04199b55280781b19076905d0b3864e65646fdc2284a5b6c2ec0544aeeef1cf6  software/stage1_solver/tools/mouth_stress_response.py
+476c5e553b8116cec6f77e515315d6ba32487422f7753aa195b945117550a59c  docs/_measurements/mouth_stress_response/review/verify_repairs.py
+42a4a2ffda7f32a1e28c2c71606bd4f7c1173b54e5c3747dc8aa3fd6dc6f1fc6  docs/_measurements/mouth_stress_response/review/verify_repairs.stdout

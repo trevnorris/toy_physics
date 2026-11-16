@@ -31,7 +31,10 @@ def feed_packets():
 def receiver_packets():
     record = Path("docs/_measurements/open_sleeve_current.txt").read_text()
     files = re.findall(r"^([a-f0-9]{64})  (\S*/level_32\.npz)$", record, re.M)
-    assert len(files) == 2
+    expected_rates = {"open_sleeve_current01": 0.125, "open_sleeve_zero01": 0.0}
+    preparations = [Path(name).parent.parent.name for _, name in files]
+    if sorted(preparations) != sorted(expected_rates):
+        raise ValueError("Expected the draining and zero-rate receiver preparations")
     for digest, name in files:
         path = Path(name)
         run = json.loads((path.parent.parent/"outcome.json").read_text())
@@ -39,9 +42,17 @@ def receiver_packets():
         assert sha256(path.read_bytes()).hexdigest() == digest
         with np.load(path, allow_pickle=False) as packet:
             width = float(packet["dw"])
-            print(f"open sleeve: shared bath density={float(packet['bath_density']):g} "
-                  f"prescribed rate={float(packet['rate']):g} first center w={(packet['w_index'].min()+.5)*width:g} "
-                  f"receiver join w={int(packet['sleeve_cells'])*width:g}")
+            bath_density = float(packet["bath_density"])
+            rate = float(packet["rate"])
+            first_center = (packet["w_index"].min() + 0.5) * width
+            receiver_join = int(packet["sleeve_cells"]) * width
+            print(f"open sleeve: shared bath density={bath_density:g} "
+                  f"prescribed rate={rate:g} first center w={first_center:g} "
+                  f"receiver join w={receiver_join:g}")
+            # This archived mesh spans 3.7 in 64 cells, with the sleeve ending halfway.
+            expected = (1.0, expected_rates[path.parent.parent.name], 3.7 / 128, 1.85)
+            np.testing.assert_allclose((bath_density, rate, first_center, receiver_join), expected,
+                                       rtol=0, atol=1e-14, err_msg="Receiver preparation or geometry differs")
 
 
 def finite_density_difference():

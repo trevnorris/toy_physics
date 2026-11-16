@@ -54,7 +54,16 @@ def trace(speed):
     name = "mouth_feed_weak_run.json" if speed == 0 else "mouth_intake_redistribution.json"
     path = archived_packet(name, f"n32_restoring_slope_u{speed:g}.npz")
     with np.load(path, allow_pickle=False) as packet:
-        density = abs(packet["field"][-1])**2
+        field = packet["field"]
+        density = abs(field[-1])**2
+        # Register the face independently by its physical depth in the feed solver.
+        depths = np.arange(len(field)) * float(packet["dz"])
+        mouth_plane, = np.flatnonzero(depths == 1.0)
+        if depths[-1] != 1.0:
+            raise ValueError("The feeding slab must end at the mouth")
+        registered = field[mouth_plane]
+        np.testing.assert_allclose(density, registered.real**2 + registered.imag**2,
+                                   rtol=2e-15, atol=0, err_msg="Density is not from the z=1 mouth plane")
         mouth, current = packet["mouth"], packet["current"]
         dx, actual = float(packet["dx"]), float(packet["speed"])
         assert actual == speed and density.shape == current.shape == mouth.shape == (32,32,32)

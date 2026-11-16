@@ -1,0 +1,18 @@
+0PN free-fall mass scaling, symbolic check of the leading radial law
+D is inward mass throughput, Q the far-field volume rate, M the independently determined translational inertia, and e the signed transfer that drives the center per D times incident speed.
+Source and target may be distinct preparations. The final two lines specialize to D = rho Q for each preparation. The final expression still depends on target e_A until universality of transfer is established.
+All physical quantities are inputs. This checks algebra under the specified assumptions. The file contains no physical mass or free-center measurement.
+
+$ python3 scripts/s11c_guarded_run.py --pool free-fall-mass-scaling --memory-gib 1 --log-directory _scratch/s11c/free_fall_mass_scaling01 -- python3 software/stage1_solver/tools/free_fall_mass_scaling.py
+Started UTC 2026-11-16T05:46:23.438196+00:00, guard and child exit 0, verified 1 GiB cap, zero swap, no deadline, stderr empty.
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 4989d341498a99cba7ec3b9d5720a453016e909942986ddb4c88cd65826054b5  software/stage1_solver/tools/free_fall_mass_scaling.py
+SHA256 e87770dad14681b63a54578adc19013141210c71bdacd5902b507239ccff9970  _scratch/s11c/free_fall_mass_scaling01/stdout
+
+Literal stdout
+acceleration A toward s = D_A*Q_s*e_A/(4*pi*M_A*r**2)
+target acceleration ratio A/B at one source = D_A*M_B*e_A/(D_B*M_A*e_B)
+source acceleration per unit source mass ratio A/B at one target = M_B*Q_A/(M_A*Q_B)
+pair value of r^2 a / M_s = D_A*Q_s*e_A/(4*pi*M_A*M_s)
+target ratio divided by source ratio with matched flux = e_A/e_B
+G with matched flux and common intake per mass = e_A*lambda**2/(4*pi*rho)

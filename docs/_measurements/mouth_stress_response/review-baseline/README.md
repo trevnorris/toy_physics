@@ -1,0 +1,9 @@
+# Review before the archive checks were repaired
+
+The reviewed source base was 4b49fe61. The two calculations and the two reports are preserved in this commit with their original outputs and run manifest.
+
+The [local reviewer](local/review.md) returned “Force physics — scoped clear.” and “Calibration physics — scoped clear.” The reviewer independently recovered both numerical trial forces and verified the actual receiver geometry and bath parameters. The scripts accepted a shift from the mouth plane to its neighbor, a drain rate presented as a bath density, and the far face presented as the receiver entrance. [Executed changes and independent readings](local/frozen-run/stdout) · [Independent symbolic calculation](local/witness-run/stdout)
+
+[Grok](grok.md) accepted both reports and confirmed the analytical result and the interpretation of the supplied readings. Grok received scoped text only. Its optional feed-density sweep requires a matched receiver to identify the jump. The physical receiver remains open. A centered half-spacing comparison would use both sides of the same reference feed density. A solver stopping residual alone cannot establish an uncertainty on a ratio of differences. The four-layer feeding result differs from the feed by about 0.00000705 per unit speed, and the negative-speed states in that example come from reflection. The reviewed source reports their actual preparation and accuracy. [Feed benchmark](../../../held_drain_pair.md#what-does-the-signed-one-mouth-flow-test-measure)
+
+To repeat the baseline local probes, populate the scratch baseline/candidate directory named in the script with the six reviewed files, retaining their repository-relative paths. Write their SHA256 lines in baseline/candidate.sha256. Copy the local scripts to scratch before running them there through the project guard with a fresh log directory. The force and calibration run evidence is in [runs.txt](../runs.txt).

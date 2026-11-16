@@ -1,0 +1,28 @@
+Source revision before the two checks: 4b49fe61.
+
+$ python3 scripts/s11c_guarded_run.py --pool mouth-stress-response --memory-gib 1 --log-directory _scratch/s11c/mouth_stress_response01/guard -- python3 _scratch/s11c/mouth_stress_response01/calculate.py
+Retained script: software/stage1_solver/tools/mouth_stress_response.py
+Started UTC 2026-11-16T16:07:12.973742+00:00. Guard and worker exit 0. Verified 1 GiB, zero swap, no deadline. Stderr empty.
+Literal stdout: docs/_measurements/mouth_stress_response/force.stdout
+
+$ python3 scripts/s11c_guarded_run.py --pool mouth-density-calibration --memory-gib 1 --log-directory _scratch/s11c/mouth_stress_review01/r0/calibration -- python3 software/stage1_solver/tools/mouth_density_calibration_check.py
+Retained script: software/stage1_solver/tools/mouth_density_calibration_check.py
+Started UTC 2026-11-16T16:30:22.667799+00:00. Guard and worker exit 0. Verified 1 GiB, zero swap, no deadline. Stderr empty.
+Literal stdout: docs/_measurements/mouth_stress_response/calibration.stdout
+
+Input, source and retained output digests (SHA256)
+c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4  _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz
+54048b7c5787e614cd9e1446b3e14e959f4d5d65f4fc45fc2fed9cf1819b4e23  _scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.01.npz
+303cb43b3375fca6251afbee3230be6c8cbd907d5cc3471415f52d29ff48be6a  _scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.02.npz
+b87e20522b862ab9a5e7e0764b6bef9673ad95845a68e424852bad450779e237  _scratch/s11c/open_sleeve_current01/fields/level_32.npz
+2b403c4de956e4a5a902a8207c92801b491212327b8f616ce7658c597c38f200  _scratch/s11c/open_sleeve_zero01/fields/level_32.npz
+f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0  docs/_measurements/mouth_feed_weak_run.json
+f437841524cdf0166ffbc6950a663767a3ea9d0691236a07a6111d141bf00711  docs/_measurements/mouth_intake_redistribution.json
+5db629217b884d47ae5f7e7b5e9991840366af554dce0b4ecd7f981153f661d6  docs/_measurements/mouth_stress_response/calibration.stdout
+a4016f85d90df0853380db1d74411cce39af3c02b8ecc7fb9747a32f1de707cb  docs/_measurements/mouth_stress_response/force.stdout
+307063e864287fa795cebdfec9402f4e85f12c06a046c2295d51af13fc299bca  docs/_measurements/open_sleeve_current.txt
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+ffc771ee507b9b3512e0809b12d0bd0d5989a503372969ff51364fc62348b19f  software/stage1_solver/tools/held_crossflow_budget.py
+20db81332b9c75936adb66c9d3a8dfa80107b49728b5d1ae25cad3904ac49273  software/stage1_solver/tools/mouth_density_calibration_check.py
+a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61  software/stage1_solver/tools/mouth_feed_weak_check.py
+cb330a1edf0da374e326158fb232016f0dbbbd627b0236a8a9ace39d2d611b06  software/stage1_solver/tools/mouth_stress_response.py

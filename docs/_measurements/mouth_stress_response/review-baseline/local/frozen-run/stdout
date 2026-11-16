@@ -1,0 +1,23 @@
+feed U=0: range=(1,1); last_z=1; mouth n range=(0.995325637306,0.99999754382); inward rate=0.25
+feed U=0.01: range=(1,1); last_z=1; mouth n range=(0.995297721806,0.999998432731); inward rate=0.25
+archive by cyclic spline/even-odd density, U=0.01, ref=-1.69610050256e-05, weight=2.02566056245e-10, total=-1.69608024596e-05
+feed U=0.02: range=(1,1); last_z=1; mouth n range=(0.995269745877,1.00000025372); inward rate=0.25
+archive by cyclic spline/even-odd density, U=0.02, ref=-1.69614474894e-05, weight=8.10332620513e-10, total=-1.69606371567e-05
+sleeve open_sleeve_current01 bath 1.0 rate 0.125 wmin/max 0.02890625 3.6710937500000003 join 1.85 K 0.5
+sleeve open_sleeve_zero01 bath 1.0 rate 0.0 wmin/max 0.02890625 3.6710937500000003 join 1.85 K 0.5
+rest feed derivative / local density derivative: 2*r*(r**2 + 1)
+rest feed derivative alone: 2*r*(r + 1)*(r**2 + 1)
+angular_tangent_removed ArithmeticError
+edge_deleted ArithmeticError
+edge_control_monopole AssertionError
+jump_orientation AssertionError
+anchor_frozen AssertionError
+weight_translation_omitted AssertionError
+reflection_wrong_axis AssertionError
+field_plane_off_by_one PASS
+center_anchor_removed AssertionError
+finite_secant_one_sided AssertionError
+size_of_feed_domain AssertionError
+feed_read_on_mouth AssertionError
+sleeve_bath_to_rate PASS
+sleeve_shoulder_to_far_end PASS

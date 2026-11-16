@@ -1,0 +1,10 @@
+feed patch: U=0 feed density=[1,1] last z=1 planes=65 inward rate=0.25
+  keys: current, dx, dz, field, mouth, speed
+feed patch: U=0.01 feed density=[1,1] last z=1 planes=65 inward rate=0.25
+  keys: current, dx, dz, field, mouth, speed
+feed patch: U=0.02 feed density=[1,1] last z=1 planes=65 inward rate=0.25
+  keys: current, dx, dz, field, mouth, speed
+open sleeve: shared bath density=1 prescribed rate=0.125 first center w=0.0289063 receiver join w=1.85
+open sleeve: shared bath density=1 prescribed rate=0 first center w=0.0289063 receiver join w=1.85
+jump changes at local density offsets -h, 0, h: [0, 0, 0]
+center derivative change: -gamma*h**2 centered secant: slope

@@ -1,0 +1,8 @@
+angular radial integrand before multiplying by hbar^2/(4m): 4*pi*r*(r*n0(r)*Derivative(J1(r), r) + r*n1(r)*Derivative(J0(r), r) + 2*J1(r)*n0(r))/3
+after integration by parts: 4*pi*r**2*(-J1(r)*Derivative(n0(r), r) + n1(r)*Derivative(J0(r), r))/3 plus boundary 4*pi*r**2*J1(r)*n0(r)/3
+edge control, integral of d_x x on ball = 4*pi*a**3/3
+change of weak force, translated energy = -128*pi*a**2*b*kappa*s/3465
+change of weak force, two-sided stress = -128*pi*a**2*b*kappa*s/3465
+added rest energy, chemical-potential jump, force: 0.0 0.0 0.0
+|U|=0.01 per_unit_kappa odd_force/U=-1.69608024596e-05 rest_gradient_contraction=-1.69610050256e-05 translated_energy=-1.69608024533e-05,-1.69608024579e-05
+|U|=0.02 per_unit_kappa odd_force/U=-1.69606371567e-05 rest_gradient_contraction=-1.69614474894e-05 translated_energy=-1.69606371505e-05,-1.69606371551e-05

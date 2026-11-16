@@ -1,0 +1,19 @@
+Unequal-mouth interaction momentum in a steady inviscid constant-density exterior. Working result pending independent review.
+Two independent positive monopole volume rates Q_1 and Q_2. The plane normal points from mouth 1 to mouth 2; l and b are positive center-to-plane distances, with d=l+b. The ring coordinate is s. The code differentiates both velocity potentials, subtracts both isolated xx momentum currents, and integrates over the complete separating plane. A direct midpoint integral checks the result.
+The k_i example assigns outward transfer in units of the local signed arrival and assumes steady fields and no independent force. It checks momentum accounting. It supplies no physical k_i, holding force, source-to-rate map, or acceleration.
+Repository base 3bb273e9602156c419780be07139dee606bfc44d
+
+$ python3 scripts/s11c_guarded_run.py --pool unequal-mouth-pair-balance --memory-gib 1 --log-directory _scratch/s11c/unequal_mouth_pair_balance01 -- python3 software/stage1_solver/tools/unequal_mouth_pair_balance.py
+Started UTC 2026-11-16T13:11:21.342175+00:00. Guard and child exit 0. Verified 1 GiB cap, zero swap, 32 tasks, no deadline. Stderr empty.
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 d83d31faf54d92a18e20bb36e293b832c60fdd33fbb6a60c1e3fe5a30544d942  software/stage1_solver/tools/unequal_mouth_pair_balance.py
+SHA256 dc7eb28937ccd2fc9207a1a3da92578a985eb7c68e2911478d5dba842042177a  _scratch/s11c/unequal_mouth_pair_balance01/stdout
+
+Literal stdout
+interaction xx momentum current on the separator = -Q_1*Q_2*rho*(b*l + s**2)/(16*pi**2*(b**2 + s**2)**(3/2)*(l**2 + s**2)**(3/2))
+outward x flux from the left across the whole plane = -Q_1*Q_2*rho/(4*pi*(b + l)**2)
+bisector direct integral = -Q_1*Q_2*rho/(16*pi*l**2)
+signed exterior arrivals at mouths 1 and 2 = (Q_1*Q_2*rho/(4*pi*(b + l)**2), -Q_1*Q_2*rho/(4*pi*(b + l)**2))
+sum of drives for the sample export law = -Q_1*Q_2*rho*(k_1 - k_2)/(4*pi*(b + l)**2)
+summed signed export = Q_1*Q_2*rho*(k_1 - k_2)/(4*pi*(b + l)**2)
+example (force 1, force 2, net export) / positive arrival = [1, 0, -1]

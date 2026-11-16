@@ -1,0 +1,20 @@
+Weak one-mouth current selection in the feeding-slab exterior. Working calculation, pending independent review.
+Unit ambient number density and solver units for velocity and phase. The letter a is the radius of the three-dimensional opening, a_0 a common reference radius, H the slab depth and m the constituent mass. The displayed current is the coefficient of epsilon. The mode assumes fixed lateral reservoir phase and a reflecting opposite face; q is a mode amplitude of the trial normal phase slope.
+The two example laws refer to an imposed weak normal speed on a common aperture shape. Both calibrate to the same mouth at a_0. They test whether the exterior plus this calibration selects a radius law. No grid solve or physical current selection is claimed.
+Repository base 35d00dba3400ff2b247e20949e08aec7d1260f04
+
+$ python3 scripts/s11c_guarded_run.py --pool mouth-radius-current-selection --memory-gib 1 --log-directory _scratch/s11c/mouth_radius_current_selection01 -- python3 software/stage1_solver/tools/mouth_radius_current_selection.py
+Started UTC 2026-11-16T12:46:44.159275+00:00. Guard and child exit 0. Verified 1 GiB cap, zero swap, 32 tasks, no deadline. Stderr empty.
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 10c0d40a6d803cfd4b91643395ce781c88eab93fe8d2365d34ecd48b54893122  software/stage1_solver/tools/mouth_radius_current_selection.py
+SHA256 2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c  software/stage1_solver/tools/lateral_reservoir_field.py
+SHA256 7f2d5c231cb1149a458db6e62101bc72f1c55df5f2a501379a74d8a60747eef4  _scratch/s11c/mouth_radius_current_selection01/stdout
+
+Literal stdout
+linear carrier equation (real, imaginary) = (2*eta - lap_eta/2, -lap_phi/2)
+linear normal derivative (real, imaginary) = (-eta*g, V*g)
+lateral mode phi(w) = q*cosh(k*w)/(k*sinh(H*k))
+recovered trial phase slope at the mouth = q
+linear inward mass rate at unit ambient number density = 64*pi*V*a**3*m/315
+mass rates at calibration radius = [64*pi*V*a_0**3*m/315, 64*pi*V*a_0**3*m/315]
+mass-rate doubling factors (constant V, V*a_0/a) = [8, 4]

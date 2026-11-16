@@ -1,0 +1,108 @@
+995d9cd99415f4e3f0028ab63588be07c911fa878e2bcc17ecfaf068bc43e633  _scratch/s11c/one_mouth_translation_review01/r0/section.md
+### Item 3: momentum received, distinct from the rate of stored momentum
+
+`momentumReceived` is a three-vector made from the integrated `f_i` and the two **rest**
+momentum-flux surface pieces. `momentumRate` prints the full regional rate, and
+`momentumSurfaceMotion` prints the motion pieces separately. The shared twelve surface-motion
+components are bound one by one. Py's latter payload additionally contains two `Volume(0)`
+bulk-reference entries per component, which WL's payload omits; those values/keys remain
+unpaired, as do their six extra Py dimension tags. The corresponding separately emitted
+rate pieces are compared elsewhere. No equality of received momentum and `dP/dt` is imposed,
+and no moving-frame reinterpretation replaces the supplied `x`-coordinate object. Momentum
+received is not a passive factor or the force a drain exerts on another body. (Retrieve
+M01–M03/M06–M09/M12–M13.)
+
+
+**Requirement at the opening.** For the same radius-selected inward flow, a mouth law must give the net sideways reaction to independently varying the incident brane flow and the center velocity. At the opening take the difference of the two **total** momentum currents, each including the material crossing relative to the moving cut and its transmitted stress. Add independent rim forces and account once for momentum stored in or exchanged with material outside the translating body. Equal mass rates can still carry different tangential momenta. Their carried difference vanishes on the stationary, equal-current, single-carrier branch with a common differentiable tangential phase. An independent total mechanical reaction in each preparation would measure the combined effect. A wall-slip coefficient alone leaves both whole-mouth responses open.
+
+#### What do two specified radii predict at release from rest?
+
+Prepare two open, inward-draining mouths at rest a distance $d$ apart in the same uniform distant brane. Allow the held pair to settle. Remove both supports without an impulse. Preserve positions, velocities, independent field initial data, preparation history, and the intake and reservoir laws. Solve anew for the accelerations, field time derivatives and constraint stresses at release. Unsteady pressure can change immediately. Use one signed laboratory axis pointing from mouth 1 to mouth 2. The inputs are the radii $a_1,a_2$, separation and ambient state. Write $\alpha_i$ for the signed initial acceleration of geometric center $i$ in the gravity-sector comparison.
+
+| Force to acceleration | At the same prepared state determine $\chi_{ij}=\partial\alpha_i/\partial f_j$ for independent weak forces along the lab axis on each center, with both free. In linear response to removing the supports, $\alpha_i(0^+)=-\sum_j\chi_{ij}H_j$ to first order in the released support forces. This assumes a smooth instantaneous force-to-acceleration response and zero acceleration with forces $H_j$ applied in the same state. Measure the onset response, including any acceleration-dependent brane load once. A steady drift or slow acceleration measurement alone cannot fix this response. | Open. The physical inertia and cross-response are unmeasured. The separate finite-companion benchmark demonstrates this readout for specified boundaries. [Pair holding and probes](../../docs/drain_driven_initial_acceleration.md#holding-force-and-small-force-release-test-with-a-finite-companion) · [Physical probe status](../../docs/drain_driven_initial_acceleration.md#what-would-turn-the-measured-held-force-into-a-release-acceleration) |
+
+In the far zone, **if** the isolated gravitational drive vanishes by symmetry, the local incident velocity supplies the whole leading interaction, $\chi_{ii}$ approaches $1/M_i$, and cross-acceleration is subleading, the signed predictions reduce to $\alpha_1=+A(a_1)Q_2/(4\pi M_1 d^2)$ and $\alpha_2=-A(a_2)Q_1/(4\pi M_2 d^2)$ at leading order. The drift contribution $B V$ vanishes at the prepared instant. A release from rest cannot settle the later drag question. Only after the physical inputs are fixed can $d^2\alpha_1/M_2$ and $-d^2\alpha_2/M_1$ be compared across radii and separation to one positive $G$. With the present inputs, neither initial acceleration has a physical numerical prediction. [Source and target scaling](#how-drain-rate-and-retained-momentum-must-scale-for-free-fall)
+### Which part of the rim must respond to a known force?
+
+In the existing shape representation, \(R(\Omega,0,t)\) gives the radial distance to the rim in the brane plane. About a centered sphere of radius \(a\), the linearized volume centroid along the force direction is \(X=(3/4\pi)\int \cos\theta\,\delta R\,d\Omega\). A dipole displacement \(\delta R=q\cos\theta\) therefore moves the center by \(q\). Breathing and a centered quadrupole both integrate to zero. The normal probe traction \(t_n=3F\cos\theta/(4\pi a^2)\) does work \(F\,\delta X\), so its force calibration and geometric observable refer to the same coordinate. [Parent shape definition](../research/pde/paper/pde.tex#L589) · [Exact projection and probe check](_measurements/mouth_rim_dipole.json)
+
+Project the parent geometry equation onto \(\cos\theta\). With its densitized coefficients and the same normalization for all projected sources \(S_1\), the mode equation is
+\[
+### One isolated mouth at the instant a sideways force is applied
+
+Start the radius-1 mouth at rest with inward rate \(J=0.25\) and zero lateral feed velocity. Apply a finite step force \(F_x\) to the geometric mouth, with no impulse and with the feed and intake law unchanged. Count the brane-side mouth load \(L_x\) (inward carried momentum plus mixed stress) once. Let \(P_X\) be the momentum assigned to the translating mouth on the receiving side of that cut. Let \(R_x\) be the signed outward momentum rate plus the rate of storage in degrees of freedom on that side excluded from \(P_X\). The mouth-level balance and its integral relative to the undriven preparation are
+
+\[
+\dot P_X+R_x=F_x+L_x,\qquad
+\Delta P_X(t)-\Delta P_X(0)+\int_0^t\Delta R_x\,dt'
+   =F_x t+\int_0^t\Delta L_x\,dt'.
+\]
+
+This partition can be used without resolving the throat interior. The model's drainage scaling ties mass to the preparation and leaves the relation of this momentum to the geometric center velocity unnormalized. The one-body momentum balance likewise leaves the acceleration-dependent exchange open. [Moving-region balance](../research/pde_ledger_v3/steps/S16_moving_region.md#L149) · [Mass scaling of the draining preparation](../research/brane_bulk_ontology/paper/brane_bulk_ontology.tex#L1267) · [One-body exchange status](../software/em_charge_attribute/reports/u1_body_dynamics.md#L420)
+
+**What the exterior fixes at release.** In laboratory coordinates the finite-grid carrier linearization has the form \(\dot\eta=\mathcal A\eta+b\,\delta X\), with \(\eta(0)=0\). The load variation is \(D_\psi L_x[\eta]+(\partial_XL_x)_{\psi_0}\,\delta X\). Both follow from the translated intake and restoring conditions. If the opening starts with finite prescribed acceleration \(A\), \(\delta X=At^2/2\) gives \(\eta=bAt^3/6+O(t^4)\). The incremental brane load at \(t=0^+\) is therefore zero for either acceleration sign. The net incremental impulse on the right of the balance is \(F_xt+O(t^3)\) for bounded initial acceleration. Momentum conservation fixes this impulse but supplies no value of \(A\). [Carrier and load equations](../software/stage1_solver/tools/lateral_mouth_acceleration.py) · [Time-domain check](../software/stage1_solver/tools/mouth_release_onset.py)
+
+At reservoir size 48, the initial force derivative with the carrier held fixed was \((\partial_X L_x)_{\psi_0}=-0.05033807529\) solver force per unit displacement. The time-dependent carrier gave \(\Delta L_x/A=-1.57240\times10^{-9}\) at \(t=0.00025\) and \(-6.28588\times10^{-9}\) at \(t=0.0005\). These are responses to an imposed trajectory. The previously measured \(M_{\rm br}=0.00194689366385\) is a slow, already-established response of the brane on that grid. The time expansion here describes the initial-value problem on the finite grids. Its continuum short-time coefficient is open. [Four guarded grid checks and archived slow responses](_measurements/mouth_release_onset.json)
+
+**Independent datum needed.** A mouth-level evolution law must give \(\dot P_X+R_x\) as a response to the center motion and its history for this radius and inflow. One can instead measure the isolated initial mobility directly. Apply equal and opposite known steps \(\pm F\) in matching preparations, track the geometric centroids, and form
+
+\[
+
+If the slope \(\chi_d\) is finite and nonzero, the companion-induced acceleration corresponds in linear response to an external force \(F_{\rm eq}=[a_d(0)-a_{\rm iso}(0)]/\chi_d\). An opposing force of that magnitude would restore the isolated acceleration. Comparing \(F_{\rm eq}\) with the measured carried momentum and stress tests how effectively that load moves the opening. The signed forces have been calibrated; the required acceleration readings remain open. [Held-force measurements](_measurements/held_force_incident_flow.json) · [Probe calculation](../software/stage1_solver/tools/mouth_release_force_probe.py)
+
+## One release configuration
+
+
+def aperture_center_x(radius, mu, weights):
+    """Volume centroid of the aperture, integrating radial rays to the rim."""
+    radius, mu, weights = (np.asarray(v, dtype=float) for v in (radius, mu, weights))
+    if (radius.ndim != 1 or mu.shape != radius.shape or weights.shape != radius.shape
+            or not np.all(np.isfinite([radius, mu, weights])) or np.any(radius <= 0)
+            or np.any(abs(mu) > 1) or np.any(weights <= 0)):
+        raise ValueError("Invalid aperture radii or angular quadrature")
+    # The radial integrals for volume and its first moment are R^3/3 and R^4/4.
+    return 0.75 * np.dot(weights * mu, radius**4) / np.dot(weights, radius**3)
+
+
+def spherical_rim_probe(radius, mu, force):
+    """Signed normal load per rim area at the initial spherical mouth.
+
+    External work is force times variation of aperture_center_x. At a sphere
+    the variation of the centroid is 3/(4*pi) integral mu*delta_R dOmega.
+    """
+    mu = np.asarray(mu, dtype=float)
+    if (not np.isfinite(radius) or radius <= 0 or not np.isfinite(force)
+            or not np.all(np.isfinite(mu)) or np.any(abs(mu) > 1)):
+        raise ValueError("Expected a positive radius and finite force and direction cosines")
+    return 3 * force * mu / (4 * np.pi * radius**2)
+$$
+L_x(U)=mJ(U)U.
+$$
+This accounts for the sideways momentum per unit time arriving at a mouth of any radius under those boundary conditions. Its numerical value requires that preparation's intake. A finite pair with a lateral reservoir has different boundaries. [Carrier stress and balance](../software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md#L22) · [Feed and aperture equations](../software/stage1_solver/tools/mouth_feed_weak_flow.py#L74)
+
+The radius-1 check used the saved density-responsive intake with $m=1$ and imposed $J=0.25$. The positive-speed states were solved previously. The negative-speed states were obtained by reflecting the periodic envelope and current in $x$, then checked against the stationary equation and inward-current boundary law. The feed phase was reconstructed using the imposed signed twist. These are symmetry partners of the positive runs. Each load below is the positive-minus-negative difference divided by $2|U|$. The opening includes both carriage and mixed stress. The final column reconstructs both from the last four brane layers. [Signed checks, commands and source hashes](_measurements/held_crossflow_budget.txt)
+**Physical holding force.** Let $E_x$ be the net sideways momentum per time passed on at the mouth, with any independent edge or other force accounted for as in the balance above. In the steady held state $H_x=E_x-L_x$. For a smooth response at rest, the drive per unit incident speed is $-H'_x(0)=mJ(0)-E'_x(0)$. Thus the one new number needed at each radius for this test is $E'_x(0)$, or equivalently an independent support-force slope. The benchmark determines the first term at radius 1. The radius-1.5 archive prescribes a moving opening or puts a companion beside a pinned one. It contains no total support reading in uniform sideways flow. The rim probe calibrates a specified force, and the driven wall operator uses a surrogate source. Neither returns the mechanical force needed to hold a draining center at rest. An independent translation equation at the mouth could supply that reaction as the force enforcing the fixed center. Setting the reaction equal to the measured incoming current would impose full retention. [Rim probe](../software/stage1_solver/src/stage1_solver/mouth_probe.py#L22) · [Wall operator](../software/stage1_solver/src/stage1_solver/p2_driven_absorber.py#L3) · [Open one-body momentum exchange](../software/em_charge_attribute/reports/u1_body_dynamics.md#L420)
+
+## What passes on if the carrier phase is continuous at the mouth?
+
+For a flat stationary cut, orient the same normal $N$ from the feeding side $(-)$ to the receiving side $(+)$. Take a single neutral carrier with the same constituent mass on both sides, positive number density, and no number stored or transported along the cut. The normal number current $j$ then agrees pointwise. The carried part of the sideways drive on the interface is $mj(v_x^- - v_x^+)$. A common differentiable phase trace makes the tangential velocities equal because $mv_x=\hbar\partial_x\theta$. All of this carried sideways momentum passes on, even if the intake redistributes across the opening. On a smooth cut with no singular interaction the normal density slope agrees as well, so the carrier gives zero localized force there. This statement concerns a cut through that carrier. Forces on a physical rim and any separately coupled fields still require their own terms. [Carrier transmission conditions](drain_driven_initial_acceleration.md#matching-the-core-to-the-receiving-bulk-at-0pn) · [Carrier momentum tensor](../software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md#L22)
+
+A thin physical coupling can transmit the same material current and exert a force. As a conditional example take a real surface energy density $e(\mathbf x-X\hat x,n)$ tied to the center, with no other surface force. Set $c=\hbar^2/(2m)$ and $[b]=b^+-b^-$. Variation of the two-sided carrier energy gives $c[\partial_N\psi]=e_n\psi$, hence $[\partial_N\log n]=2e_n/c$. The difference of the two mixed density stresses is $n\,d_x e_n$, where $d_x$ differentiates both the profile and the density trace. It equals $d_x(ne_n-e)+(\partial_x e)_n$. For a coupling with smooth compact support the first term integrates to zero over the aperture. The net force on the translated coupling is therefore $-\partial_X\int e\,d^3x$ at fixed field. Its mechanical support force in a stationary state has the opposite sign. [Two-sided variation](drain_driven_initial_acceleration.md#matching-a-conversion-layer-to-the-sleeve-and-receiving-bulk-at-0pn) · [Symbolic identity](_measurements/mouth_transmission_work.txt)
+
+Take $e=\lambda c g_X(\sqrt n-1)^2$ and write $u=\sqrt n$. The benchmark specifies $\partial_N u^-=-g_X(u-1)$. The surface law then gives $\partial_N u^+=(\lambda-1)g_X(u-1)$. Two local matches illustrate what is missing. With $\lambda=0$ the smooth continuation passes on the entire carrier load. With $\lambda=1$ the receiving amplitude slope is zero and the interface feels the restoring force. Both allow exactly the same feeding trace and inward current locally. Neither constructs a global receiving solution or determines the physical surface law.
+
+On the radius-1 periodic benchmark, the $\lambda=1$ interaction gave an odd force per unit incident speed of $7.4812472343\times10^{-6}$ at $|U|=0.01$ and $7.48163888963\times10^{-6}$ at $|U|=0.02$. This is about $0.0030\%$ of the incoming momentum per unit speed, $0.25$. On the saved unequal pair at separation 8 the same conditional force is the previously tabulated restoring contribution, $+9.36032381319\times10^{-9}$ and $-1.94720351749\times10^{-8}$. These numbers use prescribed benchmark intake laws. The physical 0PN choice still requires a tangential momentum-transfer relation or a determined stress difference at the opening. On the common-phase, single-carrier branch any additional force must enter through stress or a separate coupling. The model lists the physical surface functional as open. [Signed calculation](_measurements/mouth_transmission_work.txt) · [Unequal-mouth calculation](_measurements/unequal_mouth_boundary_work.txt) · [Physical surface functional](../software/em_charge_attribute/u1_body_dynamics_inputs.yaml#L56)
+
+## Does the parent confinement term give a sideways force at the mouth?
+2:Positive speeds use archived solutions. The negative-speed fields are their x reflections. All four are checked against the signed bulk equation, reconstructed imposed feed twist, inward current law and depth flux.
+3:per_speed is the positive-minus-negative momentum current divided by twice the speed magnitude. aperture uses the boundary-law stress on the full opening. aperture_layers independently takes finite differences of the feeding field in the normal direction. Neither is a mechanical support measurement.
+22:U=+0.01000 feed_rate=0.249999997672 feed_momentum=+0.00249999997672 carried=+0.00249992505059 stress=+7.48024030539e-08 aperture=+0.00249999985299 aperture_layers=+0.00249992949661 layer_stress_ibp=-1.8821784879e-08 residual=3.078e-10
+23:U=-0.01000 feed_rate=0.249999997672 feed_momentum=-0.00249999997672 carried=-0.00249992505059 stress=-7.48024030539e-08 aperture=-0.00249999985299 aperture_layers=-0.00249992949661 layer_stress_ibp=+1.8821784879e-08 residual=3.078e-10
+24:abs_U=0.01 per_speed_feed=0.249999997672 per_speed_aperture=0.249999985299 per_speed_layers=0.249992949661 aperture_minus_feed_per_speed=-1.23723575551e-08 layers_minus_feed_per_speed=-7.04801111079e-06
+25:U=+0.02000 feed_rate=0.249999997672 feed_momentum=+0.00499999995344 carried=+0.00499985009336 stress=+1.49612639404e-07 aperture=+0.004999999706 aperture_layers=+0.00499985898676 layer_stress_ibp=-3.76412290739e-08 residual=3.077e-10
+26:U=-0.02000 feed_rate=0.249999997672 feed_momentum=-0.00499999995344 carried=-0.00499985009336 stress=-1.49612639404e-07 aperture=-0.004999999706 aperture_layers=-0.00499985898676 layer_stress_ibp=+3.76412290739e-08 residual=3.077e-10
+27:abs_U=0.02 per_speed_feed=0.249999997672 per_speed_aperture=0.2499999853 per_speed_layers=0.249992949338 aperture_minus_feed_per_speed=-1.23719488265e-08 layers_minus_feed_per_speed=-7.04833395043e-06
+2:  "status": "Working, unreviewed",
+3:  "scope": "Isolated radius-1 mouth at inward rate 0.25. Brane-side near-onset reaction to a prescribed displacement At\u00b2/2 in the finite-grid initial-value problem. No independent force-to-centroid measurement.",
+329:held acceleration = Matrix([[0, 0]]) | free plus chi*H = Matrix([[-e**2*h1**2, -e**2*h1*h2]])
+330:support-removal residual at order one = Matrix([[0, 0]])

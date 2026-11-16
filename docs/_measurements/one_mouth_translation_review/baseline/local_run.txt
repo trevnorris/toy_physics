@@ -1,0 +1,8 @@
+$ python3 scripts/s11c_guarded_run.py --pool one-mouth-review0 --memory-gib 1 --log-directory _scratch/s11c/one_mouth_translation_review01/local0/guard -- python3 _scratch/s11c/one_mouth_translation_review01/local0/witness.py
+Start UTC 2026-11-16T19:48:34.320282+00:00
+Guard outcome written UTC 2026-11-16T19:48:34.934751+00:00
+Guard and worker exit 0; verified memory cap 1 GiB, zero swap. Recorded peak 53092352 bytes.
+
+Retained witness SHA256 c4459e7aa1fbca6f678976c4d51020962896f9fb4dd4f991161961e0b74b97e4
+Guard SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Literal stdout: local_witness.stdout.txt (303 bytes), SHA256 6eec343e5bf087c83f1429406e8a4223094265f5951a12854c69b95f5f73cf89

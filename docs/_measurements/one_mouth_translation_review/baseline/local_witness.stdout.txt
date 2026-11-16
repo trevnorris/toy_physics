@@ -1,0 +1,5 @@
+held acceleration = Matrix([[0, 0]])
+matched actuator X acceleration at f=H = 0
+  flow-only slope = b*c*k + c support and probe prediction = -c*(-b*k - 1) difference = 0
+different actuator X acceleration at f=H = U*b*c*k
+  flow-only slope = b*c*k + c support and probe prediction = c difference = b*c*k

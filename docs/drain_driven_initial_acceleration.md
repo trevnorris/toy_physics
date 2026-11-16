@@ -478,6 +478,37 @@ At reservoir size 48, the initial force derivative with the carrier held fixed w
 
 Repeat at half strength and use zero drive to check drift. A finite, nonzero scalar \(\chi_0\) gives \(A(0^+)=\chi_0F\) in the linear regime. The current solver takes \(X(t)\) as input, so it cannot supply either independent trajectory. An independent actuator that records its total force during prescribed motion could also determine the combined response by adding the measured mouth load to that force. Applying the isolated response to a companion also requires the net force that the incident flow transfers to the translating mouth. [Geometric force calibration](#which-part-of-the-rim-must-respond-to-a-known-force) · [Existing prescribed-motion force test](#weak-oscillating-force-on-the-rim)
 
+### One-mouth translation under an applied force or an established brane flow
+
+Keep one open mouth of radius $a$ on its inward-draining branch $D(a)$ in a fixed ambient state. Take $X$ to be the geometric center along one brane axis. A sideways force $f$ is positive in the direction of increasing $X$ and does work $f\,\delta X$. The physical balance at the opening is
+
+$$
+\dot P_X=f+L_x-R_x .
+$$
+
+Here $P_X$ includes the momentum of material assigned to the translating mouth. $L_x$ is the feeding-side momentum arriving per unit time, including carriage relative to the moving cut and traction. $R_x$ accounts for momentum passed on and stored outside $P_X$, with an independent force on the rim entering with the opposite sign in $R_x$. Each transfer enters once. This fixes the momentum budget. To evolve $X(t)$ generally, the model still owes the response of $\dot P_X+R_x-L_x$ to the geometric motion and the incident field with their preparation history. [Moving-region balance](../research/pde_ledger_v3/steps/S16_moving_region.md#L149) · [Rim coordinate and calibrated force](#which-part-of-the-rim-must-respond-to-a-known-force) · [Reviewed aperture accounting](../research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md#does-the-existing-tangential-slip-law-supply-the-mouth-force)
+
+**Initial acceleration.** Hold the center at rest and let a weak signed sideways brane flow $U$ settle at the mouth. Denote the total signed support force by $H_a(U)$. At release replace that support by a known external force $f$ without an impulse. Let $g_a(f,U)=\ddot X(0^+)$ for this family of preparations. At each $U$, keep the independent initial fields and their history fixed when changing $f$, and let constraint forces and field derivatives respond. In a symmetric zero-flow reference, $H_a(0)=0$. The center stays at rest if its supporting force is maintained, so $g_a(H_a(U),U)=0$. For a differentiable response, differentiating this identity at zero gives
+
+$$
+\chi_a=\partial_f g_a(0,0),\qquad C_a=-H_a'(0),\qquad
+\partial_U g_a(0,0)=\chi_a C_a.
+$$
+
+Thus the first-order one-mouth translation equation **at release from rest** is $\ddot X(0^+)=\chi_a(f+C_a U)$ to first order in the two independent drives. If $\chi_a$ is finite and nonzero, $1/\chi_a$ is the effective inertia at release of that draining state. $C_a$ has units of mass per time and its sign must be determined from the net force. A force step in resting brane gives $\chi_a f$. Releasing an identically sized mouth in settled flow, with the external force removed and the flow maintained, gives $\chi_a C_a U$. Switching on a remote flow at the instant of release would require the time-dependent local incident field and a response for that different history. [One-mouth force step](#one-isolated-mouth-at-the-instant-a-sideways-force-is-applied) · [Reviewed support-removal calculation](../research/pde_ledger_v3/_measurements/mouth_release_review/local_witness.stdout.txt)
+
+**Independent readings.** Use signed mechanical probes in resting brane for $\chi_a$ and signed holding-force readings in sideways flow for $C_a$. Separate flow-only releases measure the left side of the following comparison.
+
+$$
+\lim_{u\to0}\frac{g_a(0,u)-g_a(0,-u)}{2u}
+=-\left[\lim_{h\to0}\frac{g_a(h,0)-g_a(-h,0)}{2h}\right]
+ \left[\lim_{s\to0}\frac{H_a(s)-H_a(-s)}{2s}\right].
+$$
+
+Measure acceleration from the initial quadratic displacement of the geometric center. Repeat at half force and half flow to check the weak-drive regime. Material continues draining inward for both signs of sideways flow. The flow-only trajectories are reserved for this comparison. [Signed rim probe](../software/stage1_solver/src/stage1_solver/mouth_probe.py#L21) · [Geometric release readout](#what-would-turn-the-measured-held-force-into-a-release-acceleration)
+
+**Physical inputs still open.** The periodic neutral benchmark fixes $L_x=mJ(U)U$ and supplies no total support force. Two local continuations of the *same* feeding trace and inward current illustrate the ambiguity: one passes on the whole carrier load, while the other exerts a restoring force on a localized coupling. Neither selects the physical mouth law. The native force-step archive prescribes $X(t)$ and measures the brane reaction. It supplies no independently forced trajectory for $\chi_a$. The physical data needed here are the total held-force response and the instantaneous force-to-center response of the same mouth, or a constitutive law at the opening that determines both. Until those inputs exist, the two accelerations are conditional. [Two local transmission examples](held_drain_pair.md#what-passes-on-if-the-carrier-phase-is-continuous-at-the-mouth) · [Signed feeding-side measurements](_measurements/held_crossflow_budget.txt) · [Prescribed-motion archive](_measurements/mouth_release_onset.json)
+
 ### Can the saved density give an independent free-mouth trajectory?
 
 For the isolated radius-1 mouth draining at \(J=0.25\), write \(N_\Delta=\int(1-|\psi|^2)\,dV\) and \(X_\Delta=N_\Delta^{-1}\int x(1-|\psi|^2)\,dV\) over the entire simulated brane slab. The earlier mass argument associates the defect with a density deficit. An observable from the saved carrier would be useful if it tracked the geometric opening when a sideways force began. [Drainage and mass scaling](../research/brane_bulk_ontology/paper/brane_bulk_ontology.tex#L1267) · [Geometric definition of the aperture center](../software/stage1_solver/src/stage1_solver/mouth_probe.py#L10)

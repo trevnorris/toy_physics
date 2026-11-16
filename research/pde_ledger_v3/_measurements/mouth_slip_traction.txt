@@ -1,0 +1,48 @@
+$ python3 scripts/s11c_guarded_run.py --pool mouth-slip-traction --memory-gib 1 --log-directory _scratch/s11c/mouth_slip_traction01 -- python3 software/stage1_solver/tools/mouth_slip_traction.py
+Start UTC 2026-11-16T17:01:15.350617+00:00
+Guard outcome written UTC 2026-11-16T17:01:15.959580+00:00
+Guard exit 0. Worker exit 0. Verified 1 GiB, zero swap. Stderr empty.
+Recorded peak bytes 55443456
+
+SHA256 of script, model inputs and guard
+0fbea23c3426338f71b39830fd3d759b73f25d6eefae6074717fe491617a31a9  software/stage1_solver/tools/mouth_slip_traction.py
+eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee  software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+6bb2ebe8ecf72ec59efba0f4d1929f97684b2c90f9e56857bc36f25d8d89e826  software/em_charge_attribute/u1_body_mechanics_inputs.yaml
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+
+stdout _scratch/s11c/mouth_slip_traction01/stdout (593 bytes)
+SHA256 7352630494aa486c488c5226bb45a662ee18018c9bb5251b393357c14dc9da47
+
+Literal stdout
+surface = Sigma  normal condition = v.normal=V.normal
+tangential operator = K*v + gamma*(-V + v)  forcing = T
+Rayleigh density = gamma*(-V + v)**2/2  summed force power = -gamma*(-V + v)**2
+solved trace = (T + V*gamma)/(K + gamma)  equation residual = 0
+force on surface = -gamma*(2*V - 2*v)/2  solved force = -gamma*(K*V - T)/(K + gamma)
+zero forcing: trace per V = gamma/(K + gamma)  force per V = -K*gamma/(K + gamma)
+surface force slopes: A = T_U*gamma/(K + gamma)  B = -gamma*(K - T_V)/(K + gamma)  A+B = -gamma*(K - T_U - T_V)/(K + gamma)
+opposite-force residual = 0  power residual = 0
+
+$ rg -n '^  (gammaSigma|tangentDtN):|condition:.*(permeable phase texture|tangentDtN)' software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+36:  gammaSigma: {value: 2/3, dimensions: [0, 0, 0], status: OPEN_INPUT, constraint: positive, source: U2_E5_field_Rayleigh}
+37:  tangentDtN: {value: 5/6, dimensions: [0, 0, 0], status: OPEN_INPUT, constraint: positive, source: U2_E5_field_surface_DtN}
+195:    condition: "permeable phase texture; no velocity trace tied to V"
+207:    condition: "v.normal=V.normal; tangentDtN*v.tangent+gammaSigma*(v.tangent-V.tangent)=0"
+
+$ rg -n '^## Computed landing|All 144 cells' software/em_charge_attribute/reports/u2_boundary_adjudication_artifacts/stage_1_production_v12/production_summary.md
+5:## Computed landing
+17:All 144 cells are `COMPUTATION_VALID` and remain `UNRESOLVED`. Each record names candidate-specific missing static structure and its active OPEN stratum, and carries an executed constructive challenge. The templates pose, but do not solve, the 16 operator-bearing branch BVPs and assert neither admissibility nor selection.
+
+$ sed -n 25546,25557p software/em_charge_attribute/reports/u1_body_dynamics_artifacts/b1_final_results_snapshot.yaml
+E5_rayleigh:
+  root: E5_rayleigh
+  domain: Sigma
+  field_level_density: gammaSigma*(-V_tangent + v_tangent)**2/2
+  F_Rayleigh_trace: gammaSigma*(V_tangent - v_tangent)
+  F_Rayleigh_sleeve: gammaSigma*(-V_tangent + v_tangent)
+  root_deleted_functional: '0'
+  gamma_functional_ablation_force_delta: gammaSigma*(V_tangent - v_tangent)
+  full_E5_trace_solution:
+  - '1'
+  - gammaSigma/(gammaSigma + tangentDtN)
+  - '0'

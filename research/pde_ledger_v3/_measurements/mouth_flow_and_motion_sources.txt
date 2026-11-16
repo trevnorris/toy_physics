@@ -1,0 +1,70 @@
+Source inspection from the repository root. Commands and literal stdout follow.
+
+$ sed -n 3,6p software/stage1_solver/tools/lateral_reservoir_field.py
+The brane is three-dimensional. x runs along the pair and r is radius in the other
+two brane directions. Both normal faces reflect except inside the open mouths.
+The cylindrical outer wall and endcaps fix psi=1 at their faces. No lateral
+current or inverse-distance profile is prescribed.
+
+$ sed -n '55,62p;122,125p' software/stage1_solver/tools/lateral_mouth_radius.py
+    def boundary(face):
+        n = abs(face)**2
+        currents = [n*target.speed]
+        if distance:
+            raw = source_shape*n
+            currents.insert(0, 0.25*raw/np.sum(slab.dv*raw))
+        normal = (-restoring*(1-1/abs(face)) + 1j*sum(currents)/n)*face
+        return np.array(currents), normal
+        self.g, self.speed = target.g, target.speed
+        self.normal_factor = -self.g*(1-1/self.amp) + 1j*self.speed
+        self.potential = (self.n**4-1)/4
+        self.displaced_normal = (-target.dg*(1-1/self.amp)+1j*target.dspeed)*self.face
+
+$ sed -n '68,70p;75,79p;84,86p' software/stage1_solver/tools/mouth_feed_weak_flow.py
+    def solve(self, speed, reference_density=None):
+        # Gauge out exp(i U x). The feed then has phase gradient U exactly;
+        # choose mu(U)=mu0+U^2/2 to keep its density and thermodynamic state.
+            # The phase slope j/n enforces the given inward rate. The real
+            # amplitude slope is zero or relaxes departures from feed density.
+            wall = f[-1]
+            amp = abs(wall)
+            log_amp_z = -self.restoring*(amp-1)/amp
+                self.current = 0.25 * raw_current / (self.dx**3 * raw_current.sum())
+            derivative = (log_amp_z + 1j*self.current/n[-1])*wall
+            updated = self.elliptic_step(rhs, derivative)
+
+$ sed -n '28,35p;39,40p;47,50p' software/stage1_solver/tools/mouth_slow_drift.py
+    j = speed*n[-1]
+    rate = np.sum(slab.dv*j)
+    fields = SimpleNamespace(slab=slab, face=face, n=n, f=f, amp=amp, g=g,
+                             speed=speed, j=j, rate=rate)
+    carry, stress, interior = Translation.load(fields, u)
+    dj = speed*2*(face.conj()*du).real
+    vx = (face.conj()*dx4(face, dx)).imag/n[-1]
+    d_rate = np.sum(slab.dv*dj)
+    redistributed = np.sum(slab.dv*dj*vx)
+    lab = carry+stress
+    return dict(rate=rate, rate_slope=d_rate, rest=target_load(face, g, speed, slab),
+                redistribution=redistributed, velocity=carry-redistributed, carry=carry,
+                stress=stress, lab=lab, interior=interior, mouth_frame=lab-rate,
+                fd_1em4=odd_reading(1e-4), fd_5em5=odd_reading(5e-5))
+
+$ rg -A 5 '^  - id: (throat_surface_functional|E5_rayleigh)$' software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+  - id: throat_surface_functional
+    status: OPEN_INPUT
+    root_type: ACTION
+    domain: field_functional_on_Sigma
+    dimensions: [2, -2, 1]
+    arguments: [field_traces, normal_derivatives, induced_metric]
+--
+  - id: E5_rayleigh
+    status: OPEN_INPUT
+    root_type: RAYLEIGH
+    domain: tangential_velocity_trace_functional_on_Sigma
+    dimensions: [2, -3, 1]
+    arguments: [bulk_velocity_trace, sleeve_velocity_trace, gammaSigma]
+
+$ rg -o 'cells=(8|12|16) normal=32 reach=4 exterior=[^ ]+' docs/_measurements/mouth_drift_16x32_balance.json
+cells=8 normal=32 reach=4 exterior=-7.70694049967e-08
+cells=12 normal=32 reach=4 exterior=3.37709860077e-09
+cells=16 normal=32 reach=4 exterior=-1.73730982378e-09

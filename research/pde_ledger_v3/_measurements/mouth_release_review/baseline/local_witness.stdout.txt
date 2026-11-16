@@ -1,0 +1,140 @@
+stationarity = K*v - T + gamma*(-2*V + 2*v)/2 | wall from exterior = -K*v + T | solved = -gamma*(K*V - T)/(K + gamma)
+force on material = -gamma*(-2*V + 2*v)/2 | force on wall = -gamma*(2*V - 2*v)/2 | power = -gamma*(-V + v)**2
+implicit responses = T_U*gamma/(K + gamma) -gamma*(K - T_V)/(K + gamma) | sum = -gamma*(K - T_U - T_V)/(K + gamma)
+separate archived 3x3 normal tangent shear = 1 gamma/(K + gamma) 0
+r0 archived stdout discrepancies = {}
+
+MUTATION: tangent drops wall velocity | candidate exit = 0
+surface = Sigma  normal condition = v.normal=V.normal
+tangential operator = K*v + gamma*v  forcing = T
+Rayleigh density = gamma*(-V + v)**2/2  summed force power = -gamma*(-V + v)**2
+solved trace = T/(K + gamma)  equation residual = 0
+force on surface = -gamma*(2*V - 2*v)/2  solved force = -gamma*(K*V - T + V*gamma)/(K + gamma)
+zero forcing: trace per V = 0  force per V = -gamma
+surface force slopes: A = T_U*gamma/(K + gamma)  B = -gamma*(K - T_V + gamma)/(K + gamma)  A+B = -gamma*(K - T_U - T_V + gamma)/(K + gamma)
+opposite-force residual = 0  power residual = 0
+independent discrepancies = {'input matching': V*gamma, 'operator': V*gamma, 'trace': -V*gamma/(K + gamma), 'load': -V*gamma**2/(K + gamma), 'zero trace': -gamma/(K + gamma), 'zero load': -gamma**2/(K + gamma), 'B': -gamma**2/(K + gamma), 'sum': -gamma**2/(K + gamma)}
+
+MUTATION: Rayleigh deleted | candidate exit = 0
+surface = Sigma  normal condition = v.normal=V.normal
+tangential operator = K*v + gamma*(-V + v)  forcing = T
+Rayleigh density = 0  summed force power = 0
+solved trace = (T + V*gamma)/(K + gamma)  equation residual = 0
+force on surface = 0  solved force = 0
+zero forcing: trace per V = gamma/(K + gamma)  force per V = 0
+surface force slopes: A = 0  B = 0  A+B = 0
+opposite-force residual = 0  power residual = 0
+independent discrepancies = {'input matching': gamma*(-V + v), 'rayleigh': -gamma*(-V + v)**2/2, 'surface': -gamma*(-V + v), 'load': gamma*(K*V - T)/(K + gamma), 'zero load': K*gamma/(K + gamma), 'power': gamma*(-V + v)**2, 'A': -T_U*gamma/(K + gamma), 'B': gamma*(K - T_V)/(K + gamma), 'sum': gamma*(K - T_U - T_V)/(K + gamma)}
+
+MUTATION: cubic slip term | candidate exit = 1
+surface = Sigma  normal condition = v.normal=V.normal
+tangential operator = K*v + gamma*(-V + v)  forcing = T
+Rayleigh density = gamma*(-V + v)**2*(-V + v + 1)/2  summed force power = -gamma*(-V + v)**2*(-3*V + 3*v + 2)/2
+solved trace = (T + V*gamma)/(K + gamma)  equation residual = 0
+force on surface = gamma*(-V + v)**2/2 - gamma*(2*V - 2*v)*(-V + v + 1)/2  solved force = gamma*(K*V - T)*(3*K*V - 2*K - 3*T - 2*gamma)/(2*(K + gamma)**2)
+zero forcing: trace per V = gamma/(K + gamma)  force per V = K*gamma*(3*K*V - 2*K - 2*gamma)/(2*(K + gamma)**2)
+surface force slopes: A = -T_U*gamma*(3*K*V - K - 3*T_U*U - 3*T_V*V - gamma)/(K + gamma)**2  B = gamma*(K - T_V)*(3*K*V - K - 3*T_U*U - 3*T_V*V - gamma)/(K + gamma)**2  A+B = gamma*(K - T_U - T_V)*(3*K*V - K - 3*T_U*U - 3*T_V*V - gamma)/(K + gamma)**2
+opposite-force residual = 0  power residual = gamma*(V - v)**3/2
+ArithmeticError: Surface trace, force or power balance failed
+independent discrepancies = {'input matching': -3*gamma*(-V + v)**2/2, 'rayleigh': gamma*(-V + v)**3/2, 'surface': 3*gamma*(-V + v)**2/2, 'load': 3*gamma*(K*V - T)**2/(2*(K + gamma)**2), 'zero load': 3*K**2*V*gamma/(2*(K + gamma)**2), 'power': -3*gamma*(-V + v)**3/2, 'A': -3*T_U*gamma*(K*V - T_U*U - T_V*V)/(K + gamma)**2, 'B': 3*gamma*(K - T_V)*(K*V - T_U*U - T_V*V)/(K + gamma)**2, 'sum': 3*gamma*(K - T_U - T_V)*(K*V - T_U*U - T_V*V)/(K + gamma)**2}
+
+MUTATION: Rayleigh depends on velocity sum | candidate exit = 1
+surface = Sigma  normal condition = v.normal=V.normal
+tangential operator = K*v + gamma*(-V + v)  forcing = T
+Rayleigh density = gamma*(V + v)**2/2  summed force power = -gamma*(V + v)**2
+solved trace = (T + V*gamma)/(K + gamma)  equation residual = 0
+force on surface = -gamma*(2*V + 2*v)/2  solved force = -gamma*(K*V + T + 2*V*gamma)/(K + gamma)
+zero forcing: trace per V = gamma/(K + gamma)  force per V = -gamma*(K + 2*gamma)/(K + gamma)
+surface force slopes: A = -T_U*gamma/(K + gamma)  B = -gamma*(K + T_V + 2*gamma)/(K + gamma)  A+B = -gamma*(K + T_U + T_V + 2*gamma)/(K + gamma)
+opposite-force residual = -2*gamma*(V + v)  power residual = 0
+ArithmeticError: Surface trace, force or power balance failed
+independent discrepancies = {'input matching': -2*V*gamma, 'rayleigh': 2*V*gamma*v, 'surface': -2*gamma*v, 'load': -2*gamma*(T + V*gamma)/(K + gamma), 'zero load': -2*gamma**2/(K + gamma), 'power': -4*V*gamma*v, 'A': -2*T_U*gamma/(K + gamma), 'B': -2*gamma*(T_V + gamma)/(K + gamma), 'sum': -2*gamma*(T_U + T_V + gamma)/(K + gamma)}
+
+MUTATION: independent normal unbound | candidate exit = 0
+surface = Sigma  normal condition = v.normal=0
+tangential operator = K*v + gamma*(-V + v)  forcing = T
+Rayleigh density = gamma*(-V + v)**2/2  summed force power = -gamma*(-V + v)**2
+solved trace = (T + V*gamma)/(K + gamma)  equation residual = 0
+force on surface = -gamma*(2*V - 2*v)/2  solved force = -gamma*(K*V - T)/(K + gamma)
+zero forcing: trace per V = gamma/(K + gamma)  force per V = -K*gamma/(K + gamma)
+surface force slopes: A = T_U*gamma/(K + gamma)  B = -gamma*(K - T_V)/(K + gamma)  A+B = -gamma*(K - T_U - T_V)/(K + gamma)
+opposite-force residual = 0  power residual = 0
+independent discrepancies = {'surface/normal': 1}
+
+MUTATION: assigned to aperture | candidate exit = 0
+surface = aperture  normal condition = v.normal=V.normal
+tangential operator = K*v + gamma*(-V + v)  forcing = T
+Rayleigh density = gamma*(-V + v)**2/2  summed force power = -gamma*(-V + v)**2
+solved trace = (T + V*gamma)/(K + gamma)  equation residual = 0
+force on surface = -gamma*(2*V - 2*v)/2  solved force = -gamma*(K*V - T)/(K + gamma)
+zero forcing: trace per V = gamma/(K + gamma)  force per V = -K*gamma/(K + gamma)
+surface force slopes: A = T_U*gamma/(K + gamma)  B = -gamma*(K - T_V)/(K + gamma)  A+B = -gamma*(K - T_U - T_V)/(K + gamma)
+opposite-force residual = 0  power residual = 0
+independent discrepancies = {'surface/normal': 1}
+
+MUTATION: bad forced trace | candidate exit = 1
+surface = Sigma  normal condition = v.normal=V.normal
+tangential operator = K*v + gamma*(-V + v)  forcing = T
+Rayleigh density = gamma*(-V + v)**2/2  summed force power = -gamma*(-V + v)**2
+solved trace = T*V + (T + V*gamma)/(K + gamma)  equation residual = T*V*(K + gamma)
+force on surface = -gamma*(2*V - 2*v)/2  solved force = gamma*(K*T*V - K*V + T*V*gamma + T)/(K + gamma)
+zero forcing: trace per V = gamma/(K + gamma)  force per V = -K*gamma/(K + gamma)
+surface force slopes: A = T_U*gamma*(K*V + V*gamma + 1)/(K + gamma)  B = gamma*(K*T_U*U + 2*K*T_V*V - K + T_U*U*gamma + 2*T_V*V*gamma + T_V)/(K + gamma)  A+B = gamma*(K*T_U*U + K*T_U*V + 2*K*T_V*V - K + T_U*U*gamma + T_U*V*gamma + T_U + 2*T_V*V*gamma + T_V)/(K + gamma)
+opposite-force residual = 0  power residual = 0
+ArithmeticError: Surface trace, force or power balance failed
+independent discrepancies = {'trace': T*V, 'load': T*V*gamma, 'A': T_U*V*gamma, 'B': gamma*(T_U*U + 2*T_V*V), 'sum': gamma*(T_U*U + T_U*V + 2*T_V*V)}
+
+MUTATION: force at T=0 used for all T | candidate exit = 0
+surface = Sigma  normal condition = v.normal=V.normal
+tangential operator = K*v + gamma*(-V + v)  forcing = T
+Rayleigh density = gamma*(-V + v)**2/2  summed force power = -gamma*(-V + v)**2
+solved trace = (T + V*gamma)/(K + gamma)  equation residual = 0
+force on surface = -gamma*(2*V - 2*v)/2  solved force = -K*V*gamma/(K + gamma)
+zero forcing: trace per V = gamma/(K + gamma)  force per V = -K*gamma/(K + gamma)
+surface force slopes: A = 0  B = -K*gamma/(K + gamma)  A+B = -K*gamma/(K + gamma)
+opposite-force residual = 0  power residual = 0
+independent discrepancies = {'load': -T*gamma/(K + gamma), 'A': -T_U*gamma/(K + gamma), 'B': -T_V*gamma/(K + gamma), 'sum': -gamma*(T_U + T_V)/(K + gamma)}
+
+MUTATION: interchange incident and drift slopes | candidate exit = 0
+surface = Sigma  normal condition = v.normal=V.normal
+tangential operator = K*v + gamma*(-V + v)  forcing = T
+Rayleigh density = gamma*(-V + v)**2/2  summed force power = -gamma*(-V + v)**2
+solved trace = (T + V*gamma)/(K + gamma)  equation residual = 0
+force on surface = -gamma*(2*V - 2*v)/2  solved force = -gamma*(K*V - T)/(K + gamma)
+zero forcing: trace per V = gamma/(K + gamma)  force per V = -K*gamma/(K + gamma)
+surface force slopes: A = -gamma*(K - T_V)/(K + gamma)  B = T_U*gamma/(K + gamma)  A+B = -gamma*(K - T_U - T_V)/(K + gamma)
+opposite-force residual = 0  power residual = 0
+independent discrepancies = {'A': -gamma*(K + T_U - T_V)/(K + gamma), 'B': gamma*(K + T_U - T_V)/(K + gamma)}
+
+MUTATION: wrong sum only | candidate exit = 0
+surface = Sigma  normal condition = v.normal=V.normal
+tangential operator = K*v + gamma*(-V + v)  forcing = T
+Rayleigh density = gamma*(-V + v)**2/2  summed force power = -gamma*(-V + v)**2
+solved trace = (T + V*gamma)/(K + gamma)  equation residual = 0
+force on surface = -gamma*(2*V - 2*v)/2  solved force = -gamma*(K*V - T)/(K + gamma)
+zero forcing: trace per V = gamma/(K + gamma)  force per V = -K*gamma/(K + gamma)
+surface force slopes: A = T_U*gamma/(K + gamma)  B = -gamma*(K - T_V)/(K + gamma)  A+B = gamma*(K + T_U - T_V)/(K + gamma)
+opposite-force residual = 0  power residual = 0
+independent discrepancies = {'sum': 2*gamma*(K - T_V)/(K + gamma)}
+
+MUTATION: force_per_V printed as zero | candidate exit = 0
+surface = Sigma  normal condition = v.normal=V.normal
+tangential operator = K*v + gamma*(-V + v)  forcing = T
+Rayleigh density = gamma*(-V + v)**2/2  summed force power = -gamma*(-V + v)**2
+solved trace = (T + V*gamma)/(K + gamma)  equation residual = 0
+force on surface = -gamma*(2*V - 2*v)/2  solved force = -gamma*(K*V - T)/(K + gamma)
+zero forcing: trace per V = gamma/(K + gamma)  force per V = 0
+surface force slopes: A = T_U*gamma/(K + gamma)  B = -gamma*(K - T_V)/(K + gamma)  A+B = -gamma*(K - T_U - T_V)/(K + gamma)
+opposite-force residual = 0  power residual = 0
+independent discrepancies = {'zero load': K*gamma/(K + gamma)}
+
+physical opening signed momentum jump + rim = m*vm - m*vp + rim + sigm - sigp
+observer boost difference, same crossing mass rate = 0
+common phase and equal normal rate -> carried jump = 0
+equal stresses, no rim, unequal tangential velocities -> force = m*vm - m*vp
+boost invariants (U,V) = (incoming - reservoir, body_speed - reservoir)
+relative-only slopes and isolated mechanical power = A -A -A*V**2
+coupled release chi = Matrix([[2/5, -1/5], [-1/5, 3/5]]) | removal acceleration = Matrix([[-2*H1/5 + H2/5, H1/5 - 3*H2/5]])
+held acceleration = Matrix([[0, 0]]) | release + chi H = Matrix([[0, 0]])
+incremental constraint load at release for H=(-1,+1), f=0 = Matrix([[-2/5, 1/5]])
+two Newton comparisons = A1*Q2/(4*pi*M1*M2) A2*Q1/(4*pi*M1*M2)

@@ -1,0 +1,40 @@
+Unequal-mouth stationary brane-side interaction loads. Working result pending independent review.
+Each opening is compared with its isolated preparation at the same location. Positive x points from the radius-1 mouth toward the radius-1.5 mouth. d is their separation. Loads are in solver force units.
+carry and stress refer to the preceding delta_left or delta_right. net is the signed sum. percent_of_mean is 100 times the sum divided by the mean absolute interaction load. direct uses the normal field differences on the same solutions.
+The archive prescribes the left rate and calibrates the right boundary speed. These data contain no physical support-force reading.
+Repository base 7d6f8f1b2349fd7c63caf96f74226a200ca93860
+
+$ python3 scripts/s11c_guarded_run.py --pool unequal-mouth-holding-readout --memory-gib 2 --log-directory _scratch/s11c/unequal_mouth_holding_readout02 -- python3 software/stage1_solver/tools/unequal_mouth_holding_readout.py
+Started UTC 2026-11-16T14:02:41.247203+00:00. Guard and child exit 0. Verified 2 GiB cap, zero swap, 32 tasks, no deadline. Stderr empty.
+The reader checks archived field hashes and the intake on both openings. The force cross-check uses the archived unnormalized direct load and the recorded paired loads.
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 26c6a37ef21ffd3e4c14bfc5f70858490264cae108eef019ba5e785e961b303c  software/stage1_solver/tools/unequal_mouth_holding_readout.py
+SHA256 42e94c2f007d335a233c31afda180e29e30ecfbb0d13b0790c0295c678fd672e  software/stage1_solver/tools/lateral_paired_acceleration.py
+SHA256 2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c  software/stage1_solver/tools/lateral_source_rate.py
+SHA256 a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61  software/stage1_solver/tools/mouth_feed_weak_check.py
+SHA256 fac0bae77c0573d066c36f296b120b21cdf4e1e190c8ecb4736dfc171fc3cf96  docs/_measurements/lateral_paired_acceleration.json
+SHA256 9e18d35243a24010709672a0dd21fc0f541afb3fd73e29f1adb4b32eb9f5695e  docs/_measurements/lateral_radius_momentum.json
+SHA256 1509281ae8ed652a457da284ac92944cb902b5630e547c71ff7e266e12b9bce3  docs/_measurements/lateral_target_rate.json
+SHA256 c77854a410b2ae4e93cd443cc97c81e2ae23694bf02e8a2c9845083b7201ce12  docs/_measurements/lateral_mouth_radius.json
+SHA256 ab5f5f9e560a3ca1321eebc604d2f28e310cb98cfcf0e513e989363dbb1d3cd4  docs/_measurements/lateral_companion_load.json
+SHA256 78f367ed7b21f306672931274dfaa6380af6a3bee323f2bac1901638d79222d5  _scratch/s11c/unequal_mouth_holding_readout02/stdout
+
+Literal stdout
+e24_c4 d=4 left_alone=9.44869928984e-07 right_alone=-6.93889390391e-18 left_pair=0.00105172408635 right_pair=-0.00104785216125
+delta_left=0.00105077921642 carry=0.00105074565915 stress=3.35572675307e-08 delta_right=-0.00104785216125 carry=-0.00104777697621 stress=-7.51850383132e-08
+net=2.92705517295e-06 percent_of_mean=0.278948957 direct_left=0.00105029018408 direct_right=-0.00104770732423 direct_net=2.582859851e-06 direct_percent=0.246221441
+e24_c4 d=8 left_alone=2.58760460584e-06 right_alone=-6.93889390391e-18 left_pair=0.000264016616484 right_pair=-0.000255064182654
+delta_left=0.000261429011878 carry=0.000261419652598 stress=9.35928061961e-09 delta_right=-0.000255064182654 carry=-0.000255045159896 stress=-1.90227576989e-08
+net=6.36482922449e-06 percent_of_mean=2.46463237 direct_left=0.000261303453634 direct_right=-0.000255029780192 direct_net=6.27367344157e-06 direct_percent=2.43008702
+e24_c6 d=4 left_alone=9.4482131121e-07 right_alone=6.93889390391e-18 left_pair=0.00104969713521 right_pair=-0.00104582201534
+delta_left=0.0010487523139 carry=0.00104871899502 stress=3.33188855291e-08 delta_right=-0.00104582201534 carry=-0.00104574702054 stress=-7.4994795915e-08
+net=2.93029856163e-06 percent_of_mean=0.279798957 direct_left=0.00104864592337 direct_right=-0.00104585925769 direct_net=2.78666568295e-06 direct_percent=0.266092985
+e24_c6 d=8 left_alone=2.58746462866e-06 right_alone=6.93889390391e-18 left_pair=0.000263870001078 right_pair=-0.000254917410522
+delta_left=0.00026128253645 carry=0.000261273259892 stress=9.27655755291e-09 delta_right=-0.000254917410522 carry=-0.000254898412839 stress=-1.89976833362e-08
+net=6.36512592742e-06 percent_of_mean=2.46614745 direct_left=0.000261256814113 direct_right=-0.000254925985836 direct_net=6.33082827659e-06 direct_percent=2.45294042
+e48_c4 d=4 left_alone=1.08766800587e-07 right_alone=3.46944695195e-18 left_pair=0.00105133083093 right_pair=-0.00105086764686
+delta_left=0.00105122206413 carry=0.00105118848954 stress=3.35745846611e-08 delta_right=-0.00105086764686 carry=-0.00105079223841 stress=-7.54084510286e-08
+net=3.54417266901e-07 percent_of_mean=0.0337204702 direct_left=0.00105073281448 direct_right=-0.00105072240701 direct_net=1.04074695164e-08 direct_percent=0.000990501193
+e48_c4 d=8 left_alone=2.36198917227e-07 right_alone=3.46944695195e-18 left_pair=0.000262146022291 right_pair=-0.000261178004586
+delta_left=0.000261909823373 carry=0.000261900446481 stress=9.3768926443e-09 delta_right=-0.000261178004586 carry=-0.000261158525678 stress=-1.94789077472e-08
+net=7.31818787465e-07 percent_of_mean=0.279807232 direct_left=0.000261784032372 direct_right=-0.000261142785927 direct_net=6.41246445455e-07 direct_percent=0.245252843

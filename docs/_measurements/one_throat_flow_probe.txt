@@ -1,0 +1,109 @@
+One-throat flow reversal and probe. Provisional run manifest.
+Repository base d544ef733587bcc57256ca5b4d103831818e4558
+Source scripts are local additions. Both experiments use constants declared in the source, with no external data file.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool one-throat-probe --memory-gib 2 --log-directory _scratch/s11c/one_throat_probe_sympy01 -- python3 software/stage1_solver/tools/one_throat_flow_probe.py
+source.sha256 de00ed33eeaef4e36f914ac397a30f3cc7336f40635f29066489e49d0f579aba  software/stage1_solver/tools/one_throat_flow_probe.py
+guard.sha256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+start UTC 2026-11-13T00:43:26.577348+00:00
+outcome written UTC 2026-11-13T00:43:27.429633+00:00
+elapsed seconds 0.8350943571422249
+peak cgroup bytes 68059136
+launcher exit 0; child exit 0; limits verified; swap cap 0; no deadline; no guard stop
+stdout 720 bytes  abfdee43f7519f15ccb4d301747777c7b600fa6c1d2fc5200d33689651df39e6  _scratch/s11c/one_throat_probe_sympy01/stdout
+stderr 0 bytes
+Literal stdout follows
+normal_bc_residual = 0
+potential = Q/(4*pi*r) + U*mu*r + mu*(U*a**3/2 - V*a**3/2)/r**2
+inward_pressure_at_r = -rho*(2*pi*A*a**3*r**3 - Q*U*a**3 + Q*U*r**3)/(3*r**3)
+inward_carried_at_r = Q*U*rho*(-a**3 + 4*r**3)/(3*r**3)
+inward_total_at_r = -rho*(2*pi*A*a**3 - 3*Q*U)/3
+external_hold = Q*U*rho*(k - 1)
+released_acceleration = -3*(-F + Q*U*k*rho - Q*U*rho)/(3*M + 2*pi*a**3*rho)
+outward_outlet_x_at_release = Q*U*k*rho
+measurements = {"k=0,U=-1/100": ["3/100", "-3/100", "-1/50", "-1/100"], "k=0,U=0": ["0", "-1/100", "0", "1/100"], "k=0,U=1/100": ["-3/100", "1/100", "1/50", "3/100"], "k=1,U=-1/100": ["0", "-1/100", "0", "1/100"], "k=1,U=0": ["0", "-1/100", "0", "1/100"], "k=1,U=1/100": ["0", "-1/100", "0", "1/100"]}
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool one-throat-probe --memory-gib 4 --log-directory _scratch/s11c/one_throat_probe_wolfram01 -- math -noprompt -script software/stage1_solver/tools/one_throat_flow_probe.wl
+source.sha256 c66c93ee03318816d086292a662b5ca998e89f961e5299929b72fbea47cb2773  software/stage1_solver/tools/one_throat_flow_probe.wl
+guard.sha256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+start UTC 2026-11-13T00:43:35.400846+00:00
+outcome written UTC 2026-11-13T00:43:46.220198+00:00
+elapsed seconds 10.802813570015132
+peak cgroup bytes 574554112
+launcher exit 0; child exit 0; limits verified; swap cap 0; no deadline; no guard stop
+stdout 714 bytes  4fd3ae2f1fc0c26c2cce0b00a9479ed1854741ba56ad9eb8e0aeb97d154ddb7e  _scratch/s11c/one_throat_probe_wolfram01/stdout
+stderr 0 bytes
+Literal stdout follows
+"normal_bc_residuals = "InputForm[{0, 0, 0, 0}]
+"inward_exterior = "InputForm[-1/3*((-3*flow*intake + 2*a^3*acc*Pi)*rho)]
+"shell_storage_rate = "InputForm[0]
+"external_hold = "InputForm[flow*(-1 + fraction)*intake*rho]
+"released_acceleration = "InputForm[(3*(probe + flow*intake*rho - flow*fraction*intake*rho))/(3*mass + 2*a^3*Pi*rho)]
+"measurements = ""{\"k=0,U=1\\/100\":[\"-3\\/100\",\"1\\/100\",\"1\\/50\",\"3\\/100\"],\"k=0,U=0\":[\"0\",\"-1\\/100\",\"0\",\"1\\/100\"],\"k=0,U=-1\\/100\":[\"3\\/100\",\"-3\\/100\",\"-1\\/50\",\"-1\\/100\"],\"k=1,U=1\\/100\":[\"0\",\"-1\\/100\",\"0\",\"1\\/100\"],\"k=1,U=0\":[\"0\",\"-1\\/100\",\"0\",\"1\\/100\"],\"k=1,U=-1\\/100\":[\"0\",\"-1\\/100\",\"0\",\"1\\/100\"]}"
+
+Exact comparison of the two serialized measurement tables after JSON decoding: 6/6 states and 24/24 scalar entries agree (one holding force and three release accelerations per state). Column order H, A(-3/200), A(0), A(+3/200).
+
+$ sed -n '22342,22356p;22383,22395p' software/em_charge_attribute/reports/u1_body_dynamics_artifacts/stage1/sympy_phase_b1.yaml
+    cell_key:
+      endpoint: E3
+      ambient: symmetric_postulate
+      open_stratum: all_admissible_open_functionals
+    off_shell_p: true
+    block_expressions:
+      M_XX:
+        constructible_tensor:
+        - - - coefficient: 9.869604401089358
+              powers:
+                Mh: 1
+                cE: -2
+                h_scalar: 2
+            - coefficient: 8.377580409572783
+              powers:
+        unresolved_remainder_leaves:
+        - geon_core_bundle
+        - outer_surface_functional
+        - sleeve_core_trace
+        - throat_source
+        - throat_surface_functional
+        - wall_mix
+        remainder_expression: R[geon_core_bundle,M_XX] + R[outer_surface_functional,M_XX] + R[sleeve_core_trace,M_XX] + R[throat_source,M_XX] + R[throat_surface_functional,M_XX] + R[wall_mix,M_XX]
+        status: UNRESOLVED
+      M_Xp_symmetric:
+        constructible_tensor: null
+        unresolved_remainder_leaves:
+        - geon_core_bundle
+
+$ sed -n 1,8p software/em_charge_attribute/reports/u1_body_dynamics_results.yaml
+schema_version: U1_BODY_DYNAMICS_AGGREGATE_V2
+phase: B2
+current_headline: &id009
+  partition: UNRESOLVED(return_closure)
+  C_mdot: UNRESOLVED(required_OPEN_leaves)
+  radiation: UNRESOLVED(native_branch_inputs)
+  G7: UNRESOLVED(required_OPEN_leaves)
+  G9: UNRESOLVED(missing_native_energy_current_law:geon_open,missing_native_energy_current_law:throat_source_open,missing_native_energy_current_law:wall_mix_open,missing_native_momentum_current_law:geon_open,missing_native_momentum_current_law:throat_source_open,missing_native_momentum_current_law:wall_mix_open,outer_control_flux_native_functional,return_closure_native_functional,return_energy_closure)
+
+$ sed -n '1061,1066p;1082,1089p' research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
+- **status** OPEN
+- **requirement** — the momentum exchanged at each slab face and its split by the motion of
+  that face, separately identifiable within the projected total exchange.
+- **on failure** — S16's undivided force-density input supplies no face-resolved momentum account.
+  Its moving control-surface pieces do not deliver a slab-face split.
+- **standing** — the list author's original filing retains the missing face-resolved accounting
+  `directives/O2_SHARED_PHYSICS.md:133`; `steps/S16_moving_region.md`, §§1/6
+  (S16 M01/M04/M14).
+- **target** S8, with S1.5 antecedents when available as the O2 row states
+- **status** OPEN
+- **requirement** — the relation of projected momentum density to the material fields and motion
+  needed to define an inertial factor.
+- **on failure** — the separately printed momentum and material-count centre relations do not
+  supply an inertial factor or a relation between momentum and count-centre acceleration.
+
+$ sed -n 39,43p research/pde_ledger_v3/steps/S14a_1_projection.md
+
+```text
+∂t n + ∇₄·(n u) = 0
+∂t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n Γ_B
+Γ_B = Γ_return − Γ_drain,       [Γ_B] = T⁻¹.

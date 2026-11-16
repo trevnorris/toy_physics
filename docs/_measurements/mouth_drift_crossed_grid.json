@@ -1,0 +1,131 @@
+{
+  "status": "Working, unreviewed",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "scope": "Radius-one slow sideways drift with inward rate 0.25 and reservoir extent 24. Crossed lateral and normal resolutions, using the two previously completed diagonal runs.",
+  "source_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/lateral_mouth_acceleration.py": "0f04c0edb17b6c17bc1dfd2081412017caed4dfd7c1ef6808fe84f751394219b",
+    "software/stage1_solver/tools/lateral_mouth_radius.py": "4f0d9fafd7bd4b71251ae87bf91d60d8c60be0ee01170d2c4c184eb160954b08",
+    "software/stage1_solver/tools/lateral_paired_acceleration.py": "42e94c2f007d335a233c31afda180e29e30ecfbb0d13b0790c0295c678fd672e",
+    "software/stage1_solver/tools/lateral_radius_momentum.py": "5dc679cea6185931e8e74b3a7fcf516aef9ca615437ff7c710a237b215ca4987",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/mouth_drift_flux_check.py": "d3af1f4497fb326107469c1ba181ce809f6ea42c169db1bf4cb31140c47298fb",
+    "software/stage1_solver/tools/mouth_drift_refinement.py": "e8ed8cd71aa66f52a335d2865ab4626d5374f79afd3db877ce0cf75274db8c76",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "software/stage1_solver/tools/mouth_slow_drift.py": "be8ed584bf083d3994a261d568b743003f7e10d7b9a9b302962684f9d6e4fc04",
+    "software/stage1_solver/tools/mouth_drift_grid_comparison.py": "0aade2c4022315b4e3718d8e4f0fe7af3eab4a7847c200abf70cb8da12e4b5d8"
+  },
+  "diagonal_manifest": {
+    "docs/_measurements/mouth_drift_refinement.json": "62972fe551088cf9aa98f15bb9cb30ed14f83f9c740649288c42d2bd962acdbd"
+  },
+  "archived_diagonal_worker": {
+    "_scratch/s11c/mouth_drift_refine_summary01/mouth_drift_refinement.py": "598564528f72edb9febc5d5773b2836620c037553fdd5c8a1fbdec9d70ca3701"
+  },
+  "runs": [
+    {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-drift-cross --memory-gib 7 --log-directory _scratch/s11c/mouth_drift_cross_e24_c8_z48_01 -- python3 software/stage1_solver/tools/mouth_drift_refinement.py 8 _scratch/s11c/mouth_drift_cross_e24_c8_z48_01/mouth_layers.npz --normal-cells 48",
+      "started_utc": "2026-11-15T07:42:15.907690+00:00",
+      "guard_outcome_written_utc": "2026-11-15T07:43:50.018311+00:00",
+      "wall_seconds": 94.08072857395746,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 7516192768,
+      "peak_memory_bytes_sampled": 723009536,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/mouth_drift_cross_e24_c8_z48_01/stdout",
+      "stdout_bytes": 813,
+      "stdout_sha256": "03b86dc9d81b588ea1f9db4f836d83b986498d1c177db79cc41d0831889ab11a",
+      "stderr_bytes": 0,
+      "stdout": [
+        "  mouths=1 residual=5.559e-12 bath_inward=0.25 per_mouth=0.25",
+        "extent=24 cells=8 normal_cells=48 steps=18 static_residual=5.715501814e-12 velocity_residual=6.49628616912e-13",
+        "rate=0.25 rate_slope=-1.08420217249e-18 rest=-3.46944695195e-18 redistribution=0.000186333761615 velocity=-0.000177288371655 carry=9.04538996002e-06 stress=-9.10703341561e-06 lab=-6.16434555889e-08 interior=7.1395294898e-06 mouth_frame=-0.250000061643 fd_1em4=-6.16434681078e-08 fd_5em5=-6.16434507605e-08",
+        "law_cut=1.30410361692e-05 law_halo=-8.69186371205e-08 law_link=-8.69186371205e-08 layer_cut=7.1395294898e-06 layer_halo=-1.28715349695e-06 layer_product_halo=-6.93894326151e-08",
+        "whole_layer=-6.95430491563e-08 whole_product=-6.95430491564e-08 gap_layer_halo=1.22551004136e-06 gap_layer_whole=7.89959356735e-09 gap_rim=8.42668298676e-06"
+      ],
+      "cells": 8,
+      "normal_cells": 48,
+      "field_sha256": {
+        "_scratch/s11c/mouth_drift_cross_e24_c8_z48_01/mouth_layers.npz": "0596f3ee12c8d9de41b42b80fc4dc9355e78b6c4d359ac3087d1202310bb6085"
+      }
+    },
+    {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-drift-cross --memory-gib 10 --log-directory _scratch/s11c/mouth_drift_cross_e24_c12_z32_01 -- python3 software/stage1_solver/tools/mouth_drift_refinement.py 12 _scratch/s11c/mouth_drift_cross_e24_c12_z32_01/mouth_layers.npz --normal-cells 32",
+      "started_utc": "2026-11-15T07:42:15.833132+00:00",
+      "guard_outcome_written_utc": "2026-11-15T07:45:28.651404+00:00",
+      "wall_seconds": 192.80234717507847,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 10737418240,
+      "peak_memory_bytes_sampled": 1084260352,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/mouth_drift_cross_e24_c12_z32_01/stdout",
+      "stdout_bytes": 817,
+      "stdout_sha256": "7bfecc1e869268b4b6f28798274790a853698bde29238ed52283bd57f79137bf",
+      "stderr_bytes": 0,
+      "stdout": [
+        "  mouths=1 residual=1.678e-11 bath_inward=0.249999999999 per_mouth=0.25",
+        "extent=24 cells=12 normal_cells=32 steps=17 static_residual=3.10316527107e-12 velocity_residual=4.42230962937e-12",
+        "rate=0.25 rate_slope=-7.5894152074e-19 rest=1.73472347598e-18 redistribution=0.000184575383507 velocity=-0.000175556057736 carry=9.01932577049e-06 stress=-9.01274489866e-06 lab=6.58087182793e-09 interior=-8.79056726916e-06 mouth_frame=-0.249999993419 fd_1em4=6.5808643257e-09 fd_5em5=6.58087299932e-09",
+        "law_cut=3.61173082844e-06 law_halo=1.4161565733e-09 law_link=1.41615657347e-09 layer_cut=-8.79056726916e-06 layer_halo=-7.09191235476e-06 layer_product_halo=4.36649457078e-08",
+        "whole_layer=4.27616271579e-08 whole_product=4.27616271582e-08 gap_layer_halo=7.09849322659e-06 gap_layer_whole=3.61807553299e-08 gap_rim=1.6986549144e-06"
+      ],
+      "cells": 12,
+      "normal_cells": 32,
+      "field_sha256": {
+        "_scratch/s11c/mouth_drift_cross_e24_c12_z32_01/mouth_layers.npz": "13579e6b42693f4357d26371e3a770f1b8d53ca58518b317e6c488d323ba8120"
+      }
+    }
+  ],
+  "comparison": {
+    "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-drift-cross-compare --memory-gib 1 --log-directory _scratch/s11c/mouth_drift_cross_compare01 -- python3 software/stage1_solver/tools/mouth_drift_grid_comparison.py docs/_measurements/mouth_drift_refinement.json _scratch/s11c/mouth_drift_cross_e24_c8_z48_01 _scratch/s11c/mouth_drift_cross_e24_c12_z32_01",
+    "started_utc": "2026-11-15T07:45:58.396617+00:00",
+    "guard_outcome_written_utc": "2026-11-15T07:45:58.593271+00:00",
+    "wall_seconds": 0.18236585496924818,
+    "guard_exit": 0,
+    "worker_exit": 0,
+    "limits_verified": true,
+    "memory_max_bytes": 1073741824,
+    "peak_memory_bytes_sampled": 27246592,
+    "swap_max_bytes": 0,
+    "runtime_limit": "infinity",
+    "stdout_path": "_scratch/s11c/mouth_drift_cross_compare01/stdout",
+    "stdout_bytes": 2095,
+    "stdout_sha256": "ad992d06827b1fd304e91a8eab4098703808c05ebad1c903e02db89a9337b620",
+    "stderr_bytes": 0,
+    "stdout": [
+      "cells=8 normal_cells=32 lab=-6.1631239831e-08 whole_layer=-4.50047608493e-08 layer_cut=-2.04806025033e-06 layer_halo=-4.08124730345e-06 carry=9.04767722984e-06 stress=-9.10930846967e-06 whole_minus_boundary=1.66264789817e-08",
+      "cells=8 normal_cells=48 lab=-6.16434555889e-08 whole_layer=-6.95430491563e-08 layer_cut=7.1395294898e-06 layer_halo=-1.28715349695e-06 carry=9.04538996002e-06 stress=-9.10703341561e-06 whole_minus_boundary=-7.8995935674e-09",
+      "cells=12 normal_cells=32 lab=6.58087182793e-09 whole_layer=4.27616271579e-08 layer_cut=-8.79056726916e-06 layer_halo=-7.09191235476e-06 carry=9.01932577049e-06 stress=-9.01274489866e-06 whole_minus_boundary=3.618075533e-08",
+      "cells=12 normal_cells=48 lab=6.59426919318e-09 whole_layer=1.85805124636e-08 layer_cut=-1.42123224555e-06 layer_halo=-2.21545906712e-06 carry=9.01701253052e-06 stress=-9.01041826133e-06 whole_minus_boundary=1.19862432704e-08",
+      "quantity=lab lateral_at_32=6.82121116589e-08 lateral_at_48=6.82377247821e-08 normal_at_8=-1.22157579e-11 normal_at_12=1.339736525e-11 interaction=2.561312315e-11",
+      "quantity=whole_layer lateral_at_32=8.77663880072e-08 lateral_at_48=8.81235616199e-08 normal_at_8=-2.4538288307e-08 normal_at_12=-2.41811146943e-08 interaction=3.571736127e-10",
+      "quantity=layer_cut lateral_at_32=-6.74250701883e-06 lateral_at_48=-8.56076173535e-06 normal_at_8=9.18758974013e-06 normal_at_12=7.36933502361e-06 interaction=-1.81825471652e-06",
+      "quantity=layer_halo lateral_at_32=-3.01066505131e-06 lateral_at_48=-9.2830557017e-07 normal_at_8=2.7940938065e-06 normal_at_12=4.87645328764e-06 interaction=2.08235948114e-06",
+      "quantity=carry lateral_at_32=-2.835145935e-08 lateral_at_48=-2.83774295e-08 normal_at_8=-2.28726982e-09 normal_at_12=-2.31323997e-09 interaction=-2.5970150001e-11",
+      "quantity=stress lateral_at_32=9.656357101e-08 lateral_at_48=9.661515428e-08 normal_at_8=2.27505406e-09 normal_at_12=2.32663733e-09 interaction=5.1583269999e-11",
+      "quantity=whole_minus_boundary lateral_at_32=1.95542763483e-08 lateral_at_48=1.98858368378e-08 normal_at_8=-2.45260725491e-08 normal_at_12=-2.41945120595e-08 interaction=3.3156048955e-10"
+    ],
+    "input_sha256": {
+      "docs/_measurements/mouth_drift_refinement.json": "62972fe551088cf9aa98f15bb9cb30ed14f83f9c740649288c42d2bd962acdbd",
+      "_scratch/s11c/mouth_drift_refine_e24_c8_01/stdout": "d124af2d50174d971f7f5a9cd45274fb57b15e2f7ef06bd9364be8ab40788480",
+      "_scratch/s11c/mouth_drift_refine_e24_c8_01/outcome.json": "58854753cd6e580654e39ff6eaa0e9cbba65d241965d1ed3debd0ca0bf8dd96a",
+      "_scratch/s11c/mouth_drift_refine_e24_c8_01/mouth_layers.npz": "5a819bace1006fab452f2bbd17e17fb8be3038d8944e1be5da0c6d94158c3771",
+      "_scratch/s11c/mouth_drift_refine_e24_c12_01/stdout": "71bf3dee518b712cb2b06199dc474f5656da0131880b4114023a3bc4255197e4",
+      "_scratch/s11c/mouth_drift_refine_e24_c12_01/outcome.json": "7850735475b293b348d53daf81d037b21e3e4faa7a90cfdbd0e287d306c8c2f8",
+      "_scratch/s11c/mouth_drift_refine_e24_c12_01/mouth_layers.npz": "1533ba6ed297c5d8e35890f57aa0151325dd2c6b825a807a8701ac5cf1bd0997",
+      "_scratch/s11c/mouth_drift_cross_e24_c8_z48_01/stdout": "03b86dc9d81b588ea1f9db4f836d83b986498d1c177db79cc41d0831889ab11a",
+      "_scratch/s11c/mouth_drift_cross_e24_c8_z48_01/outcome.json": "6713136b5e006363e5a7373722ff7326cf64c60fa02319ae6fc4a00ad76ff237",
+      "_scratch/s11c/mouth_drift_cross_e24_c8_z48_01/mouth_layers.npz": "0596f3ee12c8d9de41b42b80fc4dc9355e78b6c4d359ac3087d1202310bb6085",
+      "_scratch/s11c/mouth_drift_cross_e24_c12_z32_01/stdout": "7bfecc1e869268b4b6f28798274790a853698bde29238ed52283bd57f79137bf",
+      "_scratch/s11c/mouth_drift_cross_e24_c12_z32_01/outcome.json": "6925bd79767c1361f1cdcea765d1dbd6d5cd452db67684200c65e733bd6c559d",
+      "_scratch/s11c/mouth_drift_cross_e24_c12_z32_01/mouth_layers.npz": "13579e6b42693f4357d26371e3a770f1b8d53ca58518b317e6c488d323ba8120"
+    }
+  }
+}

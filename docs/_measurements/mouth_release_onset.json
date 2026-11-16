@@ -1,0 +1,192 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "Isolated radius-1 mouth at inward rate 0.25. Brane-side near-onset reaction to a prescribed displacement At\u00b2/2 in the finite-grid initial-value problem. No independent force-to-centroid measurement.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-release-onset --memory-gib 4 --log-directory _scratch/s11c/mouth_release_onset_01 -- python3 software/stage1_solver/tools/mouth_release_onset.py",
+  "sources_and_inputs": {
+    "software/stage1_solver/tools/mouth_release_onset.py": "09189f283d0b1e99309564cd25893ec16571a151a5220c650542e57da6e083e9",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_paired_acceleration.py": "42e94c2f007d335a233c31afda180e29e30ecfbb0d13b0790c0295c678fd672e",
+    "software/stage1_solver/tools/lateral_mouth_radius.py": "4f0d9fafd7bd4b71251ae87bf91d60d8c60be0ee01170d2c4c184eb160954b08",
+    "software/stage1_solver/tools/lateral_mouth_acceleration.py": "0f04c0edb17b6c17bc1dfd2081412017caed4dfd7c1ef6808fe84f751394219b",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "docs/_measurements/lateral_mouth_acceleration.json": "fcb66853f155ab6f688ae00170bfe88b22d53ca8c8589631b8ac07344f2928a4",
+    "_scratch/s11c/lateral_bath_e12_c4_01/fields/d0.npz": "02e4f3cc872938be7690f22be9d2d03f0c1e64298df637915ce02986316032ad",
+    "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz": "08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe",
+    "_scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz": "590774f5c77c030fbe68edb253b5edddd0bc8b636bf983f1947fae52d7389fb1",
+    "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd"
+  },
+  "started_utc": "2026-11-15T03:01:29.967282+00:00",
+  "guard_outcome_written_utc": "2026-11-15T03:01:42.028797+00:00",
+  "wall_seconds": 12.044642257969826,
+  "guard_exit": 0,
+  "worker_exit": 0,
+  "limits_verified": true,
+  "memory_max_bytes": 4294967296,
+  "peak_memory_bytes_sampled": 412762112,
+  "swap_max_bytes": 0,
+  "runtime_limit": "infinity",
+  "stdout_path": "_scratch/s11c/mouth_release_onset_01/stdout",
+  "stdout_sha256": "6084b0e708de98ebecfc572207435b160ca58d03b02a9895466b29d54f9e5b25",
+  "stdout_bytes": 3230,
+  "stderr_bytes": 0,
+  "stdout": [
+    "{\"input\": \"_scratch/s11c/lateral_bath_e12_c4_01/fields/d0.npz\", \"L\": 12.0, \"dx\": 0.25, \"dz\": 0.0625, \"rate\": 0.25, \"isolated_load\": 0.0, \"frozen_slope\": -0.050337734759375787, \"slope_parts\": [-0.05034075095181003, 3.016192434246812e-06], \"centered_slopes\": [-0.050337734704350434, -0.050337734745498075], \"short_time\": [{\"t\": 0.00025, \"incremental_load_per_A\": -1.572390868768746e-09, \"twice_load_over_t2\": -0.050316507800599874}, {\"t\": 0.0005, \"incremental_load_per_A\": -6.285836279041845e-09, \"twice_load_over_t2\": -0.05028669023233476}, {\"t\": 0.001, \"incremental_load_per_A\": -2.510084756081649e-08, \"twice_load_over_t2\": -0.05020169512163298}], \"extrapolated_slope\": -0.05034632536886499, \"max_step_change\": 1.1146566564601591e-15, \"archived_slow_reaction\": 0.00178184435058}",
+    "{\"input\": \"_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz\", \"L\": 24.0, \"dx\": 0.25, \"dz\": 0.0625, \"rate\": 0.25, \"isolated_load\": -1.734723475976807e-18, \"frozen_slope\": -0.05033803746713296, \"slope_parts\": [-0.05034105365135421, 3.01618422124863e-06], \"centered_slopes\": [-0.050338037412139824, -0.050338037453287465], \"short_time\": [{\"t\": 0.00025, \"incremental_load_per_A\": -1.5724003262108807e-09, \"twice_load_over_t2\": -0.05031681043874819}, {\"t\": 0.0005, \"incremental_load_per_A\": -6.285874100133218e-09, \"twice_load_over_t2\": -0.050286992801065744}, {\"t\": 0.001, \"incremental_load_per_A\": -2.5100998776325307e-08, \"twice_load_over_t2\": -0.05020199755265062}], \"extrapolated_slope\": -0.05034662807643063, \"max_step_change\": 1.1146558822191058e-15, \"archived_slow_reaction\": 0.00189173313771}",
+    "{\"input\": \"_scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz\", \"L\": 23.999999999999996, \"dx\": 0.1666666666666643, \"dz\": 0.041666666666666664, \"rate\": 0.24999999999999292, \"isolated_load\": 8.673617379884035e-19, \"frozen_slope\": -0.050699973891532205, \"slope_parts\": [-0.05070289832806626, 2.9244365340500335e-06], \"centered_slopes\": [-0.050699973866177195, -0.0506999738852765], \"short_time\": [{\"t\": 0.00025, \"incremental_load_per_A\": -1.5831200205884332e-09, \"twice_load_over_t2\": -0.05065984065882986}, {\"t\": 0.0005, \"incremental_load_per_A\": -6.323900188775826e-09, \"twice_load_over_t2\": -0.050591201510206615}, {\"t\": 0.001, \"incremental_load_per_A\": -2.5186824858961248e-08, \"twice_load_over_t2\": -0.0503736497179225}], \"extrapolated_slope\": -0.05072847980745311, \"max_step_change\": 1.7038334274774673e-14, \"archived_slow_reaction\": 0.00186796183684}",
+    "{\"input\": \"_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz\", \"L\": 48.0, \"dx\": 0.25, \"dz\": 0.0625, \"rate\": 0.24999999999999994, \"isolated_load\": 0.0, \"frozen_slope\": -0.05033807528733956, \"slope_parts\": [-0.05034109147053445, 3.016183194888493e-06], \"centered_slopes\": [-0.050338075232338186, -0.05033807527345113], \"short_time\": [{\"t\": 0.00025, \"incremental_load_per_A\": -1.5724015078205443e-09, \"twice_load_over_t2\": -0.050316848250257416}, {\"t\": 0.0005, \"incremental_load_per_A\": -6.285878825487694e-09, \"twice_load_over_t2\": -0.05028703060390156}, {\"t\": 0.001, \"incremental_load_per_A\": -2.5101017669139832e-08, \"twice_load_over_t2\": -0.05020203533827967}], \"extrapolated_slope\": -0.050346665896613275, \"max_step_change\": 1.1146557829574323e-15, \"archived_slow_reaction\": 0.00194689366385}"
+  ],
+  "grids": [
+    {
+      "input": "_scratch/s11c/lateral_bath_e12_c4_01/fields/d0.npz",
+      "L": 12.0,
+      "dx": 0.25,
+      "dz": 0.0625,
+      "rate": 0.25,
+      "isolated_load": 0.0,
+      "frozen_slope": -0.050337734759375787,
+      "slope_parts": [
+        -0.05034075095181003,
+        3.016192434246812e-06
+      ],
+      "centered_slopes": [
+        -0.050337734704350434,
+        -0.050337734745498075
+      ],
+      "short_time": [
+        {
+          "t": 0.00025,
+          "incremental_load_per_A": -1.572390868768746e-09,
+          "twice_load_over_t2": -0.050316507800599874
+        },
+        {
+          "t": 0.0005,
+          "incremental_load_per_A": -6.285836279041845e-09,
+          "twice_load_over_t2": -0.05028669023233476
+        },
+        {
+          "t": 0.001,
+          "incremental_load_per_A": -2.510084756081649e-08,
+          "twice_load_over_t2": -0.05020169512163298
+        }
+      ],
+      "extrapolated_slope": -0.05034632536886499,
+      "max_step_change": 1.1146566564601591e-15,
+      "archived_slow_reaction": 0.00178184435058
+    },
+    {
+      "input": "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz",
+      "L": 24.0,
+      "dx": 0.25,
+      "dz": 0.0625,
+      "rate": 0.25,
+      "isolated_load": -1.734723475976807e-18,
+      "frozen_slope": -0.05033803746713296,
+      "slope_parts": [
+        -0.05034105365135421,
+        3.01618422124863e-06
+      ],
+      "centered_slopes": [
+        -0.050338037412139824,
+        -0.050338037453287465
+      ],
+      "short_time": [
+        {
+          "t": 0.00025,
+          "incremental_load_per_A": -1.5724003262108807e-09,
+          "twice_load_over_t2": -0.05031681043874819
+        },
+        {
+          "t": 0.0005,
+          "incremental_load_per_A": -6.285874100133218e-09,
+          "twice_load_over_t2": -0.050286992801065744
+        },
+        {
+          "t": 0.001,
+          "incremental_load_per_A": -2.5100998776325307e-08,
+          "twice_load_over_t2": -0.05020199755265062
+        }
+      ],
+      "extrapolated_slope": -0.05034662807643063,
+      "max_step_change": 1.1146558822191058e-15,
+      "archived_slow_reaction": 0.00189173313771
+    },
+    {
+      "input": "_scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz",
+      "L": 23.999999999999996,
+      "dx": 0.1666666666666643,
+      "dz": 0.041666666666666664,
+      "rate": 0.24999999999999292,
+      "isolated_load": 8.673617379884035e-19,
+      "frozen_slope": -0.050699973891532205,
+      "slope_parts": [
+        -0.05070289832806626,
+        2.9244365340500335e-06
+      ],
+      "centered_slopes": [
+        -0.050699973866177195,
+        -0.0506999738852765
+      ],
+      "short_time": [
+        {
+          "t": 0.00025,
+          "incremental_load_per_A": -1.5831200205884332e-09,
+          "twice_load_over_t2": -0.05065984065882986
+        },
+        {
+          "t": 0.0005,
+          "incremental_load_per_A": -6.323900188775826e-09,
+          "twice_load_over_t2": -0.050591201510206615
+        },
+        {
+          "t": 0.001,
+          "incremental_load_per_A": -2.5186824858961248e-08,
+          "twice_load_over_t2": -0.0503736497179225
+        }
+      ],
+      "extrapolated_slope": -0.05072847980745311,
+      "max_step_change": 1.7038334274774673e-14,
+      "archived_slow_reaction": 0.00186796183684
+    },
+    {
+      "input": "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz",
+      "L": 48.0,
+      "dx": 0.25,
+      "dz": 0.0625,
+      "rate": 0.24999999999999994,
+      "isolated_load": 0.0,
+      "frozen_slope": -0.05033807528733956,
+      "slope_parts": [
+        -0.05034109147053445,
+        3.016183194888493e-06
+      ],
+      "centered_slopes": [
+        -0.050338075232338186,
+        -0.05033807527345113
+      ],
+      "short_time": [
+        {
+          "t": 0.00025,
+          "incremental_load_per_A": -1.5724015078205443e-09,
+          "twice_load_over_t2": -0.050316848250257416
+        },
+        {
+          "t": 0.0005,
+          "incremental_load_per_A": -6.285878825487694e-09,
+          "twice_load_over_t2": -0.05028703060390156
+        },
+        {
+          "t": 0.001,
+          "incremental_load_per_A": -2.5101017669139832e-08,
+          "twice_load_over_t2": -0.05020203533827967
+        }
+      ],
+      "extrapolated_slope": -0.050346665896613275,
+      "max_step_change": 1.1146557829574323e-15,
+      "archived_slow_reaction": 0.00194689366385
+    }
+  ]
+}

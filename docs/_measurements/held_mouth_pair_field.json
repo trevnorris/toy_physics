@@ -1,0 +1,166 @@
+{
+  "status": "Working numerical benchmark, unreviewed.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "units": "Dimensionless neutral carrier slab, m=hbar=1. Positive load is toward the companion. Two radius-1 mouths with independently fixed inward number rate 0.25. Held mouths and phase-fixed feed. The run does not implement an independently specified distributed S_leak.",
+  "sources": {
+    "software/stage1_solver/tools/held_mouth_pair_field.py": "a48dc26872a413f2872d727eb0e037fce7f284df9a9d1feaee2554ae0c70ea38",
+    "software/stage1_solver/tools/held_mouth_pair_load.py": "9916e73d850f87517f13a7469cc18b70dbb1a295653bedcfcdf9f18921e93f98",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "runs": [
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-mouth-pair --memory-gib 3 --log-directory _scratch/s11c/held_mouth_w16_h1_c4_01 -- python3 software/stage1_solver/tools/held_mouth_pair_field.py --width 16 --depth 1 --cells 4 --normal-cells 12 --output _scratch/s11c/held_mouth_w16_h1_c4_01/fields",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_gib": 3,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "limits_verified": true,
+      "stdout_sha256": "5ef8e0981af5ddf19367b1ed9bd846ec643ea99ac914a4a6d2a84be9af1b3380",
+      "stdout": [
+        "d=0 rate_per_mouth=0.25 steps=17 max_equation_residual=1.78e-12 max_link_rate_error=1.73e-14",
+        "d=3 rate_per_mouth=0.25 steps=16 max_equation_residual=2.45e-12 max_link_rate_error=5.93e-14",
+        "d=4 rate_per_mouth=0.25 steps=16 max_equation_residual=2.43e-12 max_link_rate_error=5.9e-14",
+        "d=6 rate_per_mouth=0.25 steps=16 max_equation_residual=2.42e-12 max_link_rate_error=5.86e-14"
+      ],
+      "fields": {
+        "_scratch/s11c/held_mouth_w16_h1_c4_01/fields/d0.npz": "e9a1b0aeb7f6fbf3f07b9172cae056e231735c8f803b1c539bda7cc1c0d23412",
+        "_scratch/s11c/held_mouth_w16_h1_c4_01/fields/d3.npz": "c9d9b45df7d4afc813c1d140de779bb7fba79b856be36c7f45b12be21d19cf37",
+        "_scratch/s11c/held_mouth_w16_h1_c4_01/fields/d4.npz": "d0649df0cd723fcc2fc4e66b583fde209e657c9103f6d214a70b31dd231de8a8",
+        "_scratch/s11c/held_mouth_w16_h1_c4_01/fields/d6.npz": "31f531959a70243695fcbce7ef2d5c59694b9b9179d319d1b7b05df54663564e"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-mouth-pair --memory-gib 3 --log-directory _scratch/s11c/held_mouth_w24_h1_c4_01 -- python3 software/stage1_solver/tools/held_mouth_pair_field.py --width 24 --depth 1 --cells 4 --normal-cells 12 --output _scratch/s11c/held_mouth_w24_h1_c4_01/fields",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_gib": 3,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "limits_verified": true,
+      "stdout_sha256": "f06eb45183c6b2129024ab65054c399710a03169f19e83d41bdbf7d9c8567e33",
+      "stdout": [
+        "d=0 rate_per_mouth=0.25 steps=17 max_equation_residual=1.78e-12 max_link_rate_error=1.73e-14",
+        "d=3 rate_per_mouth=0.25 steps=16 max_equation_residual=2.45e-12 max_link_rate_error=5.95e-14",
+        "d=4 rate_per_mouth=0.25 steps=16 max_equation_residual=2.43e-12 max_link_rate_error=5.93e-14",
+        "d=6 rate_per_mouth=0.25 steps=16 max_equation_residual=2.42e-12 max_link_rate_error=5.88e-14"
+      ],
+      "fields": {
+        "_scratch/s11c/held_mouth_w24_h1_c4_01/fields/d0.npz": "b23df9f0af2bd47f0635c23376e6b305c8c86fc9a9581ed8b5fa33af3009d151",
+        "_scratch/s11c/held_mouth_w24_h1_c4_01/fields/d3.npz": "e4edb1adef253e00476a830b13878a05c1d3a09ff61011255e84375798700f46",
+        "_scratch/s11c/held_mouth_w24_h1_c4_01/fields/d4.npz": "d01b1aea511242bd59144447f753321f0885c58c0086d483c355233b928011ef",
+        "_scratch/s11c/held_mouth_w24_h1_c4_01/fields/d6.npz": "6f018e8c5b8292739b08cbee3d8e758879b28a3f095f22b75f2b9eb6826568ad"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-mouth-pair --memory-gib 4 --log-directory _scratch/s11c/held_mouth_w16_h1_c6_01 -- python3 software/stage1_solver/tools/held_mouth_pair_field.py --width 16 --depth 1 --cells 6 --normal-cells 24 --output _scratch/s11c/held_mouth_w16_h1_c6_01/fields",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "limits_verified": true,
+      "stdout_sha256": "13d9b7fd4d0c78688c595e8a5a48329186bee3972e8b4a33fb609db6e5e3f118",
+      "stdout": [
+        "d=0 rate_per_mouth=0.25 steps=17 max_equation_residual=4.27e-12 max_link_rate_error=1.81e-14",
+        "d=3 rate_per_mouth=0.25 steps=16 max_equation_residual=5.88e-12 max_link_rate_error=5.54e-14",
+        "d=4 rate_per_mouth=0.25 steps=16 max_equation_residual=5.83e-12 max_link_rate_error=5.45e-14",
+        "d=6 rate_per_mouth=0.25 steps=16 max_equation_residual=5.85e-12 max_link_rate_error=5.43e-14"
+      ],
+      "fields": {
+        "_scratch/s11c/held_mouth_w16_h1_c6_01/fields/d0.npz": "7b4277e36c6482ba71c9b1050012911068543f16032109f4754ad7a735a6b279",
+        "_scratch/s11c/held_mouth_w16_h1_c6_01/fields/d3.npz": "3d9c4de9386b7a5db607959c8cf821609f7cca6c23766acbaaf2a72de6f514bf",
+        "_scratch/s11c/held_mouth_w16_h1_c6_01/fields/d4.npz": "cc76d0367977d21482836def0077fe5f0454cd6f40959eb29cd50d0b17861258",
+        "_scratch/s11c/held_mouth_w16_h1_c6_01/fields/d6.npz": "74896f66d0e331fbb8d18ebdfa15be14dc0eef1f44a449dfe9c87b13f1731e94"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-mouth-pair --memory-gib 6 --log-directory _scratch/s11c/held_mouth_w24_h1_c6_01 -- python3 software/stage1_solver/tools/held_mouth_pair_field.py --width 24 --depth 1 --cells 6 --normal-cells 24 --output _scratch/s11c/held_mouth_w24_h1_c6_01/fields",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_gib": 6,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "limits_verified": true,
+      "stdout_sha256": "35c0114df7370fec1059445e6eca5704806f269764bd6248baca86ec0da2573b",
+      "stdout": [
+        "d=0 rate_per_mouth=0.25 steps=17 max_equation_residual=4.29e-12 max_link_rate_error=1.87e-14",
+        "d=3 rate_per_mouth=0.25 steps=16 max_equation_residual=5.86e-12 max_link_rate_error=5.54e-14",
+        "d=4 rate_per_mouth=0.25 steps=16 max_equation_residual=5.81e-12 max_link_rate_error=5.46e-14",
+        "d=6 rate_per_mouth=0.25 steps=16 max_equation_residual=5.8e-12 max_link_rate_error=5.45e-14"
+      ],
+      "fields": {
+        "_scratch/s11c/held_mouth_w24_h1_c6_01/fields/d0.npz": "6bda871ef15d928f5a1532a940f6efea1a3b522a15ad2664395392e4880c1232",
+        "_scratch/s11c/held_mouth_w24_h1_c6_01/fields/d3.npz": "dbdce48925abd0f20154c199cd907b30c7f59f2d45909354ac1c87a83a5553d3",
+        "_scratch/s11c/held_mouth_w24_h1_c6_01/fields/d4.npz": "8d2e39a9b0fe96d5559195ab46e728e882edaa5003f01cb28ca4b669ef76d6d8",
+        "_scratch/s11c/held_mouth_w24_h1_c6_01/fields/d6.npz": "393608b18fb620b2fa5677a4e168173e202de0ebceedfc7d25ce1a3660d65612"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-mouth-pair --memory-gib 4 --log-directory _scratch/s11c/held_mouth_w24_h2_c4_01 -- python3 software/stage1_solver/tools/held_mouth_pair_field.py --width 24 --depth 2 --cells 4 --normal-cells 12 --output _scratch/s11c/held_mouth_w24_h2_c4_01/fields",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "limits_verified": true,
+      "stdout_sha256": "318873b7311d7e2e360a14ba3dccfad4ab486ae247c44b3e1524819c86899b0d",
+      "stdout": [
+        "d=0 rate_per_mouth=0.25 steps=17 max_equation_residual=2.29e-12 max_link_rate_error=2.48e-14",
+        "d=3 rate_per_mouth=0.25 steps=16 max_equation_residual=3.38e-12 max_link_rate_error=8.52e-14",
+        "d=4 rate_per_mouth=0.25 steps=16 max_equation_residual=3.25e-12 max_link_rate_error=8.09e-14",
+        "d=6 rate_per_mouth=0.25 steps=16 max_equation_residual=3.22e-12 max_link_rate_error=7.99e-14"
+      ],
+      "fields": {
+        "_scratch/s11c/held_mouth_w24_h2_c4_01/fields/d0.npz": "3a331e9e74257141063d9f1515d4e5f7f2b331b165206e2efb8e9ade38dfe2d2",
+        "_scratch/s11c/held_mouth_w24_h2_c4_01/fields/d3.npz": "63824dc79a92634b721634ff98a174c41536f5be656de991f4f0345f32001d6a",
+        "_scratch/s11c/held_mouth_w24_h2_c4_01/fields/d4.npz": "2ce459ff9d1e9ca6c636757cebf8a50fb04c9e4153caceae94d13100b2d58cec",
+        "_scratch/s11c/held_mouth_w24_h2_c4_01/fields/d6.npz": "91005162c246789431815d97f72178de419fa535c8c5d600f7c6595e753617a6"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-mouth-load --memory-gib 3 --log-directory _scratch/s11c/held_mouth_pair_load01 -- python3 software/stage1_solver/tools/held_mouth_pair_load.py _scratch/s11c/held_mouth_w16_h1_c4_01/fields _scratch/s11c/held_mouth_w24_h1_c4_01/fields _scratch/s11c/held_mouth_w16_h1_c6_01/fields _scratch/s11c/held_mouth_w24_h1_c6_01/fields _scratch/s11c/held_mouth_w24_h2_c4_01/fields",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_gib": 3,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "limits_verified": true,
+      "stdout_sha256": "4bb5fa0cfe45637b026cdf1efa3e37b0a41d9c2fb3dbd28e6dcc6cbd3efc9302",
+      "stdout": [
+        "width=16 depth=1 dx=0.25 dz=0.0833333333333 alone_load_x=-2.21956753381e-19 alone_rate=0.25",
+        "  d=3 carried=7.28187857486e-05 stress=9.5992408079e-10 total=7.28197456727e-05 carried_fd=7.30925913742e-05 stress_fd=-7.09429667752e-08 total_fd=7.30216484074e-05 d2_total=0.000655377711054",
+        "  d=4 carried=1.09592136479e-05 stress=2.47947660292e-10 total=1.09594615955e-05 carried_fd=1.09996034608e-05 stress_fd=-9.39772244023e-09 total_fd=1.09902057383e-05 d2_total=0.000175351385528",
+        "  d=6 carried=3.07314808407e-07 stress=8.60734143488e-12 total=3.07323415748e-07 carried_fd=3.0844756958e-07 stress_fd=-2.45779810899e-10 total_fd=3.08201789769e-07 d2_total=1.10636429669e-05",
+        "  F6_over_F3=0.00422033080327",
+        "width=24 depth=1 dx=0.25 dz=0.0833333333333 alone_load_x=3.83639560018e-19 alone_rate=0.25",
+        "  d=3 carried=7.28187881763e-05 stress=9.59924151305e-10 total=7.28197481005e-05 carried_fd=7.30925938108e-05 stress_fd=-7.09429754627e-08 total_fd=7.30216508354e-05 d2_total=0.000655377732904",
+        "  d=4 carried=1.09592262485e-05 stress=2.47948025275e-10 total=1.09594741965e-05 carried_fd=1.09996161079e-05 stress_fd=-9.39773222162e-09 total_fd=1.09902183757e-05 d2_total=0.000175351587145",
+        "  d=6 carried=3.07660854224e-07 stress=8.61735817715e-12 total=3.07669471582e-07 carried_fd=3.08794891467e-07 stress_fd=-2.4604975414e-10 total_fd=3.08548841713e-07 d2_total=1.10761009769e-05",
+        "  F6_over_F3=0.00422508288765",
+        "width=16 depth=1 dx=0.166666666667 dz=0.0416666666667 alone_load_x=2.63521361368e-21 alone_rate=0.25",
+        "  d=3 carried=7.18119625798e-05 stress=9.71890359387e-10 total=7.18129344702e-05 carried_fd=7.18830794591e-05 stress_fd=-4.06815909477e-09 total_fd=7.18790113e-05 d2_total=0.000646316410232",
+        "  d=4 carried=1.07390022026e-05 stress=2.4483134465e-10 total=1.07392470339e-05 carried_fd=1.07495323063e-05 stress_fd=-4.1976670751e-10 total_fd=1.07491125396e-05 d2_total=0.000171827952543",
+        "  d=6 carried=2.97491250035e-07 stress=8.32284178015e-12 total=2.97499572876e-07 carried_fd=2.97783328258e-07 stress_fd=-8.36702252068e-12 total_fd=2.97774961236e-07 d2_total=1.07099846235e-05",
+        "  F6_over_F3=0.00414270179977",
+        "width=24 depth=1 dx=0.166666666667 dz=0.0416666666667 alone_load_x=-2.0677642822e-18 alone_rate=0.25",
+        "  d=3 carried=7.18119648306e-05 stress=9.71890424587e-10 total=7.1812936721e-05 carried_fd=7.18830817121e-05 stress_fd=-4.06816184081e-09 total_fd=7.18790135503e-05 d2_total=0.000646316430489",
+        "  d=4 carried=1.07390139568e-05 stress=2.44831684167e-10 total=1.07392587885e-05 carried_fd=1.07495440721e-05 stress_fd=-4.19758047004e-10 total_fd=1.0749124314e-05 d2_total=0.000171828140616",
+        "  d=6 carried=2.9781807959e-07 stress=8.33227746017e-12 total=2.97826411868e-07 carried_fd=2.98110478935e-07 stress_fd=-8.37785837028e-12 total_fd=2.98102101077e-07 d2_total=1.07217508272e-05",
+        "  F6_over_F3=0.00414725292498",
+        "width=24 depth=2 dx=0.25 dz=0.0833333333333 alone_load_x=-1.52548312525e-19 alone_rate=0.25",
+        "  d=3 carried=0.000194288825088 stress=4.36905747687e-09 total=0.000194293194146 carried_fd=0.00019449723162 stress_fd=-1.89990218362e-07 total_fd=0.000194307241402 d2_total=0.00174863874731",
+        "  d=4 carried=5.97739824938e-05 stress=1.74299881717e-09 total=5.97757254926e-05 carried_fd=5.98219641441e-05 stress_fd=-5.52677258247e-08 total_fd=5.97666964182e-05 d2_total=0.000956411607881",
+        "  d=6 carried=7.5677851461e-06 stress=2.39689581398e-10 total=7.56802483569e-06 carried_fd=7.57336637869e-06 stress_fd=-6.88211032958e-09 total_fd=7.56648426836e-06 d2_total=0.000272448894085",
+        "  F6_over_F3=0.0389515693999"
+      ]
+    }
+  ]
+}

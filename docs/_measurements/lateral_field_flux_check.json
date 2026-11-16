@@ -1,0 +1,26 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "Reconstruction of the held-mouth momentum flux from archived complex carrier fields with second-order differences. Same numerical solutions as the original benchmark.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "sources": {
+    "software/stage1_solver/tools/lateral_reservoir_flux_check.py": "f63f80434864d43594f67baa7acb4d2f05df9b50e90074b8291d131930ced3cb",
+    "docs/_measurements/lateral_reservoir_pair.json": "3cffb25b8177523be5884b72b8dbb694e3ebc1c67642c88fcb619626a43d58ec",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "command": "python3 scripts/s11c_guarded_run.py --pool lateral-flux-check --memory-gib 2 --log-directory _scratch/s11c/lateral_field_flux_check01 -- python3 software/stage1_solver/tools/lateral_reservoir_flux_check.py",
+  "guard_exit": 0,
+  "worker_exit": 0,
+  "memory_gib": 2,
+  "swap_bytes": 0,
+  "limits_verified": true,
+  "deadline": null,
+  "stdout_sha256": "3d94b402082af19323df4c34edbf5d7d3c1f28919729d8ec0bd872ca01467e50",
+  "stdout": [
+    "alone=4.06575814682e-20 ideal_d2F=0.00497359197162",
+    "d=3 field_flux=0.000560930347209 scaled=0.00504837312488 ideal=0.00055262133018",
+    "d=4 field_flux=0.0003121370752 scaled=0.0049941932032 ideal=0.000310849498226",
+    "d=6 field_flux=0.000137962965815 scaled=0.00496666676935 ideal=0.000138155332545",
+    "d=8 field_flux=7.73381159218e-05 scaled=0.00494963941899 ideal=7.77123745566e-05",
+    "F6/F3=0.245953827425 F8/F4=0.247769720634"
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "status": "Working, unreviewed",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "scope": "Paired-minus-isolated force on a held centered radius-one mouth at 8 and 16 radii, with two inward rates of 0.25. Compare with the measured companion-only incident momentum rate on the same grid and test sensitivity to the reservoir and mesh.",
+  "sources": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/incident_flow_falloff.py": "f0e289efa985128f3174b59bd1554b2c16a618b13eaf68d79f977c6c3c2572a9",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/lateral_target_rate.py": "03b68b5d48bb81e5fb24256adcc5dc8aae6582f2bad428b861755b5aad261a6b",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "software/stage1_solver/tools/held_force_incident_flow.py": "b92cc256e03198513418899ab1b300855a1dc145412f6a0c655c651d40e8851a"
+  },
+  "archive_manifests": {
+    "docs/_measurements/incident_flow_falloff.json": "fd8ee412dfa8aec52953b88d5f4d186e6af4148857cfa586c6e7ce360b0a9995",
+    "docs/_measurements/lateral_reservoir_pair.json": "3cffb25b8177523be5884b72b8dbb694e3ebc1c67642c88fcb619626a43d58ec"
+  },
+  "runs": [
+    {
+      "name": "L48C4_d8",
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-force-incident --memory-gib 3 --log-directory _scratch/s11c/held_force_incident01/L48C4_d8 -- python3 software/stage1_solver/tools/held_force_incident_flow.py measure --grid 48 4 16 --distance 8 --baseline _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz 7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd --source _scratch/s11c/lateral_target_rate_e48_c4_01/fields/source_d8.npz 24e6b3fda1e9345acbedbd412bd28ebb4e154963166cb768fb9da0c99d51f9d0 --pair _scratch/s11c/lateral_bath_e48_c4_01/fields/d8.npz 741fbc19a3e6fab141d6ba218fef3858974d9928fba6a890297051cda1773bd6",
+      "input_sha256": {
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd",
+        "_scratch/s11c/lateral_target_rate_e48_c4_01/fields/source_d8.npz": "24e6b3fda1e9345acbedbd412bd28ebb4e154963166cb768fb9da0c99d51f9d0",
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d8.npz": "741fbc19a3e6fab141d6ba218fef3858974d9928fba6a890297051cda1773bd6"
+      },
+      "output_fields_sha256": {},
+      "started_utc": "2026-11-16T00:52:19.053760+00:00",
+      "guard_outcome_written_utc": "2026-11-16T00:52:20.276784+00:00",
+      "wall_seconds": 0.8692289469763637,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 3221225472,
+      "peak_memory_bytes_sampled": 81121280,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/held_force_incident01/L48C4_d8/stdout",
+      "stdout_bytes": 409,
+      "stdout_sha256": "ed965ac096fc50338e8e22213934668e4220e579d5d2d60cc0e55769ae44051e",
+      "stdout": [
+        "alone_carried=-0 alone_stress=-1.29172524456e-20 alone_direct=3.87941089842e-19",
+        "{\"grid\": [48, 4, 16], \"d\": 8, \"incident_speed\": 0.0003101386268734443, \"incident_momentum_rate\": 7.753465671836107e-05, \"carried\": 7.753165230262905e-05, \"stress\": 2.793839414957196e-09, \"force\": 7.753444614204401e-05, \"coefficient\": 0.9999972841007367, \"direct\": 7.749715957612573e-05, \"direct_coefficient\": 0.9995163821725356}"
+      ]
+    },
+    {
+      "name": "L48C4_d16",
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-force-incident --memory-gib 3 --log-directory _scratch/s11c/held_force_incident01/L48C4_d16 -- python3 software/stage1_solver/tools/held_force_incident_flow.py measure --grid 48 4 16 --distance 16 --baseline _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz 7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd --source _scratch/s11c/incident_flow_falloff01/L48C4_d16.npz a3091076f291d5c03df1ccd06361b12fac578a1473509d73ba11b5b74c8bd82f --output _scratch/s11c/held_force_incident01/L48C4_d16.npz",
+      "input_sha256": {
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd",
+        "_scratch/s11c/incident_flow_falloff01/L48C4_d16.npz": "a3091076f291d5c03df1ccd06361b12fac578a1473509d73ba11b5b74c8bd82f"
+      },
+      "output_fields_sha256": {
+        "_scratch/s11c/held_force_incident01/L48C4_d16.npz": "43df2709016d342acc53b07641ba3de7fc95e97fa4f35c504a981f2634d181a5"
+      },
+      "started_utc": "2026-11-16T00:52:19.043174+00:00",
+      "guard_outcome_written_utc": "2026-11-16T00:52:33.709607+00:00",
+      "wall_seconds": 14.610781290801242,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 3221225472,
+      "peak_memory_bytes_sampled": 244449280,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/held_force_incident01/L48C4_d16/stdout",
+      "stdout_bytes": 491,
+      "stdout_sha256": "b881c229145edb22f20c52860d6f727ce6d40048948073968bafe499f6953eeb",
+      "stdout": [
+        "alone_carried=-0 alone_stress=-1.29172524456e-20 alone_direct=3.87941089842e-19",
+        "  field=L48C4_d16 steps=17 residual=3.883e-12 bath=0.500000000001 rates=0.25,0.25",
+        "{\"grid\": [48, 4, 16], \"d\": 16, \"incident_speed\": 7.566181957008701e-05, \"incident_momentum_rate\": 1.891545489252175e-05, \"carried\": 1.8914589160408044e-05, \"stress\": 6.830110840171389e-10, \"force\": 1.891527217149206e-05, \"coefficient\": 0.9999903401197208, \"direct\": 1.8906163766056e-05, \"direct_coefficient\": 0.9995088076644975}"
+      ]
+    },
+    {
+      "name": "L96C4_d8",
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-force-incident --memory-gib 5 --log-directory _scratch/s11c/held_force_incident01/L96C4_d8 -- python3 software/stage1_solver/tools/held_force_incident_flow.py measure --grid 96 4 16 --distance 8 --baseline _scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz 1f2b5c36f12fb50cd56758cf3dfa11a45f10e7adf425380cf221b4fe276af20d --source _scratch/s11c/incident_flow_falloff01/L96C4_d8.npz 413d302c0bf6896efcd0aef9b1e6f5e2bbbba14b001cfd6795dfec662fc32de3 --output _scratch/s11c/held_force_incident01/L96C4_d8.npz",
+      "input_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz": "1f2b5c36f12fb50cd56758cf3dfa11a45f10e7adf425380cf221b4fe276af20d",
+        "_scratch/s11c/incident_flow_falloff01/L96C4_d8.npz": "413d302c0bf6896efcd0aef9b1e6f5e2bbbba14b001cfd6795dfec662fc32de3"
+      },
+      "output_fields_sha256": {
+        "_scratch/s11c/held_force_incident01/L96C4_d8.npz": "2fee906779e8be0cbc8b35d584ff373f178ea960f34da198218a4e9033d38295"
+      },
+      "started_utc": "2026-11-16T00:52:19.051072+00:00",
+      "guard_outcome_written_utc": "2026-11-16T00:54:02.403471+00:00",
+      "wall_seconds": 103.19309882703237,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 5368709120,
+      "peak_memory_bytes_sampled": 787087360,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/held_force_incident01/L96C4_d8/stdout",
+      "stdout_bytes": 505,
+      "stdout_sha256": "48efbfde7bbcf98847eaf70349802ad6ac9f4cc9e96a856cfeecfdc3fc0df429",
+      "stdout": [
+        "alone_carried=1.73472347598e-18 alone_stress=4.87043944671e-21 alone_direct=-3.72694496792e-19",
+        "  field=L96C4_d8 steps=17 residual=4.936e-12 bath=0.500000000001 rates=0.25,0.25",
+        "{\"grid\": [96, 4, 16], \"d\": 8, \"incident_speed\": 0.000311033694389222, \"incident_momentum_rate\": 7.775842359730549e-05, \"carried\": 7.775540946634851e-05, \"stress\": 2.8019038741168453e-09, \"force\": 7.775821137022263e-05, \"coefficient\": 0.9999972706869167, \"direct\": 7.772081706433306e-05, \"direct_coefficient\": 0.9995163670862569}"
+      ]
+    },
+    {
+      "name": "L96C4_d16",
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-force-incident --memory-gib 5 --log-directory _scratch/s11c/held_force_incident01/L96C4_d16 -- python3 software/stage1_solver/tools/held_force_incident_flow.py measure --grid 96 4 16 --distance 16 --baseline _scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz 1f2b5c36f12fb50cd56758cf3dfa11a45f10e7adf425380cf221b4fe276af20d --source _scratch/s11c/incident_flow_falloff01/L96C4_d16.npz 3b00d23d0bd9db9497d2dc39121731730c77ff8f29feda5510104bbf8900db99 --output _scratch/s11c/held_force_incident01/L96C4_d16.npz",
+      "input_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz": "1f2b5c36f12fb50cd56758cf3dfa11a45f10e7adf425380cf221b4fe276af20d",
+        "_scratch/s11c/incident_flow_falloff01/L96C4_d16.npz": "3b00d23d0bd9db9497d2dc39121731730c77ff8f29feda5510104bbf8900db99"
+      },
+      "output_fields_sha256": {
+        "_scratch/s11c/held_force_incident01/L96C4_d16.npz": "e3fb5e8683c0770853ff961423197ca10d3fca9d6594c2746233e21b37f49719"
+      },
+      "started_utc": "2026-11-16T00:52:19.051646+00:00",
+      "guard_outcome_written_utc": "2026-11-16T00:54:36.172216+00:00",
+      "wall_seconds": 136.87460215692408,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 5368709120,
+      "peak_memory_bytes_sampled": 787091456,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/held_force_incident01/L96C4_d16/stdout",
+      "stdout_bytes": 509,
+      "stdout_sha256": "679a6c4ea3453908ad1085aa22ed0e0ac68a833cbaa341a1a0bb8905ac886bd0",
+      "stdout": [
+        "alone_carried=1.73472347598e-18 alone_stress=4.87043944671e-21 alone_direct=-3.72694496792e-19",
+        "  field=L96C4_d16 steps=17 residual=4.147e-12 bath=0.500000000001 rates=0.25,0.25",
+        "{\"grid\": [96, 4, 16], \"d\": 16, \"incident_speed\": 7.747661820662053e-05, \"incident_momentum_rate\": 1.9369154551655128e-05, \"carried\": 1.936826781085907e-05, \"stress\": 6.99391841476478e-10, \"force\": 1.9368967202700544e-05, \"coefficient\": 0.9999903274583264, \"direct\": 1.9359640270697005e-05, \"direct_coefficient\": 0.9995087921399589}"
+      ]
+    },
+    {
+      "name": "L96C6_d8",
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-force-incident --memory-gib 10 --log-directory _scratch/s11c/held_force_incident01/L96C6_d8 -- python3 software/stage1_solver/tools/held_force_incident_flow.py measure --grid 96 6 24 --distance 8 --baseline _scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz 24b0e09643528ec54bdd1c4672f81216d992ed4991666d7a81564aa9ce8a5f53 --source _scratch/s11c/incident_flow_falloff01/L96C6_d8.npz 71c1e239d6718080607bb15a72594576c606d582447f7d9474a1833f8a2b5eec --output _scratch/s11c/held_force_incident01/L96C6_d8.npz",
+      "input_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz": "24b0e09643528ec54bdd1c4672f81216d992ed4991666d7a81564aa9ce8a5f53",
+        "_scratch/s11c/incident_flow_falloff01/L96C6_d8.npz": "71c1e239d6718080607bb15a72594576c606d582447f7d9474a1833f8a2b5eec"
+      },
+      "output_fields_sha256": {
+        "_scratch/s11c/held_force_incident01/L96C6_d8.npz": "4813423c05b73bbec71606fbcca12d88c65b98b0a62db889fea963956ae2b474"
+      },
+      "started_utc": "2026-11-16T00:52:19.051046+00:00",
+      "guard_outcome_written_utc": "2026-11-16T01:00:34.002732+00:00",
+      "wall_seconds": 494.8510241890326,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 10737418240,
+      "peak_memory_bytes_sampled": 2395123712,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/held_force_incident01/L96C6_d8/stdout",
+      "stdout_bytes": 479,
+      "stdout_sha256": "e7124755689eed453c30b59ff7e088bed8277c9c69cd9a2c0a00d54ef8a33463",
+      "stdout": [
+        "alone_carried=-0 alone_stress=-8.25857123573e-21 alone_direct=-5.42101086243e-20",
+        "  field=L96C6_d8 steps=17 residual=6.268e-12 bath=0.5 rates=0.25,0.25",
+        "{\"grid\": [96, 6, 24], \"d\": 8, \"incident_speed\": 0.0003108561952367641, \"incident_momentum_rate\": 7.771404880919102e-05, \"carried\": 7.771169615771595e-05, \"stress\": 2.7767512042398093e-09, \"force\": 7.771447290892019e-05, \"coefficient\": 1.0000054571822685, \"direct\": 7.77068228849836e-05, \"direct_coefficient\": 0.999907019074181}"
+      ]
+    },
+    {
+      "name": "L96C6_d16",
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-force-incident --memory-gib 10 --log-directory _scratch/s11c/held_force_incident01/L96C6_d16 -- python3 software/stage1_solver/tools/held_force_incident_flow.py measure --grid 96 6 24 --distance 16 --baseline _scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz 24b0e09643528ec54bdd1c4672f81216d992ed4991666d7a81564aa9ce8a5f53 --source _scratch/s11c/incident_flow_falloff01/L96C6_d16.npz 3089e36a74b036bd26221d671e2ad2a17b67d526c823809a1e0e1f2a6af214a8 --output _scratch/s11c/held_force_incident01/L96C6_d16.npz",
+      "input_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz": "24b0e09643528ec54bdd1c4672f81216d992ed4991666d7a81564aa9ce8a5f53",
+        "_scratch/s11c/incident_flow_falloff01/L96C6_d16.npz": "3089e36a74b036bd26221d671e2ad2a17b67d526c823809a1e0e1f2a6af214a8"
+      },
+      "output_fields_sha256": {
+        "_scratch/s11c/held_force_incident01/L96C6_d16.npz": "d238340bc950f36baff5266654d1985cd5018e7f9d798cbb4f912ff605f237b8"
+      },
+      "started_utc": "2026-11-16T00:52:19.041518+00:00",
+      "guard_outcome_written_utc": "2026-11-16T01:01:07.458762+00:00",
+      "wall_seconds": 528.3961404010188,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 10737418240,
+      "peak_memory_bytes_sampled": 2395148288,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/held_force_incident01/L96C6_d16/stdout",
+      "stdout_bytes": 482,
+      "stdout_sha256": "49f167f56b34a0b1acab978ed994f851b0e331f9d1d99ddaeab7ca9e0e0cbb89",
+      "stdout": [
+        "alone_carried=-0 alone_stress=-8.25857123573e-21 alone_direct=-5.42101086243e-20",
+        "  field=L96C6_d16 steps=17 residual=5.258e-12 bath=0.5 rates=0.25,0.25",
+        "{\"grid\": [96, 6, 24], \"d\": 16, \"incident_speed\": 7.74653038221349e-05, \"incident_momentum_rate\": 1.936632595553372e-05, \"carried\": 1.9365607109146296e-05, \"stress\": 6.93563002555706e-10, \"force\": 1.936630067214885e-05, \"coefficient\": 0.9999986944666258, \"direct\": 1.9364405048611418e-05, \"direct_coefficient\": 0.9999008120111831}"
+      ]
+    },
+    {
+      "name": "compare",
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-force-incident --memory-gib 1 --log-directory _scratch/s11c/held_force_incident01/compare -- python3 software/stage1_solver/tools/held_force_incident_flow.py compare _scratch/s11c/held_force_incident01/L48C4_d8/stdout _scratch/s11c/held_force_incident01/L48C4_d16/stdout _scratch/s11c/held_force_incident01/L96C4_d8/stdout _scratch/s11c/held_force_incident01/L96C4_d16/stdout _scratch/s11c/held_force_incident01/L96C6_d8/stdout _scratch/s11c/held_force_incident01/L96C6_d16/stdout",
+      "input_sha256": {
+        "_scratch/s11c/held_force_incident01/L48C4_d8/stdout": "ed965ac096fc50338e8e22213934668e4220e579d5d2d60cc0e55769ae44051e",
+        "_scratch/s11c/held_force_incident01/L48C4_d16/stdout": "b881c229145edb22f20c52860d6f727ce6d40048948073968bafe499f6953eeb",
+        "_scratch/s11c/held_force_incident01/L96C4_d8/stdout": "48efbfde7bbcf98847eaf70349802ad6ac9f4cc9e96a856cfeecfdc3fc0df429",
+        "_scratch/s11c/held_force_incident01/L96C4_d16/stdout": "679a6c4ea3453908ad1085aa22ed0e0ac68a833cbaa341a1a0bb8905ac886bd0",
+        "_scratch/s11c/held_force_incident01/L96C6_d8/stdout": "e7124755689eed453c30b59ff7e088bed8277c9c69cd9a2c0a00d54ef8a33463",
+        "_scratch/s11c/held_force_incident01/L96C6_d16/stdout": "49f167f56b34a0b1acab978ed994f851b0e331f9d1d99ddaeab7ca9e0e0cbb89",
+        "docs/_measurements/incident_flow_falloff.json": "fd8ee412dfa8aec52953b88d5f4d186e6af4148857cfa586c6e7ce360b0a9995"
+      },
+      "output_fields_sha256": {},
+      "started_utc": "2026-11-16T01:01:07.496669+00:00",
+      "guard_outcome_written_utc": "2026-11-16T01:01:07.848946+00:00",
+      "wall_seconds": 0.33798858104273677,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 1073741824,
+      "peak_memory_bytes_sampled": 45142016,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/held_force_incident01/compare/stdout",
+      "stdout_bytes": 921,
+      "stdout_sha256": "82567501bf2a4f418bd1b2e57f37d09d642572cbddc53516497c8fb5ecb29145",
+      "stdout": [
+        "L=48 c=4 force16_over_8=0.243959596188 speed16_over_8=0.243961290255 K8=0.999997284101 K16=0.99999034012 K_relative_change_ppm=-6.94399988 direct16_over_8=0.243959441475 direct_K_relative_change_ppm=-7.57817298 direct_minus_primary_at8_percent=-0.0480903234 direct_minus_primary_at16_percent=-0.0481537107",
+        "L=96 c=4 force16_over_8=0.249092241982 speed16_over_8=0.249093971503 K8=0.999997270687 K16=0.999990327458 K_relative_change_ppm=-6.94324754 direct16_over_8=0.249092083716 direct_K_relative_change_ppm=-7.57861156 direct_minus_primary_at8_percent=-0.0480904913 direct_minus_primary_at16_percent=-0.0481539976",
+        "L=96 c=6 force16_over_8=0.249198121627 speed16_over_8=0.249199806885 K8=1.00000545718 K16=0.999998694467 K_relative_change_ppm=-6.76267874 direct16_over_8=0.249198259943 direct_K_relative_change_ppm=-6.20764019 direct_minus_primary_at8_percent=-0.00984375709 direct_minus_primary_at16_percent=-0.00978825832"
+      ]
+    }
+  ]
+}

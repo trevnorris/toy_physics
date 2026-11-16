@@ -1,0 +1,226 @@
+Curved sleeve, one throat, 0PN, zero sideways flow. Unreviewed working calculation.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c
+
+For the conditional test use pure material relaxation of the real ordered fraction,
+D_t chi = -M mu_chi, with positive constant M and zero relative order current.
+This is the entire local signed conversion in the balance. No other source is
+added in the pure-relaxation result. The archived state is used for its prescribed
+shape only. No positive-throughflow baseline or physical time evolution was computed.
+
+Use signed distance d along the outward normal and the decreasing initial planar
+profile q=1/(1+exp(d/ell)). The offset principal scale factors are (1+d*k_i),
+positive on the chosen local chart. The volume per reference surface area scales
+with J=(1+d*k_ang)^2*(1+d*k_mer). The sign convention H=div N gives H=J'/J.
+q refers to the order contour. The actual sleeve velocity is an independent readout
+unless a physical law identifies the contour with the sleeve. The local work
+check measures reversible order force times relative speed and has power density
+units. It gives the positive magnitude of the pure relaxation energy-loss term.
+The comparison source lam*q*(1-q)*(1-2*q)^2 is a rate test, not proposed kinetics.
+
+SymPy varies the profile energy with the signed-distance measure. Wolfram applies
+the Laplacian on parallel surfaces to the explicit transition field. The shape
+curvature at the archived midpoint is obtained from principal curvatures in SymPy
+and from a radial level-set divergence in Wolfram. Both use only the initial shape.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool sleeve-loss-response --memory-gib 2 --log-directory _scratch/s11c/sleeve_loss_response_sympy01 -- python3 software/stage1_solver/tools/sleeve_loss_response.py
+SHA256 d676ebfdda1e73f74701ed510252b23c2bcbf02423eb2e8cec1dd1450e46b86f  software/stage1_solver/tools/sleeve_loss_response.py
+SHA256 e7e2b508e990adabc29be22254c3ab75831205b28fa305ab40519130c451b1c2  software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 f8d9af3bdfdc6fe224f9f55fdcba8945fc0b4d07eb4c21499d29506eb3327840  software/stage1_solver/tools/curved_sleeve_order.py
+Start UTC 2026-11-13T22:55:32.081372+00:00. End UTC (outcome file timestamp) 2026-11-13T22:55:32.882407+00:00.
+Child and guard exited 0. Verified 2 GiB, zero swap. Recorded memory.peak 55447552 bytes.
+Stdout _scratch/s11c/sleeve_loss_response_sympy01/stdout (319 bytes, SHA256 2a9964422b3cfe77153ff03c133eea69ea136195947a6c20d6df6ffb0f78d85b).
+Literal stdout
+signed-distance Jacobian = (d*k_ang + 1)**2*(d*k_mer + 1)
+loss minus n*M*k*H(d)*q*(1-q)/ell = 0
+contour speed minus material speed plus M*k*H(d) = 0
+force*(V-u) minus M*mu_order^2 = 0
+extra loss / (n*lam) at q=1/2 and 1/4 = [0, 3/64]
+archived midpoint H and loss*ell/(n*M*k) = [148*sqrt(1594)/3985, 37*sqrt(1594)/3985]
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool sleeve-loss-response --memory-gib 4 --log-directory _scratch/s11c/sleeve_loss_response_wolfram01 -- math -noprompt -script software/stage1_solver/tools/sleeve_loss_response.wl
+SHA256 196280621b61695487479fcfd975129da8d3131e5e1fb44cf8652efb7616c1fa  software/stage1_solver/tools/sleeve_loss_response.wl
+SHA256 e7e2b508e990adabc29be22254c3ab75831205b28fa305ab40519130c451b1c2  software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start UTC 2026-11-13T22:55:32.950433+00:00. End UTC (outcome file timestamp) 2026-11-13T22:55:37.633774+00:00.
+Child and guard exited 0. Verified 4 GiB, zero swap. Recorded memory.peak 224858112 bytes.
+Stdout _scratch/s11c/sleeve_loss_response_wolfram01/stdout (210 bytes, SHA256 ef01562cf8982c8b976106a8f17b293d540c6c71d7f36881001e3c8988ffe48d).
+Literal stdout
+"[loss, relative speed, work] residuals = ""{0, 0, 0}"
+"extra loss / (n lam) at center and d=ell log(3) = ""{0, 3/64}"
+"archived midpoint H and loss ell/(n mob k) = ""{(148*Sqrt[2/797])/5, (37*Sqrt[2/797])/5}"
+
+$ jq -c '{shape:.config.branch.geometry_profile,grid:[.grid.nr,.grid.nw],endpoints:[.config.branch.r_mouth,.config.branch.r_exit],length:.config.branch.w_max,fields:(.fields|keys),current:.convergence_evidence.surrogate_values.spatial_current_l2}' software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json
+{"shape":"cubic_smoothstep","grid":[10,8],"endpoints":[1.0,1.5],"length":1.85,"fields":["A_00","A_r0","A_w0","psi_I0","psi_R0"],"current":0.0}
+
+$ sed -n '73,83p;95,101p;120,125p;133,140p' research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
+F = ∫ d^4X [ (1/2) m_GNLS n |u|^2 + U(n) + f_B(chi_B)
+             + (kappa_B/2)|grad_4 chi_B|^2 + chi_B f_shear
+             + f_throat + f_mix ]
+```
+
+Balance laws:
+
+```
+∂_t n + div_4(n u) = 0                                    (total, exact)
+∂_t(chi_B n) + div_4(chi_B n u + J_chi) = n Gamma_B ,      [Gamma_B] = T^-1
+Gamma_B = Gamma_return - Gamma_drain
+| P3 | Double-well `f_B(chi_B) = a_B chi_B^2 (1-chi_B)^2`, `a_B > 0`, minima `{0,1}` (recovery limit sits at a minimum), `[a_B] = M L^-2 T^-2`. POSTULATED — the cited I-1 `U(rho) = (K/4) rho^5` is SINGLE-well, so two-phase structure cannot come from the parent potential. |
+| P4 | **`SAME_DENSITY_DEGENERACY_POSTULATED`** — `f_B` is n-independent, `f_B(n,0) = f_B(n,1) = 0` (asserted). A density-split (liquid–vapor) interface is rejected as the brane: no shear ⇒ no light (the pathA_25 lesson). |
+| P5 | Interface gradient `(kappa_B/2)|grad_4 chi_B|^2`, `[kappa_B] = M T^-2`. |
+| P6 | Shear gate `chi_B f_shear`, `f_shear = (1/2) mu_R^(4) (curl_4 u_d)^2` with **displacement** `u_d` (`[u_d] = L`, distinct from the velocity `u`), `[mu_R^(4)] = M L^-2 T^-2`. Rotational (MacCullagh) form, NOT `(∂u)^2` Cauchy. Brane-projected `mu_R` (`M L^-1 T^-2`, stage003) related by `∫ chi_B mu_R^(4) dw` — dim-consistency asserted, projection POSTULATED/PENDING. |
+| P7 | **`chi_B` is THE postulated wall order parameter** — an independent scalar field (route (a)), NOT built as `|P_par|^2`. The anisotropy `alpha_aniso chi_B (P·w_hat)^2` (`POSTULATED_ANISOTROPY`, `[alpha_aniso] = M L^-2 T^-2`) is **RETIRED with `P` (Decision 16 → failures-paper backlog)**, absent from the live A1 surface. `FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ` (route (c) — `chi_B = |P_par|^2`) remains a named high-risk Part-VII-adjacent gate needing a NEW T0 freeze; obsolete-as-carried, not foreclosed. |
+| P8 | Dynamics = labeled adjunct: `D_t chi_B = -M_chi mu_chi + Gamma_B`, `mu_chi = δF/δchi_B` (`M L^-2 T^-2`), `[M_chi] = L^2 T M^-1`. Energy ledger pinned to the variationally consistent `P_order = ∫ mu_chi D_t chi_B d^4X` (= `M L^2 T^-3`, power). **`HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED`** (see Corrections). |
+| P9 | `J_chi = 0` default (simplest advective closure); `J_chi ≠ 0` deferred, `[J_chi] = L^-3 T^-1`. |
+**A2 (closure identities, EARNED, computed via real derivative expansion).**
+From the two balance laws:
+
+```
+D_t chi_B ≡ ∂_t chi_B + u·grad_4 chi_B = Gamma_B - (1/n) div_4 J_chi
+```
+**A3 (wall admission, EARNED relative to P3/P5).** The static 1D EL equation
+`kappa_B chi_B'' = f_B'(chi_B)` admits the kink between the two minima:
+
+```
+chi_B(w) = 1/(1 + e^{-w/delta}) = (1/2)(1 + tanh(w/(2 delta))),
+delta = sqrt(kappa_B/(2 a_B))          (width SOLVED from the EL equation)
+sigma_wall = ∫ kappa_B (chi_B')^2 dw = sqrt(2 a_B kappa_B)/6,
+[sigma_wall] = M L^-1 T^-2             (energy per 3-area in 4D)
+
+$ sed -n 15p docs/conversion_work_assessment_and_next_step.md
+- **Rate convention:** the paper uses the rate in the original conservation balance. It does not resolve the separately labelled P8 kinetic adjunct. If `Gamma_bal` denotes the balance rate and `Gamma_adj` the adjunct source, compatibility of the two displayed source equations would require `Gamma_bal - div(K)/rho = -M_chi mu_chi + Gamma_adj`. One cannot casually move relaxation into a transport current without a constitutive and boundary prescription. No such prescription has been adopted.
+
+$ sed -n '53,60p;62,72p;268,271p' research/pde_ledger_v3/steps/S12_order_source.md
+∂t n + ∇₄·(n u) = 0
+∂t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n Γ_B
+Γ_B = Γ_return − Γ_drain,       [Γ_B] = T⁻¹.
+```
+
+The signed source converts order in one conserved material. Positive means bulk material re-ordering
+onto the brane; negative means de-ordering. The ruled-out frozen-wall material sink plus remote return
+is not this object. No static limit is posed. (Retrieve M01, M03, M11.)
+The domain has real coordinates `(t,x¹,x²,x³,w)` and live faces `w₋(x,t)<w₊(x,t)`. Region 1 is below,
+region 2 inside, region 3 above. Outside, order is zero; inside, `f(t,x,w)` is live with `0≤f≤1`.
+The faces bound the region in which shear can be held; they are **not** defined by the support of a
+chosen order profile. Density, each velocity component, each order-flux component and the interior
+order have independent regional restrictions and one-sided traces, may jump, and have no
+face-concentrated input part. The source `n Γ_B` can have such a part. Point values at the faces and
+jumps are unspecified. (Retrieve M01, M03–M05.)
+
+No regime is chosen and no field is frozen. In particular `J_χ=0` is not adopted. Transfer is only to
+where the committed law holds and the shear-holding region has two graph faces over the in-plane
+coordinates. The puncture's own interior is excluded, with S22. The S9b/O2 far-zone setting is a
+| Source/controller functions | `V3_STEP_PLAN.md:610–611`; `../pde_ledger_v2/notes/stage045_nonvariational_block_prep.md:45` and `:50`, with the return-controller row at `:45` read alongside its re-hosting context. The full local source/controller inventory is also `directives/O2_SHARED_PHYSICS.md`, §5 inventory table. All functional forms remain OPEN. |
+| Boundary/domain data | `V3_STEP_PLAN.md:612`; `../../docs/two_throat_simulation_handoff_spec.md:340`, the **entire IR/return row**, including zero modes/moduli and moving/radiative prescriptions; stage 045's boundary row. U3 bears on the bulk IR condition only. No galactic/expansion boundary is imposed. |
+| Restricted S9b/O2 domain | `steps/O2_steady_brane_balance.md:74–76`, the complete setting sentence. Its isolated spherical mass at rest with flowing drain, far-field steady profiles, far-field brane-rest lab time, linear optics and leading eikonal are **restrictions**, not S12 results. |
+| Momentum/energy partners | `directives/O2_premise_decision_list.md:32–35`; `directives/O2_SHARED_PHYSICS.md:134`, `:243–248`, `:280`, `:584`; `steps/O2_steady_brane_balance.md:396`. Those rows preserve additional partners/reactions, the OPEN bulk-direction reduction and its normal-response/map operands, and conversion/carried-energy partners with reaction/supply systems. Local transported momentum fixes no carried total energy. |
+
+$ sed -n 237,248p docs/toy_model_ontology_summary.md
+In the fraction/relaxational branch, when \(\Gamma_{\rm drain}\) is a local nonnegative conversion rate per unit time, define
+
+\[
+\boxed{
+Q_{\chi,a}
+=\int_{\Omega_{{\rm throat},a}}
+n\Gamma_{\rm drain}\,d^4X
+\ge0
+}.
+\]
+
+It has the same constituent-number-per-time dimensions as \(Q_{n,a}\) but need not equal it. It excludes distributed return and is not a signed net rate. In an inertial order-field branch, an equivalent gross conversion diagnostic and its units must be derived from that dynamics rather than importing this constitutive formula. Signed net conversion remains in \(\Gamma_{\rm drain}\), \(\Gamma_{\rm return}\), and \(\Gamma_B\) only on branches where those rates are defined.
+
+$ sed -n 185,205p software/stage1_solver/src/stage1_solver/m1c_physical_run.py
+        "geometry": {
+            "a": 1.0,
+            "R_mouth": 1.0,
+            "L": 37.0 / 20.0,
+            "L_exact": "37/20",
+            "R_exit": 3.0 / 2.0,
+            "R_exit_exact": "3/2",
+            "R0_family": "cubic_smoothstep",
+            "R0_formula": "R0(w)=1+(1/2)*(3*x^2-2*x^3), x=w/L",
+            "boundary_class": "mouth Dirichlet / open-impedance(Robin) exit / no hard cap",
+            "epsilon_r": 1.0 / 20.0,
+            "ell_radial_support": 1.0 / 20.0,
+            "radial_support_layer_active": False,
+        },
+        "wall_constitutive": {
+            "mu_eta": "1",
+            "T_w": "1",
+            "T_Omega": "1",
+            "K_eta": "1",
+            "positivity": {"mu_eta_gt_0": True, "T_w_gt_0": True, "K_eta_plus_6_T_Omega": 7.0},
+        },
+
+$ sed -n 969,995p research/pde/paper/pde.tex
+\subsection{Linearized geometry equation}
+
+Varying the wall action \eqref{eq:linpde-wall-action} together with the promoted confinement coupling gives the linearized geometry equation
+\begin{equation}
+\mu_\eta\,\partial_t^2\eta
+-
+\partial_w\!\bigl(T_w\partial_w\eta\bigr)
+-
+T_\Omega\Delta_{\bbS^2}\eta
++
+K_\eta\eta
+=
+\cS_\eta^{(\psi)}[\delta\psi,\delta\psi^*]
++
+\cS_\eta^{(A)}[\delta A_M]
++
+f_{\mathrm{ext}}.
+\label{eq:linpde-geometry}
+\end{equation}
+At linear order, the first matter source is generated directly by the confinement variation \eqref{eq:linpde-delta-vconf}; schematically,
+\begin{equation}
+\cS_\eta^{(\psi)}
+\sim
+-\frac{V_{\wall}'(\Sigma_0/\ell_c)}{\ell_c}\,\delta\rho
++\cdots.
+\label{eq:linpde-geometry-source}
+\end{equation}
+
+$ sed -n 234,248p research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+On a native face description, transported momentum uses the native relative exchanged mass current
+and the local brane material velocity of the converted material. A full normal/component reduction
+retains `𝒥_map`, the live geometry and any unsupplied face-to-material velocity identification. Do
+not choose an independent converted-material velocity, replace it with `v_dr`, or identify it with a
+native bulk velocity. The premise-3 identification applies to the material after the specified
+conversion/transfer; it does not fix how a native bulk current acquires that momentum. Any additional
+non-variational conversion momentum partner and its reaction system remain OPEN with S12.
+
+**Bulk-direction carried component.** Premise 3 applies to each native transfer at its own location.
+It does not supply the reduced bulk-direction component `(Π_n^carry)^w` as `j_n` times one
+bulk-direction velocity. In a finite-thickness realization, the transfers at different faces need
+not share one current or one local bulk-direction velocity, and premise 3 supplies no such equality.
+The reduced component therefore depends on the OPEN `𝒥_map` and the normal material response
+`𝒩_br^live`, with the live geometry and any unsupplied face-to-material velocity identification. Print
+it as an unevaluated OPEN action with those operands named, in the same outward convention.
+
+$ sed -n 40,62p software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+  - id: sleeve_core_trace
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: scalar_field_trace_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [field_point, outward_normal, wall_side, a, L]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    source: nonlinear_throat_core_open
+  - id: geon_core_bundle
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: field_trace_bundle_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [density_trace, h_trace, phase_flux_trace, wall_side]
+    symmetry_class: BODY_CONJUGATE_BUNDLE
+    source: spec_7_0_geon_profile_open
+  - id: throat_surface_functional
+    status: OPEN_INPUT
+    root_type: ACTION
+    domain: field_functional_on_Sigma
+    dimensions: [2, -2, 1]
+    arguments: [field_traces, normal_derivatives, induced_metric]
+    symmetry_class: BODY_CONJUGATE_SCALAR

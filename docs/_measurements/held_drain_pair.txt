@@ -1,0 +1,113 @@
+Held drain pair. Local run manifest. Base d544ef733587bcc57256ca5b4d103831818e4558
+Both scripts use their embedded mathematical inputs. Radius and separation samples use one common length unit.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool held-drain-pair --memory-gib 2 --log-directory _scratch/s11c/held_drain_pair_sympy01 -- python3 software/stage1_solver/tools/held_drain_pair.py
+software/stage1_solver/tools/held_drain_pair.py sha256 549a3ec7a107bf3127d826baf0b6960b843624c51d2f223cf837db7d21b87246
+scripts/s11c_guarded_run.py sha256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Start UTC 2026-11-13T00:55:06.372526+00:00  Outcome written UTC 2026-11-13T00:55:08.227876+00:00
+Elapsed seconds 1.8387123229913414  Peak memory bytes 57806848
+Outer/child exit code 0/0, zero swap cap, no guard stop, no deadline, empty stderr.
+Transcript _scratch/s11c/held_drain_pair_sympy01/stdout  bytes 499  sha256 c8d80466aea1a58c7e01a6a419f6f673389ccb6a9d0c810a60fd3dc4182b2a27
+Literal stdout:
+target only, companion only, pair on target contour = 0 0 Q1*Q2*rho/(4*pi*d**2)
+bilinear inward convective, pressure = Q1*Q2*rho/(3*pi*d**2) -Q1*Q2*rho/(12*pi*d**2)
+pair minus isolated = Q1*Q2*rho/(4*pi*d**2)
+sphere-radius derivative = 0
+scaled d=10 b=1 = 1/100
+scaled d=10 b=3 = 1/100
+scaled d=20 b=1 = 1/400
+scaled d=20 b=3 = 1/400
+upper face isolated radial integrand = 0
+upper face first variation per dr = -4*pi*r*(r*p0(r)*Derivative(h1(r), r) + r*p1(r)*Derivative(h0(r), r) + 2*h1(r)*p0(r))/3
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool held-drain-pair --memory-gib 4 --log-directory _scratch/s11c/held_drain_pair_wolfram01 -- math -noprompt -script software/stage1_solver/tools/held_drain_pair.wl
+software/stage1_solver/tools/held_drain_pair.wl sha256 56fcbdbfe693deab671fff2622c0d7cb4d3d7e0b31e9339a2c6c3f46bcf14a61
+scripts/s11c_guarded_run.py sha256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Start UTC 2026-11-13T00:55:15.847227+00:00  Outcome written UTC 2026-11-13T00:55:21.333673+00:00
+Elapsed seconds 5.469694992993027  Peak memory bytes 224591872
+Outer/child exit code 0/0, zero swap cap, no guard stop, no deadline, empty stderr.
+Transcript _scratch/s11c/held_drain_pair_wolfram01/stdout  bytes 868  sha256 06cc96475bf5ba64d65b25e55ef023ac34b2d71ea7eff95f863569e45b5543b0
+Literal stdout:
+"d=10 b=1 4pi/rho [single,other_only,pair,pair-single] =                        -55                        -49\n{1.334177808045660 × 10   , 3.298615060310998 × 10   , 0.010000000000000, 0.010000000000000}"
+"d=10 b=3 4pi/rho [single,other_only,pair,pair-single] =                           -43\n{0, 4.027664833445412 × 10   , 0.010000000000000, 0.010000000000000}"
+"d=20 b=1 4pi/rho [single,other_only,pair,pair-single] =                         -57                         -46\n{-2.051520261065703 × 10   , -2.365954817136610 × 10   , 0.002500000000000, 0.002500000000000}"
+"d=20 b=3 4pi/rho [single,other_only,pair,pair-single] =                           -41\n{0, 1.106186294067671 × 10   , 0.002500000000000, 0.002500000000000}"
+"upper face first variation per dr = ""(-4*Pi*r*(2*h1[r]*p0[r] + r*p1[r]*Derivative[1][h0][r] + r*p0[r]*Derivative[1][h1][r]))/3"
+
+The four pair-minus-isolated samples in the two outputs match to all displayed decimal places. The Wolfram single-source computations are numerical quadratures. The SymPy controls are exact.
+
+$ sed -n '55,61p;67,69p;174,184p' research/pde_ledger_v3/directives/S15_decision_list.md
+
+  ```
+  ∂_t G^i + ∂_j Π^{ij} = f^i
+  G^i    = ρ_br V^i
+  Π^{ij} = ρ_br V^i V^j − T^{ij} + Π_o^{ij}
+  T^{ij} = −p_br(ρ_br) δ^{ij} + η (∂^iV^j + ∂^jV^i − (2/3) δ^{ij} ∂_kV^k) + ζ δ^{ij} ∂_kV^k
+  ```
+    it contains neither the carried current nor P6's stress.
+  - `f^i` is the force density, a general live field. It includes every exchange of momentum with the faces and the
+    bulk, including the momentum carried by material that crosses the faces. It stays undivided, as in S16.
+## Retained OPEN
+- **No owner assigned here:** the forms of `f^i` and `Π_o^{ij}`. The slab's material law goes to S8/S22
+  (`steps/S12_order_source.md:292`).
+- **Whether any printed momentum acts on the throat.** That needs the momentum exchanged at the faces (`R-S16-03`, no
+  owner named) and the core's content (S22). This step does not make the identification.
+- **S22:** the source map `{J, Θ_Q, N_∞,3, Q}`, the normalization and `I_F,12` (`V3_STEP_PLAN.md:1306–1307`), and
+  the cores' content.
+- **The pieces of the full sign that P5 and P6 do not supply:** the plan's quantum, confinement and Maxwell residuals
+  (`:666–668`). No owner named.
+- **P6 outside steady flow,** and P5's possible stress-carried momentum (S8; `S9b_SHARED_PHYSICS.md:351–355`).
+- **`R-S14a-01`:** the slow limit and far behaviour. S15 stays conditional on it (`V3_STEP_PLAN.md:639`).
+
+$ sed -n '94,96p;155,156p;186,195p' research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+| **2 — drive** | The committed dynamical order-conversion drain is the drive. No separate external body force. Its source and boundary/return data act through stress, traction and O3; the `GM` bridge is OPEN. | Use the permitted representation in which `F_drive` is **absent as a separate body-force entry**. Declare the drain-drive provenance of the material, boundary and exchange entries. Do not also add a drain-force aggregate beside them. |
+| **3 — exchanged material** | Converted material carries the local brane material velocity `V`. This closes transported momentum only. Additional non-variational partners and their reaction system remain OPEN with S12. | Distinguish carried-material momentum, mechanical face/support loading and additional S12 momentum partners. Apply the outward exchange convention in §5: premise 3 closes the in-plane carried components at `V`, and the bulk-direction carried component stays the OPEN reduction stated there. Keep all live velocity and measure factors. |
+| **4 — bulk traction** | Retain the postulated shear-free scalar bulk, with face-normal mechanical loading and no independent tangential bulk stress. O3 transport is separate. | The bulk part of the mechanical loading is `𝒯_bulk,n,s^live n̂_s`, with its amplitude OPEN. A tilted normal retains its in-plane projection. No tangential bulk stress is hidden in a support operand. |
+| `t_bulk,s^live = 𝒯_bulk,n,s^live n̂_s`; directional restriction from **adopted premise 4**, C §7 | Bulk mechanical traction on its native face. `𝒯_bulk,n,s^live` is a general signed **OPEN** normal-load amplitude; geometry and projection are live. No pressure/affinity/DC response law or sign of the amplitude is given. |
+| `T_hold,s`; **OPEN**, C §7 | Complete mechanical face/support loading in O2. Its bulk part obeys the preceding restriction. The bulk amplitude qualifies that part of the full load; it is not a second load added beside a `T_hold,s` that already contains it. The support partition is unresolved. |
+- **Mechanical loading:** use `T_hold,s` as the face/support load entry, with its native bulk-normal
+  restriction and OPEN support partition. Internal brane stress is not counted again as an external
+  face load. Load integration/projection retains the native measures and any OPEN map. Tilted
+  normal loading may have in-plane coordinate components; premise 4 is a directional restriction
+  in the native face frame.
+- **Exchange:** use the momentum carried with the local converted-material mass current, with the
+  premise-3 velocity identification. Keep additional S12 momentum partners separately attributable
+  and their reaction system named. Neither kind of transport is an extra mechanical traction.
+- **Drive:** identify the dynamical drain's source/boundary provenance in these entries. The separate
+  body-force representation is absent under premise 2. Do not invent a gravitational force profile
+
+$ sed -n '3,8p;13,16p' research/pde_ledger_v3/steps/S14a_2_slow_limit.md
+**Status:** record and register pass accepted at `79511272` (round 2 clear). By the user's
+**"Record as requirement"** decision, no build ran and this part reports no computed bridge
+object. The slab's own dynamics must select the slow limit and the far behaviour; that obligation
+has its own entry, **`R-S14a-01`**. The user's V2 decision makes selection owed jointly by S12's
+source/flux forms, S8/S22's material law and the face/interior laws with no owner named. S14,
+S15 and S20 remain **"CONDITIONAL, not carried results"**, now on that named requirement.
+Of the plan's four S14a objects, accepted part 1 prints the projected order-loss source and the
+definition of `J`, with finite-radius flux objects and their recorded limitations. The
+profile-dependent `J→Q` map and controlled `ω→0` return law remain **not derived**. The review
+witnesses below are instruments of their named review legs; none is an accepted part 2 build,
+
+$ sed -n '38p;43,45p;50,54p' research/pde_ledger_v3/steps/S16_moving_region.md
+∂t G^i + ∂j Π^{ij} = f^i .
+face quantities stay live. The list says **"G^i is not related to F^i or Σ by any supplied
+law, and Π^{ij} is not assumed symmetric."** It says `f` includes every face/bulk momentum
+exchange but **"stays undivided"**. Each construction prints these supplied equations and its
+The region is a shell about live `X_c(t)`, between live `r_in(t)` and `R(t)`, outside the
+excluded core. **"That is a choice of control surface, not a symmetry of the fields"**;
+**"r_in is not identified with the mouth radius."** The fields are **"the total fields on
+the region"**. Nothing uses core values or a body/surroundings split. The native integral
+definitions print the shell volume and each spherical area measure. The inner/outer surface
+
+$ sed -n '46p;50,53p;63p;67,69p' software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md
+Control surface: reduced-3D sphere around defect 2 with core scale << a << r12; v2=-Q2*n_hat/(4*pi*a^2), v1 is constant over the sphere to leading order.
+- Convective cross flux: `int Pi_conv,cross.n dS=-(4/3)*m_GNLS*N_infty,3*Q2*v1`.
+- Bernoulli/EOS pressure cross flux: `delta P_cross=-m_GNLS*N_infty,3*(v1.v2), so int delta_ij P_cross n_j dS=+(1/3)*m_GNLS*N_infty,3*Q2*v1`.
+- Matter cross flux: `int Pi_matter,cross.n dS=-m_GNLS*N_infty,3*Q2*v1`.
+- Force result: `F_12^matter=m_GNLS*N_infty,3*Q2*v1=-(m_GNLS*N_infty,3*Q1*Q2/(4*pi*r12^2))*rhat_12`.
+Normalization: Overall I_F,12^full / Theta_Q / branch-profile normalization remains a CALIBRATION KNOB, not derived.
+Far-field matter-stress verdict: `FORCE_ATTRACTIVE_DERIVED`.
+
+Full sign verdict: `SIGN_RESIDUAL_QUANTUM_VCONF_MAXWELL_PROFILE`.

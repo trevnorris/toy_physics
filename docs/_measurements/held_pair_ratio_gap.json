@@ -1,0 +1,30 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "Compare the ratio of isolated-target-weighted incident speeds for the source alone with paired held-mouth loads and the independently measured exterior force ratio, at extent 48 and separations 4 and 8.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool held-pair-gap --memory-gib 1 --log-directory _scratch/s11c/held_pair_ratio_gap02 -- python3 -c 'import json\nfrom pathlib import Path\n\nfolder = Path(\"docs/_measurements\")\ntarget = json.loads((folder/\"lateral_target_rate.json\").read_text())\nrun, = [r for r in target[\"runs\"] if r[\"stdout\"][0].startswith(\"extent=48 \")]\nrows = [dict(w.split(\"=\") for w in line.split()) for line in run[\"stdout\"] if line.lstrip().startswith(\"d=\") and \" J_t=0.25 \" in line]\nby_d = {int(r[\"d\"]):r for r in rows}\nassert set(by_d)=={4,8}\nexterior = json.loads((folder/\"held_pair_exterior_balance.json\").read_text())\nrow, = [dict(w.split(\"=\") for w in line.split()) for line in exterior[\"comparison\"][\"stdout\"]\n        if line.startswith(\"extent=48 \") and \"outer8_over_4\" in line]\nR = float(row[\"outer8_over_4\"])\ndef ratio(column):\n    return float(by_d[8][column])/float(by_d[4][column])\ninc, held, carry = [ratio(k) for k in (\"incident_reference\", \"total\", \"carried\")]\nprint(f\"exterior_ratio={R:.12g} shortfall_percentage_points={100*(0.25-R):.9g} relative_shortfall_percent={100*(1-4*R):.9g}\")\nprint(f\"source_only_weighted_velocity_ratio={inc:.12g} paired_mouth_ratio={held:.12g} carried_ratio={carry:.12g} fraction_of_paired_ratio_shortfall_already_in_source_only_reference={(0.25-inc)/(0.25-held):.9g}\")\n'",
+  "sources": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "input_sha256": {
+    "docs/_measurements/lateral_target_rate.json": "1509281ae8ed652a457da284ac92944cb902b5630e547c71ff7e266e12b9bce3",
+    "docs/_measurements/held_pair_exterior_balance.json": "7b7c518068a066f37be42f4369ca06083246614259909d508969b85193a29f4b"
+  },
+  "started_utc": "2026-11-15T23:33:10.683875+00:00",
+  "guard_outcome_written_utc": "2026-11-15T23:33:10.807449+00:00",
+  "wall_seconds": 0.10258552501909435,
+  "guard_exit": 0,
+  "worker_exit": 0,
+  "limits_verified": true,
+  "memory_max_bytes": 1073741824,
+  "peak_memory_bytes_sampled": 14151680,
+  "swap_max_bytes": 0,
+  "runtime_limit": "infinity",
+  "stdout_path": "_scratch/s11c/held_pair_ratio_gap02/stdout",
+  "stdout_bytes": 303,
+  "stdout_sha256": "57fe179ccec00337e9ca413ddf4da22ba349f8f11fca850a6050248f2b0c1388",
+  "stdout": [
+    "exterior_ratio=0.248527699666 shortfall_percentage_points=0.147230033 relative_shortfall_percent=0.588920134",
+    "source_only_weighted_velocity_ratio=0.248548005114 paired_mouth_ratio=0.248527625107 carried_ratio=0.248527249686 fraction_of_paired_ratio_shortfall_already_in_source_only_reference=0.986158412"
+  ]
+}

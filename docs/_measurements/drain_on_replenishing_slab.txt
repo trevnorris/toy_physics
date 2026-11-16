@@ -1,0 +1,34 @@
+Working benchmark. Repository base d544ef73. Commands are relative to the repository root.
+Two exact constructions of constituent continuity on a finite fixed slab. Dimensionless sample at t=0.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool drain-background --memory-gib 2 --log-directory _scratch/s11c/drain_background_sympy01 -- python3 software/stage1_solver/tools/drain_on_replenishing_slab.py
+source.sha256 04a0183b25d0f3f0ae005f0b780f2ef3c3d729f854b4d6dbf50bff4add708995  software/stage1_solver/tools/drain_on_replenishing_slab.py
+guard.sha256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+stdout.sha256 a31f884626720552cddee679e57f080b8b60069d50cd7a26b1b73356f3d93db5  _scratch/s11c/drain_background_sympy01/stdout
+launcher and child exit 0; verified 2 GiB cap, zero swap, no deadline; stderr empty
+Literal stdout follows
+background [outward radial speed, outward flux, inward core, outward faces, storage] [-r*(b - ell)/(3*(b*t + n0)), -4*pi*h*r**3*(b - ell)/3, 4*pi*a**3*h*(b - ell)/3, -4*pi*ell*h*(-a + r)*(a**2 + a*r + r**2)/3, 4*pi*b*h*(-a + r)*(a**2 + a*r + r**2)/3]
+throat [outward radial speed, outward flux, inward core, outward faces, storage] [-(4*pi*b*h*r**3 - 4*pi*ell*h*r**3 + 3*q)/(12*pi*h*r**2*(b*t + n0)), -(4*pi*b*h*r**3 - 4*pi*ell*h*r**3 + 3*q)/3, (4*pi*a**3*b*h - 4*pi*a**3*ell*h + 3*q)/3, -4*pi*ell*h*(-a + r)*(a**2 + a*r + r**2)/3, 4*pi*b*h*(-a + r)*(a**2 + a*r + r**2)/3]
+direct extra inward number flux, extra inward from budgets, extra outward speed [q, q, -q/(4*pi*h*r**2*(b*t + n0))]
+no-extra-intake speed difference [0]
+raw inward flux, budget if storage omitted, missing term [(4*pi*b*h*r**3 - 4*pi*ell*h*r**3 + 3*q)/3, (4*pi*a**3*b*h - 4*pi*ell*h*r**3 + 3*q)/3, 4*pi*b*h*(-a + r)*(a**2 + a*r + r**2)/3]
+R=1 [background speed, throat speed, difference, extra inward flux/pi] [1/100, -99/100, -1, 24]
+R=5 [background speed, throat speed, difference, extra inward flux/pi] [1/20, 1/100, -1/25, 24]
+R=10 [background speed, throat speed, difference, extra inward flux/pi] [1/10, 9/100, -1/100, 24]
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool drain-background --memory-gib 4 --log-directory _scratch/s11c/drain_background_wolfram01 -- math -noprompt -script software/stage1_solver/tools/drain_on_replenishing_slab.wl
+source.sha256 a678dae4b26e279d50e00ccc65459cbd6eefce0ee2bf22f1ab6d35f74cbee5e6  software/stage1_solver/tools/drain_on_replenishing_slab.wl
+guard.sha256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+stdout.sha256 ccaf34506d062e68cd5ec822ee1fe7dd6521482f63b8ebc359e6dda745233a84  _scratch/s11c/drain_background_wolfram01/stdout
+launcher and child exit 0; verified 4 GiB cap, zero swap, no deadline; stderr empty
+Literal stdout follows
+"extra="InputForm[0]" local continuity residual="InputForm[0]
+"extra="InputForm[24*Pi]" local continuity residual="InputForm[0]
+"R="1" [background speed, throat speed, difference, extra inward flux/pi]="InputForm[{1/100, -99/100, -1, 24}]
+"R="1" budgets/pi [core, faces, storage]="InputForm[{{-6/25, 0, 0}, {594/25, 0, 0}}]" outward fluxes/pi="InputForm[{6/25, -594/25}]
+"R="5" [background speed, throat speed, difference, extra inward flux/pi]="InputForm[{1/20, 1/100, -1/25, 24}]
+"R="5" budgets/pi [core, faces, storage]="InputForm[{{-6/25, -992/25, 248/25}, {594/25, -992/25, 248/25}}]" outward fluxes/pi="InputForm[{30, 6}]
+"R="10" [background speed, throat speed, difference, extra inward flux/pi]="InputForm[{1/10, 9/100, -1/100, 24}]
+"R="10" budgets/pi [core, faces, storage]="InputForm[{{-6/25, -7992/25, 1998/25}, {594/25, -7992/25, 1998/25}}]" outward fluxes/pi="InputForm[{240, 216}]

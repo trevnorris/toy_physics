@@ -1,0 +1,110 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "Density-deficit centroid as a possible readout of isolated geometric mouth acceleration. One radius-1 mouth draining at 0.25, fixed-grid brane model, without an independent force-driven trajectory.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-deficit-centroid --memory-gib 3 --log-directory _scratch/s11c/mouth_deficit_centroid_01 -- python3 software/stage1_solver/tools/mouth_deficit_centroid.py",
+  "sources_and_inputs": {
+    "docs/_measurements/lateral_mouth_acceleration.json": "fcb66853f155ab6f688ae00170bfe88b22d53ca8c8589631b8ac07344f2928a4",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/mouth_deficit_centroid.py": "73ae95d3760ebe224357348551435d7f60a2bce6a40f864dc1e05674166c4572",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_mouth_acceleration.py": "0f04c0edb17b6c17bc1dfd2081412017caed4dfd7c1ef6808fe84f751394219b",
+    "_scratch/s11c/lateral_bath_e12_c4_01/fields/d0.npz": "02e4f3cc872938be7690f22be9d2d03f0c1e64298df637915ce02986316032ad",
+    "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz": "08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe",
+    "_scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz": "590774f5c77c030fbe68edb253b5edddd0bc8b636bf983f1947fae52d7389fb1",
+    "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd"
+  },
+  "started_utc": "2026-11-15T04:13:02.923619+00:00",
+  "guard_outcome_written_utc": "2026-11-15T04:13:03.576706+00:00",
+  "wall_seconds": 0.6355026720557362,
+  "guard_exit": 0,
+  "worker_exit": 0,
+  "limits_verified": true,
+  "memory_max_bytes": 3221225472,
+  "peak_memory_bytes_sampled": 148967424,
+  "swap_max_bytes": 0,
+  "runtime_limit": "infinity",
+  "stdout_path": "_scratch/s11c/mouth_deficit_centroid_01/stdout",
+  "stdout_sha256": "c83eb807b7a9ccbb5cd341895b5b8f5744c7655aeb0c5625e2f93a2ccdde17a7",
+  "stdout_bytes": 1946,
+  "stderr_bytes": 0,
+  "stdout": [
+    "{\"field\": \"_scratch/s11c/lateral_bath_e12_c4_01/fields/d0.npz\", \"L\": 12, \"dx\": 0.25, \"dz\": 0.0625, \"rate\": 0.25, \"brane_deficit\": 0.008709307439819229, \"initial_deficit_dipole\": 6.776263578034403e-20, \"deficit_count_third_per_A\": 0.0, \"deficit_dipole_third_per_A\": 0.2500389213975091, \"frozen_intake_moment_slopes\": [0.2500389214125931, 0.2500389214005194], \"deficit_centroid_third_per_A\": 28.709392006799902, \"deficit_centroid_t3_coefficient_per_A\": 4.784898667799983}",
+    "{\"field\": \"_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz\", \"L\": 24, \"dx\": 0.25, \"dz\": 0.0625, \"rate\": 0.25, \"brane_deficit\": 0.00881125015281174, \"initial_deficit_dipole\": -7.326834993749698e-20, \"deficit_count_third_per_A\": 0.0, \"deficit_dipole_third_per_A\": 0.25003892040226605, \"frozen_intake_moment_slopes\": [0.2500389204175557, 0.2500389204052045], \"deficit_centroid_third_per_A\": 28.37723547350164, \"deficit_centroid_t3_coefficient_per_A\": 4.729539245583607}",
+    "{\"field\": \"_scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz\", \"L\": 24, \"dx\": 0.16666666666666666, \"dz\": 0.041666666666666664, \"rate\": 0.25, \"brane_deficit\": 0.008755785686705339, \"initial_deficit_dipole\": 9.698527246061739e-20, \"deficit_count_third_per_A\": 5.551115123125783e-17, \"deficit_dipole_third_per_A\": 0.24997512972040203, \"frozen_intake_moment_slopes\": [0.24997512969821695, 0.24997512971622338], \"deficit_centroid_third_per_A\": 28.549708577262315, \"deficit_centroid_t3_coefficient_per_A\": 4.758284762877053}",
+    "{\"field\": \"_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz\", \"L\": 48, \"dx\": 0.25, \"dz\": 0.0625, \"rate\": 0.24999999999999994, \"brane_deficit\": 0.008860497216811392, \"initial_deficit_dipole\": 1.232432938255007e-19, \"deficit_count_third_per_A\": 0.0, \"deficit_dipole_third_per_A\": 0.25003892027788976, \"frozen_intake_moment_slopes\": [0.2500389202933495, 0.2500389202808595], \"deficit_centroid_third_per_A\": 28.219513438081158, \"deficit_centroid_t3_coefficient_per_A\": 4.703252239680193}"
+  ],
+  "grids": [
+    {
+      "field": "_scratch/s11c/lateral_bath_e12_c4_01/fields/d0.npz",
+      "L": 12,
+      "dx": 0.25,
+      "dz": 0.0625,
+      "rate": 0.25,
+      "brane_deficit": 0.008709307439819229,
+      "initial_deficit_dipole": 6.776263578034403e-20,
+      "deficit_count_third_per_A": 0.0,
+      "deficit_dipole_third_per_A": 0.2500389213975091,
+      "frozen_intake_moment_slopes": [
+        0.2500389214125931,
+        0.2500389214005194
+      ],
+      "deficit_centroid_third_per_A": 28.709392006799902,
+      "deficit_centroid_t3_coefficient_per_A": 4.784898667799983
+    },
+    {
+      "field": "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz",
+      "L": 24,
+      "dx": 0.25,
+      "dz": 0.0625,
+      "rate": 0.25,
+      "brane_deficit": 0.00881125015281174,
+      "initial_deficit_dipole": -7.326834993749698e-20,
+      "deficit_count_third_per_A": 0.0,
+      "deficit_dipole_third_per_A": 0.25003892040226605,
+      "frozen_intake_moment_slopes": [
+        0.2500389204175557,
+        0.2500389204052045
+      ],
+      "deficit_centroid_third_per_A": 28.37723547350164,
+      "deficit_centroid_t3_coefficient_per_A": 4.729539245583607
+    },
+    {
+      "field": "_scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz",
+      "L": 24,
+      "dx": 0.16666666666666666,
+      "dz": 0.041666666666666664,
+      "rate": 0.25,
+      "brane_deficit": 0.008755785686705339,
+      "initial_deficit_dipole": 9.698527246061739e-20,
+      "deficit_count_third_per_A": 5.551115123125783e-17,
+      "deficit_dipole_third_per_A": 0.24997512972040203,
+      "frozen_intake_moment_slopes": [
+        0.24997512969821695,
+        0.24997512971622338
+      ],
+      "deficit_centroid_third_per_A": 28.549708577262315,
+      "deficit_centroid_t3_coefficient_per_A": 4.758284762877053
+    },
+    {
+      "field": "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz",
+      "L": 48,
+      "dx": 0.25,
+      "dz": 0.0625,
+      "rate": 0.24999999999999994,
+      "brane_deficit": 0.008860497216811392,
+      "initial_deficit_dipole": 1.232432938255007e-19,
+      "deficit_count_third_per_A": 0.0,
+      "deficit_dipole_third_per_A": 0.25003892027788976,
+      "frozen_intake_moment_slopes": [
+        0.2500389202933495,
+        0.2500389202808595
+      ],
+      "deficit_centroid_third_per_A": 28.219513438081158,
+      "deficit_centroid_t3_coefficient_per_A": 4.703252239680193
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "status": "working, unreviewed",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "scope": "Steady neutral carrier on a finite periodic feeding slab; externally specified mouth law, fixed opening and prescribed inward current.",
+  "guard_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+  "runs": [
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-feed --memory-gib 3 --log-directory _scratch/s11c/mouth_feed_weak01 -- python3 software/stage1_solver/tools/mouth_feed_weak_flow.py --output _scratch/s11c/mouth_feed_weak01/fields",
+      "executed_source": "_scratch/s11c/mouth_feed_weak01/source.py",
+      "source_sha256": "c54ed3c37585084e7781814686b5d2dc7d25afff29217d9ba337c353d4a931ea",
+      "current_entrypoint": "software/stage1_solver/tools/mouth_feed_weak_flow.py",
+      "current_entrypoint_sha256": "9254652d5ac5d7b1a69ae17c37eeade3b49164e11e885eb6a63b68f241c45746",
+      "outcome": {
+        "guard_exit": 0,
+        "worker_exit": 0,
+        "memory_gib": 3,
+        "swap_bytes": 0,
+        "cpus": 1,
+        "deadline": null
+      },
+      "stdout_sha256": "f17263d0a03c8bc9388f09185b7c5a25c88c4340d4065743f0be0e84f982f2ee",
+      "stdout": [
+        "n=16 law=flat_density_slope U=0 steps=39 update=1.51e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2466770598 max_j_error=0.032 min_n=0.995097499 carried=-8.67361738e-19 stress=0 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0,0,0,0,0",
+        "n=16 law=flat_density_slope U=0.01 steps=39 update=1.51e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2466770693 max_j_error=0.0321 min_n=0.995036683 carried=0.002500004015 stress=0 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.2500004015,0,0.2466680516,-0.0008037163121,0.01458117332",
+        "n=16 law=flat_density_slope U=0.02 steps=39 update=1.51e-11 feed_rate=0.2499999976 mouth_rate_fd=0.246677098 max_j_error=0.0321 min_n=0.994975829 carried=0.005000008033 stress=0 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.2500004016,0,0.2466680802,-0.0008037144954,0.01458162281",
+        "n=16 law=restoring_slope U=0 steps=39 update=1.51e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2466767143 max_j_error=0.032 min_n=0.995833792 carried=0 stress=-1.084202172e-19 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0,0,0,0,0",
+        "n=16 law=restoring_slope U=0.01 steps=39 update=1.51e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2466767233 max_j_error=0.0321 min_n=0.995780318 carried=0.002499929006 stress=4.545682165e-07 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.2499929006,4.545682165e-05,0.2466626167,-0.0007053989585,0.01412982467",
+        "n=16 law=restoring_slope U=0.02 steps=39 update=1.51e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2466767502 max_j_error=0.0321 min_n=0.995726815 carried=0.004999858006 stress=9.091676889e-07 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.2499929003,4.545838445e-05,0.2466626432,-0.0007053942814,0.01413025503",
+        "n=24 law=flat_density_slope U=0 steps=39 update=1.47e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2487829321 max_j_error=0.0181 min_n=0.9947167 carried=-2.055968564e-18 stress=0 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0,0,0,0,0",
+        "n=24 law=flat_density_slope U=0.01 steps=39 update=1.47e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2487829349 max_j_error=0.0181 min_n=0.994673986 carried=0.002500001659 stress=0 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.2500001659,0,0.2487775974,-0.0001940375675,0.01408955972",
+        "n=24 law=flat_density_slope U=0.02 steps=39 update=1.47e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2487829434 max_j_error=0.0181 min_n=0.994631233 carried=0.005000003318 stress=0 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.2500001659,0,0.2487776058,-0.0001940369555,0.01409001364",
+        "n=24 law=restoring_slope U=0 steps=39 update=1.47e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2487827299 max_j_error=0.0181 min_n=0.995546485 carried=0 stress=-6.424901763e-20 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0,0,0,0,0",
+        "n=24 law=restoring_slope U=0.01 steps=39 update=1.47e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2487827325 max_j_error=0.0181 min_n=0.995509253 carried=0.00249992627 stress=2.618774927e-07 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.249992627,2.618774927e-05,0.2487712653,-0.000145565011,0.01363827085",
+        "n=24 law=restoring_slope U=0.02 steps=39 update=1.47e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2487827403 max_j_error=0.0181 min_n=0.995471994 carried=0.004999852533 stress=5.237748061e-07 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.2499926266,2.618874031e-05,0.2487712728,-0.0001455627579,0.01363870481",
+        "n=32 law=flat_density_slope U=0 steps=39 update=1.46e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2494781452 max_j_error=0.0112 min_n=0.994564191 carried=0 stress=0 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0,0,0,0,0",
+        "n=32 law=flat_density_slope U=0.01 steps=39 update=1.46e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2494781464 max_j_error=0.0112 min_n=0.994531612 carried=0.002500000909 stress=0 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.2500000909,0,0.2494747409,-4.221439184e-05,0.01418361769",
+        "n=32 law=flat_density_slope U=0.02 steps=39 update=1.46e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2494781498 max_j_error=0.0112 min_n=0.994498993 carried=0.005000001817 stress=0 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.2500000909,0,0.2494747443,-4.221414385e-05,0.01418408373",
+        "n=32 law=restoring_slope U=0 steps=39 update=1.46e-11 feed_rate=0.2499999976 mouth_rate_fd=0.249478013 max_j_error=0.0112 min_n=0.995431722 carried=0 stress=-1.084202172e-19 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0,0,0,0,0",
+        "n=32 law=restoring_slope U=0.01 steps=39 update=1.46e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2494780141 max_j_error=0.0112 min_n=0.995403422 carried=0.002499925504 stress=1.555810779e-07 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.2499925504,1.555810779e-05,0.2494679643,-1.722717358e-05,0.01372975561",
+        "n=32 law=restoring_slope U=0.02 steps=39 update=1.46e-11 feed_rate=0.2499999976 mouth_rate_fd=0.2494780173 max_j_error=0.0112 min_n=0.995375095 carried=0.004999851 stress=3.111752864e-07 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.24999255,1.555876432e-05,0.2494679671,-1.722596178e-05,0.01373020118"
+      ],
+      "fields": {
+        "_scratch/s11c/mouth_feed_weak01/fields/n16_flat_density_slope_u0.01.npz": "7f16dbf4ca1664ac161a487ee3e3e6bd743fe46c97a7b5749a01d2848b06dfec",
+        "_scratch/s11c/mouth_feed_weak01/fields/n16_flat_density_slope_u0.02.npz": "7f95601637be6bd3fcb4432b37c402d8ae79c72ee0a35554822586fee7013dfe",
+        "_scratch/s11c/mouth_feed_weak01/fields/n16_flat_density_slope_u0.npz": "1a1319fe7d27a40a3153fdd280c9d58c1115ecaa184dfa2e10a9aa27eb3c4f7a",
+        "_scratch/s11c/mouth_feed_weak01/fields/n16_restoring_slope_u0.01.npz": "7669b9ab6a91f6f81f2fef20a57fbf5fb3bb996f84dc0a3b6732230ee6499502",
+        "_scratch/s11c/mouth_feed_weak01/fields/n16_restoring_slope_u0.02.npz": "8120713c4868a6be154066d008e59ea0607ade870ea20ebad24824fac52e8080",
+        "_scratch/s11c/mouth_feed_weak01/fields/n16_restoring_slope_u0.npz": "7c791bf5a67489871158a5221ab71351524629c019c783fcd3de9ad4998f3826",
+        "_scratch/s11c/mouth_feed_weak01/fields/n24_flat_density_slope_u0.01.npz": "d00f2ba5b2d8060e353666578db237e04d81749b796121ac98e720d07dfd9c0d",
+        "_scratch/s11c/mouth_feed_weak01/fields/n24_flat_density_slope_u0.02.npz": "7722c531a869fcb0c54c4ea00e16c8e9273e7f63e5ca258cbe9ce4b62efe9c75",
+        "_scratch/s11c/mouth_feed_weak01/fields/n24_flat_density_slope_u0.npz": "5e6db7aac711643a770c53d22a78ca340094b18dc35f060009ac0184ca1140f1",
+        "_scratch/s11c/mouth_feed_weak01/fields/n24_restoring_slope_u0.01.npz": "4442b844131ad1994122b661360d7cc48cee5f5aa7a218154b8b26278535445d",
+        "_scratch/s11c/mouth_feed_weak01/fields/n24_restoring_slope_u0.02.npz": "46f942c59032297c3af1aceaa8f86d6700527be85d32344bc62dc59e7bd000f9",
+        "_scratch/s11c/mouth_feed_weak01/fields/n24_restoring_slope_u0.npz": "90dc2e473a5219cdbec5025b1208fa8239746349732954ed28faa4de7877c132",
+        "_scratch/s11c/mouth_feed_weak01/fields/n32_flat_density_slope_u0.01.npz": "7172900056e40769e98656c954a8fe1bfecaa8a4a7e6aec9b6303a4c981faec9",
+        "_scratch/s11c/mouth_feed_weak01/fields/n32_flat_density_slope_u0.02.npz": "d27917e76939bdc9d4f654c91ed60b7197c46cb7c74691009d2fe177797488cb",
+        "_scratch/s11c/mouth_feed_weak01/fields/n32_flat_density_slope_u0.npz": "3d4c66e18f6f444f483784197332d0e747707f95bfcae2d15deceb5c822a5307",
+        "_scratch/s11c/mouth_feed_weak01/fields/n32_restoring_slope_u0.01.npz": "d77c8bed7e4ec398f897fd3b3abfdf4d37fb601e2cd3a4c8e5da0582f6ec6bf0",
+        "_scratch/s11c/mouth_feed_weak01/fields/n32_restoring_slope_u0.02.npz": "bb92737a1512de9caf3af0e78b0bd7b39cff9470150ef297d812d71694912879",
+        "_scratch/s11c/mouth_feed_weak01/fields/n32_restoring_slope_u0.npz": "3e5c2ecfffc216387ac1d3e4042253062d71aa3bb12b42618561d1217ccb7ac6"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-feed --memory-gib 2 --log-directory _scratch/s11c/mouth_feed_check01 -- python3 software/stage1_solver/tools/mouth_feed_weak_check.py _scratch/s11c/mouth_feed_weak01/fields",
+      "executed_source": "_scratch/s11c/mouth_feed_check01/source.py",
+      "source_sha256": "3b252b19d34c701f36e198624dcfb4d5cfe19c5ca4616890ded95c9eb380f87b",
+      "current_entrypoint": "software/stage1_solver/tools/mouth_feed_weak_check.py",
+      "current_entrypoint_sha256": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+      "outcome": {
+        "guard_exit": 0,
+        "worker_exit": 0,
+        "memory_gib": 2,
+        "swap_bytes": 0,
+        "cpus": 1,
+        "deadline": null
+      },
+      "stdout_sha256": "b4b18d39edf236c66acda481c225127557f881eadc0f1ff7934b447a9c0b6c31",
+      "stdout": [
+        "n=16 law=flat_density_slope U=0.01 max_residual=5.26e-11 max_flux_error=2.43e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.2500001108,0,0.2495352422,-0.000690932982 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.010416244,0.015389986,0.014084448,0.0099203407",
+        "n=16 law=flat_density_slope U=0.02 max_residual=5.26e-11 max_flux_error=2.43e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.2500001108,0,0.2495352345,-0.0006909310496 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.010416476,0.015390349,0.014084813,0.0099206243",
+        "n=16 law=restoring_slope U=0.01 max_residual=4.86e-11 max_flux_error=2.43e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.2499924736,7.391329187e-06,0.2495290258,-0.0006705509443 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.009395615,0.014382539,0.013632737,0.0097900049",
+        "n=16 law=restoring_slope U=0.02 max_residual=4.86e-11 max_flux_error=2.43e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.2499924732,7.391690349e-06,0.2495290174,-0.000670548236 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.0093958169,0.01438287,0.013633085,0.0097902835",
+        "n=24 law=flat_density_slope U=0.01 max_residual=7.35e-11 max_flux_error=2.37e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.2500000213,0,0.2500170466,-0.0001401710522 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.011652563,0.016412179,0.014690249,0.0098806496",
+        "n=24 law=flat_density_slope U=0.02 max_residual=7.35e-11 max_flux_error=2.37e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.2500000213,0,0.2500170419,-0.0001401704262 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.011652835,0.016412581,0.014690643,0.0098809374",
+        "n=24 law=restoring_slope U=0.01 max_residual=6.6e-11 max_flux_error=2.37e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.2499924764,7.48335043e-06,0.2500102054,-0.0001309587403 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.010338778,0.015267591,0.01426634,0.0097575411",
+        "n=24 law=restoring_slope U=0.02 max_residual=6.6e-11 max_flux_error=2.37e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.249992476,7.483729601e-06,0.2500102004,-0.0001309576333 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.010339009,0.015267955,0.014266717,0.0097578243",
+        "n=32 law=flat_density_slope U=0.01 max_residual=9.55e-11 max_flux_error=2.35e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.2500000067,0,0.2500844919,-1.80641725e-05 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.011564957,0.016769922,0.014703131,0.0098569178",
+        "n=32 law=flat_density_slope U=0.02 max_residual=9.54e-11 max_flux_error=2.35e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.2500000067,0,0.2500844894,-1.806392319e-05 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.011565234,0.016770339,0.014703527,0.0098572065",
+        "n=32 law=restoring_slope U=0.01 max_residual=8.46e-11 max_flux_error=2.35e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.249992478,7.507447643e-06,0.2500773644,-1.2130016e-05 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.010267434,0.015573526,0.01424669,0.0097373782",
+        "n=32 law=restoring_slope U=0.02 max_residual=8.46e-11 max_flux_error=2.35e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.2499924776,7.507832794e-06,0.2500773616,-1.212939771e-05 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.010267669,0.015573903,0.014247069,0.0097376624"
+      ]
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-feed --memory-gib 4 --log-directory _scratch/s11c/mouth_feed_depth01 -- python3 software/stage1_solver/tools/mouth_feed_weak_flow.py --output _scratch/s11c/mouth_feed_depth01/fields --levels 32 --depth-cells 64",
+      "executed_source": "software/stage1_solver/tools/mouth_feed_weak_flow.py",
+      "source_sha256": "9254652d5ac5d7b1a69ae17c37eeade3b49164e11e885eb6a63b68f241c45746",
+      "current_entrypoint": "software/stage1_solver/tools/mouth_feed_weak_flow.py",
+      "current_entrypoint_sha256": "9254652d5ac5d7b1a69ae17c37eeade3b49164e11e885eb6a63b68f241c45746",
+      "outcome": {
+        "guard_exit": 0,
+        "worker_exit": 0,
+        "memory_gib": 4,
+        "swap_bytes": 0,
+        "cpus": 1,
+        "deadline": null
+      },
+      "stdout_sha256": "ec1b962c0a6431b11fbd9a4fa7a443e9a88440fe1e4c2239f6d6349063b70afd",
+      "stdout": [
+        "n=32 law=flat_density_slope U=0 steps=39 update=1.45e-11 feed_rate=0.2499999977 mouth_rate_fd=0.2499855423 max_j_error=0.000787 min_n=0.994430342 carried=0 stress=0 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0,0,0,0,0",
+        "n=32 law=flat_density_slope U=0.01 steps=39 update=1.45e-11 feed_rate=0.2499999977 mouth_rate_fd=0.2499855423 max_j_error=0.000787 min_n=0.994398016 carried=0.002500000899 stress=0 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.2500000899,0,0.2499853724,-1.494104339e-06,0.01411772035",
+        "n=32 law=flat_density_slope U=0.02 steps=39 update=1.45e-11 feed_rate=0.2499999977 mouth_rate_fd=0.2499855424 max_j_error=0.000787 min_n=0.99436565 carried=0.005000001799 stress=0 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.25000009,0,0.2499853725,-1.494102286e-06,0.01411818582",
+        "n=32 law=restoring_slope U=0 steps=39 update=1.44e-11 feed_rate=0.2499999977 mouth_rate_fd=0.2499855306 max_j_error=0.000787 min_n=0.995273865 carried=0 stress=1.084202172e-19 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0,0,0,0,0",
+        "n=32 law=restoring_slope U=0.01 steps=39 update=1.44e-11 feed_rate=0.2499999977 mouth_rate_fd=0.2499855306 max_j_error=0.000787 min_n=0.995245372 carried=0.002499925578 stress=1.552284809e-07 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.2499925578,1.552284809e-05,0.2499778957,1.444795429e-05,0.01366507095",
+        "n=32 law=restoring_slope U=0.02 steps=39 update=1.44e-11 feed_rate=0.2499999977 mouth_rate_fd=0.2499855307 max_j_error=0.000787 min_n=0.995216851 carried=0.004999851149 stress=3.104700686e-07 slopes(flow,stress,flow_fd,stress_fd,density_moment)=0.2499925574,1.552350343e-05,0.2499778954,1.444862922e-05,0.013665516"
+      ],
+      "fields": {
+        "_scratch/s11c/mouth_feed_depth01/fields/n32_flat_density_slope_u0.01.npz": "d48df2dabd65d03cb63bef7ece692e2bf8c4ff1bf3454d4e7fd862c8d86c653d",
+        "_scratch/s11c/mouth_feed_depth01/fields/n32_flat_density_slope_u0.02.npz": "1e582f33177dd40dc94f62ea6fc9dfa021c9b41bd3e031cf2889afb8f6622c80",
+        "_scratch/s11c/mouth_feed_depth01/fields/n32_flat_density_slope_u0.npz": "6af3fbbb23b673ac0df289ba41d8dc59c9391de8ebcfaea8ec9fd26b242f839f",
+        "_scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.01.npz": "f6ad6f84ae0efa9af79032663de4277620b04ad862709db38aee10ce73271b18",
+        "_scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.02.npz": "b0775f76c5e7aff88195641927dfab27304a5d347d4fc8e7384e74b3ba315c28",
+        "_scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz": "c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-feed --memory-gib 3 --log-directory _scratch/s11c/mouth_feed_depth_check01 -- python3 software/stage1_solver/tools/mouth_feed_weak_check.py _scratch/s11c/mouth_feed_depth01/fields --levels 32",
+      "executed_source": "software/stage1_solver/tools/mouth_feed_weak_check.py",
+      "source_sha256": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+      "current_entrypoint": "software/stage1_solver/tools/mouth_feed_weak_check.py",
+      "current_entrypoint_sha256": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+      "outcome": {
+        "guard_exit": 0,
+        "worker_exit": 0,
+        "memory_gib": 3,
+        "swap_bytes": 0,
+        "cpus": 1,
+        "deadline": null
+      },
+      "stdout_sha256": "696e1f0f70833cc3e1c684d52215d2c9d8e050000e8760ba1b4a0b5417aac2ad",
+      "stdout": [
+        "n=32 law=flat_density_slope U=0.01 max_residual=3.55e-10 max_flux_error=2.33e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.2500000066,0,0.2500023116,-1.090773608e-07 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.011476552,0.016653453,0.014627511,0.0098297475",
+        "n=32 law=flat_density_slope U=0.02 max_residual=3.55e-10 max_flux_error=2.33e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.2500000066,0,0.2500023116,-1.09075079e-07 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.011476828,0.016653871,0.014627907,0.0098300358",
+        "n=32 law=restoring_slope U=0.01 max_residual=3.1e-10 max_flux_error=2.33e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.2499924907,7.49447271e-06,0.2499948175,-1.876079684e-06 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.010168217,0.015450875,0.014173532,0.0097118827",
+        "n=32 law=restoring_slope U=0.02 max_residual=3.1e-10 max_flux_error=2.33e-09 slopes(flow,stress_parts,flow_fd,stress_fd)=0.2499924903,7.494856777e-06,0.249994817,-1.875970623e-06 density_half_difference/U(r=0,.25,.5,.75,1)=0,0.010168451,0.015451251,0.014173911,0.0097121667"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "Target radius 1.5, fixed companion radius 1 and inward rate 0.25, separation 4. Move the outer lateral reservoir while freezing the L=48 mouth inputs, cell spacings and depth. Compare the signed brane-side force per prescribed axial target acceleration after subtracting the static load at equal position.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "sources": {
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/lateral_mouth_acceleration.py": "0f04c0edb17b6c17bc1dfd2081412017caed4dfd7c1ef6808fe84f751394219b",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/lateral_mouth_radius.py": "4f0d9fafd7bd4b71251ae87bf91d60d8c60be0ee01170d2c4c184eb160954b08",
+    "software/stage1_solver/tools/lateral_paired_acceleration.py": "42e94c2f007d335a233c31afda180e29e30ecfbb0d13b0790c0295c678fd672e",
+    "software/stage1_solver/tools/lateral_companion_load.py": "6ed30f3a6b550d605119ec0eb5572246600f84d6bb6eba3b26ce93aa8459e754",
+    "software/stage1_solver/tools/lateral_companion_domain.py": "8c5d8d7eedb65035347fb2a5a22d5df709c1c6d8fc3dc70877c5de4b92ff45cd",
+    "docs/_measurements/lateral_companion_load.json": "ab5f5f9e560a3ca1321eebc604d2f28e310cb98cfcf0e513e989363dbb1d3cd4"
+  },
+  "runs": [
+    {
+      "L": 72,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-companion-domain --memory-gib 6 --log-directory _scratch/s11c/lateral_companion_domain_L72_01 -- python3 software/stage1_solver/tools/lateral_companion_domain.py 72 _scratch/s11c/lateral_companion_domain_L72_01/fields",
+      "inputs": {
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd"
+      },
+      "fields": {
+        "_scratch/s11c/lateral_companion_domain_L72_01/fields/base.npz": "90a30f84d277216a73b29eae224ac06235fb83cb1482fd74378f97bb0e409704",
+        "_scratch/s11c/lateral_companion_domain_L72_01/fields/h_0.npz": "899b5c176b8b51723e8e09295ca4c499f57ff2a759b29f59272d3309526cd2b5",
+        "_scratch/s11c/lateral_companion_domain_L72_01/fields/h_0.01.npz": "6ac340b25f5e6b77145afa2de894ed3f8303bfcb91d349fd9860f4f8742337f6"
+      },
+      "started_utc": "2026-11-15T01:18:27.212616+00:00",
+      "guard_outcome_written_utc": "2026-11-15T01:23:12.019416+00:00",
+      "wall_seconds": 284.724288264988,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 6,
+      "peak_memory_bytes_sampled": 685555712,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_path": "_scratch/s11c/lateral_companion_domain_L72_01/stdout",
+      "stdout_bytes": 913,
+      "stdout_sha256": "5773ab979b1df225dfff5fc92fa63d01078fdd6e326af8a971082b78de515b8f",
+      "stdout": [
+        "calibration_L=48 mean_speed=0.0598456527169 max_profile_error=5.55112e-17",
+        "state_d=4 target_rate=0.842148161537 mean_speed=0.0598456527169 bath=1.09214816153 residual=4.8787e-12",
+        "L=72 d=4 target_radius=1.5 dx=0.25 dz=0.0625 companion_rate=0.25 target_static=0.00105116995378 companion_static=0.00105130317578 rp=3.04486e-12 bp=5.85895e-11",
+        "omega=0 carry_per_A=-7.84513065162e-05 stress_per_A=-2.9485121899e-08 cross_per_A=-7.8480791638e-05 direct=-7.86937967365e-05 fd=-7.84807916094e-05 fd_half=-7.84807916397e-05 target_reaction=0.0169419878018 residual=9.16023e-12 bh=1.33506e-11 steps=19",
+        "omega=0.01 carry_per_A=-8.63219453658e-05 stress_per_A=-2.97422541151e-08 cross_per_A=-8.635168762e-05 direct=-8.6560958597e-05 fd=-8.63516876103e-05 fd_half=-8.63516876233e-05 target_reaction=0.0169722834256 residual=2.607e-11 bh=1.42849e-11 steps=18",
+        "shift=0.0005 matched=-8.63517070349e-05 matched_half=-8.63516376459e-05"
+      ]
+    },
+    {
+      "L": 96,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-companion-domain --memory-gib 10 --log-directory _scratch/s11c/lateral_companion_domain_L96_01 -- python3 software/stage1_solver/tools/lateral_companion_domain.py 96 _scratch/s11c/lateral_companion_domain_L96_01/fields",
+      "inputs": {
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd"
+      },
+      "fields": {
+        "_scratch/s11c/lateral_companion_domain_L96_01/fields/base.npz": "707b89fadc22b6183d2e5dbc9956f0943194c7a449b1028d0c29a6c398fae9f7",
+        "_scratch/s11c/lateral_companion_domain_L96_01/fields/h_0.npz": "aa714b85eca0d0492764073eb63daedd7f98e2d3101b94870f6a8d67b373b5cb",
+        "_scratch/s11c/lateral_companion_domain_L96_01/fields/h_0.01.npz": "3f0b3723e6a86504968c399e3ed0dfcc9693884f0ea7bcf7f4c60e54a76129ff"
+      },
+      "started_utc": "2026-11-15T01:18:27.212579+00:00",
+      "guard_outcome_written_utc": "2026-11-15T01:29:43.118568+00:00",
+      "wall_seconds": 675.8599410830066,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 10,
+      "peak_memory_bytes_sampled": 1225654272,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_path": "_scratch/s11c/lateral_companion_domain_L96_01/stdout",
+      "stdout_bytes": 908,
+      "stdout_sha256": "f13b41c54854baaf186a302e02fa24f6035614dfefb124787e57d6d40033769a",
+      "stdout": [
+        "calibration_L=48 mean_speed=0.0598456527169 max_profile_error=0",
+        "state_d=4 target_rate=0.842148161464 mean_speed=0.0598456527169 bath=1.09214816147 residual=7.8022e-12",
+        "L=96 d=4 target_radius=1.5 dx=0.25 dz=0.0625 companion_rate=0.25 target_static=0.00105124350258 companion_static=0.00105129701733 rp=1.16038e-12 bp=5.85925e-11",
+        "omega=0 carry_per_A=-0.00010937552259 stress_per_A=-3.05357800428e-08 cross_per_A=-0.00010940605837 direct=-0.000109604353563 fd=-0.000109406058375 fd_half=-0.000109406058353 target_reaction=0.0170463975919 residual=1.40847e-11 bh=1.44376e-11 steps=19",
+        "omega=0.01 carry_per_A=-0.000120595388017 stress_per_A=-3.09056688126e-08 cross_per_A=-0.000120626293686 direct=-0.000120819261054 fd=-0.000120626293693 fd_half=-0.000120626293659 target_reaction=0.0170880297226 residual=8.94314e-12 bh=1.98516e-11 steps=19",
+        "shift=0.0005 matched=-0.000120626295411 matched_half=-0.000120626321432"
+      ]
+    },
+    {
+      "L": 128,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-companion-domain --memory-gib 16 --log-directory _scratch/s11c/lateral_companion_domain_L128_01 -- python3 software/stage1_solver/tools/lateral_companion_domain.py 128 _scratch/s11c/lateral_companion_domain_L128_01/fields",
+      "inputs": {
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd"
+      },
+      "fields": {
+        "_scratch/s11c/lateral_companion_domain_L128_01/fields/base.npz": "f9589576f2fa0172dc43d81262dd3bb264c42c0fb68ea6bc302de6038722e4e9",
+        "_scratch/s11c/lateral_companion_domain_L128_01/fields/h_0.npz": "94618a372e3d4ee6df5d73c6d8795a8c1292d8def4b37b2c5f760ab729e189df",
+        "_scratch/s11c/lateral_companion_domain_L128_01/fields/h_0.01.npz": "305bfb07ef102ce719c54dabf549e4efe4fd6928f25b56783b27ac6ee0e59ada"
+      },
+      "started_utc": "2026-11-15T01:18:27.212330+00:00",
+      "guard_outcome_written_utc": "2026-11-15T01:44:40.063375+00:00",
+      "wall_seconds": 1572.8342672369909,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 16,
+      "peak_memory_bytes_sampled": 2098216960,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_path": "_scratch/s11c/lateral_companion_domain_L128_01/stdout",
+      "stdout_bytes": 917,
+      "stdout_sha256": "de2af31f9a57a1106bbf2d24906272c2ebda0d9556bcf0e66d96f08b4c599d8c",
+      "stdout": [
+        "calibration_L=48 mean_speed=0.0598456527169 max_profile_error=1.66533e-16",
+        "state_d=4 target_rate=0.842148161434 mean_speed=0.0598456527169 bath=1.09214816143 residual=3.2549e-12",
+        "L=128 d=4 target_radius=1.5 dx=0.25 dz=0.0625 companion_rate=0.25 target_static=0.00105127452454 companion_static=0.0010512945146 rp=1.67962e-12 bp=5.85855e-11",
+        "omega=0 carry_per_A=-0.000132593603868 stress_per_A=-3.13253106628e-08 cross_per_A=-0.000132624929178 direct=-0.000132812182183 fd=-0.000132624929177 fd_half=-0.00013262492919 target_reaction=0.0171247138829 residual=2.08093e-11 bh=1.17039e-11 steps=19",
+        "omega=0.01 carry_per_A=-0.000148599348423 stress_per_A=-3.18564021414e-08 cross_per_A=-0.000148631204825 direct=-0.00014881085338 fd=-0.000148631204822 fd_half=-0.000148631204783 target_reaction=0.017182512835 residual=1.11699e-11 bh=1.33123e-11 steps=19",
+        "shift=0.0005 matched=-0.000148631202831 matched_half=-0.000148631159463"
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "L": 24,
+      "source": "archive",
+      "omega": 0.0,
+      "cross": 0.00016616960723,
+      "direct": 0.00016583999119,
+      "static": 0.00105172408635
+    },
+    {
+      "L": 24,
+      "source": "archive",
+      "omega": 0.01,
+      "cross": 0.000164551325099,
+      "direct": 0.000164222461696,
+      "static": 0.00105172408635
+    },
+    {
+      "L": 48,
+      "source": "archive",
+      "omega": 0.0,
+      "cross": -1.67896079725e-05,
+      "direct": -1.70319705938e-05,
+      "static": 0.00105133083093,
+      "delta_from_previous": -0.0001829592152025,
+      "absolute_step_over_previous_magnitude": 1.1010389821121802
+    },
+    {
+      "L": 48,
+      "source": "archive",
+      "omega": 0.01,
+      "cross": -2.14600548509e-05,
+      "direct": -2.17002072929e-05,
+      "static": 0.00105133083093,
+      "delta_from_previous": -0.0001860113799499,
+      "absolute_step_over_previous_magnitude": 1.130415569962678
+    },
+    {
+      "L": 72,
+      "source": "new",
+      "omega": 0.0,
+      "cross": -7.8480791638e-05,
+      "direct": -7.86937967365e-05,
+      "static": 0.00105130317578,
+      "delta_from_previous": -6.169118366550001e-05,
+      "absolute_step_over_previous_magnitude": 3.6743671303430734
+    },
+    {
+      "L": 72,
+      "source": "new",
+      "omega": 0.01,
+      "cross": -8.635168762e-05,
+      "direct": -8.6560958597e-05,
+      "static": 0.00105130317578,
+      "delta_from_previous": -6.48916327691e-05,
+      "absolute_step_over_previous_magnitude": 3.023833499958578
+    },
+    {
+      "L": 96,
+      "source": "new",
+      "omega": 0.0,
+      "cross": -0.00010940605837,
+      "direct": -0.000109604353563,
+      "static": 0.00105129701733,
+      "delta_from_previous": -3.092526673199999e-05,
+      "absolute_step_over_previous_magnitude": 0.3940488632510956
+    },
+    {
+      "L": 96,
+      "source": "new",
+      "omega": 0.01,
+      "cross": -0.000120626293686,
+      "direct": -0.000120819261054,
+      "static": 0.00105129701733,
+      "delta_from_previous": -3.4274606066e-05,
+      "absolute_step_over_previous_magnitude": 0.3969187749616329
+    },
+    {
+      "L": 128,
+      "source": "new",
+      "omega": 0.0,
+      "cross": -0.000132624929178,
+      "direct": -0.000132812182183,
+      "static": 0.0010512945146,
+      "delta_from_previous": -2.3218870808000002e-05,
+      "absolute_step_over_previous_magnitude": 0.21222655448820008
+    },
+    {
+      "L": 128,
+      "source": "new",
+      "omega": 0.01,
+      "cross": -0.000148631204825,
+      "direct": -0.00014881085338,
+      "static": 0.0010512945146,
+      "delta_from_previous": -2.8004911139000008e-05,
+      "absolute_step_over_previous_magnitude": 0.23216257652663239
+    }
+  ],
+  "domain_readout": {
+    "command": "python3 scripts/s11c_guarded_run.py --pool lateral-companion-domain --memory-gib 2 --log-directory _scratch/s11c/lateral_companion_domain_readout01 -- python3 _scratch/s11c/lateral_companion_domain_batch01/collect.py",
+    "stdout_sha256": "ce874baf170c6f1936b6505beb43687c64fe7b979acc72fa2eaf24a86e61536d",
+    "stdout": [
+      "L=24 omega=0 cross=0.00016616960723 direct=0.00016583999119 static=0.00105172408635",
+      "L=48 omega=0 cross=-1.67896079725e-05 direct=-1.70319705938e-05 static=0.00105133083093",
+      "from=24 to=48 omega=0 change=-0.000182959215203 absolute_step_pct=110.1039",
+      "L=72 omega=0 cross=-7.8480791638e-05 direct=-7.86937967365e-05 static=0.00105130317578",
+      "from=48 to=72 omega=0 change=-6.16911836655e-05 absolute_step_pct=367.43671",
+      "L=96 omega=0 cross=-0.00010940605837 direct=-0.000109604353563 static=0.00105129701733",
+      "from=72 to=96 omega=0 change=-3.0925266732e-05 absolute_step_pct=39.404886",
+      "L=128 omega=0 cross=-0.000132624929178 direct=-0.000132812182183 static=0.0010512945146",
+      "from=96 to=128 omega=0 change=-2.3218870808e-05 absolute_step_pct=21.222655",
+      "L=24 omega=0.01 cross=0.000164551325099 direct=0.000164222461696 static=0.00105172408635",
+      "L=48 omega=0.01 cross=-2.14600548509e-05 direct=-2.17002072929e-05 static=0.00105133083093",
+      "from=24 to=48 omega=0.01 change=-0.00018601137995 absolute_step_pct=113.04156",
+      "L=72 omega=0.01 cross=-8.635168762e-05 direct=-8.6560958597e-05 static=0.00105130317578",
+      "from=48 to=72 omega=0.01 change=-6.48916327691e-05 absolute_step_pct=302.38335",
+      "L=96 omega=0.01 cross=-0.000120626293686 direct=-0.000120819261054 static=0.00105129701733",
+      "from=72 to=96 omega=0.01 change=-3.4274606066e-05 absolute_step_pct=39.691877",
+      "L=128 omega=0.01 cross=-0.000148631204825 direct=-0.00014881085338 static=0.0010512945146",
+      "from=96 to=128 omega=0.01 change=-2.8004911139e-05 absolute_step_pct=23.216258"
+    ],
+    "collector_sha256": "580996b148c64b564a6c6c29aca906a23ea3245918bfe60529d7db4f821eedc6",
+    "guard_exit": 0,
+    "worker_exit": 0
+  },
+  "inverse_L_check": {
+    "command": "python3 scripts/s11c_guarded_run.py --pool lateral-companion-domain --memory-gib 1 --log-directory _scratch/s11c/lateral_companion_domain_size_check01 -- python3 _scratch/s11c/lateral_companion_domain_batch01/size_check.py",
+    "script_sha256": "5c7ce32d1a00b3cd480942bf5a1711973c8556c2383ca687ce58928a3b46f846",
+    "input_manifest_before_appending_check_sha256": "b9f427d3ce6b7a7a1e42c41e3d9037dc0ee58fdacdddf949c4d80206e979a013",
+    "stdout_sha256": "ba3c3138d363dd44e093dddbe35f40b87b759ae85bfc1dbe878f8f71453a0e81",
+    "stdout": [
+      "omega=0 readout=cross L1=48 L2=72 test_L=96 intercept=-0.000201863158969 slope=0.00888353044783 predicted=-0.000109326383471 observed=-0.00010940605837 prediction_difference_pct=0.0728249426",
+      "omega=0 readout=cross L1=72 L2=96 test_L=128 intercept=-0.000202181858566 slope=0.00890647681882 predicted=-0.000132600008419 observed=-0.000132624929178 prediction_difference_pct=0.0187904032",
+      "omega=0 readout=direct L1=48 L2=72 test_L=96 intercept=-0.000202017449022 slope=0.00887930296455 predicted=-0.000109524709808 observed=-0.000109604353563 prediction_difference_pct=0.0726647734",
+      "omega=0 readout=direct L1=72 L2=96 test_L=128 intercept=-0.000202336024043 slope=0.00890224036603 predicted=-0.000132787271183 observed=-0.000132812182183 prediction_difference_pct=0.0187565626",
+      "omega=0 static_change_pct=-0.000238061172 absolute_load_change_pct=21.2226554",
+      "omega=0.01 readout=cross L1=48 L2=72 test_L=96 intercept=-0.000216134953158 slope=0.00934439511875 predicted=-0.000118797504005 observed=-0.000120626293686 prediction_difference_pct=1.51607881",
+      "omega=0.01 readout=cross L1=72 L2=96 test_L=128 intercept=-0.000223450111884 slope=0.00987108654701 predicted=-0.000146332248236 observed=-0.000148631204825 prediction_difference_pct=1.54675231",
+      "omega=0.01 readout=direct L1=48 L2=72 test_L=96 intercept=-0.000216282461205 slope=0.00933994818779 predicted=-0.000118991334249 observed=-0.000120819261054 prediction_difference_pct=1.51294321",
+      "omega=0.01 readout=direct L1=72 L2=96 test_L=128 intercept=-0.000223594168425 slope=0.00986639110762 predicted=-0.000146512987897 observed=-0.00014881085338 prediction_difference_pct=1.54415181",
+      "omega=0.01 static_change_pct=-0.000238061172 absolute_load_change_pct=23.2162577"
+    ],
+    "guard_exit": 0,
+    "worker_exit": 0
+  }
+}

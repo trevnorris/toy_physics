@@ -1,0 +1,123 @@
+One throat, 0PN, no sideways flow. Working result, unreviewed.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c.
+SHA256 of the prior working note 08e511a66987c83069eea50d37b8effc6fc543bccc3d9d309681ff882b0633f8.
+
+For a stationary ungauged carrier, mechanical head per constituent contains
+the kinetic term, EOS enthalpy, confinement and quantum potential. Integrating
+dp/n for p=K n^5 gives the difference of h=(5K/4)n^4. The pressure-only
+formula requires homogeneous resting far states with equal potential.
+The full signed energy drop has not been measured for a native draining throat.
+
+For the archived conservative segment, both boundaries lie on a stationary
+one-frequency carrier with m=hbar=mu=1 and K=4/5. Its endpoint densities
+are 1 and 81/100. SymPy uses its real amplitude and constant current;
+Wolfram uses the real and imaginary Cartesian fields. This is an exact
+head evaluation on the old equations; no old shooting jobs were replayed.
+Residual pressure enthalpy by itself does not give total head.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool one-throat-reservoir --memory-gib 2 --log-directory _scratch/s11c/one_throat_reservoir_head_sympy01 -- python3 -c 'import sympy as s
+n, K, p = s.symbols("n K p", positive=True)
+pressure = K*n**5
+h = s.integrate(s.diff(pressure,n)/n, n)
+density = s.solve(pressure-p,n)[0]
+hr = s.simplify(h.subs(n,density))
+z = s.symbols("z", real=True)
+a = s.Function("a",positive=True)(z)
+j = s.symbols("j", real=True)
+kin = j**2/(2*a**4)
+B = kin + a**8 - a.diff(z,2)/(2*a)
+ode = j**2/a**3 + 2*(a**8-1)*a
+full = s.simplify(B.subs(a.diff(z,2),ode))
+dh = 1-s.Rational(81,100)**4
+print("uniform-rest enthalpy at pressure p =", hr, flush=True)
+print("archived segment EOS drop =", dh, "=", s.N(dh,9), flush=True)
+print("archived segment full head at any cut =", full, flush=True)
+assert s.simplify(hr-5*K**s.Rational(1,5)*p**s.Rational(4,5)/4)==0 and full==1'
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start UTC 2026-11-14T02:50:09.687054+00:00. End UTC (outcome file timestamp) 2026-11-14T02:50:10.298585+00:00.
+Child and guard exited 0. Verified 2 GiB, zero swap. Recorded memory.peak 54480896 bytes.
+Stdout _scratch/s11c/one_throat_reservoir_head_sympy01/stdout (163 bytes, SHA256 2edc2dc0dba7236117e06590f8e405474953ab7762a422d1b6bb481963e431ac).
+Literal stdout
+uniform-rest enthalpy at pressure p = 5*K**(1/5)*p**(4/5)/4
+archived segment EOS drop = 56953279/100000000 = 0.569532790
+archived segment full head at any cut = 1
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool one-throat-reservoir --memory-gib 4 --log-directory _scratch/s11c/one_throat_reservoir_head_wolfram01 -- math -noprompt -run 'ClearAll["Global`*"]; h[n_] := D[k x^5/4,x]/.x->n; hp=FullSimplify[h[(p/k)^(1/5)],k>0&&p>0]; den=x[z]^2+y[z]^2; vel=(x[z] y'"'"'[z]-y[z] x'"'"'[z])/den; energy=vel^2/2+den^4-D[Sqrt[den],{z,2}]/(2 Sqrt[den]); ode={x'"'"''"'"'[z]->2(den^4-1)x[z],y'"'"''"'"'[z]->2(den^4-1)y[z]}; head=FullSimplify[Together[energy/.ode],den>0]; diff=(h[1]-h[(9/10)^2])/.k->4/5; Print["uniform-rest enthalpy = ",ToString[hp,InputForm]]; Print["segment EOS drop = ",ToString[diff,InputForm]]; Print["segment full head = ",ToString[head,InputForm]]; Quit[If[head===1&&FullSimplify[hp==5 k^(1/5)p^(4/5)/4,k>0&&p>0],0,1]]'
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start UTC 2026-11-14T02:50:10.003984+00:00. End UTC (outcome file timestamp) 2026-11-14T02:50:14.477554+00:00.
+Child and guard exited 0. Verified 4 GiB, zero swap. Recorded memory.peak 214331392 bytes.
+Stdout _scratch/s11c/one_throat_reservoir_head_wolfram01/stdout (116 bytes, SHA256 c858e0048c0b2129a32fa8edad63184334e74356f64a119b0e53619fa74e03d3).
+Literal stdout
+"uniform-rest enthalpy = ""(5*(k*p^4)^(1/5))/4"
+"segment EOS drop = ""56953279/100000000"
+"segment full head = ""1"
+
+SHA256 9c16d156bef23331bfbdb41d4643b0903967ac12e1a4f4214c266163f741b443  research/pde/paper/pde.tex
+$ sed -n '343,350p;439,452p' research/pde/paper/pde.tex
+\[
+P(\rho)=K\rho^5,
+\qquad
+U(\rho)=\frac{K}{4}\rho^5,
+\qquad
+h(\rho)=\frac{\mathrm dU}{\mathrm d\rho}=\frac{5K}{4}\rho^4.
+\]
+The corresponding bulk sound speed is
+\end{equation}
+The quantum potential is
+\begin{equation}
+ Q(\rho)=-\frac{\hbar^2}{2m}\frac{\nabla_4^2\sqrt\rho}{\sqrt\rho}.
+ \label{eq:quantum-potential}
+\end{equation}
+The exact Euler-like identity is then
+\begin{equation}
+ m(\partial_t+v_j\partial_j)v_i
+ =
+ q_\star(E_i+v_jB_{ij})
+ -\partial_i\!\left(V_{\mathrm{conf}}+h(\rho)+Q(\rho)\right),
+ \label{eq:euler-like}
+\end{equation}
+
+SHA256 936a212d87d40c5cbf8c0ef921ee3c6f0c9bf34abf56145a8d852cd053dbe4bb  docs/_measurements/feed_backpressure_current.txt
+$ sed -n '4,16p' docs/_measurements/feed_backpressure_current.txt
+A smooth one-dimensional segment of the conservative carrier on [0,1/2].
+The complete complex field at the feed is exp(-it). Both ends have fixed
+densities, 1 and 81/100, hence fixed scalar pressures P=(4/5)n^5. The
+number current is positive toward the outlet. Unit area, zero transverse
+velocity, no gauge, confinement or conversion terms. These illustrative
+numbers specify boundary controls for a test of what pressure fixes.
+
+Writing psi=z(w)exp(-it) gives z''=2(|z|^8-1)z. SciPy solves the
+two real field equations by collocation. Wolfram writes z=a exp(i theta)
+and shoots with two unknowns, initial amplitude slope and conserved
+current j, satisfying a''=j^2/a^3+2(a^8-1)a and theta'=j/a^2.
+The independently specified outlet conditions are a=9/10 and theta equal
+to the chosen phase. Neither solver takes an imposed current as data.
+
+SHA256 1a56622dbcb2538538008f118ad335692765ad15b381b0c43c8b1a38e7d619fd  docs/_measurements/far_bulk_pressure_sweep.txt
+$ sed -n '1,8p' docs/_measurements/far_bulk_pressure_sweep.txt
+One throat at 0PN, zero sideways flow. Far-bulk pressure control and material readout.
+Source and archived-configuration check. Unreviewed working note.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c
+No numerical pressure sweep was run. The archived cases below vary boundary coefficients.
+Their current diagnostic is a volume norm. They have no far-pressure setting.
+
+$ jq -c '{case:.grid,converged:.results.converged,mouth:.results.boundaries.matter_w_lower,exit:.results.boundaries.matter_w_upper,spatial_current_l2:.results.surrogate_values.spatial_current_l2}' software/stage1_solver/runs/step5_boundary_characterization/robin_only_impedance_coefficients/step5_boundary_characterization_engineering_smoke/robin_only_alpha_scale_0.5_nr_64_nw_32/manifest.json software/stage1_solver/runs/step5_boundary_characterization/robin_only_impedance_coefficients/step5_boundary_characterization_engineering_smoke/robin_only_alpha_scale_1.0_nr_64_nw_32/manifest.json software/stage1_solver/runs/step5_boundary_characterization/robin_only_impedance_coefficients/step5_boundary_characterization_engineering_smoke/robin_only_alpha_scale_2.0_nr_64_nw_32/manifest.json
+{"case":"robin_only_alpha_scale_0.5_nr_64_nw_32","converged":true,"mouth":{"alpha":0.0,"beta":1.0,"gamma":0.0,"kind":"robin"},"exit":{"alpha":0.125,"beta":1.0,"gamma":0.0,"kind":"robin"},"spatial_current_l2":0.0}
+
+SHA256 9a5ee08c1d77195ca3f59af57d948eb899fb575e8b8558d9cf4d066d620b30f1  docs/_measurements/rim_curvature_head.txt
+$ sed -n '22,34p' docs/_measurements/rim_curvature_head.txt
+Euler projection including this order force gives n B'=mu_order q', where
+B=m u^2/2 + V_conf + h(n) + Q for a steady conservative ungauged carrier.
+Then B'=-I q'^2/(A n^2 M). Integral power transfer to the carrier from the
+steady layer is -I^2 Rq with Rq=integral q'^2/(A n^2 M) dz. B has energy
+per constituent units; I^2 Rq has energy per time units. Flow from feed to bulk
+requires positive available head in this closed set of sectors; the condition
+does not prove hydraulic or phase matching, a stationary profile, or stability.
+An independent drive, further work or moving boundary changes the energy balance.
+Endpoint normal stresses and physical collar conormal forces live on different
+cuts. Normal-tube fields alone do not compute tangential edge fluxes at a seam.
+
+SymPy varies the meridian area integrand and the volume-weighted order energy.
+Wolfram varies the endpoints of a conical frustum, subtracts the interior first

@@ -1,0 +1,125 @@
+Sideways response of the neutral carrier in the open sleeve. Working result.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c. No new commit or independent physics review.
+Compare prescribed axial number rates zero and 0.125 at the same outlet condition.
+Lengths and materials use open_sleeve_current.txt. Positive w runs into the receiver.
+Each coefficient is a first derivative with respect to imposed frame acceleration A.
+The force unit divided by the acceleration unit has units of mass. The external
+acceleration is a control. No bare throat mass or free-motion equation enters.
+
+Solve the angular l=1 carrier equation in the instantaneous comoving frame, with
+potential m A r cos(theta). This is a stationary family in an accelerating rig.
+With psi0 the saved carrier and eta cos(theta) its perturbation per unit A, linearize
+[(kinetic + 5K|psi|^8/4 - mu) psi + m A x psi]=0. The finite-volume angular kinetic
+term integrates 2/r^2 over each radial shell. Hold the bath amplitudes and feed phase
+fixed in that frame. On the far bath the phase perturbation per unit A is either zero
+or (m/hbar) tau x. Use tau=1 solver time unit for an explicit boundary sensitivity.
+The latter specifies an external relative drift as well as the frame acceleration.
+Neither is a selected physical receiver law. The scalar intake has zero first
+variation for both dipoles. All stresses use the neutral carrier convention
+Pi_ij=m n v_i v_j + K n^5 delta_ij - hbar^2 n partial_i partial_j ln(n)/(4m).
+
+H=ln n0, B=2 Re(eta/psi0), G=(hbar/m) Im(eta/psi0) and phi=(hbar/m) arg(psi0).
+B and G multiply cos(theta). At a flat cut the angular means for advection and
+stress use the equations audited in sleeve_outlet_dipole.txt. At the reflecting
+side, H_r=B_r=0 and advection through it vanishes. Per unit side area the means
+are 5 K n^5 B/3 for pressure and -hbar^2 n(B H_rr+B_rr-2B/r^2)/(12m) for
+quantum stress. The latter includes the variation of the Cartesian normal direction
+in the Hessian expressed in spherical coordinates. Constant-density end baths give
+B=0 and zero isotropic lateral traction there. The mixed quantum flux integrated
+over a bath face reduces to -4 pi hbar^2 n r^2 B_w/(12m) at the outer rim.
+The readout uses a second-order one-sided axial derivative and a reflecting radial
+extrapolation there. Results at 64 and 128 cells disclose its mesh sensitivity.
+The exact convective end flux derivative with these prescribed bath phases is
+m times the measured axial number rate times tau. Feed has tau=0. The baseline
+carrier is axisymmetric so integrated lateral momentum fluxes vanish at A=0.
+Comoving-frame readings exclude bulk transport from a common lab-frame boost.
+
+The wall balance is local to L/4<w<3L/4 and uses +w on both axial cuts. In this
+frame, out - in + side = -m integral n. Signs for 'wall_total' give the force
+the carrier exerts on that wall segment. The carrier mass is the inventory in
+that interval. The opening at the sleeve/receiver join is internal; the reported
+far-bath flux is downstream of that join. Receiver support and missing body
+terms preclude summing these readings into a physical body force. The measured
+local residual is not a bound on the separate wall or bath integrals. F and F/2
+were not applied to a freely moving mouth.
+
+Run provenance. The positive and zero fine-grid fields were newly solved at
+64 and 128 cells. The previous 8/16/32 saved states also supported an initial
+wall-only diagnostic (_scratch/s11c/sleeve_lateral_balance01); this record
+cites the fine-grid runs. The uniform-bath solver version is preserved in its
+guarded run directory. The current source adds the optional far-bath gradient
+(default zero) and an explicit bath advection readout. All four runs report
+guard/child exit codes 0, verified 4 GiB hard memory, zero swap and no deadline.
+The directory names in the commands refer to fresh output directories.
+
+SHA256, sources and outputs
+3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519  software/stage1_solver/src/stage1_solver/open_sleeve.py
+70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8  software/stage1_solver/src/stage1_solver/config.py
+543c03dfb31f485df37733ae38c62e787a61b069cf40e2b6625ce39df13fbae4  software/stage1_solver/tools/open_sleeve_lateral_balance.py
+925555fb3bf6d8059318a62db752c43abedc922e5792f67d6f92144e526fda92  _scratch/s11c/sleeve_lateral_balance_fine01/open_sleeve_lateral_balance.py
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+03531f6219273a88eedbcbd0170345871e90594a6702e63df347ed5b7fa5a9b4  _scratch/s11c/sleeve_response_current_fine01/fields/level_128.npz
+cc30eecbf1bf148809a229e9825e187e21968baaa05f72f8941e2549d5390bad  _scratch/s11c/sleeve_response_current_fine01/fields/level_64.npz
+8259758a74167bda90263c807dc24013e9585b95ee9fb8aa58c47f27a1848b2b  _scratch/s11c/sleeve_response_zero_fine01/fields/level_128.npz
+c65851a42397600920164e99d005ef913ba4b2fa7d9e39cebbf062eeb3931796  _scratch/s11c/sleeve_response_zero_fine01/fields/level_64.npz
+9ac22669308474cc6898e5800e5b99cd4e9683df9e5cf6d0a1eab387717ba01c  _scratch/s11c/sleeve_response_current_fine01/stdout
+8b1a561f6ba38397695fd8068984946bf422aede015b0cd9895c73c0c95edec8  _scratch/s11c/sleeve_response_zero_fine01/stdout
+da3c2013d8c6cc2c1902ad67ee639cef64a49a6980a7c1c6777f212f5a55fcf5  _scratch/s11c/sleeve_lateral_balance_fine01/stdout
+bf643dd1f985613f87dd3215fc0e42d5e79df251b77b7dce00e52751b8669f22  _scratch/s11c/sleeve_lateral_outlet_control01/stdout
+
+current fine
+$ python3 scripts/s11c_guarded_run.py --pool sleeve-response-refinement --memory-gib 4 --log-directory _scratch/s11c/sleeve_response_current_fine01 -- env PYTHONPATH=software/stage1_solver/src python3 -m stage1_solver.open_sleeve --rate 0.125 --levels 64 128 --output _scratch/s11c/sleeve_response_current_fine01/fields
+Literal stdout
+level=64 prescribed=0.125 inlet=0.125 into_receiver=0.125 far_exit=0.125 feed_phase=-0.0706296151171 min_density=0.99983295883 max_cell_rate_per_volume=2.760e-13 max_integrated_equation_residual=3.147e-14
+level=128 prescribed=0.125 inlet=0.125 into_receiver=0.125 far_exit=0.125 feed_phase=-0.0705871473691 min_density=0.999832973345 max_cell_rate_per_volume=1.218e-12 max_integrated_equation_residual=3.339e-14
+
+zero fine
+$ python3 scripts/s11c_guarded_run.py --pool sleeve-response-refinement --memory-gib 4 --log-directory _scratch/s11c/sleeve_response_zero_fine01 -- env PYTHONPATH=software/stage1_solver/src python3 -m stage1_solver.open_sleeve --rate 0 --levels 64 128 --output _scratch/s11c/sleeve_response_zero_fine01/fields
+Literal stdout
+level=64 prescribed=0 inlet=0 into_receiver=0 far_exit=0 feed_phase=0 min_density=1 max_cell_rate_per_volume=0.000e+00 max_integrated_equation_residual=1.776e-14
+level=128 prescribed=0 inlet=0 into_receiver=0 far_exit=0 feed_phase=0 min_density=1 max_cell_rate_per_volume=0.000e+00 max_integrated_equation_residual=2.132e-14
+
+uniform bath response
+$ python3 scripts/s11c_guarded_run.py --pool sleeve-lateral-balance --memory-gib 4 --log-directory _scratch/s11c/sleeve_lateral_balance_fine01 -- env PYTHONPATH=software/stage1_solver/src python3 software/stage1_solver/tools/open_sleeve_lateral_balance.py _scratch/s11c/sleeve_response_zero_fine01/fields/level_64.npz _scratch/s11c/sleeve_response_zero_fine01/fields/level_128.npz _scratch/s11c/sleeve_response_current_fine01/fields/level_64.npz _scratch/s11c/sleeve_response_current_fine01/fields/level_128.npz
+Literal stdout
+rate=0 level=64 rate_in/out/far=0,0,0 max_linear_equation_residual=1.923e-14
+  sleeve_quarter: carried=+0 quantum=+0.16761814026 sleeve_three_quarters: carried=+0 quantum=+0.0497738388938
+  feed_quantum=+1.04245227548 far_receiver_quantum=-9.69201386416
+  wall_pressure=-2.301023182 wall_quantum=-1.43389398171 wall_total=-3.73491716371 carrier_inventory_mass=3.87463093943 balance_residual=+0.0218694743563 relative_residual=0.00564427
+rate=0 level=128 rate_in/out/far=0,0,0 max_linear_equation_residual=2.284e-14
+  sleeve_quarter: carried=+0 quantum=+0.167699771609 sleeve_three_quarters: carried=+0 quantum=+0.0500305941142
+  feed_quantum=+1.02635514085 far_receiver_quantum=-9.55629324678
+  wall_pressure=-2.30121421039 wall_quantum=-1.44480415246 wall_total=-3.74601836285 carrier_inventory_mass=3.87463093943 balance_residual=+0.0109433990829 relative_residual=0.00282437
+rate=0.125 level=64 rate_in/out/far=0.125,0.125,0.125 max_linear_equation_residual=1.919e-14
+  sleeve_quarter: carried=-7.85878170083e-05 quantum=+0.167732490934 sleeve_three_quarters: carried=-7.37146524748e-05 quantum=+0.0497384458884
+  feed_quantum=+1.04249235125 far_receiver_quantum=-9.69203256651
+  wall_pressure=-2.30007356757 wall_quantum=-1.43408479624 wall_total=-3.7341583638 carrier_inventory_mass=3.87401259888 balance_residual=+0.0218650631974 relative_residual=0.00564404
+rate=0.125 level=128 rate_in/out/far=0.125,0.125,0.125 max_linear_equation_residual=3.120e-14
+  sleeve_quarter: carried=-7.86532734354e-05 quantum=+0.167814124565 sleeve_three_quarters: carried=-7.38642826792e-05 quantum=+0.0499949814311
+  feed_quantum=+1.02639464828 far_receiver_quantum=-9.55631188276
+  wall_pressure=-2.30026442532 wall_quantum=-1.44499272534 wall_total=-3.74525715065 carrier_inventory_mass=3.87401268797 balance_residual=+0.0109411831751 relative_residual=0.00282425
+drain_minus_zero level=64 sleeve_three_quarters_carried=-7.37146525e-05 sleeve_three_quarters_quantum=-3.53930054e-05 wall_total=+0.000758799901 far_receiver_quantum=-1.87023456e-05 balance_residual=-4.41115893e-06
+drain_minus_zero level=128 sleeve_three_quarters_carried=-7.38642827e-05 sleeve_three_quarters_quantum=-3.56126831e-05 wall_total=+0.000761212196 far_receiver_quantum=-1.8635973e-05 balance_residual=-2.21590779e-06
+
+drifting bath response
+$ python3 scripts/s11c_guarded_run.py --pool sleeve-lateral-balance --memory-gib 4 --log-directory _scratch/s11c/sleeve_lateral_outlet_control01 -- env PYTHONPATH=software/stage1_solver/src python3 software/stage1_solver/tools/open_sleeve_lateral_balance.py --outlet-velocity-per-acceleration 1 _scratch/s11c/sleeve_response_zero_fine01/fields/level_64.npz _scratch/s11c/sleeve_response_zero_fine01/fields/level_128.npz _scratch/s11c/sleeve_response_current_fine01/fields/level_64.npz _scratch/s11c/sleeve_response_current_fine01/fields/level_128.npz
+Literal stdout
+outlet_velocity_per_acceleration=1
+rate=0 level=64 rate_in/out/far=0,0,0 max_linear_equation_residual=6.395e-14
+  sleeve_quarter: carried=+0 quantum=+0.16761814026 sleeve_three_quarters: carried=+0 quantum=+0.0497738388938
+  feed_quantum=+1.04245227548 far_receiver_quantum=-9.69201386416 far_receiver_carried=+0
+  wall_pressure=-2.301023182 wall_quantum=-1.43389398171 wall_total=-3.73491716371 carrier_inventory_mass=3.87463093943 balance_residual=+0.0218694743563 relative_residual=0.00564427
+rate=0 level=128 rate_in/out/far=0,0,0 max_linear_equation_residual=1.350e-13
+  sleeve_quarter: carried=+0 quantum=+0.167699771609 sleeve_three_quarters: carried=+0 quantum=+0.0500305941142
+  feed_quantum=+1.02635514085 far_receiver_quantum=-9.55629324678 far_receiver_carried=+0
+  wall_pressure=-2.30121421039 wall_quantum=-1.44480415246 wall_total=-3.74601836285 carrier_inventory_mass=3.87463093943 balance_residual=+0.0109433990829 relative_residual=0.00282437
+rate=0.125 level=64 rate_in/out/far=0.125,0.125,0.125 max_linear_equation_residual=1.137e-13
+  sleeve_quarter: carried=+0.00110002016711 quantum=+0.168332716986 sleeve_three_quarters: carried=+0.00955065940925 quantum=+0.0521514196917
+  feed_quantum=+1.04330240429 far_receiver_quantum=-9.72199546437 far_receiver_carried=+0.125
+  wall_pressure=-2.30705878807 wall_quantum=-1.43736491949 wall_total=-3.74442370755 carrier_inventory_mass=3.87401259888 balance_residual=+0.0218582332755 relative_residual=0.00564227
+rate=0.125 level=128 rate_in/out/far=0.125,0.125,0.125 max_linear_equation_residual=1.137e-13
+  sleeve_quarter: carried=+0.00110230453142 quantum=+0.168415395536 sleeve_three_quarters: carried=+0.00957246034253 quantum=+0.0524108396813
+  feed_quantum=+1.02720740997 far_receiver_quantum=-9.58658864799 far_receiver_carried=+0.125
+  wall_pressure=-2.30726349892 wall_quantum=-1.44827719485 wall_total=-3.75554069377 carrier_inventory_mass=3.87401268797 balance_residual=+0.0109375941608 relative_residual=0.00282332
+drain_minus_zero level=64 sleeve_three_quarters_carried=+0.00955065941 sleeve_three_quarters_quantum=+0.0023775808 wall_total=-0.00950654385 far_receiver_quantum=-0.0299816002 far_receiver_carried=+0.125 balance_residual=-1.12410808e-05
+drain_minus_zero level=128 sleeve_three_quarters_carried=+0.00957246034 sleeve_three_quarters_quantum=+0.00238024557 wall_total=-0.00952233092 far_receiver_quantum=-0.0302954012 far_receiver_carried=+0.125 balance_residual=-5.80492213e-06

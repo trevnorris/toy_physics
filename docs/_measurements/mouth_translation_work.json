@@ -1,0 +1,33 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "Fixed-trace virtual displacement of the target density-restoring energy and mixed-variation check of the open current law; no free-mouth trajectory or forced release.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "sources": {
+    "docs/_measurements/lateral_reservoir_pair.json": "3cffb25b8177523be5884b72b8dbb694e3ebc1c67642c88fcb619626a43d58ec",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/mouth_translation_work.py": "d9ad8dae611838ea41cdb7b25eb814e69f90f8494e5475dc81e83da231de0acd"
+  },
+  "command": "python3 scripts/s11c_guarded_run.py --pool mouth-translation --memory-gib 2 --log-directory _scratch/s11c/mouth_translation_work01 -- python3 software/stage1_solver/tools/mouth_translation_work.py",
+  "guard_exit": 0,
+  "worker_exit": 0,
+  "limits_verified": true,
+  "memory_gib": 2,
+  "swap_bytes": 0,
+  "cpus": 1,
+  "deadline": null,
+  "stdout_sha256": "c69a6725a0e4db6a7eabb86664235cf87db6dc5e707e94ed9f5dc97040b59e1b",
+  "stdout": [
+    "e24_c6",
+    "  rate=0.25 integral_dj=-2.941e-13 phase_test_times_dj=0.00588472083656 twice_weighted_variance=0.00588472083725",
+    "  d=3 restoring_work_force=1.67795632667e-08 energy_difference_force=1.67795632576e-08",
+    "  d=4 restoring_work_force=1.06298917369e-08 energy_difference_force=1.06298917295e-08",
+    "  d=6 restoring_work_force=4.86129956126e-09 energy_difference_force=4.86129955464e-09",
+    "  d=8 restoring_work_force=2.70359838332e-09 energy_difference_force=2.70359837728e-09",
+    "e48_c4",
+    "  rate=0.25 integral_dj=-2.649e-13 phase_test_times_dj=0.00603958727737 twice_weighted_variance=0.00603958727807",
+    "  d=3 restoring_work_force=1.68720705626e-08 energy_difference_force=1.6872070539e-08",
+    "  d=4 restoring_work_force=1.07427402356e-08 energy_difference_force=1.07427402202e-08",
+    "  d=6 restoring_work_force=4.94713637547e-09 energy_difference_force=4.94713637003e-09",
+    "  d=8 restoring_work_force=2.78866765506e-09 energy_difference_force=2.78866764741e-09"
+  ]
+}

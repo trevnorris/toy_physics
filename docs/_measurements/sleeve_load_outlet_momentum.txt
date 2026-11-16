@@ -1,0 +1,143 @@
+One throat at 0PN, no sideways flow. Unreviewed working calculation.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c
+Prior working note SHA256 098882ab45224eee3f50aba356733d671e9a35a4b3e71ed579d19b17a03ac034
+
+In the solver's fixed radial measure let B = integral r^4 n d^3x at each w.
+The confinement energy per dw is k B/R^4. Positive R variation is outward.
+Q_R denotes the generalized outward work force, -partial_R E at fixed field.
+Path-A uses the signed wall RHS S_psi = -Q_R. The axial force on the carrier
+from the radial part of the confining potential is R' Q_R per dw. The axial
+trap, side loads, inlet momentum flux and momentum storage remain separate.
+
+Take a fixed, flat outlet section, oriented +w (bulkward). In smooth matter
+the raw flux per area is m n u_w^2 + K n^5 + sigma_Q,ww, with additional
+stresses when their sectors are active. The quiescent uniform carrier
+reference contributes p_b. Across a common internal cut the absolute flux
+is included once. If the reference has motion, gradients or other stress,
+its corresponding full normal flux must be used for an excess measurement.
+
+Independent straight-segment check, unit area, no gauge or order stress.
+Let a=sqrt(n)>0 and j=n u_w be the constant number flux. The stationary
+carrier has chemical potential mu and smooth static potential V(w):
+  hbar^2 a''/(2m) = (V + 5 K a^8/4 - mu) a + m j^2/(2a^3).
+Using this equation in the raw matter momentum flux gives
+  Pi = hbar^2 a'^2/(2m) + m j^2/(2a^2) + (mu-V)a^2 - K a^10/4,
+  dPi/dw = -n dV/dw.
+At local a=1, mu=m=hbar=1, K=p_b=4/5, V=0 the reference-subtracted
+value is (a'^2+j^2)/2. These are local IVP data of a regular ODE; the
+specified p_b is a comparison stress, and no boundary solution connects
+these cuts to a real reservoir. Wolfram uses the real and imaginary
+fields and their spatial translation stress. SymPy uses the amplitude
+equation and the hydrodynamic normal momentum flux. Neither uses their
+example phase slope or current as a physical throat boundary condition.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool sleeve-load-outlet --memory-gib 2 --log-directory _scratch/s11c/sleeve_load_outlet_sympy01 -- python3 software/stage1_solver/tools/sleeve_load_outlet_momentum.py
+SHA256 34dc7e9c94dedb132cbff9dc22c3b9349ac96dcb7511e769127e55193770c078  software/stage1_solver/tools/sleeve_load_outlet_momentum.py
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start UTC 2026-11-13T23:05:36.568905+00:00. End UTC (outcome file timestamp) 2026-11-13T23:05:37.129459+00:00.
+Child and guard exited 0. Verified 2 GiB, zero swap. Recorded memory.peak 53874688 bytes.
+Stdout _scratch/s11c/sleeve_load_outlet_sympy01/stdout (683 bytes, SHA256 471f3b32a042b9a0a3580974b39107734b43748b5b80cc1b6d932b34431f045f).
+Literal stdout
+outward confinement load per axial length: 4*B*k/R**5; residual = 0
+increment of outward load: -4*k*(5*B*eta - R*dB)/R**6; residual = 0
+axial flare force density plus slope times Path-A source density: 0; residual = 0
+stationary axial flux: -K*a(w)**10/4 + hbar**2*Derivative(a(w), w)**2/(2*m) + j**2*m/(2*a(w)**2) + mu*a(w)**2 - V(w)*a(w)**2; residual = 0
+axial flux gradient plus n V': 0; residual = 0
+excess per area at (j,a')=(0,0): 0; residual = 0
+excess per area at (j,a')=(1/5,0): 1/50; residual = 0
+excess per area at (j,a')=(0,1/5): 1/50; residual = 0
+convective linear coefficient at rest: 0; residual = 0
+convective quadratic coefficient at rest: du**2*m*n0; residual = 0
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool sleeve-load-outlet --memory-gib 4 --log-directory _scratch/s11c/sleeve_load_outlet_wolfram01 -- math -noprompt -script software/stage1_solver/tools/sleeve_load_outlet_momentum.wl
+SHA256 1e1cb2aeefeccbd6b342ed04c2c69a979880e348c70c57c54059a4fbddd0b92c  software/stage1_solver/tools/sleeve_load_outlet_momentum.wl
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start UTC 2026-11-13T23:05:35.966775+00:00. End UTC (outcome file timestamp) 2026-11-13T23:05:41.086006+00:00.
+Child and guard exited 0. Verified 4 GiB, zero swap. Recorded memory.peak 224870400 bytes.
+Stdout _scratch/s11c/sleeve_load_outlet_wolfram01/stdout (959 bytes, SHA256 0bab9324c599256955fc1ebfae933f3cb86de386229794bd2df421b708f00036).
+Literal stdout
+"Path-A local density kernel"" = "InputForm[(-4*den*k*r^4)/radius[w]^5]"   residual = "InputForm[0]
+"local axial flare force"" = "InputForm[(4*den*k*r^4*Derivative[1][radius][w])/radius[w]^5]"   residual = "InputForm[0]
+"increment of integrated Path-A RHS"" = "InputForm[(4*k*(5*b*eta - db*rad))/rad^6]"   residual = "InputForm[0]
+"Cartesian axial flux minus hydrodynamic stress"" = "InputForm[0]"   residual = "InputForm[0]
+"Cartesian flux gradient plus density times potential gradient"" = "InputForm[0]"   residual = "InputForm[0]
+"local excess at {j, a'} = {0, 0}"" = "InputForm[0]"   residual = "InputForm[0]
+"local excess at {j, a'} = {1/5, 0}"" = "InputForm[1/50]"   residual = "InputForm[0]
+"local excess at {j, a'} = {0, 1/5}"" = "InputForm[1/50]"   residual = "InputForm[0]
+"linear advective response at rest"" = "InputForm[0]"   residual = "InputForm[0]
+"quadratic advective response at rest"" = "InputForm[(dj^2*m)/nb]"   residual = "InputForm[0]
+
+SHA256 cae105b37bddbadf7c86c23d3c15a30945c3372328100db78c08149add765bc3  software/stage1_solver/src/stage1_solver/coupled_branch.py
+$ sed -n '219,223p;231,238p;481,490p;500,506p' software/stage1_solver/src/stage1_solver/coupled_branch.py
+    length = cfg.w_max - cfg.w_min
+    midpoint = 0.5 * (cfg.w_min + cfg.w_max)
+    radial_wall = cfg.radial_wall_strength * (r / radius_2d) ** 4
+    axial = 0.5 * cfg.axial_trap_strength * ((w - midpoint) / length) ** 2
+    return radial_wall + axial
+) -> torch.Tensor:
+    """Return the positive ``k1`` coefficient shared by forward and return coupling.
+
+    The implemented confinement placeholder is ``V_radial (r/R_0(w))^4`` plus
+    an ``R_0``-independent axial term.  Linearizing the radial term under
+    ``R_0 -> R_0 + eta`` gives ``delta V_conf = -k1 eta`` with
+    ``k1 = 4 V_radial r^4/R_0^5``.  The closed wall residual uses the same
+    tensor as its matter-return source coefficient, with source ``-k1 rho``.
+
+def patha_radial_reduced_return_source(
+    fields: ClosedCoupledFields,
+    grid: TensorProductGrid,
+    cfg: BranchSmokeConfig,
+) -> torch.Tensor:
+    """Reduce ``-k1*rho`` with spherical shell volumes onto wall centers."""
+
+    source_density = patha_return_source_density(fields, grid, cfg)
+    return torch.sum(grid.radial_shell_volumes[:, None] * source_density, dim=0)
+    wall_grid = wall_grid_from_tensor_grid(grid)
+    source = patha_radial_reduced_return_source(fields, grid, cfg)
+    return static_balance_terms(
+        fields.r0,
+        wall_grid,
+        s_sigma=s_sigma,
+        source=source,
+
+SHA256 4d2a6f90ee7df90822d7c7d3e3c96b3dd9db17174245a4bb400ddc07ea078dd4  software/stage1_solver/src/stage1_solver/patha_static_balance.py
+$ sed -n '418,421p' software/stage1_solver/src/stage1_solver/patha_static_balance.py
+    potential_gradient = provider.U_R(values, grid.w_centers)
+    lhs = flux_divergence + gradient_square + potential_gradient
+    residual = lhs - source
+    return StaticBalanceTerms(
+
+SHA256 017d6f394a80434a1454d5518b244dd0995686a4dedc59a8aa421498fde73bfb  software/stage1_solver/decisions/10_pathA_solver_build_design.md
+$ sed -n '64,71p' software/stage1_solver/decisions/10_pathA_solver_build_design.md
+1. **Static RHS source = `S = −V_conf,Σ(r−R0(w))·ρ0 = −k1·ρ0`** — the FULL `ρ0` (the static balance is the full
+   nonlinear `δS_total/δR=0`; `−k1 δρ` of D1 is its linearization). Sign: `L_int=−V_conf·ρ`, `∂_R L_int =
+   +V_conf,Σ ρ`, wall source `= −δL/δR = −V_conf,Σ ρ` (matches D1's `−k1`). **Absolute `ρ0`, NO reference
+   subtraction** (`ρ_ref=0`; a counterpressure/`ρ−ρ_ref` would be a new declared counterterm → GATE-A, not
+   default). Same derivative convention as `p2_tangent.py:165` (`dV/dR0 = −4 V_radial r⁴/R0⁵`).
+2. **Radial reduction = full spherical `4πr²` measure → per-`dw` wall source:**
+   `S_j = Σ_i ΔV_i^r·[−V_conf,Σ(r_i−R0(w_j)) ρ0_ij]`, `ΔV_i^r = (4π/3)(r_{i+½}³−r_{i−½}³)` (the solver's shell
+   volumes, `grid.py:80`), landed on `grid.w_centers` in the flat-`dw` wall convention (`operators.py:485`).
+
+SHA256 4d56cb9dc25f9d30daa0aba4822e51706d4be023da4f8110c383bd895639874b  software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md
+$ sed -n '22,33p' software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md
+Momentum density: `g_i=m_GNLS*rho*v_i`.
+
+Matter stress representative: `Pi_ij^matter=m_GNLS*rho*v_i*v_j+delta_ij*P(rho)+sigma_Q,ij`.
+
+Quantum stress: `sigma_Q,ij=(hbar^2/(4*m_GNLS))*[(partial_i rho partial_j rho)/rho-partial_i partial_j rho]`.
+
+EOS pressure identity: `P=K*rho^5, h=(5K/4)*rho^4, dP=rho*dh`.
+
+Matter balance law: `partial_t g_i+partial_j Pi_ij^matter=q_star*rho*(E_i+v_j B_ij)-rho*partial_i V_conf`.
+
+Explicit-background body forces:
+- `f_i^Vconf=-rho*partial_i V_conf`.
+
+SHA256 9ff32deaba86893378e6685d5120ddbe46c03eec4ffb2d8b96b6faeca59ec39d  research/pde_ledger_v3/steps/S12_order_source.md
+$ sed -n '268,271p' research/pde_ledger_v3/steps/S12_order_source.md
+| Source/controller functions | `V3_STEP_PLAN.md:610–611`; `../pde_ledger_v2/notes/stage045_nonvariational_block_prep.md:45` and `:50`, with the return-controller row at `:45` read alongside its re-hosting context. The full local source/controller inventory is also `directives/O2_SHARED_PHYSICS.md`, §5 inventory table. All functional forms remain OPEN. |
+| Boundary/domain data | `V3_STEP_PLAN.md:612`; `../../docs/two_throat_simulation_handoff_spec.md:340`, the **entire IR/return row**, including zero modes/moduli and moving/radiative prescriptions; stage 045's boundary row. U3 bears on the bulk IR condition only. No galactic/expansion boundary is imposed. |
+| Restricted S9b/O2 domain | `steps/O2_steady_brane_balance.md:74–76`, the complete setting sentence. Its isolated spherical mass at rest with flowing drain, far-field steady profiles, far-field brane-rest lab time, linear optics and leading eikonal are **restrictions**, not S12 results. |
+| Momentum/energy partners | `directives/O2_premise_decision_list.md:32–35`; `directives/O2_SHARED_PHYSICS.md:134`, `:243–248`, `:280`, `:584`; `steps/O2_steady_brane_balance.md:396`. Those rows preserve additional partners/reactions, the OPEN bulk-direction reduction and its normal-response/map operands, and conversion/carried-energy partners with reaction/supply systems. Local transported momentum fixes no carried total energy. |

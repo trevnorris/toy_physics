@@ -1,0 +1,344 @@
+{
+  "status": "Working, unreviewed",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "scope": "Held source only, unit mouth radius, specified inward rate 0.25. Sample the brane-side velocity at the absent target with the isolated centered intake as weight. Move the cylindrical reservoir at fixed spacing, then refine the mesh at fixed reservoir. Compare against 1/4 only after solving.",
+  "sources": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/incident_flow_falloff.py": "f0e289efa985128f3174b59bd1554b2c16a618b13eaf68d79f977c6c3c2572a9",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/lateral_target_rate.py": "03b68b5d48bb81e5fb24256adcc5dc8aae6582f2bad428b861755b5aad261a6b",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61"
+  },
+  "archive_manifest": {
+    "docs/_measurements/lateral_target_rate.json": "1509281ae8ed652a457da284ac92944cb902b5630e547c71ff7e266e12b9bce3"
+  },
+  "runs": [
+    {
+      "name": "L48C4_d4",
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-falloff --memory-gib 3 --log-directory _scratch/s11c/incident_flow_falloff01/L48C4_d4 -- python3 software/stage1_solver/tools/incident_flow_falloff.py source --grid 48 4 16 --distance 4 --baseline _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz 7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd --archive _scratch/s11c/lateral_target_rate_e48_c4_01/fields/source_d4.npz d4fd8e749bd655124cb8a0f5d6ffe78efc31f52af35d170b84f1af134557b7df",
+      "input_sha256": {
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd",
+        "_scratch/s11c/lateral_target_rate_e48_c4_01/fields/source_d4.npz": "d4fd8e749bd655124cb8a0f5d6ffe78efc31f52af35d170b84f1af134557b7df"
+      },
+      "output_fields_sha256": {},
+      "started_utc": "2026-11-15T23:46:08.103218+00:00",
+      "guard_outcome_written_utc": "2026-11-15T23:46:08.759314+00:00",
+      "wall_seconds": 0.5593154681846499,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 3221225472,
+      "peak_memory_bytes_sampled": 77885440,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/incident_flow_falloff01/L48C4_d4/stdout",
+      "stdout_bytes": 113,
+      "stdout_sha256": "f0cdb62dca21de922b786312d60a49e9ae5cf29bcac5fe0a48937510de553f8d",
+      "stdout": [
+        "{\"grid\": [48, 4, 16], \"d\": 4, \"mean_speed\": 0.0012478017143268908, \"incident_reference\": 0.00031195042858172265}"
+      ]
+    },
+    {
+      "name": "L48C4_d8",
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-falloff --memory-gib 3 --log-directory _scratch/s11c/incident_flow_falloff01/L48C4_d8 -- python3 software/stage1_solver/tools/incident_flow_falloff.py source --grid 48 4 16 --distance 8 --baseline _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz 7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd --archive _scratch/s11c/lateral_target_rate_e48_c4_01/fields/source_d8.npz 24e6b3fda1e9345acbedbd412bd28ebb4e154963166cb768fb9da0c99d51f9d0",
+      "input_sha256": {
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd",
+        "_scratch/s11c/lateral_target_rate_e48_c4_01/fields/source_d8.npz": "24e6b3fda1e9345acbedbd412bd28ebb4e154963166cb768fb9da0c99d51f9d0"
+      },
+      "output_fields_sha256": {},
+      "started_utc": "2026-11-15T23:46:08.114693+00:00",
+      "guard_outcome_written_utc": "2026-11-15T23:46:09.113954+00:00",
+      "wall_seconds": 0.7664928380399942,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 3221225472,
+      "peak_memory_bytes_sampled": 77881344,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/incident_flow_falloff01/L48C4_d8/stdout",
+      "stdout_bytes": 112,
+      "stdout_sha256": "c93202b2aeb67fab435e28c1a9a3a8d2d64b497a90a0ee7852efae46d17190f2",
+      "stdout": [
+        "{\"grid\": [48, 4, 16], \"d\": 8, \"mean_speed\": 0.0003101386268734443, \"incident_reference\": 7.753465671836107e-05}"
+      ]
+    },
+    {
+      "name": "L48C4_d16",
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-falloff --memory-gib 3 --log-directory _scratch/s11c/incident_flow_falloff01/L48C4_d16 -- python3 software/stage1_solver/tools/incident_flow_falloff.py source --grid 48 4 16 --distance 16 --baseline _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz 7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd --output _scratch/s11c/incident_flow_falloff01/L48C4_d16.npz",
+      "input_sha256": {
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd"
+      },
+      "output_fields_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L48C4_d16.npz": "a3091076f291d5c03df1ccd06361b12fac578a1473509d73ba11b5b74c8bd82f"
+      },
+      "started_utc": "2026-11-15T23:46:08.098408+00:00",
+      "guard_outcome_written_utc": "2026-11-15T23:46:21.869663+00:00",
+      "wall_seconds": 13.715115020982921,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 3221225472,
+      "peak_memory_bytes_sampled": 235634688,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/incident_flow_falloff01/L48C4_d16/stdout",
+      "stdout_bytes": 180,
+      "stdout_sha256": "5e868d44f00f2072c6518a98c58bfb81cbd6ae750233ccb52fa88fcd47c07913",
+      "stdout": [
+        "  field=L48C4_d16 steps=17 residual=3.487e-12 bath=0.25 rates=0.25",
+        "{\"grid\": [48, 4, 16], \"d\": 16, \"mean_speed\": 7.566181957008701e-05, \"incident_reference\": 1.891545489252175e-05}"
+      ]
+    },
+    {
+      "name": "L96C4_baseline",
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-falloff --memory-gib 5 --log-directory _scratch/s11c/incident_flow_falloff01/L96C4_baseline -- python3 software/stage1_solver/tools/incident_flow_falloff.py calibrate --grid 96 4 16 --output _scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz",
+      "input_sha256": {},
+      "output_fields_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz": "1f2b5c36f12fb50cd56758cf3dfa11a45f10e7adf425380cf221b4fe276af20d"
+      },
+      "started_utc": "2026-11-15T23:46:08.098071+00:00",
+      "guard_outcome_written_utc": "2026-11-15T23:47:54.344081+00:00",
+      "wall_seconds": 106.22594119980931,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 5368709120,
+      "peak_memory_bytes_sampled": 848420864,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/incident_flow_falloff01/L96C4_baseline/stdout",
+      "stdout_bytes": 102,
+      "stdout_sha256": "3b9cb09922e64a391e2e81d61fea6df7ba02c458e5aecae161dc6405f46315d6",
+      "stdout": [
+        "  mouths=1 residual=2.611e-12 bath_inward=0.250000000001 per_mouth=0.25",
+        "centered_calibration_steps=18"
+      ]
+    },
+    {
+      "name": "L96C4_d4",
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-falloff --memory-gib 5 --log-directory _scratch/s11c/incident_flow_falloff01/L96C4_d4 -- python3 software/stage1_solver/tools/incident_flow_falloff.py source --grid 96 4 16 --distance 4 --baseline _scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz 1f2b5c36f12fb50cd56758cf3dfa11a45f10e7adf425380cf221b4fe276af20d --output _scratch/s11c/incident_flow_falloff01/L96C4_d4.npz",
+      "input_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz": "1f2b5c36f12fb50cd56758cf3dfa11a45f10e7adf425380cf221b4fe276af20d"
+      },
+      "output_fields_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C4_d4.npz": "43e6bd44ff5463b00e6781d0ebbca1adb95dcb16dbbc82d38cb7d2ca31a3e120"
+      },
+      "started_utc": "2026-11-15T23:47:54.412361+00:00",
+      "guard_outcome_written_utc": "2026-11-15T23:49:40.607852+00:00",
+      "wall_seconds": 106.12218058411963,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 5368709120,
+      "peak_memory_bytes_sampled": 732819456,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/incident_flow_falloff01/L96C4_d4/stdout",
+      "stdout_bytes": 189,
+      "stdout_sha256": "cbc07817851dba3b8fda16e9ba2d2b23af0b68db35f87ba4905ddd76310d8c75",
+      "stdout": [
+        "  field=L96C4_d4 steps=17 residual=3.565e-12 bath=0.250000000001 rates=0.25",
+        "{\"grid\": [96, 4, 16], \"d\": 4, \"mean_speed\": 0.0012482479968946457, \"incident_reference\": 0.00031206199922366137}"
+      ]
+    },
+    {
+      "name": "L96C4_d8",
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-falloff --memory-gib 5 --log-directory _scratch/s11c/incident_flow_falloff01/L96C4_d8 -- python3 software/stage1_solver/tools/incident_flow_falloff.py source --grid 96 4 16 --distance 8 --baseline _scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz 1f2b5c36f12fb50cd56758cf3dfa11a45f10e7adf425380cf221b4fe276af20d --output _scratch/s11c/incident_flow_falloff01/L96C4_d8.npz",
+      "input_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz": "1f2b5c36f12fb50cd56758cf3dfa11a45f10e7adf425380cf221b4fe276af20d"
+      },
+      "output_fields_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C4_d8.npz": "413d302c0bf6896efcd0aef9b1e6f5e2bbbba14b001cfd6795dfec662fc32de3"
+      },
+      "started_utc": "2026-11-15T23:47:54.412211+00:00",
+      "guard_outcome_written_utc": "2026-11-15T23:49:39.920969+00:00",
+      "wall_seconds": 105.48005070793442,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 5368709120,
+      "peak_memory_bytes_sampled": 732610560,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/incident_flow_falloff01/L96C4_d8/stdout",
+      "stdout_bytes": 187,
+      "stdout_sha256": "018a49301c418f918fc7e4d9728b9806b88111c83617700bc43dc5ff13108565",
+      "stdout": [
+        "  field=L96C4_d8 steps=17 residual=3.582e-12 bath=0.250000000001 rates=0.25",
+        "{\"grid\": [96, 4, 16], \"d\": 8, \"mean_speed\": 0.000311033694389222, \"incident_reference\": 7.775842359730549e-05}"
+      ]
+    },
+    {
+      "name": "L96C4_d16",
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-falloff --memory-gib 5 --log-directory _scratch/s11c/incident_flow_falloff01/L96C4_d16 -- python3 software/stage1_solver/tools/incident_flow_falloff.py source --grid 96 4 16 --distance 16 --baseline _scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz 1f2b5c36f12fb50cd56758cf3dfa11a45f10e7adf425380cf221b4fe276af20d --output _scratch/s11c/incident_flow_falloff01/L96C4_d16.npz",
+      "input_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C4_baseline.npz": "1f2b5c36f12fb50cd56758cf3dfa11a45f10e7adf425380cf221b4fe276af20d"
+      },
+      "output_fields_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C4_d16.npz": "3b00d23d0bd9db9497d2dc39121731730c77ff8f29feda5510104bbf8900db99"
+      },
+      "started_utc": "2026-11-15T23:47:54.412563+00:00",
+      "guard_outcome_written_utc": "2026-11-15T23:49:38.431131+00:00",
+      "wall_seconds": 103.88281368790194,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 5368709120,
+      "peak_memory_bytes_sampled": 732872704,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/incident_flow_falloff01/L96C4_d16/stdout",
+      "stdout_bytes": 190,
+      "stdout_sha256": "34a5b6d3d8ffb878c89413b15d6994d8a70d8fc0202c7fd05c2f5c15ea893312",
+      "stdout": [
+        "  field=L96C4_d16 steps=17 residual=3.59e-12 bath=0.250000000001 rates=0.25",
+        "{\"grid\": [96, 4, 16], \"d\": 16, \"mean_speed\": 7.747661820662053e-05, \"incident_reference\": 1.9369154551655128e-05}"
+      ]
+    },
+    {
+      "name": "L96C6_baseline",
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-falloff --memory-gib 10 --log-directory _scratch/s11c/incident_flow_falloff01/L96C6_baseline -- python3 software/stage1_solver/tools/incident_flow_falloff.py calibrate --grid 96 6 24 --output _scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz",
+      "input_sha256": {},
+      "output_fields_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz": "24b0e09643528ec54bdd1c4672f81216d992ed4991666d7a81564aa9ce8a5f53"
+      },
+      "started_utc": "2026-11-15T23:46:08.114198+00:00",
+      "guard_outcome_written_utc": "2026-11-15T23:54:43.814681+00:00",
+      "wall_seconds": 515.5529137449339,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 10737418240,
+      "peak_memory_bytes_sampled": 2666135552,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/incident_flow_falloff01/L96C6_baseline/stdout",
+      "stdout_bytes": 92,
+      "stdout_sha256": "0591220c9923ace1caad1c73f424376fc01e77dc8fe24cb6f6fadbd2850ccdab",
+      "stdout": [
+        "  mouths=1 residual=3.082e-12 bath_inward=0.25 per_mouth=0.25",
+        "centered_calibration_steps=18"
+      ]
+    },
+    {
+      "name": "L96C6_d4",
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-falloff --memory-gib 10 --log-directory _scratch/s11c/incident_flow_falloff01/L96C6_d4 -- python3 software/stage1_solver/tools/incident_flow_falloff.py source --grid 96 6 24 --distance 4 --baseline _scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz 24b0e09643528ec54bdd1c4672f81216d992ed4991666d7a81564aa9ce8a5f53 --output _scratch/s11c/incident_flow_falloff01/L96C6_d4.npz",
+      "input_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz": "24b0e09643528ec54bdd1c4672f81216d992ed4991666d7a81564aa9ce8a5f53"
+      },
+      "output_fields_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C6_d4.npz": "d7f12f68b932cccc4b4457ec6f3cd218569426ae346827786ca65025a890aaee"
+      },
+      "started_utc": "2026-11-15T23:54:43.914292+00:00",
+      "guard_outcome_written_utc": "2026-11-16T00:03:37.264372+00:00",
+      "wall_seconds": 533.2479822919704,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 10737418240,
+      "peak_memory_bytes_sampled": 2272813056,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/incident_flow_falloff01/L96C6_d4/stdout",
+      "stdout_bytes": 178,
+      "stdout_sha256": "60cd4d9b8f9abe248467a0feafbce1909d91e971bc88fce5a2c3169eead45838",
+      "stdout": [
+        "  field=L96C6_d4 steps=17 residual=4.497e-12 bath=0.25 rates=0.25",
+        "{\"grid\": [96, 6, 24], \"d\": 4, \"mean_speed\": 0.0012456104030762838, \"incident_reference\": 0.0003114026007690709}"
+      ]
+    },
+    {
+      "name": "L96C6_d8",
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-falloff --memory-gib 10 --log-directory _scratch/s11c/incident_flow_falloff01/L96C6_d8 -- python3 software/stage1_solver/tools/incident_flow_falloff.py source --grid 96 6 24 --distance 8 --baseline _scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz 24b0e09643528ec54bdd1c4672f81216d992ed4991666d7a81564aa9ce8a5f53 --output _scratch/s11c/incident_flow_falloff01/L96C6_d8.npz",
+      "input_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz": "24b0e09643528ec54bdd1c4672f81216d992ed4991666d7a81564aa9ce8a5f53"
+      },
+      "output_fields_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C6_d8.npz": "71c1e239d6718080607bb15a72594576c606d582447f7d9474a1833f8a2b5eec"
+      },
+      "started_utc": "2026-11-15T23:54:43.911710+00:00",
+      "guard_outcome_written_utc": "2026-11-16T00:03:33.811845+00:00",
+      "wall_seconds": 529.8837612280622,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 10737418240,
+      "peak_memory_bytes_sampled": 2272886784,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/incident_flow_falloff01/L96C6_d8/stdout",
+      "stdout_bytes": 178,
+      "stdout_sha256": "939245c04ec539b44c83e0d5bfecbaf0867e393483983190de046d318f6896c6",
+      "stdout": [
+        "  field=L96C6_d8 steps=17 residual=4.524e-12 bath=0.25 rates=0.25",
+        "{\"grid\": [96, 6, 24], \"d\": 8, \"mean_speed\": 0.0003108561952367641, \"incident_reference\": 7.771404880919102e-05}"
+      ]
+    },
+    {
+      "name": "L96C6_d16",
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-falloff --memory-gib 10 --log-directory _scratch/s11c/incident_flow_falloff01/L96C6_d16 -- python3 software/stage1_solver/tools/incident_flow_falloff.py source --grid 96 6 24 --distance 16 --baseline _scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz 24b0e09643528ec54bdd1c4672f81216d992ed4991666d7a81564aa9ce8a5f53 --output _scratch/s11c/incident_flow_falloff01/L96C6_d16.npz",
+      "input_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C6_baseline.npz": "24b0e09643528ec54bdd1c4672f81216d992ed4991666d7a81564aa9ce8a5f53"
+      },
+      "output_fields_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L96C6_d16.npz": "3089e36a74b036bd26221d671e2ad2a17b67d526c823809a1e0e1f2a6af214a8"
+      },
+      "started_utc": "2026-11-15T23:54:43.911786+00:00",
+      "guard_outcome_written_utc": "2026-11-16T00:03:32.510401+00:00",
+      "wall_seconds": 528.5516486021224,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 10737418240,
+      "peak_memory_bytes_sampled": 2272886784,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/incident_flow_falloff01/L96C6_d16/stdout",
+      "stdout_bytes": 179,
+      "stdout_sha256": "a211ec199828d54c670f13260d007255bf2e97393a8fefa4c467e737b38af997",
+      "stdout": [
+        "  field=L96C6_d16 steps=17 residual=4.513e-12 bath=0.25 rates=0.25",
+        "{\"grid\": [96, 6, 24], \"d\": 16, \"mean_speed\": 7.74653038221349e-05, \"incident_reference\": 1.936632595553372e-05}"
+      ]
+    },
+    {
+      "name": "compare",
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-falloff --memory-gib 1 --log-directory _scratch/s11c/incident_flow_falloff01/compare -- python3 software/stage1_solver/tools/incident_flow_falloff.py compare _scratch/s11c/incident_flow_falloff01/L48C4_d4/stdout _scratch/s11c/incident_flow_falloff01/L48C4_d8/stdout _scratch/s11c/incident_flow_falloff01/L48C4_d16/stdout _scratch/s11c/incident_flow_falloff01/L96C4_d4/stdout _scratch/s11c/incident_flow_falloff01/L96C4_d8/stdout _scratch/s11c/incident_flow_falloff01/L96C4_d16/stdout _scratch/s11c/incident_flow_falloff01/L96C6_d4/stdout _scratch/s11c/incident_flow_falloff01/L96C6_d8/stdout _scratch/s11c/incident_flow_falloff01/L96C6_d16/stdout",
+      "input_sha256": {
+        "_scratch/s11c/incident_flow_falloff01/L48C4_d4/stdout": "f0cdb62dca21de922b786312d60a49e9ae5cf29bcac5fe0a48937510de553f8d",
+        "_scratch/s11c/incident_flow_falloff01/L48C4_d8/stdout": "c93202b2aeb67fab435e28c1a9a3a8d2d64b497a90a0ee7852efae46d17190f2",
+        "_scratch/s11c/incident_flow_falloff01/L48C4_d16/stdout": "5e868d44f00f2072c6518a98c58bfb81cbd6ae750233ccb52fa88fcd47c07913",
+        "_scratch/s11c/incident_flow_falloff01/L96C4_d4/stdout": "cbc07817851dba3b8fda16e9ba2d2b23af0b68db35f87ba4905ddd76310d8c75",
+        "_scratch/s11c/incident_flow_falloff01/L96C4_d8/stdout": "018a49301c418f918fc7e4d9728b9806b88111c83617700bc43dc5ff13108565",
+        "_scratch/s11c/incident_flow_falloff01/L96C4_d16/stdout": "34a5b6d3d8ffb878c89413b15d6994d8a70d8fc0202c7fd05c2f5c15ea893312",
+        "_scratch/s11c/incident_flow_falloff01/L96C6_d4/stdout": "60cd4d9b8f9abe248467a0feafbce1909d91e971bc88fce5a2c3169eead45838",
+        "_scratch/s11c/incident_flow_falloff01/L96C6_d8/stdout": "939245c04ec539b44c83e0d5bfecbaf0867e393483983190de046d318f6896c6",
+        "_scratch/s11c/incident_flow_falloff01/L96C6_d16/stdout": "a211ec199828d54c670f13260d007255bf2e97393a8fefa4c467e737b38af997"
+      },
+      "output_fields_sha256": {},
+      "started_utc": "2026-11-16T00:03:37.302489+00:00",
+      "guard_outcome_written_utc": "2026-11-16T00:03:37.652733+00:00",
+      "wall_seconds": 0.33687320398166776,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 1073741824,
+      "peak_memory_bytes_sampled": 45051904,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/incident_flow_falloff01/compare/stdout",
+      "stdout_bytes": 577,
+      "stdout_sha256": "7e264e129160174a9e2c3fc01489139d0d649bb39661388cdb071c514dc7bb8b",
+      "stdout": [
+        "grid=(48, 4, 16) U4=0.00124780171433 U8=0.000310138626873 U16=7.56618195701e-05 U8/U4=0.248548005114 U16/U8=0.243961290255 longer_ratio_closer=False",
+        "grid=(96, 4, 16) U4=0.00124824799689 U8=0.000311033694389 U16=7.74766182066e-05 U8/U4=0.249176201494 U16/U8=0.249093971503 longer_ratio_closer=False",
+        "grid=(96, 6, 24) U4=0.00124561040308 U8=0.000310856195237 U16=7.74653038221e-05 U8/U4=0.249561335125 U16/U8=0.249199806885 longer_ratio_closer=False",
+        "move_bath short_shift_pp=0.0628196381 long_shift_pp=0.513268125",
+        "refine_mesh short_shift_pp=0.038513363 long_shift_pp=0.0105835383"
+      ]
+    }
+  ]
+}

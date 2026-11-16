@@ -1,0 +1,503 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "Isolated radius-1 mouth, fixed lateral reservoir and common calibrated intake shape. Brane-side momentum-flux response to prescribed small axial acceleration after subtracting static displacement. The rate-0.25 response is archived.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "sources": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/lateral_mouth_acceleration.py": "0f04c0edb17b6c17bc1dfd2081412017caed4dfd7c1ef6808fe84f751394219b",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/lateral_target_rate.py": "03b68b5d48bb81e5fb24256adcc5dc8aae6582f2bad428b861755b5aad261a6b",
+    "software/stage1_solver/tools/lateral_acceleration_rate.py": "082ad175b2bc74221197e0d8cdb8b323f8d9b8ebfa5acdf63b1aba2823a27d2b",
+    "docs/_measurements/lateral_mouth_acceleration.json": "fcb66853f155ab6f688ae00170bfe88b22d53ca8c8589631b8ac07344f2928a4",
+    "docs/_measurements/lateral_target_rate.json": "1509281ae8ed652a457da284ac92944cb902b5630e547c71ff7e266e12b9bce3"
+  },
+  "runs": [
+    {
+      "grid": "e24_c4",
+      "rate": 0.125,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-accel-rate --memory-gib 3 --log-directory _scratch/s11c/lateral_accel_rate_e24_c4_J0.125_01 -- python3 software/stage1_solver/tools/lateral_acceleration_rate.py _scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz _scratch/s11c/lateral_target_rate_e24_c4_01/fields/alone_J0.125.npz 0.125",
+      "sources_read": {
+        "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz": "08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe",
+        "_scratch/s11c/lateral_target_rate_e24_c4_01/fields/alone_J0.125.npz": "c73232dd7e47f1dccf869cb43b826ad0336c6b975676fe4da9f3bfb0741ed750"
+      },
+      "started_utc": "2026-11-14T23:10:33.166039+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:10:48.232549+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_gib": 3,
+      "peak_memory_bytes_sampled": 120520704,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "limits_verified": true,
+      "deadline": null,
+      "wall_seconds": 15.017429795116186,
+      "stdout_path": "_scratch/s11c/lateral_accel_rate_e24_c4_J0.125_01/stdout",
+      "stdout_bytes": 931,
+      "stdout_sha256": "3e53553a781436ddfbba7ce9312226238b4ed81d7e64d687d4718f42242e4ac8",
+      "stdout": [
+        "translation_derivative_error=5.22196e-10 base_trace_error=1.48463e-14",
+        "extent=24 dx=0.25 dz=0.0625 rate=0.125 bath=0.125 layer_error=6.79514e-14 base_residual=1.01429e-12 static_residual=4.86781e-13",
+        "omega=0 carried_per_A=-0.000472401231903 stress_per_A=2.56796006555e-09 compensating_per_A=0.000472398663942 direct_compensating_per_A=0.000471376184063 per_rate=0.00377918931154 per_rate_squared=0.0302335144923 residual=1.10838e-11 steps=11",
+        "omega=0.005 carried_per_A=-0.000472450729509 stress_per_A=2.56758343289e-09 compensating_per_A=0.000472448161926 direct_compensating_per_A=0.000471425653537 per_rate=0.00377958529541 per_rate_squared=0.0302366823632 residual=1.10834e-11 steps=11",
+        "omega=0.01 carried_per_A=-0.000472599579973 stress_per_A=2.56645046413e-09 compensating_per_A=0.000472597013523 direct_compensating_per_A=0.000471574419424 per_rate=0.00378077610818 per_rate_squared=0.0302462088655 residual=1.10825e-11 steps=11"
+      ]
+    },
+    {
+      "grid": "e24_c4",
+      "rate": 0.5,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-accel-rate --memory-gib 3 --log-directory _scratch/s11c/lateral_accel_rate_e24_c4_J0.5_01 -- python3 software/stage1_solver/tools/lateral_acceleration_rate.py _scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz _scratch/s11c/lateral_target_rate_e24_c4_01/fields/alone_J0.5.npz 0.5",
+      "sources_read": {
+        "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz": "08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe",
+        "_scratch/s11c/lateral_target_rate_e24_c4_01/fields/alone_J0.5.npz": "26ad17c9c9948f12e1337ce6594a0cc2566d924f76f12274e00faeaa5702229c"
+      },
+      "started_utc": "2026-11-14T23:10:33.166078+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:10:44.612670+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_gib": 3,
+      "peak_memory_bytes_sampled": 120569856,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "limits_verified": true,
+      "deadline": null,
+      "wall_seconds": 11.358038678998128,
+      "stdout_path": "_scratch/s11c/lateral_accel_rate_e24_c4_J0.5_01/stdout",
+      "stdout_bytes": 923,
+      "stdout_sha256": "f7ee121c315cbba19f7138aa71fd063418128a6d40d3eef42782ceedcb5a62ab",
+      "stdout": [
+        "translation_derivative_error=2.1074e-09 base_trace_error=5.22556e-14",
+        "extent=24 dx=0.25 dz=0.0625 rate=0.5 bath=0.499999999999 layer_error=7.1838e-14 base_residual=1.43555e-12 static_residual=8.32201e-13",
+        "omega=0 carried_per_A=-0.00760245273888 stress_per_A=6.90101333743e-07 compensating_per_A=0.00760176263755 direct_compensating_per_A=0.0075854761243 per_rate=0.0152035252751 per_rate_squared=0.0304070505502 residual=4.33261e-12 steps=11",
+        "omega=0.005 carried_per_A=-0.00760324536347 stress_per_A=6.90003303335e-07 compensating_per_A=0.00760255536016 direct_compensating_per_A=0.00758626841114 per_rate=0.0152051107203 per_rate_squared=0.0304102214406 residual=4.33307e-12 steps=11",
+        "omega=0.01 carried_per_A=-0.00760562896048 stress_per_A=6.89708411442e-07 compensating_per_A=0.00760493925207 direct_compensating_per_A=0.00758865099299 per_rate=0.0152098785041 per_rate_squared=0.0304197570083 residual=4.33358e-12 steps=11"
+      ]
+    },
+    {
+      "grid": "e24_c6",
+      "rate": 0.125,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-accel-rate --memory-gib 4 --log-directory _scratch/s11c/lateral_accel_rate_e24_c6_J0.125_01 -- python3 software/stage1_solver/tools/lateral_acceleration_rate.py _scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz _scratch/s11c/lateral_target_rate_e24_c6_01/fields/alone_J0.125.npz 0.125",
+      "sources_read": {
+        "_scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz": "590774f5c77c030fbe68edb253b5edddd0bc8b636bf983f1947fae52d7389fb1",
+        "_scratch/s11c/lateral_target_rate_e24_c6_01/fields/alone_J0.125.npz": "2107b96552fd9d05e693339cc8cf825df891e8d517d82dedcc4739c637fac74d"
+      },
+      "started_utc": "2026-11-14T23:10:33.166277+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:11:18.946521+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_gib": 4,
+      "peak_memory_bytes_sampled": 293330944,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "limits_verified": true,
+      "deadline": null,
+      "wall_seconds": 45.63046021107584,
+      "stdout_path": "_scratch/s11c/lateral_accel_rate_e24_c6_J0.125_01/stdout",
+      "stdout_bytes": 937,
+      "stdout_sha256": "6d4ebe244eb6462e0da8c0118d85d1c51f6162e275fd8a88f461350df40931f0",
+      "stdout": [
+        "translation_derivative_error=2.73849e-10 base_trace_error=1.30129e-14",
+        "extent=24 dx=0.16666667 dz=0.041666667 rate=0.125 bath=0.125 layer_error=5.23386e-14 base_residual=1.1897e-12 static_residual=3.7359e-13",
+        "omega=0 carried_per_A=-0.000466473057459 stress_per_A=2.19847820236e-09 compensating_per_A=0.00046647085898 direct_compensating_per_A=0.000466058216686 per_rate=0.00373176687184 per_rate_squared=0.0298541349747 residual=9.72391e-12 steps=11",
+        "omega=0.005 carried_per_A=-0.000466522495952 stress_per_A=2.1981025816e-09 compensating_per_A=0.000466520297849 direct_compensating_per_A=0.000466107648405 per_rate=0.00373216238279 per_rate_squared=0.0298572990624 residual=9.72346e-12 steps=11",
+        "omega=0.01 carried_per_A=-0.000466671168902 stress_per_A=2.19697267033e-09 compensating_per_A=0.00046666897193 direct_compensating_per_A=0.000466256300995 per_rate=0.00373335177544 per_rate_squared=0.0298668142035 residual=9.72293e-12 steps=11"
+      ]
+    },
+    {
+      "grid": "e24_c6",
+      "rate": 0.5,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-accel-rate --memory-gib 4 --log-directory _scratch/s11c/lateral_accel_rate_e24_c6_J0.5_01 -- python3 software/stage1_solver/tools/lateral_acceleration_rate.py _scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz _scratch/s11c/lateral_target_rate_e24_c6_01/fields/alone_J0.5.npz 0.5",
+      "sources_read": {
+        "_scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz": "590774f5c77c030fbe68edb253b5edddd0bc8b636bf983f1947fae52d7389fb1",
+        "_scratch/s11c/lateral_target_rate_e24_c6_01/fields/alone_J0.5.npz": "3149bdb8604cbe3e5d5311b696b229640255948869bb4b9ebc9da40aee6f1263"
+      },
+      "started_utc": "2026-11-14T23:10:33.166019+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:11:38.102090+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_gib": 4,
+      "peak_memory_bytes_sampled": 284684288,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "limits_verified": true,
+      "deadline": null,
+      "wall_seconds": 64.91937465895899,
+      "stdout_path": "_scratch/s11c/lateral_accel_rate_e24_c6_J0.5_01/stdout",
+      "stdout_bytes": 925,
+      "stdout_sha256": "ca1e9099fc4ee4c1084f5e060b0f0380a47aea9461b168fc6706be3743d6d8c7",
+      "stdout": [
+        "translation_derivative_error=1.10502e-09 base_trace_error=4.69944e-14",
+        "extent=24 dx=0.16666667 dz=0.041666667 rate=0.5 bath=0.5 layer_error=5.63636e-14 base_residual=1.79573e-12 static_residual=7.31727e-13",
+        "omega=0 carried_per_A=-0.0075062864147 stress_per_A=5.91882159184e-07 compensating_per_A=0.00750569453254 direct_compensating_per_A=0.00749907982264 per_rate=0.0150113890651 per_rate_squared=0.0300227781302 residual=4.66842e-12 steps=11",
+        "omega=0.005 carried_per_A=-0.00750707809851 stress_per_A=5.91784423885e-07 compensating_per_A=0.00750648631409 direct_compensating_per_A=0.00749987149385 per_rate=0.0150129726282 per_rate_squared=0.0300259452563 residual=4.66715e-12 steps=11",
+        "omega=0.01 carried_per_A=-0.00750945887054 stress_per_A=5.91490423346e-07 compensating_per_A=0.00750886738012 direct_compensating_per_A=0.00750225222826 per_rate=0.0150177347602 per_rate_squared=0.0300354695205 residual=4.66807e-12 steps=11"
+      ]
+    },
+    {
+      "grid": "e48_c4",
+      "rate": 0.125,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-accel-rate --memory-gib 5 --log-directory _scratch/s11c/lateral_accel_rate_e48_c4_J0.125_01 -- python3 software/stage1_solver/tools/lateral_acceleration_rate.py _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz _scratch/s11c/lateral_target_rate_e48_c4_01/fields/alone_J0.125.npz 0.125",
+      "sources_read": {
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd",
+        "_scratch/s11c/lateral_target_rate_e48_c4_01/fields/alone_J0.125.npz": "e3fa80772e3767a244751f2f662830ed550b4b798d5bacca4f54c073a0588dc4"
+      },
+      "started_utc": "2026-11-14T23:10:33.166556+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:11:59.959862+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_gib": 5,
+      "peak_memory_bytes_sampled": 347430912,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "limits_verified": true,
+      "deadline": null,
+      "wall_seconds": 86.55305970902555,
+      "stdout_path": "_scratch/s11c/lateral_accel_rate_e48_c4_J0.125_01/stdout",
+      "stdout_bytes": 930,
+      "stdout_sha256": "8089901c585a6cc152a3ec1d15fe9666aa510c0847b8f2d856dc122ceb7a2a40",
+      "stdout": [
+        "translation_derivative_error=5.22196e-10 base_trace_error=1.49855e-14",
+        "extent=48 dx=0.25 dz=0.0625 rate=0.125 bath=0.125 layer_error=6.8956e-14 base_residual=1.02579e-12 static_residual=4.87539e-13",
+        "omega=0 carried_per_A=-0.000486191262022 stress_per_A=2.44448769391e-09 compensating_per_A=0.000486188817534 direct_compensating_per_A=0.000485159590904 per_rate=0.00388951054028 per_rate_squared=0.0311160843222 residual=1.10927e-11 steps=11",
+        "omega=0.005 carried_per_A=-0.000486298386748 stress_per_A=2.44359629004e-09 compensating_per_A=0.000486295943151 direct_compensating_per_A=0.000485266659757 per_rate=0.00389036754521 per_rate_squared=0.0311229403617 residual=1.10925e-11 steps=11",
+        "omega=0.01 carried_per_A=-0.000486622732563 stress_per_A=2.44089567654e-09 compensating_per_A=0.000486620291668 direct_compensating_per_A=0.000485590836517 per_rate=0.00389296233334 per_rate_squared=0.0311436986667 residual=1.10914e-11 steps=11"
+      ]
+    },
+    {
+      "grid": "e48_c4",
+      "rate": 0.5,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-accel-rate --memory-gib 5 --log-directory _scratch/s11c/lateral_accel_rate_e48_c4_J0.5_01 -- python3 software/stage1_solver/tools/lateral_acceleration_rate.py _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz _scratch/s11c/lateral_target_rate_e48_c4_01/fields/alone_J0.5.npz 0.5",
+      "sources_read": {
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd",
+        "_scratch/s11c/lateral_target_rate_e48_c4_01/fields/alone_J0.5.npz": "8e46cd180f86893f7ff4aefb1b8df5cae4b73b6a13d73a1ad13d38afca406664"
+      },
+      "started_utc": "2026-11-14T23:10:33.167423+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:11:50.812298+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_gib": 5,
+      "peak_memory_bytes_sampled": 340434944,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "limits_verified": true,
+      "deadline": null,
+      "wall_seconds": 77.29888600087725,
+      "stdout_path": "_scratch/s11c/lateral_accel_rate_e48_c4_J0.5_01/stdout",
+      "stdout_bytes": 924,
+      "stdout_sha256": "27f86b57541d59f5f8af102f3be80fa4e5ee81e1124427d27f0805d4c143f1d5",
+      "stdout": [
+        "translation_derivative_error=2.1074e-09 base_trace_error=6.02593e-14",
+        "extent=48 dx=0.25 dz=0.0625 rate=0.5 bath=0.500000000001 layer_error=8.23215e-14 base_residual=1.64578e-12 static_residual=8.25678e-13",
+        "omega=0 carried_per_A=-0.00782306127354 stress_per_A=6.57891878978e-07 compensating_per_A=0.00782240338166 direct_compensating_per_A=0.00780601492848 per_rate=0.0156448067633 per_rate_squared=0.0312896135267 residual=4.26941e-12 steps=11",
+        "omega=0.005 carried_per_A=-0.00782477581513 stress_per_A=6.57659566715e-07 compensating_per_A=0.00782411815556 direct_compensating_per_A=0.00780772883963 per_rate=0.0156482363111 per_rate_squared=0.0312964726223 residual=4.26926e-12 steps=11",
+        "omega=0.01 carried_per_A=-0.00782996698205 stress_per_A=6.56955743212e-07 compensating_per_A=0.0078293100263 direct_compensating_per_A=0.00781291809997 per_rate=0.0156586200526 per_rate_squared=0.0313172401052 residual=4.27027e-12 steps=11"
+      ]
+    }
+  ],
+  "archived_rate_0_25": [
+    {
+      "grid": "e24_c4",
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-acceleration --memory-gib 3 --log-directory _scratch/s11c/lateral_accel_e24_c4_01 -- python3 software/stage1_solver/tools/lateral_mouth_acceleration.py _scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz",
+      "packet_sha256": "08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 3,
+      "cpus": 1,
+      "swap_bytes": 0,
+      "deadline": null,
+      "stdout_sha256": "419afaace036bec8aa6c9affdc8133b6be32c90525dcce5a85530117ada12f5e",
+      "stdout": [
+        "extent=24 dx=0.25 dz=0.0625 rate=0.25 static_residual=3.33e-13",
+        "omega=0 carried_per_A=-0.00189177462406 stress_per_A=4.1486350665e-08 load_per_A=-0.00189173313771 compensating_per_A=0.00189173313771 direct_compensating_per_A=0.00188764682435 residual=4.83e-12 steps=11",
+        "omega=0.005 carried_per_A=-0.00189197264715 stress_per_A=4.14803046097e-08 load_per_A=-0.00189193116684 compensating_per_A=0.00189193116684 direct_compensating_per_A=0.00188784474045 residual=4.83e-12 steps=11",
+        "omega=0.01 carried_per_A=-0.00189256814703 stress_per_A=4.14621171324e-08 load_per_A=-0.00189252668491 compensating_per_A=0.00189252668491 direct_compensating_per_A=0.00188843991871 residual=4.83e-12 steps=11"
+      ]
+    },
+    {
+      "grid": "e24_c6",
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-acceleration --memory-gib 4 --log-directory _scratch/s11c/lateral_accel_e24_c6_01 -- python3 software/stage1_solver/tools/lateral_mouth_acceleration.py _scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz",
+      "packet_sha256": "590774f5c77c030fbe68edb253b5edddd0bc8b636bf983f1947fae52d7389fb1",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 4,
+      "cpus": 1,
+      "swap_bytes": 0,
+      "deadline": null,
+      "stdout_sha256": "e00bfe7283eecfed2db758ce53973941ef6342985540b8fec4e811d197b1be45",
+      "stdout": [
+        "extent=24 dx=0.16666667 dz=0.041666667 rate=0.25 static_residual=2.9e-12",
+        "omega=0 carried_per_A=-0.00186799736714 stress_per_A=3.55303004342e-08 load_per_A=-0.00186796183684 compensating_per_A=0.00186796183684 direct_compensating_per_A=0.00186631065853 residual=4.04e-12 steps=11",
+        "omega=0.005 carried_per_A=-0.00186819515404 stress_per_A=3.55242710119e-08 load_per_A=-0.00186815962977 compensating_per_A=0.00186815962977 direct_compensating_per_A=0.00186650842305 residual=4.04e-12 steps=11",
+        "omega=0.01 carried_per_A=-0.00186878994467 stress_per_A=3.5506133787e-08 load_per_A=-0.00186875443853 compensating_per_A=0.00186875443853 direct_compensating_per_A=0.00186710314646 residual=4.04e-12 steps=11"
+      ]
+    },
+    {
+      "grid": "e48_c4",
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-acceleration --memory-gib 5 --log-directory _scratch/s11c/lateral_accel_e48_c4_01 -- python3 software/stage1_solver/tools/lateral_mouth_acceleration.py _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz",
+      "packet_sha256": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 5,
+      "cpus": 1,
+      "swap_bytes": 0,
+      "deadline": null,
+      "stdout_sha256": "ab05ea715c5029a960803ac8dba32e942a75cde05d9fa08dc6bf64a42b03a3fc",
+      "stdout": [
+        "extent=48 dx=0.25 dz=0.0625 rate=0.25 static_residual=3.35e-13",
+        "omega=0 carried_per_A=-0.00194693316724 stress_per_A=3.95033899162e-08 load_per_A=-0.00194689366385 compensating_per_A=0.00194689366385 direct_compensating_per_A=0.00194278066059 residual=4.85e-12 steps=11",
+        "omega=0.005 carried_per_A=-0.00194736169303 stress_per_A=3.94890766977e-08 load_per_A=-0.00194732220395 compensating_per_A=0.00194732220395 direct_compensating_per_A=0.00194320897588 residual=4.85e-12 steps=11",
+        "omega=0.01 carried_per_A=-0.00194865915675 stress_per_A=3.94457130357e-08 load_per_A=-0.00194861971104 compensating_per_A=0.00194861971104 direct_compensating_per_A=0.00194450580275 residual=4.85e-12 steps=11"
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "grid": "e24_c4",
+      "omega": 0,
+      "rates": [
+        0.125,
+        0.25,
+        0.5
+      ],
+      "reaction": [
+        0.000472398663942,
+        0.00189173313771,
+        0.00760176263755
+      ],
+      "direct": [
+        0.000471376184063,
+        0.00188764682435,
+        0.0075854761243
+      ],
+      "successive_ratios": [
+        4.004526858573551,
+        4.018411733671993
+      ],
+      "direct_successive_ratios": [
+        4.00454432822536,
+        4.0184827089739175
+      ]
+    },
+    {
+      "grid": "e24_c4",
+      "omega": 0.005,
+      "rates": [
+        0.125,
+        0.25,
+        0.5
+      ],
+      "reaction": [
+        0.000472448161926,
+        0.00189193116684,
+        0.00760255536016
+      ],
+      "direct": [
+        0.000471425653537,
+        0.00188784474045,
+        0.00758626841114
+      ],
+      "successive_ratios": [
+        4.004526463024604,
+        4.018410126864275
+      ],
+      "direct_successive_ratios": [
+        4.004543932401489,
+        4.018481101010289
+      ]
+    },
+    {
+      "grid": "e24_c4",
+      "omega": 0.01,
+      "rates": [
+        0.125,
+        0.25,
+        0.5
+      ],
+      "reaction": [
+        0.000472597013523,
+        0.00189252668491,
+        0.00760493925207
+      ],
+      "direct": [
+        0.000471574419424,
+        0.00188843991871,
+        0.00758865099299
+      ],
+      "successive_ratios": [
+        4.004525273661925,
+        4.0184052952635945
+      ],
+      "direct_successive_ratios": [
+        4.004542742196697,
+        4.018476265940107
+      ]
+    },
+    {
+      "grid": "e24_c6",
+      "omega": 0,
+      "rates": [
+        0.125,
+        0.25,
+        0.5
+      ],
+      "reaction": [
+        0.00046647085898,
+        0.00186796183684,
+        0.00750569453254
+      ],
+      "direct": [
+        0.000466058216686,
+        0.00186631065853,
+        0.00749907982264
+      ],
+      "successive_ratios": [
+        4.004455585767018,
+        4.018119848335477
+      ],
+      "direct_successive_ratios": [
+        4.004458223697405,
+        4.018130523107365
+      ]
+    },
+    {
+      "grid": "e24_c6",
+      "omega": 0.005,
+      "rates": [
+        0.125,
+        0.25,
+        0.5
+      ],
+      "reaction": [
+        0.000466520297849,
+        0.00186815962977,
+        0.00750648631409
+      ],
+      "direct": [
+        0.000466107648405,
+        0.00186650842305,
+        0.00749987149385
+      ],
+      "successive_ratios": [
+        4.004455193875986,
+        4.0181182563152635
+      ],
+      "direct_successive_ratios": [
+        4.00445783165565,
+        4.018128930591541
+      ]
+    },
+    {
+      "grid": "e24_c6",
+      "omega": 0.01,
+      "rates": [
+        0.125,
+        0.25,
+        0.5
+      ],
+      "reaction": [
+        0.00046666897193,
+        0.00186875443853,
+        0.00750886738012
+      ],
+      "direct": [
+        0.000466256300995,
+        0.00186710314646,
+        0.00750225222826
+      ],
+      "successive_ratios": [
+        4.004454015447831,
+        4.0181134692189024
+      ],
+      "direct_successive_ratios": [
+        4.004456652865743,
+        4.0181241419276486
+      ]
+    },
+    {
+      "grid": "e48_c4",
+      "omega": 0,
+      "rates": [
+        0.125,
+        0.25,
+        0.5
+      ],
+      "reaction": [
+        0.000486188817534,
+        0.00194689366385,
+        0.00782240338166
+      ],
+      "direct": [
+        0.000485159590904,
+        0.00194278066059,
+        0.00780601492848
+      ],
+      "successive_ratios": [
+        4.004398278275601,
+        4.017889382921473
+      ],
+      "direct_successive_ratios": [
+        4.004415654176821,
+        4.017959971924676
+      ]
+    },
+    {
+      "grid": "e48_c4",
+      "omega": 0.005,
+      "rates": [
+        0.125,
+        0.25,
+        0.5
+      ],
+      "reaction": [
+        0.000486295943151,
+        0.00194732220395,
+        0.00782411815556
+      ],
+      "direct": [
+        0.000485266659757,
+        0.00194320897588,
+        0.00780772883963
+      ],
+      "successive_ratios": [
+        4.004397386768526,
+        4.017885761118192
+      ],
+      "direct_successive_ratios": [
+        4.0044147620878645,
+        4.017956347743916
+      ]
+    },
+    {
+      "grid": "e48_c4",
+      "omega": 0.01,
+      "rates": [
+        0.125,
+        0.25,
+        0.5
+      ],
+      "reaction": [
+        0.000486620291668,
+        0.00194861971104,
+        0.0078293100263
+      ],
+      "direct": [
+        0.000485590836517,
+        0.00194450580275,
+        0.00781291809997
+      ],
+      "successive_ratios": [
+        4.004394688023941,
+        4.017874797192424
+      ],
+      "direct_successive_ratios": [
+        4.0044120615977175,
+        4.017945376619936
+      ]
+    }
+  ]
+}

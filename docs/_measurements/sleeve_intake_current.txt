@@ -1,0 +1,164 @@
+0PN material current entering the sleeve. Local conservative-carrier calculation.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c. Unreviewed working calculation.
+
+The section is fixed at w=0, oriented toward increasing w. Number current is reported per unit three-area.
+The local field has tangential phase k*x and common temporal rotation. The isolated reference and the two
+driven continuations all admit inward material flow. The two driven continuations share the surface field
+and its normal density slope. The physical downstream match is unspecified. No companion or full throat
+boundary-value problem is solved. Symbols a1,a2,p1,p2 label the first and second normal derivatives
+of amplitude and phase. Wolfram uses s for the normal phase slope at unit amplitude.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool sleeve-intake --memory-gib 2 --log-directory _scratch/s11c/sleeve_intake_current_sympy01 -- python3 software/stage1_solver/tools/sleeve_intake_current.py
+Source SHA256 917c7c15ad968bf2481441859d1f3f7605b49ffd7d0463cd5b99cc8ddc87319e  software/stage1_solver/tools/sleeve_intake_current.py
+Guard SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Start 2026-11-13T19:27:03.375188+00:00. Guard and child exited 0. Verified 2 GiB cap and zero swap. No deadline, guard stop or stderr.
+Stdout SHA256 f7bba4290c3f5ea5a4ff951f67f30cfd867badfec2f8d3f4b49e8866306c3bd5  _scratch/s11c/sleeve_intake_current_sympy01/stdout
+Literal stdout follows
+normal current = a**2*hbar*p1/m
+imaginary equation = a*hbar**2*p2/(2*m) + a1*hbar**2*p1/m
+hbar/(2*a) times current derivative = a*hbar**2*p2/(2*m) + a1*hbar**2*p1/m
+difference = 0
+normal phase gradient at fixed current = j*m/(a**2*hbar)
+normal amplitude curvature = 5*K*a**9*m/(2*hbar**2) + 2*V*a*m/hbar**2 + a*k**2 - 2*a*m*mu/hbar**2 + j**2*m**2/(a**3*hbar**2)
+isolated [tangential k, inward current, density curvature] = [0, 1/2, -3/2]
+incident, continuation A [tangential k, inward current, density curvature] = [1/4, 1/2, -11/8]
+incident, continuation B [tangential k, inward current, density curvature] = [1/4, 9/16, -159/128]
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool sleeve-intake --memory-gib 4 --log-directory _scratch/s11c/sleeve_intake_current_wolfram01 -- math -noprompt -script software/stage1_solver/tools/sleeve_intake_current.wl
+Source SHA256 7005f89c719416d1831aaaecd26ac58a22e14d7762b63f445998ed351e9801bd  software/stage1_solver/tools/sleeve_intake_current.wl
+Guard SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Start 2026-11-13T19:27:12.740424+00:00. Guard and child exited 0. Verified 4 GiB cap and zero swap. No deadline, guard stop or stderr.
+Stdout SHA256 9e2dee49e74627e6e5a331829066f9f7b337b3a003ef72bb4753bc097fe81942  _scratch/s11c/sleeve_intake_current_wolfram01/stdout
+Literal stdout follows
+"normal carrier curvature = "InputForm[-1 + k^2]
+"normal current and its derivative = "InputForm[{s, 0}]
+"isolated"" [tangential k, inward current, density curvature] = "InputForm[{0, 1/2, -3/2}]
+"incident, continuation A"" [tangential k, inward current, density curvature] = "InputForm[{1/4, 1/2, -11/8}]
+"incident, continuation B"" [tangential k, inward current, density curvature] = "InputForm[{1/4, 9/16, -159/128}]
+
+$ sed -n '109,111p;115,119p;333p' docs/two_throat_simulation_handoff_spec.md
+- **`ψ = √ρ · e^{iθ}`** (the GNLS carrier) [COMMITTED] [from `docs/medium_requirements_and_prior_art.md:141,145-146`],
+
+with real number density `ρ(x, w, t)` and phase `θ(x, w, t)`. The flow is **potential flow set by the phase gradient**, `v = (ℏ/m) ∇θ` [COMMITTED] [from `docs/medium_requirements_and_prior_art.md:146` "flow / circulation / vortices"]. All four force phenomena are configurations and collective excitations of this one medium; there is no second substance.
+1. **Continuity** (mass conservation of the one medium; divergence over all four space directions `x, y, z, w`):
+   - `∂_t ρ + ∇·(ρ v) = 0`  [DERIVED — standard Madelung reduction of the committed carrier] [carrier from `docs/medium_requirements_and_prior_art.md:141,146`]
+2. **Phase / Euler–Bernoulli (potential-flow momentum) equation**, carrying the internal energy from the equation of state plus the quantum-pressure (Madelung) term. With `μ(ρ) := U′(ρ) = (5K/4)ρ⁴` and `P(ρ) := ρμ − U = Kρ⁵`, the dimensionally consistent forms are
+   - `ℏ ∂_t θ + (ℏ²/2m)|∇θ|² + μ(ρ) − (ℏ²/2m)(∇²√ρ)/√ρ = 0`,
+   - equivalently, `∂_t v + (v·∇)v = −∇P/(mρ) + (ℏ²/2m²)∇[(∇²√ρ)/√ρ]`.
+| Bulk↔brane phase relation (`g_θθB`) | The relation and interface map between the bulk GNLS carrier phase `θ` (§2.1) and the brane order-parameter phase `θ_B` (§2.2) — independent, slaved, or pullback — and any Josephson/interface coupling between them. Not fixed by the committed sources (the 4D→3D reduction is incomplete); must be declared before the `θ` and `θ_B` sectors are assembled together. **If `θ_B` is independent**, this row must also fix its **stationary/background-phase contract**: whether `θ_B` carries its own background temporal rotation `θ_B = −ω_B t + φ_B` and a brane chemical potential `μ_B` — with the card required to fix the relation among `ω_B`, `μ_B`, the displayed canonical coefficient `J` (from `J θ̇_B δρ_B`), and any separately-postulated brane action scale (there is **no** assumed `ℏ_B`) — whether the brane-order number is independently conserved, how the stationary phase is represented as `r_B → 0`, and the corresponding chemical-potential subtraction/constraint that belongs in `Ω_wall/brane`. If `θ_B` is slaved/pullback, the interface map answers these instead. Without it, "static R1" is undefined for the independent-phase branch. |
+
+$ sed -n 69,88p docs/toy_model_ontology_summary.md
+\partial_t n+\nabla_4\cdot\mathbf J_n=0
+}.
+\]
+
+In the conservative Madelung branch,
+
+\[
+\mathbf J_n=n\mathbf v_{\rm med}.
+\]
+
+A coarse-grained relaxational or mixed branch may instead have
+
+\[
+\mathbf J_n
+=n\mathbf v_{\rm med}+\mathbf J_n^{\rm rel},
+\]
+
+but any relative or diffusive current \(\mathbf J_n^{\rm rel}\) must be derived with its momentum, energy, and entropy partners. It is not an additional material source. Thus \(n\) has constituent-number-per-four-volume units, while an aperture integral of \(\mathbf J_n\) has constituent-number-per-time units.
+
+The working substrate is a generalized nonlinear-Schrödinger or Gross–Pitaevskii medium with a stiff polytropic equation of state, presently written
+
+$ sed -n 10,11p software/stage1_solver/reports/step3_coupled_branch_smoke.md
+Matter sector: stationary gauged quintic GNLS on `(r,w)`, `[-hbar^2/(2m) D_iD_i + V_conf + (5K/4)rho^4 + q_star A0 - mu] psi`; `D_i = d_i - i(q_star/hbar) A_i`, expanded with the axisymmetric full radial measure.
+Maxwell sector: localized H=Z operator over `(A0, Ar, Aw)` with `d_M(Z F^{MN}) + xi^-1 d^N(Z d.A) = mu0 J_psi^N`; `J_psi^0=q_star rho`, `J_psi^i=q_star j^i`, and `j^i=(hbar/m) Im(psi* D_i psi)`.  No external matter source is added.
+
+$ sed -n '42p;45p;66p;76p' software/stage1_solver/reports/pathA_21b_force_closure_and_profile_bvp.md
+- GNLS: `BVP-G1.GNLS: [-hbar^2/(2m_GNLS)D_i0D_i0+V_conf(X;Sigma0)+h(abs(psi0)^2)+q_*A_00-mu]psi0=0 on the 4D bulk throat exterior/interior domain, with D_i0=partial_i-i*q_*A_i0/hbar.` Anchor: `pde.tex:382-391`; action anchor `pde.tex:318-391`.
+G1 domain and BCs: the fields live on the 4D bulk throat branch domain with measure `d^4X` and stationary time factored by `psi=e^{-i mu t/hbar}psi0`. Far-field BCs fix the asymptotic density, chemical potential/gauge reference, finite energy, and the Gauss flux lane. Throat BCs require regular finite fields and branch-declared mouth/bottom flux data; the value selector for those branch data is not part of G1.
+| G4 | NAMED RESIDUAL | `J_VALUE_BRANCH_PARAMETER / J_SELECTOR_UNDERIVED` | Continuity and no-leakage conserve flux in a chosen lane but do not select the value of J. |
+`J_VALUE_BRANCH_PARAMETER / J_SELECTOR_UNDERIVED`: no-leakage conserves the flux in a chosen region, but it does not fix the value. Candidate selectors are sonic choking, regularity at the throat bottom, global topology/outflow balance, or an energy extremum, all explicitly downstream assumptions unless derived.
+
+$ sed -n 39,63p software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+field_records:
+  - id: sleeve_core_trace
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: scalar_field_trace_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [field_point, outward_normal, wall_side, a, L]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    source: nonlinear_throat_core_open
+  - id: geon_core_bundle
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: field_trace_bundle_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [density_trace, h_trace, phase_flux_trace, wall_side]
+    symmetry_class: BODY_CONJUGATE_BUNDLE
+    source: spec_7_0_geon_profile_open
+  - id: throat_surface_functional
+    status: OPEN_INPUT
+    root_type: ACTION
+    domain: field_functional_on_Sigma
+    dimensions: [2, -2, 1]
+    arguments: [field_traces, normal_derivatives, induced_metric]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    source: ledger_stage006_f_throat
+
+$ sed -n 197,205p notes/inner_throat/inner_throat_4d.md
+
+### 4.3 Through-flow mode (superfluid rushing through)
+
+Purpose: include the second “opening” effect explicitly.
+
+* Impose a flux or chemical potential difference across the throat:
+
+  * Dirichlet in (\theta) (phase difference) between ends, or
+  * fixed current at a boundary region.
+
+$ sed -n '5p;13p;19p;28,33p;41,45p' software/stage1_solver/reports/pathA_30_dn_unit_test.md
+Frozen reduction background: `R=R0, eta=0; matter perturbation remains dynamic as exp(-I*omega*t)`.
+`psi''(s) + (omega/cS)^2 psi(s) = 0`
+- Background: `straight finite throat, eta=0, s in [0,L0], R0(L0)=0`, `rho0(s)=rho_star`, `A_M0=0`.
+- General ODE solution from `dsolve`: `C1*sin(omega*s/cS) + C2*cos(omega*s/cS)`
+- D/N coefficient matrix: `[['0', '1'], ['omega*cos(L0*omega/cS)/cS', '-omega*sin(L0*omega/cS)/cS']]`
+- D/N determinant: `-omega*cos(L0*omega/cS)/cS`
+- BC-applied solution: `psiM*(sin(omega*s/cS)*tan(L0*omega/cS) + cos(omega*s/cS))`
+- DtN before final simplification: `-omega*tan(L0*omega/cS)/cS`
+- Derived outward-mouth DtN: `-omega*tan(L0*omega/cS)/cS`
+## Static Limit
+
+`-L0*omega**2/cS**2 - L0**3*omega**4/(3*cS**4) + O(omega**6)`
+
+This is the small-omega expansion of the dynamic DtN; no separate static solve is used.
+
+$ sed -n 197,204p software/stage1_solver/reports/pathA_22b_minimal_combination_xi.md
+- Scope: linear-response solve around the frozen M1c finite-core branch. No nonlinear profile re-solve and no deep/empty-throat solve were run.
+- Frozen branch: `software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json` with grid `{'nr': 10, 'nw': 8, 'r_range': [0.0, 2.0], 'w_range': [0.0, 1.85]}` and stationary residual `4.5892669664482355e-09`.
+- Boundary labels: freeze sheet `mouth Dirichlet / open-impedance(Robin) exit / no hard cap`; packet `open_impedance` with exit model `impedance_mismatch_open_exit`.
+- Hankel check: `Lambda_2^out=I*z**5/9 + z**4/9 + z**2/3 - 3` and `Y_out=I*z**5/27 + 4*z**4/81 + z**2/9 + 1`; the `z^5` coefficient is `1/27`.
+- Anti-tautology: cached `Gamma_port=0.14814814814814817` is present only as legacy provenance and is not used by the solve.
+- Source adapter: frozen derived BdG wall modes from the physical packet; the outgoing DtN/self-energy sweep itself is recomputed from the frozen background.
+- Extraction: for each domain, grid, and frequency window, fit `E = C5` from `-Im(Sigma_out/Sigma_cons)/omega^5 = C5 + C7*omega^2 + C9*omega^4`, then set `chi_Q = E_defect / E_reference`.
+- Physical reference: the branch-geometry reference keeps the exported `Z_w` and `R0_w`, and undefects only the condensate/gauge sector (`rho` uniform, `A -> 0`). The flat reference (`Z_w=1`, `R0_w=a`) is retained only to quantify the old reference choice.
+
+$ sed -n '53,55p;70,72p;296,298p' research/pde_ledger_v3/steps/S12_order_source.md
+∂t n + ∇₄·(n u) = 0
+∂t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n Γ_B
+Γ_B = Γ_return − Γ_drain,       [Γ_B] = T⁻¹.
+No regime is chosen and no field is frozen. In particular `J_χ=0` is not adopted. Transfer is only to
+where the committed law holds and the shear-holding region has two graph faces over the in-plane
+coordinates. The puncture's own interior is excluded, with S22. The S9b/O2 far-zone setting is a
+| Slab's material law; puncture interior | S8/S22 for the former; S22 for the excluded interior (M01). |
+| Controller role; separate boundary laws/data; native O6 conversion/source-boundary identifications | S12 retains its sourced parts (`R-S12-02`). The normal-response input to the native reduction keeps its sourced owners: S5–S8 ingredients, Q1/Q2 static domains, S8/S22 live completion. Boundary work retains O2 accounting, S12 native data and Q2/S22 core response; core/holder data remain Q2/S22. None of S12's forms is delivered here (M11, M17, M18). |
+| Conversion work, energy carried with exchanged material, additional non-variational momentum/energy partners and reaction/supply systems | S12 retains these sourced assignments, OPEN and undelivered here. O3's native bulk-direction carry remains separately through O6/normal response; local transported momentum fixes no carried total energy (M11, M17, M18). |
+
+$ sed -n 11,15p docs/_measurements/sleeve_outlet_dipole.txt
+mass isolated angular mean = m*exp(H(r, w))*Derivative(F(r, w), w)
+mass dipole derivative angular mean = 0
+carried isolated angular mean = 0
+carried dipole derivative angular mean = m*(r*B(r, w)*Derivative(F(r, w), r)*Derivative(F(r, w), w) + r*Derivative(F(r, w), r)*Derivative(G(r, w), w) + r*Derivative(F(r, w), w)*Derivative(G(r, w), r) + 2*G(r, w)*Derivative(F(r, w), w))*exp(H(r, w))/(3*r)
+density-gradient stress isolated angular mean = 0

@@ -1,0 +1,113 @@
+Density across one inward-draining mouth. Working measurement definition, 0PN.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c.
+
+The earlier bulk counterexample is retrieved below. This check exercises only the
+readout on a manufactured field. There is no fit to data and no new throat solve.
+Let s be the externally specified sideways speed. At fixed radius, mu is the
+cosine to the fixed incident direction. The test density includes the baseline
+normal gradient g, an intrinsic linear dipole h, an even quadratic term e, and
+a cubic term k. The cut displacement is s eta mu in the normal direction. All
+coefficients are free. These fields test differentiation and sampling without
+asserting a dynamical origin. SymPy projects angular samples; Wolfram uses
+Cartesian equatorial bands of a sphere inside the three-dimensional aperture.
+The current is the local signed number current relative to the moving cut.
+The intrinsic and sampled slopes differ when a tilted entrance cuts an existing
+density gradient. A manufactured reading gives no value for the physical slope.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool mouth-density --memory-gib 2 --log-directory _scratch/s11c/mouth_density_readout_sympy01 -- python3 software/stage1_solver/tools/mouth_density_readout.py
+SHA256 12f7ad61ef226b1d9d841039dd688e584269b31a666aeed8bc3ffbf9c6cfa425  software/stage1_solver/tools/mouth_density_readout.py
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start 2026-11-13T21:11:08.611793+00:00. Guard and child exited 0. Verified 2 GiB and zero swap. No deadline, guard stop or stderr.
+Stdout SHA256 01b399f6d88e1668098a2e314ed5526a3afa086155436f5c6742a6a338015eca
+Literal stdout follows
+sampled density difference = e*mu**2*s**2 + eta*g*mu*s + h*mu*s + k*mu**3*s**3
+angular [numerator, normalization] = [2*eta*g*s/3 + 2*h*s/3 + 2*k*s**3/5, 2*s/3]
+[projected, opposing-point] slopes = [eta*g + h + 3*k*s**2/5, eta*g + h + k*s**2]
+[projected, opposing-point] zero-drive limits = [eta*g + h, eta*g + h]
+half-speed and full-speed projected slopes = [eta*g + h + 3*k*s**2/20, eta*g + h + 3*k*s**2/5]
+linear density [fixed location, moving entrance, difference] = [h*mu, eta*g*mu + h*mu, eta*g*mu]
+current [baseline, derivative] = [n0*v0, eta*g*mu*v0 + h*mu*v0 + mu*n0*v1]
+density derivative from current and relative speed = mu*(eta*g + h)
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool mouth-density --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_density_readout_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_density_readout.wl
+SHA256 5f9131056126874c143b953848885b90dbef14d54c84222386197e52c96b9381  software/stage1_solver/tools/mouth_density_readout.wl
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start 2026-11-13T21:11:10.515302+00:00. Guard and child exited 0. Verified 4 GiB and zero swap. No deadline, guard stop or stderr.
+Stdout SHA256 71655a413399f8390a051f87c5ea6b5bee5a404c6125b345c62f76c56209a52f
+Literal stdout follows
+"shell projection and opposite poles = "InputForm[{eta*g + h + (3*k*s^2)/5, eta*g + h + k*s^2}]
+"full and half speed projection = "InputForm[{eta*g + h + (3*k*s^2)/5, eta*g + h + (3*k*s^2)/20}]
+"zero-drive limits = "InputForm[{eta*g + h, eta*g + h}]
+"fixed and registered linear fields = "InputForm[{(h*x)/r, (eta*g*x)/r + (h*x)/r}]
+"quotient response = "InputForm[j1/v0 - (j0*v1)/v0^2]
+"current reconstruction and difference = "InputForm[{((eta*g + h)*x)/r, 0}]
+
+$ sed -n '34,41p;54,62p' docs/_measurements/mouth_response_selection.txt
+bulk [continuity, Bernoulli] = [0, 0]
+order [delta u_w, d_w delta Y, sum] = [-4*B*exp(-2*w)*sin(x)/3 + D*(4*exp(-2*w)*sin(x) - 9*exp(-3*w)*sin(x)), (27*D + 4*(B - 3*D)*exp(w))*exp(-3*w)*sin(x)/3, 0]
+deep [dn, du_x, du_w, dY] = [0, U, 0, 0]
+mouth [J,H] = [-B/3, B + 5*D]
+matching matrix, determinant, current-only nullspace = [[-1/3, 0], [1, 5]] -5/3 [[0, 1]]
+matched [B,D] = [-3*J, H/5 + 3*J/5]
+mouth [delta u_x, delta carrier traction_x] = [U + (H/5 - 7*J/5)*cos(x), (-3*H/20 - J/5)*cos(x)]
+stress momentum flux cosine coefficient in terms of V and J = 5*J/4 + 3*V/4
+"order coefficients and residual = "InputForm[{{s2 -> (-2*a2)/3, s3 -> (-3*a3)/8}, 0}]
+"[current,density] sine coefficients = "InputForm[{-1/3*a2 - a3/8, a2 + a3}]
+"selected density modes given both readings = "InputForm[{a2 -> (-3*(hread + 8*jread))/5, a3 -> (8*(hread + 3*jread))/5}]
+"unchanged-current modes = "InputForm[a2 == (-3*a3)/8]
+"mouth [lateral velocity,carrier Cauchy traction] = "InputForm[{u + ((hread - 7*jread)*Cos[x])/5, -1/20*((3*hread + 4*jread)*Cos[x])}]
+"at zero local current change = "InputForm[{u + (hread*Cos[x])/5, (-3*hread*Cos[x])/20}]
+"conditional order flux divided by isolated order slope squared = "InputForm[-1/5*((hread - 7*jread)*kappa*Cos[x])]
+"matched current and density residuals = "InputForm[{0, 0}]
+
+
+$ sed -n 15,18p docs/_measurements/sleeve_outlet_boundary_data.txt
+paired unit decaying mode [density, potential] = [-3*exp(-2*w)*sin(x) + 8*exp(-3*w)*sin(x), -2*exp(-2*w)*sin(x) + 3*exp(-3*w)*sin(x)]
+paired [continuity, Bernoulli] = [0, 0]
+at cut [density, sideways velocity, normal velocity, normal current] change = [5*b*sin(x), U + b*cos(x), -5*b*sin(x), 0]
+downstream changes = [0, U, 0, 0]
+
+$ sed -n 20p docs/one_throat_flow_probe.md
+The exterior is incompressible, inviscid potential flow. The spherical surface admits fluid at uniform inward normal speed $s$ relative to the moving mouth, with tangential slip. Both outlet cases discharge mass at $\rho Q$ with zero additional lateral outlet traction. If the mouth moves at $V$, the prescribed mean outlet velocity along the flow axis is $V+k(U-V)$, with $k=0$ or $1$. The model gives the intake a constant mechanical mass and neglects internal tilt, internal momentum storage relative to the body, and radiation. These are benchmark choices.
+
+$ sed -n '36p;45p' software/stage1_solver/reports/pathA_21b_force_closure_and_profile_bvp.md
+Sign verdict: `ATTRACTIVE_SIGN_FROM_PROFILE_RESIDUAL`. Bernoulli gives delta h=-(m_GNLS/2)delta(v^2) where V_conf,Q,qA0 are asymptotically fixed. From P=K*rho^5 and h=(5K/4)rho^4, dh/drho=5K*rho^3>0 for a stable K>0,rho>0 branch, so higher entrained speed lowers rho and pressure. The remaining finite-throat traction orientation is the profile sign residual.
+G1 domain and BCs: the fields live on the 4D bulk throat branch domain with measure `d^4X` and stationary time factored by `psi=e^{-i mu t/hbar}psi0`. Far-field BCs fix the asymptotic density, chemical potential/gauge reference, finite energy, and the Gauss flux lane. Throat BCs require regular finite fields and branch-declared mouth/bottom flux data; the value selector for those branch data is not part of G1.
+
+$ sed -n '109p;116,119p' docs/two_throat_simulation_handoff_spec.md
+- **`ψ = √ρ · e^{iθ}`** (the GNLS carrier) [COMMITTED] [from `docs/medium_requirements_and_prior_art.md:141,145-146`],
+   - `∂_t ρ + ∇·(ρ v) = 0`  [DERIVED — standard Madelung reduction of the committed carrier] [carrier from `docs/medium_requirements_and_prior_art.md:141,146`]
+2. **Phase / Euler–Bernoulli (potential-flow momentum) equation**, carrying the internal energy from the equation of state plus the quantum-pressure (Madelung) term. With `μ(ρ) := U′(ρ) = (5K/4)ρ⁴` and `P(ρ) := ρμ − U = Kρ⁵`, the dimensionally consistent forms are
+   - `ℏ ∂_t θ + (ℏ²/2m)|∇θ|² + μ(ρ) − (ℏ²/2m)(∇²√ρ)/√ρ = 0`,
+   - equivalently, `∂_t v + (v·∇)v = −∇P/(mρ) + (ℏ²/2m²)∇[(∇²√ρ)/√ρ]`.
+
+$ sed -n 32p software/em_charge_attribute/g0_closure_card_v0.md
+The open mouth is `M_i={w=0,r_i<a}` and its collar is `C_i={w=0,r_i=a}`. At the collar, hard `min/max` intersections are replaced by
+
+$ sed -n 609,614p research/pde_ledger_v3/V3_STEP_PLAN.md
+⛔ **Two inventories, kept apart:**
+- **non-variational source / controller functions** — `Γ_return`, `Γ_drain`, `J_χ`, and the return
+  controllers. ⛔ All `[OPEN]` in form.
+- **boundary / domain data** — the mouth, collar and IR conditions, and the `𝔅` branch selection.
+
+⇒ The throat enters this ledger with its **source form open and its strength supplied**. ⛔ Not "only a
+
+$ sed -n 40,55p software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+  - id: sleeve_core_trace
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: scalar_field_trace_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [field_point, outward_normal, wall_side, a, L]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    source: nonlinear_throat_core_open
+  - id: geon_core_bundle
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: field_trace_bundle_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [density_trace, h_trace, phase_flux_trace, wall_side]
+    symmetry_class: BODY_CONJUGATE_BUNDLE
+    source: spec_7_0_geon_profile_open

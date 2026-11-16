@@ -1,0 +1,154 @@
+Curved sleeve order energy, 0PN, one throat, no sideways drive. Unreviewed working calculation.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c
+
+Use the real ordered-fraction energy with constant a_B and kappa_B, and a reversible
+parcel variation carrying chi. For a smooth carrier and fixed remaining fields the
+bare energy gives force density -n grad(mu_n) + mu_chi grad(chi). In signed distance
+d to a regular interface, H(d) = div N on its equidistant surface. A planar kink
+q(d) solves f_B'(q) = kappa_B q'', and therefore mu_chi = -kappa_B H(d) q'.
+No expansion in curvature was used in this local identity. Its constant-tension
+surface reduction uses a thin, locally planar layer. Neither a thin layer nor its
+alignment to the archived radius is established for an actual converting throat.
+
+The graph r=R(w) has an S^2 angular section in four-space. SymPy differentiates its
+unit normal in 4D radial coordinates. Wolfram varies 4*pi*R^2*sqrt(1+R'^2) and
+computes the axial area force and rim identity. Both use the archived M1c shape.
+The force on the open side is positive along +w for the integrated reported shape.
+It is a surface-tension force on the interface and does not include end/collar
+reactions, total pressure, other stresses or the reaction on the receiving bulk.
+
+In the separate diffuse-profile test q(d) = 1/(1+exp(d/ell)). Set chi = q -
+epsilon*exp[-(d/b)^2] for small positive epsilon. Sample at the same spatial
+point d=0 on the original mid-surface, holding n and the reference geometry fixed.
+At that point both perturbations give delta chi = -epsilon and delta chi' = 0.
+In the outputs the normalized response is (d force_N/d epsilon)/(a_B*q'(0)).
+q'(0) is negative. The two responses have opposite signs in either normalization.
+Neither profile disturbance gives a conversion kinetics, a pressure-driven steady
+state, or an integrated change of throughflow.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool curved-sleeve-order --memory-gib 2 --log-directory _scratch/s11c/curved_sleeve_order_sympy01 -- python3 software/stage1_solver/tools/curved_sleeve_order.py
+SHA256 f8d9af3bdfdc6fe224f9f55fdcba8945fc0b4d07eb4c21499d29506eb3327840  software/stage1_solver/tools/curved_sleeve_order.py
+SHA256 e7e2b508e990adabc29be22254c3ab75831205b28fa305ab40519130c451b1c2  software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start UTC 2026-11-13T22:46:56.272842+00:00. End UTC (outcome file timestamp) 2026-11-13T22:46:56.925188+00:00.
+Child and guard exit 0. Verified 2 GiB, zero swap. Recorded memory.peak 54140928 bytes.
+Stdout _scratch/s11c/curved_sleeve_order_sympy01/stdout (650 bytes, SHA256 96af73616acb47519ee588dfd6a976187b5f10d53a999463062782b9e1fe1f02).
+Literal stdout
+constituent chemical potential and direct order derivative = [5*K*n**4/4, 0]
+order derivative at surface, first order force change per profile slope = [H*k/(4*ell), a - 2*k/b**2]
+normalized change at b=ell and 3ell = [-3, 5/9]
+curvature sum and axial traction per tension = [-(R(w)*Derivative(R(w), (w, 2)) - 2*Derivative(R(w), w)**2 - 2)/((Derivative(R(w), w)**2 + 1)**(3/2)*R(w)), -(R(w)*Derivative(R(w), (w, 2)) - 2*Derivative(R(w), w)**2 - 2)*Derivative(R(w), w)/((Derivative(R(w), w)**2 + 1)**2*R(w))]
+axial force minus rim derivative per tension = 0
+archived [midpoint axial traction, integrated axial side force] per tension = [444/797, 5*pi]
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool curved-sleeve-order --memory-gib 4 --log-directory _scratch/s11c/curved_sleeve_order_wolfram01 -- math -noprompt -script software/stage1_solver/tools/curved_sleeve_order.wl
+SHA256 38fabab7910af5a74c650c4b8cba8820c9e633fb3a3af5e90b0d220cfdb18c8e  software/stage1_solver/tools/curved_sleeve_order.wl
+SHA256 e7e2b508e990adabc29be22254c3ab75831205b28fa305ab40519130c451b1c2  software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start UTC 2026-11-13T22:46:56.708952+00:00. End UTC (outcome file timestamp) 2026-11-13T22:47:01.684779+00:00.
+Child and guard exit 0. Verified 4 GiB, zero swap. Recorded memory.peak 225030144 bytes.
+Stdout _scratch/s11c/curved_sleeve_order_wolfram01/stdout (717 bytes, SHA256 70ae0770c4c7bf8c1dbf0fa892d223b1de2754c94bf40107e5e98c794b7525e1).
+Literal stdout
+"constituent chemical potential, direct order derivative = ""{(5*K0*n^4)/4, 0}"
+"order derivative at surface, first order force change per profile slope = ""{(hcurv*k)/(4*ell), a - (2*k)/b^2}"
+"normalized change at b=ell and 3ell = ""{-3, 5/9}"
+"curvature sum and axial traction per tension = ""{(2 + 2*Derivative[1][radius][w]^2 - radius[w]*Derivative[2][radius][w])/(radius[w]*(1 + Derivative[1][radius][w]^2)^(3/2)), (Derivative[1][radius][w]*(2 + 2*Derivative[1][radius][w]^2 - radius[w]*Derivative[2][radius][w]))/(radius[w]*(1 + Derivative[1][radius][w]^2)^2)}"
+"axial force minus rim derivative per tension = "0
+"archived [midpoint axial traction, integrated axial side force] per tension = ""{444/797, 5*Pi}"
+
+$ jq -c '{scope:.claim_scope,shape:.config.branch.geometry_profile,a:.config.branch.r_mouth,b:.config.branch.r_exit,wMin:.config.branch.w_min,wMax:.config.branch.w_max,fields:(.fields|keys),spatial_current_l2:.convergence_evidence.surrogate_values.spatial_current_l2}' software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json
+{"scope":"pre_registered_effective_closure_branch","shape":"cubic_smoothstep","a":1.0,"b":1.5,"wMin":0.0,"wMax":1.85,"fields":["A_00","A_r0","A_w0","psi_I0","psi_R0"],"spatial_current_l2":0.0}
+
+$ sed -n '93,98p;133,144p' research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
+| P1 | `n` = total conserved 4D constituent **number** density, `[n] = L^-4` (I-1 row); kinetic term carries the constituent mass: `(1/2) m_GNLS n |u|^2`. **`KINETIC_MASS_FACTOR_PINNED`** — the handoff's `(1/2) n|u|^2` restatement lacks the mass factor (see Corrections below). |
+| P2 | `chi_B` dimensionless, range `[0,1]`; `n_B = chi_B n`. |
+| P3 | Double-well `f_B(chi_B) = a_B chi_B^2 (1-chi_B)^2`, `a_B > 0`, minima `{0,1}` (recovery limit sits at a minimum), `[a_B] = M L^-2 T^-2`. POSTULATED — the cited I-1 `U(rho) = (K/4) rho^5` is SINGLE-well, so two-phase structure cannot come from the parent potential. |
+| P4 | **`SAME_DENSITY_DEGENERACY_POSTULATED`** — `f_B` is n-independent, `f_B(n,0) = f_B(n,1) = 0` (asserted). A density-split (liquid–vapor) interface is rejected as the brane: no shear ⇒ no light (the pathA_25 lesson). |
+| P5 | Interface gradient `(kappa_B/2)|grad_4 chi_B|^2`, `[kappa_B] = M T^-2`. |
+| P6 | Shear gate `chi_B f_shear`, `f_shear = (1/2) mu_R^(4) (curl_4 u_d)^2` with **displacement** `u_d` (`[u_d] = L`, distinct from the velocity `u`), `[mu_R^(4)] = M L^-2 T^-2`. Rotational (MacCullagh) form, NOT `(∂u)^2` Cauchy. Brane-projected `mu_R` (`M L^-1 T^-2`, stage003) related by `∫ chi_B mu_R^(4) dw` — dim-consistency asserted, projection POSTULATED/PENDING. |
+**A3 (wall admission, EARNED relative to P3/P5).** The static 1D EL equation
+`kappa_B chi_B'' = f_B'(chi_B)` admits the kink between the two minima:
+
+```
+chi_B(w) = 1/(1 + e^{-w/delta}) = (1/2)(1 + tanh(w/(2 delta))),
+delta = sqrt(kappa_B/(2 a_B))          (width SOLVED from the EL equation)
+sigma_wall = ∫ kappa_B (chi_B')^2 dw = sqrt(2 a_B kappa_B)/6,
+[sigma_wall] = M L^-1 T^-2             (energy per 3-area in 4D)
+```
+
+Both engines verify the EL residual by substitution and integrate `sigma_wall`
+in closed form (the `.wl` independently enters via `DSolve`'s logistic).
+
+$ sed -n 19,26p research/pde_ledger_v2/notes/stage044_v2_unfreeze_prep.md
+## The un-freeze mechanism (author the 044-v2 directive around this)
+Replace `S_hold` (frozen level-set pin) with a dynamical sleeve-surface action `S_Σ`:
+- leading tension = the **DERIVED** `σ_wall = √(2a_Bκ_B)/6` (register R20 — NO new knob) + the 3 committed bending
+  knobs `κ_bend∫H² + κ_anchor + collar-tension`.
+- the `λ_Σ` multiplier is REMOVED, replaced by the free-boundary Euler–Lagrange law (Young–Laplace + bending
+  balance); the collar-Kirchhoff conormal jump `[κ_χ∂_n r_B]=λ_Σ` becomes the tension/curvature balance
+  `[κ_χ∂_n r_B] = σ_wall·H − κ_bend(…) + …`.
+- The wall SHAPE is now dynamical; the full free-boundary SOLVE stays **SIM-DEFERRED** (structure-complete-at-floor,
+
+$ sed -n 185,197p software/stage1_solver/src/stage1_solver/m1c_physical_run.py
+        "geometry": {
+            "a": 1.0,
+            "R_mouth": 1.0,
+            "L": 37.0 / 20.0,
+            "L_exact": "37/20",
+            "R_exit": 3.0 / 2.0,
+            "R_exit_exact": "3/2",
+            "R0_family": "cubic_smoothstep",
+            "R0_formula": "R0(w)=1+(1/2)*(3*x^2-2*x^3), x=w/L",
+            "boundary_class": "mouth Dirichlet / open-impedance(Robin) exit / no hard cap",
+            "epsilon_r": 1.0 / 20.0,
+            "ell_radial_support": 1.0 / 20.0,
+            "radial_support_layer_active": False,
+
+$ sed -n '195,204p;211,223p' software/stage1_solver/src/stage1_solver/coupled_branch.py
+def geometry_radius_torch(w: torch.Tensor, cfg: BranchSmokeConfig | CoupledBranchMMSConfig) -> torch.Tensor:
+    if getattr(cfg, "geometry_profile", "exponential_decay") == "cubic_smoothstep":
+        length = cfg.w_max - cfg.w_min
+        if length <= 0.0:
+            raise ValueError("w_max must exceed w_min for cubic_smoothstep geometry")
+        x = torch.clamp((w - cfg.w_min) / length, min=0.0, max=1.0)
+        smooth = 3.0 * x**2 - 2.0 * x**3
+        return cfg.r_mouth + (cfg.r_exit - cfg.r_mouth) * smooth
+    s = w - cfg.w_min
+    return cfg.r_exit + (cfg.r_mouth - cfg.r_exit) * torch.exp(-s / cfg.geometry_decay_length)
+    radius: torch.Tensor | None = None,
+) -> torch.Tensor:
+    r = grid.r_centers[:, None]
+    w = grid.w_centers[None, :]
+    radius_values = geometry_radius_torch(grid.w_centers, cfg) if radius is None else radius
+    if radius_values.shape != grid.w_centers.shape:
+        raise ValueError("confinement radius must live on grid.w_centers")
+    radius_2d = radius_values[None, :]
+    length = cfg.w_max - cfg.w_min
+    midpoint = 0.5 * (cfg.w_min + cfg.w_max)
+    radial_wall = cfg.radial_wall_strength * (r / radius_2d) ** 4
+    axial = 0.5 * cfg.axial_trap_strength * ((w - midpoint) / length) ** 2
+    return radial_wall + axial
+
+$ sed -n 609,615p research/pde_ledger_v3/V3_STEP_PLAN.md
+⛔ **Two inventories, kept apart:**
+- **non-variational source / controller functions** — `Γ_return`, `Γ_drain`, `J_χ`, and the return
+  controllers. ⛔ All `[OPEN]` in form.
+- **boundary / domain data** — the mouth, collar and IR conditions, and the `𝔅` branch selection.
+
+⇒ The throat enters this ledger with its **source form open and its strength supplied**. ⛔ Not "only a
+boundary condition" — that framing hides which of the two is unresolved.
+
+$ sed -n 62,72p research/pde_ledger_v3/steps/S12_order_source.md
+The domain has real coordinates `(t,x¹,x²,x³,w)` and live faces `w₋(x,t)<w₊(x,t)`. Region 1 is below,
+region 2 inside, region 3 above. Outside, order is zero; inside, `f(t,x,w)` is live with `0≤f≤1`.
+The faces bound the region in which shear can be held; they are **not** defined by the support of a
+chosen order profile. Density, each velocity component, each order-flux component and the interior
+order have independent regional restrictions and one-sided traces, may jump, and have no
+face-concentrated input part. The source `n Γ_B` can have such a part. Point values at the faces and
+jumps are unspecified. (Retrieve M01, M03–M05.)
+
+No regime is chosen and no field is frozen. In particular `J_χ=0` is not adopted. Transfer is only to
+where the committed law holds and the shear-holding region has two graph faces over the in-plane
+coordinates. The puncture's own interior is excluded, with S22. The S9b/O2 far-zone setting is a

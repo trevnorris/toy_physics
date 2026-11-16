@@ -1,0 +1,49 @@
+One-throat sideways force, physical input check. Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c.
+Scope: an isolated, inward-draining throat at 0PN. Only the unforced input check ran.
+Applied force, center acceleration, and inferred inertia have no readings.
+
+In the Stage-1 domain increasing w at the lower face points into the sleeve.
+The script reconstructs axial number current from the saved carrier and axial gauge
+potential. Its cell gradients use the centered interior and one-sided end stencils of
+stage1_solver/operators.py:270. At w=0 the homogeneous Dirichlet condition uses a
+ghost value equal to minus the adjacent value (boundaries.py:54). Averaging gives the
+zero face trace; the whole face, including the actual aperture, has zero normal current.
+This uses both terms of coupled_branch.py:327. The face integral uses the packet's
+radial measure clipped at the specified physical mouth radius. Even a nonzero adjacent
+density would not establish inward flow on this cut. The stored field called mass is
+the integral of carrier density (m1c_background_export.py:170).
+
+The inventory reads results.spatial_current_l2 and results.surrogate_values.spatial_current_l2
+from software/stage1_solver/runs/**/manifest.json. A missing key is not a zero.
+The 12 positive entries use analytic manufactured fields and residuals
+(coupled_branch.py:1022 onward). Frequency-domain drives enumerated here report omega
+and wall_lower_endpoint_eta_abs. Their angular degree is config.p2_tangent.spherical_l;
+the l1 substring in some directory names denotes resolution level 1. The solver drives
+a mixture of matter, gauge and wall fields (p2_tangent.py:373). A quadrupolar wall
+amplitude is insufficient to measure translational acceleration. The U1 mechanics
+record (software/em_charge_attribute/reports/u1_body_dynamics.md:329,420) provides
+a conditional translational block and records unresolved intake reaction and partition.
+
+$ python3 scripts/s11c_guarded_run.py --pool one-throat-force-probe --memory-gib 2 --log-directory _scratch/s11c/one_throat_force_probe_inputs01 -- python3 software/stage1_solver/tools/one_throat_force_probe_inputs.py --runs software/stage1_solver/runs software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_6x4.json software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_8x6.json software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json
+Guard and child exit codes 0; 2 GiB hard memory limit, zero swap, one CPU, verified.
+Raw inputs, test script and stdout SHA256
+0b7050185583fe8601563c7fb2b399a21e68b0751642fe5ca1a045daa3ed9a3a  software/stage1_solver/tools/one_throat_force_probe_inputs.py
+c3df2fabf408fa215a81ba28020b2f578bf49dee382d6c31238eb8c8e989100a  software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_6x4.json
+1e703995e32a9382eec4f70fa9c8b4cb3bce64bb052044774b5a37aa4ba16cdd  software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_8x6.json
+e7e2b508e990adabc29be22254c3ab75831205b28fa305ab40519130c451b1c2  software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json
+d935bc27416ef1135f9aa1cac3b39a1030c4c55c4376845aba859f53f0c686fc  _scratch/s11c/one_throat_force_probe_inputs01/stdout
+
+Literal stdout
+wp1_background_6x4.json radius=1 max_abs_jw_cells=0 max_abs_jw_face=0 signed_inward_number_rate=0
+wp1_background_8x6.json radius=1 max_abs_jw_cells=0 max_abs_jw_face=0 signed_inward_number_rate=0
+wp1_background_10x8.json radius=1 max_abs_jw_cells=0 max_abs_jw_face=0 signed_inward_number_rate=0
+Stage-1 run manifests scanned=191 current-norm entries=75
+  m1c_decision_07_physical_frozen_effective_closure current_norm_zero=3
+  mms_coupled_branch_matter_maxwell current_norm_positive=12
+  patha_chunk1b_closed_newton_placeholder current_norm_zero=1
+  step3_coupled_branch_engineering_smoke current_norm_zero=17
+  step5_boundary_characterization_engineering_smoke current_norm_zero=36
+  step6_conservation_diagnostics_sponge_off current_norm_zero=3
+  step6_conservation_diagnostics_sponge_on current_norm_zero=3
+  step8b_driven_p2_absorber frequency-domain wall responses with ell=2: 6
+  step8c_conservation_response frequency-domain wall responses with ell=2: 12

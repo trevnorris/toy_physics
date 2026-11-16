@@ -1,0 +1,164 @@
+One throat at 0PN. Zero sideways flow. Unreviewed working derivation.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c.
+Working note before this addition: SHA256 902eec9ee77f2d8c0482d3a1dd801d02094b97078492312ddd49c0d8f34eb847.
+
+A pillbox is oriented from ordered material (-) toward the receiving material (+).
+No constituent storage or tangential sheet transport. The moving indicator yields
+[Pi_NN]-W[g_N] for the carrier, with W the layer speed. Its negative is the net
+incoming normal momentum supplied by the two carrier faces. Local wall load
+further requires the layer balance and its edge and attachment terms.
+
+Conservative seam illustration: both complex carrier and order have single traces,
+common regular bulk gradient coefficients, and a real local surface energy g(n,chi,R)
+per true area. A fixed-surface trace variation gives the outward-minus-inward
+derivative jumps in the note. The example selects no g or physical contact law.
+Surface virtual work for a displacement includes the change of area and fields
+appropriately transported; its shape variation depends on the specified functional.
+
+Steady normal-tube restriction: fixed geometry, fields only of z, no side exchange,
+positive A,n,M, constant kappa. The conserved number rate I=A n u_N is per tube.
+For the pure-relaxation adjunct, mu_extra denotes any extra order derivative
+and is set to zero for the bare planar result. The order-current and additional
+kinetic-source terms vanish in this particular test. H=A'/A. The planar
+endpoints are homogeneous and pure. Finite integrals and a nonconstant profile
+give a strictly positive weight. For q=1/(1+exp(z/ell)), the exact weight
+integral without the A,n,M factors is 1/(6 ell). Neither this integral
+nor a static interface match supplies a positive physical discharge.
+SymPy obtains the curved order derivative from the area-weighted energy;
+Wolfram eliminates the profile curvature from the gradient of the normal
+order stress. The seam checks use real-component and complex variations.
+These are symbolic calculations. No physical outlet-pressure sweep was run.
+
+matching sympy
+$ python3 scripts/s11c_guarded_run.py --pool conversion-layer-matching --memory-gib 2 --log-directory _scratch/s11c/conversion_layer_matching_sympy01 -- python3 software/stage1_solver/tools/conversion_layer_matching.py
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 3388aa7a7a2988cda91dc2f8bf467fe6fa0a7b0fd3e7ab80a80535f9cff94602  software/stage1_solver/tools/conversion_layer_matching.py
+Start UTC 2026-11-13T23:23:54.240494+00:00, end UTC (outcome timestamp) 2026-11-13T23:23:54.692094+00:00.
+Guard and child exited 0, verified 2 GiB and zero swap. Recorded memory.peak 53092352 bytes.
+Stdout _scratch/s11c/conversion_layer_matching_sympy01/stdout (384 bytes, SHA256 b985dd011682c8f28bb5a3a3d86731f4aca0e986cbaaca15c60661d4158307b1).
+Literal stdout
+carrier force on layer per area = -(-T_minus*n_minus*n_plus + T_plus*n_minus*n_plus + j**2*m*n_minus - j**2*m*n_plus)/(n_minus*n_plus)
+normal momentum budget = 0
+equal endpoint densities = 0
+order equation times slope minus integral density = 0
+planar kink integral of slope squared = 1/(6*ell)
+planar kink weight times ell minus 1/6 = 0
+planar homogeneous endpoints, energy jump = 0
+
+matching wolfram
+$ python3 scripts/s11c_guarded_run.py --pool conversion-layer-matching --memory-gib 4 --log-directory _scratch/s11c/conversion_layer_matching_wolfram01 -- math -noprompt -script software/stage1_solver/tools/conversion_layer_matching.wl
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 6d3dfa798b2cc2330a849b3ce2955040134890f91f7020bef7a33cc31087c4dd  software/stage1_solver/tools/conversion_layer_matching.wl
+Start UTC 2026-11-13T23:23:56.329271+00:00, end UTC (outcome timestamp) 2026-11-13T23:24:01.033663+00:00.
+Guard and child exited 0, verified 4 GiB and zero swap. Recorded memory.peak 224763904 bytes.
+Stdout _scratch/s11c/conversion_layer_matching_wolfram01/stdout (390 bytes, SHA256 46df9e2390d7d6d4fb2786fe780a0be6d90381744bf7db90a539335064a82221).
+Literal stdout
+"momentum delivered to layer per area = ""(j^2*m)/nm - (j^2*m)/np + tm - tp"
+"reaction minus normal stress and recoil"" = ""0"
+"derivative of reaction with respect to surface speed at fixed j"" = ""0"
+"normal order stress gradient identity"" = ""0"
+"planar kink integral of slope squared = ""1/(6*ell)"
+"positive planar weight normalization"" = ""0"
+"planar bulk order stress jump"" = ""0"
+
+seam sympy
+$ python3 scripts/s11c_guarded_run.py --pool conversion-layer-matching --memory-gib 2 --log-directory _scratch/s11c/conversion_layer_seam_sympy01 -- python3 -c 'from sympy import symbols, diff, simplify
+c,k,h,m,n_s,n_w,q_s,q_w,x,y,A=symbols("c k h m n_s n_w q_s q_w x y A", real=True)
+# n_s,n_w are the two *real-component* normal gradient coefficients on the minus and plus sides for x.
+# The same calculation applies to y. A is surface area, q_s,q_w are gradient traces for order.
+g_n,g_q=symbols("g_n g_q", real=True)
+dx,dy,dq=symbols("dx dy dq")
+bx,by=symbols("jump_Dx jump_Dy", real=True)
+variation=A*(-2*c*(bx*dx+by*dy)-k*(q_w-q_s)*dq+g_n*(2*x*dx+2*y*dy)+g_q*dq)
+conds=[simplify(diff(variation,v)/A) for v in (dx,dy,dq)]
+j_jump=simplify(h/m*(x*(g_n*y/c)-y*(g_n*x/c)))
+print("boundary coefficients for x, y, order =",conds,flush=True)
+print("normal number-current jump for a real density coupling =",j_jump,flush=True)
+assert all(simplify(u-v)==0 for u,v in zip(conds,[-2*c*bx+2*g_n*x,-2*c*by+2*g_n*y,k*(q_s-q_w)+g_q]))
+assert j_jump==0'
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start UTC 2026-11-13T23:25:37.870687+00:00, end UTC (outcome timestamp) 2026-11-13T23:25:38.384641+00:00.
+Guard and child exited 0, verified 2 GiB and zero swap. Recorded memory.peak 53350400 bytes.
+Stdout _scratch/s11c/conversion_layer_seam_sympy01/stdout (169 bytes, SHA256 241690e553aaa22fc22fd13b8d37cf6d76fc7ec2846f90ee810b60861ebd068e).
+Literal stdout
+boundary coefficients for x, y, order = [-2*c*jump_Dx + 2*g_n*x, -2*c*jump_Dy + 2*g_n*y, g_q + k*(q_s - q_w)]
+normal number-current jump for a real density coupling = 0
+
+seam wolfram
+$ python3 scripts/s11c_guarded_run.py --pool conversion-layer-matching --memory-gib 4 --log-directory _scratch/s11c/conversion_layer_seam_wolfram01 -- math -noprompt -run 'Clear["Global`*"]; f=g[Conjugate[ps] ps,q,rad]; deriv=D[g[v ps,q,rad],v]/.v->Conjugate[ps]; jump=deriv/c; current=ComplexExpand[Im[Conjugate[x+I y](x+I y) slope/c]]//Simplify; order=D[g[n,q,rad],q]; Print["normal complex derivative jump = ",ToString[jump,InputForm]]; Print["order surface derivative = ",ToString[order,InputForm]]; Print["current jump factor = ",ToString[current,InputForm]]; Quit[If[TrueQ[Simplify[deriv-ps Derivative[1,0,0][g][Conjugate[ps]ps,q,rad]]==0]&&current===0,0,1]]'
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start UTC 2026-11-13T23:25:37.032645+00:00, end UTC (outcome timestamp) 2026-11-13T23:25:41.246861+00:00.
+Guard and child exited 0, verified 4 GiB and zero swap. Recorded memory.peak 214417408 bytes.
+Stdout _scratch/s11c/conversion_layer_seam_wolfram01/stdout (186 bytes, SHA256 1767ac70f257b4edad5c0dfcf42d3696cab28465a3e8c16b6ec81b783f98f4cd).
+Literal stdout
+"normal complex derivative jump = ""(ps*Derivative[1, 0, 0][g][ps*Conjugate[ps], q, rad])/c"
+"order surface derivative = ""Derivative[0, 1, 0][g][n, q, rad]"
+"current jump factor = ""0"
+
+SHA256 8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e  research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
+$ sed -n '73,84p;95,101p;110,112p' research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
+F = ∫ d^4X [ (1/2) m_GNLS n |u|^2 + U(n) + f_B(chi_B)
+             + (kappa_B/2)|grad_4 chi_B|^2 + chi_B f_shear
+             + f_throat + f_mix ]
+```
+
+Balance laws:
+
+```
+∂_t n + div_4(n u) = 0                                    (total, exact)
+∂_t(chi_B n) + div_4(chi_B n u + J_chi) = n Gamma_B ,      [Gamma_B] = T^-1
+Gamma_B = Gamma_return - Gamma_drain
+```
+| P3 | Double-well `f_B(chi_B) = a_B chi_B^2 (1-chi_B)^2`, `a_B > 0`, minima `{0,1}` (recovery limit sits at a minimum), `[a_B] = M L^-2 T^-2`. POSTULATED — the cited I-1 `U(rho) = (K/4) rho^5` is SINGLE-well, so two-phase structure cannot come from the parent potential. |
+| P4 | **`SAME_DENSITY_DEGENERACY_POSTULATED`** — `f_B` is n-independent, `f_B(n,0) = f_B(n,1) = 0` (asserted). A density-split (liquid–vapor) interface is rejected as the brane: no shear ⇒ no light (the pathA_25 lesson). |
+| P5 | Interface gradient `(kappa_B/2)|grad_4 chi_B|^2`, `[kappa_B] = M T^-2`. |
+| P6 | Shear gate `chi_B f_shear`, `f_shear = (1/2) mu_R^(4) (curl_4 u_d)^2` with **displacement** `u_d` (`[u_d] = L`, distinct from the velocity `u`), `[mu_R^(4)] = M L^-2 T^-2`. Rotational (MacCullagh) form, NOT `(∂u)^2` Cauchy. Brane-projected `mu_R` (`M L^-1 T^-2`, stage003) related by `∫ chi_B mu_R^(4) dw` — dim-consistency asserted, projection POSTULATED/PENDING. |
+| P7 | **`chi_B` is THE postulated wall order parameter** — an independent scalar field (route (a)), NOT built as `|P_par|^2`. The anisotropy `alpha_aniso chi_B (P·w_hat)^2` (`POSTULATED_ANISOTROPY`, `[alpha_aniso] = M L^-2 T^-2`) is **RETIRED with `P` (Decision 16 → failures-paper backlog)**, absent from the live A1 surface. `FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ` (route (c) — `chi_B = |P_par|^2`) remains a named high-risk Part-VII-adjacent gate needing a NEW T0 freeze; obsolete-as-carried, not foreclosed. |
+| P8 | Dynamics = labeled adjunct: `D_t chi_B = -M_chi mu_chi + Gamma_B`, `mu_chi = δF/δchi_B` (`M L^-2 T^-2`), `[M_chi] = L^2 T M^-1`. Energy ledger pinned to the variationally consistent `P_order = ∫ mu_chi D_t chi_B d^4X` (= `M L^2 T^-3`, power). **`HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED`** (see Corrections). |
+| P9 | `J_chi = 0` default (simplest advective closure); `J_chi ≠ 0` deferred, `[J_chi] = L^-3 T^-1`. |
+bookkeeping, both engines): kinetic `M·L^-4·L^2T^-2`; `K n^5 =
+M L^18 T^-2 · L^-20`; `a_B` well; `kappa_B` gradient (`M T^-2 · L^-2`); shear
+gate; placeholders `f_throat`/`f_mix` (`DEFERRED_PLACEHOLDER`). The `α_aniso`
+
+SHA256 eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee  software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+$ sed -n '51,56p' software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+    domain: field_trace_bundle_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [density_trace, h_trace, phase_flux_trace, wall_side]
+    symmetry_class: BODY_CONJUGATE_BUNDLE
+    source: spec_7_0_geon_profile_open
+  - id: throat_surface_functional
+
+SHA256 6a9c1c096890427de1729e0787a8f95deb61158488551d5a99f507f134b6e251  research/pde_ledger_v2/notes/stage044_v2_unfreeze_prep.md
+$ sed -n '19,26p' research/pde_ledger_v2/notes/stage044_v2_unfreeze_prep.md
+## The un-freeze mechanism (author the 044-v2 directive around this)
+Replace `S_hold` (frozen level-set pin) with a dynamical sleeve-surface action `S_Σ`:
+- leading tension = the **DERIVED** `σ_wall = √(2a_Bκ_B)/6` (register R20 — NO new knob) + the 3 committed bending
+  knobs `κ_bend∫H² + κ_anchor + collar-tension`.
+- the `λ_Σ` multiplier is REMOVED, replaced by the free-boundary Euler–Lagrange law (Young–Laplace + bending
+  balance); the collar-Kirchhoff conormal jump `[κ_χ∂_n r_B]=λ_Σ` becomes the tension/curvature balance
+  `[κ_χ∂_n r_B] = σ_wall·H − κ_bend(…) + …`.
+- The wall SHAPE is now dynamical; the full free-boundary SOLVE stays **SIM-DEFERRED** (structure-complete-at-floor,
+
+SHA256 4d56cb9dc25f9d30daa0aba4822e51706d4be023da4f8110c383bd895639874b  software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md
+$ sed -n '22,32p' software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md
+Momentum density: `g_i=m_GNLS*rho*v_i`.
+
+Matter stress representative: `Pi_ij^matter=m_GNLS*rho*v_i*v_j+delta_ij*P(rho)+sigma_Q,ij`.
+
+Quantum stress: `sigma_Q,ij=(hbar^2/(4*m_GNLS))*[(partial_i rho partial_j rho)/rho-partial_i partial_j rho]`.
+
+EOS pressure identity: `P=K*rho^5, h=(5K/4)*rho^4, dP=rho*dh`.
+
+Matter balance law: `partial_t g_i+partial_j Pi_ij^matter=q_star*rho*(E_i+v_j B_ij)-rho*partial_i V_conf`.
+
+Explicit-background body forces:
+
+SHA256 23f78fbd098b5212304911ddb048f831b10854aab210d40978773b3bafcf3671  research/pde_ledger_v3/V3_STEP_PLAN.md
+$ sed -n '609,614p' research/pde_ledger_v3/V3_STEP_PLAN.md
+⛔ **Two inventories, kept apart:**
+- **non-variational source / controller functions** — `Γ_return`, `Γ_drain`, `J_χ`, and the return
+  controllers. ⛔ All `[OPEN]` in form.
+- **boundary / domain data** — the mouth, collar and IR conditions, and the `𝔅` branch selection.
+
+⇒ The throat enters this ledger with its **source form open and its strength supplied**. ⛔ Not "only a

@@ -1,0 +1,129 @@
+Sideways momentum entering the sleeve at 0PN. Unreviewed working calculation.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c.
+
+The common flat cut has N along +w into the sleeve and x toward the companion.
+The local smooth carrier and the undisturbed axial current use m=n0=u_w0=1.
+Both engines take a first variation, holding the comparison axis fixed in the ambient frame.
+SymPy uses n and the velocity potential. Wolfram obtains the off-diagonal current from the
+complex field gradient and density Hessian in the same Madelung stress convention.
+B (b in Wolfram) multiplies the previous weak-flow density mode. D (d) multiplies the
+separate decaying mode with zero pointwise normal-current change at the mouth. U (u)
+is the common deep lateral velocity coefficient. B and D are linear response amplitudes.
+Set D=0 for the conversion example. The far state and normal current at the mouth agree
+between the D=0 and D nonzero responses through first order. An unresolved core must select
+the amplitudes. Neither aperture integration imposes a wall on the sampling rim.
+The angular mean weights mu=cos(angle to companion) uniformly on the in-plane unit sphere.
+The virtual shear gives only the mixed part of the reversible scalar order-gradient stress.
+The passive-order carrier demonstration includes no force feedback from that added energy.
+No full interfacial traction, signed acceleration, or autonomous physical profile is selected.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool mouth-momentum --memory-gib 2 --log-directory _scratch/s11c/mouth_sideways_momentum_sympy01 -- python3 software/stage1_solver/tools/mouth_sideways_momentum.py
+Source SHA256 1044e5a39c89d7966d6bdfa9aea0aa5dae4ab3aa9e3bfe49d1aadce8ffcf990b  software/stage1_solver/tools/mouth_sideways_momentum.py
+Imported carrier equations SHA256 33268148d454125c9e64d63e64dff85b81b6e5eafc40a5e0dc73866947a61701  software/stage1_solver/tools/sleeve_outlet_boundary_data.py
+Guard SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Start 2026-11-13T20:13:52.765892+00:00. Guard and child exited 0. Verified 2 GiB cap and zero swap. No deadline, guard stop or stderr.
+Stdout SHA256 69868b06f158bc186280b7f7ecd4123cbba9e67c121e5d9f884c60fa59c11d11  _scratch/s11c/mouth_sideways_momentum_sympy01/stdout
+Literal stdout follows
+bulk [continuity, phase] = [0, 0]
+x-momentum [d_x Pi_xx, d_w Pi_xw] = [3*(B*exp(w) - D*(3*exp(w) - 8))*exp(-3*w)*cos(x)/2, 3*(-8*D + (-B + 3*D)*exp(w))*exp(-3*w)*cos(x)/2]
+x-momentum divergence = 0
+mouth [number, carried, density gradient, total x momentum] = [-B*sin(x)/3, 2*B*cos(x)/3 + D*cos(x) + U, (B + 9*D)*cos(x)/12, 3*B*cos(x)/4 + 7*D*cos(x)/4 + U]
+deep [number, total x momentum] = [0, U]
+strip [number, carried, density gradient, total] = [0, 4*B*sin(a)/3 + 2*D*sin(a) + 2*U*a, (B + 9*D)*sin(a)/6, 3*B*sin(a)/2 + 7*D*sin(a)/2 + 2*U*a]
+prior full strip at a=pi = [0, 2*pi*U, 0, 2*pi*U]
+ball [number, carried, density gradient, total] = [0, 4*pi*(-2*B*a*cos(a) + 2*B*sin(a) - 3*D*a*cos(a) + 3*D*sin(a) + U*a**3)/3, -pi*(B + 9*D)*(a*cos(a) - sin(a))/3, pi*(-9*B*a*cos(a) + 9*B*sin(a) - 21*D*a*cos(a) + 21*D*sin(a) + 4*U*a**3)/3]
+angular means [intake change, redistribution times existing velocity] = [0, j1*ur/3]
+reversible order-gradient mixed flux = chi_w*chi_x*kappa
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool mouth-momentum --memory-gib 4 --log-directory _scratch/s11c/mouth_sideways_momentum_wolfram02 -- math -noprompt -script software/stage1_solver/tools/mouth_sideways_momentum.wl
+Source SHA256 bc65412fc9b00219dc28effa53c558f7e01580c0dbcef357e7a1df0876d4d25c  software/stage1_solver/tools/mouth_sideways_momentum.wl
+Guard SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Start 2026-11-13T20:14:41.432249+00:00. Guard and child exited 0. Verified 4 GiB cap and zero swap. No deadline, guard stop or stderr.
+Stdout SHA256 abb3325c0c17d6abeb5db7b577cb2f6714e622534a660078610e1e248e273f49  _scratch/s11c/mouth_sideways_momentum_wolfram02/stdout
+Literal stdout follows
+"bulk derivatives and their sum = "InputForm[{(3*(b*E^w + d*(8 - 3*E^w))*Cos[x])/(2*E^(3*w)), (-3*(b*E^w + d*(8 - 3*E^w))*Cos[x])/(2*E^(3*w)), 0}]
+"entrance [number, carried, density gradient, total] = "InputForm[{-1/3*(b*Sin[x]), u + ((2*b)/3 + d)*Cos[x], ((b + 9*d)*Cos[x])/12, u + ((3*b + 7*d)*Cos[x])/4}]
+"deep [number, total] = "InputForm[{0, u}]
+"full strip = "InputForm[{0, 2*Pi*u, 0, 2*Pi*u}]
+"ball [number, carried, density gradient, total] = "InputForm[{0, (4*Pi*(a^3*u - (2*b + 3*d)*(a*Cos[a] - Sin[a])))/3, ((b + 9*d)*Pi*(-(a*Cos[a]) + Sin[a]))/3, (4*a^3*Pi*u)/3 - a*(3*b + 7*d)*Pi*Cos[a] + (3*b + 7*d)*Pi*Sin[a]}]
+
+Correction to the Wolfram check. The first run differentiated a real part and complex conjugate
+before expanding in the real drive parameter. It produced an unphysical imaginary flux and
+a nonzero divergence. The evidence above uses the corrected real-coordinate derivative.
+The separate SymPy calculation did not change.
+
+$ sed -n 22,38p software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md
+Momentum density: `g_i=m_GNLS*rho*v_i`.
+
+Matter stress representative: `Pi_ij^matter=m_GNLS*rho*v_i*v_j+delta_ij*P(rho)+sigma_Q,ij`.
+
+Quantum stress: `sigma_Q,ij=(hbar^2/(4*m_GNLS))*[(partial_i rho partial_j rho)/rho-partial_i partial_j rho]`.
+
+EOS pressure identity: `P=K*rho^5, h=(5K/4)*rho^4, dP=rho*dh`.
+
+Matter balance law: `partial_t g_i+partial_j Pi_ij^matter=q_star*rho*(E_i+v_j B_ij)-rho*partial_i V_conf`.
+
+Explicit-background body forces:
+- `f_i^Vconf=-rho*partial_i V_conf`.
+- `f_i^Z=-(partial_i Z) F_MN F^MN/(4*mu0) in the Maxwell sector`.
+- `f_i^Jext=-A_M*partial_i J_ext^M for explicit external-source gradients`.
+- `gauge-fixing/background terms are included only after a selected branch proves cancellation; otherwise residualized`.
+
+Balance-law-vs-Euler check: Using continuity, dP=rho*dh, and partial_j sigma_Q,ij=rho*partial_i Q, the balance law divided by rho reproduces m_GNLS*(partial_t+v.grad)v_i=q_star*(E_i+v_jB_ij)-partial_i(V_conf+h+Q).
+
+$ sed -n 24,36p docs/_measurements/conversion_region_weak_flow.txt
+Literal stdout follows
+mode [continuity, phase equation] operands = [3*P - 2, 4/3 - 2*P]
+potential amplitude for unit density = 2/3
+driven bulk [continuity, phase equation] residuals = [0, 0]
+at mouth [density, axial velocity, normal current] derivatives = [U*alpha*sin(x), -4*U*alpha*sin(x)/3, -U*alpha*sin(x)/3]
+deep [density, lateral velocity, axial velocity] derivatives = [0, U, 0]
+current derivative integrated on symmetric strip = 0
+order coordinate perturbation = -2*U*alpha*exp(-2*w)*sin(x)/3
+advected order coordinate [base, derivative] = [1, 0]
+at isolated w=b [fraction, loss, loss slope, loss curvature] = [1/2, 1/4, 0, -1/8]
+[half-order shift, net-loss peak shift] = [2*U*alpha*exp(-2*b)*sin(x)/3, -10*U*alpha*exp(-2*b)*sin(x)/3]
+
+wolfram
+
+$ sed -n '15,18p;29,32p' docs/_measurements/sleeve_outlet_boundary_data.txt
+paired unit decaying mode [density, potential] = [-3*exp(-2*w)*sin(x) + 8*exp(-3*w)*sin(x), -2*exp(-2*w)*sin(x) + 3*exp(-3*w)*sin(x)]
+paired [continuity, Bernoulli] = [0, 0]
+at cut [density, sideways velocity, normal velocity, normal current] change = [5*b*sin(x), U + b*cos(x), -5*b*sin(x), 0]
+downstream changes = [0, U, 0, 0]
+"isolated"" downstream changes = "InputForm[{0, 0, 0, 0}]
+"paired"" linearized complex GNLS residual = "InputForm[0]
+"paired"" outlet changes [n,v_x,v_w,j_w] = "InputForm[{5*b*Sin[x], u + b*Cos[x], -5*b*Sin[x], 0}]
+"paired"" downstream changes = "InputForm[{0, u, 0, 0}]
+
+$ sed -n 11,16p docs/_measurements/sleeve_outlet_dipole.txt
+mass isolated angular mean = m*exp(H(r, w))*Derivative(F(r, w), w)
+mass dipole derivative angular mean = 0
+carried isolated angular mean = 0
+carried dipole derivative angular mean = m*(r*B(r, w)*Derivative(F(r, w), r)*Derivative(F(r, w), w) + r*Derivative(F(r, w), r)*Derivative(G(r, w), w) + r*Derivative(F(r, w), w)*Derivative(G(r, w), r) + 2*G(r, w)*Derivative(F(r, w), w))*exp(H(r, w))/(3*r)
+density-gradient stress isolated angular mean = 0
+density-gradient stress dipole derivative angular mean = -hbar**2*(r*B(r, w)*Derivative(H(r, w), r, w) + r*Derivative(B(r, w), r, w) + 2*Derivative(B(r, w), w))*exp(H(r, w))/(12*m*r)
+
+$ sed -n '71,76p;97,99p;112p' research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
+
+```
+F = ∫ d^4X [ (1/2) m_GNLS n |u|^2 + U(n) + f_B(chi_B)
+             + (kappa_B/2)|grad_4 chi_B|^2 + chi_B f_shear
+             + f_throat + f_mix ]
+```
+| P5 | Interface gradient `(kappa_B/2)|grad_4 chi_B|^2`, `[kappa_B] = M T^-2`. |
+| P6 | Shear gate `chi_B f_shear`, `f_shear = (1/2) mu_R^(4) (curl_4 u_d)^2` with **displacement** `u_d` (`[u_d] = L`, distinct from the velocity `u`), `[mu_R^(4)] = M L^-2 T^-2`. Rotational (MacCullagh) form, NOT `(∂u)^2` Cauchy. Brane-projected `mu_R` (`M L^-1 T^-2`, stage003) related by `∫ chi_B mu_R^(4) dw` — dim-consistency asserted, projection POSTULATED/PENDING. |
+| P7 | **`chi_B` is THE postulated wall order parameter** — an independent scalar field (route (a)), NOT built as `|P_par|^2`. The anisotropy `alpha_aniso chi_B (P·w_hat)^2` (`POSTULATED_ANISOTROPY`, `[alpha_aniso] = M L^-2 T^-2`) is **RETIRED with `P` (Decision 16 → failures-paper backlog)**, absent from the live A1 surface. `FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ` (route (c) — `chi_B = |P_par|^2`) remains a named high-risk Part-VII-adjacent gate needing a NEW T0 freeze; obsolete-as-carried, not foreclosed. |
+gate; placeholders `f_throat`/`f_mix` (`DEFERRED_PLACEHOLDER`). The `α_aniso`
+
+$ sed -n 56,63p software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+  - id: throat_surface_functional
+    status: OPEN_INPUT
+    root_type: ACTION
+    domain: field_functional_on_Sigma
+    dimensions: [2, -2, 1]
+    arguments: [field_traces, normal_derivatives, induced_metric]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    source: ledger_stage006_f_throat

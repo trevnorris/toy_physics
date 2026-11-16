@@ -1,0 +1,156 @@
+Selecting a bulk response at the mouth at 0PN. Unreviewed working calculation.
+Base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c.
+
+Both engines retain the same dimensionless flat-entrance case with two decaying
+modes of the smooth carrier and the same passive steady conversion law. The
+base number density, carrier mass and axial speed are unity. Positive w enters
+the sleeve and x points toward the companion. Velocities are in the same frame.
+J and H are sine amplitudes of the first variations of inward number current
+and density at w=0. U is the common imposed deep sideways drive coefficient.
+The normal current is measured locally, before aperture integration.
+
+SymPy uses the previous B,D modes and integrates the order perturbation.
+Wolfram solves for the potential and passive-order coefficients of the two
+individual density modes and matches their amplitudes to the entrance readings.
+The older notation maps to density coefficients a2=B-3D and a3=8D. The
+traction is Cauchy traction on the +w cut. Stress momentum flux has opposite
+sign. The additional order-gradient reading is conditional on evaluating that
+energy on the passive profile, without feeding the force back into the carrier.
+All such readings are per area at the entrance. They do not give the net force
+on a free throat.
+
+The first Wolfram attempt reached the guard's 32-task cap (pids.events max 1)
+and was stopped. The same script completed with the guard's 64-task setting.
+Only completed runs are used for results.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool mouth-selection --memory-gib 2 --log-directory _scratch/s11c/mouth_response_selection_sympy01 -- python3 software/stage1_solver/tools/mouth_response_selection.py
+SHA256 326497425fe39dd757dd15b29e13e29362f1e1a6207af0992e3ed02f99cd35cb  software/stage1_solver/tools/mouth_response_selection.py
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 33268148d454125c9e64d63e64dff85b81b6e5eafc40a5e0dc73866947a61701  software/stage1_solver/tools/sleeve_outlet_boundary_data.py
+Start 2026-11-13T20:58:33.899159+00:00. Guard and child exited 0. Verified 2 GiB cap, zero swap and 32 tasks. No deadline, guard stop or stderr.
+Stdout SHA256 f481cbcaf426e6313e0eefb9912b38ac5581f63acf116c7a5c28b2b9b08a48c7
+Literal stdout follows
+bulk [continuity, Bernoulli] = [0, 0]
+order [delta u_w, d_w delta Y, sum] = [-4*B*exp(-2*w)*sin(x)/3 + D*(4*exp(-2*w)*sin(x) - 9*exp(-3*w)*sin(x)), (27*D + 4*(B - 3*D)*exp(w))*exp(-3*w)*sin(x)/3, 0]
+deep [dn, du_x, du_w, dY] = [0, U, 0, 0]
+mouth [J,H] = [-B/3, B + 5*D]
+matching matrix, determinant, current-only nullspace = [[-1/3, 0], [1, 5]] -5/3 [[0, 1]]
+matched [B,D] = [-3*J, H/5 + 3*J/5]
+mouth [delta u_x, delta carrier traction_x] = [U + (H/5 - 7*J/5)*cos(x), (-3*H/20 - J/5)*cos(x)]
+stress momentum flux cosine coefficient in terms of V and J = 5*J/4 + 3*V/4
+mouth conditional order stress momentum flux = -kappa*slope**2*(H - 7*J)*cos(x)/5
+matched [current,density] residuals = [0, 0]
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool mouth-selection --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_response_selection_wolfram02 -- math -noprompt -script software/stage1_solver/tools/mouth_response_selection.wl
+SHA256 a569b47dc37ab39f512cfc8879e2161cb4ce6c8873d24b48a2a873068b3eae24  software/stage1_solver/tools/mouth_response_selection.wl
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start 2026-11-13T21:00:48.503733+00:00. Guard and child exited 0. Verified 4 GiB cap, zero swap and 64 tasks. No deadline, guard stop or stderr.
+Stdout SHA256 7aad950d3dc10cf0caf9a996c115cf43d97048872e70eabba284736e5e5e4728
+Literal stdout follows
+"potential amplitudes = "InputForm[{p2 -> (2*a2)/3, p3 -> (3*a3)/8}]
+"bulk continuity and phase = "InputForm[{0, 0}]
+"order coefficients and residual = "InputForm[{{s2 -> (-2*a2)/3, s3 -> (-3*a3)/8}, 0}]
+"[current,density] sine coefficients = "InputForm[{-1/3*a2 - a3/8, a2 + a3}]
+"selected density modes given both readings = "InputForm[{a2 -> (-3*(hread + 8*jread))/5, a3 -> (8*(hread + 3*jread))/5}]
+"unchanged-current modes = "InputForm[a2 == (-3*a3)/8]
+"mouth [lateral velocity,carrier Cauchy traction] = "InputForm[{u + ((hread - 7*jread)*Cos[x])/5, -1/20*((3*hread + 4*jread)*Cos[x])}]
+"at zero local current change = "InputForm[{u + (hread*Cos[x])/5, (-3*hread*Cos[x])/20}]
+"conditional order flux divided by isolated order slope squared = "InputForm[-1/5*((hread - 7*jread)*kappa*Cos[x])]
+"matched current and density residuals = "InputForm[{0, 0}]
+
+$ sed -n 45p software/stage1_solver/reports/pathA_21b_force_closure_and_profile_bvp.md
+G1 domain and BCs: the fields live on the 4D bulk throat branch domain with measure `d^4X` and stationary time factored by `psi=e^{-i mu t/hbar}psi0`. Far-field BCs fix the asymptotic density, chemical potential/gauge reference, finite energy, and the Gauss flux lane. Throat BCs require regular finite fields and branch-declared mouth/bottom flux data; the value selector for those branch data is not part of G1.
+
+$ sed -n '52,56p;69,72p' research/pde_ledger_v3/steps/S12_order_source.md
+```
+∂t n + ∇₄·(n u) = 0
+∂t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n Γ_B
+Γ_B = Γ_return − Γ_drain,       [Γ_B] = T⁻¹.
+```
+
+No regime is chosen and no field is frozen. In particular `J_χ=0` is not adopted. Transfer is only to
+where the committed law holds and the shear-holding region has two graph faces over the in-plane
+coordinates. The puncture's own interior is excluded, with S22. The S9b/O2 far-zone setting is a
+
+$ sed -n '603,604p;609,614p' research/pde_ledger_v3/V3_STEP_PLAN.md
+⚠ The G0 card's *structure* is still reusable — return controllers, `f`/`w` balances, `𝔅`/mouth/collar/IR
+BCs, the `F_var+F_flux+F_𝔅+F_rad` partition — but it must be **re-hosted** on the dynamical law.
+⛔ **Two inventories, kept apart:**
+- **non-variational source / controller functions** — `Γ_return`, `Γ_drain`, `J_χ`, and the return
+  controllers. ⛔ All `[OPEN]` in form.
+- **boundary / domain data** — the mouth, collar and IR conditions, and the `𝔅` branch selection.
+
+⇒ The throat enters this ledger with its **source form open and its strength supplied**. ⛔ Not "only a
+
+$ sed -n '32p;275,276p' software/em_charge_attribute/g0_closure_card_v0.md
+The open mouth is `M_i={w=0,r_i<a}` and its collar is `C_i={w=0,r_i=a}`. At the collar, hard `min/max` intersections are replaced by
+4. At `C_i`, the lumen and ambient traces of `ρ,φ` (dimensions `L⁻⁴,1`) are continuous, their mass fluxes (dimension `L⁻³T⁻¹`) obey Kirchhoff conservation, and there is no collar two-surface energy or source. `[POSTULATE]`; provenance: minimal open-mouth matching.
+5. `κ_bend=κ_anchor=` collar two-surface tension `=0`, with dimensions `E/L`, `E/L³`, `E/L²`; no unlisted collar jump is permitted. `[POSTULATE]`; provenance: fixed-geometry minimality.
+
+$ sed -n 19,27p research/pde_ledger_v2/notes/stage044_v2_unfreeze_prep.md
+## The un-freeze mechanism (author the 044-v2 directive around this)
+Replace `S_hold` (frozen level-set pin) with a dynamical sleeve-surface action `S_Σ`:
+- leading tension = the **DERIVED** `σ_wall = √(2a_Bκ_B)/6` (register R20 — NO new knob) + the 3 committed bending
+  knobs `κ_bend∫H² + κ_anchor + collar-tension`.
+- the `λ_Σ` multiplier is REMOVED, replaced by the free-boundary Euler–Lagrange law (Young–Laplace + bending
+  balance); the collar-Kirchhoff conormal jump `[κ_χ∂_n r_B]=λ_Σ` becomes the tension/curvature balance
+  `[κ_χ∂_n r_B] = σ_wall·H − κ_bend(…) + …`.
+- The wall SHAPE is now dynamical; the full free-boundary SOLVE stays **SIM-DEFERRED** (structure-complete-at-floor,
+  like the rest of the ledger). ⚠ Honest: a pure-tension throat wants to pinch off (Rayleigh–Plateau); bending
+
+$ sed -n '378p;385,389p' docs/two_throat_simulation_handoff_spec.md
+**Shared committed sectors, branch-specific boundary.** Every branch uses the same committed sector equations in §2 and the same selected §2.6 closure card; branches then differ in `𝔅_b` and ambient `A`. Because the coupled parent residual is [OPEN], the present model does not yet justify the stronger claim that a fully assembled interior discretization already exists and only a boundary swap remains.
+| **E1** impermeable + no-slip | `v·n̂ = V·n̂` and `v_∥ = V_∥` | holonomic kinematic BC | The free-surface geometry and its compatible `r_B,h,u` interface/jump conditions from the parent action. |
+| **E2** impermeable + free-slip | `v·n̂ = V·n̂`; tangential traction is zero | holonomic normal BC + natural traction | The stress/traction tensor derived from the closed action; “stress-free” is not computable before it is supplied. |
+| **E3** permeable / phase-texture | medium passes through the translating `χ_B` texture; drain flux unimpeded | interface/texture branch | Permeability/phase-texture law, `r_B` interface and jump conditions, and drain-flux/source matching. “No extra BC” is not a closure. |
+| **E4** nonholonomic shear-lock ("roll") | throat velocity locks to brane transverse shear at the collar | multiplier / virtual-work reaction | The exact velocity-level map `g(V,u̇_T;χ,Σ)=0`, its collar support, multiplier pairing, and reaction-force functional. |
+| **E5** dissipative slip | tangential slip with loss | non-variational Rayleigh channel | The Rayleigh functional, positive dissipation/slip coefficient or kernel, and traction–slip law. |
+
+$ sed -n '40,62p;88,101p' software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+  - id: sleeve_core_trace
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: scalar_field_trace_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [field_point, outward_normal, wall_side, a, L]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    source: nonlinear_throat_core_open
+  - id: geon_core_bundle
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: field_trace_bundle_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [density_trace, h_trace, phase_flux_trace, wall_side]
+    symmetry_class: BODY_CONJUGATE_BUNDLE
+    source: spec_7_0_geon_profile_open
+  - id: throat_surface_functional
+    status: OPEN_INPUT
+    root_type: ACTION
+    domain: field_functional_on_Sigma
+    dimensions: [2, -2, 1]
+    arguments: [field_traces, normal_derivatives, induced_metric]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+  - id: E4_shear_lock
+    status: OPEN_INPUT
+    root_type: CONSTRAINT
+    domain: velocity_trace_functional_on_collar
+    dimensions: [1, -1, 0]
+    arguments: [bulk_velocity_trace, shear_velocity_trace, collar_kernel]
+    symmetry_class: BODY_CONJUGATE_VECTOR
+    source: U2_seam
+  - id: E5_rayleigh
+    status: OPEN_INPUT
+    root_type: RAYLEIGH
+    domain: tangential_velocity_trace_functional_on_Sigma
+    dimensions: [2, -3, 1]
+    arguments: [bulk_velocity_trace, sleeve_velocity_trace, gammaSigma]
+
+$ sed -n 71,76p research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
+
+```
+F = ∫ d^4X [ (1/2) m_GNLS n |u|^2 + U(n) + f_B(chi_B)
+             + (kappa_B/2)|grad_4 chi_B|^2 + chi_B f_shear
+             + f_throat + f_mix ]
+```

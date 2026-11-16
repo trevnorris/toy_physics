@@ -1,0 +1,648 @@
+Source excerpts for docs/drain_driven_initial_acceleration.md
+Run from the repository root. Each command is followed by its literal stdout.
+
+$ sed -n '46p;59,73p' software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md
+Control surface: reduced-3D sphere around defect 2 with core scale << a << r12; v2=-Q2*n_hat/(4*pi*a^2), v1 is constant over the sphere to leading order.
+Structure result: Bilinear Q1*Q2 structure is an integral result from the v1*v2 cross stress plus Bernoulli pressure cross term.
+
+Power result: Reduced compact lane gives r12^-2 because v1 from the carried 4*pi Gauss solve is r12^-2; unreduced bulk gives R12^-3 with Omega_3=2*pi^2.
+
+Normalization: Overall I_F,12^full / Theta_Q / branch-profile normalization remains a CALIBRATION KNOB, not derived.
+
+## Sign
+
+Far-field matter-stress verdict: `FORCE_ATTRACTIVE_DERIVED`.
+
+Full sign verdict: `SIGN_RESIDUAL_QUANTUM_VCONF_MAXWELL_PROFILE`.
+
+Orientation: With rhat_12 from defect 1 to defect 2, the matter-stress force is proportional to -Q1*Q2*rhat_12. Like drains/sources attract; opposite signs repel.
+
+Residual reason: The matter-stress sign is derived target-blind, but pathA_21c does not evaluate the quantum, V_conf body-force, and Maxwell profile pieces that could enter the full normalized control-volume force.
+
+$ sed -n 653,669p research/pde_ledger_v3/V3_STEP_PLAN.md
+⛔ **CONDITIONAL ON S14a.** Not a carried result until the dynamical-`Γ_B` bridge succeeds.
+⚠ **Corrected twice.** Round 1: run S16 first, since the corpus establishes the worldtube closure before
+the particle law. ⛔ **Round 2 corrects that correction: S16 does NOT license S15.** S16 is
+*response-side* (how a body moves in a field); S15 is *source-side* (what force two drains exert) and
+carries **its own** Noether / control-surface assumptions. ⇒ Run S16 first for regime context, but
+⛔ derive S15's premises independently — do not inherit them.
+
+Noether stress at infinity, drain strengths `Q_i` **given**: `F_12 = −I_F,12 · (m N_∞,3 Q1Q2 / 4πr²) r̂`  ⛔ **`I_F,12` is not 1** — it is listed as debt in S22; ⛔ do not display the coefficient-one form.
+
+⛔ **Two corrections to the original wording:**
+- **The source map is missing.** S13 introduces `J`; this step uses `Q_i` — the corpus relation
+  `Q_i = Θ_Qi J_i / N_∞,3` must be an explicit step, not an unremarked substitution. Add
+  `{J, Θ_Q, N_∞,3, Q}` to S22.
+- **The sign claim is overstated.** This is the **leading matter-stress** contribution only; the source
+  says the full sign retains quantum, confinement, Maxwell and profile residuals, and the normalization
+  is **calibrated**. ⇒ Bank it as *"leading matter-stress sign"*, ⛔ not *"the force sign, earned"*.
+
+
+$ sed -n '38p;41,46p;50,54p;111p' research/pde_ledger_v3/steps/S16_moving_region.md
+∂t G^i + ∂j Π^{ij} = f^i .
+The first is accepted part 1's projected material balance, where its committed material law
+holds. The second is the user's general momentum balance. `Σ`, `F`, `G`, `Π`, `f` and the
+face quantities stay live. The list says **"G^i is not related to F^i or Σ by any supplied
+law, and Π^{ij} is not assumed symmetric."** It says `f` includes every face/bulk momentum
+exchange but **"stays undivided"**. Each construction prints these supplied equations and its
+solved local rates; this is no derivation of the physical inputs. The inherited real-fraction
+The region is a shell about live `X_c(t)`, between live `r_in(t)` and `R(t)`, outside the
+excluded core. **"That is a choice of control surface, not a symmetry of the fields"**;
+**"r_in is not identified with the mouth radius."** The fields are **"the total fields on
+the region"**. Nothing uses core values or a body/surroundings split. The native integral
+definitions print the shell volume and each spherical area measure. The inner/outer surface
+| Momentum: Py `momentum.0/.1/.2`, WL `momentum.1/.2/.3` | Integrated force `V[f_i]`; reference-centre, reference-radius and weight pieces `V[0]` | Rest total momentum flux `−Π^{ij}` contracted with the shell normal, transport of `G_i` by centre motion, and transport by radius motion separately |
+
+$ sed -n 56,73p research/pde_ledger_v3/directives/S15_decision_list.md
+  ```
+  ∂_t G^i + ∂_j Π^{ij} = f^i
+  G^i    = ρ_br V^i
+  Π^{ij} = ρ_br V^i V^j − T^{ij} + Π_o^{ij}
+  T^{ij} = −p_br(ρ_br) δ^{ij} + η (∂^iV^j + ∂^jV^i − (2/3) δ^{ij} ∂_kV^k) + ζ δ^{ij} ∂_kV^k
+  ```
+
+  - `ρ_br` is the brane density and `V^i` the velocity of the brane material, which carries the momentum (P5). Both
+    are general live fields of `x` and `t`.
+  - `p_br` is a general function of `ρ_br`. `η` and `ζ` are general live fields (P6).
+  - `Π_o^{ij}` is any other in-plane momentum current, a general live field. P5 keeps it as "a general OPEN action";
+    it contains neither the carried current nor P6's stress.
+  - `f^i` is the force density, a general live field. It includes every exchange of momentum with the faces and the
+    bulk, including the momentum carried by material that crosses the faces. It stays undivided, as in S16.
+- **Two flagged identifications.**
+  - P5 and P6 are applied to the projected fields, as S9b applied them to the brane's in-plane fields.
+  - P6 was adopted as a steady form (`S9b_SHARED_PHYSICS.md:357`, `:372`). Here the drains move, so the flow is not
+    steady. P6 is applied as written. Any departure from it is not modelled and lies in `Π_o`.
+
+$ sed -n '116p;120p;123,124p;1061,1067p;1083,1089p' research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
+| **S12** | `R-S12-02` | native drain/return, printed regional/face and projected/shell compatibility on the real-fraction branch (A13 OPEN), and separate boundary data | S11b-A/B, S11c uniform, O2, S12, S14a part 1; S16 supplied projection/Keep S12 provenance only |
+| **jointly S12** (source/flux forms), **S8/S22** (material law), **no owner named** (face/interior laws) | `R-S14a-01` | the slow limit and far behaviour selected by the slab's own dynamics | S14a part 2; requirement for S14/S15/S20; user V2 decision, `12aa65d5` |
+| **no owner named** | `R-S16-03` | momentum exchanged at each slab face, split by face motion | Orchestrator's S16 list filing `:162–163`, E2; admission: user's 2026-10-24 "Require all four (Recommended)" |
+| **S8** | `R-S16-04` | momentum–material relation needed for an inertial factor | User's selected "Count material; mass open" option; S16 list `:54–56`, O2 `:133` |
+- **status** OPEN
+- **requirement** — the momentum exchanged at each slab face and its split by the motion of
+  that face, separately identifiable within the projected total exchange.
+- **on failure** — S16's undivided force-density input supplies no face-resolved momentum account.
+  Its moving control-surface pieces do not deliver a slab-face split.
+- **standing** — the list author's original filing retains the missing face-resolved accounting
+  object identified by E2; the undivided supplied balance is not a defect or a face-resolution law.
+  (S16 M01/M04/M14).
+- **target** S8, with S1.5 antecedents when available as the O2 row states
+- **status** OPEN
+- **requirement** — the relation of projected momentum density to the material fields and motion
+  needed to define an inertial factor.
+- **on failure** — the separately printed momentum and material-count centre relations do not
+  supply an inertial factor or a relation between momentum and count-centre acceleration.
+
+$ sed -n '58,68p;113p' docs/em_u1_body_definition.md
+The body is an **open system** (one-way intake; the return closure and drain-vs-charge budget are inherited OPEN), and `𝔅` includes non-variational endpoints. A single `S_eff` Hessian is therefore **not** a well-posed definition of its dynamics (Grok B1). U1 defines the one-body law as a **force balance over the collective coordinates** `q_A ∈ {X, p}`:
+
+`F_A^var + F_A^flux + F_A^𝔅 + F_A^rad = 0`,  with `F_A^𝔅 = F_A^constraint(𝔅) + F_A^Rayleigh(𝔅)`
+
+1. **`F^var` — the variational channel.** From a precisely scoped **`L_eff`** (a Lagrangian *density in time*; not "`S_eff` per unit time" — steady `V` makes an action diverge): the model's action on a **declared control volume** `Ω_c` **plus its explicit surface action on `∂Ω_c` and `Σ`**, with the body's fields embedded via collective coordinates (§7.1, including the zero-mode quotient). `M_AB(𝔅)` (inertia tensor) and `Ω_AB(𝔅)` (symplectic/Berry form) are defined as the `V²`-Hessian and first-order form **of `L_eff` only** — flow and geon contributions arise in the same calculation, cross terms retained; no `ρa³L` scaling, no `E/c²` term pre-asserted (whether an `E/c²`-like relation *emerges* is a result).
+2. **`F^flux(closure)` — the control-surface channel.** Momentum/mass/energy carried across `∂Ω_c` by the drain and return (§5 bookkeeping). **Partition rule (anti-double-count):** any flux contribution scaling as `∝V̇` is reported **either** inside `M_AB` **or** inside the intake coefficient `C_ṁ` — never both; the report must state the partition.
+3. **`F^𝔅` — the boundary/constraint channel**, decomposed:
+   - **`F^constraint(𝔅)`** — **Lagrange–d'Alembert / multiplier reaction forces** for constraint-type endpoints. This is where the ontology's decisive **E4 nonholonomic shear-lock** reaction enters the one-body equation (the E4 constraint is velocity-level; its reaction is NOT obtainable from `δL_eff` and NOT dissipative — it needs its own slot). **E1's** no-slip reactions live in `F^var` when E1 is imposed as a holonomic BC on the fields inside `L_eff`, otherwise here as multiplier reactions — the report must state which. Zero at E2/E3.
+   - **`F^Rayleigh(𝔅)`** — the genuinely dissipative channel (E5; Rayleigh function), zero at E1–E4.
+   Every §7 deliverable that depends on `𝔅` reports its result under this same decomposition (which channel each contribution sits in).
+4. **`F^rad` — the radiative channel.** Hereditary in general (memory kernels); **the local form `F = M V̇ + Ω V` is explicitly the sub-radiative, slow-acceleration truncation** — not the definition (Grok M6). §7.7 computes the per-channel residues and may promote memory kernels.
+ **Mass/charge split (Grok M4):** every response is decomposed into **drain/mass-sourced vs orientation/charge-sourced** parts (pathA_39 separated `q_M` from charge residues); the mass-only ablation gate G11 enforces it.
+
+$ sed -n '8p;18,29p;329,331p;420,426p' software/em_charge_attribute/reports/u1_body_dynamics.md
+The medium-rest lab frame, co-moving steady family, co-moving `Omega_c`, ambient-subtracted exterior-ball IR scheme, fixed `mdot`, and future `C_mdot` ownership of acceleration-like outer flux were declared before residual evaluation. The family is an action-derived exterior solution joined at `r=a` to field-level core traces through the typed throat surface functional. This is a collective-coordinate/effective-action computation, not a nonlinear throat simulation.
+| sleeve_core_trace | OPEN_INPUT | PRIMITIVE_OPEN | scalar_field_trace_on_Sigma | (0, 0, 0) | field_point, outward_normal, wall_side, a, L | BODY_CONJUGATE_SCALAR | nonlinear_throat_core_open |
+| geon_core_bundle | OPEN_INPUT | PRIMITIVE_OPEN | field_trace_bundle_on_Sigma | (0, 0, 0) | density_trace, h_trace, phase_flux_trace, wall_side | BODY_CONJUGATE_BUNDLE | spec_7_0_geon_profile_open |
+| throat_surface_functional | OPEN_INPUT | ACTION | field_functional_on_Sigma | (2, -2, 1) | field_traces, normal_derivatives, induced_metric | BODY_CONJUGATE_SCALAR | ledger_stage006_f_throat |
+| outer_surface_functional | OPEN_INPUT | ACTION | field_functional_on_partial_Omega_c | (2, -2, 1) | field_traces, outward_normal, ambient_branch | AMBIENT_BRANCH_COVARIANT | return_surface_action_open |
+| native_continuity | WHITELIST_SOURCED | BALANCE | fields_on_time_x_Omega_c | (-4, -1, 0) | number_density_field, velocity_field | R_W_COVARIANT | ledger_stage004_stage006 |
+| native_momentum | WHITELIST_SOURCED | BALANCE | fields_on_time_x_Omega_c | (-3, -2, 1) | momentum_density_field, native_stress_tensor, action_force_density | R_W_COVARIANT | GNLS_wall_shear_h_action |
+| E4_shear_lock | OPEN_INPUT | CONSTRAINT | velocity_trace_functional_on_collar | (1, -1, 0) | bulk_velocity_trace, shear_velocity_trace, collar_kernel | BODY_CONJUGATE_VECTOR | U2_seam |
+| E5_rayleigh | OPEN_INPUT | RAYLEIGH | tangential_velocity_trace_functional_on_Sigma | (2, -3, 1) | bulk_velocity_trace, sleeve_velocity_trace, gammaSigma | BODY_CONJUGATE_SCALAR | U2_seam |
+| return_closure | OPEN_INPUT | RETURN | structured_field_flux_map_on_partial_Omega_c | (0, -1, 1) | mass_flux_density, momentum_flux_density, destination_field | AMBIENT_BRANCH_COVARIANT | pathA_29_open_return |
+| hbar | WHITELIST_SOURCED | ACTION_COEFFICIENT | coefficient | (2, -1, 1) | none | R_W_EVEN | ledger_stage004 |
+| m_GNLS | WHITELIST_SOURCED | ACTION_COEFFICIENT | coefficient | (0, 0, 1) | none | R_W_EVEN | ledger_stage004 |
+| rho_inf | WHITELIST_SOURCED | ACTION_COEFFICIENT | coefficient | (-4, 0, 0) | none | R_W_EVEN | ledger_stage004 |
+All 10 endpoint/ambient cells emit a derived isotropic `M_XX(p=0)`, zero reconstruction residual, a binding scalar regression, and executable conditional native-slice residuals for `M_Xp`/`M_pp`. [claim `scalar_regression` → `scalar_regression`; recompute `eV.T*M_XX*eV-GVV`] [claim `native_slice_constraints` → `indexed_cells`; recompute `native_MXp/Mpp_projection-minus-GVP/GPP`]
+
+The authoritative component aggregation is `{'UNRESOLVED': 10}`; no missing indexed or OPEN remainder was promoted to a value. [claim `mechanics_map` → `mechanics_map`; recompute `aggregate(cells.component_findings)`] [claim `cell_count` → `cells`; recompute `active_endpoint-ambient-stratum_product`]
+## Phase B2 — Intake response and radiative residues
+
+- Status: `PASS_WITH_HONEST_OUTCOMES`
+- Partition: `UNRESOLVED(return_closure)`
+- C_mdot: `UNRESOLVED(required_OPEN_leaves)`
+- Radiation: `UNRESOLVED(native_branch_inputs)`
+- Phase-C gates: `NOT_RUN(phase_C)`
+
+$ sed -n 36,52p research/pde_ledger_v3/steps/S14a_1_projection.md
+## 1. Supplied objects, domain and premises
+
+The user's committed law (2026-07-24) is supplied, **"unfalsifiable in this build"**:
+
+```text
+∂t n + ∇₄·(n u) = 0
+∂t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n Γ_B
+Γ_B = Γ_return − Γ_drain,       [Γ_B] = T⁻¹.
+```
+
+There are three in-plane coordinates `x¹,x²,x³`, bulk coordinate `w` and time `t`. The two
+live graph faces obey `w₋(x,t)<w₊(x,t)`. Regions 1, 2 and 3 are below, inside and above.
+U1 sets exterior order to zero; interior order `f(x,w,t)` stays live. The inherited field
+class has independent regional fields and one-sided traces, permits jumps and supplies no
+face-concentrated part of `n,u,J_χ,f`; the source may have a concentrated part. The closed
+projection counts each endpoint's concentrated part in full. Face deltas use coordinate `w`,
+not true surface area. The core is excluded, with S22. Transfer is only **"wherever the committed
+
+$ sed -n 93,99p research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+| **1 — material reference** | Elastic response in the optical shear regime and relaxation under steady load. The relaxation/reference evolution is a general unknown. Its power is carried explicitly, with sign undetermined and any net power naming its supplier. | The full live stress and material response keep the evolving reference/strain state and history. The energy object retains `𝒫_ref/relax^live`, `𝒮_E,net` and `𝒫_E,supply`. No relaxation law or steady-load modulus is chosen. |
+| **2 — drive** | The committed dynamical order-conversion drain is the drive. No separate external body force. Its source and boundary/return data act through stress, traction and O3; the `GM` bridge is OPEN. | Use the permitted representation in which `F_drive` is **absent as a separate body-force entry**. Declare the drain-drive provenance of the material, boundary and exchange entries. Do not also add a drain-force aggregate beside them. |
+| **3 — exchanged material** | Converted material carries the local brane material velocity `V`. This closes transported momentum only. Additional non-variational partners and their reaction system remain OPEN with S12. | Distinguish carried-material momentum, mechanical face/support loading and additional S12 momentum partners. Apply the outward exchange convention in §5: premise 3 closes the in-plane carried components at `V`, and the bulk-direction carried component stays the OPEN reduction stated there. Keep all live velocity and measure factors. |
+| **4 — bulk traction** | Retain the postulated shear-free scalar bulk, with face-normal mechanical loading and no independent tangential bulk stress. O3 transport is separate. | The bulk part of the mechanical loading is `𝒯_bulk,n,s^live n̂_s`, with its amplitude OPEN. A tilted normal retains its in-plane projection. No tangential bulk stress is hidden in a support operand. |
+
+The drive declaration, mechanical loading and O3 transfer are separately identifiable accounting
+entries. Choosing the absent-body-force representation of premise 2 does not merge mechanical
+
+$ sed -n '3,7p;13,16p' research/pde_ledger_v3/steps/S14a_2_slow_limit.md
+**Status:** record and register pass accepted at `79511272` (round 2 clear). By the user's
+**"Record as requirement"** decision, no build ran and this part reports no computed bridge
+object. The slab's own dynamics must select the slow limit and the far behaviour; that obligation
+has its own entry, **`R-S14a-01`**. The user's V2 decision makes selection owed jointly by S12's
+source/flux forms, S8/S22's material law and the face/interior laws with no owner named. S14,
+Of the plan's four S14a objects, accepted part 1 prints the projected order-loss source and the
+definition of `J`, with finite-radius flux objects and their recorded limitations. The
+profile-dependent `J→Q` map and controlled `ω→0` return law remain **not derived**. The review
+witnesses below are instruments of their named review legs; none is an accepted part 2 build,
+
+$ sed -n '84,92p;113,118p;123,133p;139,142p;317,327p' research/pde_ledger_v3/steps/S14a_1_projection.md
+| Projected material density and in-plane flux | `Σ=∫n₂dw`, `F^i=∫n₂u₂^i dw` | b51/b52: each compared component has exact residual `0`. |
+| Projected order density and in-plane flux | `Σχ=∫f n₂dw`, `H^i=∫(f n₂u₂^i+J_χ,2^i)dw` | b73/b74: exact `0`. |
+| Material concentrated coefficients | `A₋=n₂a₂,₋−n₁a₁,₋`, `A₊=n₃a₃,₊−n₂a₂,₊` | b49: both traces exact `0`; b55/b58 compare the material face-equation coefficients, exact `0`. Their separate SymPy rhs zeros are unpaired (§5). |
+| Material leaving each face, before / after full concentrated part | Lower: `−n₂a₂,₋` / `−n₁a₁,₋`; upper: `n₂a₂,₊` / `n₃a₃,₊` | b53/b54/b56/b57: exact `0`. Both forms are retained; no material face condition is solved/substituted. |
+| Order concentrated coefficients/source face parts | `C₋=f₋n₂a₂,₋+b₂,₋−b₁,₋`, `C₊=−f₊n₂a₂,₊+b₃,₊−b₂,₊` | b71: both traces exact `0`; included in b82 and the order-balance rhs. |
+| Order leaving each face, before / after full concentrated part | Lower: `−(f₋n₂a₂,₋+b₂,₋)` / `−b₁,₋`; upper: `f₊n₂a₂,₊+b₂,₊` / `b₃,₊` | b75/b76/b77/b78: exact `0`. Exterior advected order vanishes by U1; exterior `J_χ` stays live. |
+| Projected order source, including both full face parts | `Sχ=∫n₂Γ_B,2 dw+C₋+C₊` | b82: exact `0`. The supplied-source form, rather than the divergence form, feeds order lost. |
+| Projected material balance | `∂tΣ+∂iF^i−n₁a₁,₋+n₃a₃,₊=0` | b59 lhs and rhs: exact `0` between engines. This does not say the lhs vanishes for arbitrary unconstrained fields. |
+| Projected order balance | `∂tΣχ+∂iH^i−b₁,₋+b₃,₊=Sχ` | b79 lhs and rhs: exact `0` between engines. |
+Write `a` and `R` for inner and outer radii, and `∫shell g` for the printed `∫ₐᴿ4πr²g(r,t)dr`.
+`F_r,Σ,Sχ` below are the **spherical-specialization** projections, not profiles selected from the
+general object. The area is computed as `4πr²` (b178 exact residual `0`). The explicit shell-domain
+payloads differ: SymPy prints `inner_radius < outer_radius`, with positive radii declared in its
+source; Wolfram prints `Inactive[Less][0,ri,ro]`. b165 retains their exclusive-or; 54 samples are
+`False` in the comparator's positive-inner-radius domain. This remains a printed domain difference,
+| Face channel by face and total | `Jface,₋=∫shell(−n₁a₁,₋)`, `Jface,₊=∫shell(n₃a₃,₊)`; `Jface=Jface,₋+Jface,₊` | Total b166 exact `0`. SymPy's by-face pair is unjoined; Wolfram's separate interior/concentrated grouping is unjoined, not a comparison of those decompositions (§5). |
+| Inward in-plane core channel | `Jcore=−4πa²F_r(a,t)` | b167 exact `0`. The core's fate remains S22's. |
+| Drain rate | `J=Jface+Jcore`, user 2026-10-21 definition | b168 exact `0`; no sign imposed. |
+| Signed order lost | `Lχ=−∫shell Sχ`, including both face parts | b169 exact `0`. Positive denotes a net drain, negative net re-ordering; neither sign is enforced. |
+| Outward outer material flux | `Φ(R,t)=4πR²F_r(R,t)` | b170 exact `0`; evaluated at a free outer radius, with no radius limit. |
+| Storage | `K=∂t∫shellΣ` | b171 exact residual unresolved; 54 stored samples `0`, 18 per form. Only its 18 quadratic-form samples can move for a derivative taken at another point; affine/cubic samples do not make that check (M17). |
+| Shell balance and its residual | `K+Φ+J=0`; residual is the printed lhs | b173 lhs and b174 unresolved exact residuals, 54 samples `0` each, 18 per form. Only the 18 quadratic-form samples per unresolved part can move for a derivative taken at another point; affine/cubic samples do not make that check. b173 rhs exact `0` (M17). |
+| Face channel minus order lost | The printed difference `Jface−Lχ`, with both separate operands also printed by SymPy | Difference b175 exact `0` **between engines**. It is not asserted to vanish as a physical constraint; the separate operand pair is unjoined. |
+| Outer-radius dependence | `∂R Φ(R,t)`, printed with the live fields and face derivatives | b172 exact `0`. The derivative is not set to zero. |
+| Projected velocity | At free `r`, `vproj=F_r/Σ` only on `Σ(r,t)≠0`; at outer `R`, the same quotient on `Σ(R,t)≠0` | Free-radius SymPy occurrence unjoined. Outer-radius b176 condition residual `False`, value exact `0` on the common condition; 45 value sample residuals `0`, 9 excluded samples. |
+| Outward projected-velocity volume flux | `Vflux(R,t)=4πR²F_r(R,t)/Σ(R,t)` only on `Σ(R,t)≠0` | b177 condition `False`, conditional value exact `0`; 45 value sample residuals `0`, 9 excluded. No value at zero density is supplied. |
+The velocity restriction does not restrict the densities, material fluxes or balances to a
+nonzero-density subdomain. In particular the printed outer material flux is distinct from the
+conditional volume flux. Storage, faces and fluxes stay time dependent. No steady/no-leakage,
+constant-density, radius-independent flux or far-radius limit is earned here. (Retrieve M01/M03/M04/M07.)
+**v2 label comparison, by retrieval.** v2's `J` row says **"Number-rate flux lim_{S_R} int n_3
+v_brane.n dS in a no-leakage steady region"**, with a throat-source sign convention; its `Θ_Q`
+row defines a dimensionless far-limit factor, and row 19 writes `Q_i=Theta_Qi*J_i/N_infty,3` with
+inward velocity `−Q_i rhat/(4πr²)`. Here `J` counts the two signed material channels over a shell,
+while the separately printed `Φ` is outward and storage is retained. The current conditional
+volume flux is at finite `R` and uses the live projected density. The current audit retains material
+number as an explicit exponent `(1,0,−1)` for the rate; v2 stage 004 lists number rate as `T⁻¹`.
+Neither a far-radius limit nor
+the v2 reduced density/factor identification is supplied. Whether these current objects reduce
+to those v2 labels, including sign, normalization and the profile-dependent map, needs computation
+and remains OPEN. No mass or orbital-`GM` link follows from common names or dimensions.
+
+$ sed -n '193,196p;310,315p' research/pde_ledger_v3/steps/S14a_2_slow_limit.md
+| Projected order-loss source | Printed by accepted part 1; its full face/source and comparison qualifications remain in part 1 §§2–5. |
+| Definition of `J` | Printed by accepted part 1 as the two-channel sum, separately from signed order loss, with finite-radius objects; no mass identification. |
+| Profile-dependent `J→Q` map | Not derived. Part 2 covered this obligation but supplied no build. S15's source-map row also names S22 for `{J,Θ_Q,N_∞,3,Q}`. V2 assigns joint delivery of selection, without repartitioning the complete map obligation. |
+| Controlled `ω→0` return law | Not derived. Part 2 covered this obligation but supplied no build. The slow-limit/far-behaviour requirement is recorded in `R-S14a-01`. |
+| Controlled slow return and profile-dependent `J→Q` completion | S14a's remaining obligations, covered by part 2 but not derived; S15's map row also names S22. The selection requirement in `R-S14a-01` is owed jointly by S12's source/flux forms, S8/S22's material law and face/interior laws with no owner named, by the user's V2 decision at `12aa65d5`. This does not repartition the complete return-law/map obligations. |
+| `J`–mass link, C3 GAP, and any orbital-`GM` link | S13 folded into S14a; no separate successor owner for a `GM` link named. Part 1 records S9b's orbital `GM` as independent of drain amplitude. |
+| Core interior and fate of inward core flux | S22. |
+| Flow profile | Each force states its requirement; S21 compares, mismatch reopens S9b. |
+| Interior-order law/history/strain and faces' law | No separate owner named, as accepted S12 states. Slab material completion separately S8/S22. |
+| `Γ_return`, `Γ_drain`, `J_χ`, return controllers, source/flux forms and separate boundary data | S12, OPEN under "Keep S12"; controller re-hosting/role also remains an assessment, not a selected form. |
+
+$ sed -n '78,88p;123,124p' research/pde_ledger_v3/directives/S15_decision_list.md
+- **Each drain's fields** (the user's "Keep it general") are a radial inflow and a density profile about its live
+  centre:
+
+  ```
+  V_k^i = u_k(r_k, t) (x^i − X_k^i(t)) / r_k ,    ρ_k = ρ_k(r_k, t) ,    r_k = |x − X_k(t)| ,
+  ```
+
+  with `u_k` and `ρ_k` general live functions. The radial form about the moving centre is a labelled choice.
+- **The total fields** are `V = V_1 + V_2 + W` and `ρ_br = ρ_1 + ρ_2 + ϱ`. The remainders `W` and `ϱ` are general
+  live fields, and they hold whatever the two profiles do not, including any background flow. This is a labelled
+  split of the total fields, not a superposition law. Nothing makes the remainders small or zero.
+The build computes no force law, coefficient, normalization or mass. It gives no relation of any printed object to
+S14a's `J` or to the plan's `Q`, `Θ_Q` or `N_∞,3`. It identifies no printed object with the force on a throat.
+
+$ sed -n 16,18p software/stage1_solver/reports/pathA_28_monopole_results.yaml
+    raw_moment: M0(omega)=int_brane S_leak(omega,x) d^3x
+    linearized_identity: 'Integrate projected continuity: dM_brane/dt=int S_leak d^3x for compact/no-flux brane boundary.'
+    breathing_dofs: delta a, delta L, delta q enter through the variation of S_leak; no recovery slice or S_leak=0 substitution is used.
+
+$ sed -n '17,18p;72p;85,94p;117,120p;250,257p;263,274p;328p;345,358p;370p;380p;532,535p' software/stage1_solver/reports/pathA_29_results.yaml
+  source_moment_definitions_reused:
+    ell0: M0(omega)=int_brane S_leak(omega,x) d^3x
+    zeroth_moment_balance: M0 = M0/(epsilon0 + 1) + M0*epsilon0/(epsilon0 + 1)
+    - 'zeroth-moment continuity: J_leak_0 = J_return_0 + J_neighbor_0'
+    - 'first-moment continuity: J_leak_1 = J_return_1 + J_neighbor_1 including return centroid partition'
+    - alpha_l = J_return_l/J_leak_l = 1/(1+epsilon_l), epsilon_l>0
+    transit_phase_trace:
+      basis: Phi_l=A_l*exp(I*omega*w/c_s)+B_l*exp(-I*omega*w/c_s)
+      forward_phase_ratio: exp(I*d*omega/cS)
+      return_phase_ratio: exp(I*d*omega/cS)
+      round_trip_phase: exp(2*I*d*omega/cS)
+      solved_tau: 2*d/cS
+      source_hash: 6b5cfc8c8e91b2f534c3b0f8e73942e95f869bc86f59cfca1c099be7f7802cdb
+      epsilon0:
+        role: zeroth-moment transmitted-to-returned DC sink partition
+        domain: positive
+        depends_on_source: false
+zero_mode:
+  exists: true
+  normalizable: true
+  eigenvalue_m0: '0'
+  eigenfunction: 1/sqrt(d)
+  r_dependence: 1/(4*pi*d*r)
+  flow_from_gradient: 1/(4*pi*d*r**2)
+  derived_flow_exponent_p: 2
+  dynamic_zero_mode_trace:
+    route: dynamic_limit_trace
+    branch: destructuring_absorbing
+    seed_transverse_eigenvalue_m: '0'
+    seed_transverse_eigenfunction: 1/sqrt(d)
+    operator: g''+(2/r)g'+((omega/c_s)^2-m^2)g=0 solved before omega->0
+    dsolve_general: sqrt(2)*sqrt(cS)*(C1*sin(omega*r/cS) - C2*cos(omega*r/cS))/(sqrt(pi)*sqrt(omega)*r)
+    boundary_selection: outgoing spherical radial branch selected from the dsolve basis; normalization fixed by the compact
+      zero-mode overlap 1/d
+    solution: exp(I*omega*r/cS)/(4*pi*d*r)
+    limit_green: 1/(4*pi*d*r)
+    flow_from_gradient: 1/(4*pi*d*r**2)
+  long_range_selection: the solved normalizable m=0 mode controls r>>d; massive terms are exponentially suppressed
+  p: 2
+  p_eq_2: true
+  crossover_scale: r>>d; first massive scales d/pi for destructuring_absorbing and d/(2*pi) for bloch_stack
+  zero_mode_source_integral: -M0*epsilon0/(epsilon0 + 1)
+  Z_terms:
+    throat_sink: -M0
+    return: M0/(epsilon0 + 1)
+    replenishment_localized: '0'
+    Z_boundary_dof: none
+  Z_uniform_background:
+    term: Gamma_uniform
+    enters_zero_mode_source_integral: false
+    provenance: uniform whole-brane areal-leak background; separate observable, not localized monopole Z
+  Z_sign: negative
+    green_function: (CAbs1*d*epsilon0 + CAbs1*d - M0*epsilon0*exp(pi*r/d))*exp(-pi*r/d)/(4*pi*d*r*(epsilon0 + 1))
+    green_function: (CBloch1*d*epsilon0 + CBloch1*d - M0*epsilon0*exp(2*pi*r/d))*exp(-2*pi*r/d)/(4*pi*d*r*(epsilon0 + 1))
+    M0:
+    - 0
+    - 0
+    - -1
+
+$ sed -n '192,196p;379,389p;395,397p;461,462p' software/stage1_solver/tools/pathA_29_brane_bulk_return_sympy.py
+    limit_green = sp.simplify(sp.limit(selected, omega, 0))
+    flow = sp.simplify(-sp.diff(limit_green, r))
+    exponent = radial_decay_exponent(flow, r)
+    trace_payload = {
+        "route": "dynamic_limit_trace",
+    Z_throat = -M0
+    Z_return = sp.simplify(M0 * T0_dc)
+    Z_replenishment_localized = sp.Integer(0)
+    Z_boundary_dof = sp.Integer(0)
+    Z = sp.simplify(Z_throat + Z_return + Z_replenishment_localized + Z_boundary_dof)
+    Z_local_formula = sp.simplify(-M0 * (1 - T0_dc))
+    if sp.simplify(Z - Z_local_formula) != 0:
+        raise AssertionError("local-channel Z did not reduce to -M0*(1-T0(0))")
+    Z_negative_certificate = sp.simplify(-Z * (1 + eps0) / (M0 * eps0))
+    if Z_negative_certificate != 1:
+        raise AssertionError("Z sign certificate failed")
+    strict_Z_local_limit = sp.simplify(sp.limit(Z, eps0, 0, dir="+"))
+    if strict_Z_local_limit != 0:
+        raise AssertionError("perfect-return local channel must have Z=0 without a declared boundary DOF")
+    green_abs_static = sp.simplify(Z * green_zero_static + sp.Symbol("CAbs1") * massive_abs_radial["solution"])
+    green_bloch_static = sp.simplify(Z * green_bloch_zero_static + sp.Symbol("CBloch1") * massive_bloch_radial["solution"])
+
+$ sed -n '20p;226,229p;234p' software/stage1_solver/tools/pathA_29_brane_bulk_return.wl
+  rhoB > 0 && epsilon0 > 0 && epsilon1 > 0 && M0 > 0 &&
+dimM0 = {0, 0, -1};
+dimD1 = {0, 1, -1};
+dimRho = {0, -3, 0};
+dimMass = {1, 0, 0};
+If[dimM0 - dimRho - 2 dimR =!= {0, 1, -1}, fail["radial flow dimension check failed"]];
+
+$ sed -n '496,505p;511,523p' research/pde/paper/pde.tex
+\paragraph{Projection.}
+Given a fixed normalized brane weight \(W(w)\),
+\[
+\int_{-\infty}^{+\infty} W(w)\,\mathrm dw=1,
+\]
+a projected brane observable is defined by
+\[
+\mathcal P_W[f](\mathbf x,t)=\int_{-\infty}^{+\infty} W(w) f(\mathbf x,w,t)\,\mathrm dw.
+\]
+This is a definition of what the brane observer measures, not an approximation. In particular,
+Projecting exact bulk continuity gives the exact open-system brane law
+\begin{equation}
+\partial_t\rho_{\mathrm{brane}}+\nabla_3\cdot \mathbf j_{\mathrm{brane}}=S_{\mathrm{leak}},
+\label{eq:projected-continuity}
+\end{equation}
+with leakage term
+\begin{equation}
+S_{\mathrm{leak}}
+=
+-\bigl[Wj^w\bigr]_{-\infty}^{+\infty}
++\int_{-\infty}^{+\infty} W'(w) j^w\,\mathrm dw.
+\label{eq:leakage}
+\end{equation}
+
+$ sed -n '16p;76p;80p;102,106p' software/stage1_solver/reports/pathA_21b_force_closure_and_profile_bvp.md
+- Reduced-3D lane: `int_{S_r} N_infty,3 v.n dS=-Theta_Q J => v_r(r)=-Theta_Q J/(4*pi*N_infty,3*r^2), or -Theta_Q J/(4*pi*r^2*N0(r)) if the asymptotic density is not constant.`.
+`J_VALUE_BRANCH_PARAMETER / J_SELECTOR_UNDERIVED`: no-leakage conserves the flux in a chosen region, but it does not fix the value. Candidate selectors are sonic choking, regularity at the throat bottom, global topology/outflow balance, or an energy extremum, all explicitly downstream assumptions unless derived.
+`rho_brane=int W(w)rho dw, j_brane=int W(w)j_xyz dw, N_infty,3=int chi_N(w)rho_infty,4(w)dw, W_eff=N_infty,3/rho_infty,4 for constant far-field rho.`. The formulas are source-anchored (`pde.tex:496-565`; `part01_parent_geometry.tex:298-390`), but the shape of `W(w)` or `chi_N(w)` is `W_KERNEL_UNDERDECLARED`.
+| S_leak | Exact projected leakage S_leak=-[W j^w]+int W'(w)j^w dw. A compact reduced-3D force lane additionally assumes the far-field no-leakage branch S_leak=0. | L^-4 T^-1 projected; L^-3 T^-1 reduced | brane projection / reduced-3D | pde.tex:511-539; part01_parent_geometry.tex:321-330 | far-field continuity equation, drain r-power in the selected compact lane, and flux conservation | profile-solve | NO_LEAKAGE_BRANCH_BC_UNDERIVED | option C; pathA_21b P1b/P5b |
+| W_eff | Reduction width W_eff=N_infty,3/rho_infty,4 after a projection/reduction kernel is selected; formula is declared but the kernel shape is not parent-selected. | L | 4D-bulk to reduced-3D | pde.tex:541-565; part01_parent_geometry.tex:298-389 | G reduction and reduced C_F only after G5 branch realization | branch-residual | W_KERNEL_UNDERDECLARED / W_EFF_REDUCTION_UNDERIVED | option C branch realization; pathA_22 scale map |
+| N_infty,3 | Asymptotic reduced density N_infty,3=int chi_N(w) rho_infty,4(w) dw = W_eff*rho_infty,4 only after the G5 kernel branch is selected. | L^-3 | reduced-3D | pde.tex:496-509; software/stage1_solver/reports/pathA_19_dimensional_foundation.md:20-28 | C_F normalization and conditional G denominator | branch-residual | W_KERNEL_UNDERDECLARED / W_EFF_REDUCTION_UNDERIVED | option C branch realization; pathA_21b P1b/P4 |
+| J | Conserved number-rate flux J in a stationary no-leakage region: int_{S_R} n v.n dS=-J. The parent does not select its value. | T^-1 | reduced-3D / brane | pde.tex:396-406; pde.tex:511-539 | P1b force coefficient after branch-selected value; alpha_J candidate remains rejected | branch-residual | J_VALUE_BRANCH_PARAMETER / J_SELECTOR_UNDERIVED | option C branch realization; pathA_21b P1b; pathA_22 |
+| Theta_Q | Dimensionless branch factor relating the mouth/source flux to the far-field Gauss flux; computable only after R0, leakage, and kernel branch choices. | 1 | reduced-3D | pde.tex:511-539; pde.tex:2515-2566 | C_F factorization and far-field source normalization | branch-residual | THETA_Q_BRANCH_REALIZATION_UNDERIVED | option C branch realization; pathA_21b P1b/P4 |
+
+$ sed -n '292,297p;384,388p' research/pde_ledger_v3/steps/S12_order_source.md
+| Interior-order law/history/strain; faces' law; source/flux forms | No separate owner named for the first two; source/flux forms remain S12's. Slab material completion remains separately S8/S22. None of the forms is delivered here (M01, M11, M18). |
+| "the projected order-loss source · the definition of `J` · the profile-dependent `J → Q` map · the controlled `ω → 0` return law" | S14a, plan `:636–637` (M01, M11). |
+| Drain-strength/mass link | S13 (M01); no `GM` link delivered. |
+| Flow profile | Each force states its requirement; S21 compares them (M01). A mismatch reopens S9b. |
+| Slab's material law; puncture interior | S8/S22 for the former; S22 for the excluded interior (M01). |
+| Controller role; separate boundary laws/data; native O6 conversion/source-boundary identifications | S12 retains its sourced parts (`R-S12-02`). The normal-response input to the native reduction keeps its sourced owners: S5–S8 ingredients, Q1/Q2 static domains, S8/S22 live completion. Boundary work retains O2 accounting, S12 native data and Q2/S22 core response; core/holder data remain Q2/S22. None of S12's forms is delivered here (M11, M17, M18). |
+- Stage 045's controller purpose **"despite the local sink"** and global
+  **"`∫(S_drain + S_leakage) = ∫f = ∫w = 0`"** are historical sink language. The current
+  decision list instead supplies **"`∂_t n + ∇₄·(n u) = 0` (total material)"** and says
+  **"The frozen-wall mass sink with a remote return stays ruled out."** The source also calls for
+  re-hosting. The unresolved role question is retained, not answered with the old sink (M01, M11).
+
+$ sed -n '25,26p;33p' docs/one_throat_flow_probe.md
+H=-(1-k)\rho Q U,\qquad
+(M+m_d/2)A=F_{\rm probe}+(1-k)\rho Q U .
+The first quantity to derive for the native mouth is the change in **total sideways momentum per unit time leaving through the sleeve and slab faces** when the imposed flow reverses. That includes carried momentum and traction. The native order-conversion rate alone supplies neither. For the probe, the existing one-body calculation supplies part of the translational inertia. Core and surface contributions, coupling to tilt, and the acceleration-dependent exchange remain unresolved. The assumed $M$ and computed spherical added mass above cannot supply those values. [Release balance](drain_driven_initial_acceleration.md) · [One-body results, phases B1 and B2](../software/em_charge_attribute/reports/u1_body_dynamics.md) · [Face and inertia requirements](../research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md)
+
+$ sed -n 1,15p research/pde_ledger_v3/directives/_measurements/S14a_2_review_witnesses/p1-codex_check_limit_not_selected.stdout
+domain: 1 <= r <= 2; fixed faces w=0,1; all real t; core r<1 excluded
+fields: n=1+sin(t)/4; u_r=(-r*cos(t)/12-1/r^2)/n; u_w=0
+interior chi=1/2; exterior chi=0; J_chi=0; Gamma_return=Gamma_drain=1/n
+density range = (3/4, 5/4)
+material regular residual = 0
+order regular residual = 0
+order face coefficients = (0, 0)
+material face jump coefficients = (0, 0)
+source densities = (1, 1)
+source-density time derivatives = (0, 0)
+return/drain shell totals/(4*pi) = (7/3, 7/3)
+projected density time derivative = cos(t)/4
+material storage/(4*pi) = 7*cos(t)/12
+core channel J/(4*pi) = cos(t)/12 + 1
+material shell budget residual/(4*pi) = 0
+
+$ sed -n '209,211p;497,505p' docs/conceptual_foundation.md
+> - **Gravity** = a throat *swallowing* medium — a **one-way inflow/drain.** Medium that passes the mouth **transforms
+>   (de-structures)** into a bulk state and **cannot return to the brane through that throat**; the return is the separate **global
+>   `S_leakage`** process, not a local throat loop. (This retires any "recirculation down-and-back-up the throat" picture.)
+- **Matter drains medium OUT (brane → bulk).** Gravity = medium draining into defects and down their throats into the bulk. So
+  matter *removes* medium from our space. This flow scales with the **matter content**.
+- **Tension leaks medium IN (bulk → brane).** The bulk is drawn toward the brane (toward the matter), but to enter, its arrows
+  must rotate from `±w` to flat — and that **realignment costs energy**. The wall's surface tension is exactly the **throttle**:
+  it stops the bulk from collapsing in all at once and admits it as a **slow, steady leak**. This flow happens across the **whole
+  brane surface**, so it scales with **area**. *(Precision: the flat wall state is not lower-energy — the wall has positive
+  tension, that's the throttle; the bulk comes in because the drains pull it, and the tension limits the rate.)*
+
+**Expansion.** Our space *is* the wall. Medium leaking in at a roughly fixed areal density forces the wall to **grow its area** →
+
+$ sed -n '5p;14,16p' docs/oriented_throat_return_source_correction.md
+The preceding discussion was incomplete. It described local recirculation, remote replenishment and open throughflow as though the model had not already specified the physical meaning of return. The committed meaning is **bulk material re-ordering into the brane state of the same medium**. A local loop back to the original throat is not required. The earlier suggestion to choose such a loop or a remote mass-source mechanism is not a prerequisite for continuing this research.
+In the recorded equations, `chi_B` measures brane order. Positive `Gamma_B` is bulk-to-brane re-ordering; negative `Gamma_B` is de-structuring. The projected ordered-density source has both `S_flux` and `S_convert`, with `S_convert = Integral(W n Gamma_B dw)`. The older `S_leak` is the boundary/window flux identity; it should not be silently equated with the conversion rate alone. Neither term is the transverse-light survival deficit.
+
+This narrows the open physics question. We should use the existing order-conversion framework and its declared constitutive inputs before proposing any new sustaining law. What remains to connect is the actual return/drain rate, its energy and momentum exchange, and its response to a throat deformation or incident wave. The source documents do not yet supply a solved autonomous nonlinear throat or its global return solution. Material re-ordering alone also does not establish how much power reaches a trapped support mode or determine the electric-force sign.
+
+$ sed -n '54,64p;68,76p' research/pde_ledger_v3/directives/S12_decision_list.md
+- **U1. Shear only inside the slab.** In the user's words: "the puncture must go past the slab thickness. This will
+  be one key way of explaining why it loses the shear as it falls into the throat." Material holds shear only
+  inside the slab's thickness. A throat, or a pinch hard enough, that carries material past that thickness
+  de-orders it. Bulk material that settles into the slab re-orders. The user confirmed this one rule.
+- **U2. Either direction, anywhere.** The exchange's sign is free at every point: "we shouldn't constrain that one
+  to only one direction." De-ordering in throats and re-ordering elsewhere is the expected pattern, not a
+  constraint.
+- **U3. The bulk is an endless supply far away.** This is a statement about the bulk's IR condition. It does not hold
+  the bulk still next to the slab.
+- **U4. Re-ordering exceeds the drain overall.** The brane grows; the slab spreads instead of thickening. This is a
+  sign premise on a global total, not a rate law.
+- **The shear-holding region.** The slab has a region within which shear can be held at all. It is bounded by two
+  live faces `w₋(x,t) < w₊(x,t)`, equivalently a live centre and thickness. The faces are properties of the slab, set
+  by its own mechanics, which stay OPEN. They are not defined as wherever `χ_B` happens to be nonzero.
+- **Outside it,** `χ_B` vanishes.
+- **Inside it,** `χ_B` is a live field, between 0 and 1. It may depend on history or strain. No profile, rate or sign
+  is chosen.
+- **At a face,** `χ_B` may be continuous or may jump. Neither is chosen.
+- **Not encoded: U1's re-ordering clause.** Bulk material that settles into the region re-orders. The support
+  condition above does not impose this. It stays an OPEN admissibility requirement, with no rate and no local sign
+
+$ sed -n '158,165p;171,179p' research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
+Projecting the order balance with `W(w)` (`rho_B = ∫W chi_B n dw`,
+`J_B = ∫W(chi_B n u_xyz + J_chi,xyz) dw`) and integrating the w-divergence by
+parts gives the two-source law:
+
+```
+∂_t rho_B + div_3 J_B = S_flux + S_convert
+S_flux    = -[W(chi_B n u^w + J_chi^w)]_∂ + ∫ W'(w)(chi_B n u^w + J_chi^w) dw
+S_convert = ∫ W n Gamma_B dw
+**The reduction (assert-zero):** the audits assemble the general projected
+object with `chi_B(w)`, `Gamma_B(w)`, `J_chi^w(w)` computationally LIVE on
+explicit convergent profile families (SymPy: Gaussian + rational; Mathematica:
+its own hyperbolic family), substitute `chi_B → 1, Gamma_B → 0, J_chi → 0`
+IN-ENGINE, and assert-zero against an INDEPENDENTLY constructed frozen target
+`S_leak = -[W j^w]_∂ + ∫W' j^w dw` (`j^w = n u^w`; stage_243.tex
+eq. `stage243-leakage-identity`), pinned to an independently transcribed
+closed-form value so identical textual corruption of both sides still fails.
+EARNED **relative to the imposed chi_B split + declared `W(w)`**.
+
+$ sed -n '94,96p;188,195p;482,490p' research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+| **2 — drive** | The committed dynamical order-conversion drain is the drive. No separate external body force. Its source and boundary/return data act through stress, traction and O3; the `GM` bridge is OPEN. | Use the permitted representation in which `F_drive` is **absent as a separate body-force entry**. Declare the drain-drive provenance of the material, boundary and exchange entries. Do not also add a drain-force aggregate beside them. |
+| **3 — exchanged material** | Converted material carries the local brane material velocity `V`. This closes transported momentum only. Additional non-variational partners and their reaction system remain OPEN with S12. | Distinguish carried-material momentum, mechanical face/support loading and additional S12 momentum partners. Apply the outward exchange convention in §5: premise 3 closes the in-plane carried components at `V`, and the bulk-direction carried component stays the OPEN reduction stated there. Keep all live velocity and measure factors. |
+| **4 — bulk traction** | Retain the postulated shear-free scalar bulk, with face-normal mechanical loading and no independent tangential bulk stress. O3 transport is separate. | The bulk part of the mechanical loading is `𝒯_bulk,n,s^live n̂_s`, with its amplitude OPEN. A tilted normal retains its in-plane projection. No tangential bulk stress is hidden in a support operand. |
+  face load. Load integration/projection retains the native measures and any OPEN map. Tilted
+  normal loading may have in-plane coordinate components; premise 4 is a directional restriction
+  in the native face frame.
+- **Exchange:** use the momentum carried with the local converted-material mass current, with the
+  premise-3 velocity identification. Keep additional S12 momentum partners separately attributable
+  and their reaction system named. Neither kind of transport is an extra mechanical traction.
+- **Drive:** identify the dynamical drain's source/boundary provenance in these entries. The separate
+  body-force representation is absent under premise 2. Do not invent a gravitational force profile
+δ_vΣ_mat = 0 ,
+J_s^α = ρ_m(v_bulk,s − v_face,s^α)·n̂_s^α ,
+a_s^α = sqrt(1+|∇_x h_s^α|²) ,
+∂_tΣ + ∇_x·(Σ v) = −(J₊+J₋)                         (flat faces) ,
+∂_tΣ^α + ∇_x·(Σ^α v) = −∑_s a_s^α J_s^α ,          v = ∂_t u .
+```
+
+`ρ_4D` and `ρ_m` are mass densities; `α` labels the recorded anchoring; `h_s^α` is a native face
+graph, distinct from reduced `h`. `J_s^α` is outward relative mass flux per true face area. The
+
+$ sed -n '556,564p;896,898p' research/pde_ledger_v3/V3_STEP_PLAN.md
+#### ⭐⭐ THE USER'S DARK-ENERGY POSTULATE — banked 2026-08-03, ⛔ do not lose it {#dark-energy-postulate}
+
+> *"this mechanism I am postulating is the reason for dark energy. As the bulk reorders onto the brane,
+> the brane expands to accommodate. Causing expansion. But that's for later."*
+
+⇒ `S_leak` carries a **steady DC part**: the bulk continuously re-orders onto the brane, and the brane
+expands to accommodate it. ⭐ **Re-ordering, ⛔ not material moving between two substances** — brane and
+bulk are one medium in two phases, so the leak is the order parameter converting at the wall
+(user-confirmed 2026-08-03; likely the same physics as S12's `Γ_B`, ⚠ unverified).
+### Q2 · The puncture deflection and its source ⛔ the holder is a DEBT, not a result
+A **±w puncture geometrically bends the brane into ±w**: the field identity `ξ_w = ℓh` and the
+orientation-odd mouth source. Token: **`THROAT_H_SOURCE_1_OVER_R2`**.
+
+$ sed -n 395,403p research/pde_ledger_v3/steps/S16_moving_region.md
+The plan's response-side approximation, supplied mass/multipoles, compactness, smooth
+external field, calibrated potential, discarded boundary fluxes and reduced-force equation
+are **not printed as an S16 reduction** here. The list implements the later user decisions
+with live count, count-moment and boundary-flux objects. The list author's filing leaves
+`M`, `a`, multipoles of `M`, compactness, source normalization and any flux suppression
+as debts for S22's table.
+`a_WT` remains distinct from `a_mouth`; neither control radius nor a count second moment
+delivers their A11 bridge. S16 supplies no smooth surroundings field to expand, no
+Gaussian profile width and no source normalization. (Retrieve M01/M04/M07.)
+
+$ sed -n '684,685p;693,698p' research/pde_ledger_v3/V3_STEP_PLAN.md
+⇒ **The independence is (i) leading-order only and (ii) conditional on compactness.** The first
+correction is `O(a²/r²)` — controlled by `a_WT`, ⛔ **not** the mouth radius (**A11**); `a_WT` is itself undetermined. So "gravity does not depend on the interior" is precise only to leading order; beyond it,
+⛔⛔ **And it is weaker still — an external review found the theorem is on the wrong SIDE.** What the
+corpus establishes is a **response-side** result: how a compact body *moves in* a given external field
+(`M_A ẌA = −M_A∇Φ_ext`). It is **not** a source-side statement about what field a defect *produces*.
+`4d_1pn_full.tex:657,:673,:695,:734,:825` additionally assume compact support, smooth external fields,
+a vanishing dipole, a quasi-static conservative regime, **a calibrated potential `−Gm/r`**, and
+**supplied mass and multipole moments**, with boundary flux discarded by assumption.
+
+2026-11-13. From the S15 shell reading to a 0PN release measurement.
+The first three retrievals use the accepted source revision. The fourth reads the existing provisional benchmark manifest.
+
+$ git show 8e980815:research/pde_ledger_v3/steps/S15_two_drain_region.md | sed -n '13p;65p'
+With `n` outward from the shell, the signed crossing into it is the sum over both surfaces of `−∮Πⁱʲ nⱼ dS + ∮Gⁱ(v_S·n) dS`. On the inner sphere the normal points toward drain 2. On the outer sphere it points away. The first term has carried, whole-pressure, viscous and other-current pieces. The second has separate contributions from the centre velocity and each radius rate. The grouping of a product uses exactly the set of drain and remainder labels carried by its factors. The integrated momentum, its time rate and the integrated force density are separate observables. Writing `P_shellⁱ = ∫shell Gⁱ d³x` for the stored momentum and `Q_crossingⁱ` for the signed crossing above, the supplied moving-shell balance reads `dP_shellⁱ/dt = Q_crossingⁱ + ∫shell fⁱ d³x`. Both engines print this relation unreduced. Whether freely assigned fields satisfy it is a separate dynamical condition. [Original build](../directives/_measurements/S15_build_run_record.md) · [Signed assembly and independent checks](../directives/_measurements/S15_reading_comparator_build_review_r1/README.md)
+The first population route files the user's flow-comparison decision against the existing `R-S21-01`, alongside its distinct light-sector conditions. The comparison stays OPEN. If S21 tests inverse-square signed shell crossing on the stated family, it must carry the geometric departure, live field response, pressure and viscosity inputs, both surfaces and their motion. If it tests Newtonian gravity, it needs companion-induced **free acceleration** relative to an isolated drain under the same ambient conditions. Separate the surroundings from self-field (`R-S16-01`), account for the momentum stored in the shell and exchanged at the sleeve/core and at each slab face (`R-S16-03`), and identify the core contents (S22) and inertial response (`R-S16-04`, S8). The compactness assumption, where used, stays with `R-S16-02`. The physical suppliers of the passive surroundings field, face-resolved momentum and compactness have no owner assigned in S16. [Register entries and S15 pass](../SUBSTRATE_REQUIREMENTS.md) · [S16 record](S16_moving_region.md)
+
+$ git show 8e980815:docs/em_u1_body_definition.md | sed -n '22,25p;58,65p;76,80p'
+The `±w` body is the **complete localized field configuration** at the puncture:
+- the **sleeve** — the wall-field (`χ`) configuration wrapping into the bulk: a tube of ordered-phase material, mouth radius `~a`, extent `~L` in `w` on ONE side (`s=±1`);
+- the **geon content** — the trapped (nonlinear) configuration constituting the mass **[POSTULATED mechanism; profile = declared open input, §7.0]** — part of the body *from the start*;
+- the **bound flow field** — drain inflow + motion-induced flow.
+The body is an **open system** (one-way intake; the return closure and drain-vs-charge budget are inherited OPEN), and `𝔅` includes non-variational endpoints. A single `S_eff` Hessian is therefore **not** a well-posed definition of its dynamics (Grok B1). U1 defines the one-body law as a **force balance over the collective coordinates** `q_A ∈ {X, p}`:
+
+`F_A^var + F_A^flux + F_A^𝔅 + F_A^rad = 0`,  with `F_A^𝔅 = F_A^constraint(𝔅) + F_A^Rayleigh(𝔅)`
+
+1. **`F^var` — the variational channel.** From a precisely scoped **`L_eff`** (a Lagrangian *density in time*; not "`S_eff` per unit time" — steady `V` makes an action diverge): the model's action on a **declared control volume** `Ω_c` **plus its explicit surface action on `∂Ω_c` and `Σ`**, with the body's fields embedded via collective coordinates (§7.1, including the zero-mode quotient). `M_AB(𝔅)` (inertia tensor) and `Ω_AB(𝔅)` (symplectic/Berry form) are defined as the `V²`-Hessian and first-order form **of `L_eff` only** — flow and geon contributions arise in the same calculation, cross terms retained; no `ρa³L` scaling, no `E/c²` term pre-asserted (whether an `E/c²`-like relation *emerges* is a result).
+2. **`F^flux(closure)` — the control-surface channel.** Momentum/mass/energy carried across `∂Ω_c` by the drain and return (§5 bookkeeping). **Partition rule (anti-double-count):** any flux contribution scaling as `∝V̇` is reported **either** inside `M_AB` **or** inside the intake coefficient `C_ṁ` — never both; the report must state the partition.
+3. **`F^𝔅` — the boundary/constraint channel**, decomposed:
+   - **`F^constraint(𝔅)`** — **Lagrange–d'Alembert / multiplier reaction forces** for constraint-type endpoints. This is where the ontology's decisive **E4 nonholonomic shear-lock** reaction enters the one-body equation (the E4 constraint is velocity-level; its reaction is NOT obtainable from `δL_eff` and NOT dissipative — it needs its own slot). **E1's** no-slip reactions live in `F^var` when E1 is imposed as a holonomic BC on the fields inside `L_eff`, otherwise here as multiplier reactions — the report must state which. Zero at E2/E3.
+U1 declares a control surface `∂Ω_c` around the body and does explicit mass/momentum/energy flux bookkeeping:
+- whether intake grows the body's mass, exits along the sleeve, or rides the (open) return path is **[OPEN — declared, carried symbolically]**; U1 *accounts* for it, it does not resolve it;
+- the **intake-momentum response** `C_ṁ(𝔅, closure)` (reverse-rocket-like) is **[COMPUTABLE(𝔅, closure)]**, reported under the §3 partition rule;
+- first pass holds `ṁ` fixed **[S2]**, with a computed check whether the equations force `O(V)` variation of `ṁ` (G7).
+
+
+$ git show 8e980815:software/em_charge_attribute/reports/u1_body_dynamics.md | sed -n '420,425p'
+## Phase B2 — Intake response and radiative residues
+
+- Status: `PASS_WITH_HONEST_OUTCOMES`
+- Partition: `UNRESOLVED(return_closure)`
+- C_mdot: `UNRESOLVED(required_OPEN_leaves)`
+- Radiation: `UNRESOLVED(native_branch_inputs)`
+
+$ sed -n '21,25p;43,46p' docs/_measurements/one_throat_flow_probe.txt
+inward_total_at_r = -rho*(2*pi*A*a**3 - 3*Q*U)/3
+external_hold = Q*U*rho*(k - 1)
+released_acceleration = -3*(-F + Q*U*k*rho - Q*U*rho)/(3*M + 2*pi*a**3*rho)
+outward_outlet_x_at_release = Q*U*k*rho
+measurements = {"k=0,U=-1/100": ["3/100", "-3/100", "-1/50", "-1/100"], "k=0,U=0": ["0", "-1/100", "0", "1/100"], "k=0,U=1/100": ["-3/100", "1/100", "1/50", "3/100"], "k=1,U=-1/100": ["0", "-1/100", "0", "1/100"], "k=1,U=0": ["0", "-1/100", "0", "1/100"], "k=1,U=1/100": ["0", "-1/100", "0", "1/100"]}
+"released_acceleration = "InputForm[(3*(probe + flow*intake*rho - flow*fraction*intake*rho))/(3*mass + 2*a^3*Pi*rho)]
+"measurements = ""{\"k=0,U=1\\/100\":[\"-3\\/100\",\"1\\/100\",\"1\\/50\",\"3\\/100\"],\"k=0,U=0\":[\"0\",\"-1\\/100\",\"0\",\"1\\/100\"],\"k=0,U=-1\\/100\":[\"3\\/100\",\"-3\\/100\",\"-1\\/50\",\"-1\\/100\"],\"k=1,U=1\\/100\":[\"0\",\"-1\\/100\",\"0\",\"1\\/100\"],\"k=1,U=0\":[\"0\",\"-1\\/100\",\"0\",\"1\\/100\"],\"k=1,U=-1\\/100\":[\"0\",\"-1\\/100\",\"0\",\"1\\/100\"]}"
+
+Exact comparison of the two serialized measurement tables after JSON decoding: 6/6 states and 24/24 scalar entries agree (one holding force and three release accelerations per state). Column order H, A(-3/200), A(0), A(+3/200).
+
+2026-11-13. Outward companion-directed momentum on the sleeve and two slab faces at 0PN.
+Source extracts and existing benchmark outputs.
+
+$ git show 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c:research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md | sed -n '95,96p;153,156p;220,226p;233,239p;483,491p'
+| **3 — exchanged material** | Converted material carries the local brane material velocity `V`. This closes transported momentum only. Additional non-variational partners and their reaction system remain OPEN with S12. | Distinguish carried-material momentum, mechanical face/support loading and additional S12 momentum partners. Apply the outward exchange convention in §5: premise 3 closes the in-plane carried components at `V`, and the bulk-direction carried component stays the OPEN reduction stated there. Keep all live velocity and measure factors. |
+| **4 — bulk traction** | Retain the postulated shear-free scalar bulk, with face-normal mechanical loading and no independent tangential bulk stress. O3 transport is separate. | The bulk part of the mechanical loading is `𝒯_bulk,n,s^live n̂_s`, with its amplitude OPEN. A tilted normal retains its in-plane projection. No tangential bulk stress is hidden in a support operand. |
+| `Π_n` (O3); transported-material content fixed by **adopted premise 3**, remaining partners **OPEN**, C §§1, 7, 10 | Momentum accounting for exchange. Its local carried-material convention is specified in §5. It is separate from mechanical traction; premise 3 does not close additional S12 partners. |
+| `𝒥_map` (O6); **OPEN**, C §6 | Material/order weighting, live projection/window, measures, sheet/slab/face identifications and relation to bulk-normal `v_dr` and bulk/return data. It enters every native-to-v9 exchange or load reduction requiring those identifications, as detailed in §5. |
+| `t_bulk,s^live = 𝒯_bulk,n,s^live n̂_s`; directional restriction from **adopted premise 4**, C §7 | Bulk mechanical traction on its native face. `𝒯_bulk,n,s^live` is a general signed **OPEN** normal-load amplitude; geometry and projection are live. No pressure/affinity/DC response law or sign of the amplitude is given. |
+| `T_hold,s`; **OPEN**, C §7 | Complete mechanical face/support loading in O2. Its bulk part obeys the preceding restriction. The bulk amplitude qualifies that part of the full load; it is not a second load added beside a `T_hold,s` that already contains it. The support partition is unresolved. |
+loss density in the supplied v9 relation `∇·(ρ_br V)=−j_n`, on the declared measure (§1). It need not
+have a prescribed sign. Name the outward carried-momentum density in that same outward convention
+`Π_n^carry`. Premise 3 identifies the carried velocity with the local brane material velocity. For
+the in-plane `x^i` coordinate components it gives
+
+```text
+(Π_n^carry)^i = j_n V^i .
+
+On a native face description, transported momentum uses the native relative exchanged mass current
+and the local brane material velocity of the converted material. A full normal/component reduction
+retains `𝒥_map`, the live geometry and any unsupplied face-to-material velocity identification. Do
+not choose an independent converted-material velocity, replace it with `v_dr`, or identify it with a
+native bulk velocity. The premise-3 identification applies to the material after the specified
+conversion/transfer; it does not fix how a native bulk current acquires that momentum. Any additional
+J_s^α = ρ_m(v_bulk,s − v_face,s^α)·n̂_s^α ,
+a_s^α = sqrt(1+|∇_x h_s^α|²) ,
+∂_tΣ + ∇_x·(Σ v) = −(J₊+J₋)                         (flat faces) ,
+∂_tΣ^α + ∇_x·(Σ^α v) = −∑_s a_s^α J_s^α ,          v = ∂_t u .
+```
+
+`ρ_4D` and `ρ_m` are mass densities; `α` labels the recorded anchoring; `h_s^α` is a native face
+graph, distinct from reduced `h`. `J_s^α` is outward relative mass flux per true face area. The
+shape verification is confined to supplied profiles and first shape order, with background
+
+$ git show 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c:research/pde_ledger_v3/steps/S14a_1_projection.md | sed -n '86,87p;330,336p'
+| Material concentrated coefficients | `A₋=n₂a₂,₋−n₁a₁,₋`, `A₊=n₃a₃,₊−n₂a₂,₊` | b49: both traces exact `0`; b55/b58 compare the material face-equation coefficients, exact `0`. Their separate SymPy rhs zeros are unpaired (§5). |
+| Material leaving each face, before / after full concentrated part | Lower: `−n₂a₂,₋` / `−n₁a₁,₋`; upper: `n₂a₂,₊` / `n₃a₃,₊` | b53/b54/b56/b57: exact `0`. Both forms are retained; no material face condition is solved/substituted. |
+**Earlier O2 comparison, by retrieval.** O2 prints `∂tΣ+∇x·(Σv)=−(J₊+J₋)` for flat faces and
+`∂tΣ^α+∇x·(Σ^αv)=−∑s a_s^αJ_s^α`, with `v=∂t u`; its rows identify mass densities and an
+outward relative mass flux per true face area. This build prints a number-density/number-flux
+closed projection with moving/tilted graph faces and full concentrated parts. Both displayed
+material balances place face outflow against storage plus in-plane divergence, but the native
+density, flux/velocity, trace, area and anchoring identifications are not a filed cross-engine
+comparison. An equality after those identifications would be a new computation; it is OPEN,
+
+$ git show 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c:research/pde_ledger_v3/steps/S15_two_drain_region.md | sed -n '11p;13p'
+P5 supplies projected material momentum `Gⁱ = ρ_br Vⁱ` and its carried current. P6 supplies the pressure and viscous stress. Both are applied to projected fields, and the steady P6 form is extended to the moving flow. The other current `Π_o` includes departures from the adopted P6 stress in moving flow. If stressed material carries additional momentum density, P5 itself would need revision. That would affect both the stored momentum and its transport by the moving boundary. Shear and bulk viscosities `η, ζ` stay live. The imposed balance reads `∂ₜGⁱ + ∂ⱼΠⁱʲ = fⁱ`, with `Πⁱʲ = ρ_br VⁱVʲ − Tⁱʲ + Π_oⁱʲ`. The force density retains the undivided slab-face and bulk exchange. Whole pressure requires `p_br` at the total density. The separately printed expansion through first order in `ρ₁` requires it defined and differentiable at `ρ₂ + ϱ`. P6 defines `c_comp² = dp_br/dρ_br`. The separately printed speed symbol enters no balance object. [Equations and domains](../directives/S15_decision_list.md#supplied-equations-unfalsifiable-in-this-build) · [Squared-speed definition](../directives/S9b_SHARED_PHYSICS.md) · [Original comparison qualifications](../directives/_measurements/S15_comparator_build_review_r1_disposition.md)
+With `n` outward from the shell, the signed crossing into it is the sum over both surfaces of `−∮Πⁱʲ nⱼ dS + ∮Gⁱ(v_S·n) dS`. On the inner sphere the normal points toward drain 2. On the outer sphere it points away. The first term has carried, whole-pressure, viscous and other-current pieces. The second has separate contributions from the centre velocity and each radius rate. The grouping of a product uses exactly the set of drain and remainder labels carried by its factors. The integrated momentum, its time rate and the integrated force density are separate observables. Writing `P_shellⁱ = ∫shell Gⁱ d³x` for the stored momentum and `Q_crossingⁱ` for the signed crossing above, the supplied moving-shell balance reads `dP_shellⁱ/dt = Q_crossingⁱ + ∫shell fⁱ d³x`. Both engines print this relation unreduced. Whether freely assigned fields satisfy it is a separate dynamical condition. [Original build](../directives/_measurements/S15_build_run_record.md) · [Signed assembly and independent checks](../directives/_measurements/S15_reading_comparator_build_review_r1/README.md)
+
+$ git show 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c:docs/em_u1_body_definition.md | sed -n '44p;74,80p'
+**`𝔅` — the sleeve-surface boundary/constraint operator (the U2 object), declared as an input.** It is not assumed reducible to one scalar (the `ζ` of `directive_native_vortex_sign.md` is a one-parameter caricature). U1 computes every response coefficient as a function of `𝔅`, at minimum at these **operationally-defined endpoints**:
+## 4. Open-system bookkeeping — the control surface **[DEFINED-HERE]**
+
+U1 declares a control surface `∂Ω_c` around the body and does explicit mass/momentum/energy flux bookkeeping:
+- whether intake grows the body's mass, exits along the sleeve, or rides the (open) return path is **[OPEN — declared, carried symbolically]**; U1 *accounts* for it, it does not resolve it;
+- the **intake-momentum response** `C_ṁ(𝔅, closure)` (reverse-rocket-like) is **[COMPUTABLE(𝔅, closure)]**, reported under the §3 partition rule;
+- first pass holds `ṁ` fixed **[S2]**, with a computed check whether the equations force `O(V)` variation of `ṁ` (G7).
+
+
+$ git show 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c:software/em_charge_attribute/reports/u1_body_dynamics.md | sed -n '423,425p'
+- Partition: `UNRESOLVED(return_closure)`
+- C_mdot: `UNRESOLVED(required_OPEN_leaves)`
+- Radiation: `UNRESOLVED(native_branch_inputs)`
+
+$ sed -n '20p' docs/one_throat_flow_probe.md
+The exterior is incompressible, inviscid potential flow. The spherical surface admits fluid at uniform inward normal speed $s$ relative to the moving mouth, with tangential slip. Both outlet cases discharge mass at $\rho Q$ with zero additional lateral outlet traction. If the mouth moves at $V$, the prescribed mean outlet velocity along the flow axis is $V+k(U-V)$, with $k=0$ or $1$. The model gives the intake a constant mechanical mass and neglects internal tilt, internal momentum storage relative to the body, and radiation. These are benchmark choices.
+
+$ sed -n '22,24p' docs/_measurements/one_throat_flow_probe.txt
+external_hold = Q*U*rho*(k - 1)
+released_acceleration = -3*(-F + Q*U*k*rho - Q*U*rho)/(3*M + 2*pi*a**3*rho)
+outward_outlet_x_at_release = Q*U*k*rho
+
+$ sed -n '21,22p;37p' docs/_measurements/held_drain_pair.txt
+upper face isolated radial integrand = 0
+upper face first variation per dr = -4*pi*r*(r*p0(r)*Derivative(h1(r), r) + r*p1(r)*Derivative(h0(r), r) + 2*h1(r)*p0(r))/3
+"upper face first variation per dr = ""(-4*Pi*r*(2*h1[r]*p0[r] + r*p1[r]*Derivative[1][h0][r] + r*p0[r]*Derivative[1][h1][r]))/3"

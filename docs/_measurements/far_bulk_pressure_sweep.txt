@@ -1,0 +1,224 @@
+One throat at 0PN, zero sideways flow. Far-bulk pressure control and material readout.
+Source and archived-configuration check. Unreviewed working note.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c
+No numerical pressure sweep was run. The archived cases below vary boundary coefficients.
+Their current diagnostic is a volume norm. They have no far-pressure setting.
+
+$ jq -c '{case:.grid,converged:.results.converged,mouth:.results.boundaries.matter_w_lower,exit:.results.boundaries.matter_w_upper,spatial_current_l2:.results.surrogate_values.spatial_current_l2}' software/stage1_solver/runs/step5_boundary_characterization/robin_only_impedance_coefficients/step5_boundary_characterization_engineering_smoke/robin_only_alpha_scale_0.5_nr_64_nw_32/manifest.json software/stage1_solver/runs/step5_boundary_characterization/robin_only_impedance_coefficients/step5_boundary_characterization_engineering_smoke/robin_only_alpha_scale_1.0_nr_64_nw_32/manifest.json software/stage1_solver/runs/step5_boundary_characterization/robin_only_impedance_coefficients/step5_boundary_characterization_engineering_smoke/robin_only_alpha_scale_2.0_nr_64_nw_32/manifest.json
+{"case":"robin_only_alpha_scale_0.5_nr_64_nw_32","converged":true,"mouth":{"alpha":0.0,"beta":1.0,"gamma":0.0,"kind":"robin"},"exit":{"alpha":0.125,"beta":1.0,"gamma":0.0,"kind":"robin"},"spatial_current_l2":0.0}
+{"case":"robin_only_alpha_scale_1.0_nr_64_nw_32","converged":true,"mouth":{"alpha":0.0,"beta":1.0,"gamma":0.0,"kind":"robin"},"exit":{"alpha":0.25,"beta":1.0,"gamma":0.0,"kind":"robin"},"spatial_current_l2":0.0}
+{"case":"robin_only_alpha_scale_2.0_nr_64_nw_32","converged":true,"mouth":{"alpha":0.0,"beta":1.0,"gamma":0.0,"kind":"robin"},"exit":{"alpha":0.5,"beta":1.0,"gamma":0.0,"kind":"robin"},"spatial_current_l2":0.0}
+
+$ sed -n 148,163p software/stage1_solver/src/stage1_solver/boundary_characterization.py
+def _impedance_branch(
+    base: BranchSmokeConfig,
+    study: BoundaryCharacterizationConfig,
+    scale: float,
+) -> BranchSmokeConfig:
+    nr = _grid_count(study.impedance_r_max, study.spacing)
+    nw = _grid_count(study.fixed_w_max - base.w_min, study.spacing)
+    return replace(
+        base,
+        r_max=study.impedance_r_max,
+        w_max=study.fixed_w_max,
+        solve_grid=(nr, nw),
+        matter_exit_impedance_alpha=base.matter_exit_impedance_alpha * scale,
+        a0_radial_impedance_alpha=base.a0_radial_impedance_alpha * scale,
+        a0_exit_impedance_alpha=base.a0_exit_impedance_alpha * scale,
+    )
+
+$ sed -n '280,286p;293,300p;335,345p;457,459p;537,539p;761,763p' software/stage1_solver/src/stage1_solver/coupled_branch.py
+def branch_boundary_conditions(cfg: BranchSmokeConfig) -> CoupledBoundarySet:
+    if cfg.matter_mouth_boundary == "dirichlet":
+        matter_w_lower = BoundaryCondition.dirichlet(0.0)
+    elif cfg.matter_mouth_boundary == "neumann":
+        matter_w_lower = BoundaryCondition.neumann(0.0)
+    else:
+        raise ValueError(f"Unsupported matter_mouth_boundary {cfg.matter_mouth_boundary!r}")
+    return CoupledBoundarySet(
+        matter_radial_outer=BoundaryCondition.dirichlet(0.0),
+        matter_w_lower=matter_w_lower,
+        matter_w_upper=BoundaryCondition.robin(
+            alpha=cfg.matter_exit_impedance_alpha,
+            beta=1.0,
+            gamma=0.0,
+        ),
+    grad_imag_w = tensor_center_gradient_w(fields.psi_imag, grid)
+    density = fields.psi_real**2 + fields.psi_imag**2
+    phase_current_r = fields.psi_real * grad_imag_r - fields.psi_imag * grad_real_r
+    phase_current_w = fields.psi_real * grad_imag_w - fields.psi_imag * grad_real_w
+    jr = (cfg.hbar / cfg.particle_mass) * phase_current_r - (
+        cfg.gauge_charge / cfg.particle_mass
+    ) * fields.ar * density
+    jw = (cfg.hbar / cfg.particle_mass) * phase_current_w - (
+        cfg.gauge_charge / cfg.particle_mass
+    ) * fields.aw * density
+    return jr, jw
+    density = fields.psi_real**2 + fields.psi_imag**2
+    mass = torch.sum(density * grid.cell_volumes) - cfg.mass
+    return torch.cat([pde.reshape(-1), mass.reshape(1)])
+    density = fields.psi_real**2 + fields.psi_imag**2
+    mass = torch.sum(density * grid.cell_volumes) - cfg.mass
+    return torch.cat([pde.reshape(-1), wall.reshape(-1), mass.reshape(1)])
+        "spatial_current_l2": float(
+            torch.sqrt(torch.sum((jr_number**2 + jw_number**2) * volumes)).detach().cpu().item()
+        ),
+
+$ sed -n '23,29p;52,55p' software/stage1_solver/tools/feed_backpressure_current.py
+def solve(phase, grid_size, tolerance):
+    outlet = OUTLET_AMPLITUDE * np.array([np.cos(phase), np.sin(phase)])
+    feed = np.array([1.0, 0.0])
+
+    def boundary(left, right):
+        return np.concatenate((left[:2] - feed, right[:2] - outlet))
+
+if __name__ == "__main__":
+    for phase in (0.0, 0.1, 0.2):
+        coarse = solve(phase, 21, 1e-7)
+        fine = solve(phase, 41, 1e-9)
+
+$ sed -n 60p software/stage1_solver/reports/pathA_26_derrick.md
+The slaved drain closure is `Phi_w=kappa_c*(a^3/L)*mu_drive`, `Delta_h=zeta*Phi_w`.
+
+$ sed -n '145,149p;253,275p;311,319p' scripts/inner_throat/paper7_4d_gnls_gpu.py
+    OmegaSq = (P.OmOut**2) - (P.OmOut**2 - P.OmIn**2)*G
+    Vbrane  = 0.5*P.m*OmegaSq*(w4**2)
+    Vwall   = P.V0*(smooth_step(xp, (R - a)/P.dr)**p_int)
+    Vcap    = P.V0*(smooth_step(xp, (smooth_abs(xp, w4, P.epsW) - 0.5*L)/P.dw)**p_int)
+    return (Vbrane + Vwall + Vcap).astype(out_dtype)
+
+    def step(self, psi, Vconf):
+        xp = self.grid.xp
+        dt, hbar = self.dt, self.P.hbar
+
+        Veff = self._Veff(Vconf, psi)
+        if self.imag:
+            Pprop = xp.exp(-(0.5*dt/hbar)*Veff).astype(self.P.dtype_cplx)
+        else:
+            Pprop = xp.exp(-1j*(0.5*dt/hbar)*Veff).astype(self.P.dtype_cplx)
+        psi = psi * Pprop
+
+        psi_k = self.grid.fft.fftn(psi, axes=(0,1,2,3))
+        psi_k = psi_k * self.Kprop
+        psi = self.grid.fft.ifftn(psi_k, axes=(0,1,2,3))
+
+        Veff = self._Veff(Vconf, psi)
+        if self.imag:
+            Pprop = xp.exp(-(0.5*dt/hbar)*Veff).astype(self.P.dtype_cplx)
+        else:
+            Pprop = xp.exp(-1j*(0.5*dt/hbar)*Veff).astype(self.P.dtype_cplx)
+        psi = psi * Pprop
+        return psi
+    psi = normalize_to(grid, psi, Ntarget)
+
+    stepper = SplitStepGNLS4D(grid, P, dt=dtau, imaginary=True)
+    prev = psi
+    t0 = time.time()
+
+    for n in range(1, max_steps+1):
+        psi = stepper.step(psi, Vconf)
+        psi = normalize_to(grid, psi, Ntarget)
+
+$ sed -n 5,12p research/4d/scripts/single_throat_monopole.py
+Minimal "Newtonian sector" test for the toy model:
+- 3D conservative compressible Euler (barotropic) on a GPU using CuPy
+- EOS: stiff polytrope P = P0 * (rho/rho0)^n, default n=5
+- One fixed "throat" modeled as a normalized kernel W(x) removing superfluid density
+  with a prescribed throughput Mdot(t) (ramped up smoothly).
+- Bulk refill term (dark-energy leakage) drives rho back toward rho0 when rho < rho0.
+- Reservoir boundary: ghost cells fixed to rho=rho0, v=0.
+
+$ sed -n 3,9p research/pde_audit/scripts/stage_v2_23_minimal_open_throat_branch_solver.py
+Stage V2-23: Minimal open-throat branch solver and first real residual extraction.
+
+This is a reduced branch-realization prototype, not a full nonlinear GNLS/Maxwell
+moving-throat PDE solver. It solves a frozen one-dimensional open-throat geometry
+and Sturm-Liouville support/gauge profiles, computes actual overlap integrals,
+builds the V2-21/V2-22 observable packet, and reports residuals against the
+isotropic full-bundle target surface.
+
+$ sed -n 2,9p research/pde_audit/simulation/physical_nonlinear_model.py
+"""Physical nonlinear model status for the PDE audit simulation bundle.
+
+This module intentionally does not export candidate packets.  The ledger does
+not yet contain a completed strict parent-level nonlinear moving-throat branch
+equation set.  What is available is an effective wall/interface closure plus
+reduced BdG and Maxwell/mixed blocks.  The verifier records that boundary so the
+release bundle cannot silently promote the manufactured/exporter lanes into a
+physical branch realization.
+
+$ sed -n '3145,3150p;3246,3258p' notes/inner_throat/4d_next_steps.md
+#### E.2.3 Fixed far-field density (\rho_0) (soft density pinning)
+
+Add a soft restoring term that nudges density toward a target (\rho_0):
+[
+i\hbar D_t\psi = \cdots - i\hbar\,\gamma_\rho\,S_{\rm res}(\mathbf X)\big(|\psi|^2-\rho_0\big)\psi
+]
+### E.5 Receiving-region modeling (how 4D expansion creates back-pressure)
+
+Back-pressure is not a boundary condition; it’s a **result** of:
+
+* EOS pressure from (U(\rho)),
+* geometric spreading in 4D,
+* and any confining potentials in the receiving region.
+
+To make this real, ensure:
+
+1. the confinement beyond the throat actually permits bulk occupancy (the gate truly opens access),
+2. the receiving region is large enough and/or has absorbers so that matter can spread or exit rather than reflect,
+3. you measure back-pressure via a defined observable (e.g., brane-projected enthalpy near (\Gamma) relative to far-field baseline).
+
+$ sed -n '342,349p;394,405p' research/pde/paper/pde.tex
+The frozen stiff-polytropic equation of state is
+\[
+P(\rho)=K\rho^5,
+\qquad
+U(\rho)=\frac{K}{4}\rho^5,
+\qquad
+h(\rho)=\frac{\mathrm dU}{\mathrm d\rho}=\frac{5K}{4}\rho^4.
+\]
+\subsubsection*{Exact current and continuity}
+
+The exact bulk number current is
+\begin{equation}
+ j^i=\frac{\hbar}{m}\,\mathrm{Im}(\psi^*D_i\psi),
+ \label{eq:exact-current}
+\end{equation}
+and exact continuity is
+\begin{equation}
+ \partial_t\rho+\partial_i j^i=0.
+ \label{eq:exact-continuity}
+\end{equation}
+
+$ sed -n '591,595p;608,615p' research/pde_ledger_v3/V3_STEP_PLAN.md
+∂_t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n Γ_B ,    Γ_B = Γ_return − Γ_drain ,    [Γ_B] = T⁻¹
+```
+
+An **internal order-conversion at the throat** — the dynamical wall converting ordered↔disordered
+material. Phase-conversion, **not suction**.
+is precisely what §0's side-by-side rule exists to prevent.
+⛔ **Two inventories, kept apart:**
+- **non-variational source / controller functions** — `Γ_return`, `Γ_drain`, `J_χ`, and the return
+  controllers. ⛔ All `[OPEN]` in form.
+- **boundary / domain data** — the mouth, collar and IR conditions, and the `𝔅` branch selection.
+
+⇒ The throat enters this ledger with its **source form open and its strength supplied**. ⛔ Not "only a
+boundary condition" — that framing hides which of the two is unresolved.
+
+$ sed -n 40,55p software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+  - id: sleeve_core_trace
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: scalar_field_trace_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [field_point, outward_normal, wall_side, a, L]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    source: nonlinear_throat_core_open
+  - id: geon_core_bundle
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: field_trace_bundle_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [density_trace, h_trace, phase_flux_trace, wall_side]
+    symmetry_class: BODY_CONJUGATE_BUNDLE
+    source: spec_7_0_geon_profile_open

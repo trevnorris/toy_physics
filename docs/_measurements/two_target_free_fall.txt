@@ -1,0 +1,84 @@
+Added bare mass on a permeable sphere. Working numerical solver check.
+Base commit 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c. Independent physics review pending.
+SHA256 of docs/drain_driven_initial_acceleration.md immediately before this section was added:
+f1e2e6e90f73a9866b12f6f0fd34c1979baee0639a3a877e9c41f5cd9a7f9e71
+
+Setup
+Use the unit-radius, unit inward surface speed spherical benchmark, density 3/(4 pi).
+The source bare mass is one. Only the target bare mass changes from one to two.
+Both radii, both volume intakes (4 pi), and both outlet rules stay fixed at each distance.
+Mass exits each outlet with zero mean velocity along the line of centers and no extra
+axial traction. There are no slab faces in this geometry. The prescribed extra mass
+is mechanically coupled to the target without affecting the stationary flow. This is
+one draining configuration with two assigned solid masses. Using its acceleration
+ratio to assess free fall for two physical throats was an error. Both centers are at
+rest initially and free after removal of their supports. Positive x points from target
+to source.
+
+Computation
+The archived unit-mass readings were reused. For the heavier target the new solver
+collocates Neumann data on each permeable sphere. It solves the steady potential
+and the responses to each unit center acceleration, evaluates the carried momentum,
+Bernoulli pressure and added mass on a separate grid, and solves the full inertia
+matrix with and without applied probe forces. Forces of +/-0.015 are applied to
+each body separately. The inverse target response to its own probe (other body
+free) defines calibrated_M. A stationary holder exerts the negative of the load.
+The isolated applied-force calibration also gives the asymptotic target inertia.
+
+Independent reference
+Unit-mass A uses the degree-9 Wolfram translated-multipole solution archived in
+paired_gravity_transfer.txt. That record contains its literal stdout and original
+command. For the new bare mass add DeltaM e_t e_t^T to the old inertia matrix.
+For any fixed external forces the new target acceleration solves
+a_B = a_A - mu_tt,A DeltaM a_B. The same identity applied to differences of
+probe forces divides every entry of the target mobility row by 1+mu_tt,A DeltaM.
+This is a prediction from the earlier field solution; only the new collocation
+calculation directly solves the heavier target. Comparing hold, free acceleration
+and both mobility entries uses 2e-12 absolute tolerance in benchmark units.
+Absolute surface boundary tolerance is 1e-8 (speed/acceleration boundary data).
+The reported ratio is the acceleration response to adding mass to that sphere.
+
+$ python3 scripts/s11c_guarded_run.py --pool two-target-free-fall --memory-gib 2 --log-directory _scratch/s11c/two_target_free_fall01 -- python3 software/stage1_solver/tools/two_target_free_fall.py _scratch/s11c/pair_holding_probe_wolfram03/stdout
+Start UTC 2026-11-14T15:10:17.576548+00:00, guard and child exit codes 0,
+limits verified, 2 GiB hard limit, zero swap, one CPU, 32 tasks, no deadline,
+observed peak 27250688 bytes. Stderr empty.
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 0eb5dcb91c75238c38d78807560ef3fe564db68b7fd04eb750e6da60d0de5a1a  software/stage1_solver/tools/two_target_free_fall.py
+SHA256 ffd967c6d36341762ca7eae4f715188faba203216724f58a56d10506909316ca  software/stage1_solver/tools/pair_holding_probe.py (field basis, density, probe)
+SHA256 47fc76277a9564aea818d5050c13a67258c90d0090c3bdfddf1ad4486714076a  software/stage1_solver/tools/pair_probe_transfer_check.py (archived output reader)
+SHA256 59fd908458d0aac6be4e3b16f74cda636041744a12b6276de52d7c5be6e7cd23  software/stage1_solver/tools/pair_holding_probe.wl (archived unit-mass calculation)
+SHA256 4dceebd5e780dd41021dd2d2245fec343a6793b1327918423bd52c470396cd6c  _scratch/s11c/pair_holding_probe_wolfram03/stdout
+SHA256 a13a2e6b13ee9be3fdc2dd44e1bf504775e2cdcb392d1050ccd506131c8a4fa7  _scratch/s11c/two_target_free_fall01/stdout
+
+Literal stdout
+d=isolated degree=8 hold_B=+8.109832250192e-17 a_B=-3.243932900077e-17 probe_minus=-0.006 probe_plus=+0.006
+  mu_B=[0.40000000000000074] calibrated_M_B=2.5 calibrated_M_A=1.5
+  reference_hold=+0 reference_a_B=+0 reference_mu_B=[0.4] a_A=+0
+  max_reference_error=7.22e-16 normal_error=5.55e-16 reconstruction_error=0 reciprocity_error=0 net_held_state_load=-8.11e-17
+d=isolated degree=14 hold_B=+5.052382123782e-17 a_B=-2.020952849513e-17 probe_minus=-0.006 probe_plus=+0.006
+  mu_B=[0.4000000000000004] calibrated_M_B=2.5 calibrated_M_A=1.5
+  reference_hold=+0 reference_a_B=+0 reference_mu_B=[0.4] a_A=+0
+  max_reference_error=3.89e-16 normal_error=5.55e-16 reconstruction_error=0 reciprocity_error=0 net_held_state_load=-5.05e-17
+  max_refinement_change=3.33e-16
+d=10 degree=8 hold_B=-0.03006132899917 a_B=+0.01201250684706 probe_minus=+0.006012506957258 probe_plus=+0.01801250673686
+  mu_B=[0.3999999926535642, 0.0004000000054024446] calibrated_M_B=2.500000045915 calibrated_M_A=1.500000045915
+  reference_hold=-0.03006132899917 reference_a_B=+0.01201250684706 reference_mu_B=[0.3999999926535634, 0.0004000000054024903] a_A=+0.02002084449997
+  max_reference_error=7.77e-16 normal_error=1.03e-09 reconstruction_error=3.47e-18 reciprocity_error=4.99e-18 net_held_state_load=+4.51e-17
+  a_B/a_A=0.6000000073464 d2_a_A=2.002084449997 d2_a_B=1.201250684706
+d=10 degree=14 hold_B=-0.03006132899917 a_B=+0.01201250684706 probe_minus=+0.006012506957258 probe_plus=+0.01801250673686
+  mu_B=[0.3999999926535638, 0.0004000000054025024] calibrated_M_B=2.500000045915 calibrated_M_A=1.500000045915
+  reference_hold=-0.03006132899917 reference_a_B=+0.01201250684706 reference_mu_B=[0.3999999926535634, 0.0004000000054024903] a_A=+0.02002084449997
+  max_reference_error=3.89e-16 normal_error=3.55e-15 reconstruction_error=3.47e-18 reciprocity_error=3.47e-18 net_held_state_load=+1.08e-16
+  a_B/a_A=0.6000000073464 d2_a_A=2.002084449997 d2_a_B=1.201250684706
+  max_refinement_change=3.89e-16
+d=20 degree=8 hold_B=-0.007501884825824 a_B=+0.003000378835876 probe_minus=-0.0029996211637 probe_plus=+0.009000378835452
+  mu_B=[0.3999999999717346, 5.000000000243525e-05] calibrated_M_B=2.500000000177 calibrated_M_A=1.500000000177
+  reference_hold=-0.007501884825824 reference_a_B=+0.003000378835876 reference_mu_B=[0.3999999999717338, 5.000000000241485e-05] a_A=+0.005000631392892
+  max_reference_error=7.77e-16 normal_error=9.11e-13 reconstruction_error=0 reciprocity_error=4.61e-19 net_held_state_load=-1.98e-16
+  a_B/a_A=0.6000000000283 d2_a_A=2.000252557157 d2_a_B=1.200151534351
+d=20 degree=14 hold_B=-0.007501884825824 a_B=+0.003000378835876 probe_minus=-0.0029996211637 probe_plus=+0.009000378835452
+  mu_B=[0.3999999999717342, 5.0000000002420795e-05] calibrated_M_B=2.500000000177 calibrated_M_A=1.500000000177
+  reference_hold=-0.007501884825824 reference_a_B=+0.003000378835876 reference_mu_B=[0.3999999999717338, 5.000000000241485e-05] a_A=+0.005000631392892
+  max_reference_error=3.89e-16 normal_error=9.44e-15 reconstruction_error=4.34e-19 reciprocity_error=1.08e-19 net_held_state_load=-2.91e-16
+  a_B/a_A=0.6000000000283 d2_a_A=2.000252557157 d2_a_B=1.200151534351
+  max_refinement_change=3.89e-16

@@ -1,0 +1,112 @@
+Paired-minus-alone momentum rates at 0PN. Working benchmark, 2026-11-13.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c. Scripts are local additions. No external data files.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool paired-flat-face --memory-gib 2 --log-directory _scratch/s11c/paired_flat_face_sympy01 -- python3 software/stage1_solver/tools/paired_flat_face_rates.py
+Guard SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Source SHA256 c75c8ad7e8c17853d78bb930332186a0ee7c5d82cb9ba5a4841f31f48c39dc11  software/stage1_solver/tools/paired_flat_face_rates.py
+Start 2026-11-13T18:20:27.934086+00:00; launcher and child exit 0, verified 2 GiB, zero swap, no deadline or guard stop, empty stderr.
+Stdout SHA256 342848b239643b6a14e83babc11ed4580c4cd760464a7a186a7e6e014f2e027f  _scratch/s11c/paired_flat_face_sympy01/stdout
+Literal stdout follows
+upper outward mass flux per true area = -ell*h*m/2
+upper flow [isolated, paired, change] = [0, ell*m*q_source*(a - b)*(a**2 + a*b + b**2)/(6*d**2*n), ell*m*q_source*(a - b)*(a**2 + a*b + b**2)/(6*d**2*n)]
+upper sample change in flow = -26*pi/625
+upper outward normal stress along axis per area = 0
+lower outward mass flux per true area = -ell*h*m/2
+lower flow [isolated, paired, change] = [0, ell*m*q_source*(a - b)*(a**2 + a*b + b**2)/(6*d**2*n), ell*m*q_source*(a - b)*(a**2 + a*b + b**2)/(6*d**2*n)]
+lower sample change in flow = -26*pi/625
+lower outward normal stress along axis per area = 0
+probe k = 0 outlet flow [control, driven, change] = [0, 0, 0]
+probe k = 1 outlet flow [control, driven, change] = [0, 3/100, 3/100]
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool paired-flat-face --memory-gib 4 --log-directory _scratch/s11c/paired_flat_face_wolfram01 -- math -noprompt -script software/stage1_solver/tools/paired_flat_face_rates.wl
+Guard SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Source SHA256 0596a38463b47e445d1c6d898e57cbcefb2d6a81a76067424763eb0da5ae4d88  software/stage1_solver/tools/paired_flat_face_rates.wl
+Start 2026-11-13T18:20:37.891080+00:00; launcher and child exit 0, verified 4 GiB, zero swap, no deadline or guard stop, empty stderr.
+Stdout SHA256 895edbf5ec3a6dec6e3abac9800aa955f1d211465f954ee2a745c8e9c690d18c  _scratch/s11c/paired_flat_face_wolfram01/stdout
+Literal stdout follows
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               -15
+NIntegrate::eincr: The global error of the strategy GlobalAdaptive has increased more than 2000 times. The global error is expected to decrease monotonically after a number of integrand evaluations. Suspect one of the following: the working precision is insufficient for the specified precision goal; the integrand is highly oscillatory or it is not a (piecewise) smooth function; or the true value of the integral is 0. Increasing the value of the GlobalAdaptive option MaxErrorIncreases might lead to a convergent numerical integration. NIntegrate obtained -0.130690254389335398497745335950410541890119197380329733475289254599571980072683788409774064 and 1.59165494155608557967799151081603149117343461791005325560871303820758952853803362242720016 10    for the integral and error estimates.
+"upper"" sample flow/pi [isolated, paired, change] = ""{-8.11847580833189372697341365790509929927906`18.*^-55, -0.04159999999999999992923951214999142003`18., -0.04159999999999999992923951214999142003`18.}"
+"outward normal stress along axis per area = "0
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               -15
+NIntegrate::eincr: The global error of the strategy GlobalAdaptive has increased more than 2000 times. The global error is expected to decrease monotonically after a number of integrand evaluations. Suspect one of the following: the working precision is insufficient for the specified precision goal; the integrand is highly oscillatory or it is not a (piecewise) smooth function; or the true value of the integral is 0. Increasing the value of the GlobalAdaptive option MaxErrorIncreases might lead to a convergent numerical integration. NIntegrate obtained -0.130690254389335398497745335950410541890119197380329733475289254599571980072683788409774064 and 1.59165494155608557967799151081603149117343461791005325560871303820758952853803362242720016 10    for the integral and error estimates.
+"lower"" sample flow/pi [isolated, paired, change] = ""{0, -0.04159999999999999992923951214999142003`18., -0.04159999999999999992923951214999142003`18.}"
+"outward normal stress along axis per area = "0
+
+Numerical scope. Wolfram reports NIntegrate::eincr at the requested absolute accuracy goal of 28. Interpret this as a finite-precision check only. The symbolic result supplies the exact fraction.
+
+$ sed -n '10,15p;52,53p' software/stage1_solver/tools/drain_on_replenishing_slab.py
+r, a, h, t = sp.symbols("r a h t", positive=True)
+w = sp.Symbol("w", real=True)
+n0, b, ell, q = sp.symbols("n0 b ell q", positive=True)
+n = n0 + b * t
+jw = -ell * w
+radial_current = sp.Function("j")
+params = {a: 1, h: 2, n0: 3, b: sp.Rational(3, 100), ell: sp.Rational(3, 25),
+          q: 24 * sp.pi, t: 0}
+
+$ sed -n '13p;18p' docs/_measurements/drain_on_replenishing_slab.txt
+direct extra inward number flux, extra inward from budgets, extra outward speed [q, q, -q/(4*pi*h*r**2*(b*t + n0))]
+R=10 [background speed, throat speed, difference, extra inward flux/pi] [1/10, 9/100, -1/100, 24]
+
+$ sed -n '36,39p;53,55p' software/stage1_solver/tools/one_throat_flow_probe.py
+    # Same control volume and outlet for holding and probe. Constant inventory,
+    # instantaneous outlet mean speed V+k(U-V), zero additional outlet traction.
+    outlet = rho*Q*(V+k*(U-V))
+    balance = mass*A - (incoming - outlet.subs(V, 0) + force + hold)
+    # set units, not native throat properties. The benchmark body has M=1.
+    units = {a: 1, rho: 3/(4*s.pi), Q: 4*s.pi, mass: 1}
+    probe = s.Rational(3, 200)
+
+$ sed -n 24p docs/_measurements/one_throat_flow_probe.txt
+outward_outlet_x_at_release = Q*U*k*rho
+
+$ sed -n '13,16p;21,22p;37p' docs/_measurements/held_drain_pair.txt
+target only, companion only, pair on target contour = 0 0 Q1*Q2*rho/(4*pi*d**2)
+bilinear inward convective, pressure = Q1*Q2*rho/(3*pi*d**2) -Q1*Q2*rho/(12*pi*d**2)
+pair minus isolated = Q1*Q2*rho/(4*pi*d**2)
+sphere-radius derivative = 0
+upper face isolated radial integrand = 0
+upper face first variation per dr = -4*pi*r*(r*p0(r)*Derivative(h1(r), r) + r*p1(r)*Derivative(h0(r), r) + 2*h1(r)*p0(r))/3
+"upper face first variation per dr = ""(-4*Pi*r*(2*h1[r]*p0[r] + r*p1[r]*Derivative[1][h0][r] + r*p0[r]*Derivative[1][h1][r]))/3"
+
+$ sed -n '95,96p;154,156p;234,240p;483,486p' research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+| **3 — exchanged material** | Converted material carries the local brane material velocity `V`. This closes transported momentum only. Additional non-variational partners and their reaction system remain OPEN with S12. | Distinguish carried-material momentum, mechanical face/support loading and additional S12 momentum partners. Apply the outward exchange convention in §5: premise 3 closes the in-plane carried components at `V`, and the bulk-direction carried component stays the OPEN reduction stated there. Keep all live velocity and measure factors. |
+| **4 — bulk traction** | Retain the postulated shear-free scalar bulk, with face-normal mechanical loading and no independent tangential bulk stress. O3 transport is separate. | The bulk part of the mechanical loading is `𝒯_bulk,n,s^live n̂_s`, with its amplitude OPEN. A tilted normal retains its in-plane projection. No tangential bulk stress is hidden in a support operand. |
+| `𝒥_map` (O6); **OPEN**, C §6 | Material/order weighting, live projection/window, measures, sheet/slab/face identifications and relation to bulk-normal `v_dr` and bulk/return data. It enters every native-to-v9 exchange or load reduction requiring those identifications, as detailed in §5. |
+| `t_bulk,s^live = 𝒯_bulk,n,s^live n̂_s`; directional restriction from **adopted premise 4**, C §7 | Bulk mechanical traction on its native face. `𝒯_bulk,n,s^live` is a general signed **OPEN** normal-load amplitude; geometry and projection are live. No pressure/affinity/DC response law or sign of the amplitude is given. |
+| `T_hold,s`; **OPEN**, C §7 | Complete mechanical face/support loading in O2. Its bulk part obeys the preceding restriction. The bulk amplitude qualifies that part of the full load; it is not a second load added beside a `T_hold,s` that already contains it. The support partition is unresolved. |
+On a native face description, transported momentum uses the native relative exchanged mass current
+and the local brane material velocity of the converted material. A full normal/component reduction
+retains `𝒥_map`, the live geometry and any unsupplied face-to-material velocity identification. Do
+not choose an independent converted-material velocity, replace it with `v_dr`, or identify it with a
+native bulk velocity. The premise-3 identification applies to the material after the specified
+conversion/transfer; it does not fix how a native bulk current acquires that momentum. Any additional
+non-variational conversion momentum partner and its reaction system remain OPEN with S12.
+J_s^α = ρ_m(v_bulk,s − v_face,s^α)·n̂_s^α ,
+a_s^α = sqrt(1+|∇_x h_s^α|²) ,
+∂_tΣ + ∇_x·(Σ v) = −(J₊+J₋)                         (flat faces) ,
+∂_tΣ^α + ∇_x·(Σ^α v) = −∑_s a_s^α J_s^α ,          v = ∂_t u .
+
+$ sed -n 330,336p research/pde_ledger_v3/steps/S14a_1_projection.md
+**Earlier O2 comparison, by retrieval.** O2 prints `∂tΣ+∇x·(Σv)=−(J₊+J₋)` for flat faces and
+`∂tΣ^α+∇x·(Σ^αv)=−∑s a_s^αJ_s^α`, with `v=∂t u`; its rows identify mass densities and an
+outward relative mass flux per true face area. This build prints a number-density/number-flux
+closed projection with moving/tilted graph faces and full concentrated parts. Both displayed
+material balances place face outflow against storage plus in-plane divergence, but the native
+density, flux/velocity, trace, area and anchoring identifications are not a filed cross-engine
+comparison. An equality after those identifications would be a new computation; it is OPEN,
+
+$ sed -n '18p;26p;423,425p' software/em_charge_attribute/reports/u1_body_dynamics.md
+| sleeve_core_trace | OPEN_INPUT | PRIMITIVE_OPEN | scalar_field_trace_on_Sigma | (0, 0, 0) | field_point, outward_normal, wall_side, a, L | BODY_CONJUGATE_SCALAR | nonlinear_throat_core_open |
+| return_closure | OPEN_INPUT | RETURN | structured_field_flux_map_on_partial_Omega_c | (0, -1, 1) | mass_flux_density, momentum_flux_density, destination_field | AMBIENT_BRANCH_COVARIANT | pathA_29_open_return |
+- Partition: `UNRESOLVED(return_closure)`
+- C_mdot: `UNRESOLVED(required_OPEN_leaves)`
+- Radiation: `UNRESOLVED(native_branch_inputs)`
+
+$ sed -n 496p research/pde_ledger_v3/steps/S16_moving_region.md
+| `R-S16-03`; OPEN | Momentum exchanged at each slab face, split by the faces' motion | **No owner named**. Original filer/source: orchestrator's list `:162–163`, "For the faces", E2's direction to keep "the face-resolved momentum accounting OPEN". **Admission: user's 2026-10-24 "Require all four (Recommended)" decision**, quoted above/M19, not item 7. Undivided `f` and regional control-surface motion do not deliver it. |

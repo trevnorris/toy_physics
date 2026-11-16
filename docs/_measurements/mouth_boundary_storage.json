@@ -1,0 +1,84 @@
+{
+  "status": "working, unreviewed",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "scope": "0PN fixed radius and inward rate. Layers are regular carrier volume integrals across the entire periodic brane plane; candidate surface terms illustrate identifiability only.",
+  "sources": {
+    "software/stage1_solver/tools/mouth_boundary_storage.py": "47bb064fef8de82e57a0e0b67d35fce0f8f39ac82dd5f051e2f6c5c56f654079",
+    "software/stage1_solver/tools/mouth_boundary_storage.wl": "c7c97625d5d558c7cf520d6b1695327796553da960d6535d77b54469f342923e",
+    "software/stage1_solver/tools/mouth_acceleration_response.py": "93308dad98937ca522f49a75c60ba119e31b82703bc0aa8e8e395cf3e56e5cc5",
+    "software/stage1_solver/tools/mouth_carrier_momentum.py": "9bfdfe7e441137afc82c7863d21e4a846187cb82316f4381f78fee88fd12d434",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "software/stage1_solver/tools/mouth_feed_weak_flow.py": "9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83",
+    "software/stage1_solver/tools/mouth_release_input_check.py": "f341d0ced284b035aaf1450706a0bfa3a35be937b214072fb68c997e03fd8efb"
+  },
+  "input_manifests": {
+    "docs/_measurements/mouth_acceleration_response.json": "5b8d8d446c6bd2e6206ffd215be7174dcbeca91284fadcbda8a4941ed15b63d2",
+    "docs/_measurements/mouth_intake_redistribution.json": "f437841524cdf0166ffbc6950a663767a3ea9d0691236a07a6111d141bf00711",
+    "docs/_measurements/mouth_feed_weak_run.json": "f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0"
+  },
+  "guard_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+  "runs": [
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-boundary --memory-gib 4 --log-directory _scratch/s11c/mouth_boundary_storage_fields01 -- python3 software/stage1_solver/tools/mouth_boundary_storage.py",
+      "exit": 0,
+      "child_exit": 0,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_sha256": "36b415c0d8782a646079be7641eb38475bd95a5b0a2c2f62add35b79fe0b6ac1",
+      "stdout": [
+        "n=24 law=flat_density_slope omega=0.1 whole=0.000537270767039 end_plane_per_depth=0.00216556234936 end_half_cell=9.02317645566e-05",
+        "  thickness=0.0833333333333 layer=0.000158639144014 absolute_layer=0.000466887018568 abs_per_depth=0.00560264422282",
+        "  thickness=0.166666666667 layer=0.000277072164414 absolute_layer=0.000901965646484 abs_per_depth=0.0054117938789",
+        "  thickness=0.333333333333 layer=0.000423765102443 absolute_layer=0.00166585913111 abs_per_depth=0.00499757739332",
+        "n=24 law=flat_density_slope omega=0.2 whole=0.000537996578762 end_plane_per_depth=0.00216786355967 end_half_cell=9.03276483196e-05",
+        "  thickness=0.0833333333333 layer=0.000158814210659 absolute_layer=0.000467931578165 abs_per_depth=0.00561517893797",
+        "  thickness=0.166666666667 layer=0.000277390519512 absolute_layer=0.000904030630696 abs_per_depth=0.00542418378417",
+        "  thickness=0.333333333333 layer=0.000424288318251 absolute_layer=0.001669847404 abs_per_depth=0.00500954221201",
+        "n=24 law=restoring_slope omega=0.1 whole=0.000524721737873 end_plane_per_depth=0.00207410585186 end_half_cell=8.64210771607e-05",
+        "  thickness=0.0833333333333 layer=0.000152849426192 absolute_layer=0.00043336449475 abs_per_depth=0.005200373937",
+        "  thickness=0.166666666667 layer=0.000268241496916 absolute_layer=0.000837608299159 abs_per_depth=0.00502564979495",
+        "  thickness=0.333333333333 layer=0.000412371024662 absolute_layer=0.00154944988991 abs_per_depth=0.00464834966972",
+        "n=24 law=restoring_slope omega=0.2 whole=0.000525430052904 end_plane_per_depth=0.00207631319061 end_half_cell=8.65130496089e-05",
+        "  thickness=0.0833333333333 layer=0.000153018185922 absolute_layer=0.000434341635087 abs_per_depth=0.00521209962104",
+        "  thickness=0.166666666667 layer=0.000268549613233 absolute_layer=0.000839539937904 abs_per_depth=0.00503723962742",
+        "  thickness=0.333333333333 layer=0.000412879752461 absolute_layer=0.0015531789283 abs_per_depth=0.0046595367849",
+        "n=32 law=flat_density_slope omega=0.1 whole=0.000535966257663 end_plane_per_depth=0.00216929777988 end_half_cell=1.69476389053e-05",
+        "  thickness=0.015625 layer=3.3116940376e-05 absolute_layer=9.08508276531e-05 abs_per_depth=0.0058144529698",
+        "  thickness=0.03125 layer=6.4677483193e-05 absolute_layer=0.000180615751106 abs_per_depth=0.0057797040354",
+        "  thickness=0.0625 layer=0.000123177763071 absolute_layer=0.000356770135899 abs_per_depth=0.00570832217439",
+        "n=32 law=flat_density_slope omega=0.2 whole=0.000536688774838 end_plane_per_depth=0.00217159946723 end_half_cell=1.69656208377e-05",
+        "  thickness=0.015625 layer=3.31522939183e-05 absolute_layer=9.10488634832e-05 abs_per_depth=0.00582712726292",
+        "  thickness=0.03125 layer=6.47469793125e-05 absolute_layer=0.000181011064144 abs_per_depth=0.00579235405261",
+        "  thickness=0.0625 layer=0.000123311990931 absolute_layer=0.000357557781677 abs_per_depth=0.00572092450684",
+        "n=32 law=restoring_slope omega=0.1 whole=0.000523755936441 end_plane_per_depth=0.00207633280654 end_half_cell=1.62213500511e-05",
+        "  thickness=0.015625 layer=3.1751187923e-05 absolute_layer=8.4205083778e-05 abs_per_depth=0.00538912536179",
+        "  thickness=0.03125 layer=6.21084898629e-05 absolute_layer=0.000167428044054 abs_per_depth=0.00535769740972",
+        "  thickness=0.0625 layer=0.000118609621624 absolute_layer=0.00033081451711 abs_per_depth=0.00529303227376",
+        "n=32 law=restoring_slope omega=0.2 whole=0.000524461328944 end_plane_per_depth=0.00207853988573 end_half_cell=1.62385928573e-05",
+        "  thickness=0.015625 layer=3.17851321369e-05 absolute_layer=8.43898613306e-05 abs_per_depth=0.00540095112516",
+        "  thickness=0.03125 layer=6.21752974228e-05 absolute_layer=0.000167796907935 abs_per_depth=0.0053695010539",
+        "  thickness=0.0625 layer=0.000118738936698 absolute_layer=0.000331549680144 abs_per_depth=0.0053047948823"
+      ]
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-boundary --memory-gib 4 --log-directory _scratch/s11c/mouth_boundary_storage_symbolic01 -- math -noprompt -script software/stage1_solver/tools/mouth_boundary_storage.wl",
+      "exit": 0,
+      "child_exit": 0,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_sha256": "c024c7961aed061bfd617f6b89742ca0b45f2c60dc6cc3f4e76c6bfa0d0c2b09",
+      "stdout": [
+        "\"static surface momentum = \"InputForm[0]",
+        "\"candidate boundary momentum, drive = \"InputForm[{b[a, j]*v[t], b[a, j]*Derivative[1][v][t]}]",
+        "\"prescribed-state carrier variations = \"InputForm[{0, 0, 0, 0}]",
+        "\"normal-only isotropic rim coefficient = \"InputForm[(4*a^2*Pi*s[a, j])/3]",
+        "\"total drive contrast per acceleration contrast = \"InputForm[carrier + b[a, j]]",
+        "\"total drive plus inward mouth load contrasts per acceleration contrast = \"InputForm[b[a, j]]"
+      ]
+    }
+  ]
+}

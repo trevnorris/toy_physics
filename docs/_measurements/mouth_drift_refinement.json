@@ -1,0 +1,110 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "Radius 1, inward rate 0.25, slow translation of one mouth at fixed bath extent 24. Grid spacings are refined together. Whole-face flux uses the endcap density condition and feeding-side fields.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "source_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/lateral_mouth_acceleration.py": "0f04c0edb17b6c17bc1dfd2081412017caed4dfd7c1ef6808fe84f751394219b",
+    "software/stage1_solver/tools/lateral_mouth_radius.py": "4f0d9fafd7bd4b71251ae87bf91d60d8c60be0ee01170d2c4c184eb160954b08",
+    "software/stage1_solver/tools/lateral_paired_acceleration.py": "42e94c2f007d335a233c31afda180e29e30ecfbb0d13b0790c0295c678fd672e",
+    "software/stage1_solver/tools/lateral_radius_momentum.py": "5dc679cea6185931e8e74b3a7fcf516aef9ca615437ff7c710a237b215ca4987",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/mouth_drift_flux_check.py": "d3af1f4497fb326107469c1ba181ce809f6ea42c169db1bf4cb31140c47298fb",
+    "software/stage1_solver/tools/mouth_drift_refinement.py": "598564528f72edb9febc5d5773b2836620c037553fdd5c8a1fbdec9d70ca3701",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "software/stage1_solver/tools/mouth_slow_drift.py": "be8ed584bf083d3994a261d568b743003f7e10d7b9a9b302962684f9d6e4fc04"
+  },
+  "coarse_comparison_manifest": {
+    "docs/_measurements/mouth_slow_drift.json": "c542bb0306491afae31f0cf52d6b1b42ea9716481dbe8d4d333484e889f1a943"
+  },
+  "runs": [
+    {
+      "cells": 8,
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-drift-refine --memory-gib 5 --log-directory _scratch/s11c/mouth_drift_refine_e24_c8_01 -- python3 software/stage1_solver/tools/mouth_drift_refinement.py 8 _scratch/s11c/mouth_drift_refine_e24_c8_01/mouth_layers.npz",
+      "started_utc": "2026-11-15T04:51:22.016329+00:00",
+      "guard_outcome_written_utc": "2026-11-15T04:52:25.489044+00:00",
+      "wall_seconds": 63.454367531929165,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 5368709120,
+      "peak_memory_bytes_sampled": 506785792,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/mouth_drift_refine_e24_c8_01/stdout",
+      "stdout_bytes": 799,
+      "stdout_sha256": "d124af2d50174d971f7f5a9cd45274fb57b15e2f7ef06bd9364be8ab40788480",
+      "stderr_bytes": 0,
+      "stdout": [
+        "  mouths=1 residual=3.62e-12 bath_inward=0.25 per_mouth=0.25",
+        "extent=24 cells=8 normal_cells=32 steps=18 static_residual=3.64417479127e-12 velocity_residual=4.16602844313e-13",
+        "rate=0.25 rate_slope=0 rest=1.73472347598e-18 redistribution=0.000186302348004 velocity=-0.000177254670774 carry=9.04767722984e-06 stress=-9.10930846967e-06 lab=-6.1631239831e-08 interior=-2.04806025033e-06 mouth_frame=-0.250000061631 fd_1em4=-6.16312469809e-08 fd_5em5=-6.16312036128e-08",
+        "law_cut=1.30480441893e-05 law_halo=-8.68740147143e-08 law_link=-8.68740147143e-08 layer_cut=-2.04806025033e-06 layer_halo=-4.08124730345e-06 layer_product_halo=-4.43500239199e-08",
+        "whole_layer=-4.50047608493e-08 whole_product=-4.50047608494e-08 gap_layer_halo=4.01961606362e-06 gap_layer_whole=1.66264789816e-08 gap_rim=2.03318705312e-06"
+      ],
+      "field_sha256": {
+        "_scratch/s11c/mouth_drift_refine_e24_c8_01/mouth_layers.npz": "5a819bace1006fab452f2bbd17e17fb8be3038d8944e1be5da0c6d94158c3771"
+      }
+    },
+    {
+      "cells": 12,
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-drift-refine --memory-gib 12 --log-directory _scratch/s11c/mouth_drift_refine_e24_c12_01 -- python3 software/stage1_solver/tools/mouth_drift_refinement.py 12 _scratch/s11c/mouth_drift_refine_e24_c12_01/mouth_layers.npz",
+      "started_utc": "2026-11-15T04:51:22.628700+00:00",
+      "guard_outcome_written_utc": "2026-11-15T04:56:13.026417+00:00",
+      "wall_seconds": 290.3685863481369,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 12884901888,
+      "peak_memory_bytes_sampled": 1573502976,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/mouth_drift_refine_e24_c12_01/stdout",
+      "stdout_bytes": 820,
+      "stdout_sha256": "71bf3dee518b712cb2b06199dc474f5656da0131880b4114023a3bc4255197e4",
+      "stderr_bytes": 0,
+      "stdout": [
+        "  mouths=1 residual=2.57e-11 bath_inward=0.249999999999 per_mouth=0.25",
+        "extent=24 cells=12 normal_cells=48 steps=17 static_residual=4.85747433786e-12 velocity_residual=5.49925574818e-13",
+        "rate=0.25 rate_slope=-2.16840434497e-19 rest=-1.73472347598e-18 redistribution=0.00018460837917 velocity=-0.000175591366639 carry=9.01701253052e-06 stress=-9.01041826133e-06 lab=6.59426919318e-09 interior=-1.42123224555e-06 mouth_frame=-0.249999993406 fd_1em4=6.59426506455e-09 fd_5em5=6.59424771732e-09",
+        "law_cut=3.60967594657e-06 law_halo=1.42257906887e-09 law_link=1.42257906901e-09 layer_cut=-1.42123224555e-06 layer_halo=-2.21545906712e-06 layer_product_halo=1.87388187218e-08",
+        "whole_layer=1.85805124636e-08 whole_product=1.85805124633e-08 gap_layer_halo=2.22205333632e-06 gap_layer_whole=1.19862432705e-08 gap_rim=7.94226821577e-07"
+      ],
+      "field_sha256": {
+        "_scratch/s11c/mouth_drift_refine_e24_c12_01/mouth_layers.npz": "1533ba6ed297c5d8e35890f57aa0151325dd2c6b825a807a8701ac5cf1bd0997"
+      }
+    }
+  ],
+  "comparison": {
+    "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-drift-comparison --memory-gib 1 --log-directory _scratch/s11c/mouth_drift_refine_comparison01 -- python3 -c 'import json\nfrom pathlib import Path\n\nprevious = json.loads(Path('\"'\"'docs/_measurements/mouth_slow_drift.json'\"'\"').read_text())\nrows = [dict(w.split('\"'\"'='\"'\"') for w in line.split()) for run in previous['\"'\"'runs'\"'\"'] for line in run['\"'\"'stdout'\"'\"']]\nheld, = [float(r['\"'\"'held'\"'\"']) for r in rows if r['\"'\"'grid'\"'\"']=='\"'\"'e24_c6'\"'\"' and r['\"'\"'radius'\"'\"']=='\"'\"'1'\"'\"' and r.get('\"'\"'d'\"'\"')=='\"'\"'8'\"'\"']\nfor cells in (4, 6, 8, 12):\n    if cells in (4,6):\n        grid = f'\"'\"'e24_c{cells}'\"'\"'\n        lab, = [float(r['\"'\"'lab'\"'\"']) for r in rows if r['\"'\"'grid'\"'\"']==grid and r['\"'\"'radius'\"'\"']=='\"'\"'1'\"'\"' and '\"'\"'lab'\"'\"' in r]\n        halo, = [float(r['\"'\"'layer_halo'\"'\"']) for r in rows if r['\"'\"'grid'\"'\"']==grid and r['\"'\"'radius'\"'\"']=='\"'\"'1'\"'\"' and '\"'\"'layer_halo'\"'\"' in r]\n        print(f'\"'\"'cells={cells} rim_gap={abs(lab-halo):.12g}'\"'\"')\n    else:\n        path = Path(f'\"'\"'_scratch/s11c/mouth_drift_refine_e24_c{cells}_01'\"'\"')\n        receipt = json.loads((path/'\"'\"'outcome.json'\"'\"').read_text())\n        if receipt['\"'\"'exitCode'\"'\"']!=0 or not receipt['\"'\"'limitsVerified'\"'\"']:\n            raise ValueError('\"'\"'Unsuccessful refinement'\"'\"')\n        field = dict(w.split('\"'\"'='\"'\"') for w in (path/'\"'\"'stdout'\"'\"').read_text().split())\n        lab, whole, halo = (float(field[k]) for k in ('\"'\"'lab'\"'\"','\"'\"'whole_layer'\"'\"','\"'\"'layer_halo'\"'\"'))\n        print(f'\"'\"'cells={cells} rim_gap={abs(lab-halo):.12g} whole_gap={abs(lab-whole):.12g} '\"'\"'\n              f'\"'\"'whole_gap_fraction_of_boundary={abs((lab-whole)/lab):.12g} '\"'\"'\n              f'\"'\"'held_extent24_cells6_d8={held:.12g} speed=0.01 '\"'\"'\n              f'\"'\"'boundary_magnitude_ppm_of_held={1e4*abs(lab)/held:.12g} '\"'\"'\n              f'\"'\"'whole_magnitude_ppm_of_held={1e4*abs(whole)/held:.12g}'\"'\"')\n'",
+    "inline_reader_sha256": "ee4b29c30cc565860676ae17d113e003c67ad8aef1fdc9c6d32b77aa85dc9b69",
+    "comparison_inputs": {
+      "docs/_measurements/mouth_slow_drift.json": "c542bb0306491afae31f0cf52d6b1b42ea9716481dbe8d4d333484e889f1a943",
+      "_scratch/s11c/mouth_drift_refine_e24_c8_01/stdout": "d124af2d50174d971f7f5a9cd45274fb57b15e2f7ef06bd9364be8ab40788480",
+      "_scratch/s11c/mouth_drift_refine_e24_c12_01/stdout": "71bf3dee518b712cb2b06199dc474f5656da0131880b4114023a3bc4255197e4",
+      "_scratch/s11c/mouth_drift_refine_e24_c8_01/outcome.json": "58854753cd6e580654e39ff6eaa0e9cbba65d241965d1ed3debd0ca0bf8dd96a",
+      "_scratch/s11c/mouth_drift_refine_e24_c12_01/outcome.json": "7850735475b293b348d53daf81d037b21e3e4faa7a90cfdbd0e287d306c8c2f8"
+    },
+    "started_utc": "2026-11-15T04:56:45.746894+00:00",
+    "guard_outcome_written_utc": "2026-11-15T04:56:45.874362+00:00",
+    "wall_seconds": 0.10574845992960036,
+    "guard_exit": 0,
+    "worker_exit": 0,
+    "limits_verified": true,
+    "memory_max_bytes": 1073741824,
+    "peak_memory_bytes_sampled": 14417920,
+    "swap_max_bytes": 0,
+    "runtime_limit": "infinity",
+    "stdout_path": "_scratch/s11c/mouth_drift_refine_comparison01/stdout",
+    "stdout_bytes": 565,
+    "stdout_sha256": "49d9071bd29bf42901e61818e263899ca7046bb4fe5a5fe255d7c60dfb5fa6de",
+    "stdout": [
+      "cells=4 rim_gap=1.15767011141e-05",
+      "cells=6 rim_gap=7.86716096719e-06",
+      "cells=8 rim_gap=4.01961606362e-06 whole_gap=1.66264789817e-08 whole_gap_fraction_of_boundary=0.269773560086 held_extent24_cells6_d8=7.56758737404e-05 speed=0.01 boundary_magnitude_ppm_of_held=8.14410680509 whole_magnitude_ppm_of_held=5.94704211856",
+      "cells=12 rim_gap=2.22205333631e-06 whole_gap=1.19862432704e-08 whole_gap_fraction_of_boundary=1.81767576046 held_extent24_cells6_d8=7.56758737404e-05 speed=0.01 boundary_magnitude_ppm_of_held=0.871383291299 whole_magnitude_ppm_of_held=2.45527557797"
+    ]
+  }
+}

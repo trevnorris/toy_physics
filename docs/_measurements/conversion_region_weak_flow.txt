@@ -1,0 +1,199 @@
+Weak companion flow and local conversion at 0PN. Unreviewed working calculation.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c.
+
+Dimensionless local flat section at w=0 on the feeding edge of a receiving half-space w>=0.
+x is one in-plane coordinate. The other two are spectators. Baseline n=m=u_w=1,
+c_s^2=35/24, hbar^2/(4m^2)=1/24. The EOS, continuity and quantum-pressure term of the
+smooth conservative carrier are retained. This computes a first derivative in companion
+amplitude, at Newtonian order, about one particular steady local preparation.
+Both calculations use one illustrative fraction law, D_t chi=-chi*(1-chi) and J_chi=0,
+giving excess net loss L=n chi(1-chi). A common local return contribution can be added to
+both conversion rates without altering the net law. No gross drain or physical rate was inferred.
+Order is passive in this check. The source location b and the matching amplitude B=alpha*U
+(amp in Wolfram) are free. The perturbed order coordinate agrees asymptotically with w-b.
+No upstream core, independent finite-companion density/pressure forcing, or global return was solved.
+The peak shifts are evaluated along fixed lateral coordinate x for b>0, with normal +w.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool weak-conversion --memory-gib 2 --log-directory _scratch/s11c/conversion_region_weak_flow_sympy01 -- python3 software/stage1_solver/tools/conversion_region_weak_flow.py
+Source SHA256 08d74dccd1d9bcaa875047cfdd0e15022d13c7db60476da6926e079e61699f9f  software/stage1_solver/tools/conversion_region_weak_flow.py
+Imported carrier equations SHA256 33268148d454125c9e64d63e64dff85b81b6e5eafc40a5e0dc73866947a61701  software/stage1_solver/tools/sleeve_outlet_boundary_data.py
+Guard SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Start 2026-11-13T19:55:45.099356+00:00. Guard and child exited 0. Verified 2 GiB cap and zero swap. No deadline, guard stop or stderr.
+Stdout SHA256 c03330f9cf0cc4b22a532f3a7d062d1a530808844354de90c22bbe5959067bff  _scratch/s11c/conversion_region_weak_flow_sympy01/stdout
+Literal stdout follows
+mode [continuity, phase equation] operands = [3*P - 2, 4/3 - 2*P]
+potential amplitude for unit density = 2/3
+driven bulk [continuity, phase equation] residuals = [0, 0]
+at mouth [density, axial velocity, normal current] derivatives = [U*alpha*sin(x), -4*U*alpha*sin(x)/3, -U*alpha*sin(x)/3]
+deep [density, lateral velocity, axial velocity] derivatives = [0, U, 0]
+current derivative integrated on symmetric strip = 0
+order coordinate perturbation = -2*U*alpha*exp(-2*w)*sin(x)/3
+advected order coordinate [base, derivative] = [1, 0]
+at isolated w=b [fraction, loss, loss slope, loss curvature] = [1/2, 1/4, 0, -1/8]
+[half-order shift, net-loss peak shift] = [2*U*alpha*exp(-2*b)*sin(x)/3, -10*U*alpha*exp(-2*b)*sin(x)/3]
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool weak-conversion --memory-gib 4 --log-directory _scratch/s11c/conversion_region_weak_flow_wolfram01 -- math -noprompt -script software/stage1_solver/tools/conversion_region_weak_flow.wl
+Source SHA256 7c4b70be3a4d6a8e3bcac0e8204c91d7ca38f058c2b34a733597362e95e26819  software/stage1_solver/tools/conversion_region_weak_flow.wl
+Guard SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Start 2026-11-13T19:55:53.129420+00:00. Guard and child exited 0. Verified 4 GiB cap and zero swap. No deadline, guard stop or stderr.
+Stdout SHA256 18e38e71424d78e8ebce7d69694c37526d403f64a42454cc0341961fb3043662  _scratch/s11c/conversion_region_weak_flow_wolfram01/stdout
+Literal stdout follows
+"carrier residual before mode matching = "InputForm[((8 + I*Sqrt[6])*(2*amp - 3*p)*Sin[x])/(12*E^(2*w))]
+"mode and carrier residual = "InputForm[{(2*amp)/3, 0}]
+"current derivative at mouth = "InputForm[-1/3*(amp*Sin[x])]
+"paired opposite-point current sum = "InputForm[0]
+"order base, linear coefficient and fitted mode = "InputForm[{0, (2*E^(b - w)*(2*amp + 3*s)*Sin[x])/(3*(E^b + E^w)^2), (-2*amp)/3}]
+"order residual after matching = "InputForm[0]
+"[isolated level, loss slope, loss curvature] at b = "InputForm[{1/2, 0, -1/8}]
+"[half-order shift, net-loss peak shift] = "InputForm[{(2*amp*Sin[x])/(3*E^(2*b)), (-10*amp*Sin[x])/(3*E^(2*b))}]
+
+$ sed -n '53,59p;64,72p;85,89p' research/pde_ledger_v3/steps/S12_order_source.md
+∂t n + ∇₄·(n u) = 0
+∂t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n Γ_B
+Γ_B = Γ_return − Γ_drain,       [Γ_B] = T⁻¹.
+```
+
+The signed source converts order in one conserved material. Positive means bulk material re-ordering
+onto the brane; negative means de-ordering. The ruled-out frozen-wall material sink plus remote return
+The faces bound the region in which shear can be held; they are **not** defined by the support of a
+chosen order profile. Density, each velocity component, each order-flux component and the interior
+order have independent regional restrictions and one-sided traces, may jump, and have no
+face-concentrated input part. The source `n Γ_B` can have such a part. Point values at the faces and
+jumps are unspecified. (Retrieve M01, M03–M05.)
+
+No regime is chosen and no field is frozen. In particular `J_χ=0` is not adopted. Transfer is only to
+where the committed law holds and the shear-holding region has two graph faces over the in-plane
+coordinates. The puncture's own interior is excluded, with S22. The S9b/O2 far-zone setting is a
+| Below `w<w₋` | `∇₄·J₁` | `∂t n₁+∇₄·(n₁u₁)=0` | `general_order/region/1/source` and `material/region/1/balance`: literal exact residual `0`. |
+| Inside `w₋<w<w₊` | `n₂D₂f+∇₄·J₂` | `∂t n₂+∇₄·(n₂u₂)=0` | Corresponding `region/2` rows: literal exact residual `0`. |
+| Above `w>w₊` | `∇₄·J₃` | `∂t n₃+∇₄·(n₃u₃)=0` | Corresponding `region/3` rows: literal exact residual `0`. |
+| Lower face | `C₋ δ(w−w₋)`, `C₋=n₂f₋a_{2,−}+b_{2,−}−b_{1,−}` | `n₂a_{2,−}−n₁a_{1,−}=0` | `face/1/trace_coefficient`, `source_contribution` and material `requirement`: supplied-domain residual `0`; as-computed step difference retained (§4). |
+| Upper face | `C₊ δ(w−w₊)`, `C₊=−n₂f₊a_{2,+}+b_{3,+}−b_{2,+}` | `n₃a_{3,+}−n₂a_{2,+}=0` | Corresponding `face/2` rows: supplied-domain residual `0`; as-computed step difference retained (§4). |
+
+$ sed -n 609,615p research/pde_ledger_v3/V3_STEP_PLAN.md
+⛔ **Two inventories, kept apart:**
+- **non-variational source / controller functions** — `Γ_return`, `Γ_drain`, `J_χ`, and the return
+  controllers. ⛔ All `[OPEN]` in form.
+- **boundary / domain data** — the mouth, collar and IR conditions, and the `𝔅` branch selection.
+
+⇒ The throat enters this ledger with its **source form open and its strength supplied**. ⛔ Not "only a
+boundary condition" — that framing hides which of the two is unresolved.
+
+$ sed -n '104p;112p;121,130p;132,151p' research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
+| P12 | Throat = phase-conversion **ontology, not a solve**: the site of `Gamma_drain > 0` (`chi_B: 1→0`), an admittance/outlet driven by existing stress/μ gradients (`J_repair ~ -M_n grad mu`, `[M_n] = L^-4 T M^-1`) — NOT a new pairwise suction force. Gate-L wall-translation-Goldstone hazard (`δw = u_w`) DEFERRED. |
+gate; placeholders `f_throat`/`f_mix` (`DEFERRED_PLACEHOLDER`). The `α_aniso`
+From the two balance laws:
+
+```
+D_t chi_B ≡ ∂_t chi_B + u·grad_4 chi_B = Gamma_B - (1/n) div_4 J_chi
+```
+
+(advective form); with `n_D = (1-chi_B) n` the disorder complement
+`∂_t n_D + div_4(n_D u - J_chi) = -n Gamma_B`; and the SUM of order + disorder
+balances reproduces total conservation IDENTICALLY — `Gamma_B` cancels:
+conversion moves order between phases, never creates medium. Order
+
+**A3 (wall admission, EARNED relative to P3/P5).** The static 1D EL equation
+`kappa_B chi_B'' = f_B'(chi_B)` admits the kink between the two minima:
+
+```
+chi_B(w) = 1/(1 + e^{-w/delta}) = (1/2)(1 + tanh(w/(2 delta))),
+delta = sqrt(kappa_B/(2 a_B))          (width SOLVED from the EL equation)
+sigma_wall = ∫ kappa_B (chi_B')^2 dw = sqrt(2 a_B kappa_B)/6,
+[sigma_wall] = M L^-1 T^-2             (energy per 3-area in 4D)
+```
+
+Both engines verify the EL residual by substitution and integrate `sigma_wall`
+in closed form (the `.wl` independently enters via `DSolve`'s logistic).
+
+**⚠ The slab caveat (carried limitation — wall admission ≠ slab stability).**
+"Bulk on both sides" (required for `±w` charge, conceptual_foundation §2) makes
+the brane a finite `chi_B = 1` **slab** bounded by `chi_B = 0` on both sides —
+a kink–antikink pair — and the double-well alone provides NO mechanism selecting
+the slab width (kink–antikink pairs generically attract). A3 is a single-kink
+admission check only. The slab width `W_slab` is an un-earned input — the old
+
+$ sed -n '450p;495,509p;1371,1383p;1732p;1757p' docs/toy_model_ontology_summary.md
+**Candidate offset-driven conversion and entrainment.** Conditional on the symmetric slab profile above, a throat carries ordered material away from the local mid-surface and toward regions where the ordered state is less favorable. The resulting de-structuring, chemical-potential change, and pressure response may entrain surrounding brane material into the aperture. This provides a candidate mechanical driver for \(Q_\chi\) and, through the induced flow, \(Q_n\). It is not suction into empty space, need not affect \(Q_n\) and \(Q_\chi\) identically, and must be derived from the coupled throat solution. Reflection between \(+w\) and \(-w\) reverses the geometric orientation but not the scalar drain magnitude.
+Because parent fields may have noncompact tails, a nonlinear core is not the literal support of every disturbed field. Choose a solved, invariant or operationally specified localized core diagnostic \(\mathcal I_a(\mathbf X)\)—for example order depletion, defect density, or conversion intensity—and define a thresholded core set
+
+\[
+\boxed{
+\mathcal C_a(\epsilon)
+=\left\{
+\mathbf X:\mathcal I_a(\mathbf X)\ge\epsilon
+\right\}
+}.
+\]
+
+The admissible diagnostic and threshold range must make \(\mathcal C_a(\epsilon)\) compact, or at least closed and localized so that the distance infimum is attained. Individual core labels must themselves be outputs of the nonlinear solution. Two acceptable procedures are:
+
+1. **Orientation-resolved diagnostics:** derive distinct physical \(\mathcal I_+\) and \(\mathcal I_-\), for example from an oriented topological or conversion-density field.
+2. **Connected-component continuation:** use one total diagnostic \(\mathcal I(\mathbf X)\), identify its two thresholded connected components at large separation, and continue those components as \(R\) decreases. Contact or merger is the parameter value at which their closures first touch or the number or topology of components changes.
+
+On the fraction/relaxational branch, the quantity
+
+\[
+Q_\chi
+=\int_{\Omega_{\rm throat}}
+n\Gamma_{\rm drain}\,d^4X
+\ge0
+\]
+
+denotes the positive gross rate of ordered-to-bulk conversion associated with a throat. It has constituent-number-per-time units, does not include distributed return, and is not itself a signed net conversion rate. Net conversion signs remain encoded by \(\Gamma_{\rm drain}\), \(\Gamma_{\rm return}\), and \(\Gamma_B\). On an inertial branch, the corresponding nonnegative gross diagnostic is **not yet derived** and this rate formula is not assumed.
+
+This is phase conversion, not suction into empty space and not transfer between two substances. It is not automatically identical to signed local net constituent flux \(Q_n^{\rm net}\), selected positive throughput \(Q_n\), or signed coordinate flux \(\widetilde Q_n^{(w)}\). A complete theory must supply the material, momentum, and energy partners of the selected branch-specific order evolution and must make them consistent with the explicitly chosen conservative, relaxational, or mixed inertial-dissipative \(\chi_B\) branch.
+- overlap of return halos and the modification of each throat's \(Q_n^{\rm net}\), selected throughput, conversion, raw gravity source, signed effective source, and active mass by the other's environment;
+The global solution must update \(\mathcal B_\infty\) and be iterated with the local throat until the same reservoir state, backpressure, return profile, transport, conversion, and emitted fluxes are recovered on both sides of the feedback loop.
+
+$ sed -n 329,333p docs/two_throat_simulation_handoff_spec.md
+| Wall stiffness / wall potential (`κ_χ`, `V_χ`) | The spatial gradient stiffness, double-well/polar-smectic potential, slab-width control, and their relation to the committed surface tension. `μ_R` is the brane's rotational shear stiffness and does not fill this slot. |
+| Sleeve shape energy (`κ_bend`, `κ_anchor`) | Bending, anchoring/collar, surface-tension, and free-boundary coefficients or functionals that determine `Σ`; these are required for a free-geometry solve. |
+| `χ↔h` coupling (`g_χh`) | The actual local/nonlocal coupling and parity by which sleeve orientation sources the distinct `h` scalar. The reduced source projection in §2.4c does not supply this parent coupling. |
+| `χ↔drain` / geon coupling (`g_χdrain`) | The coupling of the wall/sleeve and geon to `(ρ,θ)` plus the throat sink `S_drain`, the global return `S_leakage`, and the associated mass/momentum/energy source terms. |
+| Bulk↔brane phase relation (`g_θθB`) | The relation and interface map between the bulk GNLS carrier phase `θ` (§2.1) and the brane order-parameter phase `θ_B` (§2.2) — independent, slaved, or pullback — and any Josephson/interface coupling between them. Not fixed by the committed sources (the 4D→3D reduction is incomplete); must be declared before the `θ` and `θ_B` sectors are assembled together. **If `θ_B` is independent**, this row must also fix its **stationary/background-phase contract**: whether `θ_B` carries its own background temporal rotation `θ_B = −ω_B t + φ_B` and a brane chemical potential `μ_B` — with the card required to fix the relation among `ω_B`, `μ_B`, the displayed canonical coefficient `J` (from `J θ̇_B δρ_B`), and any separately-postulated brane action scale (there is **no** assumed `ℏ_B`) — whether the brane-order number is independently conserved, how the stationary phase is represented as `r_B → 0`, and the corresponding chemical-potential subtraction/constraint that belongs in `Ω_wall/brane`. If `θ_B` is slaved/pullback, the interface map answers these instead. Without it, "static R1" is undefined for the independent-phase branch. |
+
+$ sed -n 22,36p docs/moving_interface_conversion_work_proposal.md
+For a smooth moving four-dimensional control volume \(\Omega(t)\), outward normal \(N\), and boundary velocity \(b\), the proposed transport identities are
+
+\[
+\frac{d}{dt}\int_{\Omega(t)}\rho\,d^4X
+=-\int_{\partial\Omega(t)}\rho(v-b)\!\cdot N\,dA,
+\]
+\[
+\frac{d}{dt}\int_{\Omega(t)}\rho\chi\,d^4X
+=-\int_{\partial\Omega(t)}[\rho\chi(v-b)+K]\!\cdot N\,dA
++\int_{\Omega(t)}\rho\Gamma\,d^4X.
+\]
+
+These retain accumulation and transport through every boundary. The source integral alone is not generally the outward face flux. In particular, re-ordering can advance an interface through material; it need not mean that the material follows a closed circulating trajectory.
+
+Only as an explicit **planar travelling-front limit**, take a profile steady in a frame moving at normal speed \(V\), no tangential variation, ordered interior \(\chi_{\rm in}=1\), and disordered exterior \(\chi_{\rm out}=0\). The normal coordinate \(z\) points from ordered to disordered. Total continuity gives the constant relative mass flux \(j=\rho(v_n-V)\). Integrating the order balance across the front gives
+
+$ sed -n 39,62p software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+field_records:
+  - id: sleeve_core_trace
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: scalar_field_trace_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [field_point, outward_normal, wall_side, a, L]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    source: nonlinear_throat_core_open
+  - id: geon_core_bundle
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: field_trace_bundle_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [density_trace, h_trace, phase_flux_trace, wall_side]
+    symmetry_class: BODY_CONJUGATE_BUNDLE
+    source: spec_7_0_geon_profile_open
+  - id: throat_surface_functional
+    status: OPEN_INPUT
+    root_type: ACTION
+    domain: field_functional_on_Sigma
+    dimensions: [2, -2, 1]
+    arguments: [field_traces, normal_derivatives, induced_metric]
+    symmetry_class: BODY_CONJUGATE_SCALAR

@@ -1,0 +1,105 @@
+{
+  "status": "working, unreviewed",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "reference_manifest": "docs/_measurements/mouth_feed_weak_run.json",
+  "reference_manifest_sha256": "f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0",
+  "archived_fixed_solver": "_scratch/s11c/mouth_feed_depth01/pinned/mouth_feed_weak_flow.py",
+  "archived_fixed_solver_sha256": "9254652d5ac5d7b1a69ae17c37eeade3b49164e11e885eb6a63b68f241c45746",
+  "sources": {
+    "software/stage1_solver/tools/mouth_feed_weak_flow.py": "9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83",
+    "software/stage1_solver/tools/mouth_intake_redistribution.py": "d0f75bb51852f9b187774f3e0e1e42c6315fc126a8bf9bb5af0f2fc232fe5d15",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "software/stage1_solver/tools/mouth_redistribution_check.py": "99c452947017c991dac731decd03ef8b81dba864fe41c94fd5a1b3e04f00dbf0"
+  },
+  "guard_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+  "runs": [
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-redistribute --memory-gib 2 --log-directory _scratch/s11c/mouth_redistribution_coarse01 -- python3 software/stage1_solver/tools/mouth_intake_redistribution.py --reference _scratch/s11c/mouth_feed_weak01/fields --reference-manifest docs/_measurements/mouth_feed_weak_run.json --level 24 --output _scratch/s11c/mouth_redistribution_coarse01/fields",
+      "outcome": {
+        "guard_exit": 0,
+        "worker_exit": 0,
+        "verified": true,
+        "memory_gib": 2,
+        "swap_bytes": 0,
+        "cpus": 1,
+        "deadline": null
+      },
+      "stdout_sha256": "0a3cd97271e5c4de1aa012fc9e46a06923bc7d22c9f0991d1a6660f9a6b82f86",
+      "stdout": [
+        "n=24 depth=12 law=flat_density_slope U=0.01 steps=39 update=1.47e-11 feed=0.249999997625 mouth=0.25 min_density=0.994674133",
+        "n=24 depth=12 law=flat_density_slope U=0.02 steps=39 update=1.47e-11 feed=0.249999997625 mouth=0.25 min_density=0.994631486",
+        "n=24 depth=12 law=restoring_slope U=0.01 steps=39 update=1.46e-11 feed=0.249999997627 mouth=0.25 min_density=0.995509369",
+        "n=24 depth=12 law=restoring_slope U=0.02 steps=39 update=1.46e-11 feed=0.249999997627 mouth=0.25 min_density=0.995472195"
+      ],
+      "fields": {
+        "_scratch/s11c/mouth_redistribution_coarse01/fields/n24_flat_density_slope_u0.01.npz": "847f08edb8409860dfacf4466016046f308881e9979007a9eb9bb33c6a7ce836",
+        "_scratch/s11c/mouth_redistribution_coarse01/fields/n24_flat_density_slope_u0.02.npz": "f8c983b6db1fb82c7530cb6351ee90b51b05c4913583466e960a9bf6e2f371fb",
+        "_scratch/s11c/mouth_redistribution_coarse01/fields/n24_restoring_slope_u0.01.npz": "e05c180de9d5105d9bbcec6e8a62a41e448b80cff3f3a85bbb8343fdced58f29",
+        "_scratch/s11c/mouth_redistribution_coarse01/fields/n24_restoring_slope_u0.02.npz": "f913ef88f6a0f95310284a9bc5641c13589965da106c94c49ea28348130fc7cb"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-redistribute --memory-gib 4 --log-directory _scratch/s11c/mouth_redistribution_depth01 -- python3 software/stage1_solver/tools/mouth_intake_redistribution.py --reference _scratch/s11c/mouth_feed_depth01/fields --reference-manifest docs/_measurements/mouth_feed_weak_run.json --level 32 --output _scratch/s11c/mouth_redistribution_depth01/fields",
+      "outcome": {
+        "guard_exit": 0,
+        "worker_exit": 0,
+        "verified": true,
+        "memory_gib": 4,
+        "swap_bytes": 0,
+        "cpus": 1,
+        "deadline": null
+      },
+      "stdout_sha256": "2114ad89e1bb8b26e33072fa545c76118317cf95f506ba94289640e73f88aade",
+      "stdout": [
+        "n=32 depth=64 law=flat_density_slope U=0.01 steps=39 update=1.44e-11 feed=0.24999999767 mouth=0.25 min_density=0.994398133",
+        "n=32 depth=64 law=flat_density_slope U=0.02 steps=39 update=1.44e-11 feed=0.24999999767 mouth=0.25 min_density=0.994365843",
+        "n=32 depth=64 law=restoring_slope U=0.01 steps=39 update=1.43e-11 feed=0.249999997672 mouth=0.25 min_density=0.995245464",
+        "n=32 depth=64 law=restoring_slope U=0.02 steps=39 update=1.43e-11 feed=0.249999997672 mouth=0.25 min_density=0.995217001"
+      ],
+      "fields": {
+        "_scratch/s11c/mouth_redistribution_depth01/fields/n32_flat_density_slope_u0.01.npz": "b0dea8a859fb5717914979bae9b94c433d1e8df5539a72ec04af934f85f7b590",
+        "_scratch/s11c/mouth_redistribution_depth01/fields/n32_flat_density_slope_u0.02.npz": "b18529ab754b980e902e2ad1d516f1e561b24451e9ddf54ecaa5fd14157828b6",
+        "_scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.01.npz": "54048b7c5787e614cd9e1446b3e14e959f4d5d65f4fc45fc2fed9cf1819b4e23",
+        "_scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.02.npz": "303cb43b3375fca6251afbee3230be6c8cbd907d5cc3471415f52d29ff48be6a"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-redistribute --memory-gib 2 --log-directory _scratch/s11c/mouth_redistribution_coarse_check01 -- python3 software/stage1_solver/tools/mouth_redistribution_check.py --reference _scratch/s11c/mouth_feed_weak01/fields --driven _scratch/s11c/mouth_redistribution_coarse01/fields --level 24 --reference-manifest docs/_measurements/mouth_feed_weak_run.json",
+      "outcome": {
+        "guard_exit": 0,
+        "worker_exit": 0,
+        "verified": true,
+        "memory_gib": 2,
+        "swap_bytes": 0,
+        "cpus": 1,
+        "deadline": null
+      },
+      "stdout_sha256": "725c04ec976b596063d1bb5ae1239301b58110cabb3e165438bdda6d19db6c4c",
+      "stdout": [
+        "n=24 law=flat_density_slope U=0.01 half_aperture_rate_shift=9.71664052406e-06 shift_fd=9.53929842878e-06 centroid_shift=2.59035519407e-05 normal_speed_factor=1.0000000257 fixed_flow=0.250000021288 responsive_flow=0.250000021445 flow_difference=1.56683607061e-10 flow_difference_fd=3.23262312751e-08 weight_term=-0.000169912742554 velocity_term=0.000169912899237 fixed_stress=0 responsive_stress=0 stress_difference=0 stress_difference_fd=1.58287948688e-07 responsive_stress_fd=-0.000140012764233 direct_redistribution_on_baseline_velocity=-0.000169911951077 max_flux_error=2.37e-09 max_residual=7.15e-11",
+        "n=24 law=flat_density_slope U=0.02 half_aperture_rate_shift=1.94338037128e-05 shift_fd=1.90791087186e-05 centroid_shift=5.18085111478e-05 normal_speed_factor=1.00000010279 fixed_flow=0.250000021293 responsive_flow=0.25000002145 flow_difference=1.56697831794e-10 flow_difference_fd=3.23254357743e-08 weight_term=-0.000169919563778 velocity_term=0.000169919720476 fixed_stress=0 responsive_stress=0 stress_difference=0 stress_difference_fd=1.58285435246e-07 responsive_stress_fd=-0.000140012140789 direct_redistribution_on_baseline_velocity=-0.00016991639768 max_flux_error=2.37e-09 max_residual=7.15e-11",
+        "n=24 law=restoring_slope U=0.01 half_aperture_rate_shift=9.01168740239e-06 shift_fd=8.85079994721e-06 centroid_shift=2.42602330287e-05 normal_speed_factor=1.00000002088 fixed_flow=0.249992476364 responsive_flow=0.249992490461 flow_difference=1.40968451755e-08 flow_difference_fd=4.48041591675e-08 weight_term=-0.000157342776281 velocity_term=0.000157356873126 fixed_stress=7.48335043013e-06 responsive_stress=7.46959906425e-06 stress_difference=-1.37513658749e-08 stress_difference_fd=1.52474402651e-07 responsive_stress_fd=-0.000130806265877 direct_redistribution_on_baseline_velocity=-0.000157342077407 max_flux_error=2.37e-09 max_residual=6.46e-11",
+        "n=24 law=restoring_slope U=0.02 half_aperture_rate_shift=1.80238470229e-05 shift_fd=1.77020620751e-05 centroid_shift=4.85217533133e-05 normal_speed_factor=1.00000008352 fixed_flow=0.249992475986 responsive_flow=0.249992490075 flow_difference=1.40883677988e-08 flow_difference_fd=4.47918547305e-08 weight_term=-0.000157348879246 velocity_term=0.000157362967614 fixed_stress=7.48372960073e-06 responsive_stress=7.4699867416e-06 stress_difference=-1.37428591292e-08 stress_difference_fd=1.52486718728e-07 responsive_stress_fd=-0.000130805146593 direct_redistribution_on_baseline_velocity=-0.000157346083586 max_flux_error=2.37e-09 max_residual=6.46e-11"
+      ]
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-redistribute --memory-gib 3 --log-directory _scratch/s11c/mouth_redistribution_depth_check01 -- python3 software/stage1_solver/tools/mouth_redistribution_check.py --reference _scratch/s11c/mouth_feed_depth01/fields --driven _scratch/s11c/mouth_redistribution_depth01/fields --level 32 --reference-manifest docs/_measurements/mouth_feed_weak_run.json",
+      "outcome": {
+        "guard_exit": 0,
+        "worker_exit": 0,
+        "verified": true,
+        "memory_gib": 3,
+        "swap_bytes": 0,
+        "cpus": 1,
+        "deadline": null
+      },
+      "stdout_sha256": "ac479c9d67fec3bc959271c47c2cb9013e09a39328ebfe57c3ac81a4d094e5d5",
+      "stdout": [
+        "n=32 law=flat_density_slope U=0.01 half_aperture_rate_shift=9.60236153799e-06 shift_fd=9.59718637783e-06 centroid_shift=2.57593310999e-05 normal_speed_factor=1.00000002593 fixed_flow=0.250000006596 responsive_flow=0.250000006648 flow_difference=5.11682710091e-11 flow_difference_fd=9.91296454644e-11 weight_term=-0.000171113836327 velocity_term=0.000171113887495 fixed_stress=0 responsive_stress=0 stress_difference=0 stress_difference_fd=-1.65776101139e-09 responsive_stress_fd=-1.10735121802e-07 direct_redistribution_on_baseline_velocity=-0.000171113034404 max_flux_error=2.33e-09 max_residual=3.51e-10",
+        "n=32 law=flat_density_slope U=0.02 half_aperture_rate_shift=1.92052546908e-05 shift_fd=1.91949040955e-05 centroid_shift=5.15201001854e-05 normal_speed_factor=1.00000010371 fixed_flow=0.250000006598 responsive_flow=0.250000006649 flow_difference=5.11727379221e-11 flow_difference_fd=9.92162949021e-11 weight_term=-0.0001711208504 velocity_term=0.000171120901573 fixed_stress=0 responsive_stress=0 stress_difference=0 stress_difference_fd=-1.65747241932e-09 responsive_stress_fd=-1.10732551406e-07 direct_redistribution_on_baseline_velocity=-0.000171117642511 max_flux_error=2.33e-09 max_residual=3.51e-10",
+        "n=32 law=restoring_slope U=0.01 half_aperture_rate_shift=8.89740380114e-06 shift_fd=8.89273980532e-06 centroid_shift=2.41028750385e-05 normal_speed_factor=1.00000002105 fixed_flow=0.249992490707 responsive_flow=0.249992505059 flow_difference=1.43520458538e-08 flow_difference_fd=1.43710493158e-08 weight_term=-0.000158257739459 velocity_term=0.000158272091505 fixed_stress=7.49447270963e-06 responsive_stress=7.48024030538e-06 stress_difference=-1.42324042479e-08 stress_difference_fd=-6.09880816639e-09 responsive_stress_fd=-1.88217849174e-06 direct_redistribution_on_baseline_velocity=-0.000158257031409 max_flux_error=2.33e-09 max_residual=3.08e-10",
+        "n=32 law=restoring_slope U=0.02 half_aperture_rate_shift=1.77952875562e-05 shift_fd=1.77859592902e-05 centroid_shift=4.82070644309e-05 normal_speed_factor=1.00000008419 fixed_flow=0.249992490323 responsive_flow=0.249992504668 flow_difference=1.4344458954e-08 flow_difference_fd=1.43633774579e-08 weight_term=-0.000158264011101 velocity_term=0.00015827835556 fixed_stress=7.49485677713e-06 responsive_stress=7.48063197022e-06 stress_difference=-1.42248069057e-08 stress_difference_fd=-6.09083278063e-09 responsive_stress_fd=-1.88206145562e-06 direct_redistribution_on_baseline_velocity=-0.00015826117873 max_flux_error=2.33e-09 max_residual=3.08e-10"
+      ]
+    }
+  ]
+}

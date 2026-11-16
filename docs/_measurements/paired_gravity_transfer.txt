@@ -1,0 +1,134 @@
+0PN open inward drains. Independent finite-sphere cross-check and Newtonian transfer requirement.
+Working result; no independent physics review or commit. Base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c.
+Prior working note SHA256 b1c35e252e11bbc16fa07e3807dcf58ddc17ce1cc2184722a4aeea6c92cd804e.
+Original run record before the follow-up pointer: 34752357a1dd17e7ff9b3d6b3918a6cff2ba1403d5224578d5f989f40c19ffe1.
+The prior numerical data and failed-attempt records remain in pair_holding_probe.txt.
+The Wolfram source changed only to request one numerical thread (ParallelThreadNumber
+and MKLThreadNumber). Memory cap 4 GiB, zero swap, one logical CPU, pids.max 32.
+The NumPy run uses surface collocation and separate quadrature; its original output
+was reused. Wolfram matches translated regular/singular harmonics and analytically
+projects pressure and material transport on each finite sphere at fixed truncation.
+The cross-engine comparison is on printed numbers in the benchmark units. The tolerance
+is 1e-12 absolute per reading; it is not an estimate of errors in the physical model.
+
+For a fixed right-hand source with k_s=0, let B_k=-H_target(k), positive toward it,
+and let mu_tt,mu_ts be the probe responses along the common positive lab axis. The
+source load is -B_0. For target k_t=1 the actual combination is mu_tt B_1-mu_ts B_0.
+The source is free, including when only its outlet rule is held fixed. Superposition
+here follows from the linear acceleration balance, and k entering only the outlet
+load at release. The two equal-outlet cases were solved with both engines; the mixed
+case was inferred from each validated result. U_monopole=1/d^2 in these units,
+distinct at finite separation from the regular velocity computed on the distorted field.
+
+The symbolic requirement check leaves the influx, surrounding storage and summed
+outward rates per incident speed free. It substitutes only the leading point-intake
+source speed and matches the scalar free acceleration to G M_s/d^2. Force and probe
+measurements at finite d use both columns of the mobility instead. With no other
+force the signed identity is (C_in-beta-C_store)U per driving force and
+beta_required=C_in-C_store-4 pi G M_s M_eff/Q_s. Masses and G are independent
+of this force fit. The native outer field normalization, transfer and effective
+inertia have not been calculated by this check.
+
+Reused NumPy baseline stdout SHA256 4f40669a0961f379b28f0fed1ff6aff4bfe8cdd01af47f4d2ba2d0c49c66e2f2. Higher numerical degree 14, compared with Wolfram degree 9.
+
+$ python3 scripts/s11c_guarded_run.py --pool pair-holding-probe --memory-gib 4 --log-directory _scratch/s11c/pair_holding_probe_wolfram03 -- math -noprompt -script software/stage1_solver/tools/pair_holding_probe.wl
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 59fd908458d0aac6be4e3b16f74cda636041744a12b6276de52d7c5be6e7cd23  software/stage1_solver/tools/pair_holding_probe.wl
+Start UTC 2026-11-14T14:46:05.148601+00:00. End UTC (outcome file timestamp) 2026-11-14T14:46:09.765994+00:00.
+Exit 0/0, 4 GiB, zero swap, 32 tasks verified. Recorded memory.peak 225267712 bytes.
+Stdout _scratch/s11c/pair_holding_probe_wolfram03/stdout (3499 bytes, SHA256 4dceebd5e780dd41021dd2d2245fec343a6793b1327918423bd52c470396cd6c).
+Literal stdout
+"centers=""{0}"" degree=5"
+"k="0" {H_target,a_minus,a_plus,a_free}=""{0, -0.01`16., 0.01`16., 0}"" controls=""{True, True, True, True}"
+"k="1" {H_target,a_minus,a_plus,a_free}=""{0, -0.01`16., 0.01`16., 0}"" controls=""{True, True, True, True}"
+"mobility_target_row=""{0.66666666666666666666666666666666666667`16.}"
+"centers=""{0}"" degree=9"
+"k="0" {H_target,a_minus,a_plus,a_free}=""{0, -0.01`16., 0.01`16., 0}"" controls=""{True, True, True, True}"
+"k="1" {H_target,a_minus,a_plus,a_free}=""{0, -0.01`16., 0.01`16., 0}"" controls=""{True, True, True, True}"
+"mobility_target_row=""{0.66666666666666666666666666666666666667`16.}"
+"max_refinement_change=""0"
+"centers=""{0, 10}"" degree=5"
+"k="0" {H_target,a_minus,a_plus,a_free}=""{-0.03006132899761997074181654514478660775`16., 0.01002084480503657855305107890632535692`16., 0.03002084419283357751078982601725606211`16., 0.02002084449893507803192045246147105899`16.}"" controls=""{True, True, True, True}"
+"k="1" {H_target,a_minus,a_plus,a_free}=""{-0.00003068829104844221525261948757994069`16., -0.00997956129268651158184782333347676886`16., 0.01002043809511048737589092377745393633`16., 0.00002043840121198789702155022198858373`16.}"" controls=""{True, True, True, True}"
+"mobility_target_row=""{0.66666664625989996525795823703102350617`16., 0.00066666666750810961844446429226534642`16.}"
+"centers=""{0, 10}"" degree=9"
+"k="0" {H_target,a_minus,a_plus,a_free}=""{-0.03006132899916701032445314831139469269`16., 0.01002084480606688550569513856024237884`16., 0.03002084419386384189614328980847778574`16., 0.02002084449996536370091921418436008104`16.}"" controls=""{True, True, True, True}"
+"k="1" {H_target,a_minus,a_plus,a_free}=""{-0.0000306882925771820864793114228099104`16., -0.00997956129166834961871469257661483506`16., 0.01002043809612860677173345867162058501`16., 0.00002043840223012857650938304750287229`16.}"" controls=""{True, True, True, True}"
+"mobility_target_row=""{0.66666664625989854634827170827451346455`16., 0.00066666666750810985645561657817820102`16.}"
+"max_refinement_change=""1.5470395826366031613446755`6.*^-12"
+"centers=""{0, 20}"" degree=5"
+"k="0" {H_target,a_minus,a_plus,a_free}=""{-0.00750188482582411098956035350706184624`16., -0.00499936860593068064243477437964034003`16., 0.01500063139171380159633101939054526211`16., 0.00500063139289156047694812250612630764`16.}"" controls=""{True, True, True, True}"
+"k="1" {H_target,a_minus,a_plus,a_free}=""{-9.4250200737681448520019637212746`16.*^-7, -0.00999937174269256452722778489031549259`16., 0.01000062825495191771153800888051849389`16., 6.2825612967659215511199518612111`16.*^-7}"" controls=""{True, True, True, True}"
+"mobility_target_row=""{0.66666666658814940795885979235877157026`16., 0.00008333333333343222104816653360453431`16.}"
+"centers=""{0, 20}"" degree=9"
+"k="0" {H_target,a_minus,a_plus,a_free}=""{-0.0075018848258242953487720258829208411`16., -0.00499936860593055775149622971580609437`16., 0.015000631391713924486626551790583574`16., 0.00500063139289168336756516103122394669`16.}"" controls=""{True, True, True, True}"
+"k="1" {H_target,a_minus,a_plus,a_free}=""{-9.4250200756062245899984823886748`16.*^-7, -0.00999937174269244200357444477605087508`16., 0.01000062825495204023454833667496539066`16., 6.2825612979911548694597956056785`16.*^-7}"" controls=""{True, True, True, True}"
+"mobility_target_row=""{0.66666666658814940793742605039173994969`16., 0.00008333333333343222104827496389186042`16.}"
+"max_refinement_change=""1.8435921167237585439702`6.*^-16"
+
+$ python3 scripts/s11c_guarded_run.py --pool gravity-transfer --memory-gib 2 --log-directory _scratch/s11c/required_gravity_transfer_compare01 -- python3 software/stage1_solver/tools/pair_probe_transfer_check.py _scratch/s11c/pair_holding_probe_numpy01/stdout _scratch/s11c/pair_holding_probe_wolfram03/stdout
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 47fc76277a9564aea818d5050c13a67258c90d0090c3bdfddf1ad4486714076a  software/stage1_solver/tools/pair_probe_transfer_check.py
+Start UTC 2026-11-14T14:48:17.072851+00:00. End UTC (outcome file timestamp) 2026-11-14T14:48:17.317761+00:00.
+Exit 0/0, 2 GiB, zero swap, 32 tasks verified. Recorded memory.peak 14417920 bytes.
+Stdout _scratch/s11c/required_gravity_transfer_compare01/stdout (502 bytes, SHA256 105b3c2330ac4f6a0b2769099a729b0022e86666ae3c0f930836fc6caa331a4a).
+Literal stdout
+24 force/acceleration readings, max absolute difference 4.7960E-14
+5 target mobility entries, max absolute difference 3.3333E-13
+d=10, target export change=0.0300306407066, source k=0: a(target k=0)=0.0200208445000, a(target k=1)=4.17975067133e-7
+  a/U_monopole for target k=0,1: 2.00208445000, 0.0000417975067133
+d=20, target export change=0.00750094232382, source k=0: a(target k=0)=0.00500063139289, a(target k=1)=3.17760281365e-9
+  a/U_monopole for target k=0,1: 2.00025255716, 0.00000127104112546
+
+$ python3 scripts/s11c_guarded_run.py --pool gravity-transfer --memory-gib 2 --log-directory _scratch/s11c/required_gravity_transfer_sympy01 -- python3 -c 'import sympy as s
+U,Qt,Qs,Ms,M,G,rho=s.symbols("U Q_t Q_s M_s M_eff G rho",positive=True)
+d=s.symbols("d",positive=True)
+incoming,out,storage=s.symbols("C_in beta C_store",real=True)
+B=(incoming-out-storage)*U
+a=B.subs(U,Qs/(4*s.pi*d**2))/M
+need=s.solve(s.Eq(a,G*Ms/d**2),out)[0]
+print("required outward transfer per incident speed =",need,flush=True)
+gbar=G*(4*s.pi*Ms/Qs)
+assert s.simplify(need-(incoming-storage-gbar*M))==0
+print("ideal held exterior export per incident speed =",need.subs({incoming:rho*Qt,storage:0}),flush=True)
+print("replacement in a minus Newton target =",s.simplify(a.subs(out,need)-G*Ms/d**2),flush=True)
+assert s.simplify(a.subs(out,need)-G*Ms/d**2)==0'
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start UTC 2026-11-14T14:48:18.230126+00:00. End UTC (outcome file timestamp) 2026-11-14T14:48:18.760382+00:00.
+Exit 0/0, 2 GiB, zero swap, 32 tasks verified. Recorded memory.peak 53346304 bytes.
+Stdout _scratch/s11c/required_gravity_transfer_sympy01/stdout (206 bytes, SHA256 692b51d0f44a27153d52638db07a21a1a91c9caf910911f6cff5fefd71550095).
+Literal stdout
+required outward transfer per incident speed = C_in - C_store - 4*pi*G*M_eff*M_s/Q_s
+ideal held exterior export per incident speed = -4*pi*G*M_eff*M_s/Q_s + Q_t*rho
+replacement in a minus Newton target = 0
+
+$ sed -n '11,17p' docs/held_drain_pair.md
+$$
+\Delta I_{\rm matter,x}=\frac{\rho Q_1Q_2}{4\pi d^2}.
+$$
+
+Advection supplies $4/3$ of this value and the pressure change contributes $-1/3$. The integral is independent of $b$ in this exterior. For $d=10$ and $20$ in the same length units, the computed values of $4\pi\Delta I_{\rm matter,x}/(\rho Q_1Q_2)$ were $1/100$ and $1/400$, each checked at $b=1$ and $3$. This recovers the earlier far-field matter term by integrating the spatially varying companion field. A physical use of the point-intake exterior requires a control sphere outside the core in a region where that exterior applies. The native source-to-flux map, full coefficient and other stress contributions remain open. [Run evidence](_measurements/held_drain_pair.txt) · [Earlier matter-stress calculation](../software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md) · [Native slow-limit status](../research/pde_ledger_v3/steps/S14a_2_slow_limit.md)
+
+## What the holder would measure
+
+$ sed -n '65,67p' research/pde_ledger_v3/steps/S15_two_drain_region.md
+The first population route files the user's flow-comparison decision against the existing `R-S21-01`, alongside its distinct light-sector conditions. The comparison stays OPEN. If S21 tests inverse-square signed shell crossing on the stated family, it must carry the geometric departure, live field response, pressure and viscosity inputs, both surfaces and their motion. If it tests Newtonian gravity, it needs companion-induced **free acceleration** relative to an isolated drain under the same ambient conditions. Separate the surroundings from self-field (`R-S16-01`), account for the momentum stored in the shell and exchanged at the sleeve/core and at each slab face (`R-S16-03`), and identify the core contents (S22) and inertial response (`R-S16-04`, S8). The compactness assumption, where used, stays with `R-S16-02`. The physical suppliers of the passive surroundings field, face-resolved momentum and compactness have no owner assigned in S16. [Register entries and S15 pass](../SUBSTRATE_REQUIREMENTS.md) · [S16 record](S16_moving_region.md)
+
+The slow limit and far behaviour remain conditional on `R-S14a-01`, jointly owed by S12, S8/S22 and the unnamed face/interior laws. S22 carries the core, the source map `{J, Θ_Q, N_∞,3, Q}` and the coefficient `I_F,12`. C3 remains the gap between drain rate and mass. The full sign retains quantum, confinement, Maxwell and profile residuals. The forms of `Π_o` and `f` have no assigned owner here. Extending steady P6 and resolving possible stress-carried momentum under P5 remain S8 material questions. A Newtonian orbit, its corrections, brane feedback, local thinning, and mouth support lie beyond this step. [Retained questions](../directives/S15_decision_list.md#retained-open) · [S22 debt rows](../V3_STEP_PLAN.md) · [Defect C3](../DEFECT_REGISTER.md)
+
+$ sed -n '2140,2145p' research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
+
+- **Drain rate.** In the spherical S14a accounting, $J=J_{\rm face}+J_{\rm core}$ counts material leaving through the faces and inward through the core boundary. The record separately gives the signed loss of brane order, storage, and outer flux at a finite radius. Recovering the far-field volume intake $Q$ from these data requires the profile and the slow return dynamics. [S14a flux definitions](steps/S14a_1_projection.md) · [Slow-limit requirement](steps/S14a_2_slow_limit.md)
+- **Active source strength.** Specify the surrounding gravity-sector field and its normalization, common to all throats. Read its leading far-field amplitude from the isolated source. If drain velocity supplies the whole leading field, its monopole amplitude can be read from $Q$. If stress and return also source that field, include their contributions. Calling an observed pair acceleration a source mass would fold the target’s response into the source measurement. [S15 source and normalization](V3_STEP_PLAN.md) · [Mass and force normalization](../../software/stage1_solver/reports/pathA_21_emergent_G_mass_bridge.md)
+- **Inertial mass.** Supply the translational inertia of the same draining state, including its bound fields and momentum exchange, independently of a gravitational pair fit. The dimensional candidate $\alpha_J\hbar J/c_\gamma^2$ leaves the relation open. Fitting $\alpha_J$ for each throat would use the mass the relation is meant to predict. C3 records this gap. [Mass-bridge verdict](../../software/stage1_solver/reports/pathA_21_emergent_G_mass_bridge.md) · [C3](DEFECT_REGISTER.md)
+
+**Two comparisons distinguish source scaling from free fall.** In the weak-field regime, keep one target fixed *in type and preparation* and compare its free acceleration toward two alternative sources at the same separation. The ratio of accelerations must equal the ratio of source inertial masses. If one source has twice the independently measured inertial mass, it must produce twice the leading acceleration. Then use one source and compare two freely moving target types at the same separation and initial velocity. They must have the same leading acceleration. In both comparisons the companion supplies the field, the drain and return laws stay the same, and the comparison uses the gravity-sector response. These tests use ratios, so a common choice of units or a single calibration of $G$ cannot fix a failed ratio. A successful ratio test still leaves the absolute value of $G$ to an independent prediction or an explicitly identified calibration. [Active, passive and inertial response](../../docs/cross_sector_research_burdens_and_compatibility_gates.md) · [Source excerpts](_measurements/newtonian_drain_requirements_sources.txt)
+
+$ sed -n '420,426p' software/em_charge_attribute/reports/u1_body_dynamics.md
+## Phase B2 — Intake response and radiative residues
+
+- Status: `PASS_WITH_HONEST_OUTCOMES`
+- Partition: `UNRESOLVED(return_closure)`
+- C_mdot: `UNRESOLVED(required_OPEN_leaves)`
+- Radiation: `UNRESOLVED(native_branch_inputs)`
+- Phase-C gates: `NOT_RUN(phase_C)`

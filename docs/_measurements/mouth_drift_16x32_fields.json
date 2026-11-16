@@ -1,0 +1,50 @@
+{
+  "status": "Working, unreviewed",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "scope": "Radius-one mouth at inward rate 0.25 in the stationary reservoir of extent 24, 16 cells per radius and 32 through the slab.",
+  "sources": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/lateral_mouth_acceleration.py": "0f04c0edb17b6c17bc1dfd2081412017caed4dfd7c1ef6808fe84f751394219b",
+    "software/stage1_solver/tools/lateral_mouth_radius.py": "4f0d9fafd7bd4b71251ae87bf91d60d8c60be0ee01170d2c4c184eb160954b08",
+    "software/stage1_solver/tools/lateral_paired_acceleration.py": "42e94c2f007d335a233c31afda180e29e30ecfbb0d13b0790c0295c678fd672e",
+    "software/stage1_solver/tools/lateral_radius_momentum.py": "5dc679cea6185931e8e74b3a7fcf516aef9ca615437ff7c710a237b215ca4987",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/mouth_drift_flux_check.py": "d3af1f4497fb326107469c1ba181ce809f6ea42c169db1bf4cb31140c47298fb",
+    "software/stage1_solver/tools/mouth_drift_refinement.py": "e8ed8cd71aa66f52a335d2865ab4626d5374f79afd3db877ce0cf75274db8c76",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "software/stage1_solver/tools/mouth_slow_drift.py": "be8ed584bf083d3994a261d568b743003f7e10d7b9a9b302962684f9d6e4fc04"
+  },
+  "runs": [
+    {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-drift-refine --memory-gib 16 --log-directory _scratch/s11c/mouth_drift_refine_e24_c16_z32_01 -- python3 software/stage1_solver/tools/mouth_drift_refinement.py 16 _scratch/s11c/mouth_drift_refine_e24_c16_z32_01/mouth_layers.npz --normal-cells 32",
+      "started_utc": "2026-11-15T18:18:09.841370+00:00",
+      "guard_outcome_written_utc": "2026-11-15T18:25:32.772777+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "wall_seconds": 442.91201979713514,
+      "limits_verified": true,
+      "memory_max_bytes": 17179869184,
+      "peak_memory_bytes_sampled": 1892323328,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/mouth_drift_refine_e24_c16_z32_01/stdout",
+      "stdout_bytes": 789,
+      "stdout_sha256": "25f3bedbb989d2eb07c27e935c2f9c74c27aee50716455023c74532d36b29d2b",
+      "stderr_bytes": 0,
+      "stdout": [
+        "  mouths=1 residual=1.635e-11 bath_inward=0.250000000001 per_mouth=0.25",
+        "extent=24 cells=16 normal_cells=32 steps=17 static_residual=2.88098033792e-12 velocity_residual=4.16905669318e-12",
+        "rate=0.25 rate_slope=0 rest=0 redistribution=0.000183911468041 velocity=-0.0001749342152 carry=8.97725284194e-06 stress=-8.97795866784e-06 lab=-7.05825899426e-10 interior=-1.16430274413e-05 mouth_frame=-0.250000000706 fd_1em4=-7.05815614288e-10 fd_5em5=-7.05858982375e-10",
+        "law_cut=1.9917789929e-06 law_halo=-2.3601863144e-09 law_link=-2.36018631412e-09 layer_cut=-1.16430274413e-05 layer_halo=-7.89804957115e-06 layer_product_halo=3.97784413724e-08",
+        "whole_layer=3.88413337906e-08 whole_product=3.88413337906e-08 gap_layer_halo=7.89734374525e-06 gap_layer_whole=3.95471596901e-08 gap_rim=3.74497787014e-06"
+      ],
+      "cells": 16,
+      "normal_cells": 32,
+      "field_sha256": {
+        "_scratch/s11c/mouth_drift_refine_e24_c16_z32_01/mouth_layers.npz": "afc9623165b0854008ee8d3baa55fa1d28951daefe6e4431447d12a39cd7d966"
+      }
+    }
+  ]
+}

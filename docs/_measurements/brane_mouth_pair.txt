@@ -1,0 +1,43 @@
+0PN momentum into a finite mouth from the brane side. Working calculation, 2026-11-14.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c. The two scripts are local additions.
+The sampling domain is the full ball in three brane coordinates at a flat w cut.
+Q is the prescribed effective 3-D volume drain rate. A radial sink weight assigns incoming
+mass per time to points on that opening. The removed material carries the local potential-flow
+velocity. Both preparations use identical target weights. Only scalar pressure is present.
+The numerical calculation integrates every source-target ring pair, including relative azimuth.
+Unit rates, radii 1 and 1.5, centre separations 4 and 8. The scaled loads have units of inverse length squared.
+The dipole control changes the angular weighting at fixed integral in the two compared preparations.
+Each numerical load is the cross contribution. The self term is identical in pair and control.
+
+$ python3 scripts/s11c_guarded_run.py --pool brane-mouth-pair --memory-gib 2 --log-directory _scratch/s11c/brane_mouth_pair_sympy02 -- python3 software/stage1_solver/tools/brane_mouth_pair.py
+Source SHA256 abb06bb8e61bf09b424d4c64022d5c20b7c539ebdcb6406886ad27f790282aaa  software/stage1_solver/tools/brane_mouth_pair.py
+Guard SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Stdout SHA256 329e4ba5bd9fb26014f50f0181a5180213cda7279a4c6ec20ff38b53a55745f2  _scratch/s11c/brane_mouth_pair_sympy02/stdout
+Verified guard and child exit 0, zero swap, 2 GiB, one CPU, no deadline, empty stderr.
+Literal stdout
+source shell angular integral of 1/(4*pi*distance) = 1/R
+Q_s = Integral(4*pi*s**2*s_source(s), (s, 0, b))
+potential outside finite source = Q_s/(4*pi*R)
+target shell mean [alone, companion velocity] = [0, Q_s/(4*pi*d**2)]
+carried x momentum per time [alone, pair] = [0, Q_s*Q_t*rho/(4*pi*d**2)]
+isotropic pressure x projection at mouth = 0
+paired minus alone mouth load = Q_s*Q_t*rho/(4*pi*d**2)
+scaled load at d = 4, 8 = [1/16, 1/64]
+zero companion, doubled separation / original = 0 1/4
+
+$ python3 scripts/s11c_guarded_run.py --pool brane-mouth-pair --memory-gib 2 --log-directory _scratch/s11c/brane_mouth_pair_quadrature01 -- python3 software/stage1_solver/tools/brane_mouth_pair_quadrature.py
+Source SHA256 db9c0cbab7064d464404de9d02fe410aa9b900eb22eea5d3c463046247f970a7  software/stage1_solver/tools/brane_mouth_pair_quadrature.py
+Guard SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Stdout SHA256 d2bcfcee331f2e9da525032247c9112ea0eeeb088bab7b9442d0417e57c4684f  _scratch/s11c/brane_mouth_pair_quadrature01/stdout
+Verified guard and child exit 0, zero swap, 2 GiB, one CPU, no deadline, empty stderr.
+Literal stdout
+order=10 profiles=uniform,taper normalized rates=1.000000000000,1.000000000000 scaled loads(d=4,8)=0.062499999982,0.015625000000
+order=10 profiles=taper,uniform normalized rates=1.000000000000,1.000000000000 scaled loads(d=4,8)=0.062499999908,0.015625000000
+order=10 profiles=dipole,taper normalized rates=1.000000000000,1.000000000000 scaled loads(d=4,8)=0.065624999971,0.016015625000
+order=18 profiles=uniform,taper normalized rates=1.000000000000,1.000000000000 scaled loads(d=4,8)=0.062500000000,0.015625000000
+order=18 profiles=taper,uniform normalized rates=1.000000000000,1.000000000000 scaled loads(d=4,8)=0.062500000000,0.015625000000
+order=18 profiles=dipole,taper normalized rates=1.000000000000,1.000000000000 scaled loads(d=4,8)=0.065625000000,0.016015625000
+
+Only the reported radial profiles are used for the symbolic force result. The asymmetric
+target is a sensitivity check on one input. The calculations do not supply a physical
+brane-side stress trace, free-mouth trajectory or measured inertia.

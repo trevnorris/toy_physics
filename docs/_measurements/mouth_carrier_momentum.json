@@ -1,0 +1,64 @@
+{
+  "status": "working, unreviewed",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "units": "m = hbar = 1; slopes are in mass units of the feeding-slab experiment",
+  "inputs": {
+    "docs/_measurements/mouth_feed_weak_run.json": "f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0",
+    "docs/_measurements/mouth_intake_redistribution.json": "f437841524cdf0166ffbc6950a663767a3ea9d0691236a07a6111d141bf00711"
+  },
+  "sources": {
+    "software/stage1_solver/tools/mouth_carrier_momentum.py": "9bfdfe7e441137afc82c7863d21e4a846187cb82316f4381f78fee88fd12d434",
+    "software/stage1_solver/tools/mouth_carrier_frame.wl": "8d301a95a3cbec7b2c187ead3a8a35ae3bbfe7e39045ce8a8a03d23a700d7b63",
+    "software/stage1_solver/tools/mouth_feed_weak_flow.py": "9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "software/stage1_solver/tools/mouth_release_input_check.py": "f341d0ced284b035aaf1450706a0bfa3a35be937b214072fb68c997e03fd8efb"
+  },
+  "guard_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+  "runs": [
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-momentum --memory-gib 4 --log-directory _scratch/s11c/mouth_entrained_carrier01 -- python3 software/stage1_solver/tools/mouth_carrier_momentum.py",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 4,
+      "swap": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_sha256": "16e5e4f459388581a68a7d607b4143b504a7ad7a1d411ad3b1dd800ae5363d19",
+      "stdout": [
+        "n=24 depth=12 law=flat_density_slope rate=0.25 rest_P=0 steps=23 update=8.59e-13 tangent_full=0.000536987652078 by_parts=0.000536987652078 second_order_full=0.000525653505501 within_r1=-0.000333936627343 within_r1.5=-0.000173018514375",
+        "n=24 law=flat_density_slope V=-0.01 held_P=0.63994385927 boost=0.639949229286 lab_P=-5.37001593836e-06 secant=0.000537001593835 relative_field_tangent_difference=8.37478e-06",
+        "n=24 law=flat_density_slope V=-0.02 held_P=1.27988771553 boost=1.2798984564 lab_P=-1.07408684636e-05 secant=0.000537043423179 relative_field_tangent_difference=3.35005e-05",
+        "n=24 depth=12 law=restoring_slope rate=0.25 rest_P=-2.05596856412e-18 steps=23 update=7.85e-13 tangent_full=0.000524445745449 by_parts=0.000524445745449 second_order_full=0.000513556002017 within_r1=-0.00029486776672 within_r1.5=-0.000143932548851",
+        "n=24 law=restoring_slope V=-0.01 held_P=0.639947032316 boost=0.639952276909 lab_P=-5.24459252006e-06 secant=0.000524459252006 relative_field_tangent_difference=8.23541e-06",
+        "n=24 law=restoring_slope V=-0.02 held_P=1.27989406187 boost=1.27990455187 lab_P=-1.04899955122e-05 secant=0.00052449977561 relative_field_tangent_difference=3.29429e-05",
+        "n=32 depth=64 law=flat_density_slope rate=0.25 rest_P=1.39082809939e-18 steps=23 update=8.46e-13 tangent_full=0.000535683752957 by_parts=0.000535683752957 second_order_full=0.000529157092053 within_r1=-0.000340250301942 within_r1.5=-0.000184602728982",
+        "n=32 law=flat_density_slope V=-0.01 held_P=0.639943506252 boost=0.63994886323 lab_P=-5.35697855904e-06 secant=0.000535697855904 relative_field_tangent_difference=8.48868e-06",
+        "n=32 law=flat_density_slope V=-0.02 held_P=1.27988700947 boost=1.27989772427 lab_P=-1.07148033781e-05 secant=0.000535740168908 relative_field_tangent_difference=3.39561e-05",
+        "n=32 depth=64 law=restoring_slope rate=0.25 rest_P=-6.84402621381e-19 steps=23 update=7.73e-13 tangent_full=0.00052348043409 by_parts=0.00052348043409 second_order_full=0.000517204824659 within_r1=-0.000300120219104 within_r1.5=-0.000154200971094",
+        "n=32 law=restoring_slope V=-0.01 held_P=0.63994671705 boost=0.639951951991 lab_P=-5.23494100667e-06 secant=0.000523494100667 relative_field_tangent_difference=8.34397e-06",
+        "n=32 law=restoring_slope V=-0.02 held_P=1.27989343131 boost=1.27990390202 lab_P=-1.04707020884e-05 secant=0.000523535104418 relative_field_tangent_difference=3.33772e-05"
+      ]
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-frame --memory-gib 4 --log-directory _scratch/s11c/mouth_entrained_frame01 -- math -noprompt -script software/stage1_solver/tools/mouth_carrier_frame.wl",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 4,
+      "swap": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_sha256": "754071af7f3a1089a637b2fb3938e094b45f56470163101c30313338675b870a",
+      "stdout": [
+        "\"moving residual = \"InputForm[(-2*(h - mu)*f[y, z] + Derivative[0, 2][f][y, z] - (2*I)*v*Derivative[1, 0][f][y, z] + Derivative[2, 0][f][y, z])/2]",
+        "\"held residual = \"InputForm[(-2*(h - mu)*f[y, z] + Derivative[0, 2][f][y, z] + (2*I)*u*Derivative[1, 0][f][y, z] + Derivative[2, 0][f][y, z])/2]",
+        "\"difference at u=-v = \"InputForm[0]",
+        "\"carried momentum from lateral phase factor = \"InputForm[u*(a[x]^2 + b[x]^2)]",
+        "\"boost identity residual = \"InputForm[0]",
+        "\"first momentum variation minus integrated form is d_x of \"InputForm[-(b[x]*c[x]) + a[x]*d[x]]",
+        "\"local integration by parts residual = \"InputForm[0]"
+      ]
+    }
+  ]
+}

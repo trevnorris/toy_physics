@@ -1,0 +1,89 @@
+{
+  "status": "Working, unreviewed",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "scope": "16 lateral cells per radius at fixed thickness resolution 32. Compare signed exterior momentum per unit imposed speed with the archived 8- and 12-cell measurements for the same mouth and reservoir.",
+  "sources": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/lateral_mouth_acceleration.py": "0f04c0edb17b6c17bc1dfd2081412017caed4dfd7c1ef6808fe84f751394219b",
+    "software/stage1_solver/tools/lateral_mouth_radius.py": "4f0d9fafd7bd4b71251ae87bf91d60d8c60be0ee01170d2c4c184eb160954b08",
+    "software/stage1_solver/tools/lateral_radius_momentum.py": "5dc679cea6185931e8e74b3a7fcf516aef9ca615437ff7c710a237b215ca4987",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/mouth_drift_volume_balance.py": "700295d6460b93fccd5fc61e4f65bc08d73f5e972985e5c5a4185b310785279e",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61"
+  },
+  "input_manifests": {
+    "docs/_measurements/mouth_drift_16x32_fields.json": "ab82bde3c565c1f6e81f321f84984600bb74d59c5cbddc5e150e6530549d4924"
+  },
+  "input_field_sha256": {
+    "_scratch/s11c/mouth_drift_refine_e24_c16_z32_01/mouth_layers.npz": "afc9623165b0854008ee8d3baa55fa1d28951daefe6e4431447d12a39cd7d966"
+  },
+  "archived_balance_worker": {
+    "_scratch/s11c/mouth_drift_16x32_summary01/mouth_drift_volume_balance.py": "3ca021b6c8376b9a633f04d3135a5cda1cd0d935199b437857b39a0a7b47bcd2"
+  },
+  "runs": [
+    {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-drift-volume --memory-gib 16 --log-directory _scratch/s11c/mouth_drift_volume_c16_z32_01 -- python3 software/stage1_solver/tools/mouth_drift_volume_balance.py 16 32 _scratch/s11c/mouth_drift_volume_c16_z32_01/volume.npz --field-manifest docs/_measurements/mouth_drift_16x32_fields.json",
+      "started_utc": "2026-11-15T18:25:33.068656+00:00",
+      "guard_outcome_written_utc": "2026-11-15T18:30:29.401797+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "wall_seconds": 296.3178873860743,
+      "limits_verified": true,
+      "memory_max_bytes": 17179869184,
+      "peak_memory_bytes_sampled": 2008813568,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/mouth_drift_volume_c16_z32_01/stdout",
+      "stdout_bytes": 2172,
+      "stdout_sha256": "e0057f78db0804ba1343941191694074d6e004eb7c3a8b22cd09fa123770226d",
+      "stderr_bytes": 0,
+      "stdout": [
+        "  mouths=1 residual=1.681e-11 bath_inward=0.250000000001 per_mouth=0.25",
+        "cells=16 normal_cells=32 f_steps=8 u_steps=7 withheld_f_error=1.29592087394e-15 withheld_u_error=1.79402537397e-16 static_residual=2.87363664234e-12 velocity_residual=4.09818729952e-12",
+        "archived_boundary=-7.05825899426e-10 archived_whole=3.88413337906e-08 archived_link4=-2.36018631412e-09",
+        "reach=2 order=2 storage=0.0731857003823 cap_pressure=-0.068405320212 cap_gradient=0.00289634443381 side=-0.00767672330533 outer=-0.0731856990835 exterior=-1.29878405253e-09 lattice_body=-3.83828355064e-08 exterior_corrected=-3.9681619559e-08 direct_link=-3.9681610452e-08 closure=-9.10695581596e-15",
+        "reach=2 order=4 storage=0.0731857019323 cap_pressure=-0.068405320212 cap_gradient=0.00289634361165 side=-0.00767672359536 outer=-0.0731857001957 exterior=-1.73656615476e-09 lattice_body=-6.23629293206e-10 exterior_corrected=-2.36019544797e-09 direct_link=-2.36018631402e-09 closure=-9.13395095244e-15",
+        "reach=4 order=2 storage=0.0728150876868 cap_pressure=-0.0727152302978 cap_gradient=0.00196916867212 side=-0.00206902434909 outer=-0.0728150859748 exterior=-1.71204621313e-09 lattice_body=-3.79695692831e-08 exterior_corrected=-3.96816154963e-08 direct_link=-3.96816104519e-08 closure=-5.04437923077e-15",
+        "reach=4 order=4 storage=0.0728150877257 cap_pressure=-0.0727152302978 cap_gradient=0.00196916867068 side=-0.00206902436128 outer=-0.0728150859884 exterior=-1.73730982378e-09 lattice_body=-6.22881547471e-10 exterior_corrected=-2.36019137125e-09 direct_link=-2.36018631384e-09 closure=-5.05741152294e-15",
+        "reach=8 order=2 storage=0.0699429833346 cap_pressure=-0.0699427718941 cap_gradient=0.000516446625627 side=-0.000516656323244 outer=-0.0699429815917 exterior=-1.74291761579e-09 lattice_body=-3.79386978019e-08 exterior_corrected=-3.96816154177e-08 direct_link=-3.96816104519e-08 closure=-4.96582460114e-15",
+        "reach=8 order=4 storage=0.0699429833291 cap_pressure=-0.0699427718941 cap_gradient=0.000516446625993 side=-0.000516656323636 outer=-0.0699429815917 exterior=-1.73732719877e-09 lattice_body=-6.22864118634e-10 exterior_corrected=-2.3601913174e-09 direct_link=-2.36018631384e-09 closure=-5.00356574436e-15"
+      ],
+      "cells": 16,
+      "normal_cells": 32,
+      "field_sha256": {
+        "_scratch/s11c/mouth_drift_volume_c16_z32_01/volume.npz": "39f27ab958ce61969405f0adab4699934549457e3bbaf2cf6523e601d73f9ea0"
+      }
+    }
+  ],
+  "comparison": {
+    "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-drift-volume-compare --memory-gib 1 --log-directory _scratch/s11c/mouth_drift_lateral_series16_01 -- python3 -c 'import json\nfrom pathlib import Path\nimport sys\n\nprior, latest = map(Path, sys.argv[1:])\nruns = [r for r in json.loads(prior.read_text())['\"'\"'runs'\"'\"'] if r['\"'\"'normal_cells'\"'\"']==32 and r['\"'\"'cells'\"'\"'] in (8,12)]\noutcome = json.loads((latest/'\"'\"'outcome.json'\"'\"').read_text())\nif outcome['\"'\"'exitCode'\"'\"'] or outcome['\"'\"'childOutcome'\"'\"']['\"'\"'exitCode'\"'\"'] or not outcome['\"'\"'limitsVerified'\"'\"']:\n    raise ValueError('\"'\"'Unsuccessful new volume run'\"'\"')\nruns.append(dict(cells=16, normal_cells=32, stdout=(latest/'\"'\"'stdout'\"'\"').read_text().splitlines()))\nif sorted(r['\"'\"'cells'\"'\"'] for r in runs)!=[8,12,16]:\n    raise ValueError('\"'\"'Incomplete lateral series'\"'\"')\nprevious = None\nfor row in sorted(runs,key=lambda v:v['\"'\"'cells'\"'\"']):\n    data = [dict(w.split('\"'\"'='\"'\"') for w in line.split()) for line in row['\"'\"'stdout'\"'\"']]\n    grid, = [r for r in data if '\"'\"'cells'\"'\"' in r]\n    if (int(grid['\"'\"'cells'\"'\"']),int(grid['\"'\"'normal_cells'\"'\"']))!=(row['\"'\"'cells'\"'\"'],32):\n        raise ValueError('\"'\"'Mismatched preparation'\"'\"')\n    old, = [r for r in data if '\"'\"'archived_boundary'\"'\"' in r]\n    four = [r for r in data if r.get('\"'\"'order'\"'\"')=='\"'\"'4'\"'\"']\n    two = [r for r in data if r.get('\"'\"'order'\"'\"')=='\"'\"'2'\"'\"']\n    for stencil in (four,two):\n        if sorted(int(r['\"'\"'reach'\"'\"']) for r in stencil)!=[2,4,8]:\n            raise ValueError('\"'\"'Incomplete cylinder series'\"'\"')\n    center, = [r for r in four if r['\"'\"'reach'\"'\"']=='\"'\"'4'\"'\"']\n    center2, = [r for r in two if r['\"'\"'reach'\"'\"']=='\"'\"'4'\"'\"']\n    inferred = [float(r['\"'\"'exterior'\"'\"']) for r in four]\n    corrected = [float(r['\"'\"'exterior_corrected'\"'\"']) for r in four]\n    residual = float(center['\"'\"'exterior'\"'\"'])\n    closure = max(abs(float(r['\"'\"'closure'\"'\"'])) for r in four+two)\n    print(f\"cells={row['\"'\"'cells'\"'\"']} normal=32 reach=4 exterior={residual:.12g} \"\n          f\"corrected4={center['\"'\"'exterior_corrected'\"'\"']} corrected2={center2['\"'\"'exterior_corrected'\"'\"']} \"\n          f\"mouth={old['\"'\"'archived_boundary'\"'\"']} whole_face={old['\"'\"'archived_whole'\"'\"']} \"\n          f\"radii_min={min(inferred):.12g} radii_max={max(inferred):.12g} \"\n          f\"corrected_spread={max(corrected)-min(corrected):.12g} max_closure={closure:.12g} \"\n          f\"ppm_of_storage={1e6*abs(residual/float(center['\"'\"'storage'\"'\"'])):.12g}\")\n    if previous is not None:\n        print(f\"from={previous[0]} to={row['\"'\"'cells'\"'\"']} exterior_change={residual-previous[1]:.12g} \"\n              f\"magnitude_ratio={abs(residual/previous[1]):.12g}\")\n    previous = (row['\"'\"'cells'\"'\"'],residual)\n' docs/_measurements/mouth_drift_volume_balance.json _scratch/s11c/mouth_drift_volume_c16_z32_01",
+    "started_utc": "2026-11-15T18:30:29.443770+00:00",
+    "guard_outcome_written_utc": "2026-11-15T18:30:29.565394+00:00",
+    "guard_exit": 0,
+    "worker_exit": 0,
+    "wall_seconds": 0.10493025090545416,
+    "limits_verified": true,
+    "memory_max_bytes": 1073741824,
+    "peak_memory_bytes_sampled": 14417920,
+    "swap_max_bytes": 0,
+    "runtime_limit": "infinity",
+    "stdout_path": "_scratch/s11c/mouth_drift_lateral_series16_01/stdout",
+    "stdout_bytes": 1113,
+    "stdout_sha256": "0d3ce3bb1c1fb2df9c2492827889c22e207d81bac9ce7b2ec0203eb6c260fb3d",
+    "stderr_bytes": 0,
+    "stdout": [
+      "cells=8 normal=32 reach=4 exterior=-7.70694049967e-08 corrected4=-8.68740148015e-08 corrected2=-2.29015461063e-07 mouth=-6.1631239831e-08 whole_face=-4.50047608493e-08 radii_min=-7.70696831354e-08 radii_max=-7.70574436482e-08 corrected_spread=2.68129999989e-15 max_closure=2.26270208777e-15 ppm_of_storage=1.05929824185",
+      "cells=12 normal=32 reach=4 exterior=3.37709860077e-09 corrected4=1.41615517056e-09 corrected2=-6.41425162321e-08 mouth=6.58087182793e-09 whole_face=4.27616271579e-08 radii_min=3.37704235409e-09 radii_max=3.37946309825e-09 corrected_spread=1.79017e-15 max_closure=2.55990946697e-15 ppm_of_storage=0.0463742343808",
+      "from=8 to=12 exterior_change=8.04465035975e-08 magnitude_ratio=0.0438189266015",
+      "cells=16 normal=32 reach=4 exterior=-1.73730982378e-09 corrected4=-2.36019137125e-09 corrected2=-3.96816154963e-08 mouth=-7.05825899426e-10 whole_face=3.88413337906e-08 radii_min=-1.73732719877e-09 radii_max=-1.73656615476e-09 corrected_spread=4.13056999981e-15 max_closure=9.13395095244e-15 ppm_of_storage=0.023859201136",
+      "from=12 to=16 exterior_change=-5.11440842455e-09 magnitude_ratio=0.514438584465"
+    ],
+    "inputs": {
+      "docs/_measurements/mouth_drift_volume_balance.json": "d9bc3a47238acb1fdf5b1f9c04705cd4378cb72ffd751a02efeb12e3505766fc",
+      "_scratch/s11c/mouth_drift_volume_c16_z32_01/stdout": "e0057f78db0804ba1343941191694074d6e004eb7c3a8b22cd09fa123770226d",
+      "_scratch/s11c/mouth_drift_volume_c16_z32_01/outcome.json": "6f30f0bd64a186f171f16c06fb4c4c9dde550117ff7b225cf05d0d76e0ede106"
+    }
+  }
+}

@@ -1,0 +1,79 @@
+One-throat transport and sideways probe calibration, 0PN working result.
+Repository baseline 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c. Independent physics review pending.
+
+The stationary complex neutral carrier satisfies
+ -(hbar^2/2m) Laplacian psi + [(5K/4)|psi|^8 - mu] psi = 0
+with hbar=m=1, K=0.5, bath number density 1, and mu=(5K/4)n_bath^4.
+Here m is the mass of one constituent; the solver takes no throat inertia input.
+Stage-1 tensor-grid measure 4*pi*r^2 dr dw. Axisymmetric tube r<1, 0<w<1.85;
+finite receiver r<2, 1.85<w<3.7. Tube/receiver join is an internal face, no sink.
+No normal derivative on the tube, receiver side and shoulder. Feed amplitude 1;
+far-end field 1+0i. Feed phase is an unknown solved for the prescribed positive
+inward number rate or zero. This reduction uses fixed reflecting geometry and
+neutral carrier dynamics; no nonlinear order/wall fields or brane return solve.
+It does not use the frozen Stage-1 carrier profile. No input for holding open
+the native mouth is inferred. The model's exteriors use a volume rate in a
+different domain; no conversion to a far-field gravity source is inferred.
+
+Newton solves real and imaginary field balances and the integral rate equation.
+The clearance checks use 2e-13 for maximum absolute integrated solve residual,
+1e-10 absolute for number rates and 1e-8 for cell net rate per volume. Rates
+increase toward positive w. Current on internal links is (hbar/m) times area
+times Im(conj(psi_left) psi_right) divided by center spacing. The independent
+saved-field readout uses the face midpoint and finite difference normal gradient;
+it tests assembly of the budgets, not independent physical dynamics. Density
+and phase depend on the geometry and bath choices. The test does not establish
+stability or determine the rate selected by a physical throat.
+
+The geometric check integrates the dipolar traction on a spherical rim using
+32-point Gauss-Legendre quadrature in the direction cosine. The code computes
+the aperture centroid from the full radial volume moment and checks known test
+geometries. No force was applied to an evolving mouth. For the missing reaction
+see software/em_charge_attribute/reports/u1_body_dynamics.md lines 20, 329-331,
+420-425 and docs/em_u1_body_definition.md lines 56-68.
+
+SHA256 (scripts, field packets and stdout)
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8  software/stage1_solver/src/stage1_solver/config.py
+3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519  software/stage1_solver/src/stage1_solver/open_sleeve.py
+7724ce85d0ac1e8a522695f84a15d32f2e09ee2af5b09dd4b7399cc239bbecec  software/stage1_solver/src/stage1_solver/mouth_probe.py
+afb640bb3b02b1a4adfd1b7a7df01994f6d9a21d1df6adbce4bbbe3631d7d0e7  software/stage1_solver/tools/check_open_sleeve.py
+113bfe26ef715bb9e2d387710778f91c5bcddab13d930f865d528e7daadb5a02  _scratch/s11c/open_sleeve_current01/fields/level_16.npz
+b87e20522b862ab9a5e7e0764b6bef9673ad95845a68e424852bad450779e237  _scratch/s11c/open_sleeve_current01/fields/level_32.npz
+4c17db82722658bd95be11a3c2e35d7d933c4f22aebbf8e6ee3d5605c97b8028  _scratch/s11c/open_sleeve_current01/fields/level_8.npz
+3bd405576046323df406e33f2922a7434a2ae9f1387cc8b14613a62361b93a0c  _scratch/s11c/open_sleeve_zero01/fields/level_16.npz
+2b403c4de956e4a5a902a8207c92801b491212327b8f616ce7658c597c38f200  _scratch/s11c/open_sleeve_zero01/fields/level_32.npz
+9149f927905856631f09321b8ba0e140135fd38287db981661a7f353377923c2  _scratch/s11c/open_sleeve_zero01/fields/level_8.npz
+495e9eac2abd791b24ded32346850d1fbfdfe55f9de44f838305a9fa37d7d682  _scratch/s11c/open_sleeve_current01/stdout
+1a511f48f74a3653e3fe3fdaa602e2001eaf4129b662da178594c6b93c9407e6  _scratch/s11c/open_sleeve_zero01/stdout
+46184dba2d6d048e6f71969ad7a029f78229f690cef0c67a1a52e9de039832fc  _scratch/s11c/open_sleeve_readout01/stdout
+
+Guarded runs from repository root. Each reported exit 0/0, verified 2 GiB cap,
+zero swap, one CPU and no deadline. Field output directories are fresh per run.
+$ python3 scripts/s11c_guarded_run.py --pool open-sleeve-current --memory-gib 2 --log-directory _scratch/s11c/open_sleeve_current01 -- env PYTHONPATH=software/stage1_solver/src python3 -m stage1_solver.open_sleeve --rate 0.125 --output _scratch/s11c/open_sleeve_current01/fields
+Literal stdout
+level=8 prescribed=0.125 inlet=0.125 into_receiver=0.125 far_exit=0.125 feed_phase=-0.0717352197591 min_density=0.999833253874 max_cell_rate_per_volume=3.433e-15 max_integrated_equation_residual=2.100e-14
+level=16 prescribed=0.125 inlet=0.125 into_receiver=0.125 far_exit=0.125 feed_phase=-0.0710156568021 min_density=0.999832856101 max_cell_rate_per_volume=1.825e-14 max_integrated_equation_residual=1.917e-14
+level=32 prescribed=0.125 inlet=0.125 into_receiver=0.125 far_exit=0.125 feed_phase=-0.0707378741668 min_density=0.999832942166 max_cell_rate_per_volume=7.158e-14 max_integrated_equation_residual=2.842e-14
+
+$ python3 scripts/s11c_guarded_run.py --pool open-sleeve-control --memory-gib 2 --log-directory _scratch/s11c/open_sleeve_zero01 -- env PYTHONPATH=software/stage1_solver/src python3 -m stage1_solver.open_sleeve --rate 0 --output _scratch/s11c/open_sleeve_zero01/fields
+Literal stdout
+level=8 prescribed=0 inlet=0 into_receiver=0 far_exit=0 feed_phase=0 min_density=1 max_cell_rate_per_volume=0.000e+00 max_integrated_equation_residual=1.421e-14
+level=16 prescribed=0 inlet=0 into_receiver=0 far_exit=0 feed_phase=0 min_density=1 max_cell_rate_per_volume=0.000e+00 max_integrated_equation_residual=1.421e-14
+level=32 prescribed=0 inlet=0 into_receiver=0 far_exit=0 feed_phase=0 min_density=1 max_cell_rate_per_volume=0.000e+00 max_integrated_equation_residual=1.421e-14
+
+$ python3 scripts/s11c_guarded_run.py --pool open-sleeve-readout --memory-gib 2 --log-directory _scratch/s11c/open_sleeve_readout01 -- env PYTHONPATH=software/stage1_solver/src python3 software/stage1_solver/tools/check_open_sleeve.py _scratch/s11c/open_sleeve_zero01/fields/level_8.npz _scratch/s11c/open_sleeve_zero01/fields/level_16.npz _scratch/s11c/open_sleeve_zero01/fields/level_32.npz _scratch/s11c/open_sleeve_current01/fields/level_8.npz _scratch/s11c/open_sleeve_current01/fields/level_16.npz _scratch/s11c/open_sleeve_current01/fields/level_32.npz
+Literal stdout
+level_8.npz rate=0 min_plane_rate=0 max_plane_rate=0 max_abs_plane_error=0.000e+00
+level_16.npz rate=0 min_plane_rate=0 max_plane_rate=0 max_abs_plane_error=0.000e+00
+level_32.npz rate=0 min_plane_rate=0 max_plane_rate=0 max_abs_plane_error=0.000e+00
+level_8.npz rate=0.125 min_plane_rate=0.125 max_plane_rate=0.125 max_abs_plane_error=9.437e-16
+level_16.npz rate=0.125 min_plane_rate=0.125 max_plane_rate=0.125 max_abs_plane_error=1.915e-15
+level_32.npz rate=0.125 min_plane_rate=0.125 max_plane_rate=0.125 max_abs_plane_error=2.665e-15
+rim_load=0 integrated_force_x=0
+rim_load=0.015 integrated_force_x=0.015
+rim_load=0.0075 integrated_force_x=0.0075
+test_geometry_x=0 centroid_x=3.25260651746e-19
+test_geometry_x=0.1 centroid_x=0.1
+test_geometry_x=-0.1 centroid_x=-0.1
+centered_quadrupole_centroid_x=3.443e-17

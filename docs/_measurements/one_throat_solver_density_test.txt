@@ -1,0 +1,289 @@
+0PN one-throat density test. Solver capability and saved-state checks.
+Working note on repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c.
+Read-only retrieval. The first three rows read the 6x4, 8x6 and 10x8 frozen WP1 files in order.
+The Step 8c sample below is a separate driven study. It uses its own background.
+No new physical field was generated at zero drive, U or U/2.
+
+$ jq -c '{nr:.grid.nr,nw:.grid.nw,converged:.solver.converged,spatial_current_l2:.convergence_evidence.surrogate_values.spatial_current_l2,mouth:.convergence_evidence.boundaries.matter_w_lower,exit:.convergence_evidence.boundaries.matter_w_upper,w_face0:.grid.w_faces[0],w_center0:.grid.w_centers[0]}' software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_6x4.json software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_8x6.json software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json
+{"nr":6,"nw":4,"converged":true,"spatial_current_l2":0.0,"mouth":{"alpha":1.0,"beta":0.0,"gamma":0.0,"kind":"dirichlet"},"exit":{"alpha":0.25,"beta":1.0,"gamma":0.0,"kind":"robin"},"w_face0":0.0,"w_center0":0.23125}
+{"nr":8,"nw":6,"converged":true,"spatial_current_l2":0.0,"mouth":{"alpha":1.0,"beta":0.0,"gamma":0.0,"kind":"dirichlet"},"exit":{"alpha":0.25,"beta":1.0,"gamma":0.0,"kind":"robin"},"w_face0":0.0,"w_center0":0.15416666666666667}
+{"nr":10,"nw":8,"converged":true,"spatial_current_l2":0.0,"mouth":{"alpha":1.0,"beta":0.0,"gamma":0.0,"kind":"dirichlet"},"exit":{"alpha":0.25,"beta":1.0,"gamma":0.0,"kind":"robin"},"w_face0":0.0,"w_center0":0.115625}
+
+$ jq -c '{claim_scope,entry:.solver.entry_point,a:.config.branch.r_mouth,r_center0:.grid.r_centers[0],rho_first_cell:.derived.rho0[0][0],current_fields:(.fields|keys),A_w0_linf:.derived.A_w0_linf}' software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json
+{"claim_scope":"pre_registered_effective_closure_branch","entry":"stage1_solver.coupled_branch.run_branch_continuation","a":1.0,"r_center0":0.1,"rho_first_cell":0.0028145042360886224,"current_fields":["A_00","A_r0","A_w0","psi_I0","psi_R0"],"A_w0_linf":0.0}
+
+$ sed -n '280,286p;293,300p;333,345p;455,459p;761,763p' software/stage1_solver/src/stage1_solver/coupled_branch.py
+def branch_boundary_conditions(cfg: BranchSmokeConfig) -> CoupledBoundarySet:
+    if cfg.matter_mouth_boundary == "dirichlet":
+        matter_w_lower = BoundaryCondition.dirichlet(0.0)
+    elif cfg.matter_mouth_boundary == "neumann":
+        matter_w_lower = BoundaryCondition.neumann(0.0)
+    else:
+        raise ValueError(f"Unsupported matter_mouth_boundary {cfg.matter_mouth_boundary!r}")
+    return CoupledBoundarySet(
+        matter_radial_outer=BoundaryCondition.dirichlet(0.0),
+        matter_w_lower=matter_w_lower,
+        matter_w_upper=BoundaryCondition.robin(
+            alpha=cfg.matter_exit_impedance_alpha,
+            beta=1.0,
+            gamma=0.0,
+        ),
+    grad_imag_r = tensor_center_gradient_r(fields.psi_imag, grid)
+    grad_real_w = tensor_center_gradient_w(fields.psi_real, grid)
+    grad_imag_w = tensor_center_gradient_w(fields.psi_imag, grid)
+    density = fields.psi_real**2 + fields.psi_imag**2
+    phase_current_r = fields.psi_real * grad_imag_r - fields.psi_imag * grad_real_r
+    phase_current_w = fields.psi_real * grad_imag_w - fields.psi_imag * grad_real_w
+    jr = (cfg.hbar / cfg.particle_mass) * phase_current_r - (
+        cfg.gauge_charge / cfg.particle_mass
+    ) * fields.ar * density
+    jw = (cfg.hbar / cfg.particle_mass) * phase_current_w - (
+        cfg.gauge_charge / cfg.particle_mass
+    ) * fields.aw * density
+    return jr, jw
+        boundaries=boundaries,
+    )
+    density = fields.psi_real**2 + fields.psi_imag**2
+    mass = torch.sum(density * grid.cell_volumes) - cfg.mass
+    return torch.cat([pde.reshape(-1), mass.reshape(1)])
+        "spatial_current_l2": float(
+            torch.sqrt(torch.sum((jr_number**2 + jw_number**2) * volumes)).detach().cpu().item()
+        ),
+
+$ sed -n 52,59p software/stage1_solver/src/stage1_solver/boundaries.py
+
+    h = float(spacing)
+    if bc.kind == "dirichlet":
+        return 2.0 * bc.gamma - interior
+    if bc.kind == "robin":
+        denom = 0.5 * bc.alpha + bc.beta / h
+        if denom == 0.0:
+            raise ZeroDivisionError("Degenerate Robin boundary operator")
+
+$ sed -n '475,479p;499,509p' software/stage1_solver/src/stage1_solver/coupled_branch.py
+    """Return the local matter source density ``-k1*rho`` on the tensor grid."""
+
+    density = fields.psi_real**2 + fields.psi_imag**2
+    k1 = confinement_wall_to_matter_coefficient_torch(grid, cfg, radius=fields.r0)
+    return -k1 * density
+):
+    wall_grid = wall_grid_from_tensor_grid(grid)
+    source = patha_radial_reduced_return_source(fields, grid, cfg)
+    return static_balance_terms(
+        fields.r0,
+        wall_grid,
+        s_sigma=s_sigma,
+        source=source,
+        lower_bc=BoundaryCondition.dirichlet(cfg.r_mouth),
+        upper_bc=BoundaryCondition.neumann(0.0),
+    )
+
+$ sed -n '130,134p;562,570p' software/stage1_solver/src/stage1_solver/m1c_physical_run.py
+        matter_mouth_boundary="dirichlet",
+        a0_mouth_boundary="dirichlet",
+        matter_exit_impedance_alpha=0.25,
+        a0_radial_impedance_alpha=0.5,
+        a0_exit_impedance_alpha=0.4,
+def main() -> int:
+    parser = argparse.ArgumentParser(description="M1c physical frozen-run helper")
+    sub = parser.add_subparsers(dest="cmd", required=True)
+    sub.add_parser("freeze")
+    solve = sub.add_parser("solve")
+    solve.add_argument("freeze_hash")
+    summ = sub.add_parser("summarize")
+    summ.add_argument("freeze_hash")
+    args = parser.parse_args()
+
+$ jq -c '{grid,omega:.results.omega,spherical_l:.config.p2_tangent.spherical_l,rhs_amplitude:.config.p2_tangent.surrogate_force_amplitude,results:(.results.surrogate_values|keys)}' software/stage1_solver/runs/step8c_conservation_response/step8c_conservation_response/step8c_omega_0.1_l1_nr_8_nw_8/manifest.json
+{"grid":"step8c_omega_0.1_l1_nr_8_nw_8","omega":0.1,"spherical_l":2,"rhs_amplitude":0.02,"results":["driven_residual_linf","matter_interior_response_l2","scalar_gauge_response_l2","spatial_gauge_response_l2","total_response_l2","wall_eta_l2","wall_lower_endpoint_eta_abs"]}
+
+$ sed -n '989,991p;1012,1015p;636,642p' software/stage1_solver/src/stage1_solver/p2_conservation_response.py
+    fields = unpack_p2_tangent_fields(state.to(torch.complex128), grid)
+    delta_density = linearized_phasor_density(background, fields)
+    r_idx, w_idx = _interior_indices(grid, study.interior)
+    volumes = _interior_tensor(grid.cell_volumes, r_idx, w_idx)
+    interior_density = _interior_tensor(delta_density, r_idx, w_idx)
+    interior_volume = torch.sum(volumes)
+    density_mean = torch.sum(torch.real(interior_density) * volumes) / interior_volume
+    all_omegas = tuple(sorted(set(study.fit_omegas + (study.conservation_omega,))))
+    for level_index, level in enumerate(study.levels):
+        grid = _create_branch_grid(config.branch, level, dtype=dtype, device=config.backend.device)
+                omega=omega,
+                grid_name=f"step8c_omega_{omega:.6g}_l{level_index}_nr_{level[0]}_nw_{level[1]}",
+            )
+            states[omega] = state.detach()
+
+$ sed -n 223,231p software/stage1_solver/src/stage1_solver/p2_tangent.py
+    ell = spherical_ell_factor(p2_cfg.spherical_l)
+    inv_r2 = 1.0 / (grid.r_centers[:, None] ** 2)
+
+    # Compact lines 1298-1308 plus Delta_S2 Y_lm=-l(l+1)Y_lm: the matter
+    # kinetic block gains +(hbar^2/2m) l(l+1) delta_psi/r^2 in the residual.
+    matter_angular = (cfg.hbar**2 / (2.0 * cfg.particle_mass)) * ell * inv_r2
+
+    # Step-3 ratio-confinement wall-to-matter source.  The reverse
+    # matter/gauge-to-wall source is explicitly not supplied in Step 8a.
+
+$ sed -n '242,249p;254,260p;371,389p' software/stage1_solver/src/stage1_solver/p2_driven_absorber.py
+    """Target-blind complex surrogate drive extending the Step-8a forcing."""
+
+    base = p2_surrogate_forcing(grid, config.p2_tangent).to(torch.complex128)
+    fields = unpack_p2_tangent_fields(base, grid)
+    length = grid.spec.w_max - grid.spec.w_min
+    x = (grid.w_centers - grid.spec.w_min) / length
+    source_center = grid.spec.w_min + 0.28 * length
+    source_width = 0.16 * length
+    eta = fields.eta + 0.8 * config.p2_tangent.surrogate_force_amplitude * source * phase
+    r_profile = (grid.r_centers[:, None] / grid.spec.r_max) ** 2
+    axial = (source * phase)[None, :]
+    driven_fields = P2TangentFields(
+        psi_real=fields.psi_real + 0.25 * config.p2_tangent.surrogate_force_amplitude * r_profile * axial,
+        psi_imag=fields.psi_imag - 0.20j * config.p2_tangent.surrogate_force_amplitude * r_profile * axial,
+        a0=fields.a0,
+def p2_driven_linear_residual(
+    state: torch.Tensor,
+    forcing: torch.Tensor,
+    background_state: torch.Tensor,
+    grid: TensorProductGrid,
+    config: HarnessConfig,
+    *,
+    omega: float,
+    cap_enabled: bool | None = None,
+) -> torch.Tensor:
+    return apply_p2_driven_tangent(
+        state,
+        background_state,
+        grid,
+        config,
+        omega=omega,
+        cap_enabled=cap_enabled,
+    ) - forcing.to(torch.complex128)
+
+$ sed -n '145,149p;248,252p;265,268p;305,314p' scripts/inner_throat/paper7_4d_gnls_gpu.py
+    OmegaSq = (P.OmOut**2) - (P.OmOut**2 - P.OmIn**2)*G
+    Vbrane  = 0.5*P.m*OmegaSq*(w4**2)
+    Vwall   = P.V0*(smooth_step(xp, (R - a)/P.dr)**p_int)
+    Vcap    = P.V0*(smooth_step(xp, (smooth_abs(xp, w4, P.epsW) - 0.5*L)/P.dw)**p_int)
+    return (Vbrane + Vwall + Vcap).astype(out_dtype)
+    def _Veff(self, Vconf, psi):
+        xp = self.grid.xp
+        rho = (psi.real*psi.real + psi.imag*psi.imag).astype(self.P.dtype_real)
+        nonlin = (5.0*self.P.K/4.0) * (rho**4)  # |psi|^8 = (|psi|^2)^4
+        return (Vconf + nonlin).astype(self.P.dtype_real)
+        psi_k = self.grid.fft.fftn(psi, axes=(0,1,2,3))
+        psi_k = psi_k * self.Kprop
+        psi = self.grid.fft.ifftn(psi_k, axes=(0,1,2,3))
+
+                               psi0=None):
+    xp = grid.xp
+    if psi0 is None:
+        psi = init_gaussian(grid, P, sigma_xyz=0.5*P.rPort, sigma_w=0.5, seed=0)
+    else:
+        psi = psi0.astype(P.dtype_cplx, copy=True)
+    psi = normalize_to(grid, psi, Ntarget)
+
+    stepper = SplitStepGNLS4D(grid, P, dt=dtau, imaginary=True)
+    prev = psi
+
+$ sed -n 101,108p scripts/inner_throat/run_equilibrium_scan.py
+    for L in L_list:
+        for a in a_list:
+            V = build_vconf_F1(grid, float(a), float(L), P)
+
+            psi = find_ground_state_imagtime(
+                grid, P, V,
+                Ntarget=Ntarget,
+                dtau=dtau,
+
+$ sed -n '6,15p;40,44p' research/4d/scripts/single_throat_monopole.py
+- 3D conservative compressible Euler (barotropic) on a GPU using CuPy
+- EOS: stiff polytrope P = P0 * (rho/rho0)^n, default n=5
+- One fixed "throat" modeled as a normalized kernel W(x) removing superfluid density
+  with a prescribed throughput Mdot(t) (ramped up smoothly).
+- Bulk refill term (dark-energy leakage) drives rho back toward rho0 when rho < rho0.
+- Reservoir boundary: ghost cells fixed to rho=rho0, v=0.
+
+Diagnostics (prints copy/paste-friendly JSON blocks):
+- Spherical averages of rho(r), P(r), ΔP(r)
+- g_eff(r) = (1/rho(r)) dP/dr
+
+def enforce_reservoir_bc(rho, mx, my, mz, rho0, g):
+    """Set ghost cells to a reservoir: rho=rho0, momentum=0."""
+    # x faces
+    rho[:g, :, :] = rho0
+
+$ sed -n 592,602p research/4d/scripts/stepE_euler_throat_longitudinal.py
+    def source_terms(t: float, rho_, mx_, my_, mz_):
+        # Throughput ramp
+        s = t / max(ramp_time, 1e-30)
+        Mdot = Mdot_target * smoothstep01(s)
+
+        # Density source: sink + uniform refill (net zero)
+        S_sink = (-Mdot) * W
+        S_ref = (Mdot / vol) * xp.ones_like(rho_)
+        S_rho = S_sink + S_ref
+
+        # Momentum source
+
+$ sed -n 3,9p research/pde_audit/scripts/stage_v2_23_minimal_open_throat_branch_solver.py
+Stage V2-23: Minimal open-throat branch solver and first real residual extraction.
+
+This is a reduced branch-realization prototype, not a full nonlinear GNLS/Maxwell
+moving-throat PDE solver. It solves a frozen one-dimensional open-throat geometry
+and Sturm-Liouville support/gauge profiles, computes actual overlap integrals,
+builds the V2-21/V2-22 observable packet, and reports residuals against the
+isotropic full-bundle target surface.
+
+$ sed -n 1,6p software/stage1_solver/tools/mouth_density_readout.py
+"""Check sampling of manufactured number-density fields on a one-throat aperture.
+
+At a fixed radius in the isolated aperture, mu is the cosine to the incident
+velocity axis and s is its signed speed. The entrance samples a gradient in w.
+The manufactured fields test the readouts only. They obey no assumed core law.
+"""
+
+$ sed -n '594,604p;609,615p' research/pde_ledger_v3/V3_STEP_PLAN.md
+An **internal order-conversion at the throat** — the dynamical wall converting ordered↔disordered
+material. Phase-conversion, **not suction**.
+
+⛔ **RULED OUT** (`:19`, user, 2026-07-24): the G0-card `S_drain` **ρ-mass-sink + remote return**, i.e.
+`∂_t ρ + ∇·(ρv) = S_drain + S_leakage`. It is **frozen-wall-premised**, and the standing principle is
+*"the drain cannot be a frozen wall — several instances where we tried to freeze the wall and it screwed
+up all the calculations."* ⇒ If a static limit is ever wanted it must be **derived** as the `ω→0` limit
+of the dynamical law, ⛔ never posed as an independent frozen solve.
+
+⚠ The G0 card's *structure* is still reusable — return controllers, `f`/`w` balances, `𝔅`/mouth/collar/IR
+BCs, the `F_var+F_flux+F_𝔅+F_rad` partition — but it must be **re-hosted** on the dynamical law.
+⛔ **Two inventories, kept apart:**
+- **non-variational source / controller functions** — `Γ_return`, `Γ_drain`, `J_χ`, and the return
+  controllers. ⛔ All `[OPEN]` in form.
+- **boundary / domain data** — the mouth, collar and IR conditions, and the `𝔅` branch selection.
+
+⇒ The throat enters this ledger with its **source form open and its strength supplied**. ⛔ Not "only a
+boundary condition" — that framing hides which of the two is unresolved.
+
+$ sed -n '53,55p;70,72p' research/pde_ledger_v3/steps/S12_order_source.md
+∂t n + ∇₄·(n u) = 0
+∂t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n Γ_B
+Γ_B = Γ_return − Γ_drain,       [Γ_B] = T⁻¹.
+No regime is chosen and no field is frozen. In particular `J_χ=0` is not adopted. Transfer is only to
+where the committed law holds and the shear-holding region has two graph faces over the in-plane
+coordinates. The puncture's own interior is excluded, with S22. The S9b/O2 far-zone setting is a
+
+$ sed -n 40,55p software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+  - id: sleeve_core_trace
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: scalar_field_trace_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [field_point, outward_normal, wall_side, a, L]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    source: nonlinear_throat_core_open
+  - id: geon_core_bundle
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: field_trace_bundle_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [density_trace, h_trace, phase_flux_trace, wall_side]
+    symmetry_class: BODY_CONJUGATE_BUNDLE
+    source: spec_7_0_geon_profile_open

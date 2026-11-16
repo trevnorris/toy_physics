@@ -1,0 +1,137 @@
+{
+  "status": "working, unreviewed",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "units": "Same dimensionless m=hbar=1 feeding slab. Acceleration-dependent drive refers to the force offsetting the brane reaction alone.",
+  "references": {
+    "docs/_measurements/mouth_feed_weak_run.json": "f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0",
+    "docs/_measurements/mouth_intake_redistribution.json": "f437841524cdf0166ffbc6950a663767a3ea9d0691236a07a6111d141bf00711",
+    "docs/_measurements/mouth_carrier_momentum.json": "85d30804e89e4d54d4d125604b20793c35629ce49e0f3e6b3c6749b06e8d6c01"
+  },
+  "sources": {
+    "software/stage1_solver/tools/mouth_acceleration_response.py": "93308dad98937ca522f49a75c60ba119e31b82703bc0aa8e8e395cf3e56e5cc5",
+    "software/stage1_solver/tools/mouth_acceleration_balance.py": "49e71a76d2affd4e5bc26a98802019d32954f9e2d2c08d890f231d5188a3e925",
+    "software/stage1_solver/tools/mouth_acceleration_identities.wl": "1d0d9ac9d893c53f42b84bff0ca3f4c58f277782ac6a2cc179d90bedc21bf92f",
+    "software/stage1_solver/tools/mouth_carrier_momentum.py": "9bfdfe7e441137afc82c7863d21e4a846187cb82316f4381f78fee88fd12d434",
+    "software/stage1_solver/tools/mouth_feed_weak_flow.py": "9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83",
+    "software/stage1_solver/tools/mouth_release_input_check.py": "f341d0ced284b035aaf1450706a0bfa3a35be937b214072fb68c997e03fd8efb",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61"
+  },
+  "guard_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+  "runs": [
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-accel --memory-gib 3 --log-directory _scratch/s11c/mouth_accel_coarse_flat01 -- python3 software/stage1_solver/tools/mouth_acceleration_response.py --level 24 --law flat_density_slope --output _scratch/s11c/mouth_accel_coarse_flat01/fields",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 3,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_sha256": "8deca22938f63f6818362db2dffee0c48c6097ae31054478f716f77f591b3f58",
+      "stdout": [
+        "n=24 depth=12 law=flat_density_slope V0=0.01 dV=0.002 omega=0.1 crossing_accelerations=+/-0.0002 rate=0.25 steps=26 update=1.5e-13",
+        "n=24 depth=12 law=flat_density_slope V0=0.01 dV=0.002 omega=0.2 crossing_accelerations=+/-0.0004 rate=0.25 steps=27 update=1.8e-13"
+      ],
+      "fields": {
+        "_scratch/s11c/mouth_accel_coarse_flat01/fields/omega0.1.npz": "2bfef1e0d363b8b267b3aa80537c99d004830bbd14af70ec52087821ec2ae683",
+        "_scratch/s11c/mouth_accel_coarse_flat01/fields/omega0.2.npz": "389c0e1c5c2c8d9cff52abe9c8f7cd31c6e66d88e3a6653d7e1c6afb31795d28"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-accel --memory-gib 3 --log-directory _scratch/s11c/mouth_accel_coarse_restoring01 -- python3 software/stage1_solver/tools/mouth_acceleration_response.py --level 24 --law restoring_slope --output _scratch/s11c/mouth_accel_coarse_restoring01/fields",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 3,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_sha256": "d70cc79a0695f0e72fd4ef2e1d4d29b528b154f6b65348eeaf57be49a473a5ad",
+      "stdout": [
+        "n=24 depth=12 law=restoring_slope V0=0.01 dV=0.002 omega=0.1 crossing_accelerations=+/-0.0002 rate=0.25 steps=26 update=1.4e-13",
+        "n=24 depth=12 law=restoring_slope V0=0.01 dV=0.002 omega=0.2 crossing_accelerations=+/-0.0004 rate=0.25 steps=27 update=1.66e-13"
+      ],
+      "fields": {
+        "_scratch/s11c/mouth_accel_coarse_restoring01/fields/omega0.1.npz": "9a07c0178a0c16c7b36c45d730baf848cc9aff1c8dec7245eba0338510124f0c",
+        "_scratch/s11c/mouth_accel_coarse_restoring01/fields/omega0.2.npz": "a4401c1dd6b9a2e29c440d0827c0e418aba86e71b0628ca0355927a597bd9539"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-accel --memory-gib 5 --log-directory _scratch/s11c/mouth_accel_fine_flat01 -- python3 software/stage1_solver/tools/mouth_acceleration_response.py --level 32 --law flat_density_slope --output _scratch/s11c/mouth_accel_fine_flat01/fields",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 5,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_sha256": "f6dd9f451bb60aa2ecfd6c0d2107be7b7e047580b89413d9bbac6c3086e48f9f",
+      "stdout": [
+        "n=32 depth=64 law=flat_density_slope V0=0.01 dV=0.002 omega=0.1 crossing_accelerations=+/-0.0002 rate=0.25 steps=26 update=1.47e-13",
+        "n=32 depth=64 law=flat_density_slope V0=0.01 dV=0.002 omega=0.2 crossing_accelerations=+/-0.0004 rate=0.25 steps=27 update=1.77e-13"
+      ],
+      "fields": {
+        "_scratch/s11c/mouth_accel_fine_flat01/fields/omega0.1.npz": "1d98be012b51edb10f2b368779d4b97181fac8c9673275c1298119c96e12dcb9",
+        "_scratch/s11c/mouth_accel_fine_flat01/fields/omega0.2.npz": "d3db815d5fa18f895c243e698edc3cec2b8c1f96bbe3c7c56d2be373ff2b1097"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-mouth-accel --memory-gib 5 --log-directory _scratch/s11c/mouth_accel_fine_restoring01 -- python3 software/stage1_solver/tools/mouth_acceleration_response.py --level 32 --law restoring_slope --output _scratch/s11c/mouth_accel_fine_restoring01/fields",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 5,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_sha256": "ad7f1d21b32ac6502d4c6d7c1874dcbc8a74260a9f023b92fc31c9d4d3147a47",
+      "stdout": [
+        "n=32 depth=64 law=restoring_slope V0=0.01 dV=0.002 omega=0.1 crossing_accelerations=+/-0.0002 rate=0.25 steps=26 update=1.38e-13",
+        "n=32 depth=64 law=restoring_slope V0=0.01 dV=0.002 omega=0.2 crossing_accelerations=+/-0.0004 rate=0.25 steps=27 update=1.63e-13"
+      ],
+      "fields": {
+        "_scratch/s11c/mouth_accel_fine_restoring01/fields/omega0.1.npz": "587ac916aa07e20e5c86895a57c5ad4cb9404e8c2cbbbb64d0ecc519637cb19b",
+        "_scratch/s11c/mouth_accel_fine_restoring01/fields/omega0.2.npz": "e6d5c0a10ba01343f169e9dd4b534c553e019aeec6da800819cbea6b3291c3aa"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-accel-balance --memory-gib 5 --log-directory _scratch/s11c/mouth_accel_balance01 -- python3 software/stage1_solver/tools/mouth_acceleration_balance.py _scratch/s11c/mouth_accel_coarse_flat01/fields _scratch/s11c/mouth_accel_coarse_restoring01/fields _scratch/s11c/mouth_accel_fine_flat01/fields _scratch/s11c/mouth_accel_fine_restoring01/fields",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 5,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_sha256": "7c88e45fe28595ba37ab61056685d473a57c9ad53e0249981c2865936002b983",
+      "stdout": [
+        "n=24 depth=12 law=flat_density_slope omega=0.1 V_cross=0.01 A_size=0.0002 carried_per_A=-0.00053727004604 stress_per_A=-0 mouth_per_A=-0.00053727004604 mouth_direct_fd_per_A=-0.000531353496573 stored_rate_per_A=0.000537270767039 feed_per_A=0 brane_drive_half_difference=1.07454009208e-07 mixed2_per_A=-0.000525926532106 stored2_per_A=0.000525932560624 lattice_body_per_A=6.02822469261e-09 discrete_balance_residual=2.93e-13 relative_balance_residual=5.58e-10 max_harmonic_residual=5.2e-13 net_rate_variation=-1.88e-22",
+        "n=24 depth=12 law=flat_density_slope omega=0.2 V_cross=0.01 A_size=0.0004 carried_per_A=-0.000537995856706 stress_per_A=-0 mouth_per_A=-0.000537995856706 mouth_direct_fd_per_A=-0.00053207489302 stored_rate_per_A=0.000537996578762 feed_per_A=2.01e-20 brane_drive_half_difference=2.15198342682e-07 mixed2_per_A=-0.000526642522698 stored2_per_A=0.000526648562467 lattice_body_per_A=6.03961141327e-09 discrete_balance_residual=1.58e-13 relative_balance_residual=3e-10 max_harmonic_residual=4.68e-13 net_rate_variation=-2.51e-22",
+        "n=24 depth=12 law=restoring_slope omega=0.1 V_cross=0.01 A_size=0.0002 carried_per_A=-0.000524764934091 stress_per_A=4.43583574334e-08 mouth_per_A=-0.000524720575734 mouth_direct_fd_per_A=-0.000519668643085 stored_rate_per_A=0.000524721737873 feed_per_A=2.01e-20 brane_drive_half_difference=1.04944115147e-07 mixed2_per_A=-0.000513822648831 stored2_per_A=0.000513828127575 lattice_body_per_A=5.47845495441e-09 discrete_balance_residual=2.89e-13 relative_balance_residual=5.62e-10 max_harmonic_residual=3.85e-13 net_rate_variation=6.27e-23",
+        "n=24 depth=12 law=restoring_slope omega=0.2 V_cross=0.01 A_size=0.0004 carried_per_A=-0.000525473299633 stress_per_A=4.44105883419e-08 mouth_per_A=-0.000525428889044 mouth_direct_fd_per_A=-0.000520373127244 stored_rate_per_A=0.000525430052904 feed_per_A=0 brane_drive_half_difference=2.10171555618e-07 mixed2_per_A=-0.000514521600402 stored2_per_A=0.000514527089284 lattice_body_per_A=5.48872585768e-09 discrete_balance_residual=1.56e-13 relative_balance_residual=3.03e-10 max_harmonic_residual=4.11e-13 net_rate_variation=-1.25e-22",
+        "n=32 depth=64 law=flat_density_slope omega=0.1 V_cross=0.01 A_size=0.0002 carried_per_A=-0.000535966023923 stress_per_A=-0 mouth_per_A=-0.000535966023923 mouth_direct_fd_per_A=-0.000535796710626 stored_rate_per_A=0.000535966257663 feed_per_A=-3.39e-20 brane_drive_half_difference=1.07193204785e-07 mixed2_per_A=-0.000529433878811 stored2_per_A=0.000529437281538 lattice_body_per_A=3.40244019872e-09 discrete_balance_residual=2.87e-13 relative_balance_residual=5.42e-10 max_harmonic_residual=2.97e-12 net_rate_variation=2.12e-22",
+        "n=32 depth=64 law=flat_density_slope omega=0.2 V_cross=0.01 A_size=0.0004 carried_per_A=-0.000536688540847 stress_per_A=-0 mouth_per_A=-0.000536688540847 mouth_direct_fd_per_A=-0.000536519096888 stored_rate_per_A=0.000536688774838 feed_per_A=-3.39e-20 brane_drive_half_difference=2.14675416339e-07 mixed2_per_A=-0.000530150835726 stored2_per_A=0.000530154244734 lattice_body_per_A=3.40885373674e-09 discrete_balance_residual=1.55e-13 relative_balance_residual=2.92e-10 max_harmonic_residual=3.18e-12 net_rate_variation=0",
+        "n=32 depth=64 law=restoring_slope omega=0.1 V_cross=0.01 A_size=0.0002 carried_per_A=-0.000523799936941 stress_per_A=4.43856745983e-08 mouth_per_A=-0.000523755551266 mouth_direct_fd_per_A=-0.000523680753177 stored_rate_per_A=0.000523755936441 feed_per_A=0 brane_drive_half_difference=1.04751110253e-07 mixed2_per_A=-0.000517475028947 stored2_per_A=0.000517478121485 lattice_body_per_A=3.09225600528e-09 discrete_balance_residual=2.83e-13 relative_balance_residual=5.46e-10 max_harmonic_residual=3e-12 net_rate_variation=1.06e-22",
+        "n=32 depth=64 law=restoring_slope omega=0.2 V_cross=0.01 A_size=0.0004 carried_per_A=-0.00052450538103 stress_per_A=4.44377401595e-08 mouth_per_A=-0.00052446094329 mouth_direct_fd_per_A=-0.000524386125279 stored_rate_per_A=0.000524461328944 feed_per_A=1.69e-20 brane_drive_half_difference=2.09784377316e-07 mixed2_per_A=-0.000518175119081 stored2_per_A=0.000518178217276 lattice_body_per_A=3.09804305534e-09 discrete_balance_residual=1.52e-13 relative_balance_residual=2.94e-10 max_harmonic_residual=2.89e-12 net_rate_variation=0"
+      ]
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool brane-accel-identities --memory-gib 4 --log-directory _scratch/s11c/mouth_accel_identities01 -- math -noprompt -script software/stage1_solver/tools/mouth_acceleration_identities.wl",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_sha256": "8d69fdb6613ab1512b8a2c73311b2176ef7eae76b5703176ffc7d9c4d34e394b",
+      "stdout": [
+        "\"crossing speeds = \"InputForm[{v0, v0}]",
+        "\"crossing accelerations = \"InputForm[{eps*w, -(eps*w)}]",
+        "\"flux contrast / acceleration contrast = \"InputForm[-(fs/w)]",
+        "\"stored momentum rate contrast / acceleration contrast = \"InputForm[pc]",
+        "\"mixed momentum flux identity residual = \"InputForm[0]"
+      ]
+    }
+  ]
+}

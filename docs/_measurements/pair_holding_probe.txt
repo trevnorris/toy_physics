@@ -1,0 +1,99 @@
+Follow-up: the independent Wolfram check subsequently completed. The original run evidence below is preserved. See docs/_measurements/paired_gravity_transfer.txt for the two-engine comparison and the fixed-source calculation.
+
+Two equal spherical intakes, 0PN ideal-fluid model, axis along centers. Unreviewed conditional result.
+Repo base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c. Pre-change note SHA256 0a7b519bdcfa4275419d8a429774598162cc7840b461f9b8bd5b3e5306264f9e.
+Both centers initially at rest, both drains on. Untested for the native brane, sleeve and slab faces.
+Units R=s=M_displaced=1; rho=3/(4 pi), Q=4 pi per sphere and M=1. Fprobe=+/-3/200.
+Holding uses I_i = -integral rho(v_x v_normal - |v|^2 normal_x/2)dS.
+The outward normal is from body toward exterior. The effective driving load is I_i-L_i
+with L_i=rho Q k U_regular,i. The holding force cancels that signed load.
+At release the centers have zero velocity; motion of the coordinates contributes zero to the instant's
+potential time derivative. Solving the differentiated Neumann conditions for each independently
+accelerating center supplies the unsteady pressure, including cross-inertia. In mass units M=1
+the resulting force balance is (Id + added_mass) a = I-L+applied_probe. Both supports are off.
+The +/- probes on each body separately reconstruct the full acceleration response matrix. H and a
+are reported along +x at the left sphere. Pair-minus-alone subtracts zero by symmetry. This is
+a two-sphere potential-flow solution and a specified outgoing material law, not a physical outlet
+or later-time orbit solution. No gravity term appears in the field or force evaluation.
+
+For each refinement, fit decaying harmonics to the normal boundary conditions by weighted least
+squares. Evaluate the boundary errors and integrate both momentum terms on distinct Gauss nodes.
+Controls include degree 8 vs 14, the isolated sphere (added mass 1/2), symmetry of pair inertia,
+opposite held reactions and free accelerations, and the direct vs probe-reconstructed releases.
+The independent exact multipole-translation implementation is unfinished; neither Wolfram attempt
+produced a validated reading. No independent-engine agreement is claimed.
+
+$ python3 scripts/s11c_guarded_run.py --pool pair-holding-probe --memory-gib 2 --log-directory _scratch/s11c/pair_holding_probe_numpy01 -- python3 software/stage1_solver/tools/pair_holding_probe.py
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 ffd967c6d36341762ca7eae4f715188faba203216724f58a56d10506909316ca  software/stage1_solver/tools/pair_holding_probe.py
+Start UTC 2026-11-14T06:18:48.803766+00:00. End UTC (outcome timestamp) 2026-11-14T06:18:49.053111+00:00. Guard exit 0, child outcome {'exitCode': 0, 'guardReason': None, 'wallSeconds': 0.16603796696290374, 'childPid': 1431507}.
+Verified 2 GiB and zero swap. Recorded memory.peak 26140672 bytes.
+Stdout _scratch/s11c/pair_holding_probe_numpy01/stdout (2149 bytes, SHA256 4f40669a0961f379b28f0fed1ff6aff4bfe8cdd01af47f4d2ba2d0c49c66e2f2).
+Literal stdout
+separation=None degree=8
+k=0 H_target=+1.62630325873e-17 a_minus=-0.01 a_plus=+0.01 a_free=-1.08420217249e-17 prediction_error=1.5e-33
+k=1 H_target=+1.62630325873e-17 a_minus=-0.01 a_plus=+0.01 a_free=-1.08420217249e-17 prediction_error=1.5e-33
+max_normal_error=5.66e-15 mobility_target_row=0.666666666667
+separation=None degree=14
+k=0 H_target=-8.91214185783e-17 a_minus=-0.01 a_plus=+0.01 a_free=+5.94142790522e-17 prediction_error=0
+k=1 H_target=-8.91214185783e-17 a_minus=-0.01 a_plus=+0.01 a_free=+5.94142790522e-17 prediction_error=0
+max_normal_error=3.33e-15 mobility_target_row=0.666666666667
+max_refinement_change=1.05e-16
+separation=10.0 degree=8
+k=0 H_target=-0.0300613289992 a_minus=+0.0100208448061 a_plus=+0.0300208441939 a_free=+0.0200208445 prediction_error=6.9e-18
+k=1 H_target=-3.06882925772e-05 a_minus=-0.00997956129167 a_plus=+0.0100204380961 a_free=+2.04384022301e-05 prediction_error=6.8e-21
+max_normal_error=8.93e-10 mobility_target_row=0.66666664626 0.000666666667508
+separation=10.0 degree=14
+k=0 H_target=-0.0300613289992 a_minus=+0.0100208448061 a_plus=+0.0300208441939 a_free=+0.0200208445 prediction_error=1e-17
+k=1 H_target=-3.06882925771e-05 a_minus=-0.00997956129167 a_plus=+0.0100204380961 a_free=+2.04384022301e-05 prediction_error=3.4e-21
+max_normal_error=6.44e-15 mobility_target_row=0.66666664626 0.000666666667507
+max_refinement_change=1.91e-16
+separation=20.0 degree=8
+k=0 H_target=-0.00750188482582 a_minus=-0.00499936860593 a_plus=+0.0150006313917 a_free=+0.00500063139289 prediction_error=8.7e-19
+k=1 H_target=-9.42502007547e-07 a_minus=-0.00999937174269 a_plus=+0.010000628255 a_free=+6.2825612979e-07 prediction_error=1.1e-22
+max_normal_error=8.22e-13 mobility_target_row=0.666666666588 8.33333333334e-05
+separation=20.0 degree=14
+k=0 H_target=-0.00750188482582 a_minus=-0.00499936860593 a_plus=+0.0150006313917 a_free=+0.00500063139289 prediction_error=1.7e-18
+k=1 H_target=-9.42502007576e-07 a_minus=-0.00999937174269 a_plus=+0.010000628255 a_free=+6.28256129809e-07 prediction_error=2.1e-22
+max_normal_error=8.66e-15 mobility_target_row=0.666666666588 8.33333333335e-05
+max_refinement_change=4.51e-17
+
+$ python3 scripts/s11c_guarded_run.py --pool pair-holding-probe --memory-gib 4 --log-directory _scratch/s11c/pair_holding_probe_wolfram01 -- math -noprompt -script software/stage1_solver/tools/pair_holding_probe.wl
+First script version contained an extra parenthesis at line 15. The next attempt used the corrected source.
+Start UTC 2026-11-14T06:18:48.987411+00:00. End UTC (outcome timestamp) 2026-11-14T06:18:53.664247+00:00. Guard exit 0, child outcome {'exitCode': 0, 'guardReason': None, 'wallSeconds': 4.56991918804124, 'childPid': 1431525}.
+Verified 4 GiB and zero swap. Recorded memory.peak 224821248 bytes.
+Stdout _scratch/s11c/pair_holding_probe_wolfram01/stdout (300 bytes, SHA256 e16aee62cffcd0d7307b1c9f8c1fcbf5c5e72be1dbefdd84510a6bbde68c7b2e).
+Literal stdout
+
+Syntax::sntx: Invalid syntax in or before "translation[row[[2]],col[[2]],centers[[row[[1]]]]-centers[[col[[1]]]])],". (line 15 of "software/stage1_solver/tools/pair_holding_probe.wl")
+                                                                                                                 ^
+
+$ python3 scripts/s11c_guarded_run.py --pool pair-holding-probe --memory-gib 4 --log-directory _scratch/s11c/pair_holding_probe_wolfram02 -- math -noprompt -script software/stage1_solver/tools/pair_holding_probe.wl
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 05eec2a9d1ff6fe6ceb905d2d7fca015b843414588898abd53136e47e505f4c1  software/stage1_solver/tools/pair_holding_probe.wl
+Start UTC 2026-11-14T06:19:12.572258+00:00. End UTC (outcome timestamp) 2026-11-14T06:20:35.347581+00:00. Guard exit 1, child outcome None.
+Verified 4 GiB and zero swap. Recorded memory.peak 225062912 bytes.
+Stdout _scratch/s11c/pair_holding_probe_wolfram02/stdout (27 bytes, SHA256 5b39cc832b6e36d4bf883b7c97052eacef87589fd5769e8719a622fd7258478a).
+Literal stdout
+"centers=""{0}"" degree=5"
+
+At the second Wolfram attempt the unit s11c-guard-ff75d5b38c8a.service was diagnosed and stopped.
+Its pids.events contained "max 1", and pids.current reached the configured limit of 32. The process
+listing showed all 31 Wolfram kernel threads in futex_do_wait. The unit became inactive/dead;
+guard exit 1, no completed child outcome. No native worker was left running by this test.
+
+Native capability evidence
+$ jq -c '{grid:[.grid.nr,.grid.nw],converged:.solver.converged,current:.convergence_evidence.surrogate_values.spatial_current_l2}' software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_6x4.json
+{"grid":[6,4],"converged":true,"current":0.0}
+$ jq -c '{grid:[.grid.nr,.grid.nw],converged:.solver.converged,current:.convergence_evidence.surrogate_values.spatial_current_l2}' software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_8x6.json
+{"grid":[8,6],"converged":true,"current":0.0}
+$ jq -c '{grid:[.grid.nr,.grid.nw],converged:.solver.converged,current:.convergence_evidence.surrogate_values.spatial_current_l2}' software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json
+{"grid":[10,8],"converged":true,"current":0.0}
+$ sed -n '420,427p' software/em_charge_attribute/reports/u1_body_dynamics.md
+## Phase B2 — Intake response and radiative residues
+
+- Status: `PASS_WITH_HONEST_OUTCOMES`
+- Partition: `UNRESOLVED(return_closure)`
+- C_mdot: `UNRESOLVED(required_OPEN_leaves)`
+- Radiation: `UNRESOLVED(native_branch_inputs)`
+- Phase-C gates: `NOT_RUN(phase_C)`

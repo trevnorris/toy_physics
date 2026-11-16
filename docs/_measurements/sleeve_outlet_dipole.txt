@@ -1,0 +1,171 @@
+0PN sleeve outlet. Weak dipole on a fixed, upright section of the bulk carrier.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c. Local working calculation.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool sleeve-outlet --memory-gib 2 --log-directory _scratch/s11c/sleeve_outlet_dipole_sympy01 -- python3 software/stage1_solver/tools/sleeve_outlet_dipole.py
+Source SHA256 1b93f51ab30e88c9e1692f2eacb87ff66036e1dd52dbb27197bc7316655cf64a  software/stage1_solver/tools/sleeve_outlet_dipole.py
+Guard SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Start 2026-11-13T18:53:53.548355+00:00. Guard and child exited 0. Verified 2 GiB cap and zero swap. No deadline, guard stop or stderr.
+Stdout SHA256 dc998a888ea0542f79eb966cf6dfba0d7058ed002ecb658bbe4dfbc7cf770625  _scratch/s11c/sleeve_outlet_dipole_sympy01/stdout
+Literal stdout follows
+mass isolated angular mean = m*exp(H(r, w))*Derivative(F(r, w), w)
+mass dipole derivative angular mean = 0
+carried isolated angular mean = 0
+carried dipole derivative angular mean = m*(r*B(r, w)*Derivative(F(r, w), r)*Derivative(F(r, w), w) + r*Derivative(F(r, w), r)*Derivative(G(r, w), w) + r*Derivative(F(r, w), w)*Derivative(G(r, w), r) + 2*G(r, w)*Derivative(F(r, w), w))*exp(H(r, w))/(3*r)
+density-gradient stress isolated angular mean = 0
+density-gradient stress dipole derivative angular mean = -hbar**2*(r*B(r, w)*Derivative(H(r, w), r, w) + r*Derivative(B(r, w), r, w) + 2*Derivative(B(r, w), w))*exp(H(r, w))/(12*m*r)
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool sleeve-outlet --memory-gib 4 --log-directory _scratch/s11c/sleeve_outlet_dipole_wolfram01 -- math -noprompt -script software/stage1_solver/tools/sleeve_outlet_dipole.wl
+Source SHA256 e28f045b7c36e16d3608a448b228d924269081cadd635edec3dda79f07fac9b6  software/stage1_solver/tools/sleeve_outlet_dipole.wl
+Guard SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+Start 2026-11-13T18:54:02.048265+00:00. Guard and child exited 0. Verified 4 GiB cap and zero swap. No deadline, guard stop or stderr.
+Stdout SHA256 b4f50c5f59755f83a3b571823bed29f69e604a340c07a111fb9e4fe9ffba976a  _scratch/s11c/sleeve_outlet_dipole_wolfram01/stdout
+Literal stdout follows
+"mass"" [isolated mean, dipole derivative mean] = ""{E^h0*fw*m, 0}"
+"carried"" [isolated mean, dipole derivative mean] = ""{0, (E^h0*m*(2*fw*g0 + fw*(b0*fr + gr)*r0 + fr*gw*r0))/(3*r0)}"
+"density-gradient stress"" [isolated mean, dipole derivative mean] = ""{0, -1/12*(E^h0*hb^2*(2*bw + (brw + b0*hrw)*r0))/(m*r0)}"
+
+Comparison conventions. Both scripts use a fixed reference number density of one in the chosen units. H is the isolated log density; B multiplies the angular dipole in log density. F is the isolated velocity potential; G multiplies the dipole in velocity potential. In the Cartesian check r0 is the evaluation radius. The local coefficients h0/hrw, b0/bw/brw, fr/fw and g0/gr/gw denote the corresponding values and derivatives of H, B, F and G there. The two printed triples of angular means agree under this identification. The entire functions, the aperture radius and any additional surface stress remain free.
+
+$ sed -n '49,55p;70,72p' research/pde_ledger_v3/steps/S12_order_source.md
+The two balances and signed rate split are **supplied, unfalsifiable in this build**, from the user's
+2026-07-24 committed law (decision list, supplied equations; plan S12; v2 stage 006):
+
+```
+∂t n + ∇₄·(n u) = 0
+∂t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n Γ_B
+Γ_B = Γ_return − Γ_drain,       [Γ_B] = T⁻¹.
+No regime is chosen and no field is frozen. In particular `J_χ=0` is not adopted. Transfer is only to
+where the committed law holds and the shear-holding region has two graph faces over the in-plane
+coordinates. The puncture's own interior is excluded, with S22. The S9b/O2 far-zone setting is a
+
+$ sed -n 594,603p research/pde_ledger_v3/V3_STEP_PLAN.md
+An **internal order-conversion at the throat** — the dynamical wall converting ordered↔disordered
+material. Phase-conversion, **not suction**.
+
+⛔ **RULED OUT** (`:19`, user, 2026-07-24): the G0-card `S_drain` **ρ-mass-sink + remote return**, i.e.
+`∂_t ρ + ∇·(ρv) = S_drain + S_leakage`. It is **frozen-wall-premised**, and the standing principle is
+*"the drain cannot be a frozen wall — several instances where we tried to freeze the wall and it screwed
+up all the calculations."* ⇒ If a static limit is ever wanted it must be **derived** as the `ω→0` limit
+of the dynamical law, ⛔ never posed as an independent frozen solve.
+
+⚠ The G0 card's *structure* is still reusable — return controllers, `f`/`w` balances, `𝔅`/mouth/collar/IR
+
+$ sed -n '71,77p;93p;104p' research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
+
+```
+F = ∫ d^4X [ (1/2) m_GNLS n |u|^2 + U(n) + f_B(chi_B)
+             + (kappa_B/2)|grad_4 chi_B|^2 + chi_B f_shear
+             + f_throat + f_mix ]
+```
+
+| P1 | `n` = total conserved 4D constituent **number** density, `[n] = L^-4` (I-1 row); kinetic term carries the constituent mass: `(1/2) m_GNLS n |u|^2`. **`KINETIC_MASS_FACTOR_PINNED`** — the handoff's `(1/2) n|u|^2` restatement lacks the mass factor (see Corrections below). |
+| P12 | Throat = phase-conversion **ontology, not a solve**: the site of `Gamma_drain > 0` (`chi_B: 1→0`), an admittance/outlet driven by existing stress/μ gradients (`J_repair ~ -M_n grad mu`, `[M_n] = L^-4 T M^-1`) — NOT a new pairwise suction force. Gate-L wall-translation-Goldstone hazard (`δw = u_w`) DEFERRED. |
+
+$ sed -n '52,55p;73,76p' software/stage1_solver/reports/pathA_21b_force_closure_and_profile_bvp.md
+| Reduced-3D Gauss flux | `int_{S_r} N_infty,3 v.n dS=-Theta_Q J`, so `v_r=-Theta_Q J/(4*pi*N_infty,3*r^2)` | reduced-3D, `dS=r^2 dOmega_2`; `J:T^-1`, `N_infty,3:L^-3` | `pde.tex:396-406`; `pde.tex:511-539` | closed conservation law; `J_VALUE_BRANCH_PARAMETER` remains |
+| Bulk-4D Gauss flux | `int_{S_R} rho_infty,4 v.n dS=-Theta_Q4 J`, so `v_R=-Theta_Q4 J/(2*pi^2*rho_infty,4*R^3)` | 4D bulk, `dS=R^3 dOmega_3`; `rho_infty,4:L^-4` | `pde.tex:396-406` | closed conservation law; compact reduced lane still branch-selected |
+| Throat regularity and mouth flux | finite `psi0`, `rho0`, and `A_M0`; mouth inflow oriented into the throat where the branch declares a drain | 4D bulk/brane mouth, mouth `d^2S`; volumetric flux from brane mouth data | `brane_bulk_ontology.tex:1267-1289`; `part01_parent_geometry.tex:447-461` | branch BC; no `J` value selector |
+| Bottom/topology | candidate `R0(L0)=0` or equivalent regular bottom condition | reduced throat, `0<=w<=L0` | `part01_parent_geometry.tex:447-461` | branch assumption, not closure |
+
+### G4 Branch Choices
+
+`J_VALUE_BRANCH_PARAMETER / J_SELECTOR_UNDERIVED`: no-leakage conserves the flux in a chosen region, but it does not fix the value. Candidate selectors are sonic choking, regularity at the throat bottom, global topology/outflow balance, or an energy extremum, all explicitly downstream assumptions unless derived.
+
+$ sed -n '22,28p;40p' software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md
+Momentum density: `g_i=m_GNLS*rho*v_i`.
+
+Matter stress representative: `Pi_ij^matter=m_GNLS*rho*v_i*v_j+delta_ij*P(rho)+sigma_Q,ij`.
+
+Quantum stress: `sigma_Q,ij=(hbar^2/(4*m_GNLS))*[(partial_i rho partial_j rho)/rho-partial_i partial_j rho]`.
+
+EOS pressure identity: `P=K*rho^5, h=(5K/4)*rho^4, dP=rho*dh`.
+Stress representative: Canonical Noether stress is reduced to the displayed Madelung hydrodynamic representative. No Belinfante improvement is used in the accepted matter-stress integral; smooth closed-surface improvements integrate to zero by Gauss/antisymmetry, while singular core/profile pieces are not used as derived normalization.
+
+$ sed -n '134p;140p' docs/two_throat_simulation_handoff_spec.md
+with `Π` the medium momentum-flux/stress tensor `Π = m ρ (v⊗v) + P(ρ) 𝟙 + Π_Q`, where `Π_Q,ij = −(ℏ²/4m) ρ ∂_i∂_j ln ρ` is the standard Madelung quantum stress and `P(ρ) = Kρ⁵` (§2.1) — `Π_Q`, the quantum energy density in `ε`, and the flux `𝐣_ε^Q` form **one convention package** fixed by the closure card (§2.6); `ε` the local energy density defined just below and `𝐣_ε` its flux. For each conserved density `q ∈ {ρ, m ρ v, ε}` with flux `J` and source `s`, a solve obeys the **finite-control-volume balance identity**
+- `ρ = ρ(x,w)`,  `θ = −(μ_∞/ℏ) t + φ(x,w)`,  `v = (ℏ/m) ∇φ`,
+
+$ sed -n '28,32p;36p;439,449p;459,465p' software/em_charge_attribute/g0_closure_card_v0.md
+Σ_i^cyl : r_i=a,                     0≤z_i≤L−a,
+Σ_i^cap : r_i²+[z_i−(L−a)]²=a²,      L−a≤z_i≤L.
+```
+
+The open mouth is `M_i={w=0,r_i<a}` and its collar is `C_i={w=0,r_i=a}`. At the collar, hard `min/max` intersections are replaced by
+with `δ=ℓ`; this fixes a smooth signed-distance level set without adding a fit parameter. `Σ_i` means the resulting rounded lateral-plus-cap surface, never the mouth. The lumen and ambient remain connected through `M_i`.
+```text
+[ρ]_-^+ = 0,       [φ]_-^+ = 0,
+[ρ(v−V_i)·n]_-^+ = 0,
+[Π n]_-^+ = 0.
+```
+
+There is no permeability resistance, surface mass storage, phase jump, or surface Rayleigh term. The “phase texture” is the smooth **bulk `θ`** field. The local drain-source match for any pillbox enclosing the lumen/sink is
+
+`∮_{∂P}ρ(v−V_i)·n d³A=∫_P S_drain,i d⁴y`;
+
+in particular, lateral/cap crossing plus mouth flux equals `−Γ_0` once the full sink is enclosed. This is the required E3 drain-source matching, with the sign inherited from `S_drain<0`.
+```text
+(v_±−V_i)·n = 0,                  essential no-penetration,
+n·∇ρ_± = 0,                       natural quantum-density condition,
+P_∥(Π_±n)=0,  P_∥=I−n⊗n,         natural free-slip traction.
+```
+
+The first condition restricts admissible phase variations; the latter two follow from varying `S_bulk` and the surface location with unrestricted tangential slip. No tangential velocity is imposed. The lumen drain is matched only through the open mouth:
+
+$ sed -n 74,79p docs/em_u1_body_definition.md
+## 4. Open-system bookkeeping — the control surface **[DEFINED-HERE]**
+
+U1 declares a control surface `∂Ω_c` around the body and does explicit mass/momentum/energy flux bookkeeping:
+- whether intake grows the body's mass, exits along the sleeve, or rides the (open) return path is **[OPEN — declared, carried symbolically]**; U1 *accounts* for it, it does not resolve it;
+- the **intake-momentum response** `C_ṁ(𝔅, closure)` (reverse-rocket-like) is **[COMPUTABLE(𝔅, closure)]**, reported under the §3 partition rule;
+- first pass holds `ṁ` fixed **[S2]**, with a computed check whether the equations force `O(V)` variation of `ṁ` (G7).
+
+$ sed -n '56,63p;104,111p;217,218p' software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+  - id: throat_surface_functional
+    status: OPEN_INPUT
+    root_type: ACTION
+    domain: field_functional_on_Sigma
+    dimensions: [2, -2, 1]
+    arguments: [field_traces, normal_derivatives, induced_metric]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    source: ledger_stage006_f_throat
+  - id: return_closure
+    status: OPEN_INPUT
+    root_type: RETURN
+    domain: structured_field_flux_map_on_partial_Omega_c
+    dimensions: [0, -1, 1]
+    arguments: [mass_flux_density, momentum_flux_density, destination_field]
+    symmetry_class: AMBIENT_BRANCH_COVARIANT
+    source: pathA_29_open_return
+  scalar_pullback: {lab_field: "f_lab(t,x)", body_field: "f_body(y(t,x))"}
+  momentum_flux: {stress_tensor: Pi_ij, convective_velocity: V_j, momentum_density: g_i, convective_coefficient: -1}
+
+$ sed -n '3,9p;41514,41519p' software/em_charge_attribute/reports/u1_body_dynamics_results.yaml
+current_headline: &id009
+  partition: UNRESOLVED(return_closure)
+  C_mdot: UNRESOLVED(required_OPEN_leaves)
+  radiation: UNRESOLVED(native_branch_inputs)
+  G7: UNRESOLVED(required_OPEN_leaves)
+  G9: UNRESOLVED(missing_native_energy_current_law:geon_open,missing_native_energy_current_law:throat_source_open,missing_native_energy_current_law:wall_mix_open,missing_native_momentum_current_law:geon_open,missing_native_momentum_current_law:throat_source_open,missing_native_momentum_current_law:wall_mix_open,outer_control_flux_native_functional,return_closure_native_functional,return_energy_closure)
+phases:
+    - key: E1|one_sided_pathA29|body_mass_growth|all_admissible_open_functionals
+      semantic_sha256: d81d2142505fdd40b744af09b1d72cc26e70493248dd0f95ff90cb3ab75d190e
+    - key: E1|one_sided_pathA29|return_path|all_admissible_open_functionals
+      semantic_sha256: d81d2142505fdd40b744af09b1d72cc26e70493248dd0f95ff90cb3ab75d190e
+    - key: E1|one_sided_pathA29|sleeve_exit|all_admissible_open_functionals
+      semantic_sha256: d81d2142505fdd40b744af09b1d72cc26e70493248dd0f95ff90cb3ab75d190e
+
+$ sed -n '36,39p;52,55p' software/stage1_solver/tools/one_throat_flow_probe.py
+    # Same control volume and outlet for holding and probe. Constant inventory,
+    # instantaneous outlet mean speed V+k(U-V), zero additional outlet traction.
+    outlet = rho*Q*(V+k*(U-V))
+    balance = mass*A - (incoming - outlet.subs(V, 0) + force + hold)
+    # Units: a, suction speed Q/(4 pi a^2), displaced mass. These values
+    # set units, not native throat properties. The benchmark body has M=1.
+    units = {a: 1, rho: 3/(4*s.pi), Q: 4*s.pi, mass: 1}
+    probe = s.Rational(3, 200)
+
+$ sed -n 19,20p docs/_measurements/paired_flat_face_rates.txt
+probe k = 0 outlet flow [control, driven, change] = [0, 0, 0]
+probe k = 1 outlet flow [control, driven, change] = [0, 3/100, 3/100]

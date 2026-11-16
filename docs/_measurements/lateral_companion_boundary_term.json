@@ -1,0 +1,155 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "Stationary companion load per prescribed axial target acceleration. Unit-depth, weak-flow, long-wavelength point-drain boundary correction at zero frequency, compared with finite-mouth runs at separation 4.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool lateral-companion-boundary --memory-gib 2 --log-directory _scratch/s11c/lateral_companion_boundary_01 -- python3 software/stage1_solver/tools/lateral_companion_boundary_term.py",
+  "sha256": {
+    "software/stage1_solver/tools/lateral_companion_boundary_term.py": "34bd127c28d437d258e765d6b7f092504cc73ec2e695c4dfaa67e0e336cf3c05",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "docs/_measurements/lateral_companion_domain.json": "5d88b762d2128961949dbc85baea663bfa4c9f4a85a9e1fe35419a464f2f91f4"
+  },
+  "started_utc": "2026-11-15T01:57:55.243427+00:00",
+  "guard_outcome_written_utc": "2026-11-15T01:57:55.553985+00:00",
+  "wall_seconds": 0.2924276781268418,
+  "guard_exit": 0,
+  "worker_exit": 0,
+  "limits_verified": true,
+  "memory_max_bytes": 2147483648,
+  "peak_memory_bytes_sampled": 36327424,
+  "swap_max_bytes": 0,
+  "duration_verified": true,
+  "runtime_limit": "infinity",
+  "stderr_bytes": 0,
+  "stdout_path": "_scratch/s11c/lateral_companion_boundary_01/stdout",
+  "stdout_bytes": 4910,
+  "stdout_sha256": "019189036bfab42bc9f572a635157aebdaa3ea3ea8b0f2582114b5b6522758b6",
+  "calculation":
+{
+  "domain_input": "docs/_measurements/lateral_companion_domain.json",
+  "domain_input_sha256": "5d88b762d2128961949dbc85baea663bfa4c9f4a85a9e1fe35419a464f2f91f4",
+  "calibration_L": 128,
+  "target_rate": 0.842148161434,
+  "companion_rate": 0.25,
+  "separation": 4.0,
+  "depth": 1.0,
+  "regular_axial_kernel_at_center": -0.042451235660560874,
+  "endcaps_kernel": -0.039788735772973836,
+  "sidewall_kernel_at_center": -0.0026624998875870373,
+  "predicted_inverse_L_coefficient": 0.008937557515535698,
+  "rows": [
+    {
+      "L": 24,
+      "kernel": -0.04209066370541859,
+      "radial_crosscheck_abs_error": 6.938893903907228e-18,
+      "max_crosscheck_abs_error": 6.938893903907228e-18,
+      "predicted_boundary": 0.0003692351568026569,
+      "measured": 0.00016616960723,
+      "direct": 0.00016583999119,
+      "measured_minus_boundary": -0.00020306554957265688,
+      "direct_minus_boundary": -0.00020339516561265688
+    },
+    {
+      "L": 48,
+      "kernel": -0.04235945772084065,
+      "radial_crosscheck_abs_error": 4.85722573273506e-17,
+      "max_crosscheck_abs_error": 5.551115123125783e-17,
+      "predicted_boundary": 0.00018579655957785002,
+      "measured": -1.67896079725e-05,
+      "direct": -1.70319705938e-05,
+      "measured_minus_boundary": -0.00020258616755035002,
+      "direct_minus_boundary": -0.00020282853017165002
+    },
+    {
+      "L": 72,
+      "kernel": -0.04241030960233865,
+      "radial_crosscheck_abs_error": 6.938893903907228e-17,
+      "max_crosscheck_abs_error": 6.938893903907228e-17,
+      "predicted_boundary": 0.0001240130703383896,
+      "measured": -7.8480791638e-05,
+      "direct": -7.86937967365e-05,
+      "measured_minus_boundary": -0.0002024938619763896,
+      "direct_minus_boundary": -0.0002027068670748896
+    },
+    {
+      "L": 96,
+      "kernel": -0.04242818795047214,
+      "radial_crosscheck_abs_error": 3.469446951953614e-17,
+      "max_crosscheck_abs_error": 4.163336342344337e-17,
+      "predicted_boundary": 9.304901165486017e-05,
+      "measured": -0.00010940605837,
+      "direct": -0.000109604353563,
+      "measured_minus_boundary": -0.00020245507002486016,
+      "direct_minus_boundary": -0.00020265336521786017
+    },
+    {
+      "L": 128,
+      "kernel": -0.04243826283622987,
+      "radial_crosscheck_abs_error": 9.71445146547012e-17,
+      "max_crosscheck_abs_error": 9.71445146547012e-17,
+      "predicted_boundary": 6.980333012106217e-05,
+      "measured": -0.000132624929178,
+      "direct": -0.000132812182183,
+      "measured_minus_boundary": -0.00020242825929906217,
+      "direct_minus_boundary": -0.00020261551230406217
+    }
+  ],
+  "adjacent_sizes": [
+    {
+      "sizes": [
+        24,
+        48
+      ],
+      "predicted_change_small_minus_large": 0.00018343859722480687,
+      "measured_change_small_minus_large": 0.0001829592152025,
+      "direct_change_small_minus_large": 0.0001828719617838,
+      "measured_inverse_L_slope": 0.008782042329720002,
+      "direct_inverse_L_slope": 0.008777854165622401,
+      "leading_slope_relative_difference": 0.017708316582511152,
+      "finite_offset_relative_difference": 0.0026201578410591786,
+      "direct_finite_offset_relative_difference": 0.003098536459497092
+    },
+    {
+      "sizes": [
+        48,
+        72
+      ],
+      "predicted_change_small_minus_large": 6.178348923946043e-05,
+      "measured_change_small_minus_large": 6.169118366550001e-05,
+      "direct_change_small_minus_large": 6.16618261427e-05,
+      "measured_inverse_L_slope": 0.008883530447832001,
+      "direct_inverse_L_slope": 0.0088793029645488,
+      "leading_slope_relative_difference": 0.006081711321975769,
+      "finite_offset_relative_difference": 0.001496252275866805,
+      "direct_finite_offset_relative_difference": 0.0019730699586948397
+    },
+    {
+      "sizes": [
+        72,
+        96
+      ],
+      "predicted_change_small_minus_large": 3.096405868352943e-05,
+      "measured_change_small_minus_large": 3.092526673199999e-05,
+      "direct_change_small_minus_large": 3.09105568265e-05,
+      "measured_inverse_L_slope": 0.008906476818815998,
+      "direct_inverse_L_slope": 0.008902240366032002,
+      "leading_slope_relative_difference": 0.003489673565874929,
+      "finite_offset_relative_difference": 0.001254377265865081,
+      "direct_finite_offset_relative_difference": 0.001730860344241858
+    },
+    {
+      "sizes": [
+        96,
+        128
+      ],
+      "predicted_change_small_minus_large": 2.3245681533797996e-05,
+      "measured_change_small_minus_large": 2.3218870808000002e-05,
+      "direct_change_small_minus_large": 2.320782861999999e-05,
+      "measured_inverse_L_slope": 0.008916046390272003,
+      "direct_inverse_L_slope": 0.008911806190079998,
+      "leading_slope_relative_difference": 0.002412630477917288,
+      "finite_offset_relative_difference": 0.00115469550693037,
+      "direct_finite_offset_relative_difference": 0.0016310407327544407
+    }
+  ]
+}
+}

@@ -1,0 +1,45 @@
+Finite-mouth exterior comparison. Repository base d544ef73.
+The symbolic and numerical calculations below use a prescribed, steady inward normal velocity on an enclosing sphere.
+A first Wolfram quadrature in unrotated angular coordinates reported NIntegrate::eincr and an error estimate above the intended tolerance. It was stopped. The revised calculation integrates the azimuth analytically. Only the completed run below supplies the numerical results.
+
+SymPy
+$ python3 scripts/s11c_guarded_run.py --pool drain-exterior --memory-gib 2 --log-directory _scratch/s11c/drain_exterior_sympy01 -- python3 software/stage1_solver/tools/drain_exterior_moments.py
+source.sha256 76b45e3d4cdba87cebd73e3128d1c675854bd5edf8ca30d31fee46256f5b1949  software/stage1_solver/tools/drain_exterior_moments.py
+guard.sha256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+stdout.sha256 37b809fdf6643fc5cf0571995232e505ea33fedddf5056055336a9dc8db6629f  _scratch/s11c/drain_exterior_sympy01/stdout
+Launcher and child exited 0. Verified 2 GiB cap, zero swap, no deadline, empty stderr.
+Literal stdout follows
+integrated inward source flux = Q
+degree, radial exponent, potential coefficient = 0 -1 Q/(4*pi)
+degree, radial exponent, potential coefficient = 1 -2 Q*a*p/(8*pi)
+degree, radial exponent, potential coefficient = 2 -3 Q*a**2*s/(12*pi)
+source BC residual, exterior sphere intake = 0 Q
+scaled radial inflow [pole, equator] = (a**2*s + a*d*p + d**2)/d**2 -(a**2*s - 2*d**2)/(2*d**2)
+round scaled pole readings d/a=2,5,10 = [1, 1, 1]
+dipole scaled pole readings d/a=2,5,10 = [5/4, 11/10, 21/20]
+quadrupole scaled pole readings d/a=2,5,10 = [9/8, 51/50, 201/200]
+round, doubled intake, speed ratio = Q/(4*pi*d**2) Q/(2*pi*d**2) 2
+
+Wolfram
+$ python3 scripts/s11c_guarded_run.py --pool drain-exterior --memory-gib 4 --log-directory _scratch/s11c/drain_exterior_wolfram02 -- math -noprompt -script software/stage1_solver/tools/drain_exterior_moments.wl
+source.sha256 7f8534b02e58a5d578c2b67b046eb658e8b95f8b092968ff07441757fac12861  software/stage1_solver/tools/drain_exterior_moments.wl
+guard.sha256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+stdout.sha256 c2d3426bd3e48917c369472651e2adb2bc17bc2d5ec9180d631f94e1a56e3644  _scratch/s11c/drain_exterior_wolfram02/stdout
+Launcher and child exited 0. Verified 4 GiB cap, zero swap, no deadline, empty stderr.
+Literal stdout follows
+"round"" [layer monopole, off-grid BC residual] = ""                                    -34\n{1.000000000000, 0.000000000000 × 10   }"
+"round"" d/a="2" [scaled pole, equator] = ""{1.000000000000, 1.000000000000}"
+"round"" d/a="5" [scaled pole, equator] = ""{1.000000000000, 1.000000000000}"
+"round"" d/a="10" [scaled pole, equator] = ""{1.000000000000, 1.000000000000}"
+"dipole"" [layer monopole, off-grid BC residual] = ""                                    -34\n{1.000000000000, 0.000000000000 × 10   }"
+"dipole"" d/a="2" [scaled pole, equator] = ""{1.250000000000, 1.000000000000}"
+"dipole"" d/a="5" [scaled pole, equator] = ""{1.100000000000, 1.000000000000}"
+"dipole"" d/a="10" [scaled pole, equator] = ""{1.050000000000, 1.000000000000}"
+"quadrupole"" [layer monopole, off-grid BC residual] = ""                                    -34\n{1.000000000000, 0.000000000000 × 10   }"
+"quadrupole"" d/a="2" [scaled pole, equator] = ""{1.125000000000, 0.937500000000}"
+"quadrupole"" d/a="5" [scaled pole, equator] = ""{1.020000000000, 0.990000000000}"
+"quadrupole"" d/a="10" [scaled pole, equator] = ""{1.005000000000, 0.997500000000}"
+"double"" [layer monopole, off-grid BC residual] = ""                                    -34\n{2.000000000000, 0.000000000000 × 10   }"
+"double"" d/a="2" [scaled pole, equator] = ""{2.000000000000, 2.000000000000}"
+"double"" d/a="5" [scaled pole, equator] = ""{2.000000000000, 2.000000000000}"
+"double"" d/a="10" [scaled pole, equator] = ""{2.000000000000, 2.000000000000}"

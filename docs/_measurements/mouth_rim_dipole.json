@@ -1,0 +1,28 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "Linear centroid, conjugate rim load and trace sufficiency for the structural geometry equation. The trace example compares different profiles, without solving any throat interior, assigning a mouth mass or reporting a free acceleration.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "sources": {
+    "research/pde/paper/pde.tex": "9c16d156bef23331bfbdb41d4643b0903967ac12e1a4f4214c266163f741b443",
+    "software/stage1_solver/src/stage1_solver/mouth_probe.py": "7724ce85d0ac1e8a522695f84a15d32f2e09ee2af5b09dd4b7399cc239bbecec",
+    "software/stage1_solver/tools/mouth_rim_dipole.py": "706e483482edae1e0072ab0d6594e34d9a821ef1391e38147bf8cba755adcc6c",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "command": "python3 scripts/s11c_guarded_run.py --pool mouth-rim-dipole --memory-gib 2 --log-directory _scratch/s11c/mouth_rim_dipole01 -- python3 software/stage1_solver/tools/mouth_rim_dipole.py",
+  "guard_exit": 0,
+  "worker_exit": 0,
+  "limits_verified": true,
+  "memory_gib": 2,
+  "cpus": 1,
+  "swap_bytes": 0,
+  "deadline": null,
+  "stdout_sha256": "4b4ee3111430a6ba15ffe787195c214bbea2de2636dcd31135501a999d609ed2",
+  "stdout": [
+    "first-order center shift = q",
+    "integrated applied axial force = F; first-order work = F*q",
+    "projected angular eigenvalue = 2",
+    "projected equation residual against dipole operator = 0",
+    "endpoint displacement and slope differences at 0,L = [0, 0, 0, 0]",
+    "endpoint acceleration difference from the axial operator = 2*delta_q*T_w(0)/(L**2*mu(0))"
+  ]
+}

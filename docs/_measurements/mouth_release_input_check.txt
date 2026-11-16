@@ -1,0 +1,41 @@
+0PN free-mouth release input check. Local, unreviewed.
+Base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c.
+Only held states and a passive one-cell translation control were inspected. No applied-force trajectory was generated.
+$ python3 scripts/s11c_guarded_run.py --pool brane-mouth-release --memory-gib 2 --log-directory _scratch/s11c/mouth_release_inputs01 -- python3 software/stage1_solver/tools/mouth_release_input_check.py
+Guard and worker exited 0. Verified 2 GiB, one CPU, zero swap, no deadline.
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+f341d0ced284b035aaf1450706a0bfa3a35be937b214072fb68c997e03fd8efb  software/stage1_solver/tools/mouth_release_input_check.py
+f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0  docs/_measurements/mouth_feed_weak_run.json
+f437841524cdf0166ffbc6950a663767a3ea9d0691236a07a6111d141bf00711  docs/_measurements/mouth_intake_redistribution.json
+9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83  software/stage1_solver/tools/mouth_feed_weak_flow.py
+307063e864287fa795cebdfec9402f4e85f12c06a046c2295d51af13fc299bca  docs/_measurements/open_sleeve_current.txt
+4edd50ecbff8b80aacac0a18aebbcabef9b66b2966ad833c85052aac1b8ddd5e  _scratch/s11c/mouth_release_inputs01/stdout
+
+Literal stdout
+flat_density_slope U=0 cells_changed=0 mouth_x=0 intake_x_shift=0 mouth_rate=0.25 feed_rate=0.24999999767
+flat_density_slope prescribed translation=0.125 centroid_change=0.125 normal_flux_max_mismatch(original,translated_field_only,translated_together)=0.000298185051,0.0802975347,0.000298185051
+flat_density_slope U=0.01 cells_changed=0 mouth_x=0 intake_x_shift=2.57593311e-05 mouth_rate=0.25 feed_rate=0.24999999767
+flat_density_slope U=0.02 cells_changed=0 mouth_x=0 intake_x_shift=5.15201001853e-05 mouth_rate=0.25 feed_rate=0.24999999767
+restoring_slope U=0 cells_changed=0 mouth_x=0 intake_x_shift=0 mouth_rate=0.25 feed_rate=0.249999997672
+restoring_slope prescribed translation=0.125 centroid_change=0.125 normal_flux_max_mismatch(original,translated_field_only,translated_together)=0.000298176039,0.0802975378,0.000298176039
+restoring_slope U=0.01 cells_changed=0 mouth_x=0 intake_x_shift=2.41028750385e-05 mouth_rate=0.25 feed_rate=0.249999997672
+restoring_slope U=0.02 cells_changed=0 mouth_x=0 intake_x_shift=4.82070644309e-05 mouth_rate=0.25 feed_rate=0.249999997672
+
+Direct source reads for the release entry point, calibrated probe and earlier translation coefficients.
+
+$ sed -n '25p;68p;92p' software/stage1_solver/tools/mouth_feed_weak_flow.py
+        self.mouth = r2 < 1
+    def solve(self, speed, reference_density=None):
+                return f, iteration, error
+
+$ sed -n '73p;74p;75p' docs/_measurements/open_sleeve_current.txt
+rim_load=0 integrated_force_x=0
+rim_load=0.015 integrated_force_x=0.015
+rim_load=0.0075 integrated_force_x=0.0075
+
+$ sed -n '329p;424p' software/em_charge_attribute/reports/u1_body_dynamics.md
+All 10 endpoint/ambient cells emit a derived isotropic `M_XX(p=0)`, zero reconstruction residual, a binding scalar regression, and executable conditional native-slice residuals for `M_Xp`/`M_pp`. [claim `scalar_regression` → `scalar_regression`; recompute `eV.T*M_XX*eV-GVV`] [claim `native_slice_constraints` → `indexed_cells`; recompute `native_MXp/Mpp_projection-minus-GVP/GPP`]
+- C_mdot: `UNRESOLVED(required_OPEN_leaves)`
+
+$ sed -n '100p' software/stage1_solver/reports/pathA_21_emergent_G_mass_bridge.md
+- `INERTIAL_PROFILE_RESPONSE_MISSING`: BLOCKS_EP_INERTIAL_SIDE. m_inertial cannot be matched to the source mass normalization in this step. Source: The cited parent sources do not provide an accelerated-throat kinetic response functional for m_inertial.

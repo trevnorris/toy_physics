@@ -1,0 +1,452 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "Isolated fixed-speed radius family in the finite lateral reservoir at the slow limit. Signed momentum storage rate, lateral flux, and mouth flux per axial acceleration, with explicit finite-grid body term and radius-doubling differences. Fixed lab-frame cylinders span the full slab depth.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "sources": {
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/lateral_mouth_acceleration.py": "0f04c0edb17b6c17bc1dfd2081412017caed4dfd7c1ef6808fe84f751394219b",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/lateral_mouth_radius.py": "4f0d9fafd7bd4b71251ae87bf91d60d8c60be0ee01170d2c4c184eb160954b08",
+    "software/stage1_solver/tools/lateral_radius_momentum.py": "5dc679cea6185931e8e74b3a7fcf516aef9ca615437ff7c710a237b215ca4987",
+    "docs/_measurements/lateral_mouth_radius.json": "c77854a410b2ae4e93cd443cc97c81e2ae23694bf02e8a2c9845083b7201ce12"
+  },
+  "runs": [
+    {
+      "grid": "e24_c4",
+      "radius": 0.75,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-radius-momentum --memory-gib 3 --log-directory _scratch/s11c/lateral_radius_momentum_e24_c4_a0.75_01 -- python3 software/stage1_solver/tools/lateral_radius_momentum.py _scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz 0.75 --output _scratch/s11c/lateral_radius_momentum_e24_c4_a0.75_01/local_fields.npz",
+      "reference_fields": {
+        "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz": "08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe"
+      },
+      "fields": {
+        "_scratch/s11c/lateral_radius_momentum_e24_c4_a0.75_01/local_fields.npz": "3d211e8733b328f5f521f99954c9839af66a862187bb76fce41c26b8cf05b018"
+      },
+      "started_utc": "2026-11-14T23:30:49.004408+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:30:58.206942+00:00",
+      "wall_seconds": 8.953409445937723,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 3,
+      "peak_memory_bytes_sampled": 113569792,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_path": "_scratch/s11c/lateral_radius_momentum_e24_c4_a0.75_01/stdout",
+      "stdout_bytes": 2325,
+      "stdout_sha256": "ab95bcb578ae4b0f605b8b4c2b984e8514e43ec2a0bfb82e01bfeef54bcfc416",
+      "stdout": [
+        "state_d=0 target_rate=0.105563225698 mean_speed=0.059845652717 bath=0.105563225698 residual=2.4813e-12",
+        "radius=0.75 extent=24 dx=0.25 dz=0.0625 reaction=0.000396264182889 prior=0.000396264182889 direct=0.000394696288557 rp=5.8357e-13 ru=5.7935e-13 rh=8.9016e-13",
+        "reach=2 order=2 storage=-0.000507420752586 cap_pressure=0.000687382119305 cap_gradient=5.44975101064e-05 side=0.000150472041921 lateral=0.000892351671332 mouth_out=-0.000384922030191 lattice_body=8.88855583821e-09 closure=-2.884179e-16 storage_over_reaction=-1.28051127 lateral_over_reaction=2.251911 physical_gap_over_reaction=-0.0286002738",
+        "reach=2 order=4 storage=-0.000496198489107 cap_pressure=0.000687382119305 cap_gradient=5.44947390419e-05 side=0.000150591459009 lateral=0.000892468317355 mouth_out=-0.000396267561217 lattice_body=2.26703125856e-09 closure=-3.262198e-16 storage_over_reaction=-1.25219112 lateral_over_reaction=2.25220536 physical_gap_over_reaction=1.42464541e-05",
+        "reach=4 order=2 storage=-0.000546957419585 cap_pressure=0.000885572082825 cap_gradient=-1.27622359037e-05 side=5.90784881573e-05 lateral=0.000931888335079 mouth_out=-0.000384922030191 lattice_body=8.8853032305e-09 closure=-3.505445e-16 storage_over_reaction=-1.38028478 lateral_over_reaction=2.3516845 physical_gap_over_reaction=-0.028600282",
+        "reach=4 order=4 storage=-0.000535631652962 cap_pressure=0.000885572082825 cap_gradient=-1.27624358508e-05 side=5.90918343931e-05 lateral=0.000931901481368 mouth_out=-0.000396267561217 lattice_body=2.26718888863e-09 closure=-3.882186e-16 storage_over_reaction=-1.35170342 lateral_over_reaction=2.35171767 physical_gap_over_reaction=1.42468518e-05",
+        "reach=8 order=2 storage=-0.000509262374421 cap_pressure=0.000886529060579 cap_gradient=-9.88958868715e-06 side=1.75538170195e-05 lateral=0.000894193288911 mouth_out=-0.000384922030191 lattice_body=8.88429955652e-09 closure=-3.365541e-16 storage_over_reaction=-1.28515873 lateral_over_reaction=2.25655845 physical_gap_over_reaction=-0.0286002846",
+        "reach=8 order=4 storage=-0.000497925009754 cap_pressure=0.000886529060579 cap_gradient=-9.8892881995e-06 side=1.75550657724e-05 lateral=0.000894194838152 mouth_out=-0.000396267561217 lattice_body=2.26718096718e-09 closure=-3.74343e-16 storage_over_reaction=-1.25654811 lateral_over_reaction=2.25656236 physical_gap_over_reaction=1.42468318e-05"
+      ]
+    },
+    {
+      "grid": "e24_c4",
+      "radius": 1.0,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-radius-momentum --memory-gib 3 --log-directory _scratch/s11c/lateral_radius_momentum_e24_c4_a1_01 -- python3 software/stage1_solver/tools/lateral_radius_momentum.py _scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz 1 --output _scratch/s11c/lateral_radius_momentum_e24_c4_a1_01/local_fields.npz",
+      "reference_fields": {
+        "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz": "08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe"
+      },
+      "fields": {
+        "_scratch/s11c/lateral_radius_momentum_e24_c4_a1_01/local_fields.npz": "b93d2ff06136c42de53016138c5708018d6e30f2e1de642a1e627ef53a97de35"
+      },
+      "started_utc": "2026-11-14T23:30:58.304148+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:31:05.628173+00:00",
+      "wall_seconds": 7.174300915095955,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 3,
+      "peak_memory_bytes_sampled": 111439872,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_path": "_scratch/s11c/lateral_radius_momentum_e24_c4_a1_01/stdout",
+      "stdout_bytes": 2277,
+      "stdout_sha256": "ce0a7cf0ab28c21c150d024d5da74fe20efc8e966392e6c601e5e3bbca02a89c",
+      "stdout": [
+        "state_d=0 target_rate=0.25 mean_speed=0.059845652717 bath=0.25 residual=2.4615e-12",
+        "radius=1 extent=24 dx=0.25 dz=0.0625 reaction=0.00189173313771 prior=0.00189173313771 direct=0.00188764682435 rp=3.3391e-13 ru=4.3515e-13 rh=1.1959e-12",
+        "reach=2 order=2 storage=-0.00132164207409 cap_pressure=0.00220887809706 cap_gradient=0.00029318468636 side=0.000676931454028 lateral=0.00317899423745 mouth_out=-0.00185728888781 lattice_body=6.32755413509e-08 closure=7.366299e-17 storage_over_reaction=-0.698640864 lateral_over_reaction=1.68046654 physical_gap_over_reaction=-0.0181743258",
+        "reach=2 order=4 storage=-0.00128792072956 cap_pressure=0.00220887809706 cap_gradient=0.000293173857753 side=0.000677623658399 lateral=0.00317967561321 mouth_out=-0.00189174500024 lattice_body=9.88340730561e-09 closure=1.290875e-16 storage_over_reaction=-0.680815229 lateral_over_reaction=1.68082672 physical_gap_over_reaction=1.1495246e-05",
+        "reach=4 order=2 storage=-0.00144994949117 cap_pressure=0.00304836611656 cap_gradient=-2.37263265958e-05 side=0.000282661849573 lateral=0.00330730163954 mouth_out=-0.00185728888781 lattice_body=6.32605529481e-08 closure=-2.532553e-16 storage_over_reaction=-0.76646619 lateral_over_reaction=1.74829186 physical_gap_over_reaction=-0.0181743337",
+        "reach=4 order=4 storage=-0.001415622899 cap_pressure=0.00304836611656 cap_gradient=-2.37275206059e-05 side=0.000282739191486 lateral=0.00330737778744 mouth_out=-0.00189174500024 lattice_body=9.8882032727e-09 closure=-1.982065e-16 storage_over_reaction=-0.748320612 lateral_over_reaction=1.74833211 physical_gap_over_reaction=1.1497781e-05",
+        "reach=8 order=2 storage=-0.00131301086484 cap_pressure=0.00312593129508 cap_gradient=-4.23266568101e-05 side=8.67583563803e-05 lateral=0.00317036299465 mouth_out=-0.00185728888781 lattice_body=6.3242006596e-08 closure=-2.172723e-16 storage_over_reaction=-0.694078271 lateral_over_reaction=1.67590393 physical_gap_over_reaction=-0.0181743435",
+        "reach=8 order=4 storage=-0.00127861707121 cap_pressure=0.00312593129508 cap_gradient=-4.23249214472e-05 side=8.6765585877e-05 lateral=0.00317037195951 mouth_out=-0.00189174500024 lattice_body=9.88806591767e-09 closure=-1.628026e-16 storage_over_reaction=-0.675897168 lateral_over_reaction=1.67590867 physical_gap_over_reaction=1.14977084e-05"
+      ]
+    },
+    {
+      "grid": "e24_c4",
+      "radius": 1.5,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-radius-momentum --memory-gib 3 --log-directory _scratch/s11c/lateral_radius_momentum_e24_c4_a1.5_01 -- python3 software/stage1_solver/tools/lateral_radius_momentum.py _scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz 1.5 --output _scratch/s11c/lateral_radius_momentum_e24_c4_a1.5_01/local_fields.npz",
+      "reference_fields": {
+        "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz": "08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe"
+      },
+      "fields": {
+        "_scratch/s11c/lateral_radius_momentum_e24_c4_a1.5_01/local_fields.npz": "6b0709b4c15dabe2b8cbaf03d3dcc99202ed620f476177bd55bcbdf487d22b31"
+      },
+      "started_utc": "2026-11-14T23:30:49.009918+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:31:00.286635+00:00",
+      "wall_seconds": 10.801320255966857,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 3,
+      "peak_memory_bytes_sampled": 113795072,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_path": "_scratch/s11c/lateral_radius_momentum_e24_c4_a1.5_01/stdout",
+      "stdout_bytes": 2275,
+      "stdout_sha256": "760f5cf6339de6339bececbb8c82c6577c374dda6e28254765a0ffc7ca965450",
+      "stdout": [
+        "state_d=0 target_rate=0.842149291396 mean_speed=0.059845652717 bath=0.842149291394 residual=2.734e-12",
+        "radius=1.5 extent=24 dx=0.25 dz=0.0625 reaction=0.0161091357544 prior=0.0161091357544 direct=0.0160934270923 rp=2.1128e-12 ru=5.2828e-13 rh=3.578e-13",
+        "reach=2 order=2 storage=-0.00440023770614 cap_pressure=0.0110977062185 cap_gradient=0.00314909504006 side=0.0061081591083 lateral=0.0203549603669 mouth_out=-0.0159537815657 lattice_body=9.41094997597e-07 closure=-2.369632e-15 storage_over_reaction=-0.273151693 lateral_over_reaction=1.26356626 physical_gap_over_reaction=-0.00958543624",
+        "reach=2 order=4 storage=-0.00425365016813 cap_pressure=0.0110977062185 cap_gradient=0.00314917861651 side=0.00611603219201 lateral=0.020362917027 mouth_out=-0.0161091958255 lattice_body=7.10333688857e-08 closure=-2.380938e-15 storage_over_reaction=-0.264052041 lateral_over_reaction=1.26406018 physical_gap_over_reaction=8.13851733e-06",
+        "reach=4 order=2 storage=-0.00502629512426 cap_pressure=0.0181013737809 cap_gradient=0.000147767665963 side=0.0027318818458 lateral=0.0209810232927 mouth_out=-0.0159537815657 lattice_body=9.46602721674e-07 closure=-5.437744e-15 storage_over_reaction=-0.312015194 lateral_over_reaction=1.3024301 physical_gap_over_reaction=-0.00958509434",
+        "reach=4 order=4 storage=-0.00487262180017 cap_pressure=0.0181013737809 cap_gradient=0.000147753077596 side=0.0027327623385 lateral=0.020981889197 mouth_out=-0.0161091958255 lattice_body=7.15713412218e-08 closure=-5.443692e-15 storage_over_reaction=-0.302475681 lateral_over_reaction=1.30248385 physical_gap_over_reaction=8.17191262e-06",
+        "reach=8 order=2 storage=-0.00411501296219 cap_pressure=0.0195629429487 cap_gradient=-0.000359364450543 side=0.000866161510632 lateral=0.0200697400088 mouth_out=-0.0159537815657 lattice_body=9.45480864771e-07 closure=-5.211788e-15 storage_over_reaction=-0.255445917 lateral_over_reaction=1.24586075 physical_gap_over_reaction=-0.00958516398",
+        "reach=8 order=4 storage=-0.00396057430899 cap_pressure=0.0195629429487 cap_gradient=-0.000359344875633 side=0.000866243625934 lateral=0.020069841699 mouth_out=-0.0161091958255 lattice_body=7.15644731298e-08 closure=-5.226012e-15 storage_over_reaction=-0.245858895 lateral_over_reaction=1.24586707 physical_gap_over_reaction=8.17148628e-06"
+      ]
+    },
+    {
+      "grid": "e24_c6",
+      "radius": 0.75,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-radius-momentum --memory-gib 4 --log-directory _scratch/s11c/lateral_radius_momentum_e24_c6_a0.75_01 -- python3 software/stage1_solver/tools/lateral_radius_momentum.py _scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz 0.75 --output _scratch/s11c/lateral_radius_momentum_e24_c6_a0.75_01/local_fields.npz",
+      "reference_fields": {
+        "_scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz": "590774f5c77c030fbe68edb253b5edddd0bc8b636bf983f1947fae52d7389fb1"
+      },
+      "fields": {
+        "_scratch/s11c/lateral_radius_momentum_e24_c6_a0.75_01/local_fields.npz": "01e01d212b526003abb20f4f61923b7695fef026d116d2c0da6599d453aa5c11"
+      },
+      "started_utc": "2026-11-14T23:30:49.010643+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:31:21.705857+00:00",
+      "wall_seconds": 32.0201916389633,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 4,
+      "peak_memory_bytes_sampled": 269492224,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_path": "_scratch/s11c/lateral_radius_momentum_e24_c6_a0.75_01/stdout",
+      "stdout_bytes": 2343,
+      "stdout_sha256": "a12798107aa182e60f4b96b64eb4a257260e70228ad570160f6c0a4a013317a6",
+      "stdout": [
+        "state_d=0 target_rate=0.105566221487 mean_speed=0.0598435197328 bath=0.105566221487 residual=2.3482e-12",
+        "radius=0.75 extent=24 dx=0.166666666667 dz=0.0416666666667 reaction=0.000398554061515 prior=0.000398554061515 direct=0.000397634305872 rp=3.1527e-12 ru=3.4783e-12 rh=4.759e-13",
+        "reach=2 order=2 storage=-0.000492219854509 cap_pressure=0.000678351933234 cap_gradient=5.48456450437e-05 side=0.00015229498707 lateral=0.000885492565348 mouth_out=-0.000393268847515 lattice_body=3.86332406795e-09 closure=-1.042583e-16 storage_over_reaction=-1.23501402 lateral_over_reaction=2.22176274 physical_gap_over_reaction=-0.013251278",
+        "reach=2 order=4 storage=-0.000486991113453 cap_pressure=0.000678351933234 cap_gradient=5.48442920527e-05 side=0.000152350170823 lateral=0.00088554639611 mouth_out=-0.000398554817374 lattice_body=4.65282305297e-10 closure=-1.105798e-16 storage_over_reaction=-1.22189475 lateral_over_reaction=2.22189781 physical_gap_over_reaction=3.0639291e-06",
+        "reach=4 order=2 storage=-0.000531376286136 cap_pressure=0.000877178182935 cap_gradient=-1.24947704744e-05 side=5.99655832012e-05 lateral=0.000924648995662 mouth_out=-0.000393268847515 lattice_body=3.86201052091e-09 closure=-9.607314e-17 storage_over_reaction=-1.33326025 lateral_over_reaction=2.32000896 physical_gap_over_reaction=-0.0132512813",
+        "reach=4 order=4 storage=-0.000526099748755 cap_pressure=0.000877178182935 cap_gradient=-1.24948654396e-05 side=5.99717139501e-05 lateral=0.000924655031445 mouth_out=-0.000398554817374 lattice_body=4.65316018816e-10 closure=-1.025377e-16 storage_over_reaction=-1.32002104 lateral_over_reaction=2.32002411 physical_gap_over_reaction=3.06401371e-06",
+        "reach=8 order=2 storage=-0.000494162956987 cap_pressure=0.000879530859707 cap_gradient=-9.94917492809e-06 side=1.7853981296e-05 lateral=0.000887435666075 mouth_out=-0.000393268847515 lattice_body=3.86157199185e-09 closure=-4.948719e-17 storage_over_reaction=-1.2398894 lateral_over_reaction=2.22663812 physical_gap_over_reaction=-0.0132512824",
+        "reach=8 order=4 storage=-0.000488881093968 cap_pressure=0.000879530859707 cap_gradient=-9.94903715939e-06 side=1.78545541098e-05 lateral=0.000887436376657 mouth_out=-0.000398554817374 lattice_body=4.6531447888e-10 closure=-5.609095e-17 storage_over_reaction=-1.22663684 lateral_over_reaction=2.2266399 physical_gap_over_reaction=3.06400997e-06"
+      ]
+    },
+    {
+      "grid": "e24_c6",
+      "radius": 1.0,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-radius-momentum --memory-gib 4 --log-directory _scratch/s11c/lateral_radius_momentum_e24_c6_a1_01 -- python3 software/stage1_solver/tools/lateral_radius_momentum.py _scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz 1 --output _scratch/s11c/lateral_radius_momentum_e24_c6_a1_01/local_fields.npz",
+      "reference_fields": {
+        "_scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz": "590774f5c77c030fbe68edb253b5edddd0bc8b636bf983f1947fae52d7389fb1"
+      },
+      "fields": {
+        "_scratch/s11c/lateral_radius_momentum_e24_c6_a1_01/local_fields.npz": "d2c98ee3153f3ae861758a7663531d8e77c10235830d903ea91d9307dff4d513"
+      },
+      "started_utc": "2026-11-14T23:30:49.002670+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:31:16.392195+00:00",
+      "wall_seconds": 27.22004002216272,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 4,
+      "peak_memory_bytes_sampled": 260534272,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_path": "_scratch/s11c/lateral_radius_momentum_e24_c6_a1_01/stdout",
+      "stdout_bytes": 2295,
+      "stdout_sha256": "3d1d31e184c55de9ed3152ed8a0ff1dd7ed65b6ae3d4b279e3e5f09c4bb4c154",
+      "stdout": [
+        "state_d=0 target_rate=0.25 mean_speed=0.0598435197328 bath=0.25 residual=2.9274e-12",
+        "radius=1 extent=24 dx=0.166666666667 dz=0.0416666666667 reaction=0.00186796183684 prior=0.00186796183684 direct=0.00186631065852 rp=2.8982e-12 ru=3.3278e-13 rh=1.0698e-12",
+        "reach=2 order=2 storage=-0.00130277085307 cap_pressure=0.00218953706118 cap_gradient=0.000289271978718 side=0.000676363767519 lateral=0.00315517280742 mouth_out=-0.00185237439321 lattice_body=2.75611452599e-08 closure=9.892566e-17 storage_over_reaction=-0.697429052 lateral_over_reaction=1.68909918 physical_gap_over_reaction=-0.00832987173",
+        "reach=2 order=4 storage=-0.00128751107799 cap_pressure=0.00218953706118 cap_gradient=0.000289266728971 side=0.000676673619031 lateral=0.00315547740918 mouth_out=-0.00186796434879 lattice_body=1.98240480515e-09 closure=1.151945e-16 storage_over_reaction=-0.689259841 lateral_over_reaction=1.68926225 physical_gap_over_reaction=2.40602086e-06",
+        "reach=4 order=2 storage=-0.0014298751143 cap_pressure=0.003024089579 cap_gradient=-2.39616811217e-05 side=0.00028214916435 lateral=0.00328227706223 mouth_out=-0.00185237439321 lattice_body=2.7554716234e-08 closure=1.105396e-16 storage_over_reaction=-0.765473409 lateral_over_reaction=1.75714353 physical_gap_over_reaction=-0.00832987517",
+        "reach=4 order=4 storage=-0.00141434460289 cap_pressure=0.003024089579 cap_gradient=-2.39622312895e-05 side=0.000282183587342 lateral=0.00328231093505 mouth_out=-0.00186796434879 lattice_body=1.98336399282e-09 closure=1.268182e-16 storage_over_reaction=-0.75715926 lateral_over_reaction=1.75716167 physical_gap_over_reaction=2.40653436e-06",
+        "reach=8 order=2 storage=-0.00129461343398 cap_pressure=0.00310260579602 cap_gradient=-4.21798331814e-05 side=8.65894109253e-05 lateral=0.00314701537377 mouth_out=-0.00185237439321 lattice_body=2.7546583245e-08 closure=3.097447e-16 storage_over_reaction=-0.693062036 lateral_over_reaction=1.68473216 physical_gap_over_reaction=-0.00832987952",
+        "reach=8 order=4 storage=-0.00127905302642 cap_pressure=0.00310260579602 cap_gradient=-4.2179062068e-05 side=8.65926245906e-05 lateral=0.00314701935855 mouth_out=-0.00186796434879 lattice_body=1.98333711739e-09 closure=3.256746e-16 storage_over_reaction=-0.684731883 lateral_over_reaction=1.68473429 physical_gap_over_reaction=2.40652007e-06"
+      ]
+    },
+    {
+      "grid": "e24_c6",
+      "radius": 1.5,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-radius-momentum --memory-gib 4 --log-directory _scratch/s11c/lateral_radius_momentum_e24_c6_a1.5_01 -- python3 software/stage1_solver/tools/lateral_radius_momentum.py _scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz 1.5 --output _scratch/s11c/lateral_radius_momentum_e24_c6_a1.5_01/local_fields.npz",
+      "reference_fields": {
+        "_scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz": "590774f5c77c030fbe68edb253b5edddd0bc8b636bf983f1947fae52d7389fb1"
+      },
+      "fields": {
+        "_scratch/s11c/lateral_radius_momentum_e24_c6_a1.5_01/local_fields.npz": "cd3d1e8a922f8cdbbc8ac075d8a4ecbc89eb31f7e2b640c70e36d60a9ab22654"
+      },
+      "started_utc": "2026-11-14T23:30:49.001227+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:31:32.527275+00:00",
+      "wall_seconds": 43.468104558996856,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 4,
+      "peak_memory_bytes_sampled": 272150528,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_path": "_scratch/s11c/lateral_radius_momentum_e24_c6_a1.5_01/stdout",
+      "stdout_bytes": 2291,
+      "stdout_sha256": "eaa404a77a81214173d05ea3e5247c9e2bec841cff030fa44f4c8176039bcd2a",
+      "stdout": [
+        "state_d=0 target_rate=0.842133236369 mean_speed=0.0598435197328 bath=0.842133236369 residual=3.5826e-12",
+        "radius=1.5 extent=24 dx=0.166666666667 dz=0.0416666666667 reaction=0.0160204373058 prior=0.0160204373057 direct=0.0160150953592 rp=2.8002e-12 ru=6.9784e-13 rh=4.8393e-13",
+        "reach=2 order=2 storage=-0.00435338413397 cap_pressure=0.0110559801912 cap_gradient=0.00312688501006 side=0.00612168481129 lateral=0.0203045500126 mouth_out=-0.0159507502169 lattice_body=4.15661671502e-07 closure=-9.39679e-16 storage_over_reaction=-0.271739407 lateral_over_reaction=1.26741547 physical_gap_over_reaction=-0.00432394109",
+        "reach=2 order=4 storage=-0.00428765291906 cap_pressure=0.0110559801912 cap_gradient=0.00312692095962 side=0.00612521557415 lateral=0.020308116725 mouth_out=-0.016020449635 lattice_body=1.4170872484e-08 closure=-9.487596e-16 storage_over_reaction=-0.267636447 lateral_over_reaction=1.2676381 physical_gap_over_reaction=1.65414736e-06",
+        "reach=4 order=2 storage=-0.0049702738717 cap_pressure=0.0180438406638 cap_gradient=0.000143269332044 side=0.00273433217252 lateral=0.0209214421684 mouth_out=-0.0159507502169 lattice_body=4.18079731321e-07 closure=-7.257152e-16 storage_over_reaction=-0.31024583 lateral_over_reaction=1.30592204 physical_gap_over_reaction=-0.00432379016",
+        "reach=4 order=4 storage=-0.00490136395533 cap_pressure=0.0180438406638 cap_gradient=0.000143262613014 side=0.00273472459204 lateral=0.0209218278688 mouth_out=-0.016020449635 lattice_body=1.42784728524e-08 closure=-7.289986e-16 storage_over_reaction=-0.305944455 lateral_over_reaction=1.30594612 physical_gap_over_reaction=1.66086381e-06",
+        "reach=8 order=2 storage=-0.00406411371692 cap_pressure=0.0195080841699 cap_gradient=-0.000359464367881 side=0.000866661717021 lateral=0.0200152815191 mouth_out=-0.0159507502169 lattice_body=4.17585237876e-07 closure=1.077886e-15 storage_over_reaction=-0.25368307 lateral_over_reaction=1.24935925 physical_gap_over_reaction=-0.00432382102",
+        "reach=8 order=4 storage=-0.00399486286502 cap_pressure=0.0195080841699 cap_gradient=-0.000359455658602 side=0.000866698265858 lateral=0.0200153267772 mouth_out=-0.016020449635 lattice_body=1.4277122899e-08 closure=1.077149e-15 storage_over_reaction=-0.249360413 lateral_over_reaction=1.24936207 physical_gap_over_reaction=1.66077966e-06"
+      ]
+    },
+    {
+      "grid": "e48_c4",
+      "radius": 0.75,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-radius-momentum --memory-gib 5 --log-directory _scratch/s11c/lateral_radius_momentum_e48_c4_a0.75_01 -- python3 software/stage1_solver/tools/lateral_radius_momentum.py _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz 0.75 --output _scratch/s11c/lateral_radius_momentum_e48_c4_a0.75_01/local_fields.npz",
+      "reference_fields": {
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd"
+      },
+      "fields": {
+        "_scratch/s11c/lateral_radius_momentum_e48_c4_a0.75_01/local_fields.npz": "6b43cc030eca703640bbf33fa9af82720c1588e966e8cb15f857293abc9213ab"
+      },
+      "started_utc": "2026-11-14T23:30:49.000325+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:31:30.988548+00:00",
+      "wall_seconds": 41.96859628497623,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 5,
+      "peak_memory_bytes_sampled": 318967808,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_path": "_scratch/s11c/lateral_radius_momentum_e48_c4_a0.75_01/stdout",
+      "stdout_bytes": 2325,
+      "stdout_sha256": "dfa4caa87e3a76610997918cf651eb6aa38da85c166b2043257df1a90bc2d55d",
+      "stdout": [
+        "state_d=0 target_rate=0.105563225698 mean_speed=0.0598456527169 bath=0.105563225698 residual=2.5059e-12",
+        "radius=0.75 extent=48 dx=0.25 dz=0.0625 reaction=0.000405798565993 prior=0.000405798565993 direct=0.000404220692094 rp=5.8067e-13 ru=5.8002e-13 rh=9.1495e-13",
+        "reach=2 order=2 storage=-0.000507904587752 cap_pressure=0.000685290691499 cap_gradient=6.02156335199e-05 side=0.000156863507236 lateral=0.000902369832255 mouth_out=-0.000394456138804 lattice_body=9.10569905273e-09 closure=-2.649738e-16 storage_over_reaction=-1.2516175 lateral_over_reaction=2.22368906 physical_gap_over_reaction=-0.0279284414",
+        "reach=2 order=4 storage=-0.000496682240314 cap_pressure=0.000685290691499 cap_gradient=6.02064448537e-05 side=0.000156989445074 lateral=0.000902486581427 mouth_out=-0.00040580203634 lattice_body=2.30477274075e-09 closure=-3.035585e-16 storage_over_reaction=-1.22396253 lateral_over_reaction=2.22397676 physical_gap_over_reaction=1.42314936e-05",
+        "reach=4 order=2 storage=-0.00055120752486 cap_pressure=0.00088726543876 cap_gradient=-7.19425682086e-06 side=6.56015853369e-05 lateral=0.000945672767276 mouth_out=-0.000394456138804 lattice_body=9.10361263413e-09 closure=-2.554355e-16 storage_over_reaction=-1.35832793 lateral_over_reaction=2.33039948 physical_gap_over_reaction=-0.0279284466",
+        "reach=4 order=4 storage=-0.000539881668013 cap_pressure=0.00088726543876 cap_gradient=-7.19599689037e-06 side=6.56165674395e-05 lateral=0.000945686009309 mouth_out=-0.00040580203634 lattice_body=2.30495649175e-09 closure=-2.942206e-16 storage_over_reaction=-1.33041788 lateral_over_reaction=2.33043211 physical_gap_over_reaction=1.42319464e-05",
+        "reach=8 order=2 storage=-0.000544852855615 cap_pressure=0.000920312000127 cap_gradient=-4.74198775612e-06 side=2.37480846919e-05 lateral=0.000939318097063 mouth_out=-0.000394456138804 lattice_body=9.10264436502e-09 closure=-2.311774e-16 storage_over_reaction=-1.34266826 lateral_over_reaction=2.31473981 physical_gap_over_reaction=-0.027928449",
+        "reach=8 order=4 storage=-0.000533515388706 cap_pressure=0.000920312000127 cap_gradient=-4.74200684892e-06 side=2.37497367168e-05 lateral=0.000939319729995 mouth_out=-0.00040580203634 lattice_body=2.30494878077e-09 closure=-2.699005e-16 storage_over_reaction=-1.31472961 lateral_over_reaction=2.31474384 physical_gap_over_reaction=1.42319275e-05"
+      ]
+    },
+    {
+      "grid": "e48_c4",
+      "radius": 1.0,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-radius-momentum --memory-gib 5 --log-directory _scratch/s11c/lateral_radius_momentum_e48_c4_a1_01 -- python3 software/stage1_solver/tools/lateral_radius_momentum.py _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz 1 --output _scratch/s11c/lateral_radius_momentum_e48_c4_a1_01/local_fields.npz",
+      "reference_fields": {
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd"
+      },
+      "fields": {
+        "_scratch/s11c/lateral_radius_momentum_e48_c4_a1_01/local_fields.npz": "8bb7f0e10c43b2f3b6943d20891c8103957b94ec23753e2d2702fed8dd4391cb"
+      },
+      "started_utc": "2026-11-14T23:30:49.001653+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:31:22.163617+00:00",
+      "wall_seconds": 33.06000665994361,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 5,
+      "peak_memory_bytes_sampled": 312016896,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_path": "_scratch/s11c/lateral_radius_momentum_e48_c4_a1_01/stdout",
+      "stdout_bytes": 2276,
+      "stdout_sha256": "4fdf529619d79d9329ef3a73f01bee464054043dd381a60d0675992bfe7bbd0c",
+      "stdout": [
+        "state_d=0 target_rate=0.25 mean_speed=0.0598456527169 bath=0.25 residual=2.5762e-12",
+        "radius=1 extent=48 dx=0.25 dz=0.0625 reaction=0.00194689366385 prior=0.00194689366385 direct=0.00194278066058 rp=3.349e-13 ru=4.373e-13 rh=1.2496e-12",
+        "reach=2 order=2 storage=-0.00132316455365 cap_pressure=0.00219558368945 cap_gradient=0.000326169129778 side=0.000713923914427 lateral=0.00323567673365 mouth_out=-0.00191244699735 lattice_body=6.5182649945e-08 closure=2.161432e-16 storage_over_reaction=-0.679628568 lateral_over_reaction=1.66196891 physical_gap_over_reaction=-0.0176596619",
+        "reach=2 order=4 storage=-0.00128944273142 cap_pressure=0.00219558368945 cap_gradient=0.000326121165503 side=0.000714653872877 lateral=0.00323635872783 mouth_out=-0.00194690591439 lattice_body=1.00820183227e-08 closure=2.74617e-16 storage_over_reaction=-0.662307734 lateral_over_reaction=1.66231921 physical_gap_over_reaction=1.14708665e-05",
+        "reach=4 order=2 storage=-0.00146427058838 cap_pressure=0.00304789129713 cap_gradient=8.49028376514e-06 side=0.000320401198482 lateral=0.00337678277938 mouth_out=-0.00191244699735 lattice_body=6.51936446821e-08 closure=2.140246e-16 storage_over_reaction=-0.752106094 lateral_over_reaction=1.73444644 physical_gap_over_reaction=-0.0176596562",
+        "reach=4 order=4 storage=-0.00142994348079 cap_pressure=0.00304789129713 cap_gradient=8.48017902055e-06 side=0.000320488006394 lateral=0.00337685948255 mouth_out=-0.00194690591439 lattice_body=1.00873644247e-08 closure=2.722923e-16 storage_over_reaction=-0.734474362 lateral_over_reaction=1.73448584 physical_gap_over_reaction=1.14736125e-05",
+        "reach=8 order=2 storage=-0.00143677196782 cap_pressure=0.00323922935757 cap_gradient=-1.25110153148e-05 side=0.000122565798982 lateral=0.00334928414124 mouth_out=-0.00191244699735 lattice_body=6.51760641789e-08 closure=2.992705e-16 storage_over_reaction=-0.737981737 lateral_over_reaction=1.72032207 physical_gap_over_reaction=-0.0176596653",
+        "reach=8 order=4 storage=-0.00140237758929 cap_pressure=0.00323922935757 cap_gradient=-1.2511128741e-05 side=0.000122575362083 lateral=0.00334929359091 mouth_out=-0.00194690591439 lattice_body=1.00872327647e-08 closure=3.565527e-16 storage_over_reaction=-0.720315452 lateral_over_reaction=1.72032693 physical_gap_over_reaction=1.14735449e-05"
+      ]
+    },
+    {
+      "grid": "e48_c4",
+      "radius": 1.5,
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-radius-momentum --memory-gib 5 --log-directory _scratch/s11c/lateral_radius_momentum_e48_c4_a1.5_01 -- python3 software/stage1_solver/tools/lateral_radius_momentum.py _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz 1.5 --output _scratch/s11c/lateral_radius_momentum_e48_c4_a1.5_01/local_fields.npz",
+      "reference_fields": {
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd"
+      },
+      "fields": {
+        "_scratch/s11c/lateral_radius_momentum_e48_c4_a1.5_01/local_fields.npz": "ddecb3ebff30472ed70ef927d4fb107fee4fa54fbe0dc9225eb4697d330d1f47"
+      },
+      "started_utc": "2026-11-14T23:30:49.007663+00:00",
+      "guard_outcome_written_utc": "2026-11-14T23:31:49.657603+00:00",
+      "wall_seconds": 60.29467664798722,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 5,
+      "peak_memory_bytes_sampled": 317976576,
+      "swap_bytes": 0,
+      "cpus": 1,
+      "deadline": null,
+      "stdout_path": "_scratch/s11c/lateral_radius_momentum_e48_c4_a1.5_01/stdout",
+      "stdout_bytes": 2278,
+      "stdout_sha256": "802b3926cdc857e9c3e3a134fc1f272c0acd43fcf78356376094cf90a123dc86",
+      "stdout": [
+        "state_d=0 target_rate=0.842149291409 mean_speed=0.0598456527169 bath=0.842149291409 residual=4.8292e-12",
+        "radius=1.5 extent=48 dx=0.25 dz=0.0625 reaction=0.0167346370437 prior=0.0167346370437 direct=0.0167188433094 rp=2.1814e-12 ru=5.6322e-13 rh=4.3037e-13",
+        "reach=2 order=2 storage=-0.00440754671415 cap_pressure=0.0109400420188 cap_gradient=0.00351955472837 side=0.00652816403925 lateral=0.0209877607864 mouth_out=-0.0165792356604 lattice_body=9.78411824784e-07 closure=-1.206377e-15 storage_over_reaction=-0.263378686 lateral_over_reaction=1.25415094 physical_gap_over_reaction=-0.00922774549",
+        "reach=2 order=4 storage=-0.0042609539298 cap_pressure=0.0109400420188 cap_gradient=0.00351921790007 side=0.00653646652276 lateral=0.0209957264416 mouth_out=-0.0167346996574 lattice_body=7.28543963069e-08 closure=-1.210255e-15 storage_over_reaction=-0.254618843 lateral_over_reaction=1.25462694 physical_gap_over_reaction=8.09506894e-06",
+        "reach=4 order=2 storage=-0.00510744287313 cap_pressure=0.0180146210557 cap_gradient=0.00051311847486 side=0.00315992508505 lateral=0.0216876646156 mouth_out=-0.0165792356604 lattice_body=9.86082054407e-07 closure=-1.460916e-15 storage_over_reaction=-0.305201891 lateral_over_reaction=1.2959746 physical_gap_over_reaction=-0.00922728715",
+        "reach=4 order=4 storage=-0.00495376383468 cap_pressure=0.0180146210557 cap_gradient=0.000513002874746 side=0.00316091299488 lateral=0.0216885369253 mouth_out=-0.0167346996574 lattice_body=7.34332444025e-08 closure=-1.471652e-15 storage_over_reaction=-0.2960186 lateral_over_reaction=1.29602673 physical_gap_over_reaction=8.12965874e-06",
+        "reach=8 order=2 storage=-0.00486722542194 cap_pressure=0.0201963300825 cap_gradient=-2.09363510625e-05 side=0.00127205241822 lateral=0.0214474461497 mouth_out=-0.0165792356604 lattice_body=9.85067350453e-07 closure=-7.213354e-16 storage_over_reaction=-0.290847385 lateral_over_reaction=1.28162004 physical_gap_over_reaction=-0.00922734778",
+        "reach=8 order=4 storage=-0.00471278027512 cap_pressure=0.0201963300825 cap_gradient=-2.09377352581e-05 side=0.00127216101222 lateral=0.0214475533595 mouth_out=-0.0167346996574 lattice_body=7.34269978558e-08 closure=-7.309125e-16 storage_over_reaction=-0.281618314 lateral_over_reaction=1.28162644 physical_gap_over_reaction=8.12928551e-06"
+      ]
+    }
+  ],
+  "radius_doubling": [
+    {
+      "grid": "e24_c4",
+      "reach": 2,
+      "delta_reaction": 0.015712871571511,
+      "delta_storage": -0.003757451679023,
+      "delta_lateral": 0.019470448709645,
+      "delta_lattice": 6.876633762713999e-08,
+      "storage_share_of_increase": -0.23913208110448975,
+      "lateral_share_of_increase": 1.2391400655846294,
+      "gap_share_of_increase": 7.984480139633603e-06
+    },
+    {
+      "grid": "e24_c4",
+      "reach": 4,
+      "delta_reaction": 0.015712871571511,
+      "delta_storage": -0.004336990147208,
+      "delta_lateral": 0.020049987715632,
+      "delta_lattice": 6.930415233317e-08,
+      "storage_share_of_increase": -0.27601512094526337,
+      "lateral_share_of_increase": 1.2760231396522468,
+      "gap_share_of_increase": 8.018706983428636e-06
+    },
+    {
+      "grid": "e24_c4",
+      "reach": 8,
+      "delta_reaction": 0.015712871571511,
+      "delta_storage": -0.003462649299236,
+      "delta_lateral": 0.019175646860848,
+      "delta_lattice": 6.929729216262e-08,
+      "storage_share_of_increase": -0.2203702412685742,
+      "lateral_share_of_increase": 1.2203782595420276,
+      "gap_share_of_increase": 8.01827345357697e-06
+    },
+    {
+      "grid": "e24_c6",
+      "reach": 2,
+      "delta_reaction": 0.015621883244284998,
+      "delta_storage": -0.0038006618056070003,
+      "delta_lateral": 0.01942257032889,
+      "delta_lattice": 1.3705590178703e-08,
+      "storage_share_of_increase": -0.2432908853673201,
+      "lateral_share_of_increase": 1.243292503545974,
+      "gap_share_of_increase": 1.6181786539735426e-06
+    },
+    {
+      "grid": "e24_c6",
+      "reach": 4,
+      "delta_reaction": 0.015621883244284998,
+      "delta_storage": -0.0043752642065749995,
+      "delta_lateral": 0.019997172837355002,
+      "delta_lattice": 1.3813156833583999e-08,
+      "storage_share_of_increase": -0.2800727760000137,
+      "lateral_share_of_increase": 1.2800744010598486,
+      "gap_share_of_increase": 1.6250598347465542e-06
+    },
+    {
+      "grid": "e24_c6",
+      "reach": 8,
+      "delta_reaction": 0.015621883244284998,
+      "delta_storage": -0.003505981771052,
+      "delta_lateral": 0.019127890400543,
+      "delta_lattice": 1.381180842012e-08,
+      "storage_share_of_increase": -0.224427600451732,
+      "lateral_share_of_increase": 1.224429225429054,
+      "gap_share_of_increase": 1.6249773221665292e-06
+    },
+    {
+      "grid": "e48_c4",
+      "reach": 2,
+      "delta_reaction": 0.016328838477706997,
+      "delta_storage": -0.0037642716894859996,
+      "delta_lateral": 0.020093239860172998,
+      "delta_lattice": 7.054962356615e-08,
+      "storage_share_of_increase": -0.23052905414094116,
+      "lateral_share_of_increase": 1.23053699671323,
+      "gap_share_of_increase": 7.942572288795996e-06
+    },
+    {
+      "grid": "e48_c4",
+      "reach": 4,
+      "delta_reaction": 0.016328838477706997,
+      "delta_storage": -0.0044138821666670006,
+      "delta_lateral": 0.020742850915991002,
+      "delta_lattice": 7.112828791075e-08,
+      "storage_share_of_increase": -0.2703120722697495,
+      "lateral_share_of_increase": 1.2703200502785454,
+      "gap_share_of_increase": 7.97800879603354e-06
+    },
+    {
+      "grid": "e48_c4",
+      "reach": 8,
+      "delta_reaction": 0.016328838477706997,
+      "delta_storage": -0.004179264886414001,
+      "delta_lateral": 0.020508233629505,
+      "delta_lattice": 7.112204907503e-08,
+      "storage_share_of_increase": -0.25594379490738156,
+      "lateral_share_of_increase": 1.2559517725344602,
+      "gap_share_of_increase": 7.977627078727953e-06
+    }
+  ],
+  "difference_readout": {
+    "command": "python3 scripts/s11c_guarded_run.py --pool lateral-radius-momentum --memory-gib 1 --log-directory _scratch/s11c/lateral_radius_momentum_readout01 -- python3 _scratch/s11c/lateral_radius_momentum_batch01/collect.py",
+    "collector_sha256": "333615b76719d52b741a7a63efdbdf875a26f3ddf990bd827edf34ba83cc675f",
+    "stdout_sha256": "fbf7de5c2960878d1826510026850ef1681df42213d512792df0f42c557a7037",
+    "stdout": [
+      "e24_c4 2 delta_reaction=0.0157128716 delta_storage=-0.00375745168 delta_lateral=0.0194704487 delta_lattice=6.87663376e-08 storage_share_of_increase=-0.239132081 lateral_share_of_increase=1.23914007 gap_share_of_increase=7.98448014e-06",
+      "e24_c4 4 delta_reaction=0.0157128716 delta_storage=-0.00433699015 delta_lateral=0.0200499877 delta_lattice=6.93041523e-08 storage_share_of_increase=-0.276015121 lateral_share_of_increase=1.27602314 gap_share_of_increase=8.01870698e-06",
+      "e24_c4 8 delta_reaction=0.0157128716 delta_storage=-0.0034626493 delta_lateral=0.0191756469 delta_lattice=6.92972922e-08 storage_share_of_increase=-0.220370241 lateral_share_of_increase=1.22037826 gap_share_of_increase=8.01827345e-06",
+      "e24_c6 2 delta_reaction=0.0156218832 delta_storage=-0.00380066181 delta_lateral=0.0194225703 delta_lattice=1.37055902e-08 storage_share_of_increase=-0.243290885 lateral_share_of_increase=1.2432925 gap_share_of_increase=1.61817865e-06",
+      "e24_c6 4 delta_reaction=0.0156218832 delta_storage=-0.00437526421 delta_lateral=0.0199971728 delta_lattice=1.38131568e-08 storage_share_of_increase=-0.280072776 lateral_share_of_increase=1.2800744 gap_share_of_increase=1.62505983e-06",
+      "e24_c6 8 delta_reaction=0.0156218832 delta_storage=-0.00350598177 delta_lateral=0.0191278904 delta_lattice=1.38118084e-08 storage_share_of_increase=-0.2244276 lateral_share_of_increase=1.22442923 gap_share_of_increase=1.62497732e-06",
+      "e48_c4 2 delta_reaction=0.0163288385 delta_storage=-0.00376427169 delta_lateral=0.0200932399 delta_lattice=7.05496236e-08 storage_share_of_increase=-0.230529054 lateral_share_of_increase=1.230537 gap_share_of_increase=7.94257229e-06",
+      "e48_c4 4 delta_reaction=0.0163288385 delta_storage=-0.00441388217 delta_lateral=0.0207428509 delta_lattice=7.11282879e-08 storage_share_of_increase=-0.270312072 lateral_share_of_increase=1.27032005 gap_share_of_increase=7.9780088e-06",
+      "e48_c4 8 delta_reaction=0.0163288385 delta_storage=-0.00417926489 delta_lateral=0.0205082336 delta_lattice=7.11220491e-08 storage_share_of_increase=-0.255943795 lateral_share_of_increase=1.25595177 gap_share_of_increase=7.97762708e-06"
+    ],
+    "guard_exit": 0,
+    "worker_exit": 0
+  }
+}

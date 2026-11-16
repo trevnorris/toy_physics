@@ -1,0 +1,152 @@
+Zero-sideways-flow material budget at 0PN. Unreviewed working calculation.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c.
+
+First check the native saved preparations. The additional Path-A sample is a
+converged stationary solution with a wall profile and a Neumann matter mouth.
+Its material current is the sum of the phase and spatial vector-potential
+terms printed below. A scalar electrostatic potential alone carries no
+constituent current. The three M1c summaries refer to the frozen grids, in
+order of increasing resolution.
+
+The separate local calculation reuses the isolated part of the flat
+conversion_region_weak_flow test without a sideways drive. Length, current
+density and rate per unit three-area are in its dimensionless units.
+It uses the smooth carrier and one illustrative passive order fraction law.
+This is an imposed-throughput segment, without a physical throat boundary or a
+global return. The entrance and outlet fractions and the integrated net loss
+are read separately. The parameters b=log(3) and L=2 log(3) are illustrative
+choices, in the same units, placing the cuts on opposite sides of the
+conversion midpoint. Both scripts compute the general result first.
+
+$ jq -c '{nr:.grid.nr,nw:.grid.nw,converged:.solver.converged,mouth:.convergence_evidence.boundaries.matter_w_lower,current:.convergence_evidence.surrogate_values.spatial_current_l2}' software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_6x4.json software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_8x6.json software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json
+{"nr":6,"nw":4,"converged":true,"mouth":{"alpha":1.0,"beta":0.0,"gamma":0.0,"kind":"dirichlet"},"current":0.0}
+{"nr":8,"nw":6,"converged":true,"mouth":{"alpha":1.0,"beta":0.0,"gamma":0.0,"kind":"dirichlet"},"current":0.0}
+{"nr":10,"nw":8,"converged":true,"mouth":{"alpha":1.0,"beta":0.0,"gamma":0.0,"kind":"dirichlet"},"current":0.0}
+
+$ jq -c '{nr:.grid.nr,nw:.grid.nw,converged:.solver.converged,content_hash,tau:.constants.tau,mouth:.convergence_evidence.branch_config.matter_mouth_boundary,first_cell_n:.derived.rho0[0][0],field_linf:.derived.field_linf}' software/stage1_solver/runs/patha_b2c_calibration/backgrounds/patha_b2c_background_tau_0p029125.json
+{"nr":16,"nw":16,"converged":true,"content_hash":"3e637a3646b26aac98e26a317e6d5d22aad237d9a77169207efd75d8e399e0b2","tau":0.029125,"mouth":"neumann","first_cell_n":0.01212109862839798,"field_linf":{"a0":0.0007670597192285355,"ar":0.0,"aw":0.0,"psi_imag":0.0,"psi_real":0.11009586108659117,"r0":0.9867926415079269}}
+
+$ sed -n '280,286p;294,300p;335,345p' software/stage1_solver/src/stage1_solver/coupled_branch.py
+def branch_boundary_conditions(cfg: BranchSmokeConfig) -> CoupledBoundarySet:
+    if cfg.matter_mouth_boundary == "dirichlet":
+        matter_w_lower = BoundaryCondition.dirichlet(0.0)
+    elif cfg.matter_mouth_boundary == "neumann":
+        matter_w_lower = BoundaryCondition.neumann(0.0)
+    else:
+        raise ValueError(f"Unsupported matter_mouth_boundary {cfg.matter_mouth_boundary!r}")
+        matter_radial_outer=BoundaryCondition.dirichlet(0.0),
+        matter_w_lower=matter_w_lower,
+        matter_w_upper=BoundaryCondition.robin(
+            alpha=cfg.matter_exit_impedance_alpha,
+            beta=1.0,
+            gamma=0.0,
+        ),
+    grad_imag_w = tensor_center_gradient_w(fields.psi_imag, grid)
+    density = fields.psi_real**2 + fields.psi_imag**2
+    phase_current_r = fields.psi_real * grad_imag_r - fields.psi_imag * grad_real_r
+    phase_current_w = fields.psi_real * grad_imag_w - fields.psi_imag * grad_real_w
+    jr = (cfg.hbar / cfg.particle_mass) * phase_current_r - (
+        cfg.gauge_charge / cfg.particle_mass
+    ) * fields.ar * density
+    jw = (cfg.hbar / cfg.particle_mass) * phase_current_w - (
+        cfg.gauge_charge / cfg.particle_mass
+    ) * fields.aw * density
+    return jr, jw
+
+$ sed -n '104p;110,111p' software/stage1_solver/reports/patha_chunk1c_self_consistent_validation.md
+null_floor_label keys on transport-signal norm, not residual magnitude; that is correct for this isotropic stationary branch and should be revisited for a current-carrying branch.
+| local_l2_relative_max | STRUCTURALLY ZERO | 0.000000e+00 | 0.000000e+00 | 1.000000e-10 | stationary current sectors have zero transport signal on this branch | PASS |
+| local_linf_relative_max | STRUCTURALLY ZERO | 0.000000e+00 | 0.000000e+00 | 1.000000e-10 | stationary current sectors have zero transport signal on this branch | PASS |
+
+$ sed -n '40,45p;76p' software/stage1_solver/reports/pathA_21b_force_closure_and_profile_bvp.md
+### G1 Closed Core
+
+- GNLS: `BVP-G1.GNLS: [-hbar^2/(2m_GNLS)D_i0D_i0+V_conf(X;Sigma0)+h(abs(psi0)^2)+q_*A_00-mu]psi0=0 on the 4D bulk throat exterior/interior domain, with D_i0=partial_i-i*q_*A_i0/hbar.` Anchor: `pde.tex:382-391`; action anchor `pde.tex:318-391`.
+- Maxwell: `BVP-G1.Maxwell: partial_M(Z(w)F_0^{MN})+xi^-1 partial^N(partial.A_0)=mu0[J_psi^N(psi0,A0)+J_ext,0^N], plus Bianchi identities and a gauge condition such as partial.A_0=0.` Anchor: `pde.tex:410-426`; source bookkeeping `pde.tex:370-374`.
+
+G1 domain and BCs: the fields live on the 4D bulk throat branch domain with measure `d^4X` and stationary time factored by `psi=e^{-i mu t/hbar}psi0`. Far-field BCs fix the asymptotic density, chemical potential/gauge reference, finite energy, and the Gauss flux lane. Throat BCs require regular finite fields and branch-declared mouth/bottom flux data; the value selector for those branch data is not part of G1.
+`J_VALUE_BRANCH_PARAMETER / J_SELECTOR_UNDERIVED`: no-leakage conserves the flux in a chosen region, but it does not fix the value. Candidate selectors are sonic choking, regularity at the throat bottom, global topology/outflow balance, or an energy extremum, all explicitly downstream assumptions unless derived.
+
+$ sed -n '53,59p;69,72p' research/pde_ledger_v3/steps/S12_order_source.md
+∂t n + ∇₄·(n u) = 0
+∂t(χ_B n) + ∇₄·(χ_B n u + J_χ) = n Γ_B
+Γ_B = Γ_return − Γ_drain,       [Γ_B] = T⁻¹.
+```
+
+The signed source converts order in one conserved material. Positive means bulk material re-ordering
+onto the brane; negative means de-ordering. The ruled-out frozen-wall material sink plus remote return
+
+No regime is chosen and no field is frozen. In particular `J_χ=0` is not adopted. Transfer is only to
+where the committed law holds and the shear-holding region has two graph faces over the in-plane
+coordinates. The puncture's own interior is excluded, with S22. The S9b/O2 far-zone setting is a
+
+$ sed -n 609,615p research/pde_ledger_v3/V3_STEP_PLAN.md
+⛔ **Two inventories, kept apart:**
+- **non-variational source / controller functions** — `Γ_return`, `Γ_drain`, `J_χ`, and the return
+  controllers. ⛔ All `[OPEN]` in form.
+- **boundary / domain data** — the mouth, collar and IR conditions, and the `𝔅` branch selection.
+
+⇒ The throat enters this ledger with its **source form open and its strength supplied**. ⛔ Not "only a
+boundary condition" — that framing hides which of the two is unresolved.
+
+$ sed -n '98,100p;219,224p;248p;1757p' docs/toy_model_ontology_summary.md
+The medium is intended to be globally conserved. Apparent sources and sinks seen by a brane observer must ultimately be projections of four-dimensional transport or changes in the material's order, not creation or destruction of a second substance.
+
+The bulk is therefore an internal reservoir, not an external supply. In a closed-loop realization, localized throat drainage transfers material, momentum, and energy from ordered brane degrees of freedom into de-structured bulk degrees of freedom, while distributed return transfers material back into the ordered state. The bulk may store the corresponding response as compression, flow, internal energy, entropy, or other unresolved excitations of the same medium. Any sustained cycle must include the evolution of that reservoir rather than treating it as an inexhaustible battery.
+
+\[
+Q_{n,a}\equiv Q_{n,a}^{\rm net}>0.
+\]
+
+Positivity is a property of the selected solution, not a consequence of the surface-integral notation. Under reflection-symmetric boundary and reservoir data, the actual physical targets for independently solved \(\mathcal C_{\rm th}\)-related partners are
+It has the same constituent-number-per-time dimensions as \(Q_{n,a}\) but need not equal it. It excludes distributed return and is not a signed net rate. In an inertial order-field branch, an equivalent gross conversion diagnostic and its units must be derived from that dynamics rather than importing this constitutive formula. Signed net conversion remains in \(\Gamma_{\rm drain}\), \(\Gamma_{\rm return}\), and \(\Gamma_B\) only on branches where those rates are defined.
+The global solution must update \(\mathcal B_\infty\) and be iterated with the local throat until the same reservoir state, backpressure, return profile, transport, conversion, and emitted fluxes are recovered on both sides of the feedback loop.
+
+$ sed -n 4,12p docs/_measurements/conversion_region_weak_flow.txt
+Dimensionless local flat section at w=0 on the feeding edge of a receiving half-space w>=0.
+x is one in-plane coordinate. The other two are spectators. Baseline n=m=u_w=1,
+c_s^2=35/24, hbar^2/(4m^2)=1/24. The EOS, continuity and quantum-pressure term of the
+smooth conservative carrier are retained. This computes a first derivative in companion
+amplitude, at Newtonian order, about one particular steady local preparation.
+Both calculations use one illustrative fraction law, D_t chi=-chi*(1-chi) and J_chi=0,
+giving excess net loss L=n chi(1-chi). A common local return contribution can be added to
+both conversion rates without altering the net law. No gross drain or physical rate was inferred.
+Order is passive in this check. The source location b and the matching amplitude B=alpha*U
+
+$ sed -n 1,10p software/stage1_solver/tools/conversion_region_weak_flow.wl
+(* Direct complex carrier, and the original fraction balance. Use the
+   signed axial coordinate w (mouth zero, downstream positive). *)
+ClearAll["Global`*"];
+hb = 1/Sqrt[6];
+h[n_] := 35 n^4/96;
+mu = h[1] + 1/2;
+psi0 = Exp[I w/hb];
+rho1 = amp Sin[x] Exp[-2 w];
+pot1 = u x + p Sin[x] Exp[-2 w];
+psi1 = psi0 (rho1/2 + I pot1/hb);
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool one-throat-budget --memory-gib 2 --log-directory _scratch/s11c/one_throat_baseline_budget_sympy01 -- python3 software/stage1_solver/tools/one_throat_baseline_budget.py
+SHA256 5b7bb3c0b487b8e8e362046be0e46074130ba3c9d4fe1d11b591ecec12fdc228  software/stage1_solver/tools/one_throat_baseline_budget.py
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Started 2026-11-13T21:37:22.329072+00:00. Child and guard exited 0, 2 GiB verified, zero swap, empty stderr and no deadline.
+Stdout SHA256 9d7fa1e7be181bb81f98ed98bed9bccfede0b8b18037dc88c95d98162785efca
+Literal stdout follows
+constituent [intake, discharge, storage, side current] = [1, 1, 0, 0]
+local [ordered divergence, net loss density] = [-exp(-b + w)/(exp(-b + w) + 1)**2, (1 - 1/(exp(-b + w) + 1))/(exp(-b + w) + 1)]
+integrated [order drop, bulk gain, loss] = [-1/(exp(L - b) + 1) + 1/(1 + exp(-b)), -1/(exp(L - b) + 1) + 1/(1 + exp(-b)), -1/(exp(L - b) + 1) + 1/(1 + exp(-b))]
+local and integrated residuals = [0, 0, 0]
+sample [in ordered, in disordered, out ordered, out disordered, net converted] = [3/4, 1/4, 1/4, 3/4, 1/2]
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool one-throat-budget --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/one_throat_baseline_budget_wolfram01 -- math -noprompt -script software/stage1_solver/tools/one_throat_baseline_budget.wl
+SHA256 879c22b14c2f284196a65e9106048dc267e8be8a79b35ad20e1abfd9bb573300  software/stage1_solver/tools/one_throat_baseline_budget.wl
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Started 2026-11-13T21:37:23.523819+00:00. Child and guard exited 0, 4 GiB verified, zero swap, empty stderr and no deadline.
+Stdout SHA256 918242b9fc3b7eb4d6dd226d2bf10aec57d89254e4584c5292ed4b0382de2247
+Literal stdout follows
+"chemical potential and [density, flux] = "InputForm[{{mu -> 83/96}, 1, 1}]
+"inventory per area and section fluxes = "InputForm[{len, 1, 1}]
+"integrated net order loss = "InputForm[(Tanh[b/2] - Tanh[(b - len)/2])/2]
+"constituent, ordered, disordered residuals = "InputForm[{0, 0, 0}]
+"[ordered in, disordered in, ordered out, disordered out, converted] = "InputForm[{3/4, 1/4, 1/4, 3/4, 1/2}]

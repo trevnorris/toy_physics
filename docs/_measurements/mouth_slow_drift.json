@@ -1,0 +1,102 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "Linear response of ambient-frame momentum entering an isolated mouth during imposed slow translation in a fixed lateral reservoir. Comparison with the held radial load uses an illustrative speed in solver units.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "field_sha256": {
+    "_scratch/s11c/lateral_radius_momentum_e24_c4_a0.75_01/local_fields.npz": "3d211e8733b328f5f521f99954c9839af66a862187bb76fce41c26b8cf05b018",
+    "_scratch/s11c/lateral_radius_momentum_e24_c4_a1_01/local_fields.npz": "b93d2ff06136c42de53016138c5708018d6e30f2e1de642a1e627ef53a97de35",
+    "_scratch/s11c/lateral_radius_momentum_e24_c4_a1.5_01/local_fields.npz": "6b0709b4c15dabe2b8cbaf03d3dcc99202ed620f476177bd55bcbdf487d22b31",
+    "_scratch/s11c/lateral_radius_momentum_e24_c6_a0.75_01/local_fields.npz": "01e01d212b526003abb20f4f61923b7695fef026d116d2c0da6599d453aa5c11",
+    "_scratch/s11c/lateral_radius_momentum_e24_c6_a1_01/local_fields.npz": "d2c98ee3153f3ae861758a7663531d8e77c10235830d903ea91d9307dff4d513",
+    "_scratch/s11c/lateral_radius_momentum_e24_c6_a1.5_01/local_fields.npz": "cd3d1e8a922f8cdbbc8ac075d8a4ecbc89eb31f7e2b640c70e36d60a9ab22654",
+    "_scratch/s11c/lateral_radius_momentum_e48_c4_a0.75_01/local_fields.npz": "6b43cc030eca703640bbf33fa9af82720c1588e966e8cb15f857293abc9213ab",
+    "_scratch/s11c/lateral_radius_momentum_e48_c4_a1_01/local_fields.npz": "8bb7f0e10c43b2f3b6943d20891c8103957b94ec23753e2d2702fed8dd4391cb",
+    "_scratch/s11c/lateral_radius_momentum_e48_c4_a1.5_01/local_fields.npz": "ddecb3ebff30472ed70ef927d4fb107fee4fa54fbe0dc9225eb4697d330d1f47"
+  },
+  "runs": [
+    {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-slow-drift --memory-gib 2 --log-directory _scratch/s11c/mouth_slow_drift01 -- python3 software/stage1_solver/tools/mouth_slow_drift.py",
+      "sources_and_manifests": {
+        "docs/_measurements/lateral_mouth_radius.json": "c77854a410b2ae4e93cd443cc97c81e2ae23694bf02e8a2c9845083b7201ce12",
+        "docs/_measurements/lateral_radius_momentum.json": "9e18d35243a24010709672a0dd21fc0f541afb3fd73e29f1adb4b32eb9f5695e",
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/lateral_mouth_acceleration.py": "0f04c0edb17b6c17bc1dfd2081412017caed4dfd7c1ef6808fe84f751394219b",
+        "software/stage1_solver/tools/lateral_mouth_radius.py": "4f0d9fafd7bd4b71251ae87bf91d60d8c60be0ee01170d2c4c184eb160954b08",
+        "software/stage1_solver/tools/lateral_paired_acceleration.py": "42e94c2f007d335a233c31afda180e29e30ecfbb0d13b0790c0295c678fd672e",
+        "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+        "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+        "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+        "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+        "software/stage1_solver/tools/mouth_slow_drift.py": "be8ed584bf083d3994a261d568b743003f7e10d7b9a9b302962684f9d6e4fc04"
+      },
+      "start_utc": "2026-11-15T04:21:04.068824+00:00",
+      "guard_outcome_written_utc": "2026-11-15T04:21:04.578583+00:00",
+      "wall_seconds": 0.49100735085085034,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "peak_memory_bytes_sampled": 55193600,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/mouth_slow_drift01/stdout",
+      "stdout_bytes": 3470,
+      "stdout_sha256": "72c41d628472b23ca80fe97867c5bd800eb3a79688374a8ad7e883c4d8e8d2c7",
+      "stderr_bytes": 0,
+      "stdout": [
+        "grid=e24_c4 radius=0.75 rate=0.105563225698 rate_slope=5.42101086243e-20 rest=4.33680868994e-19 redistribution=5.21756752589e-05 velocity=-5.04423554192e-05 carry=1.73331983966e-06 stress=-2.42728862838e-06 lab=-6.93968788716e-07 interior=1.30660151401e-05 mouth_frame=-0.105563919667 fd_1em4=-6.93968793021e-07 fd_5em5=-6.93968788684e-07",
+        "grid=e24_c4 radius=1 rate=0.25 rate_slope=-8.67361737988e-19 rest=-1.73472347598e-18 redistribution=0.000194195754945 velocity=-0.000184477055269 carry=9.7186996765e-06 stress=-9.72458812504e-06 lab=-5.88844853835e-09 interior=5.3540656148e-05 mouth_frame=-0.250000005888 fd_1em4=-5.88844945026e-09 fd_5em5=-5.8885188392e-09",
+        "grid=e24_c4 radius=1 d=4 held=0.000311079639406 lab_at_V0.01_over_held=-1.8929070863e-07",
+        "grid=e24_c4 radius=1 d=8 held=7.57195133591e-05 lab_at_V0.01_over_held=-7.77665924822e-07",
+        "grid=e24_c4 radius=1.5 rate=0.842149291396 rate_slope=0 rest=-6.93889390391e-18 redistribution=0.00120296732286 velocity=-0.00113804793175 carry=6.49193911159e-05 stress=-6.51507571237e-05 lab=-2.31366007793e-07 interior=4.40657759951e-05 mouth_frame=-0.842149522762 fd_1em4=-2.31366054787e-07 fd_5em5=-2.31365794578e-07",
+        "grid=e24_c6 radius=0.75 rate=0.105566221487 rate_slope=5.42101086243e-20 rest=-4.33680868994e-19 redistribution=5.05316451749e-05 velocity=-4.82930941117e-05 carry=2.23855106323e-06 stress=-2.22781332361e-06 lab=1.07377396181e-08 interior=1.46222793662e-05 mouth_frame=-0.105566210749 fd_1em4=1.07377344863e-08 fd_5em5=1.07377344863e-08",
+        "grid=e24_c6 radius=1 rate=0.25 rate_slope=0 rest=0 redistribution=0.000188593739208 velocity=-0.000179378183513 carry=9.21555569535e-06 stress=-9.25818873882e-06 lab=-4.26330434735e-08 interior=7.18823692773e-06 mouth_frame=-0.250000042633 fd_1em4=-4.26330151737e-08 fd_5em5=-4.26330498682e-08",
+        "grid=e24_c6 radius=1 d=4 held=0.000310421971985 lab_at_V0.01_over_held=-1.37339000847e-06",
+        "grid=e24_c6 radius=1 d=8 held=7.56758737404e-05 lab_at_V0.01_over_held=-5.63363742846e-06",
+        "grid=e24_c6 radius=1.5 rate=0.842133236369 rate_slope=0 rest=1.04083408559e-17 redistribution=0.00118426341647 velocity=-0.00112025623586 carry=6.40071806117e-05 stress=-6.38849593016e-05 lab=1.22221310147e-07 interior=6.86885600969e-06 mouth_frame=-0.842133114148 fd_1em4=1.2222138232e-07 fd_5em5=1.22221191501e-07",
+        "grid=e48_c4 radius=0.75 rate=0.105563225698 rate_slope=5.42101086243e-20 rest=-4.33680868994e-19 redistribution=5.21762608023e-05 velocity=-5.044298223e-05 carry=1.73327857227e-06 stress=-2.42731950851e-06 lab=-6.94040936235e-07 interior=1.30663446283e-05 mouth_frame=-0.105563919739 fd_1em4=-6.94040935834e-07 fd_5em5=-6.94040948844e-07",
+        "grid=e48_c4 radius=1 rate=0.25 rate_slope=4.33680868994e-19 rest=3.46944695195e-18 redistribution=0.000194200368035 velocity=-0.000184481962007 carry=9.7184060285e-06 stress=-9.72484135477e-06 lab=-6.43532626448e-09 interior=5.35408013158e-05 mouth_frame=-0.250000006435 fd_1em4=-6.43532102607e-09 fd_5em5=-6.43525163713e-09",
+        "grid=e48_c4 radius=1 d=4 held=0.000311974777177 lab_at_V0.01_over_held=-2.0627713313e-07",
+        "grid=e48_c4 radius=1 d=8 held=7.75344424875e-05 lab_at_V0.01_over_held=-8.29995813218e-07",
+        "grid=e48_c4 radius=1.5 rate=0.842149291409 rate_slope=-2.60208521397e-18 rest=1.04083408559e-17 redistribution=0.00120304855164 velocity=-0.00113814116028 carry=6.49073913607e-05 stress=-6.51554599683e-05 lab=-2.48068607606e-07 interior=4.40491461756e-05 mouth_frame=-0.842149539477 fd_1em4=-2.48068614261e-07 fd_5em5=-2.48068544872e-07"
+      ]
+    },
+    {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-drift-flux-check --memory-gib 2 --log-directory _scratch/s11c/mouth_drift_flux_check01 -- python3 software/stage1_solver/tools/mouth_drift_flux_check.py",
+      "sources_and_manifests": {
+        "docs/_measurements/lateral_radius_momentum.json": "9e18d35243a24010709672a0dd21fc0f541afb3fd73e29f1adb4b32eb9f5695e",
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+        "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+        "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+        "software/stage1_solver/tools/mouth_drift_flux_check.py": "d3af1f4497fb326107469c1ba181ce809f6ea42c169db1bf4cb31140c47298fb",
+        "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61"
+      },
+      "start_utc": "2026-11-15T04:22:18.023712+00:00",
+      "guard_outcome_written_utc": "2026-11-15T04:22:18.526550+00:00",
+      "wall_seconds": 0.48562978208065033,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 2147483648,
+      "peak_memory_bytes_sampled": 55033856,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "stdout_path": "_scratch/s11c/mouth_drift_flux_check01/stdout",
+      "stdout_bytes": 1796,
+      "stdout_sha256": "63f8381450aae5613b0d0710d1bdeb8dbb754fec2cf66db23eb6476cb81090e1",
+      "stderr_bytes": 0,
+      "stdout": [
+        "grid=e24_c4 radius=0.75 law_cut=5.04981312188e-05 law_halo=-8.61892157959e-07 law_link=-8.61892157959e-07 layer_cut=1.30660151401e-05 layer_halo=-5.30770003301e-06 layer_product_halo=-7.98426116462e-07",
+        "grid=e24_c4 radius=1 law_cut=6.68660022539e-05 law_halo=-3.41036262238e-07 law_link=-3.41036262238e-07 layer_cut=5.3540656148e-05 layer_halo=-1.15825895626e-05 layer_product_halo=-1.38940432603e-07",
+        "grid=e24_c4 radius=1.5 law_cut=8.42819818794e-05 law_halo=-9.76677699062e-07 law_link=-9.76677699061e-07 layer_cut=4.40657759951e-05 layer_halo=-2.20581033821e-05 layer_product_halo=1.15127400275e-07",
+        "grid=e24_c6 radius=0.75 law_cut=1.23484437155e-05 law_halo=-3.22928946633e-08 law_link=-3.22928946634e-08 layer_cut=1.46222793662e-05 layer_halo=-3.28453670968e-06 layer_product_halo=7.3712403855e-09",
+        "grid=e24_c6 radius=1 law_cut=2.01195135439e-05 law_halo=-1.18528091663e-07 law_link=-1.18528091663e-07 layer_cut=7.18823692773e-06 layer_halo=-7.90979401066e-06 layer_product_halo=-3.72815917904e-08",
+        "grid=e24_c6 radius=1.5 law_cut=4.0006583866e-05 law_halo=-3.45592323709e-08 law_link=-3.45592323711e-08 layer_cut=6.86885600969e-06 layer_halo=-1.05314610149e-05 layer_product_halo=4.14172051786e-07",
+        "grid=e48_c4 radius=0.75 law_cut=5.04986135564e-05 law_halo=-8.61965285258e-07 law_link=-8.61965285258e-07 layer_cut=1.30663446283e-05 layer_halo=-5.30777115502e-06 layer_product_halo=-7.98498643064e-07",
+        "grid=e48_c4 radius=1 law_cut=6.68668335004e-05 law_halo=-3.41587556023e-07 law_link=-3.41587556023e-07 layer_cut=5.35408013158e-05 layer_halo=-1.15831237226e-05 layer_product_halo=-1.3948948138e-07",
+        "grid=e48_c4 radius=1.5 law_cut=8.426887984e-05 law_halo=-9.93408768807e-07 law_link=-9.93408768808e-07 layer_cut=4.40491461756e-05 layer_halo=-2.20746865686e-05 layer_product_halo=9.84227498895e-08"
+      ]
+    }
+  ]
+}

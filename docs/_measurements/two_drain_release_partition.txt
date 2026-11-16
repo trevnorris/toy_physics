@@ -1,0 +1,107 @@
+0PN. Both finite mouths open, both draining inward at known exterior volume
+rates Q_t and Q_c. Initial release at rest. Unreviewed working result.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c.
+Prior working note SHA256 25d44bfaeb12cf3722d8bee91db2484dda87a50266b3c038870482ed7932f2ef.
+
+Scope of the exact algebra: the specified steady three-dimensional point-intake
+exterior gives F0=rho Q_t Q_c/(4 pi d^2). Match the leading spatially uniform
+companion flow at the target to the spherical release probe. The benchmark
+omits slab-face exchange, additional lateral sleeve traction and changing
+internal inventory, and prescribes a single translating mass M. This is a
+leading large-separation local probe, not a global two-moving-body solution.
+The native branch's sleeve, slab faces and stored field momenta remain open.
+
+SymPy starts from the recorded pressure-plus-advection result for a target
+accelerating at release, subtracts the specified outlet, and solves for its
+bare body's momentum change. Wolfram starts from the independently recorded
+probe acceleration and reconstructs the three terms of the force budget.
+Ratios are to the steady scale F0. In this benchmark the pressure correction
+is the spherical added mass times acceleration. Native face integrals from
+other preparations or units are not combined with these readings.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool two-drain-release --memory-gib 2 --log-directory _scratch/s11c/two_drain_release_partition_sympy01 -- python3 -c 'from sympy import symbols, pi, solve, cancel, simplify
+rho, qt, qc, d, R, M = symbols("rho Q_t Q_c d R M", positive=True)
+acc, k = symbols("A k", real=True)
+u = qc/(4*pi*d**2)
+F0 = rho*qt*u
+md = 4*pi*rho*R**3/3
+# Recorded sphere flux at free release (radial integration already done).
+incoming = -rho*(2*pi*acc*R**3 - 3*qt*u)/3
+outlet = rho*qt*k*u
+ar = solve(M*acc - incoming + outlet, acc)[0]
+mouth = cancel(M*ar/F0)
+pressure_reaction = cancel((F0-incoming.subs(acc,ar))/F0)
+sleeve = cancel(outlet/F0)
+print("steady matter influx =",F0)
+print("free acceleration =",ar)
+print("ratios [body, unsteady pressure reduction, sleeve] =",[mouth,pressure_reaction,sleeve])
+print("sum minus one =",simplify(mouth+pressure_reaction+sleeve-1))
+for case in [0,1]:
+    row=[simplify(x.subs({M:md,k:case})) for x in (mouth,pressure_reaction,sleeve)]
+    print("M=displaced mass, k =",case,"ratios =",row,flush=True)
+assert simplify(mouth+pressure_reaction+sleeve-1)==0
+assert simplify(M*ar-(1-k)*M*F0/(M+md/2))==0'
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start UTC 2026-11-14T02:55:35.243872+00:00. End UTC (outcome timestamp) 2026-11-14T02:55:35.860769+00:00.
+Child and guard exited 0. Verified 2 GiB, zero swap. Recorded memory.peak 53878784 bytes.
+Stdout _scratch/s11c/two_drain_release_partition_sympy01/stdout (384 bytes, SHA256 0323c0036a02e81ec168165e491a9b7825dd079f5f81e67ec43de250bc79b6d0).
+Literal stdout
+steady matter influx = Q_c*Q_t*rho/(4*pi*d**2)
+free acceleration = 3*Q_c*Q_t*rho*(1 - k)/(4*pi*d**2*(3*M + 2*pi*R**3*rho))
+ratios [body, unsteady pressure reduction, sleeve] = [(-3*M*k + 3*M)/(3*M + 2*pi*R**3*rho), (-2*pi*R**3*k*rho + 2*pi*R**3*rho)/(3*M + 2*pi*R**3*rho), k]
+sum minus one = 0
+M=displaced mass, k = 0 ratios = [2/3, 1/3, 0]
+M=displaced mass, k = 1 ratios = [0, 0, 1]
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool two-drain-release --memory-gib 4 --log-directory _scratch/s11c/two_drain_release_partition_wolfram01 -- math -noprompt -run 'ClearAll["Global`*"]; u=qc/(4 Pi d^2); f0=rho qt u; md=4 Pi rho rad^3/3; (* Use the recorded independent Wolfram probe solution, evaluated with zero probe force. *) acc=3 (qt rho u-frac qt rho u)/(3 mass+2 rad^3 Pi rho); body=mass acc; sleeve=rho qt frac u; backPressure=(2 Pi rad^3 rho/3) acc; portions=Factor /@ ({body,backPressure,sleeve}/f0); residual=Factor[body+backPressure+sleeve-f0]; Print["body momentum rate = ",ToString[Factor[body],InputForm]]; Print["force ratios = ",ToString[portions,InputForm]]; Print["budget residual = ",ToString[residual,InputForm]]; Do[Print["k = ",i," ratios at equal body and displaced masses = ",ToString[Simplify[portions/.{mass->md,frac->i}],InputForm]],{i,{0,1}}]; Quit[If[residual===0 && Factor[acc-(1-frac)f0/(mass+md/2)]===0,0,1]]'
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start UTC 2026-11-14T02:55:34.614685+00:00. End UTC (outcome timestamp) 2026-11-14T02:55:38.752413+00:00.
+Child and guard exited 0. Verified 4 GiB, zero swap. Recorded memory.peak 214704128 bytes.
+Stdout _scratch/s11c/two_drain_release_partition_wolfram01/stdout (386 bytes, SHA256 30e771db9401aeb41b11f9f6d31984c33b70cc2c006f72d6e772a19836d09587).
+Literal stdout
+"body momentum rate = ""(-3*(-1 + frac)*mass*qc*qt*rho)/(4*d^2*Pi*(3*mass + 2*Pi*rad^3*rho))"
+"force ratios = ""{(-3*(-1 + frac)*mass)/(3*mass + 2*Pi*rad^3*rho), (-2*(-1 + frac)*Pi*rad^3*rho)/(3*mass + 2*Pi*rad^3*rho), frac}"
+"budget residual = ""0"
+"k = "0" ratios at equal body and displaced masses = ""{2/3, 1/3, 0}"
+"k = "1" ratios at equal body and displaced masses = ""{0, 0, 1}"
+
+SHA256 8dfbc8b75d4a465006a5d3107255af578f378444a39c2953178243409ae33d34  docs/_measurements/held_drain_pair.txt
+$ sed -n '14,21p' docs/_measurements/held_drain_pair.txt
+bilinear inward convective, pressure = Q1*Q2*rho/(3*pi*d**2) -Q1*Q2*rho/(12*pi*d**2)
+pair minus isolated = Q1*Q2*rho/(4*pi*d**2)
+sphere-radius derivative = 0
+scaled d=10 b=1 = 1/100
+scaled d=10 b=3 = 1/100
+scaled d=20 b=1 = 1/400
+scaled d=20 b=3 = 1/400
+upper face isolated radial integrand = 0
+
+SHA256 99938713fc1ebaec87c85773a90a197e4be2e6fe057f1e2808fd272b32ff7d4b  docs/_measurements/one_throat_flow_probe.txt
+$ sed -n '21,25p;40,44p' docs/_measurements/one_throat_flow_probe.txt
+inward_total_at_r = -rho*(2*pi*A*a**3 - 3*Q*U)/3
+external_hold = Q*U*rho*(k - 1)
+released_acceleration = -3*(-F + Q*U*k*rho - Q*U*rho)/(3*M + 2*pi*a**3*rho)
+outward_outlet_x_at_release = Q*U*k*rho
+measurements = {"k=0,U=-1/100": ["3/100", "-3/100", "-1/50", "-1/100"], "k=0,U=0": ["0", "-1/100", "0", "1/100"], "k=0,U=1/100": ["-3/100", "1/100", "1/50", "3/100"], "k=1,U=-1/100": ["0", "-1/100", "0", "1/100"], "k=1,U=0": ["0", "-1/100", "0", "1/100"], "k=1,U=1/100": ["0", "-1/100", "0", "1/100"]}
+"inward_exterior = "InputForm[-1/3*((-3*flow*intake + 2*a^3*acc*Pi)*rho)]
+"shell_storage_rate = "InputForm[0]
+"external_hold = "InputForm[flow*(-1 + fraction)*intake*rho]
+"released_acceleration = "InputForm[(3*(probe + flow*intake*rho - flow*fraction*intake*rho))/(3*mass + 2*a^3*Pi*rho)]
+"measurements = ""{\"k=0,U=1\\/100\":[\"-3\\/100\",\"1\\/100\",\"1\\/50\",\"3\\/100\"],\"k=0,U=0\":[\"0\",\"-1\\/100\",\"0\",\"1\\/100\"],\"k=0,U=-1\\/100\":[\"3\\/100\",\"-3\\/100\",\"-1\\/50\",\"-1\\/100\"],\"k=1,U=1\\/100\":[\"0\",\"-1\\/100\",\"0\",\"1\\/100\"],\"k=1,U=0\":[\"0\",\"-1\\/100\",\"0\",\"1\\/100\"],\"k=1,U=-1\\/100\":[\"0\",\"-1\\/100\",\"0\",\"1\\/100\"]}"
+
+SHA256 afa47ac946946e7e07923ffa9df7eb004418102a794acaa79ae02146e543b0aa  docs/one_throat_flow_probe.md
+$ sed -n '20,25p' docs/one_throat_flow_probe.md
+The exterior is incompressible, inviscid potential flow. The spherical surface admits fluid at uniform inward normal speed $s$ relative to the moving mouth, with tangential slip. Both outlet cases discharge mass at $\rho Q$ with zero additional lateral outlet traction. If the mouth moves at $V$, the prescribed mean outlet velocity along the flow axis is $V+k(U-V)$, with $k=0$ or $1$. The model gives the intake a constant mechanical mass and neglects internal tilt, internal momentum storage relative to the body, and radiation. These are benchmark choices.
+
+Solving for the exterior velocity and integrating the convective and pressure currents gives inward force $\rho Q U-(m_d/2)A$ at the instant of release. The outlet carries away $k\rho Q U$ then. The support force $H$ for steady holding and acceleration $A$ with the support removed therefore satisfy
+
+$$
+H=-(1-k)\rho Q U,\qquad
+
+SHA256 655445c17189fe9cf3cf7651ab43ac19f7965698412911006d7764ef1683a1c8  research/pde_ledger_v3/steps/S15_two_drain_region.md
+$ sed -n '65,67p' research/pde_ledger_v3/steps/S15_two_drain_region.md
+The first population route files the user's flow-comparison decision against the existing `R-S21-01`, alongside its distinct light-sector conditions. The comparison stays OPEN. If S21 tests inverse-square signed shell crossing on the stated family, it must carry the geometric departure, live field response, pressure and viscosity inputs, both surfaces and their motion. If it tests Newtonian gravity, it needs companion-induced **free acceleration** relative to an isolated drain under the same ambient conditions. Separate the surroundings from self-field (`R-S16-01`), account for the momentum stored in the shell and exchanged at the sleeve/core and at each slab face (`R-S16-03`), and identify the core contents (S22) and inertial response (`R-S16-04`, S8). The compactness assumption, where used, stays with `R-S16-02`. The physical suppliers of the passive surroundings field, face-resolved momentum and compactness have no owner assigned in S16. [Register entries and S15 pass](../SUBSTRATE_REQUIREMENTS.md) · [S16 record](S16_moving_region.md)
+
+The slow limit and far behaviour remain conditional on `R-S14a-01`, jointly owed by S12, S8/S22 and the unnamed face/interior laws. S22 carries the core, the source map `{J, Θ_Q, N_∞,3, Q}` and the coefficient `I_F,12`. C3 remains the gap between drain rate and mass. The full sign retains quantum, confinement, Maxwell and profile residuals. The forms of `Π_o` and `f` have no assigned owner here. Extending steady P6 and resolving possible stress-carried momentum under P5 remain S8 material questions. A Newtonian orbit, its corrections, brane feedback, local thinning, and mouth support lie beyond this step. [Retained questions](../directives/S15_decision_list.md#retained-open) · [S22 debt rows](../V3_STEP_PLAN.md) · [Defect C3](../DEFECT_REGISTER.md)

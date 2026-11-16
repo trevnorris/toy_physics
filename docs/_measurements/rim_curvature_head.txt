@@ -1,0 +1,149 @@
+One throat at 0PN, one-sided inward discharge, zero sideways flow.
+Unreviewed working derivation. Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c.
+Working note before this addition: SHA256 33df809b409ba05eab97b8889fff52a7f5c1cd473cbdce8d0c3d280373e5dbf5.
+
+The real order wall may continue smoothly from the brane into the sleeve. Pieces
+of one regular constant-tension sheet cancel their shared endpoint variation.
+In a sharp description of a physical junction, a sheet ending on the two-sphere
+contributes sigma times outward unit conormal times area to the energy gradient.
+The collar area energy has gradient (2 tau/a) e_r per area. Reaction forces
+have the opposite sign. A real junction can also have bending edge forces and
+moments, anchoring, loads, and a restriction on allowed contact displacements.
+
+Follow a stationary, unidirectional normal tube from feed to bulk. The profiles
+depend only on z; the normal volume measure is A(z) dz. H=A'/A. I=A n u is
+the conserved number rate, positive toward the bulk. Assume n,A,M positive and
+finite on the nonconstant order transition. The equal-depth bare energy has
+constant gradient coefficient k. The conditional material force from a
+reversible displacement is mu_order q'. The pure-relaxation law is
+u q'=-M mu_order. There is no side exchange, extra kinetic source, external
+work in the layer or independently maintained wall drive in this test.
+
+Euler projection including this order force gives n B'=mu_order q', where
+B=m u^2/2 + V_conf + h(n) + Q for a steady conservative ungauged carrier.
+Then B'=-I q'^2/(A n^2 M). Integral power transfer to the carrier from the
+steady layer is -I^2 Rq with Rq=integral q'^2/(A n^2 M) dz. B has energy
+per constituent units; I^2 Rq has energy per time units. Flow from feed to bulk
+requires positive available head in this closed set of sectors; the condition
+does not prove hydraulic or phase matching, a stationary profile, or stability.
+An independent drive, further work or moving boundary changes the energy balance.
+Endpoint normal stresses and physical collar conormal forces live on different
+cuts. Normal-tube fields alone do not compute tangential edge fluxes at a seam.
+
+SymPy varies the meridian area integrand and the volume-weighted order energy.
+Wolfram varies the endpoints of a conical frustum, subtracts the interior first
+variation, obtains the carrier force from the radial/normal stress divergence,
+and uses the kinetic equation to evaluate its mechanical power. These are exact
+symbolic checks of necessary conditions. No full open-reservoir solve was run.
+
+sympy
+$ python3 scripts/s11c_guarded_run.py --pool rim-curvature-head --memory-gib 2 --log-directory _scratch/s11c/rim_curvature_head_sympy01 -- python3 software/stage1_solver/tools/rim_curvature_head.py
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 db9b609c91fe3e87a72080254618c73444df13f617c33f8d75aaac7aa6b87b81  software/stage1_solver/tools/rim_curvature_head.py
+Start UTC 2026-11-13T23:41:02.027660+00:00. End UTC (outcome timestamp) 2026-11-13T23:41:02.483122+00:00.
+Guard and child exited 0. Verified 2 GiB, zero swap. Recorded memory.peak 51777536 bytes.
+Stdout _scratch/s11c/rim_curvature_head_sympy01/stdout (691 bytes, SHA256 2a0cb43f03635f3dfea24de94f29a2430de5d7d6b9b978a1baf3eb94af6127ea).
+Literal stdout
+sheet endpoint energy gradient per rim area = [r_s*sigma/sqrt(r_s**2 + w_s**2), sigma*w_s/sqrt(r_s**2 + w_s**2)]
+collar radial energy gradient per rim area = 2*tau/a
+radial endpoint normalization = 0
+axial endpoint normalization = 0
+smooth equal-tension join, summed endpoint gradients squared = 0
+collar curvature coefficient = 0
+mechanical power on a stationary rim = 0
+curvature plus endpoint stress gradient plus material order force = 0
+relaxation contribution to material power per tube length = -I**2*Derivative(q(z), z)**2/(A(z)*M(z)*n(z)**2)
+power plus local dissipation = 0
+carrier head derivative plus I times resistance density = 0
+static curvature and endpoint cancellation = 0
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool rim-curvature-head --memory-gib 4 --log-directory _scratch/s11c/rim_curvature_head_wolfram01 -- math -noprompt -script software/stage1_solver/tools/rim_curvature_head.wl
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 5b9747faddeae99d9cac2f2f6104afc65eae94262ecc2dedc80c6b9a3b0fc0bc  software/stage1_solver/tools/rim_curvature_head.wl
+Start UTC 2026-11-13T23:41:03.266712+00:00. End UTC (outcome timestamp) 2026-11-13T23:41:07.827408+00:00.
+Guard and child exited 0. Verified 4 GiB, zero swap. Recorded memory.peak 224727040 bytes.
+Stdout _scratch/s11c/rim_curvature_head_wolfram01/stdout (441 bytes, SHA256 796fa41125cceeb251116a86113b76e846f9caf08d7b7fa81a91b0f3265a76e5).
+Literal stdout
+"frustum radial endpoint force coefficient"" = ""0"
+"frustum axial endpoint force coefficient"" = ""0"
+"collar energy variation per area"" = ""0"
+"tensor-divergence force minus mu q prime"" = ""0"
+"mechanical power from the order force per tube length = ""-((flow^2*Derivative[1][q][z]^2)/(ar[z]*den[z]^2*mob[z]))"
+"power plus order dissipation"" = ""0"
+"integrand of head loss"" = ""0"
+"static stress jump integrand with curvature"" = ""0"
+
+SHA256 6a9c1c096890427de1729e0787a8f95deb61158488551d5a99f507f134b6e251  research/pde_ledger_v2/notes/stage044_v2_unfreeze_prep.md
+$ sed -n '14,15p;19,26p;37,38p' research/pde_ledger_v2/notes/stage044_v2_unfreeze_prep.md
+   `κ_bend·∫H²` (Willmore/Helfrich; dim `E/L`), `κ_anchor` (body-anchoring; `E/L³`), collar-tension (`E/L²`) — 3 new
+   `[POSTULATE]` knobs (currently zeroed slots in the G0 card §2.2; well-posed/regularizes cap pinch-off).
+## The un-freeze mechanism (author the 044-v2 directive around this)
+Replace `S_hold` (frozen level-set pin) with a dynamical sleeve-surface action `S_Σ`:
+- leading tension = the **DERIVED** `σ_wall = √(2a_Bκ_B)/6` (register R20 — NO new knob) + the 3 committed bending
+  knobs `κ_bend∫H² + κ_anchor + collar-tension`.
+- the `λ_Σ` multiplier is REMOVED, replaced by the free-boundary Euler–Lagrange law (Young–Laplace + bending
+  balance); the collar-Kirchhoff conormal jump `[κ_χ∂_n r_B]=λ_Σ` becomes the tension/curvature balance
+  `[κ_χ∂_n r_B] = σ_wall·H − κ_bend(…) + …`.
+- The wall SHAPE is now dynamical; the full free-boundary SOLVE stays **SIM-DEFERRED** (structure-complete-at-floor,
+  term count (24→23 + the new S_Σ terms); NUANCE — the wall-Hessian translational zero mode `r₀'` becomes LIVE
+  (un-freezing correctly revives it).
+
+SHA256 d4dc4dd25cee1b59f8ce8cd7dbaf23b0e28d6c520375915950b8bca4ba84e2b4  docs/two_throat_simulation_handoff_spec.md
+$ sed -n '330,330p' docs/two_throat_simulation_handoff_spec.md
+| Sleeve shape energy (`κ_bend`, `κ_anchor`) | Bending, anchoring/collar, surface-tension, and free-boundary coefficients or functionals that determine `Σ`; these are required for a free-geometry solve. |
+
+SHA256 8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e  research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
+$ sed -n '73,83p;97,101p' research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
+F = ∫ d^4X [ (1/2) m_GNLS n |u|^2 + U(n) + f_B(chi_B)
+             + (kappa_B/2)|grad_4 chi_B|^2 + chi_B f_shear
+             + f_throat + f_mix ]
+```
+
+Balance laws:
+
+```
+∂_t n + div_4(n u) = 0                                    (total, exact)
+∂_t(chi_B n) + div_4(chi_B n u + J_chi) = n Gamma_B ,      [Gamma_B] = T^-1
+Gamma_B = Gamma_return - Gamma_drain
+| P5 | Interface gradient `(kappa_B/2)|grad_4 chi_B|^2`, `[kappa_B] = M T^-2`. |
+| P6 | Shear gate `chi_B f_shear`, `f_shear = (1/2) mu_R^(4) (curl_4 u_d)^2` with **displacement** `u_d` (`[u_d] = L`, distinct from the velocity `u`), `[mu_R^(4)] = M L^-2 T^-2`. Rotational (MacCullagh) form, NOT `(∂u)^2` Cauchy. Brane-projected `mu_R` (`M L^-1 T^-2`, stage003) related by `∫ chi_B mu_R^(4) dw` — dim-consistency asserted, projection POSTULATED/PENDING. |
+| P7 | **`chi_B` is THE postulated wall order parameter** — an independent scalar field (route (a)), NOT built as `|P_par|^2`. The anisotropy `alpha_aniso chi_B (P·w_hat)^2` (`POSTULATED_ANISOTROPY`, `[alpha_aniso] = M L^-2 T^-2`) is **RETIRED with `P` (Decision 16 → failures-paper backlog)**, absent from the live A1 surface. `FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ` (route (c) — `chi_B = |P_par|^2`) remains a named high-risk Part-VII-adjacent gate needing a NEW T0 freeze; obsolete-as-carried, not foreclosed. |
+| P8 | Dynamics = labeled adjunct: `D_t chi_B = -M_chi mu_chi + Gamma_B`, `mu_chi = δF/δchi_B` (`M L^-2 T^-2`), `[M_chi] = L^2 T M^-1`. Energy ledger pinned to the variationally consistent `P_order = ∫ mu_chi D_t chi_B d^4X` (= `M L^2 T^-3`, power). **`HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED`** (see Corrections). |
+| P9 | `J_chi = 0` default (simplest advective closure); `J_chi ≠ 0` deferred, `[J_chi] = L^-3 T^-1`. |
+
+SHA256 9c16d156bef23331bfbdb41d4643b0903967ac12e1a4f4214c266163f741b443  research/pde/paper/pde.tex
+$ sed -n '439,452p' research/pde/paper/pde.tex
+\end{equation}
+The quantum potential is
+\begin{equation}
+ Q(\rho)=-\frac{\hbar^2}{2m}\frac{\nabla_4^2\sqrt\rho}{\sqrt\rho}.
+ \label{eq:quantum-potential}
+\end{equation}
+The exact Euler-like identity is then
+\begin{equation}
+ m(\partial_t+v_j\partial_j)v_i
+ =
+ q_\star(E_i+v_jB_{ij})
+ -\partial_i\!\left(V_{\mathrm{conf}}+h(\rho)+Q(\rho)\right),
+ \label{eq:euler-like}
+\end{equation}
+
+SHA256 23911bfd87705281a1b9ed6db54b428383ba55328fe2236c451c8f79a7e89e7b  docs/_measurements/curved_sleeve_order.txt
+$ sed -n '5,9p' docs/_measurements/curved_sleeve_order.txt
+parcel variation carrying chi. For a smooth carrier and fixed remaining fields the
+bare energy gives force density -n grad(mu_n) + mu_chi grad(chi). In signed distance
+d to a regular interface, H(d) = div N on its equidistant surface. A planar kink
+q(d) solves f_B'(q) = kappa_B q'', and therefore mu_chi = -kappa_B H(d) q'.
+No expansion in curvature was used in this local identity. Its constant-tension
+
+SHA256 f9115caa9e7c43ef714f83648bfedb395afe301e9f8222c858f52f27f6ffced4  docs/_measurements/conversion_layer_matching.txt
+$ sed -n '21,28p' docs/_measurements/conversion_layer_matching.txt
+and is set to zero for the bare planar result. The order-current and additional
+kinetic-source terms vanish in this particular test. H=A'/A. The planar
+endpoints are homogeneous and pure. Finite integrals and a nonconstant profile
+give a strictly positive weight. For q=1/(1+exp(z/ell)), the exact weight
+integral without the A,n,M factors is 1/(6 ell). Neither this integral
+nor a static interface match supplies a positive physical discharge.
+SymPy obtains the curved order derivative from the area-weighted energy;
+Wolfram eliminates the profile curvature from the gradient of the normal

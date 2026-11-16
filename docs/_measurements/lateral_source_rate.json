@@ -1,0 +1,120 @@
+{
+  "status": "Working, unreviewed",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "scope": "Rate-controlled held mouths in the lateral reservoir. Positive reported loads point toward the companion. Radii and target rate and normal-speed shape are fixed. Only the scalar companion rate is varied. No inertial-mass or free-motion reading.",
+  "sources": {
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "docs/_measurements/lateral_reservoir_pair.json": "3cffb25b8177523be5884b72b8dbb694e3ebc1c67642c88fcb619626a43d58ec"
+  },
+  "runs": [
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-source-rate --memory-gib 3 --log-directory _scratch/s11c/lateral_source_rate_e24_c4_01 -- python3 software/stage1_solver/tools/lateral_source_rate.py _scratch/s11c/lateral_bath_e24_c4_01/fields --output _scratch/s11c/lateral_source_rate_e24_c4_01/fields",
+      "memory_gib": 3,
+      "cpus": 1,
+      "swap_bytes": 0,
+      "deadline": null,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "stdout_sha256": "9d7ea882198e07a3ee9468585d76d71d781c808385ed58409e9a930a504bd770",
+      "stdout": [
+        "extent=24 dx=0.25 dz=0.0625 alone_force=2.90148896232e-19",
+        "  d=4 steps=17 residual=3.862e-12 bath=0.374999999999 source=0.125 target=0.25",
+        "  d=4 J_s=0.125 origin=new carried=0.000155527506521 stress=5.4978032217e-09 total=0.000155533004324 direct=0.000155456628986 F_over_Js=0.00124426403459",
+        "  d=4 J_s=0.25 origin=archive carried=0.000311069283586 stress=1.07384851361e-08 total=0.000311080022071 direct=0.000310927836784 F_over_Js=0.00124432008829",
+        "  d=4 steps=21 residual=7.473e-12 bath=0.749999999999 source=0.5 target=0.25",
+        "  d=4 J_s=0.5 origin=new carried=0.000622197127432 stress=2.04633648744e-08 total=0.000622217590797 direct=0.00062191549405 F_over_Js=0.00124443518159",
+        "  d=4 doubling_low=2.00009009936 doubling_high=2.00018498987",
+        "  d=8 steps=17 residual=3.545e-12 bath=0.374999999999 source=0.125 target=0.25",
+        "  d=8 J_s=0.125 origin=new carried=3.78582392167e-05 stress=1.36612553816e-09 total=3.78596053422e-05 direct=3.78407709474e-05 F_over_Js=0.000302876842738",
+        "  d=8 J_s=0.25 origin=archive carried=7.57167883293e-05 stress=2.72844800769e-09 total=7.57195167773e-05 direct=7.56818585876e-05 F_over_Js=0.000302878067109",
+        "  d=8 steps=21 residual=5.625e-12 bath=0.749999999999 source=0.5 target=0.25",
+        "  d=8 J_s=0.5 origin=new carried=0.000151434859431 stress=5.44187593088e-09 total=0.000151440301307 direct=0.000151365027189 F_over_Js=0.000302880602614",
+        "  d=8 doubling_low=2.00000808495 doubling_high=2.00001674274",
+        "  J_s=0.125 F8_over_F4=0.243418466111",
+        "  J_s=0.25 F8_over_F4=0.24340848465",
+        "  J_s=0.5 F8_over_F4=0.243388010154"
+      ],
+      "fields": {
+        "_scratch/s11c/lateral_source_rate_e24_c4_01/fields/d4_J0.125.npz": "5611a7561d842c4015a4abd8f0ec122229421e8c8c0bb4b83a338a8f70b4d43a",
+        "_scratch/s11c/lateral_source_rate_e24_c4_01/fields/d4_J0.5.npz": "969569a7b8017b404c824732ced8771ad77b9e71c179adbd20a140f4c1a10638",
+        "_scratch/s11c/lateral_source_rate_e24_c4_01/fields/d8_J0.125.npz": "102b22566c2e34979f10079e4e54134cd5c559c8fb9c24275b894ebf0995b0c9",
+        "_scratch/s11c/lateral_source_rate_e24_c4_01/fields/d8_J0.5.npz": "c0e9246bc91d0d334e56b3183244c5f20ae7b1ccf2c803f4e956349d3ba4242f"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-source-rate --memory-gib 4 --log-directory _scratch/s11c/lateral_source_rate_e24_c6_01 -- python3 software/stage1_solver/tools/lateral_source_rate.py _scratch/s11c/lateral_bath_e24_c6_01/fields --output _scratch/s11c/lateral_source_rate_e24_c6_01/fields",
+      "memory_gib": 4,
+      "cpus": 1,
+      "swap_bytes": 0,
+      "deadline": null,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "stdout_sha256": "c03f26e7c5399d54449615a069b6ba797a90bd9a93679c82836f12c34cc9f203",
+      "stdout": [
+        "extent=24 dx=0.166666666667 dz=0.0416666666667 alone_force=-6.46656715669e-20",
+        "  d=4 steps=17 residual=4.832e-12 bath=0.375 source=0.125 target=0.25",
+        "  d=4 J_s=0.125 origin=new carried=0.000155198910243 stress=5.43819533058e-09 total=0.000155204348438 direct=0.000155188001281 F_over_Js=0.00124163478751",
+        "  d=4 J_s=0.25 origin=archive carried=0.000310411712557 stress=1.06326487828e-08 total=0.000310422345206 direct=0.000310389501497 F_over_Js=0.00124168938082",
+        "  d=4 steps=21 residual=9.378e-12 bath=0.75 source=0.5 target=0.25",
+        "  d=4 J_s=0.5 origin=new carried=0.000620880679364 stress=2.03054113214e-08 total=0.000620900984775 direct=0.000620834691732 F_over_Js=0.00124180196955",
+        "  d=4 doubling_low=2.0000879378 doubling_high=2.00018134765",
+        "  d=8 steps=17 residual=4.475e-12 bath=0.375 source=0.125 target=0.25",
+        "  d=8 J_s=0.125 origin=new carried=3.78364336736e-05 stress=1.35379105936e-09 total=3.78377874646e-05 direct=3.78338714407e-05 F_over_Js=0.000302702299717",
+        "  d=8 J_s=0.25 origin=archive carried=7.56731732157e-05 stress=2.70389223003e-09 total=7.56758771079e-05 direct=7.56680452276e-05 F_over_Js=0.000302703508432",
+        "  d=8 steps=21 residual=7.091e-12 bath=0.75 source=0.5 target=0.25",
+        "  d=8 J_s=0.5 origin=new carried=0.000151347614264 stress=5.39321738827e-09 total=0.000151353007482 direct=0.000151337344266 F_over_Js=0.000302706014963",
+        "  d=8 doubling_low=2.00000798616 doubling_high=2.00001656097",
+        "  J_s=0.125 F8_over_F4=0.243793346291",
+        "  J_s=0.25 F8_over_F4=0.24378360088",
+        "  J_s=0.5 F8_over_F4=0.243763516556"
+      ],
+      "fields": {
+        "_scratch/s11c/lateral_source_rate_e24_c6_01/fields/d4_J0.125.npz": "3ed2bd234b7d6deb64a2f71a0f10a84045e0dda9aadad3cf361d0a2acedcd1d6",
+        "_scratch/s11c/lateral_source_rate_e24_c6_01/fields/d4_J0.5.npz": "ddd69267094610f454fec06f0763247210bf8780cd624144b9caf194c9ef08fa",
+        "_scratch/s11c/lateral_source_rate_e24_c6_01/fields/d8_J0.125.npz": "fca4748be280068f8d4a5444e31daf90546e9880dc97193ec35e76f562e259da",
+        "_scratch/s11c/lateral_source_rate_e24_c6_01/fields/d8_J0.5.npz": "fb82fff0185dcf3580479acbf54ac4aae098889eb6c9bafb4bb34ea860bce818"
+      }
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-source-rate --memory-gib 5 --log-directory _scratch/s11c/lateral_source_rate_e48_c4_01 -- python3 software/stage1_solver/tools/lateral_source_rate.py _scratch/s11c/lateral_bath_e48_c4_01/fields --output _scratch/s11c/lateral_source_rate_e48_c4_01/fields",
+      "memory_gib": 5,
+      "cpus": 1,
+      "swap_bytes": 0,
+      "deadline": null,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "stdout_sha256": "3b7f620ea76480630ab948b0a469d3754b1f4c4de54b82e5e92cfec9ca435446",
+      "stdout": [
+        "extent=48 dx=0.25 dz=0.0625 alone_force=-7.04467787069e-19",
+        "  d=4 steps=17 residual=4.121e-12 bath=0.375 source=0.125 target=0.25",
+        "  d=4 J_s=0.125 origin=new carried=0.000155975065293 stress=5.5138553796e-09 total=0.000155980579148 direct=0.00015590398116 F_over_Js=0.00124784463319",
+        "  d=4 J_s=0.25 origin=archive carried=0.000311964391835 stress=1.07703164194e-08 total=0.000311975162152 direct=0.000311822532422 F_over_Js=0.00124790064861",
+        "  d=4 steps=22 residual=2.656e-12 bath=0.750000000001 source=0.5 target=0.25",
+        "  d=4 J_s=0.5 origin=new carried=0.000623987244822 stress=2.0526059802e-08 total=0.000624007770882 direct=0.00062370478874 F_over_Js=0.00124801554176",
+        "  d=4 doubling_low=2.00008977948 doubling_high=2.00018413831",
+        "  d=8 steps=17 residual=3.775e-12 bath=0.375 source=0.125 target=0.25",
+        "  d=8 J_s=0.125 origin=new carried=3.87656731435e-05 stress=1.3988637858e-09 total=3.87670720073e-05 direct=3.87477856203e-05 F_over_Js=0.000310136576058",
+        "  d=8 J_s=0.25 origin=archive carried=7.75316523026e-05 stress=2.79383941496e-09 total=7.7534446142e-05 direct=7.74958841945e-05 F_over_Js=0.000310137784568",
+        "  d=8 steps=21 residual=7.255e-12 bath=0.750000000001 source=0.5 target=0.25",
+        "  d=8 J_s=0.5 origin=new carried=0.000155064548006 stress=5.57233075864e-09 total=0.000155070120337 direct=0.000154993039749 F_over_Js=0.000310140240673",
+        "  d=8 doubling_low=2.0000077934 doubling_high=2.0000158388",
+        "  J_s=0.125 F8_over_F4=0.24853781297",
+        "  J_s=0.25 F8_over_F4=0.248527625107",
+        "  J_s=0.5 F8_over_F4=0.248506713494"
+      ],
+      "fields": {
+        "_scratch/s11c/lateral_source_rate_e48_c4_01/fields/d4_J0.125.npz": "1485cf0d094e785ac1570440c9dd00accded703ae9b2e38c140dec37c5bd5b6e",
+        "_scratch/s11c/lateral_source_rate_e48_c4_01/fields/d4_J0.5.npz": "c82a8ce4d43963b422c8254e367c76aa57939986482cc0448f0516a0b4956f8b",
+        "_scratch/s11c/lateral_source_rate_e48_c4_01/fields/d8_J0.125.npz": "615cb586a9635e5f45e8f9d7dd1c99b5e5a36c55a70e870e871a19cf67e81f27",
+        "_scratch/s11c/lateral_source_rate_e48_c4_01/fields/d8_J0.5.npz": "d13753d9afbe037402c76df4d11c8e60110c73811d2f9694f9e129cfab9b4b4d"
+      }
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "Check the contents of the two matched held-pair fields, calibrate the real geometric rim probe at their force scales, and verify the signed release readout algebra. No free trajectory was generated.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-release-force --memory-gib 2 --log-directory _scratch/s11c/mouth_release_force_probe01 -- python3 software/stage1_solver/tools/mouth_release_force_probe.py",
+  "sources": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/mouth_release_force_probe.py": "d82b4415e8836add67824dbd37b9d2a827563964dd72d89ab02b2f2804086acf",
+    "software/stage1_solver/src/stage1_solver/mouth_probe.py": "7724ce85d0ac1e8a522695f84a15d32f2e09ee2af5b09dd4b7399cc239bbecec",
+    "software/stage1_solver/src/stage1_solver/config.py": "70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8",
+    "software/stage1_solver/src/stage1_solver/__init__.py": "cabb27216557a098d2205df3f13cbcf1ab0dbf41f3613fea47b141646444580e"
+  },
+  "input_sha256": {
+    "docs/_measurements/held_force_incident_flow.json": "ce594e47e8181efb7bc9e173b47d6e3269fb1a2794c5eccbcc62f7fcb32b8763",
+    "_scratch/s11c/held_force_incident01/L96C6_d8.npz": "4813423c05b73bbec71606fbcca12d88c65b98b0a62db889fea963956ae2b474",
+    "_scratch/s11c/held_force_incident01/L96C6_d16.npz": "d238340bc950f36baff5266654d1985cd5018e7f9d798cbb4f912ff605f237b8"
+  },
+  "additional_sources_inspected": {
+    "software/stage1_solver/tools/held_force_incident_flow.py": "b92cc256e03198513418899ab1b300855a1dc145412f6a0c655c651d40e8851a",
+    "software/stage1_solver/tools/mouth_release_onset.py": "09189f283d0b1e99309564cd25893ec16571a151a5220c650542e57da6e083e9",
+    "software/stage1_solver/src/stage1_solver/p2_driven_absorber.py": "332b7d7c3ea8bb08706f006dddd662293dd2d69d35dd1e71f87344a82d64966e",
+    "software/stage1_solver/src/stage1_solver/p2_tangent.py": "d47adb3868762a6cb52efac163b895eb35cc28bbff7cd6aebf15ddfebeaee26a",
+    "software/em_charge_attribute/reports/u1_body_dynamics.md": "431a15731c8072fac01100834a9b5c4ddd6ce81b05e92033d3c5a9990e439ce7",
+    "docs/_measurements/one_throat_force_probe_inputs.txt": "7c51ec1c60e6a6022bfa6992691afddcefbdfb557a1c5e12684dcbf4c6180900"
+  },
+  "started_utc": "2026-11-16T02:01:30.458295+00:00",
+  "guard_outcome_written_utc": "2026-11-16T02:01:31.111912+00:00",
+  "wall_seconds": 0.6379107281100005,
+  "guard_exit": 0,
+  "worker_exit": 0,
+  "limits_verified": true,
+  "memory_max_bytes": 2147483648,
+  "peak_memory_bytes_sampled": 91963392,
+  "swap_max_bytes": 0,
+  "runtime_limit": "infinity",
+  "stdout_path": "_scratch/s11c/mouth_release_force_probe01/stdout",
+  "stdout_bytes": 1487,
+  "stdout_sha256": "519a36d25ae2bbf4b35613291232e59fed3372b0bc5563a12d19bf103659fc31",
+  "stdout": [
+    "d=8 packet_keys=centers,currents,dz,layers,r,rates,x centers=[-8, 0] rates=[0.25, 0.25]",
+    "d=8 fraction=0 applied=0 integrated=0 mean_traction_integral=0",
+    "d=8 fraction=-1 applied=-7.77144729089e-05 integrated=-7.77144729089e-05 mean_traction_integral=-1.43e-20",
+    "d=8 fraction=-0.5 applied=-3.88572364545e-05 integrated=-3.88572364545e-05 mean_traction_integral=-7.152e-21",
+    "d=8 fraction=0.5 applied=3.88572364545e-05 integrated=3.88572364545e-05 mean_traction_integral=7.152e-21",
+    "d=8 fraction=1 applied=7.77144729089e-05 integrated=7.77144729089e-05 mean_traction_integral=1.43e-20",
+    "d=16 packet_keys=centers,currents,dz,layers,r,rates,x centers=[-16, 0] rates=[0.25, 0.25]",
+    "d=16 fraction=0 applied=0 integrated=0 mean_traction_integral=0",
+    "d=16 fraction=-1 applied=-1.93663006721e-05 integrated=-1.93663006721e-05 mean_traction_integral=-1.871e-21",
+    "d=16 fraction=-0.5 applied=-9.68315033607e-06 integrated=-9.68315033607e-06 mean_traction_integral=-9.355e-22",
+    "d=16 fraction=0.5 applied=9.68315033607e-06 integrated=9.68315033607e-06 mean_traction_integral=9.355e-22",
+    "d=16 fraction=1 applied=1.93663006721e-05 integrated=1.93663006721e-05 mean_traction_integral=1.871e-21",
+    "full_signed_slope=c3*h**2 + c5*h**4 + chi half_signed_slope=c3*h**2/4 + c5*h**4/16 + chi extrapolated_slope=-c5*h**4/4 + chi",
+    "linear_response: equivalent_force=(a0-a_iso)/chi; canceling_force=-equivalent_force; eta=equivalent_force/L",
+    "measured_free_center_accelerations=unavailable measured_force_to_acceleration_response=unavailable"
+  ]
+}

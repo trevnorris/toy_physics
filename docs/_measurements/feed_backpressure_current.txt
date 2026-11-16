@@ -1,0 +1,151 @@
+0PN one-throat feed and backpressure check. Unreviewed working calculation.
+Repository base 8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c
+
+A smooth one-dimensional segment of the conservative carrier on [0,1/2].
+The complete complex field at the feed is exp(-it). Both ends have fixed
+densities, 1 and 81/100, hence fixed scalar pressures P=(4/5)n^5. The
+number current is positive toward the outlet. Unit area, zero transverse
+velocity, no gauge, confinement or conversion terms. These illustrative
+numbers specify boundary controls for a test of what pressure fixes.
+
+Writing psi=z(w)exp(-it) gives z''=2(|z|^8-1)z. SciPy solves the
+two real field equations by collocation. Wolfram writes z=a exp(i theta)
+and shoots with two unknowns, initial amplitude slope and conserved
+current j, satisfying a''=j^2/a^3+2(a^8-1)a and theta'=j/a^2.
+The independently specified outlet conditions are a=9/10 and theta equal
+to the chosen phase. Neither solver takes an imposed current as data.
+
+scipy
+$ python3 scripts/s11c_guarded_run.py --pool feed-backpressure --memory-gib 2 --log-directory _scratch/s11c/feed_backpressure_scipy01 -- python3 software/stage1_solver/tools/feed_backpressure_current.py
+SHA256 ea8b208f0fa20e04940d6ee3b0e55626142a129abd4e314b63bcc3aba67ad426  software/stage1_solver/tools/feed_backpressure_current.py
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start UTC 2026-11-13T22:06:54.499801+00:00. End UTC (outcome file timestamp) 2026-11-13T22:06:54.903813+00:00.
+Child and guard exit 0. Cgroup cap 2 GiB, zero swap. Recorded memory.peak 52822016 bytes.
+No guard reason or deadline. Stderr empty.
+Stdout _scratch/s11c/feed_backpressure_scipy01/stdout (975 bytes, SHA256 2bbdb201b4d92703ef0ea2fc3ff292e1beefe0fd048c75a95f79c09a79e1bfa1)
+Literal stdout
+phase=0.0 tolerance=1e-07 inlet=0.0000000000 outlet=0.0000000000 current_spread=0.00e+00 endpoint_error=0.00e+00 min_sampled_density=0.81000000
+phase=0.0 tolerance=1e-09 inlet=0.0000000000 outlet=0.0000000000 current_spread=0.00e+00 endpoint_error=0.00e+00 min_sampled_density=0.81000000
+phase=0.0 refinement_change=0.00e+00
+phase=0.1 tolerance=1e-07 inlet=0.1836585452 outlet=0.1836585452 current_spread=1.31e-10 endpoint_error=1.80e-27 min_sampled_density=0.81000000
+phase=0.1 tolerance=1e-09 inlet=0.1836585452 outlet=0.1836585452 current_spread=5.28e-13 endpoint_error=1.22e-28 min_sampled_density=0.81000000
+phase=0.1 refinement_change=1.65e-11
+phase=0.2 tolerance=1e-07 inlet=0.3658974562 outlet=0.3658974561 current_spread=1.74e-10 endpoint_error=2.36e-26 min_sampled_density=0.81000000
+phase=0.2 tolerance=1e-09 inlet=0.3658974562 outlet=0.3658974562 current_spread=6.98e-13 endpoint_error=4.78e-29 min_sampled_density=0.81000000
+phase=0.2 refinement_change=1.53e-11
+
+wolfram
+$ python3 scripts/s11c_guarded_run.py --pool feed-backpressure --memory-gib 4 --log-directory _scratch/s11c/feed_backpressure_wolfram01 -- math -noprompt -script software/stage1_solver/tools/feed_backpressure_current.wl
+SHA256 c5aafe5b6469b89839b03ced4984e70d2e5af37e9e8b8ba793411566baa5fc04  software/stage1_solver/tools/feed_backpressure_current.wl
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Start UTC 2026-11-13T22:06:54.661108+00:00. End UTC (outcome file timestamp) 2026-11-13T22:07:00.429921+00:00.
+Child and guard exit 0. Cgroup cap 4 GiB, zero swap. Recorded memory.peak 224923648 bytes.
+No guard reason or deadline. Stderr empty.
+Stdout _scratch/s11c/feed_backpressure_wolfram01/stdout (509 bytes, SHA256 1a2f402dc81d770c86ca2ee213d7d783eb573e9d67acf4cef33ce7154eeae4ae)
+Literal stdout
+"phase="NumberForm[0., {2, 1}]" current="NumberForm[0, {12, 10}, NumberPadding -> {"", "0"}]" endpoint_error_below_1e-16="True
+"phase="NumberForm[0.1, {2, 1}]" current="NumberForm[0.1836585452308118183495372859929883291204221619180597777187`36., {12, 10}, NumberPadding -> {"", "0"}]" endpoint_error_below_1e-16="True
+"phase="NumberForm[0.2, {2, 1}]" current="NumberForm[0.3658974561694210545665847961839537567023660171620853902564`36., {12, 10}, NumberPadding -> {"", "0"}]" endpoint_error_below_1e-16="True
+
+$ sed -n '342,349p;382,391p;394,405p' research/pde/paper/pde.tex
+The frozen stiff-polytropic equation of state is
+\[
+P(\rho)=K\rho^5,
+\qquad
+U(\rho)=\frac{K}{4}\rho^5,
+\qquad
+h(\rho)=\frac{\mathrm dU}{\mathrm d\rho}=\frac{5K}{4}\rho^4.
+\]
+Variation with respect to \(\psi^*\) gives
+\begin{equation}
+ i\hbar D_t\psi
+ =
+ \left[
+ -\frac{\hbar^2}{2m}D_iD_i
+ +V_{\mathrm{conf}}(\mathbf X;\Sigma)
+ +h(\rho)
+ \right]\psi.
+ \label{eq:exact-gnls}
+\subsubsection*{Exact current and continuity}
+
+The exact bulk number current is
+\begin{equation}
+ j^i=\frac{\hbar}{m}\,\mathrm{Im}(\psi^*D_i\psi),
+ \label{eq:exact-current}
+\end{equation}
+and exact continuity is
+\begin{equation}
+ \partial_t\rho+\partial_i j^i=0.
+ \label{eq:exact-continuity}
+\end{equation}
+
+$ sed -n '46p;66p;76p' software/stage1_solver/reports/pathA_21b_force_closure_and_profile_bvp.md
+
+| G4 | NAMED RESIDUAL | `J_VALUE_BRANCH_PARAMETER / J_SELECTOR_UNDERIVED` | Continuity and no-leakage conserve flux in a chosen lane but do not select the value of J. |
+`J_VALUE_BRANCH_PARAMETER / J_SELECTOR_UNDERIVED`: no-leakage conserves the flux in a chosen region, but it does not fix the value. Candidate selectors are sonic choking, regularity at the throat bottom, global topology/outflow balance, or an energy extremum, all explicitly downstream assumptions unless derived.
+
+$ sed -n 36,44p docs/moving_interface_conversion_work_proposal.md
+Only as an explicit **planar travelling-front limit**, take a profile steady in a frame moving at normal speed \(V\), no tangential variation, ordered interior \(\chi_{\rm in}=1\), and disordered exterior \(\chi_{\rm out}=0\). The normal coordinate \(z\) points from ordered to disordered. Total continuity gives the constant relative mass flux \(j=\rho(v_n-V)\). Integrating the order balance across the front gives
+
+\[
+[\chi j+K_n]_{\rm in}^{\rm out}
+=\int_{\rm in}^{\rm out}\rho\Gamma\,dz=:G,
+\qquad j=K_{n,\rm out}-K_{n,\rm in}-G.
+\]
+
+With zero endpoint order-current, \(j=-G\): positive net re-ordering means negative outward relative mass flux. This is a proposed sign consequence under the stated front hypotheses, **not a stationary-front existence result** or an imposed S11c background. A time-dependent or curved front returns to the full balance above. Density may vary through this front; equal endpoint density is not needed for this identity.
+
+$ sed -n 609,615p research/pde_ledger_v3/V3_STEP_PLAN.md
+⛔ **Two inventories, kept apart:**
+- **non-variational source / controller functions** — `Γ_return`, `Γ_drain`, `J_χ`, and the return
+  controllers. ⛔ All `[OPEN]` in form.
+- **boundary / domain data** — the mouth, collar and IR conditions, and the `𝔅` branch selection.
+
+⇒ The throat enters this ledger with its **source form open and its strength supplied**. ⛔ Not "only a
+boundary condition" — that framing hides which of the two is unresolved.
+
+$ sed -n 3246,3264p notes/inner_throat/4d_next_steps.md
+### E.5 Receiving-region modeling (how 4D expansion creates back-pressure)
+
+Back-pressure is not a boundary condition; it’s a **result** of:
+
+* EOS pressure from (U(\rho)),
+* geometric spreading in 4D,
+* and any confining potentials in the receiving region.
+
+To make this real, ensure:
+
+1. the confinement beyond the throat actually permits bulk occupancy (the gate truly opens access),
+2. the receiving region is large enough and/or has absorbers so that matter can spread or exit rather than reflect,
+3. you measure back-pressure via a defined observable (e.g., brane-projected enthalpy near (\Gamma) relative to far-field baseline).
+
+A useful operational diagnostic is:
+[
+\Delta h_{\rm back}(t) \equiv \overline{h}_{\rm near\,mouth}(t)-\overline{h}_{\rm far}(t)
+]
+where (h(\rho)) is the enthalpy implied by your EOS and the overlines denote averages in specified regions.
+
+$ sed -n 40,62p software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+  - id: sleeve_core_trace
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: scalar_field_trace_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [field_point, outward_normal, wall_side, a, L]
+    symmetry_class: BODY_CONJUGATE_SCALAR
+    source: nonlinear_throat_core_open
+  - id: geon_core_bundle
+    status: OPEN_INPUT
+    root_type: PRIMITIVE_OPEN
+    domain: field_trace_bundle_on_Sigma
+    dimensions: [0, 0, 0]
+    arguments: [density_trace, h_trace, phase_flux_trace, wall_side]
+    symmetry_class: BODY_CONJUGATE_BUNDLE
+    source: spec_7_0_geon_profile_open
+  - id: throat_surface_functional
+    status: OPEN_INPUT
+    root_type: ACTION
+    domain: field_functional_on_Sigma
+    dimensions: [2, -2, 1]
+    arguments: [field_traces, normal_derivatives, induced_metric]
+    symmetry_class: BODY_CONJUGATE_SCALAR

@@ -1,0 +1,214 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "0PN brane-side companion loads at held-out separation 6 for target radius 1.5 and companion radius 1, compared with fixed-power forecasts from each endpoint independently.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "sources": {
+    "software/stage1_solver/tools/lateral_companion_midpoint.py": "10ebc2e287af5c5510be92fa55f2cf59eb5afb7250befed601a62ab2e8d1bb53",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_paired_acceleration.py": "42e94c2f007d335a233c31afda180e29e30ecfbb0d13b0790c0295c678fd672e",
+    "software/stage1_solver/tools/lateral_mouth_radius.py": "4f0d9fafd7bd4b71251ae87bf91d60d8c60be0ee01170d2c4c184eb160954b08",
+    "software/stage1_solver/tools/lateral_mouth_acceleration.py": "0f04c0edb17b6c17bc1dfd2081412017caed4dfd7c1ef6808fe84f751394219b",
+    "software/stage1_solver/tools/lateral_companion_load.py": "6ed30f3a6b550d605119ec0eb5572246600f84d6bb6eba3b26ce93aa8459e754",
+    "software/stage1_solver/tools/lateral_companion_boundary_term.py": "34bd127c28d437d258e765d6b7f092504cc73ec2e695c4dfaa67e0e336cf3c05",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "docs/_measurements/lateral_companion_separation.json": "13bfe0b9739e3d1117e02c6c8f4d77222a4b0f88778c9a3436a08ad96ad0d2a4",
+    "docs/_measurements/lateral_paired_acceleration.json": "fac0bae77c0573d066c36f296b120b21cdf4e1e190c8ecb4736dfc171fc3cf96"
+  },
+  "runs": [
+    {
+      "L": 24,
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool lateral-companion-midpoint --memory-gib 3 --log-directory _scratch/s11c/lateral_companion_midpoint_L24_01 -- python3 software/stage1_solver/tools/lateral_companion_midpoint.py 24 _scratch/s11c/lateral_companion_midpoint_L24_01/fields",
+      "input_fields": {
+        "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz": "08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe"
+      },
+      "saved_fields": {
+        "_scratch/s11c/lateral_companion_midpoint_L24_01/fields/base.npz": "8e665e51c5b613216d5e28f9699984cd0c0ebfbab6851f57440a8f651c20f52e",
+        "_scratch/s11c/lateral_companion_midpoint_L24_01/fields/h_0.npz": "bec6129316349337e1b37a3392f74a3df0f2adb5d2188bd632e815a760e12fd4"
+      },
+      "started_utc": "2026-11-15T02:20:55.215967+00:00",
+      "guard_outcome_written_utc": "2026-11-15T02:21:03.285789+00:00",
+      "wall_seconds": 8.041776180034503,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 3221225472,
+      "peak_memory_bytes_sampled": 121114624,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "affinity": [
+        6
+      ],
+      "stdout_path": "_scratch/s11c/lateral_companion_midpoint_L24_01/stdout",
+      "stdout_sha256": "63872daa26c7f3a66f5cefd1d6d458e0c6f102e50aa3c678dc1628c304c97b8c",
+      "stdout_bytes": 1418,
+      "stderr_bytes": 0,
+      "stdout": [
+        "predictions [{\"from_d\": 4, \"static\": 0.00046743292726666666, \"corrected\": -6.016757068505258e-05, \"direct_corrected\": -6.0265234696904435e-05}, {\"from_d\": 8, \"static\": 0.0004693628737493334, \"corrected\": -6.228396895107192e-05, \"direct_corrected\": -6.273341633240526e-05}]",
+        "state_d=6 target_rate=0.842149154143 mean_speed=0.059845652717 bath=1.09214915414 residual=6.8764e-12",
+        "measurement {\"L\": 24, \"d\": 6, \"target_radius\": 1.5, \"companion_radius\": 1, \"omega\": 0, \"dx\": 0.25, \"dz\": 0.0625, \"mean_speed\": 0.05984565271702275, \"target_rate\": 0.8421491541431323, \"companion_rate\": 0.25, \"static_direct\": 0.00046693122679913207, \"static\": 0.0004671623444698991, \"corrected\": -6.138924861502556e-05, \"direct_corrected\": -6.160542637762489e-05, \"carried\": 0.00030410294027932304, \"stress\": 1.0049113749004913e-10, \"observed\": 0.00030410304077046053, \"direct\": 0.0003038868630078612, \"kernel\": -0.041663949442194904, \"boundary\": 0.0003654922893854861, \"fd\": [0.000304103040753951, 0.0003041030407769903], \"tangent_residuals\": [2.834537707572526e-12, 8.79543439368163e-12], \"boundary_errors\": [5.859287222349807e-11, 1.1736445226933963e-11], \"steps\": 17, \"relative_errors\": [{\"from_d\": 4, \"static\": -0.0005788697821307309, \"corrected\": 0.020304591261758764, \"direct_corrected\": 0.02223822220988203}, {\"from_d\": 8, \"static\": -0.004688332636657355, \"corrected\": -0.014365178570254988, \"direct_corrected\": -0.017980687498405867}]}"
+      ],
+      "predictions": [
+        {
+          "from_d": 4,
+          "static": 0.00046743292726666666,
+          "corrected": -6.016757068505258e-05,
+          "direct_corrected": -6.0265234696904435e-05
+        },
+        {
+          "from_d": 8,
+          "static": 0.0004693628737493334,
+          "corrected": -6.228396895107192e-05,
+          "direct_corrected": -6.273341633240526e-05
+        }
+      ],
+      "measurement": {
+        "L": 24,
+        "d": 6,
+        "target_radius": 1.5,
+        "companion_radius": 1,
+        "omega": 0,
+        "dx": 0.25,
+        "dz": 0.0625,
+        "mean_speed": 0.05984565271702275,
+        "target_rate": 0.8421491541431323,
+        "companion_rate": 0.25,
+        "static_direct": 0.00046693122679913207,
+        "static": 0.0004671623444698991,
+        "corrected": -6.138924861502556e-05,
+        "direct_corrected": -6.160542637762489e-05,
+        "carried": 0.00030410294027932304,
+        "stress": 1.0049113749004913e-10,
+        "observed": 0.00030410304077046053,
+        "direct": 0.0003038868630078612,
+        "kernel": -0.041663949442194904,
+        "boundary": 0.0003654922893854861,
+        "fd": [
+          0.000304103040753951,
+          0.0003041030407769903
+        ],
+        "tangent_residuals": [
+          2.834537707572526e-12,
+          8.79543439368163e-12
+        ],
+        "boundary_errors": [
+          5.859287222349807e-11,
+          1.1736445226933963e-11
+        ],
+        "steps": 17,
+        "relative_errors": [
+          {
+            "from_d": 4,
+            "static": -0.0005788697821307309,
+            "corrected": 0.020304591261758764,
+            "direct_corrected": 0.02223822220988203
+          },
+          {
+            "from_d": 8,
+            "static": -0.004688332636657355,
+            "corrected": -0.014365178570254988,
+            "direct_corrected": -0.017980687498405867
+          }
+        ]
+      }
+    },
+    {
+      "L": 48,
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool lateral-companion-midpoint --memory-gib 5 --log-directory _scratch/s11c/lateral_companion_midpoint_L48_01 -- python3 software/stage1_solver/tools/lateral_companion_midpoint.py 48 _scratch/s11c/lateral_companion_midpoint_L48_01/fields",
+      "input_fields": {
+        "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd"
+      },
+      "saved_fields": {
+        "_scratch/s11c/lateral_companion_midpoint_L48_01/fields/base.npz": "1872585c297182554e9815198b66159adbe98b6451acc55d42bd1dc18be4ae0b",
+        "_scratch/s11c/lateral_companion_midpoint_L48_01/fields/h_0.npz": "5783db85e7211e7ba9bf3356f9c3f201c29957e74a8dd18a99ef5a41b33b21de"
+      },
+      "started_utc": "2026-11-15T02:20:55.093502+00:00",
+      "guard_outcome_written_utc": "2026-11-15T02:21:51.567226+00:00",
+      "wall_seconds": 56.455979842925444,
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_max_bytes": 5368709120,
+      "peak_memory_bytes_sampled": 341315584,
+      "swap_max_bytes": 0,
+      "runtime_limit": "infinity",
+      "affinity": [
+        7
+      ],
+      "stdout_path": "_scratch/s11c/lateral_companion_midpoint_L48_01/stdout",
+      "stdout_sha256": "6b2241ebba9270d38d496adf8d12e9ff3569b1c5d0e3b2ff78f3df307768ab44",
+      "stdout_bytes": 1425,
+      "stderr_bytes": 0,
+      "stdout": [
+        "predictions [{\"from_d\": 4, \"static\": 0.00046725814708, \"corrected\": -6.00255311522428e-05, \"direct_corrected\": -6.009734229929465e-05}, {\"from_d\": 8, \"static\": 0.0004660373729617777, \"corrected\": -6.113348629138644e-05, \"direct_corrected\": -6.1382144886942e-05}]",
+        "state_d=6 target_rate=0.842149152031 mean_speed=0.0598456527169 bath=1.09214915203 residual=5.0524e-12",
+        "measurement {\"L\": 48, \"d\": 6, \"target_radius\": 1.5, \"companion_radius\": 1, \"omega\": 0, \"dx\": 0.25, \"dz\": 0.0625, \"mean_speed\": 0.0598456527168674, \"target_rate\": 0.8421491520314085, \"companion_rate\": 0.24999999999999997, \"static_direct\": 0.0004660189685816905, \"static\": 0.00046624963362254225, \"corrected\": -6.0909310344742955e-05, \"direct_corrected\": -6.103898772129627e-05, \"carried\": 0.00012439721529288716, \"stress\": -6.187429948968897e-09, \"observed\": 0.0001243910278629382, \"direct\": 0.0001242613504863849, \"kernel\": -0.04224627531839858, \"boundary\": 0.00018530033820768116, \"fd\": [0.0001243910278478518, 0.0001243910278676385], \"tangent_residuals\": [2.1036008031076886e-12, 8.688203396153847e-12], \"boundary_errors\": [5.858930994148862e-11, 1.4177326123365073e-11], \"steps\": 18, \"relative_errors\": [{\"from_d\": 4, \"static\": -0.002158364629402776, \"corrected\": 0.014723388123940584, \"direct_corrected\": 0.01566866996067917}, {\"from_d\": 8, \"static\": 0.0004554584526463845, \"corrected\": -0.003666991042764578, \"direct_corrected\": -0.005590504637428162}]}"
+      ],
+      "predictions": [
+        {
+          "from_d": 4,
+          "static": 0.00046725814708,
+          "corrected": -6.00255311522428e-05,
+          "direct_corrected": -6.009734229929465e-05
+        },
+        {
+          "from_d": 8,
+          "static": 0.0004660373729617777,
+          "corrected": -6.113348629138644e-05,
+          "direct_corrected": -6.1382144886942e-05
+        }
+      ],
+      "measurement": {
+        "L": 48,
+        "d": 6,
+        "target_radius": 1.5,
+        "companion_radius": 1,
+        "omega": 0,
+        "dx": 0.25,
+        "dz": 0.0625,
+        "mean_speed": 0.0598456527168674,
+        "target_rate": 0.8421491520314085,
+        "companion_rate": 0.24999999999999997,
+        "static_direct": 0.0004660189685816905,
+        "static": 0.00046624963362254225,
+        "corrected": -6.0909310344742955e-05,
+        "direct_corrected": -6.103898772129627e-05,
+        "carried": 0.00012439721529288716,
+        "stress": -6.187429948968897e-09,
+        "observed": 0.0001243910278629382,
+        "direct": 0.0001242613504863849,
+        "kernel": -0.04224627531839858,
+        "boundary": 0.00018530033820768116,
+        "fd": [
+          0.0001243910278478518,
+          0.0001243910278676385
+        ],
+        "tangent_residuals": [
+          2.1036008031076886e-12,
+          8.688203396153847e-12
+        ],
+        "boundary_errors": [
+          5.858930994148862e-11,
+          1.4177326123365073e-11
+        ],
+        "steps": 18,
+        "relative_errors": [
+          {
+            "from_d": 4,
+            "static": -0.002158364629402776,
+            "corrected": 0.014723388123940584,
+            "direct_corrected": 0.01566866996067917
+          },
+          {
+            "from_d": 8,
+            "static": 0.0004554584526463845,
+            "corrected": -0.003666991042764578,
+            "direct_corrected": -0.005590504637428162
+          }
+        ]
+      }
+    }
+  ]
+}

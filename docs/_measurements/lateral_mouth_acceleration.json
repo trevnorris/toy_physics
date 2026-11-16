@@ -1,0 +1,86 @@
+{
+  "status": "Working, unreviewed",
+  "scope": "Linear carrier reaction for prescribed slow displacement of one mouth about rest in the fixed lateral reservoir, after subtracting the static displacement load. No total applied-force measurement or free trajectory.",
+  "repository_base": "8e9808153a745ac4ed8ac6d99f1d5e328ea3d96c",
+  "sources": {
+    "docs/_measurements/lateral_reservoir_pair.json": "3cffb25b8177523be5884b72b8dbb694e3ebc1c67642c88fcb619626a43d58ec",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/lateral_mouth_acceleration.py": "0f04c0edb17b6c17bc1dfd2081412017caed4dfd7c1ef6808fe84f751394219b",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61"
+  },
+  "runs": [
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-acceleration --memory-gib 2 --log-directory _scratch/s11c/lateral_accel_e12_c4_01 -- python3 software/stage1_solver/tools/lateral_mouth_acceleration.py _scratch/s11c/lateral_bath_e12_c4_01/fields/d0.npz",
+      "packet_sha256": "02e4f3cc872938be7690f22be9d2d03f0c1e64298df637915ce02986316032ad",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 2,
+      "cpus": 1,
+      "swap_bytes": 0,
+      "deadline": null,
+      "stdout_sha256": "eda26f6ff92a30d7ae6f01852a7ae9705a37447f88fabf0935be7e8400804566",
+      "stdout": [
+        "extent=12 dx=0.25 dz=0.0625 rate=0.25 static_residual=3.33e-13",
+        "omega=0 carried_per_A=-0.00178188973173 stress_per_A=4.53811454628e-08 load_per_A=-0.00178184435058 compensating_per_A=0.00178184435058 direct_compensating_per_A=0.00177781191934 residual=4.78e-12 steps=11",
+        "omega=0.005 carried_per_A=-0.00178197402019 stress_per_A=4.53790927317e-08 load_per_A=-0.0017819286411 compensating_per_A=0.0017819286411 direct_compensating_per_A=0.00177789615307 residual=4.78e-12 steps=11",
+        "omega=0.01 carried_per_A=-0.00178222704842 stress_per_A=4.53729295943e-08 load_per_A=-0.00178218167549 compensating_per_A=0.00178218167549 direct_compensating_per_A=0.00177814901703 residual=4.78e-12 steps=11"
+      ]
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-acceleration --memory-gib 3 --log-directory _scratch/s11c/lateral_accel_e24_c4_01 -- python3 software/stage1_solver/tools/lateral_mouth_acceleration.py _scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz",
+      "packet_sha256": "08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 3,
+      "cpus": 1,
+      "swap_bytes": 0,
+      "deadline": null,
+      "stdout_sha256": "419afaace036bec8aa6c9affdc8133b6be32c90525dcce5a85530117ada12f5e",
+      "stdout": [
+        "extent=24 dx=0.25 dz=0.0625 rate=0.25 static_residual=3.33e-13",
+        "omega=0 carried_per_A=-0.00189177462406 stress_per_A=4.1486350665e-08 load_per_A=-0.00189173313771 compensating_per_A=0.00189173313771 direct_compensating_per_A=0.00188764682435 residual=4.83e-12 steps=11",
+        "omega=0.005 carried_per_A=-0.00189197264715 stress_per_A=4.14803046097e-08 load_per_A=-0.00189193116684 compensating_per_A=0.00189193116684 direct_compensating_per_A=0.00188784474045 residual=4.83e-12 steps=11",
+        "omega=0.01 carried_per_A=-0.00189256814703 stress_per_A=4.14621171324e-08 load_per_A=-0.00189252668491 compensating_per_A=0.00189252668491 direct_compensating_per_A=0.00188843991871 residual=4.83e-12 steps=11"
+      ]
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-acceleration --memory-gib 4 --log-directory _scratch/s11c/lateral_accel_e24_c6_01 -- python3 software/stage1_solver/tools/lateral_mouth_acceleration.py _scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz",
+      "packet_sha256": "590774f5c77c030fbe68edb253b5edddd0bc8b636bf983f1947fae52d7389fb1",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 4,
+      "cpus": 1,
+      "swap_bytes": 0,
+      "deadline": null,
+      "stdout_sha256": "e00bfe7283eecfed2db758ce53973941ef6342985540b8fec4e811d197b1be45",
+      "stdout": [
+        "extent=24 dx=0.16666667 dz=0.041666667 rate=0.25 static_residual=2.9e-12",
+        "omega=0 carried_per_A=-0.00186799736714 stress_per_A=3.55303004342e-08 load_per_A=-0.00186796183684 compensating_per_A=0.00186796183684 direct_compensating_per_A=0.00186631065853 residual=4.04e-12 steps=11",
+        "omega=0.005 carried_per_A=-0.00186819515404 stress_per_A=3.55242710119e-08 load_per_A=-0.00186815962977 compensating_per_A=0.00186815962977 direct_compensating_per_A=0.00186650842305 residual=4.04e-12 steps=11",
+        "omega=0.01 carried_per_A=-0.00186878994467 stress_per_A=3.5506133787e-08 load_per_A=-0.00186875443853 compensating_per_A=0.00186875443853 direct_compensating_per_A=0.00186710314646 residual=4.04e-12 steps=11"
+      ]
+    },
+    {
+      "command": "python3 scripts/s11c_guarded_run.py --pool lateral-acceleration --memory-gib 5 --log-directory _scratch/s11c/lateral_accel_e48_c4_01 -- python3 software/stage1_solver/tools/lateral_mouth_acceleration.py _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz",
+      "packet_sha256": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 5,
+      "cpus": 1,
+      "swap_bytes": 0,
+      "deadline": null,
+      "stdout_sha256": "ab05ea715c5029a960803ac8dba32e942a75cde05d9fa08dc6bf64a42b03a3fc",
+      "stdout": [
+        "extent=48 dx=0.25 dz=0.0625 rate=0.25 static_residual=3.35e-13",
+        "omega=0 carried_per_A=-0.00194693316724 stress_per_A=3.95033899162e-08 load_per_A=-0.00194689366385 compensating_per_A=0.00194689366385 direct_compensating_per_A=0.00194278066059 residual=4.85e-12 steps=11",
+        "omega=0.005 carried_per_A=-0.00194736169303 stress_per_A=3.94890766977e-08 load_per_A=-0.00194732220395 compensating_per_A=0.00194732220395 direct_compensating_per_A=0.00194320897588 residual=4.85e-12 steps=11",
+        "omega=0.01 carried_per_A=-0.00194865915675 stress_per_A=3.94457130357e-08 load_per_A=-0.00194861971104 compensating_per_A=0.00194861971104 direct_compensating_per_A=0.00194450580275 residual=4.85e-12 steps=11"
+      ]
+    }
+  ]
+}

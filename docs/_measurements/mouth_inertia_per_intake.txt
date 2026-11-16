@@ -1,0 +1,25 @@
+Slow brane reaction per unit intake across prescribed mouth radii. Working result, pending independent review.
+Source: the nine archived guarded isolated-mouth readouts in docs/_measurements/lateral_mouth_radius.json, with the same mean inward speed within each grid. Unit constituent mass. B is the brane-side force opposing prescribed acceleration divided by that acceleration. D is isolated inward mass throughput. B/D is in solver time units. The direct readout reconstructs force from the same fields.
+The printed required difference is conditional on full M/D being common across the two preparations. Its sign convention is the larger radius minus the smaller radius. This readout uses the saved results and measures no total inertia or free acceleration.
+Repository base 900e0724b8d58110a3636c2ef4511dc2e1d7ae71
+
+$ python3 scripts/s11c_guarded_run.py --pool mouth-inertia-per-intake --memory-gib 1 --log-directory _scratch/s11c/mouth_inertia_per_intake01 -- python3 software/stage1_solver/tools/mouth_inertia_per_intake.py
+Started UTC 2026-11-16T12:28:52.640959+00:00. Guard and child exit 0. Verified 1 GiB cap, zero swap, 32 tasks, no deadline; stderr empty.
+SHA256 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+SHA256 01396f49bc2f8bf0c3f46a3865235b73a92f32f05d53ec4b443d19e9f8b3a3bf  software/stage1_solver/tools/mouth_inertia_per_intake.py
+SHA256 c77854a410b2ae4e93cd443cc97c81e2ae23694bf02e8a2c9845083b7201ce12  docs/_measurements/lateral_mouth_radius.json
+SHA256 626c444c782d66a6f4453baae1170cda4b4ae05bc3925ab370340b7f06331846  _scratch/s11c/mouth_inertia_per_intake01/stdout
+
+Literal stdout
+e24_c4 radius=0.75 D=0.105563225698 B=0.000396264182889 B/D=0.003753808964 direct_B/D=0.003738956307
+e24_c4 radius=1.0 D=0.25 B=0.00189173313771 B/D=0.007566932551 direct_B/D=0.007550587297
+e24_c4 radius=1.5 D=0.842149291396 B=0.0161091357544 B/D=0.01912859860 direct_B/D=0.01910994554
+e24_c4 ratio_large/small=5.095783718 required_delta_other_per_D=-0.01537478963 direct_ratio=5.111037403 direct_required_delta=-0.01537098923
+e24_c6 radius=0.75 D=0.105566221487 B=0.000398554061515 B/D=0.003775393832 direct_B/D=0.003766681238
+e24_c6 radius=1.0 D=0.25 B=0.00186796183684 B/D=0.007471847347 direct_B/D=0.007465242634
+e24_c6 radius=1.5 D=0.842133236369 B=0.0160204373057 B/D=0.01902363737 direct_B/D=0.01901729402
+e24_c6 ratio_large/small=5.038848452 required_delta_other_per_D=-0.01524824354 direct_ratio=5.048819588 direct_required_delta=-0.01525061278
+e48_c4 radius=0.75 D=0.105563225698 B=0.000405798565993 B/D=0.003844128136 direct_B/D=0.003829180943
+e48_c4 radius=1.0 D=0.25 B=0.00194689366385 B/D=0.007787574655 direct_B/D=0.007771122642
+e48_c4 radius=1.5 D=0.842149291409 B=0.0167346370437 B/D=0.01987134255 direct_B/D=0.01985258847
+e48_c4 ratio_large/small=5.169271638 required_delta_other_per_D=-0.01602721441 direct_ratio=5.184552196 direct_required_delta=-0.01602340752

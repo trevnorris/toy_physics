@@ -273,6 +273,25 @@ For each radius subtract the isolated load from the paired load on the same mout
 
 Doubling the radius from 0.75 to 1.5 multiplied the load by 7.97739016 and the reaction by 41.2387782 at separation 8 on the largest domain. The larger mouth's load-to-reaction ratio was 0.193443902 times the smaller mouth's value. At separation 4 that fraction was 0.193422281. Across both separations, both force readouts and the three grids, the fraction lay between 0.193 and 0.199. The radius-1 reaction reproduced the archived fixed-rate result at both measured frequencies; the radius-1 held load agreed within 0.00013% under the change to fixed speed. The two quantities therefore grow at different rates along this prescribed family. Interpreting their quotient as a release acceleration would require the mouth to retain the whole incoming load and the isolated brane reaction to supply its entire inertia in the pair. The centers were prescribed throughout. [Guarded measurements and comparisons](_measurements/lateral_mouth_radius.json)
 
+### Can the measured brane reaction supply the inertia of a draining mouth?
+
+Take one physical mouth preparation at a time. Let \(H(U,A)\) be the total external sideways force needed to give its geometric center acceleration \(A\) in an incident brane flow of speed \(U\). Both are signed along the same axis. Compare small perturbations at matched position, velocity and preparation in the same slow regime. In a scalar local response, after eliminating any other free coordinates in the same way in both measurements,
+
+\[
+ H(U,A)-H(0,0)= M A-C U+\text{higher-order terms}.
+\]
+
+The force at fixed center measures \(C=-\partial_U H\), including traction and momentum passed on to other material. A weak known force on the isolated mouth measures \(M=\partial_A H\). At zero incremental external force the companion-induced acceleration is \(CU/M\). Thus both coefficients belong to the same one-body force balance. The action gives an isotropic translational term for an upright throat under the recorded assumptions. The acceleration-dependent momentum exchange in that balance remains open. The carrier calculation determines the brane-side force for prescribed motion, and the total force \(H\) is still needed. [One-body equation and flux partition](em_u1_body_definition.md#L56) · [Status of the inertia and exchange terms](../software/em_charge_attribute/reports/u1_body_dynamics.md#L323)
+
+The source requirement gives a check on \(M\) independent of retention. When the isolated mouth's mass intake \(D\) equals \(\rho_\infty Q\) inferred from its far-field flow, a universal \(Q/M\) requires \(M/D=\tau\) for every physical preparation. The constant \(\tau\) has units of time. The known part of the slow acceleration response is the measured brane reaction \(B=-\partial_A F_{\rm br}\). Write the remaining signed response as \(M-B\), counting the brane response once. Then any two preparations must obey
+
+\[
+ \frac{(M-B)_2}{D_2}-\frac{(M-B)_1}{D_1}
+      =-\left(\frac{B_2}{D_2}-\frac{B_1}{D_1}\right).
+\]
+
+This difference eliminates the unknown normalization \(\tau\). In the archived extent-48 comparison, the mean inward speed was \(0.0598456527169\) in solver units. Doubling the radius from \(0.75\) to \(1.5\) changed \(B/D\) from \(0.003844128136\) to \(0.01987134255\) in solver time units, a factor of \(5.169271638\). The other two grids gave factors of \(5.095783718\) and \(5.038848452\). Each ratio uses the isolated intake and the slow reaction of the same opening. Under the flux-matching assumption, the remaining response **per unit intake** must therefore be smaller for the larger opening, by \(0.01602721441\) on the extent-48 grid. This constrains a difference; the absolute sign of the remaining response at either radius is undetermined. These finite-reservoir results characterize the prescribed fixed-mean-speed family. Physical release, the source-flux match and the selection of a family of physical drain states remain open. [Guarded readout from the archived fields' measurements](_measurements/mouth_inertia_per_intake.txt) · [Source and target scaling](../research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md#how-drain-rate-and-retained-momentum-must-scale-for-free-fall)
+
 ### Where the sideways momentum goes when the isolated mouth accelerates
 
 Use the same three radii and the same mean inward speed as in the radius experiment above. Take positive \(x\) along the prescribed acceleration \(A\). Integrate over a cylinder centered on the opening, of radius and half-length \(R\), spanning the slab depth. Its boundaries are fixed in the laboratory. The opening is instantaneously at rest. With the static displacement contribution subtracted, let \(S=\dot P_x/A\) be the rate of change of axial momentum within the cylinder and \(L=\Phi_{\rm outer}/A\) the outward axial momentum flux through the two endcaps and the cylindrical side. These are signed components of momentum. The opposite slab face reflects and carries zero axial flux. The continuum balance gives \(S+L=-\Phi_{\rm mouth}/A=M_{\rm br}\).

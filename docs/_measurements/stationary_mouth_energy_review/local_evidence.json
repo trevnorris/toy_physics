@@ -1,0 +1,81 @@
+{
+  "base": "fd667ea9291b4430a96afe3fd932926232f5507d",
+  "scope": "Fresh local document review of the stationary-mouth test in the stated 0PN monopole benchmark. Results refer to the ideal exterior.",
+  "document": "software/stage1_solver/reports/stationary_mouth_energy_test.md",
+  "document_sha256": "5f89001d0786c46c22cb4e7cf6319b16d2368a44639a95cf8375172cce3e5799",
+  "review_packet_sha256": "7dffa415f0c768b2f315e9512fba99a235973e29680ab5466945925d8020284b",
+  "runs": [
+    {
+      "referee_script": "primitive_cuts.py",
+      "script_sha256": "6b853811f9d11b72ada8de6435f452bb05b5fd59bb6d496ae0fede9eba3f4fea",
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "fixed-surface-local-referee",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/fixed_surface_review01/local/guard",
+        "--",
+        "/usr/bin/python3",
+        "_scratch/s11c/fixed_surface_review01/local/primitive_cuts.py"
+      ],
+      "start_utc": "2026-11-17T18:57:41.586296+00:00",
+      "guard_wall_seconds": 0.23556284187361598,
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "verified_cap_bytes": 1073741824,
+      "verified_swap_bytes": 0,
+      "observed_peak_bytes": 13365248,
+      "literal_stdout": [
+        "n   r1   r2     V2         J1        J2_lab    J2_relative    F1_static    F2_static     P2_center",
+        "3 0.70 1.15  -0.20  2.249425738e-03 -7.498085795e-04 -2.185e-17  1.124712869e-02 -1.124712869e-02  2.249425738e-03",
+        "3 0.70 1.15   0.20 -2.249425738e-03  7.498085795e-04 -1.848e-17  1.124712869e-02 -1.124712869e-02 -2.249425738e-03",
+        "3 1.25 0.50  -0.20  2.249425738e-03 -7.498085795e-04 -2.027e-17  1.124712869e-02 -1.124712869e-02  2.249425738e-03",
+        "3 1.25 0.50   0.20 -2.249425738e-03  7.498085795e-04 -1.965e-17  1.124712869e-02 -1.124712869e-02 -2.249425738e-03",
+        "4 0.70 1.15  -0.20  7.257341039e-04 -1.814335260e-04  6.037e-18  3.628670520e-03 -3.628670520e-03  7.257341039e-04",
+        "4 0.70 1.15   0.20 -7.257341039e-04  1.814335260e-04 -5.002e-18  3.628670520e-03 -3.628670520e-03 -7.257341039e-04",
+        "4 1.25 0.50  -0.20  7.257341039e-04 -1.814335260e-04  2.131e-17  3.628670520e-03 -3.628670520e-03  7.257341039e-04",
+        "4 1.25 0.50   0.20 -7.257341039e-04  1.814335260e-04  2.232e-17  3.628670520e-03 -3.628670520e-03 -7.257341039e-04",
+        "maximum absolute error across energy and static-force comparisons = 6.046e-14"
+      ],
+      "stdout_sha256": "61a4381902f5eb5beb10433362660da2ad8dc44bdd462fb4bb2875ed9b38b170"
+    },
+    {
+      "referee_script": "speed_controls.py",
+      "script_sha256": "7fa5cddc113cf96789c2d0922190a7fa18984c62cfda8838f63844eac7a3eed3",
+      "guard_command": [
+        "python3",
+        "scripts/s11c_guarded_run.py",
+        "--pool",
+        "fixed-surface-local-controls",
+        "--memory-gib",
+        "1",
+        "--log-directory",
+        "_scratch/s11c/fixed_surface_review01/local/guard_controls",
+        "--",
+        "/usr/bin/python3",
+        "_scratch/s11c/fixed_surface_review01/local/speed_controls.py"
+      ],
+      "start_utc": "2026-11-17T18:59:24.336373+00:00",
+      "guard_wall_seconds": 0.33518160600215197,
+      "exit_code": 0,
+      "worker_exit_code": 0,
+      "verified_cap_bytes": 1073741824,
+      "verified_swap_bytes": 0,
+      "observed_peak_bytes": 13365248,
+      "literal_stdout": [
+        "n radius      J(0)        J(s)         J(-s)        J(s/2)      J(-s/2)      slope_full   slope_half   rest_load    no_unsteady  offset_slope",
+        "3  0.70  8.004356e-17  2.249426e-03 -2.249426e-03  1.124713e-03 -1.124713e-03  1.124713e-02  1.124713e-02  1.124713e-02  0.000000e+00  1.188226e-02",
+        "3  1.25 -1.191666e-16  2.249426e-03 -2.249426e-03  1.124713e-03 -1.124713e-03  1.124713e-02  1.124713e-02  1.124713e-02  0.000000e+00  1.188226e-02",
+        "4  0.70 -5.945683e-20  7.257341e-04 -7.257341e-04  3.628671e-04 -3.628671e-04  3.628671e-03  3.628671e-03  3.628671e-03  0.000000e+00  3.861762e-03",
+        "4  1.25 -1.197263e-18  7.257341e-04 -7.257341e-04  3.628671e-04 -3.628671e-04  3.628671e-03  3.628671e-03  3.628671e-03  0.000000e+00  3.861762e-03",
+        "maximum centered residual = 3.764e-14",
+        "minimum slope error with unsteady pressure removed = 3.629e-03",
+        "minimum slope change for a +0.25 center displacement = 2.331e-04"
+      ],
+      "stdout_sha256": "fe5c9cf836d802d87244a10faa102d38fa4813c4670a46c45782612c648e179c"
+    }
+  ]
+}

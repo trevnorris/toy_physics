@@ -1,0 +1,82 @@
+{
+  "scope": "Conditional linear normal rim-slip contribution, exact incident dipole, and carrier fluxes in two frames. No physical brane-material slip or mechanical actuator reaction measured.",
+  "repository_base": "fd667ea9291b4430a96afe3fd932926232f5507d",
+  "archive_inventory": [
+    {
+      "command": "unzip -Z -1 _scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.01.npz",
+      "stdout": [
+        "field.npy",
+        "current.npy",
+        "dx.npy",
+        "dz.npy",
+        "mouth.npy",
+        "speed.npy"
+      ]
+    },
+    {
+      "command": "unzip -Z -1 _scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.02.npz",
+      "stdout": [
+        "field.npy",
+        "current.npy",
+        "dx.npy",
+        "dz.npy",
+        "mouth.npy",
+        "speed.npy"
+      ]
+    }
+  ],
+  "runs": {
+    "sympy": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool rim-slip-comparison --memory-gib 2 --log-directory _scratch/s11c/rim_slip_comparison_sympy01 -- python3 software/stage1_solver/tools/rim_slip_comparison.py > _scratch/s11c/rim_slip_comparison_sympy01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T14:51:48.342173+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T14:51:49.832448+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_gib": 2,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 354664448,
+      "stdout_path": "_scratch/s11c/rim_slip_comparison_sympy01/stdout",
+      "stdout_bytes": 390,
+      "stdout_sha256": "1e15d2eb70989f6ab1cecc223bc483a6d4a3f4b926a12948798f661205278ff0",
+      "stdout": [
+        "held coefficient, opposing-drift coefficient = 4*pi*a**2*k*tau/3 4*pi*a**2*k*tau/3",
+        "point-drain velocity dipole, uniform reference, difference = Q/(4*pi*d**2) Q/(4*pi*d**2) 0",
+        "U=0.01 V=-0.01 J=0.25 held_lab=+0.00249999985299 moving_lab=-1.47005441614e-10 difference=+0.0025 U*J=+0.0025",
+        "U=0.02 V=-0.02 J=0.25 held_lab=+0.004999999706 moving_lab=-2.94002735021e-10 difference=+0.005 U*J=+0.005"
+      ]
+    },
+    "wolfram": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool rim-slip-comparison --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/rim_slip_comparison_wolfram01 -- math -noprompt -script software/stage1_solver/tools/rim_slip_comparison.wl > _scratch/s11c/rim_slip_comparison_wolfram01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T14:51:59.724115+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T14:52:04.692012+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 225337344,
+      "stdout_path": "_scratch/s11c/rim_slip_comparison_wolfram01/stdout",
+      "stdout_bytes": 422,
+      "stdout_sha256": "bd20c93ed6c7f03613c7a55098640cf3842123103d90fee5dcd4c2c1a9032282",
+      "stdout": [
+        "\"dipole of potential, radial derivative, center velocity = \"\"{(r*strength)/(4*Pi*rsrc^2), strength/(4*Pi*rsrc^2), strength/(4*Pi*rsrc^2)}\"",
+        "\"changes of feed, receiving and feed-minus-receiving flux = \"\"{-(j*m*u), -(j*m*u), 0}\"",
+        "\"held step, translating step at V=-U, work rate for drift at V = \"\"{(4*a^2*(-1 + E^(t/tau))*k*Pi*tau*u)/(3*E^(t/tau)), (4*a^2*(-1 + E^(t/tau))*k*Pi*tau*u)/(3*E^(t/tau)), (-4*a^2*k*Pi*tau*v^2)/3}\""
+      ]
+    }
+  },
+  "sha256": {
+    "software/stage1_solver/tools/rim_slip_comparison.py": "8286522034eb2f602856fb5d9433cffe5b83b056c2ae5f6b77a477957a9574b4",
+    "software/stage1_solver/tools/rim_slip_comparison.wl": "67ac3e7b0fdace8e7911e78ed6bc1b374542d079d3e56f5e6e32da9771fd1793",
+    "software/stage1_solver/tools/held_crossflow_budget.py": "ffc771ee507b9b3512e0809b12d0bd0d5989a503372969ff51364fc62348b19f",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "docs/_measurements/mouth_intake_redistribution.json": "f437841524cdf0166ffbc6950a663767a3ea9d0691236a07a6111d141bf00711",
+    "_scratch/s11c/mouth_redistribution_depth01/outcome.json": "94527d850bda9c0b610694b5b8cfc66f033c392aa536a4c02633d6af122de8ca",
+    "_scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.01.npz": "54048b7c5787e614cd9e1446b3e14e959f4d5d65f4fc45fc2fed9cf1819b4e23",
+    "_scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.02.npz": "303cb43b3375fca6251afbee3230be6c8cbd907d5cc3471415f52d29ff48be6a"
+  }
+}

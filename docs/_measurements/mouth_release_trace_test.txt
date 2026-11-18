@@ -1,0 +1,46 @@
+One radius-one mouth, prescribed inward carrier number rate 0.25. Conditional 0PN interface stress test.
+Repository base fd667ea9291b4430a96afe3fd932926232f5507d. Working result pending review.
+Python computes virtual work using the steady field and its linear response. Mathematica independently
+computes the integrated mixed-stress jump on the same exported density traces and the same grid.
+The two signed negative-speed traces are reflections. No receiving bulk or released center is simulated.
+
+Source and input SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+0d563dbc08d13ae00e35aa2800b0c164af2bd8cfd464c6daa8e3840a237fc2cb  software/stage1_solver/tools/mouth_release_trace_test.py
+01976c931502f1bc90c1521131e9be57b0010b3713204126a7c8ee791521e42b  software/stage1_solver/tools/mouth_release_trace_test.wl
+ffc771ee507b9b3512e0809b12d0bd0d5989a503372969ff51364fc62348b19f  software/stage1_solver/tools/held_crossflow_budget.py
+9bfdfe7e441137afc82c7863d21e4a846187cb82316f4381f78fee88fd12d434  software/stage1_solver/tools/mouth_carrier_momentum.py
+a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61  software/stage1_solver/tools/mouth_feed_weak_check.py
+9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83  software/stage1_solver/tools/mouth_feed_weak_flow.py
+f341d0ced284b035aaf1450706a0bfa3a35be937b214072fb68c997e03fd8efb  software/stage1_solver/tools/mouth_release_input_check.py
+f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0  docs/_measurements/mouth_feed_weak_run.json
+f437841524cdf0166ffbc6950a663767a3ea9d0691236a07a6111d141bf00711  docs/_measurements/mouth_intake_redistribution.json
+c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4  _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz
+54048b7c5787e614cd9e1446b3e14e959f4d5d65f4fc45fc2fed9cf1819b4e23  _scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.01.npz
+303cb43b3375fca6251afbee3230be6c8cbd907d5cc3471415f52d29ff48be6a  _scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.02.npz
+830630c662b94e164e71d928469f4aaca89504eed4b066ed9c848634d41e3ca7  _scratch/s11c/free_fall_trace_faces01/flow0.01.f64
+64b8c280fb2a37f9797c7ab01de96d67f2bf3f4fa0c160ed9081df55ad27b8d2  _scratch/s11c/free_fall_trace_faces01/flow0.02.f64
+7457c168347d13c3dd083a58abff7e9c9ddbe76936141feee0e95bbef90050f4  _scratch/s11c/free_fall_trace_faces01/rest.f64
+bcb3f9672733672b3abe9c809ec0c66b9e754e6560f0265b0283ab73c7fee03b  _scratch/s11c/free_fall_trace_faces01/tangent.f64
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-release-trace --memory-gib 3 --log-directory _scratch/s11c/free_fall_trace01 -- python3 software/stage1_solver/tools/mouth_release_trace_test.py --face-directory _scratch/s11c/free_fall_trace_faces01
+Start 2026-11-17T05:02:24.329565+00:00. End 2026-11-17T05:02:30.518250+00:00 (guard wall time).
+Guard/worker exit 0/0. Limits verified. Sampled peak 406110208 bytes. Zero swap, no deadline. Stderr empty.
+Stdout _scratch/s11c/free_fall_trace01/stdout (476 bytes, SHA256 37c1a8f9e5682a7b3caf95391a5e1fbba5dd713305df83890b5ce90d0767c4d8).
+Literal stdout
+inward number rate=0.25; density tangent iterations=23 last update=7.725e-13
+virtual-work force per strength per incident speed at U=0: -1.43072114658505e-06
+unloaded profile force at rest: -0
+abs_U=0.02 force(+U)=-2.86094218636998e-08 force(-U)=+2.86094218637006e-08 odd slope=-1.43047109318501e-06 slope minus tangent=+2.500534e-10
+abs_U=0.01 force(+U)=-1.43065863788067e-08 force(-U)=+1.43065863788069e-08 odd slope=-1.43065863788068e-06 slope minus tangent=+6.2508704e-11
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-release-trace --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/free_fall_trace_wolfram01 -- env MOUTH_RELEASE_FACE_DIR=_scratch/s11c/free_fall_trace_faces01 math -noprompt -script software/stage1_solver/tools/mouth_release_trace_test.wl
+Start 2026-11-17T05:03:30.313028+00:00. End 2026-11-17T05:03:35.207847+00:00 (guard wall time).
+Guard/worker exit 0/0. Limits verified. Sampled peak 225427456 bytes. Zero swap, no deadline. Stderr empty.
+Stdout _scratch/s11c/free_fall_trace_wolfram01/stdout (647 bytes, SHA256 fff8bfa894ed7ae857ccde26ee2ca48501b8d1ff73616afd4373aea73b81de17).
+Literal stdout
+"resting energy, extra normal log slope, extra mixed flux: "InputForm[{0, 0, 0}]
+"linear flux before and after removing the compact boundary divergence: "InputForm[{k*n0[y]*(w[y]*Derivative[1][n1][y] + n1[y]*Derivative[1][w][y]), -(k*n1[y]*w[y]*Derivative[1][n0][y])}]
+"rest and first-order net face difference per strength: "InputForm[{0., -1.4307211465848923*^-6}]
+"signed face differences and odd slope at |U|="0.02": "InputForm[{-2.860942186369901*^-8, 2.8609421863701884*^-8, -1.4304710931850222*^-6}]
+"signed face differences and odd slope at |U|="0.01": "InputForm[{-1.430658637880502*^-8, 1.4306586378807567*^-8, -1.4306586378806294*^-6}]

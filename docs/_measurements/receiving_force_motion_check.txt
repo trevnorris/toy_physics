@@ -1,0 +1,43 @@
+Independent receiving-side force and motion at 0PN
+
+Decision on base cda9a8eb. No eligible paired reading was found in the checked
+records for the radius-one mouth draining at inward number rate 0.25.
+The five matched histories report momentum entering the feeding face and a
+commanded rim displacement. The receiving-segment benchmark calculates the
+terminal load from an input impedance. Reading that force back against its
+own velocity would reproduce the assumed scale. Its supplied-material entry
+point requires independent force and velocity histories as inputs.
+
+The direct-traction archive loads a homogeneous exterior. The open receiver
+uses a prescribed accelerating rig, a reflecting wall and a different inlet
+trace. The frozen full-field backgrounds listed below have zero inlet current.
+None supplies the missing receiving-side measurement for this preparation.
+
+To resume this test, use independently normalized downstream traction and
+local motion at the same section and times, with the drive and inward state
+identified. One nonzero matched reading can set a single common scale when
+the response shape and ratios are known. A general two-channel law requires
+independent motions and paired force components.
+
+Selected source checks and literal outputs
+
+$ jq -sc '[.[] | (."16"[], ."32"[]) | keys] | unique' _scratch/s11c/mouth_prescribed_accel_{negative,negative_half,zero,positive_half,positive}02/stdout
+[["carried","feed_load","inward_rate","stress","t","x"]]
+
+$ jq -r '.command | join(" ")' _scratch/s11c/signed_mouth_collar01/invocation.json
+env PYTHONPATH=software/stage1_solver/src python3 software/stage1_solver/tools/signed_mouth_collar.py --demo --output _scratch/s11c/signed_mouth_collar01/fields
+
+$ rg -n --no-heading 'end_load = termination|fit_terminal_load\(\*\*data\[' software/stage1_solver/src/stage1_solver/mouth_collar.py software/stage1_solver/tools/signed_mouth_collar.py
+software/stage1_solver/src/stage1_solver/mouth_collar.py:87:        end_load = termination @ velocity[:,-1]
+software/stage1_solver/tools/signed_mouth_collar.py:149:    load, errors = fit_terminal_load(**data["terminal_readings"])
+
+$ rg '^wp1_background_.*signed_inward_number_rate=' docs/_measurements/one_throat_force_probe_inputs.txt
+wp1_background_6x4.json radius=1 max_abs_jw_cells=0 max_abs_jw_face=0 signed_inward_number_rate=0
+wp1_background_8x6.json radius=1 max_abs_jw_cells=0 max_abs_jw_face=0 signed_inward_number_rate=0
+wp1_background_10x8.json radius=1 max_abs_jw_cells=0 max_abs_jw_face=0 signed_inward_number_rate=0
+
+$ rg -n 'The contact used here|scalar carrier and the longitudinal' software/stage1_solver/src/stage1_solver/mouth_shear.py
+3:The contact used here is an explicit diagnostic hypothesis. Its tangential
+5:scalar carrier and the longitudinal material sector do not drive this field.
+
+Related field records: signed_mouth_wall_wave_coverage.txt, brane_direct_traction.txt, open_sleeve_lateral_balance.txt, signed_mouth_collar.json.

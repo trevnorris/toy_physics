@@ -1,0 +1,77 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "status": "Working result pending independent review.",
+  "scope": "No matched physical force and displacement series in the inspected draining-mouth preparations. Single-mode reduced-trajectory holdout only.",
+  "input_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/reports/wave_fourth_reading.md": "6efa6ddc49735e82adf6b2a0f4268a405513f8b6858502644efcdb13bfbd3453",
+    "docs/_measurements/trapped_wave_push.json": "1cd7024124ecbd0f39f92d90f9543afa254ce09f6f27d0032f8949aad5f9fae5",
+    "docs/_measurements/mouth_release_input_check.txt": "9e3ed3bf2ce7ff9efbc4869c92ebafaf55d2daa0e7d42b26b086fc59e4c37901",
+    "docs/_measurements/mouth_force_drive.json": "8aebce7872adde3845be6e20a109acc3f53d486bedf1dc68c973bcaf3b9f32f3",
+    "docs/_measurements/one_throat_force_probe_inputs.txt": "7c51ec1c60e6a6022bfa6992691afddcefbdfb557a1c5e12684dcbf4c6180900",
+    "docs/one_throat_flow_probe.md": "afa47ac946946e7e07923ffa9df7eb004418102a794acaa79ae02146e543b0aa",
+    "software/stage1_solver/tools/mouth_force_drive.py": "63a5b46881cb07b61f10577db161127d055aeb260911d9301d91bc0921c13d47"
+  },
+  "lookup": [
+    {
+      "command": "rg '^rim_load=|^restoring_slope U=0 ' docs/_measurements/mouth_release_input_check.txt",
+      "literal_lines": [
+        "restoring_slope U=0 cells_changed=0 mouth_x=0 intake_x_shift=0 mouth_rate=0.25 feed_rate=0.249999997672",
+        "rim_load=0 integrated_force_x=0",
+        "rim_load=0.015 integrated_force_x=0.015",
+        "rim_load=0.0075 integrated_force_x=0.0075"
+      ]
+    },
+    {
+      "command": "rg '^  \"scope\":' docs/_measurements/mouth_force_drive.json",
+      "literal_lines": [
+        "  \"scope\": \"Conditional linear force-response test using saved carrier harmonics. The incremental external force balances the brane load alone. No independent mouth acceleration or total actuator-force measurement.\","
+      ]
+    },
+    {
+      "command": "rg 'velocity = applied / impedance' software/stage1_solver/tools/mouth_force_drive.py",
+      "literal_lines": [
+        "        velocity = applied / impedance"
+      ]
+    },
+    {
+      "command": "rg signed_inward_number_rate= docs/_measurements/one_throat_force_probe_inputs.txt",
+      "literal_lines": [
+        "wp1_background_6x4.json radius=1 max_abs_jw_cells=0 max_abs_jw_face=0 signed_inward_number_rate=0",
+        "wp1_background_8x6.json radius=1 max_abs_jw_cells=0 max_abs_jw_face=0 signed_inward_number_rate=0",
+        "wp1_background_10x8.json radius=1 max_abs_jw_cells=0 max_abs_jw_face=0 signed_inward_number_rate=0"
+      ]
+    }
+  ],
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-fourth-fit --memory-gib 2 --log-directory _scratch/s11c/wave_fourth_fit01 -- python3 software/stage1_solver/tools/wave_fourth_reading.py",
+      "script_sha256": "b3ab96154c9ec23a1ed154969098148fd474c898a5c5e1bb6660bad8f995d0ae",
+      "start_utc": "2026-11-17T22:15:07.855297+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_gib": 2,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "three readings = 1/(1 - alpha) (u**2 + 1)/(-alpha + u**2 + 1) (4*u**2 + 1)/(-alpha + 4*u**2 + 1)",
+        "inferred squared rate in relative-mode units = 1 - alpha",
+        "fourth predicted from three = (9*u**2 + 1)/(-alpha + 9*u**2 + 1)",
+        "fourth read from the trajectory = (9*u**2 + 1)/(-alpha + 9*u**2 + 1)",
+        "fourth residual = 0",
+        "flat-response calibration deficits = [0, 0]"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-fourth-direct --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/wave_fourth_direct01 -- math -noprompt -script software/stage1_solver/tools/wave_fourth_reading.wl",
+      "script_sha256": "8e4aeb07a561494d0751e1be6b01ae8311d8c9996172443f0e8a5b7c152d85cc",
+      "start_utc": "2026-11-17T22:15:16.796975+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_gib": 4,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "\"independent fourth from the Wolfram time history: \"InputForm[(1 + 9*u^2)/(1 - eta + 9*u^2)]"
+      ]
+    }
+  }
+}

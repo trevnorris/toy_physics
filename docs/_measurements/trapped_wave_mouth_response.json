@@ -1,0 +1,48 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "scope": "Conditional pressure dipole and kinetic contribution of a translating localized shear mode. No resolved throat, matched external traction, or physical release measured.",
+  "status": "Working calculation pending independent review.",
+  "guard_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+  "report_sha256": "60958c3854e9eabc1d44a7a8ae0726833ccc261aefbc5d1c94c4634d3244fa06",
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool trapped-wave-force-sympy --memory-gib 2 --log-directory _scratch/s11c/trapped_wave_force_sympy01 -- python3 software/stage1_solver/tools/trapped_wave_mouth_response.py",
+      "script_sha256": "24b9c314381af52abaeb5694a18a82909013d38dc2cc64fa701751bd5c9dc4ab",
+      "started_utc": "2026-11-17T21:11:08.107254+00:00",
+      "exit_code": 0,
+      "child_exit": 0,
+      "verified_memory_limit_bytes": 2147483648,
+      "verified_swap_limit_bytes": 0,
+      "stdout_claim_lines": [
+        "in-phase response per speed = Delta*S*h/(Delta**2 + L**2)",
+        "quadrature response per speed = L*S*h/(Delta**2 + L**2)",
+        "radial supporting pressure at zero flow = S**2*kappa/2",
+        "axial load at zero flow = 0",
+        "axial load per speed = 4*pi*S*a**2*bc*kappa/3",
+        "load with quadrature alone = 0",
+        "detuned axial slope = 4*pi*Delta*S**2*a**2*h*kappa/(3*(Delta**2 + L**2))",
+        "translation kinetic Hessian per volume = fx**2*rho/2"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool trapped-wave-force-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/trapped_wave_force_wolfram01 -- math -noprompt -script software/stage1_solver/tools/trapped_wave_mouth_response.wl",
+      "script_sha256": "5cb7fe4862d493554f4c001c377da150f6142aba769d613814b48fa98aeaf37e",
+      "started_utc": "2026-11-17T21:11:18.411324+00:00",
+      "exit_code": 0,
+      "child_exit": 0,
+      "verified_memory_limit_bytes": 4294967296,
+      "verified_swap_limit_bytes": 0,
+      "stdout_claim_lines": [
+        "\"real displacement susceptibility times drive\"\" = \"InputForm[(amp*det*h)/(det^2 + loss^2)]",
+        "\"sine displacement susceptibility times drive\"\" = \"InputForm[(amp*h*loss)/(det^2 + loss^2)]",
+        "\"pressure without drive\"\" = \"InputForm[(amp^2*kap)/2]",
+        "\"force without drive\"\" = \"InputForm[0]",
+        "\"force with purely quadrature response\"\" = \"InputForm[0]",
+        "\"force slope with both phases\"\" = \"InputForm[(4*amp*kap*Pi*rad^2*sIn)/3]",
+        "\"slope of the forced mode\"\" = \"InputForm[(4*amp^2*det*h*kap*Pi*rad^2)/(3*(det^2 + loss^2))]",
+        "\"translational xx kinetic Hessian per volume\"\" = \"InputForm[(fx^2*rho)/2]",
+        "\"translational xy kinetic Hessian per volume\"\" = \"InputForm[(fx*fy*rho)/2]"
+      ]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+# Does the trapped wave follow a pushed mouth at 0PN?
+
+**Physical test status.** The radius-one state with prescribed inward number rate \(0.25\) saves the stationary carrier field, current and aperture mask. Its geometric center stayed at zero as the incident sideways speed changed from \(0\) to \(0.01\) and \(0.02\). The centroid of the intake shifted by \(2.41028750385\times10^{-5}\) and \(4.82070644309\times10^{-5}\) solver lengths, respectively. A signal can move at a fixed opening. The shear solver evolves an outgoing exterior wave with mouth velocity as an input. The older trapped-wave stability calculation varies radius and length using a scalar surrogate. The one-body model lists both the trapped shear profile and the throat surface action as open inputs. None of these preparations supplies a physical push trajectory for the envelope or an independent total holding force in flow. [Archive and guard evidence](../../../docs/_measurements/trapped_wave_push.json) · [Saved centroid controls](../../../docs/_measurements/mouth_release_input_check.txt) · [Shear solver](../src/stage1_solver/mouth_shear.py#L13) · [Stability test](pathA_26_derrick.md) · [Open body inputs](../../em_charge_attribute/u1_body_dynamics_inputs.yaml#L48)
+
+**Four pushes on a reduced model.** Let \(X\) be the geometric rim center and \(Y\) the center of the bound wave envelope along the push. Subtract the unforced draining baseline. Assume two independent displacements with positive field kinetic coefficients \(M_r,M_w\) for material moving with the rim and for the trapped wave. Their kinetic energy is \((M_r\dot X^2+M_w\dot Y^2)/2\). Take relative-displacement energy \(k(X-Y)^2/2\), \(k>0\). This is a conservative example with no kinetic cross term, damping, or incremental momentum exported to the bulk. It assigns no bare mass to the aperture. All three coefficients are symbolic. A constant net applied force \(F\) acts only on the rim from rest.
+
+\[
+M_r\ddot X=F-k(X-Y),\qquad M_w\ddot Y=k(X-Y).
+\]
+
+With \(\Omega^2=k(1/M_r+1/M_w)\), the exact displacements obey
+\[
+X-Y=\frac{F}{M_r\Omega^2}(1-\cos\Omega t),\qquad
+M_rX+M_wY=\frac{Ft^2}{2}.
+\]
+Within these envelope equations \(X\) starts as \(Ft^2/(2M_r)\) and \(Y\) as \(kFt^4/(24M_rM_w)\). To observe this regime the fast shear oscillation must be resolvable separately from the slower relative motion. The gap is largest in magnitude after half a relative oscillation and zero after a whole one. Both full trajectory predictions scaled exactly for the two half pushes, in both directions. This tests linearity of the example. The relative oscillation frequency and locking on gravity timescales remain unmeasured. [SymPy and Mathematica runs](../../../docs/_measurements/trapped_wave_push.json)
+
+**What would decide it.** Record synchronized \(X(t)\) from the aperture boundary and \(Y(t)\) from the localized, cycle-resolved shear pattern in lab coordinates, checking phase and shape for changes that could mimic a translation. Use zero and opposite weak rim pushes, resolve the transient, and reserve both half-strength histories. In this example the full pair fixes \(k/M_w\) from \(Y(t)=(k/M_w)\int_0^t(t-s)[X(s)-Y(s)]\,ds\), provided that integral is resolved and nonzero. Use that coefficient and the measured half-push \(X(t)\) to predict \(Y(t)\) from the second equation. Resolved lag also allows the two kinetic coefficients to be inferred from two linearly independent position samples and the net force history. Exact co-motion measures only their sum in this model. A physical drain requires the incremental external momentum balance or an independently calibrated effective response, including leakage or drag where present. The companion-flow test separately requires the full translation-support reaction and the wave stress on the same mouth under signed weak flows. The available carrier feed measures only the incoming momentum. [Held comparison](mouth_inlet_trace.md) · [Existing wave requirement](../../../research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md#L2202)
+
+Working result on base cda9a8eb, pending independent review.

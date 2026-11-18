@@ -1,0 +1,25 @@
+0PN first variation of the sideways momentum balance about a steady draining preparation. Working result pending review.
+Repository base fd667ea9291b4430a96afe3fd932926232f5507d.
+The fixed-cut accounting identity does not select a material law. The flat advective momentum and two relaxing incremental shear laws are checks only. No physical drain velocity is measured.
+
+Script and guard SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+e6af9b0d816b647b7a6fba95738de20874ac48c13255ceb47cf8de2e470d7568  software/stage1_solver/tools/draining_rim_tangent.py
+797d88fc4adacb9e351363733c83c10bbbc1a82d834f54945dd1ad2a399db085  software/stage1_solver/tools/draining_rim_tangent.wl
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool draining-rim-tangent --memory-gib 2 --log-directory _scratch/s11c/draining_rim_tangent01 -- python3 software/stage1_solver/tools/draining_rim_tangent.py
+Start 2026-11-16T23:56:06.565862+00:00. End 2026-11-16T23:56:07.101939+00:00 (start plus guard wall time).
+Guard/worker exit 0/0. Limits verified. Sampled peak 52305920 bytes. Zero swap, no deadline. Stderr empty.
+Stdout _scratch/s11c/draining_rim_tangent01/stdout (314 bytes, SHA256 e1142d4c4ed37d98d0742344271be550bc36d8beec782ba59de9db28121e88d7).
+Literal stdout
+Fixed-cut first variation minus storage + transport - stress + carried loss - other supply: 0
+Conditional advected-momentum tangent minus density, material and background-gradient terms: 0
+Shear-stress increments per strain increment: relaxed, instantaneous, at s=1/tau: [0, 0] [G_inf, G_inf] [G_inf/2, 2*G_inf/3]
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool draining-rim-tangent --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/draining_rim_tangent_wolfram01 -- math -noprompt -script software/stage1_solver/tools/draining_rim_tangent.wl
+Start 2026-11-16T23:56:15.701179+00:00. End 2026-11-16T23:56:20.391876+00:00 (start plus guard wall time).
+Guard/worker exit 0/0. Limits verified. Sampled peak 225026048 bytes. Zero swap, no deadline. Stderr empty.
+Stdout _scratch/s11c/draining_rim_tangent_wolfram01/stdout (194 bytes, SHA256 8f9fec932b54535f22e1d46f8ac9f2677500db052d1eade80a8cdbcc2f88a376).
+Literal stdout
+"Conditional mass-loss elimination residual in sideways momentum: "0
+"Example stress histories at onset, late time, t=tau: "InputForm[{{modulus, modulus}, {0, 0}, {modulus/E, modulus/Sqrt[E]}}]

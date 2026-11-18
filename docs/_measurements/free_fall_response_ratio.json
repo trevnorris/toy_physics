@@ -1,0 +1,56 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "scope": "Symbolic 0PN test of a steady held pull and the slow acceleration of a free mouth in two candidate field responses. No physical throat coefficients were fitted.",
+  "status": "Working result pending independent review.",
+  "input_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/reports/wall_wave_cut.md": "261a8a906e53aa1775dc491d65e6ab8e7c8864e6e4c9727bbf8ff2ccce828213",
+    "software/stage1_solver/reports/held_force_angular_falloff.md": "68b47cf692d8c9c660f18b3dd50ce37cd2bec61e11cde0a9829b57ffdc6ab2a9",
+    "software/stage1_solver/reports/mouth_tow_and_companion.md": "84f0304f3f1322781d8177865056c33e91655d9cd832ce0409f07f2afeb6ecc5",
+    "software/stage1_solver/reports/rim_end_load.md": "c1630e75b1df0bf4c2ae2c87fad297c54e7c7721dd299de95c88fba14145854b",
+    "software/stage1_solver/reports/mouth_feed_profile_force.md": "504da197144dd7396a023d77f9ab5a91921dab03a8ef21e9e4e5af7e829c748e",
+    "software/em_charge_attribute/u1_body_dynamics_inputs.yaml": "eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool free-fall-ratio-sympy --memory-gib 2 --log-directory _scratch/s11c/free_fall_ratio_sympy01 -- python3 software/stage1_solver/tools/free_fall_response_ratio.py",
+      "script_sha256": "f30122e2c7698a63ae553f07dd071a115fe18674a34555579d5d203c02c1c008",
+      "stdout_sha256": "e062a761a2ddc3ced051aa08bbe96fba5773e891dc3d8b59ed4a3d052c437a7a",
+      "start_utc": "2026-11-18T00:24:40.596612+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_gib": 2,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "field equation residual = 0",
+        "unit rim motion = 1",
+        "far lateral traction = 0",
+        "rim force minus momentum rate per unit displacement = 0",
+        "static stiffness = 0",
+        "slow lateral field inertia = L*lam*mu",
+        "slow acceleration per speed at scale 1 = C/(L*mu + M)",
+        "slow acceleration per speed at scale 2 = C/(2*L*mu + M)",
+        "change at fixed held pull = -C*L*mu/((L*mu + M)*(2*L*mu + M))",
+        "scale sensitivity times squared total inertia = B*M - C*m"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool free-fall-ratio-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/free_fall_ratio_wolfram01 -- math -noprompt -script software/stage1_solver/tools/free_fall_response_ratio.wl",
+      "script_sha256": "3891569032bc0da1382c6f037c79a1ea111ef15a94d3dacd7f6ec60e18b69b40",
+      "stdout_sha256": "d844815fb86f5e8b47aef7dbdde5e27e99585ebb9b48befdb617b79aa70d22ad",
+      "start_utc": "2026-11-18T00:24:50.090203+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_gib": 4,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "\"exterior pull per incident speed\"\" = \"\"4*Pi*radius^2*rho*w\"",
+        "\"force minus integrated momentum rate per displacement\"\" = \"\"0\"",
+        "\"static unit-displacement field\"\" = \"\"{1, 1}\"",
+        "\"held reaction per incident speed\"\" = \"\"-4*Pi*radius^2*rho*w\"",
+        "\"scale 1 gain per exterior pull coefficient\"\" = \"\"(mb + len*mu)^(-1)\"",
+        "\"scale 2 gain per exterior pull coefficient\"\" = \"\"(mb + 2*len*mu)^(-1)\""
+      ]
+    }
+  }
+}

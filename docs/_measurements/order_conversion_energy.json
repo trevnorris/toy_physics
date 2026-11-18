@@ -1,0 +1,157 @@
+{
+  "scope": "Assess the existing order balance and historical real-fraction energy adjunct as possible suppliers of the ideal two-drain energy requirement. Homogeneous algebraic witnesses, live shear work, common conserved-number reference, and fixed-throughput energy-yield variation only. No physical conversion kinetics, throat profile, thermodynamic latent heat, or mechanical energy fraction is selected.",
+  "base": "fd667ea9291b4430a96afe3fd932926232f5507d",
+  "review_status": "Working, uncommitted pending independent review. Two CAS calculations do not constitute review legs.",
+  "sha256": {
+    "software/stage1_solver/tools/order_conversion_energy.py": "40f66babe49c250df1a3c7a988f36a022987ca62f8debdb9e6dff64a2f0394a1",
+    "software/stage1_solver/tools/order_conversion_energy.wl": "c3a2a60a622997f53221b084d33a4255aee983b06b12c7931dae25f6a671c6b8",
+    "software/stage1_solver/reports/order_conversion_energy.md": "3434e523dfc55c9c991339af2c16edb9fdfcf79507d9b1006d8923bf048a0866",
+    "software/stage1_solver/reports/two_drain_energy.md": "64eede697a60d02deaf59069c768f0797624a077fa5bb799e28f96aacedda99c",
+    "docs/_measurements/two_drain_energy.json": "118523a5da482d603dd912442895c9f13925eaf31283f0f95057df76d18e5b35",
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "research/pde_ledger_v3/steps/S12_order_source.md": "9ff32deaba86893378e6685d5120ddbe46c03eec4ffb2d8b96b6faeca59ec39d",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1",
+    "docs/conversion_work_assessment_and_next_step.md": "b95dc1cd8937d3bb62e6d9e337aa82dd3e24bb2d8c4677e6d0b0408c3a8da242",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "construction_routes": {
+    "sympy": "Differentiate the postulated well in order fraction, integrate its change, retain a live shear path, derive enthalpy from energy density, and differentiate throughput times net energy yield.",
+    "wolfram": "Differentiate along a prescribed homogeneous time path, integrate in time, retain independent time-dependent shear, derive pressure by virtual compression at fixed constituent count, and solve for the net per-mass yield using the supplied pair cross energy."
+  },
+  "source_assessment": "S12 leaves source forms and energy partners open and excludes the puncture interior. O2 preserves the historical partial order-work formula without elevating it to a complete live energy law. Stage006 explicitly postulates equal-depth same-density phases and leaves f_throat and f_mix as placeholders.",
+  "comparison": "Author inspection finds agreement after symbol and variable relabeling, with the shear tests expressing the same chain rule in order-path and time-path variables. Physical source selection remains unresolved.",
+  "source_excerpt_command": "Read the listed one-based line intervals verbatim from the source files using pathlib.Path.read_text().splitlines().",
+  "source_excerpts": [
+    {
+      "file": "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md",
+      "lines": [
+        69,
+        85
+      ],
+      "literal_text": "Free energy (4D spatial `d^4X`, time separate; every integrand term audited to\nthe 4D free-energy density `M L^-2 T^-2`):\n\n```\nF = \u222b d^4X [ (1/2) m_GNLS n |u|^2 + U(n) + f_B(chi_B)\n             + (kappa_B/2)|grad_4 chi_B|^2 + chi_B f_shear\n             + f_throat + f_mix ]\n```\n\nBalance laws:\n\n```\n\u2202_t n + div_4(n u) = 0                                    (total, exact)\n\u2202_t(chi_B n) + div_4(chi_B n u + J_chi) = n Gamma_B ,      [Gamma_B] = T^-1\nGamma_B = Gamma_return - Gamma_drain\n```\n"
+    },
+    {
+      "file": "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md",
+      "lines": [
+        93,
+        105
+      ],
+      "literal_text": "| P1 | `n` = total conserved 4D constituent **number** density, `[n] = L^-4` (I-1 row); kinetic term carries the constituent mass: `(1/2) m_GNLS n |u|^2`. **`KINETIC_MASS_FACTOR_PINNED`** \u2014 the handoff's `(1/2) n|u|^2` restatement lacks the mass factor (see Corrections below). |\n| P2 | `chi_B` dimensionless, range `[0,1]`; `n_B = chi_B n`. |\n| P3 | Double-well `f_B(chi_B) = a_B chi_B^2 (1-chi_B)^2`, `a_B > 0`, minima `{0,1}` (recovery limit sits at a minimum), `[a_B] = M L^-2 T^-2`. POSTULATED \u2014 the cited I-1 `U(rho) = (K/4) rho^5` is SINGLE-well, so two-phase structure cannot come from the parent potential. |\n| P4 | **`SAME_DENSITY_DEGENERACY_POSTULATED`** \u2014 `f_B` is n-independent, `f_B(n,0) = f_B(n,1) = 0` (asserted). A density-split (liquid\u2013vapor) interface is rejected as the brane: no shear \u21d2 no light (the pathA_25 lesson). |\n| P5 | Interface gradient `(kappa_B/2)|grad_4 chi_B|^2`, `[kappa_B] = M T^-2`. |\n| P6 | Shear gate `chi_B f_shear`, `f_shear = (1/2) mu_R^(4) (curl_4 u_d)^2` with **displacement** `u_d` (`[u_d] = L`, distinct from the velocity `u`), `[mu_R^(4)] = M L^-2 T^-2`. Rotational (MacCullagh) form, NOT `(\u2202u)^2` Cauchy. Brane-projected `mu_R` (`M L^-1 T^-2`, stage003) related by `\u222b chi_B mu_R^(4) dw` \u2014 dim-consistency asserted, projection POSTULATED/PENDING. |\n| P7 | **`chi_B` is THE postulated wall order parameter** \u2014 an independent scalar field (route (a)), NOT built as `|P_par|^2`. The anisotropy `alpha_aniso chi_B (P\u00b7w_hat)^2` (`POSTULATED_ANISOTROPY`, `[alpha_aniso] = M L^-2 T^-2`) is **RETIRED with `P` (Decision 16 \u2192 failures-paper backlog)**, absent from the live A1 surface. `FUTURE_GATE_CHI_B_EQ_ABS_P_PARALLEL_SQ` (route (c) \u2014 `chi_B = |P_par|^2`) remains a named high-risk Part-VII-adjacent gate needing a NEW T0 freeze; obsolete-as-carried, not foreclosed. |\n| P8 | Dynamics = labeled adjunct: `D_t chi_B = -M_chi mu_chi + Gamma_B`, `mu_chi = \u03b4F/\u03b4chi_B` (`M L^-2 T^-2`), `[M_chi] = L^2 T M^-1`. Energy ledger pinned to the variationally consistent `P_order = \u222b mu_chi D_t chi_B d^4X` (= `M L^2 T^-3`, power). **`HANDOFF_P_ORDER_N_PLACEMENT_CORRECTED`** (see Corrections). |\n| P9 | `J_chi = 0` default (simplest advective closure); `J_chi \u2260 0` deferred, `[J_chi] = L^-3 T^-1`. |\n| P10 | Recovery target = the **frozen canonical OLD-ledger** `S_leak` (stage_243/244.tex), with `j^w \u2261 n u^w` and unit-normalized `W(w)`: `[W] = L^-1`, `\u222bW dw = 1`. NOT the handoff restatement (which would be circular). |\n| P11 | Global returns `R_0 = -M_0`, `R_1 = -D_1` (pathA_28/29) printed as labeled postulates, NOT asserted locally. |\n| P12 | Throat = phase-conversion **ontology, not a solve**: the site of `Gamma_drain > 0` (`chi_B: 1\u21920`), an admittance/outlet driven by existing stress/\u03bc gradients (`J_repair ~ -M_n grad mu`, `[M_n] = L^-4 T M^-1`) \u2014 NOT a new pairwise suction force. Gate-L wall-translation-Goldstone hazard (`\u03b4w = u_w`) DEFERRED. |\n| P13 | Sign convention pinned: free-energy `+(1/2) kappa_phase (grad theta)^2` (stability \u21d2 `kappa_phase > 0`) enters the Lagrangian as `K_theta = -kappa_phase < 0`; Maxwell's electric square needs `K_theta = C_J^2/rho_br > 0`. |"
+    },
+    {
+      "file": "research/pde_ledger_v3/steps/S12_order_source.md",
+      "lines": [
+        52,
+        74
+      ],
+      "literal_text": "```\n\u2202t n + \u2207\u2084\u00b7(n u) = 0\n\u2202t(\u03c7_B n) + \u2207\u2084\u00b7(\u03c7_B n u + J_\u03c7) = n \u0393_B\n\u0393_B = \u0393_return \u2212 \u0393_drain,       [\u0393_B] = T\u207b\u00b9.\n```\n\nThe signed source converts order in one conserved material. Positive means bulk material re-ordering\nonto the brane; negative means de-ordering. The ruled-out frozen-wall material sink plus remote return\nis not this object. No static limit is posed. (Retrieve M01, M03, M11.)\n\nThe domain has real coordinates `(t,x\u00b9,x\u00b2,x\u00b3,w)` and live faces `w\u208b(x,t)<w\u208a(x,t)`. Region 1 is below,\nregion 2 inside, region 3 above. Outside, order is zero; inside, `f(t,x,w)` is live with `0\u2264f\u22641`.\nThe faces bound the region in which shear can be held; they are **not** defined by the support of a\nchosen order profile. Density, each velocity component, each order-flux component and the interior\norder have independent regional restrictions and one-sided traces, may jump, and have no\nface-concentrated input part. The source `n \u0393_B` can have such a part. Point values at the faces and\njumps are unspecified. (Retrieve M01, M03\u2013M05.)\n\nNo regime is chosen and no field is frozen. In particular `J_\u03c7=0` is not adopted. Transfer is only to\nwhere the committed law holds and the shear-holding region has two graph faces over the in-plane\ncoordinates. The puncture's own interior is excluded, with S22. The S9b/O2 far-zone setting is a\nseparate restricted inventory item (\u00a75); it is not imposed on these local objects. (Retrieve M01, M11.)\n"
+    },
+    {
+      "file": "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md",
+      "lines": [
+        270,
+        285
+      ],
+      "literal_text": "## 6. Energy input and force/power pairing\n\n**`\u212c_E^steady` is OPEN**, with the accounting requirement fixed by **adopted premise 1** and its S21\nlabel in \u00a72 (C \u00a78). It denotes the steady energy relation to be constructed, not a precomputed\nresidual. Its required inputs are:\n\n| OPEN operand (C \u00a78) | Required content and entry | Owner |\n| --- | --- | --- |\n| `\u2130_br^live`, `\ud835\udca5_E^live` | Material energy storage and transport compatible with the live stress, inertia, normal response, reference evolution and rotational content. Retain live transport in the steady setting. | S1.5 antecedents, S8 material, S22 completion. |\n| `\ud835\udcab_ref/relax^live` | Explicit power associated with `\u211b_ref/strain^live`, with no formula, sign or vanishing assumed. | O2 requirement; relaxation/reference ownership unassigned. |\n| `\ud835\udcab_convert/exchange^live` | Order-conversion work, energy carried with exchanged material, and additional non-variational energy partners, with their reaction/supply systems. Premise 3 fixes transported momentum, not the carried total energy. | S12. |\n| `\ud835\udcab_boundary^live` | Mechanical face/support work and other energy transfer through the live bulk/boundary data; any explicitly supplied hold is identified. | O2 accounting; S12 native data; Q2/S22 core response. |\n| `\ud835\udcae_E,net`, `\ud835\udcab_E,supply` | Identity of the physical supplier of any net power and its stated power budget. Both stay general OPEN inputs. Naming the drain does not specify available energy or a budget. | O2 requirement; source/holder/supplier forms retain their owners. |\n\nPair each mechanical contribution with the velocity or generalized rate of the material point or\ndegree of freedom on which it acts, on the same measure (\u00a71) and with the same geometric map as its"
+    },
+    {
+      "file": "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md",
+      "lines": [
+        544,
+        569
+      ],
+      "literal_text": "### 8.6 Order work and energy-reference records (C \u00a78)\n\n**Postulated historical real-fraction order-work contribution:**\n\n```text\n\u03bc_\u03c7 = \u03b4F/\u03b4\u03c7_B ,       P_order = \u222b d\u2074X \u03bc_\u03c7 D_t\u03c7_B .\n```\n\nThere is no extra number-density factor in this recorded contribution. It is restricted to the\npostulated real-fraction free-energy/dynamics adjunct; it does not supply branch-dependent S12\ncompletion, relaxation power or full steady energy accounting. The paused comparison does not\nestablish re-ordering as an available power source.\n\n**Recorded energy-reference question, OPEN choice `C_ref`:** the historical action postulates\n`U(\u03c1)=K\u03c1\u2075/4`, while S1.5 records, specifically for its `n=5` EOS,\n\n```text\nP = \u03c1U\u2032 \u2212 U = K\u03c1\u2075 ,       U(\u03c1) = K\u03c1\u2075/4 + C_ref \u03c1 .\n```\n\n`C_ref` is the unresolved chemical-potential/energy-reference choice, distinct from the quadratic\ndensity\u2013thickness coupling `C`. Do not select `C_ref=0` or extend this expression to v9's symbolic\n`n`. S1.5 also owns the linked momentum-stress/quantum-energy/current improvement convention. The\nreference choice remains named wherever conservative energy and source/exchange accounting depend\non it; choosing an EOS does not close that dependence.\n"
+    },
+    {
+      "file": "docs/conversion_work_assessment_and_next_step.md",
+      "lines": [
+        7,
+        22
+      ],
+      "literal_text": "The moving-volume balances and the conditional travelling-front sign are coherent consequences of the supplied number/order balances. They preserve total material, boundary motion and accumulation. In the stated ordered-to-disordered normal coordinate, the steady-front relation is `j = Delta(K_n) - Integral(rho Gamma dz)`. Zero endpoint order-current makes positive re-ordering correspond to negative outward relative mass flux. Neither a steady solution nor its native curved-face mapping has been established. A DC conversion rate is not the harmonic S11b flux.\n\nThe corrected partial order-work formula and its integration by parts are also coherent. They do not supply a complete moving-volume energy law. The native face power has been used with its original pressure/chemical normalization; it has not been identified with order work. Finally, the `chi_B f_shear` gate supplies order-dependent storage, but it does not determine energy transfer to a trapped mode or an electric force.\n\nThese are assessed paper identities. They do not require another wording-only review, a generic verifier, or replay of an accepted calculation. The next uncertainty concerns the material model.\n\n## Qualifications retained from the actual sources\n\n- **Rate convention:** the paper uses the rate in the original conservation balance. It does not resolve the separately labelled P8 kinetic adjunct. If `Gamma_bal` denotes the balance rate and `Gamma_adj` the adjunct source, compatibility of the two displayed source equations would require `Gamma_bal - div(K)/rho = -M_chi mu_chi + Gamma_adj`. One cannot casually move relaxation into a transport current without a constitutive and boundary prescription. No such prescription has been adopted.\n- **Front hypotheses:** steady-in-the-moving-frame includes density, not just order. Zero endpoint order-current is an explicit extra hypothesis. The review also asks for zero endpoint gradients; these are not necessary for the integrated identity and do not by themselves prove zero current without a current law. Do not add them as an unexplained compulsory condition.\n- **Gradient boundary work:** for constant kappa, the fixed-domain first variation of the order-gradient term has boundary contribution `Integral_boundary(kappa * partial_N chi * delta chi dA)` as well as the volume derivative. Replacing a variation with a physical rate on a moving, advected domain needs the corresponding transport terms. The report's suggested boundary-power expression is not by itself a complete moving-domain energy law.\n- **Native pressure is defined:** S11b already specifies bulk pressure and bulk mass density. The missing ingredient is a thermodynamic/kinematic map between different state variables and their conjugates, not a need to invent which density or pressure S11b meant. `mu_chi/rho` and `mu_theta/rho_br` have compatible units but different variational definitions.\n- **Scope of reviewer coverage:** Claude inspected portions of stage006, S12, S11b shared physics and task_b2d. It did not independently inspect the full native interpretation or curved geometry. Full supplied bytes were available, but availability is not coverage. Its verdict is not a clearance of those uninspected constructions.\n\n## The source follow-up narrows the missing physics\n"
+    }
+  ],
+  "runs": {
+    "sympy": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool order-conversion-energy-sympy --memory-gib 2 --log-directory _scratch/s11c/order_conversion_energy_sympy01 -- python3 software/stage1_solver/tools/order_conversion_energy.py > _scratch/s11c/order_conversion_energy_sympy01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T18:37:38.021725+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T18:37:38.710926+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 2,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 52826112,
+      "stdout_path": "_scratch/s11c/order_conversion_energy_sympy01/stdout",
+      "stdout_bytes": 1193,
+      "stdout_sha256": "c2056fcae719d4418aee4ae546ddb0547a86acec310252b8b9a0ce0202e20393",
+      "literal_readings": [
+        "SymPy version = 1.14.0",
+        "bare order derivative: 2*a*chi*(chi - 1)*(2*chi - 1)",
+        "same negative balance rate, power at chi=3/4: 3*a*gamma/16",
+        "same negative balance rate, power at chi=1/4: -3*a*gamma/16",
+        "bare well barrier above either endpoint: a/16",
+        "integrated bare order change: 0 | 0 | residual 0",
+        "additional live shear-path work: chi*Derivative(S(chi), chi) | chi*Derivative(S(chi), chi) | residual 0",
+        "complete homogeneous endpoint drop with live shear and extra energy: -G(0) + G(1) + S(1)",
+        "n=5 constituent enthalpy: (4*C_ref + 5*K*n**4)/4",
+        "n=5 constituent enthalpy difference: -5*K*(n_bulk - n_feed)*(n_bulk + n_feed)*(n_bulk**2 + n_feed**2)/4",
+        "common conserved-number reference cancellation: 0 | 0 | residual 0",
+        "equal-density bare constituent head difference: 0 | 0 | residual 0",
+        "required pair-minus-alone net energy per mass, mouth 1: D2*(V1 - V2)*(pi*d*rho4 + 2*rho3)/(4*pi**2*d**3*rho3*rho4)",
+        "required pair-minus-alone net energy per mass, mouth 2: D1*(V1 - V2)*(pi*d*rho4 + 2*rho3)/(4*pi**2*d**3*rho3*rho4)",
+        "variation of conversion power: D*delta_ell + delta_D*ell",
+        "fixed rate and unchanged net energy yield: 0 | 0 | residual 0",
+        "fixed rate, live net energy yield: D*delta_ell | D*delta_ell | residual 0"
+      ],
+      "guard_evidence_sha256": {
+        "outcome.json": "ad5c281cd9f652b95a6f92d9b5e8fe697eaf0a72df06f54aa023edbc355ad135",
+        "child-outcome.json": "3a2cd1ce946387af4241d04db8a12d65745ee64acd2cc60370371dfe917b1018",
+        "invocation.json": "b246077419b5ee02854b68a3c9f5ef396d8f831b00e29b9fd87fef1d36a80898",
+        "limit-validation.json": "dd0cf7d705c5cc8006222ed841568b5e28686a400fe4f1d14d41454980eb667d",
+        "duration-validation.json": "b7b9c58dd0ec33f07067967dd624c44127d7066971a4006f06ad57656809d244"
+      }
+    },
+    "wolfram": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool order-conversion-energy-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/order_conversion_energy_wolfram01 -- math -noprompt -script software/stage1_solver/tools/order_conversion_energy.wl > _scratch/s11c/order_conversion_energy_wolfram01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T18:37:41.019937+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T18:37:46.236242+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 225378304,
+      "stdout_path": "_scratch/s11c/order_conversion_energy_wolfram01/stdout",
+      "stdout_bytes": 1688,
+      "stdout_sha256": "fec10c07b122861ac404d88a4c567f56089daef371e2a0ff31f8cf3f33a4e170",
+      "literal_readings": [
+        "\"Wolfram version = \"\"15.0.1 for Linux x86 (64-bit) (July 2, 2026)\"",
+        "\"same negative balance rate, power at chi=3/4\"\" = \"\"(3*aa*gam)/16\"",
+        "\"same negative balance rate, power at chi=1/4\"\" = \"\"(-3*aa*gam)/16\"",
+        "\"bare well barrier above either endpoint\"\" = \"\"aa/16\"",
+        "\"integrated bare order change\"\" | \"\"0\"\" | \"\"0\"\" | residual \"\"0\"",
+        "\"additional live shear-path work\"\" | \"\"2*aa*(1 - c[t])^2*c[t]*Derivative[1][c][t] - 2*aa*(1 - c[t])*c[t]^2*Derivative[1][c][t] + ss[t]*Derivative[1][c][t] + Derivative[1][c][t]*Derivative[1][gg][c[t]] - Derivative[1][c][t]*(2*aa*(1 - c[t])^2*c[t] - 2*aa*(1 - c[t])*c[t]^2 + ss[t] + Derivative[1][gg][c[t]]) + c[t]*Derivative[1][ss][t]\"\" | \"\"c[t]*Derivative[1][ss][t]\"\" | residual \"\"0\"",
+        "\"complete homogeneous endpoint drop with live shear and extra energy\"\" = \"\"gIn - gOut + sIn\"",
+        "\"n=5 constituent enthalpy\"\" = \"\"(4*cref + 5*kk*nn^4)/4\"",
+        "\"n=5 constituent enthalpy difference\"\" = \"\"(-5*kk*(nb - nf)*(nb + nf)*(nb^2 + nf^2))/4\"",
+        "\"common conserved-number reference cancellation\"\" | \"\"0\"\" | \"\"0\"\" | residual \"\"0\"",
+        "\"equal-density bare constituent head difference\"\" | \"\"0\"\" | \"\"0\"\" | residual \"\"0\"",
+        "\"required pair-minus-alone net energy per mass, mouth 1\"\" = \"\"(db*(2*rho3 + distance*Pi*rho4)*(va - vb))/(4*distance^3*Pi^2*rho3*rho4)\"",
+        "\"required pair-minus-alone net energy per mass, mouth 2\"\" = \"\"(da*(2*rho3 + distance*Pi*rho4)*(va - vb))/(4*distance^3*Pi^2*rho3*rho4)\"",
+        "\"variation of conversion power\"\" = \"\"yield[t]*Derivative[1][rate][t] + rate[t]*Derivative[1][yield][t]\"",
+        "\"fixed rate and unchanged net energy yield\"\" | \"\"0\"\" | \"\"0\"\" | residual \"\"0\"",
+        "\"fixed rate, live net energy yield\"\" | \"\"rate[t]*Derivative[1][yield][t]\"\" | \"\"rate[t]*Derivative[1][yield][t]\"\" | residual \"\"0\""
+      ],
+      "guard_evidence_sha256": {
+        "outcome.json": "9adf6b970328cf855e72b00158c2a1ee0b485be2f0bc2c1d751ccb94a6fa54a1",
+        "child-outcome.json": "26ed344bcdc4c4e9549daa52ac639f531780f02248df36391a100370d8b0bc97",
+        "invocation.json": "83d353996aa39ed7d0711f6070c23e0b34c278c640e2c223033142c73a17b81a",
+        "limit-validation.json": "5bb041caca0a36bf7d6b8a2b1188022680ef2043b3ec119b8db7dbdf3345dcbc",
+        "duration-validation.json": "b7b9c58dd0ec33f07067967dd624c44127d7066971a4006f06ad57656809d244"
+      }
+    }
+  }
+}

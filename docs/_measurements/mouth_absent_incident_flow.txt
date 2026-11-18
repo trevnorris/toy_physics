@@ -1,0 +1,25 @@
+Incident speed at the site of an absent mouth, 0PN periodic feed control
+Working result, pending independent review. Repository base fd667ea9291b4430a96afe3fd932926232f5507d.
+
+The signed held-mouth runs in held_crossflow_budget.txt used a periodic box of side 4, 32 cells in each brane direction, 65 points across a slab of depth 1, and a centered opening of radius 1. This control uses the same feed, lateral phase twist, mesh and upper plane. Both the aperture intake and its density-restoring boundary term are removed, leaving a reflecting upper plane. The former aperture is used only as a sampling region.
+
+For each sideways speed the solver starts on the uniform envelope branch. With feed envelope 1, chemical potential mu0 + U_feed^2/2, and zero normal derivative, the constant envelope solves the discrete field equation. We restore the physical phase and measure its centered phase increment across every sampled point on the upper plane. The speeds are small enough to resolve the increments without phase wrapping. The normal current check uses the last depth link.
+
+On this preparation the incident speed at the absent mouth equals the imposed feed speed at every sampled point to the precision below. Thus the existing paired-sign, target-present feeding-side momentum readings can be labeled by this incident speed for this periodic benchmark. The local field of a present target can differ. The control supplies neither a total mechanical holding force nor a free-center response. A companion in a lateral reservoir requires its own source-only reference field.
+
+Sources
+  software/stage1_solver/tools/mouth_absent_incident_flow.py  e9d2e37b67fb3a5de896ed147a7b4c6a59f7de80bcd84cd20f1c8c098cece390
+  software/stage1_solver/tools/mouth_feed_weak_flow.py        9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83
+  scripts/s11c_guarded_run.py                                 86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b
+  Existing target-present results and inputs: held_crossflow_budget.txt, mouth_intake_redistribution.json.
+
+$ python3 scripts/s11c_guarded_run.py --pool incident-feed-reference --memory-gib 2 --log-directory _scratch/s11c/incident_feed_reference01 -- python3 software/stage1_solver/tools/mouth_absent_incident_flow.py
+Guard and worker both exited 0. Verified 2 GiB memory cap, zero swap, no deadline. Stderr empty.
+Stdout SHA256 87a0ec150b6d8c53baa6e63f85149cf9997e36f4a143ffd4e3d11ff7bd7542c4
+
+Literal stdout
+feed=+0.0000 local_min=+0 local_max=+0 max_speed_error=0 max_density_error=1.02e-14 max_normal_link=0 steps=1
+feed=+0.0100 local_min=+0.01 local_max=+0.01 max_speed_error=3.47e-18 max_density_error=1.02e-14 max_normal_link=0 steps=1
+feed=-0.0100 local_min=-0.01 local_max=-0.01 max_speed_error=3.47e-18 max_density_error=1.02e-14 max_normal_link=0 steps=1
+feed=+0.0200 local_min=+0.02 local_max=+0.02 max_speed_error=1.04e-17 max_density_error=1.02e-14 max_normal_link=0 steps=1
+feed=-0.0200 local_min=-0.02 local_max=-0.02 max_speed_error=1.04e-17 max_density_error=1.02e-14 max_normal_link=0 steps=1

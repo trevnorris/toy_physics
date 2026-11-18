@@ -1,0 +1,25 @@
+# Can depletion or thinning supply an inverse-square force at 0PN?
+
+**One drain.** The saved carrier fields have fixed slab width $W=1$, distant reservoir density $n_\infty=1$, radius-one openings and inward number rate $Q=0.25$. Local density $n=|\psi|^2$ responds, including at the mouth where a prescribed restoring law acts. Outside the opening, the steady continuum carrier equation in solver units gives
+
+$$
+\nabla\!\cdot(n\mathbf v)=0,\qquad
+\frac{n^4-1}{4}+\frac{|\mathbf v|^2}{2}
+-\frac{\nabla^2\sqrt n}{2\sqrt n}=0 .
+$$
+
+In the far radial mode, uniform through the unit depth, $v_r=-q/(n r^2)$ with $q=Q/(4\pi)$. Linearizing the density terms about the bath gives $(1-\nabla^2/4)(n-1)=-q^2/(2r^4)$ at leading order. The decaying homogeneous radial solution is proportional to $e^{-2r}/r$. The forced density deficit has leading term $q^2/(2r^4)$, with gradient magnitude $2q^2/r^5$. The distant density boundary allows this depletion. No gravitational force law enters. [Carrier equation and reservoir](../tools/lateral_reservoir_field.py) · [SymPy, Mathematica and archived-field checks](../../../docs/_measurements/drain_density_thickness.txt)
+
+On the largest measured reservoir ($L=48$), the depth- and sphere-averaged deficit was $5.10997715706\times10^{-8}$ at 8 mouth radii and $3.05760384163\times10^{-9}$ at 16. The doubling exponent was **4.062843**. At $L=24$ it was **4.060269** on the same spacing and **4.058781** on the finer grid. A force proportional to this isolated density gradient with finite local coupling decays too quickly to supply Newtonian attraction. A pair can still have a stress proportional to the companion speed through the cross term $\mathbf v_t\cdot\mathbf v_s$ in the kinetic energy per unit mass. [Field readout](../tools/drain_density_thickness.py)
+
+**Two drains.** On the feeding face of the target, subtract the isolated density pointwise and compare volume-weighted averages over the companion-facing and opposite halves of the 3D opening. The near-minus-far change was **positive** on all three grids. At $L=48$ it was $+1.79252427075\times10^{-5}$ at separation 4 and $+4.83951412416\times10^{-6}$ at separation 8. The corresponding scalar pressure contrasts were positive too. These are local contrasts. On the closed, depth-integrated exterior cylinder of radius and half-length 2, the *ordinary pressure contribution* to the paired-minus-alone load toward the companion was $+0.000138153368577$ and $-0.0000203188042235$, respectively. Including carriage and density-gradient stress gave a positive feeding-side load at both separations. The physical force retained by a free mouth remains open. [Exterior force components](../../../docs/_measurements/held_pair_exterior_balance.json) · [Exterior cut and sign](../../../docs/drain_driven_initial_acceleration.md#held-two-drain-attraction-measured-in-the-surrounding-brane)
+
+**Variable thickness.** The projected mass in a locally flat column is $\Sigma=\bar\rho W$ using the depth-mean material density. One intake fixes a mass flux and cannot separately determine $\bar\rho(r)$ and $W(r)$. For a diagnostic, take the recorded *uniform quadratic* density and width energy, allow the fractional density perturbation to relax locally at fixed chemical potential, and put $b=\delta W$. Eliminating that density perturbation gives the static width response
+
+$$
+(K_{\rm eff}-D\nabla^2)b=f_W,\qquad K_{\rm eff}=k_W-C^2/B,\qquad D=\kappa_W W_0^2 .
+$$
+
+Here $B>0$ resists density change, $C$ couples density to width, and $f_W$ is the applied width load. For $D>0$ and a localized load, positive $K_{\rm eff}$ gives an exterior radial tail proportional to $e^{-r\sqrt{K_{\rm eff}/D}}/r$. At zero restoring stiffness a nonzero monopole load can give $1/r$ and an inverse-square slope. Even a positive stiffness can mimic that slope over distances much shorter than its decay length. The live drain equations supply neither this relaxed equilibrium law nor the drain's signed width load and the traction a second mouth receives. The older harmonic equation for the slab centre describes bending and cannot determine its width. [Uniform energy, embedding and projection, §§8.2–8.4](../../../research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md)
+
+**Outstanding physical input.** Determine the long-wavelength restoring response of the width in the draining state and how one drain loads that mode. A one-drain profile would need both face positions, $W=w_+-w_-$, and an independent depth-resolved density, with ambient values fixed far away. A tilted face transmits a sideways component of normal pressure. For signed pressures on graph faces, their combined outward axial pressure flux per projected volume is $-p_+\partial_x w_+ +p_-\partial_x w_-$. A width gradient therefore enters the face budget even for equal face pressures. Whether any of that force reaches the second mouth depends on the *total* paired-minus-alone balance, including its other surfaces. [Face projection and force convention](../../../docs/held_drain_pair.md#what-the-holder-would-measure) Working result on base fd667ea9, pending review.

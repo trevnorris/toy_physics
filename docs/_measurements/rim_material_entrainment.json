@@ -1,0 +1,74 @@
+{
+  "scope": "Stationary weak-drive material traction. Spherical, incompressible, constant-viscosity exterior, zero incremental tangential traction, normal slip contact. First advective correction about a radial sink; no measured parameters, carrier fields, total support or free trajectories.",
+  "base": "fd667ea9291b4430a96afe3fd932926232f5507d",
+  "sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/rim_material_entrainment.py": "7c5dcde1b2e9301ec0edbff39ff48249bcb8101797e734169d2fcf2969151bd1",
+    "software/stage1_solver/tools/rim_material_entrainment.wl": "75a8b38b95cd12273c2c86821aa6c3d20decc3f1d3881ad841bcaab1d1145070",
+    "research/pde_ledger_v3/directives/S15_decision_list.md": "ccabfa672e91c771e9f6a07ecbf6649fd33e2139c519cc7b2fadc0412d0fd8aa",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1",
+    "software/stage1_solver/reports/one_mouth_rim_slip_comparison.md": "8311d1cfc98dff9711a9f2d017361aa1b6d0d3b49a15186825fc59157d1b04f8"
+  },
+  "runs": {
+    "sympy": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool rim-material-entrainment --memory-gib 2 --log-directory _scratch/s11c/rim_material_entrainment_sympy01 -- python3 software/stage1_solver/tools/rim_material_entrainment.py > _scratch/s11c/rim_material_entrainment_sympy01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T16:02:51.563922+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T16:02:52.527125+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_gib": 2,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 55443456,
+      "stdout_path": "_scratch/s11c/rim_material_entrainment_sympy01/stdout",
+      "stdout_bytes": 1434,
+      "stdout_sha256": "9ff30b0d3b27afeb56a4a6646dc5cb9fc1019d0ecd65d9fed9e7a03efce5e8a2",
+      "stdout": [
+        "base transverse momentum residual: 0 | 0 | residual 0",
+        "base transverse momentum residual: 0 | 0 | residual 0",
+        "leading mechanical force: -4*pi*a*eta*(-W + b) | -4*pi*a*eta*(-W + b) | residual 0",
+        "suction momentum sources (radial, polar) = q*rho*(-3*W*a + 2*W*r + 3*a*b)/r**4 W*q*rho/r**3",
+        "first-order radial profile = -q*rho*(-W + b)*(-a + r)*(-a + 2*r)/(4*eta*r**3)",
+        "first-order pressure profile = -q*rho*(3*W*a - 3*W*r - 3*a*b + b*r)/(2*r**3)",
+        "first-order exterior momentum: q*rho*(-3*W*a + 2*W*r + 3*a*b)/r**4 | q*rho*(-3*W*a + 2*W*r + 3*a*b)/r**4 | residual 0",
+        "first-order exterior momentum: W*q*rho/r**3 | W*q*rho/r**3 | residual 0",
+        "first-order normal rim velocity: 0 | 0 | residual 0",
+        "first-order tangential traction: 0 | 0 | residual 0",
+        "suction correction to mechanical force: -2*pi*q*rho*(-W + 3*b)/3 | -2*pi*q*rho*(-W + 3*b)/3 | residual 0",
+        "settled force per relative speed, leading: 4*pi*Gamma*a*eta/(Gamma + 4*pi*a*eta) | 4*pi*Gamma*a*eta/(Gamma + 4*pi*a*eta) | residual 0",
+        "settled force per relative speed, suction correction: -2*pi*Gamma*q*rho*(-Gamma + 8*pi*a*eta)/(3*(Gamma + 4*pi*a*eta)**2) | -2*pi*Gamma*q*rho*(-Gamma + 8*pi*a*eta)/(3*(Gamma + 4*pi*a*eta)**2) | residual 0",
+        "strong-contact leading force per speed: 4*pi*a*eta | 4*pi*a*eta | residual 0",
+        "strong-contact suction correction per speed: 2*pi*q*rho/3 | 2*pi*q*rho/3 | residual 0",
+        "no-contact leading force: 0 | 0 | residual 0",
+        "no-contact suction correction: 0 | 0 | residual 0"
+      ]
+    },
+    "wolfram": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool rim-material-entrainment --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/rim_material_entrainment_wolfram01 -- math -noprompt -script software/stage1_solver/tools/rim_material_entrainment.wl > _scratch/s11c/rim_material_entrainment_wolfram01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T16:03:02.196697+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T16:03:09.249610+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 243019776,
+      "stdout_path": "_scratch/s11c/rim_material_entrainment_wolfram01/stdout",
+      "stdout_bytes": 796,
+      "stdout_sha256": "8b741dcf1e2c93c7043d277a5658b8958217283c982696e005f643f8cfc25f41",
+      "stdout": [
+        "\"stream function radial powers = \"\"{-1, 1, 2, 4}\"",
+        "\"surface stress integral\"\" | \"\"4*a*eta*Pi*(-b + w)\"\" | \"\"4*a*eta*Pi*(-b + w)\"\" | residual \"\"0\"",
+        "\"first-order reciprocal volume integral\"\" | \"\"(2*dens*Pi*q*(-3*b + w))/3\"\" | \"\"4*dens*Pi*q*(-1/2*b + w/6)\"\" | residual \"\"0\"",
+        "\"flow slope and negative drift slope\"\" | \"\"(2*gam*Pi*(6*a*eta*(gam + 4*a*eta*Pi) + dens*(gam - 8*a*eta*Pi)*q))/(3*(gam + 4*a*eta*Pi)^2)\"\" | \"\"(2*gam*Pi*(6*a*eta*(gam + 4*a*eta*Pi) + dens*(gam - 8*a*eta*Pi)*q))/(3*(gam + 4*a*eta*Pi)^2)\"\" | residual \"\"0\"",
+        "",
+        "Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.",
+        "\"strong coupling through first order\"\" | \"\"(2*Pi*(6*a*eta + dens*q))/3\"\" | \"\"4*a*eta*Pi + (2*dens*Pi*q)/3\"\" | residual \"\"0\"",
+        "\"relative dipole changes intake by\"\" | \"\"0\"\" | \"\"0\"\" | residual \"\"0\""
+      ]
+    }
+  },
+  "wolfram_warning": "Limit discarded the global positivity assumption on the variable tending to positive infinity. The computed rational limit agrees with its explicit comparison and the separate SymPy limit. Both original outputs are preserved."
+}

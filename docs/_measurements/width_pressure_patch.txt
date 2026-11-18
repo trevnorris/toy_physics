@@ -1,0 +1,44 @@
+Working 0PN applied-pressure calibration; base fd667ea9291b4430a96afe3fd932926232f5507d, pending review.
+Analytic reference only. The single-drain archive has prescribed width and no corresponding applied-pressure runs.
+The symbolic tests use a homogeneous static scalar width operator on unbounded 3D space, regular at the origin and decaying at infinity.
+
+Source and scientific input SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+ed083938790678d87308e7c292b8e9b10ca502c5d788771d48541cc6e386fcf8  software/stage1_solver/tools/width_pressure_patch.py
+25973dccf88a392fbe28f53412ab13a0d008e0b53e7537ba247dcd741b3c7bb8  software/stage1_solver/tools/width_pressure_patch.wl
+2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c  software/stage1_solver/tools/lateral_reservoir_field.py
+7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd  _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz
+3cffb25b8177523be5884b72b8dbb694e3ebc1c67642c88fcb619626a43d58ec  docs/_measurements/lateral_reservoir_pair.json
+8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1  research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+9ff32deaba86893378e6685d5120ddbe46c03eec4ffb2d8b96b6faeca59ec39d  research/pde_ledger_v3/steps/S12_order_source.md
+6059f3855ab6cf33b708341fe09a8800ed7c86f6b9550168ca1edcfc7cbeae0e  research/pde_ledger_v3/SUBSTRATE_REQUIREMENTS.md
+23f78fbd098b5212304911ddb048f831b10854aab210d40978773b3bafcf3671  research/pde_ledger_v3/V3_STEP_PLAN.md
+b2f054aea247830f198f6caf368b22d45c937bfe4d3e875700461cf7201ab79c  research/pde_ledger_v3/steps/S11bB_interface_assembly.md
+8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e  research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md
+
+Saved one-drain archive members (ZIP directory order)
+field.npy, currents.npy, x.npy, r.npy, dz.npy, d.npy
+$ head -2 _scratch/s11c/lateral_bath_e48_c4_01/stdout
+  mouths=1 residual=2.576e-12 bath_inward=0.25 per_mouth=0.25
+isolated steps=18
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool pressure-patch --memory-gib 2 --log-directory _scratch/s11c/width_pressure_patch01 -- python3 software/stage1_solver/tools/width_pressure_patch.py
+Started 2026-11-17T07:19:19.897210+00:00. Guard wall seconds 0.9955233451910317.
+Guard/worker exit 0/0. Verified cap 2147483648 bytes, zero swap, no deadline. Stderr empty.
+Stdout SHA256 0dcd0fd9c6e56eff20ccc8a7a930a6874236aa1d62c6b61ade02c0565fcd89ae
+Literal stdout
+area energy to quadratic order = Z_x**2*sigma + b_x**2*sigma/4
+width gradient coefficient = sigma/2
+center width per unit pressure = 1/K - exp(-sqrt(K)*L/sqrt(D))/K - L*exp(-sqrt(K)*L/sqrt(D))/(sqrt(D)*sqrt(K))
+zero local stiffness = L**2/(2*D)
+large patch at positive local stiffness = 1/K
+width ratio at radii 2L and L for tension alone = 4
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool pressure-patch-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/width_pressure_patch_wolfram01 -- math -noprompt -script software/stage1_solver/tools/width_pressure_patch.wl
+Started 2026-11-17T07:19:19.144413+00:00. Guard wall seconds 4.996797427069396.
+Guard/worker exit 0/0. Verified cap 4294967296 bytes, zero swap, no deadline. Stderr empty.
+Stdout SHA256 03d6f2a849cdb61036abfee631537981aeaad1861fe24670697e80305069f467
+Literal stdout
+"radial residuals = "InputForm[{0, 0}]" ; center per unit pressure = "InputForm[(1 - (1 + length*mass)/E^(length*mass))/(grad*mass^2)]
+"zero-stiffness center width = "InputForm[(length^2*press)/(2*grad)]
+"zero-stiffness exterior width = "InputForm[(length^3*press)/(3*grad*rad)]

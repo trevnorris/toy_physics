@@ -1,0 +1,40 @@
+Stretch between two held point drains and the signed tensile traction on one full enclosing sphere at 0PN.
+Working calculation on base fd667ea9291b4430a96afe3fd932926232f5507d, pending review.
+Constant positive viscosity and material velocity equal to the undisturbed superposed sink flows in three dimensions.
+For the midpoint the two sink strengths are equal. The net traction is a paired-minus-isolated stress reading.
+The viscosity-dipole slope is conditional, with other variations uncomputed. No physical material coefficient was fitted.
+
+Sources (SHA256)
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+191e3e8af1a9f0099aa22f67fa7677d672d4b5d0f91535db669944cadb76058e  software/stage1_solver/tools/paired_drain_tension.py
+65c371b5e43ad2fe5ad9c8369578d64d7645a40a816f944f19e495c5bbd78bbd  software/stage1_solver/tools/paired_drain_tension.wl
+ccabfa672e91c771e9f6a07ecbf6649fd33e2139c519cc7b2fadc0412d0fd8aa  research/pde_ledger_v3/directives/S15_decision_list.md
+94dedb38565e931ccfce02cfb129dcf9f2fb36bc704941d8c299845935989f60  research/pde_ledger_v3/steps/O2_steady_brane_balance.md
+8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1  research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+635b578a3a10d77999e59a0e4140c79b03e9b7b1b5ff194f27d999ef5854c078  docs/held_drain_pair.md
+8dfbc8b75d4a465006a5d3107255af578f378444a39c2953178243409ae33d34  docs/_measurements/held_drain_pair.txt
+a8c8454fd526a74cff657eebc8a8fefe37aaaeaf7d42ac7d08f19e10a59532bd  software/stage1_solver/reports/draining_rim_tangent.md
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool paired-drain-tension --memory-gib 2 --log-directory _scratch/s11c/paired_drain_tension01 -- python3 software/stage1_solver/tools/paired_drain_tension.py
+Started 2026-11-17T07:48:53.786712+00:00. Guard wall seconds 0.692263551056385.
+Guard/worker exit 0/0. Verified cap 2147483648 bytes, zero swap and no deadline. Stderr empty.
+Stdout SHA256 397d20ff1a38b02182796803c2150cfba0fdeb667252093783df400824931c89
+Literal stdout
+equal pair midpoint velocity, axial stretch rate = 0 8*Q_s/(pi*d**3)
+source-facing hemisphere = Q_s*b**2*eta/(b**2 + d**2)**(3/2)
+opposite hemisphere = -Q_s*b**2*eta/(b**2 + d**2)**(3/2)
+complete sphere = 0
+viscosity dipole contribution per unit incident speed = 4*Q_t*beta/(3*b)
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool paired-drain-tension-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/paired_drain_tension_wolfram01 -- math -noprompt -script software/stage1_solver/tools/paired_drain_tension.wl
+Started 2026-11-17T07:48:53.860113+00:00. Guard wall seconds 8.591824862640351.
+Guard/worker exit 0/0. Verified cap 4294967296 bytes, zero swap and no deadline. Stderr empty.
+Stdout SHA256 9c670bcd4b18f4adfda39673a17a8e00fbc18458933b70b98a59d3cae6841ef3
+Literal stdout
+"midpoint strain eigenvalues in the axial and transverse directions = ""{(8*qs)/(d^3*Pi), (-4*qs)/(d^3*Pi), (-4*qs)/(d^3*Pi)}"
+"source stress divergence = ""{0, 0, 0}"" ; source-facing closed-by-disk traction = ""(b^2*eta*qs)/(b^2 + d^2)^(3/2)"
+"d,b = "{8, 1}" front/back = ""{0.00190822668598782240292700904859260855`12., -0.00190822668598782240292700904859260855`12.}"
+"d,b = "{8, 3}" front/back = ""{0.0144297304762352750067263717275581456`12., -0.0144297304762352750067263717275581456`12.}"
+"d,b = "{16, 1}" front/back = ""{0.00024271706675167523149285159135927088`12., -0.00024271706675167523149285159135927088`12.}"
+"d,b = "{16, 3}" front/back = ""{0.00208628530245492855088895896318767531`12., -0.00208628530245492855088895896318767531`12.}"
+"target radial strain times viscosity dipole, axial traction per U = ""(4*beta*qt)/(3*b)"

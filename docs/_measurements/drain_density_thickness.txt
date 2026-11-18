@@ -1,0 +1,83 @@
+0PN one-drain density, paired target pressure contrast and static thickness diagnostic.
+Working calculation pending review on base fd667ea9291b4430a96afe3fd932926232f5507d
+The numerical readout uses previously solved unit-depth fields and prescribed radius-one intake 0.25.
+The width check uses the freely relaxed, uniform quadratic slice, with a localized width load.
+It does not fit a draining thickness field or a physical force.
+
+Scripts, archived inputs and source records (SHA256)
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+34cceca830cfed10b6e0552b937bcf1ba0c316bc2edff4d4ccbebf7a9bd5f1bd  software/stage1_solver/tools/drain_density_thickness.py
+13aab6fe61bfac8424dc8b90e38859f318405c4b1feb16e7e762d78108282bac  software/stage1_solver/tools/drain_density_thickness.wl
+2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c  software/stage1_solver/tools/lateral_reservoir_field.py
+ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15  software/stage1_solver/tools/lateral_reservoir_readout.py
+2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c  software/stage1_solver/tools/lateral_source_rate.py
+6a71810adb5c22cea7a5bedd01d5d67cd84f9147525d73072fb8d17c15c8b406  software/stage1_solver/tools/held_pair_exterior_balance.py
+3cffb25b8177523be5884b72b8dbb694e3ebc1c67642c88fcb619626a43d58ec  docs/_measurements/lateral_reservoir_pair.json
+7b7c518068a066f37be42f4369ca06083246614259909d508969b85193a29f4b  docs/_measurements/held_pair_exterior_balance.json
+8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1  research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+227bbffa1c638b8b07ed24327e7a7f3dfb8f86163f27a066167cbf3c962eacc1  research/pde_ledger_v3/directives/S11bB_SHARED_PHYSICS.md
+635b578a3a10d77999e59a0e4140c79b03e9b7b1b5ff194f27d999ef5854c078  docs/held_drain_pair.md
+08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe  _scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz
+95a6bf3280ae35a1f129800c45cf7fba01f4ca31172a9bea3e9d288e0c156981  _scratch/s11c/lateral_bath_e24_c4_01/fields/d4.npz
+17ca020c04198bcd4c43653f991ca4fe864f6c74190eb95b06032688fb2f19ec  _scratch/s11c/lateral_bath_e24_c4_01/fields/d8.npz
+590774f5c77c030fbe68edb253b5edddd0bc8b636bf983f1947fae52d7389fb1  _scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz
+e99f46eadd574d7e77e0c7d42095f7dc81a37d6cd78ab26eb585c0e2d5500eb3  _scratch/s11c/lateral_bath_e24_c6_01/fields/d4.npz
+42d2fd5743b025523bb7434472199d58ac801631e30e60059ed65425af0a96b0  _scratch/s11c/lateral_bath_e24_c6_01/fields/d8.npz
+7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd  _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz
+54b51d1419898665356ca6a58faa0b8fa967d170881cc284a3e95591eb7ea484  _scratch/s11c/lateral_bath_e48_c4_01/fields/d4.npz
+741fbc19a3e6fab141d6ba218fef3858974d9928fba6a890297051cda1773bd6  _scratch/s11c/lateral_bath_e48_c4_01/fields/d8.npz
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool drain-density-profile --memory-gib 3 --log-directory _scratch/s11c/drain_density_thickness01 -- python3 software/stage1_solver/tools/drain_density_thickness.py
+Started 2026-11-17T06:57:31.768333+00:00. Guard wall seconds 3.4961005710065365.
+Guard/worker exit 0/0. Verified memory cap 3221225472 bytes and zero swap. No deadline. Stderr empty.
+Stdout SHA256 25fa9c4a5fd6ab16f27a26bb91cca3a5d28596d270aa3f0a5db9a18ae1b63925
+Literal stdout
+radial carrier residual at powers 1,4,6 = n1 n4 + q**2/2 n6 + 3*q**2/2
+width response to width load at wave number k = B/(B*D*k**2 + B*kW - C**2)
+grid=e24_c4 rate=0.25 width=1
+  r=4 mean_deficit=1.25044116413e-06 r4_deficit_over_prediction=1.61760669
+  r=6 mean_deficit=1.737270739e-07 r4_deficit_over_prediction=1.13773787
+  r=8 mean_deficit=5.11003050039e-08 r4_deficit_over_prediction=1.05767721
+  r=12 mean_deficit=9.76435273516e-09 r4_deficit_over_prediction=1.02314727
+  r=16 mean_deficit=3.06309645481e-09 r4_deficit_over_prediction=1.0144025
+  max_relative_quadrature_change=0.000120478
+  doubling=4->8 deficit_ratio=0.0408658212 effective_power=4.612961
+  doubling=8->16 deficit_ratio=0.0599428214 effective_power=4.060269
+  d=4 near_minus_far_paired_minus_alone dn=1.78702377421e-05 dP=1.77656838162e-05
+  d=8 near_minus_far_paired_minus_alone dn=4.72571160735e-06 dP=4.69855666631e-06
+grid=e24_c6 rate=0.25 width=1
+  r=4 mean_deficit=1.2357880865e-06 r4_deficit_over_prediction=1.59865104
+  r=6 mean_deficit=1.73125501295e-07 r4_deficit_over_prediction=1.13379817
+  r=8 mean_deficit=5.10336660647e-08 r4_deficit_over_prediction=1.05629791
+  r=12 mean_deficit=9.75946502672e-09 r4_deficit_over_prediction=1.02263512
+  r=16 mean_deficit=3.06225952068e-09 r4_deficit_over_prediction=1.01412533
+  max_relative_quadrature_change=0.000113528
+  doubling=4->8 deficit_ratio=0.0412964542 effective_power=4.597838
+  doubling=8->16 deficit_ratio=0.0600046941 effective_power=4.058781
+  d=4 near_minus_far_paired_minus_alone dn=1.81434076982e-05 dP=1.80347650516e-05
+  d=8 near_minus_far_paired_minus_alone dn=4.77985745287e-06 dP=4.75168976444e-06
+grid=e48_c4 rate=0.25 width=1
+  r=4 mean_deficit=1.25044113569e-06 r4_deficit_over_prediction=1.61760665
+  r=6 mean_deficit=1.73726818711e-07 r4_deficit_over_prediction=1.1377362
+  r=8 mean_deficit=5.10997715706e-08 r4_deficit_over_prediction=1.05766617
+  r=12 mean_deficit=9.76262290202e-09 r4_deficit_over_prediction=1.02296601
+  r=16 mean_deficit=3.05760384163e-09 r4_deficit_over_prediction=1.01258351
+  max_relative_quadrature_change=0.000120453
+  doubling=4->8 deficit_ratio=0.0408653955 effective_power=4.612976
+  doubling=8->16 deficit_ratio=0.0598359591 effective_power=4.062843
+  d=4 near_minus_far_paired_minus_alone dn=1.79252427075e-05 dP=1.78203715102e-05
+  d=8 near_minus_far_paired_minus_alone dn=4.83951412416e-06 dP=4.81170596496e-06
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool drain-thickness-response --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/drain_density_thickness_wolfram01 -- math -noprompt -script software/stage1_solver/tools/drain_density_thickness.wl
+Started 2026-11-17T06:57:32.706505+00:00. Guard wall seconds 4.748734685126692.
+Guard/worker exit 0/0. Verified memory cap 4294967296 bytes and zero swap. No deadline. Stderr empty.
+Stdout SHA256 00a25e80ae8f9c406768f9602ceefe0c164cadc155aff2088f4f35c29a84bb83
+Literal stdout
+"order-two amplitude equation = "InputForm[q^2/(2*r^4) + 2*amp[r] - Derivative[1][amp][r]/r - Derivative[2][amp][r]/2]
+"number-density coefficients 1 through 6 = "InputForm[{0, 0, 0, -1/2*q^2, 0, (-3*q^2)/2}]
+"relaxed width stiffness = "InputForm[kWidth - coupling^2/modulus]
+"exterior exponential-over-radius residual divided by field = "InputForm[kWidth - (coupling^2 + modulus*mu^2*stiff)/modulus]
+
+Earlier exterior stress readings from docs/_measurements/held_pair_exterior_balance.json (L=48, R=2, positive toward companion).
+d=4 R=2 cap_pressure=0.000138153368577 cap_carried=0.000157352124491 cap_gradient_stress=-0.000175730493128 side_carried=0.000175346295067 side_gradient_stress=1.74186656111e-05 tensor=0.000312539960618
+d=8 R=2 cap_pressure=-2.03188042235e-05 cap_carried=4.90582549563e-05 cap_gradient_stress=6.09144216902e-07 side_carried=5.07017216801e-05 side_gradient_stress=-2.80434287882e-06 tensor=7.7245973751e-05

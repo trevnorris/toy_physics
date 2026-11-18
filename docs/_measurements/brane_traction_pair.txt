@@ -1,0 +1,43 @@
+0PN full-strength to half-strength velocity comparison on the archived homogeneous brane. Working check pending review.
+This is a retrospective comparison at the finest grid. No material trajectory or traction response of the draining preparation was measured.
+Repository base fd667ea9291b4430a96afe3fd932926232f5507d.
+
+Guard and input SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+bb633a77bc37c180ff8ab4ce5a37af9fbc83d917f1a55ea3a2146c2412e852aa  docs/_measurements/brane_direct_traction.txt
+b499c33e9dc538bafa45e307b3c921c9443944b6e264ffbe21d5acc56fb63d1e  _scratch/s11c/direct_brane_traction01/velocities.json
+95bd4fa633dd9f1da5861bc3dbe06dcdc94828c1f1f5fc90144eb9af54b08254  _scratch/s11c/direct_brane_traction01/outcome.json
+a6362c42e6c2b670503bd7ed2c4e3569bb02fa4e9bca81d48c6e2259f469ec74  inline Python source in command below
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool brane-traction-pair --memory-gib 1 --log-directory _scratch/s11c/brane_traction_pair01 -- python3 -c 'import json
+from hashlib import sha256
+from pathlib import Path
+
+root = Path("_scratch/s11c/direct_brane_traction01")
+packet = (root / "velocities.json").read_bytes()
+manifest = Path("docs/_measurements/brane_direct_traction.txt").read_text().splitlines()
+assert f"{sha256(packet).hexdigest()}  {root}/velocities.json" in manifest
+result = json.loads((root / "outcome.json").read_bytes())
+assert result["limitsVerified"] and result["exitCode"] == result["childOutcome"]["exitCode"] == 0
+runs = {run["peak"]: run["grids"]["1536"] for run in json.loads(packet)["runs"]}
+h = 2e-5
+base, pos, neg = (runs[amp] for amp in (0, h, -h))
+predictions = []
+for v0, vp, vn in zip(base, pos, neg, strict=True):
+    assert v0["t"] == vp["t"] == vn["t"] and vp["traction"] == -vn["traction"]
+    half_change = (vp["velocity"] - vn["velocity"]) / 4
+    predictions.append((v0["t"], v0["velocity"] + half_change, v0["velocity"] - half_change, vp["traction"]/2))
+print("homogeneous reference, 1536 cells; t, predicted +half, predicted -half, largest absolute error")
+for (t, plus, minus, q), hp, hn in zip(predictions, runs[h/2], runs[-h/2], strict=True):
+    assert hp["t"] == hn["t"] == t and hp["traction"] == q and hn["traction"] == -q
+    error = max(abs(plus-hp["velocity"]), abs(minus-hn["velocity"]))
+    print(f"{t:g} {plus:+.12g} {minus:+.12g} {error:.4g}")
+'
+Start 2026-11-17T03:30:23.210847+00:00. End 2026-11-17T03:30:23.400993+00:00 (start plus guard wall time).
+Guard/worker exit 0/0. Limits verified. Sampled peak 14942208 bytes. Zero swap, no deadline. Stderr empty.
+Stdout _scratch/s11c/brane_traction_pair01/stdout (234 bytes, SHA256 33741739da8d53dace354063e2cb2f6706c0c59c0e6f28df14685663315c69ee).
+Literal stdout
+homogeneous reference, 1536 cells; t, predicted +half, predicted -half, largest absolute error
+0.00025 +1.56244645276e-07 -1.56244645276e-07 0
+0.0005 +1.24998929131e-06 -1.24998929131e-06 0
+0.001 +9.9999790374e-06 -9.9999790374e-06 0

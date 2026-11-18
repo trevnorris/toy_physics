@@ -1,0 +1,49 @@
+Radius-one intake 0.25. Direct matching of the neutral carrier to an ideal flat 4D bulk.
+Base fd667ea9291b4430a96afe3fd932926232f5507d. Working result pending review.
+In Python, independent cell volume and face integrals recover the receiver potential from the same measured current.
+The negative drives reflect the original positive-speed fields. The receiver has unit number density.
+Mathematica independently transforms the half-space kernel, checks unit positive normal flux, and integrates
+the unforced continuum radial profile. No physical bulk momentum rate, support force or acceleration was measured.
+
+Sources and scientific inputs (SHA256)
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+3fd2cbd52b443e3fa36d978b5ff46eb1415ea361c69e54023f9a4acb73a8a1b0  software/stage1_solver/tools/mouth_bulk_phase_match.py
+d5f361eb9137a94cb1214795c553fd620405d31017bde5fa4820d4544b8c4acc  software/stage1_solver/tools/mouth_bulk_phase_match.wl
+9bfdfe7e441137afc82c7863d21e4a846187cb82316f4381f78fee88fd12d434  software/stage1_solver/tools/mouth_carrier_momentum.py
+f341d0ced284b035aaf1450706a0bfa3a35be937b214072fb68c997e03fd8efb  software/stage1_solver/tools/mouth_release_input_check.py
+a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61  software/stage1_solver/tools/mouth_feed_weak_check.py
+9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83  software/stage1_solver/tools/mouth_feed_weak_flow.py
+f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0  docs/_measurements/mouth_feed_weak_run.json
+f437841524cdf0166ffbc6950a663767a3ea9d0691236a07a6111d141bf00711  docs/_measurements/mouth_intake_redistribution.json
+90dc2e473a5219cdbec5025b1208fa8239746349732954ed28faa4de7877c132  _scratch/s11c/mouth_feed_weak01/fields/n24_restoring_slope_u0.npz
+f913ef88f6a0f95310284a9bc5641c13589965da106c94c49ea28348130fc7cb  _scratch/s11c/mouth_redistribution_coarse01/fields/n24_restoring_slope_u0.02.npz
+e05c180de9d5105d9bbcec6e8a62a41e448b80cff3f3a85bbb8343fdced58f29  _scratch/s11c/mouth_redistribution_coarse01/fields/n24_restoring_slope_u0.01.npz
+c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4  _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz
+303cb43b3375fca6251afbee3230be6c8cbd907d5cc3471415f52d29ff48be6a  _scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.02.npz
+54048b7c5787e614cd9e1446b3e14e959f4d5d65f4fc45fc2fed9cf1819b4e23  _scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.01.npz
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool receiver-phase-match --memory-gib 2 --log-directory _scratch/s11c/mouth_bulk_phase_match01 -- python3 software/stage1_solver/tools/mouth_bulk_phase_match.py
+Start 2026-11-17T05:26:00.282306+00:00. End 2026-11-17T05:26:01.228309+00:00 (guard wall time).
+Guard/worker exit 0/0. Limits verified. Sampled peak 123568128 bytes. Zero swap cap, no deadline. Stderr empty.
+Stdout _scratch/s11c/mouth_bulk_phase_match01/stdout (1678 bytes, SHA256 68165ee6d7ae9a858a2fe9d4288477c649d987d6ec8b22a8173f9c5883c730fb).
+Literal stdout
+grid=24 max cell integral difference=7.51e-12
+n=24 U=+0.00 J=0.25 feed_even=+0.0262415831785 bulk_even=-0.027447836007 feed_odd=-1.73472347598e-18 bulk_odd=-1.14491749414e-16 quadrature_difference=6.74e-14
+n=24 U=+0.02 J=0.25 feed_even=+0.0262416688292 bulk_even=-0.0274478364111 feed_odd=+2.05414388158e-06 bulk_odd=-6.79148887877e-06 quadrature_difference=6.75e-14
+n=24 U=-0.02 J=0.25 feed_even=+0.0262416688292 bulk_even=-0.0274478364111 feed_odd=-2.05414388158e-06 bulk_odd=+6.7914888788e-06 quadrature_difference=6.75e-14
+n=24 U=+0.01 J=0.25 feed_even=+0.0262416045907 bulk_even=-0.027447836108 feed_odd=+1.0270603212e-06 bulk_odd=-3.39566710335e-06 quadrature_difference=6.74e-14
+n=24 U=-0.01 J=0.25 feed_even=+0.0262416045907 bulk_even=-0.027447836108 feed_odd=-1.0270603212e-06 bulk_odd=+3.39566710334e-06 quadrature_difference=6.74e-14
+grid=32 max cell integral difference=5.64e-12
+n=32 U=+0.00 J=0.25 feed_even=+0.0272607125057 bulk_even=-0.0278545760267 feed_odd=+0 bulk_odd=-2.671474153e-16 quadrature_difference=3.05e-14
+n=32 U=+0.02 J=0.25 feed_even=+0.0272607976702 bulk_even=-0.0278545764804 feed_odd=+2.13765019876e-06 bulk_odd=-6.93940615337e-06 quadrature_difference=3.06e-14
+n=32 U=-0.02 J=0.25 feed_even=+0.0272607976702 bulk_even=-0.0278545764804 feed_odd=-2.13765019876e-06 bulk_odd=+6.93940615308e-06 quadrature_difference=3.06e-14
+n=32 U=+0.01 J=0.25 feed_even=+0.0272607337964 bulk_even=-0.0278545761401 feed_odd=+1.06881244585e-06 bulk_odd=-3.46962189583e-06 quadrature_difference=3.05e-14
+n=32 U=-0.01 J=0.25 feed_even=+0.0272607337964 bulk_even=-0.0278545761401 feed_odd=-1.06881244585e-06 bulk_odd=+3.46962189565e-06 quadrature_difference=3.06e-14
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool receiver-phase-match-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_bulk_phase_match_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_bulk_phase_match.wl
+Start 2026-11-17T05:27:04.561927+00:00. End 2026-11-17T05:27:11.658894+00:00 (guard wall time).
+Guard/worker exit 0/0. Limits verified. Sampled peak 234262528 bytes. Zero swap cap, no deadline. Stderr empty.
+Stdout _scratch/s11c/mouth_bulk_phase_match_wolfram01/stdout (335 bytes, SHA256 4c32ff65a85ecad91e0adf66121bf9729d78060b31921dc634c5edb331efa539).
+Literal stdout
+"decaying mode amplitude, inverse kernel, unit flux, affine contrast: "InputForm[{-(j/(k*nBulk)), -1/2*1/(Pi^2*(r^2 + z^2)), 1, 0}]
+"continuum radial receiver potentials, contrast: "InputForm[{-0.06238694362525744903273979803485853288`16., -0.03407859783055184185011383599705997234`16., -0.02830834579470560718262596203779856054`16.}]

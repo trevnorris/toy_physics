@@ -1,0 +1,130 @@
+{
+  "scope": "First-order axial momentum on a full sphere in a steady, neutral, unforced four-dimensional scalar receiver with a spherical draining-state outflow. Number density, matter stress, and constant chemical potential use the carrier convention. No brane-material reaction or native receiver is identified.",
+  "base": "fd667ea9291b4430a96afe3fd932926232f5507d",
+  "sha256": {
+    "software/stage1_solver/tools/mouth_bulk_far_flux.py": "641b703d7fa0da736c5fb7be8c044bd0fc7266ee0a3e690129b77ca49105363b",
+    "software/stage1_solver/tools/mouth_bulk_far_flux.wl": "d6ebff84828fa168bf79ee000fb2f312a7ba4fb9392bd5f9d085c9ba90578d6e",
+    "software/stage1_solver/src/stage1_solver/open_sleeve.py": "3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519",
+    "software/stage1_solver/tools/open_sleeve_lateral_balance.py": "543c03dfb31f485df37733ae38c62e787a61b069cf40e2b6625ce39df13fbae4",
+    "software/stage1_solver/reports/pathA_21c_force_from_noether_stress_tensor.md": "4d56cb9dc25f9d30daa0aba4822e51706d4be023da4f8110c383bd895639874b",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1",
+    "docs/_measurements/held_crossflow_budget.txt": "53276257005046080d2b43eea9ae4deafa94ac75b2c0fda9bd8dd0feb3367155",
+    "docs/_measurements/open_sleeve_lateral_balance.txt": "166cd617b8949f6f487a6a5e0c85d0bbb1159b7d1deda59b19ededbda03019c0",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "runs": {
+    "sympy": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool mouth-bulk-far-flux --memory-gib 2 --log-directory _scratch/s11c/mouth_bulk_far_sympy01 -- python3 software/stage1_solver/tools/mouth_bulk_far_flux.py > _scratch/s11c/mouth_bulk_far_sympy01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T16:25:19.780492+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T16:25:23.479627+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 2,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 57810944,
+      "stdout_path": "_scratch/s11c/mouth_bulk_far_sympy01/stdout",
+      "stdout_sha256": "bbc876d55d89c0bab9063b1550481e9163619d1a2786b6a6fc37883e7ada6e70",
+      "stdout_bytes": 854,
+      "stdout": [
+        "carriage per area = m*n*s*(s*b(r) + 3*t + 2*u)/4",
+        "pressure per area = -n*(-k*r**2*Derivative(L(r), r)*Derivative(b(r), r) - k*r**2*Derivative(b(r), (r, 2)) - 3*k*r*Derivative(b(r), r) + 3*k*b(r) + m*r**2*s*u)/(4*r**2)",
+        "density stress per area = -k*n*(r**2*b(r)*Derivative(L(r), (r, 2)) + r**2*Derivative(b(r), (r, 2)) + 3*r*Derivative(b(r), r) - 3*b(r))/(4*r**2)",
+        "integrated export: pi**2*n*r**3*(-k*b(r)*Derivative(L(r), (r, 2)) + k*Derivative(L(r), r)*Derivative(b(r), r) + m*s**2*b(r) + 3*m*s*t + m*s*u)/2 | pi**2*n*r**3*(-k*b(r)*Derivative(L(r), (r, 2)) + k*Derivative(L(r), r)*Derivative(b(r), r) + m*s**2*b(r) + 3*m*s*t + m*s*u)/2 | residual 0",
+        "constant base density, density-gradient contribution: 0 | 0 | residual 0",
+        "unit stream at the cut: 2*pi**2*m*n*r**3*s | 2*pi**2*m*n*r**3*s | residual 0",
+        "decaying potential dipole at the cut: 0 | 0 | residual 0"
+      ]
+    },
+    "wolfram": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool mouth-bulk-far-flux --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_bulk_far_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_bulk_far_flux.wl > _scratch/s11c/mouth_bulk_far_wolfram01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T16:25:28.830605+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T16:25:41.082500+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 258805760,
+      "stdout_path": "_scratch/s11c/mouth_bulk_far_wolfram01/stdout",
+      "stdout_sha256": "6d1bbae74c079d8cf85304cbcb4f3ace6b26d47aef04f85485f45ad227e927a0",
+      "stdout_bytes": 797,
+      "stdout": [
+        "\"outward carriage, pressure, density stress = \"\"{(amp^2*mass*Pi^2*radius^3*speed*(2*radial + b0*speed + 3*tangent))/2, (amp^2*Pi^2*radius*(-3*b0*k + 3*b1*k*radius + b2*k*radius^2 + b1*k*l1*radius^2 - mass*radial*radius^2*speed))/2, -1/2*(amp^2*k*Pi^2*radius*(-3*b0 + 3*b1*radius + b2*radius^2 + b0*l2*radius^2))}\"",
+        "\"total flux on S^3\"\" | \"\"-1/2*(amp^2*Pi^2*radius^3*(-(b1*k*l1) + b0*k*l2 - mass*radial*speed - b0*mass*speed^2 - 3*mass*speed*tangent))\"\" | \"\"(amp^2*k*(b1*l1 - b0*l2)*Pi^2*radius^3)/2 + (amp^2*mass*Pi^2*radius^3*speed*(radial + b0*speed + 3*tangent))/2\"\" | residual \"\"0\"",
+        "\"coefficient of density dipole curvature\"\" | \"\"0\"\" | \"\"0\"\" | residual \"\"0\"",
+        "\"coefficient of base density log curvature\"\" | \"\"-1/2*(amp^2*b0*k*Pi^2*radius^3)\"\" | \"\"-1/2*(amp^2*b0*k*Pi^2*radius^3)\"\" | residual \"\"0\""
+      ]
+    }
+  },
+  "archive_inventory": {
+    "_scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.02.npz": {
+      "sha256": "303cb43b3375fca6251afbee3230be6c8cbd907d5cc3471415f52d29ff48be6a",
+      "array_members": [
+        "current.npy",
+        "dx.npy",
+        "dz.npy",
+        "field.npy",
+        "mouth.npy",
+        "speed.npy"
+      ],
+      "source": "docs/_measurements/held_crossflow_budget.txt"
+    },
+    "_scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.01.npz": {
+      "sha256": "54048b7c5787e614cd9e1446b3e14e959f4d5d65f4fc45fc2fed9cf1819b4e23",
+      "array_members": [
+        "current.npy",
+        "dx.npy",
+        "dz.npy",
+        "field.npy",
+        "mouth.npy",
+        "speed.npy"
+      ],
+      "source": "docs/_measurements/held_crossflow_budget.txt"
+    },
+    "_scratch/s11c/sleeve_response_current_fine01/fields/level_128.npz": {
+      "sha256": "03531f6219273a88eedbcbd0170345871e90594a6702e63df347ed5b7fa5a9b4",
+      "array_members": [
+        "bath_density.npy",
+        "constituent_mass.npy",
+        "dr.npy",
+        "dw.npy",
+        "eos_k.npy",
+        "feed_phase.npy",
+        "hbar.npy",
+        "mouth_cells.npy",
+        "psi.npy",
+        "r_index.npy",
+        "rate.npy",
+        "sleeve_cells.npy",
+        "w_index.npy"
+      ],
+      "source": "docs/_measurements/open_sleeve_lateral_balance.txt"
+    },
+    "_scratch/s11c/sleeve_response_zero_fine01/fields/level_128.npz": {
+      "sha256": "8259758a74167bda90263c807dc24013e9585b95ee9fb8aa58c47f27a1848b2b",
+      "array_members": [
+        "bath_density.npy",
+        "constituent_mass.npy",
+        "dr.npy",
+        "dw.npy",
+        "eos_k.npy",
+        "feed_phase.npy",
+        "hbar.npy",
+        "mouth_cells.npy",
+        "psi.npy",
+        "r_index.npy",
+        "rate.npy",
+        "sleeve_cells.npy",
+        "w_index.npy"
+      ],
+      "source": "docs/_measurements/open_sleeve_lateral_balance.txt"
+    }
+  },
+  "signed_feed_readings": [
+    "abs_U=0.01 per_speed_feed=0.249999997672 per_speed_aperture=0.249999985299 per_speed_layers=0.249992949661 aperture_minus_feed_per_speed=-1.23723575551e-08 layers_minus_feed_per_speed=-7.04801111079e-06",
+    "abs_U=0.02 per_speed_feed=0.249999997672 per_speed_aperture=0.2499999853 per_speed_layers=0.249992949338 aperture_minus_feed_per_speed=-1.23719488265e-08 layers_minus_feed_per_speed=-7.04833395043e-06"
+  ]
+}

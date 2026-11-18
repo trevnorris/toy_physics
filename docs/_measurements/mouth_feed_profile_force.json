@@ -1,0 +1,111 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "status": "Working result pending independent review.",
+  "scope": "Signed tangent and surface-energy force of the specified feeding boundary, on the existing steady grid. No physical receiving-side force or load calibration.",
+  "sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/mouth_feed_profile_force.py": "c2b620ad1dc6c4719ed120703e3ce992f4c463152d3ce32f0ffc1e8664161988",
+    "software/stage1_solver/tools/mouth_feed_profile_force.wl": "db029b917f74fe9cbdf71497ed7e14d91eba9289b7a59a4ae900c20c9943ac5d",
+    "software/stage1_solver/tools/mouth_prescribed_acceleration.py": "2bb644fff8d028fb921008206a331b15d0621ff2c7a37ecb85302981c538393e",
+    "software/stage1_solver/tools/mouth_feed_weak_flow.py": "9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83",
+    "software/stage1_solver/tools/held_crossflow_budget.py": "ffc771ee507b9b3512e0809b12d0bd0d5989a503372969ff51364fc62348b19f",
+    "software/stage1_solver/tools/signed_mouth_collar.py": "0e8e828c46acbc1aca16ab234b9c96591e5e5c3d2bc23d49b9d09da63cd0c828",
+    "software/stage1_solver/src/stage1_solver/mouth_collar.py": "0470ff6ef9e6e19013e7b5cda549014540fac819909f0873b64fa8cb5baf60d0",
+    "software/stage1_solver/reports/mouth_feed_profile_force.md": "504da197144dd7396a023d77f9ab5a91921dab03a8ef21e9e4e5af7e829c748e",
+    "docs/_measurements/mouth_prescribed_acceleration.txt": "db7ae4e93ffb1ddf105d2afd02194f29009464d9a642721a18e3edd3aeeeae73",
+    "_scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz": "c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4",
+    "_scratch/s11c/mouth_rim_push_sympy01/resting_face.f64": "e76812f953ed1af4fd216a5d7fb9d70da6801536dfc786a48fcea165c8ca8053"
+  },
+  "archived_drive_inputs": {
+    "negative": {
+      "stdout_sha256": "10ff3f7748df9d9b94df9ccec9d58078e5197c11f3fd8661ee88e50846ee1e8b",
+      "last_sample": {
+        "t": 0.001,
+        "x": -1e-08,
+        "carried": 4.681672272077719e-10,
+        "stress": 2.1580632246498421e-13,
+        "feed_load": 4.683830335302369e-10,
+        "inward_rate": 0.25
+      }
+    },
+    "negative_half": {
+      "stdout_sha256": "4fee98a0f146996effb79996d33b493a31b02d4bd71d4981f8202347bf553b6d",
+      "last_sample": {
+        "t": 0.001,
+        "x": -5e-09,
+        "carried": 2.340836031955451e-10,
+        "stress": 1.079033780729266e-13,
+        "feed_load": 2.3419150657361804e-10,
+        "inward_rate": 0.25
+      }
+    },
+    "zero": {
+      "stdout_sha256": "06fdb3e9bce54ccdcbf174bf2251dfa5cdc7ce46fe325d018d043d678cea542f",
+      "last_sample": {
+        "t": 0.001,
+        "x": 0.0,
+        "carried": -1.734723475976807e-18,
+        "stress": 0.0,
+        "feed_load": -1.734723475976807e-18,
+        "inward_rate": 0.25
+      }
+    },
+    "positive_half": {
+      "stdout_sha256": "e4198b0b5a46d8d5e44c3e870757ddc721d514ff1738b3fceaaff1c988816a2a",
+      "last_sample": {
+        "t": 0.001,
+        "x": 5e-09,
+        "carried": -2.340836031955451e-10,
+        "stress": -1.079033780729266e-13,
+        "feed_load": -2.3419150657361804e-10,
+        "inward_rate": 0.25
+      }
+    },
+    "positive": {
+      "stdout_sha256": "7391b79ee45b0aedd4fa38489ae03d91089afe8b6de95b9fd565f13c524b26ed",
+      "last_sample": {
+        "t": 0.001,
+        "x": 1e-08,
+        "carried": -4.681672272077719e-10,
+        "stress": -2.1580632246498421e-13,
+        "feed_load": -4.683830335302369e-10,
+        "inward_rate": 0.25
+      }
+    }
+  },
+  "guarded_runs": {
+    "linearized_feed": {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool feed-profile-load --memory-gib 3 --log-directory _scratch/s11c/feed_profile_load_tangent01 -- env PYTHONPATH=software/stage1_solver/src python3 software/stage1_solver/tools/mouth_feed_profile_force.py",
+      "started_utc": "2026-11-17T23:58:47.913192+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_bytes": 3221225472,
+      "swap_bytes": 0,
+      "limits_verified": true,
+      "stdout_sha256": "02ece1ae5d5baebac79c7d1476e456917c58f9d8bbffb430ed740fcebbdbc449",
+      "stdout_claim_lines": [
+        "initial force per displacement (carried, mask stress, virtual work) = [-4.84712072e-02 -1.49025838e-05  2.84877339e-06]",
+        "{\"t\": 0.00025, \"A\": 0.02, \"carried\": -3.0104013992334164e-11, \"mask_stress\": -1.1246327958103082e-14, \"frozen_profile_force\": 1.780483366307335e-15, \"field_response_force\": -1.7299272430082627e-15, \"profile_force\": 5.0556123299072227e-17, \"whole_plane_stress\": 6.090084114354236e-17}",
+        "{\"t\": 0.0005, \"A\": 0.02, \"carried\": -1.1902348857512319e-10, \"mask_stress\": -4.993425115723918e-14, \"frozen_profile_force\": 7.12193346522934e-15, \"field_response_force\": -1.134075298204857e-14, \"profile_force\": -4.218819516819231e-15, \"whole_plane_stress\": -4.017763883649491e-15}",
+        "{\"t\": 0.001, \"A\": 0.02, \"carried\": -4.681672419105914e-10, \"mask_stress\": -2.1580631189933802e-13, \"frozen_profile_force\": 2.848773386091736e-14, \"field_response_force\": -5.966574246744923e-14, \"profile_force\": -3.117800860653188e-14, \"whole_plane_stress\": -2.9859792686006435e-14}",
+        "archive A=0.02 peak absolute error (carried, mask stress) = [3.07639444e-17 6.14532368e-20]",
+        "archive A=0.01 peak absolute error (carried, mask stress) = [1.77597506e-17 2.22123258e-19]"
+      ]
+    },
+    "mathematica": {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool feed-profile-work-check --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/feed_profile_load_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_feed_profile_force.wl",
+      "started_utc": "2026-11-17T23:59:37.579709+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_bytes": 4294967296,
+      "swap_bytes": 0,
+      "limits_verified": true,
+      "stdout_sha256": "c99a2c296cf43f482e859594577b1d1dd8f006a5fcd11d7f1a90c51d1e9542ce",
+      "stdout_claim_lines": [
+        "\"energy curvature, analytic force per displacement = \"InputForm[{2.8487733319301875*^-6, 2.848773310754364*^-6}]\" \"InputForm[2.8487733860917027*^-6]",
+        "\"field-dependent virtual force per A*t^3 at onset = \"InputForm[-0.0059852755315539866]",
+        "\"common load scale residuals = \"InputForm[{0, 0, 0, 0, 0, 0, 0, 0}]"
+      ]
+    }
+  }
+}

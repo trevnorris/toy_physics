@@ -1,0 +1,118 @@
+One draining mouth under prescribed acceleration at 0PN. Working measurement, pending review.
+Repository base fd667ea9291b4430a96afe3fd932926232f5507d. No bare mouth mass. The only force-dimensioned field reading is the feeding-side sideways momentum rate (carriage plus stress).
+The four moving cases and the control use independent time integrations of the same saved state. Time samples and acceleration strengths are in solver units. The probe ends at model time 0.001.
+No initial velocity or sideways drive is applied to the reservoir. All three brane coordinates are periodic. Only the prescribed center moves. The number rate is fixed by the benchmark.
+Numpy applies RK4 to the full nonlinear feeding field. Mathematica checks the initial displacement derivative against the raw saved face and compares the four trajectories and the control.
+
+Run sources and input SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+2bb644fff8d028fb921008206a331b15d0621ff2c7a37ecb85302981c538393e  software/stage1_solver/tools/mouth_prescribed_acceleration.py
+74235948cfc99b8f985a7182036497b2a436d87c1833c8047cd7d2e00e1f9a56  software/stage1_solver/tools/mouth_prescribed_acceleration.wl
+ffc771ee507b9b3512e0809b12d0bd0d5989a503372969ff51364fc62348b19f  software/stage1_solver/tools/held_crossflow_budget.py
+9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83  software/stage1_solver/tools/mouth_feed_weak_flow.py
+a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61  software/stage1_solver/tools/mouth_feed_weak_check.py
+f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0  docs/_measurements/mouth_feed_weak_run.json
+1e8539bb858c53dcc3ea0bb7558046e59ce8860760045d72e227149e85b0c409  _scratch/s11c/mouth_feed_depth01/outcome.json
+c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4  _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz
+e76812f953ed1af4fd216a5d7fb9d70da6801536dfc786a48fcea165c8ca8053  _scratch/s11c/mouth_rim_push_sympy01/resting_face.f64
+8058ac891b4fea61adcbe64ae350901d34747195b93e9b130bb32ec5a7311e98  software/stage1_solver/tools/mouth_rim_push_compatibility.py
+33e2247ef4e4d39664f7be401065e643ac2073466a9c5dbc74931e230bfb2d75  _scratch/s11c/mouth_prescribed_accel_sources01/initial.py
+
+Initial resolution, 4 and 8 RK4 steps. The zero control passed. The four driven cases failed the unchanged timestep tolerance. Their results are superseded.
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-prescribed-accel --memory-gib 3 --log-directory _scratch/s11c/mouth_prescribed_accel_zero01 -- python3 software/stage1_solver/tools/mouth_prescribed_acceleration.py 0
+Start 2026-11-16T22:25:58.197755+00:00. End 2026-11-16T22:26:25.485502+00:00 (start plus guard wall time). Sampled cgroup peak 456372224 bytes.
+Exit guard/worker 0/0. Limits verified. Swap cap 0. No deadline. Stderr 0 bytes.
+Stdout _scratch/s11c/mouth_prescribed_accel_zero01/stdout, 916 bytes, SHA256 6f2cfa6b06c5603846afffdaaedb1b9e8248e1f526f1c7f2b89ba7b347dd3f06.
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-prescribed-accel --memory-gib 3 --log-directory _scratch/s11c/mouth_prescribed_accel_positive01 -- python3 software/stage1_solver/tools/mouth_prescribed_acceleration.py 0.02
+Start 2026-11-16T22:25:57.985983+00:00. End 2026-11-16T22:26:25.464449+00:00 (start plus guard wall time). Sampled cgroup peak 456605696 bytes.
+Exit guard/worker 1/1. Limits verified. Swap cap 0. No deadline. Stderr 1075 bytes.
+Stdout _scratch/s11c/mouth_prescribed_accel_positive01/stdout, 1199 bytes, SHA256 4f41ece61a399eec82c18ca767c38088daecf28d300d209ea0afbd35a2a7cb28.
+Max absolute difference: 6.90243218e-14
+Max relative difference: 0.00038252
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-prescribed-accel --memory-gib 3 --log-directory _scratch/s11c/mouth_prescribed_accel_negative01 -- python3 software/stage1_solver/tools/mouth_prescribed_acceleration.py -0.02
+Start 2026-11-16T22:25:57.851795+00:00. End 2026-11-16T22:26:25.276666+00:00 (start plus guard wall time). Sampled cgroup peak 460279808 bytes.
+Exit guard/worker 1/1. Limits verified. Swap cap 0. No deadline. Stderr 1069 bytes.
+Stdout _scratch/s11c/mouth_prescribed_accel_negative01/stdout, 1186 bytes, SHA256 7f1ec3f6a43bfff60a1f15abcc1598a564a560b5cd3d39502f1cb9639e2e78aa.
+Max absolute difference: 6.90224787e-14
+Max relative difference: 0.00038252
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-prescribed-accel --memory-gib 3 --log-directory _scratch/s11c/mouth_prescribed_accel_positive_half01 -- python3 software/stage1_solver/tools/mouth_prescribed_acceleration.py 0.01
+Start 2026-11-16T22:25:57.387786+00:00. End 2026-11-16T22:26:29.301586+00:00 (start plus guard wall time). Sampled cgroup peak 456359936 bytes.
+Exit guard/worker 1/1. Limits verified. Swap cap 0. No deadline. Stderr 1075 bytes.
+Stdout _scratch/s11c/mouth_prescribed_accel_positive_half01/stdout, 1188 bytes, SHA256 4066df31482bf0de34d786baec67f5cc3b182df2b808c0a842dc7e3036ba9a3e.
+Max absolute difference: 3.45069025e-14
+Max relative difference: 0.00038224
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-prescribed-accel --memory-gib 3 --log-directory _scratch/s11c/mouth_prescribed_accel_negative_half01 -- python3 software/stage1_solver/tools/mouth_prescribed_acceleration.py -0.01
+Start 2026-11-16T22:25:58.391873+00:00. End 2026-11-16T22:26:30.107198+00:00 (start plus guard wall time). Sampled cgroup peak 457949184 bytes.
+Exit guard/worker 1/1. Limits verified. Swap cap 0. No deadline. Stderr 1069 bytes.
+Stdout _scratch/s11c/mouth_prescribed_accel_negative_half01/stdout, 1190 bytes, SHA256 c1b9aebf0a0df74f495b20fba66472fe30bf2fd7c50075f564d5a87e60292da2.
+Max absolute difference: 3.45071194e-14
+Max relative difference: 0.00038247
+
+Refined resolution, 16 and 32 RK4 steps.
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-prescribed-accel --memory-gib 3 --log-directory _scratch/s11c/mouth_prescribed_accel_zero02 -- python3 software/stage1_solver/tools/mouth_prescribed_acceleration.py 0
+Start 2026-11-16T22:27:45.649930+00:00. End 2026-11-16T22:29:52.121583+00:00 (start plus guard wall time). Sampled cgroup peak 425099264 bytes.
+Exit guard/worker 0/0. Limits verified. Swap cap 0. No deadline. Stderr 0 bytes.
+Stdout _scratch/s11c/mouth_prescribed_accel_zero02/stdout, 968 bytes, SHA256 06fdb3e9bce54ccdcbf174bf2251dfa5cdc7ce46fe325d018d043d678cea542f.
+Literal stdout
+{"acceleration": 0.0, "grid": [65, 32, 32, 32], "rest": {"carried": 0.0, "stress": 1.0842021724855044e-19, "feed_load": 1.0842021724855044e-19, "inward_rate": 0.25}, "stationary_residual": 3.0933962709271533e-10, "16": [{"t": 0.00025, "x": 0.0, "carried": 0.0, "stress": 0.0, "feed_load": 0.0, "inward_rate": 0.25}, {"t": 0.0005, "x": 0.0, "carried": 0.0, "stress": 0.0, "feed_load": 0.0, "inward_rate": 0.25}, {"t": 0.001, "x": 0.0, "carried": 0.0, "stress": -1.0842021724855044e-19, "feed_load": -1.0842021724855044e-19, "inward_rate": 0.24999999999999997}], "32": [{"t": 0.00025, "x": 0.0, "carried": 0.0, "stress": -1.0842021724855044e-19, "feed_load": -1.0842021724855044e-19, "inward_rate": 0.25}, {"t": 0.0005, "x": 0.0, "carried": 1.734723475976807e-18, "stress": 0.0, "feed_load": 1.734723475976807e-18, "inward_rate": 0.25}, {"t": 0.001, "x": 0.0, "carried": -1.734723475976807e-18, "stress": 0.0, "feed_load": -1.734723475976807e-18, "inward_rate": 0.25}]}
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-prescribed-accel --memory-gib 3 --log-directory _scratch/s11c/mouth_prescribed_accel_positive02 -- python3 software/stage1_solver/tools/mouth_prescribed_acceleration.py 0.02
+Start 2026-11-16T22:27:45.936555+00:00. End 2026-11-16T22:29:36.420462+00:00 (start plus guard wall time). Sampled cgroup peak 424955904 bytes.
+Exit guard/worker 0/0. Limits verified. Swap cap 0. No deadline. Stderr 0 bytes.
+Stdout _scratch/s11c/mouth_prescribed_accel_positive02/stdout, 1185 bytes, SHA256 7391b79ee45b0aedd4fa38489ae03d91089afe8b6de95b9fd565f13c524b26ed.
+Literal stdout
+{"acceleration": 0.02, "grid": [65, 32, 32, 32], "rest": {"carried": 0.0, "stress": 1.0842021724855044e-19, "feed_load": 1.0842021724855044e-19, "inward_rate": 0.25}, "stationary_residual": 3.0933962709271533e-10, "16": [{"t": 0.00025, "x": 6.25e-10, "carried": -3.010396792957337e-11, "stress": -1.1245995454323143e-14, "feed_load": -3.0115213925027695e-11, "inward_rate": 0.25}, {"t": 0.0005, "x": 2.5e-09, "carried": -1.190237786802273e-10, "stress": -4.9932931053819907e-14, "feed_load": -1.190737116112811e-10, "inward_rate": 0.25}, {"t": 0.001, "x": 1e-08, "carried": -4.681670398576365e-10, "stress": -2.158069729862877e-13, "feed_load": -4.683828468306228e-10, "inward_rate": 0.25000000000000006}], "32": [{"t": 0.00025, "x": 6.25e-10, "carried": -3.0104014767107223e-11, "stress": -1.124621229475764e-14, "feed_load": -3.011526097940198e-11, "inward_rate": 0.25}, {"t": 0.0005, "x": 2.5e-09, "carried": -1.190235184717059e-10, "stress": -4.993423209642689e-14, "feed_load": -1.1907345270380232e-10, "inward_rate": 0.25}, {"t": 0.001, "x": 1e-08, "carried": -4.681672272077719e-10, "stress": -2.1580632246498421e-13, "feed_load": -4.683830335302369e-10, "inward_rate": 0.25}]}
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-prescribed-accel --memory-gib 3 --log-directory _scratch/s11c/mouth_prescribed_accel_negative02 -- python3 software/stage1_solver/tools/mouth_prescribed_acceleration.py -0.02
+Start 2026-11-16T22:27:45.807076+00:00. End 2026-11-16T22:29:35.030817+00:00 (start plus guard wall time). Sampled cgroup peak 425160704 bytes.
+Exit guard/worker 0/0. Limits verified. Swap cap 0. No deadline. Stderr 0 bytes.
+Stdout _scratch/s11c/mouth_prescribed_accel_negative02/stdout, 1176 bytes, SHA256 10ff3f7748df9d9b94df9ccec9d58078e5197c11f3fd8661ee88e50846ee1e8b.
+Literal stdout
+{"acceleration": -0.02, "grid": [65, 32, 32, 32], "rest": {"carried": 0.0, "stress": 1.0842021724855044e-19, "feed_load": 1.0842021724855044e-19, "inward_rate": 0.25}, "stationary_residual": 3.0933962709271533e-10, "16": [{"t": 0.00025, "x": -6.25e-10, "carried": 3.010396792957337e-11, "stress": 1.1245995454323143e-14, "feed_load": 3.0115213925027695e-11, "inward_rate": 0.24999999999999997}, {"t": 0.0005, "x": -2.5e-09, "carried": 1.1902378041495076e-10, "stress": 4.9933039474037155e-14, "feed_load": 1.190737134544248e-10, "inward_rate": 0.25}, {"t": 0.001, "x": -1e-08, "carried": 4.681670398576365e-10, "stress": 2.1580686456607046e-13, "feed_load": 4.683828467222026e-10, "inward_rate": 0.25}], "32": [{"t": 0.00025, "x": -6.25e-10, "carried": 3.0104014767107223e-11, "stress": 1.1246320714974889e-14, "feed_load": 3.01152610878222e-11, "inward_rate": 0.25}, {"t": 0.0005, "x": -2.5e-09, "carried": 1.1902352020642937e-10, "stress": 4.993423209642689e-14, "feed_load": 1.190734544385258e-10, "inward_rate": 0.25}, {"t": 0.001, "x": -1e-08, "carried": 4.681672272077719e-10, "stress": 2.1580632246498421e-13, "feed_load": 4.683830335302369e-10, "inward_rate": 0.25}]}
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-prescribed-accel --memory-gib 3 --log-directory _scratch/s11c/mouth_prescribed_accel_positive_half02 -- python3 software/stage1_solver/tools/mouth_prescribed_acceleration.py 0.01
+Start 2026-11-16T22:27:46.139308+00:00. End 2026-11-16T22:29:35.316200+00:00 (start plus guard wall time). Sampled cgroup peak 425246720 bytes.
+Exit guard/worker 0/0. Limits verified. Swap cap 0. No deadline. Stderr 0 bytes.
+Stdout _scratch/s11c/mouth_prescribed_accel_positive_half02/stdout, 1174 bytes, SHA256 e4198b0b5a46d8d5e44c3e870757ddc721d514ff1738b3fceaaff1c988816a2a.
+Literal stdout
+{"acceleration": 0.01, "grid": [65, 32, 32, 32], "rest": {"carried": 0.0, "stress": 1.0842021724855044e-19, "feed_load": 1.0842021724855044e-19, "inward_rate": 0.25}, "stationary_residual": 3.0933962709271533e-10, "16": [{"t": 0.00025, "x": 3.125e-10, "carried": -1.5051985699510162e-11, "stress": -5.622889306944323e-15, "feed_load": -1.5057608588817106e-11, "inward_rate": 0.25}, {"t": 0.0005, "x": 1.25e-09, "carried": -5.951189194219886e-11, "stress": -2.4966573947127202e-14, "feed_load": -5.953685851614599e-11, "inward_rate": 0.25}, {"t": 0.001, "x": 5e-09, "carried": -2.340835233982652e-10, "stress": -1.079035949133611e-13, "feed_load": -2.341914269931786e-10, "inward_rate": 0.25}], "32": [{"t": 0.00025, "x": 3.125e-10, "carried": -1.5052006516191874e-11, "stress": -5.62310614737882e-15, "feed_load": -1.5057629622339253e-11, "inward_rate": 0.25}, {"t": 0.0005, "x": 1.25e-09, "carried": -5.951175836849121e-11, "stress": -2.4967116048213445e-14, "feed_load": -5.953672548453942e-11, "inward_rate": 0.25}, {"t": 0.001, "x": 5e-09, "carried": -2.340836031955451e-10, "stress": -1.079033780729266e-13, "feed_load": -2.3419150657361804e-10, "inward_rate": 0.25}]}
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-prescribed-accel --memory-gib 3 --log-directory _scratch/s11c/mouth_prescribed_accel_negative_half02 -- python3 software/stage1_solver/tools/mouth_prescribed_acceleration.py -0.01
+Start 2026-11-16T22:27:46.273942+00:00. End 2026-11-16T22:29:52.591897+00:00 (start plus guard wall time). Sampled cgroup peak 423264256 bytes.
+Exit guard/worker 0/0. Limits verified. Swap cap 0. No deadline. Stderr 0 bytes.
+Stdout _scratch/s11c/mouth_prescribed_accel_negative_half02/stdout, 1162 bytes, SHA256 4fee98a0f146996effb79996d33b493a31b02d4bd71d4981f8202347bf553b6d.
+Literal stdout
+{"acceleration": -0.01, "grid": [65, 32, 32, 32], "rest": {"carried": 0.0, "stress": 1.0842021724855044e-19, "feed_load": 1.0842021724855044e-19, "inward_rate": 0.25}, "stationary_residual": 3.0933962709271533e-10, "16": [{"t": 0.00025, "x": -3.125e-10, "carried": 1.5051987434233638e-11, "stress": 5.622997727161572e-15, "feed_load": 1.50576104319608e-11, "inward_rate": 0.25}, {"t": 0.0005, "x": -1.25e-09, "carried": 5.951189020747538e-11, "stress": 2.4966573947127202e-14, "feed_load": 5.953685678142251e-11, "inward_rate": 0.25}, {"t": 0.001, "x": -5e-09, "carried": 2.340835233982652e-10, "stress": 1.0790370333357835e-13, "feed_load": 2.341914271015988e-10, "inward_rate": 0.25}], "32": [{"t": 0.00025, "x": -3.125e-10, "carried": 1.5052004781468398e-11, "stress": 5.62310614737882e-15, "feed_load": 1.5057627887615777e-11, "inward_rate": 0.25}, {"t": 0.0005, "x": -1.25e-09, "carried": 5.951176010321468e-11, "stress": 2.4967224468430693e-14, "feed_load": 5.953672732768311e-11, "inward_rate": 0.25}, {"t": 0.001, "x": -5e-09, "carried": 2.340836031955451e-10, "stress": 1.079033780729266e-13, "feed_load": 2.3419150657361804e-10, "inward_rate": 0.25}]}
+
+Mathematica check. Inputs from the five refined guard outcomes and stdout files follow.
+e97faae02d16d9565fa5363d81ac592a8dfde201312de38d31a9e3c265992dd6  _scratch/s11c/mouth_prescribed_accel_zero02/outcome.json
+06fdb3e9bce54ccdcbf174bf2251dfa5cdc7ce46fe325d018d043d678cea542f  _scratch/s11c/mouth_prescribed_accel_zero02/stdout
+c49aa5cd49ef46476566095eb6c4788e78b7e5ba56f92c3eb0e39d735c974467  _scratch/s11c/mouth_prescribed_accel_positive02/outcome.json
+7391b79ee45b0aedd4fa38489ae03d91089afe8b6de95b9fd565f13c524b26ed  _scratch/s11c/mouth_prescribed_accel_positive02/stdout
+73af7b4f159232379caa78ed48c633cae479311c25199eb6fbb514ea7348cab6  _scratch/s11c/mouth_prescribed_accel_negative02/outcome.json
+10ff3f7748df9d9b94df9ccec9d58078e5197c11f3fd8661ee88e50846ee1e8b  _scratch/s11c/mouth_prescribed_accel_negative02/stdout
+88420ac8793ce28fbd840aaba558609c85b11fc05056234825e81061e2ad5edd  _scratch/s11c/mouth_prescribed_accel_positive_half02/outcome.json
+e4198b0b5a46d8d5e44c3e870757ddc721d514ff1738b3fceaaff1c988816a2a  _scratch/s11c/mouth_prescribed_accel_positive_half02/stdout
+d74da4a8e3641d50d2dbb0fb9024c9e25c9e6a2f3778dda5cc822a39f2c9e2b0  _scratch/s11c/mouth_prescribed_accel_negative_half02/outcome.json
+4fee98a0f146996effb79996d33b493a31b02d4bd71d4981f8202347bf553b6d  _scratch/s11c/mouth_prescribed_accel_negative_half02/stdout
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-prescribed-accel --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_prescribed_accel_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_prescribed_acceleration.wl
+Start 2026-11-16T22:30:01.271402+00:00. End 2026-11-16T22:30:06.321008+00:00 (start plus guard wall time). Sampled cgroup peak 224960512 bytes.
+Exit guard/worker 0/0. Limits verified. Swap cap 0. No deadline. Stderr 0 bytes.
+Stdout _scratch/s11c/mouth_prescribed_accel_wolfram01/stdout, 840 bytes, SHA256 2b0928c4a7147fb126a1b01a0d1763cd5c7276bb81513ef7c31193c38b386271.
+Literal stdout
+"fixed-field incoming load derivative per sideways displacement = "InputForm[-0.04848610976672707]
+"times = "InputForm[{0.00025, 0.0005, 0.001}]
+"incremental incoming flux at final time for +A,-A,+A/2,-A/2 = ""[-4.683830317955134e-10,4.683830352649604e-10,-2.3419150483889456e-10,2.341915083083415e-10]"
+"full and half odd incoming slopes per acceleration at final time = ""[-2.3419151676511846e-8,-2.3419150657361804e-8]"
+"max paired even residual, full/half slope discrepancy, timestep change, intake error = ""[3.469446951953614e-18,1.0191500421363742e-15,2.59015899006787e-16,0.0]"
+"2*odd incoming slope/t^2, first two samples extrapolated = ""[[-4.818441765377934e-2,-4.762938142846562e-2,-4.683830335302369e-2],-4.8739453879093064e-2]"
+"inverse force balance nullspace (actuator force, remaining momentum rate) = "InputForm[{{1, 1}}]
+
+Total actuator force is unobserved in all four prescribed motions.

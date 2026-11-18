@@ -1,0 +1,17 @@
+Geometric center response to a sideways force step. Working result, pending review.
+Repository base fd667ea9291b4430a96afe3fd932926232f5507d.
+The first calculation uses a two-row linear system with generic Laplace-domain entries and a calibrated generalized force in the center row. The deviations from the continued held state have zero independent initial data. The second differentiates the stationary held-state identity at a fixed elapsed time from the same preparation family. Both checks concern linear release, with the incident flow maintained and the full translation support replaced through the same actuator. No physical coefficient or trajectory was supplied.
+Physics inputs: research/pde/paper/pde.tex, harmonic mode equation; docs/_measurements/mouth_rim_dipole.json, geometric projection; docs/drain_driven_initial_acceleration.md, One-mouth translation under an applied force or an established brane flow.
+
+$ python3 scripts/s11c_guarded_run.py --pool mouth-center-response --memory-gib 1 --log-directory _scratch/s11c/mouth_center_step_response01 -- python3 software/stage1_solver/tools/mouth_center_step_response.py
+Started UTC 2026-11-16T20:28:00.427076+00:00. Guard and worker exit 0. Verified 1 GiB memory cap, zero swap, no deadline. Stderr empty.
+Executed source SHA256
+12abcbb3233864d7ef1870ec478422fb341b3d86055b443b0cd0860afad6de5f  software/stage1_solver/tools/mouth_center_step_response.py
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Stdout SHA256 bc8deb29f77f22aba0f49ba454dbc6e73a53ad99ddc7ae7e9bb327c4314461f2
+
+Literal stdout
+center displacement per force step in Laplace space = Dyy/(s*(Dxx*Dyy - Dxy*Dyx))
+reapplied holder displacement = 0
+reduced center equation residual = 0
+fixed-time displacement derivative in maintained flow = C*S(t)

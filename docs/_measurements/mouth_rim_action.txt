@@ -1,0 +1,46 @@
+Rim and brane action on one 0PN draining preparation. Working result, pending review.
+Repository base fd667ea9291b4430a96afe3fd932926232f5507d.
+The SymPy calculation varies n V and eliminates a dynamical mode via the Euler–Lagrange equation in Laplace space. Mathematica independently translates a Cartesian potential, checks the opposite carrier force and completes the square at harmonic frequency. The conservative mode calculation is conditional on a kinetically normalized stable dipole. It neither inserts a bare mouth mass nor identifies the dipole of the physical drain.
+For the density-responsive continuation of the saved radius-1, rate-0.25 preparation the amplitude and phase are independent trial traces at fixed center. Python differences the normalized flux at every sample and then pairs with the dipole test h=x g_X. Mathematica computes the net work along the two phase legs of a closed rectangle. Both use the same saved state. The Wolfram binary contains only its raw real face, imaginary face and current from the previously verified extraction.
+Mixed work from the analytic weighted-variance readouts differs by 8.6736173798840355e-19 between engines. The finite-variation values are within 6.6967785483651454e-13 of the analytic result. The physical four pushes were not run.
+Action sources: research/pde/paper/pde.tex (matter and moving confinement; conservative stable modes); software/em_charge_attribute/u1_body_dynamics_inputs.yaml (open core surface functional); research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md (free energy).
+
+Executed sources, shared numerical inputs and archived provenance, SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+1683414921655e831410f17d2443e2441014cb9d53f3e5aa84e878dd5960918f  software/stage1_solver/tools/mouth_rim_action.py
+a359da857f4ec5eceda4bd40ece04c917078ff53e909856cbb149069002571cd  software/stage1_solver/tools/mouth_rim_action.wl
+ffc771ee507b9b3512e0809b12d0bd0d5989a503372969ff51364fc62348b19f  software/stage1_solver/tools/held_crossflow_budget.py
+a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61  software/stage1_solver/tools/mouth_feed_weak_check.py
+9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83  software/stage1_solver/tools/mouth_feed_weak_flow.py
+d0f75bb51852f9b187774f3e0e1e42c6315fc126a8bf9bb5af0f2fc232fe5d15  software/stage1_solver/tools/mouth_intake_redistribution.py
+8058ac891b4fea61adcbe64ae350901d34747195b93e9b130bb32ec5a7311e98  software/stage1_solver/tools/mouth_rim_push_compatibility.py
+f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0  docs/_measurements/mouth_feed_weak_run.json
+c4dd5af872d050f5fab5547220a7920c6fdddc8b001262651c0deb8c2f6592ad  docs/_measurements/mouth_rim_push_compatibility.txt
+c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4  _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz
+e76812f953ed1af4fd216a5d7fb9d70da6801536dfc786a48fcea165c8ca8053  _scratch/s11c/mouth_rim_push_sympy01/resting_face.f64
+
+SymPy and NumPy
+$ python3 scripts/s11c_guarded_run.py --pool mouth-rim-action --memory-gib 2 --log-directory _scratch/s11c/mouth_rim_action_sympy01 -- python3 software/stage1_solver/tools/mouth_rim_action.py
+Start 2026-11-16T22:00:51.369469+00:00. End 2026-11-16T22:00:52.256894+00:00 (start plus guard wall time).
+Guard and worker exit 0. Verified 2 GiB, zero swap, no deadline. Stderr empty.
+Stdout SHA256 bb113a3b701a04e1b5d30d9eb6625536b63bc74d852fb56f885c51ad0f152377
+Literal stdout
+wall force per r^2 dr dw and unit dipolar density drive = 4*pi*n1*Derivative(V(d), d)/3
+required force per displacement in Laplace space = (K*Om**2 + K*s**2 - c**2)/(Om**2 + s**2)
+slow induced coefficient, fast force/displacement limit = c**2/Om**4 K
+amplitude-then-phase mixed work minus reverse work = 2*(-J*m2 + m1**2)/J
+rate=0.25 mixed_variance=-0.005783403569276874
+eps=0.0001 mixed_fd=-0.005783403568607196 rate_derivative=-3.61e-16 uniform_control=-3.75e-13
+eps=5e-05 mixed_fd=-0.005783403569097266 rate_derivative=2.71e-16 uniform_control=-2.69e-13
+
+Mathematica
+$ python3 scripts/s11c_guarded_run.py --pool mouth-rim-action --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_rim_action_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_rim_action.wl
+Start 2026-11-16T22:00:59.995566+00:00. End 2026-11-16T22:01:05.143977+00:00 (start plus guard wall time).
+Guard and worker exit 0. Verified 4 GiB, zero swap, no deadline. Stderr empty.
+Stdout SHA256 696ba253f4c8659d35b76af27190f9bd653a3561951f0a2a21a6be20785543d7
+Literal stdout
+"wall force per radial volume measure and unit dipolar drive = "InputForm[(4*dn*Pi*Derivative[1][v][r - rim])/3]
+"Fourier force/displacement = "InputForm[(-g^2 + k*om^2 - k*w^2)/((om - w)*(om + w))]
+"slow induced coefficient and fast limit = "InputForm[{g^2/om^4, k}]
+"oriented work per infinitesimal trace rectangle = "InputForm[(-2*(-m1^2 + j*m2))/j]
+"rate, variance, rectangle values at full and half width, uniform control ""[0.24999999999999997,-5.783403569276873e-3,-5.783403568623042e-3,-5.783403569206292e-3,1.3877787807814457e-13]"

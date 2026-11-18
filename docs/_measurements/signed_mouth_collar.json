@@ -1,0 +1,116 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "status": "Working, pending independent review.",
+  "scope": "Projected wall and standing-wave envelope with prescribed rim motion. Physical receiving-sector calibration unavailable. Synthetic local material and an independently calibrated outgoing-wave benchmark termination. The t=1 drive continues beyond the recorded feed.",
+  "source_sha256": {
+    "software/stage1_solver/src/stage1_solver/mouth_collar.py": "0470ff6ef9e6e19013e7b5cda549014540fac819909f0873b64fa8cb5baf60d0",
+    "software/stage1_solver/tools/signed_mouth_collar.py": "0e8e828c46acbc1aca16ab234b9c96591e5e5c3d2bc23d49b9d09da63cd0c828",
+    "software/stage1_solver/tools/signed_mouth_collar.wl": "2be1cf22f39e1713d2172d14e46acdfc74329fe7dedc8d0039da70e07447a9e3",
+    "software/stage1_solver/tools/plot_signed_mouth_collar.py": "08787e0c3932d62564b027eaaced239256190609c69a203607161cbeb27a254d",
+    "software/stage1_solver/tests/test_mouth_collar.py": "1cb6063834156579647988d37316cd9e2e0f06ab87151456d8c0ba749a17baf6",
+    "software/stage1_solver/reports/signed_mouth_collar.md": "08f668467f90c12db83cd991ebea440cdeddd0b34de5d39044b89989941bf9b0",
+    "software/stage1_solver/reports/wall_wave_cut.md": "261a8a906e53aa1775dc491d65e6ab8e7c8864e6e4c9727bbf8ff2ccce828213",
+    "docs/_measurements/mouth_prescribed_acceleration.txt": "db7ae4e93ffb1ddf105d2afd02194f29009464d9a642721a18e3edd3aeeeae73",
+    "docs/_measurements/signed_mouth_wall_wave_coverage.txt": "53483fe67799380284c7d89dd4f274efc5b57435d763003ba9b3d5d8078449d8",
+    "software/em_charge_attribute/u1_body_dynamics_inputs.yaml": "eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "guarded_runs": {
+    "python": {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool signed-mouth-collar --memory-gib 3 --log-directory _scratch/s11c/signed_mouth_collar01 -- env PYTHONPATH=software/stage1_solver/src python3 software/stage1_solver/tools/signed_mouth_collar.py --demo --output _scratch/s11c/signed_mouth_collar01/fields",
+      "started_utc": "2026-11-17T23:45:42.134248+00:00",
+      "exit_guard": 0,
+      "exit_child": 0,
+      "memory_bytes": 3221225472,
+      "swap_bytes": 0,
+      "limits_verified": true,
+      "stdout_sha256": "1f97bc61126f3909f264753fc375dddfb4ddc2445969d368d7a6846569a452fb",
+      "stdout_claim_lines": [
+        "{\"calibration\": \"outgoing-mode benchmark\", \"load\": [[0.8650671229526055, 0.11292849469564278], [0.11292849469564278, 0.5349328769484323]], \"fit_and_holdout_relative_error\": [1.078047924039964e-11, 4.968625810044812e-11]}",
+        "{\"case\": \"benchmark_archive_128_negative\", \"t\": 0.001, \"stored\": [-1.0000609553617504e-08, -1.6672767527017637e-15], \"cut_flux\": [-0.0, -0.0], \"cut_impulse\": [0.0, 0.0], \"wall_wave_cut_positions\": [0.0, 0.0], \"maximum_balance_error\": 3.308722450212111e-24}",
+        "{\"case\": \"benchmark_archive_128_negative_half\", \"t\": 0.001, \"stored\": [-5.000304776853426e-09, -8.336383763508763e-16], \"cut_flux\": [-0.0, -0.0], \"cut_impulse\": [0.0, 0.0], \"wall_wave_cut_positions\": [0.0, 0.0], \"maximum_balance_error\": 8.271806125530277e-25}",
+        "{\"case\": \"benchmark_archive_128_zero\", \"t\": 0.001, \"stored\": [0.0, 0.0], \"cut_flux\": [-0.0, -0.0], \"cut_impulse\": [0.0, 0.0], \"wall_wave_cut_positions\": [0.0, 0.0], \"maximum_balance_error\": 0.0}",
+        "{\"case\": \"benchmark_archive_128_positive_half\", \"t\": 0.001, \"stored\": [5.000304776853426e-09, 8.336383763508763e-16], \"cut_flux\": [-0.0, -0.0], \"cut_impulse\": [0.0, 0.0], \"wall_wave_cut_positions\": [0.0, 0.0], \"maximum_balance_error\": 8.271806125530277e-25}",
+        "{\"case\": \"benchmark_archive_128_positive\", \"t\": 0.001, \"stored\": [1.0000609553617504e-08, 1.6672767527017637e-15], \"cut_flux\": [-0.0, -0.0], \"cut_impulse\": [0.0, 0.0], \"wall_wave_cut_positions\": [0.0, 0.0], \"maximum_balance_error\": 3.308722450212111e-24}",
+        "{\"window\": \"archive\", \"refinement\": \"stored\", \"absolute_change\": [1.838227715323674e-12, 1.830771367988083e-18]}",
+        "{\"window\": \"archive\", \"refinement\": \"cut_flux\", \"absolute_change\": [0.0, 0.0]}",
+        "{\"window\": \"archive\", \"refinement\": \"cut_impulse\", \"absolute_change\": [0.0, 0.0]}",
+        "{\"case\": \"benchmark_continued_128_negative\", \"t\": 1.0, \"stored\": [-0.006755790677877904, -0.0011893161133191056], \"cut_flux\": [-0.009588943035069297, -0.001026876107112851], \"cut_impulse\": [-0.0026668968109887317, -0.00015550951079025215], \"wall_wave_cut_positions\": [-0.0027541878670013496, -0.0001807790748416403], \"maximum_balance_error\": 6.938893903907228e-18}",
+        "{\"case\": \"benchmark_continued_128_negative_half\", \"t\": 1.0, \"stored\": [-0.0033778953389484645, -0.0005946580566597133], \"cut_flux\": [-0.004794471516875416, -0.0005134380535455082], \"cut_impulse\": [-0.0013334484054847479, -7.775475539496556e-05], \"wall_wave_cut_positions\": [-0.0013770939334778506, -9.03895374212529e-05], \"maximum_balance_error\": 5.204170427930421e-18}",
+        "{\"case\": \"benchmark_continued_128_zero\", \"t\": 1.0, \"stored\": [0.0, 0.0], \"cut_flux\": [-0.0, -0.0], \"cut_impulse\": [0.0, 0.0], \"wall_wave_cut_positions\": [0.0, 0.0], \"maximum_balance_error\": 0.0}",
+        "{\"case\": \"benchmark_continued_128_positive_half\", \"t\": 1.0, \"stored\": [0.0033778953389484645, 0.0005946580566597133], \"cut_flux\": [0.004794471516875416, 0.0005134380535455082], \"cut_impulse\": [0.0013334484054847479, 7.775475539496556e-05], \"wall_wave_cut_positions\": [0.0013770939334778506, 9.03895374212529e-05], \"maximum_balance_error\": 5.204170427930421e-18}",
+        "{\"case\": \"benchmark_continued_128_positive\", \"t\": 1.0, \"stored\": [0.006755790677877904, 0.0011893161133191056], \"cut_flux\": [0.009588943035069297, 0.001026876107112851], \"cut_impulse\": [0.0026668968109887317, 0.00015550951079025215], \"wall_wave_cut_positions\": [0.0027541878670013496, 0.0001807790748416403], \"maximum_balance_error\": 6.938893903907228e-18}",
+        "{\"window\": \"continued\", \"refinement\": \"stored\", \"absolute_change\": [9.086693235349497e-08, 4.738466734570054e-08]}",
+        "{\"window\": \"continued\", \"refinement\": \"cut_flux\", \"absolute_change\": [3.172199578085899e-07, 2.185005111899653e-07]}",
+        "{\"window\": \"continued\", \"refinement\": \"cut_impulse\", \"absolute_change\": [8.489215879998319e-08, 1.061421315930503e-08]}",
+        "{\"outgoing_wall\": [0.007110954073932505, 0.010750216509404885, 0.0028890785694882727], \"continuum\": [0.007110937500000001, 0.01075, 0.0028890624999999997], \"undriven_wave\": 0.0}"
+      ]
+    },
+    "wolfram": {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool signed-mouth-collar-check --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/signed_mouth_collar_wolfram01 -- math -noprompt -script software/stage1_solver/tools/signed_mouth_collar.wl",
+      "started_utc": "2026-11-17T23:47:41.194492+00:00",
+      "exit_guard": 0,
+      "exit_child": 0,
+      "memory_bytes": 4294967296,
+      "swap_bytes": 0,
+      "limits_verified": true,
+      "stdout_sha256": "5b50392271e42c43fe979d21088f4bfdad0e3d5d1f644af0788bb6f07d8c6984",
+      "stdout_claim_lines": [
+        "\"finite element {stored, cut flux, cut impulse} = \"InputForm[{{0.006755811865058067, 0.0011893268191338793}, {0.009588776471874588, 0.001026796041452854}, {0.002667060940647938, 0.000155555692583854}}]",
+        "\"signed benchmark readings = \"InputForm[{{0.006755790677877904, 0.0011893161133191056}, {0.009588943035069297, 0.001026876107112851}, {0.0026668968109887317, 0.00015550951079025215}}]\" fractional differences = \"InputForm[{{3.136151069994364*^-6, 9.001656207177505*^-6}, {0.00001737033936898092, 0.00007797012652505621}, {0.00006154331076112345, 0.0002969708628569215}}]"
+      ]
+    },
+    "material_tests": {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool signed-mouth-collar-input-check --memory-gib 2 --log-directory _scratch/s11c/signed_mouth_collar_inputs01 -- env PYTHONPATH=software/stage1_solver/src python3 -m pytest -q software/stage1_solver/tests/test_mouth_collar.py",
+      "started_utc": "2026-11-17T23:48:33.092310+00:00",
+      "exit_guard": 0,
+      "exit_child": 0,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "limits_verified": true,
+      "stdout_sha256": "6ae60db2592ba5cbc3b7d38bd4c72e9df3688404ab51d9d4eb9b30c39d053fdd",
+      "stdout_claim_lines": [
+        "..                                                                       [100%]",
+        "2 passed in 0.57s"
+      ]
+    },
+    "figure": {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool signed-mouth-collar-figure --memory-gib 2 --log-directory _scratch/s11c/signed_mouth_collar_figure02 -- python3 software/stage1_solver/tools/plot_signed_mouth_collar.py _scratch/s11c/signed_mouth_collar01/fields software/stage1_solver/figures/signed_mouth_collar.png",
+      "started_utc": "2026-11-17T23:50:09.595000+00:00",
+      "exit_guard": 0,
+      "exit_child": 0,
+      "memory_bytes": 2147483648,
+      "swap_bytes": 0,
+      "limits_verified": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_claim_lines": []
+    }
+  },
+  "raw_field_axes": {
+    "displacement, velocity": "[field (wall, wave), intrinsic depth, sample time]",
+    "stored, cut_flux, cut_impulse, balance_residual": "[field (wall, wave), sample time]"
+  },
+  "output_sha256": {
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_128_negative.npz": "1f51a2b6344aacf38474c13a982f4bd62c2b99d93d2009a4a258c06adda22077",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_128_negative_half.npz": "926b7cc4f555c6bef8649dc65d2caca315aab9492682be78837cb2750adce1a3",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_128_positive.npz": "206e1885d4ed6926cb7419e35d188f9afb2e71d632d7d0d7481fd306f2d4ec28",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_128_positive_half.npz": "59f9b9bba1d048e9761fcebf729052fb7575a45b2d30e4c44cd4b5357d3d3d82",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_128_zero.npz": "e49db533cbbee41a8ddf922816d0fafe35c88afd64356a9c62608519d412f31e",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_64_negative.npz": "1ed47cea031d6bc5a5f354677ca27de9efdb55c28aa3c9d3161c71e530cffa0e",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_64_negative_half.npz": "d95876bf5b380ffabb5bc36a7f3e5e4a89faa49166c4e359871e7aaa628dfe6a",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_64_positive.npz": "d03a99da80f0ee825229694da43b741d8797085bb4d953e49c6cff84417cddaf",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_64_positive_half.npz": "35a8b041b6e023f6968fa2b7ee295a5e740a5a7491587424bf45b3181d295fe7",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_64_zero.npz": "93679d25cb92b0158fcd485b85a7d3659589107cd3987ed2b718c0f025447890",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_128_negative.npz": "fbb889e627c4af092aa249e4651742db93a2c59cd4c68dd8f2cd4a9c30ee7ebe",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_128_negative_half.npz": "531160f93f79822ca086f0343ba6c43afccd3a2c6283005beba4cbed1ba5868a",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_128_positive.npz": "09fb052a3939dd482f234c566862c421265b0d58c106e25246343ee8822362f8",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_128_positive_half.npz": "1d56af87fde47b02c9d9c3c96cafa3aca5448988f4ad40e928b01bad44644753",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_128_zero.npz": "d193a304894ecfb14379ee3398374cfd3b86d16a2626c7c0493ee4b645601ef8",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_64_negative.npz": "c4f289fd0f33863daa27f642def3fade95d5aef985372d53a5199be882cac4e2",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_64_negative_half.npz": "9c910c20890accfbad0788e45d5bd6a0dd6c7f544dad157ab0d607cd2fdfd86d",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_64_positive.npz": "9a458983317442bfa7b7ce802979dee868195300a0a50f6d1a409c5ebe08bd90",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_64_positive_half.npz": "73826185780f69c4e99fb9314954e4d7e3df941c5318ac6cd615f79117af226f",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_64_zero.npz": "c9716b94f4f64e1b89b7a44ef8eecc30c756efe0fc56433703d0c14461f9afce",
+    "software/stage1_solver/figures/signed_mouth_collar.png": "5d7bb44921d4c5f63a3331b343b7562413364dec1dc8ff0222bf3ac717ddd11b"
+  }
+}

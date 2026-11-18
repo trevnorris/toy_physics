@@ -1,0 +1,61 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "status": "Working result pending independent review.",
+  "scope": "Short wall segment at slow drive and single projected transverse-wave translation on an ordered patch. Example loads and mode shapes only. No physical wall or trapped-wave histories were available for the signed draining-mouth runs.",
+  "input_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/wall_wave_cut.py": "6d0c3466014989cd0bd5c44c099b66c3c844d615b656e07ba366dd964b5caea2",
+    "software/stage1_solver/tools/wall_wave_cut.wl": "d0ed2b943e8f3b2db3f8f84a5c1cb45f4d56fe2aeea7944b12fc5000f70f30be",
+    "software/stage1_solver/reports/wall_wave_cut.md": "261a8a906e53aa1775dc491d65e6ab8e7c8864e6e4c9727bbf8ff2ccce828213",
+    "software/stage1_solver/reports/rim_cut_inventory.md": "ff2164f557bde2be6d4e166e1c15ae3e14c7206f7e9f69bef5264b184a4a141b",
+    "software/stage1_solver/reports/trapped_wave_mouth_response.md": "60958c3854e9eabc1d44a7a8ae0726833ccc261aefbc5d1c94c4634d3244fa06",
+    "research/pde/paper/pde.tex": "9c16d156bef23331bfbdb41d4643b0903967ac12e1a4f4214c266163f741b443",
+    "software/stage1_solver/reports/pathA_35_G0_freeze.md": "e64b4c7f686180615ed80b4db63c05a5be08d55470dfd19b7c5d6655712eb3ea",
+    "software/em_charge_attribute/u1_body_dynamics_inputs.yaml": "eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee"
+  },
+  "guarded_runs": {
+    "sympy": {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool wall-wave-cut-sympy --memory-gib 2 --log-directory _scratch/s11c/wall_wave_cut_sympy01 -- python3 software/stage1_solver/tools/wall_wave_cut.py",
+      "started_utc": "2026-11-17T22:59:28.164064+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_cap_bytes": 2147483648,
+      "swap_cap_bytes": 0,
+      "limits_verified": true,
+      "stdout_sha256": "4d5342851eeb00e6ad9b2411afd6ffe78ea2be57019293a42bd33cef836de46a",
+      "stdout_claim_lines": [
+        "wall cut current: computed=-T*(-X*sqrt(mu)*s/sqrt(T) + Y*sqrt(mu)*s*cosh(b*sqrt(mu)*s/sqrt(T))/sqrt(T))/sinh(b*sqrt(mu)*s/sqrt(T)); comparison=sqrt(T)*sqrt(mu)*s*(X - Y*cosh(b*sqrt(mu)*s/sqrt(T)))/sinh(b*sqrt(mu)*s/sqrt(T)); difference=0",
+        "free slow stored rate per acceleration: computed=b*mu; comparison=b*mu; difference=0",
+        "free slow cut flux per acceleration: computed=0; comparison=0; difference=0",
+        "reflecting extension slow stored rate per acceleration: computed=b*mu; comparison=b*mu; difference=0",
+        "reflecting extension slow cut flux per acceleration: computed=b*mu; comparison=b*mu; difference=0",
+        "cycle-averaged packet momentum density: computed=V*f**2*hx**2*rho/2; comparison=V*f**2*hx**2*rho/2; difference=0",
+        "cycle-averaged flux before transverse integration: computed=-B*f**2*hx**2*slope/2 + B*f*fz*h*hx/2; comparison=-B*f**2*hx**2*slope/2 + B*f*fz*h*hx/2; difference=0",
+        "first-quarter translation fraction, mode 0: computed=4*(-sqrt(1/2 - sqrt(2)/4)*sqrt(sqrt(2)/4 + 1/2)/2 + pi/16)/pi; comparison=-sqrt(2)/(2*pi) + 1/4; difference=0",
+        "mode 0 fraction = 0.024920920961",
+        "first-quarter translation fraction, mode 1: computed=4*(-sqrt(1/2 - sqrt(2)/4)*sqrt(sqrt(2)/4 + 1/2)/2 + 3*pi/16)/(3*pi); comparison=-sqrt(2)/(6*pi) + 1/4; difference=0",
+        "mode 1 fraction = 0.174973640320"
+      ]
+    },
+    "wolfram": {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool wall-wave-cut-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/wall_wave_cut_wolfram01 -- math -noprompt -script software/stage1_solver/tools/wall_wave_cut.wl",
+      "started_utc": "2026-11-17T22:59:26.607778+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_cap_bytes": 4294967296,
+      "swap_cap_bytes": 0,
+      "limits_verified": true,
+      "stdout_sha256": "621802f13e418ce2e47a921a57b1e837eeb583a0b2cb438a0090c5a74234045b",
+      "stdout_claim_lines": [
+        "\"wall slow storage\"\" computed=\"InputForm[(b*ten)/c^2]\" comparison=\"InputForm[(b*ten)/c^2]\" difference=\"InputForm[0]",
+        "\"wall slow export\"\" computed=\"InputForm[0]\" comparison=\"InputForm[0]\" difference=\"InputForm[0]",
+        "\"wall slow storage\"\" computed=\"InputForm[(b*ten)/c^2]\" comparison=\"InputForm[(b*ten)/c^2]\" difference=\"InputForm[0]",
+        "\"wall slow export\"\" computed=\"InputForm[(b*ten)/c^2]\" comparison=\"InputForm[(b*ten)/c^2]\" difference=\"InputForm[0]",
+        "\"wave momentum integrated across section\"\" computed=\"InputForm[(Sqrt[Pi]*rho*v*f[z]^2)/(4*a)]\" comparison=\"InputForm[(Sqrt[Pi]*rho*v*f[z]^2)/(4*a)]\" difference=\"InputForm[0]",
+        "\"wave flux integrated across section\"\" computed=\"InputForm[-1/4*(mod*Sqrt[Pi]*slope*f[z]^2)/a]\" comparison=\"InputForm[-1/4*(mod*Sqrt[Pi]*slope*f[z]^2)/a]\" difference=\"InputForm[0]",
+        "\"mode=\"0\" first-quarter ratio=\"InputForm[1/4 - 1/(Sqrt[2]*Pi)]\" numerical=\"InputForm[0.02492092096072348261120020224831750781`14.]",
+        "\"mode=\"1\" first-quarter ratio=\"InputForm[1/4 - 1/(3*Sqrt[2]*Pi)]\" numerical=\"InputForm[0.17497364032024116087040006741610583593`14.]"
+      ]
+    }
+  }
+}

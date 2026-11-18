@@ -1,0 +1,140 @@
+{
+  "scope": "Exact bulk energy current for the supplied neutral GNLS sector with general U(n) and explicit V_conf(x,t), plus moving-cut transport, stationary controlled-feed energy, local stress-work dependence, and reciprocal confinement-profile work. No full live brane constitutive law, interface energy source, or physical receiving field is selected.",
+  "base": "fd667ea9291b4430a96afe3fd932926232f5507d",
+  "review_status": "Working, uncommitted pending independent review. Two CAS calculations are not review legs.",
+  "sha256": {
+    "software/stage1_solver/tools/mouth_stress_energy.py": "1ebe64d331d0b64b9c12a4712c2a4d3f3faaa84e24ec39b14dfdf54effea1095",
+    "software/stage1_solver/tools/mouth_stress_energy.wl": "0f7f7f529f57c4fa40912c9dd4bb70c9a06aaa04a21dfd51b2364689ab8ef9a8",
+    "software/stage1_solver/reports/mouth_stress_energy.md": "bf7f36d6fa874ed91dd7be8a9d6bf85ea861f1b2124bc0dfc7605eb7579bf480",
+    "software/stage1_solver/reports/order_conversion_energy.md": "3434e523dfc55c9c991339af2c16edb9fdfcf79507d9b1006d8923bf048a0866",
+    "software/stage1_solver/reports/two_drain_energy.md": "64eede697a60d02deaf59069c768f0797624a077fa5bb799e28f96aacedda99c",
+    "software/stage1_solver/reports/one_mouth_outer_holding_force.md": "f41587d49a0b3211551f7adae9525411db600cffd98e4bd2abe10221c595edb0",
+    "software/stage1_solver/tools/mouth_feed_weak_flow.py": "9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83",
+    "research/pde/paper/pde.tex": "9c16d156bef23331bfbdb41d4643b0903967ac12e1a4f4214c266163f741b443",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "construction_routes": {
+    "sympy": "Direct energy continuity from the real and imaginary bulk field equations in four spatial coordinates; independent complex-to-polar current substitution.",
+    "wolfram": "Noether Hamiltonian and energy flux from real-field derivative jets, on-shell Euler-Lagrange substitution, followed by the polar Jacobian."
+  },
+  "pair_comparison": "The derived readout still needs physical feeding and receiving energy traces and the live order/reference/storage partners. No value for the effective net energy yield or satisfaction of the ideal 2*P_mechanical requirement is inferred.",
+  "comparison": "Author inspection of exact printed expressions finds agreement after mapping real-field derivatives to Wolfram jet symbols and relabeling parameters. Stress resultant/power witness and confinement work use separate constructions.",
+  "source_excerpt_command": "Read each listed one-based source line interval verbatim with pathlib.Path.read_text().splitlines().",
+  "source_excerpts": [
+    {
+      "file": "research/pde/paper/pde.tex",
+      "lines": [
+        324,
+        352
+      ],
+      "literal_text": "\\subsubsection*{Matter sector: gauged GNLS}\n\nThe bulk matter Lagrangian density is\n\\begin{equation}\n\\mathcal L_\\psi\n=\n\\frac{i\\hbar}{2}\\bigl(\\psi^*D_t\\psi-\\psi D_t\\psi^*\\bigr)\n-\\frac{\\hbar^2}{2m}(D_i\\psi)^*(D_i\\psi)\n-V_{\\mathrm{conf}}(\\mathbf X;\\Sigma)\\,\\rho\n-U(\\rho),\n\\label{eq:parent-Lpsi}\n\\end{equation}\nwhere the gauge-covariant derivatives are\n\\[\nD_t\\psi=\\partial_t\\psi+\\frac{i q_\\star}{\\hbar}A_0\\psi,\n\\qquad\nD_i\\psi=\\partial_i\\psi-\\frac{i q_\\star}{\\hbar}A_i\\psi.\n\\]\nThe frozen stiff-polytropic equation of state is\n\\[\nP(\\rho)=K\\rho^5,\n\\qquad\nU(\\rho)=\\frac{K}{4}\\rho^5,\n\\qquad\nh(\\rho)=\\frac{\\mathrm dU}{\\mathrm d\\rho}=\\frac{5K}{4}\\rho^4.\n\\]\nThe corresponding bulk sound speed is\n\\[\nc_s^2(\\rho)=\\frac{1}{m}\\frac{\\mathrm dP}{\\mathrm d\\rho}=\\frac{5K}{m}\\rho^4."
+    },
+    {
+      "file": "research/pde/paper/pde.tex",
+      "lines": [
+        380,
+        410
+      ],
+      "literal_text": "\\subsubsection*{Gauged GNLS equation}\n\nVariation with respect to \\(\\psi^*\\) gives\n\\begin{equation}\n i\\hbar D_t\\psi\n =\n \\left[\n -\\frac{\\hbar^2}{2m}D_iD_i\n +V_{\\mathrm{conf}}(\\mathbf X;\\Sigma)\n +h(\\rho)\n \\right]\\psi.\n \\label{eq:exact-gnls}\n\\end{equation}\n\n\\subsubsection*{Exact current and continuity}\n\nThe exact bulk number current is\n\\begin{equation}\n j^i=\\frac{\\hbar}{m}\\,\\mathrm{Im}(\\psi^*D_i\\psi),\n \\label{eq:exact-current}\n\\end{equation}\nand exact continuity is\n\\begin{equation}\n \\partial_t\\rho+\\partial_i j^i=0.\n \\label{eq:exact-continuity}\n\\end{equation}\nWhere \\(\\rho>0\\), one may write \\(j^i=\\rho v^i\\) and treat \\(v^i\\) as the bulk velocity field.\n\n\\subsubsection*{Localized Maxwell equation and Bianchi identities}\n\nVariation with respect to \\(A_N\\) gives the exact localized Maxwell equation"
+    },
+    {
+      "file": "software/stage1_solver/tools/mouth_feed_weak_flow.py",
+      "lines": [
+        68,
+        88
+      ],
+      "literal_text": "    def solve(self, speed, reference_density=None):\n        # Gauge out exp(i U x). The feed then has phase gradient U exactly;\n        # choose mu(U)=mu0+U^2/2 to keep its density and thermodynamic state.\n        f = np.ones(self.shape, complex)\n        for iteration in range(1, 251):\n            n = abs(f)**2\n            rhs = (self.shift + self.mu0 - self.mu0*n**4)*f + 1j*speed*self.x_derivative(f)\n            # The phase slope j/n enforces the given inward rate. The real\n            # amplitude slope is zero or relaxes departures from feed density.\n            wall = f[-1]\n            amp = abs(wall)\n            log_amp_z = -self.restoring*(amp-1)/amp\n            if reference_density is not None:\n                # Keep the zero-drive normal-speed profile. A single scalar\n                # rescales it to preserve the total number rate as n changes.\n                raw_current = self.weight * n[-1] / reference_density\n                self.current = 0.25 * raw_current / (self.dx**3 * raw_current.sum())\n            derivative = (log_amp_z + 1j*self.current/n[-1])*wall\n            updated = self.elliptic_step(rhs, derivative)\n            error = np.max(abs(updated - f))\n            if not np.isfinite(error):"
+    },
+    {
+      "file": "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md",
+      "lines": [
+        130,
+        159
+      ],
+      "literal_text": "| `\ud835\udcaf_br^live`; **OPEN form**, with character fixed by **adopted premise 1**, C \u00a73 | Full live in-plane and normal stress, including any relaxation content. It enters the internal material-force accounting once, with the live reference/strain state. No conservative/dissipative split is adopted. | O2 carries it; S1.5/S8 antecedents, S22 nonlinear completion; relaxation ownership unassigned. |\n| `\ud835\udcab_br^cons`; **OPEN conservative antecedent**, C \u00a73 | Conservative material momentum input to the live momentum description. It is not an additional external force or a second momentum species. No live reduction into `\u2110_br^live` is supplied. | S1.5/S8. |\n| `\ud835\udcaf_br^cons`; **OPEN conservative antecedent**, C \u00a73 | Conservative in-plane/normal-stress content, retained as an antecedent to the material-force description. It is not added beside the full live stress as another stress. Its relation to that stress remains unspecified. | S1.5/S8; nonlinear completion S22. |\n| `\u2110_br^live`; **OPEN**, C \u00a73 | Flowing/embedded inertial and kinetic response, entering momentum storage and transport. No identification with `\u03c1_br V`, a quadratic live kinetic energy, or a constant inertia is supplied. | S8, with S1.5 antecedents when available. |\n| `\ud835\udca9_br^live`; **OPEN**, C \u00a73 | Normal material response, keeping embedding, centre and thickness content distinct. It qualifies the normal material accounting jointly with the stress and inertia inputs; their overlap/identification remains unresolved, rather than being treated as three additive normal forces. | S5\u2013S8 ingredients, Q1/Q2 static sector, S8/S22 live completion. |\n| `\ud835\udc9c_rot^live`; **OPEN**, C \u00a73 | Whether internal angular momentum/couple stress is present and its physical rotational reference frame. Retain its effect on the admissible momentum/stress action and on the corresponding power accounting. No stress symmetry, vanishing couple content or chosen carrier is assumed. | S8 requirements; register assignments retain pass-2-review-pending status. |\n| `\u211b_ref/strain^live`; **OPEN form**, **adopted premise 1**, C \u00a74 | Reference/strain evolution and relaxation, including carrier, transport, formation/renewal through conversion/return, and work content. It enters through the material's evolving state/history and its explicit energy partner, not as an independently postulated body force. | Relaxation/reference ownership **unassigned**; O2 carries it. S8/S22 links are inferences; conversion/return functions remain S12's. |\n| `\u2133_\u22a5` (O1); **OPEN**, C \u00a76 | General stiffness response, including frequency regime and loading/material history, bulk/flow/embedding/thickness/projection dependence and gradients. It is a constitutive input to the linked optical/material description; no relation to `\ud835\udcaf_br^live` is supplied. It is not a separate force. | S8, substrate reduction and S22 completion. |\n| `\u211b_br` (O7); **OPEN**, C \u00a76 | General brane-density response with live bulk, flow, embedding, thickness/projection dependence and gradients. It is input to the density in mass/momentum/energy accounting; it is not inferred from the bulk EOS or slab factorization. | S8, substrate reduction and S22 completion. |\n| `\u2130_h^live` (O4); **OPEN**, C \u00a75 | Live embedding/longitudinal relation with flow, exchange, variable coefficients and gradients. Keep it as a coupled input with `\u03be_w=\u2113h`. Its identity with or independence from O2's normal relation remains **unsettled**. Do not impose a second normal equation or use it as a duplicate normal force. | Q1/Q2 static ingredients; O4 live identification, S8/S22 completion. |\n\n**Accounting convention, not a constitutive decomposition:** the material entries describe one\nbrane-material momentum/force accounting object. C's names supply no equation saying which response\ncontains or determines another. Keep the unresolved relations visible within that object. Where the\nforce action, momentum map, normal response or their compatibility is unsupplied, print the formal\ncomponent action of the named OPEN inputs. Do not manufacture an explicit action by choosing a\nstress measure or by independently adding every named response. An auxiliary name for an unevaluated\naction is notation for these existing OPEN inputs, not a new closed physical response.\n\n### 3.3 Exchange, mechanical loads and boundary/support data\n\n| Input; status/source | Content and use |\n| --- | --- |\n| `\u03a0_n` (O3); transported-material content fixed by **adopted premise 3**, remaining partners **OPEN**, C \u00a7\u00a71, 7, 10 | Momentum accounting for exchange. Its local carried-material convention is specified in \u00a75. It is separate from mechanical traction; premise 3 does not close additional S12 partners. |\n| `\ud835\udca5_map` (O6); **OPEN**, C \u00a76 | Material/order weighting, live projection/window, measures, sheet/slab/face identifications and relation to bulk-normal `v_dr` and bulk/return data. It enters every native-to-v9 exchange or load reduction requiring those identifications, as detailed in \u00a75. |\n| `t_bulk,s^live = \ud835\udcaf_bulk,n,s^live n\u0302_s`; directional restriction from **adopted premise 4**, C \u00a77 | Bulk mechanical traction on its native face. `\ud835\udcaf_bulk,n,s^live` is a general signed **OPEN** normal-load amplitude; geometry and projection are live. No pressure/affinity/DC response law or sign of the amplitude is given. |\n| `T_hold,s`; **OPEN**, C \u00a77 | Complete mechanical face/support loading in O2. Its bulk part obeys the preceding restriction. The bulk amplitude qualifies that part of the full load; it is not a second load added beside a `T_hold,s` that already contains it. The support partition is unresolved. |\n| An explicitly declared external support; **supplied held input only if declared**, C \u00a77 | Would supply specified mechanical loads/work, with a conditional-on-that-hold domain. No such live support is selected or supplied here. Tangential external loading would have to be identified as external, not bulk shear. |\n| `\u210b_core` (O5) and live mouth/core data; **OPEN**, C \u00a7\u00a75, 7 | Physical core-holder response and selection of mouth displacement, flux/Robin or other boundary data, with any `GM` relation unresolved. They enter as boundary/support inputs; they are not solved by the local far-field object. Q2/S22 retain ownership. |\n| S12 conversion/source/controller functions and additional momentum/energy partners; **OPEN**, C \u00a7\u00a71\u20132, 6, 8, 10 | Native dynamical order-conversion and return functions, branch-dependent source balance, and the systems carrying reactions and supplying energy. They enter through the material, exchange and energy responses, without a new independent `F_drive` term. |"
+    },
+    {
+      "file": "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md",
+      "lines": [
+        270,
+        315
+      ],
+      "literal_text": "## 6. Energy input and force/power pairing\n\n**`\u212c_E^steady` is OPEN**, with the accounting requirement fixed by **adopted premise 1** and its S21\nlabel in \u00a72 (C \u00a78). It denotes the steady energy relation to be constructed, not a precomputed\nresidual. Its required inputs are:\n\n| OPEN operand (C \u00a78) | Required content and entry | Owner |\n| --- | --- | --- |\n| `\u2130_br^live`, `\ud835\udca5_E^live` | Material energy storage and transport compatible with the live stress, inertia, normal response, reference evolution and rotational content. Retain live transport in the steady setting. | S1.5 antecedents, S8 material, S22 completion. |\n| `\ud835\udcab_ref/relax^live` | Explicit power associated with `\u211b_ref/strain^live`, with no formula, sign or vanishing assumed. | O2 requirement; relaxation/reference ownership unassigned. |\n| `\ud835\udcab_convert/exchange^live` | Order-conversion work, energy carried with exchanged material, and additional non-variational energy partners, with their reaction/supply systems. Premise 3 fixes transported momentum, not the carried total energy. | S12. |\n| `\ud835\udcab_boundary^live` | Mechanical face/support work and other energy transfer through the live bulk/boundary data; any explicitly supplied hold is identified. | O2 accounting; S12 native data; Q2/S22 core response. |\n| `\ud835\udcae_E,net`, `\ud835\udcab_E,supply` | Identity of the physical supplier of any net power and its stated power budget. Both stay general OPEN inputs. Naming the drain does not specify available energy or a budget. | O2 requirement; source/holder/supplier forms retain their owners. |\n\nPair each mechanical contribution with the velocity or generalized rate of the material point or\ndegree of freedom on which it acts, on the same measure (\u00a71) and with the same geometric map as its\nmomentum occurrence. For a brane material point on the supplied graph, that velocity is the material\nvelocity of \u00a71, the same velocity as in its momentum occurrence. In particular:\n\n- The stress/normal-response contribution has its corresponding material stress work and energy\n  transport. Any couple/frame content retains the matching rotational/generalized-rate work as\n  OPEN `\ud835\udc9c_rot^live` content. No ordinary elastic stored-energy functional is substituted for the\n  full viscoelastic response.\n- A face/support traction is paired with the actual velocity of its load application point.\n  Where the live face-to-material identification is unavailable, retain it through the OPEN\n  normal/material response and map. Do not use the light perturbation velocity or silently equate\n  `V`, `V_s` and `v_dr`.\n- Carried exchange energy and additional conversion/source power are accounted for separately from\n  mechanical face work. Transported momentum at the local brane material velocity alone does not\n  authorize a formula for total energy per converted mass, or an energy-free change of material\n  reference.\n- Keep `\ud835\udcab_ref/relax^live` explicit even when its work is represented within the material stress and\n  internal-energy accounting. Identify its occurrence there instead of adding the same work again\n  as an independent external power. The same rule applies when boundary or source power is also\n  described within another energy operand. These names are accounting obligations, not an adopted\n  additive decomposition into independent channels.\n\nThe supplier/budget operands must accompany any conditional relation requiring net supply. Their\nunresolved identity or form remains visible in the output; it cannot be replaced by a declared\npassive sign, reference reset, drain label or unsupported energy source. The historical order-work\nand `C_ref` inputs in \u00a78.6 retain their domains and do not close these energy operands.\n\nNo non-passive interface response is selected. If a later closure adopts one, it must name its\nreservoir and state its power budget. This conditional obligation is separate from S12's\nnon-variational source partners and from premise 1's relaxation power. The historical S11b-C \u2192 S11c\nhandoff has no recorded live successor owner for it; the register's S12 target is an inference with"
+    }
+  ],
+  "runs": {
+    "sympy": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool mouth-stress-energy-sympy --memory-gib 2 --log-directory _scratch/s11c/mouth_stress_energy_sympy01 -- python3 software/stage1_solver/tools/mouth_stress_energy.py > _scratch/s11c/mouth_stress_energy_sympy01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T18:49:14.062971+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T18:49:15.142467+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 2,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 54685696,
+      "stdout_path": "_scratch/s11c/mouth_stress_energy_sympy01/stdout",
+      "stdout_bytes": 1718,
+      "stdout_sha256": "6a5a980b4b7387273d1ba4886b20cc2c6d9b9968a2b7192c4c0e3628343445ff",
+      "literal_readings": [
+        "SymPy version = 1.14.0",
+        "neutral carrier energy density: (hbar**2*Derivative(a(t, x0, x1, x2, x3), x0)**2 + hbar**2*Derivative(a(t, x0, x1, x2, x3), x1)**2 + hbar**2*Derivative(a(t, x0, x1, x2, x3), x2)**2 + hbar**2*Derivative(a(t, x0, x1, x2, x3), x3)**2 + hbar**2*Derivative(b(t, x0, x1, x2, x3), x0)**2 + hbar**2*Derivative(b(t, x0, x1, x2, x3), x1)**2 + hbar**2*Derivative(b(t, x0, x1, x2, x3), x2)**2 + hbar**2*Derivative(b(t, x0, x1, x2, x3), x3)**2 + 2*m*U(a(t, x0, x1, x2, x3)**2 + b(t, x0, x1, x2, x3)**2) + 2*m*V(t, x0, x1, x2, x3)*a(t, x0, x1, x2, x3)**2 + 2*m*V(t, x0, x1, x2, x3)*b(t, x0, x1, x2, x3)**2)/(2*m)",
+        "neutral carrier energy current, component 0: -hbar**2*(Derivative(a(t, x0, x1, x2, x3), t)*Derivative(a(t, x0, x1, x2, x3), x0) + Derivative(b(t, x0, x1, x2, x3), t)*Derivative(b(t, x0, x1, x2, x3), x0))/m",
+        "neutral carrier local energy source: (a(t, x0, x1, x2, x3)**2 + b(t, x0, x1, x2, x3)**2)*Derivative(V(t, x0, x1, x2, x3), t) | (a(t, x0, x1, x2, x3)**2 + b(t, x0, x1, x2, x3)**2)*Derivative(V(t, x0, x1, x2, x3), t) | residual 0",
+        "polar energy current, one component: -hbar**2*(4*n**2*theta_t*theta_x + n_t*n_x)/(4*m*n)",
+        "stationary energy per number current: mu*n*v | mu*n*v | residual 0",
+        "moving normal-cut energy current: -(4*E_density*W_N*m*n + 4*hbar**2*n**2*theta_t*theta_x + hbar**2*n_t*n_x)/(4*m*n)",
+        "implemented held-feed power increment: J_N*U**2/2",
+        "stress power split: t1*u1 + t2*u2 | t1*u1 + t2*u2 | residual 0",
+        "zero-resultant witness, force: 0",
+        "zero-resultant witness, power: 2*T*s",
+        "translated-profile energy transfer: -n*Derivative(X(t), t)*Subs(Derivative(Vconf(_xi_1), _xi_1), _xi_1, x - X(t)) | -n*Derivative(X(t), t)*Subs(Derivative(Vconf(_xi_1), _xi_1), _xi_1, x - X(t)) | residual 0"
+      ],
+      "guard_evidence_sha256": {
+        "outcome.json": "abd7e7955b3cb24c8722588c6484118e7fa19dd39dc9300a3a12383b7d710b6e",
+        "child-outcome.json": "f77d439bdb298333902e678bb525e390855665a5a070237dbf1cd87abeaf7775",
+        "invocation.json": "10efe3b4973eda5f85f41ee3c2695e185f8fc33343f4bff48f7a1e2683b8fd05",
+        "limit-validation.json": "50de8bfeaf586d7888c10d9b43e0b7a3ea5111f97b4901b487e64991952b1cf7",
+        "duration-validation.json": "b7b9c58dd0ec33f07067967dd624c44127d7066971a4006f06ad57656809d244"
+      }
+    },
+    "wolfram": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool mouth-stress-energy-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_stress_energy_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_stress_energy.wl > _scratch/s11c/mouth_stress_energy_wolfram01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T18:49:16.967340+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T18:49:21.701049+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 225550336,
+      "stdout_path": "_scratch/s11c/mouth_stress_energy_wolfram01/stdout",
+      "stdout_bytes": 1206,
+      "stdout_sha256": "df56582497a7d515aea5d6ffaec595ff7b2b0e1adafd9b89f5d66f1c85371eda",
+      "literal_readings": [
+        "\"Wolfram version = \"\"15.0.1 for Linux x86 (64-bit) (July 2, 2026)\"",
+        "\"neutral carrier energy density\"\" = \"\"(ax11^2*hb^2 + ax12^2*hb^2 + ax13^2*hb^2 + ax14^2*hb^2 + bx15^2*hb^2 + bx16^2*hb^2 + bx17^2*hb^2 + bx18^2*hb^2 + 2*a^2*mass*vv + 2*b^2*mass*vv + 2*mass*uu[a^2 + b^2])/(2*mass)\"",
+        "\"neutral carrier energy current, component 0\"\" = \"\"-(((at*ax11 + bt*bx15)*hb^2)/mass)\"",
+        "\"neutral carrier local energy source\"\" | \"\"(a^2 + b^2)*vt\"\" | \"\"(a^2 + b^2)*vt\"\" | residual \"\"0\"",
+        "\"polar energy current, one component\"\" = \"\"-1/4*(hb^2*(nt*nx + 4*nn^2*thetat*thetax))/(mass*nn)\"",
+        "\"stationary energy per number current\"\" | \"\"mu*nn*vel\"\" | \"\"mu*nn*vel\"\" | residual \"\"0\"",
+        "\"moving normal-cut energy current\"\" = \"\"-1/4*(hb^2*nt*nx + 4*hb^2*nn^2*thetat*thetax + 4*en*mass*nn*wn)/(mass*nn)\"",
+        "\"implemented held-feed power increment\"\" = \"\"(incident^2*jn)/2\"",
+        "\"stress power split\"\" | \"\"tone*uone + ttwo*utwo\"\" | \"\"tone*(uone - vv0) + ttwo*(utwo - vv0) + (tone + ttwo)*vv0\"\" | residual \"\"0\"",
+        "\"zero-resultant witness, force\"\" = \"\"0\"",
+        "\"zero-resultant witness, power\"\" = \"\"2*sl*tr\"",
+        "\"translated-profile energy transfer\"\" | \"\"-(nn*vcenter*Derivative[1][potential][x - xc])\"\" | \"\"-(nn*vcenter*Derivative[1][potential][x - xc])\"\" | residual \"\"0\""
+      ],
+      "guard_evidence_sha256": {
+        "outcome.json": "deb060627da53661ec97d7c92e0c32275a6aa041fbc0fbd469e668d2c7330396",
+        "child-outcome.json": "1b5d8cf0f7bfd71afc9f2b22e3d2edfedc4b2c8058710bde45995461c5ad0a45",
+        "invocation.json": "bb395ee11485161a0747aabc103ba620023ac37fa4dfa17393b8b0a156ac9313",
+        "limit-validation.json": "451bac778f19c17f7ae21e810014e92f2240696cc33c11c76982d34be4cb7b1c",
+        "duration-validation.json": "b7b9c58dd0ec33f07067967dd624c44127d7066971a4006f06ad57656809d244"
+      }
+    }
+  }
+}

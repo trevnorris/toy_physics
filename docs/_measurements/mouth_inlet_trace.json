@@ -1,0 +1,77 @@
+{
+  "scope": "Compatibility of the saved radius-one feeding carrier and the uniform inlet of the finite receiver. Archived +/- partners from x reflection. The rim density-slope values are required for complete transmission by mixed stress on that single inlet, not measurements of the force on a physical mouth.",
+  "base": "fd667ea9291b4430a96afe3fd932926232f5507d",
+  "sha256": {
+    "software/stage1_solver/tools/mouth_inlet_trace.py": "f4c1f54dd8ce6dcf615fb98508d05d23f7fdb44916f63124cc95dcc489361eb7",
+    "software/stage1_solver/tools/mouth_inlet_trace.wl": "edc69f26875daa3f0f8e2177822794765686b03126fcd695878a11bce74b112e",
+    "software/stage1_solver/tools/mouth_carrier_momentum.py": "9bfdfe7e441137afc82c7863d21e4a846187cb82316f4381f78fee88fd12d434",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "software/stage1_solver/tools/mouth_release_input_check.py": "f341d0ced284b035aaf1450706a0bfa3a35be937b214072fb68c997e03fd8efb",
+    "software/stage1_solver/tools/open_sleeve_lateral_balance.py": "543c03dfb31f485df37733ae38c62e787a61b069cf40e2b6625ce39df13fbae4",
+    "software/stage1_solver/tools/mouth_feed_weak_flow.py": "9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83",
+    "software/stage1_solver/src/stage1_solver/open_sleeve.py": "3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519",
+    "docs/_measurements/mouth_feed_weak_run.json": "f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0",
+    "docs/_measurements/mouth_intake_redistribution.json": "f437841524cdf0166ffbc6950a663767a3ea9d0691236a07a6111d141bf00711",
+    "docs/_measurements/held_crossflow_budget.txt": "53276257005046080d2b43eea9ae4deafa94ac75b2c0fda9bd8dd0feb3367155",
+    "docs/_measurements/mouth_bulk_phase_match.txt": "75b163dbb54c5be40bf1848a1704adbce32f19c35e95ea1293968b1d184739fe",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "inputs": {
+    "_scratch/s11c/mouth_feed_weak01/fields/n24_restoring_slope_u0.npz": "90dc2e473a5219cdbec5025b1208fa8239746349732954ed28faa4de7877c132",
+    "_scratch/s11c/mouth_redistribution_coarse01/fields/n24_restoring_slope_u0.02.npz": "f913ef88f6a0f95310284a9bc5641c13589965da106c94c49ea28348130fc7cb",
+    "_scratch/s11c/mouth_redistribution_coarse01/fields/n24_restoring_slope_u0.01.npz": "e05c180de9d5105d9bbcec6e8a62a41e448b80cff3f3a85bbb8343fdced58f29",
+    "_scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz": "c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4",
+    "_scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.02.npz": "303cb43b3375fca6251afbee3230be6c8cbd907d5cc3471415f52d29ff48be6a",
+    "_scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.01.npz": "54048b7c5787e614cd9e1446b3e14e959f4d5d65f4fc45fc2fed9cf1819b4e23"
+  },
+  "runs": {
+    "python": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool mouth-inlet-trace --memory-gib 2 --log-directory _scratch/s11c/mouth_inlet_trace_python01 -- python3 software/stage1_solver/tools/mouth_inlet_trace.py > _scratch/s11c/mouth_inlet_trace_python01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T16:33:03.783918+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T16:33:04.480679+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 2,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 154193920,
+      "stdout_path": "_scratch/s11c/mouth_inlet_trace_python01/stdout",
+      "stdout_bytes": 1127,
+      "stdout_sha256": "b7de94f98c5e013916a61c14b4ed8d98190eb9c2e47cc4c7e9b6d9926c872b9f",
+      "stdout": [
+        "grid=24 rest phase RMS after best affine fit=0.0235780831353 rad",
+        "grid=24 |U|=0.02 odd phase constant_rms=0.00603376129907 affine_x=0.0200131573342 affine_rms=8.90256157805e-07 rad",
+        "grid=24 |U|=0.02 incoming=0.00499999920123 carried=0.0049998498015 carried_fraction=0.999970120048 required_rim_slope=-0.00477464752999",
+        "grid=24 |U|=0.01 odd phase constant_rms=0.00301688057868 affine_x=0.0100065784321 affine_rms=4.45125930141e-07 rad",
+        "grid=24 |U|=0.01 incoming=0.0024999996006 carried=0.00249992490461 carried_fraction=0.999970121599 required_rim_slope=-0.00238732376498",
+        "grid=32 rest phase RMS after best affine fit=0.0238092393909 rad",
+        "grid=32 |U|=0.02 odd phase constant_rms=0.00603419418762 affine_x=0.020013194794 affine_rms=8.9954630183e-07 rad",
+        "grid=32 |U|=0.02 incoming=0.004999999706 carried=0.00499985009336 carried_fraction=0.99997007747 required_rim_slope=-0.004774648012",
+        "grid=32 |U|=0.01 odd phase constant_rms=0.00301709702095 affine_x=0.0100065971553 affine_rms=4.49770376185e-07 rad",
+        "grid=32 |U|=0.01 incoming=0.00249999985299 carried=0.00249992505059 carried_fraction=0.999970079037 required_rim_slope=-0.002387324006"
+      ]
+    },
+    "wolfram": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool mouth-inlet-trace --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_inlet_trace_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_inlet_trace.wl > _scratch/s11c/mouth_inlet_trace_wolfram01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T16:33:13.354816+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T16:33:18.000726+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 225431552,
+      "stdout_path": "_scratch/s11c/mouth_inlet_trace_wolfram01/stdout",
+      "stdout_bytes": 508,
+      "stdout_sha256": "7497969835e874f36c3160e60456c8c153ca454834ff03b35b82752214b8fdcb",
+      "stdout": [
+        "\"shell integrand vs derivative of rim moment\"\" | \"\"(-4*k*n*Pi*r*(2*f[1][r] + r*Derivative[1][f[1]][r]))/3\"\" | \"\"(-8*k*n*Pi*r*f[1][r])/3 - (4*k*n*Pi*r^2*Derivative[1][f[1]][r])/3\"\" | residual \"\"0\"",
+        "\"integrated receiver stress for regular profiles\"\" | \"\"(-4*k*n*Pi*r^2*f[1][r])/3\"\" | \"\"(-4*k*n*Pi*r^2*f[1][r])/3\"\" | residual \"\"0\"",
+        "\"sideways velocity of scalar inlet\"\" | \"\"0\"\" | \"\"0\"\" | residual \"\"0\"",
+        "\"unit aperture slope required to transmit incident load\"\" | \"\"(-3*load)/Pi\"\" | \"\"(-3*load)/Pi\"\" | residual \"\"0\""
+      ]
+    }
+  }
+}

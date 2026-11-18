@@ -1,0 +1,81 @@
+One active drain, fixed-width carrier normal load and conditional response to a prescribed width variation.
+Working calculation on base fd667ea9291b4430a96afe3fd932926232f5507d, pending review.
+The face momentum current on each intact reflecting face was compared to the undisturbed unit-density bath.
+The two numerical reconstructions use the same field, with independent normal and lateral derivatives.
+The +/- widths are local far-field Bernoulli solutions at fixed radius, intake and bath chemical potential.
+No free-face displacement or net stiffness of the active slab was measured.
+
+Source and field SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+581a341d142bdf611d1d2728d91881811c913bad27007229691aba7c7c7c8c5f  software/stage1_solver/tools/drain_width_traction.py
+83c617cb4e2c26460a92074ff1820dc9a2f401920118cbb6e235947f0a69ec34  software/stage1_solver/tools/drain_width_traction.wl
+44fc959d17eaf9d9d01a4a8ec19375904483ce7765154be75abdb6b52f63a7fd  software/stage1_solver/tools/drain_width_carrier_slope.py
+ecc5a19dc857023b08ec4ea040881d107add393e33d97bf08acaf97888d3e156  software/stage1_solver/tools/drain_width_carrier_slope.wl
+2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c  software/stage1_solver/tools/lateral_reservoir_field.py
+2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c  software/stage1_solver/tools/lateral_source_rate.py
+6a71810adb5c22cea7a5bedd01d5d67cd84f9147525d73072fb8d17c15c8b406  software/stage1_solver/tools/held_pair_exterior_balance.py
+3cffb25b8177523be5884b72b8dbb694e3ebc1c67642c88fcb619626a43d58ec  docs/_measurements/lateral_reservoir_pair.json
+18c0dd33065f9d77f03d32908a0774482e977fc29f4013d4230dad35842632d4  docs/_measurements/drain_density_thickness.txt
+b2f054aea247830f198f6caf368b22d45c937bfe4d3e875700461cf7201ab79c  research/pde_ledger_v3/steps/S11bB_interface_assembly.md
+227bbffa1c638b8b07ed24327e7a7f3dfb8f86163f27a066167cbf3c962eacc1  research/pde_ledger_v3/directives/S11bB_SHARED_PHYSICS.md
+8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1  research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe  _scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz
+590774f5c77c030fbe68edb253b5edddd0bc8b636bf983f1947fae52d7389fb1  _scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz
+7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd  _scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool active-drain-width --memory-gib 3 --log-directory _scratch/s11c/drain_width_traction01 -- python3 software/stage1_solver/tools/drain_width_traction.py
+Started 2026-11-17T07:07:31.961360+00:00. Guard wall seconds 1.0394224161282182.
+Guard/worker exit 0/0. Verified cap 3221225472 bytes, zero swap, no deadline. Stderr empty.
+Stdout SHA256 868b605bf4ab5bcc4f6dd0a717d80c009b561cc1ff65aae6cc5a4b49acb033dd
+Literal stdout
+center and width loads = t_minus + t_plus -t_minus/2 + t_plus/2
+closed-column minus relaxed stiffness = (B - C*W0)**2/(B*W0**2)
+width operator on driven tails = 12*A*D/(K*r**6) - A/r**4 -A/r**4
+grid=e24_c4 intake=0.25 prescribed_width=1
+  r=2 upper=-5.12016045016e-05 lower=-2.90664061895e-05 width=-4.01340053456e-05 width_pde=-4.01285953631e-05 center=-2.21351983121e-05
+  r=4 upper=-1.25547210673e-06 lower=-1.24540661934e-06 width=-1.25043936304e-06 width_pde=-1.25043934855e-06 center=-1.00654873894e-08
+  r=8 upper=-5.11003017605e-08 lower=-5.11002996646e-08 width=-5.11003007126e-08 width_pde=-5.11002997639e-08 center=-2.09591923581e-15
+  r=16 upper=-3.06309643703e-09 lower=-3.0630964387e-09 width=-3.06309643786e-09 width_pde=-3.06309639068e-09 center=+1.66604266972e-18
+grid=e24_c6 intake=0.25 prescribed_width=1
+  r=2 upper=-4.9577061267e-05 lower=-2.91542975219e-05 width=-3.93656793945e-05 width_pde=-3.93640059768e-05 center=-2.04227637451e-05
+  r=4 upper=-1.24002046439e-06 lower=-1.23155070855e-06 width=-1.23578558647e-06 width_pde=-1.23578558893e-06 center=-8.46975583709e-09
+  r=8 upper=-5.1033661323e-08 lower=-5.10336588341e-08 width=-5.10336600785e-08 width_pde=-5.10336606556e-08 center=-2.48886309415e-15
+  r=16 upper=-3.06225950421e-09 lower=-3.06225950421e-09 width=-3.06225950421e-09 width_pde=-3.06225953657e-09 center=+0
+grid=e48_c4 intake=0.25 prescribed_width=1
+  r=2 upper=-5.12016046969e-05 lower=-2.90664069662e-05 width=-4.01340058316e-05 width_pde=-4.01285958603e-05 center=-2.21351977307e-05
+  r=4 upper=-1.25547208316e-06 lower=-1.24540659435e-06 width=-1.25043933875e-06 width_pde=-1.25043932028e-06 center=-1.00654888057e-08
+  r=8 upper=-5.10997696749e-08 lower=-5.10997643544e-08 width=-5.10997670147e-08 width_pde=-5.10997663328e-08 center=-5.32055706284e-15
+  r=16 upper=-3.05760382526e-09 lower=-3.05760382526e-09 width=-3.05760382526e-09 width_pde=-3.05760383636e-09 center=+0
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool active-drain-width-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/drain_width_traction_wolfram01 -- math -noprompt -script software/stage1_solver/tools/drain_width_traction.wl
+Started 2026-11-17T07:07:31.842606+00:00. Guard wall seconds 4.824273701757193.
+Guard/worker exit 0/0. Verified cap 4294967296 bytes, zero swap, no deadline. Stderr empty.
+Stdout SHA256 f521aaf18d367bf54d2a6a77712eabb7273eb700b9ef78d0ebf20260f060e8c6
+Literal stdout
+"center and width readings = "InputForm[{-pLo + pUp, pLo/2 + pUp/2}]
+"reflecting-face correction to pressure = "InputForm[(-(im[w]*Derivative[2][im][w]) - re[w]*Derivative[2][re][w])/2]
+"sealed minus relaxed = "InputForm[(modulus - cross*w0)^2/(modulus*w0^2)]
+"zero stiffness particular = "InputForm[a/(2*grad)]" ; finite stiffness leading coefficient = "InputForm[-(a/stiff)]
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool drain-width-slope --memory-gib 2 --log-directory _scratch/s11c/drain_width_carrier_slope01 -- python3 software/stage1_solver/tools/drain_width_carrier_slope.py
+Started 2026-11-17T07:09:35.003902+00:00. Guard wall seconds 0.5923347161151469.
+Guard/worker exit 0/0. Verified cap 2147483648 bytes, zero swap, no deadline. Stderr empty.
+Stdout SHA256 23168d215ef27f06210d7184c107f635b0b910bddd697a3ca452e3ca22df2ab4
+Literal stdout
+carrier dP/dW = I**2*n**5/(W*(-I + W*n**3)*(I + W*n**3))
+r=8 baseline_excess_pressure=-4.83137087751e-08 width_slope=+9.66274245529e-08
+  +/-delta=0.02 wider_dP=+1.87608032533e-09 narrower_dP=-1.99211059128e-09 finite_slope=+9.67047729153e-08
+  +/-delta=0.01 wider_dP=+9.51970998304e-10 narrower_dP=-9.8096406052e-10 finite_slope=+9.66467529412e-08
+r=16 baseline_excess_pressure=-3.01960659329e-09 width_slope=+6.03921321393e-09
+  +/-delta=0.02 wider_dP=+1.1725500471e-10 narrower_dP=-1.24506894688e-10 finite_slope=+6.04404748494e-09
+  +/-delta=0.01 wider_dP=+5.94981793889e-11 narrower_dP=-6.13102453669e-11 finite_slope=+6.04042123779e-09
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool drain-width-slope-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/drain_width_carrier_slope_wolfram01 -- math -noprompt -script software/stage1_solver/tools/drain_width_carrier_slope.wl
+Started 2026-11-17T07:09:36.200957+00:00. Guard wall seconds 4.646107502747327.
+Guard/worker exit 0/0. Verified cap 4294967296 bytes, zero swap, no deadline. Stderr empty.
+Stdout SHA256 32594a7fb2df2d4d02ede500c0a0f6345d7d4f0ef7774e5e673365f40ed19dd6
+Literal stdout
+"pressure slope in y=n^2 = "InputForm[(2*flow^2*y^(3/2))/(width^3*(-1 + 3*y^2))]
+"leading coefficient divided by squared areal current = "InputForm[width^(-3)]
+"radius = "8" slope = "InputForm[9.662742455286837222893865303434`16.*^-8]
+"radius = "16" slope = "InputForm[6.03921321393180671762628542876`16.*^-9]

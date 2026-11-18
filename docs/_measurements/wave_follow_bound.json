@@ -1,0 +1,52 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "status": "Conditional working result pending independent review.",
+  "scope": "Single conservative envelope with the external force on the rim. Harmonic tracking, release displacement bound and conditional endpoint inversion. No fitted rate or physical free-fall measurement.",
+  "sources": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/reports/wave_follow_bound.md": "8b20f9ca49f3eda90af2eb37e1551fe1db265deadec4e790d378148877383787",
+    "software/stage1_solver/reports/trapped_wave_push.md": "8e550c4f66bf34bdab610d80768131ab1b1d91b2d87b37fd1f7e37a15b43fb29",
+    "software/stage1_solver/reports/one_mouth_translation_equation.md": "0a04685e123324bc9ddd84e155dfa34f88497eef1cbc34f5123a678ef7adb4b3",
+    "software/em_charge_attribute/u1_body_dynamics_inputs.yaml": "eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee",
+    "docs/_measurements/lateral_mouth_acceleration.json": "fcb66853f155ab6f688ae00170bfe88b22d53ca8c8589631b8ac07344f2928a4"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-follow-bound-sympy --memory-gib 2 --log-directory _scratch/s11c/wave_follow_bound_sympy01 -- python3 software/stage1_solver/tools/wave_follow_bound.py",
+      "script_sha256": "ecaf8288399da0e72d2ec3dfd17f989e04acba4412408e9c682d490a394f80f6",
+      "start_utc": "2026-11-17T22:07:21.755195+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_gib": 2,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "envelope/rim for zero initial disturbance = k/(Mw*s**2 + k)",
+        "rim force per acceleration = (Mr*Mw*s**2 + Mr*k + Mw*k)/(Mw*s**2 + k)",
+        "signed harmonic excess below pole = nu**2/(g - nu**2)",
+        "squared follow rate at fractional tolerance = nu**2*(eps + 1)/eps",
+        "ratio of two apparent-inertia deficits = (g + 4*s**2)/(4*(g + s**2))",
+        "squared rate from mouth readings = -4*s**2*(R - 1)/(4*R - 1)",
+        "slope of squared rate with measured ratio = -12*s**2/(4*R - 1)**2",
+        "relative displacement divided by center displacement = -2*Mw*(cos(sqrt(k)*t*sqrt(Mr + Mw)/(sqrt(Mr)*sqrt(Mw))) - 1)/(k*t**2)",
+        "rest radial derivative = Derivative(E0(a), a)",
+        "relative curvature = lam*b(a)"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-follow-bound-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/wave_follow_bound_wolfram01 -- math -noprompt -script software/stage1_solver/tools/wave_follow_bound.wl",
+      "script_sha256": "7fd1a7fc74d5cba0bad66e1a246205a3179669ffc46e092774032e2e9a19282e",
+      "start_utc": "2026-11-17T22:07:31.794447+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_gib": 4,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "\"rim response at positive Laplace rate\"\" = \"InputForm[(k*mr + k*mw + mr*mw*s^2)/(k + mw*s^2)]",
+        "\"subresonant tracking region: \"InputForm[nu > 0 && eps > 0 && g >= (nu^2 + eps*nu^2)/eps]",
+        "\"three-readout inversion\"\" = \"InputForm[(-4*(-1 + r)*s^2)/(-1 + 4*r)]",
+        "\"normalized step gap\"\" = \"InputForm[-(((-1 + E^((Sqrt[-(k*(mr + mw))]*t)/(Sqrt[mr]*Sqrt[mw])))^2*mw)/(E^((Sqrt[-(k*(mr + mw))]*t)/(Sqrt[mr]*Sqrt[mw]))*k*t^2))]",
+        "\"one percent rate factor\"\" = \"InputForm[Sqrt[101]]"
+      ]
+    }
+  }
+}

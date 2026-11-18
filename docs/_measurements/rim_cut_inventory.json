@@ -1,0 +1,56 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "status": "Working result pending independent review.",
+  "scope": "Linear signed acceleration of the accelerating uniform-phase neutral receiver at fixed intake to first order. Carrier-only data on 0 < w < L/4 and the downstream cut. Wall and trapped-wave load and storage for the physical rim are unmeasured.",
+  "input_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/rim_cut_inventory.py": "a5feffccecb789f01b3480596cf8f15e698cdc7a01d2c12c2de4e01fb2a7a437",
+    "software/stage1_solver/tools/rim_cut_inventory.wl": "eb72a495c8a97e25bf01ca3523a1ee1746bb82d86beb0d638590df13d128d665",
+    "software/stage1_solver/tools/open_sleeve_lateral_balance.py": "543c03dfb31f485df37733ae38c62e787a61b069cf40e2b6625ce39df13fbae4",
+    "software/stage1_solver/src/stage1_solver/open_sleeve.py": "3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519",
+    "software/stage1_solver/src/stage1_solver/config.py": "70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8",
+    "docs/_measurements/open_sleeve_lateral_balance.txt": "166cd617b8949f6f487a6a5e0c85d0bbb1159b7d1deda59b19ededbda03019c0",
+    "docs/_measurements/mouth_prescribed_acceleration.txt": "db7ae4e93ffb1ddf105d2afd02194f29009464d9a642721a18e3edd3aeeeae73",
+    "software/stage1_solver/tools/mouth_prescribed_acceleration.py": "2bb644fff8d028fb921008206a331b15d0621ff2c7a37ecb85302981c538393e",
+    "software/em_charge_attribute/u1_body_dynamics_inputs.yaml": "eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee",
+    "_scratch/s11c/sleeve_response_current_fine01/fields/level_64.npz": "cc30eecbf1bf148809a229e9825e187e21968baaa05f72f8941e2549d5390bad",
+    "_scratch/s11c/sleeve_response_current_fine01/fields/level_128.npz": "03531f6219273a88eedbcbd0170345871e90594a6702e63df347ed5b7fa5a9b4"
+  },
+  "guarded_runs": {
+    "carrier": {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool rim-cut-inventory --memory-gib 4 --log-directory _scratch/s11c/rim_cut_inventory01 -- env PYTHONPATH=software/stage1_solver/src python3 software/stage1_solver/tools/rim_cut_inventory.py",
+      "started_utc": "2026-11-17T22:48:45.361936+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_cap_bytes": 4294967296,
+      "swap_cap_bytes": 0,
+      "verified_limits": true,
+      "stdout_sha256": "b6038eb560bebb521713e685c64b430a4608c6cb7a64fb9b097e3ff71b9aa281",
+      "stdout_claim_lines": [
+        "{\"level\": 64, \"s\": 0.02, \"A\": 0.0001, \"rate\": 0.12500000000000006, \"linear_residual\": 3.0899761915836876e-18, \"cut_flow_comoving\": -1.6684119950939082e-08, \"cut_stress\": 1.677166966247792e-05, \"boost_flux\": 0.0006250000000000003, \"cut_lab\": 0.0006417549855425273, \"feed_lab\": 0.0007292423059104905, \"side_to_support\": -0.00010876748103839028, \"mass\": 1.9371522918431971, \"p_relative\": -1.6769962236639186e-07, \"p_lab\": 0.00968559375959362, \"storage_rate_lab\": 0.0001937118751918724, \"balance_residual\": -2.5429262144811057e-06, \"peak_log_density_perturbation\": 3.267907294664665e-05}",
+        "{\"level\": 64, \"s\": 0.01, \"A\": 0.0001, \"rate\": 0.12500000000000006, \"linear_residual\": 2.3924445595197713e-18, \"cut_flow_comoving\": -1.2271818698561709e-08, \"cut_stress\": 1.6772662472723954e-05, \"boost_flux\": 0.0012500000000000007, \"cut_lab\": 0.001266760390654026, \"feed_lab\": 0.0013542459953004094, \"side_to_support\": -0.0001087712315464532, \"mass\": 1.9371522918431971, \"p_relative\": -1.3170642257172302e-07, \"p_lab\": 0.0193713912120094, \"storage_rate_lab\": 0.000193713912120094, \"balance_residual\": -2.5429240727424963e-06, \"peak_log_density_perturbation\": 3.268258913611752e-05}",
+        "{\"level\": 128, \"s\": 0.02, \"A\": 0.0001, \"rate\": 0.1250000000000009, \"linear_residual\": 2.8018791103988187e-18, \"cut_flow_comoving\": -1.6694492476153048e-08, \"cut_stress\": 1.6779831066823113e-05, \"boost_flux\": 0.0006250000000000045, \"cut_lab\": 0.0006417631365743514, \"feed_lab\": 0.0007276325274827757, \"side_to_support\": -0.00010918411085247462, \"mass\": 1.9371523157899848, \"p_relative\": -1.6771093968242493e-07, \"p_lab\": 0.009685593868010241, \"storage_rate_lab\": 0.00019371187736020483, \"balance_residual\": -1.341624400694099e-06, \"peak_log_density_perturbation\": 3.3345517620410984e-05}",
+        "{\"level\": 128, \"s\": 0.01, \"A\": 0.0001, \"rate\": 0.1250000000000009, \"linear_residual\": 2.512193842437848e-18, \"cut_flow_comoving\": -1.228027823078754e-08, \"cut_stress\": 1.6780825045493955e-05, \"boost_flux\": 0.001250000000000009, \"cut_lab\": 0.001266768544767272, \"feed_lab\": 0.0013526362209882897, \"side_to_support\": -0.00010918786248385483, \"mass\": 1.9371523157899848, \"p_relative\": -1.3171476902639119e-07, \"p_lab\": 0.019371391443130822, \"storage_rate_lab\": 0.00019371391443130821, \"balance_residual\": -1.3416242735644554e-06, \"peak_log_density_perturbation\": 3.3349073924258013e-05}",
+        "{\"level\": 128, \"s\": 0.01, \"A\": -0.0001, \"rate\": 0.1250000000000009, \"linear_residual\": 2.512193842437848e-18, \"cut_flow_comoving\": 1.228027823078754e-08, \"cut_stress\": -1.6780825045493955e-05, \"boost_flux\": -0.001250000000000009, \"cut_lab\": -0.001266768544767272, \"feed_lab\": -0.0013526362209882897, \"side_to_support\": 0.00010918786248385483, \"mass\": 1.9371523157899848, \"p_relative\": 1.3171476902639119e-07, \"p_lab\": -0.019371391443130822, \"storage_rate_lab\": -0.00019371391443130821, \"balance_residual\": 1.3416242735644554e-06, \"peak_log_density_perturbation\": 3.3349073924258013e-05}"
+      ]
+    },
+    "frame_and_angular_check": {
+      "command": "setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool rim-cut-frame-check --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/rim_cut_inventory_wolfram01 -- math -noprompt -script software/stage1_solver/tools/rim_cut_inventory.wl",
+      "started_utc": "2026-11-17T22:50:00.781081+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_cap_bytes": 4294967296,
+      "swap_cap_bytes": 0,
+      "verified_limits": true,
+      "stdout_sha256": "51d20c4c9f996e71393c8adc92f492f7833ff745f593fca8821787ba662e03bf",
+      "stdout_claim_lines": [
+        "\"angular projection = \"InputForm[(hb*(-(r*q[r]*Derivative[1][f][r]) + r*p[r]*Derivative[1][h][r] - h[r]*(2*p[r] + r*Derivative[1][p][r]) + f[r]*(2*q[r] + r*Derivative[1][q][r])))/(3*r)]\" hydro residual = \"0",
+        "\"level=\"64\" s=\"0.02\" relative_cut=\"InputForm[0.00001675498554252698]\" storage_rate=\"InputForm[0.0001937118751918724]\" closure_error_over_storage_rate=\"InputForm[0.013127363575218327]",
+        "\"level=\"64\" s=\"0.01\" relative_cut=\"InputForm[0.000016760390654025393]\" storage_rate=\"InputForm[0.000193713912120094]\" closure_error_over_storage_rate=\"InputForm[0.013127214483005209]",
+        "\"level=\"128\" s=\"0.02\" relative_cut=\"InputForm[0.00001676313657434696]\" storage_rate=\"InputForm[0.00019371187736020486]\" closure_error_over_storage_rate=\"InputForm[0.0069258757850937805]",
+        "\"level=\"128\" s=\"0.01\" relative_cut=\"InputForm[0.000016768544767263166]\" storage_rate=\"InputForm[0.00019371391443130824]\" closure_error_over_storage_rate=\"InputForm[0.0069258022971805154]",
+        "\"samples=\"8\" frame check max residual=\"InputForm[2.710505431213761*^-19]"
+      ]
+    }
+  }
+}

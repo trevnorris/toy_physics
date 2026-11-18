@@ -1,0 +1,102 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "scope": "Exact signed step responses of a conservative two-coordinate benchmark. Neither a force-to-motion measurement on a draining mouth nor a receiving-side or standing-wave stress reading.",
+  "status": "Working result pending independent review.",
+  "guard_sha256": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+  "report_sha256": "8e550c4f66bf34bdab610d80768131ab1b1d91b2d87b37fd1f7e37a15b43fb29",
+  "archive_checks": [
+    {
+      "command": "python3 -m zipfile -l _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz",
+      "sha256": "c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4",
+      "stdout": [
+        "File Name                                             Modified             Size",
+        "field.npy                                      1980-01-01 00:00:00     34078848",
+        "current.npy                                    1980-01-01 00:00:00       262272",
+        "dx.npy                                         1980-01-01 00:00:00          136",
+        "dz.npy                                         1980-01-01 00:00:00          136",
+        "speed.npy                                      1980-01-01 00:00:00          136",
+        "mouth.npy                                      1980-01-01 00:00:00        32896"
+      ]
+    },
+    {
+      "command": "python3 -m zipfile -l _scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.01.npz",
+      "sha256": "54048b7c5787e614cd9e1446b3e14e959f4d5d65f4fc45fc2fed9cf1819b4e23",
+      "stdout": [
+        "File Name                                             Modified             Size",
+        "field.npy                                      1980-01-01 00:00:00     34078848",
+        "current.npy                                    1980-01-01 00:00:00       262272",
+        "dx.npy                                         1980-01-01 00:00:00          136",
+        "dz.npy                                         1980-01-01 00:00:00          136",
+        "mouth.npy                                      1980-01-01 00:00:00        32896",
+        "speed.npy                                      1980-01-01 00:00:00          136"
+      ]
+    },
+    {
+      "command": "python3 -m zipfile -l _scratch/s11c/mouth_redistribution_depth01/fields/n32_restoring_slope_u0.02.npz",
+      "sha256": "303cb43b3375fca6251afbee3230be6c8cbd907d5cc3471415f52d29ff48be6a",
+      "stdout": [
+        "File Name                                             Modified             Size",
+        "field.npy                                      1980-01-01 00:00:00     34078848",
+        "current.npy                                    1980-01-01 00:00:00       262272",
+        "dx.npy                                         1980-01-01 00:00:00          136",
+        "dz.npy                                         1980-01-01 00:00:00          136",
+        "mouth.npy                                      1980-01-01 00:00:00        32896",
+        "speed.npy                                      1980-01-01 00:00:00          136"
+      ]
+    }
+  ],
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool trapped-wave-push-sympy --memory-gib 2 --log-directory _scratch/s11c/trapped_wave_push_sympy01 -- python3 software/stage1_solver/tools/trapped_wave_push.py",
+      "script_sha256": "a0d6f9312d84399b4d954e4703a9b0d9379ce0d1a8445927aff846f857c633e1",
+      "start_utc": "2026-11-17T21:55:29.134444+00:00",
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "verified_memory_cap_gib": 2,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "normalized rim trajectory = -alpha*f*cos(z) + alpha*f - f*z**2*(alpha - 1)/2",
+        "normalized envelope trajectory = (-alpha*f + f)*(z**2/2 + cos(z) - 1)",
+        "total momentum integral = -f*z**2*(alpha - 1)/2",
+        "envelope acceleration from slip = 0",
+        "rim second derivative at onset = f",
+        "envelope second derivative at onset = 0",
+        "envelope fourth derivative at onset = -f*(alpha - 1)",
+        "rim minus envelope at pi for drive 0 = 0",
+        "rim minus envelope at 2pi for drive 0 = 0",
+        "rim minus envelope at pi for drive 1 = 2",
+        "rim minus envelope at 2pi for drive 1 = 0",
+        "rim minus envelope at pi for drive -1 = -2",
+        "rim minus envelope at 2pi for drive -1 = 0",
+        "rim minus envelope at pi for drive 1/2 = 1",
+        "rim minus envelope at 2pi for drive 1/2 = 0",
+        "rim minus envelope at pi for drive -1/2 = -1",
+        "rim minus envelope at 2pi for drive -1/2 = 0",
+        "full drive two-time position determinant = -4*pi**2*(alpha - 1)"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool trapped-wave-push-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/trapped_wave_push_wolfram01 -- math -noprompt -script software/stage1_solver/tools/trapped_wave_push.wl",
+      "script_sha256": "2f23ccacbe5096f4ad59df9c1fd38bf836ffd53bbc669dd3c6521733c7c2836b",
+      "start_utc": "2026-11-17T21:55:37.626808+00:00",
+      "exit_code": 0,
+      "child_exit_code": 0,
+      "verified_memory_cap_gib": 4,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "\"unit-drive {rim,wave}: \"InputForm[{(z^2 - eta*z^2)/2 + eta*(1 - Cos[z]), (z^2 - eta*z^2)/2 - (1 - eta)*(1 - Cos[z])}]",
+        "\"drive, gap at pi and 2pi, trajectory prediction residuals: \"InputForm[{0, 0, 0, {0, 0}}]",
+        "\"drive, gap at pi and 2pi, trajectory prediction residuals: \"InputForm[{1, 2, 0, {0, 0}}]",
+        "\"drive, gap at pi and 2pi, trajectory prediction residuals: \"InputForm[{-1, -2, 0, {0, 0}}]",
+        "\"drive, gap at pi and 2pi, trajectory prediction residuals: \"InputForm[{1/2, 1, 0, {0, 0}}]",
+        "\"drive, gap at pi and 2pi, trajectory prediction residuals: \"InputForm[{-1/2, -1, 0, {0, 0}}]",
+        "\"full-drive determinant: \"InputForm[-4*(-1 + eta)*Pi^2]"
+      ]
+    }
+  },
+  "existing_measurements": {
+    "docs/_measurements/mouth_release_input_check.txt": "9e3ed3bf2ce7ff9efbc4869c92ebafaf55d2daa0e7d42b26b086fc59e4c37901",
+    "docs/_measurements/trapped_wave_mouth_response.json": "6d3a1d5b0328039483ef0f2443d3c1a6c08e1ffabe62a1660960b0a54ca2b706",
+    "docs/_measurements/mouth_inlet_trace.json": "a47514fa5e85a3513cae1eaa142aec35c5e3c8ed6589ba3156b23d0bf874b730"
+  }
+}

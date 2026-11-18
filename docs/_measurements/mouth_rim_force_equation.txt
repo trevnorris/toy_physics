@@ -1,0 +1,53 @@
+0PN actuator reaction for one draining mouth, working result pending review.
+Repository base fd667ea9291b4430a96afe3fd932926232f5507d
+The four trajectories are prescribed, radius 1 and inward number rate 0.25. The model has no bare kinetic term for the geometric center in these tests.
+SymPy uses the centroid shape derivative, a multiplier for an entrained field and a Laplace initial-value solution for elastic coupling. Mathematica uses angular virtual work, field power and a retarded oscillator solution. The examples are conditional and do not fit an extra mass to the drain.
+The difference between examples is additional actuator force for the same motion. The numeric outputs are the known additive feeding-side term in the total balance. No total physical forces are reported.
+
+Source and input SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+ffa4a0061d8308882c8534cc1c29962c0ec394ca7eca26ae251b6b5d9a8c4fff  software/stage1_solver/tools/mouth_rim_force_equation.py
+6a423a8b569c63559eab5cd05a1e2fa80a83689752c17ec5b54fc39ab065ad7e  software/stage1_solver/tools/mouth_rim_force_equation.wl
+db7ae4e93ffb1ddf105d2afd02194f29009464d9a642721a18e3edd3aeeeae73  docs/_measurements/mouth_prescribed_acceleration.txt
+2bb644fff8d028fb921008206a331b15d0621ff2c7a37ecb85302981c538393e  software/stage1_solver/tools/mouth_prescribed_acceleration.py
+7724ce85d0ac1e8a522695f84a15d32f2e09ee2af5b09dd4b7399cc239bbecec  software/stage1_solver/src/stage1_solver/mouth_probe.py
+eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee  software/em_charge_attribute/u1_body_dynamics_inputs.yaml
+7c34894eb5de630e969b863f9a14ad5b80fb73c627f2fa11c1363c1df529e247  docs/em_u1_body_definition.md
+3c4be88a72f94468b73c4bfe91132b6bd13a7101e35a7950b65780c9ba1681d1  docs/em_analog_next_phase_handoff.md
+e97faae02d16d9565fa5363d81ac592a8dfde201312de38d31a9e3c265992dd6  _scratch/s11c/mouth_prescribed_accel_zero02/outcome.json
+06fdb3e9bce54ccdcbf174bf2251dfa5cdc7ce46fe325d018d043d678cea542f  _scratch/s11c/mouth_prescribed_accel_zero02/stdout
+c49aa5cd49ef46476566095eb6c4788e78b7e5ba56f92c3eb0e39d735c974467  _scratch/s11c/mouth_prescribed_accel_positive02/outcome.json
+7391b79ee45b0aedd4fa38489ae03d91089afe8b6de95b9fd565f13c524b26ed  _scratch/s11c/mouth_prescribed_accel_positive02/stdout
+73af7b4f159232379caa78ed48c633cae479311c25199eb6fbb514ea7348cab6  _scratch/s11c/mouth_prescribed_accel_negative02/outcome.json
+10ff3f7748df9d9b94df9ccec9d58078e5197c11f3fd8661ee88e50846ee1e8b  _scratch/s11c/mouth_prescribed_accel_negative02/stdout
+88420ac8793ce28fbd840aaba558609c85b11fc05056234825e81061e2ad5edd  _scratch/s11c/mouth_prescribed_accel_positive_half02/outcome.json
+e4198b0b5a46d8d5e44c3e870757ddc721d514ff1738b3fceaaff1c988816a2a  _scratch/s11c/mouth_prescribed_accel_positive_half02/stdout
+d74da4a8e3641d50d2dbb0fb9024c9e25c9e6a2f3778dda5cc822a39f2c9e2b0  _scratch/s11c/mouth_prescribed_accel_negative_half02/outcome.json
+4fee98a0f146996effb79996d33b493a31b02d4bd71d4981f8202347bf553b6d  _scratch/s11c/mouth_prescribed_accel_negative_half02/stdout
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-rim-force --memory-gib 2 --log-directory _scratch/s11c/mouth_rim_force_sympy01 -- python3 software/stage1_solver/tools/mouth_rim_force_equation.py
+Start 2026-11-16T22:35:43.901187+00:00. End 2026-11-16T22:35:44.589811+00:00 (start plus guard wall time).
+Guard and worker exit 0. Limits verified. Zero swap cap, no deadline. Sampled peak 55439360 bytes. Stderr empty.
+Stdout _scratch/s11c/mouth_rim_force_sympy01/stdout (661 bytes, SHA256 ab817d9a02a61ce549cc4a4aaf10c0874f4d2bfb005f315b9abd4d4285e07f22).
+Literal stdout
+centroid gradient per solid angle = -R**2*(I - R*V*mu)/V**2
+rigid translation normalization, work for a unit lift = 1 lambda
+locked and compliant extra force per specified acceleration = c**2 -c**2*(cos(omega*t) - 1)
+compliant response per acceleration, slow and fast Laplace limits = c**2*omega**2/(omega**2 + s**2) c**2 0
+compliant power residual = 0
+A = 1/50 difference between the two required forces = c**2*cos(omega*t)/50
+A = -1/50 difference between the two required forces = -c**2*cos(omega*t)/50
+A = 1/100 difference between the two required forces = c**2*cos(omega*t)/100
+A = -1/100 difference between the two required forces = -c**2*cos(omega*t)/100
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-rim-force --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_rim_force_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_rim_force_equation.wl
+Start 2026-11-16T22:35:51.419041+00:00. End 2026-11-16T22:35:58.219765+00:00 (start plus guard wall time).
+Guard and worker exit 0. Limits verified. Zero swap cap, no deadline. Sampled peak 252686336 bytes. Stderr empty.
+Stdout _scratch/s11c/mouth_rim_force_wolfram01/stdout (605 bytes, SHA256 94916bbfdb0056c12a1a9b18e81509389244c23715bc4e190ffe2deaa3b29da0).
+Literal stdout
+"center variation and rim work = "InputForm[{h1, f*h1}]
+"locked force from power, compliant force from field propagation = "InputForm[{c^2*drive, 2*c^2*drive*Sin[(om*t)/2]^2}]
+"initial field, field speed and two extra actuator forces = "InputForm[{0, 0, c^2*drive, 0}]
+"difference in required force and power residual = "InputForm[{c^2*drive*Cos[om*t], 0}]
+"known contribution minus change in incoming flux, in drive order = ""[4.683830317955134e-10,-4.683830352649604e-10,2.3419150483889456e-10,-2.341915083083415e-10]"
+"four force differences per c^2 at onset = "InputForm[{1/50, -1/50, 1/100, -1/100}]

@@ -1,0 +1,37 @@
+0PN leading bulk export on the complete exterior of a held drain.
+Working paper calculation on base fd667ea9291b4430a96afe3fd932926232f5507d, pending review.
+SymPy differentiates the signed mass, carried-momentum and pressure readings on the cut.
+Mathematica independently forms and varies the four-dimensional Cartesian carrier tensor.
+The ideal potential receiver is an analytic control. No native receiving field or holder force was fitted.
+
+Sources (SHA256)
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+db5c53a2337a309e9809e2ebbddfbf0f28c4784c8cf5d9f4beae0857545f5181  software/stage1_solver/tools/mouth_leading_bulk_export.py
+723e4ed97451729a059b10615ed2b0d16b516b4fae1d8aec59baa4c8fb55590c  software/stage1_solver/tools/mouth_leading_bulk_export.wl
+655445c17189fe9cf3cf7651ab43ac19f7965698412911006d7764ef1683a1c8  research/pde_ledger_v3/steps/S15_two_drain_region.md
+94dedb38565e931ccfce02cfb129dcf9f2fb36bc704941d8c299845935989f60  research/pde_ledger_v3/steps/O2_steady_brane_balance.md
+8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1  research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+11cf70694c2f1cfd15393b3fa1844c8c94b651075e611deb4cf261f925b3594f  docs/drain_driven_initial_acceleration.md
+f41587d49a0b3211551f7adae9525411db600cffd98e4bd2abe10221c595edb0  software/stage1_solver/reports/one_mouth_outer_holding_force.md
+75b163dbb54c5be40bf1848a1704adbce32f19c35e95ea1293968b1d184739fe  docs/_measurements/mouth_bulk_phase_match.txt
+4d078fffd20452d0d0ea1210b811898dd27424636a6f09b797adae0c20c799f4  docs/_measurements/mouth_outer_holding_force.txt
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool bulk-export-angular --memory-gib 2 --log-directory _scratch/s11c/mouth_leading_bulk_export01 -- python3 software/stage1_solver/tools/mouth_leading_bulk_export.py
+Started 2026-11-17T06:43:07.792284+00:00. Guard wall seconds 0.7364414921030402.
+Guard/worker exit 0/0. Verified memory cap 2147483648 bytes, zero swap, no deadline. Stderr empty.
+Stdout 180 bytes. SHA256 9b494dade8db2811a54bc5e3aba1eb0196c3681d8059a4e70c3c4b04971260f1.
+Literal stdout
+mass angular mean = 0
+carried angular mean = A*j0/3 + 2*B*j0/3 + j1*vr/3
+pressure angular mean = p1*s/3
+radial Bernoulli control = q*(h + 3*t)/4
+uniform plus decaying dipole = V*q
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool bulk-export-angular-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_leading_bulk_export_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_leading_bulk_export.wl
+Started 2026-11-17T06:43:10.531338+00:00. Guard wall seconds 5.300817298237234.
+Guard/worker exit 0/0. Verified memory cap 4294967296 bytes, zero swap, no deadline. Stderr empty.
+Stdout 259 bytes. SHA256 5d15c6e939a8c2a4d08a4dadde784cacb0b21463ce6e7a015f9d07059376a685.
+Literal stdout
+"mass angular mean = "InputForm[0]
+"three times momentum angular mean = "InputForm[p1*sn + aw*cs*rho0*vr + 2*ar*rho0*sn*vr + 2*at*rho0*sn*vr + rho1*sn*vr^2 + ar*cs*rho0*vw + 2*at*cs*rho0*vw + cs*rho1*vr*vw]
+"uniform plus decaying dipole = "InputForm[drift*q]

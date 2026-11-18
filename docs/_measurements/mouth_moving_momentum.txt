@@ -1,0 +1,50 @@
+0PN sideways momentum balance on the moving aperture. Working result pending review.
+Repository base fd667ea9291b4430a96afe3fd932926232f5507d
+SymPy differentiates a moving discontinuity. Mathematica differentiates the inventory on both sides of a moving cut. Both include carrier transport and mixed stress.
+The Python numerical readout differences the two total face fluxes. The Wolfram readout uses summation by parts against the masked face density. The common grid and local receiving-slope variations are diagnostic inputs. No center trajectory was produced.
+
+Source and input SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+fc099f7e01c5f93855aabbfa3061339b05437be9dc3aac5c7d33efb3c23c600d  software/stage1_solver/tools/mouth_moving_momentum.py
+276b0e3ee155efdd20bece5ef06d4a42e94515676898722e74cbb1de1ffd7f83  software/stage1_solver/tools/mouth_moving_momentum.wl
+ffc771ee507b9b3512e0809b12d0bd0d5989a503372969ff51364fc62348b19f  software/stage1_solver/tools/held_crossflow_budget.py
+a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61  software/stage1_solver/tools/mouth_feed_weak_check.py
+9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83  software/stage1_solver/tools/mouth_feed_weak_flow.py
+f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0  docs/_measurements/mouth_feed_weak_run.json
+1e8539bb858c53dcc3ea0bb7558046e59ce8860760045d72e227149e85b0c409  _scratch/s11c/mouth_feed_depth01/outcome.json
+c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4  _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz
+e76812f953ed1af4fd216a5d7fb9d70da6801536dfc786a48fcea165c8ca8053  _scratch/s11c/mouth_rim_push_sympy01/resting_face.f64
+8058ac891b4fea61adcbe64ae350901d34747195b93e9b130bb32ec5a7311e98  software/stage1_solver/tools/mouth_rim_push_compatibility.py
+c4dd5af872d050f5fab5547220a7920c6fdddc8b001262651c0deb8c2f6592ad  docs/_measurements/mouth_rim_push_compatibility.txt
+
+SymPy
+$ python3 scripts/s11c_guarded_run.py --pool mouth-moving-momentum --memory-gib 2 --log-directory _scratch/s11c/mouth_moving_momentum_sympy01 -- python3 software/stage1_solver/tools/mouth_moving_momentum.py
+Start 2026-11-16T22:18:35.123420+00:00. End 2026-11-16T22:18:35.965277+00:00 (start plus guard wall time).
+Guard and worker exited 0. Limits verified. Swap cap 0. No deadline. Sampled cgroup peak 117895168 bytes. Stderr empty.
+Stdout _scratch/s11c/mouth_moving_momentum_sympy01/stdout (784 bytes, SHA256 ed6a0a5e3d9501c44c465367fc7479c8b0c85601e8deac5e5cd5961bfd4ca9c2).
+Literal stdout
+bulk jump in the moving balance = -Pi_minus + Pi_plus + Wn*p_minus - Wn*p_plus
+coordinate acceleration term in carrier-frame momentum rate = -N*a*m
+feed minus receiver [number, carriage, mixed stress] = [0, 0, beta*eps*n(x)*Derivative(h(x), x)]
+saved inward number rate = 0.25
+slope amplitude=0 face difference=0 boosted=0 single-face frame shift=-0.005
+slope amplitude=0.01 face difference=-8.92810410480643e-08 boosted=-8.92810410463296e-08 single-face frame shift=-0.005
+slope amplitude=-0.01 face difference=8.92810410489317e-08 boosted=8.9281041047197e-08 single-face frame shift=-0.005
+slope amplitude=0.005 face difference=-4.46405205240322e-08 boosted=-4.46405205240322e-08 single-face frame shift=-0.005
+face difference per unit trial slope amplitude = -8.92810410475797e-06
+
+Mathematica
+$ python3 scripts/s11c_guarded_run.py --pool mouth-moving-momentum --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_moving_momentum_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_moving_momentum.wl
+Start 2026-11-16T22:18:34.363263+00:00. End 2026-11-16T22:18:39.256946+00:00 (start plus guard wall time).
+Guard and worker exited 0. Limits verified. Swap cap 0. No deadline. Sampled cgroup peak 224956416 bytes. Stderr empty.
+Stdout _scratch/s11c/mouth_moving_momentum_wolfram01/stdout (519 bytes, SHA256 047cfd1c31c847ba0b3ae5789dc517f3f0a9c4648bb175f791def772b1a7f5e1).
+Literal stdout
+"stored rate from finite moving interval = "InputForm[-edge + f + pin - pout - gin*wn + gout*wn]
+"accelerating-frame remainder = "InputForm[-(m*num[t]*Derivative[1][v][t])]
+"two-trace flux difference = "InputForm[beta*eps*u[x]^2*Derivative[1][h][x]]
+"saved rate, two-face coefficient, single-face frame shift = ""[0.24999999999999997,-8.928104104757228e-6,-5.000000000000003e-3]"
+"integrated trial differences at amplitudes 0, .01, -.01, .005 = ""[0.0,-8.928104104757228e-8,8.928104104757228e-8,-4.464052052378614e-8]"
+
+Absolute cross-engine difference in trial coefficient 7.420008617947671e-19.
+Maximum absolute cross-engine difference over the four local trace variations and both Python frame readouts 1.359421705894148e-18.
+Zero of four physical push trajectories run.

@@ -1,0 +1,54 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "status": "Working result pending independent review.",
+  "scope": "Linearized translating rim with an unknown end reaction. A passive reflecting two-layer counterexample tests both the slow and finite-rate response. No physical throat coefficients or bare rim mass assigned.",
+  "input_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/reports/rim_end_load.md": "c1630e75b1df0bf4c2ae2c87fad297c54e7c7721dd299de95c88fba14145854b",
+    "research/pde/paper/pde.tex": "9c16d156bef23331bfbdb41d4643b0903967ac12e1a4f4214c266163f741b443",
+    "software/em_charge_attribute/u1_body_dynamics_inputs.yaml": "eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee",
+    "software/stage1_solver/reports/one_mouth_translation_equation.md": "0a04685e123324bc9ddd84e155dfa34f88497eef1cbc34f5123a678ef7adb4b3",
+    "software/stage1_solver/reports/one_mouth_moving_momentum.md": "eb2f9f3d3706032dfad0ac87832c555ffc0f7d8a9392d36f13d8562016ba53d5",
+    "docs/_measurements/rim_dipole_work.json": "d63a4f9ede8b97674bf6e66f54db98dabefa0bd4bfb08e15c1327b06d4992456"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rim-end-load-sympy --memory-gib 2 --log-directory _scratch/s11c/rim_end_load_sympy01 -- python3 software/stage1_solver/tools/rim_end_load.py",
+      "script_sha256": "a98f5c959495f7972b1ed466fc0c2df9e420eecb23c80b47e387a2f9d5f2e85c",
+      "start_utc": "2026-11-17T22:29:16.989913+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_gib": 2,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "force per rim displacement = (A*D + A*K1 - B*C)/(D + K1)",
+        "change for a different end load = -B*C*(K1 - K2)/((D + K1)*(D + K2))",
+        "interior concomitant derivative = s**2*mu(w)*p0(w)*ps(w)",
+        "end stiffness with layer 1 nearest = Z1*h*s*(Z1 + Z2)/(Z1 + Z2*h**2)",
+        "end stiffness with layer 2 nearest = Z2*h*s*(Z1 + Z2)/(Z1*h**2 + Z2)",
+        "end stiffness difference = h**3*s*(Z1 - Z2)*(Z1 + Z2)**2/((Z1 + Z2*h**2)*(Z1*h**2 + Z2))",
+        "static stiffness = 0",
+        "slow force per acceleration = tau*(Z1 + Z2)",
+        "static stiffness = 0",
+        "slow force per acceleration = tau*(Z1 + Z2)",
+        "first differing coefficient (s^4) = tau**3*(Z1 - Z2)*(Z1 + Z2)**2/(Z1*Z2)"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rim-end-load-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/rim_end_load_wolfram01 -- math -noprompt -script software/stage1_solver/tools/rim_end_load.wl",
+      "script_sha256": "fbf4c0a93bbc0e75665924ba60b1f4f3c8ee538b22fdb29d153dfcaaeec9c5d6",
+      "start_utc": "2026-11-17T22:29:26.224918+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_gib": 4,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "\"two free-end field layers\"\" = \"InputForm[(s*z1*(z1 + z2)*Coth[s*tau])/(z1 + z2 + z1*Csch[s*tau]^2)]",
+        "\"reversed free-end layers\"\" = \"InputForm[(s*z2*(z1 + z2)*Coth[s*tau])/(z1 + z2 + z2*Csch[s*tau]^2)]",
+        "\"slow inertia in each order\"\" = \"InputForm[{tau*(z1 + z2), tau*(z1 + z2)}]",
+        "\"leading dynamic difference\"\" = \"InputForm[(tau^3*(z1 - z2)*(z1 + z2)^2)/(z1*z2)]",
+        "\"load sensitivity of a common reciprocal near region\"\" = \"InputForm[-((b^2*(g1 - g2))/((d + g1)*(d + g2)))]"
+      ]
+    }
+  }
+}

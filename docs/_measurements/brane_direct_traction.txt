@@ -1,0 +1,34 @@
+Direct net tangential traction on the homogeneous brane at a radius-one rim, 0PN. Working result pending review.
+Repository base fd667ea9291b4430a96afe3fd932926232f5507d.
+The direct boundary condition acts on the brane displacement. The probe contains no contact coefficient or imposed tangential velocity.
+The material is initially at rest with constant density and shear-wave speed. No draining material fields enter these runs.
+Load is the tangential projection of a constant-axis dipole. Its equatorial traction per unit area ramps cubically from zero.
+
+Script and numerical input/output SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+6f88ef7a39c2a3dba98be6ffa0668081625835f3c64bf842f2434a9aadda7653  software/stage1_solver/tools/brane_direct_traction.py
+0a03ce08332684e0416b6a1a7f5438df533b109a6f44983de9a0ed15f9c5a133  software/stage1_solver/tools/brane_direct_traction_check.wl
+b499c33e9dc538bafa45e307b3c921c9443944b6e264ffbe21d5acc56fb63d1e  _scratch/s11c/direct_brane_traction01/velocities.json
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool brane-direct-traction --memory-gib 2 --log-directory _scratch/s11c/direct_brane_traction01 -- python3 software/stage1_solver/tools/brane_direct_traction.py --radius 1 --density 1 --wave-speed 1 --duration 0.001 --peak-traction 0.00002 --output _scratch/s11c/direct_brane_traction01/velocities.json
+Start 2026-11-16T23:44:41.606284+00:00. End 2026-11-16T23:44:43.684927+00:00 (start plus guard wall time).
+Guard/worker exit 0/0, limits verified. Sampled peak 64851968 bytes. Zero swap, no deadline. Stderr empty.
+Stdout _scratch/s11c/direct_brane_traction01/stdout (444 bytes, SHA256 291e68bbc03dfe650f2f5c57f12949af2fe66e5f7e4a6da7b4f009e19125a2e7).
+Literal stdout
+SymPy equatorial velocity per net traction = (a**2*s**2 + a*c*s + c**2)/(a*c*rho*s*(a*s + c))
+Homogeneous direct traction; peak, then rim velocities at T/4, T/2, T (finest grid)
++0 +0 +0 +0
++2e-05 +3.12489290551e-07 +2.49997858262e-06 +1.99999580748e-05
+-2e-05 -3.12489290551e-07 -2.49997858262e-06 -1.99999580748e-05
++1e-05 +1.56244645276e-07 +1.24998929131e-06 +9.9999790374e-06
+-1e-05 -1.56244645276e-07 -1.24998929131e-06 -9.9999790374e-06
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool brane-direct-traction --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/direct_brane_traction_wolfram01 -- math -noprompt -script software/stage1_solver/tools/brane_direct_traction_check.wl
+Start 2026-11-16T23:45:37.514267+00:00. End 2026-11-16T23:45:42.207505+00:00 (start plus guard wall time).
+Guard/worker exit 0/0, limits verified. Sampled peak 225038336 bytes. Zero swap, no deadline. Stderr empty.
+Stdout _scratch/s11c/direct_brane_traction_wolfram01/stdout (508 bytes, SHA256 c7984cef47e35e31b0f08dd4696b8be9d7c3b7442137e042a52a655771221932).
+Literal stdout
+"Exterior wave and imposed traction residuals: "{0, 0}
+"Velocity per net equatorial traction: "InputForm[(c^2 + a*c*s + a^2*s^2)/(a*c*rho*s*(c + a*s))]
+"Full positive ramp continuum rim velocities at T/4, T/2, T: "InputForm[{3.1250000097652181134900592748447`16.*^-7, 2.50000003124739601933361299703285`16.*^-6, 0.00002000000099983335713988128303571729`16.}]
+"Maximum relative velocity errors at 384, 768, 1536 radial cells: "InputForm[{0.0005441065230921567, 0.0001367379358602001, 0.00003427336119408571}]

@@ -1,0 +1,116 @@
+{
+  "scope": "Weak sideways drive, through first order in material intake in the spherical relaxed viscous exterior. Signed inward transported axial momentum and external Cauchy stress. The native material conversion surface has no supplied identification with this sphere.",
+  "base": "fd667ea9291b4430a96afe3fd932926232f5507d",
+  "sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/mouth_conversion_momentum.py": "2baf6d1143cf1be84edc1183a11650437ac665f988b4f01ccc7530c0883df35a",
+    "software/stage1_solver/tools/mouth_conversion_momentum.wl": "76db5fe1e13dffea7e79e527eafbd60c4adc19170a810ece672001eb9a331ec7",
+    "docs/_measurements/rim_material_entrainment.json": "548cc25905072bb452e647925ccd76e15077e7346c1c0aa3d2740aded242b475",
+    "docs/_measurements/companion_uniform_stress.json": "d5a112752c21062216ddae334bd37df4a36788cd71946f46fd346c9b11bed85e",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1",
+    "software/stage1_solver/tools/incident_flow_falloff.py": "f0e289efa985128f3174b59bd1554b2c16a618b13eaf68d79f977c6c3c2572a9",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c"
+  },
+  "runs": {
+    "sympy": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool mouth-conversion-momentum --memory-gib 2 --log-directory _scratch/s11c/mouth_conversion_sympy01 -- python3 software/stage1_solver/tools/mouth_conversion_momentum.py > _scratch/s11c/mouth_conversion_sympy01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T16:10:55.025962+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T16:10:55.787209+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 2,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 53886976,
+      "stdout_path": "_scratch/s11c/mouth_conversion_sympy01/stdout",
+      "stdout_bytes": 1061,
+      "stdout_sha256": "3fb04940cb54bf4d80dc5e99eba52c694e09d07a06691567bf7ab6662992b4fb",
+      "stdout": [
+        "mass intake: 4*pi*q*rho | 4*pi*q*rho | residual 0",
+        "undriven axial inflow: 0 | 0 | residual 0",
+        "rim mass redistribution contribution: 4*pi*b*q*rho/3 | 4*pi*b*q*rho/3 | residual 0",
+        "rim velocity contribution: 4*pi*q*rho*(3*V + W + 2*b)/3 | 4*pi*q*rho*(3*V + W + 2*b)/3 | residual 0",
+        "rim lab axial momentum rate: 4*pi*q*rho*(3*V + W + 3*b)/3 | 4*pi*q*rho*(3*V + W + 3*b)/3 | residual 0",
+        "held strong-contact carriage: 4*pi*W*q*rho/3 | 4*pi*W*q*rho/3 | residual 0",
+        "lab shift of carried rate: 4*pi*q*rho*shift | 4*pi*q*rho*shift | residual 0",
+        "arbitrary-radius mechanical rate = 4*pi*W*a*eta - 4*pi*a*b*eta + q*(4*pi*W*a*rho/r - 10*pi*W*rho/3 - 4*pi*a*b*rho/r + 2*pi*b*rho)",
+        "arbitrary-radius carried rate = 4*pi*q*rho*(3*V*r - 3*W*a + 4*W*r + 3*a*b)/(3*r)",
+        "net flux independent of radius: 2*pi*(2*V*q*rho + 2*W*a*eta + W*q*rho - 2*a*b*eta + b*q*rho) | 2*pi*(2*V*q*rho + 2*W*a*eta + W*q*rho - 2*a*b*eta + b*q*rho) | residual 0",
+        "combined inward relative momentum rate: 2*pi*(2*W*a*eta + W*q*rho - 2*a*b*eta + b*q*rho) | 2*pi*(2*W*a*eta + W*q*rho - 2*a*b*eta + b*q*rho) | residual 0"
+      ]
+    },
+    "wolfram": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool mouth-conversion-momentum --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_conversion_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_conversion_momentum.wl > _scratch/s11c/mouth_conversion_wolfram01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T16:11:05.074550+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T16:11:12.025326+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 241111040,
+      "stdout_path": "_scratch/s11c/mouth_conversion_wolfram01/stdout",
+      "stdout_bytes": 618,
+      "stdout_sha256": "c0f2f00be646cd7e03968d6fe494b5dee4d12067132f202218d763d17e4a4295",
+      "stdout": [
+        "\"intake perturbation\"\" | \"\"0\"\" | \"\"0\"\" | residual \"\"0\"",
+        "\"held rim carriage per mass\"\" | \"\"(3*b + w)/3\"\" | \"\"b + w/3\"\" | residual \"\"0\"",
+        "\"moving rim carriage per mass\"\" | \"\"(3*b + 3*v + w)/3\"\" | \"\"b + v + w/3\"\" | residual \"\"0\"",
+        "\"held normal locking limit\"\" | \"\"(4*dens*Pi*q*w)/3\"\" | \"\"(4*dens*Pi*q*w)/3\"\" | residual \"\"0\"",
+        "\"stress change vs inward carriage lost\"\" | \"\"(-4*dens*Pi*q*(a - radius)*(b - w))/radius\"\" | \"\"(-4*dens*Pi*q*(a - radius)*(b - w))/radius\"\" | residual \"\"0\"",
+        "\"relative total at rim\"\" | \"\"-2*Pi*(2*a*b*eta - b*dens*q - 2*a*eta*w - dens*q*w)\"\" | \"\"4*a*eta*Pi*(-b + w) + 2*dens*Pi*q*(b + w)\"\" | residual \"\"0\""
+      ]
+    }
+  },
+  "archive_inventory": {
+    "_scratch/s11c/lateral_target_rate_e48_c4_01/fields/source_d8.npz": {
+      "sha256": "24e6b3fda1e9345acbedbd412bd28ebb4e154963166cb768fb9da0c99d51f9d0",
+      "array_members": [
+        "centers.npy",
+        "currents.npy",
+        "dz.npy",
+        "layers.npy",
+        "r.npy",
+        "rates.npy",
+        "x.npy"
+      ]
+    },
+    "_scratch/s11c/incident_flow_falloff01/L48C4_d16.npz": {
+      "sha256": "a3091076f291d5c03df1ccd06361b12fac578a1473509d73ba11b5b74c8bd82f",
+      "array_members": [
+        "centers.npy",
+        "currents.npy",
+        "dz.npy",
+        "layers.npy",
+        "r.npy",
+        "rates.npy",
+        "x.npy"
+      ]
+    },
+    "_scratch/s11c/lateral_bath_e48_c4_01/fields/d8.npz": {
+      "sha256": "741fbc19a3e6fab141d6ba218fef3858974d9928fba6a890297051cda1773bd6",
+      "array_members": [
+        "currents.npy",
+        "d.npy",
+        "dz.npy",
+        "layers.npy",
+        "r.npy",
+        "x.npy"
+      ]
+    },
+    "_scratch/s11c/held_force_incident01/L48C4_d16.npz": {
+      "sha256": "43df2709016d342acc53b07641ba3de7fc95e97fa4f35c504a981f2634d181a5",
+      "array_members": [
+        "centers.npy",
+        "currents.npy",
+        "dz.npy",
+        "layers.npy",
+        "r.npy",
+        "rates.npy",
+        "x.npy"
+      ]
+    }
+  }
+}

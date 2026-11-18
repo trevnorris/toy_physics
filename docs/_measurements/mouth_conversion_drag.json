@@ -1,0 +1,99 @@
+{
+  "scope": "Steady integrated momentum compatibility, conditional on previously calculated ideal exterior fluxes. Conversion carriage and mechanical transfer are kept distinct. Normal-pressure moment is a geometric identity, not a solved interface response. No physical inertia or free-release prediction.",
+  "base": "fd667ea9291b4430a96afe3fd932926232f5507d",
+  "review_status": "Working, uncommitted pending independent review; two algebra systems are not two review legs.",
+  "sha256": {
+    "software/stage1_solver/tools/mouth_conversion_drag.py": "d87c3ebbb6478dd02b0574a9eda62d883fa300c60693b6f68be928c5cc6d3d12",
+    "software/stage1_solver/tools/mouth_conversion_drag.wl": "96f16e11d17e9468ce2362dfde4fe66c873d7b9a4244d11816f005f7162b99b5",
+    "software/stage1_solver/reports/mouth_conversion_drag.md": "ca30dce63e63591207c1f7a065e72e8a46a85dfcb1407503952120de7523f868",
+    "software/stage1_solver/reports/one_mouth_outer_holding_force.md": "f41587d49a0b3211551f7adae9525411db600cffd98e4bd2abe10221c595edb0",
+    "docs/_measurements/mouth_outer_holding_force.txt": "4d078fffd20452d0d0ea1210b811898dd27424636a6f09b797adae0c20c799f4",
+    "docs/_measurements/mouth_tow_and_companion.json": "e105126a80b2aaa6669438c3a0ecce421fc774c4f440d7cfeb36d2f641b86e16",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "runs": {
+    "sympy": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool mouth-conversion-drag-sympy --memory-gib 2 --log-directory _scratch/s11c/mouth_conversion_drag_sympy01 -- python3 software/stage1_solver/tools/mouth_conversion_drag.py > _scratch/s11c/mouth_conversion_drag_sympy01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T17:08:18.486778+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T17:08:19.329383+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 2,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 53084160,
+      "stdout_path": "_scratch/s11c/mouth_conversion_drag_sympy01/stdout",
+      "stdout_bytes": 1529,
+      "stdout_sha256": "07935d888474e277df266a80e4bc8a3ace8e753c912b81625c9df7b0a02ff8aa",
+      "literal_readings": [
+        "SymPy version = 1.14.0",
+        "required feed stress reaction = -C + D*U_br - D*V - K_feed - T",
+        "required bulk stress reaction = C - D*U_bulk + D*V - K_bulk + T",
+        "total reaction including other receiver: D*U_br - D*U_bulk - K_bulk - K_feed | D*U_br - D*U_bulk - K_bulk - K_feed | residual 0",
+        "dependence on local conversion carriage: 0 | 0 | residual 0",
+        "dependence on internal stress transfer: 0 | 0 | residual 0",
+        "common change of reference speed: 0 | 0 | residual 0",
+        "ideal tow through resting media: 0 | 0 | residual 0",
+        "ideal held brane stream: D*U_br | D*U_br | residual 0",
+        "first variation of transferred carriage: j0*vx1 + j1*vx0 | j0*vx1 + j1*vx0 | residual 0",
+        "live carried first variation including measure: area0*j0*vx1 + area0*j1*vx0 + area1*j0*vx0 | area0*j0*vx1 + area0*j1*vx0 + area1*j0*vx0 | residual 0",
+        "carriage frame change: -boost*(eps*j1 + j0) | -boost*(eps*j1 + j0) | residual 0",
+        "projected pressure per radial interval = 4*pi*r*(r*p0(r)*Derivative(h1(r), r) + r*p1(r)*Derivative(h0(r), r) + 2*h1(r)*p0(r))/3",
+        "live pressure and shape, integration by parts: 4*pi*r*(r*p0(r)*Derivative(h1(r), r) + r*p1(r)*Derivative(h0(r), r) + 2*h1(r)*p0(r))/3 | 4*pi*r*(r*p0(r)*Derivative(h1(r), r) + r*p1(r)*Derivative(h0(r), r) + 2*h1(r)*p0(r))/3 | residual 0",
+        "flat unchanged face: 0 | 0 | residual 0",
+        "curved face pressure moment: 4*pi*a**5*k_h*k_p/15 | 4*pi*a**5*k_h*k_p/15 | residual 0",
+        "mass-normalized inverse-square coefficient = D_s*D_t/(4*pi*M_s*M_t*rho)",
+        "common intake per inertia condition: lambda**2/(4*pi*rho) | lambda**2/(4*pi*rho) | residual 0"
+      ],
+      "guard_evidence_sha256": {
+        "outcome.json": "68a8ae1d45c1e93775838fda0bf57d54ba65e52eceedce5640dfaef446973f55",
+        "child-outcome.json": "7b3cb6e4070489e6ab1ad1edcf41e093f67c80db0191a7de29cb385a7f9c12e6",
+        "invocation.json": "183de93dcdead67f4fc6e7d7ba04df09bfc9438acdea923ab4a051cdbfb99887",
+        "limit-validation.json": "f766e9b9acd21f3a7fcd2a5032adb43d4d856c9b4bd1e94019d406fd02602d59",
+        "duration-validation.json": "b7b9c58dd0ec33f07067967dd624c44127d7066971a4006f06ad57656809d244"
+      }
+    },
+    "wolfram": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool mouth-conversion-drag-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_conversion_drag_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_conversion_drag.wl > _scratch/s11c/mouth_conversion_drag_wolfram01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T17:08:21.760752+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T17:08:28.262699+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "limits_verified": true,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 228048896,
+      "stdout_path": "_scratch/s11c/mouth_conversion_drag_wolfram01/stdout",
+      "stdout_bytes": 1521,
+      "stdout_sha256": "997fe18b88601ebfde3a2914fe8f6ca0137d84699b3bb6106437fefb5656e4a9",
+      "literal_readings": [
+        "\"Wolfram version = \"\"15.0.1 for Linux x86 (64-bit) (July 2, 2026)\"",
+        "\"oriented subsystem budgets = \"\"{-carriage - ff - kf - transfer + md*(ub - v), carriage - fb - kb + transfer - md*(uw - v)}\"",
+        "\"required subsystem reactions = \"\"{ff -> -carriage - kf - transfer + md*ub - md*v, fb -> carriage - kb + transfer - md*uw + md*v}\"",
+        "\"mouth force = \"\"-kb - kf + md*ub - md*uw\"",
+        "\"internal exchange cancellation\"\" | \"\"{0, 0}\"\" | \"\"{0, 0}\"\" | residual \"\"{0, 0}\"",
+        "\"tow through resting media\"\" | \"\"0\"\" | \"\"0\"\" | residual \"\"0\"",
+        "\"held brane stream\"\" | \"\"md*ub\"\" | \"\"md*ub\"\" | residual \"\"0\"",
+        "\"live carried first variation including measure = \"\"area1*j0*vx0 + area0*j1*vx0 + area0*j0*vx1\"",
+        "\"upward graph area vector = \"\"{-hx, -hy, -hz, 1}\"",
+        "\"normal pressure projected along x\"\" | \"\"hx*pressure\"\" | \"\"hx*pressure\"\" | residual \"\"0\"",
+        "\"projected pressure per radial interval = \"\"(4*Pi*r*(2*h1[r]*p0[r] + r*p1[r]*Derivative[1][h0][r] + r*p0[r]*Derivative[1][h1][r]))/3\"",
+        "\"pressure moment with endpoint\"\" | \"\"(4*Pi*r*(2*h1[r]*p0[r] + r*p1[r]*Derivative[1][h0][r] + r*p0[r]*Derivative[1][h1][r]))/3\"\" | \"\"(8*Pi*r*h1[r]*p0[r])/3 + (4*Pi*r^2*p0[r]*Derivative[1][h1][r])/3 + (4*Pi*r^2*h1[r]*Derivative[1][p0][r])/3 + (4*Pi*r^2*(p1[r]*Derivative[1][h0][r] - h1[r]*Derivative[1][p0][r]))/3\"\" | residual \"\"0\"",
+        "\"flat unchanged face\"\" | \"\"0\"\" | \"\"0\"\" | residual \"\"0\"",
+        "\"curved face pressure moment = \"\"(4*a^5*kh*kp*Pi)/15\"",
+        "\"mass-normalized inverse-square coefficient = \"\"(ds*dt)/(4*density*ms*mt*Pi)\"",
+        "\"common intake per inertia condition = \"\"lambda^2/(4*density*Pi)\""
+      ],
+      "guard_evidence_sha256": {
+        "outcome.json": "ce0a605d8f0747342662b85b52e8af98e5d9de811147233072038cc19e1ed838",
+        "child-outcome.json": "496497b66a9879ef310150300d6d890aa640ac6ed021433e243f805c71879fe1",
+        "invocation.json": "895a73cdbf6163b72e2f1c78b19b221cfec216029179d7bbfd34f109054584b7",
+        "limit-validation.json": "0cd0b5b6893db7b510888247c2989953eae720f748042fdf344845cc0f58925e",
+        "duration-validation.json": "b7b9c58dd0ec33f07067967dd624c44127d7066971a4006f06ad57656809d244"
+      }
+    }
+  }
+}

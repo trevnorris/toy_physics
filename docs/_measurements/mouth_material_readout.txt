@@ -1,0 +1,44 @@
+Material displacement outside the radius-one rim at 0PN. Working result, pending review.
+Repository base fd667ea9291b4430a96afe3fd932926232f5507d.
+Archived trajectories inspected without replay. The spherical projection and curl calculation specifies a readout for an independently measured material displacement. No archival brane displacement or shear force was obtained.
+
+Source and input SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+d3f9bff274f29b484b6377192d6eddb22eabb9e4a865bdefe34d94c2e2294687  software/stage1_solver/tools/mouth_material_readout.py
+db7ae4e93ffb1ddf105d2afd02194f29009464d9a642721a18e3edd3aeeeae73  docs/_measurements/mouth_prescribed_acceleration.txt
+2bb644fff8d028fb921008206a331b15d0621ff2c7a37ecb85302981c538393e  software/stage1_solver/tools/mouth_prescribed_acceleration.py
+9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83  software/stage1_solver/tools/mouth_feed_weak_flow.py
+e64b4c7f686180615ed80b4db63c05a5be08d55470dfd19b7c5d6655712eb3ea  software/stage1_solver/reports/pathA_35_G0_freeze.md
+2bc9199ce306c583ee886de3d6b60eeaf4bd9e88a43201b7afa3cf660149bbe0  docs/_measurements/mouth_brane_shear_traction.txt
+8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1  research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4  _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz
+1398031675d2bc0fcc9392a4e57e888b6a4a321ae12d6c80a7d2152c46a33e58  _scratch/s11c/mouth_prescribed_accel_zero02/invocation.json
+e97faae02d16d9565fa5363d81ac592a8dfde201312de38d31a9e3c265992dd6  _scratch/s11c/mouth_prescribed_accel_zero02/outcome.json
+06fdb3e9bce54ccdcbf174bf2251dfa5cdc7ce46fe325d018d043d678cea542f  _scratch/s11c/mouth_prescribed_accel_zero02/stdout
+49c10c9130740dcea7f4c11f01477e35620f70cd52890e5c93bacc756e8b89a8  _scratch/s11c/mouth_prescribed_accel_positive02/invocation.json
+c49aa5cd49ef46476566095eb6c4788e78b7e5ba56f92c3eb0e39d735c974467  _scratch/s11c/mouth_prescribed_accel_positive02/outcome.json
+7391b79ee45b0aedd4fa38489ae03d91089afe8b6de95b9fd565f13c524b26ed  _scratch/s11c/mouth_prescribed_accel_positive02/stdout
+75d2c58e308cf02bfaada7fb642807fdbce0c57cf207e44aface8d3cee066e01  _scratch/s11c/mouth_prescribed_accel_negative02/invocation.json
+73af7b4f159232379caa78ed48c633cae479311c25199eb6fbb514ea7348cab6  _scratch/s11c/mouth_prescribed_accel_negative02/outcome.json
+10ff3f7748df9d9b94df9ccec9d58078e5197c11f3fd8661ee88e50846ee1e8b  _scratch/s11c/mouth_prescribed_accel_negative02/stdout
+3147e92ba77f4a24f6a42289c1943615b207542b49aadbc8d88a06cc09c18b3e  _scratch/s11c/mouth_prescribed_accel_positive_half02/invocation.json
+88420ac8793ce28fbd840aaba558609c85b11fc05056234825e81061e2ad5edd  _scratch/s11c/mouth_prescribed_accel_positive_half02/outcome.json
+e4198b0b5a46d8d5e44c3e870757ddc721d514ff1738b3fceaaff1c988816a2a  _scratch/s11c/mouth_prescribed_accel_positive_half02/stdout
+03efb832f6d8a9b0313454bd84998184434beb339558e20ae55f81c861d0fd60  _scratch/s11c/mouth_prescribed_accel_negative_half02/invocation.json
+d74da4a8e3641d50d2dbb0fb9024c9e25c9e6a2f3778dda5cc822a39f2c9e2b0  _scratch/s11c/mouth_prescribed_accel_negative_half02/outcome.json
+4fee98a0f146996effb79996d33b493a31b02d4bd71d4981f8202347bf553b6d  _scratch/s11c/mouth_prescribed_accel_negative_half02/stdout
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-material-readout --memory-gib 2 --log-directory _scratch/s11c/mouth_material_readout01 -- python3 software/stage1_solver/tools/mouth_material_readout.py
+Start 2026-11-16T22:59:24.929099+00:00. End 2026-11-16T22:59:25.617826+00:00 (start plus guard wall time).
+Guard and worker exit 0. Verified limits, zero swap cap, no deadline. Sampled cgroup peak 60436480 bytes. Stderr empty.
+Stdout _scratch/s11c/mouth_material_readout01/stdout (704 bytes, SHA256 0aa7b72a384b76c3ebb0229008063600060e1d8ea1f2daee13befcb34578aa81).
+Literal stdout
+initial packet arrays: ['current', 'dx', 'dz', 'field', 'mouth', 'speed']
+A=+0 sample_times=[0.00025, 0.0005, 0.001] commanded_final_X=+0
+A=+0.02 sample_times=[0.00025, 0.0005, 0.001] commanded_final_X=+1e-08
+A=-0.02 sample_times=[0.00025, 0.0005, 0.001] commanded_final_X=-1e-08
+A=+0.01 sample_times=[0.00025, 0.0005, 0.001] commanded_final_X=+5e-09
+A=-0.01 sample_times=[0.00025, 0.0005, 0.001] commanded_final_X=-5e-09
+per-sample keys across all five runs and both time refinements: [('carried', 'feed_load', 'inward_rate', 'stress', 't', 'x')]
+recovered radial and tangential dipole amplitudes: p(r) d(r)
+axial rotational shear force on exterior: -8*pi*mu_R*r*(r*Derivative(d(r), r) + d(r) - p(r))/3

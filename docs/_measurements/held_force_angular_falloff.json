@@ -1,0 +1,76 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "status": "Working result pending independent review.",
+  "scope": "Paired-minus-alone static holder reaction for unbounded 3D and 4D steady potential exteriors with fixed signed throughputs. Both axial dipoles can vary with separation; the code takes no distance derivative of a dipole. One-holder ideal result and open physical load are distinguished.",
+  "source_sha256": {
+    "software/stage1_solver/reports/held_force_angular_falloff.md": "68b47cf692d8c9c660f18b3dd50ce37cd2bec61e11cde0a9829b57ffdc6ab2a9",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/reports/mouth_leading_bulk_export.md": "fbd4a50e72af3b5d108a132aeac435c028ac8db24e493cd3f89575b2d9fc6f9e",
+    "software/stage1_solver/reports/one_mouth_outer_holding_force.md": "f41587d49a0b3211551f7adae9525411db600cffd98e4bd2abe10221c595edb0",
+    "software/stage1_solver/reports/receiving_bulk_energy_response.md": "2125c3c761a82e843a7172a7dbd0fe3186ae2d9264cea0179793d9f1973ed97e",
+    "software/stage1_solver/reports/one_mouth_hold_release_requirements.md": "a8dceca6088b2f49a51484d5fa843201037f04708f0ac1f1eb7c460dd241bd28",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1"
+  },
+  "runs": {
+    "sympy": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool angular-held-force-sympy --memory-gib 2 --log-directory _scratch/s11c/angular_held_force_sympy01 -- python3 software/stage1_solver/tools/held_force_angular_falloff.py > _scratch/s11c/angular_held_force_sympy01.launch.log 2>&1 < /dev/null",
+      "script": "software/stage1_solver/tools/held_force_angular_falloff.py",
+      "script_sha256": "354346a7db6a3b8961942b1d20fd9f2ce97ed74955b7fc2fdfa3297b1f8afbd7",
+      "start": "2026-11-17T20:37:58.402950+00:00",
+      "end_from_guard_wall_time": "2026-11-17T20:37:58.997224+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_cap_bytes": 2147483648,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 52826112,
+      "stdout_path": "_scratch/s11c/angular_held_force_sympy01/stdout",
+      "stdout_sha256": "5815a5ba8b7ec49a14f802a366da165d50e5b68489bf714555c1681a6fba626d",
+      "stdout_bytes": 857,
+      "literal_readings": [
+        "SymPy version = 1.14.0",
+        "3D one-mouth plane integral at arbitrary b_t: 0 | residual 0",
+        "3D finite paired-minus-alone holder: 24*pi*b_s*b_t*rho/d**4 - q_s*q_t/(4*pi*d**2*rho) + (-2*b_s*q_t + 2*b_t*q_s)/d**3 | residual 0",
+        "3D same attraction in reversed center coordinates: 0 | residual 0",
+        "3D inverse-square holder coefficient for fixed moments: -q_s*q_t/(4*pi*rho) | residual 0",
+        "3D rescaled leading induced correction: -2*k_s*q_t + 2*k_t*q_s | residual 0",
+        "4D one-mouth plane integral at arbitrary b_t: 0 | residual 0",
+        "4D finite paired-minus-alone holder: 24*pi**2*b_s*b_t*rho/d**5 - q_s*q_t/(2*pi**2*d**3*rho) + (-3*b_s*q_t + 3*b_t*q_s)/d**4 | residual 0",
+        "4D same attraction in reversed center coordinates: 0 | residual 0",
+        "4D inverse-square holder coefficient for fixed moments: 0 | residual 0",
+        "4D rescaled leading induced correction: -3*k_s*q_t + 3*k_t*q_s | residual 0"
+      ]
+    },
+    "wolfram": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool angular-held-force-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/angular_held_force_wolfram01 -- math -noprompt -script software/stage1_solver/tools/held_force_angular_falloff.wl > _scratch/s11c/angular_held_force_wolfram01.launch.log 2>&1 < /dev/null",
+      "script": "software/stage1_solver/tools/held_force_angular_falloff.wl",
+      "script_sha256": "d984f2ea21e113af58228c0555ea26e6b8a5e0f7878fec32020f4a96888c8d78",
+      "start": "2026-11-17T20:37:58.239742+00:00",
+      "end_from_guard_wall_time": "2026-11-17T20:38:05.181311+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_cap_bytes": 4294967296,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 225320960,
+      "stdout_path": "_scratch/s11c/angular_held_force_wolfram01/stdout",
+      "stdout_sha256": "b55e84b4d2c8a33b0dcc608501adeb79e5bc39d97dc93944042b5a2de687f800",
+      "stdout_bytes": 5449,
+      "literal_readings": [
+        "\"Wolfram version = \"\"15.0.1 for Linux x86 (64-bit) (July 2, 2026)\"",
+        "\"n=\"3\" d=\"8\" R=\"1\" full holder=\"\"-0.00058819836562742809135313602883088259`12.\"\" redistribution {carriage,pressure,total}=\"\"{0.00038451413314923264160249841274917886`12., -0.000389869689602239337317632378448295`12., -5.35555645300669571513396569911613`12.*^-6}\"\" d^2 * carriage change=\"\"0.02460890452155088906255989841594744735`12.\"\" d^(n+2) * total change=\"\"-0.17549087385212340519350978802863742233`12.\"\" max formula error=\"\"0``45.80771122588316\"",
+        "\"n=\"3\" d=\"8\" R=\"3/2\" full holder=\"\"-0.00058819836562742809135313602883088259`12.\"\" redistribution {carriage,pressure,total}=\"\"{0.00010965188026332221875700228386922516`12., -0.00011500743671632891447213624956834129`12., -5.35555645300669571513396569911613`12.*^-6}\"\" d^2 * carriage change=\"\"0.00701772033685262200044814616763041028`12.\"\" d^(n+2) * total change=\"\"-0.17549087385212340519350978802863742233`12.\"\" max formula error=\"\"0``45.76956713168434\"",
+        "\"n=\"3\" d=\"16\" R=\"1\" full holder=\"\"-0.00014587765381569961334588775783645379`12.\"\" redistribution {carriage,pressure,total}=\"\"{0.0000974654853835309429796958620698234`12., -0.00009763243690562520741608310412333557`12., -1.6695152209426443638724205351217`12.*^-7}\"\" d^2 * carriage change=\"\"0.02495116425818392140280214068987478994`12.\"\" d^(n+2) * total change=\"\"-0.17506135923151542564918872350357967779`12.\"\" max formula error=\"\"0``46.410442208248156\"",
+        "\"n=\"3\" d=\"16\" R=\"3/2\" full holder=\"\"-0.00014587765381569961334588775783645379`12.\"\" redistribution {carriage,pressure,total}=\"\"{0.00002874449952239118360780400054273352`12., -0.00002891145104448544804419124259624569`12., -1.6695152209426443638724205351217`12.*^-7}\"\" d^2 * carriage change=\"\"0.00735859187773214300359782413893978078`12.\"\" d^(n+2) * total change=\"\"-0.17506135923151542564918872350357967779`12.\"\" max formula error=\"\"0``46.36905958086857\"",
+        "\"n=\"3\" d=\"32\" R=\"1\" full holder=\"\"-0.00003643289120840013379255632911000693`12.\"\" redistribution {carriage,pressure,total}=\"\"{0.0000244081019183360217922737298759232`12., -0.00002441331755333481835745493004019473`12., -5.21563499879656518120016427153`12.*^-9}\"\" d^2 * carriage change=\"\"0.02499389636437608631528829939294535658`12.\"\" d^(n+2) * total change=\"\"-0.17500766990393942820614859043794745972`12.\"\" max formula error=\"\"0``47.0125875539475\"",
+        "\"n=\"3\" d=\"32\" R=\"3/2\" full holder=\"\"-0.00003643289120840013379255632911000693`12.\"\" redistribution {carriage,pressure,total}=\"\"{7.22783601670543754161736888275409`12.*^-6, -7.23305165170423410679856904702562`12.*^-6, -5.21563499879656518120016427153`12.*^-9}\"\" d^2 * carriage change=\"\"0.00740130408110636804261618573594018845`12.\"\" d^(n+2) * total change=\"\"-0.17500766990393942820614859043794745972`12.\"\" max formula error=\"\"0``46.970827510682895\"",
+        "\"n=\"4\" d=\"8\" R=\"1\" full holder=\"\"-0.0000299282374569645959241357665657284`12.\"\" redistribution {carriage,pressure,total}=\"\"{-0.00043833041009409847512213934169966754`12., 0.00043932294401235902917477343084979839`12., 9.9253391826055405263408915013086`12.*^-7}\"\" d^2 * carriage change=\"\"-0.02805314624602230240781691786877872216`12.\"\" d^(n+2) * total change=\"\"0.26018681146849468157371066617190402708`12.\"\" max formula error=\"\"0``46.01305981758474\"",
+        "\"n=\"4\" d=\"8\" R=\"3/2\" full holder=\"\"-0.0000299282374569645959241357665657284`12.\"\" redistribution {carriage,pressure,total}=\"\"{-0.00008568378677182977948917975101850304`12., 0.0000866763206900903335418138401686339`12., 9.9253391826055405263408915013086`12.*^-7}\"\" d^2 * carriage change=\"\"-0.00548376235339710588730750406518419466`12.\"\" d^(n+2) * total change=\"\"0.26018681146849468157371066617190402708`12.\"\" max formula error=\"\"0``46.57689808646617\"",
+        "\"n=\"4\" d=\"16\" R=\"1\" full holder=\"\"-3.84946743724719356828249350911106`12.*^-6\"\" redistribution {carriage,pressure,total}=\"\"{-0.00010984560499340309500788016881271313`12., 0.00010986123397805904518669390726808448`12., 1.562898465595017881373845537135`12.*^-8}\"\" d^2 * carriage change=\"\"-0.02812047487831119232201732321605456135`12.\"\" d^(n+2) * total change=\"\"0.26221085143356183519671383327148800339`12.\"\" max formula error=\"\"0``46.63582093070365\"",
+        "\"n=\"4\" d=\"16\" R=\"3/2\" full holder=\"\"-3.84946743724719356828249350911106`12.*^-6\"\" redistribution {carriage,pressure,total}=\"\"{-0.00002168371346825960039816200755564121`12., 0.00002169934245291555057697574601101256`12., 1.562898465595017881373845537135`12.*^-8}\"\" d^2 * carriage change=\"\"-0.00555103064787445770192947393424414974`12.\"\" d^(n+2) * total change=\"\"0.26221085143356183519671383327148800339`12.\"\" max formula error=\"\"0``47.25982041001811\"",
+        "\"n=\"4\" d=\"32\" R=\"1\" full holder=\"\"-4.8289261422337982297247579545215`12.*^-7\"\" redistribution {carriage,pressure,total}=\"\"{-0.00002746554386277201962063575929184438`12., 0.00002746578830128653276605031249195252`12., 2.4443851451314541455320010815`12.*^-10}\"\" d^2 * carriage change=\"\"-0.02812471691547854809153101751484864126`12.\"\" d^(n+2) * total change=\"\"0.26246385642919522939958922915893600042`12.\"\" max formula error=\"\"0``47.248869220491414\"",
+        "\"n=\"4\" d=\"32\" R=\"3/2\" full holder=\"\"-4.8289261422337982297247579545215`12.*^-7\"\" redistribution {carriage,pressure,total}=\"\"{-5.42507077329027042027554811863485`12.*^-6, 5.425315211804783565690101318743`12.*^-6, 2.4443851451314541455320010815`12.*^-10}\"\" d^2 * carriage change=\"\"-0.00555527247184923691036216127348208432`12.\"\" d^(n+2) * total change=\"\"0.26246385642919522939958922915893600042`12.\"\" max formula error=\"\"0``47.910102465412336\""
+      ]
+    }
+  }
+}

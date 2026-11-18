@@ -1,0 +1,54 @@
+Field coverage for the 0PN signed wall and trapped-wave measurement
+
+Working result on base cda9a8eb. The five radius-one, fixed-rate 0.25 feed runs
+below have the same six output columns at both time resolutions. The x column
+is the commanded rim shift. None of the columns records a downstream wall
+position or the bound shear field. The feed grid terminates at the aperture.
+The second archive below is the distinct, rigid-walled 0.125 receiver and
+saves its neutral carrier. Its computed carrier inventory cannot supply the
+missing wall or trapped-wave histories.
+
+Read the first output in order of acceleration, sample time, prescribed rim
+position, and inward number rate. The source paths and hashes of these
+guarded runs are recorded in mouth_prescribed_acceleration.txt.
+
+$ jq -r '[.acceleration, ."32"[-1].t, ."32"[-1].x, ."32"[-1].inward_rate] | @tsv' _scratch/s11c/mouth_prescribed_accel_{negative,negative_half,zero,positive_half,positive}02/stdout
+-0.02	0.001	-1E-8	0.25
+-0.01	0.001	-5E-9	0.25
+0.0	0.001	0.0	0.25
+0.01	0.001	5E-9	0.25
+0.02	0.001	1E-8	0.25
+
+$ jq -sc '[.[] | (."16"[], ."32"[]) | keys] | unique' _scratch/s11c/mouth_prescribed_accel_{negative,negative_half,zero,positive_half,positive}02/stdout
+[["carried","feed_load","inward_rate","stress","t","x"]]
+
+$ unzip -Z1 _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz
+field.npy
+current.npy
+dx.npy
+dz.npy
+speed.npy
+mouth.npy
+
+$ unzip -Z1 _scratch/s11c/sleeve_response_current_fine01/fields/level_128.npz
+psi.npy
+feed_phase.npy
+r_index.npy
+w_index.npy
+dr.npy
+dw.npy
+mouth_cells.npy
+sleeve_cells.npy
+bath_density.npy
+hbar.npy
+constituent_mass.npy
+eos_k.npy
+rate.npy
+
+Source locations
+software/stage1_solver/tools/mouth_feed_weak_flow.py — FeedPatch domain and saved baseline fields.
+software/stage1_solver/tools/mouth_prescribed_acceleration.py — drive prescribes the rim shift and reading samples the feed.
+software/stage1_solver/src/stage1_solver/open_sleeve.py — reflecting receiver and prescribed intake.
+software/stage1_solver/src/stage1_solver/mouth_shear.py — outgoing exterior displacement with assumed contact.
+software/em_charge_attribute/u1_body_dynamics_inputs.yaml — geon_core_bundle and throat_surface_functional are open inputs.
+software/stage1_solver/reports/wall_wave_cut.md — stored momentum and cut traction for a projected wall and a transverse packet.

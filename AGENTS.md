@@ -18,6 +18,12 @@ how you work in the repository.
 - Questions that the plan assigns to a later step (`research/pde_ledger_v3/V3_STEP_PLAN.md`) go to that step. Do
   not answer them inside the current one.
 
+## Project research priority
+
+At natural research milestones, ask whether a new result supplies an independent input or a decisive test for
+Newtonian (0PN) free fall of two draining mouths. The user considers a derivation from the model worth a paper.
+Flag a concrete connection when one appears, and keep working in the agreed sector when the gravity input is still open.
+
 ## Git hygiene
 
 - **Commit durable artifacts only:** specs, directives, scripts that produce reported results, result reports,

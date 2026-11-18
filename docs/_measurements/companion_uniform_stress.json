@@ -1,0 +1,116 @@
+{
+  "scope": "Four same-grid uniform-stream controls and two archived carrier pairs. Positive axis points toward the companion. Numeric force arrays are [carriage, boundary-law mixed stress, directly reconstructed combined flux]. The Mathematica ideal calculation uses outward spherical flux, with signed target radial speed vt and k=Q_source/(4 pi). No actuator reaction or brane-material slip field was measured.",
+  "base": "fd667ea9291b4430a96afe3fd932926232f5507d",
+  "sha256": {
+    "software/stage1_solver/tools/companion_uniform_stress.py": "ae4199806f106e86c0c0c65f110d09ef5eb9cc23ad6a5ef893581d7e8f8636fd",
+    "software/stage1_solver/tools/companion_uniform_stress.wl": "ac5bf6a9c809930e2b153865fab4b828824066ce3ac9cc3649a5d81b76575e9a",
+    "software/stage1_solver/tools/companion_uniform_check.py": "c7d5c90f7b4bacdf2f2238a5d7ada6bebde926efa0df416e07a161a83700d4ac",
+    "software/stage1_solver/tools/incident_flow_falloff.py": "f0e289efa985128f3174b59bd1554b2c16a618b13eaf68d79f977c6c3c2572a9",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/lateral_target_rate.py": "03b68b5d48bb81e5fb24256adcc5dc8aae6582f2bad428b861755b5aad261a6b",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "docs/_measurements/held_force_incident_flow.json": "ce594e47e8181efb7bc9e173b47d6e3269fb1a2794c5eccbcc62f7fcb32b8763",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd",
+    "_scratch/s11c/lateral_target_rate_e48_c4_01/fields/source_d8.npz": "24e6b3fda1e9345acbedbd412bd28ebb4e154963166cb768fb9da0c99d51f9d0",
+    "_scratch/s11c/lateral_bath_e48_c4_01/fields/d8.npz": "741fbc19a3e6fab141d6ba218fef3858974d9928fba6a890297051cda1773bd6",
+    "_scratch/s11c/incident_flow_falloff01/L48C4_d16.npz": "a3091076f291d5c03df1ccd06361b12fac578a1473509d73ba11b5b74c8bd82f",
+    "_scratch/s11c/held_force_incident01/L48C4_d16.npz": "43df2709016d342acc53b07641ba3de7fc95e97fa4f35c504a981f2634d181a5",
+    "_scratch/s11c/companion_uniform_d8_01/stdout": "91c71d961e8e1d1373ceb706f50480154f55586339ed444bc80882d5ef190bd4",
+    "_scratch/s11c/companion_uniform_d8_01/outcome.json": "a4653caa8ce00613e076fe69b86d02058ab33e592a5c6cba8693f0beed9aa7cd",
+    "_scratch/s11c/companion_uniform_d16_01/stdout": "8aa7b1754c50a360a22a46b3b12d9dc0c841551e6ffd1799b067c589c5b3ba79",
+    "_scratch/s11c/companion_uniform_d16_01/outcome.json": "3172981e37c7737fd05d74535bb3a3ae5ed1b1be48d061e8dbf5d26694beb8f3"
+  },
+  "runs": {
+    "d8_01": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool companion-uniform --memory-gib 3 --log-directory _scratch/s11c/companion_uniform_d8_01 -- python3 software/stage1_solver/tools/companion_uniform_stress.py 8 > _scratch/s11c/companion_uniform_d8_01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T15:40:57.524293+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T15:41:10.266198+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_gib": 3,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 351588352,
+      "stdout_path": "_scratch/s11c/companion_uniform_d8_01/stdout",
+      "stdout_bytes": 923,
+      "stdout_sha256": "91c71d961e8e1d1373ceb706f50480154f55586339ed444bc80882d5ef190bd4",
+      "stdout": [
+        "uniform iterations=8 residual=2.3239542e-12 bath_inward=0.25000000000029",
+        "{\"d\": 8, \"match\": \"center\", \"speed\": 0.0003100954415619462, \"pair\": [7.753165230262905e-05, 2.793839414957196e-09, 7.749715957612573e-05], \"uniform\": [7.752023539585838e-05, 2.799825344958296e-09, 7.748569144164509e-05], \"difference\": [1.1416906770672641e-08, -5.985930001100318e-12, 1.1468134480639995e-08], \"combined_difference\": 1.1410920840671541e-08, \"scale\": 7.752386039048655e-05}",
+        "uniform iterations=8 residual=2.3405042e-12 bath_inward=0.25000000000029",
+        "{\"d\": 8, \"match\": \"intake_mean\", \"speed\": 0.00031013862687344427, \"pair\": [7.753165230262905e-05, 2.793839414957196e-09, 7.749715957612573e-05], \"uniform\": [7.7531031218896e-05, 2.8002152614508385e-09, 7.749648246859489e-05], \"difference\": [6.210837330544727e-10, -6.37584649364265e-12, 6.771075308380009e-10], \"combined_difference\": 6.147078865608301e-10, \"scale\": 7.753465671836107e-05}"
+      ]
+    },
+    "d16_01": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool companion-uniform --memory-gib 3 --log-directory _scratch/s11c/companion_uniform_d16_01 -- python3 software/stage1_solver/tools/companion_uniform_stress.py 16 > _scratch/s11c/companion_uniform_d16_01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T15:41:05.425324+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T15:41:18.316867+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_gib": 3,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 357584896,
+      "stdout_path": "_scratch/s11c/companion_uniform_d16_01/stdout",
+      "stdout_bytes": 921,
+      "stdout_sha256": "8aa7b1754c50a360a22a46b3b12d9dc0c841551e6ffd1799b067c589c5b3ba79",
+      "stdout": [
+        "uniform iterations=8 residual=4.8116964e-13 bath_inward=0.25000000000029",
+        "{\"d\": 16, \"match\": \"center\", \"speed\": 7.565897824108595e-05, \"pair\": [1.8914589160408044e-05, 6.830110840171389e-10, 1.8906163766056e-05], \"uniform\": [1.891386011199092e-05, 6.831184537081274e-10, 1.890543186532565e-05], \"difference\": [7.290484171224021e-10, -1.073696909884654e-13, 7.319007303498615e-10], \"combined_difference\": 7.289410474314136e-10, \"scale\": 1.891474456027149e-05}",
+        "uniform iterations=8 residual=4.7343851e-13 bath_inward=0.25000000000029",
+        "{\"d\": 16, \"match\": \"intake_mean\", \"speed\": 7.5661819570087e-05, \"pair\": [1.8914589160408044e-05, 6.830110840171389e-10, 1.8906163766056e-05], \"uniform\": [1.8914570411020584e-05, 6.83144107916656e-10, 1.890614184644028e-05], \"difference\": [1.874938745927146e-11, -1.3302389951706345e-13, 2.191961571968012e-11], \"combined_difference\": 1.8616363559754397e-11, \"scale\": 1.891545489252175e-05}"
+      ]
+    },
+    "wolfram01": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool companion-uniform --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/companion_uniform_wolfram01 -- math -noprompt -script software/stage1_solver/tools/companion_uniform_stress.wl > _scratch/s11c/companion_uniform_wolfram01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T15:42:03.624435+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T15:42:08.926960+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 225316864,
+      "stdout_path": "_scratch/s11c/companion_uniform_wolfram01/stdout",
+      "stdout_bytes": 316,
+      "stdout_sha256": "367060f395a367f46f48e6ea86222298bf78570aa697cb7fe823cbf05204a06b",
+      "stdout": [
+        "\"outward cross pressure, pair and stream = \"\"{(-4*a^2*k*Pi*rho*vt)/(3*d^2), (-4*a^2*k*Pi*rho*vt)/(3*d^2)}\"",
+        "\"outward cross carriage, pair and stream = \"\"{(16*a^2*k*Pi*rho*vt)/(3*d^2), (16*a^2*k*Pi*rho*vt)/(3*d^2)}\"",
+        "\"leading source-only outward pressure and total-flux divergence = \"\"{(-8*a^3*k^2*Pi*rho)/(3*d^5), 0}\""
+      ]
+    },
+    "check01": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool companion-uniform --memory-gib 1 --log-directory _scratch/s11c/companion_uniform_check01 -- python3 software/stage1_solver/tools/companion_uniform_check.py > _scratch/s11c/companion_uniform_check01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T15:43:14.232167+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T15:43:14.672353+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_gib": 1,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 52305920,
+      "stdout_path": "_scratch/s11c/companion_uniform_check01/stdout",
+      "stdout_bytes": 726,
+      "stdout_sha256": "f08c98b5af7c0e5e9b562010233730d0e15574bb47508e1c64e4d9cf7df818c4",
+      "stdout": [
+        "pressure outward linear flux = -4*pi*U*a**2*rho*vt/3",
+        "carriage outward linear flux = 16*pi*U*a**2*rho*vt/3",
+        "ambient pressure gradient force = -4*pi*a**3*grad/3",
+        "d=8 match=center carrier_excess_ppm=147.192371 interior_excess_ppm=147.930385",
+        "d=8 match=intake_mean carrier_excess_ppm=7.92816932 interior_excess_ppm=8.73296613",
+        "d=16 match=center carrier_excess_ppm=38.5382443 interior_excess_ppm=38.6947192",
+        "d=16 match=intake_mean carrier_excess_ppm=0.984187992 interior_excess_ppm=1.15882044",
+        "match=center carrier_excess16_over_8=0.0638810012 stress_excess16_over_8=0.0179370108 paired_flux16_over_8=0.243959596",
+        "match=intake_mean carrier_excess16_over_8=0.0302848946 stress_excess16_over_8=0.0208637237 paired_flux16_over_8=0.243959596"
+      ]
+    }
+  }
+}

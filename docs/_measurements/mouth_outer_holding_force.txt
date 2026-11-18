@@ -1,0 +1,48 @@
+0PN exterior momentum calculation for a single holder. Local working benchmark, pending review.
+Repository base fd667ea9291b4430a96afe3fd932926232f5507d.
+Ideal brane and receiving domains of spatial dimensions three and four. Mass rate outward positive.
+The three analytic or quadrature jobs use embedded inputs. No fitted gravity, physical holder reading, or release trajectory.
+
+Source SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+f1fa1758cc457af17e188aadaf5ca04cdd447b266ef8ffdffaa5e02a66791c08  software/stage1_solver/tools/mouth_outer_holding_force.py
+21ca361d0cda13c29a3076816bdf9c08afa7d9c5355ce9cb98be423af742e33f  software/stage1_solver/tools/mouth_outer_holding_force.wl
+4db27592c4cf5ef11b15f93f0e33cf413a6b393c866c7d0139c56b1150de3282  software/stage1_solver/tools/mouth_outer_pair_force.wl
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool outer-hold-sympy --memory-gib 2 --log-directory _scratch/s11c/mouth_outer_hold_sympy01 -- python3 software/stage1_solver/tools/mouth_outer_holding_force.py
+Start 2026-11-17T05:11:46.018969+00:00. End 2026-11-17T05:11:47.004781+00:00 (guard wall time).
+Guard/worker exit 0/0. Limits verified. Sampled peak 57286656 bytes. Zero swap cap, no deadline. Stderr empty.
+Stdout _scratch/s11c/mouth_outer_hold_sympy01/stdout (633 bytes, SHA256 f2a2f18c47bad95c6a52f5a54929a8f62c6fa558dbdada5c965e8e6718f27e26).
+Literal stdout
+D=3 general outward flux: q*(R*Derivative(f(R), R) + 2*f(R))/(3*R)
+D=3 harmonic [advective, pressure, total]: [-2*B*q/(3*R**3) + 4*V*q/3, 2*B*q/(3*R**3) - V*q/3, V*q]
+D=3 pressure-only tail integral: 4*pi*p1/3
+D=4 general outward flux: q*(R*Derivative(f(R), R) + 3*f(R))/(4*R)
+D=4 harmonic [advective, pressure, total]: [-3*B*q/(4*R**4) + 5*V*q/4, 3*B*q/(4*R**4) - V*q/4, V*q]
+D=4 pressure-only tail integral: pi**2*p1/2
+U=1/50 holder [W=0, W=U/2, W=U]: [-1/200, -1/400, 0]
+U=-1/50 holder [W=0, W=U/2, W=U]: [1/200, 1/400, 0]
+U=1/100 holder [W=0, W=U/2, W=U]: [-1/400, -1/800, 0]
+U=-1/100 holder [W=0, W=U/2, W=U]: [1/400, 1/800, 0]
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool outer-hold-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_outer_hold_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_outer_holding_force.wl
+Start 2026-11-17T05:11:46.313106+00:00. End 2026-11-17T05:11:52.213035+00:00 (guard wall time).
+Guard/worker exit 0/0. Limits verified. Sampled peak 237305856 bytes. Zero swap cap, no deadline. Stderr empty.
+Stdout _scratch/s11c/mouth_outer_hold_wolfram01/stdout (238 bytes, SHA256 d0e7fba071543748bb750257d9b12731bdf874714ee0352ac900558378d98e73).
+Literal stdout
+"radius pair "{2, 3}" brane and bulk "InputForm[{-1/4*u, v/4}]" holder for W/U=0,1/2,1 "InputForm[{-1/4*u, -1/8*u, 0}]
+"radius pair "{5, 6}" brane and bulk "InputForm[{-1/4*u, v/4}]" holder for W/U=0,1/2,1 "InputForm[{-1/4*u, -1/8*u, 0}]
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool outer-hold-pair --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_outer_hold_pair01 -- math -noprompt -script software/stage1_solver/tools/mouth_outer_pair_force.wl
+Start 2026-11-17T05:13:41.467162+00:00. End 2026-11-17T05:13:46.362587+00:00 (guard wall time).
+Guard/worker exit 0/0. Limits verified. Sampled peak 225259520 bytes. Zero swap cap, no deadline. Stderr empty.
+Stdout _scratch/s11c/mouth_outer_hold_pair01/stdout (1162 bytes, SHA256 7f5271b8aa0c72f3194e9512cc65f1164817834849313b38a4b3f7cfdd9a0a0f).
+Literal stdout
+"distance, cut radius, outward brane and bulk flux, total holder: "InputForm[{8.`15., 1.`15., -0.00005828428091744213956380020631317665`15., -3.09207713752251499767698557158593`15.*^-6, -0.00006137635805496465456147719188476257`15.}]
+"scaled fluxes: "InputForm[{-0.09375`15., -0.09375`15.}]
+"distance, cut radius, outward brane and bulk flux, total holder: "InputForm[{8.`15., 3.`15., -0.00005828428091744213956380020631317665`15., -3.09207713752251499767698557158593`15.*^-6, -0.00006137635805496465456147719188476257`15.}]
+"scaled fluxes: "InputForm[{-0.09375`15., -0.09375`15.}]
+"distance, cut radius, outward brane and bulk flux, total holder: "InputForm[{16.`15., 1.`15., -0.00001457107022936053489095005157829416`15., -3.8650964219031437470962319644824`15.*^-7, -0.0000149575798715508492656596747747424`15.}]
+"scaled fluxes: "InputForm[{-0.09375`15., -0.09375`15.}]
+"distance, cut radius, outward brane and bulk flux, total holder: "InputForm[{16.`15., 3.`15., -0.00001457107022936053489095005157829416`15., -3.8650964219031437470962319644824`15.*^-7, -0.0000149575798715508492656596747747424`15.}]
+"scaled fluxes: "InputForm[{-0.09375`15., -0.09375`15.}]

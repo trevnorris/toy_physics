@@ -1,0 +1,71 @@
+{
+  "scope": "Working readout check at 0PN. Extrapolation uses measured carrier flux at two rates. No total actuator-force input exists in this run.",
+  "base": "fd667ea9291b4430a96afe3fd932926232f5507d",
+  "sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/mouth_slow_force_readout.py": "577ce08019dcff0192d9f8f20d3225aa3d46938df9c6a1c895d1fb85f636410c",
+    "software/stage1_solver/tools/mouth_slow_force_readout.wl": "466859c57005791d69cf3059aca7425b4264198094fa44bb4a75dfcaf395feb4",
+    "software/stage1_solver/tools/lateral_mouth_acceleration.py": "0f04c0edb17b6c17bc1dfd2081412017caed4dfd7c1ef6808fe84f751394219b",
+    "software/stage1_solver/tools/mouth_force_drive.py": "63a5b46881cb07b61f10577db161127d055aeb260911d9301d91bc0921c13d47",
+    "software/stage1_solver/src/stage1_solver/p2_driven_absorber.py": "332b7d7c3ea8bb08706f006dddd662293dd2d69d35dd1e71f87344a82d64966e",
+    "docs/_measurements/lateral_mouth_acceleration.json": "fcb66853f155ab6f688ae00170bfe88b22d53ca8c8589631b8ac07344f2928a4",
+    "_scratch/s11c/lateral_accel_e24_c6_01/stdout": "e00bfe7283eecfed2db758ce53973941ef6342985540b8fec4e811d197b1be45",
+    "_scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz": "590774f5c77c030fbe68edb253b5edddd0bc8b636bf983f1947fae52d7389fb1"
+  },
+  "archived_input": {
+    "inventory_command": "unzip -Z -1 _scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz",
+    "inventory_stdout": [
+      "field.npy",
+      "currents.npy",
+      "x.npy",
+      "r.npy",
+      "dz.npy",
+      "d.npy"
+    ],
+    "verified_carrier_run": "python3 scripts/s11c_guarded_run.py --pool lateral-acceleration --memory-gib 4 --log-directory _scratch/s11c/lateral_accel_e24_c6_01 -- python3 software/stage1_solver/tools/lateral_mouth_acceleration.py _scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz"
+  },
+  "runs": {
+    "sympy": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool mouth-slow-readout --memory-gib 2 --log-directory _scratch/s11c/mouth_slow_readout_sympy01 -- python3 software/stage1_solver/tools/mouth_slow_force_readout.py > _scratch/s11c/mouth_slow_readout_sympy01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T14:37:13.849070+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T14:37:14.489023+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_gib": 2,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 56238080,
+      "stdout_path": "_scratch/s11c/mouth_slow_readout_sympy01/stdout",
+      "stdout_bytes": 619,
+      "stdout_sha256": "4cee57c8756d9dcdf33b7b04f30238582ba8d87022a9445568cdd08355639bda",
+      "stdout": [
+        "force cosine and sine per displacement amplitude = (pi*A*K - pi*A*M*w**2)/(pi*A) -G*w",
+        "static-subtracted mass and velocity coefficient = (K - (pi*A*K - pi*A*M*w**2)/(pi*A))/w**2 G",
+        "frequency, carrier drive per acceleration, in-phase force per displacement after static subtraction = 0.005 0.0018681596297689881 -4.67039907442247e-08",
+        "frequency, carrier drive per acceleration, in-phase force per displacement after static subtraction = 0.01 0.001868754438536213 -1.868754438536213e-07",
+        "carrier slow extrapolation, archived slow tangent, signed difference = 0.001867961360179913 0.0018679618368395658 -4.766596526666667e-10"
+      ]
+    },
+    "wolfram": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool mouth-slow-readout --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_slow_readout_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_slow_force_readout.wl > _scratch/s11c/mouth_slow_readout_wolfram01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T14:37:22.540865+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T14:37:27.588045+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 225792000,
+      "stdout_path": "_scratch/s11c/mouth_slow_readout_wolfram01/stdout",
+      "stdout_bytes": 539,
+      "stdout_sha256": "c823700b2750a364dc9e34a3f8a1ecd470a0d183c338e89b122d397094b70c5a",
+      "stdout": [
+        "\"turning force per amplitude, crossing force per amplitude, recovered mass, cycle work = \"\"{k - mass*w^2, -(drag*w), mass, amp^2*drag*Pi*w}\"",
+        "\"interior-trace flux\"\" slow extrapolation, archived slow tangent, signed difference = \"\"{0.00186631018191333333333333333333333333`15., 0.00186631065853`15., -4.7661666666666666666666666667`15.*^-10}\"",
+        "\"boundary-law flux\"\" slow extrapolation, archived slow tangent, signed difference = \"\"{0.00186796136018333333333333333333333333`15., 0.00186796183684`15., -4.7665666666666666666666666667`15.*^-10}\""
+      ]
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "scope": "S12 balance and graph face algebra, with a 4D constant-density receiving-exterior example. The redistribution uses the unspecified order-transport response. No constituted physical interface or interior was solved.",
+  "status": "Working result pending independent review.",
+  "source_sha256": {
+    "software/stage1_solver/reports/conversion_angular_discharge.md": "8093e68fc4fe09b6af56735eee99ebfda8bbbc78709b331ff37e451defd47345",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "research/pde_ledger_v3/steps/S12_order_source.md": "9ff32deaba86893378e6685d5120ddbe46c03eec4ffb2d8b96b6faeca59ec39d",
+    "research/pde_ledger_v3/steps/S14a_1_projection.md": "d30fd65e4e156256d7fc2009d5a10df91cd6544f0ebd251e94740731b89ba78a",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1",
+    "docs/_measurements/conversion_region_weak_flow.txt": "c58485f77c0413b3d8f450b62c628d4dc65d06e4f8281539fb86b81d1965c9b4",
+    "software/stage1_solver/reports/held_bulk_two_separations.md": "7174a81544c33f913a87a29bb12b8ea3245dc59c6917404876c9d65920721eca"
+  },
+  "runs": {
+    "python": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool conversion-angular-discharge-python --memory-gib 2 --log-directory _scratch/s11c/conversion_angular_discharge_python01 -- python3 software/stage1_solver/tools/conversion_angular_discharge.py > _scratch/s11c/conversion_angular_discharge_python01.launch.log 2>&1 < /dev/null",
+      "script": "software/stage1_solver/tools/conversion_angular_discharge.py",
+      "script_sha256": "18ede4f19ef4293c78bd70b77b3adfb30435355657c81cf652a8364b63831cdb",
+      "start": "2026-11-17T20:02:41.196919+00:00",
+      "end_from_guard_wall_time": "2026-11-17T20:02:42.742482+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_cap_bytes": 2147483648,
+      "swap": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 59924480,
+      "stdout_path": "_scratch/s11c/conversion_angular_discharge_python01/stdout",
+      "stdout_sha256": "308c3d802c0a0386bdf5045a6a0af5404c3590208b5eb373bca16b8f7726b144",
+      "stdout_bytes": 587,
+      "literal_readings": [
+        "change in material divergence away from mouth: 0 | expected 0 | residual 0",
+        "change in n Gamma: 0 | expected 0 | residual 0",
+        "order advection change at (1,0,0,0) for chi=x: -3*B*n_b",
+        "facing hemisphere mass-rate change: -4*pi*B*m*n_b/R | expected -4*pi*B*m*n_b/R | residual 0",
+        "away hemisphere mass-rate change: 4*pi*B*m*n_b/R | expected 4*pi*B*m*n_b/R | residual 0",
+        "total mass-rate change: 0 | expected 0 | residual 0",
+        "mixed profile facing integral: 0 | expected 0 | residual 0",
+        "mixed profile away integral: 0 | expected 0 | residual 0",
+        "mixed profile dipole projection: 1 | expected 1 | residual 0"
+      ]
+    },
+    "wolfram": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool conversion-angular-discharge-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/conversion_angular_discharge_wolfram01 -- math -noprompt -script software/stage1_solver/tools/conversion_angular_discharge.wl > _scratch/s11c/conversion_angular_discharge_wolfram01.launch.log 2>&1 < /dev/null",
+      "script": "software/stage1_solver/tools/conversion_angular_discharge.wl",
+      "script_sha256": "7ffeaa08e606e95df35651a8f05943c1ea8763d88dfdb7fb80d9e83bb8391758",
+      "start": "2026-11-17T20:02:40.905691+00:00",
+      "end_from_guard_wall_time": "2026-11-17T20:02:45.949868+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "memory_cap_bytes": 4294967296,
+      "swap": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 225464320,
+      "stdout_path": "_scratch/s11c/conversion_angular_discharge_wolfram01/stdout",
+      "stdout_sha256": "cf6fca6e6cc21c295ed0b2da15b60c8661cb6378fe1db64f509e3cbc0013d348",
+      "stdout_bytes": 1317,
+      "literal_readings": [
+        "\"Wolfram version = \"\"15.0.1 for Linux x86 (64-bit) (July 2, 2026)\"",
+        "\"upper material jump change\"\" calculated=\"\"0\"\" expected=\"\"0\"\" residual=\"\"0\"",
+        "\"upper order source change\"\" calculated=\"\"0\"\" expected=\"\"0\"\" residual=\"\"0\"",
+        "\"outward material change\"\" calculated=\"\"eta\"\" expected=\"\"eta\"\" residual=\"\"0\"",
+        "\"order source change if bIn fixed\"\" calculated=\"\"-(eta*f)\"\" expected=\"\"-(eta*f)\"\" residual=\"\"0\"",
+        "\"d=\"39/10\" k=\"0\" two shell B=\"\"0``36.46735817931913\"\" changes in facing and away mass rates=\"\"{0, 0}\"",
+        "\"d=\"4\" k=\"0\" two shell B=\"\"0``36.50034433222352\"\" changes in facing and away mass rates=\"\"{0, 0}\"",
+        "\"d=\"41/10\" k=\"0\" two shell B=\"\"0``36.53251592839884\"\" changes in facing and away mass rates=\"\"{0, 0}\"",
+        "\"d=\"39/10\" k=\"1/20\" two shell B=\"\"-0.00525969756738987508218277449046679816`12.\"\" changes in facing and away mass rates=\"\"{0.05507942412605379335459379151048876413`12., -0.05507942412605379335459379151048876413`12.}\"",
+        "\"d=\"4\" k=\"1/20\" two shell B=\"\"0``36.50034433222352\"\" changes in facing and away mass rates=\"\"{0, 0}\"",
+        "\"d=\"41/10\" k=\"1/20\" two shell B=\"\"0.00475907198096371207614515169541939322`12.\"\" changes in facing and away mass rates=\"\"{-0.04983688524433540731251466798777716255`12., 0.04983688524433540731251466798777716255`12.}\"",
+        "\"midpoint derivative of admissible family\"\" calculated=\"\"k\"\" expected=\"\"k\"\" residual=\"\"0\""
+      ]
+    }
+  }
+}

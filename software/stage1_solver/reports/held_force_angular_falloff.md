@@ -1,0 +1,19 @@
+# Does angular discharge change the leading 0PN pull?
+
+**Held-force result.** In steady, unbounded, constant-density potential exteriors, the leading pull towards the companion is \(D_tD_s/(4\pi\rho_3 d^2)\). Here \(D_t,D_s>0\) are the fixed material mass intakes at the two mouth radii, and \(\rho_3\) is the far brane mass density. This assigns the combined exterior load to a single holder, with other applied loads unchanged. The companion's 4D radial outflow adds \(D_tD_s/(2\pi^2\rho_4 d^3)\). Bounded angular redistribution in the bulk first enters at order \(d^{-4}\) or smaller. The derivative \(B'(d)\) belongs to the energy flow during prescribed motion. The steady force uses the fields at each separation. [Moving energy comparison](receiving_bulk_energy_response.md) · [Physical holding-force balance](mouth_leading_bulk_export.md)
+
+**Finite-separation calculation.** Take \(+x\) towards the companion. In each \(n\)-dimensional exterior write the local potential of mouth \(i\) as \(q_iF_n/(\rho_n\Omega_n)+b_i\partial_xF_n\), with \(F_n=-r_i^{2-n}/(n-2)\) and \(\Omega_n\) the unit-sphere area. The signed outward rate is \(q_i=-D_i\) in the brane and \(+D_i\) in the bulk. Both dipoles use the same lab axis. Subtract the isolated target's holding force. Integrating the steady momentum tensor \(\rho_n vv+(p_\infty-\rho_n|v|^2/2)I\) gives the signed holder reaction in this monopole-plus-dipole family:
+
+\[
+\Delta H_{n,x}=-\frac{q_tq_s}{\rho_n\Omega_n d^{n-1}}
++\frac{(n-1)(q_s b_t-q_t b_s)}{d^n}
++\frac{n(n-1)\rho_n\Omega_n b_t b_s}{d^{n+1}}.
+\]
+
+This holds with \(b_t,b_s\) evaluated at the chosen \(d\). A target dipole can couple to the **gradient** of the companion field, even though its contribution against a uniform stream cancels. Under a regular weak response \(b_i=O(d^{-2})\), the 4D dipole terms are \(O(d^{-6})\) or smaller. For a more general localized angular pattern the leading coefficient is also protected if the non-monopole velocity is uniformly \(O(r^{-n})\) outside a fixed neighborhood of each mouth. On the bisecting plane the monopole velocities are \(O(r^{1-n})\), with \(r^2=(d/2)^2+r_\perp^2\). The integrated cross stress with the faster field is \(O(d^{-n})\). This bound requires that localization as separation grows.
+
+**Check.** SymPy integrated the axial momentum flux on the entire midplane. Momentum conservation equates it to the flux out of a cut enclosing the target. Mathematica integrated carriage and pressure separately on two finite target spheres at \(d=8,16,32\), retaining both dipoles and the full companion field. For example, in 4D at \(d=16,R=1\), the imposed \(d^{-2}\) dipoles changed carriage by approximately \(-1.09846\times10^{-4}\) and pressure by \(+1.09861\times10^{-4}\). Their sum was approximately \(+1.56290\times10^{-8}\) in benchmark force units. The second cut gave the same sum. [Scripts, commands and literal outputs](../../../docs/_measurements/held_force_angular_falloff.json)
+
+**Physical requirement.** If the companion's only leading drive is incident brane speed \(U=K_s/d^2+o(d^{-2})\), the actual steady attraction coefficient is \(K_s C_t\), with \(C_t=-\partial H_x/\partial U|_0\) for the same held mouth and the remote bulk at rest. It includes any physical stress or bulk momentum export that responds linearly to the brane flow. The native equations leave that response open. Read the total holder reaction at opposite weak brane flows and half strength, leaving near-mouth bulk and stresses free to respond. That measures the coefficient without resolving \(B'(d)\). Predicting smooth initial release further requires the independent acceleration per unit applied force on that mouth. [Native load and other applied forces](one_mouth_outer_holding_force.md) · [Held and release measurements](one_mouth_hold_release_requirements.md)
+
+Working calculation at base cda9a8eb, pending independent review.

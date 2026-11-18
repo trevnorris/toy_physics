@@ -1,0 +1,42 @@
+Time-dependent tangential traction of the homogeneous 3D brane exterior at 0PN. Working result pending review.
+Repository base fd667ea9291b4430a96afe3fd932926232f5507d.
+Exterior of a sphere, rotational shear only, constant positive coefficients, zero initial perturbation, decaying Laplace solution. No bare mouth kinetic term. Total actuator force unmeasured.
+SymPy derives the displacement curl and angular traction, independently checking the integrated field momentum. Mathematica works from the azimuthal curl, solves for the boundary traction and recovers the step in the time domain.
+A direct tangential tie and an unforced traction-free rim are two conditional boundary choices, not selections for the saved drain. The ideal shear problem is not a numerical trajectory of its nonuniform feeding field.
+
+Script, input and physics-source SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+c8ca951ddd8d9bcd0e5be240e9c122a04b92f944fe6c89a3304abddf12e230ce  software/stage1_solver/tools/mouth_brane_shear_traction.py
+540f5b914ecbf71e04956d5e2de3c43c74ea65ad5d8570881532a75b4be299f4  software/stage1_solver/tools/mouth_brane_shear_traction.wl
+23260d61442ee603a45ad4a109dc6b036bbba6148620f5428460e289d22967b2  research/pde_ledger_v2/notes/stages/ledger_stage007_shear_surface_g0_freeze.md
+8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1  research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md
+2bb644fff8d028fb921008206a331b15d0621ff2c7a37ecb85302981c538393e  software/stage1_solver/tools/mouth_prescribed_acceleration.py
+3c4be88a72f94468b73c4bfe91132b6bd13a7101e35a7950b65780c9ba1681d1  docs/em_analog_next_phase_handoff.md
+db7ae4e93ffb1ddf105d2afd02194f29009464d9a642721a18e3edd3aeeeae73  docs/_measurements/mouth_prescribed_acceleration.txt
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-brane-traction --memory-gib 2 --log-directory _scratch/s11c/mouth_brane_shear_sympy01 -- python3 software/stage1_solver/tools/mouth_brane_shear_traction.py
+Start 2026-11-16T22:47:59.945753+00:00. End 2026-11-16T22:48:01.232984+00:00 (start plus guard wall time).
+Guard and worker exit 0. Limits verified. Zero swap cap, no deadline. Sampled cgroup peak 58068992 bytes. Stderr empty.
+Stdout _scratch/s11c/mouth_brane_shear_sympy01/stdout (555 bytes, SHA256 518380695ddaf5ef8b2cd31888a0f63ec6a43f8f99247d77558677203ce7903a).
+Literal stdout
+divergence and bulk wave residual = 0 0
+projected traction minus exterior momentum rate = 0
+force per acceleration of prescribed field trace = 8*pi*a**3*c_T*rho*(a*s + c_T)/(3*(a**2*s**2 + a*c_T*s + c_T**2))
+slow coefficient and normalized causal transfer = 8*pi*a**3*rho/3 (s*tau + 1)/(s**2*tau**2 + s*tau + 1)
+normalized force for a field acceleration step = 1 - 2*sqrt(3)*exp(-t/(2*tau))*cos(sqrt(3)*t/(2*tau) + pi/6)/3
+onset value, initial slope, late limit = 0 1/tau 1
+normal displacement divided by d cos(theta) = -2*(a*k + 1)/(a**2*k**2 + a*k + 1)
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-brane-traction --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_brane_shear_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_brane_shear_traction.wl
+Start 2026-11-16T22:47:59.628662+00:00. End 2026-11-16T22:48:05.227103+00:00 (start plus guard wall time).
+Guard and worker exit 0. Limits verified. Zero swap cap, no deadline. Sampled cgroup peak 234692608 bytes. Stderr empty.
+Stdout _scratch/s11c/mouth_brane_shear_wolfram01/stdout (887 bytes, SHA256 7b83aabdb0cc9fea6c82ed65eca097c458ead1d26bc44891d29a46f7577f6742).
+Literal stdout
+"outer radial-equation residual and tangential trace = "InputForm[{0, -d}]
+"traction integral divided by field-trace acceleration = "InputForm[(8*a^3*c*Pi*rho*(c + a*s))/(3*(c^2 + a*c*s + a^2*s^2))]
+"slow coefficient and normalized transfer = "InputForm[{(8*a^3*Pi*rho)/3, (1 + s*tau)/(1 + s*tau + s^2*tau^2)}]
+"normalized force on acceleration step = "InputForm[1 + (-3*Cos[(Sqrt[3]*t)/(2*tau)] + Sqrt[3]*Sin[(Sqrt[3]*t)/(2*tau)])/(3*E^(t/(2*tau)))]
+"step onset, slope, decay limit = "InputForm[{0, tau^(-1), 1}]
+"unforced traction-free tangential displacement = "InputForm[0]
+"four drives and known changes of feeding-side flux = ""[[2.0e-2,-2.0e-2,1.0e-2,-1.0e-2],[-4.683830317955134e-10,4.683830352649604e-10,-2.3419150483889456e-10,2.341915083083415e-10]]"
+"conditional tied-minus-free shear force divided by slow coefficient and step shape = "InputForm[{0.02, -0.02, 0.01, -0.01}]

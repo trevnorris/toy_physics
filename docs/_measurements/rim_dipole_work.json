@@ -1,0 +1,78 @@
+{
+  "scope": "Symbolic projection of the quadratic geometry action and a uniform free-end control. No draining-material coefficient supplied or inferred.",
+  "repository_base": "fd667ea9291b4430a96afe3fd932926232f5507d",
+  "sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/rim_dipole_work.py": "7f0abf66539c2ade9d24116296f761fe77f680e00b12e9dcd1ed1b64e6b6de75",
+    "software/stage1_solver/tools/rim_dipole_work.wl": "59f8b6e9b78e20c93dcfb8e5c27577540d0332b599b9a26e18f1de05d36368a8",
+    "research/pde/paper/pde.tex": "9c16d156bef23331bfbdb41d4643b0903967ac12e1a4f4214c266163f741b443",
+    "software/stage1_solver/tools/mouth_feed_weak_flow.py": "9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83",
+    "software/stage1_solver/src/stage1_solver/p2_driven_absorber.py": "332b7d7c3ea8bb08706f006dddd662293dd2d69d35dd1e71f87344a82d64966e"
+  },
+  "runs": {
+    "sympy": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool rim-dipole-work --memory-gib 2 --log-directory _scratch/s11c/rim_dipole_work_sympy01 -- python3 software/stage1_solver/tools/rim_dipole_work.py > _scratch/s11c/rim_dipole_work_sympy01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T09:27:35.899318+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T09:27:37.141994+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_gib": 2,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 58597376,
+      "stdout_path": "_scratch/s11c/rim_dipole_work_sympy01/stdout",
+      "stdout_bytes": 1769,
+      "stdout_sha256": "5bfba22f29c6a2055ef4b5590a9452d47c9311f0e39ad233992f4ffb1a89bd0f",
+      "stdout": [
+        "angular norm: 4*pi/3 | 4*pi/3 | residual 0",
+        "energy rate less source work: 4*pi*T(w)*Derivative(q(w, t), t)*Derivative(q(w, t), (w, 2))/3 + 4*pi*T(w)*Derivative(q(w, t), w)*Derivative(q(w, t), t, w)/3 + 4*pi*Derivative(T(w), w)*Derivative(q(w, t), t)*Derivative(q(w, t), w)/3 | 4*pi*T(w)*Derivative(q(w, t), t)*Derivative(q(w, t), (w, 2))/3 + 4*pi*T(w)*Derivative(q(w, t), w)*Derivative(q(w, t), t, w)/3 + 4*pi*Derivative(T(w), w)*Derivative(q(w, t), t)*Derivative(q(w, t), w)/3 | residual 0",
+        "same-frequency source identity: -T(w)*p(w)*Derivative(r(w), (w, 2)) + T(w)*r(w)*Derivative(p(w), (w, 2)) - p(w)*Derivative(T(w), w)*Derivative(r(w), w) + r(w)*Derivative(T(w), w)*Derivative(p(w), w) | (-p(w)*Derivative(r(w), w) + r(w)*Derivative(p(w), w))*Derivative(T(w), w) + (-p(w)*Derivative(r(w), (w, 2)) + r(w)*Derivative(p(w), (w, 2)))*T(w) | residual 0",
+        "two-frequency overlap identity: lam*mu(w)*p(w)*r(w) - T(w)*p(w)*Derivative(r(w), (w, 2)) + T(w)*r(w)*Derivative(p(w), (w, 2)) - p(w)*Derivative(T(w), w)*Derivative(r(w), w) + r(w)*Derivative(T(w), w)*Derivative(p(w), w) | lam*mu(w)*p(w)*r(w) + (-p(w)*Derivative(r(w), w) + r(w)*Derivative(p(w), w))*Derivative(T(w), w) + (-p(w)*Derivative(r(w), (w, 2)) + r(w)*Derivative(p(w), (w, 2)))*T(w) | residual 0",
+        "unit mouth trace: 1 | 1 | residual 0",
+        "free remote traction: 0 | 0 | residual 0",
+        "elastic equation: mu*s**2*cosh(sqrt(mu)*s*(L - w)/sqrt(T))/cosh(L*sqrt(mu)*s/sqrt(T)) | mu*s**2*cosh(sqrt(mu)*s*(L - w)/sqrt(T))/cosh(L*sqrt(mu)*s/sqrt(T)) | residual 0",
+        "drive force per displacement: 4*pi*sqrt(T)*sqrt(mu)*s*tanh(L*sqrt(mu)*s/sqrt(T))/3 | 4*pi*sqrt(T)*sqrt(mu)*s*tanh(L*sqrt(mu)*s/sqrt(T))/3 | residual 0",
+        "slow force per acceleration: 4*pi*L*mu/3 | 4*pi*L*mu/3 | residual 0",
+        "fast force per acceleration: 0 | 0 | residual 0"
+      ]
+    },
+    "wolfram": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool rim-dipole-work --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/rim_dipole_work_wolfram01 -- math -noprompt -script software/stage1_solver/tools/rim_dipole_work.wl > _scratch/s11c/rim_dipole_work_wolfram01.launch.log 2>&1 < /dev/null",
+      "start": "2026-11-17T09:27:46.816988+00:00",
+      "end_from_start_and_guard_wall_time": "2026-11-17T09:27:51.711056+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "verified_limits": true,
+      "memory_gib": 4,
+      "swap_bytes": 0,
+      "deadline": null,
+      "sampled_peak_bytes": 225411072,
+      "stdout_path": "_scratch/s11c/rim_dipole_work_wolfram01/stdout",
+      "stdout_bytes": 944,
+      "stdout_sha256": "a38cf36ae1e08d32ff0c20bb7b1ab4950575b2699a8e6a8a79f4f02481c844c0",
+      "stdout": [
+        "\"angular norm\"\" | \"\"(4*Pi)/3\"\" | \"\"(4*Pi)/3\"\" | residual \"\"0\"",
+        "\"field force on rim\"\" | \"\"(4*Pi*ten[0]*Derivative[1][q][0])/3\"\" | \"\"(4*Pi*ten[0]*Derivative[1][q][0])/3\"\" | residual \"\"0\"",
+        "\"stationary response derivative density\"\" | \"\"(4*Pi*mu[w]*p[w, lam]^2)/3\"\" | \"\"(4*Pi*mu[w]*p[w, lam]^2)/3\"\" | residual \"\"0\"",
+        "\"interchange of source and probe in weak work\"\" | \"\"k1[w]*p0[w]*q[w] + lam*mu[w]*p0[w]*q[w] + ten[w]*Derivative[1][p0][w]*Derivative[1][q][w]\"\" | \"\"k1[w]*p0[w]*q[w] + lam*mu[w]*p0[w]*q[w] + ten[w]*Derivative[1][p0][w]*Derivative[1][q][w]\"\" | residual \"\"0\"",
+        "\"remote force\"\" | \"\"0\"\" | \"\"0\"\" | residual \"\"0\"",
+        "\"drive force per displacement\"\" | \"\"(4*Pi*s*Sqrt[dens*stiff]*Tanh[len*s*Sqrt[dens/stiff]])/3\"\" | \"\"(4*Pi*s*Sqrt[dens*stiff]*Tanh[len*s*Sqrt[dens/stiff]])/3\"\" | residual \"\"0\"",
+        "\"slow force per acceleration\"\" | \"\"(4*dens*len*Pi)/3\"\" | \"\"(4*dens*len*Pi)/3\"\" | residual \"\"0\"",
+        "\"fast force per acceleration\"\" | \"\"0\"\" | \"\"0\"\" | residual \"\"0\""
+      ]
+    }
+  },
+  "resting_drain_archive_inventory": {
+    "command": "unzip -Z -1 _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz",
+    "sha256": "c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4",
+    "stdout": [
+      "field.npy",
+      "current.npy",
+      "dx.npy",
+      "dz.npy",
+      "speed.npy",
+      "mouth.npy"
+    ]
+  }
+}

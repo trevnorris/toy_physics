@@ -1,0 +1,19 @@
+What a force step can determine about transmission and stored momentum at one open mouth.
+Working symbolic result. Repository base fd667ea9291b4430a96afe3fd932926232f5507d.
+The input is the time-integrated moving-control-volume balance relative to a zero-drive control. J denotes the known external plus incoming impulse. P, Q and B denote independent observations of assigned momentum change, transmitted impulse and remaining signed impulse, respectively. The direction vectors refer to the observations and fixed accounting convention. They do not select a physical mouth law.
+Source balance: docs/drain_driven_initial_acceleration.md, sections Momentum arriving and momentum leaving and One isolated mouth at the instant a sideways force is applied.
+
+$ python3 scripts/s11c_guarded_run.py --pool mouth-release-partition --memory-gib 1 --log-directory _scratch/s11c/mouth_partition_measurements01 -- python3 software/stage1_solver/tools/mouth_release_partition.py
+Started UTC 2026-11-16T20:12:09.683327+00:00. Guard and worker exit 0. Verified 1 GiB memory cap, zero swap, no deadline. Stderr empty.
+SHA256 of executed files
+ae14773af0fcff42bb9479c93741ca77a6aa430235868f92087d86eb9b1c0ed3  software/stage1_solver/tools/mouth_release_partition.py
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+Stdout SHA256 c4fbbad0e103c390c961d28cfdeb8dfba466041cc2e4734f0b7f0af42955983d
+
+Literal stdout
+budget change for opposite shifts at fixed delta_V: 0
+force and incoming: (dP,I_through,I_other)=(-I_other - I_through + J, I_through, I_other) free_directions=[(-1, 1, 0), (-1, 0, 1)]
+also other impulse: (dP,I_through,I_other)=(-B - I_through + J, I_through, B) free_directions=[(-1, 1, 0)]
+also through impulse only: (dP,I_through,I_other)=(-I_other + J - Q, Q, I_other) free_directions=[(-1, 0, 1)]
+other and through: (dP,I_through,I_other)=(-B + J - Q, Q, B) free_directions=[]
+other and assigned inventory: (dP,I_through,I_other)=(P, -B + J - P, B) free_directions=[]

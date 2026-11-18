@@ -1,0 +1,57 @@
+Finite-grid rim push on the radius-one resting drain, two-engine compatibility check.
+Working record, independent code paths with shared model assumptions. Repository base fd667ea9291b4430a96afe3fd932926232f5507d.
+The numerical control uses the same unperturbed carrier face and inward current. The Python process copies the three raw arrays (real face, imaginary face, normal current) to little-endian binary for Mathematica. Mathematica rebuilds the periodic mask and readout independently, using summation by parts for the mixed stress. The offsets are -1, 0 and +1 grid cell, at frozen fields; none is a free release.
+For a smooth release the incremental exterior load starts at order t squared. Both the time series and the high-frequency calculation leave a brane-only force-balance residual equal to the signed applied step at onset. The wall endpoint variation changes the unresolved profile while keeping endpoint displacement and slope fixed. No bare mass is assigned, and no force-driven physical trajectory was generated.
+Largest absolute discrepancy in the three frozen brane loads: 8.6736173798840355e-19 in solver force units. Four analytically integrated Wolfram probe values agree with the archived Python quadrature at its printed precision. The step response and force-derivative series also agree: g^(5)(0)/480 equals c5/4 when c5 is the fifth Taylor coefficient.
+
+Sources and shared input SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+8058ac891b4fea61adcbe64ae350901d34747195b93e9b130bb32ec5a7311e98  software/stage1_solver/tools/mouth_rim_push_compatibility.py
+da890fffd4ac155c90e37846fa8fbd490a54bf163a02f2691206ae23baab905b  software/stage1_solver/tools/mouth_rim_push_compatibility.wl
+6bcd9b4e72a3f716e1c8a33326be1256c171c169791aaf232ce26eb1aadd1303  software/stage1_solver/tools/mouth_center_step_response.wl
+9913745bef016d361a97f1c322b6d49e9b174d19792ca031b809148d82841e83  software/stage1_solver/tools/mouth_feed_weak_flow.py
+ffc771ee507b9b3512e0809b12d0bd0d5989a503372969ff51364fc62348b19f  software/stage1_solver/tools/held_crossflow_budget.py
+a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61  software/stage1_solver/tools/mouth_feed_weak_check.py
+f775d58b924d9d20be82bd74c71c5a44f2566388a65fd0edcc45f88f62bcd3c0  docs/_measurements/mouth_feed_weak_run.json
+ce594e47e8181efb7bc9e173b47d6e3269fb1a2794c5eccbcc62f7fcb32b8763  docs/_measurements/held_force_incident_flow.json
+1654062c912dbc28ae62ec2b0ed1bdda8a23a6675d39d32dbf7319a2fdc3a587  docs/_measurements/mouth_release_force_probe.json
+3bcd9ee97eeb56c780089265bd11bc1e927008112682d305796b9ad9829a0aaa  docs/_measurements/mouth_center_step_response.txt
+c89655749959b091597a159ac4ee3e40587f222469c50526bc6d11ab921e87d4  _scratch/s11c/mouth_feed_depth01/fields/n32_restoring_slope_u0.npz
+e76812f953ed1af4fd216a5d7fb9d70da6801536dfc786a48fcea165c8ca8053  _scratch/s11c/mouth_rim_push_sympy01/resting_face.f64
+
+SymPy and NumPy
+$ python3 scripts/s11c_guarded_run.py --pool mouth-rim-push --memory-gib 2 --log-directory _scratch/s11c/mouth_rim_push_sympy01 -- python3 software/stage1_solver/tools/mouth_rim_push_compatibility.py _scratch/s11c/mouth_rim_push_sympy01/resting_face.f64
+Start UTC 2026-11-16T20:38:43.263493+00:00. End UTC 2026-11-16T20:38:44.203322+00:00 (start plus guard wall time).
+Guard and worker exit 0. Verified 2 GiB, zero swap, no deadline; stderr empty.
+Stdout SHA256 745e23066a35596c469d38c8a44f576831f08ecad1f77901b602b5c25c6c084c
+Literal stdout
+inward_number_rate 0.25
+frozen_brane_loads [0.005896476734154602, 1.0842021724855044e-19, -0.005896476734154601]
+incremental carrier load through cubic order = t**3*(a*r0/6 + jerk*k/6) + a*k*t**2/2 + O(t**4)
+brane-only release residual divided by signed nonzero push = 1
+endpoint displacement/slope differences = (0, 0, 0, 0)
+endpoint acceleration difference = 2*B*T0/(L**2*mu0)
+
+Mathematica, frequency limit and field readout
+$ python3 scripts/s11c_guarded_run.py --pool mouth-rim-push --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_rim_push_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_rim_push_compatibility.wl
+Start UTC 2026-11-16T20:39:45.393769+00:00. End UTC 2026-11-16T20:39:56.842375+00:00 (start plus guard wall time).
+Guard and worker exit 0. Verified 4 GiB, zero swap, no deadline; stderr empty.
+Stdout SHA256 c89f283e80e0777d17d1cb5cf9a7e713331a24f42a3085f3ed746778a88df0ab
+Literal stdout
+"inward_number_rate ""0.24999999999999997"
+"frozen_brane_loads ""[5.896476734154603e-3,3.705769144237564e-22,-5.8964767341546e-3]"
+"step residual from the high-frequency limit = "InputForm[force]
+"load second and third time derivatives = "InputForm[{accel*k, accel*b1*c1 + accel*b2*c2 + jerk*k}]
+"endpoint-compatible profile = "InputForm[(amp*(len - w)^2*w^2)/len^4]
+"endpoint acceleration difference = "InputForm[(2*amp*t0)/(len^2*mu0)]
+
+Mathematica, earlier response formula and four rim probes
+$ python3 scripts/s11c_guarded_run.py --pool mouth-rim-push --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_step_crosscheck_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_center_step_response.wl
+Start UTC 2026-11-16T20:41:14.235226+00:00. End UTC 2026-11-16T20:41:19.535618+00:00 (start plus guard wall time).
+Guard and worker exit 0. Verified 4 GiB, zero swap, no deadline; stderr empty.
+Stdout SHA256 b23abea0b4dacc8acab68c494d898802d1f79ed1f15aef4e57c9733c1b2ae3ee
+Literal stdout
+"displacement per force step = "InputForm[dyy/((-(dxy*dyx) + dxx*dyy)*s)]
+"fixed-time displacement slope in flow = "InputForm[flowCoefficient*response[t]]
+"integrated signed push inputs ""[-1.936630067214885e-5,-9.683150336074426e-6,9.683150336074426e-6,1.936630067214885e-5]"
+"four-push derivative estimate through fourth order = "InputForm[Derivative[1][g][0] - (h^4*Derivative[5][g][0])/480]

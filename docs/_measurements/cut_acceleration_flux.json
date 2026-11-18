@@ -1,0 +1,67 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "status": "Working result pending independent review.",
+  "scope": "Neutral carrier on an accelerating-section benchmark and a local whole-cut nonuniqueness check. No matched downstream measurement for a physical mouth.",
+  "source_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "docs/_measurements/open_sleeve_lateral_balance.txt": "166cd617b8949f6f487a6a5e0c85d0bbb1159b7d1deda59b19ededbda03019c0",
+    "software/stage1_solver/reports/cut_acceleration_flux.md": "61e256efd96f42c28cc8cc5397d761f0f72549d140a69d85e19c0e5cc7962507",
+    "docs/_measurements/sleeve_outlet_boundary_data.txt": "d5f64777d2eca524dde81beb3c45a20197cfc288fff7407baeff5c26176f9d8d",
+    "software/stage1_solver/tools/open_sleeve_lateral_balance.py": "543c03dfb31f485df37733ae38c62e787a61b069cf40e2b6625ce39df13fbae4",
+    "software/stage1_solver/reports/rim_end_load.md": "c1630e75b1df0bf4c2ae2c87fad297c54e7c7721dd299de95c88fba14145854b",
+    "software/stage1_solver/reports/one_mouth_moving_momentum.md": "eb2f9f3d3706032dfad0ac87832c555ffc0f7d8a9392d36f13d8562016ba53d5"
+  },
+  "archived_numerical_inputs": {
+    "sleeve_lateral_balance_fine01": {
+      "stdout_sha256": "da3c2013d8c6cc2c1902ad67ee639cef64a49a6980a7c1c6777f212f5a55fcf5",
+      "prior_record": "docs/_measurements/open_sleeve_lateral_balance.txt",
+      "limits_verified": true
+    },
+    "sleeve_lateral_outlet_control01": {
+      "stdout_sha256": "bf643dd1f985613f87dd3215fc0e42d5e79df251b77b7dce00e52751b8669f22",
+      "prior_record": "docs/_measurements/open_sleeve_lateral_balance.txt",
+      "limits_verified": true
+    }
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool cut-acceleration-flux-sympy --memory-gib 2 --log-directory _scratch/s11c/cut_acceleration_flux_sympy01 -- python3 software/stage1_solver/tools/cut_acceleration_flux.py",
+      "script_sha256": "27c6fb043d41c06b3c51db9758a201ceb5bf14dcb6d831758c42d3662dae3dea",
+      "start_utc": "2026-11-17T22:39:42.522801+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_gib": 2,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "continuity difference = 0",
+        "Bernoulli difference = 0",
+        "decaying downstream data = 0",
+        "normal-current difference on cut = 0",
+        "carried sideways coefficient = Y_x",
+        "mixed-stress coefficient = 3*Y_x/4",
+        "integrated difference per unit perturbation = 7*pi*a**2/3",
+        "outlet_tau=0 level=64: flow=-0.0000785878170083 stress=0.167732490934 total=0.1676539031169917 drain_minus_zero=0.0000357628569917",
+        "outlet_tau=0 level=128: flow=-0.0000786532734354 stress=0.167814124565 total=0.1677354712915646 drain_minus_zero=0.0000356996825646",
+        "outlet_tau=1 level=64: flow=0.00110002016711 stress=0.168332716986 total=0.16943273715311 drain_minus_zero=0.00181459689311",
+        "outlet_tau=1 level=128: flow=0.00110230453142 stress=0.168415395536 total=0.16951770006742 drain_minus_zero=0.00181792845842"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool cut-acceleration-flux-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/cut_acceleration_flux_wolfram01 -- math -noprompt -script software/stage1_solver/tools/cut_acceleration_flux.wl",
+      "script_sha256": "eaba5b9f8db7df4b2730082b2c7434adc51defdd8cf8ba603aed6bc16c8a5dec",
+      "start_utc": "2026-11-17T22:39:51.257914+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_gib": 4,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "\"linearized complex receiver equation\"\" = \"InputForm[0]",
+        "\"same normal current\"\" = \"InputForm[0]",
+        "\"advective current change\"\" = \"InputForm[yx]",
+        "\"total Cartesian mixed current change\"\" = \"InputForm[(7*yx)/4]",
+        "\"angular integral is a radial derivative\"\" = \"InputForm[0]",
+        "\"total on the complete section\"\" = \"InputForm[(7*a^2*Pi)/3]"
+      ]
+    }
+  }
+}

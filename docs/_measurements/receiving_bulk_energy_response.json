@@ -1,0 +1,71 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "scope": "Conditional paper test in a 4D exterior with fixed rates and common far head. The two responses have different angular boundary histories. Neither is a solution matched to the physical converting mouth.",
+  "status": "Working result pending independent review.",
+  "source_sha256": {
+    "software/stage1_solver/reports/receiving_bulk_energy_response.md": "2125c3c761a82e843a7172a7dbd0fe3186ae2d9264cea0179793d9f1973ed97e",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/reports/stationary_mouth_energy_test.md": "864eeb0ff00d498e0c75858f84251619346feaf3198942f3e2f85da6b9ccbc40",
+    "software/stage1_solver/reports/mouth_stress_energy.md": "bf7f36d6fa874ed91dd7be8a9d6bf85ea861f1b2124bc0dfc7605eb7579bf480",
+    "software/stage1_solver/reports/mouth_energy_balance.md": "251197209a857c62770aeba4c16132480b05b4698fd8472e6a01fdde9f747bea",
+    "software/stage1_solver/reports/one_mouth_outer_holding_force.md": "f41587d49a0b3211551f7adae9525411db600cffd98e4bd2abe10221c595edb0",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1"
+  },
+  "runs": {
+    "sympy": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool receiving-bulk-energy-response-sympy --memory-gib 2 --log-directory _scratch/s11c/receiving_bulk_energy_sympy01 -- python3 software/stage1_solver/tools/receiving_bulk_energy_response.py > _scratch/s11c/receiving_bulk_energy_sympy01.launch.log 2>&1 < /dev/null",
+      "script": "software/stage1_solver/tools/receiving_bulk_energy_response.py",
+      "script_sha256": "f64b6087b6aedb87c8c5e8fe604b3ebb632974d7a6a9d1947d908213478ac9ac",
+      "start_utc": "2026-11-17T19:38:12.330162+00:00",
+      "end_from_guard_wall_time": "2026-11-17T19:38:16.321226+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "cap_bytes": 2147483648,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "sampled_peak_bytes": 66441216,
+      "stdout": "_scratch/s11c/receiving_bulk_energy_sympy01/stdout",
+      "stdout_sha256": "518cdae49c33d6d72277e8c82636629b84e9b9ff21ae142cdf9ad79718570805",
+      "stdout_bytes": 825,
+      "literal_readings": [
+        "SymPy version = 1.14.0",
+        "exterior dipole Laplacian: 0 | expected 0 | residual 0",
+        "change in total flux per unit dipole amplitude: 0 | expected 0 | residual 0",
+        "direction cosine squared, 4D surface mean: 1/4 | expected 1/4 | residual 0",
+        "integral of h times companion normal velocity: -q2/(4*d**3*rho) | expected -q2/(4*d**3*rho) | residual 0",
+        "change in local power density: k*rho*s*vN*z/R**3 | expected k*rho*s*vN*z/R**3 | residual 0",
+        "self-flow projection in power change: 0 | expected 0 | residual 0",
+        "change in four-state odd slope: -k*q2/(4*d**3) | expected -k*q2/(4*d**3) | residual 0",
+        "pure monopole four-state odd slope: q1*q2/(2*pi**2*d**3*rho) | expected q1*q2/(2*pi**2*d**3*rho) | residual 0",
+        "ratio for k=q1/(rho Omega4): 3/4 | expected 3/4 | residual 0",
+        "amplitude recovered from normal-velocity moment: B | expected B | residual 0"
+      ]
+    },
+    "wolfram": {
+      "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool receiving-bulk-energy-response-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/receiving_bulk_energy_wolfram01 -- math -noprompt -script software/stage1_solver/tools/receiving_bulk_energy_response.wl > _scratch/s11c/receiving_bulk_energy_wolfram01.launch.log 2>&1 < /dev/null",
+      "script": "software/stage1_solver/tools/receiving_bulk_energy_response.wl",
+      "script_sha256": "25184231abb330a9a31588f66eb1ec65ad1b3eb9e7b4c53f1e9fb25928dc4ed3",
+      "start_utc": "2026-11-17T19:38:11.307956+00:00",
+      "end_from_guard_wall_time": "2026-11-17T19:38:16.650259+00:00",
+      "guard_exit": 0,
+      "worker_exit": 0,
+      "cap_bytes": 4294967296,
+      "swap_bytes": 0,
+      "wall_deadline": null,
+      "sampled_peak_bytes": 225460224,
+      "stdout": "_scratch/s11c/receiving_bulk_energy_wolfram01/stdout",
+      "stdout_sha256": "473fc9b2a20219ba1ccfbf6a6eb299183449a883bfb80d3552ef01e949dfccd1",
+      "stdout_bytes": 2062,
+      "literal_readings": [
+        "\"Wolfram version = \"\"15.0.1 for Linux x86 (64-bit) (July 2, 2026)\"",
+        "\"R=\"1/2\" k/k1=\"0\" static force=\"\"0.00474943048323458303643184983795598307`12.\"\" powers(0,+,-,+half,-half)=\"\"{0, 0.00047494304832345830364318498379559831`12., -0.00047494304832345830364318498379559831`12., 0.00023747152416172915182159249189779915`12., -0.00023747152416172915182159249189779915`12.}\"\" odd slopes=\"\"{0.00474943048323458303643184983795598305`12., 0.00474943048323458303643184983795598305`12.}\"\" slope / static force=\"\"0.99999999999999999999999999999999999569`12.\"",
+        "\"R=\"1/2\" k/k1=\"1\" static force=\"\"0.00474943048323458303643184983795598307`12.\"\" powers(0,+,-,+half,-half)=\"\"{0, 0.00035620728624259372773238873784669873`12., -0.00035620728624259372773238873784669873`12., 0.00017810364312129686386619436892334936`12., -0.00017810364312129686386619436892334936`12.}\"\" odd slopes=\"\"{0.00356207286242593727732388737846698731`12., 0.00356207286242593727732388737846698731`12.}\"\" slope / static force=\"\"0.75`12.\"",
+        "\"R=\"1\" k/k1=\"0\" static force=\"\"0.00474943048323458303643184983795598307`12.\"\" powers(0,+,-,+half,-half)=\"\"{0, 0.00047494304832345830364318498379559831`12., -0.00047494304832345830364318498379559831`12., 0.00023747152416172915182159249189779874`12., -0.00023747152416172915182159249189779874`12.}\"\" odd slopes=\"\"{0.00474943048323458303643184983795598307`12., 0.00474943048323458303643184983795597486`12.}\"\" slope / static force=\"\"1.`12.\"",
+        "\"R=\"1\" k/k1=\"1\" static force=\"\"0.00474943048323458303643184983795598307`12.\"\" powers(0,+,-,+half,-half)=\"\"{0, 0.00035620728624259372773238873784669873`12., -0.00035620728624259372773238873784669873`12., 0.00017810364312129686386619436892334937`12., -0.00017810364312129686386619436892334937`12.}\"\" odd slopes=\"\"{0.00356207286242593727732388737846698731`12., 0.00356207286242593727732388737846698731`12.}\"\" slope / static force=\"\"0.75000000000000000000000000000000000014`12.\"",
+        "\"d=\"39/10\" two outward mass rates=\"\"{2.`12., 3.`12.}\"",
+        "\"d=\"41/10\" two outward mass rates=\"\"{2.`12., 3.`12.}\"",
+        "\"interaction power after removing unsteady pressure=\"\"0\""
+      ]
+    }
+  }
+}

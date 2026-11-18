@@ -1,0 +1,42 @@
+0PN independent rotational shear field on the archived one-mouth commands. Working result pending review.
+Repository base fd667ea9291b4430a96afe3fd932926232f5507d.
+One-way homogeneous exterior in solver units. Radius, material density and transverse wave speed are 1.
+Both surface drag coefficients are diagnostic inputs. The carrier benchmark supplies the commanded drive, time samples and intake.
+Each guard used zero swap and no deadline. The Mathematica comparison includes all signs, both amplitudes and both stationary controls.
+
+Script and scientific input/output SHA256
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+c193e1e8dfa42f416ec1023e022a32d85faf38b856f0daf93eddb1e237a60a02  software/stage1_solver/src/stage1_solver/mouth_shear.py
+234e161a40c28cdc06046c4a941985e9c39a2eb2da66b8249ec9bd9bd3870efc  software/stage1_solver/tools/mouth_shear_field_probe.py
+ad5bf25246765a737ff88e06c220b6729130d850bf311f1b786142fb8d68450f  software/stage1_solver/tools/mouth_shear_field_check.wl
+db7ae4e93ffb1ddf105d2afd02194f29009464d9a642721a18e3edd3aeeeae73  docs/_measurements/mouth_prescribed_acceleration.txt
+250274fe55fa4486d8f7fcaf80f0986132db8c608118363d243c45cc37857365  _scratch/s11c/mouth_shear_field01/fields.json
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-shear-field --memory-gib 2 --log-directory _scratch/s11c/mouth_shear_field01 -- python3 software/stage1_solver/tools/mouth_shear_field_probe.py --density 1 --wave-speed 1 --slip-drag 0.5 1 --output _scratch/s11c/mouth_shear_field01/fields.json
+Start 2026-11-16T23:06:59.584667+00:00. End 2026-11-16T23:07:00.624211+00:00 (start plus guard wall time).
+Guard/worker exit 0/0. Limits verified. Sampled cgroup peak 86122496 bytes. Stderr empty.
+Stdout _scratch/s11c/mouth_shear_field01/stdout (646 bytes, SHA256 ff604e6e8bf8c499fdbc56dae78bfeed1e41cd8a204f9608cfd32e3a2c0480ea).
+Literal stdout
+SymPy wave, radial displacement, tangential displacement, projected force residuals: 0 0 0 0
+t=0.001 gap=0.0001; drag acceleration X equatorial_material_displacement force_on_exterior
+0.5 +0 +0 +0 +0
+0.5 +0.02 +1e-08 +2.69973006746e-09 +5.02705044827e-05
+0.5 -0.02 -1e-08 -2.69973006746e-09 -5.02705044827e-05
+0.5 +0.01 +5e-09 +1.34986503373e-09 +2.51352522414e-05
+0.5 -0.01 -5e-09 -1.34986503373e-09 -2.51352522414e-05
+1 +0 +0 +0 +0
+1 +0.02 +1e-08 +4.04959505564e-09 +7.54057550279e-05
+1 -0.02 -1e-08 -4.04959505564e-09 -7.54057550279e-05
+1 +0.01 +5e-09 +2.02479752782e-09 +3.77028775139e-05
+1 -0.01 -5e-09 -2.02479752782e-09 -3.77028775139e-05
+
+$ setsid --fork --wait nohup python3 scripts/s11c_guarded_run.py --pool mouth-shear-field --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_shear_field_wolfram01 -- math -noprompt -script software/stage1_solver/tools/mouth_shear_field_check.wl
+Start 2026-11-16T23:08:28.176537+00:00. End 2026-11-16T23:08:35.324705+00:00 (start plus guard wall time).
+Guard/worker exit 0/0. Limits verified. Sampled cgroup peak 225357824 bytes. Stderr empty.
+Stdout _scratch/s11c/mouth_shear_field_wolfram01/stdout (411 bytes, SHA256 87ef147fd05531712d1fd67aefa43d1075d5d516f64d8b2fabc0bc65a1f4c293).
+Literal stdout
+"Vorticity wave and tangential contact residuals: "{0, 0}
+"Off-rim shell samples compared: "60
+"Maximum relative errors (p, d, force): "InputForm[{3.801316704636076*^-14, 3.8777968794918606*^-15, 1.2482110807964922*^-13}]
+"Maximum relative error on rim displacement and force: "InputForm[3.3500814343155057*^-15]
+"Maximum relative change on halving radial difference spacing: "InputForm[7.333286965134385*^-12]

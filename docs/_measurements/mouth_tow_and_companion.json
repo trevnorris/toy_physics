@@ -1,0 +1,48 @@
+{
+  "scope": "Retrospective quantitative check in the ideal three-dimensional absorbing and four-dimensional emitting exteriors. Full signed one-drain brane-only and common-stream controls calibrate two coefficients. Half-strength, mixed streams and separate paired-surface quadratures are reserved for comparison. No physical tow or free-release run.",
+  "base": "fd667ea9291b4430a96afe3fd932926232f5507d",
+  "sha256": {
+    "software/stage1_solver/tools/mouth_outer_holding_force.py": "f1fa1758cc457af17e188aadaf5ca04cdd447b266ef8ffdffaa5e02a66791c08",
+    "software/stage1_solver/tools/mouth_outer_pair_force.wl": "4db27592c4cf5ef11b15f93f0e33cf413a6b393c866c7d0139c56b1150de3282",
+    "software/stage1_solver/tools/mouth_tow_and_companion.py": "99a4a1a257dea21b8df6be105e5254ad8feb4a5ab577e107a19bd6559738ade1",
+    "docs/_measurements/mouth_outer_holding_force.txt": "4d078fffd20452d0d0ea1210b811898dd27424636a6f09b797adae0c20c799f4",
+    "docs/_measurements/mouth_conversion_momentum.json": "052f46224136505ac98b79a7b6fc34d8e9c261a1b855683d25c0fb99fdc353aa",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1",
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+  },
+  "archived_stdout": {
+    "_scratch/s11c/mouth_outer_hold_sympy01/stdout": "f2a2f18c47bad95c6a52f5a54929a8f62c6fa558dbdada5c965e8e6718f27e26",
+    "_scratch/s11c/mouth_outer_hold_pair01/stdout": "7f5271b8aa0c72f3194e9512cc65f1164817834849313b38a4b3f7cfdd9a0a0f"
+  },
+  "comparison": {
+    "command": "setsid --fork nohup python3 scripts/s11c_guarded_run.py --pool mouth-tow-comparison --memory-gib 2 --log-directory _scratch/s11c/mouth_tow_comparison01 -- python3 software/stage1_solver/tools/mouth_tow_and_companion.py > _scratch/s11c/mouth_tow_comparison01.launch.log 2>&1 < /dev/null",
+    "start": "2026-11-17T16:18:05.529977+00:00",
+    "end_from_start_and_guard_wall_time": "2026-11-17T16:18:05.668935+00:00",
+    "guard_exit": 0,
+    "worker_exit": 0,
+    "limits_verified": true,
+    "memory_gib": 2,
+    "swap_bytes": 0,
+    "deadline": null,
+    "sampled_peak_bytes": 19369984,
+    "stdout_path": "_scratch/s11c/mouth_tow_comparison01/stdout",
+    "stdout_bytes": 1472,
+    "stdout_sha256": "066543746707bc3cf55ce628e4cd1e50947995fb86afe7139f15ac2676deefb7",
+    "stdout": [
+      "brane slope=1/4, common slope=0, inferred bulk slope=-1/4",
+      "held check U=-1/50 W/U=1/2: predicted pull=-1/400, recorded pull=-1/400, residual=0",
+      "held check U=-1/100 W/U=0: predicted pull=-1/400, recorded pull=-1/400, residual=0",
+      "held check U=-1/100 W/U=1/2: predicted pull=-1/800, recorded pull=-1/800, residual=0",
+      "held check U=-1/100 W/U=1: predicted pull=0, recorded pull=0, residual=0",
+      "held check U=1/100 W/U=0: predicted pull=1/400, recorded pull=1/400, residual=0",
+      "held check U=1/100 W/U=1/2: predicted pull=1/800, recorded pull=1/800, residual=0",
+      "held check U=1/100 W/U=1: predicted pull=0, recorded pull=0, residual=0",
+      "held check U=1/50 W/U=1/2: predicted pull=1/400, recorded pull=1/400, residual=0",
+      "d=8 R=1: predicted brane,bulk,total=5.828428091744214e-5,3.092077137522515e-6,6.1376358054964655e-5, recorded total=6.1376358054964655e-5, largest channel/total relative difference=1.1383e-33",
+      "d=8 R=3: predicted brane,bulk,total=5.828428091744214e-5,3.092077137522515e-6,6.1376358054964655e-5, recorded total=6.1376358054964655e-5, largest channel/total relative difference=1.1383e-33",
+      "d=16 R=1: predicted brane,bulk,total=1.4571070229360535e-5,3.8650964219031437e-7,1.4957579871550849e-5, recorded total=1.4957579871550849e-5, largest channel/total relative difference=2.0958e-33",
+      "d=16 R=3: predicted brane,bulk,total=1.4571070229360535e-5,3.8650964219031437e-7,1.4957579871550849e-5, recorded total=1.4957579871550849e-5, largest channel/total relative difference=2.0958e-33"
+    ]
+  },
+  "precision": "Compare only to the labeled 15-digit precision of the archived Mathematica quadratures. Smaller printed residuals are differences against the serialized numerals, not accuracy estimates."
+}

@@ -1,0 +1,173 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Prescribed smooth splitting confinement of a neutral classical scalar in the x,w plane, per unit spectator area. No self-consistent matter, pair nucleation or electric source solve.",
+  "source_equations_sha256": {
+    "notes/inner_throat/inner_throat_hard_mode.md": "4c28f2214fc33357393277705d11bdae11ef69480bbeb9bc9c0fe03a4bddd4dd",
+    "docs/native_light_em_and_vortex_throat_interpretation.md": "3efc9c49f1a5326b254ed8bb583b8ca8c715c05639dfceb5b9dac3d4c815d124",
+    "software/em_charge_attribute/reports/mirror_internal_matching.md": "c8c2d3d639fa31a4ac986f60263b5edf0378678e94891343d122c111bebece35"
+  },
+  "runs": {
+    "forming_pair_circulation_python": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool forming-pair-circulation-python --memory-gib 2 --log-directory _scratch/s11c/forming_pair_circulation_python01 -- python3 software/em_charge_attribute/forming_pair_circulation.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/forming_pair_circulation.py": "ab0a7b971bed9ebf74cb7477fc5cac80b7848ba726e3377d43abd4152a05fc85"
+      },
+      "start_utc": "2026-11-18T22:39:08.307293+00:00",
+      "end_utc_outcome_written": "2026-11-18T22:39:12.166413+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 32,
+      "peak_memory_bytes": 37793792,
+      "stdout_path": "_scratch/s11c/forming_pair_circulation_python01/stdout",
+      "stdout_sha256": "c7d8775d9f9376dfb8d40b8ed4e867fb7ec8bcf2437cf80a564669a2523046d3",
+      "stdout_bytes": 20507,
+      "stdout_claim_lines": [
+        "{\"h\": 0.0625, \"forming\": false, \"t\": 0.0, \"seed\": 0.01, \"up\": {\"L\": 0.004431854647374854, \"E\": 1.4458201523601963, \"x\": -1.3302959640916896e-17, \"w\": 0.6883709124078116, \"edge\": 8.8406774585533e-26, \"well_band\": 0.24885762662937647}, \"down\": {\"L\": -0.004431854647374855, \"E\": 1.4458201523601966, \"x\": 2.0950275426504415e-17, \"w\": -0.6883709124078115, \"edge\": 8.840677458553299e-26, \"well_band\": 0.24885762662937644}, \"energy_work_residual_over_initial\": 0.0}",
+        "{\"h\": 0.0625, \"forming\": false, \"t\": 2.0, \"seed\": 0.01, \"up\": {\"L\": 0.004791069907958635, \"E\": 1.4465137930189766, \"x\": 1.6977765986336036e-05, \"w\": 0.712763847566924, \"edge\": 8.492128931838975e-26, \"well_band\": 0.2707422054949207}, \"down\": {\"L\": -0.004791069907958671, \"E\": 1.4465137930189764, \"x\": 1.697776598634908e-05, \"w\": -0.7127638475669241, \"edge\": 8.492128931845733e-26, \"well_band\": 0.27074220549492073}, \"energy_work_residual_over_initial\": 0.0004797558379913197}",
+        "{\"h\": 0.0625, \"forming\": false, \"t\": 4.0, \"seed\": 0.01, \"up\": {\"L\": -0.002024343485197049, \"E\": 1.4473946830819715, \"x\": 0.0002994343167921161, \"w\": 0.6854085421274683, \"edge\": 3.595932254442122e-27, \"well_band\": 0.25630408484002165}, \"down\": {\"L\": 0.002024343485197069, \"E\": 1.4473946830819726, \"x\": 0.00029943431679198984, \"w\": -0.6854085421274682, \"edge\": 3.5959322268023554e-27, \"well_band\": 0.2563040848400216}, \"energy_work_residual_over_initial\": 0.0010890225310563662}",
+        "{\"h\": 0.0625, \"forming\": true, \"t\": 0.0, \"seed\": 0.01, \"up\": {\"L\": 0.004431854647374854, \"E\": 1.4458201523601963, \"x\": -1.3302959640916896e-17, \"w\": 0.6883709124078116, \"edge\": 8.8406774585533e-26, \"well_band\": 0.24885762662937647}, \"down\": {\"L\": -0.004431854647374855, \"E\": 1.4458201523601966, \"x\": 2.0950275426504415e-17, \"w\": -0.6883709124078115, \"edge\": 8.840677458553299e-26, \"well_band\": 0.24885762662937644}, \"energy_work_residual_over_initial\": 0.0}",
+        "{\"h\": 0.0625, \"forming\": true, \"t\": 2.0, \"seed\": 0.01, \"up\": {\"L\": 0.005023028520241205, \"E\": 1.4451240503340759, \"x\": -0.0002672221161157764, \"w\": 0.6983963452212926, \"edge\": 8.882407549302659e-26, \"well_band\": 0.2566190950102381}, \"down\": {\"L\": -0.005023028520241239, \"E\": 1.4451240503340765, \"x\": -0.0002672221161156988, \"w\": -0.6983963452212925, \"edge\": 8.882407549304348e-26, \"well_band\": 0.25661909501023805}, \"energy_work_residual_over_initial\": 0.00044807931248370785}",
+        "{\"h\": 0.0625, \"forming\": true, \"t\": 4.0, \"seed\": 0.01, \"up\": {\"L\": 0.00137680841117945, \"E\": 1.8689694295066566, \"x\": -0.0008964811716838838, \"w\": 0.9152180004643795, \"edge\": 1.2970625340178305e-26, \"well_band\": 0.403172604177214}, \"down\": {\"L\": -0.0013768084111793464, \"E\": 1.8689694295066572, \"x\": -0.0008964811716836567, \"w\": -0.9152180004643794, \"edge\": 1.297062500996392e-26, \"well_band\": 0.4031726041772141}, \"energy_work_residual_over_initial\": 0.0006917097901843262}"
+      ]
+    },
+    "forming_pair_circulation_wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool forming-pair-circulation-wolfram --tasks-max 64 --memory-gib 4 --log-directory _scratch/s11c/forming_pair_circulation_wolfram01 -- math -noprompt -script software/em_charge_attribute/forming_pair_circulation.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/forming_pair_circulation.wl": "54958597eda788eaad472b24686ffce5de9150a4417e795e1f3e104a43e921ab"
+      },
+      "start_utc": "2026-11-18T22:39:16.309910+00:00",
+      "end_utc_outcome_written": "2026-11-18T22:39:21.582937+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 64,
+      "peak_memory_bytes": 225566720,
+      "stdout_path": "_scratch/s11c/forming_pair_circulation_wolfram01/stdout",
+      "stdout_sha256": "23b5d310452090796350656dd0131cac954c1c93eacb248763c37bb976023b81",
+      "stdout_bytes": 7658,
+      "stdout_claim_lines": [
+        "\"{\\\"forming\\\":false,\\\"t\\\":0.0,\\\"seed\\\":1.0e-2,\\\"up\\\":{\\\"L\\\":4.43402286647463e-3,\\\"E\\\":1.4481171336722147,\\\"x\\\":0.0,\\\"w\\\":0.6882232170020579,\\\"well_band\\\":0.2487500264794007},\\\"down\\\":{\\\"L\\\":-4.434022866474631e-3,\\\"E\\\":1.4481171336722147,\\\"x\\\":0.0,\\\"w\\\":-0.6882232170020579,\\\"well_band\\\":0.24875002647940078}}\"",
+        "\"{\\\"forming\\\":false,\\\"t\\\":2.0,\\\"seed\\\":1.0e-2,\\\"up\\\":{\\\"L\\\":4.7982923764912635e-3,\\\"E\\\":1.4481171336010772,\\\"x\\\":1.6783223817853853e-5,\\\"w\\\":0.7129246504783058,\\\"well_band\\\":0.2708513382791944},\\\"down\\\":{\\\"L\\\":-4.7982923764912705e-3,\\\"E\\\":1.4481171336010767,\\\"x\\\":1.678322381777719e-5,\\\"w\\\":-0.7129246504783059,\\\"well_band\\\":0.2708513382791942}}\"",
+        "\"{\\\"forming\\\":false,\\\"t\\\":4.0,\\\"seed\\\":1.0e-2,\\\"up\\\":{\\\"L\\\":-2.0597509762575843e-3,\\\"E\\\":1.4481171335299388,\\\"x\\\":3.002804614999362e-4,\\\"w\\\":0.6855398628487445,\\\"well_band\\\":0.25627680208407666},\\\"down\\\":{\\\"L\\\":2.059750976257598e-3,\\\"E\\\":1.4481171335299392,\\\"x\\\":3.0028046150001284e-4,\\\"w\\\":-0.685539862848744,\\\"well_band\\\":0.25627680208407644}}\"",
+        "\"{\\\"forming\\\":true,\\\"t\\\":0.0,\\\"seed\\\":1.0e-2,\\\"up\\\":{\\\"L\\\":4.43402286647463e-3,\\\"E\\\":1.4481171336722147,\\\"x\\\":0.0,\\\"w\\\":0.6882232170020579,\\\"well_band\\\":0.2487500264794007},\\\"down\\\":{\\\"L\\\":-4.434022866474631e-3,\\\"E\\\":1.4481171336722147,\\\"x\\\":0.0,\\\"w\\\":-0.6882232170020579,\\\"well_band\\\":0.24875002647940078}}\"",
+        "\"{\\\"forming\\\":true,\\\"t\\\":2.0,\\\"seed\\\":1.0e-2,\\\"up\\\":{\\\"L\\\":5.030672662668203e-3,\\\"E\\\":1.4467183968624444,\\\"x\\\":-2.6691665491698454e-4,\\\"w\\\":0.6986155546560834,\\\"well_band\\\":0.2567690687536091},\\\"down\\\":{\\\"L\\\":-5.030672662668113e-3,\\\"E\\\":1.4467183968624442,\\\"x\\\":-2.6691665491706135e-4,\\\"w\\\":-0.6986155546560833,\\\"well_band\\\":0.2567690687536093}}\"",
+        "\"{\\\"forming\\\":true,\\\"t\\\":4.0,\\\"seed\\\":1.0e-2,\\\"up\\\":{\\\"L\\\":1.3564745334922383e-3,\\\"E\\\":1.8701345547474604,\\\"x\\\":-8.953386039391826e-4,\\\"w\\\":0.915787275142319,\\\"well_band\\\":0.4034238360879922},\\\"down\\\":{\\\"L\\\":-1.3564745334923255e-3,\\\"E\\\":1.8701345547474606,\\\"x\\\":-8.953386039391824e-4,\\\"w\\\":-0.9157872751423184,\\\"well_band\\\":0.4034238360879918}}\""
+      ]
+    },
+    "forming_pair_initial_torque_sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool forming-pair-initial-torque-sympy --memory-gib 2 --log-directory _scratch/s11c/forming_pair_initial_torque_sympy01 -- python3 software/em_charge_attribute/forming_pair_initial_torque.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/forming_pair_initial_torque.py": "0a7f2bee9dc853e600571eba825ca899401e802b7dc4cf314e79dd5922d55b35"
+      },
+      "start_utc": "2026-11-18T22:41:20.147249+00:00",
+      "end_utc_outcome_written": "2026-11-18T22:41:20.655693+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 32,
+      "peak_memory_bytes": 52301824,
+      "stdout_path": "_scratch/s11c/forming_pair_initial_torque_sympy01/stdout",
+      "stdout_sha256": "0724f399c79ff28028dc387d13a3543897b9e2f7933f5ee4cc0d8dbef71ee69a",
+      "stdout_bytes": 653,
+      "stdout_claim_lines": [
+        "side 1 raw, trap and cut torque = 3*sqrt(pi)*eta/8 -sqrt(pi)*eta/8 sqrt(pi)*eta/2",
+        "side 1 intrinsic torque linear coefficient = 149*sqrt(pi)/472",
+        "side 1 tilt 1/100 initial intrinsic torque = 0.005595272866975641",
+        "side 1 tilt -1/100 initial intrinsic torque = -0.005595272866975641",
+        "side 1 tilt 0 initial intrinsic torque = 0.0",
+        "side -1 raw, trap and cut torque = -3*sqrt(pi)*eta/8 sqrt(pi)*eta/8 -sqrt(pi)*eta/2",
+        "side -1 intrinsic torque linear coefficient = -149*sqrt(pi)/472",
+        "side -1 tilt 1/100 initial intrinsic torque = -0.005595272866975641",
+        "side -1 tilt -1/100 initial intrinsic torque = 0.005595272866975641",
+        "side -1 tilt 0 initial intrinsic torque = 0.0"
+      ]
+    },
+    "forming_pair_initial_torque_wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool forming-pair-initial-torque-wolfram --tasks-max 64 --memory-gib 4 --log-directory _scratch/s11c/forming_pair_initial_torque_wolfram01 -- math -noprompt -script software/em_charge_attribute/forming_pair_initial_torque.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/forming_pair_initial_torque.wl": "84c85a8c88bb87e580216ac36d0eccec613209ea4dbf278a59b953713ebfd6fe"
+      },
+      "start_utc": "2026-11-18T22:41:27.421817+00:00",
+      "end_utc_outcome_written": "2026-11-18T22:41:31.881892+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 64,
+      "peak_memory_bytes": 225312768,
+      "stdout_path": "_scratch/s11c/forming_pair_initial_torque_wolfram01/stdout",
+      "stdout_sha256": "1c2b45bb234b3d543606f53aabab5b1aaa87bfc9f68c62732783c4c38cc7fb7b",
+      "stdout_bytes": 609,
+      "stdout_claim_lines": [
+        "\"side \"1\" linear coefficient = \"\"(149*Sqrt[Pi])/472\"",
+        "\"side \"1\" tilt \"1/100\" initial intrinsic torque = \"\"0.00559527286697564066619148653510598322`16.\"",
+        "\"side \"1\" tilt \"-1/100\" initial intrinsic torque = \"\"-0.00559527286697564066619148653510598322`16.\"",
+        "\"side \"1\" tilt \"0\" initial intrinsic torque = \"\"0\"",
+        "\"side \"-1\" linear coefficient = \"\"(-149*Sqrt[Pi])/472\"",
+        "\"side \"-1\" tilt \"1/100\" initial intrinsic torque = \"\"-0.00559527286697564066619148653510598322`16.\"",
+        "\"side \"-1\" tilt \"-1/100\" initial intrinsic torque = \"\"0.00559527286697564066619148653510598322`16.\"",
+        "\"side \"-1\" tilt \"0\" initial intrinsic torque = \"\"0\""
+      ]
+    }
+  },
+  "diagnostics": {
+    "forming_pair_circulation_python_h0.125": {
+      "forming_gain_mid_end": [
+        1.125892215583889,
+        0.3268422982247224
+      ],
+      "fixed_gain_mid_end": [
+        1.073849551370121,
+        -0.4313023570910169
+      ],
+      "max_abs_net_L": 1.3183898417423734e-16,
+      "max_abs_zero_seed_L": 2.949006538077093e-17,
+      "max_abs_reversed_sum": 3.0140820395097023e-17,
+      "max_abs_twice_half_minus_full": 1.9890539545291963e-09,
+      "end_upper_well_band_fraction": 0.40246107835924366,
+      "max_sampled_edge_energy_fraction": 5.3998361579225365e-25,
+      "max_abs_energy_work_residual_over_initial": 0.0043423455979740636
+    },
+    "forming_pair_circulation_python_h0.0625": {
+      "forming_gain_mid_end": [
+        1.1333919814397624,
+        0.3106619058445391
+      ],
+      "fixed_gain_mid_end": [
+        1.081053032909497,
+        -0.45677118187893184
+      ],
+      "max_abs_net_L": 1.9060274192295168e-16,
+      "max_abs_zero_seed_L": 7.822501570130527e-17,
+      "max_abs_reversed_sum": 1.3487475025719675e-16,
+      "max_abs_twice_half_minus_full": 2.0103654132033744e-09,
+      "end_upper_well_band_fraction": 0.403172604177214,
+      "max_sampled_edge_energy_fraction": 8.882630305787129e-26,
+      "max_abs_energy_work_residual_over_initial": 0.0010890225310563662
+    },
+    "forming_pair_circulation_wolfram_h0.0625": {
+      "forming_gain_mid_end": [
+        1.1345617318992207,
+        0.3059241177460896
+      ],
+      "fixed_gain_mid_end": [
+        1.0821532772802893,
+        -0.46453323275151165
+      ],
+      "max_abs_net_L": 9.768661574094395e-17,
+      "max_abs_zero_seed_L": 0.0,
+      "max_abs_reversed_sum": 5.551115123125783e-17,
+      "max_abs_twice_half_minus_full": 2.0184036360684776e-09,
+      "end_upper_well_band_fraction": 0.4034238360879922
+    }
+  }
+}

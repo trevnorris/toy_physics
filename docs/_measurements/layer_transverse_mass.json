@@ -1,0 +1,87 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Free-ended long-wavelength planar shear layer, constant area, arbitrary regular stiffness and local transverse inertia, negligible through-flow effects on propagation. No measured native column.",
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool layer-transverse-mass --memory-gib 2 --log-directory _scratch/s11c/layer_transverse_mass01 -- python3 software/em_charge_attribute/layer_transverse_mass.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/layer_transverse_mass.py": "77a62bc242e473e0db2b3adf881d72387720f421ffa74344a8a5b91be7719240"
+      },
+      "start_utc": "2026-11-18T07:03:19.914582+00:00",
+      "end_utc_outcome_written": "2026-11-18T07:03:20.628546+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 55451648,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/layer_transverse_mass01/stdout",
+      "stdout_bytes": 747,
+      "stdout_sha256": "a8fbd3361957ad4f56642e33977c5df0017ff784f04780eefce33e6868728b86",
+      "stdout_claim_lines": [
+        "quartic traction integrand after integration by parts: measured=M(q)**2/mu(q), reference=M(q)**2/mu(q), residual=0",
+        "leading apparent position: measured=Sigma/rho0 + a, reference=Sigma/rho0 + a, residual=0",
+        "first dispersive coefficient = (3*H*c**2*rho0**2 - Sigma**3)/(3*rho0**3)",
+        "momentum per area per uniform transverse velocity: measured=Sigma, reference=Sigma, residual=0",
+        "apparent position with inertial end load = (Sigma + a*rho0 + tip_mass)/rho0",
+        "linear: Sigma=h*rho0/2, apparent penetration through k^2=h**3*k**2/48 + h/2",
+        "linear leading penetration: measured=h/2, reference=h/2, residual=0",
+        "smoothstep: Sigma=h*rho0/2, apparent penetration through k^2=3*h**3*k**2/224 + h/2",
+        "smoothstep leading penetration: measured=h/2, reference=h/2, residual=0"
+      ]
+    },
+    "wolfram_rejected_ode": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool layer-transverse-mass-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/layer_transverse_mass_wolfram01 -- math -noprompt -script software/em_charge_attribute/layer_transverse_mass.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/layer_transverse_mass.wl": "1194aa18709e899008643d944dcb9ad0280f7d8af3ad52b81bf15ec80dcfe57a"
+      },
+      "start_utc": "2026-11-18T07:03:18.965296+00:00",
+      "end_utc_outcome_written": "2026-11-18T07:03:23.724090+00:00",
+      "guard_exit": 1,
+      "child_exit": 1,
+      "peak_memory_bytes": 225333248,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/layer_transverse_mass_wolfram01/stdout",
+      "stdout_bytes": 1264,
+      "stdout_sha256": "415754039ea6fbcac435eff1550274c77053696980d9ed70e7fb78b4c29bd8c0",
+      "stdout_claim_lines": [
+        "NDSolveValue::nderr: Error test failure at s == 11.2301352987382661266120824131600795206322; unable to continue."
+      ],
+      "scope": "Rejected, diagnostics only, no scientific result used.",
+      "preserved_script": "_scratch/s11c/layer_transverse_mass_wolfram01/source.wl"
+    },
+    "wolfram_regular_series": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool layer-transverse-mass-series --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/layer_transverse_mass_series01 -- math -noprompt -script software/em_charge_attribute/layer_transverse_mass.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/layer_transverse_mass.wl": "0dcff5fdf93de87632d8dfb1336d42206b3a55115e3608ce44fdd67ec6d8e97a"
+      },
+      "start_utc": "2026-11-18T07:04:54.410865+00:00",
+      "end_utc_outcome_written": "2026-11-18T07:04:58.933879+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 225570816,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/layer_transverse_mass_series01/stdout",
+      "stdout_bytes": 1673,
+      "stdout_sha256": "f2b02849506dd9133938a1ee7946193041d9b010994790de5ae1f1a879bbc92e",
+      "stdout_claim_lines": [
+        "\"input stiffness derivative\"\" = \"\"h*omega^2*dens[x] + (h*stiffIn[x]^2)/stiff[x]\"",
+        "\"input stiffness quadratic source\"\" = \"\"{h*dens[x], h*dens[x], 0}\"",
+        "\"input stiffness quartic source\"\" = \"\"{(h*mass[x]^2)/stiff[x], (h*mass[x]^2)/stiff[x], 0}\"",
+        "\"{weight,column,phase depth to k^2}\"\" = \"\"{x, (h*rho0)/2, (h*(24 + h^2*k^2))/48}\"",
+        "\"{kh,phase depth,scaled correction,series-degree difference}\"\" = \"\"{0.1`14., 0.50020843752322431920082372417423260087`14., 0.02084375232243192008237241742326008704`14., 0``35.99981899119409}\"",
+        "\"{kh,phase depth,scaled correction,series-degree difference}\"\" = \"\"{0.05`14., 0.5000520898441131984965266679035139361`14., 0.02083593764527939861066716140557444075`14., 0``35.9999547576929}\"",
+        "\"{kh,phase depth,scaled correction,series-degree difference}\"\" = \"\"{0.025`14., 0.50001302124024005121887442844198377096`14., 0.02083398438408195019908550717403352956`14., 0``35.9999886900417}\"",
+        "\"{weight,column,phase depth to k^2}\"\" = \"\"{(3 - 2*x)*x^2, (h*rho0)/2, (h*(112 + 3*h^2*k^2))/224}\"",
+        "\"{kh,phase depth,scaled correction,series-degree difference}\"\" = \"\"{0.1`14., 0.50013396344015373369522927124022160827`14., 0.01339634401537336952292712402216082652`14., 2.748461200143201064114586452060271884`14.*^-22}\"",
+        "\"{kh,phase depth,scaled correction,series-degree difference}\"\" = \"\"{0.05`14., 0.50003348432233117093939118818342204815`14., 0.01339372893246837575647527336881926046`14., 6.71079177871403630471862005458154`10.826744680672292*^-26}\"",
+        "\"{kh,phase depth,scaled correction,series-degree difference}\"\" = \"\"{0.025`14., 0.50000837067193419740154812339773728027`14., 0.01339307509471584247699743637964843704`14., 1.63841818870216603280571449361`7.214417489977974*^-29}\""
+      ]
+    }
+  }
+}

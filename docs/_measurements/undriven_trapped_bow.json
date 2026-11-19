@@ -1,0 +1,84 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Sharp spherical cylinder, undriven fixed-action scalar wave with a conservative bow coordinate. Closed cavity comparison and sharp-wall cutoff screen. No live draining-mode or electric measurement.",
+  "source_sha256": {
+    "software/stage1_solver/reports/pathA_26_derrick_results.yaml": "a39e4cf4cd458be45566b063badfea71d5db04cb8795b0f9c083cbd513fef97b",
+    "software/stage1_solver/reports/pathA_26_derrick.md": "dc878f77efce234f83858f220bd0bedaaa35190f57e3d5cae7957e0e5ea04a6c",
+    "notes/inner_throat/inner_throat_hard_mode.md": "4c28f2214fc33357393277705d11bdae11ef69480bbeb9bc9c0fe03a4bddd4dd",
+    "notes/lepton_mass_notes.md": "bb7c64824d8ded1792082997194b4726c146d8893a2b7c9da97c65b0a1a9aa06",
+    "research/pde/paper/pde.tex": "9c16d156bef23331bfbdb41d4643b0903967ac12e1a4f4214c266163f741b443",
+    "software/em_charge_attribute/reports/rim_stress_charge_test.md": "d23edf6bac5da2e65b4b7e37c06af19461bfda3d82ba0b4d8a7102ed3c64dcc6",
+    "software/em_charge_attribute/reports/wave_load_vs_radius.md": "54da025244699bd88daef5ce2e7142c64ef5e20ee1ec29dcd81c7554db77eae0",
+    "software/em_charge_attribute/reports/mirrored_mouth_probe.md": "9ea780f72d5b9295a1fa27a94fa90c5b568c936c1ef22e368302d26cfd09adfc",
+    "software/em_charge_attribute/reports/trapped_wave_charge.md": "a60b9efce96db8aaaba9a48ae57f8903733684e32cd707928958eecf087981cf"
+  },
+  "runs": {
+    "sympy_scipy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool trapped-bow-py --memory-gib 2 --log-directory _scratch/s11c/undriven_trapped_bow_py01 -- python3 software/em_charge_attribute/undriven_trapped_bow.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/undriven_trapped_bow.py": "7ab5a7390a729bea90d9832dc277e52a27813bd8d6005c2c0f2d3f67e51bf3b2",
+        "software/stage1_solver/reports/pathA_26_derrick_results.yaml": "a39e4cf4cd458be45566b063badfea71d5db04cb8795b0f9c083cbd513fef97b"
+      },
+      "started_utc": "2026-11-19T00:25:49.509236+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_cap_bytes": 2147483648,
+      "swap_cap_bytes": 0,
+      "tasks_cap": 32,
+      "deadlines": null,
+      "stdout_path": "_scratch/s11c/undriven_trapped_bow_py01/stdout",
+      "stdout_sha256": "84ae9d799c1e7901121416481b22d9ceae764ae31b8949c1dc0c726dd3c3cbe2",
+      "stdout": [
+        "archived s0 p0 s1 second-radial s0 frequencies = [1.8834465877495736, 2.535623789583064, 3.0917380240122116, 3.4373218987375207]",
+        "crossing aspect, threshold length, optional slab cap = [1.3829337302965878, 2.572062356648376, 2.5]",
+        "axial bow, rigid translation, angular projection, phase factor = [1/2, 0, sqrt(3)/3, cos(phase)]",
+        "bow load at scale equilibrium for a fixed shape = -(3*A*R**2 + 4*R**3*V + W)*Derivative(Lambda(beta), beta)/(2*Lambda(beta))",
+        "R, tuned frequency, bow force/J, anchored axial load magnitude/J (ell=1) = [2.0, 2.3259873750648237, 0.21899686842056545, 0.2506734337958169]",
+        "R, tuned frequency, bow force/J, anchored axial load magnitude/J (ell=1) = [4.0, 1.1758206994436853, 0.05415195864534999, 0.06198471018466953]",
+        "volume projection dims (2, 2, 4), slope per action = 0.21899686842056454",
+        "ground frequency change at bow .08 = 0.000610014710506368",
+        "action, positive bow, internal load, energy change, curvature = [0.05, 0.0107948256290076, 0.010794825629007607, -5.9100592470197326e-05, 1.014348119636639]",
+        "action, positive bow, internal load, energy change, curvature = [0.025, 0.005435874925347322, 0.005435874925347351, -1.488048048028463e-05, 1.0071802167000743]",
+        "volume projection dims (4, 3, 6), slope per action = 0.21899686842056454",
+        "ground frequency change at bow .08 = 0.0006053334564264379",
+        "action, positive bow, internal load, energy change, curvature = [0.05, 0.010798054566619785, 0.01079805456661972, -5.911826998586725e-05, 1.0140447559729355]",
+        "action, positive bow, internal load, energy change, curvature = [0.025, 0.005436693545141907, 0.005436693545141907, -1.488272140821249e-05, 1.007028558861053]",
+        "largest refinement change in the two equilibrium bows = 3.228937612185026e-06",
+        "comparison 1.88344658775 2.53562378958 3.09173802401 3.43732189874 1.3829337303 2.57206235665 2.32598737506 0.218996868421 0.250673433796 1.17582069944 0.0541519586453 0.0619847101847"
+      ]
+    },
+    "mathematica": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool trapped-bow-wl --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/undriven_trapped_bow_wl01 -- math -noprompt -script software/em_charge_attribute/undriven_trapped_bow.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/undriven_trapped_bow.wl": "f798ef2ad171f80c9e9ac5cd4a4e6b25bfd5d50b5b546ecfd79b8a2c979afa69",
+        "software/stage1_solver/reports/pathA_26_derrick_results.yaml": "a39e4cf4cd458be45566b063badfea71d5db04cb8795b0f9c083cbd513fef97b"
+      },
+      "started_utc": "2026-11-19T00:25:58.185382+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_cap_bytes": 4294967296,
+      "swap_cap_bytes": 0,
+      "tasks_cap": 64,
+      "deadlines": null,
+      "stdout_path": "_scratch/s11c/undriven_trapped_bow_wl01/stdout",
+      "stdout_sha256": "8e5ef8c1ab4e5a6f4c7bd8b8cc362d10a65994fe8c32f08bccf435c8eca3b450",
+      "stdout": [
+        "\"reference frequencies and trapping threshold\"\" = \"\"{{1.8834465877495732, 2.5356237895830636, 3.0917380240122116, 3.437321898737521}, 2.5}\"",
+        "\"crossing aspect, radius and length at loss of binding\"\" = \"\"{1.3829337302965878, 1.8598594425032664, 2.5720623566483742}\"",
+        "\"angular diagonals, bow and translation overlaps, phase projection\"\" = \"\"{{0, 0}, 1/2, 0, -Cos[phase]}\"",
+        "\"tuned frequencies, bow load/J and anchored depth load/J (ell=1)\"\" = \"\"{{2.3259873750648232, 0.21899686842056554, 0.250673433795817}, {1.175820699443685, 0.054151958645350017, 0.061984710184669556}}\"",
+        "\"wave load along bow at size equilibrium\"\" = \"\"-1/2*((curv + 3*r^2*surf + 4*r^3*vol)*Derivative[1][lam][eta])/lam[eta]\"",
+        "\"comparison \"\"1.8834465877495732 2.5356237895830636 3.0917380240122116 3.437321898737521 1.3829337302965878 2.5720623566483742 2.3259873750648232 0.21899686842056554 0.250673433795817 1.175820699443685 0.054151958645350017 0.061984710184669556\""
+      ]
+    }
+  },
+  "comparison": {
+    "count": 12,
+    "max_absolute_disagreement_of_printed_values": 4.82325290818153e-12,
+    "columns": "4 archive frequencies, crossing L/R, threshold length, then frequency, lateral force/J and anchored axial force magnitude/J for R=2 and 4.",
+    "additional_checks": "Volume and surface bow matrix elements at the crossing. SymPy prints the phase expectation of a unit off-diagonal matrix, Mathematica prints that of its negative for the signed frequency variation. Positive pressure magnitude agrees. Finite-bow energy minima and two basis refinements are from SciPy; both engines also eliminate the wave action at stationary scale."
+  }
+}

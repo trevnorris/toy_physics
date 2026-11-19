@@ -1,0 +1,86 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Leading cycle-averaged work on a translated, weak order and transverse-inertia contrast in an ideal slab, reflected incident waves and a supplied flare. Separate exact planar lossless scattering control. No physical rim transfer or formation evolution.",
+  "source_equations_sha256": {
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "docs/light_guided_photon_soliton_research_plan.md": "05909674434c9d8f9a7fc7a7d5c95488f314f56138b84b1e49506697068fce0a",
+    "research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md": "128c00eacca5737ba89cb8d5647571b6fcb6c92b7147af247a341bed703d4110",
+    "software/stage1_solver/src/stage1_solver/m1c_physical_run.py": "5a7831a041062ab036af2d3cd513d7176620c3e8b43a7bf0002e519576bdb0ed",
+    "software/em_charge_attribute/reports/conversion_layer_reflection.md": "d63e15edd7cbdbd4d3e2790c629b947f5efe79bbe0e37a10958e9b81aa8777c4",
+    "software/em_charge_attribute/reports/bend_front_attachment.md": "7662f39637a2f86262a88b31d91d3227d7202918cfff5df807729b12137bffc9",
+    "software/em_charge_attribute/reports/incident_wave_bow.md": "e90ebffeb5bf2633538d7c7bf66b42d9db734dc88800a6d68864354e77ab5201"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-shear-work-sympy --memory-gib 2 --log-directory _scratch/s11c/incident_shear_work_sympy02 -- python3 software/em_charge_attribute/incident_shear_work.py",
+      "input_sha256": {
+        "software/em_charge_attribute/incident_shear_work.py": "20aa28a9f163a3d9520cf1657ac1e2e841fe9fb11a692d85c50480a4a3fdc0a0",
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+      },
+      "start_utc": "2026-11-18T23:17:34.616874+00:00",
+      "elapsed_seconds": 0.7939820061437786,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 32,
+      "sampled_peak_memory_bytes": 56709120,
+      "stdout_path": "_scratch/s11c/incident_shear_work_sympy02/stdout",
+      "stdout_sha256": "e4b4b4208012fcd9311caa745b2f6ce945cdf903937cfa337756f43cc46ccbf3",
+      "stdout_claim_lines": [
+        "section force per depth, time averaged = -pi*A**2*R**2*(dMu*k**2 + dRho*omega**2)*(z*cos(z) - sin(z))*sin(2*phi)/(2*z**2)",
+        "section force coefficient of weak order depletion = -pi*A**2*R**2*k**2*mu*(m + 1)*(z*cos(z) - sin(z))*sin(2*phi)/(2*z**2)",
+        "signed phase controls (+pi/4,-pi/4,0) divided by positive-phase force = [1, -1, 0]",
+        "matched-impedance first-order load = 0",
+        "one traveling input, averaged closed-sphere dipole = 0",
+        "limit of end-to-midplane load ratio for long wavelengths = 27/8",
+        "k=1/2 normalized midplane, end, end/midplane, bow work/common work = 0.30116867893976 0.8913891841025 2.9597672216134 -0.25321798963716",
+        "constant-radius cosine overlap = 0",
+        "exact planar flux per depletion m=0 at .02,.01,.001 = 0.25248026665947 0.25124524254056 0.25012495397368",
+        "exact planar flux per depletion m=1 at .02,.01,.001 = 0.50489593981232 0.50247449624394 0.50024974949962",
+        "exact planar flux per depletion m=-1 at .02,.01,.001 = 0.0 0.0 -2.3509887016446e-35",
+        "largest planar power-balance or reflection residual = 7.05297e-38"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-shear-work-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/incident_shear_work_wolfram01 -- math -noprompt -script software/em_charge_attribute/incident_shear_work.wl",
+      "input_sha256": {
+        "software/em_charge_attribute/incident_shear_work.wl": "49d8fa8932165a4b6efb3943a5e05010ac600fea109c18aaf928b9cb0e0fc553",
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+      },
+      "start_utc": "2026-11-18T23:16:35.966670+00:00",
+      "elapsed_seconds": 15.996154554653913,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 64,
+      "sampled_peak_memory_bytes": 259702784,
+      "stdout_path": "_scratch/s11c/incident_shear_work_wolfram01/stdout",
+      "stdout_sha256": "192c722c75f858fb898e89e273cc857b962cb96b309bee2806e2944baf0fb8b1",
+      "stdout_claim_lines": [
+        "\"force per depth from displacement of the coefficient ball\"\" = \"\"(amp^2*(dm*k^2 + dr*om^2)*Pi*Sin[2*phase]*(-2*k*r*Cos[2*k*r] + Sin[2*k*r]))/(8*k^2)\"",
+        "\"geometry factor alone\"\" = \"\"(-2*k*r*Cos[2*k*r] + Sin[2*k*r])/(4*k^2)\"",
+        "\"reflected and centered fringe plus matched-impedance controls\"\" = \"\"{0, 0, 0}\"",
+        "\"midplane, end, end/midplane and cosine/common generalized load\"\" = \"\"{0.30116867893975678925156571418732239589`15., 0.89138918410250006580943859399008425909`15., 2.9597672216133934243122342066106365539`15., -0.25321798963715573850976210522227905492`15.}\"",
+        "\"long wave exit/midplane\"\" = \"\"27/8\"",
+        "\"constant-section cosine projection\"\" = \"\"0\"",
+        "\"exact slab power residual\"\" = \"\"0\"",
+        "\"planar linear coefficient at arbitrary exterior thickness phase\"\" = \"\"((1 + m)*Sin[d])/4\"",
+        "\"finite slab force per depletion for m=0\"\" = \"\"{0.25248026665947494535323844674531206326`16., 0.25124524254056238760792311371283628207`16., 0.25012495397367999538640723322160216524`16.}\"",
+        "\"finite slab force per depletion for m=1\"\" = \"\"{0.50489593981232400718057572583553044424`16., 0.50247449624394001563983432027620330087`16., 0.50024974949962493768775015626554678119`16.}\"",
+        "\"finite slab force per depletion for m=-1\"\" = \"\"{0, 0, 0}\""
+      ]
+    }
+  },
+  "reported_cross_engine_comparison": {
+    "max_absolute_difference_by_readout": {
+      "flare geometry and work": 6.661338147750939e-15,
+      "planar constant inertia": 4.9404924595819466e-15,
+      "planar inertia proportional to order": 4.9960036108132044e-15,
+      "planar impedance matched": 2.3509887016446e-35
+    },
+    "comparison_basis": "Printed decimal precision. Section forces agree under z=2kR, and both engines give 27/8 for the long-wave ratio and zero constant-radius bow."
+  }
+}

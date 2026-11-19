@@ -1,0 +1,55 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Feeding-carrier excess w load on the upper intact face and the whole lower face within each sampled radius, in fixed geometry.",
+  "command": "python3 scripts/s11c_guarded_run.py --pool intact-face-midplane --memory-gib 3 --log-directory _scratch/s11c/intact_face_midplane01 -- python3 software/stage1_solver/tools/intact_face_midplane_load.py",
+  "input_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "docs/_measurements/lateral_reservoir_pair.json": "3cffb25b8177523be5884b72b8dbb694e3ebc1c67642c88fcb619626a43d58ec",
+    "software/stage1_solver/tools/intact_face_midplane_load.py": "240539a7f9227eaec6e01a193653343f571d1bb1528a7703cc5271a5cbe309c0",
+    "software/stage1_solver/tools/drain_width_traction.py": "581a341d142bdf611d1d2728d91881811c913bad27007229691aba7c7c7c8c5f",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_reservoir_readout.py": "ccaeeea47dceabdc87996738f5305495f925400c88bebe3afabb4f9b83d68e15",
+    "software/stage1_solver/tools/mouth_feed_weak_check.py": "a7c1c124916f495dee6f73227ae09ecb7cb03d0b2733428557d4c6c2aaee0e61",
+    "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz": "08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe",
+    "_scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz": "590774f5c77c030fbe68edb253b5edddd0bc8b636bf983f1947fae52d7389fb1",
+    "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd"
+  },
+  "start_utc": "2026-11-18T04:09:53.708099+00:00",
+  "end_utc_outcome_file": "2026-11-18T04:09:54.510767+00:00",
+  "guard_exit": 0,
+  "child_exit": 0,
+  "verified_memory_max_bytes": 3221225472,
+  "verified_swap_max_bytes": 0,
+  "peak_memory_bytes": 111546368,
+  "stdout_path": "_scratch/s11c/intact_face_midplane01/stdout",
+  "stdout_bytes": 937,
+  "stdout_sha256": "025cfa524eab50a14b87a67a7c4bc78c80ac840a4186e9f06aac37665f80bf0e",
+  "stdout_claim_lines": [
+    "grid=e24_c4 intake=0.25",
+    "  radius=2 intact_direct=-0.00648836097108 intact_pde=-0.00646216246213",
+    "  radius=4 intact_direct=-0.00679080925929 intact_pde=-0.00676391937352",
+    "  radius=8 intact_direct=-0.00679134281437 intact_pde=-0.00676445172035",
+    "  radius=16 intact_direct=-0.00679134281541 intact_pde=-0.00676445172116",
+    "grid=e24_c6 intake=0.25",
+    "  radius=2 intact_direct=-0.00674016090838 intact_pde=-0.0067270120449",
+    "  radius=4 intact_direct=-0.00707221346517 intact_pde=-0.00705872682199",
+    "  radius=8 intact_direct=-0.00707271905274 intact_pde=-0.00705923189693",
+    "  radius=16 intact_direct=-0.00707271905232 intact_pde=-0.00705923189762",
+    "grid=e48_c4 intake=0.25",
+    "  radius=2 intact_direct=-0.0064883610337 intact_pde=-0.00646216252639",
+    "  radius=4 intact_direct=-0.00679080929259 intact_pde=-0.00676391940826",
+    "  radius=8 intact_direct=-0.00679134285122 intact_pde=-0.00676445175454",
+    "  radius=16 intact_direct=-0.00679134285173 intact_pde=-0.00676445175542"
+  ],
+  "comparison": {
+    "aperture_record": "docs/_measurements/rim_normal_return.json",
+    "aperture_record_sha256": "16fc1e2bd551b0bd02b6cdd1c6a58f3922f5e4f12a9f97bf50cacb0f1a40608c",
+    "fine_grid_aperture_line": "e24_c6 J=0.25 carriage=+0.043839159857 pressure=-0.00597325082679 gradient=-0.0297312380831 total_one_sided=+0.00813467094708 total_field_equation=+0.00718186190367",
+    "fine_grid_at_radius_16_signed_sums_from_printed_values": {
+      "one_sided": "0.00106195189476",
+      "field_equation": "0.00012263000605"
+    }
+  }
+}

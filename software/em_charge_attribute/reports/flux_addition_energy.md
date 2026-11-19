@@ -1,0 +1,19 @@
+# Does the first electric flux unit lower a mouth’s energy?
+
+**The written equations give a positive field self-energy and zero preference that reverses with mouth orientation.** Compare stationary mouths of radius \(R\), at matched intake and wave preparation, with the same constituent charge and reflected reservoirs. Transfer a signed trial charge \(ne\) from a common reference at infinity, with \(e>0\) fixed. Its electric displacement flux is measured through a closed surface **in the brane**, with the same outward convention on both mouths. The integer \(n\) labels imposed trials. The paper separately assigns \(q_\star=s e_\star\) to a unit-normalized charged defect. That assignment fixes the sector before any energy comparison. [Charge convention](../../../research/4d/paper/4d.tex#L239) · [Electric field reduction](../../../research/4d_em_fields/paper/4d_em_fields.tex#L745)
+
+**Why the mirror matters.** Depth reflection preserves an in-brane electric monopole. It takes a preparation at \((s,n)\) into one at \((-s,n)\). With the same transfer protocol the written energy terms therefore give equal costs for the same signed step on the two mirrors. This holds even with a charged background. In the Maxwell energy the cross term between the background and the added field can favor one sign, but has the same value on both mirrors. For an odd depth mode both source overlaps reverse and their product stays fixed. The rim term \(-J_m sH\) couples to a field \(H\) that itself reverses under reflection. The physical electric potential of the massless mode is even. The trapped-wave term in this mouth functional is constant. [Rim energy](../g0_closure_card_v0.md#L197) · [Depth-mode probe](mirrored_mouth_probe.md)
+
+**Radius calculation.** In the zero-mode Maxwell theory, impose the normalized spherical shell profile of the mouth card on the *trial charge*, from \(R\) to \(R+\ell\). The physical electric charge distribution at the rim is unknown. At fixed \(\ell=1/20\), reference length \(L_0=1\), and zero background potential and field, the two field-energy increments are as follows. Lengths are in \(L_0\), energies in \(e^2/(8\pi\epsilon L_0)\), with \(\epsilon\) the reduced electrostatic coefficient in the chosen charge convention. Values are rounded. [Shell profile](../g0_closure_card_v0.md#L203) · [Field energy](https://www.feynmanlectures.caltech.edu/II_08.html) · [Exact results](../../../docs/_measurements/flux_addition_energy.json)
+
+| \(R\) | First unit of either sign | Second unit of the same sign |
+|---:|---:|---:|
+| 0.5 | 1.873148 | 5.619445 |
+| 1 | 0.967489 | 2.902466 |
+| 2 | 0.491770 | 1.475310 |
+
+The stored field energy is \(K(R)n^2\). With \(f_R(r)\) the enclosed fraction of the trial charge, Gauss's law gives \(K=e^2/(8\pi\epsilon)\int_0^\infty f_R(r)^2\,dr/r^2\). An independent integral of the Coulomb pair energy agreed. The far-field monopole alone contributes \((ne)^2/(8\pi\epsilon b)\) beyond an enclosing sphere of radius \(b\) with source-free exterior in the zero-mode regime. Extending this theory inward through the shell is a benchmark assumption.
+
+**What the interface would have to supply.** In this benchmark a term \(-s\lambda(R)n\) would make the first aligned unit lower the energy and the second raise it exactly when \(K(R)<\lambda(R)<3K(R)\). The three intervals have empty intersection. A constant \(\lambda\) fails across these radii in this particular model. Other charge profiles, core energies or nonlinear binding can change the bounds. The missing physical quantity is the interface work for each signed transfer at fixed radius, measured against the same reservoir with the ordinary through-flow accounted for. Its part that reverses on the mirror would distinguish a physical charge-selection law. [Open surface functional](../u1_body_dynamics_inputs.yaml#L57) · [Earlier endpoint test](mouth_sign_selection.md)
+
+Base e0a94594. Working calculation pending independent review.

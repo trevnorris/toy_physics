@@ -1,0 +1,86 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Conservative real support branch and a conditional degenerate pair of tangent shear polarizations at common geometry. The carrier intake is a matched spectator. The two radii are fixed-geometry examples, not equilibria of the draining system.",
+  "source_equations_sha256": {
+    "notes/inner_throat/inner_throat_hard_mode.md": "4c28f2214fc33357393277705d11bdae11ef69480bbeb9bc9c0fe03a4bddd4dd",
+    "notes/lepton_mass_notes.md": "bb7c64824d8ded1792082997194b4726c146d8893a2b7c9da97c65b0a1a9aa06",
+    "software/stage1_solver/reports/pathA_26_derrick.md": "dc878f77efce234f83858f220bd0bedaaa35190f57e3d5cae7957e0e5ea04a6c",
+    "software/stage1_solver/reports/pathA_35_G0_freeze.md": "e64b4c7f686180615ed80b4db63c05a5be08d55470dfd19b7c5d6655712eb3ea",
+    "docs/native_light_em_and_vortex_throat_interpretation.md": "3efc9c49f1a5326b254ed8bb583b8ca8c715c05639dfceb5b9dac3d4c815d124",
+    "software/em_charge_attribute/g0_closure_card_v0.md": "e146c9943c64220adea38947ea017b0fc3b13b8cd67d6a0d4f95eb95b8a282b1",
+    "research/4d/paper/4d.tex": "f83613b86fbd5959b5a63426c3a1259226e6dd35b3de18208aef09fc428d4d56"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool trapped-wave-charge-sympy --memory-gib 2 --log-directory _scratch/s11c/trapped_wave_charge_sympy01 -- python3 software/em_charge_attribute/trapped_wave_charge.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/trapped_wave_charge.py": "8f3a7d626e59d91f3f7bd5767277ef6300071459bf7774dd61d68aa7d09a0902"
+      },
+      "start_utc": "2026-11-18T18:03:08.873441+00:00",
+      "end_utc_outcome_written": "2026-11-18T18:03:09.678564+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 55975936,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/trapped_wave_charge_sympy01/stdout",
+      "stdout_sha256": "a8f3e1b07fd17993ea6bbe592a2a1445f9b5d0c4c6a47e150bde1e492f9eeb50",
+      "stdout_bytes": 1074,
+      "stdout_claim_lines": [
+        "Dirichlet value = 0",
+        "Neumann slope = 0",
+        "mode squared norm along path = L/2",
+        "standing mode longitudinal flux factor = 0",
+        "generator of tangent polarization rotations = M*(-vx*y + vy*x)",
+        "native direct electric source = 0",
+        "change of generator with applied forces = -fx*y + fy*x",
+        "electric source if polarization rotation is gauged = M*g*(-vx*y + vy*x)",
+        "total action from energy = M*omega*(B**2 + P**2)",
+        "polarization from the standing pair = -M*omega*(B - P)*(B + P)",
+        "single linear mode = 0",
+        "unchanged under normal reflection of tangent components = 0",
+        "radial load from adding to one action and removing from the other = 0",
+        "equal additions to both actions change directed action by = 0",
+        "R=1 actions=(1,0) [energy, radial load, polarization, native charge] = [sqrt(5), 4*sqrt(5)/5, 1, 0]",
+        "R=2 actions=(2,1) [energy, radial load, polarization, native charge] = [3*sqrt(2), 3*sqrt(2)/4, 1, 0]",
+        "R=2 actions=(1,2) [energy, radial load, polarization, native charge] = [3*sqrt(2), 3*sqrt(2)/4, -1, 0]",
+        "R=2 actions=(3,0) [energy, radial load, polarization, native charge] = [3*sqrt(2), 3*sqrt(2)/4, 3, 0]"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool trapped-wave-charge-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/trapped_wave_charge_wolfram01 -- math -noprompt -script software/em_charge_attribute/trapped_wave_charge.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/trapped_wave_charge.wl": "973a67c18a7fe627f686650a8be6d4f2c260fe7cf3a83bde20cde1c9df348017"
+      },
+      "start_utc": "2026-11-18T18:03:10.441659+00:00",
+      "end_utc_outcome_written": "2026-11-18T18:03:16.806815+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 241315840,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/trapped_wave_charge_wolfram01/stdout",
+      "stdout_sha256": "d9004eef622b6acebe32f35d79b4de32e4468a43dee99ff5103a2adf41f95006",
+      "stdout_bytes": 908,
+      "stdout_claim_lines": [
+        "\"mean axial wave energy flux up to a common stiffness\"\" = \"\"0\"",
+        "\"identical reflected integrated norm\"\" = \"\"0\"",
+        "\"native wave source above common carrier charge\"\" = \"\"0\"",
+        "\"free generator time derivative\"\" = \"\"0\"",
+        "\"source under a test coupling to the rotation\"\" = \"\"g*(py*x - px*y)\"",
+        "\"torque from lifting the degeneracy\"\" = \"\"(h1 - h2)*x*y\"",
+        "\"energy throughout ellipse family\"\" = \"\"en\"",
+        "\"ellipse polarization fraction\"\" = \"\"Sin[2*ang]\"",
+        "\"fractions at three preparations\"\" = \"\"{-1, 0, 1}\"",
+        "\"R, actions, energy, radial load, polarization, native charge = \"\"{1, 1, 0, Sqrt[5], 4/Sqrt[5], 1, 0}\"",
+        "\"R, actions, energy, radial load, polarization, native charge = \"\"{2, 2, 1, 3*Sqrt[2], 3/(2*Sqrt[2]), 1, 0}\"",
+        "\"R, actions, energy, radial load, polarization, native charge = \"\"{2, 1, 2, 3*Sqrt[2], 3/(2*Sqrt[2]), -1, 0}\"",
+        "\"R, actions, energy, radial load, polarization, native charge = \"\"{2, 3, 0, 3*Sqrt[2], 3/(2*Sqrt[2]), 3, 0}\""
+      ]
+    }
+  },
+  "comparison": "Both engines returned the same energy, radial load, polarization generator and zero direct wave charge in all four preparations. Independent coordinates in the two engines were Cartesian circular superposition and canonical phase space."
+}

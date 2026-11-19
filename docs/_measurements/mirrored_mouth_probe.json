@@ -1,0 +1,106 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Matched reflected openings with fixed constituent probe coupling. Static source and transverse mode calculation, finite receiver carrier transport at two radii and two resolutions. No independent moving conversion layer in the solver.",
+  "source_equations_sha256": {
+    "research/4d/paper/4d.tex": "f83613b86fbd5959b5a63426c3a1259226e6dd35b3de18208aef09fc428d4d56",
+    "research/4d_em_fields/paper/4d_em_fields.tex": "4cb8ca4acd787e163ba4c20b839ae25d46a3d105502d274528656082e71bca3f"
+  },
+  "runs": {
+    "carrier": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mirrored-mouth-carrier --memory-gib 2 --log-directory _scratch/s11c/mirrored_mouth_carrier01 -- python3 software/stage1_solver/tools/mirrored_mouth_probe.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/mirrored_mouth_probe.py": "052e1f9dd2c09d9bf312ad00f4475fc08999a57b2949fc609a5b033fecb10a6c",
+        "software/stage1_solver/src/stage1_solver/__init__.py": "cabb27216557a098d2205df3f13cbcf1ab0dbf41f3613fea47b141646444580e",
+        "software/stage1_solver/src/stage1_solver/config.py": "70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8",
+        "software/stage1_solver/src/stage1_solver/open_sleeve.py": "3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519"
+      },
+      "start_utc": "2026-11-18T17:57:24.995470+00:00",
+      "end_utc_outcome_written": "2026-11-18T17:57:25.413242+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 44302336,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/mirrored_mouth_carrier01/stdout",
+      "stdout_bytes": 1683,
+      "stdout_sha256": "048de1718866f05f75878ca991110e124675e7b50a44fad7b9331d7ee724da74",
+      "stdout_claim_lines": [
+        "R=1 cells_per_length=8 inlet=0.25 cut=0.25 exit=0.25 GNLS_residual=4.856e-14 local_continuity=8.541e-15",
+        "  flat_carrier=230.380032102 flat_transit=230.380032102 mean_residence=921.520128408 flat_residual=-6.82121e-13",
+        "  excess_over_rest_flat=-0.00342916113223 excess_over_rest_depth_plus=-0.00683174422236 excess_over_rest_depth_minus=+0.00683174422236",
+        "  depth_residual_plus=-2.50111e-12 depth_residual_minus=+2.50111e-12",
+        "R=2 cells_per_length=8 inlet=0.25 cut=0.25 exit=0.25 GNLS_residual=5.037e-14 local_continuity=1.181e-15",
+        "  flat_carrier=259.704417777 flat_transit=259.704417777 mean_residence=1038.81767111 flat_residual=-3.58114e-12",
+        "  excess_over_rest_flat=-0.000574919316153 excess_over_rest_depth_plus=-0.00140388395365 excess_over_rest_depth_minus=+0.00140388395365",
+        "  depth_residual_plus=-1.33014e-11 depth_residual_minus=+1.33014e-11",
+        "R=1 cells_per_length=16 inlet=0.25 cut=0.25 exit=0.25 GNLS_residual=4.232e-14 local_continuity=2.230e-14",
+        "  flat_carrier=230.380071957 flat_transit=230.380071957 mean_residence=921.520287827 flat_residual=-8.81073e-13",
+        "  excess_over_rest_flat=-0.0033893066229 excess_over_rest_depth_plus=-0.00673816387097 excess_over_rest_depth_minus=+0.00673816387097",
+        "  depth_residual_plus=-2.27374e-13 depth_residual_minus=+2.27374e-13",
+        "R=2 cells_per_length=16 inlet=0.25 cut=0.25 exit=0.25 GNLS_residual=4.530e-14 local_continuity=6.233e-15",
+        "  flat_carrier=259.704421265 flat_transit=259.704421265 mean_residence=1038.81768506 flat_residual=-5.96856e-12",
+        "  excess_over_rest_flat=-0.000571431718387 excess_over_rest_depth_plus=-0.00139494373388 excess_over_rest_depth_minus=+0.00139494373388",
+        "  depth_residual_plus=-2.05773e-11 depth_residual_minus=+2.05773e-11"
+      ]
+    },
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mirrored-mouth-symbolic --memory-gib 2 --log-directory _scratch/s11c/mirrored_mouth_sympy01 -- python3 software/em_charge_attribute/mirrored_mouth_probe.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/mirrored_mouth_probe.py": "a9628e5febf59616ba6e349697201a6791aff0eb83567dabe2701a74c3ecec6c"
+      },
+      "start_utc": "2026-11-18T17:57:23.383862+00:00",
+      "end_utc_outcome_written": "2026-11-18T17:57:23.941093+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 52568064,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/mirrored_mouth_sympy01/stdout",
+      "stdout_bytes": 311,
+      "stdout_sha256": "536cad6fad3d756e7c48fd2459d3fcefe1251195b4b28c408b30991b6286db83",
+      "stdout_claim_lines": [
+        "weak static source = f*n*q",
+        "depth eigenvalue for 1 = 0",
+        "depth eigenvalue for 2*w/lambda = 2/lambda**2",
+        "odd source per mirror pair = -q*(fminus - fplus)*(-m + p)/2",
+        "flat orientation difference = 0",
+        "first depth moment = 2*q*w*(-m + p)/lambda",
+        "added layer oriented residual R=1 = g",
+        "added layer oriented residual R=2 = g"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mirrored-mouth-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mirrored_mouth_wolfram01 -- math -noprompt -script software/em_charge_attribute/mirrored_mouth_probe.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/mirrored_mouth_probe.wl": "16dd5c1134d389df7ac8cc5f2827b2bc934c9c1891757f67b9558fc44228497c"
+      },
+      "start_utc": "2026-11-18T17:57:23.601854+00:00",
+      "end_utc_outcome_written": "2026-11-18T17:57:28.795017+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 226070528,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/mirrored_mouth_wolfram01/stdout",
+      "stdout_bytes": 534,
+      "stdout_sha256": "d4133a08cab453509907e4505398e158ed90b9e53504c4ee928e0f4b7b5e6cfb",
+      "stdout_claim_lines": [
+        "\"linear action reading\"\" = \"\"charge*density*probe\"",
+        "\"half mirror difference mode 0\"\" = \"\"0\"",
+        "\"half mirror difference mode 1\"\" = \"\"(2*charge*rate*(frac*tau1*w1 + tau2*w2 - frac*tau2*w2))/lam\"",
+        "\"half mirror difference mode 2\"\" = \"\"0\"",
+        "\"flat transverse operator\"\" = \"\"0\"",
+        "\"odd mode mass squared\"\" = \"\"2/lam^2\"",
+        "\"centered receiver odd overlap\"\" = \"\"0\"",
+        "\"residual {R, orientation} {1, -1}\"\" = \"\"-bound\"",
+        "\"residual {R, orientation} {1, 1}\"\" = \"\"bound\"",
+        "\"residual {R, orientation} {2, -1}\"\" = \"\"-bound\"",
+        "\"residual {R, orientation} {2, 1}\"\" = \"\"bound\""
+      ]
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation, pending independent review",
+  "scope": "Axisymmetric signed curvature of a punctured graph face, profile controls and a single-face area-tension equilibrium.",
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool oriented-rim-geometry --memory-gib 2 --log-directory _scratch/s11c/oriented_rim_geometry01 -- python3 software/em_charge_attribute/oriented_rim_geometry.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/oriented_rim_geometry.py": "083cd13cbc197fa154853165b231a339a93ae6014931ead8599ba369a71709d7"
+      },
+      "start_utc": "2026-11-18T14:50:58.100173+00:00",
+      "end_utc_outcome_written": "2026-11-18T14:50:58.971228+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 55971840,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/oriented_rim_geometry01/stdout",
+      "stdout_bytes": 700,
+      "stdout_sha256": "a01238ad61fbc5118f58d7f97f8b2b55834b56acb40028954cd8d6a16aa0c008",
+      "stdout_claim_lines": [
+        "signed curvature times radial area measure = 4*pi*dp*p**2/(p**2 + 1)**2",
+        "vertical rim orientation +1, integral = pi**2",
+        "vertical rim orientation -1, integral = -pi**2",
+        "finite 45 degree upper rim, fraction of vertical value = (-2 + pi)/(2*pi)",
+        "regular face flat at center and infinity = 0",
+        "continuous strength at fixed orientation +1 = C",
+        "rim tangent sign for profile +1 = -pi/2",
+        "continuous strength at fixed orientation -1 = -C",
+        "rim tangent sign for profile -1 = pi/2",
+        "area tension first integral, orientation +1 = -4*pi*a**2*sigma",
+        "area tension far bend coefficient, orientation +1 = a**2",
+        "area tension first integral, orientation -1 = 4*pi*a**2*sigma",
+        "area tension far bend coefficient, orientation -1 = -a**2"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool oriented-rim-geometry-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/oriented_rim_geometry_wolfram01 -- math -noprompt -script software/em_charge_attribute/oriented_rim_geometry.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/oriented_rim_geometry.wl": "93a47dcd1f13949fdb2a6fea286e5b27b9a5c61144c495529f83101277e5f3c6"
+      },
+      "start_utc": "2026-11-18T14:50:57.591571+00:00",
+      "end_utc_outcome_written": "2026-11-18T14:51:03.988551+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 229777408,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/oriented_rim_geometry_wolfram01/stdout",
+      "stdout_bytes": 607,
+      "stdout_sha256": "2119ca5c6e894b2b487a8de6b8c1bc03d217e124bc9678ffaf6439f479704ac9",
+      "stdout_claim_lines": [
+        "\"normal-space area element\"\" = \"InputForm[Sin[b]*Sin[t]^2]",
+        "\"upper and lower vertical lips\"\" = \"InputForm[{Pi^2, -Pi^2}]",
+        "\"45 degree lip as fraction\"\" = \"InputForm[1/2 - Pi^(-1)]",
+        "\"cap traversed from flat back to flat\"\" = \"InputForm[0]",
+        "\"far coefficients of mirror profiles\"\" = \"InputForm[{c, -c}]",
+        "\"vertical inclinations of mirror profiles\"\" = \"InputForm[{-1/2*Pi, Pi/2}]",
+        "\"area first integral at the waist\"\" = \"InputForm[a^2]",
+        "\"conserved area first integral off the waist\"\" = \"InputForm[a^2]",
+        "\"upper and lower far bend coefficients\"\" = \"InputForm[{a^2, -a^2}]",
+        "\"factor for twice the mouth radius\"\" = \"InputForm[4]"
+      ]
+    }
+  }
+}

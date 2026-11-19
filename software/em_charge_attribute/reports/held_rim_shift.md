@@ -1,0 +1,21 @@
+# What force holds the rim still when the order boundary shifts sideways?
+
+**A continuous order layer can pull on an attached rim.** For the archived flare and weak order profile, shifting the far section by \(+0.002\) gave a holding force of \(-0.0000888947\,\kappa_B\) on one attached rim in benchmark units. Reversing the shift reversed the force; halving it halved the force. A freely slipping contact transmitted zero through this channel. For a shift imposed *at the rim itself*, the physical holding force remains undetermined. The frozen model pins the contour there, and the live surface interaction is unspecified. [Frozen constraint](../g0_closure_card_v0.md#L63) · [Open surface interaction](../u1_body_dynamics_inputs.yaml#L56) · [Both guarded calculations](../../../docs/_measurements/held_rim_shift.json)
+
+**Force transmitted along the layer.** Let \(q(w)\) translate each round order profile sideways without changing its radial shape. On a full brane section the local order potential is invariant under this translation. The axial derivative of \(\chi\) gains \(-q'\partial_x\chi\); its term linear in \(q'\) averages to zero around the section. The gradient energy therefore gains \(\tfrac12\int_0^L T(w)q'(w)^2\,dw\), where
+\[
+T(w)=\frac{4\pi\kappa_B}{3}\int_0^\infty r^2(\partial_r\chi)^2\,dr,\qquad
+K_{\rm layer}=\left[\int_0^L\frac{dw}{T(w)}\right]^{-1}.
+\]
+With no other distributed load, \(Tq'\) is constant. For a pinned near trace \(q(0)=X=0\) and an independently displaced far trace \(q(L)=Y\), the external holding force is \(H=-T(0)q'(0)=-K_{\rm layer}Y\). Using \(R(0)=1,\ R(L)=1.5,\ L=37/20\), the preceding logistic depletion \(0.02\) and width \(0.005\), both engines give \(K_{\rm layer}/\kappa_B=0.04444737\). The straight radius-one control gives \(0.03019045\). These are quasistatic loads for one side and one projected degree of freedom. Intake and wave preparation are held as background parameters; drain, bulk and holder reactions are not inferred from an intake value. [Order energy](../../../research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md#L73) · [Geometry](../../stage1_solver/src/stage1_solver/m1c_physical_run.py#L186) · [Order profile](../rim_order_positions.py#L34)
+
+**What reaches the geometric rim.** Allow the near order trace \(Z=q(0)\) to move separately from \(X\). A passive local contact with incremental energy \(c(Z-X)^2/2\) gives \(H=-c(Z-X)\) for a *measured near displacement*. If only the far displacement \(Y\) is prescribed, balancing contact and layer stresses gives \(H=-[cK_{\rm layer}/(c+K_{\rm layer})]Y\) at \(X=0\). These alternatives share the same resting preparation. The gradient energy fixes \(K_{\rm layer}\); this protocol supplies no physical \(c\). Measuring \(q'(0)\) and the independent holder reaction would test how much of the transmitted stress the rim actually receives. [Positions and archive coverage](rim_order_positions.md)
+
+**Standing-wave contribution at the same section.** For the previous constant-inertia shear branch, write the incident strain energy as \(b_*\sin^2(kx+\phi)\). If the fringe is carried with the rim, translating the order deficit \(d=1-\chi\) by \(Y=\pm\delta\) changes the shear overlap. Let \(B=\int d(r)\cos(2kx)\,d^3x\). The baseline-subtracted odd holding-force slope per depth is
+\[
+\frac{H(+\delta)-H(-\delta)}{2\delta}
+=b_* kB\cos(2\phi)\frac{\sin(2k\delta)}{\delta}.
+\]
+At the previous phases \(\phi=\pm\pi/4\), this term gives zero signed slope even though the baseline force is nonzero. Shifting the fringe to \(\phi=0,\pi/2\) gives opposite slopes, approximately \(\pm0.0000236582\) at the midplane with \(A=0.1,\ k=1/2,\ \mu_0=1,\ \delta=0.002\). A fringe fixed to the laboratory has zero direct virtual work on the rim from this overlap at fixed order profile. These are alternative supports for the same wave, at leading contrast; the wave term per depth and the layer endpoint force above are distinct measurements. Temporal lag and the total force on a live draining mouth remain open. [Incoming shear](incident_shear_work.md) · [Overlap energy](conversion_shear_work.md) · [Spherical Fourier convention](https://dlmf.nist.gov/10.49)
+
+Working calculation on base e0a94594, uncommitted pending independent review.

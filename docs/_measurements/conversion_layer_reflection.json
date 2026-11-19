@@ -1,0 +1,152 @@
+{
+  "base": "e0a94594",
+  "status": "Working result pending independent review",
+  "scope": "Two local transverse inertia benchmarks on a prescribed linear loss-of-order layer. Matched geometric controls with and without passive transverse damping. Resonance spacing tested on the lossless branch.",
+  "comparison": {
+    "scope": "Six lossless spectra and twelve paired fixed-frequency scattering records. Every numerical readout agrees after rounding to ten decimal places.",
+    "paired_scalar_readouts": 96
+  },
+  "runs": {
+    "analytical": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool conversion-reflection-python --memory-gib 2 --log-directory _scratch/s11c/conversion_reflection01 -- python3 software/em_charge_attribute/conversion_layer_reflection.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/conversion_layer_reflection.py": "ce2ee8b5d3731b3a780188dced8f32625797558a54478a58a8d84fee16a306ff"
+      },
+      "start_utc": "2026-11-18T06:52:26.380088+00:00",
+      "end_utc_outcome_written": "2026-11-18T06:52:27.293297+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 78737408,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/conversion_reflection01/stdout",
+      "stdout_bytes": 3102,
+      "stdout_sha256": "0e2bf8aee9bc880cd1869db22b116a027d7592813015f5b1626b73db146d779e",
+      "stdout_claim_lines": [
+        "m=0 order-equation residual=0, half reflection phase=v/2 + v**3/48 + O(v**5)",
+        "{\"m\": 0, \"geometry\": \"base\", \"loss\": 0.0, \"power\": [1.0, 1.0], \"relative_phase\": [-0.0, -0.0], \"phase_shift\": [-0.0, -0.0], \"modes\": [1.4954632543666326, 4.473204416160977], \"spacing_length\": 1.0538594619461514, \"spacing_shift\": 0.0}",
+        "{\"m\": 0, \"geometry\": \"base\", \"loss\": 0.1, \"power\": [0.9607881868384548, 0.9607884271440594], \"relative_phase\": [-0.0, -0.0], \"phase_shift\": [-0.0, -0.0]}",
+        "{\"m\": 0, \"geometry\": \"shift\", \"loss\": 0.0, \"power\": [1.0000000000000004, 1.0000000000000004], \"relative_phase\": [0.1495463254366634, 0.4473204416160977], \"phase_shift\": [0.05000000000000005, 0.05], \"modes\": [1.4275540688353612, 4.2717420182335495], \"spacing_length\": 1.1035070563907694, \"spacing_shift\": 0.04964759444461797}",
+        "{\"m\": 0, \"geometry\": \"shift\", \"loss\": 0.1, \"power\": [0.9607881868384551, 0.9607884271440594], \"relative_phase\": [0.1495463254366634, 0.4473204416160978], \"phase_shift\": [0.05000000000000005, 0.05000000000000002]}",
+        "{\"m\": 0, \"geometry\": \"widen\", \"loss\": 0.0, \"power\": [1.0, 1.0000000000000004], \"relative_phase\": [0.15750587450042514, 0.6942552510715029], \"phase_shift\": [0.052661231909416906, 0.07760155656683931], \"modes\": [1.4244361182127343, 4.182502314991918], \"spacing_length\": 1.129794962735053, \"spacing_shift\": 0.07593550078890154}",
+        "{\"m\": 0, \"geometry\": \"widen\", \"loss\": 0.1, \"power\": [0.9231073986201318, 0.9231157522047563], \"relative_phase\": [0.1576105188366565, 0.6945407974128511], \"phase_shift\": [0.05269621917370636, 0.07763347399278084]}",
+        "m=1 order-equation residual=0, half reflection phase=v/2 + v**3/48 + O(v**5)",
+        "{\"m\": 1, \"geometry\": \"base\", \"loss\": 0.0, \"power\": [1.0, 1.0000000000000004], \"relative_phase\": [-0.0, -0.0], \"phase_shift\": [-0.0, -0.0], \"modes\": [1.5707154941026436, 4.710187638858172], \"spacing_length\": 1.000519380888842, \"spacing_shift\": 0.0}",
+        "{\"m\": 1, \"geometry\": \"base\", \"loss\": 0.1, \"power\": [0.9801985109470934, 0.980198519124919], \"relative_phase\": [-0.0, -0.0], \"phase_shift\": [-0.0, -0.0]}",
+        "{\"m\": 1, \"geometry\": \"shift\", \"loss\": 0.0, \"power\": [1.0, 1.0], \"relative_phase\": [0.15707154941026458, 0.47101876388581765], \"phase_shift\": [0.05000000000000007, 0.050000000000000044], \"modes\": [1.4959300066790984, 4.486179970378873], \"spacing_length\": 1.0504706605448633, \"spacing_shift\": 0.04995127965602131}",
+        "{\"m\": 1, \"geometry\": \"shift\", \"loss\": 0.1, \"power\": [0.9801985109470934, 0.980198519124919], \"relative_phase\": [0.15707154941026458, 0.47101876388581765], \"phase_shift\": [0.05000000000000007, 0.050000000000000044]}",
+        "{\"m\": 1, \"geometry\": \"widen\", \"loss\": 0.0, \"power\": [1.0, 0.9999999999999998], \"relative_phase\": [0.001136451020040503, 0.03200310852490666], \"phase_shift\": [0.0003617622110138292, 0.0033972222529827655], \"modes\": [1.5701479741879047, 4.694374101124481], \"spacing_length\": 1.0042681017854638, \"spacing_shift\": 0.0037487208966218155}",
+        "{\"m\": 1, \"geometry\": \"widen\", \"loss\": 0.1, \"power\": [0.9607881898295788, 0.9607884579275442], \"relative_phase\": [0.0011501954874157828, 0.032044112636152165], \"phase_shift\": [0.00036613743600743377, 0.0034015749576295213]}"
+      ],
+      "messages": []
+    },
+    "shooting_reflection": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool conversion-reflection-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/conversion_reflection_wolfram01 -- math -noprompt -script software/em_charge_attribute/conversion_layer_reflection.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/conversion_layer_reflection.wl": "ac29cf2d97d150a5e0d193bb885f82f91aeb7921e518deb385e7b67e83d0c2fc"
+      },
+      "start_utc": "2026-11-18T06:52:25.999427+00:00",
+      "end_utc_outcome_written": "2026-11-18T06:52:39.713373+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 225353728,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/conversion_reflection_wolfram01/stdout",
+      "stdout_bytes": 4011,
+      "stdout_sha256": "35758752f0716cdcfae5553faa9c9d0f15b13379b59e559cccdd971921d96f7f",
+      "stdout_claim_lines": [
+        "{\"m\":0,\"geometry\":\"base\",\"loss\":0.0,\"power\":[1.0,1.0],\"relative_phase\":[0.0,0.0],\"phase_shift\":[0.0,0.0]}",
+        "{\"m\":0,\"geometry\":\"base\",\"loss\":0.1,\"power\":[0.9607881868384546,0.9607884271440589],\"relative_phase\":[0.0,0.0],\"phase_shift\":[0.0,0.0]}",
+        "{\"m\":0,\"geometry\":\"shift\",\"loss\":0.0,\"power\":[1.0,1.0],\"relative_phase\":[0.14954632543666324,0.44732044161609785],\"phase_shift\":[5.0e-2,5.0e-2]}",
+        "{\"m\":0,\"geometry\":\"shift\",\"loss\":0.1,\"power\":[0.9607881868384546,0.9607884271440589],\"relative_phase\":[0.14954632543666324,0.44732044161609785],\"phase_shift\":[5.0e-2,5.0e-2]}",
+        "{\"m\":0,\"geometry\":\"widen\",\"loss\":0.0,\"power\":[1.0,1.0],\"relative_phase\":[0.1575058745004247,0.694255251071504],\"phase_shift\":[5.266123190941676e-2,7.76015565668394e-2]}",
+        "{\"m\":0,\"geometry\":\"widen\",\"loss\":0.1,\"power\":[0.9231073986201319,0.9231157522047558],\"relative_phase\":[0.1576105188366558,0.6945407974128515],\"phase_shift\":[5.269621917370613e-2,7.763347399278084e-2]}",
+        "{\"m\":1,\"geometry\":\"base\",\"loss\":0.0,\"power\":[1.0,1.0],\"relative_phase\":[0.0,0.0],\"phase_shift\":[0.0,0.0]}",
+        "{\"m\":1,\"geometry\":\"base\",\"loss\":0.1,\"power\":[0.9801985109470931,0.9801985191249192],\"relative_phase\":[0.0,0.0],\"phase_shift\":[0.0,0.0]}",
+        "{\"m\":1,\"geometry\":\"shift\",\"loss\":0.0,\"power\":[1.0,1.0],\"relative_phase\":[0.15707154941026436,0.47101876388581715],\"phase_shift\":[5.0e-2,5.0e-2]}",
+        "{\"m\":1,\"geometry\":\"shift\",\"loss\":0.1,\"power\":[0.9801985109470931,0.9801985191249192],\"relative_phase\":[0.15707154941026436,0.47101876388581715],\"phase_shift\":[5.0e-2,5.0e-2]}",
+        "{\"m\":1,\"geometry\":\"widen\",\"loss\":0.0,\"power\":[1.0,1.0],\"relative_phase\":[1.1364510200403046e-3,3.200310852490521e-2],\"phase_shift\":[3.6176221101376604e-4,3.397222252982612e-3]}",
+        "{\"m\":1,\"geometry\":\"widen\",\"loss\":0.1,\"power\":[0.9607881898295787,0.9607884579275443],\"relative_phase\":[1.1501954874155985e-3,3.2044112636150784e-2],\"phase_shift\":[3.661374360073751e-4,3.401574957629375e-3]}"
+      ],
+      "messages": [
+        "NDSolveValue::precw: The precision of the differential equation ({{u'[s] == -p[s], p'[s] == ------------------------------------, u[40] == 1, p[40] == 0}, {}, {}, {}, {}}) is less than WorkingPrecision (30.).",
+        "NDSolveValue::precw: The precision of the differential equation ({{u'[s] == -p[s], p'[s] == ------------------------------------, u[40] == 1, p[40] == 0}, {}, {}, {}, {}}) is less than WorkingPrecision (30.).",
+        "NDSolveValue::precw: The precision of the differential equation ({{u'[s] == -p[s], p'[s] == ------------------------------------, u[40] == 1, p[40] == 0}, {}, {}, {}, {}}) is less than WorkingPrecision (30.).",
+        "General::stop: Further output of NDSolveValue::precw will be suppressed during this calculation.",
+        "AssociateTo::argrx: AssociateTo called with 4 arguments; 2 arguments are expected.",
+        "AssociateTo::argrx: AssociateTo called with 4 arguments; 2 arguments are expected.",
+        "AssociateTo::argrx: AssociateTo called with 4 arguments; 2 arguments are expected.",
+        "General::stop: Further output of AssociateTo::argrx will be suppressed during this calculation."
+      ],
+      "source_note": "Original readouts for power and phase only. The first Wolfram formatter omitted resonance columns. The separate guarded spectra-only run supplies them. The default current source emits all columns.",
+      "preserved_script": "_scratch/s11c/conversion_reflection_wolfram01/source.wl",
+      "patch_from_final_script_to_this_run": [
+        "--- software/em_charge_attribute/conversion_layer_reflection.wl\n",
+        "+++ software/em_charge_attribute/conversion_layer_reflection.wl\n",
+        "@@ -2,9 +2,8 @@\n",
+        "    chi du/dchi. No special-function solution enters the calculation. *)\n",
+        " ClearAll[\"Global`*\"];\n",
+        " $HistoryLength = 0;\n",
+        "-spectraOnly = MemberQ[$CommandLine,\"--spectra-only\"];\n",
+        " edge[k_?NumericQ,h_,m_,loss_,cut_:40] := Module[{pair, h2},\n",
+        "-  h2 = With[{arg=SetPrecision[k,36]}, N[h^2 (arg^2+I loss arg),32]];\n",
+        "+  h2 = N[h^2 (k^2+I loss k),32];\n",
+        "   pair = NDSolveValue[{u'[s]==-p[s], p'[s]==h2 Exp[-(m+1)s] u[s],\n",
+        "                        u[cut]==1, p[cut]==0}, {u[0],p[0]}, {s,0,cut},\n",
+        "                       WorkingPrecision->30, AccuracyGoal->21, PrecisionGoal->20];\n",
+        "@@ -25,11 +24,6 @@\n",
+        "   Do[\n",
+        "     {name,y,h}=geometry;\n",
+        "     roots=If[name==\"base\",probes,branches[y,h,m]];\n",
+        "-    spectrum=<|\"modes\"->N[roots],\"spacing_length\"->N[spacingLength[roots]],\n",
+        "-               \"spacing_shift\"->N[spacingLength[roots]-spacingLength[probes]]|>;\n",
+        "-    If[spectraOnly,\n",
+        "-      emit[Join[<|\"m\"->m,\"geometry\"->name,\"loss\"->0|>,spectrum]];\n",
+        "-      Continue[]];\n",
+        "     Do[\n",
+        "       refl=reflection[#,y,h,m,loss]& /@ probes;\n",
+        "       reference=reflection[#,1,1/10,m,loss]& /@ probes;\n",
+        "@@ -37,7 +31,9 @@\n",
+        "       row=<|\"m\"->m,\"geometry\"->name,\"loss\"->N[loss],\n",
+        "             \"power\"->N[Abs[refl]^2],\"relative_phase\"->N[phase],\n",
+        "             \"phase_shift\"->N[phase/(2 probes)]|>;\n",
+        "-      If[loss==0,row=Join[row,spectrum]];\n",
+        "+      If[loss==0,AssociateTo[row,\"modes\"->N[roots],\n",
+        "+        \"spacing_length\"->N[spacingLength[roots]],\n",
+        "+        \"spacing_shift\"->N[spacingLength[roots]-spacingLength[probes]]]];\n",
+        "       emit[row];\n",
+        "       If[Max[Abs[refl]]>1+10^-12 || Max[Abs[phase]]>=Pi/2,Exit[1]];\n",
+        "       If[loss==0 && Max[Abs[Abs[refl]-1]]>10^-12,Exit[1]];\n"
+      ]
+    },
+    "shooting_spectra": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool conversion-reflection-spectra --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/conversion_reflection_spectra01 -- math -noprompt -script software/em_charge_attribute/conversion_layer_reflection.wl --spectra-only",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/conversion_layer_reflection.wl": "c7f9f73c61f1182bb53aaa13548ad63b95f561f0137a0f4df34a7669a4d2ed56"
+      },
+      "start_utc": "2026-11-18T06:54:01.508823+00:00",
+      "end_utc_outcome_written": "2026-11-18T06:54:10.277670+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 225320960,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/conversion_reflection_spectra01/stdout",
+      "stdout_bytes": 894,
+      "stdout_sha256": "d30d96f5f315fb700e7496f229332a48e61c22e96888e233f10b9ec0953fca19",
+      "stdout_claim_lines": [
+        "{\"m\":0,\"geometry\":\"base\",\"loss\":0,\"modes\":[1.4954632543666324,4.4732044161609785],\"spacing_length\":1.053859461946151,\"spacing_shift\":0.0}",
+        "{\"m\":0,\"geometry\":\"shift\",\"loss\":0,\"modes\":[1.427554068835361,4.271742018233548],\"spacing_length\":1.1035070563907703,\"spacing_shift\":4.964759444461927e-2}",
+        "{\"m\":0,\"geometry\":\"widen\",\"loss\":0,\"modes\":[1.4244361182127343,4.182502314991918],\"spacing_length\":1.129794962735053,\"spacing_shift\":7.593550078890197e-2}",
+        "{\"m\":1,\"geometry\":\"base\",\"loss\":0,\"modes\":[1.5707154941026436,4.710187638858171],\"spacing_length\":1.000519380888842,\"spacing_shift\":0.0}",
+        "{\"m\":1,\"geometry\":\"shift\",\"loss\":0,\"modes\":[1.4959300066790984,4.486179970378873],\"spacing_length\":1.0504706605448633,\"spacing_shift\":4.995127965602137e-2}",
+        "{\"m\":1,\"geometry\":\"widen\",\"loss\":0,\"modes\":[1.570147974187905,4.694374101124481],\"spacing_length\":1.004268101785464,\"spacing_shift\":3.74872089662197e-3}"
+      ],
+      "messages": []
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation, pending independent review",
+  "scope": "Broad one-mouth bend at fixed radius, exterior stiffness, wall tension and trapped-mode action, with an explicitly chosen rear support. Stored excess work relative to a mouthless slab. Four finite bend trials and two support-reference controls.",
+  "comparison": "All four rows, five columns each, agree at ten printed decimal places.",
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool supported-mouth-bend --memory-gib 2 --log-directory _scratch/s11c/supported_mouth_bend01 -- python3 software/em_charge_attribute/supported_mouth_bend.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/supported_mouth_bend.py": "65da65c5da2ce748b246ea5aa557f8ba3697019cb48e5730153eec15ba0b1437"
+      },
+      "start_utc": "2026-11-18T14:59:38.771921+00:00",
+      "end_utc_outcome_written": "2026-11-18T14:59:39.639662+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 56233984,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/supported_mouth_bend01/stdout",
+      "stdout_bytes": 1140,
+      "stdout_sha256": "06e9af32c24119c3a5ed8fbcbcbe0821353dac05021d1b94407494cc5f1cd482",
+      "stdout_claim_lines": [
+        "shell after blank subtraction = -2*pi*R*a*kappa*(-b + z)**2/(-R + a)",
+        "blank constant interior gradient = 0",
+        "wave length stiffness = J*nu**2*(3*L**2*gap**2 + 2*nu**2)/(L**3*(L**2*gap**2 + nu**2)**(3/2))",
+        "wave curvature times positive factor = J*nu**2*(3*L**2*gap**2 + 2*nu**2)",
+        "net tension plus wave compression force = T",
+        "rim motion per unit bend = (eta*k_b*k_c + k*k_b + k*k_c)/(k*k_b + k*k_c + k_b*k_c)",
+        "reflector motion per unit bend = (eta*k*k_b + eta*k_b*k_c + k*k_c)/(k*k_b + k*k_c + k_b*k_c)",
+        "cavity length change per unit bend = k*k_b*(eta - 1)/(k*k_b + k*k_c + k_b*k_c)",
+        "blank-subtracted work slope at equilibrium = P*(eta - 1)",
+        "relaxed work curvature = k*k_b*k_c*(eta - 1)**2/(k*k_b + k*k_c + k_b*k_c)",
+        "shared translation work slope = 0",
+        "example core energy at positive length = (2*L**2 + 1)/L",
+        "b       rim_shift      reflector_shift  wave_change    excess_work",
+        "+0.0200000000 +0.0119904408 +0.0080095592 +0.0039967924 -0.0199199362",
+        "-0.0200000000 -0.0120096411 -0.0079903589 -0.0040031922 +0.0200799358",
+        "+0.0100000000 +0.0059976051 +0.0040023949 +0.0019991990 -0.0099799920",
+        "-0.0100000000 -0.0060024051 -0.0039975949 -0.0020007990 +0.0100199920"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool supported-mouth-bend-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/supported_mouth_bend_wolfram01 -- math -noprompt -script software/em_charge_attribute/supported_mouth_bend.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/supported_mouth_bend.wl": "ab946db849337b6a39bf9cdacb7023b4a419d9f994ee04890e00bd29fac37457"
+      },
+      "start_utc": "2026-11-18T14:59:38.258201+00:00",
+      "end_utc_outcome_written": "2026-11-18T14:59:48.026871+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 231084032,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/supported_mouth_bend_wolfram01/stdout",
+      "stdout_bytes": 1065,
+      "stdout_sha256": "9bc35389a0f8964b5530067abcd0dc947875c7fd5dde4ab376161244741a2b59",
+      "stdout_claim_lines": [
+        "\"radial rim stiffness\"\" = \"\"(-4*inner*mu*outer*Pi)/(inner - outer)\"",
+        "\"regular blank enclosed load\"\" = \"\"0\"",
+        "\"transmitted tension derivative\"\" = \"\"((-1 + eta)*k*kb*kc)/(k*kb + k*kc + kb*kc)\"",
+        "\"rim and reflecting end response\"\" = \"\"{(k*kb + k*kc + eta*kb*kc)/(k*kb + k*kc + kb*kc), (eta*k*kb + k*kc + eta*kb*kc)/(k*kb + k*kc + kb*kc)}\"",
+        "\"total excess work slope\"\" = \"\"(-1 + eta)*p\"",
+        "\"excess work curvature\"\" = \"\"((-1 + eta)^2*k*kb*kc)/(k*kb + k*kc + kb*kc)\"",
+        "\"comoving reference work\"\" = \"\"0\"",
+        "\"wave incremental stiffness\"\" = \"\"(J*nu^2*(3*ell^2*gap^2 + 2*nu^2))/(ell^3*(ell^2*gap^2 + nu^2)^(3/2))\"",
+        "\"wave storage slope for fixed rear reference\"\" = \"\"(J*k*kb*nu^2)/(ell^3*(k*kb + k*kc + kb*kc)*Sqrt[(ell^2*gap^2 + nu^2)/ell^2])\"",
+        "\"b       rim_shift      reflector_shift  wave_change    excess_work\"",
+        "\"0.0200000000 0.0119904408 0.0080095592 0.0039967924 -0.0199199362\"",
+        "\"-0.0200000000 -0.0120096411 -0.0079903589 -0.0040031922 0.0200799358\"",
+        "\"0.0100000000 0.0059976051 0.0040023949 0.0019991990 -0.0099799920\"",
+        "\"-0.0100000000 -0.0060024051 -0.0039975949 -0.0020007990 0.0100199920\""
+      ]
+    }
+  }
+}

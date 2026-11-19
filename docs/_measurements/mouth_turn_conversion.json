@@ -1,0 +1,77 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation, pending independent review",
+  "scope": "Continuous normal through a round throat, illustrative shear-order window, temporal electric probe and constant-mode cancellation control.",
+  "comparison": "Meridian shape operator and signed normal volume agree. All three finite width window readings agree to twelve decimal places. Both temporal probe variations return the assigned matter charge density.",
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-turn-conversion --memory-gib 2 --log-directory _scratch/s11c/mouth_turn_conversion01 -- python3 software/em_charge_attribute/mouth_turn_conversion.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/mouth_turn_conversion.py": "e1deb9e7fc56dccfe5574f9babe697daa28928479932c09de84788f6fd5a9aca"
+      },
+      "start_utc": "2026-11-18T17:05:23.240370+00:00",
+      "end_utc_outcome_written": "2026-11-18T17:05:24.623008+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 60162048,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_turn_conversion01/stdout",
+      "stdout_bytes": 779,
+      "stdout_sha256": "82b32ddd27a000b6346e049b33e78f7f3c742016e76849e2e69bcd6b2f171148",
+      "stdout_claim_lines": [
+        "turn per unit arclength, orientation +1 = 4*theta_rate*sin(theta)**2/pi",
+        "turn per unit arclength, orientation -1 = -4*theta_rate*sin(theta)**2/pi",
+        "upper mouth through cap = 0",
+        "upper mouth through vertical = 1",
+        "upper mouth through fully flared = 2",
+        "inclination susceptibility at vertical = 4/pi",
+        "order normalization = 0",
+        "vertical collar with arbitrary skew = 1",
+        "two expressions for ordered count = 0",
+        "symmetric loss across inclined layer = 1",
+        "ordered turn at skew -1/2 = 0.935866111677",
+        "ordered turn at skew 0 = 1.000000000000",
+        "ordered turn at skew 1/2 = 1.064133888323",
+        "order-weighted continuity residual = Derivative(B(q, t), q)*Derivative(chi(q, t), t) - Derivative(B(q, t), t)*Derivative(chi(q, t), q)",
+        "electric source for probe f = amp**2*f*qstar",
+        "opposite physical sources, flat probe = 0"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mouth-turn-conversion-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/mouth_turn_conversion_wolfram01 -- math -noprompt -script software/em_charge_attribute/mouth_turn_conversion.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/mouth_turn_conversion.wl": "00246d0e4a955b9e8e073ffb8bf9aa96972e5bc1a2099d7642e77ef9258e9600"
+      },
+      "start_utc": "2026-11-18T17:05:21.585683+00:00",
+      "end_utc_outcome_written": "2026-11-18T17:05:31.552646+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 261079040,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/mouth_turn_conversion_wolfram01/stdout",
+      "stdout_bytes": 792,
+      "stdout_sha256": "ddc8810fc1c9d5108bd310f300ce63a48b4a1e342029ae659386af836fdbf132",
+      "stdout_claim_lines": [
+        "\"signed normal-volume rate 1\"\" = \"\"(4*Sin[p]^2)/Pi\"",
+        "\"continued cap, tube, flared end 1\"\" = \"\"{0, 1, 2}\"",
+        "\"signed normal-volume rate -1\"\" = \"\"(-4*Sin[p]^2)/Pi\"",
+        "\"continued cap, tube, flared end -1\"\" = \"\"{0, -1, -2}\"",
+        "\"vertical layer across different loss profiles\"\" = \"\"1\"",
+        "\"symmetrically placed conversion\"\" = \"\"1\"",
+        "\"sensitivity at vertical\"\" = \"\"4/Pi\"",
+        "\"ordered turn at skew \"\"-1/2\"\" = \"\"0.935866111677\"",
+        "\"ordered turn at skew \"\"0\"\" = \"\"1.000000000000\"",
+        "\"ordered turn at skew \"\"1/2\"\" = \"\"1.064133888323\"",
+        "\"unweighted moving current divergence\"\" = \"\"0\"",
+        "\"weighted divergence evaluated at x=t=1\"\" = \"\"-1/2*1/E\"",
+        "\"matter, order and shear variation\"\" = \"\"n*q0*test[x]\"",
+        "\"constant-mode projection of balanced depths\"\" = \"\"0\"",
+        "\"depth-weighted diagnostic for the same profiles\"\" = \"\"(1 - E^(-1/2*l^2))/Sqrt[2]\""
+      ]
+    }
+  }
+}

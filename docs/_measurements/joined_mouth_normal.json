@@ -1,0 +1,211 @@
+{
+  "base": "e0a94594",
+  "scope": "Fixed transparent radius-one aperture. Coupled neutral carrier solution, finite-cut axial forces and independent continuum stress check. Physical conversion remains open.",
+  "status": "Working result pending independent review",
+  "runs": {
+    "joined_mouth_n8_l6": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool joined-mouth-level8 --memory-gib 3 --log-directory _scratch/s11c/joined_mouth_n8_l6 -- python3 software/stage1_solver/tools/joined_mouth_normal.py 8 6 0 0.125 0.25",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/joined_mouth_normal.py": "c13640300225c95464b7c420e366af79e1088809bd83e3e9d03583147b63c6f3",
+        "software/stage1_solver/src/stage1_solver/__init__.py": "cabb27216557a098d2205df3f13cbcf1ab0dbf41f3613fea47b141646444580e",
+        "software/stage1_solver/src/stage1_solver/config.py": "70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8",
+        "software/stage1_solver/src/stage1_solver/open_sleeve.py": "3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519"
+      },
+      "guard_exit": 0,
+      "child_exit": 0,
+      "start_utc": "2026-11-18T05:14:20.888290+00:00",
+      "end_utc_outcome_written": "2026-11-18T05:14:21.441495+00:00",
+      "peak_memory_bytes": 46686208,
+      "verified_memory_cap_bytes": 3221225472,
+      "verified_swap_cap_bytes": 0,
+      "stdout_path": "_scratch/s11c/joined_mouth_n8_l6/stdout",
+      "stdout_bytes": 1492,
+      "stdout_sha256": "8a483e23e7fab51ab2aca56c13d6744ea69ec76e1eeb26f1eea7ae32d4dbd612",
+      "stdout_claim_lines": [
+        "cells_per_radius=8 extent=6 rate=0 feed=0 mouth=0 out=-0 far_feed_phase=+0 scaled_residual=3.33e-16",
+        "  inner_half_rate=0 min_local_current=0 feed_contrast=+0 receiver_contrast=+0",
+        "  radius=2 top_export=+0 side_export=+0 fluid_on_slab=-0",
+        "  radius=4 top_export=+0 side_export=+0 fluid_on_slab=-0",
+        "  screen_annulus_1.5_to_3 feed=+0 receiver=-0 net=+0",
+        "cells_per_radius=8 extent=6 rate=0.125 feed=0.125 mouth=0.125 out=0.125 far_feed_phase=-0.0302578211366 scaled_residual=7.77e-16",
+        "  inner_half_rate=0.00809404065074 min_local_current=0.0140300204986 feed_contrast=+0.000103702195664 receiver_contrast=+2.58911637865e-05",
+        "  radius=2 top_export=+1.24137501681e-05 side_export=+0.000110439108319 fluid_on_slab=-0.000122852858487",
+        "  radius=4 top_export=+7.58846863031e-07 side_export=+9.30214487247e-06 fluid_on_slab=-1.00609917355e-05",
+        "  screen_annulus_1.5_to_3 feed=-0.000597267351334 receiver=+0.000470039701785 net=-0.000127227649549",
+        "cells_per_radius=8 extent=6 rate=0.25 feed=0.25 mouth=0.25 out=0.25 far_feed_phase=-0.0605246015439 scaled_residual=6.66e-16",
+        "  inner_half_rate=0.0161887963384 min_local_current=0.0280615813529 feed_contrast=+0.000207440680828 receiver_contrast=+5.1775774329e-05",
+        "  radius=2 top_export=+4.96655496299e-05 side_export=+0.000441892669592 fluid_on_slab=-0.000491558219222",
+        "  radius=4 top_export=+3.0354473255e-06 side_export=+3.721341391e-05 fluid_on_slab=-4.02488612355e-05",
+        "  screen_annulus_1.5_to_3 feed=-0.00238977165522 receiver=+0.00188080658845 net=-0.000508965066767"
+      ]
+    },
+    "joined_mouth_n16_l6": {
+      "command": "setsid --fork --wait python3 scripts/s11c_guarded_run.py --pool joined-mouth-n16-l6 --memory-gib 4 --log-directory _scratch/s11c/joined_mouth_n16_l6 -- python3 software/stage1_solver/tools/joined_mouth_normal.py 16 6 0.25",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/joined_mouth_normal.py": "c13640300225c95464b7c420e366af79e1088809bd83e3e9d03583147b63c6f3",
+        "software/stage1_solver/src/stage1_solver/__init__.py": "cabb27216557a098d2205df3f13cbcf1ab0dbf41f3613fea47b141646444580e",
+        "software/stage1_solver/src/stage1_solver/config.py": "70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8",
+        "software/stage1_solver/src/stage1_solver/open_sleeve.py": "3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519"
+      },
+      "guard_exit": 0,
+      "child_exit": 0,
+      "start_utc": "2026-11-18T05:14:43.823653+00:00",
+      "end_utc_outcome_written": "2026-11-18T05:14:45.517393+00:00",
+      "peak_memory_bytes": 90116096,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_cap_bytes": 0,
+      "stdout_path": "_scratch/s11c/joined_mouth_n16_l6/stdout",
+      "stdout_bytes": 573,
+      "stdout_sha256": "661a7d5f76ac9afd9e1a6b516bd4cd7c14af3bdc6f1c0d64674f80fd4dc5f001",
+      "stdout_claim_lines": [
+        "cells_per_radius=16 extent=6 rate=0.25 feed=0.25 mouth=0.25 out=0.25 far_feed_phase=-0.0580473612655 scaled_residual=8.88e-16",
+        "  inner_half_rate=0.0150088665634 min_local_current=0.0260372513805 feed_contrast=+0.000132597048134 receiver_contrast=+0.000119900815989",
+        "  radius=2 top_export=+4.82190587657e-05 side_export=+0.000431529332929 fluid_on_slab=-0.000479748391695",
+        "  radius=4 top_export=+3.03360960914e-06 side_export=+3.68466668681e-05 fluid_on_slab=-3.98802764773e-05",
+        "  screen_annulus_1.5_to_3 feed=-0.00234394943064 receiver=+0.00184292063885 net=-0.000501028791788"
+      ]
+    },
+    "joined_mouth_n8_l10": {
+      "command": "setsid --fork --wait python3 scripts/s11c_guarded_run.py --pool joined-mouth-n8-l10 --memory-gib 4 --log-directory _scratch/s11c/joined_mouth_n8_l10 -- python3 software/stage1_solver/tools/joined_mouth_normal.py 8 10 0.25",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/joined_mouth_normal.py": "c13640300225c95464b7c420e366af79e1088809bd83e3e9d03583147b63c6f3",
+        "software/stage1_solver/src/stage1_solver/__init__.py": "cabb27216557a098d2205df3f13cbcf1ab0dbf41f3613fea47b141646444580e",
+        "software/stage1_solver/src/stage1_solver/config.py": "70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8",
+        "software/stage1_solver/src/stage1_solver/open_sleeve.py": "3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519"
+      },
+      "guard_exit": 0,
+      "child_exit": 0,
+      "start_utc": "2026-11-18T05:14:43.801958+00:00",
+      "end_utc_outcome_written": "2026-11-18T05:14:45.314070+00:00",
+      "peak_memory_bytes": 71532544,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_cap_bytes": 0,
+      "stdout_path": "_scratch/s11c/joined_mouth_n8_l10/stdout",
+      "stdout_bytes": 676,
+      "stdout_sha256": "3d16497ce8638b03b35b006fa5303d3ef4b8597833be79fd31fbbc5803866fdc",
+      "stdout_claim_lines": [
+        "cells_per_radius=8 extent=10 rate=0.25 feed=0.25 mouth=0.25 out=0.25 far_feed_phase=-0.0620455416644 scaled_residual=7.77e-16",
+        "  inner_half_rate=0.0161891178059 min_local_current=0.0280622925463 feed_contrast=+0.000207524739637 receiver_contrast=+5.18625446072e-05",
+        "  radius=2 top_export=+4.99865896825e-05 side_export=+0.00044235567448 fluid_on_slab=-0.000492342264162",
+        "  radius=4 top_export=+3.04489533177e-06 side_export=+3.9285506058e-05 fluid_on_slab=-4.23304013898e-05",
+        "  radius=8 top_export=+4.04319844668e-07 side_export=+1.80806756835e-06 fluid_on_slab=-2.21238741301e-06",
+        "  screen_annulus_1.5_to_3 feed=-0.00238980586732 receiver=+0.00187992905465 net=-0.000509876812676"
+      ]
+    },
+    "joined_mouth_n16_l10": {
+      "command": "setsid --fork --wait python3 scripts/s11c_guarded_run.py --pool joined-mouth-n16-l10 --memory-gib 4 --log-directory _scratch/s11c/joined_mouth_n16_l10 -- python3 software/stage1_solver/tools/joined_mouth_normal.py 16 10 0.125 0.25",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/joined_mouth_normal.py": "c13640300225c95464b7c420e366af79e1088809bd83e3e9d03583147b63c6f3",
+        "software/stage1_solver/src/stage1_solver/__init__.py": "cabb27216557a098d2205df3f13cbcf1ab0dbf41f3613fea47b141646444580e",
+        "software/stage1_solver/src/stage1_solver/config.py": "70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8",
+        "software/stage1_solver/src/stage1_solver/open_sleeve.py": "3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519"
+      },
+      "guard_exit": 0,
+      "child_exit": 0,
+      "start_utc": "2026-11-18T05:14:43.614918+00:00",
+      "end_utc_outcome_written": "2026-11-18T05:14:54.340393+00:00",
+      "peak_memory_bytes": 188526592,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_cap_bytes": 0,
+      "stdout_path": "_scratch/s11c/joined_mouth_n16_l10/stdout",
+      "stdout_bytes": 1364,
+      "stdout_sha256": "287de9db370e04fa6c06154c6bb76f16a1ab1d1c0f52558027a8ab0f4ee1e52d",
+      "stdout_claim_lines": [
+        "cells_per_radius=16 extent=10 rate=0.125 feed=0.125 mouth=0.125 out=0.125 far_feed_phase=-0.0297802272767 scaled_residual=6.66e-16",
+        "  inner_half_rate=0.00750428876255 min_local_current=0.0130183228903 feed_contrast=+6.63333706576e-05 receiver_contrast=+5.99869924639e-05",
+        "  radius=2 top_export=+1.21325679595e-05 side_export=+0.000107967580695 fluid_on_slab=-0.000120100148654",
+        "  radius=4 top_export=+7.61722335393e-07 side_export=+9.72883595006e-06 fluid_on_slab=-1.04905582855e-05",
+        "  radius=8 top_export=+1.01078592334e-07 side_export=+4.52114693659e-07 fluid_on_slab=-5.53193285992e-07",
+        "  screen_annulus_1.5_to_3 feed=-0.000585840428693 receiver=+0.000460365943529 net=-0.000125474485163",
+        "cells_per_radius=16 extent=10 rate=0.25 feed=0.25 mouth=0.25 out=0.25 far_feed_phase=-0.0595681654982 scaled_residual=8.88e-16",
+        "  inner_half_rate=0.0150092021085 min_local_current=0.0260379907185 feed_contrast=+0.000132681456003 receiver_contrast=+0.000119985477448",
+        "  radius=2 top_export=+4.85393522457e-05 side_export=+0.00043199038194 fluid_on_slab=-0.000480529734186",
+        "  radius=4 top_export=+3.04693733974e-06 side_export=+3.89195904068e-05 fluid_on_slab=-4.19665277465e-05",
+        "  radius=8 top_export=+4.04314391692e-07 side_export=+1.80844490227e-06 fluid_on_slab=-2.21275929396e-06",
+        "  screen_annulus_1.5_to_3 feed=-0.00234398228756 receiver=+0.00184203658336 net=-0.000501945704203"
+      ]
+    },
+    "joined_mouth_n24_l10": {
+      "command": "setsid --fork --wait python3 scripts/s11c_guarded_run.py --pool joined-mouth-n24-l10 --memory-gib 4 --log-directory _scratch/s11c/joined_mouth_n24_l10 -- python3 software/stage1_solver/tools/joined_mouth_normal.py 24 10 0.25",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/joined_mouth_normal.py": "c13640300225c95464b7c420e366af79e1088809bd83e3e9d03583147b63c6f3",
+        "software/stage1_solver/src/stage1_solver/__init__.py": "cabb27216557a098d2205df3f13cbcf1ab0dbf41f3613fea47b141646444580e",
+        "software/stage1_solver/src/stage1_solver/config.py": "70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8",
+        "software/stage1_solver/src/stage1_solver/open_sleeve.py": "3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519"
+      },
+      "guard_exit": 0,
+      "child_exit": 0,
+      "start_utc": "2026-11-18T05:14:42.923780+00:00",
+      "end_utc_outcome_written": "2026-11-18T05:15:17.109211+00:00",
+      "peak_memory_bytes": 448073728,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_cap_bytes": 0,
+      "stdout_path": "_scratch/s11c/joined_mouth_n24_l10/stdout",
+      "stdout_bytes": 698,
+      "stdout_sha256": "a4bd4aab4407b34fdc52c85d7c458a6b5ff053cfb42023f74f2d5318e35d3140",
+      "stdout_claim_lines": [
+        "cells_per_radius=24 extent=10 rate=0.25 feed=0.25 mouth=0.249999999999 out=0.249999999999 far_feed_phase=-0.0587696498234 scaled_residual=5.55e-16",
+        "  inner_half_rate=0.0146449030973 min_local_current=0.025420878382 feed_contrast=+0.000127049233853 receiver_contrast=+0.000123644594543",
+        "  radius=2 top_export=+4.80694847428e-05 side_export=+0.000428200593172 fluid_on_slab=-0.000476270077915",
+        "  radius=4 top_export=+3.04568000133e-06 side_export=+3.88172177519e-05 fluid_on_slab=-4.18628977532e-05",
+        "  radius=8 top_export=+4.04238729184e-07 side_export=+1.80869241044e-06 fluid_on_slab=-2.21293113962e-06",
+        "  screen_annulus_1.5_to_3 feed=-0.00233048578758 receiver=+0.00183078476369 net=-0.000499701023885"
+      ]
+    },
+    "joined_mouth_n16_l18": {
+      "command": "setsid --fork --wait python3 scripts/s11c_guarded_run.py --pool joined-mouth-n16-l18 --memory-gib 4 --log-directory _scratch/s11c/joined_mouth_n16_l18 -- python3 software/stage1_solver/tools/joined_mouth_normal.py 16 18 0.25",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/stage1_solver/tools/joined_mouth_normal.py": "c13640300225c95464b7c420e366af79e1088809bd83e3e9d03583147b63c6f3",
+        "software/stage1_solver/src/stage1_solver/__init__.py": "cabb27216557a098d2205df3f13cbcf1ab0dbf41f3613fea47b141646444580e",
+        "software/stage1_solver/src/stage1_solver/config.py": "70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8",
+        "software/stage1_solver/src/stage1_solver/open_sleeve.py": "3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519"
+      },
+      "guard_exit": 0,
+      "child_exit": 0,
+      "start_utc": "2026-11-18T05:14:44.193587+00:00",
+      "end_utc_outcome_written": "2026-11-18T05:15:55.889024+00:00",
+      "peak_memory_bytes": 630026240,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_cap_bytes": 0,
+      "stdout_path": "_scratch/s11c/joined_mouth_n16_l18/stdout",
+      "stdout_bytes": 698,
+      "stdout_sha256": "20307a773268ad16fd2456fd8fe26955c0f5a817527ea2dda70998a192b06d18",
+      "stdout_claim_lines": [
+        "cells_per_radius=16 extent=18 rate=0.25 feed=0.25 mouth=0.250000000001 out=0.250000000001 far_feed_phase=-0.0605277465401 scaled_residual=7.77e-16",
+        "  inner_half_rate=0.0150092450575 min_local_current=0.0260380857465 feed_contrast=+0.000132692346726 receiver_contrast=+0.000119996399214",
+        "  radius=2 top_export=+4.85897990164e-05 side_export=+0.000432034885587 fluid_on_slab=-0.000480624684604",
+        "  radius=4 top_export=+3.11602075343e-06 side_export=+3.90820731205e-05 fluid_on_slab=-4.2198093874e-05",
+        "  radius=8 top_export=+3.24491298562e-07 side_export=+2.50048560381e-06 fluid_on_slab=-2.82497690237e-06",
+        "  screen_annulus_1.5_to_3 feed=-0.00234398147297 receiver=+0.00184193734034 net=-0.000502044132623"
+      ]
+    },
+    "joined_mouth_balance01": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool joined-mouth-balance --memory-gib 3 --tasks-max 64 --log-directory _scratch/s11c/joined_mouth_balance01 -- math -noprompt -script software/em_charge_attribute/joined_mouth_balance.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/joined_mouth_balance.wl": "24f4fa4fb438125e90885c4966023c236d43658caac1bbf9b3e30f00e7c62a3d"
+      },
+      "guard_exit": 0,
+      "child_exit": 0,
+      "start_utc": "2026-11-18T05:15:23.380936+00:00",
+      "end_utc_outcome_written": "2026-11-18T05:15:28.305442+00:00",
+      "peak_memory_bytes": 225607680,
+      "verified_memory_cap_bytes": 3221225472,
+      "verified_swap_cap_bytes": 0,
+      "stdout_path": "_scratch/s11c/joined_mouth_balance01/stdout",
+      "stdout_bytes": 187,
+      "stdout_sha256": "16655781ed164fb3f8ac0143120a13cb62534be774e948d1aaf759bdfc67f602",
+      "stdout_claim_lines": [
+        "\"off-shell normal momentum identity residual = \"InputForm[0]",
+        "\"smooth-aperture normal traction jump = \"InputForm[0]",
+        "\"ideal hemispherical normal export = \"InputForm[(2*q^2)/(3*Pi^3*rad^3)]"
+      ]
+    }
+  }
+}

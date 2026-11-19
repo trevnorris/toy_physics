@@ -1,0 +1,76 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Standing trace in translated neutral confinement, free-ended uniform dipole wall at rest, and a separate two-mode photon-state diagnostic. Physical shear capture, nucleation, late-time circulation and charge remain open.",
+  "source_equations_sha256": {
+    "research/pde/paper/pde.tex": "9c16d156bef23331bfbdb41d4643b0903967ac12e1a4f4214c266163f741b443",
+    "notes/inner_throat/inner_throat_hard_mode.md": "4c28f2214fc33357393277705d11bdae11ef69480bbeb9bc9c0fe03a4bddd4dd",
+    "research/pde_ledger_v3/steps/S11c_PARTIAL_CLOSEOUT.md": "128c00eacca5737ba89cb8d5647571b6fcb6c92b7147af247a341bed703d4110",
+    "docs/native_light_em_and_vortex_throat_interpretation.md": "3efc9c49f1a5326b254ed8bb583b8ca8c715c05639dfceb5b9dac3d4c815d124",
+    "software/em_charge_attribute/reports/formation_tilt_drive.md": "7722008f5f44c4d59e6765e3adbf13e840f1956fef31d5e36946cd77180aae70",
+    "software/em_charge_attribute/reports/trapped_wave_charge.md": "a60b9efce96db8aaaba9a48ae57f8903733684e32cd707928958eecf087981cf"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-wave-bow-sympy --memory-gib 2 --log-directory _scratch/s11c/incident_wave_bow_sympy01 -- python3 software/em_charge_attribute/incident_wave_bow.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/incident_wave_bow.py": "2dd2e15b60a619511c7e654f5c77276c4bb436c866909c995fe24cdb2f57912f"
+      },
+      "start_utc": "2026-11-18T23:07:32.283588+00:00",
+      "elapsed_seconds": 0.7897973633371294,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 32,
+      "sampled_peak_memory_bytes": 55971840,
+      "stdout_path": "_scratch/s11c/incident_wave_bow_sympy01/stdout",
+      "stdout_sha256": "d8cf99ed47869c4b40f0d81091f0016a186029328a20abd8e85a765995dbdac8",
+      "stdout_claim_lines": [
+        "angular integral of direction cosine times squared wave = 2*pi*(z*cos(z) - sin(z))*sin(2*phase)/z**2",
+        "angular integral at z=pi and phases +/-pi/4, 0 = [-2, 2, 0]",
+        "angular integral at zero lateral wave number = 0",
+        "physical generalized forces for common shift and bow = [L*S, L*S/2]",
+        "initial modal accelerations = [S/(2*Iwall), S/(2*Iwall)]",
+        "midplane minus mean end acceleration = S/Iwall",
+        "constant-depth control accelerations = [S/Iwall, 0]",
+        "bow derivatives at both ends = [0, 0]",
+        "one each: mean, second moment of odd fringe quadrature = [0, 1]",
+        "quadrature eigenvalues and one-each probabilities = [(-1, 1/2), (0, 0), (1, 1/2)]",
+        "vacuum to one-each lowering matrix element (bra vacuum) = 2",
+        "angular dipole of the two-photon annihilation amplitude = 0"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool incident-wave-bow-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/incident_wave_bow_wolfram01 -- math -noprompt -script software/em_charge_attribute/incident_wave_bow.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/incident_wave_bow.wl": "628e4895c6cdc4e8cb6f59d0d15c2a225f4185d7df1e7a89f7a384950fa86cc3"
+      },
+      "start_utc": "2026-11-18T23:07:32.718608+00:00",
+      "elapsed_seconds": 9.095876017119735,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 64,
+      "sampled_peak_memory_bytes": 248705024,
+      "stdout_path": "_scratch/s11c/incident_wave_bow_wolfram01/stdout",
+      "stdout_sha256": "48d00204b37af82b0ae1ccaca2abac6fbdc59afe6ef7e8c7b018e4f8c45a6d00",
+      "stdout_claim_lines": [
+        "\"angular kernel from a rigid shift of the incoming trace\"\" = \"\"(2*Pi*Sin[2*alp]*(z*Cos[z] - Sin[z]))/z^2\"",
+        "\"kernel at z=Pi and phases +Pi/4, -Pi/4, 0\"\" = \"\"{-2, 2, 0}\"",
+        "\"long wavelength angular kernel\"\" = \"\"0\"",
+        "\"uniform and first even Neumann accelerations\"\" = \"\"{peak/(2*inertia), peak/(2*inertia)}\"",
+        "\"midplane minus mean end acceleration\"\" = \"\"peak/inertia\"",
+        "\"uniform depth control modes\"\" = \"\"{peak/inertia, 0}\"",
+        "\"remaining force density divided by inertia\"\" = \"\"0\"",
+        "\"one photon each: odd quadrature mean and second moment\"\" = \"\"{0, 1}\"",
+        "\"spectrum and one-each weights\"\" = \"\"{{-1, 1/2}, {0, 0}, {1, 1/2}}\"",
+        "\"two-photon coherent absorption amplitude, common envelope removed\"\" = \"\"2\"",
+        "\"its angular dipole\"\" = \"\"0\""
+      ]
+    }
+  }
+}

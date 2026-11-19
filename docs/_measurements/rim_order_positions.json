@@ -1,0 +1,90 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Two independently extracted centroids in an optical-cycle-averaged onset calculation, plus a separate passive two-mode contact test. No independent time histories for these markers on a physical draining branch.",
+  "source_sha256": {
+    "software/em_charge_attribute/reports/incident_shear_work.md": "7f031629b4ce9ad0683de7d6acce70c07b00f8fbeb58ee2994d8e25415551483",
+    "software/em_charge_attribute/reports/bend_front_attachment.md": "7662f39637a2f86262a88b31d91d3227d7202918cfff5df807729b12137bffc9",
+    "software/em_charge_attribute/g0_closure_card_v0.md": "e146c9943c64220adea38947ea017b0fc3b13b8cd67d6a0d4f95eb95b8a282b1",
+    "software/stage1_solver/reports/signed_mouth_collar.md": "08f668467f90c12db83cd991ebea440cdeddd0b34de5d39044b89989941bf9b0",
+    "software/stage1_solver/src/stage1_solver/m1c_physical_run.py": "5a7831a041062ab036af2d3cd513d7176620c3e8b43a7bf0002e519576bdb0ed",
+    "software/stage1_solver/tools/joined_mouth_normal.py": "c13640300225c95464b7c420e366af79e1088809bd83e3e9d03583147b63c6f3",
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "docs/moving_interface_conversion_work_proposal.md": "f0db584899e57babb6862bc90d7c65605459ce14cf67abda805b91dd1cc5a468",
+    "research/pde_ledger_v3/steps/S12_order_source.md": "9ff32deaba86893378e6685d5120ddbe46c03eec4ffb2d8b96b6faeca59ec39d",
+    "research/pde/paper/pde.tex": "9c16d156bef23331bfbdb41d4643b0903967ac12e1a4f4214c266163f741b443",
+    "software/em_charge_attribute/u1_body_dynamics_inputs.yaml": "eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee"
+  },
+  "archive_sha256": {
+    "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz": "08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe",
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_128_positive.npz": "206e1885d4ed6926cb7419e35d188f9afb2e71d632d7d0d7481fd306f2d4ec28"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rim-order-positions-sympy --memory-gib 2 --log-directory _scratch/s11c/rim_order_positions_sympy01 -- python3 software/em_charge_attribute/rim_order_positions.py",
+      "input_sha256": {
+        "software/em_charge_attribute/rim_order_positions.py": "f1c90ea673024323413e5475c577acdfc32abb32b9425b29f3acfbc80b735701",
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+      },
+      "start_utc": "2026-11-18T23:38:25.846872+00:00",
+      "elapsed_seconds": 0.7849411340430379,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 32,
+      "sampled_peak_memory_bytes": 81231872,
+      "stdout_path": "_scratch/s11c/rim_order_positions_sympy01/stdout",
+      "stdout_sha256": "5db2b8012a5d74e39e437e9d1e54385c0d242939eccc1117ba6c8080ccb92d00",
+      "stdout_claim_lines": [
+        "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz = currents.npy d.npy dz.npy field.npy r.npy x.npy",
+        "_scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_128_positive.npz = acceleration.npy balance_residual.npy cut_depth.npy cut_flux.npy cut_impulse.npy displacement.npy rim_impulse.npy scope.npy source_impulse.npy stored.npy times.npy velocity.npy z.npy",
+        "dipole contour speed divided by M mu A^2 k^2/(4p) = -3*(z*cos(z) - sin(z))/(2*z**2)",
+        "tangent step 0.25: mid rim/front and end wall/front speeds = [0.0, 0.0002823830500387429, 0.0, 0.0003714505259276475]",
+        "tangent step 0.0625: mid rim/front and end wall/front speeds = [0.0, 0.00028235125853882416, 0.0, 0.00037141643573718706]",
+        "tangent step 0.015625: mid rim/front and end wall/front speeds = [0.0, 0.00028234680886200444, 0.0, 0.0003714128968194171]",
+        "max errors from analytic order speeds by step = [3.836588493904766e-08, 5.622032801864789e-09, 1.1723559821498128e-09]",
+        "largest boost difference in velocities = 1.5618528605848558e-14",
+        "order speed at end divided by midplane = 1.3154520984948406",
+        "half/full amplitude contour speed ratio at finest step = 0.24999920859352606",
+        "order cosine-mode onset speed for reflected positive-minus-negative drive = -4.395148708457915e-05",
+        "contact 0: normalized wall, order at t=1 = [0.0, 0.6321205588283842]",
+        "contact 1: normalized wall, order at t=1 = [0.0970828982093222, 0.4510514181748259]"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rim-order-positions-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/rim_order_positions_wolfram01 -- math -noprompt -script software/em_charge_attribute/rim_order_positions.wl",
+      "input_sha256": {
+        "software/em_charge_attribute/rim_order_positions.wl": "584304cbda2cef7365c930f5a158ff06217388a37f0c115660217c85b16af55a",
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+      },
+      "start_utc": "2026-11-18T23:38:24.518973+00:00",
+      "elapsed_seconds": 8.002492458559573,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 64,
+      "sampled_peak_memory_bytes": 250343424,
+      "stdout_path": "_scratch/s11c/rim_order_positions_wolfram01/stdout",
+      "stdout_sha256": "9863140851cd6579b7dd8d34540355e960a4fe4aa33b457e57eb1497ccd9c96f",
+      "stdout_claim_lines": [
+        "\"front centroid rate for general phase\"\" = \"\"(3*amp^2*mob*mu*Sin[2*phase]*(-2*k*r*Cos[2*k*r] + Sin[2*k*r]))/(32*p*r^2)\"",
+        "\"centered crest, reflection residual and half-amplitude factor\"\" = \"\"{0, 0, 1/4}\"",
+        "\"midplane and end front speeds and ratio\"\" = \"\"{0.00028234563650602198992334285705061475`16., 0.00037141216004270836075393274749586844`16., 1.31545209849484152191654853627139402396`16.}\"",
+        "\"projected front bow velocity\"\" = \"\"-0.0000439514870845791431225493114219659079313676294055250533`32.\"",
+        "\"onset wall velocity, acceleration, jerk and front velocity\"\" = \"\"{0, 0, c, 1}\"",
+        "\"contact 0 normalized wall/order at t=1\"\" = \"\"{0, 0.63212055882855767840447622983853913256`28.}\"",
+        "\"contact 1 normalized wall/order at t=1\"\" = \"\"{0.0970828982094206924993174205192599887204751562316424737462`28., 0.45105141817517915056566754184444399569`28.}\"",
+        "\"power balance residual\"\" = \"\"0\""
+      ]
+    }
+  },
+  "cross_engine_comparison_max_absolute_differences": {
+    "finest reconstructed contour speeds vs exact centroid": 1.1723559824750734e-09,
+    "speed ratio": 8.881784197001252e-16,
+    "signed bow speed": 6.776263578034403e-21,
+    "contact 0, positions at t=1": 1.7341683644644945e-13,
+    "contact 1, positions at t=1": 3.5321745528449355e-13
+  }
+}

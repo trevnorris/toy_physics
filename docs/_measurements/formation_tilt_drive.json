@@ -1,0 +1,74 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Angular projection on a round moving mouth and zero signed drive under symmetric backreaction; instantaneous two-mode geometric sensitivity in the earlier dimensionless confinement. No self-consistent pair nucleation or electric charge solve.",
+  "source_equations_sha256": {
+    "notes/inner_throat/inner_throat_hard_mode.md": "4c28f2214fc33357393277705d11bdae11ef69480bbeb9bc9c0fe03a4bddd4dd",
+    "research/4d/paper/4d.tex": "f83613b86fbd5959b5a63426c3a1259226e6dd35b3de18208aef09fc428d4d56",
+    "software/stage1_solver/reports/pathA_35_G0_freeze.md": "e64b4c7f686180615ed80b4db63c05a5be08d55470dfd19b7c5d6655712eb3ea",
+    "software/em_charge_attribute/reports/forming_pair_circulation.md": "c735dee8582733037562e58613cf7afeed009f2f0fd7ee104aeb443a77cb69ae",
+    "software/em_charge_attribute/forming_pair_circulation.py": "ab0a7b971bed9ebf74cb7477fc5cac80b7848ba726e3377d43abd4152a05fc85",
+    "software/em_charge_attribute/u1_body_dynamics_inputs.yaml": "eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool formation-tilt-drive-sympy --memory-gib 2 --log-directory _scratch/s11c/formation_tilt_drive_sympy01 -- python3 software/em_charge_attribute/formation_tilt_drive.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/formation_tilt_drive.py": "39f21dc4da6bf0e86be7d40bd59bd495a393b3abc70921f6c6bac7ce7312f9f3"
+      },
+      "start_utc": "2026-11-18T22:51:00.607901+00:00",
+      "end_utc_outcome_written": "2026-11-18T22:51:01.364273+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 32,
+      "peak_memory_bytes": 55193600,
+      "stdout_path": "_scratch/s11c/formation_tilt_drive_sympy01/stdout",
+      "stdout_sha256": "03b82450c358a4312e34f855da02454cdd84d3178d1d9306dfad7c87ebf8ea85",
+      "stdout_bytes": 666,
+      "stdout_claim_lines": [
+        "angular average of moving-cut mixed angular momentum flux = 0",
+        "dipole-weighted sample divided by local radial torque factor = 1/3",
+        "off-axis wall force angular factors, carrier and unseeded wave = (0, 0)",
+        "instantaneous target acceleration from a unit parent = b2",
+        "fixed-wall difference of target and parent Rayleigh quotients = -(2*d - 3)*(2*d + 3)/4",
+        "wall and tilt slopes = [0, 0]",
+        "wall and tilt curvature matrix = Matrix([[k + 1/2, -1], [-1, 9/4 - d**2]])",
+        "tilt curvature with the lateral wall relaxed = -(8*d**2*k + 4*d**2 - 18*k - 1)/(4*(2*k + 1))",
+        "fixed-wall tilt curvatures at d=0 and d=2 = (9/4, -7/4)",
+        "energy difference on reversing both lateral bow and wave tilt = 0"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool formation-tilt-drive-wolfram --tasks-max 64 --memory-gib 4 --log-directory _scratch/s11c/formation_tilt_drive_wolfram01 -- math -noprompt -script software/em_charge_attribute/formation_tilt_drive.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/formation_tilt_drive.wl": "f7da51ad373772c890407ed9c600260c5cc01c7ff2c19bc96f34443c3d892931"
+      },
+      "start_utc": "2026-11-18T22:51:10.673468+00:00",
+      "end_utc_outcome_written": "2026-11-18T22:51:15.632854+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 64,
+      "peak_memory_bytes": 225583104,
+      "stdout_path": "_scratch/s11c/formation_tilt_drive_wolfram01/stdout",
+      "stdout_sha256": "7cc29d502bda188b362e3b1947d5bf2f141e41ca564ab5e30e9234e99410b500",
+      "stdout_bytes": 538,
+      "stdout_claim_lines": [
+        "\"full angular mean of moving-cut flux\"\" = \"\"0\"",
+        "\"angular first moment coefficient\"\" = \"\"1/3\"",
+        "\"carrier and parent-wave lateral force factors\"\" = \"\"{0, 0}\"",
+        "\"target acceleration for general centerline\"\" = \"\"b2\"",
+        "\"energy slopes at the symmetric configuration\"\" = \"\"{0, 0}\"",
+        "\"projected energy Hessian\"\" = \"\"{{1/2 + stiff, -1}, {-1, 9/4 - depth^2}}\"",
+        "\"relaxed curvature\"\" = \"\"-1/4*(-1 + 4*depth^2 - 18*stiff + 8*depth^2*stiff)/(1 + 2*stiff)\"",
+        "\"held curvatures at first and last geometry\"\" = \"\"{9/4, -7/4}\"",
+        "\"energy contrast after reflection\"\" = \"\"0\""
+      ]
+    }
+  }
+}

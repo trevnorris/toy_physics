@@ -1,0 +1,92 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "External quasistatic holding force for signed near and far order shifts. Projected gradient energy on the previous weak layer, conditional local attachment, and separate lateral fringe contribution per depth. No jointly resolved physical drain or dynamic delay.",
+  "source_sha256": {
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "software/stage1_solver/src/stage1_solver/m1c_physical_run.py": "5a7831a041062ab036af2d3cd513d7176620c3e8b43a7bf0002e519576bdb0ed",
+    "software/em_charge_attribute/g0_closure_card_v0.md": "e146c9943c64220adea38947ea017b0fc3b13b8cd67d6a0d4f95eb95b8a282b1",
+    "software/em_charge_attribute/u1_body_dynamics_inputs.yaml": "eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee",
+    "software/em_charge_attribute/rim_order_positions.py": "f1c90ea673024323413e5475c577acdfc32abb32b9425b29f3acfbc80b735701",
+    "software/em_charge_attribute/reports/rim_order_positions.md": "9418f871f20440949b689029f3feb742ce0b5f9135ab7f0eb423c7bffbe5454d",
+    "software/em_charge_attribute/reports/incident_shear_work.md": "7f031629b4ce9ad0683de7d6acce70c07b00f8fbeb58ee2994d8e25415551483",
+    "software/em_charge_attribute/reports/conversion_shear_work.md": "7ef251f1eee9227199fb975ac9b0414075c0cf90270a3fbff108a53fe0bf13cc"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-rim-shift-sympy --memory-gib 2 --log-directory _scratch/s11c/held_rim_shift_sympy01 -- python3 software/em_charge_attribute/held_rim_shift.py",
+      "input_sha256": {
+        "software/em_charge_attribute/held_rim_shift.py": "76fc9733453b7abecf0a0657ee490bcd601dd6b97f442b77906d7f18544a5449",
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+      },
+      "start_utc": "2026-11-18T23:46:11.838672+00:00",
+      "elapsed_seconds": 1.0364290559664369,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 32,
+      "sampled_peak_memory_bytes": 80461824,
+      "stdout_path": "_scratch/s11c/held_rim_shift_sympy01/stdout",
+      "stdout_sha256": "8d07ec3463ea2f4f92942b38a7ed4afd1ed51daa8efee1281d4d5b1714764a21",
+      "stdout_claim_lines": [
+        "angular excess gradient energy per kappa r^2 dr dw = 2*pi*radial**2*slope**2/3",
+        "16 cells: holds per kappa for +d,-d,+d/2,-d/2,0 = [-8.889476572435909e-05, 8.889476572435909e-05, -4.4447382862179544e-05, 4.4447382862179544e-05, -0.0]",
+        "64 cells: holds per kappa for +d,-d,+d/2,-d/2,0 = [-8.889474498560828e-05, 8.889474498560828e-05, -4.444737249280414e-05, 4.444737249280414e-05, -0.0]",
+        "256 cells: holds per kappa for +d,-d,+d/2,-d/2,0 = [-8.88947449057928e-05, 8.88947449057928e-05, -4.44473724528964e-05, 4.44473724528964e-05, -0.0]",
+        "pinned stiffness per kappa by grid = [0.044447382862179544, 0.044447372492804144, 0.0444473724528964]",
+        "straight cylinder stiffness per kappa = 0.030190452464587295",
+        "midplane order-depletion form factor = 0.07570622504309064",
+        "rim-carried fringe phase/pi=0: baseline and odd slopes at d,d/2 = [-1.7127304285997126e-23, 2.365817955383882e-05, 2.3658191382933565e-05]",
+        "rim-carried fringe phase/pi=0.25: baseline and odd slopes at d,d/2 = [2.3658195325965844e-05, 0.0, 0.0]",
+        "rim-carried fringe phase/pi=-0.25: baseline and odd slopes at d,d/2 = [-2.3658195325965844e-05, 0.0, 0.0]",
+        "rim-carried fringe phase/pi=0.5: baseline and odd slopes at d,d/2 = [2.894172637195481e-21, -2.365817955383888e-05, -2.3658191382933494e-05]",
+        "relaxed near hold for shifted far section with local contact = -K*contact*y/(K + contact)",
+        "free trace and pinned trace limits = [0, -K*y]"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-rim-shift-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/held_rim_shift_wolfram01 -- math -noprompt -script software/em_charge_attribute/held_rim_shift.wl",
+      "input_sha256": {
+        "software/em_charge_attribute/held_rim_shift.wl": "e9472f7004f8c38807f307b70bd5a6a11e2f0cffdb82c5ab6dee1e058d62065e",
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+      },
+      "start_utc": "2026-11-18T23:46:12.441002+00:00",
+      "elapsed_seconds": 5.347811907995492,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 64,
+      "sampled_peak_memory_bytes": 225357824,
+      "stdout_path": "_scratch/s11c/held_rim_shift_wolfram01/stdout",
+      "stdout_sha256": "bd3c2f39f7c33302b5dceb525ec612855021a2f34f9c2751091e2a717f7e24c5",
+      "stdout_claim_lines": [
+        "\"integrated x-w conormal per kappa r^2 dr\"\" = \"\"(-4*cr^2*Pi*slope)/3\"",
+        "\"logistic radial moments\"\" = \"\"{1/6, 0, (-6 + Pi^2)/18}\"",
+        "\"upper bound for stiffness extension per kappa\"\" = \"\"4.01112182361016487487859299518605`9.*^-180\"",
+        "\"flare and cylinder stiffness per kappa\"\" = \"\"{0.04444737245273962983249401161334621675`16., 0.03019045246458730327737833084671133297`16.}\"",
+        "\"signed holds per kappa\"\" = \"\"{-0.00008889474490547925966498802322669243`16., 0.00008889474490547925966498802322669243`16., -0.00004444737245273962983249401161334622`16., 0.00004444737245273962983249401161334622`16., 0}\"",
+        "\"external hold divided by far shift with x=0\"\" = \"\"-((ck*lk)/(ck + lk))\"",
+        "\"free contact and pinned limits\"\" = \"\"{0, -(lk*y)}\"",
+        "\"cosine moment of a ball\"\" = \"\"(Pi*(-2*k*r*Cos[2*k*r] + Sin[2*k*r]))/(2*k^3)\"",
+        "\"midplane order form factor\"\" = \"\"0.0757062250430906628147042661786093252335026411738352175478`34.\"",
+        "\"signed holder slope at finite shift\"\" = \"\"(bpeak*ff*k*Cos[2*phi]*Sin[2*d*k])/d\"",
+        "\"lab-held fringe direct mixed entry\"\" = \"\"0\"",
+        "\"phase/Pi=0 baseline and signed slopes\"\" = \"\"{0, 0.00002365817955383876924478337071711855`16., 0.00002365819138293347495357941721059363`16.}\"",
+        "\"phase/Pi=1/4 baseline and signed slopes\"\" = \"\"{0.00002365819532596583212959508318081542`16., 0, 0}\"",
+        "\"phase/Pi=-1/4 baseline and signed slopes\"\" = \"\"{-0.00002365819532596583212959508318081542`16., 0, 0}\"",
+        "\"phase/Pi=1/2 baseline and signed slopes\"\" = \"\"{0, -0.00002365817955383876924478337071711855`16., -0.00002365819138293347495357941721059363`16.}\""
+      ]
+    }
+  },
+  "cross_engine_max_absolute_differences": {
+    "flare and cylinder stiffness": 1.56770429970976e-13,
+    "signed endpoint forces on finest grid": 3.135377157556518e-16,
+    "standing fringe form factor": 1.3877787807814457e-17,
+    "fringe baseline and signed slopes at phase/pi=0": 9.147955830346444e-20,
+    "fringe baseline and signed slopes at phase/pi=0.25": 1.0164395367051604e-20,
+    "fringe baseline and signed slopes at phase/pi=-0.25": 1.0164395367051604e-20,
+    "fringe baseline and signed slopes at phase/pi=0.5": 1.0842021724855044e-19
+  }
+}

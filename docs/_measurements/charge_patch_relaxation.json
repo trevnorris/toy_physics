@@ -1,0 +1,71 @@
+{
+  "base": "e0a94594",
+  "status": "Working result pending independent review",
+  "scope": "Flat neutral wall and a prescribed two-dimensional patch with fixed spectator extent. Well softening and positive imposed patch energy are alternative trial constitutive inputs. No throat kinetics or electric sign selection.",
+  "source_sha256": {
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "research/4d_em_fields/paper/4d_em_fields.tex": "4cb8ca4acd787e163ba4c20b839ae25d46a3d105502d274528656082e71bca3f",
+    "software/em_charge_attribute/reports/relaxed_neck.md": "732ff19d2b16474eb03eafd37045aa2fb40fd9e449a9cdcbad7e5f5fcac62277",
+    "docs/_measurements/bulk_edge_charge.json": "00b2ab18bf08fa45c0b8633671cce2d9e18dd49e5e4ebce44e79ff24e5507861",
+    "docs/_measurements/interface_carrier_binding.json": "ab75f89c8c801a7ca6ff682fb397823699698982f531d2149bf99bd831b9cb14"
+  },
+  "comparison": "Both engines give width ratio 1+Q/(A nu0), scaled excess -A Q/(A nu0+Q), area derivative -Q^2/(A nu0+Q)^2, dilute limit -Q/nu0, and constrained radial curvature 6 pi T. Q is a magnitude. Mathematica reported that assumptions on the limit variable were ignored when taking A to positive infinity. The displayed rational expressions determine those limits directly. Its fixed-width check prints an unsimplified algebraic ratio.",
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool charge-patch-py --memory-gib 2 --log-directory _scratch/s11c/charge_patch_relax_py01 -- python3 software/em_charge_attribute/charge_patch_relaxation.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/charge_patch_relaxation.py": "3ab131d82364f6d5bf09413c6dcdf3512a46d4b48c31ec609eedcfaf45c5aee4"
+      },
+      "started_utc": "2026-11-19T01:32:09.482512+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "swap_cap_bytes": 0,
+      "deadlines": null,
+      "stdout_path": "_scratch/s11c/charge_patch_relax_py01/stdout",
+      "stdout_sha256": "624ed632754e2d0659668217bb486723fed57ba9ffbcb81b675f300d7170836f",
+      "stdout": [
+        "neutral column energy, minimizing width, tension = (-2*a*ell**2 - kappa)/(6*ell) + (2*a*ell**2 + kappa)/(4*ell) sqrt(2)*sqrt(kappa)/(2*sqrt(a)) sqrt(2)*sqrt(a)*sqrt(kappa)/6",
+        "imposed-width excess per wall three-area (ell = neutral width) = a*(ell - ell_fixed)**2/(6*ell_fixed)",
+        "relaxed/neutral width, relaxed excess/(L*tension) = (A*nu0 + Q)/(A*nu0) -A*Q/(A*nu0 + Q)",
+        "area derivative and infinite-area limit of scaled relaxed excess = -Q**2/(A*nu0 + Q)**2 -Q/nu0",
+        "scaled frozen-trial excess, infinite-area limit = -A*Q*(2*A*nu0 + Q)/(2*(A*nu0 + Q)**2) -Q/nu0",
+        "scaled excess above the dilute limit = Q**2/(nu0*(A*nu0 + Q))",
+        "positive excess-area cost: minimizing radius and curvature = 2**(2/3)*C**(1/3)*Q**(2/3)/(2*pi**(1/3)*T**(1/3)) 6*pi*T"
+      ]
+    },
+    "mathematica": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool charge-patch-wl --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/charge_patch_relax_wl01 -- math -noprompt -script software/em_charge_attribute/charge_patch_relaxation.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/charge_patch_relaxation.wl": "06d66d40553a011229203c45571e899481c273675e3b91ad20ce78b8ecb70441"
+      },
+      "started_utc": "2026-11-19T01:32:07.930771+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 4294967296,
+      "swap_cap_bytes": 0,
+      "deadlines": null,
+      "stdout_path": "_scratch/s11c/charge_patch_relax_wl01/stdout",
+      "stdout_sha256": "603fc9f985f1fda4171cfc437445e3a2c2c79d33c1b59dd47fa20875c45a939e",
+      "stdout": [
+        "\"width ratio and relaxed excess / neutral area energy = \"InputForm[{1 + q/(aa*nu0), -((aa*q)/(aa*nu0 + q))}]",
+        "",
+        "Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.",
+        "",
+        "Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.",
+        "\"area derivative, relaxed and frozen limits = \"InputForm[{-(q^2/(aa*nu0 + q)^2), -(q/nu0), -(q/nu0)}]",
+        "",
+        "Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.",
+        "",
+        "General::stop: Further output of Limit::alimv will be suppressed during this calculation.",
+        "\"relaxed excess above its dilute limit = \"InputForm[q^2/(aa*nu0^2 + nu0*q)]",
+        "\"fixed-width excess / [a (ell-delta)^2/(6 ell)] = \"InputForm[(2*(2*a*ell^2 + kap - 2*Sqrt[2]*ell*Sqrt[a*kap]))/(a*(-2*ell + Sqrt[2]*Sqrt[kap/a])^2)]",
+        "\"constrained radius and radial curvature = \"InputForm[{((c*q^2)/tau)^(1/3)/(2*Pi)^(1/3), 6*Pi*tau}]"
+      ]
+    }
+  }
+}

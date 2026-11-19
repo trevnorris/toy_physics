@@ -1,0 +1,80 @@
+{
+  "base": "e0a94594",
+  "status": "Working result pending independent review",
+  "scope": "Flat sharp slab, two shear-traction-free faces, unpinned tangent shear with frozen positive moduli. Additional normal force check uses an explicitly assumed curl-plus-divergence completion and its compatible normal face reactions. Static polarization-resolved kernels, no draining mouth source assigned.",
+  "source_sha256": {
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "docs/light_guided_photon_soliton_research_plan.md": "05909674434c9d8f9a7fc7a7d5c95488f314f56138b84b1e49506697068fce0a",
+    "docs/native_light_em_and_vortex_throat_interpretation.md": "3efc9c49f1a5326b254ed8bb583b8ca8c715c05639dfceb5b9dac3d4c815d124",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1",
+    "docs/elastic_reference_limit_comparison.md": "bf38716a1090f6df8496b01554a7d7a30228dc50f3d600ca7a4490257298a2f8",
+    "software/em_charge_attribute/reports/incident_shear_work.md": "7f031629b4ce9ad0683de7d6acce70c07b00f8fbeb58ee2994d8e25415551483",
+    "software/em_charge_attribute/reports/one_mouth_electric_bend.md": "43220889998762759cd064d89f598e0d4c6225967c6188dcb52b1a53c051d64a"
+  },
+  "runs": {
+    "sympy_scipy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool flat-mixed-shear-py --memory-gib 2 --log-directory _scratch/s11c/flat_mixed_shear_py01 -- python3 software/em_charge_attribute/flat_mixed_shear.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/flat_mixed_shear.py": "0518f1efba9ecf706e012899c544d735d5816929c6b0ad57c2d1cee4a1be6c28"
+      },
+      "started_utc": "2026-11-19T01:02:15.595756+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_cap_bytes": 2147483648,
+      "swap_cap_bytes": 0,
+      "tasks_cap": 32,
+      "deadlines": null,
+      "stdout_path": "_scratch/s11c/flat_mixed_shear_py01/stdout",
+      "stdout_sha256": "55737208d2f83db69793f6c913d8177966accc3a28547e325255063f535c74f3",
+      "stdout": [
+        "twist-to-twist kernel = 2*sinh(b*q)*cosh(q*(a - b))/(mu*q*cosh(a*q))",
+        "same-sign displacement kernel = 2*cosh(b*q)*cosh(q*(a - b))/(mu*q*sinh(a*q))",
+        "zero-wave-number twist compliance = 2*b/mu",
+        "Coulomb residues, difference and sum = [0, 2/(a*eta)]",
+        "inverse range of first mixed-shear mode = pi*sqrt(mu)/(H*sqrt(eta))",
+        "odd response relative to even Coulomb term at r/H=1,2,4; isotropic = [0.04329476876502347, 0.001867449244142836, 3.487342356251407e-06]",
+        "coupled stress equation residual = 0",
+        "normal unit force, in-plane mixed stress fraction and face-stress jump = [1 - 1/cosh(a*k), -1/cosh(a*k)]",
+        "zero-wave-number fractions = [0, -1]",
+        "variable moduli, elements 32, odd at k=0 and even k^2 G at k=.01 = [0.9272770246254951, 0.85715630117138]",
+        "variable moduli, elements 64, odd at k=0 and even k^2 G at k=.01 = [0.9272906683238331, 0.8571563120901927]",
+        "variable moduli, elements 128, odd at k=0 and even k^2 G at k=.01 = [0.9272940804988034, 0.8571563156812916]",
+        "variable exact odd compliance and even residue = [0.9272952180016122, 0.8571428571428571]",
+        "comparison 0.46211715726001 4.0829881650736 0.043294768765023 0.0018674492441428 3.4873423562514e-06 0.11318111602993 -0.88681888397007 0.92729521800161 0.85714285714286"
+      ]
+    },
+    "mathematica": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool flat-mixed-shear-wl --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/flat_mixed_shear_wl01 -- math -noprompt -script software/em_charge_attribute/flat_mixed_shear.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/flat_mixed_shear.wl": "fd84ab8b705f2c97f1e127ff64dc5a99bd50026494717189dd9fed5f7d1fbc2d"
+      },
+      "started_utc": "2026-11-19T01:02:24.020735+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_cap_bytes": 4294967296,
+      "swap_cap_bytes": 0,
+      "tasks_cap": 64,
+      "deadlines": null,
+      "stdout_path": "_scratch/s11c/flat_mixed_shear_wl01/stdout",
+      "stdout_sha256": "498bd192c098e2464f3cdd58a36eddc83539fc97d4c77904eb4c58216f4ff69e",
+      "stdout": [
+        "\"derivatives at both faces, difference/sum residues, first inverse range\"\" = \"\"{{0, 0, 0, 0}, {0, 4/(eta*hh)}, (Sqrt[mu/eta]*Pi)/hh}\"",
+        "\"mixed shear overlap with fundamental\"\" = \"\"0\"",
+        "\"summed responses for H=mu=eta=1 and b=H/4\"\" = \"\"{Tanh[k/2]/k, Coth[k/4]/k}\"",
+        "\"ratios at one, two and four slab widths\"\" = \"\"{0.04329476876502347091422988487609062105`18., 0.00186744924414283598421552779556582639`18., 3.48734235625140700360594283065456`18.*^-6}\"",
+        "\"zero-work strains, face traction jump and mixed share\"\" = \"\"{{0, 0}, -Sech[(hh*k)/2], 1 - Sech[(hh*k)/2]}\"",
+        "\"spectral mixed share vs virtual-work mixed share at kH=1\"\" = \"\"{0.11318111601417832, 0.11318111602992609134110220221659143747`16.}\"",
+        "\"variable-modulus limits\"\" = \"\"{2*ArcTan[1/2], 6/7}\"",
+        "\"comparison \"\"0.46211715726000974 4.082988165073597 0.04329476876502347 0.001867449244142836 3.487342356251407*^-6 0.11318111602992609 -0.8868188839700739 0.9272952180016122 0.8571428571428571\""
+      ]
+    }
+  },
+  "comparison": {
+    "ordering": "odd and even Green functions at kH=1, three real-space ratios, two normal-force balance entries at kH=1, odd and even limits for variable moduli",
+    "count": 9,
+    "max_abs_difference_of_printed_samples": 3.913536161803677e-15,
+    "algebra": "Writing H=2a, the two analytic pole residues are 0 and 4/(H mu_parallel) in both calculations. In the independent normal-sector control both give 1-sech(kH/2) and -sech(kH/2)."
+  }
+}

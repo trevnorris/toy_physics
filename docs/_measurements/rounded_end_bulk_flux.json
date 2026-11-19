@@ -1,0 +1,70 @@
+{
+  "base": "e0a94594",
+  "status": "Working result pending independent review",
+  "scope": "Assumed steady source-free hemispherical bulk exterior. Two outward profiles with the same symbolic throughput. Independent data in the weak stationary neutral-carrier trace. No measured physical cap force.",
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rounded-end-bulk --memory-gib 2 --log-directory _scratch/s11c/rounded_end_bulk01 -- python3 software/em_charge_attribute/rounded_end_bulk_flux.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/rounded_end_bulk_flux.py": "e226a0153e2f61f61618dab5a5dc66bb613378121bcf72534aff8058216c9fc3"
+      },
+      "start_utc": "2026-11-18T05:55:47.735575+00:00",
+      "end_utc_outcome_written": "2026-11-18T05:55:48.559709+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "peak_memory_bytes": 55185408,
+      "stdout_path": "_scratch/s11c/rounded_end_bulk01/stdout",
+      "stdout_bytes": 849,
+      "stdout_sha256": "5a7327d2da74e828f1e00146c224c71907ba70c45154bd022efbebedb55b521c",
+      "stdout_claim_lines": [
+        "outward mass rate = D_a",
+        "upper hemisphere carriage = 4*D_a**2*(7*R**4 + 9*a**4*epsilon**2)/(21*pi**3*R**7*rho)",
+        "upper hemisphere excess pressure = -2*D_a**2*(35*R**4 + 42*R**2*a**2*epsilon + 75*a**4*epsilon**2)/(105*pi**3*R**7*rho)",
+        "upper hemisphere total = 2*D_a**2/(3*pi**3*R**3*rho) - 4*D_a**2*a**2*epsilon/(5*pi**3*R**5*rho) + 2*D_a**2*a**4*epsilon**2/(7*pi**3*R**7*rho)",
+        "mass integral residual = 0",
+        "hemisphere plus plane-annulus conservation = 0",
+        "far axial flux = 0",
+        "uniform inner-cut flux = 2*D_a**2/(3*pi**3*a**3*rho)",
+        "same-rate shaped / uniform inner flux = 407/560",
+        "weak radial carrier hemisphere flux = 2*D_a**2/(3*pi**3*R**3*m*n0) + 4*pi*R**2*k*Derivative(eta(R), R)",
+        "carrier curved-cut and flat-annulus balance = 0",
+        "decaying density mode equation = 0",
+        "density-mode export minus closed form = 0",
+        "same-rate flux shift = -4*pi*A*R*k*besselk(2, R/xi)/xi"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rounded-end-bulk-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/rounded_end_bulk_wolfram01 -- math -noprompt -script software/em_charge_attribute/rounded_end_bulk_flux.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/rounded_end_bulk_flux.wl": "59ddcba5184a0ebb0b489ccbe87144a2e5432b4f463762ec7ee520b90844e8f4"
+      },
+      "start_utc": "2026-11-18T05:55:46.547523+00:00",
+      "end_utc_outcome_written": "2026-11-18T05:55:52.609795+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "peak_memory_bytes": 241164288,
+      "stdout_path": "_scratch/s11c/rounded_end_bulk_wolfram01/stdout",
+      "stdout_bytes": 676,
+      "stdout_sha256": "9beff4901fbb53ffbba4684478fa08941f8b6a331432d3094433441309644bf5",
+      "stdout_claim_lines": [
+        "\"4D source-free equation\"\" = \"\"0\"",
+        "\"flat-plane no-through condition\"\" = \"\"0\"",
+        "\"source normal velocity\"\" = \"\"(rate*(1 + eps + 2*eps*Cos[2*t]))/(a^3*Pi^2*rho)\"",
+        "\"mass rate on emitting cut\"\" = \"\"0\"",
+        "\"export inferred from exterior plane\"\" = \"\"(2*a^4*eps^2*rate^2)/(7*Pi^3*rad^7*rho) - (4*a^2*eps*rate^2)/(5*Pi^3*rad^5*rho) + (2*rate^2)/(3*Pi^3*rad^3*rho)\"",
+        "\"far cut\"\" = \"\"0\"",
+        "\"shaped to uniform inner-cut ratio\"\" = \"\"407/560\"",
+        "\"amplitude equation hemisphere flux\"\" = \"\"(2*rate^2)/(3*m*n0*Pi^3*rad^3) + 4*k*Pi*rad^2*Derivative[1][dn][rad]\"",
+        "\"equal-rate density mode\"\" = \"\"0\"",
+        "\"equal-rate flux shift\"\" = \"\"0\"",
+        "\"normalized shift at R/xi=1\"\" = \"\"-20.41832778887681721341988636933057794743`14.\""
+      ]
+    }
+  }
+}

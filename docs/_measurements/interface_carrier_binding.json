@@ -1,0 +1,71 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Stationary mirror-symmetric carrier contacts. First-order, locally planar subsonic sensitivity at fixed current and common far density. The surface energy is unspecified. No numerical curved-throat binding energies or occupations are inferred.",
+  "source_equations_sha256": {
+    "research/4d/paper/4d.tex": "f83613b86fbd5959b5a63426c3a1259226e6dd35b3de18208aef09fc428d4d56",
+    "docs/drain_driven_initial_acceleration.md": "3fcb3daff3ec84ffdabab53da4b57162162e957f0c119203a41299b66af513f5",
+    "software/em_charge_attribute/g0_closure_card_v0.md": "e146c9943c64220adea38947ea017b0fc3b13b8cd67d6a0d4f95eb95b8a282b1",
+    "software/em_charge_attribute/u1_body_dynamics_inputs.yaml": "eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee",
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "research/pde_ledger_v3/steps/S11b_interface_coupling_law.md": "b670035ea431ab8a74743a8d603735dad7e320824d00377664e4bb38e24d8608",
+    "software/em_charge_attribute/reports/mirrored_mouth_probe.md": "9ea780f72d5b9295a1fa27a94fa90c5b568c936c1ef22e368302d26cfd09adfc"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool interface-binding-sympy --memory-gib 2 --log-directory _scratch/s11c/interface_binding_sympy01 -- python3 software/em_charge_attribute/interface_carrier_binding.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/interface_carrier_binding.py": "fed9b3bcb8f78c4b29a90792bc294c802167795290b8fc09bcfa743e68fcc6aa"
+      },
+      "start_utc": "2026-11-18T21:06:09.902605+00:00",
+      "end_utc_outcome_written": "2026-11-18T21:06:10.558802+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 54403072,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/interface_binding_sympy01/stdout",
+      "stdout_bytes": 499,
+      "stdout_sha256": "9fe6f933edbcba6bf13bd57c18aba9e6bf142c69454020be8573d77d38f378e2",
+      "stdout_claim_lines": [
+        "linear density coefficient at fixed current = -(-5*K*n0**6 + j**2*m)/n0**3",
+        "density second derivative coefficient = -hbar**2/(4*m*n0)",
+        "surface slope from normal density jump = hbar**2*jump_dn_prime/(4*m*n0)",
+        "solution away from contact = 0",
+        "stationary excess constituents per area = -h/k",
+        "charge half-difference for a supplied odd contact = -area*q*Hodd(R, E)/k",
+        "charge half-difference for the reflected scalar contact = 0",
+        "excess crossing time = -h/(j*k)",
+        "excess number beyond changed transit inventory = 0"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool interface-binding-wolfram --memory-gib 4 --log-directory _scratch/s11c/interface_binding_wolfram01 -- math -noprompt -script software/em_charge_attribute/interface_carrier_binding.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/interface_carrier_binding.wl": "6f7e69a0a4b11f475c1d6178a3502ee2890750b00b12ff8a3d08b393d9b0a9b6"
+      },
+      "start_utc": "2026-11-18T21:06:17.280529+00:00",
+      "end_utc_outcome_written": "2026-11-18T21:06:21.839804+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 225296384,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/interface_binding_wolfram01/stdout",
+      "stdout_bytes": 493,
+      "stdout_sha256": "7093bf3ee880d785b2f9624a3b6e5406c1d19b3d5bf44b9e4313407da62b7c38",
+      "stdout_claim_lines": [
+        "\"local density stiffness at fixed flux\"\" = \"\"-((j^2*m - 5*eos*n0^6)/n0^3)\"",
+        "\"gradient coefficient\"\" = \"\"hb^2/(4*m*n0)\"",
+        "\"integrated number departure per area\"\" = \"\"-(h/k)\"",
+        "\"fixed-intake patch stiffness\"\" = \"\"(5*area^2*eos*n0^6 - m*rate^2)/(area^2*n0^3)\"",
+        "\"reflected outward flux difference\"\" = \"\"0\"",
+        "\"required odd surface slope for a fixed half-difference\"\" = \"\"-((k*target)/area)\"",
+        "\"half-difference of equal-contact mirror charges\"\" = \"\"0\"",
+        "\"charge beyond residence contribution per depth\"\" = \"\"0\""
+      ]
+    }
+  }
+}

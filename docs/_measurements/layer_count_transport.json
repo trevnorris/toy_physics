@@ -1,0 +1,74 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "source_equations_sha256": {
+    "software/em_charge_attribute/relaxed_neck.py": "dfdaf3087057863209fc8e665366527789f03bf3fa2715327160155d31572f13",
+    "software/em_charge_attribute/reports/stationary_mouth_charge.md": "4ae3f695890d482300af9669c9510b69b0d5a70f62b7005da703ada3cebcfa70",
+    "software/em_charge_attribute/reports/mouth_count_unwinding.md": "cae49fca49375e81be269b19a0c07b20ea4235bb018f9a04eb03121f6dd61cf3",
+    "research/pde_ledger_v3/steps/S12_order_source.md": "9ff32deaba86893378e6685d5120ddbe46c03eec4ffb2d8b96b6faeca59ec39d",
+    "research/4d/paper/4d.tex": "f83613b86fbd5959b5a63426c3a1259226e6dd35b3de18208aef09fc428d4d56"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool layer-count-transport-sympy --memory-gib 2 --log-directory _scratch/s11c/layer_count_transport_sympy02 -- python3 software/em_charge_attribute/layer_count_transport.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/layer_count_transport.py": "ddaf9803e498489a804fa803eb8697154a5fb4d9e6732bba82ad180b7f71c8c2",
+        "docs/_measurements/relaxed_neck_paths.json": "813e662a8df05e3f5b2400c9436884054a1068eefa6b9415129ac9d61dc4405c"
+      },
+      "start_utc": "2026-11-18T20:25:50.083434+00:00",
+      "end_utc_outcome_written": "2026-11-18T20:26:00.237123+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 61734912,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/layer_count_transport_sympy02/stdout",
+      "stdout_bytes": 676,
+      "stdout_sha256": "e40fb3d59ecb5e77cad5d0922733a0b2e84451642a09ea2667e1ec9bbca69766",
+      "stdout_claim_lines": [
+        "divergence of smoothed solid angle / kernel = 1",
+        "defect index from a surrounding sphere = 1",
+        "radial integral derivative = 0",
+        "flux normal to an order surface = 0",
+        "layer continuity residual / kernel = v*Derivative(chi(x, y, z), z)",
+        "layer plus weighted moving zero residual = 0",
+        "residual per unit tilt within conversion = -30*(beta - 3)**2*(beta - 2)**2",
+        "integrated local change for upper orientation = -1",
+        "integrated local change for mirror = 1",
+        "residual per unit tilt at halfway = -15/8",
+        "free (23 shapes), tilt:layer = 2:1, 13/6:625/648, 7/3:64/81, 5/2:1/2, 8/3:17/81, 17/6:23/648, 3:0",
+        "clamped (23 shapes), tilt:layer = 2:1, 13/6:625/648, 7/3:64/81, 5/2:1/2, 8/3:17/81, 17/6:23/648, 3:0"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool layer-count-transport-wolfram --memory-gib 4 --log-directory _scratch/s11c/layer_count_transport_wolfram02 -- math -noprompt -script software/em_charge_attribute/layer_count_transport.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/layer_count_transport.wl": "b76140876e96632a4616baac333660f93b3fb1ecb355891b77c311b1e3ce242e"
+      },
+      "start_utc": "2026-11-18T20:25:57.919088+00:00",
+      "end_utc_outcome_written": "2026-11-18T20:26:02.688475+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 225468416,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/layer_count_transport_wolfram02/stdout",
+      "stdout_bytes": 713,
+      "stdout_sha256": "0eda8ce2148ff8059f6e6fab2174f959d2fe53f9e9491a84612c24c52a7f07d4",
+      "stdout_claim_lines": [
+        "\"section outside the zero\"\" = \"InputForm[1]",
+        "\"section inside the zero\"\" = \"InputForm[0]",
+        "\"three pulled-back components of dchi on a cut\"\" = \"InputForm[0]",
+        "\"remaining layer count at entry, halfway, exit\"\" = \"InputForm[{1, 1/2, 0}]",
+        "\"layer weak source per unit tilt\"\" = \"InputForm[-30*(-3 + b)^2*(-2 + b)^2*f[b]]",
+        "\"weak balance coefficient after adding the moving zero\"\" = \"InputForm[-1080 + 1800*b - 1110*b^2 + 300*b^3 - 30*b^4 + Derivative[1][A][b]]",
+        "\"local residual with initially unweighted zero\"\" = \"InputForm[0]",
+        "\"layer plus assigned zero weight\"\" = \"InputForm[1]",
+        "\"uncompensated weak source at halfway, unit speed and f=1\"\" = \"InputForm[-15/8]",
+        "\"signed change across upper and reflected layer\"\" = \"InputForm[{-1, 1}]"
+      ]
+    }
+  }
+}

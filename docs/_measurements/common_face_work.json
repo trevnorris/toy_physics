@@ -1,0 +1,74 @@
+{
+  "base": "e0a94594",
+  "scope": "Virtual translation of both local faces at fixed thickness, static end reactions, cap pressure support requirement and conditional mouth-source work. No physical receiving-side pressure or free displacement measured.",
+  "status": "Working result pending independent review.",
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool common-face-work --memory-gib 2 --log-directory _scratch/s11c/common_face_work01 -- python3 software/em_charge_attribute/common_face_work.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/common_face_work.py": "7b49e48abe4ffaca8a210aaf0142f9e04343e3f3c4a76e261e31f09a4dc07133"
+      },
+      "start_utc": "2026-11-18T05:43:59.360971+00:00",
+      "end_utc_outcome_written": "2026-11-18T05:43:59.971346+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "peak_memory_bytes": 54927360,
+      "stdout_path": "_scratch/s11c/common_face_work01/stdout",
+      "stdout_bytes": 734,
+      "stdout_sha256": "8c374b35d9b2cebe76388b5c189815e6133d9d0481a6d907ad82557e3eb3b3be",
+      "stdout_claim_lines": [
+        "wall work per unit near displacement = -P*s*(beta - 1)",
+        "rigid wall work = 0",
+        "fixed far end wall work = P*s",
+        "far end following factor = 1",
+        "slab force after far force balance = B",
+        "support reference for same near/far displacement = (-B + P*s)/k",
+        "same endpoint positions on either loaded preparation = 0",
+        "total load vs eliminated energy = 0",
+        "cap projected area = 4*pi*a**3/3",
+        "pressure-only cap support for straight wall = 3*sigma/a + 4*k_b/(3*a**3)",
+        "support reconstructs wall pull = 0",
+        "pressure doubling-radius ratios [area term, bending term] = [1/2, 1/8]",
+        "translated orientation integrand: shift derivative plus spatial derivative = 0",
+        "mouth force for uniform embedding overlap = c*(g*s - h*k_m)/ell",
+        "transported scalar value has zero mouth work = 0"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool common-face-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/common_face_wolfram01 -- math -noprompt -script software/em_charge_attribute/common_face_work.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/common_face_work.wl": "3bd73a9bc81ad1525de1a9f1dd7f9292ac84d39feb5dd3ac354767330383afe7"
+      },
+      "start_utc": "2026-11-18T05:43:58.148661+00:00",
+      "end_utc_outcome_written": "2026-11-18T05:44:02.908242+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "peak_memory_bytes": 225439744,
+      "stdout_path": "_scratch/s11c/common_face_wolfram01/stdout",
+      "stdout_bytes": 818,
+      "stdout_sha256": "cd15a9ea3335e601cdc1a0e6f959a808ea4eecc4e796cb1e9dacd7d6299d8d0b",
+      "stdout_claim_lines": [
+        "\"common displacement: thickness variation\"\" = \"\"0\"",
+        "\"common displacement: midpoint variation minus one\"\" = \"\"0\"",
+        "\"positive throat wall force on the chosen motion\"\" = \"\"(-4*(-1 + beta)*Pi*(4*bend + 9*a^2*sig))/9\"",
+        "\"translation of a fixed shape\"\" = \"\"0\"",
+        "\"fixed receiver point\"\" = \"\"0\"",
+        "\"cap axial area\"\" = \"\"(4*a^3*Pi)/3\"",
+        "\"slab-normal pressure needed to support the straight end\"\" = \"\"(4*bend)/(3*a^3) + (3*sig)/a\"",
+        "\"cap and opposite flat cut of uniform pressure\"\" = \"\"0\"",
+        "\"cap axial force, pressure p0+p1 cos(theta)\"\" = \"\"(4*a^3*p0*Pi)/3 + (a^3*p1*Pi^2)/4\"",
+        "\"displacement response of the far attachment\"\" = \"\"1\"",
+        "\"complete slab reaction\"\" = \"\"bulk\"",
+        "\"equal positions with compensating reference\"\" = \"\"0\"",
+        "\"jointly carried parent scalar value variation\"\" = \"\"0\"",
+        "\"mouth load under specified overlap\"\" = \"\"-((c*(h0*kM - g*s))/ell)\""
+      ]
+    }
+  }
+}

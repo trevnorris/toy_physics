@@ -1,0 +1,89 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation, pending independent review",
+  "scope": "Two identical passive wave-supported mouths with two screening and bending modes of a shared slab. Four orientation pairs and two disjoint separations.",
+  "comparison": "All eight numerical rows agree at ten printed decimal places. Mathematica reports twice that assumptions on a limit variable are ignored. The removable zero-mass limit and far limit follow directly from the explicit kernels and agree with SymPy.",
+  "approach_work_from_printed_energy_rows": {
+    "++": "-0.1157707837",
+    "+-": "0.1352499088",
+    "-+": "0.1352499088",
+    "--": "-0.1157707837"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool two-mouth-thickness --memory-gib 2 --log-directory _scratch/s11c/two_mouth_thickness01 -- python3 software/em_charge_attribute/two_mouth_thickness.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/two_mouth_thickness.py": "fd9106fb21d46b4594dcf9afc6efa54bc8992c8dd0a52c9248369bdd6d9c48d7"
+      },
+      "start_utc": "2026-11-18T15:15:54.636207+00:00",
+      "end_utc_outcome_written": "2026-11-18T15:15:55.955664+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 58068992,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/two_mouth_thickness01/stdout",
+      "stdout_bytes": 1454,
+      "stdout_sha256": "c9f34ea96b485ff93c6d80b5bbd1583ab267163fcc34fae7932cf9f80aa3e7c2",
+      "stdout_claim_lines": [
+        "one shell outside = -(-exp(a*mu) + exp(-a*mu))*exp(-d*mu)/(2*a*d*mu)",
+        "shell self response = (exp(a*mu) - 1)*(exp(a*mu) + 1)*exp(-2*a*mu)/(2*a**2*mu)",
+        "nonoverlapping double shell average = -(-exp(a*mu) + exp(-a*mu))*exp(-d*mu)*sinh(a*mu)/(2*a**2*d*mu**2)",
+        "massless shell pair limit = 1/d",
+        "unrestored thickness, equal stiffness, opposite-face response = 0",
+        "far oriented energy coefficient divided by isolated squared load = -1",
+        "stationary energy derivative in mutual response = -P**2",
+        "outward force for +1 +1 = -P**2*(a**2*mu**2*exp(d*mu) + d*mu*sinh(a*mu)**2 + sinh(a*mu)**2)*exp(-d*mu)/(a**2*d**2*mu**2)",
+        "outward force for +1 -1 = P**2*(a**2*mu**2*exp(d*mu) - d*mu*sinh(a*mu)**2 - sinh(a*mu)**2)*exp(-d*mu)/(a**2*d**2*mu**2)",
+        "outward force for -1 +1 = P**2*(a**2*mu**2*exp(d*mu) - d*mu*sinh(a*mu)**2 - sinh(a*mu)**2)*exp(-d*mu)/(a**2*d**2*mu**2)",
+        "outward force for -1 -1 = -P**2*(a**2*mu**2*exp(d*mu) + d*mu*sinh(a*mu)**2 + sinh(a*mu)**2)*exp(-d*mu)/(a**2*d**2*mu**2)",
+        "leading squared normal gap change = 4*t**2",
+        "s1 s2 distance excess_energy/P0^2 outward_force/P0^2 load/P0",
+        "1 1 8 -0.1199417543 -0.0144325314 +0.9590862680",
+        "1 1 4 -0.2357125380 -0.0595357832 +0.9195759058",
+        "1 -1 8 +0.1305014949 +0.0169752088 +1.0444914637",
+        "1 -1 4 +0.2657514037 +0.0649327388 +1.0905737483",
+        "-1 1 8 +0.1305014949 +0.0169752088 +1.0444914637",
+        "-1 1 4 +0.2657514037 +0.0649327388 +1.0905737483",
+        "-1 -1 8 -0.1199417543 -0.0144325314 +0.9590862680",
+        "-1 -1 4 -0.2357125380 -0.0595357832 +0.9195759058"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool two-mouth-thickness-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/two_mouth_thickness_wolfram01 -- math -noprompt -script software/em_charge_attribute/two_mouth_thickness.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/two_mouth_thickness.wl": "f1359f8d521c64a92449792eb4fa55a52f930703a5b62c4e3af68ff5e5d550ad"
+      },
+      "start_utc": "2026-11-18T15:15:52.903736+00:00",
+      "end_utc_outcome_written": "2026-11-18T15:15:58.065835+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 225484800,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/two_mouth_thickness_wolfram01/stdout",
+      "stdout_bytes": 949,
+      "stdout_sha256": "6a36860845290f2750dec2ce2a3198a046d5cac9bfcd9c955bacf49e94601504",
+      "stdout_claim_lines": [
+        "\"transmission of one thickness shell\"\" = \"\"Sinh[a*mu]/(a*mu)\"",
+        "\"self response from the jump solution\"\" = \"\"Sinh[a*mu]/(a^2*E^(a*mu)*mu)\"",
+        "Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.",
+        "\"opposite-face response with the thickness restoration removed\"\" = \"\"0\"",
+        "Limit::alimv: Warning: Assumptions that involve the limit variable are ignored.",
+        "\"far difference divided by twice squared isolated load\"\" = \"\"-1\"",
+        "\"squared perpendicular gap to quadratic order\"\" = \"\"4*t^2\"",
+        "\"s1 s2 distance excess_energy/P0^2 outward_force/P0^2 load/P0\"",
+        "\"1 1 8 -0.1199417543 -0.0144325314 0.9590862680\"",
+        "\"1 1 4 -0.2357125380 -0.0595357832 0.9195759058\"",
+        "\"1 -1 8 0.1305014949 0.0169752088 1.0444914637\"",
+        "\"1 -1 4 0.2657514037 0.0649327388 1.0905737483\"",
+        "\"-1 1 8 0.1305014949 0.0169752088 1.0444914637\"",
+        "\"-1 1 4 0.2657514037 0.0649327388 1.0905737483\"",
+        "\"-1 -1 8 -0.1199417543 -0.0144325314 0.9590862680\"",
+        "\"-1 -1 4 -0.2357125380 -0.0595357832 0.9195759058\""
+      ]
+    }
+  }
+}

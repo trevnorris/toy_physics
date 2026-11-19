@@ -1,0 +1,65 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation, pending independent review",
+  "scope": "Straight-wall end forces under a common scalar bend and energy of local conservative attachments. Finite annulus at physical radii 1 and 2 on a common brane.",
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wall-load-to-bend --memory-gib 2 --log-directory _scratch/s11c/wall_load_to_bend01 -- python3 software/em_charge_attribute/wall_load_to_bend.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "docs/_measurements/unequal_mouth_electric.json": "be7ce5624e4930f49f69cc9d89808a62db542f0aa582b530b0c22f250860d9c8",
+        "software/em_charge_attribute/wall_load_to_bend.py": "e848490a8f7280f06029ba13b7f657b22c1e6795e9e273e5591c46e10c9741d9"
+      },
+      "start_utc": "2026-11-18T08:02:27.785555+00:00",
+      "end_utc_outcome_written": "2026-11-18T08:02:28.903705+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 54382592,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/wall_load_to_bend01/stdout",
+      "stdout_bytes": 791,
+      "stdout_sha256": "768729d6bfa99af386b9ba2d426c3b57c7640a8147dd6aa51c3f7b8d217cbc65",
+      "stdout_claim_lines": [
+        "stationary attachment pair energy slope in x = -y_a*y_b*z_a*z_b",
+        "two spring references = -H_a*H_b*k_a*k_b*z_a*z_b/((S_a*k_a + 1)*(S_b*k_b + 1))",
+        "infinite stiffness at fixed references = -H_a*H_b*z_a*z_b/(S_a*S_b)",
+        "source-work reservoir form at held field = h_a*h_b*z_a*z_b/(S_a*S_b)",
+        "wall load per unit bend = -4*pi*s_a*(9*a**2*sigma + 4*k_bend)*(Derivative(far(h_a), h_a) - Derivative(near(h_a), h_a))/9",
+        "comoving wall ends = 0",
+        "wall load ratio at doubled radius = 4*(9*a**2*sigma + k_bend)/(9*a**2*sigma + 4*k_bend)",
+        "equal transfer, large/small exterior strength, curvature and tension limits = [1.041412048028578, 4.165648192114312]",
+        "required relative mechanical transfer, curvature and tension limits = [0.9602347139088969, 0.24005867847722423]",
+        "relative transfer times relative emitted load = 1"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wall-load-to-bend-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/wall_load_to_bend_wolfram01 -- math -noprompt -script software/em_charge_attribute/wall_load_to_bend.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "docs/_measurements/unequal_mouth_electric.json": "be7ce5624e4930f49f69cc9d89808a62db542f0aa582b530b0c22f250860d9c8",
+        "software/em_charge_attribute/wall_load_to_bend.wl": "0749716401af7dbdb52908409229401cecf349fc28ab632ecdbde521dbcbad0d"
+      },
+      "start_utc": "2026-11-18T08:02:28.309738+00:00",
+      "end_utc_outcome_written": "2026-11-18T08:02:39.749715+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 310255616,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/wall_load_to_bend_wolfram01/stdout",
+      "stdout_bytes": 740,
+      "stdout_sha256": "43099c1a2e6dcf20b729988a81631196826a3762dbf69aafedf9eb75e81fb596",
+      "stdout_claim_lines": [
+        "\"stationary local work plus field storage\"\" = \"\"-(z1*z2*p1[0]*p2[0])\"",
+        "\"field and attachment slopes with both loads fixed\"\" = \"\"{z1*z2*p1[0]*p2[0], -2*z1*z2*p1[0]*p2[0]}\"",
+        "\"two springs after elimination\"\" = \"\"-((a1*a2*k1*k2*z1*z2)/((1 + k1*self1)*(1 + k2*self2)))\"",
+        "\"stiff spring at both mouths\"\" = \"\"-((a1*a2*z1*z2)/(self1*self2))\"",
+        "\"wall work vanishes for equal gains\"\" = \"\"0\"",
+        "\"change of pull upon doubling radius\"\" = \"\"12*Pi*r^2*sigma\"",
+        "\"relative transfer, curvature and tension limits\"\" = \"\"{0.96023471390910767556017674520374082686`12., 0.24005867847727691889004418630093520671`12.}\"",
+        "\"large/small strength for equal transfer in those limits\"\" = \"\"{1.04141204802834941223019930573922539618`12., 4.1656481921133976489207972229569015847`12.}\""
+      ]
+    }
+  }
+}

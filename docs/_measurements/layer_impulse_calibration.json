@@ -1,0 +1,85 @@
+{
+  "base": "e0a94594",
+  "status": "Working result pending independent review",
+  "scope": "New paired readout from archived carrier signals and separate benchmark wave envelope. No measured physical conversion-layer mass.",
+  "runs": {
+    "python": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool layer-impulse-calibration --memory-gib 2 --log-directory _scratch/s11c/layer_impulse_calibration01 -- python3 software/em_charge_attribute/layer_impulse_calibration.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/layer_impulse_calibration.py": "516d494d57d1f85aba91361548417979acb5557ad76bc4bf01002d3a2eca487d",
+        "_scratch/s11c/mouth_prescribed_accel_positive02/stdout": "7391b79ee45b0aedd4fa38489ae03d91089afe8b6de95b9fd565f13c524b26ed",
+        "_scratch/s11c/mouth_prescribed_accel_negative02/stdout": "10ff3f7748df9d9b94df9ccec9d58078e5197c11f3fd8661ee88e50846ee1e8b",
+        "_scratch/s11c/mouth_prescribed_accel_positive_half02/stdout": "e4198b0b5a46d8d5e44c3e870757ddc721d514ff1738b3fceaaff1c988816a2a",
+        "_scratch/s11c/mouth_prescribed_accel_negative_half02/stdout": "4fee98a0f146996effb79996d33b493a31b02d4bd71d4981f8202347bf553b6d",
+        "docs/_measurements/mouth_prescribed_acceleration.txt": "db7ae4e93ffb1ddf105d2afd02194f29009464d9a642721a18e3edd3aeeeae73",
+        "docs/_measurements/signed_mouth_collar.json": "0d5f22b802dcdbadee34ed0ee243f3feb094c511bb254c9f7408daae4fc37875",
+        "_scratch/s11c/mouth_prescribed_accel_positive02/outcome.json": "c49aa5cd49ef46476566095eb6c4788e78b7e5ba56f92c3eb0e39d735c974467",
+        "_scratch/s11c/mouth_prescribed_accel_negative02/outcome.json": "73af7b4f159232379caa78ed48c633cae479311c25199eb6fbb514ea7348cab6",
+        "_scratch/s11c/mouth_prescribed_accel_positive_half02/outcome.json": "88420ac8793ce28fbd840aaba558609c85b11fc05056234825e81061e2ad5edd",
+        "_scratch/s11c/mouth_prescribed_accel_negative_half02/outcome.json": "d74da4a8e3641d50d2dbb0fb9024c9e25c9e6a2f3778dda5cc822a39f2c9e2b0",
+        "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_64_positive.npz": "9a458983317442bfa7b7ce802979dee868195300a0a50f6d1a409c5ebe08bd90",
+        "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_64_negative.npz": "c4f289fd0f33863daa27f642def3fade95d5aef985372d53a5199be882cac4e2",
+        "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_64_positive_half.npz": "73826185780f69c4e99fb9314954e4d7e3df941c5318ac6cd615f79117af226f",
+        "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_64_negative_half.npz": "9c910c20890accfbad0788e45d5bd6a0dd6c7f544dad157ab0d607cd2fdfd86d",
+        "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_128_positive.npz": "09fb052a3939dd482f234c566862c421265b0d58c106e25246343ee8822362f8",
+        "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_128_negative.npz": "fbb889e627c4af092aa249e4651742db93a2c59cd4c68dd8f2cd4a9c30ee7ebe",
+        "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_128_positive_half.npz": "1d56af87fde47b02c9d9c3c96cafa3aca5448988f4ad40e928b01bad44644753",
+        "_scratch/s11c/signed_mouth_collar01/fields/benchmark_continued_128_negative_half.npz": "531160f93f79822ca086f0343ba6c43afccd3a2c6283005beba4cbed1ba5868a"
+      },
+      "start_utc": "2026-11-18T07:14:43.054110+00:00",
+      "end_utc_outcome_written": "2026-11-18T07:14:43.318403+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 30703616,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/layer_impulse_calibration01/stdout",
+      "stdout_bytes": 1550,
+      "stdout_sha256": "975d777e323f1ac400d0d2e10ed75a9fdf410a8847caf00253d27e65fe4a9577",
+      "stdout_claim_lines": [
+        "carrier sample columns: ['carried', 'feed_load', 'inward_rate', 'stress', 't', 'x']",
+        "feeding face full: t=0.001 intake=0.25 carried=-4.68167227208e-10 stress=-2.15806322465e-13 total_rate=-4.6838303353e-10",
+        "feeding face _half: t=0.001 intake=0.25 carried=-2.34083603196e-10 stress=-1.07903378073e-13 total_rate=-2.34191506574e-10",
+        "collar n=64 full: odd_source=0.00134488362299 odd_export=0.000155520125003 impulse_difference=0.00118936349799 odd_stored=0.00118936349799 velocity_range=[0.00114015456469,0.0034842383242]",
+        "collar n=64 full: integrated_mass_interval=[0.341355380235,1.04315987922] supplied_continuum_mass=0.439448148111",
+        "collar n=64 _half: odd_source=0.000672441811495 odd_export=7.77600625018e-05 impulse_difference=0.000594681748993 odd_stored=0.000594681748993 velocity_range=[0.000570077282393,0.0017421191621]",
+        "collar n=64 _half: integrated_mass_interval=[0.341355380235,1.04315987913] supplied_continuum_mass=0.439448148111",
+        "collar n=128 full: odd_source=0.00134482562411 odd_export=0.00015550951079 impulse_difference=0.00118931611332 odd_stored=0.00118931611332 velocity_range=[0.00113947623706,0.00348395477875]",
+        "collar n=128 full: integrated_mass_interval=[0.341369560987,1.04373928533] supplied_continuum_mass=0.439448148111",
+        "collar n=128 _half: odd_source=0.000672412812055 odd_export=7.7754755395e-05 impulse_difference=0.00059465805666 odd_stored=0.00059465805666 velocity_range=[0.000569738118563,0.00174197738937]",
+        "collar n=128 _half: integrated_mass_interval=[0.341369560987,1.04373928527] supplied_continuum_mass=0.439448148111"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool layer-impulse-calibration-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/layer_impulse_calibration_wolfram01 -- math -noprompt -script software/em_charge_attribute/layer_impulse_calibration.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/layer_impulse_calibration.wl": "192e6aca89f354f5fbddc6d7c8b94509f5312e25fdc401e1b361b0df9f6e6d4f",
+        "_scratch/s11c/mouth_prescribed_accel_positive02/stdout": "7391b79ee45b0aedd4fa38489ae03d91089afe8b6de95b9fd565f13c524b26ed",
+        "_scratch/s11c/mouth_prescribed_accel_negative02/stdout": "10ff3f7748df9d9b94df9ccec9d58078e5197c11f3fd8661ee88e50846ee1e8b",
+        "_scratch/s11c/mouth_prescribed_accel_positive_half02/stdout": "e4198b0b5a46d8d5e44c3e870757ddc721d514ff1738b3fceaaff1c988816a2a",
+        "_scratch/s11c/mouth_prescribed_accel_negative_half02/stdout": "4fee98a0f146996effb79996d33b493a31b02d4bd71d4981f8202347bf553b6d"
+      },
+      "start_utc": "2026-11-18T07:14:41.918316+00:00",
+      "end_utc_outcome_written": "2026-11-18T07:14:47.320894+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 228847616,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/layer_impulse_calibration_wolfram01/stdout",
+      "stdout_bytes": 676,
+      "stdout_sha256": "617048af1e72480b5cf6ad61ff1e3776e8c9d23a4157e4e7c53eb671d4d86ba1",
+      "stdout_claim_lines": [
+        "\"masses at extrema\"\" = \"\"{mLo -> -((p - mass*vHi)/(vHi - vLo)), mHi -> -((-p + mass*vLo)/(vHi - vLo))}\"",
+        "\"positive masses allowed\"\" = \"\"mass*vHi >= p && p >= mass*vLo\"",
+        "\"same interval\"\" = \"\"True\"",
+        "\"full and half velocity rows at matched time: rank\"\" = \"\"1\"",
+        "\"{suffix,t,intake,odd carried,stress,total}\"\" = \"\"{\\\"\\\", 0.001, 0.25, -4.681672272077719*^-10, -2.1580632246498421*^-13, -4.683830335302369*^-10}\"",
+        "\"{suffix,t,intake,odd carried,stress,total}\"\" = \"\"{\\\"_half\\\", 0.001, 0.25, -2.340836031955451*^-10, -1.079033780729266*^-13, -2.3419150657361804*^-10}\"",
+        "\"specified benchmark wave mass to cut\"\" = \"\"{(len*(2*Sqrt[2] + Pi))/(8*Pi), 0.43944814811133077858463981292030875974`15.}\""
+      ]
+    }
+  }
+}

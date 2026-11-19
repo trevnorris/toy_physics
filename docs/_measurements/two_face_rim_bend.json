@@ -1,0 +1,67 @@
+{
+  "base": "e0a94594d80c3a99b775b661f987fcc298660fbd",
+  "status": "Working calculation pending independent review.",
+  "scope": "Static radial exterior of the two-face template with prescribed normal loads at finite radius. Illustrative displacement ratios. No fitted throat parameters.",
+  "input_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "docs/opposite_orientation_throat_coincidence.md": "1220bce9f8ae61f88929858e26db1fbc2535b347171e0609ebd558c3f096c86d",
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "research/pde_ledger_v3/V3_STEP_PLAN.md": "23f78fbd098b5212304911ddb048f831b10854aab210d40978773b3bafcf3671",
+    "software/stage1_solver/reports/active_drain_width.md": "bb0fa124cceac42b5b6c6ceae6f2eab94e306870e4e3379b2f26102fae1daca2",
+    "software/em_charge_attribute/reports/one_mouth_electric_bend.md": "43220889998762759cd064d89f598e0d4c6225967c6188dcb52b1a53c051d64a"
+  },
+  "figure_sha256": {
+    "software/em_charge_attribute/reports/two_face_rim_bend.png": "25e4f0b558bf7527c1b2a0047b32426026e8fa3f26652c3db5b769c58d084863"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool two-face-rim-sympy --memory-gib 2 --log-directory _scratch/s11c/two_face_rim_sympy01 -- env MPLCONFIGDIR=/tmp/toyphysics-two-face-mpl python3 software/em_charge_attribute/two_face_rim_bend.py --plot software/em_charge_attribute/reports/two_face_rim_bend.png",
+      "script_sha256": "0e973af96e0bfff115f73cf1184cb93f8e802618813f00a3ba3d7450b8b703cb",
+      "stdout_sha256": "949f53229706e78d7efd32581136f59cade111f7ab792d47be1ca0be6bef3cbf",
+      "start_utc": "2026-11-18T02:50:29.438267+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_gib": 2,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "middle homogeneous equation = 0",
+        "middle profile = (F_low + F_up)/(4*pi*K_m*r)",
+        "middle load residual = 0",
+        "half width homogeneous equation = 0",
+        "half width profile = -ell*(F_low - F_up)*exp((a - r)/ell)/(4*pi*K_t*r*(a + ell))",
+        "half width load residual = 0",
+        "one-face middle slope times r^2 = -F/(4*pi*K_m)",
+        "mirrored middle sum = 0",
+        "mirrored full width difference = 0",
+        "balanced opposite loads middle = 0",
+        "face difference over face sum = K_m*ell*exp(a/ell)*exp(-r/ell)/(K_t*(a + ell))",
+        "unlocked equal-tension lower face = 0",
+        "finite restoring curvature distant face ratio = 1",
+        "rim ratio for equal tensions = a/(a + 2*ell)",
+        "contrast attenuation over dr = exp(-dr/ell)",
+        "equal tensions, ell=a, r/a=1: lower/upper = 0.333333333",
+        "equal tensions, ell=a, r/a=2: lower/upper = 0.689275193",
+        "equal tensions, ell=a, r/a=3: lower/upper = 0.873242123"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool two-face-rim-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/two_face_rim_wolfram01 -- math -noprompt -script software/em_charge_attribute/two_face_rim_bend.wl",
+      "script_sha256": "bf864f20865b42885ef9422998a8b0da7599a58bc51263ecdf11a2a65bbac209",
+      "stdout_sha256": "5fa1f9e4bff45f4643b52a755cf7808dbe390a966daa189dd05d06e6833d1097",
+      "start_utc": "2026-11-18T02:50:45.075890+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_gib": 4,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "\"bulk equations\"\" = \"\"{0, 0}\"",
+        "\"one-face displacements per force\"\" = \"\"{(cm^(-1) + (E^((-r + ri)/ell)*ell)/(ct*(ell + ri)))/(4*Pi*r), (cm^(-1) - (E^((-r + ri)/ell)*ell)/(ct*(ell + ri)))/(4*Pi*r)}\"",
+        "\"reflection residual\"\" = \"\"{0, 0}\"",
+        "\"weak half-load residual\"\" = \"\"{0, 0}\"",
+        "\"asymptotic slope times r squared\"\" = \"\"-1/4*f/(cm*Pi)\"",
+        "\"independent faces at zero width curvature, equal tensions\"\" = \"\"{f/(2*cm*Pi*r), 0}\"",
+        "\"illustrative opposite/loaded face ratios = \"\"{0.33333333333333333333333333333333333333`12., 0.68927519300607278641316283042585927108`12., 0.8732421233339247636216427676191788016`12.}\""
+      ]
+    }
+  }
+}

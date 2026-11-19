@@ -1,0 +1,46 @@
+$ sha256sum _scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz _scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_128_positive.npz _scratch/s11c/joined_mouth_n16_l18/stdout scripts/s11c_guarded_run.py software/stage1_solver/tools/joined_mouth_normal.py software/stage1_solver/src/stage1_solver/__init__.py software/stage1_solver/src/stage1_solver/config.py software/stage1_solver/src/stage1_solver/open_sleeve.py
+08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe  _scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz
+206e1885d4ed6926cb7419e35d188f9afb2e71d632d7d0d7481fd306f2d4ec28  _scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_128_positive.npz
+20307a773268ad16fd2456fd8fe26955c0f5a817527ea2dda70998a192b06d18  _scratch/s11c/joined_mouth_n16_l18/stdout
+86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b  scripts/s11c_guarded_run.py
+c13640300225c95464b7c420e366af79e1088809bd83e3e9d03583147b63c6f3  software/stage1_solver/tools/joined_mouth_normal.py
+cabb27216557a098d2205df3f13cbcf1ab0dbf41f3613fea47b141646444580e  software/stage1_solver/src/stage1_solver/__init__.py
+70fcc0d85053260e8379ddc1cc37dbe97f7e0372d0609e84ce8086d08b3542a8  software/stage1_solver/src/stage1_solver/config.py
+3e2bc9bd135cb84ee3f9822e81df19b442968178c9875e1fda338b010a170519  software/stage1_solver/src/stage1_solver/open_sleeve.py
+
+$ unzip -Z -1 _scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz
+field.npy
+currents.npy
+x.npy
+r.npy
+dz.npy
+d.npy
+
+$ unzip -Z -1 _scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_128_positive.npz
+acceleration.npy
+scope.npy
+z.npy
+times.npy
+cut_depth.npy
+displacement.npy
+velocity.npy
+cut_flux.npy
+stored.npy
+cut_impulse.npy
+rim_impulse.npy
+source_impulse.npy
+balance_residual.npy
+
+$ head -n 1 _scratch/s11c/joined_mouth_n16_l18/stdout
+cells_per_radius=16 extent=18 rate=0.25 feed=0.25 mouth=0.250000000001 out=0.250000000001 far_feed_phase=-0.0605277465401 scaled_residual=7.77e-16
+
+$ rg -n 'across\[n:|flat, phase, residual|fluid_on_slab=' software/stage1_solver/tools/joined_mouth_normal.py
+27:        across[n:, n-1] = False  # insulating screen outside the radius-one opening
+87:    flat, phase, residual = s.solve(rate/s.scale)
+111:              f"fluid_on_slab={-(top+side):+.12g}", flush=True)
+
+$ rg -n 'times\*\*2/2|inward_rate' software/stage1_solver/tools/signed_mouth_collar.py
+40:        np.testing.assert_allclose([p["x"] for p in sample], a*times**2/2, atol=1e-22,rtol=1e-12)
+41:        np.testing.assert_allclose([p["inward_rate"] for p in sample],0.25,atol=1e-13,rtol=0)
+93:        np.testing.assert_allclose(row["displacement"][0,0], a*times**2/2,rtol=1e-9,atol=1e-20)
+147:    if data["baseline_sha256"] != baseline or data["inward_rate"] != 0.25:

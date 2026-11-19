@@ -1,0 +1,57 @@
+{
+  "base": "e0a94594",
+  "status": "Working result pending independent review",
+  "scope": "Gaussian Maxwell benchmark, prescribed packet with compact depth support and finite Gaussian lateral width. Stationary field-energy bounds and kinematic passage only.",
+  "source_sha256": {
+    "research/4d_em_fields/paper/4d_em_fields.tex": "4cb8ca4acd787e163ba4c20b839ae25d46a3d105502d274528656082e71bca3f",
+    "research/4d/paper/4d.tex": "f83613b86fbd5959b5a63426c3a1259226e6dd35b3de18208aef09fc428d4d56",
+    "docs/native_light_em_and_vortex_throat_interpretation.md": "3efc9c49f1a5326b254ed8bb583b8ca8c715c05639dfceb5b9dac3d4c815d124",
+    "docs/_measurements/conversion_bridge.json": "e7181033f4dbbf8971d53d9f069552dee6c9d04ed24416a1af15c09cc43bf9b7",
+    "docs/_measurements/held_tilt_charge.json": "3f08c3d574253b828022caec4e3f0d2f0ba5e9f57c0e33cc7bee4e275d7b4947"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool bulk-edge-charge-py --memory-gib 2 --log-directory _scratch/s11c/bulk_edge_charge_py01 -- python3 software/em_charge_attribute/bulk_edge_charge.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/bulk_edge_charge.py": "68c8e3b948a31256f2e1a00cafb25b832fa80c54d7eeaa7be10cdc8888542d1e"
+      },
+      "started_utc": "2026-11-19T01:17:34.091887+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "swap_cap_bytes": 0,
+      "deadlines": null,
+      "stdout_path": "_scratch/s11c/bulk_edge_charge_py01/stdout",
+      "stdout_sha256": "66bf764f851e261e1c71708b42239ba9e122c6e36bd54faf0c447b39836d2134",
+      "stdout": [
+        "depth normalization, squared norm, endpoint densities = 1 5/(7*a) [0, 0]",
+        "normalized massless-mode source = Q/(pi**(1/4)*sqrt(lambda))",
+        "continuity residual within support, integrated cut current = 0 Q",
+        "Coulomb integral, energy lower bound, energy upper bound = 1/(4*pi**(3/2)*sigma) Q**2/(8*pi**2*epsilon*lambda*sigma) 5*Q**2*exp((a + Abs(b))**2/lambda**2)/(56*pi**(3/2)*a*epsilon*sigma)"
+      ]
+    },
+    "mathematica": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool bulk-edge-charge-wl --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/bulk_edge_charge_wl01 -- math -noprompt -script software/em_charge_attribute/bulk_edge_charge.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/bulk_edge_charge.wl": "837af81e5374189a79cbf31bb78db26b02658e72efa2fc73458fffac51bca74f"
+      },
+      "started_utc": "2026-11-19T01:17:34.493636+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 4294967296,
+      "swap_cap_bytes": 0,
+      "deadlines": null,
+      "stdout_path": "_scratch/s11c/bulk_edge_charge_wl01/stdout",
+      "stdout_sha256": "d288254a6d70e1436311368da65209b3293ffcee3ab0b68304eda902f18141af",
+      "stdout": [
+        "\"normalized mode source and integrated passage = \"InputForm[{qq/(Sqrt[lam]*Pi^(1/4)), qq}]",
+        "\"squared depth norm and radial surface terms = \"InputForm[{5/(7*a), {0, 0}}]",
+        "\"real-space field integral and energy bounds at positive depth = \"InputForm[{1/(4*Pi^(3/2)*sig), {qq^2/(8*eps*lam*Pi^2*sig), (5*E^((a + b)^2/lam^2)*qq^2)/(56*a*eps*Pi^(3/2)*sig)}}]"
+      ]
+    }
+  }
+}

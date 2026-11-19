@@ -1,0 +1,79 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Analytic held-tilt subtraction on the existing kinematic carrier flow. The optional weighted-zero crossing is geometric. No downstream dynamics was simulated.",
+  "source_equations_sha256": {
+    "research/4d/paper/4d.tex": "f83613b86fbd5959b5a63426c3a1259226e6dd35b3de18208aef09fc428d4d56",
+    "software/em_charge_attribute/reports/mouth_count_unwinding.md": "cae49fca49375e81be269b19a0c07b20ea4235bb018f9a04eb03121f6dd61cf3",
+    "software/em_charge_attribute/reports/layer_count_transport.md": "ec9d222e7c5afa359ef01d5a010dbca95a7cf36954818ac746fee557be3ea452",
+    "software/em_charge_attribute/reports/relaxed_neck.md": "732ff19d2b16474eb03eafd37045aa2fb40fd9e449a9cdcbad7e5f5fcac62277",
+    "research/pde_ledger_v3/steps/S12_order_source.md": "9ff32deaba86893378e6685d5120ddbe46c03eec4ffb2d8b96b6faeca59ec39d"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-tilt-charge-sympy --memory-gib 2 --log-directory _scratch/s11c/held_tilt_charge_sympy01 -- python3 software/em_charge_attribute/held_tilt_charge.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/held_tilt_charge.py": "d3bda65170e4163b7eb46c9b39ce5296fe680aca425c71038828b59d6dc6164b"
+      },
+      "start_utc": "2026-11-18T20:31:25.815542+00:00",
+      "end_utc_outcome_written": "2026-11-18T20:31:26.368752+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 53354496,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/held_tilt_charge_sympy01/stdout",
+      "stdout_bytes": 921,
+      "stdout_sha256": "05be5ef82e4ee60b288f01341dd1ca0caa6b0632a6890f68b276714013bdaa4f",
+      "stdout_claim_lines": [
+        "squared norm of cross-section conormal = (h_r**2 + h_theta_over_r**2 + 1)/(h_theta_over_r**2 + 1)",
+        "moving charge crossing per solid angle = D*q/(4*pi)",
+        "held charge crossing per solid angle = D*q/(4*pi)",
+        "unwinding minus held integrated crossing rate = 0",
+        "uncorrected sweep term per solid angle = h_r*h_t*n0*q*r**2/(h_r**2 + h_theta_over_r**2 + 1)",
+        "carrier charge in conversion layer, either branch = 76*pi*R**3*n0*q/3",
+        "completed geometric dose at cut r/R=5/2 = s/2",
+        "completed geometric dose at cut r/R=8/3 = 64*s/81",
+        "completed geometric dose approaching edge = s",
+        "edge, in-flight and downstream total = Q",
+        "conditional late (edge, flight, passed cut), released fraction 0: (Q, 0, 0)",
+        "conditional late (edge, flight, passed cut), released fraction 1: (0, 0, Q)",
+        "transit control continuity = 0",
+        "transit control extra inlet = 0",
+        "transit control extra outlet charge rate = -q*Derivative(B(t), t)",
+        "transit control extra stored charge = q*B(t)"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool held-tilt-charge-wolfram --memory-gib 4 --log-directory _scratch/s11c/held_tilt_charge_wolfram01 -- math -noprompt -script software/em_charge_attribute/held_tilt_charge.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/held_tilt_charge.wl": "67bfe5d5f1ec7199ce76a9c4bce7f1af88aa12cc35833c74dd571733126c16b6"
+      },
+      "start_utc": "2026-11-18T20:31:34.388983+00:00",
+      "end_utc_outcome_written": "2026-11-18T20:31:39.152566+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 225259520,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/held_tilt_charge_wolfram01/stdout",
+      "stdout_bytes": 919,
+      "stdout_sha256": "a14b48699760b74004c3ad36dcb37da5fd2d49141ad799f42928ba4aaacca769",
+      "stdout_claim_lines": [
+        "\"electric density from temporal probe\"\" = \"InputForm[n*q]",
+        "\"electric current at zero spatial probe\"\" = \"InputForm[(hbar*n*phaseN*q)/m]",
+        "\"current relative to cut at speed vc\"\" = \"InputForm[-(n*q*(vc - vn))]",
+        "\"volume Jacobian squared per r^4 sin^2(theta)\"\" = \"InputForm[(eps^2*r^2 + radius^2 - 2*eps^2*r*radius*b[t]*Cos[theta] + eps^2*radius^2*b[t]^2*Cos[theta]^2 + eps^2*radius^2*b[t]^2*Sin[theta]^2)/radius^2]",
+        "\"moving charge per unit radius\"\" = \"InputForm[4*n0*Pi*q*r^2]",
+        "\"collar inventory difference at the same tilt\"\" = \"InputForm[0]",
+        "\"charge crossing the bulk-side edge in the moving chart\"\" = \"InputForm[intake*q]",
+        "\"completed upstream inventory independent of point position\"\" = \"InputForm[0]",
+        "\"oriented geometric dose at two interior cuts and in edge limit\"\" = \"InputForm[{s/2, (64*s)/81, s}]",
+        "\"matched spatial count difference\"\" = \"InputForm[0]",
+        "\"rate difference at mid-layer\"\" = \"InputForm[(-15*s*Derivative[1][b][t])/8]"
+      ]
+    }
+  }
+}

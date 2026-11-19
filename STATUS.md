@@ -1,5 +1,9 @@
 # Project status — S15 conditional shell-crossing record
 
+## Electric charge requirements checkpoint
+
+The [charge requirements](docs/em_charge_attribute_requirements.md#november-checkpoint--what-a-charge-law-must-explain) collect the mirror, conservation, localization and force tests. The [calculation index](memory/topics/charge-and-electromagnetism.md#november-mouth-calculations-and-where-to-resume) links the working results. The next identified 0PN test is whether a drain leaves a net long-range slab bend after its receiving-side reaction is included.
+
 ## Current S15 comparator status
 
 The [scoped comparator](research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_run_record.md) is accepted for items 1–3, 5 and 6. Its [final review](research/pde_ledger_v3/directives/_measurements/S15_reading_comparator_build_review_r2/README.md) verifies the per-object exponent coverage and three later Wolfram time-argument declarations. Item 4 stays deferred. The [S15 record](research/pde_ledger_v3/steps/S15_two_drain_region.md) and its register pass file the conditional shell-crossing test for S21. The free-throat acceleration, physical field response and complete profile classification remain open.

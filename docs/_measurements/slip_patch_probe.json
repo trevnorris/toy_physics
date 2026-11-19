@@ -1,0 +1,77 @@
+{
+  "base": "e0a94594",
+  "status": "Working result pending independent review",
+  "scope": "Weak insertion on held graphs at the pole and equator of the same midpoint section. Two saved attachments and an occupation-zero control. Local added wave inertia is a positive control only. Kinematic surface flow is prescribed.",
+  "source_sha256": {
+    "software/em_charge_attribute/relaxed_neck.py": "dfdaf3087057863209fc8e665366527789f03bf3fa2715327160155d31572f13",
+    "docs/_measurements/relaxed_neck_paths.json": "813e662a8df05e3f5b2400c9436884054a1068eefa6b9415129ac9d61dc4405c",
+    "docs/_measurements/mouth_count_unwinding.json": "a032379fef2148303beec79d6dacea7aaade80f98147ffa856af8160150586d2",
+    "research/4d/paper/4d.tex": "f83613b86fbd5959b5a63426c3a1259226e6dd35b3de18208aef09fc428d4d56",
+    "software/em_charge_attribute/reports/conversion_layer_reflection.md": "d63e15edd7cbdbd4d3e2790c629b947f5efe79bbe0e37a10958e9b81aa8777c4"
+  },
+  "comparison": "SciPy at (11,10) and Mathematica at (10,9) agree on the signs of both squared-amplitude slopes and the sign of each differential mass-loading sensitivity. Both place the larger amplitude at the equator. The table uses the refined SciPy values. Neither run assigns a wave-inertia change to physical charge.",
+  "runs": {
+    "python_scipy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool slip-patch-probe-py --memory-gib 3 --log-directory _scratch/s11c/slip_patch_probe_py01 -- python3 software/em_charge_attribute/slip_patch_probe.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/slip_patch_probe.py": "a280aec52eb48436422be641c1c2473c49a7e799298436b852c6340cf9a925d5"
+      },
+      "started_utc": "2026-11-19T01:40:52.606029+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 3221225472,
+      "swap_cap_bytes": 0,
+      "deadlines": null,
+      "stdout_path": "_scratch/s11c/slip_patch_probe_py01/stdout",
+      "stdout_sha256": "209a76aa0f1e280803c01794693895b3080d7d8edf19cd57247308a347d5a1ea",
+      "stdout": [
+        "free wave=8,7 quad=30 omega=0.5489537552 saved=0.5489537552 next=0.83113177",
+        "  slip: U^2=0.0085715496 d_r(U^2)=0.0008760497 dE/d(inertial load)=-1.37014174 centered=-1.37014142",
+        "  equator: U^2=0.0140385105 d_r(U^2)=0.0031979220 dE/d(inertial load)=-2.24402239 centered=-2.24402228",
+        "  J=582.371869550: wave energy=319.69522472, control slip-equator per inertial load=0.87388065",
+        "  J=0.000000000: wave energy=0.00000000, control slip-equator per inertial load=0.00000000",
+        "free wave=11,10 quad=36 omega=0.5489528054 saved=0.5489537552 next=0.83113039",
+        "  slip: U^2=0.0085708638 d_r(U^2)=0.0008776170 dE/d(inertial load)=-1.37002975 centered=-1.37002981",
+        "  equator: U^2=0.0140387402 d_r(U^2)=0.0031985022 dE/d(inertial load)=-2.24405522 centered=-2.24405201",
+        "  J=582.371869550: wave energy=319.69467156, control slip-equator per inertial load=0.87402547",
+        "  J=0.000000000: wave energy=0.00000000, control slip-equator per inertial load=0.00000000",
+        "clamped wave=8,7 quad=30 omega=0.5708774591 saved=0.5708774591 next=0.84268834",
+        "  slip: U^2=0.0086066672 d_r(U^2)=0.0009470450 dE/d(inertial load)=-1.43069908 centered=-1.43070002",
+        "  equator: U^2=0.0140564737 d_r(U^2)=0.0033655784 dE/d(inertial load)=-2.33662852 centered=-2.33662917",
+        "  J=582.371869550: wave energy=332.46297311, control slip-equator per inertial load=0.90592944",
+        "  J=0.000000000: wave energy=0.00000000, control slip-equator per inertial load=0.00000000",
+        "clamped wave=11,10 quad=36 omega=0.5708772797 saved=0.5708774591 next=0.84268825",
+        "  slip: U^2=0.0086062290 d_r(U^2)=0.0009482339 dE/d(inertial load)=-1.43062579 centered=-1.43062462",
+        "  equator: U^2=0.0140566396 d_r(U^2)=0.0033660479 dE/d(inertial load)=-2.33665537 centered=-2.33665451",
+        "  J=582.371869550: wave energy=332.46286868, control slip-equator per inertial load=0.90602957",
+        "  J=0.000000000: wave energy=0.00000000, control slip-equator per inertial load=0.00000000"
+      ]
+    },
+    "mathematica": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool slip-patch-probe-wl --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/slip_patch_probe_wl01 -- math -noprompt -script software/em_charge_attribute/slip_patch_probe.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/slip_patch_probe.wl": "dc96c2fc098a7b30fd9a46e7e712b6ec3088b58d6d519830eae4c0e12261c1ab"
+      },
+      "started_utc": "2026-11-19T01:40:52.941752+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 4294967296,
+      "swap_cap_bytes": 0,
+      "deadlines": null,
+      "stdout_path": "_scratch/s11c/slip_patch_probe_wl01/stdout",
+      "stdout_sha256": "4aebdd3ea5f73deff347be26371e8aee2920c977002f1688111b4ea0ac61dbef",
+      "stdout": [
+        "\"slip/equator: W, surface n/n0, speed^2/v0^2, RH, height/R (common offset removed)\"\" = \"\"{{1, Sqrt[3/2]}, {1, Sqrt[2/3]}, {1, 5/4}, {1/5, (8*Sqrt[2/3])/45}, {-29/40, 21/40}}\"",
+        "\"slip-equator EOS and kinetic insertion difference\"\" = \"\"(50*kap*n0^4 - 9*mm*v0^2)/72\"",
+        "\"slope of conditional chemical potential in 1-cos(theta) at pole\"\" = \"\"(-5*kap*n0^4)/4\"",
+        "\"direct first variation of held geometry/wave plus electric probe, slip minus equator\"\" = \"\"q*(-pot[equator] + pot[slip])\"",
+        "\"free omega, residual, each site {U^2, radial slope of U^2, mass sensitivity}\"\" = \"\"{0.548952923297441, 2.246450895443435*^-13, {{0.008571055907249044, 0.0008777315521216076, -1.3700607459066876}, {0.014038670543741014, 0.0031984598502935377, -2.2440445663677075}}}\"",
+        "\"clamped omega, residual, each site {U^2, radial slope of U^2, mass sensitivity}\"\" = \"\"{0.5708772870017536, 2.666804276986496*^-13, {{0.008606388477785542, 0.0009483181656958689, -1.4306523193728924}, {0.014056588379091682, 0.0033660140413933836, -2.3366468779471097}}}\""
+      ]
+    }
+  }
+}

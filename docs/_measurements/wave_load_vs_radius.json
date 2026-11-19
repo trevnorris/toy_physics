@@ -1,0 +1,54 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation, pending independent review",
+  "scope": "Axial equilibrium of the fixed-action cylindrical wave, positive pressure and wall tension, optional side curvature. Internal load only.",
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-load-vs-radius --memory-gib 2 --log-directory _scratch/s11c/wave_load_vs_radius01 -- python3 software/em_charge_attribute/wave_load_vs_radius.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/wave_load_vs_radius.py": "4fabba8f6c2849eaf40edf94b74c20ed3ff4722667fa5c9ef680be855422da11"
+      },
+      "start_utc": "2026-11-18T16:44:00.560849+00:00",
+      "end_utc_outcome_written": "2026-11-18T16:44:01.331219+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 54665216,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/wave_load_vs_radius01/stdout",
+      "stdout_bytes": 454,
+      "stdout_sha256": "cdcb297fc8264b5f621e0f16d44a8c491655791b46abaf6a50c62b5023b1ec1f",
+      "stdout_claim_lines": [
+        "wave axial force divided by wave energy = R**2*v_z**2/(L*(L**2*R**2*omega_g**2 + L**2*v_r**2 + R**2*v_z**2))",
+        "axially balanced wave push = 4*pi*(3*R**3*p + 9*R**2*sigma + 4*k_b)/9",
+        "balanced force slope at common material parameters = 4*pi*R*(R*p + 2*sigma)",
+        "doubling radius changes the balanced push by = 4*pi*R**2*(7*R*p + 9*sigma)/3",
+        "free-radius outward drive with curvature alone = J*L*v_r**2/(R**2*sqrt(L**2*R**2*omega_g**2 + L**2*v_r**2 + R**2*v_z**2))"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-load-vs-radius-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/wave_load_vs_radius_wolfram01 -- math -noprompt -script software/em_charge_attribute/wave_load_vs_radius.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/wave_load_vs_radius.wl": "e6c0e93a8400412691a17f850d2d2553870ff0a43c06f55675b3b453a5674e88"
+      },
+      "start_utc": "2026-11-18T16:43:59.318519+00:00",
+      "end_utc_outcome_written": "2026-11-18T16:44:04.585850+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 225497088,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/wave_load_vs_radius_wolfram01/stdout",
+      "stdout_bytes": 381,
+      "stdout_sha256": "2211c2ba930a3bbb5954c44d9620646343b92e3ffb3444cfb8a07c5023c74349",
+      "stdout_claim_lines": [
+        "\"fraction of E/length carried as wave thrust\"\" = \"\"vz^2/(len^2*(gap^2 + vr^2/r^2 + vz^2/len^2))\"",
+        "\"equilibrium axial work contributions\"\" = \"\"{4*Pi*r^2*sig, 0, (4*p*Pi*r^3)/3, (16*bend*Pi)/9}\"",
+        "\"balanced thrust increment at doubled radius\"\" = \"\"(4*Pi*r^2*(7*p*r + 9*sig))/3\"",
+        "\"outward radial drive in curvature-only example\"\" = \"\"(act*vr^2)/(r^3*Sqrt[gap^2 + vr^2/r^2 + vz^2/len^2])\""
+      ]
+    }
+  }
+}

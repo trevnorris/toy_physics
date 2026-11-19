@@ -1,0 +1,110 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Lossless scalar shear projection with order-weighted inertia and stiffness. Exact material strip and an axisymmetric 3D material collar, fixed inward-flow preparation without a wave-advection law. Rim traction is evaluated at the inner node. Generalized tilt force is a symmetric difference at fixed wave action.",
+  "source_equations_sha256": {
+    "software/em_charge_attribute/reports/mouth_count_unwinding.md": "cae49fca49375e81be269b19a0c07b20ea4235bb018f9a04eb03121f6dd61cf3",
+    "software/em_charge_attribute/reports/conversion_layer_reflection.md": "d63e15edd7cbdbd4d3e2790c629b947f5efe79bbe0e37a10958e9b81aa8777c4",
+    "software/em_charge_attribute/reports/trapped_wave_charge.md": "a60b9efce96db8aaaba9a48ae57f8903733684e32cd707928958eecf087981cf",
+    "software/em_charge_attribute/reports/bend_front_attachment.md": "7662f39637a2f86262a88b31d91d3227d7202918cfff5df807729b12137bffc9",
+    "notes/inner_throat/inner_throat_hard_mode.md": "4c28f2214fc33357393277705d11bdae11ef69480bbeb9bc9c0fe03a4bddd4dd",
+    "notes/lepton_mass_notes.md": "bb7c64824d8ded1792082997194b4726c146d8893a2b7c9da97c65b0a1a9aa06",
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-at-level-patch-sympy --memory-gib 2 --log-directory _scratch/s11c/wave_at_level_patch_sympy01 -- python3 software/em_charge_attribute/wave_at_level_patch.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/wave_at_level_patch.py": "af63e297b3e5e82b6af4a78b58d1470403e399eae5fd04b102d97111371f2fe7"
+      },
+      "start_utc": "2026-11-18T18:27:06.106562+00:00",
+      "end_utc_outcome_written": "2026-11-18T18:27:09.518409+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 136736768,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/wave_at_level_patch_sympy01/stdout",
+      "stdout_sha256": "c53ca32dfa261977d3546742eb4be7a4377d14102dc23d53d62ffbfbc475f665",
+      "stdout_bytes": 3994,
+      "stdout_claim_lines": [
+        "strip ODE=0 free_edge_traction=0 norm_identity=0 kL=2.404825557696 midpoint_U=0.669929738985 node_U=9.587e-17",
+        "cells=12 angular=6 tilt=0 omega=0.6501627630 rim_load_per_energy=1.0607829442 abs_U_at_r2.5_north=0.1415063671 relative_residual=1.617e-13 next_axisymmetric_omega=0.94320190",
+        "cells=12 angular=6 tilt=2 omega=0.5935069643 rim_load_per_energy=0.9433298989 abs_U_at_r2.5_north=0.0997249231 relative_residual=1.766e-13 next_axisymmetric_omega=0.87128044",
+        "cells=12 angular=6 tilt=2.49 omega=0.5703439250 rim_load_per_energy=0.9014291284 abs_U_at_r2.5_north=0.0951170794 relative_residual=1.903e-13 next_axisymmetric_omega=0.83779259",
+        "cells=12 angular=6 tilt=2.5 omega=0.5698622802 rim_load_per_energy=0.9005863772 abs_U_at_r2.5_north=0.0950362831 relative_residual=2.050e-13 next_axisymmetric_omega=0.83707549",
+        "cells=12 angular=6 tilt=2.51 omega=0.5693804345 rim_load_per_energy=0.8997443576 abs_U_at_r2.5_north=0.0949559388 relative_residual=2.545e-13 next_axisymmetric_omega=0.83635730",
+        "cells=12 angular=6 tilt=3 omega=0.5456772546 rim_load_per_energy=0.8595730408 abs_U_at_r2.5_north=0.0914952923 relative_residual=4.083e-13 next_axisymmetric_omega=0.80010283",
+        "cells=12 angular=6 tilt=4 omega=0.4986934186 rim_load_per_energy=0.7859110891 abs_U_at_r2.5_north=0.0863192696 relative_residual=1.997e-13 next_axisymmetric_omega=0.72391485",
+        "cells=12 generalized_tilt_force_per_action_at_2.5=+0.0481745239",
+        "cells=24 angular=10 tilt=0 omega=0.6501627169 rim_load_per_energy=1.0623866759 abs_U_at_r2.5_north=0.1415061566 relative_residual=1.207e-12 next_axisymmetric_omega=0.94320184",
+        "cells=24 angular=10 tilt=2 omega=0.5935061073 rim_load_per_energy=0.9414458931 abs_U_at_r2.5_north=0.0997411583 relative_residual=7.296e-13 next_axisymmetric_omega=0.87127887",
+        "cells=24 angular=10 tilt=2.49 omega=0.5703422934 rim_load_per_energy=0.8977977045 abs_U_at_r2.5_north=0.0951624001 relative_residual=5.549e-13 next_axisymmetric_omega=0.83778973",
+        "cells=24 angular=10 tilt=2.5 omega=0.5698606267 rim_load_per_energy=0.8969174617 abs_U_at_r2.5_north=0.0950823841 relative_residual=1.237e-12 next_axisymmetric_omega=0.83707259",
+        "cells=24 angular=10 tilt=2.51 omega=0.5693787587 rim_load_per_energy=0.8960378954 abs_U_at_r2.5_north=0.0950028278 relative_residual=1.721e-12 next_axisymmetric_omega=0.83635436",
+        "cells=24 angular=10 tilt=3 omega=0.5456739637 rim_load_per_energy=0.8539794098 abs_U_at_r2.5_north=0.0915894642 relative_residual=8.596e-13 next_axisymmetric_omega=0.80009761",
+        "cells=24 angular=10 tilt=4 omega=0.4986807059 rim_load_per_energy=0.7764622893 abs_U_at_r2.5_north=0.0865447375 relative_residual=5.998e-13 next_axisymmetric_omega=0.72389959",
+        "cells=24 generalized_tilt_force_per_action_at_2.5=+0.0481767348",
+        "cells=36 angular=14 tilt=0 omega=0.6501627160 rim_load_per_energy=1.0625587758 abs_U_at_r2.5_north=0.1415061709 relative_residual=2.441e-12 next_axisymmetric_omega=0.94320184",
+        "cells=36 angular=14 tilt=2 omega=0.5935061016 rim_load_per_energy=0.9415299729 abs_U_at_r2.5_north=0.0997413122 relative_residual=4.590e-12 next_axisymmetric_omega=0.87127886",
+        "cells=36 angular=14 tilt=2.49 omega=0.5703422834 rim_load_per_energy=0.8978366324 abs_U_at_r2.5_north=0.0951632799 relative_residual=4.263e-12 next_axisymmetric_omega=0.83778971",
+        "cells=36 angular=14 tilt=2.5 omega=0.5698606166 rim_load_per_energy=0.8969553790 abs_U_at_r2.5_north=0.0950832909 relative_residual=2.313e-12 next_axisymmetric_omega=0.83707258",
+        "cells=36 angular=14 tilt=2.51 omega=0.5693787485 rim_load_per_energy=0.8960747986 abs_U_at_r2.5_north=0.0950037623 relative_residual=2.379e-12 next_axisymmetric_omega=0.83635434",
+        "cells=36 angular=14 tilt=3 omega=0.5456739406 rim_load_per_energy=0.8539619005 abs_U_at_r2.5_north=0.0915927502 relative_residual=2.270e-12 next_axisymmetric_omega=0.80009758",
+        "cells=36 angular=14 tilt=4 omega=0.4986804985 rim_load_per_energy=0.7762989108 abs_U_at_r2.5_north=0.0865621552 relative_residual=4.924e-12 next_axisymmetric_omega=0.72389944",
+        "cells=36 generalized_tilt_force_per_action_at_2.5=+0.0481767478"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool wave-at-level-patch-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/wave_at_level_patch_wolfram01 -- math -noprompt -script software/em_charge_attribute/wave_at_level_patch.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/wave_at_level_patch.wl": "e3ad0d7acbe5095669fa2adb1a716e89aecbde0fdd46f910a31f3a73321c6950"
+      },
+      "start_utc": "2026-11-18T18:27:06.567542+00:00",
+      "end_utc_outcome_written": "2026-11-18T18:27:15.439355+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 311697408,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/wave_at_level_patch_wolfram01/stdout",
+      "stdout_sha256": "fe6e6fc87465f3f046b60edbc9b5be32c9000dafec2727a7041a702ea9645594",
+      "stdout_bytes": 1298,
+      "stdout_claim_lines": [
+        "\"strip dimensionless frequency, midpoint amplitude, load times length per energy = \"\"{2.40482555769577276862163187932645413136`12., 0.66992973898453948005335536880266735269`12., 1.}\"",
+        "\"p, angular, beta, omega, rim load per energy, midpoint, residual = \"\"{7, 6, 2.49, 0.5703444951244264, 0.9031779012333759, 0.09511678756551908, 7.344448953088349*^-14}\"",
+        "\"p, angular, beta, omega, rim load per energy, midpoint, residual = \"\"{7, 6, 2.5, 0.5698628677518782, 0.9023669248294718, 0.09503598414648383, 3.048606954476201*^-14}\"",
+        "\"p, angular, beta, omega, rim load per energy, midpoint, residual = \"\"{7, 6, 2.51, 0.5693810396224902, 0.9015569304195546, 0.09495563258001571, 1.5014992238046703*^-13}\"",
+        "\"tilt force per action = \"\"0.04817277509681084\"",
+        "\"p, angular, beta, omega, rim load per energy, midpoint, residual = \"\"{11, 10, 2.49, 0.57034228549731, 0.8980483346190081, 0.09516241444474303, 1.4325787039040722*^-13}\"",
+        "\"p, angular, beta, omega, rim load per energy, midpoint, residual = \"\"{11, 10, 2.5, 0.569860618744269, 0.8971655580118472, 0.09508239857371382, 1.6175657068899554*^-13}\"",
+        "\"p, angular, beta, omega, rim load per energy, midpoint, residual = \"\"{11, 10, 2.51, 0.5693787506924158, 0.8962834118881275, 0.09500284232227221, 1.5836254653417071*^-13}\"",
+        "\"tilt force per action = \"\"0.04817674024470975\""
+      ]
+    }
+  },
+  "comparison": {
+    "tilt": 2.5,
+    "python_fine": [
+      0.5698606166,
+      0.896955379,
+      0.0950832909,
+      0.0481767478
+    ],
+    "wolfram_fine": [
+      0.569860618744269,
+      0.8971655580118472,
+      0.09508239857371382,
+      0.04817674024470975
+    ],
+    "columns": [
+      "omega",
+      "inner_rim_load_per_energy",
+      "abs_mass_normalized_U_at_level_point",
+      "generalized_tilt_force_per_action"
+    ],
+    "qualification": "Independent spline/Legendre versus two-interval polynomial/cosine bases. Least precise observable is the derivative-dependent rim load. Both tilt forces use the same 0.01 half-step. No continuum error bar inferred."
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Static orientation-odd response at fixed constituent charge and localization. Conditional current on a regular once-wrapped layer with a time-dependent radius and width. No microscopic coupling or charged bulk continuation is supplied.",
+  "source_equations_sha256": {
+    "research/4d/paper/4d.tex": "f83613b86fbd5959b5a63426c3a1259226e6dd35b3de18208aef09fc428d4d56",
+    "research/4d_em_fields/paper/4d_em_fields.tex": "4cb8ca4acd787e163ba4c20b839ae25d46a3d105502d274528656082e71bca3f",
+    "software/em_charge_attribute/g0_closure_card_v0.md": "e146c9943c64220adea38947ea017b0fc3b13b8cd67d6a0d4f95eb95b8a282b1",
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "notes/inner_throat/inner_throat_hard_mode.md": "4c28f2214fc33357393277705d11bdae11ef69480bbeb9bc9c0fe03a4bddd4dd",
+    "software/em_charge_attribute/reports/stationary_mouth_charge.md": "4ae3f695890d482300af9669c9510b69b0d5a70f62b7005da703ada3cebcfa70",
+    "software/em_charge_attribute/reports/layer_count_transport.md": "ec9d222e7c5afa359ef01d5a010dbca95a7cf36954818ac746fee557be3ea452",
+    "docs/_measurements/mirrored_mouth_probe.json": "ccca4ed64c233d40eca613e3cca20a283bc18d5e8182fd9cf35d7ba76312b30f"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool geometry-probe-sympy --memory-gib 2 --log-directory _scratch/s11c/geometry_probe_sympy01 -- python3 software/em_charge_attribute/geometry_probe_coupling.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/geometry_probe_coupling.py": "fa36a0918373e0cc5ca6cb1de3916959496db8a73d759b7aa7348f098e81a05c"
+      },
+      "start_utc": "2026-11-18T20:48:21.724607+00:00",
+      "end_utc_outcome_written": "2026-11-18T20:48:22.368378+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 54128640,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/geometry_probe_sympy01/stdout",
+      "stdout_bytes": 559,
+      "stdout_sha256": "c48f7f6db611d18ad95742e19f0d2e1f0413dd7dffaa2fc75e3ab625c0cb1512",
+      "stdout_claim_lines": [
+        "geometric current local continuity = 0",
+        "electric continuity residual per unit geometric density = Derivative(I(t), t)*Derivative(g(R(t), I(t)), I(t)) + Derivative(R(t), t)*Derivative(g(R(t), I(t)), R(t))",
+        "conditional normalized monopole = g0*s/sqrt(Zint)",
+        "monopole derivative along breathing at fixed coupling and medium = 0",
+        "matched native carrier odd monopole = 0",
+        "direct static probe derivative of neutral wave = 0",
+        "wave radial load at fixed action = -I(t)*Derivative(omega(R(t)), R(t))",
+        "total radial polarization charge with both boundaries = M(r_in) - M(r_out)"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool geometry-probe-wolfram --memory-gib 4 --log-directory _scratch/s11c/geometry_probe_wolfram01 -- math -noprompt -script software/em_charge_attribute/geometry_probe_coupling.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/geometry_probe_coupling.wl": "8d426cde3d7df33b41a15e139122899914d8a0765273e0644dd39163875fbed7"
+      },
+      "start_utc": "2026-11-18T20:48:29.199417+00:00",
+      "end_utc_outcome_written": "2026-11-18T20:48:34.160410+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 225312768,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/geometry_probe_wolfram01/stdout",
+      "stdout_bytes": 551,
+      "stdout_sha256": "6569dd65c2dfb01f271fab0aeb9c15905efa991522cb6db7ca30d092c9e99950",
+      "stdout_claim_lines": [
+        "\"degree of oriented sections\"\" = \"\"{1, -1}\"",
+        "\"canonical charge from trial potential energy\"\" = \"\"(g0*s)/Sqrt[zint]\"",
+        "\"gauge variation after endpoint subtraction, per gauge function\"\" = \"\"-(Derivative[1][act][t]*Derivative[0, 1][g][radius[t], act[t]]) - Derivative[1][radius][t]*Derivative[1, 0][g][radius[t], act[t]]\"",
+        "\"common static mode source per mouth\"\" = \"\"q*(bath[h1] + bath[h2] + pop[h1] + pop[h2])\"",
+        "\"native orientation-odd response at fixed carrier coupling\"\" = \"\"0\"",
+        "\"orientation-odd response if a signed potential coupling is inserted\"\" = \"\"g0\""
+      ]
+    }
+  }
+}

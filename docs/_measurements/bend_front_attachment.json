@@ -1,0 +1,116 @@
+{
+  "base": "e0a94594",
+  "scope": "Constant-density moving planar front and an assumed reflecting, uniform shear support mode. Conditional endpoint work and a spectral test at fixed inward intake.",
+  "status": "Working calculation, pending independent review",
+  "runs": {
+    "bend_front_attachment_sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool bend-front-attachment --memory-gib 2 --log-directory _scratch/s11c/bend_front_attachment01 -- python3 software/em_charge_attribute/bend_front_attachment.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/bend_front_attachment.py": "df9b273c8ede2267717dd20b94d439bb7105b819e8346c10876ba352d8e96d9d"
+      },
+      "start_utc": "2026-11-18T06:34:07.561497+00:00",
+      "end_utc_outcome_written": "2026-11-18T06:34:08.412690+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 56242176,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/bend_front_attachment01/stdout",
+      "stdout_bytes": 1157,
+      "stdout_sha256": "bbb7ebf550b4f1d6b0acec179b0abf8217e480f00ec24c42a030aeaea8dfd832",
+      "stdout_claim_lines": [
+        "material flux relative to rim = V*n",
+        "net local order source / (n chi_q) = V - lambda*Derivative(z(t), t) + Derivative(z(t), t)",
+        "lambda=0 source coefficient = V + Derivative(z(t), t)",
+        "lambda=1 source coefficient = V",
+        "front speed from order balance = (lambda*Derivative(z(t), t), lambda*Derivative(z(t), t), 0)",
+        "endpoint-corrected loss minus rim intake = (-n*(lambda - 1)*Derivative(z(t), t), n*(-lambda*Derivative(z(t), t) + Derivative(z(t), t)), 0)",
+        "wave equation = (-pi**2*sin(pi*x/(2*ell))/(4*ell**2), -pi**2*sin(pi*x/(2*ell))/(4*ell**2), 0)",
+        "node and free-end derivative = (0, 0)",
+        "strain energy centroid fraction from rim = (-2 + pi)*(2 + pi)/(2*pi**2)",
+        "rim and front forces / energy = (1/(rim - tip), -1/(rim - tip))",
+        "end force sum / energy = (0, 0, 0)",
+        "strain centroid change per rim displacement = (-2 + pi)*(2 + pi)*(lambda - 1)/(2*pi**2) + 1",
+        "wave work per energy per rim displacement = ((lambda - 1)/(L + lambda*z(t) - z(t)), -(1 - lambda)/(L + lambda*z(t) - z(t)), 0)",
+        "frequency drift from corrected conversion rate = (-(lambda - 1)*Derivative(z(t), t)/(L + lambda*z(t) - z(t)), (-lambda*Derivative(z(t), t) + Derivative(z(t), t))/(L + lambda*z(t) - z(t)), 0)"
+      ]
+    },
+    "bend_front_attachment_wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool bend-front-attachment-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/bend_front_attachment_wolfram01 -- math -noprompt -script software/em_charge_attribute/bend_front_attachment.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/bend_front_attachment.wl": "a55f8938a9a5a35382fbb881ef4b4ccf1b3d5e781d3a418419cceda3eeb78450"
+      },
+      "start_utc": "2026-11-18T06:34:07.882273+00:00",
+      "end_utc_outcome_written": "2026-11-18T06:34:14.761443+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 249315328,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/bend_front_attachment_wolfram01/stdout",
+      "stdout_bytes": 1140,
+      "stdout_sha256": "60e37c4f8be9afc085d03812494668c41ea9b42d24e0308032309afa2f5d67de",
+      "stdout_claim_lines": [
+        "\"order inventory in window\"\" = \"\"n*(-left + len + (-1 + follow)*z[t])\"",
+        "\"signed production\"\" = \"\"-jIn + jOut - n*v + (-1 + follow)*n*Derivative[1][z][t]\"",
+        "\"corrected conversion for bulk-fixed and comoving fronts\"\" = \"\"{n*(v + Derivative[1][z][t]), n*v}\"",
+        "\"conversion excess per density\"\" = \"\"{Derivative[1][z][t] - follow*Derivative[1][z][t], -((-1 + follow)*Derivative[1][z][t]), 0}\"",
+        "\"translation current divergence\"\" = \"\"{-(rho*Derivative[0, 2][field][x, t]*Derivative[1, 0][field][x, t]) + c^2*rho*Derivative[1, 0][field][x, t]*Derivative[2, 0][field][x, t], rho*Derivative[1, 0][field][x, t]*(-Derivative[0, 2][field][x, t] + c^2*Derivative[2, 0][field][x, t]), 0}\"",
+        "\"endpoint loads per wave energy\"\" = \"\"{-ell^(-1), ell^(-1)}\"",
+        "\"strain energy centroid fraction from rim\"\" = \"\"((-2 + Pi)*(2 + Pi))/(2*Pi^2)\"",
+        "\"strain centroid response\"\" = \"\"1/2 + follow/2 + 2/Pi^2 - (2*follow)/Pi^2\"",
+        "\"work per energy and rim shift\"\" = \"\"(-1 + follow)/ell\"",
+        "\"frequency drift and independently integrated conversion\"\" = \"\"{-(((-1 + follow)*Derivative[1][z][t])/(len - z[t] + follow*z[t])), -(((-1 + follow)*Derivative[1][z][t])/(len - z[t] + follow*z[t])), 0}\""
+      ]
+    },
+    "bend_mode_spacing_sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool bend-mode-spacing --memory-gib 2 --log-directory _scratch/s11c/bend_mode_spacing01 -- python3 software/em_charge_attribute/bend_mode_spacing.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/bend_mode_spacing.py": "aae97ac0c615d7e84b996bc6c726bdae82ee355aec57399988dde85d2638acdc"
+      },
+      "start_utc": "2026-11-18T06:36:05.346542+00:00",
+      "end_utc_outcome_written": "2026-11-18T06:36:05.802678+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 51781632,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/bend_mode_spacing01/stdout",
+      "stdout_bytes": 910,
+      "stdout_sha256": "911a35b0a491984413d2c30b5033724b50288c0346846fe784db78c0db623d03",
+      "stdout_claim_lines": [
+        "squared-frequency spacing = 2*pi**2*c(z)**2/ell(z)**2",
+        "length change from two modes: measured=Derivative(ell(z), z), reference=Derivative(ell(z), z), residual=0",
+        "frequency change per bend: measured=(-pi**2*c(z)**2*Derivative(ell(z), z)/(2*ell(z)**3) + pi**2*c(z)*Derivative(c(z), z)/(2*ell(z)**2) + 2*gap(z)*Derivative(gap(z), z))/(pi**2*c(z)**2/(2*ell(z)**2) + 2*gap(z)**2), reference=pi**2*(-Derivative(ell(z), z)/ell(z) + Derivative(c(z), z)/c(z))*c(z)**2/(4*(pi**2*c(z)**2/(4*ell(z)**2) + gap(z)**2)*ell(z)**2) + gap(z)*Derivative(gap(z), z)/(pi**2*c(z)**2/(4*ell(z)**2) + gap(z)**2), residual=0",
+        "end force / energy at fixed material = pi**2*c(z)**2/((pi**2*c(z)**2 + 4*ell(z)**2*gap(z)**2)*ell(z))",
+        "end force / energy at fixed material: measured=pi**2*c(z)**2/(4*(pi**2*c(z)**2/(4*ell(z)**2) + gap(z)**2)*ell(z)**3), reference=pi**2*c(z)**2/(4*(pi**2*c(z)**2/(4*ell(z)**2) + gap(z)**2)*ell(z)**3), residual=0"
+      ]
+    },
+    "bend_mode_spacing_wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool bend-mode-spacing-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/bend_mode_spacing_wolfram01 -- math -noprompt -script software/em_charge_attribute/bend_mode_spacing.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/bend_mode_spacing.wl": "8225e06faa78f19436f3684318b64bcb7d000a285f8e5b6837aa02e1104e946d"
+      },
+      "start_utc": "2026-11-18T06:36:06.923425+00:00",
+      "end_utc_outcome_written": "2026-11-18T06:36:12.371004+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 229404672,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/bend_mode_spacing_wolfram01/stdout",
+      "stdout_bytes": 431,
+      "stdout_sha256": "d1dfcaa06ee8b6ebf229d61d59386fad8e4842c906af434513c1a3bbf89c4cee",
+      "stdout_claim_lines": [
+        "\"{gap squared,length squared} from measured frequencies\"\" = \"\"{(9*w0sq - w1sq)/8, (-2*c^2*Pi^2)/(w0sq - w1sq)}\"",
+        "\"endpoint loads per energy at fixed material\"\" = \"\"{-((c^2*Pi^2)/(ell*(4*ell^2*gap^2 + c^2*Pi^2))), (c^2*Pi^2)/(ell*(4*ell^2*gap^2 + c^2*Pi^2))}\"",
+        "\"internal reaction\"\" = \"\"{0, 0, 0}\"",
+        "\"fraction of gapless end pressure\"\" = \"\"{(c^2*Pi^2)/(4*ell^2*gap^2 + c^2*Pi^2), (c^2*Pi^2)/(4*ell^2*(gap^2 + (c^2*Pi^2)/(4*ell^2))), 0}\""
+      ]
+    }
+  }
+}

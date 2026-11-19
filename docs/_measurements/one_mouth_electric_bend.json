@@ -1,0 +1,64 @@
+{
+  "base": "cda9a8eb85c9345e82d166a1d201fe91b7dd7483",
+  "status": "Working calculation pending independent review.",
+  "scope": "Static scalar response of a single mouth under an imposed monopole bend. All closures are test conditions.",
+  "input_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "research/pde_ledger_v2/notes/stages/ledger_stage031_puncture_deflection_field_identity_source.md": "1dd81f2f76076c0b6288a52944befe883861eadb549218d961127287d4a6d168",
+    "research/pde_ledger_v2/notes/stages/ledger_stage032_electric_sign_bc_ensembles_landing.md": "7544021a8a6be9d362d67e0626ae4110a0e3839e275866e4d9bdf294c598cf2f",
+    "software/em_charge_attribute/puncture_deflection_electric_sign_result.md": "54284dcb2e160d5d2c51c480c5bf55c9b581640d1d91e17ff20b0d4c8e56b019"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool electric-bend-sympy --memory-gib 2 --log-directory _scratch/s11c/electric_bend_sympy01 -- python3 software/em_charge_attribute/one_mouth_electric_bend.py",
+      "script_sha256": "c23d65b9650efeaffb7fff93562f872d9513b992cb1314639bb837474e47dcf2",
+      "stdout_sha256": "9d072b695eff8c45fa9356807848e30a876c10a2253d412eaf7cbaa913db06ee",
+      "start_utc": "2026-11-18T02:30:15.970201+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_gib": 2,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "shell stiffness = 4*pi*a*kappa*(a + gap)/gap",
+        "distant bath limit = 4*pi*a*kappa",
+        "virtual work minus inner conormal force = 0",
+        "fixed value bend slope = 0",
+        "fixed value load slope = -K",
+        "fixed value half-pair residual = 0",
+        "fixed value half-pair residual = 0",
+        "fixed net load bend slope = 1",
+        "fixed net load load slope = 0",
+        "fixed net load half-pair residual = 0",
+        "fixed net load half-pair residual = 0",
+        "finite restoring slope bend slope = K/(K + k)",
+        "finite restoring slope load slope = -K*k/(K + k)",
+        "finite restoring slope half-pair residual = 0",
+        "finite restoring slope half-pair residual = 0",
+        "stiffness inferred from the nonzero bend = k",
+        "common reference shift bend = b",
+        "common reference shift load = 0"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool electric-bend-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/electric_bend_wolfram01 -- math -noprompt -script software/em_charge_attribute/one_mouth_electric_bend.wl",
+      "script_sha256": "8182eb866e17ebccf4c4d74f9a84b0b492dbd8c9f337f313b26c1e8c5ccc8e40",
+      "stdout_sha256": "ca8a151bb04db7512b7e594dad3869392abd9a39fc9c52cabf29c8fef72c597f",
+      "start_utc": "2026-11-18T02:30:30.162849+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_gib": 4,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "\"outer compliance\"\" = \"\"-1/4*(ri - ro)/(kap*Pi*ri*ro)\"",
+        "\"fixed bend pair per drive\"\" = \"\"{0, -stiff}\"",
+        "\"fixed conormal pair per drive\"\" = \"\"{1, 0}\"",
+        "\"fixed source with local curvature per drive\"\" = \"\"{stiff/(km + stiff), -((km*stiff)/(km + stiff))}\"",
+        "\"fixed ideal source coincides with fixed conormal\"\" = \"\"{0, 0}\"",
+        "\"mixed slope coincides with same local curvature\"\" = \"\"{0, 0}\"",
+        "\"opposite drive residual\"\" = \"\"{0, 0, 0, 0, 0, 0, 0, 0}\"",
+        "\"reserved negative half residual\"\" = \"\"{0, 0, 0, 0, 0, 0, 0, 0}\"",
+        "\"co-moving reference\"\" = \"\"{bath, 0}\""
+      ]
+    }
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Compact lateral loads in the homogeneous static exterior and excess normal-bend work of a centered quasistatic layer. No live force partition or physical electric charge measured.",
+  "source_sha256": {
+    "software/em_charge_attribute/reports/local_rim_balance.md": "685636e57882c5e4ee7284dd6b5a08df7bb70a6547596fe2a9313b1b9ef64904",
+    "software/em_charge_attribute/reports/held_rim_shift.md": "1d2a8e7f2e7941d6caba85fb7e9a9c894e87bc2f70f04474e2a0e546cf6c61cf",
+    "software/em_charge_attribute/reports/mirrored_mouth_probe.md": "9ea780f72d5b9295a1fa27a94fa90c5b568c936c1ef22e368302d26cfd09adfc",
+    "software/em_charge_attribute/g0_closure_card_v0.md": "e146c9943c64220adea38947ea017b0fc3b13b8cd67d6a0d4f95eb95b8a282b1",
+    "software/em_charge_attribute/u1_body_dynamics_inputs.yaml": "eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee",
+    "docs/native_light_em_and_vortex_throat_interpretation.md": "3efc9c49f1a5326b254ed8bb583b8ca8c715c05639dfceb5b9dac3d4c815d124",
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "software/stage1_solver/tools/joined_mouth_normal.py": "c13640300225c95464b7c420e366af79e1088809bd83e3e9d03583147b63c6f3",
+    "software/stage1_solver/tools/signed_mouth_collar.py": "0e8e828c46acbc1aca16ab234b9c96591e5e5c3d2bc23d49b9d09da63cd0c828",
+    "docs/_measurements/rim_bend_readouts.txt": "2883dfba94b3e47029dd8c4c0e1c952363b1c3fa427c1223b8ba8d974a2def8f",
+    "docs/_measurements/mouth_prescribed_acceleration.txt": "db7ae4e93ffb1ddf105d2afd02194f29009464d9a642721a18e3edd3aeeeae73"
+  },
+  "archives": {
+    "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz": {
+      "sha256": "08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe",
+      "members": [
+        "currents.npy",
+        "d.npy",
+        "dz.npy",
+        "field.npy",
+        "r.npy",
+        "x.npy"
+      ]
+    },
+    "_scratch/s11c/signed_mouth_collar01/fields/benchmark_archive_128_positive.npz": {
+      "sha256": "206e1885d4ed6926cb7419e35d188f9afb2e71d632d7d0d7481fd306f2d4ec28",
+      "members": [
+        "acceleration.npy",
+        "balance_residual.npy",
+        "cut_depth.npy",
+        "cut_flux.npy",
+        "cut_impulse.npy",
+        "displacement.npy",
+        "rim_impulse.npy",
+        "scope.npy",
+        "source_impulse.npy",
+        "stored.npy",
+        "times.npy",
+        "velocity.npy",
+        "z.npy"
+      ]
+    },
+    "_scratch/s11c/mouth_prescribed_accel_negative02/stdout": {
+      "sha256": "10ff3f7748df9d9b94df9ccec9d58078e5197c11f3fd8661ee88e50846ee1e8b",
+      "acceleration": -0.02,
+      "rest_intake": 0.25,
+      "row_fields": [
+        "carried",
+        "feed_load",
+        "inward_rate",
+        "stress",
+        "t",
+        "x"
+      ]
+    },
+    "_scratch/s11c/mouth_prescribed_accel_negative_half02/stdout": {
+      "sha256": "4fee98a0f146996effb79996d33b493a31b02d4bd71d4981f8202347bf553b6d",
+      "acceleration": -0.01,
+      "rest_intake": 0.25,
+      "row_fields": [
+        "carried",
+        "feed_load",
+        "inward_rate",
+        "stress",
+        "t",
+        "x"
+      ]
+    },
+    "_scratch/s11c/mouth_prescribed_accel_zero02/stdout": {
+      "sha256": "06fdb3e9bce54ccdcbf174bf2251dfa5cdc7ce46fe325d018d043d678cea542f",
+      "acceleration": 0.0,
+      "rest_intake": 0.25,
+      "row_fields": [
+        "carried",
+        "feed_load",
+        "inward_rate",
+        "stress",
+        "t",
+        "x"
+      ]
+    },
+    "_scratch/s11c/mouth_prescribed_accel_positive_half02/stdout": {
+      "sha256": "e4198b0b5a46d8d5e44c3e870757ddc721d514ff1738b3fceaaff1c988816a2a",
+      "acceleration": 0.01,
+      "rest_intake": 0.25,
+      "row_fields": [
+        "carried",
+        "feed_load",
+        "inward_rate",
+        "stress",
+        "t",
+        "x"
+      ]
+    },
+    "_scratch/s11c/mouth_prescribed_accel_positive02/stdout": {
+      "sha256": "7391b79ee45b0aedd4fa38489ae03d91089afe8b6de95b9fd565f13c524b26ed",
+      "acceleration": 0.02,
+      "rest_intake": 0.25,
+      "row_fields": [
+        "carried",
+        "feed_load",
+        "inward_rate",
+        "stress",
+        "t",
+        "x"
+      ]
+    }
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rim-stress-charge-py --memory-gib 2 --log-directory _scratch/s11c/rim_stress_charge_py01 -- python3 software/em_charge_attribute/rim_stress_charge_test.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/rim_stress_charge_test.py": "fcd0b5008cbce154693ed57c8e19b1f14564ab947d297ba879b8b9c52f66a43e"
+      },
+      "started_utc": "2026-11-19T00:06:21.473890+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_cap_bytes": 2147483648,
+      "swap_cap_bytes": 0,
+      "tasks_cap": 32,
+      "deadlines": null,
+      "stdout_path": "_scratch/s11c/rim_stress_charge_py01/stdout",
+      "stdout_sha256": "a94fb570afff9c7f1714a8730298b259a136c6057840146b78d4cd8e464f011d",
+      "stdout": [
+        "unit net force kernel, longitudinal and transverse = [1/(4*pi*d*mu), (B + mu)/(8*pi*B*d*mu)]",
+        "two balanced finite pairs, bilinear work = b**2/(2*pi*d*mu*(b - d)*(b + d))",
+        "first nonzero coefficient of d^-3 = -b**2/(2*pi*mu)",
+        "powers, net work, gradient, balanced work, gradient = [-1, -2, -3, -4]",
+        "on-shell energy = Y**2*(c(h) + ke(h))/(2*(C(h)*c(h) + C(h)*ke(h) + 1))",
+        "balance, compliance and reciprocity residuals = [0, 0, 0]",
+        "added baseline term, changes in lateral drive force and bend source = [0, q0*s]",
+        "compliance of variable tension example = (L - alpha*ell*h*s)/(2*T)",
+        "control rows P S H Q = [[1/10, 1/20, -1/20, -1/800], [-1/10, -1/20, 1/20, -1/800], [1/10, 1/20, -1/20, 1/800], [1/20, 1/40, -1/40, -1/3200], [-1/20, -1/40, 1/40, -1/3200], [0, 0, 0, 0], [1/10, 1/20, -1/20, 0]]",
+        "audit -1 -2 -3 -4 1/10 1/20 -1/20 -1/800 -1/10 -1/20 1/20 -1/800 1/10 1/20 -1/20 1/800 1/20 1/40 -1/40 -1/3200 -1/20 -1/40 1/40 -1/3200 0 0 0 0 1/10 1/20 -1/20 0"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rim-stress-charge-wl --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/rim_stress_charge_wl01 -- math -noprompt -script software/em_charge_attribute/rim_stress_charge_test.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/rim_stress_charge_test.wl": "8eb55b4d33fad5f57de5aceb6bdd0cfa5cbb1a3dda8975d7c65b381690051d51"
+      },
+      "started_utc": "2026-11-19T00:06:31.601150+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "memory_cap_bytes": 4294967296,
+      "swap_cap_bytes": 0,
+      "tasks_cap": 64,
+      "deadlines": null,
+      "stdout_path": "_scratch/s11c/rim_stress_charge_wl01/stdout",
+      "stdout_sha256": "c11dab523762e51621384472240dcbc5a9fe88d448e8eb727c75d2e5c38f05c4",
+      "stdout": [
+        "\"coefficients of isotropic and radial tensors\"\" = \"\"{-1/8*(-bulk - mu)/(bulk*mu*Pi), -1/8*(-bulk + mu)/(bulk*mu*Pi)}\"",
+        "\"bulk equation and net force\"\" = \"\"{{0, 0, 0}, 1}\"",
+        "\"work for two finite force pairs\"\" = \"\"-1/2*b^2/(d*(-b + d)*(b + d)*mu*Pi)\"",
+        "\"four far field powers\"\" = \"\"{-1, -2, -3, -4}\"",
+        "\"bend work, drive work and force residuals\"\" = \"\"{0, 0, 0}\"",
+        "\"effect of independent signed baseline on lateral and bend readings\"\" = \"\"{0, charge*sg}\"",
+        "\"control rows P S H Q\"\" = \"\"{{1/10, 1/20, -1/20, -1/800}, {-1/10, -1/20, 1/20, -1/800}, {1/10, 1/20, -1/20, 1/800}, {1/20, 1/40, -1/40, -1/3200}, {-1/20, -1/40, 1/40, -1/3200}, {0, 0, 0, 0}, {1/10, 1/20, -1/20, 0}}\"",
+        "\"audit \"\"-1 -2 -3 -4 1/10 1/20 -1/20 -1/800 -1/10 -1/20 1/20 -1/800 1/10 1/20 -1/20 1/800 1/20 1/40 -1/40 -1/3200 -1/20 -1/40 1/40 -1/3200 0 0 0 0 1/10 1/20 -1/20 0\""
+      ]
+    }
+  },
+  "comparison": {
+    "method": "Exact token comparison of signed integer powers and reduced rational control readings after removing Wolfram print quotes.",
+    "matching_values": 32,
+    "controls": "Seven rows of P, S, H, incremental Q_h, after four far-field powers. Row order and material inputs are in both scripts."
+  }
+}

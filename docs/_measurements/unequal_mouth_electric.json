@@ -1,0 +1,120 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation, pending independent review",
+  "scope": "Orientation-odd static force at large separation in the scalar bending channel. Common field normalization, two physical mouth radii, conditional boundary work, spherical and finite annulus checks.",
+  "runs": {
+    "unequal_mouth_electric_sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool unequal-mouth-electric --memory-gib 2 --log-directory _scratch/s11c/unequal_mouth_electric01 -- python3 software/em_charge_attribute/unequal_mouth_electric.py",
+      "input_sha256": {
+        "software/em_charge_attribute/unequal_mouth_electric.py": "826275ecc4aa3061def5c66d543b44ff55ae4951e77dabfec6a8eebffdfb8d82",
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+      },
+      "start_utc": "2026-11-18T07:51:37.921106+00:00",
+      "end_utc_outcome_written": "2026-11-18T07:51:38.474658+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 52563968,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/unequal_mouth_electric01/stdout",
+      "stdout_bytes": 978,
+      "stdout_sha256": "7db350189297f504dbaf8a0b70b7d445a00c8115cdbadeb1ec86854a91f22bb7",
+      "stdout_claim_lines": [
+        "held bend: phi1*phi2*z1*z2/(S1*S2)",
+        "held bend if reservoir work is omitted: -phi1*phi2*z1*z2/(S1*S2)",
+        "fixed integrated load: z1*z2*(-g**2 + q1*q2)",
+        "fixed energy source: -z1*z2*(g + j1)*(g + j2)",
+        "fractional source work: -z1*z2*(g**2 + g*lambda*q1 + g*lambda*q2 + 2*lambda*q1*q2 - q1*q2)",
+        "zero work fraction recovers fixed load: z1*z2*(-g**2 + q1*q2)",
+        "full work fraction recovers fixed source: -z1*z2*(g + q1)*(g + q2)",
+        "two-radius determinant: -g**2*z1**2*z2**2*(lambda - 1)**2*(q1 - q2)**2",
+        "equal-data sign threshold: 0",
+        "equal bend, small-small / small-large / large-large: (1, 2, 4)",
+        "bend proportional to radius, small-small / small-large / large-large: (1, 4, 16)",
+        "bend inversely proportional to radius, small-small / small-large / large-large: (1, 1, 1)",
+        "equal integrated load, small-small / small-large / large-large: (1, 1, 1)",
+        "equal load per area, small-small / small-large / large-large: (1, 4, 16)",
+        "equal integrated energy source, small-small / small-large / large-large: (-1, -1, -1)"
+      ]
+    },
+    "unequal_mouth_electric_wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool unequal-mouth-electric-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/unequal_mouth_electric_wolfram01 -- math -noprompt -script software/em_charge_attribute/unequal_mouth_electric.wl",
+      "input_sha256": {
+        "software/em_charge_attribute/unequal_mouth_electric.wl": "cbf55389981b9bf8686d72364f18fbc63e9baf78f900dd740ddb8e94bcdc450f",
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+      },
+      "start_utc": "2026-11-18T07:51:38.296478+00:00",
+      "end_utc_outcome_written": "2026-11-18T07:51:42.920297+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 225382400,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/unequal_mouth_electric_wolfram01/stdout",
+      "stdout_bytes": 1077,
+      "stdout_sha256": "fd7498470adaa20d0a1cc5626546c663ccb189aa70635227b881c5ec7bdc4132",
+      "stdout_claim_lines": [
+        "\"held bend\"\" = \"InputForm[(pa*pb*za*zb)/(selfA*selfB)]",
+        "\"fixed integrated load\"\" = \"InputForm[-((g^2 - qa*qb)*za*zb)]",
+        "\"fixed energy source\"\" = \"InputForm[-((g + ja)*(g + jb)*za*zb)]",
+        "\"fractional source work\"\" = \"InputForm[-((g^2 + g*lam*qa + g*lam*qb - qa*qb + 2*lam*qa*qb)*za*zb)]",
+        "\"two-radius determinant\"\" = \"InputForm[-(g^2*(-1 + lam)^2*(qa - qb)^2*za^2*zb^2)]",
+        "\"held unit bend, d/a = \"20\", d^2 Fodd/(4 Pi kappa) = \"InputForm[{1.00759474431748814625065593961712013309`14., 2.03089694249185869363767539939589824375`14., 4.12626249702970072101262573726935745584`14.}]",
+        "\"held unit bend, d/a = \"40\", d^2 Fodd/(4 Pi kappa) = \"InputForm[{1.00188087479440723100464026163126809199`14., 2.0075550243999802732557384477331118326`14., 4.03037897726995250807750534260082771827`14.}]",
+        "\"held unit bend, d/a = \"80\", d^2 Fodd/(4 Pi kappa) = \"InputForm[{1.00046911645141372628765715897559379701`14., 2.00187842321005693508614532627805878238`14., 4.007523499177628905150601029598342087`14.}]",
+        "\"largest relative error from {1,2,4} at d/a=80 = \"InputForm[0.00188087479440722628765025739958552175`10.]"
+      ]
+    },
+    "annular_mouth_radius_sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool annular-mouth-radius --memory-gib 2 --log-directory _scratch/s11c/annular_mouth_radius01 -- python3 software/em_charge_attribute/annular_mouth_radius.py",
+      "input_sha256": {
+        "software/em_charge_attribute/annular_mouth_radius.py": "525b696a79215d02688e89ff8b3a66024ecc21facaaf271115c1e08213446d4a",
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+      },
+      "start_utc": "2026-11-18T07:53:55.174902+00:00",
+      "end_utc_outcome_written": "2026-11-18T07:53:55.967191+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 54403072,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/annular_mouth_radius01/stdout",
+      "stdout_bytes": 578,
+      "stdout_sha256": "7af3ebc6601d20caf3e786b9812ffed0361dcb13426f17a59c77e34e06a47f87",
+      "stdout_claim_lines": [
+        "radius 1, escape = 0.919127347040, self response = 0.080872652960",
+        "radius 2, escape = 0.957190292880, self response = 0.042809707120",
+        "held unit mean bend, 4 pi kappa d^2 Fodd -> 129.165936152512, 254.114839365942, 499.933291310899",
+        "unit integrated conormal, replacement, 4 pi kappa d^2 Fodd -> 0.844795080077, 0.879779774507, 0.916213256783",
+        "only the unit committed source, 4 pi kappa d^2 Fodd -> -0.844795080077, -0.879779774507, -0.916213256783",
+        "required bend(2)/bend(1) for equal positive strength = 0.508297494451",
+        "required conormal(2)/conormal(1) in replacement = 0.960234713909"
+      ]
+    },
+    "annular_mouth_radius_wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool annular-mouth-radius-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/annular_mouth_radius_wolfram01 -- math -noprompt -script software/em_charge_attribute/annular_mouth_radius.wl",
+      "input_sha256": {
+        "software/em_charge_attribute/annular_mouth_radius.wl": "6b22214d5cb61604f7c3f60934ab3b958ab002a8ef2b4a57e37a500ed407c670",
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b"
+      },
+      "start_utc": "2026-11-18T07:53:55.668760+00:00",
+      "end_utc_outcome_written": "2026-11-18T07:54:00.140183+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "peak_memory_bytes": 225320960,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "stdout_path": "_scratch/s11c/annular_mouth_radius_wolfram01/stdout",
+      "stdout_bytes": 991,
+      "stdout_sha256": "6bdfb9ac83d6e86d33e94c1dda985d5dcec644e7345f39402d7d62f36dd83161",
+      "stdout_claim_lines": [
+        "\"radius \"1\", escape and self response = \"InputForm[{0.9191273470398763425596547980273365224`14., 0.08087265296012365744034519443580565445`14.}]",
+        "\"radius \"2\", escape and self response = \"InputForm[{0.95719029287966107962508257742546729482`14., 0.04280970712033892037491740087874555805`14.}]",
+        "\"held unit mean bend = \"InputForm[{129.16593615251175378563686815616049395647`14., 254.11483936594216394209679825452147988859`14., 499.93329131089861220978488590423358595164`14.}]",
+        "\"unit integrated conormal, replacement = \"InputForm[{0.84479508007656128289142753018930823919`14., 0.87977977450680512638860357413550468327`14., 0.91621325678305135610853970062715716677`14.}]",
+        "\"only the unit committed source = \"InputForm[{-0.84479508007656128289142753018930823919`14., -0.87977977450680512638860357413550468327`14., -0.91621325678305135610853970062715716677`14.}]",
+        "\"required bend and conormal ratios = \"InputForm[{0.50829749445094101230315626961677334647`14., 0.96023471390910767556017674520374082685`14.}]"
+      ]
+    }
+  }
+}

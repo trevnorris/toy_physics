@@ -1,0 +1,110 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Stationary material and wave boundary conditions, zero vector probe background, reflected feed and reservoirs, constant constituent charge; comparison of the written terms and a specified class of real conservative contact energies. The retained numerical solution contains carrier flow only.",
+  "source_equations_sha256": {
+    "software/em_charge_attribute/g0_closure_card_v0.md": "e146c9943c64220adea38947ea017b0fc3b13b8cd67d6a0d4f95eb95b8a282b1",
+    "research/4d/paper/4d.tex": "f83613b86fbd5959b5a63426c3a1259226e6dd35b3de18208aef09fc428d4d56",
+    "research/4d_em_fields/paper/4d_em_fields.tex": "4cb8ca4acd787e163ba4c20b839ae25d46a3d105502d274528656082e71bca3f",
+    "docs/drain_driven_initial_acceleration.md": "3fcb3daff3ec84ffdabab53da4b57162162e957f0c119203a41299b66af513f5",
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "notes/lepton_mass_notes.md": "bb7c64824d8ded1792082997194b4726c146d8893a2b7c9da97c65b0a1a9aa06",
+    "notes/inner_throat/inner_throat_hard_mode.md": "4c28f2214fc33357393277705d11bdae11ef69480bbeb9bc9c0fe03a4bddd4dd",
+    "docs/native_light_em_and_vortex_throat_interpretation.md": "3efc9c49f1a5326b254ed8bb583b8ca8c715c05639dfceb5b9dac3d4c815d124",
+    "software/em_charge_attribute/u1_body_dynamics_inputs.yaml": "eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee"
+  },
+  "stationary_carrier_reused": {
+    "manifest": "docs/_measurements/mirrored_mouth_probe.json",
+    "manifest_sha256": "ccca4ed64c233d40eca613e3cca20a283bc18d5e8182fd9cf35d7ba76312b30f",
+    "run": "carrier",
+    "stdout_sha256": "048de1718866f05f75878ca991110e124675e7b50a44fad7b9331d7ee724da74",
+    "rows": [
+      "R=1 cells_per_length=16 inlet=0.25 cut=0.25 exit=0.25 GNLS_residual=4.232e-14 local_continuity=2.230e-14",
+      "  flat_carrier=230.380071957 flat_transit=230.380071957 mean_residence=921.520287827 flat_residual=-8.81073e-13",
+      "  excess_over_rest_flat=-0.0033893066229 excess_over_rest_depth_plus=-0.00673816387097 excess_over_rest_depth_minus=+0.00673816387097",
+      "  depth_residual_plus=-2.27374e-13 depth_residual_minus=+2.27374e-13"
+    ]
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mirror-internal-matching-sympy --memory-gib 2 --log-directory _scratch/s11c/mirror_internal_matching_sympy01 -- python3 software/em_charge_attribute/mirror_internal_matching.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/mirror_internal_matching.py": "3a4de42273bdbe05c93717561d80c1340bd41c36b2a24916b020320ab2b3e4f6"
+      },
+      "start_utc": "2026-11-18T22:27:19.035513+00:00",
+      "end_utc_outcome_written": "2026-11-18T22:27:19.890622+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 32,
+      "peak_memory_bytes": 56225792,
+      "stdout_path": "_scratch/s11c/mirror_internal_matching_sympy01/stdout",
+      "stdout_bytes": 1139,
+      "stdout_sha256": "b526eadf077cdcc219c84466bfdb5c9cdc0975437d028d22753df081dc7f6f6a",
+      "stdout_claim_lines": [
+        "current jump in single-trace contact (hbar/m removed) = 0",
+        "normal current under constant internal map, relative to J = a*g - b*f",
+        "mouth +1 pullback intake / original = 1",
+        "mouth +1 conjugation intake / original = -1",
+        "mouth -1 pullback intake / original = 1",
+        "mouth -1 conjugation intake / original = -1",
+        "contact coefficients, direct = h + h_n*z*zb",
+        "contact coefficients, conjugate = h_n*z**2",
+        "contact coefficients, order = h_chi*z",
+        "contact response to a unit phase variation = I*h*z",
+        "mouth +1 support node = 0",
+        "mouth +1 free-end slope = 0",
+        "mouth -1 support node = 0",
+        "mouth -1 free-end slope = 0",
+        "support energy at arbitrary temporal phase = pi**2*amp**2*c**2*rho_w/(16*L)",
+        "carrier electric source per volume = n*q",
+        "scalar contact direct electric source per area = 0",
+        "annular rim direct electric source per normalized weight = 0",
+        "wave direct electric source = 0",
+        "rim load conjugate to H at H=0 = J*s",
+        "charge source from order exchange, both fractions = 0",
+        "each mirror residual for uniform probe = V1*n1*q - V1*q*t1 + V2*n2*q - V2*q*t2",
+        "uniform-probe half difference = 0",
+        "depth-gradient half difference per gradient = -q*(-V1*n1*w1 + V1*t1*w1 - V2*n2*w2 + V2*t2*w2)"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool mirror-internal-matching-wolfram --tasks-max 64 --memory-gib 4 --log-directory _scratch/s11c/mirror_internal_matching_wolfram01 -- math -noprompt -script software/em_charge_attribute/mirror_internal_matching.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/mirror_internal_matching.wl": "a4d5fb27a7821f61e7ad6c37b25cd487e26caf8ee8269270bdfa979a57b0339b"
+      },
+      "start_utc": "2026-11-18T22:27:27.124513+00:00",
+      "end_utc_outcome_written": "2026-11-18T22:27:32.036299+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 64,
+      "peak_memory_bytes": 225349632,
+      "stdout_path": "_scratch/s11c/mirror_internal_matching_wolfram01/stdout",
+      "stdout_bytes": 1049,
+      "stdout_sha256": "e508fc3f98f0285799bd655e25b8c4cce2dcd635136ef72086d919d074b83ad2",
+      "stdout_claim_lines": [
+        "{\"side\", 1, \"phase sign\", 1, \"inward coefficient\"}\" = \"\"amp[z]^2*Derivative[1][theta][z]\"",
+        "{\"side\", 1, \"phase sign\", -1, \"inward coefficient\"}\" = \"\"-(amp[z]^2*Derivative[1][theta][z])\"",
+        "{\"side\", -1, \"phase sign\", 1, \"inward coefficient\"}\" = \"\"amp[z]^2*Derivative[1][theta][z]\"",
+        "{\"side\", -1, \"phase sign\", -1, \"inward coefficient\"}\" = \"\"-(amp[z]^2*Derivative[1][theta][z])\"",
+        "\"material current jump in units hbar/m\"\" = \"\"0\"",
+        "\"direct coefficient\"\" = \"\"h + hN*(x^2 + y^2)\"",
+        "\"conjugate coefficient\"\" = \"\"hN*(x + I*y)^2\"",
+        "\"order coefficient\"\" = \"\"hChi*(x + I*y)\"",
+        "\"derivative along a common phase orbit\"\" = \"\"I*h*(x + I*y)\"",
+        "\"both cavity boundary rows\"\" = \"\"{{0, 0}, {0, 0}}\"",
+        "\"standing-mode energy\"\" = \"\"(amplitude^2*inertia*Pi^2*speed^2)/(16*len)\"",
+        "\"static matter source\"\" = \"\"q*(x^2 + y^2)\"",
+        "\"contact, rim, wave direct monopole\"\" = \"\"{0, 0, 0}\"",
+        "\"mechanical rim drive at H=0\"\" = \"\"drive*side\"",
+        "\"uniform excess on both mirrors\"\" = \"\"{q*(-ff[left] + ff[right]), q*(-ff[left] + ff[right])}\"",
+        "\"depth-gradient half difference per gradient\"\" = \"\"q*(-gg[left] + gg[right])\""
+      ]
+    }
+  }
+}

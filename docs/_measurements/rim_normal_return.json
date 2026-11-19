@@ -1,0 +1,55 @@
+{
+  "base": "e0a94594d80c3a99b775b661f987fcc298660fbd",
+  "scope": "Feeding carrier excess normal momentum on a fixed aperture and conditional outer bend of a slab under separate rim and return loads. Matched receiving-side reaction unavailable.",
+  "status": "Working result pending independent review.",
+  "input_sha256": {
+    "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+    "software/stage1_solver/tools/lateral_reservoir_field.py": "2b501ab8ae8edd226abbee1535e45645dc188bc7b83425a8f2304e138d38e04c",
+    "software/stage1_solver/tools/lateral_source_rate.py": "2219836e5cb8a5d5c8251dc62797b1076882818dd85d28b1ab49d55eee5b653c",
+    "docs/_measurements/lateral_reservoir_pair.json": "3cffb25b8177523be5884b72b8dbb694e3ebc1c67642c88fcb619626a43d58ec",
+    "software/em_charge_attribute/reports/two_face_rim_bend.md": "d3a128469e3d6ff1175ac02f758a7b22ea668d4656c4447774aa04050a5b3903",
+    "software/em_charge_attribute/puncture_deflection_electric_sign_result.md": "54284dcb2e160d5d2c51c480c5bf55c9b581640d1d91e17ff20b0d4c8e56b019",
+    "research/pde_ledger_v3/directives/O2_SHARED_PHYSICS.md": "8669ba43a60d55434a6d6807f47a862dc5f6d960654bbaaaaf26eb3d8f16fbe1",
+    "software/stage1_solver/reports/mouth_inlet_trace.md": "8bbcb86dedfa333821312111a84381ccee326af186d983e69a0157d4c62c2b27",
+    "_scratch/s11c/lateral_bath_e24_c4_01/fields/d0.npz": "08e5a0ff32f24f5de2797fdb6336614e790377e72d5899279f7666c7b96cbdbe",
+    "_scratch/s11c/lateral_bath_e24_c6_01/fields/d0.npz": "590774f5c77c030fbe68edb253b5edddd0bc8b636bf983f1947fae52d7389fb1",
+    "_scratch/s11c/lateral_bath_e48_c4_01/fields/d0.npz": "7c0eee31dc6a017d510c7c9805b0da7a2450c45d53360c8654c213614b8dfecd"
+  },
+  "runs": {
+    "sympy_numpy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rim-normal-feed --memory-gib 3 --log-directory _scratch/s11c/rim_normal_feed01 -- python3 software/stage1_solver/tools/mouth_normal_load_return.py",
+      "start_utc": "2026-11-18T03:54:52.703828+00:00",
+      "script_sha256": "c09f9dd99c6013b985f46159165d1b7c232105ba8d725192aeecd00edf1e501b",
+      "stdout_sha256": "426938497f4a05b302890faa225d5b896cf63bfdf5840bd9e7c53174362244f3",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_gib": 3,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "normal stress identity residual = 0",
+        "inside reaction shell = -(-F*b + R*r)/(4*pi*b*k*r) ; outside = (F - R)/(4*pi*k*r)",
+        "slope-inferred loads = F F - R",
+        "e24_c4 J=0.25 carriage=+0.043802206783 pressure=-0.00618304158169 gradient=-0.0283348851312 total_one_sided=+0.00928428007015 total_field_equation=+0.00702502762315",
+        "e24_c6 J=0.25 carriage=+0.043839159857 pressure=-0.00597325082679 gradient=-0.0297312380831 total_one_sided=+0.00813467094708 total_field_equation=+0.00718186190367",
+        "e48_c4 J=0.25 carriage=+0.0438022067828 pressure=-0.0061830415474 gradient=-0.028334885129 total_one_sided=+0.00928428010634 total_field_equation=+0.00702502765741"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool rim-normal-return-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/rim_normal_return_wolfram01 -- math -noprompt -script software/em_charge_attribute/rim_normal_return.wl",
+      "start_utc": "2026-11-18T03:55:14.544374+00:00",
+      "script_sha256": "a5f90256f7440f4e79fcafb6fc10cf7a0f8542dd59912e7f837550035e594de1",
+      "stdout_sha256": "f9f0761fff5befdc4ba1ea725a07a0c4d368779bb2a0b24b3a1b716845ed0e86",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_gib": 4,
+      "verified_swap_bytes": 0,
+      "stdout_claim_lines": [
+        "\"inside return surface\"\" = \"\"(b*push - back*r)/(4*b*kap*Pi*r)\"",
+        "\"outside return surface\"\" = \"\"(-back + push)/(4*kap*Pi*r)\"",
+        "\"oriented slope fluxes\"\" = \"\"{push, -back + push}\"",
+        "\"complete return far bend\"\" = \"\"0\"",
+        "\"normal matter-stress residual\"\" = \"\"0\""
+      ]
+    }
+  }
+}

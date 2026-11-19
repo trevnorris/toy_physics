@@ -1,0 +1,70 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Unit geometric sources on the collar. The test gauge vanishes at both ends of passage. No electric coupling or receiver dynamics is assumed in the carrier solver.",
+  "source_sha256": {
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "research/pde_ledger_v3/steps/S12_order_source.md": "9ff32deaba86893378e6685d5120ddbe46c03eec4ffb2d8b96b6faeca59ec39d",
+    "research/4d/paper/4d.tex": "f83613b86fbd5959b5a63426c3a1259226e6dd35b3de18208aef09fc428d4d56",
+    "research/4d_em_fields/paper/4d_em_fields.tex": "4cb8ca4acd787e163ba4c20b839ae25d46a3d105502d274528656082e71bca3f",
+    "software/em_charge_attribute/g0_closure_card_v0.md": "e146c9943c64220adea38947ea017b0fc3b13b8cd67d6a0d4f95eb95b8a282b1",
+    "software/em_charge_attribute/relaxed_neck.py": "dfdaf3087057863209fc8e665366527789f03bf3fa2715327160155d31572f13",
+    "docs/_measurements/relaxed_neck_paths.json": "813e662a8df05e3f5b2400c9436884054a1068eefa6b9415129ac9d61dc4405c",
+    "docs/_measurements/layer_count_transport.json": "7c27c59defb5d5e2616edf8562e9c14a8a31056ed1289e2a69300f8359b931b5",
+    "docs/_measurements/held_tilt_charge.json": "3f08c3d574253b828022caec4e3f0d2f0ba5e9f57c0e33cc7bee4e275d7b4947",
+    "docs/_measurements/geometry_probe_coupling.json": "dfebd4cfc9a57989854bc1ac4f19b09337ffdae21ab5204f5b1de67f09df86a5"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool conversion-bridge-py --memory-gib 2 --log-directory _scratch/s11c/conversion_bridge_py01 -- python3 software/em_charge_attribute/conversion_bridge.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/conversion_bridge.py": "be1c46a3306b83d73f67e6790b965a8cd679d42bd494d92af2fe63ccb52478d4"
+      },
+      "started_utc": "2026-11-19T01:11:10.475786+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 2147483648,
+      "swap_cap_bytes": 0,
+      "tasks_cap": 32,
+      "deadlines": null,
+      "stdout_path": "_scratch/s11c/conversion_bridge_py01/stdout",
+      "stdout_sha256": "22fc2a998020ff51cd5402c823d682a1e0fa534378d67a34da7bb55004060f0f",
+      "stdout": [
+        "layer alone: gauge pairing = 3/14, charge at entry = 1, charge just inside exit = 0",
+        "free regular/point at tilts [2, 13/6, 7/3, 5/2, 8/3, 17/6, 3]: [(1, 0), (625/648, 0), (64/81, 0), (1/2, 0), (17/81, 0), (23/648, 0), (0, 0)]",
+        "clamped regular/point at tilts [2, 13/6, 7/3, 5/2, 8/3, 17/6, 3]: [(1, 0), (625/648, 0), (64/81, 0), (1/2, 0), (17/81, 0), (23/648, 0), (0, 0)]",
+        "completed: gauge pairing = 0, charge at entry = 1, charge just inside exit = 1",
+        "free regular/point at tilts [2, 13/6, 7/3, 5/2, 8/3, 17/6, 3]: [(1, 0), (625/648, 23/648), (64/81, 17/81), (1/2, 1/2), (17/81, 64/81), (23/648, 625/648), (0, 1)]",
+        "clamped regular/point at tilts [2, 13/6, 7/3, 5/2, 8/3, 17/6, 3]: [(1, 0), (625/648, 23/648), (64/81, 17/81), (1/2, 1/2), (17/81, 64/81), (23/648, 625/648), (0, 1)]",
+        "localized primitive: gauge pairing = 0, charge at entry = 0, charge just inside exit = 0",
+        "free regular/point at tilts [2, 13/6, 7/3, 5/2, 8/3, 17/6, 3]: [(0, 0), (-14375/419904, 14375/419904), (-1088/6561, 1088/6561), (-1/4, 1/4), (-1088/6561, 1088/6561), (-14375/419904, 14375/419904), (0, 0)]",
+        "clamped regular/point at tilts [2, 13/6, 7/3, 5/2, 8/3, 17/6, 3]: [(0, 0), (-14375/419904, 14375/419904), (-1088/6561, 1088/6561), (-1/4, 1/4), (-1088/6561, 1088/6561), (-14375/419904, 14375/419904), (0, 0)]"
+      ]
+    },
+    "mathematica": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool conversion-bridge-wl --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/conversion_bridge_wl01 -- math -noprompt -script software/em_charge_attribute/conversion_bridge.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/conversion_bridge.wl": "7901089d7dc039b7285ef7e406f705e10fe13a25fe91862cc16d22cfc50f5920"
+      },
+      "started_utc": "2026-11-19T01:11:10.177552+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "limits_verified": true,
+      "memory_cap_bytes": 4294967296,
+      "swap_cap_bytes": 0,
+      "tasks_cap": 64,
+      "deadlines": null,
+      "stdout_path": "_scratch/s11c/conversion_bridge_wl01/stdout",
+      "stdout_sha256": "092b9c3bc0d2480e9b25d26198f58bf1edeb1b6ccc4722230c680879da217307",
+      "stdout": [
+        "\"degrees inside and outside the moving point = \"InputForm[{0, 1}]",
+        "\"layer alone\"\" gauge pairing, midpoint components, limiting charges = \"InputForm[{3/14, {1/2, 0}, {1, 0}}]",
+        "\"completed\"\" gauge pairing, midpoint components, limiting charges = \"InputForm[{0, {1/2, 1/2}, {1, 1}}]",
+        "\"localized primitive\"\" gauge pairing, midpoint components, limiting charges = \"InputForm[{0, {-1/4, 1/4}, {0, 0}}]"
+      ]
+    }
+  }
+}

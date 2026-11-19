@@ -1,0 +1,116 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Translational stress of the bare diffuse order energy, frozen-reference homogeneous exterior dipole response, and static contact balance at fixed background intake. No live draining branch or fraction of total force determined.",
+  "source_sha256": {
+    "research/pde_ledger_v2/notes/stages/ledger_stage006_two_phase_chiB_ontology.md": "8b1d3ad6d0603a764b85295a8bfcb174cf76d6c1d6f6af97a09921a5ed31482e",
+    "docs/native_light_em_and_vortex_throat_interpretation.md": "3efc9c49f1a5326b254ed8bb583b8ca8c715c05639dfceb5b9dac3d4c815d124",
+    "docs/elastic_reference_limit_comparison.md": "bf38716a1090f6df8496b01554a7d7a30228dc50f3d600ca7a4490257298a2f8",
+    "research/pde_ledger_v3/steps/O2_steady_brane_balance.md": "94dedb38565e931ccfce02cfb129dcf9f2fb36bc704941d8c299845935989f60",
+    "software/em_charge_attribute/g0_closure_card_v0.md": "e146c9943c64220adea38947ea017b0fc3b13b8cd67d6a0d4f95eb95b8a282b1",
+    "software/em_charge_attribute/reports/held_rim_shift.md": "1d2a8e7f2e7941d6caba85fb7e9a9c894e87bc2f70f04474e2a0e546cf6c61cf",
+    "docs/_measurements/held_rim_shift.json": "6cf2669a9593034627d5dd361bf9c11fe908c552bbd1c4df6b5acd3579bb15a6"
+  },
+  "adhering_sphere_check": {
+    "source": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/69FD80DE23FEB123BC8E398BBFF190BD/S0013091500012189a.pdf/motion_of_a_rigid_sphere_embedded_in_an_adhering_elastic_or_viscoelastic_medium.pdf",
+    "equation": "1.1",
+    "domain": "full carried trace with B=lambda+2mu"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool local-rim-balance-sympy --memory-gib 2 --log-directory _scratch/s11c/local_rim_balance_sympy01 -- python3 software/em_charge_attribute/local_rim_balance.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/local_rim_balance.py": "1ac4b7914cba5d78f977b1c597ed70834a5d10e0b8ab6005bbfdd59175510417"
+      },
+      "start_utc": "2026-11-18T23:57:17.981225+00:00",
+      "elapsed_seconds": 1.3902710541151464,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 32,
+      "sampled_peak_memory_bytes": 57540608,
+      "stdout_path": "_scratch/s11c/local_rim_balance_sympy01/stdout",
+      "stdout_sha256": "faadfdc39b74154c3aa324f5cd5db2c7ad8d4f81c7b7dc1c6f413133eb6b8f97",
+      "stdout_claim_lines": [
+        "order-stress divergence minus chemical potential times chi_x = 0",
+        "order load across positive-depth cut per r^2 dr = 4*pi*cr**2*kappa*qp/3",
+        "radial characteristic determinant = 32*pi**2*B*mu*p*(p - 2)*(p + 1)*(p + 3)/9",
+        "radial exponents = [-3, -1, 0, 2]",
+        "wall trace and bulk equation residuals = [0, 0, 0, 0]",
+        "normal and tangential virtual-work coefficients = [4*pi*B*a*mu*(Zn + 2*Zt)/(3*(2*B + mu)), 8*pi*B*a*mu*(Zn + 2*Zt)/(3*(2*B + mu))]",
+        "integrated exterior load on any sphere = 4*pi*B*a*mu*(Zn + 2*Zt)/(2*B + mu)",
+        "exterior stiffness for a carried full trace = 12*pi*B*a*mu/(2*B + mu)",
+        "exterior energy = 2*pi*B*a*mu*(Zn + 2*Zt)**2/(3*(2*B + mu))",
+        "trace Hessian rank, free tangential trace, exterior load there = [1, -Zn/2, 0]",
+        "zero-load normal-follow exterior field and div/curl = [Zn*a**3/r**3, -Zn*a**3/(2*r**3), 0, 0]",
+        "incoming, exterior, external hold = [Kl*Y*(Ke + c)/(Ke + Kl + c), Ke*Kl*Y/(Ke + Kl + c), -Kl*Y*c/(Ke + Kl + c)]",
+        "local force residual H+P-S = 0",
+        "no contact: transmitted and held = [Ke*Kl*Y/(Ke + Kl), 0]",
+        "pinned: transmitted and held = [0, -Kl*Y]",
+        "free normal-only exterior and no contact: incoming, transmitted, held = [0, 0, 0]"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool local-rim-balance-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/local_rim_balance_wolfram01 -- math -noprompt -script software/em_charge_attribute/local_rim_balance.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/local_rim_balance.wl": "495b071cb1cbaf02064ee64e384d552f0e93df4c692f0c0591e1ec114bc6abdb"
+      },
+      "start_utc": "2026-11-18T23:57:16.309976+00:00",
+      "elapsed_seconds": 8.743896785657853,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 64,
+      "sampled_peak_memory_bytes": 230440960,
+      "stdout_path": "_scratch/s11c/local_rim_balance_wolfram01/stdout",
+      "stdout_sha256": "548cf4083e704ab8f65d06deffd9b06a8c5261aa0b75131cac9261fe091d1358",
+      "stdout_claim_lines": [
+        "\"on-shell volume energy\"\" = \"\"(2*a*b*m*Pi*(zn + 2*zt)^2)/(3*(2*b + m))\"",
+        "\"two bulk residuals\"\" = \"\"{0, 0}\"",
+        "\"boundary normal and tangential loads\"\" = \"\"{(4*a*b*m*Pi*(zn + 2*zt))/(3*(2*b + m)), (8*a*b*m*Pi*(zn + 2*zt))/(3*(2*b + m))}\"",
+        "\"exterior resultant\"\" = \"\"(4*a*b*m*Pi*(zn + 2*zt))/(2*b + m)\"",
+        "\"full-follow stiffness\"\" = \"\"(12*a*b*m*Pi)/(2*b + m)\"",
+        "\"response Hessian rank\"\" = \"\"1\"",
+        "\"free tangential trace, its load, its energy\"\" = \"\"{-1/2*zn, 0, 0}\"",
+        "\"harmonic-gradient divergence and curl\"\" = \"\"{0, {0, 0, 0}}\"",
+        "\"summed smooth internal-cut traction\"\" = \"\"{0, 0, 0, 0}\"",
+        "\"delta reaction on the rim from two signed order fluxes (external hold)\"\" = \"\"leftSlope*leftT - rightSlope*rightT\"",
+        "\"incoming, exterior, external hold\"\" = \"\"{((contact + ke)*kl*y)/(contact + ke + kl), (ke*kl*y)/(contact + ke + kl), -((contact*kl*y)/(contact + ke + kl))}\"",
+        "\"net local residual\"\" = \"\"0\"",
+        "\"decoupled rim and pinned rim: routed loads\"\" = \"\"{{(ke*kl*y)/(ke + kl), 0}, {0, -(kl*y)}}\""
+      ]
+    },
+    "comparison": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool local-rim-balance-comparison --memory-gib 1 --log-directory _scratch/s11c/local_rim_balance_comparison01 -- python3 software/em_charge_attribute/compare_local_rim_balance.py _scratch/s11c/local_rim_balance_sympy01/stdout _scratch/s11c/local_rim_balance_wolfram01/stdout",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/compare_local_rim_balance.py": "489da715baf34455b558af8d8d2583f858fcb4a15554b09b35cf2f24d3ff9fb6",
+        "_scratch/s11c/local_rim_balance_sympy01/stdout": "faadfdc39b74154c3aa324f5cd5db2c7ad8d4f81c7b7dc1c6f413133eb6b8f97",
+        "_scratch/s11c/local_rim_balance_wolfram01/stdout": "548cf4083e704ab8f65d06deffd9b06a8c5261aa0b75131cac9261fe091d1358"
+      },
+      "start_utc": "2026-11-18T23:59:37.824765+00:00",
+      "elapsed_seconds": 0.39390279073268175,
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 1073741824,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 32,
+      "sampled_peak_memory_bytes": 51781632,
+      "stdout_path": "_scratch/s11c/local_rim_balance_comparison01/stdout",
+      "stdout_sha256": "a1b20c4c09b758271c2c6287f3cc15793377bb6ae2019af7126a548d580fae11",
+      "stdout_claim_lines": [
+        "normal and tangential virtual-work coefficients: cross-engine residual = [0, 0]",
+        "integrated exterior load on any sphere: cross-engine residual = [0]",
+        "exterior stiffness for a carried full trace: cross-engine residual = [0]",
+        "exterior energy: cross-engine residual = [0]",
+        "incoming, exterior, external hold: cross-engine residual = [0, 0, 0]",
+        "local force residual H+P-S: cross-engine residual = [0]",
+        "full-follow comparison to adhering sphere = 0"
+      ]
+    }
+  }
+}

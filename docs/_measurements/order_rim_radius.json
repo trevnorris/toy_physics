@@ -1,0 +1,73 @@
+{
+  "base": "e0a94594",
+  "status": "Working result pending independent review",
+  "scope": "Axial end forces for the static order wall, mirrored and rescaled geometries, and a constrained finite-width profile. No active free-wall solution or far-field charge measurement.",
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool order-rim-radius --memory-gib 2 --log-directory _scratch/s11c/order_rim_radius01 -- python3 software/em_charge_attribute/order_rim_radius.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/order_rim_radius.py": "20c5298488010bd5bef0298044252c0678d77ac3b4447b0a4c50e77a728aedba",
+        "software/stage1_solver/frozen/m1c/834835c999efd572e7aba46e04831a201ef51a3a7c88820459964b44b303d5e8/wp1_background_10x8.json": "e7e2b508e990adabc29be22254c3ab75831205b28fa305ab40519130c451b1c2"
+      },
+      "start_utc": "2026-11-18T05:35:04.031496+00:00",
+      "end_utc_outcome_written": "2026-11-18T05:35:04.698047+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "peak_memory_bytes": 54136832,
+      "stdout_path": "_scratch/s11c/order_rim_radius01/stdout",
+      "stdout_bytes": 786,
+      "stdout_sha256": "0077e7768087b7fd03d8041876e71faf75eadea232bb9d386c51471088c7ee0c",
+      "stdout_claim_lines": [
+        "tension force = 4*pi*R**2*sigma/sqrt(p**2 + 1)",
+        "bending force at axial tangent = -4*pi*k_b*(R*q - 2)*(R*q + 2)/9",
+        "integrated tension curvature minus end-flux derivative = 0",
+        "similarity tension residual = 0",
+        "similarity bending residual = 0",
+        "straight segment bending force = 16*pi*k_b/9",
+        "flare bending force at fixed L = -4*pi*k_b*(-2*L**2 + 3*a**2)*(2*L**2 + 3*a**2)/(9*L**4)",
+        "similar flare bending / cylinder bending = 1514161/1874161",
+        "axial virtual-work reduction = 0",
+        "planar normal moments [zero, first, second] = [1, 0, -2 + pi**2/3]",
+        "cylindrical trial axial pull through constant order = 4*pi*sigma*(a**2 + ell**2*(-2 + pi**2/3))",
+        "curved trial order residual / planar slope = -2*kappa/(a + d)",
+        "planar kink first integral = 0",
+        "trial tension relative correction, coefficient of (ell/a)^2 = c**2/2"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool order-rim-wolfram --memory-gib 4 --tasks-max 64 --log-directory _scratch/s11c/order_rim_wolfram02 -- math -noprompt -script software/em_charge_attribute/order_rim_radius.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/order_rim_radius.wl": "6c62855dde10520e5dc0f43cab7b4826d03da93dde657708ec529c7ce6b66225"
+      },
+      "start_utc": "2026-11-18T05:36:21.405573+00:00",
+      "end_utc_outcome_written": "2026-11-18T05:36:26.316753+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "peak_memory_bytes": 232304640,
+      "stdout_path": "_scratch/s11c/order_rim_wolfram02/stdout",
+      "stdout_bytes": 932,
+      "stdout_sha256": "31f10b22e1dd96283cc25d96a3fb1c6b2a3080e93f2963d78384f1ece10c4991",
+      "stdout_claim_lines": [
+        "\"pull on near end toward +w at axial tangent\"\" = \"\"(-4*Pi*(-4*kb + a^2*kb*r2^2 - 9*a^2*sig))/9\"",
+        "\"mirror sum\"\" = \"\"0\"",
+        "\"whole-sheet rigid translation work\"\" = \"\"0\"",
+        "\"straight segment desired separation force\"\" = \"\"(4*Pi*(4*kb + 9*a^2*sig))/9\"",
+        "\"cylinder end work vs direct extension\"\" = \"\"0\"",
+        "\"cylinder near and far reactions including signs\"\" = \"\"0\"",
+        "\"flare fixed-length end bending\"\" = \"\"(-4*kb*(3*a^2 - 2*len^2)*(3*a^2 + 2*len^2)*Pi)/(9*len^4)\"",
+        "\"similar flare / cylinder bending\"\" = \"\"1514161/1874161\"",
+        "\"second planar moment divided by tension and width squared\"\" = \"\"1.28986813369645287294483033329205037844`18.\"",
+        "\"planar norm\"\" = \"\"0\"",
+        "\"curved trial after subtracting area, radius 20\"\" = \"\"1.28986182114176698730101757909185248847`16.\"",
+        "\"curved trial after subtracting area, radius 40\"\" = \"\"1.28986813369640137014647554089186776256`16.\"",
+        "\"curved trial after subtracting area, radius 80\"\" = \"\"1.28986813369645287294483033329117966398`16.\""
+      ]
+    }
+  }
+}

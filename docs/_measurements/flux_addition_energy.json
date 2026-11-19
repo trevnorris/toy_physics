@@ -1,0 +1,84 @@
+{
+  "base": "e0a94594",
+  "status": "Working calculation pending independent review",
+  "scope": "Electric zero-mode energy for a prescribed uniformly charged annulus, zero reference at infinity, and the parity of matched field energies at fixed constituent charge. No integer sector or physical throat work is supplied by this calculation.",
+  "source_equations_sha256": {
+    "software/em_charge_attribute/g0_closure_card_v0.md": "e146c9943c64220adea38947ea017b0fc3b13b8cd67d6a0d4f95eb95b8a282b1",
+    "research/4d_em_fields/paper/4d_em_fields.tex": "4cb8ca4acd787e163ba4c20b839ae25d46a3d105502d274528656082e71bca3f",
+    "research/4d/paper/4d.tex": "f83613b86fbd5959b5a63426c3a1259226e6dd35b3de18208aef09fc428d4d56",
+    "software/em_charge_attribute/u1_body_dynamics_inputs.yaml": "eef5cdc2178ec76f10f3e5e361cdd1461eb2eee3980ffa99f814df02475866ee",
+    "software/em_charge_attribute/reports/mirrored_mouth_probe.md": "9ea780f72d5b9295a1fa27a94fa90c5b568c936c1ef22e368302d26cfd09adfc",
+    "software/em_charge_attribute/reports/mouth_sign_selection.md": "94c05c026739d61a91e6e3f117718b036fc2104b4b59598e29c949ef742cf3f4"
+  },
+  "runs": {
+    "sympy": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool flux-addition-sympy --memory-gib 2 --log-directory _scratch/s11c/flux_addition_sympy01 -- python3 software/em_charge_attribute/flux_addition_energy.py",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/flux_addition_energy.py": "8804cc26ddb63897a922c6c007f9d70c73f63c4cefdc2de4ca293b8e80f629d7"
+      },
+      "start_utc": "2026-11-18T22:13:07.298213+00:00",
+      "end_utc_outcome_written": "2026-11-18T22:13:07.962378+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 2147483648,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 32,
+      "peak_memory_bytes": 55713792,
+      "stdout_path": "_scratch/s11c/flux_addition_sympy01/stdout",
+      "stdout_bytes": 1050,
+      "stdout_sha256": "728fb9b94e6fa31315fee4bb37a5b114dbca69767b5f4e6afc5dc17f41213451",
+      "stdout_claim_lines": [
+        "shell enclosed fraction = -(-a + r)*(a**2 + a*r + r**2)/((a - b)*(a**2 + a*b + b**2))",
+        "tail coefficient = 1/b",
+        "one-unit shell coefficient = 3*(3*a**3 + 6*a**2*b + 4*a*b**2 + 2*b**3)/(5*(a**2 + a*b + b**2)**2)",
+        "R=1/2 step sign=-1 first, second = 205224/109561 615672/109561",
+        "R=1/2 step sign=+1 first, second = 205224/109561 615672/109561",
+        "R=1 step sign=-1 first, second = 1538424/1590121 4615272/1590121",
+        "R=1 step sign=+1 first, second = 1538424/1590121 4615272/1590121",
+        "R=2 step sign=-1 first, second = 11908824/24216241 35726472/24216241",
+        "R=2 step sign=+1 first, second = 11908824/24216241 35726472/24216241",
+        "constant linear reward across radii needs greater than, less than = 205224/109561 35726472/24216241",
+        "open intersection exists = False",
+        "side +1 field cost with common background = Be*Ge*Te*n + Bo*Go*To*n + Ge*Te**2*n**2/2 + Go*To**2*n**2/2",
+        "side -1 field cost with common background = Be*Ge*Te*n + Bo*Go*To*n + Ge*Te**2*n**2/2 + Go*To**2*n**2/2",
+        "mirror/sign double difference, written field = 0",
+        "mirror/sign double difference, inserted reward = -lambda*n"
+      ]
+    },
+    "wolfram": {
+      "command": "python3 scripts/s11c_guarded_run.py --pool flux-addition-wolfram --tasks-max 64 --memory-gib 4 --log-directory _scratch/s11c/flux_addition_wolfram01 -- math -noprompt -script software/em_charge_attribute/flux_addition_energy.wl",
+      "input_sha256": {
+        "scripts/s11c_guarded_run.py": "86be9b55a56f7a3538cdf3852b74562bdc8c5bab19c9ad894cbc2c3b6bbe257b",
+        "software/em_charge_attribute/flux_addition_energy.wl": "8a30228bb8726149bd8858c7ef9caaca82a4e26a3bc5ae5d2d5e8152e391b5e5"
+      },
+      "start_utc": "2026-11-18T22:13:15.916194+00:00",
+      "end_utc_outcome_written": "2026-11-18T22:13:21.837865+00:00",
+      "guard_exit": 0,
+      "child_exit": 0,
+      "verified_memory_cap_bytes": 4294967296,
+      "verified_swap_max_bytes": 0,
+      "verified_tasks_max": 64,
+      "peak_memory_bytes": 230924288,
+      "stdout_path": "_scratch/s11c/flux_addition_wolfram01/stdout",
+      "stdout_bytes": 1205,
+      "stdout_sha256": "e2a02d45ff9b4571f768d1d42362030064505fb451b1e7c0d13f212f2ad4ddde",
+      "stdout_claim_lines": [
+        "\"angular Green kernel for nested shells\"\" = \"InputForm[r^(-1)]",
+        "\"one-unit shell coefficient\"\" = \"InputForm[(3*(3*a^3 + 6*a^2*b + 4*a*b^2 + 2*b^3))/(5*(a^2 + a*b + b^2)^2)]",
+        "\"thin-shell limit\"\" = \"InputForm[a^(-1)]",
+        "{\"radius\", 1/2, \"step sign\", -1}\" = \"InputForm[{205224/109561, 615672/109561}]",
+        "{\"radius\", 1/2, \"step sign\", 1}\" = \"InputForm[{205224/109561, 615672/109561}]",
+        "{\"radius\", 1, \"step sign\", -1}\" = \"InputForm[{1538424/1590121, 4615272/1590121}]",
+        "{\"radius\", 1, \"step sign\", 1}\" = \"InputForm[{1538424/1590121, 4615272/1590121}]",
+        "{\"radius\", 2, \"step sign\", -1}\" = \"InputForm[{11908824/24216241, 35726472/24216241}]",
+        "{\"radius\", 2, \"step sign\", 1}\" = \"InputForm[{11908824/24216241, 35726472/24216241}]",
+        "\"individual linear-reward windows\"\" = \"InputForm[{Inequality[205224/109561, Less, bias, Less, 615672/109561], Inequality[1538424/1590121, Less, bias, Less, 4615272/1590121], Inequality[11908824/24216241, Less, bias, Less, 35726472/24216241]}]",
+        "\"common linear-reward window\"\" = \"InputForm[False]",
+        "\"first-unit cost difference across sides with background\"\" = \"InputForm[0]",
+        "\"mirror/sign double difference, written field\"\" = \"InputForm[0]",
+        "\"mirror/sign double difference, inserted reward\"\" = \"InputForm[-(lam*n)]"
+      ]
+    }
+  }
+}
